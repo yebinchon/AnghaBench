@@ -1,18 +1,10 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
+ int assert (int) ;
 
 int *unserialize_list2_raw (int *ptr, int *data, int num) {
   int x = *(ptr++);
@@ -22,7 +14,7 @@ int *unserialize_list2_raw (int *ptr, int *data, int num) {
     int y = *(ptr++);
     int z = *(ptr++);
     int result = -1;
-    for (j = 0; j < num; j ++) if (data[2 * j]  == y) {
+    for (j = 0; j < num; j ++) if (data[2 * j] == y) {
       data[2 * j + 1] += z;
       result = j;
       break;

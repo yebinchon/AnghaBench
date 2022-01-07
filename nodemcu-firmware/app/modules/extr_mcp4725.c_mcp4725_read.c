@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8 ;
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- int MCP4725_I2C_ADDR_BASE ; 
- int /*<<< orphan*/  PLATFORM_I2C_DIRECTION_RECEIVER ; 
- int get_address (int /*<<< orphan*/ *,int) ; 
- scalar_t__ lua_istable (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pushnumber (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  mcp4725_i2c_id ; 
- int platform_i2c_recv_byte (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  platform_i2c_send_address (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  platform_i2c_send_start (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  platform_i2c_send_stop (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint8 ;
+typedef int lua_State ;
+
+
+ int MCP4725_I2C_ADDR_BASE ;
+ int PLATFORM_I2C_DIRECTION_RECEIVER ;
+ int get_address (int *,int) ;
+ scalar_t__ lua_istable (int *,int) ;
+ int lua_pushnumber (int *,int) ;
+ int mcp4725_i2c_id ;
+ int platform_i2c_recv_byte (int ,int) ;
+ int platform_i2c_send_address (int ,int,int ) ;
+ int platform_i2c_send_start (int ) ;
+ int platform_i2c_send_stop (int ) ;
 
 __attribute__((used)) static int mcp4725_read(lua_State* L){
   uint8 i2c_address = MCP4725_I2C_ADDR_BASE;

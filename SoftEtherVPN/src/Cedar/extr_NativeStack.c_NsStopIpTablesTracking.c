@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int IpTablesHalt; int IpTablesInitOk; int /*<<< orphan*/ * IpTablesHaltEvent; int /*<<< orphan*/ * IpTablesThread; } ;
-typedef  TYPE_1__ NATIVE_STACK ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INFINITE ; 
- int /*<<< orphan*/  ReleaseEvent (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ReleaseThread (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Set (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  WaitThread (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int IpTablesHalt; int IpTablesInitOk; int * IpTablesHaltEvent; int * IpTablesThread; } ;
+typedef TYPE_1__ NATIVE_STACK ;
+
+
+ int INFINITE ;
+ int ReleaseEvent (int *) ;
+ int ReleaseThread (int *) ;
+ int Set (int *) ;
+ int WaitThread (int *,int ) ;
 
 void NsStopIpTablesTracking(NATIVE_STACK *a)
 {
-	if (a->IpTablesThread == NULL)
-	{
-		return;
-	}
+ if (a->IpTablesThread == ((void*)0))
+ {
+  return;
+ }
 
-	a->IpTablesHalt = true;
-	Set(a->IpTablesHaltEvent);
+ a->IpTablesHalt = 1;
+ Set(a->IpTablesHaltEvent);
 
-	WaitThread(a->IpTablesThread, INFINITE);
+ WaitThread(a->IpTablesThread, INFINITE);
 
-	ReleaseThread(a->IpTablesThread);
-	ReleaseEvent(a->IpTablesHaltEvent);
+ ReleaseThread(a->IpTablesThread);
+ ReleaseEvent(a->IpTablesHaltEvent);
 
-	a->IpTablesThread = NULL;
-	a->IpTablesHaltEvent = NULL;
-	a->IpTablesInitOk = false;
-	a->IpTablesHalt = false;
+ a->IpTablesThread = ((void*)0);
+ a->IpTablesHaltEvent = ((void*)0);
+ a->IpTablesInitOk = 0;
+ a->IpTablesHalt = 0;
 }

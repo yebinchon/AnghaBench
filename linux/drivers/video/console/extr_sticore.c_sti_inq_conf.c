@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct sti_struct {int /*<<< orphan*/  lock; int /*<<< orphan*/  glob_cfg; int /*<<< orphan*/  inq_conf; TYPE_1__* sti_data; } ;
-struct sti_conf_outptr {int /*<<< orphan*/  ext_ptr; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct sti_struct {int lock; int glob_cfg; int inq_conf; TYPE_1__* sti_data; } ;
+struct sti_conf_outptr {int ext_ptr; } ;
 struct sti_conf_inptr {int dummy; } ;
-typedef  int s32 ;
-struct TYPE_2__ {int /*<<< orphan*/  inq_outptr_ext; struct sti_conf_outptr inq_outptr; struct sti_conf_inptr inq_inptr; } ;
+typedef int s32 ;
+struct TYPE_2__ {int inq_outptr_ext; struct sti_conf_outptr inq_outptr; struct sti_conf_inptr inq_inptr; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  STI_PTR (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  default_conf_flags ; 
- int /*<<< orphan*/  memset (struct sti_conf_inptr*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
- int sti_call (struct sti_struct*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,struct sti_conf_inptr*,struct sti_conf_outptr*,int /*<<< orphan*/ ) ; 
+
+ int STI_PTR (int *) ;
+ int default_conf_flags ;
+ int memset (struct sti_conf_inptr*,int ,int) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
+ int sti_call (struct sti_struct*,int ,int *,struct sti_conf_inptr*,struct sti_conf_outptr*,int ) ;
 
 __attribute__((used)) static void sti_inq_conf(struct sti_struct *sti)
 {
-	struct sti_conf_inptr *inptr = &sti->sti_data->inq_inptr;
-	struct sti_conf_outptr *outptr = &sti->sti_data->inq_outptr;
-	unsigned long flags;
-	s32 ret;
+ struct sti_conf_inptr *inptr = &sti->sti_data->inq_inptr;
+ struct sti_conf_outptr *outptr = &sti->sti_data->inq_outptr;
+ unsigned long flags;
+ s32 ret;
 
-	outptr->ext_ptr = STI_PTR(&sti->sti_data->inq_outptr_ext);
-	
-	do {
-		spin_lock_irqsave(&sti->lock, flags);
-		memset(inptr, 0, sizeof(*inptr));
-		ret = sti_call(sti, sti->inq_conf, &default_conf_flags,
-			inptr, outptr, sti->glob_cfg);
-		spin_unlock_irqrestore(&sti->lock, flags);
-	} while (ret == 1);
+ outptr->ext_ptr = STI_PTR(&sti->sti_data->inq_outptr_ext);
+
+ do {
+  spin_lock_irqsave(&sti->lock, flags);
+  memset(inptr, 0, sizeof(*inptr));
+  ret = sti_call(sti, sti->inq_conf, &default_conf_flags,
+   inptr, outptr, sti->glob_cfg);
+  spin_unlock_irqrestore(&sti->lock, flags);
+ } while (ret == 1);
 }

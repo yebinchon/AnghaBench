@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * thumbnail_path_data; } ;
-typedef  TYPE_1__ rgui_t ;
-struct TYPE_4__ {int /*<<< orphan*/ * data; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fs_thumbnail ; 
- int /*<<< orphan*/  mini_left_thumbnail ; 
- int /*<<< orphan*/  mini_thumbnail ; 
- int /*<<< orphan*/  rgui_background_free () ; 
- int /*<<< orphan*/  rgui_framebuffer_free () ; 
- int /*<<< orphan*/  rgui_thumbnail_free (int /*<<< orphan*/ *) ; 
- TYPE_2__ rgui_upscale_buf ; 
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * thumbnail_path_data; } ;
+typedef TYPE_1__ rgui_t ;
+struct TYPE_4__ {int * data; } ;
+
+
+ int free (int *) ;
+ int fs_thumbnail ;
+ int mini_left_thumbnail ;
+ int mini_thumbnail ;
+ int rgui_background_free () ;
+ int rgui_framebuffer_free () ;
+ int rgui_thumbnail_free (int *) ;
+ TYPE_2__ rgui_upscale_buf ;
 
 __attribute__((used)) static void rgui_free(void *data)
 {
@@ -45,6 +45,6 @@ __attribute__((used)) static void rgui_free(void *data)
    if (rgui_upscale_buf.data)
    {
       free(rgui_upscale_buf.data);
-      rgui_upscale_buf.data = NULL;
+      rgui_upscale_buf.data = ((void*)0);
    }
 }

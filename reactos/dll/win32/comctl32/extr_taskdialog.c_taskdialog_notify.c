@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct taskdialog_info {int /*<<< orphan*/  callback_data; int /*<<< orphan*/  hwnd; int /*<<< orphan*/  (* callback ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;} ;
-typedef  int /*<<< orphan*/  WPARAM ;
-typedef  int /*<<< orphan*/  UINT ;
-typedef  int /*<<< orphan*/  LPARAM ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct taskdialog_info {int callback_data; int hwnd; int (* callback ) (int ,int ,int ,int ,int ) ;} ;
+typedef int WPARAM ;
+typedef int UINT ;
+typedef int LPARAM ;
+typedef int HRESULT ;
+
+
+ int S_OK ;
+ int stub1 (int ,int ,int ,int ,int ) ;
 
 __attribute__((used)) static HRESULT taskdialog_notify(struct taskdialog_info *dialog_info, UINT notification, WPARAM wparam, LPARAM lparam)
 {

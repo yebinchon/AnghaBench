@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  item ;
-struct TYPE_3__ {char* pszText; int iItem; int lParam; int /*<<< orphan*/  mask; } ;
-typedef  int /*<<< orphan*/  LPARAM ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  TYPE_1__ COMBOBOXEXITEMA ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CBEIF_LPARAM ; 
- int /*<<< orphan*/  CBEIF_TEXT ; 
- int /*<<< orphan*/  CBEM_GETITEMA ; 
- int /*<<< orphan*/  CBEM_SETITEMA ; 
- int CBS_DROPDOWN ; 
- int /*<<< orphan*/  DestroyWindow (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EDITBOX_SEQ_INDEX ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  NUM_MSG_SEQUENCES ; 
- int /*<<< orphan*/  SendMessageA (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- int WS_BORDER ; 
- int WS_CHILD ; 
- int WS_VISIBLE ; 
- int /*<<< orphan*/  createComboEx (int) ; 
- int /*<<< orphan*/  expect (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  flush_sequences (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ok (int,char*,int) ; 
- int /*<<< orphan*/  ok_sequence (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sequences ; 
- int /*<<< orphan*/  subclass_editbox (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_setitem_edit_seq ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int item ;
+struct TYPE_3__ {char* pszText; int iItem; int lParam; int mask; } ;
+typedef int LPARAM ;
+typedef int HWND ;
+typedef TYPE_1__ COMBOBOXEXITEMA ;
+typedef int BOOL ;
+
+
+ int CBEIF_LPARAM ;
+ int CBEIF_TEXT ;
+ int CBEM_GETITEMA ;
+ int CBEM_SETITEMA ;
+ int CBS_DROPDOWN ;
+ int DestroyWindow (int ) ;
+ int EDITBOX_SEQ_INDEX ;
+ int FALSE ;
+ int NUM_MSG_SEQUENCES ;
+ int SendMessageA (int ,int ,int ,int ) ;
+ int TRUE ;
+ int WS_BORDER ;
+ int WS_CHILD ;
+ int WS_VISIBLE ;
+ int createComboEx (int) ;
+ int expect (int ,int ) ;
+ int flush_sequences (int ,int ) ;
+ int memset (TYPE_1__*,int ,int) ;
+ int ok (int,char*,int) ;
+ int ok_sequence (int ,int ,int ,char*,int ) ;
+ int sequences ;
+ int subclass_editbox (int ) ;
+ int test_setitem_edit_seq ;
 
 __attribute__((used)) static void test_comboex_get_set_item(void)
 {
@@ -65,7 +65,7 @@ __attribute__((used)) static void test_comboex_get_set_item(void)
 
     ok_sequence(sequences, EDITBOX_SEQ_INDEX, test_setitem_edit_seq, "set item data for edit", FALSE);
 
-    /* get/set lParam */
+
     item.mask = CBEIF_LPARAM;
     item.iItem = -1;
     item.lParam = 0xdeadbeef;

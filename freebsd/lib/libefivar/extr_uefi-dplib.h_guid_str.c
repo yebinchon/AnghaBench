@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uuid_t ;
-typedef  int /*<<< orphan*/  int32_t ;
-typedef  int /*<<< orphan*/  buf ;
-typedef  int /*<<< orphan*/  GUID ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  strlcpy (char*,char*,int) ; 
- int /*<<< orphan*/  uuid_to_string (int /*<<< orphan*/  const*,char**,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int uuid_t ;
+typedef int int32_t ;
+typedef int buf ;
+typedef int GUID ;
+
+
+ int free (char*) ;
+ int strlcpy (char*,char*,int) ;
+ int uuid_to_string (int const*,char**,int *) ;
 
 __attribute__((used)) static inline const char *
 guid_str(const GUID *g)
 {
-	static char buf[36 + 1];
-	char *str = NULL;
-	int32_t ignored_status;
+ static char buf[36 + 1];
+ char *str = ((void*)0);
+ int32_t ignored_status;
 
-	uuid_to_string((const uuid_t *)g, &str, &ignored_status);
-	if (str != NULL)
-		strlcpy(buf, str, sizeof(buf));
-	else
-		strlcpy(buf, "groot-cannot-decode-guid-groot-smash",
-		    sizeof(buf)); /* ^^^^^^^ 36 characters ^^^^^^^ */
-	free(str);
-	return buf;
+ uuid_to_string((const uuid_t *)g, &str, &ignored_status);
+ if (str != ((void*)0))
+  strlcpy(buf, str, sizeof(buf));
+ else
+  strlcpy(buf, "groot-cannot-decode-guid-groot-smash",
+      sizeof(buf));
+ free(str);
+ return buf;
 }

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  caddr_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MODINFO_SIZE ; 
- scalar_t__ preload_search_info (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int caddr_t ;
+
+
+ int MODINFO_SIZE ;
+ scalar_t__ preload_search_info (int ,int ) ;
 
 size_t
 preload_fetch_size(caddr_t mod)
 {
-	size_t *mdp;
+ size_t *mdp;
 
-	mdp = (size_t *)preload_search_info(mod, MODINFO_SIZE);
-	if (mdp == NULL)
-		return (0);
-	return (*mdp);
+ mdp = (size_t *)preload_search_info(mod, MODINFO_SIZE);
+ if (mdp == ((void*)0))
+  return (0);
+ return (*mdp);
 }

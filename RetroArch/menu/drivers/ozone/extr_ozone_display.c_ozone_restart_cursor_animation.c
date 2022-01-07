@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int cursor_state; int /*<<< orphan*/  cursor_border; } ;
-struct TYPE_8__ {TYPE_2__* theme; TYPE_1__ theme_dynamic; int /*<<< orphan*/  has_all_assets; } ;
-typedef  TYPE_3__ ozone_handle_t ;
-typedef  uintptr_t menu_animation_ctx_tag ;
-struct TYPE_7__ {int /*<<< orphan*/  cursor_border_1; int /*<<< orphan*/  cursor_border_0; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  menu_animation_kill_by_tag (uintptr_t*) ; 
- int /*<<< orphan*/  ozone_animate_cursor (TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ozone_default_theme ; 
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int cursor_state; int cursor_border; } ;
+struct TYPE_8__ {TYPE_2__* theme; TYPE_1__ theme_dynamic; int has_all_assets; } ;
+typedef TYPE_3__ ozone_handle_t ;
+typedef uintptr_t menu_animation_ctx_tag ;
+struct TYPE_7__ {int cursor_border_1; int cursor_border_0; } ;
+
+
+ int memcpy (int ,int ,int) ;
+ int menu_animation_kill_by_tag (uintptr_t*) ;
+ int ozone_animate_cursor (TYPE_3__*,int ,int ) ;
+ int ozone_default_theme ;
 
 void ozone_restart_cursor_animation(ozone_handle_t *ozone)
 {

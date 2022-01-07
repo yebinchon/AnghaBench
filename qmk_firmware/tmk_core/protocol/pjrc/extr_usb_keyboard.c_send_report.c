@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
-struct TYPE_3__ {int /*<<< orphan*/ * raw; } ;
-typedef  TYPE_1__ report_keyboard_t ;
-typedef  int int8_t ;
 
-/* Variables and functions */
- int RWAL ; 
- scalar_t__ SREG ; 
- scalar_t__ UDFNUML ; 
- int /*<<< orphan*/  UEDATX ; 
- int UEINTX ; 
- scalar_t__ UENUM ; 
- int /*<<< orphan*/  cli () ; 
- int /*<<< orphan*/  usb_configured () ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint8_t ;
+struct TYPE_3__ {int * raw; } ;
+typedef TYPE_1__ report_keyboard_t ;
+typedef int int8_t ;
+
+
+ int RWAL ;
+ scalar_t__ SREG ;
+ scalar_t__ UDFNUML ;
+ int UEDATX ;
+ int UEINTX ;
+ scalar_t__ UENUM ;
+ int cli () ;
+ int usb_configured () ;
 
 __attribute__((used)) static inline int8_t send_report(report_keyboard_t *report, uint8_t endpoint, uint8_t keys_start, uint8_t keys_end) {
     uint8_t intr_state, timeout;
@@ -32,17 +32,17 @@ __attribute__((used)) static inline int8_t send_report(report_keyboard_t *report
     if (!usb_configured()) return -1;
     intr_state = SREG;
     cli();
-    UENUM   = endpoint;
+    UENUM = endpoint;
     timeout = UDFNUML + 50;
     while (1) {
-        // are we ready to transmit?
+
         if (UEINTX & (1 << RWAL)) break;
         SREG = intr_state;
-        // has the USB gone offline?
+
         if (!usb_configured()) return -1;
-        // have we waited too long?
+
         if (UDFNUML == timeout) return -1;
-        // get ready to try checking again
+
         intr_state = SREG;
         cli();
         UENUM = endpoint;
@@ -51,6 +51,6 @@ __attribute__((used)) static inline int8_t send_report(report_keyboard_t *report
         UEDATX = report->raw[i];
     }
     UEINTX = 0x3A;
-    SREG   = intr_state;
+    SREG = intr_state;
     return 0;
 }

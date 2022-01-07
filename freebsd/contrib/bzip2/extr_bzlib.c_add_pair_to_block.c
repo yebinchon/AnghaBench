@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  void* UChar ;
-struct TYPE_3__ {size_t state_in_ch; scalar_t__ state_in_len; size_t nblock; void** block; void** inUse; int /*<<< orphan*/  blockCRC; } ;
-typedef  scalar_t__ Int32 ;
-typedef  TYPE_1__ EState ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BZ_UPDATE_CRC (int /*<<< orphan*/ ,void*) ; 
- void* True ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef void* UChar ;
+struct TYPE_3__ {size_t state_in_ch; scalar_t__ state_in_len; size_t nblock; void** block; void** inUse; int blockCRC; } ;
+typedef scalar_t__ Int32 ;
+typedef TYPE_1__ EState ;
+
+
+ int BZ_UPDATE_CRC (int ,void*) ;
+ void* True ;
 
 __attribute__((used)) static
 void add_pair_to_block ( EState* s )

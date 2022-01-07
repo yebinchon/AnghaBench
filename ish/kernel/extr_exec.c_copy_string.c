@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  dword_t ;
-typedef  int /*<<< orphan*/  addr_t ;
 
-/* Variables and functions */
- scalar_t__ strlen (char const*) ; 
- scalar_t__ user_write_string (int /*<<< orphan*/ ,char const*) ; 
+
+
+
+typedef int dword_t ;
+typedef int addr_t ;
+
+
+ scalar_t__ strlen (char const*) ;
+ scalar_t__ user_write_string (int ,char const*) ;
 
 __attribute__((used)) static inline dword_t copy_string(addr_t sp, const char *string) {
     sp -= strlen(string) + 1;

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int (* get_params ) (int /*<<< orphan*/ *) ;} ;
-typedef  int /*<<< orphan*/  OSSL_PARAM ;
-typedef  TYPE_1__ EVP_KDF ;
 
-/* Variables and functions */
- int stub1 (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int (* get_params ) (int *) ;} ;
+typedef int OSSL_PARAM ;
+typedef TYPE_1__ EVP_KDF ;
+
+
+ int stub1 (int *) ;
 
 int EVP_KDF_get_params(EVP_KDF *kdf, OSSL_PARAM params[])
 {
-    if (kdf->get_params != NULL)
+    if (kdf->get_params != ((void*)0))
         return kdf->get_params(params);
     return 1;
 }

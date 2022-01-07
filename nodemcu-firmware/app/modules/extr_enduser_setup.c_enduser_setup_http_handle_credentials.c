@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  task_param_t ;
-struct TYPE_3__ {int rssi; int /*<<< orphan*/  authmode; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int task_param_t ;
+struct TYPE_3__ {int rssi; int authmode; } ;
 struct station_config {char* ssid; char* password; TYPE_1__ threshold; } ;
 struct TYPE_4__ {scalar_t__ lastStationStatus; scalar_t__ success; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AUTH_OPEN ; 
- int /*<<< orphan*/  ENDUSER_SETUP_DEBUG (char*) ; 
- int LITLEN (char*) ; 
- int /*<<< orphan*/  do_station_cfg_handle ; 
- int enduser_setup_get_lenth_of_param_value (char*) ; 
- int enduser_setup_http_urldecode (char*,char*,int,int) ; 
- struct station_config* luaM_malloc (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  lua_getstate () ; 
- int /*<<< orphan*/  memset (struct station_config*,int /*<<< orphan*/ ,int) ; 
- TYPE_2__* state ; 
- scalar_t__ strlen (char*) ; 
- char* strstr (char*,char*) ; 
- int /*<<< orphan*/  task_post_medium (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int AUTH_OPEN ;
+ int ENDUSER_SETUP_DEBUG (char*) ;
+ int LITLEN (char*) ;
+ int do_station_cfg_handle ;
+ int enduser_setup_get_lenth_of_param_value (char*) ;
+ int enduser_setup_http_urldecode (char*,char*,int,int) ;
+ struct station_config* luaM_malloc (int ,int) ;
+ int lua_getstate () ;
+ int memset (struct station_config*,int ,int) ;
+ TYPE_2__* state ;
+ scalar_t__ strlen (char*) ;
+ char* strstr (char*,char*) ;
+ int task_post_medium (int ,int ) ;
 
 __attribute__((used)) static int enduser_setup_http_handle_credentials(char *data, unsigned short data_len)
 {
@@ -41,7 +41,7 @@ __attribute__((used)) static int enduser_setup_http_handle_credentials(char *dat
 
   char *name_str = strstr(data, "wifi_ssid=");
   char *pwd_str = strstr(data, "wifi_password=");
-  if (name_str == NULL || pwd_str == NULL)
+  if (name_str == ((void*)0) || pwd_str == ((void*)0))
   {
     ENDUSER_SETUP_DEBUG("Password or SSID string not found");
     return 1;
@@ -62,7 +62,7 @@ __attribute__((used)) static int enduser_setup_http_handle_credentials(char *dat
   cnf->threshold.authmode = AUTH_OPEN;
 
   int err;
-  err  = enduser_setup_http_urldecode(cnf->ssid, name_str_start, name_str_len, sizeof(cnf->ssid));
+  err = enduser_setup_http_urldecode(cnf->ssid, name_str_start, name_str_len, sizeof(cnf->ssid));
   err |= enduser_setup_http_urldecode(cnf->password, pwd_str_start, pwd_str_len, sizeof(cnf->password));
   if (err != 0 || strlen(cnf->ssid) == 0)
   {

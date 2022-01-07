@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
-struct TYPE_2__ {int /*<<< orphan*/ * isr_table_vc; } ;
-struct dsi_data {int /*<<< orphan*/  irq_lock; TYPE_1__ isr_tables; } ;
-typedef  int /*<<< orphan*/  omap_dsi_isr_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAY_SIZE (int /*<<< orphan*/ ) ; 
- int _dsi_unregister_isr (int /*<<< orphan*/ ,void*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  _omap_dsi_set_irqs_vc (struct dsi_data*,int) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u32 ;
+struct TYPE_2__ {int * isr_table_vc; } ;
+struct dsi_data {int irq_lock; TYPE_1__ isr_tables; } ;
+typedef int omap_dsi_isr_t ;
+
+
+ int ARRAY_SIZE (int ) ;
+ int _dsi_unregister_isr (int ,void*,int ,int ,int ) ;
+ int _omap_dsi_set_irqs_vc (struct dsi_data*,int) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
 
 __attribute__((used)) static int dsi_unregister_isr_vc(struct dsi_data *dsi, int channel,
-				 omap_dsi_isr_t isr, void *arg, u32 mask)
+     omap_dsi_isr_t isr, void *arg, u32 mask)
 {
-	unsigned long flags;
-	int r;
+ unsigned long flags;
+ int r;
 
-	spin_lock_irqsave(&dsi->irq_lock, flags);
+ spin_lock_irqsave(&dsi->irq_lock, flags);
 
-	r = _dsi_unregister_isr(isr, arg, mask,
-			dsi->isr_tables.isr_table_vc[channel],
-			ARRAY_SIZE(dsi->isr_tables.isr_table_vc[channel]));
+ r = _dsi_unregister_isr(isr, arg, mask,
+   dsi->isr_tables.isr_table_vc[channel],
+   ARRAY_SIZE(dsi->isr_tables.isr_table_vc[channel]));
 
-	if (r == 0)
-		_omap_dsi_set_irqs_vc(dsi, channel);
+ if (r == 0)
+  _omap_dsi_set_irqs_vc(dsi, channel);
 
-	spin_unlock_irqrestore(&dsi->irq_lock, flags);
+ spin_unlock_irqrestore(&dsi->irq_lock, flags);
 
-	return r;
+ return r;
 }

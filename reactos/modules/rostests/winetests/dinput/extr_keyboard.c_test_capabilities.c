@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  caps ;
-struct TYPE_3__ {int dwSize; int dwFlags; int /*<<< orphan*/  dwDevType; } ;
-typedef  int /*<<< orphan*/  IDirectInputDeviceA ;
-typedef  int /*<<< orphan*/  IDirectInputA ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  TYPE_1__ DIDEVCAPS ;
 
-/* Variables and functions */
- int DIDC_ATTACHED ; 
- int DIDEVTYPEKEYBOARD_JAPAN106 ; 
- int DIDEVTYPEKEYBOARD_PCENH ; 
- int DIDEVTYPEKEYBOARD_UNKNOWN ; 
- scalar_t__ DIDEVTYPE_KEYBOARD ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int GET_DIDEVICE_SUBTYPE (int /*<<< orphan*/ ) ; 
- scalar_t__ GET_DIDEVICE_TYPE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GUID_SysKeyboard ; 
- int GetKeyboardType (int) ; 
- int /*<<< orphan*/  IDirectInputDevice_GetCapabilities (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  IDirectInput_CreateDevice (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IUnknown_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ok (int,char*,int,...) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int caps ;
+struct TYPE_3__ {int dwSize; int dwFlags; int dwDevType; } ;
+typedef int IDirectInputDeviceA ;
+typedef int IDirectInputA ;
+typedef int HWND ;
+typedef int HRESULT ;
+typedef TYPE_1__ DIDEVCAPS ;
+
+
+ int DIDC_ATTACHED ;
+ int DIDEVTYPEKEYBOARD_JAPAN106 ;
+ int DIDEVTYPEKEYBOARD_PCENH ;
+ int DIDEVTYPEKEYBOARD_UNKNOWN ;
+ scalar_t__ DIDEVTYPE_KEYBOARD ;
+ scalar_t__ FAILED (int ) ;
+ int GET_DIDEVICE_SUBTYPE (int ) ;
+ scalar_t__ GET_DIDEVICE_TYPE (int ) ;
+ int GUID_SysKeyboard ;
+ int GetKeyboardType (int) ;
+ int IDirectInputDevice_GetCapabilities (int *,TYPE_1__*) ;
+ int IDirectInput_CreateDevice (int *,int *,int **,int *) ;
+ int IUnknown_Release (int *) ;
+ int SUCCEEDED (int ) ;
+ int ok (int,char*,int,...) ;
 
 __attribute__((used)) static void test_capabilities(IDirectInputA *pDI, HWND hwnd)
 {
     HRESULT hr;
-    IDirectInputDeviceA *pKeyboard = NULL;
+    IDirectInputDeviceA *pKeyboard = ((void*)0);
     DIDEVCAPS caps;
     int kbd_type, kbd_subtype, dev_subtype;
 
-    hr = IDirectInput_CreateDevice(pDI, &GUID_SysKeyboard, &pKeyboard, NULL);
+    hr = IDirectInput_CreateDevice(pDI, &GUID_SysKeyboard, &pKeyboard, ((void*)0));
     ok(SUCCEEDED(hr), "IDirectInput_CreateDevice() failed: %08x\n", hr);
     if (FAILED(hr)) return;
 

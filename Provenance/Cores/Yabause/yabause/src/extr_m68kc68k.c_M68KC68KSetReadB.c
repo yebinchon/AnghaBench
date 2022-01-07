@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  M68K_READ ;
 
-/* Variables and functions */
- int /*<<< orphan*/  C68K ; 
- int /*<<< orphan*/  C68k_Set_ReadB (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int M68K_READ ;
+
+
+ int C68K ;
+ int C68k_Set_ReadB (int *,int *) ;
 
 __attribute__((used)) static void M68KC68KSetReadB(M68K_READ *Func) {
-	C68k_Set_ReadB(&C68K, Func);
+ C68k_Set_ReadB(&C68K, Func);
 }

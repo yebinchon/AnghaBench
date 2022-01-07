@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {TYPE_2__* backend_ctx; } ;
-typedef  TYPE_1__ hashcat_ctx_t ;
-typedef  int /*<<< orphan*/  cl_uint ;
-typedef  int /*<<< orphan*/  cl_mem ;
-typedef  int /*<<< orphan*/  cl_map_flags ;
-typedef  scalar_t__ cl_int ;
-typedef  int /*<<< orphan*/  cl_event ;
-typedef  int /*<<< orphan*/  cl_command_queue ;
-typedef  int /*<<< orphan*/  cl_bool ;
+typedef TYPE_1__ hashcat_ctx_t ;
+typedef int cl_uint ;
+typedef int cl_mem ;
+typedef int cl_map_flags ;
+typedef scalar_t__ cl_int ;
+typedef int cl_event ;
+typedef int cl_command_queue ;
+typedef int cl_bool ;
 struct TYPE_7__ {scalar_t__ ocl; } ;
-typedef  TYPE_2__ backend_ctx_t ;
-struct TYPE_8__ {void* (* clEnqueueMapBuffer ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,size_t,size_t,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,scalar_t__*) ;} ;
-typedef  TYPE_3__ OCL_PTR ;
+typedef TYPE_2__ backend_ctx_t ;
+struct TYPE_8__ {void* (* clEnqueueMapBuffer ) (int ,int ,int ,int ,size_t,size_t,int ,int const*,int *,scalar_t__*) ;} ;
+typedef TYPE_3__ OCL_PTR ;
 
-/* Variables and functions */
- scalar_t__ CL_SUCCESS ; 
- int /*<<< orphan*/  event_log_error (TYPE_1__*,char*,int /*<<< orphan*/ ) ; 
- void* stub1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,size_t,size_t,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,scalar_t__*) ; 
- int /*<<< orphan*/  val2cstr_cl (scalar_t__) ; 
+
+ scalar_t__ CL_SUCCESS ;
+ int event_log_error (TYPE_1__*,char*,int ) ;
+ void* stub1 (int ,int ,int ,int ,size_t,size_t,int ,int const*,int *,scalar_t__*) ;
+ int val2cstr_cl (scalar_t__) ;
 
 int hc_clEnqueueMapBuffer (hashcat_ctx_t *hashcat_ctx, cl_command_queue command_queue, cl_mem buffer, cl_bool blocking_map, cl_map_flags map_flags, size_t offset, size_t size, cl_uint num_events_in_wait_list, const cl_event *event_wait_list, cl_event *event, void **buf)
 {

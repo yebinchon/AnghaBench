@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct device {TYPE_1__* p; } ;
-struct TYPE_2__ {int /*<<< orphan*/  deferred_probe; } ;
+struct TYPE_2__ {int deferred_probe; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  deferred_probe_mutex ; 
- int /*<<< orphan*/  dev_dbg (struct device*,char*) ; 
- int /*<<< orphan*/  list_del_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  list_empty (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
+
+ int deferred_probe_mutex ;
+ int dev_dbg (struct device*,char*) ;
+ int list_del_init (int *) ;
+ int list_empty (int *) ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
 
 void driver_deferred_probe_del(struct device *dev)
 {
-	mutex_lock(&deferred_probe_mutex);
-	if (!list_empty(&dev->p->deferred_probe)) {
-		dev_dbg(dev, "Removed from deferred list\n");
-		list_del_init(&dev->p->deferred_probe);
-	}
-	mutex_unlock(&deferred_probe_mutex);
+ mutex_lock(&deferred_probe_mutex);
+ if (!list_empty(&dev->p->deferred_probe)) {
+  dev_dbg(dev, "Removed from deferred list\n");
+  list_del_init(&dev->p->deferred_probe);
+ }
+ mutex_unlock(&deferred_probe_mutex);
 }

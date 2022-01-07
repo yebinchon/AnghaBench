@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
 struct TYPE_13__ {TYPE_2__* sys; } ;
-typedef  TYPE_1__ vout_display_t ;
-struct TYPE_14__ {int drm_fd; scalar_t__ crtc; int /*<<< orphan*/  drm_fourcc; int /*<<< orphan*/  vlc_fourcc; } ;
-typedef  TYPE_2__ vout_display_sys_t ;
-typedef  int /*<<< orphan*/  uint64_t ;
-struct TYPE_15__ {int count_connectors; int /*<<< orphan*/ * connectors; } ;
-typedef  TYPE_3__ drmModeRes ;
-typedef  int /*<<< orphan*/  drmModeConnector ;
+typedef TYPE_1__ vout_display_t ;
+struct TYPE_14__ {int drm_fd; scalar_t__ crtc; int drm_fourcc; int vlc_fourcc; } ;
+typedef TYPE_2__ vout_display_sys_t ;
+typedef int uint64_t ;
+struct TYPE_15__ {int count_connectors; int * connectors; } ;
+typedef TYPE_3__ drmModeRes ;
+typedef int drmModeConnector ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ChromaNegotiation (TYPE_1__*) ; 
- int /*<<< orphan*/  DRM_CAP_DUMB_BUFFER ; 
- int /*<<< orphan*/  DRM_CLIENT_CAP_UNIVERSAL_PLANES ; 
- int /*<<< orphan*/  KMS_VAR ; 
- int /*<<< orphan*/  O_RDWR ; 
- int SetupDevice (TYPE_1__*,TYPE_3__*,int /*<<< orphan*/ *) ; 
- int VLC_EGENERIC ; 
- int VLC_SUCCESS ; 
- int /*<<< orphan*/  drmDropMaster (int) ; 
- int drmGetCap (int,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  drmModeFreeConnector (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  drmModeFreeResources (TYPE_3__*) ; 
- int /*<<< orphan*/ * drmModeGetConnector (int,int /*<<< orphan*/ ) ; 
- TYPE_3__* drmModeGetResources (int) ; 
- int /*<<< orphan*/  drmSetClientCap (int,int /*<<< orphan*/ ,int) ; 
- int drvSuccess ; 
- int drvTryNext ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  msg_Dbg (TYPE_1__*,char*,char*,char*) ; 
- int /*<<< orphan*/  msg_Err (TYPE_1__*,char*,...) ; 
- char* var_InheritString (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vlc_close (int) ; 
- int vlc_open (char*,int /*<<< orphan*/ ) ; 
+
+ int ChromaNegotiation (TYPE_1__*) ;
+ int DRM_CAP_DUMB_BUFFER ;
+ int DRM_CLIENT_CAP_UNIVERSAL_PLANES ;
+ int KMS_VAR ;
+ int O_RDWR ;
+ int SetupDevice (TYPE_1__*,TYPE_3__*,int *) ;
+ int VLC_EGENERIC ;
+ int VLC_SUCCESS ;
+ int drmDropMaster (int) ;
+ int drmGetCap (int,int ,int *) ;
+ int drmModeFreeConnector (int *) ;
+ int drmModeFreeResources (TYPE_3__*) ;
+ int * drmModeGetConnector (int,int ) ;
+ TYPE_3__* drmModeGetResources (int) ;
+ int drmSetClientCap (int,int ,int) ;
+ int drvSuccess ;
+ int drvTryNext ;
+ int free (char*) ;
+ int msg_Dbg (TYPE_1__*,char*,char*,char*) ;
+ int msg_Err (TYPE_1__*,char*,...) ;
+ char* var_InheritString (TYPE_1__*,int ) ;
+ int vlc_close (int) ;
+ int vlc_open (char*,int ) ;
 
 __attribute__((used)) static int OpenDisplay(vout_display_t *vd)
 {
@@ -56,13 +56,13 @@ __attribute__((used)) static int OpenDisplay(vout_display_t *vd)
     drmModeConnector *conn;
     drmModeRes *modeRes;
     int c;
-    bool found_connector = false;
+    bool found_connector = 0;
 
-    /*
-     * Open framebuffer device
-     */
+
+
+
     psz_device = var_InheritString(vd, KMS_VAR);
-    if (psz_device == NULL) {
+    if (psz_device == ((void*)0)) {
         msg_Err(vd, "Don't know which DRM device to open");
         return VLC_EGENERIC;
     }
@@ -90,7 +90,7 @@ __attribute__((used)) static int OpenDisplay(vout_display_t *vd)
     }
 
     modeRes = drmModeGetResources(sys->drm_fd);
-    if (modeRes == NULL) {
+    if (modeRes == ((void*)0)) {
         msg_Err(vd, "Didn't get DRM resources");
         goto err_out;
     }
@@ -98,10 +98,10 @@ __attribute__((used)) static int OpenDisplay(vout_display_t *vd)
     for (c = 0; c < modeRes->count_connectors && sys->crtc == 0; c++) {
 
         conn = drmModeGetConnector(sys->drm_fd, modeRes->connectors[c]);
-        if (conn == NULL)
+        if (conn == ((void*)0))
             continue;
 
-        found_connector = true;
+        found_connector = 1;
 
         ret = SetupDevice(vd, modeRes, conn);
         if (ret != drvSuccess) {
@@ -114,7 +114,7 @@ __attribute__((used)) static int OpenDisplay(vout_display_t *vd)
                 goto err_out;
             }
             drmModeFreeConnector(conn);
-            found_connector = false;
+            found_connector = 0;
             continue;
         }
         drmModeFreeConnector(conn);

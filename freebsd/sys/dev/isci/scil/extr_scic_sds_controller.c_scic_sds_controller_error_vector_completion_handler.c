@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int U32 ;
-typedef  int /*<<< orphan*/ * SCI_CONTROLLER_HANDLE_T ;
-typedef  int /*<<< orphan*/  SCIC_SDS_CONTROLLER_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SCIC_LOG_ERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SCIC_LOG_OBJECT_CONTROLLER ; 
- int /*<<< orphan*/  SCIC_LOG_TRACE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SCI_BASE_CONTROLLER_STATE_FAILED ; 
- int /*<<< orphan*/  SMU_IMR_WRITE (int /*<<< orphan*/ *,int) ; 
- int SMU_ISR_QUEUE_SUSPEND ; 
- int SMU_ISR_READ (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SMU_ISR_WRITE (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  sci_base_object_get_logger (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sci_base_state_machine_change_state (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ scic_sds_controller_completion_queue_has_entries (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  scic_sds_controller_get_base_state_machine (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  scic_sds_controller_process_completions (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int U32 ;
+typedef int * SCI_CONTROLLER_HANDLE_T ;
+typedef int SCIC_SDS_CONTROLLER_T ;
+
+
+ int SCIC_LOG_ERROR (int ) ;
+ int SCIC_LOG_OBJECT_CONTROLLER ;
+ int SCIC_LOG_TRACE (int ) ;
+ int SCI_BASE_CONTROLLER_STATE_FAILED ;
+ int SMU_IMR_WRITE (int *,int) ;
+ int SMU_ISR_QUEUE_SUSPEND ;
+ int SMU_ISR_READ (int *) ;
+ int SMU_ISR_WRITE (int *,int) ;
+ int sci_base_object_get_logger (int *) ;
+ int sci_base_state_machine_change_state (int ,int ) ;
+ scalar_t__ scic_sds_controller_completion_queue_has_entries (int *) ;
+ int scic_sds_controller_get_base_state_machine (int *) ;
+ int scic_sds_controller_process_completions (int *) ;
 
 __attribute__((used)) static
 void scic_sds_controller_error_vector_completion_handler(
@@ -73,7 +73,7 @@ void scic_sds_controller_error_vector_completion_handler(
       return;
    }
 
-   // If we dont process any completions I am not sure that we want to do this.
-   // We are in the middle of a hardware fault and should probably be reset.
+
+
    SMU_IMR_WRITE(this_controller, 0x00000000);
 }

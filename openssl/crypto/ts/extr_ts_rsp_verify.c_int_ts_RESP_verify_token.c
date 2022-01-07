@@ -1,64 +1,64 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  X509_ALGOR ;
-typedef  int /*<<< orphan*/  X509 ;
-struct TYPE_11__ {int /*<<< orphan*/ * tsa; } ;
-struct TYPE_10__ {int flags; unsigned char* imprint; unsigned int imprint_len; int /*<<< orphan*/ * tsa_name; int /*<<< orphan*/  nonce; int /*<<< orphan*/  data; int /*<<< orphan*/ * md_alg; int /*<<< orphan*/  policy; int /*<<< orphan*/  store; int /*<<< orphan*/  certs; } ;
-typedef  TYPE_1__ TS_VERIFY_CTX ;
-typedef  TYPE_2__ TS_TST_INFO ;
-typedef  int /*<<< orphan*/  PKCS7 ;
-typedef  int /*<<< orphan*/  GENERAL_NAME ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OPENSSL_free (unsigned char*) ; 
- int /*<<< orphan*/  TS_F_INT_TS_RESP_VERIFY_TOKEN ; 
- int /*<<< orphan*/  TS_RESP_verify_signature (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  TS_R_TSA_NAME_MISMATCH ; 
- int /*<<< orphan*/  TS_R_TSA_UNTRUSTED ; 
- int /*<<< orphan*/  TS_R_UNSUPPORTED_VERSION ; 
- int TS_TST_INFO_get_version (TYPE_2__*) ; 
- int TS_VFY_DATA ; 
- int TS_VFY_IMPRINT ; 
- int TS_VFY_NONCE ; 
- int TS_VFY_POLICY ; 
- int TS_VFY_SIGNATURE ; 
- int TS_VFY_SIGNER ; 
- int TS_VFY_TSA_NAME ; 
- int TS_VFY_VERSION ; 
- int /*<<< orphan*/  TSerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  X509_ALGOR_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  X509_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ts_check_imprints (int /*<<< orphan*/ *,unsigned char*,unsigned int,TYPE_2__*) ; 
- int /*<<< orphan*/  ts_check_nonces (int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  ts_check_policy (int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  ts_check_signer_name (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ts_compute_imprint (int /*<<< orphan*/ ,TYPE_2__*,int /*<<< orphan*/ **,unsigned char**,unsigned int*) ; 
+
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int X509_ALGOR ;
+typedef int X509 ;
+struct TYPE_11__ {int * tsa; } ;
+struct TYPE_10__ {int flags; unsigned char* imprint; unsigned int imprint_len; int * tsa_name; int nonce; int data; int * md_alg; int policy; int store; int certs; } ;
+typedef TYPE_1__ TS_VERIFY_CTX ;
+typedef TYPE_2__ TS_TST_INFO ;
+typedef int PKCS7 ;
+typedef int GENERAL_NAME ;
+
+
+ int OPENSSL_free (unsigned char*) ;
+ int TS_F_INT_TS_RESP_VERIFY_TOKEN ;
+ int TS_RESP_verify_signature (int *,int ,int ,int **) ;
+ int TS_R_TSA_NAME_MISMATCH ;
+ int TS_R_TSA_UNTRUSTED ;
+ int TS_R_UNSUPPORTED_VERSION ;
+ int TS_TST_INFO_get_version (TYPE_2__*) ;
+ int TS_VFY_DATA ;
+ int TS_VFY_IMPRINT ;
+ int TS_VFY_NONCE ;
+ int TS_VFY_POLICY ;
+ int TS_VFY_SIGNATURE ;
+ int TS_VFY_SIGNER ;
+ int TS_VFY_TSA_NAME ;
+ int TS_VFY_VERSION ;
+ int TSerr (int ,int ) ;
+ int X509_ALGOR_free (int *) ;
+ int X509_free (int *) ;
+ int ts_check_imprints (int *,unsigned char*,unsigned int,TYPE_2__*) ;
+ int ts_check_nonces (int ,TYPE_2__*) ;
+ int ts_check_policy (int ,TYPE_2__*) ;
+ int ts_check_signer_name (int *,int *) ;
+ int ts_compute_imprint (int ,TYPE_2__*,int **,unsigned char**,unsigned int*) ;
 
 __attribute__((used)) static int int_ts_RESP_verify_token(TS_VERIFY_CTX *ctx,
                                     PKCS7 *token, TS_TST_INFO *tst_info)
 {
-    X509 *signer = NULL;
+    X509 *signer = ((void*)0);
     GENERAL_NAME *tsa_name = tst_info->tsa;
-    X509_ALGOR *md_alg = NULL;
-    unsigned char *imprint = NULL;
+    X509_ALGOR *md_alg = ((void*)0);
+    unsigned char *imprint = ((void*)0);
     unsigned imprint_len = 0;
     int ret = 0;
     int flags = ctx->flags;
 
-    /* Some options require us to also check the signature */
-    if (((flags & TS_VFY_SIGNER) && tsa_name != NULL)
+
+    if (((flags & TS_VFY_SIGNER) && tsa_name != ((void*)0))
             || (flags & TS_VFY_TSA_NAME)) {
         flags |= TS_VFY_SIGNATURE;
     }

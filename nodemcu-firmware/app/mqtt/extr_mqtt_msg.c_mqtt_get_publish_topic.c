@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint16_t ;
 
-/* Variables and functions */
+
+
+
+typedef int uint8_t ;
+typedef int uint16_t ;
+
+
 
 const char* mqtt_get_publish_topic(uint8_t* buffer, uint16_t* buffer_length)
 {
@@ -33,12 +33,12 @@ const char* mqtt_get_publish_topic(uint8_t* buffer, uint16_t* buffer_length)
   totlen += i;
 
   if(i + 2 > *buffer_length)
-    return NULL;
+    return ((void*)0);
   topiclen = buffer[i++] << 8;
   topiclen |= buffer[i++];
 
   if(i + topiclen > *buffer_length)
-    return NULL;
+    return ((void*)0);
 
   *buffer_length = topiclen;
   return (const char*)(buffer + i);

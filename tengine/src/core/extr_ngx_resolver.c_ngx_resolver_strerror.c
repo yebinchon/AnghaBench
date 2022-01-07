@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int ngx_int_t ;
 
-/* Variables and functions */
- int NGX_RESOLVE_TIMEDOUT ; 
+
+
+
+typedef int ngx_int_t ;
+
+
+ int NGX_RESOLVE_TIMEDOUT ;
 
 char *
 ngx_resolver_strerror(ngx_int_t err)
 {
     static char *errors[] = {
-        "Format error",     /* FORMERR */
-        "Server failure",   /* SERVFAIL */
-        "Host not found",   /* NXDOMAIN */
-        "Unimplemented",    /* NOTIMP */
-        "Operation refused" /* REFUSED */
+        "Format error",
+        "Server failure",
+        "Host not found",
+        "Unimplemented",
+        "Operation refused"
     };
 
     if (err > 0 && err < 6) {

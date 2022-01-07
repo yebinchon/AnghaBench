@@ -1,43 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_value ;
-typedef  int /*<<< orphan*/  sqlite3_context ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  sqlite3_result_double (int /*<<< orphan*/ *,double) ; 
- int /*<<< orphan*/  sqlite3_result_error (int /*<<< orphan*/ *,char*,int) ; 
- scalar_t__ sqlite3_value_blob (int /*<<< orphan*/ *) ; 
- int sqlite3_value_bytes (int /*<<< orphan*/ *) ; 
- double sqlite3_value_double (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int sqlite3_value ;
+typedef int sqlite3_context ;
+
+
+ int assert (int) ;
+ int sqlite3_result_double (int *,double) ;
+ int sqlite3_result_error (int *,char*,int) ;
+ scalar_t__ sqlite3_value_blob (int *) ;
+ int sqlite3_value_bytes (int *) ;
+ double sqlite3_value_double (int *) ;
 
 __attribute__((used)) static void rankfunc(sqlite3_context *pCtx, int nVal, sqlite3_value **apVal){
-  int *aMatchinfo;                /* Return value of matchinfo() */
-  int nMatchinfo;                 /* Number of elements in aMatchinfo[] */
-  int nCol = 0;                   /* Number of columns in the table */
-  int nPhrase = 0;                /* Number of phrases in the query */
-  int iPhrase;                    /* Current phrase */
-  double score = 0.0;             /* Value to return */
+  int *aMatchinfo;
+  int nMatchinfo;
+  int nCol = 0;
+  int nPhrase = 0;
+  int iPhrase;
+  double score = 0.0;
 
   assert( sizeof(int)==4 );
-
-  /* Check that the number of arguments passed to this function is correct.
-  ** If not, jump to wrong_number_args. Set aMatchinfo to point to the array
-  ** of unsigned integer values returned by FTS function matchinfo. Set
-  ** nPhrase to contain the number of reportable phrases in the users full-text
-  ** query, and nCol to the number of columns in the table. Then check that the
-  ** size of the matchinfo blob is as expected. Return an error if it is not.
-  */
   if( nVal<1 ) goto wrong_number_args;
   aMatchinfo = (int*)sqlite3_value_blob(apVal[0]);
   nMatchinfo = sqlite3_value_bytes(apVal[0]) / sizeof(int);
@@ -52,19 +44,9 @@ __attribute__((used)) static void rankfunc(sqlite3_context *pCtx, int nVal, sqli
   }
   if( nVal!=(1+nCol) ) goto wrong_number_args;
 
-  /* Iterate through each phrase in the users query. */
-  for(iPhrase=0; iPhrase<nPhrase; iPhrase++){
-    int iCol;                     /* Current column */
 
-    /* Now iterate through each column in the users query. For each column,
-    ** increment the relevancy score by:
-    **
-    **   (<hit count> / <global hit count>) * <column weight>
-    **
-    ** aPhraseinfo[] points to the start of the data for phrase iPhrase. So
-    ** the hit count and global hit counts for each column are found in 
-    ** aPhraseinfo[iCol*3] and aPhraseinfo[iCol*3+1], respectively.
-    */
+  for(iPhrase=0; iPhrase<nPhrase; iPhrase++){
+    int iCol;
     int *aPhraseinfo = &aMatchinfo[2 + iPhrase*nCol*3];
     for(iCol=0; iCol<nCol; iCol++){
       int nHitCount = aPhraseinfo[3*iCol];
@@ -79,7 +61,7 @@ __attribute__((used)) static void rankfunc(sqlite3_context *pCtx, int nVal, sqli
   sqlite3_result_double(pCtx, score);
   return;
 
-  /* Jump here if the wrong number of arguments are passed to this function */
+
 wrong_number_args:
   sqlite3_result_error(pCtx, "wrong number of arguments to function rank()", -1);
 }

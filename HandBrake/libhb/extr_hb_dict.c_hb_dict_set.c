@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  hb_value_t ;
-typedef  int /*<<< orphan*/  hb_dict_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  json_object_set_new (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int hb_value_t ;
+typedef int hb_dict_t ;
+
+
+ int json_object_set_new (int *,char const*,int *) ;
 
 void hb_dict_set(hb_dict_t * dict, const char *key, hb_value_t *value)
 {

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
-typedef  size_t ptrdiff_t ;
-struct TYPE_9__ {int (* get_model_sym ) (TYPE_2__*,int /*<<< orphan*/ *) ;} ;
-struct TYPE_8__ {int /*<<< orphan*/ ** sec_models; } ;
-typedef  TYPE_1__ PixContext ;
-typedef  TYPE_2__ ArithCoder ;
 
-/* Variables and functions */
- size_t LEFT ; 
- size_t TOP ; 
- size_t TOP_LEFT ; 
- size_t TOP_RIGHT ; 
- int decode_pixel (TYPE_2__*,TYPE_1__*,scalar_t__*,int,int) ; 
- int /*<<< orphan*/  memset (scalar_t__*,scalar_t__,int) ; 
- int stub1 (TYPE_2__*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint8_t ;
+typedef size_t ptrdiff_t ;
+struct TYPE_9__ {int (* get_model_sym ) (TYPE_2__*,int *) ;} ;
+struct TYPE_8__ {int ** sec_models; } ;
+typedef TYPE_1__ PixContext ;
+typedef TYPE_2__ ArithCoder ;
+
+
+ size_t LEFT ;
+ size_t TOP ;
+ size_t TOP_LEFT ;
+ size_t TOP_RIGHT ;
+ int decode_pixel (TYPE_2__*,TYPE_1__*,scalar_t__*,int,int) ;
+ int memset (scalar_t__*,scalar_t__,int) ;
+ int stub1 (TYPE_2__*,int *) ;
 
 __attribute__((used)) static int decode_pixel_in_context(ArithCoder *acoder, PixContext *pctx,
                                    uint8_t *src, ptrdiff_t stride, int x, int y,
@@ -47,7 +47,7 @@ __attribute__((used)) static int decode_pixel_in_context(ArithCoder *acoder, Pix
             neighbours[TOP_LEFT] = neighbours[LEFT] = neighbours[TOP];
         } else {
             neighbours[TOP_LEFT] = src[-stride - 1];
-            neighbours[    LEFT] = src[-1];
+            neighbours[ LEFT] = src[-1];
         }
         if (has_right)
             neighbours[TOP_RIGHT] = src[-stride + 1];
@@ -57,7 +57,7 @@ __attribute__((used)) static int decode_pixel_in_context(ArithCoder *acoder, Pix
 
     sub = 0;
     if (x >= 2 && src[-2] == neighbours[LEFT])
-        sub  = 1;
+        sub = 1;
     if (y >= 2 && src[-2 * stride] == neighbours[TOP])
         sub |= 2;
 

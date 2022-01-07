@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_vtab_cursor ;
-struct TYPE_7__ {int ePlan; int /*<<< orphan*/  pStmt; int /*<<< orphan*/  pExpr; int /*<<< orphan*/  iLastRowid; } ;
-typedef  TYPE_1__ Fts5Cursor ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CsrFlagSet (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CsrFlagTest (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FTS5CSR_EOF ; 
- int FTS5_PLAN_MATCH ; 
-#define  FTS5_PLAN_SORTED_MATCH 129 
- int FTS5_PLAN_SOURCE ; 
-#define  FTS5_PLAN_SPECIAL 128 
- int SQLITE_OK ; 
- int SQLITE_ROW ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  fts5CsrNewrow (TYPE_1__*) ; 
- int fts5CursorReseek (TYPE_1__*,int*) ; 
- int fts5SorterNext (TYPE_1__*) ; 
- int /*<<< orphan*/  sqlite3Fts5ExprEof (int /*<<< orphan*/ ) ; 
- int sqlite3Fts5ExprNext (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int sqlite3_reset (int /*<<< orphan*/ ) ; 
- int sqlite3_step (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int sqlite3_vtab_cursor ;
+struct TYPE_7__ {int ePlan; int pStmt; int pExpr; int iLastRowid; } ;
+typedef TYPE_1__ Fts5Cursor ;
+
+
+ int CsrFlagSet (TYPE_1__*,int ) ;
+ int CsrFlagTest (TYPE_1__*,int ) ;
+ int FTS5CSR_EOF ;
+ int FTS5_PLAN_MATCH ;
+
+ int FTS5_PLAN_SOURCE ;
+
+ int SQLITE_OK ;
+ int SQLITE_ROW ;
+ int assert (int) ;
+ int fts5CsrNewrow (TYPE_1__*) ;
+ int fts5CursorReseek (TYPE_1__*,int*) ;
+ int fts5SorterNext (TYPE_1__*) ;
+ int sqlite3Fts5ExprEof (int ) ;
+ int sqlite3Fts5ExprNext (int ,int ) ;
+ int sqlite3_reset (int ) ;
+ int sqlite3_step (int ) ;
 
 __attribute__((used)) static int fts5NextMethod(sqlite3_vtab_cursor *pCursor){
   Fts5Cursor *pCsr = (Fts5Cursor*)pCursor;
   int rc;
 
   assert( (pCsr->ePlan<3)==
-          (pCsr->ePlan==FTS5_PLAN_MATCH || pCsr->ePlan==FTS5_PLAN_SOURCE) 
+          (pCsr->ePlan==FTS5_PLAN_MATCH || pCsr->ePlan==FTS5_PLAN_SOURCE)
   );
   assert( !CsrFlagTest(pCsr, FTS5CSR_EOF) );
 
@@ -51,17 +51,17 @@ __attribute__((used)) static int fts5NextMethod(sqlite3_vtab_cursor *pCursor){
     fts5CsrNewrow(pCsr);
   }else{
     switch( pCsr->ePlan ){
-      case FTS5_PLAN_SPECIAL: {
+      case 128: {
         CsrFlagSet(pCsr, FTS5CSR_EOF);
         rc = SQLITE_OK;
         break;
       }
-  
-      case FTS5_PLAN_SORTED_MATCH: {
+
+      case 129: {
         rc = fts5SorterNext(pCsr);
         break;
       }
-  
+
       default:
         rc = sqlite3_step(pCsr->pStmt);
         if( rc!=SQLITE_ROW ){
@@ -73,6 +73,6 @@ __attribute__((used)) static int fts5NextMethod(sqlite3_vtab_cursor *pCursor){
         break;
     }
   }
-  
+
   return rc;
 }

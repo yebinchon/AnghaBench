@@ -1,64 +1,64 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct net_device {int dummy; } ;
-struct mtk_mac {int /*<<< orphan*/  phylink; struct mtk_eth* hw; } ;
-struct mtk_eth {TYPE_1__* soc; int /*<<< orphan*/  rx_napi; int /*<<< orphan*/  tx_napi; int /*<<< orphan*/  dma_refcnt; } ;
-struct TYPE_2__ {int /*<<< orphan*/  caps; } ;
+struct mtk_mac {int phylink; struct mtk_eth* hw; } ;
+struct mtk_eth {TYPE_1__* soc; int rx_napi; int tx_napi; int dma_refcnt; } ;
+struct TYPE_2__ {int caps; } ;
 
-/* Variables and functions */
- scalar_t__ MTK_HAS_CAPS (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MTK_PDMA_GLO_CFG ; 
- int /*<<< orphan*/  MTK_QDMA ; 
- int /*<<< orphan*/  MTK_QDMA_GLO_CFG ; 
- int /*<<< orphan*/  MTK_RX_DONE_INT ; 
- int /*<<< orphan*/  MTK_TX_DONE_INT ; 
- int /*<<< orphan*/  mtk_dma_free (struct mtk_eth*) ; 
- int /*<<< orphan*/  mtk_rx_irq_disable (struct mtk_eth*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mtk_stop_dma (struct mtk_eth*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mtk_tx_irq_disable (struct mtk_eth*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  napi_disable (int /*<<< orphan*/ *) ; 
- struct mtk_mac* netdev_priv (struct net_device*) ; 
- int /*<<< orphan*/  netif_tx_disable (struct net_device*) ; 
- int /*<<< orphan*/  phylink_disconnect_phy (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  phylink_stop (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  refcount_dec_and_test (int /*<<< orphan*/ *) ; 
+
+ scalar_t__ MTK_HAS_CAPS (int ,int ) ;
+ int MTK_PDMA_GLO_CFG ;
+ int MTK_QDMA ;
+ int MTK_QDMA_GLO_CFG ;
+ int MTK_RX_DONE_INT ;
+ int MTK_TX_DONE_INT ;
+ int mtk_dma_free (struct mtk_eth*) ;
+ int mtk_rx_irq_disable (struct mtk_eth*,int ) ;
+ int mtk_stop_dma (struct mtk_eth*,int ) ;
+ int mtk_tx_irq_disable (struct mtk_eth*,int ) ;
+ int napi_disable (int *) ;
+ struct mtk_mac* netdev_priv (struct net_device*) ;
+ int netif_tx_disable (struct net_device*) ;
+ int phylink_disconnect_phy (int ) ;
+ int phylink_stop (int ) ;
+ int refcount_dec_and_test (int *) ;
 
 __attribute__((used)) static int mtk_stop(struct net_device *dev)
 {
-	struct mtk_mac *mac = netdev_priv(dev);
-	struct mtk_eth *eth = mac->hw;
+ struct mtk_mac *mac = netdev_priv(dev);
+ struct mtk_eth *eth = mac->hw;
 
-	phylink_stop(mac->phylink);
+ phylink_stop(mac->phylink);
 
-	netif_tx_disable(dev);
+ netif_tx_disable(dev);
 
-	phylink_disconnect_phy(mac->phylink);
+ phylink_disconnect_phy(mac->phylink);
 
-	/* only shutdown DMA if this is the last user */
-	if (!refcount_dec_and_test(&eth->dma_refcnt))
-		return 0;
 
-	mtk_tx_irq_disable(eth, MTK_TX_DONE_INT);
-	mtk_rx_irq_disable(eth, MTK_RX_DONE_INT);
-	napi_disable(&eth->tx_napi);
-	napi_disable(&eth->rx_napi);
+ if (!refcount_dec_and_test(&eth->dma_refcnt))
+  return 0;
 
-	if (MTK_HAS_CAPS(eth->soc->caps, MTK_QDMA))
-		mtk_stop_dma(eth, MTK_QDMA_GLO_CFG);
-	mtk_stop_dma(eth, MTK_PDMA_GLO_CFG);
+ mtk_tx_irq_disable(eth, MTK_TX_DONE_INT);
+ mtk_rx_irq_disable(eth, MTK_RX_DONE_INT);
+ napi_disable(&eth->tx_napi);
+ napi_disable(&eth->rx_napi);
 
-	mtk_dma_free(eth);
+ if (MTK_HAS_CAPS(eth->soc->caps, MTK_QDMA))
+  mtk_stop_dma(eth, MTK_QDMA_GLO_CFG);
+ mtk_stop_dma(eth, MTK_PDMA_GLO_CFG);
 
-	return 0;
+ mtk_dma_free(eth);
+
+ return 0;
 }

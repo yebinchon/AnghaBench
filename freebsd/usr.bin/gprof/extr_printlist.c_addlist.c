@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct stringlist {char* string; struct stringlist* next; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  errx (int,char*) ; 
- scalar_t__ malloc (int) ; 
+
+ int errx (int,char*) ;
+ scalar_t__ malloc (int) ;
 
 void
 addlist(struct stringlist *listp, char *funcname)
 {
-    struct stringlist	*slp;
+    struct stringlist *slp;
 
     slp = (struct stringlist *) malloc( sizeof(struct stringlist));
     if ( slp == (struct stringlist *) 0 )
-	errx( 1 , "no room for printlist");
+ errx( 1 , "no room for printlist");
     slp -> next = listp -> next;
     slp -> string = funcname;
     listp -> next = slp;

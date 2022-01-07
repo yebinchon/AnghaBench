@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mpc_parser_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free ; 
- int /*<<< orphan*/ * mpc_alphanum () ; 
- int /*<<< orphan*/ * mpc_and (int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * mpc_boundary () ; 
- int /*<<< orphan*/ * mpc_char (char) ; 
- int /*<<< orphan*/ * mpc_digit () ; 
- int /*<<< orphan*/ * mpc_eoi () ; 
- int /*<<< orphan*/  mpc_lift (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * mpc_not_lift (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * mpc_soi () ; 
- int /*<<< orphan*/ * mpc_whitespace () ; 
- int /*<<< orphan*/  mpcf_ctor_str ; 
- int /*<<< orphan*/  mpcf_snd ; 
+
+
+
+typedef int mpc_parser_t ;
+
+
+ int free ;
+ int * mpc_alphanum () ;
+ int * mpc_and (int,int ,int *,int ,int ) ;
+ int * mpc_boundary () ;
+ int * mpc_char (char) ;
+ int * mpc_digit () ;
+ int * mpc_eoi () ;
+ int mpc_lift (int ) ;
+ int * mpc_not_lift (int *,int ,int ) ;
+ int * mpc_soi () ;
+ int * mpc_whitespace () ;
+ int mpcf_ctor_str ;
+ int mpcf_snd ;
 
 __attribute__((used)) static mpc_parser_t *mpc_re_escape_char(char c) {
   switch (c) {
@@ -45,6 +45,6 @@ __attribute__((used)) static mpc_parser_t *mpc_re_escape_char(char c) {
     case 'S': return mpc_not_lift(mpc_whitespace(), free, mpcf_ctor_str);
     case 'w': return mpc_alphanum();
     case 'W': return mpc_not_lift(mpc_alphanum(), free, mpcf_ctor_str);
-    default: return NULL;
+    default: return ((void*)0);
   }
 }

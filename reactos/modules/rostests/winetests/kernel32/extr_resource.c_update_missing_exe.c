@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * HANDLE ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * BeginUpdateResourceA (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GLE ; 
- int /*<<< orphan*/  GetLastError () ; 
- int /*<<< orphan*/  SetLastError (int) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  filename ; 
- int /*<<< orphan*/  ok (int /*<<< orphan*/ ,char*) ; 
+
+
+
+typedef int * HANDLE ;
+
+
+ int * BeginUpdateResourceA (int ,int ) ;
+ int GLE ;
+ int GetLastError () ;
+ int SetLastError (int) ;
+ int TRUE ;
+ int filename ;
+ int ok (int ,char*) ;
 
 __attribute__((used)) static void update_missing_exe( void )
 {
@@ -28,5 +28,5 @@ __attribute__((used)) static void update_missing_exe( void )
     SetLastError(0xdeadbeef);
     res = BeginUpdateResourceA( filename, TRUE );
     GLE = GetLastError();
-    ok( res == NULL, "BeginUpdateResource should fail\n");
+    ok( res == ((void*)0), "BeginUpdateResource should fail\n");
 }

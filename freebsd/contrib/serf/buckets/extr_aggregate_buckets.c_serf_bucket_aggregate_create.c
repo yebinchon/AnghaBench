@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  serf_bucket_t ;
-typedef  int /*<<< orphan*/  serf_bucket_alloc_t ;
-typedef  int /*<<< orphan*/  aggregate_context_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * create_aggregate (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * serf_bucket_create (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  serf_bucket_type_aggregate ; 
+
+
+
+typedef int serf_bucket_t ;
+typedef int serf_bucket_alloc_t ;
+typedef int aggregate_context_t ;
+
+
+ int * create_aggregate (int *) ;
+ int * serf_bucket_create (int *,int *,int *) ;
+ int serf_bucket_type_aggregate ;
 
 serf_bucket_t *serf_bucket_aggregate_create(
     serf_bucket_alloc_t *allocator)

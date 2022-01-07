@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_8__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_node_kind_t ;
-struct TYPE_13__ {int txn_flags; int /*<<< orphan*/  fs; int /*<<< orphan*/  is_txn_root; } ;
-typedef  TYPE_1__ svn_fs_root_t ;
-typedef  int /*<<< orphan*/  svn_fs_fs__id_part_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct TYPE_14__ {int /*<<< orphan*/  node; TYPE_8__* parent; int /*<<< orphan*/  entry; } ;
-typedef  TYPE_2__ parent_path_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_int64_t ;
-struct TYPE_15__ {int /*<<< orphan*/  node; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_FS_ROOT_DIR ; 
- int SVN_FS_TXN_CHECK_LOCKS ; 
- int /*<<< orphan*/ * SVN_FS__NOT_TXN (TYPE_1__*) ; 
- int /*<<< orphan*/  SVN_INVALID_REVNUM ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/ * add_change (int /*<<< orphan*/ ,int /*<<< orphan*/  const*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  dag_node_cache_invalidate (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  increment_mergeinfo_up_tree (TYPE_8__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  make_path_mutable (TYPE_1__*,TYPE_8__*,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  open_path (TYPE_2__**,TYPE_1__*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  parent_path_path (TYPE_2__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * root_txn_id (TYPE_1__*) ; 
- int /*<<< orphan*/ * svn_error_create (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- char* svn_fs__canonicalize_abspath (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_fs_fs__allow_locked_operation (char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_fs_fs__dag_delete (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_fs_fs__dag_get_id (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_fs_fs__dag_get_mergeinfo_count (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_fs_fs__dag_node_kind (int /*<<< orphan*/ ) ; 
- scalar_t__ svn_fs_fs__fs_supports_mergeinfo (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_fs_path_change_delete ; 
+
+typedef struct TYPE_15__ TYPE_8__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+typedef int svn_node_kind_t ;
+struct TYPE_13__ {int txn_flags; int fs; int is_txn_root; } ;
+typedef TYPE_1__ svn_fs_root_t ;
+typedef int svn_fs_fs__id_part_t ;
+typedef int svn_error_t ;
+struct TYPE_14__ {int node; TYPE_8__* parent; int entry; } ;
+typedef TYPE_2__ parent_path_t ;
+typedef int apr_pool_t ;
+typedef int apr_int64_t ;
+struct TYPE_15__ {int node; } ;
+
+
+ int FALSE ;
+ int SVN_ERR (int ) ;
+ int SVN_ERR_FS_ROOT_DIR ;
+ int SVN_FS_TXN_CHECK_LOCKS ;
+ int * SVN_FS__NOT_TXN (TYPE_1__*) ;
+ int SVN_INVALID_REVNUM ;
+ int TRUE ;
+ int _ (char*) ;
+ int * add_change (int ,int const*,char const*,int ,int ,int ,int ,int ,int ,int ,int *,int *) ;
+ int dag_node_cache_invalidate (TYPE_1__*,int ,int *) ;
+ int increment_mergeinfo_up_tree (TYPE_8__*,int ,int *) ;
+ int make_path_mutable (TYPE_1__*,TYPE_8__*,char const*,int *) ;
+ int open_path (TYPE_2__**,TYPE_1__*,char const*,int ,int ,int *) ;
+ int parent_path_path (TYPE_2__*,int *) ;
+ int * root_txn_id (TYPE_1__*) ;
+ int * svn_error_create (int ,int *,int ) ;
+ char* svn_fs__canonicalize_abspath (char const*,int *) ;
+ int svn_fs_fs__allow_locked_operation (char const*,int ,int ,int ,int *) ;
+ int svn_fs_fs__dag_delete (int ,int ,int const*,int *) ;
+ int svn_fs_fs__dag_get_id (int ) ;
+ int svn_fs_fs__dag_get_mergeinfo_count (int *,int ) ;
+ int svn_fs_fs__dag_node_kind (int ) ;
+ scalar_t__ svn_fs_fs__fs_supports_mergeinfo (int ) ;
+ int svn_fs_path_change_delete ;
 
 __attribute__((used)) static svn_error_t *
 fs_delete_node(svn_fs_root_t *root,
@@ -68,18 +68,18 @@ fs_delete_node(svn_fs_root_t *root,
   SVN_ERR(open_path(&parent_path, root, path, 0, TRUE, pool));
   kind = svn_fs_fs__dag_node_kind(parent_path->node);
 
-  /* We can't remove the root of the filesystem.  */
+
   if (! parent_path->parent)
-    return svn_error_create(SVN_ERR_FS_ROOT_DIR, NULL,
+    return svn_error_create(SVN_ERR_FS_ROOT_DIR, ((void*)0),
                             _("The root directory cannot be deleted"));
 
-  /* Check to see if path (or any child thereof) is locked; if so,
-     check that we can use the existing lock(s). */
+
+
   if (root->txn_flags & SVN_FS_TXN_CHECK_LOCKS)
     SVN_ERR(svn_fs_fs__allow_locked_operation(path, root->fs, TRUE, FALSE,
                                               pool));
 
-  /* Make the parent directory mutable, and do the deletion.  */
+
   SVN_ERR(make_path_mutable(root, parent_path->parent, path, pool));
   if (svn_fs_fs__fs_supports_mergeinfo(root->fs))
     SVN_ERR(svn_fs_fs__dag_get_mergeinfo_count(&mergeinfo_count,
@@ -88,19 +88,19 @@ fs_delete_node(svn_fs_root_t *root,
                                 parent_path->entry,
                                 txn_id, pool));
 
-  /* Remove this node and any children from the path cache. */
+
   SVN_ERR(dag_node_cache_invalidate(root, parent_path_path(parent_path, pool),
                                     pool));
 
-  /* Update mergeinfo counts for parents */
+
   if (mergeinfo_count > 0)
     SVN_ERR(increment_mergeinfo_up_tree(parent_path->parent,
                                         -mergeinfo_count,
                                         pool));
 
-  /* Make a record of this modification in the changes table. */
+
   return add_change(root->fs, txn_id, path,
                     svn_fs_fs__dag_get_id(parent_path->node),
                     svn_fs_path_change_delete, FALSE, FALSE, FALSE, kind,
-                    SVN_INVALID_REVNUM, NULL, pool);
+                    SVN_INVALID_REVNUM, ((void*)0), pool);
 }

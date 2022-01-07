@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct psp_context {int /*<<< orphan*/  adev; } ;
 
-/* Variables and functions */
- scalar_t__ amdgpu_sriov_vf (int /*<<< orphan*/ ) ; 
+
+
+
+struct psp_context {int adev; } ;
+
+
+ scalar_t__ amdgpu_sriov_vf (int ) ;
 
 __attribute__((used)) static bool psp_v3_1_support_vmr_ring(struct psp_context *psp)
 {
-	if (amdgpu_sriov_vf(psp->adev))
-		return true;
+ if (amdgpu_sriov_vf(psp->adev))
+  return 1;
 
-	return false;
+ return 0;
 }

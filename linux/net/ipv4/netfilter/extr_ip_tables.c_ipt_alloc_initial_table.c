@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct xt_table {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IPT ; 
- int /*<<< orphan*/  ipt ; 
- void* xt_alloc_initial_table (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int IPT ;
+ int ipt ;
+ void* xt_alloc_initial_table (int ,int ) ;
 
 void *ipt_alloc_initial_table(const struct xt_table *info)
 {
-	return xt_alloc_initial_table(ipt, IPT);
+ return xt_alloc_initial_table(ipt, IPT);
 }

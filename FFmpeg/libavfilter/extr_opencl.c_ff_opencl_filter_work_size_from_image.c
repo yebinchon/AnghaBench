@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  type ;
-typedef  scalar_t__ cl_mem_object_type ;
-typedef  scalar_t__ cl_mem ;
-typedef  scalar_t__ cl_int ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int type ;
+typedef scalar_t__ cl_mem_object_type ;
+typedef scalar_t__ cl_mem ;
+typedef scalar_t__ cl_int ;
 struct TYPE_3__ {scalar_t__ format; scalar_t__* data; } ;
-typedef  TYPE_1__ AVFrame ;
-typedef  int /*<<< orphan*/  AVFilterContext ;
+typedef TYPE_1__ AVFrame ;
+typedef int AVFilterContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_UNKNOWN ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- scalar_t__ AV_PIX_FMT_OPENCL ; 
- int /*<<< orphan*/  CL_IMAGE_HEIGHT ; 
- int /*<<< orphan*/  CL_IMAGE_WIDTH ; 
- scalar_t__ CL_MEM_OBJECT_IMAGE2D ; 
- int /*<<< orphan*/  CL_MEM_TYPE ; 
- scalar_t__ CL_SUCCESS ; 
- int /*<<< orphan*/  EINVAL ; 
- size_t FFALIGN (size_t,int) ; 
- int /*<<< orphan*/  av_get_pix_fmt_name (scalar_t__) ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int,...) ; 
- scalar_t__ clGetImageInfo (scalar_t__,int /*<<< orphan*/ ,int,size_t*,int /*<<< orphan*/ *) ; 
- scalar_t__ clGetMemObjectInfo (scalar_t__,int /*<<< orphan*/ ,int,scalar_t__*,int /*<<< orphan*/ *) ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_UNKNOWN ;
+ int AV_LOG_ERROR ;
+ scalar_t__ AV_PIX_FMT_OPENCL ;
+ int CL_IMAGE_HEIGHT ;
+ int CL_IMAGE_WIDTH ;
+ scalar_t__ CL_MEM_OBJECT_IMAGE2D ;
+ int CL_MEM_TYPE ;
+ scalar_t__ CL_SUCCESS ;
+ int EINVAL ;
+ size_t FFALIGN (size_t,int) ;
+ int av_get_pix_fmt_name (scalar_t__) ;
+ int av_log (int *,int ,char*,int,...) ;
+ scalar_t__ clGetImageInfo (scalar_t__,int ,int,size_t*,int *) ;
+ scalar_t__ clGetMemObjectInfo (scalar_t__,int ,int,scalar_t__*,int *) ;
 
 int ff_opencl_filter_work_size_from_image(AVFilterContext *avctx,
                                           size_t *work_size,
@@ -60,7 +60,7 @@ int ff_opencl_filter_work_size_from_image(AVFilterContext *avctx,
     }
 
     cle = clGetMemObjectInfo(image, CL_MEM_TYPE, sizeof(type),
-                             &type, NULL);
+                             &type, ((void*)0));
     if (cle != CL_SUCCESS) {
         av_log(avctx, AV_LOG_ERROR, "Failed to query object type of "
                "plane %d: %d.\n", plane, cle);
@@ -72,8 +72,8 @@ int ff_opencl_filter_work_size_from_image(AVFilterContext *avctx,
         return AVERROR(EINVAL);
     }
 
-    cle = clGetImageInfo(image, CL_IMAGE_WIDTH,  sizeof(size_t),
-                         &width, NULL);
+    cle = clGetImageInfo(image, CL_IMAGE_WIDTH, sizeof(size_t),
+                         &width, ((void*)0));
     if (cle != CL_SUCCESS) {
         av_log(avctx, AV_LOG_ERROR, "Failed to query plane %d width: %d.\n",
                plane, cle);
@@ -81,7 +81,7 @@ int ff_opencl_filter_work_size_from_image(AVFilterContext *avctx,
     }
 
     cle = clGetImageInfo(image, CL_IMAGE_HEIGHT, sizeof(size_t),
-                         &height, NULL);
+                         &height, ((void*)0));
     if (cle != CL_SUCCESS) {
         av_log(avctx, AV_LOG_ERROR, "Failed to query plane %d height: %d.\n",
                plane, cle);
@@ -89,7 +89,7 @@ int ff_opencl_filter_work_size_from_image(AVFilterContext *avctx,
     }
 
     if (block_alignment) {
-        width  = FFALIGN(width,  block_alignment);
+        width = FFALIGN(width, block_alignment);
         height = FFALIGN(height, block_alignment);
     }
 

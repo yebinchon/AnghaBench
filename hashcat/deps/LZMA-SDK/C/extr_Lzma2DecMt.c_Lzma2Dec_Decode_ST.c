@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ UInt64 ;
+
+
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef scalar_t__ UInt64 ;
 struct TYPE_10__ {scalar_t__ dicPos; scalar_t__ dicBufSize; scalar_t__ dic; } ;
 struct TYPE_12__ {TYPE_2__ decoder; } ;
 struct TYPE_9__ {scalar_t__ outStep_ST; } ;
-struct TYPE_11__ {scalar_t__ inProcessed; scalar_t__ outProcessed; size_t inBufSize; scalar_t__ readRes; scalar_t__ outSize; scalar_t__ progress; scalar_t__ finishMode; scalar_t__ outSize_Defined; int /*<<< orphan*/  outStream; TYPE_1__ props; scalar_t__ readWasFinished; int /*<<< orphan*/  inStream; int /*<<< orphan*/ * inBuf; int /*<<< orphan*/  mtc; TYPE_4__ dec; } ;
-typedef  scalar_t__ SizeT ;
-typedef  scalar_t__ SRes ;
-typedef  scalar_t__ ELzmaStatus ;
-typedef  int /*<<< orphan*/  ELzmaFinishMode ;
-typedef  TYPE_3__ CLzma2DecMt ;
-typedef  TYPE_4__ CLzma2Dec ;
-typedef  int /*<<< orphan*/  Byte ;
-typedef  int BoolInt ;
+struct TYPE_11__ {scalar_t__ inProcessed; scalar_t__ outProcessed; size_t inBufSize; scalar_t__ readRes; scalar_t__ outSize; scalar_t__ progress; scalar_t__ finishMode; scalar_t__ outSize_Defined; int outStream; TYPE_1__ props; scalar_t__ readWasFinished; int inStream; int * inBuf; int mtc; TYPE_4__ dec; } ;
+typedef scalar_t__ SizeT ;
+typedef scalar_t__ SRes ;
+typedef scalar_t__ ELzmaStatus ;
+typedef int ELzmaFinishMode ;
+typedef TYPE_3__ CLzma2DecMt ;
+typedef TYPE_4__ CLzma2Dec ;
+typedef int Byte ;
+typedef int BoolInt ;
 
-/* Variables and functions */
- int False ; 
- scalar_t__ ICompressProgress_Progress (scalar_t__,scalar_t__,scalar_t__) ; 
- scalar_t__ ISeqInStream_Read (int /*<<< orphan*/ ,void*,size_t*) ; 
- size_t ISeqOutStream_Write (int /*<<< orphan*/ ,scalar_t__,size_t) ; 
- int /*<<< orphan*/  LZMA_FINISH_ANY ; 
- int /*<<< orphan*/  LZMA_FINISH_END ; 
- scalar_t__ LZMA_STATUS_FINISHED_WITH_MARK ; 
- scalar_t__ LZMA_STATUS_NEEDS_MORE_INPUT ; 
- int /*<<< orphan*/  Lzma2DecMt_FreeOutBufs (TYPE_3__*) ; 
- scalar_t__ Lzma2Dec_DecodeToDic (TYPE_4__*,scalar_t__,int /*<<< orphan*/  const*,scalar_t__*,int /*<<< orphan*/ ,scalar_t__*) ; 
- scalar_t__ Lzma2Dec_Prepare_ST (TYPE_3__*) ; 
- int MtDec_PrepareRead (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * MtDec_Read (int /*<<< orphan*/ *,size_t*) ; 
- int /*<<< orphan*/  RINOK (scalar_t__) ; 
- scalar_t__ SZ_ERROR_DATA ; 
- scalar_t__ SZ_ERROR_INPUT_EOF ; 
- scalar_t__ SZ_ERROR_WRITE ; 
- scalar_t__ SZ_OK ; 
- scalar_t__ True ; 
+
+ int False ;
+ scalar_t__ ICompressProgress_Progress (scalar_t__,scalar_t__,scalar_t__) ;
+ scalar_t__ ISeqInStream_Read (int ,void*,size_t*) ;
+ size_t ISeqOutStream_Write (int ,scalar_t__,size_t) ;
+ int LZMA_FINISH_ANY ;
+ int LZMA_FINISH_END ;
+ scalar_t__ LZMA_STATUS_FINISHED_WITH_MARK ;
+ scalar_t__ LZMA_STATUS_NEEDS_MORE_INPUT ;
+ int Lzma2DecMt_FreeOutBufs (TYPE_3__*) ;
+ scalar_t__ Lzma2Dec_DecodeToDic (TYPE_4__*,scalar_t__,int const*,scalar_t__*,int ,scalar_t__*) ;
+ scalar_t__ Lzma2Dec_Prepare_ST (TYPE_3__*) ;
+ int MtDec_PrepareRead (int *) ;
+ int * MtDec_Read (int *,size_t*) ;
+ int RINOK (scalar_t__) ;
+ scalar_t__ SZ_ERROR_DATA ;
+ scalar_t__ SZ_ERROR_INPUT_EOF ;
+ scalar_t__ SZ_ERROR_WRITE ;
+ scalar_t__ SZ_OK ;
+ scalar_t__ True ;
 
 __attribute__((used)) static SRes Lzma2Dec_Decode_ST(CLzma2DecMt *p
-    #ifndef _7ZIP_ST
+
     , BoolInt tMode
-    #endif
+
     )
 {
   SizeT wrPos;
@@ -62,13 +62,13 @@ __attribute__((used)) static SRes Lzma2Dec_Decode_ST(CLzma2DecMt *p
 
   CLzma2Dec *dec;
 
-  #ifndef _7ZIP_ST
+
   if (tMode)
   {
     Lzma2DecMt_FreeOutBufs(p);
     tMode = MtDec_PrepareRead(&p->mtc);
   }
-  #endif
+
 
   RINOK(Lzma2Dec_Prepare_ST(p));
 
@@ -79,7 +79,7 @@ __attribute__((used)) static SRes Lzma2Dec_Decode_ST(CLzma2DecMt *p
 
   inPos = 0;
   inLim = 0;
-  inData = NULL;
+  inData = ((void*)0);
   wrPos = dec->decoder.dicPos;
 
   for (;;)
@@ -97,7 +97,7 @@ __attribute__((used)) static SRes Lzma2Dec_Decode_ST(CLzma2DecMt *p
 
     if (inPos == inLim)
     {
-      #ifndef _7ZIP_ST
+
       if (tMode)
       {
         inData = MtDec_Read(&p->mtc, &inLim);
@@ -107,16 +107,16 @@ __attribute__((used)) static SRes Lzma2Dec_Decode_ST(CLzma2DecMt *p
         tMode = False;
         inLim = 0;
       }
-      #endif
-      
+
+
       if (!p->readWasFinished)
       {
         inPos = 0;
         inLim = p->inBufSize;
         inData = p->inBuf;
         p->readRes = ISeqInStream_Read(p->inStream, (void *)inData, &inLim);
-        // p->readProcessed += inLim;
-        // inLim -= 5; p->readWasFinished = True; // for test
+
+
         if (inLim == 0 || p->readRes != SZ_OK)
           p->readWasFinished = True;
       }
@@ -143,7 +143,7 @@ __attribute__((used)) static SRes Lzma2Dec_Decode_ST(CLzma2DecMt *p
     }
 
     inProcessed = inLim - inPos;
-    
+
     res = Lzma2Dec_DecodeToDic(dec, dicPos + size, inData + inPos, &inProcessed, finishMode, &status);
 
     inPos += inProcessed;
@@ -193,11 +193,11 @@ __attribute__((used)) static SRes Lzma2Dec_Decode_ST(CLzma2DecMt *p
 
         if (status == LZMA_STATUS_NEEDS_MORE_INPUT)
           return SZ_ERROR_INPUT_EOF;
-        
+
         return SZ_ERROR_DATA;
       }
     }
-    
+
     if (p->progress)
     {
       UInt64 inDelta = p->inProcessed - inPrev;

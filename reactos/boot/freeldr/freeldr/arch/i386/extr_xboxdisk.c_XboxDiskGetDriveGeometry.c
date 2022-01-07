@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int ULONG ;
-typedef  int UCHAR ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int ULONG ;
+typedef int UCHAR ;
 struct TYPE_5__ {int LogicalCyls; int LogicalHeads; int SectorsPerTrack; int Capabilities; int BytesPerSector; } ;
 struct TYPE_4__ {int Cylinders; int Heads; int Sectors; int BytesPerSector; } ;
-typedef  int /*<<< orphan*/  PUCHAR ;
-typedef  TYPE_1__* PGEOMETRY ;
-typedef  TYPE_2__ IDE_DRIVE_IDENTIFY ;
-typedef  scalar_t__ BOOLEAN ;
+typedef int PUCHAR ;
+typedef TYPE_1__* PGEOMETRY ;
+typedef TYPE_2__ IDE_DRIVE_IDENTIFY ;
+typedef scalar_t__ BOOLEAN ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*) ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  IDE_CMD_IDENT_ATAPI_DRV ; 
- int /*<<< orphan*/  IDE_CMD_IDENT_ATA_DRV ; 
- int /*<<< orphan*/  IDE_DH_DRV0 ; 
- int /*<<< orphan*/  IDE_DH_DRV1 ; 
- int IDE_DRID_LBA_SUPPORTED ; 
- int /*<<< orphan*/  TRACE (char*,int) ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  XBOX_IDE_COMMAND_PORT ; 
- int /*<<< orphan*/  XBOX_IDE_CONTROL_PORT ; 
- int /*<<< orphan*/  XboxDiskPolledRead (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int ERR (char*) ;
+ scalar_t__ FALSE ;
+ int IDE_CMD_IDENT_ATAPI_DRV ;
+ int IDE_CMD_IDENT_ATA_DRV ;
+ int IDE_DH_DRV0 ;
+ int IDE_DH_DRV1 ;
+ int IDE_DRID_LBA_SUPPORTED ;
+ int TRACE (char*,int) ;
+ scalar_t__ TRUE ;
+ int XBOX_IDE_COMMAND_PORT ;
+ int XBOX_IDE_CONTROL_PORT ;
+ int XboxDiskPolledRead (int ,int ,int ,int,int ,int ,int ,int ,int ,int ) ;
 
 BOOLEAN
 XboxDiskGetDriveGeometry(UCHAR DriveNumber, PGEOMETRY Geometry)
@@ -42,8 +42,8 @@ XboxDiskGetDriveGeometry(UCHAR DriveNumber, PGEOMETRY Geometry)
     ULONG i;
     BOOLEAN Atapi;
 
-    Atapi = FALSE; /* FIXME */
-    /* Get the Drive Identify block from drive or die */
+    Atapi = FALSE;
+
     if (!XboxDiskPolledRead(XBOX_IDE_COMMAND_PORT,
                             XBOX_IDE_CONTROL_PORT,
                             0,
@@ -65,7 +65,7 @@ XboxDiskGetDriveGeometry(UCHAR DriveNumber, PGEOMETRY Geometry)
 
     if (!Atapi && (DrvParms.Capabilities & IDE_DRID_LBA_SUPPORTED) != 0)
     {
-        /* LBA ATA drives always have a sector size of 512 */
+
         Geometry->BytesPerSector = 512;
     }
     else

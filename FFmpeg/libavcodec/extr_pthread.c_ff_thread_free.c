@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int active_thread_type; int /*<<< orphan*/  thread_count; } ;
-typedef  TYPE_1__ AVCodecContext ;
 
-/* Variables and functions */
- int FF_THREAD_FRAME ; 
- int /*<<< orphan*/  ff_frame_thread_free (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ff_slice_thread_free (TYPE_1__*) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int active_thread_type; int thread_count; } ;
+typedef TYPE_1__ AVCodecContext ;
+
+
+ int FF_THREAD_FRAME ;
+ int ff_frame_thread_free (TYPE_1__*,int ) ;
+ int ff_slice_thread_free (TYPE_1__*) ;
 
 void ff_thread_free(AVCodecContext *avctx)
 {

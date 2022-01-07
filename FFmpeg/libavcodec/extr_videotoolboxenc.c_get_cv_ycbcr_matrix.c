@@ -1,57 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/ * kCVImageBufferYCbCrMatrix_ITU_R_2020; } ;
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int * kCVImageBufferYCbCrMatrix_ITU_R_2020; } ;
 struct TYPE_5__ {int colorspace; } ;
-typedef  int /*<<< orphan*/ * CFStringRef ;
-typedef  TYPE_1__ AVCodecContext ;
-
-/* Variables and functions */
-#define  AVCOL_SPC_BT2020_NCL 133 
-#define  AVCOL_SPC_BT470BG 132 
-#define  AVCOL_SPC_BT709 131 
-#define  AVCOL_SPC_SMPTE170M 130 
-#define  AVCOL_SPC_SMPTE240M 129 
-#define  AVCOL_SPC_UNSPECIFIED 128 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  av_color_space_name (int) ; 
- int /*<<< orphan*/  av_log (TYPE_1__*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- TYPE_3__ compat_keys ; 
- int /*<<< orphan*/ * kCVImageBufferYCbCrMatrix_ITU_R_601_4 ; 
- int /*<<< orphan*/ * kCVImageBufferYCbCrMatrix_ITU_R_709_2 ; 
- int /*<<< orphan*/ * kCVImageBufferYCbCrMatrix_SMPTE_240M_1995 ; 
+typedef int * CFStringRef ;
+typedef TYPE_1__ AVCodecContext ;
+ int AV_LOG_ERROR ;
+ int av_color_space_name (int) ;
+ int av_log (TYPE_1__*,int ,char*,int ) ;
+ TYPE_3__ compat_keys ;
+ int * kCVImageBufferYCbCrMatrix_ITU_R_601_4 ;
+ int * kCVImageBufferYCbCrMatrix_ITU_R_709_2 ;
+ int * kCVImageBufferYCbCrMatrix_SMPTE_240M_1995 ;
 
 __attribute__((used)) static int get_cv_ycbcr_matrix(AVCodecContext *avctx, CFStringRef *matrix) {
     switch(avctx->colorspace) {
-        case AVCOL_SPC_BT709:
+        case 131:
             *matrix = kCVImageBufferYCbCrMatrix_ITU_R_709_2;
             break;
 
-        case AVCOL_SPC_UNSPECIFIED:
-            *matrix = NULL;
+        case 128:
+            *matrix = ((void*)0);
             break;
 
-        case AVCOL_SPC_BT470BG:
-        case AVCOL_SPC_SMPTE170M:
+        case 132:
+        case 130:
             *matrix = kCVImageBufferYCbCrMatrix_ITU_R_601_4;
             break;
 
-        case AVCOL_SPC_SMPTE240M:
+        case 129:
             *matrix = kCVImageBufferYCbCrMatrix_SMPTE_240M_1995;
             break;
 
-        case AVCOL_SPC_BT2020_NCL:
+        case 133:
             *matrix = compat_keys.kCVImageBufferYCbCrMatrix_ITU_R_2020;
             break;
 

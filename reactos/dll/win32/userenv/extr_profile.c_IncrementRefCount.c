@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  dwRefCount ;
-typedef  char* PWSTR ;
-typedef  scalar_t__* PDWORD ;
-typedef  int /*<<< orphan*/  PBYTE ;
-typedef  int /*<<< orphan*/ * HKEY ;
-typedef  scalar_t__ DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPRINT1 (char*,scalar_t__,...) ; 
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/ * HKEY_LOCAL_MACHINE ; 
- int KEY_QUERY_VALUE ; 
- int KEY_SET_VALUE ; 
- int /*<<< orphan*/  REG_DWORD ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ *) ; 
- scalar_t__ RegOpenKeyExW (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  RegQueryValueExW (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,scalar_t__*,int /*<<< orphan*/ ,scalar_t__*) ; 
- scalar_t__ RegSetValueExW (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
+
+
+
+typedef int dwRefCount ;
+typedef char* PWSTR ;
+typedef scalar_t__* PDWORD ;
+typedef int PBYTE ;
+typedef int * HKEY ;
+typedef scalar_t__ DWORD ;
+
+
+ int DPRINT1 (char*,scalar_t__,...) ;
+ scalar_t__ ERROR_SUCCESS ;
+ int * HKEY_LOCAL_MACHINE ;
+ int KEY_QUERY_VALUE ;
+ int KEY_SET_VALUE ;
+ int REG_DWORD ;
+ int RegCloseKey (int *) ;
+ scalar_t__ RegOpenKeyExW (int *,char*,int ,int,int **) ;
+ int RegQueryValueExW (int *,char*,int *,scalar_t__*,int ,scalar_t__*) ;
+ scalar_t__ RegSetValueExW (int *,char*,int ,int ,int ,scalar_t__) ;
 
 __attribute__((used)) static
 DWORD
@@ -35,7 +35,7 @@ IncrementRefCount(
     PWSTR pszSidString,
     PDWORD pdwRefCount)
 {
-    HKEY hProfilesKey = NULL, hProfileKey = NULL;
+    HKEY hProfilesKey = ((void*)0), hProfileKey = ((void*)0);
     DWORD dwRefCount = 0, dwLength, dwType;
     DWORD dwError;
 
@@ -64,11 +64,11 @@ IncrementRefCount(
         goto done;
     }
 
-    /* Get the reference counter */
+
     dwLength = sizeof(dwRefCount);
     RegQueryValueExW(hProfileKey,
                      L"RefCount",
-                     NULL,
+                     ((void*)0),
                      &dwType,
                      (PBYTE)&dwRefCount,
                      &dwLength);
@@ -88,14 +88,14 @@ IncrementRefCount(
         goto done;
     }
 
-    if (pdwRefCount != NULL)
+    if (pdwRefCount != ((void*)0))
         *pdwRefCount = dwRefCount;
 
 done:
-    if (hProfileKey != NULL)
+    if (hProfileKey != ((void*)0))
         RegCloseKey(hProfileKey);
 
-    if (hProfilesKey != NULL)
+    if (hProfilesKey != ((void*)0))
         RegCloseKey(hProfilesKey);
 
     return dwError;

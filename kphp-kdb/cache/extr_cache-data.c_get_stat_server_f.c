@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int id; struct TYPE_5__* hnext; } ;
-typedef  TYPE_1__ cache_stat_server_t ;
+typedef TYPE_1__ cache_stat_server_t ;
 
-/* Variables and functions */
- TYPE_1__** HSS ; 
- int STAT_SERVER_HASH_PRIME ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  tot_servers ; 
- TYPE_1__* zmalloc0 (int const) ; 
+
+ TYPE_1__** HSS ;
+ int STAT_SERVER_HASH_PRIME ;
+ int assert (int) ;
+ int tot_servers ;
+ TYPE_1__* zmalloc0 (int const) ;
 
 cache_stat_server_t *get_stat_server_f (int id, int force) {
   int h = id % STAT_SERVER_HASH_PRIME;
@@ -45,5 +45,5 @@ cache_stat_server_t *get_stat_server_f (int id, int force) {
     V->hnext = HSS[h];
     return HSS[h] = V;
   }
-  return NULL;
+  return ((void*)0);
 }

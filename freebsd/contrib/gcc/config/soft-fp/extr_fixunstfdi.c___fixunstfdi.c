@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UDItype ;
-typedef  int /*<<< orphan*/  TFtype ;
 
-/* Variables and functions */
- int /*<<< orphan*/  A ; 
- int /*<<< orphan*/  DI_BITS ; 
- int /*<<< orphan*/  FP_DECL_EX ; 
- int /*<<< orphan*/  FP_DECL_Q (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FP_HANDLE_EXCEPTIONS ; 
- int /*<<< orphan*/  FP_TO_INT_Q (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FP_UNPACK_RAW_Q (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int UDItype ;
+typedef int TFtype ;
+
+
+ int A ;
+ int DI_BITS ;
+ int FP_DECL_EX ;
+ int FP_DECL_Q (int ) ;
+ int FP_HANDLE_EXCEPTIONS ;
+ int FP_TO_INT_Q (int ,int ,int ,int ) ;
+ int FP_UNPACK_RAW_Q (int ,int ) ;
 
 UDItype __fixunstfdi(TFtype a)
 {

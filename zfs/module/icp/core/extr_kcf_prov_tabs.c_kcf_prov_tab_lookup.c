@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  kcf_provider_desc_t ;
-typedef  size_t crypto_provider_id_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  KCF_PROV_REFHOLD (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_enter (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_exit (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ ** prov_tab ; 
- int /*<<< orphan*/  prov_tab_mutex ; 
+
+
+
+typedef int kcf_provider_desc_t ;
+typedef size_t crypto_provider_id_t ;
+
+
+ int KCF_PROV_REFHOLD (int *) ;
+ int mutex_enter (int *) ;
+ int mutex_exit (int *) ;
+ int ** prov_tab ;
+ int prov_tab_mutex ;
 
 kcf_provider_desc_t *
 kcf_prov_tab_lookup(crypto_provider_id_t prov_id)
 {
-	kcf_provider_desc_t *prov_desc;
+ kcf_provider_desc_t *prov_desc;
 
-	mutex_enter(&prov_tab_mutex);
+ mutex_enter(&prov_tab_mutex);
 
-	prov_desc = prov_tab[prov_id];
+ prov_desc = prov_tab[prov_id];
 
-	if (prov_desc == NULL) {
-		mutex_exit(&prov_tab_mutex);
-		return (NULL);
-	}
+ if (prov_desc == ((void*)0)) {
+  mutex_exit(&prov_tab_mutex);
+  return (((void*)0));
+ }
 
-	KCF_PROV_REFHOLD(prov_desc);
+ KCF_PROV_REFHOLD(prov_desc);
 
-	mutex_exit(&prov_tab_mutex);
+ mutex_exit(&prov_tab_mutex);
 
-	return (prov_desc);
+ return (prov_desc);
 }

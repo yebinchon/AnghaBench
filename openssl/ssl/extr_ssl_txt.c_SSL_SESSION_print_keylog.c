@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {size_t session_id_length; size_t master_key_length; int /*<<< orphan*/ * master_key; int /*<<< orphan*/ * session_id; } ;
-typedef  TYPE_1__ SSL_SESSION ;
-typedef  int /*<<< orphan*/  BIO ;
 
-/* Variables and functions */
- scalar_t__ BIO_printf (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- scalar_t__ BIO_puts (int /*<<< orphan*/ *,char*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {size_t session_id_length; size_t master_key_length; int * master_key; int * session_id; } ;
+typedef TYPE_1__ SSL_SESSION ;
+typedef int BIO ;
+
+
+ scalar_t__ BIO_printf (int *,char*,int ) ;
+ scalar_t__ BIO_puts (int *,char*) ;
 
 int SSL_SESSION_print_keylog(BIO *bp, const SSL_SESSION *x)
 {
     size_t i;
 
-    if (x == NULL)
+    if (x == ((void*)0))
         goto err;
     if (x->session_id_length == 0 || x->master_key_length == 0)
         goto err;
 
-    /*
-     * the RSA prefix is required by the format's definition although there's
-     * nothing RSA-specific in the output, therefore, we don't have to check if
-     * the cipher suite is based on RSA
-     */
+
+
+
+
+
     if (BIO_puts(bp, "RSA ") <= 0)
         goto err;
 

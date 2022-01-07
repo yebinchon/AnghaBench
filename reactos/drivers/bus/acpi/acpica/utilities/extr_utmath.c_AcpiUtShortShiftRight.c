@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ Lo; scalar_t__ Hi; } ;
-struct TYPE_4__ {int /*<<< orphan*/  Full; TYPE_1__ Part; } ;
-typedef  TYPE_2__ UINT64_OVERLAY ;
-typedef  int /*<<< orphan*/  UINT64 ;
-typedef  int UINT32 ;
-typedef  int /*<<< orphan*/  ACPI_STATUS ;
+struct TYPE_4__ {int Full; TYPE_1__ Part; } ;
+typedef TYPE_2__ UINT64_OVERLAY ;
+typedef int UINT64 ;
+typedef int UINT32 ;
+typedef int ACPI_STATUS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACPI_FUNCTION_TRACE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ACPI_SHIFT_RIGHT_64_BY_32 (scalar_t__,scalar_t__,int) ; 
- int /*<<< orphan*/  AE_OK ; 
- int /*<<< orphan*/  UtShortShiftRight ; 
- int /*<<< orphan*/  return_ACPI_STATUS (int /*<<< orphan*/ ) ; 
+
+ int ACPI_FUNCTION_TRACE (int ) ;
+ int ACPI_SHIFT_RIGHT_64_BY_32 (scalar_t__,scalar_t__,int) ;
+ int AE_OK ;
+ int UtShortShiftRight ;
+ int return_ACPI_STATUS (int ) ;
 
 ACPI_STATUS
 AcpiUtShortShiftRight (
-    UINT64                  Operand,
-    UINT32                  Count,
-    UINT64                  *OutResult)
+    UINT64 Operand,
+    UINT32 Count,
+    UINT64 *OutResult)
 {
-    UINT64_OVERLAY          OperandOvl;
+    UINT64_OVERLAY OperandOvl;
 
 
     ACPI_FUNCTION_TRACE (UtShortShiftRight);
@@ -49,7 +49,7 @@ AcpiUtShortShiftRight (
     ACPI_SHIFT_RIGHT_64_BY_32 (OperandOvl.Part.Hi,
         OperandOvl.Part.Lo, Count);
 
-    /* Return only what was requested */
+
 
     if (OutResult)
     {

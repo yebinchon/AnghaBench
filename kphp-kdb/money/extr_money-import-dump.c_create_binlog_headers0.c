@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int raw_size; int total_copies; int schema_id; int extra_bytes; int split_mod; int split_min; int /*<<< orphan*/  split_max; int /*<<< orphan*/  schema_extra; int /*<<< orphan*/  slice_creator; int /*<<< orphan*/  creator; int /*<<< orphan*/  modified; int /*<<< orphan*/  created; int /*<<< orphan*/  slice_created; int /*<<< orphan*/  replica_created; int /*<<< orphan*/  slice_name; int /*<<< orphan*/  table_name; int /*<<< orphan*/  table_id_hash; void* slice_id_hash; void* replica_id_hash; void* file_id_hash; int /*<<< orphan*/  header_seq_num; int /*<<< orphan*/  kfs_file_type; } ;
 
-/* Variables and functions */
- TYPE_1__* KHDR ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  assert (int) ; 
- int binlog_headers ; 
- int /*<<< orphan*/  create_kfs_header_basic (TYPE_1__*) ; 
- char* default_progname ; 
- int /*<<< orphan*/  fix_kfs_header_crc32 (TYPE_1__*) ; 
- TYPE_1__* kfs_Hdr ; 
- int /*<<< orphan*/  kfs_binlog ; 
- void* kfs_random_hash () ; 
- int /*<<< orphan*/  kfs_string_hash (char*) ; 
- scalar_t__ lseek (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  split_max ; 
- int split_min ; 
- int split_mod ; 
- int /*<<< orphan*/  sprintf (int /*<<< orphan*/ ,char*,int) ; 
- scalar_t__ stdout_mode ; 
- int /*<<< orphan*/  strcpy (int /*<<< orphan*/ ,char*) ; 
- int strlen (char*) ; 
- int /*<<< orphan*/  targ_fd ; 
- int /*<<< orphan*/  time (int /*<<< orphan*/ ) ; 
- int write (int /*<<< orphan*/ ,TYPE_1__*,int) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int raw_size; int total_copies; int schema_id; int extra_bytes; int split_mod; int split_min; int split_max; int schema_extra; int slice_creator; int creator; int modified; int created; int slice_created; int replica_created; int slice_name; int table_name; int table_id_hash; void* slice_id_hash; void* replica_id_hash; void* file_id_hash; int header_seq_num; int kfs_file_type; } ;
+
+
+ TYPE_1__* KHDR ;
+ int SEEK_SET ;
+ int assert (int) ;
+ int binlog_headers ;
+ int create_kfs_header_basic (TYPE_1__*) ;
+ char* default_progname ;
+ int fix_kfs_header_crc32 (TYPE_1__*) ;
+ TYPE_1__* kfs_Hdr ;
+ int kfs_binlog ;
+ void* kfs_random_hash () ;
+ int kfs_string_hash (char*) ;
+ scalar_t__ lseek (int ,int ,int ) ;
+ int memcpy (int ,char*,int) ;
+ int split_max ;
+ int split_min ;
+ int split_mod ;
+ int sprintf (int ,char*,int) ;
+ scalar_t__ stdout_mode ;
+ int strcpy (int ,char*) ;
+ int strlen (char*) ;
+ int targ_fd ;
+ int time (int ) ;
+ int write (int ,TYPE_1__*,int) ;
 
 void create_binlog_headers0 (int schema_id, char *schema_str) {
   assert (!binlog_headers && !KHDR);

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct cgraph_node {int count; struct cgraph_node* prev_clone; struct cgraph_node* next_clone; struct cgraph_edge* callees; int /*<<< orphan*/  master_clone; int /*<<< orphan*/  rtl; int /*<<< orphan*/  global; int /*<<< orphan*/  local; int /*<<< orphan*/  analyzed; TYPE_1__* origin; struct cgraph_node* next_nested; int /*<<< orphan*/  decl; } ;
-struct cgraph_edge {int /*<<< orphan*/  call_stmt; struct cgraph_edge* next_callee; } ;
-typedef  int gcov_type ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct cgraph_node {int count; struct cgraph_node* prev_clone; struct cgraph_node* next_clone; struct cgraph_edge* callees; int master_clone; int rtl; int global; int local; int analyzed; TYPE_1__* origin; struct cgraph_node* next_nested; int decl; } ;
+struct cgraph_edge {int call_stmt; struct cgraph_edge* next_callee; } ;
+typedef int gcov_type ;
 struct TYPE_2__ {struct cgraph_node* nested; } ;
 
-/* Variables and functions */
- int REG_BR_PROB_BASE ; 
- int /*<<< orphan*/  cgraph_clone_edge (struct cgraph_edge*,struct cgraph_node*,int /*<<< orphan*/ ,int,int,int) ; 
- struct cgraph_node* cgraph_create_node () ; 
+
+ int REG_BR_PROB_BASE ;
+ int cgraph_clone_edge (struct cgraph_edge*,struct cgraph_node*,int ,int,int,int) ;
+ struct cgraph_node* cgraph_create_node () ;
 
 struct cgraph_node *
 cgraph_clone_node (struct cgraph_node *n, gcov_type count, int loop_nest,
-		   bool update_original)
+     bool update_original)
 {
   struct cgraph_node *new = cgraph_create_node ();
   struct cgraph_edge *e;
@@ -50,12 +50,12 @@ cgraph_clone_node (struct cgraph_node *n, gcov_type count, int loop_nest,
     {
       n->count -= count;
       if (n->count < 0)
-	n->count = 0;
+ n->count = 0;
     }
 
   for (e = n->callees;e; e=e->next_callee)
     cgraph_clone_edge (e, new, e->call_stmt, count_scale, loop_nest,
-		       update_original);
+         update_original);
 
   new->next_clone = n->next_clone;
   new->prev_clone = n;

@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* thread_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef TYPE_1__* thread_t ;
 struct kperf_context {TYPE_1__* cur_thread; } ;
-struct callstack {int flags; int nframes; int /*<<< orphan*/ * frames; } ;
-struct TYPE_2__ {int /*<<< orphan*/ * continuation; } ;
+struct callstack {int flags; int nframes; int * frames; } ;
+struct TYPE_2__ {int * continuation; } ;
 
-/* Variables and functions */
- int CALLSTACK_64BIT ; 
- int CALLSTACK_CONTINUATION ; 
- int CALLSTACK_KERNEL ; 
- int CALLSTACK_VALID ; 
- int /*<<< orphan*/  VM_KERNEL_UNSLIDE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
+
+ int CALLSTACK_64BIT ;
+ int CALLSTACK_CONTINUATION ;
+ int CALLSTACK_KERNEL ;
+ int CALLSTACK_VALID ;
+ int VM_KERNEL_UNSLIDE (int *) ;
+ int assert (int ) ;
 
 void
 kperf_continuation_sample(struct callstack *cs, struct kperf_context *context)
 {
-	thread_t thread;
+ thread_t thread;
 
-	assert(cs != NULL);
-	assert(context != NULL);
+ assert(cs != ((void*)0));
+ assert(context != ((void*)0));
 
-	thread = context->cur_thread;
-	assert(thread != NULL);
-	assert(thread->continuation != NULL);
+ thread = context->cur_thread;
+ assert(thread != ((void*)0));
+ assert(thread->continuation != ((void*)0));
 
-	cs->flags = CALLSTACK_CONTINUATION | CALLSTACK_VALID | CALLSTACK_KERNEL;
-#ifdef __LP64__
-	cs->flags |= CALLSTACK_64BIT;
-#endif
+ cs->flags = CALLSTACK_CONTINUATION | CALLSTACK_VALID | CALLSTACK_KERNEL;
 
-	cs->nframes = 1;
-	cs->frames[0] = VM_KERNEL_UNSLIDE(thread->continuation);
+ cs->flags |= CALLSTACK_64BIT;
+
+
+ cs->nframes = 1;
+ cs->frames[0] = VM_KERNEL_UNSLIDE(thread->continuation);
 }

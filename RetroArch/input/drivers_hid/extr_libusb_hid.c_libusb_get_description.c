@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct libusb_interface_descriptor {scalar_t__ bInterfaceClass; struct libusb_endpoint_descriptor* endpoint; scalar_t__ bNumEndpoints; scalar_t__ bInterfaceNumber; } ;
 struct libusb_interface {int num_altsetting; struct libusb_interface_descriptor* altsetting; } ;
-struct libusb_endpoint_descriptor {int bmAttributes; int bEndpointAddress; int /*<<< orphan*/  wMaxPacketSize; } ;
+struct libusb_endpoint_descriptor {int bmAttributes; int bEndpointAddress; int wMaxPacketSize; } ;
 struct libusb_device {int dummy; } ;
 struct libusb_config_descriptor {struct libusb_interface* interface; scalar_t__ bNumInterfaces; } ;
-struct libusb_adapter {int interface_number; int endpoint_in; int endpoint_out; int /*<<< orphan*/  endpoint_out_max_size; int /*<<< orphan*/  endpoint_in_max_size; } ;
+struct libusb_adapter {int interface_number; int endpoint_in; int endpoint_out; int endpoint_out_max_size; int endpoint_in_max_size; } ;
 
-/* Variables and functions */
- scalar_t__ LIBUSB_CLASS_HID ; 
- int LIBUSB_ENDPOINT_DIR_MASK ; 
- int LIBUSB_ENDPOINT_IN ; 
- int LIBUSB_ENDPOINT_OUT ; 
- int LIBUSB_TRANSFER_TYPE_INTERRUPT ; 
- int LIBUSB_TRANSFER_TYPE_MASK ; 
- int /*<<< orphan*/  RARCH_ERR (char*,int) ; 
- int /*<<< orphan*/  libusb_free_config_descriptor (struct libusb_config_descriptor*) ; 
- int libusb_get_config_descriptor (struct libusb_device*,int /*<<< orphan*/ ,struct libusb_config_descriptor**) ; 
+
+ scalar_t__ LIBUSB_CLASS_HID ;
+ int LIBUSB_ENDPOINT_DIR_MASK ;
+ int LIBUSB_ENDPOINT_IN ;
+ int LIBUSB_ENDPOINT_OUT ;
+ int LIBUSB_TRANSFER_TYPE_INTERRUPT ;
+ int LIBUSB_TRANSFER_TYPE_MASK ;
+ int RARCH_ERR (char*,int) ;
+ int libusb_free_config_descriptor (struct libusb_config_descriptor*) ;
+ int libusb_get_config_descriptor (struct libusb_device*,int ,struct libusb_config_descriptor**) ;
 
 __attribute__((used)) static void libusb_get_description(struct libusb_device *device,
       struct libusb_adapter *adapter)
@@ -52,9 +52,9 @@ __attribute__((used)) static void libusb_get_description(struct libusb_device *d
          const struct libusb_interface_descriptor *interdesc =
             &inter->altsetting[j];
 
-#if 0
-         if (interdesc->bInterfaceClass == LIBUSB_CLASS_HID)
-#endif
+
+
+
          {
             adapter->interface_number = (int)interdesc->bInterfaceNumber;
 

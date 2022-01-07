@@ -1,63 +1,63 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint16_t ;
-struct TYPE_6__ {int /*<<< orphan*/  pressed; } ;
+
+
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint16_t ;
+struct TYPE_6__ {int pressed; } ;
 struct TYPE_7__ {TYPE_1__ event; } ;
-typedef  TYPE_2__ keyrecord_t ;
-struct TYPE_9__ {int /*<<< orphan*/  mode; } ;
-struct TYPE_8__ {int /*<<< orphan*/  mode; } ;
+typedef TYPE_2__ keyrecord_t ;
+struct TYPE_9__ {int mode; } ;
+struct TYPE_8__ {int mode; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BASE ; 
-#define  LAY_LIN 130 
-#define  LAY_OSX 129 
- int /*<<< orphan*/  OSX ; 
-#define  RGB_MOD 128 
- TYPE_4__ rgblight_config ; 
- int /*<<< orphan*/  rgblight_mode (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rgblight_step () ; 
- int /*<<< orphan*/  set_single_persistent_default_layer (int /*<<< orphan*/ ) ; 
- TYPE_3__ temp_config ; 
+
+ int BASE ;
+
+
+ int OSX ;
+
+ TYPE_4__ rgblight_config ;
+ int rgblight_mode (int ) ;
+ int rgblight_step () ;
+ int set_single_persistent_default_layer (int ) ;
+ TYPE_3__ temp_config ;
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        /* layout switcher */
-        case LAY_LIN:
+
+        case 130:
             if (record->event.pressed) {
                 set_single_persistent_default_layer(BASE);
             }
-            return false;
+            return 0;
             break;
-        case LAY_OSX:
+        case 129:
             if (record->event.pressed) {
                 set_single_persistent_default_layer(OSX);
             }
-            return false;
+            return 0;
             break;
-        case RGB_MOD:
-            // allows to set the rgb mode while in the ADJUST layer which uses
-            // its own mode
+        case 128:
+
+
             if (record->event.pressed) {
                 rgblight_mode(temp_config.mode);
                 rgblight_step();
                 temp_config.mode = rgblight_config.mode;
             }
-            return false;
+            return 0;
             break;
     }
-    return true;
+    return 1;
 }

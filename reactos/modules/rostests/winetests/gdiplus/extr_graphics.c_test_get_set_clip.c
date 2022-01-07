@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {double X; double Y; double Height; double Width; } ;
-typedef  int /*<<< orphan*/  HDC ;
-typedef  int /*<<< orphan*/  GpStatus ;
-typedef  int /*<<< orphan*/  GpRegion ;
-typedef  TYPE_1__ GpRectF ;
-typedef  int /*<<< orphan*/  GpGraphics ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef int HDC ;
+typedef int GpStatus ;
+typedef int GpRegion ;
+typedef TYPE_1__ GpRectF ;
+typedef int GpGraphics ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CombineModeReplace ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GdipCreateFromHDC (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GdipCreateRegionRect (TYPE_1__*,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GdipDeleteGraphics (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipDeleteRegion (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipGetClip (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipIsEmptyRegion (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipIsInfiniteRegion (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipResetClip (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipSetClipPath (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GdipSetClipRegion (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GdipSetEmpty (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GetDC (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  InvalidParameter ; 
- int /*<<< orphan*/  Ok ; 
- int /*<<< orphan*/  ReleaseDC (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  expect (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hwnd ; 
+
+ int CombineModeReplace ;
+ int FALSE ;
+ int GdipCreateFromHDC (int ,int **) ;
+ int GdipCreateRegionRect (TYPE_1__*,int **) ;
+ int GdipDeleteGraphics (int *) ;
+ int GdipDeleteRegion (int *) ;
+ int GdipGetClip (int *,int *) ;
+ int GdipIsEmptyRegion (int *,int *,int *) ;
+ int GdipIsInfiniteRegion (int *,int *,int *) ;
+ int GdipResetClip (int *) ;
+ int GdipSetClipPath (int *,int *,int ) ;
+ int GdipSetClipRegion (int *,int *,int ) ;
+ int GdipSetEmpty (int *) ;
+ int GetDC (int ) ;
+ int InvalidParameter ;
+ int Ok ;
+ int ReleaseDC (int ,int ) ;
+ int TRUE ;
+ int expect (int ,int ) ;
+ int hwnd ;
 
 __attribute__((used)) static void test_get_set_clip(void)
 {
     GpStatus status;
-    GpGraphics *graphics = NULL;
+    GpGraphics *graphics = ((void*)0);
     HDC hdc = GetDC( hwnd );
     GpRegion *clip;
     GpRectF rect;
@@ -59,22 +59,22 @@ __attribute__((used)) static void test_get_set_clip(void)
     status = GdipCreateRegionRect(&rect, &clip);
     expect(Ok, status);
 
-    /* NULL arguments */
-    status = GdipGetClip(NULL, NULL);
+
+    status = GdipGetClip(((void*)0), ((void*)0));
     expect(InvalidParameter, status);
-    status = GdipGetClip(graphics, NULL);
+    status = GdipGetClip(graphics, ((void*)0));
     expect(InvalidParameter, status);
-    status = GdipGetClip(NULL, clip);
+    status = GdipGetClip(((void*)0), clip);
     expect(InvalidParameter, status);
 
-    status = GdipSetClipRegion(NULL, NULL, CombineModeReplace);
+    status = GdipSetClipRegion(((void*)0), ((void*)0), CombineModeReplace);
     expect(InvalidParameter, status);
-    status = GdipSetClipRegion(graphics, NULL, CombineModeReplace);
+    status = GdipSetClipRegion(graphics, ((void*)0), CombineModeReplace);
     expect(InvalidParameter, status);
 
-    status = GdipSetClipPath(NULL, NULL, CombineModeReplace);
+    status = GdipSetClipPath(((void*)0), ((void*)0), CombineModeReplace);
     expect(InvalidParameter, status);
-    status = GdipSetClipPath(graphics, NULL, CombineModeReplace);
+    status = GdipSetClipPath(graphics, ((void*)0), CombineModeReplace);
     expect(InvalidParameter, status);
 
     res = FALSE;
@@ -84,7 +84,7 @@ __attribute__((used)) static void test_get_set_clip(void)
     expect(Ok, status);
     expect(TRUE, res);
 
-    /* remains infinite after reset */
+
     res = FALSE;
     status = GdipResetClip(graphics);
     expect(Ok, status);
@@ -94,7 +94,7 @@ __attribute__((used)) static void test_get_set_clip(void)
     expect(Ok, status);
     expect(TRUE, res);
 
-    /* set to empty and then reset to infinite */
+
     status = GdipSetEmpty(clip);
     expect(Ok, status);
     status = GdipSetClipRegion(graphics, clip, CombineModeReplace);

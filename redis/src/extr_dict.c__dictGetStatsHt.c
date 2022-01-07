@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {scalar_t__ used; unsigned long size; TYPE_2__** table; } ;
-typedef  TYPE_1__ dictht ;
+typedef TYPE_1__ dictht ;
 struct TYPE_5__ {struct TYPE_5__* next; } ;
-typedef  TYPE_2__ dictEntry ;
+typedef TYPE_2__ dictEntry ;
 
-/* Variables and functions */
- int DICT_STATS_VECTLEN ; 
- size_t snprintf (char*,size_t,char*,...) ; 
- size_t strlen (char*) ; 
+
+ int DICT_STATS_VECTLEN ;
+ size_t snprintf (char*,size_t,char*,...) ;
+ size_t strlen (char*) ;
 
 size_t _dictGetStatsHt(char *buf, size_t bufsize, dictht *ht, int tableid) {
     unsigned long i, slots = 0, chainlen, maxchainlen = 0;
@@ -33,17 +33,17 @@ size_t _dictGetStatsHt(char *buf, size_t bufsize, dictht *ht, int tableid) {
             "No stats available for empty dictionaries\n");
     }
 
-    /* Compute stats. */
+
     for (i = 0; i < DICT_STATS_VECTLEN; i++) clvector[i] = 0;
     for (i = 0; i < ht->size; i++) {
         dictEntry *he;
 
-        if (ht->table[i] == NULL) {
+        if (ht->table[i] == ((void*)0)) {
             clvector[0]++;
             continue;
         }
         slots++;
-        /* For each hash entry on this slot... */
+
         chainlen = 0;
         he = ht->table[i];
         while(he) {
@@ -55,7 +55,7 @@ size_t _dictGetStatsHt(char *buf, size_t bufsize, dictht *ht, int tableid) {
         totchainlen += chainlen;
     }
 
-    /* Generate human readable stats. */
+
     l += snprintf(buf+l,bufsize-l,
         "Hash table %d stats (%s):\n"
         " table size: %ld\n"
@@ -78,7 +78,7 @@ size_t _dictGetStatsHt(char *buf, size_t bufsize, dictht *ht, int tableid) {
             i, clvector[i], ((float)clvector[i]/ht->size)*100);
     }
 
-    /* Unlike snprintf(), teturn the number of characters actually written. */
+
     if (bufsize) buf[bufsize-1] = '\0';
     return strlen(buf);
 }

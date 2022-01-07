@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int* a; int windowstart; int /*<<< orphan*/  configid1; int /*<<< orphan*/  configid0; scalar_t__ windowbase; } ;
-typedef  TYPE_1__ esp_gdbstub_gdb_regfile_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CONFIGID0 ; 
- int /*<<< orphan*/  CONFIGID1 ; 
- int /*<<< orphan*/  RSR (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  esp_stack_ptr_is_sane (int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int* a; int windowstart; int configid1; int configid0; scalar_t__ windowbase; } ;
+typedef TYPE_1__ esp_gdbstub_gdb_regfile_t ;
+
+
+ int CONFIGID0 ;
+ int CONFIGID1 ;
+ int RSR (int ,int ) ;
+ int esp_stack_ptr_is_sane (int) ;
 
 __attribute__((used)) static void update_regfile_common(esp_gdbstub_gdb_regfile_t *dst)
 {

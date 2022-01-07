@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int EINVAL ; 
- int ERANGE ; 
- unsigned long INT_MAX ; 
- unsigned long USEC_PER_SEC ; 
- int /*<<< orphan*/  isdigit (char const) ; 
- int parse_fractional_part_u (char const**,int,unsigned int*) ; 
- int parse_one_number (char const*,char const**,unsigned long*) ; 
+ int EINVAL ;
+ int ERANGE ;
+ unsigned long INT_MAX ;
+ unsigned long USEC_PER_SEC ;
+ int isdigit (char const) ;
+ int parse_fractional_part_u (char const**,int,unsigned int*) ;
+ int parse_one_number (char const*,char const**,unsigned long*) ;
 
 __attribute__((used)) static int parse_component_decimal(const char **p, bool usec, int *res) {
         unsigned long value;
-        const char *e = NULL;
+        const char *e = ((void*)0);
         int r;
 
         if (!isdigit(**p))
@@ -38,7 +30,7 @@ __attribute__((used)) static int parse_component_decimal(const char **p, bool us
 
                 value *= USEC_PER_SEC;
 
-                /* One "." is a decimal point, but ".." is a range separator */
+
                 if (e[0] == '.' && e[1] != '.') {
                         unsigned add;
 

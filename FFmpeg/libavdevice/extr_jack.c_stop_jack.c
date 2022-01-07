@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  timefilter; int /*<<< orphan*/  ports; int /*<<< orphan*/  filled_pkts; int /*<<< orphan*/  new_pkts; int /*<<< orphan*/  packet_count; scalar_t__ client; scalar_t__ activated; } ;
-typedef  TYPE_1__ JackData ;
 
-/* Variables and functions */
- int /*<<< orphan*/  av_freep (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ff_timefilter_destroy (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free_pkt_fifo (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jack_client_close (scalar_t__) ; 
- int /*<<< orphan*/  jack_deactivate (scalar_t__) ; 
- int /*<<< orphan*/  sem_destroy (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int timefilter; int ports; int filled_pkts; int new_pkts; int packet_count; scalar_t__ client; scalar_t__ activated; } ;
+typedef TYPE_1__ JackData ;
+
+
+ int av_freep (int *) ;
+ int ff_timefilter_destroy (int ) ;
+ int free_pkt_fifo (int *) ;
+ int jack_client_close (scalar_t__) ;
+ int jack_deactivate (scalar_t__) ;
+ int sem_destroy (int *) ;
 
 __attribute__((used)) static void stop_jack(JackData *self)
 {

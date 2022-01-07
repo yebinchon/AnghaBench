@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  xTimerHandle ;
-typedef  int uint8_t ;
+
+
+
+
+typedef int xTimerHandle ;
+typedef int uint8_t ;
 struct os_mbuf {int dummy; } ;
-typedef  int /*<<< orphan*/  hrm ;
+typedef int hrm ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int ble_gattc_notify_custom (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct os_mbuf*) ; 
- struct os_mbuf* ble_hs_mbuf_from_flat (int*,int) ; 
- int /*<<< orphan*/  blehr_tx_hrate_reset () ; 
- int /*<<< orphan*/  blehr_tx_hrate_stop () ; 
- int /*<<< orphan*/  conn_handle ; 
- int heartrate ; 
- int /*<<< orphan*/  hrs_hrm_handle ; 
- int /*<<< orphan*/  notify_state ; 
+
+ int assert (int) ;
+ int ble_gattc_notify_custom (int ,int ,struct os_mbuf*) ;
+ struct os_mbuf* ble_hs_mbuf_from_flat (int*,int) ;
+ int blehr_tx_hrate_reset () ;
+ int blehr_tx_hrate_stop () ;
+ int conn_handle ;
+ int heartrate ;
+ int hrs_hrm_handle ;
+ int notify_state ;
 
 __attribute__((used)) static void
 blehr_tx_hrate(xTimerHandle ev)
@@ -39,10 +39,10 @@ blehr_tx_hrate(xTimerHandle ev)
         return;
     }
 
-    hrm[0] = 0x06; /* contact of a sensor */
-    hrm[1] = heartrate; /* storing dummy data */
+    hrm[0] = 0x06;
+    hrm[1] = heartrate;
 
-    /* Simulation of heart beats */
+
     heartrate++;
     if (heartrate == 160) {
         heartrate = 90;

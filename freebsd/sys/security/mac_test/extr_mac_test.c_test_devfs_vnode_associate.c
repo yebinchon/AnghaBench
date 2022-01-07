@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct vnode {int dummy; } ;
 struct mount {int dummy; } ;
 struct label {int dummy; } ;
 struct devfs_dirent {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  COUNTER_INC (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LABEL_CHECK (struct label*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MAGIC_DEVFS ; 
- int /*<<< orphan*/  MAGIC_MOUNT ; 
- int /*<<< orphan*/  MAGIC_VNODE ; 
- int /*<<< orphan*/  devfs_vnode_associate ; 
+
+ int COUNTER_INC (int ) ;
+ int LABEL_CHECK (struct label*,int ) ;
+ int MAGIC_DEVFS ;
+ int MAGIC_MOUNT ;
+ int MAGIC_VNODE ;
+ int devfs_vnode_associate ;
 
 __attribute__((used)) static void
 test_devfs_vnode_associate(struct mount *mp, struct label *mplabel,
@@ -29,8 +29,8 @@ test_devfs_vnode_associate(struct mount *mp, struct label *mplabel,
     struct label *vplabel)
 {
 
-	LABEL_CHECK(mplabel, MAGIC_MOUNT);
-	LABEL_CHECK(delabel, MAGIC_DEVFS);
-	LABEL_CHECK(vplabel, MAGIC_VNODE);
-	COUNTER_INC(devfs_vnode_associate);
+ LABEL_CHECK(mplabel, MAGIC_MOUNT);
+ LABEL_CHECK(delabel, MAGIC_DEVFS);
+ LABEL_CHECK(vplabel, MAGIC_VNODE);
+ COUNTER_INC(devfs_vnode_associate);
 }

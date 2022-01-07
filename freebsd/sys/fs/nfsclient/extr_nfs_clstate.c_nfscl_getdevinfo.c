@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct nfscldevinfo {int /*<<< orphan*/  nfsdi_refcnt; } ;
+
+
+
+
+typedef int uint8_t ;
+struct nfscldevinfo {int nfsdi_refcnt; } ;
 struct nfsclclient {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NFSLOCKCLSTATE () ; 
- int /*<<< orphan*/  NFSUNLOCKCLSTATE () ; 
- struct nfscldevinfo* nfscl_finddevinfo (struct nfsclclient*,int /*<<< orphan*/ *) ; 
+
+ int NFSLOCKCLSTATE () ;
+ int NFSUNLOCKCLSTATE () ;
+ struct nfscldevinfo* nfscl_finddevinfo (struct nfsclclient*,int *) ;
 
 struct nfscldevinfo *
 nfscl_getdevinfo(struct nfsclclient *clp, uint8_t *deviceid,
     struct nfscldevinfo *dip)
 {
 
-	NFSLOCKCLSTATE();
-	if (dip == NULL)
-		dip = nfscl_finddevinfo(clp, deviceid);
-	if (dip != NULL)
-		dip->nfsdi_refcnt++;
-	NFSUNLOCKCLSTATE();
-	return (dip);
+ NFSLOCKCLSTATE();
+ if (dip == ((void*)0))
+  dip = nfscl_finddevinfo(clp, deviceid);
+ if (dip != ((void*)0))
+  dip->nfsdi_refcnt++;
+ NFSUNLOCKCLSTATE();
+ return (dip);
 }

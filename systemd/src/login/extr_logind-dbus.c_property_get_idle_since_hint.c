@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sd_bus_message ;
-typedef  int /*<<< orphan*/  sd_bus_error ;
-typedef  int /*<<< orphan*/  sd_bus ;
-struct TYPE_4__ {int /*<<< orphan*/  monotonic; int /*<<< orphan*/  realtime; } ;
-typedef  TYPE_1__ dual_timestamp ;
-typedef  int /*<<< orphan*/  Manager ;
 
-/* Variables and functions */
- TYPE_1__ DUAL_TIMESTAMP_NULL ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  manager_get_idle_hint (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int sd_bus_message_append (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- scalar_t__ streq (char const*,char*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int sd_bus_message ;
+typedef int sd_bus_error ;
+typedef int sd_bus ;
+struct TYPE_4__ {int monotonic; int realtime; } ;
+typedef TYPE_1__ dual_timestamp ;
+typedef int Manager ;
+
+
+ TYPE_1__ DUAL_TIMESTAMP_NULL ;
+ int assert (int *) ;
+ int manager_get_idle_hint (int *,TYPE_1__*) ;
+ int sd_bus_message_append (int *,char*,int ) ;
+ scalar_t__ streq (char const*,char*) ;
 
 __attribute__((used)) static int property_get_idle_since_hint(
                 sd_bus *bus,

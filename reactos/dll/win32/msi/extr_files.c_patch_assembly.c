@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int UINT ;
-struct TYPE_9__ {int /*<<< orphan*/  display_name; } ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
+typedef int UINT ;
+struct TYPE_9__ {int display_name; } ;
 struct TYPE_8__ {TYPE_1__* File; } ;
-struct TYPE_7__ {int /*<<< orphan*/ * TargetPath; } ;
-typedef  int /*<<< orphan*/  MSIPACKAGE ;
-typedef  TYPE_2__ MSIFILEPATCH ;
-typedef  TYPE_3__ MSIASSEMBLY ;
-typedef  int /*<<< orphan*/  IAssemblyName ;
-typedef  int /*<<< orphan*/  IAssemblyEnum ;
-typedef  scalar_t__ HRESULT ;
+struct TYPE_7__ {int * TargetPath; } ;
+typedef int MSIPACKAGE ;
+typedef TYPE_2__ MSIFILEPATCH ;
+typedef TYPE_3__ MSIASSEMBLY ;
+typedef int IAssemblyName ;
+typedef int IAssemblyEnum ;
+typedef scalar_t__ HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CopyFileW (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ERR (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int ERROR_FUNCTION_FAILED ; 
- int ERROR_SUCCESS ; 
- scalar_t__ E_NOT_SUFFICIENT_BUFFER ; 
- scalar_t__ FAILED (scalar_t__) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GetLastError () ; 
- scalar_t__ IAssemblyEnum_GetNextAssembly (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IAssemblyEnum_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IAssemblyName_GetDisplayName (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IAssemblyName_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  debugstr_w (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * msi_alloc (int) ; 
- int /*<<< orphan*/ * msi_create_assembly_enum (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  msi_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * msi_get_assembly_path (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int patch_file (int /*<<< orphan*/ *,TYPE_2__*) ; 
+
+ int CopyFileW (int *,int *,int ) ;
+ int ERR (char*,int ,int ,int ) ;
+ int ERROR_FUNCTION_FAILED ;
+ int ERROR_SUCCESS ;
+ scalar_t__ E_NOT_SUFFICIENT_BUFFER ;
+ scalar_t__ FAILED (scalar_t__) ;
+ int FALSE ;
+ int GetLastError () ;
+ scalar_t__ IAssemblyEnum_GetNextAssembly (int *,int *,int **,int ) ;
+ int IAssemblyEnum_Release (int *) ;
+ scalar_t__ IAssemblyName_GetDisplayName (int *,int *,int*,int ) ;
+ int IAssemblyName_Release (int *) ;
+ scalar_t__ S_OK ;
+ int debugstr_w (int *) ;
+ int * msi_alloc (int) ;
+ int * msi_create_assembly_enum (int *,int ) ;
+ int msi_free (int *) ;
+ int * msi_get_assembly_path (int *,int *) ;
+ int patch_file (int *,TYPE_2__*) ;
 
 __attribute__((used)) static UINT patch_assembly( MSIPACKAGE *package, MSIASSEMBLY *assembly, MSIFILEPATCH *patch )
 {
@@ -55,13 +55,13 @@ __attribute__((used)) static UINT patch_assembly( MSIPACKAGE *package, MSIASSEMB
     if (!(iter = msi_create_assembly_enum( package, assembly->display_name )))
         return ERROR_FUNCTION_FAILED;
 
-    while ((IAssemblyEnum_GetNextAssembly( iter, NULL, &name, 0 ) == S_OK))
+    while ((IAssemblyEnum_GetNextAssembly( iter, ((void*)0), &name, 0 ) == S_OK))
     {
         WCHAR *displayname, *path;
         UINT len = 0;
         HRESULT hr;
 
-        hr = IAssemblyName_GetDisplayName( name, NULL, &len, 0 );
+        hr = IAssemblyName_GetDisplayName( name, ((void*)0), &len, 0 );
         if (hr != E_NOT_SUFFICIENT_BUFFER || !(displayname = msi_alloc( len * sizeof(WCHAR) )))
             break;
 

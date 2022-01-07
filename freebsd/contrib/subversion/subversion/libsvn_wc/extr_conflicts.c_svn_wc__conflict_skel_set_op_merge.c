@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_wc_conflict_version_t ;
+
+
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef int svn_wc_conflict_version_t ;
 struct TYPE_12__ {struct TYPE_12__* children; TYPE_1__* next; } ;
-typedef  TYPE_2__ svn_skel_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-struct TYPE_11__ {int /*<<< orphan*/  is_atom; } ;
+typedef TYPE_2__ svn_skel_t ;
+typedef int svn_error_t ;
+typedef int apr_pool_t ;
+struct TYPE_11__ {int is_atom; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_ASSERT (int) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  SVN_WC__CONFLICT_OP_MERGE ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  conflict__get_operation (TYPE_2__**,TYPE_2__*) ; 
- int /*<<< orphan*/  conflict__prepend_location (TYPE_2__*,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- TYPE_2__* svn_skel__make_empty_list (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_skel__prepend (TYPE_2__*,TYPE_2__*) ; 
- int /*<<< orphan*/  svn_skel__prepend_str (int /*<<< orphan*/ ,TYPE_2__*,int /*<<< orphan*/ *) ; 
+
+ int SVN_ERR (int ) ;
+ int SVN_ERR_ASSERT (int) ;
+ int * SVN_NO_ERROR ;
+ int SVN_WC__CONFLICT_OP_MERGE ;
+ int TRUE ;
+ int conflict__get_operation (TYPE_2__**,TYPE_2__*) ;
+ int conflict__prepend_location (TYPE_2__*,int const*,int ,int *,int *) ;
+ TYPE_2__* svn_skel__make_empty_list (int *) ;
+ int svn_skel__prepend (TYPE_2__*,TYPE_2__*) ;
+ int svn_skel__prepend_str (int ,TYPE_2__*,int *) ;
 
 svn_error_t *
 svn_wc__conflict_skel_set_op_merge(svn_skel_t *conflict_skel,
@@ -48,7 +48,7 @@ svn_wc__conflict_skel_set_op_merge(svn_skel_t *conflict_skel,
 
   SVN_ERR(conflict__get_operation(&why, conflict_skel));
 
-  SVN_ERR_ASSERT(why == NULL); /* No operation set */
+  SVN_ERR_ASSERT(why == ((void*)0));
 
   why = conflict_skel->children;
 

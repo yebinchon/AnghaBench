@@ -1,40 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  DFmode ; 
- int /*<<< orphan*/  DImode ; 
- int /*<<< orphan*/  SFmode ; 
- int /*<<< orphan*/  SImode ; 
- int /*<<< orphan*/  TFmode ; 
- int /*<<< orphan*/  TImode ; 
- int /*<<< orphan*/  XFmode ; 
- int /*<<< orphan*/  add_optab ; 
- int /*<<< orphan*/  neg_optab ; 
- int /*<<< orphan*/  sdiv_optab ; 
- int /*<<< orphan*/  set_conv_libfunc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  set_optab_libfunc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  sext_optab ; 
- int /*<<< orphan*/  sfix_optab ; 
- int /*<<< orphan*/  sfloat_optab ; 
- int /*<<< orphan*/  smod_optab ; 
- int /*<<< orphan*/  smul_optab ; 
- int /*<<< orphan*/  sub_optab ; 
- int /*<<< orphan*/  trunc_optab ; 
- int /*<<< orphan*/  udiv_optab ; 
- int /*<<< orphan*/  ufix_optab ; 
- int /*<<< orphan*/  ufloat_optab ; 
- int /*<<< orphan*/  umod_optab ; 
+ int DFmode ;
+ int DImode ;
+ int SFmode ;
+ int SImode ;
+ int TFmode ;
+ int TImode ;
+ int XFmode ;
+ int add_optab ;
+ int neg_optab ;
+ int sdiv_optab ;
+ int set_conv_libfunc (int ,int ,int ,char*) ;
+ int set_optab_libfunc (int ,int ,char*) ;
+ int sext_optab ;
+ int sfix_optab ;
+ int sfloat_optab ;
+ int smod_optab ;
+ int smul_optab ;
+ int sub_optab ;
+ int trunc_optab ;
+ int udiv_optab ;
+ int ufix_optab ;
+ int ufloat_optab ;
+ int umod_optab ;
 
 __attribute__((used)) static void
 ia64_init_libfuncs (void)
@@ -66,7 +58,7 @@ ia64_init_libfuncs (void)
   set_conv_libfunc (sfloat_optab, TFmode, SImode, "_U_Qfcnvxf_sgl_to_quad");
   set_conv_libfunc (sfloat_optab, TFmode, DImode, "_U_Qfcnvxf_dbl_to_quad");
   set_conv_libfunc (sfloat_optab, TFmode, TImode, "_U_Qfcnvxf_quad_to_quad");
-  /* HP-UX 11.23 libc does not have a function for unsigned
-     SImode-to-TFmode conversion.  */
+
+
   set_conv_libfunc (ufloat_optab, TFmode, DImode, "_U_Qfcnvxuf_dbl_to_quad");
 }

@@ -1,38 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  die (char*,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errno ; 
- char* filename ; 
- scalar_t__ fopen (scalar_t__,char*) ; 
- int /*<<< orphan*/  fprintf (scalar_t__,char*,char*) ; 
- int /*<<< orphan*/  fputs (char*,scalar_t__) ; 
- char* logoname ; 
- scalar_t__ out ; 
- scalar_t__ outputname ; 
- scalar_t__ stdout ; 
- int /*<<< orphan*/  strerror (int /*<<< orphan*/ ) ; 
+ int die (char*,scalar_t__,int ) ;
+ int errno ;
+ char* filename ;
+ scalar_t__ fopen (scalar_t__,char*) ;
+ int fprintf (scalar_t__,char*,char*) ;
+ int fputs (char*,scalar_t__) ;
+ char* logoname ;
+ scalar_t__ out ;
+ scalar_t__ outputname ;
+ scalar_t__ stdout ;
+ int strerror (int ) ;
 
 __attribute__((used)) static void write_header(void)
 {
-    /* open logo file */
+
     if (outputname) {
-	out = fopen(outputname, "w");
-	if (!out)
-	    die("Cannot create file %s: %s\n", outputname, strerror(errno));
+ out = fopen(outputname, "w");
+ if (!out)
+     die("Cannot create file %s: %s\n", outputname, strerror(errno));
     } else {
-	out = stdout;
+ out = stdout;
     }
 
     fputs("/*\n", out);
@@ -44,5 +36,5 @@ __attribute__((used)) static void write_header(void)
     fputs(" */\n\n", out);
     fputs("#include <linux/linux_logo.h>\n\n", out);
     fprintf(out, "static unsigned char %s_data[] __initdata = {\n",
-	    logoname);
+     logoname);
 }

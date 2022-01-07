@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int cores; int features; int revision; } ;
-typedef  TYPE_1__ esp_chip_info_t ;
+typedef TYPE_1__ esp_chip_info_t ;
 
-/* Variables and functions */
- int CHIP_FEATURE_BLE ; 
- int CHIP_FEATURE_BT ; 
- int CHIP_FEATURE_EMB_FLASH ; 
- char* CHIP_NAME ; 
- int /*<<< orphan*/  esp_chip_info (TYPE_1__*) ; 
- int /*<<< orphan*/  esp_restart () ; 
- int /*<<< orphan*/  fflush (int /*<<< orphan*/ ) ; 
- int portTICK_PERIOD_MS ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int spi_flash_get_chip_size () ; 
- int /*<<< orphan*/  stdout ; 
- int /*<<< orphan*/  vTaskDelay (int) ; 
+
+ int CHIP_FEATURE_BLE ;
+ int CHIP_FEATURE_BT ;
+ int CHIP_FEATURE_EMB_FLASH ;
+ char* CHIP_NAME ;
+ int esp_chip_info (TYPE_1__*) ;
+ int esp_restart () ;
+ int fflush (int ) ;
+ int portTICK_PERIOD_MS ;
+ int printf (char*,...) ;
+ int spi_flash_get_chip_size () ;
+ int stdout ;
+ int vTaskDelay (int) ;
 
 void app_main(void)
 {
     printf("Hello world!\n");
 
-    /* Print chip information */
+
     esp_chip_info_t chip_info;
     esp_chip_info(&chip_info);
     printf("This is %s chip with %d CPU cores, WiFi%s%s, ",

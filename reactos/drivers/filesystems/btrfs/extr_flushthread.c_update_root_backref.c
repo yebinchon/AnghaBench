@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  void* uint64_t ;
-typedef  scalar_t__ uint16_t ;
+
+
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef void* uint64_t ;
+typedef scalar_t__ uint16_t ;
 struct TYPE_14__ {TYPE_1__* item; } ;
-typedef  TYPE_2__ traverse_ptr ;
-struct TYPE_15__ {int /*<<< orphan*/  root_root; } ;
-typedef  TYPE_3__ device_extension ;
-struct TYPE_16__ {void* offset; int /*<<< orphan*/  obj_type; void* obj_id; } ;
-struct TYPE_13__ {scalar_t__ size; int /*<<< orphan*/  key; int /*<<< orphan*/  data; } ;
-typedef  int /*<<< orphan*/  PIRP ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
-typedef  TYPE_4__ KEY ;
+typedef TYPE_2__ traverse_ptr ;
+struct TYPE_15__ {int root_root; } ;
+typedef TYPE_3__ device_extension ;
+struct TYPE_16__ {void* offset; int obj_type; void* obj_id; } ;
+struct TYPE_13__ {scalar_t__ size; int key; int data; } ;
+typedef int PIRP ;
+typedef int NTSTATUS ;
+typedef TYPE_4__ KEY ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ALLOC_TAG ; 
- int /*<<< orphan*/  ERR (char*,...) ; 
- int /*<<< orphan*/ * ExAllocatePoolWithTag (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ExFreePool (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  NT_SUCCESS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PagedPool ; 
- int /*<<< orphan*/  RtlCopyMemory (int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  STATUS_INSUFFICIENT_RESOURCES ; 
- int /*<<< orphan*/  STATUS_SUCCESS ; 
- int /*<<< orphan*/  TYPE_ROOT_BACKREF ; 
- int /*<<< orphan*/  TYPE_ROOT_REF ; 
- int /*<<< orphan*/  delete_tree_item (TYPE_3__*,TYPE_2__*) ; 
- int /*<<< orphan*/  find_item (TYPE_3__*,int /*<<< orphan*/ ,TYPE_2__*,TYPE_4__*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  insert_tree_item (TYPE_3__*,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  keycmp (int /*<<< orphan*/ ,TYPE_4__) ; 
+
+ int ALLOC_TAG ;
+ int ERR (char*,...) ;
+ int * ExAllocatePoolWithTag (int ,scalar_t__,int ) ;
+ int ExFreePool (int *) ;
+ int NT_SUCCESS (int ) ;
+ int PagedPool ;
+ int RtlCopyMemory (int *,int ,scalar_t__) ;
+ int STATUS_INSUFFICIENT_RESOURCES ;
+ int STATUS_SUCCESS ;
+ int TYPE_ROOT_BACKREF ;
+ int TYPE_ROOT_REF ;
+ int delete_tree_item (TYPE_3__*,TYPE_2__*) ;
+ int find_item (TYPE_3__*,int ,TYPE_2__*,TYPE_4__*,int,int ) ;
+ int insert_tree_item (TYPE_3__*,int ,void*,int ,void*,int *,scalar_t__,int *,int ) ;
+ int keycmp (int ,TYPE_4__) ;
 
 __attribute__((used)) static NTSTATUS update_root_backref(device_extension* Vcb, uint64_t subvolid, uint64_t parsubvolid, PIRP Irp) {
     KEY searchkey;
@@ -55,7 +55,7 @@ __attribute__((used)) static NTSTATUS update_root_backref(device_extension* Vcb,
     searchkey.obj_type = TYPE_ROOT_REF;
     searchkey.offset = subvolid;
 
-    Status = find_item(Vcb, Vcb->root_root, &tp, &searchkey, false, Irp);
+    Status = find_item(Vcb, Vcb->root_root, &tp, &searchkey, 0, Irp);
     if (!NT_SUCCESS(Status)) {
         ERR("error - find_item returned %08x\n", Status);
         return Status;
@@ -73,14 +73,14 @@ __attribute__((used)) static NTSTATUS update_root_backref(device_extension* Vcb,
         RtlCopyMemory(data, tp.item->data, datalen);
     } else {
         datalen = 0;
-        data = NULL;
+        data = ((void*)0);
     }
 
     searchkey.obj_id = subvolid;
     searchkey.obj_type = TYPE_ROOT_BACKREF;
     searchkey.offset = parsubvolid;
 
-    Status = find_item(Vcb, Vcb->root_root, &tp, &searchkey, false, Irp);
+    Status = find_item(Vcb, Vcb->root_root, &tp, &searchkey, 0, Irp);
     if (!NT_SUCCESS(Status)) {
         ERR("error - find_item returned %08x\n", Status);
 
@@ -103,7 +103,7 @@ __attribute__((used)) static NTSTATUS update_root_backref(device_extension* Vcb,
     }
 
     if (datalen > 0) {
-        Status = insert_tree_item(Vcb, Vcb->root_root, subvolid, TYPE_ROOT_BACKREF, parsubvolid, data, datalen, NULL, Irp);
+        Status = insert_tree_item(Vcb, Vcb->root_root, subvolid, TYPE_ROOT_BACKREF, parsubvolid, data, datalen, ((void*)0), Irp);
         if (!NT_SUCCESS(Status)) {
             ERR("insert_tree_item returned %08x\n", Status);
             ExFreePool(data);

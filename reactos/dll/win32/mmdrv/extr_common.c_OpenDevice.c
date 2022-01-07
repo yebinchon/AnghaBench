@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT ;
-struct TYPE_8__ {int /*<<< orphan*/  dwInstance; int /*<<< orphan*/  hWave; int /*<<< orphan*/  dwCallback; } ;
-struct TYPE_7__ {int /*<<< orphan*/  app_user_data; int /*<<< orphan*/  mme_wave_handle; int /*<<< orphan*/  callback; scalar_t__ flags; int /*<<< orphan*/  kernel_device_handle; } ;
-typedef  TYPE_1__ SessionInfo ;
-typedef  int /*<<< orphan*/  PVOID ;
-typedef  scalar_t__ MMRESULT ;
-typedef  TYPE_2__* LPWAVEOPENDESC ;
-typedef  scalar_t__ DeviceType ;
-typedef  scalar_t__ DWORD_PTR ;
-typedef  scalar_t__ DWORD ;
 
-/* Variables and functions */
- scalar_t__ CreateSession (scalar_t__,int /*<<< orphan*/ ,TYPE_1__**) ; 
- int /*<<< orphan*/  DPRINT (char*) ; 
- int /*<<< orphan*/  DestroySession (TYPE_1__*) ; 
- int /*<<< orphan*/  GENERIC_READ ; 
- scalar_t__ IsWaveDevice (scalar_t__) ; 
- int MIM_OPEN ; 
- scalar_t__ MMSYSERR_NOERROR ; 
- scalar_t__ MMSYSERR_NOTSUPPORTED ; 
- int MOM_OPEN ; 
- scalar_t__ MidiInDevice ; 
- scalar_t__ MidiOutDevice ; 
- int /*<<< orphan*/  NotifyClient (TYPE_1__*,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ OpenKernelDevice (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ StartSessionThread (TYPE_1__*) ; 
- int WIM_OPEN ; 
- int WOM_OPEN ; 
- scalar_t__ WaveInDevice ; 
- scalar_t__ WaveOutDevice ; 
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int UINT ;
+struct TYPE_8__ {int dwInstance; int hWave; int dwCallback; } ;
+struct TYPE_7__ {int app_user_data; int mme_wave_handle; int callback; scalar_t__ flags; int kernel_device_handle; } ;
+typedef TYPE_1__ SessionInfo ;
+typedef int PVOID ;
+typedef scalar_t__ MMRESULT ;
+typedef TYPE_2__* LPWAVEOPENDESC ;
+typedef scalar_t__ DeviceType ;
+typedef scalar_t__ DWORD_PTR ;
+typedef scalar_t__ DWORD ;
+
+
+ scalar_t__ CreateSession (scalar_t__,int ,TYPE_1__**) ;
+ int DPRINT (char*) ;
+ int DestroySession (TYPE_1__*) ;
+ int GENERIC_READ ;
+ scalar_t__ IsWaveDevice (scalar_t__) ;
+ int MIM_OPEN ;
+ scalar_t__ MMSYSERR_NOERROR ;
+ scalar_t__ MMSYSERR_NOTSUPPORTED ;
+ int MOM_OPEN ;
+ scalar_t__ MidiInDevice ;
+ scalar_t__ MidiOutDevice ;
+ int NotifyClient (TYPE_1__*,scalar_t__,int ,int ) ;
+ scalar_t__ OpenKernelDevice (scalar_t__,int ,int ,int *) ;
+ scalar_t__ StartSessionThread (TYPE_1__*) ;
+ int WIM_OPEN ;
+ int WOM_OPEN ;
+ scalar_t__ WaveInDevice ;
+ scalar_t__ WaveOutDevice ;
 
 DWORD
 OpenDevice(
@@ -55,7 +55,7 @@ OpenDevice(
     MMRESULT result;
     DWORD message;
 
-    /* This will automatically check for duplicate sessions */
+
     result = CreateSession(device_type, device_id, &session_info);
 
     if ( result != MMSYSERR_NOERROR )
@@ -76,11 +76,11 @@ OpenDevice(
         return result;
     }
 
-    /* Set common session data */
+
 
     session_info->flags = flags;
 
-    /* Set wave/MIDI specific data */
+
 
     if ( IsWaveDevice(device_type) )
     {
@@ -96,7 +96,7 @@ OpenDevice(
         return MMSYSERR_NOTSUPPORTED;
     }
 
-    /* Start the processing thread */
+
 
     result = StartSessionThread(session_info);
 
@@ -106,11 +106,11 @@ OpenDevice(
         return result;
     }
 
-    /* Store the session info */
+
 
     *((SessionInfo**)private_handle) = session_info;
 
-    /* Send the right message */
+
 
     message = (device_type == WaveOutDevice) ? WOM_OPEN :
               (device_type == WaveInDevice) ? WIM_OPEN :

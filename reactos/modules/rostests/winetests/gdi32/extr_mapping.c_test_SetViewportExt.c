@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_8__ {scalar_t__ x; scalar_t__ y; } ;
 struct TYPE_7__ {scalar_t__ cx; scalar_t__ cy; } ;
-typedef  TYPE_1__ SIZE ;
-typedef  TYPE_2__ POINT ;
-typedef  scalar_t__ LONG ;
-typedef  int /*<<< orphan*/  HDC ;
+typedef TYPE_1__ SIZE ;
+typedef TYPE_2__ POINT ;
+typedef scalar_t__ LONG ;
+typedef int HDC ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetViewportExtEx (int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  GetViewportOrgEx (int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  GetWindowExtEx (int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  GetWindowOrgEx (int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  SetViewportExtEx (int /*<<< orphan*/ ,scalar_t__,scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- scalar_t__ rough_match (scalar_t__,scalar_t__) ; 
+
+ int GetViewportExtEx (int ,TYPE_1__*) ;
+ int GetViewportOrgEx (int ,TYPE_2__*) ;
+ int GetWindowExtEx (int ,TYPE_1__*) ;
+ int GetWindowOrgEx (int ,TYPE_2__*) ;
+ int SetViewportExtEx (int ,scalar_t__,scalar_t__,int *) ;
+ int ok (int,char*,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ scalar_t__ rough_match (scalar_t__,scalar_t__) ;
 
 __attribute__((used)) static void test_SetViewportExt(HDC hdc, LONG cx, LONG cy, LONG expected_vp_cx, LONG expected_vp_cy)
 {
@@ -37,7 +37,7 @@ __attribute__((used)) static void test_SetViewportExt(HDC hdc, LONG cx, LONG cy,
     GetViewportOrgEx(hdc, &viewportOrg);
     GetWindowExtEx(hdc, &windowExt);
 
-    SetViewportExtEx(hdc, cx, cy, NULL);
+    SetViewportExtEx(hdc, cx, cy, ((void*)0));
     GetViewportExtEx(hdc, &viewportExt);
     ok(rough_match(viewportExt.cx, expected_vp_cx) && rough_match(viewportExt.cy, expected_vp_cy),
         "Viewport extents have not been properly adjusted: Expected %dx%d, got %dx%d\n",

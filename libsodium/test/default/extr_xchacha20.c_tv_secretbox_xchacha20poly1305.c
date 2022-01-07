@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint32_t ;
-struct TYPE_2__ {char* member_0; char* member_1; char* member_2; char* member_3; int /*<<< orphan*/  out; int /*<<< orphan*/  m; int /*<<< orphan*/  nonce; int /*<<< orphan*/  key; } ;
-typedef  TYPE_1__ XChaCha20Poly1305TV ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ crypto_secretbox_xchacha20poly1305_KEYBYTES ; 
- size_t crypto_secretbox_xchacha20poly1305_MACBYTES ; 
- scalar_t__ crypto_secretbox_xchacha20poly1305_MESSAGEBYTES_MAX ; 
- scalar_t__ crypto_secretbox_xchacha20poly1305_NONCEBYTES ; 
- int /*<<< orphan*/  crypto_secretbox_xchacha20poly1305_detached (unsigned char*,unsigned char*,unsigned char*,size_t,unsigned char*,unsigned char*) ; 
- scalar_t__ crypto_secretbox_xchacha20poly1305_easy (unsigned char*,unsigned char*,size_t,unsigned char*,unsigned char*) ; 
- scalar_t__ crypto_secretbox_xchacha20poly1305_keybytes () ; 
- size_t crypto_secretbox_xchacha20poly1305_macbytes () ; 
- scalar_t__ crypto_secretbox_xchacha20poly1305_messagebytes_max () ; 
- scalar_t__ crypto_secretbox_xchacha20poly1305_noncebytes () ; 
- scalar_t__ crypto_secretbox_xchacha20poly1305_open_detached (unsigned char*,unsigned char*,unsigned char*,size_t,unsigned char*,unsigned char*) ; 
- int crypto_secretbox_xchacha20poly1305_open_easy (unsigned char*,unsigned char*,size_t,unsigned char*,unsigned char*) ; 
- scalar_t__ memcmp (unsigned char*,unsigned char*,size_t) ; 
- int /*<<< orphan*/  printf (char*) ; 
- size_t randombytes_uniform (scalar_t__) ; 
- int /*<<< orphan*/  sodium_free (unsigned char*) ; 
- int /*<<< orphan*/  sodium_hex2bin (unsigned char*,size_t,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ sodium_malloc (size_t) ; 
- int strlen (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint32_t ;
+struct TYPE_2__ {char* member_0; char* member_1; char* member_2; char* member_3; int out; int m; int nonce; int key; } ;
+typedef TYPE_1__ XChaCha20Poly1305TV ;
+
+
+ int assert (int) ;
+ scalar_t__ crypto_secretbox_xchacha20poly1305_KEYBYTES ;
+ size_t crypto_secretbox_xchacha20poly1305_MACBYTES ;
+ scalar_t__ crypto_secretbox_xchacha20poly1305_MESSAGEBYTES_MAX ;
+ scalar_t__ crypto_secretbox_xchacha20poly1305_NONCEBYTES ;
+ int crypto_secretbox_xchacha20poly1305_detached (unsigned char*,unsigned char*,unsigned char*,size_t,unsigned char*,unsigned char*) ;
+ scalar_t__ crypto_secretbox_xchacha20poly1305_easy (unsigned char*,unsigned char*,size_t,unsigned char*,unsigned char*) ;
+ scalar_t__ crypto_secretbox_xchacha20poly1305_keybytes () ;
+ size_t crypto_secretbox_xchacha20poly1305_macbytes () ;
+ scalar_t__ crypto_secretbox_xchacha20poly1305_messagebytes_max () ;
+ scalar_t__ crypto_secretbox_xchacha20poly1305_noncebytes () ;
+ scalar_t__ crypto_secretbox_xchacha20poly1305_open_detached (unsigned char*,unsigned char*,unsigned char*,size_t,unsigned char*,unsigned char*) ;
+ int crypto_secretbox_xchacha20poly1305_open_easy (unsigned char*,unsigned char*,size_t,unsigned char*,unsigned char*) ;
+ scalar_t__ memcmp (unsigned char*,unsigned char*,size_t) ;
+ int printf (char*) ;
+ size_t randombytes_uniform (scalar_t__) ;
+ int sodium_free (unsigned char*) ;
+ int sodium_hex2bin (unsigned char*,size_t,int ,int,int *,int *,int *) ;
+ scalar_t__ sodium_malloc (size_t) ;
+ int strlen (int ) ;
 
 __attribute__((used)) static void
 tv_secretbox_xchacha20poly1305(void)
@@ -53,14 +53,14 @@ tv_secretbox_xchacha20poly1305(void)
         { "e588e418d658df1b2b1583122e26f74ca3506b425087bea895d81021168f8164", "4f4d0ffd699268cd841ce4f603fe0cd27b8069fcf8215fbb", "f91bcdcf4d08ba8598407ba8ef661e66c59ca9d89f3c0a3542e47246c777091e4864e63e1e3911dc01257255e551527a53a34481be", "22dc88de7cacd4d9ce73359f7d6e16e74caeaa7b0d1ef2bb10fda4e79c3d5a9aa04b8b03575fd27bc970c9ed0dc80346162469e0547030ddccb8cdc95981400907c87c9442" }
     };
     const XChaCha20Poly1305TV *tv;
-    unsigned char             *m;
-    unsigned char             *nonce;
-    unsigned char             *key;
-    unsigned char             *out;
-    unsigned char             *out2;
-    size_t                     m_len;
-    size_t                     n;
-    size_t                     i;
+    unsigned char *m;
+    unsigned char *nonce;
+    unsigned char *key;
+    unsigned char *out;
+    unsigned char *out2;
+    size_t m_len;
+    size_t n;
+    size_t i;
 
     key = (unsigned char *) sodium_malloc
         (crypto_secretbox_xchacha20poly1305_KEYBYTES);
@@ -71,16 +71,16 @@ tv_secretbox_xchacha20poly1305(void)
         m_len = strlen(tv->m) / 2;
         m = (unsigned char *) sodium_malloc(m_len);
         sodium_hex2bin(key, crypto_secretbox_xchacha20poly1305_KEYBYTES,
-                       tv->key, strlen(tv->key), NULL, NULL, NULL);
+                       tv->key, strlen(tv->key), ((void*)0), ((void*)0), ((void*)0));
         sodium_hex2bin(nonce, crypto_secretbox_xchacha20poly1305_NONCEBYTES,
-                       tv->nonce, strlen(tv->nonce), NULL, NULL, NULL);
-        sodium_hex2bin(m, m_len, tv->m, strlen(tv->m), NULL, NULL, NULL);
+                       tv->nonce, strlen(tv->nonce), ((void*)0), ((void*)0), ((void*)0));
+        sodium_hex2bin(m, m_len, tv->m, strlen(tv->m), ((void*)0), ((void*)0), ((void*)0));
         out = (unsigned char *) sodium_malloc
             (crypto_secretbox_xchacha20poly1305_MACBYTES + m_len);
         out2 = (unsigned char *) sodium_malloc
             (crypto_secretbox_xchacha20poly1305_MACBYTES + m_len);
         sodium_hex2bin(out, crypto_secretbox_xchacha20poly1305_MACBYTES + m_len,
-                       tv->out, strlen(tv->out), NULL, NULL, NULL);
+                       tv->out, strlen(tv->out), ((void*)0), ((void*)0), ((void*)0));
         assert(crypto_secretbox_xchacha20poly1305_easy(out2, m, 0, nonce, key) == 0);
         assert(crypto_secretbox_xchacha20poly1305_easy(out2, m, m_len, nonce, key) == 0);
         assert(memcmp(out, out2,
@@ -115,7 +115,7 @@ tv_secretbox_xchacha20poly1305(void)
                (out2, out + crypto_secretbox_xchacha20poly1305_MACBYTES, out,
                 m_len, nonce, key) == 0);
         assert(crypto_secretbox_xchacha20poly1305_open_detached
-               (NULL, out + crypto_secretbox_xchacha20poly1305_MACBYTES, out,
+               (((void*)0), out + crypto_secretbox_xchacha20poly1305_MACBYTES, out,
                 m_len, nonce, key) == 0);
         crypto_secretbox_xchacha20poly1305_detached
             (out2 + crypto_secretbox_xchacha20poly1305_MACBYTES, out2, m,

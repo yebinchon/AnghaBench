@@ -1,62 +1,62 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_22__   TYPE_5__ ;
-typedef  struct TYPE_21__   TYPE_4__ ;
-typedef  struct TYPE_20__   TYPE_3__ ;
-typedef  struct TYPE_19__   TYPE_2__ ;
-typedef  struct TYPE_18__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_revnum_t ;
+
+
+typedef struct TYPE_22__ TYPE_5__ ;
+typedef struct TYPE_21__ TYPE_4__ ;
+typedef struct TYPE_20__ TYPE_3__ ;
+typedef struct TYPE_19__ TYPE_2__ ;
+typedef struct TYPE_18__ TYPE_1__ ;
+
+
+typedef int svn_revnum_t ;
 struct TYPE_19__ {TYPE_3__* priv; } ;
-typedef  TYPE_2__ svn_ra_session_t ;
-typedef  int /*<<< orphan*/  svn_ra_serf__xml_context_t ;
-struct TYPE_20__ {int /*<<< orphan*/  repos_root_str; int /*<<< orphan*/  session_url_str; } ;
-typedef  TYPE_3__ svn_ra_serf__session_t ;
+typedef TYPE_2__ svn_ra_session_t ;
+typedef int svn_ra_serf__xml_context_t ;
+struct TYPE_20__ {int repos_root_str; int session_url_str; } ;
+typedef TYPE_3__ svn_ra_serf__session_t ;
 struct TYPE_18__ {int code; } ;
-struct TYPE_21__ {char* method; char const* path; char* body_type; TYPE_1__ sline; TYPE_5__* body_delegate_baton; int /*<<< orphan*/  body_delegate; } ;
-typedef  TYPE_4__ svn_ra_serf__handler_t ;
-typedef  int /*<<< orphan*/  svn_prop_inherited_item_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-struct TYPE_22__ {char const* path; int /*<<< orphan*/ * iprops; int /*<<< orphan*/  revision; int /*<<< orphan*/ * curr_iprop; int /*<<< orphan*/  curr_propname; int /*<<< orphan*/ * pool; int /*<<< orphan*/  repos_root_url; } ;
-typedef  TYPE_5__ iprops_context_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_array_header_t ;
+struct TYPE_21__ {char* method; char const* path; char* body_type; TYPE_1__ sline; TYPE_5__* body_delegate_baton; int body_delegate; } ;
+typedef TYPE_4__ svn_ra_serf__handler_t ;
+typedef int svn_prop_inherited_item_t ;
+typedef int svn_error_t ;
+typedef int svn_boolean_t ;
+struct TYPE_22__ {char const* path; int * iprops; int revision; int * curr_iprop; int curr_propname; int * pool; int repos_root_url; } ;
+typedef TYPE_5__ iprops_context_t ;
+typedef int apr_pool_t ;
+typedef int apr_array_header_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_ASSERT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  SVN_RA_CAPABILITY_INHERITED_PROPS ; 
- int /*<<< orphan*/ * apr_array_make (int /*<<< orphan*/ *,int,int) ; 
- TYPE_5__* apr_pcalloc (int /*<<< orphan*/ *,int) ; 
- char* apr_pstrdup (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  create_iprops_body ; 
- int /*<<< orphan*/ * get_iprops_via_more_requests (TYPE_2__*,int /*<<< orphan*/ **,char const*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  iprops_closed ; 
- int /*<<< orphan*/  iprops_opened ; 
- int /*<<< orphan*/  iprops_table ; 
- scalar_t__ strcmp (char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * svn_error_compose_create (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * svn_error_trace (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_ra_serf__context_run_one (TYPE_4__*,int /*<<< orphan*/ *) ; 
- TYPE_4__* svn_ra_serf__create_expat_handler (TYPE_3__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_ra_serf__get_repos_root (TYPE_2__*,char const**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_ra_serf__get_stable_url (char const**,int /*<<< orphan*/ *,TYPE_3__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_ra_serf__has_capability (TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_ra_serf__reparent (TYPE_2__*,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_ra_serf__unexpected_status (TYPE_4__*) ; 
- int /*<<< orphan*/ * svn_ra_serf__xml_context_create (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,TYPE_5__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_stringbuf_create_empty (int /*<<< orphan*/ *) ; 
+
+ int SVN_ERR (int ) ;
+ int SVN_ERR_ASSERT (int ) ;
+ int * SVN_NO_ERROR ;
+ int SVN_RA_CAPABILITY_INHERITED_PROPS ;
+ int * apr_array_make (int *,int,int) ;
+ TYPE_5__* apr_pcalloc (int *,int) ;
+ char* apr_pstrdup (int *,int ) ;
+ int create_iprops_body ;
+ int * get_iprops_via_more_requests (TYPE_2__*,int **,char const*,char const*,int ,int *,int *) ;
+ int iprops_closed ;
+ int iprops_opened ;
+ int iprops_table ;
+ scalar_t__ strcmp (char const*,int ) ;
+ int * svn_error_compose_create (int *,int ) ;
+ int * svn_error_trace (int *) ;
+ int svn_ra_serf__context_run_one (TYPE_4__*,int *) ;
+ TYPE_4__* svn_ra_serf__create_expat_handler (TYPE_3__*,int *,int *,int *) ;
+ int svn_ra_serf__get_repos_root (TYPE_2__*,char const**,int *) ;
+ int svn_ra_serf__get_stable_url (char const**,int *,TYPE_3__*,int *,int ,int *,int *) ;
+ int svn_ra_serf__has_capability (TYPE_2__*,int *,int ,int *) ;
+ int svn_ra_serf__reparent (TYPE_2__*,char const*,int *) ;
+ int * svn_ra_serf__unexpected_status (TYPE_4__*) ;
+ int * svn_ra_serf__xml_context_create (int ,int ,int ,int *,TYPE_5__*,int *) ;
+ int svn_stringbuf_create_empty (int *) ;
 
 svn_error_t *
 svn_ra_serf__get_inherited_props(svn_ra_session_t *ra_session,
@@ -80,7 +80,7 @@ svn_ra_serf__get_inherited_props(svn_ra_session_t *ra_session,
   if (!iprop_capable)
     {
       svn_error_t *err;
-      const char *reparent_uri = NULL;
+      const char *reparent_uri = ((void*)0);
       const char *session_uri;
       const char *repos_root_url;
 
@@ -90,7 +90,7 @@ svn_ra_serf__get_inherited_props(svn_ra_session_t *ra_session,
       session_uri = apr_pstrdup(scratch_pool, session->session_url_str);
       if (strcmp(repos_root_url, session->session_url_str) != 0)
         {
-          reparent_uri  = session_uri;
+          reparent_uri = session_uri;
           SVN_ERR(svn_ra_serf__reparent(ra_session, repos_root_url,
                                         scratch_pool));
         }
@@ -108,9 +108,9 @@ svn_ra_serf__get_inherited_props(svn_ra_session_t *ra_session,
     }
 
   SVN_ERR(svn_ra_serf__get_stable_url(&req_url,
-                                      NULL /* latest_revnum */,
+                                      ((void*)0) ,
                                       session,
-                                      NULL /* url */,
+                                      ((void*)0) ,
                                       revision,
                                       scratch_pool, scratch_pool));
 
@@ -120,7 +120,7 @@ svn_ra_serf__get_inherited_props(svn_ra_session_t *ra_session,
   iprops_ctx->repos_root_url = session->repos_root_str;
   iprops_ctx->pool = result_pool;
   iprops_ctx->curr_propname = svn_stringbuf_create_empty(scratch_pool);
-  iprops_ctx->curr_iprop = NULL;
+  iprops_ctx->curr_iprop = ((void*)0);
   iprops_ctx->iprops = apr_array_make(result_pool, 1,
                                        sizeof(svn_prop_inherited_item_t *));
   iprops_ctx->path = path;
@@ -128,10 +128,10 @@ svn_ra_serf__get_inherited_props(svn_ra_session_t *ra_session,
 
   xmlctx = svn_ra_serf__xml_context_create(iprops_table,
                                            iprops_opened, iprops_closed,
-                                           NULL,
+                                           ((void*)0),
                                            iprops_ctx,
                                            scratch_pool);
-  handler = svn_ra_serf__create_expat_handler(session, xmlctx, NULL,
+  handler = svn_ra_serf__create_expat_handler(session, xmlctx, ((void*)0),
                                               scratch_pool);
 
   handler->method = "REPORT";

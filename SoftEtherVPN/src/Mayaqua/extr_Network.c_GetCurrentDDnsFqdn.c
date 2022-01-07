@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ UINT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ClearStr (char*,scalar_t__) ; 
- int /*<<< orphan*/  Lock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  StrCpy (char*,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Trim (char*) ; 
- int /*<<< orphan*/  Unlock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  current_fqdn ; 
- int /*<<< orphan*/  current_fqdn_lock ; 
+
+
+
+typedef scalar_t__ UINT ;
+
+
+ int ClearStr (char*,scalar_t__) ;
+ int Lock (int ) ;
+ int StrCpy (char*,scalar_t__,int ) ;
+ int Trim (char*) ;
+ int Unlock (int ) ;
+ int current_fqdn ;
+ int current_fqdn_lock ;
 
 void GetCurrentDDnsFqdn(char *name, UINT size)
 {
-	ClearStr(name, size);
-	// Validate arguments
-	if (name == NULL || size == 0)
-	{
-		return;
-	}
+ ClearStr(name, size);
 
-	Lock(current_fqdn_lock);
-	{
-		StrCpy(name, size, current_fqdn);
-	}
-	Unlock(current_fqdn_lock);
+ if (name == ((void*)0) || size == 0)
+ {
+  return;
+ }
 
-	Trim(name);
+ Lock(current_fqdn_lock);
+ {
+  StrCpy(name, size, current_fqdn);
+ }
+ Unlock(current_fqdn_lock);
+
+ Trim(name);
 }

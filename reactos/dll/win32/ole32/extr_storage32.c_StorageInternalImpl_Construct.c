@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int /*<<< orphan*/ * lpVtbl; } ;
-struct TYPE_7__ {int /*<<< orphan*/ * lpVtbl; } ;
-struct TYPE_9__ {int openFlags; int ref; void* create; int /*<<< orphan*/  storageDirEntry; void* reverted; int /*<<< orphan*/ * baseVtbl; TYPE_2__ IPropertySetStorage_iface; TYPE_1__ IStorage_iface; int /*<<< orphan*/  storageHead; int /*<<< orphan*/  strmHead; } ;
-struct TYPE_10__ {TYPE_3__ base; int /*<<< orphan*/ * parentStorage; } ;
-typedef  TYPE_4__ StorageInternalImpl ;
-typedef  int /*<<< orphan*/  StorageBaseImpl ;
-typedef  int /*<<< orphan*/  DirRef ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- void* FALSE ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HEAP_ZERO_MEMORY ; 
- TYPE_4__* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  IPropertySetStorage_Vtbl ; 
- int STGM_CREATE ; 
- int /*<<< orphan*/  StorageInternalImpl_BaseVtbl ; 
- int /*<<< orphan*/  StorageInternalImpl_Vtbl ; 
- int /*<<< orphan*/  list_init (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int * lpVtbl; } ;
+struct TYPE_7__ {int * lpVtbl; } ;
+struct TYPE_9__ {int openFlags; int ref; void* create; int storageDirEntry; void* reverted; int * baseVtbl; TYPE_2__ IPropertySetStorage_iface; TYPE_1__ IStorage_iface; int storageHead; int strmHead; } ;
+struct TYPE_10__ {TYPE_3__ base; int * parentStorage; } ;
+typedef TYPE_4__ StorageInternalImpl ;
+typedef int StorageBaseImpl ;
+typedef int DirRef ;
+typedef int DWORD ;
+
+
+ void* FALSE ;
+ int GetProcessHeap () ;
+ int HEAP_ZERO_MEMORY ;
+ TYPE_4__* HeapAlloc (int ,int ,int) ;
+ int IPropertySetStorage_Vtbl ;
+ int STGM_CREATE ;
+ int StorageInternalImpl_BaseVtbl ;
+ int StorageInternalImpl_Vtbl ;
+ int list_init (int *) ;
 
 __attribute__((used)) static StorageInternalImpl* StorageInternalImpl_Construct(
   StorageBaseImpl* parentStorage,
-  DWORD        openFlags,
-  DirRef       storageDirEntry)
+  DWORD openFlags,
+  DirRef storageDirEntry)
 {
   StorageInternalImpl* newStorage;
 
@@ -49,9 +49,9 @@ __attribute__((used)) static StorageInternalImpl* StorageInternalImpl_Construct(
 
     list_init(&newStorage->base.storageHead);
 
-    /*
-     * Initialize the virtual function table.
-     */
+
+
+
     newStorage->base.IStorage_iface.lpVtbl = &StorageInternalImpl_Vtbl;
     newStorage->base.IPropertySetStorage_iface.lpVtbl = &IPropertySetStorage_Vtbl;
     newStorage->base.baseVtbl = &StorageInternalImpl_BaseVtbl;
@@ -63,9 +63,9 @@ __attribute__((used)) static StorageInternalImpl* StorageInternalImpl_Construct(
 
     newStorage->parentStorage = parentStorage;
 
-    /*
-     * Keep a reference to the directory entry of this storage
-     */
+
+
+
     newStorage->base.storageDirEntry = storageDirEntry;
 
     newStorage->base.create = FALSE;

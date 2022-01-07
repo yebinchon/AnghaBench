@@ -1,29 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ ISC_R_SUCCESS ; 
- int /*<<< orphan*/  RUNTIME_CHECK (int) ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  initialise ; 
- int /*<<< orphan*/  initialise_once ; 
- int /*<<< orphan*/  initialised ; 
- scalar_t__ isc_once_do (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+ scalar_t__ ISC_R_SUCCESS ;
+ int RUNTIME_CHECK (int) ;
+ int exit (int) ;
+ int initialise ;
+ int initialise_once ;
+ int initialised ;
+ scalar_t__ isc_once_do (int *,int ) ;
 
 void
 InitSockets(void) {
-	RUNTIME_CHECK(isc_once_do(&initialise_once,
-				  initialise) == ISC_R_SUCCESS);
-	if (!initialised)
-		exit(1);
+ RUNTIME_CHECK(isc_once_do(&initialise_once,
+      initialise) == ISC_R_SUCCESS);
+ if (!initialised)
+  exit(1);
 }

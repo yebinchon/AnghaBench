@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct simple_pattern {char negative; struct simple_pattern* next; } ;
-typedef  int /*<<< orphan*/  isseparator ;
-typedef  int /*<<< orphan*/  SIMPLE_PREFIX_MODE ;
-typedef  struct simple_pattern SIMPLE_PATTERN ;
+typedef int isseparator ;
+typedef int SIMPLE_PREFIX_MODE ;
+typedef struct simple_pattern SIMPLE_PATTERN ;
 
-/* Variables and functions */
- int /*<<< orphan*/  freez (char*) ; 
- char* mallocz (scalar_t__) ; 
- int /*<<< orphan*/  memset (int*,int /*<<< orphan*/ ,int) ; 
- struct simple_pattern* parse_pattern (char*,int /*<<< orphan*/ ) ; 
- scalar_t__ strlen (char const*) ; 
- scalar_t__ unlikely (int) ; 
+
+ int freez (char*) ;
+ char* mallocz (scalar_t__) ;
+ int memset (int*,int ,int) ;
+ struct simple_pattern* parse_pattern (char*,int ) ;
+ scalar_t__ strlen (char const*) ;
+ scalar_t__ unlikely (int) ;
 
 SIMPLE_PATTERN *simple_pattern_create(const char *list, const char *separators, SIMPLE_PREFIX_MODE default_mode) {
-    struct simple_pattern *root = NULL, *last = NULL;
+    struct simple_pattern *root = ((void*)0), *last = ((void*)0);
 
     if(unlikely(!list || !*list)) return root;
 
     int isseparator[256] = {
-            [' '] = 1       // space
-            , ['\t'] = 1    // tab
-            , ['\r'] = 1    // carriage return
-            , ['\n'] = 1    // new line
-            , ['\f'] = 1    // form feed
-            , ['\v'] = 1    // vertical tab
+            [' '] = 1
+            , ['\t'] = 1
+            , ['\r'] = 1
+            , ['\n'] = 1
+            , ['\f'] = 1
+            , ['\v'] = 1
     };
 
     if (unlikely(separators && *separators)) {
@@ -51,7 +51,7 @@ SIMPLE_PATTERN *simple_pattern_create(const char *list, const char *separators, 
 
         char negative = 0;
 
-        // skip all spaces
+
         while(isseparator[(unsigned char)*s])
             s++;
 
@@ -60,11 +60,11 @@ SIMPLE_PATTERN *simple_pattern_create(const char *list, const char *separators, 
             s++;
         }
 
-        // empty string
+
         if(unlikely(!*s))
             break;
 
-        // find the next space
+
         char escape = 0;
         while(*s) {
             if(*s == '\\' && !escape) {
@@ -82,18 +82,18 @@ SIMPLE_PATTERN *simple_pattern_create(const char *list, const char *separators, 
             }
         }
 
-        // terminate our string
+
         *c = '\0';
 
-        // if we matched the empty string, skip it
+
         if(unlikely(!*buf))
             continue;
 
-        // fprintf(stderr, "FOUND PATTERN: '%s'\n", buf);
+
         struct simple_pattern *m = parse_pattern(buf, default_mode);
         m->negative = negative;
 
-        // link it at the end
+
         if(unlikely(!root))
             root = last = m;
         else {

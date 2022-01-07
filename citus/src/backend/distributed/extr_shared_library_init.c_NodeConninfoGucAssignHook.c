@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {char* val; int /*<<< orphan*/ * keyword; } ;
-typedef  TYPE_1__ PQconninfoOption ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AddConnParam (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  FATAL ; 
- int /*<<< orphan*/  PQconninfoFree (TYPE_1__*) ; 
- TYPE_1__* PQconninfoParse (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ResetConnParams () ; 
- int /*<<< orphan*/  ereport (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errdetail (char*) ; 
- int /*<<< orphan*/  errmsg (char*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {char* val; int * keyword; } ;
+typedef TYPE_1__ PQconninfoOption ;
+
+
+ int AddConnParam (int *,char*) ;
+ int FATAL ;
+ int PQconninfoFree (TYPE_1__*) ;
+ TYPE_1__* PQconninfoParse (char const*,int *) ;
+ int ResetConnParams () ;
+ int ereport (int ,int ) ;
+ int errdetail (char*) ;
+ int errmsg (char*) ;
 
 __attribute__((used)) static void
 NodeConninfoGucAssignHook(const char *newval, void *extra)
 {
-	PQconninfoOption *optionArray = NULL;
-	PQconninfoOption *option = NULL;
+ PQconninfoOption *optionArray = ((void*)0);
+ PQconninfoOption *option = ((void*)0);
 
-	if (newval == NULL)
-	{
-		newval = "";
-	}
+ if (newval == ((void*)0))
+ {
+  newval = "";
+ }
 
-	optionArray = PQconninfoParse(newval, NULL);
-	if (optionArray == NULL)
-	{
-		ereport(FATAL, (errmsg("cannot parse node_conninfo value"),
-						errdetail("The GUC check hook should prevent "
-								  "all malformed values.")));
-	}
+ optionArray = PQconninfoParse(newval, ((void*)0));
+ if (optionArray == ((void*)0))
+ {
+  ereport(FATAL, (errmsg("cannot parse node_conninfo value"),
+      errdetail("The GUC check hook should prevent "
+          "all malformed values.")));
+ }
 
-	ResetConnParams();
+ ResetConnParams();
 
-	for (option = optionArray; option->keyword != NULL; option++)
-	{
-		if (option->val == NULL || option->val[0] == '\0')
-		{
-			continue;
-		}
+ for (option = optionArray; option->keyword != ((void*)0); option++)
+ {
+  if (option->val == ((void*)0) || option->val[0] == '\0')
+  {
+   continue;
+  }
 
-		AddConnParam(option->keyword, option->val);
-	}
+  AddConnParam(option->keyword, option->val);
+ }
 
-	PQconninfoFree(optionArray);
+ PQconninfoFree(optionArray);
 }

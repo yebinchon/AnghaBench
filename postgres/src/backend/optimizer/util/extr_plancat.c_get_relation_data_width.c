@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  int32 ;
-typedef  int /*<<< orphan*/  Relation ;
-typedef  int /*<<< orphan*/  Oid ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NoLock ; 
- int /*<<< orphan*/  get_rel_data_width (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  table_close (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  table_open (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int int32 ;
+typedef int Relation ;
+typedef int Oid ;
+
+
+ int NoLock ;
+ int get_rel_data_width (int ,int *) ;
+ int table_close (int ,int ) ;
+ int table_open (int ,int ) ;
 
 int32
 get_relation_data_width(Oid relid, int32 *attr_widths)
 {
-	int32		result;
-	Relation	relation;
+ int32 result;
+ Relation relation;
 
-	/* As above, assume relation is already locked */
-	relation = table_open(relid, NoLock);
 
-	result = get_rel_data_width(relation, attr_widths);
+ relation = table_open(relid, NoLock);
 
-	table_close(relation, NoLock);
+ result = get_rel_data_width(relation, attr_widths);
 
-	return result;
+ table_close(relation, NoLock);
+
+ return result;
 }

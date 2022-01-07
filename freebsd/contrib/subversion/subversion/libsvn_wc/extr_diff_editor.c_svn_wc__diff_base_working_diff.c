@@ -1,67 +1,67 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_wc__db_t ;
-typedef  scalar_t__ svn_wc__db_status_t ;
-typedef  int /*<<< orphan*/  svn_revnum_t ;
+
+
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef int svn_wc__db_t ;
+typedef scalar_t__ svn_wc__db_status_t ;
+typedef int svn_revnum_t ;
 struct TYPE_11__ {scalar_t__ kind; scalar_t__ filesize; scalar_t__ mtime; } ;
-typedef  TYPE_1__ svn_io_dirent2_t ;
-typedef  scalar_t__ svn_filesize_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct TYPE_12__ {int /*<<< orphan*/  (* file_closed ) (char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,void*,TYPE_2__ const*,int /*<<< orphan*/ *) ;int /*<<< orphan*/  (* file_changed ) (char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,TYPE_3__*,void*,TYPE_2__ const*,int /*<<< orphan*/ *) ;int /*<<< orphan*/  (* file_opened ) (void**,scalar_t__*,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,void*,TYPE_2__ const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ;} ;
-typedef  TYPE_2__ svn_diff_tree_processor_t ;
-typedef  int /*<<< orphan*/  svn_diff_source_t ;
-typedef  int /*<<< orphan*/  svn_checksum_t ;
-typedef  int /*<<< orphan*/  svn_cancel_func_t ;
-typedef  scalar_t__ svn_boolean_t ;
-typedef  scalar_t__ apr_time_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
+typedef TYPE_1__ svn_io_dirent2_t ;
+typedef scalar_t__ svn_filesize_t ;
+typedef int svn_error_t ;
+struct TYPE_12__ {int (* file_closed ) (char const*,int *,int *,void*,TYPE_2__ const*,int *) ;int (* file_changed ) (char const*,int *,int *,char const*,char const*,int *,int *,int,TYPE_3__*,void*,TYPE_2__ const*,int *) ;int (* file_opened ) (void**,scalar_t__*,char const*,int *,int *,int *,void*,TYPE_2__ const*,int *,int *) ;} ;
+typedef TYPE_2__ svn_diff_tree_processor_t ;
+typedef int svn_diff_source_t ;
+typedef int svn_checksum_t ;
+typedef int svn_cancel_func_t ;
+typedef scalar_t__ svn_boolean_t ;
+typedef scalar_t__ apr_time_t ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
 struct TYPE_13__ {scalar_t__ nelts; } ;
-typedef  TYPE_3__ apr_array_header_t ;
+typedef TYPE_3__ apr_array_header_t ;
 
-/* Variables and functions */
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- scalar_t__ SVN_INVALID_FILESIZE ; 
- int /*<<< orphan*/  SVN_INVALID_REVNUM ; 
- int /*<<< orphan*/  SVN_IS_VALID_REVNUM (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int SVN_WC_TRANSLATE_TO_NF ; 
- int SVN_WC_TRANSLATE_USE_GLOBAL_TMP ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/ * apr_hash_make (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  stub1 (void**,scalar_t__*,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,void*,TYPE_2__ const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub2 (char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,TYPE_3__*,void*,TYPE_2__ const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub3 (char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,void*,TYPE_2__ const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_diff__source_create (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_io_files_contents_same_p (scalar_t__*,char const*,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_io_stat_dirent2 (TYPE_1__ const**,char const*,scalar_t__,scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_node_file ; 
- int /*<<< orphan*/  svn_prop_diffs (TYPE_3__**,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__db_base_get_info (scalar_t__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/  const**,int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__db_base_get_props (int /*<<< orphan*/ **,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__db_pristine_get_path (char const**,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__db_read_info (scalar_t__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/  const**,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__*,scalar_t__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__*,scalar_t__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__db_read_pristine_props (int /*<<< orphan*/ **,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__db_read_props (int /*<<< orphan*/ **,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_wc__db_status_added ; 
- scalar_t__ svn_wc__db_status_deleted ; 
- scalar_t__ svn_wc__db_status_normal ; 
- int /*<<< orphan*/  svn_wc__internal_translated_file (char const**,char const*,int /*<<< orphan*/ *,char const*,int,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ scalar_t__ FALSE ;
+ int SVN_ERR (int ) ;
+ scalar_t__ SVN_INVALID_FILESIZE ;
+ int SVN_INVALID_REVNUM ;
+ int SVN_IS_VALID_REVNUM (int ) ;
+ int * SVN_NO_ERROR ;
+ int SVN_WC_TRANSLATE_TO_NF ;
+ int SVN_WC_TRANSLATE_USE_GLOBAL_TMP ;
+ scalar_t__ TRUE ;
+ int * apr_hash_make (int *) ;
+ int assert (int) ;
+ int stub1 (void**,scalar_t__*,char const*,int *,int *,int *,void*,TYPE_2__ const*,int *,int *) ;
+ int stub2 (char const*,int *,int *,char const*,char const*,int *,int *,int,TYPE_3__*,void*,TYPE_2__ const*,int *) ;
+ int stub3 (char const*,int *,int *,void*,TYPE_2__ const*,int *) ;
+ int * svn_diff__source_create (int ,int *) ;
+ int svn_io_files_contents_same_p (scalar_t__*,char const*,char const*,int *) ;
+ int svn_io_stat_dirent2 (TYPE_1__ const**,char const*,scalar_t__,scalar_t__,int *,int *) ;
+ scalar_t__ svn_node_file ;
+ int svn_prop_diffs (TYPE_3__**,int *,int *,int *) ;
+ int svn_wc__db_base_get_info (scalar_t__*,int *,int *,int *,int *,int *,int *,int *,int *,int *,int const**,int *,int *,scalar_t__*,int *,int *,int *,char const*,int *,int *) ;
+ int svn_wc__db_base_get_props (int **,int *,char const*,int *,int *) ;
+ int svn_wc__db_pristine_get_path (char const**,int *,char const*,int const*,int *,int *) ;
+ int svn_wc__db_read_info (scalar_t__*,int *,int *,int *,int *,int *,int *,int *,int *,int *,int const**,int *,int *,int *,int *,int *,int *,scalar_t__*,scalar_t__*,int *,int *,int *,scalar_t__*,scalar_t__*,int *,int *,int *,int *,char const*,int *,int *) ;
+ int svn_wc__db_read_pristine_props (int **,int *,char const*,int *,int *) ;
+ int svn_wc__db_read_props (int **,int *,char const*,int *,int *) ;
+ scalar_t__ svn_wc__db_status_added ;
+ scalar_t__ svn_wc__db_status_deleted ;
+ scalar_t__ svn_wc__db_status_normal ;
+ int svn_wc__internal_translated_file (char const**,char const*,int *,char const*,int,int ,void*,int *,int *) ;
 
 svn_error_t *
 svn_wc__diff_base_working_diff(svn_wc__db_t *db,
@@ -75,7 +75,7 @@ svn_wc__diff_base_working_diff(svn_wc__db_t *db,
                                void *cancel_baton,
                                apr_pool_t *scratch_pool)
 {
-  void *file_baton = NULL;
+  void *file_baton = ((void*)0);
   svn_boolean_t skip = FALSE;
   svn_wc__db_status_t status;
   svn_revnum_t db_revision;
@@ -95,11 +95,11 @@ svn_wc__diff_base_working_diff(svn_wc__db_t *db,
   apr_hash_t *local_props;
   apr_array_header_t *prop_changes;
 
-  SVN_ERR(svn_wc__db_read_info(&status, NULL, &db_revision, NULL, NULL, NULL,
-                               NULL, NULL, NULL, NULL, &working_checksum, NULL,
-                               NULL, NULL, NULL, NULL, NULL, &recorded_size,
-                               &recorded_time, NULL, NULL, NULL,
-                               &had_props, &props_mod, NULL, NULL, NULL,
+  SVN_ERR(svn_wc__db_read_info(&status, ((void*)0), &db_revision, ((void*)0), ((void*)0), ((void*)0),
+                               ((void*)0), ((void*)0), ((void*)0), ((void*)0), &working_checksum, ((void*)0),
+                               ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0), &recorded_size,
+                               &recorded_time, ((void*)0), ((void*)0), ((void*)0),
+                               &had_props, &props_mod, ((void*)0), ((void*)0), ((void*)0),
                                db, local_abspath, scratch_pool, scratch_pool));
   checksum = working_checksum;
 
@@ -109,15 +109,15 @@ svn_wc__diff_base_working_diff(svn_wc__db_t *db,
 
   if (status != svn_wc__db_status_normal)
     {
-      SVN_ERR(svn_wc__db_base_get_info(&base_status, NULL, &db_revision,
-                                       NULL, NULL, NULL, NULL, NULL, NULL,
-                                       NULL, &checksum, NULL, NULL, &had_props,
-                                       NULL, NULL,
+      SVN_ERR(svn_wc__db_base_get_info(&base_status, ((void*)0), &db_revision,
+                                       ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0),
+                                       ((void*)0), &checksum, ((void*)0), ((void*)0), &had_props,
+                                       ((void*)0), ((void*)0),
                                        db, local_abspath,
                                        scratch_pool, scratch_pool));
       recorded_size = SVN_INVALID_FILESIZE;
       recorded_time = 0;
-      props_mod = TRUE; /* Requires compare */
+      props_mod = TRUE;
     }
   else if (diff_pristine)
     files_same = TRUE;
@@ -125,14 +125,14 @@ svn_wc__diff_base_working_diff(svn_wc__db_t *db,
     {
       const svn_io_dirent2_t *dirent;
 
-      /* Verify truename to mimic status for iota/IOTA difference on Windows */
+
       SVN_ERR(svn_io_stat_dirent2(&dirent, local_abspath,
-                                  TRUE /* verify truename */,
-                                  TRUE /* ingore_enoent */,
+                                  TRUE ,
+                                  TRUE ,
                                   scratch_pool, scratch_pool));
 
-      /* If a file does not exist on disk (missing/obstructed) then we
-         can't provide a text diff */
+
+
       if (dirent->kind != svn_node_file
           || (dirent->kind == svn_node_file
               && dirent->filesize == recorded_size
@@ -143,7 +143,7 @@ svn_wc__diff_base_working_diff(svn_wc__db_t *db,
     }
 
   if (files_same && !props_mod)
-    return SVN_NO_ERROR; /* Cheap exit */
+    return SVN_NO_ERROR;
 
   assert(checksum);
 
@@ -156,7 +156,7 @@ svn_wc__diff_base_working_diff(svn_wc__db_t *db,
   SVN_ERR(processor->file_opened(&file_baton, &skip, relpath,
                                  left_src,
                                  right_src,
-                                 NULL /* copyfrom_src */,
+                                 ((void*)0) ,
                                  processor_dir_baton,
                                  processor,
                                  scratch_pool, scratch_pool));

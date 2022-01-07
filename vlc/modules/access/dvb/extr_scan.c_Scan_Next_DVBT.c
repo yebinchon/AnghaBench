@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_5__ ;
-typedef  struct TYPE_15__   TYPE_4__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_16__ TYPE_5__ ;
+typedef struct TYPE_15__ TYPE_4__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
 struct TYPE_14__ {unsigned int i_frequency; int i_bandwidth; } ;
-typedef  TYPE_3__ scan_tuner_config_t ;
+typedef TYPE_3__ scan_tuner_config_t ;
 struct TYPE_13__ {int i_min; int i_max; } ;
 struct TYPE_12__ {int i_step; } ;
 struct TYPE_15__ {TYPE_2__ bandwidth; TYPE_1__ frequency; scalar_t__ b_exhaustive; } ;
-typedef  TYPE_4__ scan_parameter_t ;
+typedef TYPE_4__ scan_parameter_t ;
 struct TYPE_16__ {unsigned int i_index; } ;
-typedef  TYPE_5__ scan_enumeration_t ;
+typedef TYPE_5__ scan_enumeration_t ;
 
-/* Variables and functions */
- int Scan_Next_DVB_SpectrumExhaustive (TYPE_4__ const*,TYPE_5__*,TYPE_3__*,double*) ; 
- int VLC_EGENERIC ; 
- int VLC_SUCCESS ; 
- scalar_t__ __MIN (int const,int const) ; 
+
+ int Scan_Next_DVB_SpectrumExhaustive (TYPE_4__ const*,TYPE_5__*,TYPE_3__*,double*) ;
+ int VLC_EGENERIC ;
+ int VLC_SUCCESS ;
+ scalar_t__ __MIN (int const,int const) ;
 
 __attribute__((used)) static int Scan_Next_DVBT( const scan_parameter_t *p_params, scan_enumeration_t *p_spectrum,
                            scan_tuner_config_t *p_cfg, double *pf_pos )
@@ -57,9 +57,9 @@ __attribute__((used)) static int Scan_Next_DVBT( const scan_parameter_t *p_param
     const int i_offset_count = 5;
     const int i_mhz = 1000000;
 
-    /* We will probe the whole band divided in all bandwidth possibility trying 
-     * i_offset_count offset around the position
-     */
+
+
+
     for( ;; p_spectrum->i_index++ )
     {
 

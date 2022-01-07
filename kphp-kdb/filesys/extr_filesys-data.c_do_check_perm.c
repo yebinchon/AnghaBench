@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct filesys_directory_node {int mode; unsigned short uid; scalar_t__ gid; } ;
 
-/* Variables and functions */
- int EACCES ; 
- int errno ; 
- scalar_t__ getegid () ; 
- unsigned short geteuid () ; 
+
+ int EACCES ;
+ int errno ;
+ scalar_t__ getegid () ;
+ unsigned short geteuid () ;
 
 int do_check_perm (struct filesys_directory_node *D, int mode) {
   unsigned short uid = geteuid ();

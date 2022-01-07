@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  p_libvlc_int; } ;
-typedef  TYPE_1__ libvlc_instance_t ;
 
-/* Variables and functions */
- int VLC_SUCCESS ; 
- int /*<<< orphan*/  VLC_VAR_STRING ; 
- int /*<<< orphan*/  assert (int) ; 
- TYPE_1__* libvlc_new (int,char const* const*) ; 
- int var_Create (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int p_libvlc_int; } ;
+typedef TYPE_1__ libvlc_instance_t ;
+
+
+ int VLC_SUCCESS ;
+ int VLC_VAR_STRING ;
+ int assert (int) ;
+ TYPE_1__* libvlc_new (int,char const* const*) ;
+ int var_Create (int ,char*,int ) ;
 
 __attribute__((used)) static libvlc_instance_t *
 create_libvlc(int i_vlc_argc, const char *const *ppsz_vlc_argv)
 {
     libvlc_instance_t *p_libvlc = libvlc_new(i_vlc_argc, ppsz_vlc_argv);
-    assert(p_libvlc != NULL);
+    assert(p_libvlc != ((void*)0));
 
     int i_ret;
     i_ret = var_Create(p_libvlc->p_libvlc_int, "test-user", VLC_VAR_STRING);

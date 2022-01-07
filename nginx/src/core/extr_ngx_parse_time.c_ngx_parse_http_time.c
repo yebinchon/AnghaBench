@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint64_t ;
-typedef  char u_char ;
-typedef  int /*<<< orphan*/  time_t ;
-typedef  int ngx_uint_t ;
-typedef  int ngx_int_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NGX_ERROR ; 
- int* mday ; 
+
+
+
+typedef int uint64_t ;
+typedef char u_char ;
+typedef int time_t ;
+typedef int ngx_uint_t ;
+typedef int ngx_int_t ;
+
+
+ int NGX_ERROR ;
+ int* mday ;
 
 time_t
 ngx_parse_http_time(u_char *value, size_t len)
 {
-    u_char      *p, *end;
-    ngx_int_t    month;
-    ngx_uint_t   day, year, hour, min, sec;
-    uint64_t     time;
+    u_char *p, *end;
+    ngx_int_t month;
+    ngx_uint_t day, year, hour, min, sec;
+    uint64_t time;
     enum {
         no = 0,
-        rfc822,   /* Tue, 10 Nov 2002 23:50:13   */
-        rfc850,   /* Tuesday, 10-Dec-02 23:50:13 */
-        isoc      /* Tue Dec 10 23:50:13 2002    */
+        rfc822,
+        rfc850,
+        isoc
     } fmt;
 
     fmt = 0;
     end = value + len;
 
-#if (NGX_SUPPRESS_WARN)
-    day = 32;
-    year = 2038;
-#endif
+
+
+
+
 
     for (p = value; p < end; p++) {
         if (*p == ',') {
@@ -242,45 +242,45 @@ ngx_parse_http_time(u_char *value, size_t len)
         return NGX_ERROR;
     }
 
-    /*
-     * shift new year to March 1 and start months from 1 (not 0),
-     * it is needed for Gauss' formula
-     */
+
+
+
+
 
     if (--month <= 0) {
         month += 12;
         year -= 1;
     }
 
-    /* Gauss' formula for Gregorian days since March 1, 1 BC */
+
 
     time = (uint64_t) (
-            /* days in years including leap years since March 1, 1 BC */
+
 
             365 * year + year / 4 - year / 100 + year / 400
 
-            /* days before the month */
+
 
             + 367 * month / 12 - 30
 
-            /* days before the day */
+
 
             + day - 1
 
-            /*
-             * 719527 days were between March 1, 1 BC and March 1, 1970,
-             * 31 and 28 days were in January and February 1970
-             */
+
+
+
+
 
             - 719527 + 31 + 28) * 86400 + hour * 3600 + min * 60 + sec;
 
-#if (NGX_TIME_T_SIZE <= 4)
+
 
     if (time > 0x7fffffff) {
         return NGX_ERROR;
     }
 
-#endif
+
 
     return (time_t) time;
 }

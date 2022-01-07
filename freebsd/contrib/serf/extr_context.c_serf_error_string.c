@@ -1,69 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int apr_status_t ;
 
-/* Variables and functions */
-#define  SERF_ERROR_ABORTED_CONNECTION 141 
-#define  SERF_ERROR_AUTHN_FAILED 140 
-#define  SERF_ERROR_AUTHN_INITALIZATION_FAILED 139 
-#define  SERF_ERROR_AUTHN_MISSING_ATTRIBUTE 138 
-#define  SERF_ERROR_AUTHN_NOT_SUPPORTED 137 
-#define  SERF_ERROR_BAD_HTTP_RESPONSE 136 
-#define  SERF_ERROR_CLOSING 135 
-#define  SERF_ERROR_DECOMPRESSION_FAILED 134 
-#define  SERF_ERROR_REQUEST_LOST 133 
-#define  SERF_ERROR_SSLTUNNEL_SETUP_FAILED 132 
-#define  SERF_ERROR_SSL_CERT_FAILED 131 
-#define  SERF_ERROR_SSL_COMM_FAILED 130 
-#define  SERF_ERROR_TRUNCATED_HTTP_RESPONSE 129 
-#define  SERF_ERROR_WAIT_CONN 128 
 
+
+
+typedef int apr_status_t ;
 const char *serf_error_string(apr_status_t errcode)
 {
     switch (errcode)
     {
-    case SERF_ERROR_CLOSING:
+    case 135:
         return "The connection is closing";
-    case SERF_ERROR_REQUEST_LOST:
+    case 133:
         return "A request has been lost";
-    case SERF_ERROR_WAIT_CONN:
+    case 128:
         return "The connection is blocked, pending further action";
-    case SERF_ERROR_DECOMPRESSION_FAILED:
+    case 134:
         return "An error occurred during decompression";
-    case SERF_ERROR_BAD_HTTP_RESPONSE:
+    case 136:
         return "The server sent an improper HTTP response";
-    case SERF_ERROR_TRUNCATED_HTTP_RESPONSE:
+    case 129:
         return "The server sent a truncated HTTP response body.";
-    case SERF_ERROR_ABORTED_CONNECTION:
+    case 141:
         return "The server unexpectedly closed the connection.";
-    case SERF_ERROR_SSL_COMM_FAILED:
+    case 130:
         return "An error occurred during SSL communication";
-    case SERF_ERROR_SSL_CERT_FAILED:
+    case 131:
         return "An SSL certificate related error occurred ";
-    case SERF_ERROR_AUTHN_FAILED:
+    case 140:
         return "An error occurred during authentication";
-    case SERF_ERROR_AUTHN_NOT_SUPPORTED:
+    case 137:
         return "The requested authentication type(s) are not supported";
-    case SERF_ERROR_AUTHN_MISSING_ATTRIBUTE:
+    case 138:
         return "An authentication attribute is missing";
-    case SERF_ERROR_AUTHN_INITALIZATION_FAILED:
+    case 139:
         return "Initialization of an authentication type failed";
-    case SERF_ERROR_SSLTUNNEL_SETUP_FAILED:
+    case 132:
         return "The proxy server returned an error while setting up the "
                "SSL tunnel.";
     default:
-        return NULL;
+        return ((void*)0);
     }
 
-    /* NOTREACHED  */
+
 }

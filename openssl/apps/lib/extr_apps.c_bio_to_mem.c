@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  BIO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_FLAGS_MEM_RDONLY ; 
- int /*<<< orphan*/  BIO_free (int /*<<< orphan*/ *) ; 
- int BIO_get_mem_data (int /*<<< orphan*/ *,char**) ; 
- int /*<<< orphan*/ * BIO_new (int /*<<< orphan*/ ) ; 
- int BIO_read (int /*<<< orphan*/ *,unsigned char*,int) ; 
- int /*<<< orphan*/  BIO_s_mem () ; 
- int /*<<< orphan*/  BIO_set_flags (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int BIO_write (int /*<<< orphan*/ *,unsigned char*,int) ; 
+
+
+
+typedef int BIO ;
+
+
+ int BIO_FLAGS_MEM_RDONLY ;
+ int BIO_free (int *) ;
+ int BIO_get_mem_data (int *,char**) ;
+ int * BIO_new (int ) ;
+ int BIO_read (int *,unsigned char*,int) ;
+ int BIO_s_mem () ;
+ int BIO_set_flags (int *,int ) ;
+ int BIO_write (int *,unsigned char*,int) ;
 
 int bio_to_mem(unsigned char **out, int maxlen, BIO *in)
 {
@@ -29,7 +29,7 @@ int bio_to_mem(unsigned char **out, int maxlen, BIO *in)
     unsigned char tbuf[1024];
 
     mem = BIO_new(BIO_s_mem());
-    if (mem == NULL)
+    if (mem == ((void*)0))
         return -1;
     for (;;) {
         if ((maxlen != -1) && maxlen < 1024)

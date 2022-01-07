@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  usb_error_t ;
+
+
+
+
+typedef int usb_error_t ;
 struct urtw_softc {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  URTW_INTR_MASK ; 
- int /*<<< orphan*/  urtw_write16_m (struct urtw_softc*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int URTW_INTR_MASK ;
+ int urtw_write16_m (struct urtw_softc*,int ,int ) ;
 
 __attribute__((used)) static usb_error_t
 urtw_intr_disable(struct urtw_softc *sc)
 {
-	usb_error_t error;
+ usb_error_t error;
 
-	urtw_write16_m(sc, URTW_INTR_MASK, 0);
+ urtw_write16_m(sc, URTW_INTR_MASK, 0);
 fail:
-	return (error);
+ return (error);
 }

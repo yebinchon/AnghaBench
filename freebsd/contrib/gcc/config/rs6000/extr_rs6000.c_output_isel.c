@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  rtx ;
-typedef  enum rtx_code { ____Placeholder_rtx_code } rtx_code ;
 
-/* Variables and functions */
- int GE ; 
- int GET_CODE (int /*<<< orphan*/ ) ; 
- int GEU ; 
- int LE ; 
- int LEU ; 
- int NE ; 
- int /*<<< orphan*/  PUT_CODE (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  reverse_condition (int) ; 
+
+
+
+typedef int rtx ;
+typedef enum rtx_code { ____Placeholder_rtx_code } rtx_code ;
+
+
+ int GE ;
+ int GET_CODE (int ) ;
+ int GEU ;
+ int LE ;
+ int LEU ;
+ int NE ;
+ int PUT_CODE (int ,int ) ;
+ int reverse_condition (int) ;
 
 const char *
 output_isel (rtx *operands)

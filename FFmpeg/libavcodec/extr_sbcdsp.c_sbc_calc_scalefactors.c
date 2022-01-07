@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  int int32_t ;
 
-/* Variables and functions */
- int FFABS (int) ; 
- int SCALE_OUT_BITS ; 
- int ff_clz (int) ; 
+
+
+
+typedef int uint32_t ;
+typedef int int32_t ;
+
+
+ int FFABS (int) ;
+ int SCALE_OUT_BITS ;
+ int ff_clz (int) ;
 
 __attribute__((used)) static void sbc_calc_scalefactors(int32_t sb_sample_f[16][2][8],
                                   uint32_t scale_factor[2][8],

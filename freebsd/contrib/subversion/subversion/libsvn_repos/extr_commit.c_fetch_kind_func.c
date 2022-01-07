@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_node_kind_t ;
-typedef  int /*<<< orphan*/  svn_fs_root_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct edit_baton {int /*<<< orphan*/  fs; int /*<<< orphan*/  txn; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_IS_VALID_REVNUM (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  svn_fs_check_path (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_fs_revision_root (int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_fs_txn_base_revision (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int svn_revnum_t ;
+typedef int svn_node_kind_t ;
+typedef int svn_fs_root_t ;
+typedef int svn_error_t ;
+struct edit_baton {int fs; int txn; } ;
+typedef int apr_pool_t ;
+
+
+ int SVN_ERR (int ) ;
+ int SVN_IS_VALID_REVNUM (int ) ;
+ int * SVN_NO_ERROR ;
+ int svn_fs_check_path (int *,int *,char const*,int *) ;
+ int svn_fs_revision_root (int **,int ,int ,int *) ;
+ int svn_fs_txn_base_revision (int ) ;
 
 __attribute__((used)) static svn_error_t *
 fetch_kind_func(svn_node_kind_t *kind,

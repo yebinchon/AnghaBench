@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  value ;
-typedef  int /*<<< orphan*/  key ;
-typedef  int /*<<< orphan*/  int64_t ;
-struct TYPE_3__ {int /*<<< orphan*/  metadata; int /*<<< orphan*/ * pb; } ;
-typedef  int /*<<< orphan*/  AVIOContext ;
-typedef  TYPE_1__ AVFormatContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INT_MAX ; 
- int /*<<< orphan*/  av_dict_set (int /*<<< orphan*/ *,char*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  avio_feof (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  avio_get_str (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int) ; 
- unsigned int avio_rb32 (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int value ;
+typedef int key ;
+typedef int int64_t ;
+struct TYPE_3__ {int metadata; int * pb; } ;
+typedef int AVIOContext ;
+typedef TYPE_1__ AVFormatContext ;
+
+
+ int INT_MAX ;
+ int av_dict_set (int *,char*,char*,int ) ;
+ int avio_feof (int *) ;
+ int avio_get_str (int *,int ,char*,int) ;
+ unsigned int avio_rb32 (int *) ;
 
 __attribute__((used)) static void read_info_chunk(AVFormatContext *s, int64_t size)
 {

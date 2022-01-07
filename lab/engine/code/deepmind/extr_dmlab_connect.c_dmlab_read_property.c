@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  (* read ) (int /*<<< orphan*/ ,char const*,char const**) ;} ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int (* read ) (int ,char const*,char const**) ;} ;
 struct TYPE_6__ {TYPE_1__ properties; } ;
-struct TYPE_7__ {int /*<<< orphan*/  userdata; TYPE_2__ hooks; } ;
-typedef  int /*<<< orphan*/  EnvCApi_PropertyResult ;
-typedef  TYPE_3__ DeepmindContext ;
+struct TYPE_7__ {int userdata; TYPE_2__ hooks; } ;
+typedef int EnvCApi_PropertyResult ;
+typedef TYPE_3__ DeepmindContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EnvCApi_PropertyResult_NotFound ; 
- int /*<<< orphan*/  EnvCApi_PropertyResult_PermissionDenied ; 
- int /*<<< orphan*/  EnvCApi_PropertyResult_Success ; 
- TYPE_3__* dmlab_context () ; 
- int /*<<< orphan*/  dmlab_fps (void*) ; 
- int /*<<< orphan*/  kReservedEnginePropertyList ; 
- scalar_t__ strcmp (char const*,char*) ; 
- int strlen (int /*<<< orphan*/ ) ; 
- scalar_t__ strncmp (char const*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,char const*,char const**) ; 
- char* va (char*,int /*<<< orphan*/ ) ; 
+
+ int EnvCApi_PropertyResult_NotFound ;
+ int EnvCApi_PropertyResult_PermissionDenied ;
+ int EnvCApi_PropertyResult_Success ;
+ TYPE_3__* dmlab_context () ;
+ int dmlab_fps (void*) ;
+ int kReservedEnginePropertyList ;
+ scalar_t__ strcmp (char const*,char*) ;
+ int strlen (int ) ;
+ scalar_t__ strncmp (char const*,int ,int) ;
+ int stub1 (int ,char const*,char const**) ;
+ char* va (char*,int ) ;
 
 EnvCApi_PropertyResult dmlab_read_property(void* context, const char* key,
                                            const char** value) {

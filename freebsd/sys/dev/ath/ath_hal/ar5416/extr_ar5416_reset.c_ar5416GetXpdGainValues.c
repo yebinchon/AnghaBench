@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint16_t ;
+
+
+
+
+typedef int uint16_t ;
 struct ath_hal {int dummy; } ;
 
-/* Variables and functions */
- int AR5416_NUM_PD_GAINS ; 
- int AR5416_PD_GAINS_IN_MASK ; 
- int /*<<< orphan*/  HALASSERT (int /*<<< orphan*/ ) ; 
+
+ int AR5416_NUM_PD_GAINS ;
+ int AR5416_PD_GAINS_IN_MASK ;
+ int HALASSERT (int ) ;
 
 uint16_t
 ar5416GetXpdGainValues(struct ath_hal *ah, uint16_t xpdMask,

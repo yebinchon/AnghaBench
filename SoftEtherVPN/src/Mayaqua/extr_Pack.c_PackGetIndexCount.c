@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT ;
-struct TYPE_3__ {int /*<<< orphan*/  num_value; } ;
-typedef  int /*<<< orphan*/  PACK ;
-typedef  TYPE_1__ ELEMENT ;
 
-/* Variables and functions */
- TYPE_1__* GetElement (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  INFINITE ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int UINT ;
+struct TYPE_3__ {int num_value; } ;
+typedef int PACK ;
+typedef TYPE_1__ ELEMENT ;
+
+
+ TYPE_1__* GetElement (int *,char*,int ) ;
+ int INFINITE ;
 
 UINT PackGetIndexCount(PACK *p, char *name)
 {
-	ELEMENT *e;
-	// Validate arguments
-	if (p == NULL || name == NULL)
-	{
-		return 0;
-	}
+ ELEMENT *e;
 
-	e = GetElement(p, name, INFINITE);
-	if (e == NULL)
-	{
-		return 0;
-	}
+ if (p == ((void*)0) || name == ((void*)0))
+ {
+  return 0;
+ }
 
-	return e->num_value;
+ e = GetElement(p, name, INFINITE);
+ if (e == ((void*)0))
+ {
+  return 0;
+ }
+
+ return e->num_value;
 }

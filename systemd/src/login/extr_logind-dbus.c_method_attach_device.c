@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_13__ {int /*<<< orphan*/  polkit_registry; } ;
-typedef  TYPE_1__ sd_bus_message ;
-typedef  int /*<<< orphan*/  sd_bus_error ;
+
+
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+struct TYPE_13__ {int polkit_registry; } ;
+typedef TYPE_1__ sd_bus_message ;
+typedef int sd_bus_error ;
 struct TYPE_14__ {char* id; } ;
-typedef  TYPE_2__ Seat ;
-typedef  TYPE_1__ Manager ;
+typedef TYPE_2__ Seat ;
+typedef TYPE_1__ Manager ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CAP_SYS_ADMIN ; 
- int /*<<< orphan*/  SD_BUS_ERROR_INVALID_ARGS ; 
- scalar_t__ SEAT_IS_AUTO (char const*) ; 
- scalar_t__ SEAT_IS_SELF (char const*) ; 
- int /*<<< orphan*/  UID_INVALID ; 
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int attach_device (TYPE_1__*,char const*,char const*) ; 
- int bus_verify_polkit_async (TYPE_1__*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int manager_get_seat_from_creds (TYPE_1__*,TYPE_1__*,char const*,int /*<<< orphan*/ *,TYPE_2__**) ; 
- int /*<<< orphan*/  path_is_normalized (char const*) ; 
- int /*<<< orphan*/  path_startswith (char const*,char*) ; 
- int sd_bus_error_setf (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,char const*) ; 
- int sd_bus_message_read (TYPE_1__*,char*,char const**,char const**,int*) ; 
- int sd_bus_reply_method_return (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  seat_name_is_valid (char const*) ; 
+
+ int CAP_SYS_ADMIN ;
+ int SD_BUS_ERROR_INVALID_ARGS ;
+ scalar_t__ SEAT_IS_AUTO (char const*) ;
+ scalar_t__ SEAT_IS_SELF (char const*) ;
+ int UID_INVALID ;
+ int assert (TYPE_1__*) ;
+ int attach_device (TYPE_1__*,char const*,char const*) ;
+ int bus_verify_polkit_async (TYPE_1__*,int ,char*,int *,int,int ,int *,int *) ;
+ int manager_get_seat_from_creds (TYPE_1__*,TYPE_1__*,char const*,int *,TYPE_2__**) ;
+ int path_is_normalized (char const*) ;
+ int path_startswith (char const*,char*) ;
+ int sd_bus_error_setf (int *,int ,char*,char const*) ;
+ int sd_bus_message_read (TYPE_1__*,char*,char const**,char const**,int*) ;
+ int sd_bus_reply_method_return (TYPE_1__*,int *) ;
+ int seat_name_is_valid (char const*) ;
 
 __attribute__((used)) static int method_attach_device(sd_bus_message *message, void *userdata, sd_bus_error *error) {
         const char *sysfs, *seat;
@@ -62,14 +62,14 @@ __attribute__((used)) static int method_attach_device(sd_bus_message *message, v
 
                 seat = found->id;
 
-        } else if (!seat_name_is_valid(seat)) /* Note that a seat does not have to exist yet for this operation to succeed */
+        } else if (!seat_name_is_valid(seat))
                 return sd_bus_error_setf(error, SD_BUS_ERROR_INVALID_ARGS, "Seat name %s is not valid", seat);
 
         r = bus_verify_polkit_async(
                         message,
                         CAP_SYS_ADMIN,
                         "org.freedesktop.login1.attach-device",
-                        NULL,
+                        ((void*)0),
                         interactive,
                         UID_INVALID,
                         &m->polkit_registry,
@@ -77,11 +77,11 @@ __attribute__((used)) static int method_attach_device(sd_bus_message *message, v
         if (r < 0)
                 return r;
         if (r == 0)
-                return 1; /* No authorization for now, but the async polkit stuff will call us again when it has it */
+                return 1;
 
         r = attach_device(m, seat, sysfs);
         if (r < 0)
                 return r;
 
-        return sd_bus_reply_method_return(message, NULL);
+        return sd_bus_reply_method_return(message, ((void*)0));
 }

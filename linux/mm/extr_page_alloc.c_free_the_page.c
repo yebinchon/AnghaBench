@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct page {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  __free_pages_ok (struct page*,unsigned int) ; 
- int /*<<< orphan*/  free_unref_page (struct page*) ; 
+
+ int __free_pages_ok (struct page*,unsigned int) ;
+ int free_unref_page (struct page*) ;
 
 __attribute__((used)) static inline void free_the_page(struct page *page, unsigned int order)
 {
-	if (order == 0)		/* Via pcp? */
-		free_unref_page(page);
-	else
-		__free_pages_ok(page, order);
+ if (order == 0)
+  free_unref_page(page);
+ else
+  __free_pages_ok(page, order);
 }

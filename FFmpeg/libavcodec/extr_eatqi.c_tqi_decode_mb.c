@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  int16_t ;
-struct TYPE_5__ {int /*<<< orphan*/  permutated; } ;
-struct TYPE_6__ {int /*<<< orphan*/  (* clear_blocks ) (int /*<<< orphan*/ *) ;} ;
-struct TYPE_7__ {int /*<<< orphan*/  mb_y; int /*<<< orphan*/  mb_x; int /*<<< orphan*/  avctx; int /*<<< orphan*/  last_dc; TYPE_1__ intra_scantable; int /*<<< orphan*/  intra_matrix; int /*<<< orphan*/  gb; TYPE_2__ bdsp; } ;
-typedef  TYPE_3__ TqiContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int ff_mpeg1_decode_block_intra (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int int16_t ;
+struct TYPE_5__ {int permutated; } ;
+struct TYPE_6__ {int (* clear_blocks ) (int *) ;} ;
+struct TYPE_7__ {int mb_y; int mb_x; int avctx; int last_dc; TYPE_1__ intra_scantable; int intra_matrix; int gb; TYPE_2__ bdsp; } ;
+typedef TYPE_3__ TqiContext ;
+
+
+ int AV_LOG_ERROR ;
+ int av_log (int ,int ,char*,int ,int ) ;
+ int ff_mpeg1_decode_block_intra (int *,int ,int ,int ,int *,int,int) ;
+ int stub1 (int *) ;
 
 __attribute__((used)) static int tqi_decode_mb(TqiContext *t, int16_t (*block)[64])
 {

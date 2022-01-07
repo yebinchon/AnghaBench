@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  krb5_context ;
-struct TYPE_4__ {scalar_t__ my_context; int /*<<< orphan*/  caller; int /*<<< orphan*/  config; int /*<<< orphan*/  log_context; TYPE_2__* db; int /*<<< orphan*/  context; } ;
-typedef  TYPE_1__ kadm5_server_context ;
-typedef  int /*<<< orphan*/  kadm5_ret_t ;
-struct TYPE_5__ {int /*<<< orphan*/  (* hdb_destroy ) (int /*<<< orphan*/ ,TYPE_2__*) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  destroy_config (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  destroy_kadm5_log_context (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (TYPE_1__*) ; 
- int /*<<< orphan*/  krb5_free_context (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  krb5_free_principal (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,TYPE_2__*) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int krb5_context ;
+struct TYPE_4__ {scalar_t__ my_context; int caller; int config; int log_context; TYPE_2__* db; int context; } ;
+typedef TYPE_1__ kadm5_server_context ;
+typedef int kadm5_ret_t ;
+struct TYPE_5__ {int (* hdb_destroy ) (int ,TYPE_2__*) ;} ;
+
+
+ int destroy_config (int *) ;
+ int destroy_kadm5_log_context (int *) ;
+ int free (TYPE_1__*) ;
+ int krb5_free_context (int ) ;
+ int krb5_free_principal (int ,int ) ;
+ int stub1 (int ,TYPE_2__*) ;
 
 kadm5_ret_t
 kadm5_s_destroy(void *server_handle)
@@ -38,7 +38,7 @@ kadm5_s_destroy(void *server_handle)
     destroy_config (&context->config);
     krb5_free_principal (kcontext, context->caller);
     if(context->my_context)
-	krb5_free_context(kcontext);
+ krb5_free_context(kcontext);
     free (context);
     return ret;
 }

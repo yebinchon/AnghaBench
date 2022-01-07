@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct fs_dir {int /*<<< orphan*/ * dhandle; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEBUG_MINOR (char*,void*) ; 
- int /*<<< orphan*/  closedir (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (struct fs_dir*) ; 
+
+
+
+struct fs_dir {int * dhandle; } ;
+
+
+ int DEBUG_MINOR (char*,void*) ;
+ int closedir (int *) ;
+ int free (struct fs_dir*) ;
 
 int vc_hostfs_closedir(void *dhandle)
 {
@@ -27,7 +27,7 @@ int vc_hostfs_closedir(void *dhandle)
    if (dhandle && fsdir->dhandle)
    {
       (void)closedir(fsdir->dhandle);
-      fsdir->dhandle = NULL;
+      fsdir->dhandle = ((void*)0);
       free(fsdir);
       ret = 0;
    }

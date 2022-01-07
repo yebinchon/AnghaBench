@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT8 ;
-typedef  int UINT16 ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int UINT8 ;
+typedef int UINT16 ;
 struct TYPE_2__ {int btm_def_link_policy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * BTM_ReadLocalFeatures () ; 
- int /*<<< orphan*/  BTM_TRACE_DEBUG (char*,int) ; 
- int HCI_ENABLE_HOLD_MODE ; 
- int HCI_ENABLE_MASTER_SLAVE_SWITCH ; 
- int HCI_ENABLE_PARK_MODE ; 
- int HCI_ENABLE_SNIFF_MODE ; 
- int /*<<< orphan*/  HCI_HOLD_MODE_SUPPORTED (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  HCI_PARK_MODE_SUPPORTED (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  HCI_SNIFF_MODE_SUPPORTED (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  HCI_SWITCH_SUPPORTED (int /*<<< orphan*/ *) ; 
- TYPE_1__ btm_cb ; 
- int /*<<< orphan*/  btsnd_hcic_write_def_policy_set (int) ; 
+
+ int * BTM_ReadLocalFeatures () ;
+ int BTM_TRACE_DEBUG (char*,int) ;
+ int HCI_ENABLE_HOLD_MODE ;
+ int HCI_ENABLE_MASTER_SLAVE_SWITCH ;
+ int HCI_ENABLE_PARK_MODE ;
+ int HCI_ENABLE_SNIFF_MODE ;
+ int HCI_HOLD_MODE_SUPPORTED (int *) ;
+ int HCI_PARK_MODE_SUPPORTED (int *) ;
+ int HCI_SNIFF_MODE_SUPPORTED (int *) ;
+ int HCI_SWITCH_SUPPORTED (int *) ;
+ TYPE_1__ btm_cb ;
+ int btsnd_hcic_write_def_policy_set (int) ;
 
 void BTM_SetDefaultLinkPolicy (UINT16 settings)
 {
@@ -55,6 +55,6 @@ void BTM_SetDefaultLinkPolicy (UINT16 settings)
 
     btm_cb.btm_def_link_policy = settings;
 
-    /* Set the default Link Policy of the controller */
+
     btsnd_hcic_write_def_policy_set(settings);
 }

@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  cabac; TYPE_1__* h264; int /*<<< orphan*/ * cabac_state; } ;
-struct TYPE_4__ {int /*<<< orphan*/  avctx; } ;
-typedef  TYPE_2__ H264SliceContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int INT_BIT ; 
- int INT_MIN ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- scalar_t__ get_cabac (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int get_cabac_bypass (int /*<<< orphan*/ *) ; 
- int get_cabac_bypass_sign (int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int cabac; TYPE_1__* h264; int * cabac_state; } ;
+struct TYPE_4__ {int avctx; } ;
+typedef TYPE_2__ H264SliceContext ;
+
+
+ int AV_LOG_ERROR ;
+ int INT_BIT ;
+ int INT_MIN ;
+ int av_log (int ,int ,char*) ;
+ scalar_t__ get_cabac (int *,int *) ;
+ int get_cabac_bypass (int *) ;
+ int get_cabac_bypass_sign (int *,int) ;
 
 __attribute__((used)) static int decode_cabac_mb_mvd(H264SliceContext *sl, int ctxbase, int amvd, int *mvda)
 {
     int mvd;
 
     if(!get_cabac(&sl->cabac, &sl->cabac_state[ctxbase+((amvd-3)>>(INT_BIT-1))+((amvd-33)>>(INT_BIT-1))+2])){
-//    if(!get_cabac(&sl->cabac, &sl->cabac_state[ctxbase+(amvd>2)+(amvd>32)])){
+
         *mvda= 0;
         return 0;
     }

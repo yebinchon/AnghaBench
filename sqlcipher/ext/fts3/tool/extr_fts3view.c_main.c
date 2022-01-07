@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_stmt ;
-typedef  int /*<<< orphan*/  sqlite3 ;
 
-/* Variables and functions */
- scalar_t__ SQLITE_ROW ; 
- char** azExtra ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  listBigSegments (int /*<<< orphan*/ *,char const*) ; 
- int nExtra ; 
- int /*<<< orphan*/ * prepare (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  printf (char*,char*) ; 
- int /*<<< orphan*/  showDoclist (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  showSchema (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  showSegdirMap (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  showSegment (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  showSegmentStats (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  showStat (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  showVocabulary (int /*<<< orphan*/ *,char const*) ; 
- char* sqlite3_column_text (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_finalize (int /*<<< orphan*/ *) ; 
- int sqlite3_open (char*,int /*<<< orphan*/ **) ; 
- scalar_t__ sqlite3_step (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ strcmp (char const*,char*) ; 
- int /*<<< orphan*/  usage (char*) ; 
+
+
+
+typedef int sqlite3_stmt ;
+typedef int sqlite3 ;
+
+
+ scalar_t__ SQLITE_ROW ;
+ char** azExtra ;
+ int exit (int) ;
+ int fprintf (int ,char*,char*) ;
+ int listBigSegments (int *,char const*) ;
+ int nExtra ;
+ int * prepare (int *,char*) ;
+ int printf (char*,char*) ;
+ int showDoclist (int *,char const*) ;
+ int showSchema (int *,char const*) ;
+ int showSegdirMap (int *,char const*) ;
+ int showSegment (int *,char const*) ;
+ int showSegmentStats (int *,char const*) ;
+ int showStat (int *,char const*) ;
+ int showVocabulary (int *,char const*) ;
+ char* sqlite3_column_text (int *,int ) ;
+ int sqlite3_finalize (int *) ;
+ int sqlite3_open (char*,int **) ;
+ scalar_t__ sqlite3_step (int *) ;
+ int stderr ;
+ scalar_t__ strcmp (char const*,char*) ;
+ int usage (char*) ;
 
 int main(int argc, char **argv){
   sqlite3 *db;
@@ -93,5 +93,5 @@ int main(int argc, char **argv){
   }else{
     usage(argv[0]);
   }
-  return 0; 
+  return 0;
 }

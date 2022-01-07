@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  unsigned char DH ;
-typedef  int /*<<< orphan*/  BIGNUM ;
 
-/* Variables and functions */
- int DH_CHECK_P_NOT_PRIME ; 
- int DH_CHECK_P_NOT_SAFE_PRIME ; 
- int DH_NOT_SUITABLE_GENERATOR ; 
- int DH_UNABLE_TO_CHECK_GENERATOR ; 
- int /*<<< orphan*/  DH_check (unsigned char*,int*) ; 
- int DH_compute_key (unsigned char*,int /*<<< orphan*/  const*,unsigned char*) ; 
- int /*<<< orphan*/  DH_free (unsigned char*) ; 
- int /*<<< orphan*/  DH_generate_key (unsigned char*) ; 
- int /*<<< orphan*/  DH_get0_key (unsigned char*,int /*<<< orphan*/  const**,int /*<<< orphan*/ *) ; 
- unsigned char* DH_new_by_nid (int /*<<< orphan*/ ) ; 
- int DH_size (unsigned char*) ; 
- int /*<<< orphan*/  NID_ffdhe2048 ; 
- int /*<<< orphan*/  OPENSSL_free (unsigned char*) ; 
- unsigned char* OPENSSL_malloc (int) ; 
- int /*<<< orphan*/  TEST_false (int) ; 
- int /*<<< orphan*/  TEST_mem_eq (unsigned char*,int,unsigned char*,int) ; 
- int /*<<< orphan*/  TEST_ptr (unsigned char*) ; 
- int /*<<< orphan*/  TEST_true (int) ; 
+
+
+
+typedef unsigned char DH ;
+typedef int BIGNUM ;
+
+
+ int DH_CHECK_P_NOT_PRIME ;
+ int DH_CHECK_P_NOT_SAFE_PRIME ;
+ int DH_NOT_SUITABLE_GENERATOR ;
+ int DH_UNABLE_TO_CHECK_GENERATOR ;
+ int DH_check (unsigned char*,int*) ;
+ int DH_compute_key (unsigned char*,int const*,unsigned char*) ;
+ int DH_free (unsigned char*) ;
+ int DH_generate_key (unsigned char*) ;
+ int DH_get0_key (unsigned char*,int const**,int *) ;
+ unsigned char* DH_new_by_nid (int ) ;
+ int DH_size (unsigned char*) ;
+ int NID_ffdhe2048 ;
+ int OPENSSL_free (unsigned char*) ;
+ unsigned char* OPENSSL_malloc (int) ;
+ int TEST_false (int) ;
+ int TEST_mem_eq (unsigned char*,int,unsigned char*,int) ;
+ int TEST_ptr (unsigned char*) ;
+ int TEST_true (int) ;
 
 __attribute__((used)) static int rfc7919_test(void)
 {
-    DH *a = NULL, *b = NULL;
-    const BIGNUM *apub_key = NULL, *bpub_key = NULL;
-    unsigned char *abuf = NULL;
-    unsigned char *bbuf = NULL;
+    DH *a = ((void*)0), *b = ((void*)0);
+    const BIGNUM *apub_key = ((void*)0), *bpub_key = ((void*)0);
+    unsigned char *abuf = ((void*)0);
+    unsigned char *bbuf = ((void*)0);
     int i, alen, blen, aout, bout;
     int ret = 0;
 
@@ -56,15 +56,15 @@ __attribute__((used)) static int rfc7919_test(void)
 
     if (!DH_generate_key(a))
         goto err;
-    DH_get0_key(a, &apub_key, NULL);
+    DH_get0_key(a, &apub_key, ((void*)0));
 
-    /* now create another copy of the DH group for the peer */
+
     if (!TEST_ptr(b = DH_new_by_nid(NID_ffdhe2048)))
         goto err;
 
     if (!DH_generate_key(b))
         goto err;
-    DH_get0_key(b, &bpub_key, NULL);
+    DH_get0_key(b, &bpub_key, ((void*)0));
 
     alen = DH_size(a);
     if (!TEST_ptr(abuf = OPENSSL_malloc(alen))

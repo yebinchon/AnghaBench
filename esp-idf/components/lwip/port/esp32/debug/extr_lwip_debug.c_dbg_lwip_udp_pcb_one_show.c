@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct udp_pcb {void* remote_port; void* recv_arg; struct udp_pcb* recv; struct udp_pcb* local_port; int /*<<< orphan*/  flags; scalar_t__ next; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DBG_LWIP_IP_PCB_SHOW (struct udp_pcb*) ; 
- int /*<<< orphan*/  ESP_LWIP_LOGI (char*,struct udp_pcb*,...) ; 
+
+
+
+struct udp_pcb {void* remote_port; void* recv_arg; struct udp_pcb* recv; struct udp_pcb* local_port; int flags; scalar_t__ next; } ;
+
+
+ int DBG_LWIP_IP_PCB_SHOW (struct udp_pcb*) ;
+ int ESP_LWIP_LOGI (char*,struct udp_pcb*,...) ;
 
 void dbg_lwip_udp_pcb_one_show(struct udp_pcb *pcb)
 {

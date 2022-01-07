@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct netmap_adapter {int /*<<< orphan*/  if_transmit; } ;
-struct ifnet {int /*<<< orphan*/  if_capenable; int /*<<< orphan*/  if_transmit; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IFCAP_NETMAP ; 
- struct netmap_adapter* NA (struct ifnet*) ; 
- int /*<<< orphan*/  netmap_transmit ; 
+
+
+
+struct netmap_adapter {int if_transmit; } ;
+struct ifnet {int if_capenable; int if_transmit; } ;
+
+
+ int IFCAP_NETMAP ;
+ struct netmap_adapter* NA (struct ifnet*) ;
+ int netmap_transmit ;
 
 void
 nm_os_onenter(struct ifnet *ifp)
 {
-	struct netmap_adapter *na = NA(ifp);
+ struct netmap_adapter *na = NA(ifp);
 
-	na->if_transmit = ifp->if_transmit;
-	ifp->if_transmit = netmap_transmit;
-	ifp->if_capenable |= IFCAP_NETMAP;
+ na->if_transmit = ifp->if_transmit;
+ ifp->if_transmit = netmap_transmit;
+ ifp->if_capenable |= IFCAP_NETMAP;
 }

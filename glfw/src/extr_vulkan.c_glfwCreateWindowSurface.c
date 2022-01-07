@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_5__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_5__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {scalar_t__ client; } ;
 struct TYPE_8__ {TYPE_1__ context; } ;
-typedef  TYPE_3__ _GLFWwindow ;
-typedef  scalar_t__ VkSurfaceKHR ;
-typedef  int /*<<< orphan*/  VkResult ;
-typedef  scalar_t__ VkInstance ;
-typedef  int /*<<< orphan*/  VkAllocationCallbacks ;
-struct TYPE_7__ {int /*<<< orphan*/ * extensions; } ;
+typedef TYPE_3__ _GLFWwindow ;
+typedef scalar_t__ VkSurfaceKHR ;
+typedef int VkResult ;
+typedef scalar_t__ VkInstance ;
+typedef int VkAllocationCallbacks ;
+struct TYPE_7__ {int * extensions; } ;
 struct TYPE_9__ {TYPE_2__ vk; } ;
-typedef  int /*<<< orphan*/  GLFWwindow ;
+typedef int GLFWwindow ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GLFW_API_UNAVAILABLE ; 
- int /*<<< orphan*/  GLFW_INVALID_VALUE ; 
- scalar_t__ GLFW_NO_API ; 
- int /*<<< orphan*/  VK_ERROR_EXTENSION_NOT_PRESENT ; 
- int /*<<< orphan*/  VK_ERROR_INITIALIZATION_FAILED ; 
- int /*<<< orphan*/  VK_ERROR_NATIVE_WINDOW_IN_USE_KHR ; 
- scalar_t__ VK_NULL_HANDLE ; 
- int /*<<< orphan*/  _GLFW_REQUIRE_INIT_OR_RETURN (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  _GLFW_REQUIRE_LOADER ; 
- TYPE_5__ _glfw ; 
- int /*<<< orphan*/  _glfwInitVulkan (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  _glfwInputError (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  _glfwPlatformCreateWindowSurface (scalar_t__,TYPE_3__*,int /*<<< orphan*/  const*,scalar_t__*) ; 
- int /*<<< orphan*/  assert (int) ; 
+
+ int GLFW_API_UNAVAILABLE ;
+ int GLFW_INVALID_VALUE ;
+ scalar_t__ GLFW_NO_API ;
+ int VK_ERROR_EXTENSION_NOT_PRESENT ;
+ int VK_ERROR_INITIALIZATION_FAILED ;
+ int VK_ERROR_NATIVE_WINDOW_IN_USE_KHR ;
+ scalar_t__ VK_NULL_HANDLE ;
+ int _GLFW_REQUIRE_INIT_OR_RETURN (int ) ;
+ int _GLFW_REQUIRE_LOADER ;
+ TYPE_5__ _glfw ;
+ int _glfwInitVulkan (int ) ;
+ int _glfwInputError (int ,char*) ;
+ int _glfwPlatformCreateWindowSurface (scalar_t__,TYPE_3__*,int const*,scalar_t__*) ;
+ int assert (int) ;
 
 VkResult glfwCreateWindowSurface(VkInstance instance,
                                          GLFWwindow* handle,
@@ -48,8 +48,8 @@ VkResult glfwCreateWindowSurface(VkInstance instance,
 {
     _GLFWwindow* window = (_GLFWwindow*) handle;
     assert(instance != VK_NULL_HANDLE);
-    assert(window != NULL);
-    assert(surface != NULL);
+    assert(window != ((void*)0));
+    assert(surface != ((void*)0));
 
     *surface = VK_NULL_HANDLE;
 

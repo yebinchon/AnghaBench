@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int SAVED_LONG_QUERIES ; 
- int /*<<< orphan*/ * last_long_query_buff ; 
- int /*<<< orphan*/ * last_long_query_found ; 
- int /*<<< orphan*/ * last_long_query_time ; 
- int /*<<< orphan*/ * last_long_query_utime ; 
- int long_query_buff_ptr ; 
- int /*<<< orphan*/  sprintf (char*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- char* stats_buff ; 
+ int SAVED_LONG_QUERIES ;
+ int * last_long_query_buff ;
+ int * last_long_query_found ;
+ int * last_long_query_time ;
+ int * last_long_query_utime ;
+ int long_query_buff_ptr ;
+ int sprintf (char*,char*,int ,int ,int ,int ) ;
+ char* stats_buff ;
 
 __attribute__((used)) static int prepare_long_query_stats (void) {
   char *tmp = stats_buff;

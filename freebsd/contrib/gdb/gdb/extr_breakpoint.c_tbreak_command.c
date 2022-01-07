@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  BP_TEMPFLAG ; 
- int /*<<< orphan*/  break_command_1 (char*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
+ int BP_TEMPFLAG ;
+ int break_command_1 (char*,int ,int,int *) ;
 
 void
 tbreak_command (char *arg, int from_tty)
 {
-  break_command_1 (arg, BP_TEMPFLAG, from_tty, NULL);
+  break_command_1 (arg, BP_TEMPFLAG, from_tty, ((void*)0));
 }

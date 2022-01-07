@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int caught_signal ; 
- int /*<<< orphan*/  pqsignal (int,void (*) (int)) ; 
+ int caught_signal ;
+ int pqsignal (int,void (*) (int)) ;
 
 __attribute__((used)) static void
 trapsig(int signum)
 {
-	/* handle systems that reset the handler, like Windows (grr) */
-	pqsignal(signum, trapsig);
-	caught_signal = true;
+
+ pqsignal(signum, trapsig);
+ caught_signal = 1;
 }

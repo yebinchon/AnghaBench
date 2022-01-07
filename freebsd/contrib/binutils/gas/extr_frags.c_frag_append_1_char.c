@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  frch_obstack; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  frag_alloc_check (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  frag_new (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  frag_now ; 
- int /*<<< orphan*/  frag_wane (int /*<<< orphan*/ ) ; 
- TYPE_1__* frchain_now ; 
- int /*<<< orphan*/  obstack_1grow (int /*<<< orphan*/ *,int) ; 
- int obstack_room (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int frch_obstack; } ;
+
+
+ int frag_alloc_check (int *) ;
+ int frag_new (int ) ;
+ int frag_now ;
+ int frag_wane (int ) ;
+ TYPE_1__* frchain_now ;
+ int obstack_1grow (int *,int) ;
+ int obstack_room (int *) ;
 
 void
 frag_append_1_char (int datum)

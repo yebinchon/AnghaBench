@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WORD ;
-struct TYPE_7__ {unsigned int lookup_count; int /*<<< orphan*/ * lookups; } ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int WORD ;
+struct TYPE_7__ {unsigned int lookup_count; int * lookups; } ;
 struct TYPE_6__ {scalar_t__ fRTL; scalar_t__ fLogicalOrder; } ;
-typedef  int /*<<< orphan*/  ScriptCache ;
-typedef  TYPE_1__ SCRIPT_ANALYSIS ;
-typedef  int /*<<< orphan*/  OUTLINETEXTMETRICW ;
-typedef  TYPE_2__ LoadedFeature ;
-typedef  int /*<<< orphan*/  LOGFONTW ;
-typedef  int /*<<< orphan*/  GOFFSET ;
+typedef int ScriptCache ;
+typedef TYPE_1__ SCRIPT_ANALYSIS ;
+typedef int OUTLINETEXTMETRICW ;
+typedef TYPE_2__ LoadedFeature ;
+typedef int LOGFONTW ;
+typedef int GOFFSET ;
 
-/* Variables and functions */
- scalar_t__ OpenType_apply_GPOS_lookup (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,TYPE_1__ const*,int*,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,unsigned int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TRACE (char*,unsigned int) ; 
+
+ scalar_t__ OpenType_apply_GPOS_lookup (int const*,int const*,int const*,TYPE_1__ const*,int*,int ,int const*,unsigned int,int,int *) ;
+ int TRACE (char*,unsigned int) ;
 
 __attribute__((used)) static void GPOS_apply_feature(const ScriptCache *psc, const OUTLINETEXTMETRICW *otm,
         const LOGFONTW *logfont, const SCRIPT_ANALYSIS *analysis, int *advance,

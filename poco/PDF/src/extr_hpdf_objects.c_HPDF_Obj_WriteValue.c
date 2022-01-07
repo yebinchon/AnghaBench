@@ -1,50 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int obj_class; } ;
-typedef  int /*<<< orphan*/  HPDF_UINT ;
-typedef  int /*<<< orphan*/  HPDF_Stream ;
-typedef  int /*<<< orphan*/  HPDF_STATUS ;
-typedef  TYPE_1__ HPDF_Obj_Header ;
-typedef  int /*<<< orphan*/  HPDF_Encrypt ;
+typedef int HPDF_UINT ;
+typedef int HPDF_Stream ;
+typedef int HPDF_STATUS ;
+typedef TYPE_1__ HPDF_Obj_Header ;
+typedef int HPDF_Encrypt ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HPDF_Array_Write (void*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HPDF_Binary_Write (void*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HPDF_Boolean_Write (void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HPDF_Dict_Write (void*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HPDF_ERR_UNKNOWN_CLASS ; 
- int /*<<< orphan*/  HPDF_Name_Write (void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HPDF_Number_Write (void*,int /*<<< orphan*/ ) ; 
- int HPDF_OCLASS_ANY ; 
-#define  HPDF_OCLASS_ARRAY 136 
-#define  HPDF_OCLASS_BINARY 135 
-#define  HPDF_OCLASS_BOOLEAN 134 
-#define  HPDF_OCLASS_DICT 133 
-#define  HPDF_OCLASS_NAME 132 
-#define  HPDF_OCLASS_NULL 131 
-#define  HPDF_OCLASS_NUMBER 130 
-#define  HPDF_OCLASS_REAL 129 
-#define  HPDF_OCLASS_STRING 128 
- int /*<<< orphan*/  HPDF_PTRACE (char*) ; 
- int /*<<< orphan*/  HPDF_Real_Write (void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HPDF_Stream_WriteStr (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  HPDF_String_Write (void*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int HPDF_Array_Write (void*,int ,int ) ;
+ int HPDF_Binary_Write (void*,int ,int ) ;
+ int HPDF_Boolean_Write (void*,int ) ;
+ int HPDF_Dict_Write (void*,int ,int ) ;
+ int HPDF_ERR_UNKNOWN_CLASS ;
+ int HPDF_Name_Write (void*,int ) ;
+ int HPDF_Number_Write (void*,int ) ;
+ int HPDF_OCLASS_ANY ;
+ int HPDF_PTRACE (char*) ;
+ int HPDF_Real_Write (void*,int ) ;
+ int HPDF_Stream_WriteStr (int ,char*) ;
+ int HPDF_String_Write (void*,int ,int ) ;
 
 HPDF_STATUS
-HPDF_Obj_WriteValue  (void          *obj,
-                      HPDF_Stream   stream,
-                      HPDF_Encrypt  e)
+HPDF_Obj_WriteValue (void *obj,
+                      HPDF_Stream stream,
+                      HPDF_Encrypt e)
 {
     HPDF_Obj_Header *header;
     HPDF_STATUS ret;
@@ -57,31 +48,31 @@ HPDF_Obj_WriteValue  (void          *obj,
             (HPDF_UINT)obj, (HPDF_UINT)header->obj_class));
 
     switch (header->obj_class & HPDF_OCLASS_ANY) {
-        case HPDF_OCLASS_NAME:
+        case 132:
             ret = HPDF_Name_Write (obj, stream);
             break;
-        case HPDF_OCLASS_NUMBER:
+        case 130:
             ret = HPDF_Number_Write (obj, stream);
             break;
-        case HPDF_OCLASS_REAL:
+        case 129:
             ret = HPDF_Real_Write (obj, stream);
             break;
-        case HPDF_OCLASS_STRING:
+        case 128:
             ret = HPDF_String_Write (obj, stream, e);
             break;
-        case HPDF_OCLASS_BINARY:
+        case 135:
             ret = HPDF_Binary_Write (obj, stream, e);
             break;
-        case HPDF_OCLASS_ARRAY:
+        case 136:
             ret = HPDF_Array_Write (obj, stream, e);
             break;
-        case HPDF_OCLASS_DICT:
+        case 133:
             ret = HPDF_Dict_Write (obj, stream, e);
             break;
-        case HPDF_OCLASS_BOOLEAN:
+        case 134:
             ret = HPDF_Boolean_Write (obj, stream);
             break;
-        case HPDF_OCLASS_NULL:
+        case 131:
             ret = HPDF_Stream_WriteStr (stream, "null");
             break;
         default:

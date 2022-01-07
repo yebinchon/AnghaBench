@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int /*<<< orphan*/  local_id; } ;
-typedef  TYPE_1__ user ;
-typedef  int /*<<< orphan*/  predicate ;
 
-/* Variables and functions */
- int MAX_RESULT ; 
- int /*<<< orphan*/  NOAIO ; 
- size_t PHOTO_TYPE ; 
- int /*<<< orphan*/  assert (int) ; 
- TYPE_1__* conv_uid_get (int) ; 
- int /*<<< orphan*/  dbg (char*,int,int,int,int,int const) ; 
- int /*<<< orphan*/  debug (char*,...) ; 
- char* debug_buff ; 
- scalar_t__ debug_error ; 
- int /*<<< orphan*/  debug_init () ; 
- int event_get_photo_id (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  event_to_array (int /*<<< orphan*/ *,size_t,int /*<<< orphan*/ ,int) ; 
- int get_fields (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  index_mode ; 
- int /*<<< orphan*/  load_user_metafile (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * predicate_init (char*,size_t) ; 
- int /*<<< orphan*/ * result_obj ; 
- int /*<<< orphan*/  return_fields ; 
- int /*<<< orphan*/ * types ; 
- int user_get_photos (TYPE_1__*,int,int,int,int /*<<< orphan*/ *) ; 
- int user_get_photos_count (TYPE_1__*,int) ; 
- int user_get_photos_count_pred (TYPE_1__*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  user_loaded (TYPE_1__*) ; 
- int /*<<< orphan*/  write_only ; 
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int local_id; } ;
+typedef TYPE_1__ user ;
+typedef int predicate ;
+
+
+ int MAX_RESULT ;
+ int NOAIO ;
+ size_t PHOTO_TYPE ;
+ int assert (int) ;
+ TYPE_1__* conv_uid_get (int) ;
+ int dbg (char*,int,int,int,int,int const) ;
+ int debug (char*,...) ;
+ char* debug_buff ;
+ scalar_t__ debug_error ;
+ int debug_init () ;
+ int event_get_photo_id (int *) ;
+ int event_to_array (int *,size_t,int ,int) ;
+ int get_fields (int *,char*) ;
+ int index_mode ;
+ int load_user_metafile (TYPE_1__*,int ,int ) ;
+ int * predicate_init (char*,size_t) ;
+ int * result_obj ;
+ int return_fields ;
+ int * types ;
+ int user_get_photos (TYPE_1__*,int,int,int,int *) ;
+ int user_get_photos_count (TYPE_1__*,int) ;
+ int user_get_photos_count_pred (TYPE_1__*,int,int *) ;
+ int user_loaded (TYPE_1__*) ;
+ int write_only ;
 
 int get_photos (int uid, int aid, int offset, int limit, char *fields, const int reverse, const int count, char *condition, char **result) {
   dbg ("get photos: (uid = %d) (aid = %d) (offset = %d) (limit = %d) (reverse = %d)\n", uid, aid, offset, limit, reverse);
@@ -51,7 +51,7 @@ int get_photos (int uid, int aid, int offset, int limit, char *fields, const int
   user *u = conv_uid_get (uid);
   int fields_n = get_fields (&types[PHOTO_TYPE], fields);
 
-  if (u == NULL || fields_n < 0) {
+  if (u == ((void*)0) || fields_n < 0) {
     return 0;
   }
 
@@ -96,7 +96,7 @@ int get_photos (int uid, int aid, int offset, int limit, char *fields, const int
       limit = 0;
     }
   } else {
-    if (count && pred != NULL) {
+    if (count && pred != ((void*)0)) {
       total = user_get_photos_count_pred (u, aid, pred);
       real_total = total;
 
@@ -130,7 +130,7 @@ int get_photos (int uid, int aid, int offset, int limit, char *fields, const int
     if (reverse) {
       i = total - ii - 1 + offset;
     } else {
-      if (count && pred != NULL) {
+      if (count && pred != ((void*)0)) {
         i = ii + offset;
       } else {
         i = ii;

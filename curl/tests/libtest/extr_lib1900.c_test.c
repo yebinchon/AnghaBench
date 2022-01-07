@@ -1,71 +1,71 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct timeval {int tv_sec; long tv_usec; } ;
-typedef  int /*<<< orphan*/  fd_set ;
+typedef int fd_set ;
 struct TYPE_4__ {int result; } ;
 struct TYPE_5__ {scalar_t__ msg; scalar_t__ easy_handle; TYPE_1__ data; } ;
-typedef  TYPE_2__ CURLMsg ;
-typedef  int /*<<< orphan*/  CURLM ;
+typedef TYPE_2__ CURLMsg ;
+typedef int CURLM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CURLMOPT_CHUNK_LENGTH_PENALTY_SIZE ; 
- int /*<<< orphan*/  CURLMOPT_CONTENT_LENGTH_PENALTY_SIZE ; 
- int /*<<< orphan*/  CURLMOPT_MAX_HOST_CONNECTIONS ; 
- int /*<<< orphan*/  CURLMOPT_MAX_PIPELINE_LENGTH ; 
- int /*<<< orphan*/  CURLMOPT_PIPELINING ; 
- int /*<<< orphan*/  CURLMOPT_PIPELINING_SERVER_BL ; 
- int /*<<< orphan*/  CURLMOPT_PIPELINING_SITE_BL ; 
- scalar_t__ CURLMSG_DONE ; 
- int /*<<< orphan*/  CURL_GLOBAL_ALL ; 
- int /*<<< orphan*/  FD_ZERO (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  abort_on_test_timeout () ; 
- int /*<<< orphan*/  create_handles () ; 
- int /*<<< orphan*/  curl_global_cleanup () ; 
- int /*<<< orphan*/  curl_global_init (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  curl_multi_cleanup (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  curl_multi_fdset (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*) ; 
- TYPE_2__* curl_multi_info_read (int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  curl_multi_perform (int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  curl_multi_remove_handle (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  curl_multi_timeout (int /*<<< orphan*/ *,long*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  free_urls () ; 
- scalar_t__* handles ; 
- int /*<<< orphan*/  libtest_arg2 ; 
- int /*<<< orphan*/  multi_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  multi_setopt (int /*<<< orphan*/ *,int /*<<< orphan*/ ,long) ; 
- int num_handles ; 
- scalar_t__ parse_url_file (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printf (char*,int,int) ; 
- int /*<<< orphan*/  remove_handles () ; 
- int /*<<< orphan*/  select_test (int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,struct timeval*) ; 
- long server_blacklist ; 
- int /*<<< orphan*/  setup_handle (char*,int /*<<< orphan*/ *,int) ; 
- long site_blacklist ; 
- int /*<<< orphan*/  start_test_timing () ; 
- int /*<<< orphan*/  stdout ; 
- scalar_t__ tutil_tvdiff (struct timeval,struct timeval) ; 
- struct timeval tutil_tvnow () ; 
- scalar_t__* urltime ; 
+
+ int CURLMOPT_CHUNK_LENGTH_PENALTY_SIZE ;
+ int CURLMOPT_CONTENT_LENGTH_PENALTY_SIZE ;
+ int CURLMOPT_MAX_HOST_CONNECTIONS ;
+ int CURLMOPT_MAX_PIPELINE_LENGTH ;
+ int CURLMOPT_PIPELINING ;
+ int CURLMOPT_PIPELINING_SERVER_BL ;
+ int CURLMOPT_PIPELINING_SITE_BL ;
+ scalar_t__ CURLMSG_DONE ;
+ int CURL_GLOBAL_ALL ;
+ int FD_ZERO (int *) ;
+ int abort_on_test_timeout () ;
+ int create_handles () ;
+ int curl_global_cleanup () ;
+ int curl_global_init (int ) ;
+ int curl_multi_cleanup (int *) ;
+ int curl_multi_fdset (int *,int *,int *,int *,int*) ;
+ TYPE_2__* curl_multi_info_read (int *,int*) ;
+ int curl_multi_perform (int *,int*) ;
+ int curl_multi_remove_handle (int *,scalar_t__) ;
+ int curl_multi_timeout (int *,long*) ;
+ int fprintf (int ,char*,int) ;
+ int free_urls () ;
+ scalar_t__* handles ;
+ int libtest_arg2 ;
+ int multi_init (int *) ;
+ int multi_setopt (int *,int ,long) ;
+ int num_handles ;
+ scalar_t__ parse_url_file (int ) ;
+ int printf (char*,int,int) ;
+ int remove_handles () ;
+ int select_test (int,int *,int *,int *,struct timeval*) ;
+ long server_blacklist ;
+ int setup_handle (char*,int *,int) ;
+ long site_blacklist ;
+ int start_test_timing () ;
+ int stdout ;
+ scalar_t__ tutil_tvdiff (struct timeval,struct timeval) ;
+ struct timeval tutil_tvnow () ;
+ scalar_t__* urltime ;
 
 int test(char *URL)
 {
   int res = 0;
-  CURLM *m = NULL;
-  CURLMsg *msg; /* for picking up messages with the transfer status */
-  int msgs_left; /* how many messages are left */
+  CURLM *m = ((void*)0);
+  CURLMsg *msg;
+  int msgs_left;
   int running = 0;
   int handlenum = 0;
   struct timeval last_handle_add;
@@ -116,13 +116,13 @@ int test(char *URL)
 
     abort_on_test_timeout();
 
-    /* See how the transfers went */
+
     do {
       msg = curl_multi_info_read(m, &msgs_left);
       if(msg && msg->msg == CURLMSG_DONE) {
         int i;
 
-        /* Find out which handle this message is about */
+
         for(i = 0; i < num_handles; i++) {
           int found = (msg->easy_handle == handles[i]);
           if(found)
@@ -135,7 +135,7 @@ int test(char *URL)
     } while(msg);
 
     if(handlenum == num_handles && !running) {
-      break; /* done */
+      break;
     }
 
     FD_ZERO(&rd);
@@ -144,7 +144,7 @@ int test(char *URL)
 
     curl_multi_fdset(m, &rd, &wr, &exc, &maxfd);
 
-    /* At this point, maxfd is guaranteed to be greater or equal than -1. */
+
 
     curl_multi_timeout(m, &timeout);
 
@@ -166,7 +166,7 @@ test_cleanup:
 
   remove_handles();
 
-  /* undocumented cleanup sequence - type UB */
+
 
   curl_multi_cleanup(m);
   curl_global_cleanup();

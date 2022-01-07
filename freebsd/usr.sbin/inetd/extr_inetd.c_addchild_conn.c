@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct procinfo {struct conninfo* pr_conn; } ;
-struct conninfo {int /*<<< orphan*/  co_numchild; struct procinfo** co_proc; } ;
-typedef  int /*<<< orphan*/  pid_t ;
+struct conninfo {int co_numchild; struct procinfo** co_proc; } ;
+typedef int pid_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EX_OSERR ; 
- int /*<<< orphan*/  LOG_ERR ; 
- int /*<<< orphan*/  exit (int /*<<< orphan*/ ) ; 
- struct procinfo* search_proc (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  syslog (int /*<<< orphan*/ ,char*) ; 
+
+ int EX_OSERR ;
+ int LOG_ERR ;
+ int exit (int ) ;
+ struct procinfo* search_proc (int ,int) ;
+ int syslog (int ,char*) ;
 
 __attribute__((used)) static void
 addchild_conn(struct conninfo *conn, pid_t pid)
 {
-	struct procinfo *proc;
+ struct procinfo *proc;
 
-	if (conn == NULL)
-		return;
+ if (conn == ((void*)0))
+  return;
 
-	if ((proc = search_proc(pid, 1)) != NULL) {
-		if (proc->pr_conn != NULL) {
-			syslog(LOG_ERR,
-			    "addchild_conn: child already on process list");
-			exit(EX_OSERR);
-		}
-		proc->pr_conn = conn;
-	}
+ if ((proc = search_proc(pid, 1)) != ((void*)0)) {
+  if (proc->pr_conn != ((void*)0)) {
+   syslog(LOG_ERR,
+       "addchild_conn: child already on process list");
+   exit(EX_OSERR);
+  }
+  proc->pr_conn = conn;
+ }
 
-	conn->co_proc[conn->co_numchild++] = proc;
+ conn->co_proc[conn->co_numchild++] = proc;
 }

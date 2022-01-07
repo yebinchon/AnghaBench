@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t uint32_t ;
-struct TYPE_3__ {int /*<<< orphan*/  bytes_per_element; int /*<<< orphan*/  element_count; int /*<<< orphan*/  typedarray_type; int /*<<< orphan*/ * constructor_name; } ;
-typedef  TYPE_1__ test_entry_t ;
-typedef  int /*<<< orphan*/  jerry_value_t ;
-typedef  int /*<<< orphan*/  jerry_char_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TEST_ASSERT (int) ; 
- int /*<<< orphan*/  jerry_construct_object (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  jerry_create_number (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jerry_create_string (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  jerry_create_typedarray (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jerry_get_global_object () ; 
- int /*<<< orphan*/  jerry_get_property (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jerry_release_value (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jerry_value_is_error (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_typedarray_info (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef size_t uint32_t ;
+struct TYPE_3__ {int bytes_per_element; int element_count; int typedarray_type; int * constructor_name; } ;
+typedef TYPE_1__ test_entry_t ;
+typedef int jerry_value_t ;
+typedef int jerry_char_t ;
+
+
+ int TEST_ASSERT (int) ;
+ int jerry_construct_object (int ,int *,int) ;
+ int jerry_create_number (int ) ;
+ int jerry_create_string (int const*) ;
+ int jerry_create_typedarray (int ,int ) ;
+ int jerry_get_global_object () ;
+ int jerry_get_property (int ,int ) ;
+ int jerry_release_value (int ) ;
+ int jerry_value_is_error (int ) ;
+ int test_typedarray_info (int ,int ,int ,int ) ;
 
 __attribute__((used)) static void
-test_typedarray_queries (test_entry_t test_entries[]) /**< test cases */
+test_typedarray_queries (test_entry_t test_entries[])
 {
   jerry_value_t global_obj_val = jerry_get_global_object ();
 
-  for (uint32_t i = 0; test_entries[i].constructor_name != NULL; i++)
+  for (uint32_t i = 0; test_entries[i].constructor_name != ((void*)0); i++)
   {
-    /* Create TypedArray via construct call */
+
     {
       jerry_value_t prop_name = jerry_create_string ((const jerry_char_t *) test_entries[i].constructor_name);
       jerry_value_t prop_value = jerry_get_property (global_obj_val, prop_name);
@@ -56,7 +56,7 @@ test_typedarray_queries (test_entry_t test_entries[]) /**< test cases */
       jerry_release_value (typedarray);
     }
 
-    /* Create TypedArray via api call */
+
     {
       jerry_value_t typedarray = jerry_create_typedarray (test_entries[i].typedarray_type,
                                                           test_entries[i].element_count);

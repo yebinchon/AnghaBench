@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  member_0; } ;
-struct TYPE_5__ {TYPE_1__ member_5; int /*<<< orphan*/  member_4; int /*<<< orphan*/  member_3; int /*<<< orphan*/  member_2; int /*<<< orphan*/  member_1; int /*<<< orphan*/  member_0; } ;
-typedef  TYPE_2__ PROPBAG2 ;
-typedef  int /*<<< orphan*/  LPOLESTR ;
-typedef  int /*<<< orphan*/  IWICComponentFactory ;
-typedef  int /*<<< orphan*/  IPropertyBag2 ;
-typedef  scalar_t__ HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLSCTX_INPROC_SERVER ; 
- int /*<<< orphan*/  CLSID_WICImagingFactory ; 
- scalar_t__ CoCreateInstance (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**) ; 
- scalar_t__ FAILED (scalar_t__) ; 
- int /*<<< orphan*/  IID_IWICComponentFactory ; 
- int /*<<< orphan*/  IPropertyBag2_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IWICComponentFactory_CreateEncoderPropertyBag (int /*<<< orphan*/ *,TYPE_2__*,int,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IWICComponentFactory_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PROPBAG2_TYPE_DATA ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  VT_R4 ; 
- int /*<<< orphan*/  VT_UI1 ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
- int /*<<< orphan*/  test_propertybag_countproperties (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  test_propertybag_getpropertyinfo (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  test_propertybag_read (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  test_propertybag_write (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  wszTestProperty1 ; 
- int /*<<< orphan*/  wszTestProperty2 ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int member_0; } ;
+struct TYPE_5__ {TYPE_1__ member_5; int member_4; int member_3; int member_2; int member_1; int member_0; } ;
+typedef TYPE_2__ PROPBAG2 ;
+typedef int LPOLESTR ;
+typedef int IWICComponentFactory ;
+typedef int IPropertyBag2 ;
+typedef scalar_t__ HRESULT ;
+
+
+ int CLSCTX_INPROC_SERVER ;
+ int CLSID_WICImagingFactory ;
+ scalar_t__ CoCreateInstance (int *,int *,int ,int *,void**) ;
+ scalar_t__ FAILED (scalar_t__) ;
+ int IID_IWICComponentFactory ;
+ int IPropertyBag2_Release (int *) ;
+ scalar_t__ IWICComponentFactory_CreateEncoderPropertyBag (int *,TYPE_2__*,int,int **) ;
+ int IWICComponentFactory_Release (int *) ;
+ int PROPBAG2_TYPE_DATA ;
+ scalar_t__ S_OK ;
+ int VT_R4 ;
+ int VT_UI1 ;
+ int ok (int,char*,scalar_t__) ;
+ int test_propertybag_countproperties (int *,int) ;
+ int test_propertybag_getpropertyinfo (int *,int) ;
+ int test_propertybag_read (int *) ;
+ int test_propertybag_write (int *) ;
+ int wszTestProperty1 ;
+ int wszTestProperty2 ;
 
 __attribute__((used)) static void test_filled_propertybag(void)
 {
@@ -51,7 +51,7 @@ __attribute__((used)) static void test_filled_propertybag(void)
         {PROPBAG2_TYPE_DATA, VT_R4, 0, 0, (LPOLESTR)wszTestProperty2, {0}}
     };
 
-    hr = CoCreateInstance(&CLSID_WICImagingFactory, NULL, CLSCTX_INPROC_SERVER,
+    hr = CoCreateInstance(&CLSID_WICImagingFactory, ((void*)0), CLSCTX_INPROC_SERVER,
                           &IID_IWICComponentFactory, (void**)&factory);
     ok(hr == S_OK, "CoCreateInstance failed, hr=%x\n", hr);
 

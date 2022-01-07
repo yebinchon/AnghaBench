@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int WCHAR ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
 struct TYPE_3__ {int save_stream_num; } ;
-typedef  int /*<<< orphan*/  IStream ;
-typedef  int /*<<< orphan*/  IStorage ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  TYPE_1__ DataCacheEntry ;
-typedef  scalar_t__ BOOL ;
+typedef int IStream ;
+typedef int IStorage ;
+typedef int HRESULT ;
+typedef TYPE_1__ DataCacheEntry ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- int* CONTENTS ; 
- int /*<<< orphan*/  IStorage_CreateStream (int /*<<< orphan*/ *,int const*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int STGM_CREATE ; 
- int STGM_READWRITE ; 
- int STGM_SHARE_EXCLUSIVE ; 
+
+ int* CONTENTS ;
+ int IStorage_CreateStream (int *,int const*,int,int ,int ,int **) ;
+ int STGM_CREATE ;
+ int STGM_READWRITE ;
+ int STGM_SHARE_EXCLUSIVE ;
 
 __attribute__((used)) static HRESULT create_stream(DataCacheEntry *cache_entry, IStorage *storage,
                              BOOL contents, IStream **stream)

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {unsigned char* val; scalar_t__ len; int /*<<< orphan*/  const* encoding; int /*<<< orphan*/  no_language; } ;
-typedef  TYPE_1__ mbfl_string ;
-typedef  int /*<<< orphan*/  mbfl_language_id ;
-typedef  int /*<<< orphan*/  mbfl_encoding ;
 
-/* Variables and functions */
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {unsigned char* val; scalar_t__ len; int const* encoding; int no_language; } ;
+typedef TYPE_1__ mbfl_string ;
+typedef int mbfl_language_id ;
+typedef int mbfl_encoding ;
+
+
 
 void
 mbfl_string_init_set(mbfl_string *string, mbfl_language_id no_language, const mbfl_encoding *encoding)
 {
-	if (string) {
-		string->no_language = no_language;
-		string->encoding = encoding;
-		string->val = (unsigned char*)NULL;
-		string->len = 0;
-	}
+ if (string) {
+  string->no_language = no_language;
+  string->encoding = encoding;
+  string->val = (unsigned char*)((void*)0);
+  string->len = 0;
+ }
 }

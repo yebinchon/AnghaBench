@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct sqlc_data {int packet_len; int response_state; int extra_flags; } ;
-struct connection {scalar_t__ generation; int fd; void* status; struct conn_query* first_query; int /*<<< orphan*/  last_response_time; int /*<<< orphan*/  In; } ;
+struct connection {scalar_t__ generation; int fd; void* status; struct conn_query* first_query; int last_response_time; int In; } ;
 struct conn_query {scalar_t__ req_generation; struct connection* requester; } ;
-typedef  int /*<<< orphan*/  nb_iterator_t ;
+typedef int nb_iterator_t ;
 
-/* Variables and functions */
- int SKIP_ALL_BYTES ; 
- struct sqlc_data* SQLC_DATA (struct connection*) ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- void* conn_error ; 
- int /*<<< orphan*/  dump_connection_buffers (struct connection*) ; 
- int /*<<< orphan*/  forward_response (struct connection*,int,int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int nbit_read_in (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  nbit_set (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  precise_now ; 
- int /*<<< orphan*/  query_complete (struct connection*,int) ; 
-#define  resp_done 131 
-#define  resp_first 130 
-#define  resp_reading_fields 129 
-#define  resp_reading_rows 128 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ stop_forwarding_response (struct connection*) ; 
- int verbosity ; 
+
+ int SKIP_ALL_BYTES ;
+ struct sqlc_data* SQLC_DATA (struct connection*) ;
+ int assert (int ) ;
+ void* conn_error ;
+ int dump_connection_buffers (struct connection*) ;
+ int forward_response (struct connection*,int,int) ;
+ int fprintf (int ,char*,...) ;
+ int nbit_read_in (int *,char*,int) ;
+ int nbit_set (int *,int *) ;
+ int precise_now ;
+ int query_complete (struct connection*,int) ;
+
+
+
+
+ int stderr ;
+ scalar_t__ stop_forwarding_response (struct connection*) ;
+ int verbosity ;
 
 int proxy_client_execute (struct connection *c, int op) {
   struct sqlc_data *D = SQLC_DATA(c);
@@ -72,7 +72,7 @@ int proxy_client_execute (struct connection *c, int op) {
   }
 
   switch (D->response_state) {
-  case resp_first:
+  case 130:
     forward_response (c, D->packet_len, SQLC_DATA(c)->extra_flags & 1);
     if (field_cnt == 0 && (SQLC_DATA(c)->extra_flags & 1)) {
       SQLC_DATA(c)->extra_flags |= 2;
@@ -83,31 +83,31 @@ int proxy_client_execute (struct connection *c, int op) {
         c->status = conn_error;
       }
     } else if (field_cnt == 0 || field_cnt == 0xff) {
-      D->response_state = resp_done;
+      D->response_state = 131;
     } else if (field_cnt < 0 || field_cnt >= 0xfe) {
-      c->status = conn_error;	// protocol error
+      c->status = conn_error;
     } else {
-      D->response_state = resp_reading_fields;
+      D->response_state = 129;
     }
     break;
-  case resp_reading_fields:
+  case 129:
     forward_response (c, D->packet_len, 0);
     if (field_cnt == 0xfe) {
-      D->response_state = resp_reading_rows;
+      D->response_state = 128;
     }
     break;
-  case resp_reading_rows:
+  case 128:
     forward_response (c, D->packet_len, 0);
     if (field_cnt == 0xfe) {
-      D->response_state = resp_done;
+      D->response_state = 131;
     }
     break;
-  case resp_done:
+  case 131:
     fprintf (stderr, "unexpected packet from server!\n");
     assert (0);
   }
 
-  if (D->response_state == resp_done) {
+  if (D->response_state == 131) {
     query_complete (c, 1);
   }
 

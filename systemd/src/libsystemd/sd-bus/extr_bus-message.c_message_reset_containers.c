@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {scalar_t__ index; } ;
-struct TYPE_7__ {scalar_t__ n_containers; TYPE_1__ root_container; scalar_t__ containers_allocated; int /*<<< orphan*/  containers; } ;
-typedef  TYPE_2__ sd_bus_message ;
+struct TYPE_7__ {scalar_t__ n_containers; TYPE_1__ root_container; scalar_t__ containers_allocated; int containers; } ;
+typedef TYPE_2__ sd_bus_message ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (TYPE_2__*) ; 
- int /*<<< orphan*/  message_free_last_container (TYPE_2__*) ; 
- int /*<<< orphan*/  mfree (int /*<<< orphan*/ ) ; 
+
+ int assert (TYPE_2__*) ;
+ int message_free_last_container (TYPE_2__*) ;
+ int mfree (int ) ;
 
 __attribute__((used)) static void message_reset_containers(sd_bus_message *m) {
         assert(m);

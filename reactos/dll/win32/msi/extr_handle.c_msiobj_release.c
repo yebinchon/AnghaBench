@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {scalar_t__ magic; int /*<<< orphan*/  (* destructor ) (TYPE_1__*) ;int /*<<< orphan*/  refcount; } ;
-typedef  TYPE_1__ MSIOBJECTHDR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*) ; 
- int InterlockedDecrement (int /*<<< orphan*/ *) ; 
- scalar_t__ MSIHANDLE_MAGIC ; 
- int /*<<< orphan*/  TRACE (char*,TYPE_1__*) ; 
- int /*<<< orphan*/  msi_free (TYPE_1__*) ; 
- int /*<<< orphan*/  stub1 (TYPE_1__*) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {scalar_t__ magic; int (* destructor ) (TYPE_1__*) ;int refcount; } ;
+typedef TYPE_1__ MSIOBJECTHDR ;
+
+
+ int ERR (char*) ;
+ int InterlockedDecrement (int *) ;
+ scalar_t__ MSIHANDLE_MAGIC ;
+ int TRACE (char*,TYPE_1__*) ;
+ int msi_free (TYPE_1__*) ;
+ int stub1 (TYPE_1__*) ;
 
 int msiobj_release( MSIOBJECTHDR *info )
 {

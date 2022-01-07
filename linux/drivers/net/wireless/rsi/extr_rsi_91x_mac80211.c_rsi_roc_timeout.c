@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct timer_list {int dummy; } ;
-struct rsi_common {int /*<<< orphan*/  mutex; int /*<<< orphan*/  roc_timer; TYPE_1__* priv; } ;
-struct TYPE_2__ {int /*<<< orphan*/  hw; } ;
+struct rsi_common {int mutex; int roc_timer; TYPE_1__* priv; } ;
+struct TYPE_2__ {int hw; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INFO_ZONE ; 
- struct rsi_common* common ; 
- int /*<<< orphan*/  del_timer (int /*<<< orphan*/ *) ; 
- struct rsi_common* from_timer (int /*<<< orphan*/ ,struct timer_list*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ieee80211_remain_on_channel_expired (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  roc_timer ; 
- int /*<<< orphan*/  rsi_dbg (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  rsi_resume_conn_channel (struct rsi_common*) ; 
- scalar_t__ timer_pending (int /*<<< orphan*/ *) ; 
+
+ int INFO_ZONE ;
+ struct rsi_common* common ;
+ int del_timer (int *) ;
+ struct rsi_common* from_timer (int ,struct timer_list*,int ) ;
+ int ieee80211_remain_on_channel_expired (int ) ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
+ int roc_timer ;
+ int rsi_dbg (int ,char*) ;
+ int rsi_resume_conn_channel (struct rsi_common*) ;
+ scalar_t__ timer_pending (int *) ;
 
 void rsi_roc_timeout(struct timer_list *t)
 {
-	struct rsi_common *common = from_timer(common, t, roc_timer);
+ struct rsi_common *common = from_timer(common, t, roc_timer);
 
-	rsi_dbg(INFO_ZONE, "Remain on channel expired\n");
+ rsi_dbg(INFO_ZONE, "Remain on channel expired\n");
 
-	mutex_lock(&common->mutex);
-	ieee80211_remain_on_channel_expired(common->priv->hw);
+ mutex_lock(&common->mutex);
+ ieee80211_remain_on_channel_expired(common->priv->hw);
 
-	if (timer_pending(&common->roc_timer))
-		del_timer(&common->roc_timer);
+ if (timer_pending(&common->roc_timer))
+  del_timer(&common->roc_timer);
 
-	rsi_resume_conn_channel(common);
-	mutex_unlock(&common->mutex);
+ rsi_resume_conn_channel(common);
+ mutex_unlock(&common->mutex);
 }

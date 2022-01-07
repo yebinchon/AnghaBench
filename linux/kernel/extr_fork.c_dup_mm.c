@@ -1,63 +1,63 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct task_struct {int dummy; } ;
-struct mm_struct {TYPE_1__* binfmt; int /*<<< orphan*/  total_vm; int /*<<< orphan*/  hiwater_vm; int /*<<< orphan*/  hiwater_rss; int /*<<< orphan*/  user_ns; } ;
-struct TYPE_2__ {int /*<<< orphan*/  module; } ;
+struct mm_struct {TYPE_1__* binfmt; int total_vm; int hiwater_vm; int hiwater_rss; int user_ns; } ;
+struct TYPE_2__ {int module; } ;
 
-/* Variables and functions */
- struct mm_struct* allocate_mm () ; 
- int dup_mmap (struct mm_struct*,struct mm_struct*) ; 
- int /*<<< orphan*/  get_mm_rss (struct mm_struct*) ; 
- int /*<<< orphan*/  memcpy (struct mm_struct*,struct mm_struct*,int) ; 
- int /*<<< orphan*/  mm_init (struct mm_struct*,struct task_struct*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mm_init_owner (struct mm_struct*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mmput (struct mm_struct*) ; 
- int /*<<< orphan*/  try_module_get (int /*<<< orphan*/ ) ; 
+
+ struct mm_struct* allocate_mm () ;
+ int dup_mmap (struct mm_struct*,struct mm_struct*) ;
+ int get_mm_rss (struct mm_struct*) ;
+ int memcpy (struct mm_struct*,struct mm_struct*,int) ;
+ int mm_init (struct mm_struct*,struct task_struct*,int ) ;
+ int mm_init_owner (struct mm_struct*,int *) ;
+ int mmput (struct mm_struct*) ;
+ int try_module_get (int ) ;
 
 __attribute__((used)) static struct mm_struct *dup_mm(struct task_struct *tsk,
-				struct mm_struct *oldmm)
+    struct mm_struct *oldmm)
 {
-	struct mm_struct *mm;
-	int err;
+ struct mm_struct *mm;
+ int err;
 
-	mm = allocate_mm();
-	if (!mm)
-		goto fail_nomem;
+ mm = allocate_mm();
+ if (!mm)
+  goto fail_nomem;
 
-	memcpy(mm, oldmm, sizeof(*mm));
+ memcpy(mm, oldmm, sizeof(*mm));
 
-	if (!mm_init(mm, tsk, mm->user_ns))
-		goto fail_nomem;
+ if (!mm_init(mm, tsk, mm->user_ns))
+  goto fail_nomem;
 
-	err = dup_mmap(mm, oldmm);
-	if (err)
-		goto free_pt;
+ err = dup_mmap(mm, oldmm);
+ if (err)
+  goto free_pt;
 
-	mm->hiwater_rss = get_mm_rss(mm);
-	mm->hiwater_vm = mm->total_vm;
+ mm->hiwater_rss = get_mm_rss(mm);
+ mm->hiwater_vm = mm->total_vm;
 
-	if (mm->binfmt && !try_module_get(mm->binfmt->module))
-		goto free_pt;
+ if (mm->binfmt && !try_module_get(mm->binfmt->module))
+  goto free_pt;
 
-	return mm;
+ return mm;
 
 free_pt:
-	/* don't put binfmt in mmput, we haven't got module yet */
-	mm->binfmt = NULL;
-	mm_init_owner(mm, NULL);
-	mmput(mm);
+
+ mm->binfmt = ((void*)0);
+ mm_init_owner(mm, ((void*)0));
+ mmput(mm);
 
 fail_nomem:
-	return NULL;
+ return ((void*)0);
 }

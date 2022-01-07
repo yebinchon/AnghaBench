@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  IObjectSafety ;
-typedef  int /*<<< orphan*/  IActiveScript ;
-typedef  int HRESULT ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int E_FAIL ; 
- int E_POINTER ; 
- scalar_t__ FAILED (int) ; 
- int IActiveScript_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IID_IActiveScript ; 
- int /*<<< orphan*/  IID_IActiveScriptParse ; 
- int /*<<< orphan*/  IID_IObjectSafety ; 
- int /*<<< orphan*/  IID_NULL ; 
- int INTERFACESAFE_FOR_UNTRUSTED_CALLER ; 
- int INTERFACESAFE_FOR_UNTRUSTED_DATA ; 
- int INTERFACE_USES_DISPEX ; 
- int INTERFACE_USES_SECURITY_MANAGER ; 
- int IObjectSafety_GetInterfaceSafetyOptions (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*,int*) ; 
- int /*<<< orphan*/  IObjectSafety_Release (int /*<<< orphan*/ *) ; 
- int IObjectSafety_SetInterfaceSafetyOptions (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int) ; 
- int S_OK ; 
- int /*<<< orphan*/  ok (int,char*,int) ; 
+
+
+
+typedef int IObjectSafety ;
+typedef int IActiveScript ;
+typedef int HRESULT ;
+typedef int DWORD ;
+
+
+ int E_FAIL ;
+ int E_POINTER ;
+ scalar_t__ FAILED (int) ;
+ int IActiveScript_QueryInterface (int *,int *,void**) ;
+ int IID_IActiveScript ;
+ int IID_IActiveScriptParse ;
+ int IID_IObjectSafety ;
+ int IID_NULL ;
+ int INTERFACESAFE_FOR_UNTRUSTED_CALLER ;
+ int INTERFACESAFE_FOR_UNTRUSTED_DATA ;
+ int INTERFACE_USES_DISPEX ;
+ int INTERFACE_USES_SECURITY_MANAGER ;
+ int IObjectSafety_GetInterfaceSafetyOptions (int *,int *,int*,int*) ;
+ int IObjectSafety_Release (int *) ;
+ int IObjectSafety_SetInterfaceSafetyOptions (int *,int *,int,int) ;
+ int S_OK ;
+ int ok (int,char*,int) ;
 
 __attribute__((used)) static void test_safety(IActiveScript *script)
 {
@@ -45,9 +45,9 @@ __attribute__((used)) static void test_safety(IActiveScript *script)
     if(FAILED(hres))
         return;
 
-    hres = IObjectSafety_GetInterfaceSafetyOptions(safety, &IID_NULL, &supported, NULL);
+    hres = IObjectSafety_GetInterfaceSafetyOptions(safety, &IID_NULL, &supported, ((void*)0));
     ok(hres == E_POINTER, "GetInterfaceSafetyOptions failed: %08x, expected E_POINTER\n", hres);
-    hres = IObjectSafety_GetInterfaceSafetyOptions(safety, &IID_NULL, NULL, &enabled);
+    hres = IObjectSafety_GetInterfaceSafetyOptions(safety, &IID_NULL, ((void*)0), &enabled);
     ok(hres == E_POINTER, "GetInterfaceSafetyOptions failed: %08x, expected E_POINTER\n", hres);
 
     supported = enabled = 0xdeadbeef;

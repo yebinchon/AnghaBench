@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {char* command; char* help; int /*<<< orphan*/ * func; int /*<<< orphan*/ * hint; } ;
-typedef  TYPE_1__ esp_console_cmd_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ESP_ERROR_CHECK (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  esp_console_cmd_register (TYPE_1__ const*) ; 
- int /*<<< orphan*/  heap_size ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {char* command; char* help; int * func; int * hint; } ;
+typedef TYPE_1__ esp_console_cmd_t ;
+
+
+ int ESP_ERROR_CHECK (int ) ;
+ int esp_console_cmd_register (TYPE_1__ const*) ;
+ int heap_size ;
 
 __attribute__((used)) static void register_heap(void)
 {
     const esp_console_cmd_t heap_cmd = {
         .command = "heap",
         .help = "Get minimum size of free heap memory that was available during program execution",
-        .hint = NULL,
+        .hint = ((void*)0),
         .func = &heap_size,
     };
     ESP_ERROR_CHECK( esp_console_cmd_register(&heap_cmd) );

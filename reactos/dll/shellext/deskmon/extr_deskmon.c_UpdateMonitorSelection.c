@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WPARAM ;
-typedef  int /*<<< orphan*/  VOID ;
-struct TYPE_3__ {int dwMonitorCount; int /*<<< orphan*/ * SelMonitor; int /*<<< orphan*/  hwndDlg; int /*<<< orphan*/ * Monitors; } ;
-typedef  TYPE_1__* PDESKMONITOR ;
-typedef  int /*<<< orphan*/ * PDESKMONINFO ;
-typedef  scalar_t__ INT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EnableWindow (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetDlgItem (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IDC_MONITORLIST ; 
- int /*<<< orphan*/  IDC_MONITORPROPERTIES ; 
- int /*<<< orphan*/  LB_GETCURSEL ; 
- int /*<<< orphan*/  LB_GETITEMDATA ; 
- scalar_t__ SendDlgItemMessage (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int WPARAM ;
+typedef int VOID ;
+struct TYPE_3__ {int dwMonitorCount; int * SelMonitor; int hwndDlg; int * Monitors; } ;
+typedef TYPE_1__* PDESKMONITOR ;
+typedef int * PDESKMONINFO ;
+typedef scalar_t__ INT ;
+
+
+ int EnableWindow (int ,int ) ;
+ int GetDlgItem (int ,int ) ;
+ int IDC_MONITORLIST ;
+ int IDC_MONITORPROPERTIES ;
+ int LB_GETCURSEL ;
+ int LB_GETITEMDATA ;
+ scalar_t__ SendDlgItemMessage (int ,int ,int ,int ,int ) ;
 
 __attribute__((used)) static VOID
 UpdateMonitorSelection(PDESKMONITOR This)
@@ -34,7 +34,7 @@ UpdateMonitorSelection(PDESKMONITOR This)
 
     if (This->dwMonitorCount > 1)
     {
-        This->SelMonitor = NULL;
+        This->SelMonitor = ((void*)0);
 
         i = (INT)SendDlgItemMessage(This->hwndDlg,
                                     IDC_MONITORLIST,
@@ -55,5 +55,5 @@ UpdateMonitorSelection(PDESKMONITOR This)
 
     EnableWindow(GetDlgItem(This->hwndDlg,
                             IDC_MONITORPROPERTIES),
-                 This->SelMonitor != NULL);
+                 This->SelMonitor != ((void*)0));
 }

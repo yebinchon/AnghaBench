@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ png_uint_32 ;
-typedef  int /*<<< orphan*/ * png_structp ;
-typedef  int /*<<< orphan*/ * png_infop ;
-typedef  int /*<<< orphan*/  png_charp ;
-typedef  int /*<<< orphan*/ * png_bytep ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int PNG_INFO_iCCP ; 
- int /*<<< orphan*/  PNG_LIBPNG_VER_STRING ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/ * malloc (scalar_t__) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/ * no_profile ; 
- int /*<<< orphan*/ * png_create_info_struct (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * png_create_read_struct (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  png_destroy_read_struct (int /*<<< orphan*/ **,int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  png_error (int /*<<< orphan*/ *,char*) ; 
- int png_get_iCCP (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*,int /*<<< orphan*/ **,scalar_t__*) ; 
- int /*<<< orphan*/  png_init_io (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  png_jmpbuf (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  png_read_info (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ setjmp (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stderr ; 
+
+
+
+typedef scalar_t__ png_uint_32 ;
+typedef int * png_structp ;
+typedef int * png_infop ;
+typedef int png_charp ;
+typedef int * png_bytep ;
+typedef int FILE ;
+
+
+ int PNG_INFO_iCCP ;
+ int PNG_LIBPNG_VER_STRING ;
+ int fprintf (int ,char*) ;
+ int * malloc (scalar_t__) ;
+ int memcpy (int *,int *,scalar_t__) ;
+ int * no_profile ;
+ int * png_create_info_struct (int *) ;
+ int * png_create_read_struct (int ,int ,int ,int ) ;
+ int png_destroy_read_struct (int **,int **,int *) ;
+ int png_error (int *,char*) ;
+ int png_get_iCCP (int *,int *,int *,int*,int **,scalar_t__*) ;
+ int png_init_io (int *,int *) ;
+ int png_jmpbuf (int *) ;
+ int png_read_info (int *,int *) ;
+ scalar_t__ setjmp (int ) ;
+ int stderr ;
 
 __attribute__((used)) static png_bytep
 extract(FILE *fp, png_uint_32 *proflen)
 {
    png_structp png_ptr = png_create_read_struct(PNG_LIBPNG_VER_STRING,0,0,0);
-   png_infop info_ptr = NULL;
-   png_bytep result = NULL;
+   png_infop info_ptr = ((void*)0);
+   png_bytep result = ((void*)0);
 
-   /* Initialize for error or no profile: */
+
    *proflen = 0;
 
-   if (png_ptr == NULL)
+   if (png_ptr == ((void*)0))
    {
       fprintf(stderr, "iccfrompng: version library mismatch?\n");
       return 0;
@@ -53,14 +53,14 @@ extract(FILE *fp, png_uint_32 *proflen)
 
    if (setjmp(png_jmpbuf(png_ptr)))
    {
-      png_destroy_read_struct(&png_ptr, &info_ptr, NULL);
+      png_destroy_read_struct(&png_ptr, &info_ptr, ((void*)0));
       return 0;
    }
 
    png_init_io(png_ptr, fp);
 
    info_ptr = png_create_info_struct(png_ptr);
-   if (info_ptr == NULL)
+   if (info_ptr == ((void*)0))
       png_error(png_ptr, "OOM allocating info structure");
 
    png_read_info(png_ptr, info_ptr);
@@ -74,7 +74,7 @@ extract(FILE *fp, png_uint_32 *proflen)
          proflen) & PNG_INFO_iCCP)
       {
          result = malloc(*proflen);
-         if (result != NULL)
+         if (result != ((void*)0))
             memcpy(result, profile, *proflen);
 
          else
@@ -82,9 +82,9 @@ extract(FILE *fp, png_uint_32 *proflen)
       }
 
       else
-	result = no_profile;
+ result = no_profile;
    }
 
-   png_destroy_read_struct(&png_ptr, &info_ptr, NULL);
+   png_destroy_read_struct(&png_ptr, &info_ptr, ((void*)0));
    return result;
 }

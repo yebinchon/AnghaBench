@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  hb_handle_t ;
-struct TYPE_4__ {int title_count; int /*<<< orphan*/ * bd; int /*<<< orphan*/  path; int /*<<< orphan*/  disc_info; int /*<<< orphan*/ * title_info; int /*<<< orphan*/ * h; } ;
-typedef  TYPE_1__ hb_bd_t ;
-typedef  int /*<<< orphan*/  BLURAY_TITLE_INFO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TITLES_RELEVANT ; 
- int /*<<< orphan*/  bd_close (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bd_get_disc_info (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bd_get_title_info (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int bd_get_titles (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * bd_open (char const*,int /*<<< orphan*/ *) ; 
- void* calloc (int,int) ; 
- int /*<<< orphan*/  free (TYPE_1__*) ; 
- int /*<<< orphan*/  hb_log (char*) ; 
- int /*<<< orphan*/  qsort (int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strdup (char const*) ; 
- int /*<<< orphan*/  title_info_compare_mpls ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int hb_handle_t ;
+struct TYPE_4__ {int title_count; int * bd; int path; int disc_info; int * title_info; int * h; } ;
+typedef TYPE_1__ hb_bd_t ;
+typedef int BLURAY_TITLE_INFO ;
+
+
+ int TITLES_RELEVANT ;
+ int bd_close (int *) ;
+ int bd_get_disc_info (int *) ;
+ int bd_get_title_info (int *,int,int ) ;
+ int bd_get_titles (int *,int ,int ) ;
+ int * bd_open (char const*,int *) ;
+ void* calloc (int,int) ;
+ int free (TYPE_1__*) ;
+ int hb_log (char*) ;
+ int qsort (int *,int,int,int ) ;
+ int strdup (char const*) ;
+ int title_info_compare_mpls ;
 
 hb_bd_t * hb_bd_init( hb_handle_t *h, const char * path )
 {
@@ -38,13 +38,13 @@ hb_bd_t * hb_bd_init( hb_handle_t *h, const char * path )
     d = calloc( sizeof( hb_bd_t ), 1 );
     d->h = h;
 
-    /* Open device */
-    d->bd = bd_open( path, NULL );
-    if( d->bd == NULL )
+
+    d->bd = bd_open( path, ((void*)0) );
+    if( d->bd == ((void*)0) )
     {
-        /*
-         * Not an error, may be a stream - which we'll try in a moment.
-         */
+
+
+
         hb_log( "bd: not a bd - trying as a stream/file instead" );
         goto fail;
     }
@@ -69,5 +69,5 @@ hb_bd_t * hb_bd_init( hb_handle_t *h, const char * path )
 fail:
     if( d->bd ) bd_close( d->bd );
     free( d );
-    return NULL;
+    return ((void*)0);
 }

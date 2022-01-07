@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uid_t ;
-typedef  int /*<<< orphan*/  acl_t ;
-typedef  int /*<<< orphan*/  acl_permset_t ;
-typedef  int /*<<< orphan*/  acl_entry_t ;
 
-/* Variables and functions */
- int ACL_READ ; 
- int /*<<< orphan*/  ACL_TYPE_ACCESS ; 
- int /*<<< orphan*/  ACL_USER ; 
- int ACL_WRITE ; 
- scalar_t__ acl_add_perm (int /*<<< orphan*/ ,int) ; 
- scalar_t__ acl_calc_mask (int /*<<< orphan*/ *) ; 
- scalar_t__ acl_create_entry (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ acl_delete_entry (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int acl_find_uid (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  acl_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  acl_get_file (char const*,int /*<<< orphan*/ ) ; 
- int acl_get_perm (int /*<<< orphan*/ ,int) ; 
- scalar_t__ acl_get_permset (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ acl_set_file (char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ acl_set_qualifier (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ acl_set_tag_type (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert (char const*) ; 
- int errno ; 
- int flush_acl (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uid_t ;
+typedef int acl_t ;
+typedef int acl_permset_t ;
+typedef int acl_entry_t ;
+
+
+ int ACL_READ ;
+ int ACL_TYPE_ACCESS ;
+ int ACL_USER ;
+ int ACL_WRITE ;
+ scalar_t__ acl_add_perm (int ,int) ;
+ scalar_t__ acl_calc_mask (int *) ;
+ scalar_t__ acl_create_entry (int *,int *) ;
+ scalar_t__ acl_delete_entry (int ,int ) ;
+ int acl_find_uid (int ,int ,int *) ;
+ int acl_free (int ) ;
+ int acl_get_file (char const*,int ) ;
+ int acl_get_perm (int ,int) ;
+ scalar_t__ acl_get_permset (int ,int *) ;
+ scalar_t__ acl_set_file (char const*,int ,int ) ;
+ scalar_t__ acl_set_qualifier (int ,int *) ;
+ scalar_t__ acl_set_tag_type (int ,int ) ;
+ int assert (char const*) ;
+ int errno ;
+ int flush_acl (int ) ;
 
 int devnode_acl(const char *path,
                 bool flush,
@@ -43,7 +43,7 @@ int devnode_acl(const char *path,
 
         acl_t acl;
         int r = 0;
-        bool changed = false;
+        bool changed = 0;
 
         assert(path);
 
@@ -57,7 +57,7 @@ int devnode_acl(const char *path,
                 if (r < 0)
                         goto finish;
                 if (r > 0)
-                        changed = true;
+                        changed = 1;
 
         } else if (del && old_uid > 0) {
                 acl_entry_t entry;
@@ -72,7 +72,7 @@ int devnode_acl(const char *path,
                                 goto finish;
                         }
 
-                        changed = true;
+                        changed = 1;
                 }
         }
 
@@ -122,7 +122,7 @@ int devnode_acl(const char *path,
                                 goto finish;
                         }
 
-                        changed = true;
+                        changed = 1;
                 }
         }
 

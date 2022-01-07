@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  NSEC_PER_USEC ; 
- int /*<<< orphan*/  delay_for_interval (int,int /*<<< orphan*/ ) ; 
+ int NSEC_PER_USEC ;
+ int delay_for_interval (int,int ) ;
 
 void
 delay(
-	int		usec)
+ int usec)
 {
-	delay_for_interval((usec < 0)? -usec: usec, NSEC_PER_USEC);
+ delay_for_interval((usec < 0)? -usec: usec, NSEC_PER_USEC);
 }

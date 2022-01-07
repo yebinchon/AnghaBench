@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {unsigned char* data; scalar_t__ flags; int /*<<< orphan*/  length; int /*<<< orphan*/  type; } ;
-typedef  TYPE_1__ ASN1_GENERALIZEDTIME ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASN1_GENERALIZEDTIME_check (TYPE_1__*) ; 
- int /*<<< orphan*/  ASN1_STRING_copy (TYPE_1__*,TYPE_1__*) ; 
- int /*<<< orphan*/  V_ASN1_GENERALIZEDTIME ; 
- int /*<<< orphan*/  strlen (char const*) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {unsigned char* data; scalar_t__ flags; int length; int type; } ;
+typedef TYPE_1__ ASN1_GENERALIZEDTIME ;
+
+
+ int ASN1_GENERALIZEDTIME_check (TYPE_1__*) ;
+ int ASN1_STRING_copy (TYPE_1__*,TYPE_1__*) ;
+ int V_ASN1_GENERALIZEDTIME ;
+ int strlen (char const*) ;
 
 int ASN1_GENERALIZEDTIME_set_string(ASN1_GENERALIZEDTIME *s, const char *str)
 {
@@ -32,7 +32,7 @@ int ASN1_GENERALIZEDTIME_set_string(ASN1_GENERALIZEDTIME *s, const char *str)
     if (!ASN1_GENERALIZEDTIME_check(&t))
         return 0;
 
-    if (s != NULL && !ASN1_STRING_copy(s, &t))
+    if (s != ((void*)0) && !ASN1_STRING_copy(s, &t))
         return 0;
 
     return 1;

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct wined3d_string_buffer {int dummy; } ;
 struct color_fixup_masks {int sign; scalar_t__ source; } ;
-struct color_fixup_desc {int /*<<< orphan*/  w_source; int /*<<< orphan*/  z_source; int /*<<< orphan*/  y_source; int /*<<< orphan*/  x_source; } ;
+struct color_fixup_desc {int w_source; int z_source; int y_source; int x_source; } ;
 
-/* Variables and functions */
- int WINED3DSP_WRITEMASK_0 ; 
- int WINED3DSP_WRITEMASK_1 ; 
- int WINED3DSP_WRITEMASK_2 ; 
- int WINED3DSP_WRITEMASK_3 ; 
- int WINED3DSP_WRITEMASK_ALL ; 
- int /*<<< orphan*/  shader_addline (struct wined3d_string_buffer*,char*,char const*,char const*,char const*,char const*,char const*,...) ; 
- int /*<<< orphan*/  shader_arb_get_fixup_swizzle (int /*<<< orphan*/ ) ; 
+
+ int WINED3DSP_WRITEMASK_0 ;
+ int WINED3DSP_WRITEMASK_1 ;
+ int WINED3DSP_WRITEMASK_2 ;
+ int WINED3DSP_WRITEMASK_3 ;
+ int WINED3DSP_WRITEMASK_ALL ;
+ int shader_addline (struct wined3d_string_buffer*,char*,char const*,char const*,char const*,char const*,char const*,...) ;
+ int shader_arb_get_fixup_swizzle (int ) ;
 
 __attribute__((used)) static void gen_color_correction(struct wined3d_string_buffer *buffer, const char *dst,
         const char *src, const char *one, const char *two,

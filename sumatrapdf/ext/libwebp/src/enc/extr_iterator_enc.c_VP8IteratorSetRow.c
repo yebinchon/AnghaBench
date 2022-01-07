@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int num_parts_; int preds_w_; int mb_w_; int /*<<< orphan*/  uv_top_; int /*<<< orphan*/  y_top_; scalar_t__ mb_info_; int /*<<< orphan*/  nz_; scalar_t__ preds_; int /*<<< orphan*/ * parts_; } ;
-typedef  TYPE_1__ VP8Encoder ;
-struct TYPE_6__ {int y_; int /*<<< orphan*/  uv_top_; int /*<<< orphan*/  y_top_; scalar_t__ mb_; int /*<<< orphan*/  nz_; scalar_t__ preds_; int /*<<< orphan*/ * bw_; scalar_t__ x_; TYPE_1__* enc_; } ;
-typedef  TYPE_2__ VP8EncIterator ;
 
-/* Variables and functions */
- int /*<<< orphan*/  InitLeft (TYPE_2__* const) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int num_parts_; int preds_w_; int mb_w_; int uv_top_; int y_top_; scalar_t__ mb_info_; int nz_; scalar_t__ preds_; int * parts_; } ;
+typedef TYPE_1__ VP8Encoder ;
+struct TYPE_6__ {int y_; int uv_top_; int y_top_; scalar_t__ mb_; int nz_; scalar_t__ preds_; int * bw_; scalar_t__ x_; TYPE_1__* enc_; } ;
+typedef TYPE_2__ VP8EncIterator ;
+
+
+ int InitLeft (TYPE_2__* const) ;
 
 void VP8IteratorSetRow(VP8EncIterator* const it, int y) {
   VP8Encoder* const enc = it->enc_;

@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/ * CvParentFilename; int /*<<< orphan*/ * CvFilename; int /*<<< orphan*/ * CloseBraceComment; int /*<<< orphan*/ * EndBlkComment; int /*<<< orphan*/ * CommentList; int /*<<< orphan*/ * NameComment; int /*<<< orphan*/ * EndNodeComment; int /*<<< orphan*/ * InlineComment; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int * CvParentFilename; int * CvFilename; int * CloseBraceComment; int * EndBlkComment; int * CommentList; int * NameComment; int * EndNodeComment; int * InlineComment; } ;
 struct TYPE_5__ {TYPE_1__ Common; } ;
-typedef  TYPE_2__ ACPI_PARSE_OBJECT ;
+typedef TYPE_2__ ACPI_PARSE_OBJECT ;
 
-/* Variables and functions */
+
 
 void
 CvClearOpComments (
-    ACPI_PARSE_OBJECT       *Op)
+    ACPI_PARSE_OBJECT *Op)
 {
 
-    Op->Common.InlineComment     = NULL;
-    Op->Common.EndNodeComment    = NULL;
-    Op->Common.NameComment       = NULL;
-    Op->Common.CommentList       = NULL;
-    Op->Common.EndBlkComment     = NULL;
-    Op->Common.CloseBraceComment = NULL;
-    Op->Common.CvFilename        = NULL;
-    Op->Common.CvParentFilename  = NULL;
+    Op->Common.InlineComment = ((void*)0);
+    Op->Common.EndNodeComment = ((void*)0);
+    Op->Common.NameComment = ((void*)0);
+    Op->Common.CommentList = ((void*)0);
+    Op->Common.EndBlkComment = ((void*)0);
+    Op->Common.CloseBraceComment = ((void*)0);
+    Op->Common.CvFilename = ((void*)0);
+    Op->Common.CvParentFilename = ((void*)0);
 }

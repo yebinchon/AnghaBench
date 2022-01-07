@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sd_bus_message ;
-typedef  int /*<<< orphan*/  sd_bus_error ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int sd_bus_message ;
+typedef int sd_bus_error ;
 struct TYPE_5__ {TYPE_1__* job; } ;
-typedef  TYPE_2__ Unit ;
+typedef TYPE_2__ Unit ;
 struct TYPE_4__ {scalar_t__ type; } ;
-typedef  int /*<<< orphan*/  Manager ;
+typedef int Manager ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BUS_ERROR_NO_SUCH_JOB ; 
- scalar_t__ JOB_START ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ *) ; 
- int bus_get_unit_by_name (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*,TYPE_2__**,int /*<<< orphan*/ *) ; 
- int method_start_unit_generic (int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__,int,int /*<<< orphan*/ *) ; 
- int sd_bus_error_setf (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,char const*) ; 
- int sd_bus_message_read (int /*<<< orphan*/ *,char*,char const**) ; 
+
+ int BUS_ERROR_NO_SUCH_JOB ;
+ scalar_t__ JOB_START ;
+ int assert (int *) ;
+ int bus_get_unit_by_name (int *,int *,char const*,TYPE_2__**,int *) ;
+ int method_start_unit_generic (int *,int *,scalar_t__,int,int *) ;
+ int sd_bus_error_setf (int *,int ,char*,char const*) ;
+ int sd_bus_message_read (int *,char*,char const**) ;
 
 __attribute__((used)) static int method_start_unit_replace(sd_bus_message *message, void *userdata, sd_bus_error *error) {
         Manager *m = userdata;
@@ -47,5 +47,5 @@ __attribute__((used)) static int method_start_unit_replace(sd_bus_message *messa
         if (!u->job || u->job->type != JOB_START)
                 return sd_bus_error_setf(error, BUS_ERROR_NO_SUCH_JOB, "No job queued for unit %s", old_name);
 
-        return method_start_unit_generic(message, m, JOB_START, false, error);
+        return method_start_unit_generic(message, m, JOB_START, 0, error);
 }

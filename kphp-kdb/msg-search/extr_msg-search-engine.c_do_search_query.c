@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct connection {int /*<<< orphan*/  Out; } ;
 
-/* Variables and functions */
- int MAX_NET_RES ; 
- int /*<<< orphan*/  MAX_QUERY_WORDS ; 
- int /*<<< orphan*/  MaxQw ; 
- int Qw ; 
- int* Res ; 
- int ResL ; 
- int /*<<< orphan*/  UH ; 
- int /*<<< orphan*/  advance_write_ptr (int /*<<< orphan*/ *,int) ; 
- scalar_t__ do_combined_search () ; 
- int /*<<< orphan*/  dyn_user_header (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,int,int,int,char*) ; 
- char* get_write_ptr (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  load_user (int) ; 
- int /*<<< orphan*/  memcpy (char*,char*,int) ; 
- int now ; 
- int /*<<< orphan*/  process_text (char*) ; 
- int return_key_value (struct connection*,char*,char*,int) ; 
- size_t sprintf (char*,char*,int) ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ strncmp (char*,char*,int) ; 
- int strtol (char*,char**,int) ; 
- int tot_response_bytes ; 
- int tot_response_words ; 
- scalar_t__ verbosity ; 
+
+
+
+struct connection {int Out; } ;
+
+
+ int MAX_NET_RES ;
+ int MAX_QUERY_WORDS ;
+ int MaxQw ;
+ int Qw ;
+ int* Res ;
+ int ResL ;
+ int UH ;
+ int advance_write_ptr (int *,int) ;
+ scalar_t__ do_combined_search () ;
+ int dyn_user_header (int,int ) ;
+ int fprintf (int ,char*,int,int,int,int,char*) ;
+ char* get_write_ptr (int *,int) ;
+ int load_user (int) ;
+ int memcpy (char*,char*,int) ;
+ int now ;
+ int process_text (char*) ;
+ int return_key_value (struct connection*,char*,char*,int) ;
+ size_t sprintf (char*,char*,int) ;
+ int stderr ;
+ scalar_t__ strncmp (char*,char*,int) ;
+ int strtol (char*,char**,int) ;
+ int tot_response_bytes ;
+ int tot_response_words ;
+ scalar_t__ verbosity ;
 
 int do_search_query (struct connection *c, char *key, int len) {
   int user_id, max_res, i, w;
@@ -45,8 +45,8 @@ int do_search_query (struct connection *c, char *key, int len) {
   if (strncmp (key, "search(", 7)) { return -1; }
   s = key + 7;
   user_id = strtol (s, &ptr, 10);
-  if (ptr == s || *ptr != ',' || user_id <= 0 || user_id > (1L<<30)) { 
-    return -1; 
+  if (ptr == s || *ptr != ',' || user_id <= 0 || user_id > (1L<<30)) {
+    return -1;
   }
   s = ptr+1;
   max_res = strtol (s, &ptr, 10);
@@ -93,7 +93,7 @@ int do_search_query (struct connection *c, char *key, int len) {
       if (!ptr) return -1;
       s = ptr + 480;
     }
-    *ptr++ = ',';  w++;
+    *ptr++ = ','; w++;
     w += t = sprintf (ptr, "%d", Res[i]);
     ptr += t;
   }

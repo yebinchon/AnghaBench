@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  outmode ;
-typedef  int /*<<< orphan*/  buf ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int BUFLEN ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  error (char*) ; 
- int /*<<< orphan*/  exit (int) ; 
- scalar_t__ fclose (int /*<<< orphan*/ *) ; 
- scalar_t__ ferror (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  file_compress (char*,char*) ; 
- int /*<<< orphan*/  file_uncompress (char*) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- scalar_t__ fread (char*,int,int,int /*<<< orphan*/ *) ; 
- size_t fwrite (int const*,int,unsigned int,int /*<<< orphan*/ *) ; 
- scalar_t__ memcmp (int const*,char*,int) ; 
- int /*<<< orphan*/  memset (char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  perror (char*) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,char*) ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef int outmode ;
+typedef int buf ;
+typedef int FILE ;
+
+
+ int BUFLEN ;
+ int assert (int) ;
+ int error (char*) ;
+ int exit (int) ;
+ scalar_t__ fclose (int *) ;
+ scalar_t__ ferror (int *) ;
+ int file_compress (char*,char*) ;
+ int file_uncompress (char*) ;
+ int * fopen (char*,char*) ;
+ scalar_t__ fread (char*,int,int,int *) ;
+ size_t fwrite (int const*,int,unsigned int,int *) ;
+ scalar_t__ memcmp (int const*,char*,int) ;
+ int memset (char*,int ,int) ;
+ int perror (char*) ;
+ int snprintf (char*,int,char*,char*) ;
 
 int LLVMFuzzerTestOneInput(const uint8_t *data, size_t dataLen) {
   char *inFileName = "/tmp/minigzip_fuzzer.out";
@@ -41,7 +41,7 @@ int LLVMFuzzerTestOneInput(const uint8_t *data, size_t dataLen) {
   char buf[BUFLEN];
   uint32_t offset = 0;
 
-  /* Discard inputs larger than 1Mb. */
+
   static size_t kMaxSize = 1024 * 1024;
   if (dataLen < 1 || dataLen > kMaxSize)
     return 0;
@@ -55,7 +55,7 @@ int LLVMFuzzerTestOneInput(const uint8_t *data, size_t dataLen) {
   memset(outmode, 0, sizeof(outmode));
   snprintf(outmode, sizeof(outmode), "%s", "wb");
 
-  /* Compression level: [0..9]. */
+
   outmode[2] = data[0] % 10;
 
   switch (data[0] % 4) {
@@ -64,15 +64,15 @@ int LLVMFuzzerTestOneInput(const uint8_t *data, size_t dataLen) {
     outmode[3] = 0;
     break;
   case 1:
-    /* compress with Z_FILTERED */
+
     outmode[3] = 'f';
     break;
   case 2:
-    /* compress with Z_HUFFMAN_ONLY */
+
     outmode[3] = 'h';
     break;
   case 3:
-    /* compress with Z_RLE */
+
     outmode[3] = 'R';
     break;
   }
@@ -80,9 +80,9 @@ int LLVMFuzzerTestOneInput(const uint8_t *data, size_t dataLen) {
   file_compress(inFileName, outmode);
   file_uncompress(outFileName);
 
-  /* Check that the uncompressed file matches the input data. */
+
   in = fopen(inFileName, "rb");
-  if (in == NULL) {
+  if (in == ((void*)0)) {
     perror(inFileName);
     exit(1);
   }
@@ -103,6 +103,6 @@ int LLVMFuzzerTestOneInput(const uint8_t *data, size_t dataLen) {
   if (fclose(in))
     error("failed fclose");
 
-  /* This function must return 0. */
+
   return 0;
 }

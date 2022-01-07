@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ivtv_stream {int /*<<< orphan*/  s_flags; int /*<<< orphan*/ * vdev; } ;
+
+
+
+
+struct ivtv_stream {int s_flags; int * vdev; } ;
 struct ivtv {struct ivtv_stream* streams; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IVTV_F_S_STREAMING ; 
- int IVTV_MAX_STREAMS ; 
- int /*<<< orphan*/  ivtv_stop_v4l2_encode_stream (struct ivtv_stream*,int /*<<< orphan*/ ) ; 
- scalar_t__ test_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int IVTV_F_S_STREAMING ;
+ int IVTV_MAX_STREAMS ;
+ int ivtv_stop_v4l2_encode_stream (struct ivtv_stream*,int ) ;
+ scalar_t__ test_bit (int ,int *) ;
 
 void ivtv_stop_all_captures(struct ivtv *itv)
 {
-	int i;
+ int i;
 
-	for (i = IVTV_MAX_STREAMS - 1; i >= 0; i--) {
-		struct ivtv_stream *s = &itv->streams[i];
+ for (i = IVTV_MAX_STREAMS - 1; i >= 0; i--) {
+  struct ivtv_stream *s = &itv->streams[i];
 
-		if (s->vdev == NULL)
-			continue;
-		if (test_bit(IVTV_F_S_STREAMING, &s->s_flags)) {
-			ivtv_stop_v4l2_encode_stream(s, 0);
-		}
-	}
+  if (s->vdev == ((void*)0))
+   continue;
+  if (test_bit(IVTV_F_S_STREAMING, &s->s_flags)) {
+   ivtv_stop_v4l2_encode_stream(s, 0);
+  }
+ }
 }

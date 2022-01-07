@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int ULONG ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int ULONG ;
 struct TYPE_9__ {scalar_t__ BaseAddress; } ;
 struct TYPE_8__ {int ulOffsetToStabs; int ulSizeOfStabs; int ulOffsetToStabsStrings; } ;
 struct TYPE_7__ {int n_strx; int n_type; int n_value; int n_desc; } ;
-typedef  int /*<<< orphan*/  STAB_ENTRY ;
-typedef  int* PULONG ;
-typedef  TYPE_1__* PSTAB_ENTRY ;
-typedef  TYPE_2__ PICE_SYMBOLFILE_HEADER ;
-typedef  TYPE_3__* PDEBUG_MODULE ;
-typedef  char* LPSTR ;
-typedef  int /*<<< orphan*/  BOOLEAN ;
+typedef int STAB_ENTRY ;
+typedef int* PULONG ;
+typedef TYPE_1__* PSTAB_ENTRY ;
+typedef TYPE_2__ PICE_SYMBOLFILE_HEADER ;
+typedef TYPE_3__* PDEBUG_MODULE ;
+typedef char* LPSTR ;
+typedef int BOOLEAN ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPRINT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- int FindFunctionInModuleByName (char*,TYPE_3__*) ; 
- TYPE_2__* FindModuleSymbols (int) ; 
-#define  N_FUN 131 
-#define  N_SLINE 130 
-#define  N_SO 129 
-#define  N_UNDF 128 
- int /*<<< orphan*/  PICE_strcat (char*,char*) ; 
- int /*<<< orphan*/  PICE_strcmpi (char*,char*) ; 
- int /*<<< orphan*/  PICE_strcpy (char*,char*) ; 
- int PICE_strlen (char*) ; 
- int /*<<< orphan*/  PICE_strncpy (char*,char*,int) ; 
- int StrLenUpToWhiteChar (char*,char*) ; 
- int /*<<< orphan*/  TRUE ; 
+
+ int DPRINT (int ) ;
+ int FALSE ;
+ int FindFunctionInModuleByName (char*,TYPE_3__*) ;
+ TYPE_2__* FindModuleSymbols (int) ;
+
+
+
+
+ int PICE_strcat (char*,char*) ;
+ int PICE_strcmpi (char*,char*) ;
+ int PICE_strcpy (char*,char*) ;
+ int PICE_strlen (char*) ;
+ int PICE_strncpy (char*,char*,int) ;
+ int StrLenUpToWhiteChar (char*,char*) ;
+ int TRUE ;
 
 BOOLEAN FindAddressForSourceLine(ULONG ulLineNumber,LPSTR pFilename,PDEBUG_MODULE pMod,PULONG pValue)
 {
@@ -72,12 +72,12 @@ BOOLEAN FindAddressForSourceLine(ULONG ulLineNumber,LPSTR pFilename,PDEBUG_MODUL
 
             switch(pStab->n_type)
             {
-                case N_UNDF:
+                case 128:
                     nOffset += nNextOffset;
                     nNextOffset = pStab->n_value;
                     break;
-                case N_SO:
-					if((strLen = PICE_strlen(pName)))
+                case 129:
+     if((strLen = PICE_strlen(pName)))
                     {
                         if(pName[strLen-1]!='/')
                         {
@@ -96,12 +96,12 @@ BOOLEAN FindAddressForSourceLine(ULONG ulLineNumber,LPSTR pFilename,PDEBUG_MODUL
                             PICE_strcpy(szCurrentPath,pName);
                     }
                     else
-					{
+     {
                         szCurrentPath[0]=0;
-					}
+     }
                     break;
-                case N_SLINE:
-					// if we're in the function we're looking for
+                case 130:
+
                     if(PICE_strcmpi(pFilename,szCurrentPath)==0)
                     {
                         if(pStab->n_desc>=ulLineNumber && (pStab->n_desc-ulLineNumber)<=ulMinValue)
@@ -118,21 +118,21 @@ BOOLEAN FindAddressForSourceLine(ULONG ulLineNumber,LPSTR pFilename,PDEBUG_MODUL
                         }
                     }
                     break;
-                case N_FUN:
+                case 131:
                     if(PICE_strlen(pName))
                     {
                         ULONG len;
 
-	                    len=StrLenUpToWhiteChar(pName,":");
-	                    PICE_strncpy(szCurrentFunction,pName,len);
+                     len=StrLenUpToWhiteChar(pName,":");
+                     PICE_strncpy(szCurrentFunction,pName,len);
                         szCurrentFunction[len]=0;
                         DPRINT((0,"function %s\n",szCurrentFunction));
                     }
-					else
-					{
+     else
+     {
                         DPRINT((0,"END of function %s\n",szCurrentFunction));
-						szCurrentFunction[0]=0;
-					}
+      szCurrentFunction[0]=0;
+     }
                     break;
             }
             pStab++;

@@ -1,55 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ngx_http_request_t ;
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- int /*<<< orphan*/  lua_createtable (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  lua_setfenv (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_setfield (int /*<<< orphan*/ *,int,char*) ; 
- int /*<<< orphan*/  lua_setmetatable (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  ngx_http_lua_create_new_globals_table (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ngx_http_lua_get_globals_table (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ngx_http_lua_set_req (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int ngx_http_request_t ;
+typedef int lua_State ;
+
+
+ int lua_createtable (int *,int ,int) ;
+ int lua_setfenv (int *,int) ;
+ int lua_setfield (int *,int,char*) ;
+ int lua_setmetatable (int *,int) ;
+ int ngx_http_lua_create_new_globals_table (int *,int ,int) ;
+ int ngx_http_lua_get_globals_table (int *) ;
+ int ngx_http_lua_set_req (int *,int *) ;
 
 __attribute__((used)) static void
 ngx_http_lua_log_by_lua_env(lua_State *L, ngx_http_request_t *r)
 {
     ngx_http_lua_set_req(L, r);
+    ngx_http_lua_create_new_globals_table(L, 0 , 1 );
 
-#ifndef OPENRESTY_LUAJIT
-    /**
-     * we want to create empty environment for current script
-     *
-     * newt = {}
-     * newt["_G"] = newt
-     * setmetatable(newt, {__index = _G})
-     *
-     * if a function or symbol is not defined in our env, __index will lookup
-     * in the global env.
-     *
-     * all variables created in the script-env will be thrown away at the end
-     * of the script run.
-     * */
-    ngx_http_lua_create_new_globals_table(L, 0 /* narr */, 1 /* nrec */);
 
-    /*  {{{ make new env inheriting main thread's globals table */
-    lua_createtable(L, 0, 1);    /*  the metatable for the new env */
+    lua_createtable(L, 0, 1);
     ngx_http_lua_get_globals_table(L);
     lua_setfield(L, -2, "__index");
-    lua_setmetatable(L, -2);    /*  setmetatable({}, {__index = _G}) */
-    /*  }}} */
+    lua_setmetatable(L, -2);
 
-    lua_setfenv(L, -2);    /*  set new running env for the code closure */
-#endif /* OPENRESTY_LUAJIT */
+
+    lua_setfenv(L, -2);
+
 }

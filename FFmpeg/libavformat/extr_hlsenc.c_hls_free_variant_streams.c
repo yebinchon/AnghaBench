@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct HLSContext {int nb_varstreams; TYPE_1__* var_streams; } ;
-struct TYPE_2__ {int /*<<< orphan*/  varname; int /*<<< orphan*/  baseurl; int /*<<< orphan*/  ccgroup; int /*<<< orphan*/  language; int /*<<< orphan*/  agroup; int /*<<< orphan*/  streams; int /*<<< orphan*/  m3u8_name; int /*<<< orphan*/  old_segments; int /*<<< orphan*/  segments; int /*<<< orphan*/  vtt_m3u8_name; int /*<<< orphan*/  vtt_basename; int /*<<< orphan*/  fmp4_init_filename; int /*<<< orphan*/  base_output_dirname; int /*<<< orphan*/  basename; int /*<<< orphan*/ * vtt_avf; } ;
-typedef  TYPE_1__ VariantStream ;
-typedef  int /*<<< orphan*/  AVFormatContext ;
+struct TYPE_2__ {int varname; int baseurl; int ccgroup; int language; int agroup; int streams; int m3u8_name; int old_segments; int segments; int vtt_m3u8_name; int vtt_basename; int fmp4_init_filename; int base_output_dirname; int basename; int * vtt_avf; } ;
+typedef TYPE_1__ VariantStream ;
+typedef int AVFormatContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  av_freep (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  hls_free_segments (int /*<<< orphan*/ ) ; 
+
+ int av_freep (int *) ;
+ int hls_free_segments (int ) ;
 
 __attribute__((used)) static void hls_free_variant_streams(struct HLSContext *hls)
 {
     int i = 0;
-    AVFormatContext *vtt_oc = NULL;
-    VariantStream *vs = NULL;
+    AVFormatContext *vtt_oc = ((void*)0);
+    VariantStream *vs = ((void*)0);
 
     for (i = 0; i < hls->nb_varstreams; i++) {
         vs = &hls->var_streams[i];

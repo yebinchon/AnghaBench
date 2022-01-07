@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  in_hex; int /*<<< orphan*/  out_hex; int /*<<< orphan*/  key_hex; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  crypto_generichash (unsigned char*,int,unsigned char*,unsigned long long,unsigned char*,int) ; 
- int crypto_generichash_BYTES_MAX ; 
- int crypto_generichash_KEYBYTES_MAX ; 
- scalar_t__ memcmp (unsigned char*,unsigned char*,int) ; 
- int /*<<< orphan*/  printf (char*,unsigned int) ; 
- int /*<<< orphan*/  sodium_free (unsigned char*) ; 
- int /*<<< orphan*/  sodium_hex2bin (unsigned char*,size_t,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ sodium_malloc (size_t) ; 
- int strlen (int /*<<< orphan*/ ) ; 
- TYPE_1__* tests ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int in_hex; int out_hex; int key_hex; } ;
+
+
+ int assert (int) ;
+ int crypto_generichash (unsigned char*,int,unsigned char*,unsigned long long,unsigned char*,int) ;
+ int crypto_generichash_BYTES_MAX ;
+ int crypto_generichash_KEYBYTES_MAX ;
+ scalar_t__ memcmp (unsigned char*,unsigned char*,int) ;
+ int printf (char*,unsigned int) ;
+ int sodium_free (unsigned char*) ;
+ int sodium_hex2bin (unsigned char*,size_t,int ,int,int *,int *,int *) ;
+ scalar_t__ sodium_malloc (size_t) ;
+ int strlen (int ) ;
+ TYPE_1__* tests ;
 
 __attribute__((used)) static int
 tv(void)
@@ -33,8 +33,8 @@ tv(void)
     unsigned char *in;
     unsigned char *key;
     unsigned char *out;
-    size_t         i = 0U;
-    size_t         in_len;
+    size_t i = 0U;
+    size_t in_len;
 
     key = (unsigned char *) sodium_malloc(crypto_generichash_KEYBYTES_MAX);
     out = (unsigned char *) sodium_malloc(crypto_generichash_BYTES_MAX);
@@ -43,15 +43,15 @@ tv(void)
         assert(strlen(tests[i].key_hex) == 2 * crypto_generichash_KEYBYTES_MAX);
         sodium_hex2bin(key, crypto_generichash_KEYBYTES_MAX,
                        tests[i].key_hex, strlen(tests[i].key_hex),
-                       NULL, NULL, NULL);
+                       ((void*)0), ((void*)0), ((void*)0));
         assert(strlen(tests[i].out_hex) == 2 * crypto_generichash_BYTES_MAX);
         sodium_hex2bin(expected_out, crypto_generichash_BYTES_MAX,
                        tests[i].out_hex, strlen(tests[i].out_hex),
-                       NULL, NULL, NULL);
+                       ((void*)0), ((void*)0), ((void*)0));
         in_len = strlen(tests[i].in_hex) / 2;
         in = (unsigned char *) sodium_malloc(in_len);
         sodium_hex2bin(in, in_len, tests[i].in_hex, strlen(tests[i].in_hex),
-                       NULL, NULL, NULL);
+                       ((void*)0), ((void*)0), ((void*)0));
         crypto_generichash(out, crypto_generichash_BYTES_MAX,
                            in, (unsigned long long) in_len,
                            key, crypto_generichash_KEYBYTES_MAX);

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  IHTMLDocument2 ;
-typedef  int /*<<< orphan*/  IHTMLDOMNode ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ET_COMMENT ; 
- int /*<<< orphan*/  IHTMLDOMNode_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IHTMLDocument2_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * get_doc_node (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * get_first_child (int /*<<< orphan*/ *) ; 
- int get_node_type (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ok (int,char*,int) ; 
- int /*<<< orphan*/  test_comment_text (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  test_elem_type (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int IUnknown ;
+typedef int IHTMLDocument2 ;
+typedef int IHTMLDOMNode ;
+
+
+ int ET_COMMENT ;
+ int IHTMLDOMNode_Release (int *) ;
+ int IHTMLDocument2_Release (int *) ;
+ int * get_doc_node (int *) ;
+ int * get_first_child (int *) ;
+ int get_node_type (int *) ;
+ int ok (int,char*,int) ;
+ int test_comment_text (int *,char*) ;
+ int test_elem_type (int *,int ) ;
 
 __attribute__((used)) static void test_doctype(IHTMLDocument2 *doc)
 {

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_int ;
-typedef  int /*<<< orphan*/  u_char ;
-struct pcap_pkthdr {int /*<<< orphan*/  caplen; int /*<<< orphan*/  len; } ;
-typedef  int /*<<< orphan*/  netdissect_options ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ND_PRINT (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ND_TCHECK2 (int /*<<< orphan*/  const,int) ; 
- int /*<<< orphan*/  mfr_print (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int u_int ;
+typedef int u_char ;
+struct pcap_pkthdr {int caplen; int len; } ;
+typedef int netdissect_options ;
+
+
+ int ND_PRINT (int *) ;
+ int ND_TCHECK2 (int const,int) ;
+ int mfr_print (int *,int const*,int ) ;
 
 u_int
 mfr_if_print(netdissect_options *ndo,
              const struct pcap_pkthdr *h, register const u_char *p)
 {
-	register u_int length = h->len;
-	register u_int caplen = h->caplen;
+ register u_int length = h->len;
+ register u_int caplen = h->caplen;
 
-        ND_TCHECK2(*p, 2); /* minimum frame header length */
+        ND_TCHECK2(*p, 2);
 
         if ((length = mfr_print(ndo, p, length)) == 0)
             return (0);

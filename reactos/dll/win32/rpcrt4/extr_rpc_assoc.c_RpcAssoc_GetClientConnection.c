@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_15__ {int /*<<< orphan*/  connection_cnt; int /*<<< orphan*/  NetworkOptions; int /*<<< orphan*/  Endpoint; int /*<<< orphan*/  NetworkAddr; int /*<<< orphan*/  Protseq; } ;
+
+
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
+struct TYPE_15__ {int connection_cnt; int NetworkOptions; int Endpoint; int NetworkAddr; int Protseq; } ;
 struct TYPE_14__ {TYPE_2__* assoc; } ;
-typedef  int /*<<< orphan*/  RpcQualityOfService ;
-typedef  TYPE_1__ RpcConnection ;
-typedef  int /*<<< orphan*/  RpcAuthInfo ;
-typedef  TYPE_2__ RpcAssoc ;
-typedef  int /*<<< orphan*/  RPC_SYNTAX_IDENTIFIER ;
-typedef  scalar_t__ RPC_STATUS ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef int RpcQualityOfService ;
+typedef TYPE_1__ RpcConnection ;
+typedef int RpcAuthInfo ;
+typedef TYPE_2__ RpcAssoc ;
+typedef int RPC_SYNTAX_IDENTIFIER ;
+typedef scalar_t__ RPC_STATUS ;
+typedef int LPCWSTR ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  InterlockedIncrement (int /*<<< orphan*/ *) ; 
- scalar_t__ RPCRT4_CreateConnection (TYPE_1__**,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ RPCRT4_OpenClientConnection (TYPE_1__*) ; 
- int /*<<< orphan*/  RPCRT4_ReleaseConnection (TYPE_1__*) ; 
- scalar_t__ RPC_S_OK ; 
- scalar_t__ RpcAssoc_BindConnection (TYPE_2__*,TYPE_1__*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*) ; 
- TYPE_1__* RpcAssoc_GetIdleConnection (TYPE_2__*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TRACE (char*,TYPE_1__*,TYPE_2__*) ; 
- int /*<<< orphan*/  TRUE ; 
+
+ int FALSE ;
+ int InterlockedIncrement (int *) ;
+ scalar_t__ RPCRT4_CreateConnection (TYPE_1__**,int ,int ,int ,int ,int ,int *,int *,int ) ;
+ scalar_t__ RPCRT4_OpenClientConnection (TYPE_1__*) ;
+ int RPCRT4_ReleaseConnection (TYPE_1__*) ;
+ scalar_t__ RPC_S_OK ;
+ scalar_t__ RpcAssoc_BindConnection (TYPE_2__*,TYPE_1__*,int const*,int const*) ;
+ TYPE_1__* RpcAssoc_GetIdleConnection (TYPE_2__*,int const*,int const*,int *,int *) ;
+ int TRACE (char*,TYPE_1__*,TYPE_2__*) ;
+ int TRUE ;
 
 RPC_STATUS RpcAssoc_GetClientConnection(RpcAssoc *assoc,
                                         const RPC_SYNTAX_IDENTIFIER *InterfaceId,
@@ -51,8 +51,8 @@ RPC_STATUS RpcAssoc_GetClientConnection(RpcAssoc *assoc,
         return RPC_S_OK;
     }
 
-    /* create a new connection */
-    status = RPCRT4_CreateConnection(&NewConnection, FALSE /* is this a server connection? */,
+
+    status = RPCRT4_CreateConnection(&NewConnection, FALSE ,
         assoc->Protseq, assoc->NetworkAddr,
         assoc->Endpoint, assoc->NetworkOptions,
         AuthInfo, QOS, CookieAuth);

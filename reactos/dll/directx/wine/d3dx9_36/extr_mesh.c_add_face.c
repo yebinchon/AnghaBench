@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct face_array {int /*<<< orphan*/  count; int /*<<< orphan*/ * items; } ;
-typedef  int /*<<< orphan*/  face ;
 
-/* Variables and functions */
+
+
+
+struct face_array {int count; int * items; } ;
+typedef int face ;
+
+
 
 __attribute__((used)) static inline face *add_face(struct face_array *array)
 {

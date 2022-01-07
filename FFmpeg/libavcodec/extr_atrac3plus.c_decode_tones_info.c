@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_14__ {int /*<<< orphan*/  bits; int /*<<< orphan*/  table; } ;
+
+
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+struct TYPE_14__ {int bits; int table; } ;
 struct TYPE_13__ {TYPE_2__* channels; TYPE_1__* waves_info; } ;
-struct TYPE_12__ {int /*<<< orphan*/ * tones_info; } ;
-struct TYPE_11__ {int num_tone_bands; scalar_t__* tone_master; scalar_t__* tone_sharing; scalar_t__ tones_index; scalar_t__* invert_phase; void* amplitude_mode; int /*<<< orphan*/ * waves; void* tones_present; } ;
-typedef  int /*<<< orphan*/  GetBitContext ;
-typedef  TYPE_3__ Atrac3pChanUnitCtx ;
-typedef  int /*<<< orphan*/  AVCodecContext ;
+struct TYPE_12__ {int * tones_info; } ;
+struct TYPE_11__ {int num_tone_bands; scalar_t__* tone_master; scalar_t__* tone_sharing; scalar_t__ tones_index; scalar_t__* invert_phase; void* amplitude_mode; int * waves; void* tones_present; } ;
+typedef int GetBitContext ;
+typedef TYPE_3__ Atrac3pChanUnitCtx ;
+typedef int AVCodecContext ;
 
-/* Variables and functions */
- int ATRAC3P_SUBBANDS ; 
- int AVERROR_PATCHWELCOME ; 
- int /*<<< orphan*/  Atrac3pWavesData ; 
- int /*<<< orphan*/  FFSWAP (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  avpriv_report_missing_feature (int /*<<< orphan*/ *,char*) ; 
- int decode_band_numwavs (int /*<<< orphan*/ *,TYPE_3__*,int,int*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  decode_tones_amplitude (int /*<<< orphan*/ *,TYPE_3__*,int,int*) ; 
- int /*<<< orphan*/  decode_tones_envelope (int /*<<< orphan*/ *,TYPE_3__*,int,int*) ; 
- int /*<<< orphan*/  decode_tones_frequency (int /*<<< orphan*/ *,TYPE_3__*,int,int*) ; 
- int /*<<< orphan*/  decode_tones_phase (int /*<<< orphan*/ *,TYPE_3__*,int,int*) ; 
- void* get_bits1 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  get_subband_flags (int /*<<< orphan*/ *,scalar_t__*,int) ; 
- int get_vlc2 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- TYPE_4__* tone_vlc_tabs ; 
+
+ int ATRAC3P_SUBBANDS ;
+ int AVERROR_PATCHWELCOME ;
+ int Atrac3pWavesData ;
+ int FFSWAP (int ,int ,int ) ;
+ int avpriv_report_missing_feature (int *,char*) ;
+ int decode_band_numwavs (int *,TYPE_3__*,int,int*,int *) ;
+ int decode_tones_amplitude (int *,TYPE_3__*,int,int*) ;
+ int decode_tones_envelope (int *,TYPE_3__*,int,int*) ;
+ int decode_tones_frequency (int *,TYPE_3__*,int,int*) ;
+ int decode_tones_phase (int *,TYPE_3__*,int,int*) ;
+ void* get_bits1 (int *) ;
+ int get_subband_flags (int *,scalar_t__*,int) ;
+ int get_vlc2 (int *,int ,int ,int) ;
+ int memset (int *,int ,int) ;
+ TYPE_4__* tone_vlc_tabs ;
 
 __attribute__((used)) static int decode_tones_info(GetBitContext *gb, Atrac3pChanUnitCtx *ctx,
                              int num_channels, AVCodecContext *avctx)
@@ -67,7 +67,7 @@ __attribute__((used)) static int decode_tones_info(GetBitContext *gb, Atrac3pCha
 
     if (num_channels == 2) {
         get_subband_flags(gb, ctx->waves_info->tone_sharing, ctx->waves_info->num_tone_bands);
-        get_subband_flags(gb, ctx->waves_info->tone_master,  ctx->waves_info->num_tone_bands);
+        get_subband_flags(gb, ctx->waves_info->tone_master, ctx->waves_info->num_tone_bands);
         get_subband_flags(gb, ctx->waves_info->invert_phase, ctx->waves_info->num_tone_bands);
     }
 

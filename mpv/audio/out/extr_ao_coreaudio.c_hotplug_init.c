@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct ao {int dummy; } ;
-struct TYPE_3__ {scalar_t__ member_0; int /*<<< orphan*/  member_2; int /*<<< orphan*/  member_1; } ;
-typedef  scalar_t__ OSStatus ;
-typedef  TYPE_1__ AudioObjectPropertyAddress ;
+struct TYPE_3__ {scalar_t__ member_0; int member_2; int member_1; } ;
+typedef scalar_t__ OSStatus ;
+typedef TYPE_1__ AudioObjectPropertyAddress ;
 
-/* Variables and functions */
- scalar_t__ AudioObjectAddPropertyListener (int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ ,void*) ; 
- int MP_ARRAY_SIZE (scalar_t__*) ; 
- int /*<<< orphan*/  MP_ERR (struct ao*,char*,char*,char*) ; 
- int /*<<< orphan*/  hotplug_cb ; 
- scalar_t__* hotplug_properties ; 
- int /*<<< orphan*/  kAudioObjectPropertyElementMaster ; 
- int /*<<< orphan*/  kAudioObjectPropertyScopeGlobal ; 
- int /*<<< orphan*/  kAudioObjectSystemObject ; 
- char* mp_tag_str (scalar_t__) ; 
- scalar_t__ noErr ; 
- int /*<<< orphan*/  reinit_device (struct ao*) ; 
+
+ scalar_t__ AudioObjectAddPropertyListener (int ,TYPE_1__*,int ,void*) ;
+ int MP_ARRAY_SIZE (scalar_t__*) ;
+ int MP_ERR (struct ao*,char*,char*,char*) ;
+ int hotplug_cb ;
+ scalar_t__* hotplug_properties ;
+ int kAudioObjectPropertyElementMaster ;
+ int kAudioObjectPropertyScopeGlobal ;
+ int kAudioObjectSystemObject ;
+ char* mp_tag_str (scalar_t__) ;
+ scalar_t__ noErr ;
+ int reinit_device (struct ao*) ;
 
 __attribute__((used)) static int hotplug_init(struct ao *ao)
 {

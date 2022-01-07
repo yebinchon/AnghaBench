@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  scalar_t__ uint32_t ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SEEK_END ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int UZLIB_OK ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char const*,char*) ; 
- scalar_t__ fread (int /*<<< orphan*/ *,int,scalar_t__,int /*<<< orphan*/ *) ; 
- scalar_t__ fseek (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ ftell (int /*<<< orphan*/ *) ; 
- scalar_t__ fwrite (int /*<<< orphan*/ *,scalar_t__,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  printf (char*,char const*,char const*) ; 
- int /*<<< orphan*/  unlink (char const*) ; 
- int /*<<< orphan*/  uz_free (int /*<<< orphan*/ *) ; 
- scalar_t__ uz_malloc (scalar_t__) ; 
- int uzlib_compress (int /*<<< orphan*/ **,scalar_t__*,int /*<<< orphan*/ *,scalar_t__) ; 
+
+
+
+typedef int uint8_t ;
+typedef scalar_t__ uint32_t ;
+typedef int FILE ;
+
+
+ int SEEK_END ;
+ int SEEK_SET ;
+ int UZLIB_OK ;
+ int fclose (int *) ;
+ int * fopen (char const*,char*) ;
+ scalar_t__ fread (int *,int,scalar_t__,int *) ;
+ scalar_t__ fseek (int *,int ,int ) ;
+ scalar_t__ ftell (int *) ;
+ scalar_t__ fwrite (int *,scalar_t__,int,int *) ;
+ int printf (char*,char const*,char const*) ;
+ int unlink (char const*) ;
+ int uz_free (int *) ;
+ scalar_t__ uz_malloc (scalar_t__) ;
+ int uzlib_compress (int **,scalar_t__*,int *,scalar_t__) ;
 
 int main (int argc, char **argv) {
   const char *in = argv[1], *out = argv[2];
@@ -41,10 +41,10 @@ int main (int argc, char **argv) {
   uint8_t *iBuf, *oBuf;
 
   if (!(fin = fopen(in, "rb")) || fseek(fin, 0, SEEK_END) ||
-      (iLen = ftell(fin)) <= 0  || fseek(fin, 0, SEEK_SET))
+      (iLen = ftell(fin)) <= 0 || fseek(fin, 0, SEEK_SET))
     return 1;
-  if ((fout = fopen(out, "wb")) == NULL ||
-      (iBuf = (uint8_t *) uz_malloc(iLen)) == NULL ||
+  if ((fout = fopen(out, "wb")) == ((void*)0) ||
+      (iBuf = (uint8_t *) uz_malloc(iLen)) == ((void*)0) ||
       fread(iBuf, 1, iLen, fin) != iLen)
     return 1;
 

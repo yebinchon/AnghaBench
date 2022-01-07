@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct dwc3_ep {int /*<<< orphan*/  trb_enqueue; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dwc3_ep_inc_trb (int /*<<< orphan*/ *) ; 
+
+
+
+struct dwc3_ep {int trb_enqueue; } ;
+
+
+ int dwc3_ep_inc_trb (int *) ;
 
 __attribute__((used)) static void dwc3_ep_inc_enq(struct dwc3_ep *dep)
 {
-	dwc3_ep_inc_trb(&dep->trb_enqueue);
+ dwc3_ep_inc_trb(&dep->trb_enqueue);
 }

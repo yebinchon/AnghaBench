@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int m_fd; scalar_t__ m_bufProcessed; scalar_t__ m_bufRead; scalar_t__* m_pReqBuf; int /*<<< orphan*/  m_reqBodyRead; } ;
-typedef  TYPE_1__ LSAPI_Request ;
 
-/* Variables and functions */
- int EOF ; 
- scalar_t__ readBodyToReqBuf (TYPE_1__*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int m_fd; scalar_t__ m_bufProcessed; scalar_t__ m_bufRead; scalar_t__* m_pReqBuf; int m_reqBodyRead; } ;
+typedef TYPE_1__ LSAPI_Request ;
+
+
+ int EOF ;
+ scalar_t__ readBodyToReqBuf (TYPE_1__*) ;
 
 int LSAPI_ReqBodyGetChar_r( LSAPI_Request * pReq )
 {

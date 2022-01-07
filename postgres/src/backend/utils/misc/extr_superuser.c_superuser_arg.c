@@ -1,77 +1,77 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int rolsuper; } ;
-typedef  scalar_t__ Oid ;
-typedef  int /*<<< orphan*/  HeapTuple ;
-typedef  TYPE_1__* Form_pg_authid ;
-typedef  int /*<<< orphan*/  Datum ;
+typedef scalar_t__ Oid ;
+typedef int HeapTuple ;
+typedef TYPE_1__* Form_pg_authid ;
+typedef int Datum ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AUTHOID ; 
- scalar_t__ BOOTSTRAP_SUPERUSERID ; 
- int /*<<< orphan*/  CacheRegisterSyscacheCallback (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ GETSTRUCT (int /*<<< orphan*/ ) ; 
- scalar_t__ HeapTupleIsValid (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IsUnderPostmaster ; 
- int /*<<< orphan*/  ObjectIdGetDatum (scalar_t__) ; 
- scalar_t__ OidIsValid (scalar_t__) ; 
- int /*<<< orphan*/  ReleaseSysCache (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RoleidCallback ; 
- int /*<<< orphan*/  SearchSysCache1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ last_roleid ; 
- int last_roleid_is_super ; 
- int roleid_callback_registered ; 
+
+ int AUTHOID ;
+ scalar_t__ BOOTSTRAP_SUPERUSERID ;
+ int CacheRegisterSyscacheCallback (int ,int ,int ) ;
+ scalar_t__ GETSTRUCT (int ) ;
+ scalar_t__ HeapTupleIsValid (int ) ;
+ int IsUnderPostmaster ;
+ int ObjectIdGetDatum (scalar_t__) ;
+ scalar_t__ OidIsValid (scalar_t__) ;
+ int ReleaseSysCache (int ) ;
+ int RoleidCallback ;
+ int SearchSysCache1 (int ,int ) ;
+ scalar_t__ last_roleid ;
+ int last_roleid_is_super ;
+ int roleid_callback_registered ;
 
 bool
 superuser_arg(Oid roleid)
 {
-	bool		result;
-	HeapTuple	rtup;
+ bool result;
+ HeapTuple rtup;
 
-	/* Quick out for cache hit */
-	if (OidIsValid(last_roleid) && last_roleid == roleid)
-		return last_roleid_is_super;
 
-	/* Special escape path in case you deleted all your users. */
-	if (!IsUnderPostmaster && roleid == BOOTSTRAP_SUPERUSERID)
-		return true;
+ if (OidIsValid(last_roleid) && last_roleid == roleid)
+  return last_roleid_is_super;
 
-	/* OK, look up the information in pg_authid */
-	rtup = SearchSysCache1(AUTHOID, ObjectIdGetDatum(roleid));
-	if (HeapTupleIsValid(rtup))
-	{
-		result = ((Form_pg_authid) GETSTRUCT(rtup))->rolsuper;
-		ReleaseSysCache(rtup);
-	}
-	else
-	{
-		/* Report "not superuser" for invalid roleids */
-		result = false;
-	}
 
-	/* If first time through, set up callback for cache flushes */
-	if (!roleid_callback_registered)
-	{
-		CacheRegisterSyscacheCallback(AUTHOID,
-									  RoleidCallback,
-									  (Datum) 0);
-		roleid_callback_registered = true;
-	}
+ if (!IsUnderPostmaster && roleid == BOOTSTRAP_SUPERUSERID)
+  return 1;
 
-	/* Cache the result for next time */
-	last_roleid = roleid;
-	last_roleid_is_super = result;
 
-	return result;
+ rtup = SearchSysCache1(AUTHOID, ObjectIdGetDatum(roleid));
+ if (HeapTupleIsValid(rtup))
+ {
+  result = ((Form_pg_authid) GETSTRUCT(rtup))->rolsuper;
+  ReleaseSysCache(rtup);
+ }
+ else
+ {
+
+  result = 0;
+ }
+
+
+ if (!roleid_callback_registered)
+ {
+  CacheRegisterSyscacheCallback(AUTHOID,
+           RoleidCallback,
+           (Datum) 0);
+  roleid_callback_registered = 1;
+ }
+
+
+ last_roleid = roleid;
+ last_roleid_is_super = result;
+
+ return result;
 }

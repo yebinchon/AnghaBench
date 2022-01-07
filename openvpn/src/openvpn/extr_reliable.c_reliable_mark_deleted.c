@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct buffer {int dummy; } ;
 struct reliable_entry {int active; scalar_t__ packet_id; struct buffer buf; } ;
 struct reliable {int size; scalar_t__ packet_id; struct reliable_entry* array; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int /*<<< orphan*/ ) ; 
+
+ int ASSERT (int ) ;
 
 void
 reliable_mark_deleted(struct reliable *rel, struct buffer *buf, bool inc_pid)
@@ -26,7 +26,7 @@ reliable_mark_deleted(struct reliable *rel, struct buffer *buf, bool inc_pid)
         struct reliable_entry *e = &rel->array[i];
         if (buf == &e->buf)
         {
-            e->active = false;
+            e->active = 0;
             if (inc_pid)
             {
                 rel->packet_id = e->packet_id + 1;

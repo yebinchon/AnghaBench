@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  N_FUN ; 
- int /*<<< orphan*/  as_where (char**,unsigned int*) ; 
- int /*<<< orphan*/  asprintf (char**,char*,char const*,int /*<<< orphan*/ ,unsigned int,char const*) ; 
- int /*<<< orphan*/  current_function_label ; 
- int /*<<< orphan*/  free (char*) ; 
- int in_dot_func_p ; 
- char* input_line_pointer ; 
- int /*<<< orphan*/  s_stab (char) ; 
- int /*<<< orphan*/  xstrdup (char const*) ; 
+ int N_FUN ;
+ int as_where (char**,unsigned int*) ;
+ int asprintf (char**,char*,char const*,int ,unsigned int,char const*) ;
+ int current_function_label ;
+ int free (char*) ;
+ int in_dot_func_p ;
+ char* input_line_pointer ;
+ int s_stab (char) ;
+ int xstrdup (char const*) ;
 
 void
 stabs_generate_asm_func (const char *funcname, const char *startlabname)
@@ -40,7 +32,7 @@ stabs_generate_asm_func (const char *funcname, const char *startlabname)
 
   as_where (&file, &lineno);
   asprintf (&buf, "\"%s:F1\",%d,0,%d,%s",
-	    funcname, N_FUN, lineno + 1, startlabname);
+     funcname, N_FUN, lineno + 1, startlabname);
   input_line_pointer = buf;
   s_stab ('s');
   free (buf);

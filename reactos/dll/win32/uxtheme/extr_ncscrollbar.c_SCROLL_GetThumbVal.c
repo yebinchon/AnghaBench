@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ UINT ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef scalar_t__ UINT ;
 struct TYPE_6__ {scalar_t__ bottom; scalar_t__ top; scalar_t__ right; scalar_t__ left; } ;
 struct TYPE_5__ {scalar_t__ nMin; scalar_t__ nPage; scalar_t__ nMax; } ;
-typedef  TYPE_1__ SCROLLINFO ;
-typedef  TYPE_2__ RECT ;
-typedef  scalar_t__ INT ;
-typedef  scalar_t__ BOOL ;
+typedef TYPE_1__ SCROLLINFO ;
+typedef TYPE_2__ RECT ;
+typedef scalar_t__ INT ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- int GetSystemMetrics (int /*<<< orphan*/ ) ; 
- scalar_t__ MulDiv (scalar_t__,scalar_t__,scalar_t__) ; 
- int SCROLL_ARROW_THUMB_OVERLAP ; 
- scalar_t__ SCROLL_MIN_THUMB ; 
- int /*<<< orphan*/  SM_CXVSCROLL ; 
- scalar_t__ max (int /*<<< orphan*/ ,scalar_t__) ; 
+
+ int GetSystemMetrics (int ) ;
+ scalar_t__ MulDiv (scalar_t__,scalar_t__,scalar_t__) ;
+ int SCROLL_ARROW_THUMB_OVERLAP ;
+ scalar_t__ SCROLL_MIN_THUMB ;
+ int SM_CXVSCROLL ;
+ scalar_t__ max (int ,scalar_t__) ;
 
 __attribute__((used)) static UINT SCROLL_GetThumbVal( SCROLLINFO *psi, RECT *rect,
                                   BOOL vertical, INT pos )

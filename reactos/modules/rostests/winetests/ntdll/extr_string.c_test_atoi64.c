@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int overflow; scalar_t__ value; int /*<<< orphan*/  str; } ;
-typedef  scalar_t__ LONGLONG ;
 
-/* Variables and functions */
- int NB_STR2LONGLONG ; 
- scalar_t__ ULL (int,int) ; 
- int /*<<< orphan*/  ok (int,char*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ p_atoi64 (int /*<<< orphan*/ ) ; 
- TYPE_1__* str2longlong ; 
- int /*<<< orphan*/  wine_dbgstr_longlong (scalar_t__) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int overflow; scalar_t__ value; int str; } ;
+typedef scalar_t__ LONGLONG ;
+
+
+ int NB_STR2LONGLONG ;
+ scalar_t__ ULL (int,int) ;
+ int ok (int,char*,int,int ,int ,int ) ;
+ scalar_t__ p_atoi64 (int ) ;
+ TYPE_1__* str2longlong ;
+ int wine_dbgstr_longlong (scalar_t__) ;
 
 __attribute__((used)) static void test_atoi64(void)
 {
@@ -28,7 +28,7 @@ __attribute__((used)) static void test_atoi64(void)
     LONGLONG result;
 
     for (test_num = 0; test_num < NB_STR2LONGLONG; test_num++) {
-	result = p_atoi64(str2longlong[test_num].str);
+ result = p_atoi64(str2longlong[test_num].str);
         if (str2longlong[test_num].overflow)
             ok(result == str2longlong[test_num].value ||
                (result == ((str2longlong[test_num].overflow == -1) ?

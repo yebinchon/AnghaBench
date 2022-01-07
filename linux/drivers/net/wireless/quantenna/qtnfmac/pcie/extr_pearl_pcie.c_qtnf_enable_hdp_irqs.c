@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct qtnf_pcie_pearl_state {int /*<<< orphan*/  irq_lock; int /*<<< orphan*/  pcie_reg_base; int /*<<< orphan*/  pcie_irq_mask; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PCIE_HDP_INT_EN (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  writel (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct qtnf_pcie_pearl_state {int irq_lock; int pcie_reg_base; int pcie_irq_mask; } ;
+
+
+ int PCIE_HDP_INT_EN (int ) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
+ int writel (int ,int ) ;
 
 __attribute__((used)) static inline void qtnf_enable_hdp_irqs(struct qtnf_pcie_pearl_state *ps)
 {
-	unsigned long flags;
+ unsigned long flags;
 
-	spin_lock_irqsave(&ps->irq_lock, flags);
-	writel(ps->pcie_irq_mask, PCIE_HDP_INT_EN(ps->pcie_reg_base));
-	spin_unlock_irqrestore(&ps->irq_lock, flags);
+ spin_lock_irqsave(&ps->irq_lock, flags);
+ writel(ps->pcie_irq_mask, PCIE_HDP_INT_EN(ps->pcie_reg_base));
+ spin_unlock_irqrestore(&ps->irq_lock, flags);
 }

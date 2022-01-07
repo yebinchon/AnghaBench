@@ -1,60 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_20__   TYPE_9__ ;
-typedef  struct TYPE_19__   TYPE_4__ ;
-typedef  struct TYPE_18__   TYPE_3__ ;
-typedef  struct TYPE_17__   TYPE_2__ ;
-typedef  struct TYPE_16__   TYPE_1__ ;
-typedef  struct TYPE_15__   TYPE_13__ ;
-typedef  struct TYPE_14__   TYPE_12__ ;
 
-/* Type definitions */
-struct TYPE_16__ {int channels; int /*<<< orphan*/  rate; TYPE_4__* codec_setup; } ;
-typedef  TYPE_1__ vorbis_info ;
+
+
+typedef struct TYPE_20__ TYPE_9__ ;
+typedef struct TYPE_19__ TYPE_4__ ;
+typedef struct TYPE_18__ TYPE_3__ ;
+typedef struct TYPE_17__ TYPE_2__ ;
+typedef struct TYPE_16__ TYPE_1__ ;
+typedef struct TYPE_15__ TYPE_13__ ;
+typedef struct TYPE_14__ TYPE_12__ ;
+
+
+struct TYPE_16__ {int channels; int rate; TYPE_4__* codec_setup; } ;
+typedef TYPE_1__ vorbis_info ;
 struct TYPE_17__ {int analysisp; int pcm_storage; int centerW; int pcm_current; scalar_t__ W; scalar_t__ lW; void** pcm; void* pcmret; TYPE_1__* vi; TYPE_3__* backend_state; } ;
-typedef  TYPE_2__ vorbis_dsp_state ;
-struct TYPE_18__ {int /*<<< orphan*/ * residue; int /*<<< orphan*/ * flr; void* psy; int /*<<< orphan*/ * fft_look; void** window; void*** transform; void* modebits; } ;
-typedef  TYPE_3__ private_state ;
-typedef  int /*<<< orphan*/  mdct_lookup ;
-struct TYPE_19__ {int halfrate_flag; int modes; int* blocksizes; int books; int psys; int floors; int residues; size_t* floor_type; size_t* residue_type; int /*<<< orphan*/ ** book_param; int /*<<< orphan*/ * residue_param; int /*<<< orphan*/ * floor_param; void* fullbooks; TYPE_9__** psy_param; int /*<<< orphan*/  psy_g_param; } ;
-typedef  TYPE_4__ codec_setup_info ;
+typedef TYPE_2__ vorbis_dsp_state ;
+struct TYPE_18__ {int * residue; int * flr; void* psy; int * fft_look; void** window; void*** transform; void* modebits; } ;
+typedef TYPE_3__ private_state ;
+typedef int mdct_lookup ;
+struct TYPE_19__ {int halfrate_flag; int modes; int* blocksizes; int books; int psys; int floors; int residues; size_t* floor_type; size_t* residue_type; int ** book_param; int * residue_param; int * floor_param; void* fullbooks; TYPE_9__** psy_param; int psy_g_param; } ;
+typedef TYPE_4__ codec_setup_info ;
 struct TYPE_20__ {size_t blockflag; } ;
-struct TYPE_15__ {int /*<<< orphan*/  (* look ) (TYPE_2__*,int /*<<< orphan*/ ) ;} ;
-struct TYPE_14__ {int /*<<< orphan*/  (* look ) (TYPE_2__*,int /*<<< orphan*/ ) ;} ;
+struct TYPE_15__ {int (* look ) (TYPE_2__*,int ) ;} ;
+struct TYPE_14__ {int (* look ) (TYPE_2__*,int ) ;} ;
 
-/* Variables and functions */
- int VI_TRANSFORMB ; 
- TYPE_13__** _floor_P ; 
- void* _ogg_calloc (int,int) ; 
- void* _ogg_malloc (int) ; 
- TYPE_12__** _residue_P ; 
- int /*<<< orphan*/  _vp_psy_init (void*,TYPE_9__*,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  drft_init (int /*<<< orphan*/ *,int) ; 
- void* ilog2 (int) ; 
- int /*<<< orphan*/  mdct_init (void*,int) ; 
- int /*<<< orphan*/  memset (TYPE_2__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  stub1 (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub2 (TYPE_2__*,int /*<<< orphan*/ ) ; 
- scalar_t__ vorbis_book_init_decode (void*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vorbis_book_init_encode (void*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vorbis_dsp_clear (TYPE_2__*) ; 
- int /*<<< orphan*/  vorbis_staticbook_destroy (int /*<<< orphan*/ *) ; 
+
+ int VI_TRANSFORMB ;
+ TYPE_13__** _floor_P ;
+ void* _ogg_calloc (int,int) ;
+ void* _ogg_malloc (int) ;
+ TYPE_12__** _residue_P ;
+ int _vp_psy_init (void*,TYPE_9__*,int *,int,int ) ;
+ int drft_init (int *,int) ;
+ void* ilog2 (int) ;
+ int mdct_init (void*,int) ;
+ int memset (TYPE_2__*,int ,int) ;
+ int stub1 (TYPE_2__*,int ) ;
+ int stub2 (TYPE_2__*,int ) ;
+ scalar_t__ vorbis_book_init_decode (void*,int *) ;
+ int vorbis_book_init_encode (void*,int *) ;
+ int vorbis_dsp_clear (TYPE_2__*) ;
+ int vorbis_staticbook_destroy (int *) ;
 
 __attribute__((used)) static int _vds_shared_init(vorbis_dsp_state *v,vorbis_info *vi,int encp){
   int i;
   codec_setup_info *ci=vi->codec_setup;
-  private_state *b=NULL;
+  private_state *b=((void*)0);
   int hs;
 
-  if(ci==NULL) return 1;
+  if(ci==((void*)0)) return 1;
   hs=ci->halfrate_flag;
 
   memset(v,0,sizeof(*v));
@@ -66,24 +66,24 @@ __attribute__((used)) static int _vds_shared_init(vorbis_dsp_state *v,vorbis_inf
   b->transform[0]=_ogg_calloc(VI_TRANSFORMB,sizeof(*b->transform[0]));
   b->transform[1]=_ogg_calloc(VI_TRANSFORMB,sizeof(*b->transform[1]));
 
-  /* MDCT is tranform 0 */
+
 
   b->transform[0][0]=_ogg_calloc(1,sizeof(mdct_lookup));
   b->transform[1][0]=_ogg_calloc(1,sizeof(mdct_lookup));
   mdct_init(b->transform[0][0],ci->blocksizes[0]>>hs);
   mdct_init(b->transform[1][0],ci->blocksizes[1]>>hs);
 
-  /* Vorbis I uses only window type 0 */
+
   b->window[0]=ilog2(ci->blocksizes[0])-6;
   b->window[1]=ilog2(ci->blocksizes[1])-6;
 
-  if(encp){ /* encode/decode differ here */
+  if(encp){
 
-    /* analysis always needs an fft */
+
     drft_init(&b->fft_look[0],ci->blocksizes[0]);
     drft_init(&b->fft_look[1],ci->blocksizes[1]);
 
-    /* finish the codebooks */
+
     if(!ci->fullbooks){
       ci->fullbooks=_ogg_calloc(ci->books,sizeof(*ci->fullbooks));
       for(i=0;i<ci->books;i++)
@@ -101,23 +101,23 @@ __attribute__((used)) static int _vds_shared_init(vorbis_dsp_state *v,vorbis_inf
 
     v->analysisp=1;
   }else{
-    /* finish the codebooks */
+
     if(!ci->fullbooks){
       ci->fullbooks=_ogg_calloc(ci->books,sizeof(*ci->fullbooks));
       for(i=0;i<ci->books;i++){
-        if(ci->book_param[i]==NULL)
+        if(ci->book_param[i]==((void*)0))
           goto abort_books;
         if(vorbis_book_init_decode(ci->fullbooks+i,ci->book_param[i]))
           goto abort_books;
-        /* decode codebooks are now standalone after init */
+
         vorbis_staticbook_destroy(ci->book_param[i]);
-        ci->book_param[i]=NULL;
+        ci->book_param[i]=((void*)0);
       }
     }
   }
 
-  /* initialize the storage vectors. blocksize[1] is small for encode,
-     but the correct size for decode */
+
+
   v->pcm_storage=ci->blocksizes[1];
   v->pcm=_ogg_malloc(vi->channels*sizeof(*v->pcm));
   v->pcmret=_ogg_malloc(vi->channels*sizeof(*v->pcmret));
@@ -127,17 +127,17 @@ __attribute__((used)) static int _vds_shared_init(vorbis_dsp_state *v,vorbis_inf
       v->pcm[i]=_ogg_calloc(v->pcm_storage,sizeof(*v->pcm[i]));
   }
 
-  /* all 1 (large block) or 0 (small block) */
-  /* explicitly set for the sake of clarity */
-  v->lW=0; /* previous window size */
-  v->W=0;  /* current window size */
 
-  /* all vector indexes */
+
+  v->lW=0;
+  v->W=0;
+
+
   v->centerW=ci->blocksizes[1]/2;
 
   v->pcm_current=v->centerW;
 
-  /* initialize all the backend lookups */
+
   b->flr=_ogg_calloc(ci->floors,sizeof(*b->flr));
   b->residue=_ogg_calloc(ci->residues,sizeof(*b->residue));
 
@@ -152,9 +152,9 @@ __attribute__((used)) static int _vds_shared_init(vorbis_dsp_state *v,vorbis_inf
   return 0;
  abort_books:
   for(i=0;i<ci->books;i++){
-    if(ci->book_param[i]!=NULL){
+    if(ci->book_param[i]!=((void*)0)){
       vorbis_staticbook_destroy(ci->book_param[i]);
-      ci->book_param[i]=NULL;
+      ci->book_param[i]=((void*)0);
     }
   }
   vorbis_dsp_clear(v);

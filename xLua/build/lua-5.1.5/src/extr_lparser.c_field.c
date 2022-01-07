@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  expdesc ;
-struct TYPE_5__ {int /*<<< orphan*/ * fs; } ;
-typedef  TYPE_1__ LexState ;
-typedef  int /*<<< orphan*/  FuncState ;
 
-/* Variables and functions */
- int /*<<< orphan*/  checkname (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  luaK_exp2anyreg (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  luaK_indexed (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  luaX_next (TYPE_1__*) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int expdesc ;
+struct TYPE_5__ {int * fs; } ;
+typedef TYPE_1__ LexState ;
+typedef int FuncState ;
+
+
+ int checkname (TYPE_1__*,int *) ;
+ int luaK_exp2anyreg (int *,int *) ;
+ int luaK_indexed (int *,int *,int *) ;
+ int luaX_next (TYPE_1__*) ;
 
 __attribute__((used)) static void field (LexState *ls, expdesc *v) {
-  /* field -> ['.' | ':'] NAME */
+
   FuncState *fs = ls->fs;
   expdesc key;
   luaK_exp2anyreg(fs, v);
-  luaX_next(ls);  /* skip the dot or colon */
+  luaX_next(ls);
   checkname(ls, &key);
   luaK_indexed(fs, v, &key);
 }

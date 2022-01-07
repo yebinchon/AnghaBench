@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int armorpoints; int armortype; } ;
-typedef  TYPE_1__ player_t ;
-typedef  int boolean ;
+typedef TYPE_1__ player_t ;
+typedef int boolean ;
 
-/* Variables and functions */
+
 
 boolean
 P_GiveArmor
-( player_t*	player,
-  int		armortype )
+( player_t* player,
+  int armortype )
 {
-    int		hits;
-	
+    int hits;
+
     hits = armortype*100;
     if (player->armorpoints >= hits)
-	return false;	// don't pick up
-		
+ return 0;
+
     player->armortype = armortype;
     player->armorpoints = hits;
-	
-    return true;
+
+    return 1;
 }

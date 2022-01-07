@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ ogg_int64_t ;
-struct TYPE_7__ {scalar_t__ ready_state; int links; scalar_t__* pcmlengths; TYPE_1__* vi; int /*<<< orphan*/  seekable; } ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef scalar_t__ ogg_int64_t ;
+struct TYPE_7__ {scalar_t__ ready_state; int links; scalar_t__* pcmlengths; TYPE_1__* vi; int seekable; } ;
 struct TYPE_6__ {scalar_t__ rate; } ;
-typedef  TYPE_2__ OggVorbis_File ;
+typedef TYPE_2__ OggVorbis_File ;
 
-/* Variables and functions */
- scalar_t__ OPENED ; 
- int OV_EINVAL ; 
- int OV_ENOSEEK ; 
- int ov_pcm_seek_page (TYPE_2__*,scalar_t__) ; 
- scalar_t__ ov_time_total (TYPE_2__*,int) ; 
+
+ scalar_t__ OPENED ;
+ int OV_EINVAL ;
+ int OV_ENOSEEK ;
+ int ov_pcm_seek_page (TYPE_2__*,scalar_t__) ;
+ scalar_t__ ov_time_total (TYPE_2__*,int) ;
 
 int ov_time_seek_page(OggVorbis_File *vf,ogg_int64_t milliseconds){
-  /* translate time to PCM position and call ov_pcm_seek */
+
 
   int link=-1;
   ogg_int64_t pcm_total=0;
@@ -35,7 +35,7 @@ int ov_time_seek_page(OggVorbis_File *vf,ogg_int64_t milliseconds){
   if(!vf->seekable)return(OV_ENOSEEK);
   if(milliseconds<0)return(OV_EINVAL);
 
-  /* which bitstream section does this time offset occur in? */
+
   for(link=0;link<vf->links;link++){
     ogg_int64_t addsec = ov_time_total(vf,link);
     if(milliseconds<time_total+addsec)break;
@@ -45,7 +45,7 @@ int ov_time_seek_page(OggVorbis_File *vf,ogg_int64_t milliseconds){
 
   if(link==vf->links)return(OV_EINVAL);
 
-  /* enough information to convert time offset to pcm offset */
+
   {
     ogg_int64_t target=pcm_total+(milliseconds-time_total)*vf->vi[link].rate/1000;
     return(ov_pcm_seek_page(vf,target));

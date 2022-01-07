@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct dummy_frame {struct dummy_frame* next; int /*<<< orphan*/  regcache; int /*<<< orphan*/  id; int /*<<< orphan*/  fp; scalar_t__ top; int /*<<< orphan*/  sp; int /*<<< orphan*/  pc; } ;
-typedef  int /*<<< orphan*/  CORE_ADDR ;
 
-/* Variables and functions */
- scalar_t__ INNER_THAN (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  current_gdbarch ; 
- int /*<<< orphan*/  current_regcache ; 
- struct dummy_frame* dummy_frame_stack ; 
- int /*<<< orphan*/  get_current_frame () ; 
- int /*<<< orphan*/  get_frame_base (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  get_frame_id (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  read_pc () ; 
- int /*<<< orphan*/  read_sp () ; 
- int /*<<< orphan*/  regcache_cpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  regcache_xfree (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  regcache_xmalloc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xfree (struct dummy_frame*) ; 
- struct dummy_frame* xmalloc (int) ; 
+
+
+
+struct dummy_frame {struct dummy_frame* next; int regcache; int id; int fp; scalar_t__ top; int sp; int pc; } ;
+typedef int CORE_ADDR ;
+
+
+ scalar_t__ INNER_THAN (int ,int ) ;
+ int current_gdbarch ;
+ int current_regcache ;
+ struct dummy_frame* dummy_frame_stack ;
+ int get_current_frame () ;
+ int get_frame_base (int ) ;
+ int get_frame_id (int ) ;
+ int read_pc () ;
+ int read_sp () ;
+ int regcache_cpy (int ,int ) ;
+ int regcache_xfree (int ) ;
+ int regcache_xmalloc (int ) ;
+ int xfree (struct dummy_frame*) ;
+ struct dummy_frame* xmalloc (int) ;
 
 void
 generic_push_dummy_frame (void)
@@ -35,18 +35,18 @@ generic_push_dummy_frame (void)
   struct dummy_frame *dummy_frame;
   CORE_ADDR fp = get_frame_base (get_current_frame ());
 
-  /* check to see if there are stale dummy frames, 
-     perhaps left over from when a longjump took us out of a 
-     function that was called by the debugger */
+
+
+
 
   dummy_frame = dummy_frame_stack;
   while (dummy_frame)
-    if (INNER_THAN (dummy_frame->fp, fp))	/* stale -- destroy! */
+    if (INNER_THAN (dummy_frame->fp, fp))
       {
-	dummy_frame_stack = dummy_frame->next;
-	regcache_xfree (dummy_frame->regcache);
-	xfree (dummy_frame);
-	dummy_frame = dummy_frame_stack;
+ dummy_frame_stack = dummy_frame->next;
+ regcache_xfree (dummy_frame->regcache);
+ xfree (dummy_frame);
+ dummy_frame = dummy_frame_stack;
       }
     else
       dummy_frame = dummy_frame->next;

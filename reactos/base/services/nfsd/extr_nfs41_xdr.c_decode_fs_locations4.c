@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u_int32_t ;
-struct TYPE_3__ {int location_count; int /*<<< orphan*/ * locations; int /*<<< orphan*/  path; } ;
-typedef  TYPE_1__ fs_locations4 ;
-typedef  int /*<<< orphan*/  fs_location4 ;
-typedef  int /*<<< orphan*/  bool_t ;
-typedef  int /*<<< orphan*/  XDR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  ZeroMemory (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  decode_fs_location4 (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  decode_pathname4 (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * realloc (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  xdr_u_int32_t (int /*<<< orphan*/ *,int*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int u_int32_t ;
+struct TYPE_3__ {int location_count; int * locations; int path; } ;
+typedef TYPE_1__ fs_locations4 ;
+typedef int fs_location4 ;
+typedef int bool_t ;
+typedef int XDR ;
+
+
+ int FALSE ;
+ int TRUE ;
+ int ZeroMemory (int *,int) ;
+ int decode_fs_location4 (int *,int *) ;
+ int decode_pathname4 (int *,int *) ;
+ int free (int *) ;
+ int * realloc (int *,int) ;
+ int xdr_u_int32_t (int *,int*) ;
 
 __attribute__((used)) static bool_t decode_fs_locations4(
     XDR *xdr,
@@ -41,13 +41,13 @@ __attribute__((used)) static bool_t decode_fs_locations4(
     if (!xdr_u_int32_t(xdr, &count))
         return FALSE;
 
-    /* allocate the fs_location array */
+
     if (count == 0) {
         free(locations->locations);
-        arr = NULL;
+        arr = ((void*)0);
     } else if (count != locations->location_count) {
         arr = realloc(locations->locations, count * sizeof(fs_location4));
-        if (arr == NULL)
+        if (arr == ((void*)0))
             return FALSE;
         ZeroMemory(arr, count * sizeof(fs_location4));
     } else {

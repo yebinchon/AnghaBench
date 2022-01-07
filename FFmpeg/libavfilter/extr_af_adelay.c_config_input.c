@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_11__ {TYPE_2__* priv; } ;
 struct TYPE_10__ {int channels; int format; float sample_rate; TYPE_4__* dst; } ;
-struct TYPE_9__ {int nb_delays; char* delays; float padding; int /*<<< orphan*/  delay_channel; int /*<<< orphan*/  max_delay; int /*<<< orphan*/  block_align; TYPE_1__* chandelay; scalar_t__ all; } ;
-struct TYPE_8__ {float delay; int /*<<< orphan*/  samples; } ;
-typedef  TYPE_1__ ChanDelay ;
-typedef  TYPE_2__ AudioDelayContext ;
-typedef  TYPE_3__ AVFilterLink ;
-typedef  TYPE_4__ AVFilterContext ;
+struct TYPE_9__ {int nb_delays; char* delays; float padding; int delay_channel; int max_delay; int block_align; TYPE_1__* chandelay; scalar_t__ all; } ;
+struct TYPE_8__ {float delay; int samples; } ;
+typedef TYPE_1__ ChanDelay ;
+typedef TYPE_2__ AudioDelayContext ;
+typedef TYPE_3__ AVFilterLink ;
+typedef TYPE_4__ AVFilterContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
-#define  AV_SAMPLE_FMT_DBLP 132 
-#define  AV_SAMPLE_FMT_FLTP 131 
-#define  AV_SAMPLE_FMT_S16P 130 
-#define  AV_SAMPLE_FMT_S32P 129 
-#define  AV_SAMPLE_FMT_U8P 128 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  FFMAX (int /*<<< orphan*/ ,float) ; 
- float FFMIN (float,float) ; 
- TYPE_1__* av_calloc (int,int) ; 
- int /*<<< orphan*/  av_get_bytes_per_sample (int) ; 
- int /*<<< orphan*/  av_log (TYPE_4__*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  av_malloc_array (float,int /*<<< orphan*/ ) ; 
- int av_sscanf (char*,char*,float*,...) ; 
- char* av_strtok (char*,char*,char**) ; 
- int /*<<< orphan*/  delay_channel_dblp ; 
- int /*<<< orphan*/  delay_channel_fltp ; 
- int /*<<< orphan*/  delay_channel_s16p ; 
- int /*<<< orphan*/  delay_channel_s32p ; 
- int /*<<< orphan*/  delay_channel_u8p ; 
+
+ int AVERROR (int ) ;
+ int AV_LOG_ERROR ;
+
+
+
+
+
+ int EINVAL ;
+ int ENOMEM ;
+ int FFMAX (int ,float) ;
+ float FFMIN (float,float) ;
+ TYPE_1__* av_calloc (int,int) ;
+ int av_get_bytes_per_sample (int) ;
+ int av_log (TYPE_4__*,int ,char*) ;
+ int av_malloc_array (float,int ) ;
+ int av_sscanf (char*,char*,float*,...) ;
+ char* av_strtok (char*,char*,char**) ;
+ int delay_channel_dblp ;
+ int delay_channel_fltp ;
+ int delay_channel_s16p ;
+ int delay_channel_s32p ;
+ int delay_channel_u8p ;
 
 __attribute__((used)) static int config_input(AVFilterLink *inlink)
 {
     AVFilterContext *ctx = inlink->dst;
     AudioDelayContext *s = ctx->priv;
-    char *p, *arg, *saveptr = NULL;
+    char *p, *arg, *saveptr = ((void*)0);
     int i;
 
     s->chandelay = av_calloc(inlink->channels, sizeof(*s->chandelay));
@@ -70,7 +70,7 @@ __attribute__((used)) static int config_input(AVFilterLink *inlink)
         if (!(arg = av_strtok(p, "|", &saveptr)))
             break;
 
-        p = NULL;
+        p = ((void*)0);
 
         ret = av_sscanf(arg, "%d%c", &d->delay, &type);
         if (ret != 2 || type != 'S') {
@@ -119,11 +119,11 @@ __attribute__((used)) static int config_input(AVFilterLink *inlink)
     }
 
     switch (inlink->format) {
-    case AV_SAMPLE_FMT_U8P : s->delay_channel = delay_channel_u8p ; break;
-    case AV_SAMPLE_FMT_S16P: s->delay_channel = delay_channel_s16p; break;
-    case AV_SAMPLE_FMT_S32P: s->delay_channel = delay_channel_s32p; break;
-    case AV_SAMPLE_FMT_FLTP: s->delay_channel = delay_channel_fltp; break;
-    case AV_SAMPLE_FMT_DBLP: s->delay_channel = delay_channel_dblp; break;
+    case 128 : s->delay_channel = delay_channel_u8p ; break;
+    case 130: s->delay_channel = delay_channel_s16p; break;
+    case 129: s->delay_channel = delay_channel_s32p; break;
+    case 131: s->delay_channel = delay_channel_fltp; break;
+    case 132: s->delay_channel = delay_channel_dblp; break;
     }
 
     return 0;

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  void* svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_fs_t ;
-typedef  int /*<<< orphan*/  svn_fs_id_t ;
-struct TYPE_4__ {TYPE_2__* fsap_data; int /*<<< orphan*/ * vtable; } ;
-typedef  TYPE_1__ svn_fs_history_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-struct TYPE_5__ {int /*<<< orphan*/ * fs; int /*<<< orphan*/ * current_id; void* next_copy; void* rev_hint; int /*<<< orphan*/ * path_hint; int /*<<< orphan*/  is_interesting; void* revision; int /*<<< orphan*/ * path; } ;
-typedef  TYPE_2__ fs_history_data_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- void* apr_pcalloc (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  history_vtable ; 
- int /*<<< orphan*/ * svn_fs__canonicalize_abspath (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_fs_fs__id_copy (int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef void* svn_revnum_t ;
+typedef int svn_fs_t ;
+typedef int svn_fs_id_t ;
+struct TYPE_4__ {TYPE_2__* fsap_data; int * vtable; } ;
+typedef TYPE_1__ svn_fs_history_t ;
+typedef int svn_boolean_t ;
+struct TYPE_5__ {int * fs; int * current_id; void* next_copy; void* rev_hint; int * path_hint; int is_interesting; void* revision; int * path; } ;
+typedef TYPE_2__ fs_history_data_t ;
+typedef int apr_pool_t ;
+
+
+ void* apr_pcalloc (int *,int) ;
+ int history_vtable ;
+ int * svn_fs__canonicalize_abspath (char const*,int *) ;
+ int * svn_fs_fs__id_copy (int const*,int *) ;
 
 __attribute__((used)) static svn_fs_history_t *
 assemble_history(svn_fs_t *fs,
@@ -45,10 +45,10 @@ assemble_history(svn_fs_t *fs,
   fhd->revision = revision;
   fhd->is_interesting = is_interesting;
   fhd->path_hint = path_hint ? svn_fs__canonicalize_abspath(path_hint, pool)
-                             : NULL;
+                             : ((void*)0);
   fhd->rev_hint = rev_hint;
   fhd->next_copy = next_copy;
-  fhd->current_id = current_id ? svn_fs_fs__id_copy(current_id, pool) : NULL;
+  fhd->current_id = current_id ? svn_fs_fs__id_copy(current_id, pool) : ((void*)0);
   fhd->fs = fs;
 
   history->vtable = &history_vtable;

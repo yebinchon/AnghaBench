@@ -1,307 +1,275 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct OutStruct {char const* filename; } ;
 struct TYPE_2__ {int id; scalar_t__ name; } ;
-typedef  int /*<<< orphan*/  FILE ;
-typedef  int /*<<< orphan*/  CURL ;
+typedef int FILE ;
+typedef int CURL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CURLE_OK ; 
- int /*<<< orphan*/  CURLINFO_APPCONNECT_TIME ; 
- int /*<<< orphan*/  CURLINFO_CONNECT_TIME ; 
- int /*<<< orphan*/  CURLINFO_CONTENT_TYPE ; 
- int /*<<< orphan*/  CURLINFO_EFFECTIVE_URL ; 
- int /*<<< orphan*/  CURLINFO_FTP_ENTRY_PATH ; 
- int /*<<< orphan*/  CURLINFO_HEADER_SIZE ; 
- int /*<<< orphan*/  CURLINFO_HTTP_CONNECTCODE ; 
- int /*<<< orphan*/  CURLINFO_HTTP_VERSION ; 
- int /*<<< orphan*/  CURLINFO_LOCAL_IP ; 
- int /*<<< orphan*/  CURLINFO_LOCAL_PORT ; 
- int /*<<< orphan*/  CURLINFO_NAMELOOKUP_TIME ; 
- int /*<<< orphan*/  CURLINFO_NUM_CONNECTS ; 
- int /*<<< orphan*/  CURLINFO_PRETRANSFER_TIME ; 
- int /*<<< orphan*/  CURLINFO_PRIMARY_IP ; 
- int /*<<< orphan*/  CURLINFO_PRIMARY_PORT ; 
- int /*<<< orphan*/  CURLINFO_PROXY_SSL_VERIFYRESULT ; 
- int /*<<< orphan*/  CURLINFO_REDIRECT_COUNT ; 
- int /*<<< orphan*/  CURLINFO_REDIRECT_TIME ; 
- int /*<<< orphan*/  CURLINFO_REDIRECT_URL ; 
- int /*<<< orphan*/  CURLINFO_REQUEST_SIZE ; 
- int /*<<< orphan*/  CURLINFO_RESPONSE_CODE ; 
- int /*<<< orphan*/  CURLINFO_SCHEME ; 
- int /*<<< orphan*/  CURLINFO_SIZE_DOWNLOAD ; 
- int /*<<< orphan*/  CURLINFO_SIZE_UPLOAD ; 
- int /*<<< orphan*/  CURLINFO_SPEED_DOWNLOAD ; 
- int /*<<< orphan*/  CURLINFO_SPEED_UPLOAD ; 
- int /*<<< orphan*/  CURLINFO_SSL_VERIFYRESULT ; 
- int /*<<< orphan*/  CURLINFO_STARTTRANSFER_TIME ; 
- int /*<<< orphan*/  CURLINFO_TOTAL_TIME ; 
-#define  CURL_HTTP_VERSION_1_0 163 
-#define  CURL_HTTP_VERSION_1_1 162 
-#define  CURL_HTTP_VERSION_2_0 161 
-#define  CURL_HTTP_VERSION_3 160 
- int FALSE ; 
- int TRUE ; 
-#define  VAR_APPCONNECT_TIME 159 
-#define  VAR_CONNECT_TIME 158 
-#define  VAR_CONTENT_TYPE 157 
-#define  VAR_EFFECTIVE_FILENAME 156 
-#define  VAR_EFFECTIVE_URL 155 
-#define  VAR_FTP_ENTRY_PATH 154 
-#define  VAR_HEADER_SIZE 153 
-#define  VAR_HTTP_CODE 152 
-#define  VAR_HTTP_CODE_PROXY 151 
-#define  VAR_HTTP_VERSION 150 
-#define  VAR_LOCAL_IP 149 
-#define  VAR_LOCAL_PORT 148 
-#define  VAR_NAMELOOKUP_TIME 147 
-#define  VAR_NUM_CONNECTS 146 
-#define  VAR_PRETRANSFER_TIME 145 
-#define  VAR_PRIMARY_IP 144 
-#define  VAR_PRIMARY_PORT 143 
-#define  VAR_PROXY_SSL_VERIFY_RESULT 142 
-#define  VAR_REDIRECT_COUNT 141 
-#define  VAR_REDIRECT_TIME 140 
-#define  VAR_REDIRECT_URL 139 
-#define  VAR_REQUEST_SIZE 138 
-#define  VAR_SCHEME 137 
-#define  VAR_SIZE_DOWNLOAD 136 
-#define  VAR_SIZE_UPLOAD 135 
-#define  VAR_SPEED_DOWNLOAD 134 
-#define  VAR_SPEED_UPLOAD 133 
-#define  VAR_SSL_VERIFY_RESULT 132 
-#define  VAR_STARTTRANSFER_TIME 131 
-#define  VAR_STDERR 130 
-#define  VAR_STDOUT 129 
-#define  VAR_TOTAL_TIME 128 
- int /*<<< orphan*/  curl_easy_getinfo (int /*<<< orphan*/ *,int /*<<< orphan*/ ,...) ; 
- scalar_t__ curl_strequal (char const*,scalar_t__) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char const*,...) ; 
- int /*<<< orphan*/  fputc (char const,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fputs (char*,int /*<<< orphan*/ *) ; 
- TYPE_1__* replacements ; 
- int /*<<< orphan*/ * stderr ; 
- int /*<<< orphan*/ * stdout ; 
- char* strchr (char const*,char) ; 
+
+ int CURLE_OK ;
+ int CURLINFO_APPCONNECT_TIME ;
+ int CURLINFO_CONNECT_TIME ;
+ int CURLINFO_CONTENT_TYPE ;
+ int CURLINFO_EFFECTIVE_URL ;
+ int CURLINFO_FTP_ENTRY_PATH ;
+ int CURLINFO_HEADER_SIZE ;
+ int CURLINFO_HTTP_CONNECTCODE ;
+ int CURLINFO_HTTP_VERSION ;
+ int CURLINFO_LOCAL_IP ;
+ int CURLINFO_LOCAL_PORT ;
+ int CURLINFO_NAMELOOKUP_TIME ;
+ int CURLINFO_NUM_CONNECTS ;
+ int CURLINFO_PRETRANSFER_TIME ;
+ int CURLINFO_PRIMARY_IP ;
+ int CURLINFO_PRIMARY_PORT ;
+ int CURLINFO_PROXY_SSL_VERIFYRESULT ;
+ int CURLINFO_REDIRECT_COUNT ;
+ int CURLINFO_REDIRECT_TIME ;
+ int CURLINFO_REDIRECT_URL ;
+ int CURLINFO_REQUEST_SIZE ;
+ int CURLINFO_RESPONSE_CODE ;
+ int CURLINFO_SCHEME ;
+ int CURLINFO_SIZE_DOWNLOAD ;
+ int CURLINFO_SIZE_UPLOAD ;
+ int CURLINFO_SPEED_DOWNLOAD ;
+ int CURLINFO_SPEED_UPLOAD ;
+ int CURLINFO_SSL_VERIFYRESULT ;
+ int CURLINFO_STARTTRANSFER_TIME ;
+ int CURLINFO_TOTAL_TIME ;
+
+
+
+
+ int FALSE ;
+ int TRUE ;
+ int curl_easy_getinfo (int *,int ,...) ;
+ scalar_t__ curl_strequal (char const*,scalar_t__) ;
+ int fprintf (int *,char const*,...) ;
+ int fputc (char const,int *) ;
+ int fputs (char*,int *) ;
+ TYPE_1__* replacements ;
+ int * stderr ;
+ int * stdout ;
+ char* strchr (char const*,char) ;
 
 void ourWriteOut(CURL *curl, struct OutStruct *outs, const char *writeinfo)
 {
   FILE *stream = stdout;
   const char *ptr = writeinfo;
-  char *stringp = NULL;
+  char *stringp = ((void*)0);
   long longinfo;
   double doubleinfo;
 
   while(ptr && *ptr) {
     if('%' == *ptr && ptr[1]) {
       if('%' == ptr[1]) {
-        /* an escaped %-letter */
+
         fputc('%', stream);
         ptr += 2;
       }
       else {
-        /* this is meant as a variable to output */
+
         char *end;
         if('{' == ptr[1]) {
           char keepit;
           int i;
           bool match = FALSE;
           end = strchr(ptr, '}');
-          ptr += 2; /* pass the % and the { */
+          ptr += 2;
           if(!end) {
             fputs("%{", stream);
             continue;
           }
           keepit = *end;
-          *end = 0; /* zero terminate */
+          *end = 0;
           for(i = 0; replacements[i].name; i++) {
             if(curl_strequal(ptr, replacements[i].name)) {
               match = TRUE;
               switch(replacements[i].id) {
-              case VAR_EFFECTIVE_URL:
+              case 155:
                 if((CURLE_OK ==
                     curl_easy_getinfo(curl, CURLINFO_EFFECTIVE_URL, &stringp))
                    && stringp)
                   fputs(stringp, stream);
                 break;
-              case VAR_HTTP_CODE:
+              case 152:
                 if(CURLE_OK ==
                    curl_easy_getinfo(curl, CURLINFO_RESPONSE_CODE, &longinfo))
                   fprintf(stream, "%03ld", longinfo);
                 break;
-              case VAR_HTTP_CODE_PROXY:
+              case 151:
                 if(CURLE_OK ==
                    curl_easy_getinfo(curl, CURLINFO_HTTP_CONNECTCODE,
                                      &longinfo))
                   fprintf(stream, "%03ld", longinfo);
                 break;
-              case VAR_HEADER_SIZE:
+              case 153:
                 if(CURLE_OK ==
                    curl_easy_getinfo(curl, CURLINFO_HEADER_SIZE, &longinfo))
                   fprintf(stream, "%ld", longinfo);
                 break;
-              case VAR_REQUEST_SIZE:
+              case 138:
                 if(CURLE_OK ==
                    curl_easy_getinfo(curl, CURLINFO_REQUEST_SIZE, &longinfo))
                   fprintf(stream, "%ld", longinfo);
                 break;
-              case VAR_NUM_CONNECTS:
+              case 146:
                 if(CURLE_OK ==
                    curl_easy_getinfo(curl, CURLINFO_NUM_CONNECTS, &longinfo))
                   fprintf(stream, "%ld", longinfo);
                 break;
-              case VAR_REDIRECT_COUNT:
+              case 141:
                 if(CURLE_OK ==
                    curl_easy_getinfo(curl, CURLINFO_REDIRECT_COUNT, &longinfo))
                   fprintf(stream, "%ld", longinfo);
                 break;
-              case VAR_REDIRECT_TIME:
+              case 140:
                 if(CURLE_OK ==
                    curl_easy_getinfo(curl, CURLINFO_REDIRECT_TIME,
                                      &doubleinfo))
                   fprintf(stream, "%.6f", doubleinfo);
                 break;
-              case VAR_TOTAL_TIME:
+              case 128:
                 if(CURLE_OK ==
                    curl_easy_getinfo(curl, CURLINFO_TOTAL_TIME, &doubleinfo))
                   fprintf(stream, "%.6f", doubleinfo);
                 break;
-              case VAR_NAMELOOKUP_TIME:
+              case 147:
                 if(CURLE_OK ==
                    curl_easy_getinfo(curl, CURLINFO_NAMELOOKUP_TIME,
                                      &doubleinfo))
                   fprintf(stream, "%.6f", doubleinfo);
                 break;
-              case VAR_CONNECT_TIME:
+              case 158:
                 if(CURLE_OK ==
                    curl_easy_getinfo(curl, CURLINFO_CONNECT_TIME, &doubleinfo))
                   fprintf(stream, "%.6f", doubleinfo);
                 break;
-              case VAR_APPCONNECT_TIME:
+              case 159:
                 if(CURLE_OK ==
                    curl_easy_getinfo(curl, CURLINFO_APPCONNECT_TIME,
                                      &doubleinfo))
                   fprintf(stream, "%.6f", doubleinfo);
                 break;
-              case VAR_PRETRANSFER_TIME:
+              case 145:
                 if(CURLE_OK ==
                    curl_easy_getinfo(curl, CURLINFO_PRETRANSFER_TIME,
                                      &doubleinfo))
                   fprintf(stream, "%.6f", doubleinfo);
                 break;
-              case VAR_STARTTRANSFER_TIME:
+              case 131:
                 if(CURLE_OK ==
                    curl_easy_getinfo(curl, CURLINFO_STARTTRANSFER_TIME,
                                      &doubleinfo))
                   fprintf(stream, "%.6f", doubleinfo);
                 break;
-              case VAR_SIZE_UPLOAD:
+              case 135:
                 if(CURLE_OK ==
                    curl_easy_getinfo(curl, CURLINFO_SIZE_UPLOAD, &doubleinfo))
                   fprintf(stream, "%.0f", doubleinfo);
                 break;
-              case VAR_SIZE_DOWNLOAD:
+              case 136:
                 if(CURLE_OK ==
                    curl_easy_getinfo(curl, CURLINFO_SIZE_DOWNLOAD,
                                      &doubleinfo))
                   fprintf(stream, "%.0f", doubleinfo);
                 break;
-              case VAR_SPEED_DOWNLOAD:
+              case 134:
                 if(CURLE_OK ==
                    curl_easy_getinfo(curl, CURLINFO_SPEED_DOWNLOAD,
                                      &doubleinfo))
                   fprintf(stream, "%.3f", doubleinfo);
                 break;
-              case VAR_SPEED_UPLOAD:
+              case 133:
                 if(CURLE_OK ==
                    curl_easy_getinfo(curl, CURLINFO_SPEED_UPLOAD, &doubleinfo))
                   fprintf(stream, "%.3f", doubleinfo);
                 break;
-              case VAR_CONTENT_TYPE:
+              case 157:
                 if((CURLE_OK ==
                     curl_easy_getinfo(curl, CURLINFO_CONTENT_TYPE, &stringp))
                    && stringp)
                   fputs(stringp, stream);
                 break;
-              case VAR_FTP_ENTRY_PATH:
+              case 154:
                 if((CURLE_OK ==
                     curl_easy_getinfo(curl, CURLINFO_FTP_ENTRY_PATH, &stringp))
                    && stringp)
                   fputs(stringp, stream);
                 break;
-              case VAR_REDIRECT_URL:
+              case 139:
                 if((CURLE_OK ==
                     curl_easy_getinfo(curl, CURLINFO_REDIRECT_URL, &stringp))
                    && stringp)
                   fputs(stringp, stream);
                 break;
-              case VAR_SSL_VERIFY_RESULT:
+              case 132:
                 if(CURLE_OK ==
                    curl_easy_getinfo(curl, CURLINFO_SSL_VERIFYRESULT,
                                      &longinfo))
                   fprintf(stream, "%ld", longinfo);
                 break;
-              case VAR_PROXY_SSL_VERIFY_RESULT:
+              case 142:
                 if(CURLE_OK ==
                    curl_easy_getinfo(curl, CURLINFO_PROXY_SSL_VERIFYRESULT,
                                      &longinfo))
                   fprintf(stream, "%ld", longinfo);
                 break;
-              case VAR_EFFECTIVE_FILENAME:
+              case 156:
                 if(outs->filename)
                   fprintf(stream, "%s", outs->filename);
                 break;
-              case VAR_PRIMARY_IP:
+              case 144:
                 if(CURLE_OK ==
                    curl_easy_getinfo(curl, CURLINFO_PRIMARY_IP,
                                      &stringp))
                   fprintf(stream, "%s", stringp);
                 break;
-              case VAR_PRIMARY_PORT:
+              case 143:
                 if(CURLE_OK ==
                    curl_easy_getinfo(curl, CURLINFO_PRIMARY_PORT,
                                      &longinfo))
                   fprintf(stream, "%ld", longinfo);
                 break;
-              case VAR_LOCAL_IP:
+              case 149:
                 if(CURLE_OK ==
                    curl_easy_getinfo(curl, CURLINFO_LOCAL_IP,
                                      &stringp))
                   fprintf(stream, "%s", stringp);
                 break;
-              case VAR_LOCAL_PORT:
+              case 148:
                 if(CURLE_OK ==
                    curl_easy_getinfo(curl, CURLINFO_LOCAL_PORT,
                                      &longinfo))
                   fprintf(stream, "%ld", longinfo);
                 break;
-              case VAR_HTTP_VERSION:
+              case 150:
                 if(CURLE_OK ==
                    curl_easy_getinfo(curl, CURLINFO_HTTP_VERSION,
                                      &longinfo)) {
                   const char *version = "0";
                   switch(longinfo) {
-                  case CURL_HTTP_VERSION_1_0:
+                  case 163:
                     version = "1.0";
                     break;
-                  case CURL_HTTP_VERSION_1_1:
+                  case 162:
                     version = "1.1";
                     break;
-                  case CURL_HTTP_VERSION_2_0:
+                  case 161:
                     version = "2";
                     break;
-                  case CURL_HTTP_VERSION_3:
+                  case 160:
                     version = "3";
                     break;
                   }
@@ -309,16 +277,16 @@ void ourWriteOut(CURL *curl, struct OutStruct *outs, const char *writeinfo)
                   fprintf(stream, version);
                 }
                 break;
-              case VAR_SCHEME:
+              case 137:
                 if(CURLE_OK ==
                    curl_easy_getinfo(curl, CURLINFO_SCHEME,
                                      &stringp))
                   fprintf(stream, "%s", stringp);
                 break;
-              case VAR_STDOUT:
+              case 129:
                 stream = stdout;
                 break;
-              case VAR_STDERR:
+              case 130:
                 stream = stderr;
                 break;
               default:
@@ -330,11 +298,11 @@ void ourWriteOut(CURL *curl, struct OutStruct *outs, const char *writeinfo)
           if(!match) {
             fprintf(stderr, "curl: unknown --write-out variable: '%s'\n", ptr);
           }
-          ptr = end + 1; /* pass the end */
+          ptr = end + 1;
           *end = keepit;
         }
         else {
-          /* illegal syntax, then just output the characters that are used */
+
           fputc('%', stream);
           fputc(ptr[1], stream);
           ptr += 2;
@@ -353,7 +321,7 @@ void ourWriteOut(CURL *curl, struct OutStruct *outs, const char *writeinfo)
         fputc('\t', stream);
         break;
       default:
-        /* unknown, just output this */
+
         fputc(*ptr, stream);
         fputc(ptr[1], stream);
         break;

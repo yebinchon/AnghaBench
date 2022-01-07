@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  msg ;
-struct TYPE_6__ {float grey_frac; int /*<<< orphan*/  camera_num; int /*<<< orphan*/  type; } ;
-struct TYPE_5__ {int /*<<< orphan*/  ops_sock; int /*<<< orphan*/  camera_num; } ;
-typedef  TYPE_1__ CameraState ;
-typedef  TYPE_2__ CameraMsg ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CAMERA_MSG_AUTOEXPOSE ; 
- int /*<<< orphan*/  ZMQ_DONTWAIT ; 
- int /*<<< orphan*/  zmq_send (int /*<<< orphan*/ ,TYPE_2__*,int,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int msg ;
+struct TYPE_6__ {float grey_frac; int camera_num; int type; } ;
+struct TYPE_5__ {int ops_sock; int camera_num; } ;
+typedef TYPE_1__ CameraState ;
+typedef TYPE_2__ CameraMsg ;
+
+
+ int CAMERA_MSG_AUTOEXPOSE ;
+ int ZMQ_DONTWAIT ;
+ int zmq_send (int ,TYPE_2__*,int,int ) ;
 
 void camera_autoexposure(CameraState *s, float grey_frac) {
   CameraMsg msg = {

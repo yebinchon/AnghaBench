@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  abort () ; 
- int /*<<< orphan*/  fwrite (unsigned char*,int,int,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int FILE ;
+
+
+ int abort () ;
+ int fwrite (unsigned char*,int,int,int *) ;
 
 __attribute__((used)) static void
 checksum (FILE *file, unsigned char *ptr, int size, int code)
@@ -33,7 +33,7 @@ checksum (FILE *file, unsigned char *ptr, int size, int code)
   for (j = 0; j < bytes; j++)
     sum += ptr[j];
 
-  /* Glue on a checksum too.  */
+
   ptr[bytes] = ~sum;
   fwrite (ptr, bytes + 1, 1, file);
 }

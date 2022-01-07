@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_12__ {int /*<<< orphan*/ * Buffer; } ;
-struct TYPE_11__ {int /*<<< orphan*/  Link; TYPE_3__ RegistryPath; TYPE_3__ FilePath; } ;
+
+
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+struct TYPE_12__ {int * Buffer; } ;
+struct TYPE_11__ {int Link; TYPE_3__ RegistryPath; TYPE_3__ FilePath; } ;
 struct TYPE_10__ {struct TYPE_10__* Flink; } ;
-typedef  TYPE_1__* PLIST_ENTRY ;
-typedef  TYPE_2__* PBOOT_DRIVER_LIST_ENTRY ;
-typedef  int /*<<< orphan*/  BOOLEAN ;
+typedef TYPE_1__* PLIST_ENTRY ;
+typedef TYPE_2__* PBOOT_DRIVER_LIST_ENTRY ;
+typedef int BOOLEAN ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BOOT_DRIVER_LIST_ENTRY ; 
- TYPE_2__* CONTAINING_RECORD (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  InsertTailList (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Link ; 
- scalar_t__ RtlEqualUnicodeString (TYPE_3__*,TYPE_3__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
+
+ int ASSERT (int ) ;
+ int BOOT_DRIVER_LIST_ENTRY ;
+ TYPE_2__* CONTAINING_RECORD (TYPE_1__*,int ,int ) ;
+ int FALSE ;
+ int InsertTailList (TYPE_1__*,int *) ;
+ int Link ;
+ scalar_t__ RtlEqualUnicodeString (TYPE_3__*,TYPE_3__*,int ) ;
+ int TRUE ;
 
 __attribute__((used)) static
 BOOLEAN
@@ -39,8 +39,8 @@ InsertInBootDriverList(
     PBOOT_DRIVER_LIST_ENTRY DriverEntry;
     PLIST_ENTRY ListEntry;
 
-    ASSERT(BootDriverEntry->FilePath.Buffer != NULL);
-    ASSERT(BootDriverEntry->RegistryPath.Buffer != NULL);
+    ASSERT(BootDriverEntry->FilePath.Buffer != ((void*)0));
+    ASSERT(BootDriverEntry->RegistryPath.Buffer != ((void*)0));
 
     for (ListEntry = BootDriverListHead->Flink;
          ListEntry != BootDriverListHead;
@@ -49,7 +49,7 @@ InsertInBootDriverList(
         DriverEntry = CONTAINING_RECORD(ListEntry,
                                         BOOT_DRIVER_LIST_ENTRY,
                                         Link);
-        if ((DriverEntry->FilePath.Buffer != NULL) &&
+        if ((DriverEntry->FilePath.Buffer != ((void*)0)) &&
             RtlEqualUnicodeString(&BootDriverEntry->FilePath,
                                   &DriverEntry->FilePath,
                                   TRUE))
@@ -57,7 +57,7 @@ InsertInBootDriverList(
             return FALSE;
         }
 
-        if ((DriverEntry->RegistryPath.Buffer != NULL) &&
+        if ((DriverEntry->RegistryPath.Buffer != ((void*)0)) &&
             RtlEqualUnicodeString(&BootDriverEntry->RegistryPath,
                                   &DriverEntry->RegistryPath,
                                   TRUE))

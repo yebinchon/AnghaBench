@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ceph_inode_info {int /*<<< orphan*/  i_ceph_lock; } ;
 
-/* Variables and functions */
- int __ceph_caps_issued (struct ceph_inode_info*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock (int /*<<< orphan*/ *) ; 
+
+
+
+struct ceph_inode_info {int i_ceph_lock; } ;
+
+
+ int __ceph_caps_issued (struct ceph_inode_info*,int *) ;
+ int spin_lock (int *) ;
+ int spin_unlock (int *) ;
 
 __attribute__((used)) static inline int ceph_caps_issued(struct ceph_inode_info *ci)
 {
-	int issued;
-	spin_lock(&ci->i_ceph_lock);
-	issued = __ceph_caps_issued(ci, NULL);
-	spin_unlock(&ci->i_ceph_lock);
-	return issued;
+ int issued;
+ spin_lock(&ci->i_ceph_lock);
+ issued = __ceph_caps_issued(ci, ((void*)0));
+ spin_unlock(&ci->i_ceph_lock);
+ return issued;
 }

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sym ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int sym ;
 struct MPContext {TYPE_1__* opts; } ;
 struct TYPE_2__ {char** osd_msg; int osd_fractions; char* osd_status_msg; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  get_current_osd_sym (struct MPContext*,char*,int) ; 
- int /*<<< orphan*/  get_percent_pos (struct MPContext*) ; 
- int /*<<< orphan*/  get_playback_time (struct MPContext*) ; 
- int /*<<< orphan*/  get_time_length (struct MPContext*) ; 
- char* mp_property_expand_escaped_string (struct MPContext*,char*) ; 
- int /*<<< orphan*/  sadd_hhmmssff (char**,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  sadd_percentage (char**,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  saddf (char**,char*,...) ; 
- int /*<<< orphan*/  talloc_free (char*) ; 
- char* talloc_strdup_append (char*,char*) ; 
+
+ int assert (int) ;
+ int get_current_osd_sym (struct MPContext*,char*,int) ;
+ int get_percent_pos (struct MPContext*) ;
+ int get_playback_time (struct MPContext*) ;
+ int get_time_length (struct MPContext*) ;
+ char* mp_property_expand_escaped_string (struct MPContext*,char*) ;
+ int sadd_hhmmssff (char**,int ,int) ;
+ int sadd_percentage (char**,int ) ;
+ int saddf (char**,char*,...) ;
+ int talloc_free (char*) ;
+ char* talloc_strdup_append (char*,char*) ;
 
 __attribute__((used)) static void sadd_osd_status(char **buffer, struct MPContext *mpctx, int level)
 {

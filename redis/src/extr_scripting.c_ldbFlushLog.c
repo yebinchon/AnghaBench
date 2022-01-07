@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  listNode ;
-typedef  int /*<<< orphan*/  list ;
 
-/* Variables and functions */
- int /*<<< orphan*/  listDelNode (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * listFirst (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int listNode ;
+typedef int list ;
+
+
+ int listDelNode (int *,int *) ;
+ int * listFirst (int *) ;
 
 void ldbFlushLog(list *log) {
     listNode *ln;
 
-    while((ln = listFirst(log)) != NULL)
+    while((ln = listFirst(log)) != ((void*)0))
         listDelNode(log,ln);
 }

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  EVP_PKEY_METHOD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR_R_MALLOC_FAILURE ; 
- int /*<<< orphan*/  EVP_F_EVP_PKEY_METH_ADD0 ; 
- int /*<<< orphan*/  EVPerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * app_pkey_methods ; 
- int /*<<< orphan*/  pmeth_cmp ; 
- int /*<<< orphan*/ * sk_EVP_PKEY_METHOD_new (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sk_EVP_PKEY_METHOD_push (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  sk_EVP_PKEY_METHOD_sort (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int EVP_PKEY_METHOD ;
+
+
+ int ERR_R_MALLOC_FAILURE ;
+ int EVP_F_EVP_PKEY_METH_ADD0 ;
+ int EVPerr (int ,int ) ;
+ int * app_pkey_methods ;
+ int pmeth_cmp ;
+ int * sk_EVP_PKEY_METHOD_new (int ) ;
+ int sk_EVP_PKEY_METHOD_push (int *,int const*) ;
+ int sk_EVP_PKEY_METHOD_sort (int *) ;
 
 int EVP_PKEY_meth_add0(const EVP_PKEY_METHOD *pmeth)
 {
-    if (app_pkey_methods == NULL) {
+    if (app_pkey_methods == ((void*)0)) {
         app_pkey_methods = sk_EVP_PKEY_METHOD_new(pmeth_cmp);
-        if (app_pkey_methods == NULL){
+        if (app_pkey_methods == ((void*)0)){
             EVPerr(EVP_F_EVP_PKEY_METH_ADD0, ERR_R_MALLOC_FAILURE);
             return 0;
         }

@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_5__ ;
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_15__ {int /*<<< orphan*/  io; } ;
-struct TYPE_14__ {int /*<<< orphan*/ * RBuffer; } ;
-struct TYPE_13__ {int /*<<< orphan*/  P; int /*<<< orphan*/  length; } ;
-struct TYPE_11__ {int /*<<< orphan*/  length; int /*<<< orphan*/  P; } ;
+
+
+typedef struct TYPE_15__ TYPE_5__ ;
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+struct TYPE_15__ {int io; } ;
+struct TYPE_14__ {int * RBuffer; } ;
+struct TYPE_13__ {int P; int length; } ;
+struct TYPE_11__ {int length; int P; } ;
 struct TYPE_12__ {TYPE_1__ RBuffer; } ;
-typedef  TYPE_2__* PISDN_ADAPTER ;
-typedef  TYPE_3__ PBUFFER ;
-typedef  TYPE_4__ ENTITY ;
-typedef  int /*<<< orphan*/  DBUFFER ;
-typedef  TYPE_5__ ADAPTER ;
+typedef TYPE_2__* PISDN_ADAPTER ;
+typedef TYPE_3__ PBUFFER ;
+typedef TYPE_4__ ENTITY ;
+typedef int DBUFFER ;
+typedef TYPE_5__ ADAPTER ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mem_in_buffer (TYPE_5__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mem_inw (TYPE_5__*,int /*<<< orphan*/ *) ; 
+
+ int mem_in_buffer (TYPE_5__*,int ,int ,int ) ;
+ int mem_inw (TYPE_5__*,int *) ;
 
 void mem_look_ahead (ADAPTER *a, PBUFFER *RBuffer, ENTITY *e)
 {

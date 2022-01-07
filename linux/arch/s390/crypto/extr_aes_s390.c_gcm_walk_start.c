@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct scatterlist {int dummy; } ;
-struct gcm_sg_walk {unsigned int walk_bytes_remain; int /*<<< orphan*/  walk; } ;
+struct gcm_sg_walk {unsigned int walk_bytes_remain; int walk; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memset (struct gcm_sg_walk*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  scatterwalk_start (int /*<<< orphan*/ *,struct scatterlist*) ; 
+
+ int memset (struct gcm_sg_walk*,int ,int) ;
+ int scatterwalk_start (int *,struct scatterlist*) ;
 
 __attribute__((used)) static void gcm_walk_start(struct gcm_sg_walk *gw, struct scatterlist *sg,
-			   unsigned int len)
+      unsigned int len)
 {
-	memset(gw, 0, sizeof(*gw));
-	gw->walk_bytes_remain = len;
-	scatterwalk_start(&gw->walk, sg);
+ memset(gw, 0, sizeof(*gw));
+ gw->walk_bytes_remain = len;
+ scatterwalk_start(&gw->walk, sg);
 }

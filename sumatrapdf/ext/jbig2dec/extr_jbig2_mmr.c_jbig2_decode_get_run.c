@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mmr_table_node ;
-typedef  int /*<<< orphan*/  Jbig2MmrCtx ;
-typedef  int /*<<< orphan*/  Jbig2Ctx ;
 
-/* Variables and functions */
- int ERROR ; 
- int /*<<< orphan*/  JBIG2_SEVERITY_FATAL ; 
- int UNCOMPRESSED ; 
- int ZEROES ; 
- int jbig2_decode_get_code (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int) ; 
- int jbig2_error (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,char*) ; 
+
+
+
+typedef int mmr_table_node ;
+typedef int Jbig2MmrCtx ;
+typedef int Jbig2Ctx ;
+
+
+ int ERROR ;
+ int JBIG2_SEVERITY_FATAL ;
+ int UNCOMPRESSED ;
+ int ZEROES ;
+ int jbig2_decode_get_code (int *,int const*,int) ;
+ int jbig2_error (int *,int ,int,char*) ;
 
 __attribute__((used)) static int
 jbig2_decode_get_run(Jbig2Ctx *ctx, Jbig2MmrCtx *mmr, const mmr_table_node *table, int initial_bits)

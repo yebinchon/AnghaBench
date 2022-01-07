@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  SOCKET ;
-typedef  char* LPSTR ;
-typedef  int INT ;
-typedef  scalar_t__ HANDLE ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CloseHandle (scalar_t__) ; 
- scalar_t__ CreateFileW (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  FILE_ATTRIBUTE_NORMAL ; 
- int /*<<< orphan*/  GENERIC_READ ; 
- int GetFileSize (scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GetLastError () ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  GetSystemDirectoryW (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ GetTickCount () ; 
- scalar_t__ HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- scalar_t__ INVALID_HANDLE_VALUE ; 
- int /*<<< orphan*/  LOG_FILE ; 
- int /*<<< orphan*/  LogEvent (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MAX_PATH ; 
- int /*<<< orphan*/  OPEN_EXISTING ; 
- int /*<<< orphan*/  ReadFile (scalar_t__,char*,int,int*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SendQuote (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  TRUE ; 
- int rand () ; 
- int /*<<< orphan*/  srand (unsigned int) ; 
- int /*<<< orphan*/  szFilePath ; 
- int /*<<< orphan*/  wcscat (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int WCHAR ;
+typedef int SOCKET ;
+typedef char* LPSTR ;
+typedef int INT ;
+typedef scalar_t__ HANDLE ;
+typedef int DWORD ;
+typedef int BOOL ;
+
+
+ int CloseHandle (scalar_t__) ;
+ scalar_t__ CreateFileW (int *,int ,int ,int *,int ,int ,int *) ;
+ int FALSE ;
+ int FILE_ATTRIBUTE_NORMAL ;
+ int GENERIC_READ ;
+ int GetFileSize (scalar_t__,int *) ;
+ int GetLastError () ;
+ int GetProcessHeap () ;
+ int GetSystemDirectoryW (int *,int ) ;
+ scalar_t__ GetTickCount () ;
+ scalar_t__ HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,char*) ;
+ scalar_t__ INVALID_HANDLE_VALUE ;
+ int LOG_FILE ;
+ int LogEvent (char*,int ,int ,int ) ;
+ int MAX_PATH ;
+ int OPEN_EXISTING ;
+ int ReadFile (scalar_t__,char*,int,int*,int *) ;
+ int SendQuote (int ,char*) ;
+ int TRUE ;
+ int rand () ;
+ int srand (unsigned int) ;
+ int szFilePath ;
+ int wcscat (int *,int ) ;
 
 __attribute__((used)) static BOOL
 RetrieveQuote(SOCKET sock)
@@ -68,19 +68,19 @@ RetrieveQuote(SOCKET sock)
     hFile = CreateFileW(szFullPath,
                         GENERIC_READ,
                         0,
-                        NULL,
+                        ((void*)0),
                         OPEN_EXISTING,
                         FILE_ATTRIBUTE_NORMAL,
-                        NULL);
+                        ((void*)0));
     if (hFile == INVALID_HANDLE_VALUE)
     {
         LogEvent(L"QOTD: Error opening quotes file", GetLastError(), 0, LOG_FILE);
     }
     else
     {
-        DWORD dwSize = GetFileSize(hFile, NULL);
+        DWORD dwSize = GetFileSize(hFile, ((void*)0));
         lpQuotes = (LPSTR)HeapAlloc(GetProcessHeap(), 0, dwSize + 1);
-        if (!lpQuotes) 
+        if (!lpQuotes)
         {
             CloseHandle(hFile);
             return FALSE;
@@ -90,7 +90,7 @@ RetrieveQuote(SOCKET sock)
                  lpQuotes,
                  dwSize,
                  &dwBytesRead,
-                 NULL);
+                 ((void*)0));
         CloseHandle(hFile);
 
         lpQuotes[dwSize] = 0;
@@ -109,15 +109,15 @@ RetrieveQuote(SOCKET sock)
             lpStr++;
         }
 
-        /* pick a random quote */
+
         srand((unsigned int) GetTickCount());
         quoteNum = rand() % NumQuotes;
 
-        /* retrieve the full quote */
+
         lpStr = lpQuotes;
         for (i = 1; i <= quoteNum; i++)
         {
-            /* move past preceding quote */
+
             lpStr++;
 
             if (i == quoteNum)
@@ -129,7 +129,7 @@ RetrieveQuote(SOCKET sock)
 
                 *lpStr = 0;
 
-                /* send the quote */
+
                 if (!SendQuote(sock, lpStart))
                     LogEvent(L"QOTD: Error sending data", 0, 0, LOG_FILE);
                 break;
@@ -139,7 +139,7 @@ RetrieveQuote(SOCKET sock)
                 while (*lpStr != '%' && *lpStr != '\0')
                     lpStr++;
 
-                /* move past % and RN */
+
                 lpStr += 2;
             }
         }

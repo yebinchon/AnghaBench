@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct memcache_server_functions {TYPE_1__* info; } ;
-struct connection {int fd; int pending_queries; int status; int /*<<< orphan*/ * extra; } ;
-struct TYPE_2__ {int /*<<< orphan*/  t_timeouts; int /*<<< orphan*/  a_timeouts; int /*<<< orphan*/  mc_proxy_inbound; } ;
+struct connection {int fd; int pending_queries; int status; int * extra; } ;
+struct TYPE_2__ {int t_timeouts; int a_timeouts; int mc_proxy_inbound; } ;
 
-/* Variables and functions */
- TYPE_1__* CC ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ conn_wait_net ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,int,int) ; 
- int mcp_wakeup (struct connection*) ; 
- int /*<<< orphan*/  stderr ; 
- int verbosity ; 
+
+ TYPE_1__* CC ;
+ int assert (int) ;
+ scalar_t__ conn_wait_net ;
+ int fprintf (int ,char*,int,int,int) ;
+ int mcp_wakeup (struct connection*) ;
+ int stderr ;
+ int verbosity ;
 
 int mcp_alarm (struct connection *c) {
   if (verbosity > 1) {
@@ -33,7 +33,7 @@ int mcp_alarm (struct connection *c) {
   assert (CC && &CC->mc_proxy_inbound == c->extra);
   CC->a_timeouts ++;
   CC->t_timeouts ++;
-  
+
   assert (c->status == conn_wait_net);
   return mcp_wakeup (c);
 }

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  if_ctx_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INIT_DEBUGOUT (char*) ; 
- int /*<<< orphan*/  ixv_free_pci_resources (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int if_ctx_t ;
+
+
+ int INIT_DEBUGOUT (char*) ;
+ int ixv_free_pci_resources (int ) ;
 
 __attribute__((used)) static int
 ixv_if_detach(if_ctx_t ctx)
 {
-	INIT_DEBUGOUT("ixv_detach: begin");
+ INIT_DEBUGOUT("ixv_detach: begin");
 
-	ixv_free_pci_resources(ctx);
+ ixv_free_pci_resources(ctx);
 
-	return (0);
+ return (0);
 }

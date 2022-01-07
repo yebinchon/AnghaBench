@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_8__ {int input; scalar_t__ train; } ;
-typedef  TYPE_1__ network ;
-struct TYPE_9__ {int outputs; int batch; int steps; int state; int prev_state; int output; int z_cpu; int r_cpu; int forgot_state; int h_cpu; int inputs; scalar_t__ tanh; int /*<<< orphan*/  delta; struct TYPE_9__* wh; struct TYPE_9__* wr; struct TYPE_9__* wz; struct TYPE_9__* uh; struct TYPE_9__* ur; struct TYPE_9__* uz; } ;
-typedef  TYPE_2__ layer ;
+typedef TYPE_1__ network ;
+struct TYPE_9__ {int outputs; int batch; int steps; int state; int prev_state; int output; int z_cpu; int r_cpu; int forgot_state; int h_cpu; int inputs; scalar_t__ tanh; int delta; struct TYPE_9__* wh; struct TYPE_9__* wr; struct TYPE_9__* wz; struct TYPE_9__* uh; struct TYPE_9__* ur; struct TYPE_9__* uz; } ;
+typedef TYPE_2__ layer ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOGISTIC ; 
- int /*<<< orphan*/  TANH ; 
- int /*<<< orphan*/  activate_array (int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  axpy_cpu (int,int,int,int,int,int) ; 
- int /*<<< orphan*/  copy_cpu (int,int,int,int,int) ; 
- int /*<<< orphan*/  fill_cpu (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  forward_connected_layer (TYPE_2__,TYPE_1__) ; 
- int /*<<< orphan*/  increment_layer (TYPE_2__*,int) ; 
- int /*<<< orphan*/  mul_cpu (int,int,int,int,int) ; 
- int /*<<< orphan*/  weighted_sum_cpu (int,int,int,int,int) ; 
+
+ int LOGISTIC ;
+ int TANH ;
+ int activate_array (int,int,int ) ;
+ int axpy_cpu (int,int,int,int,int,int) ;
+ int copy_cpu (int,int,int,int,int) ;
+ int fill_cpu (int,int ,int ,int) ;
+ int forward_connected_layer (TYPE_2__,TYPE_1__) ;
+ int increment_layer (TYPE_2__*,int) ;
+ int mul_cpu (int,int,int,int,int) ;
+ int weighted_sum_cpu (int,int,int,int,int) ;
 
 void forward_gru_layer(layer l, network net)
 {

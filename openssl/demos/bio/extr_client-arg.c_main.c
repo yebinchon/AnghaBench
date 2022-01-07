@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  SSL_CTX ;
-typedef  int /*<<< orphan*/  SSL_CONF_CTX ;
-typedef  int /*<<< orphan*/  SSL ;
-typedef  int /*<<< orphan*/  BIO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_NOCLOSE ; 
- scalar_t__ BIO_do_connect (int /*<<< orphan*/ *) ; 
- scalar_t__ BIO_do_handshake (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BIO_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BIO_free_all (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BIO_get_ssl (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/ * BIO_new_fp (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * BIO_new_ssl_connect (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BIO_puts (int /*<<< orphan*/ *,char*) ; 
- int BIO_read (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  BIO_set_conn_hostname (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  BIO_write (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  ERR_print_errors_fp (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SSL_CONF_CTX_finish (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SSL_CONF_CTX_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * SSL_CONF_CTX_new () ; 
- int /*<<< orphan*/  SSL_CONF_CTX_set_flags (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SSL_CONF_CTX_set_ssl_ctx (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SSL_CONF_FLAG_CLIENT ; 
- int SSL_CONF_cmd_argv (int /*<<< orphan*/ *,int*,char***) ; 
- int /*<<< orphan*/ * SSL_CTX_new (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SSL_MODE_AUTO_RETRY ; 
- int /*<<< orphan*/  SSL_set_mode (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TLS_client_method () ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  stdout ; 
- scalar_t__ strcmp (char*,char*) ; 
+
+
+
+typedef int SSL_CTX ;
+typedef int SSL_CONF_CTX ;
+typedef int SSL ;
+typedef int BIO ;
+
+
+ int BIO_NOCLOSE ;
+ scalar_t__ BIO_do_connect (int *) ;
+ scalar_t__ BIO_do_handshake (int *) ;
+ int BIO_free (int *) ;
+ int BIO_free_all (int *) ;
+ int BIO_get_ssl (int *,int **) ;
+ int * BIO_new_fp (int ,int ) ;
+ int * BIO_new_ssl_connect (int *) ;
+ int BIO_puts (int *,char*) ;
+ int BIO_read (int *,char*,int) ;
+ int BIO_set_conn_hostname (int *,char const*) ;
+ int BIO_write (int *,char*,int) ;
+ int ERR_print_errors_fp (int ) ;
+ int SSL_CONF_CTX_finish (int *) ;
+ int SSL_CONF_CTX_free (int *) ;
+ int * SSL_CONF_CTX_new () ;
+ int SSL_CONF_CTX_set_flags (int *,int ) ;
+ int SSL_CONF_CTX_set_ssl_ctx (int *,int *) ;
+ int SSL_CONF_FLAG_CLIENT ;
+ int SSL_CONF_cmd_argv (int *,int*,char***) ;
+ int * SSL_CTX_new (int ) ;
+ int SSL_MODE_AUTO_RETRY ;
+ int SSL_set_mode (int *,int ) ;
+ int TLS_client_method () ;
+ int fprintf (int ,char*,...) ;
+ int stderr ;
+ int stdout ;
+ scalar_t__ strcmp (char*,char*) ;
 
 int main(int argc, char **argv)
 {
-    BIO *sbio = NULL, *out = NULL;
+    BIO *sbio = ((void*)0), *out = ((void*)0);
     int len;
     char tmpbuf[1024];
     SSL_CTX *ctx;
@@ -63,7 +63,7 @@ int main(int argc, char **argv)
     SSL_CONF_CTX_set_ssl_ctx(cctx, ctx);
     while (*args && **args == '-') {
         int rv;
-        /* Parse standard arguments */
+
         rv = SSL_CONF_cmd_argv(cctx, &nargs, &args);
         if (rv == -3) {
             fprintf(stderr, "Missing argument for %s\n", *args);
@@ -74,13 +74,13 @@ int main(int argc, char **argv)
             ERR_print_errors_fp(stderr);
             goto end;
         }
-        /* If rv > 0 we processed something so proceed to next arg */
+
         if (rv > 0)
             continue;
-        /* Otherwise application specific argument processing */
+
         if (strcmp(*args, "-connect") == 0) {
             connect_str = args[1];
-            if (connect_str == NULL) {
+            if (connect_str == ((void*)0)) {
                 fprintf(stderr, "Missing -connect argument\n");
                 goto end;
             }
@@ -99,11 +99,11 @@ int main(int argc, char **argv)
         goto end;
     }
 
-    /*
-     * We'd normally set some stuff like the verify paths and * mode here
-     * because as things stand this will connect to * any server whose
-     * certificate is signed by any CA.
-     */
+
+
+
+
+
 
     sbio = BIO_new_ssl_connect(ctx);
 
@@ -114,10 +114,10 @@ int main(int argc, char **argv)
         goto end;
     }
 
-    /* Don't want any retries */
+
     SSL_set_mode(ssl, SSL_MODE_AUTO_RETRY);
 
-    /* We might want to do other things with ssl here */
+
 
     BIO_set_conn_hostname(sbio, connect_str);
 
@@ -134,7 +134,7 @@ int main(int argc, char **argv)
         goto end;
     }
 
-    /* Could examine ssl here to get connection info */
+
 
     BIO_puts(sbio, "GET / HTTP/1.0\n\n");
     for (;;) {

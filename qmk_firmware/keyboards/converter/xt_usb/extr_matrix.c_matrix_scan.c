@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  matrix_break (int) ; 
- int /*<<< orphan*/  matrix_make (int) ; 
- int /*<<< orphan*/  matrix_scan_quantum () ; 
- int move_e0code (int) ; 
- int /*<<< orphan*/  xprintf (char*,int) ; 
- int xt_host_recv () ; 
+
+
+
+typedef int uint8_t ;
+
+
+ int matrix_break (int) ;
+ int matrix_make (int) ;
+ int matrix_scan_quantum () ;
+ int move_e0code (int) ;
+ int xprintf (char*,int) ;
+ int xt_host_recv () ;
 
 uint8_t matrix_scan(void)
 {
     static enum {
         XT_STATE_INIT,
         XT_STATE_E0,
-        // Pause: E1 1D 45, E1 9D C5
+
         XT_STATE_E1,
         XT_STATE_E1_1D,
         XT_STATE_E1_9D,
@@ -57,7 +57,7 @@ uint8_t matrix_scan(void)
                 case 0xAA:
                 case 0x36:
                 case 0xB6:
-                    //ignore fake shift
+
                     state = XT_STATE_INIT;
                     break;
                 default:

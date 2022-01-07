@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sha256_hmac ;
-typedef  int /*<<< orphan*/  sha256 ;
-typedef  int /*<<< orphan*/  len ;
-typedef  int /*<<< orphan*/  buf_hmac ;
-typedef  int /*<<< orphan*/  buf ;
-typedef  int ULONG ;
-typedef  int /*<<< orphan*/  UCHAR ;
-typedef  char* NTSTATUS ;
-typedef  int /*<<< orphan*/ * BCRYPT_HASH_HANDLE ;
-typedef  int /*<<< orphan*/ * BCRYPT_ALG_HANDLE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BCRYPT_ALG_HANDLE_HMAC_FLAG ; 
- int /*<<< orphan*/ * BCRYPT_OBJECT_LENGTH ; 
- int /*<<< orphan*/  BCRYPT_SHA256_ALGORITHM ; 
- char* BCryptCloseAlgorithmProvider (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- char* BCryptCreateHash (int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- char* BCryptDestroyHash (int /*<<< orphan*/ *) ; 
- char* BCryptFinishHash (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- char* BCryptGetProperty (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int*,int /*<<< orphan*/ ) ; 
- char* BCryptHashData (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- char* BCryptOpenAlgorithmProvider (int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MS_PRIMITIVE_PROVIDER ; 
- char* STATUS_BUFFER_TOO_SMALL ; 
- char* STATUS_INVALID_HANDLE ; 
- char* STATUS_INVALID_PARAMETER ; 
- char* STATUS_SUCCESS ; 
- int /*<<< orphan*/  format_hash (int /*<<< orphan*/ *,int,char*) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  strcmp (char*,char const*) ; 
- int /*<<< orphan*/  test_alg_name (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  test_hash_length (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int sha256_hmac ;
+typedef int sha256 ;
+typedef int len ;
+typedef int buf_hmac ;
+typedef int buf ;
+typedef int ULONG ;
+typedef int UCHAR ;
+typedef char* NTSTATUS ;
+typedef int * BCRYPT_HASH_HANDLE ;
+typedef int * BCRYPT_ALG_HANDLE ;
+
+
+ int BCRYPT_ALG_HANDLE_HMAC_FLAG ;
+ int * BCRYPT_OBJECT_LENGTH ;
+ int BCRYPT_SHA256_ALGORITHM ;
+ char* BCryptCloseAlgorithmProvider (int *,int ) ;
+ char* BCryptCreateHash (int *,int **,int *,int,int *,int,int ) ;
+ char* BCryptDestroyHash (int *) ;
+ char* BCryptFinishHash (int *,int *,int,int ) ;
+ char* BCryptGetProperty (int *,int *,int *,int,int*,int ) ;
+ char* BCryptHashData (int *,int *,int,int ) ;
+ char* BCryptOpenAlgorithmProvider (int **,int ,int ,int ) ;
+ int MS_PRIMITIVE_PROVIDER ;
+ char* STATUS_BUFFER_TOO_SMALL ;
+ char* STATUS_INVALID_HANDLE ;
+ char* STATUS_INVALID_PARAMETER ;
+ char* STATUS_SUCCESS ;
+ int format_hash (int *,int,char*) ;
+ int memset (int *,int ,int) ;
+ int ok (int,char*,...) ;
+ int strcmp (char*,char const*) ;
+ int test_alg_name (int *,char*) ;
+ int test_hash_length (int *,int) ;
 
 __attribute__((used)) static void test_sha256(void)
 {
@@ -57,25 +57,25 @@ __attribute__((used)) static void test_sha256(void)
     char str[65];
     NTSTATUS ret;
 
-    alg = NULL;
+    alg = ((void*)0);
     ret = BCryptOpenAlgorithmProvider(&alg, BCRYPT_SHA256_ALGORITHM, MS_PRIMITIVE_PROVIDER, 0);
     ok(ret == STATUS_SUCCESS, "got %08x\n", ret);
-    ok(alg != NULL, "alg not set\n");
+    ok(alg != ((void*)0), "alg not set\n");
 
     len = size = 0xdeadbeef;
-    ret = BCryptGetProperty(NULL, BCRYPT_OBJECT_LENGTH, (UCHAR *)&len, sizeof(len), &size, 0);
+    ret = BCryptGetProperty(((void*)0), BCRYPT_OBJECT_LENGTH, (UCHAR *)&len, sizeof(len), &size, 0);
     ok(ret == STATUS_INVALID_HANDLE, "got %08x\n", ret);
 
     len = size = 0xdeadbeef;
-    ret = BCryptGetProperty(alg, NULL, (UCHAR *)&len, sizeof(len), &size, 0);
+    ret = BCryptGetProperty(alg, ((void*)0), (UCHAR *)&len, sizeof(len), &size, 0);
     ok(ret == STATUS_INVALID_PARAMETER, "got %08x\n", ret);
 
     len = size = 0xdeadbeef;
-    ret = BCryptGetProperty(alg, BCRYPT_OBJECT_LENGTH, (UCHAR *)&len, sizeof(len), NULL, 0);
+    ret = BCryptGetProperty(alg, BCRYPT_OBJECT_LENGTH, (UCHAR *)&len, sizeof(len), ((void*)0), 0);
     ok(ret == STATUS_INVALID_PARAMETER, "got %08x\n", ret);
 
     len = size = 0xdeadbeef;
-    ret = BCryptGetProperty(alg, BCRYPT_OBJECT_LENGTH, NULL, sizeof(len), &size, 0);
+    ret = BCryptGetProperty(alg, BCRYPT_OBJECT_LENGTH, ((void*)0), sizeof(len), &size, 0);
     ok(ret == STATUS_SUCCESS, "got %08x\n", ret);
     ok(size == sizeof(len), "got %u\n", size);
 
@@ -94,13 +94,13 @@ __attribute__((used)) static void test_sha256(void)
     test_hash_length(alg, 32);
     test_alg_name(alg, "SHA256");
 
-    hash = NULL;
+    hash = ((void*)0);
     len = sizeof(buf);
-    ret = BCryptCreateHash(alg, &hash, buf, len, NULL, 0, 0);
+    ret = BCryptCreateHash(alg, &hash, buf, len, ((void*)0), 0, 0);
     ok(ret == STATUS_SUCCESS, "got %08x\n", ret);
-    ok(hash != NULL, "hash not set\n");
+    ok(hash != ((void*)0), "hash not set\n");
 
-    ret = BCryptHashData(hash, NULL, 0, 0);
+    ret = BCryptHashData(hash, ((void*)0), 0, 0);
     ok(ret == STATUS_SUCCESS, "got %08x\n", ret);
 
     ret = BCryptHashData(hash, (UCHAR *)"test", sizeof("test"), 0);
@@ -121,16 +121,16 @@ __attribute__((used)) static void test_sha256(void)
     ret = BCryptCloseAlgorithmProvider(alg, 0);
     ok(ret == STATUS_SUCCESS, "got %08x\n", ret);
 
-    alg = NULL;
+    alg = ((void*)0);
     ret = BCryptOpenAlgorithmProvider(&alg, BCRYPT_SHA256_ALGORITHM, MS_PRIMITIVE_PROVIDER, BCRYPT_ALG_HANDLE_HMAC_FLAG);
     ok(ret == STATUS_SUCCESS, "got %08x\n", ret);
-    ok(alg != NULL, "alg not set\n");
+    ok(alg != ((void*)0), "alg not set\n");
 
-    hash = NULL;
+    hash = ((void*)0);
     len = sizeof(buf_hmac);
     ret = BCryptCreateHash(alg, &hash, buf_hmac, len, (UCHAR *)"key", sizeof("key"), 0);
     ok(ret == STATUS_SUCCESS, "got %08x\n", ret);
-    ok(hash != NULL, "hash not set\n");
+    ok(hash != ((void*)0), "hash not set\n");
 
     ret = BCryptHashData(hash, (UCHAR *)"test", sizeof("test"), 0);
     ok(ret == STATUS_SUCCESS, "got %08x\n", ret);

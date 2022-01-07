@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t uint32_t ;
-struct TYPE_5__ {size_t numOfFqids; scalar_t__ fqidBase; int /*<<< orphan*/  h_Qm; int /*<<< orphan*/  shadowMode; struct TYPE_5__** p_Fqs; int /*<<< orphan*/  h_QmPortal; } ;
-typedef  TYPE_1__ t_QmFqr ;
-typedef  scalar_t__ t_Handle ;
-typedef  int /*<<< orphan*/  t_Error ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERROR_CODE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  E_INVALID_HANDLE ; 
- int /*<<< orphan*/  E_OK ; 
- int /*<<< orphan*/  QmFqidPut (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  XX_Free (TYPE_1__**) ; 
- int /*<<< orphan*/  XX_FreeSmart (TYPE_1__*) ; 
- int /*<<< orphan*/  qm_free_fq (int /*<<< orphan*/ ,TYPE_1__*) ; 
 
-t_Error  QM_FQR_Free(t_Handle h_QmFqr)
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef size_t uint32_t ;
+struct TYPE_5__ {size_t numOfFqids; scalar_t__ fqidBase; int h_Qm; int shadowMode; struct TYPE_5__** p_Fqs; int h_QmPortal; } ;
+typedef TYPE_1__ t_QmFqr ;
+typedef scalar_t__ t_Handle ;
+typedef int t_Error ;
+
+
+ int ERROR_CODE (int ) ;
+ int E_INVALID_HANDLE ;
+ int E_OK ;
+ int QmFqidPut (int ,scalar_t__) ;
+ int XX_Free (TYPE_1__**) ;
+ int XX_FreeSmart (TYPE_1__*) ;
+ int qm_free_fq (int ,TYPE_1__*) ;
+
+t_Error QM_FQR_Free(t_Handle h_QmFqr)
 {
-    t_QmFqr     *p_QmFqr    = (t_QmFqr *)h_QmFqr;
-    uint32_t    i;
+    t_QmFqr *p_QmFqr = (t_QmFqr *)h_QmFqr;
+    uint32_t i;
 
     if (!p_QmFqr)
         return ERROR_CODE(E_INVALID_HANDLE);

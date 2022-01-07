@@ -1,31 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int MAX_MISMATCHED_WORDS ; 
- int /*<<< orphan*/  allowed_deleted_by_rate ; 
- int atoi (int /*<<< orphan*/ ) ; 
- int binlog_check_mode ; 
- int /*<<< orphan*/  creation_date ; 
- int hashtags_enabled ; 
- int import_only_mode ; 
- int /*<<< orphan*/  optarg ; 
- int /*<<< orphan*/  return_empty_record_on_error ; 
- int tag_owner ; 
- int universal ; 
- int use_stemmer ; 
- int word_split_utf8 ; 
- int wordfreqs_enabled ; 
+ int MAX_MISMATCHED_WORDS ;
+ int allowed_deleted_by_rate ;
+ int atoi (int ) ;
+ int binlog_check_mode ;
+ int creation_date ;
+ int hashtags_enabled ;
+ int import_only_mode ;
+ int optarg ;
+ int return_empty_record_on_error ;
+ int tag_owner ;
+ int universal ;
+ int use_stemmer ;
+ int word_split_utf8 ;
+ int wordfreqs_enabled ;
 
 int f_parse_option (int val) {
   int x;

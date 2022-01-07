@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * gssize ;
-typedef  int /*<<< orphan*/  GstMemory ;
 
-/* Variables and functions */
- int /*<<< orphan*/  VLC_UNUSED (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int * gssize ;
+typedef int GstMemory ;
+
+
+ int VLC_UNUSED (int *) ;
 
 __attribute__((used)) static GstMemory* gst_vlc_picture_plane_copy(
         GstMemory *p_mem, gssize i_offset, gssize i_size )
@@ -22,5 +22,5 @@ __attribute__((used)) static GstMemory* gst_vlc_picture_plane_copy(
     VLC_UNUSED( p_mem );
     VLC_UNUSED( i_offset );
     VLC_UNUSED( i_size );
-    return NULL;
+    return ((void*)0);
 }

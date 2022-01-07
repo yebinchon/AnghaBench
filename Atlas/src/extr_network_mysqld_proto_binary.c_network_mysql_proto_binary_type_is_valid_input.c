@@ -1,56 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  gboolean ;
-typedef  enum enum_field_types { ____Placeholder_enum_field_types } enum_field_types ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
-#define  MYSQL_TYPE_BLOB 140 
-#define  MYSQL_TYPE_DATE 139 
-#define  MYSQL_TYPE_DATETIME 138 
-#define  MYSQL_TYPE_DOUBLE 137 
-#define  MYSQL_TYPE_FLOAT 136 
-#define  MYSQL_TYPE_LONG 135 
-#define  MYSQL_TYPE_LONGLONG 134 
-#define  MYSQL_TYPE_NULL 133 
-#define  MYSQL_TYPE_SHORT 132 
-#define  MYSQL_TYPE_STRING 131 
-#define  MYSQL_TYPE_TIME 130 
-#define  MYSQL_TYPE_TIMESTAMP 129 
-#define  MYSQL_TYPE_TINY 128 
- int /*<<< orphan*/  TRUE ; 
+
+
+
+typedef int gboolean ;
+typedef enum enum_field_types { ____Placeholder_enum_field_types } enum_field_types ;
+
+
+ int FALSE ;
+ int TRUE ;
 
 gboolean network_mysql_proto_binary_type_is_valid_input(enum enum_field_types field_type) {
-	switch (field_type) {
-	case MYSQL_TYPE_TINY:
-	case MYSQL_TYPE_SHORT:
-	case MYSQL_TYPE_LONG:
-	case MYSQL_TYPE_LONGLONG:
+ switch (field_type) {
+ case 128:
+ case 132:
+ case 135:
+ case 134:
 
-	case MYSQL_TYPE_FLOAT:
-	case MYSQL_TYPE_DOUBLE:
+ case 136:
+ case 137:
 
-	case MYSQL_TYPE_BLOB:
-	case MYSQL_TYPE_STRING:
+ case 140:
+ case 131:
 
-	case MYSQL_TYPE_DATE:
-	case MYSQL_TYPE_DATETIME:
-	case MYSQL_TYPE_TIME:
-	case MYSQL_TYPE_TIMESTAMP:
+ case 139:
+ case 138:
+ case 130:
+ case 129:
 
-	case MYSQL_TYPE_NULL:
-		return TRUE;
-	default:
-		return FALSE;
-	}
+ case 133:
+  return TRUE;
+ default:
+  return FALSE;
+ }
 }

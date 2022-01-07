@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  BN_MONT_CTX ;
-typedef  int /*<<< orphan*/  BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BN_MONT_CTX_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BN_MONT_CTX_new () ; 
- int /*<<< orphan*/  BN_MONT_CTX_set (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BN_bntest_rand (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/ * BN_dup (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_from_montgomery (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BN_hex2bn (int /*<<< orphan*/ **,char*) ; 
- int /*<<< orphan*/  BN_mod_exp_mont (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_mod_exp_mont_consttime (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_mod_exp_simple (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BN_mod_mul_montgomery (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * BN_new () ; 
- int /*<<< orphan*/  BN_one (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_zero (int /*<<< orphan*/ *) ; 
- scalar_t__ TEST_BN_eq (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TEST_BN_eq_one (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TEST_BN_eq_zero (int /*<<< orphan*/ *) ; 
- scalar_t__ TEST_false (int /*<<< orphan*/ ) ; 
- scalar_t__ TEST_ptr (int /*<<< orphan*/ *) ; 
- scalar_t__ TEST_true (int /*<<< orphan*/ ) ; 
- char const** bn1strings ; 
- char const** bn2strings ; 
- int /*<<< orphan*/  ctx ; 
- int /*<<< orphan*/  parse_bigBN (int /*<<< orphan*/ **,char const**) ; 
+
+
+
+typedef int BN_MONT_CTX ;
+typedef int BIGNUM ;
+
+
+ int BN_MONT_CTX_free (int *) ;
+ int * BN_MONT_CTX_new () ;
+ int BN_MONT_CTX_set (int *,int *,int ) ;
+ int BN_bntest_rand (int *,int,int ,int) ;
+ int * BN_dup (int *) ;
+ int BN_free (int *) ;
+ int BN_from_montgomery (int *,int *,int *,int ) ;
+ int BN_hex2bn (int **,char*) ;
+ int BN_mod_exp_mont (int *,int *,int *,int *,int ,int *) ;
+ int BN_mod_exp_mont_consttime (int *,int *,int *,int *,int ,int *) ;
+ int BN_mod_exp_simple (int *,int *,int *,int *,int ) ;
+ int BN_mod_mul_montgomery (int *,int *,int *,int *,int ) ;
+ int * BN_new () ;
+ int BN_one (int *) ;
+ int BN_zero (int *) ;
+ scalar_t__ TEST_BN_eq (int *,int *) ;
+ int TEST_BN_eq_one (int *) ;
+ int TEST_BN_eq_zero (int *) ;
+ scalar_t__ TEST_false (int ) ;
+ scalar_t__ TEST_ptr (int *) ;
+ scalar_t__ TEST_true (int ) ;
+ char const** bn1strings ;
+ char const** bn2strings ;
+ int ctx ;
+ int parse_bigBN (int **,char const**) ;
 
 __attribute__((used)) static int test_modexp_mont5(void)
 {
-    BIGNUM *a = NULL, *p = NULL, *m = NULL, *d = NULL, *e = NULL;
-    BIGNUM *b = NULL, *n = NULL, *c = NULL;
-    BN_MONT_CTX *mont = NULL;
+    BIGNUM *a = ((void*)0), *p = ((void*)0), *m = ((void*)0), *d = ((void*)0), *e = ((void*)0);
+    BIGNUM *b = ((void*)0), *n = ((void*)0), *c = ((void*)0);
+    BN_MONT_CTX *mont = ((void*)0);
     int st = 0;
 
     if (!TEST_ptr(a = BN_new())
@@ -58,19 +58,19 @@ __attribute__((used)) static int test_modexp_mont5(void)
             || !TEST_ptr(mont = BN_MONT_CTX_new()))
         goto err;
 
-    /* must be odd for montgomery */
+
     if (!(TEST_true(BN_bntest_rand(m, 1024, 0, 1))
-            /* Zero exponent */
+
             && TEST_true(BN_bntest_rand(a, 1024, 0, 0))))
         goto err;
     BN_zero(p);
 
-    if (!TEST_true(BN_mod_exp_mont_consttime(d, a, p, m, ctx, NULL)))
+    if (!TEST_true(BN_mod_exp_mont_consttime(d, a, p, m, ctx, ((void*)0))))
         goto err;
     if (!TEST_BN_eq_one(d))
         goto err;
 
-    /* Regression test for carry bug in mulx4x_mont */
+
     if (!(TEST_true(BN_hex2bn(&a,
         "7878787878787878787878787878787878787878787878787878787878787878"
         "7878787878787878787878787878787878787878787878787878787878787878"
@@ -94,7 +94,7 @@ __attribute__((used)) static int test_modexp_mont5(void)
             && TEST_BN_eq(c, d)))
         goto err;
 
-    /* Regression test for carry bug in sqr[x]8x_mont */
+
     if (!(TEST_true(parse_bigBN(&n, bn1strings))
             && TEST_true(parse_bigBN(&a, bn2strings))))
         goto err;
@@ -106,7 +106,7 @@ __attribute__((used)) static int test_modexp_mont5(void)
             && TEST_BN_eq(c, d)))
         goto err;
 
-    /* Regression test for carry bug in bn_sqrx8x_internal */
+
     {
         static const char *ahex[] = {
                       "FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
@@ -121,7 +121,7 @@ __attribute__((used)) static int test_modexp_mont5(void)
             "00FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00FCFD",
             "FCFFFFFFFFFF000000000000000000FF0302030000000000FFFFFFFFFFFFFFFF",
             "FF00FCFDFDFF030202FF00000000FFFFFFFFFFFFFFFFFF00FCFDFCFFFFFFFFFF",
-            NULL
+            ((void*)0)
         };
         static const char *nhex[] = {
                       "FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
@@ -136,7 +136,7 @@ __attribute__((used)) static int test_modexp_mont5(void)
             "00FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
             "FFFFFFFFFFFF000000000000000000000000000000000000FFFFFFFFFFFFFFFF",
             "FFFFFFFFFFFFFFFFFFFF00000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
-            NULL
+            ((void*)0)
         };
 
         if (!(TEST_true(parse_bigBN(&a, ahex))
@@ -153,7 +153,7 @@ __attribute__((used)) static int test_modexp_mont5(void)
             || !TEST_BN_eq(c, d))
         goto err;
 
-    /* Regression test for bug in BN_from_montgomery_word */
+
     if (!(TEST_true(BN_hex2bn(&a,
         "FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
         "FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
@@ -165,7 +165,7 @@ __attribute__((used)) static int test_modexp_mont5(void)
         && TEST_false(BN_mod_mul_montgomery(d, a, a, mont, ctx))))
         goto err;
 
-    /* Regression test for bug in rsaz_1024_mul_avx2 */
+
     if (!(TEST_true(BN_hex2bn(&a,
         "FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
         "FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
@@ -187,10 +187,10 @@ __attribute__((used)) static int test_modexp_mont5(void)
         && TEST_BN_eq(c, d)))
         goto err;
 
-    /*
-     * rsaz_1024_mul_avx2 expects fully-reduced inputs.
-     * BN_mod_exp_mont_consttime should reduce the input first.
-     */
+
+
+
+
     if (!(TEST_true(BN_hex2bn(&a,
         "FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
         "FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
@@ -213,31 +213,31 @@ __attribute__((used)) static int test_modexp_mont5(void)
     if (!TEST_BN_eq(c, d))
         goto err;
 
-    /* Zero input */
+
     if (!TEST_true(BN_bntest_rand(p, 1024, 0, 0)))
         goto err;
     BN_zero(a);
-    if (!TEST_true(BN_mod_exp_mont_consttime(d, a, p, m, ctx, NULL))
+    if (!TEST_true(BN_mod_exp_mont_consttime(d, a, p, m, ctx, ((void*)0)))
             || !TEST_BN_eq_zero(d))
         goto err;
 
-    /*
-     * Craft an input whose Montgomery representation is 1, i.e., shorter
-     * than the modulus m, in order to test the const time precomputation
-     * scattering/gathering.
-     */
+
+
+
+
+
     if (!(TEST_true(BN_one(a))
             && TEST_true(BN_MONT_CTX_set(mont, m, ctx))))
         goto err;
     if (!TEST_true(BN_from_montgomery(e, a, mont, ctx))
-            || !TEST_true(BN_mod_exp_mont_consttime(d, e, p, m, ctx, NULL))
+            || !TEST_true(BN_mod_exp_mont_consttime(d, e, p, m, ctx, ((void*)0)))
             || !TEST_true(BN_mod_exp_simple(a, e, p, m, ctx))
             || !TEST_BN_eq(a, d))
         goto err;
 
-    /* Finally, some regular test vectors. */
+
     if (!(TEST_true(BN_bntest_rand(e, 1024, 0, 0))
-            && TEST_true(BN_mod_exp_mont_consttime(d, e, p, m, ctx, NULL))
+            && TEST_true(BN_mod_exp_mont_consttime(d, e, p, m, ctx, ((void*)0)))
             && TEST_true(BN_mod_exp_simple(a, e, p, m, ctx))
             && TEST_BN_eq(a, d)))
         goto err;

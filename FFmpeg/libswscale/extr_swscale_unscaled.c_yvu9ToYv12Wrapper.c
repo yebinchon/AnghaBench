@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_3__ {int /*<<< orphan*/  srcW; int /*<<< orphan*/  chrSrcW; } ;
-typedef  TYPE_1__ SwsContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  copyPlane (int /*<<< orphan*/  const*,int,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  fillPlane (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int,int,int) ; 
- int /*<<< orphan*/  planar2x (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_3__ {int srcW; int chrSrcW; } ;
+typedef TYPE_1__ SwsContext ;
+
+
+ int copyPlane (int const*,int,int,int,int ,int *,int) ;
+ int fillPlane (int *,int,int ,int,int,int) ;
+ int planar2x (int const*,int *,int ,int,int,int) ;
 
 __attribute__((used)) static int yvu9ToYv12Wrapper(SwsContext *c, const uint8_t *src[],
                              int srcStride[], int srcSliceY, int srcSliceH,

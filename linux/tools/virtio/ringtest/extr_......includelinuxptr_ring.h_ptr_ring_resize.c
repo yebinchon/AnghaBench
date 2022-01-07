@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ptr_ring {int /*<<< orphan*/  consumer_lock; int /*<<< orphan*/  producer_lock; } ;
-typedef  int /*<<< orphan*/  gfp_t ;
 
-/* Variables and functions */
- int ENOMEM ; 
- void** __ptr_ring_init_queue_alloc (int,int /*<<< orphan*/ ) ; 
- void** __ptr_ring_swap_queue (struct ptr_ring*,void**,int,int /*<<< orphan*/ ,void (*) (void*)) ; 
- int /*<<< orphan*/  kvfree (void**) ; 
- int /*<<< orphan*/  spin_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
+
+
+
+struct ptr_ring {int consumer_lock; int producer_lock; } ;
+typedef int gfp_t ;
+
+
+ int ENOMEM ;
+ void** __ptr_ring_init_queue_alloc (int,int ) ;
+ void** __ptr_ring_swap_queue (struct ptr_ring*,void**,int,int ,void (*) (void*)) ;
+ int kvfree (void**) ;
+ int spin_lock (int *) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock (int *) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
 
 __attribute__((used)) static inline int ptr_ring_resize(struct ptr_ring *r, int size, gfp_t gfp,
-				  void (*destroy)(void *))
+      void (*destroy)(void *))
 {
-	unsigned long flags;
-	void **queue = __ptr_ring_init_queue_alloc(size, gfp);
-	void **old;
+ unsigned long flags;
+ void **queue = __ptr_ring_init_queue_alloc(size, gfp);
+ void **old;
 
-	if (!queue)
-		return -ENOMEM;
+ if (!queue)
+  return -ENOMEM;
 
-	spin_lock_irqsave(&(r)->consumer_lock, flags);
-	spin_lock(&(r)->producer_lock);
+ spin_lock_irqsave(&(r)->consumer_lock, flags);
+ spin_lock(&(r)->producer_lock);
 
-	old = __ptr_ring_swap_queue(r, queue, size, gfp, destroy);
+ old = __ptr_ring_swap_queue(r, queue, size, gfp, destroy);
 
-	spin_unlock(&(r)->producer_lock);
-	spin_unlock_irqrestore(&(r)->consumer_lock, flags);
+ spin_unlock(&(r)->producer_lock);
+ spin_unlock_irqrestore(&(r)->consumer_lock, flags);
 
-	kvfree(old);
+ kvfree(old);
 
-	return 0;
+ return 0;
 }

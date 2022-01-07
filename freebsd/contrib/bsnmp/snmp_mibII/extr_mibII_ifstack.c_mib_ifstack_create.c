@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int len; int /*<<< orphan*/ * subs; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int len; int * subs; } ;
 struct mibifstack {TYPE_1__ index; } ;
-struct mibif {int /*<<< orphan*/  index; } ;
+struct mibif {int index; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INSERT_OBJECT_OID (struct mibifstack*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  get_ticks () ; 
- struct mibifstack* malloc (int) ; 
- int /*<<< orphan*/  mib_ifstack_last_change ; 
- int /*<<< orphan*/  mibifstack_list ; 
+
+ int INSERT_OBJECT_OID (struct mibifstack*,int *) ;
+ int get_ticks () ;
+ struct mibifstack* malloc (int) ;
+ int mib_ifstack_last_change ;
+ int mibifstack_list ;
 
 int
 mib_ifstack_create(const struct mibif *lower, const struct mibif *upper)
 {
-	struct mibifstack *stack;
+ struct mibifstack *stack;
 
-	if ((stack = malloc(sizeof(*stack))) == NULL)
-		return (-1);
+ if ((stack = malloc(sizeof(*stack))) == ((void*)0))
+  return (-1);
 
-	stack->index.len = 2;
-	stack->index.subs[0] = upper ? upper->index : 0;
-	stack->index.subs[1] = lower ? lower->index : 0;
+ stack->index.len = 2;
+ stack->index.subs[0] = upper ? upper->index : 0;
+ stack->index.subs[1] = lower ? lower->index : 0;
 
-	INSERT_OBJECT_OID(stack, &mibifstack_list);
+ INSERT_OBJECT_OID(stack, &mibifstack_list);
 
-	mib_ifstack_last_change = get_ticks();
+ mib_ifstack_last_change = get_ticks();
 
-	return (0);
+ return (0);
 }

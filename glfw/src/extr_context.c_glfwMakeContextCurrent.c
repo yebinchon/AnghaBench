@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_6__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {scalar_t__ client; scalar_t__ source; int /*<<< orphan*/  (* makeCurrent ) (TYPE_2__*) ;} ;
+
+
+typedef struct TYPE_9__ TYPE_6__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {scalar_t__ client; scalar_t__ source; int (* makeCurrent ) (TYPE_2__*) ;} ;
 struct TYPE_8__ {TYPE_1__ context; } ;
-typedef  TYPE_2__ _GLFWwindow ;
-struct TYPE_9__ {int /*<<< orphan*/  contextSlot; } ;
-typedef  int /*<<< orphan*/  GLFWwindow ;
+typedef TYPE_2__ _GLFWwindow ;
+struct TYPE_9__ {int contextSlot; } ;
+typedef int GLFWwindow ;
 
-/* Variables and functions */
- scalar_t__ GLFW_NO_API ; 
- int /*<<< orphan*/  GLFW_NO_WINDOW_CONTEXT ; 
- int /*<<< orphan*/  _GLFW_REQUIRE_INIT () ; 
- TYPE_6__ _glfw ; 
- int /*<<< orphan*/  _glfwInputError (int /*<<< orphan*/ ,char*) ; 
- TYPE_2__* _glfwPlatformGetTls (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub1 (TYPE_2__*) ; 
- int /*<<< orphan*/  stub2 (TYPE_2__*) ; 
+
+ scalar_t__ GLFW_NO_API ;
+ int GLFW_NO_WINDOW_CONTEXT ;
+ int _GLFW_REQUIRE_INIT () ;
+ TYPE_6__ _glfw ;
+ int _glfwInputError (int ,char*) ;
+ TYPE_2__* _glfwPlatformGetTls (int *) ;
+ int stub1 (TYPE_2__*) ;
+ int stub2 (TYPE_2__*) ;
 
 void glfwMakeContextCurrent(GLFWwindow* handle)
 {
@@ -46,7 +46,7 @@ void glfwMakeContextCurrent(GLFWwindow* handle)
     if (previous)
     {
         if (!window || window->context.source != previous->context.source)
-            previous->context.makeCurrent(NULL);
+            previous->context.makeCurrent(((void*)0));
     }
 
     if (window)

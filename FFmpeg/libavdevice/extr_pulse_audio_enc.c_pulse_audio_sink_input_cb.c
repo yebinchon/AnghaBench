@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  val ;
-typedef  scalar_t__ pa_volume_t ;
-struct TYPE_6__ {scalar_t__ mute; int /*<<< orphan*/  volume; } ;
-typedef  TYPE_1__ pa_sink_input_info ;
-typedef  int /*<<< orphan*/  pa_context ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int val ;
+typedef scalar_t__ pa_volume_t ;
+struct TYPE_6__ {scalar_t__ mute; int volume; } ;
+typedef TYPE_1__ pa_sink_input_info ;
+typedef int pa_context ;
 struct TYPE_8__ {TYPE_2__* priv_data; } ;
-struct TYPE_7__ {scalar_t__ mute; scalar_t__ last_volume; int /*<<< orphan*/  base_volume; int /*<<< orphan*/ * ctx; } ;
-typedef  TYPE_2__ PulseData ;
-typedef  TYPE_3__ AVFormatContext ;
+struct TYPE_7__ {scalar_t__ mute; scalar_t__ last_volume; int base_volume; int * ctx; } ;
+typedef TYPE_2__ PulseData ;
+typedef TYPE_3__ AVFormatContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_DEV_TO_APP_MUTE_STATE_CHANGED ; 
- int /*<<< orphan*/  AV_DEV_TO_APP_VOLUME_LEVEL_CHANGED ; 
- double PA_VOLUME_NORM ; 
- int /*<<< orphan*/  avdevice_dev_to_app_control_message (TYPE_3__*,int /*<<< orphan*/ ,double*,int) ; 
- scalar_t__ pa_cvolume_avg (int /*<<< orphan*/ *) ; 
- scalar_t__ pa_sw_volume_divide (scalar_t__,int /*<<< orphan*/ ) ; 
+
+ int AV_DEV_TO_APP_MUTE_STATE_CHANGED ;
+ int AV_DEV_TO_APP_VOLUME_LEVEL_CHANGED ;
+ double PA_VOLUME_NORM ;
+ int avdevice_dev_to_app_control_message (TYPE_3__*,int ,double*,int) ;
+ scalar_t__ pa_cvolume_avg (int *) ;
+ scalar_t__ pa_sw_volume_divide (scalar_t__,int ) ;
 
 __attribute__((used)) static void pulse_audio_sink_input_cb(pa_context *ctx, const pa_sink_input_info *i,
                                       int eol, void *userdata)

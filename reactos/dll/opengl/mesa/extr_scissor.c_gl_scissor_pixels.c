@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_5__ {TYPE_1__* Buffer; } ;
 struct TYPE_4__ {scalar_t__ Xmin; scalar_t__ Xmax; scalar_t__ Ymin; scalar_t__ Ymax; } ;
-typedef  size_t GLuint ;
-typedef  int GLubyte ;
-typedef  scalar_t__ const GLint ;
-typedef  TYPE_2__ GLcontext ;
+typedef size_t GLuint ;
+typedef int GLubyte ;
+typedef scalar_t__ const GLint ;
+typedef TYPE_2__ GLcontext ;
 
-/* Variables and functions */
+
 
 GLuint gl_scissor_pixels( GLcontext *ctx,
                           GLuint n, const GLint x[], const GLint y[],

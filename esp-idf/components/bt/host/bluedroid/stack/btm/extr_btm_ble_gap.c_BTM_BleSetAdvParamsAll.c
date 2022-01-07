@@ -1,84 +1,84 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_8__ ;
-typedef  struct TYPE_14__   TYPE_6__ ;
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tBTM_STATUS ;
-typedef  int /*<<< orphan*/  (* tBTM_START_ADV_CMPL_CBACK ) (int /*<<< orphan*/ ) ;
-struct TYPE_11__ {int exist_addr_bit; scalar_t__ own_addr_type; TYPE_4__* static_rand_addr; int /*<<< orphan*/ * private_addr; TYPE_4__* resolvale_addr; } ;
-typedef  TYPE_2__ tBTM_LE_RANDOM_CB ;
-struct TYPE_12__ {int /*<<< orphan*/  afp; int /*<<< orphan*/  direct_bda; int /*<<< orphan*/  (* p_adv_cb ) (int /*<<< orphan*/ ) ;scalar_t__ evt_type; int /*<<< orphan*/  adv_chnl_map; void* adv_interval_max; void* adv_interval_min; } ;
-typedef  TYPE_3__ tBTM_BLE_INQ_CB ;
-typedef  int /*<<< orphan*/  tBTM_BLE_AFP ;
-typedef  int /*<<< orphan*/  tBTM_BLE_ADV_CHNL_MAP ;
-struct TYPE_13__ {int /*<<< orphan*/  bda; int /*<<< orphan*/  type; } ;
-typedef  TYPE_4__ tBLE_BD_ADDR ;
-typedef  scalar_t__ tBLE_ADDR_TYPE ;
-typedef  scalar_t__ UINT8 ;
-typedef  void* UINT16 ;
+
+
+typedef struct TYPE_15__ TYPE_8__ ;
+typedef struct TYPE_14__ TYPE_6__ ;
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int tBTM_STATUS ;
+typedef int (* tBTM_START_ADV_CMPL_CBACK ) (int ) ;
+struct TYPE_11__ {int exist_addr_bit; scalar_t__ own_addr_type; TYPE_4__* static_rand_addr; int * private_addr; TYPE_4__* resolvale_addr; } ;
+typedef TYPE_2__ tBTM_LE_RANDOM_CB ;
+struct TYPE_12__ {int afp; int direct_bda; int (* p_adv_cb ) (int ) ;scalar_t__ evt_type; int adv_chnl_map; void* adv_interval_max; void* adv_interval_min; } ;
+typedef TYPE_3__ tBTM_BLE_INQ_CB ;
+typedef int tBTM_BLE_AFP ;
+typedef int tBTM_BLE_ADV_CHNL_MAP ;
+struct TYPE_13__ {int bda; int type; } ;
+typedef TYPE_4__ tBLE_BD_ADDR ;
+typedef scalar_t__ tBLE_ADDR_TYPE ;
+typedef scalar_t__ UINT8 ;
+typedef void* UINT16 ;
 struct TYPE_10__ {scalar_t__ privacy_mode; TYPE_2__ addr_mgnt_cb; TYPE_3__ inq_var; } ;
 struct TYPE_15__ {TYPE_1__ ble_ctr_cb; } ;
-struct TYPE_14__ {int /*<<< orphan*/  (* supports_ble ) () ;} ;
+struct TYPE_14__ {int (* supports_ble ) () ;} ;
 
-/* Variables and functions */
- int BD_ADDR_LEN ; 
- scalar_t__ BLE_ADDR_PUBLIC ; 
- scalar_t__ BLE_ADDR_PUBLIC_ID ; 
- scalar_t__ BLE_ADDR_RANDOM ; 
- scalar_t__ BLE_ADDR_RANDOM_ID ; 
- int /*<<< orphan*/  BTM_BLE_ADV_INT_MAX ; 
- int /*<<< orphan*/  BTM_BLE_ADV_INT_MIN ; 
- scalar_t__ BTM_BLE_CONNECT_DIR_EVT ; 
- scalar_t__ BTM_BLE_CONNECT_LO_DUTY_DIR_EVT ; 
- int BTM_BLE_GAP_ADDR_BIT_RANDOM ; 
- int BTM_BLE_GAP_ADDR_BIT_RESOLVABLE ; 
- int /*<<< orphan*/  BTM_BLE_ISVALID_PARAM (void*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ BTM_BLE_NON_CONNECT_EVT ; 
- int /*<<< orphan*/  BTM_BLE_STATE_HI_DUTY_DIR_ADV_BIT ; 
- int /*<<< orphan*/  BTM_BLE_STATE_LO_DUTY_DIR_ADV_BIT ; 
- int /*<<< orphan*/  BTM_BLE_STATE_NON_CONN_ADV_BIT ; 
- int /*<<< orphan*/  BTM_BleConfigPrivacy (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BTM_ILLEGAL_VALUE ; 
- int /*<<< orphan*/  BTM_NO_RESOURCES ; 
- scalar_t__ BTM_PRIVACY_NONE ; 
- int /*<<< orphan*/  BTM_SUCCESS ; 
- int /*<<< orphan*/  BTM_TRACE_ERROR (char*) ; 
- int /*<<< orphan*/  BTM_TRACE_EVENT (char*) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  HCI_ERR_ESP_VENDOR_FAIL ; 
- int /*<<< orphan*/  OSI_MUTEX_MAX_TIMEOUT ; 
- int /*<<< orphan*/  OSI_SEM_MAX_TIMEOUT ; 
- int /*<<< orphan*/  adv_param_lock ; 
- int /*<<< orphan*/  adv_param_sem ; 
- int /*<<< orphan*/  adv_param_status ; 
- int /*<<< orphan*/  btm_ble_set_topology_mask (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  btm_ble_stop_adv () ; 
- TYPE_8__ btm_cb ; 
- int /*<<< orphan*/  btsnd_hcic_ble_set_random_addr (TYPE_4__*) ; 
- scalar_t__ btsnd_hcic_ble_write_adv_params (void*,void*,scalar_t__,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_6__* controller_get_interface () ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,TYPE_4__*,int) ; 
- int /*<<< orphan*/  osi_mutex_lock (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  osi_mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  osi_sem_take (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 () ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub3 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub4 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub5 (int /*<<< orphan*/ ) ; 
+
+ int BD_ADDR_LEN ;
+ scalar_t__ BLE_ADDR_PUBLIC ;
+ scalar_t__ BLE_ADDR_PUBLIC_ID ;
+ scalar_t__ BLE_ADDR_RANDOM ;
+ scalar_t__ BLE_ADDR_RANDOM_ID ;
+ int BTM_BLE_ADV_INT_MAX ;
+ int BTM_BLE_ADV_INT_MIN ;
+ scalar_t__ BTM_BLE_CONNECT_DIR_EVT ;
+ scalar_t__ BTM_BLE_CONNECT_LO_DUTY_DIR_EVT ;
+ int BTM_BLE_GAP_ADDR_BIT_RANDOM ;
+ int BTM_BLE_GAP_ADDR_BIT_RESOLVABLE ;
+ int BTM_BLE_ISVALID_PARAM (void*,int ,int ) ;
+ scalar_t__ BTM_BLE_NON_CONNECT_EVT ;
+ int BTM_BLE_STATE_HI_DUTY_DIR_ADV_BIT ;
+ int BTM_BLE_STATE_LO_DUTY_DIR_ADV_BIT ;
+ int BTM_BLE_STATE_NON_CONN_ADV_BIT ;
+ int BTM_BleConfigPrivacy (int ,int *) ;
+ int BTM_ILLEGAL_VALUE ;
+ int BTM_NO_RESOURCES ;
+ scalar_t__ BTM_PRIVACY_NONE ;
+ int BTM_SUCCESS ;
+ int BTM_TRACE_ERROR (char*) ;
+ int BTM_TRACE_EVENT (char*) ;
+ int FALSE ;
+ int HCI_ERR_ESP_VENDOR_FAIL ;
+ int OSI_MUTEX_MAX_TIMEOUT ;
+ int OSI_SEM_MAX_TIMEOUT ;
+ int adv_param_lock ;
+ int adv_param_sem ;
+ int adv_param_status ;
+ int btm_ble_set_topology_mask (int ) ;
+ int btm_ble_stop_adv () ;
+ TYPE_8__ btm_cb ;
+ int btsnd_hcic_ble_set_random_addr (TYPE_4__*) ;
+ scalar_t__ btsnd_hcic_ble_write_adv_params (void*,void*,scalar_t__,scalar_t__,int ,int ,int ,int ) ;
+ TYPE_6__* controller_get_interface () ;
+ int memcpy (int *,TYPE_4__*,int) ;
+ int osi_mutex_lock (int *,int ) ;
+ int osi_mutex_unlock (int *) ;
+ int osi_sem_take (int *,int ) ;
+ int stub1 () ;
+ int stub2 (int ) ;
+ int stub3 (int ) ;
+ int stub4 (int ) ;
+ int stub5 (int ) ;
 
 tBTM_STATUS BTM_BleSetAdvParamsAll(UINT16 adv_int_min, UINT16 adv_int_max, UINT8 adv_type,
                                         tBLE_ADDR_TYPE own_bda_type, tBLE_BD_ADDR *p_dir_bda,
@@ -95,15 +95,15 @@ tBTM_STATUS BTM_BleSetAdvParamsAll(UINT16 adv_int_min, UINT16 adv_int_max, UINT8
 
     if(own_bda_type == BLE_ADDR_RANDOM) {
         if((btm_cb.ble_ctr_cb.addr_mgnt_cb.exist_addr_bit & BTM_BLE_GAP_ADDR_BIT_RANDOM) == BTM_BLE_GAP_ADDR_BIT_RANDOM) {
-            //close privacy
-            #if BLE_PRIVACY_SPT == TRUE
+
+
             if (btm_cb.ble_ctr_cb.privacy_mode != BTM_PRIVACY_NONE) {
-                BTM_BleConfigPrivacy(FALSE, NULL);
+                BTM_BleConfigPrivacy(FALSE, ((void*)0));
             }
-            #endif
+
             btm_cb.ble_ctr_cb.addr_mgnt_cb.own_addr_type = BLE_ADDR_RANDOM;
             memcpy(btm_cb.ble_ctr_cb.addr_mgnt_cb.private_addr, btm_cb.ble_ctr_cb.addr_mgnt_cb.static_rand_addr, BD_ADDR_LEN);
-            // set address to controller
+
             btsnd_hcic_ble_set_random_addr(btm_cb.ble_ctr_cb.addr_mgnt_cb.static_rand_addr);
 
         } else if((btm_cb.ble_ctr_cb.addr_mgnt_cb.exist_addr_bit & BTM_BLE_GAP_ADDR_BIT_RESOLVABLE) == BTM_BLE_GAP_ADDR_BIT_RESOLVABLE) {
@@ -124,7 +124,7 @@ tBTM_STATUS BTM_BleSetAdvParamsAll(UINT16 adv_int_min, UINT16 adv_int_max, UINT8
             memcpy(btm_cb.ble_ctr_cb.addr_mgnt_cb.private_addr, btm_cb.ble_ctr_cb.addr_mgnt_cb.resolvale_addr, BD_ADDR_LEN);
             btsnd_hcic_ble_set_random_addr(btm_cb.ble_ctr_cb.addr_mgnt_cb.resolvale_addr);
         } else {
-            #if BLE_PRIVACY_SPT == TRUE
+
             if(btm_cb.ble_ctr_cb.privacy_mode != BTM_PRIVACY_NONE) {
                 BTM_TRACE_ERROR ("Error state\n");
                 if(adv_cb) {
@@ -132,11 +132,11 @@ tBTM_STATUS BTM_BleSetAdvParamsAll(UINT16 adv_int_min, UINT16 adv_int_max, UINT8
                 }
                 return BTM_ILLEGAL_VALUE;
             }
-            #endif
+
             if(own_bda_type == BLE_ADDR_PUBLIC_ID) {
                 own_bda_type = BLE_ADDR_PUBLIC;
                 btm_cb.ble_ctr_cb.addr_mgnt_cb.own_addr_type = BLE_ADDR_PUBLIC;
-            } else { //own_bda_type == BLE_ADDR_RANDOM_ID
+            } else {
                 if((btm_cb.ble_ctr_cb.addr_mgnt_cb.exist_addr_bit & BTM_BLE_GAP_ADDR_BIT_RANDOM) == BTM_BLE_GAP_ADDR_BIT_RANDOM) {
                     own_bda_type = BLE_ADDR_RANDOM;
                     btm_cb.ble_ctr_cb.addr_mgnt_cb.own_addr_type = BLE_ADDR_RANDOM;
@@ -190,7 +190,7 @@ tBTM_STATUS BTM_BleSetAdvParamsAll(UINT16 adv_int_min, UINT16 adv_int_max, UINT8
     BTM_TRACE_EVENT ("update params for an active adv\n");
 
     tBTM_STATUS status = BTM_SUCCESS;
-    /* update adv params */
+
     if (btsnd_hcic_ble_write_adv_params (adv_int_min,
                                         adv_int_max,
                                         adv_type,

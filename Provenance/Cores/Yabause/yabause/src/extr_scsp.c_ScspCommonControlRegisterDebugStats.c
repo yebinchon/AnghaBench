@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {scalar_t__ mcieb; scalar_t__ mcipd; scalar_t__ scilv2; scalar_t__ scilv1; scalar_t__ scilv0; scalar_t__ scieb; scalar_t__ scipd; scalar_t__ timcsd; scalar_t__ timccnt; scalar_t__ timbsd; scalar_t__ timbcnt; scalar_t__ timasd; scalar_t__ timacnt; scalar_t__ dmlen; scalar_t__ drga; scalar_t__ dmea; scalar_t__ ca; scalar_t__ mslc; scalar_t__ rbp; scalar_t__ rbl; scalar_t__ mvol; scalar_t__ mem4b; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AddString (char*,char*,...) ; 
- scalar_t__ pow (int,double) ; 
- TYPE_1__ scsp ; 
+
+ int AddString (char*,char*,...) ;
+ scalar_t__ pow (int,double) ;
+ TYPE_1__ scsp ;
 
 void
 ScspCommonControlRegisterDebugStats (char *outstring)

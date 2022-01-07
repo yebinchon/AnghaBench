@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int hb_value_type_t ;
-typedef  int /*<<< orphan*/  hb_value_t ;
 
-/* Variables and functions */
-#define  HB_VALUE_TYPE_BOOL 132 
-#define  HB_VALUE_TYPE_DOUBLE 131 
-#define  HB_VALUE_TYPE_INT 130 
-#define  HB_VALUE_TYPE_NULL 129 
-#define  HB_VALUE_TYPE_STRING 128 
- int /*<<< orphan*/  free (char*) ; 
- char* hb_strdup_printf (char*,char*,char const*) ; 
- int /*<<< orphan*/ * hb_value_array_get (int /*<<< orphan*/  const*,int) ; 
- int hb_value_array_len (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  hb_value_free (int /*<<< orphan*/ **) ; 
- char* hb_value_get_string (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * hb_value_xform (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * json_null () ; 
- int /*<<< orphan*/ * json_string (char*) ; 
- char* strdup (char*) ; 
- int strlen (char*) ; 
+
+
+
+typedef int hb_value_type_t ;
+typedef int hb_value_t ;
+
+
+
+
+
+
+
+ int free (char*) ;
+ char* hb_strdup_printf (char*,char*,char const*) ;
+ int * hb_value_array_get (int const*,int) ;
+ int hb_value_array_len (int const*) ;
+ int hb_value_free (int **) ;
+ char* hb_value_get_string (int *) ;
+ int * hb_value_xform (int *,int) ;
+ int * json_null () ;
+ int * json_string (char*) ;
+ char* strdup (char*) ;
+ int strlen (char*) ;
 
 __attribute__((used)) static hb_value_t* xform_array(const hb_value_t *value, hb_value_type_t type)
 {
-    hb_value_t *first = NULL;
+    hb_value_t *first = ((void*)0);
     int count = hb_value_array_len(value);
 
     if (count > 0)
@@ -41,12 +41,12 @@ __attribute__((used)) static hb_value_t* xform_array(const hb_value_t *value, hb
     switch (type)
     {
         default:
-        case HB_VALUE_TYPE_NULL:
-        case HB_VALUE_TYPE_BOOL:
-        case HB_VALUE_TYPE_INT:
-        case HB_VALUE_TYPE_DOUBLE:
+        case 129:
+        case 132:
+        case 130:
+        case 131:
             return hb_value_xform(first, type);
-        case HB_VALUE_TYPE_STRING:
+        case 128:
         {
             char *r = strdup("");
             int ii;
@@ -55,7 +55,7 @@ __attribute__((used)) static hb_value_t* xform_array(const hb_value_t *value, hb
                 hb_value_t *v = hb_value_array_get(value, ii);
                 hb_value_t *x = hb_value_xform(v, type);
                 const char *s = hb_value_get_string(x);
-                if (s != NULL)
+                if (s != ((void*)0))
                 {
                     char *tmp = r;
                     r = hb_strdup_printf("%s%s,", tmp, s);
@@ -67,14 +67,14 @@ __attribute__((used)) static hb_value_t* xform_array(const hb_value_t *value, hb
             hb_value_t *v;
             if (len > 0)
             {
-                // Removing trailing ','
+
                 r[len - 1] = 0;
                 v = json_string(r);
             }
             else
             {
                 free(r);
-                r = NULL;
+                r = ((void*)0);
                 v = json_null();
             }
             free(r);

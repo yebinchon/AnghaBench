@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_7__ {unsigned int count; TYPE_1__ const* elems; } ;
 struct TYPE_6__ {char* key; } ;
-typedef  TYPE_1__ const AVDictionaryEntry ;
-typedef  TYPE_2__ AVDictionary ;
+typedef TYPE_1__ const AVDictionaryEntry ;
+typedef TYPE_2__ AVDictionary ;
 
-/* Variables and functions */
- int AV_DICT_IGNORE_SUFFIX ; 
- int AV_DICT_MATCH_CASE ; 
- scalar_t__ av_toupper (char const) ; 
+
+ int AV_DICT_IGNORE_SUFFIX ;
+ int AV_DICT_MATCH_CASE ;
+ scalar_t__ av_toupper (char const) ;
 
 AVDictionaryEntry *av_dict_get(const AVDictionary *m, const char *key,
                                const AVDictionaryEntry *prev, int flags)
@@ -28,7 +28,7 @@ AVDictionaryEntry *av_dict_get(const AVDictionary *m, const char *key,
     unsigned int i, j;
 
     if (!m)
-        return NULL;
+        return ((void*)0);
 
     if (prev)
         i = prev - m->elems + 1;
@@ -49,5 +49,5 @@ AVDictionaryEntry *av_dict_get(const AVDictionary *m, const char *key,
             continue;
         return &m->elems[i];
     }
-    return NULL;
+    return ((void*)0);
 }

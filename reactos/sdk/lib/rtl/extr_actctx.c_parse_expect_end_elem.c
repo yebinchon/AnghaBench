@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  xmlstr_t ;
-typedef  int /*<<< orphan*/  xmlbuf_t ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  UNICODE_STRING ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPRINT1 (char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  next_xml_elem (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  parse_end_element (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  xml_elem_cmp_end (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  xmlstr2unicode (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int xmlstr_t ;
+typedef int xmlbuf_t ;
+typedef int WCHAR ;
+typedef int UNICODE_STRING ;
+typedef int BOOL ;
+
+
+ int DPRINT1 (char*,int *) ;
+ int FALSE ;
+ int next_xml_elem (int *,int *) ;
+ int parse_end_element (int *) ;
+ int xml_elem_cmp_end (int *,int const*,int const*) ;
+ int xmlstr2unicode (int *) ;
 
 __attribute__((used)) static BOOL parse_expect_end_elem(xmlbuf_t *xmlbuf, const WCHAR *name, const WCHAR *namespace)
 {
-    xmlstr_t    elem;
+    xmlstr_t elem;
     UNICODE_STRING elemU;
     if (!next_xml_elem(xmlbuf, &elem)) return FALSE;
     if (!xml_elem_cmp_end(&elem, name, namespace))

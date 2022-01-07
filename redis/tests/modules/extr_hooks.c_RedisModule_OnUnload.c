@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  RedisModuleCtx ;
 
-/* Variables and functions */
- int REDISMODULE_OK ; 
- int /*<<< orphan*/  RedisModule_FreeDict (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  clearEvents (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * event_log ; 
+
+
+
+typedef int RedisModuleCtx ;
+
+
+ int REDISMODULE_OK ;
+ int RedisModule_FreeDict (int *,int *) ;
+ int clearEvents (int *) ;
+ int * event_log ;
 
 int RedisModule_OnUnload(RedisModuleCtx *ctx) {
     clearEvents(ctx);
     RedisModule_FreeDict(ctx, event_log);
-    event_log = NULL;
+    event_log = ((void*)0);
     return REDISMODULE_OK;
 }

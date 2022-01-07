@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int* draw_finished; int /*<<< orphan*/  color_ram; int /*<<< orphan*/  lines; int /*<<< orphan*/  ram; int /*<<< orphan*/  regs; scalar_t__* need_draw; } ;
 
-/* Variables and functions */
- size_t TITAN_SPRITE ; 
- int /*<<< orphan*/  Vdp1Regs ; 
- int /*<<< orphan*/  VidsoftDrawSprite (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  YabThreadSleep () ; 
- int /*<<< orphan*/  sprite_window_mask ; 
- int /*<<< orphan*/  vdp1frontframebuffer ; 
- TYPE_1__ vidsoft_thread_context ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int* draw_finished; int color_ram; int lines; int ram; int regs; scalar_t__* need_draw; } ;
+
+
+ size_t TITAN_SPRITE ;
+ int Vdp1Regs ;
+ int VidsoftDrawSprite (int *,int ,int ,int ,int ,int ,int ) ;
+ int YabThreadSleep () ;
+ int sprite_window_mask ;
+ int vdp1frontframebuffer ;
+ TYPE_1__ vidsoft_thread_context ;
 
 void VidsoftSpriteThread(void * data)
 {

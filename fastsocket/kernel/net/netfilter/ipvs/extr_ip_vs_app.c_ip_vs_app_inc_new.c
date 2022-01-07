@@ -1,79 +1,79 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ip_vs_protocol {int (* register_app ) (struct ip_vs_app*) ;int /*<<< orphan*/  name; int /*<<< orphan*/  unregister_app; } ;
-struct ip_vs_app {struct ip_vs_app* timeout_table; int /*<<< orphan*/  port; int /*<<< orphan*/  name; int /*<<< orphan*/  incs_list; int /*<<< orphan*/  a_list; int /*<<< orphan*/  timeouts_size; scalar_t__ timeouts; int /*<<< orphan*/  usecnt; struct ip_vs_app* app; int /*<<< orphan*/  p_list; } ;
-typedef  int /*<<< orphan*/  __u16 ;
 
-/* Variables and functions */
- int ENOMEM ; 
- int EOPNOTSUPP ; 
- int EPROTONOSUPPORT ; 
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  INIT_LIST_HEAD (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IP_VS_DBG (int,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  atomic_set (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  htons (int /*<<< orphan*/ ) ; 
- struct ip_vs_app* ip_vs_create_timeout_table (scalar_t__,int /*<<< orphan*/ ) ; 
- struct ip_vs_protocol* ip_vs_proto_get (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kfree (struct ip_vs_app*) ; 
- struct ip_vs_app* kmemdup (struct ip_vs_app*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  list_add (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int stub1 (struct ip_vs_app*) ; 
+
+
+
+struct ip_vs_protocol {int (* register_app ) (struct ip_vs_app*) ;int name; int unregister_app; } ;
+struct ip_vs_app {struct ip_vs_app* timeout_table; int port; int name; int incs_list; int a_list; int timeouts_size; scalar_t__ timeouts; int usecnt; struct ip_vs_app* app; int p_list; } ;
+typedef int __u16 ;
+
+
+ int ENOMEM ;
+ int EOPNOTSUPP ;
+ int EPROTONOSUPPORT ;
+ int GFP_KERNEL ;
+ int INIT_LIST_HEAD (int *) ;
+ int IP_VS_DBG (int,char*,int ,int ,int ) ;
+ int atomic_set (int *,int ) ;
+ int htons (int ) ;
+ struct ip_vs_app* ip_vs_create_timeout_table (scalar_t__,int ) ;
+ struct ip_vs_protocol* ip_vs_proto_get (int ) ;
+ int kfree (struct ip_vs_app*) ;
+ struct ip_vs_app* kmemdup (struct ip_vs_app*,int,int ) ;
+ int list_add (int *,int *) ;
+ int stub1 (struct ip_vs_app*) ;
 
 __attribute__((used)) static int
 ip_vs_app_inc_new(struct ip_vs_app *app, __u16 proto, __u16 port)
 {
-	struct ip_vs_protocol *pp;
-	struct ip_vs_app *inc;
-	int ret;
+ struct ip_vs_protocol *pp;
+ struct ip_vs_app *inc;
+ int ret;
 
-	if (!(pp = ip_vs_proto_get(proto)))
-		return -EPROTONOSUPPORT;
+ if (!(pp = ip_vs_proto_get(proto)))
+  return -EPROTONOSUPPORT;
 
-	if (!pp->unregister_app)
-		return -EOPNOTSUPP;
+ if (!pp->unregister_app)
+  return -EOPNOTSUPP;
 
-	inc = kmemdup(app, sizeof(*inc), GFP_KERNEL);
-	if (!inc)
-		return -ENOMEM;
-	INIT_LIST_HEAD(&inc->p_list);
-	INIT_LIST_HEAD(&inc->incs_list);
-	inc->app = app;
-	inc->port = htons(port);
-	atomic_set(&inc->usecnt, 0);
+ inc = kmemdup(app, sizeof(*inc), GFP_KERNEL);
+ if (!inc)
+  return -ENOMEM;
+ INIT_LIST_HEAD(&inc->p_list);
+ INIT_LIST_HEAD(&inc->incs_list);
+ inc->app = app;
+ inc->port = htons(port);
+ atomic_set(&inc->usecnt, 0);
 
-	if (app->timeouts) {
-		inc->timeout_table =
-			ip_vs_create_timeout_table(app->timeouts,
-						   app->timeouts_size);
-		if (!inc->timeout_table) {
-			ret = -ENOMEM;
-			goto out;
-		}
-	}
+ if (app->timeouts) {
+  inc->timeout_table =
+   ip_vs_create_timeout_table(app->timeouts,
+         app->timeouts_size);
+  if (!inc->timeout_table) {
+   ret = -ENOMEM;
+   goto out;
+  }
+ }
 
-	ret = pp->register_app(inc);
-	if (ret)
-		goto out;
+ ret = pp->register_app(inc);
+ if (ret)
+  goto out;
 
-	list_add(&inc->a_list, &app->incs_list);
-	IP_VS_DBG(9, "%s application %s:%u registered\n",
-		  pp->name, inc->name, inc->port);
+ list_add(&inc->a_list, &app->incs_list);
+ IP_VS_DBG(9, "%s application %s:%u registered\n",
+    pp->name, inc->name, inc->port);
 
-	return 0;
+ return 0;
 
   out:
-	kfree(inc->timeout_table);
-	kfree(inc);
-	return ret;
+ kfree(inc->timeout_table);
+ kfree(inc);
+ return ret;
 }

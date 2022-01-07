@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_8__ {int y; unsigned int block_offset; struct TYPE_8__* right; struct TYPE_8__* left; } ;
-typedef  TYPE_1__ filesys_tree_t ;
+typedef TYPE_1__ filesys_tree_t ;
 
-/* Variables and functions */
- TYPE_1__* new_tree_node (unsigned int,int,unsigned int,char*) ; 
- int /*<<< orphan*/  tree_split (TYPE_1__**,TYPE_1__**,TYPE_1__*,unsigned int) ; 
+
+ TYPE_1__* new_tree_node (unsigned int,int,unsigned int,char*) ;
+ int tree_split (TYPE_1__**,TYPE_1__**,TYPE_1__*,unsigned int) ;
 
 __attribute__((used)) static filesys_tree_t *tree_insert (filesys_tree_t *T, unsigned int block_offset, int y, unsigned int block_length, char *data) {
   filesys_tree_t *P;

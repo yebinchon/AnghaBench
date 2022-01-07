@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct RClass {int /*<<< orphan*/  super; } ;
-typedef  int /*<<< orphan*/  mrb_value ;
-typedef  int /*<<< orphan*/  mrb_sym ;
-typedef  int /*<<< orphan*/  mrb_state ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_TYPE_ERROR ; 
- int /*<<< orphan*/  check_if_class_or_module (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- struct RClass* define_class (int /*<<< orphan*/ *,int /*<<< orphan*/ ,struct RClass*,struct RClass*) ; 
- int /*<<< orphan*/  mrb_class_inherited (int /*<<< orphan*/ *,struct RClass*,struct RClass*) ; 
- int /*<<< orphan*/  mrb_class_p (int /*<<< orphan*/ ) ; 
- struct RClass* mrb_class_ptr (int /*<<< orphan*/ ) ; 
- struct RClass* mrb_class_real (int /*<<< orphan*/ ) ; 
- scalar_t__ mrb_const_defined_at (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_const_get (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_nil_p (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_raisef (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
+
+
+
+struct RClass {int super; } ;
+typedef int mrb_value ;
+typedef int mrb_sym ;
+typedef int mrb_state ;
+
+
+ int E_TYPE_ERROR ;
+ int check_if_class_or_module (int *,int ) ;
+ struct RClass* define_class (int *,int ,struct RClass*,struct RClass*) ;
+ int mrb_class_inherited (int *,struct RClass*,struct RClass*) ;
+ int mrb_class_p (int ) ;
+ struct RClass* mrb_class_ptr (int ) ;
+ struct RClass* mrb_class_real (int ) ;
+ scalar_t__ mrb_const_defined_at (int *,int ,int ) ;
+ int mrb_const_get (int *,int ,int ) ;
+ int mrb_nil_p (int ) ;
+ int mrb_raisef (int *,int ,char*,int ) ;
 
 struct RClass*
 mrb_vm_define_class(mrb_state *mrb, mrb_value outer, mrb_value super, mrb_sym id)
@@ -52,7 +52,7 @@ mrb_vm_define_class(mrb_state *mrb, mrb_value outer, mrb_value super, mrb_sym id
     }
     c = mrb_class_ptr(old);
     if (s) {
-      /* check super class */
+
       if (mrb_class_real(c->super) != s) {
         mrb_raisef(mrb, E_TYPE_ERROR, "superclass mismatch for class %v", old);
       }

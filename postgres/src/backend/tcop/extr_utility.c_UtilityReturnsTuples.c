@@ -1,92 +1,92 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_7__ ;
-typedef  struct TYPE_16__   TYPE_6__ ;
-typedef  struct TYPE_15__   TYPE_5__ ;
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_17__ TYPE_7__ ;
+typedef struct TYPE_16__ TYPE_6__ ;
+typedef struct TYPE_15__ TYPE_5__ ;
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
 struct TYPE_17__ {TYPE_2__* funcexpr; } ;
-struct TYPE_16__ {int /*<<< orphan*/  name; } ;
-struct TYPE_15__ {int /*<<< orphan*/  portalname; int /*<<< orphan*/  ismove; } ;
-struct TYPE_14__ {int /*<<< orphan*/  tupDesc; } ;
+struct TYPE_16__ {int name; } ;
+struct TYPE_15__ {int portalname; int ismove; } ;
+struct TYPE_14__ {int tupDesc; } ;
 struct TYPE_13__ {TYPE_1__* plansource; } ;
-struct TYPE_12__ {int /*<<< orphan*/  funcresulttype; } ;
-struct TYPE_11__ {int /*<<< orphan*/  resultDesc; } ;
-typedef  TYPE_3__ PreparedStatement ;
-typedef  TYPE_4__* Portal ;
-typedef  int /*<<< orphan*/  Node ;
-typedef  TYPE_5__ FetchStmt ;
-typedef  TYPE_6__ ExecuteStmt ;
-typedef  TYPE_7__ CallStmt ;
+struct TYPE_12__ {int funcresulttype; } ;
+struct TYPE_11__ {int resultDesc; } ;
+typedef TYPE_3__ PreparedStatement ;
+typedef TYPE_4__* Portal ;
+typedef int Node ;
+typedef TYPE_5__ FetchStmt ;
+typedef TYPE_6__ ExecuteStmt ;
+typedef TYPE_7__ CallStmt ;
 
-/* Variables and functions */
- TYPE_3__* FetchPreparedStatement (int /*<<< orphan*/ ,int) ; 
- TYPE_4__* GetPortalByName (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PortalIsValid (TYPE_4__*) ; 
- int /*<<< orphan*/  RECORDOID ; 
-#define  T_CallStmt 132 
-#define  T_ExecuteStmt 131 
-#define  T_ExplainStmt 130 
-#define  T_FetchStmt 129 
-#define  T_VariableShowStmt 128 
- int nodeTag (int /*<<< orphan*/ *) ; 
+
+ TYPE_3__* FetchPreparedStatement (int ,int) ;
+ TYPE_4__* GetPortalByName (int ) ;
+ int PortalIsValid (TYPE_4__*) ;
+ int RECORDOID ;
+
+
+
+
+
+ int nodeTag (int *) ;
 
 bool
 UtilityReturnsTuples(Node *parsetree)
 {
-	switch (nodeTag(parsetree))
-	{
-		case T_CallStmt:
-			{
-				CallStmt   *stmt = (CallStmt *) parsetree;
+ switch (nodeTag(parsetree))
+ {
+  case 132:
+   {
+    CallStmt *stmt = (CallStmt *) parsetree;
 
-				return (stmt->funcexpr->funcresulttype == RECORDOID);
-			}
-		case T_FetchStmt:
-			{
-				FetchStmt  *stmt = (FetchStmt *) parsetree;
-				Portal		portal;
+    return (stmt->funcexpr->funcresulttype == RECORDOID);
+   }
+  case 129:
+   {
+    FetchStmt *stmt = (FetchStmt *) parsetree;
+    Portal portal;
 
-				if (stmt->ismove)
-					return false;
-				portal = GetPortalByName(stmt->portalname);
-				if (!PortalIsValid(portal))
-					return false;	/* not our business to raise error */
-				return portal->tupDesc ? true : false;
-			}
+    if (stmt->ismove)
+     return 0;
+    portal = GetPortalByName(stmt->portalname);
+    if (!PortalIsValid(portal))
+     return 0;
+    return portal->tupDesc ? 1 : 0;
+   }
 
-		case T_ExecuteStmt:
-			{
-				ExecuteStmt *stmt = (ExecuteStmt *) parsetree;
-				PreparedStatement *entry;
+  case 131:
+   {
+    ExecuteStmt *stmt = (ExecuteStmt *) parsetree;
+    PreparedStatement *entry;
 
-				entry = FetchPreparedStatement(stmt->name, false);
-				if (!entry)
-					return false;	/* not our business to raise error */
-				if (entry->plansource->resultDesc)
-					return true;
-				return false;
-			}
+    entry = FetchPreparedStatement(stmt->name, 0);
+    if (!entry)
+     return 0;
+    if (entry->plansource->resultDesc)
+     return 1;
+    return 0;
+   }
 
-		case T_ExplainStmt:
-			return true;
+  case 130:
+   return 1;
 
-		case T_VariableShowStmt:
-			return true;
+  case 128:
+   return 1;
 
-		default:
-			return false;
-	}
+  default:
+   return 0;
+ }
 }

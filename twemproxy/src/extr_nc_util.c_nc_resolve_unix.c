@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct string {size_t len; int /*<<< orphan*/  data; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct string {size_t len; int data; } ;
 struct sockaddr_un {char* sun_path; void* sun_family; } ;
 struct TYPE_2__ {struct sockaddr_un un; } ;
 struct sockinfo {int addrlen; void* family; TYPE_1__ addr; } ;
 
-/* Variables and functions */
- void* AF_UNIX ; 
- size_t NC_UNIX_ADDRSTRLEN ; 
- int /*<<< orphan*/  nc_memcpy (char*,int /*<<< orphan*/ ,size_t) ; 
+
+ void* AF_UNIX ;
+ size_t NC_UNIX_ADDRSTRLEN ;
+ int nc_memcpy (char*,int ,size_t) ;
 
 __attribute__((used)) static int
 nc_resolve_unix(struct string *name, struct sockinfo *si)
@@ -38,7 +38,7 @@ nc_resolve_unix(struct string *name, struct sockinfo *si)
 
     si->family = AF_UNIX;
     si->addrlen = sizeof(*un);
-    /* si->addr is an alias of un */
+
 
     return 0;
 }

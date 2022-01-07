@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {int /*<<< orphan*/ * pb; TYPE_1__* priv_data; } ;
-struct TYPE_9__ {unsigned char* data; void* pos; int /*<<< orphan*/  stream_index; scalar_t__ pts; } ;
-struct TYPE_8__ {int /*<<< orphan*/  audio_stream_index; int /*<<< orphan*/  frame_number; int /*<<< orphan*/  video_stream_index; } ;
-typedef  TYPE_1__ FlicDemuxContext ;
-typedef  TYPE_2__ AVPacket ;
-typedef  int /*<<< orphan*/  AVIOContext ;
-typedef  TYPE_3__ AVFormatContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_EOF ; 
- int AV_RL16 (unsigned char*) ; 
- unsigned int AV_RL32 (unsigned char*) ; 
- int /*<<< orphan*/  EIO ; 
- int FLIC_CHUNK_MAGIC_1 ; 
- int FLIC_CHUNK_MAGIC_2 ; 
- int FLIC_PREAMBLE_SIZE ; 
- int FLIC_TFTD_CHUNK_AUDIO ; 
- scalar_t__ av_new_packet (TYPE_2__*,unsigned int) ; 
- int /*<<< orphan*/  av_packet_unref (TYPE_2__*) ; 
- scalar_t__ avio_feof (int /*<<< orphan*/ *) ; 
- int avio_read (int /*<<< orphan*/ *,unsigned char*,unsigned int) ; 
- int /*<<< orphan*/  avio_skip (int /*<<< orphan*/ *,unsigned int) ; 
- void* avio_tell (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memcpy (unsigned char*,unsigned char*,int) ; 
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_10__ {int * pb; TYPE_1__* priv_data; } ;
+struct TYPE_9__ {unsigned char* data; void* pos; int stream_index; scalar_t__ pts; } ;
+struct TYPE_8__ {int audio_stream_index; int frame_number; int video_stream_index; } ;
+typedef TYPE_1__ FlicDemuxContext ;
+typedef TYPE_2__ AVPacket ;
+typedef int AVIOContext ;
+typedef TYPE_3__ AVFormatContext ;
+
+
+ int AVERROR (int ) ;
+ int AVERROR_EOF ;
+ int AV_RL16 (unsigned char*) ;
+ unsigned int AV_RL32 (unsigned char*) ;
+ int EIO ;
+ int FLIC_CHUNK_MAGIC_1 ;
+ int FLIC_CHUNK_MAGIC_2 ;
+ int FLIC_PREAMBLE_SIZE ;
+ int FLIC_TFTD_CHUNK_AUDIO ;
+ scalar_t__ av_new_packet (TYPE_2__*,unsigned int) ;
+ int av_packet_unref (TYPE_2__*) ;
+ scalar_t__ avio_feof (int *) ;
+ int avio_read (int *,unsigned char*,unsigned int) ;
+ int avio_skip (int *,unsigned int) ;
+ void* avio_tell (int *) ;
+ int memcpy (unsigned char*,unsigned char*,int) ;
 
 __attribute__((used)) static int flic_read_packet(AVFormatContext *s,
                             AVPacket *pkt)
@@ -83,7 +83,7 @@ __attribute__((used)) static int flic_read_packet(AVFormatContext *s,
                 break;
             }
 
-            /* skip useless 10B sub-header (yes, it's not accounted for in the chunk header) */
+
             avio_skip(pb, 10);
 
             pkt->stream_index = flic->audio_stream_index;
@@ -97,7 +97,7 @@ __attribute__((used)) static int flic_read_packet(AVFormatContext *s,
 
             packet_read = 1;
         } else {
-            /* not interested in this chunk */
+
             avio_skip(pb, size - 6);
         }
     }

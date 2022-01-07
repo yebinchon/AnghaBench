@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int UINT ;
-struct TYPE_4__ {int version; int num_phrases; int* phrases_offsets; int* phrases_buffer; int /*<<< orphan*/  hasPhrases; } ;
-typedef  TYPE_1__ HLPFILE ;
-typedef  int /*<<< orphan*/  BYTE ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int GET_USHORT (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HLPFILE_FindSubFile (TYPE_1__*,char*,int /*<<< orphan*/ **,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  HLPFILE_UncompressLZ77 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int HLPFILE_UncompressedLZ77_Size (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- void* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  WINE_WARN (char*) ; 
- int /*<<< orphan*/  memcpy (int*,int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int UINT ;
+struct TYPE_4__ {int version; int num_phrases; int* phrases_offsets; int* phrases_buffer; int hasPhrases; } ;
+typedef TYPE_1__ HLPFILE ;
+typedef int BYTE ;
+typedef int BOOL ;
+
+
+ int FALSE ;
+ int GET_USHORT (int *,int) ;
+ int GetProcessHeap () ;
+ int HLPFILE_FindSubFile (TYPE_1__*,char*,int **,int **) ;
+ int HLPFILE_UncompressLZ77 (int *,int *,int *) ;
+ int HLPFILE_UncompressedLZ77_Size (int *,int *) ;
+ void* HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,int*) ;
+ int TRUE ;
+ int WINE_WARN (char*) ;
+ int memcpy (int*,int *,int) ;
 
 __attribute__((used)) static BOOL HLPFILE_UncompressLZ77_Phrases(HLPFILE* hlpfile)
 {
@@ -51,7 +51,7 @@ __attribute__((used)) static BOOL HLPFILE_UncompressLZ77_Phrases(HLPFILE* hlpfil
         dec_size = HLPFILE_UncompressedLZ77_Size(buf + 0x13 + 2 * num, end);
 
     hlpfile->phrases_offsets = HeapAlloc(GetProcessHeap(), 0, sizeof(unsigned) * (num + 1));
-    hlpfile->phrases_buffer  = HeapAlloc(GetProcessHeap(), 0, dec_size);
+    hlpfile->phrases_buffer = HeapAlloc(GetProcessHeap(), 0, dec_size);
     if (!hlpfile->phrases_offsets || !hlpfile->phrases_buffer)
     {
         HeapFree(GetProcessHeap(), 0, hlpfile->phrases_offsets);

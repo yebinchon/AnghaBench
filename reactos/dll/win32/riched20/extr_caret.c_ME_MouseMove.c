@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
 struct TYPE_12__ {scalar_t__ nPos; } ;
 struct TYPE_11__ {scalar_t__ nPos; } ;
-struct TYPE_13__ {scalar_t__ nSelectionType; int /*<<< orphan*/  texthost; int /*<<< orphan*/ * pCursors; int /*<<< orphan*/  bCaretAtEnd; TYPE_2__ vert_si; TYPE_1__ horz_si; } ;
-typedef  TYPE_3__ ME_TextEditor ;
-typedef  int /*<<< orphan*/  ME_Cursor ;
+struct TYPE_13__ {scalar_t__ nSelectionType; int texthost; int * pCursors; int bCaretAtEnd; TYPE_2__ vert_si; TYPE_1__ horz_si; } ;
+typedef TYPE_3__ ME_TextEditor ;
+typedef int ME_Cursor ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  ITextHost_TxShowCaret (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ME_EnsureVisible (TYPE_3__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ME_ExtendAnchorSelection (TYPE_3__*) ; 
- int /*<<< orphan*/  ME_FindPixelPos (TYPE_3__*,int,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ME_InvalidateSelection (TYPE_3__*) ; 
- int /*<<< orphan*/  ME_SendSelChange (TYPE_3__*) ; 
- int /*<<< orphan*/  ME_ShowCaret (TYPE_3__*) ; 
- int /*<<< orphan*/  TRUE ; 
- scalar_t__ memcmp (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- scalar_t__ stDocument ; 
- scalar_t__ stPosition ; 
+
+ int FALSE ;
+ int ITextHost_TxShowCaret (int ,int ) ;
+ int ME_EnsureVisible (TYPE_3__*,int *) ;
+ int ME_ExtendAnchorSelection (TYPE_3__*) ;
+ int ME_FindPixelPos (TYPE_3__*,int,int,int *,int *,int ) ;
+ int ME_InvalidateSelection (TYPE_3__*) ;
+ int ME_SendSelChange (TYPE_3__*) ;
+ int ME_ShowCaret (TYPE_3__*) ;
+ int TRUE ;
+ scalar_t__ memcmp (int *,int *,int) ;
+ scalar_t__ stDocument ;
+ scalar_t__ stPosition ;
 
 void ME_MouseMove(ME_TextEditor *editor, int x, int y)
 {
@@ -43,7 +43,7 @@ void ME_MouseMove(ME_TextEditor *editor, int x, int y)
   y += editor->vert_si.nPos;
 
   tmp_cursor = editor->pCursors[0];
-  /* FIXME: do something with the return value of ME_FindPixelPos */
+
   ME_FindPixelPos(editor, x, y, &tmp_cursor, &editor->bCaretAtEnd, TRUE);
 
   ME_InvalidateSelection(editor);
@@ -53,8 +53,8 @@ void ME_MouseMove(ME_TextEditor *editor, int x, int y)
   if (editor->nSelectionType != stPosition &&
       memcmp(&editor->pCursors[1], &editor->pCursors[3], sizeof(ME_Cursor)))
   {
-      /* The scroll the cursor towards the other end, since it was the one
-       * extended by ME_ExtendAnchorSelection */
+
+
       ME_EnsureVisible(editor, &editor->pCursors[1]);
   } else {
       ME_EnsureVisible(editor, &editor->pCursors[0]);

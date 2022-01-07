@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int sndbuf; int rcvbuf; } ;
-struct link_socket {TYPE_1__ socket_buffer_sizes; int /*<<< orphan*/  sd; } ;
+struct link_socket {TYPE_1__ socket_buffer_sizes; int sd; } ;
 
-/* Variables and functions */
- scalar_t__ socket_defined (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  socket_set_buffers (int /*<<< orphan*/ ,TYPE_1__*) ; 
+
+ scalar_t__ socket_defined (int ) ;
+ int socket_set_buffers (int ,TYPE_1__*) ;
 
 void
 link_socket_update_buffer_sizes(struct link_socket *ls, int rcvbuf, int sndbuf)

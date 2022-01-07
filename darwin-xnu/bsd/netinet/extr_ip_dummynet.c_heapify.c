@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct dn_heap {int elements; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  heap_insert (struct dn_heap*,int,int /*<<< orphan*/ *) ; 
+
+ int heap_insert (struct dn_heap*,int,int *) ;
 
 __attribute__((used)) static void
 heapify(struct dn_heap *h)
@@ -21,5 +21,5 @@ heapify(struct dn_heap *h)
     int i ;
 
     for (i = 0 ; i < h->elements ; i++ )
-	heap_insert(h, i , NULL) ;
+ heap_insert(h, i , ((void*)0)) ;
 }

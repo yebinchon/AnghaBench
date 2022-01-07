@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint16_t ;
-typedef  int /*<<< orphan*/  sock_t ;
 
-/* Variables and functions */
- int AF_INET6 ; 
- int /*<<< orphan*/  IPPROTO_TCP ; 
- int /*<<< orphan*/  SOCK_STREAM ; 
- int /*<<< orphan*/  TCP_MAX_BACKLOG ; 
- scalar_t__ bind_to_port (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kill_sock (int /*<<< orphan*/ ) ; 
- scalar_t__ listen (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int set_socket_dualstack (int /*<<< orphan*/ ) ; 
- int set_socket_nonblock (int /*<<< orphan*/ ) ; 
- int set_socket_reuseaddr (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sock_valid (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  socket (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint16_t ;
+typedef int sock_t ;
+
+
+ int AF_INET6 ;
+ int IPPROTO_TCP ;
+ int SOCK_STREAM ;
+ int TCP_MAX_BACKLOG ;
+ scalar_t__ bind_to_port (int ,int,int ) ;
+ int kill_sock (int ) ;
+ scalar_t__ listen (int ,int ) ;
+ int set_socket_dualstack (int ) ;
+ int set_socket_nonblock (int ) ;
+ int set_socket_reuseaddr (int ) ;
+ int sock_valid (int ) ;
+ int socket (int,int ,int ) ;
 
 __attribute__((used)) static sock_t new_listening_TCP_socket(int family, uint16_t port)
 {

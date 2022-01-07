@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  y; int /*<<< orphan*/  x; } ;
-typedef  TYPE_1__ fz_point ;
 
-/* Variables and functions */
- int /*<<< orphan*/  clear_future () ; 
- int /*<<< orphan*/  ctx ; 
- int /*<<< orphan*/  currentpage ; 
- int /*<<< orphan*/  doc ; 
- int /*<<< orphan*/  draw_page_ctm ; 
- int /*<<< orphan*/  fz_clamp_location (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fz_location_from_page_number (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- TYPE_1__ fz_transform_point_xy (float,float,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  push_history () ; 
- int /*<<< orphan*/  scroll_x ; 
- int /*<<< orphan*/  scroll_y ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int y; int x; } ;
+typedef TYPE_1__ fz_point ;
+
+
+ int clear_future () ;
+ int ctx ;
+ int currentpage ;
+ int doc ;
+ int draw_page_ctm ;
+ int fz_clamp_location (int ,int ,int ) ;
+ int fz_location_from_page_number (int ,int ,int) ;
+ TYPE_1__ fz_transform_point_xy (float,float,int ) ;
+ int push_history () ;
+ int scroll_x ;
+ int scroll_y ;
 
 __attribute__((used)) static void jump_to_page_xy(int newpage, float x, float y)
 {
-	fz_point p = fz_transform_point_xy(x, y, draw_page_ctm);
-	clear_future();
-	push_history();
-	currentpage = fz_location_from_page_number(ctx, doc, newpage);
-	currentpage = fz_clamp_location(ctx, doc, currentpage);
-	scroll_x = p.x;
-	scroll_y = p.y;
-	push_history();
+ fz_point p = fz_transform_point_xy(x, y, draw_page_ctm);
+ clear_future();
+ push_history();
+ currentpage = fz_location_from_page_number(ctx, doc, newpage);
+ currentpage = fz_clamp_location(ctx, doc, currentpage);
+ scroll_x = p.x;
+ scroll_y = p.y;
+ push_history();
 }

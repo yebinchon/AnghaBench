@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  GPIO_TypeDef ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DISABLE ; 
- int /*<<< orphan*/  ENABLE ; 
- int /*<<< orphan*/ * GPIOA ; 
- int /*<<< orphan*/ * GPIOB ; 
- int /*<<< orphan*/ * GPIOC ; 
- int /*<<< orphan*/ * GPIOD ; 
- int /*<<< orphan*/ * GPIOE ; 
- int /*<<< orphan*/ * GPIOF ; 
- int /*<<< orphan*/  IS_GPIO_ALL_PERIPH (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RCC_AHBPeriphResetCmd (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RCC_AHBPeriph_GPIOA ; 
- int /*<<< orphan*/  RCC_AHBPeriph_GPIOB ; 
- int /*<<< orphan*/  RCC_AHBPeriph_GPIOC ; 
- int /*<<< orphan*/  RCC_AHBPeriph_GPIOD ; 
- int /*<<< orphan*/  RCC_AHBPeriph_GPIOE ; 
- int /*<<< orphan*/  RCC_AHBPeriph_GPIOF ; 
- int /*<<< orphan*/  assert_param (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int GPIO_TypeDef ;
+
+
+ int DISABLE ;
+ int ENABLE ;
+ int * GPIOA ;
+ int * GPIOB ;
+ int * GPIOC ;
+ int * GPIOD ;
+ int * GPIOE ;
+ int * GPIOF ;
+ int IS_GPIO_ALL_PERIPH (int *) ;
+ int RCC_AHBPeriphResetCmd (int ,int ) ;
+ int RCC_AHBPeriph_GPIOA ;
+ int RCC_AHBPeriph_GPIOB ;
+ int RCC_AHBPeriph_GPIOC ;
+ int RCC_AHBPeriph_GPIOD ;
+ int RCC_AHBPeriph_GPIOE ;
+ int RCC_AHBPeriph_GPIOF ;
+ int assert_param (int ) ;
 
 void GPIO_DeInit(GPIO_TypeDef* GPIOx)
 {
-  /* Check the parameters */
+
   assert_param(IS_GPIO_ALL_PERIPH(GPIOx));
 
   if(GPIOx == GPIOA)

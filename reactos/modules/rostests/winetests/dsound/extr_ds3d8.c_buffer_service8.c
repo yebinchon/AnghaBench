@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int played; int buffer_size; int wave_len; int offset; int written; int /*<<< orphan*/  dsbo; } ;
-typedef  TYPE_1__ play_state_t ;
-typedef  scalar_t__ HRESULT ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- scalar_t__ DS_OK ; 
- scalar_t__ IDirectSoundBuffer_GetCurrentPosition (int /*<<< orphan*/ ,int*,int /*<<< orphan*/ *) ; 
- scalar_t__ IDirectSoundBuffer_Stop (int /*<<< orphan*/ ) ; 
- int buffer_refill8 (TYPE_1__*,int) ; 
- int buffer_silence8 (TYPE_1__*,int) ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
- int /*<<< orphan*/  trace (char*,...) ; 
- int winetest_debug ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int played; int buffer_size; int wave_len; int offset; int written; int dsbo; } ;
+typedef TYPE_1__ play_state_t ;
+typedef scalar_t__ HRESULT ;
+typedef int DWORD ;
+
+
+ scalar_t__ DS_OK ;
+ scalar_t__ IDirectSoundBuffer_GetCurrentPosition (int ,int*,int *) ;
+ scalar_t__ IDirectSoundBuffer_Stop (int ) ;
+ int buffer_refill8 (TYPE_1__*,int) ;
+ int buffer_silence8 (TYPE_1__*,int) ;
+ int ok (int,char*,scalar_t__) ;
+ int trace (char*,...) ;
+ int winetest_debug ;
 
 __attribute__((used)) static int buffer_service8(play_state_t* state)
 {
     DWORD last_play_pos,play_pos,buf_free;
     HRESULT rc;
 
-    rc=IDirectSoundBuffer_GetCurrentPosition(state->dsbo,&play_pos,NULL);
+    rc=IDirectSoundBuffer_GetCurrentPosition(state->dsbo,&play_pos,((void*)0));
     ok(rc==DS_OK,"IDirectSoundBuffer_GetCurrentPosition() failed: %08x\n", rc);
     if (rc!=DS_OK) {
         goto STOP;
     }
 
-    /* Update the amount played */
+
     last_play_pos=state->played % state->buffer_size;
     if (play_pos<last_play_pos)
         state->played+=state->buffer_size-last_play_pos+play_pos;
@@ -51,11 +51,11 @@ __attribute__((used)) static int buffer_service8(play_state_t* state)
 
     if (state->played>state->wave_len)
     {
-        /* Everything has been played */
+
         goto STOP;
     }
 
-    /* Refill the buffer */
+
     if (state->offset<=play_pos)
         buf_free=play_pos-state->offset;
     else
@@ -79,7 +79,7 @@ __attribute__((used)) static int buffer_service8(play_state_t* state)
     }
 
     if (buf_free>0) {
-        /* Fill with silence */
+
         if (winetest_debug > 1)
             trace("writing %d bytes of silence\n",buf_free);
         if (buffer_silence8(state,buf_free)==-1)

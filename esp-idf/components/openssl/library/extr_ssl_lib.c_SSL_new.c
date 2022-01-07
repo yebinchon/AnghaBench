@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int /*<<< orphan*/  session; int /*<<< orphan*/  cert; int /*<<< orphan*/  client_CA; int /*<<< orphan*/  rwstate; int /*<<< orphan*/  verify_mode; int /*<<< orphan*/  options; int /*<<< orphan*/  version; int /*<<< orphan*/  method; TYPE_1__* ctx; } ;
-struct TYPE_7__ {int /*<<< orphan*/  verify_mode; int /*<<< orphan*/  options; int /*<<< orphan*/  version; int /*<<< orphan*/  method; int /*<<< orphan*/  client_CA; int /*<<< orphan*/  cert; } ;
-typedef  TYPE_1__ SSL_CTX ;
-typedef  TYPE_2__ SSL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SSL_DEBUG (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  SSL_LIB_ERROR_LEVEL ; 
- int SSL_METHOD_CALL (int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  SSL_NOTHING ; 
- int /*<<< orphan*/  SSL_SESSION_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SSL_SESSION_new () ; 
- int /*<<< orphan*/  X509_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  __X509_new (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  __ssl_cert_new (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  new ; 
- int /*<<< orphan*/  ssl_cert_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ssl_mem_free (TYPE_2__*) ; 
- scalar_t__ ssl_mem_zalloc (int) ; 
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int session; int cert; int client_CA; int rwstate; int verify_mode; int options; int version; int method; TYPE_1__* ctx; } ;
+struct TYPE_7__ {int verify_mode; int options; int version; int method; int client_CA; int cert; } ;
+typedef TYPE_1__ SSL_CTX ;
+typedef TYPE_2__ SSL ;
+
+
+ int SSL_DEBUG (int ,char*,...) ;
+ int SSL_LIB_ERROR_LEVEL ;
+ int SSL_METHOD_CALL (int ,TYPE_2__*) ;
+ int SSL_NOTHING ;
+ int SSL_SESSION_free (int ) ;
+ int SSL_SESSION_new () ;
+ int X509_free (int ) ;
+ int __X509_new (int ) ;
+ int __ssl_cert_new (int ) ;
+ int new ;
+ int ssl_cert_free (int ) ;
+ int ssl_mem_free (TYPE_2__*) ;
+ scalar_t__ ssl_mem_zalloc (int) ;
 
 SSL *SSL_new(SSL_CTX *ctx)
 {
@@ -39,7 +39,7 @@ SSL *SSL_new(SSL_CTX *ctx)
 
     if (!ctx) {
         SSL_DEBUG(SSL_LIB_ERROR_LEVEL, "no ctx");
-        return NULL;
+        return ((void*)0);
     }
 
     ssl = (SSL *)ssl_mem_zalloc(sizeof(SSL));
@@ -93,5 +93,5 @@ failed3:
 failed2:
     ssl_mem_free(ssl);
 failed1:
-    return NULL;
+    return ((void*)0);
 }

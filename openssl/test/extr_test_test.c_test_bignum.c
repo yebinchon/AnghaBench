@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BN_dec2bn (int /*<<< orphan*/ **,char*) ; 
- int /*<<< orphan*/  BN_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TEST (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_BN_abs_eq_word (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  TEST_BN_eq (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TEST_BN_eq_one (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TEST_BN_eq_word (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  TEST_BN_eq_zero (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TEST_BN_even (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TEST_BN_ge (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TEST_BN_ge_zero (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TEST_BN_gt (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TEST_BN_gt_zero (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TEST_BN_le (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TEST_BN_le_zero (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TEST_BN_lt (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TEST_BN_lt_zero (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TEST_BN_ne (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TEST_BN_ne_zero (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TEST_BN_odd (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TEST_int_eq (int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int BIGNUM ;
+
+
+ int BN_dec2bn (int **,char*) ;
+ int BN_free (int *) ;
+ int TEST (int,int ) ;
+ int TEST_BN_abs_eq_word (int *,int) ;
+ int TEST_BN_eq (int *,int *) ;
+ int TEST_BN_eq_one (int *) ;
+ int TEST_BN_eq_word (int *,int) ;
+ int TEST_BN_eq_zero (int *) ;
+ int TEST_BN_even (int *) ;
+ int TEST_BN_ge (int *,int *) ;
+ int TEST_BN_ge_zero (int *) ;
+ int TEST_BN_gt (int *,int *) ;
+ int TEST_BN_gt_zero (int *) ;
+ int TEST_BN_le (int *,int *) ;
+ int TEST_BN_le_zero (int *) ;
+ int TEST_BN_lt (int *,int *) ;
+ int TEST_BN_lt_zero (int *) ;
+ int TEST_BN_ne (int *,int *) ;
+ int TEST_BN_ne_zero (int *) ;
+ int TEST_BN_odd (int *) ;
+ int TEST_int_eq (int ,int) ;
 
 __attribute__((used)) static int test_bignum(void)
 {
-    BIGNUM *a = NULL, *b = NULL, *c = NULL;
+    BIGNUM *a = ((void*)0), *b = ((void*)0), *c = ((void*)0);
     int r = 0;
 
     if (!TEST(1, TEST_int_eq(BN_dec2bn(&a, "0"), 1))
@@ -55,7 +55,7 @@ __attribute__((used)) static int test_bignum(void)
         | !TEST(0, TEST_BN_odd(a))
         | !TEST(1, TEST_BN_eq(b, c))
         | !TEST(0, TEST_BN_eq(a, b))
-        | !TEST(0, TEST_BN_ne(NULL, c))
+        | !TEST(0, TEST_BN_ne(((void*)0), c))
         | !TEST(1, TEST_int_eq(BN_dec2bn(&b, "1"), 1))
         | !TEST(1, TEST_BN_eq_word(b, 1))
         | !TEST(1, TEST_BN_eq_one(b))

@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ ULONG ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef scalar_t__ ULONG ;
 struct TYPE_5__ {TYPE_1__* csw; } ;
 struct TYPE_4__ {scalar_t__ Signature; scalar_t__ Tag; int Status; } ;
-typedef  TYPE_2__* PIRP_CONTEXT ;
-typedef  int /*<<< orphan*/  BOOLEAN ;
+typedef TYPE_2__* PIRP_CONTEXT ;
+typedef int BOOLEAN ;
 
-/* Variables and functions */
- scalar_t__ CSW_SIGNATURE ; 
- int /*<<< orphan*/  DPRINT1 (char*,int,...) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
+
+ scalar_t__ CSW_SIGNATURE ;
+ int DPRINT1 (char*,int,...) ;
+ int FALSE ;
+ int TRUE ;
 
 BOOLEAN
 USBSTOR_IsCSWValid(
     PIRP_CONTEXT Context)
 {
-    //
-    // sanity checks
-    //
+
+
+
     if (Context->csw->Signature != CSW_SIGNATURE)
     {
         DPRINT1("[USBSTOR] Expected Signature %x but got %x\n", CSW_SIGNATURE, Context->csw->Signature);
@@ -49,9 +49,9 @@ USBSTOR_IsCSWValid(
         return FALSE;
     }
 
-    //
-    // CSW is valid
-    //
+
+
+
     return TRUE;
 
 }

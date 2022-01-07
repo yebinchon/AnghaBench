@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-typedef  int /*<<< orphan*/  sqlite3_value ;
-struct TYPE_11__ {scalar_t__ enc; int (* xCmp ) (int /*<<< orphan*/ ,int,void const*,int,void const*) ;int /*<<< orphan*/  pUser; } ;
-struct TYPE_10__ {scalar_t__ enc; int n; void const* z; int /*<<< orphan*/  db; } ;
-typedef  TYPE_1__ Mem ;
-typedef  TYPE_2__ CollSeq ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MEM_Ephem ; 
- int /*<<< orphan*/  MEM_Null ; 
- int /*<<< orphan*/  SQLITE_NOMEM_BKPT ; 
- void* sqlite3ValueText (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  sqlite3VdbeMemInit (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3VdbeMemRelease (TYPE_1__*) ; 
- int /*<<< orphan*/  sqlite3VdbeMemShallowCopy (TYPE_1__*,TYPE_1__ const*,int /*<<< orphan*/ ) ; 
- int stub1 (int /*<<< orphan*/ ,int,void const*,int,void const*) ; 
- int stub2 (int /*<<< orphan*/ ,int,void const*,int,void const*) ; 
+
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int u8 ;
+typedef int sqlite3_value ;
+struct TYPE_11__ {scalar_t__ enc; int (* xCmp ) (int ,int,void const*,int,void const*) ;int pUser; } ;
+struct TYPE_10__ {scalar_t__ enc; int n; void const* z; int db; } ;
+typedef TYPE_1__ Mem ;
+typedef TYPE_2__ CollSeq ;
+
+
+ int MEM_Ephem ;
+ int MEM_Null ;
+ int SQLITE_NOMEM_BKPT ;
+ void* sqlite3ValueText (int *,scalar_t__) ;
+ int sqlite3VdbeMemInit (TYPE_1__*,int ,int ) ;
+ int sqlite3VdbeMemRelease (TYPE_1__*) ;
+ int sqlite3VdbeMemShallowCopy (TYPE_1__*,TYPE_1__ const*,int ) ;
+ int stub1 (int ,int,void const*,int,void const*) ;
+ int stub2 (int ,int,void const*,int,void const*) ;
 
 __attribute__((used)) static int vdbeCompareMemString(
   const Mem *pMem1,
   const Mem *pMem2,
   const CollSeq *pColl,
-  u8 *prcErr                      /* If an OOM occurs, set to SQLITE_NOMEM */
+  u8 *prcErr
 ){
   if( pMem1->enc==pColl->enc ){
-    /* The strings are already in the correct encoding.  Call the
-     ** comparison function directly */
+
+
     return pColl->xCmp(pColl->pUser,pMem1->n,pMem1->z,pMem2->n,pMem2->z);
   }else{
     int rc;

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT8 ;
-typedef  int /*<<< orphan*/  UINT32 ;
-typedef  int /*<<< orphan*/  ACPI_STATUS ;
-typedef  int /*<<< orphan*/  ACPI_NAMESPACE_NODE ;
 
-/* Variables and functions */
- scalar_t__ ACPI_FAILURE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AcpiDmCreateSubobjectForExternal (int /*<<< orphan*/ ,int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AcpiDmResolveExternal (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
+
+
+
+typedef int UINT8 ;
+typedef int UINT32 ;
+typedef int ACPI_STATUS ;
+typedef int ACPI_NAMESPACE_NODE ;
+
+
+ scalar_t__ ACPI_FAILURE (int ) ;
+ int AcpiDmCreateSubobjectForExternal (int ,int **,int ) ;
+ int AcpiDmResolveExternal (char*,int ,int **) ;
 
 void
 AcpiDmAddOneExternalToNamespace (
-    char                    *Path,
-    UINT8                   Type,
-    UINT32                  ParamCount)
+    char *Path,
+    UINT8 Type,
+    UINT32 ParamCount)
 {
-    ACPI_STATUS             Status;
-    ACPI_NAMESPACE_NODE     *Node;
+    ACPI_STATUS Status;
+    ACPI_NAMESPACE_NODE *Node;
 
 
     Status = AcpiDmResolveExternal (Path, Type, &Node);

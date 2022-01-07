@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  IObjectSafety ;
-typedef  scalar_t__ HRESULT ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IID_IDispatch ; 
- int /*<<< orphan*/  IID_IObjectSafety ; 
- int /*<<< orphan*/  IObjectSafety_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IObjectSafety_SetInterfaceSafetyOptions (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int) ; 
- scalar_t__ IUnknown_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
+
+
+
+typedef int IUnknown ;
+typedef int IObjectSafety ;
+typedef scalar_t__ HRESULT ;
+typedef int DWORD ;
+
+
+ int IID_IDispatch ;
+ int IID_IObjectSafety ;
+ int IObjectSafety_Release (int *) ;
+ scalar_t__ IObjectSafety_SetInterfaceSafetyOptions (int *,int *,int,int) ;
+ scalar_t__ IUnknown_QueryInterface (int *,int *,void**) ;
+ scalar_t__ S_OK ;
+ int ok (int,char*,scalar_t__) ;
 
 __attribute__((used)) static void set_safety_opt(IUnknown *unk, DWORD mask, DWORD opts)
 {

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ LONG ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  IHTMLTextContainer ;
-typedef  int /*<<< orphan*/  IHTMLElement2 ;
-typedef  scalar_t__ HRESULT ;
 
-/* Variables and functions */
- scalar_t__ E_INVALIDARG ; 
- int /*<<< orphan*/  IHTMLElement2_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IHTMLElement2_get_scrollLeft (int /*<<< orphan*/ *,scalar_t__*) ; 
- int /*<<< orphan*/  IHTMLTextContainer_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IHTMLTextContainer_get_scrollLeft (int /*<<< orphan*/ *,scalar_t__*) ; 
- int /*<<< orphan*/  IID_IHTMLTextContainer ; 
- scalar_t__ IUnknown_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/ * _get_elem2_iface (unsigned int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__,...) ; 
+
+
+
+typedef scalar_t__ LONG ;
+typedef int IUnknown ;
+typedef int IHTMLTextContainer ;
+typedef int IHTMLElement2 ;
+typedef scalar_t__ HRESULT ;
+
+
+ scalar_t__ E_INVALIDARG ;
+ int IHTMLElement2_Release (int *) ;
+ scalar_t__ IHTMLElement2_get_scrollLeft (int *,scalar_t__*) ;
+ int IHTMLTextContainer_Release (int *) ;
+ scalar_t__ IHTMLTextContainer_get_scrollLeft (int *,scalar_t__*) ;
+ int IID_IHTMLTextContainer ;
+ scalar_t__ IUnknown_QueryInterface (int *,int *,void**) ;
+ scalar_t__ S_OK ;
+ int * _get_elem2_iface (unsigned int,int *) ;
+ int ok (int,char*,scalar_t__,...) ;
 
 __attribute__((used)) static void _elem_get_scroll_left(unsigned line, IUnknown *unk)
 {
@@ -35,7 +35,7 @@ __attribute__((used)) static void _elem_get_scroll_left(unsigned line, IUnknown 
     LONG l = -1, l2 = -1;
     HRESULT hres;
 
-    hres = IHTMLElement2_get_scrollLeft(elem, NULL);
+    hres = IHTMLElement2_get_scrollLeft(elem, ((void*)0));
     ok(hres == E_INVALIDARG, "expect E_INVALIDARG got 0x%08x\n", hres);
 
     hres = IHTMLElement2_get_scrollLeft(elem, &l);

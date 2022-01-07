@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct MPOpts {int /*<<< orphan*/  term_osd_bar_chars; } ;
+
+
+
+
+struct MPOpts {int term_osd_bar_chars; } ;
 struct MPContext {struct MPOpts* opts; } ;
-typedef  int /*<<< orphan*/  bstr ;
+typedef int bstr ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BSTR_P (int /*<<< orphan*/ ) ; 
- int MPCLAMP (int,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  bstr0 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bstr_split_utf8 (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int get_current_pos_ratio (struct MPContext*,int) ; 
- int /*<<< orphan*/  saddf (char**,char*,int /*<<< orphan*/ ) ; 
+
+ int BSTR_P (int ) ;
+ int MPCLAMP (int,int ,int) ;
+ int bstr0 (int ) ;
+ int bstr_split_utf8 (int ,int *) ;
+ int get_current_pos_ratio (struct MPContext*,int) ;
+ int saddf (char**,char*,int ) ;
 
 __attribute__((used)) static void add_term_osd_bar(struct MPContext *mpctx, char **line, int width)
 {
@@ -29,7 +29,7 @@ __attribute__((used)) static void add_term_osd_bar(struct MPContext *mpctx, char
     if (width < 5)
         return;
 
-    int pos = get_current_pos_ratio(mpctx, false) * (width - 3);
+    int pos = get_current_pos_ratio(mpctx, 0) * (width - 3);
     pos = MPCLAMP(pos, 0, width - 3);
 
     bstr chars = bstr0(opts->term_osd_bar_chars);

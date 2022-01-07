@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  JSON_Value ;
 
-/* Variables and functions */
- size_t MAX_NESTING ; 
- int /*<<< orphan*/  SKIP_WHITESPACES (char const**) ; 
- int /*<<< orphan*/ * parse_array_value (char const**,size_t) ; 
- int /*<<< orphan*/ * parse_boolean_value (char const**) ; 
- int /*<<< orphan*/ * parse_null_value (char const**) ; 
- int /*<<< orphan*/ * parse_number_value (char const**) ; 
- int /*<<< orphan*/ * parse_object_value (char const**,size_t) ; 
- int /*<<< orphan*/ * parse_string_value (char const**) ; 
+
+
+
+typedef int JSON_Value ;
+
+
+ size_t MAX_NESTING ;
+ int SKIP_WHITESPACES (char const**) ;
+ int * parse_array_value (char const**,size_t) ;
+ int * parse_boolean_value (char const**) ;
+ int * parse_null_value (char const**) ;
+ int * parse_number_value (char const**) ;
+ int * parse_object_value (char const**,size_t) ;
+ int * parse_string_value (char const**) ;
 
 __attribute__((used)) static JSON_Value * parse_value(const char **string, size_t nesting) {
     if (nesting > MAX_NESTING) {
-        return NULL;
+        return ((void*)0);
     }
     SKIP_WHITESPACES(string);
     switch (**string) {
@@ -43,6 +43,6 @@ __attribute__((used)) static JSON_Value * parse_value(const char **string, size_
         case 'n':
             return parse_null_value(string);
         default:
-            return NULL;
+            return ((void*)0);
     }
 }

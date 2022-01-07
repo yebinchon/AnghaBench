@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct passwd {char const* pw_dir; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ID0realuid () ; 
- int LINE_LEN ; 
- int /*<<< orphan*/  endpwent () ; 
- char* getenv (char*) ; 
- struct passwd* getpwnam (char*) ; 
- struct passwd* getpwuid (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  isalnum (char const) ; 
- scalar_t__ issep (char const) ; 
- char* strchr (char const*,char) ; 
- size_t strlen (char const*) ; 
- int /*<<< orphan*/  strncpy (char*,char const*,int) ; 
+
+ int ID0realuid () ;
+ int LINE_LEN ;
+ int endpwent () ;
+ char* getenv (char*) ;
+ struct passwd* getpwnam (char*) ;
+ struct passwd* getpwuid (int ) ;
+ int isalnum (char const) ;
+ scalar_t__ issep (char const) ;
+ char* strchr (char const*,char) ;
+ size_t strlen (char const*) ;
+ int strncpy (char*,char const*,int) ;
 
 const char *
 InterpretArg(const char *from, char *to)
@@ -51,17 +51,17 @@ InterpretArg(const char *from, char *to)
         switch (*++from) {
           case '$':
           case '~':
-            break;		/* Swallow the escapes */
+            break;
 
           default:
-            *to++ = '\\';	/* Pass the escapes on, maybe skipping \# */
+            *to++ = '\\';
             break;
         }
         *to++ = *from++;
         break;
       case '$':
         if (from[1] == '$') {
-          *to = '\0';	/* For an empty var name below */
+          *to = '\0';
           from += 2;
         } else if (from[1] == '{') {
           ptr = strchr(from+2, '}');
@@ -89,7 +89,7 @@ InterpretArg(const char *from, char *to)
         }
         if (*to == '\0')
           *to++ = '$';
-        else if ((env = getenv(to)) != NULL) {
+        else if ((env = getenv(to)) != ((void*)0)) {
           strncpy(to, env, endto - to);
           *endto = '\0';
           to += strlen(to);
@@ -106,7 +106,7 @@ InterpretArg(const char *from, char *to)
           to[len] = '\0';
           pwd = getpwnam(to);
         }
-        if (pwd == NULL)
+        if (pwd == ((void*)0))
           *to++ = '~';
         else {
           strncpy(to, pwd->pw_dir, endto - to);

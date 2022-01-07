@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct assembly {void* type; void* token; void* arch; void* version; void* name; int /*<<< orphan*/  files; } ;
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  LONG ;
-typedef  int /*<<< orphan*/  IXMLDOMNodeList ;
-typedef  int /*<<< orphan*/  IXMLDOMNode ;
-typedef  int /*<<< orphan*/  IXMLDOMNamedNodeMap ;
-typedef  int /*<<< orphan*/  IXMLDOMDocument ;
-typedef  scalar_t__ HRESULT ;
-typedef  int /*<<< orphan*/  BSTR ;
 
-/* Variables and functions */
- scalar_t__ ERROR_SXS_MANIFEST_FORMAT_ERROR ; 
- scalar_t__ E_OUTOFMEMORY ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HEAP_ZERO_MEMORY ; 
- struct assembly* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- scalar_t__ IXMLDOMDocument_getElementsByTagName (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IXMLDOMNamedNodeMap_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IXMLDOMNodeList_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IXMLDOMNodeList_get_length (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ IXMLDOMNodeList_nextNode (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IXMLDOMNode_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IXMLDOMNode_get_attributes (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  SysAllocString (char const*) ; 
- int /*<<< orphan*/  SysFreeString (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WARN (char*) ; 
- int /*<<< orphan*/  free_assembly (struct assembly*) ; 
- void* get_attribute_value (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  list_init (int /*<<< orphan*/ *) ; 
- scalar_t__ parse_files (int /*<<< orphan*/ *,struct assembly*) ; 
- scalar_t__ strcmpW (void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  win32W ; 
- int /*<<< orphan*/  win32_policyW ; 
+
+
+
+struct assembly {void* type; void* token; void* arch; void* version; void* name; int files; } ;
+typedef char WCHAR ;
+typedef int LONG ;
+typedef int IXMLDOMNodeList ;
+typedef int IXMLDOMNode ;
+typedef int IXMLDOMNamedNodeMap ;
+typedef int IXMLDOMDocument ;
+typedef scalar_t__ HRESULT ;
+typedef int BSTR ;
+
+
+ scalar_t__ ERROR_SXS_MANIFEST_FORMAT_ERROR ;
+ scalar_t__ E_OUTOFMEMORY ;
+ int GetProcessHeap () ;
+ int HEAP_ZERO_MEMORY ;
+ struct assembly* HeapAlloc (int ,int ,int) ;
+ scalar_t__ IXMLDOMDocument_getElementsByTagName (int *,int ,int **) ;
+ int IXMLDOMNamedNodeMap_Release (int *) ;
+ int IXMLDOMNodeList_Release (int *) ;
+ scalar_t__ IXMLDOMNodeList_get_length (int *,int *) ;
+ scalar_t__ IXMLDOMNodeList_nextNode (int *,int **) ;
+ int IXMLDOMNode_Release (int *) ;
+ scalar_t__ IXMLDOMNode_get_attributes (int *,int **) ;
+ scalar_t__ S_OK ;
+ int SysAllocString (char const*) ;
+ int SysFreeString (int ) ;
+ int WARN (char*) ;
+ int free_assembly (struct assembly*) ;
+ void* get_attribute_value (int *,char const*) ;
+ int list_init (int *) ;
+ scalar_t__ parse_files (int *,struct assembly*) ;
+ scalar_t__ strcmpW (void*,int ) ;
+ int win32W ;
+ int win32_policyW ;
 
 __attribute__((used)) static HRESULT parse_assembly( IXMLDOMDocument *doc, struct assembly **assembly )
 {
@@ -53,10 +53,10 @@ __attribute__((used)) static HRESULT parse_assembly( IXMLDOMDocument *doc, struc
     static const WCHAR versionW[] = {'v','e','r','s','i','o','n',0};
     static const WCHAR architectureW[] = {'p','r','o','c','e','s','s','o','r','A','r','c','h','i','t','e','c','t','u','r','e',0};
     static const WCHAR tokenW[] = {'p','u','b','l','i','c','K','e','y','T','o','k','e','n',0};
-    IXMLDOMNodeList *list = NULL;
-    IXMLDOMNode *node = NULL;
-    IXMLDOMNamedNodeMap *attrs = NULL;
-    struct assembly *a = NULL;
+    IXMLDOMNodeList *list = ((void*)0);
+    IXMLDOMNode *node = ((void*)0);
+    IXMLDOMNamedNodeMap *attrs = ((void*)0);
+    struct assembly *a = ((void*)0);
     BSTR str;
     HRESULT hr;
     LONG len;
@@ -90,11 +90,11 @@ __attribute__((used)) static HRESULT parse_assembly( IXMLDOMDocument *doc, struc
     hr = IXMLDOMNode_get_attributes( node, &attrs );
     if (hr != S_OK) goto done;
 
-    a->type    = get_attribute_value( attrs, typeW );
-    a->name    = get_attribute_value( attrs, nameW );
+    a->type = get_attribute_value( attrs, typeW );
+    a->name = get_attribute_value( attrs, nameW );
     a->version = get_attribute_value( attrs, versionW );
-    a->arch    = get_attribute_value( attrs, architectureW );
-    a->token   = get_attribute_value( attrs, tokenW );
+    a->arch = get_attribute_value( attrs, architectureW );
+    a->token = get_attribute_value( attrs, tokenW );
 
     if (!a->type || (strcmpW( a->type, win32W ) && strcmpW( a->type, win32_policyW )) ||
         !a->name || !a->version || !a->arch || !a->token)

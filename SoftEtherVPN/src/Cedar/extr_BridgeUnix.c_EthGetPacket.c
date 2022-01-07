@@ -1,70 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT ;
-struct TYPE_8__ {int /*<<< orphan*/ * Tap; scalar_t__ IsRawIpMode; } ;
-typedef  TYPE_1__ ETH ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EthGetPacketBpf (TYPE_1__*,void**) ; 
- int /*<<< orphan*/  EthGetPacketLinux (TYPE_1__*,void**) ; 
- int /*<<< orphan*/  EthGetPacketLinuxIpRaw (TYPE_1__*,void**) ; 
- int /*<<< orphan*/  EthGetPacketPcap (TYPE_1__*,void**) ; 
- int /*<<< orphan*/  EthGetPacketSolaris (TYPE_1__*,void**) ; 
- int /*<<< orphan*/  INFINITE ; 
- int VLanGetNextPacket (int /*<<< orphan*/ *,void**,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int UINT ;
+struct TYPE_8__ {int * Tap; scalar_t__ IsRawIpMode; } ;
+typedef TYPE_1__ ETH ;
+
+
+ int EthGetPacketBpf (TYPE_1__*,void**) ;
+ int EthGetPacketLinux (TYPE_1__*,void**) ;
+ int EthGetPacketLinuxIpRaw (TYPE_1__*,void**) ;
+ int EthGetPacketPcap (TYPE_1__*,void**) ;
+ int EthGetPacketSolaris (TYPE_1__*,void**) ;
+ int INFINITE ;
+ int VLanGetNextPacket (int *,void**,int *) ;
 
 UINT EthGetPacket(ETH *e, void **data)
 {
-	// Validate arguments
-	if (e == NULL || data == NULL)
-	{
-		return INFINITE;
-	}
 
-#ifdef	UNIX_LINUX
-	if (e->IsRawIpMode)
-	{
-		return EthGetPacketLinuxIpRaw(e, data);
-	}
-#endif
+ if (e == ((void*)0) || data == ((void*)0))
+ {
+  return INFINITE;
+ }
+ if (e->Tap != ((void*)0))
+ {
 
-	if (e->Tap != NULL)
-	{
-#ifndef	NO_VLAN
-		// TAP mode
-		void *buf;
-		UINT size;
 
-		if (VLanGetNextPacket(e->Tap, &buf, &size) == false)
-		{
-			return INFINITE;
-		}
+  void *buf;
+  UINT size;
 
-		*data = buf;
-		return size;
-#else
-		return INFINITE;
-#endif
-	}
+  if (VLanGetNextPacket(e->Tap, &buf, &size) == 0)
+  {
+   return INFINITE;
+  }
 
-#if		defined(UNIX_LINUX)
-	return EthGetPacketLinux(e, data);
-#elif	defined(UNIX_SOLARIS)
-	return EthGetPacketSolaris(e, data);
-#elif	defined(BRIDGE_PCAP)
-	return EthGetPacketPcap(e, data);
-#elif	defined(BRIDGE_BPF)
-	return EthGetPacketBpf(e, data);
-#endif
+  *data = buf;
+  return size;
+
+
+
+ }
 }

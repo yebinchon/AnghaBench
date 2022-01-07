@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  opj_tcp_t ;
-typedef  int /*<<< orphan*/  opj_tcd_tile_t ;
-typedef  int /*<<< orphan*/  opj_t2_t ;
-typedef  int /*<<< orphan*/  opj_pi_iterator_t ;
-typedef  int /*<<< orphan*/  opj_packet_info_t ;
-typedef  int /*<<< orphan*/  opj_event_mgr_t ;
-typedef  scalar_t__ OPJ_UINT32 ;
-typedef  int /*<<< orphan*/  OPJ_BYTE ;
-typedef  scalar_t__ OPJ_BOOL ;
 
-/* Variables and functions */
- scalar_t__ OPJ_FALSE ; 
- scalar_t__ OPJ_TRUE ; 
- int /*<<< orphan*/  opj_t2_read_packet_data (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__*,scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  opj_t2_read_packet_header (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__*,int /*<<< orphan*/ *,scalar_t__*,scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int opj_tcp_t ;
+typedef int opj_tcd_tile_t ;
+typedef int opj_t2_t ;
+typedef int opj_pi_iterator_t ;
+typedef int opj_packet_info_t ;
+typedef int opj_event_mgr_t ;
+typedef scalar_t__ OPJ_UINT32 ;
+typedef int OPJ_BYTE ;
+typedef scalar_t__ OPJ_BOOL ;
+
+
+ scalar_t__ OPJ_FALSE ;
+ scalar_t__ OPJ_TRUE ;
+ int opj_t2_read_packet_data (int *,int *,int *,int *,scalar_t__*,scalar_t__,int *,int *) ;
+ int opj_t2_read_packet_header (int *,int *,int *,int *,scalar_t__*,int *,scalar_t__*,scalar_t__,int *,int *) ;
 
 __attribute__((used)) static OPJ_BOOL opj_t2_decode_packet(opj_t2_t* p_t2,
                                      opj_tcd_tile_t *p_tile,
@@ -51,7 +51,7 @@ __attribute__((used)) static OPJ_BOOL opj_t2_decode_packet(opj_t2_t* p_t2,
     l_nb_total_bytes_read += l_nb_bytes_read;
     p_max_length -= l_nb_bytes_read;
 
-    /* we should read data for the packet */
+
     if (l_read_data) {
         l_nb_bytes_read = 0;
 

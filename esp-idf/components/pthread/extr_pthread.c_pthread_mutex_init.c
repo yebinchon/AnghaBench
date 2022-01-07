@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int type; int /*<<< orphan*/  is_initialized; } ;
-typedef  TYPE_1__ pthread_mutexattr_t ;
-typedef  scalar_t__ pthread_mutex_t ;
-struct TYPE_7__ {int type; int /*<<< orphan*/  sem; } ;
-typedef  TYPE_2__ esp_pthread_mutex_t ;
 
-/* Variables and functions */
- int EAGAIN ; 
- int EINVAL ; 
- int ENOMEM ; 
- int PTHREAD_MUTEX_NORMAL ; 
- int PTHREAD_MUTEX_RECURSIVE ; 
- int /*<<< orphan*/  free (TYPE_2__*) ; 
- scalar_t__ malloc (int) ; 
- int mutexattr_check (TYPE_1__ const*) ; 
- int /*<<< orphan*/  xSemaphoreCreateMutex () ; 
- int /*<<< orphan*/  xSemaphoreCreateRecursiveMutex () ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int type; int is_initialized; } ;
+typedef TYPE_1__ pthread_mutexattr_t ;
+typedef scalar_t__ pthread_mutex_t ;
+struct TYPE_7__ {int type; int sem; } ;
+typedef TYPE_2__ esp_pthread_mutex_t ;
+
+
+ int EAGAIN ;
+ int EINVAL ;
+ int ENOMEM ;
+ int PTHREAD_MUTEX_NORMAL ;
+ int PTHREAD_MUTEX_RECURSIVE ;
+ int free (TYPE_2__*) ;
+ scalar_t__ malloc (int) ;
+ int mutexattr_check (TYPE_1__ const*) ;
+ int xSemaphoreCreateMutex () ;
+ int xSemaphoreCreateRecursiveMutex () ;
 
 int pthread_mutex_init(pthread_mutex_t *mutex, const pthread_mutexattr_t *attr)
 {
@@ -65,7 +65,7 @@ int pthread_mutex_init(pthread_mutex_t *mutex, const pthread_mutexattr_t *attr)
         return EAGAIN;
     }
 
-    *mutex = (pthread_mutex_t)mux; // pointer value fit into pthread_mutex_t (uint32_t)
+    *mutex = (pthread_mutex_t)mux;
 
     return 0;
 }

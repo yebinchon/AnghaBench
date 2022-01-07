@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint ;
 
-/* Variables and functions */
- int GPIO_INPUT_GET (int) ; 
- int READ_PERI_REG (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RTC_GPIO_IN_DATA ; 
+
+
+
+typedef int uint ;
+
+
+ int GPIO_INPUT_GET (int) ;
+ int READ_PERI_REG (int ) ;
+ int RTC_GPIO_IN_DATA ;
 
 int pin_get(uint pin) {
     if (pin == 16) {

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sds ;
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int sds ;
 struct TYPE_6__ {char* ptr; } ;
-typedef  TYPE_1__ robj ;
-typedef  int /*<<< orphan*/  buf ;
+typedef TYPE_1__ robj ;
+typedef int buf ;
 
-/* Variables and functions */
- int /*<<< orphan*/  decrRefCount (TYPE_1__*) ; 
- TYPE_1__* getDecodedObject (TYPE_1__*) ; 
- int ll2string (char*,int,int) ; 
- int /*<<< orphan*/  sdscatlen (int /*<<< orphan*/ ,char*,int) ; 
- int sdslen (char*) ; 
+
+ int decrRefCount (TYPE_1__*) ;
+ TYPE_1__* getDecodedObject (TYPE_1__*) ;
+ int ll2string (char*,int,int) ;
+ int sdscatlen (int ,char*,int) ;
+ int sdslen (char*) ;
 
 sds catAppendOnlyGenericCommand(sds dst, int argc, robj **argv) {
     char buf[32];

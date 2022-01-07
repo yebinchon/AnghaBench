@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_6__ {TYPE_1__* cfg; } ;
-typedef  TYPE_2__ pci_desc ;
+typedef TYPE_2__ pci_desc ;
 struct TYPE_5__ {unsigned long addr; void* data; } ;
 
-/* Variables and functions */
- unsigned long pci_cfg_addr (int,int,int,int) ; 
- unsigned long pci_read (TYPE_2__*,int,int,int,int,int) ; 
- void* rev32 (unsigned long) ; 
- int /*<<< orphan*/  sync () ; 
+
+ unsigned long pci_cfg_addr (int,int,int,int) ;
+ unsigned long pci_read (TYPE_2__*,int,int,int,int,int) ;
+ void* rev32 (unsigned long) ;
+ int sync () ;
 
 void pci_write( pci_desc *desc, int bus, int dev, int fn, int reg, int len, int val ) {
     unsigned long save_state = desc->cfg->addr;

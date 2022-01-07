@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ACPI_STATUS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACPI_DB_READ_METHOD ; 
- int /*<<< orphan*/  ACPI_DB_WRITE_METHOD ; 
- scalar_t__ ACPI_FAILURE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ACPI_ROOT_OBJECT ; 
- int /*<<< orphan*/  ACPI_TYPE_ANY ; 
- int /*<<< orphan*/  ACPI_UINT32_MAX ; 
- int /*<<< orphan*/  AcpiDbTestOneObject ; 
- int /*<<< orphan*/  AcpiFormatException (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AcpiGetHandle (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  AcpiInstallMethod (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AcpiOsPrintf (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AcpiWalkNamespace (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ReadHandle ; 
- int /*<<< orphan*/  ReadMethodCode ; 
- int /*<<< orphan*/  WriteHandle ; 
- int /*<<< orphan*/  WriteMethodCode ; 
+
+
+
+typedef int ACPI_STATUS ;
+
+
+ int ACPI_DB_READ_METHOD ;
+ int ACPI_DB_WRITE_METHOD ;
+ scalar_t__ ACPI_FAILURE (int ) ;
+ int ACPI_ROOT_OBJECT ;
+ int ACPI_TYPE_ANY ;
+ int ACPI_UINT32_MAX ;
+ int AcpiDbTestOneObject ;
+ int AcpiFormatException (int ) ;
+ int AcpiGetHandle (int *,int ,int *) ;
+ int AcpiInstallMethod (int ) ;
+ int AcpiOsPrintf (char*,int ) ;
+ int AcpiWalkNamespace (int ,int ,int ,int ,int *,int *,int *) ;
+ int ReadHandle ;
+ int ReadMethodCode ;
+ int WriteHandle ;
+ int WriteMethodCode ;
 
 __attribute__((used)) static void
 AcpiDbTestAllObjects (
     void)
 {
-    ACPI_STATUS             Status;
+    ACPI_STATUS Status;
 
 
-    /* Install the debugger read-object control method if necessary */
+
 
     if (!ReadHandle)
     {
@@ -49,7 +49,7 @@ AcpiDbTestAllObjects (
             return;
         }
 
-        Status = AcpiGetHandle (NULL, ACPI_DB_READ_METHOD, &ReadHandle);
+        Status = AcpiGetHandle (((void*)0), ACPI_DB_READ_METHOD, &ReadHandle);
         if (ACPI_FAILURE (Status))
         {
             AcpiOsPrintf ("Could not obtain handle for debug method %s\n",
@@ -58,7 +58,7 @@ AcpiDbTestAllObjects (
         }
     }
 
-    /* Install the debugger write-object control method if necessary */
+
 
     if (!WriteHandle)
     {
@@ -70,7 +70,7 @@ AcpiDbTestAllObjects (
             return;
         }
 
-        Status = AcpiGetHandle (NULL, ACPI_DB_WRITE_METHOD, &WriteHandle);
+        Status = AcpiGetHandle (((void*)0), ACPI_DB_WRITE_METHOD, &WriteHandle);
         if (ACPI_FAILURE (Status))
         {
             AcpiOsPrintf ("Could not obtain handle for debug method %s\n",
@@ -79,8 +79,8 @@ AcpiDbTestAllObjects (
         }
     }
 
-    /* Walk the entire namespace, testing each supported named data object */
+
 
     (void) AcpiWalkNamespace (ACPI_TYPE_ANY, ACPI_ROOT_OBJECT,
-        ACPI_UINT32_MAX, AcpiDbTestOneObject, NULL, NULL, NULL);
+        ACPI_UINT32_MAX, AcpiDbTestOneObject, ((void*)0), ((void*)0), ((void*)0));
 }

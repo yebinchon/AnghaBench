@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct thread {int dummy; } ;
 struct rlimit {int dummy; } ;
-struct __setrlimit_args {int /*<<< orphan*/  which; int /*<<< orphan*/  rlp; } ;
+struct __setrlimit_args {int which; int rlp; } ;
 
-/* Variables and functions */
- int copyin (int /*<<< orphan*/ ,struct rlimit*,int) ; 
- int kern_setrlimit (struct thread*,int /*<<< orphan*/ ,struct rlimit*) ; 
+
+ int copyin (int ,struct rlimit*,int) ;
+ int kern_setrlimit (struct thread*,int ,struct rlimit*) ;
 
 int
 sys_setrlimit(struct thread *td, struct __setrlimit_args *uap)
 {
-	struct rlimit alim;
-	int error;
+ struct rlimit alim;
+ int error;
 
-	if ((error = copyin(uap->rlp, &alim, sizeof(struct rlimit))))
-		return (error);
-	error = kern_setrlimit(td, uap->which, &alim);
-	return (error);
+ if ((error = copyin(uap->rlp, &alim, sizeof(struct rlimit))))
+  return (error);
+ error = kern_setrlimit(td, uap->which, &alim);
+ return (error);
 }

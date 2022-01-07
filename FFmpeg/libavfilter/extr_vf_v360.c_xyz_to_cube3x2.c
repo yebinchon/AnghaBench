@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint16_t ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint16_t ;
 struct TYPE_5__ {float fin_pad; float in_width; float in_pad; float in_height; int* in_cubemap_face_order; } ;
-typedef  TYPE_1__ V360Context ;
+typedef TYPE_1__ V360Context ;
 
-/* Variables and functions */
- int av_clip (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int ceilf (float const) ; 
- int floorf (float) ; 
- int /*<<< orphan*/  process_cube_coordinates (TYPE_1__ const*,float,float,int,float*,float*,int*) ; 
- int /*<<< orphan*/  roundf (float) ; 
- int /*<<< orphan*/  xyz_to_cube (TYPE_1__ const*,float const*,float*,float*,int*) ; 
+
+ int av_clip (int ,int ,int) ;
+ int ceilf (float const) ;
+ int floorf (float) ;
+ int process_cube_coordinates (TYPE_1__ const*,float,float,int,float*,float*,int*) ;
+ int roundf (float) ;
+ int xyz_to_cube (TYPE_1__ const*,float const*,float*,float*,int*) ;
 
 __attribute__((used)) static void xyz_to_cube3x2(const V360Context *s,
                            const float *vec, int width, int height,
                            uint16_t us[4][4], uint16_t vs[4][4], float *du, float *dv)
 {
-    const float scalew = s->fin_pad > 0 ? 1.f - s->fin_pad / (s->in_width  / 3.f) : 1.f - s->in_pad;
+    const float scalew = s->fin_pad > 0 ? 1.f - s->fin_pad / (s->in_width / 3.f) : 1.f - s->in_pad;
     const float scaleh = s->fin_pad > 0 ? 1.f - s->fin_pad / (s->in_height / 2.f) : 1.f - s->in_pad;
-    const float ew = width  / 3.f;
+    const float ew = width / 3.f;
     const float eh = height / 2.f;
     float uf, vf;
     int ui, vi;

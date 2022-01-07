@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char const NUL ; 
- unsigned char* charmap ; 
+ char const NUL ;
+ unsigned char* charmap ;
 
 void
 strequate(char const * s)
 {
-    if ((s != NULL) && (*s != NUL)) {
+    if ((s != ((void*)0)) && (*s != NUL)) {
         unsigned char equiv = (unsigned char)*s;
         while (*s != NUL)
             charmap[(unsigned char)*(s++)] = equiv;

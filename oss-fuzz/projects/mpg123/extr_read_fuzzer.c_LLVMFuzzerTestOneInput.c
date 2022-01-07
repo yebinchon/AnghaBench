@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  mpg123_handle ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MPG123_ADD_FLAGS ; 
- int MPG123_OK ; 
- int /*<<< orphan*/  MPG123_QUIET ; 
- int /*<<< orphan*/  free (unsigned char*) ; 
- char* fuzzer_get_tmpfile (int /*<<< orphan*/  const*,size_t) ; 
- int /*<<< orphan*/  fuzzer_release_tmpfile (char*) ; 
- scalar_t__ malloc (size_t) ; 
- int /*<<< orphan*/  mpg123_close (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mpg123_delete (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mpg123_init () ; 
- int /*<<< orphan*/ * mpg123_new (int /*<<< orphan*/ *,int*) ; 
- int mpg123_open (int /*<<< orphan*/ *,char*) ; 
- int mpg123_param (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int mpg123_read (int /*<<< orphan*/ *,unsigned char*,size_t,size_t*) ; 
- int mpg123_tell_stream (int /*<<< orphan*/ *) ; 
- int mpg123_tellframe (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int uint8_t ;
+typedef int mpg123_handle ;
+
+
+ int MPG123_ADD_FLAGS ;
+ int MPG123_OK ;
+ int MPG123_QUIET ;
+ int free (unsigned char*) ;
+ char* fuzzer_get_tmpfile (int const*,size_t) ;
+ int fuzzer_release_tmpfile (char*) ;
+ scalar_t__ malloc (size_t) ;
+ int mpg123_close (int *) ;
+ int mpg123_delete (int *) ;
+ int mpg123_init () ;
+ int * mpg123_new (int *,int*) ;
+ int mpg123_open (int *,char*) ;
+ int mpg123_param (int *,int ,int ,int) ;
+ int mpg123_read (int *,unsigned char*,size_t,size_t*) ;
+ int mpg123_tell_stream (int *) ;
+ int mpg123_tellframe (int *) ;
 
 int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
-  static bool initialized = false;
+  static bool initialized = 0;
   if (!initialized) {
     mpg123_init();
-    initialized = true;
+    initialized = 1;
   }
   char* filename = fuzzer_get_tmpfile(data, size);
-  if (filename == NULL) {
+  if (filename == ((void*)0)) {
     return 0;
   }
 
-  size_t outmemorysize = size * 2;  // Guess based on the size of data.
+  size_t outmemorysize = size * 2;
   unsigned char* outmemory = (unsigned char*)malloc(outmemorysize);
-  if (outmemory == NULL) {
+  if (outmemory == ((void*)0)) {
     fuzzer_release_tmpfile(filename);
     return 0;
   }
 
   int error;
-  mpg123_handle* handle = mpg123_new(NULL, &error);
-  if (handle == NULL || mpg123_param(handle,
+  mpg123_handle* handle = mpg123_new(((void*)0), &error);
+  if (handle == ((void*)0) || mpg123_param(handle,
       MPG123_ADD_FLAGS, MPG123_QUIET, 0.) != MPG123_OK) {
     free(outmemory);
     fuzzer_release_tmpfile(filename);

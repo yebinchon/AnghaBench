@@ -1,60 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_19__   TYPE_9__ ;
-typedef  struct TYPE_18__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_19__ {int dwFlags; int /*<<< orphan*/  dwContext; } ;
-struct TYPE_18__ {int status_code; scalar_t__ contentLength; int /*<<< orphan*/ * verb; TYPE_9__ hdr; int /*<<< orphan*/  netconn; } ;
-typedef  TYPE_1__ http_request_t ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  INT ;
-typedef  int /*<<< orphan*/  DWORD_PTR ;
-typedef  scalar_t__ DWORD ;
 
-/* Variables and functions */
- scalar_t__ ERROR_HTTP_HEADER_NOT_FOUND ; 
- scalar_t__ ERROR_INTERNET_OPERATION_CANCELLED ; 
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  FALSE ; 
- scalar_t__ HTTP_GetResponseHeaders (TYPE_1__*,int /*<<< orphan*/ *) ; 
- scalar_t__ HTTP_HandleRedirect (TYPE_1__*,int /*<<< orphan*/ *) ; 
- scalar_t__ HTTP_HttpSendRequestW (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HTTP_ProcessCookies (TYPE_1__*) ; 
- int /*<<< orphan*/  HTTP_ProcessExpires (TYPE_1__*) ; 
- int /*<<< orphan*/  HTTP_ProcessLastModified (TYPE_1__*) ; 
- int /*<<< orphan*/  HTTP_ReceiveRequestData (TYPE_1__*) ; 
-#define  HTTP_STATUS_MOVED 131 
-#define  HTTP_STATUS_REDIRECT 130 
-#define  HTTP_STATUS_REDIRECT_KEEP_VERB 129 
-#define  HTTP_STATUS_REDIRECT_METHOD 128 
- int INTERNET_FLAG_NO_AUTO_REDIRECT ; 
- int /*<<< orphan*/  INTERNET_STATUS_RECEIVING_RESPONSE ; 
- int /*<<< orphan*/  INTERNET_STATUS_RESPONSE_RECEIVED ; 
- int /*<<< orphan*/  INTERNET_SendCallback (TYPE_9__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int TRUE ; 
- int /*<<< orphan*/  WARN (char*) ; 
- int /*<<< orphan*/  create_cache_entry (TYPE_1__*) ; 
- scalar_t__ drain_content (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * get_redirect_url (TYPE_1__*) ; 
- int /*<<< orphan*/  heap_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * heap_strdupW (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  http_process_keep_alive (TYPE_1__*) ; 
- int /*<<< orphan*/  http_release_netconn (TYPE_1__*,int) ; 
- int /*<<< orphan*/  is_valid_netconn (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  send_request_complete (TYPE_1__*,int,scalar_t__) ; 
- scalar_t__ set_content_length (TYPE_1__*) ; 
- int /*<<< orphan*/  strcmpW (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  szGET ; 
- int /*<<< orphan*/  szHEAD ; 
+
+typedef struct TYPE_19__ TYPE_9__ ;
+typedef struct TYPE_18__ TYPE_1__ ;
+
+
+struct TYPE_19__ {int dwFlags; int dwContext; } ;
+struct TYPE_18__ {int status_code; scalar_t__ contentLength; int * verb; TYPE_9__ hdr; int netconn; } ;
+typedef TYPE_1__ http_request_t ;
+typedef int WCHAR ;
+typedef int INT ;
+typedef int DWORD_PTR ;
+typedef scalar_t__ DWORD ;
+
+
+ scalar_t__ ERROR_HTTP_HEADER_NOT_FOUND ;
+ scalar_t__ ERROR_INTERNET_OPERATION_CANCELLED ;
+ scalar_t__ ERROR_SUCCESS ;
+ int FALSE ;
+ scalar_t__ HTTP_GetResponseHeaders (TYPE_1__*,int *) ;
+ scalar_t__ HTTP_HandleRedirect (TYPE_1__*,int *) ;
+ scalar_t__ HTTP_HttpSendRequestW (TYPE_1__*,int *,int ,int *,int ,int ,int) ;
+ int HTTP_ProcessCookies (TYPE_1__*) ;
+ int HTTP_ProcessExpires (TYPE_1__*) ;
+ int HTTP_ProcessLastModified (TYPE_1__*) ;
+ int HTTP_ReceiveRequestData (TYPE_1__*) ;
+
+
+
+
+ int INTERNET_FLAG_NO_AUTO_REDIRECT ;
+ int INTERNET_STATUS_RECEIVING_RESPONSE ;
+ int INTERNET_STATUS_RESPONSE_RECEIVED ;
+ int INTERNET_SendCallback (TYPE_9__*,int ,int ,int *,int) ;
+ int TRUE ;
+ int WARN (char*) ;
+ int create_cache_entry (TYPE_1__*) ;
+ scalar_t__ drain_content (TYPE_1__*,int ) ;
+ int * get_redirect_url (TYPE_1__*) ;
+ int heap_free (int *) ;
+ int * heap_strdupW (int ) ;
+ int http_process_keep_alive (TYPE_1__*) ;
+ int http_release_netconn (TYPE_1__*,int) ;
+ int is_valid_netconn (int ) ;
+ int send_request_complete (TYPE_1__*,int,scalar_t__) ;
+ scalar_t__ set_content_length (TYPE_1__*) ;
+ int strcmpW (int *,int ) ;
+ int szGET ;
+ int szHEAD ;
 
 __attribute__((used)) static DWORD HTTP_HttpEndRequestW(http_request_t *request, DWORD dwFlags, DWORD_PTR dwContext)
 {
@@ -68,7 +68,7 @@ __attribute__((used)) static DWORD HTTP_HttpEndRequestW(http_request_t *request,
     }
 
     INTERNET_SendCallback(&request->hdr, request->hdr.dwContext,
-                  INTERNET_STATUS_RECEIVING_RESPONSE, NULL, 0);
+                  INTERNET_STATUS_RECEIVING_RESPONSE, ((void*)0), 0);
 
     if (HTTP_GetResponseHeaders(request, &responseLen) || !responseLen)
         res = ERROR_HTTP_HEADER_NOT_FOUND;
@@ -76,7 +76,7 @@ __attribute__((used)) static DWORD HTTP_HttpEndRequestW(http_request_t *request,
     INTERNET_SendCallback(&request->hdr, request->hdr.dwContext,
                   INTERNET_STATUS_RESPONSE_RECEIVED, &responseLen, sizeof(DWORD));
 
-    /* process cookies here. Is this right? */
+
     http_process_keep_alive(request);
     HTTP_ProcessCookies(request);
     HTTP_ProcessExpires(request);
@@ -90,10 +90,10 @@ __attribute__((used)) static DWORD HTTP_HttpEndRequestW(http_request_t *request,
     if (res == ERROR_SUCCESS && !(request->hdr.dwFlags & INTERNET_FLAG_NO_AUTO_REDIRECT))
     {
         switch(request->status_code) {
-        case HTTP_STATUS_REDIRECT:
-        case HTTP_STATUS_MOVED:
-        case HTTP_STATUS_REDIRECT_METHOD:
-        case HTTP_STATUS_REDIRECT_KEEP_VERB: {
+        case 130:
+        case 131:
+        case 128:
+        case 129: {
             WCHAR *new_url;
 
             new_url = get_redirect_url(request);
@@ -101,7 +101,7 @@ __attribute__((used)) static DWORD HTTP_HttpEndRequestW(http_request_t *request,
                 break;
 
             if (strcmpW(request->verb, szGET) && strcmpW(request->verb, szHEAD) &&
-                request->status_code != HTTP_STATUS_REDIRECT_KEEP_VERB)
+                request->status_code != 129)
             {
                 heap_free(request->verb);
                 request->verb = heap_strdupW(szGET);
@@ -110,7 +110,7 @@ __attribute__((used)) static DWORD HTTP_HttpEndRequestW(http_request_t *request,
             res = HTTP_HandleRedirect(request, new_url);
             heap_free(new_url);
             if (res == ERROR_SUCCESS)
-                res = HTTP_HttpSendRequestW(request, NULL, 0, NULL, 0, 0, TRUE);
+                res = HTTP_HttpSendRequestW(request, ((void*)0), 0, ((void*)0), 0, 0, TRUE);
         }
         }
     }

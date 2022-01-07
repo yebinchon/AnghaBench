@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct bond_option {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BOND_OPT_VALID (unsigned int) ; 
- struct bond_option const* bond_opts ; 
+
+ int BOND_OPT_VALID (unsigned int) ;
+ struct bond_option const* bond_opts ;
 
 const struct bond_option *bond_opt_get(unsigned int option)
 {
-	if (!BOND_OPT_VALID(option))
-		return NULL;
+ if (!BOND_OPT_VALID(option))
+  return ((void*)0);
 
-	return &bond_opts[option];
+ return &bond_opts[option];
 }

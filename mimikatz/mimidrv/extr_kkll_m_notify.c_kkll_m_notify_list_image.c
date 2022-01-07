@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  PUCHAR ;
-typedef  int /*<<< orphan*/  PKIWI_BUFFER ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAYSIZE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ImageReferences ; 
- int /*<<< orphan*/  PspLoadImageNotifyRoutine ; 
- int /*<<< orphan*/  PspLoadImageNotifyRoutineMax ; 
- int /*<<< orphan*/  kkll_m_notify_list (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int PUCHAR ;
+typedef int PKIWI_BUFFER ;
+typedef int NTSTATUS ;
+
+
+ int ARRAYSIZE (int ) ;
+ int ImageReferences ;
+ int PspLoadImageNotifyRoutine ;
+ int PspLoadImageNotifyRoutineMax ;
+ int kkll_m_notify_list (int ,int ,int ,int *,int *) ;
 
 NTSTATUS kkll_m_notify_list_image(PKIWI_BUFFER outBuffer)
 {
-	return kkll_m_notify_list(outBuffer, ImageReferences, ARRAYSIZE(ImageReferences), (PUCHAR *) &PspLoadImageNotifyRoutine, &PspLoadImageNotifyRoutineMax);
+ return kkll_m_notify_list(outBuffer, ImageReferences, ARRAYSIZE(ImageReferences), (PUCHAR *) &PspLoadImageNotifyRoutine, &PspLoadImageNotifyRoutineMax);
 }

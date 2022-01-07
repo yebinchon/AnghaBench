@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int mf_flags; int /*<<< orphan*/  mf_mopts; int /*<<< orphan*/  mf_info; int /*<<< orphan*/  mf_mount; } ;
-typedef  TYPE_1__ mntfs ;
-typedef  int /*<<< orphan*/  am_node ;
 
-/* Variables and functions */
- int MFF_ON_AUTOFS ; 
- int /*<<< orphan*/  XLOG_ERROR ; 
- int errno ; 
- int mount_lofs (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  plog (int /*<<< orphan*/ ,char*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int mf_flags; int mf_mopts; int mf_info; int mf_mount; } ;
+typedef TYPE_1__ mntfs ;
+typedef int am_node ;
+
+
+ int MFF_ON_AUTOFS ;
+ int XLOG_ERROR ;
+ int errno ;
+ int mount_lofs (int ,int ,int ,int) ;
+ int plog (int ,char*) ;
 
 __attribute__((used)) static int
 lofs_mount(am_node *am, mntfs *mf)

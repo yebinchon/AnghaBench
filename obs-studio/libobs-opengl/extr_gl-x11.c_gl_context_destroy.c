@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct gl_platform {int /*<<< orphan*/  context; int /*<<< orphan*/ * display; } ;
-typedef  int /*<<< orphan*/  Display ;
 
-/* Variables and functions */
- int /*<<< orphan*/  None ; 
- int /*<<< orphan*/  bfree (struct gl_platform*) ; 
- int /*<<< orphan*/  glXDestroyContext (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glXMakeContextCurrent (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+struct gl_platform {int context; int * display; } ;
+typedef int Display ;
+
+
+ int None ;
+ int bfree (struct gl_platform*) ;
+ int glXDestroyContext (int *,int ) ;
+ int glXMakeContextCurrent (int *,int ,int ,int *) ;
 
 __attribute__((used)) static void gl_context_destroy(struct gl_platform *plat)
 {
-	Display *display = plat->display;
+ Display *display = plat->display;
 
-	glXMakeContextCurrent(display, None, None, NULL);
-	glXDestroyContext(display, plat->context);
-	bfree(plat);
+ glXMakeContextCurrent(display, None, None, ((void*)0));
+ glXDestroyContext(display, plat->context);
+ bfree(plat);
 }

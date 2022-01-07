@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct coff_sfile {struct coff_sfile* next; } ;
 struct coff_ofile {struct coff_sfile* source_head; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  file ; 
- int /*<<< orphan*/  fseek (int /*<<< orphan*/ ,long,int /*<<< orphan*/ ) ; 
- long ftell (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wr_ed (struct coff_ofile*,struct coff_sfile*,int) ; 
- int /*<<< orphan*/  wr_er (struct coff_ofile*,struct coff_sfile*,int) ; 
- int wr_sc (struct coff_ofile*,struct coff_sfile*) ; 
- int /*<<< orphan*/  wr_un (struct coff_ofile*,struct coff_sfile*,int,int) ; 
+
+ int SEEK_SET ;
+ int file ;
+ int fseek (int ,long,int ) ;
+ long ftell (int ) ;
+ int wr_ed (struct coff_ofile*,struct coff_sfile*,int) ;
+ int wr_er (struct coff_ofile*,struct coff_sfile*,int) ;
+ int wr_sc (struct coff_ofile*,struct coff_sfile*) ;
+ int wr_un (struct coff_ofile*,struct coff_sfile*,int,int) ;
 
 __attribute__((used)) static void
 wr_unit_info (struct coff_ofile *ptr)

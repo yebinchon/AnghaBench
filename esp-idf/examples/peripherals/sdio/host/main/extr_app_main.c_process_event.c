@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  esp_slave_context_t ;
-typedef  scalar_t__ esp_err_t ;
 
-/* Variables and functions */
- int BIT (int) ; 
- int /*<<< orphan*/  ESP_ERROR_CHECK (scalar_t__) ; 
- scalar_t__ ESP_ERR_NOT_FINISHED ; 
- scalar_t__ ESP_ERR_NOT_FOUND ; 
- scalar_t__ ESP_ERR_TIMEOUT ; 
- int /*<<< orphan*/  ESP_LOGD (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  ESP_LOGE (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  ESP_LOGI (int /*<<< orphan*/ ,char*,size_t) ; 
- int /*<<< orphan*/  ESP_LOG_BUFFER_HEXDUMP (int /*<<< orphan*/ ,int /*<<< orphan*/ ,size_t,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ESP_LOG_INFO ; 
- scalar_t__ ESP_OK ; 
- int HOST_SLC0_RX_NEW_PACKET_INT_ST ; 
- size_t READ_BUFFER_LEN ; 
- int /*<<< orphan*/  TAG ; 
- scalar_t__ esp_slave_clear_intr (int /*<<< orphan*/ *,int) ; 
- scalar_t__ esp_slave_get_intr (int /*<<< orphan*/ *,int*,int*) ; 
- scalar_t__ esp_slave_get_packet (int /*<<< orphan*/ *,int /*<<< orphan*/ ,size_t,size_t*,int const) ; 
- scalar_t__ esp_slave_wait_int (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rcv_buffer ; 
+
+
+
+typedef int uint32_t ;
+typedef int esp_slave_context_t ;
+typedef scalar_t__ esp_err_t ;
+
+
+ int BIT (int) ;
+ int ESP_ERROR_CHECK (scalar_t__) ;
+ scalar_t__ ESP_ERR_NOT_FINISHED ;
+ scalar_t__ ESP_ERR_NOT_FOUND ;
+ scalar_t__ ESP_ERR_TIMEOUT ;
+ int ESP_LOGD (int ,char*,...) ;
+ int ESP_LOGE (int ,char*,...) ;
+ int ESP_LOGI (int ,char*,size_t) ;
+ int ESP_LOG_BUFFER_HEXDUMP (int ,int ,size_t,int ) ;
+ int ESP_LOG_INFO ;
+ scalar_t__ ESP_OK ;
+ int HOST_SLC0_RX_NEW_PACKET_INT_ST ;
+ size_t READ_BUFFER_LEN ;
+ int TAG ;
+ scalar_t__ esp_slave_clear_intr (int *,int) ;
+ scalar_t__ esp_slave_get_intr (int *,int*,int*) ;
+ scalar_t__ esp_slave_get_packet (int *,int ,size_t,size_t*,int const) ;
+ scalar_t__ esp_slave_wait_int (int *,int ) ;
+ int rcv_buffer ;
 
 esp_err_t process_event(esp_slave_context_t *context)
 {

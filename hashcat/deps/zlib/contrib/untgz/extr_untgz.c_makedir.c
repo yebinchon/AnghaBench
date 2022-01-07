@@ -1,32 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ ENOENT ; 
- scalar_t__ errno ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*,char*) ; 
- int /*<<< orphan*/  free (char*) ; 
- int mkdir (char*,int) ; 
- char* prog ; 
- int /*<<< orphan*/  stderr ; 
- char* strdup (char*) ; 
- int strlen (char*) ; 
+ scalar_t__ ENOENT ;
+ scalar_t__ errno ;
+ int fprintf (int ,char*,char*,char*) ;
+ int free (char*) ;
+ int mkdir (char*,int) ;
+ char* prog ;
+ int stderr ;
+ char* strdup (char*) ;
+ int strlen (char*) ;
 
 int makedir (char *newdir)
 {
   char *buffer = strdup(newdir);
   char *p;
-  int  len = strlen(buffer);
+  int len = strlen(buffer);
 
   if (len <= 0) {
     free(buffer);

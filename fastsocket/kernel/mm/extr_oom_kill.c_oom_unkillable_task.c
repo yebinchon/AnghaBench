@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct task_struct {int flags; } ;
 struct mem_cgroup {int dummy; } ;
-typedef  int /*<<< orphan*/  nodemask_t ;
+typedef int nodemask_t ;
 
-/* Variables and functions */
- int PF_KTHREAD ; 
- int /*<<< orphan*/  has_intersects_mems_allowed (struct task_struct*,int /*<<< orphan*/  const*) ; 
- scalar_t__ is_global_init (struct task_struct*) ; 
- int /*<<< orphan*/  task_in_mem_cgroup (struct task_struct*,struct mem_cgroup const*) ; 
+
+ int PF_KTHREAD ;
+ int has_intersects_mems_allowed (struct task_struct*,int const*) ;
+ scalar_t__ is_global_init (struct task_struct*) ;
+ int task_in_mem_cgroup (struct task_struct*,struct mem_cgroup const*) ;
 
 __attribute__((used)) static bool oom_unkillable_task(struct task_struct *p,
-		const struct mem_cgroup *mem, const nodemask_t *nodemask)
+  const struct mem_cgroup *mem, const nodemask_t *nodemask)
 {
-	if (is_global_init(p))
-		return true;
-	if (p->flags & PF_KTHREAD)
-		return true;
+ if (is_global_init(p))
+  return 1;
+ if (p->flags & PF_KTHREAD)
+  return 1;
 
-	/* When mem_cgroup_out_of_memory() and p is not member of the group */
-	if (mem && !task_in_mem_cgroup(p, mem))
-		return true;
 
-	/* p may not have freeable memory in nodemask */
-	if (!has_intersects_mems_allowed(p, nodemask))
-		return true;
+ if (mem && !task_in_mem_cgroup(p, mem))
+  return 1;
 
-	return false;
+
+ if (!has_intersects_mems_allowed(p, nodemask))
+  return 1;
+
+ return 0;
 }

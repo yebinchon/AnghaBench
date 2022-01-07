@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct vulkan_emulated_mailbox {scalar_t__ swapchain; int has_pending_request; int request_acquire; int acquired; scalar_t__ result; unsigned int index; int /*<<< orphan*/  lock; int /*<<< orphan*/  cond; } ;
-typedef  scalar_t__ VkResult ;
 
-/* Variables and functions */
- scalar_t__ VK_ERROR_OUT_OF_DATE_KHR ; 
- scalar_t__ VK_NULL_HANDLE ; 
- scalar_t__ VK_SUCCESS ; 
- int /*<<< orphan*/  scond_signal (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  scond_wait (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  slock_lock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  slock_unlock (int /*<<< orphan*/ ) ; 
+
+
+
+struct vulkan_emulated_mailbox {scalar_t__ swapchain; int has_pending_request; int request_acquire; int acquired; scalar_t__ result; unsigned int index; int lock; int cond; } ;
+typedef scalar_t__ VkResult ;
+
+
+ scalar_t__ VK_ERROR_OUT_OF_DATE_KHR ;
+ scalar_t__ VK_NULL_HANDLE ;
+ scalar_t__ VK_SUCCESS ;
+ int scond_signal (int ) ;
+ int scond_wait (int ,int ) ;
+ int slock_lock (int ) ;
+ int slock_unlock (int ) ;
 
 VkResult vulkan_emulated_mailbox_acquire_next_image_blocking(
       struct vulkan_emulated_mailbox *mailbox,
@@ -34,11 +34,11 @@ VkResult vulkan_emulated_mailbox_acquire_next_image_blocking(
 
    if (!mailbox->has_pending_request)
    {
-      mailbox->request_acquire = true;
+      mailbox->request_acquire = 1;
       scond_signal(mailbox->cond);
    }
 
-   mailbox->has_pending_request = true;
+   mailbox->has_pending_request = 1;
 
    while (!mailbox->acquired)
       scond_wait(mailbox->cond, mailbox->lock);
@@ -46,8 +46,8 @@ VkResult vulkan_emulated_mailbox_acquire_next_image_blocking(
    res = mailbox->result;
    if (res == VK_SUCCESS)
       *index = mailbox->index;
-   mailbox->has_pending_request = false;
-   mailbox->acquired = false;
+   mailbox->has_pending_request = 0;
+   mailbox->acquired = 0;
 
    slock_unlock(mailbox->lock);
    return res;

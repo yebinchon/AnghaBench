@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_15__ TYPE_1__ ;
+
+
 struct pl_parser {scalar_t__ probing; } ;
-struct TYPE_15__ {int /*<<< orphan*/  len; int /*<<< orphan*/  member_0; } ;
-typedef  TYPE_1__ bstr ;
+struct TYPE_15__ {int len; int member_0; } ;
+typedef TYPE_1__ bstr ;
 
-/* Variables and functions */
- int /*<<< orphan*/  bstr0 (char const*) ; 
- scalar_t__ bstr_case_startswith (TYPE_1__,int /*<<< orphan*/ ) ; 
- scalar_t__ bstr_endswith0 (TYPE_1__,char*) ; 
- TYPE_1__ bstr_splice (TYPE_1__,int,int) ; 
- scalar_t__ bstr_split_tok (TYPE_1__,char*,TYPE_1__*,TYPE_1__*) ; 
- scalar_t__ bstr_startswith0 (TYPE_1__,char*) ; 
- TYPE_1__ bstr_strip (TYPE_1__) ; 
- scalar_t__ bstrcasecmp0 (TYPE_1__,char const*) ; 
- int /*<<< orphan*/  pl_add (struct pl_parser*,TYPE_1__) ; 
- int /*<<< orphan*/  pl_eof (struct pl_parser*) ; 
- TYPE_1__ pl_get_line (struct pl_parser*) ; 
+
+ int bstr0 (char const*) ;
+ scalar_t__ bstr_case_startswith (TYPE_1__,int ) ;
+ scalar_t__ bstr_endswith0 (TYPE_1__,char*) ;
+ TYPE_1__ bstr_splice (TYPE_1__,int,int) ;
+ scalar_t__ bstr_split_tok (TYPE_1__,char*,TYPE_1__*,TYPE_1__*) ;
+ scalar_t__ bstr_startswith0 (TYPE_1__,char*) ;
+ TYPE_1__ bstr_strip (TYPE_1__) ;
+ scalar_t__ bstrcasecmp0 (TYPE_1__,char const*) ;
+ int pl_add (struct pl_parser*,TYPE_1__) ;
+ int pl_eof (struct pl_parser*) ;
+ TYPE_1__ pl_get_line (struct pl_parser*) ;
 
 __attribute__((used)) static int parse_ini_thing(struct pl_parser *p, const char *header,
                            const char *entry)

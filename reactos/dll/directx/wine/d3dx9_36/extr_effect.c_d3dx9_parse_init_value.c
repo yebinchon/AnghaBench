@@ -1,49 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct d3dx_parameter {int class; scalar_t__ bytes; } ;
 struct d3dx_object {int dummy; } ;
 struct d3dx9_base_effect {int dummy; } ;
-typedef  scalar_t__ UINT ;
-typedef  scalar_t__ HRESULT ;
-
-/* Variables and functions */
-#define  D3DXPC_MATRIX_COLUMNS 133 
-#define  D3DXPC_MATRIX_ROWS 132 
-#define  D3DXPC_OBJECT 131 
-#define  D3DXPC_SCALAR 130 
-#define  D3DXPC_STRUCT 129 
-#define  D3DXPC_VECTOR 128 
- scalar_t__ D3D_OK ; 
- int /*<<< orphan*/  ERR (char*) ; 
- scalar_t__ E_OUTOFMEMORY ; 
- int /*<<< orphan*/  FIXME (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HEAP_ZERO_MEMORY ; 
- void* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*) ; 
- int /*<<< orphan*/  TRACE (char*,scalar_t__) ; 
- int /*<<< orphan*/  WARN (char*) ; 
- scalar_t__ d3dx9_parse_value (struct d3dx9_base_effect*,struct d3dx_parameter*,void*,char const*,char const**,struct d3dx_object*) ; 
- int /*<<< orphan*/  debug_d3dxparameter_class (int) ; 
- scalar_t__ debugstr_an (char const*,scalar_t__) ; 
- int /*<<< orphan*/  memcpy (void*,char const*,scalar_t__) ; 
+typedef scalar_t__ UINT ;
+typedef scalar_t__ HRESULT ;
+ scalar_t__ D3D_OK ;
+ int ERR (char*) ;
+ scalar_t__ E_OUTOFMEMORY ;
+ int FIXME (char*,int ) ;
+ int GetProcessHeap () ;
+ int HEAP_ZERO_MEMORY ;
+ void* HeapAlloc (int ,int ,scalar_t__) ;
+ int HeapFree (int ,int ,void*) ;
+ int TRACE (char*,scalar_t__) ;
+ int WARN (char*) ;
+ scalar_t__ d3dx9_parse_value (struct d3dx9_base_effect*,struct d3dx_parameter*,void*,char const*,char const**,struct d3dx_object*) ;
+ int debug_d3dxparameter_class (int) ;
+ scalar_t__ debugstr_an (char const*,scalar_t__) ;
+ int memcpy (void*,char const*,scalar_t__) ;
 
 __attribute__((used)) static HRESULT d3dx9_parse_init_value(struct d3dx9_base_effect *base, struct d3dx_parameter *param,
         const char *data, const char *ptr, struct d3dx_object *objects)
 {
     UINT size = param->bytes;
     HRESULT hr;
-    void *value = NULL;
+    void *value = ((void*)0);
 
     TRACE("param size: %u\n", size);
 
@@ -58,14 +50,14 @@ __attribute__((used)) static HRESULT d3dx9_parse_init_value(struct d3dx9_base_ef
 
         switch(param->class)
         {
-            case D3DXPC_OBJECT:
+            case 131:
                 break;
 
-            case D3DXPC_SCALAR:
-            case D3DXPC_VECTOR:
-            case D3DXPC_MATRIX_ROWS:
-            case D3DXPC_MATRIX_COLUMNS:
-            case D3DXPC_STRUCT:
+            case 130:
+            case 128:
+            case 132:
+            case 133:
+            case 129:
                 TRACE("Data: %s.\n", debugstr_an(ptr, size));
                 memcpy(value, ptr, size);
                 break;

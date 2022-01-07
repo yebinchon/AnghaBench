@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct wpa_tdls_peer {int /*<<< orphan*/  supp_oper_classes_len; int /*<<< orphan*/  supp_oper_classes; int /*<<< orphan*/  supp_channels_len; int /*<<< orphan*/  supp_channels; int /*<<< orphan*/  ext_capab_len; int /*<<< orphan*/  ext_capab; int /*<<< orphan*/  wmm_capable; int /*<<< orphan*/  qos_info; int /*<<< orphan*/  vht_capabilities; int /*<<< orphan*/  ht_capabilities; int /*<<< orphan*/  supp_rates_len; int /*<<< orphan*/  supp_rates; int /*<<< orphan*/  capability; int /*<<< orphan*/  aid; int /*<<< orphan*/  addr; } ;
+
+
+
+
+struct wpa_tdls_peer {int supp_oper_classes_len; int supp_oper_classes; int supp_channels_len; int supp_channels; int ext_capab_len; int ext_capab; int wmm_capable; int qos_info; int vht_capabilities; int ht_capabilities; int supp_rates_len; int supp_rates; int capability; int aid; int addr; } ;
 struct wpa_sm {int dummy; } ;
 
-/* Variables and functions */
- int wpa_sm_tdls_peer_addset (struct wpa_sm*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int wpa_sm_tdls_peer_addset (struct wpa_sm*,int ,int,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ) ;
 
 __attribute__((used)) static int wpa_tdls_addset_peer(struct wpa_sm *sm, struct wpa_tdls_peer *peer,
-				int add)
+    int add)
 {
-	return wpa_sm_tdls_peer_addset(sm, peer->addr, add, peer->aid,
-				       peer->capability,
-				       peer->supp_rates, peer->supp_rates_len,
-				       peer->ht_capabilities,
-				       peer->vht_capabilities,
-				       peer->qos_info, peer->wmm_capable,
-				       peer->ext_capab, peer->ext_capab_len,
-				       peer->supp_channels,
-				       peer->supp_channels_len,
-				       peer->supp_oper_classes,
-				       peer->supp_oper_classes_len);
+ return wpa_sm_tdls_peer_addset(sm, peer->addr, add, peer->aid,
+           peer->capability,
+           peer->supp_rates, peer->supp_rates_len,
+           peer->ht_capabilities,
+           peer->vht_capabilities,
+           peer->qos_info, peer->wmm_capable,
+           peer->ext_capab, peer->ext_capab_len,
+           peer->supp_channels,
+           peer->supp_channels_len,
+           peer->supp_oper_classes,
+           peer->supp_oper_classes_len);
 }

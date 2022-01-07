@@ -1,93 +1,93 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u16 ;
+
+
+
+
+typedef int u16 ;
 struct sock {int dummy; } ;
-struct mgmt_cp_set_public_address {int /*<<< orphan*/  bdaddr; } ;
-struct hci_dev {int /*<<< orphan*/  power_on; int /*<<< orphan*/  req_workqueue; int /*<<< orphan*/  public_addr; int /*<<< orphan*/  id; int /*<<< orphan*/  set_bdaddr; int /*<<< orphan*/  name; } ;
+struct mgmt_cp_set_public_address {int bdaddr; } ;
+struct hci_dev {int power_on; int req_workqueue; int public_addr; int id; int set_bdaddr; int name; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * BDADDR_ANY ; 
- int /*<<< orphan*/  BT_DBG (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HCI_AUTO_OFF ; 
- int /*<<< orphan*/  HCI_CONFIG ; 
- int /*<<< orphan*/  HCI_UNCONFIGURED ; 
- int /*<<< orphan*/  MGMT_OP_SET_PUBLIC_ADDRESS ; 
- int /*<<< orphan*/  MGMT_STATUS_INVALID_PARAMS ; 
- int /*<<< orphan*/  MGMT_STATUS_NOT_SUPPORTED ; 
- int /*<<< orphan*/  MGMT_STATUS_REJECTED ; 
- int /*<<< orphan*/  bacmp (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bacpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  hci_dev_clear_flag (struct hci_dev*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hci_dev_lock (struct hci_dev*) ; 
- int /*<<< orphan*/  hci_dev_set_flag (struct hci_dev*,int /*<<< orphan*/ ) ; 
- scalar_t__ hci_dev_test_flag (struct hci_dev*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hci_dev_unlock (struct hci_dev*) ; 
- scalar_t__ hdev_is_powered (struct hci_dev*) ; 
- scalar_t__ is_configured (struct hci_dev*) ; 
- int mgmt_cmd_status (struct sock*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mgmt_index_removed (struct hci_dev*) ; 
- int new_options (struct hci_dev*,struct sock*) ; 
- int /*<<< orphan*/  queue_work (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int send_options_rsp (struct sock*,int /*<<< orphan*/ ,struct hci_dev*) ; 
+
+ int * BDADDR_ANY ;
+ int BT_DBG (char*,int ) ;
+ int HCI_AUTO_OFF ;
+ int HCI_CONFIG ;
+ int HCI_UNCONFIGURED ;
+ int MGMT_OP_SET_PUBLIC_ADDRESS ;
+ int MGMT_STATUS_INVALID_PARAMS ;
+ int MGMT_STATUS_NOT_SUPPORTED ;
+ int MGMT_STATUS_REJECTED ;
+ int bacmp (int *,int *) ;
+ int bacpy (int *,int *) ;
+ int hci_dev_clear_flag (struct hci_dev*,int ) ;
+ int hci_dev_lock (struct hci_dev*) ;
+ int hci_dev_set_flag (struct hci_dev*,int ) ;
+ scalar_t__ hci_dev_test_flag (struct hci_dev*,int ) ;
+ int hci_dev_unlock (struct hci_dev*) ;
+ scalar_t__ hdev_is_powered (struct hci_dev*) ;
+ scalar_t__ is_configured (struct hci_dev*) ;
+ int mgmt_cmd_status (struct sock*,int ,int ,int ) ;
+ int mgmt_index_removed (struct hci_dev*) ;
+ int new_options (struct hci_dev*,struct sock*) ;
+ int queue_work (int ,int *) ;
+ int send_options_rsp (struct sock*,int ,struct hci_dev*) ;
 
 __attribute__((used)) static int set_public_address(struct sock *sk, struct hci_dev *hdev,
-			      void *data, u16 len)
+         void *data, u16 len)
 {
-	struct mgmt_cp_set_public_address *cp = data;
-	bool changed;
-	int err;
+ struct mgmt_cp_set_public_address *cp = data;
+ bool changed;
+ int err;
 
-	BT_DBG("%s", hdev->name);
+ BT_DBG("%s", hdev->name);
 
-	if (hdev_is_powered(hdev))
-		return mgmt_cmd_status(sk, hdev->id, MGMT_OP_SET_PUBLIC_ADDRESS,
-				       MGMT_STATUS_REJECTED);
+ if (hdev_is_powered(hdev))
+  return mgmt_cmd_status(sk, hdev->id, MGMT_OP_SET_PUBLIC_ADDRESS,
+           MGMT_STATUS_REJECTED);
 
-	if (!bacmp(&cp->bdaddr, BDADDR_ANY))
-		return mgmt_cmd_status(sk, hdev->id, MGMT_OP_SET_PUBLIC_ADDRESS,
-				       MGMT_STATUS_INVALID_PARAMS);
+ if (!bacmp(&cp->bdaddr, BDADDR_ANY))
+  return mgmt_cmd_status(sk, hdev->id, MGMT_OP_SET_PUBLIC_ADDRESS,
+           MGMT_STATUS_INVALID_PARAMS);
 
-	if (!hdev->set_bdaddr)
-		return mgmt_cmd_status(sk, hdev->id, MGMT_OP_SET_PUBLIC_ADDRESS,
-				       MGMT_STATUS_NOT_SUPPORTED);
+ if (!hdev->set_bdaddr)
+  return mgmt_cmd_status(sk, hdev->id, MGMT_OP_SET_PUBLIC_ADDRESS,
+           MGMT_STATUS_NOT_SUPPORTED);
 
-	hci_dev_lock(hdev);
+ hci_dev_lock(hdev);
 
-	changed = !!bacmp(&hdev->public_addr, &cp->bdaddr);
-	bacpy(&hdev->public_addr, &cp->bdaddr);
+ changed = !!bacmp(&hdev->public_addr, &cp->bdaddr);
+ bacpy(&hdev->public_addr, &cp->bdaddr);
 
-	err = send_options_rsp(sk, MGMT_OP_SET_PUBLIC_ADDRESS, hdev);
-	if (err < 0)
-		goto unlock;
+ err = send_options_rsp(sk, MGMT_OP_SET_PUBLIC_ADDRESS, hdev);
+ if (err < 0)
+  goto unlock;
 
-	if (!changed)
-		goto unlock;
+ if (!changed)
+  goto unlock;
 
-	if (hci_dev_test_flag(hdev, HCI_UNCONFIGURED))
-		err = new_options(hdev, sk);
+ if (hci_dev_test_flag(hdev, HCI_UNCONFIGURED))
+  err = new_options(hdev, sk);
 
-	if (is_configured(hdev)) {
-		mgmt_index_removed(hdev);
+ if (is_configured(hdev)) {
+  mgmt_index_removed(hdev);
 
-		hci_dev_clear_flag(hdev, HCI_UNCONFIGURED);
+  hci_dev_clear_flag(hdev, HCI_UNCONFIGURED);
 
-		hci_dev_set_flag(hdev, HCI_CONFIG);
-		hci_dev_set_flag(hdev, HCI_AUTO_OFF);
+  hci_dev_set_flag(hdev, HCI_CONFIG);
+  hci_dev_set_flag(hdev, HCI_AUTO_OFF);
 
-		queue_work(hdev->req_workqueue, &hdev->power_on);
-	}
+  queue_work(hdev->req_workqueue, &hdev->power_on);
+ }
 
 unlock:
-	hci_dev_unlock(hdev);
-	return err;
+ hci_dev_unlock(hdev);
+ return err;
 }

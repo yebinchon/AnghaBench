@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  OS_INFO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OSGetOsInfo (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * ZeroMalloc (int) ; 
- int /*<<< orphan*/ * os_info ; 
+
+
+
+typedef int OS_INFO ;
+
+
+ int OSGetOsInfo (int *) ;
+ int * ZeroMalloc (int) ;
+ int * os_info ;
 
 void InitOsInfo()
 {
-	if (os_info != NULL)
-	{
-		return;
-	}
+ if (os_info != ((void*)0))
+ {
+  return;
+ }
 
-	os_info = ZeroMalloc(sizeof(OS_INFO));
+ os_info = ZeroMalloc(sizeof(OS_INFO));
 
-	OSGetOsInfo(os_info);
+ OSGetOsInfo(os_info);
 }

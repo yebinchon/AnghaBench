@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct sockaddr_un {char* sun_path; } ;
 struct sockaddr_in6 {void* sin6_port; } ;
 struct TYPE_2__ {void* s_addr; } ;
 struct sockaddr_in {void* sin_port; TYPE_1__ sin_addr; } ;
 struct sockaddr {scalar_t__ sa_family; } ;
-struct addrinfo {scalar_t__ ai_family; int /*<<< orphan*/  ai_addrlen; int /*<<< orphan*/  ai_addr; int /*<<< orphan*/  ai_protocol; int /*<<< orphan*/  ai_socktype; } ;
-typedef  int /*<<< orphan*/  hints ;
+struct addrinfo {scalar_t__ ai_family; int ai_addrlen; int ai_addr; int ai_protocol; int ai_socktype; } ;
+typedef int hints ;
 
-/* Variables and functions */
- scalar_t__ AF_INET ; 
- scalar_t__ AF_INET6 ; 
- scalar_t__ AF_UNIX ; 
- int /*<<< orphan*/  INADDR_ANY ; 
- void* INADDR_BROADCAST ; 
- int /*<<< orphan*/  INADDR_LOOPBACK ; 
- int /*<<< orphan*/  IPPROTO_TCP ; 
- int /*<<< orphan*/  SOCK_STREAM ; 
- int atoi (char*) ; 
- int /*<<< orphan*/  freeaddrinfo (struct addrinfo*) ; 
- scalar_t__ getaddrinfo (char*,int /*<<< orphan*/ *,struct addrinfo*,struct addrinfo**) ; 
- void* htonl (int /*<<< orphan*/ ) ; 
- void* htons (int) ; 
- void* inet_addr (char*) ; 
- scalar_t__ isspace (char const) ; 
- int /*<<< orphan*/  memcpy (struct sockaddr*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (struct addrinfo*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  strcasecmp (char*,char*) ; 
- char* strchr (char*,char) ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
- int /*<<< orphan*/  strncpy (char*,char const*,int) ; 
+
+ scalar_t__ AF_INET ;
+ scalar_t__ AF_INET6 ;
+ scalar_t__ AF_UNIX ;
+ int INADDR_ANY ;
+ void* INADDR_BROADCAST ;
+ int INADDR_LOOPBACK ;
+ int IPPROTO_TCP ;
+ int SOCK_STREAM ;
+ int atoi (char*) ;
+ int freeaddrinfo (struct addrinfo*) ;
+ scalar_t__ getaddrinfo (char*,int *,struct addrinfo*,struct addrinfo**) ;
+ void* htonl (int ) ;
+ void* htons (int) ;
+ void* inet_addr (char*) ;
+ scalar_t__ isspace (char const) ;
+ int memcpy (struct sockaddr*,int ,int ) ;
+ int memset (struct addrinfo*,int ,int) ;
+ int strcasecmp (char*,char*) ;
+ char* strchr (char*,char) ;
+ int strcpy (char*,char*) ;
+ int strncpy (char*,char const*,int) ;
 
 int LSAPI_ParseSockAddr( const char * pBind, struct sockaddr * pAddr )
 {
@@ -48,7 +48,7 @@ int LSAPI_ParseSockAddr( const char * pBind, struct sockaddr * pAddr )
     char * p = achAddr;
     char * pEnd;
     struct addrinfo *res, hints;
-    int  doAddrInfo = 0;
+    int doAddrInfo = 0;
     int port;
 
     if ( !pBind )
@@ -118,11 +118,11 @@ int LSAPI_ParseSockAddr( const char * pBind, struct sockaddr * pAddr )
 
         memset(&hints, 0, sizeof(hints));
 
-        hints.ai_family   = pAddr->sa_family;
+        hints.ai_family = pAddr->sa_family;
         hints.ai_socktype = SOCK_STREAM;
         hints.ai_protocol = IPPROTO_TCP;
 
-        if ( getaddrinfo(p, NULL, &hints, &res) )
+        if ( getaddrinfo(p, ((void*)0), &hints, &res) )
         {
             return -1;
         }

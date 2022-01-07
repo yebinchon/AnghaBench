@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  ZFS_DRIVER ; 
- int libzfs_load_module_impl (int /*<<< orphan*/ ) ; 
+ int ZFS_DRIVER ;
+ int libzfs_load_module_impl (int ) ;
 
 int
 libzfs_load_module(void)
 {
-	return (libzfs_load_module_impl(ZFS_DRIVER));
+ return (libzfs_load_module_impl(ZFS_DRIVER));
 }

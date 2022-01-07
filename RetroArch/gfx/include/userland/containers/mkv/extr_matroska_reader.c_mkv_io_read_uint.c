@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint64_t ;
-typedef  int int64_t ;
-typedef  int /*<<< orphan*/  VC_CONTAINER_IO_T ;
 
-/* Variables and functions */
- int vc_container_io_read_uint8 (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int uint64_t ;
+typedef int int64_t ;
+typedef int VC_CONTAINER_IO_T ;
+
+
+ int vc_container_io_read_uint8 (int *) ;
 
 __attribute__((used)) static int64_t mkv_io_read_uint(VC_CONTAINER_IO_T *io, int64_t *size)
 {

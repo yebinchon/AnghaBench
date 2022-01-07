@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct d3dx_parameter {int bytes; int /*<<< orphan*/  type; } ;
-struct TYPE_3__ {scalar_t__* tables; int /*<<< orphan*/ * table_sizes; } ;
-struct TYPE_4__ {TYPE_1__ regs; int /*<<< orphan*/  inputs; } ;
-struct d3dx_param_eval {TYPE_2__ pres; int /*<<< orphan*/  param_type; int /*<<< orphan*/  version_counter; } ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D3DXPT_FLOAT ; 
- int /*<<< orphan*/  D3D_OK ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- size_t PRES_REGTAB_OCONST ; 
- int /*<<< orphan*/  TRACE (char*,struct d3dx_param_eval*,struct d3dx_parameter const*,void*) ; 
- int /*<<< orphan*/  ULONG64_MAX ; 
- int /*<<< orphan*/  execute_preshader (TYPE_2__*) ; 
- unsigned int get_offset_reg (size_t,int /*<<< orphan*/ ) ; 
- scalar_t__ is_const_tab_input_dirty (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- unsigned int min (unsigned int,unsigned int) ; 
- int /*<<< orphan*/  next_update_version (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_constants (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_number (unsigned int*,int /*<<< orphan*/ ,float*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct d3dx_parameter {int bytes; int type; } ;
+struct TYPE_3__ {scalar_t__* tables; int * table_sizes; } ;
+struct TYPE_4__ {TYPE_1__ regs; int inputs; } ;
+struct d3dx_param_eval {TYPE_2__ pres; int param_type; int version_counter; } ;
+typedef int HRESULT ;
+
+
+ int D3DXPT_FLOAT ;
+ int D3D_OK ;
+ scalar_t__ FAILED (int ) ;
+ int FALSE ;
+ size_t PRES_REGTAB_OCONST ;
+ int TRACE (char*,struct d3dx_param_eval*,struct d3dx_parameter const*,void*) ;
+ int ULONG64_MAX ;
+ int execute_preshader (TYPE_2__*) ;
+ unsigned int get_offset_reg (size_t,int ) ;
+ scalar_t__ is_const_tab_input_dirty (int *,int ) ;
+ unsigned int min (unsigned int,unsigned int) ;
+ int next_update_version (int ) ;
+ int set_constants (TYPE_1__*,int *,int ,int *,int *,int ,int ,int ) ;
+ int set_number (unsigned int*,int ,float*,int ) ;
 
 HRESULT d3dx_evaluate_parameter(struct d3dx_param_eval *peval, const struct d3dx_parameter *param,
         void *param_value)
@@ -48,7 +48,7 @@ HRESULT d3dx_evaluate_parameter(struct d3dx_param_eval *peval, const struct d3dx
     {
         set_constants(&peval->pres.regs, &peval->pres.inputs,
                 next_update_version(peval->version_counter),
-                NULL, NULL, peval->param_type, FALSE, FALSE);
+                ((void*)0), ((void*)0), peval->param_type, FALSE, FALSE);
 
         if (FAILED(hr = execute_preshader(&peval->pres)))
             return hr;

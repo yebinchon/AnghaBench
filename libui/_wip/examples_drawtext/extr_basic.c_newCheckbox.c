@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uiCheckbox ;
 
-/* Variables and functions */
- int /*<<< orphan*/  checkboxChecked ; 
- int /*<<< orphan*/  panel ; 
- int /*<<< orphan*/  uiBoxAppend (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  uiCheckboxOnToggled (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  uiControl (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * uiNewCheckbox (char const*) ; 
+
+
+
+typedef int uiCheckbox ;
+
+
+ int checkboxChecked ;
+ int panel ;
+ int uiBoxAppend (int ,int ,int ) ;
+ int uiCheckboxOnToggled (int *,int ,int *) ;
+ int uiControl (int *) ;
+ int * uiNewCheckbox (char const*) ;
 
 __attribute__((used)) static uiCheckbox *newCheckbox(const char *text)
 {
-	uiCheckbox *c;
+ uiCheckbox *c;
 
-	c = uiNewCheckbox(text);
-	uiCheckboxOnToggled(c, checkboxChecked, NULL);
-	uiBoxAppend(panel, uiControl(c), 0);
-	return c;
+ c = uiNewCheckbox(text);
+ uiCheckboxOnToggled(c, checkboxChecked, ((void*)0));
+ uiBoxAppend(panel, uiControl(c), 0);
+ return c;
 }

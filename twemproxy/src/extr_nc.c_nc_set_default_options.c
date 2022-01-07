@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct instance {char* hostname; scalar_t__ pidfile; int /*<<< orphan*/ * pid_filename; scalar_t__ pid; int /*<<< orphan*/  mbuf_chunk_size; int /*<<< orphan*/  stats_interval; int /*<<< orphan*/  stats_addr; int /*<<< orphan*/  stats_port; int /*<<< orphan*/  conf_filename; int /*<<< orphan*/  log_filename; int /*<<< orphan*/  log_level; int /*<<< orphan*/ * ctx; } ;
-typedef  scalar_t__ pid_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NC_CONF_PATH ; 
- int /*<<< orphan*/  NC_LOG_DEFAULT ; 
- int /*<<< orphan*/  NC_LOG_PATH ; 
- int NC_MAXHOSTNAMELEN ; 
- int /*<<< orphan*/  NC_MBUF_SIZE ; 
- int /*<<< orphan*/  NC_STATS_ADDR ; 
- int /*<<< orphan*/  NC_STATS_INTERVAL ; 
- int /*<<< orphan*/  NC_STATS_PORT ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  log_warn (char*,int /*<<< orphan*/ ) ; 
- int nc_gethostname (char*,int) ; 
- int /*<<< orphan*/  nc_snprintf (char*,int,char*) ; 
- int /*<<< orphan*/  strerror (int /*<<< orphan*/ ) ; 
+
+
+
+struct instance {char* hostname; scalar_t__ pidfile; int * pid_filename; scalar_t__ pid; int mbuf_chunk_size; int stats_interval; int stats_addr; int stats_port; int conf_filename; int log_filename; int log_level; int * ctx; } ;
+typedef scalar_t__ pid_t ;
+
+
+ int NC_CONF_PATH ;
+ int NC_LOG_DEFAULT ;
+ int NC_LOG_PATH ;
+ int NC_MAXHOSTNAMELEN ;
+ int NC_MBUF_SIZE ;
+ int NC_STATS_ADDR ;
+ int NC_STATS_INTERVAL ;
+ int NC_STATS_PORT ;
+ int errno ;
+ int log_warn (char*,int ) ;
+ int nc_gethostname (char*,int) ;
+ int nc_snprintf (char*,int,char*) ;
+ int strerror (int ) ;
 
 __attribute__((used)) static void
 nc_set_default_options(struct instance *nci)
 {
     int status;
 
-    nci->ctx = NULL;
+    nci->ctx = ((void*)0);
 
     nci->log_level = NC_LOG_DEFAULT;
     nci->log_filename = NC_LOG_PATH;
@@ -54,6 +54,6 @@ nc_set_default_options(struct instance *nci)
     nci->mbuf_chunk_size = NC_MBUF_SIZE;
 
     nci->pid = (pid_t)-1;
-    nci->pid_filename = NULL;
+    nci->pid_filename = ((void*)0);
     nci->pidfile = 0;
 }

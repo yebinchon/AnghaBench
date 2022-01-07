@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ipc_port_t ;
 
-/* Variables and functions */
- scalar_t__ IKOT_NAMED_ENTRY ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ ip_kotype (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ipc_port_release_send (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int ipc_port_t ;
+
+
+ scalar_t__ IKOT_NAMED_ENTRY ;
+ int assert (int) ;
+ scalar_t__ ip_kotype (int ) ;
+ int ipc_port_release_send (int ) ;
 
 void
 mach_memory_entry_port_release(
-	ipc_port_t	port)
+ ipc_port_t port)
 {
-	assert(ip_kotype(port) == IKOT_NAMED_ENTRY);
-	ipc_port_release_send(port);
+ assert(ip_kotype(port) == IKOT_NAMED_ENTRY);
+ ipc_port_release_send(port);
 }

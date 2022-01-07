@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct hci_dev {int /*<<< orphan*/  dev; int /*<<< orphan*/  driver_init; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  put_device (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  skb_queue_purge (int /*<<< orphan*/ *) ; 
+
+
+
+struct hci_dev {int dev; int driver_init; } ;
+
+
+ int put_device (int *) ;
+ int skb_queue_purge (int *) ;
 
 void hci_free_dev(struct hci_dev *hdev)
 {
-	skb_queue_purge(&hdev->driver_init);
+ skb_queue_purge(&hdev->driver_init);
 
-	/* will free via device release */
-	put_device(&hdev->dev);
+
+ put_device(&hdev->dev);
 }

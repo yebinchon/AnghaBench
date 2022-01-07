@@ -1,19 +1,11 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int LSAPI_Flush_r (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  g_req ; 
+ int LSAPI_Flush_r (int *) ;
+ int g_req ;
 
 __attribute__((used)) static inline int LSAPI_Flush(void)
-{   return LSAPI_Flush_r( &g_req );                         }
+{ return LSAPI_Flush_r( &g_req ); }

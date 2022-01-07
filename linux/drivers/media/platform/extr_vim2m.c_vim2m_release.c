@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct vim2m_dev {int /*<<< orphan*/  num_inst; int /*<<< orphan*/  dev_mutex; } ;
-struct TYPE_3__ {int /*<<< orphan*/  m2m_ctx; } ;
-struct vim2m_ctx {TYPE_1__ fh; int /*<<< orphan*/  hdl; } ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct vim2m_dev {int num_inst; int dev_mutex; } ;
+struct TYPE_3__ {int m2m_ctx; } ;
+struct vim2m_ctx {TYPE_1__ fh; int hdl; } ;
 struct file {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  atomic_dec (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  dprintk (struct vim2m_dev*,int,char*,struct vim2m_ctx*) ; 
- struct vim2m_ctx* file2ctx (struct file*) ; 
- int /*<<< orphan*/  kfree (struct vim2m_ctx*) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  v4l2_ctrl_handler_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  v4l2_fh_del (TYPE_1__*) ; 
- int /*<<< orphan*/  v4l2_fh_exit (TYPE_1__*) ; 
- int /*<<< orphan*/  v4l2_m2m_ctx_release (int /*<<< orphan*/ ) ; 
- struct vim2m_dev* video_drvdata (struct file*) ; 
+
+ int atomic_dec (int *) ;
+ int dprintk (struct vim2m_dev*,int,char*,struct vim2m_ctx*) ;
+ struct vim2m_ctx* file2ctx (struct file*) ;
+ int kfree (struct vim2m_ctx*) ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
+ int v4l2_ctrl_handler_free (int *) ;
+ int v4l2_fh_del (TYPE_1__*) ;
+ int v4l2_fh_exit (TYPE_1__*) ;
+ int v4l2_m2m_ctx_release (int ) ;
+ struct vim2m_dev* video_drvdata (struct file*) ;
 
 __attribute__((used)) static int vim2m_release(struct file *file)
 {
-	struct vim2m_dev *dev = video_drvdata(file);
-	struct vim2m_ctx *ctx = file2ctx(file);
+ struct vim2m_dev *dev = video_drvdata(file);
+ struct vim2m_ctx *ctx = file2ctx(file);
 
-	dprintk(dev, 1, "Releasing instance %p\n", ctx);
+ dprintk(dev, 1, "Releasing instance %p\n", ctx);
 
-	v4l2_fh_del(&ctx->fh);
-	v4l2_fh_exit(&ctx->fh);
-	v4l2_ctrl_handler_free(&ctx->hdl);
-	mutex_lock(&dev->dev_mutex);
-	v4l2_m2m_ctx_release(ctx->fh.m2m_ctx);
-	mutex_unlock(&dev->dev_mutex);
-	kfree(ctx);
+ v4l2_fh_del(&ctx->fh);
+ v4l2_fh_exit(&ctx->fh);
+ v4l2_ctrl_handler_free(&ctx->hdl);
+ mutex_lock(&dev->dev_mutex);
+ v4l2_m2m_ctx_release(ctx->fh.m2m_ctx);
+ mutex_unlock(&dev->dev_mutex);
+ kfree(ctx);
 
-	atomic_dec(&dev->num_inst);
+ atomic_dec(&dev->num_inst);
 
-	return 0;
+ return 0;
 }

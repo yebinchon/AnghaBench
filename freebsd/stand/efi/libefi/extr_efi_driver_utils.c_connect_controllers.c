@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int UINTN ;
-struct TYPE_2__ {scalar_t__ (* LocateHandle ) (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*,int /*<<< orphan*/ *) ;int /*<<< orphan*/  (* ConnectController ) (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ;} ;
-typedef  scalar_t__ EFI_STATUS ;
-typedef  int /*<<< orphan*/  EFI_HANDLE ;
-typedef  int /*<<< orphan*/  EFI_GUID ;
 
-/* Variables and functions */
- TYPE_1__* BS ; 
- int /*<<< orphan*/  ByProtocol ; 
- scalar_t__ EFI_BUFFER_TOO_SMALL ; 
- scalar_t__ EFI_ERROR (scalar_t__) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * malloc (int) ; 
- scalar_t__ stub1 (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*,int /*<<< orphan*/ *) ; 
- scalar_t__ stub2 (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub3 (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int UINTN ;
+struct TYPE_2__ {scalar_t__ (* LocateHandle ) (int ,int *,int *,int*,int *) ;int (* ConnectController ) (int ,int *,int *,int) ;} ;
+typedef scalar_t__ EFI_STATUS ;
+typedef int EFI_HANDLE ;
+typedef int EFI_GUID ;
+
+
+ TYPE_1__* BS ;
+ int ByProtocol ;
+ scalar_t__ EFI_BUFFER_TOO_SMALL ;
+ scalar_t__ EFI_ERROR (scalar_t__) ;
+ int free (int *) ;
+ int * malloc (int) ;
+ scalar_t__ stub1 (int ,int *,int *,int*,int *) ;
+ scalar_t__ stub2 (int ,int *,int *,int*,int *) ;
+ int stub3 (int ,int *,int *,int) ;
 
 EFI_STATUS
 connect_controllers(EFI_GUID *filter)
@@ -37,8 +37,8 @@ connect_controllers(EFI_GUID *filter)
 
         nhandles = 0;
         hsize = 0;
-        status = BS->LocateHandle(ByProtocol, filter, NULL,
-                     &hsize, NULL);
+        status = BS->LocateHandle(ByProtocol, filter, ((void*)0),
+                     &hsize, ((void*)0));
 
         if(status != EFI_BUFFER_TOO_SMALL) {
                 return (status);
@@ -47,7 +47,7 @@ connect_controllers(EFI_GUID *filter)
         handles = malloc(hsize);
         nhandles = hsize / sizeof(EFI_HANDLE);
 
-        status = BS->LocateHandle(ByProtocol, filter, NULL,
+        status = BS->LocateHandle(ByProtocol, filter, ((void*)0),
                      &hsize, handles);
 
         if(EFI_ERROR(status)) {
@@ -55,7 +55,7 @@ connect_controllers(EFI_GUID *filter)
         }
 
         for(i = 0; i < nhandles; i++) {
-                BS->ConnectController(handles[i], NULL, NULL, true);
+                BS->ConnectController(handles[i], ((void*)0), ((void*)0), 1);
         }
 
         free(handles);

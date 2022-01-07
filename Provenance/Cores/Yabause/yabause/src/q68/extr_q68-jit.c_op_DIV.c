@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  Q68State ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INSN_GET_REG ; 
- int /*<<< orphan*/  JIT_EMIT_ADD_CYCLES (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  JIT_EMIT_DIVS_W (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  JIT_EMIT_DIVU_W (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  JIT_EMIT_GET_OP2_REGISTER (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  JIT_EMIT_SET_REGISTER_L (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  SIZE_W ; 
- int /*<<< orphan*/  current_entry ; 
- int /*<<< orphan*/  ea_get (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*,int) ; 
- int reg ; 
+
+
+
+typedef int uint32_t ;
+typedef int Q68State ;
+
+
+ int INSN_GET_REG ;
+ int JIT_EMIT_ADD_CYCLES (int ,int) ;
+ int JIT_EMIT_DIVS_W (int ) ;
+ int JIT_EMIT_DIVU_W (int ) ;
+ int JIT_EMIT_GET_OP2_REGISTER (int ,int) ;
+ int JIT_EMIT_SET_REGISTER_L (int ,int) ;
+ int SIZE_W ;
+ int current_entry ;
+ int ea_get (int *,int,int ,int ,int*,int) ;
+ int reg ;
 
 __attribute__((used)) static int op_DIV(Q68State *state, uint32_t opcode)
 {
@@ -36,7 +36,7 @@ __attribute__((used)) static int op_DIV(Q68State *state, uint32_t opcode)
         return 1;
     }
     JIT_EMIT_GET_OP2_REGISTER(current_entry, reg*4);
-    /* Add the EA cycles now, in case a divide-by-zero exception occurs */
+
     JIT_EMIT_ADD_CYCLES(current_entry, cycles);
 
     if (sign) {
@@ -46,8 +46,8 @@ __attribute__((used)) static int op_DIV(Q68State *state, uint32_t opcode)
     }
     JIT_EMIT_SET_REGISTER_L(current_entry, reg*4);
 
-    /* The 68000 docs say that the timing difference between best and
-     * worst cases is less than 10%, so we just return the worst case */
+
+
     JIT_EMIT_ADD_CYCLES(current_entry, sign ? 158 : 140);
     return 0;
 }

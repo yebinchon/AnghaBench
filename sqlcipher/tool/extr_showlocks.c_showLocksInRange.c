@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct flock {scalar_t__ l_type; scalar_t__ l_start; scalar_t__ l_len; int l_pid; int /*<<< orphan*/  l_whence; } ;
-typedef  scalar_t__ off_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  F_GETLK ; 
- scalar_t__ F_UNLCK ; 
- scalar_t__ F_WRLCK ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  fcntl (int,int /*<<< orphan*/ ,struct flock*) ; 
- int /*<<< orphan*/  printf (char*,int,int,int,char*) ; 
+
+
+
+struct flock {scalar_t__ l_type; scalar_t__ l_start; scalar_t__ l_len; int l_pid; int l_whence; } ;
+typedef scalar_t__ off_t ;
+
+
+ int F_GETLK ;
+ scalar_t__ F_UNLCK ;
+ scalar_t__ F_WRLCK ;
+ int SEEK_SET ;
+ int fcntl (int,int ,struct flock*) ;
+ int printf (char*,int,int,int,char*) ;
 
 __attribute__((used)) static int showLocksInRange(int fd, off_t lwr, off_t upr){
   int cnt = 0;

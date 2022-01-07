@@ -1,103 +1,103 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT ;
-struct TYPE_10__ {int /*<<< orphan*/  OptionList; } ;
-struct TYPE_9__ {int IsAccepted; int IsSupported; int AltDataSize; int /*<<< orphan*/  AltData; } ;
-typedef  TYPE_1__ PPP_OPTION ;
-typedef  TYPE_2__ PPP_LCP ;
-typedef  int /*<<< orphan*/  IP ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Add (int /*<<< orphan*/ ,TYPE_1__*) ; 
- scalar_t__ CmpIpAddr (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Copy (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- TYPE_1__* GetOptionValue (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IPToUINT (int /*<<< orphan*/ *) ; 
- int IsZeroIP (int /*<<< orphan*/ *) ; 
- TYPE_1__* NewPPPOption (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- scalar_t__ PPPGetIPAddressValueFromLCP (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int UINT ;
+struct TYPE_10__ {int OptionList; } ;
+struct TYPE_9__ {int IsAccepted; int IsSupported; int AltDataSize; int AltData; } ;
+typedef TYPE_1__ PPP_OPTION ;
+typedef TYPE_2__ PPP_LCP ;
+typedef int IP ;
+
+
+ int Add (int ,TYPE_1__*) ;
+ scalar_t__ CmpIpAddr (int *,int *) ;
+ int Copy (int ,int *,int) ;
+ TYPE_1__* GetOptionValue (TYPE_2__*,int ) ;
+ int IPToUINT (int *) ;
+ int IsZeroIP (int *) ;
+ TYPE_1__* NewPPPOption (int ,int *,int) ;
+ scalar_t__ PPPGetIPAddressValueFromLCP (TYPE_2__*,int ,int *) ;
 
 bool PPPSetIPAddressValueToLCP(PPP_LCP *c, UINT type, IP *ip, bool only_modify)
 {
-	IP ip2;
-	UINT ui;
-	// Validate arguments
-	if (c == NULL || ip == NULL)
-	{
-		return false;
-	}
+ IP ip2;
+ UINT ui;
 
-	ui = IPToUINT(ip);
+ if (c == ((void*)0) || ip == ((void*)0))
+ {
+  return 0;
+ }
 
-	if (PPPGetIPAddressValueFromLCP(c, type, &ip2))
-	{
-		PPP_OPTION *opt;
-		opt = GetOptionValue(c, type);
+ ui = IPToUINT(ip);
 
-		if (opt != NULL)
-		{
-			if (IsZeroIP(ip) == false)
-			{
-				if (CmpIpAddr(&ip2, ip) == 0)
-				{
-					// No change
-					opt->IsAccepted = true;
-					opt->IsSupported = true;
-				}
-				else
-				{
-					// Changed
-					opt->IsAccepted = false;
-					opt->IsSupported = true;
-					opt->AltDataSize = 4;
-					Copy(opt->AltData, &ui, 4);
-				}
-			}
-			else
-			{
-				// The parameter itself is not supported
-				// (if the IP address is 0.0.0.0)
-				opt->IsSupported = false;
-				opt->IsAccepted = false;
-			}
-		}
+ if (PPPGetIPAddressValueFromLCP(c, type, &ip2))
+ {
+  PPP_OPTION *opt;
+  opt = GetOptionValue(c, type);
 
-		return true;
-	}
-	else
-	{
-		if (IsZeroIP(ip) == false)
-		{
-			// Add as a new item
-			if (only_modify != false)
-			{
-				return false;
-			}
-			else
-			{
-				PPP_OPTION *opt2 = NewPPPOption(type, &ui, 4);
-				opt2->IsAccepted = opt2->IsSupported = true;
+  if (opt != ((void*)0))
+  {
+   if (IsZeroIP(ip) == 0)
+   {
+    if (CmpIpAddr(&ip2, ip) == 0)
+    {
 
-				Add(c->OptionList, opt2);
+     opt->IsAccepted = 1;
+     opt->IsSupported = 1;
+    }
+    else
+    {
 
-				return true;
-			}
-		}
-		else
-		{
-			return false;
-		}
-	}
+     opt->IsAccepted = 0;
+     opt->IsSupported = 1;
+     opt->AltDataSize = 4;
+     Copy(opt->AltData, &ui, 4);
+    }
+   }
+   else
+   {
+
+
+    opt->IsSupported = 0;
+    opt->IsAccepted = 0;
+   }
+  }
+
+  return 1;
+ }
+ else
+ {
+  if (IsZeroIP(ip) == 0)
+  {
+
+   if (only_modify != 0)
+   {
+    return 0;
+   }
+   else
+   {
+    PPP_OPTION *opt2 = NewPPPOption(type, &ui, 4);
+    opt2->IsAccepted = opt2->IsSupported = 1;
+
+    Add(c->OptionList, opt2);
+
+    return 1;
+   }
+  }
+  else
+  {
+   return 0;
+  }
+ }
 }

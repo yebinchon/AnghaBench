@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  SSL ;
 
-/* Variables and functions */
- int SSL_SESSION_set1_ticket_appdata (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SSL_get_session (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  appdata ; 
- int gen_tick_called ; 
- int /*<<< orphan*/  strlen (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int SSL ;
+
+
+ int SSL_SESSION_set1_ticket_appdata (int ,int ,int ) ;
+ int SSL_get_session (int *) ;
+ int appdata ;
+ int gen_tick_called ;
+ int strlen (int ) ;
 
 __attribute__((used)) static int gen_tick_cb(SSL *s, void *arg)
 {

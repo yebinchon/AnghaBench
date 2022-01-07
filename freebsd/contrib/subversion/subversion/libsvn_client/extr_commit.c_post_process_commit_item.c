@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_wc_context_t ;
-typedef  int /*<<< orphan*/  svn_wc_committed_queue_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct TYPE_3__ {int state_flags; scalar_t__ kind; int /*<<< orphan*/  incoming_prop_changes; int /*<<< orphan*/  path; scalar_t__ copyfrom_url; } ;
-typedef  TYPE_1__ svn_client_commit_item3_t ;
-typedef  int /*<<< orphan*/  svn_checksum_t ;
-typedef  int svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int FALSE ; 
- int SVN_CLIENT_COMMIT_ITEM_ADD ; 
- int SVN_CLIENT_COMMIT_ITEM_DELETE ; 
- int SVN_CLIENT_COMMIT_ITEM_LOCK_TOKEN ; 
- int SVN_CLIENT_COMMIT_ITEM_PROP_MODS ; 
- int SVN_CLIENT_COMMIT_ITEM_TEXT_MODS ; 
- int TRUE ; 
- int /*<<< orphan*/ * svn_error_trace (int /*<<< orphan*/ ) ; 
- scalar_t__ svn_node_dir ; 
- int /*<<< orphan*/  svn_wc_queue_committed4 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ ,int,int,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int svn_wc_context_t ;
+typedef int svn_wc_committed_queue_t ;
+typedef int svn_error_t ;
+struct TYPE_3__ {int state_flags; scalar_t__ kind; int incoming_prop_changes; int path; scalar_t__ copyfrom_url; } ;
+typedef TYPE_1__ svn_client_commit_item3_t ;
+typedef int svn_checksum_t ;
+typedef int svn_boolean_t ;
+typedef int apr_pool_t ;
+
+
+ int FALSE ;
+ int SVN_CLIENT_COMMIT_ITEM_ADD ;
+ int SVN_CLIENT_COMMIT_ITEM_DELETE ;
+ int SVN_CLIENT_COMMIT_ITEM_LOCK_TOKEN ;
+ int SVN_CLIENT_COMMIT_ITEM_PROP_MODS ;
+ int SVN_CLIENT_COMMIT_ITEM_TEXT_MODS ;
+ int TRUE ;
+ int * svn_error_trace (int ) ;
+ scalar_t__ svn_node_dir ;
+ int svn_wc_queue_committed4 (int *,int *,int ,int,int,int ,int,int,int const*,int *) ;
 
 __attribute__((used)) static svn_error_t *
 post_process_commit_item(svn_wc_committed_queue_t *queue,
@@ -56,10 +56,10 @@ post_process_commit_item(svn_wc_committed_queue_t *queue,
                                           | SVN_CLIENT_COMMIT_ITEM_ADD
                                           | SVN_CLIENT_COMMIT_ITEM_DELETE)));
 
-  /* When the node was deleted (or replaced), we need to always remove the
-     locks, as they're invalidated on the server. We cannot honor the
-     SVN_CLIENT_COMMIT_ITEM_LOCK_TOKEN flag here because it does not tell
-     us whether we have locked children. */
+
+
+
+
   if (item->state_flags & SVN_CLIENT_COMMIT_ITEM_DELETE)
     remove_lock = TRUE;
 

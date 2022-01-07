@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int biSize; int biPlanes; scalar_t__ biCompression; int biBitCount; int biWidth; } ;
-typedef  TYPE_1__* LPCBITMAPINFOHEADER ;
-typedef  int /*<<< orphan*/  BOOL ;
-typedef  int /*<<< orphan*/  BITMAPINFOHEADER ;
+typedef TYPE_1__* LPCBITMAPINFOHEADER ;
+typedef int BOOL ;
+typedef int BITMAPINFOHEADER ;
 
-/* Variables and functions */
- scalar_t__ BI_RLE4 ; 
- scalar_t__ BI_RLE8 ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
+
+ scalar_t__ BI_RLE4 ;
+ scalar_t__ BI_RLE8 ;
+ int FALSE ;
+ int TRUE ;
+ int assert (int ) ;
 
 __attribute__((used)) static BOOL isSupportedMRLE(LPCBITMAPINFOHEADER lpbi)
 {
-  /* pre-conditions */
-  assert(lpbi != NULL);
+
+  assert(lpbi != ((void*)0));
 
   if (lpbi->biSize < sizeof(BITMAPINFOHEADER) ||
       lpbi->biPlanes != 1)
@@ -34,7 +34,7 @@ __attribute__((used)) static BOOL isSupportedMRLE(LPCBITMAPINFOHEADER lpbi)
 
   if (lpbi->biCompression == BI_RLE4) {
     if (lpbi->biBitCount != 4 ||
-	(lpbi->biWidth % 2) != 0)
+ (lpbi->biWidth % 2) != 0)
       return FALSE;
   } else if (lpbi->biCompression == BI_RLE8) {
     if (lpbi->biBitCount != 8)

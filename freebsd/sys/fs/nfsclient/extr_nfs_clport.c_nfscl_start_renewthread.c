@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct nfsclclient {int /*<<< orphan*/  nfsc_renewthread; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  kproc_create (int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  start_nfscl ; 
+
+
+
+struct nfsclclient {int nfsc_renewthread; } ;
+
+
+ int kproc_create (int ,void*,int *,int ,int ,char*) ;
+ int start_nfscl ;
 
 void
 nfscl_start_renewthread(struct nfsclclient *clp)
 {
 
-	kproc_create(start_nfscl, (void *)clp, &clp->nfsc_renewthread, 0, 0,
-	    "nfscl");
+ kproc_create(start_nfscl, (void *)clp, &clp->nfsc_renewthread, 0, 0,
+     "nfscl");
 }

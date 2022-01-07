@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_5__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_5__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_8__ {TYPE_5__** A; } ;
-typedef  TYPE_2__ cf_sha3_context ;
-struct TYPE_7__ {int /*<<< orphan*/  member_0; } ;
+typedef TYPE_2__ cf_sha3_context ;
+struct TYPE_7__ {int member_0; } ;
 struct TYPE_9__ {int odd; int evn; TYPE_1__ member_0; } ;
-typedef  TYPE_3__ cf_sha3_bi ;
+typedef TYPE_3__ cf_sha3_bi ;
 struct TYPE_10__ {int odd; int evn; } ;
 
-/* Variables and functions */
- size_t MOD5 (int) ; 
- int /*<<< orphan*/ ** rotation_constants ; 
- int /*<<< orphan*/  rotl_bi_n (TYPE_3__*,TYPE_5__*,int /*<<< orphan*/ ) ; 
+
+ size_t MOD5 (int) ;
+ int ** rotation_constants ;
+ int rotl_bi_n (TYPE_3__*,TYPE_5__*,int ) ;
 
 __attribute__((used)) static void rho_pi_chi(cf_sha3_context *ctx)
 {

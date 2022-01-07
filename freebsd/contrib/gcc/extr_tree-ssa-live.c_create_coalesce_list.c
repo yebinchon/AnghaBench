@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  var_map ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int var_map ;
 struct partition_pair_d {int dummy; } ;
 struct coalesce_list_d {int dummy; } ;
-typedef  int /*<<< orphan*/  partition_pair_p ;
-typedef  TYPE_1__* coalesce_list_p ;
-struct TYPE_3__ {int add_mode; int /*<<< orphan*/ * list; int /*<<< orphan*/  map; } ;
+typedef int partition_pair_p ;
+typedef TYPE_1__* coalesce_list_p ;
+struct TYPE_3__ {int add_mode; int * list; int map; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  num_var_partitions (int /*<<< orphan*/ ) ; 
- scalar_t__ xcalloc (int /*<<< orphan*/ ,int) ; 
- scalar_t__ xmalloc (int) ; 
 
-coalesce_list_p 
+ int num_var_partitions (int ) ;
+ scalar_t__ xcalloc (int ,int) ;
+ scalar_t__ xmalloc (int) ;
+
+coalesce_list_p
 create_coalesce_list (var_map map)
 {
   coalesce_list_p list;
@@ -31,8 +31,8 @@ create_coalesce_list (var_map map)
   list = (coalesce_list_p) xmalloc (sizeof (struct coalesce_list_d));
 
   list->map = map;
-  list->add_mode = true;
+  list->add_mode = 1;
   list->list = (partition_pair_p *) xcalloc (num_var_partitions (map),
-					     sizeof (struct partition_pair_d));
+          sizeof (struct partition_pair_d));
   return list;
 }

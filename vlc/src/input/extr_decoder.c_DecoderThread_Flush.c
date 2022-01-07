@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_7__ {TYPE_3__** pp_decoder; scalar_t__ b_supported; } ;
 struct TYPE_8__ {scalar_t__ i_cat; } ;
-struct TYPE_9__ {TYPE_2__ fmt_out; int /*<<< orphan*/  (* pf_flush ) (TYPE_3__*) ;} ;
-struct decoder_owner {scalar_t__ i_spu_channel; int /*<<< orphan*/  lock; int /*<<< orphan*/  i_preroll_end; scalar_t__ p_vout; scalar_t__ p_aout; int /*<<< orphan*/ * p_sout_input; TYPE_1__ cc; scalar_t__ error; TYPE_3__* p_packetizer; TYPE_3__ dec; } ;
-typedef  TYPE_3__ decoder_t ;
+struct TYPE_9__ {TYPE_2__ fmt_out; int (* pf_flush ) (TYPE_3__*) ;} ;
+struct decoder_owner {scalar_t__ i_spu_channel; int lock; int i_preroll_end; scalar_t__ p_vout; scalar_t__ p_aout; int * p_sout_input; TYPE_1__ cc; scalar_t__ error; TYPE_3__* p_packetizer; TYPE_3__ dec; } ;
+typedef TYPE_3__ decoder_t ;
 
-/* Variables and functions */
- scalar_t__ AUDIO_ES ; 
- int MAX_CC_DECODERS ; 
- int /*<<< orphan*/  PREROLL_NONE ; 
- scalar_t__ SPU_ES ; 
- scalar_t__ VIDEO_ES ; 
- scalar_t__ VOUT_SPU_CHANNEL_INVALID ; 
- int /*<<< orphan*/  aout_DecFlush (scalar_t__) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  sout_InputFlush (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub1 (TYPE_3__*) ; 
- int /*<<< orphan*/  stub2 (TYPE_3__*) ; 
- int /*<<< orphan*/  stub3 (TYPE_3__*) ; 
- int /*<<< orphan*/  vlc_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vout_FlushAll (scalar_t__) ; 
- int /*<<< orphan*/  vout_FlushSubpictureChannel (scalar_t__,scalar_t__) ; 
+
+ scalar_t__ AUDIO_ES ;
+ int MAX_CC_DECODERS ;
+ int PREROLL_NONE ;
+ scalar_t__ SPU_ES ;
+ scalar_t__ VIDEO_ES ;
+ scalar_t__ VOUT_SPU_CHANNEL_INVALID ;
+ int aout_DecFlush (scalar_t__) ;
+ int assert (int) ;
+ int sout_InputFlush (int *) ;
+ int stub1 (TYPE_3__*) ;
+ int stub2 (TYPE_3__*) ;
+ int stub3 (TYPE_3__*) ;
+ int vlc_mutex_lock (int *) ;
+ int vlc_mutex_unlock (int *) ;
+ int vout_FlushAll (scalar_t__) ;
+ int vout_FlushSubpictureChannel (scalar_t__,scalar_t__) ;
 
 __attribute__((used)) static void DecoderThread_Flush( struct decoder_owner *p_owner )
 {
@@ -45,13 +45,13 @@ __attribute__((used)) static void DecoderThread_Flush( struct decoder_owner *p_o
     if( p_owner->error )
         return;
 
-    if( p_packetizer != NULL && p_packetizer->pf_flush != NULL )
+    if( p_packetizer != ((void*)0) && p_packetizer->pf_flush != ((void*)0) )
         p_packetizer->pf_flush( p_packetizer );
 
-    if ( p_dec->pf_flush != NULL )
+    if ( p_dec->pf_flush != ((void*)0) )
         p_dec->pf_flush( p_dec );
 
-    /* flush CC sub decoders */
+
     if( p_owner->cc.b_supported )
     {
         for( int i=0; i<MAX_CC_DECODERS; i++ )
@@ -63,12 +63,12 @@ __attribute__((used)) static void DecoderThread_Flush( struct decoder_owner *p_o
     }
 
     vlc_mutex_lock( &p_owner->lock );
-#ifdef ENABLE_SOUT
-    if ( p_owner->p_sout_input != NULL )
-    {
-        sout_InputFlush( p_owner->p_sout_input );
-    }
-#endif
+
+
+
+
+
+
     if( p_dec->fmt_out.i_cat == AUDIO_ES )
     {
         if( p_owner->p_aout )

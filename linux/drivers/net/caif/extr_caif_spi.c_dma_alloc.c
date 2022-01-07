@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct cfspi {int dummy; } ;
-typedef  int /*<<< orphan*/  dma_addr_t ;
+typedef int dma_addr_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  SPI_DMA_BUF_LEN ; 
- void* kmalloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int GFP_KERNEL ;
+ int SPI_DMA_BUF_LEN ;
+ void* kmalloc (int ,int ) ;
 
 __attribute__((used)) static inline void *dma_alloc(struct cfspi *cfspi, dma_addr_t *daddr)
 {
-	return kmalloc(SPI_DMA_BUF_LEN, GFP_KERNEL);
+ return kmalloc(SPI_DMA_BUF_LEN, GFP_KERNEL);
 }

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  int /*<<< orphan*/  Instruction ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IOpenCall ; 
- int /*<<< orphan*/  luaL_argcheck (int /*<<< orphan*/ *,int,int,char*) ; 
- int /*<<< orphan*/  lua_isnoneornil (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * newpatt (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  setinst (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  value2fenv (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int lua_State ;
+typedef int Instruction ;
+
+
+ int IOpenCall ;
+ int luaL_argcheck (int *,int,int,char*) ;
+ int lua_isnoneornil (int *,int) ;
+ int * newpatt (int *,int) ;
+ int setinst (int *,int ,int ) ;
+ int value2fenv (int *,int) ;
 
 __attribute__((used)) static int nter_l (lua_State *L) {
   Instruction *p;

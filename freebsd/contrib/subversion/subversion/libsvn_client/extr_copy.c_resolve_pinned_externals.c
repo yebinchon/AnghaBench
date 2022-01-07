@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_string_t ;
-typedef  int /*<<< orphan*/  svn_ra_session_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct TYPE_6__ {int /*<<< orphan*/  wc_ctx; } ;
-typedef  TYPE_1__ svn_client_ctx_t ;
-struct TYPE_7__ {int /*<<< orphan*/  src_abspath_or_url; int /*<<< orphan*/  src_revnum; } ;
-typedef  TYPE_2__ svn_client__copy_pair_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
-typedef  int /*<<< orphan*/  apr_hash_index_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_ASSERT (char const*) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  SVN_PROP_EXTERNALS ; 
- scalar_t__ apr_hash_count (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * apr_hash_first (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * apr_hash_make (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * apr_hash_next (int /*<<< orphan*/ *) ; 
- char* apr_hash_this_key (int /*<<< orphan*/ *) ; 
- void* apr_hash_this_val (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pin_externals_prop (int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/  const*,char const*,char const*,TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_client__ensure_ra_session_url (char const**,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_client__remote_propget (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_depth_infinity ; 
- char* svn_dirent_skip_ancestor (int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  svn_hash_sets (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_node_dir ; 
- scalar_t__ svn_path_is_url (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_pool_clear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_pool_create (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_pool_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_ra_reparent (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_string_create (char const*,int /*<<< orphan*/ *) ; 
- char* svn_uri_skip_ancestor (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__externals_gather_definitions (int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int svn_string_t ;
+typedef int svn_ra_session_t ;
+typedef int svn_error_t ;
+struct TYPE_6__ {int wc_ctx; } ;
+typedef TYPE_1__ svn_client_ctx_t ;
+struct TYPE_7__ {int src_abspath_or_url; int src_revnum; } ;
+typedef TYPE_2__ svn_client__copy_pair_t ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
+typedef int apr_hash_index_t ;
+
+
+ int SVN_ERR (int ) ;
+ int SVN_ERR_ASSERT (char const*) ;
+ int * SVN_NO_ERROR ;
+ int SVN_PROP_EXTERNALS ;
+ scalar_t__ apr_hash_count (int *) ;
+ int * apr_hash_first (int *,int *) ;
+ int * apr_hash_make (int *) ;
+ int * apr_hash_next (int *) ;
+ char* apr_hash_this_key (int *) ;
+ void* apr_hash_this_val (int *) ;
+ int pin_externals_prop (int **,int *,int const*,char const*,char const*,TYPE_1__*,int *,int *) ;
+ int svn_client__ensure_ra_session_url (char const**,int *,int ,int *) ;
+ int svn_client__remote_propget (int *,int *,int ,int ,char*,int ,int ,int *,int ,int *,int *) ;
+ int svn_depth_infinity ;
+ char* svn_dirent_skip_ancestor (int ,char const*) ;
+ int svn_hash_sets (int *,char const*,int *) ;
+ int svn_node_dir ;
+ scalar_t__ svn_path_is_url (int ) ;
+ int svn_pool_clear (int *) ;
+ int * svn_pool_create (int *) ;
+ int svn_pool_destroy (int *) ;
+ int svn_ra_reparent (int *,char const*,int *) ;
+ int * svn_string_create (char const*,int *) ;
+ char* svn_uri_skip_ancestor (int ,char const*,int *) ;
+ int svn_wc__externals_gather_definitions (int **,int *,int ,int ,int ,int *,int *) ;
 
 __attribute__((used)) static svn_error_t *
 resolve_pinned_externals(apr_hash_t **pinned_externals,
@@ -60,7 +60,7 @@ resolve_pinned_externals(apr_hash_t **pinned_externals,
                          apr_pool_t *result_pool,
                          apr_pool_t *scratch_pool)
 {
-  const char *old_url = NULL;
+  const char *old_url = ((void*)0);
   apr_hash_t *externals_props;
   apr_hash_index_t *hi;
   apr_pool_t *iterpool;
@@ -73,7 +73,7 @@ resolve_pinned_externals(apr_hash_t **pinned_externals,
                                                 pair->src_abspath_or_url,
                                                 scratch_pool));
       externals_props = apr_hash_make(scratch_pool);
-      SVN_ERR(svn_client__remote_propget(externals_props, NULL,
+      SVN_ERR(svn_client__remote_propget(externals_props, ((void*)0),
                                          SVN_PROP_EXTERNALS,
                                          pair->src_abspath_or_url, "",
                                          svn_node_dir,
@@ -85,13 +85,13 @@ resolve_pinned_externals(apr_hash_t **pinned_externals,
     }
   else
     {
-      SVN_ERR(svn_wc__externals_gather_definitions(&externals_props, NULL,
+      SVN_ERR(svn_wc__externals_gather_definitions(&externals_props, ((void*)0),
                                                    ctx->wc_ctx,
                                                    pair->src_abspath_or_url,
                                                    svn_depth_infinity,
                                                    scratch_pool, scratch_pool));
 
-      /* ### gather_definitions returns propvals as const char * */
+
       for (hi = apr_hash_first(scratch_pool, externals_props);
            hi;
            hi = apr_hash_next(hi))

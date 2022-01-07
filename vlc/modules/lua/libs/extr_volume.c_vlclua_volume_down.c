@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_playlist_t ;
-typedef  int /*<<< orphan*/  vlc_player_t ;
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- float AOUT_VOLUME_DEFAULT ; 
- int VLC_SUCCESS ; 
- long lroundf (float) ; 
- int luaL_optinteger (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  lua_pushnumber (int /*<<< orphan*/ *,long) ; 
- int vlc_player_aout_DecrementVolume (int /*<<< orphan*/ *,int,float*) ; 
- int /*<<< orphan*/ * vlc_playlist_GetPlayer (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * vlclua_get_playlist_internal (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int vlc_playlist_t ;
+typedef int vlc_player_t ;
+typedef int lua_State ;
+
+
+ float AOUT_VOLUME_DEFAULT ;
+ int VLC_SUCCESS ;
+ long lroundf (float) ;
+ int luaL_optinteger (int *,int,int) ;
+ int lua_pushnumber (int *,long) ;
+ int vlc_player_aout_DecrementVolume (int *,int,float*) ;
+ int * vlc_playlist_GetPlayer (int *) ;
+ int * vlclua_get_playlist_internal (int *) ;
 
 __attribute__((used)) static int vlclua_volume_down(lua_State *L)
 {

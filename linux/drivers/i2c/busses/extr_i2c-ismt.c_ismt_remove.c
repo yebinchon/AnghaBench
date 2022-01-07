@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct pci_dev {int dummy; } ;
-struct ismt_priv {int /*<<< orphan*/  adapter; } ;
+struct ismt_priv {int adapter; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  i2c_del_adapter (int /*<<< orphan*/ *) ; 
- struct ismt_priv* pci_get_drvdata (struct pci_dev*) ; 
+
+ int i2c_del_adapter (int *) ;
+ struct ismt_priv* pci_get_drvdata (struct pci_dev*) ;
 
 __attribute__((used)) static void ismt_remove(struct pci_dev *pdev)
 {
-	struct ismt_priv *priv = pci_get_drvdata(pdev);
+ struct ismt_priv *priv = pci_get_drvdata(pdev);
 
-	i2c_del_adapter(&priv->adapter);
+ i2c_del_adapter(&priv->adapter);
 }

@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * vnode_t ;
-struct vfsstatfs {int /*<<< orphan*/  f_fstypename; } ;
-typedef  int /*<<< orphan*/  mount_t ;
 
-/* Variables and functions */
- int EINVAL ; 
- int ENOENT ; 
- int /*<<< orphan*/ * NULLVP ; 
- int /*<<< orphan*/  NULLVPTOLOWERVID (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * NULLVPTOLOWERVP (int /*<<< orphan*/ *) ; 
- scalar_t__ nullfs_checkspecialvp (int /*<<< orphan*/ *) ; 
- scalar_t__ strcmp (int /*<<< orphan*/ ,char*) ; 
- struct vfsstatfs* vfs_statfs (int /*<<< orphan*/ ) ; 
- int vnode_getwithvid (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vnode_mount (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int * vnode_t ;
+struct vfsstatfs {int f_fstypename; } ;
+typedef int mount_t ;
+
+
+ int EINVAL ;
+ int ENOENT ;
+ int * NULLVP ;
+ int NULLVPTOLOWERVID (int *) ;
+ int * NULLVPTOLOWERVP (int *) ;
+ scalar_t__ nullfs_checkspecialvp (int *) ;
+ scalar_t__ strcmp (int ,char*) ;
+ struct vfsstatfs* vfs_statfs (int ) ;
+ int vnode_getwithvid (int *,int ) ;
+ int vnode_mount (int *) ;
 
 int
 nullfs_getbackingvnode(vnode_t in_vp, vnode_t* out_vpp)
 {
-	int result = EINVAL;
+ int result = EINVAL;
 
-	if (out_vpp == NULL || in_vp == NULL) {
-		goto end;
-	}
+ if (out_vpp == ((void*)0) || in_vp == ((void*)0)) {
+  goto end;
+ }
 
-	struct vfsstatfs * sp   = NULL;
-	mount_t mp = vnode_mount(in_vp);
+ struct vfsstatfs * sp = ((void*)0);
+ mount_t mp = vnode_mount(in_vp);
 
-	sp = vfs_statfs(mp);
-	//If this isn't a nullfs vnode or it is but it's a special vnode
-	if (strcmp(sp->f_fstypename, "nullfs") != 0 || nullfs_checkspecialvp(in_vp)) {
-		*out_vpp = NULLVP;
-		result = ENOENT;
-		goto end;
-	}
+ sp = vfs_statfs(mp);
 
-	vnode_t lvp = NULLVPTOLOWERVP(in_vp);
-	if ((result = vnode_getwithvid(lvp, NULLVPTOLOWERVID(in_vp)))) {
-		goto end;
-	}
+ if (strcmp(sp->f_fstypename, "nullfs") != 0 || nullfs_checkspecialvp(in_vp)) {
+  *out_vpp = NULLVP;
+  result = ENOENT;
+  goto end;
+ }
 
-	*out_vpp = lvp;
+ vnode_t lvp = NULLVPTOLOWERVP(in_vp);
+ if ((result = vnode_getwithvid(lvp, NULLVPTOLOWERVID(in_vp)))) {
+  goto end;
+ }
+
+ *out_vpp = lvp;
 
 end:
-	return result;
+ return result;
 }

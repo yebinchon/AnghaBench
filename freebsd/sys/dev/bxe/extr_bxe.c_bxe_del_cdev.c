@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct bxe_softc {int /*<<< orphan*/ * ioctl_dev; int /*<<< orphan*/ * eeprom; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  M_DEVBUF ; 
- int /*<<< orphan*/  destroy_dev (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+struct bxe_softc {int * ioctl_dev; int * eeprom; } ;
+
+
+ int M_DEVBUF ;
+ int destroy_dev (int *) ;
+ int free (int *,int ) ;
 
 __attribute__((used)) static void
 bxe_del_cdev(struct bxe_softc *sc)
 {
-    if (sc->ioctl_dev != NULL)
+    if (sc->ioctl_dev != ((void*)0))
         destroy_dev(sc->ioctl_dev);
 
-    if (sc->eeprom != NULL) {
+    if (sc->eeprom != ((void*)0)) {
         free(sc->eeprom, M_DEVBUF);
-        sc->eeprom = NULL;
+        sc->eeprom = ((void*)0);
     }
-    sc->ioctl_dev = NULL;
+    sc->ioctl_dev = ((void*)0);
 
     return;
 }

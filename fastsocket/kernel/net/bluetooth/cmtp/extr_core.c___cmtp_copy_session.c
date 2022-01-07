@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct cmtp_session {int /*<<< orphan*/  num; int /*<<< orphan*/  state; int /*<<< orphan*/  flags; int /*<<< orphan*/  bdaddr; } ;
-struct cmtp_conninfo {int /*<<< orphan*/  num; int /*<<< orphan*/  state; int /*<<< orphan*/  flags; int /*<<< orphan*/  bdaddr; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  bacpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+struct cmtp_session {int num; int state; int flags; int bdaddr; } ;
+struct cmtp_conninfo {int num; int state; int flags; int bdaddr; } ;
+
+
+ int bacpy (int *,int *) ;
 
 __attribute__((used)) static void __cmtp_copy_session(struct cmtp_session *session, struct cmtp_conninfo *ci)
 {
-	bacpy(&ci->bdaddr, &session->bdaddr);
+ bacpy(&ci->bdaddr, &session->bdaddr);
 
-	ci->flags = session->flags;
-	ci->state = session->state;
+ ci->flags = session->flags;
+ ci->state = session->state;
 
-	ci->num = session->num;
+ ci->num = session->num;
 }

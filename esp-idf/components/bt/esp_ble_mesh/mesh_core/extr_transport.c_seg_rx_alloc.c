@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8_t ;
-typedef  int /*<<< orphan*/  u64_t ;
-struct seg_rx {int in_use; unsigned int block; int /*<<< orphan*/  dst; int /*<<< orphan*/  src; int /*<<< orphan*/  ttl; int /*<<< orphan*/  hdr; int /*<<< orphan*/  seg_n; int /*<<< orphan*/  seq_auth; int /*<<< orphan*/  ctl; int /*<<< orphan*/  sub; int /*<<< orphan*/  buf; } ;
-struct TYPE_2__ {int /*<<< orphan*/  recv_dst; int /*<<< orphan*/  addr; int /*<<< orphan*/  send_ttl; } ;
-struct bt_mesh_net_rx {TYPE_1__ ctx; int /*<<< orphan*/  ctl; int /*<<< orphan*/  sub; } ;
 
-/* Variables and functions */
- int ARRAY_SIZE (struct seg_rx*) ; 
- int /*<<< orphan*/  BLOCK_COMPLETE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BT_DBG (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  net_buf_simple_reset (int /*<<< orphan*/ *) ; 
- struct seg_rx* seg_rx ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u8_t ;
+typedef int u64_t ;
+struct seg_rx {int in_use; unsigned int block; int dst; int src; int ttl; int hdr; int seg_n; int seq_auth; int ctl; int sub; int buf; } ;
+struct TYPE_2__ {int recv_dst; int addr; int send_ttl; } ;
+struct bt_mesh_net_rx {TYPE_1__ ctx; int ctl; int sub; } ;
+
+
+ int ARRAY_SIZE (struct seg_rx*) ;
+ int BLOCK_COMPLETE (int ) ;
+ int BT_DBG (char*,int ) ;
+ int net_buf_simple_reset (int *) ;
+ struct seg_rx* seg_rx ;
 
 __attribute__((used)) static struct seg_rx *seg_rx_alloc(struct bt_mesh_net_rx *net_rx,
                                    const u8_t *hdr, const u64_t *seq_auth,
@@ -55,5 +55,5 @@ __attribute__((used)) static struct seg_rx *seg_rx_alloc(struct bt_mesh_net_rx *
         return rx;
     }
 
-    return NULL;
+    return ((void*)0);
 }

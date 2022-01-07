@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_5__ ;
-typedef  struct TYPE_15__   TYPE_4__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t uint32_t ;
-typedef  int /*<<< orphan*/  out_file ;
-typedef  int /*<<< orphan*/  image ;
-typedef  int /*<<< orphan*/  WebPOutputFileFormat ;
-struct TYPE_13__ {int stride; int size; int /*<<< orphan*/  rgba; } ;
+
+
+typedef struct TYPE_16__ TYPE_5__ ;
+typedef struct TYPE_15__ TYPE_4__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+typedef size_t uint32_t ;
+typedef int out_file ;
+typedef int image ;
+typedef int WebPOutputFileFormat ;
+struct TYPE_13__ {int stride; int size; int rgba; } ;
 struct TYPE_14__ {TYPE_2__ RGBA; } ;
-struct TYPE_15__ {int is_external_memory; int width; int height; TYPE_3__ u; int /*<<< orphan*/  colorspace; } ;
-typedef  TYPE_4__ WebPDecBuffer ;
-typedef  int /*<<< orphan*/  const W_CHAR ;
+struct TYPE_15__ {int is_external_memory; int width; int height; TYPE_3__ u; int colorspace; } ;
+typedef TYPE_4__ WebPDecBuffer ;
+typedef int const W_CHAR ;
 struct TYPE_16__ {size_t num_frames; int canvas_width; int canvas_height; TYPE_1__* frames; } ;
-struct TYPE_12__ {int /*<<< orphan*/  rgba; } ;
-typedef  TYPE_5__ AnimatedImage ;
+struct TYPE_12__ {int rgba; } ;
+typedef TYPE_5__ AnimatedImage ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ClearAnimatedImage (TYPE_5__*) ; 
- int /*<<< orphan*/  FREE_WARGV_AND_RETURN (int) ; 
- void* GET_WARGV (char const**,int) ; 
- int /*<<< orphan*/  GetAnimatedImageVersions (int*,int*) ; 
- int /*<<< orphan*/  Help () ; 
- int /*<<< orphan*/  INIT_WARGV (int,char const**) ; 
- int /*<<< orphan*/  MODE_RGBA ; 
- int /*<<< orphan*/  PAM ; 
- int /*<<< orphan*/  PNG ; 
- int /*<<< orphan*/  ReadAnimatedImage (char const*,TYPE_5__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TIFF ; 
- int /*<<< orphan*/  const* TO_W_CHAR (char*) ; 
- int /*<<< orphan*/  WFPRINTF (int /*<<< orphan*/ ,char*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  WPRINTF (char*,int /*<<< orphan*/  const* const,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  WSNPRINTF (int /*<<< orphan*/  const*,int,char*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,size_t,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  WebPFreeDecBuffer (TYPE_4__*) ; 
- int /*<<< orphan*/  WebPInitDecBuffer (TYPE_4__*) ; 
- int /*<<< orphan*/  WebPSaveImage (TYPE_4__*,int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char const*) ; 
- int /*<<< orphan*/  memset (TYPE_5__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  printf (char*,int,int,int,int,int,int) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  strcmp (char const*,char*) ; 
+
+ int ClearAnimatedImage (TYPE_5__*) ;
+ int FREE_WARGV_AND_RETURN (int) ;
+ void* GET_WARGV (char const**,int) ;
+ int GetAnimatedImageVersions (int*,int*) ;
+ int Help () ;
+ int INIT_WARGV (int,char const**) ;
+ int MODE_RGBA ;
+ int PAM ;
+ int PNG ;
+ int ReadAnimatedImage (char const*,TYPE_5__*,int ,int *) ;
+ int TIFF ;
+ int const* TO_W_CHAR (char*) ;
+ int WFPRINTF (int ,char*,int const*) ;
+ int WPRINTF (char*,int const* const,int const*,int const*,int const*) ;
+ int WSNPRINTF (int const*,int,char*,int const*,int const*,size_t,int const*) ;
+ int WebPFreeDecBuffer (TYPE_4__*) ;
+ int WebPInitDecBuffer (TYPE_4__*) ;
+ int WebPSaveImage (TYPE_4__*,int ,char const*) ;
+ int fprintf (int ,char*,char const*) ;
+ int memset (TYPE_5__*,int ,int) ;
+ int printf (char*,int,int,int,int,int,int) ;
+ int stderr ;
+ int strcmp (char const*,char*) ;
 
 int main(int argc, const char* argv[]) {
   int error = 0;
@@ -108,7 +108,7 @@ int main(int argc, const char* argv[]) {
       memset(&image, 0, sizeof(image));
       WPRINTF("Decoding file: %s as %s/%sxxxx.%s\n",
               file, dump_folder, prefix, suffix);
-      if (!ReadAnimatedImage((const char*)file, &image, 0, NULL)) {
+      if (!ReadAnimatedImage((const char*)file, &image, 0, ((void*)0))) {
         WFPRINTF(stderr, "Error decoding file: %s\n Aborting.\n", file);
         error = 1;
         break;

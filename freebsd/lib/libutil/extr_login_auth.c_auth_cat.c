@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buf ;
 
-/* Variables and functions */
- int BUFSIZ ; 
- int O_CLOEXEC ; 
- int O_RDONLY ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  fileno (int /*<<< orphan*/ ) ; 
- int open (char const*,int) ; 
- int read (int,char*,int) ; 
- int /*<<< orphan*/  sleep (int) ; 
- int /*<<< orphan*/  stdout ; 
- int /*<<< orphan*/  write (int /*<<< orphan*/ ,char*,int) ; 
+
+
+
+typedef int buf ;
+
+
+ int BUFSIZ ;
+ int O_CLOEXEC ;
+ int O_RDONLY ;
+ int close (int) ;
+ int fileno (int ) ;
+ int open (char const*,int) ;
+ int read (int,char*,int) ;
+ int sleep (int) ;
+ int stdout ;
+ int write (int ,char*,int) ;
 
 int
 auth_cat(const char *file)
@@ -35,6 +35,6 @@ auth_cat(const char *file)
   while ((count = read(fd, buf, sizeof(buf))) > 0)
     (void)write(fileno(stdout), buf, count);
   close(fd);
-  sleep(5);	/* wait an arbitrary time to drain */
+  sleep(5);
   return 1;
 }

@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  allowed_commands; void* patterns; void* passwords; int /*<<< orphan*/ * allowed_subcommands; int /*<<< orphan*/  flags; int /*<<< orphan*/  name; } ;
-typedef  TYPE_1__ user ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACLListDupSds ; 
- int /*<<< orphan*/  ACLListFreeSds ; 
- int /*<<< orphan*/  ACLListMatchSds ; 
- int /*<<< orphan*/  USER_FLAG_DISABLED ; 
- int /*<<< orphan*/  Users ; 
- void* listCreate () ; 
- int /*<<< orphan*/  listSetDupMethod (void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  listSetFreeMethod (void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  listSetMatchMethod (void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- scalar_t__ raxFind (int /*<<< orphan*/ ,unsigned char*,size_t) ; 
- int /*<<< orphan*/  raxInsert (int /*<<< orphan*/ ,unsigned char*,size_t,TYPE_1__*,int /*<<< orphan*/ *) ; 
- scalar_t__ raxNotFound ; 
- int /*<<< orphan*/  sdsnewlen (char const*,size_t) ; 
- TYPE_1__* zmalloc (int) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int allowed_commands; void* patterns; void* passwords; int * allowed_subcommands; int flags; int name; } ;
+typedef TYPE_1__ user ;
+
+
+ int ACLListDupSds ;
+ int ACLListFreeSds ;
+ int ACLListMatchSds ;
+ int USER_FLAG_DISABLED ;
+ int Users ;
+ void* listCreate () ;
+ int listSetDupMethod (void*,int ) ;
+ int listSetFreeMethod (void*,int ) ;
+ int listSetMatchMethod (void*,int ) ;
+ int memset (int ,int ,int) ;
+ scalar_t__ raxFind (int ,unsigned char*,size_t) ;
+ int raxInsert (int ,unsigned char*,size_t,TYPE_1__*,int *) ;
+ scalar_t__ raxNotFound ;
+ int sdsnewlen (char const*,size_t) ;
+ TYPE_1__* zmalloc (int) ;
 
 user *ACLCreateUser(const char *name, size_t namelen) {
-    if (raxFind(Users,(unsigned char*)name,namelen) != raxNotFound) return NULL;
+    if (raxFind(Users,(unsigned char*)name,namelen) != raxNotFound) return ((void*)0);
     user *u = zmalloc(sizeof(*u));
     u->name = sdsnewlen(name,namelen);
     u->flags = USER_FLAG_DISABLED;
-    u->allowed_subcommands = NULL;
+    u->allowed_subcommands = ((void*)0);
     u->passwords = listCreate();
     u->patterns = listCreate();
     listSetMatchMethod(u->passwords,ACLListMatchSds);
@@ -46,6 +46,6 @@ user *ACLCreateUser(const char *name, size_t namelen) {
     listSetFreeMethod(u->patterns,ACLListFreeSds);
     listSetDupMethod(u->patterns,ACLListDupSds);
     memset(u->allowed_commands,0,sizeof(u->allowed_commands));
-    raxInsert(Users,(unsigned char*)name,namelen,u,NULL);
+    raxInsert(Users,(unsigned char*)name,namelen,u,((void*)0));
     return u;
 }

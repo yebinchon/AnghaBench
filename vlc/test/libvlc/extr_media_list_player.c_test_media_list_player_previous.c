@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  libvlc_media_t ;
-typedef  int /*<<< orphan*/  libvlc_media_list_t ;
-typedef  int /*<<< orphan*/  libvlc_media_list_player_t ;
-typedef  int /*<<< orphan*/  libvlc_instance_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  libvlc_media_list_add_media (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * libvlc_media_list_new (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * libvlc_media_list_player_new (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  libvlc_media_list_player_pause (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  libvlc_media_list_player_play_item (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  libvlc_media_list_player_previous (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  libvlc_media_list_player_release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  libvlc_media_list_player_set_media_list (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * libvlc_media_new_path (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  libvlc_media_release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * libvlc_new (int,char const**) ; 
- int /*<<< orphan*/  libvlc_release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  media_list_add_file_path (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  stop_and_wait (int /*<<< orphan*/ *) ; 
- char* test_default_sample ; 
- int /*<<< orphan*/  test_log (char*) ; 
- int /*<<< orphan*/  wait_playing (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int libvlc_media_t ;
+typedef int libvlc_media_list_t ;
+typedef int libvlc_media_list_player_t ;
+typedef int libvlc_instance_t ;
+
+
+ int assert (int *) ;
+ int libvlc_media_list_add_media (int *,int *) ;
+ int * libvlc_media_list_new (int *) ;
+ int * libvlc_media_list_player_new (int *) ;
+ int libvlc_media_list_player_pause (int *) ;
+ int libvlc_media_list_player_play_item (int *,int *) ;
+ int libvlc_media_list_player_previous (int *) ;
+ int libvlc_media_list_player_release (int *) ;
+ int libvlc_media_list_player_set_media_list (int *,int *) ;
+ int * libvlc_media_new_path (int *,char const*) ;
+ int libvlc_media_release (int *) ;
+ int * libvlc_new (int,char const**) ;
+ int libvlc_release (int *) ;
+ int media_list_add_file_path (int *,int *,char const*) ;
+ int stop_and_wait (int *) ;
+ char* test_default_sample ;
+ int test_log (char*) ;
+ int wait_playing (int *) ;
 
 __attribute__((used)) static void test_media_list_player_previous(const char** argv, int argc)
 {
@@ -47,20 +47,20 @@ __attribute__((used)) static void test_media_list_player_previous(const char** a
     test_log ("Testing media player previous()\n");
 
     vlc = libvlc_new (argc, argv);
-    assert (vlc != NULL);
+    assert (vlc != ((void*)0));
 
     md = libvlc_media_new_path (vlc, file);
     assert(md);
 
     ml = libvlc_media_list_new (vlc);
-    assert (ml != NULL);
+    assert (ml != ((void*)0));
 
     mlp = libvlc_media_list_player_new (vlc);
     assert(mlp);;
 
     libvlc_media_list_add_media (ml, md);
 
-    // Add three media
+
     media_list_add_file_path (vlc, ml, file);
     media_list_add_file_path (vlc, ml, file);
     media_list_add_file_path (vlc, ml, file);

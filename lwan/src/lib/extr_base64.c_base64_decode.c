@@ -1,20 +1,12 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int* base64_decode_table ; 
- int /*<<< orphan*/  free (unsigned char*) ; 
- unsigned char* malloc (size_t) ; 
+ int* base64_decode_table ;
+ int free (unsigned char*) ;
+ unsigned char* malloc (size_t) ;
 
 unsigned char *
 base64_decode(const unsigned char *src, size_t len, size_t *out_len)
@@ -30,12 +22,12 @@ base64_decode(const unsigned char *src, size_t len, size_t *out_len)
     }
 
     if (count == 0 || count % 4)
-        return NULL;
+        return ((void*)0);
 
     olen = (count / 4 * 3) + 1;
     pos = out = malloc(olen);
-    if (out == NULL)
-        return NULL;
+    if (out == ((void*)0))
+        return ((void*)0);
 
     count = 0;
     for (i = 0; i < len; i++) {
@@ -58,9 +50,9 @@ base64_decode(const unsigned char *src, size_t len, size_t *out_len)
                 else if (pad == 2)
                     pos -= 2;
                 else {
-                    /* Invalid padding */
+
                     free(out);
-                    return NULL;
+                    return ((void*)0);
                 }
                 break;
             }

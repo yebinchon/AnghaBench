@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {scalar_t__ rptr; scalar_t__ wptr; int pptr; scalar_t__ state; int extra; struct TYPE_4__* next; } ;
-typedef  TYPE_1__ netbuffer_t ;
+typedef TYPE_1__ netbuffer_t ;
 struct TYPE_5__ {scalar_t__ cptr; TYPE_1__* cur; TYPE_1__* head; } ;
-typedef  TYPE_2__ nb_iterator_t ;
+typedef TYPE_2__ nb_iterator_t ;
 
-/* Variables and functions */
- scalar_t__ NB_MAGIC_BUSYHEAD ; 
- scalar_t__ NB_MAGIC_HEAD ; 
- int NET_BUFFERS ; 
- unsigned int NET_BUFFER_SIZE ; 
- int /*<<< orphan*/  assert (int) ; 
+
+ scalar_t__ NB_MAGIC_BUSYHEAD ;
+ scalar_t__ NB_MAGIC_HEAD ;
+ int NET_BUFFERS ;
+ unsigned int NET_BUFFER_SIZE ;
+ int assert (int) ;
 
 int nbit_ready_bytes (nb_iterator_t *I) {
   netbuffer_t *H = I->head, *X = I->cur;

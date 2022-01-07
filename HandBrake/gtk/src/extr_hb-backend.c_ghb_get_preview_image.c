@@ -1,70 +1,70 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_33__   TYPE_9__ ;
-typedef  struct TYPE_32__   TYPE_8__ ;
-typedef  struct TYPE_31__   TYPE_7__ ;
-typedef  struct TYPE_30__   TYPE_6__ ;
-typedef  struct TYPE_29__   TYPE_5__ ;
-typedef  struct TYPE_28__   TYPE_4__ ;
-typedef  struct TYPE_27__   TYPE_3__ ;
-typedef  struct TYPE_26__   TYPE_2__ ;
-typedef  struct TYPE_25__   TYPE_1__ ;
-typedef  struct TYPE_24__   TYPE_10__ ;
 
-/* Type definitions */
-struct TYPE_30__ {int /*<<< orphan*/  prefs; int /*<<< orphan*/  builder; int /*<<< orphan*/  settings; } ;
-typedef  TYPE_6__ signal_user_data_t ;
+
+
+typedef struct TYPE_33__ TYPE_9__ ;
+typedef struct TYPE_32__ TYPE_8__ ;
+typedef struct TYPE_31__ TYPE_7__ ;
+typedef struct TYPE_30__ TYPE_6__ ;
+typedef struct TYPE_29__ TYPE_5__ ;
+typedef struct TYPE_28__ TYPE_4__ ;
+typedef struct TYPE_27__ TYPE_3__ ;
+typedef struct TYPE_26__ TYPE_2__ ;
+typedef struct TYPE_25__ TYPE_1__ ;
+typedef struct TYPE_24__ TYPE_10__ ;
+
+
+struct TYPE_30__ {int prefs; int builder; int settings; } ;
+typedef TYPE_6__ signal_user_data_t ;
 struct TYPE_29__ {int width; int height; } ;
-struct TYPE_31__ {TYPE_5__ geometry; int /*<<< orphan*/  index; } ;
-typedef  TYPE_7__ hb_title_t ;
+struct TYPE_31__ {TYPE_5__ geometry; int index; } ;
+typedef TYPE_7__ hb_title_t ;
 struct TYPE_32__ {int width; int height; int* data; TYPE_3__* plane; } ;
-typedef  TYPE_8__ hb_image_t ;
-struct TYPE_28__ {int /*<<< orphan*/  den; int /*<<< orphan*/  num; } ;
+typedef TYPE_8__ hb_image_t ;
+struct TYPE_28__ {int den; int num; } ;
 struct TYPE_33__ {TYPE_4__ par; } ;
-typedef  TYPE_9__ hb_geometry_t ;
+typedef TYPE_9__ hb_geometry_t ;
 struct TYPE_25__ {int num; int den; } ;
 struct TYPE_26__ {int width; int height; TYPE_1__ par; } ;
 struct TYPE_24__ {TYPE_2__ geometry; } ;
-typedef  TYPE_10__ hb_geometry_settings_t ;
-typedef  int guint8 ;
-typedef  int guint32 ;
-typedef  int gint ;
-typedef  int gdouble ;
-typedef  int gboolean ;
-struct TYPE_27__ {int /*<<< orphan*/  stride; } ;
-typedef  int /*<<< orphan*/  GdkPixbuf ;
+typedef TYPE_10__ hb_geometry_settings_t ;
+typedef int guint8 ;
+typedef int guint32 ;
+typedef int gint ;
+typedef int gdouble ;
+typedef int gboolean ;
+struct TYPE_27__ {int stride; } ;
+typedef int GdkPixbuf ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GDK_COLORSPACE_RGB ; 
- int /*<<< orphan*/  GDK_INTERP_HYPER ; 
- int /*<<< orphan*/  GHB_WIDGET (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ HB_FILTER_INVALID ; 
- int /*<<< orphan*/  g_object_unref (int /*<<< orphan*/ *) ; 
- int gdk_pixbuf_get_n_channels (int /*<<< orphan*/ *) ; 
- int* gdk_pixbuf_get_pixels (int /*<<< orphan*/ *) ; 
- int gdk_pixbuf_get_rowstride (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * gdk_pixbuf_new (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,int) ; 
- int /*<<< orphan*/ * gdk_pixbuf_scale_simple (int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  get_preview_geometry (TYPE_6__*,TYPE_7__ const*,TYPE_9__*,TYPE_10__*) ; 
- scalar_t__ ghb_dict_get_bool (int /*<<< orphan*/ ,char*) ; 
- int ghb_dict_get_int (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ghb_monitor_get_size (int /*<<< orphan*/ ,int*,int*) ; 
- int /*<<< orphan*/  ghb_par_scale (TYPE_6__*,int*,int*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ ghb_settings_combo_int (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  h_scan ; 
- int /*<<< orphan*/  hash_pixbuf (int /*<<< orphan*/ *,int,int,int,int,int,int) ; 
- TYPE_8__* hb_get_preview2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,TYPE_10__*,int) ; 
- int /*<<< orphan*/  hb_image_close (TYPE_8__**) ; 
- int /*<<< orphan*/  hb_set_anamorphic_size2 (TYPE_9__*,TYPE_10__*,TYPE_9__*) ; 
+
+ int FALSE ;
+ int GDK_COLORSPACE_RGB ;
+ int GDK_INTERP_HYPER ;
+ int GHB_WIDGET (int ,char*) ;
+ scalar_t__ HB_FILTER_INVALID ;
+ int g_object_unref (int *) ;
+ int gdk_pixbuf_get_n_channels (int *) ;
+ int* gdk_pixbuf_get_pixels (int *) ;
+ int gdk_pixbuf_get_rowstride (int *) ;
+ int * gdk_pixbuf_new (int ,int ,int,int,int) ;
+ int * gdk_pixbuf_scale_simple (int *,int,int,int ) ;
+ int get_preview_geometry (TYPE_6__*,TYPE_7__ const*,TYPE_9__*,TYPE_10__*) ;
+ scalar_t__ ghb_dict_get_bool (int ,char*) ;
+ int ghb_dict_get_int (int ,char*) ;
+ int ghb_monitor_get_size (int ,int*,int*) ;
+ int ghb_par_scale (TYPE_6__*,int*,int*,int ,int ) ;
+ scalar_t__ ghb_settings_combo_int (int ,char*) ;
+ int h_scan ;
+ int hash_pixbuf (int *,int,int,int,int,int,int) ;
+ TYPE_8__* hb_get_preview2 (int ,int ,int,TYPE_10__*,int) ;
+ int hb_image_close (TYPE_8__**) ;
+ int hb_set_anamorphic_size2 (TYPE_9__*,TYPE_10__*,TYPE_9__*) ;
 
 GdkPixbuf*
 ghb_get_preview_image(
@@ -77,21 +77,21 @@ ghb_get_preview_image(
     hb_geometry_t srcGeo, resultGeo;
     hb_geometry_settings_t uiGeo;
 
-    if( title == NULL ) return NULL;
+    if( title == ((void*)0) ) return ((void*)0);
 
     gboolean deinterlace;
     deinterlace = ghb_settings_combo_int(ud->settings,
                             "PictureDeinterlaceFilter") != HB_FILTER_INVALID;
 
-    // Get the geometry settings for the preview.  This will disable
-    // cropping if the setting to show the cropped region is enabled.
+
+
     get_preview_geometry(ud, title, &srcGeo, &uiGeo);
 
-    // hb_get_preview doesn't compensate for anamorphic, so lets
-    // calculate scale factors
+
+
     hb_set_anamorphic_size2(&srcGeo, &uiGeo, &resultGeo);
 
-    // Rescale preview dimensions to adjust for screen PAR and settings PAR
+
     ghb_par_scale(ud, &uiGeo.geometry.width, &uiGeo.geometry.height,
                       resultGeo.par.num, resultGeo.par.den);
     uiGeo.geometry.par.num = 1;
@@ -101,17 +101,17 @@ ghb_get_preview_image(
     hb_image_t *image;
     image = hb_get_preview2(h_scan, title->index, index, &uiGeo, deinterlace);
 
-    if (image == NULL)
+    if (image == ((void*)0))
     {
         preview = gdk_pixbuf_new(GDK_COLORSPACE_RGB, FALSE, 8,
                                  title->geometry.width, title->geometry.height);
         return preview;
     }
 
-    // Create an GdkPixbuf and copy the libhb image into it, converting it from
-    // libhb's format something suitable.
-    // The image data returned by hb_get_preview is 4 bytes per pixel,
-    // BGRA format. Alpha is ignored.
+
+
+
+
     preview = gdk_pixbuf_new(GDK_COLORSPACE_RGB, FALSE, 8,
                              image->width, image->height);
     guint8 *pixels = gdk_pixbuf_get_pixels(preview);
@@ -166,7 +166,7 @@ ghb_get_preview_image(
     int previewWidth = image->width;
     int previewHeight = image->height;
 
-    // If the preview is too large to fit the screen, reduce it's size.
+
     if (ghb_dict_get_bool(ud->prefs, "reduce_hd_preview"))
     {
         gint factor = 80;
@@ -174,7 +174,7 @@ ghb_get_preview_image(
 
         ghb_monitor_get_size(GHB_WIDGET(ud->builder, "hb_window"), &s_w, &s_h);
         if (s_w > 0 && s_h > 0 &&
-            (previewWidth  > s_w * factor / 100 ||
+            (previewWidth > s_w * factor / 100 ||
              previewHeight > s_h * factor / 100))
         {
             GdkPixbuf *scaled_preview;
@@ -207,13 +207,13 @@ ghb_get_preview_image(
         c2 *= xscale;
         c3 *= xscale;
 
-        // Top
+
         hash_pixbuf(preview, 0, 0, previewWidth, c0, 32, 0);
-        // Bottom
+
         hash_pixbuf(preview, 0, previewHeight-c1, previewWidth, c1, 32, 0);
-        // Left
+
         hash_pixbuf(preview, 0, 0, c2, previewHeight, 32, 1);
-        // Right
+
         hash_pixbuf(preview, previewWidth-c3, 0, c3, previewHeight, 32, 1);
     }
     hb_image_close(&image);

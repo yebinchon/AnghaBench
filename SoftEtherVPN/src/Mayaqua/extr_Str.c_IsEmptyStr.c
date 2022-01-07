@@ -1,42 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char* CopyStr (char*) ; 
- int /*<<< orphan*/  Free (char*) ; 
- scalar_t__ StrLen (char*) ; 
- int /*<<< orphan*/  Trim (char*) ; 
+ char* CopyStr (char*) ;
+ int Free (char*) ;
+ scalar_t__ StrLen (char*) ;
+ int Trim (char*) ;
 
 bool IsEmptyStr(char *str)
 {
-	char *s;
-	// Validate arguments
-	if (str == NULL)
-	{
-		return true;
-	}
+ char *s;
 
-	s = CopyStr(str);
-	Trim(s);
+ if (str == ((void*)0))
+ {
+  return 1;
+ }
 
-	if (StrLen(s) == 0)
-	{
-		Free(s);
-		return true;
-	}
-	else
-	{
-		Free(s);
-		return false;
-	}
+ s = CopyStr(str);
+ Trim(s);
+
+ if (StrLen(s) == 0)
+ {
+  Free(s);
+  return 1;
+ }
+ else
+ {
+  Free(s);
+  return 0;
+ }
 }

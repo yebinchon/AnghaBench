@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_20__   TYPE_4__ ;
-typedef  struct TYPE_19__   TYPE_3__ ;
-typedef  struct TYPE_18__   TYPE_2__ ;
-typedef  struct TYPE_17__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_20__ {int /*<<< orphan*/  error; int /*<<< orphan*/  filter; int /*<<< orphan*/  stream; int /*<<< orphan*/  mmgr; int /*<<< orphan*/  attr; } ;
-struct TYPE_19__ {TYPE_2__* fontdef; int /*<<< orphan*/  xref; } ;
-struct TYPE_18__ {TYPE_4__* descriptor; int /*<<< orphan*/  x_height; int /*<<< orphan*/  stemv; int /*<<< orphan*/  italic_angle; int /*<<< orphan*/  font_bbox; int /*<<< orphan*/  flags; int /*<<< orphan*/  cap_height; int /*<<< orphan*/  descent; int /*<<< orphan*/  ascent; int /*<<< orphan*/  attr; } ;
-struct TYPE_17__ {char* base_font; char* char_set; int /*<<< orphan*/  length1; scalar_t__ embedding; } ;
-typedef  TYPE_1__* HPDF_TTFontDefAttr ;
-typedef  scalar_t__ HPDF_STATUS ;
-typedef  TYPE_2__* HPDF_FontDef ;
-typedef  TYPE_3__* HPDF_FontAttr ;
-typedef  TYPE_4__* HPDF_Font ;
-typedef  TYPE_4__* HPDF_Dict ;
-typedef  TYPE_4__* HPDF_Array ;
 
-/* Variables and functions */
- TYPE_4__* HPDF_Box_Array_New (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_4__* HPDF_DictStream_New (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ HPDF_Dict_Add (TYPE_4__*,char*,TYPE_4__*) ; 
- scalar_t__ HPDF_Dict_AddName (TYPE_4__*,char*,char*) ; 
- scalar_t__ HPDF_Dict_AddNumber (TYPE_4__*,char*,int /*<<< orphan*/ ) ; 
- TYPE_4__* HPDF_Dict_New (int /*<<< orphan*/ ) ; 
- scalar_t__ HPDF_Error_GetCode (int /*<<< orphan*/ ) ; 
- scalar_t__ HPDF_OK ; 
- int /*<<< orphan*/  HPDF_PTRACE (char*) ; 
- scalar_t__ HPDF_TTFontDef_SaveFontData (TYPE_2__*,int /*<<< orphan*/ ) ; 
- scalar_t__ HPDF_Xref_Add (int /*<<< orphan*/ ,TYPE_4__*) ; 
+
+typedef struct TYPE_20__ TYPE_4__ ;
+typedef struct TYPE_19__ TYPE_3__ ;
+typedef struct TYPE_18__ TYPE_2__ ;
+typedef struct TYPE_17__ TYPE_1__ ;
+
+
+struct TYPE_20__ {int error; int filter; int stream; int mmgr; int attr; } ;
+struct TYPE_19__ {TYPE_2__* fontdef; int xref; } ;
+struct TYPE_18__ {TYPE_4__* descriptor; int x_height; int stemv; int italic_angle; int font_bbox; int flags; int cap_height; int descent; int ascent; int attr; } ;
+struct TYPE_17__ {char* base_font; char* char_set; int length1; scalar_t__ embedding; } ;
+typedef TYPE_1__* HPDF_TTFontDefAttr ;
+typedef scalar_t__ HPDF_STATUS ;
+typedef TYPE_2__* HPDF_FontDef ;
+typedef TYPE_3__* HPDF_FontAttr ;
+typedef TYPE_4__* HPDF_Font ;
+typedef TYPE_4__* HPDF_Dict ;
+typedef TYPE_4__* HPDF_Array ;
+
+
+ TYPE_4__* HPDF_Box_Array_New (int ,int ) ;
+ TYPE_4__* HPDF_DictStream_New (int ,int ) ;
+ scalar_t__ HPDF_Dict_Add (TYPE_4__*,char*,TYPE_4__*) ;
+ scalar_t__ HPDF_Dict_AddName (TYPE_4__*,char*,char*) ;
+ scalar_t__ HPDF_Dict_AddNumber (TYPE_4__*,char*,int ) ;
+ TYPE_4__* HPDF_Dict_New (int ) ;
+ scalar_t__ HPDF_Error_GetCode (int ) ;
+ scalar_t__ HPDF_OK ;
+ int HPDF_PTRACE (char*) ;
+ scalar_t__ HPDF_TTFontDef_SaveFontData (TYPE_2__*,int ) ;
+ scalar_t__ HPDF_Xref_Add (int ,TYPE_4__*) ;
 
 __attribute__((used)) static HPDF_STATUS
-CreateDescriptor  (HPDF_Font  font)
+CreateDescriptor (HPDF_Font font)
 {
     HPDF_FontAttr font_attr = (HPDF_FontAttr)font->attr;
     HPDF_FontDef def = font_attr->fontdef;

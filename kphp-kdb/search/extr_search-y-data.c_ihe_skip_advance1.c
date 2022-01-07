@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct ylist_decoder {scalar_t__ k; } ;
-struct list_decoder {scalar_t__ k; int /*<<< orphan*/  (* decode_int ) (struct list_decoder*) ;} ;
+struct list_decoder {scalar_t__ k; int (* decode_int ) (struct list_decoder*) ;} ;
 struct index_item {int extra; } ;
 struct TYPE_7__ {long long item_id; } ;
-typedef  TYPE_2__ item_t ;
+typedef TYPE_2__ item_t ;
 struct TYPE_6__ {struct list_decoder* tag_dec; struct ylist_decoder* term_dec; } ;
-struct TYPE_8__ {scalar_t__ remaining; scalar_t__ len; int /*<<< orphan*/  doc_id; TYPE_1__ dec; scalar_t__ term; } ;
-typedef  TYPE_3__ ilist_decoder_t ;
+struct TYPE_8__ {scalar_t__ remaining; scalar_t__ len; int doc_id; TYPE_1__ dec; scalar_t__ term; } ;
+typedef TYPE_3__ ilist_decoder_t ;
 struct TYPE_9__ {TYPE_2__* cur1; TYPE_3__ Decoder; } ;
-typedef  TYPE_4__ iheap_en_t ;
+typedef TYPE_4__ iheap_en_t ;
 
-/* Variables and functions */
- int FLAG_DELETED ; 
- struct index_item* IndexItems ; 
- int /*<<< orphan*/  list_interpolative_ext_forward_decode_item (struct list_decoder*,long long) ; 
- int /*<<< orphan*/  stub1 (struct list_decoder*) ; 
- int /*<<< orphan*/  ylist_decode_int (struct ylist_decoder*) ; 
- int /*<<< orphan*/  ylist_forward_decode_item (struct ylist_decoder*,long long) ; 
+
+ int FLAG_DELETED ;
+ struct index_item* IndexItems ;
+ int list_interpolative_ext_forward_decode_item (struct list_decoder*,long long) ;
+ int stub1 (struct list_decoder*) ;
+ int ylist_decode_int (struct ylist_decoder*) ;
+ int ylist_forward_decode_item (struct ylist_decoder*,long long) ;
 
 __attribute__((used)) static void ihe_skip_advance1 (iheap_en_t *A, long long item_id) {
   if (A->cur1->item_id >= item_id) {

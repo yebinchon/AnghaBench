@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int pango_markup; int /*<<< orphan*/  instance; int /*<<< orphan*/  name; int /*<<< orphan*/  min_width_str; int /*<<< orphan*/  align; int /*<<< orphan*/  border; int /*<<< orphan*/  background; int /*<<< orphan*/  color; void* short_text; void* full_text; } ;
-struct TYPE_4__ {TYPE_1__ block; int /*<<< orphan*/  last_map_key; } ;
-typedef  TYPE_2__ parser_ctx ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ALIGN_CENTER ; 
- int /*<<< orphan*/  ALIGN_LEFT ; 
- int /*<<< orphan*/  ALIGN_RIGHT ; 
- void* i3string_from_markup_with_length (char const*,size_t) ; 
- int /*<<< orphan*/  sasprintf (int /*<<< orphan*/ *,char*,size_t,unsigned char const*) ; 
- scalar_t__ strcasecmp (int /*<<< orphan*/ ,char*) ; 
- size_t strlen (char*) ; 
- int /*<<< orphan*/  strncasecmp (char const*,char*,size_t) ; 
- int /*<<< orphan*/  strncmp (char const*,char*,size_t) ; 
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int pango_markup; int instance; int name; int min_width_str; int align; int border; int background; int color; void* short_text; void* full_text; } ;
+struct TYPE_4__ {TYPE_1__ block; int last_map_key; } ;
+typedef TYPE_2__ parser_ctx ;
+
+
+ int ALIGN_CENTER ;
+ int ALIGN_LEFT ;
+ int ALIGN_RIGHT ;
+ void* i3string_from_markup_with_length (char const*,size_t) ;
+ int sasprintf (int *,char*,size_t,unsigned char const*) ;
+ scalar_t__ strcasecmp (int ,char*) ;
+ size_t strlen (char*) ;
+ int strncasecmp (char const*,char*,size_t) ;
+ int strncmp (char const*,char*,size_t) ;
 
 __attribute__((used)) static int stdin_string(void *context, const unsigned char *val, size_t len) {
     parser_ctx *ctx = context;

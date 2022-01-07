@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct rockchip_rga {int /*<<< orphan*/  aclk; int /*<<< orphan*/  hclk; int /*<<< orphan*/  sclk; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  clk_disable_unprepare (int /*<<< orphan*/ ) ; 
+
+
+
+struct rockchip_rga {int aclk; int hclk; int sclk; } ;
+
+
+ int clk_disable_unprepare (int ) ;
 
 __attribute__((used)) static void rga_disable_clocks(struct rockchip_rga *rga)
 {
-	clk_disable_unprepare(rga->sclk);
-	clk_disable_unprepare(rga->hclk);
-	clk_disable_unprepare(rga->aclk);
+ clk_disable_unprepare(rga->sclk);
+ clk_disable_unprepare(rga->hclk);
+ clk_disable_unprepare(rga->aclk);
 }

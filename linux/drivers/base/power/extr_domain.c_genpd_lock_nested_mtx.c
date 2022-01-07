@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct generic_pm_domain {int /*<<< orphan*/  mlock; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mutex_lock_nested (int /*<<< orphan*/ *,int) ; 
+
+
+
+struct generic_pm_domain {int mlock; } ;
+
+
+ int mutex_lock_nested (int *,int) ;
 
 __attribute__((used)) static void genpd_lock_nested_mtx(struct generic_pm_domain *genpd,
-					int depth)
+     int depth)
 {
-	mutex_lock_nested(&genpd->mlock, depth);
+ mutex_lock_nested(&genpd->mlock, depth);
 }

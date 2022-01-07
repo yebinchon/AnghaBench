@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uv_stream_t ;
-typedef  int /*<<< orphan*/  uv_read_cb ;
-typedef  int /*<<< orphan*/  uv_process_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- int /*<<< orphan*/  MAKE_VALGRIND_HAPPY () ; 
- int /*<<< orphan*/  UV_RUN_DEFAULT ; 
- int /*<<< orphan*/  channel ; 
- int /*<<< orphan*/  on_alloc ; 
- int /*<<< orphan*/  spawn_helper (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  uv_default_loop () ; 
- int /*<<< orphan*/  uv_read_start (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int uv_run (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uv_stream_t ;
+typedef int uv_read_cb ;
+typedef int uv_process_t ;
+
+
+ int ASSERT (int) ;
+ int MAKE_VALGRIND_HAPPY () ;
+ int UV_RUN_DEFAULT ;
+ int channel ;
+ int on_alloc ;
+ int spawn_helper (int *,int *,char const*) ;
+ int uv_default_loop () ;
+ int uv_read_start (int *,int ,int ) ;
+ int uv_run (int ,int ) ;
 
 __attribute__((used)) static int run_ipc_test(const char* helper, uv_read_cb read_cb) {
   uv_process_t process;

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ACPI_SIZE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACPI_FUNCTION_ENTRY () ; 
- void* AcpiOsAllocate (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (void*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int ACPI_SIZE ;
+
+
+ int ACPI_FUNCTION_ENTRY () ;
+ void* AcpiOsAllocate (int ) ;
+ int memset (void*,int ,int ) ;
 
 void *
 AcpiOsAllocateZeroed (
-    ACPI_SIZE               Size)
+    ACPI_SIZE Size)
 {
-    void                    *Allocation;
+    void *Allocation;
 
 
     ACPI_FUNCTION_ENTRY ();
@@ -30,7 +30,7 @@ AcpiOsAllocateZeroed (
     Allocation = AcpiOsAllocate (Size);
     if (Allocation)
     {
-        /* Clear the memory block */
+
 
         memset (Allocation, 0, Size);
     }

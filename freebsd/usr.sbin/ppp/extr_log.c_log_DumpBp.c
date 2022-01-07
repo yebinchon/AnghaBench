@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char u_char ;
+
+
+
+
+typedef char u_char ;
 struct mbuf {int m_len; struct mbuf* m_next; } ;
 
-/* Variables and functions */
- char* CONST_MBUF_CTOP (struct mbuf const*) ; 
- scalar_t__ isprint (char const) ; 
- scalar_t__ log_IsKept (int) ; 
- int /*<<< orphan*/  log_Printf (int,char*,char const*) ; 
- int /*<<< orphan*/  memset (char*,char,int) ; 
- int /*<<< orphan*/  sprintf (char*,char*,int) ; 
+
+ char* CONST_MBUF_CTOP (struct mbuf const*) ;
+ scalar_t__ isprint (char const) ;
+ scalar_t__ log_IsKept (int) ;
+ int log_Printf (int,char*,char const*) ;
+ int memset (char*,char,int) ;
+ int sprintf (char*,char*,int) ;
 
 void
 log_DumpBp(int lev, const char *hdr, const struct mbuf *bp)
@@ -39,7 +39,7 @@ log_DumpBp(int lev, const char *hdr, const struct mbuf *bp)
       f = bp->m_len;
       ptr = CONST_MBUF_CTOP(bp);
       while (f--) {
-	sprintf(b, " %02x", (int) *ptr);
+ sprintf(b, " %02x", (int) *ptr);
         *c++ = isprint(*ptr) ? *ptr : '.';
         ptr++;
         b += 3;
@@ -51,7 +51,7 @@ log_DumpBp(int lev, const char *hdr, const struct mbuf *bp)
           c = b + 50;
         }
       }
-    } while ((bp = bp->m_next) != NULL);
+    } while ((bp = bp->m_next) != ((void*)0));
 
     if (b > buf) {
       memset(b, ' ', 50 - (b - buf));

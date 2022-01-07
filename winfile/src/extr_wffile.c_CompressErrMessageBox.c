@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__* PHANDLE ;
-typedef  scalar_t__ LPTSTR ;
-typedef  int /*<<< orphan*/  LPARAM ;
-typedef  int /*<<< orphan*/  HWND ;
 
-/* Variables and functions */
- int /*<<< orphan*/  COMPRESSERRDLG ; 
- int /*<<< orphan*/  CloseHandle (scalar_t__) ; 
- int /*<<< orphan*/  CompressErrDialogProc ; 
- int DialogBoxParam (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int IDRETRY ; 
- scalar_t__ INVALID_HANDLE_VALUE ; 
- scalar_t__ MAKEINTRESOURCE (int /*<<< orphan*/ ) ; 
- int WF_RETRY_CREATE ; 
- int WF_RETRY_DEVIO ; 
- int /*<<< orphan*/  hAppInstance ; 
- int /*<<< orphan*/  hwndFrame ; 
+
+
+
+typedef scalar_t__* PHANDLE ;
+typedef scalar_t__ LPTSTR ;
+typedef int LPARAM ;
+typedef int HWND ;
+
+
+ int COMPRESSERRDLG ;
+ int CloseHandle (scalar_t__) ;
+ int CompressErrDialogProc ;
+ int DialogBoxParam (int ,scalar_t__,int ,int ,int ) ;
+ int IDRETRY ;
+ scalar_t__ INVALID_HANDLE_VALUE ;
+ scalar_t__ MAKEINTRESOURCE (int ) ;
+ int WF_RETRY_CREATE ;
+ int WF_RETRY_DEVIO ;
+ int hAppInstance ;
+ int hwndFrame ;
 
 int CompressErrMessageBox(
     HWND hwndActive,
@@ -36,18 +36,18 @@ int CompressErrMessageBox(
     int rc;
 
 
-    //
-    //  Put up the error message box - ABORT, RETRY, IGNORE, IGNORE ALL.
-    //
+
+
+
     rc = DialogBoxParam( hAppInstance,
                          (LPTSTR) MAKEINTRESOURCE(COMPRESSERRDLG),
                          hwndFrame,
                          CompressErrDialogProc,
                          (LPARAM)szFile );
 
-    //
-    //  Return the user preference.
-    //
+
+
+
     if (rc == IDRETRY)
     {
         if (*phFile == INVALID_HANDLE_VALUE)
@@ -61,11 +61,11 @@ int CompressErrMessageBox(
     }
     else
     {
-        //
-        //  IDABORT or IDIGNORE
-        //
-        //  Close the file handle and return the message box result.
-        //
+
+
+
+
+
         if (*phFile != INVALID_HANDLE_VALUE)
         {
             CloseHandle(*phFile);

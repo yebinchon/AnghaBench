@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vdisp_t ;
-typedef  int /*<<< orphan*/  script_ctx_t ;
-typedef  int /*<<< orphan*/  jsval_t ;
-typedef  int /*<<< orphan*/  jsdisp_t ;
-typedef  int WORD ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
-#define  DISPATCH_CONSTRUCT 129 
- int /*<<< orphan*/  E_NOTIMPL ; 
- int /*<<< orphan*/  FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FIXME (char*,int) ; 
-#define  INVOKE_FUNC 128 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TRACE (char*) ; 
- int /*<<< orphan*/  create_number (int /*<<< orphan*/ *,double,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  jsval_number (double) ; 
- int /*<<< orphan*/  jsval_obj (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  to_number (int /*<<< orphan*/ *,int /*<<< orphan*/ ,double*) ; 
+
+
+
+typedef int vdisp_t ;
+typedef int script_ctx_t ;
+typedef int jsval_t ;
+typedef int jsdisp_t ;
+typedef int WORD ;
+typedef int HRESULT ;
+
+
+
+ int E_NOTIMPL ;
+ int FAILED (int ) ;
+ int FIXME (char*,int) ;
+
+ int S_OK ;
+ int TRACE (char*) ;
+ int create_number (int *,double,int **) ;
+ int jsval_number (double) ;
+ int jsval_obj (int *) ;
+ int to_number (int *,int ,double*) ;
 
 __attribute__((used)) static HRESULT NumberConstr_value(script_ctx_t *ctx, vdisp_t *jsthis, WORD flags, unsigned argc, jsval_t *argv,
         jsval_t *r)
@@ -39,7 +39,7 @@ __attribute__((used)) static HRESULT NumberConstr_value(script_ctx_t *ctx, vdisp
     TRACE("\n");
 
     switch(flags) {
-    case INVOKE_FUNC:
+    case 128:
         if(!argc) {
             if(r)
                 *r = jsval_number(0);
@@ -54,7 +54,7 @@ __attribute__((used)) static HRESULT NumberConstr_value(script_ctx_t *ctx, vdisp
             *r = jsval_number(n);
         break;
 
-    case DISPATCH_CONSTRUCT: {
+    case 129: {
         jsdisp_t *obj;
 
         if(argc) {

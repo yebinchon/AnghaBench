@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
 struct TYPE_12__ {scalar_t__ alarm_id; int flags; scalar_t__ new_status; scalar_t__ old_status; scalar_t__ non_clear_duration; scalar_t__ unique_id; scalar_t__ updates_id; scalar_t__ updated_by_id; struct TYPE_12__* next; } ;
-struct TYPE_10__ {int /*<<< orphan*/  alarm_log_rwlock; TYPE_3__* alarms; int /*<<< orphan*/  count; } ;
+struct TYPE_10__ {int alarm_log_rwlock; TYPE_3__* alarms; int count; } ;
 struct TYPE_11__ {TYPE_1__ health_log; } ;
-typedef  TYPE_2__ RRDHOST ;
-typedef  TYPE_3__ ALARM_ENTRY ;
+typedef TYPE_2__ RRDHOST ;
+typedef TYPE_3__ ALARM_ENTRY ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D_HEALTH ; 
- int HEALTH_ENTRY_FLAG_UPDATED ; 
- scalar_t__ RRDCALC_STATUS_CRITICAL ; 
- scalar_t__ RRDCALC_STATUS_WARNING ; 
- int /*<<< orphan*/  alarm_entry_isrepeating (TYPE_2__*,TYPE_3__*) ; 
- int /*<<< orphan*/  debug (int /*<<< orphan*/ ,char*,scalar_t__) ; 
- int /*<<< orphan*/  error (char*,scalar_t__) ; 
- int /*<<< orphan*/  health_alarm_log_save (TYPE_2__*,TYPE_3__*) ; 
- int /*<<< orphan*/  netdata_rwlock_rdlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  netdata_rwlock_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  netdata_rwlock_wrlock (int /*<<< orphan*/ *) ; 
- scalar_t__ unlikely (int /*<<< orphan*/ ) ; 
+
+ int D_HEALTH ;
+ int HEALTH_ENTRY_FLAG_UPDATED ;
+ scalar_t__ RRDCALC_STATUS_CRITICAL ;
+ scalar_t__ RRDCALC_STATUS_WARNING ;
+ int alarm_entry_isrepeating (TYPE_2__*,TYPE_3__*) ;
+ int debug (int ,char*,scalar_t__) ;
+ int error (char*,scalar_t__) ;
+ int health_alarm_log_save (TYPE_2__*,TYPE_3__*) ;
+ int netdata_rwlock_rdlock (int *) ;
+ int netdata_rwlock_unlock (int *) ;
+ int netdata_rwlock_wrlock (int *) ;
+ scalar_t__ unlikely (int ) ;
 
 inline void health_alarm_log(
         RRDHOST *host,
@@ -43,14 +43,14 @@ inline void health_alarm_log(
         error("Repeating alarms cannot be added to host's alarm log entries. It seems somewhere in the logic, API is being misused. Alarm id: %u", ae->alarm_id);
         return;
     }
-    // link it
+
     netdata_rwlock_wrlock(&host->health_log.alarm_log_rwlock);
     ae->next = host->health_log.alarms;
     host->health_log.alarms = ae;
     host->health_log.count++;
     netdata_rwlock_unlock(&host->health_log.alarm_log_rwlock);
 
-    // match previous alarms
+
     netdata_rwlock_rdlock(&host->health_log.alarm_log_rwlock);
     ALARM_ENTRY *t;
     for(t = host->health_log.alarms ; t ; t = t->next) {
@@ -67,7 +67,7 @@ inline void health_alarm_log(
                 health_alarm_log_save(host, t);
             }
 
-            // no need to continue
+
             break;
         }
     }

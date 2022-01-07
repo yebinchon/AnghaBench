@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_22__   TYPE_7__ ;
-typedef  struct TYPE_21__   TYPE_6__ ;
-typedef  struct TYPE_20__   TYPE_5__ ;
-typedef  struct TYPE_19__   TYPE_4__ ;
-typedef  struct TYPE_18__   TYPE_3__ ;
-typedef  struct TYPE_17__   TYPE_2__ ;
-typedef  struct TYPE_16__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  text ;
+
+
+typedef struct TYPE_22__ TYPE_7__ ;
+typedef struct TYPE_21__ TYPE_6__ ;
+typedef struct TYPE_20__ TYPE_5__ ;
+typedef struct TYPE_19__ TYPE_4__ ;
+typedef struct TYPE_18__ TYPE_3__ ;
+typedef struct TYPE_17__ TYPE_2__ ;
+typedef struct TYPE_16__ TYPE_1__ ;
+
+
+typedef int text ;
 struct TYPE_17__ {int xoff; int yoff; TYPE_5__* out; TYPE_5__* in; } ;
-typedef  TYPE_2__ ThreadData ;
+typedef TYPE_2__ ThreadData ;
 struct TYPE_22__ {TYPE_6__** inputs; TYPE_6__** outputs; TYPE_4__* priv; } ;
 struct TYPE_21__ {int const w; int const h; } ;
-struct TYPE_20__ {int /*<<< orphan*/  linesize; int /*<<< orphan*/  data; } ;
-struct TYPE_19__ {int chars; scalar_t__ y; scalar_t__ x; int /*<<< orphan*/  draw; int /*<<< orphan*/  (* reverse_color ) (int /*<<< orphan*/ *,TYPE_3__*,TYPE_3__*) ;int /*<<< orphan*/  (* pick_color ) (int /*<<< orphan*/ *,TYPE_3__*,TYPE_5__*,scalar_t__,scalar_t__,int*) ;int /*<<< orphan*/  nb_comps; int /*<<< orphan*/  nb_planes; } ;
-struct TYPE_16__ {int /*<<< orphan*/  member_0; } ;
+struct TYPE_20__ {int linesize; int data; } ;
+struct TYPE_19__ {int chars; scalar_t__ y; scalar_t__ x; int draw; int (* reverse_color ) (int *,TYPE_3__*,TYPE_3__*) ;int (* pick_color ) (int *,TYPE_3__*,TYPE_5__*,scalar_t__,scalar_t__,int*) ;int nb_comps; int nb_planes; } ;
+struct TYPE_16__ {int member_0; } ;
 struct TYPE_18__ {TYPE_1__ member_0; } ;
-typedef  TYPE_3__ FFDrawColor ;
-typedef  TYPE_4__ DatascopeContext ;
-typedef  TYPE_5__ AVFrame ;
-typedef  TYPE_6__ AVFilterLink ;
-typedef  TYPE_7__ AVFilterContext ;
+typedef TYPE_3__ FFDrawColor ;
+typedef TYPE_4__ DatascopeContext ;
+typedef TYPE_5__ AVFrame ;
+typedef TYPE_6__ AVFilterLink ;
+typedef TYPE_7__ AVFilterContext ;
 
-/* Variables and functions */
- int FFMAX (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  draw_text (int /*<<< orphan*/ *,TYPE_5__*,TYPE_3__*,int const,int const,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ff_fill_rectangle (int /*<<< orphan*/ *,TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int const,int const,int const,int const) ; 
- int /*<<< orphan*/  snprintf (char*,int,char const*,int) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ *,TYPE_3__*,TYPE_5__*,scalar_t__,scalar_t__,int*) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ *,TYPE_3__*,TYPE_3__*) ; 
+
+ int FFMAX (int ,int ) ;
+ int draw_text (int *,TYPE_5__*,TYPE_3__*,int const,int const,char*,int ) ;
+ int ff_fill_rectangle (int *,TYPE_3__*,int ,int ,int const,int const,int const,int const) ;
+ int snprintf (char*,int,char const*,int) ;
+ int stub1 (int *,TYPE_3__*,TYPE_5__*,scalar_t__,scalar_t__,int*) ;
+ int stub2 (int *,TYPE_3__*,TYPE_3__*) ;
 
 __attribute__((used)) static int filter_color2(AVFilterContext *ctx, void *arg, int jobnr, int nb_jobs)
 {

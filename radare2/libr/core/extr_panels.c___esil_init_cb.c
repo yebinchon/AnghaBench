@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  RCore ;
 
-/* Variables and functions */
- int /*<<< orphan*/  __esil_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  __set_refresh_all (int /*<<< orphan*/ *,int,int) ; 
+
+
+
+typedef int RCore ;
+
+
+ int __esil_init (int *) ;
+ int __set_refresh_all (int *,int,int) ;
 
 int __esil_init_cb(void *user) {
-	RCore *core = (RCore *)user;
-	__esil_init (core);
-	__set_refresh_all (core, false, false);
-	return 0;
+ RCore *core = (RCore *)user;
+ __esil_init (core);
+ __set_refresh_all (core, 0, 0);
+ return 0;
 }

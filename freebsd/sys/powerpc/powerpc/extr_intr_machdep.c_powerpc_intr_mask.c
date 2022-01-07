@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_int ;
-struct powerpc_intr {int /*<<< orphan*/  priv; int /*<<< orphan*/  intline; int /*<<< orphan*/ * pic; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PIC_MASK (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- struct powerpc_intr* intr_lookup (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int u_int ;
+struct powerpc_intr {int priv; int intline; int * pic; } ;
+
+
+ int PIC_MASK (int *,int ,int ) ;
+ struct powerpc_intr* intr_lookup (int ) ;
 
 void
 powerpc_intr_mask(u_int irq)
 {
-	struct powerpc_intr *i;
+ struct powerpc_intr *i;
 
-	i = intr_lookup(irq);
-	if (i == NULL || i->pic == NULL)
-		return;
+ i = intr_lookup(irq);
+ if (i == ((void*)0) || i->pic == ((void*)0))
+  return;
 
-	PIC_MASK(i->pic, i->intline, i->priv);
+ PIC_MASK(i->pic, i->intline, i->priv);
 }

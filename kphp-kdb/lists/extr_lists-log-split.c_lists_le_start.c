@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  value_t ;
+
+
+
+
+typedef int value_t ;
 struct lev_start {scalar_t__ schema_id; int split_mod; int split_min; int split_max; int extra_bytes; int* str; } ;
-struct lev_lists_start_ext {int kludge_magic; scalar_t__ schema_id; int list_id_ints; int object_id_ints; int value_ints; int /*<<< orphan*/  extra_mask; } ;
+struct lev_lists_start_ext {int kludge_magic; scalar_t__ schema_id; int list_id_ints; int object_id_ints; int value_ints; int extra_mask; } ;
 
-/* Variables and functions */
- scalar_t__ LISTS_SCHEMA_CUR ; 
- scalar_t__ LISTS_SCHEMA_V1 ; 
- scalar_t__ LISTS_SCHEMA_V3 ; 
- int MAX_LIST_ID_INTS ; 
- int MAX_OBJECT_ID_INTS ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int list_id_bytes ; 
- int list_id_ints ; 
- int list_object_bytes ; 
- int new_entry_value_offset ; 
- int object_id_bytes ; 
- int object_id_ints ; 
- int split_max ; 
- int split_min ; 
- int split_mod ; 
- int /*<<< orphan*/  stderr ; 
- int value_ints ; 
+
+ scalar_t__ LISTS_SCHEMA_CUR ;
+ scalar_t__ LISTS_SCHEMA_V1 ;
+ scalar_t__ LISTS_SCHEMA_V3 ;
+ int MAX_LIST_ID_INTS ;
+ int MAX_OBJECT_ID_INTS ;
+ int assert (int) ;
+ int exit (int) ;
+ int fprintf (int ,char*,...) ;
+ int list_id_bytes ;
+ int list_id_ints ;
+ int list_object_bytes ;
+ int new_entry_value_offset ;
+ int object_id_bytes ;
+ int object_id_ints ;
+ int split_max ;
+ int split_min ;
+ int split_mod ;
+ int stderr ;
+ int value_ints ;
 
 __attribute__((used)) static int lists_le_start (struct lev_start *E) {
   int t_list_id_ints, t_object_id_ints, t_value_ints;

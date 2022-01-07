@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  gdouble ;
-typedef  int /*<<< orphan*/  gchar ;
-typedef  int /*<<< orphan*/  GtkWidget ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GHB_ICON_SIZE_BUTTON ; 
- int /*<<< orphan*/ * gtk_scale_button_new (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/  const**) ; 
+
+
+
+typedef int gdouble ;
+typedef int gchar ;
+typedef int GtkWidget ;
+
+
+ int GHB_ICON_SIZE_BUTTON ;
+ int * gtk_scale_button_new (int ,int ,int ,int ,int const**) ;
 
 __attribute__((used)) static inline GtkWidget *
 ghb_scale_button_new(gdouble min, gdouble max, gdouble step,

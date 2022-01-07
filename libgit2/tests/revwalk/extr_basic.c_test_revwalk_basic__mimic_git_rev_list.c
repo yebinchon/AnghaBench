@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  git_oid ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GIT_ITEROVER ; 
- int /*<<< orphan*/  GIT_SORT_TIME ; 
- int /*<<< orphan*/  _walk ; 
- int /*<<< orphan*/  cl_assert (int) ; 
- int /*<<< orphan*/  cl_git_fail_with (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cl_git_pass (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  git_oid_fromstr (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  git_oid_streq (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  git_revwalk_next (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  git_revwalk_push (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  git_revwalk_push_ref (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  git_revwalk_sorting (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  revwalk_basic_setup_walk (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int git_oid ;
+
+
+ int GIT_ITEROVER ;
+ int GIT_SORT_TIME ;
+ int _walk ;
+ int cl_assert (int) ;
+ int cl_git_fail_with (int ,int ) ;
+ int cl_git_pass (int ) ;
+ int git_oid_fromstr (int *,char*) ;
+ int git_oid_streq (int *,char*) ;
+ int git_revwalk_next (int *,int ) ;
+ int git_revwalk_push (int ,int *) ;
+ int git_revwalk_push_ref (int ,char*) ;
+ int git_revwalk_sorting (int ,int ) ;
+ int revwalk_basic_setup_walk (int *) ;
 
 void test_revwalk_basic__mimic_git_rev_list(void)
 {
    git_oid oid;
 
-   revwalk_basic_setup_walk(NULL);
+   revwalk_basic_setup_walk(((void*)0));
    git_revwalk_sorting(_walk, GIT_SORT_TIME);
 
    cl_git_pass(git_revwalk_push_ref(_walk, "refs/heads/br2"));

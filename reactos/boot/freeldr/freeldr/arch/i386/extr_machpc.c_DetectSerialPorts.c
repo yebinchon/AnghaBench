@@ -1,68 +1,68 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_19__   TYPE_8__ ;
-typedef  struct TYPE_18__   TYPE_7__ ;
-typedef  struct TYPE_17__   TYPE_6__ ;
-typedef  struct TYPE_16__   TYPE_5__ ;
-typedef  struct TYPE_15__   TYPE_4__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VOID ;
-typedef  scalar_t__ ULONG ;
+
+
+typedef struct TYPE_19__ TYPE_8__ ;
+typedef struct TYPE_18__ TYPE_7__ ;
+typedef struct TYPE_17__ TYPE_6__ ;
+typedef struct TYPE_16__ TYPE_5__ ;
+typedef struct TYPE_15__ TYPE_4__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+typedef int VOID ;
+typedef scalar_t__ ULONG ;
 struct TYPE_15__ {int DataSize; } ;
 struct TYPE_14__ {int Affinity; scalar_t__ Vector; scalar_t__ Level; } ;
 struct TYPE_12__ {int HighPart; scalar_t__ LowPart; } ;
 struct TYPE_13__ {int Length; TYPE_1__ Start; } ;
 struct TYPE_16__ {TYPE_4__ DeviceSpecificData; TYPE_3__ Interrupt; TYPE_2__ Port; } ;
-struct TYPE_19__ {TYPE_5__ u; scalar_t__ Flags; void* ShareDisposition; int /*<<< orphan*/  Type; } ;
+struct TYPE_19__ {TYPE_5__ u; scalar_t__ Flags; void* ShareDisposition; int Type; } ;
 struct TYPE_18__ {int Version; int Revision; int Count; TYPE_8__* PartialDescriptors; } ;
 struct TYPE_17__ {int BaudClock; } ;
-typedef  int /*<<< orphan*/  PCONFIGURATION_COMPONENT_DATA ;
-typedef  TYPE_6__* PCM_SERIAL_DEVICE_DATA ;
-typedef  TYPE_7__* PCM_PARTIAL_RESOURCE_LIST ;
-typedef  TYPE_8__* PCM_PARTIAL_RESOURCE_DESCRIPTOR ;
-typedef  scalar_t__ (* GET_SERIAL_PORT ) (scalar_t__,scalar_t__*) ;
-typedef  int /*<<< orphan*/  CM_SERIAL_DEVICE_DATA ;
-typedef  int /*<<< orphan*/  CM_PARTIAL_RESOURCE_LIST ;
-typedef  int /*<<< orphan*/  CM_PARTIAL_RESOURCE_DESCRIPTOR ;
-typedef  int /*<<< orphan*/  CHAR ;
+typedef int PCONFIGURATION_COMPONENT_DATA ;
+typedef TYPE_6__* PCM_SERIAL_DEVICE_DATA ;
+typedef TYPE_7__* PCM_PARTIAL_RESOURCE_LIST ;
+typedef TYPE_8__* PCM_PARTIAL_RESOURCE_DESCRIPTOR ;
+typedef scalar_t__ (* GET_SERIAL_PORT ) (scalar_t__,scalar_t__*) ;
+typedef int CM_SERIAL_DEVICE_DATA ;
+typedef int CM_PARTIAL_RESOURCE_LIST ;
+typedef int CM_PARTIAL_RESOURCE_DESCRIPTOR ;
+typedef int CHAR ;
 
-/* Variables and functions */
- scalar_t__ CM_RESOURCE_INTERRUPT_LATCHED ; 
- scalar_t__ CM_RESOURCE_PORT_IO ; 
- void* CmResourceShareDeviceExclusive ; 
- void* CmResourceShareUndetermined ; 
- int /*<<< orphan*/  CmResourceTypeDeviceSpecific ; 
- int /*<<< orphan*/  CmResourceTypeInterrupt ; 
- int /*<<< orphan*/  CmResourceTypePort ; 
- int ConsoleIn ; 
- int ConsoleOut ; 
- int /*<<< orphan*/  ControllerClass ; 
- int /*<<< orphan*/  CpDoesPortExist (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DetectSerialPointerPeripheral (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ERR (char*) ; 
- int /*<<< orphan*/  FldrCreateComponentKey (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,scalar_t__,int,int /*<<< orphan*/ *,TYPE_7__*,scalar_t__,int /*<<< orphan*/ *) ; 
- TYPE_7__* FrLdrHeapAlloc (scalar_t__,int /*<<< orphan*/ ) ; 
- int Input ; 
- int Output ; 
- int /*<<< orphan*/  Rs232PortInUse (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SerialController ; 
- int /*<<< orphan*/  TAG_HW_RESOURCE_LIST ; 
- int /*<<< orphan*/  TRACE (char*,...) ; 
- int /*<<< orphan*/  UlongToPtr (scalar_t__) ; 
- int /*<<< orphan*/  memset (TYPE_7__*,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  sprintf (int /*<<< orphan*/ *,char*,scalar_t__) ; 
+
+ scalar_t__ CM_RESOURCE_INTERRUPT_LATCHED ;
+ scalar_t__ CM_RESOURCE_PORT_IO ;
+ void* CmResourceShareDeviceExclusive ;
+ void* CmResourceShareUndetermined ;
+ int CmResourceTypeDeviceSpecific ;
+ int CmResourceTypeInterrupt ;
+ int CmResourceTypePort ;
+ int ConsoleIn ;
+ int ConsoleOut ;
+ int ControllerClass ;
+ int CpDoesPortExist (int ) ;
+ int DetectSerialPointerPeripheral (int ,int ) ;
+ int ERR (char*) ;
+ int FldrCreateComponentKey (int ,int ,int ,int,scalar_t__,int,int *,TYPE_7__*,scalar_t__,int *) ;
+ TYPE_7__* FrLdrHeapAlloc (scalar_t__,int ) ;
+ int Input ;
+ int Output ;
+ int Rs232PortInUse (int ) ;
+ int SerialController ;
+ int TAG_HW_RESOURCE_LIST ;
+ int TRACE (char*,...) ;
+ int UlongToPtr (scalar_t__) ;
+ int memset (TYPE_7__*,int ,scalar_t__) ;
+ int sprintf (int *,char*,scalar_t__) ;
 
 VOID
 DetectSerialPorts(PCONFIGURATION_COMPONENT_DATA BusKey, GET_SERIAL_PORT MachGetSerialPort, ULONG Count)
@@ -88,27 +88,27 @@ DetectSerialPorts(PCONFIGURATION_COMPONENT_DATA BusKey, GET_SERIAL_PORT MachGetS
 
         TRACE("Found COM%u port at 0x%x\n", i + 1, Base);
 
-        /* Set 'Identifier' value */
+
         sprintf(Buffer, "COM%ld", i + 1);
 
-        /* Build full device descriptor */
+
         Size = sizeof(CM_PARTIAL_RESOURCE_LIST) +
                2 * sizeof(CM_PARTIAL_RESOURCE_DESCRIPTOR) +
                sizeof(CM_SERIAL_DEVICE_DATA);
         PartialResourceList = FrLdrHeapAlloc(Size, TAG_HW_RESOURCE_LIST);
-        if (PartialResourceList == NULL)
+        if (PartialResourceList == ((void*)0))
         {
             ERR("Failed to allocate resource descriptor\n");
             continue;
         }
         memset(PartialResourceList, 0, Size);
 
-        /* Initialize resource descriptor */
+
         PartialResourceList->Version = 1;
         PartialResourceList->Revision = 1;
         PartialResourceList->Count = 3;
 
-        /* Set IO Port */
+
         PartialDescriptor = &PartialResourceList->PartialDescriptors[0];
         PartialDescriptor->Type = CmResourceTypePort;
         PartialDescriptor->ShareDisposition = CmResourceShareDeviceExclusive;
@@ -117,7 +117,7 @@ DetectSerialPorts(PCONFIGURATION_COMPONENT_DATA BusKey, GET_SERIAL_PORT MachGetS
         PartialDescriptor->u.Port.Start.HighPart = 0x0;
         PartialDescriptor->u.Port.Length = 7;
 
-        /* Set Interrupt */
+
         PartialDescriptor = &PartialResourceList->PartialDescriptors[1];
         PartialDescriptor->Type = CmResourceTypeInterrupt;
         PartialDescriptor->ShareDisposition = CmResourceShareUndetermined;
@@ -126,7 +126,7 @@ DetectSerialPorts(PCONFIGURATION_COMPONENT_DATA BusKey, GET_SERIAL_PORT MachGetS
         PartialDescriptor->u.Interrupt.Vector = Irq;
         PartialDescriptor->u.Interrupt.Affinity = 0xFFFFFFFF;
 
-        /* Set serial data (device specific) */
+
         PartialDescriptor = &PartialResourceList->PartialDescriptors[2];
         PartialDescriptor->Type = CmResourceTypeDeviceSpecific;
         PartialDescriptor->ShareDisposition = CmResourceShareUndetermined;
@@ -135,9 +135,9 @@ DetectSerialPorts(PCONFIGURATION_COMPONENT_DATA BusKey, GET_SERIAL_PORT MachGetS
 
         SerialDeviceData =
             (PCM_SERIAL_DEVICE_DATA)&PartialResourceList->PartialDescriptors[3];
-        SerialDeviceData->BaudClock = 1843200; /* UART Clock frequency (Hertz) */
+        SerialDeviceData->BaudClock = 1843200;
 
-        /* Create controller key */
+
         FldrCreateComponentKey(BusKey,
                                ControllerClass,
                                SerialController,
@@ -151,7 +151,7 @@ DetectSerialPorts(PCONFIGURATION_COMPONENT_DATA BusKey, GET_SERIAL_PORT MachGetS
 
         if (!Rs232PortInUse(UlongToPtr(Base)))
         {
-            /* Detect serial mouse */
+
             DetectSerialPointerPeripheral(ControllerKey, UlongToPtr(Base));
         }
 

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
 struct TYPE_3__ {void* in_3d; void* match_flags; void* scan_mode; void* frame_rate; void* height; void* width; } ;
-typedef  TYPE_1__ TV_HDMI_ON_BEST_PARAM_T ;
-typedef  int /*<<< orphan*/  HDMI_INTERLACED_T ;
-typedef  int /*<<< orphan*/  EDID_MODE_MATCH_FLAG_T ;
+typedef TYPE_1__ TV_HDMI_ON_BEST_PARAM_T ;
+typedef int HDMI_INTERLACED_T ;
+typedef int EDID_MODE_MATCH_FLAG_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  VCOS_FUNCTION ; 
- void* VC_HTOV32 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  VC_TV_HDMI_ON_BEST ; 
- int tvservice_send_command (int /*<<< orphan*/ ,TYPE_1__*,int,int) ; 
- int /*<<< orphan*/  vcos_log_trace (char*,int /*<<< orphan*/ ) ; 
+
+ int VCOS_FUNCTION ;
+ void* VC_HTOV32 (int ) ;
+ int VC_TV_HDMI_ON_BEST ;
+ int tvservice_send_command (int ,TYPE_1__*,int,int) ;
+ int vcos_log_trace (char*,int ) ;
 
 __attribute__((used)) static int vc_tv_hdmi_power_on_best_actual(uint32_t width, uint32_t height, uint32_t frame_rate,
                                            HDMI_INTERLACED_T scan_mode, EDID_MODE_MATCH_FLAG_T match_flags,

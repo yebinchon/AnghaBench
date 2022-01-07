@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint8_t ;
 struct TYPE_5__ {struct TYPE_5__* next; } ;
-typedef  TYPE_1__ mdns_search_once_t ;
-typedef  int /*<<< orphan*/  mdns_ip_protocol_t ;
-typedef  int /*<<< orphan*/  mdns_if_t ;
+typedef TYPE_1__ mdns_search_once_t ;
+typedef int mdns_ip_protocol_t ;
+typedef int mdns_if_t ;
 struct TYPE_6__ {TYPE_1__* search_once; } ;
 
-/* Variables and functions */
- scalar_t__ MDNS_IF_MAX ; 
- scalar_t__ MDNS_IP_PROTOCOL_MAX ; 
- int /*<<< orphan*/  _mdns_search_send_pcb (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_2__* _mdns_server ; 
+
+ scalar_t__ MDNS_IF_MAX ;
+ scalar_t__ MDNS_IP_PROTOCOL_MAX ;
+ int _mdns_search_send_pcb (TYPE_1__*,int ,int ) ;
+ TYPE_2__* _mdns_server ;
 
 __attribute__((used)) static void _mdns_search_send(mdns_search_once_t * search)
 {
     mdns_search_once_t* queue = _mdns_server->search_once;
-    bool found = false;
-    // looking for this search in active searches
+    bool found = 0;
+
     while (queue) {
         if (queue == search) {
-            found = true;
+            found = 1;
             break;
         }
         queue = queue->next;
     }
 
     if (!found) {
-        // no longer active -> skip sending this search
+
         return;
     }
 

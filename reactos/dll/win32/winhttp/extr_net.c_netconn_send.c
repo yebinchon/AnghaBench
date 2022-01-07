@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  cbMaximumMessage; } ;
-struct TYPE_6__ {int /*<<< orphan*/  socket; TYPE_1__ ssl_sizes; scalar_t__ secure; } ;
-typedef  TYPE_2__ netconn_t ;
-typedef  int /*<<< orphan*/  BYTE ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  errno ; 
- size_t min (size_t,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  send_ssl_chunk (TYPE_2__*,int /*<<< orphan*/  const*,size_t) ; 
- int /*<<< orphan*/  set_last_error (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sock_get_error (int /*<<< orphan*/ ) ; 
- int sock_send (int /*<<< orphan*/ ,void const*,size_t,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int cbMaximumMessage; } ;
+struct TYPE_6__ {int socket; TYPE_1__ ssl_sizes; scalar_t__ secure; } ;
+typedef TYPE_2__ netconn_t ;
+typedef int BYTE ;
+typedef int BOOL ;
+
+
+ int FALSE ;
+ int TRUE ;
+ int errno ;
+ size_t min (size_t,int ) ;
+ int send_ssl_chunk (TYPE_2__*,int const*,size_t) ;
+ int set_last_error (int ) ;
+ int sock_get_error (int ) ;
+ int sock_send (int ,void const*,size_t,int ) ;
 
 BOOL netconn_send( netconn_t *conn, const void *msg, size_t len, int *sent )
 {

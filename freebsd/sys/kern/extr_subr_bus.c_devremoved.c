@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  device_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  devaddq (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  device_get_nameunit (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int device_t ;
+
+
+ int devaddq (char*,int ,int ) ;
+ int device_get_nameunit (int ) ;
 
 __attribute__((used)) static void
 devremoved(device_t dev)
 {
-	devaddq("-", device_get_nameunit(dev), dev);
+ devaddq("-", device_get_nameunit(dev), dev);
 }

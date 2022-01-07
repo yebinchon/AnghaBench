@@ -1,32 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int ENODEV ; 
- int /*<<< orphan*/  mb862xxfb_pci_driver ; 
- int /*<<< orphan*/  of_platform_mb862xxfb_driver ; 
- int pci_register_driver (int /*<<< orphan*/ *) ; 
- int platform_driver_register (int /*<<< orphan*/ *) ; 
+ int ENODEV ;
+ int mb862xxfb_pci_driver ;
+ int of_platform_mb862xxfb_driver ;
+ int pci_register_driver (int *) ;
+ int platform_driver_register (int *) ;
 
 __attribute__((used)) static int mb862xxfb_init(void)
 {
-	int ret = -ENODEV;
+ int ret = -ENODEV;
 
-#if defined(CONFIG_FB_MB862XX_LIME)
-	ret = platform_driver_register(&of_platform_mb862xxfb_driver);
-#endif
-#if defined(CONFIG_FB_MB862XX_PCI_GDC)
-	ret = pci_register_driver(&mb862xxfb_pci_driver);
-#endif
-	return ret;
+
+
+
+
+
+
+ return ret;
 }

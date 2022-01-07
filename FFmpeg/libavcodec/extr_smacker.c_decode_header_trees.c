@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_4__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_4__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_6__ {scalar_t__ extradata_size; scalar_t__ extradata; } ;
 struct TYPE_5__ {int* mmap_last; int* mclr_last; int* full_last; int* type_last; scalar_t__* type_tbl; TYPE_4__* avctx; scalar_t__* full_tbl; scalar_t__* mclr_tbl; scalar_t__* mmap_tbl; } ;
-typedef  TYPE_1__ SmackVContext ;
-typedef  int /*<<< orphan*/  GetBitContext ;
+typedef TYPE_1__ SmackVContext ;
+typedef int GetBitContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_INFO ; 
- int AV_RL32 (scalar_t__) ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  av_log (TYPE_4__*,int /*<<< orphan*/ ,char*) ; 
- void* av_malloc (int) ; 
- int /*<<< orphan*/  get_bits1 (int /*<<< orphan*/ *) ; 
- int init_get_bits8 (int /*<<< orphan*/ *,scalar_t__,scalar_t__) ; 
- int smacker_decode_header_tree (TYPE_1__*,int /*<<< orphan*/ *,scalar_t__**,int*,int) ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_INFO ;
+ int AV_RL32 (scalar_t__) ;
+ int ENOMEM ;
+ int av_log (TYPE_4__*,int ,char*) ;
+ void* av_malloc (int) ;
+ int get_bits1 (int *) ;
+ int init_get_bits8 (int *,scalar_t__,scalar_t__) ;
+ int smacker_decode_header_tree (TYPE_1__*,int *,scalar_t__**,int*,int) ;
 
 __attribute__((used)) static int decode_header_trees(SmackVContext *smk) {
     GetBitContext gb;

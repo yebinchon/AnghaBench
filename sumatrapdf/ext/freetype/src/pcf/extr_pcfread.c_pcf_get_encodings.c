@@ -1,76 +1,76 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_4__ ;
-typedef  struct TYPE_16__   TYPE_3__ ;
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
-typedef  struct TYPE_13__   TYPE_11__ ;
 
-/* Type definitions */
-struct TYPE_17__ {int /*<<< orphan*/ * cursor; } ;
+
+
+typedef struct TYPE_17__ TYPE_4__ ;
+typedef struct TYPE_16__ TYPE_3__ ;
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+typedef struct TYPE_13__ TYPE_11__ ;
+
+
+struct TYPE_17__ {int * cursor; } ;
 struct TYPE_16__ {int firstCol; int lastCol; int firstRow; int lastRow; int defaultChar; int* offset; } ;
-struct TYPE_14__ {int /*<<< orphan*/  count; int /*<<< orphan*/  tables; } ;
-struct TYPE_15__ {int nmetrics; int /*<<< orphan*/ * metrics; TYPE_1__ toc; TYPE_3__ enc; } ;
-struct TYPE_13__ {int /*<<< orphan*/  memory; } ;
-typedef  int /*<<< orphan*/  PCF_MetricRec ;
-typedef  TYPE_2__* PCF_Face ;
-typedef  TYPE_3__* PCF_Enc ;
-typedef  int FT_UShort ;
-typedef  int FT_ULong ;
-typedef  TYPE_4__* FT_Stream ;
-typedef  int /*<<< orphan*/  FT_Memory ;
-typedef  scalar_t__ FT_Error ;
-typedef  int /*<<< orphan*/  FT_Byte ;
+struct TYPE_14__ {int count; int tables; } ;
+struct TYPE_15__ {int nmetrics; int * metrics; TYPE_1__ toc; TYPE_3__ enc; } ;
+struct TYPE_13__ {int memory; } ;
+typedef int PCF_MetricRec ;
+typedef TYPE_2__* PCF_Face ;
+typedef TYPE_3__* PCF_Enc ;
+typedef int FT_UShort ;
+typedef int FT_ULong ;
+typedef TYPE_4__* FT_Stream ;
+typedef int FT_Memory ;
+typedef scalar_t__ FT_Error ;
+typedef int FT_Byte ;
 
-/* Variables and functions */
- TYPE_11__* FT_FACE (TYPE_2__*) ; 
- int /*<<< orphan*/  FT_FREE (int*) ; 
- int FT_GET_USHORT () ; 
- int FT_GET_USHORT_LE () ; 
- scalar_t__ FT_NEW_ARRAY (int*,int) ; 
- int FT_PEEK_USHORT (int /*<<< orphan*/ *) ; 
- int FT_PEEK_USHORT_LE (int /*<<< orphan*/ *) ; 
- scalar_t__ FT_READ_ULONG_LE (int) ; 
- scalar_t__ FT_STREAM_READ_FIELDS (int /*<<< orphan*/ ,TYPE_3__*) ; 
- scalar_t__ FT_Stream_EnterFrame (TYPE_4__*,int) ; 
- int /*<<< orphan*/  FT_Stream_ExitFrame (TYPE_4__*) ; 
- scalar_t__ FT_THROW (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FT_TRACE0 (char*) ; 
- int /*<<< orphan*/  FT_TRACE4 (char*) ; 
- int /*<<< orphan*/  FT_TRACE5 (char*) ; 
- int /*<<< orphan*/  Invalid_File_Format ; 
- int /*<<< orphan*/  Invalid_Table ; 
- scalar_t__ MSBFirst ; 
- int /*<<< orphan*/  PCF_BDF_ENCODINGS ; 
- scalar_t__ PCF_BYTE_ORDER (int) ; 
- int /*<<< orphan*/  PCF_DEFAULT_FORMAT ; 
- int /*<<< orphan*/  PCF_FORMAT_MATCH (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pcf_enc_header ; 
- int /*<<< orphan*/  pcf_enc_msb_header ; 
- scalar_t__ pcf_seek_to_table_type (TYPE_4__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*,int*) ; 
+
+ TYPE_11__* FT_FACE (TYPE_2__*) ;
+ int FT_FREE (int*) ;
+ int FT_GET_USHORT () ;
+ int FT_GET_USHORT_LE () ;
+ scalar_t__ FT_NEW_ARRAY (int*,int) ;
+ int FT_PEEK_USHORT (int *) ;
+ int FT_PEEK_USHORT_LE (int *) ;
+ scalar_t__ FT_READ_ULONG_LE (int) ;
+ scalar_t__ FT_STREAM_READ_FIELDS (int ,TYPE_3__*) ;
+ scalar_t__ FT_Stream_EnterFrame (TYPE_4__*,int) ;
+ int FT_Stream_ExitFrame (TYPE_4__*) ;
+ scalar_t__ FT_THROW (int ) ;
+ int FT_TRACE0 (char*) ;
+ int FT_TRACE4 (char*) ;
+ int FT_TRACE5 (char*) ;
+ int Invalid_File_Format ;
+ int Invalid_Table ;
+ scalar_t__ MSBFirst ;
+ int PCF_BDF_ENCODINGS ;
+ scalar_t__ PCF_BYTE_ORDER (int) ;
+ int PCF_DEFAULT_FORMAT ;
+ int PCF_FORMAT_MATCH (int,int ) ;
+ int pcf_enc_header ;
+ int pcf_enc_msb_header ;
+ scalar_t__ pcf_seek_to_table_type (TYPE_4__*,int ,int ,int ,int*,int*) ;
 
 __attribute__((used)) static FT_Error
-  pcf_get_encodings( FT_Stream  stream,
-                     PCF_Face   face )
+  pcf_get_encodings( FT_Stream stream,
+                     PCF_Face face )
   {
-    FT_Error    error;
-    FT_Memory   memory = FT_FACE( face )->memory;
-    FT_ULong    format, size;
-    PCF_Enc     enc = &face->enc;
-    FT_ULong    nencoding;
-    FT_UShort*  offset;
-    FT_UShort   defaultCharRow, defaultCharCol;
-    FT_UShort   encodingOffset, defaultCharEncodingOffset;
-    FT_UShort   i, j;
-    FT_Byte*    pos;
+    FT_Error error;
+    FT_Memory memory = FT_FACE( face )->memory;
+    FT_ULong format, size;
+    PCF_Enc enc = &face->enc;
+    FT_ULong nencoding;
+    FT_UShort* offset;
+    FT_UShort defaultCharRow, defaultCharCol;
+    FT_UShort encodingOffset, defaultCharEncodingOffset;
+    FT_UShort i, j;
+    FT_Byte* pos;
 
 
     error = pcf_seek_to_table_type( stream,
@@ -91,7 +91,7 @@ __attribute__((used)) static FT_Error
                 PCF_BYTE_ORDER( format ) == MSBFirst ? "MSB" : "LSB" ));
 
     if ( !PCF_FORMAT_MATCH( format, PCF_DEFAULT_FORMAT ) &&
-         !PCF_FORMAT_MATCH( format, PCF_BDF_ENCODINGS )  )
+         !PCF_FORMAT_MATCH( format, PCF_BDF_ENCODINGS ) )
       return FT_THROW( Invalid_File_Format );
 
     if ( PCF_BYTE_ORDER( format ) == MSBFirst )
@@ -112,11 +112,11 @@ __attribute__((used)) static FT_Error
                 enc->firstRow, enc->lastRow,
                 enc->defaultChar ));
 
-    /* sanity checks; we limit numbers of rows and columns to 256 */
+
     if ( enc->firstCol > enc->lastCol ||
-         enc->lastCol  > 0xFF         ||
+         enc->lastCol > 0xFF ||
          enc->firstRow > enc->lastRow ||
-         enc->lastRow  > 0xFF         )
+         enc->lastRow > 0xFF )
       return FT_THROW( Invalid_Table );
 
     nencoding = (FT_ULong)( enc->lastCol - enc->firstCol + 1 ) *
@@ -134,11 +134,11 @@ __attribute__((used)) static FT_Error
     defaultCharRow = enc->defaultChar >> 8;
     defaultCharCol = enc->defaultChar & 0xFF;
 
-    /* validate default character */
+
     if ( defaultCharRow < enc->firstRow ||
-         defaultCharRow > enc->lastRow  ||
+         defaultCharRow > enc->lastRow ||
          defaultCharCol < enc->firstCol ||
-         defaultCharCol > enc->lastCol  )
+         defaultCharCol > enc->lastCol )
     {
       enc->defaultChar = enc->firstRow * 256U + enc->firstCol;
       FT_TRACE0(( "pcf_get_encodings:"
@@ -148,18 +148,10 @@ __attribute__((used)) static FT_Error
       defaultCharRow = enc->firstRow;
       defaultCharCol = enc->firstCol;
     }
-
-    /* FreeType mandates that glyph index 0 is the `undefined glyph',  */
-    /* which PCF calls the `default character'.  For this reason, we   */
-    /* swap the positions of glyph index 0 and the index corresponding */
-    /* to `defaultChar' in case they are different.                    */
-
-    /* `stream->cursor' still points at the beginning of the frame; */
-    /* we can thus easily get the offset to the default character   */
     pos = stream->cursor +
             2 * ( ( defaultCharRow - enc->firstRow ) *
                   ( enc->lastCol - enc->firstCol + 1 ) +
-                    defaultCharCol - enc->firstCol       );
+                    defaultCharCol - enc->firstCol );
 
     if ( PCF_BYTE_ORDER( format ) == MSBFirst )
       defaultCharEncodingOffset = FT_PEEK_USHORT( pos );
@@ -176,12 +168,12 @@ __attribute__((used)) static FT_Error
 
     if ( defaultCharEncodingOffset )
     {
-      /* do the swapping */
-      PCF_MetricRec  tmp = face->metrics[defaultCharEncodingOffset];
+
+      PCF_MetricRec tmp = face->metrics[defaultCharEncodingOffset];
 
 
       face->metrics[defaultCharEncodingOffset] = face->metrics[0];
-      face->metrics[0]                         = tmp;
+      face->metrics[0] = tmp;
     }
 
     offset = enc->offset;
@@ -189,10 +181,10 @@ __attribute__((used)) static FT_Error
     {
       for ( j = enc->firstCol; j <= enc->lastCol; j++ )
       {
-        /* X11's reference implementation uses the equivalent to  */
-        /* `FT_GET_SHORT', however PCF fonts with more than 32768 */
-        /* characters (e.g., `unifont.pcf') clearly show that an  */
-        /* unsigned value is needed.                              */
+
+
+
+
         if ( PCF_BYTE_ORDER( format ) == MSBFirst )
           encodingOffset = FT_GET_USHORT();
         else

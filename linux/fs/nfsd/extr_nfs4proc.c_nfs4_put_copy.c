@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct nfsd4_copy {int /*<<< orphan*/  refcount; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  kfree (struct nfsd4_copy*) ; 
- int /*<<< orphan*/  refcount_dec_and_test (int /*<<< orphan*/ *) ; 
+
+
+
+struct nfsd4_copy {int refcount; } ;
+
+
+ int kfree (struct nfsd4_copy*) ;
+ int refcount_dec_and_test (int *) ;
 
 void nfs4_put_copy(struct nfsd4_copy *copy)
 {
-	if (!refcount_dec_and_test(&copy->refcount))
-		return;
-	kfree(copy);
+ if (!refcount_dec_and_test(&copy->refcount))
+  return;
+ kfree(copy);
 }

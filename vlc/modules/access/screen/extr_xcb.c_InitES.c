@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_5__ ;
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  xcb_setup_t ;
+
+
+typedef struct TYPE_15__ TYPE_5__ ;
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef int xcb_setup_t ;
 struct TYPE_12__ {int depth; int bits_per_pixel; } ;
-typedef  TYPE_2__ xcb_format_t ;
-typedef  int uint_fast8_t ;
-typedef  void* uint_fast16_t ;
-typedef  int uint8_t ;
-typedef  scalar_t__ uint32_t ;
-typedef  int /*<<< orphan*/  es_out_id_t ;
+typedef TYPE_2__ xcb_format_t ;
+typedef int uint_fast8_t ;
+typedef void* uint_fast16_t ;
+typedef int uint8_t ;
+typedef scalar_t__ uint32_t ;
+typedef int es_out_id_t ;
 struct TYPE_11__ {int i_bits_per_pixel; int i_sar_num; int i_sar_den; int i_frame_rate; int i_frame_rate_base; void* i_height; void* i_visible_height; void* i_width; void* i_visible_width; scalar_t__ i_chroma; } ;
 struct TYPE_13__ {TYPE_1__ video; } ;
-typedef  TYPE_3__ es_format_t ;
-struct TYPE_14__ {int /*<<< orphan*/  out; TYPE_5__* p_sys; } ;
-typedef  TYPE_4__ demux_t ;
-struct TYPE_15__ {int rate; int /*<<< orphan*/  conn; } ;
-typedef  TYPE_5__ demux_sys_t ;
+typedef TYPE_3__ es_format_t ;
+struct TYPE_14__ {int out; TYPE_5__* p_sys; } ;
+typedef TYPE_4__ demux_t ;
+struct TYPE_15__ {int rate; int conn; } ;
+typedef TYPE_5__ demux_sys_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  VIDEO_ES ; 
- scalar_t__ VLC_CODEC_ARGB ; 
- scalar_t__ VLC_CODEC_RGB15 ; 
- scalar_t__ VLC_CODEC_RGB16 ; 
- scalar_t__ VLC_CODEC_RGB24 ; 
- scalar_t__ VLC_CODEC_RGB32 ; 
- scalar_t__ VLC_CODEC_RGB8 ; 
- int /*<<< orphan*/  es_format_Init (TYPE_3__*,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/ * es_out_Add (int /*<<< orphan*/ ,TYPE_3__*) ; 
- int /*<<< orphan*/  msg_Err (TYPE_4__*,char*) ; 
- int /*<<< orphan*/ * xcb_get_setup (int /*<<< orphan*/ ) ; 
- TYPE_2__* xcb_setup_pixmap_formats (int /*<<< orphan*/  const*) ; 
- int xcb_setup_pixmap_formats_length (int /*<<< orphan*/  const*) ; 
+
+ int VIDEO_ES ;
+ scalar_t__ VLC_CODEC_ARGB ;
+ scalar_t__ VLC_CODEC_RGB15 ;
+ scalar_t__ VLC_CODEC_RGB16 ;
+ scalar_t__ VLC_CODEC_RGB24 ;
+ scalar_t__ VLC_CODEC_RGB32 ;
+ scalar_t__ VLC_CODEC_RGB8 ;
+ int es_format_Init (TYPE_3__*,int ,scalar_t__) ;
+ int * es_out_Add (int ,TYPE_3__*) ;
+ int msg_Err (TYPE_4__*,char*) ;
+ int * xcb_get_setup (int ) ;
+ TYPE_2__* xcb_setup_pixmap_formats (int const*) ;
+ int xcb_setup_pixmap_formats_length (int const*) ;
 
 __attribute__((used)) static es_out_id_t *InitES (demux_t *demux, uint_fast16_t width,
                             uint_fast16_t height, uint_fast8_t depth,
@@ -80,7 +80,7 @@ __attribute__((used)) static es_out_id_t *InitES (demux_t *demux, uint_fast16_t 
                 if (fmt->bits_per_pixel == 16)
                     chroma = VLC_CODEC_RGB15;
                 break;
-            case 8: /* XXX: screw grey scale! */
+            case 8:
                 if (fmt->bits_per_pixel == 8)
                     chroma = VLC_CODEC_RGB8;
                 break;
@@ -95,7 +95,7 @@ __attribute__((used)) static es_out_id_t *InitES (demux_t *demux, uint_fast16_t 
     if (!chroma)
     {
         msg_Err (demux, "unsupported pixmap formats");
-        return NULL;
+        return ((void*)0);
     }
 
     es_format_t fmt;

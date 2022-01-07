@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int /*<<< orphan*/  uint64_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cvmx_dprintf (char*,...) ; 
- int* cvmx_phys_to_ptr (int /*<<< orphan*/ ) ; 
- int debug_indent ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint64_t ;
+
+
+ int cvmx_dprintf (char*,...) ;
+ int* cvmx_phys_to_ptr (int ) ;
+ int debug_indent ;
 
 __attribute__((used)) static void __cvmx_nand_hex_dump(uint64_t buffer_address, int buffer_length)
 {
@@ -25,7 +25,7 @@ __attribute__((used)) static void __cvmx_nand_hex_dump(uint64_t buffer_address, 
     while (offset < buffer_length)
     {
         int i;
-        cvmx_dprintf("%*s%04x:",  2*debug_indent, "", offset);
+        cvmx_dprintf("%*s%04x:", 2*debug_indent, "", offset);
         for (i=0; i<32; i++)
         {
             if ((i&3) == 0)

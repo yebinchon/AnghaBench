@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_wc__db_wcroot_t ;
-typedef  int /*<<< orphan*/  svn_wc__db_t ;
-typedef  int /*<<< orphan*/  svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_int64_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INVALID_REPOS_ID ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_ASSERT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  SVN_WC__DB_WITH_TXN4 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  VERIFY_USABLE_WCROOT (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  db_read_repos_info (int /*<<< orphan*/ *,char const**,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_dirent_is_absolute (char const*) ; 
- int /*<<< orphan*/  svn_wc__db_fetch_repos_info (char const**,char const**,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__db_wcroot_parse_local_abspath (int /*<<< orphan*/ **,char const**,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int svn_wc__db_wcroot_t ;
+typedef int svn_wc__db_t ;
+typedef int svn_revnum_t ;
+typedef int svn_error_t ;
+typedef int apr_pool_t ;
+typedef int apr_int64_t ;
+
+
+ int INVALID_REPOS_ID ;
+ int SVN_ERR (int ) ;
+ int SVN_ERR_ASSERT (int ) ;
+ int * SVN_NO_ERROR ;
+ int SVN_WC__DB_WITH_TXN4 (int ,int ,int *,int *,int *) ;
+ int VERIFY_USABLE_WCROOT (int *) ;
+ int db_read_repos_info (int *,char const**,int *,int *,char const*,int *,int *) ;
+ int svn_dirent_is_absolute (char const*) ;
+ int svn_wc__db_fetch_repos_info (char const**,char const**,int *,int ,int *) ;
+ int svn_wc__db_wcroot_parse_local_abspath (int **,char const**,int *,char const*,int *,int *) ;
 
 svn_error_t *
 svn_wc__db_read_repos_info(svn_revnum_t *revision,
@@ -52,7 +52,7 @@ svn_wc__db_read_repos_info(svn_revnum_t *revision,
 
   SVN_WC__DB_WITH_TXN4(db_read_repos_info(revision, repos_relpath,
                                           (repos_root_url || repos_uuid)
-                                            ? &repos_id : NULL,
+                                            ? &repos_id : ((void*)0),
                                           wcroot, local_relpath,
                                           result_pool, scratch_pool),
                        svn_wc__db_fetch_repos_info(repos_root_url,

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__* aCoord; } ;
-typedef  scalar_t__ RtreeDValue ;
-typedef  TYPE_1__ RtreeCell ;
-typedef  int /*<<< orphan*/  Rtree ;
+typedef scalar_t__ RtreeDValue ;
+typedef TYPE_1__ RtreeCell ;
+typedef int Rtree ;
 
-/* Variables and functions */
- scalar_t__ DCOORD (scalar_t__) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  memcpy (int*,int*,int) ; 
+
+ scalar_t__ DCOORD (scalar_t__) ;
+ int assert (int) ;
+ int memcpy (int*,int*,int) ;
 
 __attribute__((used)) static void SortByDimension(
   Rtree *pRtree,
-  int *aIdx, 
-  int nIdx, 
-  int iDim, 
-  RtreeCell *aCell, 
+  int *aIdx,
+  int nIdx,
+  int iDim,
+  RtreeCell *aCell,
   int *aSpare
 ){
   if( nIdx>1 ){
@@ -60,19 +60,5 @@ __attribute__((used)) static void SortByDimension(
         iRight++;
       }
     }
-
-#if 0
-    /* Check that the sort worked */
-    {
-      int jj;
-      for(jj=1; jj<nIdx; jj++){
-        RtreeDValue xleft1 = aCell[aIdx[jj-1]].aCoord[iDim*2];
-        RtreeDValue xleft2 = aCell[aIdx[jj-1]].aCoord[iDim*2+1];
-        RtreeDValue xright1 = aCell[aIdx[jj]].aCoord[iDim*2];
-        RtreeDValue xright2 = aCell[aIdx[jj]].aCoord[iDim*2+1];
-        assert( xleft1<=xright1 && (xleft1<xright1 || xleft2<=xright2) );
-      }
-    }
-#endif
   }
 }

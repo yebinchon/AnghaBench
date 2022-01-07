@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ opt_fs; scalar_t__ opt_rfs; scalar_t__ opt_rhost; } ;
-typedef  TYPE_1__ am_opts ;
+typedef TYPE_1__ am_opts ;
 
-/* Variables and functions */
- int /*<<< orphan*/  XLOG_USER ; 
- int /*<<< orphan*/  dlog (char*,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  plog (int /*<<< orphan*/ ,char*) ; 
- int strlen (scalar_t__) ; 
- scalar_t__ xmalloc (size_t) ; 
- int /*<<< orphan*/  xsnprintf (char*,size_t,char*,scalar_t__,scalar_t__) ; 
+
+ int XLOG_USER ;
+ int dlog (char*,scalar_t__,scalar_t__,scalar_t__) ;
+ int plog (int ,char*) ;
+ int strlen (scalar_t__) ;
+ scalar_t__ xmalloc (size_t) ;
+ int xsnprintf (char*,size_t,char*,scalar_t__,scalar_t__) ;
 
 __attribute__((used)) static char *
 nfs_match(am_opts *fo)
@@ -32,16 +32,16 @@ nfs_match(am_opts *fo)
     fo->opt_rfs = fo->opt_fs;
   if (!fo->opt_rfs) {
     plog(XLOG_USER, "nfs: no remote filesystem specified");
-    return NULL;
+    return ((void*)0);
   }
   if (!fo->opt_rhost) {
     plog(XLOG_USER, "nfs: no remote host specified");
-    return NULL;
+    return ((void*)0);
   }
 
-  /*
-   * Determine magic cookie to put in mtab
-   */
+
+
+
   l = strlen(fo->opt_rhost) + strlen(fo->opt_rfs) + 2;
   xmtab = (char *) xmalloc(l);
   xsnprintf(xmtab, l, "%s:%s", fo->opt_rhost, fo->opt_rfs);

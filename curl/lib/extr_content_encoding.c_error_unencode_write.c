@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct connectdata {int /*<<< orphan*/  data; } ;
-typedef  int /*<<< orphan*/  contenc_writer ;
-typedef  int /*<<< orphan*/  CURLcode ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CURLE_BAD_CONTENT_ENCODING ; 
- int /*<<< orphan*/  CURLE_OUT_OF_MEMORY ; 
- char* Curl_all_content_encodings () ; 
- int /*<<< orphan*/  failf (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  free (char*) ; 
+
+
+
+struct connectdata {int data; } ;
+typedef int contenc_writer ;
+typedef int CURLcode ;
+
+
+ int CURLE_BAD_CONTENT_ENCODING ;
+ int CURLE_OUT_OF_MEMORY ;
+ char* Curl_all_content_encodings () ;
+ int failf (int ,char*,char*) ;
+ int free (char*) ;
 
 __attribute__((used)) static CURLcode error_unencode_write(struct connectdata *conn,
                                      contenc_writer *writer,

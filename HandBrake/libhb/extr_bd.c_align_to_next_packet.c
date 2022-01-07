@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  const uint8_t ;
-typedef  int uint64_t ;
-typedef  int /*<<< orphan*/  buf ;
-typedef  int /*<<< orphan*/  BLURAY ;
 
-/* Variables and functions */
- int MAX_HOLE ; 
- int bd_read (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int) ; 
- int /*<<< orphan*/  bd_seek (int /*<<< orphan*/ *,int) ; 
- int bd_tell (int /*<<< orphan*/ *) ; 
- scalar_t__ have_ts_sync (int /*<<< orphan*/  const*,int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int) ; 
+
+
+
+typedef int const uint8_t ;
+typedef int uint64_t ;
+typedef int buf ;
+typedef int BLURAY ;
+
+
+ int MAX_HOLE ;
+ int bd_read (int *,int const*,int) ;
+ int bd_seek (int *,int) ;
+ int bd_tell (int *) ;
+ scalar_t__ have_ts_sync (int const*,int) ;
+ int memcpy (int const*,int const*,int) ;
 
 __attribute__((used)) static uint64_t align_to_next_packet(BLURAY *bd, uint8_t *pkt)
 {
-    int      result;
-    uint8_t  buf[MAX_HOLE];
+    int result;
+    uint8_t buf[MAX_HOLE];
     uint64_t pos = 0;
     uint64_t start = bd_tell(bd);
     uint64_t orig;
@@ -72,9 +72,9 @@ __attribute__((used)) static uint64_t align_to_next_packet(BLURAY *bd, uint8_t *
         }
     }
     off = start + pos - 4;
-    // bd_seek seeks to the nearest access unit *before* the requested position
-    // we don't want to seek backwards, so we need to read until we get
-    // past that position.
+
+
+
     bd_seek(bd, off);
     while (off > bd_tell(bd))
     {

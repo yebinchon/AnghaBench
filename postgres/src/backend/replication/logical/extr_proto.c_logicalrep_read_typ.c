@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {void* typname; void* nspname; int /*<<< orphan*/  remoteid; } ;
-typedef  int /*<<< orphan*/  StringInfo ;
-typedef  TYPE_1__ LogicalRepTyp ;
 
-/* Variables and functions */
- int /*<<< orphan*/  logicalrep_read_namespace (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pq_getmsgint (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  pq_getmsgstring (int /*<<< orphan*/ ) ; 
- void* pstrdup (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {void* typname; void* nspname; int remoteid; } ;
+typedef int StringInfo ;
+typedef TYPE_1__ LogicalRepTyp ;
+
+
+ int logicalrep_read_namespace (int ) ;
+ int pq_getmsgint (int ,int) ;
+ int pq_getmsgstring (int ) ;
+ void* pstrdup (int ) ;
 
 void
 logicalrep_read_typ(StringInfo in, LogicalRepTyp *ltyp)
 {
-	ltyp->remoteid = pq_getmsgint(in, 4);
+ ltyp->remoteid = pq_getmsgint(in, 4);
 
-	/* Read type name from stream */
-	ltyp->nspname = pstrdup(logicalrep_read_namespace(in));
-	ltyp->typname = pstrdup(pq_getmsgstring(in));
+
+ ltyp->nspname = pstrdup(logicalrep_read_namespace(in));
+ ltyp->typname = pstrdup(pq_getmsgstring(in));
 }

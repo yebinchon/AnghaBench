@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {int /*<<< orphan*/  loop; int /*<<< orphan*/  idle_timeout; } ;
-typedef  TYPE_2__ server_ctx ;
-struct TYPE_8__ {int /*<<< orphan*/  tcp; } ;
-struct TYPE_10__ {int /*<<< orphan*/  timer_handle; TYPE_1__ handle; int /*<<< orphan*/  idle_timeout; void* wrstate; void* rdstate; scalar_t__ result; TYPE_4__* client; } ;
-typedef  TYPE_3__ conn ;
-struct TYPE_11__ {TYPE_2__* sx; TYPE_3__ outgoing; TYPE_3__ incoming; int /*<<< orphan*/  parser; int /*<<< orphan*/  state; } ;
-typedef  TYPE_4__ client_ctx ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHECK (int) ; 
- void* c_stop ; 
- int /*<<< orphan*/  conn_read (TYPE_3__*) ; 
- int /*<<< orphan*/  s5_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  s_handshake ; 
- scalar_t__ uv_tcp_init (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ uv_timer_init (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_9__ {int loop; int idle_timeout; } ;
+typedef TYPE_2__ server_ctx ;
+struct TYPE_8__ {int tcp; } ;
+struct TYPE_10__ {int timer_handle; TYPE_1__ handle; int idle_timeout; void* wrstate; void* rdstate; scalar_t__ result; TYPE_4__* client; } ;
+typedef TYPE_3__ conn ;
+struct TYPE_11__ {TYPE_2__* sx; TYPE_3__ outgoing; TYPE_3__ incoming; int parser; int state; } ;
+typedef TYPE_4__ client_ctx ;
+
+
+ int CHECK (int) ;
+ void* c_stop ;
+ int conn_read (TYPE_3__*) ;
+ int s5_init (int *) ;
+ int s_handshake ;
+ scalar_t__ uv_tcp_init (int ,int *) ;
+ scalar_t__ uv_timer_init (int ,int *) ;
 
 void client_finish_init(server_ctx *sx, client_ctx *cx) {
   conn *incoming;
@@ -56,6 +56,6 @@ void client_finish_init(server_ctx *sx, client_ctx *cx) {
   CHECK(0 == uv_tcp_init(cx->sx->loop, &outgoing->handle.tcp));
   CHECK(0 == uv_timer_init(cx->sx->loop, &outgoing->timer_handle));
 
-  /* Wait for the initial packet. */
+
   conn_read(incoming);
 }

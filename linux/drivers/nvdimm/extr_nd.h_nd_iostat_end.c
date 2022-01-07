@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct gendisk {int /*<<< orphan*/  part0; int /*<<< orphan*/  queue; } ;
+
+
+
+
+struct gendisk {int part0; int queue; } ;
 struct bio {struct gendisk* bi_disk; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  bio_op (struct bio*) ; 
- int /*<<< orphan*/  generic_end_io_acct (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,unsigned long) ; 
+
+ int bio_op (struct bio*) ;
+ int generic_end_io_acct (int ,int ,int *,unsigned long) ;
 
 __attribute__((used)) static inline void nd_iostat_end(struct bio *bio, unsigned long start)
 {
-	struct gendisk *disk = bio->bi_disk;
+ struct gendisk *disk = bio->bi_disk;
 
-	generic_end_io_acct(disk->queue, bio_op(bio), &disk->part0, start);
+ generic_end_io_acct(disk->queue, bio_op(bio), &disk->part0, start);
 }

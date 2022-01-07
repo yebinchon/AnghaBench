@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int flags; int /*<<< orphan*/  conn; } ;
-typedef  TYPE_1__ client ;
 
-/* Variables and functions */
- int CLIENT_PROTECTED ; 
- scalar_t__ clientHasPendingReplies (TYPE_1__*) ; 
- int /*<<< orphan*/  clientInstallWriteHandler (TYPE_1__*) ; 
- int /*<<< orphan*/  connSetReadHandler (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  readQueryFromClient ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int flags; int conn; } ;
+typedef TYPE_1__ client ;
+
+
+ int CLIENT_PROTECTED ;
+ scalar_t__ clientHasPendingReplies (TYPE_1__*) ;
+ int clientInstallWriteHandler (TYPE_1__*) ;
+ int connSetReadHandler (int ,int ) ;
+ int readQueryFromClient ;
 
 void unprotectClient(client *c) {
     if (c->flags & CLIENT_PROTECTED) {

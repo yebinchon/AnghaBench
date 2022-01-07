@@ -1,60 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct ieee80211_hw {struct cw1200_common* priv; } ;
-struct cw1200_common {int /*<<< orphan*/  pm_state; int /*<<< orphan*/  tx_queue_stats; int /*<<< orphan*/ * tx_queue; int /*<<< orphan*/ * sdd; int /*<<< orphan*/ * workqueue; int /*<<< orphan*/  wsm_cmd_buf; int /*<<< orphan*/  conf_mutex; int /*<<< orphan*/  mcast_timeout; } ;
+struct cw1200_common {int pm_state; int tx_queue_stats; int * tx_queue; int * sdd; int * workqueue; int wsm_cmd_buf; int conf_mutex; int mcast_timeout; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cw1200_debug_release (struct cw1200_common*) ; 
- int /*<<< orphan*/  cw1200_pm_deinit (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cw1200_queue_deinit (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cw1200_queue_stats_deinit (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cw1200_unregister_bh (struct cw1200_common*) ; 
- int /*<<< orphan*/  del_timer_sync (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  destroy_workqueue (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ieee80211_unregister_hw (struct ieee80211_hw*) ; 
- int /*<<< orphan*/  mutex_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  release_firmware (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  wsm_buf_deinit (int /*<<< orphan*/ *) ; 
+
+ int cw1200_debug_release (struct cw1200_common*) ;
+ int cw1200_pm_deinit (int *) ;
+ int cw1200_queue_deinit (int *) ;
+ int cw1200_queue_stats_deinit (int *) ;
+ int cw1200_unregister_bh (struct cw1200_common*) ;
+ int del_timer_sync (int *) ;
+ int destroy_workqueue (int *) ;
+ int ieee80211_unregister_hw (struct ieee80211_hw*) ;
+ int mutex_destroy (int *) ;
+ int release_firmware (int *) ;
+ int wsm_buf_deinit (int *) ;
 
 __attribute__((used)) static void cw1200_unregister_common(struct ieee80211_hw *dev)
 {
-	struct cw1200_common *priv = dev->priv;
-	int i;
+ struct cw1200_common *priv = dev->priv;
+ int i;
 
-	ieee80211_unregister_hw(dev);
+ ieee80211_unregister_hw(dev);
 
-	del_timer_sync(&priv->mcast_timeout);
-	cw1200_unregister_bh(priv);
+ del_timer_sync(&priv->mcast_timeout);
+ cw1200_unregister_bh(priv);
 
-	cw1200_debug_release(priv);
+ cw1200_debug_release(priv);
 
-	mutex_destroy(&priv->conf_mutex);
+ mutex_destroy(&priv->conf_mutex);
 
-	wsm_buf_deinit(&priv->wsm_cmd_buf);
+ wsm_buf_deinit(&priv->wsm_cmd_buf);
 
-	destroy_workqueue(priv->workqueue);
-	priv->workqueue = NULL;
+ destroy_workqueue(priv->workqueue);
+ priv->workqueue = ((void*)0);
 
-	if (priv->sdd) {
-		release_firmware(priv->sdd);
-		priv->sdd = NULL;
-	}
+ if (priv->sdd) {
+  release_firmware(priv->sdd);
+  priv->sdd = ((void*)0);
+ }
 
-	for (i = 0; i < 4; ++i)
-		cw1200_queue_deinit(&priv->tx_queue[i]);
+ for (i = 0; i < 4; ++i)
+  cw1200_queue_deinit(&priv->tx_queue[i]);
 
-	cw1200_queue_stats_deinit(&priv->tx_queue_stats);
-#ifdef CONFIG_PM
-	cw1200_pm_deinit(&priv->pm_state);
-#endif
+ cw1200_queue_stats_deinit(&priv->tx_queue_stats);
+
+
+
 }

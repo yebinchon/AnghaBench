@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  xml_reader_t ;
-struct TYPE_6__ {int /*<<< orphan*/  psz_url; int /*<<< orphan*/ * p_sys; } ;
-typedef  TYPE_1__ stream_t ;
-typedef  int /*<<< orphan*/  input_item_t ;
-typedef  int /*<<< orphan*/  input_item_node_t ;
 
-/* Variables and functions */
- char* ProcessMRL (char const*,int /*<<< orphan*/ ) ; 
- int XML_READER_ENDELEM ; 
- int XML_READER_STARTELEM ; 
- int /*<<< orphan*/  consume_tag (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  consume_volatile_tag (TYPE_1__*,char const*) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/ * input_item_New (char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  input_item_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  input_item_node_AppendItem (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ likely (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  msg_Err (TYPE_1__*,char*,char const*,int) ; 
- int /*<<< orphan*/  msg_Warn (TYPE_1__*,char*,char const*) ; 
- scalar_t__ strcasecmp (char const*,char*) ; 
- scalar_t__ unlikely (int) ; 
- int xml_ReaderIsEmptyElement (int /*<<< orphan*/ *) ; 
- char* xml_ReaderNextAttr (int /*<<< orphan*/ *,char const**) ; 
- int xml_ReaderNextNode (int /*<<< orphan*/ *,char const**) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int xml_reader_t ;
+struct TYPE_6__ {int psz_url; int * p_sys; } ;
+typedef TYPE_1__ stream_t ;
+typedef int input_item_t ;
+typedef int input_item_node_t ;
+
+
+ char* ProcessMRL (char const*,int ) ;
+ int XML_READER_ENDELEM ;
+ int XML_READER_STARTELEM ;
+ int consume_tag (int *,char*) ;
+ int consume_volatile_tag (TYPE_1__*,char const*) ;
+ int free (char*) ;
+ int * input_item_New (char*,int *) ;
+ int input_item_Release (int *) ;
+ int input_item_node_AppendItem (int *,int *) ;
+ scalar_t__ likely (int *) ;
+ int msg_Err (TYPE_1__*,char*,char const*,int) ;
+ int msg_Warn (TYPE_1__*,char*,char const*) ;
+ scalar_t__ strcasecmp (char const*,char*) ;
+ scalar_t__ unlikely (int) ;
+ int xml_ReaderIsEmptyElement (int *) ;
+ char* xml_ReaderNextAttr (int *,char const**) ;
+ int xml_ReaderNextNode (int *,char const**) ;
 
 __attribute__((used)) static void read_body( stream_t* p_demux, input_item_node_t* p_node )
 {
@@ -63,7 +63,7 @@ __attribute__((used)) static void read_body( stream_t* p_demux, input_item_node_
             {
                 const bool b_empty = xml_ReaderIsEmptyElement( p_reader );
 
-                const char *psz_attr = NULL, *psz_val = NULL;
+                const char *psz_attr = ((void*)0), *psz_val = ((void*)0);
                 while ((psz_attr = xml_ReaderNextAttr( p_reader, &psz_val )))
                 {
                     if ( !psz_val || *psz_val == '\0' )
@@ -73,7 +73,7 @@ __attribute__((used)) static void read_body( stream_t* p_demux, input_item_node_
                         char* mrl = ProcessMRL( psz_val, p_demux->psz_url );
                         if ( unlikely( !mrl ) )
                             return;
-                        input_item_t* p_item = input_item_New( mrl, NULL );
+                        input_item_t* p_item = input_item_New( mrl, ((void*)0) );
                         if ( likely( p_item ) )
                         {
                             input_item_node_AppendItem( p_node, p_item );
@@ -83,7 +83,7 @@ __attribute__((used)) static void read_body( stream_t* p_demux, input_item_node_
                     }
                 }
 
-                if( b_empty == false )
+                if( b_empty == 0 )
                     consume_tag( p_reader, "media" );
 
                 continue;

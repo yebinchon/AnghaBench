@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  rofi_int_matcher ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int rofi_int_matcher ;
 struct TYPE_5__ {unsigned int num_switchers; unsigned int* starts; unsigned int* lengths; TYPE_1__* switchers; } ;
-struct TYPE_4__ {int /*<<< orphan*/  mode; scalar_t__ disable; } ;
-typedef  int /*<<< orphan*/  Mode ;
-typedef  TYPE_2__ CombiModePrivateData ;
+struct TYPE_4__ {int mode; scalar_t__ disable; } ;
+typedef int Mode ;
+typedef TYPE_2__ CombiModePrivateData ;
 
-/* Variables and functions */
- TYPE_2__* mode_get_private_data (int /*<<< orphan*/  const*) ; 
- int mode_token_match (int /*<<< orphan*/ ,int /*<<< orphan*/ **,unsigned int) ; 
+
+ TYPE_2__* mode_get_private_data (int const*) ;
+ int mode_token_match (int ,int **,unsigned int) ;
 
 __attribute__((used)) static int combi_mode_match ( const Mode *sw, rofi_int_matcher **tokens, unsigned int index )
 {

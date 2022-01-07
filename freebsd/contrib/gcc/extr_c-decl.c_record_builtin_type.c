@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
-typedef  enum rid { ____Placeholder_rid } rid ;
-struct TYPE_2__ {int /*<<< orphan*/  (* type_decl ) (int /*<<< orphan*/ ,int) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TYPE_DECL ; 
- int /*<<< orphan*/  build_decl (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_1__* debug_hooks ; 
- int /*<<< orphan*/  get_identifier (char const*) ; 
- int /*<<< orphan*/  pushdecl (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * ridpointers ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int tree ;
+typedef enum rid { ____Placeholder_rid } rid ;
+struct TYPE_2__ {int (* type_decl ) (int ,int) ;} ;
+
+
+ int TYPE_DECL ;
+ int build_decl (int ,int ,int ) ;
+ TYPE_1__* debug_hooks ;
+ int get_identifier (char const*) ;
+ int pushdecl (int ) ;
+ int * ridpointers ;
+ int stub1 (int ,int) ;
 
 void
 record_builtin_type (enum rid rid_index, const char *name, tree type)
@@ -35,5 +35,5 @@ record_builtin_type (enum rid rid_index, const char *name, tree type)
   decl = build_decl (TYPE_DECL, id, type);
   pushdecl (decl);
   if (debug_hooks->type_decl)
-    debug_hooks->type_decl (decl, false);
+    debug_hooks->type_decl (decl, 0);
 }

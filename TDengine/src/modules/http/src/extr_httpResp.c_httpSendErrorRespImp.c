@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {size_t httpVersion; size_t httpKeepAlive; int /*<<< orphan*/  ipstr; int /*<<< orphan*/  fd; } ;
-typedef  TYPE_1__ HttpContext ;
 
-/* Variables and functions */
- size_t HTTP_RESPONSE_ERROR ; 
- size_t HTTP_RESPONSE_JSON_ERROR ; 
- int /*<<< orphan*/  httpCloseContextByApp (TYPE_1__*) ; 
- int /*<<< orphan*/  httpError (char*,TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,char*) ; 
- int /*<<< orphan*/ * httpKeepAliveStr ; 
- char** httpRespTemplate ; 
- int /*<<< orphan*/ * httpVersionStr ; 
- int /*<<< orphan*/  httpWriteBuf (TYPE_1__*,char*,int) ; 
- int sprintf (char*,char*,int,...) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {size_t httpVersion; size_t httpKeepAlive; int ipstr; int fd; } ;
+typedef TYPE_1__ HttpContext ;
+
+
+ size_t HTTP_RESPONSE_ERROR ;
+ size_t HTTP_RESPONSE_JSON_ERROR ;
+ int httpCloseContextByApp (TYPE_1__*) ;
+ int httpError (char*,TYPE_1__*,int ,int ,int,int,char*) ;
+ int * httpKeepAliveStr ;
+ char** httpRespTemplate ;
+ int * httpVersionStr ;
+ int httpWriteBuf (TYPE_1__*,char*,int) ;
+ int sprintf (char*,char*,int,...) ;
 
 void httpSendErrorRespImp(HttpContext *pContext, int httpCode, char *httpCodeStr, int errNo, char *desc) {
   httpError("context:%p, fd:%d, ip:%s, code:%d, error:%d:%s", pContext, pContext->fd, pContext->ipstr, httpCode, errNo,

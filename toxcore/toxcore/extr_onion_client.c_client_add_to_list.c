@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint32_t ;
+
+
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
 struct TYPE_12__ {int num_friends; int const* temp_public_key; TYPE_2__* friends_list; TYPE_1__* c; TYPE_3__* clients_announce_list; } ;
-struct TYPE_11__ {int const* public_key; int const* data_public_key; int const* ping_id; int is_stored; int /*<<< orphan*/  path_used; scalar_t__ last_pinged; int /*<<< orphan*/  timestamp; int /*<<< orphan*/  ip_port; } ;
+struct TYPE_11__ {int const* public_key; int const* data_public_key; int const* ping_id; int is_stored; int path_used; scalar_t__ last_pinged; int timestamp; int ip_port; } ;
 struct TYPE_10__ {int* real_public_key; TYPE_3__* clients_list; } ;
 struct TYPE_9__ {int* self_public_key; } ;
-typedef  TYPE_3__ Onion_Node ;
-typedef  TYPE_4__ Onion_Client ;
-typedef  int /*<<< orphan*/  IP_Port ;
+typedef TYPE_3__ Onion_Node ;
+typedef TYPE_4__ Onion_Client ;
+typedef int IP_Port ;
 
-/* Variables and functions */
- unsigned int MAX_ONION_CLIENTS ; 
- unsigned int MAX_ONION_CLIENTS_ANNOUNCE ; 
- int /*<<< orphan*/  ONION_NODE_TIMEOUT ; 
- int /*<<< orphan*/  ONION_PING_ID_SIZE ; 
- int /*<<< orphan*/  cmp_entry ; 
- int const* cmp_public_key ; 
- int /*<<< orphan*/  crypto_box_PUBLICKEYBYTES ; 
- int id_closest (int*,int const*,int const*) ; 
- scalar_t__ is_timeout (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (int const*,int const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  onion_add_path_node (TYPE_4__*,int /*<<< orphan*/ ,int const*) ; 
- scalar_t__ public_key_cmp (int const*,int const*) ; 
- int /*<<< orphan*/  qsort (TYPE_3__*,unsigned int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_path_timeouts (TYPE_4__*,int,int) ; 
- int /*<<< orphan*/  unix_time () ; 
+
+ unsigned int MAX_ONION_CLIENTS ;
+ unsigned int MAX_ONION_CLIENTS_ANNOUNCE ;
+ int ONION_NODE_TIMEOUT ;
+ int ONION_PING_ID_SIZE ;
+ int cmp_entry ;
+ int const* cmp_public_key ;
+ int crypto_box_PUBLICKEYBYTES ;
+ int id_closest (int*,int const*,int const*) ;
+ scalar_t__ is_timeout (int ,int ) ;
+ int memcpy (int const*,int const*,int ) ;
+ int onion_add_path_node (TYPE_4__*,int ,int const*) ;
+ scalar_t__ public_key_cmp (int const*,int const*) ;
+ int qsort (TYPE_3__*,unsigned int,int,int ) ;
+ int set_path_timeouts (TYPE_4__*,int,int) ;
+ int unix_time () ;
 
 __attribute__((used)) static int client_add_to_list(Onion_Client *onion_c, uint32_t num, const uint8_t *public_key, IP_Port ip_port,
                               uint8_t is_stored, const uint8_t *pingid_or_key, uint32_t path_num)
@@ -47,8 +47,8 @@ __attribute__((used)) static int client_add_to_list(Onion_Client *onion_c, uint3
     if (num > onion_c->num_friends)
         return -1;
 
-    Onion_Node *list_nodes = NULL;
-    uint8_t *reference_id = NULL;
+    Onion_Node *list_nodes = ((void*)0);
+    uint8_t *reference_id = ((void*)0);
     unsigned int list_length;
 
     if (num == 0) {
@@ -94,7 +94,7 @@ __attribute__((used)) static int client_add_to_list(Onion_Client *onion_c, uint3
     memcpy(list_nodes[index].public_key, public_key, crypto_box_PUBLICKEYBYTES);
     list_nodes[index].ip_port = ip_port;
 
-    //TODO: remove this and find a better source of nodes to use for paths.
+
     onion_add_path_node(onion_c, ip_port, public_key);
 
     if (is_stored == 1) {

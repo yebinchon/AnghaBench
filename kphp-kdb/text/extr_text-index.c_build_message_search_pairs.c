@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct search_index_pair {int /*<<< orphan*/  idx; int /*<<< orphan*/  crc; } ;
-struct TYPE_3__ {int /*<<< orphan*/  local_id; int /*<<< orphan*/  len; scalar_t__ text; } ;
-typedef  TYPE_1__ message_t ;
 
-/* Variables and functions */
- int MAX_TEXT_LEN ; 
- int /*<<< orphan*/ * WordCRC ; 
- int /*<<< orphan*/  assert (int) ; 
- int compute_message_distinct_words (scalar_t__*,int) ; 
- scalar_t__* dyn_cur ; 
- scalar_t__* dyn_top ; 
- scalar_t__ text_shift ; 
- int unpack_message (scalar_t__*,scalar_t__,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct search_index_pair {int idx; int crc; } ;
+struct TYPE_3__ {int local_id; int len; scalar_t__ text; } ;
+typedef TYPE_1__ message_t ;
+
+
+ int MAX_TEXT_LEN ;
+ int * WordCRC ;
+ int assert (int) ;
+ int compute_message_distinct_words (scalar_t__*,int) ;
+ scalar_t__* dyn_cur ;
+ scalar_t__* dyn_top ;
+ scalar_t__ text_shift ;
+ int unpack_message (scalar_t__*,scalar_t__,int ) ;
 
 __attribute__((used)) static void build_message_search_pairs (message_t *msg) {
   assert (dyn_top >= dyn_cur + MAX_TEXT_LEN);
@@ -32,7 +32,7 @@ __attribute__((used)) static void build_message_search_pairs (message_t *msg) {
   assert (msg_len >= 0 && msg_len < MAX_TEXT_LEN);
   dyn_cur[msg_len] = 0;
 
-  //fprintf (stderr, "message, local_id=%d: len=%d '%s'\n", msg->local_id, msg_len, dyn_cur);
+
 
   int cnt = compute_message_distinct_words (dyn_cur, msg_len);
 

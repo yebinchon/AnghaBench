@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wchar_t ;
+
+
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+typedef int wchar_t ;
 struct _cms_typehandler_struct {int dummy; } ;
-typedef  int cmsUInt32Number ;
-typedef  int /*<<< orphan*/  cmsMLU ;
-struct TYPE_12__ {int (* Tell ) (int /*<<< orphan*/ ,TYPE_1__*) ;} ;
-typedef  TYPE_1__ cmsIOHANDLER ;
-typedef  int /*<<< orphan*/ * cmsHANDLE ;
-typedef  int /*<<< orphan*/  cmsContext ;
-typedef  int /*<<< orphan*/  cmsBool ;
-typedef  int /*<<< orphan*/  _cmsTagBase ;
-struct TYPE_13__ {int /*<<< orphan*/  DisplayValue; int /*<<< orphan*/  DisplayName; int /*<<< orphan*/  Value; int /*<<< orphan*/  Name; } ;
-typedef  TYPE_2__ _cmsDICarray ;
+typedef int cmsUInt32Number ;
+typedef int cmsMLU ;
+struct TYPE_12__ {int (* Tell ) (int ,TYPE_1__*) ;} ;
+typedef TYPE_1__ cmsIOHANDLER ;
+typedef int * cmsHANDLE ;
+typedef int cmsContext ;
+typedef int cmsBool ;
+typedef int _cmsTagBase ;
+struct TYPE_13__ {int DisplayValue; int DisplayName; int Value; int Name; } ;
+typedef TYPE_2__ _cmsDICarray ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AllocArray (int /*<<< orphan*/ ,TYPE_2__*,int,int) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  FreeArray (int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  ReadOffsetArray (int /*<<< orphan*/ ,TYPE_1__*,TYPE_2__*,int,int,int) ; 
- int /*<<< orphan*/  ReadOneMLUC (int /*<<< orphan*/ ,struct _cms_typehandler_struct*,TYPE_1__*,int /*<<< orphan*/ *,int,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  ReadOneWChar (int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ *,int,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  _cmsFree (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  _cmsReadUInt32Number (int /*<<< orphan*/ ,TYPE_1__*,int*) ; 
- int /*<<< orphan*/  cmsDictAddEntry (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * cmsDictAlloc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cmsDictFree (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cmsERROR_CORRUPTION_DETECTED ; 
- int /*<<< orphan*/  cmsERROR_UNKNOWN_EXTENSION ; 
- int /*<<< orphan*/  cmsMLUfree (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cmsSignalError (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,...) ; 
- int stub1 (int /*<<< orphan*/ ,TYPE_1__*) ; 
+
+ int AllocArray (int ,TYPE_2__*,int,int) ;
+ int FALSE ;
+ int FreeArray (int ,TYPE_2__*) ;
+ int ReadOffsetArray (int ,TYPE_1__*,TYPE_2__*,int,int,int) ;
+ int ReadOneMLUC (int ,struct _cms_typehandler_struct*,TYPE_1__*,int *,int,int **) ;
+ int ReadOneWChar (int ,TYPE_1__*,int *,int,int **) ;
+ int _cmsFree (int ,int *) ;
+ int _cmsReadUInt32Number (int ,TYPE_1__*,int*) ;
+ int cmsDictAddEntry (int ,int *,int *,int *,int *,int *) ;
+ int * cmsDictAlloc (int ) ;
+ int cmsDictFree (int ,int *) ;
+ int cmsERROR_CORRUPTION_DETECTED ;
+ int cmsERROR_UNKNOWN_EXTENSION ;
+ int cmsMLUfree (int ,int *) ;
+ int cmsSignalError (int ,int ,char*,...) ;
+ int stub1 (int ,TYPE_1__*) ;
 
 __attribute__((used)) static
 void *Type_Dictionary_Read(cmsContext ContextID, struct _cms_typehandler_struct* self, cmsIOHANDLER* io, cmsUInt32Number* nItems, cmsUInt32Number SizeOfTag)
@@ -50,40 +50,40 @@ void *Type_Dictionary_Read(cmsContext ContextID, struct _cms_typehandler_struct*
    cmsUInt32Number i, Count, Length;
    cmsUInt32Number BaseOffset;
    _cmsDICarray a;
-   wchar_t *NameWCS = NULL, *ValueWCS = NULL;
-   cmsMLU *DisplayNameMLU = NULL, *DisplayValueMLU=NULL;
+   wchar_t *NameWCS = ((void*)0), *ValueWCS = ((void*)0);
+   cmsMLU *DisplayNameMLU = ((void*)0), *DisplayValueMLU=((void*)0);
    cmsBool rc;
 
     *nItems = 0;
 
-    // Get actual position as a basis for element offsets
+
     BaseOffset = io ->Tell(ContextID, io) - sizeof(_cmsTagBase);
 
-    // Get name-value record count
-    if (!_cmsReadUInt32Number(ContextID, io, &Count)) return NULL;
+
+    if (!_cmsReadUInt32Number(ContextID, io, &Count)) return ((void*)0);
     SizeOfTag -= sizeof(cmsUInt32Number);
 
-    // Get rec length
-    if (!_cmsReadUInt32Number(ContextID, io, &Length)) return NULL;
+
+    if (!_cmsReadUInt32Number(ContextID, io, &Length)) return ((void*)0);
     SizeOfTag -= sizeof(cmsUInt32Number);
 
-    // Check for valid lengths
+
     if (Length != 16 && Length != 24 && Length != 32) {
          cmsSignalError(ContextID, cmsERROR_UNKNOWN_EXTENSION, "Unknown record length in dictionary '%d'", Length);
-         return NULL;
+         return ((void*)0);
     }
 
-    // Creates an empty dictionary
-    hDict = cmsDictAlloc(ContextID);
-    if (hDict == NULL) return NULL;
 
-    // On depending on record size, create column arrays
+    hDict = cmsDictAlloc(ContextID);
+    if (hDict == ((void*)0)) return ((void*)0);
+
+
     if (!AllocArray(ContextID, &a, Count, Length)) goto Error;
 
-    // Read column arrays
+
     if (!ReadOffsetArray(ContextID, io, &a, Count, Length, BaseOffset)) goto Error;
 
-    // Seek to each element and read it
+
     for (i=0; i < Count; i++) {
 
         if (!ReadOneWChar(ContextID, io, &a.Name, i, &NameWCS)) goto Error;
@@ -97,7 +97,7 @@ void *Type_Dictionary_Read(cmsContext ContextID, struct _cms_typehandler_struct*
             if (!ReadOneMLUC(ContextID, self, io, &a.DisplayValue, i, &DisplayValueMLU)) goto Error;
         }
 
-        if (NameWCS == NULL || ValueWCS == NULL) {
+        if (NameWCS == ((void*)0) || ValueWCS == ((void*)0)) {
 
             cmsSignalError(ContextID, cmsERROR_CORRUPTION_DETECTED, "Bad dictionary Name/Value");
             rc = FALSE;
@@ -107,10 +107,10 @@ void *Type_Dictionary_Read(cmsContext ContextID, struct _cms_typehandler_struct*
             rc = cmsDictAddEntry(ContextID, hDict, NameWCS, ValueWCS, DisplayNameMLU, DisplayValueMLU);
         }
 
-        if (NameWCS != NULL) _cmsFree(ContextID, NameWCS);
-        if (ValueWCS != NULL) _cmsFree(ContextID, ValueWCS);
-        if (DisplayNameMLU != NULL) cmsMLUfree(ContextID, DisplayNameMLU);
-        if (DisplayValueMLU != NULL) cmsMLUfree(ContextID, DisplayValueMLU);
+        if (NameWCS != ((void*)0)) _cmsFree(ContextID, NameWCS);
+        if (ValueWCS != ((void*)0)) _cmsFree(ContextID, ValueWCS);
+        if (DisplayNameMLU != ((void*)0)) cmsMLUfree(ContextID, DisplayNameMLU);
+        if (DisplayValueMLU != ((void*)0)) cmsMLUfree(ContextID, DisplayValueMLU);
 
         if (!rc) goto Error;
     }
@@ -122,5 +122,5 @@ void *Type_Dictionary_Read(cmsContext ContextID, struct _cms_typehandler_struct*
 Error:
    FreeArray(ContextID, &a);
    cmsDictFree(ContextID, hDict);
-   return NULL;
+   return ((void*)0);
 }

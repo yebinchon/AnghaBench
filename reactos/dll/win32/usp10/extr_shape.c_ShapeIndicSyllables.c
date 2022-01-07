@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_18__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  (* second_reorder_function ) (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ ) ;
-typedef  int /*<<< orphan*/  lexical_function ;
-typedef  int /*<<< orphan*/  WORD ;
-typedef  int /*<<< orphan*/  WCHAR ;
+
+
+typedef struct TYPE_18__ TYPE_1__ ;
+
+
+typedef int (* second_reorder_function ) (int *,TYPE_1__*,int *,TYPE_1__*,int ) ;
+typedef int lexical_function ;
+typedef int WORD ;
+typedef int WCHAR ;
 struct TYPE_18__ {int end; } ;
-typedef  int /*<<< orphan*/  ScriptCache ;
-typedef  int /*<<< orphan*/  SCRIPT_ANALYSIS ;
-typedef  int /*<<< orphan*/  LoadedFeature ;
-typedef  TYPE_1__ IndicSyllable ;
-typedef  int INT ;
-typedef  int /*<<< orphan*/  HDC ;
-typedef  scalar_t__ BOOL ;
+typedef int ScriptCache ;
+typedef int SCRIPT_ANALYSIS ;
+typedef int LoadedFeature ;
+typedef TYPE_1__ IndicSyllable ;
+typedef int INT ;
+typedef int HDC ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Apply_Indic_BasicForm (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,TYPE_1__*,int /*<<< orphan*/ *,int*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Apply_Indic_PostBase (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,TYPE_1__*,int /*<<< orphan*/ *,int*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_1__*,scalar_t__,char*) ; 
- int /*<<< orphan*/  Apply_Indic_PreBase (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,TYPE_1__*,int /*<<< orphan*/ *,int*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_1__*,char*) ; 
- int /*<<< orphan*/  Apply_Indic_Rphf (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,TYPE_1__*,int /*<<< orphan*/ *,int*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  FEATURE_GSUB_TABLE ; 
- int /*<<< orphan*/  TRACE (char*) ; 
- int /*<<< orphan*/ * load_OT_feature (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  memcpy (TYPE_1__*,TYPE_1__*,int) ; 
- int /*<<< orphan*/  shift_syllable_glyph_indexs (TYPE_1__*,int,int) ; 
+
+ int Apply_Indic_BasicForm (int ,int *,int *,int *,int,TYPE_1__*,int *,int*,int *,int ,TYPE_1__*,int *) ;
+ int Apply_Indic_PostBase (int ,int *,int *,int *,int,TYPE_1__*,int *,int*,int *,int ,TYPE_1__*,scalar_t__,char*) ;
+ int Apply_Indic_PreBase (int ,int *,int *,int *,int,TYPE_1__*,int *,int*,int *,int ,TYPE_1__*,char*) ;
+ int Apply_Indic_Rphf (int ,int *,int *,int *,int,TYPE_1__*,int *,int*,int *,int ,TYPE_1__*) ;
+ int FEATURE_GSUB_TABLE ;
+ int TRACE (char*) ;
+ int * load_OT_feature (int ,int *,int *,int ,char*) ;
+ int memcpy (TYPE_1__*,TYPE_1__*,int) ;
+ int shift_syllable_glyph_indexs (TYPE_1__*,int,int) ;
 
 __attribute__((used)) static void ShapeIndicSyllables(HDC hdc, ScriptCache *psc, SCRIPT_ANALYSIS *psa, WCHAR* pwChars, INT cChars, IndicSyllable *syllables, INT syllable_count, WORD *pwOutGlyphs, INT* pcGlyphs, WORD *pwLogClust, lexical_function lexical, second_reorder_function second_reorder, BOOL modern)
 {
     int c;
     int overall_shift = 0;
-    LoadedFeature *locl = (modern)?load_OT_feature(hdc, psa, psc, FEATURE_GSUB_TABLE, "locl"):NULL;
+    LoadedFeature *locl = (modern)?load_OT_feature(hdc, psa, psc, FEATURE_GSUB_TABLE, "locl"):((void*)0);
     LoadedFeature *nukt = load_OT_feature(hdc, psa, psc, FEATURE_GSUB_TABLE, "nukt");
     LoadedFeature *akhn = load_OT_feature(hdc, psa, psc, FEATURE_GSUB_TABLE, "akhn");
-    LoadedFeature *rkrf = (modern)?load_OT_feature(hdc, psa, psc, FEATURE_GSUB_TABLE, "rkrf"):NULL;
+    LoadedFeature *rkrf = (modern)?load_OT_feature(hdc, psa, psc, FEATURE_GSUB_TABLE, "rkrf"):((void*)0);
     LoadedFeature *pstf = load_OT_feature(hdc, psa, psc, FEATURE_GSUB_TABLE, "pstf");
-    LoadedFeature *vatu = (!rkrf)?load_OT_feature(hdc, psa, psc, FEATURE_GSUB_TABLE, "vatu"):NULL;
-    LoadedFeature *cjct = (modern)?load_OT_feature(hdc, psa, psc, FEATURE_GSUB_TABLE, "cjct"):NULL;
-    BOOL rphf = (load_OT_feature(hdc, psa, psc, FEATURE_GSUB_TABLE, "rphf") != NULL);
-    BOOL pref = (load_OT_feature(hdc, psa, psc, FEATURE_GSUB_TABLE, "pref") != NULL);
-    BOOL blwf = (load_OT_feature(hdc, psa, psc, FEATURE_GSUB_TABLE, "blwf") != NULL);
-    BOOL half = (load_OT_feature(hdc, psa, psc, FEATURE_GSUB_TABLE, "half") != NULL);
+    LoadedFeature *vatu = (!rkrf)?load_OT_feature(hdc, psa, psc, FEATURE_GSUB_TABLE, "vatu"):((void*)0);
+    LoadedFeature *cjct = (modern)?load_OT_feature(hdc, psa, psc, FEATURE_GSUB_TABLE, "cjct"):((void*)0);
+    BOOL rphf = (load_OT_feature(hdc, psa, psc, FEATURE_GSUB_TABLE, "rphf") != ((void*)0));
+    BOOL pref = (load_OT_feature(hdc, psa, psc, FEATURE_GSUB_TABLE, "pref") != ((void*)0));
+    BOOL blwf = (load_OT_feature(hdc, psa, psc, FEATURE_GSUB_TABLE, "blwf") != ((void*)0));
+    BOOL half = (load_OT_feature(hdc, psa, psc, FEATURE_GSUB_TABLE, "half") != ((void*)0));
     IndicSyllable glyph_indexs;
 
     for (c = 0; c < syllable_count; c++)

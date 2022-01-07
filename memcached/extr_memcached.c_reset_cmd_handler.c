@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int cmd; scalar_t__ rbytes; int /*<<< orphan*/ * item; int /*<<< orphan*/  substate; } ;
-typedef  TYPE_1__ conn ;
 
-/* Variables and functions */
- int /*<<< orphan*/  bin_no_state ; 
- int /*<<< orphan*/  conn_parse_cmd ; 
- int /*<<< orphan*/  conn_set_state (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  conn_shrink (TYPE_1__*) ; 
- int /*<<< orphan*/  conn_waiting ; 
- int /*<<< orphan*/  item_remove (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int cmd; scalar_t__ rbytes; int * item; int substate; } ;
+typedef TYPE_1__ conn ;
+
+
+ int bin_no_state ;
+ int conn_parse_cmd ;
+ int conn_set_state (TYPE_1__*,int ) ;
+ int conn_shrink (TYPE_1__*) ;
+ int conn_waiting ;
+ int item_remove (int *) ;
 
 __attribute__((used)) static void reset_cmd_handler(conn *c) {
     c->cmd = -1;
     c->substate = bin_no_state;
-    if(c->item != NULL) {
+    if(c->item != ((void*)0)) {
         item_remove(c->item);
-        c->item = NULL;
+        c->item = ((void*)0);
     }
     conn_shrink(c);
     if (c->rbytes > 0) {

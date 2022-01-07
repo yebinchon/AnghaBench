@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  krb5_error_code ;
-typedef  int /*<<< orphan*/  krb5_context ;
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int krb5_error_code ;
+typedef int krb5_context ;
 struct TYPE_6__ {struct TYPE_6__* next; } ;
-typedef  TYPE_1__ kcm_event ;
+typedef TYPE_1__ kcm_event ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HEIMDAL_MUTEX_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  HEIMDAL_MUTEX_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  KRB5_CC_NOTFOUND ; 
- TYPE_1__* events_head ; 
- int /*<<< orphan*/  events_mutex ; 
- int /*<<< orphan*/  kcm_remove_event_internal (int /*<<< orphan*/ ,TYPE_1__**) ; 
- int /*<<< orphan*/  log_event (TYPE_1__*,char*) ; 
+
+ int HEIMDAL_MUTEX_lock (int *) ;
+ int HEIMDAL_MUTEX_unlock (int *) ;
+ int KRB5_CC_NOTFOUND ;
+ TYPE_1__* events_head ;
+ int events_mutex ;
+ int kcm_remove_event_internal (int ,TYPE_1__**) ;
+ int log_event (TYPE_1__*,char*) ;
 
 krb5_error_code
 kcm_remove_event(krb5_context context,
-		 kcm_event *event)
+   kcm_event *event)
 {
     krb5_error_code ret;
     kcm_event **e;
@@ -36,17 +36,17 @@ kcm_remove_event(krb5_context context,
     log_event(event, "removing");
 
     HEIMDAL_MUTEX_lock(&events_mutex);
-    for (e = &events_head; *e != NULL; e = &(*e)->next) {
-	if (event == *e) {
-	    *e = event->next;
-	    found++;
-	    break;
-	}
+    for (e = &events_head; *e != ((void*)0); e = &(*e)->next) {
+ if (event == *e) {
+     *e = event->next;
+     found++;
+     break;
+ }
     }
 
     if (!found) {
-	ret = KRB5_CC_NOTFOUND;
-	goto out;
+ ret = KRB5_CC_NOTFOUND;
+ goto out;
     }
 
     ret = kcm_remove_event_internal(context, &event);

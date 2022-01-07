@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  xcb_window_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  A__NET_WM_STATE ; 
- int /*<<< orphan*/  A__NET_WM_STATE_FOCUSED ; 
- int /*<<< orphan*/  DLOG (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  conn ; 
- int /*<<< orphan*/  xcb_add_property_atom (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xcb_remove_property_atom (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int xcb_window_t ;
+
+
+ int A__NET_WM_STATE ;
+ int A__NET_WM_STATE_FOCUSED ;
+ int DLOG (char*,int ) ;
+ int conn ;
+ int xcb_add_property_atom (int ,int ,int ,int ) ;
+ int xcb_remove_property_atom (int ,int ,int ,int ) ;
 
 void ewmh_update_focused(xcb_window_t window, bool is_focused) {
     if (is_focused) {

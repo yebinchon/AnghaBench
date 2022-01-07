@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char WCHAR ;
+
+
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef char WCHAR ;
 struct TYPE_8__ {TYPE_3__* Peb; } ;
 struct TYPE_7__ {TYPE_2__* ProcessParameters; } ;
-struct TYPE_5__ {int /*<<< orphan*/  Handle; } ;
+struct TYPE_5__ {int Handle; } ;
 struct TYPE_6__ {TYPE_1__ CurrentDirectory; } ;
-typedef  scalar_t__ BOOL ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- scalar_t__ CreateDirectoryW (char*,int /*<<< orphan*/ *) ; 
- scalar_t__ ERROR_CALL_NOT_IMPLEMENTED ; 
- scalar_t__ ERROR_INVALID_NAME ; 
- scalar_t__ ERROR_SHARING_VIOLATION ; 
- scalar_t__ FALSE ; 
- int FILE_TRAVERSE ; 
- int /*<<< orphan*/  GetCurrentDirectoryW (int,char*) ; 
- scalar_t__ GetLastError () ; 
- int /*<<< orphan*/  GetTempPathW (int,char*) ; 
- int MAX_PATH ; 
- TYPE_4__* NtCurrentTeb () ; 
- scalar_t__ RemoveDirectoryW (char*) ; 
- int SYNCHRONIZE ; 
- int /*<<< orphan*/  SetCurrentDirectoryW (char*) ; 
- int /*<<< orphan*/  SetLastError (int) ; 
- int /*<<< orphan*/  TEST_GRANTED_ACCESS (int /*<<< orphan*/ ,int) ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  lstrcatW (char*,char const*) ; 
- int lstrlenW (char*) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
+
+ scalar_t__ CreateDirectoryW (char*,int *) ;
+ scalar_t__ ERROR_CALL_NOT_IMPLEMENTED ;
+ scalar_t__ ERROR_INVALID_NAME ;
+ scalar_t__ ERROR_SHARING_VIOLATION ;
+ scalar_t__ FALSE ;
+ int FILE_TRAVERSE ;
+ int GetCurrentDirectoryW (int,char*) ;
+ scalar_t__ GetLastError () ;
+ int GetTempPathW (int,char*) ;
+ int MAX_PATH ;
+ TYPE_4__* NtCurrentTeb () ;
+ scalar_t__ RemoveDirectoryW (char*) ;
+ int SYNCHRONIZE ;
+ int SetCurrentDirectoryW (char*) ;
+ int SetLastError (int) ;
+ int TEST_GRANTED_ACCESS (int ,int) ;
+ scalar_t__ TRUE ;
+ int lstrcatW (char*,char const*) ;
+ int lstrlenW (char*) ;
+ int ok (int,char*,...) ;
+ int win_skip (char*) ;
 
 __attribute__((used)) static void test_RemoveDirectoryW(void)
 {
@@ -54,7 +54,7 @@ __attribute__((used)) static void test_RemoveDirectoryW(void)
 
     GetTempPathW(MAX_PATH, tmpdir);
     lstrcatW(tmpdir, tmp_dir_name);
-    ret = CreateDirectoryW(tmpdir, NULL);
+    ret = CreateDirectoryW(tmpdir, ((void*)0));
     if (!ret && GetLastError() == ERROR_CALL_NOT_IMPLEMENTED)
     {
         win_skip("CreateDirectoryW is not available\n");

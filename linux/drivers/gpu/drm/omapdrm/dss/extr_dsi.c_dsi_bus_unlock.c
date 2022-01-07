@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct omap_dss_device {int dummy; } ;
-struct dsi_data {int /*<<< orphan*/  bus_lock; } ;
+struct dsi_data {int bus_lock; } ;
 
-/* Variables and functions */
- struct dsi_data* to_dsi_data (struct omap_dss_device*) ; 
- int /*<<< orphan*/  up (int /*<<< orphan*/ *) ; 
+
+ struct dsi_data* to_dsi_data (struct omap_dss_device*) ;
+ int up (int *) ;
 
 __attribute__((used)) static void dsi_bus_unlock(struct omap_dss_device *dssdev)
 {
-	struct dsi_data *dsi = to_dsi_data(dssdev);
+ struct dsi_data *dsi = to_dsi_data(dssdev);
 
-	up(&dsi->bus_lock);
+ up(&dsi->bus_lock);
 }

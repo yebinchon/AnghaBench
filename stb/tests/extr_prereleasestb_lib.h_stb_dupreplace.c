@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ malloc (int) ; 
- int /*<<< orphan*/  memcpy (char*,char*,size_t) ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
- char* strdup (char*) ; 
- int strlen (char*) ; 
- char* strstr (char*,char*) ; 
+ int assert (int) ;
+ scalar_t__ malloc (int) ;
+ int memcpy (char*,char*,size_t) ;
+ int strcpy (char*,char*) ;
+ char* strdup (char*) ;
+ int strlen (char*) ;
+ char* strstr (char*,char*) ;
 
 char *stb_dupreplace(char *src, char *find, char *replace)
 {
@@ -29,19 +21,19 @@ char *stb_dupreplace(char *src, char *find, char *replace)
    char *s,*p,*q;
 
    s = strstr(src, find);
-   if (s == NULL) return strdup(src);
+   if (s == ((void*)0)) return strdup(src);
    do {
       ++count;
       s = strstr(s + len_find, find);
-   } while (s != NULL);
+   } while (s != ((void*)0));
 
-   p = (char *)  malloc(strlen(src) + count * (len_replace - len_find) + 1);
-   if (p == NULL) return p;
+   p = (char *) malloc(strlen(src) + count * (len_replace - len_find) + 1);
+   if (p == ((void*)0)) return p;
    q = p;
    s = src;
    for (;;) {
       char *t = strstr(s, find);
-      if (t == NULL) {
+      if (t == ((void*)0)) {
          strcpy(q,s);
          assert(strlen(p) == strlen(src) + count*(len_replace-len_find));
          return p;

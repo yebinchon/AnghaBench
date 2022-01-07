@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_stream_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct node_baton_t {TYPE_2__* rb; int /*<<< orphan*/  node_pool; int /*<<< orphan*/  tcl; void* has_text; int /*<<< orphan*/ * props; scalar_t__ has_props; int /*<<< orphan*/  headers; void* writing_begun; int /*<<< orphan*/  do_skip; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int svn_stream_t ;
+typedef int svn_error_t ;
+struct node_baton_t {TYPE_2__* rb; int node_pool; int tcl; void* has_text; int * props; scalar_t__ has_props; int headers; void* writing_begun; int do_skip; } ;
 struct TYPE_4__ {TYPE_1__* pb; } ;
-struct TYPE_3__ {int /*<<< orphan*/ * out_stream; } ;
+struct TYPE_3__ {int * out_stream; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- void* TRUE ; 
- int /*<<< orphan*/  svn_repos__dump_node_record (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,void*,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_stringbuf_appendcstr (int /*<<< orphan*/ *,char*) ; 
+
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ void* TRUE ;
+ int svn_repos__dump_node_record (int *,int ,int *,void*,int ,void*,int ) ;
+ int svn_stringbuf_appendcstr (int *,char*) ;
 
 __attribute__((used)) static svn_error_t *
 set_fulltext(svn_stream_t **stream, void *node_baton)
@@ -42,10 +42,10 @@ set_fulltext(svn_stream_t **stream, void *node_baton)
             }
           SVN_ERR(svn_repos__dump_node_record(nb->rb->pb->out_stream,
                                               nb->headers,
-                                              nb->has_props ? nb->props : NULL,
+                                              nb->has_props ? nb->props : ((void*)0),
                                               nb->has_text,
                                               nb->tcl,
-                                              TRUE /*content_length_always*/,
+                                              TRUE ,
                                               nb->node_pool));
         }
       *stream = nb->rb->pb->out_stream;

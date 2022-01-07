@@ -1,76 +1,76 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int npy_uint8 ;
-typedef  int /*<<< orphan*/  npy_uint64 ;
-typedef  int npy_intp ;
-struct TYPE_3__ {int member_1; int* ptr; int /*<<< orphan*/ * member_0; } ;
-typedef  int /*<<< orphan*/  PyObject ;
-typedef  TYPE_1__ PyArray_Dims ;
-typedef  int /*<<< orphan*/  PyArrayObject ;
-typedef  int /*<<< orphan*/  PyArrayIterObject ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NPY_BEGIN_THREADS_DEF ; 
- int /*<<< orphan*/  NPY_BEGIN_THREADS_THRESHOLDED (int) ; 
- int /*<<< orphan*/  NPY_CORDER ; 
- int /*<<< orphan*/  NPY_END_THREADS ; 
- int NPY_MAXDIMS ; 
- scalar_t__ NPY_UBYTE ; 
- scalar_t__ PyArray_CheckAxis (int /*<<< orphan*/ *,int*,int /*<<< orphan*/ ) ; 
- int PyArray_DIM (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  PyArray_DescrFromType (scalar_t__) ; 
- scalar_t__ PyArray_FROM_O (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyArray_ISFORTRAN (int /*<<< orphan*/ *) ; 
- void* PyArray_ITER_DATA (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyArray_ITER_NEXT (int /*<<< orphan*/ *) ; 
- scalar_t__ PyArray_ITER_NOTDONE (int /*<<< orphan*/ *) ; 
- scalar_t__ PyArray_IterAllButAxis (int /*<<< orphan*/ *,int*) ; 
- int PyArray_NDIM (int /*<<< orphan*/ *) ; 
- scalar_t__ PyArray_NewFromDescr (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ PyArray_Newshape (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ ) ; 
- int PyArray_PyIntAsIntp (int /*<<< orphan*/ *) ; 
- int PyArray_STRIDE (int /*<<< orphan*/ *,int) ; 
- int PyArray_Size (int /*<<< orphan*/ *) ; 
- scalar_t__ PyArray_TYPE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyErr_Format (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  PyErr_SetString (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  PyExc_TypeError ; 
- int /*<<< orphan*/  PyExc_ValueError ; 
- int /*<<< orphan*/  Py_DECREF (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * Py_None ; 
- int /*<<< orphan*/  Py_TYPE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Py_XDECREF (int /*<<< orphan*/ *) ; 
- scalar_t__ error_converting (int) ; 
- int /*<<< orphan*/  memcpy (char*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  memset (char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  npy_bswap8 (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int npy_uint8 ;
+typedef int npy_uint64 ;
+typedef int npy_intp ;
+struct TYPE_3__ {int member_1; int* ptr; int * member_0; } ;
+typedef int PyObject ;
+typedef TYPE_1__ PyArray_Dims ;
+typedef int PyArrayObject ;
+typedef int PyArrayIterObject ;
+
+
+ int NPY_BEGIN_THREADS_DEF ;
+ int NPY_BEGIN_THREADS_THRESHOLDED (int) ;
+ int NPY_CORDER ;
+ int NPY_END_THREADS ;
+ int NPY_MAXDIMS ;
+ scalar_t__ NPY_UBYTE ;
+ scalar_t__ PyArray_CheckAxis (int *,int*,int ) ;
+ int PyArray_DIM (int *,int) ;
+ int PyArray_DescrFromType (scalar_t__) ;
+ scalar_t__ PyArray_FROM_O (int *) ;
+ int PyArray_ISFORTRAN (int *) ;
+ void* PyArray_ITER_DATA (int *) ;
+ int PyArray_ITER_NEXT (int *) ;
+ scalar_t__ PyArray_ITER_NOTDONE (int *) ;
+ scalar_t__ PyArray_IterAllButAxis (int *,int*) ;
+ int PyArray_NDIM (int *) ;
+ scalar_t__ PyArray_NewFromDescr (int ,int ,int,int*,int *,int *,int ,int *) ;
+ scalar_t__ PyArray_Newshape (int *,TYPE_1__*,int ) ;
+ int PyArray_PyIntAsIntp (int *) ;
+ int PyArray_STRIDE (int *,int) ;
+ int PyArray_Size (int *) ;
+ scalar_t__ PyArray_TYPE (int *) ;
+ int PyErr_Format (int ,char*) ;
+ int PyErr_SetString (int ,char*) ;
+ int PyExc_TypeError ;
+ int PyExc_ValueError ;
+ int Py_DECREF (int *) ;
+ int * Py_None ;
+ int Py_TYPE (int *) ;
+ int Py_XDECREF (int *) ;
+ scalar_t__ error_converting (int) ;
+ int memcpy (char*,int *,int) ;
+ int memset (char*,int ,int) ;
+ int npy_bswap8 (int ) ;
 
 __attribute__((used)) static PyObject *
 unpack_bits(PyObject *input, int axis, PyObject *count_obj, char order)
 {
     static int unpack_init = 0;
-    /*
-     * lookuptable for bitorder big as it has been around longer
-     * bitorder little is handled via byteswapping in the loop
-     */
+
+
+
+
     static union {
-        npy_uint8  bytes[8];
+        npy_uint8 bytes[8];
         npy_uint64 uint64;
     } unpack_lookup_big[256];
     PyArrayObject *inp;
-    PyArrayObject *new = NULL;
-    PyArrayObject *out = NULL;
+    PyArrayObject *new = ((void*)0);
+    PyArrayObject *out = ((void*)0);
     npy_intp outdims[NPY_MAXDIMS];
     int i;
     PyArrayIterObject *it, *ot;
@@ -79,8 +79,8 @@ unpack_bits(PyObject *input, int axis, PyObject *count_obj, char order)
 
     inp = (PyArrayObject *)PyArray_FROM_O(input);
 
-    if (inp == NULL) {
-        return NULL;
+    if (inp == ((void*)0)) {
+        return ((void*)0);
     }
     if (PyArray_TYPE(inp) != NPY_UBYTE) {
         PyErr_SetString(PyExc_TypeError,
@@ -91,31 +91,31 @@ unpack_bits(PyObject *input, int axis, PyObject *count_obj, char order)
 
     new = (PyArrayObject *)PyArray_CheckAxis(inp, &axis, 0);
     Py_DECREF(inp);
-    if (new == NULL) {
-        return NULL;
+    if (new == ((void*)0)) {
+        return ((void*)0);
     }
 
     if (PyArray_NDIM(new) == 0) {
-        /* Handle 0-d array by converting it to a 1-d array */
+
         PyArrayObject *temp;
-        PyArray_Dims newdim = {NULL, 1};
+        PyArray_Dims newdim = {((void*)0), 1};
         npy_intp shape = 1;
 
         newdim.ptr = &shape;
         temp = (PyArrayObject *)PyArray_Newshape(new, &newdim, NPY_CORDER);
         Py_DECREF(new);
-        if (temp == NULL) {
-            return NULL;
+        if (temp == ((void*)0)) {
+            return ((void*)0);
         }
         new = temp;
     }
 
-    /* Setup output shape */
+
     for (i = 0; i < PyArray_NDIM(new); i++) {
         outdims[i] = PyArray_DIM(new, i);
     }
 
-    /* Multiply axis dimension by 8 */
+
     outdims[axis] *= 8;
     if (count_obj != Py_None) {
         count = PyArray_PyIntAsIntp(count_obj);
@@ -135,28 +135,28 @@ unpack_bits(PyObject *input, int axis, PyObject *count_obj, char order)
         }
     }
 
-    /* Create output array */
+
     out = (PyArrayObject *)PyArray_NewFromDescr(
             Py_TYPE(new), PyArray_DescrFromType(NPY_UBYTE),
-            PyArray_NDIM(new), outdims, NULL, NULL,
-            PyArray_ISFORTRAN(new), NULL);
-    if (out == NULL) {
+            PyArray_NDIM(new), outdims, ((void*)0), ((void*)0),
+            PyArray_ISFORTRAN(new), ((void*)0));
+    if (out == ((void*)0)) {
         goto fail;
     }
 
-    /* Setup iterators to iterate over all but given axis */
+
     it = (PyArrayIterObject *)PyArray_IterAllButAxis((PyObject *)new, &axis);
     ot = (PyArrayIterObject *)PyArray_IterAllButAxis((PyObject *)out, &axis);
-    if (it == NULL || ot == NULL) {
+    if (it == ((void*)0) || ot == ((void*)0)) {
         Py_XDECREF(it);
         Py_XDECREF(ot);
         goto fail;
     }
 
-    /*
-     * setup lookup table under GIL, 256 8 byte blocks representing 8 bits
-     * expanded to 1/0 bytes
-     */
+
+
+
+
     if (unpack_init == 0) {
         npy_intp j;
         for (j=0; j < 256; j++) {
@@ -192,7 +192,7 @@ unpack_bits(PyObject *input, int axis, PyObject *count_obj, char order)
         char *outptr = PyArray_ITER_DATA(ot);
 
         if (out_stride == 1) {
-            /* for unity stride we can just copy out of the lookup table */
+
             if (order == 'b') {
                 for (index = 0; index < in_n; index++) {
                     npy_uint64 v = unpack_lookup_big[*inptr].uint64;
@@ -212,7 +212,7 @@ unpack_bits(PyObject *input, int axis, PyObject *count_obj, char order)
                     inptr += in_stride;
                 }
             }
-            /* Clean up the tail portion */
+
             if (in_tail) {
                 npy_uint64 v = unpack_lookup_big[*inptr].uint64;
                 if (order != 'b') {
@@ -220,7 +220,7 @@ unpack_bits(PyObject *input, int axis, PyObject *count_obj, char order)
                 }
                 memcpy(outptr, &v, in_tail);
             }
-            /* Add padding */
+
             else if (out_pad) {
                 memset(outptr, 0, out_pad);
             }
@@ -234,7 +234,7 @@ unpack_bits(PyObject *input, int axis, PyObject *count_obj, char order)
                     }
                     inptr += in_stride;
                 }
-                /* Clean up the tail portion */
+
                 for (i = 0; i < in_tail; i++) {
                     *outptr = ((*inptr & (128 >> i)) != 0);
                     outptr += out_stride;
@@ -248,13 +248,13 @@ unpack_bits(PyObject *input, int axis, PyObject *count_obj, char order)
                     }
                     inptr += in_stride;
                 }
-                /* Clean up the tail portion */
+
                 for (i = 0; i < in_tail; i++) {
                     *outptr = ((*inptr & (1 << i)) != 0);
                     outptr += out_stride;
                 }
             }
-            /* Add padding */
+
             for (index = 0; index < out_pad; index++) {
                 *outptr = 0;
                 outptr += out_stride;
@@ -275,5 +275,5 @@ unpack_bits(PyObject *input, int axis, PyObject *count_obj, char order)
 fail:
     Py_XDECREF(new);
     Py_XDECREF(out);
-    return NULL;
+    return ((void*)0);
 }

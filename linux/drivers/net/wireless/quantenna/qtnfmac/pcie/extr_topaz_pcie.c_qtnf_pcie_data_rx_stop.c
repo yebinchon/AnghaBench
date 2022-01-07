@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct qtnf_pcie_topaz_state {int dummy; } ;
-struct qtnf_bus {int /*<<< orphan*/  mux_napi; } ;
+struct qtnf_bus {int mux_napi; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  disable_rx_irqs (struct qtnf_pcie_topaz_state*) ; 
- struct qtnf_pcie_topaz_state* get_bus_priv (struct qtnf_bus*) ; 
- int /*<<< orphan*/  napi_disable (int /*<<< orphan*/ *) ; 
+
+ int disable_rx_irqs (struct qtnf_pcie_topaz_state*) ;
+ struct qtnf_pcie_topaz_state* get_bus_priv (struct qtnf_bus*) ;
+ int napi_disable (int *) ;
 
 __attribute__((used)) static void qtnf_pcie_data_rx_stop(struct qtnf_bus *bus)
 {
-	struct qtnf_pcie_topaz_state *ts = get_bus_priv(bus);
+ struct qtnf_pcie_topaz_state *ts = get_bus_priv(bus);
 
-	disable_rx_irqs(ts);
-	napi_disable(&bus->mux_napi);
+ disable_rx_irqs(ts);
+ napi_disable(&bus->mux_napi);
 }

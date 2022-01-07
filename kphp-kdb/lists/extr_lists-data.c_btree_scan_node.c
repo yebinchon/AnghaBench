@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree_ext_small_t ;
-struct tree_payload {int flags; int /*<<< orphan*/  global_id; int /*<<< orphan*/  value; } ;
-struct heap_entry {int /*<<< orphan*/  node; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LARGE_NODE (int /*<<< orphan*/ *) ; 
- struct tree_payload* LPAYLOAD (int /*<<< orphan*/ *) ; 
- int __vsort_and_mask ; 
- int /*<<< orphan*/  __vsort_scanned ; 
- int __vsort_xor_mask ; 
- struct heap_entry* heap_insert (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int tree_ext_small_t ;
+struct tree_payload {int flags; int global_id; int value; } ;
+struct heap_entry {int node; } ;
+
+
+ int LARGE_NODE (int *) ;
+ struct tree_payload* LPAYLOAD (int *) ;
+ int __vsort_and_mask ;
+ int __vsort_scanned ;
+ int __vsort_xor_mask ;
+ struct heap_entry* heap_insert (int ,int ) ;
 
 __attribute__((used)) static int btree_scan_node (tree_ext_small_t *T) {
   struct tree_payload *P = LPAYLOAD (T);

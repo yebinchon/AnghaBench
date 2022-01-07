@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_4__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  xcb_setup_t ;
-struct TYPE_13__ {TYPE_1__* data; int /*<<< orphan*/  rem; } ;
-typedef  TYPE_2__ xcb_screen_iterator_t ;
-typedef  int /*<<< orphan*/  vlc_object_t ;
+
+
+typedef struct TYPE_15__ TYPE_4__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+typedef int xcb_setup_t ;
+struct TYPE_13__ {TYPE_1__* data; int rem; } ;
+typedef TYPE_2__ xcb_screen_iterator_t ;
+typedef int vlc_object_t ;
 struct TYPE_14__ {TYPE_4__* p_sys; } ;
-typedef  TYPE_3__ intf_thread_t ;
-struct TYPE_15__ {int /*<<< orphan*/  p_connection; scalar_t__ p_symbols; struct TYPE_15__* p_map; struct TYPE_15__* p_keys; int /*<<< orphan*/  thread; int /*<<< orphan*/  root; } ;
-typedef  TYPE_4__ intf_sys_t ;
-struct TYPE_12__ {int /*<<< orphan*/  root; } ;
+typedef TYPE_3__ intf_thread_t ;
+struct TYPE_15__ {int p_connection; scalar_t__ p_symbols; struct TYPE_15__* p_map; struct TYPE_15__* p_keys; int thread; int root; } ;
+typedef TYPE_4__ intf_sys_t ;
+struct TYPE_12__ {int root; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Mapping (TYPE_3__*) ; 
- int /*<<< orphan*/  Register (TYPE_3__*) ; 
- int /*<<< orphan*/  Thread ; 
- int VLC_EGENERIC ; 
- int VLC_ENOMEM ; 
- int VLC_SUCCESS ; 
- int /*<<< orphan*/  VLC_THREAD_PRIORITY_LOW ; 
- TYPE_4__* calloc (int,int) ; 
- int /*<<< orphan*/  free (TYPE_4__*) ; 
- scalar_t__ vlc_clone (int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_3__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xcb_connect (int /*<<< orphan*/ *,int*) ; 
- scalar_t__ xcb_connection_has_error (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xcb_disconnect (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * xcb_get_setup (int /*<<< orphan*/ ) ; 
- scalar_t__ xcb_key_symbols_alloc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xcb_key_symbols_free (scalar_t__) ; 
- int /*<<< orphan*/  xcb_screen_next (TYPE_2__*) ; 
- TYPE_2__ xcb_setup_roots_iterator (int /*<<< orphan*/  const*) ; 
+
+ int Mapping (TYPE_3__*) ;
+ int Register (TYPE_3__*) ;
+ int Thread ;
+ int VLC_EGENERIC ;
+ int VLC_ENOMEM ;
+ int VLC_SUCCESS ;
+ int VLC_THREAD_PRIORITY_LOW ;
+ TYPE_4__* calloc (int,int) ;
+ int free (TYPE_4__*) ;
+ scalar_t__ vlc_clone (int *,int ,TYPE_3__*,int ) ;
+ int xcb_connect (int *,int*) ;
+ scalar_t__ xcb_connection_has_error (int ) ;
+ int xcb_disconnect (int ) ;
+ int * xcb_get_setup (int ) ;
+ scalar_t__ xcb_key_symbols_alloc (int ) ;
+ int xcb_key_symbols_free (scalar_t__) ;
+ int xcb_screen_next (TYPE_2__*) ;
+ TYPE_2__ xcb_setup_roots_iterator (int const*) ;
 
 __attribute__((used)) static int Open( vlc_object_t *p_this )
 {
@@ -55,12 +55,12 @@ __attribute__((used)) static int Open( vlc_object_t *p_this )
         return VLC_ENOMEM;
 
     int i_screen_default;
-    p_sys->p_connection = xcb_connect( NULL, &i_screen_default );
+    p_sys->p_connection = xcb_connect( ((void*)0), &i_screen_default );
 
     if( xcb_connection_has_error( p_sys->p_connection ) )
         goto error;
 
-    /* Get the root windows of the default screen */
+
     const xcb_setup_t* xcbsetup = xcb_get_setup( p_sys->p_connection );
     if( !xcbsetup )
         goto error;
@@ -75,15 +75,15 @@ __attribute__((used)) static int Open( vlc_object_t *p_this )
         goto error;
     p_sys->root = iter.data->root;
 
-    /* */
-    p_sys->p_symbols = xcb_key_symbols_alloc( p_sys->p_connection ); // FIXME
+
+    p_sys->p_symbols = xcb_key_symbols_alloc( p_sys->p_connection );
     if( !p_sys->p_symbols )
         goto error;
 
     if( !Mapping( p_intf ) )
     {
         ret = VLC_SUCCESS;
-        p_intf->p_sys = NULL; /* for Close() */
+        p_intf->p_sys = ((void*)0);
         goto error;
     }
     Register( p_intf );

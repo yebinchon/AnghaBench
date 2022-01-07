@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  void* uint8_t ;
-typedef  long long uint32_t ;
-struct TYPE_10__ {int /*<<< orphan*/  pb; TYPE_1__* priv_data; } ;
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef void* uint8_t ;
+typedef long long uint32_t ;
+struct TYPE_10__ {int pb; TYPE_1__* priv_data; } ;
 struct TYPE_9__ {int* data; scalar_t__ stream_index; size_t pts; int size; } ;
 struct TYPE_8__ {size_t cur_frame; size_t frames; int curstream; int nextpos; int* frm_size; int* frm_flags; void** pal; void*** bufs; long long* buf_sizes; scalar_t__* stream_id; scalar_t__* indexes; scalar_t__ videoindex; size_t* aud_pts; } ;
-typedef  TYPE_1__ SmackerContext ;
-typedef  TYPE_2__ AVPacket ;
-typedef  TYPE_3__ AVFormatContext ;
+typedef TYPE_1__ SmackerContext ;
+typedef TYPE_2__ AVPacket ;
+typedef TYPE_3__ AVFormatContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_EOF ; 
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- scalar_t__ AV_RL32 (void**) ; 
- int /*<<< orphan*/  EIO ; 
- int /*<<< orphan*/  ENOMEM ; 
- int INT_MAX ; 
- int SMACKER_PAL ; 
- int /*<<< orphan*/  av_log (TYPE_3__*,int /*<<< orphan*/ ,char*,...) ; 
- scalar_t__ av_new_packet (TYPE_2__*,int) ; 
- int av_reallocp (void***,long long) ; 
- scalar_t__ avio_feof (int /*<<< orphan*/ ) ; 
- int avio_r8 (int /*<<< orphan*/ ) ; 
- int avio_read (int /*<<< orphan*/ ,void**,int) ; 
- long long avio_rl32 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  avio_seek (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int avio_tell (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (void**,void**,int) ; 
- void** smk_pal ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_EOF ;
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ scalar_t__ AV_RL32 (void**) ;
+ int EIO ;
+ int ENOMEM ;
+ int INT_MAX ;
+ int SMACKER_PAL ;
+ int av_log (TYPE_3__*,int ,char*,...) ;
+ scalar_t__ av_new_packet (TYPE_2__*,int) ;
+ int av_reallocp (void***,long long) ;
+ scalar_t__ avio_feof (int ) ;
+ int avio_r8 (int ) ;
+ int avio_read (int ,void**,int) ;
+ long long avio_rl32 (int ) ;
+ int avio_seek (int ,int,int ) ;
+ int avio_tell (int ) ;
+ int memcpy (void**,void**,int) ;
+ void** smk_pal ;
 
 __attribute__((used)) static int smacker_read_packet(AVFormatContext *s, AVPacket *pkt)
 {
@@ -56,12 +56,12 @@ __attribute__((used)) static int smacker_read_packet(AVFormatContext *s, AVPacke
     if (avio_feof(s->pb) || smk->cur_frame >= smk->frames)
         return AVERROR_EOF;
 
-    /* if we demuxed all streams, pass another frame */
+
     if(smk->curstream < 0) {
         avio_seek(s->pb, smk->nextpos, 0);
         frame_size = smk->frm_size[smk->cur_frame] & (~3);
         flags = smk->frm_flags[smk->cur_frame];
-        /* handle palette change event */
+
         if(flags & SMACKER_PAL){
             int size, sz, t, off, j, pos;
             uint8_t *pal = smk->pal;
@@ -78,10 +78,10 @@ __attribute__((used)) static int smacker_read_packet(AVFormatContext *s, AVPacke
             pos = avio_tell(s->pb) + size;
             while(sz < 256){
                 t = avio_r8(s->pb);
-                if(t & 0x80){ /* skip palette entries */
+                if(t & 0x80){
                     sz += (t & 0x7F) + 1;
                     pal += ((t & 0x7F) + 1) * 3;
-                } else if(t & 0x40){ /* copy with offset */
+                } else if(t & 0x40){
                     off = avio_r8(s->pb);
                     j = (t & 0x3F) + 1;
                     if (off + j > 0x100) {
@@ -98,7 +98,7 @@ __attribute__((used)) static int smacker_read_packet(AVFormatContext *s, AVPacke
                         sz++;
                         off += 3;
                     }
-                } else { /* new entries */
+                } else {
                     *pal++ = smk_pal[t];
                     *pal++ = smk_pal[avio_r8(s->pb) & 0x3F];
                     *pal++ = smk_pal[avio_r8(s->pb) & 0x3F];
@@ -110,7 +110,7 @@ __attribute__((used)) static int smacker_read_packet(AVFormatContext *s, AVPacke
         }
         flags >>= 1;
         smk->curstream = -1;
-        /* if audio chunks are present, put them to stack and retrieve later */
+
         for(i = 0; i < 7; i++) {
             if(flags & 1) {
                 uint32_t size;
@@ -148,7 +148,7 @@ __attribute__((used)) static int smacker_read_packet(AVFormatContext *s, AVPacke
         if(ret != frame_size)
             return AVERROR(EIO);
         pkt->stream_index = smk->videoindex;
-        pkt->pts          = smk->cur_frame;
+        pkt->pts = smk->cur_frame;
         pkt->size = ret + 769;
         smk->cur_frame++;
         smk->nextpos = avio_tell(s->pb);

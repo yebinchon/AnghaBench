@@ -1,0 +1,78 @@
+; ModuleID = '/home/carl/AnghaBench/freebsd/usr.sbin/nscd/agents/extr_services.c_init_services_mp_agent.c'
+source_filename = "/home/carl/AnghaBench/freebsd/usr.sbin/nscd/agents/extr_services.c_init_services_mp_agent.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+%struct.agent = type { i32 }
+%struct.multipart_agent = type { %struct.TYPE_2__, i32, i32, i32 }
+%struct.TYPE_2__ = type { i32*, i32 }
+
+@.str = private unnamed_addr constant [9 x i8] c"services\00", align 1
+@MULTIPART_AGENT = common dso_local global i32 0, align 4
+@services_mp_init_func = common dso_local global i32 0, align 4
+@services_mp_lookup_func = common dso_local global i32 0, align 4
+@services_mp_destroy_func = common dso_local global i32 0, align 4
+
+; Function Attrs: noinline nounwind optnone uwtable
+define dso_local %struct.agent* @init_services_mp_agent() #0 {
+  %1 = alloca %struct.multipart_agent*, align 8
+  %2 = call i32 @TRACE_IN(%struct.agent* (...)* bitcast (%struct.agent* ()* @init_services_mp_agent to %struct.agent* (...)*))
+  %3 = call %struct.multipart_agent* @calloc(i32 1, i32 32)
+  store %struct.multipart_agent* %3, %struct.multipart_agent** %1, align 8
+  %4 = load %struct.multipart_agent*, %struct.multipart_agent** %1, align 8
+  %5 = icmp ne %struct.multipart_agent* %4, null
+  %6 = zext i1 %5 to i32
+  %7 = call i32 @assert(i32 %6)
+  %8 = call i32* @strdup(i8* getelementptr inbounds ([9 x i8], [9 x i8]* @.str, i64 0, i64 0))
+  %9 = load %struct.multipart_agent*, %struct.multipart_agent** %1, align 8
+  %10 = getelementptr inbounds %struct.multipart_agent, %struct.multipart_agent* %9, i32 0, i32 0
+  %11 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %10, i32 0, i32 0
+  store i32* %8, i32** %11, align 8
+  %12 = load i32, i32* @MULTIPART_AGENT, align 4
+  %13 = load %struct.multipart_agent*, %struct.multipart_agent** %1, align 8
+  %14 = getelementptr inbounds %struct.multipart_agent, %struct.multipart_agent* %13, i32 0, i32 0
+  %15 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %14, i32 0, i32 1
+  store i32 %12, i32* %15, align 8
+  %16 = load i32, i32* @services_mp_init_func, align 4
+  %17 = load %struct.multipart_agent*, %struct.multipart_agent** %1, align 8
+  %18 = getelementptr inbounds %struct.multipart_agent, %struct.multipart_agent* %17, i32 0, i32 3
+  store i32 %16, i32* %18, align 8
+  %19 = load i32, i32* @services_mp_lookup_func, align 4
+  %20 = load %struct.multipart_agent*, %struct.multipart_agent** %1, align 8
+  %21 = getelementptr inbounds %struct.multipart_agent, %struct.multipart_agent* %20, i32 0, i32 2
+  store i32 %19, i32* %21, align 4
+  %22 = load i32, i32* @services_mp_destroy_func, align 4
+  %23 = load %struct.multipart_agent*, %struct.multipart_agent** %1, align 8
+  %24 = getelementptr inbounds %struct.multipart_agent, %struct.multipart_agent* %23, i32 0, i32 1
+  store i32 %22, i32* %24, align 8
+  %25 = load %struct.multipart_agent*, %struct.multipart_agent** %1, align 8
+  %26 = getelementptr inbounds %struct.multipart_agent, %struct.multipart_agent* %25, i32 0, i32 0
+  %27 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %26, i32 0, i32 0
+  %28 = load i32*, i32** %27, align 8
+  %29 = icmp ne i32* %28, null
+  %30 = zext i1 %29 to i32
+  %31 = call i32 @assert(i32 %30)
+  %32 = call i32 @TRACE_OUT(%struct.agent* (...)* bitcast (%struct.agent* ()* @init_services_mp_agent to %struct.agent* (...)*))
+  %33 = load %struct.multipart_agent*, %struct.multipart_agent** %1, align 8
+  %34 = bitcast %struct.multipart_agent* %33 to %struct.agent*
+  ret %struct.agent* %34
+}
+
+declare dso_local i32 @TRACE_IN(%struct.agent* (...)*) #1
+
+declare dso_local %struct.multipart_agent* @calloc(i32, i32) #1
+
+declare dso_local i32 @assert(i32) #1
+
+declare dso_local i32* @strdup(i8*) #1
+
+declare dso_local i32 @TRACE_OUT(%struct.agent* (...)*) #1
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

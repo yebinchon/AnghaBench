@@ -1,39 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  void* uint16_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef void* uint16_t ;
 struct http_parser_url {int field_set; TYPE_1__* field_data; } ;
-typedef  enum http_host_state { ____Placeholder_http_host_state } http_host_state ;
+typedef enum http_host_state { ____Placeholder_http_host_state } http_host_state ;
 struct TYPE_2__ {size_t off; size_t len; } ;
 
-/* Variables and functions */
- size_t UF_HOST ; 
- size_t UF_PORT ; 
- size_t UF_USERINFO ; 
- int /*<<< orphan*/  assert (int) ; 
- int http_parse_host_char (int,char const) ; 
-#define  s_http_host 137 
- int s_http_host_dead ; 
-#define  s_http_host_port 136 
-#define  s_http_host_port_start 135 
-#define  s_http_host_start 134 
-#define  s_http_host_v6 133 
-#define  s_http_host_v6_start 132 
-#define  s_http_host_v6_zone 131 
-#define  s_http_host_v6_zone_start 130 
-#define  s_http_userinfo 129 
-#define  s_http_userinfo_start 128 
 
+ size_t UF_HOST ;
+ size_t UF_PORT ;
+ size_t UF_USERINFO ;
+ int assert (int) ;
+ int http_parse_host_char (int,char const) ;
+
+ int s_http_host_dead ;
 __attribute__((used)) static int
 http_parse_host(const char * buf, struct http_parser_url *u, int found_at) {
   enum http_host_state s;
@@ -45,7 +35,7 @@ http_parse_host(const char * buf, struct http_parser_url *u, int found_at) {
 
   u->field_data[UF_HOST].len = 0;
 
-  s = found_at ? s_http_userinfo_start : s_http_host_start;
+  s = found_at ? 128 : 134;
 
   for (p = buf + u->field_data[UF_HOST].off; p < buf + buflen; p++) {
     enum http_host_state new_s = http_parse_host_char(s, *p);
@@ -55,27 +45,27 @@ http_parse_host(const char * buf, struct http_parser_url *u, int found_at) {
     }
 
     switch(new_s) {
-      case s_http_host:
-        if (s != s_http_host) {
+      case 137:
+        if (s != 137) {
           u->field_data[UF_HOST].off = (uint16_t)(p - buf);
         }
         u->field_data[UF_HOST].len++;
         break;
 
-      case s_http_host_v6:
-        if (s != s_http_host_v6) {
+      case 133:
+        if (s != 133) {
           u->field_data[UF_HOST].off = (uint16_t)(p - buf);
         }
         u->field_data[UF_HOST].len++;
         break;
 
-      case s_http_host_v6_zone_start:
-      case s_http_host_v6_zone:
+      case 130:
+      case 131:
         u->field_data[UF_HOST].len++;
         break;
 
-      case s_http_host_port:
-        if (s != s_http_host_port) {
+      case 136:
+        if (s != 136) {
           u->field_data[UF_PORT].off = (uint16_t)(p - buf);
           u->field_data[UF_PORT].len = 0;
           u->field_set |= (1 << UF_PORT);
@@ -83,8 +73,8 @@ http_parse_host(const char * buf, struct http_parser_url *u, int found_at) {
         u->field_data[UF_PORT].len++;
         break;
 
-      case s_http_userinfo:
-        if (s != s_http_userinfo) {
+      case 129:
+        if (s != 129) {
           u->field_data[UF_USERINFO].off = (uint16_t)(p - buf);
           u->field_data[UF_USERINFO].len = 0;
           u->field_set |= (1 << UF_USERINFO);
@@ -98,16 +88,16 @@ http_parse_host(const char * buf, struct http_parser_url *u, int found_at) {
     s = new_s;
   }
 
-  /* Make sure we don't end somewhere unexpected */
+
   switch (s) {
-    case s_http_host_start:
-    case s_http_host_v6_start:
-    case s_http_host_v6:
-    case s_http_host_v6_zone_start:
-    case s_http_host_v6_zone:
-    case s_http_host_port_start:
-    case s_http_userinfo:
-    case s_http_userinfo_start:
+    case 134:
+    case 132:
+    case 133:
+    case 130:
+    case 131:
+    case 135:
+    case 129:
+    case 128:
       return 1;
     default:
       break;

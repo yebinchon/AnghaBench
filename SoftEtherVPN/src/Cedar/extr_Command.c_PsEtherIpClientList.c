@@ -1,104 +1,104 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wchar_t ;
-typedef  int /*<<< orphan*/  username ;
-typedef  int /*<<< orphan*/  t ;
-typedef  int /*<<< orphan*/  id ;
-typedef  int /*<<< orphan*/  hubname ;
-typedef  scalar_t__ UINT ;
-struct TYPE_9__ {int /*<<< orphan*/  UserName; int /*<<< orphan*/  HubName; int /*<<< orphan*/  Id; } ;
-struct TYPE_8__ {int /*<<< orphan*/  Rpc; } ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int wchar_t ;
+typedef int username ;
+typedef int t ;
+typedef int id ;
+typedef int hubname ;
+typedef scalar_t__ UINT ;
+struct TYPE_9__ {int UserName; int HubName; int Id; } ;
+struct TYPE_8__ {int Rpc; } ;
 struct TYPE_7__ {scalar_t__ NumItem; TYPE_3__* IdList; } ;
-typedef  TYPE_1__ RPC_ENUM_ETHERIP_ID ;
-typedef  TYPE_2__ PS ;
-typedef  int /*<<< orphan*/  LIST ;
-typedef  TYPE_3__ ETHERIP_ID ;
-typedef  int /*<<< orphan*/  CT ;
-typedef  int /*<<< orphan*/  CONSOLE ;
+typedef TYPE_1__ RPC_ENUM_ETHERIP_ID ;
+typedef TYPE_2__ PS ;
+typedef int LIST ;
+typedef TYPE_3__ ETHERIP_ID ;
+typedef int CT ;
+typedef int CONSOLE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CmdPrintError (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  CtFree (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CtInsert (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CtInsertColumn (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/ * CtNew () ; 
- scalar_t__ ERR_INVALID_PARAMETER ; 
- scalar_t__ ERR_NO_ERROR ; 
- int /*<<< orphan*/  FreeParamValueList (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FreeRpcEnumEtherIpId (TYPE_1__*) ; 
- int MAX_SIZE ; 
- int /*<<< orphan*/ * ParseCommandList (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ ScEnumEtherIpId (int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  StrToUni (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Zero (TYPE_1__*,int) ; 
- int /*<<< orphan*/  _UU (char*) ; 
+
+ int CmdPrintError (int *,scalar_t__) ;
+ int CtFree (int *,int *) ;
+ int CtInsert (int *,int *,int *,int *) ;
+ int CtInsertColumn (int *,int ,int) ;
+ int * CtNew () ;
+ scalar_t__ ERR_INVALID_PARAMETER ;
+ scalar_t__ ERR_NO_ERROR ;
+ int FreeParamValueList (int *) ;
+ int FreeRpcEnumEtherIpId (TYPE_1__*) ;
+ int MAX_SIZE ;
+ int * ParseCommandList (int *,char*,int *,int *,int ) ;
+ scalar_t__ ScEnumEtherIpId (int ,TYPE_1__*) ;
+ int StrToUni (int *,int,int ) ;
+ int Zero (TYPE_1__*,int) ;
+ int _UU (char*) ;
 
 UINT PsEtherIpClientList(CONSOLE *c, char *cmd_name, wchar_t *str, void *param)
 {
-	LIST *o;
-	PS *ps = (PS *)param;
-	UINT ret = 0;
-	RPC_ENUM_ETHERIP_ID t;
-	UINT i;
-	CT *b;
+ LIST *o;
+ PS *ps = (PS *)param;
+ UINT ret = 0;
+ RPC_ENUM_ETHERIP_ID t;
+ UINT i;
+ CT *b;
 
-	o = ParseCommandList(c, cmd_name, str, NULL, 0);
-	if (o == NULL)
-	{
-		return ERR_INVALID_PARAMETER;
-	}
+ o = ParseCommandList(c, cmd_name, str, ((void*)0), 0);
+ if (o == ((void*)0))
+ {
+  return ERR_INVALID_PARAMETER;
+ }
 
-	Zero(&t, sizeof(t));
+ Zero(&t, sizeof(t));
 
-	// RPC call
-	ret = ScEnumEtherIpId(ps->Rpc, &t);
 
-	if (ret != ERR_NO_ERROR)
-	{
-		// An error has occured
-		CmdPrintError(c, ret);
-		FreeParamValueList(o);
-		return ret;
-	}
-	else
-	{
-		b = CtNew();
+ ret = ScEnumEtherIpId(ps->Rpc, &t);
 
-		CtInsertColumn(b, _UU("SM_ETHERIP_COLUMN_0"), false);
-		CtInsertColumn(b, _UU("SM_ETHERIP_COLUMN_1"), false);
-		CtInsertColumn(b, _UU("SM_ETHERIP_COLUMN_2"), false);
+ if (ret != ERR_NO_ERROR)
+ {
 
-		for (i = 0;i < t.NumItem;i++)
-		{
-			ETHERIP_ID *d = &t.IdList[i];
-			wchar_t id[MAX_SIZE], hubname[MAX_SIZE], username[MAX_SIZE];
+  CmdPrintError(c, ret);
+  FreeParamValueList(o);
+  return ret;
+ }
+ else
+ {
+  b = CtNew();
 
-			StrToUni(id, sizeof(id), d->Id);
-			StrToUni(hubname, sizeof(hubname), d->HubName);
-			StrToUni(username, sizeof(username), d->UserName);
+  CtInsertColumn(b, _UU("SM_ETHERIP_COLUMN_0"), 0);
+  CtInsertColumn(b, _UU("SM_ETHERIP_COLUMN_1"), 0);
+  CtInsertColumn(b, _UU("SM_ETHERIP_COLUMN_2"), 0);
 
-			CtInsert(b, id, hubname, username);
-		}
+  for (i = 0;i < t.NumItem;i++)
+  {
+   ETHERIP_ID *d = &t.IdList[i];
+   wchar_t id[MAX_SIZE], hubname[MAX_SIZE], username[MAX_SIZE];
 
-		CtFree(b, c);
+   StrToUni(id, sizeof(id), d->Id);
+   StrToUni(hubname, sizeof(hubname), d->HubName);
+   StrToUni(username, sizeof(username), d->UserName);
 
-		FreeRpcEnumEtherIpId(&t);
-	}
+   CtInsert(b, id, hubname, username);
+  }
 
-	FreeParamValueList(o);
+  CtFree(b, c);
 
-	return 0;
+  FreeRpcEnumEtherIpId(&t);
+ }
+
+ FreeParamValueList(o);
+
+ return 0;
 }

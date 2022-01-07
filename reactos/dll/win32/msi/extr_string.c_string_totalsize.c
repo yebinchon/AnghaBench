@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {size_t maxcount; int /*<<< orphan*/  codepage; TYPE_1__* strings; } ;
-typedef  TYPE_2__ string_table ;
-typedef  size_t UINT ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_5__ {size_t maxcount; int codepage; TYPE_1__* strings; } ;
+typedef TYPE_2__ string_table ;
+typedef size_t UINT ;
 struct TYPE_4__ {scalar_t__ len; scalar_t__ data; scalar_t__ persistent_refcount; scalar_t__ nonpersistent_refcount; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*) ; 
- int /*<<< orphan*/  TRACE (char*,size_t,size_t,...) ; 
- size_t WideCharToMultiByte (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  debugstr_wn (scalar_t__,scalar_t__) ; 
+
+ int ERR (char*) ;
+ int TRACE (char*,size_t,size_t,...) ;
+ size_t WideCharToMultiByte (int ,int ,scalar_t__,scalar_t__,int *,int ,int *,int *) ;
+ int debugstr_wn (scalar_t__,scalar_t__) ;
 
 __attribute__((used)) static void string_totalsize( const string_table *st, UINT *datasize, UINT *poolsize )
 {
@@ -44,7 +44,7 @@ __attribute__((used)) static void string_totalsize( const string_table *st, UINT
         {
             TRACE("[%u] = %s\n", i, debugstr_wn(st->strings[i].data, st->strings[i].len));
             len = WideCharToMultiByte( st->codepage, 0, st->strings[i].data, st->strings[i].len + 1,
-                                       NULL, 0, NULL, NULL);
+                                       ((void*)0), 0, ((void*)0), ((void*)0));
             if( len )
                 len--;
             (*datasize) += len;

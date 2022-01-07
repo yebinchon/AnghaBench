@@ -1,72 +1,72 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ UINT ;
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef scalar_t__ UINT ;
 struct TYPE_6__ {scalar_t__ Stopped; } ;
-typedef  TYPE_1__ THREAD ;
-typedef  int /*<<< orphan*/  LIST ;
+typedef TYPE_1__ THREAD ;
+typedef int LIST ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Add (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  Delete (int /*<<< orphan*/ *,TYPE_1__*) ; 
- TYPE_1__* LIST_DATA (int /*<<< orphan*/ *,scalar_t__) ; 
- scalar_t__ LIST_NUM (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LockList (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * NewListFast (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ReleaseList (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ReleaseThread (TYPE_1__*) ; 
- int /*<<< orphan*/  UnlockList (int /*<<< orphan*/ *) ; 
+
+ int Add (int *,TYPE_1__*) ;
+ int Delete (int *,TYPE_1__*) ;
+ TYPE_1__* LIST_DATA (int *,scalar_t__) ;
+ scalar_t__ LIST_NUM (int *) ;
+ int LockList (int *) ;
+ int * NewListFast (int *) ;
+ int ReleaseList (int *) ;
+ int ReleaseThread (TYPE_1__*) ;
+ int UnlockList (int *) ;
 
 void MaintainThreadList(LIST *o)
 {
-	UINT i;
-	LIST *delete_list = NULL;
-	// Validate arguments
-	if (o == NULL)
-	{
-		return;
-	}
+ UINT i;
+ LIST *delete_list = ((void*)0);
 
-	LockList(o);
-	{
-		for (i = 0;i < LIST_NUM(o);i++)
-		{
-			THREAD *t = LIST_DATA(o, i);
+ if (o == ((void*)0))
+ {
+  return;
+ }
 
-			if (t->Stopped)
-			{
-				if (delete_list == NULL)
-				{
-					delete_list = NewListFast(NULL);
-				}
+ LockList(o);
+ {
+  for (i = 0;i < LIST_NUM(o);i++)
+  {
+   THREAD *t = LIST_DATA(o, i);
 
-				Add(delete_list, t);
-			}
-		}
+   if (t->Stopped)
+   {
+    if (delete_list == ((void*)0))
+    {
+     delete_list = NewListFast(((void*)0));
+    }
 
-		if (delete_list != NULL)
-		{
-			for (i = 0;i < LIST_NUM(delete_list);i++)
-			{
-				THREAD *t = LIST_DATA(delete_list, i);
+    Add(delete_list, t);
+   }
+  }
 
-				ReleaseThread(t);
+  if (delete_list != ((void*)0))
+  {
+   for (i = 0;i < LIST_NUM(delete_list);i++)
+   {
+    THREAD *t = LIST_DATA(delete_list, i);
 
-				Delete(o, t);
-			}
+    ReleaseThread(t);
 
-			ReleaseList(delete_list);
-		}
-	}
-	UnlockList(o);
+    Delete(o, t);
+   }
+
+   ReleaseList(delete_list);
+  }
+ }
+ UnlockList(o);
 }

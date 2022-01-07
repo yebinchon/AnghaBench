@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_8__ {scalar_t__ apr_err; } ;
-typedef  TYPE_1__ svn_error_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
+typedef TYPE_1__ svn_error_t ;
+typedef int apr_hash_t ;
 
-/* Variables and functions */
- scalar_t__ SVN_ERR_WC_FOUND_CONFLICT ; 
- scalar_t__ SVN_ERR_WC_OBSTRUCTED_UPDATE ; 
- TYPE_1__* SVN_NO_ERROR ; 
- int /*<<< orphan*/  apr_hash_pool_get (int /*<<< orphan*/ *) ; 
- char* apr_pstrdup (int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  svn_error_clear (TYPE_1__*) ; 
- TYPE_1__* svn_error_trace (TYPE_1__*) ; 
- int /*<<< orphan*/  svn_hash_sets (int /*<<< orphan*/ *,char const*,char*) ; 
+
+ scalar_t__ SVN_ERR_WC_FOUND_CONFLICT ;
+ scalar_t__ SVN_ERR_WC_OBSTRUCTED_UPDATE ;
+ TYPE_1__* SVN_NO_ERROR ;
+ int apr_hash_pool_get (int *) ;
+ char* apr_pstrdup (int ,char const*) ;
+ int svn_error_clear (TYPE_1__*) ;
+ TYPE_1__* svn_error_trace (TYPE_1__*) ;
+ int svn_hash_sets (int *,char const*,char*) ;
 
 __attribute__((used)) static svn_error_t *
 handle_tree_conflict_resolution_failure(const char *local_abspath,
@@ -35,7 +35,7 @@ handle_tree_conflict_resolution_failure(const char *local_abspath,
   if (!unresolved_tree_conflicts
       || (err->apr_err != SVN_ERR_WC_OBSTRUCTED_UPDATE
           && err->apr_err != SVN_ERR_WC_FOUND_CONFLICT))
-    return svn_error_trace(err); /* Give up. Do not retry resolution later. */
+    return svn_error_trace(err);
 
   svn_error_clear(err);
   tc_abspath = apr_pstrdup(apr_hash_pool_get(unresolved_tree_conflicts),
@@ -43,5 +43,5 @@ handle_tree_conflict_resolution_failure(const char *local_abspath,
 
   svn_hash_sets(unresolved_tree_conflicts, tc_abspath, "");
 
-  return SVN_NO_ERROR; /* Caller may retry after resolving other conflicts. */
+  return SVN_NO_ERROR;
 }

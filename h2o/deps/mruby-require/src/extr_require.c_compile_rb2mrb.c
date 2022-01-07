@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_6__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_6__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_9__ {int no_exec; } ;
-typedef  TYPE_2__ mrbc_context ;
-typedef  int /*<<< orphan*/  mrb_value ;
-typedef  int /*<<< orphan*/  mrb_state ;
-typedef  int /*<<< orphan*/  mrb_irep ;
-struct TYPE_8__ {int /*<<< orphan*/ * irep; } ;
+typedef TYPE_2__ mrbc_context ;
+typedef int mrb_value ;
+typedef int mrb_state ;
+typedef int mrb_irep ;
+struct TYPE_8__ {int * irep; } ;
 struct TYPE_10__ {TYPE_1__ body; } ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef int FILE ;
 
-/* Variables and functions */
- int MRB_DUMP_GENERAL_FAILURE ; 
- int /*<<< orphan*/  mrb_close (int /*<<< orphan*/ *) ; 
- int mrb_dump_irep_binary (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mrb_load_nstring_cxt (int /*<<< orphan*/ *,char const*,int,TYPE_2__*) ; 
- int /*<<< orphan*/ * mrb_open () ; 
- TYPE_6__* mrb_proc_ptr (int /*<<< orphan*/ ) ; 
- scalar_t__ mrb_undef_p (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrbc_context_free (int /*<<< orphan*/ *,TYPE_2__*) ; 
- TYPE_2__* mrbc_context_new (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mrbc_filename (int /*<<< orphan*/ *,TYPE_2__*,char const*) ; 
+
+ int MRB_DUMP_GENERAL_FAILURE ;
+ int mrb_close (int *) ;
+ int mrb_dump_irep_binary (int *,int *,int,int *) ;
+ int mrb_load_nstring_cxt (int *,char const*,int,TYPE_2__*) ;
+ int * mrb_open () ;
+ TYPE_6__* mrb_proc_ptr (int ) ;
+ scalar_t__ mrb_undef_p (int ) ;
+ int mrbc_context_free (int *,TYPE_2__*) ;
+ TYPE_2__* mrbc_context_new (int *) ;
+ int mrbc_filename (int *,TYPE_2__*,char const*) ;
 
 __attribute__((used)) static int
 compile_rb2mrb(mrb_state *mrb0, const char *code, int code_len, const char *path, FILE* tmpfp)
@@ -46,7 +46,7 @@ compile_rb2mrb(mrb_state *mrb0, const char *code, int code_len, const char *path
 
   c = mrbc_context_new(mrb);
   c->no_exec = 1;
-  if (path != NULL) {
+  if (path != ((void*)0)) {
     mrbc_filename(mrb, c, path);
   }
 

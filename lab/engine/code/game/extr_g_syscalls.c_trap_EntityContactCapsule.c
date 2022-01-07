@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vec3_t ;
-typedef  int /*<<< orphan*/  qboolean ;
-typedef  int /*<<< orphan*/  gentity_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  G_ENTITY_CONTACTCAPSULE ; 
- int /*<<< orphan*/  syscall (int /*<<< orphan*/ ,int /*<<< orphan*/  const,int /*<<< orphan*/  const,int /*<<< orphan*/  const*) ; 
+
+
+
+typedef int vec3_t ;
+typedef int qboolean ;
+typedef int gentity_t ;
+
+
+ int G_ENTITY_CONTACTCAPSULE ;
+ int syscall (int ,int const,int const,int const*) ;
 
 qboolean trap_EntityContactCapsule( const vec3_t mins, const vec3_t maxs, const gentity_t *ent ) {
-	return syscall( G_ENTITY_CONTACTCAPSULE, mins, maxs, ent );
+ return syscall( G_ENTITY_CONTACTCAPSULE, mins, maxs, ent );
 }

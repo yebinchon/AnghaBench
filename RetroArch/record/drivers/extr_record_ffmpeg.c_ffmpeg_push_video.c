@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  struct record_video_data {unsigned int width; unsigned int height; unsigned int pitch; scalar_t__ data; scalar_t__ is_dupe; } const record_video_data ;
-typedef  struct record_video_data uint8_t ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef struct record_video_data {unsigned int width; unsigned int height; unsigned int pitch; scalar_t__ data; scalar_t__ is_dupe; } const record_video_data ;
+typedef struct record_video_data uint8_t ;
 struct TYPE_3__ {int frame_drop_count; int frame_drop_ratio; int pix_size; } ;
-struct TYPE_4__ {int can_sleep; int /*<<< orphan*/  cond; int /*<<< orphan*/  lock; int /*<<< orphan*/  video_fifo; int /*<<< orphan*/  attr_fifo; TYPE_1__ video; int /*<<< orphan*/  cond_lock; int /*<<< orphan*/  alive; } ;
-typedef  TYPE_2__ ffmpeg_t ;
-typedef  int /*<<< orphan*/  attr_data ;
+struct TYPE_4__ {int can_sleep; int cond; int lock; int video_fifo; int attr_fifo; TYPE_1__ video; int cond_lock; int alive; } ;
+typedef TYPE_2__ ffmpeg_t ;
+typedef int attr_data ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fifo_write (int /*<<< orphan*/ ,struct record_video_data const*,int) ; 
- unsigned int fifo_write_avail (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  scond_signal (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  scond_wait (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  slock_lock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  slock_unlock (int /*<<< orphan*/ ) ; 
+
+ int fifo_write (int ,struct record_video_data const*,int) ;
+ unsigned int fifo_write_avail (int ) ;
+ int scond_signal (int ) ;
+ int scond_wait (int ,int ) ;
+ int slock_lock (int ) ;
+ int slock_unlock (int ) ;
 
 __attribute__((used)) static bool ffmpeg_push_video(void *data,
       const struct record_video_data *vid)
@@ -34,10 +34,10 @@ __attribute__((used)) static bool ffmpeg_push_video(void *data,
    bool drop_frame;
    struct record_video_data attr_data;
    ffmpeg_t *handle = (ffmpeg_t*)data;
-   int       offset = 0;
+   int offset = 0;
 
    if (!handle || !vid)
-      return false;
+      return 0;
 
    drop_frame = handle->video.frame_drop_count++ %
       handle->video.frame_drop_ratio;
@@ -45,7 +45,7 @@ __attribute__((used)) static bool ffmpeg_push_video(void *data,
    handle->video.frame_drop_count %= handle->video.frame_drop_ratio;
 
    if (drop_frame)
-      return true;
+      return 1;
 
    for (;;)
    {
@@ -55,7 +55,7 @@ __attribute__((used)) static bool ffmpeg_push_video(void *data,
       slock_unlock(handle->lock);
 
       if (!handle->alive)
-         return false;
+         return 0;
 
       if (avail >= sizeof(*vid))
          break;
@@ -63,9 +63,9 @@ __attribute__((used)) static bool ffmpeg_push_video(void *data,
       slock_lock(handle->cond_lock);
       if (handle->can_sleep)
       {
-         handle->can_sleep = false;
+         handle->can_sleep = 0;
          scond_wait(handle->cond, handle->cond_lock);
-         handle->can_sleep = true;
+         handle->can_sleep = 1;
       }
       else
          scond_signal(handle->cond);
@@ -75,9 +75,9 @@ __attribute__((used)) static bool ffmpeg_push_video(void *data,
 
    slock_lock(handle->lock);
 
-   /* Tightly pack our frame to conserve memory.
-    * libretro tends to use a very large pitch.
-    */
+
+
+
    attr_data = *vid;
 
    if (attr_data.is_dupe)
@@ -94,5 +94,5 @@ __attribute__((used)) static bool ffmpeg_push_video(void *data,
    slock_unlock(handle->lock);
    scond_signal(handle->cond);
 
-   return true;
+   return 1;
 }

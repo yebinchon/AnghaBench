@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
 struct TYPE_15__ {TYPE_1__* priv; TYPE_2__** outputs; } ;
-struct TYPE_14__ {int /*<<< orphan*/  h; int /*<<< orphan*/  w; TYPE_3__* dst; } ;
-struct TYPE_13__ {int nb_planes; int* planewidth; int* planeheight; scalar_t__ eval_mode; int* rdft_hlen; int* rdft_vlen; int** rdft_vdata; int** weight; int* dc; int /*<<< orphan*/  (* irdft_horizontal ) (TYPE_1__*,int /*<<< orphan*/ *,int,int,int) ;int /*<<< orphan*/  (* rdft_horizontal ) (TYPE_1__*,int /*<<< orphan*/ *,int,int,int) ;} ;
-typedef  TYPE_1__ FFTFILTContext ;
-typedef  int /*<<< orphan*/  AVFrame ;
-typedef  TYPE_2__ AVFilterLink ;
-typedef  TYPE_3__ AVFilterContext ;
+struct TYPE_14__ {int h; int w; TYPE_3__* dst; } ;
+struct TYPE_13__ {int nb_planes; int* planewidth; int* planeheight; scalar_t__ eval_mode; int* rdft_hlen; int* rdft_vlen; int** rdft_vdata; int** weight; int* dc; int (* irdft_horizontal ) (TYPE_1__*,int *,int,int,int) ;int (* rdft_horizontal ) (TYPE_1__*,int *,int,int,int) ;} ;
+typedef TYPE_1__ FFTFILTContext ;
+typedef int AVFrame ;
+typedef TYPE_2__ AVFilterLink ;
+typedef TYPE_3__ AVFilterContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ENOMEM ; 
- scalar_t__ EVAL_MODE_FRAME ; 
- int /*<<< orphan*/  av_frame_copy_props (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  av_frame_free (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  do_eval (TYPE_1__*,TYPE_2__*,int) ; 
- int ff_filter_frame (TYPE_2__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * ff_get_video_buffer (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  irdft_vertical (TYPE_1__*,int,int) ; 
- int /*<<< orphan*/  rdft_vertical (TYPE_1__*,int,int) ; 
- int /*<<< orphan*/  stub1 (TYPE_1__*,int /*<<< orphan*/ *,int,int,int) ; 
- int /*<<< orphan*/  stub2 (TYPE_1__*,int /*<<< orphan*/ *,int,int,int) ; 
+
+ int AVERROR (int ) ;
+ int ENOMEM ;
+ scalar_t__ EVAL_MODE_FRAME ;
+ int av_frame_copy_props (int *,int *) ;
+ int av_frame_free (int **) ;
+ int do_eval (TYPE_1__*,TYPE_2__*,int) ;
+ int ff_filter_frame (TYPE_2__*,int *) ;
+ int * ff_get_video_buffer (TYPE_2__*,int ,int ) ;
+ int irdft_vertical (TYPE_1__*,int,int) ;
+ int rdft_vertical (TYPE_1__*,int,int) ;
+ int stub1 (TYPE_1__*,int *,int,int,int) ;
+ int stub2 (TYPE_1__*,int *,int,int,int) ;
 
 __attribute__((used)) static int filter_frame(AVFilterLink *inlink, AVFrame *in)
 {
@@ -61,7 +61,7 @@ __attribute__((used)) static int filter_frame(AVFilterLink *inlink, AVFrame *in)
         s->rdft_horizontal(s, in, w, h, plane);
         rdft_vertical(s, h, plane);
 
-        /*Change user defined parameters*/
+
         for (i = 0; i < s->rdft_hlen[plane]; i++)
             for (j = 0; j < s->rdft_vlen[plane]; j++)
                 s->rdft_vdata[plane][i * s->rdft_vlen[plane] + j] *=

@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct ra_ctx {TYPE_2__* vo; int /*<<< orphan*/  global; struct priv* priv; } ;
-struct priv {int opt_swapinterval; int current_swapinterval; int /*<<< orphan*/  (* real_wglSwapInterval ) (int) ;int /*<<< orphan*/  hdc; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct ra_ctx {TYPE_2__* vo; int global; struct priv* priv; } ;
+struct priv {int opt_swapinterval; int current_swapinterval; int (* real_wglSwapInterval ) (int) ;int hdc; } ;
 struct TYPE_4__ {TYPE_1__* opts; } ;
-struct TYPE_3__ {int /*<<< orphan*/  fullscreen; } ;
+struct TYPE_3__ {int fullscreen; } ;
 
-/* Variables and functions */
- scalar_t__ DwmFlush () ; 
- int /*<<< orphan*/  MP_VERBOSE (TYPE_2__*,char*,int) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  SwapBuffers (int /*<<< orphan*/ ) ; 
- scalar_t__ compositor_active (struct ra_ctx*) ; 
- int /*<<< orphan*/  m_option_type_choice ; 
- int /*<<< orphan*/  mp_read_option_raw (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  stub1 (int) ; 
+
+ scalar_t__ DwmFlush () ;
+ int MP_VERBOSE (TYPE_2__*,char*,int) ;
+ scalar_t__ S_OK ;
+ int SwapBuffers (int ) ;
+ scalar_t__ compositor_active (struct ra_ctx*) ;
+ int m_option_type_choice ;
+ int mp_read_option_raw (int ,char*,int *,int*) ;
+ int stub1 (int) ;
 
 __attribute__((used)) static void wgl_swap_buffers(struct ra_ctx *ctx)
 {
     struct priv *p = ctx->priv;
     SwapBuffers(p->hdc);
 
-    // default if we don't DwmFLush
+
     int new_swapinterval = p->opt_swapinterval;
 
     int dwm_flush_opt;

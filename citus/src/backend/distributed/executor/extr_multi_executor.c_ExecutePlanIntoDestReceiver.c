@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_7__ {int visible; } ;
-typedef  TYPE_1__* Portal ;
-typedef  int /*<<< orphan*/  PlannedStmt ;
-typedef  int /*<<< orphan*/  ParamListInfo ;
-typedef  int /*<<< orphan*/  DestReceiver ;
+typedef TYPE_1__* Portal ;
+typedef int PlannedStmt ;
+typedef int ParamListInfo ;
+typedef int DestReceiver ;
 
-/* Variables and functions */
- TYPE_1__* CreateNewPortal () ; 
- long FETCH_ALL ; 
- int /*<<< orphan*/  GetActiveSnapshot () ; 
- int /*<<< orphan*/  PortalDefineQuery (TYPE_1__*,int /*<<< orphan*/ *,char*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PortalDrop (TYPE_1__*,int) ; 
- int /*<<< orphan*/  PortalRun (TYPE_1__*,long,int,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PortalStart (TYPE_1__*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  list_make1 (int /*<<< orphan*/ *) ; 
+
+ TYPE_1__* CreateNewPortal () ;
+ long FETCH_ALL ;
+ int GetActiveSnapshot () ;
+ int PortalDefineQuery (TYPE_1__*,int *,char*,char*,int ,int *) ;
+ int PortalDrop (TYPE_1__*,int) ;
+ int PortalRun (TYPE_1__*,long,int,int,int *,int *,int *) ;
+ int PortalStart (TYPE_1__*,int ,int,int ) ;
+ int list_make1 (int *) ;
 
 void
 ExecutePlanIntoDestReceiver(PlannedStmt *queryPlan, ParamListInfo params,
-							DestReceiver *dest)
+       DestReceiver *dest)
 {
-	Portal portal = NULL;
-	int eflags = 0;
-	long count = FETCH_ALL;
+ Portal portal = ((void*)0);
+ int eflags = 0;
+ long count = FETCH_ALL;
 
-	/* create a new portal for executing the query */
-	portal = CreateNewPortal();
 
-	/* don't display the portal in pg_cursors, it is for internal use only */
-	portal->visible = false;
+ portal = CreateNewPortal();
 
-	PortalDefineQuery(portal,
-					  NULL,
-					  "",
-					  "SELECT",
-					  list_make1(queryPlan),
-					  NULL);
 
-	PortalStart(portal, params, eflags, GetActiveSnapshot());
-	PortalRun(portal, count, false, true, dest, dest, NULL);
-	PortalDrop(portal, false);
+ portal->visible = 0;
+
+ PortalDefineQuery(portal,
+       ((void*)0),
+       "",
+       "SELECT",
+       list_make1(queryPlan),
+       ((void*)0));
+
+ PortalStart(portal, params, eflags, GetActiveSnapshot());
+ PortalRun(portal, count, 0, 1, dest, dest, ((void*)0));
+ PortalDrop(portal, 0);
 }

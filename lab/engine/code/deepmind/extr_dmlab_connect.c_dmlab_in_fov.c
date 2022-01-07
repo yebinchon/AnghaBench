@@ -1,19 +1,11 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ InFov (float const*,float const*,float const*,float) ; 
- scalar_t__ qtrue ; 
+ scalar_t__ InFov (float const*,float const*,float const*,float) ;
+ scalar_t__ qtrue ;
 
 __attribute__((used)) static bool dmlab_in_fov(const float start[3], const float end[3],
                          const float angles[3], float fov) {

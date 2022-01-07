@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct gc_arena {int dummy; } ;
 struct buffer {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OPTION_PARM_SIZE ; 
- scalar_t__ buf_parse (struct buffer*,int const,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gc_free (struct gc_arena*) ; 
- char* gc_malloc (int /*<<< orphan*/ ,int,struct gc_arena*) ; 
- struct gc_arena gc_new () ; 
- int /*<<< orphan*/  msg (int const,char*,char const*,char const*,char const*,char const*,char const*) ; 
- char* options_warning_extract_parm1 (char const*,struct gc_arena*) ; 
- char const* safe_print (char const*,struct gc_arena*) ; 
- int /*<<< orphan*/  strcmp (char const*,char const*) ; 
- scalar_t__ strlen (char const*) ; 
- scalar_t__ strprefix (char const*,char*) ; 
+
+ int OPTION_PARM_SIZE ;
+ scalar_t__ buf_parse (struct buffer*,int const,char*,int ) ;
+ int gc_free (struct gc_arena*) ;
+ char* gc_malloc (int ,int,struct gc_arena*) ;
+ struct gc_arena gc_new () ;
+ int msg (int const,char*,char const*,char const*,char const*,char const*,char const*) ;
+ char* options_warning_extract_parm1 (char const*,struct gc_arena*) ;
+ char const* safe_print (char const*,struct gc_arena*) ;
+ int strcmp (char const*,char const*) ;
+ scalar_t__ strlen (char const*) ;
+ scalar_t__ strprefix (char const*,char*) ;
 
 __attribute__((used)) static void
 options_warning_safe_scan2(const int msglevel,
@@ -35,10 +35,10 @@ options_warning_safe_scan2(const int msglevel,
                            const char *b1_name,
                            const char *b2_name)
 {
-    /* We will stop sending 'key-method', 'keydir', 'proto' and 'tls-auth' in
-     * OCC in a future version (because it's not useful). To reduce questions
-     * when interoperating, we no longer printing a warning about it.
-     */
+
+
+
+
     if (strprefix(p1, "key-method ")
         || strprefix(p1, "keydir ")
         || strprefix(p1, "proto ")
@@ -53,7 +53,7 @@ options_warning_safe_scan2(const int msglevel,
         struct gc_arena gc = gc_new();
         struct buffer b2 = *b2_src;
         const char *p1_prefix = options_warning_extract_parm1(p1, &gc);
-        char *p2 = gc_malloc(OPTION_PARM_SIZE, false, &gc);
+        char *p2 = gc_malloc(OPTION_PARM_SIZE, 0, &gc);
 
         while (buf_parse(&b2, delim, p2, OPTION_PARM_SIZE))
         {

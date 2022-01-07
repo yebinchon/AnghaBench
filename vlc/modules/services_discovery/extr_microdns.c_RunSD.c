@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct discovery_sys {int /*<<< orphan*/  i_nb_service_names; int /*<<< orphan*/  ppsz_service_names; int /*<<< orphan*/  p_microdns; } ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct discovery_sys {int i_nb_service_names; int ppsz_service_names; int p_microdns; } ;
 struct TYPE_4__ {struct discovery_sys* p_sys; } ;
-typedef  TYPE_1__ services_discovery_t ;
+typedef TYPE_1__ services_discovery_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LISTEN_INTERVAL ; 
- int /*<<< orphan*/  RR_PTR ; 
- int /*<<< orphan*/  SEC_FROM_VLC_TICK (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  VLC_OBJECT (TYPE_1__*) ; 
- int mdns_listen (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  new_entries_sd_cb ; 
- int /*<<< orphan*/  print_error (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  stop_sd_cb ; 
+
+ int LISTEN_INTERVAL ;
+ int RR_PTR ;
+ int SEC_FROM_VLC_TICK (int ) ;
+ int VLC_OBJECT (TYPE_1__*) ;
+ int mdns_listen (int ,int ,int ,int ,int ,int ,int ,TYPE_1__*) ;
+ int new_entries_sd_cb ;
+ int print_error (int ,char*,int) ;
+ int stop_sd_cb ;
 
 __attribute__((used)) static void *
 RunSD( void *p_this )
@@ -40,5 +40,5 @@ RunSD( void *p_this )
     if( i_status < 0 )
         print_error( VLC_OBJECT( p_sd ), "listen", i_status );
 
-    return NULL;
+    return ((void*)0);
 }

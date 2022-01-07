@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {char* value; } ;
-typedef  TYPE_1__ CONF_VALUE ;
+typedef TYPE_1__ CONF_VALUE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  X509V3_F_X509V3_GET_VALUE_BOOL ; 
- int /*<<< orphan*/  X509V3_R_INVALID_BOOLEAN_STRING ; 
- int /*<<< orphan*/  X509V3_conf_err (TYPE_1__ const*) ; 
- int /*<<< orphan*/  X509V3err (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ strcmp (char const*,char*) ; 
+
+ int X509V3_F_X509V3_GET_VALUE_BOOL ;
+ int X509V3_R_INVALID_BOOLEAN_STRING ;
+ int X509V3_conf_err (TYPE_1__ const*) ;
+ int X509V3err (int ,int ) ;
+ scalar_t__ strcmp (char const*,char*) ;
 
 int X509V3_get_value_bool(const CONF_VALUE *value, int *asn1_bool)
 {
     const char *btmp;
 
-    if ((btmp = value->value) == NULL)
+    if ((btmp = value->value) == ((void*)0))
         goto err;
     if (strcmp(btmp, "TRUE") == 0
         || strcmp(btmp, "true") == 0

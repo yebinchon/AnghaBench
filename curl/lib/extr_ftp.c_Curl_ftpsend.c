@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct connectdata {int data_prot; TYPE_2__* data; int /*<<< orphan*/ * sock; } ;
-typedef  scalar_t__ ssize_t ;
-typedef  int /*<<< orphan*/  s ;
-typedef  enum protection_level { ____Placeholder_protection_level } protection_level ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct connectdata {int data_prot; TYPE_2__* data; int * sock; } ;
+typedef scalar_t__ ssize_t ;
+typedef int s ;
+typedef enum protection_level { ____Placeholder_protection_level } protection_level ;
 struct TYPE_4__ {scalar_t__ verbose; } ;
 struct TYPE_5__ {TYPE_1__ set; } ;
-typedef  scalar_t__ CURLcode ;
+typedef scalar_t__ CURLcode ;
 
-/* Variables and functions */
- scalar_t__ CURLE_BAD_FUNCTION_ARGUMENT ; 
- scalar_t__ CURLE_OK ; 
- int /*<<< orphan*/  CURLINFO_HEADER_OUT ; 
- scalar_t__ Curl_convert_to_network (TYPE_2__*,char*,size_t) ; 
- int /*<<< orphan*/  Curl_debug (TYPE_2__*,int /*<<< orphan*/ ,char*,size_t) ; 
- scalar_t__ Curl_write (struct connectdata*,int /*<<< orphan*/ ,char*,size_t,scalar_t__*) ; 
- int /*<<< orphan*/  DEBUGASSERT (int) ; 
- size_t FIRSTSOCKET ; 
- int PROT_CMD ; 
- int PROT_LAST ; 
- int PROT_NONE ; 
- int SBUF_SIZE ; 
- int /*<<< orphan*/  memcpy (char**,char const*,size_t) ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
- size_t strlen (char const*) ; 
+
+ scalar_t__ CURLE_BAD_FUNCTION_ARGUMENT ;
+ scalar_t__ CURLE_OK ;
+ int CURLINFO_HEADER_OUT ;
+ scalar_t__ Curl_convert_to_network (TYPE_2__*,char*,size_t) ;
+ int Curl_debug (TYPE_2__*,int ,char*,size_t) ;
+ scalar_t__ Curl_write (struct connectdata*,int ,char*,size_t,scalar_t__*) ;
+ int DEBUGASSERT (int) ;
+ size_t FIRSTSOCKET ;
+ int PROT_CMD ;
+ int PROT_LAST ;
+ int PROT_NONE ;
+ int SBUF_SIZE ;
+ int memcpy (char**,char const*,size_t) ;
+ int strcpy (char*,char*) ;
+ size_t strlen (char const*) ;
 
 CURLcode Curl_ftpsend(struct connectdata *conn, const char *cmd)
 {
   ssize_t bytes_written;
-#define SBUF_SIZE 1024
-  char s[SBUF_SIZE];
+
+  char s[1024];
   size_t write_len;
   char *sptr = s;
   CURLcode result = CURLE_OK;
-#ifdef HAVE_GSSAPI
-  enum protection_level data_sec = conn->data_prot;
-#endif
+
+
+
 
   if(!cmd)
     return CURLE_BAD_FUNCTION_ARGUMENT;
@@ -57,25 +57,25 @@ CURLcode Curl_ftpsend(struct connectdata *conn, const char *cmd)
     return CURLE_BAD_FUNCTION_ARGUMENT;
 
   memcpy(&s, cmd, write_len);
-  strcpy(&s[write_len], "\r\n"); /* append a trailing CRLF */
+  strcpy(&s[write_len], "\r\n");
   write_len += 2;
   bytes_written = 0;
 
   result = Curl_convert_to_network(conn->data, s, write_len);
-  /* Curl_convert_to_network calls failf if unsuccessful */
+
   if(result)
     return result;
 
   for(;;) {
-#ifdef HAVE_GSSAPI
-    conn->data_prot = PROT_CMD;
-#endif
+
+
+
     result = Curl_write(conn, conn->sock[FIRSTSOCKET], sptr, write_len,
                         &bytes_written);
-#ifdef HAVE_GSSAPI
-    DEBUGASSERT(data_sec > PROT_NONE && data_sec < PROT_LAST);
-    conn->data_prot = data_sec;
-#endif
+
+
+
+
 
     if(result)
       break;

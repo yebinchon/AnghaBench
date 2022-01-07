@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {struct TYPE_5__* prev; struct TYPE_5__* next; } ;
-typedef  TYPE_1__ CIPHER_ORDER ;
+typedef TYPE_1__ CIPHER_ORDER ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static void ll_append_head(CIPHER_ORDER **head, CIPHER_ORDER *curr,
                            CIPHER_ORDER **tail)
@@ -23,12 +23,12 @@ __attribute__((used)) static void ll_append_head(CIPHER_ORDER **head, CIPHER_ORD
         return;
     if (curr == *tail)
         *tail = curr->prev;
-    if (curr->next != NULL)
+    if (curr->next != ((void*)0))
         curr->next->prev = curr->prev;
-    if (curr->prev != NULL)
+    if (curr->prev != ((void*)0))
         curr->prev->next = curr->next;
     (*head)->prev = curr;
     curr->next = *head;
-    curr->prev = NULL;
+    curr->prev = ((void*)0);
     *head = curr;
 }

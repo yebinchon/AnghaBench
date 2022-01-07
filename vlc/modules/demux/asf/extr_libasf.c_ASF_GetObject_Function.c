@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_guid_t ;
-struct ASF_Object_Function_entry {int /*<<< orphan*/  p_id; } ;
 
-/* Variables and functions */
- size_t ARRAY_SIZE (struct ASF_Object_Function_entry const*) ; 
- struct ASF_Object_Function_entry const* ASF_Object_Function ; 
- scalar_t__ guidcmp (int /*<<< orphan*/ ,int /*<<< orphan*/  const*) ; 
+
+
+
+typedef int vlc_guid_t ;
+struct ASF_Object_Function_entry {int p_id; } ;
+
+
+ size_t ARRAY_SIZE (struct ASF_Object_Function_entry const*) ;
+ struct ASF_Object_Function_entry const* ASF_Object_Function ;
+ scalar_t__ guidcmp (int ,int const*) ;
 
 __attribute__((used)) static const struct ASF_Object_Function_entry * ASF_GetObject_Function( const vlc_guid_t *id )
 {
@@ -25,5 +25,5 @@ __attribute__((used)) static const struct ASF_Object_Function_entry * ASF_GetObj
         if( guidcmp( ASF_Object_Function[i].p_id, id ) )
             return &ASF_Object_Function[i];
     }
-    return NULL;
+    return ((void*)0);
 }

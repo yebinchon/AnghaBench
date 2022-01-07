@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/ ** vals; } ;
-typedef  TYPE_1__ matrix ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  find_replace (char*,char*,char*,char*) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  fscanf (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *) ; 
- TYPE_1__ make_matrix (int,int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int ** vals; } ;
+typedef TYPE_1__ matrix ;
+typedef int FILE ;
+
+
+ int fclose (int *) ;
+ int find_replace (char*,char*,char*,char*) ;
+ int * fopen (char*,char*) ;
+ int fscanf (int *,char*,int *) ;
+ TYPE_1__ make_matrix (int,int) ;
 
 matrix load_regression_labels_paths(char **paths, int n, int k)
 {

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int ax; int bx; int flags; int dx; } ;
 struct TYPE_5__ {TYPE_1__ x; } ;
-typedef  TYPE_2__ __dpmi_regs ;
+typedef TYPE_2__ __dpmi_regs ;
 
-/* Variables and functions */
- int /*<<< orphan*/  __dpmi_int (int,TYPE_2__*) ; 
+
+ int __dpmi_int (int,TYPE_2__*) ;
 
 __attribute__((used)) static int
 device_mode (int fd, int raw_p)
@@ -37,11 +37,11 @@ device_mode (int fd, int raw_p)
   else
     newmode &= ~0x20;
 
-  if (oldmode & 0x80)	/* Only for character dev */
+  if (oldmode & 0x80)
   {
     regs.x.ax = 0x4401;
     regs.x.bx = fd;
-    regs.x.dx = newmode & 0xff;   /* Force upper byte zero, else it fails */
+    regs.x.dx = newmode & 0xff;
     __dpmi_int (0x21, &regs);
     if (regs.x.flags & 1)
       return -1;

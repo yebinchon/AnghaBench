@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u8 ;
-typedef  int u32 ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int u8 ;
+typedef int u32 ;
 struct TYPE_4__ {int dst_char; int dst_len; } ;
-typedef  TYPE_1__ keyboard_layout_mapping_t ;
+typedef TYPE_1__ keyboard_layout_mapping_t ;
 
-/* Variables and functions */
- int MIN (int const,int) ; 
- int find_keyboard_layout_map (int const,int,TYPE_1__ const*,int const) ; 
+
+ int MIN (int const,int) ;
+ int find_keyboard_layout_map (int const,int,TYPE_1__ const*,int const) ;
 
 int execute_keyboard_layout_mapping (u32 plain_buf[64], const int plain_len, const keyboard_layout_mapping_t *s_keyboard_layout_mapping, const int keyboard_layout_mapping_cnt)
 {
@@ -46,8 +46,8 @@ int execute_keyboard_layout_mapping (u32 plain_buf[64], const int plain_len, con
     if (rem > 2) src2 = plain_ptr[plain_pos + 2];
     if (rem > 3) src3 = plain_ptr[plain_pos + 3];
 
-    const u32 src = (src0 <<  0)
-                  | (src1 <<  8)
+    const u32 src = (src0 << 0)
+                  | (src1 << 8)
                   | (src2 << 16)
                   | (src3 << 24);
 
@@ -60,25 +60,25 @@ int execute_keyboard_layout_mapping (u32 plain_buf[64], const int plain_len, con
       if (idx == -1) continue;
 
       u32 dst_char = s_keyboard_layout_mapping[idx].dst_char;
-      int dst_len  = s_keyboard_layout_mapping[idx].dst_len;
+      int dst_len = s_keyboard_layout_mapping[idx].dst_len;
 
       switch (dst_len)
       {
         case 1:
-          out_ptr[out_len++] = (dst_char >>  0) & 0xff;
+          out_ptr[out_len++] = (dst_char >> 0) & 0xff;
           break;
         case 2:
-          out_ptr[out_len++] = (dst_char >>  0) & 0xff;
-          out_ptr[out_len++] = (dst_char >>  8) & 0xff;
+          out_ptr[out_len++] = (dst_char >> 0) & 0xff;
+          out_ptr[out_len++] = (dst_char >> 8) & 0xff;
           break;
         case 3:
-          out_ptr[out_len++] = (dst_char >>  0) & 0xff;
-          out_ptr[out_len++] = (dst_char >>  8) & 0xff;
+          out_ptr[out_len++] = (dst_char >> 0) & 0xff;
+          out_ptr[out_len++] = (dst_char >> 8) & 0xff;
           out_ptr[out_len++] = (dst_char >> 16) & 0xff;
           break;
         case 4:
-          out_ptr[out_len++] = (dst_char >>  0) & 0xff;
-          out_ptr[out_len++] = (dst_char >>  8) & 0xff;
+          out_ptr[out_len++] = (dst_char >> 0) & 0xff;
+          out_ptr[out_len++] = (dst_char >> 8) & 0xff;
           out_ptr[out_len++] = (dst_char >> 16) & 0xff;
           out_ptr[out_len++] = (dst_char >> 24) & 0xff;
           break;
@@ -89,7 +89,7 @@ int execute_keyboard_layout_mapping (u32 plain_buf[64], const int plain_len, con
       break;
     }
 
-    // not matched, keep original
+
 
     if (src_len == 0)
     {

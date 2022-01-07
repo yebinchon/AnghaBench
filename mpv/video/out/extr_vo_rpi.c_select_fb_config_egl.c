@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct mp_egl_rpi {int /*<<< orphan*/  egl_display; } ;
-typedef  int EGLint ;
-typedef  int /*<<< orphan*/ * EGLConfig ;
 
-/* Variables and functions */
- int EGL_BLUE_SIZE ; 
- int EGL_DEPTH_SIZE ; 
- int EGL_GREEN_SIZE ; 
- int EGL_NONE ; 
- int EGL_OPENGL_ES2_BIT ; 
- int EGL_RED_SIZE ; 
- int EGL_RENDERABLE_TYPE ; 
- int EGL_SURFACE_TYPE ; 
- int EGL_WINDOW_BIT ; 
- int /*<<< orphan*/  MP_FATAL (struct mp_egl_rpi*,char*) ; 
- int /*<<< orphan*/  eglChooseConfig (int /*<<< orphan*/ ,int*,int /*<<< orphan*/ **,int,int*) ; 
+
+
+
+struct mp_egl_rpi {int egl_display; } ;
+typedef int EGLint ;
+typedef int * EGLConfig ;
+
+
+ int EGL_BLUE_SIZE ;
+ int EGL_DEPTH_SIZE ;
+ int EGL_GREEN_SIZE ;
+ int EGL_NONE ;
+ int EGL_OPENGL_ES2_BIT ;
+ int EGL_RED_SIZE ;
+ int EGL_RENDERABLE_TYPE ;
+ int EGL_SURFACE_TYPE ;
+ int EGL_WINDOW_BIT ;
+ int MP_FATAL (struct mp_egl_rpi*,char*) ;
+ int eglChooseConfig (int ,int*,int **,int,int*) ;
 
 __attribute__((used)) static EGLConfig select_fb_config_egl(struct mp_egl_rpi *p)
 {
@@ -46,7 +46,7 @@ __attribute__((used)) static EGLConfig select_fb_config_egl(struct mp_egl_rpi *p
 
     if (!config_count) {
         MP_FATAL(p, "Could find EGL configuration!\n");
-        return NULL;
+        return ((void*)0);
     }
 
     return config;

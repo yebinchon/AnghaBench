@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_8__ {TYPE_2__* topmsg_tree; scalar_t__ delayed_tree; struct file_user_list_entry* dir_entry; } ;
-typedef  TYPE_1__ user_t ;
+typedef TYPE_1__ user_t ;
 struct TYPE_9__ {int N; } ;
-typedef  TYPE_2__ tree_num_t ;
+typedef TYPE_2__ tree_num_t ;
 struct file_user_list_entry {int dummy; } ;
 
-/* Variables and functions */
- int MAX_RES ; 
- TYPE_2__* NIL_N ; 
- int R ; 
- int R_cnt ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ conv_uid (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,int,int) ; 
- TYPE_1__* get_user (int) ; 
- TYPE_1__* get_user_f (int) ; 
- int /*<<< orphan*/  load_user_metafile (int) ; 
- struct file_user_list_entry* lookup_user_directory (int) ; 
- int /*<<< orphan*/  stderr ; 
- int tree_num_get_range (TYPE_2__*,int,int,int) ; 
- int tree_num_get_range_rev (TYPE_2__*,int,int,int) ; 
- int verbosity ; 
+
+ int MAX_RES ;
+ TYPE_2__* NIL_N ;
+ int R ;
+ int R_cnt ;
+ int assert (int) ;
+ scalar_t__ conv_uid (int) ;
+ int fprintf (int ,char*,int,int,int) ;
+ TYPE_1__* get_user (int) ;
+ TYPE_1__* get_user_f (int) ;
+ int load_user_metafile (int) ;
+ struct file_user_list_entry* lookup_user_directory (int) ;
+ int stderr ;
+ int tree_num_get_range (TYPE_2__*,int,int,int) ;
+ int tree_num_get_range_rev (TYPE_2__*,int,int,int) ;
+ int verbosity ;
 
 int get_top_msglist (int user_id, int from, int to) {
   user_t *U;
@@ -55,7 +55,7 @@ int get_top_msglist (int user_id, int from, int to) {
   if (U) {
     D = U->dir_entry;
     if (U->delayed_tree || D) {
-      /* need to load user metafile to perform delayed operations */
+
       if (!load_user_metafile (user_id)) {
         return -2;
       }

@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  SOCK ;
-typedef  int /*<<< orphan*/  PACK ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * CncConnectEx (int) ; 
- int /*<<< orphan*/  Disconnect (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FreePack (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  MsKillOtherInstanceEx (char*) ; 
- int /*<<< orphan*/ * NewPack () ; 
- int /*<<< orphan*/  PackAddStr (int /*<<< orphan*/ *,char*,char*) ; 
- int /*<<< orphan*/ * RecvPack (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ReleaseSock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SendPack (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int SOCK ;
+typedef int PACK ;
+
+
+ int * CncConnectEx (int) ;
+ int Disconnect (int *) ;
+ int FreePack (int *) ;
+ int MsKillOtherInstanceEx (char*) ;
+ int * NewPack () ;
+ int PackAddStr (int *,char*,char*) ;
+ int * RecvPack (int *) ;
+ int ReleaseSock (int *) ;
+ int SendPack (int *,int *) ;
 
 void CncExit()
 {
-	SOCK *s = CncConnectEx(256);
-	PACK *p;
-	if (s != NULL)
-	{
-		p = NewPack();
-		PackAddStr(p, "function", "exit");
+ SOCK *s = CncConnectEx(256);
+ PACK *p;
+ if (s != ((void*)0))
+ {
+  p = NewPack();
+  PackAddStr(p, "function", "exit");
 
-		SendPack(s, p);
+  SendPack(s, p);
 
-		FreePack(p);
+  FreePack(p);
 
-		FreePack(RecvPack(s));
+  FreePack(RecvPack(s));
 
-		Disconnect(s);
-		ReleaseSock(s);
-	}
+  Disconnect(s);
+  ReleaseSock(s);
+ }
 
-#ifdef	OS_WIN32
-	MsKillOtherInstanceEx("vpnclient");
-#endif	// OS_WIN32
+
+
+
 }

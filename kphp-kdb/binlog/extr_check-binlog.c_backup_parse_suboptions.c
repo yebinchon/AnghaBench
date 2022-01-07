@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int warn_bad_backups_which_could_be_deleted; int warn_redundant_good_backups; void* check_level; int /*<<< orphan*/  check_type; void* shorter_middle_log_level; void* shorter_last_log_level; } ;
 
-/* Variables and functions */
- char* BACKUP_ALL_SUBOPTIONS ; 
- TYPE_1__ backups_features ; 
- char* backups_suboptions ; 
- int /*<<< orphan*/  bc_full ; 
- int /*<<< orphan*/  bc_partial ; 
- int /*<<< orphan*/  isupper (char const) ; 
- int /*<<< orphan*/  kprintf (char*,...) ; 
- void* ll_error ; 
- void* ll_warning ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int warn_bad_backups_which_could_be_deleted; int warn_redundant_good_backups; void* check_level; int check_type; void* shorter_middle_log_level; void* shorter_last_log_level; } ;
+
+
+ char* BACKUP_ALL_SUBOPTIONS ;
+ TYPE_1__ backups_features ;
+ char* backups_suboptions ;
+ int bc_full ;
+ int bc_partial ;
+ int isupper (char const) ;
+ int kprintf (char*,...) ;
+ void* ll_error ;
+ void* ll_warning ;
+ int strcmp (char*,char*) ;
 
 __attribute__((used)) static int backup_parse_suboptions (void) {
-  if (backups_suboptions == NULL) {
+  if (backups_suboptions == ((void*)0)) {
     kprintf ("Backup suboptions wasn't specified (use -B switch).\n");
     return -1;
   }

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  scalar_t__ uint32_t ;
-struct TYPE_3__ {int data_length; int /*<<< orphan*/  number; } ;
-typedef  TYPE_1__ Jbig2Segment ;
-typedef  int /*<<< orphan*/  Jbig2Ctx ;
 
-/* Variables and functions */
- int /*<<< orphan*/  JBIG2_SEVERITY_FATAL ; 
- int /*<<< orphan*/  JBIG2_SEVERITY_INFO ; 
- int jbig2_error (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,...) ; 
- scalar_t__ jbig2_get_uint32 (int /*<<< orphan*/  const*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef scalar_t__ uint32_t ;
+struct TYPE_3__ {int data_length; int number; } ;
+typedef TYPE_1__ Jbig2Segment ;
+typedef int Jbig2Ctx ;
+
+
+ int JBIG2_SEVERITY_FATAL ;
+ int JBIG2_SEVERITY_INFO ;
+ int jbig2_error (int *,int ,int ,char*,...) ;
+ scalar_t__ jbig2_get_uint32 (int const*) ;
 
 __attribute__((used)) static int
 jbig2_parse_profile_segment(Jbig2Ctx *ctx, Jbig2Segment *segment, const uint8_t *segment_data)

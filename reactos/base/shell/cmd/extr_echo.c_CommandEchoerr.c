@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  LPTSTR ;
-typedef  int /*<<< orphan*/  INT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ConErrPuts (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ConOutResPuts (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  STRING_ECHO_HELP2 ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  _T (char*) ; 
- int /*<<< orphan*/  _tcsncmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  debugstr_aw (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int LPTSTR ;
+typedef int INT ;
+
+
+ int ConErrPuts (int ) ;
+ int ConOutResPuts (int ) ;
+ int STRING_ECHO_HELP2 ;
+ int TRACE (char*,int ) ;
+ int _T (char*) ;
+ int _tcsncmp (int ,int ,int) ;
+ int debugstr_aw (int ) ;
 
 INT CommandEchoerr (LPTSTR param)
 {

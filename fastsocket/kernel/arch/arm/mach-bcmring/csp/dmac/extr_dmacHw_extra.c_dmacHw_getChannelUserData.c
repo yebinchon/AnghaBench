@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  dmacHw_HANDLE_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int dmacHw_HANDLE_t ;
 struct TYPE_3__ {void* userData; } ;
-typedef  TYPE_1__ dmacHw_CBLK_t ;
+typedef TYPE_1__ dmacHw_CBLK_t ;
 
-/* Variables and functions */
- TYPE_1__* dmacHw_HANDLE_TO_CBLK (int /*<<< orphan*/ ) ; 
 
-void *dmacHw_getChannelUserData(dmacHw_HANDLE_t handle	/*  [ IN ] DMA Channel handle */
+ TYPE_1__* dmacHw_HANDLE_TO_CBLK (int ) ;
+
+void *dmacHw_getChannelUserData(dmacHw_HANDLE_t handle
     ) {
-	dmacHw_CBLK_t *pCblk = dmacHw_HANDLE_TO_CBLK(handle);
+ dmacHw_CBLK_t *pCblk = dmacHw_HANDLE_TO_CBLK(handle);
 
-	return pCblk->userData;
+ return pCblk->userData;
 }

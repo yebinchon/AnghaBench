@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct trie {int accepting; int shift; int /*<<< orphan*/  depth; struct tree* links; } ;
+
+
+
+
+struct trie {int accepting; int shift; int depth; struct tree* links; } ;
 struct tree {unsigned char label; struct trie* trie; struct tree* rlink; struct tree* llink; } ;
-struct kwsmatch {int index; int* offset; int /*<<< orphan*/ * size; } ;
+struct kwsmatch {int index; int* offset; int * size; } ;
 struct kwset {size_t mind; unsigned char* delta; char* trans; int maxd; struct trie* trie; struct trie** next; } ;
-typedef  scalar_t__ kwset_t ;
+typedef scalar_t__ kwset_t ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static size_t
 cwexec (kwset_t kws, char const *text, size_t len, struct kwsmatch *kwsmatch)
@@ -33,11 +33,11 @@ cwexec (kwset_t kws, char const *text, size_t len, struct kwsmatch *kwsmatch)
   register struct tree const *tree;
   register char const *trans;
 
-#ifdef lint
-  accept = NULL;
-#endif
 
-  /* Initialize register copies and look for easy ways out. */
+
+
+
+
   kwset = (struct kwset *) kws;
   if (len < kwset->mind)
     return -1;
@@ -62,59 +62,59 @@ cwexec (kwset_t kws, char const *text, size_t len, struct kwsmatch *kwsmatch)
   while (lim - end >= d)
     {
       if (qlim && end <= qlim)
-	{
-	  end += d - 1;
-	  while ((d = delta[c = *end]) && end < qlim)
-	    {
-	      end += d;
-	      end += delta[(unsigned char) *end];
-	      end += delta[(unsigned char) *end];
-	    }
-	  ++end;
-	}
+ {
+   end += d - 1;
+   while ((d = delta[c = *end]) && end < qlim)
+     {
+       end += d;
+       end += delta[(unsigned char) *end];
+       end += delta[(unsigned char) *end];
+     }
+   ++end;
+ }
       else
-	d = delta[c = (end += d)[-1]];
+ d = delta[c = (end += d)[-1]];
       if (d)
-	continue;
+ continue;
       beg = end - 1;
       trie = next[c];
       if (trie->accepting)
-	{
-	  mch = beg;
-	  accept = trie;
-	}
+ {
+   mch = beg;
+   accept = trie;
+ }
       d = trie->shift;
       while (beg > text)
-	{
-	  c = trans ? trans[(unsigned char) *--beg] : *--beg;
-	  tree = trie->links;
-	  while (tree && c != tree->label)
-	    if (c < tree->label)
-	      tree = tree->llink;
-	    else
-	      tree = tree->rlink;
-	  if (tree)
-	    {
-	      trie = tree->trie;
-	      if (trie->accepting)
-		{
-		  mch = beg;
-		  accept = trie;
-		}
-	    }
-	  else
-	    break;
-	  d = trie->shift;
-	}
+ {
+   c = trans ? trans[(unsigned char) *--beg] : *--beg;
+   tree = trie->links;
+   while (tree && c != tree->label)
+     if (c < tree->label)
+       tree = tree->llink;
+     else
+       tree = tree->rlink;
+   if (tree)
+     {
+       trie = tree->trie;
+       if (trie->accepting)
+  {
+    mch = beg;
+    accept = trie;
+  }
+     }
+   else
+     break;
+   d = trie->shift;
+ }
       if (mch)
-	goto match;
+ goto match;
     }
   return -1;
 
  match:
-  /* Given a known match, find the longest possible match anchored
-     at or before its starting point.  This is nearly a verbatim
-     copy of the preceding main search loops. */
+
+
+
   if (lim - mch > kwset->maxd)
     lim = mch + kwset->maxd;
   lmch = 0;
@@ -122,48 +122,48 @@ cwexec (kwset_t kws, char const *text, size_t len, struct kwsmatch *kwsmatch)
   while (lim - end >= d)
     {
       if ((d = delta[c = (end += d)[-1]]) != 0)
-	continue;
+ continue;
       beg = end - 1;
       if (!(trie = next[c]))
-	{
-	  d = 1;
-	  continue;
-	}
+ {
+   d = 1;
+   continue;
+ }
       if (trie->accepting && beg <= mch)
-	{
-	  lmch = beg;
-	  accept = trie;
-	}
+ {
+   lmch = beg;
+   accept = trie;
+ }
       d = trie->shift;
       while (beg > text)
-	{
-	  c = trans ? trans[(unsigned char) *--beg] : *--beg;
-	  tree = trie->links;
-	  while (tree && c != tree->label)
-	    if (c < tree->label)
-	      tree = tree->llink;
-	    else
-	      tree = tree->rlink;
-	  if (tree)
-	    {
-	      trie = tree->trie;
-	      if (trie->accepting && beg <= mch)
-		{
-		  lmch = beg;
-		  accept = trie;
-		}
-	    }
-	  else
-	    break;
-	  d = trie->shift;
-	}
+ {
+   c = trans ? trans[(unsigned char) *--beg] : *--beg;
+   tree = trie->links;
+   while (tree && c != tree->label)
+     if (c < tree->label)
+       tree = tree->llink;
+     else
+       tree = tree->rlink;
+   if (tree)
+     {
+       trie = tree->trie;
+       if (trie->accepting && beg <= mch)
+  {
+    lmch = beg;
+    accept = trie;
+  }
+     }
+   else
+     break;
+   d = trie->shift;
+ }
       if (lmch)
-	{
-	  mch = lmch;
-	  goto match;
-	}
+ {
+   mch = lmch;
+   goto match;
+ }
       if (!d)
-	d = 1;
+ d = 1;
     }
 
   if (kwsmatch)

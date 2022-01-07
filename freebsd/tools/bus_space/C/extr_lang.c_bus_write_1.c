@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  val ;
-typedef  int /*<<< orphan*/  uint8_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  bs_write (int,long,int /*<<< orphan*/ *,int) ; 
- int errno ; 
+
+
+
+typedef int val ;
+typedef int uint8_t ;
+
+
+ int bs_write (int,long,int *,int) ;
+ int errno ;
 
 int
 bus_write_1(int rid, long ofs, uint8_t val)
 {
 
-	return ((!bs_write(rid, ofs, &val, sizeof(val))) ? errno : 0);
+ return ((!bs_write(rid, ofs, &val, sizeof(val))) ? errno : 0);
 }

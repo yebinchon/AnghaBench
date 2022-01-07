@@ -1,73 +1,73 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct RClass {int dummy; } ;
 struct TYPE_7__ {struct RClass* object_class; } ;
-typedef  TYPE_1__ mrb_state ;
+typedef TYPE_1__ mrb_state ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MRB_ARGS_NONE () ; 
- int /*<<< orphan*/  MRB_ARGS_REQ (int) ; 
- int /*<<< orphan*/  MRB_SET_INSTANCE_TT (struct RClass*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MRB_TT_DATA ; 
- int /*<<< orphan*/  file_s_lstat ; 
- int /*<<< orphan*/  io_stat ; 
- struct RClass* mrb_define_class (TYPE_1__*,char*,struct RClass*) ; 
- int /*<<< orphan*/  mrb_define_class_method (TYPE_1__*,struct RClass*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- struct RClass* mrb_define_class_under (TYPE_1__*,struct RClass*,char*,struct RClass*) ; 
- int /*<<< orphan*/  mrb_define_method (TYPE_1__*,struct RClass*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stat_atime ; 
- int /*<<< orphan*/  stat_birthtime ; 
- int /*<<< orphan*/  stat_blksize ; 
- int /*<<< orphan*/  stat_blockdev_p ; 
- int /*<<< orphan*/  stat_blocks ; 
- int /*<<< orphan*/  stat_chardev_p ; 
- int /*<<< orphan*/  stat_ctime ; 
- int /*<<< orphan*/  stat_dev ; 
- int /*<<< orphan*/  stat_dev_major ; 
- int /*<<< orphan*/  stat_dev_minor ; 
- int /*<<< orphan*/  stat_directory_p ; 
- int /*<<< orphan*/  stat_executable_p ; 
- int /*<<< orphan*/  stat_executable_real_p ; 
- int /*<<< orphan*/  stat_file_p ; 
- int /*<<< orphan*/  stat_ftype ; 
- int /*<<< orphan*/  stat_gid ; 
- int /*<<< orphan*/  stat_grpowned_p ; 
- int /*<<< orphan*/  stat_initialize ; 
- int /*<<< orphan*/  stat_initialize_copy ; 
- int /*<<< orphan*/  stat_ino ; 
- int /*<<< orphan*/  stat_mode ; 
- int /*<<< orphan*/  stat_mtime ; 
- int /*<<< orphan*/  stat_nlink ; 
- int /*<<< orphan*/  stat_owned_p ; 
- int /*<<< orphan*/  stat_owned_real_p ; 
- int /*<<< orphan*/  stat_pipe_p ; 
- int /*<<< orphan*/  stat_rdev ; 
- int /*<<< orphan*/  stat_rdev_major ; 
- int /*<<< orphan*/  stat_rdev_minor ; 
- int /*<<< orphan*/  stat_readable_p ; 
- int /*<<< orphan*/  stat_readable_real_p ; 
- int /*<<< orphan*/  stat_setgid_p ; 
- int /*<<< orphan*/  stat_setuid_p ; 
- int /*<<< orphan*/  stat_size ; 
- int /*<<< orphan*/  stat_socket_p ; 
- int /*<<< orphan*/  stat_sticky_p ; 
- int /*<<< orphan*/  stat_symlink_p ; 
- int /*<<< orphan*/  stat_uid ; 
- int /*<<< orphan*/  stat_world_readable_p ; 
- int /*<<< orphan*/  stat_world_writable_p ; 
- int /*<<< orphan*/  stat_writable_p ; 
- int /*<<< orphan*/  stat_writable_real_p ; 
+
+ int MRB_ARGS_NONE () ;
+ int MRB_ARGS_REQ (int) ;
+ int MRB_SET_INSTANCE_TT (struct RClass*,int ) ;
+ int MRB_TT_DATA ;
+ int file_s_lstat ;
+ int io_stat ;
+ struct RClass* mrb_define_class (TYPE_1__*,char*,struct RClass*) ;
+ int mrb_define_class_method (TYPE_1__*,struct RClass*,char*,int ,int ) ;
+ struct RClass* mrb_define_class_under (TYPE_1__*,struct RClass*,char*,struct RClass*) ;
+ int mrb_define_method (TYPE_1__*,struct RClass*,char*,int ,int ) ;
+ int stat_atime ;
+ int stat_birthtime ;
+ int stat_blksize ;
+ int stat_blockdev_p ;
+ int stat_blocks ;
+ int stat_chardev_p ;
+ int stat_ctime ;
+ int stat_dev ;
+ int stat_dev_major ;
+ int stat_dev_minor ;
+ int stat_directory_p ;
+ int stat_executable_p ;
+ int stat_executable_real_p ;
+ int stat_file_p ;
+ int stat_ftype ;
+ int stat_gid ;
+ int stat_grpowned_p ;
+ int stat_initialize ;
+ int stat_initialize_copy ;
+ int stat_ino ;
+ int stat_mode ;
+ int stat_mtime ;
+ int stat_nlink ;
+ int stat_owned_p ;
+ int stat_owned_real_p ;
+ int stat_pipe_p ;
+ int stat_rdev ;
+ int stat_rdev_major ;
+ int stat_rdev_minor ;
+ int stat_readable_p ;
+ int stat_readable_real_p ;
+ int stat_setgid_p ;
+ int stat_setuid_p ;
+ int stat_size ;
+ int stat_socket_p ;
+ int stat_sticky_p ;
+ int stat_symlink_p ;
+ int stat_uid ;
+ int stat_world_readable_p ;
+ int stat_world_writable_p ;
+ int stat_writable_p ;
+ int stat_writable_real_p ;
 
 void
 mrb_mruby_file_stat_gem_init(mrb_state* mrb)
@@ -98,9 +98,9 @@ mrb_mruby_file_stat_gem_init(mrb_state* mrb)
   mrb_define_method(mrb, stat, "atime", stat_atime, MRB_ARGS_NONE());
   mrb_define_method(mrb, stat, "mtime", stat_mtime, MRB_ARGS_NONE());
   mrb_define_method(mrb, stat, "ctime", stat_ctime, MRB_ARGS_NONE());
-#ifdef HAVE_METHOD_BIRTHTIME
-  mrb_define_method(mrb, stat, "birthtime", stat_birthtime, MRB_ARGS_NONE());
-#endif
+
+
+
   mrb_define_method(mrb, stat, "size", stat_size, MRB_ARGS_NONE());
   mrb_define_method(mrb, stat, "blksize", stat_blksize, MRB_ARGS_NONE());
   mrb_define_method(mrb, stat, "blocks", stat_blocks, MRB_ARGS_NONE());

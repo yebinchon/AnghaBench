@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_VA_NULL ; 
- char* apr_pstrcat (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_fspath__is_canonical (char const*) ; 
- int /*<<< orphan*/  svn_relpath_get_longest_ancestor (char const*,char const*,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int apr_pool_t ;
+
+
+ int SVN_VA_NULL ;
+ char* apr_pstrcat (int *,char*,int ,int ) ;
+ int assert (int ) ;
+ int svn_fspath__is_canonical (char const*) ;
+ int svn_relpath_get_longest_ancestor (char const*,char const*,int *) ;
 
 char *
 svn_fspath__get_longest_ancestor(const char *fspath1,

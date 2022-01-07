@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int w; int h; int c; int /*<<< orphan*/  data; } ;
-typedef  TYPE_1__ image ;
 
-/* Variables and functions */
- TYPE_1__ crop_image (TYPE_1__,int /*<<< orphan*/ ,int,int,int) ; 
- float dist_array (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int) ; 
- int floor (int) ; 
- int /*<<< orphan*/  free_image (TYPE_1__) ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int w; int h; int c; int data; } ;
+typedef TYPE_1__ image ;
+
+
+ TYPE_1__ crop_image (TYPE_1__,int ,int,int,int) ;
+ float dist_array (int ,int ,int,int) ;
+ int floor (int) ;
+ int free_image (TYPE_1__) ;
 
 int best_3d_shift_r(image a, image b, int min, int max)
 {

@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ UInt32 ;
+
+
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef scalar_t__ UInt32 ;
 struct TYPE_10__ {scalar_t__ dicPos; } ;
 struct TYPE_9__ {scalar_t__ state; scalar_t__ unpackSize; scalar_t__ control; scalar_t__ packSize; TYPE_2__ decoder; void* needInitState; void* needInitDic; void* needInitProp; } ;
-typedef  scalar_t__ SizeT ;
-typedef  int /*<<< orphan*/  SRes ;
-typedef  scalar_t__ ELzmaStatus ;
-typedef  scalar_t__ ELzmaFinishMode ;
-typedef  TYPE_1__ CLzma2Dec ;
-typedef  int /*<<< orphan*/  Byte ;
-typedef  void* Bool ;
+typedef scalar_t__ SizeT ;
+typedef int SRes ;
+typedef scalar_t__ ELzmaStatus ;
+typedef scalar_t__ ELzmaFinishMode ;
+typedef TYPE_1__ CLzma2Dec ;
+typedef int Byte ;
+typedef void* Bool ;
 
-/* Variables and functions */
- void* False ; 
- scalar_t__ LZMA2_CONTROL_COPY_RESET_DIC ; 
- int LZMA2_GET_LZMA_MODE (TYPE_1__*) ; 
- scalar_t__ LZMA2_IS_UNCOMPRESSED_STATE (TYPE_1__*) ; 
- scalar_t__ LZMA2_STATE_CONTROL ; 
- scalar_t__ LZMA2_STATE_DATA ; 
- scalar_t__ LZMA2_STATE_DATA_CONT ; 
- scalar_t__ LZMA2_STATE_ERROR ; 
- scalar_t__ LZMA2_STATE_FINISHED ; 
- scalar_t__ LZMA_FINISH_ANY ; 
- scalar_t__ LZMA_FINISH_END ; 
- scalar_t__ LZMA_STATUS_FINISHED_WITH_MARK ; 
- scalar_t__ LZMA_STATUS_MAYBE_FINISHED_WITHOUT_MARK ; 
- scalar_t__ LZMA_STATUS_NEEDS_MORE_INPUT ; 
- scalar_t__ LZMA_STATUS_NOT_FINISHED ; 
- scalar_t__ LZMA_STATUS_NOT_SPECIFIED ; 
- scalar_t__ Lzma2Dec_UpdateState (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LzmaDec_DecodeToDic (TYPE_2__*,scalar_t__,int /*<<< orphan*/  const*,scalar_t__*,scalar_t__,scalar_t__*) ; 
- int /*<<< orphan*/  LzmaDec_InitDicAndState (TYPE_2__*,void*,void*) ; 
- int /*<<< orphan*/  LzmaDec_UpdateWithUncompressed (TYPE_2__*,int /*<<< orphan*/  const*,scalar_t__) ; 
- int /*<<< orphan*/  RINOK (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SZ_ERROR_DATA ; 
- int /*<<< orphan*/  SZ_OK ; 
- void* True ; 
+
+ void* False ;
+ scalar_t__ LZMA2_CONTROL_COPY_RESET_DIC ;
+ int LZMA2_GET_LZMA_MODE (TYPE_1__*) ;
+ scalar_t__ LZMA2_IS_UNCOMPRESSED_STATE (TYPE_1__*) ;
+ scalar_t__ LZMA2_STATE_CONTROL ;
+ scalar_t__ LZMA2_STATE_DATA ;
+ scalar_t__ LZMA2_STATE_DATA_CONT ;
+ scalar_t__ LZMA2_STATE_ERROR ;
+ scalar_t__ LZMA2_STATE_FINISHED ;
+ scalar_t__ LZMA_FINISH_ANY ;
+ scalar_t__ LZMA_FINISH_END ;
+ scalar_t__ LZMA_STATUS_FINISHED_WITH_MARK ;
+ scalar_t__ LZMA_STATUS_MAYBE_FINISHED_WITHOUT_MARK ;
+ scalar_t__ LZMA_STATUS_NEEDS_MORE_INPUT ;
+ scalar_t__ LZMA_STATUS_NOT_FINISHED ;
+ scalar_t__ LZMA_STATUS_NOT_SPECIFIED ;
+ scalar_t__ Lzma2Dec_UpdateState (TYPE_1__*,int ) ;
+ int LzmaDec_DecodeToDic (TYPE_2__*,scalar_t__,int const*,scalar_t__*,scalar_t__,scalar_t__*) ;
+ int LzmaDec_InitDicAndState (TYPE_2__*,void*,void*) ;
+ int LzmaDec_UpdateWithUncompressed (TYPE_2__*,int const*,scalar_t__) ;
+ int RINOK (int ) ;
+ int SZ_ERROR_DATA ;
+ int SZ_OK ;
+ void* True ;
 
 SRes Lzma2Dec_DecodeToDic(CLzma2Dec *p, SizeT dicLimit,
     const Byte *src, SizeT *srcLen, ELzmaFinishMode finishMode, ELzmaStatus *status)
@@ -81,7 +81,7 @@ SRes Lzma2Dec_DecodeToDic(CLzma2Dec *p, SizeT dicLimit,
       SizeT destSizeCur = dicLimit - dicPos;
       SizeT srcSizeCur = inSize - *srcLen;
       ELzmaFinishMode curFinishMode = LZMA_FINISH_ANY;
-      
+
       if (p->unpackSize <= destSizeCur)
       {
         destSizeCur = (SizeT)p->unpackSize;
@@ -132,7 +132,7 @@ SRes Lzma2Dec_DecodeToDic(CLzma2Dec *p, SizeT dicLimit,
           Bool initState = (mode > 0);
           if ((!initDic && p->needInitDic) || (!initState && p->needInitState))
             return SZ_ERROR_DATA;
-          
+
           LzmaDec_InitDicAndState(&p->decoder, initDic, initState);
           p->needInitDic = False;
           p->needInitState = False;
@@ -140,9 +140,9 @@ SRes Lzma2Dec_DecodeToDic(CLzma2Dec *p, SizeT dicLimit,
         }
         if (srcSizeCur > p->packSize)
           srcSizeCur = (SizeT)p->packSize;
-          
+
         res = LzmaDec_DecodeToDic(&p->decoder, dicPos + destSizeCur, src, &srcSizeCur, curFinishMode, status);
-        
+
         src += srcSizeCur;
         *srcLen += srcSizeCur;
         p->packSize -= (UInt32)srcSizeCur;

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
+
+
+
+
+typedef int u32 ;
 struct net_device {int dummy; } ;
-typedef  int /*<<< orphan*/  __u32 ;
+typedef int __u32 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ndisc_hashfn (void const*,struct net_device const*,int /*<<< orphan*/ *) ; 
+
+ int ndisc_hashfn (void const*,struct net_device const*,int *) ;
 
 __attribute__((used)) static u32 ndisc_hash(const void *pkey,
-		      const struct net_device *dev,
-		      __u32 *hash_rnd)
+        const struct net_device *dev,
+        __u32 *hash_rnd)
 {
-	return ndisc_hashfn(pkey, dev, hash_rnd);
+ return ndisc_hashfn(pkey, dev, hash_rnd);
 }

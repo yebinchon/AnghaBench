@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct kvm_vcpu {int dummy; } ;
-typedef  int /*<<< orphan*/  gva_t ;
+typedef int gva_t ;
 
-/* Variables and functions */
- long kvmhv_copy_tofrom_guest_radix (struct kvm_vcpu*,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  memset (void*,int /*<<< orphan*/ ,long) ; 
+
+ long kvmhv_copy_tofrom_guest_radix (struct kvm_vcpu*,int ,void*,int *,unsigned long) ;
+ int memset (void*,int ,long) ;
 
 long kvmhv_copy_from_guest_radix(struct kvm_vcpu *vcpu, gva_t eaddr, void *to,
-				 unsigned long n)
+     unsigned long n)
 {
-	long ret;
+ long ret;
 
-	ret = kvmhv_copy_tofrom_guest_radix(vcpu, eaddr, to, NULL, n);
-	if (ret > 0)
-		memset(to + (n - ret), 0, ret);
+ ret = kvmhv_copy_tofrom_guest_radix(vcpu, eaddr, to, ((void*)0), n);
+ if (ret > 0)
+  memset(to + (n - ret), 0, ret);
 
-	return ret;
+ return ret;
 }

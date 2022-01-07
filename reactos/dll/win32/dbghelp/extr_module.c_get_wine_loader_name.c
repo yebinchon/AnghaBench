@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wineW ;
-typedef  char WCHAR ;
-typedef  int DWORD ;
-typedef  int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CP_UNIXCP ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- char* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  MultiByteToWideChar (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*,int,char*,int) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  debugstr_w (char*) ; 
- char* getenv (char*) ; 
- int /*<<< orphan*/  strcatW (char*,char const*) ; 
- int /*<<< orphan*/  strcmpW (char*,char const*) ; 
- int /*<<< orphan*/  strcpyW (char*,char const*) ; 
- int strlenW (char const*) ; 
+
+
+
+typedef int wineW ;
+typedef char WCHAR ;
+typedef int DWORD ;
+typedef int BOOL ;
+
+
+ int CP_UNIXCP ;
+ int GetProcessHeap () ;
+ char* HeapAlloc (int ,int ,int) ;
+ int MultiByteToWideChar (int ,int ,char const*,int,char*,int) ;
+ int TRACE (char*,int ) ;
+ int debugstr_w (char*) ;
+ char* getenv (char*) ;
+ int strcatW (char*,char const*) ;
+ int strcmpW (char*,char const*) ;
+ int strcpyW (char*,char const*) ;
+ int strlenW (char const*) ;
 
 const WCHAR *get_wine_loader_name(void)
 {
-    static const BOOL is_win64 = sizeof(void *) > sizeof(int); /* FIXME: should depend on target process */
+    static const BOOL is_win64 = sizeof(void *) > sizeof(int);
     static const WCHAR wineW[] = {'w','i','n','e',0};
     static const WCHAR suffixW[] = {'6','4',0};
     static const WCHAR *loader;
@@ -40,12 +40,12 @@ const WCHAR *get_wine_loader_name(void)
         WCHAR *p, *buffer;
         const char *ptr;
 
-        /* All binaries are loaded with WINELOADER (if run from tree) or by the
-         * main executable
-         */
+
+
+
         if ((ptr = getenv("WINELOADER")))
         {
-            DWORD len = 2 + MultiByteToWideChar( CP_UNIXCP, 0, ptr, -1, NULL, 0 );
+            DWORD len = 2 + MultiByteToWideChar( CP_UNIXCP, 0, ptr, -1, ((void*)0), 0 );
             buffer = HeapAlloc( GetProcessHeap(), 0, len * sizeof(WCHAR) );
             MultiByteToWideChar( CP_UNIXCP, 0, ptr, -1, buffer, len );
         }

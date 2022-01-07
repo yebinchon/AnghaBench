@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_3__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  wt_monitor; } ;
-struct TYPE_4__ {scalar_t__ sync_interval; int /*<<< orphan*/  id; scalar_t__ auto_sync; scalar_t__ worktree_invalid; } ;
-typedef  int /*<<< orphan*/  SeafRepoManager ;
-typedef  TYPE_1__ SeafRepo ;
 
-/* Variables and functions */
- scalar_t__ TRUE ; 
- TYPE_3__* seaf ; 
- int /*<<< orphan*/  seaf_warning (char*,int /*<<< orphan*/ ) ; 
- scalar_t__ seaf_wt_monitor_unwatch_repo (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_3__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int wt_monitor; } ;
+struct TYPE_4__ {scalar_t__ sync_interval; int id; scalar_t__ auto_sync; scalar_t__ worktree_invalid; } ;
+typedef int SeafRepoManager ;
+typedef TYPE_1__ SeafRepo ;
+
+
+ scalar_t__ TRUE ;
+ TYPE_3__* seaf ;
+ int seaf_warning (char*,int ) ;
+ scalar_t__ seaf_wt_monitor_unwatch_repo (int ,int ) ;
 
 void
 seaf_repo_manager_invalidate_repo_worktree (SeafRepoManager *mgr,

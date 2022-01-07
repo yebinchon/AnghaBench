@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  gzFile ;
-typedef  int /*<<< orphan*/  buf ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int BUFLENW ; 
- scalar_t__ Z_OK ; 
- int /*<<< orphan*/  error (char*) ; 
- scalar_t__ fclose (int /*<<< orphan*/ *) ; 
- scalar_t__ fwrite (char*,int,unsigned int,int /*<<< orphan*/ *) ; 
- scalar_t__ gzclose (int /*<<< orphan*/ ) ; 
- char* gzerror (int /*<<< orphan*/ ,int*) ; 
- int gzread (int /*<<< orphan*/ ,char*,int) ; 
 
-void gz_uncompress(gzFile in, FILE   *out)
+
+
+typedef int gzFile ;
+typedef int buf ;
+typedef int FILE ;
+
+
+ int BUFLENW ;
+ scalar_t__ Z_OK ;
+ int error (char*) ;
+ scalar_t__ fclose (int *) ;
+ scalar_t__ fwrite (char*,int,unsigned int,int *) ;
+ scalar_t__ gzclose (int ) ;
+ char* gzerror (int ,int*) ;
+ int gzread (int ,char*,int) ;
+
+void gz_uncompress(gzFile in, FILE *out)
 {
     char buf[BUFLENW];
     int len;

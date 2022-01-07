@@ -1,0 +1,133 @@
+; ModuleID = '/home/carl/AnghaBench/linux/drivers/pinctrl/spear/extr_pinctrl-spear.c_pmx_init_addr.c'
+source_filename = "/home/carl/AnghaBench/linux/drivers/pinctrl/spear/extr_pinctrl-spear.c_pmx_init_addr.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+%struct.spear_pinctrl_machdata = type { i32, %struct.spear_pingroup** }
+%struct.spear_pingroup = type { i32, %struct.spear_modemux* }
+%struct.spear_modemux = type { i32, %struct.TYPE_2__* }
+%struct.TYPE_2__ = type { i32 }
+
+; Function Attrs: noinline nounwind optnone uwtable
+define dso_local void @pmx_init_addr(%struct.spear_pinctrl_machdata* %0, i32 %1) #0 {
+  %3 = alloca %struct.spear_pinctrl_machdata*, align 8
+  %4 = alloca i32, align 4
+  %5 = alloca %struct.spear_pingroup*, align 8
+  %6 = alloca %struct.spear_modemux*, align 8
+  %7 = alloca i32, align 4
+  %8 = alloca i32, align 4
+  %9 = alloca i32, align 4
+  store %struct.spear_pinctrl_machdata* %0, %struct.spear_pinctrl_machdata** %3, align 8
+  store i32 %1, i32* %4, align 4
+  store i32 0, i32* %9, align 4
+  br label %10
+
+10:                                               ; preds = %71, %2
+  %11 = load i32, i32* %9, align 4
+  %12 = load %struct.spear_pinctrl_machdata*, %struct.spear_pinctrl_machdata** %3, align 8
+  %13 = getelementptr inbounds %struct.spear_pinctrl_machdata, %struct.spear_pinctrl_machdata* %12, i32 0, i32 0
+  %14 = load i32, i32* %13, align 8
+  %15 = icmp slt i32 %11, %14
+  br i1 %15, label %16, label %74
+
+16:                                               ; preds = %10
+  %17 = load %struct.spear_pinctrl_machdata*, %struct.spear_pinctrl_machdata** %3, align 8
+  %18 = getelementptr inbounds %struct.spear_pinctrl_machdata, %struct.spear_pinctrl_machdata* %17, i32 0, i32 1
+  %19 = load %struct.spear_pingroup**, %struct.spear_pingroup*** %18, align 8
+  %20 = load i32, i32* %9, align 4
+  %21 = sext i32 %20 to i64
+  %22 = getelementptr inbounds %struct.spear_pingroup*, %struct.spear_pingroup** %19, i64 %21
+  %23 = load %struct.spear_pingroup*, %struct.spear_pingroup** %22, align 8
+  store %struct.spear_pingroup* %23, %struct.spear_pingroup** %5, align 8
+  store i32 0, i32* %7, align 4
+  br label %24
+
+24:                                               ; preds = %67, %16
+  %25 = load i32, i32* %7, align 4
+  %26 = load %struct.spear_pingroup*, %struct.spear_pingroup** %5, align 8
+  %27 = getelementptr inbounds %struct.spear_pingroup, %struct.spear_pingroup* %26, i32 0, i32 0
+  %28 = load i32, i32* %27, align 8
+  %29 = icmp slt i32 %25, %28
+  br i1 %29, label %30, label %70
+
+30:                                               ; preds = %24
+  %31 = load %struct.spear_pingroup*, %struct.spear_pingroup** %5, align 8
+  %32 = getelementptr inbounds %struct.spear_pingroup, %struct.spear_pingroup* %31, i32 0, i32 1
+  %33 = load %struct.spear_modemux*, %struct.spear_modemux** %32, align 8
+  %34 = load i32, i32* %7, align 4
+  %35 = sext i32 %34 to i64
+  %36 = getelementptr inbounds %struct.spear_modemux, %struct.spear_modemux* %33, i64 %35
+  store %struct.spear_modemux* %36, %struct.spear_modemux** %6, align 8
+  store i32 0, i32* %8, align 4
+  br label %37
+
+37:                                               ; preds = %63, %30
+  %38 = load i32, i32* %8, align 4
+  %39 = load %struct.spear_modemux*, %struct.spear_modemux** %6, align 8
+  %40 = getelementptr inbounds %struct.spear_modemux, %struct.spear_modemux* %39, i32 0, i32 0
+  %41 = load i32, i32* %40, align 8
+  %42 = icmp slt i32 %38, %41
+  br i1 %42, label %43, label %66
+
+43:                                               ; preds = %37
+  %44 = load %struct.spear_modemux*, %struct.spear_modemux** %6, align 8
+  %45 = getelementptr inbounds %struct.spear_modemux, %struct.spear_modemux* %44, i32 0, i32 1
+  %46 = load %struct.TYPE_2__*, %struct.TYPE_2__** %45, align 8
+  %47 = load i32, i32* %8, align 4
+  %48 = sext i32 %47 to i64
+  %49 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %46, i64 %48
+  %50 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %49, i32 0, i32 0
+  %51 = load i32, i32* %50, align 4
+  %52 = icmp eq i32 %51, 65535
+  br i1 %52, label %53, label %62
+
+53:                                               ; preds = %43
+  %54 = load i32, i32* %4, align 4
+  %55 = load %struct.spear_modemux*, %struct.spear_modemux** %6, align 8
+  %56 = getelementptr inbounds %struct.spear_modemux, %struct.spear_modemux* %55, i32 0, i32 1
+  %57 = load %struct.TYPE_2__*, %struct.TYPE_2__** %56, align 8
+  %58 = load i32, i32* %8, align 4
+  %59 = sext i32 %58 to i64
+  %60 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %57, i64 %59
+  %61 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %60, i32 0, i32 0
+  store i32 %54, i32* %61, align 4
+  br label %62
+
+62:                                               ; preds = %53, %43
+  br label %63
+
+63:                                               ; preds = %62
+  %64 = load i32, i32* %8, align 4
+  %65 = add nsw i32 %64, 1
+  store i32 %65, i32* %8, align 4
+  br label %37
+
+66:                                               ; preds = %37
+  br label %67
+
+67:                                               ; preds = %66
+  %68 = load i32, i32* %7, align 4
+  %69 = add nsw i32 %68, 1
+  store i32 %69, i32* %7, align 4
+  br label %24
+
+70:                                               ; preds = %24
+  br label %71
+
+71:                                               ; preds = %70
+  %72 = load i32, i32* %9, align 4
+  %73 = add nsw i32 %72, 1
+  store i32 %73, i32* %9, align 4
+  br label %10
+
+74:                                               ; preds = %10
+  ret void
+}
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

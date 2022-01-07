@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ v8i16 ;
-typedef  int v4i32 ;
-typedef  scalar_t__ v16u8 ;
-typedef  scalar_t__ v16i8 ;
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  int8_t ;
-typedef  int int32_t ;
-typedef  int /*<<< orphan*/  int16_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLIP_SW4_0_255 (int,int,int,int) ; 
- int HEVC_FILT_8TAP (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- scalar_t__ HEVC_FILT_8TAP_SH (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  ILVL_H2_SH (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  ILVL_H4_SH (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  ILVRL_H2_SH (scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  ILVR_H2_SH (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  ILVR_H4_SH (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- scalar_t__ LD_SB (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LD_SB2 (int /*<<< orphan*/ *,int,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  LD_SB7 (int /*<<< orphan*/ *,int,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- scalar_t__ LD_SH (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  LD_SH2 (int /*<<< orphan*/ *,int,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  PCKEV_H2_SH (int,int,int,int,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  SPLATI_H4_SH (scalar_t__,int /*<<< orphan*/ ,int,int,int,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  SPLATI_W4_SH (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  SRAR_W4_SW (int,int,int,int,int) ; 
- int /*<<< orphan*/  ST_D2 (scalar_t__,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  UNPCK_R_SB_SH (scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  VSHF_B4_SB (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  XORI_B2_128_SB (scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  XORI_B7_128_SB (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- int __msa_dpadd_s_w (int,scalar_t__,scalar_t__) ; 
- int __msa_fill_w (int) ; 
- scalar_t__ __msa_pckev_b (scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  ff_hevc_mask_arr ; 
+
+
+
+typedef scalar_t__ v8i16 ;
+typedef int v4i32 ;
+typedef scalar_t__ v16u8 ;
+typedef scalar_t__ v16i8 ;
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef int int8_t ;
+typedef int int32_t ;
+typedef int int16_t ;
+
+
+ int CLIP_SW4_0_255 (int,int,int,int) ;
+ int HEVC_FILT_8TAP (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ scalar_t__ HEVC_FILT_8TAP_SH (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ int ILVL_H2_SH (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ int ILVL_H4_SH (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ int ILVRL_H2_SH (scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ int ILVR_H2_SH (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ int ILVR_H4_SH (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ scalar_t__ LD_SB (int ) ;
+ int LD_SB2 (int *,int,scalar_t__,scalar_t__) ;
+ int LD_SB7 (int *,int,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ scalar_t__ LD_SH (int const*) ;
+ int LD_SH2 (int *,int,scalar_t__,scalar_t__) ;
+ int PCKEV_H2_SH (int,int,int,int,scalar_t__,scalar_t__) ;
+ int SPLATI_H4_SH (scalar_t__,int ,int,int,int,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ int SPLATI_W4_SH (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ int SRAR_W4_SW (int,int,int,int,int) ;
+ int ST_D2 (scalar_t__,int ,int,int *,int) ;
+ int UNPCK_R_SB_SH (scalar_t__,scalar_t__) ;
+ int VSHF_B4_SB (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ int XORI_B2_128_SB (scalar_t__,scalar_t__) ;
+ int XORI_B7_128_SB (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ int __msa_dpadd_s_w (int,scalar_t__,scalar_t__) ;
+ int __msa_fill_w (int) ;
+ scalar_t__ __msa_pckev_b (scalar_t__,scalar_t__) ;
+ int ff_hevc_mask_arr ;
 
 __attribute__((used)) static void hevc_hv_biwgt_8t_8multx2mult_msa(uint8_t *src0_ptr,
                                              int32_t src_stride,
@@ -124,7 +124,7 @@ __attribute__((used)) static void hevc_hv_biwgt_8t_8multx2mult_msa(uint8_t *src0
 
         XORI_B7_128_SB(src0, src1, src2, src3, src4, src5, src6);
 
-        /* row 0 row 1 row 2 row 3 */
+
         VSHF_B4_SB(src0, src0, mask0, mask1, mask2, mask3,
                    vec0, vec1, vec2, vec3);
         VSHF_B4_SB(src1, src1, mask0, mask1, mask2, mask3,
@@ -143,7 +143,7 @@ __attribute__((used)) static void hevc_hv_biwgt_8t_8multx2mult_msa(uint8_t *src0
         dst3 = HEVC_FILT_8TAP_SH(vec12, vec13, vec14, vec15, filt0, filt1,
                                  filt2, filt3);
 
-        /* row 4 row 5 row 6 */
+
         VSHF_B4_SB(src4, src4, mask0, mask1, mask2, mask3,
                    vec0, vec1, vec2, vec3);
         VSHF_B4_SB(src5, src5, mask0, mask1, mask2, mask3,
@@ -187,7 +187,7 @@ __attribute__((used)) static void hevc_hv_biwgt_8t_8multx2mult_msa(uint8_t *src0
             dst0_r >>= 6;
             dst0_l >>= 6;
 
-            /* row 8 */
+
             VSHF_B4_SB(src8, src8, mask0, mask1, mask2, mask3,
                        vec0, vec1, vec2, vec3);
             dst8 = HEVC_FILT_8TAP_SH(vec0, vec1, vec2, vec3, filt0, filt1,

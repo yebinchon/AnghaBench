@@ -1,71 +1,71 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_6__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct wined3d_swapchain_desc {int /*<<< orphan*/  enable_auto_depth_stencil; } ;
+
+
+typedef struct TYPE_12__ TYPE_6__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct wined3d_swapchain_desc {int enable_auto_depth_stencil; } ;
 struct wined3d {int dummy; } ;
-struct TYPE_12__ {int /*<<< orphan*/ * ops; } ;
-struct TYPE_9__ {int /*<<< orphan*/ * lpVtbl; } ;
-struct d3d9_device {int refcount; struct d3d9* d3d_parent; int /*<<< orphan*/  wined3d_device; int /*<<< orphan*/ * render_targets; struct wined3d_swapchain_desc* implicit_swapchains; void* fvf_decls; int /*<<< orphan*/  max_user_clip_planes; TYPE_6__ device_parent; TYPE_1__ IDirect3DDevice9Ex_iface; } ;
-struct d3d9 {int /*<<< orphan*/  IDirect3D9Ex_iface; int /*<<< orphan*/  extended; } ;
-struct TYPE_10__ {unsigned int NumberOfAdaptersInGroup; int /*<<< orphan*/  MaxUserClipPlanes; } ;
-typedef  TYPE_2__ WINED3DCAPS ;
-typedef  int /*<<< orphan*/  UINT ;
-struct TYPE_11__ {int /*<<< orphan*/  BackBufferHeight; int /*<<< orphan*/  BackBufferWidth; scalar_t__ hDeviceWindow; int /*<<< orphan*/  Windowed; } ;
-typedef  scalar_t__ HWND ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int DWORD ;
-typedef  TYPE_3__ D3DPRESENT_PARAMETERS ;
-typedef  int /*<<< orphan*/  D3DDISPLAYMODEEX ;
-typedef  int /*<<< orphan*/  D3DDEVTYPE ;
+struct TYPE_12__ {int * ops; } ;
+struct TYPE_9__ {int * lpVtbl; } ;
+struct d3d9_device {int refcount; struct d3d9* d3d_parent; int wined3d_device; int * render_targets; struct wined3d_swapchain_desc* implicit_swapchains; void* fvf_decls; int max_user_clip_planes; TYPE_6__ device_parent; TYPE_1__ IDirect3DDevice9Ex_iface; } ;
+struct d3d9 {int IDirect3D9Ex_iface; int extended; } ;
+struct TYPE_10__ {unsigned int NumberOfAdaptersInGroup; int MaxUserClipPlanes; } ;
+typedef TYPE_2__ WINED3DCAPS ;
+typedef int UINT ;
+struct TYPE_11__ {int BackBufferHeight; int BackBufferWidth; scalar_t__ hDeviceWindow; int Windowed; } ;
+typedef scalar_t__ HWND ;
+typedef int HRESULT ;
+typedef int DWORD ;
+typedef TYPE_3__ D3DPRESENT_PARAMETERS ;
+typedef int D3DDISPLAYMODEEX ;
+typedef int D3DDEVTYPE ;
 
-/* Variables and functions */
- int D3DCREATE_ADAPTERGROUP_DEVICE ; 
- int D3DCREATE_FPU_PRESERVE ; 
- int D3DCREATE_MULTITHREADED ; 
- int /*<<< orphan*/  D3DERR_INVALIDCALL ; 
- int /*<<< orphan*/  D3D_OK ; 
- int /*<<< orphan*/  ERR (char*,...) ; 
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FIXME (char*) ; 
- int /*<<< orphan*/  IDirect3D9Ex_AddRef (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  WARN (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WINED3D_RS_ZENABLE ; 
- int /*<<< orphan*/  d3d9_device_get_swapchains (struct d3d9_device*) ; 
- int /*<<< orphan*/  d3d9_device_vtbl ; 
- int /*<<< orphan*/  d3d9_wined3d_device_parent_ops ; 
- void* heap_alloc (int) ; 
- int /*<<< orphan*/  heap_free (struct wined3d_swapchain_desc*) ; 
- int /*<<< orphan*/  present_parameters_from_wined3d_swapchain_desc (TYPE_3__*,struct wined3d_swapchain_desc*) ; 
- int /*<<< orphan*/  setup_fpu () ; 
- int /*<<< orphan*/  wined3d_device_acquire_focus_window (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  wined3d_device_create (struct wined3d*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,int,int,TYPE_6__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  wined3d_device_decref (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wined3d_device_get_rendertarget_view (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wined3d_device_init_3d (int /*<<< orphan*/ ,struct wined3d_swapchain_desc*) ; 
- int /*<<< orphan*/  wined3d_device_release_focus_window (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wined3d_device_set_multithreaded (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wined3d_device_set_render_state (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  wined3d_device_setup_fullscreen_window (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wined3d_device_uninit_3d (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wined3d_get_device_caps (struct wined3d*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  wined3d_mutex_lock () ; 
- int /*<<< orphan*/  wined3d_mutex_unlock () ; 
- int /*<<< orphan*/  wined3d_rendertarget_view_get_sub_resource_parent (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wined3d_swapchain_desc_from_present_parameters (struct wined3d_swapchain_desc*,TYPE_3__*,int /*<<< orphan*/ ) ; 
+
+ int D3DCREATE_ADAPTERGROUP_DEVICE ;
+ int D3DCREATE_FPU_PRESERVE ;
+ int D3DCREATE_MULTITHREADED ;
+ int D3DERR_INVALIDCALL ;
+ int D3D_OK ;
+ int ERR (char*,...) ;
+ int E_OUTOFMEMORY ;
+ scalar_t__ FAILED (int ) ;
+ int FIXME (char*) ;
+ int IDirect3D9Ex_AddRef (int *) ;
+ int WARN (char*,int ) ;
+ int WINED3D_RS_ZENABLE ;
+ int d3d9_device_get_swapchains (struct d3d9_device*) ;
+ int d3d9_device_vtbl ;
+ int d3d9_wined3d_device_parent_ops ;
+ void* heap_alloc (int) ;
+ int heap_free (struct wined3d_swapchain_desc*) ;
+ int present_parameters_from_wined3d_swapchain_desc (TYPE_3__*,struct wined3d_swapchain_desc*) ;
+ int setup_fpu () ;
+ int wined3d_device_acquire_focus_window (int ,scalar_t__) ;
+ int wined3d_device_create (struct wined3d*,int ,int ,scalar_t__,int,int,TYPE_6__*,int *) ;
+ int wined3d_device_decref (int ) ;
+ int wined3d_device_get_rendertarget_view (int ,int ) ;
+ int wined3d_device_init_3d (int ,struct wined3d_swapchain_desc*) ;
+ int wined3d_device_release_focus_window (int ) ;
+ int wined3d_device_set_multithreaded (int ) ;
+ int wined3d_device_set_render_state (int ,int ,int) ;
+ int wined3d_device_setup_fullscreen_window (int ,scalar_t__,int ,int ) ;
+ int wined3d_device_uninit_3d (int ) ;
+ int wined3d_get_device_caps (struct wined3d*,int ,int ,TYPE_2__*) ;
+ int wined3d_mutex_lock () ;
+ int wined3d_mutex_unlock () ;
+ int wined3d_rendertarget_view_get_sub_resource_parent (int ) ;
+ int wined3d_swapchain_desc_from_present_parameters (struct wined3d_swapchain_desc*,TYPE_3__*,int ) ;
 
 HRESULT device_init(struct d3d9_device *device, struct d3d9 *parent, struct wined3d *wined3d,
         UINT adapter, D3DDEVTYPE device_type, HWND focus_window, DWORD flags,
@@ -178,8 +178,8 @@ HRESULT device_init(struct d3d9_device *device, struct d3d9 *parent, struct wine
 
     heap_free(swapchain_desc);
 
-    /* Initialize the converted declaration array. This creates a valid pointer
-     * and when adding decls HeapReAlloc() can be used without further checking. */
+
+
     if (!(device->fvf_decls = heap_alloc(0)))
     {
         ERR("Failed to allocate FVF vertex declaration map memory.\n");
@@ -192,9 +192,9 @@ HRESULT device_init(struct d3d9_device *device, struct d3d9 *parent, struct wine
         return E_OUTOFMEMORY;
     }
 
-    /* We could also simply ignore the initial rendertarget since it's known
-     * not to be a texture (we currently use these only for automatic mipmap
-     * generation). */
+
+
+
     wined3d_mutex_lock();
     device->render_targets[0] = wined3d_rendertarget_view_get_sub_resource_parent(
             wined3d_device_get_rendertarget_view(device->wined3d_device, 0));

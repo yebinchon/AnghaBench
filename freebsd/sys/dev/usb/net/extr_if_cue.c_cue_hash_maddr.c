@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint32_t ;
-typedef  int u_int ;
+
+
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef int u_int ;
 struct sockaddr_dl {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LLADDR (struct sockaddr_dl*) ; 
- int cue_mchash (int /*<<< orphan*/ ) ; 
+
+ int LLADDR (struct sockaddr_dl*) ;
+ int cue_mchash (int ) ;
 
 __attribute__((used)) static u_int
 cue_hash_maddr(void *arg, struct sockaddr_dl *sdl, u_int cnt)
 {
-	uint8_t *hashtbl = arg;
-	uint32_t h;
+ uint8_t *hashtbl = arg;
+ uint32_t h;
 
-	h = cue_mchash(LLADDR(sdl));
-	hashtbl[h >> 3] |= 1 << (h & 0x7);
+ h = cue_mchash(LLADDR(sdl));
+ hashtbl[h >> 3] |= 1 << (h & 0x7);
 
-	return (1);
+ return (1);
 }

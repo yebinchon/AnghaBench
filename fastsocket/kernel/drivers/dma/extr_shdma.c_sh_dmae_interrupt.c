@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u32 ;
-struct sh_dmae_chan {int /*<<< orphan*/  tasklet; } ;
-typedef  int /*<<< orphan*/  irqreturn_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHCR ; 
- int CHCR_TE ; 
- int /*<<< orphan*/  IRQ_HANDLED ; 
- int /*<<< orphan*/  IRQ_NONE ; 
- int /*<<< orphan*/  dmae_halt (struct sh_dmae_chan*) ; 
- int sh_dmae_readl (struct sh_dmae_chan*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tasklet_schedule (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int u32 ;
+struct sh_dmae_chan {int tasklet; } ;
+typedef int irqreturn_t ;
+
+
+ int CHCR ;
+ int CHCR_TE ;
+ int IRQ_HANDLED ;
+ int IRQ_NONE ;
+ int dmae_halt (struct sh_dmae_chan*) ;
+ int sh_dmae_readl (struct sh_dmae_chan*,int ) ;
+ int tasklet_schedule (int *) ;
 
 __attribute__((used)) static irqreturn_t sh_dmae_interrupt(int irq, void *data)
 {
-	irqreturn_t ret = IRQ_NONE;
-	struct sh_dmae_chan *sh_chan = (struct sh_dmae_chan *)data;
-	u32 chcr = sh_dmae_readl(sh_chan, CHCR);
+ irqreturn_t ret = IRQ_NONE;
+ struct sh_dmae_chan *sh_chan = (struct sh_dmae_chan *)data;
+ u32 chcr = sh_dmae_readl(sh_chan, CHCR);
 
-	if (chcr & CHCR_TE) {
-		/* DMA stop */
-		dmae_halt(sh_chan);
+ if (chcr & CHCR_TE) {
 
-		ret = IRQ_HANDLED;
-		tasklet_schedule(&sh_chan->tasklet);
-	}
+  dmae_halt(sh_chan);
 
-	return ret;
+  ret = IRQ_HANDLED;
+  tasklet_schedule(&sh_chan->tasklet);
+ }
+
+ return ret;
 }

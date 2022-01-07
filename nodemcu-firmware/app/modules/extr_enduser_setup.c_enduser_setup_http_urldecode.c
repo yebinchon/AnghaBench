@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  ENDUSER_SETUP_DEBUG (char*) ; 
- scalar_t__ isxdigit (char) ; 
+ int ENDUSER_SETUP_DEBUG (char*) ;
+ scalar_t__ isxdigit (char) ;
 
 __attribute__((used)) static int enduser_setup_http_urldecode(char *dst, const char *src, int src_len, int dst_len)
 {
   ENDUSER_SETUP_DEBUG("enduser_setup_http_urldecode");
 
   char *dst_start = dst;
-  char *dst_last = dst + dst_len - 1; /* -1 to reserve space for last \0 */
+  char *dst_last = dst + dst_len - 1;
   char a, b;
   int i;
   for (i = 0; i < src_len && *src && dst < dst_last; ++i)
@@ -64,5 +56,5 @@ __attribute__((used)) static int enduser_setup_http_urldecode(char *dst, const c
     }
   }
   *dst++ = '\0';
-  return (i < src_len); /* did we fail to process all the input? */
+  return (i < src_len);
 }

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {unsigned int** input_remap_ids; } ;
 struct TYPE_7__ {TYPE_1__ uints; } ;
-typedef  TYPE_2__ settings_t ;
+typedef TYPE_2__ settings_t ;
 struct TYPE_8__ {char*** input_desc_btn; } ;
-typedef  TYPE_3__ rarch_system_info_t ;
-typedef  int /*<<< orphan*/  file_list_t ;
-typedef  int /*<<< orphan*/  buf ;
+typedef TYPE_3__ rarch_system_info_t ;
+typedef int file_list_t ;
+typedef int buf ;
 
-/* Variables and functions */
- unsigned int MENU_SETTINGS_INPUT_DESC_BEGIN ; 
- int RARCH_FIRST_CUSTOM_BIND ; 
- unsigned int RARCH_UNMAPPED ; 
- TYPE_2__* config_get_ptr () ; 
- TYPE_3__* runloop_get_system_info () ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,char const*,char) ; 
- int /*<<< orphan*/  string_is_empty (char const*) ; 
- int /*<<< orphan*/  strlcpy (char*,char const*,size_t) ; 
+
+ unsigned int MENU_SETTINGS_INPUT_DESC_BEGIN ;
+ int RARCH_FIRST_CUSTOM_BIND ;
+ unsigned int RARCH_UNMAPPED ;
+ TYPE_2__* config_get_ptr () ;
+ TYPE_3__* runloop_get_system_info () ;
+ int snprintf (char*,int,char*,char const*,char) ;
+ int string_is_empty (char const*) ;
+ int strlcpy (char*,char const*,size_t) ;
 
 __attribute__((used)) static void menu_action_setting_disp_set_label_input_desc(
       file_list_t* list,
@@ -39,9 +39,9 @@ __attribute__((used)) static void menu_action_setting_disp_set_label_input_desc(
       const char *path,
       char *s2, size_t len2)
 {
-   rarch_system_info_t *system           = runloop_get_system_info();
-   settings_t *settings                  = config_get_ptr();
-   const char* descriptor                = NULL;
+   rarch_system_info_t *system = runloop_get_system_info();
+   settings_t *settings = config_get_ptr();
+   const char* descriptor = ((void*)0);
    char buf[256];
 
    unsigned btn_idx, user_idx, remap_idx;
@@ -49,8 +49,8 @@ __attribute__((used)) static void menu_action_setting_disp_set_label_input_desc(
    if (!settings)
       return;
 
-   user_idx  = (type - MENU_SETTINGS_INPUT_DESC_BEGIN) / (RARCH_FIRST_CUSTOM_BIND + 8);
-   btn_idx   = (type - MENU_SETTINGS_INPUT_DESC_BEGIN) - (RARCH_FIRST_CUSTOM_BIND + 8) * user_idx;
+   user_idx = (type - MENU_SETTINGS_INPUT_DESC_BEGIN) / (RARCH_FIRST_CUSTOM_BIND + 8);
+   btn_idx = (type - MENU_SETTINGS_INPUT_DESC_BEGIN) - (RARCH_FIRST_CUSTOM_BIND + 8) * user_idx;
    remap_idx =
       settings->uints.input_remap_ids[user_idx][btn_idx];
 

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int UInt64 ;
-typedef  int UInt32 ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int UInt64 ;
+typedef int UInt32 ;
 struct TYPE_5__ {int numThreads; int reduceSize; int dictSize; } ;
 struct TYPE_6__ {int numBlockThreads_Max; int numTotalThreads; int blockSize; int numBlockThreads_Reduced; TYPE_1__ lzmaProps; } ;
-typedef  scalar_t__ Int64 ;
-typedef  TYPE_1__ CLzmaEncProps ;
-typedef  TYPE_2__ CLzma2EncProps ;
+typedef scalar_t__ Int64 ;
+typedef TYPE_1__ CLzmaEncProps ;
+typedef TYPE_2__ CLzma2EncProps ;
 
-/* Variables and functions */
- int LZMA2_ENC_PROPS__BLOCK_SIZE__AUTO ; 
- int LZMA2_ENC_PROPS__BLOCK_SIZE__SOLID ; 
- int /*<<< orphan*/  LzmaEncProps_Normalize (TYPE_1__*) ; 
- int MTCODER__THREADS_MAX ; 
+
+ int LZMA2_ENC_PROPS__BLOCK_SIZE__AUTO ;
+ int LZMA2_ENC_PROPS__BLOCK_SIZE__SOLID ;
+ int LzmaEncProps_Normalize (TYPE_1__*) ;
+ int MTCODER__THREADS_MAX ;
 
 void Lzma2EncProps_Normalize(CLzma2EncProps *p)
 {
@@ -75,7 +75,7 @@ void Lzma2EncProps_Normalize(CLzma2EncProps *p)
 
   fileSize = p->lzmaProps.reduceSize;
 
-  if (   p->blockSize != LZMA2_ENC_PROPS__BLOCK_SIZE__SOLID
+  if ( p->blockSize != LZMA2_ENC_PROPS__BLOCK_SIZE__SOLID
       && p->blockSize != LZMA2_ENC_PROPS__BLOCK_SIZE__AUTO
       && (p->blockSize < fileSize || fileSize == (UInt64)(Int64)-1))
     p->lzmaProps.reduceSize = p->blockSize;
@@ -93,7 +93,7 @@ void Lzma2EncProps_Normalize(CLzma2EncProps *p)
   }
   else if (p->blockSize == LZMA2_ENC_PROPS__BLOCK_SIZE__AUTO && t2 <= 1)
   {
-    /* if there is no block multi-threading, we use SOLID block */
+
     p->blockSize = LZMA2_ENC_PROPS__BLOCK_SIZE__SOLID;
   }
   else
@@ -111,7 +111,7 @@ void Lzma2EncProps_Normalize(CLzma2EncProps *p)
       blockSize &= ~(UInt64)(kMinSize - 1);
       p->blockSize = blockSize;
     }
-    
+
     if (t2 > 1 && fileSize != (UInt64)(Int64)-1)
     {
       UInt64 numBlocks = fileSize / p->blockSize;
@@ -126,7 +126,7 @@ void Lzma2EncProps_Normalize(CLzma2EncProps *p)
       }
     }
   }
-  
+
   p->numBlockThreads_Max = t2;
   p->numBlockThreads_Reduced = t2r;
   p->numTotalThreads = t3;

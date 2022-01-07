@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int int_t ;
-typedef  int addr_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FIXME (char*) ; 
- int O_CLOEXEC_ ; 
- int O_NONBLOCK_ ; 
- int /*<<< orphan*/  STRACE (char*,int,int) ; 
- int _EFAULT ; 
- int _EINVAL ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  f_close (int) ; 
- int pipe (int*) ; 
- int pipe_f_create (int,int) ; 
- scalar_t__ user_put (int,int*) ; 
+
+
+
+typedef int int_t ;
+typedef int addr_t ;
+
+
+ int FIXME (char*) ;
+ int O_CLOEXEC_ ;
+ int O_NONBLOCK_ ;
+ int STRACE (char*,int,int) ;
+ int _EFAULT ;
+ int _EINVAL ;
+ int close (int) ;
+ int f_close (int) ;
+ int pipe (int*) ;
+ int pipe_f_create (int,int) ;
+ scalar_t__ user_put (int,int*) ;
 
 int_t sys_pipe2(addr_t pipe_addr, int_t flags) {
     STRACE("pipe2(%#x, %#x)", pipe_addr, flags);

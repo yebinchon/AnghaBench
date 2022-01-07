@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct RtfData {int /*<<< orphan*/  in_text; } ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  HLPFILE_RtfAddRawString (struct RtfData*,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  WINE_TRACE (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  debugstr_a (char const*) ; 
- int /*<<< orphan*/  strlen (char const*) ; 
+
+
+
+struct RtfData {int in_text; } ;
+typedef int BOOL ;
+
+
+ int FALSE ;
+ int HLPFILE_RtfAddRawString (struct RtfData*,char const*,int ) ;
+ int TRUE ;
+ int WINE_TRACE (char*,int ) ;
+ int debugstr_a (char const*) ;
+ int strlen (char const*) ;
 
 __attribute__((used)) static BOOL HLPFILE_RtfAddControl(struct RtfData* rd, const char* str)
 {

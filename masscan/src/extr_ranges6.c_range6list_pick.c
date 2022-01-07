@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ const uint64_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef scalar_t__ const uint64_t ;
 struct Range6List {size_t count; scalar_t__* picker; TYPE_1__* list; } ;
-typedef  int /*<<< orphan*/  ipv6address ;
-struct TYPE_2__ {int /*<<< orphan*/  begin; } ;
+typedef int ipv6address ;
+struct TYPE_2__ {int begin; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ADD1 (int /*<<< orphan*/ ,scalar_t__ const) ; 
- int /*<<< orphan*/  range6list_pick_linearsearch (struct Range6List const*,scalar_t__ const) ; 
+
+ int ADD1 (int ,scalar_t__ const) ;
+ int range6list_pick_linearsearch (struct Range6List const*,scalar_t__ const) ;
 
 ipv6address
 range6list_pick(const struct Range6List *targets, uint64_t index)
@@ -29,8 +29,8 @@ range6list_pick(const struct Range6List *targets, uint64_t index)
     size_t mid;
     const uint64_t *picker = targets->picker;
 
-    if (picker == NULL) {
-        /* optimization wasn't done */
+    if (picker == ((void*)0)) {
+
         return range6list_pick_linearsearch(targets, index);
     }
 

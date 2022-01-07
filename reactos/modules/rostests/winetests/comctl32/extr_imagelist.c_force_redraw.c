@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  HWND ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RDW_UPDATENOW ; 
- int /*<<< orphan*/  RedrawWindow (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Sleep (int) ; 
- int /*<<< orphan*/  winetest_interactive ; 
+
+
+
+typedef int HWND ;
+
+
+ int RDW_UPDATENOW ;
+ int RedrawWindow (int ,int *,int ,int ) ;
+ int Sleep (int) ;
+ int winetest_interactive ;
 
 __attribute__((used)) static void force_redraw(HWND hwnd)
 {
     if (!winetest_interactive)
         return;
 
-    RedrawWindow(hwnd, NULL, 0, RDW_UPDATENOW);
+    RedrawWindow(hwnd, ((void*)0), 0, RDW_UPDATENOW);
     Sleep(1000);
 }

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  nsresult ;
-typedef  int /*<<< orphan*/  nsIDOMNode ;
-typedef  int /*<<< orphan*/  nsIContentSerializer ;
-typedef  int /*<<< orphan*/  nsAString ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  E_FAIL ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  IID_nsIContentSerializer ; 
- scalar_t__ NS_FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NS_HTMLSERIALIZER_CONTRACTID ; 
- scalar_t__ SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nsIComponentManager_CreateInstanceByContractID (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  nsIContentSerializer_Flush (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsIContentSerializer_Init (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nsIContentSerializer_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsnode_to_nsstring_rec (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pCompMgr ; 
+
+
+
+typedef int nsresult ;
+typedef int nsIDOMNode ;
+typedef int nsIContentSerializer ;
+typedef int nsAString ;
+typedef int HRESULT ;
+
+
+ int ERR (char*,int ) ;
+ int E_FAIL ;
+ int FALSE ;
+ int IID_nsIContentSerializer ;
+ scalar_t__ NS_FAILED (int ) ;
+ int NS_HTMLSERIALIZER_CONTRACTID ;
+ scalar_t__ SUCCEEDED (int ) ;
+ int nsIComponentManager_CreateInstanceByContractID (int ,int ,int *,int *,void**) ;
+ int nsIContentSerializer_Flush (int *,int *) ;
+ int nsIContentSerializer_Init (int *,int ,int,int *,int ,int ) ;
+ int nsIContentSerializer_Release (int *) ;
+ int nsnode_to_nsstring_rec (int *,int *,int *) ;
+ int pCompMgr ;
 
 HRESULT nsnode_to_nsstring(nsIDOMNode *nsnode, nsAString *str)
 {
@@ -38,14 +38,14 @@ HRESULT nsnode_to_nsstring(nsIDOMNode *nsnode, nsAString *str)
     HRESULT hres;
 
     nsres = nsIComponentManager_CreateInstanceByContractID(pCompMgr,
-            NS_HTMLSERIALIZER_CONTRACTID, NULL, &IID_nsIContentSerializer,
+            NS_HTMLSERIALIZER_CONTRACTID, ((void*)0), &IID_nsIContentSerializer,
             (void**)&serializer);
     if(NS_FAILED(nsres)) {
         ERR("Could not get nsIContentSerializer: %08x\n", nsres);
         return E_FAIL;
     }
 
-    nsres = nsIContentSerializer_Init(serializer, 0, 100, NULL, FALSE, FALSE /* FIXME */);
+    nsres = nsIContentSerializer_Init(serializer, 0, 100, ((void*)0), FALSE, FALSE );
     if(NS_FAILED(nsres))
         ERR("Init failed: %08x\n", nsres);
 

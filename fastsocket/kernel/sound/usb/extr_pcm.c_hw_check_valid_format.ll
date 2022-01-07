@@ -1,0 +1,284 @@
+; ModuleID = '/home/carl/AnghaBench/fastsocket/kernel/sound/usb/extr_pcm.c_hw_check_valid_format.c'
+source_filename = "/home/carl/AnghaBench/fastsocket/kernel/sound/usb/extr_pcm.c_hw_check_valid_format.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+%struct.snd_usb_substream = type { i32 }
+%struct.snd_pcm_hw_params = type { i32 }
+%struct.audioformat = type { i32, i64, i64, i64, i32, i32 }
+%struct.snd_interval = type { i64, i64, i64, i64 }
+%struct.snd_mask = type { i8** }
+
+@SNDRV_PCM_HW_PARAM_RATE = common dso_local global i32 0, align 4
+@SNDRV_PCM_HW_PARAM_CHANNELS = common dso_local global i32 0, align 4
+@SNDRV_PCM_HW_PARAM_FORMAT = common dso_local global i32 0, align 4
+@SNDRV_PCM_HW_PARAM_PERIOD_TIME = common dso_local global i32 0, align 4
+@.str = private unnamed_addr constant [36 x i8] c"   > check: no supported format %d\0A\00", align 1
+@.str.1 = private unnamed_addr constant [42 x i8] c"   > check: no valid channels %d (%d/%d)\0A\00", align 1
+@.str.2 = private unnamed_addr constant [34 x i8] c"   > check: rate_min %d > max %d\0A\00", align 1
+@.str.3 = private unnamed_addr constant [34 x i8] c"   > check: rate_max %d < min %d\0A\00", align 1
+@USB_SPEED_FULL = common dso_local global i64 0, align 8
+@.str.4 = private unnamed_addr constant [31 x i8] c"   > check: ptime %u > max %u\0A\00", align 1
+@llvm.used = appending global [1 x i8*] [i8* bitcast (i32 (%struct.snd_usb_substream*, %struct.snd_pcm_hw_params*, %struct.audioformat*)* @hw_check_valid_format to i8*)], section "llvm.metadata"
+
+; Function Attrs: noinline nounwind optnone uwtable
+define internal i32 @hw_check_valid_format(%struct.snd_usb_substream* %0, %struct.snd_pcm_hw_params* %1, %struct.audioformat* %2) #0 {
+  %4 = alloca i32, align 4
+  %5 = alloca %struct.snd_usb_substream*, align 8
+  %6 = alloca %struct.snd_pcm_hw_params*, align 8
+  %7 = alloca %struct.audioformat*, align 8
+  %8 = alloca %struct.snd_interval*, align 8
+  %9 = alloca %struct.snd_interval*, align 8
+  %10 = alloca %struct.snd_mask*, align 8
+  %11 = alloca %struct.snd_interval*, align 8
+  %12 = alloca %struct.snd_mask, align 8
+  %13 = alloca i32, align 4
+  store %struct.snd_usb_substream* %0, %struct.snd_usb_substream** %5, align 8
+  store %struct.snd_pcm_hw_params* %1, %struct.snd_pcm_hw_params** %6, align 8
+  store %struct.audioformat* %2, %struct.audioformat** %7, align 8
+  %14 = load %struct.snd_pcm_hw_params*, %struct.snd_pcm_hw_params** %6, align 8
+  %15 = load i32, i32* @SNDRV_PCM_HW_PARAM_RATE, align 4
+  %16 = call %struct.snd_interval* @hw_param_interval(%struct.snd_pcm_hw_params* %14, i32 %15)
+  store %struct.snd_interval* %16, %struct.snd_interval** %8, align 8
+  %17 = load %struct.snd_pcm_hw_params*, %struct.snd_pcm_hw_params** %6, align 8
+  %18 = load i32, i32* @SNDRV_PCM_HW_PARAM_CHANNELS, align 4
+  %19 = call %struct.snd_interval* @hw_param_interval(%struct.snd_pcm_hw_params* %17, i32 %18)
+  store %struct.snd_interval* %19, %struct.snd_interval** %9, align 8
+  %20 = load %struct.snd_pcm_hw_params*, %struct.snd_pcm_hw_params** %6, align 8
+  %21 = load i32, i32* @SNDRV_PCM_HW_PARAM_FORMAT, align 4
+  %22 = call %struct.snd_mask* @hw_param_mask(%struct.snd_pcm_hw_params* %20, i32 %21)
+  store %struct.snd_mask* %22, %struct.snd_mask** %10, align 8
+  %23 = load %struct.snd_pcm_hw_params*, %struct.snd_pcm_hw_params** %6, align 8
+  %24 = load i32, i32* @SNDRV_PCM_HW_PARAM_PERIOD_TIME, align 4
+  %25 = call %struct.snd_interval* @hw_param_interval(%struct.snd_pcm_hw_params* %23, i32 %24)
+  store %struct.snd_interval* %25, %struct.snd_interval** %11, align 8
+  %26 = call i32 @snd_mask_none(%struct.snd_mask* %12)
+  %27 = load %struct.audioformat*, %struct.audioformat** %7, align 8
+  %28 = getelementptr inbounds %struct.audioformat, %struct.audioformat* %27, i32 0, i32 0
+  %29 = load i32, i32* %28, align 8
+  %30 = sext i32 %29 to i64
+  %31 = inttoptr i64 %30 to i8*
+  %32 = getelementptr inbounds %struct.snd_mask, %struct.snd_mask* %12, i32 0, i32 0
+  %33 = load i8**, i8*** %32, align 8
+  %34 = getelementptr inbounds i8*, i8** %33, i64 0
+  store i8* %31, i8** %34, align 8
+  %35 = load %struct.audioformat*, %struct.audioformat** %7, align 8
+  %36 = getelementptr inbounds %struct.audioformat, %struct.audioformat* %35, i32 0, i32 0
+  %37 = load i32, i32* %36, align 8
+  %38 = ashr i32 %37, 32
+  %39 = sext i32 %38 to i64
+  %40 = inttoptr i64 %39 to i8*
+  %41 = getelementptr inbounds %struct.snd_mask, %struct.snd_mask* %12, i32 0, i32 0
+  %42 = load i8**, i8*** %41, align 8
+  %43 = getelementptr inbounds i8*, i8** %42, i64 1
+  store i8* %40, i8** %43, align 8
+  %44 = load %struct.snd_mask*, %struct.snd_mask** %10, align 8
+  %45 = call i32 @snd_mask_intersect(%struct.snd_mask* %12, %struct.snd_mask* %44)
+  %46 = call i64 @snd_mask_empty(%struct.snd_mask* %12)
+  %47 = icmp ne i64 %46, 0
+  br i1 %47, label %48, label %53
+
+48:                                               ; preds = %3
+  %49 = load %struct.audioformat*, %struct.audioformat** %7, align 8
+  %50 = getelementptr inbounds %struct.audioformat, %struct.audioformat* %49, i32 0, i32 5
+  %51 = load i32, i32* %50, align 4
+  %52 = call i32 (i8*, i32, ...) @hwc_debug(i8* getelementptr inbounds ([36 x i8], [36 x i8]* @.str, i64 0, i64 0), i32 %51)
+  store i32 0, i32* %4, align 4
+  br label %180
+
+53:                                               ; preds = %3
+  %54 = load %struct.audioformat*, %struct.audioformat** %7, align 8
+  %55 = getelementptr inbounds %struct.audioformat, %struct.audioformat* %54, i32 0, i32 1
+  %56 = load i64, i64* %55, align 8
+  %57 = load %struct.snd_interval*, %struct.snd_interval** %9, align 8
+  %58 = getelementptr inbounds %struct.snd_interval, %struct.snd_interval* %57, i32 0, i32 0
+  %59 = load i64, i64* %58, align 8
+  %60 = icmp slt i64 %56, %59
+  br i1 %60, label %69, label %61
+
+61:                                               ; preds = %53
+  %62 = load %struct.audioformat*, %struct.audioformat** %7, align 8
+  %63 = getelementptr inbounds %struct.audioformat, %struct.audioformat* %62, i32 0, i32 1
+  %64 = load i64, i64* %63, align 8
+  %65 = load %struct.snd_interval*, %struct.snd_interval** %9, align 8
+  %66 = getelementptr inbounds %struct.snd_interval, %struct.snd_interval* %65, i32 0, i32 1
+  %67 = load i64, i64* %66, align 8
+  %68 = icmp sgt i64 %64, %67
+  br i1 %68, label %69, label %81
+
+69:                                               ; preds = %61, %53
+  %70 = load %struct.audioformat*, %struct.audioformat** %7, align 8
+  %71 = getelementptr inbounds %struct.audioformat, %struct.audioformat* %70, i32 0, i32 1
+  %72 = load i64, i64* %71, align 8
+  %73 = trunc i64 %72 to i32
+  %74 = load %struct.snd_interval*, %struct.snd_interval** %9, align 8
+  %75 = getelementptr inbounds %struct.snd_interval, %struct.snd_interval* %74, i32 0, i32 0
+  %76 = load i64, i64* %75, align 8
+  %77 = load %struct.snd_interval*, %struct.snd_interval** %9, align 8
+  %78 = getelementptr inbounds %struct.snd_interval, %struct.snd_interval* %77, i32 0, i32 1
+  %79 = load i64, i64* %78, align 8
+  %80 = call i32 (i8*, i32, ...) @hwc_debug(i8* getelementptr inbounds ([42 x i8], [42 x i8]* @.str.1, i64 0, i64 0), i32 %73, i64 %76, i64 %79)
+  store i32 0, i32* %4, align 4
+  br label %180
+
+81:                                               ; preds = %61
+  %82 = load %struct.audioformat*, %struct.audioformat** %7, align 8
+  %83 = getelementptr inbounds %struct.audioformat, %struct.audioformat* %82, i32 0, i32 2
+  %84 = load i64, i64* %83, align 8
+  %85 = load %struct.snd_interval*, %struct.snd_interval** %8, align 8
+  %86 = getelementptr inbounds %struct.snd_interval, %struct.snd_interval* %85, i32 0, i32 1
+  %87 = load i64, i64* %86, align 8
+  %88 = icmp sgt i64 %84, %87
+  br i1 %88, label %102, label %89
+
+89:                                               ; preds = %81
+  %90 = load %struct.audioformat*, %struct.audioformat** %7, align 8
+  %91 = getelementptr inbounds %struct.audioformat, %struct.audioformat* %90, i32 0, i32 2
+  %92 = load i64, i64* %91, align 8
+  %93 = load %struct.snd_interval*, %struct.snd_interval** %8, align 8
+  %94 = getelementptr inbounds %struct.snd_interval, %struct.snd_interval* %93, i32 0, i32 1
+  %95 = load i64, i64* %94, align 8
+  %96 = icmp eq i64 %92, %95
+  br i1 %96, label %97, label %111
+
+97:                                               ; preds = %89
+  %98 = load %struct.snd_interval*, %struct.snd_interval** %8, align 8
+  %99 = getelementptr inbounds %struct.snd_interval, %struct.snd_interval* %98, i32 0, i32 2
+  %100 = load i64, i64* %99, align 8
+  %101 = icmp ne i64 %100, 0
+  br i1 %101, label %102, label %111
+
+102:                                              ; preds = %97, %81
+  %103 = load %struct.audioformat*, %struct.audioformat** %7, align 8
+  %104 = getelementptr inbounds %struct.audioformat, %struct.audioformat* %103, i32 0, i32 2
+  %105 = load i64, i64* %104, align 8
+  %106 = trunc i64 %105 to i32
+  %107 = load %struct.snd_interval*, %struct.snd_interval** %8, align 8
+  %108 = getelementptr inbounds %struct.snd_interval, %struct.snd_interval* %107, i32 0, i32 1
+  %109 = load i64, i64* %108, align 8
+  %110 = call i32 (i8*, i32, ...) @hwc_debug(i8* getelementptr inbounds ([34 x i8], [34 x i8]* @.str.2, i64 0, i64 0), i32 %106, i64 %109)
+  store i32 0, i32* %4, align 4
+  br label %180
+
+111:                                              ; preds = %97, %89
+  %112 = load %struct.audioformat*, %struct.audioformat** %7, align 8
+  %113 = getelementptr inbounds %struct.audioformat, %struct.audioformat* %112, i32 0, i32 3
+  %114 = load i64, i64* %113, align 8
+  %115 = load %struct.snd_interval*, %struct.snd_interval** %8, align 8
+  %116 = getelementptr inbounds %struct.snd_interval, %struct.snd_interval* %115, i32 0, i32 0
+  %117 = load i64, i64* %116, align 8
+  %118 = icmp slt i64 %114, %117
+  br i1 %118, label %132, label %119
+
+119:                                              ; preds = %111
+  %120 = load %struct.audioformat*, %struct.audioformat** %7, align 8
+  %121 = getelementptr inbounds %struct.audioformat, %struct.audioformat* %120, i32 0, i32 3
+  %122 = load i64, i64* %121, align 8
+  %123 = load %struct.snd_interval*, %struct.snd_interval** %8, align 8
+  %124 = getelementptr inbounds %struct.snd_interval, %struct.snd_interval* %123, i32 0, i32 0
+  %125 = load i64, i64* %124, align 8
+  %126 = icmp eq i64 %122, %125
+  br i1 %126, label %127, label %141
+
+127:                                              ; preds = %119
+  %128 = load %struct.snd_interval*, %struct.snd_interval** %8, align 8
+  %129 = getelementptr inbounds %struct.snd_interval, %struct.snd_interval* %128, i32 0, i32 3
+  %130 = load i64, i64* %129, align 8
+  %131 = icmp ne i64 %130, 0
+  br i1 %131, label %132, label %141
+
+132:                                              ; preds = %127, %111
+  %133 = load %struct.audioformat*, %struct.audioformat** %7, align 8
+  %134 = getelementptr inbounds %struct.audioformat, %struct.audioformat* %133, i32 0, i32 3
+  %135 = load i64, i64* %134, align 8
+  %136 = trunc i64 %135 to i32
+  %137 = load %struct.snd_interval*, %struct.snd_interval** %8, align 8
+  %138 = getelementptr inbounds %struct.snd_interval, %struct.snd_interval* %137, i32 0, i32 0
+  %139 = load i64, i64* %138, align 8
+  %140 = call i32 (i8*, i32, ...) @hwc_debug(i8* getelementptr inbounds ([34 x i8], [34 x i8]* @.str.3, i64 0, i64 0), i32 %136, i64 %139)
+  store i32 0, i32* %4, align 4
+  br label %180
+
+141:                                              ; preds = %127, %119
+  %142 = load %struct.snd_usb_substream*, %struct.snd_usb_substream** %5, align 8
+  %143 = getelementptr inbounds %struct.snd_usb_substream, %struct.snd_usb_substream* %142, i32 0, i32 0
+  %144 = load i32, i32* %143, align 4
+  %145 = call i64 @snd_usb_get_speed(i32 %144)
+  %146 = load i64, i64* @USB_SPEED_FULL, align 8
+  %147 = icmp ne i64 %145, %146
+  br i1 %147, label %148, label %179
+
+148:                                              ; preds = %141
+  %149 = load %struct.audioformat*, %struct.audioformat** %7, align 8
+  %150 = getelementptr inbounds %struct.audioformat, %struct.audioformat* %149, i32 0, i32 4
+  %151 = load i32, i32* %150, align 8
+  %152 = shl i32 1, %151
+  %153 = mul nsw i32 125, %152
+  store i32 %153, i32* %13, align 4
+  %154 = load i32, i32* %13, align 4
+  %155 = zext i32 %154 to i64
+  %156 = load %struct.snd_interval*, %struct.snd_interval** %11, align 8
+  %157 = getelementptr inbounds %struct.snd_interval, %struct.snd_interval* %156, i32 0, i32 1
+  %158 = load i64, i64* %157, align 8
+  %159 = icmp sgt i64 %155, %158
+  br i1 %159, label %172, label %160
+
+160:                                              ; preds = %148
+  %161 = load i32, i32* %13, align 4
+  %162 = zext i32 %161 to i64
+  %163 = load %struct.snd_interval*, %struct.snd_interval** %11, align 8
+  %164 = getelementptr inbounds %struct.snd_interval, %struct.snd_interval* %163, i32 0, i32 1
+  %165 = load i64, i64* %164, align 8
+  %166 = icmp eq i64 %162, %165
+  br i1 %166, label %167, label %178
+
+167:                                              ; preds = %160
+  %168 = load %struct.snd_interval*, %struct.snd_interval** %11, align 8
+  %169 = getelementptr inbounds %struct.snd_interval, %struct.snd_interval* %168, i32 0, i32 2
+  %170 = load i64, i64* %169, align 8
+  %171 = icmp ne i64 %170, 0
+  br i1 %171, label %172, label %178
+
+172:                                              ; preds = %167, %148
+  %173 = load i32, i32* %13, align 4
+  %174 = load %struct.snd_interval*, %struct.snd_interval** %11, align 8
+  %175 = getelementptr inbounds %struct.snd_interval, %struct.snd_interval* %174, i32 0, i32 1
+  %176 = load i64, i64* %175, align 8
+  %177 = call i32 (i8*, i32, ...) @hwc_debug(i8* getelementptr inbounds ([31 x i8], [31 x i8]* @.str.4, i64 0, i64 0), i32 %173, i64 %176)
+  store i32 0, i32* %4, align 4
+  br label %180
+
+178:                                              ; preds = %167, %160
+  br label %179
+
+179:                                              ; preds = %178, %141
+  store i32 1, i32* %4, align 4
+  br label %180
+
+180:                                              ; preds = %179, %172, %132, %102, %69, %48
+  %181 = load i32, i32* %4, align 4
+  ret i32 %181
+}
+
+declare dso_local %struct.snd_interval* @hw_param_interval(%struct.snd_pcm_hw_params*, i32) #1
+
+declare dso_local %struct.snd_mask* @hw_param_mask(%struct.snd_pcm_hw_params*, i32) #1
+
+declare dso_local i32 @snd_mask_none(%struct.snd_mask*) #1
+
+declare dso_local i32 @snd_mask_intersect(%struct.snd_mask*, %struct.snd_mask*) #1
+
+declare dso_local i64 @snd_mask_empty(%struct.snd_mask*) #1
+
+declare dso_local i32 @hwc_debug(i8*, i32, ...) #1
+
+declare dso_local i64 @snd_usb_get_speed(i32) #1
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

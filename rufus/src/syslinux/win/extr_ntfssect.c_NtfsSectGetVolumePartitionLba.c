@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_5__ ;
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_12__ TYPE_5__ ;
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_11__ {int NumberOfDiskExtents; TYPE_3__* Extents; } ;
-typedef  TYPE_4__ VOLUME_DISK_EXTENTS ;
+typedef TYPE_4__ VOLUME_DISK_EXTENTS ;
 struct TYPE_8__ {int QuadPart; } ;
-struct TYPE_12__ {int BytesPerSector; TYPE_1__ PartitionLba; int /*<<< orphan*/  Handle; } ;
+struct TYPE_12__ {int BytesPerSector; TYPE_1__ PartitionLba; int Handle; } ;
 struct TYPE_9__ {int QuadPart; } ;
 struct TYPE_10__ {TYPE_2__ StartingOffset; } ;
-typedef  TYPE_5__ S_NTFSSECT_VOLINFO ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef TYPE_5__ S_NTFSSECT_VOLINFO ;
+typedef int DWORD ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DeviceIoControl (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_4__*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ERROR_SUCCESS ; 
- int /*<<< orphan*/  GetLastError () ; 
- int /*<<< orphan*/  IOCTL_VOLUME_GET_VOLUME_DISK_EXTENTS ; 
- int /*<<< orphan*/  M_ERR (char*) ; 
+
+ int DeviceIoControl (int ,int ,int *,int ,TYPE_4__*,int,int *,int *) ;
+ int ERROR_SUCCESS ;
+ int GetLastError () ;
+ int IOCTL_VOLUME_GET_VOLUME_DISK_EXTENTS ;
+ int M_ERR (char*) ;
 
 __attribute__((used)) static DWORD NtfsSectGetVolumePartitionLba(S_NTFSSECT_VOLINFO * VolumeInfo) {
     BOOL ok;
@@ -40,12 +40,12 @@ __attribute__((used)) static DWORD NtfsSectGetVolumePartitionLba(S_NTFSSECT_VOLI
     ok = DeviceIoControl(
         VolumeInfo->Handle,
         IOCTL_VOLUME_GET_VOLUME_DISK_EXTENTS,
-        NULL,
+        ((void*)0),
         0,
         &vol_disk_extents,
         sizeof vol_disk_extents,
         &output_size,
-        NULL
+        ((void*)0)
       );
     rc = GetLastError();
     if (!ok) {

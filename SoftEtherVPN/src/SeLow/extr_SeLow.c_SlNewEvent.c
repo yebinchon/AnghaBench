@@ -1,72 +1,72 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/ * event; int /*<<< orphan*/  event_handle; } ;
-typedef  int /*<<< orphan*/  SL_UNICODE ;
-typedef  TYPE_1__ SL_EVENT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/ * IoCreateNotificationEvent (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  KeClearEvent (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  KeInitializeEvent (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NotificationEvent ; 
- int /*<<< orphan*/  SlFree (TYPE_1__*) ; 
- int /*<<< orphan*/  SlFreeUnicode (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SlGetUnicode (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * SlNewUnicode (char*) ; 
- TYPE_1__* SlZeroMalloc (int) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int * event; int event_handle; } ;
+typedef int SL_UNICODE ;
+typedef TYPE_1__ SL_EVENT ;
+
+
+ int FALSE ;
+ int * IoCreateNotificationEvent (int ,int *) ;
+ int KeClearEvent (int *) ;
+ int KeInitializeEvent (int *,int ,int ) ;
+ int NotificationEvent ;
+ int SlFree (TYPE_1__*) ;
+ int SlFreeUnicode (int *) ;
+ int SlGetUnicode (int *) ;
+ int * SlNewUnicode (char*) ;
+ TYPE_1__* SlZeroMalloc (int) ;
 
 SL_EVENT *SlNewEvent(char *name)
 {
-	SL_UNICODE *unicode_name;
-	SL_EVENT *event;
-	// Validate arguments
-	if (name == NULL)
-	{
-		return NULL;
-	}
+ SL_UNICODE *unicode_name;
+ SL_EVENT *event;
 
-	// Convert to Unicode name
-	unicode_name = SlNewUnicode(name);
-	if (unicode_name == NULL)
-	{
-		return NULL;
-	}
+ if (name == ((void*)0))
+ {
+  return ((void*)0);
+ }
 
-	// Memory allocation
-	event = SlZeroMalloc(sizeof(SL_EVENT));
-	if (event == NULL)
-	{
-		SlFreeUnicode(unicode_name);
-		return NULL;
-	}
 
-	// Create an event
-	event->event = IoCreateNotificationEvent(SlGetUnicode(unicode_name), &event->event_handle);
-	if (event->event == NULL)
-	{
-		SlFree(event);
-		SlFreeUnicode(unicode_name);
-		return NULL;
-	}
+ unicode_name = SlNewUnicode(name);
+ if (unicode_name == ((void*)0))
+ {
+  return ((void*)0);
+ }
 
-	// Initialize the event
-	KeInitializeEvent(event->event, NotificationEvent, FALSE);
-	KeClearEvent(event->event);
 
-	// Release the string
-	SlFreeUnicode(unicode_name);
+ event = SlZeroMalloc(sizeof(SL_EVENT));
+ if (event == ((void*)0))
+ {
+  SlFreeUnicode(unicode_name);
+  return ((void*)0);
+ }
 
-	return event;
+
+ event->event = IoCreateNotificationEvent(SlGetUnicode(unicode_name), &event->event_handle);
+ if (event->event == ((void*)0))
+ {
+  SlFree(event);
+  SlFreeUnicode(unicode_name);
+  return ((void*)0);
+ }
+
+
+ KeInitializeEvent(event->event, NotificationEvent, FALSE);
+ KeClearEvent(event->event);
+
+
+ SlFreeUnicode(unicode_name);
+
+ return event;
 }

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_5__ {int use_argb; int width; int height; int /*<<< orphan*/  uv_stride; int /*<<< orphan*/  v; int /*<<< orphan*/  u; int /*<<< orphan*/  y_stride; int /*<<< orphan*/  y; } ;
-typedef  TYPE_1__ WebPPicture ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ImgIoUtilCopyPlane (int /*<<< orphan*/  const* const,int const,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int const,int const) ; 
- int /*<<< orphan*/  WebPPictureAlloc (TYPE_1__* const) ; 
- int WebPPictureYUVAToARGB (TYPE_1__* const) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,int) ; 
- int /*<<< orphan*/  stderr ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_5__ {int use_argb; int width; int height; int uv_stride; int v; int u; int y_stride; int y; } ;
+typedef TYPE_1__ WebPPicture ;
+
+
+ int ImgIoUtilCopyPlane (int const* const,int const,int ,int ,int const,int const) ;
+ int WebPPictureAlloc (TYPE_1__* const) ;
+ int WebPPictureYUVAToARGB (TYPE_1__* const) ;
+ int fprintf (int ,char*,int,int) ;
+ int stderr ;
 
 __attribute__((used)) static int ReadYUV(const uint8_t* const data, size_t data_size,
                    WebPPicture* const pic) {

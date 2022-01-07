@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int int64_t ;
-typedef  int /*<<< orphan*/  AVIOContext ;
 
-/* Variables and functions */
- int FFMAX (int,int) ; 
- int MOV_TRUN_DATA_OFFSET ; 
- int MOV_TRUN_FIRST_SAMPLE_FLAGS ; 
- int MOV_TRUN_SAMPLE_CTS ; 
- int MOV_TRUN_SAMPLE_DURATION ; 
- int MOV_TRUN_SAMPLE_FLAGS ; 
- int MOV_TRUN_SAMPLE_SIZE ; 
- int /*<<< orphan*/  avio_r8 (int /*<<< orphan*/ *) ; 
- int avio_rb24 (int /*<<< orphan*/ *) ; 
- int avio_rb32 (int /*<<< orphan*/ *) ; 
- int avio_tell (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  stderr ; 
+
+
+
+typedef int int64_t ;
+typedef int AVIOContext ;
+
+
+ int FFMAX (int,int) ;
+ int MOV_TRUN_DATA_OFFSET ;
+ int MOV_TRUN_FIRST_SAMPLE_FLAGS ;
+ int MOV_TRUN_SAMPLE_CTS ;
+ int MOV_TRUN_SAMPLE_DURATION ;
+ int MOV_TRUN_SAMPLE_FLAGS ;
+ int MOV_TRUN_SAMPLE_SIZE ;
+ int avio_r8 (int *) ;
+ int avio_rb24 (int *) ;
+ int avio_rb32 (int *) ;
+ int avio_tell (int *) ;
+ int fprintf (int ,char*,...) ;
+ int stderr ;
 
 __attribute__((used)) static int64_t read_trun_duration(AVIOContext *in, int default_duration,
                                   int64_t end)
@@ -37,7 +37,7 @@ __attribute__((used)) static int64_t read_trun_duration(AVIOContext *in, int def
     int entries;
     int64_t first_pts = 0;
     int64_t max_pts = 0;
-    avio_r8(in); /* version */
+    avio_r8(in);
     flags = avio_rb24(in);
     if (default_duration <= 0 && !(flags & MOV_TRUN_SAMPLE_DURATION)) {
         fprintf(stderr, "No sample duration in trun flags\n");
@@ -45,7 +45,7 @@ __attribute__((used)) static int64_t read_trun_duration(AVIOContext *in, int def
     }
     entries = avio_rb32(in);
 
-    if (flags & MOV_TRUN_DATA_OFFSET)        avio_rb32(in);
+    if (flags & MOV_TRUN_DATA_OFFSET) avio_rb32(in);
     if (flags & MOV_TRUN_FIRST_SAMPLE_FLAGS) avio_rb32(in);
 
     pos = avio_tell(in);
@@ -53,9 +53,9 @@ __attribute__((used)) static int64_t read_trun_duration(AVIOContext *in, int def
         int sample_duration = default_duration;
         int64_t pts = dts;
         if (flags & MOV_TRUN_SAMPLE_DURATION) sample_duration = avio_rb32(in);
-        if (flags & MOV_TRUN_SAMPLE_SIZE)     avio_rb32(in);
-        if (flags & MOV_TRUN_SAMPLE_FLAGS)    avio_rb32(in);
-        if (flags & MOV_TRUN_SAMPLE_CTS)      pts += avio_rb32(in);
+        if (flags & MOV_TRUN_SAMPLE_SIZE) avio_rb32(in);
+        if (flags & MOV_TRUN_SAMPLE_FLAGS) avio_rb32(in);
+        if (flags & MOV_TRUN_SAMPLE_CTS) pts += avio_rb32(in);
         if (sample_duration < 0) {
             fprintf(stderr, "Negative sample duration %d\n", sample_duration);
             return -1;

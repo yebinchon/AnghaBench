@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {scalar_t__ (* GetString ) (int /*<<< orphan*/ ) ;} ;
-typedef  TYPE_1__ _GLFWwindow ;
-typedef  int /*<<< orphan*/  GLboolean ;
 
-/* Variables and functions */
- int GLFW_OPENGL_API ; 
- int GLFW_OPENGL_ES_API ; 
- int /*<<< orphan*/  GLFW_PLATFORM_ERROR ; 
- int /*<<< orphan*/  GL_FALSE ; 
- int /*<<< orphan*/  GL_TRUE ; 
- int /*<<< orphan*/  GL_VERSION ; 
- int /*<<< orphan*/  _glfwInputError (int /*<<< orphan*/ ,char*) ; 
- TYPE_1__* _glfwPlatformGetCurrentContext () ; 
- int /*<<< orphan*/  sscanf (char const*,char*,int*,int*,int*) ; 
- size_t strlen (char const*) ; 
- scalar_t__ strncmp (char const*,char const*,size_t const) ; 
- scalar_t__ stub1 (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {scalar_t__ (* GetString ) (int ) ;} ;
+typedef TYPE_1__ _GLFWwindow ;
+typedef int GLboolean ;
+
+
+ int GLFW_OPENGL_API ;
+ int GLFW_OPENGL_ES_API ;
+ int GLFW_PLATFORM_ERROR ;
+ int GL_FALSE ;
+ int GL_TRUE ;
+ int GL_VERSION ;
+ int _glfwInputError (int ,char*) ;
+ TYPE_1__* _glfwPlatformGetCurrentContext () ;
+ int sscanf (char const*,char*,int*,int*,int*) ;
+ size_t strlen (char const*) ;
+ scalar_t__ strncmp (char const*,char const*,size_t const) ;
+ scalar_t__ stub1 (int ) ;
 
 __attribute__((used)) static GLboolean parseVersionString(int* api, int* major, int* minor, int* rev)
 {
@@ -39,7 +39,7 @@ __attribute__((used)) static GLboolean parseVersionString(int* api, int* major, 
         "OpenGL ES-CM ",
         "OpenGL ES-CL ",
         "OpenGL ES ",
-        NULL
+        ((void*)0)
     };
 
     *api = GLFW_OPENGL_API;
@@ -54,7 +54,7 @@ __attribute__((used)) static GLboolean parseVersionString(int* api, int* major, 
         return GL_FALSE;
     }
 
-    for (i = 0;  prefixes[i];  i++)
+    for (i = 0; prefixes[i]; i++)
     {
         const size_t length = strlen(prefixes[i]);
 

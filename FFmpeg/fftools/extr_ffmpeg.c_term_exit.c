@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  AV_LOG_QUIET ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  term_exit_sigsafe () ; 
+ int AV_LOG_QUIET ;
+ int av_log (int *,int ,char*,char*) ;
+ int term_exit_sigsafe () ;
 
 void term_exit(void)
 {
-    av_log(NULL, AV_LOG_QUIET, "%s", "");
+    av_log(((void*)0), AV_LOG_QUIET, "%s", "");
     term_exit_sigsafe();
 }

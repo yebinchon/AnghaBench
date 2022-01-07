@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct drm_plane_state {int dummy; } ;
 struct drm_plane {TYPE_1__* state; } ;
-struct drm_gem_cma_object {int /*<<< orphan*/  paddr; } ;
+struct drm_gem_cma_object {int paddr; } ;
 struct arcpgu_drm_private {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/  fb; int /*<<< orphan*/  crtc; } ;
+struct TYPE_2__ {int fb; int crtc; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARCPGU_REG_BUF0_ADDR ; 
- int /*<<< orphan*/  arc_pgu_write (struct arcpgu_drm_private*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- struct arcpgu_drm_private* crtc_to_arcpgu_priv (int /*<<< orphan*/ ) ; 
- struct drm_gem_cma_object* drm_fb_cma_get_gem_obj (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int ARCPGU_REG_BUF0_ADDR ;
+ int arc_pgu_write (struct arcpgu_drm_private*,int ,int ) ;
+ struct arcpgu_drm_private* crtc_to_arcpgu_priv (int ) ;
+ struct drm_gem_cma_object* drm_fb_cma_get_gem_obj (int ,int ) ;
 
 __attribute__((used)) static void arc_pgu_plane_atomic_update(struct drm_plane *plane,
-					struct drm_plane_state *state)
+     struct drm_plane_state *state)
 {
-	struct arcpgu_drm_private *arcpgu;
-	struct drm_gem_cma_object *gem;
+ struct arcpgu_drm_private *arcpgu;
+ struct drm_gem_cma_object *gem;
 
-	if (!plane->state->crtc || !plane->state->fb)
-		return;
+ if (!plane->state->crtc || !plane->state->fb)
+  return;
 
-	arcpgu = crtc_to_arcpgu_priv(plane->state->crtc);
-	gem = drm_fb_cma_get_gem_obj(plane->state->fb, 0);
-	arc_pgu_write(arcpgu, ARCPGU_REG_BUF0_ADDR, gem->paddr);
+ arcpgu = crtc_to_arcpgu_priv(plane->state->crtc);
+ gem = drm_fb_cma_get_gem_obj(plane->state->fb, 0);
+ arc_pgu_write(arcpgu, ARCPGU_REG_BUF0_ADDR, gem->paddr);
 }

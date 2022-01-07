@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/ * n; } ;
-typedef  TYPE_1__ cmsVEC3 ;
-typedef  int /*<<< orphan*/  cmsMAT3 ;
-typedef  double cmsFloat64Number ;
-typedef  int /*<<< orphan*/  cmsContext ;
-typedef  int /*<<< orphan*/  cmsCIExyY ;
-struct TYPE_8__ {int /*<<< orphan*/  Z; int /*<<< orphan*/  Y; int /*<<< orphan*/  X; } ;
-typedef  TYPE_2__ cmsCIEXYZ ;
-struct TYPE_9__ {int /*<<< orphan*/  Z; int /*<<< orphan*/  Y; int /*<<< orphan*/  X; } ;
 
-/* Variables and functions */
- double FALSE ; 
- size_t VX ; 
- size_t VY ; 
- size_t VZ ; 
- int /*<<< orphan*/  _cmsMAT3eval (int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  _cmsMAT3inverse (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- TYPE_4__* cmsD50_XYZ (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cmsTempFromWhitePoint (int /*<<< orphan*/ ,double*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cmsXYZ2xyY (int /*<<< orphan*/ ,int /*<<< orphan*/ *,TYPE_2__*) ; 
+
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int * n; } ;
+typedef TYPE_1__ cmsVEC3 ;
+typedef int cmsMAT3 ;
+typedef double cmsFloat64Number ;
+typedef int cmsContext ;
+typedef int cmsCIExyY ;
+struct TYPE_8__ {int Z; int Y; int X; } ;
+typedef TYPE_2__ cmsCIEXYZ ;
+struct TYPE_9__ {int Z; int Y; int X; } ;
+
+
+ double FALSE ;
+ size_t VX ;
+ size_t VY ;
+ size_t VZ ;
+ int _cmsMAT3eval (int ,TYPE_1__*,int *,TYPE_1__*) ;
+ int _cmsMAT3inverse (int ,int *,int *) ;
+ TYPE_4__* cmsD50_XYZ (int ) ;
+ int cmsTempFromWhitePoint (int ,double*,int *) ;
+ int cmsXYZ2xyY (int ,int *,TYPE_2__*) ;
 
 __attribute__((used)) static
 cmsFloat64Number CHAD2Temp(cmsContext ContextID, const cmsMAT3* Chad)
 {
-    // Convert D50 across inverse CHAD to get the absolute white point
+
     cmsVEC3 d, s;
     cmsCIEXYZ Dest;
     cmsCIExyY DestChromaticity;

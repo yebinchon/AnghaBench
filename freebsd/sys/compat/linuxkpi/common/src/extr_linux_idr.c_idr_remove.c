@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct idr {int /*<<< orphan*/  lock; } ;
 
-/* Variables and functions */
- void* idr_remove_locked (struct idr*,int) ; 
- int /*<<< orphan*/  mtx_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mtx_unlock (int /*<<< orphan*/ *) ; 
+
+
+
+struct idr {int lock; } ;
+
+
+ void* idr_remove_locked (struct idr*,int) ;
+ int mtx_lock (int *) ;
+ int mtx_unlock (int *) ;
 
 void *
 idr_remove(struct idr *idr, int id)
 {
-	void *res;
+ void *res;
 
-	mtx_lock(&idr->lock);
-	res = idr_remove_locked(idr, id);
-	mtx_unlock(&idr->lock);
+ mtx_lock(&idr->lock);
+ res = idr_remove_locked(idr, id);
+ mtx_unlock(&idr->lock);
 
-	return (res);
+ return (res);
 }

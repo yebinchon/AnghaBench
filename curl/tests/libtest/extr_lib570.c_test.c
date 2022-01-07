@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  CURL ;
 
-/* Variables and functions */
- scalar_t__ CURLE_OK ; 
- scalar_t__ CURLE_RTSP_CSEQ_ERROR ; 
- int CURLE_RTSP_SESSION_ERROR ; 
- int /*<<< orphan*/  CURLOPT_HEADERDATA ; 
- int /*<<< orphan*/  CURLOPT_RTSP_CLIENT_CSEQ ; 
- int /*<<< orphan*/  CURLOPT_RTSP_REQUEST ; 
- int /*<<< orphan*/  CURLOPT_RTSP_STREAM_URI ; 
- int /*<<< orphan*/  CURLOPT_RTSP_TRANSPORT ; 
- int /*<<< orphan*/  CURLOPT_URL ; 
- int /*<<< orphan*/  CURLOPT_VERBOSE ; 
- int /*<<< orphan*/  CURLOPT_WRITEDATA ; 
- int /*<<< orphan*/  CURL_GLOBAL_ALL ; 
- char* CURL_RTSPREQ_OPTIONS ; 
- char* CURL_RTSPREQ_PLAY ; 
- char* CURL_RTSPREQ_SETUP ; 
- int TEST_ERR_MAJOR_BAD ; 
- int /*<<< orphan*/  curl_easy_cleanup (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * curl_easy_init () ; 
- int curl_easy_perform (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  curl_global_cleanup () ; 
- scalar_t__ curl_global_init (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  stderr ; 
- char* stdout ; 
- char* suburl (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_setopt (int /*<<< orphan*/ *,int /*<<< orphan*/ ,...) ; 
+
+
+
+typedef int CURL ;
+
+
+ scalar_t__ CURLE_OK ;
+ scalar_t__ CURLE_RTSP_CSEQ_ERROR ;
+ int CURLE_RTSP_SESSION_ERROR ;
+ int CURLOPT_HEADERDATA ;
+ int CURLOPT_RTSP_CLIENT_CSEQ ;
+ int CURLOPT_RTSP_REQUEST ;
+ int CURLOPT_RTSP_STREAM_URI ;
+ int CURLOPT_RTSP_TRANSPORT ;
+ int CURLOPT_URL ;
+ int CURLOPT_VERBOSE ;
+ int CURLOPT_WRITEDATA ;
+ int CURL_GLOBAL_ALL ;
+ char* CURL_RTSPREQ_OPTIONS ;
+ char* CURL_RTSPREQ_PLAY ;
+ char* CURL_RTSPREQ_SETUP ;
+ int TEST_ERR_MAJOR_BAD ;
+ int curl_easy_cleanup (int *) ;
+ int * curl_easy_init () ;
+ int curl_easy_perform (int *) ;
+ int curl_global_cleanup () ;
+ scalar_t__ curl_global_init (int ) ;
+ int fprintf (int ,char*) ;
+ int free (char*) ;
+ int stderr ;
+ char* stdout ;
+ char* suburl (char*,int ) ;
+ int test_setopt (int *,int ,...) ;
 
 int test(char *URL)
 {
   int res;
   CURL *curl;
   int request = 1;
-  char *stream_uri = NULL;
+  char *stream_uri = ((void*)0);
 
   if(curl_global_init(CURL_GLOBAL_ALL) != CURLE_OK) {
     fprintf(stderr, "curl_global_init() failed\n");
@@ -75,7 +75,7 @@ int test(char *URL)
   }
   test_setopt(curl, CURLOPT_RTSP_STREAM_URI, stream_uri);
   free(stream_uri);
-  stream_uri = NULL;
+  stream_uri = ((void*)0);
 
   res = curl_easy_perform(curl);
   if(res != (int)CURLE_RTSP_CSEQ_ERROR) {
@@ -96,7 +96,7 @@ int test(char *URL)
   }
   test_setopt(curl, CURLOPT_RTSP_STREAM_URI, stream_uri);
   free(stream_uri);
-  stream_uri = NULL;
+  stream_uri = ((void*)0);
 
   res = curl_easy_perform(curl);
   if(res)
@@ -111,7 +111,7 @@ int test(char *URL)
   }
   test_setopt(curl, CURLOPT_RTSP_STREAM_URI, stream_uri);
   free(stream_uri);
-  stream_uri = NULL;
+  stream_uri = ((void*)0);
 
   res = curl_easy_perform(curl);
   if(res != CURLE_RTSP_SESSION_ERROR) {

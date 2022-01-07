@@ -1,34 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  enum mlxsw_sp_kvdl_entry_type { ____Placeholder_mlxsw_sp_kvdl_entry_type } mlxsw_sp_kvdl_entry_type ;
 
-/* Variables and functions */
-#define  MLXSW_SP_KVDL_ENTRY_TYPE_ACTSET 132 
-#define  MLXSW_SP_KVDL_ENTRY_TYPE_ADJ 131 
-#define  MLXSW_SP_KVDL_ENTRY_TYPE_MCRIGR 130 
-#define  MLXSW_SP_KVDL_ENTRY_TYPE_PBS 129 
-#define  MLXSW_SP_KVDL_ENTRY_TYPE_TNUMT 128 
 
+
+
+typedef enum mlxsw_sp_kvdl_entry_type { ____Placeholder_mlxsw_sp_kvdl_entry_type } mlxsw_sp_kvdl_entry_type ;
 __attribute__((used)) static inline unsigned int
 mlxsw_sp_kvdl_entry_size(enum mlxsw_sp_kvdl_entry_type type)
 {
-	switch (type) {
-	case MLXSW_SP_KVDL_ENTRY_TYPE_ADJ: /* fall through */
-	case MLXSW_SP_KVDL_ENTRY_TYPE_ACTSET: /* fall through */
-	case MLXSW_SP_KVDL_ENTRY_TYPE_PBS: /* fall through */
-	case MLXSW_SP_KVDL_ENTRY_TYPE_MCRIGR: /* fall through */
-	case MLXSW_SP_KVDL_ENTRY_TYPE_TNUMT: /* fall through */
-	default:
-		return 1;
-	}
+ switch (type) {
+ case 131:
+ case 132:
+ case 129:
+ case 130:
+ case 128:
+ default:
+  return 1;
+ }
 }

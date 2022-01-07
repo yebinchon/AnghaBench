@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct lwan_strbuf {int dummy; } ;
 
-/* Variables and functions */
- scalar_t__ LIKELY (char const*) ; 
- int /*<<< orphan*/  lwan_strbuf_append_strz (struct lwan_strbuf*,char const*) ; 
+
+ scalar_t__ LIKELY (char const*) ;
+ int lwan_strbuf_append_strz (struct lwan_strbuf*,char const*) ;
 
 void lwan_append_str_to_strbuf(struct lwan_strbuf *buf, void *ptr)
 {

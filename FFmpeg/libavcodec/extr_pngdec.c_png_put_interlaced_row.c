@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memcpy (int*,int const*,int) ; 
- int* png_pass_dsp_mask ; 
- int* png_pass_mask ; 
+
+
+
+typedef int uint8_t ;
+
+
+ int memcpy (int*,int const*,int) ;
+ int* png_pass_dsp_mask ;
+ int* png_pass_mask ;
 
 __attribute__((used)) static void png_put_interlaced_row(uint8_t *dst, int width,
                                    int bits_per_pixel, int pass,
@@ -25,7 +25,7 @@ __attribute__((used)) static void png_put_interlaced_row(uint8_t *dst, int width
     uint8_t *d;
     const uint8_t *s;
 
-    mask     = png_pass_mask[pass];
+    mask = png_pass_mask[pass];
     dsp_mask = png_pass_dsp_mask[pass];
 
     switch (bits_per_pixel) {
@@ -72,8 +72,8 @@ __attribute__((used)) static void png_put_interlaced_row(uint8_t *dst, int width
         break;
     default:
         bpp = bits_per_pixel >> 3;
-        d   = dst;
-        s   = src;
+        d = dst;
+        s = src;
             for (x = 0; x < width; x++) {
                 j = x & 7;
                 if ((dsp_mask << j) & 0x80) {

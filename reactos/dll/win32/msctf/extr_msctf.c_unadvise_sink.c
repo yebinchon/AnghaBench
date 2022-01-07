@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Sink ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CONNECT_E_NOCONNECTION ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  free_sink (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * remove_Cookie (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int Sink ;
+typedef int HRESULT ;
+typedef int DWORD ;
+
+
+ int CONNECT_E_NOCONNECTION ;
+ int S_OK ;
+ int free_sink (int *) ;
+ int * remove_Cookie (int ) ;
 
 HRESULT unadvise_sink(DWORD cookie)
 {

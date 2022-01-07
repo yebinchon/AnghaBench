@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int ULONG ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int ULONG ;
 struct TYPE_5__ {int QuadPart; } ;
-typedef  TYPE_1__ ULARGE_INTEGER ;
+typedef TYPE_1__ ULARGE_INTEGER ;
 struct TYPE_6__ {int QuadPart; } ;
-typedef  TYPE_2__ LARGE_INTEGER ;
-typedef  int /*<<< orphan*/  IStream ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int BYTE ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef TYPE_2__ LARGE_INTEGER ;
+typedef int IStream ;
+typedef int HRESULT ;
+typedef int BYTE ;
+typedef int BOOL ;
 
-/* Variables and functions */
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  IStream_Read (int /*<<< orphan*/ *,int*,int,int*) ; 
- int /*<<< orphan*/  IStream_Seek (int /*<<< orphan*/ *,TYPE_2__,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  STREAM_SEEK_SET ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- scalar_t__ memcmp (int*,char*,int) ; 
+
+ scalar_t__ FAILED (int ) ;
+ int FALSE ;
+ int IStream_Read (int *,int*,int,int*) ;
+ int IStream_Seek (int *,TYPE_2__,int ,TYPE_1__*) ;
+ int STREAM_SEEK_SET ;
+ int TRACE (char*,int ) ;
+ int TRUE ;
+ scalar_t__ memcmp (int*,char*,int) ;
 
 __attribute__((used)) static BOOL has_png_transparency_chunk(IStream *pIStream)
 {
@@ -58,7 +58,7 @@ __attribute__((used)) static BOOL has_png_transparency_chunk(IStream *pIStream)
             break;
         }
 
-        seek.QuadPart = chunk_start.QuadPart + chunk_size + 12; /* skip data and CRC */
+        seek.QuadPart = chunk_start.QuadPart + chunk_size + 12;
     } while (memcmp(&header[4], "IDAT", 4) && memcmp(&header[4], "IEND", 4));
 
     TRACE("has_tRNS = %d\n", has_tRNS);

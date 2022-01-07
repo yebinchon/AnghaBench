@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ time_t ;
-struct tm {int /*<<< orphan*/  tm_sec; int /*<<< orphan*/  tm_min; int /*<<< orphan*/  tm_hour; int /*<<< orphan*/  tm_mday; int /*<<< orphan*/  tm_mon; int /*<<< orphan*/  tm_year; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OPENSSL_gmtime (scalar_t__*,struct tm*) ; 
- int /*<<< orphan*/  OPENSSL_gmtime_adj (struct tm*,int /*<<< orphan*/ ,long) ; 
- int /*<<< orphan*/  OPENSSL_gmtime_diff (int*,int*,struct tm*,struct tm*) ; 
- long SECS_PER_DAY ; 
- int /*<<< orphan*/  TEST_int_eq (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_long_eq (long,long) ; 
- int /*<<< orphan*/  TEST_true (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  time (scalar_t__*) ; 
+
+
+
+typedef scalar_t__ time_t ;
+struct tm {int tm_sec; int tm_min; int tm_hour; int tm_mday; int tm_mon; int tm_year; } ;
+
+
+ int OPENSSL_gmtime (scalar_t__*,struct tm*) ;
+ int OPENSSL_gmtime_adj (struct tm*,int ,long) ;
+ int OPENSSL_gmtime_diff (int*,int*,struct tm*,struct tm*) ;
+ long SECS_PER_DAY ;
+ int TEST_int_eq (int ,int ) ;
+ int TEST_long_eq (long,long) ;
+ int TEST_true (int ) ;
+ int time (scalar_t__*) ;
 
 __attribute__((used)) static int check_time(long offset)
 {

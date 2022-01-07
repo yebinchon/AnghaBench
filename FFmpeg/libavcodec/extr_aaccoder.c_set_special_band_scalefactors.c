@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int num_windows; int num_swb; scalar_t__* group_len; } ;
-struct TYPE_5__ {scalar_t__* band_type; int* sf_idx; scalar_t__* zeroes; TYPE_1__ ics; int /*<<< orphan*/ * pns_ener; int /*<<< orphan*/ * is_ener; } ;
-typedef  TYPE_2__ SingleChannelElement ;
-typedef  int /*<<< orphan*/  AACEncContext ;
+struct TYPE_5__ {scalar_t__* band_type; int* sf_idx; scalar_t__* zeroes; TYPE_1__ ics; int * pns_ener; int * is_ener; } ;
+typedef TYPE_2__ SingleChannelElement ;
+typedef int AACEncContext ;
 
-/* Variables and functions */
- scalar_t__ INTENSITY_BT ; 
- scalar_t__ INTENSITY_BT2 ; 
- scalar_t__ NOISE_BT ; 
- int SCALE_MAX_DIFF ; 
- void* av_clip (int,int,int) ; 
- int ceilf (int) ; 
- int log2f (int /*<<< orphan*/ ) ; 
- int roundf (int) ; 
+
+ scalar_t__ INTENSITY_BT ;
+ scalar_t__ INTENSITY_BT2 ;
+ scalar_t__ NOISE_BT ;
+ int SCALE_MAX_DIFF ;
+ void* av_clip (int,int,int) ;
+ int ceilf (int) ;
+ int log2f (int ) ;
+ int roundf (int) ;
 
 __attribute__((used)) static void set_special_band_scalefactors(AACEncContext *s, SingleChannelElement *sce)
 {
@@ -52,7 +52,7 @@ __attribute__((used)) static void set_special_band_scalefactors(AACEncContext *s
     if (!bands)
         return;
 
-    /* Clip the scalefactor indices */
+
     for (w = 0; w < sce->ics.num_windows; w += sce->ics.group_len[w]) {
         for (g = 0; g < sce->ics.num_swb; g++) {
             if (sce->zeroes[w*16+g])

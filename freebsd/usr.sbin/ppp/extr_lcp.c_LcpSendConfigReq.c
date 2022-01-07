@@ -1,81 +1,81 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_8__ ;
-typedef  struct TYPE_15__   TYPE_7__ ;
-typedef  struct TYPE_14__   TYPE_6__ ;
-typedef  struct TYPE_13__   TYPE_5__ ;
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u_short ;
-typedef  int u_int16_t ;
-typedef  int /*<<< orphan*/  u_char ;
+
+
+typedef struct TYPE_16__ TYPE_8__ ;
+typedef struct TYPE_15__ TYPE_7__ ;
+typedef struct TYPE_14__ TYPE_6__ ;
+typedef struct TYPE_13__ TYPE_5__ ;
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int u_short ;
+typedef int u_int16_t ;
+typedef int u_char ;
 struct physical {int dummy; } ;
-struct TYPE_14__ {scalar_t__ class; size_t len; int /*<<< orphan*/  address; } ;
-struct TYPE_15__ {TYPE_6__ enddisc; int /*<<< orphan*/  negenddisc; } ;
+struct TYPE_14__ {scalar_t__ class; size_t len; int address; } ;
+struct TYPE_15__ {TYPE_6__ enddisc; int negenddisc; } ;
 struct mp {TYPE_7__ cfg; } ;
 struct TYPE_13__ {TYPE_4__* bundle; } ;
-struct TYPE_10__ {int opmask; int /*<<< orphan*/  msg; } ;
+struct TYPE_10__ {int opmask; int msg; } ;
 struct TYPE_9__ {int max_mru; } ;
 struct lcp {int want_mru; int want_auth; scalar_t__ want_authtype; int want_mrru; TYPE_5__ fsm; scalar_t__ want_shortseq; TYPE_2__ want_callback; scalar_t__ want_lqrperiod; scalar_t__ want_magic; TYPE_1__ cfg; scalar_t__ want_accmap; scalar_t__ want_protocomp; scalar_t__ want_acfcomp; } ;
 struct fsm_opt {scalar_t__* data; } ;
-struct fsm {int /*<<< orphan*/  reqid; TYPE_8__* link; } ;
+struct fsm {int reqid; TYPE_8__* link; } ;
 struct TYPE_16__ {size_t name; } ;
 struct TYPE_11__ {struct mp mp; } ;
 struct TYPE_12__ {TYPE_3__ ncp; } ;
 
-/* Variables and functions */
- void* CALLBACK_AUTH ; 
- int CALLBACK_BIT (void*) ; 
- void* CALLBACK_CBCP ; 
- void* CALLBACK_E164 ; 
- int /*<<< orphan*/  CODE_CONFIGREQ ; 
- int /*<<< orphan*/  INC_FSM_OPT (int /*<<< orphan*/ ,int,struct fsm_opt*) ; 
- scalar_t__ IsEnabled (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LogERROR ; 
- int /*<<< orphan*/  LogWARN ; 
- int /*<<< orphan*/  MB_LCPOUT ; 
-#define  PROTO_CHAP 129 
- int PROTO_LQR ; 
-#define  PROTO_PAP 128 
- int /*<<< orphan*/  REJECTED (struct lcp*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TY_ACCMAP ; 
- int /*<<< orphan*/  TY_ACFCOMP ; 
- int /*<<< orphan*/  TY_AUTHPROTO ; 
- int /*<<< orphan*/  TY_CALLBACK ; 
- int /*<<< orphan*/  TY_ENDDISC ; 
- int /*<<< orphan*/  TY_MAGICNUM ; 
- int /*<<< orphan*/  TY_MRRU ; 
- int /*<<< orphan*/  TY_MRU ; 
- int /*<<< orphan*/  TY_PROTOCOMP ; 
- int /*<<< orphan*/  TY_QUALPROTO ; 
- int /*<<< orphan*/  TY_SHORTSEQ ; 
- struct lcp* fsm2lcp (struct fsm*) ; 
- int /*<<< orphan*/  fsm_Output (struct fsm*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- struct physical* link2physical (TYPE_8__*) ; 
- int /*<<< orphan*/  log_Printf (int /*<<< orphan*/ ,char*,size_t,...) ; 
- int /*<<< orphan*/  memcpy (scalar_t__*,int /*<<< orphan*/ ,size_t) ; 
- int physical_DeviceMTU (struct physical*) ; 
- int /*<<< orphan*/  physical_IsSync (struct physical*) ; 
- size_t strlen (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ua_htonl (scalar_t__*,scalar_t__*) ; 
- int /*<<< orphan*/  ua_htons (int*,scalar_t__*) ; 
+
+ void* CALLBACK_AUTH ;
+ int CALLBACK_BIT (void*) ;
+ void* CALLBACK_CBCP ;
+ void* CALLBACK_E164 ;
+ int CODE_CONFIGREQ ;
+ int INC_FSM_OPT (int ,int,struct fsm_opt*) ;
+ scalar_t__ IsEnabled (int ) ;
+ int LogERROR ;
+ int LogWARN ;
+ int MB_LCPOUT ;
+
+ int PROTO_LQR ;
+
+ int REJECTED (struct lcp*,int ) ;
+ int TY_ACCMAP ;
+ int TY_ACFCOMP ;
+ int TY_AUTHPROTO ;
+ int TY_CALLBACK ;
+ int TY_ENDDISC ;
+ int TY_MAGICNUM ;
+ int TY_MRRU ;
+ int TY_MRU ;
+ int TY_PROTOCOMP ;
+ int TY_QUALPROTO ;
+ int TY_SHORTSEQ ;
+ struct lcp* fsm2lcp (struct fsm*) ;
+ int fsm_Output (struct fsm*,int ,int ,int *,int,int ) ;
+ struct physical* link2physical (TYPE_8__*) ;
+ int log_Printf (int ,char*,size_t,...) ;
+ int memcpy (scalar_t__*,int ,size_t) ;
+ int physical_DeviceMTU (struct physical*) ;
+ int physical_IsSync (struct physical*) ;
+ size_t strlen (int ) ;
+ int ua_htonl (scalar_t__*,scalar_t__*) ;
+ int ua_htons (int*,scalar_t__*) ;
 
 __attribute__((used)) static void
 LcpSendConfigReq(struct fsm *fp)
 {
-  /* Send config REQ please */
+
   struct physical *p = link2physical(fp->link);
   struct lcp *lcp = fsm2lcp(fp);
   u_char buff[200];
@@ -130,14 +130,14 @@ LcpSendConfigReq(struct fsm *fp)
   }
 
   switch (lcp->want_auth) {
-  case PROTO_PAP:
-    proto = PROTO_PAP;
+  case 128:
+    proto = 128;
     ua_htons(&proto, o->data);
     INC_FSM_OPT(TY_AUTHPROTO, 4, o);
     break;
 
-  case PROTO_CHAP:
-    proto = PROTO_CHAP;
+  case 129:
+    proto = 129;
     ua_htons(&proto, o->data);
     o->data[2] = lcp->want_authtype;
     INC_FSM_OPT(TY_AUTHPROTO, 5, o);
@@ -157,7 +157,7 @@ LcpSendConfigReq(struct fsm *fp)
       if (sz > sizeof o->data - 1) {
         sz = sizeof o->data - 1;
         log_Printf(LogWARN, "Truncating E164 data to %zu octets (oops!)\n",
-	    sz);
+     sz);
       }
       *o->data = CALLBACK_E164;
       memcpy(o->data + 1, lcp->want_callback.msg, sz);

@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ UINT ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ UINT ;
 struct TYPE_3__ {struct TYPE_3__* Value; struct TYPE_3__* Name; } ;
-typedef  TYPE_1__ STRMAP_ENTRY ;
-typedef  int /*<<< orphan*/  LIST ;
+typedef TYPE_1__ STRMAP_ENTRY ;
+typedef int LIST ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Free (TYPE_1__*) ; 
- scalar_t__ LIST_DATA (int /*<<< orphan*/ *,scalar_t__) ; 
- scalar_t__ LIST_NUM (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ReleaseList (int /*<<< orphan*/ *) ; 
+
+ int Free (TYPE_1__*) ;
+ scalar_t__ LIST_DATA (int *,scalar_t__) ;
+ scalar_t__ LIST_NUM (int *) ;
+ int ReleaseList (int *) ;
 
 __attribute__((used)) static void WuFreeStrStrMap(LIST *params)
 {
-	UINT i;
+ UINT i;
 
-	if(params == NULL)
-	{
-		return;
-	}
+ if(params == ((void*)0))
+ {
+  return;
+ }
 
-	for(i=0; i<LIST_NUM(params); i++)
-	{
-		STRMAP_ENTRY *e = (STRMAP_ENTRY*)LIST_DATA(params, i);
-		Free(e->Name);
-		Free(e->Value);
-		Free(e);
-	}
-	ReleaseList(params);
+ for(i=0; i<LIST_NUM(params); i++)
+ {
+  STRMAP_ENTRY *e = (STRMAP_ENTRY*)LIST_DATA(params, i);
+  Free(e->Name);
+  Free(e->Value);
+  Free(e);
+ }
+ ReleaseList(params);
 }

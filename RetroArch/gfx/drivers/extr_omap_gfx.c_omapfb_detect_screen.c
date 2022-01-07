@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct stat {int /*<<< orphan*/  st_rdev; } ;
-struct TYPE_3__ {int nat_w; int nat_h; int /*<<< orphan*/  fbname; } ;
-typedef  TYPE_1__ omapfb_data_t ;
-typedef  int /*<<< orphan*/  manager_name ;
-typedef  int /*<<< orphan*/  display_name ;
-typedef  int /*<<< orphan*/  buff ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RARCH_ERR (char*,...) ; 
- int /*<<< orphan*/  RARCH_LOG (char*,int,int,char*,int,int,int) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int fscanf (int /*<<< orphan*/ *,char*,int*,...) ; 
- int minor (int /*<<< orphan*/ ) ; 
- int omapfb_read_sysfs (char*,char*,int) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,int) ; 
- int stat (int /*<<< orphan*/ ,struct stat*) ; 
- scalar_t__ string_is_equal (char*,char*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct stat {int st_rdev; } ;
+struct TYPE_3__ {int nat_w; int nat_h; int fbname; } ;
+typedef TYPE_1__ omapfb_data_t ;
+typedef int manager_name ;
+typedef int display_name ;
+typedef int buff ;
+typedef int FILE ;
+
+
+ int RARCH_ERR (char*,...) ;
+ int RARCH_LOG (char*,int,int,char*,int,int,int) ;
+ int fclose (int *) ;
+ int * fopen (char*,char*) ;
+ int fscanf (int *,char*,int*,...) ;
+ int minor (int ) ;
+ int omapfb_read_sysfs (char*,char*,int) ;
+ int snprintf (char*,int,char*,int) ;
+ int stat (int ,struct stat*) ;
+ scalar_t__ string_is_equal (char*,char*) ;
 
 __attribute__((used)) static int omapfb_detect_screen(omapfb_data_t *pdata)
 {
@@ -40,12 +40,12 @@ __attribute__((used)) static int omapfb_detect_screen(omapfb_data_t *pdata)
    char buff[64];
    char manager_name[64];
    char display_name[64];
-   int fb_id, overlay_id = -1, display_id      = -1;
+   int fb_id, overlay_id = -1, display_id = -1;
 
    buff[0] = manager_name[0] = display_name[0] = '\0';
 
-   /* Find out the native screen resolution, which is needed to
-    * properly center the scaled image data. */
+
+
    ret = stat(pdata->fbname, &status);
 
    if (ret != 0)

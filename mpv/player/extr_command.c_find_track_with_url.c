@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct track {int type; int /*<<< orphan*/  external_filename; scalar_t__ is_external; } ;
+
+
+
+
+struct track {int type; int external_filename; scalar_t__ is_external; } ;
 struct MPContext {int num_tracks; struct track** tracks; } ;
 
-/* Variables and functions */
- scalar_t__ strcmp (int /*<<< orphan*/ ,char const*) ; 
+
+ scalar_t__ strcmp (int ,char const*) ;
 
 __attribute__((used)) static struct track *find_track_with_url(struct MPContext *mpctx, int type,
                                          const char *url)
@@ -25,5 +25,5 @@ __attribute__((used)) static struct track *find_track_with_url(struct MPContext 
             strcmp(track->external_filename, url) == 0)
             return track;
     }
-    return NULL;
+    return ((void*)0);
 }

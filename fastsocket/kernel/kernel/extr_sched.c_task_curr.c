@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct task_struct {int dummy; } ;
 
-/* Variables and functions */
- struct task_struct const* cpu_curr (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  task_cpu (struct task_struct const*) ; 
+
+ struct task_struct const* cpu_curr (int ) ;
+ int task_cpu (struct task_struct const*) ;
 
 inline int task_curr(const struct task_struct *p)
 {
-	return cpu_curr(task_cpu(p)) == p;
+ return cpu_curr(task_cpu(p)) == p;
 }

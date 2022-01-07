@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ time_t ;
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef scalar_t__ time_t ;
 struct TYPE_6__ {size_t name; scalar_t__ update_every; scalar_t__ entries; } ;
-typedef  TYPE_1__ RRDSET ;
+typedef TYPE_1__ RRDSET ;
 
-/* Variables and functions */
- int /*<<< orphan*/  error (char*,size_t) ; 
- scalar_t__ rrdset_first_entry_t (TYPE_1__*) ; 
- scalar_t__ rrdset_last_entry_t (TYPE_1__*) ; 
- size_t rrdset_last_slot (TYPE_1__*) ; 
- scalar_t__ unlikely (int) ; 
+
+ int error (char*,size_t) ;
+ scalar_t__ rrdset_first_entry_t (TYPE_1__*) ;
+ scalar_t__ rrdset_last_entry_t (TYPE_1__*) ;
+ size_t rrdset_last_slot (TYPE_1__*) ;
+ scalar_t__ unlikely (int) ;
 
 __attribute__((used)) static inline time_t rrdset_slot2time(RRDSET *st, size_t slot) {
     time_t ret;

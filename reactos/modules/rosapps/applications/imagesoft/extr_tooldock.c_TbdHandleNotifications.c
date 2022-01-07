@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_10__ {scalar_t__ hwndFrom; int code; } ;
 struct TYPE_9__ {scalar_t__* hRebar; } ;
-typedef  TYPE_1__* PTOOLBAR_DOCKS ;
-typedef  int /*<<< orphan*/  LRESULT ;
-typedef  int /*<<< orphan*/  LPNMREBARCHEVRON ;
-typedef  int /*<<< orphan*/  LPNMREBAR ;
-typedef  TYPE_2__* LPNMHDR ;
-typedef  size_t DOCK_POSITION ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef TYPE_1__* PTOOLBAR_DOCKS ;
+typedef int LRESULT ;
+typedef int LPNMREBARCHEVRON ;
+typedef int LPNMREBAR ;
+typedef TYPE_2__* LPNMHDR ;
+typedef size_t DOCK_POSITION ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- size_t NO_DOCK ; 
-#define  RBN_BEGINDRAG 131 
-#define  RBN_CHEVRONPUSHED 130 
-#define  RBN_ENDDRAG 129 
-#define  RBN_HEIGHTCHANGE 128 
- size_t TOP_DOCK ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  TbnRebarBeginDrag (TYPE_1__*,size_t,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TbnRebarChangeSize (TYPE_1__*,size_t) ; 
- int /*<<< orphan*/  TbnRebarChevronPushed (TYPE_1__*,size_t,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TbnRebarEndDrag (TYPE_1__*,size_t,int /*<<< orphan*/ ) ; 
+
+ int FALSE ;
+ size_t NO_DOCK ;
+
+
+
+
+ size_t TOP_DOCK ;
+ int TRUE ;
+ int TbnRebarBeginDrag (TYPE_1__*,size_t,int ) ;
+ int TbnRebarChangeSize (TYPE_1__*,size_t) ;
+ int TbnRebarChevronPushed (TYPE_1__*,size_t,int ) ;
+ int TbnRebarEndDrag (TYPE_1__*,size_t,int ) ;
 
 BOOL
 TbdHandleNotifications(PTOOLBAR_DOCKS TbDocks,
@@ -43,7 +43,7 @@ TbdHandleNotifications(PTOOLBAR_DOCKS TbDocks,
 {
     BOOL Handled = FALSE;
 
-    if (pnmh->hwndFrom != NULL)
+    if (pnmh->hwndFrom != ((void*)0))
     {
         DOCK_POSITION Position;
 
@@ -53,14 +53,14 @@ TbdHandleNotifications(PTOOLBAR_DOCKS TbDocks,
             {
                 switch (pnmh->code)
                 {
-                    case RBN_HEIGHTCHANGE:
+                    case 128:
                     {
                         TbnRebarChangeSize(TbDocks,
                                            Position);
                         break;
                     }
 
-                    case RBN_BEGINDRAG:
+                    case 131:
                     {
                         *Result = TbnRebarBeginDrag(TbDocks,
                                                     Position,
@@ -68,7 +68,7 @@ TbdHandleNotifications(PTOOLBAR_DOCKS TbDocks,
                         break;
                     }
 
-                    case RBN_ENDDRAG:
+                    case 129:
                     {
                         TbnRebarEndDrag(TbDocks,
                                         Position,
@@ -76,7 +76,7 @@ TbdHandleNotifications(PTOOLBAR_DOCKS TbDocks,
                         break;
                     }
 
-                    case RBN_CHEVRONPUSHED:
+                    case 130:
                     {
                         TbnRebarChevronPushed(TbDocks,
                                               Position,

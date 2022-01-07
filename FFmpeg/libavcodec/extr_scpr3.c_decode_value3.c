@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint32_t ;
-typedef  int uint16_t ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef int uint16_t ;
 struct TYPE_7__ {int code; } ;
-struct TYPE_6__ {TYPE_2__ rc; int /*<<< orphan*/  gb; } ;
-typedef  TYPE_1__ SCPRContext ;
-typedef  TYPE_2__ RangeCoder ;
-typedef  int /*<<< orphan*/  GetByteContext ;
+struct TYPE_6__ {TYPE_2__ rc; int gb; } ;
+typedef TYPE_1__ SCPRContext ;
+typedef TYPE_2__ RangeCoder ;
+typedef int GetByteContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  decode3 (int /*<<< orphan*/ *,TYPE_2__*,int,int) ; 
- int /*<<< orphan*/  sync_code3 (int /*<<< orphan*/ *,TYPE_2__*) ; 
+
+ int AVERROR_INVALIDDATA ;
+ int decode3 (int *,TYPE_2__*,int,int) ;
+ int sync_code3 (int *,TYPE_2__*) ;
 
 __attribute__((used)) static int decode_value3(SCPRContext *s, uint32_t max, uint32_t *cntsum,
                          uint16_t *freqs1, uint16_t *freqs2,

@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tmp ;
-struct TYPE_7__ {int modified; size_t size; int /*<<< orphan*/  conf_path; TYPE_1__* entries; } ;
-typedef  TYPE_2__ playlist_t ;
-struct TYPE_8__ {int /*<<< orphan*/  writer; int /*<<< orphan*/ * file; int /*<<< orphan*/  member_0; } ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int tmp ;
+struct TYPE_7__ {int modified; size_t size; int conf_path; TYPE_1__* entries; } ;
+typedef TYPE_2__ playlist_t ;
+struct TYPE_8__ {int writer; int * file; int member_0; } ;
 struct TYPE_6__ {char* path; char* core_path; int runtime_hours; int runtime_minutes; int runtime_seconds; int last_played_year; int last_played_month; int last_played_day; int last_played_hour; int last_played_minute; int last_played_second; } ;
-typedef  int /*<<< orphan*/  RFILE ;
-typedef  TYPE_3__ JSONContext ;
+typedef int RFILE ;
+typedef TYPE_3__ JSONContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  JSONOutputHandler ; 
- int /*<<< orphan*/  JSON_UTF8 ; 
- int /*<<< orphan*/  JSON_Writer_Create (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  JSON_Writer_Free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  JSON_Writer_SetOutputEncoding (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  JSON_Writer_SetOutputHandler (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  JSON_Writer_SetUserData (int /*<<< orphan*/ ,TYPE_3__*) ; 
- int /*<<< orphan*/  JSON_Writer_WriteColon (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  JSON_Writer_WriteComma (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  JSON_Writer_WriteEndArray (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  JSON_Writer_WriteEndObject (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  JSON_Writer_WriteNewLine (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  JSON_Writer_WriteNumber (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  JSON_Writer_WriteSpace (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  JSON_Writer_WriteStartArray (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  JSON_Writer_WriteStartObject (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  JSON_Writer_WriteString (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RARCH_ERR (char*,...) ; 
- int /*<<< orphan*/  RARCH_LOG (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RETRO_VFS_FILE_ACCESS_HINT_NONE ; 
- int /*<<< orphan*/  RETRO_VFS_FILE_ACCESS_WRITE ; 
- int /*<<< orphan*/  STRLEN_CONST (char*) ; 
- int /*<<< orphan*/  filestream_close (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * filestream_open (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,int) ; 
- int /*<<< orphan*/  strlen (char*) ; 
+
+ int JSONOutputHandler ;
+ int JSON_UTF8 ;
+ int JSON_Writer_Create (int *) ;
+ int JSON_Writer_Free (int ) ;
+ int JSON_Writer_SetOutputEncoding (int ,int ) ;
+ int JSON_Writer_SetOutputHandler (int ,int *) ;
+ int JSON_Writer_SetUserData (int ,TYPE_3__*) ;
+ int JSON_Writer_WriteColon (int ) ;
+ int JSON_Writer_WriteComma (int ) ;
+ int JSON_Writer_WriteEndArray (int ) ;
+ int JSON_Writer_WriteEndObject (int ) ;
+ int JSON_Writer_WriteNewLine (int ) ;
+ int JSON_Writer_WriteNumber (int ,char*,int ,int ) ;
+ int JSON_Writer_WriteSpace (int ,int) ;
+ int JSON_Writer_WriteStartArray (int ) ;
+ int JSON_Writer_WriteStartObject (int ) ;
+ int JSON_Writer_WriteString (int ,char*,int ,int ) ;
+ int RARCH_ERR (char*,...) ;
+ int RARCH_LOG (char*,int ) ;
+ int RETRO_VFS_FILE_ACCESS_HINT_NONE ;
+ int RETRO_VFS_FILE_ACCESS_WRITE ;
+ int STRLEN_CONST (char*) ;
+ int filestream_close (int *) ;
+ int * filestream_open (int ,int ,int ) ;
+ int memset (char*,int ,int) ;
+ int snprintf (char*,int,char*,int) ;
+ int strlen (char*) ;
 
 void playlist_write_runtime_file(playlist_t *playlist)
 {
    size_t i;
-   RFILE *file         = NULL;
+   RFILE *file = ((void*)0);
    JSONContext context = {0};
 
    if (!playlist || !playlist->modified)
@@ -68,7 +68,7 @@ void playlist_write_runtime_file(playlist_t *playlist)
       return;
    }
 
-   context.writer = JSON_Writer_Create(NULL);
+   context.writer = JSON_Writer_Create(((void*)0));
    context.file = file;
 
    if (!context.writer)
@@ -268,7 +268,7 @@ void playlist_write_runtime_file(playlist_t *playlist)
    JSON_Writer_WriteNewLine(context.writer);
    JSON_Writer_Free(context.writer);
 
-   playlist->modified = false;
+   playlist->modified = 0;
 
    RARCH_LOG("Written to playlist file: %s\n", playlist->conf_path);
 end:

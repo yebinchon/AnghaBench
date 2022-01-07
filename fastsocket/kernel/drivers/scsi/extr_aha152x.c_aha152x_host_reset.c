@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_5__ {TYPE_1__* device; } ;
-struct TYPE_4__ {int /*<<< orphan*/  host; } ;
-typedef  TYPE_2__ Scsi_Cmnd ;
+struct TYPE_4__ {int host; } ;
+typedef TYPE_2__ Scsi_Cmnd ;
 
-/* Variables and functions */
- int aha152x_host_reset_host (int /*<<< orphan*/ ) ; 
+
+ int aha152x_host_reset_host (int ) ;
 
 __attribute__((used)) static int aha152x_host_reset(Scsi_Cmnd *SCpnt)
 {
-	return aha152x_host_reset_host(SCpnt->device->host);
+ return aha152x_host_reset_host(SCpnt->device->host);
 }

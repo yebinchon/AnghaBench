@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  phys_addr_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  __dma_cache_wback_inv (int /*<<< orphan*/ ,unsigned long) ; 
+
+
+
+typedef int phys_addr_t ;
+
+
+ int __dma_cache_wback_inv (int ,unsigned long) ;
 
 void dma_cache_wback_inv(phys_addr_t start, unsigned long sz)
 {
-	__dma_cache_wback_inv(start, sz);
+ __dma_cache_wback_inv(start, sz);
 }

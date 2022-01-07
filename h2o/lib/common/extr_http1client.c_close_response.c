@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {scalar_t__ res; scalar_t__ req; } ;
-struct st_h2o_http1client_t {int /*<<< orphan*/  sock; TYPE_1__ state; } ;
+struct st_h2o_http1client_t {int sock; TYPE_1__ state; } ;
 
-/* Variables and functions */
- scalar_t__ STREAM_STATE_CLOSED ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  close_client (struct st_h2o_http1client_t*) ; 
- int /*<<< orphan*/  h2o_socket_read_stop (int /*<<< orphan*/ ) ; 
+
+ scalar_t__ STREAM_STATE_CLOSED ;
+ int assert (int) ;
+ int close_client (struct st_h2o_http1client_t*) ;
+ int h2o_socket_read_stop (int ) ;
 
 __attribute__((used)) static void close_response(struct st_h2o_http1client_t *client)
 {

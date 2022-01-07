@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  RAND_METHOD ;
-typedef  int /*<<< orphan*/  ENGINE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CRYPTO_THREAD_unlock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CRYPTO_THREAD_write_lock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ENGINE_finish (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * ENGINE_get_RAND (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ENGINE_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RAND_set_rand_method (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  RUN_ONCE (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  do_rand_init ; 
- int /*<<< orphan*/ * funct_ref ; 
- int /*<<< orphan*/  rand_engine_lock ; 
- int /*<<< orphan*/  rand_init ; 
+
+
+
+typedef int RAND_METHOD ;
+typedef int ENGINE ;
+
+
+ int CRYPTO_THREAD_unlock (int ) ;
+ int CRYPTO_THREAD_write_lock (int ) ;
+ int ENGINE_finish (int *) ;
+ int * ENGINE_get_RAND (int *) ;
+ int ENGINE_init (int *) ;
+ int RAND_set_rand_method (int const*) ;
+ int RUN_ONCE (int *,int ) ;
+ int do_rand_init ;
+ int * funct_ref ;
+ int rand_engine_lock ;
+ int rand_init ;
 
 int RAND_set_rand_engine(ENGINE *engine)
 {
-    const RAND_METHOD *tmp_meth = NULL;
+    const RAND_METHOD *tmp_meth = ((void*)0);
 
     if (!RUN_ONCE(&rand_init, do_rand_init))
         return 0;
 
-    if (engine != NULL) {
+    if (engine != ((void*)0)) {
         if (!ENGINE_init(engine))
             return 0;
         tmp_meth = ENGINE_get_RAND(engine);
-        if (tmp_meth == NULL) {
+        if (tmp_meth == ((void*)0)) {
             ENGINE_finish(engine);
             return 0;
         }
     }
     CRYPTO_THREAD_write_lock(rand_engine_lock);
-    /* This function releases any prior ENGINE so call it first */
+
     RAND_set_rand_method(tmp_meth);
     funct_ref = engine;
     CRYPTO_THREAD_unlock(rand_engine_lock);

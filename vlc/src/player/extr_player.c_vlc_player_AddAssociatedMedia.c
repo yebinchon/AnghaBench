@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {TYPE_2__* p_address; } ;
-typedef  TYPE_1__ vlc_value_t ;
-typedef  int /*<<< orphan*/  vlc_player_t ;
-struct vlc_player_input {int /*<<< orphan*/  thread; } ;
+typedef TYPE_1__ vlc_value_t ;
+typedef int vlc_player_t ;
+struct vlc_player_input {int thread; } ;
 struct TYPE_6__ {int b_forced; } ;
-typedef  TYPE_2__ input_item_slave_t ;
-typedef  enum slave_type { ____Placeholder_slave_type } slave_type ;
-typedef  enum es_format_category_e { ____Placeholder_es_format_category_e } es_format_category_e ;
+typedef TYPE_2__ input_item_slave_t ;
+typedef enum slave_type { ____Placeholder_slave_type } slave_type ;
+typedef enum es_format_category_e { ____Placeholder_es_format_category_e } es_format_category_e ;
 
-/* Variables and functions */
-#define  AUDIO_ES 131 
- int /*<<< orphan*/  INPUT_CONTROL_ADD_SLAVE ; 
- int /*<<< orphan*/  SLAVE_PRIORITY_USER ; 
-#define  SLAVE_TYPE_AUDIO 130 
-#define  SLAVE_TYPE_SPU 129 
-#define  SPU_ES 128 
- int VLC_EGENERIC ; 
- int VLC_ENOMEM ; 
- int VLC_SUCCESS ; 
- int input_ControlPushHelper (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*) ; 
- TYPE_2__* input_item_slave_New (char const*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  subtitles_Filter (char const*) ; 
- int /*<<< orphan*/  vlc_gettext (char*) ; 
- struct vlc_player_input* vlc_player_get_input_locked (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_player_osd_Message (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
+
+
+ int INPUT_CONTROL_ADD_SLAVE ;
+ int SLAVE_PRIORITY_USER ;
+
+
+
+ int VLC_EGENERIC ;
+ int VLC_ENOMEM ;
+ int VLC_SUCCESS ;
+ int input_ControlPushHelper (int ,int ,TYPE_1__*) ;
+ TYPE_2__* input_item_slave_New (char const*,int,int ) ;
+ int subtitles_Filter (char const*) ;
+ int vlc_gettext (char*) ;
+ struct vlc_player_input* vlc_player_get_input_locked (int *) ;
+ int vlc_player_osd_Message (int *,char*,int ) ;
 
 int
 vlc_player_AddAssociatedMedia(vlc_player_t *player,
@@ -51,17 +51,17 @@ vlc_player_AddAssociatedMedia(vlc_player_t *player,
     enum slave_type type;
     switch (cat)
     {
-        case AUDIO_ES:
-            type = SLAVE_TYPE_AUDIO;
+        case 131:
+            type = 130;
             break;
-        case SPU_ES:
-            type = SLAVE_TYPE_SPU;
+        case 128:
+            type = 129;
             break;
         default:
             return VLC_EGENERIC;
     }
 
-    if (check_ext && type == SLAVE_TYPE_SPU && !subtitles_Filter(uri))
+    if (check_ext && type == 129 && !subtitles_Filter(uri))
         return VLC_EGENERIC;
 
     input_item_slave_t *slave =
@@ -80,11 +80,11 @@ vlc_player_AddAssociatedMedia(vlc_player_t *player,
     {
         switch( type )
         {
-            case SLAVE_TYPE_AUDIO:
+            case 130:
                 vlc_player_osd_Message(player, "%s",
                                        vlc_gettext("Audio track added"));
                 break;
-            case SLAVE_TYPE_SPU:
+            case 129:
                 vlc_player_osd_Message(player, "%s",
                                        vlc_gettext("Subtitle track added"));
                 break;

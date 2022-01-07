@@ -1,82 +1,82 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  xcb_button_press_event_t ;
-typedef  int /*<<< orphan*/  orientation_t ;
-typedef  scalar_t__ direction_t ;
-typedef  int border_t ;
+
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int xcb_button_press_event_t ;
+typedef int orientation_t ;
+typedef scalar_t__ direction_t ;
+typedef int border_t ;
 struct TYPE_7__ {scalar_t__ parent; } ;
-typedef  TYPE_1__ Con ;
+typedef TYPE_1__ Con ;
 
-/* Variables and functions */
-#define  BORDER_BOTTOM 131 
-#define  BORDER_LEFT 130 
-#define  BORDER_RIGHT 129 
-#define  BORDER_TOP 128 
- int /*<<< orphan*/  DLOG (char*,...) ; 
- scalar_t__ D_DOWN ; 
- scalar_t__ D_LEFT ; 
- scalar_t__ D_RIGHT ; 
- scalar_t__ D_UP ; 
- int /*<<< orphan*/  HORIZ ; 
- int /*<<< orphan*/  LOG (char*) ; 
- int /*<<< orphan*/  VERT ; 
- int /*<<< orphan*/  assert (int) ; 
- int resize_find_tiling_participants (TYPE_1__**,TYPE_1__**,scalar_t__,int) ; 
- int /*<<< orphan*/  resize_graphical_handler (TYPE_1__*,TYPE_1__*,int /*<<< orphan*/  const,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  tree_render () ; 
+
+
+
+
+
+ int DLOG (char*,...) ;
+ scalar_t__ D_DOWN ;
+ scalar_t__ D_LEFT ;
+ scalar_t__ D_RIGHT ;
+ scalar_t__ D_UP ;
+ int HORIZ ;
+ int LOG (char*) ;
+ int VERT ;
+ int assert (int) ;
+ int resize_find_tiling_participants (TYPE_1__**,TYPE_1__**,scalar_t__,int) ;
+ int resize_graphical_handler (TYPE_1__*,TYPE_1__*,int const,int *,int) ;
+ int tree_render () ;
 
 __attribute__((used)) static bool tiling_resize_for_border(Con *con, border_t border, xcb_button_press_event_t *event, bool use_threshold) {
     DLOG("border = %d, con = %p\n", border, con);
-    Con *second = NULL;
+    Con *second = ((void*)0);
     Con *first = con;
     direction_t search_direction;
     switch (border) {
-        case BORDER_LEFT:
+        case 130:
             search_direction = D_LEFT;
             break;
-        case BORDER_RIGHT:
+        case 129:
             search_direction = D_RIGHT;
             break;
-        case BORDER_TOP:
+        case 128:
             search_direction = D_UP;
             break;
-        case BORDER_BOTTOM:
+        case 131:
             search_direction = D_DOWN;
             break;
     }
 
-    bool res = resize_find_tiling_participants(&first, &second, search_direction, false);
+    bool res = resize_find_tiling_participants(&first, &second, search_direction, 0);
     if (!res) {
         LOG("No second container in this direction found.\n");
-        return false;
+        return 0;
     }
 
     assert(first != second);
     assert(first->parent == second->parent);
 
-    /* The first container should always be in front of the second container */
+
     if (search_direction == D_UP || search_direction == D_LEFT) {
         Con *tmp = first;
         first = second;
         second = tmp;
     }
 
-    const orientation_t orientation = ((border == BORDER_LEFT || border == BORDER_RIGHT) ? HORIZ : VERT);
+    const orientation_t orientation = ((border == 130 || border == 129) ? HORIZ : VERT);
 
     resize_graphical_handler(first, second, orientation, event, use_threshold);
 
     DLOG("After resize handler, rendering\n");
     tree_render();
-    return true;
+    return 1;
 }

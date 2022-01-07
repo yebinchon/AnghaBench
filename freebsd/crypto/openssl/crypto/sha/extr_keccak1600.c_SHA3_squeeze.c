@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint64_t ;
-typedef  int /*<<< orphan*/  A ;
 
-/* Variables and functions */
- int BitDeinterleave (int) ; 
- int /*<<< orphan*/  KeccakF1600 (int**) ; 
- int /*<<< orphan*/  assert (int) ; 
+
+
+
+typedef int uint64_t ;
+typedef int A ;
+
+
+ int BitDeinterleave (int) ;
+ int KeccakF1600 (int**) ;
+ int assert (int) ;
 
 void SHA3_squeeze(uint64_t A[5][5], unsigned char *out, size_t len, size_t r)
 {

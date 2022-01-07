@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  params; int /*<<< orphan*/  query; } ;
-typedef  int /*<<< orphan*/  Portal ;
-typedef  int /*<<< orphan*/  PLpgSQL_stmt_forq ;
-typedef  TYPE_1__ PLpgSQL_stmt_dynfors ;
-typedef  int /*<<< orphan*/  PLpgSQL_execstate ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SPI_cursor_close (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  exec_dynquery_with_params (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int exec_for_query (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int params; int query; } ;
+typedef int Portal ;
+typedef int PLpgSQL_stmt_forq ;
+typedef TYPE_1__ PLpgSQL_stmt_dynfors ;
+typedef int PLpgSQL_execstate ;
+
+
+ int SPI_cursor_close (int ) ;
+ int exec_dynquery_with_params (int *,int ,int ,int *,int ) ;
+ int exec_for_query (int *,int *,int ,int) ;
 
 __attribute__((used)) static int
 exec_stmt_dynfors(PLpgSQL_execstate *estate, PLpgSQL_stmt_dynfors *stmt)
 {
-	Portal		portal;
-	int			rc;
+ Portal portal;
+ int rc;
 
-	portal = exec_dynquery_with_params(estate, stmt->query, stmt->params,
-									   NULL, 0);
+ portal = exec_dynquery_with_params(estate, stmt->query, stmt->params,
+            ((void*)0), 0);
 
-	/*
-	 * Execute the loop
-	 */
-	rc = exec_for_query(estate, (PLpgSQL_stmt_forq *) stmt, portal, true);
 
-	/*
-	 * Close the implicit cursor
-	 */
-	SPI_cursor_close(portal);
 
-	return rc;
+
+ rc = exec_for_query(estate, (PLpgSQL_stmt_forq *) stmt, portal, 1);
+
+
+
+
+ SPI_cursor_close(portal);
+
+ return rc;
 }

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ NetDevKind ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOG_ERR ; 
- scalar_t__ _NETDEV_KIND_INVALID ; 
- int /*<<< orphan*/  assert (void*) ; 
- int /*<<< orphan*/  log_syntax (char const*,int /*<<< orphan*/ ,char const*,unsigned int,int /*<<< orphan*/ ,char*,char const*,...) ; 
- scalar_t__ netdev_kind_from_string (char const*) ; 
- int /*<<< orphan*/  netdev_kind_to_string (scalar_t__) ; 
+
+
+
+typedef scalar_t__ NetDevKind ;
+
+
+ int LOG_ERR ;
+ scalar_t__ _NETDEV_KIND_INVALID ;
+ int assert (void*) ;
+ int log_syntax (char const*,int ,char const*,unsigned int,int ,char*,char const*,...) ;
+ scalar_t__ netdev_kind_from_string (char const*) ;
+ int netdev_kind_to_string (scalar_t__) ;
 
 int config_parse_netdev_kind(
                 const char *unit,

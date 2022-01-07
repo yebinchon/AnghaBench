@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sds ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int sds ;
 struct TYPE_4__ {int height; int width; } ;
-typedef  TYPE_1__ lwCanvas ;
+typedef TYPE_1__ lwCanvas ;
 
-/* Variables and functions */
- scalar_t__ lwGetPixel (TYPE_1__*,int,int) ; 
- int /*<<< orphan*/  lwTranslatePixelsGroup (int,char*) ; 
- int /*<<< orphan*/  sdscatlen (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  sdsempty () ; 
+
+ scalar_t__ lwGetPixel (TYPE_1__*,int,int) ;
+ int lwTranslatePixelsGroup (int,char*) ;
+ int sdscatlen (int ,char*,int) ;
+ int sdsempty () ;
 
 __attribute__((used)) static sds renderCanvas(lwCanvas *canvas) {
     sds text = sdsempty();
     for (int y = 0; y < canvas->height; y += 4) {
         for (int x = 0; x < canvas->width; x += 2) {
-            /* We need to emit groups of 8 bits according to a specific
-             * arrangement. See lwTranslatePixelsGroup() for more info. */
+
+
             int byte = 0;
             if (lwGetPixel(canvas,x,y)) byte |= (1<<0);
             if (lwGetPixel(canvas,x,y+1)) byte |= (1<<1);

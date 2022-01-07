@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  resources ;
-struct TYPE_4__ {int /*<<< orphan*/  obj; } ;
-typedef  TYPE_1__ cam_t ;
 
-/* Variables and functions */
-#define  AOT_PROFILE 129 
- int AOT_PROFILE_CHANGE ; 
-#define  AOT_PROFILE_ENQ 128 
- int APDUGetTag (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  APDUSend (TYPE_1__*,int,int,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  RI_APPLICATION_INFORMATION ; 
- int /*<<< orphan*/  RI_CONDITIONAL_ACCESS_SUPPORT ; 
- int /*<<< orphan*/  RI_DATE_TIME ; 
- int /*<<< orphan*/  RI_MMI ; 
- int /*<<< orphan*/  RI_RESOURCE_MANAGER ; 
- int htonl (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  msg_Err (int /*<<< orphan*/ ,char*,int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int resources ;
+struct TYPE_4__ {int obj; } ;
+typedef TYPE_1__ cam_t ;
+
+
+
+ int AOT_PROFILE_CHANGE ;
+
+ int APDUGetTag (int *,int) ;
+ int APDUSend (TYPE_1__*,int,int,int *,int) ;
+ int RI_APPLICATION_INFORMATION ;
+ int RI_CONDITIONAL_ACCESS_SUPPORT ;
+ int RI_DATE_TIME ;
+ int RI_MMI ;
+ int RI_RESOURCE_MANAGER ;
+ int htonl (int ) ;
+ int msg_Err (int ,char*,int) ;
 
 __attribute__((used)) static void ResourceManagerHandle( cam_t * p_cam, int i_session_id,
                                    uint8_t *p_apdu, int i_size )
@@ -37,7 +37,7 @@ __attribute__((used)) static void ResourceManagerHandle( cam_t * p_cam, int i_se
 
     switch ( i_tag )
     {
-    case AOT_PROFILE_ENQ:
+    case 128:
     {
         int resources[] = { htonl(RI_RESOURCE_MANAGER),
                             htonl(RI_APPLICATION_INFORMATION),
@@ -45,12 +45,12 @@ __attribute__((used)) static void ResourceManagerHandle( cam_t * p_cam, int i_se
                             htonl(RI_DATE_TIME),
                             htonl(RI_MMI)
                           };
-        APDUSend( p_cam, i_session_id, AOT_PROFILE, (uint8_t*)resources,
+        APDUSend( p_cam, i_session_id, 129, (uint8_t*)resources,
                   sizeof(resources) );
         break;
     }
-    case AOT_PROFILE:
-        APDUSend( p_cam, i_session_id, AOT_PROFILE_CHANGE, NULL, 0 );
+    case 129:
+        APDUSend( p_cam, i_session_id, AOT_PROFILE_CHANGE, ((void*)0), 0 );
         break;
 
     default:

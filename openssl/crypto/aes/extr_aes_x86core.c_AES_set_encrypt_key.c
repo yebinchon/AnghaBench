@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u32 ;
-typedef  size_t temp ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int u32 ;
+typedef size_t temp ;
 struct TYPE_3__ {int* rd_key; int rounds; } ;
-typedef  TYPE_1__ AES_KEY ;
+typedef TYPE_1__ AES_KEY ;
 
-/* Variables and functions */
- int GETU32 (unsigned char const*) ; 
- scalar_t__* Te4 ; 
- int* rcon ; 
+
+ int GETU32 (unsigned char const*) ;
+ scalar_t__* Te4 ;
+ int* rcon ;
 
 int AES_set_encrypt_key(const unsigned char *userKey, const int bits,
                         AES_KEY *key)
@@ -43,18 +43,18 @@ int AES_set_encrypt_key(const unsigned char *userKey, const int bits,
     else
         key->rounds = 14;
 
-    rk[0] = GETU32(userKey     );
-    rk[1] = GETU32(userKey +  4);
-    rk[2] = GETU32(userKey +  8);
+    rk[0] = GETU32(userKey );
+    rk[1] = GETU32(userKey + 4);
+    rk[2] = GETU32(userKey + 8);
     rk[3] = GETU32(userKey + 12);
     if (bits == 128) {
         while (1) {
-            temp  = rk[3];
+            temp = rk[3];
             rk[4] = rk[0] ^
-                ((u32)Te4[(temp >>  8) & 0xff]      ) ^
-                ((u32)Te4[(temp >> 16) & 0xff] <<  8) ^
-                ((u32)Te4[(temp >> 24)       ] << 16) ^
-                ((u32)Te4[(temp      ) & 0xff] << 24) ^
+                ((u32)Te4[(temp >> 8) & 0xff] ) ^
+                ((u32)Te4[(temp >> 16) & 0xff] << 8) ^
+                ((u32)Te4[(temp >> 24) ] << 16) ^
+                ((u32)Te4[(temp ) & 0xff] << 24) ^
                 rcon[i];
             rk[5] = rk[1] ^ rk[4];
             rk[6] = rk[2] ^ rk[5];
@@ -71,10 +71,10 @@ int AES_set_encrypt_key(const unsigned char *userKey, const int bits,
         while (1) {
             temp = rk[ 5];
             rk[ 6] = rk[ 0] ^
-                ((u32)Te4[(temp >>  8) & 0xff]      ) ^
-                ((u32)Te4[(temp >> 16) & 0xff] <<  8) ^
-                ((u32)Te4[(temp >> 24)       ] << 16) ^
-                ((u32)Te4[(temp      ) & 0xff] << 24) ^
+                ((u32)Te4[(temp >> 8) & 0xff] ) ^
+                ((u32)Te4[(temp >> 16) & 0xff] << 8) ^
+                ((u32)Te4[(temp >> 24) ] << 16) ^
+                ((u32)Te4[(temp ) & 0xff] << 24) ^
                 rcon[i];
             rk[ 7] = rk[ 1] ^ rk[ 6];
             rk[ 8] = rk[ 2] ^ rk[ 7];
@@ -93,10 +93,10 @@ int AES_set_encrypt_key(const unsigned char *userKey, const int bits,
         while (1) {
             temp = rk[ 7];
             rk[ 8] = rk[ 0] ^
-                ((u32)Te4[(temp >>  8) & 0xff]      ) ^
-                ((u32)Te4[(temp >> 16) & 0xff] <<  8) ^
-                ((u32)Te4[(temp >> 24)       ] << 16) ^
-                ((u32)Te4[(temp      ) & 0xff] << 24) ^
+                ((u32)Te4[(temp >> 8) & 0xff] ) ^
+                ((u32)Te4[(temp >> 16) & 0xff] << 8) ^
+                ((u32)Te4[(temp >> 24) ] << 16) ^
+                ((u32)Te4[(temp ) & 0xff] << 24) ^
                 rcon[i];
             rk[ 9] = rk[ 1] ^ rk[ 8];
             rk[10] = rk[ 2] ^ rk[ 9];
@@ -106,10 +106,10 @@ int AES_set_encrypt_key(const unsigned char *userKey, const int bits,
             }
             temp = rk[11];
             rk[12] = rk[ 4] ^
-                ((u32)Te4[(temp      ) & 0xff]      ) ^
-                ((u32)Te4[(temp >>  8) & 0xff] <<  8) ^
+                ((u32)Te4[(temp ) & 0xff] ) ^
+                ((u32)Te4[(temp >> 8) & 0xff] << 8) ^
                 ((u32)Te4[(temp >> 16) & 0xff] << 16) ^
-                ((u32)Te4[(temp >> 24)       ] << 24);
+                ((u32)Te4[(temp >> 24) ] << 24);
             rk[13] = rk[ 5] ^ rk[12];
             rk[14] = rk[ 6] ^ rk[13];
             rk[15] = rk[ 7] ^ rk[14];

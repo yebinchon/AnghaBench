@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  bot_input_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int bot_input_t ;
 struct TYPE_2__ {int maxclients; } ;
 
-/* Variables and functions */
- int BLERR_NOERROR ; 
- scalar_t__ GetClearedHunkMemory (int) ; 
- int /*<<< orphan*/ * botinputs ; 
- TYPE_1__ botlibglobals ; 
+
+ int BLERR_NOERROR ;
+ scalar_t__ GetClearedHunkMemory (int) ;
+ int * botinputs ;
+ TYPE_1__ botlibglobals ;
 
 int EA_Setup(void)
 {
-	//initialize the bot inputs
-	botinputs = (bot_input_t *) GetClearedHunkMemory(
-									botlibglobals.maxclients * sizeof(bot_input_t));
-	return BLERR_NOERROR;
+
+ botinputs = (bot_input_t *) GetClearedHunkMemory(
+         botlibglobals.maxclients * sizeof(bot_input_t));
+ return BLERR_NOERROR;
 }

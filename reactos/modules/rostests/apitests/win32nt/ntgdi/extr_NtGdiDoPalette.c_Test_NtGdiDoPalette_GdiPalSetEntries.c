@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  palEntries2 ;
-typedef  int /*<<< orphan*/  palEntries ;
-struct TYPE_6__ {int member_0; int member_1; int member_2; int member_3; int /*<<< orphan*/  peFlags; int /*<<< orphan*/  peBlue; int /*<<< orphan*/  peGreen; int /*<<< orphan*/  peRed; } ;
-typedef  TYPE_1__ PALETTEENTRY ;
-typedef  scalar_t__ HPALETTE ;
-typedef  int /*<<< orphan*/  HDC ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CreateCompatibleDC (int /*<<< orphan*/ *) ; 
- scalar_t__ CreateTestPalette () ; 
- int /*<<< orphan*/  DEFAULT_PALETTE ; 
- int ERROR_SUCCESS ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GdiPalGetEntries ; 
- int /*<<< orphan*/  GdiPalSetEntries ; 
- int /*<<< orphan*/  GetLastError () ; 
- scalar_t__ GetStockObject (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NtGdiDoPalette (scalar_t__,int,int,TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ SelectPalette (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetLastError (int) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  ZeroMemory (TYPE_1__*,int) ; 
- int /*<<< orphan*/  memcmp (TYPE_1__*,TYPE_1__*,int) ; 
- int /*<<< orphan*/  ok_int (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ok_long (int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int palEntries2 ;
+typedef int palEntries ;
+struct TYPE_6__ {int member_0; int member_1; int member_2; int member_3; int peFlags; int peBlue; int peGreen; int peRed; } ;
+typedef TYPE_1__ PALETTEENTRY ;
+typedef scalar_t__ HPALETTE ;
+typedef int HDC ;
+
+
+ int CreateCompatibleDC (int *) ;
+ scalar_t__ CreateTestPalette () ;
+ int DEFAULT_PALETTE ;
+ int ERROR_SUCCESS ;
+ int FALSE ;
+ int GdiPalGetEntries ;
+ int GdiPalSetEntries ;
+ int GetLastError () ;
+ scalar_t__ GetStockObject (int ) ;
+ int NtGdiDoPalette (scalar_t__,int,int,TYPE_1__*,int ,int ) ;
+ scalar_t__ SelectPalette (int ,scalar_t__,int ) ;
+ int SetLastError (int) ;
+ int TRUE ;
+ int ZeroMemory (TYPE_1__*,int) ;
+ int memcmp (TYPE_1__*,TYPE_1__*,int) ;
+ int ok_int (int ,int ) ;
+ int ok_long (int ,int) ;
 
 void
 Test_NtGdiDoPalette_GdiPalSetEntries(void)
@@ -52,12 +52,12 @@ Test_NtGdiDoPalette_GdiPalSetEntries(void)
 
     hPal = CreateTestPalette();
 
-    /* Test invalid handle */
+
     SetLastError(ERROR_SUCCESS);
     ok_long(NtGdiDoPalette((HPALETTE)23, 0, 1, palEntries, GdiPalSetEntries, TRUE), 0);
     ok_long(GetLastError(), ERROR_SUCCESS);
 
-    /* Test system palette */
+
     ok_long(NtGdiDoPalette(GetStockObject(DEFAULT_PALETTE), 0, 1, palEntries, GdiPalSetEntries, TRUE), 0);
     ok_long(GetLastError(), ERROR_SUCCESS);
 
@@ -67,16 +67,16 @@ Test_NtGdiDoPalette_GdiPalSetEntries(void)
     ok_long(NtGdiDoPalette(hPal, 0, 5, palEntries, GdiPalSetEntries, TRUE), 5);
     ok_long(NtGdiDoPalette(hPal, 0, 6, palEntries, GdiPalSetEntries, TRUE), 5);
     ok_long(NtGdiDoPalette(hPal, 3, 6, palEntries, GdiPalSetEntries, TRUE), 2);
-//  TEST(NtGdiDoPalette(hPal, 4, 23247, palEntries, GdiPalSetEntries, TRUE), 0);
 
-    /* Test bInbound, FALSE */
+
+
     NtGdiDoPalette(hPal, 0, 5, palEntries, GdiPalSetEntries, TRUE);
     ZeroMemory(palEntries2, sizeof(palEntries2));
     ok_long(NtGdiDoPalette(hPal, 0, 5, palEntries2, GdiPalSetEntries, FALSE), 5);
-    /* we should get the old values returned in our buffer! */
+
     ok_int(memcmp(palEntries2, palEntries, sizeof(palEntries)), 0);
 
-    /* check what we have in our palette now */
+
     ZeroMemory(palEntries2, sizeof(palEntries2));
     ok_long(NtGdiDoPalette(hPal, 0, 5, palEntries2, GdiPalGetEntries, FALSE), 5);
     ok_int(memcmp(palEntries2, palEntries, sizeof(palEntries)), 0);
@@ -84,7 +84,7 @@ Test_NtGdiDoPalette_GdiPalSetEntries(void)
     ok_long(NtGdiDoPalette(hPal, 0, 4, palEntries2, GdiPalSetEntries, TRUE), 4);
     ok_long(GetLastError(), ERROR_SUCCESS);
 
-    /* Test if entries are set correctly */
+
     hPal = CreateTestPalette();
     NtGdiDoPalette(hPal, 0, 5, palEntries, GdiPalSetEntries, TRUE);
     NtGdiDoPalette(hPal, 0, 5, palEntries2, GdiPalGetEntries, FALSE);
@@ -93,16 +93,16 @@ Test_NtGdiDoPalette_GdiPalSetEntries(void)
     ok_int(palEntries2[0].peBlue, 0);
     ok_int(palEntries2[0].peFlags, 0);
 
-    /* Test that the buffer was not changed */
 
 
-    /* Test with palette selected into dc */
-    hDC = CreateCompatibleDC(NULL);
+
+
+    hDC = CreateCompatibleDC(((void*)0));
     hOldPal = SelectPalette(hDC, hPal, 0);
     ok_long(NtGdiDoPalette(hPal, 0, 4, palEntries, GdiPalSetEntries, TRUE), 4);
     SelectPalette(hDC, hOldPal, 0);
 
-    /* Test pEntries = NULL */
-    ok_long(NtGdiDoPalette(hPal, 0, 1, NULL, GdiPalGetEntries, TRUE), 0);
+
+    ok_long(NtGdiDoPalette(hPal, 0, 1, ((void*)0), GdiPalGetEntries, TRUE), 0);
 
 }

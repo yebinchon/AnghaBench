@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  checksigs () ; 
- scalar_t__ ferror (int /*<<< orphan*/ ) ; 
- int getchar () ; 
- int /*<<< orphan*/  isspace (int) ; 
- int /*<<< orphan*/  perror_fatal (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stdin ; 
+ int _ (char*) ;
+ int checksigs () ;
+ scalar_t__ ferror (int ) ;
+ int getchar () ;
+ int isspace (int) ;
+ int perror_fatal (int ) ;
+ int stdin ;
 
 __attribute__((used)) static int
 skip_white (void)
@@ -28,7 +20,7 @@ skip_white (void)
     {
       c = getchar ();
       if (! isspace (c) || c == '\n')
-	break;
+ break;
       checksigs ();
     }
   if (ferror (stdin))

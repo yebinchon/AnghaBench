@@ -1,64 +1,64 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ yrmcds_error ;
-typedef  int /*<<< orphan*/  yrmcds ;
-typedef  int /*<<< orphan*/  uint16_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHECK_ERROR (scalar_t__) ; 
- size_t DEFAULT_COMPRESS ; 
- int /*<<< orphan*/  DEFAULT_PORT ; 
- char* DEFAULT_SERVER ; 
- scalar_t__ YRMCDS_NOT_IMPLEMENTED ; 
- int /*<<< orphan*/  add () ; 
- int /*<<< orphan*/  append () ; 
- int atoi (char*) ; 
- int debug ; 
- int /*<<< orphan*/  decr () ; 
- int /*<<< orphan*/  delete () ; 
- int /*<<< orphan*/  do_cmd (int /*<<< orphan*/  (*) ()) ; 
- int /*<<< orphan*/  flush () ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  gat () ; 
- int /*<<< orphan*/  gatk () ; 
- int /*<<< orphan*/  get () ; 
- int /*<<< orphan*/  getk () ; 
- int getopt (int,char**,char*) ; 
- int /*<<< orphan*/  incr () ; 
- int /*<<< orphan*/  keys () ; 
- int /*<<< orphan*/  lag () ; 
- int /*<<< orphan*/  lagk () ; 
- int /*<<< orphan*/  lock () ; 
- int /*<<< orphan*/  noop () ; 
- char* optarg ; 
- int optind ; 
- int /*<<< orphan*/  prepend () ; 
- int quiet ; 
- int /*<<< orphan*/  quit () ; 
- int /*<<< orphan*/  rau () ; 
- int /*<<< orphan*/  replace () ; 
- int /*<<< orphan*/  set () ; 
- int /*<<< orphan*/  stat () ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  touch () ; 
- int /*<<< orphan*/  unlock () ; 
- int /*<<< orphan*/  unlockall () ; 
- int /*<<< orphan*/  usage () ; 
- int /*<<< orphan*/  version () ; 
- int /*<<< orphan*/  yrmcds_close (int /*<<< orphan*/ *) ; 
- scalar_t__ yrmcds_connect (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ) ; 
- scalar_t__ yrmcds_set_compression (int /*<<< orphan*/ *,size_t) ; 
- scalar_t__ yrmcds_text_mode (int /*<<< orphan*/ *) ; 
+
+
+
+typedef scalar_t__ yrmcds_error ;
+typedef int yrmcds ;
+typedef int uint16_t ;
+
+
+ int CHECK_ERROR (scalar_t__) ;
+ size_t DEFAULT_COMPRESS ;
+ int DEFAULT_PORT ;
+ char* DEFAULT_SERVER ;
+ scalar_t__ YRMCDS_NOT_IMPLEMENTED ;
+ int add () ;
+ int append () ;
+ int atoi (char*) ;
+ int debug ;
+ int decr () ;
+ int delete () ;
+ int do_cmd (int (*) ()) ;
+ int flush () ;
+ int fprintf (int ,char*,...) ;
+ int gat () ;
+ int gatk () ;
+ int get () ;
+ int getk () ;
+ int getopt (int,char**,char*) ;
+ int incr () ;
+ int keys () ;
+ int lag () ;
+ int lagk () ;
+ int lock () ;
+ int noop () ;
+ char* optarg ;
+ int optind ;
+ int prepend () ;
+ int quiet ;
+ int quit () ;
+ int rau () ;
+ int replace () ;
+ int set () ;
+ int stat () ;
+ int stderr ;
+ int touch () ;
+ int unlock () ;
+ int unlockall () ;
+ int usage () ;
+ int version () ;
+ int yrmcds_close (int *) ;
+ scalar_t__ yrmcds_connect (int *,char const*,int ) ;
+ scalar_t__ yrmcds_set_compression (int *,size_t) ;
+ scalar_t__ yrmcds_text_mode (int *) ;
 
 int main(int argc, char** argv) {
     const char* server = DEFAULT_SERVER;
@@ -133,37 +133,37 @@ int main(int argc, char** argv) {
     }
 
     int ret = 1;
-#define do_cmd(name)                            \
-    if( strcmp(cmd, #name) == 0 )  {            \
-        ret = cmd_##name(argc, argv, s);        \
-            goto OUT;                           \
-    }
 
-    do_cmd(noop);
-    do_cmd(get);
-    do_cmd(getk);
-    do_cmd(gat);
-    do_cmd(gatk);
-    do_cmd(lag);
-    do_cmd(lagk);
-    do_cmd(touch);
-    do_cmd(set);
-    do_cmd(replace);
-    do_cmd(add);
-    do_cmd(rau);
-    do_cmd(incr);
-    do_cmd(decr);
-    do_cmd(append);
-    do_cmd(prepend);
-    do_cmd(delete);
-    do_cmd(lock);
-    do_cmd(unlock);
-    do_cmd(unlockall);
-    do_cmd(flush);
-    do_cmd(stat);
-    do_cmd(keys);
-    do_cmd(version);
-    do_cmd(quit);
+
+
+
+
+
+    if( strcmp(cmd, "noop") == 0 ) { ret = cmd_noop(argc, argv, s); goto OUT; };
+    if( strcmp(cmd, "get") == 0 ) { ret = cmd_get(argc, argv, s); goto OUT; };
+    if( strcmp(cmd, "getk") == 0 ) { ret = cmd_getk(argc, argv, s); goto OUT; };
+    if( strcmp(cmd, "gat") == 0 ) { ret = cmd_gat(argc, argv, s); goto OUT; };
+    if( strcmp(cmd, "gatk") == 0 ) { ret = cmd_gatk(argc, argv, s); goto OUT; };
+    if( strcmp(cmd, "lag") == 0 ) { ret = cmd_lag(argc, argv, s); goto OUT; };
+    if( strcmp(cmd, "lagk") == 0 ) { ret = cmd_lagk(argc, argv, s); goto OUT; };
+    if( strcmp(cmd, "touch") == 0 ) { ret = cmd_touch(argc, argv, s); goto OUT; };
+    if( strcmp(cmd, "set") == 0 ) { ret = cmd_set(argc, argv, s); goto OUT; };
+    if( strcmp(cmd, "replace") == 0 ) { ret = cmd_replace(argc, argv, s); goto OUT; };
+    if( strcmp(cmd, "add") == 0 ) { ret = cmd_add(argc, argv, s); goto OUT; };
+    if( strcmp(cmd, "rau") == 0 ) { ret = cmd_rau(argc, argv, s); goto OUT; };
+    if( strcmp(cmd, "incr") == 0 ) { ret = cmd_incr(argc, argv, s); goto OUT; };
+    if( strcmp(cmd, "decr") == 0 ) { ret = cmd_decr(argc, argv, s); goto OUT; };
+    if( strcmp(cmd, "append") == 0 ) { ret = cmd_append(argc, argv, s); goto OUT; };
+    if( strcmp(cmd, "prepend") == 0 ) { ret = cmd_prepend(argc, argv, s); goto OUT; };
+    if( strcmp(cmd, "delete") == 0 ) { ret = cmd_delete(argc, argv, s); goto OUT; };
+    if( strcmp(cmd, "lock") == 0 ) { ret = cmd_lock(argc, argv, s); goto OUT; };
+    if( strcmp(cmd, "unlock") == 0 ) { ret = cmd_unlock(argc, argv, s); goto OUT; };
+    if( strcmp(cmd, "unlockall") == 0 ) { ret = cmd_unlockall(argc, argv, s); goto OUT; };
+    if( strcmp(cmd, "flush") == 0 ) { ret = cmd_flush(argc, argv, s); goto OUT; };
+    if( strcmp(cmd, "stat") == 0 ) { ret = cmd_stat(argc, argv, s); goto OUT; };
+    if( strcmp(cmd, "keys") == 0 ) { ret = cmd_keys(argc, argv, s); goto OUT; };
+    if( strcmp(cmd, "version") == 0 ) { ret = cmd_version(argc, argv, s); goto OUT; };
+    if( strcmp(cmd, "quit") == 0 ) { ret = cmd_quit(argc, argv, s); goto OUT; };
 
     fprintf(stderr, "No such command: %s\n", cmd);
 

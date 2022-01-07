@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lsm_file ;
-struct TYPE_3__ {int (* xShmMap ) (int /*<<< orphan*/ *,int,int,void**) ;} ;
-typedef  TYPE_1__ lsm_env ;
 
-/* Variables and functions */
- int stub1 (int /*<<< orphan*/ *,int,int,void**) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int lsm_file ;
+struct TYPE_3__ {int (* xShmMap ) (int *,int,int,void**) ;} ;
+typedef TYPE_1__ lsm_env ;
+
+
+ int stub1 (int *,int,int,void**) ;
 
 int lsmEnvShmMap(
-  lsm_env *pEnv, 
-  lsm_file *pFile, 
-  int iChunk, 
-  int sz, 
+  lsm_env *pEnv,
+  lsm_file *pFile,
+  int iChunk,
+  int sz,
   void **ppOut
 ){
   return pEnv->xShmMap(pFile, iChunk, sz, ppOut);

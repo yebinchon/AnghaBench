@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  size_t uint8_t ;
 
-/* Variables and functions */
- int IVBYTES ; 
- int /*<<< orphan*/  memcpy (size_t*,int /*<<< orphan*/ ,int) ; 
- int n ; 
- int /*<<< orphan*/  rc4initial ; 
+
+
+
+typedef size_t uint8_t ;
+
+
+ int IVBYTES ;
+ int memcpy (size_t*,int ,int) ;
+ int n ;
+ int rc4initial ;
 
 __attribute__((used)) static void guesskeybytes(uint8_t * iv, uint8_t * keystream, uint8_t * result, int kb) {
         uint8_t state[n];

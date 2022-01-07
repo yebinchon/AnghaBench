@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int enable; struct TYPE_4__* list; int /*<<< orphan*/  name; } ;
-typedef  TYPE_1__ image_transform ;
 
-/* Variables and functions */
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char const*) ; 
- TYPE_1__ image_transform_end ; 
- TYPE_1__* image_transform_first ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ strcmp (int /*<<< orphan*/ ,char const*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int enable; struct TYPE_4__* list; int name; } ;
+typedef TYPE_1__ image_transform ;
+
+
+ int exit (int) ;
+ int fprintf (int ,char*,char const*) ;
+ TYPE_1__ image_transform_end ;
+ TYPE_1__* image_transform_first ;
+ int stderr ;
+ scalar_t__ strcmp (int ,char const*) ;
 
 __attribute__((used)) static void
 transform_enable(const char *name)
 {
-   /* Everything starts out enabled, so if we see an 'enable' disabled
-    * everything else the first time round.
-    */
+
+
+
    static int all_disabled = 0;
    int found_it = 0;
    image_transform *list = image_transform_first;

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct tg3 {int link_up; int /*<<< orphan*/  dev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  netif_carrier_off (int /*<<< orphan*/ ) ; 
+
+
+
+struct tg3 {int link_up; int dev; } ;
+
+
+ int netif_carrier_off (int ) ;
 
 __attribute__((used)) static void tg3_carrier_off(struct tg3 *tp)
 {
-	netif_carrier_off(tp->dev);
-	tp->link_up = false;
+ netif_carrier_off(tp->dev);
+ tp->link_up = 0;
 }

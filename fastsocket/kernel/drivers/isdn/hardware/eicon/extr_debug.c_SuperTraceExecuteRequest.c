@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  word ;
-struct TYPE_7__ {int request_pending; int /*<<< orphan*/ * xbuffer; TYPE_1__* pIdiLib; scalar_t__ request; } ;
-typedef  TYPE_3__ diva_maint_client_t ;
-typedef  int /*<<< orphan*/  byte ;
-struct TYPE_8__ {TYPE_2__* X; scalar_t__ ReqCh; int /*<<< orphan*/  Req; } ;
-struct TYPE_6__ {int /*<<< orphan*/ * P; int /*<<< orphan*/  PLength; } ;
-struct TYPE_5__ {int /*<<< orphan*/  hLib; scalar_t__ (* DivaSTraceGetHandle ) (int /*<<< orphan*/ ) ;} ;
-typedef  TYPE_4__ ENTITY ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MAN_EXECUTE ; 
- int /*<<< orphan*/  SuperTraceCreateReadReq (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  single_p (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ stub1 (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int word ;
+struct TYPE_7__ {int request_pending; int * xbuffer; TYPE_1__* pIdiLib; scalar_t__ request; } ;
+typedef TYPE_3__ diva_maint_client_t ;
+typedef int byte ;
+struct TYPE_8__ {TYPE_2__* X; scalar_t__ ReqCh; int Req; } ;
+struct TYPE_6__ {int * P; int PLength; } ;
+struct TYPE_5__ {int hLib; scalar_t__ (* DivaSTraceGetHandle ) (int ) ;} ;
+typedef TYPE_4__ ENTITY ;
+
+
+ int MAN_EXECUTE ;
+ int SuperTraceCreateReadReq (int *,char const*) ;
+ int single_p (int *,int *,int ) ;
+ scalar_t__ stub1 (int ) ;
 
 int SuperTraceExecuteRequest (void* AdapterHandle,
                               const char* name,
@@ -40,12 +40,12 @@ int SuperTraceExecuteRequest (void* AdapterHandle,
     word length;
 
     length = SuperTraceCreateReadReq (xdata, name);
-    single_p (xdata, &length, 0); /* End Of Message */
+    single_p (xdata, &length, 0);
 
-    e->Req          = MAN_EXECUTE;
-    e->ReqCh			  = 0;
-    e->X->PLength   = length;
-    e->X->P			    = (byte*)xdata;
+    e->Req = MAN_EXECUTE;
+    e->ReqCh = 0;
+    e->X->PLength = length;
+    e->X->P = (byte*)xdata;
 
     pC->request_pending = 1;
 

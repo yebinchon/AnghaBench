@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int lua_State ;
 struct TYPE_3__ {scalar_t__ isRunning; } ;
-typedef  TYPE_1__ Timer ;
+typedef TYPE_1__ Timer ;
 
-/* Variables and functions */
- TYPE_1__* luaT_checkudata (int /*<<< orphan*/ *,int,char*) ; 
- int /*<<< orphan*/  lua_pushfstring (int /*<<< orphan*/ *,char*,char*) ; 
+
+ TYPE_1__* luaT_checkudata (int *,int,char*) ;
+ int lua_pushfstring (int *,char*,char*) ;
 
 __attribute__((used)) static int torch_Timer___tostring__(lua_State *L)
 {

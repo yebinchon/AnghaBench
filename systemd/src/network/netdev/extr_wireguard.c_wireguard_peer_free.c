@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {int /*<<< orphan*/  preshared_key; struct TYPE_10__* preshared_key_file; struct TYPE_10__* endpoint_port; struct TYPE_10__* endpoint_host; struct TYPE_10__* ipmasks; scalar_t__ section; TYPE_1__* wireguard; } ;
-typedef  TYPE_2__ WireguardPeer ;
-typedef  TYPE_2__ WireguardIPmask ;
-struct TYPE_9__ {int /*<<< orphan*/  peers_by_section; int /*<<< orphan*/  peers_with_failed_endpoint; int /*<<< orphan*/  peers_with_unresolved_endpoint; TYPE_2__* peers; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LIST_REMOVE (int /*<<< orphan*/ ,TYPE_2__*,TYPE_2__*) ; 
- int /*<<< orphan*/  WG_KEY_LEN ; 
- int /*<<< orphan*/  explicit_bzero_safe (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (TYPE_2__*) ; 
- int /*<<< orphan*/  hashmap_remove (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  ipmasks ; 
- int /*<<< orphan*/  network_config_section_free (scalar_t__) ; 
- int /*<<< orphan*/  peers ; 
- int /*<<< orphan*/  set_remove (int /*<<< orphan*/ ,TYPE_2__*) ; 
+
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_10__ {int preshared_key; struct TYPE_10__* preshared_key_file; struct TYPE_10__* endpoint_port; struct TYPE_10__* endpoint_host; struct TYPE_10__* ipmasks; scalar_t__ section; TYPE_1__* wireguard; } ;
+typedef TYPE_2__ WireguardPeer ;
+typedef TYPE_2__ WireguardIPmask ;
+struct TYPE_9__ {int peers_by_section; int peers_with_failed_endpoint; int peers_with_unresolved_endpoint; TYPE_2__* peers; } ;
+
+
+ int LIST_REMOVE (int ,TYPE_2__*,TYPE_2__*) ;
+ int WG_KEY_LEN ;
+ int explicit_bzero_safe (int ,int ) ;
+ int free (TYPE_2__*) ;
+ int hashmap_remove (int ,scalar_t__) ;
+ int ipmasks ;
+ int network_config_section_free (scalar_t__) ;
+ int peers ;
+ int set_remove (int ,TYPE_2__*) ;
 
 __attribute__((used)) static void wireguard_peer_free(WireguardPeer *peer) {
         WireguardIPmask *mask;

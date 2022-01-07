@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_repos_notify_func_t ;
-typedef  int /*<<< orphan*/ * svn_mergeinfo_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct verify_mergeinfo_normalization_baton {char const* path; void* notify_baton; int /*<<< orphan*/  notify_func; int /*<<< orphan*/  buffer; int /*<<< orphan*/ * normalized_paths; int /*<<< orphan*/ * paths; int /*<<< orphan*/ * result; int /*<<< orphan*/  normalize; } ;
-struct filter_mergeinfo_paths_baton {char const* path; void* notify_baton; int /*<<< orphan*/  notify_func; int /*<<< orphan*/  buffer; int /*<<< orphan*/ * normalized_paths; int /*<<< orphan*/ * paths; int /*<<< orphan*/ * result; int /*<<< orphan*/  normalize; } ;
-struct extract_mergeinfo_paths_baton {char const* path; void* notify_baton; int /*<<< orphan*/  notify_func; int /*<<< orphan*/  buffer; int /*<<< orphan*/ * normalized_paths; int /*<<< orphan*/ * paths; int /*<<< orphan*/ * result; int /*<<< orphan*/  normalize; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  TRUE ; 
- void* apr_hash_make (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  extract_mergeinfo_paths ; 
- int /*<<< orphan*/  filter_mergeinfo_paths ; 
- int /*<<< orphan*/  svn_iter_apr_hash (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,struct verify_mergeinfo_normalization_baton*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_membuf__create (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_mergeinfo_parse (int /*<<< orphan*/ **,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  verify_mergeinfo_normalization ; 
+
+
+
+typedef int svn_repos_notify_func_t ;
+typedef int * svn_mergeinfo_t ;
+typedef int svn_error_t ;
+struct verify_mergeinfo_normalization_baton {char const* path; void* notify_baton; int notify_func; int buffer; int * normalized_paths; int * paths; int * result; int normalize; } ;
+struct filter_mergeinfo_paths_baton {char const* path; void* notify_baton; int notify_func; int buffer; int * normalized_paths; int * paths; int * result; int normalize; } ;
+struct extract_mergeinfo_paths_baton {char const* path; void* notify_baton; int notify_func; int buffer; int * normalized_paths; int * paths; int * result; int normalize; } ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
+
+
+ int FALSE ;
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int TRUE ;
+ void* apr_hash_make (int *) ;
+ int extract_mergeinfo_paths ;
+ int filter_mergeinfo_paths ;
+ int svn_iter_apr_hash (int *,int *,int ,struct verify_mergeinfo_normalization_baton*,int *) ;
+ int svn_membuf__create (int *,int ,int *) ;
+ int svn_mergeinfo_parse (int **,char const*,int *) ;
+ int verify_mergeinfo_normalization ;
 
 __attribute__((used)) static svn_error_t *
 check_mergeinfo_normalization(const char *path,
@@ -51,7 +51,7 @@ check_mergeinfo_normalization(const char *path,
   extract_baton.result = apr_hash_make(pool);
   extract_baton.normalize = FALSE;
   svn_membuf__create(&extract_baton.buffer, 0, pool);
-  SVN_ERR(svn_iter_apr_hash(NULL, mergeinfo,
+  SVN_ERR(svn_iter_apr_hash(((void*)0), mergeinfo,
                             extract_mergeinfo_paths,
                             &extract_baton, pool));
   added_paths = extract_baton.result;
@@ -64,13 +64,13 @@ check_mergeinfo_normalization(const char *path,
       extract_baton.result = apr_hash_make(pool);
       extract_baton.normalize = TRUE;
       SVN_ERR(svn_mergeinfo_parse(&oldinfo, old_mergeinfo, pool));
-      SVN_ERR(svn_iter_apr_hash(NULL, oldinfo,
+      SVN_ERR(svn_iter_apr_hash(((void*)0), oldinfo,
                                 extract_mergeinfo_paths,
                                 &extract_baton, pool));
       normalized_paths = extract_baton.result;
 
       filter_baton.paths = added_paths;
-      SVN_ERR(svn_iter_apr_hash(NULL, oldinfo,
+      SVN_ERR(svn_iter_apr_hash(((void*)0), oldinfo,
                                 filter_mergeinfo_paths,
                                 &filter_baton, pool));
     }
@@ -82,7 +82,7 @@ check_mergeinfo_normalization(const char *path,
   verify_baton.buffer = extract_baton.buffer;
   verify_baton.notify_func = notify_func;
   verify_baton.notify_baton = notify_baton;
-  SVN_ERR(svn_iter_apr_hash(NULL, added_paths,
+  SVN_ERR(svn_iter_apr_hash(((void*)0), added_paths,
                             verify_mergeinfo_normalization,
                             &verify_baton, pool));
 

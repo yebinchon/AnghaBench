@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int cmsInt32Number ;
-typedef  int /*<<< orphan*/  cmsHTRANSFORM ;
-typedef  int /*<<< orphan*/ * cmsHPROFILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CheckOutGray (int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/ * Create_Gray22 () ; 
- int /*<<< orphan*/  DbgThread () ; 
- int /*<<< orphan*/  INTENT_RELATIVE_COLORIMETRIC ; 
- int /*<<< orphan*/  TYPE_GRAY_8 ; 
- int /*<<< orphan*/  TYPE_Lab_DBL ; 
- int /*<<< orphan*/  cmsCloseProfile (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * cmsCreateLab4Profile (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cmsCreateTransform (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cmsDeleteTransform (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int cmsInt32Number ;
+typedef int cmsHTRANSFORM ;
+typedef int * cmsHPROFILE ;
+
+
+ int CheckOutGray (int ,int,int) ;
+ int * Create_Gray22 () ;
+ int DbgThread () ;
+ int INTENT_RELATIVE_COLORIMETRIC ;
+ int TYPE_GRAY_8 ;
+ int TYPE_Lab_DBL ;
+ int cmsCloseProfile (int ,int *) ;
+ int * cmsCreateLab4Profile (int ,int *) ;
+ int cmsCreateTransform (int ,int *,int ,int *,int ,int ,int ) ;
+ int cmsDeleteTransform (int ,int ) ;
 
 __attribute__((used)) static
 cmsInt32Number CheckOutputGray(void)
 {
     cmsHPROFILE hGray = Create_Gray22();
-    cmsHPROFILE hLab  = cmsCreateLab4Profile(DbgThread(), NULL);
+    cmsHPROFILE hLab = cmsCreateLab4Profile(DbgThread(), ((void*)0));
     cmsHTRANSFORM xform;
 
-    if (hGray == NULL || hLab == NULL) return 0;
+    if (hGray == ((void*)0) || hLab == ((void*)0)) return 0;
 
     xform = cmsCreateTransform(DbgThread(), hLab, TYPE_Lab_DBL, hGray, TYPE_GRAY_8, INTENT_RELATIVE_COLORIMETRIC, 0);
     cmsCloseProfile(DbgThread(), hGray); cmsCloseProfile(DbgThread(), hLab);

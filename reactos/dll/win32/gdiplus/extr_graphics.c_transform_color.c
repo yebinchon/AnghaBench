@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int ARGB ;
 
-/* Variables and functions */
- int /*<<< orphan*/  max (int,int /*<<< orphan*/ ) ; 
- unsigned char min (int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int ARGB ;
+
+
+ int max (int,int ) ;
+ unsigned char min (int ,int) ;
 
 __attribute__((used)) static ARGB transform_color(ARGB color, int matrix[5][5])
 {
@@ -22,11 +22,11 @@ __attribute__((used)) static ARGB transform_color(ARGB color, int matrix[5][5])
     int i, j;
     unsigned char a, r, g, b;
 
-    val[0] = ((color >> 16) & 0xff); /* red */
-    val[1] = ((color >> 8) & 0xff); /* green */
-    val[2] = (color & 0xff); /* blue */
-    val[3] = ((color >> 24) & 0xff); /* alpha */
-    val[4] = 255; /* translation */
+    val[0] = ((color >> 16) & 0xff);
+    val[1] = ((color >> 8) & 0xff);
+    val[2] = (color & 0xff);
+    val[3] = ((color >> 24) & 0xff);
+    val[4] = 255;
 
     for (i=0; i<4; i++)
     {

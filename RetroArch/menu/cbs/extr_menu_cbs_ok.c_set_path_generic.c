@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  rarch_setting_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * menu_setting_find (char const*) ; 
- int menu_setting_generic (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  setting_set_with_string_representation (int /*<<< orphan*/ *,char const*) ; 
+
+
+
+typedef int rarch_setting_t ;
+
+
+ int * menu_setting_find (char const*) ;
+ int menu_setting_generic (int *,int) ;
+ int setting_set_with_string_representation (int *,char const*) ;
 
 __attribute__((used)) static int set_path_generic(const char *label, const char *action_path)
 {
@@ -25,7 +25,7 @@ __attribute__((used)) static int set_path_generic(const char *label, const char 
    {
       setting_set_with_string_representation(
             setting, action_path);
-      return menu_setting_generic(setting, false);
+      return menu_setting_generic(setting, 0);
    }
 
    return 0;

@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_12__ {float width; float height; int /*<<< orphan*/ * texture; scalar_t__ active; } ;
-struct TYPE_11__ {float width; float height; int /*<<< orphan*/  y; int /*<<< orphan*/  x; } ;
-struct TYPE_13__ {unsigned int width; unsigned int height; scalar_t__ format; float const rotation; TYPE_2__ menu; scalar_t__ fullscreen; scalar_t__ overlay_enable; TYPE_1__ vp; int /*<<< orphan*/ * texture; scalar_t__ should_resize; int /*<<< orphan*/  tex_filter; } ;
-typedef  TYPE_3__ vita_video_t ;
-struct TYPE_14__ {char const* stat_text; int /*<<< orphan*/  osd_stat_params; scalar_t__ statistics_show; } ;
-typedef  TYPE_4__ video_frame_info_t ;
-typedef  int /*<<< orphan*/  uint64_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int /*<<< orphan*/  uint16_t ;
+
+
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+struct TYPE_12__ {float width; float height; int * texture; scalar_t__ active; } ;
+struct TYPE_11__ {float width; float height; int y; int x; } ;
+struct TYPE_13__ {unsigned int width; unsigned int height; scalar_t__ format; float const rotation; TYPE_2__ menu; scalar_t__ fullscreen; scalar_t__ overlay_enable; TYPE_1__ vp; int * texture; scalar_t__ should_resize; int tex_filter; } ;
+typedef TYPE_3__ vita_video_t ;
+struct TYPE_14__ {char const* stat_text; int osd_stat_params; scalar_t__ statistics_show; } ;
+typedef TYPE_4__ video_frame_info_t ;
+typedef int uint64_t ;
+typedef int uint32_t ;
+typedef int uint16_t ;
 struct font_params {int dummy; } ;
 
-/* Variables and functions */
- float PSP_FB_HEIGHT ; 
- float PSP_FB_WIDTH ; 
- int /*<<< orphan*/  RARCH_LOG (char*,unsigned int,unsigned int) ; 
- scalar_t__ SCE_GXM_TEXTURE_FORMAT_X8U8U8U8_1RGB ; 
- int /*<<< orphan*/  font_driver_render_msg (TYPE_4__*,int /*<<< orphan*/ *,char const*,struct font_params const*) ; 
- int /*<<< orphan*/  memcpy_neon (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,unsigned int) ; 
- int /*<<< orphan*/  menu_driver_frame (TYPE_4__*) ; 
- int /*<<< orphan*/  string_is_empty (char const*) ; 
- int /*<<< orphan*/ * vita2d_create_empty_texture_format (unsigned int,unsigned int,scalar_t__) ; 
- int /*<<< orphan*/  vita2d_draw_rectangle (int /*<<< orphan*/ ,int /*<<< orphan*/ ,float,float,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vita2d_draw_texture_scale (int /*<<< orphan*/ *,float,float,float,float) ; 
- int /*<<< orphan*/  vita2d_draw_texture_scale_rotate (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,float,float,float const) ; 
- int /*<<< orphan*/  vita2d_end_drawing () ; 
- int /*<<< orphan*/  vita2d_free_texture (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vita2d_get_clear_color () ; 
- int /*<<< orphan*/  vita2d_gfx_update_viewport (TYPE_3__*,TYPE_4__*) ; 
- int /*<<< orphan*/  vita2d_render_overlay (TYPE_3__*) ; 
- int /*<<< orphan*/  vita2d_start_drawing () ; 
- int /*<<< orphan*/  vita2d_swap_buffers () ; 
- void const* vita2d_texture_get_datap (int /*<<< orphan*/ *) ; 
- unsigned int vita2d_texture_get_stride (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vita2d_texture_set_filters (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ float PSP_FB_HEIGHT ;
+ float PSP_FB_WIDTH ;
+ int RARCH_LOG (char*,unsigned int,unsigned int) ;
+ scalar_t__ SCE_GXM_TEXTURE_FORMAT_X8U8U8U8_1RGB ;
+ int font_driver_render_msg (TYPE_4__*,int *,char const*,struct font_params const*) ;
+ int memcpy_neon (int *,int const*,unsigned int) ;
+ int menu_driver_frame (TYPE_4__*) ;
+ int string_is_empty (char const*) ;
+ int * vita2d_create_empty_texture_format (unsigned int,unsigned int,scalar_t__) ;
+ int vita2d_draw_rectangle (int ,int ,float,float,int ) ;
+ int vita2d_draw_texture_scale (int *,float,float,float,float) ;
+ int vita2d_draw_texture_scale_rotate (int *,int ,int ,float,float,float const) ;
+ int vita2d_end_drawing () ;
+ int vita2d_free_texture (int *) ;
+ int vita2d_get_clear_color () ;
+ int vita2d_gfx_update_viewport (TYPE_3__*,TYPE_4__*) ;
+ int vita2d_render_overlay (TYPE_3__*) ;
+ int vita2d_start_drawing () ;
+ int vita2d_swap_buffers () ;
+ void const* vita2d_texture_get_datap (int *) ;
+ unsigned int vita2d_texture_get_stride (int *) ;
+ int vita2d_texture_set_filters (int *,int ,int ) ;
 
 __attribute__((used)) static bool vita2d_gfx_frame(void *data, const void *frame,
       unsigned width, unsigned height, uint64_t frame_count,
@@ -66,7 +66,7 @@ __attribute__((used)) static bool vita2d_gfx_frame(void *data, const void *frame
          if ((width != vita->width || height != vita->height) && vita->texture)
          {
             vita2d_free_texture(vita->texture);
-            vita->texture = NULL;
+            vita->texture = ((void*)0);
          }
 
          if (!vita->texture)
@@ -82,19 +82,19 @@ __attribute__((used)) static bool vita2d_gfx_frame(void *data, const void *frame
 
          if (vita->format == SCE_GXM_TEXTURE_FORMAT_X8U8U8U8_1RGB)
          {
-            stride                     /= 4;
-            pitch                      /= 4;
-            uint32_t             *tex32 = tex_p;
-            const uint32_t     *frame32 = frame;
+            stride /= 4;
+            pitch /= 4;
+            uint32_t *tex32 = tex_p;
+            const uint32_t *frame32 = frame;
 
             for (i = 0; i < height; i++)
                memcpy_neon(&tex32[i*stride],&frame32[i*pitch],pitch*sizeof(uint32_t));
          }
          else
          {
-            stride                 /= 2;
-            pitch                  /= 2;
-            uint16_t *tex16         = tex_p;
+            stride /= 2;
+            pitch /= 2;
+            uint16_t *tex16 = tex_p;
             const uint16_t *frame16 = frame;
 
             for (i = 0; i < height; i++)
@@ -115,7 +115,7 @@ __attribute__((used)) static bool vita2d_gfx_frame(void *data, const void *frame
       if (vita->fullscreen)
          vita2d_draw_texture_scale(vita->texture,
                0, 0,
-               PSP_FB_WIDTH  / (float)vita->width,
+               PSP_FB_WIDTH / (float)vita->width,
                PSP_FB_HEIGHT / (float)vita->height);
       else
       {
@@ -128,23 +128,23 @@ __attribute__((used)) static bool vita2d_gfx_frame(void *data, const void *frame
       }
    }
 
-#ifdef HAVE_OVERLAY
-   if (vita->overlay_enable)
-      vita2d_render_overlay(vita);
-#endif
+
+
+
+
 
    if (vita->menu.active)
    {
-#ifdef HAVE_MENU
-      menu_driver_frame(video_info);
-#endif
+
+
+
 
       if(vita->menu.texture)
       {
          if (vita->fullscreen)
             vita2d_draw_texture_scale(vita->menu.texture,
                   0, 0,
-                  PSP_FB_WIDTH  / (float)vita->menu.width,
+                  PSP_FB_WIDTH / (float)vita->menu.width,
                   PSP_FB_HEIGHT / (float)vita->menu.height);
          else
          {
@@ -174,16 +174,16 @@ __attribute__((used)) static bool vita2d_gfx_frame(void *data, const void *frame
 
       if (osd_params)
       {
-         font_driver_render_msg(video_info, NULL, video_info->stat_text,
+         font_driver_render_msg(video_info, ((void*)0), video_info->stat_text,
                (const struct font_params*)&video_info->osd_stat_params);
       }
    }
 
    if(!string_is_empty(msg))
-      font_driver_render_msg(video_info, NULL, msg, NULL);
+      font_driver_render_msg(video_info, ((void*)0), msg, ((void*)0));
 
    vita2d_end_drawing();
    vita2d_swap_buffers();
 
-   return true;
+   return 1;
 }

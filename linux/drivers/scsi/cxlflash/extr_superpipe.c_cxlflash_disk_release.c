@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct scsi_device {int dummy; } ;
 struct dk_cxlflash_release {int dummy; } ;
 
-/* Variables and functions */
- int _cxlflash_disk_release (struct scsi_device*,int /*<<< orphan*/ *,struct dk_cxlflash_release*) ; 
+
+ int _cxlflash_disk_release (struct scsi_device*,int *,struct dk_cxlflash_release*) ;
 
 int cxlflash_disk_release(struct scsi_device *sdev,
-			  struct dk_cxlflash_release *release)
+     struct dk_cxlflash_release *release)
 {
-	return _cxlflash_disk_release(sdev, NULL, release);
+ return _cxlflash_disk_release(sdev, ((void*)0), release);
 }

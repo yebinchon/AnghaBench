@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct client_arg {int writable; int /*<<< orphan*/  client_fd; } ;
-typedef  scalar_t__ ssize_t ;
 
-/* Variables and functions */
- scalar_t__ EAGAIN ; 
- scalar_t__ EBADF ; 
- scalar_t__ EINTR ; 
- scalar_t__ ENOTSOCK ; 
- int /*<<< orphan*/  MSG_NOSIGNAL ; 
- scalar_t__ errno ; 
- scalar_t__ send (int /*<<< orphan*/ ,char const*,size_t,int /*<<< orphan*/ ) ; 
- size_t strlen (char const*) ; 
+
+
+
+struct client_arg {int writable; int client_fd; } ;
+typedef scalar_t__ ssize_t ;
+
+
+ scalar_t__ EAGAIN ;
+ scalar_t__ EBADF ;
+ scalar_t__ EINTR ;
+ scalar_t__ ENOTSOCK ;
+ int MSG_NOSIGNAL ;
+ scalar_t__ errno ;
+ scalar_t__ send (int ,char const*,size_t,int ) ;
+ size_t strlen (char const*) ;
 
 __attribute__((used)) static int ipc_write_str(struct client_arg *client, const char *buf)
 {
@@ -33,7 +33,7 @@ __attribute__((used)) static int ipc_write_str(struct client_arg *client, const 
                 return -1;
 
             if (errno == EBADF || errno == ENOTSOCK) {
-                client->writable = false;
+                client->writable = 0;
                 return 0;
             }
 
@@ -44,7 +44,7 @@ __attribute__((used)) static int ipc_write_str(struct client_arg *client, const 
         }
 
         count -= rc;
-        buf   += rc;
+        buf += rc;
     }
 
     return 0;

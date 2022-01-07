@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  refcount_t ;
 
-/* Variables and functions */
-#define  REFCOUNT_MAX 129 
-#define  REFCOUNT_SATURATED 128 
- int /*<<< orphan*/  pr_err (char*,int) ; 
- int /*<<< orphan*/  pr_info (char*) ; 
- int /*<<< orphan*/  pr_warn (char*) ; 
- int refcount_read (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int refcount_t ;
+
+
+
+
+ int pr_err (char*,int) ;
+ int pr_info (char*) ;
+ int pr_warn (char*) ;
+ int refcount_read (int *) ;
 
 __attribute__((used)) static void check_saturated(refcount_t *ref)
 {
-	switch (refcount_read(ref)) {
-	case REFCOUNT_SATURATED:
-		pr_info("Saturation detected: still saturated\n");
-		break;
-	case REFCOUNT_MAX:
-		pr_warn("Saturation detected: unsafely reset to max\n");
-		break;
-	default:
-		pr_err("Fail: refcount went crazy: %d\n", refcount_read(ref));
-	}
+ switch (refcount_read(ref)) {
+ case 128:
+  pr_info("Saturation detected: still saturated\n");
+  break;
+ case 129:
+  pr_warn("Saturation detected: unsafely reset to max\n");
+  break;
+ default:
+  pr_err("Fail: refcount went crazy: %d\n", refcount_read(ref));
+ }
 }

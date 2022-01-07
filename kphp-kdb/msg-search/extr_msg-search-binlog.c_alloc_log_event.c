@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct log_event {int type; int user_id; int msg_id; } ;
-typedef  int /*<<< orphan*/  hash_t ;
+typedef int hash_t ;
 
-/* Variables and functions */
- int LE_TIMESTAMP_MAGIC ; 
- int MAX_LOG_TS_INTERVAL ; 
- int /*<<< orphan*/  binlogname ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int log_end ; 
- int log_endw ; 
- int log_last_ts ; 
- int log_rptr ; 
- int log_start ; 
- int log_wptr ; 
- int now ; 
- int /*<<< orphan*/  stderr ; 
- int time (int /*<<< orphan*/ ) ; 
+
+ int LE_TIMESTAMP_MAGIC ;
+ int MAX_LOG_TS_INTERVAL ;
+ int binlogname ;
+ int exit (int) ;
+ int fprintf (int ,char*) ;
+ int log_end ;
+ int log_endw ;
+ int log_last_ts ;
+ int log_rptr ;
+ int log_start ;
+ int log_wptr ;
+ int now ;
+ int stderr ;
+ int time (int ) ;
 
 hash_t *alloc_log_event (int type, int user_id, int message_id, int extra) {
   int b = 12 + 8 * extra;

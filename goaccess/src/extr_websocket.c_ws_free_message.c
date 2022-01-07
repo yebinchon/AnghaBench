@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_3__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_3__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {TYPE_3__* message; } ;
-typedef  TYPE_1__ WSClient ;
+typedef TYPE_1__ WSClient ;
 struct TYPE_5__ {struct TYPE_5__* payload; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (TYPE_3__*) ; 
+
+ int free (TYPE_3__*) ;
 
 __attribute__((used)) static void
 ws_free_message (WSClient * client)
@@ -26,5 +26,5 @@ ws_free_message (WSClient * client)
     free (client->message->payload);
   if (client->message)
     free (client->message);
-  client->message = NULL;
+  client->message = ((void*)0);
 }

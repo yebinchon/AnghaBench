@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vm_offset_t ;
-typedef  int /*<<< orphan*/  ppnum_t ;
-typedef  int /*<<< orphan*/  pmap_paddr_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CleanPoU_DcacheRegion (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FlushPoC_Dcache () ; 
- int /*<<< orphan*/  InvalidatePoU_Icache () ; 
- int /*<<< orphan*/  InvalidatePoU_IcacheRegion (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PAGE_SIZE ; 
- scalar_t__ isphysmem (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  phystokv (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ptoa (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int vm_offset_t ;
+typedef int ppnum_t ;
+typedef int pmap_paddr_t ;
+
+
+ int CleanPoU_DcacheRegion (int ,int ) ;
+ int FlushPoC_Dcache () ;
+ int InvalidatePoU_Icache () ;
+ int InvalidatePoU_IcacheRegion (int ,int ) ;
+ int PAGE_SIZE ;
+ scalar_t__ isphysmem (int ) ;
+ int phystokv (int ) ;
+ int ptoa (int ) ;
 
 void
 cache_sync_page(
-	ppnum_t pp
+ ppnum_t pp
 )
 {
-        pmap_paddr_t    paddr = ptoa(pp);
+        pmap_paddr_t paddr = ptoa(pp);
 
-	if (isphysmem(paddr)) {
-		vm_offset_t     vaddr = phystokv(paddr);
+ if (isphysmem(paddr)) {
+  vm_offset_t vaddr = phystokv(paddr);
 
-		CleanPoU_DcacheRegion(vaddr, PAGE_SIZE);
-#ifdef  __ARM_IC_NOALIAS_ICACHE__
-		InvalidatePoU_IcacheRegion(vaddr, PAGE_SIZE);
-#else
-		InvalidatePoU_Icache();
-#endif
-	} else {
-		FlushPoC_Dcache();
-		InvalidatePoU_Icache();
-	};
+  CleanPoU_DcacheRegion(vaddr, PAGE_SIZE);
+
+
+
+  InvalidatePoU_Icache();
+
+ } else {
+  FlushPoC_Dcache();
+  InvalidatePoU_Icache();
+ };
 }

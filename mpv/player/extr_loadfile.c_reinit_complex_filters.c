@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_18__   TYPE_8__ ;
-typedef  struct TYPE_17__   TYPE_7__ ;
-typedef  struct TYPE_16__   TYPE_6__ ;
-typedef  struct TYPE_15__   TYPE_5__ ;
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_18__ TYPE_8__ ;
+typedef struct TYPE_17__ TYPE_7__ ;
+typedef struct TYPE_16__ TYPE_6__ ;
+typedef struct TYPE_15__ TYPE_5__ ;
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
 struct vo_chain {struct mp_pin* filter_src; TYPE_3__* filter; struct track* track; } ;
 struct track {int type; int user_tid; int selected; TYPE_7__* dec; struct mp_pin* sink; } ;
 struct mp_pin {int dummy; } ;
 struct mp_lavfi {TYPE_8__* f; } ;
 struct ao_chain {struct mp_pin* filter_src; TYPE_5__* filter; struct track* track; } ;
-struct MPContext {int num_tracks; struct track** tracks; scalar_t__ playback_initialized; TYPE_8__* lavfi; struct ao_chain* ao_chain; struct vo_chain* vo_chain; int /*<<< orphan*/  filter_root; int /*<<< orphan*/  lavfi_graph; TYPE_1__* opts; } ;
-typedef  int /*<<< orphan*/  label ;
+struct MPContext {int num_tracks; struct track** tracks; scalar_t__ playback_initialized; TYPE_8__* lavfi; struct ao_chain* ao_chain; struct vo_chain* vo_chain; int filter_root; int lavfi_graph; TYPE_1__* opts; } ;
+typedef int label ;
 struct TYPE_18__ {int num_pins; struct mp_pin** pins; } ;
 struct TYPE_17__ {TYPE_6__* f; } ;
 struct TYPE_16__ {struct mp_pin** pins; } ;
@@ -34,35 +34,35 @@ struct TYPE_13__ {TYPE_2__* f; } ;
 struct TYPE_12__ {struct mp_pin** pins; } ;
 struct TYPE_11__ {char* lavfi_complex; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MPV_EVENT_TRACKS_CHANGED ; 
- int /*<<< orphan*/  MP_ERR (struct MPContext*,char*,int /*<<< orphan*/ ) ; 
- scalar_t__ MP_PIN_IN ; 
- scalar_t__ MP_PIN_OUT ; 
-#define  STREAM_AUDIO 129 
-#define  STREAM_VIDEO 128 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  cleanup_deassociated_complex_filters (struct MPContext*) ; 
- int /*<<< orphan*/  deassociate_complex_filters (struct MPContext*) ; 
- int /*<<< orphan*/  init_audio_decoder (struct MPContext*,struct track*) ; 
- int /*<<< orphan*/  init_video_decoder (struct MPContext*,struct track*) ; 
- int /*<<< orphan*/  kill_outputs (struct MPContext*,struct track*) ; 
- struct mp_pin* mp_filter_get_named_pin (TYPE_8__*,char*) ; 
- int /*<<< orphan*/  mp_filter_has_failed (TYPE_8__*) ; 
- int /*<<< orphan*/  mp_filter_set_error_handler (TYPE_8__*,int /*<<< orphan*/ ) ; 
- struct mp_lavfi* mp_lavfi_create_graph (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  mp_notify (struct MPContext*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mp_pin_connect (struct mp_pin*,struct mp_pin*) ; 
- int /*<<< orphan*/  mp_pin_disconnect (struct mp_pin*) ; 
- scalar_t__ mp_pin_get_dir (struct mp_pin*) ; 
- int /*<<< orphan*/  mp_pin_get_name (struct mp_pin*) ; 
- int /*<<< orphan*/  mp_pin_is_connected (struct mp_pin*) ; 
- int /*<<< orphan*/  reinit_audio_chain_src (struct MPContext*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  reinit_video_chain_src (struct MPContext*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  reselect_demux_stream (struct MPContext*,struct track*) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,char,int) ; 
- scalar_t__ strcmp (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  talloc_strdup (int /*<<< orphan*/ *,char*) ; 
+
+ int MPV_EVENT_TRACKS_CHANGED ;
+ int MP_ERR (struct MPContext*,char*,int ) ;
+ scalar_t__ MP_PIN_IN ;
+ scalar_t__ MP_PIN_OUT ;
+
+
+ int assert (int) ;
+ int cleanup_deassociated_complex_filters (struct MPContext*) ;
+ int deassociate_complex_filters (struct MPContext*) ;
+ int init_audio_decoder (struct MPContext*,struct track*) ;
+ int init_video_decoder (struct MPContext*,struct track*) ;
+ int kill_outputs (struct MPContext*,struct track*) ;
+ struct mp_pin* mp_filter_get_named_pin (TYPE_8__*,char*) ;
+ int mp_filter_has_failed (TYPE_8__*) ;
+ int mp_filter_set_error_handler (TYPE_8__*,int ) ;
+ struct mp_lavfi* mp_lavfi_create_graph (int ,int ,int,int *,char*) ;
+ int mp_notify (struct MPContext*,int ,int *) ;
+ int mp_pin_connect (struct mp_pin*,struct mp_pin*) ;
+ int mp_pin_disconnect (struct mp_pin*) ;
+ scalar_t__ mp_pin_get_dir (struct mp_pin*) ;
+ int mp_pin_get_name (struct mp_pin*) ;
+ int mp_pin_is_connected (struct mp_pin*) ;
+ int reinit_audio_chain_src (struct MPContext*,int *) ;
+ int reinit_video_chain_src (struct MPContext*,int *) ;
+ int reselect_demux_stream (struct MPContext*,struct track*) ;
+ int snprintf (char*,int,char*,char,int) ;
+ scalar_t__ strcmp (char*,int ) ;
+ int talloc_strdup (int *,char*) ;
 
 __attribute__((used)) static int reinit_complex_filters(struct MPContext *mpctx, bool force_uninit)
 {
@@ -75,25 +75,25 @@ __attribute__((used)) static int reinit_complex_filters(struct MPContext *mpctx,
     if (!mpctx->lavfi && !have_graph)
         return 0;
 
-    // Deassociate the old filter pads. We leave both sources (tracks) and
-    // sinks (AO/VO) "dangling", connected to neither track or filter pad.
-    // Later, we either reassociate them with new pads, or uninit them if
-    // they are still dangling. This avoids too interruptive actions like
-    // recreating the VO.
+
+
+
+
+
     deassociate_complex_filters(mpctx);
 
-    bool success = false;
+    bool success = 0;
     if (!have_graph) {
-        success = true; // normal full removal of graph
+        success = 1;
         goto done;
     }
 
     struct mp_lavfi *l =
-        mp_lavfi_create_graph(mpctx->filter_root, 0, false, NULL, graph);
+        mp_lavfi_create_graph(mpctx->filter_root, 0, 0, ((void*)0), graph);
     if (!l)
         goto done;
     mpctx->lavfi = l->f;
-    mpctx->lavfi_graph = talloc_strdup(NULL, graph);
+    mpctx->lavfi_graph = talloc_strdup(((void*)0), graph);
 
     mp_filter_set_error_handler(mpctx->lavfi, mpctx->filter_root);
 
@@ -105,7 +105,7 @@ __attribute__((used)) static int reinit_complex_filters(struct MPContext *mpctx,
         if (mpctx->vo_chain && mpctx->vo_chain->track)
             kill_outputs(mpctx, mpctx->vo_chain->track);
         if (!mpctx->vo_chain) {
-            reinit_video_chain_src(mpctx, NULL);
+            reinit_video_chain_src(mpctx, ((void*)0));
             if (!mpctx->vo_chain)
                 goto done;
         }
@@ -120,7 +120,7 @@ __attribute__((used)) static int reinit_complex_filters(struct MPContext *mpctx,
         if (mpctx->ao_chain && mpctx->ao_chain->track)
             kill_outputs(mpctx, mpctx->ao_chain->track);
         if (!mpctx->ao_chain) {
-            reinit_audio_chain_src(mpctx, NULL);
+            reinit_audio_chain_src(mpctx, ((void*)0));
             if (!mpctx->ao_chain)
                 goto done;
         }
@@ -136,8 +136,8 @@ __attribute__((used)) static int reinit_complex_filters(struct MPContext *mpctx,
         char label[32];
         char prefix;
         switch (track->type) {
-        case STREAM_VIDEO: prefix = 'v'; break;
-        case STREAM_AUDIO: prefix = 'a'; break;
+        case 128: prefix = 'v'; break;
+        case 129: prefix = 'a'; break;
         default: continue;
         }
         snprintf(label, sizeof(label), "%cid%d", prefix, track->user_tid);
@@ -154,20 +154,20 @@ __attribute__((used)) static int reinit_complex_filters(struct MPContext *mpctx,
         kill_outputs(mpctx, track);
 
         track->sink = pad;
-        track->selected = true;
+        track->selected = 1;
 
         if (!track->dec) {
-            if (track->type == STREAM_VIDEO && !init_video_decoder(mpctx, track))
+            if (track->type == 128 && !init_video_decoder(mpctx, track))
                 goto done;
-            if (track->type == STREAM_AUDIO && !init_audio_decoder(mpctx, track))
+            if (track->type == 129 && !init_audio_decoder(mpctx, track))
                 goto done;
         }
 
         mp_pin_connect(track->sink, track->dec->f->pins[0]);
     }
 
-    // Don't allow unconnected pins. Libavfilter would make the data flow a
-    // real pain anyway.
+
+
     for (int n = 0; n < mpctx->lavfi->num_pins; n++) {
         struct mp_pin *pin = mpctx->lavfi->pins[n];
         if (!mp_pin_is_connected(pin)) {
@@ -177,7 +177,7 @@ __attribute__((used)) static int reinit_complex_filters(struct MPContext *mpctx,
         }
     }
 
-    success = true;
+    success = 1;
 done:
 
     if (!success)
@@ -190,7 +190,7 @@ done:
             reselect_demux_stream(mpctx, mpctx->tracks[n]);
     }
 
-    mp_notify(mpctx, MPV_EVENT_TRACKS_CHANGED, NULL);
+    mp_notify(mpctx, MPV_EVENT_TRACKS_CHANGED, ((void*)0));
 
     return success ? 1 : -1;
 }

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ rtx ;
-typedef  enum machine_mode { ____Placeholder_machine_mode } machine_mode ;
 
-/* Variables and functions */
- scalar_t__ CONST0_RTX (int) ; 
- int GET_MODE (scalar_t__) ; 
- int /*<<< orphan*/  VOIDmode ; 
- int /*<<< orphan*/  emit_insn (int /*<<< orphan*/ ) ; 
- scalar_t__ gen_rtx_AND (int,scalar_t__,scalar_t__) ; 
- scalar_t__ gen_rtx_IOR (int,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  gen_rtx_SET (int /*<<< orphan*/ ,scalar_t__,scalar_t__) ; 
- scalar_t__ simplify_gen_subreg (int,scalar_t__,int,int /*<<< orphan*/ ) ; 
+
+
+
+typedef scalar_t__ rtx ;
+typedef enum machine_mode { ____Placeholder_machine_mode } machine_mode ;
+
+
+ scalar_t__ CONST0_RTX (int) ;
+ int GET_MODE (scalar_t__) ;
+ int VOIDmode ;
+ int emit_insn (int ) ;
+ scalar_t__ gen_rtx_AND (int,scalar_t__,scalar_t__) ;
+ scalar_t__ gen_rtx_IOR (int,scalar_t__,scalar_t__) ;
+ int gen_rtx_SET (int ,scalar_t__,scalar_t__) ;
+ scalar_t__ simplify_gen_subreg (int,scalar_t__,int,int ) ;
 
 void
 ix86_split_copysign_const (rtx operands[])

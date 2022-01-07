@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct stm_protocol_driver {int /*<<< orphan*/  owner; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  module_put (int /*<<< orphan*/ ) ; 
+
+
+
+struct stm_protocol_driver {int owner; } ;
+
+
+ int module_put (int ) ;
 
 void stm_put_protocol(const struct stm_protocol_driver *pdrv)
 {
-	module_put(pdrv->owner);
+ module_put(pdrv->owner);
 }

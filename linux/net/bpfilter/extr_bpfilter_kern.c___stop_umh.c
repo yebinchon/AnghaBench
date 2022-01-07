@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  CONFIG_INET ; 
- scalar_t__ IS_ENABLED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  shutdown_umh () ; 
+ int CONFIG_INET ;
+ scalar_t__ IS_ENABLED (int ) ;
+ int shutdown_umh () ;
 
 __attribute__((used)) static void __stop_umh(void)
 {
-	if (IS_ENABLED(CONFIG_INET))
-		shutdown_umh();
+ if (IS_ENABLED(CONFIG_INET))
+  shutdown_umh();
 }

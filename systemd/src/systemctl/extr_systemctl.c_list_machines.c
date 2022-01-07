@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct machine_info {int dummy; } ;
-typedef  int /*<<< orphan*/  sd_bus ;
+typedef int sd_bus ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BUS_MANAGER ; 
- int acquire_bus (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  arg_pager_flags ; 
- int /*<<< orphan*/  compare_machine_info ; 
- int /*<<< orphan*/  free_machines_list (struct machine_info*,int) ; 
- int get_machine_list (int /*<<< orphan*/ *,struct machine_info**,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  output_machines_list (struct machine_info*,int) ; 
- int /*<<< orphan*/  pager_open (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strv_skip (char**,int) ; 
- int /*<<< orphan*/  typesafe_qsort (struct machine_info*,int,int /*<<< orphan*/ ) ; 
+
+ int BUS_MANAGER ;
+ int acquire_bus (int ,int **) ;
+ int arg_pager_flags ;
+ int compare_machine_info ;
+ int free_machines_list (struct machine_info*,int) ;
+ int get_machine_list (int *,struct machine_info**,int ) ;
+ int output_machines_list (struct machine_info*,int) ;
+ int pager_open (int ) ;
+ int strv_skip (char**,int) ;
+ int typesafe_qsort (struct machine_info*,int,int ) ;
 
 __attribute__((used)) static int list_machines(int argc, char *argv[], void *userdata) {
-        struct machine_info *machine_infos = NULL;
+        struct machine_info *machine_infos = ((void*)0);
         sd_bus *bus;
         int r;
 

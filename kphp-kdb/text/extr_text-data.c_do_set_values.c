@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct value_data {int fields_mask; int zero_mask; int* data; } ;
-struct lev_set_extra_fields {int local_id; int /*<<< orphan*/  extra; } ;
+struct lev_set_extra_fields {int local_id; int extra; } ;
 
-/* Variables and functions */
- scalar_t__ LEV_TX_SET_EXTRA_FIELDS ; 
- int MAX_EXTRA_MASK ; 
- scalar_t__ adjust_message_values (int,int,struct value_data*) ; 
- struct lev_set_extra_fields* alloc_log_event (scalar_t__,int,int) ; 
- scalar_t__ conv_uid (int) ; 
- struct value_data* convert_value_data (struct value_data*,int,int) ; 
- int extra_mask_intcount (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,int,int,int,int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int*,int) ; 
- int /*<<< orphan*/  stderr ; 
- int verbosity ; 
- int write_extra_mask ; 
+
+ scalar_t__ LEV_TX_SET_EXTRA_FIELDS ;
+ int MAX_EXTRA_MASK ;
+ scalar_t__ adjust_message_values (int,int,struct value_data*) ;
+ struct lev_set_extra_fields* alloc_log_event (scalar_t__,int,int) ;
+ scalar_t__ conv_uid (int) ;
+ struct value_data* convert_value_data (struct value_data*,int,int) ;
+ int extra_mask_intcount (int) ;
+ int fprintf (int ,char*,int,int,int,int,int) ;
+ int memcpy (int ,int*,int) ;
+ int stderr ;
+ int verbosity ;
+ int write_extra_mask ;
 
 int do_set_values (int user_id, int local_id, struct value_data *V) {
   if (verbosity > 1) {

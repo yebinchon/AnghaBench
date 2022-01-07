@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_8__ {int rows; int cols; } ;
-typedef  TYPE_1__ matrix ;
-struct TYPE_9__ {int /*<<< orphan*/  y; } ;
-typedef  TYPE_2__ data ;
+typedef TYPE_1__ matrix ;
+struct TYPE_9__ {int y; } ;
+typedef TYPE_2__ data ;
 
-/* Variables and functions */
- TYPE_1__ csv_to_matrix (char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,double,...) ; 
- int /*<<< orphan*/  free_data (TYPE_2__) ; 
- int /*<<< orphan*/  free_matrix (TYPE_1__) ; 
- TYPE_2__ load_cifar10_data (char*) ; 
- double matrix_topk_accuracy (int /*<<< orphan*/ ,TYPE_1__,int) ; 
- int /*<<< orphan*/  stderr ; 
+
+ TYPE_1__ csv_to_matrix (char*) ;
+ int fprintf (int ,char*,double,...) ;
+ int free_data (TYPE_2__) ;
+ int free_matrix (TYPE_1__) ;
+ TYPE_2__ load_cifar10_data (char*) ;
+ double matrix_topk_accuracy (int ,TYPE_1__,int) ;
+ int stderr ;
 
 void eval_cifar_csv()
 {

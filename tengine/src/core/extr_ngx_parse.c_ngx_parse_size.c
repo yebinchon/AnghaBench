@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u_char ;
-typedef  int ssize_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int u_char ;
+typedef int ssize_t ;
 struct TYPE_3__ {size_t len; int* data; } ;
-typedef  TYPE_1__ ngx_str_t ;
+typedef TYPE_1__ ngx_str_t ;
 
-/* Variables and functions */
- int NGX_ERROR ; 
- int NGX_MAX_SIZE_T_VALUE ; 
- int ngx_atosz (int*,size_t) ; 
+
+ int NGX_ERROR ;
+ int NGX_MAX_SIZE_T_VALUE ;
+ int ngx_atosz (int*,size_t) ;
 
 ssize_t
 ngx_parse_size(ngx_str_t *line)
 {
-    u_char   unit;
-    size_t   len;
-    ssize_t  size, scale, max;
+    u_char unit;
+    size_t len;
+    ssize_t size, scale, max;
 
     len = line->len;
 
@@ -50,16 +50,6 @@ ngx_parse_size(ngx_str_t *line)
         max = NGX_MAX_SIZE_T_VALUE / (1024 * 1024);
         scale = 1024 * 1024;
         break;
-
-#if (T_NGX_HTTP_SYSGUARD)
-    case 'G':
-    case 'g':
-        len--;
-        max = NGX_MAX_SIZE_T_VALUE / (1024 * 1024 * 1024);
-        scale = 1024 * 1024 * 1024;
-        break;
-#endif
-
     default:
         max = NGX_MAX_SIZE_T_VALUE;
         scale = 1;

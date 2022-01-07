@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct vchiq_state {int unused_service; struct vchiq_service** services; } ;
 struct vchiq_service {scalar_t__ srvstate; scalar_t__ instance; scalar_t__ ref_count; } ;
-typedef  scalar_t__ VCHIQ_INSTANCE_T ;
+typedef scalar_t__ VCHIQ_INSTANCE_T ;
 
-/* Variables and functions */
- scalar_t__ VCHIQ_SRVSTATE_FREE ; 
- int /*<<< orphan*/  WARN_ON (int) ; 
- int /*<<< orphan*/  service_spinlock ; 
- int /*<<< orphan*/  spin_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock (int /*<<< orphan*/ *) ; 
+
+ scalar_t__ VCHIQ_SRVSTATE_FREE ;
+ int WARN_ON (int) ;
+ int service_spinlock ;
+ int spin_lock (int *) ;
+ int spin_unlock (int *) ;
 
 struct vchiq_service *
 next_service_by_instance(struct vchiq_state *state, VCHIQ_INSTANCE_T instance,
-			 int *pidx)
+    int *pidx)
 {
-	struct vchiq_service *service = NULL;
-	int idx = *pidx;
+ struct vchiq_service *service = ((void*)0);
+ int idx = *pidx;
 
-	spin_lock(&service_spinlock);
-	while (idx < state->unused_service) {
-		struct vchiq_service *srv = state->services[idx++];
+ spin_lock(&service_spinlock);
+ while (idx < state->unused_service) {
+  struct vchiq_service *srv = state->services[idx++];
 
-		if (srv && (srv->srvstate != VCHIQ_SRVSTATE_FREE) &&
-			(srv->instance == instance)) {
-			service = srv;
-			WARN_ON(service->ref_count == 0);
-			service->ref_count++;
-			break;
-		}
-	}
-	spin_unlock(&service_spinlock);
+  if (srv && (srv->srvstate != VCHIQ_SRVSTATE_FREE) &&
+   (srv->instance == instance)) {
+   service = srv;
+   WARN_ON(service->ref_count == 0);
+   service->ref_count++;
+   break;
+  }
+ }
+ spin_unlock(&service_spinlock);
 
-	*pidx = idx;
+ *pidx = idx;
 
-	return service;
+ return service;
 }

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  float uint8_t ;
-typedef  float uint16_t ;
-struct TYPE_8__ {int nb_planes; int* planeheight; int* planewidth; float* block; int nsteps; int planes; int bpc; int depth; int in; int** vlowsize; int** vhighsize; int** hlowsize; int** hhighsize; int /*<<< orphan*/  peak; int /*<<< orphan*/  out; int /*<<< orphan*/  tmp; int /*<<< orphan*/  percent; int /*<<< orphan*/  threshold; int /*<<< orphan*/  (* thresholding ) (float*,int const,int const,int const,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ;} ;
-typedef  TYPE_1__ VagueDenoiserContext ;
+
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef float uint8_t ;
+typedef float uint16_t ;
+struct TYPE_8__ {int nb_planes; int* planeheight; int* planewidth; float* block; int nsteps; int planes; int bpc; int depth; int in; int** vlowsize; int** vhighsize; int** hlowsize; int** hhighsize; int peak; int out; int tmp; int percent; int threshold; int (* thresholding ) (float*,int const,int const,int const,int ,int ,int) ;} ;
+typedef TYPE_1__ VagueDenoiserContext ;
 struct TYPE_9__ {float** data; int* linesize; } ;
-typedef  TYPE_2__ AVFrame ;
+typedef TYPE_2__ AVFrame ;
 
-/* Variables and functions */
- int NPAD ; 
- float av_clip (float const,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- float av_clip_uint8 (float const) ; 
- int /*<<< orphan*/  av_image_copy_plane (float*,int,float*,int,int,int) ; 
- int /*<<< orphan*/  copy (float*,...) ; 
- int /*<<< orphan*/  copyh (int /*<<< orphan*/ ,float*,int const,int const) ; 
- int /*<<< orphan*/  copyv (float*,int const,int,int const) ; 
- int /*<<< orphan*/  invert_step (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int const,TYPE_1__*) ; 
- int /*<<< orphan*/  stub1 (float*,int const,int const,int const,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  transform_step (int,int /*<<< orphan*/ ,int,int,TYPE_1__*) ; 
+
+ int NPAD ;
+ float av_clip (float const,int ,int ) ;
+ float av_clip_uint8 (float const) ;
+ int av_image_copy_plane (float*,int,float*,int,int,int) ;
+ int copy (float*,...) ;
+ int copyh (int ,float*,int const,int const) ;
+ int copyv (float*,int const,int,int const) ;
+ int invert_step (int,int ,int ,int const,TYPE_1__*) ;
+ int stub1 (float*,int const,int const,int const,int ,int ,int) ;
+ int transform_step (int,int ,int,int,TYPE_1__*) ;
 
 __attribute__((used)) static void filter(VagueDenoiserContext *s, AVFrame *in, AVFrame *out)
 {
@@ -97,7 +97,7 @@ __attribute__((used)) static void filter(VagueDenoiserContext *s, AVFrame *in, A
         s->thresholding(s->block, width, height, width, s->threshold, s->percent, s->nsteps);
 
         while (nsteps_invert--) {
-            const int idx = s->vlowsize[p][nsteps_invert]  + s->vhighsize[p][nsteps_invert];
+            const int idx = s->vlowsize[p][nsteps_invert] + s->vhighsize[p][nsteps_invert];
             const int idx2 = s->hlowsize[p][nsteps_invert] + s->hhighsize[p][nsteps_invert];
             float * idx3 = s->block;
             for (i = 0; i < idx2; i++) {

@@ -1,69 +1,69 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct ubi_volume_desc {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EINVAL ; 
- struct ubi_volume_desc* ERR_PTR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IS_ERR (struct ubi_volume_desc*) ; 
- scalar_t__ isdigit (char const) ; 
- int simple_strtoul (char const*,char**,int /*<<< orphan*/ ) ; 
- struct ubi_volume_desc* ubi_open_volume (int,int,int) ; 
- struct ubi_volume_desc* ubi_open_volume_nm (int,char const*,int) ; 
- struct ubi_volume_desc* ubi_open_volume_path (char const*,int) ; 
+
+ int EINVAL ;
+ struct ubi_volume_desc* ERR_PTR (int ) ;
+ int IS_ERR (struct ubi_volume_desc*) ;
+ scalar_t__ isdigit (char const) ;
+ int simple_strtoul (char const*,char**,int ) ;
+ struct ubi_volume_desc* ubi_open_volume (int,int,int) ;
+ struct ubi_volume_desc* ubi_open_volume_nm (int,char const*,int) ;
+ struct ubi_volume_desc* ubi_open_volume_path (char const*,int) ;
 
 __attribute__((used)) static struct ubi_volume_desc *open_ubi(const char *name, int mode)
 {
-	struct ubi_volume_desc *ubi;
-	int dev, vol;
-	char *endptr;
+ struct ubi_volume_desc *ubi;
+ int dev, vol;
+ char *endptr;
 
-	if (!name || !*name)
-		return ERR_PTR(-EINVAL);
+ if (!name || !*name)
+  return ERR_PTR(-EINVAL);
 
-	/* First, try to open using the device node path method */
-	ubi = ubi_open_volume_path(name, mode);
-	if (!IS_ERR(ubi))
-		return ubi;
 
-	/* Try the "nodev" method */
-	if (name[0] != 'u' || name[1] != 'b' || name[2] != 'i')
-		return ERR_PTR(-EINVAL);
+ ubi = ubi_open_volume_path(name, mode);
+ if (!IS_ERR(ubi))
+  return ubi;
 
-	/* ubi:NAME method */
-	if ((name[3] == ':' || name[3] == '!') && name[4] != '\0')
-		return ubi_open_volume_nm(0, name + 4, mode);
 
-	if (!isdigit(name[3]))
-		return ERR_PTR(-EINVAL);
+ if (name[0] != 'u' || name[1] != 'b' || name[2] != 'i')
+  return ERR_PTR(-EINVAL);
 
-	dev = simple_strtoul(name + 3, &endptr, 0);
 
-	/* ubiY method */
-	if (*endptr == '\0')
-		return ubi_open_volume(0, dev, mode);
+ if ((name[3] == ':' || name[3] == '!') && name[4] != '\0')
+  return ubi_open_volume_nm(0, name + 4, mode);
 
-	/* ubiX_Y method */
-	if (*endptr == '_' && isdigit(endptr[1])) {
-		vol = simple_strtoul(endptr + 1, &endptr, 0);
-		if (*endptr != '\0')
-			return ERR_PTR(-EINVAL);
-		return ubi_open_volume(dev, vol, mode);
-	}
+ if (!isdigit(name[3]))
+  return ERR_PTR(-EINVAL);
 
-	/* ubiX:NAME method */
-	if ((*endptr == ':' || *endptr == '!') && endptr[1] != '\0')
-		return ubi_open_volume_nm(dev, ++endptr, mode);
+ dev = simple_strtoul(name + 3, &endptr, 0);
 
-	return ERR_PTR(-EINVAL);
+
+ if (*endptr == '\0')
+  return ubi_open_volume(0, dev, mode);
+
+
+ if (*endptr == '_' && isdigit(endptr[1])) {
+  vol = simple_strtoul(endptr + 1, &endptr, 0);
+  if (*endptr != '\0')
+   return ERR_PTR(-EINVAL);
+  return ubi_open_volume(dev, vol, mode);
+ }
+
+
+ if ((*endptr == ':' || *endptr == '!') && endptr[1] != '\0')
+  return ubi_open_volume_nm(dev, ++endptr, mode);
+
+ return ERR_PTR(-EINVAL);
 }

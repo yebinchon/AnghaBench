@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct snd_virmidi_dev {TYPE_1__* card; int /*<<< orphan*/  flags; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct snd_virmidi_dev {TYPE_1__* card; int flags; } ;
 struct snd_seq_port_subscribe {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/  module; } ;
+struct TYPE_2__ {int module; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SNDRV_VIRMIDI_USE ; 
- int /*<<< orphan*/  module_put (int /*<<< orphan*/ ) ; 
+
+ int SNDRV_VIRMIDI_USE ;
+ int module_put (int ) ;
 
 __attribute__((used)) static int snd_virmidi_unuse(void *private_data,
-			     struct snd_seq_port_subscribe *info)
+        struct snd_seq_port_subscribe *info)
 {
-	struct snd_virmidi_dev *rdev;
+ struct snd_virmidi_dev *rdev;
 
-	rdev = private_data;
-	rdev->flags &= ~SNDRV_VIRMIDI_USE;
-	module_put(rdev->card->module);
-	return 0;
+ rdev = private_data;
+ rdev->flags &= ~SNDRV_VIRMIDI_USE;
+ module_put(rdev->card->module);
+ return 0;
 }

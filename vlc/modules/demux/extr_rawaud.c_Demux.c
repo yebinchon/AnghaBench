@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  out; int /*<<< orphan*/  s; TYPE_2__* p_sys; } ;
-typedef  TYPE_1__ demux_t ;
-struct TYPE_8__ {int /*<<< orphan*/  i_frame_samples; int /*<<< orphan*/  pts; int /*<<< orphan*/  p_es; int /*<<< orphan*/  i_frame_size; } ;
-typedef  TYPE_2__ demux_sys_t ;
-struct TYPE_9__ {int /*<<< orphan*/  i_pts; int /*<<< orphan*/  i_dts; } ;
-typedef  TYPE_3__ block_t ;
 
-/* Variables and functions */
- int VLC_DEMUXER_EOF ; 
- int VLC_DEMUXER_SUCCESS ; 
- int /*<<< orphan*/  date_Get (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  date_Increment (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  es_out_Send (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_3__*) ; 
- int /*<<< orphan*/  es_out_SetPCR (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_3__* vlc_stream_Block (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int out; int s; TYPE_2__* p_sys; } ;
+typedef TYPE_1__ demux_t ;
+struct TYPE_8__ {int i_frame_samples; int pts; int p_es; int i_frame_size; } ;
+typedef TYPE_2__ demux_sys_t ;
+struct TYPE_9__ {int i_pts; int i_dts; } ;
+typedef TYPE_3__ block_t ;
+
+
+ int VLC_DEMUXER_EOF ;
+ int VLC_DEMUXER_SUCCESS ;
+ int date_Get (int *) ;
+ int date_Increment (int *,int ) ;
+ int es_out_Send (int ,int ,TYPE_3__*) ;
+ int es_out_SetPCR (int ,int ) ;
+ TYPE_3__* vlc_stream_Block (int ,int ) ;
 
 __attribute__((used)) static int Demux( demux_t *p_demux )
 {
-    demux_sys_t *p_sys  = p_demux->p_sys;
-    block_t     *p_block;
+    demux_sys_t *p_sys = p_demux->p_sys;
+    block_t *p_block;
 
     p_block = vlc_stream_Block( p_demux->s, p_sys->i_frame_size );
-    if( p_block == NULL )
+    if( p_block == ((void*)0) )
         return VLC_DEMUXER_EOF;
 
     p_block->i_dts = p_block->i_pts = date_Get( &p_sys->pts );

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  dst; } ;
-struct rt6_info {TYPE_1__ u; int /*<<< orphan*/  rt6i_ref; } ;
 
-/* Variables and functions */
- scalar_t__ atomic_dec_and_test (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  dst_free (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int dst; } ;
+struct rt6_info {TYPE_1__ u; int rt6i_ref; } ;
+
+
+ scalar_t__ atomic_dec_and_test (int *) ;
+ int dst_free (int *) ;
 
 __attribute__((used)) static __inline__ void rt6_release(struct rt6_info *rt)
 {
-	if (atomic_dec_and_test(&rt->rt6i_ref))
-		dst_free(&rt->u.dst);
+ if (atomic_dec_and_test(&rt->rt6i_ref))
+  dst_free(&rt->u.dst);
 }

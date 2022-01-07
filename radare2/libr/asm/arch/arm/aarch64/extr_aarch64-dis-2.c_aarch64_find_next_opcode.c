@@ -1,264 +1,264 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  aarch64_opcode ;
 
-/* Variables and functions */
- int /*<<< orphan*/  const* aarch64_opcode_table ; 
+
+
+
+typedef int aarch64_opcode ;
+
+
+ int const* aarch64_opcode_table ;
 
 const aarch64_opcode *
 aarch64_find_next_opcode (const aarch64_opcode *opcode)
 {
-  /* Use the index as the key to locate the next opcode.  */
+
   int key = opcode - aarch64_opcode_table;
   int value;
   switch (key)
     {
-    case 941: value = 945; break;	/* stnp --> stp.  */
-    case 945: return NULL;		/* stp --> NULL.  */
-    case 939: value = 940; break;	/* stllrb --> stllrh.  */
-    case 940: return NULL;		/* stllrh --> NULL.  */
-    case 942: value = 946; break;	/* ldnp --> ldp.  */
-    case 946: return NULL;		/* ldp --> NULL.  */
-    case 1584: value = 1585; break;	/* ldff1b --> ldff1b.  */
-    case 1585: return NULL;		/* ldff1b --> NULL.  */
-    case 1640: value = 1641; break;	/* ldff1sw --> ldff1sw.  */
-    case 1641: return NULL;		/* ldff1sw --> NULL.  */
-    case 1588: value = 1589; break;	/* ldff1b --> ldff1b.  */
-    case 1589: return NULL;		/* ldff1b --> NULL.  */
-    case 1607: value = 1608; break;	/* ldff1h --> ldff1h.  */
-    case 1608: return NULL;		/* ldff1h --> NULL.  */
-    case 1586: value = 1587; break;	/* ldff1b --> ldff1b.  */
-    case 1587: return NULL;		/* ldff1b --> NULL.  */
-    case 1605: value = 1606; break;	/* ldff1h --> ldff1h.  */
-    case 1606: return NULL;		/* ldff1h --> NULL.  */
-    case 1590: value = 1591; break;	/* ldff1b --> ldff1b.  */
-    case 1591: return NULL;		/* ldff1b --> NULL.  */
-    case 1609: value = 1610; break;	/* ldff1h --> ldff1h.  */
-    case 1610: return NULL;		/* ldff1h --> NULL.  */
-    case 1630: value = 1631; break;	/* ldff1sh --> ldff1sh.  */
-    case 1631: return NULL;		/* ldff1sh --> NULL.  */
-    case 1618: value = 1619; break;	/* ldff1sb --> ldff1sb.  */
-    case 1619: return NULL;		/* ldff1sb --> NULL.  */
-    case 1649: value = 1650; break;	/* ldff1w --> ldff1w.  */
-    case 1650: return NULL;		/* ldff1w --> NULL.  */
-    case 1622: value = 1623; break;	/* ldff1sb --> ldff1sb.  */
-    case 1623: return NULL;		/* ldff1sb --> NULL.  */
-    case 1632: value = 1633; break;	/* ldff1sh --> ldff1sh.  */
-    case 1633: return NULL;		/* ldff1sh --> NULL.  */
-    case 1620: value = 1621; break;	/* ldff1sb --> ldff1sb.  */
-    case 1621: return NULL;		/* ldff1sb --> NULL.  */
-    case 1651: value = 1652; break;	/* ldff1w --> ldff1w.  */
-    case 1652: return NULL;		/* ldff1w --> NULL.  */
-    case 1596: value = 1597; break;	/* ldff1d --> ldff1d.  */
-    case 1597: return NULL;		/* ldff1d --> NULL.  */
-    case 1157: value = 1158; break;	/* msr --> hint.  */
-    case 1158: value = 1173; break;	/* hint --> clrex.  */
-    case 1173: value = 1174; break;	/* clrex --> dsb.  */
-    case 1174: value = 1177; break;	/* dsb --> dmb.  */
-    case 1177: value = 1178; break;	/* dmb --> isb.  */
-    case 1178: value = 1179; break;	/* isb --> sys.  */
-    case 1179: value = 1184; break;	/* sys --> msr.  */
-    case 1184: value = 2042; break;	/* msr --> cfinv.  */
-    case 2042: return NULL;		/* cfinv --> NULL.  */
-    case 1185: value = 1186; break;	/* sysl --> mrs.  */
-    case 1186: return NULL;		/* mrs --> NULL.  */
-    case 434: value = 435; break;	/* st4 --> st1.  */
-    case 435: value = 436; break;	/* st1 --> st2.  */
-    case 436: value = 437; break;	/* st2 --> st3.  */
-    case 437: return NULL;		/* st3 --> NULL.  */
-    case 442: value = 443; break;	/* st4 --> st1.  */
-    case 443: value = 444; break;	/* st1 --> st2.  */
-    case 444: value = 445; break;	/* st2 --> st3.  */
-    case 445: return NULL;		/* st3 --> NULL.  */
-    case 438: value = 439; break;	/* ld4 --> ld1.  */
-    case 439: value = 440; break;	/* ld1 --> ld2.  */
-    case 440: value = 441; break;	/* ld2 --> ld3.  */
-    case 441: return NULL;		/* ld3 --> NULL.  */
-    case 454: value = 456; break;	/* ld1 --> ld1r.  */
-    case 456: return NULL;		/* ld1r --> NULL.  */
-    case 458: value = 460; break;	/* ld2 --> ld2r.  */
-    case 460: return NULL;		/* ld2r --> NULL.  */
-    case 455: value = 457; break;	/* ld3 --> ld3r.  */
-    case 457: return NULL;		/* ld3r --> NULL.  */
-    case 459: value = 461; break;	/* ld4 --> ld4r.  */
-    case 461: return NULL;		/* ld4r --> NULL.  */
-    case 446: value = 447; break;	/* ld4 --> ld1.  */
-    case 447: value = 448; break;	/* ld1 --> ld2.  */
-    case 448: value = 449; break;	/* ld2 --> ld3.  */
-    case 449: return NULL;		/* ld3 --> NULL.  */
-    case 466: value = 468; break;	/* ld1 --> ld1r.  */
-    case 468: return NULL;		/* ld1r --> NULL.  */
-    case 467: value = 469; break;	/* ld3 --> ld3r.  */
-    case 469: return NULL;		/* ld3r --> NULL.  */
-    case 470: value = 472; break;	/* ld2 --> ld2r.  */
-    case 472: return NULL;		/* ld2r --> NULL.  */
-    case 471: value = 473; break;	/* ld4 --> ld4r.  */
-    case 473: return NULL;		/* ld4r --> NULL.  */
-    case 752: value = 753; break;	/* fcvtzs --> fcvtzs.  */
-    case 753: return NULL;		/* fcvtzs --> NULL.  */
-    case 748: value = 749; break;	/* scvtf --> scvtf.  */
-    case 749: return NULL;		/* scvtf --> NULL.  */
-    case 754: value = 755; break;	/* fcvtzu --> fcvtzu.  */
-    case 755: return NULL;		/* fcvtzu --> NULL.  */
-    case 750: value = 751; break;	/* ucvtf --> ucvtf.  */
-    case 751: return NULL;		/* ucvtf --> NULL.  */
-    case 756: value = 757; break;	/* fcvtns --> fcvtns.  */
-    case 757: return NULL;		/* fcvtns --> NULL.  */
-    case 776: value = 777; break;	/* fcvtms --> fcvtms.  */
-    case 777: return NULL;		/* fcvtms --> NULL.  */
-    case 772: value = 773; break;	/* fcvtps --> fcvtps.  */
-    case 773: return NULL;		/* fcvtps --> NULL.  */
-    case 780: value = 781; break;	/* fcvtzs --> fcvtzs.  */
-    case 781: return NULL;		/* fcvtzs --> NULL.  */
-    case 764: value = 765; break;	/* fcvtas --> fcvtas.  */
-    case 765: return NULL;		/* fcvtas --> NULL.  */
-    case 760: value = 761; break;	/* scvtf --> scvtf.  */
-    case 761: return NULL;		/* scvtf --> NULL.  */
-    case 768: value = 769; break;	/* fmov --> fmov.  */
-    case 769: return NULL;		/* fmov --> NULL.  */
-    case 758: value = 759; break;	/* fcvtnu --> fcvtnu.  */
-    case 759: return NULL;		/* fcvtnu --> NULL.  */
-    case 778: value = 779; break;	/* fcvtmu --> fcvtmu.  */
-    case 779: return NULL;		/* fcvtmu --> NULL.  */
-    case 774: value = 775; break;	/* fcvtpu --> fcvtpu.  */
-    case 775: return NULL;		/* fcvtpu --> NULL.  */
-    case 782: value = 783; break;	/* fcvtzu --> fcvtzu.  */
-    case 783: return NULL;		/* fcvtzu --> NULL.  */
-    case 766: value = 767; break;	/* fcvtau --> fcvtau.  */
-    case 767: return NULL;		/* fcvtau --> NULL.  */
-    case 762: value = 763; break;	/* ucvtf --> ucvtf.  */
-    case 763: return NULL;		/* ucvtf --> NULL.  */
-    case 770: value = 771; break;	/* fmov --> fmov.  */
-    case 771: return NULL;		/* fmov --> NULL.  */
-    case 799: value = 800; break;	/* fmov --> fmov.  */
-    case 800: return NULL;		/* fmov --> NULL.  */
-    case 808: value = 809; break;	/* frintn --> frintn.  */
-    case 809: return NULL;		/* frintn --> NULL.  */
-    case 803: value = 804; break;	/* fneg --> fneg.  */
-    case 804: return NULL;		/* fneg --> NULL.  */
-    case 812: value = 813; break;	/* frintm --> frintm.  */
-    case 813: return NULL;		/* frintm --> NULL.  */
-    case 801: value = 802; break;	/* fabs --> fabs.  */
-    case 802: return NULL;		/* fabs --> NULL.  */
-    case 810: value = 811; break;	/* frintp --> frintp.  */
-    case 811: return NULL;		/* frintp --> NULL.  */
-    case 805: value = 806; break;	/* fsqrt --> fsqrt.  */
-    case 806: return NULL;		/* fsqrt --> NULL.  */
-    case 814: value = 815; break;	/* frintz --> frintz.  */
-    case 815: return NULL;		/* frintz --> NULL.  */
-    case 816: value = 817; break;	/* frinta --> frinta.  */
-    case 817: return NULL;		/* frinta --> NULL.  */
-    case 818: value = 819; break;	/* frintx --> frintx.  */
-    case 819: return NULL;		/* frintx --> NULL.  */
-    case 820: value = 821; break;	/* frinti --> frinti.  */
-    case 821: return NULL;		/* frinti --> NULL.  */
-    case 791: value = 792; break;	/* fcmp --> fcmp.  */
-    case 792: return NULL;		/* fcmp --> NULL.  */
-    case 793: value = 794; break;	/* fcmpe --> fcmpe.  */
-    case 794: return NULL;		/* fcmpe --> NULL.  */
-    case 795: value = 796; break;	/* fcmp --> fcmp.  */
-    case 796: return NULL;		/* fcmp --> NULL.  */
-    case 797: value = 798; break;	/* fcmpe --> fcmpe.  */
-    case 798: return NULL;		/* fcmpe --> NULL.  */
-    case 848: value = 849; break;	/* fmov --> fmov.  */
-    case 849: return NULL;		/* fmov --> NULL.  */
-    case 822: value = 823; break;	/* fmul --> fmul.  */
-    case 823: return NULL;		/* fmul --> NULL.  */
-    case 838: value = 839; break;	/* fnmul --> fnmul.  */
-    case 839: return NULL;		/* fnmul --> NULL.  */
-    case 830: value = 831; break;	/* fmax --> fmax.  */
-    case 831: return NULL;		/* fmax --> NULL.  */
-    case 826: value = 827; break;	/* fadd --> fadd.  */
-    case 827: return NULL;		/* fadd --> NULL.  */
-    case 834: value = 835; break;	/* fmaxnm --> fmaxnm.  */
-    case 835: return NULL;		/* fmaxnm --> NULL.  */
-    case 824: value = 825; break;	/* fdiv --> fdiv.  */
-    case 825: return NULL;		/* fdiv --> NULL.  */
-    case 832: value = 833; break;	/* fmin --> fmin.  */
-    case 833: return NULL;		/* fmin --> NULL.  */
-    case 828: value = 829; break;	/* fsub --> fsub.  */
-    case 829: return NULL;		/* fsub --> NULL.  */
-    case 836: value = 837; break;	/* fminnm --> fminnm.  */
-    case 837: return NULL;		/* fminnm --> NULL.  */
-    case 787: value = 788; break;	/* fccmp --> fccmp.  */
-    case 788: return NULL;		/* fccmp --> NULL.  */
-    case 789: value = 790; break;	/* fccmpe --> fccmpe.  */
-    case 790: return NULL;		/* fccmpe --> NULL.  */
-    case 850: value = 851; break;	/* fcsel --> fcsel.  */
-    case 851: return NULL;		/* fcsel --> NULL.  */
-    case 131: value = 368; break;	/* movi --> sshr.  */
-    case 368: value = 370; break;	/* sshr --> srshr.  */
-    case 370: return NULL;		/* srshr --> NULL.  */
-    case 139: value = 390; break;	/* mvni --> ushr.  */
-    case 390: value = 392; break;	/* ushr --> urshr.  */
-    case 392: value = 394; break;	/* urshr --> sri.  */
-    case 394: value = 396; break;	/* sri --> sqshlu.  */
-    case 396: return NULL;		/* sqshlu --> NULL.  */
-    case 132: value = 369; break;	/* orr --> ssra.  */
-    case 369: value = 371; break;	/* ssra --> srsra.  */
-    case 371: value = 372; break;	/* srsra --> shl.  */
-    case 372: value = 373; break;	/* shl --> sqshl.  */
-    case 373: return NULL;		/* sqshl --> NULL.  */
-    case 140: value = 391; break;	/* bic --> usra.  */
-    case 391: value = 393; break;	/* usra --> ursra.  */
-    case 393: value = 395; break;	/* ursra --> sli.  */
-    case 395: value = 397; break;	/* sli --> uqshl.  */
-    case 397: return NULL;		/* uqshl --> NULL.  */
-    case 840: value = 841; break;	/* fmadd --> fmadd.  */
-    case 841: return NULL;		/* fmadd --> NULL.  */
-    case 844: value = 845; break;	/* fnmadd --> fnmadd.  */
-    case 845: return NULL;		/* fnmadd --> NULL.  */
-    case 133: value = 374; break;	/* movi --> shrn.  */
-    case 374: value = 375; break;	/* shrn --> shrn2.  */
-    case 375: value = 382; break;	/* shrn2 --> sshll.  */
-    case 382: value = 384; break;	/* sshll --> sshll2.  */
-    case 384: return NULL;		/* sshll2 --> NULL.  */
-    case 141: value = 398; break;	/* mvni --> sqshrun.  */
-    case 398: value = 399; break;	/* sqshrun --> sqshrun2.  */
-    case 399: value = 406; break;	/* sqshrun2 --> ushll.  */
-    case 406: value = 408; break;	/* ushll --> ushll2.  */
-    case 408: return NULL;		/* ushll2 --> NULL.  */
-    case 134: value = 378; break;	/* orr --> sqshrn.  */
-    case 378: value = 379; break;	/* sqshrn --> sqshrn2.  */
-    case 379: return NULL;		/* sqshrn2 --> NULL.  */
-    case 142: value = 402; break;	/* bic --> uqshrn.  */
-    case 402: value = 403; break;	/* uqshrn --> uqshrn2.  */
-    case 403: return NULL;		/* uqshrn2 --> NULL.  */
-    case 136: value = 386; break;	/* movi --> scvtf.  */
-    case 386: value = 387; break;	/* scvtf --> scvtf.  */
-    case 387: return NULL;		/* scvtf --> NULL.  */
-    case 144: value = 145; break;	/* movi --> movi.  */
-    case 145: value = 410; break;	/* movi --> ucvtf.  */
-    case 410: value = 411; break;	/* ucvtf --> ucvtf.  */
-    case 411: return NULL;		/* ucvtf --> NULL.  */
-    case 138: value = 388; break;	/* fmov --> fcvtzs.  */
-    case 388: value = 389; break;	/* fcvtzs --> fcvtzs.  */
-    case 389: return NULL;		/* fcvtzs --> NULL.  */
-    case 412: value = 413; break;	/* fcvtzu --> fcvtzu.  */
-    case 413: return NULL;		/* fcvtzu --> NULL.  */
-    case 842: value = 843; break;	/* fmsub --> fmsub.  */
-    case 843: return NULL;		/* fmsub --> NULL.  */
-    case 846: value = 847; break;	/* fnmsub --> fnmsub.  */
-    case 847: return NULL;		/* fnmsub --> NULL.  */
-    case 592: value = 593; break;	/* scvtf --> scvtf.  */
-    case 593: return NULL;		/* scvtf --> NULL.  */
-    case 594: value = 595; break;	/* fcvtzs --> fcvtzs.  */
-    case 595: return NULL;		/* fcvtzs --> NULL.  */
-    case 608: value = 609; break;	/* ucvtf --> ucvtf.  */
-    case 609: return NULL;		/* ucvtf --> NULL.  */
-    case 610: value = 611; break;	/* fcvtzu --> fcvtzu.  */
-    case 611: return NULL;		/* fcvtzu --> NULL.  */
-    default: return NULL;
+    case 941: value = 945; break;
+    case 945: return ((void*)0);
+    case 939: value = 940; break;
+    case 940: return ((void*)0);
+    case 942: value = 946; break;
+    case 946: return ((void*)0);
+    case 1584: value = 1585; break;
+    case 1585: return ((void*)0);
+    case 1640: value = 1641; break;
+    case 1641: return ((void*)0);
+    case 1588: value = 1589; break;
+    case 1589: return ((void*)0);
+    case 1607: value = 1608; break;
+    case 1608: return ((void*)0);
+    case 1586: value = 1587; break;
+    case 1587: return ((void*)0);
+    case 1605: value = 1606; break;
+    case 1606: return ((void*)0);
+    case 1590: value = 1591; break;
+    case 1591: return ((void*)0);
+    case 1609: value = 1610; break;
+    case 1610: return ((void*)0);
+    case 1630: value = 1631; break;
+    case 1631: return ((void*)0);
+    case 1618: value = 1619; break;
+    case 1619: return ((void*)0);
+    case 1649: value = 1650; break;
+    case 1650: return ((void*)0);
+    case 1622: value = 1623; break;
+    case 1623: return ((void*)0);
+    case 1632: value = 1633; break;
+    case 1633: return ((void*)0);
+    case 1620: value = 1621; break;
+    case 1621: return ((void*)0);
+    case 1651: value = 1652; break;
+    case 1652: return ((void*)0);
+    case 1596: value = 1597; break;
+    case 1597: return ((void*)0);
+    case 1157: value = 1158; break;
+    case 1158: value = 1173; break;
+    case 1173: value = 1174; break;
+    case 1174: value = 1177; break;
+    case 1177: value = 1178; break;
+    case 1178: value = 1179; break;
+    case 1179: value = 1184; break;
+    case 1184: value = 2042; break;
+    case 2042: return ((void*)0);
+    case 1185: value = 1186; break;
+    case 1186: return ((void*)0);
+    case 434: value = 435; break;
+    case 435: value = 436; break;
+    case 436: value = 437; break;
+    case 437: return ((void*)0);
+    case 442: value = 443; break;
+    case 443: value = 444; break;
+    case 444: value = 445; break;
+    case 445: return ((void*)0);
+    case 438: value = 439; break;
+    case 439: value = 440; break;
+    case 440: value = 441; break;
+    case 441: return ((void*)0);
+    case 454: value = 456; break;
+    case 456: return ((void*)0);
+    case 458: value = 460; break;
+    case 460: return ((void*)0);
+    case 455: value = 457; break;
+    case 457: return ((void*)0);
+    case 459: value = 461; break;
+    case 461: return ((void*)0);
+    case 446: value = 447; break;
+    case 447: value = 448; break;
+    case 448: value = 449; break;
+    case 449: return ((void*)0);
+    case 466: value = 468; break;
+    case 468: return ((void*)0);
+    case 467: value = 469; break;
+    case 469: return ((void*)0);
+    case 470: value = 472; break;
+    case 472: return ((void*)0);
+    case 471: value = 473; break;
+    case 473: return ((void*)0);
+    case 752: value = 753; break;
+    case 753: return ((void*)0);
+    case 748: value = 749; break;
+    case 749: return ((void*)0);
+    case 754: value = 755; break;
+    case 755: return ((void*)0);
+    case 750: value = 751; break;
+    case 751: return ((void*)0);
+    case 756: value = 757; break;
+    case 757: return ((void*)0);
+    case 776: value = 777; break;
+    case 777: return ((void*)0);
+    case 772: value = 773; break;
+    case 773: return ((void*)0);
+    case 780: value = 781; break;
+    case 781: return ((void*)0);
+    case 764: value = 765; break;
+    case 765: return ((void*)0);
+    case 760: value = 761; break;
+    case 761: return ((void*)0);
+    case 768: value = 769; break;
+    case 769: return ((void*)0);
+    case 758: value = 759; break;
+    case 759: return ((void*)0);
+    case 778: value = 779; break;
+    case 779: return ((void*)0);
+    case 774: value = 775; break;
+    case 775: return ((void*)0);
+    case 782: value = 783; break;
+    case 783: return ((void*)0);
+    case 766: value = 767; break;
+    case 767: return ((void*)0);
+    case 762: value = 763; break;
+    case 763: return ((void*)0);
+    case 770: value = 771; break;
+    case 771: return ((void*)0);
+    case 799: value = 800; break;
+    case 800: return ((void*)0);
+    case 808: value = 809; break;
+    case 809: return ((void*)0);
+    case 803: value = 804; break;
+    case 804: return ((void*)0);
+    case 812: value = 813; break;
+    case 813: return ((void*)0);
+    case 801: value = 802; break;
+    case 802: return ((void*)0);
+    case 810: value = 811; break;
+    case 811: return ((void*)0);
+    case 805: value = 806; break;
+    case 806: return ((void*)0);
+    case 814: value = 815; break;
+    case 815: return ((void*)0);
+    case 816: value = 817; break;
+    case 817: return ((void*)0);
+    case 818: value = 819; break;
+    case 819: return ((void*)0);
+    case 820: value = 821; break;
+    case 821: return ((void*)0);
+    case 791: value = 792; break;
+    case 792: return ((void*)0);
+    case 793: value = 794; break;
+    case 794: return ((void*)0);
+    case 795: value = 796; break;
+    case 796: return ((void*)0);
+    case 797: value = 798; break;
+    case 798: return ((void*)0);
+    case 848: value = 849; break;
+    case 849: return ((void*)0);
+    case 822: value = 823; break;
+    case 823: return ((void*)0);
+    case 838: value = 839; break;
+    case 839: return ((void*)0);
+    case 830: value = 831; break;
+    case 831: return ((void*)0);
+    case 826: value = 827; break;
+    case 827: return ((void*)0);
+    case 834: value = 835; break;
+    case 835: return ((void*)0);
+    case 824: value = 825; break;
+    case 825: return ((void*)0);
+    case 832: value = 833; break;
+    case 833: return ((void*)0);
+    case 828: value = 829; break;
+    case 829: return ((void*)0);
+    case 836: value = 837; break;
+    case 837: return ((void*)0);
+    case 787: value = 788; break;
+    case 788: return ((void*)0);
+    case 789: value = 790; break;
+    case 790: return ((void*)0);
+    case 850: value = 851; break;
+    case 851: return ((void*)0);
+    case 131: value = 368; break;
+    case 368: value = 370; break;
+    case 370: return ((void*)0);
+    case 139: value = 390; break;
+    case 390: value = 392; break;
+    case 392: value = 394; break;
+    case 394: value = 396; break;
+    case 396: return ((void*)0);
+    case 132: value = 369; break;
+    case 369: value = 371; break;
+    case 371: value = 372; break;
+    case 372: value = 373; break;
+    case 373: return ((void*)0);
+    case 140: value = 391; break;
+    case 391: value = 393; break;
+    case 393: value = 395; break;
+    case 395: value = 397; break;
+    case 397: return ((void*)0);
+    case 840: value = 841; break;
+    case 841: return ((void*)0);
+    case 844: value = 845; break;
+    case 845: return ((void*)0);
+    case 133: value = 374; break;
+    case 374: value = 375; break;
+    case 375: value = 382; break;
+    case 382: value = 384; break;
+    case 384: return ((void*)0);
+    case 141: value = 398; break;
+    case 398: value = 399; break;
+    case 399: value = 406; break;
+    case 406: value = 408; break;
+    case 408: return ((void*)0);
+    case 134: value = 378; break;
+    case 378: value = 379; break;
+    case 379: return ((void*)0);
+    case 142: value = 402; break;
+    case 402: value = 403; break;
+    case 403: return ((void*)0);
+    case 136: value = 386; break;
+    case 386: value = 387; break;
+    case 387: return ((void*)0);
+    case 144: value = 145; break;
+    case 145: value = 410; break;
+    case 410: value = 411; break;
+    case 411: return ((void*)0);
+    case 138: value = 388; break;
+    case 388: value = 389; break;
+    case 389: return ((void*)0);
+    case 412: value = 413; break;
+    case 413: return ((void*)0);
+    case 842: value = 843; break;
+    case 843: return ((void*)0);
+    case 846: value = 847; break;
+    case 847: return ((void*)0);
+    case 592: value = 593; break;
+    case 593: return ((void*)0);
+    case 594: value = 595; break;
+    case 595: return ((void*)0);
+    case 608: value = 609; break;
+    case 609: return ((void*)0);
+    case 610: value = 611; break;
+    case 611: return ((void*)0);
+    default: return ((void*)0);
     }
 
   return aarch64_opcode_table + value;

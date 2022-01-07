@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int DRV_HANDLE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DRV_USART0_ReadByte () ; 
-#define  DRV_USART_INDEX_0 128 
- int /*<<< orphan*/  SYS_ASSERT (int,char*) ; 
+
+
+
+typedef int uint8_t ;
+typedef int DRV_HANDLE ;
+
+
+ int DRV_USART0_ReadByte () ;
+
+ int SYS_ASSERT (int,char*) ;
 
 uint8_t DRV_USART_ReadByte( const DRV_HANDLE handle )
 {
@@ -24,17 +24,17 @@ uint8_t DRV_USART_ReadByte( const DRV_HANDLE handle )
     uint8_t returnValue;
 
     instance = handle & 0x00FF;
-    //As we are handling single client, only multiple instance is taken care.
+
     switch(instance)
     {
-        case DRV_USART_INDEX_0:
+        case 128:
         {
             returnValue = DRV_USART0_ReadByte();
             break;
         }
         default:
         {
-            SYS_ASSERT(false, "Incorrect Driver Handle");
+            SYS_ASSERT(0, "Incorrect Driver Handle");
             returnValue = 0;
             break;
         }

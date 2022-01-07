@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct rbk_data {int tbl; int /*<<< orphan*/  func; } ;
-typedef  int /*<<< orphan*/  strm_value ;
-typedef  int /*<<< orphan*/  strm_stream ;
 
-/* Variables and functions */
- int STRM_NG ; 
- int STRM_OK ; 
- int /*<<< orphan*/  iter_rbk ; 
- int kh_init (int /*<<< orphan*/ ) ; 
- int khash_t (int /*<<< orphan*/ ) ; 
- struct rbk_data* malloc (int) ; 
- int /*<<< orphan*/  rbk ; 
- int /*<<< orphan*/  rbk_finish ; 
- int /*<<< orphan*/  strm_filter ; 
- int /*<<< orphan*/  strm_get_args (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strm_stream_new (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*) ; 
- int /*<<< orphan*/  strm_stream_value (int /*<<< orphan*/ ) ; 
- int t ; 
+
+
+
+struct rbk_data {int tbl; int func; } ;
+typedef int strm_value ;
+typedef int strm_stream ;
+
+
+ int STRM_NG ;
+ int STRM_OK ;
+ int iter_rbk ;
+ int kh_init (int ) ;
+ int khash_t (int ) ;
+ struct rbk_data* malloc (int) ;
+ int rbk ;
+ int rbk_finish ;
+ int strm_filter ;
+ int strm_get_args (int *,int,int *,char*,int *) ;
+ int strm_stream_new (int ,int ,int ,void*) ;
+ int strm_stream_value (int ) ;
+ int t ;
 
 __attribute__((used)) static int
 exec_rbk(strm_stream* strm, int argc, strm_value* args, strm_value* ret)

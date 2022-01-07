@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct nf_conn {int dummy; } ;
-struct netlink_callback {int /*<<< orphan*/  data; scalar_t__* args; } ;
+struct netlink_callback {int data; scalar_t__* args; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  kfree (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nf_ct_put (struct nf_conn*) ; 
+
+ int kfree (int ) ;
+ int nf_ct_put (struct nf_conn*) ;
 
 __attribute__((used)) static int ctnetlink_done(struct netlink_callback *cb)
 {
-	if (cb->args[1])
-		nf_ct_put((struct nf_conn *)cb->args[1]);
-	kfree(cb->data);
-	return 0;
+ if (cb->args[1])
+  nf_ct_put((struct nf_conn *)cb->args[1]);
+ kfree(cb->data);
+ return 0;
 }

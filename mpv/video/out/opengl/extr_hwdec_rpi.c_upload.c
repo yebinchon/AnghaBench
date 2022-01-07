@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct ra_hwdec {struct priv* priv; } ;
-struct priv {int /*<<< orphan*/  params; TYPE_1__* swpool; } ;
-struct mp_image {int /*<<< orphan*/  member_0; void** planes; } ;
-struct TYPE_9__ {int /*<<< orphan*/  length; } ;
-struct TYPE_8__ {int /*<<< orphan*/  queue; } ;
-typedef  TYPE_2__ MMAL_BUFFER_HEADER_T ;
+struct priv {int params; TYPE_1__* swpool; } ;
+struct mp_image {int member_0; void** planes; } ;
+struct TYPE_9__ {int length; } ;
+struct TYPE_8__ {int queue; } ;
+typedef TYPE_2__ MMAL_BUFFER_HEADER_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IMGFMT_MMAL ; 
- int /*<<< orphan*/  MP_ERR (struct ra_hwdec*,char*) ; 
- int /*<<< orphan*/  free_mmal_buffer ; 
- int /*<<< orphan*/  layout_buffer (struct mp_image*,TYPE_2__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mmal_buffer_header_release (TYPE_2__*) ; 
- int /*<<< orphan*/  mmal_buffer_header_reset (TYPE_2__*) ; 
- TYPE_2__* mmal_queue_wait (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mp_image_copy (struct mp_image*,struct mp_image*) ; 
- struct mp_image* mp_image_new_custom_ref (int /*<<< orphan*/ *,TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mp_image_setfmt (struct mp_image*,int /*<<< orphan*/ ) ; 
+
+ int IMGFMT_MMAL ;
+ int MP_ERR (struct ra_hwdec*,char*) ;
+ int free_mmal_buffer ;
+ int layout_buffer (struct mp_image*,TYPE_2__*,int *) ;
+ int mmal_buffer_header_release (TYPE_2__*) ;
+ int mmal_buffer_header_reset (TYPE_2__*) ;
+ TYPE_2__* mmal_queue_wait (int ) ;
+ int mp_image_copy (struct mp_image*,struct mp_image*) ;
+ struct mp_image* mp_image_new_custom_ref (int *,TYPE_2__*,int ) ;
+ int mp_image_setfmt (struct mp_image*,int ) ;
 
 __attribute__((used)) static struct mp_image *upload(struct ra_hwdec *hw, struct mp_image *hw_image)
 {
@@ -38,16 +38,16 @@ __attribute__((used)) static struct mp_image *upload(struct ra_hwdec *hw, struct
     MMAL_BUFFER_HEADER_T *buffer = mmal_queue_wait(p->swpool->queue);
     if (!buffer) {
         MP_ERR(hw, "Can't allocate buffer.\n");
-        return NULL;
+        return ((void*)0);
     }
     mmal_buffer_header_reset(buffer);
 
-    struct mp_image *new_ref = mp_image_new_custom_ref(NULL, buffer,
+    struct mp_image *new_ref = mp_image_new_custom_ref(((void*)0), buffer,
                                                        free_mmal_buffer);
     if (!new_ref) {
         mmal_buffer_header_release(buffer);
         MP_ERR(hw, "Out of memory.\n");
-        return NULL;
+        return ((void*)0);
     }
 
     mp_image_setfmt(new_ref, IMGFMT_MMAL);

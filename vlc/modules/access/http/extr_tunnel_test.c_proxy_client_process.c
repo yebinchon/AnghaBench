@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ ssize_t ;
-typedef  int /*<<< orphan*/  buf ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SHUT_WR ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ recv (int,char*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  shutdown (int,int /*<<< orphan*/ ) ; 
- int sscanf (char*,char*,char*,unsigned int*,...) ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
- size_t strlen (char const*) ; 
- int /*<<< orphan*/ * strnstr (char*,char*,size_t) ; 
- int /*<<< orphan*/ * strstr (char*,char*) ; 
- scalar_t__ write (int,char const*,size_t) ; 
+
+
+
+typedef scalar_t__ ssize_t ;
+typedef int buf ;
+
+
+ int SHUT_WR ;
+ int assert (int) ;
+ scalar_t__ recv (int,char*,int,int ) ;
+ int shutdown (int,int ) ;
+ int sscanf (char*,char*,char*,unsigned int*,...) ;
+ int strcmp (char*,char*) ;
+ size_t strlen (char const*) ;
+ int * strnstr (char*,char*,size_t) ;
+ int * strstr (char*,char*) ;
+ scalar_t__ write (int,char const*,size_t) ;
 
 __attribute__((used)) static void proxy_client_process(int fd)
 {
@@ -31,8 +31,8 @@ __attribute__((used)) static void proxy_client_process(int fd)
     size_t buflen = 0;
     ssize_t val;
 
-    /* Read request (and possibly more) */
-    while (strnstr(buf, "\r\n\r\n", buflen) == NULL)
+
+    while (strnstr(buf, "\r\n\r\n", buflen) == ((void*)0))
     {
         val = recv(fd, buf + buflen, sizeof (buf) - buflen - 1, 0);
         if (val <= 0)
@@ -57,7 +57,7 @@ __attribute__((used)) static void proxy_client_process(int fd)
     assert(port == 443);
 
     assert(strstr(buf, "\r\nProxy-Authorization: Basic "
-                  "QWxhZGRpbjpvcGVuIHNlc2FtZQ==\r\n") != NULL);
+                  "QWxhZGRpbjpvcGVuIHNlc2FtZQ==\r\n") != ((void*)0));
 
     const char resp[] = "HTTP/1.1 500 Failure\r\n\r\n";
 

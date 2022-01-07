@@ -1,37 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  BMK_ZLIB ; 
- int /*<<< orphan*/  BMK_ZLIB_REUSE ; 
- int /*<<< orphan*/  BMK_ZSTD ; 
- int /*<<< orphan*/  BMK_ZSTD_STREAM ; 
- int /*<<< orphan*/  BMK_ZWRAP_ZLIB ; 
- int /*<<< orphan*/  BMK_ZWRAP_ZLIB_REUSE ; 
- int /*<<< orphan*/  BMK_ZWRAP_ZSTD ; 
- int /*<<< orphan*/  BMK_ZWRAP_ZSTD_REUSE ; 
- int /*<<< orphan*/  BMK_benchMem (void*,size_t,char const*,int,size_t const*,unsigned int,void const*,size_t,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DISPLAY (char*,...) ; 
- int /*<<< orphan*/  SET_REALTIME_PRIORITY ; 
- int /*<<< orphan*/  ZLIB_VERSION ; 
- int /*<<< orphan*/  ZSTD_GIT_COMMIT_STRING ; 
- int /*<<< orphan*/  ZSTD_VERSION_STRING ; 
- int Z_BEST_COMPRESSION ; 
- int /*<<< orphan*/  g_additionalParam ; 
- int g_blockSize ; 
- int g_displayLevel ; 
- int /*<<< orphan*/  g_nbIterations ; 
- char* strrchr (char const*,char) ; 
+ int BMK_ZLIB ;
+ int BMK_ZLIB_REUSE ;
+ int BMK_ZSTD ;
+ int BMK_ZSTD_STREAM ;
+ int BMK_ZWRAP_ZLIB ;
+ int BMK_ZWRAP_ZLIB_REUSE ;
+ int BMK_ZWRAP_ZSTD ;
+ int BMK_ZWRAP_ZSTD_REUSE ;
+ int BMK_benchMem (void*,size_t,char const*,int,size_t const*,unsigned int,void const*,size_t,int ) ;
+ int DISPLAY (char*,...) ;
+ int SET_REALTIME_PRIORITY ;
+ int ZLIB_VERSION ;
+ int ZSTD_GIT_COMMIT_STRING ;
+ int ZSTD_VERSION_STRING ;
+ int Z_BEST_COMPRESSION ;
+ int g_additionalParam ;
+ int g_blockSize ;
+ int g_displayLevel ;
+ int g_nbIterations ;
+ char* strrchr (char const*,char) ;
 
 __attribute__((used)) static void BMK_benchCLevel(void* srcBuffer, size_t benchedSize,
                             const char* displayName, int cLevel, int cLevelLast,
@@ -40,8 +32,8 @@ __attribute__((used)) static void BMK_benchCLevel(void* srcBuffer, size_t benche
 {
     int l;
 
-    const char* pch = strrchr(displayName, '\\'); /* Windows */
-    if (!pch) pch = strrchr(displayName, '/'); /* Linux */
+    const char* pch = strrchr(displayName, '\\');
+    if (!pch) pch = strrchr(displayName, '/');
     if (pch) displayName = pch+1;
 
     SET_REALTIME_PRIORITY;

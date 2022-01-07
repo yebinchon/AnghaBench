@@ -1,56 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int O_APPEND ; 
- int O_CREAT ; 
- int /*<<< orphan*/  O_RDONLY ; 
- int O_WRONLY ; 
- int /*<<< orphan*/  SEEK_END ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ atoi (char*) ; 
- scalar_t__ change_user (char*) ; 
- int /*<<< orphan*/  close (int) ; 
- scalar_t__ cutoff_ago ; 
- int /*<<< orphan*/  exit (int) ; 
- scalar_t__ fdatasync (int) ; 
- int /*<<< orphan*/  flush_out () ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- int getopt (int,char**,char*) ; 
- scalar_t__ lseek (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- void* open (char*,int,...) ; 
- char* optarg ; 
- int optind ; 
- int /*<<< orphan*/  output_stats () ; 
- scalar_t__ process_record () ; 
- char* progname ; 
- scalar_t__ rend ; 
- scalar_t__ rptr ; 
- int skip_timestamps ; 
- scalar_t__ src_fd ; 
- char* src_fname ; 
- int sscanf (char*,char*,scalar_t__*,scalar_t__*) ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ t_cutoff ; 
- int targ_fd ; 
- char* targ_fname ; 
- scalar_t__ targ_orig_size ; 
- scalar_t__ time (int /*<<< orphan*/ ) ; 
- scalar_t__ undel_time_max ; 
- scalar_t__ undel_time_min ; 
- int /*<<< orphan*/  usage () ; 
- char* username ; 
- scalar_t__ verbosity ; 
+ int O_APPEND ;
+ int O_CREAT ;
+ int O_RDONLY ;
+ int O_WRONLY ;
+ int SEEK_END ;
+ int assert (int) ;
+ scalar_t__ atoi (char*) ;
+ scalar_t__ change_user (char*) ;
+ int close (int) ;
+ scalar_t__ cutoff_ago ;
+ int exit (int) ;
+ scalar_t__ fdatasync (int) ;
+ int flush_out () ;
+ int fprintf (int ,char*,char*) ;
+ int getopt (int,char**,char*) ;
+ scalar_t__ lseek (int,int ,int ) ;
+ void* open (char*,int,...) ;
+ char* optarg ;
+ int optind ;
+ int output_stats () ;
+ scalar_t__ process_record () ;
+ char* progname ;
+ scalar_t__ rend ;
+ scalar_t__ rptr ;
+ int skip_timestamps ;
+ scalar_t__ src_fd ;
+ char* src_fname ;
+ int sscanf (char*,char*,scalar_t__*,scalar_t__*) ;
+ int stderr ;
+ scalar_t__ t_cutoff ;
+ int targ_fd ;
+ char* targ_fname ;
+ scalar_t__ targ_orig_size ;
+ scalar_t__ time (int ) ;
+ scalar_t__ undel_time_max ;
+ scalar_t__ undel_time_min ;
+ int usage () ;
+ char* username ;
+ scalar_t__ verbosity ;
 
 int main (int argc, char *argv[]) {
   int i;
@@ -74,8 +66,8 @@ int main (int argc, char *argv[]) {
       break;
     case 'U':
       if (sscanf (optarg, "%d..%d", &undel_time_min, &undel_time_max) < 2 || undel_time_min >= undel_time_max || undel_time_min < 0) {
-	usage();
-	return 2;
+ usage();
+ return 2;
       }
       break;
     }

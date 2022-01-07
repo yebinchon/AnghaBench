@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int hi; unsigned int lo; } ;
 struct TYPE_4__ {scalar_t__ dbl; TYPE_1__ as_int; } ;
-typedef  TYPE_2__ double_accessor ;
+typedef TYPE_2__ double_accessor ;
 
-/* Variables and functions */
- int __HI (double) ; 
- unsigned int __LO (double) ; 
- scalar_t__ one ; 
- scalar_t__ tiny ; 
+
+ int __HI (double) ;
+ unsigned int __LO (double) ;
+ scalar_t__ one ;
+ scalar_t__ tiny ;
 
 double
 sqrt (double x)
@@ -29,29 +29,29 @@ sqrt (double x)
   unsigned r, t1, s1, ix1, q1;
   int ix0, s0, q, m, t, i;
 
-  ix0 = __HI (x); /* high word of x */
-  ix1 = __LO (x); /* low word of x */
+  ix0 = __HI (x);
+  ix1 = __LO (x);
 
-  /* take care of Inf and NaN */
+
   if ((ix0 & 0x7ff00000) == 0x7ff00000)
   {
-    return x * x + x; /* sqrt(NaN) = NaN, sqrt(+inf) = +inf, sqrt(-inf) = sNaN */
+    return x * x + x;
   }
-  /* take care of zero */
+
   if (ix0 <= 0)
   {
-    if (((ix0 & (~sign)) | ix1) == 0) /* sqrt(+-0) = +-0 */
+    if (((ix0 & (~sign)) | ix1) == 0)
     {
       return x;
     }
-    else if (ix0 < 0) /* sqrt(-ve) = sNaN */
+    else if (ix0 < 0)
     {
       return (x - x) / (x - x);
     }
   }
-  /* normalize x */
+
   m = (ix0 >> 20);
-  if (m == 0) /* subnormal x */
+  if (m == 0)
   {
     while (ix0 == 0)
     {
@@ -67,20 +67,20 @@ sqrt (double x)
     ix0 |= (ix1 >> (32 - i));
     ix1 <<= i;
   }
-  m -= 1023; /* unbias exponent */
+  m -= 1023;
   ix0 = (ix0 & 0x000fffff) | 0x00100000;
-  if (m & 1) /* odd m, double x to make it even */
+  if (m & 1)
   {
     ix0 += ix0 + ((ix1 & sign) >> 31);
     ix1 += ix1;
   }
-  m >>= 1; /* m = [m / 2] */
+  m >>= 1;
 
-  /* generate sqrt(x) bit by bit */
+
   ix0 += ix0 + ((ix1 & sign) >> 31);
   ix1 += ix1;
-  q = q1 = s0 = s1 = 0; /* [q,q1] = sqrt(x) */
-  r = 0x00200000; /* r = moving bit from right to left */
+  q = q1 = s0 = s1 = 0;
+  r = 0x00200000;
 
   while (r != 0)
   {
@@ -123,10 +123,10 @@ sqrt (double x)
 
   double_accessor ret;
 
-  /* use floating add to find out rounding direction */
+
   if ((ix0 | ix1) != 0)
   {
-    ret.dbl = one - tiny; /* trigger inexact flag */
+    ret.dbl = one - tiny;
     if (ret.dbl >= one)
     {
       ret.dbl = one + tiny;

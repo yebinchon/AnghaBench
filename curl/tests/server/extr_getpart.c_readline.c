@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int GPE_END_OF_FILE ; 
- int GPE_OK ; 
- int GPE_OUT_OF_MEMORY ; 
- int curlx_uztosi (size_t) ; 
- int /*<<< orphan*/  fgets (char*,int,int /*<<< orphan*/ *) ; 
- char* malloc (int) ; 
- char* realloc (char*,size_t) ; 
- size_t strlen (char*) ; 
+
+
+
+typedef int FILE ;
+
+
+ int GPE_END_OF_FILE ;
+ int GPE_OK ;
+ int GPE_OUT_OF_MEMORY ;
+ int curlx_uztosi (size_t) ;
+ int fgets (char*,int,int *) ;
+ char* malloc (int) ;
+ char* realloc (char*,size_t) ;
+ size_t strlen (char*) ;
 
 __attribute__((used)) static int readline(char **buffer, size_t *bufsize, FILE *stream)
 {

@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wchar_t ;
-typedef  int /*<<< orphan*/  UINT ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * CopyStrToUni (char*) ; 
- int /*<<< orphan*/  Free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  UniStrWidth (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int wchar_t ;
+typedef int UINT ;
+
+
+ int * CopyStrToUni (char*) ;
+ int Free (int *) ;
+ int UniStrWidth (int *) ;
 
 UINT StrWidth(char *str)
 {
-	wchar_t *s;
-	UINT ret;
-	// Validate arguments
-	if (str == NULL)
-	{
-		return 0;
-	}
+ wchar_t *s;
+ UINT ret;
 
-	s = CopyStrToUni(str);
-	ret = UniStrWidth(s);
-	Free(s);
+ if (str == ((void*)0))
+ {
+  return 0;
+ }
 
-	return ret;
+ s = CopyStrToUni(str);
+ ret = UniStrWidth(s);
+ Free(s);
+
+ return ret;
 }

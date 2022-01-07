@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int spa_async_tasks; int /*<<< orphan*/  spa_async_lock; int /*<<< orphan*/  spa_name; } ;
-typedef  TYPE_1__ spa_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mutex_enter (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_exit (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spa_async_dispatch_vd (TYPE_1__*) ; 
- int /*<<< orphan*/  zfs_dbgmsg (char*,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int spa_async_tasks; int spa_async_lock; int spa_name; } ;
+typedef TYPE_1__ spa_t ;
+
+
+ int mutex_enter (int *) ;
+ int mutex_exit (int *) ;
+ int spa_async_dispatch_vd (TYPE_1__*) ;
+ int zfs_dbgmsg (char*,int ,int) ;
 
 void
 spa_async_request(spa_t *spa, int task)
 {
-	zfs_dbgmsg("spa=%s async request task=%u", spa->spa_name, task);
-	mutex_enter(&spa->spa_async_lock);
-	spa->spa_async_tasks |= task;
-	mutex_exit(&spa->spa_async_lock);
-	spa_async_dispatch_vd(spa);
+ zfs_dbgmsg("spa=%s async request task=%u", spa->spa_name, task);
+ mutex_enter(&spa->spa_async_lock);
+ spa->spa_async_tasks |= task;
+ mutex_exit(&spa->spa_async_lock);
+ spa_async_dispatch_vd(spa);
 }

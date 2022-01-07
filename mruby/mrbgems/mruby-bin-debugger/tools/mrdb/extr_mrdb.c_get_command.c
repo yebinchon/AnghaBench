@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int* command; } ;
-typedef  TYPE_1__ mrdb_state ;
-typedef  int /*<<< orphan*/  mrb_state ;
+typedef TYPE_1__ mrdb_state ;
+typedef int mrb_state ;
 
-/* Variables and functions */
- int EOF ; 
- int MAX_COMMAND_LINE ; 
- int /*<<< orphan*/  clearerr (int /*<<< orphan*/ ) ; 
- scalar_t__ feof (int /*<<< orphan*/ ) ; 
- int getchar () ; 
- int /*<<< orphan*/  printf (char*) ; 
- int /*<<< orphan*/  stdin ; 
- int /*<<< orphan*/  strcpy (int*,char*) ; 
+
+ int EOF ;
+ int MAX_COMMAND_LINE ;
+ int clearerr (int ) ;
+ scalar_t__ feof (int ) ;
+ int getchar () ;
+ int printf (char*) ;
+ int stdin ;
+ int strcpy (int*,char*) ;
 
 __attribute__((used)) static char*
 get_command(mrb_state *mrb, mrdb_state *mrdb)
@@ -48,7 +48,7 @@ get_command(mrb_state *mrb, mrdb_state *mrdb)
 
   if (i > MAX_COMMAND_LINE) {
     printf("command line too long.\n");
-    i = 0; /* discard command data */
+    i = 0;
   }
   mrdb->command[i] = '\0';
 

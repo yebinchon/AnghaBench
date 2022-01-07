@@ -1,18 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct i387_fxsave {unsigned char* st_space; } ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static int
 i387_ftag (struct i387_fxsave *fp, int regno)
@@ -30,19 +30,19 @@ i387_ftag (struct i387_fxsave *fp, int regno)
 
   if (exponent == 0x7fff)
     {
-      /* Special.  */
+
       return (2);
     }
   else if (exponent == 0x0000)
     {
       if (fraction[0] == 0x0000 && fraction[1] == 0x0000 && !integer)
         {
-          /* Zero.  */
+
           return (1);
         }
       else
         {
-          /* Special.  */
+
           return (2);
         }
     }
@@ -50,12 +50,12 @@ i387_ftag (struct i387_fxsave *fp, int regno)
     {
       if (integer)
         {
-          /* Valid.  */
+
           return (0);
         }
       else
         {
-          /* Special.  */
+
           return (2);
         }
     }

@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int ynVar ;
-typedef  scalar_t__ u32 ;
+
+
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int ynVar ;
+typedef scalar_t__ u32 ;
 struct TYPE_11__ {int* aLimit; } ;
-typedef  TYPE_2__ sqlite3 ;
-typedef  int i64 ;
+typedef TYPE_2__ sqlite3 ;
+typedef int i64 ;
 struct TYPE_10__ {char* zToken; } ;
 struct TYPE_13__ {int iColumn; TYPE_1__ u; } ;
-struct TYPE_12__ {int nVar; int /*<<< orphan*/  pVList; TYPE_2__* db; } ;
-typedef  TYPE_3__ Parse ;
-typedef  TYPE_4__ Expr ;
+struct TYPE_12__ {int nVar; int pVList; TYPE_2__* db; } ;
+typedef TYPE_3__ Parse ;
+typedef TYPE_4__ Expr ;
 
-/* Variables and functions */
- int EP_IntValue ; 
- int EP_Reduced ; 
- int EP_TokenOnly ; 
- int /*<<< orphan*/  ExprHasProperty (TYPE_4__*,int) ; 
- size_t SQLITE_LIMIT_VARIABLE_NUMBER ; 
- int /*<<< orphan*/  SQLITE_UTF8 ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ sqlite3Atoi64 (char const*,int*,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3ErrorMsg (TYPE_3__*,char*,...) ; 
- scalar_t__ sqlite3Strlen30 (char const*) ; 
- int /*<<< orphan*/  sqlite3VListAdd (TYPE_2__*,int /*<<< orphan*/ ,char const*,scalar_t__,int) ; 
- scalar_t__ sqlite3VListNameToNum (int /*<<< orphan*/ ,char const*,scalar_t__) ; 
- scalar_t__ sqlite3VListNumToName (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  testcase (int) ; 
+
+ int EP_IntValue ;
+ int EP_Reduced ;
+ int EP_TokenOnly ;
+ int ExprHasProperty (TYPE_4__*,int) ;
+ size_t SQLITE_LIMIT_VARIABLE_NUMBER ;
+ int SQLITE_UTF8 ;
+ int assert (int) ;
+ scalar_t__ sqlite3Atoi64 (char const*,int*,scalar_t__,int ) ;
+ int sqlite3ErrorMsg (TYPE_3__*,char*,...) ;
+ scalar_t__ sqlite3Strlen30 (char const*) ;
+ int sqlite3VListAdd (TYPE_2__*,int ,char const*,scalar_t__,int) ;
+ scalar_t__ sqlite3VListNameToNum (int ,char const*,scalar_t__) ;
+ scalar_t__ sqlite3VListNumToName (int ,int) ;
+ int testcase (int) ;
 
 void sqlite3ExprAssignVarNumber(Parse *pParse, Expr *pExpr, u32 n){
   sqlite3 *db = pParse->db;
@@ -53,18 +53,18 @@ void sqlite3ExprAssignVarNumber(Parse *pParse, Expr *pExpr, u32 n){
   assert( z[0]!=0 );
   assert( n==(u32)sqlite3Strlen30(z) );
   if( z[1]==0 ){
-    /* Wildcard of the form "?".  Assign the next variable number */
+
     assert( z[0]=='?' );
     x = (ynVar)(++pParse->nVar);
   }else{
     int doAdd = 0;
     if( z[0]=='?' ){
-      /* Wildcard of the form "?nnn".  Convert "nnn" to an integer and
-      ** use it as the variable number */
+
+
       i64 i;
       int bOk;
-      if( n==2 ){ /*OPTIMIZATION-IF-TRUE*/
-        i = z[1]-'0';  /* The common case of ?N for a single digit N */
+      if( n==2 ){
+        i = z[1]-'0';
         bOk = 1;
       }else{
         bOk = 0==sqlite3Atoi64(&z[1], &i, n-1, SQLITE_UTF8);
@@ -86,10 +86,10 @@ void sqlite3ExprAssignVarNumber(Parse *pParse, Expr *pExpr, u32 n){
         doAdd = 1;
       }
     }else{
-      /* Wildcards like ":aaa", "$aaa" or "@aaa".  Reuse the same variable
-      ** number as the prior appearance of the same name, or if the name
-      ** has never appeared before, reuse the same variable number
-      */
+
+
+
+
       x = (ynVar)sqlite3VListNameToNum(pParse->pVList, z, n);
       if( x==0 ){
         x = (ynVar)(++pParse->nVar);

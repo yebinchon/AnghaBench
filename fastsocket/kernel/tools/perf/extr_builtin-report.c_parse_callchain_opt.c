@@ -1,117 +1,117 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct perf_report {int dont_use_callchains; } ;
 struct option {scalar_t__ value; } ;
-struct TYPE_5__ {int /*<<< orphan*/  order; int /*<<< orphan*/  print_limit; int /*<<< orphan*/  min_percent; int /*<<< orphan*/  mode; } ;
+struct TYPE_5__ {int order; int print_limit; int min_percent; int mode; } ;
 struct TYPE_4__ {int use_callchain; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHAIN_FLAT ; 
- int /*<<< orphan*/  CHAIN_GRAPH_ABS ; 
- int /*<<< orphan*/  CHAIN_GRAPH_REL ; 
- int /*<<< orphan*/  CHAIN_NONE ; 
- int /*<<< orphan*/  ORDER_CALLEE ; 
- int /*<<< orphan*/  ORDER_CALLER ; 
- TYPE_2__ callchain_param ; 
- scalar_t__ callchain_register_param (TYPE_2__*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
- int /*<<< orphan*/  strlen (char const*) ; 
- int /*<<< orphan*/  strncmp (char*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strtod (char*,char**) ; 
- char* strtok (char*,char*) ; 
- int /*<<< orphan*/  strtoul (char*,char**,int /*<<< orphan*/ ) ; 
- TYPE_1__ symbol_conf ; 
+
+ int CHAIN_FLAT ;
+ int CHAIN_GRAPH_ABS ;
+ int CHAIN_GRAPH_REL ;
+ int CHAIN_NONE ;
+ int ORDER_CALLEE ;
+ int ORDER_CALLER ;
+ TYPE_2__ callchain_param ;
+ scalar_t__ callchain_register_param (TYPE_2__*) ;
+ int fprintf (int ,char*) ;
+ int stderr ;
+ int strcmp (char*,char*) ;
+ int strlen (char const*) ;
+ int strncmp (char*,char*,int ) ;
+ int strtod (char*,char**) ;
+ char* strtok (char*,char*) ;
+ int strtoul (char*,char**,int ) ;
+ TYPE_1__ symbol_conf ;
 
 __attribute__((used)) static int
 parse_callchain_opt(const struct option *opt, const char *arg, int unset)
 {
-	struct perf_report *rep = (struct perf_report *)opt->value;
-	char *tok, *tok2;
-	char *endptr;
+ struct perf_report *rep = (struct perf_report *)opt->value;
+ char *tok, *tok2;
+ char *endptr;
 
-	/*
-	 * --no-call-graph
-	 */
-	if (unset) {
-		rep->dont_use_callchains = true;
-		return 0;
-	}
 
-	symbol_conf.use_callchain = true;
 
-	if (!arg)
-		return 0;
 
-	tok = strtok((char *)arg, ",");
-	if (!tok)
-		return -1;
+ if (unset) {
+  rep->dont_use_callchains = 1;
+  return 0;
+ }
 
-	/* get the output mode */
-	if (!strncmp(tok, "graph", strlen(arg)))
-		callchain_param.mode = CHAIN_GRAPH_ABS;
+ symbol_conf.use_callchain = 1;
 
-	else if (!strncmp(tok, "flat", strlen(arg)))
-		callchain_param.mode = CHAIN_FLAT;
+ if (!arg)
+  return 0;
 
-	else if (!strncmp(tok, "fractal", strlen(arg)))
-		callchain_param.mode = CHAIN_GRAPH_REL;
+ tok = strtok((char *)arg, ",");
+ if (!tok)
+  return -1;
 
-	else if (!strncmp(tok, "none", strlen(arg))) {
-		callchain_param.mode = CHAIN_NONE;
-		symbol_conf.use_callchain = false;
 
-		return 0;
-	}
+ if (!strncmp(tok, "graph", strlen(arg)))
+  callchain_param.mode = CHAIN_GRAPH_ABS;
 
-	else
-		return -1;
+ else if (!strncmp(tok, "flat", strlen(arg)))
+  callchain_param.mode = CHAIN_FLAT;
 
-	/* get the min percentage */
-	tok = strtok(NULL, ",");
-	if (!tok)
-		goto setup;
+ else if (!strncmp(tok, "fractal", strlen(arg)))
+  callchain_param.mode = CHAIN_GRAPH_REL;
 
-	callchain_param.min_percent = strtod(tok, &endptr);
-	if (tok == endptr)
-		return -1;
+ else if (!strncmp(tok, "none", strlen(arg))) {
+  callchain_param.mode = CHAIN_NONE;
+  symbol_conf.use_callchain = 0;
 
-	/* get the print limit */
-	tok2 = strtok(NULL, ",");
-	if (!tok2)
-		goto setup;
+  return 0;
+ }
 
-	if (tok2[0] != 'c') {
-		callchain_param.print_limit = strtoul(tok2, &endptr, 0);
-		tok2 = strtok(NULL, ",");
-		if (!tok2)
-			goto setup;
-	}
+ else
+  return -1;
 
-	/* get the call chain order */
-	if (!strcmp(tok2, "caller"))
-		callchain_param.order = ORDER_CALLER;
-	else if (!strcmp(tok2, "callee"))
-		callchain_param.order = ORDER_CALLEE;
-	else
-		return -1;
+
+ tok = strtok(((void*)0), ",");
+ if (!tok)
+  goto setup;
+
+ callchain_param.min_percent = strtod(tok, &endptr);
+ if (tok == endptr)
+  return -1;
+
+
+ tok2 = strtok(((void*)0), ",");
+ if (!tok2)
+  goto setup;
+
+ if (tok2[0] != 'c') {
+  callchain_param.print_limit = strtoul(tok2, &endptr, 0);
+  tok2 = strtok(((void*)0), ",");
+  if (!tok2)
+   goto setup;
+ }
+
+
+ if (!strcmp(tok2, "caller"))
+  callchain_param.order = ORDER_CALLER;
+ else if (!strcmp(tok2, "callee"))
+  callchain_param.order = ORDER_CALLEE;
+ else
+  return -1;
 setup:
-	if (callchain_register_param(&callchain_param) < 0) {
-		fprintf(stderr, "Can't register callchain params\n");
-		return -1;
-	}
-	return 0;
+ if (callchain_register_param(&callchain_param) < 0) {
+  fprintf(stderr, "Can't register callchain params\n");
+  return -1;
+ }
+ return 0;
 }

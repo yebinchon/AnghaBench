@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  q_local; int /*<<< orphan*/  q_global; int /*<<< orphan*/  prop; } ;
-typedef  int /*<<< orphan*/  OSSL_PROPERTY_LIST ;
-typedef  int /*<<< orphan*/  OSSL_METHOD_STORE ;
 
-/* Variables and functions */
- scalar_t__ TEST_int_ge (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ TEST_ptr (int /*<<< orphan*/ *) ; 
- scalar_t__ add_property_names (char*,char*,char*,char*,char*,char*,int /*<<< orphan*/ *) ; 
- TYPE_1__* merge_tests ; 
- int /*<<< orphan*/  ossl_method_store_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * ossl_method_store_new (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * ossl_parse_property (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * ossl_parse_query (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ossl_property_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ossl_property_match_count (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * ossl_property_merge (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int q_local; int q_global; int prop; } ;
+typedef int OSSL_PROPERTY_LIST ;
+typedef int OSSL_METHOD_STORE ;
+
+
+ scalar_t__ TEST_int_ge (int ,int ) ;
+ scalar_t__ TEST_ptr (int *) ;
+ scalar_t__ add_property_names (char*,char*,char*,char*,char*,char*,int *) ;
+ TYPE_1__* merge_tests ;
+ int ossl_method_store_free (int *) ;
+ int * ossl_method_store_new (int *) ;
+ int * ossl_parse_property (int *,int ) ;
+ int * ossl_parse_query (int *,int ) ;
+ int ossl_property_free (int *) ;
+ int ossl_property_match_count (int *,int *) ;
+ int * ossl_property_merge (int *,int *) ;
 
 __attribute__((used)) static int test_property_merge(int n)
 {
     OSSL_METHOD_STORE *store;
-    OSSL_PROPERTY_LIST *q_global = NULL, *q_local = NULL;
-    OSSL_PROPERTY_LIST *q_combined = NULL, *prop = NULL;
+    OSSL_PROPERTY_LIST *q_global = ((void*)0), *q_local = ((void*)0);
+    OSSL_PROPERTY_LIST *q_combined = ((void*)0), *prop = ((void*)0);
     int r = 0;
 
-    if (TEST_ptr(store = ossl_method_store_new(NULL))
+    if (TEST_ptr(store = ossl_method_store_new(((void*)0)))
         && add_property_names("colour", "urn", "clouds", "pot", "day", "night",
-                              NULL)
-        && TEST_ptr(prop = ossl_parse_property(NULL, merge_tests[n].prop))
-        && TEST_ptr(q_global = ossl_parse_query(NULL, merge_tests[n].q_global))
-        && TEST_ptr(q_local = ossl_parse_query(NULL, merge_tests[n].q_local))
+                              ((void*)0))
+        && TEST_ptr(prop = ossl_parse_property(((void*)0), merge_tests[n].prop))
+        && TEST_ptr(q_global = ossl_parse_query(((void*)0), merge_tests[n].q_global))
+        && TEST_ptr(q_local = ossl_parse_query(((void*)0), merge_tests[n].q_local))
         && TEST_ptr(q_combined = ossl_property_merge(q_local, q_global))
         && TEST_int_ge(ossl_property_match_count(q_combined, prop), 0))
         r = 1;

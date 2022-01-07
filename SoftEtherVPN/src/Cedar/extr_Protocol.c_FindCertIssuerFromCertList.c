@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_9__ {scalar_t__ root_cert; } ;
-typedef  TYPE_1__ X ;
-typedef  scalar_t__ UINT ;
-typedef  int /*<<< orphan*/  LIST ;
+typedef TYPE_1__ X ;
+typedef scalar_t__ UINT ;
+typedef int LIST ;
 
-/* Variables and functions */
- scalar_t__ CheckXEx (TYPE_1__*,TYPE_1__*,int,int) ; 
- int CompareX (TYPE_1__*,TYPE_1__*) ; 
- TYPE_1__* LIST_DATA (int /*<<< orphan*/ *,scalar_t__) ; 
- scalar_t__ LIST_NUM (int /*<<< orphan*/ *) ; 
+
+ scalar_t__ CheckXEx (TYPE_1__*,TYPE_1__*,int,int) ;
+ int CompareX (TYPE_1__*,TYPE_1__*) ;
+ TYPE_1__* LIST_DATA (int *,scalar_t__) ;
+ scalar_t__ LIST_NUM (int *) ;
 
 X *FindCertIssuerFromCertList(LIST *o, X *x)
 {
-	UINT i;
-	// Validate arguments
-	if (o == NULL || x == NULL)
-	{
-		return NULL;
-	}
+ UINT i;
 
-	if (x->root_cert)
-	{
-		return NULL;
-	}
+ if (o == ((void*)0) || x == ((void*)0))
+ {
+  return ((void*)0);
+ }
 
-	for (i = 0;i < LIST_NUM(o);i++)
-	{
-		X *xx = LIST_DATA(o, i);
+ if (x->root_cert)
+ {
+  return ((void*)0);
+ }
 
-		if (CheckXEx(x, xx, true, true))
-		{
-			if (CompareX(x, xx) == false)
-			{
-				return xx;
-			}
-		}
-	}
+ for (i = 0;i < LIST_NUM(o);i++)
+ {
+  X *xx = LIST_DATA(o, i);
 
-	return NULL;
+  if (CheckXEx(x, xx, 1, 1))
+  {
+   if (CompareX(x, xx) == 0)
+   {
+    return xx;
+   }
+  }
+ }
+
+ return ((void*)0);
 }

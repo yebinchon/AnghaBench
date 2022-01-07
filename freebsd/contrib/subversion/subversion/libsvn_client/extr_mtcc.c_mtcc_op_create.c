@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ svn_boolean_t ;
-struct TYPE_4__ {char* name; int /*<<< orphan*/  src_rev; int /*<<< orphan*/  children; int /*<<< orphan*/  kind; } ;
-typedef  TYPE_1__ mtcc_op_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OP_ADD_DIR ; 
- int /*<<< orphan*/  OP_ADD_FILE ; 
- int /*<<< orphan*/  OP_OPEN_DIR ; 
- int /*<<< orphan*/  OP_OPEN_FILE ; 
- int /*<<< orphan*/  SVN_INVALID_REVNUM ; 
- int /*<<< orphan*/  apr_array_make (int /*<<< orphan*/ *,int,int) ; 
- TYPE_1__* apr_pcalloc (int /*<<< orphan*/ *,int) ; 
- char* apr_pstrdup (int /*<<< orphan*/ *,char const*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef scalar_t__ svn_boolean_t ;
+struct TYPE_4__ {char* name; int src_rev; int children; int kind; } ;
+typedef TYPE_1__ mtcc_op_t ;
+typedef int apr_pool_t ;
+
+
+ int OP_ADD_DIR ;
+ int OP_ADD_FILE ;
+ int OP_OPEN_DIR ;
+ int OP_OPEN_FILE ;
+ int SVN_INVALID_REVNUM ;
+ int apr_array_make (int *,int,int) ;
+ TYPE_1__* apr_pcalloc (int *,int) ;
+ char* apr_pstrdup (int *,char const*) ;
 
 __attribute__((used)) static mtcc_op_t *
 mtcc_op_create(const char *name,

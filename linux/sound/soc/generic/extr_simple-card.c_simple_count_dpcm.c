@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct link_info {int /*<<< orphan*/  conf; int /*<<< orphan*/  link; int /*<<< orphan*/  dais; } ;
+
+
+
+
+struct link_info {int conf; int link; int dais; } ;
 struct device_node {int dummy; } ;
 struct asoc_simple_priv {int dummy; } ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static int simple_count_dpcm(struct asoc_simple_priv *priv,
-			     struct device_node *np,
-			     struct device_node *codec,
-			     struct link_info *li, bool is_top)
+        struct device_node *np,
+        struct device_node *codec,
+        struct link_info *li, bool is_top)
 {
-	li->dais++; /* CPU or Codec */
-	li->link++; /* CPU-dummy or dummy-Codec */
-	if (np == codec)
-		li->conf++;
+ li->dais++;
+ li->link++;
+ if (np == codec)
+  li->conf++;
 
-	return 0;
+ return 0;
 }

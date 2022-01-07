@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {struct TYPE_5__* next; } ;
-typedef  TYPE_1__ bytecode_t ;
-struct TYPE_6__ {int /*<<< orphan*/ * queue_tail; TYPE_1__* queue_head; } ;
-typedef  TYPE_2__ JScript ;
+typedef TYPE_1__ bytecode_t ;
+struct TYPE_6__ {int * queue_tail; TYPE_1__* queue_head; } ;
+typedef TYPE_2__ JScript ;
 
-/* Variables and functions */
- int /*<<< orphan*/  release_bytecode (TYPE_1__*) ; 
+
+ int release_bytecode (TYPE_1__*) ;
 
 __attribute__((used)) static void clear_script_queue(JScript *This)
 {
@@ -30,10 +30,10 @@ __attribute__((used)) static void clear_script_queue(JScript *This)
     iter = This->queue_head;
     while(iter) {
         iter2 = iter->next;
-        iter->next = NULL;
+        iter->next = ((void*)0);
         release_bytecode(iter);
         iter = iter2;
     }
 
-    This->queue_head = This->queue_tail = NULL;
+    This->queue_head = This->queue_tail = ((void*)0);
 }

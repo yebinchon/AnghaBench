@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
+
+
+
+
+typedef int u8 ;
 struct stat {scalar_t__ st_size; } ;
-typedef  scalar_t__ off_t ;
+typedef scalar_t__ off_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  F_OK ; 
- int MIN (int,scalar_t__) ; 
- int O_CREAT ; 
- int O_RDONLY ; 
- int O_RDWR ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int _O_BINARY ; 
- scalar_t__ access (char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  fstat (int,struct stat*) ; 
- int /*<<< orphan*/  ftruncate (int,scalar_t__) ; 
- int /*<<< orphan*/  lseek (int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int open (char const*,int,int) ; 
- int /*<<< orphan*/  read (int,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  testFree (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * testMalloc (int) ; 
- int /*<<< orphan*/  unlink (char const*) ; 
- int /*<<< orphan*/  write (int,int /*<<< orphan*/ *,int) ; 
+
+ int F_OK ;
+ int MIN (int,scalar_t__) ;
+ int O_CREAT ;
+ int O_RDONLY ;
+ int O_RDWR ;
+ int SEEK_SET ;
+ int _O_BINARY ;
+ scalar_t__ access (char const*,int ) ;
+ int close (int) ;
+ int fstat (int,struct stat*) ;
+ int ftruncate (int,scalar_t__) ;
+ int lseek (int,int,int ) ;
+ int memset (int *,int ,int) ;
+ int open (char const*,int,int) ;
+ int read (int,int *,int) ;
+ int testFree (int *) ;
+ int * testMalloc (int) ;
+ int unlink (char const*) ;
+ int write (int,int *,int) ;
 
 __attribute__((used)) static void copy_file(const char *zFrom, const char *zTo, int isDatabase){
 

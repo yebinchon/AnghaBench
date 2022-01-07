@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {scalar_t__ Count; int /*<<< orphan*/  MaxCount; } ;
-typedef  TYPE_1__ ACPI_DB_EXECUTE_WALK ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACPI_ROOT_OBJECT ; 
- int /*<<< orphan*/  ACPI_TYPE_ANY ; 
- int /*<<< orphan*/  ACPI_UINT32_MAX ; 
- int /*<<< orphan*/  AcpiDbEvaluateOnePredefinedName ; 
- int /*<<< orphan*/  AcpiOsPrintf (char*,scalar_t__) ; 
- int /*<<< orphan*/  AcpiWalkNamespace (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,void*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strtoul (char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {scalar_t__ Count; int MaxCount; } ;
+typedef TYPE_1__ ACPI_DB_EXECUTE_WALK ;
+
+
+ int ACPI_ROOT_OBJECT ;
+ int ACPI_TYPE_ANY ;
+ int ACPI_UINT32_MAX ;
+ int AcpiDbEvaluateOnePredefinedName ;
+ int AcpiOsPrintf (char*,scalar_t__) ;
+ int AcpiWalkNamespace (int ,int ,int ,int ,int *,void*,int *) ;
+ int strtoul (char*,int *,int ) ;
 
 __attribute__((used)) static void
 AcpiDbEvaluateAllPredefinedNames (
-    char                    *CountArg)
+    char *CountArg)
 {
-    ACPI_DB_EXECUTE_WALK    Info;
+    ACPI_DB_EXECUTE_WALK Info;
 
 
     Info.Count = 0;
@@ -35,14 +35,14 @@ AcpiDbEvaluateAllPredefinedNames (
 
     if (CountArg)
     {
-        Info.MaxCount = strtoul (CountArg, NULL, 0);
+        Info.MaxCount = strtoul (CountArg, ((void*)0), 0);
     }
 
-    /* Search all nodes in namespace */
+
 
     (void) AcpiWalkNamespace (ACPI_TYPE_ANY, ACPI_ROOT_OBJECT,
-        ACPI_UINT32_MAX, AcpiDbEvaluateOnePredefinedName, NULL,
-        (void *) &Info, NULL);
+        ACPI_UINT32_MAX, AcpiDbEvaluateOnePredefinedName, ((void*)0),
+        (void *) &Info, ((void*)0));
 
     AcpiOsPrintf (
         "Evaluated %u predefined names in the namespace\n", Info.Count);

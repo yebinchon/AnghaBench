@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct string_list {size_t size; TYPE_1__* elems; } ;
-typedef  int /*<<< orphan*/  retro_task_t ;
-typedef  int /*<<< orphan*/  path ;
-typedef  int /*<<< orphan*/  config_file_t ;
-typedef  int /*<<< orphan*/  best_path ;
+typedef int retro_task_t ;
+typedef int path ;
+typedef int config_file_t ;
+typedef int best_path ;
 struct TYPE_7__ {char* autoconfig_directory; } ;
-typedef  TYPE_2__ autoconfig_params_t ;
-struct TYPE_6__ {int /*<<< orphan*/  data; } ;
+typedef TYPE_2__ autoconfig_params_t ;
+struct TYPE_6__ {int data; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  APPLICATION_SPECIAL_DIRECTORY_AUTOCONFIG ; 
- int /*<<< orphan*/  DIR_LIST_AUTOCONFIG ; 
- int PATH_MAX_LENGTH ; 
- int /*<<< orphan*/  RARCH_LOG (char*,...) ; 
- int /*<<< orphan*/  config_file_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * config_file_new_from_path_to_string (int /*<<< orphan*/ ) ; 
- struct string_list* dir_list_new_special (char*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  fill_pathname_application_special (char*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  input_autoconfigure_joypad_add (int /*<<< orphan*/ *,TYPE_2__*,int /*<<< orphan*/ *) ; 
- int input_autoconfigure_joypad_try_from_conf (int /*<<< orphan*/ *,TYPE_2__*) ; 
- int /*<<< orphan*/  string_is_empty (char*) ; 
- int /*<<< orphan*/  string_list_free (struct string_list*) ; 
- int /*<<< orphan*/  strlcpy (char*,int /*<<< orphan*/ ,int) ; 
+
+ int APPLICATION_SPECIAL_DIRECTORY_AUTOCONFIG ;
+ int DIR_LIST_AUTOCONFIG ;
+ int PATH_MAX_LENGTH ;
+ int RARCH_LOG (char*,...) ;
+ int config_file_free (int *) ;
+ int * config_file_new_from_path_to_string (int ) ;
+ struct string_list* dir_list_new_special (char*,int ,char*) ;
+ int fill_pathname_application_special (char*,int,int ) ;
+ int input_autoconfigure_joypad_add (int *,TYPE_2__*,int *) ;
+ int input_autoconfigure_joypad_try_from_conf (int *,TYPE_2__*) ;
+ int string_is_empty (char*) ;
+ int string_list_free (struct string_list*) ;
+ int strlcpy (char*,int ,int) ;
 
 __attribute__((used)) static bool input_autoconfigure_joypad_from_conf_dir(
       autoconfig_params_t *params, retro_task_t *task)
@@ -42,14 +42,14 @@ __attribute__((used)) static bool input_autoconfigure_joypad_from_conf_dir(
    size_t i;
    char path[PATH_MAX_LENGTH];
    char best_path[PATH_MAX_LENGTH];
-   int ret                    = 0;
-   int index                  = -1;
-   int current_best           = 0;
-   config_file_t *best_conf   = NULL;
-   struct string_list *list   = NULL;
+   int ret = 0;
+   int index = -1;
+   int current_best = 0;
+   config_file_t *best_conf = ((void*)0);
+   struct string_list *list = ((void*)0);
 
-   best_path[0]               = '\0';
-   path[0]                    = '\0';
+   best_path[0] = '\0';
+   path[0] = '\0';
 
    fill_pathname_application_special(path, sizeof(path),
          APPLICATION_SPECIAL_DIRECTORY_AUTOCONFIG);
@@ -61,7 +61,7 @@ __attribute__((used)) static bool input_autoconfigure_joypad_from_conf_dir(
       if (list)
       {
          string_list_free(list);
-         list = NULL;
+         list = ((void*)0);
       }
       if (!string_is_empty(params->autoconfig_directory))
          list = dir_list_new_special(params->autoconfig_directory,
@@ -71,7 +71,7 @@ __attribute__((used)) static bool input_autoconfigure_joypad_from_conf_dir(
    if (!list)
    {
       RARCH_LOG("[Autoconf]: No profiles found.\n");
-      return false;
+      return 0;
    }
 
    RARCH_LOG("[Autoconf]: %d profiles found.\n", (int)list->size);
@@ -80,21 +80,21 @@ __attribute__((used)) static bool input_autoconfigure_joypad_from_conf_dir(
    {
       int res;
       config_file_t *conf = config_file_new_from_path_to_string(list->elems[i].data);
-      
+
       if (!conf)
          continue;
 
-      res  = input_autoconfigure_joypad_try_from_conf(conf, params);
+      res = input_autoconfigure_joypad_try_from_conf(conf, params);
 
       if (res >= current_best)
       {
-         index        = (int)i;
+         index = (int)i;
          current_best = res;
          if (best_conf)
             config_file_free(best_conf);
          strlcpy(best_path, list->elems[i].data, sizeof(best_path));
-         best_conf    = NULL;
-         best_conf    = conf;
+         best_conf = ((void*)0);
+         best_conf = conf;
       }
       else
          config_file_free(conf);
@@ -113,6 +113,6 @@ __attribute__((used)) static bool input_autoconfigure_joypad_from_conf_dir(
    string_list_free(list);
 
    if (ret == 0)
-      return false;
-   return true;
+      return 0;
+   return 1;
 }

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct vfs_file {int dummy; } ;
-typedef  int /*<<< orphan*/  int32_t ;
+typedef int int32_t ;
 
-/* Variables and functions */
- scalar_t__ FR_OK ; 
- int /*<<< orphan*/  GET_FIL_FP (struct vfs_file const*) ; 
- int /*<<< orphan*/  VFS_RES_ERR ; 
- int /*<<< orphan*/  VFS_RES_OK ; 
- scalar_t__ f_sync (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fp ; 
- scalar_t__ last_result ; 
+
+ scalar_t__ FR_OK ;
+ int GET_FIL_FP (struct vfs_file const*) ;
+ int VFS_RES_ERR ;
+ int VFS_RES_OK ;
+ scalar_t__ f_sync (int ) ;
+ int fp ;
+ scalar_t__ last_result ;
 
 __attribute__((used)) static int32_t myfatfs_flush( const struct vfs_file *fd )
 {

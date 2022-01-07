@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int /*<<< orphan*/  v; struct TYPE_8__* next; } ;
-typedef  TYPE_1__ Set ;
 
-/* Variables and functions */
- TYPE_1__* set_add (TYPE_1__*,int /*<<< orphan*/ ) ; 
- scalar_t__ set_has (TYPE_1__*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int v; struct TYPE_8__* next; } ;
+typedef TYPE_1__ Set ;
+
+
+ TYPE_1__* set_add (TYPE_1__*,int ) ;
+ scalar_t__ set_has (TYPE_1__*,int ) ;
 
 Set *set_intersection(Set *a, Set *b) {
-    Set *r = NULL;
+    Set *r = ((void*)0);
     for (; a; a = a->next)
         if (set_has(b, a->v))
             r = set_add(r, a->v);

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  bio_chain; struct TYPE_4__* cache_peer_serv; struct TYPE_4__* cache_peer_name; struct TYPE_4__* cache_accepting_serv; struct TYPE_4__* cache_accepting_name; int /*<<< orphan*/  addr_first; struct TYPE_4__* param_serv; struct TYPE_4__* param_addr; } ;
-typedef  TYPE_1__ BIO_ACCEPT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_ADDRINFO_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BIO_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OPENSSL_free (TYPE_1__*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int bio_chain; struct TYPE_4__* cache_peer_serv; struct TYPE_4__* cache_peer_name; struct TYPE_4__* cache_accepting_serv; struct TYPE_4__* cache_accepting_name; int addr_first; struct TYPE_4__* param_serv; struct TYPE_4__* param_addr; } ;
+typedef TYPE_1__ BIO_ACCEPT ;
+
+
+ int BIO_ADDRINFO_free (int ) ;
+ int BIO_free (int ) ;
+ int OPENSSL_free (TYPE_1__*) ;
 
 __attribute__((used)) static void BIO_ACCEPT_free(BIO_ACCEPT *a)
 {
-    if (a == NULL)
+    if (a == ((void*)0))
         return;
     OPENSSL_free(a->param_addr);
     OPENSSL_free(a->param_serv);

@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uint32_t ;
+
+
+
+
+typedef scalar_t__ uint32_t ;
 struct units_formatter {char const* units; scalar_t__ hash; scalar_t__ format; } ;
-typedef  double calculated_number ;
-typedef  scalar_t__ UNITS_FORMAT ;
+typedef double calculated_number ;
+typedef scalar_t__ UNITS_FORMAT ;
 
-/* Variables and functions */
- scalar_t__ UNITS_FORMAT_EMPTY ; 
- scalar_t__ UNITS_FORMAT_HOURS ; 
- scalar_t__ UNITS_FORMAT_HOURS_AGO ; 
- scalar_t__ UNITS_FORMAT_MINUTES ; 
- scalar_t__ UNITS_FORMAT_MINUTES_AGO ; 
- scalar_t__ UNITS_FORMAT_NONE ; 
- scalar_t__ UNITS_FORMAT_OKERROR ; 
- scalar_t__ UNITS_FORMAT_OKFAILED ; 
- scalar_t__ UNITS_FORMAT_ONOFF ; 
- scalar_t__ UNITS_FORMAT_PERCENT ; 
- scalar_t__ UNITS_FORMAT_SECONDS ; 
- scalar_t__ UNITS_FORMAT_SECONDS_AGO ; 
- scalar_t__ UNITS_FORMAT_UPDOWN ; 
- struct units_formatter* badge_units_formatters ; 
- char* format_value_with_precision_and_unit (char*,size_t,double,char const*,int) ; 
- scalar_t__ isinf (double) ; 
- scalar_t__ isnan (double) ; 
- void* simple_hash (char const*) ; 
- int /*<<< orphan*/  snprintfz (char*,size_t,char*,...) ; 
- int /*<<< orphan*/  strcmp (char const*,char const*) ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
- scalar_t__ unlikely (int) ; 
+
+ scalar_t__ UNITS_FORMAT_EMPTY ;
+ scalar_t__ UNITS_FORMAT_HOURS ;
+ scalar_t__ UNITS_FORMAT_HOURS_AGO ;
+ scalar_t__ UNITS_FORMAT_MINUTES ;
+ scalar_t__ UNITS_FORMAT_MINUTES_AGO ;
+ scalar_t__ UNITS_FORMAT_NONE ;
+ scalar_t__ UNITS_FORMAT_OKERROR ;
+ scalar_t__ UNITS_FORMAT_OKFAILED ;
+ scalar_t__ UNITS_FORMAT_ONOFF ;
+ scalar_t__ UNITS_FORMAT_PERCENT ;
+ scalar_t__ UNITS_FORMAT_SECONDS ;
+ scalar_t__ UNITS_FORMAT_SECONDS_AGO ;
+ scalar_t__ UNITS_FORMAT_UPDOWN ;
+ struct units_formatter* badge_units_formatters ;
+ char* format_value_with_precision_and_unit (char*,size_t,double,char const*,int) ;
+ scalar_t__ isinf (double) ;
+ scalar_t__ isnan (double) ;
+ void* simple_hash (char const*) ;
+ int snprintfz (char*,size_t,char*,...) ;
+ int strcmp (char const*,char const*) ;
+ int strcpy (char*,char*) ;
+ scalar_t__ unlikely (int) ;
 
 inline char *format_value_and_unit(char *value_string, size_t value_string_len, calculated_number value, const char *units, int precision) {
     static int max = -1;

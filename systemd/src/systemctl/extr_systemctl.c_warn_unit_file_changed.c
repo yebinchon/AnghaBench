@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ UNIT_FILE_SYSTEM ; 
- int /*<<< orphan*/  ansi_highlight_red () ; 
- int /*<<< orphan*/  ansi_normal () ; 
- scalar_t__ arg_scope ; 
- int /*<<< orphan*/  assert (char const*) ; 
- int /*<<< orphan*/  log_warning (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*,char*) ; 
+ scalar_t__ UNIT_FILE_SYSTEM ;
+ int ansi_highlight_red () ;
+ int ansi_normal () ;
+ scalar_t__ arg_scope ;
+ int assert (char const*) ;
+ int log_warning (char*,int ,int ,char const*,char*) ;
 
 __attribute__((used)) static void warn_unit_file_changed(const char *name) {
         assert(name);

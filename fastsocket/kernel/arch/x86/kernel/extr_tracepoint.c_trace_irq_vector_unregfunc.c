@@ -1,33 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  irq_vector_mutex ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  set_trace_idt_ctr (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  smp_call_function (int /*<<< orphan*/  (*) (int /*<<< orphan*/ *),int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  switch_idt (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  trace_irq_vector_refcount ; 
+ int irq_vector_mutex ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
+ int set_trace_idt_ctr (int ) ;
+ int smp_call_function (int (*) (int *),int *,int ) ;
+ int switch_idt (int *) ;
+ int trace_irq_vector_refcount ;
 
 void trace_irq_vector_unregfunc(void)
 {
-	mutex_lock(&irq_vector_mutex);
-	trace_irq_vector_refcount--;
-	if (!trace_irq_vector_refcount) {
-		set_trace_idt_ctr(0);
-		smp_call_function(switch_idt, NULL, 0);
-		switch_idt(NULL);
-	}
-	mutex_unlock(&irq_vector_mutex);
+ mutex_lock(&irq_vector_mutex);
+ trace_irq_vector_refcount--;
+ if (!trace_irq_vector_refcount) {
+  set_trace_idt_ctr(0);
+  smp_call_function(switch_idt, ((void*)0), 0);
+  switch_idt(((void*)0));
+ }
+ mutex_unlock(&irq_vector_mutex);
 }

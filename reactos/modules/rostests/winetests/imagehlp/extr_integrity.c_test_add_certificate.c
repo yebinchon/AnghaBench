@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WIN_CERTIFICATE ;
-struct TYPE_5__ {int dwLength; int /*<<< orphan*/  bCertificate; int /*<<< orphan*/  wCertificateType; int /*<<< orphan*/  wRevision; } ;
-typedef  TYPE_1__* LPWIN_CERTIFICATE ;
-typedef  scalar_t__ HANDLE ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CloseHandle (scalar_t__) ; 
- int /*<<< orphan*/  CopyMemory (int /*<<< orphan*/ ,char const*,int) ; 
- scalar_t__ CreateFileA (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FILE_ATTRIBUTE_NORMAL ; 
- int /*<<< orphan*/  FILE_SHARE_READ ; 
- int GENERIC_READ ; 
- int GENERIC_WRITE ; 
- int /*<<< orphan*/  GetLastError () ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HEAP_ZERO_MEMORY ; 
- TYPE_1__* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*) ; 
- scalar_t__ INVALID_HANDLE_VALUE ; 
- int /*<<< orphan*/  OPEN_EXISTING ; 
- int /*<<< orphan*/  WIN_CERT_REVISION_1_0 ; 
- int /*<<< orphan*/  WIN_CERT_TYPE_PKCS_SIGNED_DATA ; 
- int /*<<< orphan*/  ok (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pImageAddCertificate (scalar_t__,TYPE_1__*,int*) ; 
- int /*<<< orphan*/  skip (char*,...) ; 
- int /*<<< orphan*/  test_dll_path ; 
- int /*<<< orphan*/  trace (char*,int) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int WIN_CERTIFICATE ;
+struct TYPE_5__ {int dwLength; int bCertificate; int wCertificateType; int wRevision; } ;
+typedef TYPE_1__* LPWIN_CERTIFICATE ;
+typedef scalar_t__ HANDLE ;
+typedef int DWORD ;
+typedef int BOOL ;
+
+
+ int CloseHandle (scalar_t__) ;
+ int CopyMemory (int ,char const*,int) ;
+ scalar_t__ CreateFileA (int ,int,int ,int *,int ,int ,int *) ;
+ int FILE_ATTRIBUTE_NORMAL ;
+ int FILE_SHARE_READ ;
+ int GENERIC_READ ;
+ int GENERIC_WRITE ;
+ int GetLastError () ;
+ int GetProcessHeap () ;
+ int HEAP_ZERO_MEMORY ;
+ TYPE_1__* HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,TYPE_1__*) ;
+ scalar_t__ INVALID_HANDLE_VALUE ;
+ int OPEN_EXISTING ;
+ int WIN_CERT_REVISION_1_0 ;
+ int WIN_CERT_TYPE_PKCS_SIGNED_DATA ;
+ int ok (int ,char*,int ) ;
+ int pImageAddCertificate (scalar_t__,TYPE_1__*,int*) ;
+ int skip (char*,...) ;
+ int test_dll_path ;
+ int trace (char*,int) ;
 
 __attribute__((used)) static DWORD test_add_certificate(const char *cert_data, int len)
 {
@@ -49,7 +49,7 @@ __attribute__((used)) static DWORD test_add_certificate(const char *cert_data, i
     DWORD index;
     BOOL ret;
 
-    hFile = CreateFileA(test_dll_path, GENERIC_READ | GENERIC_WRITE, FILE_SHARE_READ, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
+    hFile = CreateFileA(test_dll_path, GENERIC_READ | GENERIC_WRITE, FILE_SHARE_READ, ((void*)0), OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, ((void*)0));
 
     if (hFile == INVALID_HANDLE_VALUE)
     {

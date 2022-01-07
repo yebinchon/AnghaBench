@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_19__   TYPE_7__ ;
-typedef  struct TYPE_18__   TYPE_6__ ;
-typedef  struct TYPE_17__   TYPE_5__ ;
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
-typedef  struct TYPE_12__   TYPE_10__ ;
 
-/* Type definitions */
-typedef  scalar_t__ usec_t ;
-typedef  int uint8_t ;
-struct TYPE_18__ {int /*<<< orphan*/  metric_API_producers; } ;
-struct TYPE_15__ {int /*<<< orphan*/  lock; int /*<<< orphan*/  latest_corr_id; } ;
+
+
+typedef struct TYPE_19__ TYPE_7__ ;
+typedef struct TYPE_18__ TYPE_6__ ;
+typedef struct TYPE_17__ TYPE_5__ ;
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+typedef struct TYPE_12__ TYPE_10__ ;
+
+
+typedef scalar_t__ usec_t ;
+typedef int uint8_t ;
+struct TYPE_18__ {int metric_API_producers; } ;
+struct TYPE_15__ {int lock; int latest_corr_id; } ;
 struct page_cache {TYPE_3__ committed_page_index; } ;
 struct rrdengine_instance {TYPE_6__ stats; struct page_cache pg_cache; } ;
 struct rrdeng_page_descr {int page_length; scalar_t__ start_time; TYPE_4__* pg_cache_descr; } ;
 struct rrdeng_collect_handle {int unaligned_page; TYPE_10__* page_index; scalar_t__ page_correlation_id; struct rrdeng_page_descr* descr; struct rrdengine_instance* ctx; } ;
-typedef  int /*<<< orphan*/  storage_number ;
-typedef  int /*<<< orphan*/  number ;
+typedef int storage_number ;
+typedef int number ;
 struct TYPE_19__ {TYPE_5__* rrdset; TYPE_2__* state; } ;
 struct TYPE_17__ {int rrddim_page_alignment; } ;
-struct TYPE_16__ {int /*<<< orphan*/ * page; } ;
+struct TYPE_16__ {int * page; } ;
 struct TYPE_13__ {struct rrdeng_collect_handle rrdeng; } ;
 struct TYPE_14__ {TYPE_1__ handle; } ;
-struct TYPE_12__ {int /*<<< orphan*/  id; } ;
-typedef  TYPE_7__ RRDDIM ;
+struct TYPE_12__ {int id; } ;
+typedef TYPE_7__ RRDDIM ;
 
-/* Variables and functions */
- int D_RRDENGINE ; 
- scalar_t__ INVALID_TIME ; 
- int RRDENG_BLOCK_SIZE ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  debug (int,char*) ; 
- int debug_flags ; 
- int /*<<< orphan*/  pg_cache_add_new_metric_time (TYPE_10__*,struct rrdeng_page_descr*) ; 
- int /*<<< orphan*/  pg_cache_atomic_set_pg_info (struct rrdeng_page_descr*,scalar_t__,int) ; 
- int /*<<< orphan*/  pg_cache_insert (struct rrdengine_instance*,TYPE_10__*,struct rrdeng_page_descr*) ; 
- int /*<<< orphan*/  print_page_cache_descr (struct rrdeng_page_descr*) ; 
- int /*<<< orphan*/  rrd_stat_atomic_add (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * rrdeng_create_page (struct rrdengine_instance*,int /*<<< orphan*/ *,struct rrdeng_page_descr**) ; 
- int /*<<< orphan*/  rrdeng_store_metric_flush_current_page (TYPE_7__*) ; 
- scalar_t__ unlikely (int) ; 
- int /*<<< orphan*/  uv_rwlock_wrlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  uv_rwlock_wrunlock (int /*<<< orphan*/ *) ; 
+
+ int D_RRDENGINE ;
+ scalar_t__ INVALID_TIME ;
+ int RRDENG_BLOCK_SIZE ;
+ int assert (int *) ;
+ int debug (int,char*) ;
+ int debug_flags ;
+ int pg_cache_add_new_metric_time (TYPE_10__*,struct rrdeng_page_descr*) ;
+ int pg_cache_atomic_set_pg_info (struct rrdeng_page_descr*,scalar_t__,int) ;
+ int pg_cache_insert (struct rrdengine_instance*,TYPE_10__*,struct rrdeng_page_descr*) ;
+ int print_page_cache_descr (struct rrdeng_page_descr*) ;
+ int rrd_stat_atomic_add (int *,int) ;
+ int * rrdeng_create_page (struct rrdengine_instance*,int *,struct rrdeng_page_descr**) ;
+ int rrdeng_store_metric_flush_current_page (TYPE_7__*) ;
+ scalar_t__ unlikely (int) ;
+ int uv_rwlock_wrlock (int *) ;
+ int uv_rwlock_wrunlock (int *) ;
 
 void rrdeng_store_metric_next(RRDDIM *rd, usec_t point_in_time, storage_number number)
 {
@@ -69,13 +69,13 @@ void rrdeng_store_metric_next(RRDDIM *rd, usec_t point_in_time, storage_number n
     descr = handle->descr;
 
     if (descr) {
-        /* Make alignment decisions */
+
 
         if (descr->page_length == rd->rrdset->rrddim_page_alignment) {
-            /* this is the leading dimension that defines chart alignment */
+
             perfect_page_alignment = 1;
         }
-        /* is the metric far enough out of alignment with the others? */
+
         if (unlikely(descr->page_length + sizeof(number) < rd->rrdset->rrddim_page_alignment)) {
             handle->unaligned_page = 1;
             debug(D_RRDENGINE, "Metric page is not aligned with chart:");
@@ -83,14 +83,14 @@ void rrdeng_store_metric_next(RRDDIM *rd, usec_t point_in_time, storage_number n
                 print_page_cache_descr(descr);
         }
         if (unlikely(handle->unaligned_page &&
-                     /* did the other metrics change page? */
+
                      rd->rrdset->rrddim_page_alignment <= sizeof(number))) {
             debug(D_RRDENGINE, "Flushing unaligned metric page.");
             must_flush_unaligned_page = 1;
             handle->unaligned_page = 0;
         }
     }
-    if (unlikely(NULL == descr ||
+    if (unlikely(((void*)0) == descr ||
                  descr->page_length + sizeof(number) > RRDENG_BLOCK_SIZE ||
                  must_flush_unaligned_page)) {
         rrdeng_store_metric_flush_current_page(rd);
@@ -105,7 +105,7 @@ void rrdeng_store_metric_next(RRDDIM *rd, usec_t point_in_time, storage_number n
         uv_rwlock_wrunlock(&pg_cache->committed_page_index.lock);
 
         if (0 == rd->rrdset->rrddim_page_alignment) {
-            /* this is the leading dimension that defines chart alignment */
+
             perfect_page_alignment = 1;
         }
     }

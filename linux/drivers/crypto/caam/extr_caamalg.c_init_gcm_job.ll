@@ -1,0 +1,161 @@
+; ModuleID = '/home/carl/AnghaBench/linux/drivers/crypto/caam/extr_caamalg.c_init_gcm_job.c'
+source_filename = "/home/carl/AnghaBench/linux/drivers/crypto/caam/extr_caamalg.c_init_gcm_job.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+%struct.aead_request = type { i64, i64, i64 }
+%struct.aead_edesc = type { i32* }
+%struct.crypto_aead = type { i32 }
+%struct.caam_ctx = type { %struct.TYPE_2__, i64 }
+%struct.TYPE_2__ = type { i64 }
+
+@GCM_AES_IV_SIZE = common dso_local global i32 0, align 4
+@REG3 = common dso_local global i32 0, align 4
+@ZERO = common dso_local global i32 0, align 4
+@IMM = common dso_local global i32 0, align 4
+@FIFOLD_TYPE_LAST1 = common dso_local global i32 0, align 4
+@CMD_FIFO_LOAD = common dso_local global i32 0, align 4
+@FIFOLD_CLASS_CLASS1 = common dso_local global i32 0, align 4
+@IMMEDIATE = common dso_local global i32 0, align 4
+@FIFOLD_TYPE_IV = common dso_local global i32 0, align 4
+@FIFOLD_TYPE_FLUSH1 = common dso_local global i32 0, align 4
+@llvm.used = appending global [1 x i8*] [i8* bitcast (void (%struct.aead_request*, %struct.aead_edesc*, i32, i32)* @init_gcm_job to i8*)], section "llvm.metadata"
+
+; Function Attrs: noinline nounwind optnone uwtable
+define internal void @init_gcm_job(%struct.aead_request* %0, %struct.aead_edesc* %1, i32 %2, i32 %3) #0 {
+  %5 = alloca %struct.aead_request*, align 8
+  %6 = alloca %struct.aead_edesc*, align 8
+  %7 = alloca i32, align 4
+  %8 = alloca i32, align 4
+  %9 = alloca %struct.crypto_aead*, align 8
+  %10 = alloca %struct.caam_ctx*, align 8
+  %11 = alloca i32, align 4
+  %12 = alloca i32*, align 8
+  %13 = alloca i32, align 4
+  %14 = alloca i32, align 4
+  store %struct.aead_request* %0, %struct.aead_request** %5, align 8
+  store %struct.aead_edesc* %1, %struct.aead_edesc** %6, align 8
+  store i32 %2, i32* %7, align 4
+  store i32 %3, i32* %8, align 4
+  %15 = load %struct.aead_request*, %struct.aead_request** %5, align 8
+  %16 = call %struct.crypto_aead* @crypto_aead_reqtfm(%struct.aead_request* %15)
+  store %struct.crypto_aead* %16, %struct.crypto_aead** %9, align 8
+  %17 = load %struct.crypto_aead*, %struct.crypto_aead** %9, align 8
+  %18 = call %struct.caam_ctx* @crypto_aead_ctx(%struct.crypto_aead* %17)
+  store %struct.caam_ctx* %18, %struct.caam_ctx** %10, align 8
+  %19 = load %struct.crypto_aead*, %struct.crypto_aead** %9, align 8
+  %20 = call i32 @crypto_aead_ivsize(%struct.crypto_aead* %19)
+  store i32 %20, i32* %11, align 4
+  %21 = load %struct.aead_edesc*, %struct.aead_edesc** %6, align 8
+  %22 = getelementptr inbounds %struct.aead_edesc, %struct.aead_edesc* %21, i32 0, i32 0
+  %23 = load i32*, i32** %22, align 8
+  store i32* %23, i32** %12, align 8
+  %24 = load i32, i32* %11, align 4
+  %25 = load i32, i32* @GCM_AES_IV_SIZE, align 4
+  %26 = icmp eq i32 %24, %25
+  %27 = zext i1 %26 to i32
+  store i32 %27, i32* %13, align 4
+  %28 = load %struct.aead_request*, %struct.aead_request** %5, align 8
+  %29 = load %struct.aead_edesc*, %struct.aead_edesc** %6, align 8
+  %30 = load i32, i32* %7, align 4
+  %31 = load i32, i32* %8, align 4
+  %32 = call i32 @init_aead_job(%struct.aead_request* %28, %struct.aead_edesc* %29, i32 %30, i32 %31)
+  %33 = load i32*, i32** %12, align 8
+  %34 = load i32, i32* @REG3, align 4
+  %35 = load i32, i32* @ZERO, align 4
+  %36 = load i32, i32* @IMM, align 4
+  %37 = load %struct.aead_request*, %struct.aead_request** %5, align 8
+  %38 = getelementptr inbounds %struct.aead_request, %struct.aead_request* %37, i32 0, i32 2
+  %39 = load i64, i64* %38, align 8
+  %40 = call i32 @append_math_add_imm_u32(i32* %33, i32 %34, i32 %35, i32 %36, i64 %39)
+  store i32 0, i32* %14, align 4
+  %41 = load i32, i32* %8, align 4
+  %42 = icmp ne i32 %41, 0
+  br i1 %42, label %43, label %57
+
+43:                                               ; preds = %4
+  %44 = load i32, i32* %13, align 4
+  %45 = icmp ne i32 %44, 0
+  br i1 %45, label %46, label %57
+
+46:                                               ; preds = %43
+  %47 = load %struct.aead_request*, %struct.aead_request** %5, align 8
+  %48 = getelementptr inbounds %struct.aead_request, %struct.aead_request* %47, i32 0, i32 2
+  %49 = load i64, i64* %48, align 8
+  %50 = load %struct.aead_request*, %struct.aead_request** %5, align 8
+  %51 = getelementptr inbounds %struct.aead_request, %struct.aead_request* %50, i32 0, i32 1
+  %52 = load i64, i64* %51, align 8
+  %53 = add nsw i64 %49, %52
+  %54 = icmp ne i64 %53, 0
+  br i1 %54, label %57, label %55
+
+55:                                               ; preds = %46
+  %56 = load i32, i32* @FIFOLD_TYPE_LAST1, align 4
+  store i32 %56, i32* %14, align 4
+  br label %57
+
+57:                                               ; preds = %55, %46, %43, %4
+  %58 = load i32*, i32** %12, align 8
+  %59 = load i32, i32* @CMD_FIFO_LOAD, align 4
+  %60 = load i32, i32* @FIFOLD_CLASS_CLASS1, align 4
+  %61 = or i32 %59, %60
+  %62 = load i32, i32* @IMMEDIATE, align 4
+  %63 = or i32 %61, %62
+  %64 = load i32, i32* @FIFOLD_TYPE_IV, align 4
+  %65 = or i32 %63, %64
+  %66 = load i32, i32* @FIFOLD_TYPE_FLUSH1, align 4
+  %67 = or i32 %65, %66
+  %68 = load i32, i32* @GCM_AES_IV_SIZE, align 4
+  %69 = or i32 %67, %68
+  %70 = load i32, i32* %14, align 4
+  %71 = or i32 %69, %70
+  %72 = call i32 @append_cmd(i32* %58, i32 %71)
+  %73 = load i32, i32* %13, align 4
+  %74 = icmp ne i32 %73, 0
+  br i1 %74, label %86, label %75
+
+75:                                               ; preds = %57
+  %76 = load i32*, i32** %12, align 8
+  %77 = load %struct.caam_ctx*, %struct.caam_ctx** %10, align 8
+  %78 = getelementptr inbounds %struct.caam_ctx, %struct.caam_ctx* %77, i32 0, i32 1
+  %79 = load i64, i64* %78, align 8
+  %80 = load %struct.caam_ctx*, %struct.caam_ctx** %10, align 8
+  %81 = getelementptr inbounds %struct.caam_ctx, %struct.caam_ctx* %80, i32 0, i32 0
+  %82 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %81, i32 0, i32 0
+  %83 = load i64, i64* %82, align 8
+  %84 = add nsw i64 %79, %83
+  %85 = call i32 @append_data(i32* %76, i64 %84, i32 4)
+  br label %86
+
+86:                                               ; preds = %75, %57
+  %87 = load i32*, i32** %12, align 8
+  %88 = load %struct.aead_request*, %struct.aead_request** %5, align 8
+  %89 = getelementptr inbounds %struct.aead_request, %struct.aead_request* %88, i32 0, i32 0
+  %90 = load i64, i64* %89, align 8
+  %91 = load i32, i32* %11, align 4
+  %92 = call i32 @append_data(i32* %87, i64 %90, i32 %91)
+  ret void
+}
+
+declare dso_local %struct.crypto_aead* @crypto_aead_reqtfm(%struct.aead_request*) #1
+
+declare dso_local %struct.caam_ctx* @crypto_aead_ctx(%struct.crypto_aead*) #1
+
+declare dso_local i32 @crypto_aead_ivsize(%struct.crypto_aead*) #1
+
+declare dso_local i32 @init_aead_job(%struct.aead_request*, %struct.aead_edesc*, i32, i32) #1
+
+declare dso_local i32 @append_math_add_imm_u32(i32*, i32, i32, i32, i64) #1
+
+declare dso_local i32 @append_cmd(i32*, i32) #1
+
+declare dso_local i32 @append_data(i32*, i64, i32) #1
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

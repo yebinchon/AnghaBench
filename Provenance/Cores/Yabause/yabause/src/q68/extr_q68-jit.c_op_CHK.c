@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int /*<<< orphan*/  Q68State ;
 
-/* Variables and functions */
- scalar_t__ EA_ADDRESS_REG ; 
- scalar_t__ EA_MODE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  INSN_GET_REG ; 
- int /*<<< orphan*/  JIT_EMIT_ADD_CYCLES (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  JIT_EMIT_CHK_W (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  JIT_EMIT_GET_OP1_REGISTER (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  SIZE_W ; 
- int /*<<< orphan*/  current_entry ; 
- int /*<<< orphan*/  ea_get (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*,int) ; 
- int op_ill (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int reg ; 
+
+
+
+typedef int uint32_t ;
+typedef int Q68State ;
+
+
+ scalar_t__ EA_ADDRESS_REG ;
+ scalar_t__ EA_MODE (int ) ;
+ int INSN_GET_REG ;
+ int JIT_EMIT_ADD_CYCLES (int ,int) ;
+ int JIT_EMIT_CHK_W (int ) ;
+ int JIT_EMIT_GET_OP1_REGISTER (int ,int) ;
+ int SIZE_W ;
+ int current_entry ;
+ int ea_get (int *,int ,int ,int ,int*,int) ;
+ int op_ill (int *,int ) ;
+ int reg ;
 
 __attribute__((used)) static int op_CHK(Q68State *state, uint32_t opcode)
 {
@@ -41,8 +41,8 @@ __attribute__((used)) static int op_CHK(Q68State *state, uint32_t opcode)
     }
 
     JIT_EMIT_ADD_CYCLES(current_entry, 10 + cycles);
-    /* The JIT code takes care of adding the extra 34 cycles of exception
-     * processing if necessary */
+
+
     JIT_EMIT_CHK_W(current_entry);
     return 0;
 }

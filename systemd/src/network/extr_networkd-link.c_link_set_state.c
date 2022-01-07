@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {scalar_t__ state; } ;
-typedef  scalar_t__ LinkState ;
-typedef  TYPE_1__ Link ;
+typedef scalar_t__ LinkState ;
+typedef TYPE_1__ Link ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int /*<<< orphan*/  link_send_changed (TYPE_1__*,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  link_state_to_string (scalar_t__) ; 
- int /*<<< orphan*/  log_link_debug (TYPE_1__*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int assert (TYPE_1__*) ;
+ int link_send_changed (TYPE_1__*,char*,int *) ;
+ int link_state_to_string (scalar_t__) ;
+ int log_link_debug (TYPE_1__*,char*,int ,int ) ;
 
 void link_set_state(Link *link, LinkState state) {
         assert(link);
@@ -33,5 +33,5 @@ void link_set_state(Link *link, LinkState state) {
 
         link->state = state;
 
-        link_send_changed(link, "AdministrativeState", NULL);
+        link_send_changed(link, "AdministrativeState", ((void*)0));
 }

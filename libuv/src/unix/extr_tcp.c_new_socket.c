@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uv_tcp_t ;
-typedef  int /*<<< orphan*/  uv_stream_t ;
+
+
+
+
+typedef int uv_tcp_t ;
+typedef int uv_stream_t ;
 struct sockaddr_storage {int dummy; } ;
 struct sockaddr {int dummy; } ;
-typedef  int socklen_t ;
-typedef  int /*<<< orphan*/  saddr ;
+typedef int socklen_t ;
+typedef int saddr ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SOCK_STREAM ; 
- unsigned long UV_HANDLE_BOUND ; 
- int UV__ERR (int /*<<< orphan*/ ) ; 
- scalar_t__ bind (int /*<<< orphan*/ ,struct sockaddr*,int) ; 
- int /*<<< orphan*/  errno ; 
- scalar_t__ getsockname (int /*<<< orphan*/ ,struct sockaddr*,int*) ; 
- int /*<<< orphan*/  memset (struct sockaddr_storage*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  uv__close (int) ; 
- int uv__socket (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  uv__stream_fd (int /*<<< orphan*/ *) ; 
- int uv__stream_open (int /*<<< orphan*/ *,int,unsigned long) ; 
+
+ int SOCK_STREAM ;
+ unsigned long UV_HANDLE_BOUND ;
+ int UV__ERR (int ) ;
+ scalar_t__ bind (int ,struct sockaddr*,int) ;
+ int errno ;
+ scalar_t__ getsockname (int ,struct sockaddr*,int*) ;
+ int memset (struct sockaddr_storage*,int ,int) ;
+ int uv__close (int) ;
+ int uv__socket (int,int ,int ) ;
+ int uv__stream_fd (int *) ;
+ int uv__stream_open (int *,int,unsigned long) ;
 
 __attribute__((used)) static int new_socket(uv_tcp_t* handle, int domain, unsigned long flags) {
   struct sockaddr_storage saddr;
@@ -48,7 +48,7 @@ __attribute__((used)) static int new_socket(uv_tcp_t* handle, int domain, unsign
   }
 
   if (flags & UV_HANDLE_BOUND) {
-    /* Bind this new socket to an arbitrary port */
+
     slen = sizeof(saddr);
     memset(&saddr, 0, sizeof(saddr));
     if (getsockname(uv__stream_fd(handle), (struct sockaddr*) &saddr, &slen)) {

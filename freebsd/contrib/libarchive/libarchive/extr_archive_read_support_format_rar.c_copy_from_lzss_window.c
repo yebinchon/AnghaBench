@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/ * window; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int * window; } ;
 struct rar {void* unp_buffer; int unp_buffer_size; size_t unp_offset; TYPE_2__ lzss; } ;
-struct archive_read {int /*<<< orphan*/  archive; TYPE_1__* format; } ;
-typedef  int /*<<< orphan*/  int64_t ;
+struct archive_read {int archive; TYPE_1__* format; } ;
+typedef int int64_t ;
 struct TYPE_4__ {scalar_t__ data; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARCHIVE_ERRNO_FILE_FORMAT ; 
- int ARCHIVE_FATAL ; 
- int ARCHIVE_OK ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  archive_set_error (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int lzss_offset_for_position (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int lzss_size (TYPE_2__*) ; 
- void* malloc (int) ; 
- int /*<<< orphan*/  memcpy (void*,int /*<<< orphan*/ *,int) ; 
+
+ int ARCHIVE_ERRNO_FILE_FORMAT ;
+ int ARCHIVE_FATAL ;
+ int ARCHIVE_OK ;
+ int ENOMEM ;
+ int archive_set_error (int *,int ,char*) ;
+ int lzss_offset_for_position (TYPE_2__*,int ) ;
+ int lzss_size (TYPE_2__*) ;
+ void* malloc (int) ;
+ int memcpy (void*,int *,int) ;
 
 __attribute__((used)) static int
 copy_from_lzss_window(struct archive_read *a, const void **buffer,
@@ -38,7 +38,7 @@ copy_from_lzss_window(struct archive_read *a, const void **buffer,
 
   if (!rar->unp_buffer)
   {
-    if ((rar->unp_buffer = malloc(rar->unp_buffer_size)) == NULL)
+    if ((rar->unp_buffer = malloc(rar->unp_buffer_size)) == ((void*)0))
     {
       archive_set_error(&a->archive, ENOMEM,
                         "Unable to allocate memory for uncompressed data.");
@@ -75,6 +75,6 @@ copy_from_lzss_window(struct archive_read *a, const void **buffer,
   if (rar->unp_offset >= rar->unp_buffer_size)
     *buffer = rar->unp_buffer;
   else
-    *buffer = NULL;
+    *buffer = ((void*)0);
   return (ARCHIVE_OK);
 }

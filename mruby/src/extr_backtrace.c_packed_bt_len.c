@@ -1,18 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct backtrace_location {int /*<<< orphan*/  method_id; int /*<<< orphan*/  lineno; int /*<<< orphan*/  filename; } ;
 
-/* Variables and functions */
+
+
+
+struct backtrace_location {int method_id; int lineno; int filename; } ;
+
+
 
 __attribute__((used)) static int
 packed_bt_len(const struct backtrace_location *bt, int n)

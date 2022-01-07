@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  gpio_kill; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  gpiod_set_value (int /*<<< orphan*/ ,int) ; 
- TYPE_1__* ltc2952_data ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int gpio_kill; } ;
+
+
+ int gpiod_set_value (int ,int) ;
+ TYPE_1__* ltc2952_data ;
 
 __attribute__((used)) static void ltc2952_poweroff_kill(void)
 {
-	gpiod_set_value(ltc2952_data->gpio_kill, 1);
+ gpiod_set_value(ltc2952_data->gpio_kill, 1);
 }

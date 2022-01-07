@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct pq2ads_pci_pic {TYPE_1__* regs; } ;
 struct irq_data {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/  mask; } ;
+struct TYPE_2__ {int mask; } ;
 
-/* Variables and functions */
- int NUM_IRQS ; 
- struct pq2ads_pci_pic* irq_data_get_irq_chip_data (struct irq_data*) ; 
- int irqd_to_hwirq (struct irq_data*) ; 
- int /*<<< orphan*/  mb () ; 
- int /*<<< orphan*/  pci_pic_lock ; 
- int /*<<< orphan*/  raw_spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  raw_spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  setbits32 (int /*<<< orphan*/ *,int) ; 
+
+ int NUM_IRQS ;
+ struct pq2ads_pci_pic* irq_data_get_irq_chip_data (struct irq_data*) ;
+ int irqd_to_hwirq (struct irq_data*) ;
+ int mb () ;
+ int pci_pic_lock ;
+ int raw_spin_lock_irqsave (int *,unsigned long) ;
+ int raw_spin_unlock_irqrestore (int *,unsigned long) ;
+ int setbits32 (int *,int) ;
 
 __attribute__((used)) static void pq2ads_pci_mask_irq(struct irq_data *d)
 {
-	struct pq2ads_pci_pic *priv = irq_data_get_irq_chip_data(d);
-	int irq = NUM_IRQS - irqd_to_hwirq(d) - 1;
+ struct pq2ads_pci_pic *priv = irq_data_get_irq_chip_data(d);
+ int irq = NUM_IRQS - irqd_to_hwirq(d) - 1;
 
-	if (irq != -1) {
-		unsigned long flags;
-		raw_spin_lock_irqsave(&pci_pic_lock, flags);
+ if (irq != -1) {
+  unsigned long flags;
+  raw_spin_lock_irqsave(&pci_pic_lock, flags);
 
-		setbits32(&priv->regs->mask, 1 << irq);
-		mb();
+  setbits32(&priv->regs->mask, 1 << irq);
+  mb();
 
-		raw_spin_unlock_irqrestore(&pci_pic_lock, flags);
-	}
+  raw_spin_unlock_irqrestore(&pci_pic_lock, flags);
+ }
 }

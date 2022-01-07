@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct cas {int dummy; } ;
 
-/* Variables and functions */
- int N_RX_DESC_RINGS ; 
- int /*<<< orphan*/  cas_free_rx_desc (struct cas*,int) ; 
+
+ int N_RX_DESC_RINGS ;
+ int cas_free_rx_desc (struct cas*,int) ;
 
 __attribute__((used)) static void cas_free_rxds(struct cas *cp)
 {
-	int i;
+ int i;
 
-	for (i = 0; i < N_RX_DESC_RINGS; i++)
-		cas_free_rx_desc(cp, i);
+ for (i = 0; i < N_RX_DESC_RINGS; i++)
+  cas_free_rx_desc(cp, i);
 }

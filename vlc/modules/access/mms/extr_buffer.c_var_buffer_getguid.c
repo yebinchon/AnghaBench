@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * Data4; void* Data3; void* Data2; int /*<<< orphan*/  Data1; } ;
-typedef  TYPE_1__ vlc_guid_t ;
-typedef  int /*<<< orphan*/  var_buffer_t ;
 
-/* Variables and functions */
- void* var_buffer_get16 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  var_buffer_get32 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  var_buffer_get8 (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * Data4; void* Data3; void* Data2; int Data1; } ;
+typedef TYPE_1__ vlc_guid_t ;
+typedef int var_buffer_t ;
+
+
+ void* var_buffer_get16 (int *) ;
+ int var_buffer_get32 (int *) ;
+ int var_buffer_get8 (int *) ;
 
 void var_buffer_getguid( var_buffer_t *p_buf, vlc_guid_t *p_guid )
 {

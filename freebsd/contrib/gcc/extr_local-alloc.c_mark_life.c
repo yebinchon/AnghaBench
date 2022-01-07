@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  enum machine_mode { ____Placeholder_machine_mode } machine_mode ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLEAR_HARD_REG_BIT (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  SET_HARD_REG_BIT (int /*<<< orphan*/ ,int) ; 
- int** hard_regno_nregs ; 
- int /*<<< orphan*/  regs_live ; 
+
+
+
+typedef enum machine_mode { ____Placeholder_machine_mode } machine_mode ;
+
+
+ int CLEAR_HARD_REG_BIT (int ,int) ;
+ int SET_HARD_REG_BIT (int ,int) ;
+ int** hard_regno_nregs ;
+ int regs_live ;
 
 __attribute__((used)) static void
 mark_life (int regno, enum machine_mode mode, int life)

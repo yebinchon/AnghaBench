@@ -1,47 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  TJSAMP_411 ; 
- int /*<<< orphan*/  TJSAMP_420 ; 
- int /*<<< orphan*/  TJSAMP_422 ; 
- int /*<<< orphan*/  TJSAMP_440 ; 
- int /*<<< orphan*/  TJSAMP_444 ; 
- int /*<<< orphan*/  TJSAMP_GRAY ; 
- int /*<<< orphan*/  _3byteFormats ; 
- int /*<<< orphan*/  _4byteFormats ; 
- int /*<<< orphan*/  _onlyGray ; 
- int /*<<< orphan*/  _onlyRGB ; 
- int alloc ; 
- int bmpTest () ; 
- int /*<<< orphan*/  bufSizeTest () ; 
- int /*<<< orphan*/  doTest (int,int,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,char*) ; 
- int doYUV ; 
- int exitStatus ; 
- int pad ; 
- int /*<<< orphan*/  printf (char*) ; 
- int /*<<< orphan*/  srand (unsigned int) ; 
- int /*<<< orphan*/  strcasecmp (char*,char*) ; 
- scalar_t__ time (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  usage (char*) ; 
+ int TJSAMP_411 ;
+ int TJSAMP_420 ;
+ int TJSAMP_422 ;
+ int TJSAMP_440 ;
+ int TJSAMP_444 ;
+ int TJSAMP_GRAY ;
+ int _3byteFormats ;
+ int _4byteFormats ;
+ int _onlyGray ;
+ int _onlyRGB ;
+ int alloc ;
+ int bmpTest () ;
+ int bufSizeTest () ;
+ int doTest (int,int,int ,int,int ,char*) ;
+ int doYUV ;
+ int exitStatus ;
+ int pad ;
+ int printf (char*) ;
+ int srand (unsigned int) ;
+ int strcasecmp (char*,char*) ;
+ scalar_t__ time (int *) ;
+ int usage (char*) ;
 
 int main(int argc, char *argv[])
 {
   int i, num4bf = 5;
 
-#ifdef _WIN32
-  srand((unsigned int)time(NULL));
-#endif
+
+
+
   if (argc > 1) {
     for (i = 1; i < argc; i++) {
       if (!strcasecmp(argv[i], "-yuv")) doYUV = 1;

@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  selective ;
-typedef  int /*<<< orphan*/  hb_list_t ;
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int selective ;
+typedef int hb_list_t ;
 struct TYPE_7__ {int width; int height; } ;
-typedef  TYPE_1__ hb_geometry_t ;
-struct TYPE_8__ {int /*<<< orphan*/ * settings; } ;
-typedef  TYPE_2__ hb_filter_object_t ;
-typedef  int /*<<< orphan*/  hb_dict_t ;
+typedef TYPE_1__ hb_geometry_t ;
+struct TYPE_8__ {int * settings; } ;
+typedef TYPE_2__ hb_filter_object_t ;
+typedef int hb_dict_t ;
 
-/* Variables and functions */
- int HB_FILTER_COMB_DETECT ; 
- int HB_FILTER_CROP_SCALE ; 
- int HB_FILTER_DECOMB ; 
- int HB_FILTER_DEINTERLACE ; 
- int HB_FILTER_DETELECINE ; 
- int HB_FILTER_VFR ; 
- int MODE_DECOMB_SELECTIVE ; 
- int hb_dict_get_int (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  hb_dict_set (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hb_filter_close (TYPE_2__**) ; 
- TYPE_2__* hb_filter_find (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  hb_list_rem (int /*<<< orphan*/ *,TYPE_2__*) ; 
- int /*<<< orphan*/  hb_log (char*) ; 
- int /*<<< orphan*/  hb_value_int (int) ; 
+
+ int HB_FILTER_COMB_DETECT ;
+ int HB_FILTER_CROP_SCALE ;
+ int HB_FILTER_DECOMB ;
+ int HB_FILTER_DEINTERLACE ;
+ int HB_FILTER_DETELECINE ;
+ int HB_FILTER_VFR ;
+ int MODE_DECOMB_SELECTIVE ;
+ int hb_dict_get_int (int *,char*) ;
+ int hb_dict_set (int *,char*,int ) ;
+ int hb_filter_close (TYPE_2__**) ;
+ TYPE_2__* hb_filter_find (int *,int) ;
+ int hb_list_rem (int *,TYPE_2__*) ;
+ int hb_log (char*) ;
+ int hb_value_int (int) ;
 
 __attribute__((used)) static void sanitize_filter_list(hb_list_t *list, hb_geometry_t src_geo)
 {
-    // Add selective deinterlacing mode if comb detection is enabled
-    if (hb_filter_find(list, HB_FILTER_COMB_DETECT) != NULL)
+
+    if (hb_filter_find(list, HB_FILTER_COMB_DETECT) != ((void*)0))
     {
         int selective[] = {HB_FILTER_DECOMB, HB_FILTER_DEINTERLACE};
         int ii, count = sizeof(selective) / sizeof(int);
@@ -47,7 +47,7 @@ __attribute__((used)) static void sanitize_filter_list(hb_list_t *list, hb_geome
         for (ii = 0; ii < count; ii++)
         {
             hb_filter_object_t * filter = hb_filter_find(list, selective[ii]);
-            if (filter != NULL)
+            if (filter != ((void*)0))
             {
                 int mode = hb_dict_get_int(filter->settings, "mode");
                 mode |= MODE_DECOMB_SELECTIVE;
@@ -59,16 +59,16 @@ __attribute__((used)) static void sanitize_filter_list(hb_list_t *list, hb_geome
 
     int is_detel = 0;
     hb_filter_object_t * filter = hb_filter_find(list, HB_FILTER_DETELECINE);
-    if (filter != NULL)
+    if (filter != ((void*)0))
     {
         is_detel = 1;
     }
 
     filter = hb_filter_find(list, HB_FILTER_VFR);
-    if (filter != NULL)
+    if (filter != ((void*)0))
     {
         int mode = hb_dict_get_int(filter->settings, "mode");
-        // "Same as source" FPS and no HB_FILTER_DETELECINE
+
         if ( (mode == 0) && (is_detel == 0) )
         {
             hb_list_rem(list, filter);
@@ -78,10 +78,10 @@ __attribute__((used)) static void sanitize_filter_list(hb_list_t *list, hb_geome
     }
 
     filter = hb_filter_find(list, HB_FILTER_CROP_SCALE);
-    if (filter != NULL)
+    if (filter != ((void*)0))
     {
         hb_dict_t* settings = filter->settings;
-        if (settings != NULL)
+        if (settings != ((void*)0))
         {
             int width, height, top, bottom, left, right;
             width = hb_dict_get_int(settings, "width");

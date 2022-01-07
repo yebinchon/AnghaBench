@@ -1,75 +1,75 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_5__ ;
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_object_t ;
-struct TYPE_12__ {int i_bytes_per_sample; int format; int i_rate; int i_channel_mask; int /*<<< orphan*/ * p_notify; int /*<<< orphan*/ * p_dsbuffer; int /*<<< orphan*/  chans_to_reorder; int /*<<< orphan*/  chan_table; int /*<<< orphan*/  p_dsobject; } ;
-typedef  TYPE_3__ aout_stream_sys_t ;
-struct TYPE_11__ {int wBitsPerSample; int nChannels; int nSamplesPerSec; int nBlockAlign; int nAvgBytesPerSec; int cbSize; int /*<<< orphan*/  wFormatTag; } ;
+
+
+typedef struct TYPE_14__ TYPE_5__ ;
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int vlc_object_t ;
+struct TYPE_12__ {int i_bytes_per_sample; int format; int i_rate; int i_channel_mask; int * p_notify; int * p_dsbuffer; int chans_to_reorder; int chan_table; int p_dsobject; } ;
+typedef TYPE_3__ aout_stream_sys_t ;
+struct TYPE_11__ {int wBitsPerSample; int nChannels; int nSamplesPerSec; int nBlockAlign; int nAvgBytesPerSec; int cbSize; int wFormatTag; } ;
 struct TYPE_10__ {int wValidBitsPerSample; } ;
-struct TYPE_13__ {int dwChannelMask; TYPE_2__ Format; int /*<<< orphan*/  SubFormat; TYPE_1__ Samples; } ;
-typedef  TYPE_4__ WAVEFORMATEXTENSIBLE ;
-typedef  int /*<<< orphan*/  WAVEFORMATEX ;
-struct TYPE_14__ {int dwSize; int dwFlags; int /*<<< orphan*/ * lpwfxFormat; int /*<<< orphan*/  dwBufferBytes; } ;
-typedef  scalar_t__ HRESULT ;
-typedef  TYPE_5__ DSBUFFERDESC ;
+struct TYPE_13__ {int dwChannelMask; TYPE_2__ Format; int SubFormat; TYPE_1__ Samples; } ;
+typedef TYPE_4__ WAVEFORMATEXTENSIBLE ;
+typedef int WAVEFORMATEX ;
+struct TYPE_14__ {int dwSize; int dwFlags; int * lpwfxFormat; int dwBufferBytes; } ;
+typedef scalar_t__ HRESULT ;
+typedef TYPE_5__ DSBUFFERDESC ;
 
-/* Variables and functions */
- int DSBCAPS_CTRLPOSITIONNOTIFY ; 
- int DSBCAPS_CTRLVOLUME ; 
- int DSBCAPS_GETCURRENTPOSITION2 ; 
- int DSBCAPS_GLOBALFOCUS ; 
- int DSBCAPS_LOCHARDWARE ; 
- int /*<<< orphan*/  DS_BUF_SIZE ; 
- scalar_t__ DS_OK ; 
- scalar_t__ FAILED (scalar_t__) ; 
- int /*<<< orphan*/  FillBuffer (int /*<<< orphan*/ *,TYPE_3__*,int /*<<< orphan*/ *) ; 
- scalar_t__ IDirectSoundBuffer_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IDirectSoundBuffer_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IDirectSound_CreateSoundBuffer (int /*<<< orphan*/ ,TYPE_5__*,int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IID_IDirectSoundNotify ; 
- int SPEAKER_FRONT_LEFT ; 
- int SPEAKER_FRONT_RIGHT ; 
-#define  VLC_CODEC_FL32 130 
-#define  VLC_CODEC_S16N 129 
-#define  VLC_CODEC_SPDIFL 128 
- int /*<<< orphan*/  WAVE_FORMAT_DOLBY_AC3_SPDIF ; 
- int /*<<< orphan*/  WAVE_FORMAT_EXTENSIBLE ; 
- int /*<<< orphan*/  WAVE_FORMAT_IEEE_FLOAT ; 
- int /*<<< orphan*/  WAVE_FORMAT_PCM ; 
- int /*<<< orphan*/  _KSDATAFORMAT_SUBTYPE_DOLBY_AC3_SPDIF ; 
- int /*<<< orphan*/  _KSDATAFORMAT_SUBTYPE_IEEE_FLOAT ; 
- int /*<<< orphan*/  _KSDATAFORMAT_SUBTYPE_PCM ; 
- int /*<<< orphan*/  aout_CheckChannelReorder (int*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (TYPE_5__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  msg_Dbg (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  msg_Err (int /*<<< orphan*/ *,char*) ; 
- int* pi_channels_in ; 
- int /*<<< orphan*/  pi_channels_out ; 
- int* pi_vlc_chan_order_wg4 ; 
+
+ int DSBCAPS_CTRLPOSITIONNOTIFY ;
+ int DSBCAPS_CTRLVOLUME ;
+ int DSBCAPS_GETCURRENTPOSITION2 ;
+ int DSBCAPS_GLOBALFOCUS ;
+ int DSBCAPS_LOCHARDWARE ;
+ int DS_BUF_SIZE ;
+ scalar_t__ DS_OK ;
+ scalar_t__ FAILED (scalar_t__) ;
+ int FillBuffer (int *,TYPE_3__*,int *) ;
+ scalar_t__ IDirectSoundBuffer_QueryInterface (int *,int *,void**) ;
+ int IDirectSoundBuffer_Release (int *) ;
+ scalar_t__ IDirectSound_CreateSoundBuffer (int ,TYPE_5__*,int **,int *) ;
+ int IID_IDirectSoundNotify ;
+ int SPEAKER_FRONT_LEFT ;
+ int SPEAKER_FRONT_RIGHT ;
+
+
+
+ int WAVE_FORMAT_DOLBY_AC3_SPDIF ;
+ int WAVE_FORMAT_EXTENSIBLE ;
+ int WAVE_FORMAT_IEEE_FLOAT ;
+ int WAVE_FORMAT_PCM ;
+ int _KSDATAFORMAT_SUBTYPE_DOLBY_AC3_SPDIF ;
+ int _KSDATAFORMAT_SUBTYPE_IEEE_FLOAT ;
+ int _KSDATAFORMAT_SUBTYPE_PCM ;
+ int aout_CheckChannelReorder (int*,int ,int,int ) ;
+ int memset (TYPE_5__*,int ,int) ;
+ int msg_Dbg (int *,char*) ;
+ int msg_Err (int *,char*) ;
+ int* pi_channels_in ;
+ int pi_channels_out ;
+ int* pi_vlc_chan_order_wg4 ;
 
 __attribute__((used)) static HRESULT CreateDSBuffer( vlc_object_t *obj, aout_stream_sys_t *sys,
                                int i_format, int i_channels, int i_nb_channels,
                                int i_rate, bool b_probe )
 {
     WAVEFORMATEXTENSIBLE waveformat;
-    DSBUFFERDESC         dsbdesc;
-    HRESULT              hr;
+    DSBUFFERDESC dsbdesc;
+    HRESULT hr;
 
-    /* First set the sound buffer format */
+
     waveformat.dwChannelMask = 0;
     for( unsigned i = 0; pi_vlc_chan_order_wg4[i]; i++ )
         if( i_channels & pi_vlc_chan_order_wg4[i] )
@@ -77,9 +77,9 @@ __attribute__((used)) static HRESULT CreateDSBuffer( vlc_object_t *obj, aout_str
 
     switch( i_format )
     {
-    case VLC_CODEC_SPDIFL:
+    case 128:
         i_nb_channels = 2;
-        /* To prevent channel re-ordering */
+
         waveformat.dwChannelMask = SPEAKER_FRONT_LEFT | SPEAKER_FRONT_RIGHT;
         waveformat.Format.wBitsPerSample = 16;
         waveformat.Samples.wValidBitsPerSample =
@@ -88,7 +88,7 @@ __attribute__((used)) static HRESULT CreateDSBuffer( vlc_object_t *obj, aout_str
         waveformat.SubFormat = _KSDATAFORMAT_SUBTYPE_DOLBY_AC3_SPDIF;
         break;
 
-    case VLC_CODEC_FL32:
+    case 130:
         waveformat.Format.wBitsPerSample = sizeof(float) * 8;
         waveformat.Samples.wValidBitsPerSample =
             waveformat.Format.wBitsPerSample;
@@ -96,7 +96,7 @@ __attribute__((used)) static HRESULT CreateDSBuffer( vlc_object_t *obj, aout_str
         waveformat.SubFormat = _KSDATAFORMAT_SUBTYPE_IEEE_FLOAT;
         break;
 
-    case VLC_CODEC_S16N:
+    case 129:
         waveformat.Format.wBitsPerSample = 16;
         waveformat.Samples.wValidBitsPerSample =
             waveformat.Format.wBitsPerSample;
@@ -115,15 +115,15 @@ __attribute__((used)) static HRESULT CreateDSBuffer( vlc_object_t *obj, aout_str
     sys->i_bytes_per_sample = waveformat.Format.nBlockAlign;
     sys->format = i_format;
 
-    /* Then fill in the direct sound descriptor */
+
     memset(&dsbdesc, 0, sizeof(DSBUFFERDESC));
     dsbdesc.dwSize = sizeof(DSBUFFERDESC);
-    dsbdesc.dwFlags = DSBCAPS_GETCURRENTPOSITION2 /* Better position accuracy */
-                    | DSBCAPS_GLOBALFOCUS         /* Allows background playing */
-                    | DSBCAPS_CTRLVOLUME          /* Allows volume control */
-                    | DSBCAPS_CTRLPOSITIONNOTIFY; /* Allow position notifications */
+    dsbdesc.dwFlags = DSBCAPS_GETCURRENTPOSITION2
+                    | DSBCAPS_GLOBALFOCUS
+                    | DSBCAPS_CTRLVOLUME
+                    | DSBCAPS_CTRLPOSITIONNOTIFY;
 
-    /* Only use the new WAVE_FORMAT_EXTENSIBLE format for multichannel audio */
+
     if( i_nb_channels <= 2 )
     {
         waveformat.Format.cbSize = 0;
@@ -134,39 +134,39 @@ __attribute__((used)) static HRESULT CreateDSBuffer( vlc_object_t *obj, aout_str
         waveformat.Format.cbSize =
             sizeof(WAVEFORMATEXTENSIBLE) - sizeof(WAVEFORMATEX);
 
-        /* Needed for 5.1 on emu101k */
+
         dsbdesc.dwFlags |= DSBCAPS_LOCHARDWARE;
     }
 
-    dsbdesc.dwBufferBytes = DS_BUF_SIZE; /* buffer size */
+    dsbdesc.dwBufferBytes = DS_BUF_SIZE;
     dsbdesc.lpwfxFormat = (WAVEFORMATEX *)&waveformat;
 
-    /* CreateSoundBuffer doesn't allow volume control for non-PCM buffers */
-    if ( i_format == VLC_CODEC_SPDIFL )
+
+    if ( i_format == 128 )
         dsbdesc.dwFlags &= ~DSBCAPS_CTRLVOLUME;
 
     hr = IDirectSound_CreateSoundBuffer( sys->p_dsobject, &dsbdesc,
-                                         &sys->p_dsbuffer, NULL );
+                                         &sys->p_dsbuffer, ((void*)0) );
     if( FAILED(hr) )
     {
         if( !(dsbdesc.dwFlags & DSBCAPS_LOCHARDWARE) )
             return hr;
 
-        /* Try without DSBCAPS_LOCHARDWARE */
+
         dsbdesc.dwFlags &= ~DSBCAPS_LOCHARDWARE;
         hr = IDirectSound_CreateSoundBuffer( sys->p_dsobject, &dsbdesc,
-                                             &sys->p_dsbuffer, NULL );
+                                             &sys->p_dsbuffer, ((void*)0) );
         if( FAILED(hr) )
             return hr;
         if( !b_probe )
             msg_Dbg( obj, "couldn't use hardware sound buffer" );
     }
 
-    /* Stop here if we were just probing */
+
     if( b_probe )
     {
         IDirectSoundBuffer_Release( sys->p_dsbuffer );
-        sys->p_dsbuffer = NULL;
+        sys->p_dsbuffer = ((void*)0);
         return DS_OK;
     }
 
@@ -184,9 +184,9 @@ __attribute__((used)) static HRESULT CreateDSBuffer( vlc_object_t *obj, aout_str
     if( hr != DS_OK )
     {
         msg_Err( obj, "Couldn't query IDirectSoundNotify" );
-        sys->p_notify = NULL;
+        sys->p_notify = ((void*)0);
     }
 
-    FillBuffer( obj, sys, NULL );
+    FillBuffer( obj, sys, ((void*)0) );
     return DS_OK;
 }

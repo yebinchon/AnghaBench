@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buffer ;
-struct TYPE_10__ {int /*<<< orphan*/  pb; } ;
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int buffer ;
+struct TYPE_10__ {int pb; } ;
 struct TYPE_9__ {TYPE_1__* codecpar; } ;
-struct TYPE_8__ {int channels; int sample_rate; int bits_per_coded_sample; int block_align; int /*<<< orphan*/  codec_id; int /*<<< orphan*/  codec_type; } ;
-typedef  TYPE_2__ AVStream ;
-typedef  TYPE_3__ AVFormatContext ;
+struct TYPE_8__ {int channels; int sample_rate; int bits_per_coded_sample; int block_align; int codec_id; int codec_type; } ;
+typedef TYPE_2__ AVStream ;
+typedef TYPE_3__ AVFormatContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AVMEDIA_TYPE_AUDIO ; 
- int /*<<< orphan*/  ENOMEM ; 
- int FF_SANE_NB_CHANNELS ; 
- int INT_MAX ; 
- TYPE_2__* avformat_new_stream (TYPE_3__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  avio_skip (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  avpriv_set_pts_info (TYPE_2__*,int,int,int) ; 
- int /*<<< orphan*/  ff_get_line (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  ff_get_pcm_codec_id (int,int /*<<< orphan*/ ,int,int) ; 
- int sscanf (char*,char*,int*,int*,int*) ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_INVALIDDATA ;
+ int AVMEDIA_TYPE_AUDIO ;
+ int ENOMEM ;
+ int FF_SANE_NB_CHANNELS ;
+ int INT_MAX ;
+ TYPE_2__* avformat_new_stream (TYPE_3__*,int *) ;
+ int avio_skip (int ,int) ;
+ int avpriv_set_pts_info (TYPE_2__*,int,int,int) ;
+ int ff_get_line (int ,char*,int) ;
+ int ff_get_pcm_codec_id (int,int ,int,int) ;
+ int sscanf (char*,char*,int*,int*,int*) ;
 
 __attribute__((used)) static int pvf_read_header(AVFormatContext *s)
 {
@@ -52,14 +52,14 @@ __attribute__((used)) static int pvf_read_header(AVFormatContext *s)
         bps <= 0 || bps > INT_MAX / FF_SANE_NB_CHANNELS || sample_rate <= 0)
         return AVERROR_INVALIDDATA;
 
-    st = avformat_new_stream(s, NULL);
+    st = avformat_new_stream(s, ((void*)0));
     if (!st)
         return AVERROR(ENOMEM);
 
-    st->codecpar->codec_type  = AVMEDIA_TYPE_AUDIO;
-    st->codecpar->channels    = channels;
+    st->codecpar->codec_type = AVMEDIA_TYPE_AUDIO;
+    st->codecpar->channels = channels;
     st->codecpar->sample_rate = sample_rate;
-    st->codecpar->codec_id    = ff_get_pcm_codec_id(bps, 0, 1, 0xFFFF);
+    st->codecpar->codec_id = ff_get_pcm_codec_id(bps, 0, 1, 0xFFFF);
     st->codecpar->bits_per_coded_sample = bps;
     st->codecpar->block_align = bps * st->codecpar->channels / 8;
 

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  HMAC_CTX ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HMAC_CTX_cleanup (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memzero (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int HMAC_CTX ;
+
+
+ int HMAC_CTX_cleanup (int *) ;
+ int memzero (int *,int) ;
 
 __attribute__((used)) static inline int HMAC_CTX_reset(HMAC_CTX *ctx)
 {
-	HMAC_CTX_cleanup(ctx);
-	memzero(ctx, sizeof(HMAC_CTX));
-	return 1;
+ HMAC_CTX_cleanup(ctx);
+ memzero(ctx, sizeof(HMAC_CTX));
+ return 1;
 }

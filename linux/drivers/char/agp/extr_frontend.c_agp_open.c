@@ -1,81 +1,81 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct inode {int dummy; } ;
 struct file {void* private_data; } ;
-struct agp_file_private {int /*<<< orphan*/  access_flags; int /*<<< orphan*/  my_pid; } ;
+struct agp_file_private {int access_flags; int my_pid; } ;
 struct agp_client {int dummy; } ;
-struct TYPE_4__ {int /*<<< orphan*/  agp_mutex; } ;
-struct TYPE_3__ {int /*<<< orphan*/  pid; } ;
+struct TYPE_4__ {int agp_mutex; } ;
+struct TYPE_3__ {int pid; } ;
 
-/* Variables and functions */
- int AGPGART_MINOR ; 
- int /*<<< orphan*/  AGP_FF_ALLOW_CLIENT ; 
- int /*<<< orphan*/  AGP_FF_ALLOW_CONTROLLER ; 
- int /*<<< orphan*/  AGP_FF_IS_CLIENT ; 
- int /*<<< orphan*/  AGP_FF_IS_VALID ; 
- int /*<<< orphan*/  CAP_SYS_RAWIO ; 
- int /*<<< orphan*/  DBG (char*,struct agp_file_private*,struct agp_client*) ; 
- int ENOMEM ; 
- int ENXIO ; 
- int /*<<< orphan*/  GFP_KERNEL ; 
- TYPE_2__ agp_fe ; 
- struct agp_client* agp_find_client_by_pid (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  agp_insert_file_private (struct agp_file_private*) ; 
- scalar_t__ capable (int /*<<< orphan*/ ) ; 
- TYPE_1__* current ; 
- int iminor (struct inode*) ; 
- struct agp_file_private* kzalloc (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  set_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int AGPGART_MINOR ;
+ int AGP_FF_ALLOW_CLIENT ;
+ int AGP_FF_ALLOW_CONTROLLER ;
+ int AGP_FF_IS_CLIENT ;
+ int AGP_FF_IS_VALID ;
+ int CAP_SYS_RAWIO ;
+ int DBG (char*,struct agp_file_private*,struct agp_client*) ;
+ int ENOMEM ;
+ int ENXIO ;
+ int GFP_KERNEL ;
+ TYPE_2__ agp_fe ;
+ struct agp_client* agp_find_client_by_pid (int ) ;
+ int agp_insert_file_private (struct agp_file_private*) ;
+ scalar_t__ capable (int ) ;
+ TYPE_1__* current ;
+ int iminor (struct inode*) ;
+ struct agp_file_private* kzalloc (int,int ) ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
+ int set_bit (int ,int *) ;
 
 __attribute__((used)) static int agp_open(struct inode *inode, struct file *file)
 {
-	int minor = iminor(inode);
-	struct agp_file_private *priv;
-	struct agp_client *client;
+ int minor = iminor(inode);
+ struct agp_file_private *priv;
+ struct agp_client *client;
 
-	if (minor != AGPGART_MINOR)
-		return -ENXIO;
+ if (minor != AGPGART_MINOR)
+  return -ENXIO;
 
-	mutex_lock(&(agp_fe.agp_mutex));
+ mutex_lock(&(agp_fe.agp_mutex));
 
-	priv = kzalloc(sizeof(struct agp_file_private), GFP_KERNEL);
-	if (priv == NULL) {
-		mutex_unlock(&(agp_fe.agp_mutex));
-		return -ENOMEM;
-	}
+ priv = kzalloc(sizeof(struct agp_file_private), GFP_KERNEL);
+ if (priv == ((void*)0)) {
+  mutex_unlock(&(agp_fe.agp_mutex));
+  return -ENOMEM;
+ }
 
-	set_bit(AGP_FF_ALLOW_CLIENT, &priv->access_flags);
-	priv->my_pid = current->pid;
+ set_bit(AGP_FF_ALLOW_CLIENT, &priv->access_flags);
+ priv->my_pid = current->pid;
 
-	if (capable(CAP_SYS_RAWIO))
-		/* Root priv, can be controller */
-		set_bit(AGP_FF_ALLOW_CONTROLLER, &priv->access_flags);
+ if (capable(CAP_SYS_RAWIO))
 
-	client = agp_find_client_by_pid(current->pid);
+  set_bit(AGP_FF_ALLOW_CONTROLLER, &priv->access_flags);
 
-	if (client != NULL) {
-		set_bit(AGP_FF_IS_CLIENT, &priv->access_flags);
-		set_bit(AGP_FF_IS_VALID, &priv->access_flags);
-	}
-	file->private_data = (void *) priv;
-	agp_insert_file_private(priv);
-	DBG("private=%p, client=%p", priv, client);
+ client = agp_find_client_by_pid(current->pid);
 
-	mutex_unlock(&(agp_fe.agp_mutex));
+ if (client != ((void*)0)) {
+  set_bit(AGP_FF_IS_CLIENT, &priv->access_flags);
+  set_bit(AGP_FF_IS_VALID, &priv->access_flags);
+ }
+ file->private_data = (void *) priv;
+ agp_insert_file_private(priv);
+ DBG("private=%p, client=%p", priv, client);
 
-	return 0;
+ mutex_unlock(&(agp_fe.agp_mutex));
+
+ return 0;
 }

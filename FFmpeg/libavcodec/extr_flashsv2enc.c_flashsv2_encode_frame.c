@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_19__   TYPE_4__ ;
-typedef  struct TYPE_18__   TYPE_3__ ;
-typedef  struct TYPE_17__   TYPE_2__ ;
-typedef  struct TYPE_16__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_19__ TYPE_4__ ;
+typedef struct TYPE_18__ TYPE_3__ ;
+typedef struct TYPE_17__ TYPE_2__ ;
+typedef struct TYPE_16__ TYPE_1__ ;
+
+
 struct TYPE_19__ {scalar_t__ frame_number; scalar_t__ gop_size; scalar_t__ keyint_min; TYPE_1__* priv_data; } ;
-struct TYPE_18__ {int /*<<< orphan*/ * linesize; int /*<<< orphan*/ * data; } ;
-struct TYPE_17__ {int size; int /*<<< orphan*/  flags; int /*<<< orphan*/  data; } ;
-struct TYPE_16__ {scalar_t__ last_key_frame; int /*<<< orphan*/  dist; scalar_t__ use15_7; scalar_t__ frame_size; } ;
-typedef  TYPE_1__ FlashSV2Context ;
-typedef  TYPE_2__ AVPacket ;
-typedef  TYPE_3__ AVFrame ;
-typedef  TYPE_4__ AVCodecContext ;
+struct TYPE_18__ {int * linesize; int * data; } ;
+struct TYPE_17__ {int size; int flags; int data; } ;
+struct TYPE_16__ {scalar_t__ last_key_frame; int dist; scalar_t__ use15_7; scalar_t__ frame_size; } ;
+typedef TYPE_1__ FlashSV2Context ;
+typedef TYPE_2__ AVPacket ;
+typedef TYPE_3__ AVFrame ;
+typedef TYPE_4__ AVCodecContext ;
 
-/* Variables and functions */
- scalar_t__ AV_INPUT_BUFFER_MIN_SIZE ; 
- int /*<<< orphan*/  AV_LOG_DEBUG ; 
- int /*<<< orphan*/  AV_PKT_FLAG_KEY ; 
- int /*<<< orphan*/  av_log (TYPE_4__*,int /*<<< orphan*/ ,char*,scalar_t__) ; 
- int ff_alloc_packet2 (TYPE_4__*,TYPE_2__*,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  new_key_frame (TYPE_1__* const) ; 
- int /*<<< orphan*/  optimum_dist (TYPE_1__* const) ; 
- int /*<<< orphan*/  recommend_keyframe (TYPE_1__* const,int*) ; 
- int reconfigure_at_keyframe (TYPE_1__* const,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int write_bitstream (TYPE_1__* const,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int) ; 
+
+ scalar_t__ AV_INPUT_BUFFER_MIN_SIZE ;
+ int AV_LOG_DEBUG ;
+ int AV_PKT_FLAG_KEY ;
+ int av_log (TYPE_4__*,int ,char*,scalar_t__) ;
+ int ff_alloc_packet2 (TYPE_4__*,TYPE_2__*,scalar_t__,int ) ;
+ int new_key_frame (TYPE_1__* const) ;
+ int optimum_dist (TYPE_1__* const) ;
+ int recommend_keyframe (TYPE_1__* const,int*) ;
+ int reconfigure_at_keyframe (TYPE_1__* const,int ,int ) ;
+ int write_bitstream (TYPE_1__* const,int ,int ,int ,int,int) ;
 
 __attribute__((used)) static int flashsv2_encode_frame(AVCodecContext *avctx, AVPacket *pkt,
                                  const AVFrame *p, int *got_packet)
@@ -45,11 +45,11 @@ __attribute__((used)) static int flashsv2_encode_frame(AVCodecContext *avctx, AV
     if ((res = ff_alloc_packet2(avctx, pkt, s->frame_size + AV_INPUT_BUFFER_MIN_SIZE, 0)) < 0)
         return res;
 
-    /* First frame needs to be a keyframe */
+
     if (avctx->frame_number == 0)
         keyframe = 1;
 
-    /* Check the placement of keyframes */
+
     if (avctx->gop_size > 0) {
         if (avctx->frame_number >= s->last_key_frame + avctx->gop_size)
             keyframe = 1;

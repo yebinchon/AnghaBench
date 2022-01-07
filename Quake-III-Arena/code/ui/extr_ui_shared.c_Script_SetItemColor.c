@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * vec4_t ;
-struct TYPE_5__ {int /*<<< orphan*/ * borderColor; int /*<<< orphan*/  flags; int /*<<< orphan*/ * foreColor; int /*<<< orphan*/ * backColor; } ;
-struct TYPE_6__ {TYPE_1__ window; int /*<<< orphan*/  parent; } ;
-typedef  TYPE_2__ itemDef_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Color_Parse (char**,int /*<<< orphan*/ **) ; 
- TYPE_2__* Menu_GetMatchingItemByNumber (int /*<<< orphan*/ ,int,char const*) ; 
- int Menu_ItemsMatchingGroup (int /*<<< orphan*/ ,char const*) ; 
- scalar_t__ Q_stricmp (char const*,char*) ; 
- scalar_t__ String_Parse (char**,char const**) ; 
- int /*<<< orphan*/  WINDOW_FORECOLORSET ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int * vec4_t ;
+struct TYPE_5__ {int * borderColor; int flags; int * foreColor; int * backColor; } ;
+struct TYPE_6__ {TYPE_1__ window; int parent; } ;
+typedef TYPE_2__ itemDef_t ;
+
+
+ int Color_Parse (char**,int **) ;
+ TYPE_2__* Menu_GetMatchingItemByNumber (int ,int,char const*) ;
+ int Menu_ItemsMatchingGroup (int ,char const*) ;
+ scalar_t__ Q_stricmp (char const*,char*) ;
+ scalar_t__ String_Parse (char**,char const**) ;
+ int WINDOW_FORECOLORSET ;
 
 void Script_SetItemColor(itemDef_t *item, char **args) {
   const char *itemname;
@@ -31,7 +31,7 @@ void Script_SetItemColor(itemDef_t *item, char **args) {
   vec4_t color;
   int i;
   vec4_t *out;
-  // expecting type of color to set and 4 args for the color
+
   if (String_Parse(args, &itemname) && String_Parse(args, &name)) {
     itemDef_t *item2;
     int j;
@@ -43,8 +43,8 @@ void Script_SetItemColor(itemDef_t *item, char **args) {
 
     for (j = 0; j < count; j++) {
       item2 = Menu_GetMatchingItemByNumber(item->parent, j, itemname);
-      if (item2 != NULL) {
-        out = NULL;
+      if (item2 != ((void*)0)) {
+        out = ((void*)0);
         if (Q_stricmp(name, "backcolor") == 0) {
           out = &item2->window.backColor;
         } else if (Q_stricmp(name, "forecolor") == 0) {

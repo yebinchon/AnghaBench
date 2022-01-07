@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_6__ ;
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_15__ {int /*<<< orphan*/  s; } ;
+
+
+typedef struct TYPE_15__ TYPE_6__ ;
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+struct TYPE_15__ {int s; } ;
 struct TYPE_14__ {TYPE_6__* cap; } ;
-struct TYPE_11__ {int /*<<< orphan*/  e; int /*<<< orphan*/  s; } ;
+struct TYPE_11__ {int e; int s; } ;
 struct TYPE_12__ {TYPE_1__ s; TYPE_6__* cp; } ;
 struct TYPE_13__ {int isstring; TYPE_2__ u; } ;
-typedef  TYPE_3__ StrAux ;
-typedef  TYPE_4__ CapState ;
+typedef TYPE_3__ StrAux ;
+typedef TYPE_4__ CapState ;
 
-/* Variables and functions */
- scalar_t__ Csimple ; 
- int MAXSTRCAPS ; 
- scalar_t__ captype (TYPE_6__*) ; 
- int /*<<< orphan*/  closeaddr (TYPE_6__*) ; 
- int /*<<< orphan*/  isclosecap (TYPE_6__*) ; 
- int /*<<< orphan*/  isfullcap (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nextcap (TYPE_4__*) ; 
+
+ scalar_t__ Csimple ;
+ int MAXSTRCAPS ;
+ scalar_t__ captype (TYPE_6__*) ;
+ int closeaddr (TYPE_6__*) ;
+ int isclosecap (TYPE_6__*) ;
+ int isfullcap (int ) ;
+ int nextcap (TYPE_4__*) ;
 
 __attribute__((used)) static int getstrcaps (CapState *cs, StrAux *cps, int n) {
   int k = n++;
-  cps[k].isstring = 1;  /* get string value */
-  cps[k].u.s.s = cs->cap->s;  /* starts here */
-  if (!isfullcap(cs->cap++)) {  /* nested captures? */
-    while (!isclosecap(cs->cap)) {  /* traverse them */
-      if (n >= MAXSTRCAPS)  /* too many captures? */
-        nextcap(cs);  /* skip extra captures (will not need them) */
-      else if (captype(cs->cap) == Csimple)  /* string? */
-        n = getstrcaps(cs, cps, n);  /* put info. into array */
+  cps[k].isstring = 1;
+  cps[k].u.s.s = cs->cap->s;
+  if (!isfullcap(cs->cap++)) {
+    while (!isclosecap(cs->cap)) {
+      if (n >= MAXSTRCAPS)
+        nextcap(cs);
+      else if (captype(cs->cap) == Csimple)
+        n = getstrcaps(cs, cps, n);
       else {
-        cps[n].isstring = 0;  /* not a string */
-        cps[n].u.cp = cs->cap;  /* keep original capture */
+        cps[n].isstring = 0;
+        cps[n].u.cp = cs->cap;
         nextcap(cs);
         n++;
       }
     }
-    cs->cap++;  /* skip close */
+    cs->cap++;
   }
-  cps[k].u.s.e = closeaddr(cs->cap - 1);  /* ends here */
+  cps[k].u.s.e = closeaddr(cs->cap - 1);
   return n;
 }

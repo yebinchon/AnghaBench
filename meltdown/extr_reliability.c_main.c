@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int retries; int measurements; size_t physical_offset; } ;
-typedef  TYPE_1__ libkdump_config_t ;
+typedef TYPE_1__ libkdump_config_t ;
 
-/* Variables and functions */
- size_t DEFAULT_PHYSICAL_OFFSET ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fflush (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  libkdump_cleanup () ; 
- int /*<<< orphan*/  libkdump_enable_debug (int /*<<< orphan*/ ) ; 
- TYPE_1__ libkdump_get_autoconfig () ; 
- int /*<<< orphan*/  libkdump_init (TYPE_1__) ; 
- size_t libkdump_phys_to_virt (size_t) ; 
- int libkdump_read (size_t) ; 
- size_t libkdump_virt_to_phys (size_t) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int rand () ; 
- int /*<<< orphan*/  srand (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stdout ; 
- size_t strtoull (char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  time (int /*<<< orphan*/ *) ; 
+
+ size_t DEFAULT_PHYSICAL_OFFSET ;
+ int exit (int) ;
+ int fflush (int ) ;
+ int libkdump_cleanup () ;
+ int libkdump_enable_debug (int ) ;
+ TYPE_1__ libkdump_get_autoconfig () ;
+ int libkdump_init (TYPE_1__) ;
+ size_t libkdump_phys_to_virt (size_t) ;
+ int libkdump_read (size_t) ;
+ size_t libkdump_virt_to_phys (size_t) ;
+ int printf (char*,...) ;
+ int rand () ;
+ int srand (int ) ;
+ int stdout ;
+ size_t strtoull (char*,int *,int ) ;
+ int time (int *) ;
 
 int main(int argc, char *argv[]) {
   size_t scratch[4096];
@@ -40,10 +40,10 @@ int main(int argc, char *argv[]) {
   unsigned char secret = 'X';
 
   if(argc == 2) {
-    offset = strtoull(argv[1], NULL, 0);
+    offset = strtoull(argv[1], ((void*)0), 0);
     printf("\x1b[33;1m[+]\x1b[0m Setting physical offset to 0x%zx\n", offset);
   }
-  
+
   libkdump_enable_debug(0);
 
   config = libkdump_get_autoconfig();
@@ -61,8 +61,8 @@ int main(int argc, char *argv[]) {
     printf("\x1b[31;1m[!]\x1b[0m Program requires root privileges (or read access to /proc/<pid>/pagemap)!\n");
     exit(1);
   }
-  
-  srand(time(NULL));
+
+  srand(time(((void*)0)));
 
   size_t correct = 0, wrong = 0, failcounter = 0;
   size_t phys = libkdump_phys_to_virt(start);

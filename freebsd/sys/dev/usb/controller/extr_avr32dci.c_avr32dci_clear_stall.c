@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct usb_endpoint_descriptor {int bEndpointAddress; int bmAttributes; } ;
 struct usb_endpoint {struct usb_endpoint_descriptor* edesc; } ;
 struct TYPE_2__ {scalar_t__ usb_mode; } ;
-struct usb_device {int /*<<< orphan*/  bus; TYPE_1__ flags; } ;
+struct usb_device {int bus; TYPE_1__ flags; } ;
 struct avr32dci_softc {int dummy; } ;
 
-/* Variables and functions */
- struct avr32dci_softc* AVR32_BUS2SC (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DPRINTFN (int,char*,struct usb_endpoint*) ; 
- int /*<<< orphan*/  MA_OWNED ; 
- int UE_ADDR ; 
- int UE_DIR_IN ; 
- int UE_DIR_OUT ; 
- int UE_XFERTYPE ; 
- int /*<<< orphan*/  USB_BUS_LOCK_ASSERT (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ USB_MODE_DEVICE ; 
- int /*<<< orphan*/  avr32dci_clear_stall_sub (struct avr32dci_softc*,int,int,int) ; 
+
+ struct avr32dci_softc* AVR32_BUS2SC (int ) ;
+ int DPRINTFN (int,char*,struct usb_endpoint*) ;
+ int MA_OWNED ;
+ int UE_ADDR ;
+ int UE_DIR_IN ;
+ int UE_DIR_OUT ;
+ int UE_XFERTYPE ;
+ int USB_BUS_LOCK_ASSERT (int ,int ) ;
+ scalar_t__ USB_MODE_DEVICE ;
+ int avr32dci_clear_stall_sub (struct avr32dci_softc*,int,int,int) ;
 
 __attribute__((used)) static void
 avr32dci_clear_stall(struct usb_device *udev, struct usb_endpoint *pipe)
 {
-	struct avr32dci_softc *sc;
-	struct usb_endpoint_descriptor *ed;
+ struct avr32dci_softc *sc;
+ struct usb_endpoint_descriptor *ed;
 
-	DPRINTFN(5, "pipe=%p\n", pipe);
+ DPRINTFN(5, "pipe=%p\n", pipe);
 
-	USB_BUS_LOCK_ASSERT(udev->bus, MA_OWNED);
+ USB_BUS_LOCK_ASSERT(udev->bus, MA_OWNED);
 
-	/* check mode */
-	if (udev->flags.usb_mode != USB_MODE_DEVICE) {
-		/* not supported */
-		return;
-	}
-	/* get softc */
-	sc = AVR32_BUS2SC(udev->bus);
 
-	/* get endpoint descriptor */
-	ed = pipe->edesc;
+ if (udev->flags.usb_mode != USB_MODE_DEVICE) {
 
-	/* reset endpoint */
-	avr32dci_clear_stall_sub(sc,
-	    (ed->bEndpointAddress & UE_ADDR),
-	    (ed->bmAttributes & UE_XFERTYPE),
-	    (ed->bEndpointAddress & (UE_DIR_IN | UE_DIR_OUT)));
+  return;
+ }
+
+ sc = AVR32_BUS2SC(udev->bus);
+
+
+ ed = pipe->edesc;
+
+
+ avr32dci_clear_stall_sub(sc,
+     (ed->bEndpointAddress & UE_ADDR),
+     (ed->bmAttributes & UE_XFERTYPE),
+     (ed->bEndpointAddress & (UE_DIR_IN | UE_DIR_OUT)));
 }

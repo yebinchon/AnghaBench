@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct task_struct {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TIF_LOAD_WATCH ; 
- int /*<<< orphan*/  clear_tsk_thread_flag (struct task_struct*,int /*<<< orphan*/ ) ; 
+
+ int TIF_LOAD_WATCH ;
+ int clear_tsk_thread_flag (struct task_struct*,int ) ;
 
 void ptrace_disable(struct task_struct *child)
 {
-	/* Don't load the watchpoint registers for the ex-child. */
-	clear_tsk_thread_flag(child, TIF_LOAD_WATCH);
+
+ clear_tsk_thread_flag(child, TIF_LOAD_WATCH);
 }

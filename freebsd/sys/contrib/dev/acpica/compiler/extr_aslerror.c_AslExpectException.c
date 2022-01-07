@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int UINT32 ;
-struct TYPE_2__ {int MessageId; char* MessageIdStr; int /*<<< orphan*/  MessageReceived; } ;
-typedef  int /*<<< orphan*/  ACPI_STATUS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AE_BAD_PARAMETER ; 
- int /*<<< orphan*/  AE_LIMIT ; 
- int /*<<< orphan*/  AE_OK ; 
- int ASL_MAX_DISABLED_MESSAGES ; 
- size_t ASL_MAX_EXPECTED_MESSAGES ; 
- TYPE_1__* AslGbl_ExpectedMessages ; 
- size_t AslGbl_ExpectedMessagesIndex ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- scalar_t__ strtoul (char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int UINT32 ;
+struct TYPE_2__ {int MessageId; char* MessageIdStr; int MessageReceived; } ;
+typedef int ACPI_STATUS ;
+
+
+ int AE_BAD_PARAMETER ;
+ int AE_LIMIT ;
+ int AE_OK ;
+ int ASL_MAX_DISABLED_MESSAGES ;
+ size_t ASL_MAX_EXPECTED_MESSAGES ;
+ TYPE_1__* AslGbl_ExpectedMessages ;
+ size_t AslGbl_ExpectedMessagesIndex ;
+ int FALSE ;
+ int printf (char*,...) ;
+ scalar_t__ strtoul (char*,int *,int ) ;
 
 ACPI_STATUS
 AslExpectException (
-    char                    *MessageIdString)
+    char *MessageIdString)
 {
-    UINT32                  MessageId;
+    UINT32 MessageId;
 
 
-    /* Convert argument to an integer and validate it */
 
-    MessageId = (UINT32) strtoul (MessageIdString, NULL, 0);
+
+    MessageId = (UINT32) strtoul (MessageIdString, ((void*)0), 0);
 
     if (MessageId > 6999)
     {
@@ -45,7 +45,7 @@ AslExpectException (
         return (AE_BAD_PARAMETER);
     }
 
-    /* Insert value into the global expected message array */
+
 
     if (AslGbl_ExpectedMessagesIndex >= ASL_MAX_EXPECTED_MESSAGES)
     {

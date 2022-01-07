@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int off64_t ;
-typedef  int /*<<< orphan*/  data ;
-typedef  int /*<<< orphan*/  ar_stream ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SEEK_SET ; 
- scalar_t__ SIG_LOCAL_FILE_HEADER ; 
- int ZIP_LOCAL_ENTRY_FIXED_SIZE ; 
- scalar_t__ ar_read (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  ar_seek (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memmove (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- scalar_t__ uint32le (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int uint8_t ;
+typedef int off64_t ;
+typedef int data ;
+typedef int ar_stream ;
+
+
+ int SEEK_SET ;
+ scalar_t__ SIG_LOCAL_FILE_HEADER ;
+ int ZIP_LOCAL_ENTRY_FIXED_SIZE ;
+ scalar_t__ ar_read (int *,int *,int) ;
+ int ar_seek (int *,int,int ) ;
+ int memmove (int *,int *,int) ;
+ scalar_t__ uint32le (int *) ;
 
 off64_t zip_find_next_local_file_entry(ar_stream *stream, off64_t offset)
 {

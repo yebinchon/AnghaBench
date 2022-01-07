@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_19__   TYPE_6__ ;
-typedef  struct TYPE_18__   TYPE_5__ ;
-typedef  struct TYPE_17__   TYPE_4__ ;
-typedef  struct TYPE_16__   TYPE_3__ ;
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
+
+
+typedef struct TYPE_19__ TYPE_6__ ;
+typedef struct TYPE_18__ TYPE_5__ ;
+typedef struct TYPE_17__ TYPE_4__ ;
+typedef struct TYPE_16__ TYPE_3__ ;
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_19__ {int nb_objects; int nb_layers; TYPE_5__* layers; TYPE_1__* objects; } ;
 struct TYPE_18__ {int nb_planes; TYPE_2__* planes; } ;
-struct TYPE_17__ {int /*<<< orphan*/  hw_frames_ctx; int /*<<< orphan*/  height; int /*<<< orphan*/  width; int /*<<< orphan*/ * linesize; int /*<<< orphan*/ ** data; } ;
-struct TYPE_16__ {int nb_regions; int /*<<< orphan*/ * length; void** address; } ;
-struct TYPE_15__ {size_t object_index; int offset; int /*<<< orphan*/  pitch; } ;
-struct TYPE_14__ {int /*<<< orphan*/  size; int /*<<< orphan*/  fd; } ;
-typedef  TYPE_3__ DRMMapping ;
-typedef  int /*<<< orphan*/  AVHWFramesContext ;
-typedef  TYPE_4__ AVFrame ;
-typedef  TYPE_5__ AVDRMLayerDescriptor ;
-typedef  TYPE_6__ AVDRMFrameDescriptor ;
+struct TYPE_17__ {int hw_frames_ctx; int height; int width; int * linesize; int ** data; } ;
+struct TYPE_16__ {int nb_regions; int * length; void** address; } ;
+struct TYPE_15__ {size_t object_index; int offset; int pitch; } ;
+struct TYPE_14__ {int size; int fd; } ;
+typedef TYPE_3__ DRMMapping ;
+typedef int AVHWFramesContext ;
+typedef TYPE_4__ AVFrame ;
+typedef TYPE_5__ AVDRMLayerDescriptor ;
+typedef TYPE_6__ AVDRMFrameDescriptor ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AV_DRM_MAX_PLANES ; 
- int AV_HWFRAME_MAP_READ ; 
- int AV_HWFRAME_MAP_WRITE ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  ENOMEM ; 
- void* MAP_FAILED ; 
- int /*<<< orphan*/  MAP_SHARED ; 
- int PROT_READ ; 
- int PROT_WRITE ; 
- int /*<<< orphan*/  av_assert0 (int) ; 
- int /*<<< orphan*/  av_free (TYPE_3__*) ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_3__* av_mallocz (int) ; 
- int /*<<< orphan*/  drm_unmap_frame ; 
- int /*<<< orphan*/  errno ; 
- int ff_hwframe_map_create (int /*<<< orphan*/ ,TYPE_4__*,TYPE_4__ const*,int /*<<< orphan*/ *,TYPE_3__*) ; 
- void* mmap (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  munmap (void*,int /*<<< orphan*/ ) ; 
+
+ int AVERROR (int ) ;
+ int AV_DRM_MAX_PLANES ;
+ int AV_HWFRAME_MAP_READ ;
+ int AV_HWFRAME_MAP_WRITE ;
+ int AV_LOG_ERROR ;
+ int ENOMEM ;
+ void* MAP_FAILED ;
+ int MAP_SHARED ;
+ int PROT_READ ;
+ int PROT_WRITE ;
+ int av_assert0 (int) ;
+ int av_free (TYPE_3__*) ;
+ int av_log (int *,int ,char*,int ,int ) ;
+ TYPE_3__* av_mallocz (int) ;
+ int drm_unmap_frame ;
+ int errno ;
+ int ff_hwframe_map_create (int ,TYPE_4__*,TYPE_4__ const*,int *,TYPE_3__*) ;
+ void* mmap (int *,int ,int,int ,int ,int ) ;
+ int munmap (void*,int ) ;
 
 __attribute__((used)) static int drm_map_frame(AVHWFramesContext *hwfc,
                          AVFrame *dst, const AVFrame *src, int flags)
@@ -71,7 +71,7 @@ __attribute__((used)) static int drm_map_frame(AVHWFramesContext *hwfc,
 
     av_assert0(desc->nb_objects <= AV_DRM_MAX_PLANES);
     for (i = 0; i < desc->nb_objects; i++) {
-        addr = mmap(NULL, desc->objects[i].size, mmap_prot, MAP_SHARED,
+        addr = mmap(((void*)0), desc->objects[i].size, mmap_prot, MAP_SHARED,
                     desc->objects[i].fd, 0);
         if (addr == MAP_FAILED) {
             err = AVERROR(errno);
@@ -81,7 +81,7 @@ __attribute__((used)) static int drm_map_frame(AVHWFramesContext *hwfc,
         }
 
         map->address[i] = addr;
-        map->length[i]  = desc->objects[i].size;
+        map->length[i] = desc->objects[i].size;
     }
     map->nb_regions = i;
 
@@ -92,13 +92,13 @@ __attribute__((used)) static int drm_map_frame(AVHWFramesContext *hwfc,
             dst->data[plane] =
                 (uint8_t*)map->address[layer->planes[p].object_index] +
                                        layer->planes[p].offset;
-            dst->linesize[plane] =     layer->planes[p].pitch;
+            dst->linesize[plane] = layer->planes[p].pitch;
             ++plane;
         }
     }
     av_assert0(plane <= AV_DRM_MAX_PLANES);
 
-    dst->width  = src->width;
+    dst->width = src->width;
     dst->height = src->height;
 
     err = ff_hwframe_map_create(src->hw_frames_ctx, dst, src,

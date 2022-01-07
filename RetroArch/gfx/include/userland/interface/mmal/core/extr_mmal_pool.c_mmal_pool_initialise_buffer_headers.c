@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_11__ {TYPE_1__* priv; scalar_t__ alloc_size; int /*<<< orphan*/ * data; } ;
-struct TYPE_10__ {int header_size; scalar_t__ payload_size; int /*<<< orphan*/  (* allocator_free ) (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ;int /*<<< orphan*/  allocator_context; scalar_t__ (* allocator_alloc ) (int /*<<< orphan*/ ,scalar_t__) ;} ;
+
+
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_11__ {TYPE_1__* priv; scalar_t__ alloc_size; int * data; } ;
+struct TYPE_10__ {int header_size; scalar_t__ payload_size; int (* allocator_free ) (int ,int *) ;int allocator_context; scalar_t__ (* allocator_alloc ) (int ,scalar_t__) ;} ;
 struct TYPE_9__ {unsigned int headers_num; TYPE_4__** header; } ;
-struct TYPE_8__ {int refcount; scalar_t__ payload_size; int /*<<< orphan*/  (* pf_payload_free ) (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ;int /*<<< orphan*/  payload_context; int /*<<< orphan*/ * payload; void* owner; int /*<<< orphan*/  pf_release; } ;
-typedef  int /*<<< orphan*/  MMAL_STATUS_T ;
-typedef  TYPE_2__ MMAL_POOL_T ;
-typedef  TYPE_3__ MMAL_POOL_PRIVATE_T ;
-typedef  TYPE_4__ MMAL_BUFFER_HEADER_T ;
-typedef  scalar_t__ MMAL_BOOL_T ;
+struct TYPE_8__ {int refcount; scalar_t__ payload_size; int (* pf_payload_free ) (int ,int *) ;int payload_context; int * payload; void* owner; int pf_release; } ;
+typedef int MMAL_STATUS_T ;
+typedef TYPE_2__ MMAL_POOL_T ;
+typedef TYPE_3__ MMAL_POOL_PRIVATE_T ;
+typedef TYPE_4__ MMAL_BUFFER_HEADER_T ;
+typedef scalar_t__ MMAL_BOOL_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ALIGN ; 
- int /*<<< orphan*/  LOG_ERROR (char*,unsigned int,unsigned int) ; 
- int /*<<< orphan*/  LOG_TRACE (char*,scalar_t__,unsigned int,unsigned int) ; 
- int /*<<< orphan*/  MMAL_ENOMEM ; 
- int /*<<< orphan*/  MMAL_SUCCESS ; 
- int ROUND_UP (int,int /*<<< orphan*/ ) ; 
- TYPE_4__* mmal_buffer_header_initialise (TYPE_4__*,int) ; 
- int /*<<< orphan*/  mmal_pool_buffer_header_release ; 
- scalar_t__ stub1 (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int ALIGN ;
+ int LOG_ERROR (char*,unsigned int,unsigned int) ;
+ int LOG_TRACE (char*,scalar_t__,unsigned int,unsigned int) ;
+ int MMAL_ENOMEM ;
+ int MMAL_SUCCESS ;
+ int ROUND_UP (int,int ) ;
+ TYPE_4__* mmal_buffer_header_initialise (TYPE_4__*,int) ;
+ int mmal_pool_buffer_header_release ;
+ scalar_t__ stub1 (int ,scalar_t__) ;
+ int stub2 (int ,int *) ;
 
 __attribute__((used)) static MMAL_STATUS_T mmal_pool_initialise_buffer_headers(MMAL_POOL_T *pool, unsigned int headers,
                                                          MMAL_BOOL_T reinitialise)
 {
    MMAL_POOL_PRIVATE_T *private = (MMAL_POOL_PRIVATE_T *)pool;
    MMAL_BUFFER_HEADER_T *header;
-   uint8_t *payload = NULL;
+   uint8_t *payload = ((void*)0);
    unsigned int i;
 
    header = (MMAL_BUFFER_HEADER_T *)((uint8_t *)pool->header + ROUND_UP(sizeof(void *)*headers,ALIGN));

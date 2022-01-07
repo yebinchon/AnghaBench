@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Relation ;
-typedef  int /*<<< orphan*/  Oid ;
 
-/* Variables and functions */
- scalar_t__ PointerIsValid (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RelationFlushRelation (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RelationIdCacheLookup (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  relcacheInvalsReceived ; 
+
+
+
+typedef int Relation ;
+typedef int Oid ;
+
+
+ scalar_t__ PointerIsValid (int ) ;
+ int RelationFlushRelation (int ) ;
+ int RelationIdCacheLookup (int ,int ) ;
+ int relcacheInvalsReceived ;
 
 void
 RelationCacheInvalidateEntry(Oid relationId)
 {
-	Relation	relation;
+ Relation relation;
 
-	RelationIdCacheLookup(relationId, relation);
+ RelationIdCacheLookup(relationId, relation);
 
-	if (PointerIsValid(relation))
-	{
-		relcacheInvalsReceived++;
-		RelationFlushRelation(relation);
-	}
+ if (PointerIsValid(relation))
+ {
+  relcacheInvalsReceived++;
+  RelationFlushRelation(relation);
+ }
 }

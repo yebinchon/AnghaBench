@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  size_t u32 ;
 
-/* Variables and functions */
- int* UNITS ; 
- int /*<<< orphan*/  snprintf (char*,size_t,char*,double,...) ; 
+
+
+
+typedef size_t u32 ;
+
+
+ int* UNITS ;
+ int snprintf (char*,size_t,char*,double,...) ;
 
 void format_speed_display_1k (double val, char *buf, size_t len)
 {
@@ -36,7 +36,7 @@ void format_speed_display_1k (double val, char *buf, size_t len)
     level++;
   }
 
-  /* generate output */
+
 
   if (level == 0)
   {

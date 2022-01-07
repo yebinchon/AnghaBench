@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  TabPageObject ;
-typedef  int /*<<< orphan*/  PyObject ;
 
-/* Variables and functions */
- scalar_t__ CheckTabPage (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GET_ATTR_STRING (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ PyErr_Occurred () ; 
- int /*<<< orphan*/ * PyObject_GenericGetAttr (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * TabPageAttr (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * TabPageAttrValid (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  name ; 
+
+
+
+typedef int TabPageObject ;
+typedef int PyObject ;
+
+
+ scalar_t__ CheckTabPage (int *) ;
+ int GET_ATTR_STRING (int ,int *) ;
+ scalar_t__ PyErr_Occurred () ;
+ int * PyObject_GenericGetAttr (int *,int *) ;
+ int * TabPageAttr (int *,int ) ;
+ int * TabPageAttrValid (int *,int ) ;
+ int name ;
 
 __attribute__((used)) static PyObject *
 TabPageGetattro(PyObject *self, PyObject *nameobj)
@@ -30,14 +30,14 @@ TabPageGetattro(PyObject *self, PyObject *nameobj)
     GET_ATTR_STRING(name, nameobj);
 
     if ((r = TabPageAttrValid((TabPageObject *)(self), name)))
-	return r;
+ return r;
 
     if (CheckTabPage((TabPageObject *)(self)))
-	return NULL;
+ return ((void*)0);
 
     r = TabPageAttr((TabPageObject *)(self), name);
     if (r || PyErr_Occurred())
-	return r;
+ return r;
     else
-	return PyObject_GenericGetAttr(self, nameobj);
+ return PyObject_GenericGetAttr(self, nameobj);
 }

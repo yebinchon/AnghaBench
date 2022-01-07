@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct wined3d_context {struct glsl_context_data* shader_backend_data; } ;
-struct glsl_context_data {int /*<<< orphan*/  vertex_color_clamp; } ;
-typedef  int /*<<< orphan*/  BOOL ;
+struct glsl_context_data {int vertex_color_clamp; } ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GL_FIXED_ONLY_ARB ; 
- int /*<<< orphan*/  TRUE ; 
- struct glsl_context_data* heap_alloc_zero (int) ; 
+
+ int FALSE ;
+ int GL_FIXED_ONLY_ARB ;
+ int TRUE ;
+ struct glsl_context_data* heap_alloc_zero (int) ;
 
 __attribute__((used)) static BOOL shader_glsl_allocate_context_data(struct wined3d_context *context)
 {

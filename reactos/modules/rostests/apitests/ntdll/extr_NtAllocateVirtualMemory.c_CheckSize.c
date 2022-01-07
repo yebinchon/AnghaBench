@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VOID ;
-typedef  int ULONG_PTR ;
-typedef  scalar_t__ SIZE_T ;
-typedef  scalar_t__ PVOID ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MEM_RELEASE ; 
- int /*<<< orphan*/  MEM_RESERVE ; 
- int /*<<< orphan*/  NT_SUCCESS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NtAllocateVirtualMemory (int /*<<< orphan*/ ,scalar_t__*,int /*<<< orphan*/ ,scalar_t__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NtCurrentProcess () ; 
- int /*<<< orphan*/  NtFreeVirtualMemory (int /*<<< orphan*/ ,scalar_t__*,scalar_t__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PAGE_NOACCESS ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
+
+
+
+typedef int VOID ;
+typedef int ULONG_PTR ;
+typedef scalar_t__ SIZE_T ;
+typedef scalar_t__ PVOID ;
+typedef int NTSTATUS ;
+
+
+ int MEM_RELEASE ;
+ int MEM_RESERVE ;
+ int NT_SUCCESS (int ) ;
+ int NtAllocateVirtualMemory (int ,scalar_t__*,int ,scalar_t__*,int ,int ) ;
+ int NtCurrentProcess () ;
+ int NtFreeVirtualMemory (int ,scalar_t__*,scalar_t__*,int ) ;
+ int PAGE_NOACCESS ;
+ int ok (int,char*,...) ;
 
 VOID
 CheckSize(ULONG_PTR Base, SIZE_T InSize, SIZE_T ExpectedSize)
@@ -33,7 +33,7 @@ CheckSize(ULONG_PTR Base, SIZE_T InSize, SIZE_T ExpectedSize)
     PVOID BaseAddress;
     SIZE_T Size;
 
-    /* Reserve memory */
+
     BaseAddress = (PVOID)Base;
     Size = InSize;
     Status = NtAllocateVirtualMemory(NtCurrentProcess(),

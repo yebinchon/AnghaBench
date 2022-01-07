@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sd_journal ;
 
-/* Variables and functions */
- int SD_JOURNAL_LOCAL_ONLY ; 
- char* arg_directory ; 
- scalar_t__ arg_file ; 
- scalar_t__ arg_journal_type ; 
- scalar_t__ arg_machine ; 
- int /*<<< orphan*/  arg_merge ; 
- int /*<<< orphan*/  log_error_errno (int,char*,char*) ; 
- int sd_journal_open (int /*<<< orphan*/ **,scalar_t__) ; 
- int sd_journal_open_container (int /*<<< orphan*/ **,scalar_t__,int /*<<< orphan*/ ) ; 
- int sd_journal_open_directory (int /*<<< orphan*/ **,char*,scalar_t__) ; 
- int sd_journal_open_files (int /*<<< orphan*/ **,char const**,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int sd_journal ;
+
+
+ int SD_JOURNAL_LOCAL_ONLY ;
+ char* arg_directory ;
+ scalar_t__ arg_file ;
+ scalar_t__ arg_journal_type ;
+ scalar_t__ arg_machine ;
+ int arg_merge ;
+ int log_error_errno (int,char*,char*) ;
+ int sd_journal_open (int **,scalar_t__) ;
+ int sd_journal_open_container (int **,scalar_t__,int ) ;
+ int sd_journal_open_directory (int **,char*,scalar_t__) ;
+ int sd_journal_open_files (int **,char const**,int ) ;
 
 __attribute__((used)) static int open_journal(sd_journal **j) {
         int r;

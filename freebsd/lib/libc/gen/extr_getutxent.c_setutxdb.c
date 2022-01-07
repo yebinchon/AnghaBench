@@ -1,82 +1,82 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct stat {int st_size; } ;
 struct futx {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BUFSIZ ; 
- int /*<<< orphan*/  EFTYPE ; 
- int /*<<< orphan*/  EINVAL ; 
-#define  UTXDB_ACTIVE 130 
-#define  UTXDB_LASTLOGIN 129 
-#define  UTXDB_LOG 128 
- int /*<<< orphan*/  _IOFBF ; 
- char* _PATH_UTX_ACTIVE ; 
- char* _PATH_UTX_LASTLOGIN ; 
- char* _PATH_UTX_LOG ; 
- int _fstat (int /*<<< orphan*/ ,struct stat*) ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fileno (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char const*,char*) ; 
- int /*<<< orphan*/  rounddown (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  setvbuf (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int udb ; 
- int /*<<< orphan*/ * uf ; 
+
+ int BUFSIZ ;
+ int EFTYPE ;
+ int EINVAL ;
+
+
+
+ int _IOFBF ;
+ char* _PATH_UTX_ACTIVE ;
+ char* _PATH_UTX_LASTLOGIN ;
+ char* _PATH_UTX_LOG ;
+ int _fstat (int ,struct stat*) ;
+ int errno ;
+ int fclose (int *) ;
+ int fileno (int *) ;
+ int * fopen (char const*,char*) ;
+ int rounddown (int ,int) ;
+ int setvbuf (int *,int *,int ,int ) ;
+ int udb ;
+ int * uf ;
 
 int
 setutxdb(int db, const char *file)
 {
-	struct stat sb;
+ struct stat sb;
 
-	switch (db) {
-	case UTXDB_ACTIVE:
-		if (file == NULL)
-			file = _PATH_UTX_ACTIVE;
-		break;
-	case UTXDB_LASTLOGIN:
-		if (file == NULL)
-			file = _PATH_UTX_LASTLOGIN;
-		break;
-	case UTXDB_LOG:
-		if (file == NULL)
-			file = _PATH_UTX_LOG;
-		break;
-	default:
-		errno = EINVAL;
-		return (-1);
-	}
+ switch (db) {
+ case 130:
+  if (file == ((void*)0))
+   file = _PATH_UTX_ACTIVE;
+  break;
+ case 129:
+  if (file == ((void*)0))
+   file = _PATH_UTX_LASTLOGIN;
+  break;
+ case 128:
+  if (file == ((void*)0))
+   file = _PATH_UTX_LOG;
+  break;
+ default:
+  errno = EINVAL;
+  return (-1);
+ }
 
-	if (uf != NULL)
-		fclose(uf);
-	uf = fopen(file, "re");
-	if (uf == NULL)
-		return (-1);
+ if (uf != ((void*)0))
+  fclose(uf);
+ uf = fopen(file, "re");
+ if (uf == ((void*)0))
+  return (-1);
 
-	if (db != UTXDB_LOG) {
-		/* Safety check: never use broken files. */
-		if (_fstat(fileno(uf), &sb) != -1 &&
-		    sb.st_size % sizeof(struct futx) != 0) {
-			fclose(uf);
-			uf = NULL;
-			errno = EFTYPE;
-			return (-1);
-		}
-		/* Prevent reading of partial records. */
-		(void)setvbuf(uf, NULL, _IOFBF,
-		    rounddown(BUFSIZ, sizeof(struct futx)));
-	}
+ if (db != 128) {
 
-	udb = db;
-	return (0);
+  if (_fstat(fileno(uf), &sb) != -1 &&
+      sb.st_size % sizeof(struct futx) != 0) {
+   fclose(uf);
+   uf = ((void*)0);
+   errno = EFTYPE;
+   return (-1);
+  }
+
+  (void)setvbuf(uf, ((void*)0), _IOFBF,
+      rounddown(BUFSIZ, sizeof(struct futx)));
+ }
+
+ udb = db;
+ return (0);
 }

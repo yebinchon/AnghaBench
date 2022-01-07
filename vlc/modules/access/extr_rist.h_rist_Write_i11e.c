@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ssize_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  rist_WriteTo_i11e (int,void const*,size_t,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int ssize_t ;
+
+
+ int rist_WriteTo_i11e (int,void const*,size_t,int *,int ) ;
 
 __attribute__((used)) static inline ssize_t rist_Write_i11e(int fd, const void *buf, size_t len)
 {
-    return rist_WriteTo_i11e(fd, buf, len, NULL, 0);
+    return rist_WriteTo_i11e(fd, buf, len, ((void*)0), 0);
 }

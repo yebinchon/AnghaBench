@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_5__ ;
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct gl_2d_map {double u1; double u2; double v1; double v2; int /*<<< orphan*/  Vorder; int /*<<< orphan*/  Uorder; int /*<<< orphan*/  Points; } ;
-struct TYPE_11__ {double* Normal; double* TexCoord; int /*<<< orphan*/  ByteColor; scalar_t__ Index; } ;
+
+
+typedef struct TYPE_12__ TYPE_5__ ;
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct gl_2d_map {double u1; double u2; double v1; double v2; int Vorder; int Uorder; int Points; } ;
+struct TYPE_11__ {double* Normal; double* TexCoord; int ByteColor; scalar_t__ Index; } ;
 struct TYPE_10__ {struct gl_2d_map Map2Texture1; struct gl_2d_map Map2Texture2; struct gl_2d_map Map2Texture3; struct gl_2d_map Map2Texture4; struct gl_2d_map Map2Normal; struct gl_2d_map Map2Color4; struct gl_2d_map Map2Index; struct gl_2d_map Map2Vertex3; struct gl_2d_map Map2Vertex4; } ;
 struct TYPE_9__ {scalar_t__ Map2TextureCoord1; scalar_t__ Map2TextureCoord2; scalar_t__ Map2TextureCoord3; scalar_t__ Map2TextureCoord4; scalar_t__ Map2Normal; scalar_t__ Map2Vertex4; scalar_t__ Map2Vertex3; scalar_t__ AutoNormal; scalar_t__ Map2Color4; scalar_t__ Map2Index; } ;
 struct TYPE_12__ {TYPE_4__ Current; TYPE_3__ EvalMap; TYPE_2__ Eval; TYPE_1__* Visual; } ;
 struct TYPE_8__ {double RedScale; double GreenScale; double BlueScale; double AlphaScale; } ;
-typedef  scalar_t__ GLuint ;
-typedef  scalar_t__ GLubyte ;
-typedef  scalar_t__ GLint ;
-typedef  double GLfloat ;
-typedef  TYPE_5__ GLcontext ;
+typedef scalar_t__ GLuint ;
+typedef scalar_t__ GLubyte ;
+typedef scalar_t__ GLint ;
+typedef double GLfloat ;
+typedef TYPE_5__ GLcontext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  COPY_4V (scalar_t__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CROSS_PROD (double*,double*,double*) ; 
- int /*<<< orphan*/  NORMALIZE_3FV (double*) ; 
- int /*<<< orphan*/  de_casteljau_surf (int /*<<< orphan*/ ,double*,double*,double*,double,double,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gl_eval_vertex (TYPE_5__*,double*,double*,scalar_t__*,scalar_t__,double*) ; 
- int /*<<< orphan*/  horner_bezier_surf (int /*<<< orphan*/ ,double*,double,double,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int COPY_4V (scalar_t__*,int ) ;
+ int CROSS_PROD (double*,double*,double*) ;
+ int NORMALIZE_3FV (double*) ;
+ int de_casteljau_surf (int ,double*,double*,double*,double,double,int,int ,int ) ;
+ int gl_eval_vertex (TYPE_5__*,double*,double*,scalar_t__*,scalar_t__,double*) ;
+ int horner_bezier_surf (int ,double*,double,double,int,int ,int ) ;
 
 void gl_EvalCoord2f( GLcontext* ctx, GLfloat u, GLfloat v )
 {
@@ -46,12 +46,12 @@ void gl_EvalCoord2f( GLcontext* ctx, GLfloat u, GLfloat v )
    GLuint index;
    register GLfloat uu, vv;
 
-#define CROSS_PROD(n, u, v) \
-  (n)[0] = (u)[1]*(v)[2] - (u)[2]*(v)[1]; \
-  (n)[1] = (u)[2]*(v)[0] - (u)[0]*(v)[2]; \
-  (n)[2] = (u)[0]*(v)[1] - (u)[1]*(v)[0]
 
-   /** Vertex **/
+
+
+
+
+
    if(ctx->Eval.Map2Vertex4) {
       struct gl_2d_map *map = &ctx->EvalMap.Map2Vertex4;
       uu = (u - map->u1) / (map->u2 - map->u1);
@@ -63,7 +63,7 @@ void gl_EvalCoord2f( GLcontext* ctx, GLfloat u, GLfloat v )
          de_casteljau_surf(map->Points, vertex, du, dv, uu, vv, 4,
                            map->Uorder, map->Vorder);
 
-         CROSS_PROD(normal, du, dv);
+         (normal)[0] = (du)[1]*(dv)[2] - (du)[2]*(dv)[1]; (normal)[1] = (du)[2]*(dv)[0] - (du)[0]*(dv)[2]; (normal)[2] = (du)[0]*(dv)[1] - (du)[1]*(dv)[0];
          NORMALIZE_3FV(normal);
       }
       else {
@@ -79,7 +79,7 @@ void gl_EvalCoord2f( GLcontext* ctx, GLfloat u, GLfloat v )
          GLfloat du[3], dv[3];
          de_casteljau_surf(map->Points, vertex, du, dv, uu, vv, 3,
                            map->Uorder, map->Vorder);
-         CROSS_PROD(normal, du, dv);
+         (normal)[0] = (du)[1]*(dv)[2] - (du)[2]*(dv)[1]; (normal)[1] = (du)[2]*(dv)[0] - (du)[0]*(dv)[2]; (normal)[2] = (du)[0]*(dv)[1] - (du)[1]*(dv)[0];
          NORMALIZE_3FV(normal);
       }
       else {
@@ -88,9 +88,9 @@ void gl_EvalCoord2f( GLcontext* ctx, GLfloat u, GLfloat v )
       }
       vertex[3] = 1.0;
    }
-#undef CROSS_PROD
-   
-   /** Color Index **/
+
+
+
    if (ctx->Eval.Map2Index) {
       GLfloat findex;
       struct gl_2d_map *map = &ctx->EvalMap.Map2Index;
@@ -104,7 +104,7 @@ void gl_EvalCoord2f( GLcontext* ctx, GLfloat u, GLfloat v )
       index = ctx->Current.Index;
    }
 
-   /** Color **/
+
    if (ctx->Eval.Map2Color4) {
       struct gl_2d_map *map = &ctx->EvalMap.Map2Color4;
       uu = (u - map->u1) / (map->u2 - map->u1);
@@ -123,7 +123,7 @@ void gl_EvalCoord2f( GLcontext* ctx, GLfloat u, GLfloat v )
      colorptr = col;
    }
 
-   /** Normal **/
+
    if (!ctx->Eval.AutoNormal
        || (!ctx->Eval.Map2Vertex3 && !ctx->Eval.Map2Vertex4)) {
       if (ctx->Eval.Map2Normal) {
@@ -140,7 +140,7 @@ void gl_EvalCoord2f( GLcontext* ctx, GLfloat u, GLfloat v )
       }
    }
 
-   /** Texture Coordinates **/
+
    if (ctx->Eval.Map2TextureCoord4) {
       struct gl_2d_map *map = &ctx->EvalMap.Map2Texture4;
       uu = (u - map->u1) / (map->u2 - map->u1);
@@ -175,7 +175,7 @@ void gl_EvalCoord2f( GLcontext* ctx, GLfloat u, GLfloat v )
      texcoord[2] = 0.0;
      texcoord[3] = 1.0;
    }
-   else 
+   else
    {
      texcoord[0] = ctx->Current.TexCoord[0];
      texcoord[1] = ctx->Current.TexCoord[1];

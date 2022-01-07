@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  jstring ;
-typedef  int /*<<< orphan*/  jfieldID ;
-typedef  int /*<<< orphan*/  jclass ;
-struct TYPE_9__ {char* (* GetStringUTFChars ) (TYPE_1__**,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* DeleteLocalRef ) (TYPE_1__**,int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* ReleaseStringUTFChars ) (TYPE_1__**,int /*<<< orphan*/ ,char const*) ;int /*<<< orphan*/  (* GetStaticObjectField ) (TYPE_1__**,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* GetStaticFieldID ) (TYPE_1__**,int /*<<< orphan*/ ,char*,char*) ;int /*<<< orphan*/  (* FindClass ) (TYPE_1__**,char*) ;} ;
-typedef  TYPE_1__* JNIEnv ;
 
-/* Variables and functions */
- scalar_t__ CHECK_EXCEPTION () ; 
- char* strdup (char const*) ; 
- int /*<<< orphan*/  stub1 (TYPE_1__**,char*) ; 
- int /*<<< orphan*/  stub2 (TYPE_1__**,int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  stub3 (TYPE_1__**,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- char* stub4 (TYPE_1__**,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub5 (TYPE_1__**,int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  stub6 (TYPE_1__**,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int jstring ;
+typedef int jfieldID ;
+typedef int jclass ;
+struct TYPE_9__ {char* (* GetStringUTFChars ) (TYPE_1__**,int ,int ) ;int (* DeleteLocalRef ) (TYPE_1__**,int ) ;int (* ReleaseStringUTFChars ) (TYPE_1__**,int ,char const*) ;int (* GetStaticObjectField ) (TYPE_1__**,int ,int ) ;int (* GetStaticFieldID ) (TYPE_1__**,int ,char*,char*) ;int (* FindClass ) (TYPE_1__**,char*) ;} ;
+typedef TYPE_1__* JNIEnv ;
+
+
+ scalar_t__ CHECK_EXCEPTION () ;
+ char* strdup (char const*) ;
+ int stub1 (TYPE_1__**,char*) ;
+ int stub2 (TYPE_1__**,int ,char*,char*) ;
+ int stub3 (TYPE_1__**,int ,int ) ;
+ char* stub4 (TYPE_1__**,int ,int ) ;
+ int stub5 (TYPE_1__**,int ,char const*) ;
+ int stub6 (TYPE_1__**,int ) ;
 
 __attribute__((used)) static char *GetManufacturer(JNIEnv *env)
 {
-    char *manufacturer = NULL;
+    char *manufacturer = ((void*)0);
 
     jclass clazz = (*env)->FindClass(env, "android/os/Build");
     if (CHECK_EXCEPTION())
-        return NULL;
+        return ((void*)0);
 
     jfieldID id = (*env)->GetStaticFieldID(env, clazz, "MANUFACTURER",
                                            "Ljava/lang/String;");

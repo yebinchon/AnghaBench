@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u16 ;
+
+
+
+
+typedef int u16 ;
 struct net_device {int dummy; } ;
-struct enic {int /*<<< orphan*/  devcmd_lock; } ;
+struct enic {int devcmd_lock; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  enic_add_vlan (struct enic*,int /*<<< orphan*/ ) ; 
- struct enic* netdev_priv (struct net_device*) ; 
- int /*<<< orphan*/  spin_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock (int /*<<< orphan*/ *) ; 
+
+ int enic_add_vlan (struct enic*,int ) ;
+ struct enic* netdev_priv (struct net_device*) ;
+ int spin_lock (int *) ;
+ int spin_unlock (int *) ;
 
 void enic_vlan_rx_add_vid(struct net_device *netdev, u16 vid)
 {
-	struct enic *enic = netdev_priv(netdev);
+ struct enic *enic = netdev_priv(netdev);
 
-	spin_lock(&enic->devcmd_lock);
-	enic_add_vlan(enic, vid);
-	spin_unlock(&enic->devcmd_lock);
+ spin_lock(&enic->devcmd_lock);
+ enic_add_vlan(enic, vid);
+ spin_unlock(&enic->devcmd_lock);
 }

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  priv_key; int /*<<< orphan*/  pub_key; int /*<<< orphan*/  group; } ;
-typedef  TYPE_1__ EC_KEY ;
 
-/* Variables and functions */
- int EC_POINT_mul (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int priv_key; int pub_key; int group; } ;
+typedef TYPE_1__ EC_KEY ;
+
+
+ int EC_POINT_mul (int ,int ,int ,int *,int *,int *) ;
 
 int ec_key_simple_generate_public_key(EC_KEY *eckey)
 {
-    return EC_POINT_mul(eckey->group, eckey->pub_key, eckey->priv_key, NULL,
-                        NULL, NULL);
+    return EC_POINT_mul(eckey->group, eckey->pub_key, eckey->priv_key, ((void*)0),
+                        ((void*)0), ((void*)0));
 }

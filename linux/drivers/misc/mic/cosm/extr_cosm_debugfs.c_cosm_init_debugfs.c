@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  KBUILD_MODNAME ; 
- int /*<<< orphan*/  cosm_dbg ; 
- int /*<<< orphan*/  debugfs_create_dir (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+ int KBUILD_MODNAME ;
+ int cosm_dbg ;
+ int debugfs_create_dir (int ,int *) ;
 
 void cosm_init_debugfs(void)
 {
-	cosm_dbg = debugfs_create_dir(KBUILD_MODNAME, NULL);
+ cosm_dbg = debugfs_create_dir(KBUILD_MODNAME, ((void*)0));
 }

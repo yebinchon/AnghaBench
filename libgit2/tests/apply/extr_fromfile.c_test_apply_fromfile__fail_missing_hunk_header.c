@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  git_patch ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PATCH_CORRUPT_MISSING_HUNK_HEADER ; 
- int /*<<< orphan*/  cl_git_fail (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  git_patch_from_buffer (int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strlen (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int git_patch ;
+
+
+ int PATCH_CORRUPT_MISSING_HUNK_HEADER ;
+ int cl_git_fail (int ) ;
+ int git_patch_from_buffer (int **,int ,int ,int *) ;
+ int strlen (int ) ;
 
 void test_apply_fromfile__fail_missing_hunk_header(void)
 {
-	git_patch *patch;
-	cl_git_fail(git_patch_from_buffer(&patch,
-		PATCH_CORRUPT_MISSING_HUNK_HEADER,
-		strlen(PATCH_CORRUPT_MISSING_HUNK_HEADER), NULL));
+ git_patch *patch;
+ cl_git_fail(git_patch_from_buffer(&patch,
+  PATCH_CORRUPT_MISSING_HUNK_HEADER,
+  strlen(PATCH_CORRUPT_MISSING_HUNK_HEADER), ((void*)0)));
 }

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ parameters; scalar_t__ slave_parameters; } ;
-typedef  TYPE_1__ svn_auth_baton_t ;
+typedef TYPE_1__ svn_auth_baton_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  auth_NULL ; 
- int /*<<< orphan*/  svn_hash_sets (scalar_t__,char const*,void const*) ; 
+
+ int auth_NULL ;
+ int svn_hash_sets (scalar_t__,char const*,void const*) ;
 
 void
 svn_auth_set_parameter(svn_auth_baton_t *auth_baton,

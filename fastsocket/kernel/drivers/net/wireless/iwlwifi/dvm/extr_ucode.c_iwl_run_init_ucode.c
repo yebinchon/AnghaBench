@@ -1,88 +1,88 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-struct iwl_priv {int init_ucode_run; int ucode_loaded; int /*<<< orphan*/  trans; int /*<<< orphan*/  notif_wait; TYPE_3__* fw; int /*<<< orphan*/  mutex; } ;
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int u8 ;
+struct iwl_priv {int init_ucode_run; int ucode_loaded; int trans; int notif_wait; TYPE_3__* fw; int mutex; } ;
 struct iwl_notification_wait {int dummy; } ;
 struct TYPE_6__ {TYPE_2__* img; } ;
 struct TYPE_5__ {TYPE_1__* sec; } ;
-struct TYPE_4__ {int /*<<< orphan*/  len; } ;
+struct TYPE_4__ {int len; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAY_SIZE (int /*<<< orphan*/  const*) ; 
-#define  CALIBRATION_COMPLETE_NOTIFICATION 129 
-#define  CALIBRATION_RES_NOTIFICATION 128 
- size_t IWL_UCODE_INIT ; 
- int /*<<< orphan*/  UCODE_CALIB_TIMEOUT ; 
- int iwl_init_alive_start (struct iwl_priv*) ; 
- int /*<<< orphan*/  iwl_init_notification_wait (int /*<<< orphan*/ *,struct iwl_notification_wait*,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct iwl_priv*) ; 
- int iwl_load_ucode_wait_alive (struct iwl_priv*,size_t) ; 
- int /*<<< orphan*/  iwl_remove_notification (int /*<<< orphan*/ *,struct iwl_notification_wait*) ; 
- int /*<<< orphan*/  iwl_trans_stop_device (int /*<<< orphan*/ ) ; 
- int iwl_wait_notification (int /*<<< orphan*/ *,struct iwl_notification_wait*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  iwlagn_wait_calib ; 
- int /*<<< orphan*/  lockdep_assert_held (int /*<<< orphan*/ *) ; 
+
+ int ARRAY_SIZE (int const*) ;
+
+
+ size_t IWL_UCODE_INIT ;
+ int UCODE_CALIB_TIMEOUT ;
+ int iwl_init_alive_start (struct iwl_priv*) ;
+ int iwl_init_notification_wait (int *,struct iwl_notification_wait*,int const*,int ,int ,struct iwl_priv*) ;
+ int iwl_load_ucode_wait_alive (struct iwl_priv*,size_t) ;
+ int iwl_remove_notification (int *,struct iwl_notification_wait*) ;
+ int iwl_trans_stop_device (int ) ;
+ int iwl_wait_notification (int *,struct iwl_notification_wait*,int ) ;
+ int iwlagn_wait_calib ;
+ int lockdep_assert_held (int *) ;
 
 int iwl_run_init_ucode(struct iwl_priv *priv)
 {
-	struct iwl_notification_wait calib_wait;
-	static const u8 calib_complete[] = {
-		CALIBRATION_RES_NOTIFICATION,
-		CALIBRATION_COMPLETE_NOTIFICATION
-	};
-	int ret;
+ struct iwl_notification_wait calib_wait;
+ static const u8 calib_complete[] = {
+  128,
+  129
+ };
+ int ret;
 
-	lockdep_assert_held(&priv->mutex);
+ lockdep_assert_held(&priv->mutex);
 
-	/* No init ucode required? Curious, but maybe ok */
-	if (!priv->fw->img[IWL_UCODE_INIT].sec[0].len)
-		return 0;
 
-	if (priv->init_ucode_run)
-		return 0;
+ if (!priv->fw->img[IWL_UCODE_INIT].sec[0].len)
+  return 0;
 
-	iwl_init_notification_wait(&priv->notif_wait, &calib_wait,
-				   calib_complete, ARRAY_SIZE(calib_complete),
-				   iwlagn_wait_calib, priv);
+ if (priv->init_ucode_run)
+  return 0;
 
-	/* Will also start the device */
-	ret = iwl_load_ucode_wait_alive(priv, IWL_UCODE_INIT);
-	if (ret)
-		goto error;
+ iwl_init_notification_wait(&priv->notif_wait, &calib_wait,
+       calib_complete, ARRAY_SIZE(calib_complete),
+       iwlagn_wait_calib, priv);
 
-	ret = iwl_init_alive_start(priv);
-	if (ret)
-		goto error;
 
-	/*
-	 * Some things may run in the background now, but we
-	 * just wait for the calibration complete notification.
-	 */
-	ret = iwl_wait_notification(&priv->notif_wait, &calib_wait,
-					UCODE_CALIB_TIMEOUT);
-	if (!ret)
-		priv->init_ucode_run = true;
+ ret = iwl_load_ucode_wait_alive(priv, IWL_UCODE_INIT);
+ if (ret)
+  goto error;
 
-	goto out;
+ ret = iwl_init_alive_start(priv);
+ if (ret)
+  goto error;
+
+
+
+
+
+ ret = iwl_wait_notification(&priv->notif_wait, &calib_wait,
+     UCODE_CALIB_TIMEOUT);
+ if (!ret)
+  priv->init_ucode_run = 1;
+
+ goto out;
 
  error:
-	iwl_remove_notification(&priv->notif_wait, &calib_wait);
+ iwl_remove_notification(&priv->notif_wait, &calib_wait);
  out:
-	/* Whatever happened, stop the device */
-	iwl_trans_stop_device(priv->trans);
-	priv->ucode_loaded = false;
 
-	return ret;
+ iwl_trans_stop_device(priv->trans);
+ priv->ucode_loaded = 0;
+
+ return ret;
 }

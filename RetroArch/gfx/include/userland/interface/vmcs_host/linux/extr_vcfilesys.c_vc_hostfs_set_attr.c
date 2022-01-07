@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct stat {int /*<<< orphan*/  st_mode; } ;
-typedef  int /*<<< orphan*/  mode_t ;
-typedef  int fattributes_t ;
 
-/* Variables and functions */
- int ATTR_RDONLY ; 
- int /*<<< orphan*/  DEBUG_MINOR (char*,char const*,int) ; 
- int /*<<< orphan*/  S_IWUSR ; 
- int /*<<< orphan*/  backslash_to_slash (char*) ; 
- scalar_t__ chmod (char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (char*) ; 
- scalar_t__ stat (char const*,struct stat*) ; 
- char* strdup (char const*) ; 
+
+
+
+struct stat {int st_mode; } ;
+typedef int mode_t ;
+typedef int fattributes_t ;
+
+
+ int ATTR_RDONLY ;
+ int DEBUG_MINOR (char*,char const*,int) ;
+ int S_IWUSR ;
+ int backslash_to_slash (char*) ;
+ scalar_t__ chmod (char const*,int ) ;
+ int free (char*) ;
+ scalar_t__ stat (char const*,struct stat*) ;
+ char* strdup (char const*) ;
 
 int vc_hostfs_set_attr(const char *path, fattributes_t attr)
 {
@@ -51,8 +51,8 @@ int vc_hostfs_set_attr(const char *path, fattributes_t attr)
             mode |= S_IWUSR;
          }
 
-         /* coverity[toctou] Not doing anything security-relevant here,
-          * so the race condition is harmless */
+
+
          if ( chmod( path, mode ) == 0 )
             ret = 0;
       }

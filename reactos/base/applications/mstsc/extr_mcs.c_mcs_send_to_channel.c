@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint16 ;
+
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int uint16 ;
 struct TYPE_7__ {int end; int p; } ;
-typedef  TYPE_1__* STREAM ;
+typedef TYPE_1__* STREAM ;
 
-/* Variables and functions */
- int MCS_SDRQ ; 
- int g_mcs_userid ; 
- int /*<<< orphan*/  iso_send (TYPE_1__*) ; 
- int /*<<< orphan*/  mcs_hdr ; 
- int /*<<< orphan*/  out_uint16_be (TYPE_1__*,int) ; 
- int /*<<< orphan*/  out_uint8 (TYPE_1__*,int) ; 
- int /*<<< orphan*/  s_pop_layer (TYPE_1__*,int /*<<< orphan*/ ) ; 
+
+ int MCS_SDRQ ;
+ int g_mcs_userid ;
+ int iso_send (TYPE_1__*) ;
+ int mcs_hdr ;
+ int out_uint16_be (TYPE_1__*,int) ;
+ int out_uint8 (TYPE_1__*,int) ;
+ int s_pop_layer (TYPE_1__*,int ) ;
 
 void
 mcs_send_to_channel(STREAM s, uint16 channel)
 {
-	uint16 length;
+ uint16 length;
 
-	s_pop_layer(s, mcs_hdr);
-	length = s->end - s->p - 8;
-	length |= 0x8000;
+ s_pop_layer(s, mcs_hdr);
+ length = s->end - s->p - 8;
+ length |= 0x8000;
 
-	out_uint8(s, (MCS_SDRQ << 2));
-	out_uint16_be(s, g_mcs_userid);
-	out_uint16_be(s, channel);
-	out_uint8(s, 0x70);	/* flags */
-	out_uint16_be(s, length);
+ out_uint8(s, (MCS_SDRQ << 2));
+ out_uint16_be(s, g_mcs_userid);
+ out_uint16_be(s, channel);
+ out_uint8(s, 0x70);
+ out_uint16_be(s, length);
 
-	iso_send(s);
+ iso_send(s);
 }

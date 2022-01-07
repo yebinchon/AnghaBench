@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_repos_verify_callback_t ;
-typedef  int /*<<< orphan*/  svn_repos_t ;
+
+
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
+typedef scalar_t__ svn_revnum_t ;
+typedef int svn_repos_verify_callback_t ;
+typedef int svn_repos_t ;
 struct TYPE_14__ {scalar_t__ revision; } ;
-typedef  TYPE_1__ svn_repos_notify_t ;
-typedef  int /*<<< orphan*/  (* svn_repos_notify_func_t ) (void*,TYPE_1__*,int /*<<< orphan*/ *) ;
-typedef  int /*<<< orphan*/  svn_fs_t ;
-typedef  int /*<<< orphan*/ * svn_fs_progress_notify_func_t ;
+typedef TYPE_1__ svn_repos_notify_t ;
+typedef int (* svn_repos_notify_func_t ) (void*,TYPE_1__*,int *) ;
+typedef int svn_fs_t ;
+typedef int * svn_fs_progress_notify_func_t ;
 struct TYPE_15__ {scalar_t__ apr_err; } ;
-typedef  TYPE_3__ svn_error_t ;
-typedef  int /*<<< orphan*/  svn_cancel_func_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-struct verify_fs_notify_func_baton_t {void* notify; void* notify_baton; int /*<<< orphan*/  (* notify_func ) (void*,TYPE_1__*,int /*<<< orphan*/ *) ;} ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+typedef TYPE_3__ svn_error_t ;
+typedef int svn_cancel_func_t ;
+typedef int svn_boolean_t ;
+struct verify_fs_notify_func_baton_t {void* notify; void* notify_baton; int (* notify_func ) (void*,TYPE_1__*,int *) ;} ;
+typedef int apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- scalar_t__ SVN_ERR_CANCELLED ; 
- int /*<<< orphan*/  SVN_ERR_REPOS_BAD_ARGS ; 
- scalar_t__ SVN_INVALID_REVNUM ; 
- int /*<<< orphan*/  SVN_IS_VALID_REVNUM (scalar_t__) ; 
- TYPE_3__* SVN_NO_ERROR ; 
- int /*<<< orphan*/  _ (char*) ; 
- struct verify_fs_notify_func_baton_t* apr_palloc (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  report_error (scalar_t__,TYPE_3__*,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *) ; 
- TYPE_3__* svn_error_createf (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__,scalar_t__) ; 
- TYPE_3__* svn_error_trace (TYPE_3__*) ; 
- int /*<<< orphan*/  svn_fs_config (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_fs_path (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_fs_refresh_revision_props (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- TYPE_3__* svn_fs_verify (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,scalar_t__,int /*<<< orphan*/ *,struct verify_fs_notify_func_baton_t*,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_fs_youngest_rev (scalar_t__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_pool_clear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_pool_create (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_pool_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_repos_fs (int /*<<< orphan*/ *) ; 
- void* svn_repos_notify_create (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_repos_notify_verify_end ; 
- int /*<<< orphan*/  svn_repos_notify_verify_rev_end ; 
- int /*<<< orphan*/  svn_repos_notify_verify_rev_structure ; 
- int /*<<< orphan*/ * verify_fs_notify_func ; 
- TYPE_3__* verify_one_revision (int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/  (*) (void*,TYPE_1__*,int /*<<< orphan*/ *),void*,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *) ; 
+
+ int SVN_ERR (int ) ;
+ scalar_t__ SVN_ERR_CANCELLED ;
+ int SVN_ERR_REPOS_BAD_ARGS ;
+ scalar_t__ SVN_INVALID_REVNUM ;
+ int SVN_IS_VALID_REVNUM (scalar_t__) ;
+ TYPE_3__* SVN_NO_ERROR ;
+ int _ (char*) ;
+ struct verify_fs_notify_func_baton_t* apr_palloc (int *,int) ;
+ int report_error (scalar_t__,TYPE_3__*,int ,void*,int *) ;
+ TYPE_3__* svn_error_createf (int ,int *,int ,scalar_t__,scalar_t__) ;
+ TYPE_3__* svn_error_trace (TYPE_3__*) ;
+ int svn_fs_config (int *,int *) ;
+ int svn_fs_path (int *,int *) ;
+ int svn_fs_refresh_revision_props (int *,int *) ;
+ TYPE_3__* svn_fs_verify (int ,int ,scalar_t__,scalar_t__,int *,struct verify_fs_notify_func_baton_t*,int ,void*,int *) ;
+ int svn_fs_youngest_rev (scalar_t__*,int *,int *) ;
+ int svn_pool_clear (int *) ;
+ int * svn_pool_create (int *) ;
+ int svn_pool_destroy (int *) ;
+ int * svn_repos_fs (int *) ;
+ void* svn_repos_notify_create (int ,int *) ;
+ int svn_repos_notify_verify_end ;
+ int svn_repos_notify_verify_rev_end ;
+ int svn_repos_notify_verify_rev_structure ;
+ int * verify_fs_notify_func ;
+ TYPE_3__* verify_one_revision (int *,scalar_t__,int (*) (void*,TYPE_1__*,int *),void*,scalar_t__,int ,int ,void*,int *) ;
 
 svn_error_t *
 svn_repos_verify_fs3(svn_repos_t *repos,
@@ -74,37 +74,37 @@ svn_repos_verify_fs3(svn_repos_t *repos,
   svn_revnum_t rev;
   apr_pool_t *iterpool = svn_pool_create(pool);
   svn_repos_notify_t *notify;
-  svn_fs_progress_notify_func_t verify_notify = NULL;
-  struct verify_fs_notify_func_baton_t *verify_notify_baton = NULL;
+  svn_fs_progress_notify_func_t verify_notify = ((void*)0);
+  struct verify_fs_notify_func_baton_t *verify_notify_baton = ((void*)0);
   svn_error_t *err;
 
-  /* Make sure we catch up on the latest revprop changes.  This is the only
-   * time we will refresh the revprop data in this query. */
+
+
   SVN_ERR(svn_fs_refresh_revision_props(fs, pool));
 
-  /* Determine the current youngest revision of the filesystem. */
+
   SVN_ERR(svn_fs_youngest_rev(&youngest, fs, pool));
 
-  /* Use default vals if necessary. */
+
   if (! SVN_IS_VALID_REVNUM(start_rev))
     start_rev = 0;
   if (! SVN_IS_VALID_REVNUM(end_rev))
     end_rev = youngest;
 
-  /* Validate the revisions. */
+
   if (start_rev > end_rev)
-    return svn_error_createf(SVN_ERR_REPOS_BAD_ARGS, NULL,
+    return svn_error_createf(SVN_ERR_REPOS_BAD_ARGS, ((void*)0),
                              _("Start revision %ld"
                                " is greater than end revision %ld"),
                              start_rev, end_rev);
   if (end_rev > youngest)
-    return svn_error_createf(SVN_ERR_REPOS_BAD_ARGS, NULL,
+    return svn_error_createf(SVN_ERR_REPOS_BAD_ARGS, ((void*)0),
                              _("End revision %ld is invalid "
                                "(youngest revision is %ld)"),
                              end_rev, youngest);
 
-  /* Create a notify object that we can reuse within the loop and a
-     forwarding structure for notifications from inside svn_fs_verify(). */
+
+
   if (notify_func)
     {
       notify = svn_repos_notify_create(svn_repos_notify_verify_rev_end, pool);
@@ -117,7 +117,7 @@ svn_repos_verify_fs3(svn_repos_t *repos,
         = svn_repos_notify_create(svn_repos_notify_verify_rev_structure, pool);
     }
 
-  /* Verify global metadata and backend-specific data first. */
+
   err = svn_fs_verify(svn_fs_path(fs, pool), svn_fs_config(fs, pool),
                       start_rev, end_rev,
                       verify_notify, verify_notify_baton,
@@ -138,7 +138,7 @@ svn_repos_verify_fs3(svn_repos_t *repos,
       {
         svn_pool_clear(iterpool);
 
-        /* Wrapper function to catch the possible errors. */
+
         err = verify_one_revision(fs, rev, notify_func, notify_baton,
                                   start_rev, check_normalization,
                                   cancel_func, cancel_baton,
@@ -155,13 +155,13 @@ svn_repos_verify_fs3(svn_repos_t *repos,
           }
         else if (notify_func)
           {
-            /* Tell the caller that we're done with this revision. */
+
             notify->revision = rev;
             notify_func(notify_baton, notify, iterpool);
           }
       }
 
-  /* We're done. */
+
   if (notify_func)
     {
       notify = svn_repos_notify_create(svn_repos_notify_verify_end, iterpool);

@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_3__ ;
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_14__ {int len; int /*<<< orphan*/ * base; } ;
-typedef  TYPE_1__ ptls_iovec_t ;
-struct TYPE_15__ {int /*<<< orphan*/  (* final ) (TYPE_2__*,int /*<<< orphan*/ *,int) ;int /*<<< orphan*/  (* update ) (TYPE_2__*,int /*<<< orphan*/ *,int) ;} ;
-typedef  TYPE_2__ ptls_hash_context_t ;
+
+
+typedef struct TYPE_16__ TYPE_3__ ;
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_14__ {int len; int * base; } ;
+typedef TYPE_1__ ptls_iovec_t ;
+struct TYPE_15__ {int (* final ) (TYPE_2__*,int *,int) ;int (* update ) (TYPE_2__*,int *,int) ;} ;
+typedef TYPE_2__ ptls_hash_context_t ;
 struct TYPE_16__ {size_t digest_size; } ;
-typedef  TYPE_3__ ptls_hash_algorithm_t ;
+typedef TYPE_3__ ptls_hash_algorithm_t ;
 
-/* Variables and functions */
- int PTLS_ERROR_NO_MEMORY ; 
- int PTLS_HASH_FINAL_MODE_FREE ; 
- int PTLS_MAX_DIGEST_SIZE ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,size_t) ; 
- int /*<<< orphan*/  ptls_clear_memory (int /*<<< orphan*/ *,size_t) ; 
- TYPE_2__* ptls_hmac_create (TYPE_3__*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  stub1 (TYPE_2__*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  stub2 (TYPE_2__*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  stub3 (TYPE_2__*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  stub4 (TYPE_2__*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  stub5 (TYPE_2__*,int /*<<< orphan*/ *,int) ; 
+
+ int PTLS_ERROR_NO_MEMORY ;
+ int PTLS_HASH_FINAL_MODE_FREE ;
+ int PTLS_MAX_DIGEST_SIZE ;
+ int memcpy (int *,int *,size_t) ;
+ int ptls_clear_memory (int *,size_t) ;
+ TYPE_2__* ptls_hmac_create (TYPE_3__*,int *,int) ;
+ int stub1 (TYPE_2__*,int *,int) ;
+ int stub2 (TYPE_2__*,int *,int) ;
+ int stub3 (TYPE_2__*,int *,int) ;
+ int stub4 (TYPE_2__*,int *,int) ;
+ int stub5 (TYPE_2__*,int *,int) ;
 
 int ptls_hkdf_expand(ptls_hash_algorithm_t *algo, void *output, size_t outlen, ptls_iovec_t prk, ptls_iovec_t info)
 {
-    ptls_hash_context_t *hmac = NULL;
+    ptls_hash_context_t *hmac = ((void*)0);
     size_t i;
     uint8_t digest[PTLS_MAX_DIGEST_SIZE];
 
     for (i = 0; (i * algo->digest_size) < outlen; ++i) {
-        if (hmac == NULL) {
-            if ((hmac = ptls_hmac_create(algo, prk.base, prk.len)) == NULL)
+        if (hmac == ((void*)0)) {
+            if ((hmac = ptls_hmac_create(algo, prk.base, prk.len)) == ((void*)0))
                 return PTLS_ERROR_NO_MEMORY;
         } else {
             hmac->update(hmac, digest, algo->digest_size);
@@ -58,8 +58,8 @@ int ptls_hkdf_expand(ptls_hash_algorithm_t *algo, void *output, size_t outlen, p
         memcpy((uint8_t *)output + off_start, digest, off_end - off_start);
     }
 
-    if (hmac != NULL)
-        hmac->final(hmac, NULL, PTLS_HASH_FINAL_MODE_FREE);
+    if (hmac != ((void*)0))
+        hmac->final(hmac, ((void*)0), PTLS_HASH_FINAL_MODE_FREE);
 
     ptls_clear_memory(digest, algo->digest_size);
 

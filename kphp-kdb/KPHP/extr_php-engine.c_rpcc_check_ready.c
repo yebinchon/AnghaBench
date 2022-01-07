@@ -1,56 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct connection {int flags; scalar_t__ status; scalar_t__ ready; int fd; double last_query_sent_time; double last_response_time; } ;
 struct TYPE_2__ {int in_packet_num; } ;
 
-/* Variables and functions */
- int C_FAILED ; 
- TYPE_1__* RPCC_DATA (struct connection*) ; 
- double RPC_CONNECT_TIMEOUT ; 
- double RPC_FAIL_INTERVAL ; 
- double RPC_STOP_INTERVAL ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ conn_connecting ; 
- scalar_t__ conn_error ; 
- scalar_t__ conn_expect_query ; 
- scalar_t__ conn_reading_answer ; 
- scalar_t__ conn_running ; 
- scalar_t__ conn_wait_answer ; 
- scalar_t__ cr_busy ; 
- scalar_t__ cr_failed ; 
- int cr_notyet ; 
- scalar_t__ cr_ok ; 
- scalar_t__ cr_stopped ; 
- int /*<<< orphan*/  fail_connection (struct connection*,int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,scalar_t__,scalar_t__,double,double,double) ; 
- int /*<<< orphan*/  lrand48 () ; 
- int /*<<< orphan*/  net_rpc_send_ping (struct connection*,int /*<<< orphan*/ ) ; 
- double precise_now ; 
- double rpc_ping_interval ; 
- int /*<<< orphan*/  stderr ; 
- int verbosity ; 
+
+ int C_FAILED ;
+ TYPE_1__* RPCC_DATA (struct connection*) ;
+ double RPC_CONNECT_TIMEOUT ;
+ double RPC_FAIL_INTERVAL ;
+ double RPC_STOP_INTERVAL ;
+ int assert (int) ;
+ scalar_t__ conn_connecting ;
+ scalar_t__ conn_error ;
+ scalar_t__ conn_expect_query ;
+ scalar_t__ conn_reading_answer ;
+ scalar_t__ conn_running ;
+ scalar_t__ conn_wait_answer ;
+ scalar_t__ cr_busy ;
+ scalar_t__ cr_failed ;
+ int cr_notyet ;
+ scalar_t__ cr_ok ;
+ scalar_t__ cr_stopped ;
+ int fail_connection (struct connection*,int) ;
+ int fprintf (int ,char*,int,scalar_t__,scalar_t__,double,double,double) ;
+ int lrand48 () ;
+ int net_rpc_send_ping (struct connection*,int ) ;
+ double precise_now ;
+ double rpc_ping_interval ;
+ int stderr ;
+ int verbosity ;
 
 int rpcc_check_ready (struct connection *c) {
-  /*assert (c->status != conn_none);*/
-  /*if (c->status == conn_none || c->status == conn_connecting || RPCC_DATA(c)->in_packet_num < 0) {*/
-    /*return c->ready = cr_notyet;*/
-  /*}*/
-  /*if (c->status == conn_error || c->ready == cr_failed) {*/
-    /*return c->ready = cr_failed;*/
-  /*}*/
-  /*return c->ready = cr_ok;*/
-
   if ((c->flags & C_FAILED) || c->status == conn_error) {
     if (verbosity > 1 && c->ready != cr_failed) {
       fprintf (stderr, "changing connection %d readiness from %d to %d [FAILED] lq=%.03f lr=%.03f now=%.03f\n", c->fd, c->ready, cr_failed, c->last_query_sent_time, c->last_response_time, precise_now);

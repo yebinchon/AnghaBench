@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct lev_start {scalar_t__ schema_id; scalar_t__ split_min; scalar_t__ split_max; scalar_t__ split_mod; } ;
 
-/* Variables and functions */
- scalar_t__ ISEARCH_SCHEMA_V1 ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ log_split_max ; 
- scalar_t__ log_split_min ; 
- scalar_t__ log_split_mod ; 
- int /*<<< orphan*/  try_init_local_uid () ; 
+
+ scalar_t__ ISEARCH_SCHEMA_V1 ;
+ int assert (int) ;
+ scalar_t__ log_split_max ;
+ scalar_t__ log_split_min ;
+ scalar_t__ log_split_mod ;
+ int try_init_local_uid () ;
 
 __attribute__((used)) static int isearch_le_start (struct lev_start *E) {
   if (E->schema_id != ISEARCH_SCHEMA_V1) {

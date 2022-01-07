@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct rpc_server {scalar_t__ sfd; scalar_t__ out_bytes; scalar_t__ out_rptr; scalar_t__ out_wptr; scalar_t__ out_buf; } ;
-struct pollfd {scalar_t__ fd; int /*<<< orphan*/  events; } ;
+struct pollfd {scalar_t__ fd; int events; } ;
 struct iovec {scalar_t__ iov_base; scalar_t__ iov_len; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ADD_CNT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  END_TIMER (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  POLLOUT ; 
- scalar_t__ RPC_OUT_BUF_SIZE ; 
- int /*<<< orphan*/  START_TIMER (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  errno ; 
- int get_ms_timeout (double) ; 
- scalar_t__ poll (struct pollfd*,int,int) ; 
- int /*<<< orphan*/  rpc_server_failure (struct rpc_server*) ; 
- int /*<<< orphan*/  rpc_server_seterror (struct rpc_server*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  send ; 
- int /*<<< orphan*/  strerror (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  write ; 
- int writev (scalar_t__,struct iovec*,int) ; 
 
-__attribute__((used)) static int rpc_sock_write (struct rpc_server *server, double timeout, char *buf, int buf_len, int min_bytes) { /* {{{ */
+ int ADD_CNT (int ) ;
+ int END_TIMER (int ) ;
+ int POLLOUT ;
+ scalar_t__ RPC_OUT_BUF_SIZE ;
+ int START_TIMER (int ) ;
+ int assert (int) ;
+ int errno ;
+ int get_ms_timeout (double) ;
+ scalar_t__ poll (struct pollfd*,int,int) ;
+ int rpc_server_failure (struct rpc_server*) ;
+ int rpc_server_seterror (struct rpc_server*,int ,int ) ;
+ int send ;
+ int strerror (int ) ;
+ int write ;
+ int writev (scalar_t__,struct iovec*,int) ;
+
+__attribute__((used)) static int rpc_sock_write (struct rpc_server *server, double timeout, char *buf, int buf_len, int min_bytes) {
   ADD_CNT (write);
   START_TIMER (write);
   if (server->sfd < 0) {
@@ -40,7 +40,7 @@ __attribute__((used)) static int rpc_sock_write (struct rpc_server *server, doub
   }
   int r = 0;
   int first = 1;
-  
+
   struct pollfd s;
   s.fd = server->sfd;
   s.events = POLLOUT;
@@ -70,7 +70,7 @@ __attribute__((used)) static int rpc_sock_write (struct rpc_server *server, doub
   }
   if (!(sf - ss)) {
     END_TIMER (write);
-    return 0; 
+    return 0;
   }
   int tt = 0;
   do {
@@ -123,12 +123,12 @@ __attribute__((used)) static int rpc_sock_write (struct rpc_server *server, doub
     if (x && ss == 2) {
       if (x >= t[2].iov_len) {
         assert (x == t[2].iov_len);
-        // buf += t[2].iov_len;
-        // ss ++;
+
+
         break;
       } else {
-        // buf += x;
-        // buf_len -= x;
+
+
         t[2].iov_len -= x;
         t[2].iov_base += x;
       }

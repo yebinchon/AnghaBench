@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VARIANT_BOOL ;
-typedef  int /*<<< orphan*/  IXMLDOMNode ;
-typedef  int /*<<< orphan*/  IXMLDOMDocument ;
-typedef  scalar_t__ HRESULT ;
-typedef  int /*<<< orphan*/  BSTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IID_IXMLDOMDocument ; 
- int /*<<< orphan*/  IID_IXMLDOMNode ; 
- scalar_t__ IXMLDOMDocument_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IXMLDOMDocument_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IXMLDOMDocument_loadXML (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ IXMLDOMDocument_transformNode (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IXMLDOMNode_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  SysFreeString (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  _bstr_ (int /*<<< orphan*/ ) ; 
- int compareIgnoreReturns (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * create_document (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free_bstrs () ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
- int /*<<< orphan*/  szTransformOutput ; 
- int /*<<< orphan*/  szTransformSSXML ; 
- int /*<<< orphan*/  szTransformXML ; 
- scalar_t__ wine_dbgstr_w (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int VARIANT_BOOL ;
+typedef int IXMLDOMNode ;
+typedef int IXMLDOMDocument ;
+typedef scalar_t__ HRESULT ;
+typedef int BSTR ;
+
+
+ int IID_IXMLDOMDocument ;
+ int IID_IXMLDOMNode ;
+ scalar_t__ IXMLDOMDocument_QueryInterface (int *,int *,void**) ;
+ int IXMLDOMDocument_Release (int *) ;
+ scalar_t__ IXMLDOMDocument_loadXML (int *,int ,int *) ;
+ scalar_t__ IXMLDOMDocument_transformNode (int *,int *,int *) ;
+ int IXMLDOMNode_Release (int *) ;
+ scalar_t__ S_OK ;
+ int SysFreeString (int ) ;
+ int _bstr_ (int ) ;
+ int compareIgnoreReturns (int ,int ) ;
+ int * create_document (int *) ;
+ int free_bstrs () ;
+ int ok (int,char*,scalar_t__) ;
+ int szTransformOutput ;
+ int szTransformSSXML ;
+ int szTransformXML ;
+ scalar_t__ wine_dbgstr_w (int ) ;
 
 __attribute__((used)) static void test_testTransforms(void)
 {

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
+
+
+
+
+typedef int u32 ;
 struct rot_context {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ROT_CONFIG ; 
- int /*<<< orphan*/  ROT_CONFIG_IRQ ; 
- int /*<<< orphan*/  rot_read (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rot_write (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int ROT_CONFIG ;
+ int ROT_CONFIG_IRQ ;
+ int rot_read (int ) ;
+ int rot_write (int ,int ) ;
 
 __attribute__((used)) static void rotator_reg_set_irq(struct rot_context *rot, bool enable)
 {
-	u32 val = rot_read(ROT_CONFIG);
+ u32 val = rot_read(ROT_CONFIG);
 
-	if (enable == true)
-		val |= ROT_CONFIG_IRQ;
-	else
-		val &= ~ROT_CONFIG_IRQ;
+ if (enable == 1)
+  val |= ROT_CONFIG_IRQ;
+ else
+  val &= ~ROT_CONFIG_IRQ;
 
-	rot_write(val, ROT_CONFIG);
+ rot_write(val, ROT_CONFIG);
 }

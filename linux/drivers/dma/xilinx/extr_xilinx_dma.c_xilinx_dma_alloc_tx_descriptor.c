@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct xilinx_dma_tx_descriptor {int /*<<< orphan*/  segments; } ;
+
+
+
+
+struct xilinx_dma_tx_descriptor {int segments; } ;
 struct xilinx_dma_chan {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  INIT_LIST_HEAD (int /*<<< orphan*/ *) ; 
- struct xilinx_dma_tx_descriptor* kzalloc (int,int /*<<< orphan*/ ) ; 
+
+ int GFP_KERNEL ;
+ int INIT_LIST_HEAD (int *) ;
+ struct xilinx_dma_tx_descriptor* kzalloc (int,int ) ;
 
 __attribute__((used)) static struct xilinx_dma_tx_descriptor *
 xilinx_dma_alloc_tx_descriptor(struct xilinx_dma_chan *chan)
 {
-	struct xilinx_dma_tx_descriptor *desc;
+ struct xilinx_dma_tx_descriptor *desc;
 
-	desc = kzalloc(sizeof(*desc), GFP_KERNEL);
-	if (!desc)
-		return NULL;
+ desc = kzalloc(sizeof(*desc), GFP_KERNEL);
+ if (!desc)
+  return ((void*)0);
 
-	INIT_LIST_HEAD(&desc->segments);
+ INIT_LIST_HEAD(&desc->segments);
 
-	return desc;
+ return desc;
 }

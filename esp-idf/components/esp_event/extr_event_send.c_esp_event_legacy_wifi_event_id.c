@@ -1,109 +1,91 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  system_event_id_t ;
-typedef  int int32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ESP_LOGE (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  SYSTEM_EVENT_AP_PROBEREQRECVED ; 
- int /*<<< orphan*/  SYSTEM_EVENT_AP_STACONNECTED ; 
- int /*<<< orphan*/  SYSTEM_EVENT_AP_STADISCONNECTED ; 
- int /*<<< orphan*/  SYSTEM_EVENT_AP_START ; 
- int /*<<< orphan*/  SYSTEM_EVENT_AP_STOP ; 
- int /*<<< orphan*/  SYSTEM_EVENT_MAX ; 
- int /*<<< orphan*/  SYSTEM_EVENT_SCAN_DONE ; 
- int /*<<< orphan*/  SYSTEM_EVENT_STA_AUTHMODE_CHANGE ; 
- int /*<<< orphan*/  SYSTEM_EVENT_STA_CONNECTED ; 
- int /*<<< orphan*/  SYSTEM_EVENT_STA_DISCONNECTED ; 
- int /*<<< orphan*/  SYSTEM_EVENT_STA_START ; 
- int /*<<< orphan*/  SYSTEM_EVENT_STA_STOP ; 
- int /*<<< orphan*/  SYSTEM_EVENT_STA_WPS_ER_FAILED ; 
- int /*<<< orphan*/  SYSTEM_EVENT_STA_WPS_ER_PBC_OVERLAP ; 
- int /*<<< orphan*/  SYSTEM_EVENT_STA_WPS_ER_PIN ; 
- int /*<<< orphan*/  SYSTEM_EVENT_STA_WPS_ER_SUCCESS ; 
- int /*<<< orphan*/  SYSTEM_EVENT_STA_WPS_ER_TIMEOUT ; 
- int /*<<< orphan*/  SYSTEM_EVENT_WIFI_READY ; 
- int /*<<< orphan*/  TAG ; 
-#define  WIFI_EVENT_AP_PROBEREQRECVED 144 
-#define  WIFI_EVENT_AP_STACONNECTED 143 
-#define  WIFI_EVENT_AP_STADISCONNECTED 142 
-#define  WIFI_EVENT_AP_START 141 
-#define  WIFI_EVENT_AP_STOP 140 
-#define  WIFI_EVENT_SCAN_DONE 139 
-#define  WIFI_EVENT_STA_AUTHMODE_CHANGE 138 
-#define  WIFI_EVENT_STA_CONNECTED 137 
-#define  WIFI_EVENT_STA_DISCONNECTED 136 
-#define  WIFI_EVENT_STA_START 135 
-#define  WIFI_EVENT_STA_STOP 134 
-#define  WIFI_EVENT_STA_WPS_ER_FAILED 133 
-#define  WIFI_EVENT_STA_WPS_ER_PBC_OVERLAP 132 
-#define  WIFI_EVENT_STA_WPS_ER_PIN 131 
-#define  WIFI_EVENT_STA_WPS_ER_SUCCESS 130 
-#define  WIFI_EVENT_STA_WPS_ER_TIMEOUT 129 
-#define  WIFI_EVENT_WIFI_READY 128 
 
+
+
+typedef int system_event_id_t ;
+typedef int int32_t ;
+
+
+ int ESP_LOGE (int ,char*,int) ;
+ int SYSTEM_EVENT_AP_PROBEREQRECVED ;
+ int SYSTEM_EVENT_AP_STACONNECTED ;
+ int SYSTEM_EVENT_AP_STADISCONNECTED ;
+ int SYSTEM_EVENT_AP_START ;
+ int SYSTEM_EVENT_AP_STOP ;
+ int SYSTEM_EVENT_MAX ;
+ int SYSTEM_EVENT_SCAN_DONE ;
+ int SYSTEM_EVENT_STA_AUTHMODE_CHANGE ;
+ int SYSTEM_EVENT_STA_CONNECTED ;
+ int SYSTEM_EVENT_STA_DISCONNECTED ;
+ int SYSTEM_EVENT_STA_START ;
+ int SYSTEM_EVENT_STA_STOP ;
+ int SYSTEM_EVENT_STA_WPS_ER_FAILED ;
+ int SYSTEM_EVENT_STA_WPS_ER_PBC_OVERLAP ;
+ int SYSTEM_EVENT_STA_WPS_ER_PIN ;
+ int SYSTEM_EVENT_STA_WPS_ER_SUCCESS ;
+ int SYSTEM_EVENT_STA_WPS_ER_TIMEOUT ;
+ int SYSTEM_EVENT_WIFI_READY ;
+ int TAG ;
 __attribute__((used)) static system_event_id_t esp_event_legacy_wifi_event_id(int32_t event_id)
 {
     switch (event_id) {
-    case WIFI_EVENT_WIFI_READY:
+    case 128:
         return SYSTEM_EVENT_WIFI_READY;
 
-    case WIFI_EVENT_SCAN_DONE:
+    case 139:
         return SYSTEM_EVENT_SCAN_DONE;
 
-    case WIFI_EVENT_STA_START:
+    case 135:
         return SYSTEM_EVENT_STA_START;
 
-    case WIFI_EVENT_STA_STOP:
+    case 134:
         return SYSTEM_EVENT_STA_STOP;
 
-    case WIFI_EVENT_STA_CONNECTED:
+    case 137:
         return SYSTEM_EVENT_STA_CONNECTED;
 
-    case WIFI_EVENT_STA_DISCONNECTED:
+    case 136:
         return SYSTEM_EVENT_STA_DISCONNECTED;
 
-    case WIFI_EVENT_STA_AUTHMODE_CHANGE:
+    case 138:
         return SYSTEM_EVENT_STA_AUTHMODE_CHANGE;
 
-    case WIFI_EVENT_STA_WPS_ER_SUCCESS:
+    case 130:
         return SYSTEM_EVENT_STA_WPS_ER_SUCCESS;
 
-    case WIFI_EVENT_STA_WPS_ER_FAILED:
+    case 133:
         return SYSTEM_EVENT_STA_WPS_ER_FAILED;
 
-    case WIFI_EVENT_STA_WPS_ER_TIMEOUT:
+    case 129:
         return SYSTEM_EVENT_STA_WPS_ER_TIMEOUT;
 
-    case WIFI_EVENT_STA_WPS_ER_PIN:
+    case 131:
         return SYSTEM_EVENT_STA_WPS_ER_PIN;
 
-    case WIFI_EVENT_STA_WPS_ER_PBC_OVERLAP:
+    case 132:
         return SYSTEM_EVENT_STA_WPS_ER_PBC_OVERLAP;
 
-    case WIFI_EVENT_AP_START:
+    case 141:
         return SYSTEM_EVENT_AP_START;
 
-    case WIFI_EVENT_AP_STOP:
+    case 140:
         return SYSTEM_EVENT_AP_STOP;
 
-    case WIFI_EVENT_AP_STACONNECTED:
+    case 143:
         return SYSTEM_EVENT_AP_STACONNECTED;
 
-    case WIFI_EVENT_AP_STADISCONNECTED:
+    case 142:
         return SYSTEM_EVENT_AP_STADISCONNECTED;
 
-    case WIFI_EVENT_AP_PROBEREQRECVED:
+    case 144:
         return SYSTEM_EVENT_AP_PROBEREQRECVED;
 
     default:

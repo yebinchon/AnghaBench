@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__* buf; } ;
-typedef  TYPE_1__ AVFrame ;
-typedef  int /*<<< orphan*/  AVBufferRef ;
+typedef TYPE_1__ AVFrame ;
+typedef int AVBufferRef ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AV_NUM_DATA_POINTERS ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  ENOMEM ; 
- scalar_t__ av_buffer_ref (int /*<<< orphan*/ *) ; 
+
+ int AVERROR (int ) ;
+ int AV_NUM_DATA_POINTERS ;
+ int EINVAL ;
+ int ENOMEM ;
+ scalar_t__ av_buffer_ref (int *) ;
 
 __attribute__((used)) static int frame_add_buf(AVFrame *frame, AVBufferRef *ref)
 {
@@ -33,7 +33,7 @@ __attribute__((used)) static int frame_add_buf(AVFrame *frame, AVBufferRef *ref)
         }
     }
 
-    // For now we expect that the caller does not use more than
-    // AV_NUM_DATA_POINTERS-1 buffers if the user uses a custom pool.
+
+
     return AVERROR(EINVAL);
 }

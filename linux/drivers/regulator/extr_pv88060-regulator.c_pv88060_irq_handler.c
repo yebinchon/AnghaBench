@@ -1,84 +1,84 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct pv88060 {int /*<<< orphan*/  dev; int /*<<< orphan*/  regmap; int /*<<< orphan*/ ** rdev; } ;
-typedef  int irqreturn_t ;
 
-/* Variables and functions */
- int IRQ_HANDLED ; 
- int IRQ_NONE ; 
- int PV88060_E_OVER_TEMP ; 
- int PV88060_E_VDD_FLT ; 
- int PV88060_MAX_REGULATORS ; 
- int /*<<< orphan*/  PV88060_REG_EVENT_A ; 
- int /*<<< orphan*/  REGULATOR_EVENT_OVER_TEMP ; 
- int /*<<< orphan*/  REGULATOR_EVENT_UNDER_VOLTAGE ; 
- int /*<<< orphan*/  dev_err (int /*<<< orphan*/ ,char*,int) ; 
- int regmap_read (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*) ; 
- int regmap_write (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  regulator_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  regulator_notifier_call_chain (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  regulator_unlock (int /*<<< orphan*/ *) ; 
+
+
+
+struct pv88060 {int dev; int regmap; int ** rdev; } ;
+typedef int irqreturn_t ;
+
+
+ int IRQ_HANDLED ;
+ int IRQ_NONE ;
+ int PV88060_E_OVER_TEMP ;
+ int PV88060_E_VDD_FLT ;
+ int PV88060_MAX_REGULATORS ;
+ int PV88060_REG_EVENT_A ;
+ int REGULATOR_EVENT_OVER_TEMP ;
+ int REGULATOR_EVENT_UNDER_VOLTAGE ;
+ int dev_err (int ,char*,int) ;
+ int regmap_read (int ,int ,int*) ;
+ int regmap_write (int ,int ,int) ;
+ int regulator_lock (int *) ;
+ int regulator_notifier_call_chain (int *,int ,int *) ;
+ int regulator_unlock (int *) ;
 
 __attribute__((used)) static irqreturn_t pv88060_irq_handler(int irq, void *data)
 {
-	struct pv88060 *chip = data;
-	int i, reg_val, err, ret = IRQ_NONE;
+ struct pv88060 *chip = data;
+ int i, reg_val, err, ret = IRQ_NONE;
 
-	err = regmap_read(chip->regmap, PV88060_REG_EVENT_A, &reg_val);
-	if (err < 0)
-		goto error_i2c;
+ err = regmap_read(chip->regmap, PV88060_REG_EVENT_A, &reg_val);
+ if (err < 0)
+  goto error_i2c;
 
-	if (reg_val & PV88060_E_VDD_FLT) {
-		for (i = 0; i < PV88060_MAX_REGULATORS; i++) {
-			if (chip->rdev[i] != NULL) {
-				regulator_lock(chip->rdev[i]);
-				regulator_notifier_call_chain(chip->rdev[i],
-					REGULATOR_EVENT_UNDER_VOLTAGE,
-					NULL);
-				regulator_unlock(chip->rdev[i]);
-			}
-		}
+ if (reg_val & PV88060_E_VDD_FLT) {
+  for (i = 0; i < PV88060_MAX_REGULATORS; i++) {
+   if (chip->rdev[i] != ((void*)0)) {
+    regulator_lock(chip->rdev[i]);
+    regulator_notifier_call_chain(chip->rdev[i],
+     REGULATOR_EVENT_UNDER_VOLTAGE,
+     ((void*)0));
+    regulator_unlock(chip->rdev[i]);
+   }
+  }
 
-		err = regmap_write(chip->regmap, PV88060_REG_EVENT_A,
-			PV88060_E_VDD_FLT);
-		if (err < 0)
-			goto error_i2c;
+  err = regmap_write(chip->regmap, PV88060_REG_EVENT_A,
+   PV88060_E_VDD_FLT);
+  if (err < 0)
+   goto error_i2c;
 
-		ret = IRQ_HANDLED;
-	}
+  ret = IRQ_HANDLED;
+ }
 
-	if (reg_val & PV88060_E_OVER_TEMP) {
-		for (i = 0; i < PV88060_MAX_REGULATORS; i++) {
-			if (chip->rdev[i] != NULL) {
-				regulator_lock(chip->rdev[i]);
-				regulator_notifier_call_chain(chip->rdev[i],
-					REGULATOR_EVENT_OVER_TEMP,
-					NULL);
-				regulator_unlock(chip->rdev[i]);
-			}
-		}
+ if (reg_val & PV88060_E_OVER_TEMP) {
+  for (i = 0; i < PV88060_MAX_REGULATORS; i++) {
+   if (chip->rdev[i] != ((void*)0)) {
+    regulator_lock(chip->rdev[i]);
+    regulator_notifier_call_chain(chip->rdev[i],
+     REGULATOR_EVENT_OVER_TEMP,
+     ((void*)0));
+    regulator_unlock(chip->rdev[i]);
+   }
+  }
 
-		err = regmap_write(chip->regmap, PV88060_REG_EVENT_A,
-			PV88060_E_OVER_TEMP);
-		if (err < 0)
-			goto error_i2c;
+  err = regmap_write(chip->regmap, PV88060_REG_EVENT_A,
+   PV88060_E_OVER_TEMP);
+  if (err < 0)
+   goto error_i2c;
 
-		ret = IRQ_HANDLED;
-	}
+  ret = IRQ_HANDLED;
+ }
 
-	return ret;
+ return ret;
 
 error_i2c:
-	dev_err(chip->dev, "I2C error : %d\n", err);
-	return IRQ_NONE;
+ dev_err(chip->dev, "I2C error : %d\n", err);
+ return IRQ_NONE;
 }

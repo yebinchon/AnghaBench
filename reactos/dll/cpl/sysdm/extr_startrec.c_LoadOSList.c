@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-struct TYPE_3__ {int iFreeLdrIni; int /*<<< orphan*/  szFreeldrIni; } ;
-typedef  TYPE_1__* PSTARTINFO ;
-typedef  int /*<<< orphan*/  LRESULT ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  scalar_t__ HINF ;
-typedef  scalar_t__ DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- scalar_t__ GetSystemDrive (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  INF_STYLE_OLDNT ; 
- scalar_t__ INVALID_HANDLE_VALUE ; 
- int /*<<< orphan*/  LoadBootSettings (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LoadFreeldrSettings (scalar_t__,int /*<<< orphan*/ ) ; 
- scalar_t__ PathFileExistsW (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetupCloseInfFile (scalar_t__) ; 
- scalar_t__ SetupOpenInfFileW (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  wcscat (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  wcscpy (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
+struct TYPE_3__ {int iFreeLdrIni; int szFreeldrIni; } ;
+typedef TYPE_1__* PSTARTINFO ;
+typedef int LRESULT ;
+typedef int HWND ;
+typedef scalar_t__ HINF ;
+typedef scalar_t__ DWORD ;
+
+
+ int FALSE ;
+ int GetProcessHeap () ;
+ scalar_t__ GetSystemDrive (int **) ;
+ int HeapFree (int ,int ,int *) ;
+ int INF_STYLE_OLDNT ;
+ scalar_t__ INVALID_HANDLE_VALUE ;
+ int LoadBootSettings (scalar_t__,int ) ;
+ int LoadFreeldrSettings (scalar_t__,int ) ;
+ scalar_t__ PathFileExistsW (int ) ;
+ int SetupCloseInfFile (scalar_t__) ;
+ scalar_t__ SetupOpenInfFileW (int ,int *,int ,int *) ;
+ int TRUE ;
+ int wcscat (int ,char*) ;
+ int wcscpy (int ,int *) ;
 
 __attribute__((used)) static LRESULT
 LoadOSList(HWND hwndDlg, PSTARTINFO pStartInfo)
@@ -51,13 +51,13 @@ LoadOSList(HWND hwndDlg, PSTARTINFO pStartInfo)
 
     if (PathFileExistsW(pStartInfo->szFreeldrIni))
     {
-        /* Free resource previously allocated by GetSystemDrive() */
+
         HeapFree(GetProcessHeap(), 0, szSystemDrive);
-        /* freeldr.ini exists */
+
         hInf = SetupOpenInfFileW(pStartInfo->szFreeldrIni,
-                                NULL,
+                                ((void*)0),
                                 INF_STYLE_OLDNT,
-                                NULL);
+                                ((void*)0));
 
         if (hInf != INVALID_HANDLE_VALUE)
         {
@@ -69,20 +69,20 @@ LoadOSList(HWND hwndDlg, PSTARTINFO pStartInfo)
         return FALSE;
     }
 
-    /* Try loading boot.ini settings */
+
     wcscpy(pStartInfo->szFreeldrIni, szSystemDrive);
     wcscat(pStartInfo->szFreeldrIni, L"\\boot.ini");
 
-    /* Free resource previously allocated by GetSystemDrive() */
+
     HeapFree(GetProcessHeap(), 0, szSystemDrive);
 
     if (PathFileExistsW(pStartInfo->szFreeldrIni))
     {
-        /* Load boot.ini settings */
+
         hInf = SetupOpenInfFileW(pStartInfo->szFreeldrIni,
-                                NULL,
+                                ((void*)0),
                                 INF_STYLE_OLDNT,
-                                NULL);
+                                ((void*)0));
 
         if (hInf != INVALID_HANDLE_VALUE)
         {

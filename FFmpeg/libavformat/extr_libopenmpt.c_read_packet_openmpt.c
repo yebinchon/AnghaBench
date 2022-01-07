@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_10__ {TYPE_1__* priv_data; } ;
 struct TYPE_9__ {int size; scalar_t__ data; } ;
-struct TYPE_8__ {int channels; int /*<<< orphan*/  sample_rate; int /*<<< orphan*/  module; } ;
-typedef  TYPE_1__ OpenMPTContext ;
-typedef  TYPE_2__ AVPacket ;
-typedef  TYPE_3__ AVFormatContext ;
+struct TYPE_8__ {int channels; int sample_rate; int module; } ;
+typedef TYPE_1__ OpenMPTContext ;
+typedef TYPE_2__ AVPacket ;
+typedef TYPE_3__ AVFormatContext ;
 
-/* Variables and functions */
- int AUDIO_PKT_SIZE ; 
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_EOF ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  av_log (TYPE_3__*,int /*<<< orphan*/ ,char*,int) ; 
- int av_new_packet (TYPE_2__*,int) ; 
- int openmpt_module_read_float_mono (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,float*) ; 
- int openmpt_module_read_interleaved_float_quad (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,float*) ; 
- int openmpt_module_read_interleaved_float_stereo (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,float*) ; 
+
+ int AUDIO_PKT_SIZE ;
+ int AVERROR (int ) ;
+ int AVERROR_EOF ;
+ int AV_LOG_ERROR ;
+ int EINVAL ;
+ int av_log (TYPE_3__*,int ,char*,int) ;
+ int av_new_packet (TYPE_2__*,int) ;
+ int openmpt_module_read_float_mono (int ,int ,int,float*) ;
+ int openmpt_module_read_interleaved_float_quad (int ,int ,int,float*) ;
+ int openmpt_module_read_interleaved_float_stereo (int ,int ,int,float*) ;
 
 __attribute__((used)) static int read_packet_openmpt(AVFormatContext *s, AVPacket *pkt)
 {

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct strbuf {int /*<<< orphan*/  buf; } ;
 
-/* Variables and functions */
- char* cmd_to_page (char const*) ; 
- scalar_t__ get_html_page_path (struct strbuf*,char const*) ; 
- int /*<<< orphan*/  open_html (int /*<<< orphan*/ ) ; 
+
+
+
+struct strbuf {int buf; } ;
+
+
+ char* cmd_to_page (char const*) ;
+ scalar_t__ get_html_page_path (struct strbuf*,char const*) ;
+ int open_html (int ) ;
 
 __attribute__((used)) static int show_html_page(const char *perf_cmd)
 {
-	const char *page = cmd_to_page(perf_cmd);
-	struct strbuf page_path; /* it leaks but we exec bellow */
+ const char *page = cmd_to_page(perf_cmd);
+ struct strbuf page_path;
 
-	if (get_html_page_path(&page_path, page) != 0)
-		return -1;
+ if (get_html_page_path(&page_path, page) != 0)
+  return -1;
 
-	open_html(page_path.buf);
+ open_html(page_path.buf);
 
-	return 0;
+ return 0;
 }

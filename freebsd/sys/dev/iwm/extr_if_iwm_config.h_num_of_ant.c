@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int /*<<< orphan*/  mask ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IWM_ANT_A ; 
- int /*<<< orphan*/  IWM_ANT_B ; 
- int /*<<< orphan*/  IWM_ANT_C ; 
+
+
+
+typedef int uint8_t ;
+typedef int mask ;
+
+
+ int IWM_ANT_A ;
+ int IWM_ANT_B ;
+ int IWM_ANT_C ;
 
 __attribute__((used)) static inline uint8_t num_of_ant(uint8_t mask)
 {
-	return  !!((mask) & IWM_ANT_A) +
-		!!((mask) & IWM_ANT_B) +
-		!!((mask) & IWM_ANT_C);
+ return !!((mask) & IWM_ANT_A) +
+  !!((mask) & IWM_ANT_B) +
+  !!((mask) & IWM_ANT_C);
 }

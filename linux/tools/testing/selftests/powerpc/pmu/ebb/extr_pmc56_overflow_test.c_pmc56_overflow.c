@@ -1,90 +1,90 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int exclude_kernel; int exclude_hv; int exclude_idle; } ;
 struct event {TYPE_1__ attr; } ;
 struct TYPE_5__ {int ebb_count; } ;
 struct TYPE_6__ {TYPE_2__ stats; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FAIL_IF (int) ; 
- int /*<<< orphan*/  SKIP_IF (int) ; 
- int /*<<< orphan*/  SPRN_PMC2 ; 
- int /*<<< orphan*/  SPRN_PMC5 ; 
- int /*<<< orphan*/  SPRN_PMC6 ; 
- int core_busy_loop () ; 
- int /*<<< orphan*/  count_pmc (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dump_ebb_state () ; 
- int /*<<< orphan*/  ebb_callee ; 
- int ebb_event_enable (struct event*) ; 
- int /*<<< orphan*/  ebb_freeze_pmcs () ; 
- int /*<<< orphan*/  ebb_global_disable () ; 
- int /*<<< orphan*/  ebb_global_enable () ; 
- int /*<<< orphan*/  ebb_is_supported () ; 
- TYPE_3__ ebb_state ; 
- int /*<<< orphan*/  event_close (struct event*) ; 
- int /*<<< orphan*/  event_init (struct event*,int) ; 
- int /*<<< orphan*/  event_leader_ebb_init (struct event*) ; 
- int event_open (struct event*) ; 
- int /*<<< orphan*/  mtspr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int pmc56_overflowed ; 
- int /*<<< orphan*/  pmc_sample_period (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printf (char*,int) ; 
- int /*<<< orphan*/  sample_period ; 
- int /*<<< orphan*/  setup_ebb_handler (int /*<<< orphan*/ ) ; 
+
+ int FAIL_IF (int) ;
+ int SKIP_IF (int) ;
+ int SPRN_PMC2 ;
+ int SPRN_PMC5 ;
+ int SPRN_PMC6 ;
+ int core_busy_loop () ;
+ int count_pmc (int,int ) ;
+ int dump_ebb_state () ;
+ int ebb_callee ;
+ int ebb_event_enable (struct event*) ;
+ int ebb_freeze_pmcs () ;
+ int ebb_global_disable () ;
+ int ebb_global_enable () ;
+ int ebb_is_supported () ;
+ TYPE_3__ ebb_state ;
+ int event_close (struct event*) ;
+ int event_init (struct event*,int) ;
+ int event_leader_ebb_init (struct event*) ;
+ int event_open (struct event*) ;
+ int mtspr (int ,int ) ;
+ int pmc56_overflowed ;
+ int pmc_sample_period (int ) ;
+ int printf (char*,int) ;
+ int sample_period ;
+ int setup_ebb_handler (int ) ;
 
 int pmc56_overflow(void)
 {
-	struct event event;
+ struct event event;
 
-	SKIP_IF(!ebb_is_supported());
+ SKIP_IF(!ebb_is_supported());
 
-	/* Use PMC2 so we set PMCjCE, which enables PMC5/6 */
-	event_init(&event, 0x2001e);
-	event_leader_ebb_init(&event);
 
-	event.attr.exclude_kernel = 1;
-	event.attr.exclude_hv = 1;
-	event.attr.exclude_idle = 1;
+ event_init(&event, 0x2001e);
+ event_leader_ebb_init(&event);
 
-	FAIL_IF(event_open(&event));
+ event.attr.exclude_kernel = 1;
+ event.attr.exclude_hv = 1;
+ event.attr.exclude_idle = 1;
 
-	setup_ebb_handler(ebb_callee);
-	ebb_global_enable();
+ FAIL_IF(event_open(&event));
 
-	FAIL_IF(ebb_event_enable(&event));
+ setup_ebb_handler(ebb_callee);
+ ebb_global_enable();
 
-	mtspr(SPRN_PMC2, pmc_sample_period(sample_period));
-	mtspr(SPRN_PMC5, 0);
-	mtspr(SPRN_PMC6, 0);
+ FAIL_IF(ebb_event_enable(&event));
 
-	while (ebb_state.stats.ebb_count < 10)
-		FAIL_IF(core_busy_loop());
+ mtspr(SPRN_PMC2, pmc_sample_period(sample_period));
+ mtspr(SPRN_PMC5, 0);
+ mtspr(SPRN_PMC6, 0);
 
-	ebb_global_disable();
-	ebb_freeze_pmcs();
+ while (ebb_state.stats.ebb_count < 10)
+  FAIL_IF(core_busy_loop());
 
-	count_pmc(2, sample_period);
+ ebb_global_disable();
+ ebb_freeze_pmcs();
 
-	dump_ebb_state();
+ count_pmc(2, sample_period);
 
-	printf("PMC5/6 overflow %d\n", pmc56_overflowed);
+ dump_ebb_state();
 
-	event_close(&event);
+ printf("PMC5/6 overflow %d\n", pmc56_overflowed);
 
-	FAIL_IF(ebb_state.stats.ebb_count == 0 || pmc56_overflowed != 0);
+ event_close(&event);
 
-	return 0;
+ FAIL_IF(ebb_state.stats.ebb_count == 0 || pmc56_overflowed != 0);
+
+ return 0;
 }

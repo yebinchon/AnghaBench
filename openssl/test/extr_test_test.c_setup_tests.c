@@ -1,44 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  ADD_ALL_TESTS (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ADD_TEST (int /*<<< orphan*/ ) ; 
- int OSSL_NELEM (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bn_output_tests ; 
- int /*<<< orphan*/  test_bignum ; 
- int /*<<< orphan*/  test_bn_output ; 
- int /*<<< orphan*/  test_bool ; 
- int /*<<< orphan*/  test_char ; 
- int /*<<< orphan*/  test_int ; 
- int /*<<< orphan*/  test_long ; 
- int /*<<< orphan*/  test_long_bignum ; 
- int /*<<< orphan*/  test_long_output ; 
- int /*<<< orphan*/  test_memory ; 
- int /*<<< orphan*/  test_memory_overflow ; 
- int /*<<< orphan*/  test_messages ; 
- int /*<<< orphan*/  test_output ; 
- int /*<<< orphan*/  test_pointer ; 
- int /*<<< orphan*/  test_single_eval ; 
- int /*<<< orphan*/  test_size_t ; 
- int /*<<< orphan*/  test_skip_many ; 
- int /*<<< orphan*/  test_skip_null ; 
- int /*<<< orphan*/  test_skip_one ; 
- int /*<<< orphan*/  test_string ; 
- int /*<<< orphan*/  test_time_t ; 
- int /*<<< orphan*/  test_uchar ; 
- int /*<<< orphan*/  test_uint ; 
- int /*<<< orphan*/  test_ulong ; 
+ int ADD_ALL_TESTS (int ,int) ;
+ int ADD_TEST (int ) ;
+ int OSSL_NELEM (int ) ;
+ int bn_output_tests ;
+ int test_bignum ;
+ int test_bn_output ;
+ int test_bool ;
+ int test_char ;
+ int test_int ;
+ int test_long ;
+ int test_long_bignum ;
+ int test_long_output ;
+ int test_memory ;
+ int test_memory_overflow ;
+ int test_messages ;
+ int test_output ;
+ int test_pointer ;
+ int test_single_eval ;
+ int test_size_t ;
+ int test_skip_many ;
+ int test_skip_null ;
+ int test_skip_one ;
+ int test_string ;
+ int test_time_t ;
+ int test_uchar ;
+ int test_uint ;
+ int test_ulong ;
 
 int setup_tests(void)
 {

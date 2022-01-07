@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
-struct TYPE_5__ {int /*<<< orphan*/  pVal; TYPE_1__* pSchema; int /*<<< orphan*/  pExpr; } ;
-typedef  TYPE_2__ tSQLSyntaxNode ;
-typedef  int int32_t ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint8_t ;
+struct TYPE_5__ {int pVal; TYPE_1__* pSchema; int pExpr; } ;
+typedef TYPE_2__ tSQLSyntaxNode ;
+typedef int int32_t ;
 struct TYPE_4__ {char* name; } ;
 
-/* Variables and functions */
- scalar_t__ TSQL_NODE_COL ; 
- scalar_t__ TSQL_NODE_EXPR ; 
- int sprintf (char*,char*,char*) ; 
- int /*<<< orphan*/  tSQLBinaryExprToString (int /*<<< orphan*/ ,char*,int*) ; 
- int tVariantToString (int /*<<< orphan*/ ,char*) ; 
+
+ scalar_t__ TSQL_NODE_COL ;
+ scalar_t__ TSQL_NODE_EXPR ;
+ int sprintf (char*,char*,char*) ;
+ int tSQLBinaryExprToString (int ,char*,int*) ;
+ int tVariantToString (int ,char*) ;
 
 int32_t tSQLBinaryExprToStringImpl(tSQLSyntaxNode *pNode, char *dst, uint8_t type) {
   int32_t len = 0;

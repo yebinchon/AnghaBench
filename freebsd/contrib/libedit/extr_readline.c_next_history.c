@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  HistEvent ;
-typedef  int /*<<< orphan*/  HIST_ENTRY ;
 
-/* Variables and functions */
- int /*<<< orphan*/  H_LAST ; 
- int /*<<< orphan*/ * current_history () ; 
- int /*<<< orphan*/  h ; 
- scalar_t__ history (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ history_length ; 
- scalar_t__ history_offset ; 
+
+
+
+typedef int HistEvent ;
+typedef int HIST_ENTRY ;
+
+
+ int H_LAST ;
+ int * current_history () ;
+ int h ;
+ scalar_t__ history (int ,int *,int ) ;
+ scalar_t__ history_length ;
+ scalar_t__ history_offset ;
 
 HIST_ENTRY *
 next_history(void)
 {
-	HistEvent ev;
+ HistEvent ev;
 
-	if (history_offset >= history_length)
-		return NULL;
+ if (history_offset >= history_length)
+  return ((void*)0);
 
-	if (history(h, &ev, H_LAST) != 0)
-		return NULL;
+ if (history(h, &ev, H_LAST) != 0)
+  return ((void*)0);
 
-	history_offset++;
-	return current_history();
+ history_offset++;
+ return current_history();
 }

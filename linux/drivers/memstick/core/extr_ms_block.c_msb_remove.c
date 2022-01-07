@@ -1,61 +1,61 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct msb_data {int card_dead; int /*<<< orphan*/  disk; int /*<<< orphan*/ * queue; int /*<<< orphan*/  tag_set; int /*<<< orphan*/  q_lock; int /*<<< orphan*/  io_queue_stopped; } ;
+
+
+
+
+struct msb_data {int card_dead; int disk; int * queue; int tag_set; int q_lock; int io_queue_stopped; } ;
 struct memstick_dev {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  blk_cleanup_queue (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  blk_mq_free_tag_set (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  blk_mq_start_hw_queues (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  dbg (char*) ; 
- int /*<<< orphan*/  del_gendisk (int /*<<< orphan*/ ) ; 
- struct msb_data* memstick_get_drvdata (struct memstick_dev*) ; 
- int /*<<< orphan*/  memstick_set_drvdata (struct memstick_dev*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  msb_data_clear (struct msb_data*) ; 
- int /*<<< orphan*/  msb_disk_lock ; 
- int /*<<< orphan*/  msb_disk_release (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  msb_stop (struct memstick_dev*) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
+
+ int blk_cleanup_queue (int *) ;
+ int blk_mq_free_tag_set (int *) ;
+ int blk_mq_start_hw_queues (int *) ;
+ int dbg (char*) ;
+ int del_gendisk (int ) ;
+ struct msb_data* memstick_get_drvdata (struct memstick_dev*) ;
+ int memstick_set_drvdata (struct memstick_dev*,int *) ;
+ int msb_data_clear (struct msb_data*) ;
+ int msb_disk_lock ;
+ int msb_disk_release (int ) ;
+ int msb_stop (struct memstick_dev*) ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
 
 __attribute__((used)) static void msb_remove(struct memstick_dev *card)
 {
-	struct msb_data *msb = memstick_get_drvdata(card);
-	unsigned long flags;
+ struct msb_data *msb = memstick_get_drvdata(card);
+ unsigned long flags;
 
-	if (!msb->io_queue_stopped)
-		msb_stop(card);
+ if (!msb->io_queue_stopped)
+  msb_stop(card);
 
-	dbg("Removing the disk device");
+ dbg("Removing the disk device");
 
-	/* Take care of unhandled + new requests from now on */
-	spin_lock_irqsave(&msb->q_lock, flags);
-	msb->card_dead = true;
-	spin_unlock_irqrestore(&msb->q_lock, flags);
-	blk_mq_start_hw_queues(msb->queue);
 
-	/* Remove the disk */
-	del_gendisk(msb->disk);
-	blk_cleanup_queue(msb->queue);
-	blk_mq_free_tag_set(&msb->tag_set);
-	msb->queue = NULL;
+ spin_lock_irqsave(&msb->q_lock, flags);
+ msb->card_dead = 1;
+ spin_unlock_irqrestore(&msb->q_lock, flags);
+ blk_mq_start_hw_queues(msb->queue);
 
-	mutex_lock(&msb_disk_lock);
-	msb_data_clear(msb);
-	mutex_unlock(&msb_disk_lock);
 
-	msb_disk_release(msb->disk);
-	memstick_set_drvdata(card, NULL);
+ del_gendisk(msb->disk);
+ blk_cleanup_queue(msb->queue);
+ blk_mq_free_tag_set(&msb->tag_set);
+ msb->queue = ((void*)0);
+
+ mutex_lock(&msb_disk_lock);
+ msb_data_clear(msb);
+ mutex_unlock(&msb_disk_lock);
+
+ msb_disk_release(msb->disk);
+ memstick_set_drvdata(card, ((void*)0));
 }

@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t word ;
-typedef  int dword ;
-typedef  size_t byte ;
-struct TYPE_9__ {int Flags; int /*<<< orphan*/  Handle; int /*<<< orphan*/  Number; } ;
+
+
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef size_t word ;
+typedef int dword ;
+typedef size_t byte ;
+struct TYPE_9__ {int Flags; int Handle; int Number; } ;
 struct TYPE_8__ {size_t* ch_ncci; scalar_t__* ncci_plci; int Id; scalar_t__* ncci_state; TYPE_2__* ncci; } ;
 struct TYPE_7__ {size_t data_out; scalar_t__ data_pending; TYPE_4__* DBuffer; } ;
-struct TYPE_6__ {scalar_t__ Id; scalar_t__ appl; scalar_t__ tel; TYPE_3__* adapter; int /*<<< orphan*/  data_sent_ptr; } ;
-typedef  TYPE_1__ PLCI ;
-typedef  TYPE_2__ NCCI ;
-typedef  TYPE_3__ DIVA_CAPI_ADAPTER ;
-typedef  TYPE_4__ DATA_B3_DESC ;
+struct TYPE_6__ {scalar_t__ Id; scalar_t__ appl; scalar_t__ tel; TYPE_3__* adapter; int data_sent_ptr; } ;
+typedef TYPE_1__ PLCI ;
+typedef TYPE_2__ NCCI ;
+typedef TYPE_3__ DIVA_CAPI_ADAPTER ;
+typedef TYPE_4__ DATA_B3_DESC ;
 
-/* Variables and functions */
- int CONFIRM ; 
- int EXT_CONTROLLER ; 
- size_t MAX_DATA_B3 ; 
- int /*<<< orphan*/  TransmitBufferFree (scalar_t__,int /*<<< orphan*/ ) ; 
- int _DATA_B3_R ; 
- int /*<<< orphan*/  dbug (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dprintf (char*,size_t,scalar_t__) ; 
- int /*<<< orphan*/  sendf (scalar_t__,int,int,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int CONFIRM ;
+ int EXT_CONTROLLER ;
+ size_t MAX_DATA_B3 ;
+ int TransmitBufferFree (scalar_t__,int ) ;
+ int _DATA_B3_R ;
+ int dbug (int,int ) ;
+ int dprintf (char*,size_t,scalar_t__) ;
+ int sendf (scalar_t__,int,int,int ,char*,int ,int ) ;
 
 __attribute__((used)) static void data_rc(PLCI *plci, byte ch)
 {
   dword Id;
-  DIVA_CAPI_ADAPTER   * a;
-  NCCI   *ncci_ptr;
-  DATA_B3_DESC   *data;
+  DIVA_CAPI_ADAPTER * a;
+  NCCI *ncci_ptr;
+  DATA_B3_DESC *data;
   word ncci;
 
   if (plci->appl)

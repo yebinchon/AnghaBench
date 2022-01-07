@@ -1,80 +1,80 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct drm_vblank_crtc {int /*<<< orphan*/  disable_timer; int /*<<< orphan*/  refcount; int /*<<< orphan*/  queue; int /*<<< orphan*/  enabled; } ;
-struct drm_device {unsigned int num_crtcs; int /*<<< orphan*/  event_lock; scalar_t__ vblank_disable_immediate; int /*<<< orphan*/  vblank_time_lock; struct drm_vblank_crtc* vblank; } ;
 
-/* Variables and functions */
- scalar_t__ WARN_ON (int) ; 
- scalar_t__ WARN_ON_ONCE (int) ; 
- int /*<<< orphan*/  atomic_read (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  drm_handle_vblank_events (struct drm_device*,unsigned int) ; 
- int /*<<< orphan*/  drm_update_vblank_count (struct drm_device*,unsigned int,int) ; 
- scalar_t__ drm_vblank_offdelay ; 
- int /*<<< orphan*/  spin_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  vblank_disable_fn (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  wake_up (int /*<<< orphan*/ *) ; 
+
+
+
+struct drm_vblank_crtc {int disable_timer; int refcount; int queue; int enabled; } ;
+struct drm_device {unsigned int num_crtcs; int event_lock; scalar_t__ vblank_disable_immediate; int vblank_time_lock; struct drm_vblank_crtc* vblank; } ;
+
+
+ scalar_t__ WARN_ON (int) ;
+ scalar_t__ WARN_ON_ONCE (int) ;
+ int atomic_read (int *) ;
+ int drm_handle_vblank_events (struct drm_device*,unsigned int) ;
+ int drm_update_vblank_count (struct drm_device*,unsigned int,int) ;
+ scalar_t__ drm_vblank_offdelay ;
+ int spin_lock (int *) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock (int *) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
+ int vblank_disable_fn (int *) ;
+ int wake_up (int *) ;
 
 bool drm_handle_vblank(struct drm_device *dev, unsigned int pipe)
 {
-	struct drm_vblank_crtc *vblank = &dev->vblank[pipe];
-	unsigned long irqflags;
-	bool disable_irq;
+ struct drm_vblank_crtc *vblank = &dev->vblank[pipe];
+ unsigned long irqflags;
+ bool disable_irq;
 
-	if (WARN_ON_ONCE(!dev->num_crtcs))
-		return false;
+ if (WARN_ON_ONCE(!dev->num_crtcs))
+  return 0;
 
-	if (WARN_ON(pipe >= dev->num_crtcs))
-		return false;
+ if (WARN_ON(pipe >= dev->num_crtcs))
+  return 0;
 
-	spin_lock_irqsave(&dev->event_lock, irqflags);
+ spin_lock_irqsave(&dev->event_lock, irqflags);
 
-	/* Need timestamp lock to prevent concurrent execution with
-	 * vblank enable/disable, as this would cause inconsistent
-	 * or corrupted timestamps and vblank counts.
-	 */
-	spin_lock(&dev->vblank_time_lock);
 
-	/* Vblank irq handling disabled. Nothing to do. */
-	if (!vblank->enabled) {
-		spin_unlock(&dev->vblank_time_lock);
-		spin_unlock_irqrestore(&dev->event_lock, irqflags);
-		return false;
-	}
 
-	drm_update_vblank_count(dev, pipe, true);
 
-	spin_unlock(&dev->vblank_time_lock);
 
-	wake_up(&vblank->queue);
+ spin_lock(&dev->vblank_time_lock);
 
-	/* With instant-off, we defer disabling the interrupt until after
-	 * we finish processing the following vblank after all events have
-	 * been signaled. The disable has to be last (after
-	 * drm_handle_vblank_events) so that the timestamp is always accurate.
-	 */
-	disable_irq = (dev->vblank_disable_immediate &&
-		       drm_vblank_offdelay > 0 &&
-		       !atomic_read(&vblank->refcount));
 
-	drm_handle_vblank_events(dev, pipe);
+ if (!vblank->enabled) {
+  spin_unlock(&dev->vblank_time_lock);
+  spin_unlock_irqrestore(&dev->event_lock, irqflags);
+  return 0;
+ }
 
-	spin_unlock_irqrestore(&dev->event_lock, irqflags);
+ drm_update_vblank_count(dev, pipe, 1);
 
-	if (disable_irq)
-		vblank_disable_fn(&vblank->disable_timer);
+ spin_unlock(&dev->vblank_time_lock);
 
-	return true;
+ wake_up(&vblank->queue);
+
+
+
+
+
+
+ disable_irq = (dev->vblank_disable_immediate &&
+         drm_vblank_offdelay > 0 &&
+         !atomic_read(&vblank->refcount));
+
+ drm_handle_vblank_events(dev, pipe);
+
+ spin_unlock_irqrestore(&dev->event_lock, irqflags);
+
+ if (disable_irq)
+  vblank_disable_fn(&vblank->disable_timer);
+
+ return 1;
 }

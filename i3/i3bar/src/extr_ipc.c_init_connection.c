@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ev_io ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EV_READ ; 
- int /*<<< orphan*/  ev_io_init (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ev_io_start (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  got_data ; 
- int /*<<< orphan*/  i3_connection ; 
- int ipc_connect (char const*) ; 
- int /*<<< orphan*/  main_loop ; 
- int /*<<< orphan*/  smalloc (int) ; 
- char const* sock_path ; 
+
+
+
+typedef int ev_io ;
+
+
+ int EV_READ ;
+ int ev_io_init (int ,int *,int,int ) ;
+ int ev_io_start (int ,int ) ;
+ int got_data ;
+ int i3_connection ;
+ int ipc_connect (char const*) ;
+ int main_loop ;
+ int smalloc (int) ;
+ char const* sock_path ;
 
 int init_connection(const char *socket_path) {
     sock_path = socket_path;

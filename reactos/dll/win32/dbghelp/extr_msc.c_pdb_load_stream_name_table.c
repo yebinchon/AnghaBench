@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct pdb_stream_name {int dummy; } ;
 struct pdb_file_info {int fpoext_stream; TYPE_1__* stream_dict; } ;
-struct TYPE_2__ {char* name; int /*<<< orphan*/  index; } ;
-typedef  int DWORD ;
+struct TYPE_2__ {char* name; int index; } ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FIXME (char*) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- TYPE_1__* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned int) ; 
- int /*<<< orphan*/  memcpy (char*,char const*,unsigned int) ; 
+
+ int FIXME (char*) ;
+ int GetProcessHeap () ;
+ TYPE_1__* HeapAlloc (int ,int ,unsigned int) ;
+ int memcpy (char*,char const*,unsigned int) ;
 
 __attribute__((used)) static void pdb_load_stream_name_table(struct pdb_file_info* pdb_file, const char* str, unsigned cb)
 {
-    DWORD*      pdw;
-    DWORD*      ok_bits;
-    DWORD       count, numok;
-    unsigned    i, j;
-    char*       cpstr;
+    DWORD* pdw;
+    DWORD* ok_bits;
+    DWORD count, numok;
+    unsigned i, j;
+    char* cpstr;
 
     pdw = (DWORD*)(str + cb);
     numok = *pdw++;
@@ -39,7 +39,7 @@ __attribute__((used)) static void pdb_load_stream_name_table(struct pdb_file_inf
     cpstr = (char*)(pdb_file->stream_dict + numok + 1);
     memcpy(cpstr, str, cb);
 
-    /* bitfield: first dword is len (in dword), then data */
+
     ok_bits = pdw;
     pdw += *ok_bits++ + 1;
     if (*pdw++ != 0)
@@ -58,7 +58,7 @@ __attribute__((used)) static void pdb_load_stream_name_table(struct pdb_file_inf
             j++;
         }
     }
-    /* add sentinel */
-    pdb_file->stream_dict[numok].name = NULL;
+
+    pdb_file->stream_dict[numok].name = ((void*)0);
     pdb_file->fpoext_stream = -1;
 }

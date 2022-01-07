@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int dwSize; int /*<<< orphan*/ * lpDDSurfaceDesc; } ;
-typedef  int /*<<< orphan*/ * PDD_CANCREATESURFACEDATA ;
-typedef  int /*<<< orphan*/ * HANDLE ;
-typedef  TYPE_1__ DDSURFACEDESC2 ;
-typedef  int /*<<< orphan*/  DDSURFACEDESC ;
-typedef  TYPE_1__ DDHAL_CANCREATESURFACEDATA ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DDHAL_DRIVER_HANDLED ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  OsThunkDdCanCreateSurface (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RtlZeroMemory (TYPE_1__*,int) ; 
- int /*<<< orphan*/  testing_eq (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,char*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int dwSize; int * lpDDSurfaceDesc; } ;
+typedef int * PDD_CANCREATESURFACEDATA ;
+typedef int * HANDLE ;
+typedef TYPE_1__ DDSURFACEDESC2 ;
+typedef int DDSURFACEDESC ;
+typedef TYPE_1__ DDHAL_CANCREATESURFACEDATA ;
+typedef int BOOL ;
+
+
+ int DDHAL_DRIVER_HANDLED ;
+ int FALSE ;
+ int OsThunkDdCanCreateSurface (int *,int *) ;
+ int RtlZeroMemory (TYPE_1__*,int) ;
+ int testing_eq (int ,int ,int,char*) ;
 
 void
 test_NtGdiDdCanCreateSurface(HANDLE hDirectDrawLocal)
@@ -37,11 +37,11 @@ test_NtGdiDdCanCreateSurface(HANDLE hDirectDrawLocal)
     RtlZeroMemory(&pCanCreateSurface,sizeof(DDHAL_CANCREATESURFACEDATA));
     RtlZeroMemory(&desc,sizeof(DDSURFACEDESC2));
 
-    /* crash in windows 2000 */
-    retValue = OsThunkDdCanCreateSurface(NULL,NULL);
+
+    retValue = OsThunkDdCanCreateSurface(((void*)0),((void*)0));
     testing_eq(retValue, DDHAL_DRIVER_HANDLED,fails,"1. NtGdiDdCanCreateSurface(NULL,NULL);\0");
 
-    retValue = OsThunkDdCanCreateSurface(hDirectDrawLocal,NULL);
+    retValue = OsThunkDdCanCreateSurface(hDirectDrawLocal,((void*)0));
     testing_eq(retValue, DDHAL_DRIVER_HANDLED,fails,"2. NtGdiDdCanCreateSurface(hDirectDrawLocal,NULL);\0");
 
     retValue = OsThunkDdCanCreateSurface(hDirectDrawLocal,(PDD_CANCREATESURFACEDATA)&pCanCreateSurface);

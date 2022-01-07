@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  IHDR ; 
- int /*<<< orphan*/  fwrite (int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  put_chunk (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  signature ; 
- int /*<<< orphan*/  stdout ; 
- int /*<<< orphan*/  unknown ; 
+ int IHDR ;
+ int fwrite (int ,int,int,int ) ;
+ int put_chunk (int ,int) ;
+ int signature ;
+ int stdout ;
+ int unknown ;
 
 int
 main(void)

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int flags; int length; unsigned char* data; } ;
-typedef  TYPE_1__ ASN1_BIT_STRING ;
+typedef TYPE_1__ ASN1_BIT_STRING ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASN1_F_ASN1_BIT_STRING_SET_BIT ; 
- int ASN1_STRING_FLAG_BITS_LEFT ; 
- int /*<<< orphan*/  ASN1err (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ERR_R_MALLOC_FAILURE ; 
- unsigned char* OPENSSL_clear_realloc (unsigned char*,int,int) ; 
- int /*<<< orphan*/  memset (unsigned char*,int /*<<< orphan*/ ,int) ; 
+
+ int ASN1_F_ASN1_BIT_STRING_SET_BIT ;
+ int ASN1_STRING_FLAG_BITS_LEFT ;
+ int ASN1err (int ,int ) ;
+ int ERR_R_MALLOC_FAILURE ;
+ unsigned char* OPENSSL_clear_realloc (unsigned char*,int,int) ;
+ int memset (unsigned char*,int ,int) ;
 
 int ASN1_BIT_STRING_set_bit(ASN1_BIT_STRING *a, int n, int value)
 {
@@ -33,16 +33,16 @@ int ASN1_BIT_STRING_set_bit(ASN1_BIT_STRING *a, int n, int value)
     if (!value)
         v = 0;
 
-    if (a == NULL)
+    if (a == ((void*)0))
         return 0;
 
-    a->flags &= ~(ASN1_STRING_FLAG_BITS_LEFT | 0x07); /* clear, set on write */
+    a->flags &= ~(ASN1_STRING_FLAG_BITS_LEFT | 0x07);
 
-    if ((a->length < (w + 1)) || (a->data == NULL)) {
+    if ((a->length < (w + 1)) || (a->data == ((void*)0))) {
         if (!value)
-            return 1;         /* Don't need to set */
+            return 1;
         c = OPENSSL_clear_realloc(a->data, a->length, w + 1);
-        if (c == NULL) {
+        if (c == ((void*)0)) {
             ASN1err(ASN1_F_ASN1_BIT_STRING_SET_BIT, ERR_R_MALLOC_FAILURE);
             return 0;
         }

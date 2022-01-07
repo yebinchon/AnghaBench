@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct vm_struct {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  NUMA_NO_NODE ; 
- struct vm_struct* __get_vm_area_node (unsigned long,int,unsigned long,unsigned long,unsigned long,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void const*) ; 
+
+ int GFP_KERNEL ;
+ int NUMA_NO_NODE ;
+ struct vm_struct* __get_vm_area_node (unsigned long,int,unsigned long,unsigned long,unsigned long,int ,int ,void const*) ;
 
 struct vm_struct *__get_vm_area_caller(unsigned long size, unsigned long flags,
-				       unsigned long start, unsigned long end,
-				       const void *caller)
+           unsigned long start, unsigned long end,
+           const void *caller)
 {
-	return __get_vm_area_node(size, 1, flags, start, end, NUMA_NO_NODE,
-				  GFP_KERNEL, caller);
+ return __get_vm_area_node(size, 1, flags, start, end, NUMA_NO_NODE,
+      GFP_KERNEL, caller);
 }

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_Number ;
-typedef  int /*<<< orphan*/  int8_t ;
-typedef  int /*<<< orphan*/  int64_t ;
-typedef  int /*<<< orphan*/  int32_t ;
-typedef  int /*<<< orphan*/  int16_t ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int lua_Number ;
+typedef int int8_t ;
+typedef int int64_t ;
+typedef int int32_t ;
+typedef int int16_t ;
 struct TYPE_4__ {int numsize; scalar_t__ toflt; } ;
-typedef  TYPE_1__ LoadState ;
+typedef TYPE_1__ LoadState ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LoadVar (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_assert (int /*<<< orphan*/ ) ; 
+
+ int LoadVar (TYPE_1__*,int ) ;
+ int lua_assert (int ) ;
 
 __attribute__((used)) static lua_Number LoadNumber(LoadState* S)
 {
@@ -55,7 +55,7 @@ __attribute__((used)) static lua_Number LoadNumber(LoadState* S)
  }
  else
  {
-  LoadVar(S,x); /* should probably handle more cases for float here... */
+  LoadVar(S,x);
  }
  return x;
 }

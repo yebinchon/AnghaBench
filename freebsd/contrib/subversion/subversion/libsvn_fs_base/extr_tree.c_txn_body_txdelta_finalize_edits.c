@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int /*<<< orphan*/  node; int /*<<< orphan*/  path; TYPE_1__* root; int /*<<< orphan*/  result_checksum; } ;
-typedef  TYPE_2__ txdelta_baton_t ;
-struct TYPE_9__ {int /*<<< orphan*/  pool; } ;
-typedef  TYPE_3__ trail_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct TYPE_7__ {int /*<<< orphan*/  txn; int /*<<< orphan*/  fs; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/ * add_change (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_3__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_fs_base__dag_finalize_edits (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_3__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_fs_base__dag_get_id (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_fs_path_change_modify ; 
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int node; int path; TYPE_1__* root; int result_checksum; } ;
+typedef TYPE_2__ txdelta_baton_t ;
+struct TYPE_9__ {int pool; } ;
+typedef TYPE_3__ trail_t ;
+typedef int svn_error_t ;
+struct TYPE_7__ {int txn; int fs; } ;
+
+
+ int FALSE ;
+ int SVN_ERR (int ) ;
+ int TRUE ;
+ int * add_change (int ,int ,int ,int ,int ,int ,int ,TYPE_3__*,int ) ;
+ int svn_fs_base__dag_finalize_edits (int ,int ,int ,TYPE_3__*,int ) ;
+ int svn_fs_base__dag_get_id (int ) ;
+ int svn_fs_path_change_modify ;
 
 __attribute__((used)) static svn_error_t *
 txn_body_txdelta_finalize_edits(void *baton, trail_t *trail)
@@ -38,7 +38,7 @@ txn_body_txdelta_finalize_edits(void *baton, trail_t *trail)
                                           tb->root->txn,
                                           trail, trail->pool));
 
-  /* Make a record of this modification in the changes table. */
+
   return add_change(tb->root->fs, tb->root->txn, tb->path,
                     svn_fs_base__dag_get_id(tb->node),
                     svn_fs_path_change_modify, TRUE, FALSE, trail,

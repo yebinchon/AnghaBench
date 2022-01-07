@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct madt_table_data {int /*<<< orphan*/ * dist; int /*<<< orphan*/  parent; } ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct madt_table_data {int * dist; int parent; } ;
 struct TYPE_3__ {int Type; } ;
-typedef  TYPE_1__ ACPI_SUBTABLE_HEADER ;
-typedef  int /*<<< orphan*/  ACPI_MADT_GENERIC_DISTRIBUTOR ;
+typedef TYPE_1__ ACPI_SUBTABLE_HEADER ;
+typedef int ACPI_MADT_GENERIC_DISTRIBUTOR ;
 
-/* Variables and functions */
-#define  ACPI_MADT_TYPE_GENERIC_DISTRIBUTOR 129 
-#define  ACPI_MADT_TYPE_GENERIC_REDISTRIBUTOR 128 
- int /*<<< orphan*/  bootverbose ; 
- int /*<<< orphan*/  device_printf (int /*<<< orphan*/ ,char*) ; 
+
+
+
+ int bootverbose ;
+ int device_printf (int ,char*) ;
 
 __attribute__((used)) static void
 madt_handler(ACPI_SUBTABLE_HEADER *entry, void *arg)
 {
-	struct madt_table_data *madt_data;
+ struct madt_table_data *madt_data;
 
-	madt_data = (struct madt_table_data *)arg;
+ madt_data = (struct madt_table_data *)arg;
 
-	switch(entry->Type) {
-	case ACPI_MADT_TYPE_GENERIC_DISTRIBUTOR:
-		if (madt_data->dist != NULL) {
-			if (bootverbose)
-				device_printf(madt_data->parent,
-				    "gic: Already have a distributor table");
-			break;
-		}
-		madt_data->dist = (ACPI_MADT_GENERIC_DISTRIBUTOR *)entry;
-		break;
+ switch(entry->Type) {
+ case 129:
+  if (madt_data->dist != ((void*)0)) {
+   if (bootverbose)
+    device_printf(madt_data->parent,
+        "gic: Already have a distributor table");
+   break;
+  }
+  madt_data->dist = (ACPI_MADT_GENERIC_DISTRIBUTOR *)entry;
+  break;
 
-	case ACPI_MADT_TYPE_GENERIC_REDISTRIBUTOR:
-		break;
+ case 128:
+  break;
 
-	default:
-		break;
-	}
+ default:
+  break;
+ }
 }

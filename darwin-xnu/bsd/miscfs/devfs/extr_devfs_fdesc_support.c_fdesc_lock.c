@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ int fdesc_mtx ;
+ int lck_mtx_lock (int *) ;
 
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  fdesc_mtx ; 
- int /*<<< orphan*/  lck_mtx_lock (int /*<<< orphan*/ *) ; 
-
-__attribute__((used)) static void 
+__attribute__((used)) static void
 fdesc_lock(void)
 {
-	lck_mtx_lock(&fdesc_mtx);
+ lck_mtx_lock(&fdesc_mtx);
 }

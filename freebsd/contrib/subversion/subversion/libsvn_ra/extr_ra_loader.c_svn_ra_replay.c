@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_revnum_t ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int svn_revnum_t ;
 struct TYPE_6__ {TYPE_1__* vtable; } ;
-typedef  TYPE_2__ svn_ra_session_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_delta_editor_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-struct TYPE_5__ {int /*<<< orphan*/ * (* replay ) (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,void*,int /*<<< orphan*/ *) ;} ;
+typedef TYPE_2__ svn_ra_session_t ;
+typedef int svn_error_t ;
+typedef int svn_delta_editor_t ;
+typedef int svn_boolean_t ;
+typedef int apr_pool_t ;
+struct TYPE_5__ {int * (* replay ) (TYPE_2__*,int ,int ,int ,int const*,void*,int *) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR_ASSERT (int) ; 
- scalar_t__ SVN_IS_VALID_REVNUM (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * stub1 (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,void*,int /*<<< orphan*/ *) ; 
+
+ int SVN_ERR_ASSERT (int) ;
+ scalar_t__ SVN_IS_VALID_REVNUM (int ) ;
+ int * stub1 (TYPE_2__*,int ,int ,int ,int const*,void*,int *) ;
 
 svn_error_t *svn_ra_replay(svn_ra_session_t *session,
                            svn_revnum_t revision,

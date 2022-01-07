@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_2__ ;
-typedef  struct TYPE_15__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_15__ {int /*<<< orphan*/  uri; } ;
-typedef  TYPE_1__ parse_data ;
+
+
+typedef struct TYPE_16__ TYPE_2__ ;
+typedef struct TYPE_15__ TYPE_1__ ;
+
+
+struct TYPE_15__ {int uri; } ;
+typedef TYPE_1__ parse_data ;
 struct TYPE_16__ {int canon_len; } ;
-typedef  TYPE_2__ Uri ;
-typedef  int /*<<< orphan*/  DWORD ;
+typedef TYPE_2__ Uri ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*,TYPE_1__ const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,TYPE_1__ const*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  canonicalize_fragment (TYPE_1__ const*,TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  canonicalize_hierpart (TYPE_1__ const*,TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  canonicalize_query (TYPE_1__ const*,TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  canonicalize_scheme (TYPE_1__ const*,TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int debugstr_w (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (TYPE_2__*,int /*<<< orphan*/ ,int) ; 
+
+ int ERR (char*,TYPE_1__ const*,int ) ;
+ int TRACE (char*,TYPE_1__ const*,int ,int) ;
+ int TRUE ;
+ int canonicalize_fragment (TYPE_1__ const*,TYPE_2__*,int ,int ) ;
+ int canonicalize_hierpart (TYPE_1__ const*,TYPE_2__*,int ,int ) ;
+ int canonicalize_query (TYPE_1__ const*,TYPE_2__*,int ,int ) ;
+ int canonicalize_scheme (TYPE_1__ const*,TYPE_2__*,int ,int ) ;
+ int debugstr_w (int ) ;
+ int memset (TYPE_2__*,int ,int) ;
 
 __attribute__((used)) static int compute_canonicalized_length(const parse_data *data, DWORD flags) {
     Uri uri;

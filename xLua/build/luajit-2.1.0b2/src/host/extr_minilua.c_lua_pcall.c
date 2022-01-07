@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
 struct CallS {int func; int nresults; } ;
-typedef  int /*<<< orphan*/  ptrdiff_t ;
+typedef int ptrdiff_t ;
 struct TYPE_10__ {int top; } ;
-typedef  TYPE_1__ lua_State ;
-typedef  int StkId ;
+typedef TYPE_1__ lua_State ;
+typedef int StkId ;
 
-/* Variables and functions */
- int /*<<< orphan*/  adjustresults (TYPE_1__*,int) ; 
- int /*<<< orphan*/  api_checknelems (TYPE_1__*,int) ; 
- int /*<<< orphan*/  api_checkvalidindex (TYPE_1__*,int) ; 
- int /*<<< orphan*/  checkresults (TYPE_1__*,int,int) ; 
- int /*<<< orphan*/  f_call ; 
- int index2adr (TYPE_1__*,int) ; 
- int luaD_pcall (TYPE_1__*,int /*<<< orphan*/ ,struct CallS*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  savestack (TYPE_1__*,int) ; 
+
+ int adjustresults (TYPE_1__*,int) ;
+ int api_checknelems (TYPE_1__*,int) ;
+ int api_checkvalidindex (TYPE_1__*,int) ;
+ int checkresults (TYPE_1__*,int,int) ;
+ int f_call ;
+ int index2adr (TYPE_1__*,int) ;
+ int luaD_pcall (TYPE_1__*,int ,struct CallS*,int ,int ) ;
+ int savestack (TYPE_1__*,int) ;
 
 __attribute__((used)) static int lua_pcall(lua_State*L,int nargs,int nresults,int errfunc){
 struct CallS c;

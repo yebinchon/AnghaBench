@@ -1,64 +1,64 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct snd_sof_ipc_msg {int ipc_complete; int /*<<< orphan*/  waitq; void* reply_data; void* msg_data; } ;
-struct snd_sof_ipc {struct snd_sof_ipc_msg msg; struct snd_sof_dev* sdev; int /*<<< orphan*/  tx_mutex; } ;
-struct snd_sof_dev {int /*<<< orphan*/  dev; } ;
-struct TYPE_2__ {int /*<<< orphan*/  fw_ready; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GFP_KERNEL ; 
- int SOF_IPC_MSG_MAX_SIZE ; 
- int /*<<< orphan*/  dev_err (int /*<<< orphan*/ ,char*) ; 
- void* devm_kzalloc (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  init_waitqueue_head (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_init (int /*<<< orphan*/ *) ; 
- TYPE_1__* sof_ops (struct snd_sof_dev*) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct snd_sof_ipc_msg {int ipc_complete; int waitq; void* reply_data; void* msg_data; } ;
+struct snd_sof_ipc {struct snd_sof_ipc_msg msg; struct snd_sof_dev* sdev; int tx_mutex; } ;
+struct snd_sof_dev {int dev; } ;
+struct TYPE_2__ {int fw_ready; } ;
+
+
+ int GFP_KERNEL ;
+ int SOF_IPC_MSG_MAX_SIZE ;
+ int dev_err (int ,char*) ;
+ void* devm_kzalloc (int ,int,int ) ;
+ int init_waitqueue_head (int *) ;
+ int mutex_init (int *) ;
+ TYPE_1__* sof_ops (struct snd_sof_dev*) ;
 
 struct snd_sof_ipc *snd_sof_ipc_init(struct snd_sof_dev *sdev)
 {
-	struct snd_sof_ipc *ipc;
-	struct snd_sof_ipc_msg *msg;
+ struct snd_sof_ipc *ipc;
+ struct snd_sof_ipc_msg *msg;
 
-	/* check if mandatory ops required for ipc are defined */
-	if (!sof_ops(sdev)->fw_ready) {
-		dev_err(sdev->dev, "error: ipc mandatory ops not defined\n");
-		return NULL;
-	}
 
-	ipc = devm_kzalloc(sdev->dev, sizeof(*ipc), GFP_KERNEL);
-	if (!ipc)
-		return NULL;
+ if (!sof_ops(sdev)->fw_ready) {
+  dev_err(sdev->dev, "error: ipc mandatory ops not defined\n");
+  return ((void*)0);
+ }
 
-	mutex_init(&ipc->tx_mutex);
-	ipc->sdev = sdev;
-	msg = &ipc->msg;
+ ipc = devm_kzalloc(sdev->dev, sizeof(*ipc), GFP_KERNEL);
+ if (!ipc)
+  return ((void*)0);
 
-	/* indicate that we aren't sending a message ATM */
-	msg->ipc_complete = true;
+ mutex_init(&ipc->tx_mutex);
+ ipc->sdev = sdev;
+ msg = &ipc->msg;
 
-	/* pre-allocate message data */
-	msg->msg_data = devm_kzalloc(sdev->dev, SOF_IPC_MSG_MAX_SIZE,
-				     GFP_KERNEL);
-	if (!msg->msg_data)
-		return NULL;
 
-	msg->reply_data = devm_kzalloc(sdev->dev, SOF_IPC_MSG_MAX_SIZE,
-				       GFP_KERNEL);
-	if (!msg->reply_data)
-		return NULL;
+ msg->ipc_complete = 1;
 
-	init_waitqueue_head(&msg->waitq);
 
-	return ipc;
+ msg->msg_data = devm_kzalloc(sdev->dev, SOF_IPC_MSG_MAX_SIZE,
+         GFP_KERNEL);
+ if (!msg->msg_data)
+  return ((void*)0);
+
+ msg->reply_data = devm_kzalloc(sdev->dev, SOF_IPC_MSG_MAX_SIZE,
+           GFP_KERNEL);
+ if (!msg->reply_data)
+  return ((void*)0);
+
+ init_waitqueue_head(&msg->waitq);
+
+ return ipc;
 }

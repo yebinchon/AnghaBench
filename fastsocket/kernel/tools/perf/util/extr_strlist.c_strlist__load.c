@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct strlist {int dummy; } ;
-typedef  int /*<<< orphan*/  entry ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef int entry ;
+typedef int FILE ;
 
-/* Variables and functions */
- int errno ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fgets (char*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char const*,char*) ; 
- size_t strlen (char*) ; 
- int strlist__add (struct strlist*,char*) ; 
+
+ int errno ;
+ int fclose (int *) ;
+ int * fgets (char*,int,int *) ;
+ int * fopen (char const*,char*) ;
+ size_t strlen (char*) ;
+ int strlist__add (struct strlist*,char*) ;
 
 int strlist__load(struct strlist *self, const char *filename)
 {
-	char entry[1024];
-	int err;
-	FILE *fp = fopen(filename, "r");
+ char entry[1024];
+ int err;
+ FILE *fp = fopen(filename, "r");
 
-	if (fp == NULL)
-		return errno;
+ if (fp == ((void*)0))
+  return errno;
 
-	while (fgets(entry, sizeof(entry), fp) != NULL) {
-		const size_t len = strlen(entry);
+ while (fgets(entry, sizeof(entry), fp) != ((void*)0)) {
+  const size_t len = strlen(entry);
 
-		if (len == 0)
-			continue;
-		entry[len - 1] = '\0';
+  if (len == 0)
+   continue;
+  entry[len - 1] = '\0';
 
-		err = strlist__add(self, entry);
-		if (err != 0)
-			goto out;
-	}
+  err = strlist__add(self, entry);
+  if (err != 0)
+   goto out;
+ }
 
-	err = 0;
+ err = 0;
 out:
-	fclose(fp);
-	return err;
+ fclose(fp);
+ return err;
 }

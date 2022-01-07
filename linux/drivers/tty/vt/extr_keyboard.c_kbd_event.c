@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct input_handle {int /*<<< orphan*/  dev; } ;
 
-/* Variables and functions */
- unsigned int EV_KEY ; 
- unsigned int EV_MSC ; 
- scalar_t__ HW_RAW (int /*<<< orphan*/ ) ; 
- unsigned int MSC_RAW ; 
- int do_poke_blanked_console ; 
- int /*<<< orphan*/  kbd_event_lock ; 
- int /*<<< orphan*/  kbd_keycode (unsigned int,int,scalar_t__) ; 
- int /*<<< orphan*/  kbd_rawcode (int) ; 
- int /*<<< orphan*/  keyboard_tasklet ; 
- int /*<<< orphan*/  schedule_console_callback () ; 
- int /*<<< orphan*/  spin_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tasklet_schedule (int /*<<< orphan*/ *) ; 
+
+
+
+struct input_handle {int dev; } ;
+
+
+ unsigned int EV_KEY ;
+ unsigned int EV_MSC ;
+ scalar_t__ HW_RAW (int ) ;
+ unsigned int MSC_RAW ;
+ int do_poke_blanked_console ;
+ int kbd_event_lock ;
+ int kbd_keycode (unsigned int,int,scalar_t__) ;
+ int kbd_rawcode (int) ;
+ int keyboard_tasklet ;
+ int schedule_console_callback () ;
+ int spin_lock (int *) ;
+ int spin_unlock (int *) ;
+ int tasklet_schedule (int *) ;
 
 __attribute__((used)) static void kbd_event(struct input_handle *handle, unsigned int event_type,
-		      unsigned int event_code, int value)
+        unsigned int event_code, int value)
 {
-	/* We are called with interrupts disabled, just take the lock */
-	spin_lock(&kbd_event_lock);
 
-	if (event_type == EV_MSC && event_code == MSC_RAW && HW_RAW(handle->dev))
-		kbd_rawcode(value);
-	if (event_type == EV_KEY)
-		kbd_keycode(event_code, value, HW_RAW(handle->dev));
+ spin_lock(&kbd_event_lock);
 
-	spin_unlock(&kbd_event_lock);
+ if (event_type == EV_MSC && event_code == MSC_RAW && HW_RAW(handle->dev))
+  kbd_rawcode(value);
+ if (event_type == EV_KEY)
+  kbd_keycode(event_code, value, HW_RAW(handle->dev));
 
-	tasklet_schedule(&keyboard_tasklet);
-	do_poke_blanked_console = 1;
-	schedule_console_callback();
+ spin_unlock(&kbd_event_lock);
+
+ tasklet_schedule(&keyboard_tasklet);
+ do_poke_blanked_console = 1;
+ schedule_console_callback();
 }

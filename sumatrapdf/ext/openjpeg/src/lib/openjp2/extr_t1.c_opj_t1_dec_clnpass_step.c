@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  ct; int /*<<< orphan*/  c; int /*<<< orphan*/  a; int /*<<< orphan*/  curctx; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int ct; int c; int a; int curctx; } ;
 struct TYPE_5__ {scalar_t__ w; TYPE_2__ mqc; } ;
-typedef  TYPE_1__ opj_t1_t ;
-typedef  TYPE_2__ opj_mqc_t ;
-typedef  int /*<<< orphan*/  opj_flag_t ;
-typedef  int /*<<< orphan*/  OPJ_UINT32 ;
-typedef  int /*<<< orphan*/  OPJ_INT32 ;
+typedef TYPE_1__ opj_t1_t ;
+typedef TYPE_2__ opj_mqc_t ;
+typedef int opj_flag_t ;
+typedef int OPJ_UINT32 ;
+typedef int OPJ_INT32 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OPJ_FALSE ; 
- int /*<<< orphan*/  OPJ_TRUE ; 
- int /*<<< orphan*/  opj_t1_dec_clnpass_step_macro (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int OPJ_FALSE ;
+ int OPJ_TRUE ;
+ int opj_t1_dec_clnpass_step_macro (int ,int ,int ,int *,scalar_t__,int *,int ,int ,TYPE_2__*,int ,int ,int ,int ,int ,int ,int ) ;
 
 __attribute__((used)) static void opj_t1_dec_clnpass_step(
     opj_t1_t *t1,
@@ -35,7 +35,7 @@ __attribute__((used)) static void opj_t1_dec_clnpass_step(
 {
     OPJ_UINT32 v;
 
-    opj_mqc_t *mqc = &(t1->mqc);   /* MQC component */
+    opj_mqc_t *mqc = &(t1->mqc);
     opj_t1_dec_clnpass_step_macro(OPJ_TRUE, OPJ_FALSE,
                                   *flagsp, flagsp, t1->w + 2U, datap,
                                   0, ci, mqc, mqc->curctx,

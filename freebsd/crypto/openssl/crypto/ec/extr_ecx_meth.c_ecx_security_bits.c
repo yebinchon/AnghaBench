@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_5__ {TYPE_1__* ameth; } ;
-struct TYPE_4__ {int /*<<< orphan*/  pkey_id; } ;
-typedef  TYPE_2__ EVP_PKEY ;
+struct TYPE_4__ {int pkey_id; } ;
+typedef TYPE_2__ EVP_PKEY ;
 
-/* Variables and functions */
- scalar_t__ IS25519 (int /*<<< orphan*/ ) ; 
- int X25519_SECURITY_BITS ; 
- int X448_SECURITY_BITS ; 
+
+ scalar_t__ IS25519 (int ) ;
+ int X25519_SECURITY_BITS ;
+ int X448_SECURITY_BITS ;
 
 __attribute__((used)) static int ecx_security_bits(const EVP_PKEY *pkey)
 {

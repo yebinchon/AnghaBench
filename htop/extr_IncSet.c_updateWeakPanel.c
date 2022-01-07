@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Vector ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int Vector ;
 struct TYPE_7__ {TYPE_1__* modes; scalar_t__ filtering; } ;
-struct TYPE_6__ {int /*<<< orphan*/  value; } ;
+struct TYPE_6__ {int value; } ;
 struct TYPE_5__ {char* buffer; } ;
-typedef  int /*<<< orphan*/  Panel ;
-typedef  int /*<<< orphan*/  Object ;
-typedef  TYPE_2__ ListItem ;
-typedef  TYPE_3__ IncSet ;
+typedef int Panel ;
+typedef int Object ;
+typedef TYPE_2__ ListItem ;
+typedef TYPE_3__ IncSet ;
 
-/* Variables and functions */
- size_t INC_FILTER ; 
- int /*<<< orphan*/  Panel_add (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * Panel_getSelected (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Panel_prune (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Panel_setSelected (int /*<<< orphan*/ *,int) ; 
- scalar_t__ String_contains_i (int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/ * Vector_get (int /*<<< orphan*/ *,int) ; 
- int Vector_size (int /*<<< orphan*/ *) ; 
+
+ size_t INC_FILTER ;
+ int Panel_add (int *,int *) ;
+ int * Panel_getSelected (int *) ;
+ int Panel_prune (int *) ;
+ int Panel_setSelected (int *,int) ;
+ scalar_t__ String_contains_i (int ,char const*) ;
+ int * Vector_get (int *,int) ;
+ int Vector_size (int *) ;
 
 __attribute__((used)) static void updateWeakPanel(IncSet* this, Panel* panel, Vector* lines) {
    Object* selected = Panel_getSelected(panel);

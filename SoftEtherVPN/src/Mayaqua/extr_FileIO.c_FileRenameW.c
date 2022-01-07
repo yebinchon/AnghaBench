@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wchar_t ;
-typedef  int /*<<< orphan*/  tmp2 ;
-typedef  int /*<<< orphan*/  tmp1 ;
 
-/* Variables and functions */
- int FileRenameInnerW (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  InnerFilePathW (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- int MAX_SIZE ; 
+
+
+
+typedef int wchar_t ;
+typedef int tmp2 ;
+typedef int tmp1 ;
+
+
+ int FileRenameInnerW (int *,int *) ;
+ int InnerFilePathW (int *,int,int *) ;
+ int MAX_SIZE ;
 
 bool FileRenameW(wchar_t *old_name, wchar_t *new_name)
 {
-	wchar_t tmp1[MAX_SIZE];
-	wchar_t tmp2[MAX_SIZE];
-	// Validate arguments
-	if (old_name == NULL || new_name == NULL)
-	{
-		return false;
-	}
+ wchar_t tmp1[MAX_SIZE];
+ wchar_t tmp2[MAX_SIZE];
 
-	InnerFilePathW(tmp1, sizeof(tmp1), old_name);
-	InnerFilePathW(tmp2, sizeof(tmp2), new_name);
+ if (old_name == ((void*)0) || new_name == ((void*)0))
+ {
+  return 0;
+ }
 
-	return FileRenameInnerW(tmp1, tmp2);
+ InnerFilePathW(tmp1, sizeof(tmp1), old_name);
+ InnerFilePathW(tmp2, sizeof(tmp2), new_name);
+
+ return FileRenameInnerW(tmp1, tmp2);
 }

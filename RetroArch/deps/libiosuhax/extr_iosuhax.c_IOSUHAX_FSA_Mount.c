@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  mountRes ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IOCTL_FSA_MOUNT ; 
- int IOS_Ioctl (scalar_t__,int /*<<< orphan*/ ,int*,int,int*,int) ; 
- int /*<<< orphan*/  free (int*) ; 
- scalar_t__ iosuhaxHandle ; 
- scalar_t__ memalign (int,int) ; 
- int /*<<< orphan*/  memcpy (char*,char const*,int) ; 
- int /*<<< orphan*/  memset (int*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  strcpy (char*,char const*) ; 
- int strlen (char const*) ; 
+
+
+
+typedef int uint32_t ;
+typedef int mountRes ;
+
+
+ int IOCTL_FSA_MOUNT ;
+ int IOS_Ioctl (scalar_t__,int ,int*,int,int*,int) ;
+ int free (int*) ;
+ scalar_t__ iosuhaxHandle ;
+ scalar_t__ memalign (int,int) ;
+ int memcpy (char*,char const*,int) ;
+ int memset (int*,int ,int) ;
+ int strcpy (char*,char const*) ;
+ int strlen (char const*) ;
 
 int IOSUHAX_FSA_Mount(int fsaFd, const char* device_path, const char* volume_path, uint32_t flags, const char* arg_string, int arg_string_len)
 {
@@ -48,11 +48,11 @@ int IOSUHAX_FSA_Mount(int fsaFd, const char* device_path, const char* volume_pat
     io_buf[4] = arg_string_len ? ( io_buf[2] + strlen(volume_path) + 1) : 0;
     io_buf[5] = arg_string_len;
 
-    strcpy(((char*)io_buf) + io_buf[1],  device_path);
-    strcpy(((char*)io_buf) + io_buf[2],  volume_path);
+    strcpy(((char*)io_buf) + io_buf[1], device_path);
+    strcpy(((char*)io_buf) + io_buf[2], volume_path);
 
     if(arg_string_len)
-        memcpy(((char*)io_buf) + io_buf[4],  arg_string, arg_string_len);
+        memcpy(((char*)io_buf) + io_buf[4], arg_string, arg_string_len);
 
     int mountRes;
 

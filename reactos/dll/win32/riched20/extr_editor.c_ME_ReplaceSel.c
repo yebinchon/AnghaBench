@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char WCHAR ;
-struct TYPE_12__ {int /*<<< orphan*/ * pCursors; } ;
-typedef  TYPE_1__ ME_TextEditor ;
-typedef  int /*<<< orphan*/  ME_Style ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  ME_ClearTempStyle (TYPE_1__*) ; 
- int /*<<< orphan*/  ME_CommitUndo (TYPE_1__*) ; 
- int /*<<< orphan*/  ME_EmptyUndoStack (TYPE_1__*) ; 
- int /*<<< orphan*/ * ME_GetSelectionInsertStyle (TYPE_1__*) ; 
- int ME_GetSelectionOfs (TYPE_1__*,int*,int*) ; 
- int /*<<< orphan*/  ME_InsertTextFromCursor (TYPE_1__*,int /*<<< orphan*/ ,char const*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ME_InternalDeleteText (TYPE_1__*,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ME_ReleaseStyle (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ME_UpdateRepaint (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ME_UpdateSelectionLinkAttribute (TYPE_1__*) ; 
+
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+typedef char WCHAR ;
+struct TYPE_12__ {int * pCursors; } ;
+typedef TYPE_1__ ME_TextEditor ;
+typedef int ME_Style ;
+typedef int BOOL ;
+
+
+ int FALSE ;
+ int ME_ClearTempStyle (TYPE_1__*) ;
+ int ME_CommitUndo (TYPE_1__*) ;
+ int ME_EmptyUndoStack (TYPE_1__*) ;
+ int * ME_GetSelectionInsertStyle (TYPE_1__*) ;
+ int ME_GetSelectionOfs (TYPE_1__*,int*,int*) ;
+ int ME_InsertTextFromCursor (TYPE_1__*,int ,char const*,int,int *) ;
+ int ME_InternalDeleteText (TYPE_1__*,int *,int,int ) ;
+ int ME_ReleaseStyle (int *) ;
+ int ME_UpdateRepaint (TYPE_1__*,int ) ;
+ int ME_UpdateSelectionLinkAttribute (TYPE_1__*) ;
 
 void ME_ReplaceSel(ME_TextEditor *editor, BOOL can_undo, const WCHAR *str, int len)
 {
@@ -40,11 +40,11 @@ void ME_ReplaceSel(ME_TextEditor *editor, BOOL can_undo, const WCHAR *str, int l
   ME_InternalDeleteText(editor, &editor->pCursors[nStartCursor], to-from, FALSE);
   ME_InsertTextFromCursor(editor, 0, str, len, style);
   ME_ReleaseStyle(style);
-  /* drop temporary style if line end */
-  /*
-   * FIXME question: does abc\n mean: put abc,
-   * clear temp style, put \n? (would require a change)
-   */
+
+
+
+
+
   if (len>0 && str[len-1] == '\n')
     ME_ClearTempStyle(editor);
   ME_CommitUndo(editor);

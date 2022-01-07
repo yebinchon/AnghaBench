@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct request_queue {int /*<<< orphan*/ * lld_busy_fn; } ;
-typedef  int /*<<< orphan*/  lld_busy_fn ;
 
-/* Variables and functions */
+
+
+
+struct request_queue {int * lld_busy_fn; } ;
+typedef int lld_busy_fn ;
+
+
 
 void blk_queue_lld_busy(struct request_queue *q, lld_busy_fn *fn)
 {
-	q->lld_busy_fn = fn;
+ q->lld_busy_fn = fn;
 }

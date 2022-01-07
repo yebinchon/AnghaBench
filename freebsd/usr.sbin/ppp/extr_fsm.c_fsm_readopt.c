@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_char ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u_char ;
 struct fsm_opt_hdr {int dummy; } ;
 struct TYPE_2__ {int len; } ;
 struct fsm_opt {TYPE_1__ hdr; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LogERROR ; 
- int /*<<< orphan*/  log_Printf (int /*<<< orphan*/ ,char*,int,...) ; 
+
+ int LogERROR ;
+ int log_Printf (int ,char*,int,...) ;
 
 struct fsm_opt *
 fsm_readopt(u_char **cp)
@@ -27,7 +27,7 @@ fsm_readopt(u_char **cp)
 
   if (o->hdr.len < sizeof(struct fsm_opt_hdr)) {
     log_Printf(LogERROR, "Bad option length %d (out of phase?)\n", o->hdr.len);
-    return NULL;
+    return ((void*)0);
   }
 
   *cp += o->hdr.len;

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {void* comment; void* owner; void* token; void* path; } ;
-typedef  TYPE_1__ svn_lock_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+typedef TYPE_1__ svn_lock_t ;
+typedef int apr_pool_t ;
 
-/* Variables and functions */
- TYPE_1__* apr_palloc (int /*<<< orphan*/ *,int) ; 
- void* apr_pstrdup (int /*<<< orphan*/ *,void*) ; 
+
+ TYPE_1__* apr_palloc (int *,int) ;
+ void* apr_pstrdup (int *,void*) ;
 
 svn_lock_t *
 svn_lock_dup(const svn_lock_t *lock, apr_pool_t *pool)
 {
   svn_lock_t *new_l;
 
-  if (lock == NULL)
-    return NULL;
+  if (lock == ((void*)0))
+    return ((void*)0);
 
   new_l = apr_palloc(pool, sizeof(*new_l));
   *new_l = *lock;

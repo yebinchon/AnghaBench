@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  intptr_t ngx_int_t ;
-struct TYPE_10__ {int /*<<< orphan*/  log; } ;
-typedef  TYPE_1__ ngx_cycle_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NGX_LOG_DEBUG_EVENT ; 
- int /*<<< orphan*/  NGX_LOG_NOTICE ; 
- scalar_t__ NGX_OK ; 
- int /*<<< orphan*/  NGX_PROCESS_WORKER ; 
- int /*<<< orphan*/  ngx_close_idle_connections (TYPE_1__*) ; 
- int /*<<< orphan*/  ngx_close_listening_sockets (TYPE_1__*) ; 
- scalar_t__ ngx_event_no_timers_left () ; 
- int ngx_exiting ; 
- int /*<<< orphan*/  ngx_log_debug0 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ngx_log_error (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ngx_process ; 
- int /*<<< orphan*/  ngx_process_events_and_timers (TYPE_1__*) ; 
- scalar_t__ ngx_quit ; 
- scalar_t__ ngx_reopen ; 
- int /*<<< orphan*/  ngx_reopen_files (TYPE_1__*,int) ; 
- int /*<<< orphan*/  ngx_set_shutdown_timer (TYPE_1__*) ; 
- int /*<<< orphan*/  ngx_setproctitle (char*) ; 
- scalar_t__ ngx_terminate ; 
- intptr_t ngx_worker ; 
- int /*<<< orphan*/  ngx_worker_process_exit (TYPE_1__*) ; 
- int /*<<< orphan*/  ngx_worker_process_init (TYPE_1__*,intptr_t) ; 
+
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef intptr_t ngx_int_t ;
+struct TYPE_10__ {int log; } ;
+typedef TYPE_1__ ngx_cycle_t ;
+
+
+ int NGX_LOG_DEBUG_EVENT ;
+ int NGX_LOG_NOTICE ;
+ scalar_t__ NGX_OK ;
+ int NGX_PROCESS_WORKER ;
+ int ngx_close_idle_connections (TYPE_1__*) ;
+ int ngx_close_listening_sockets (TYPE_1__*) ;
+ scalar_t__ ngx_event_no_timers_left () ;
+ int ngx_exiting ;
+ int ngx_log_debug0 (int ,int ,int ,char*) ;
+ int ngx_log_error (int ,int ,int ,char*) ;
+ int ngx_process ;
+ int ngx_process_events_and_timers (TYPE_1__*) ;
+ scalar_t__ ngx_quit ;
+ scalar_t__ ngx_reopen ;
+ int ngx_reopen_files (TYPE_1__*,int) ;
+ int ngx_set_shutdown_timer (TYPE_1__*) ;
+ int ngx_setproctitle (char*) ;
+ scalar_t__ ngx_terminate ;
+ intptr_t ngx_worker ;
+ int ngx_worker_process_exit (TYPE_1__*) ;
+ int ngx_worker_process_init (TYPE_1__*,intptr_t) ;
 
 __attribute__((used)) static void
 ngx_worker_process_cycle(ngx_cycle_t *cycle, void *data)

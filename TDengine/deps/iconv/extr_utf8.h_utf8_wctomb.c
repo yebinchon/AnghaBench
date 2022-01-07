@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int ucs4_t ;
-typedef  int /*<<< orphan*/  conv_t ;
 
-/* Variables and functions */
- int RET_ILUNI ; 
- int RET_TOOSMALL ; 
+
+
+
+typedef int ucs4_t ;
+typedef int conv_t ;
+
+
+ int RET_ILUNI ;
+ int RET_TOOSMALL ;
 
 __attribute__((used)) static int
-utf8_wctomb (conv_t conv, unsigned char *r, ucs4_t wc, int n) /* n == 0 is acceptable */
+utf8_wctomb (conv_t conv, unsigned char *r, ucs4_t wc, int n)
 {
   int count;
   if (wc < 0x80)
@@ -37,7 +37,7 @@ utf8_wctomb (conv_t conv, unsigned char *r, ucs4_t wc, int n) /* n == 0 is accep
     return RET_ILUNI;
   if (n < count)
     return RET_TOOSMALL;
-  switch (count) { /* note: code falls through cases! */
+  switch (count) {
     case 6: r[5] = 0x80 | (wc & 0x3f); wc = wc >> 6; wc |= 0x4000000;
     case 5: r[4] = 0x80 | (wc & 0x3f); wc = wc >> 6; wc |= 0x200000;
     case 4: r[3] = 0x80 | (wc & 0x3f); wc = wc >> 6; wc |= 0x10000;

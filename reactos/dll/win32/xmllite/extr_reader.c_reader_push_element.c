@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  is_empty_element; int /*<<< orphan*/  elements; } ;
-typedef  TYPE_1__ xmlreader ;
-typedef  int /*<<< orphan*/  strval ;
+
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int is_empty_element; int elements; } ;
+typedef TYPE_1__ xmlreader ;
+typedef int strval ;
 struct reader_position {int dummy; } ;
-struct element {struct reader_position position; int /*<<< orphan*/  entry; int /*<<< orphan*/  qname; int /*<<< orphan*/  localname; int /*<<< orphan*/  prefix; } ;
-typedef  int /*<<< orphan*/  HRESULT ;
+struct element {struct reader_position position; int entry; int qname; int localname; int prefix; } ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  list_add_head (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- struct element* reader_alloc_zero (TYPE_1__*,int) ; 
- int /*<<< orphan*/  reader_free_element (TYPE_1__*,struct element*) ; 
- int /*<<< orphan*/  reader_mark_ns_nodes (TYPE_1__*,struct element*) ; 
- int /*<<< orphan*/  reader_strvaldup (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int E_OUTOFMEMORY ;
+ int FALSE ;
+ int S_OK ;
+ int list_add_head (int *,int *) ;
+ struct element* reader_alloc_zero (TYPE_1__*,int) ;
+ int reader_free_element (TYPE_1__*,struct element*) ;
+ int reader_mark_ns_nodes (TYPE_1__*,struct element*) ;
+ int reader_strvaldup (TYPE_1__*,int *,int *) ;
 
 __attribute__((used)) static HRESULT reader_push_element(xmlreader *reader, strval *prefix, strval *localname,
     strval *qname, const struct reader_position *position)

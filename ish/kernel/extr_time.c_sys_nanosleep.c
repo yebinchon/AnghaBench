@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct timespec_ {int /*<<< orphan*/  nsec; int /*<<< orphan*/  sec; } ;
-struct timespec {int /*<<< orphan*/  tv_nsec; int /*<<< orphan*/  tv_sec; } ;
-typedef  int /*<<< orphan*/  dword_t ;
-typedef  int /*<<< orphan*/  addr_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  STRACE (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  _EFAULT ; 
- int /*<<< orphan*/  errno_map () ; 
- scalar_t__ nanosleep (struct timespec*,struct timespec*) ; 
- scalar_t__ user_get (int /*<<< orphan*/ ,struct timespec_) ; 
- scalar_t__ user_put (int /*<<< orphan*/ ,struct timespec_) ; 
+
+
+
+struct timespec_ {int nsec; int sec; } ;
+struct timespec {int tv_nsec; int tv_sec; } ;
+typedef int dword_t ;
+typedef int addr_t ;
+
+
+ int STRACE (char*,int ,int ,int ) ;
+ int _EFAULT ;
+ int errno_map () ;
+ scalar_t__ nanosleep (struct timespec*,struct timespec*) ;
+ scalar_t__ user_get (int ,struct timespec_) ;
+ scalar_t__ user_put (int ,struct timespec_) ;
 
 dword_t sys_nanosleep(addr_t req_addr, addr_t rem_addr) {
     struct timespec_ req_ts;

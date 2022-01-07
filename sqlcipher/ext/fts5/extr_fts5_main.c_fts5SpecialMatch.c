@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {int /*<<< orphan*/  iCsrId; int /*<<< orphan*/  iSpecial; int /*<<< orphan*/  ePlan; } ;
-struct TYPE_7__ {int /*<<< orphan*/  zErrMsg; } ;
-struct TYPE_8__ {TYPE_1__ base; int /*<<< orphan*/  pIndex; } ;
+
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_10__ {int iCsrId; int iSpecial; int ePlan; } ;
+struct TYPE_7__ {int zErrMsg; } ;
+struct TYPE_8__ {TYPE_1__ base; int pIndex; } ;
 struct TYPE_9__ {TYPE_2__ p; } ;
-typedef  TYPE_3__ Fts5FullTable ;
-typedef  TYPE_4__ Fts5Cursor ;
+typedef TYPE_3__ Fts5FullTable ;
+typedef TYPE_4__ Fts5Cursor ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FTS5_PLAN_SPECIAL ; 
- int SQLITE_ERROR ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  sqlite3Fts5IndexReads (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_mprintf (char*,int,char const*) ; 
- scalar_t__ sqlite3_strnicmp (char*,char const*,int) ; 
+
+ int FTS5_PLAN_SPECIAL ;
+ int SQLITE_ERROR ;
+ int SQLITE_OK ;
+ int assert (int) ;
+ int sqlite3Fts5IndexReads (int ) ;
+ int sqlite3_mprintf (char*,int,char const*) ;
+ scalar_t__ sqlite3_strnicmp (char*,char const*,int) ;
 
 __attribute__((used)) static int fts5SpecialMatch(
-  Fts5FullTable *pTab, 
-  Fts5Cursor *pCsr, 
+  Fts5FullTable *pTab,
+  Fts5Cursor *pCsr,
   const char *zQuery
 ){
-  int rc = SQLITE_OK;             /* Return code */
-  const char *z = zQuery;         /* Special query text */
-  int n;                          /* Number of bytes in text at z */
+  int rc = SQLITE_OK;
+  const char *z = zQuery;
+  int n;
 
   while( z[0]==' ' ) z++;
   for(n=0; z[n] && z[n]!=' '; n++);
@@ -52,7 +52,7 @@ __attribute__((used)) static int fts5SpecialMatch(
     pCsr->iSpecial = pCsr->iCsrId;
   }
   else{
-    /* An unrecognized directive. Return an error message. */
+
     pTab->p.base.zErrMsg = sqlite3_mprintf("unknown special query: %.*s", n, z);
     rc = SQLITE_ERROR;
   }

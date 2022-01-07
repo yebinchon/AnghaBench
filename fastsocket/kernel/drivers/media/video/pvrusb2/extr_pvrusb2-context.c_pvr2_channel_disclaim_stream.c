@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct pvr2_channel {TYPE_1__* stream; } ;
-struct TYPE_2__ {int /*<<< orphan*/ * user; int /*<<< orphan*/  stream; } ;
+struct TYPE_2__ {int * user; int stream; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  pvr2_stream_kill (int /*<<< orphan*/ ) ; 
+
+ int pvr2_stream_kill (int ) ;
 
 __attribute__((used)) static void pvr2_channel_disclaim_stream(struct pvr2_channel *cp)
 {
-	if (!cp->stream) return;
-	pvr2_stream_kill(cp->stream->stream);
-	cp->stream->user = NULL;
-	cp->stream = NULL;
+ if (!cp->stream) return;
+ pvr2_stream_kill(cp->stream->stream);
+ cp->stream->user = ((void*)0);
+ cp->stream = ((void*)0);
 }

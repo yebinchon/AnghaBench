@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-struct TYPE_3__ {unsigned int blocklen; int* key; unsigned int keylen; unsigned int hashlen; int /*<<< orphan*/  hash; int /*<<< orphan*/  (* update ) (int /*<<< orphan*/ ,int*,int) ;int /*<<< orphan*/  (* init ) (int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* final ) (int /*<<< orphan*/ ,int*) ;} ;
-typedef  TYPE_1__ AVHMAC ;
 
-/* Variables and functions */
- int MAX_BLOCKLEN ; 
- int /*<<< orphan*/  memcpy (int*,int const*,unsigned int) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ ,int const*,unsigned int) ; 
- int /*<<< orphan*/  stub3 (int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  stub4 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub5 (int /*<<< orphan*/ ,int*,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_3__ {unsigned int blocklen; int* key; unsigned int keylen; unsigned int hashlen; int hash; int (* update ) (int ,int*,int) ;int (* init ) (int ) ;int (* final ) (int ,int*) ;} ;
+typedef TYPE_1__ AVHMAC ;
+
+
+ int MAX_BLOCKLEN ;
+ int memcpy (int*,int const*,unsigned int) ;
+ int stub1 (int ) ;
+ int stub2 (int ,int const*,unsigned int) ;
+ int stub3 (int ,int*) ;
+ int stub4 (int ) ;
+ int stub5 (int ,int*,int) ;
 
 void av_hmac_init(AVHMAC *c, const uint8_t *key, unsigned int keylen)
 {

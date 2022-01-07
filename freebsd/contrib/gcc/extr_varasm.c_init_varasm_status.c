@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct varasm_status {scalar_t__ deferred_constants; int /*<<< orphan*/  pool; } ;
+
+
+
+
+struct varasm_status {scalar_t__ deferred_constants; int pool; } ;
 struct function {struct varasm_status* varasm; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  create_constant_pool () ; 
- struct varasm_status* ggc_alloc (int) ; 
+
+ int create_constant_pool () ;
+ struct varasm_status* ggc_alloc (int) ;
 
 void
 init_varasm_status (struct function *f)

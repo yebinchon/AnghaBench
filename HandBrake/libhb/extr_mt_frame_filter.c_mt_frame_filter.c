@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {scalar_t__ frame_count; scalar_t__ thread_count; TYPE_1__** thread_data; int /*<<< orphan*/  taskset; } ;
-typedef  TYPE_2__ hb_filter_private_t ;
-typedef  int /*<<< orphan*/  hb_buffer_t ;
-typedef  int /*<<< orphan*/  hb_buffer_list_t ;
-struct TYPE_4__ {int /*<<< orphan*/  out; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  hb_buffer_list_append (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * hb_buffer_list_clear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  taskset_cycle (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_5__ {scalar_t__ frame_count; scalar_t__ thread_count; TYPE_1__** thread_data; int taskset; } ;
+typedef TYPE_2__ hb_filter_private_t ;
+typedef int hb_buffer_t ;
+typedef int hb_buffer_list_t ;
+struct TYPE_4__ {int out; } ;
+
+
+ int hb_buffer_list_append (int *,int ) ;
+ int * hb_buffer_list_clear (int *) ;
+ int taskset_cycle (int *) ;
 
 __attribute__((used)) static hb_buffer_t * mt_frame_filter(hb_filter_private_t *pv)
 {
     if (pv->frame_count < pv->thread_count)
     {
-        return NULL;
+        return ((void*)0);
     }
 
     taskset_cycle(&pv->taskset);
     pv->frame_count = 0;
 
-    // Collect results from taskset
+
     hb_buffer_list_t list;
     hb_buffer_list_clear(&list);
     for (int t = 0; t < pv->thread_count; t++)

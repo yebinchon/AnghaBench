@@ -1,37 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int TF_APP_FANS ; 
- int TF_APP_FANS_NOTIFY ; 
- int TF_APP_FANS_SETTINGS ; 
- int TF_BANLIST ; 
- int TF_BANLISTED ; 
- int TF_BLACKLIST ; 
- int TF_BLACKLISTED ; 
- int TF_FAMILY ; 
- int TF_FAN_APPS ; 
- int TF_FAN_APPS_BALANCE ; 
- int TF_FAN_APPS_NOTIFY ; 
- int TF_FAN_APPS_SETTINGS ; 
- int TF_GROUPS_SHORT ; 
- int TF_GROUP_MEMBERS ; 
- int TF_MEMBER_GROUPS ; 
- int TF_NONE ; 
- int TF_PHOTO_REV ; 
- int TF_WIDGET_COMMENTS ; 
- int TF_WIDGET_VOTES ; 
- int /*<<< orphan*/  strncmp (char*,char*,int) ; 
+ int TF_APP_FANS ;
+ int TF_APP_FANS_NOTIFY ;
+ int TF_APP_FANS_SETTINGS ;
+ int TF_BANLIST ;
+ int TF_BANLISTED ;
+ int TF_BLACKLIST ;
+ int TF_BLACKLISTED ;
+ int TF_FAMILY ;
+ int TF_FAN_APPS ;
+ int TF_FAN_APPS_BALANCE ;
+ int TF_FAN_APPS_NOTIFY ;
+ int TF_FAN_APPS_SETTINGS ;
+ int TF_GROUPS_SHORT ;
+ int TF_GROUP_MEMBERS ;
+ int TF_MEMBER_GROUPS ;
+ int TF_NONE ;
+ int TF_PHOTO_REV ;
+ int TF_WIDGET_COMMENTS ;
+ int TF_WIDGET_VOTES ;
+ int strncmp (char*,char*,int) ;
 
 int get_dump_format (char *str) {
   if (!strncmp (str, "member_groups", 13)) {

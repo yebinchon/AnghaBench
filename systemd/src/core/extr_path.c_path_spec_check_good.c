@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int type; int previous_exists; int /*<<< orphan*/  path; } ;
-typedef  TYPE_1__ PathSpec ;
 
-/* Variables and functions */
- int ENOENT ; 
- int /*<<< orphan*/  F_OK ; 
-#define  PATH_CHANGED 132 
-#define  PATH_DIRECTORY_NOT_EMPTY 131 
-#define  PATH_EXISTS 130 
-#define  PATH_EXISTS_GLOB 129 
-#define  PATH_MODIFIED 128 
- int /*<<< orphan*/  access (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int dir_is_empty (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glob_exists (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int type; int previous_exists; int path; } ;
+typedef TYPE_1__ PathSpec ;
+
+
+ int ENOENT ;
+ int F_OK ;
+
+
+
+
+
+ int access (int ,int ) ;
+ int dir_is_empty (int ) ;
+ int glob_exists (int ) ;
 
 __attribute__((used)) static bool path_spec_check_good(PathSpec *s, bool initial) {
-        bool good = false;
+        bool good = 0;
 
         switch (s->type) {
 
-        case PATH_EXISTS:
+        case 130:
                 good = access(s->path, F_OK) >= 0;
                 break;
 
-        case PATH_EXISTS_GLOB:
+        case 129:
                 good = glob_exists(s->path) > 0;
                 break;
 
-        case PATH_DIRECTORY_NOT_EMPTY: {
+        case 131: {
                 int k;
 
                 k = dir_is_empty(s->path);
@@ -47,8 +47,8 @@ __attribute__((used)) static bool path_spec_check_good(PathSpec *s, bool initial
                 break;
         }
 
-        case PATH_CHANGED:
-        case PATH_MODIFIED: {
+        case 132:
+        case 128: {
                 bool b;
 
                 b = access(s->path, F_OK) >= 0;

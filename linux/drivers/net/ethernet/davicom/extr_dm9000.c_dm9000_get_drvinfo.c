@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct net_device {int dummy; } ;
-struct ethtool_drvinfo {int /*<<< orphan*/  bus_info; int /*<<< orphan*/  version; int /*<<< orphan*/  driver; } ;
-struct board_info {int /*<<< orphan*/  dev; } ;
-struct TYPE_2__ {int /*<<< orphan*/  name; } ;
+struct ethtool_drvinfo {int bus_info; int version; int driver; } ;
+struct board_info {int dev; } ;
+struct TYPE_2__ {int name; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CARDNAME ; 
- int /*<<< orphan*/  DRV_VERSION ; 
- int /*<<< orphan*/  strlcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- struct board_info* to_dm9000_board (struct net_device*) ; 
- TYPE_1__* to_platform_device (int /*<<< orphan*/ ) ; 
+
+ int CARDNAME ;
+ int DRV_VERSION ;
+ int strlcpy (int ,int ,int) ;
+ struct board_info* to_dm9000_board (struct net_device*) ;
+ TYPE_1__* to_platform_device (int ) ;
 
 __attribute__((used)) static void dm9000_get_drvinfo(struct net_device *dev,
-			       struct ethtool_drvinfo *info)
+          struct ethtool_drvinfo *info)
 {
-	struct board_info *dm = to_dm9000_board(dev);
+ struct board_info *dm = to_dm9000_board(dev);
 
-	strlcpy(info->driver, CARDNAME, sizeof(info->driver));
-	strlcpy(info->version, DRV_VERSION, sizeof(info->version));
-	strlcpy(info->bus_info, to_platform_device(dm->dev)->name,
-		sizeof(info->bus_info));
+ strlcpy(info->driver, CARDNAME, sizeof(info->driver));
+ strlcpy(info->version, DRV_VERSION, sizeof(info->version));
+ strlcpy(info->bus_info, to_platform_device(dm->dev)->name,
+  sizeof(info->bus_info));
 }

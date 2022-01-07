@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct keypairs_t {int keypairs_nb; void* keypairs; } ;
 
-/* Variables and functions */
- void* malloc (int) ; 
- int /*<<< orphan*/  os_memset (struct keypairs_t*,int /*<<< orphan*/ ,int) ; 
+
+ void* malloc (int) ;
+ int os_memset (struct keypairs_t*,int ,int) ;
 
 __attribute__((used)) static struct keypairs_t * enduser_setup_alloc_keypairs(int kp_number ){
     struct keypairs_t *kp = malloc(sizeof(struct keypairs_t));

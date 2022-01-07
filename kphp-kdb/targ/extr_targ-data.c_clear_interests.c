@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  user_t ;
-struct lev_generic {int type; int /*<<< orphan*/  a; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * get_user (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  user_clear_interests (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int user_t ;
+struct lev_generic {int type; int a; } ;
+
+
+ int * get_user (int ) ;
+ int user_clear_interests (int *,int) ;
 
 __attribute__((used)) static void clear_interests (struct lev_generic *E) {
   user_t *U = get_user (E->a);

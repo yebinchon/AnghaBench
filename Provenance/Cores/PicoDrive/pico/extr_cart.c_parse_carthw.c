@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buff ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int buff ;
 struct TYPE_4__ {int romsize; } ;
-struct TYPE_3__ {int start; int end; int eeprom_type; int eeprom_bit_cl; int eeprom_bit_in; int eeprom_bit_out; int /*<<< orphan*/  flags; } ;
-typedef  int /*<<< orphan*/  FILE ;
+struct TYPE_3__ {int start; int end; int eeprom_type; int eeprom_bit_cl; int eeprom_bit_in; int eeprom_bit_out; int flags; } ;
+typedef int FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EL_STATUS ; 
- int /*<<< orphan*/  PQUIRK_FORCE_6BTN ; 
- TYPE_2__ Pico ; 
- int /*<<< orphan*/  PicoInitPico () ; 
- int /*<<< orphan*/  PicoQuirks ; 
- int /*<<< orphan*/  PicoSVPStartup () ; 
- int /*<<< orphan*/  SRF_EEPROM ; 
- int /*<<< orphan*/  SRF_ENABLED ; 
- TYPE_1__ SRam ; 
- char* builtin_carthw_cfg ; 
- int /*<<< orphan*/  carthw_Xin1_startup () ; 
- int /*<<< orphan*/  carthw_pier_startup () ; 
- int /*<<< orphan*/  carthw_prot_lk3_startup () ; 
- int /*<<< orphan*/  carthw_radica_startup () ; 
- int /*<<< orphan*/  carthw_realtec_startup () ; 
- int /*<<< orphan*/  carthw_sprot_new_location (int,int,int,int) ; 
- int /*<<< orphan*/  carthw_sprot_startup () ; 
- int /*<<< orphan*/  carthw_ssf2_startup () ; 
- int /*<<< orphan*/  elprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- char* fgets (char*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char const*,char*) ; 
- int is_expr (char*,char**) ; 
- int /*<<< orphan*/  memcpy (char*,char const*,int) ; 
- int /*<<< orphan*/  parse_3_vals (char*,int*,int*,int*) ; 
- int rom_crc32 () ; 
- int rom_read32 (int) ; 
- scalar_t__ rom_strcmp (int,char*) ; 
- int /*<<< orphan*/  rstrip (char*) ; 
- char* sskip (char*) ; 
- char* strchr (char*,char) ; 
- scalar_t__ strcmp (char*,char*) ; 
- void* strtoul (char*,char**,int /*<<< orphan*/ ) ; 
+
+ int EL_STATUS ;
+ int PQUIRK_FORCE_6BTN ;
+ TYPE_2__ Pico ;
+ int PicoInitPico () ;
+ int PicoQuirks ;
+ int PicoSVPStartup () ;
+ int SRF_EEPROM ;
+ int SRF_ENABLED ;
+ TYPE_1__ SRam ;
+ char* builtin_carthw_cfg ;
+ int carthw_Xin1_startup () ;
+ int carthw_pier_startup () ;
+ int carthw_prot_lk3_startup () ;
+ int carthw_radica_startup () ;
+ int carthw_realtec_startup () ;
+ int carthw_sprot_new_location (int,int,int,int) ;
+ int carthw_sprot_startup () ;
+ int carthw_ssf2_startup () ;
+ int elprintf (int ,char*,...) ;
+ int fclose (int *) ;
+ char* fgets (char*,int,int *) ;
+ int * fopen (char const*,char*) ;
+ int is_expr (char*,char**) ;
+ int memcpy (char*,char const*,int) ;
+ int parse_3_vals (char*,int*,int*,int*) ;
+ int rom_crc32 () ;
+ int rom_read32 (int) ;
+ scalar_t__ rom_strcmp (int,char*) ;
+ int rstrip (char*) ;
+ char* sskip (char*) ;
+ char* strchr (char*,char) ;
+ scalar_t__ strcmp (char*,char*) ;
+ void* strtoul (char*,char**,int ) ;
 
 __attribute__((used)) static void parse_carthw(const char *carthw_cfg, int *fill_sram)
 {
@@ -61,16 +61,16 @@ __attribute__((used)) static void parse_carthw(const char *carthw_cfg, int *fill
   FILE *f;
 
   f = fopen(carthw_cfg, "r");
-  if (f == NULL)
+  if (f == ((void*)0))
     f = fopen("pico/carthw.cfg", "r");
-  if (f == NULL)
+  if (f == ((void*)0))
     elprintf(EL_STATUS, "couldn't open carthw.cfg!");
 
   for (;;)
   {
-    if (f != NULL) {
+    if (f != ((void*)0)) {
       p = fgets(buff, sizeof(buff), f);
-      if (p == NULL)
+      if (p == ((void*)0))
         break;
     }
     else {
@@ -99,18 +99,18 @@ __attribute__((used)) static void parse_carthw(const char *carthw_cfg, int *fill
       skip_sect = 0;
       continue;
     }
-    
+
     if (skip_sect)
       continue;
 
-    /* look for checks */
+
     if (is_expr("check_str", &p))
     {
       int offs;
       offs = strtoul(p, &r, 0);
       if (offs < 0 || offs > Pico.romsize) {
         elprintf(EL_STATUS, "carthw:%d: check_str offs out of range: %d\n", line, offs);
-	goto bad;
+ goto bad;
       }
       p = sskip(r);
       if (*p != ',')
@@ -120,7 +120,7 @@ __attribute__((used)) static void parse_carthw(const char *carthw_cfg, int *fill
         goto bad;
       p++;
       r = strchr(p, '"');
-      if (r == NULL)
+      if (r == ((void*)0))
         goto bad;
       *r = 0;
 
@@ -172,13 +172,13 @@ __attribute__((used)) static void parse_carthw(const char *carthw_cfg, int *fill
       continue;
     }
 
-    /* now time for actions */
+
     if (is_expr("hw", &p)) {
       if (!any_checks_passed)
         goto no_checks;
       rstrip(p);
 
-      if      (strcmp(p, "svp") == 0)
+      if (strcmp(p, "svp") == 0)
         PicoSVPStartup();
       else if (strcmp(p, "pico") == 0)
         PicoInitPico();
@@ -232,7 +232,7 @@ __attribute__((used)) static void parse_carthw(const char *carthw_cfg, int *fill
         goto no_checks;
       rstrip(p);
 
-      if      (strcmp(p, "no_sram") == 0)
+      if (strcmp(p, "no_sram") == 0)
         SRam.flags &= ~SRF_ENABLED;
       else if (strcmp(p, "no_eeprom") == 0)
         SRam.flags &= ~SRF_EEPROM;
@@ -303,6 +303,6 @@ no_checks:
     continue;
   }
 
-  if (f != NULL)
+  if (f != ((void*)0))
     fclose(f);
 }

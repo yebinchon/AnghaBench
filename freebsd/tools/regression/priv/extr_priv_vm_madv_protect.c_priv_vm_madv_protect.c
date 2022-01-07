@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct test {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EPERM ; 
- int /*<<< orphan*/  MADV_PROTECT ; 
- int /*<<< orphan*/  expect (char*,int,int,int /*<<< orphan*/ ) ; 
- int madvise (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int EPERM ;
+ int MADV_PROTECT ;
+ int expect (char*,int,int,int ) ;
+ int madvise (int *,int ,int ) ;
 
 void
 priv_vm_madv_protect(int asroot, int injail, struct test *test)
 {
-	int error;
+ int error;
 
-	error = madvise(NULL, 0, MADV_PROTECT);
-	if (asroot && injail)
-		expect("priv_vm_madv_protect(asroot, injail)", error, -1,
-		    EPERM);
-	if (asroot && !injail)
-		expect("priv_vm_madv_protect(asroot, !injail", error, 0, 0);
-	if (!asroot && injail)
-		expect("priv_vm_madv_protect(!asroot, injail", error, -1,
-		    EPERM);
-	if (!asroot && !injail)
-		expect("priv_vm_madv_protect(!asroot, !injail", error, -1,
-		    EPERM);
+ error = madvise(((void*)0), 0, MADV_PROTECT);
+ if (asroot && injail)
+  expect("priv_vm_madv_protect(asroot, injail)", error, -1,
+      EPERM);
+ if (asroot && !injail)
+  expect("priv_vm_madv_protect(asroot, !injail", error, 0, 0);
+ if (!asroot && injail)
+  expect("priv_vm_madv_protect(!asroot, injail", error, -1,
+      EPERM);
+ if (!asroot && !injail)
+  expect("priv_vm_madv_protect(!asroot, !injail", error, -1,
+      EPERM);
 }

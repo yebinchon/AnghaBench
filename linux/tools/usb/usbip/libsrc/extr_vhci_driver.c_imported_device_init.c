@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct usbip_imported_device {int /*<<< orphan*/  udev; } ;
+
+
+
+
+struct usbip_imported_device {int udev; } ;
 struct udev_device {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dbg (char*,char*) ; 
- int /*<<< orphan*/  read_usb_device (struct udev_device*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  udev_context ; 
- struct udev_device* udev_device_new_from_subsystem_sysname (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  udev_device_unref (struct udev_device*) ; 
+
+ int dbg (char*,char*) ;
+ int read_usb_device (struct udev_device*,int *) ;
+ int udev_context ;
+ struct udev_device* udev_device_new_from_subsystem_sysname (int ,char*,char*) ;
+ int udev_device_unref (struct udev_device*) ;
 
 __attribute__((used)) static struct usbip_imported_device *
 imported_device_init(struct usbip_imported_device *idev, char *busid)
 {
-	struct udev_device *sudev;
+ struct udev_device *sudev;
 
-	sudev = udev_device_new_from_subsystem_sysname(udev_context,
-						       "usb", busid);
-	if (!sudev) {
-		dbg("udev_device_new_from_subsystem_sysname failed: %s", busid);
-		goto err;
-	}
-	read_usb_device(sudev, &idev->udev);
-	udev_device_unref(sudev);
+ sudev = udev_device_new_from_subsystem_sysname(udev_context,
+             "usb", busid);
+ if (!sudev) {
+  dbg("udev_device_new_from_subsystem_sysname failed: %s", busid);
+  goto err;
+ }
+ read_usb_device(sudev, &idev->udev);
+ udev_device_unref(sudev);
 
-	return idev;
+ return idev;
 
 err:
-	return NULL;
+ return ((void*)0);
 }

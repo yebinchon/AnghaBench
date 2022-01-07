@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  HWND ;
-typedef  scalar_t__ HTREEITEM ;
-typedef  int /*<<< orphan*/  HCURSOR ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  IDC_WAIT ; 
- int /*<<< orphan*/  LoadCursor (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RefreshTreeItem (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  SendMessageW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetCursor (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- scalar_t__ TreeView_GetChild (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ TreeView_GetNextSibling (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  TreeView_GetRoot (int /*<<< orphan*/ ) ; 
- scalar_t__ TreeView_GetSelection (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TreeView_SelectItem (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  WM_SETREDRAW ; 
+
+
+
+typedef int HWND ;
+typedef scalar_t__ HTREEITEM ;
+typedef int HCURSOR ;
+typedef int BOOL ;
+
+
+ int FALSE ;
+ int IDC_WAIT ;
+ int LoadCursor (int *,int ) ;
+ int RefreshTreeItem (int ,scalar_t__) ;
+ int SendMessageW (int ,int ,int ,int ) ;
+ int SetCursor (int ) ;
+ int TRUE ;
+ scalar_t__ TreeView_GetChild (int ,int ) ;
+ scalar_t__ TreeView_GetNextSibling (int ,scalar_t__) ;
+ int TreeView_GetRoot (int ) ;
+ scalar_t__ TreeView_GetSelection (int ) ;
+ int TreeView_SelectItem (int ,scalar_t__) ;
+ int WM_SETREDRAW ;
 
 BOOL RefreshTreeView(HWND hwndTV)
 {
@@ -37,7 +37,7 @@ BOOL RefreshTreeView(HWND hwndTV)
     HCURSOR hcursorOld;
 
     hSelectedItem = TreeView_GetSelection(hwndTV);
-    hcursorOld = SetCursor(LoadCursor(NULL, IDC_WAIT));
+    hcursorOld = SetCursor(LoadCursor(((void*)0), IDC_WAIT));
     SendMessageW(hwndTV, WM_SETREDRAW, FALSE, 0);
 
     hItem = TreeView_GetChild(hwndTV, TreeView_GetRoot(hwndTV));
@@ -50,7 +50,7 @@ BOOL RefreshTreeView(HWND hwndTV)
     SendMessageW(hwndTV, WM_SETREDRAW, TRUE, 0);
     SetCursor(hcursorOld);
 
-    /* We reselect the currently selected node, this will prompt a refresh of the listview. */
+
     (void)TreeView_SelectItem(hwndTV, hSelectedItem);
     return TRUE;
 }

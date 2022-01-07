@@ -1,65 +1,65 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char uint8_t ;
-typedef  int uint32_t ;
-typedef  scalar_t__ uint16_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef char uint8_t ;
+typedef int uint32_t ;
+typedef scalar_t__ uint16_t ;
 struct timeval {int tv_sec; scalar_t__ tv_usec; } ;
-struct TYPE_2__ {int /*<<< orphan*/  s_addr; } ;
-struct sockaddr_in {scalar_t__ sin_port; TYPE_1__ sin_addr; int /*<<< orphan*/  sin_family; int /*<<< orphan*/  member_0; } ;
+struct TYPE_2__ {int s_addr; } ;
+struct sockaddr_in {scalar_t__ sin_port; TYPE_1__ sin_addr; int sin_family; int member_0; } ;
 struct sockaddr {int dummy; } ;
 struct resolv_entries {int* addrs; int addrs_len; } ;
 struct dnshdr {scalar_t__ id; scalar_t__ ancount; scalar_t__ qdcount; scalar_t__ opts; } ;
 struct dnsans {int dummy; } ;
 struct dns_resource {scalar_t__ type; scalar_t__ _class; scalar_t__ data_len; } ;
 struct dns_question {scalar_t__ qclass; scalar_t__ qtype; } ;
-typedef  int /*<<< orphan*/  response ;
-typedef  int /*<<< orphan*/  ipv4_t ;
-typedef  int /*<<< orphan*/  fd_set ;
+typedef int response ;
+typedef int ipv4_t ;
+typedef int fd_set ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_INET ; 
- scalar_t__ FD_ISSET (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FD_SET (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FD_ZERO (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  F_GETFL ; 
- int /*<<< orphan*/  F_SETFL ; 
- int /*<<< orphan*/  INET_ADDR (int,int,int,int) ; 
- int /*<<< orphan*/  MSG_NOSIGNAL ; 
- int O_NONBLOCK ; 
- int PROTO_DNS_QCLASS_IP ; 
- int PROTO_DNS_QTYPE_A ; 
- int /*<<< orphan*/  SOCK_DGRAM ; 
- struct resolv_entries* calloc (int,int) ; 
- int /*<<< orphan*/  close (int) ; 
- int connect (int,struct sockaddr*,int) ; 
- int errno ; 
- int fcntl (int /*<<< orphan*/ ,int,int) ; 
- scalar_t__ htons (int) ; 
- int ntohs (scalar_t__) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int rand_next () ; 
- int* realloc (int*,int) ; 
- int recvfrom (int,char*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  resolv_domain_to_hostname (char*,char*) ; 
- int /*<<< orphan*/  resolv_entries_free (struct resolv_entries*) ; 
- int /*<<< orphan*/  resolv_skip_name (char*,char*,int*) ; 
- int select (int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,struct timeval*) ; 
- int send (int,char*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sleep (int) ; 
- int socket (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int util_strlen (char*) ; 
- int /*<<< orphan*/  util_zero (struct sockaddr_in*,int) ; 
+
+ int AF_INET ;
+ scalar_t__ FD_ISSET (int,int *) ;
+ int FD_SET (int,int *) ;
+ int FD_ZERO (int *) ;
+ int F_GETFL ;
+ int F_SETFL ;
+ int INET_ADDR (int,int,int,int) ;
+ int MSG_NOSIGNAL ;
+ int O_NONBLOCK ;
+ int PROTO_DNS_QCLASS_IP ;
+ int PROTO_DNS_QTYPE_A ;
+ int SOCK_DGRAM ;
+ struct resolv_entries* calloc (int,int) ;
+ int close (int) ;
+ int connect (int,struct sockaddr*,int) ;
+ int errno ;
+ int fcntl (int ,int,int) ;
+ scalar_t__ htons (int) ;
+ int ntohs (scalar_t__) ;
+ int printf (char*,...) ;
+ int rand_next () ;
+ int* realloc (int*,int) ;
+ int recvfrom (int,char*,int,int ,int *,int *) ;
+ int resolv_domain_to_hostname (char*,char*) ;
+ int resolv_entries_free (struct resolv_entries*) ;
+ int resolv_skip_name (char*,char*,int*) ;
+ int select (int,int *,int *,int *,struct timeval*) ;
+ int send (int,char*,int,int ) ;
+ int sleep (int) ;
+ int socket (int ,int ,int ) ;
+ int util_strlen (char*) ;
+ int util_zero (struct sockaddr_in*,int) ;
 
 struct resolv_entries *resolv_lookup(char *domain)
 {
@@ -81,9 +81,9 @@ struct resolv_entries *resolv_lookup(char *domain)
     addr.sin_addr.s_addr = INET_ADDR(8,8,8,8);
     addr.sin_port = htons(53);
 
-    // Set up the dns query
+
     dnsh->id = dns_id;
-    dnsh->opts = htons(1 << 8); // Recursion desired
+    dnsh->opts = htons(1 << 8);
     dnsh->qdcount = htons(1);
     dnst->qtype = htons(PROTO_DNS_QTYPE_A);
     dnst->qclass = htons(PROTO_DNS_QCLASS_IP);
@@ -98,27 +98,27 @@ struct resolv_entries *resolv_lookup(char *domain)
             close(fd);
         if ((fd = socket(AF_INET, SOCK_DGRAM, 0)) == -1)
         {
-#ifdef DEBUG
-            printf("[resolv] Failed to create socket\n");
-#endif
+
+
+
             sleep(1);
             continue;
         }
 
         if (connect(fd, (struct sockaddr *)&addr, sizeof (struct sockaddr_in)) == -1)
         {
-#ifdef DEBUG
-            printf("[resolv] Failed to call connect on udp socket\n");
-#endif
+
+
+
             sleep(1);
             continue;
         }
 
         if (send(fd, query, query_len, MSG_NOSIGNAL) == -1)
         {
-#ifdef DEBUG
-            printf("[resolv] Failed to send packet: %d\n", errno);
-#endif
+
+
+
             sleep(1);
             continue;
         }
@@ -129,28 +129,28 @@ struct resolv_entries *resolv_lookup(char *domain)
 
         timeo.tv_sec = 5;
         timeo.tv_usec = 0;
-        nfds = select(fd + 1, &fdset, NULL, NULL, &timeo);
+        nfds = select(fd + 1, &fdset, ((void*)0), ((void*)0), &timeo);
 
         if (nfds == -1)
         {
-#ifdef DEBUG
-            printf("[resolv] select() failed\n");
-#endif
+
+
+
             break;
         }
         else if (nfds == 0)
         {
-#ifdef DEBUG
-            printf("[resolv] Couldn't resolve %s in time. %d tr%s\n", domain, tries, tries == 1 ? "y" : "ies");
-#endif
+
+
+
             continue;
         }
         else if (FD_ISSET(fd, &fdset))
         {
-#ifdef DEBUG
-            printf("[resolv] Got response from select\n");
-#endif
-            int ret = recvfrom(fd, response, sizeof (response), MSG_NOSIGNAL, NULL, NULL);
+
+
+
+            int ret = recvfrom(fd, response, sizeof (response), MSG_NOSIGNAL, ((void*)0), ((void*)0));
             char *name;
             struct dnsans *dnsa;
             uint16_t ancount;
@@ -172,7 +172,7 @@ struct resolv_entries *resolv_lookup(char *domain)
             ancount = ntohs(dnsh->ancount);
             while (ancount-- > 0)
             {
-                struct dns_resource *r_data = NULL;
+                struct dns_resource *r_data = ((void*)0);
 
                 resolv_skip_name(name, response, &stop);
                 name = name + stop;
@@ -193,9 +193,9 @@ struct resolv_entries *resolv_lookup(char *domain)
 
                         entries->addrs = realloc(entries->addrs, (entries->addrs_len + 1) * sizeof (ipv4_t));
                         entries->addrs[entries->addrs_len++] = (*p);
-#ifdef DEBUG
-                        printf("[resolv] Found IP address: %08x\n", (*p));
-#endif
+
+
+
                     }
 
                     name = name + ntohs(r_data->data_len);
@@ -211,15 +211,15 @@ struct resolv_entries *resolv_lookup(char *domain)
 
     close(fd);
 
-#ifdef DEBUG
-    printf("Resolved %s to %d IPv4 addresses\n", domain, entries->addrs_len);
-#endif
+
+
+
 
     if (entries->addrs_len > 0)
         return entries;
     else
     {
         resolv_entries_free(entries);
-        return NULL;
+        return ((void*)0);
     }
 }

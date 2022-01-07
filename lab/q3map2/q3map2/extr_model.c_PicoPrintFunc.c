@@ -1,53 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ int Error (char*,char const*) ;
 
-/* Forward declarations */
 
-/* Type definitions */
 
-/* Variables and functions */
- int /*<<< orphan*/  Error (char*,char const*) ; 
-#define  PICO_ERROR 132 
-#define  PICO_FATAL 131 
-#define  PICO_NORMAL 130 
-#define  PICO_VERBOSE 129 
-#define  PICO_WARNING 128 
- int /*<<< orphan*/  SYS_ERR ; 
- int /*<<< orphan*/  SYS_VRB ; 
- int /*<<< orphan*/  SYS_WRN ; 
- int /*<<< orphan*/  Sys_FPrintf (int /*<<< orphan*/ ,char*,char const*) ; 
- int /*<<< orphan*/  Sys_Printf (char*,char const*) ; 
+
+
+ int SYS_ERR ;
+ int SYS_VRB ;
+ int SYS_WRN ;
+ int Sys_FPrintf (int ,char*,char const*) ;
+ int Sys_Printf (char*,char const*) ;
 
 void PicoPrintFunc( int level, const char *str ){
-	if ( str == NULL ) {
-		return;
-	}
-	switch ( level )
-	{
-	case PICO_NORMAL:
-		Sys_Printf( "%s\n", str );
-		break;
+ if ( str == ((void*)0) ) {
+  return;
+ }
+ switch ( level )
+ {
+ case 130:
+  Sys_Printf( "%s\n", str );
+  break;
 
-	case PICO_VERBOSE:
-		Sys_FPrintf( SYS_VRB, "%s\n", str );
-		break;
+ case 129:
+  Sys_FPrintf( SYS_VRB, "%s\n", str );
+  break;
 
-	case PICO_WARNING:
-		Sys_FPrintf( SYS_WRN, "WARNING: %s\n", str );
-		break;
+ case 128:
+  Sys_FPrintf( SYS_WRN, "WARNING: %s\n", str );
+  break;
 
-	case PICO_ERROR:
-		Sys_FPrintf( SYS_ERR, "ERROR: %s\n", str );
-		break;
+ case 132:
+  Sys_FPrintf( SYS_ERR, "ERROR: %s\n", str );
+  break;
 
-	case PICO_FATAL:
-		Error( "ERROR: %s\n", str );
-		break;
-	}
+ case 131:
+  Error( "ERROR: %s\n", str );
+  break;
+ }
 }

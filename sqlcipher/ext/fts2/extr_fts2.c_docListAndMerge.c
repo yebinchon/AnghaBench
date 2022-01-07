@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  DataBuffer ;
-typedef  int /*<<< orphan*/  DLWriter ;
-typedef  int /*<<< orphan*/  DLReader ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DL_DOCIDS ; 
- int /*<<< orphan*/  dlrAtEnd (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  dlrDestroy (int /*<<< orphan*/ *) ; 
- scalar_t__ dlrDocid (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  dlrInit (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*,int) ; 
- int /*<<< orphan*/  dlrStep (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  dlwAdd (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  dlwDestroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  dlwInit (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int DataBuffer ;
+typedef int DLWriter ;
+typedef int DLReader ;
+
+
+ int DL_DOCIDS ;
+ int dlrAtEnd (int *) ;
+ int dlrDestroy (int *) ;
+ scalar_t__ dlrDocid (int *) ;
+ int dlrInit (int *,int ,char const*,int) ;
+ int dlrStep (int *) ;
+ int dlwAdd (int *,scalar_t__) ;
+ int dlwDestroy (int *) ;
+ int dlwInit (int *,int ,int *) ;
 
 __attribute__((used)) static void docListAndMerge(
   const char *pLeft, int nLeft,
   const char *pRight, int nRight,
-  DataBuffer *pOut      /* Write the combined doclist here */
+  DataBuffer *pOut
 ){
   DLReader left, right;
   DLWriter writer;

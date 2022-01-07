@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  SPRN_LDBAR ; 
- int /*<<< orphan*/  mtspr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int SPRN_LDBAR ;
+ int mtspr (int ,int ) ;
 
 __attribute__((used)) static void thread_imc_ldbar_disable(void *dummy)
 {
-	/*
-	 * By Zeroing LDBAR, we disable thread-imc
-	 * updates.
-	 */
-	mtspr(SPRN_LDBAR, 0);
+
+
+
+
+ mtspr(SPRN_LDBAR, 0);
 }

@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint32_t ;
 
-/* Variables and functions */
- int max3 (int,int,int) ; 
- int min3 (int,int,int) ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+
+
+ int max3 (int,int,int) ;
+ int min3 (int,int,int) ;
 
 uint32_t grb2hsv(uint8_t g, uint8_t r, uint8_t b) {
     uint8_t m = min3(r, g, b);
@@ -27,8 +27,8 @@ uint32_t grb2hsv(uint8_t g, uint8_t r, uint8_t b) {
     int value = 0;
 
     if(delta == 0) {
-        /* Achromatic case (i.e. grayscale) */
-        hue = -1;          /* undefined */
+
+        hue = -1;
         saturation = 0;
     } else {
         int h;
@@ -37,7 +37,7 @@ uint32_t grb2hsv(uint8_t g, uint8_t r, uint8_t b) {
             h = ((g-b)*60) / delta;
         else if(g == M)
             h = ((b-r)*60) / delta + 120;
-        else /*if(b == M)*/
+        else
             h = ((r-g)*60) / delta + 240;
 
         if(h < 0)
@@ -45,10 +45,10 @@ uint32_t grb2hsv(uint8_t g, uint8_t r, uint8_t b) {
 
         hue = h;
 
-        /* The constatnt 8 is tuned to statistically cause as little
-         * tolerated mismatches as possible in RGB -> HSV -> RGB conversion.
-         * (See the unit test at the bottom of this file.)
-         */
+
+
+
+
         saturation = (256*delta-8) / M;
     }
     value = M;

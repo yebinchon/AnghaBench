@@ -1,18 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int int16_t ;
 
-/* Variables and functions */
+
+
+
+typedef int int16_t ;
+
+
 
 void ff_h264_chroma422_dc_dequant_idct_8_mmi(int16_t *block, int qmul)
 {
@@ -37,7 +37,7 @@ void ff_h264_chroma422_dc_dequant_idct_8_mmi(int16_t *block, int qmul)
     t[6] = temp[1] - temp[5] - temp[3] + temp[7];
     t[7] = temp[1] + temp[5] - temp[3] - temp[7];
 
-    block[  0]= (t[0]*qmul + 128) >> 8;
+    block[ 0]= (t[0]*qmul + 128) >> 8;
     block[ 32]= (t[1]*qmul + 128) >> 8;
     block[ 64]= (t[2]*qmul + 128) >> 8;
     block[ 96]= (t[3]*qmul + 128) >> 8;

@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- double GIB (unsigned long long) ; 
- double KIB (unsigned long long) ; 
- double MIB (unsigned long long) ; 
- double PIB (unsigned long long) ; 
- double TIB (unsigned long long) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,double) ; 
- char* xmalloc (int) ; 
+ double GIB (unsigned long long) ;
+ double KIB (unsigned long long) ;
+ double MIB (unsigned long long) ;
+ double PIB (unsigned long long) ;
+ double TIB (unsigned long long) ;
+ int snprintf (char*,int,char*,double) ;
+ char* xmalloc (int) ;
 
 char *
 filesize_str (unsigned long long log_size)

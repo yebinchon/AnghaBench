@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/ * main_window; } ;
-typedef  int /*<<< orphan*/  GtkWidget ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GTK_WINDOW (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GTK_WIN_POS_CENTER ; 
- int /*<<< orphan*/  gtk_main () ; 
- int /*<<< orphan*/  gtk_widget_show_all (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  gtk_window_set_position (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  perf_gtk__deactivate_context (TYPE_1__**) ; 
- int /*<<< orphan*/  perf_gtk__is_active_context (TYPE_1__*) ; 
- int /*<<< orphan*/  perf_gtk__resize_window (int /*<<< orphan*/ *) ; 
- TYPE_1__* pgctx ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int * main_window; } ;
+typedef int GtkWidget ;
+
+
+ int GTK_WINDOW (int *) ;
+ int GTK_WIN_POS_CENTER ;
+ int gtk_main () ;
+ int gtk_widget_show_all (int *) ;
+ int gtk_window_set_position (int ,int ) ;
+ int perf_gtk__deactivate_context (TYPE_1__**) ;
+ int perf_gtk__is_active_context (TYPE_1__*) ;
+ int perf_gtk__resize_window (int *) ;
+ TYPE_1__* pgctx ;
 
 void perf_gtk__show_annotations(void)
 {
-	GtkWidget *window;
+ GtkWidget *window;
 
-	if (!perf_gtk__is_active_context(pgctx))
-		return;
+ if (!perf_gtk__is_active_context(pgctx))
+  return;
 
-	window = pgctx->main_window;
-	gtk_widget_show_all(window);
+ window = pgctx->main_window;
+ gtk_widget_show_all(window);
 
-	perf_gtk__resize_window(window);
-	gtk_window_set_position(GTK_WINDOW(window), GTK_WIN_POS_CENTER);
+ perf_gtk__resize_window(window);
+ gtk_window_set_position(GTK_WINDOW(window), GTK_WIN_POS_CENTER);
 
-	gtk_main();
+ gtk_main();
 
-	perf_gtk__deactivate_context(&pgctx);
+ perf_gtk__deactivate_context(&pgctx);
 }

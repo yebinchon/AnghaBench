@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  time_t ;
-typedef  scalar_t__ UINT8 ;
 
-/* Variables and functions */
- char* ACPI_COMMON_HEADER (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ ACPI_IS_AML_TABLE ; 
- int /*<<< orphan*/  AML_DISASSEMBLER_NAME ; 
- scalar_t__ AcpiGbl_CstyleDisassembly ; 
- int /*<<< orphan*/  AcpiOsPrintf (char*,...) ; 
- int /*<<< orphan*/  ctime (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  time (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int time_t ;
+typedef scalar_t__ UINT8 ;
+
+
+ char* ACPI_COMMON_HEADER (int ,char*) ;
+ scalar_t__ ACPI_IS_AML_TABLE ;
+ int AML_DISASSEMBLER_NAME ;
+ scalar_t__ AcpiGbl_CstyleDisassembly ;
+ int AcpiOsPrintf (char*,...) ;
+ int ctime (int *) ;
+ int time (int *) ;
 
 void
 AdDisassemblerHeader (
-    char                    *Filename,
-    UINT8                   TableType)
+    char *Filename,
+    UINT8 TableType)
 {
-    time_t                  Timer;
+    time_t Timer;
 
 
     time (&Timer);
 
-    /* Header and input table info */
+
 
     AcpiOsPrintf ("/*\n");
     AcpiOsPrintf (ACPI_COMMON_HEADER (AML_DISASSEMBLER_NAME, " * "));

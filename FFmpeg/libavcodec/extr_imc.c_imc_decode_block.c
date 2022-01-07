@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_26__   TYPE_3__ ;
-typedef  struct TYPE_25__   TYPE_2__ ;
-typedef  struct TYPE_24__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_26__ {scalar_t__ codec_id; int /*<<< orphan*/  channels; } ;
+
+
+typedef struct TYPE_26__ TYPE_3__ ;
+typedef struct TYPE_25__ TYPE_2__ ;
+typedef struct TYPE_24__ TYPE_1__ ;
+
+
+struct TYPE_26__ {scalar_t__ codec_id; int channels; } ;
 struct TYPE_25__ {int decoder_reset; double* old_floor; int* levlCoeffBuf; scalar_t__* flcoeffs1; int* flcoeffs2; int* bandWidthT; int* flcoeffs3; double* flcoeffs5; int* bitsBandT; int* CWlengthT; void** skipFlags; void** codewords; scalar_t__* sumLenArr; void** bandFlagsBuf; scalar_t__* CWdecoded; } ;
-struct TYPE_24__ {int /*<<< orphan*/  gb; TYPE_2__* chctx; } ;
-typedef  TYPE_1__ IMCContext ;
-typedef  TYPE_2__ IMCChannel ;
-typedef  TYPE_3__ AVCodecContext ;
+struct TYPE_24__ {int gb; TYPE_2__* chctx; } ;
+typedef TYPE_1__ IMCContext ;
+typedef TYPE_2__ IMCChannel ;
+typedef TYPE_3__ AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- scalar_t__ AV_CODEC_ID_IAC ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int BANDS ; 
- int COEFFS ; 
- scalar_t__ INT_MAX ; 
- int /*<<< orphan*/  av_log (TYPE_3__*,int /*<<< orphan*/ ,char*,...) ; 
- int* band_tab ; 
- int bit_allocation (TYPE_1__*,TYPE_2__*,int,scalar_t__,int) ; 
- int get_bits (int /*<<< orphan*/ *,int) ; 
- void* get_bits1 (int /*<<< orphan*/ *) ; 
- scalar_t__ get_bits_count (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  imc_calculate_coeffs (TYPE_1__*,scalar_t__*,int*,int*,int*,double*) ; 
- int /*<<< orphan*/  imc_decode_level_coefficients (TYPE_1__*,int*,scalar_t__*,int*) ; 
- int /*<<< orphan*/  imc_decode_level_coefficients2 (TYPE_1__*,int*,double*,scalar_t__*,int*) ; 
- int /*<<< orphan*/  imc_decode_level_coefficients_raw (TYPE_1__*,int*,scalar_t__*,int*) ; 
- int /*<<< orphan*/  imc_get_coeffs (TYPE_3__*,TYPE_1__*,TYPE_2__*) ; 
- int /*<<< orphan*/  imc_imdct256 (TYPE_1__*,TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  imc_read_level_coeffs (TYPE_1__*,int,int*) ; 
- int /*<<< orphan*/  imc_read_level_coeffs_raw (TYPE_1__*,int,int*) ; 
- int /*<<< orphan*/  imc_refine_bit_allocation (TYPE_1__*,TYPE_2__*) ; 
- scalar_t__ inverse_quant_coeff (TYPE_1__*,TYPE_2__*,int) ; 
- int /*<<< orphan*/  memcpy (double*,scalar_t__*,int) ; 
- int /*<<< orphan*/  memset (void**,int /*<<< orphan*/ ,int) ; 
+
+ int AVERROR_INVALIDDATA ;
+ scalar_t__ AV_CODEC_ID_IAC ;
+ int AV_LOG_ERROR ;
+ int BANDS ;
+ int COEFFS ;
+ scalar_t__ INT_MAX ;
+ int av_log (TYPE_3__*,int ,char*,...) ;
+ int* band_tab ;
+ int bit_allocation (TYPE_1__*,TYPE_2__*,int,scalar_t__,int) ;
+ int get_bits (int *,int) ;
+ void* get_bits1 (int *) ;
+ scalar_t__ get_bits_count (int *) ;
+ int imc_calculate_coeffs (TYPE_1__*,scalar_t__*,int*,int*,int*,double*) ;
+ int imc_decode_level_coefficients (TYPE_1__*,int*,scalar_t__*,int*) ;
+ int imc_decode_level_coefficients2 (TYPE_1__*,int*,double*,scalar_t__*,int*) ;
+ int imc_decode_level_coefficients_raw (TYPE_1__*,int*,scalar_t__*,int*) ;
+ int imc_get_coeffs (TYPE_3__*,TYPE_1__*,TYPE_2__*) ;
+ int imc_imdct256 (TYPE_1__*,TYPE_2__*,int ) ;
+ int imc_read_level_coeffs (TYPE_1__*,int,int*) ;
+ int imc_read_level_coeffs_raw (TYPE_1__*,int,int*) ;
+ int imc_refine_bit_allocation (TYPE_1__*,TYPE_2__*) ;
+ scalar_t__ inverse_quant_coeff (TYPE_1__*,TYPE_2__*,int) ;
+ int memcpy (double*,scalar_t__*,int) ;
+ int memset (void**,int ,int) ;
 
 __attribute__((used)) static int imc_decode_block(AVCodecContext *avctx, IMCContext *q, int ch)
 {
@@ -56,7 +56,7 @@ __attribute__((used)) static int imc_decode_block(AVCodecContext *avctx, IMCCont
     IMCChannel *chctx = q->chctx + ch;
 
 
-    /* Check the frame header */
+
     imc_hdr = get_bits(&q->gb, 9);
     if (imc_hdr & 0x18) {
         av_log(avctx, AV_LOG_ERROR, "frame header check failed!\n");
@@ -104,10 +104,10 @@ __attribute__((used)) static int imc_decode_block(AVCodecContext *avctx, IMCCont
     counter = 0;
     if (stream_format_code & 0x1) {
         for (i = 0; i < BANDS; i++) {
-            chctx->bandWidthT[i]   = band_tab[i + 1] - band_tab[i];
+            chctx->bandWidthT[i] = band_tab[i + 1] - band_tab[i];
             chctx->bandFlagsBuf[i] = 0;
-            chctx->flcoeffs3[i]    = chctx->flcoeffs2[i] * 2;
-            chctx->flcoeffs5[i]    = 1.0;
+            chctx->flcoeffs3[i] = chctx->flcoeffs2[i] * 2;
+            chctx->flcoeffs5[i] = 1.0;
         }
     } else {
         for (i = 0; i < BANDS; i++) {
@@ -129,7 +129,7 @@ __attribute__((used)) static int imc_decode_block(AVCodecContext *avctx, IMCCont
     }
 
     bitscount = 0;
-    /* first 4 bands will be assigned 5 bits per coefficient */
+
     if (stream_format_code & 0x2) {
         bitscount += 15;
 
@@ -145,7 +145,7 @@ __attribute__((used)) static int imc_decode_block(AVCodecContext *avctx, IMCCont
             chctx->bitsBandT[i] = bits;
             for (j = band_tab[i]; j < band_tab[i + 1]; j++) {
                 chctx->CWlengthT[j] = bits;
-                bitscount      += bits;
+                bitscount += bits;
             }
         }
     }

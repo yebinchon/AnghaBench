@@ -1,62 +1,62 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_19__   TYPE_4__ ;
-typedef  struct TYPE_18__   TYPE_3__ ;
-typedef  struct TYPE_17__   TYPE_2__ ;
-typedef  struct TYPE_16__   TYPE_1__ ;
-typedef  struct TYPE_15__   TYPE_12__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
+
+
+typedef struct TYPE_19__ TYPE_4__ ;
+typedef struct TYPE_18__ TYPE_3__ ;
+typedef struct TYPE_17__ TYPE_2__ ;
+typedef struct TYPE_16__ TYPE_1__ ;
+typedef struct TYPE_15__ TYPE_12__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_19__ {int debug; int height; int width; int flags2; TYPE_1__* priv_data; } ;
 struct TYPE_18__ {int** data; int palette_has_changed; int* linesize; int key_frame; void* pict_type; } ;
 struct TYPE_17__ {int size; scalar_t__ data; } ;
 struct TYPE_16__ {int* pal; int* decomp_buf; unsigned long dsize; TYPE_12__* prev; } ;
 struct TYPE_15__ {int** data; } ;
-typedef  int /*<<< orphan*/  GetByteContext ;
-typedef  TYPE_1__ DxaDecContext ;
-typedef  TYPE_2__ AVPacket ;
-typedef  TYPE_3__ AVFrame ;
-typedef  TYPE_4__ AVCodecContext ;
+typedef int GetByteContext ;
+typedef TYPE_1__ DxaDecContext ;
+typedef TYPE_2__ AVPacket ;
+typedef TYPE_3__ AVFrame ;
+typedef TYPE_4__ AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int AVERROR_UNKNOWN ; 
- int AVPALETTE_SIZE ; 
- int AV_CODEC_FLAG2_SHOW_ALL ; 
- int /*<<< orphan*/  AV_GET_BUFFER_FLAG_REF ; 
- int /*<<< orphan*/  AV_LOG_DEBUG ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- void* AV_PICTURE_TYPE_I ; 
- void* AV_PICTURE_TYPE_P ; 
- int DECOMP_BUF_PADDING ; 
- int FF_DEBUG_PICT_INFO ; 
- scalar_t__ MKTAG (char,unsigned char,char,char) ; 
- scalar_t__ Z_OK ; 
- int av_frame_ref (TYPE_12__*,TYPE_3__*) ; 
- int /*<<< orphan*/  av_frame_unref (TYPE_12__*) ; 
- int /*<<< orphan*/  av_log (TYPE_4__*,int /*<<< orphan*/ ,char*,...) ; 
- int bytestream2_get_be24 (int /*<<< orphan*/ *) ; 
- int bytestream2_get_byte (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bytestream2_get_bytes_left (int /*<<< orphan*/ *) ; 
- scalar_t__ bytestream2_get_le32 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bytestream2_init (int /*<<< orphan*/ *,scalar_t__,int) ; 
- scalar_t__ bytestream2_peek_le32 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bytestream2_skip (int /*<<< orphan*/ *,int) ; 
- scalar_t__ bytestream2_tell (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  decode_13 (TYPE_4__*,TYPE_1__* const,int*,int,int*,unsigned long,int*) ; 
- int ff_get_buffer (TYPE_4__*,TYPE_3__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (int*,int*,int) ; 
- int /*<<< orphan*/  memset (int*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ uncompress (int*,unsigned long*,scalar_t__,int /*<<< orphan*/ ) ; 
+
+ int AVERROR_INVALIDDATA ;
+ int AVERROR_UNKNOWN ;
+ int AVPALETTE_SIZE ;
+ int AV_CODEC_FLAG2_SHOW_ALL ;
+ int AV_GET_BUFFER_FLAG_REF ;
+ int AV_LOG_DEBUG ;
+ int AV_LOG_ERROR ;
+ void* AV_PICTURE_TYPE_I ;
+ void* AV_PICTURE_TYPE_P ;
+ int DECOMP_BUF_PADDING ;
+ int FF_DEBUG_PICT_INFO ;
+ scalar_t__ MKTAG (char,unsigned char,char,char) ;
+ scalar_t__ Z_OK ;
+ int av_frame_ref (TYPE_12__*,TYPE_3__*) ;
+ int av_frame_unref (TYPE_12__*) ;
+ int av_log (TYPE_4__*,int ,char*,...) ;
+ int bytestream2_get_be24 (int *) ;
+ int bytestream2_get_byte (int *) ;
+ int bytestream2_get_bytes_left (int *) ;
+ scalar_t__ bytestream2_get_le32 (int *) ;
+ int bytestream2_init (int *,scalar_t__,int) ;
+ scalar_t__ bytestream2_peek_le32 (int *) ;
+ int bytestream2_skip (int *,int) ;
+ scalar_t__ bytestream2_tell (int *) ;
+ int decode_13 (TYPE_4__*,TYPE_1__* const,int*,int,int*,unsigned long,int*) ;
+ int ff_get_buffer (TYPE_4__*,TYPE_3__*,int ) ;
+ int memcpy (int*,int*,int) ;
+ int memset (int*,int ,int) ;
+ scalar_t__ uncompress (int*,unsigned long*,scalar_t__,int ) ;
 
 __attribute__((used)) static int decode_frame(AVCodecContext *avctx, void *data, int *got_frame, AVPacket *avpkt)
 {
@@ -71,7 +71,7 @@ __attribute__((used)) static int decode_frame(AVCodecContext *avctx, void *data,
 
     bytestream2_init(&gb, avpkt->data, avpkt->size);
 
-    /* make the palette available on the way out */
+
     if (bytestream2_peek_le32(&gb) == MKTAG('C','M','A','P')) {
         bytestream2_skip(&gb, 4);
         for(i = 0; i < 256; i++){
@@ -115,7 +115,7 @@ __attribute__((used)) static int decode_frame(AVCodecContext *avctx, void *data,
         frame->pict_type = AV_PICTURE_TYPE_P;
         if (c->prev->data[0])
             memcpy(frame->data[0], c->prev->data[0], frame->linesize[0] * avctx->height);
-        else{ // Should happen only when first frame is 'NULL'
+        else{
             memset(frame->data[0], 0, frame->linesize[0] * avctx->height);
             frame->key_frame = 1;
             frame->pict_type = AV_PICTURE_TYPE_I;
@@ -151,7 +151,7 @@ __attribute__((used)) static int decode_frame(AVCodecContext *avctx, void *data,
             srcptr += avctx->width;
         }
         break;
-    case 12: // ScummVM coding
+    case 12:
     case 13:
         frame->key_frame = 0;
         frame->pict_type = AV_PICTURE_TYPE_P;
@@ -172,6 +172,6 @@ __attribute__((used)) static int decode_frame(AVCodecContext *avctx, void *data,
 
     *got_frame = 1;
 
-    /* always report that the buffer was completely consumed */
+
     return avpkt->size;
 }

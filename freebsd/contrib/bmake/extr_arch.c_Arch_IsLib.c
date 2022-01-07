@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buf ;
-typedef  int /*<<< orphan*/  armag ;
-struct TYPE_3__ {int /*<<< orphan*/  path; } ;
-typedef  TYPE_1__ GNode ;
 
-/* Variables and functions */
- int FALSE ; 
- int /*<<< orphan*/  O_RDONLY ; 
- int /*<<< orphan*/  close (int) ; 
- scalar_t__ memcmp (char*,char const*,int) ; 
- int open (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int read (int,char*,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int buf ;
+typedef int armag ;
+struct TYPE_3__ {int path; } ;
+typedef TYPE_1__ GNode ;
+
+
+ int FALSE ;
+ int O_RDONLY ;
+ int close (int) ;
+ scalar_t__ memcmp (char*,char const*,int) ;
+ int open (int ,int ) ;
+ int read (int,char*,int) ;
 
 int
 Arch_IsLib(GNode *gn)
@@ -32,11 +32,11 @@ Arch_IsLib(GNode *gn)
     int fd;
 
     if ((fd = open(gn->path, O_RDONLY)) == -1)
-	return FALSE;
+ return FALSE;
 
     if (read(fd, buf, sizeof(buf)) != sizeof(buf)) {
-	(void)close(fd);
-	return FALSE;
+ (void)close(fd);
+ return FALSE;
     }
 
     (void)close(fd);

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  fileW ;
-typedef  int /*<<< orphan*/  buf ;
-typedef  float WCHAR ;
-typedef  scalar_t__ LPCWSTR ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- scalar_t__ ERROR_CALL_NOT_IMPLEMENTED ; 
- scalar_t__ GetLastError () ; 
- int MAX_PATH ; 
- int SearchPathW (int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ *,int,float*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SetLastError (int) ; 
- int /*<<< orphan*/  lstrcmpW (scalar_t__,float*) ; 
- scalar_t__ memcmp (scalar_t__,float const*,int) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
- scalar_t__ wine_dbgstr_w (scalar_t__) ; 
+
+
+
+typedef int fileW ;
+typedef int buf ;
+typedef float WCHAR ;
+typedef scalar_t__ LPCWSTR ;
+typedef int DWORD ;
+
+
+ scalar_t__ ERROR_CALL_NOT_IMPLEMENTED ;
+ scalar_t__ GetLastError () ;
+ int MAX_PATH ;
+ int SearchPathW (int *,scalar_t__,int *,int,float*,int *) ;
+ int SetLastError (int) ;
+ int lstrcmpW (scalar_t__,float*) ;
+ scalar_t__ memcmp (scalar_t__,float const*,int) ;
+ int ok (int,char*,...) ;
+ int win_skip (char*) ;
+ scalar_t__ wine_dbgstr_w (scalar_t__) ;
 
 __attribute__((used)) static void res_sec_url_cmp(LPCWSTR url, DWORD size, LPCWSTR file)
 {
@@ -41,7 +41,7 @@ __attribute__((used)) static void res_sec_url_cmp(LPCWSTR url, DWORD size, LPCWS
     }
 
     SetLastError(0xdeadbeef);
-    len = SearchPathW(NULL, file, NULL, sizeof(buf)/sizeof(WCHAR), buf, NULL);
+    len = SearchPathW(((void*)0), file, ((void*)0), sizeof(buf)/sizeof(WCHAR), buf, ((void*)0));
     if(!len) {
         if (GetLastError() == ERROR_CALL_NOT_IMPLEMENTED)
             win_skip("SearchPathW is not implemented\n");

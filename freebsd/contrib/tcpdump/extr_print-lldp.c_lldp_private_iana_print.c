@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u_int ;
-typedef  int u_char ;
-typedef  int /*<<< orphan*/  netdissect_options ;
 
-/* Variables and functions */
- int FALSE ; 
-#define  LLDP_IANA_SUBTYPE_MUDURL 128 
- int /*<<< orphan*/  ND_PRINT (int /*<<< orphan*/ *) ; 
- int TRUE ; 
- int /*<<< orphan*/  fn_printn (int /*<<< orphan*/ *,int const*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lldp_iana_subtype_values ; 
- int /*<<< orphan*/  tok2str (int /*<<< orphan*/ ,char*,int) ; 
+
+
+
+typedef int u_int ;
+typedef int u_char ;
+typedef int netdissect_options ;
+
+
+ int FALSE ;
+
+ int ND_PRINT (int *) ;
+ int TRUE ;
+ int fn_printn (int *,int const*,int,int *) ;
+ int lldp_iana_subtype_values ;
+ int tok2str (int ,char*,int) ;
 
 __attribute__((used)) static int
 lldp_private_iana_print(netdissect_options *ndo,
@@ -39,9 +39,9 @@ lldp_private_iana_print(netdissect_options *ndo,
            subtype));
 
     switch (subtype) {
-    case LLDP_IANA_SUBTYPE_MUDURL:
+    case 128:
         ND_PRINT((ndo, "\n\t  MUD-URL="));
-        (void)fn_printn(ndo, tptr+4, tlv_len-4, NULL);
+        (void)fn_printn(ndo, tptr+4, tlv_len-4, ((void*)0));
         break;
     default:
         hexdump=TRUE;

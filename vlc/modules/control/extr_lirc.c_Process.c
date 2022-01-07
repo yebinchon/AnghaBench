@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ vlc_action_id_t ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef scalar_t__ vlc_action_id_t ;
 struct TYPE_7__ {TYPE_1__* p_sys; } ;
-typedef  TYPE_2__ intf_thread_t ;
-struct TYPE_6__ {int /*<<< orphan*/  config; } ;
+typedef TYPE_2__ intf_thread_t ;
+struct TYPE_6__ {int config; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (char*) ; 
- scalar_t__ lirc_code2char (int /*<<< orphan*/ ,char*,char**) ; 
- scalar_t__ lirc_nextcode (char**) ; 
- int /*<<< orphan*/  msg_Err (TYPE_2__*,char*,...) ; 
- int /*<<< orphan*/  strncmp (char*,char*,int) ; 
- int /*<<< orphan*/  var_SetInteger (int /*<<< orphan*/ ,char*,scalar_t__) ; 
- scalar_t__ vlc_actions_get_id (char*) ; 
- int /*<<< orphan*/  vlc_object_instance (TYPE_2__*) ; 
+
+ int free (char*) ;
+ scalar_t__ lirc_code2char (int ,char*,char**) ;
+ scalar_t__ lirc_nextcode (char**) ;
+ int msg_Err (TYPE_2__*,char*,...) ;
+ int strncmp (char*,char*,int) ;
+ int var_SetInteger (int ,char*,scalar_t__) ;
+ scalar_t__ vlc_actions_get_id (char*) ;
+ int vlc_object_instance (TYPE_2__*) ;
 
 __attribute__((used)) static void Process( intf_thread_t *p_intf )
 {
@@ -35,11 +35,11 @@ __attribute__((used)) static void Process( intf_thread_t *p_intf )
         if( lirc_nextcode( &code ) )
             return;
 
-        if( code == NULL )
+        if( code == ((void*)0) )
             return;
 
         while( (lirc_code2char( p_intf->p_sys->config, code, &c ) == 0)
-                && (c != NULL) )
+                && (c != ((void*)0)) )
         {
             if( !strncmp( "key-", c, 4 ) )
             {

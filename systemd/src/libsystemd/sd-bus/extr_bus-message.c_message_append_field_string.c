@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char uint8_t ;
-typedef  int uint64_t ;
-typedef  size_t uint32_t ;
-typedef  int /*<<< orphan*/  sd_bus_message ;
 
-/* Variables and functions */
- scalar_t__ BUS_MESSAGE_IS_GVARIANT (int /*<<< orphan*/ *) ; 
- int EINVAL ; 
- int ENOMEM ; 
- size_t UINT32_MAX ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memcpy (char*,char const*,size_t) ; 
- char* message_extend_fields (int /*<<< orphan*/ *,int,int,int) ; 
- size_t strlen (char const*) ; 
+
+
+
+typedef char uint8_t ;
+typedef int uint64_t ;
+typedef size_t uint32_t ;
+typedef int sd_bus_message ;
+
+
+ scalar_t__ BUS_MESSAGE_IS_GVARIANT (int *) ;
+ int EINVAL ;
+ int ENOMEM ;
+ size_t UINT32_MAX ;
+ int assert (int *) ;
+ int memcpy (char*,char const*,size_t) ;
+ char* message_extend_fields (int *,int,int,int) ;
+ size_t strlen (char const*) ;
 
 __attribute__((used)) static int message_append_field_string(
                 sd_bus_message *m,
@@ -37,22 +37,22 @@ __attribute__((used)) static int message_append_field_string(
 
         assert(m);
 
-        /* dbus1 only allows 8bit header field ids */
+
         if (h > 0xFF)
                 return -EINVAL;
 
-        /* dbus1 doesn't allow strings over 32bit, let's enforce this
-         * globally, to not risk convertability */
+
+
         l = strlen(s);
         if (l > UINT32_MAX)
                 return -EINVAL;
 
-        /* Signature "(yv)" where the variant contains "s" */
+
 
         if (BUS_MESSAGE_IS_GVARIANT(m)) {
 
-                /* (field id 64bit, ((string + NUL) + NUL + signature string 's') */
-                p = message_extend_fields(m, 8, 8 + l + 1 + 1 + 1, true);
+
+                p = message_extend_fields(m, 8, 8 + l + 1 + 1 + 1, 1);
                 if (!p)
                         return -ENOMEM;
 
@@ -66,8 +66,8 @@ __attribute__((used)) static int message_append_field_string(
                         *ret = (char*) p + 8;
 
         } else {
-                /* (field id byte + (signature length + signature 's' + NUL) + (string length + string + NUL)) */
-                p = message_extend_fields(m, 8, 4 + 4 + l + 1, false);
+
+                p = message_extend_fields(m, 8, 4 + 4 + l + 1, 0);
                 if (!p)
                         return -ENOMEM;
 

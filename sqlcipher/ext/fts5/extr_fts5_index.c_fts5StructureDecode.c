@@ -1,67 +1,67 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-typedef  int sqlite3_int64 ;
-struct TYPE_8__ {int nRef; int nLevel; int nSegment; TYPE_2__* aLevel; int /*<<< orphan*/  nWriteCounter; } ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int u8 ;
+typedef int sqlite3_int64 ;
+struct TYPE_8__ {int nRef; int nLevel; int nSegment; TYPE_2__* aLevel; int nWriteCounter; } ;
 struct TYPE_7__ {int nMerge; int nSeg; TYPE_1__* aSeg; } ;
 struct TYPE_6__ {int iSegid; int pgnoFirst; int pgnoLast; } ;
-typedef  TYPE_1__ Fts5StructureSegment ;
-typedef  TYPE_2__ Fts5StructureLevel ;
-typedef  TYPE_3__ Fts5Structure ;
+typedef TYPE_1__ Fts5StructureSegment ;
+typedef TYPE_2__ Fts5StructureLevel ;
+typedef TYPE_3__ Fts5Structure ;
 
-/* Variables and functions */
- int FTS5_CORRUPT ; 
- int FTS5_MAX_SEGMENT ; 
- int SQLITE_OK ; 
- scalar_t__ fts5GetVarint32 (int /*<<< orphan*/  const*,int) ; 
- int /*<<< orphan*/  fts5StructureRelease (TYPE_3__*) ; 
- int sqlite3Fts5Get32 (int /*<<< orphan*/  const*) ; 
- scalar_t__ sqlite3Fts5GetVarint (int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3Fts5MallocZero (int*,int) ; 
+
+ int FTS5_CORRUPT ;
+ int FTS5_MAX_SEGMENT ;
+ int SQLITE_OK ;
+ scalar_t__ fts5GetVarint32 (int const*,int) ;
+ int fts5StructureRelease (TYPE_3__*) ;
+ int sqlite3Fts5Get32 (int const*) ;
+ scalar_t__ sqlite3Fts5GetVarint (int const*,int *) ;
+ scalar_t__ sqlite3Fts5MallocZero (int*,int) ;
 
 __attribute__((used)) static int fts5StructureDecode(
-  const u8 *pData,                /* Buffer containing serialized structure */
-  int nData,                      /* Size of buffer pData in bytes */
-  int *piCookie,                  /* Configuration cookie value */
-  Fts5Structure **ppOut           /* OUT: Deserialized object */
+  const u8 *pData,
+  int nData,
+  int *piCookie,
+  Fts5Structure **ppOut
 ){
   int rc = SQLITE_OK;
   int i = 0;
   int iLvl;
   int nLevel = 0;
   int nSegment = 0;
-  sqlite3_int64 nByte;            /* Bytes of space to allocate at pRet */
-  Fts5Structure *pRet = 0;        /* Structure object to return */
+  sqlite3_int64 nByte;
+  Fts5Structure *pRet = 0;
 
-  /* Grab the cookie value */
+
   if( piCookie ) *piCookie = sqlite3Fts5Get32(pData);
   i = 4;
 
-  /* Read the total number of levels and segments from the start of the
-  ** structure record.  */
+
+
   i += fts5GetVarint32(&pData[i], nLevel);
   i += fts5GetVarint32(&pData[i], nSegment);
-  if( nLevel>FTS5_MAX_SEGMENT   || nLevel<0
+  if( nLevel>FTS5_MAX_SEGMENT || nLevel<0
    || nSegment>FTS5_MAX_SEGMENT || nSegment<0
   ){
     return FTS5_CORRUPT;
   }
   nByte = (
-      sizeof(Fts5Structure) +                    /* Main structure */
-      sizeof(Fts5StructureLevel) * (nLevel-1)    /* aLevel[] array */
+      sizeof(Fts5Structure) +
+      sizeof(Fts5StructureLevel) * (nLevel-1)
   );
   pRet = (Fts5Structure*)sqlite3Fts5MallocZero(&rc, nByte);
 
@@ -82,7 +82,7 @@ __attribute__((used)) static int fts5StructureDecode(
         i += fts5GetVarint32(&pData[i], pLvl->nMerge);
         i += fts5GetVarint32(&pData[i], nTotal);
         if( nTotal<pLvl->nMerge ) rc = FTS5_CORRUPT;
-        pLvl->aSeg = (Fts5StructureSegment*)sqlite3Fts5MallocZero(&rc, 
+        pLvl->aSeg = (Fts5StructureSegment*)sqlite3Fts5MallocZero(&rc,
             nTotal * sizeof(Fts5StructureSegment)
         );
         nSegment -= nTotal;

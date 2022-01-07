@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct in6_addr {int dummy; } ;
 struct TYPE_7__ {int transaction_id; } ;
-typedef  TYPE_1__ DHCP6Message ;
+typedef TYPE_1__ DHCP6Message ;
 
-/* Variables and functions */
- struct in6_addr IN6ADDR_ALL_DHCP6_RELAY_AGENTS_AND_SERVERS_INIT ; 
- int IN6_ARE_ADDR_EQUAL (struct in6_addr*,struct in6_addr*) ; 
- int /*<<< orphan*/  assert_se (int) ; 
- int test_client_message_num ; 
- int /*<<< orphan*/  test_client_send_advertise (TYPE_1__*) ; 
- int /*<<< orphan*/  test_client_send_reply (TYPE_1__*) ; 
- int /*<<< orphan*/  test_client_verify_information_request (TYPE_1__*,size_t) ; 
- int /*<<< orphan*/  test_client_verify_request (TYPE_1__*,size_t) ; 
- int /*<<< orphan*/  test_client_verify_solicit (TYPE_1__*,size_t) ; 
- int* test_dhcp_fd ; 
+
+ struct in6_addr IN6ADDR_ALL_DHCP6_RELAY_AGENTS_AND_SERVERS_INIT ;
+ int IN6_ARE_ADDR_EQUAL (struct in6_addr*,struct in6_addr*) ;
+ int assert_se (int) ;
+ int test_client_message_num ;
+ int test_client_send_advertise (TYPE_1__*) ;
+ int test_client_send_reply (TYPE_1__*) ;
+ int test_client_verify_information_request (TYPE_1__*,size_t) ;
+ int test_client_verify_request (TYPE_1__*,size_t) ;
+ int test_client_verify_solicit (TYPE_1__*,size_t) ;
+ int* test_dhcp_fd ;
 
 int dhcp6_network_send_udp_socket(int s, struct in6_addr *server_address,
                                   const void *packet, size_t len) {

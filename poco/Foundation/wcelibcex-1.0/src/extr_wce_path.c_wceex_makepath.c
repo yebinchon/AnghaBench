@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int _MAX_PATH ; 
- char* strchr (char*,char) ; 
- size_t strlen (char*) ; 
- int /*<<< orphan*/  strncat (char*,char const*,size_t) ; 
+ int _MAX_PATH ;
+ char* strchr (char*,char) ;
+ size_t strlen (char*) ;
+ int strncat (char*,char const*,size_t) ;
 
 void wceex_makepath( char *path,
                      const char *drive, const char *dir,
@@ -37,7 +29,7 @@ void wceex_makepath( char *path,
         slen = strlen( ptr );
         ptr += slen - 1;
         sbuf -= slen;
-        // backslash ?
+
         if( sbuf && *ptr != '\\' && *ptr != '/' )
         {
             char* slash = strchr( path, '/' );

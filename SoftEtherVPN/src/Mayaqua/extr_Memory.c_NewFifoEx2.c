@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int fixed; int /*<<< orphan*/  p; int /*<<< orphan*/  memsize; scalar_t__ pos; scalar_t__ size; int /*<<< orphan*/ * ref; int /*<<< orphan*/ * lock; } ;
-typedef  TYPE_1__ FIFO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FIFO_INIT_MEM_SIZE ; 
- int /*<<< orphan*/  KS_INC (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  KS_NEWFIFO_COUNT ; 
- int /*<<< orphan*/  Malloc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * NewLock () ; 
- int /*<<< orphan*/ * NewRef () ; 
- TYPE_1__* ZeroMalloc (int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int fixed; int p; int memsize; scalar_t__ pos; scalar_t__ size; int * ref; int * lock; } ;
+typedef TYPE_1__ FIFO ;
+
+
+ int FIFO_INIT_MEM_SIZE ;
+ int KS_INC (int ) ;
+ int KS_NEWFIFO_COUNT ;
+ int Malloc (int ) ;
+ int * NewLock () ;
+ int * NewRef () ;
+ TYPE_1__* ZeroMalloc (int) ;
 
 FIFO *NewFifoEx2(bool fast, bool fixed)
 {
-	FIFO *f;
+ FIFO *f;
 
-	// Memory allocation
-	f = ZeroMalloc(sizeof(FIFO));
 
-	if (fast == false)
-	{
-		f->lock = NewLock();
-		f->ref = NewRef();
-	}
-	else
-	{
-		f->lock = NULL;
-		f->ref = NULL;
-	}
+ f = ZeroMalloc(sizeof(FIFO));
 
-	f->size = f->pos = 0;
-	f->memsize = FIFO_INIT_MEM_SIZE;
-	f->p = Malloc(FIFO_INIT_MEM_SIZE);
-	f->fixed = false;
+ if (fast == 0)
+ {
+  f->lock = NewLock();
+  f->ref = NewRef();
+ }
+ else
+ {
+  f->lock = ((void*)0);
+  f->ref = ((void*)0);
+ }
 
-	// KS
-	KS_INC(KS_NEWFIFO_COUNT);
+ f->size = f->pos = 0;
+ f->memsize = FIFO_INIT_MEM_SIZE;
+ f->p = Malloc(FIFO_INIT_MEM_SIZE);
+ f->fixed = 0;
 
-	return f;
+
+ KS_INC(KS_NEWFIFO_COUNT);
+
+ return f;
 }

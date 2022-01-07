@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {int fd; } ;
-struct TYPE_7__ {scalar_t__ user; TYPE_1__ sock; int /*<<< orphan*/  port; int /*<<< orphan*/  addr; } ;
+struct TYPE_7__ {scalar_t__ user; TYPE_1__ sock; int port; int addr; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  UNUSED_PARAMETER (int) ; 
- int /*<<< orphan*/  exit (int) ; 
- int getpid () ; 
- int make_server_socket (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  optparse (TYPE_2__*,char**) ; 
- int /*<<< orphan*/  printf (char*,int) ; 
- char* progname ; 
- int /*<<< orphan*/  prot_init () ; 
- int /*<<< orphan*/  set_sig_handlers () ; 
- int /*<<< orphan*/  setlinebuf (int /*<<< orphan*/ ) ; 
- TYPE_2__ srv ; 
- int /*<<< orphan*/  srv_acquire_wal (TYPE_2__*) ; 
- int /*<<< orphan*/  srvserve (TYPE_2__*) ; 
- int /*<<< orphan*/  stdout ; 
- int /*<<< orphan*/  su (scalar_t__) ; 
- int /*<<< orphan*/  twarnx (char*) ; 
- scalar_t__ verbose ; 
+
+ int UNUSED_PARAMETER (int) ;
+ int exit (int) ;
+ int getpid () ;
+ int make_server_socket (int ,int ) ;
+ int optparse (TYPE_2__*,char**) ;
+ int printf (char*,int) ;
+ char* progname ;
+ int prot_init () ;
+ int set_sig_handlers () ;
+ int setlinebuf (int ) ;
+ TYPE_2__ srv ;
+ int srv_acquire_wal (TYPE_2__*) ;
+ int srvserve (TYPE_2__*) ;
+ int stdout ;
+ int su (scalar_t__) ;
+ int twarnx (char*) ;
+ scalar_t__ verbose ;
 
 int
 main(int argc, char **argv)

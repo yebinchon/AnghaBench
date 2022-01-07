@@ -1,93 +1,81 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct ata_link {TYPE_1__* ap; } ;
 struct TYPE_2__ {int flags; struct ata_link* slave_link; } ;
 
-/* Variables and functions */
- int ATA_FLAG_SATA ; 
- int /*<<< orphan*/  ATA_TMOUT_FF_WAIT ; 
- int EBUSY ; 
- int ENODEV ; 
- int HZ ; 
- int /*<<< orphan*/  KERN_WARNING ; 
- int /*<<< orphan*/  WARN_ON (int) ; 
- unsigned long ata_deadline (unsigned long,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ata_link_offline (struct ata_link*) ; 
- scalar_t__ ata_link_online (struct ata_link*) ; 
- int /*<<< orphan*/  ata_link_printk (struct ata_link*,int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  ata_msleep (TYPE_1__*,int) ; 
- unsigned long jiffies ; 
- scalar_t__ time_after (unsigned long,unsigned long) ; 
- scalar_t__ time_before (unsigned long,unsigned long) ; 
+
+ int ATA_FLAG_SATA ;
+ int ATA_TMOUT_FF_WAIT ;
+ int EBUSY ;
+ int ENODEV ;
+ int HZ ;
+ int KERN_WARNING ;
+ int WARN_ON (int) ;
+ unsigned long ata_deadline (unsigned long,int ) ;
+ int ata_link_offline (struct ata_link*) ;
+ scalar_t__ ata_link_online (struct ata_link*) ;
+ int ata_link_printk (struct ata_link*,int ,char*,int) ;
+ int ata_msleep (TYPE_1__*,int) ;
+ unsigned long jiffies ;
+ scalar_t__ time_after (unsigned long,unsigned long) ;
+ scalar_t__ time_before (unsigned long,unsigned long) ;
 
 int ata_wait_ready(struct ata_link *link, unsigned long deadline,
-		   int (*check_ready)(struct ata_link *link))
+     int (*check_ready)(struct ata_link *link))
 {
-	unsigned long start = jiffies;
-	unsigned long nodev_deadline = ata_deadline(start, ATA_TMOUT_FF_WAIT);
-	int warned = 0;
+ unsigned long start = jiffies;
+ unsigned long nodev_deadline = ata_deadline(start, ATA_TMOUT_FF_WAIT);
+ int warned = 0;
 
-	/* Slave readiness can't be tested separately from master.  On
-	 * M/S emulation configuration, this function should be called
-	 * only on the master and it will handle both master and slave.
-	 */
-	WARN_ON(link == link->ap->slave_link);
 
-	if (time_after(nodev_deadline, deadline))
-		nodev_deadline = deadline;
 
-	while (1) {
-		unsigned long now = jiffies;
-		int ready, tmp;
 
-		ready = tmp = check_ready(link);
-		if (ready > 0)
-			return 0;
 
-		/* -ENODEV could be transient.  Ignore -ENODEV if link
-		 * is online.  Also, some SATA devices take a long
-		 * time to clear 0xff after reset.  For example,
-		 * HHD424020F7SV00 iVDR needs >= 800ms while Quantum
-		 * GoVault needs even more than that.  Wait for
-		 * ATA_TMOUT_FF_WAIT on -ENODEV if link isn't offline.
-		 *
-		 * Note that some PATA controllers (pata_ali) explode
-		 * if status register is read more than once when
-		 * there's no device attached.
-		 */
-		if (ready == -ENODEV) {
-			if (ata_link_online(link))
-				ready = 0;
-			else if ((link->ap->flags & ATA_FLAG_SATA) &&
-				 !ata_link_offline(link) &&
-				 time_before(now, nodev_deadline))
-				ready = 0;
-		}
+ WARN_ON(link == link->ap->slave_link);
 
-		if (ready)
-			return ready;
-		if (time_after(now, deadline))
-			return -EBUSY;
+ if (time_after(nodev_deadline, deadline))
+  nodev_deadline = deadline;
 
-		if (!warned && time_after(now, start + 5 * HZ) &&
-		    (deadline - now > 3 * HZ)) {
-			ata_link_printk(link, KERN_WARNING,
-				"link is slow to respond, please be patient "
-				"(ready=%d)\n", tmp);
-			warned = 1;
-		}
+ while (1) {
+  unsigned long now = jiffies;
+  int ready, tmp;
 
-		ata_msleep(link->ap, 50);
-	}
+  ready = tmp = check_ready(link);
+  if (ready > 0)
+   return 0;
+  if (ready == -ENODEV) {
+   if (ata_link_online(link))
+    ready = 0;
+   else if ((link->ap->flags & ATA_FLAG_SATA) &&
+     !ata_link_offline(link) &&
+     time_before(now, nodev_deadline))
+    ready = 0;
+  }
+
+  if (ready)
+   return ready;
+  if (time_after(now, deadline))
+   return -EBUSY;
+
+  if (!warned && time_after(now, start + 5 * HZ) &&
+      (deadline - now > 3 * HZ)) {
+   ata_link_printk(link, KERN_WARNING,
+    "link is slow to respond, please be patient "
+    "(ready=%d)\n", tmp);
+   warned = 1;
+  }
+
+  ata_msleep(link->ap, 50);
+ }
 }

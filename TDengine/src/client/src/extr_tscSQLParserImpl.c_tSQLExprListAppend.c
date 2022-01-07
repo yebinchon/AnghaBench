@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_7__ {int nAlloc; int nExpr; struct tSQLExprItem* a; } ;
-typedef  TYPE_1__ tSQLExprList ;
-typedef  int /*<<< orphan*/  tSQLExpr ;
-struct tSQLExprItem {scalar_t__* aliasName; int /*<<< orphan*/ * pNode; } ;
-struct TYPE_8__ {int n; int /*<<< orphan*/  z; } ;
-typedef  TYPE_2__ SSQLToken ;
+typedef TYPE_1__ tSQLExprList ;
+typedef int tSQLExpr ;
+struct tSQLExprItem {scalar_t__* aliasName; int * pNode; } ;
+struct TYPE_8__ {int n; int z; } ;
+typedef TYPE_2__ SSQLToken ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- TYPE_1__* calloc (int,int) ; 
- scalar_t__* malloc (int) ; 
- int /*<<< orphan*/  memset (struct tSQLExprItem*,int /*<<< orphan*/ ,int) ; 
- struct tSQLExprItem* realloc (struct tSQLExprItem*,int) ; 
- int /*<<< orphan*/  strdequote (scalar_t__*) ; 
- int /*<<< orphan*/  strncpy (scalar_t__*,int /*<<< orphan*/ ,int) ; 
+
+ int assert (int) ;
+ TYPE_1__* calloc (int,int) ;
+ scalar_t__* malloc (int) ;
+ int memset (struct tSQLExprItem*,int ,int) ;
+ struct tSQLExprItem* realloc (struct tSQLExprItem*,int) ;
+ int strdequote (scalar_t__*) ;
+ int strncpy (scalar_t__*,int ,int) ;
 
 tSQLExprList *tSQLExprListAppend(tSQLExprList *pList, tSQLExpr *pNode, SSQLToken *pToken) {
-  if (pList == NULL) {
+  if (pList == ((void*)0)) {
     pList = calloc(1, sizeof(tSQLExprList));
   }
 
-  if (pList->nAlloc <= pList->nExpr) {  //
+  if (pList->nAlloc <= pList->nExpr) {
     pList->nAlloc = (pList->nAlloc << 1) + 4;
     pList->a = realloc(pList->a, pList->nAlloc * sizeof(pList->a[0]));
     if (pList->a == 0) {
@@ -47,7 +47,7 @@ tSQLExprList *tSQLExprListAppend(tSQLExprList *pList, tSQLExpr *pNode, SSQLToken
     struct tSQLExprItem *pItem = &pList->a[pList->nExpr++];
     memset(pItem, 0, sizeof(*pItem));
     pItem->pNode = pNode;
-    if (pToken) {  // set the as clause
+    if (pToken) {
       pItem->aliasName = malloc(pToken->n + 1);
       strncpy(pItem->aliasName, pToken->z, pToken->n);
       pItem->aliasName[pToken->n] = 0;

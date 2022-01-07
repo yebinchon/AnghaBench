@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  t ;
-typedef  size_t ssize_t ;
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int t ;
+typedef size_t ssize_t ;
 struct TYPE_8__ {TYPE_1__* manager; } ;
-struct TYPE_7__ {int /*<<< orphan*/  console_active_fd; } ;
-typedef  TYPE_2__ Seat ;
+struct TYPE_7__ {int console_active_fd; } ;
+typedef TYPE_2__ Seat ;
 
-/* Variables and functions */
- int EIO ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  assert (TYPE_2__*) ; 
- int errno ; 
- int /*<<< orphan*/  log_error (char*,char*) ; 
- int log_error_errno (int,char*) ; 
- scalar_t__ lseek (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- size_t read (int /*<<< orphan*/ ,char*,int) ; 
- int seat_active_vt_changed (TYPE_2__*,int) ; 
- int /*<<< orphan*/  seat_has_vts (TYPE_2__*) ; 
- char* strerror_safe (int) ; 
- int /*<<< orphan*/  truncate_nl (char*) ; 
- int vtnr_from_tty (char*) ; 
+
+ int EIO ;
+ int SEEK_SET ;
+ int assert (TYPE_2__*) ;
+ int errno ;
+ int log_error (char*,char*) ;
+ int log_error_errno (int,char*) ;
+ scalar_t__ lseek (int ,int ,int ) ;
+ size_t read (int ,char*,int) ;
+ int seat_active_vt_changed (TYPE_2__*,int) ;
+ int seat_has_vts (TYPE_2__*) ;
+ char* strerror_safe (int) ;
+ int truncate_nl (char*) ;
+ int vtnr_from_tty (char*) ;
 
 int seat_read_active_vt(Seat *s) {
         char t[64];

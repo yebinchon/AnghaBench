@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct mp_dispatch_queue {int /*<<< orphan*/  lock; int /*<<< orphan*/  cond; int /*<<< orphan*/  locked; int /*<<< orphan*/  lock_requests; int /*<<< orphan*/  in_process; int /*<<< orphan*/  head; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  pthread_cond_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_destroy (int /*<<< orphan*/ *) ; 
+
+
+
+struct mp_dispatch_queue {int lock; int cond; int locked; int lock_requests; int in_process; int head; } ;
+
+
+ int assert (int) ;
+ int pthread_cond_destroy (int *) ;
+ int pthread_mutex_destroy (int *) ;
 
 __attribute__((used)) static void queue_dtor(void *p)
 {

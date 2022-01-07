@@ -1,103 +1,103 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct milenage_parameters {char* imsi; int /*<<< orphan*/  sqn; int /*<<< orphan*/  amf; int /*<<< orphan*/  opc; int /*<<< orphan*/  ki; struct milenage_parameters* next; } ;
-typedef  int /*<<< orphan*/  name ;
-typedef  int /*<<< orphan*/  buf ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- scalar_t__ fgets (char*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char const*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*,char*) ; 
- struct milenage_parameters* milenage_db ; 
- int /*<<< orphan*/  perror (char*) ; 
- int /*<<< orphan*/  printf (char*,char const*) ; 
- scalar_t__ rename (char const*,char const*) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,char const*) ; 
- char* strchr (char*,char) ; 
- scalar_t__ strncmp (char*,char*,size_t) ; 
- int /*<<< orphan*/  wpa_snprintf_hex (char*,int,int /*<<< orphan*/ ,int) ; 
+
+
+
+struct milenage_parameters {char* imsi; int sqn; int amf; int opc; int ki; struct milenage_parameters* next; } ;
+typedef int name ;
+typedef int buf ;
+typedef int FILE ;
+
+
+ int fclose (int *) ;
+ scalar_t__ fgets (char*,int,int *) ;
+ int * fopen (char const*,char*) ;
+ int fprintf (int *,char*,char*) ;
+ struct milenage_parameters* milenage_db ;
+ int perror (char*) ;
+ int printf (char*,char const*) ;
+ scalar_t__ rename (char const*,char const*) ;
+ int snprintf (char*,int,char*,char const*) ;
+ char* strchr (char*,char) ;
+ scalar_t__ strncmp (char*,char*,size_t) ;
+ int wpa_snprintf_hex (char*,int,int ,int) ;
 
 __attribute__((used)) static void update_milenage_file(const char *fname)
 {
-	FILE *f, *f2;
-	char name[500], buf[500], *pos;
-	char *end = buf + sizeof(buf);
-	struct milenage_parameters *m;
-	size_t imsi_len;
+ FILE *f, *f2;
+ char name[500], buf[500], *pos;
+ char *end = buf + sizeof(buf);
+ struct milenage_parameters *m;
+ size_t imsi_len;
 
-	f = fopen(fname, "r");
-	if (f == NULL) {
-		printf("Could not open Milenage data file '%s'\n", fname);
-		return;
-	}
+ f = fopen(fname, "r");
+ if (f == ((void*)0)) {
+  printf("Could not open Milenage data file '%s'\n", fname);
+  return;
+ }
 
-	snprintf(name, sizeof(name), "%s.new", fname);
-	f2 = fopen(name, "w");
-	if (f2 == NULL) {
-		printf("Could not write Milenage data file '%s'\n", name);
-		fclose(f);
-		return;
-	}
+ snprintf(name, sizeof(name), "%s.new", fname);
+ f2 = fopen(name, "w");
+ if (f2 == ((void*)0)) {
+  printf("Could not write Milenage data file '%s'\n", name);
+  fclose(f);
+  return;
+ }
 
-	while (fgets(buf, sizeof(buf), f)) {
-		/* IMSI Ki OPc AMF SQN */
-		buf[sizeof(buf) - 1] = '\0';
+ while (fgets(buf, sizeof(buf), f)) {
 
-		pos = strchr(buf, ' ');
-		if (buf[0] == '#' || pos == NULL || pos - buf >= 20)
-			goto no_update;
+  buf[sizeof(buf) - 1] = '\0';
 
-		imsi_len = pos - buf;
+  pos = strchr(buf, ' ');
+  if (buf[0] == '#' || pos == ((void*)0) || pos - buf >= 20)
+   goto no_update;
 
-		for (m = milenage_db; m; m = m->next) {
-			if (strncmp(buf, m->imsi, imsi_len) == 0 &&
-			    m->imsi[imsi_len] == '\0')
-				break;
-		}
+  imsi_len = pos - buf;
 
-		if (!m)
-			goto no_update;
+  for (m = milenage_db; m; m = m->next) {
+   if (strncmp(buf, m->imsi, imsi_len) == 0 &&
+       m->imsi[imsi_len] == '\0')
+    break;
+  }
 
-		pos = buf;
-		pos += snprintf(pos, end - pos, "%s ", m->imsi);
-		pos += wpa_snprintf_hex(pos, end - pos, m->ki, 16);
-		*pos++ = ' ';
-		pos += wpa_snprintf_hex(pos, end - pos, m->opc, 16);
-		*pos++ = ' ';
-		pos += wpa_snprintf_hex(pos, end - pos, m->amf, 2);
-		*pos++ = ' ';
-		pos += wpa_snprintf_hex(pos, end - pos, m->sqn, 6);
-		*pos++ = '\n';
+  if (!m)
+   goto no_update;
 
-	no_update:
-		fprintf(f2, "%s", buf);
-	}
+  pos = buf;
+  pos += snprintf(pos, end - pos, "%s ", m->imsi);
+  pos += wpa_snprintf_hex(pos, end - pos, m->ki, 16);
+  *pos++ = ' ';
+  pos += wpa_snprintf_hex(pos, end - pos, m->opc, 16);
+  *pos++ = ' ';
+  pos += wpa_snprintf_hex(pos, end - pos, m->amf, 2);
+  *pos++ = ' ';
+  pos += wpa_snprintf_hex(pos, end - pos, m->sqn, 6);
+  *pos++ = '\n';
 
-	fclose(f2);
-	fclose(f);
+ no_update:
+  fprintf(f2, "%s", buf);
+ }
 
-	snprintf(name, sizeof(name), "%s.bak", fname);
-	if (rename(fname, name) < 0) {
-		perror("rename");
-		return;
-	}
+ fclose(f2);
+ fclose(f);
 
-	snprintf(name, sizeof(name), "%s.new", fname);
-	if (rename(name, fname) < 0) {
-		perror("rename");
-		return;
-	}
+ snprintf(name, sizeof(name), "%s.bak", fname);
+ if (rename(fname, name) < 0) {
+  perror("rename");
+  return;
+ }
+
+ snprintf(name, sizeof(name), "%s.new", fname);
+ if (rename(name, fname) < 0) {
+  perror("rename");
+  return;
+ }
 
 }

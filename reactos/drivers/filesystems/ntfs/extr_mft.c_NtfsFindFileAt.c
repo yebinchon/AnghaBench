@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ULONGLONG ;
-struct TYPE_5__ {int /*<<< orphan*/  FileRecLookasideList; } ;
-typedef  int /*<<< orphan*/  PUNICODE_STRING ;
-typedef  int /*<<< orphan*/ * PULONGLONG ;
-typedef  int /*<<< orphan*/ * PULONG ;
-typedef  int /*<<< orphan*/ * PFILE_RECORD_HEADER ;
-typedef  TYPE_1__* PDEVICE_EXTENSION ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
-typedef  scalar_t__ BOOLEAN ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPRINT (char*,...) ; 
- int /*<<< orphan*/ * ExAllocateFromNPagedLookasideList (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ExFreeToNPagedLookasideList (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  NT_SUCCESS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NtfsFindMftRecord (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ReadFileRecord (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  STATUS_INSUFFICIENT_RESOURCES ; 
- int /*<<< orphan*/  STATUS_SUCCESS ; 
- int /*<<< orphan*/  TRUE ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int ULONGLONG ;
+struct TYPE_5__ {int FileRecLookasideList; } ;
+typedef int PUNICODE_STRING ;
+typedef int * PULONGLONG ;
+typedef int * PULONG ;
+typedef int * PFILE_RECORD_HEADER ;
+typedef TYPE_1__* PDEVICE_EXTENSION ;
+typedef int NTSTATUS ;
+typedef scalar_t__ BOOLEAN ;
+
+
+ int DPRINT (char*,...) ;
+ int * ExAllocateFromNPagedLookasideList (int *) ;
+ int ExFreeToNPagedLookasideList (int *,int *) ;
+ int NT_SUCCESS (int ) ;
+ int NtfsFindMftRecord (TYPE_1__*,int ,int ,int *,int ,scalar_t__,int *) ;
+ int ReadFileRecord (TYPE_1__*,int ,int *) ;
+ int STATUS_INSUFFICIENT_RESOURCES ;
+ int STATUS_SUCCESS ;
+ int TRUE ;
 
 NTSTATUS
 NtfsFindFileAt(PDEVICE_EXTENSION Vcb,
@@ -60,7 +60,7 @@ NtfsFindFileAt(PDEVICE_EXTENSION Vcb,
     }
 
     *FileRecord = ExAllocateFromNPagedLookasideList(&Vcb->FileRecLookasideList);
-    if (*FileRecord == NULL)
+    if (*FileRecord == ((void*)0))
     {
         DPRINT("NtfsFindFileAt: Can't allocate MFT record\n");
         return STATUS_INSUFFICIENT_RESOURCES;

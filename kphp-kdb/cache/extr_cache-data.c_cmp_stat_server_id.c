@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ node_id; scalar_t__ server_id; } ;
-union cache_packed_local_copy_location {TYPE_1__ p; int /*<<< orphan*/  i; } ;
-struct TYPE_4__ {int /*<<< orphan*/  id; } ;
-typedef  TYPE_2__ cache_stat_server_t ;
+union cache_packed_local_copy_location {TYPE_1__ p; int i; } ;
+struct TYPE_4__ {int id; } ;
+typedef TYPE_2__ cache_stat_server_t ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static int cmp_stat_server_id (const void *x, const void *y) {
   cache_stat_server_t *a = *(cache_stat_server_t **) x;

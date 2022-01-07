@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  xcb_key_symbols_t ;
-typedef  int /*<<< orphan*/  xcb_connection_t ;
 
-/* Variables and functions */
- unsigned int GetModifier (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- unsigned int KEY_MODIFIER_ALT ; 
- unsigned int KEY_MODIFIER_CTRL ; 
- unsigned int KEY_MODIFIER_META ; 
- unsigned int KEY_MODIFIER_SHIFT ; 
- int /*<<< orphan*/  XK_Alt_L ; 
- int /*<<< orphan*/  XK_Alt_R ; 
- int /*<<< orphan*/  XK_Control_L ; 
- int /*<<< orphan*/  XK_Control_R ; 
- int /*<<< orphan*/  XK_Meta_L ; 
- int /*<<< orphan*/  XK_Meta_R ; 
- int /*<<< orphan*/  XK_Shift_L ; 
- int /*<<< orphan*/  XK_Shift_R ; 
- int /*<<< orphan*/  XK_Super_L ; 
- int /*<<< orphan*/  XK_Super_R ; 
+
+
+
+typedef int xcb_key_symbols_t ;
+typedef int xcb_connection_t ;
+
+
+ unsigned int GetModifier (int *,int *,int ) ;
+ unsigned int KEY_MODIFIER_ALT ;
+ unsigned int KEY_MODIFIER_CTRL ;
+ unsigned int KEY_MODIFIER_META ;
+ unsigned int KEY_MODIFIER_SHIFT ;
+ int XK_Alt_L ;
+ int XK_Alt_R ;
+ int XK_Control_L ;
+ int XK_Control_R ;
+ int XK_Meta_L ;
+ int XK_Meta_R ;
+ int XK_Shift_L ;
+ int XK_Shift_R ;
+ int XK_Super_L ;
+ int XK_Super_R ;
 
 __attribute__((used)) static unsigned GetX11Modifier( xcb_connection_t *p_connection,
         xcb_key_symbols_t *p_symbols, unsigned i_vlc )

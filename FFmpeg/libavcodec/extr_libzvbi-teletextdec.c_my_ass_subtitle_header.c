@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char uint8_t ;
-struct TYPE_4__ {char* subtitle_header; int /*<<< orphan*/  subtitle_header_size; } ;
-typedef  TYPE_1__ AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_BUG ; 
- int /*<<< orphan*/  ENOMEM ; 
- char* av_asprintf (char*,int,char*,char*,char*) ; 
- int /*<<< orphan*/  av_free (char*) ; 
- int ff_ass_subtitle_header_default (TYPE_1__*) ; 
- int /*<<< orphan*/  strlen (char*) ; 
- char* strstr (char*,char*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef char uint8_t ;
+struct TYPE_4__ {char* subtitle_header; int subtitle_header_size; } ;
+typedef TYPE_1__ AVCodecContext ;
+
+
+ int AVERROR (int ) ;
+ int AVERROR_BUG ;
+ int ENOMEM ;
+ char* av_asprintf (char*,int,char*,char*,char*) ;
+ int av_free (char*) ;
+ int ff_ass_subtitle_header_default (TYPE_1__*) ;
+ int strlen (char*) ;
+ char* strstr (char*,char*) ;
 
 __attribute__((used)) static int my_ass_subtitle_header(AVCodecContext *avctx)
 {
@@ -41,25 +41,25 @@ __attribute__((used)) static int my_ass_subtitle_header(AVCodecContext *avctx)
     new_header = av_asprintf("%.*s%s%s",
         (int)(event_pos - avctx->subtitle_header), avctx->subtitle_header,
         "Style: "
-        "Teletext,"            /* Name */
-        "Monospace,11,"        /* Font{name,size} */
-        "&Hffffff,&Hffffff,&H0,&H0," /* {Primary,Secondary,Outline,Back}Colour */
-        "0,0,0,0,"             /* Bold, Italic, Underline, StrikeOut */
-        "160,100,"             /* Scale{X,Y} */
-        "0,0,"                 /* Spacing, Angle */
-        "3,0.1,0,"             /* BorderStyle, Outline, Shadow */
-        "5,1,1,1,"             /* Alignment, Margin[LRV] */
-        "0\r\n"                /* Encoding */
+        "Teletext,"
+        "Monospace,11,"
+        "&Hffffff,&Hffffff,&H0,&H0,"
+        "0,0,0,0,"
+        "160,100,"
+        "0,0,"
+        "3,0.1,0,"
+        "5,1,1,1,"
+        "0\r\n"
         "Style: "
-        "Subtitle,"            /* Name */
-        "Monospace,16,"        /* Font{name,size} */
-        "&Hffffff,&Hffffff,&H0,&H0," /* {Primary,Secondary,Outline,Back}Colour */
-        "0,0,0,0,"             /* Bold, Italic, Underline, StrikeOut */
-        "100,100,"             /* Scale{X,Y} */
-        "0,0,"                 /* Spacing, Angle */
-        "1,1,1,"               /* BorderStyle, Outline, Shadow */
-        "8,48,48,20,"          /* Alignment, Margin[LRV] */
-        "0\r\n"                /* Encoding */
+        "Subtitle,"
+        "Monospace,16,"
+        "&Hffffff,&Hffffff,&H0,&H0,"
+        "0,0,0,0,"
+        "100,100,"
+        "0,0,"
+        "1,1,1,"
+        "8,48,48,20,"
+        "0\r\n"
         , event_pos);
 
     if (!new_header)

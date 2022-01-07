@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_11__ {TYPE_1__* imdct; } ;
 struct TYPE_10__ {size_t imdct_idx; int imdct_phs; } ;
-struct TYPE_9__ {int /*<<< orphan*/  (* imdct_half ) (TYPE_1__*,float*,float*) ;int /*<<< orphan*/  (* imdct_calc ) (TYPE_1__*,float*,float*) ;} ;
-typedef  TYPE_1__ FFTContext ;
-typedef  TYPE_2__ DBEGroup ;
-typedef  TYPE_3__ DBEContext ;
+struct TYPE_9__ {int (* imdct_half ) (TYPE_1__*,float*,float*) ;int (* imdct_calc ) (TYPE_1__*,float*,float*) ;} ;
+typedef TYPE_1__ FFTContext ;
+typedef TYPE_2__ DBEGroup ;
+typedef TYPE_3__ DBEContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  av_assert0 (int /*<<< orphan*/ ) ; 
- int* imdct_bits_tab ; 
- int /*<<< orphan*/  stub1 (TYPE_1__*,float*,float*) ; 
- int /*<<< orphan*/  stub2 (TYPE_1__*,float*,float*) ; 
- int /*<<< orphan*/  stub3 (TYPE_1__*,float*,float*) ; 
+
+ int av_assert0 (int ) ;
+ int* imdct_bits_tab ;
+ int stub1 (TYPE_1__*,float*,float*) ;
+ int stub2 (TYPE_1__*,float*,float*) ;
+ int stub3 (TYPE_1__*,float*,float*) ;
 
 __attribute__((used)) static void imdct_calc(DBEContext *s, DBEGroup *g, float *result, float *values)
 {
     FFTContext *imdct = &s->imdct[g->imdct_idx];
-    int n   = 1 << imdct_bits_tab[g->imdct_idx];
-    int n2  = n >> 1;
+    int n = 1 << imdct_bits_tab[g->imdct_idx];
+    int n2 = n >> 1;
     int i;
 
     switch (g->imdct_phs) {

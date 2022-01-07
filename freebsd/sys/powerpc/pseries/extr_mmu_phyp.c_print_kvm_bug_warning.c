@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ brokenkvm ; 
- int /*<<< orphan*/  printf (char*) ; 
+ scalar_t__ brokenkvm ;
+ int printf (char*) ;
 
 __attribute__((used)) static void
 print_kvm_bug_warning(void *data)
 {
 
-	if (brokenkvm)
-		printf("WARNING: Running on a broken hypervisor that does "
-		    "not support mandatory H_CLEAR_MOD and H_CLEAR_REF "
-		    "hypercalls. Performance will be suboptimal.\n");
+ if (brokenkvm)
+  printf("WARNING: Running on a broken hypervisor that does "
+      "not support mandatory H_CLEAR_MOD and H_CLEAR_REF "
+      "hypercalls. Performance will be suboptimal.\n");
 }

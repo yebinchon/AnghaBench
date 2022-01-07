@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
 
-/* Variables and functions */
-#define  IPPROTO_AH 131 
-#define  IPPROTO_ESP 130 
-#define  IPPROTO_IPCOMP 129 
-#define  IPPROTO_TCP 128 
- int SADB_SATYPE_AH ; 
- int SADB_SATYPE_ESP ; 
- int SADB_X_SATYPE_IPCOMP ; 
- int SADB_X_SATYPE_TCPSIGNATURE ; 
+
+
+
+typedef int uint8_t ;
+
+
+
+
+
+
+ int SADB_SATYPE_AH ;
+ int SADB_SATYPE_ESP ;
+ int SADB_X_SATYPE_IPCOMP ;
+ int SADB_X_SATYPE_TCPSIGNATURE ;
 
 __attribute__((used)) static uint8_t
 key_proto2satype(uint8_t proto)
 {
-	switch (proto) {
-	case IPPROTO_AH:
-		return SADB_SATYPE_AH;
-	case IPPROTO_ESP:
-		return SADB_SATYPE_ESP;
-	case IPPROTO_IPCOMP:
-		return SADB_X_SATYPE_IPCOMP;
-	case IPPROTO_TCP:
-		return SADB_X_SATYPE_TCPSIGNATURE;
-	default:
-		return 0;
-	}
-	/* NOTREACHED */
+ switch (proto) {
+ case 131:
+  return SADB_SATYPE_AH;
+ case 130:
+  return SADB_SATYPE_ESP;
+ case 129:
+  return SADB_X_SATYPE_IPCOMP;
+ case 128:
+  return SADB_X_SATYPE_TCPSIGNATURE;
+ default:
+  return 0;
+ }
+
 }

@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  isc_result_t ;
-typedef  int /*<<< orphan*/  isc_mem_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOCK (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  REQUIRE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  UNLOCK (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  createlock ; 
- int /*<<< orphan*/  mem_createfunc (size_t,size_t,int /*<<< orphan*/ **,unsigned int) ; 
- int /*<<< orphan*/  stub1 (size_t,size_t,int /*<<< orphan*/ **,unsigned int) ; 
+
+
+
+typedef int isc_result_t ;
+typedef int isc_mem_t ;
+
+
+ int LOCK (int *) ;
+ int REQUIRE (int ) ;
+ int UNLOCK (int *) ;
+ int createlock ;
+ int mem_createfunc (size_t,size_t,int **,unsigned int) ;
+ int stub1 (size_t,size_t,int **,unsigned int) ;
 
 isc_result_t
 isc_mem_create2(size_t init_max_size, size_t target_size, isc_mem_t **mctxp,
-		unsigned int flags)
+  unsigned int flags)
 {
-	isc_result_t result;
+ isc_result_t result;
 
-	LOCK(&createlock);
+ LOCK(&createlock);
 
-	REQUIRE(mem_createfunc != NULL);
-	result = (*mem_createfunc)(init_max_size, target_size, mctxp, flags);
+ REQUIRE(mem_createfunc != ((void*)0));
+ result = (*mem_createfunc)(init_max_size, target_size, mctxp, flags);
 
-	UNLOCK(&createlock);
+ UNLOCK(&createlock);
 
-	return (result);
+ return (result);
 }

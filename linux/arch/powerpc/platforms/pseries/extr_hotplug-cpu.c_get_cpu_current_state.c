@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  enum cpu_state_vals { ____Placeholder_cpu_state_vals } cpu_state_vals ;
 
-/* Variables and functions */
- int /*<<< orphan*/  current_state ; 
- int per_cpu (int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef enum cpu_state_vals { ____Placeholder_cpu_state_vals } cpu_state_vals ;
+
+
+ int current_state ;
+ int per_cpu (int ,int) ;
 
 enum cpu_state_vals get_cpu_current_state(int cpu)
 {
-	return per_cpu(current_state, cpu);
+ return per_cpu(current_state, cpu);
 }

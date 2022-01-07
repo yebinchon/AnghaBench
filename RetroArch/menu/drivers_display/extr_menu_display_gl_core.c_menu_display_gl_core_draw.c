@@ -1,99 +1,99 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_22__   TYPE_8__ ;
-typedef  struct TYPE_21__   TYPE_7__ ;
-typedef  struct TYPE_20__   TYPE_6__ ;
-typedef  struct TYPE_19__   TYPE_5__ ;
-typedef  struct TYPE_18__   TYPE_4__ ;
-typedef  struct TYPE_17__   TYPE_3__ ;
-typedef  struct TYPE_16__   TYPE_2__ ;
-typedef  struct TYPE_15__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_22__ TYPE_8__ ;
+typedef struct TYPE_21__ TYPE_7__ ;
+typedef struct TYPE_20__ TYPE_6__ ;
+typedef struct TYPE_19__ TYPE_5__ ;
+typedef struct TYPE_18__ TYPE_4__ ;
+typedef struct TYPE_17__ TYPE_3__ ;
+typedef struct TYPE_16__ TYPE_2__ ;
+typedef struct TYPE_15__ TYPE_1__ ;
+
+
 struct TYPE_19__ {scalar_t__ userdata; } ;
-typedef  TYPE_5__ video_frame_info_t ;
+typedef TYPE_5__ video_frame_info_t ;
 struct gl_core_buffer_locations {scalar_t__ flat_ubo_vertex; scalar_t__ flat_ubo_fragment; } ;
 struct TYPE_15__ {int id; int backend_data_size; scalar_t__ backend_data; } ;
 struct TYPE_20__ {scalar_t__ prim_type; TYPE_4__* coords; scalar_t__ matrix_data; TYPE_1__ pipeline; scalar_t__ texture; } ;
-typedef  TYPE_6__ menu_display_ctx_draw_t ;
-struct TYPE_21__ {int /*<<< orphan*/  const* data; } ;
-typedef  TYPE_7__ math_matrix_4x4 ;
+typedef TYPE_6__ menu_display_ctx_draw_t ;
+struct TYPE_21__ {int const* data; } ;
+typedef TYPE_7__ math_matrix_4x4 ;
 struct TYPE_16__ {scalar_t__ flat_ubo_vertex; } ;
-struct TYPE_17__ {TYPE_2__ alpha_blend_loc; int /*<<< orphan*/  alpha_blend; struct gl_core_buffer_locations bokeh_loc; int /*<<< orphan*/  bokeh; struct gl_core_buffer_locations snow_loc; int /*<<< orphan*/  snow; struct gl_core_buffer_locations snow_simple_loc; int /*<<< orphan*/  snow_simple; struct gl_core_buffer_locations ribbon_simple_loc; int /*<<< orphan*/  ribbon_simple; struct gl_core_buffer_locations ribbon_loc; int /*<<< orphan*/  ribbon; } ;
+struct TYPE_17__ {TYPE_2__ alpha_blend_loc; int alpha_blend; struct gl_core_buffer_locations bokeh_loc; int bokeh; struct gl_core_buffer_locations snow_loc; int snow; struct gl_core_buffer_locations snow_simple_loc; int snow_simple; struct gl_core_buffer_locations ribbon_simple_loc; int ribbon_simple; struct gl_core_buffer_locations ribbon_loc; int ribbon; } ;
 struct TYPE_22__ {TYPE_3__ pipelines; } ;
-typedef  TYPE_8__ gl_core_t ;
+typedef TYPE_8__ gl_core_t ;
 struct TYPE_18__ {float* vertex; float* tex_coord; float* color; int vertices; } ;
-typedef  scalar_t__ GLuint ;
-typedef  int GLsizei ;
-typedef  int /*<<< orphan*/  GLfloat ;
+typedef scalar_t__ GLuint ;
+typedef int GLsizei ;
+typedef int GLfloat ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GL_ARRAY_BUFFER ; 
- int /*<<< orphan*/  GL_FALSE ; 
- int /*<<< orphan*/  GL_FLOAT ; 
- int /*<<< orphan*/  GL_ONE ; 
- int /*<<< orphan*/  GL_ONE_MINUS_SRC_ALPHA ; 
- int /*<<< orphan*/  GL_SRC_ALPHA ; 
- int /*<<< orphan*/  GL_TEXTURE1 ; 
- int /*<<< orphan*/  GL_TEXTURE_2D ; 
- int /*<<< orphan*/  GL_TRIANGLES ; 
- int /*<<< orphan*/  GL_TRIANGLE_STRIP ; 
- scalar_t__ MENU_DISPLAY_PRIM_TRIANGLES ; 
- scalar_t__ MENU_DISPLAY_PRIM_TRIANGLESTRIP ; 
-#define  VIDEO_SHADER_MENU 132 
-#define  VIDEO_SHADER_MENU_2 131 
-#define  VIDEO_SHADER_MENU_3 130 
-#define  VIDEO_SHADER_MENU_4 129 
-#define  VIDEO_SHADER_MENU_5 128 
- int /*<<< orphan*/  glActiveTexture (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glBindBuffer (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glBindTexture (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  glBlendFunc (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glDisableVertexAttribArray (int) ; 
- int /*<<< orphan*/  glDrawArrays (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  glEnableVertexAttribArray (int) ; 
- int /*<<< orphan*/  glUniform4fv (scalar_t__,int,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  glUseProgram (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glVertexAttribPointer (int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,void*) ; 
- int /*<<< orphan*/  gl_core_bind_scratch_vbo (TYPE_8__*,float const*,int) ; 
- float* menu_display_gl_core_get_default_color () ; 
- scalar_t__ menu_display_gl_core_get_default_mvp (TYPE_5__*) ; 
- float* menu_display_gl_core_get_default_tex_coords () ; 
- float* menu_display_gl_core_get_default_vertices () ; 
- int /*<<< orphan*/  menu_display_gl_core_viewport (TYPE_6__*,TYPE_5__*) ; 
+
+ int GL_ARRAY_BUFFER ;
+ int GL_FALSE ;
+ int GL_FLOAT ;
+ int GL_ONE ;
+ int GL_ONE_MINUS_SRC_ALPHA ;
+ int GL_SRC_ALPHA ;
+ int GL_TEXTURE1 ;
+ int GL_TEXTURE_2D ;
+ int GL_TRIANGLES ;
+ int GL_TRIANGLE_STRIP ;
+ scalar_t__ MENU_DISPLAY_PRIM_TRIANGLES ;
+ scalar_t__ MENU_DISPLAY_PRIM_TRIANGLESTRIP ;
+
+
+
+
+
+ int glActiveTexture (int ) ;
+ int glBindBuffer (int ,int ) ;
+ int glBindTexture (int ,scalar_t__) ;
+ int glBlendFunc (int ,int ) ;
+ int glDisableVertexAttribArray (int) ;
+ int glDrawArrays (int ,int ,int) ;
+ int glEnableVertexAttribArray (int) ;
+ int glUniform4fv (scalar_t__,int,int const*) ;
+ int glUseProgram (int ) ;
+ int glVertexAttribPointer (int,int,int ,int ,int,void*) ;
+ int gl_core_bind_scratch_vbo (TYPE_8__*,float const*,int) ;
+ float* menu_display_gl_core_get_default_color () ;
+ scalar_t__ menu_display_gl_core_get_default_mvp (TYPE_5__*) ;
+ float* menu_display_gl_core_get_default_tex_coords () ;
+ float* menu_display_gl_core_get_default_vertices () ;
+ int menu_display_gl_core_viewport (TYPE_6__*,TYPE_5__*) ;
 
 __attribute__((used)) static void menu_display_gl_core_draw(menu_display_ctx_draw_t *draw,
       video_frame_info_t *video_info)
 {
-   const float *vertex       = NULL;
-   const float *tex_coord    = NULL;
-   const float *color        = NULL;
-   GLuint            texture = 0;
-   gl_core_t *gl             = (gl_core_t*)video_info->userdata;
-   const struct gl_core_buffer_locations *loc = NULL;
+   const float *vertex = ((void*)0);
+   const float *tex_coord = ((void*)0);
+   const float *color = ((void*)0);
+   GLuint texture = 0;
+   gl_core_t *gl = (gl_core_t*)video_info->userdata;
+   const struct gl_core_buffer_locations *loc = ((void*)0);
 
    if (!gl || !draw)
       return;
 
-   texture            = (GLuint)draw->texture;
-   vertex             = draw->coords->vertex;
-   tex_coord          = draw->coords->tex_coord;
-   color              = draw->coords->color;
+   texture = (GLuint)draw->texture;
+   vertex = draw->coords->vertex;
+   tex_coord = draw->coords->tex_coord;
+   color = draw->coords->color;
 
    if (!vertex)
-      vertex          = menu_display_gl_core_get_default_vertices();
+      vertex = menu_display_gl_core_get_default_vertices();
    if (!tex_coord)
-      tex_coord       = menu_display_gl_core_get_default_tex_coords();
+      tex_coord = menu_display_gl_core_get_default_tex_coords();
    if (!color)
-      color           = menu_display_gl_core_get_default_color();
+      color = menu_display_gl_core_get_default_color();
 
    menu_display_gl_core_viewport(draw, video_info);
 
@@ -102,8 +102,8 @@ __attribute__((used)) static void menu_display_gl_core_draw(menu_display_ctx_dra
 
    switch (draw->pipeline.id)
    {
-      case VIDEO_SHADER_MENU:
-      case VIDEO_SHADER_MENU_2:
+      case 132:
+      case 131:
          glBlendFunc(GL_ONE, GL_ONE);
          break;
       default:
@@ -113,36 +113,9 @@ __attribute__((used)) static void menu_display_gl_core_draw(menu_display_ctx_dra
 
    switch (draw->pipeline.id)
    {
-#ifdef HAVE_SHADERPIPELINE
-      case VIDEO_SHADER_MENU:
-         glUseProgram(gl->pipelines.ribbon);
-         loc = &gl->pipelines.ribbon_loc;
-         break;
-
-      case VIDEO_SHADER_MENU_2:
-         glUseProgram(gl->pipelines.ribbon_simple);
-         loc = &gl->pipelines.ribbon_simple_loc;
-         break;
-
-      case VIDEO_SHADER_MENU_3:
-         glUseProgram(gl->pipelines.snow_simple);
-         loc = &gl->pipelines.snow_simple_loc;
-         break;
-
-      case VIDEO_SHADER_MENU_4:
-         glUseProgram(gl->pipelines.snow);
-         loc = &gl->pipelines.snow_loc;
-         break;
-
-      case VIDEO_SHADER_MENU_5:
-         glUseProgram(gl->pipelines.bokeh);
-         loc = &gl->pipelines.bokeh_loc;
-         break;
-#endif
-
       default:
          glUseProgram(gl->pipelines.alpha_blend);
-         loc = NULL;
+         loc = ((void*)0);
          break;
    }
 

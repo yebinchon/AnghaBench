@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  struct Zip* var ;
-struct Zip {struct Tuple* values; int /*<<< orphan*/  iters; } ;
-struct Tuple {int /*<<< orphan*/ * items; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Terminal ; 
- int /*<<< orphan*/  _ ; 
- size_t len (int /*<<< orphan*/ ) ; 
+
+
+
+typedef struct Zip* var ;
+struct Zip {struct Tuple* values; int iters; } ;
+struct Tuple {int * items; } ;
+
+
+ int Terminal ;
+ int _ ;
+ size_t len (int ) ;
 
 var zip_stack(var self) {
   struct Zip* z = self;

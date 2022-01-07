@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct dirent {int dummy; } ;
-struct TYPE_3__ {int /*<<< orphan*/  fd; } ;
-typedef  TYPE_1__ DIR ;
+struct TYPE_3__ {int fd; } ;
+typedef TYPE_1__ DIR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  errno ; 
- int getdents (int /*<<< orphan*/ ,struct dirent*,int) ; 
+
+ int EINVAL ;
+ int errno ;
+ int getdents (int ,struct dirent*,int) ;
 
 int readdir_r( DIR* dir, struct dirent* entry, struct dirent** result ) {
     int error;
 
-    if ( ( dir == NULL ) ||
-         ( entry == NULL ) ) {
+    if ( ( dir == ((void*)0) ) ||
+         ( entry == ((void*)0) ) ) {
         errno = -EINVAL;
         return -1;
     }
@@ -32,7 +32,7 @@ int readdir_r( DIR* dir, struct dirent* entry, struct dirent** result ) {
     error = getdents( dir->fd, entry, sizeof( struct dirent ) );
 
     if ( error == 0 ) {
-        *result = NULL;
+        *result = ((void*)0);
     } else {
         *result = entry;
     }

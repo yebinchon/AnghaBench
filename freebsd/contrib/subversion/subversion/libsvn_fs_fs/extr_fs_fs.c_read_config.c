@@ -1,79 +1,79 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_config_t ;
-struct TYPE_3__ {scalar_t__ format; int max_deltification_walk; int max_linear_deltification; int revprop_pack_size; int block_size; int l2p_page_size; int p2l_page_size; scalar_t__ delta_compression_type; void* fail_stop; int /*<<< orphan*/  memcache; void* verify_before_commit; void* delta_compression_level; void* pack_after_commit; void* compress_packed_revprops; void* deltify_properties; void* deltify_directories; void* rep_sharing_allowed; } ;
-typedef  TYPE_1__ fs_fs_data_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_off_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CONFIG_OPTION_BLOCK_SIZE ; 
- int /*<<< orphan*/  CONFIG_OPTION_COMPRESSION ; 
- int /*<<< orphan*/  CONFIG_OPTION_COMPRESSION_LEVEL ; 
- int /*<<< orphan*/  CONFIG_OPTION_COMPRESS_PACKED_REVPROPS ; 
- int /*<<< orphan*/  CONFIG_OPTION_ENABLE_DIR_DELTIFICATION ; 
- int /*<<< orphan*/  CONFIG_OPTION_ENABLE_PROPS_DELTIFICATION ; 
- int /*<<< orphan*/  CONFIG_OPTION_ENABLE_REP_SHARING ; 
- int /*<<< orphan*/  CONFIG_OPTION_FAIL_STOP ; 
- int /*<<< orphan*/  CONFIG_OPTION_L2P_PAGE_SIZE ; 
- int /*<<< orphan*/  CONFIG_OPTION_MAX_DELTIFICATION_WALK ; 
- int /*<<< orphan*/  CONFIG_OPTION_MAX_LINEAR_DELTIFICATION ; 
- int /*<<< orphan*/  CONFIG_OPTION_P2L_PAGE_SIZE ; 
- int /*<<< orphan*/  CONFIG_OPTION_PACK_AFTER_COMMIT ; 
- int /*<<< orphan*/  CONFIG_OPTION_REVPROP_PACK_SIZE ; 
- int /*<<< orphan*/  CONFIG_OPTION_VERIFY_BEFORE_COMMIT ; 
- int /*<<< orphan*/  CONFIG_SECTION_CACHES ; 
- int /*<<< orphan*/  CONFIG_SECTION_DEBUG ; 
- int /*<<< orphan*/  CONFIG_SECTION_DELTIFICATION ; 
- int /*<<< orphan*/  CONFIG_SECTION_IO ; 
- int /*<<< orphan*/  CONFIG_SECTION_PACKED_REVPROPS ; 
- int /*<<< orphan*/  CONFIG_SECTION_REP_SHARING ; 
- void* FALSE ; 
- int /*<<< orphan*/  MAX (void*,void*) ; 
- void* MIN (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PATH_CONFIG ; 
- void* SVN_DELTA_COMPRESSION_LEVEL_DEFAULT ; 
- int /*<<< orphan*/  SVN_DELTA_COMPRESSION_LEVEL_MAX ; 
- void* SVN_DELTA_COMPRESSION_LEVEL_NONE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_BAD_CONFIG_VALUE ; 
- int SVN_FS_FS_MAX_DELTIFICATION_WALK ; 
- int SVN_FS_FS_MAX_LINEAR_DELTIFICATION ; 
- scalar_t__ SVN_FS_FS__MIN_DELTIFICATION_FORMAT ; 
- scalar_t__ SVN_FS_FS__MIN_LOG_ADDRESSING_FORMAT ; 
- scalar_t__ SVN_FS_FS__MIN_PACKED_FORMAT ; 
- scalar_t__ SVN_FS_FS__MIN_PACKED_REVPROP_FORMAT ; 
- scalar_t__ SVN_FS_FS__MIN_REP_SHARING_FORMAT ; 
- scalar_t__ SVN_FS_FS__MIN_SVNDIFF1_FORMAT ; 
- scalar_t__ SVN_FS_FS__MIN_SVNDIFF2_FORMAT ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- void* TRUE ; 
- int /*<<< orphan*/  _ (char*) ; 
- scalar_t__ compression_type_lz4 ; 
- scalar_t__ compression_type_none ; 
- void* compression_type_zlib ; 
- int /*<<< orphan*/  parse_compression_option (scalar_t__*,void**,char const*) ; 
- int /*<<< orphan*/  svn_cache__make_memcache_from_config (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_config_get (int /*<<< orphan*/ *,char const**,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_config_get_bool (int /*<<< orphan*/ *,void**,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*) ; 
- int /*<<< orphan*/  svn_config_get_int64 (int /*<<< orphan*/ *,int*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  svn_config_read3 (int /*<<< orphan*/ **,int /*<<< orphan*/ ,void*,void*,void*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_cstring_atoi (void**,char const*) ; 
- int /*<<< orphan*/  svn_dirent_join (char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_error_create (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  verify_block_size (int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int svn_error_t ;
+typedef int svn_config_t ;
+struct TYPE_3__ {scalar_t__ format; int max_deltification_walk; int max_linear_deltification; int revprop_pack_size; int block_size; int l2p_page_size; int p2l_page_size; scalar_t__ delta_compression_type; void* fail_stop; int memcache; void* verify_before_commit; void* delta_compression_level; void* pack_after_commit; void* compress_packed_revprops; void* deltify_properties; void* deltify_directories; void* rep_sharing_allowed; } ;
+typedef TYPE_1__ fs_fs_data_t ;
+typedef int apr_pool_t ;
+typedef int apr_off_t ;
+
+
+ int CONFIG_OPTION_BLOCK_SIZE ;
+ int CONFIG_OPTION_COMPRESSION ;
+ int CONFIG_OPTION_COMPRESSION_LEVEL ;
+ int CONFIG_OPTION_COMPRESS_PACKED_REVPROPS ;
+ int CONFIG_OPTION_ENABLE_DIR_DELTIFICATION ;
+ int CONFIG_OPTION_ENABLE_PROPS_DELTIFICATION ;
+ int CONFIG_OPTION_ENABLE_REP_SHARING ;
+ int CONFIG_OPTION_FAIL_STOP ;
+ int CONFIG_OPTION_L2P_PAGE_SIZE ;
+ int CONFIG_OPTION_MAX_DELTIFICATION_WALK ;
+ int CONFIG_OPTION_MAX_LINEAR_DELTIFICATION ;
+ int CONFIG_OPTION_P2L_PAGE_SIZE ;
+ int CONFIG_OPTION_PACK_AFTER_COMMIT ;
+ int CONFIG_OPTION_REVPROP_PACK_SIZE ;
+ int CONFIG_OPTION_VERIFY_BEFORE_COMMIT ;
+ int CONFIG_SECTION_CACHES ;
+ int CONFIG_SECTION_DEBUG ;
+ int CONFIG_SECTION_DELTIFICATION ;
+ int CONFIG_SECTION_IO ;
+ int CONFIG_SECTION_PACKED_REVPROPS ;
+ int CONFIG_SECTION_REP_SHARING ;
+ void* FALSE ;
+ int MAX (void*,void*) ;
+ void* MIN (int ,int ) ;
+ int PATH_CONFIG ;
+ void* SVN_DELTA_COMPRESSION_LEVEL_DEFAULT ;
+ int SVN_DELTA_COMPRESSION_LEVEL_MAX ;
+ void* SVN_DELTA_COMPRESSION_LEVEL_NONE ;
+ int SVN_ERR (int ) ;
+ int SVN_ERR_BAD_CONFIG_VALUE ;
+ int SVN_FS_FS_MAX_DELTIFICATION_WALK ;
+ int SVN_FS_FS_MAX_LINEAR_DELTIFICATION ;
+ scalar_t__ SVN_FS_FS__MIN_DELTIFICATION_FORMAT ;
+ scalar_t__ SVN_FS_FS__MIN_LOG_ADDRESSING_FORMAT ;
+ scalar_t__ SVN_FS_FS__MIN_PACKED_FORMAT ;
+ scalar_t__ SVN_FS_FS__MIN_PACKED_REVPROP_FORMAT ;
+ scalar_t__ SVN_FS_FS__MIN_REP_SHARING_FORMAT ;
+ scalar_t__ SVN_FS_FS__MIN_SVNDIFF1_FORMAT ;
+ scalar_t__ SVN_FS_FS__MIN_SVNDIFF2_FORMAT ;
+ int * SVN_NO_ERROR ;
+ void* TRUE ;
+ int _ (char*) ;
+ scalar_t__ compression_type_lz4 ;
+ scalar_t__ compression_type_none ;
+ void* compression_type_zlib ;
+ int parse_compression_option (scalar_t__*,void**,char const*) ;
+ int svn_cache__make_memcache_from_config (int *,int *,int *,int *) ;
+ int svn_config_get (int *,char const**,int ,int ,int *) ;
+ int svn_config_get_bool (int *,void**,int ,int ,void*) ;
+ int svn_config_get_int64 (int *,int*,int ,int ,int) ;
+ int svn_config_read3 (int **,int ,void*,void*,void*,int *) ;
+ int svn_cstring_atoi (void**,char const*) ;
+ int svn_dirent_join (char const*,int ,int *) ;
+ int * svn_error_create (int ,int *,int ) ;
+ int verify_block_size (int,int,int ,int *) ;
 
 __attribute__((used)) static svn_error_t *
 read_config(fs_fs_data_t *ffd,
@@ -87,7 +87,7 @@ read_config(fs_fs_data_t *ffd,
                            svn_dirent_join(fs_path, PATH_CONFIG, scratch_pool),
                            FALSE, FALSE, FALSE, scratch_pool));
 
-  /* Initialize ffd->rep_sharing_allowed. */
+
   if (ffd->format >= SVN_FS_FS__MIN_REP_SHARING_FORMAT)
     SVN_ERR(svn_config_get_bool(config, &ffd->rep_sharing_allowed,
                                 CONFIG_SECTION_REP_SHARING,
@@ -95,7 +95,7 @@ read_config(fs_fs_data_t *ffd,
   else
     ffd->rep_sharing_allowed = FALSE;
 
-  /* Initialize deltification settings in ffd. */
+
   if (ffd->format >= SVN_FS_FS__MIN_DELTIFICATION_FORMAT)
     {
       SVN_ERR(svn_config_get_bool(config, &ffd->deltify_directories,
@@ -123,7 +123,7 @@ read_config(fs_fs_data_t *ffd,
       ffd->max_linear_deltification = SVN_FS_FS_MAX_LINEAR_DELTIFICATION;
     }
 
-  /* Initialize revprop packing settings in ffd. */
+
   if (ffd->format >= SVN_FS_FS__MIN_PACKED_REVPROP_FORMAT)
     {
       SVN_ERR(svn_config_get_bool(config, &ffd->compress_packed_revprops,
@@ -160,9 +160,9 @@ read_config(fs_fs_data_t *ffd,
                                    CONFIG_OPTION_P2L_PAGE_SIZE,
                                    0x400));
 
-      /* Don't accept unreasonable or illegal values.
-       * Block size and P2L page size are in kbytes;
-       * L2P blocks are arrays of apr_off_t. */
+
+
+
       SVN_ERR(verify_block_size(ffd->block_size, 0x400,
                                 CONFIG_OPTION_BLOCK_SIZE, scratch_pool));
       SVN_ERR(verify_block_size(ffd->p2l_page_size, 0x400,
@@ -170,17 +170,17 @@ read_config(fs_fs_data_t *ffd,
       SVN_ERR(verify_block_size(ffd->l2p_page_size, sizeof(apr_off_t),
                                 CONFIG_OPTION_L2P_PAGE_SIZE, scratch_pool));
 
-      /* convert kBytes to bytes */
+
       ffd->block_size *= 0x400;
       ffd->p2l_page_size *= 0x400;
-      /* L2P pages are in entries - not in (k)Bytes */
+
     }
   else
     {
-      /* should be irrelevant but we initialize them anyway */
-      ffd->block_size = 0x1000; /* Matches default APR file buffer size. */
-      ffd->l2p_page_size = 0x2000;    /* Matches above default. */
-      ffd->p2l_page_size = 0x100000;  /* Matches above default in bytes. */
+
+      ffd->block_size = 0x1000;
+      ffd->l2p_page_size = 0x2000;
+      ffd->p2l_page_size = 0x100000;
     }
 
   if (ffd->format >= SVN_FS_FS__MIN_PACKED_FORMAT)
@@ -195,7 +195,7 @@ read_config(fs_fs_data_t *ffd,
       ffd->pack_after_commit = FALSE;
     }
 
-  /* Initialize compression settings in ffd. */
+
   if (ffd->format >= SVN_FS_FS__MIN_DELTIFICATION_FORMAT)
     {
       const char *compression_val;
@@ -203,13 +203,13 @@ read_config(fs_fs_data_t *ffd,
 
       svn_config_get(config, &compression_val,
                      CONFIG_SECTION_DELTIFICATION,
-                     CONFIG_OPTION_COMPRESSION, NULL);
+                     CONFIG_OPTION_COMPRESSION, ((void*)0));
       svn_config_get(config, &compression_level_val,
                      CONFIG_SECTION_DELTIFICATION,
-                     CONFIG_OPTION_COMPRESSION_LEVEL, NULL);
+                     CONFIG_OPTION_COMPRESSION_LEVEL, ((void*)0));
       if (compression_val && compression_level_val)
         {
-          return svn_error_create(SVN_ERR_BAD_CONFIG_VALUE, NULL,
+          return svn_error_create(SVN_ERR_BAD_CONFIG_VALUE, ((void*)0),
                                   _("The 'compression' and 'compression-level' "
                                     "config options are mutually exclusive"));
         }
@@ -221,14 +221,14 @@ read_config(fs_fs_data_t *ffd,
           if (ffd->delta_compression_type == compression_type_lz4 &&
               ffd->format < SVN_FS_FS__MIN_SVNDIFF2_FORMAT)
             {
-              return svn_error_create(SVN_ERR_BAD_CONFIG_VALUE, NULL,
+              return svn_error_create(SVN_ERR_BAD_CONFIG_VALUE, ((void*)0),
                                       _("Compression type 'lz4' requires "
                                         "filesystem format 8 or higher"));
             }
         }
       else if (compression_level_val)
         {
-          /* Handle the deprecated 'compression-level' option. */
+
           ffd->delta_compression_type = compression_type_zlib;
           SVN_ERR(svn_cstring_atoi(&ffd->delta_compression_level,
                                    compression_level_val));
@@ -239,8 +239,8 @@ read_config(fs_fs_data_t *ffd,
         }
       else
         {
-          /* Nothing specified explicitly, use the default settings:
-           * LZ4 compression for formats supporting it and zlib otherwise. */
+
+
           if (ffd->format >= SVN_FS_FS__MIN_SVNDIFF2_FORMAT)
             ffd->delta_compression_type = compression_type_lz4;
           else
@@ -260,19 +260,19 @@ read_config(fs_fs_data_t *ffd,
       ffd->delta_compression_level = SVN_DELTA_COMPRESSION_LEVEL_NONE;
     }
 
-#ifdef SVN_DEBUG
-  SVN_ERR(svn_config_get_bool(config, &ffd->verify_before_commit,
-                              CONFIG_SECTION_DEBUG,
-                              CONFIG_OPTION_VERIFY_BEFORE_COMMIT,
-                              TRUE));
-#else
+
+
+
+
+
+
   SVN_ERR(svn_config_get_bool(config, &ffd->verify_before_commit,
                               CONFIG_SECTION_DEBUG,
                               CONFIG_OPTION_VERIFY_BEFORE_COMMIT,
                               FALSE));
-#endif
 
-  /* memcached configuration */
+
+
   SVN_ERR(svn_cache__make_memcache_from_config(&ffd->memcache, config,
                                                result_pool, scratch_pool));
 

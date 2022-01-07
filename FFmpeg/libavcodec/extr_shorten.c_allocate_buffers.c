@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint64_t ;
-typedef  int /*<<< orphan*/  int32_t ;
-struct TYPE_3__ {int channels; int blocksize; int nwrap; scalar_t__* coeffs; scalar_t__** decoded_base; scalar_t__** decoded; int /*<<< orphan*/  nmean; scalar_t__** offset; int /*<<< orphan*/  avctx; } ;
-typedef  TYPE_1__ ShortenContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int FFMAX (int,int /*<<< orphan*/ ) ; 
- int UINT_MAX ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int av_reallocp_array (scalar_t__**,int,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint64_t ;
+typedef int int32_t ;
+struct TYPE_3__ {int channels; int blocksize; int nwrap; scalar_t__* coeffs; scalar_t__** decoded_base; scalar_t__** decoded; int nmean; scalar_t__** offset; int avctx; } ;
+typedef TYPE_1__ ShortenContext ;
+
+
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ int FFMAX (int,int ) ;
+ int UINT_MAX ;
+ int av_log (int ,int ,char*) ;
+ int av_reallocp_array (scalar_t__**,int,int) ;
 
 __attribute__((used)) static int allocate_buffers(ShortenContext *s)
 {

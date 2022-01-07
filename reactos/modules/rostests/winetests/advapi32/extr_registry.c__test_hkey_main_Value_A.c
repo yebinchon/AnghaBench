@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char* LPCSTR ;
-typedef  int DWORD ;
-typedef  int BYTE ;
 
-/* Variables and functions */
- int ERROR_CALL_NOT_IMPLEMENTED ; 
- int ERROR_SUCCESS ; 
- int GLE ; 
- int GetLastError () ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*) ; 
- int REG_SZ ; 
- int RegQueryValueExA (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *,int*,int*,int*) ; 
- int /*<<< orphan*/  SetLastError (int) ; 
- int /*<<< orphan*/  hkey_main ; 
- int /*<<< orphan*/  lok (int,char*,int,...) ; 
- int lstrlenA (char*) ; 
- scalar_t__ memcmp (int*,char*,int) ; 
- int /*<<< orphan*/  memset (int*,int,int) ; 
- int /*<<< orphan*/  ok (int,char*,int) ; 
- int /*<<< orphan*/  wine_debugstr_an (char*,int) ; 
+
+
+
+typedef char* LPCSTR ;
+typedef int DWORD ;
+typedef int BYTE ;
+
+
+ int ERROR_CALL_NOT_IMPLEMENTED ;
+ int ERROR_SUCCESS ;
+ int GLE ;
+ int GetLastError () ;
+ int GetProcessHeap () ;
+ int* HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,int*) ;
+ int REG_SZ ;
+ int RegQueryValueExA (int ,char*,int *,int*,int*,int*) ;
+ int SetLastError (int) ;
+ int hkey_main ;
+ int lok (int,char*,int,...) ;
+ int lstrlenA (char*) ;
+ scalar_t__ memcmp (int*,char*,int) ;
+ int memset (int*,int,int) ;
+ int ok (int,char*,int) ;
+ int wine_debugstr_an (char*,int) ;
 
 __attribute__((used)) static void _test_hkey_main_Value_A(int line, LPCSTR name, LPCSTR string,
                                    DWORD full_byte_len)
@@ -42,14 +42,14 @@ __attribute__((used)) static void _test_hkey_main_Value_A(int line, LPCSTR name,
 
     type=0xdeadbeef;
     cbData=0xdeadbeef;
-    /* When successful RegQueryValueExA() leaves GLE as is,
-     * so we must reset it to detect unimplemented functions.
-     */
+
+
+
     SetLastError(0xdeadbeef);
-    ret = RegQueryValueExA(hkey_main, name, NULL, &type, NULL, &cbData);
+    ret = RegQueryValueExA(hkey_main, name, ((void*)0), &type, ((void*)0), &cbData);
     GLE = GetLastError();
     lok(ret == ERROR_SUCCESS, "RegQueryValueExA/1 failed: %d, GLE=%d\n", ret, GLE);
-    /* It is wrong for the Ansi version to not be implemented */
+
     ok(GLE == 0xdeadbeef, "RegQueryValueExA set GLE = %u\n", GLE);
     if(GLE == ERROR_CALL_NOT_IMPLEMENTED) return;
 
@@ -60,12 +60,12 @@ __attribute__((used)) static void _test_hkey_main_Value_A(int line, LPCSTR name,
     value = HeapAlloc(GetProcessHeap(), 0, cbData+1);
     memset(value, 0xbd, cbData+1);
     type=0xdeadbeef;
-    ret = RegQueryValueExA(hkey_main, name, NULL, &type, value, &cbData);
+    ret = RegQueryValueExA(hkey_main, name, ((void*)0), &type, value, &cbData);
     GLE = GetLastError();
     lok(ret == ERROR_SUCCESS, "RegQueryValueExA/2 failed: %d, GLE=%d\n", ret, GLE);
     if (!string)
     {
-        /* When cbData == 0, RegQueryValueExA() should not modify the buffer */
+
         lok(*value == 0xbd, "RegQueryValueExA overflowed: cbData=%u *value=%02x\n", cbData, *value);
     }
     else

@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct stat {int /*<<< orphan*/  st_mode; } ;
+
+
+
+
+struct stat {int st_mode; } ;
 struct jv_parser {int dummy; } ;
-typedef  int /*<<< orphan*/  jv ;
-typedef  int /*<<< orphan*/  buf ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef int jv ;
+typedef int buf ;
+typedef int FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  O_RDONLY ; 
- scalar_t__ S_ISDIR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  errno ; 
- scalar_t__ fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fdopen (int,char*) ; 
- int /*<<< orphan*/  feof (int /*<<< orphan*/ *) ; 
- int ferror (int /*<<< orphan*/ *) ; 
- size_t fread (char*,int,int,int /*<<< orphan*/ *) ; 
- int fstat (int,struct stat*) ; 
- int /*<<< orphan*/  jv_array () ; 
- int /*<<< orphan*/  jv_array_append (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jv_copy (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jv_free (int /*<<< orphan*/ ) ; 
- scalar_t__ jv_invalid_has_msg (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jv_invalid_with_msg (int /*<<< orphan*/ ) ; 
- scalar_t__ jv_is_valid (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jv_parser_free (struct jv_parser*) ; 
- struct jv_parser* jv_parser_new (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jv_parser_next (struct jv_parser*) ; 
- int /*<<< orphan*/  jv_parser_set_buf (struct jv_parser*,char*,size_t,int) ; 
- int /*<<< orphan*/  jv_string (char*) ; 
- int /*<<< orphan*/  jv_string_append_buf (int /*<<< orphan*/ ,char*,size_t) ; 
- int /*<<< orphan*/  jv_string_fmt (char*,char const*,...) ; 
- scalar_t__ jvp_utf8_backtrack (char*,char*,int*) ; 
- int open (char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strerror (int /*<<< orphan*/ ) ; 
+
+ int O_RDONLY ;
+ scalar_t__ S_ISDIR (int ) ;
+ int close (int) ;
+ int errno ;
+ scalar_t__ fclose (int *) ;
+ int * fdopen (int,char*) ;
+ int feof (int *) ;
+ int ferror (int *) ;
+ size_t fread (char*,int,int,int *) ;
+ int fstat (int,struct stat*) ;
+ int jv_array () ;
+ int jv_array_append (int ,int ) ;
+ int jv_copy (int ) ;
+ int jv_free (int ) ;
+ scalar_t__ jv_invalid_has_msg (int ) ;
+ int jv_invalid_with_msg (int ) ;
+ scalar_t__ jv_is_valid (int ) ;
+ int jv_parser_free (struct jv_parser*) ;
+ struct jv_parser* jv_parser_new (int ) ;
+ int jv_parser_next (struct jv_parser*) ;
+ int jv_parser_set_buf (struct jv_parser*,char*,size_t,int) ;
+ int jv_string (char*) ;
+ int jv_string_append_buf (int ,char*,size_t) ;
+ int jv_string_fmt (char*,char const*,...) ;
+ scalar_t__ jvp_utf8_backtrack (char*,char*,int*) ;
+ int open (char const*,int ) ;
+ int strerror (int ) ;
 
 jv jv_load_file(const char* filename, int raw) {
   struct stat sb;
@@ -60,7 +60,7 @@ jv jv_load_file(const char* filename, int raw) {
                                              "It's a directory"));
   }
   FILE* file = fdopen(fd, "r");
-  struct jv_parser* parser = NULL;
+  struct jv_parser* parser = ((void*)0);
   jv data;
   if (!file) {
     close(fd);
@@ -75,9 +75,9 @@ jv jv_load_file(const char* filename, int raw) {
     parser = jv_parser_new(0);
   }
 
-  // To avoid mangling UTF-8 multi-byte sequences that cross the end of our read
-  // buffer, we need to be able to read the remainder of a sequence and add that
-  // before appending.
+
+
+
   const int max_utf8_len = 4;
   char buf[4096+max_utf8_len];
   while (!feof(file) && !ferror(file)) {

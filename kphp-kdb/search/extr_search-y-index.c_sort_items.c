@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct item {int extra; int /*<<< orphan*/  rates; int /*<<< orphan*/  str; } ;
 
-/* Variables and functions */
- int FLAG_DELETED ; 
- int ITEMS_HASH_PRIME ; 
- struct item** Items ; 
- int /*<<< orphan*/  assert (int) ; 
- int del_items ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,int) ; 
- int /*<<< orphan*/  qsort_i (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  stderr ; 
- int tot_items ; 
- int verbosity ; 
+
+
+
+struct item {int extra; int rates; int str; } ;
+
+
+ int FLAG_DELETED ;
+ int ITEMS_HASH_PRIME ;
+ struct item** Items ;
+ int assert (int) ;
+ int del_items ;
+ int fprintf (int ,char*,int,int) ;
+ int qsort_i (int ,int) ;
+ int stderr ;
+ int tot_items ;
+ int verbosity ;
 
 void sort_items (void) {
   int i, j = 0;

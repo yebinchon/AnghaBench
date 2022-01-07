@@ -1,31 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/ * pidfile ; 
- int /*<<< orphan*/  stderr ; 
- int unlink (int /*<<< orphan*/ *) ; 
+ int fprintf (int ,char*) ;
+ int * pidfile ;
+ int stderr ;
+ int unlink (int *) ;
 
 __attribute__((used)) static void
 remove_pidfile()
 {
-	int error;
+ int error;
 
-	if (pidfile == NULL)
-		return;
+ if (pidfile == ((void*)0))
+  return;
 
-	error = unlink(pidfile);
-	if (error < 0)
-		fprintf(stderr, "Failed to remove pidfile\n");
+ error = unlink(pidfile);
+ if (error < 0)
+  fprintf(stderr, "Failed to remove pidfile\n");
 }

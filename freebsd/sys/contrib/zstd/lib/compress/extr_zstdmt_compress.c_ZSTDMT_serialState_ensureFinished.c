@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {unsigned int nextJobID; int /*<<< orphan*/  mutex; int /*<<< orphan*/  ldmWindowMutex; int /*<<< orphan*/  ldmWindowCond; int /*<<< orphan*/  ldmWindow; int /*<<< orphan*/  cond; } ;
-typedef  TYPE_1__ serialState_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEBUGLOG (int,char*,unsigned int) ; 
- int /*<<< orphan*/  ZSTD_PTHREAD_MUTEX_LOCK (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ZSTD_isError (size_t) ; 
- int /*<<< orphan*/  ZSTD_pthread_cond_broadcast (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ZSTD_pthread_cond_signal (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ZSTD_pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ZSTD_window_clear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {unsigned int nextJobID; int mutex; int ldmWindowMutex; int ldmWindowCond; int ldmWindow; int cond; } ;
+typedef TYPE_1__ serialState_t ;
+
+
+ int DEBUGLOG (int,char*,unsigned int) ;
+ int ZSTD_PTHREAD_MUTEX_LOCK (int *) ;
+ int ZSTD_isError (size_t) ;
+ int ZSTD_pthread_cond_broadcast (int *) ;
+ int ZSTD_pthread_cond_signal (int *) ;
+ int ZSTD_pthread_mutex_unlock (int *) ;
+ int ZSTD_window_clear (int *) ;
+ int assert (int ) ;
 
 __attribute__((used)) static void ZSTDMT_serialState_ensureFinished(serialState_t* serialState,
                                               unsigned jobID, size_t cSize)

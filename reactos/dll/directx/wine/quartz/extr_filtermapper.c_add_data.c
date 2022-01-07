@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct Vector {int current; int capacity; int /*<<< orphan*/ * pData; } ;
-typedef  int /*<<< orphan*/  const* LPBYTE ;
-typedef  int /*<<< orphan*/  BYTE ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * CoTaskMemAlloc (int) ; 
- int /*<<< orphan*/  CoTaskMemFree (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int) ; 
+
+
+
+struct Vector {int current; int capacity; int * pData; } ;
+typedef int const* LPBYTE ;
+typedef int BYTE ;
+
+
+ int * CoTaskMemAlloc (int) ;
+ int CoTaskMemFree (int const*) ;
+ int memcpy (int *,int const*,int) ;
 
 __attribute__((used)) static int add_data(struct Vector * v, const BYTE * pData, int size)
 {

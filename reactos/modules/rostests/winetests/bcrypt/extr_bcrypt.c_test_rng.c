@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  len ;
-typedef  int ULONG ;
-typedef  int /*<<< orphan*/  UCHAR ;
-typedef  scalar_t__ NTSTATUS ;
-typedef  int /*<<< orphan*/ * BCRYPT_ALG_HANDLE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BCRYPT_OBJECT_LENGTH ; 
- int /*<<< orphan*/  BCRYPT_RNG_ALGORITHM ; 
- scalar_t__ BCryptCloseAlgorithmProvider (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ BCryptGenRandom (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- scalar_t__ BCryptGetProperty (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int*,int /*<<< orphan*/ ) ; 
- scalar_t__ BCryptOpenAlgorithmProvider (int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MS_PRIMITIVE_PROVIDER ; 
- scalar_t__ STATUS_NOT_SUPPORTED ; 
- scalar_t__ STATUS_SUCCESS ; 
- int /*<<< orphan*/  memcmp (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  test_alg_name (int /*<<< orphan*/ *,char*) ; 
+
+
+
+typedef int len ;
+typedef int ULONG ;
+typedef int UCHAR ;
+typedef scalar_t__ NTSTATUS ;
+typedef int * BCRYPT_ALG_HANDLE ;
+
+
+ int BCRYPT_OBJECT_LENGTH ;
+ int BCRYPT_RNG_ALGORITHM ;
+ scalar_t__ BCryptCloseAlgorithmProvider (int *,int ) ;
+ scalar_t__ BCryptGenRandom (int *,int *,int,int ) ;
+ scalar_t__ BCryptGetProperty (int *,int ,int *,int,int*,int ) ;
+ scalar_t__ BCryptOpenAlgorithmProvider (int **,int ,int ,int ) ;
+ int MS_PRIMITIVE_PROVIDER ;
+ scalar_t__ STATUS_NOT_SUPPORTED ;
+ scalar_t__ STATUS_SUCCESS ;
+ int memcmp (int *,int *,int) ;
+ int memset (int *,int ,int) ;
+ int ok (int,char*,...) ;
+ int test_alg_name (int *,char*) ;
 
 __attribute__((used)) static void test_rng(void)
 {
@@ -38,10 +38,10 @@ __attribute__((used)) static void test_rng(void)
     UCHAR buf[16];
     NTSTATUS ret;
 
-    alg = NULL;
+    alg = ((void*)0);
     ret = BCryptOpenAlgorithmProvider(&alg, BCRYPT_RNG_ALGORITHM, MS_PRIMITIVE_PROVIDER, 0);
     ok(ret == STATUS_SUCCESS, "got %08x\n", ret);
-    ok(alg != NULL, "alg not set\n");
+    ok(alg != ((void*)0), "alg not set\n");
 
     len = size = 0xdeadbeef;
     ret = BCryptGetProperty(alg, BCRYPT_OBJECT_LENGTH, (UCHAR *)&len, sizeof(len), &size, 0);

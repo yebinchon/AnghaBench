@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IO_OUTPUT ; 
- int /*<<< orphan*/  LUA_REGISTRYINDEX ; 
- int f_close (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_getfield (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ lua_isnone (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int lua_State ;
+
+
+ int IO_OUTPUT ;
+ int LUA_REGISTRYINDEX ;
+ int f_close (int *) ;
+ int lua_getfield (int *,int ,int ) ;
+ scalar_t__ lua_isnone (int *,int) ;
 
 __attribute__((used)) static int io_close (lua_State *L) {
-  if (lua_isnone(L, 1))  /* no argument? */
-    lua_getfield(L, LUA_REGISTRYINDEX, IO_OUTPUT);  /* use standard output */
+  if (lua_isnone(L, 1))
+    lua_getfield(L, LUA_REGISTRYINDEX, IO_OUTPUT);
   return f_close(L);
 }

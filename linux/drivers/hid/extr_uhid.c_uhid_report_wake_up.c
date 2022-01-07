@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ u32 ;
+
+
+
+
+typedef scalar_t__ u32 ;
 struct uhid_event {scalar_t__ type; } ;
-struct uhid_device {scalar_t__ report_type; scalar_t__ report_id; int report_running; int /*<<< orphan*/  qlock; int /*<<< orphan*/  report_wait; int /*<<< orphan*/  report_buf; } ;
+struct uhid_device {scalar_t__ report_type; scalar_t__ report_id; int report_running; int qlock; int report_wait; int report_buf; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,struct uhid_event const*,int) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  wake_up_interruptible (int /*<<< orphan*/ *) ; 
+
+ int memcpy (int *,struct uhid_event const*,int) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
+ int wake_up_interruptible (int *) ;
 
 __attribute__((used)) static void uhid_report_wake_up(struct uhid_device *uhid, u32 id,
-				const struct uhid_event *ev)
+    const struct uhid_event *ev)
 {
-	unsigned long flags;
+ unsigned long flags;
 
-	spin_lock_irqsave(&uhid->qlock, flags);
+ spin_lock_irqsave(&uhid->qlock, flags);
 
-	/* id for old report; drop it silently */
-	if (uhid->report_type != ev->type || uhid->report_id != id)
-		goto unlock;
-	if (!uhid->report_running)
-		goto unlock;
 
-	memcpy(&uhid->report_buf, ev, sizeof(*ev));
-	uhid->report_running = false;
-	wake_up_interruptible(&uhid->report_wait);
+ if (uhid->report_type != ev->type || uhid->report_id != id)
+  goto unlock;
+ if (!uhid->report_running)
+  goto unlock;
+
+ memcpy(&uhid->report_buf, ev, sizeof(*ev));
+ uhid->report_running = 0;
+ wake_up_interruptible(&uhid->report_wait);
 
 unlock:
-	spin_unlock_irqrestore(&uhid->qlock, flags);
+ spin_unlock_irqrestore(&uhid->qlock, flags);
 }

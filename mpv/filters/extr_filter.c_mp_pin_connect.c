@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct mp_pin {scalar_t__ dir; struct mp_pin* user_conn; } ;
 
-/* Variables and functions */
- scalar_t__ MP_PIN_IN ; 
- scalar_t__ MP_PIN_OUT ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  init_connection (struct mp_pin*) ; 
- int /*<<< orphan*/  mp_pin_disconnect (struct mp_pin*) ; 
+
+ scalar_t__ MP_PIN_IN ;
+ scalar_t__ MP_PIN_OUT ;
+ int assert (int) ;
+ int init_connection (struct mp_pin*) ;
+ int mp_pin_disconnect (struct mp_pin*) ;
 
 void mp_pin_connect(struct mp_pin *dst, struct mp_pin *src)
 {

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int insert_type_t ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int insert_type_t ;
 struct TYPE_5__ {struct TYPE_5__* child; struct TYPE_5__* next; } ;
-typedef  TYPE_1__ ContentItem ;
+typedef TYPE_1__ ContentItem ;
 
-/* Variables and functions */
-#define  INSERT_CHILD 129 
-#define  INSERT_NEXT 128 
+
+
+
 
 __attribute__((used)) static ContentItem *insert_item(ContentItem *item, ContentItem *new_item, insert_type_t insert_type)
 {
@@ -28,10 +28,10 @@ __attribute__((used)) static ContentItem *insert_item(ContentItem *item, Content
         return item;
 
     switch(insert_type) {
-    case INSERT_NEXT:
+    case 128:
         item->next = new_item;
         return new_item;
-    case INSERT_CHILD:
+    case 129:
         if(item->child) {
             ContentItem *iter = item->child;
             while(iter->next)
@@ -43,5 +43,5 @@ __attribute__((used)) static ContentItem *insert_item(ContentItem *item, Content
         return item;
     }
 
-    return NULL;
+    return ((void*)0);
 }

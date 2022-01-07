@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct firmware {scalar_t__ size; scalar_t__ data; } ;
-struct common_firmware_header {int /*<<< orphan*/  size_bytes; } ;
+struct common_firmware_header {int size_bytes; } ;
 
-/* Variables and functions */
- int EINVAL ; 
- scalar_t__ le32_to_cpu (int /*<<< orphan*/ ) ; 
+
+ int EINVAL ;
+ scalar_t__ le32_to_cpu (int ) ;
 
 int radeon_ucode_validate(const struct firmware *fw)
 {
-	const struct common_firmware_header *hdr =
-		(const struct common_firmware_header *)fw->data;
+ const struct common_firmware_header *hdr =
+  (const struct common_firmware_header *)fw->data;
 
-	if (fw->size == le32_to_cpu(hdr->size_bytes))
-		return 0;
+ if (fw->size == le32_to_cpu(hdr->size_bytes))
+  return 0;
 
-	return -EINVAL;
+ return -EINVAL;
 }

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_3__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
+
+
+typedef struct TYPE_5__ TYPE_3__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
 struct TYPE_5__ {int algorithm_mkey; int algorithm_auth; int algorithm_enc; int algorithm_mac; } ;
-struct TYPE_4__ {struct TYPE_4__* next; int /*<<< orphan*/ * cipher; } ;
-typedef  int /*<<< orphan*/  SSL_CIPHER ;
-typedef  TYPE_1__ CIPHER_ORDER ;
+struct TYPE_4__ {struct TYPE_4__* next; int * cipher; } ;
+typedef int SSL_CIPHER ;
+typedef TYPE_1__ CIPHER_ORDER ;
 
-/* Variables and functions */
- TYPE_3__* cipher_aliases ; 
+
+ TYPE_3__* cipher_aliases ;
 
 __attribute__((used)) static void ssl_cipher_collect_aliases(const SSL_CIPHER **ca_list,
                                        int num_of_group_aliases,
@@ -37,23 +37,23 @@ __attribute__((used)) static void ssl_cipher_collect_aliases(const SSL_CIPHER **
     uint32_t mask_enc = ~disabled_enc;
     uint32_t mask_mac = ~disabled_mac;
 
-    /*
-     * First, add the real ciphers as already collected
-     */
+
+
+
     ciph_curr = head;
     ca_curr = ca_list;
-    while (ciph_curr != NULL) {
+    while (ciph_curr != ((void*)0)) {
         *ca_curr = ciph_curr->cipher;
         ca_curr++;
         ciph_curr = ciph_curr->next;
     }
 
-    /*
-     * Now we add the available ones from the cipher_aliases[] table.
-     * They represent either one or more algorithms, some of which
-     * in any affected category must be supported (set in enabled_mask),
-     * or represent a cipher strength value (will be added in any case because algorithms=0).
-     */
+
+
+
+
+
+
     for (i = 0; i < num_of_group_aliases; i++) {
         uint32_t algorithm_mkey = cipher_aliases[i].algorithm_mkey;
         uint32_t algorithm_auth = cipher_aliases[i].algorithm_auth;
@@ -80,5 +80,5 @@ __attribute__((used)) static void ssl_cipher_collect_aliases(const SSL_CIPHER **
         ca_curr++;
     }
 
-    *ca_curr = NULL;            /* end of list */
+    *ca_curr = ((void*)0);
 }

@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct mib_mdomain {int /*<<< orphan*/  tx_powerlevel; int /*<<< orphan*/  channel_list; } ;
-struct at76_priv {TYPE_1__* hw; int /*<<< orphan*/  udev; } ;
-struct TYPE_2__ {int /*<<< orphan*/  wiphy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DBG_MIB ; 
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  MIB_MDOMAIN ; 
- int /*<<< orphan*/  at76_dbg (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int at76_get_mib (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct mib_mdomain*,int) ; 
- int /*<<< orphan*/  kfree (struct mib_mdomain*) ; 
- struct mib_mdomain* kmalloc (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wiphy_err (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  wiphy_name (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct mib_mdomain {int tx_powerlevel; int channel_list; } ;
+struct at76_priv {TYPE_1__* hw; int udev; } ;
+struct TYPE_2__ {int wiphy; } ;
+
+
+ int DBG_MIB ;
+ int GFP_KERNEL ;
+ int MIB_MDOMAIN ;
+ int at76_dbg (int ,char*,int ,int,int ) ;
+ int at76_get_mib (int ,int ,struct mib_mdomain*,int) ;
+ int kfree (struct mib_mdomain*) ;
+ struct mib_mdomain* kmalloc (int,int ) ;
+ int wiphy_err (int ,char*,int) ;
+ int wiphy_name (int ) ;
 
 __attribute__((used)) static void at76_dump_mib_mdomain(struct at76_priv *priv)
 {
-	int ret;
-	struct mib_mdomain *m = kmalloc(sizeof(struct mib_mdomain), GFP_KERNEL);
+ int ret;
+ struct mib_mdomain *m = kmalloc(sizeof(struct mib_mdomain), GFP_KERNEL);
 
-	if (!m)
-		return;
+ if (!m)
+  return;
 
-	ret = at76_get_mib(priv->udev, MIB_MDOMAIN, m,
-			   sizeof(struct mib_mdomain));
-	if (ret < 0) {
-		wiphy_err(priv->hw->wiphy,
-			  "at76_get_mib (MDOMAIN) failed: %d\n", ret);
-		goto exit;
-	}
+ ret = at76_get_mib(priv->udev, MIB_MDOMAIN, m,
+      sizeof(struct mib_mdomain));
+ if (ret < 0) {
+  wiphy_err(priv->hw->wiphy,
+     "at76_get_mib (MDOMAIN) failed: %d\n", ret);
+  goto exit;
+ }
 
-	at76_dbg(DBG_MIB, "%s: MIB MDOMAIN: channel_list %*phD",
-		 wiphy_name(priv->hw->wiphy),
-		 (int)sizeof(m->channel_list), m->channel_list);
+ at76_dbg(DBG_MIB, "%s: MIB MDOMAIN: channel_list %*phD",
+   wiphy_name(priv->hw->wiphy),
+   (int)sizeof(m->channel_list), m->channel_list);
 
-	at76_dbg(DBG_MIB, "%s: MIB MDOMAIN: tx_powerlevel %*phD",
-		 wiphy_name(priv->hw->wiphy),
-		 (int)sizeof(m->tx_powerlevel), m->tx_powerlevel);
+ at76_dbg(DBG_MIB, "%s: MIB MDOMAIN: tx_powerlevel %*phD",
+   wiphy_name(priv->hw->wiphy),
+   (int)sizeof(m->tx_powerlevel), m->tx_powerlevel);
 exit:
-	kfree(m);
+ kfree(m);
 }

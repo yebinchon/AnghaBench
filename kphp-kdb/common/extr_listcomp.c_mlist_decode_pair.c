@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct mlist_decoder_stack_entry {int left_idx; int right_idx; int multiplicity; int middle_value; int left_value; int right_value; } ;
 struct mlist_decoder {int k; int K; int p; struct mlist_decoder_stack_entry* stack; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mlist_decode_node (struct mlist_decoder*,struct mlist_decoder_stack_entry*) ; 
+
+ int mlist_decode_node (struct mlist_decoder*,struct mlist_decoder_stack_entry*) ;
 
 int mlist_decode_pair (struct mlist_decoder *dec, int *multiplicity) {
   if (dec->k >= dec->K) {

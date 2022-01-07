@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char uint8_t ;
-struct TYPE_7__ {int /*<<< orphan*/  xy2d; int /*<<< orphan*/  yplusx; int /*<<< orphan*/  yminusx; } ;
-typedef  TYPE_1__ ge_precomp ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cmov (TYPE_1__*,TYPE_1__*,char) ; 
- char equal (char,int) ; 
- int /*<<< orphan*/  fe_copy (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fe_neg (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ge_precomp_0 (TYPE_1__*) ; 
- TYPE_1__** k25519Precomp ; 
- char negative (char) ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef char uint8_t ;
+struct TYPE_7__ {int xy2d; int yplusx; int yminusx; } ;
+typedef TYPE_1__ ge_precomp ;
+
+
+ int cmov (TYPE_1__*,TYPE_1__*,char) ;
+ char equal (char,int) ;
+ int fe_copy (int ,int ) ;
+ int fe_neg (int ,int ) ;
+ int ge_precomp_0 (TYPE_1__*) ;
+ TYPE_1__** k25519Precomp ;
+ char negative (char) ;
 
 __attribute__((used)) static void table_select(ge_precomp *t, int pos, signed char b)
 {

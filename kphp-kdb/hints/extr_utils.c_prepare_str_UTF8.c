@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int MAX_NAME_SIZE ; 
- int /*<<< orphan*/  assert (int) ; 
- int convert_prep (int) ; 
- int /*<<< orphan*/  ispref (int*,int*) ; 
- int* prep_ibuf ; 
- int* prep_ibuf_res ; 
- int /*<<< orphan*/  qsort (int**,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stricmp_void ; 
- int** words_ibuf ; 
+ int MAX_NAME_SIZE ;
+ int assert (int) ;
+ int convert_prep (int) ;
+ int ispref (int*,int*) ;
+ int* prep_ibuf ;
+ int* prep_ibuf_res ;
+ int qsort (int**,int,int,int ) ;
+ int stricmp_void ;
+ int** words_ibuf ;
 
 int *prepare_str_UTF8 (int *x) {
   int *v = prep_ibuf;
@@ -31,18 +23,6 @@ int *prepare_str_UTF8 (int *x) {
   }
 
   int j = 0;
-//  yo, jo -> e
-/*  for (i = 0; v[i]; i++) {
-    if ((v[i] == 'y' || v[i] == 'j') && v[i + 1] == 'o') {
-      v[j++] = 'e'; i++;
-    } else {
-      v[j++] = v[i];
-    }
-  }
-  v[j] = 0;
-  i = j;
-  j = 0;*/
-
   n = i;
   for (i = 0; v[i] == ' '; i++) {
   }

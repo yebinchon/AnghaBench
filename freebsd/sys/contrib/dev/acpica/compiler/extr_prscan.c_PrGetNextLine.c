@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  size_t UINT32 ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- size_t AE_OK ; 
- size_t ASL_EOF ; 
- size_t ASL_IGNORE_LINE ; 
- int AcpiGbl_LineScanState ; 
- char* AslGbl_CurrentLineBuffer ; 
- size_t AslGbl_LineBufferSize ; 
- int EOF ; 
-#define  PR_MULTI_LINE_COMMENT 131 
-#define  PR_NORMAL_TEXT 130 
-#define  PR_QUOTED_STRING 129 
-#define  PR_SINGLE_LINE_COMMENT 128 
- int /*<<< orphan*/  UtExpandLineBuffers () ; 
- int getc (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memset (char*,int /*<<< orphan*/ ,size_t) ; 
+
+
+
+typedef size_t UINT32 ;
+typedef int FILE ;
+
+
+ size_t AE_OK ;
+ size_t ASL_EOF ;
+ size_t ASL_IGNORE_LINE ;
+ int AcpiGbl_LineScanState ;
+ char* AslGbl_CurrentLineBuffer ;
+ size_t AslGbl_LineBufferSize ;
+ int EOF ;
+
+
+
+
+ int UtExpandLineBuffers () ;
+ int getc (int *) ;
+ int memset (char*,int ,size_t) ;
 
 __attribute__((used)) static UINT32
 PrGetNextLine (
-    FILE                    *Handle)
+    FILE *Handle)
 {
-    UINT32                  i;
-    int                     c = 0;
-    int                     PreviousChar;
+    UINT32 i;
+    int c = 0;
+    int PreviousChar;
 
 
-    /* Always clear the global line buffer */
+
 
     memset (AslGbl_CurrentLineBuffer, 0, AslGbl_LineBufferSize);
     for (i = 0; ;)
     {
-        /*
-         * If line is too long, expand the line buffers. Also increases
-         * AslGbl_LineBufferSize.
-         */
+
+
+
+
         if (i >= AslGbl_LineBufferSize)
         {
             UtExpandLineBuffers ();
@@ -56,11 +56,11 @@ PrGetNextLine (
         c = getc (Handle);
         if (c == EOF)
         {
-            /*
-             * On EOF: If there is anything in the line buffer, terminate
-             * it with a newline, and catch the EOF on the next call
-             * to this function.
-             */
+
+
+
+
+
             if (i > 0)
             {
                 AslGbl_CurrentLineBuffer[i] = '\n';
@@ -70,82 +70,82 @@ PrGetNextLine (
             return (ASL_EOF);
         }
 
-        /* Update state machine as necessary */
+
 
         switch (AcpiGbl_LineScanState)
         {
-        case PR_NORMAL_TEXT:
+        case 130:
 
-            /* Check for multi-line comment start */
+
 
             if ((PreviousChar == '/') && (c == '*'))
             {
-                AcpiGbl_LineScanState = PR_MULTI_LINE_COMMENT;
+                AcpiGbl_LineScanState = 131;
             }
 
-            /* Check for single-line comment start */
+
 
             else if ((PreviousChar == '/') && (c == '/'))
             {
-                AcpiGbl_LineScanState = PR_SINGLE_LINE_COMMENT;
+                AcpiGbl_LineScanState = 128;
             }
 
-            /* Check for quoted string start */
+
 
             else if (PreviousChar == '"')
             {
-                AcpiGbl_LineScanState = PR_QUOTED_STRING;
+                AcpiGbl_LineScanState = 129;
             }
             break;
 
-        case PR_QUOTED_STRING:
+        case 129:
 
             if (PreviousChar == '"')
             {
-                AcpiGbl_LineScanState = PR_NORMAL_TEXT;
+                AcpiGbl_LineScanState = 130;
             }
             break;
 
-        case PR_MULTI_LINE_COMMENT:
+        case 131:
 
-            /* Check for multi-line comment end */
+
 
             if ((PreviousChar == '*') && (c == '/'))
             {
-                AcpiGbl_LineScanState = PR_NORMAL_TEXT;
+                AcpiGbl_LineScanState = 130;
             }
             break;
 
-        case PR_SINGLE_LINE_COMMENT: /* Just ignore text until EOL */
+        case 128:
         default:
             break;
         }
 
-        /* Always copy the character into line buffer */
+
 
         AslGbl_CurrentLineBuffer[i] = (char) c;
         i++;
 
-        /* Always exit on end-of-line */
+
 
         if (c == '\n')
         {
-            /* Handle multi-line comments */
 
-            if (AcpiGbl_LineScanState == PR_MULTI_LINE_COMMENT)
+
+            if (AcpiGbl_LineScanState == 131)
             {
                 return (ASL_IGNORE_LINE);
             }
 
-            /* End of single-line comment */
 
-            if (AcpiGbl_LineScanState == PR_SINGLE_LINE_COMMENT)
+
+            if (AcpiGbl_LineScanState == 128)
             {
-                AcpiGbl_LineScanState = PR_NORMAL_TEXT;
+                AcpiGbl_LineScanState = 130;
                 return (AE_OK);
             }
 
-            /* Blank line */
+
 
             if (i == 1)
             {

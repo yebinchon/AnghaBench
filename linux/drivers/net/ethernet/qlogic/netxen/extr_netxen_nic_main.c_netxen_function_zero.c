@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct pci_dev {int /*<<< orphan*/  devfn; } ;
 
-/* Variables and functions */
- scalar_t__ PCI_FUNC (int /*<<< orphan*/ ) ; 
+
+
+
+struct pci_dev {int devfn; } ;
+
+
+ scalar_t__ PCI_FUNC (int ) ;
 
 __attribute__((used)) static inline bool netxen_function_zero(struct pci_dev *pdev)
 {
-	return (PCI_FUNC(pdev->devfn) == 0) ? true : false;
+ return (PCI_FUNC(pdev->devfn) == 0) ? 1 : 0;
 }

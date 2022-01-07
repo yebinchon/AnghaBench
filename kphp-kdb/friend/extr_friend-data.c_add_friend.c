@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int user_id; int cat_mask; scalar_t__ fr_cnt; scalar_t__ fr_last_date; int /*<<< orphan*/  fr_tree; } ;
-typedef  TYPE_1__ user_t ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int user_id; int cat_mask; scalar_t__ fr_cnt; scalar_t__ fr_last_date; int fr_tree; } ;
+typedef TYPE_1__ user_t ;
 struct TYPE_7__ {int cat; } ;
-typedef  TYPE_2__ tree_t ;
+typedef TYPE_2__ tree_t ;
 
-/* Variables and functions */
- scalar_t__ MAX_FRIENDS ; 
- int /*<<< orphan*/  delete_friend_request (TYPE_1__*,int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,int) ; 
- int /*<<< orphan*/  lrand48 () ; 
- scalar_t__ now ; 
- int /*<<< orphan*/  rev_friends ; 
- int /*<<< orphan*/  rev_friends_insert (int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ reverse_friends_mode ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  tree_insert (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int,scalar_t__) ; 
- TYPE_2__* tree_lookup (int /*<<< orphan*/ ,int) ; 
- int verbosity ; 
+
+ scalar_t__ MAX_FRIENDS ;
+ int delete_friend_request (TYPE_1__*,int) ;
+ int fprintf (int ,char*,int,int) ;
+ int lrand48 () ;
+ scalar_t__ now ;
+ int rev_friends ;
+ int rev_friends_insert (int ,int,int,int ,int ) ;
+ scalar_t__ reverse_friends_mode ;
+ int stderr ;
+ int tree_insert (int ,int,int ,int,scalar_t__) ;
+ TYPE_2__* tree_lookup (int ,int) ;
+ int verbosity ;
 
 __attribute__((used)) static int add_friend (user_t *U, int friend_id, int cat) {
   tree_t *P;

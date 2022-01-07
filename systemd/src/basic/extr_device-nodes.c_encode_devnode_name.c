@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int EINVAL ; 
- int /*<<< orphan*/  memcpy (char*,char const*,int) ; 
- int /*<<< orphan*/  sprintf (char*,char*,unsigned char) ; 
- int utf8_encoded_valid_unichar (char const*,size_t) ; 
- int /*<<< orphan*/  whitelisted_char_for_devnode (char const,int /*<<< orphan*/ *) ; 
+ int EINVAL ;
+ int memcpy (char*,char const*,int) ;
+ int sprintf (char*,char*,unsigned char) ;
+ int utf8_encoded_valid_unichar (char const*,size_t) ;
+ int whitelisted_char_for_devnode (char const,int *) ;
 
 int encode_devnode_name(const char *str, char *str_enc, size_t len) {
         size_t i, j;
@@ -37,7 +29,7 @@ int encode_devnode_name(const char *str, char *str_enc, size_t len) {
                         j += seqlen;
                         i += (seqlen-1);
 
-                } else if (str[i] == '\\' || !whitelisted_char_for_devnode(str[i], NULL)) {
+                } else if (str[i] == '\\' || !whitelisted_char_for_devnode(str[i], ((void*)0))) {
 
                         if (len-j < 4)
                                 return -EINVAL;

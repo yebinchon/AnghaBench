@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int int32_t ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOG_ERR ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char const*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*,int) ; 
- int getpid () ; 
- int /*<<< orphan*/  strerror (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  syslog (int /*<<< orphan*/ ,char*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int int32_t ;
+typedef int FILE ;
+
+
+ int LOG_ERR ;
+ int assert (int ) ;
+ int errno ;
+ int fclose (int *) ;
+ int * fopen (char const*,char*) ;
+ int fprintf (int *,char*,int) ;
+ int getpid () ;
+ int strerror (int ) ;
+ int syslog (int ,char*,char const*,int ,int ) ;
 
 __attribute__((used)) static int32_t
 write_pid_file(char const *file)
 {
-	FILE	*pid;
+ FILE *pid;
 
-	assert(file != NULL);
+ assert(file != ((void*)0));
 
-	if ((pid = fopen(file, "w")) == NULL) {
-		syslog(LOG_ERR, "Could not open file %s. %s (%d)",
-			file, strerror(errno), errno);
-		return (-1);
-	}
+ if ((pid = fopen(file, "w")) == ((void*)0)) {
+  syslog(LOG_ERR, "Could not open file %s. %s (%d)",
+   file, strerror(errno), errno);
+  return (-1);
+ }
 
-	fprintf(pid, "%d", getpid());
-	fclose(pid);
+ fprintf(pid, "%d", getpid());
+ fclose(pid);
 
-	return (0);
+ return (0);
 }

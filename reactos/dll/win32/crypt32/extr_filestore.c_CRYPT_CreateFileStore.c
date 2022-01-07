@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  provInfo ;
-struct TYPE_5__ {int /*<<< orphan*/  dirty; void* type; int /*<<< orphan*/  file; int /*<<< orphan*/  memStore; void* dwOpenFlags; } ;
-typedef  TYPE_1__ WINE_FILESTOREINFO ;
-typedef  int /*<<< orphan*/  WINECRYPT_CERTSTORE ;
-struct TYPE_6__ {int cbSize; TYPE_1__* hStoreProv; int /*<<< orphan*/  rgpvStoreProvFunc; int /*<<< orphan*/  cStoreProvFunc; int /*<<< orphan*/  member_0; } ;
-typedef  int /*<<< orphan*/  HCERTSTORE ;
-typedef  int /*<<< orphan*/  HANDLE ;
-typedef  void* DWORD ;
-typedef  TYPE_2__ CERT_STORE_PROV_INFO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAY_SIZE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * CRYPT_ProvCreateStore (void*,int /*<<< orphan*/ ,TYPE_2__*) ; 
- TYPE_1__* CryptMemAlloc (int) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  fileProvFuncs ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int provInfo ;
+struct TYPE_5__ {int dirty; void* type; int file; int memStore; void* dwOpenFlags; } ;
+typedef TYPE_1__ WINE_FILESTOREINFO ;
+typedef int WINECRYPT_CERTSTORE ;
+struct TYPE_6__ {int cbSize; TYPE_1__* hStoreProv; int rgpvStoreProvFunc; int cStoreProvFunc; int member_0; } ;
+typedef int HCERTSTORE ;
+typedef int HANDLE ;
+typedef void* DWORD ;
+typedef TYPE_2__ CERT_STORE_PROV_INFO ;
+
+
+ int ARRAY_SIZE (int ) ;
+ int * CRYPT_ProvCreateStore (void*,int ,TYPE_2__*) ;
+ TYPE_1__* CryptMemAlloc (int) ;
+ int FALSE ;
+ int fileProvFuncs ;
 
 __attribute__((used)) static WINECRYPT_CERTSTORE *CRYPT_CreateFileStore(DWORD dwFlags,
  HCERTSTORE memStore, HANDLE file, DWORD type)
 {
-    WINECRYPT_CERTSTORE *store = NULL;
+    WINECRYPT_CERTSTORE *store = ((void*)0);
     WINE_FILESTOREINFO *info = CryptMemAlloc(sizeof(WINE_FILESTOREINFO));
 
     if (info)

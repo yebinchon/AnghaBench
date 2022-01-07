@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  aesni_enc (void*,int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
+
+
+
+typedef int u8 ;
+
+
+ int aesni_enc (void*,int *,int const*) ;
 
 __attribute__((used)) static void aesni_xts_tweak(void *ctx, u8 *out, const u8 *in)
 {
-	aesni_enc(ctx, out, in);
+ aesni_enc(ctx, out, in);
 }

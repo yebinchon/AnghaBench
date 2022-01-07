@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_char ;
-typedef  scalar_t__ ngx_uint_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dd (char*,int,int) ; 
- scalar_t__ ngx_strncmp (int /*<<< orphan*/ *,int /*<<< orphan*/ *,size_t) ; 
+
+
+
+typedef int u_char ;
+typedef scalar_t__ ngx_uint_t ;
+
+
+ int dd (char*,int,int) ;
+ scalar_t__ ngx_strncmp (int *,int *,size_t) ;
 
 __attribute__((used)) static u_char *
 ngx_http_lua_strlstrn(u_char *s1, u_char *last, u_char *s2, size_t n)
 {
-    ngx_uint_t  c1, c2;
+    ngx_uint_t c1, c2;
 
     c2 = (ngx_uint_t) *s2++;
     last -= n;
@@ -28,7 +28,7 @@ ngx_http_lua_strlstrn(u_char *s1, u_char *last, u_char *s2, size_t n)
     do {
         do {
             if (s1 >= last) {
-                return NULL;
+                return ((void*)0);
             }
 
             c1 = (ngx_uint_t) *s1++;

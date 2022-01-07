@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ mfxStatus ;
-typedef  int /*<<< orphan*/  mfxSession ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ mfxStatus ;
+typedef int mfxSession ;
 struct TYPE_3__ {scalar_t__ Data; } ;
-typedef  TYPE_1__ mfxPluginUID ;
-typedef  int /*<<< orphan*/  errorbuf ;
+typedef TYPE_1__ mfxPluginUID ;
+typedef int errorbuf ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  ENOMEM ; 
- scalar_t__ MFXVideoUSER_Load (int /*<<< orphan*/ ,TYPE_1__*,int) ; 
- int /*<<< orphan*/  av_freep (char**) ; 
- char* av_get_token (char const**,char*) ; 
- int /*<<< orphan*/  av_log (void*,int /*<<< orphan*/ ,char*) ; 
- int ff_qsv_print_error (void*,scalar_t__,char*) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,char*) ; 
- int sscanf (char*,char*,scalar_t__) ; 
- int strlen (char*) ; 
+
+ int AVERROR (int ) ;
+ int AV_LOG_ERROR ;
+ int EINVAL ;
+ int ENOMEM ;
+ scalar_t__ MFXVideoUSER_Load (int ,TYPE_1__*,int) ;
+ int av_freep (char**) ;
+ char* av_get_token (char const**,char*) ;
+ int av_log (void*,int ,char*) ;
+ int ff_qsv_print_error (void*,scalar_t__,char*) ;
+ int snprintf (char*,int,char*,char*) ;
+ int sscanf (char*,char*,scalar_t__) ;
+ int strlen (char*) ;
 
 __attribute__((used)) static int qsv_load_plugins(mfxSession session, const char *load_plugins,
                             void *logctx)

@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_8__ {scalar_t__* ptr; scalar_t__* base; } ;
-typedef  TYPE_1__ sstring ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef TYPE_1__ sstring ;
+typedef int FILE ;
 
-/* Variables and functions */
- int CHAR_TOKEN ; 
- int EOF ; 
- int IDENTIFIER_TOKEN ; 
- int INT_TOKEN ; 
- scalar_t__ ISDIGIT (int) ; 
- scalar_t__ ISIDST (int) ; 
- int /*<<< orphan*/  MAKE_SSTRING_SPACE (TYPE_1__*,int) ; 
- int /*<<< orphan*/  SSTRING_PUT (TYPE_1__*,int) ; 
- int STRING_TOKEN ; 
- scalar_t__ atoi (scalar_t__*) ; 
- int getc (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lineno ; 
- int scan_ident (int /*<<< orphan*/ *,TYPE_1__*,int) ; 
- int scan_string (int /*<<< orphan*/ *,TYPE_1__*,int) ; 
- int skip_spaces (int /*<<< orphan*/ *,int) ; 
- TYPE_1__ source_filename ; 
- scalar_t__ source_lineno ; 
- int /*<<< orphan*/  ungetc (int,int /*<<< orphan*/ *) ; 
+
+ int CHAR_TOKEN ;
+ int EOF ;
+ int IDENTIFIER_TOKEN ;
+ int INT_TOKEN ;
+ scalar_t__ ISDIGIT (int) ;
+ scalar_t__ ISIDST (int) ;
+ int MAKE_SSTRING_SPACE (TYPE_1__*,int) ;
+ int SSTRING_PUT (TYPE_1__*,int) ;
+ int STRING_TOKEN ;
+ scalar_t__ atoi (scalar_t__*) ;
+ int getc (int *) ;
+ int lineno ;
+ int scan_ident (int *,TYPE_1__*,int) ;
+ int scan_string (int *,TYPE_1__*,int) ;
+ int skip_spaces (int *,int) ;
+ TYPE_1__ source_filename ;
+ scalar_t__ source_lineno ;
+ int ungetc (int,int *) ;
 
 int
 get_token (FILE *fp, sstring *s)
@@ -54,32 +54,32 @@ get_token (FILE *fp, sstring *s)
     {
       c = get_token (fp, s);
       if (c == INT_TOKEN)
-	{
-	  source_lineno = atoi (s->base) - 1; /* '\n' will add 1 */
-	  get_token (fp, &source_filename);
-	}
+ {
+   source_lineno = atoi (s->base) - 1;
+   get_token (fp, &source_filename);
+ }
       for (;;)
-	{
-	  c = getc (fp);
-	  if (c == EOF)
-	    return EOF;
-	  if (c == '\n')
-	    {
-	    source_lineno++;
-	    lineno++;
-	    goto retry;
-	    }
-	}
+ {
+   c = getc (fp);
+   if (c == EOF)
+     return EOF;
+   if (c == '\n')
+     {
+     source_lineno++;
+     lineno++;
+     goto retry;
+     }
+ }
     }
   if (c == EOF)
     return EOF;
   if (ISDIGIT (c))
     {
       do
-	{
-	  SSTRING_PUT (s, c);
-	  c = getc (fp);
-	} while (c != EOF && ISDIGIT (c));
+ {
+   SSTRING_PUT (s, c);
+   c = getc (fp);
+ } while (c != EOF && ISDIGIT (c));
       ungetc (c, fp);
       c = INT_TOKEN;
       goto done;

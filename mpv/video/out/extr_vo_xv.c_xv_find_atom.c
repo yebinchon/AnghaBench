@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
 struct vo {TYPE_1__* x11; } ;
 struct TYPE_6__ {int flags; char const* name; int min_value; int max_value; } ;
-typedef  TYPE_2__ XvAttribute ;
-struct TYPE_5__ {int /*<<< orphan*/  display; } ;
-typedef  scalar_t__ Atom ;
+typedef TYPE_2__ XvAttribute ;
+struct TYPE_5__ {int display; } ;
+typedef scalar_t__ Atom ;
 
-/* Variables and functions */
- scalar_t__ None ; 
- int /*<<< orphan*/  True ; 
- int /*<<< orphan*/  XFree (TYPE_2__*) ; 
- scalar_t__ XInternAtom (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ) ; 
- int XvGettable ; 
- TYPE_2__* XvQueryPortAttributes (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*) ; 
- int XvSettable ; 
- int /*<<< orphan*/  strcmp (char const*,char*) ; 
+
+ scalar_t__ None ;
+ int True ;
+ int XFree (TYPE_2__*) ;
+ scalar_t__ XInternAtom (int ,char const*,int ) ;
+ int XvGettable ;
+ TYPE_2__* XvQueryPortAttributes (int ,int ,int*) ;
+ int XvSettable ;
+ int strcmp (char const*,char*) ;
 
 __attribute__((used)) static int xv_find_atom(struct vo *vo, uint32_t xv_port, const char *name,
                         bool get, int *min, int *max)
@@ -42,8 +42,8 @@ __attribute__((used)) static int xv_find_atom(struct vo *vo, uint32_t xv_port, c
             atom = XInternAtom(vo->x11->display, attributes[i].name, True);
             *min = attributes[i].min_value;
             *max = attributes[i].max_value;
-/* since we have SET_DEFAULTS first in our list, we can check if it's available
-   then trigger it if it's ok so that the other values are at default upon query */
+
+
             if (atom != None) {
                 if (!strcmp(attributes[i].name, "XV_BRIGHTNESS") &&
                     (!strcmp(name, "brightness")))
@@ -66,8 +66,8 @@ __attribute__((used)) static int xv_find_atom(struct vo *vo, uint32_t xv_port, c
                 else if (!strcmp(attributes[i].name, "XV_BLUE_INTENSITY")
                          && (!strcmp(name, "blue_intensity")))
                     break;
-                else if ((!strcmp(attributes[i].name, "XV_ITURBT_709") //NVIDIA
-                          || !strcmp(attributes[i].name, "XV_COLORSPACE")) //ATI
+                else if ((!strcmp(attributes[i].name, "XV_ITURBT_709")
+                          || !strcmp(attributes[i].name, "XV_COLORSPACE"))
                          && (!strcmp(name, "bt_709")))
                     break;
                 atom = None;

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {long* signed_integer_types; long* unsigned_integer_types; } ;
 struct stab_write_handle {long type_index; TYPE_1__ type_cache; } ;
-typedef  scalar_t__ bfd_boolean ;
+typedef scalar_t__ bfd_boolean ;
 
-/* Variables and functions */
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  abort () ; 
- int /*<<< orphan*/  non_fatal (int /*<<< orphan*/ ,unsigned int) ; 
- int /*<<< orphan*/  sprintf (char*,char*,long,...) ; 
- scalar_t__ stab_push_defined_type (struct stab_write_handle*,long,unsigned int) ; 
- scalar_t__ stab_push_string (struct stab_write_handle*,char*,long,int /*<<< orphan*/ ,unsigned int) ; 
- int /*<<< orphan*/  strcat (char*,char*) ; 
- int strlen (char*) ; 
+
+ scalar_t__ FALSE ;
+ int TRUE ;
+ int _ (char*) ;
+ int abort () ;
+ int non_fatal (int ,unsigned int) ;
+ int sprintf (char*,char*,long,...) ;
+ scalar_t__ stab_push_defined_type (struct stab_write_handle*,long,unsigned int) ;
+ scalar_t__ stab_push_string (struct stab_write_handle*,char*,long,int ,unsigned int) ;
+ int strcat (char*,char*) ;
+ int strlen (char*) ;
 
 __attribute__((used)) static bfd_boolean
 stab_int_type (void *p, unsigned int size, bfd_boolean unsignedp)
@@ -58,28 +58,28 @@ stab_int_type (void *p, unsigned int size, bfd_boolean unsignedp)
 
       sprintf (buf, "%ld=r%ld;", index, index);
       if (unsignedp)
-	{
-	  strcat (buf, "0;");
-	  if (size < sizeof (long))
-	    sprintf (buf + strlen (buf), "%ld;", ((long) 1 << (size * 8)) - 1);
-	  else if (size == sizeof (long))
-	    strcat (buf, "-1;");
-	  else if (size == 8)
-	    strcat (buf, "01777777777777777777777;");
-	  else
-	    abort ();
-	}
+ {
+   strcat (buf, "0;");
+   if (size < sizeof (long))
+     sprintf (buf + strlen (buf), "%ld;", ((long) 1 << (size * 8)) - 1);
+   else if (size == sizeof (long))
+     strcat (buf, "-1;");
+   else if (size == 8)
+     strcat (buf, "01777777777777777777777;");
+   else
+     abort ();
+ }
       else
-	{
-	  if (size <= sizeof (long))
-	    sprintf (buf + strlen (buf), "%ld;%ld;",
-		     (long) - ((unsigned long) 1 << (size * 8 - 1)),
-		     (long) (((unsigned long) 1 << (size * 8 - 1)) - 1));
-	  else if (size == 8)
-	    strcat (buf, "01000000000000000000000;0777777777777777777777;");
-	  else
-	    abort ();
-	}
+ {
+   if (size <= sizeof (long))
+     sprintf (buf + strlen (buf), "%ld;%ld;",
+       (long) - ((unsigned long) 1 << (size * 8 - 1)),
+       (long) (((unsigned long) 1 << (size * 8 - 1)) - 1));
+   else if (size == 8)
+     strcat (buf, "01000000000000000000000;0777777777777777777777;");
+   else
+     abort ();
+ }
 
       return stab_push_string (info, buf, index, TRUE, size);
     }

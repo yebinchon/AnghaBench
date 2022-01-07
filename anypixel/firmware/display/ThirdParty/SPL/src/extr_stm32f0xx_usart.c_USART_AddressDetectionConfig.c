@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint32_t ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint32_t ;
 struct TYPE_4__ {scalar_t__ CR2; } ;
-typedef  TYPE_1__ USART_TypeDef ;
+typedef TYPE_1__ USART_TypeDef ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IS_USART_ADDRESS_DETECTION (scalar_t__) ; 
- int /*<<< orphan*/  IS_USART_ALL_PERIPH (TYPE_1__*) ; 
- scalar_t__ USART_CR2_ADDM7 ; 
- int /*<<< orphan*/  assert_param (int /*<<< orphan*/ ) ; 
+
+ int IS_USART_ADDRESS_DETECTION (scalar_t__) ;
+ int IS_USART_ALL_PERIPH (TYPE_1__*) ;
+ scalar_t__ USART_CR2_ADDM7 ;
+ int assert_param (int ) ;
 
 void USART_AddressDetectionConfig(USART_TypeDef* USARTx, uint32_t USART_AddressLength)
 {
-  /* Check the parameters */
+
   assert_param(IS_USART_ALL_PERIPH(USARTx));
   assert_param(IS_USART_ADDRESS_DETECTION(USART_AddressLength));
 

@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct background_tracker {int /*<<< orphan*/  pending_writebacks; } ;
 
-/* Variables and functions */
- int atomic_read (int /*<<< orphan*/ *) ; 
+
+
+
+struct background_tracker {int pending_writebacks; } ;
+
+
+ int atomic_read (int *) ;
 
 unsigned btracker_nr_writebacks_queued(struct background_tracker *b)
 {
-	return atomic_read(&b->pending_writebacks);
+ return atomic_read(&b->pending_writebacks);
 }

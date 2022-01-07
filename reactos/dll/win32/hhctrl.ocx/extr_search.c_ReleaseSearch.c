@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {TYPE_2__* root; } ;
 struct TYPE_7__ {TYPE_1__ search; } ;
-struct TYPE_6__ {struct TYPE_6__* next; int /*<<< orphan*/  filename; } ;
-typedef  TYPE_2__ SearchItem ;
-typedef  TYPE_3__ HHInfo ;
+struct TYPE_6__ {struct TYPE_6__* next; int filename; } ;
+typedef TYPE_2__ SearchItem ;
+typedef TYPE_3__ HHInfo ;
 
-/* Variables and functions */
- int /*<<< orphan*/  heap_free (int /*<<< orphan*/ ) ; 
+
+ int heap_free (int ) ;
 
 void ReleaseSearch(HHInfo *info)
 {
     SearchItem *item = info->search.root;
 
-    info->search.root = NULL;
+    info->search.root = ((void*)0);
     while(item) {
         heap_free(item->filename);
         item = item->next;

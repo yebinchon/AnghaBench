@@ -1,61 +1,61 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_4__ {scalar_t__ up; } ;
-struct ns83820 {int IMR_cache; int /*<<< orphan*/  misc_lock; TYPE_1__* pci_dev; TYPE_2__ rx_info; int /*<<< orphan*/  tx_watchdog; } ;
+struct ns83820 {int IMR_cache; int misc_lock; TYPE_1__* pci_dev; TYPE_2__ rx_info; int tx_watchdog; } ;
 struct net_device {int dummy; } ;
-struct TYPE_3__ {int /*<<< orphan*/  irq; } ;
+struct TYPE_3__ {int irq; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CR_RST ; 
- int ISR_TXDESC ; 
- int ISR_TXERR ; 
- int ISR_TXIDLE ; 
- int ISR_TXOK ; 
- int ISR_TXURN ; 
- struct ns83820* PRIV (struct net_device*) ; 
- int /*<<< orphan*/  del_timer_sync (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ns83820_cleanup_rx (struct ns83820*) ; 
- int /*<<< orphan*/  ns83820_cleanup_tx (struct ns83820*) ; 
- int /*<<< orphan*/  ns83820_disable_interrupts (struct ns83820*) ; 
- int /*<<< orphan*/  ns83820_do_reset (struct ns83820*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  spin_lock_irq (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock_irq (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  synchronize_irq (int /*<<< orphan*/ ) ; 
+
+ int CR_RST ;
+ int ISR_TXDESC ;
+ int ISR_TXERR ;
+ int ISR_TXIDLE ;
+ int ISR_TXOK ;
+ int ISR_TXURN ;
+ struct ns83820* PRIV (struct net_device*) ;
+ int del_timer_sync (int *) ;
+ int ns83820_cleanup_rx (struct ns83820*) ;
+ int ns83820_cleanup_tx (struct ns83820*) ;
+ int ns83820_disable_interrupts (struct ns83820*) ;
+ int ns83820_do_reset (struct ns83820*,int ) ;
+ int spin_lock_irq (int *) ;
+ int spin_unlock_irq (int *) ;
+ int synchronize_irq (int ) ;
 
 __attribute__((used)) static int ns83820_stop(struct net_device *ndev)
 {
-	struct ns83820 *dev = PRIV(ndev);
+ struct ns83820 *dev = PRIV(ndev);
 
-	/* FIXME: protect against interrupt handler? */
-	del_timer_sync(&dev->tx_watchdog);
 
-	ns83820_disable_interrupts(dev);
+ del_timer_sync(&dev->tx_watchdog);
 
-	dev->rx_info.up = 0;
-	synchronize_irq(dev->pci_dev->irq);
+ ns83820_disable_interrupts(dev);
 
-	ns83820_do_reset(dev, CR_RST);
+ dev->rx_info.up = 0;
+ synchronize_irq(dev->pci_dev->irq);
 
-	synchronize_irq(dev->pci_dev->irq);
+ ns83820_do_reset(dev, CR_RST);
 
-	spin_lock_irq(&dev->misc_lock);
-	dev->IMR_cache &= ~(ISR_TXURN | ISR_TXIDLE | ISR_TXERR | ISR_TXDESC | ISR_TXOK);
-	spin_unlock_irq(&dev->misc_lock);
+ synchronize_irq(dev->pci_dev->irq);
 
-	ns83820_cleanup_rx(dev);
-	ns83820_cleanup_tx(dev);
+ spin_lock_irq(&dev->misc_lock);
+ dev->IMR_cache &= ~(ISR_TXURN | ISR_TXIDLE | ISR_TXERR | ISR_TXDESC | ISR_TXOK);
+ spin_unlock_irq(&dev->misc_lock);
 
-	return 0;
+ ns83820_cleanup_rx(dev);
+ ns83820_cleanup_tx(dev);
+
+ return 0;
 }

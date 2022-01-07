@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct auditfilter_module {int /*<<< orphan*/ * am_dlhandle; int /*<<< orphan*/ * am_cookie; int /*<<< orphan*/  (* am_detach ) (struct auditfilter_module*) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dlclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub1 (struct auditfilter_module*) ; 
+
+
+
+struct auditfilter_module {int * am_dlhandle; int * am_cookie; int (* am_detach ) (struct auditfilter_module*) ;} ;
+
+
+ int dlclose (int *) ;
+ int stub1 (struct auditfilter_module*) ;
 
 __attribute__((used)) static void
 auditfilter_module_detach(struct auditfilter_module *am)
 {
 
-	if (am->am_detach != NULL)
-		am->am_detach(am);
-	am->am_cookie = NULL;
-	(void)dlclose(am->am_dlhandle);
-	am->am_dlhandle = NULL;
+ if (am->am_detach != ((void*)0))
+  am->am_detach(am);
+ am->am_cookie = ((void*)0);
+ (void)dlclose(am->am_dlhandle);
+ am->am_dlhandle = ((void*)0);
 }

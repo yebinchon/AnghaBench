@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct controller {int /*<<< orphan*/  mutex; int /*<<< orphan*/  queue; scalar_t__ stopped; int /*<<< orphan*/  msg_cond; } ;
+
+
+
+
+struct controller {int mutex; int queue; scalar_t__ stopped; int msg_cond; } ;
 struct control_msg {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOGD (char*) ; 
- int /*<<< orphan*/  SDL_assert (int) ; 
- scalar_t__ cbuf_is_empty (int /*<<< orphan*/ *) ; 
- int cbuf_take (int /*<<< orphan*/ *,struct control_msg*) ; 
- int /*<<< orphan*/  cond_wait (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  control_msg_destroy (struct control_msg*) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ ) ; 
- int process_msg (struct controller*,struct control_msg*) ; 
+
+ int LOGD (char*) ;
+ int SDL_assert (int) ;
+ scalar_t__ cbuf_is_empty (int *) ;
+ int cbuf_take (int *,struct control_msg*) ;
+ int cond_wait (int ,int ) ;
+ int control_msg_destroy (struct control_msg*) ;
+ int mutex_lock (int ) ;
+ int mutex_unlock (int ) ;
+ int process_msg (struct controller*,struct control_msg*) ;
 
 __attribute__((used)) static int
 run_controller(void *data) {
@@ -34,7 +34,7 @@ run_controller(void *data) {
             cond_wait(controller->msg_cond, controller->mutex);
         }
         if (controller->stopped) {
-            // stop immediately, do not process further msgs
+
             mutex_unlock(controller->mutex);
             break;
         }

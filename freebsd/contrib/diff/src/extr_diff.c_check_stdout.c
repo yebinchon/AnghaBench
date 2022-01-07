@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  fatal (char*) ; 
- scalar_t__ fclose (int /*<<< orphan*/ ) ; 
- scalar_t__ ferror (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pfatal_with_name (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stdout ; 
+ int _ (char*) ;
+ int fatal (char*) ;
+ scalar_t__ fclose (int ) ;
+ scalar_t__ ferror (int ) ;
+ int pfatal_with_name (int ) ;
+ int stdout ;
 
 __attribute__((used)) static void
 check_stdout (void)

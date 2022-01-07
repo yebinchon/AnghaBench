@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  int /*<<< orphan*/  luaL_Buffer ;
-typedef  int UC ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CRLF ; 
- int /*<<< orphan*/  luaL_addchar (int /*<<< orphan*/ *,int const) ; 
- int /*<<< orphan*/  luaL_addstring (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  luaL_buffinit (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ luaL_checknumber (int /*<<< orphan*/ *,int) ; 
- scalar_t__ luaL_optlstring (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,size_t*) ; 
- scalar_t__ luaL_optnumber (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  luaL_pushresult (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_pushnil (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_pushnumber (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pushstring (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int lua_State ;
+typedef int luaL_Buffer ;
+typedef int UC ;
+
+
+ int CRLF ;
+ int luaL_addchar (int *,int const) ;
+ int luaL_addstring (int *,int ) ;
+ int luaL_buffinit (int *,int *) ;
+ scalar_t__ luaL_checknumber (int *,int) ;
+ scalar_t__ luaL_optlstring (int *,int,int *,size_t*) ;
+ scalar_t__ luaL_optnumber (int *,int,int) ;
+ int luaL_pushresult (int *) ;
+ int lua_pushnil (int *) ;
+ int lua_pushnumber (int *,int) ;
+ int lua_pushstring (int *,int ) ;
 
 __attribute__((used)) static int mime_global_wrp(lua_State *L)
 {
     size_t size = 0;
     int left = (int) luaL_checknumber(L, 1);
-    const UC *input = (UC *) luaL_optlstring(L, 2, NULL, &size);
+    const UC *input = (UC *) luaL_optlstring(L, 2, ((void*)0), &size);
     const UC *last = input + size;
     int length = (int) luaL_optnumber(L, 3, 76);
     luaL_Buffer buffer;
-    /* end of input black-hole */
+
     if (!input) {
-        /* if last line has not been terminated, add a line break */
+
         if (left < length) lua_pushstring(L, CRLF);
-        /* otherwise, we are done */
+
         else lua_pushnil(L);
         lua_pushnumber(L, length);
         return 2;
-    } 
+    }
     luaL_buffinit(L, &buffer);
     while (input < last) {
         switch (*input) {

@@ -1,151 +1,141 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct obs_source_frame2 {scalar_t__ format; int range; int flip; int /*<<< orphan*/  height; int /*<<< orphan*/  width; int /*<<< orphan*/  color_range_max; int /*<<< orphan*/  color_range_min; int /*<<< orphan*/  color_matrix; int /*<<< orphan*/ * linesize; int /*<<< orphan*/ * data; } ;
-struct ffmpeg_decode {TYPE_3__* frame; scalar_t__ hw; int /*<<< orphan*/  decoder; TYPE_3__* hw_frame; TYPE_1__* codec; int /*<<< orphan*/  packet_buffer; } ;
-typedef  enum video_range_type { ____Placeholder_video_range_type } video_range_type ;
-struct TYPE_11__ {scalar_t__ color_range; long long pkt_pts; int /*<<< orphan*/  height; int /*<<< orphan*/  width; int /*<<< orphan*/  format; int /*<<< orphan*/ * linesize; int /*<<< orphan*/ * data; } ;
-struct TYPE_10__ {int size; long long pts; int /*<<< orphan*/  flags; int /*<<< orphan*/  data; int /*<<< orphan*/  member_0; } ;
+
+
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct obs_source_frame2 {scalar_t__ format; int range; int flip; int height; int width; int color_range_max; int color_range_min; int color_matrix; int * linesize; int * data; } ;
+struct ffmpeg_decode {TYPE_3__* frame; scalar_t__ hw; int decoder; TYPE_3__* hw_frame; TYPE_1__* codec; int packet_buffer; } ;
+typedef enum video_range_type { ____Placeholder_video_range_type } video_range_type ;
+struct TYPE_11__ {scalar_t__ color_range; long long pkt_pts; int height; int width; int format; int * linesize; int * data; } ;
+struct TYPE_10__ {int size; long long pts; int flags; int data; int member_0; } ;
 struct TYPE_9__ {scalar_t__ id; } ;
-typedef  TYPE_2__ AVPacket ;
-typedef  TYPE_3__ AVFrame ;
+typedef TYPE_2__ AVPacket ;
+typedef TYPE_3__ AVFrame ;
 
-/* Variables and functions */
- scalar_t__ AVCOL_RANGE_JPEG ; 
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_EOF ; 
- scalar_t__ AV_CODEC_ID_H264 ; 
- int /*<<< orphan*/  AV_PKT_FLAG_KEY ; 
- int /*<<< orphan*/  EAGAIN ; 
- int /*<<< orphan*/  LOG_ERROR ; 
- size_t MAX_AV_PLANES ; 
- int /*<<< orphan*/  VIDEO_CS_601 ; 
- scalar_t__ VIDEO_FORMAT_NONE ; 
- int VIDEO_RANGE_DEFAULT ; 
- int VIDEO_RANGE_FULL ; 
- int VIDEO_RANGE_PARTIAL ; 
- void* av_frame_alloc () ; 
- int av_hwframe_transfer_data (TYPE_3__*,TYPE_3__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_init_packet (TYPE_2__*) ; 
- int avcodec_receive_frame (int /*<<< orphan*/ ,TYPE_3__*) ; 
- int avcodec_send_packet (int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  blog (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- scalar_t__ convert_pixel_format (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  copy_data (struct ffmpeg_decode*,int /*<<< orphan*/ *,size_t) ; 
- scalar_t__ obs_avc_keyframe (int /*<<< orphan*/ *,size_t) ; 
- int video_format_get_parameters (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ AVCOL_RANGE_JPEG ;
+ int AVERROR (int ) ;
+ int AVERROR_EOF ;
+ scalar_t__ AV_CODEC_ID_H264 ;
+ int AV_PKT_FLAG_KEY ;
+ int EAGAIN ;
+ int LOG_ERROR ;
+ size_t MAX_AV_PLANES ;
+ int VIDEO_CS_601 ;
+ scalar_t__ VIDEO_FORMAT_NONE ;
+ int VIDEO_RANGE_DEFAULT ;
+ int VIDEO_RANGE_FULL ;
+ int VIDEO_RANGE_PARTIAL ;
+ void* av_frame_alloc () ;
+ int av_hwframe_transfer_data (TYPE_3__*,TYPE_3__*,int ) ;
+ int av_init_packet (TYPE_2__*) ;
+ int avcodec_receive_frame (int ,TYPE_3__*) ;
+ int avcodec_send_packet (int ,TYPE_2__*) ;
+ int blog (int ,char*,int ) ;
+ scalar_t__ convert_pixel_format (int ) ;
+ int copy_data (struct ffmpeg_decode*,int *,size_t) ;
+ scalar_t__ obs_avc_keyframe (int *,size_t) ;
+ int video_format_get_parameters (int ,int,int ,int ,int ) ;
 
 bool ffmpeg_decode_video(struct ffmpeg_decode *decode, uint8_t *data,
-			 size_t size, long long *ts,
-			 enum video_range_type range,
-			 struct obs_source_frame2 *frame, bool *got_output)
+    size_t size, long long *ts,
+    enum video_range_type range,
+    struct obs_source_frame2 *frame, bool *got_output)
 {
-	AVPacket packet = {0};
-	int got_frame = false;
-	AVFrame *out_frame;
-	int ret;
+ AVPacket packet = {0};
+ int got_frame = 0;
+ AVFrame *out_frame;
+ int ret;
 
-	*got_output = false;
+ *got_output = 0;
 
-	copy_data(decode, data, size);
+ copy_data(decode, data, size);
 
-	av_init_packet(&packet);
-	packet.data = decode->packet_buffer;
-	packet.size = (int)size;
-	packet.pts = *ts;
+ av_init_packet(&packet);
+ packet.data = decode->packet_buffer;
+ packet.size = (int)size;
+ packet.pts = *ts;
 
-	if (decode->codec->id == AV_CODEC_ID_H264 &&
-	    obs_avc_keyframe(data, size))
-		packet.flags |= AV_PKT_FLAG_KEY;
+ if (decode->codec->id == AV_CODEC_ID_H264 &&
+     obs_avc_keyframe(data, size))
+  packet.flags |= AV_PKT_FLAG_KEY;
 
-	if (!decode->frame) {
-		decode->frame = av_frame_alloc();
-		if (!decode->frame)
-			return false;
+ if (!decode->frame) {
+  decode->frame = av_frame_alloc();
+  if (!decode->frame)
+   return 0;
 
-		if (decode->hw && !decode->hw_frame) {
-			decode->hw_frame = av_frame_alloc();
-			if (!decode->hw_frame)
-				return false;
-		}
-	}
+  if (decode->hw && !decode->hw_frame) {
+   decode->hw_frame = av_frame_alloc();
+   if (!decode->hw_frame)
+    return 0;
+  }
+ }
 
-	out_frame = decode->hw ? decode->hw_frame : decode->frame;
+ out_frame = decode->hw ? decode->hw_frame : decode->frame;
 
-	ret = avcodec_send_packet(decode->decoder, &packet);
-	if (ret == 0) {
-		ret = avcodec_receive_frame(decode->decoder, out_frame);
-	}
+ ret = avcodec_send_packet(decode->decoder, &packet);
+ if (ret == 0) {
+  ret = avcodec_receive_frame(decode->decoder, out_frame);
+ }
 
-	got_frame = (ret == 0);
+ got_frame = (ret == 0);
 
-	if (ret == AVERROR_EOF || ret == AVERROR(EAGAIN))
-		ret = 0;
+ if (ret == AVERROR_EOF || ret == AVERROR(EAGAIN))
+  ret = 0;
 
-	if (ret < 0)
-		return false;
-	else if (!got_frame)
-		return true;
+ if (ret < 0)
+  return 0;
+ else if (!got_frame)
+  return 1;
+ for (size_t i = 0; i < MAX_AV_PLANES; i++) {
+  frame->data[i] = decode->frame->data[i];
+  frame->linesize[i] = decode->frame->linesize[i];
+ }
 
-#ifdef USE_NEW_HARDWARE_CODEC_METHOD
-	if (got_frame && decode->hw) {
-		ret = av_hwframe_transfer_data(decode->frame, out_frame, 0);
-		if (ret < 0) {
-			return false;
-		}
-	}
-#endif
+ frame->format = convert_pixel_format(decode->frame->format);
 
-	for (size_t i = 0; i < MAX_AV_PLANES; i++) {
-		frame->data[i] = decode->frame->data[i];
-		frame->linesize[i] = decode->frame->linesize[i];
-	}
+ if (range == VIDEO_RANGE_DEFAULT) {
+  range = (decode->frame->color_range == AVCOL_RANGE_JPEG)
+    ? VIDEO_RANGE_FULL
+    : VIDEO_RANGE_PARTIAL;
+ }
 
-	frame->format = convert_pixel_format(decode->frame->format);
+ if (range != frame->range) {
+  const bool success = video_format_get_parameters(
+   VIDEO_CS_601, range, frame->color_matrix,
+   frame->color_range_min, frame->color_range_max);
+  if (!success) {
+   blog(LOG_ERROR,
+        "Failed to get video format "
+        "parameters for video format %u",
+        VIDEO_CS_601);
+   return 0;
+  }
 
-	if (range == VIDEO_RANGE_DEFAULT) {
-		range = (decode->frame->color_range == AVCOL_RANGE_JPEG)
-				? VIDEO_RANGE_FULL
-				: VIDEO_RANGE_PARTIAL;
-	}
+  frame->range = range;
+ }
 
-	if (range != frame->range) {
-		const bool success = video_format_get_parameters(
-			VIDEO_CS_601, range, frame->color_matrix,
-			frame->color_range_min, frame->color_range_max);
-		if (!success) {
-			blog(LOG_ERROR,
-			     "Failed to get video format "
-			     "parameters for video format %u",
-			     VIDEO_CS_601);
-			return false;
-		}
+ *ts = decode->frame->pkt_pts;
 
-		frame->range = range;
-	}
+ frame->width = decode->frame->width;
+ frame->height = decode->frame->height;
+ frame->flip = 0;
 
-	*ts = decode->frame->pkt_pts;
+ if (frame->format == VIDEO_FORMAT_NONE)
+  return 0;
 
-	frame->width = decode->frame->width;
-	frame->height = decode->frame->height;
-	frame->flip = false;
-
-	if (frame->format == VIDEO_FORMAT_NONE)
-		return false;
-
-	*got_output = true;
-	return true;
+ *got_output = 1;
+ return 1;
 }

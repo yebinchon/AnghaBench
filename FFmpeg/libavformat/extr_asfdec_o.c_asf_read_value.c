@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char uint8_t ;
-typedef  int uint16_t ;
-typedef  int /*<<< orphan*/  buf ;
-struct TYPE_4__ {int /*<<< orphan*/ * pb; } ;
-typedef  int /*<<< orphan*/  AVIOContext ;
-typedef  TYPE_1__ AVFormatContext ;
-typedef  int /*<<< orphan*/  AVDictionary ;
 
-/* Variables and functions */
- int ASF_UNICODE ; 
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_WARNING ; 
- int /*<<< orphan*/  ENOMEM ; 
- scalar_t__ av_dict_set (int /*<<< orphan*/ **,char const*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_freep (char**) ; 
- int /*<<< orphan*/  av_log (TYPE_1__*,int /*<<< orphan*/ ,char*) ; 
- char* av_malloc (int) ; 
- int avio_read (int /*<<< orphan*/ *,char*,int) ; 
- int get_asf_string (int /*<<< orphan*/ *,int,char*,int) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,char*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef char uint8_t ;
+typedef int uint16_t ;
+typedef int buf ;
+struct TYPE_4__ {int * pb; } ;
+typedef int AVIOContext ;
+typedef TYPE_1__ AVFormatContext ;
+typedef int AVDictionary ;
+
+
+ int ASF_UNICODE ;
+ int AVERROR (int ) ;
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_WARNING ;
+ int ENOMEM ;
+ scalar_t__ av_dict_set (int **,char const*,char*,int ) ;
+ int av_freep (char**) ;
+ int av_log (TYPE_1__*,int ,char*) ;
+ char* av_malloc (int) ;
+ int avio_read (int *,char*,int) ;
+ int get_asf_string (int *,int,char*,int) ;
+ int snprintf (char*,int,char*,char*) ;
 
 __attribute__((used)) static int asf_read_value(AVFormatContext *s, const uint8_t *name,
                           uint16_t val_len, int type, AVDictionary **met)
@@ -45,7 +45,7 @@ __attribute__((used)) static int asf_read_value(AVFormatContext *s, const uint8_
     if (!value)
         return AVERROR(ENOMEM);
     if (type == ASF_UNICODE) {
-        // get_asf_string reads UTF-16 and converts it to UTF-8 which needs longer buffer
+
         if ((ret = get_asf_string(pb, val_len, value, buflen)) < 0)
             goto failed;
         if (av_dict_set(met, name, value, 0) < 0)

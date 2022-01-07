@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  public_key ;
-struct TYPE_11__ {int /*<<< orphan*/  assoc4; int /*<<< orphan*/  assoc6; int /*<<< orphan*/  public_key; } ;
+
+
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef int public_key ;
+struct TYPE_11__ {int assoc4; int assoc6; int public_key; } ;
 struct TYPE_9__ {scalar_t__ family; } ;
 struct TYPE_10__ {int port; TYPE_1__ ip; } ;
-typedef  TYPE_2__ IP_Port ;
-typedef  int /*<<< orphan*/  DHT ;
-typedef  TYPE_3__ Client_data ;
+typedef TYPE_2__ IP_Port ;
+typedef int DHT ;
+typedef TYPE_3__ Client_data ;
 
-/* Variables and functions */
- scalar_t__ AF_INET6 ; 
- int addto_lists (int /*<<< orphan*/ *,TYPE_2__,int*) ; 
- int /*<<< orphan*/  ck_assert_msg (int,char*) ; 
- scalar_t__ client_in_list (TYPE_3__*,int,int*) ; 
- int crypto_box_PUBLICKEYBYTES ; 
- int /*<<< orphan*/  id_copy (int*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mark_all_good (TYPE_3__*,int,int) ; 
- int /*<<< orphan*/  mark_bad (int /*<<< orphan*/ *) ; 
- int rand () ; 
- int /*<<< orphan*/  randombytes (int*,int) ; 
 
-void test_addto_lists_bad(DHT            *dht,
-                          Client_data    *list,
-                          uint32_t        length,
-                          IP_Port        *ip_port)
+ scalar_t__ AF_INET6 ;
+ int addto_lists (int *,TYPE_2__,int*) ;
+ int ck_assert_msg (int,char*) ;
+ scalar_t__ client_in_list (TYPE_3__*,int,int*) ;
+ int crypto_box_PUBLICKEYBYTES ;
+ int id_copy (int*,int ) ;
+ int mark_all_good (TYPE_3__*,int,int) ;
+ int mark_bad (int *) ;
+ int rand () ;
+ int randombytes (int*,int) ;
+
+void test_addto_lists_bad(DHT *dht,
+                          Client_data *list,
+                          uint32_t length,
+                          IP_Port *ip_port)
 {
-    // check "bad" clients replacement
+
     int used, test1, test2, test3;
     uint8_t public_key[crypto_box_PUBLICKEYBYTES], test_id1[crypto_box_PUBLICKEYBYTES], test_id2[crypto_box_PUBLICKEYBYTES],
             test_id3[crypto_box_PUBLICKEYBYTES];
@@ -58,7 +58,7 @@ void test_addto_lists_bad(DHT            *dht,
     id_copy((uint8_t *)&test_id2, list[test2].public_key);
     id_copy((uint8_t *)&test_id3, list[test3].public_key);
 
-    // mark nodes as "bad"
+
     if (ipv6) {
         mark_bad(&list[test1].assoc6);
         mark_bad(&list[test2].assoc6);

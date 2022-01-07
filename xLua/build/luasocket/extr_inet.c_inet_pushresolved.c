@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct in_addr {int dummy; } ;
 struct hostent {char* h_name; char** h_aliases; scalar_t__ h_addr_list; } ;
-typedef  int /*<<< orphan*/  lua_State ;
+typedef int lua_State ;
 
-/* Variables and functions */
- char* inet_ntoa (struct in_addr) ; 
- int lua_gettop (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_newtable (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_pushnumber (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pushstring (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  lua_settable (int /*<<< orphan*/ *,int) ; 
+
+ char* inet_ntoa (struct in_addr) ;
+ int lua_gettop (int *) ;
+ int lua_newtable (int *) ;
+ int lua_pushnumber (int *,int) ;
+ int lua_pushstring (int *,char*) ;
+ int lua_settable (int *,int) ;
 
 __attribute__((used)) static void inet_pushresolved(lua_State *L, struct hostent *hp)
 {

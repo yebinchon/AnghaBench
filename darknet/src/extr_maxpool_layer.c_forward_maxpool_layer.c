@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {float* input; } ;
-typedef  TYPE_1__ network ;
+typedef TYPE_1__ network ;
 struct TYPE_6__ {int pad; int out_h; int out_w; int c; int batch; int size; int stride; int w; int h; float* output; int* indexes; } ;
-typedef  TYPE_2__ maxpool_layer ;
+typedef TYPE_2__ maxpool_layer ;
 
-/* Variables and functions */
- float FLT_MAX ; 
+
+ float FLT_MAX ;
 
 void forward_maxpool_layer(const maxpool_layer l, network net)
 {
@@ -46,7 +46,7 @@ void forward_maxpool_layer(const maxpool_layer l, network net)
                                          cur_w >= 0 && cur_w < l.w);
                             float val = (valid != 0) ? net.input[index] : -FLT_MAX;
                             max_i = (val > max) ? index : max_i;
-                            max   = (val > max) ? val   : max;
+                            max = (val > max) ? val : max;
                         }
                     }
                     l.output[out_index] = max;

@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  g_free (char*) ; 
- char* g_strdup (char const*) ; 
- scalar_t__ is_separator (char) ; 
- int /*<<< orphan*/  remove_trail_slash (char*) ; 
+ int g_free (char*) ;
+ char* g_strdup (char const*) ;
+ scalar_t__ is_separator (char) ;
+ int remove_trail_slash (char*) ;
 
 __attribute__((used)) static int
 check_dir_inclusiveness (const char *dira, const char *dirb)
@@ -32,7 +24,7 @@ check_dir_inclusiveness (const char *dira, const char *dirb)
     p1 = a;
     p2 = b;
     while (*p1 != 0 && *p2 != 0) {
-        /* Go to the last one in a path separator sequence. */
+
         while (is_separator(*p1) && is_separator(p1[1]))
             ++p1;
         while (is_separator(*p2) && is_separator(p2[1]))
@@ -45,12 +37,12 @@ check_dir_inclusiveness (const char *dira, const char *dirb)
         ++p2;
     }
 
-    /* Example:
-     *            p1
-     * a: /abc/def/ghi
-     *            p2
-     * b: /abc/def
-     */
+
+
+
+
+
+
     if (*p1 == 0 && *p2 == 0)
         ret = -1;
     else if (*p1 != 0 && is_separator(*p1))

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  cmsTagTypeSignature ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int cmsTagTypeSignature ;
 struct TYPE_2__ {scalar_t__ SaveAs8Bits; } ;
-typedef  TYPE_1__ cmsPipeline ;
-typedef  double cmsFloat64Number ;
-typedef  int /*<<< orphan*/  cmsContext ;
+typedef TYPE_1__ cmsPipeline ;
+typedef double cmsFloat64Number ;
+typedef int cmsContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cmsSigLut16Type ; 
- int /*<<< orphan*/  cmsSigLut8Type ; 
- int /*<<< orphan*/  cmsSigLutBtoAType ; 
- int /*<<< orphan*/  cmsUNUSED_PARAMETER (int /*<<< orphan*/ ) ; 
+
+ int cmsSigLut16Type ;
+ int cmsSigLut8Type ;
+ int cmsSigLutBtoAType ;
+ int cmsUNUSED_PARAMETER (int ) ;
 
 __attribute__((used)) static
 cmsTagTypeSignature DecideLUTtypeB2A(cmsContext ContextID, cmsFloat64Number ICCVersion, const void *Data)

@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  errorbio; int /*<<< orphan*/  ca; int /*<<< orphan*/  pkey; int /*<<< orphan*/  usercert; } ;
-typedef  TYPE_1__ sslctxparm ;
-typedef  int /*<<< orphan*/  SSL_CTX ;
-typedef  int /*<<< orphan*/  CURLcode ;
-typedef  int /*<<< orphan*/  CURL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_printf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  CURLE_OK ; 
- int /*<<< orphan*/  CURLE_SSL_CERTPROBLEM ; 
- int /*<<< orphan*/  ERR_print_errors (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SSL_CTX_check_private_key (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SSL_CTX_get_cert_store (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SSL_CTX_set_cert_verify_callback (int /*<<< orphan*/ *,int /*<<< orphan*/ ,void*) ; 
- int /*<<< orphan*/  SSL_CTX_set_cipher_list (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  SSL_CTX_set_mode (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SSL_CTX_set_quiet_shutdown (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  SSL_CTX_set_verify (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SSL_CTX_set_verify_depth (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  SSL_CTX_use_PrivateKey (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SSL_CTX_use_certificate (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SSL_MODE_AUTO_RETRY ; 
- int /*<<< orphan*/  SSL_VERIFY_PEER ; 
- int /*<<< orphan*/  X509_STORE_add_cert (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ZERO_NULL ; 
- scalar_t__ sk_X509_num (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sk_X509_value (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  ssl_app_verify_callback ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int errorbio; int ca; int pkey; int usercert; } ;
+typedef TYPE_1__ sslctxparm ;
+typedef int SSL_CTX ;
+typedef int CURLcode ;
+typedef int CURL ;
+
+
+ int BIO_printf (int ,char*) ;
+ int CURLE_OK ;
+ int CURLE_SSL_CERTPROBLEM ;
+ int ERR_print_errors (int ) ;
+ int SSL_CTX_check_private_key (int *) ;
+ int SSL_CTX_get_cert_store (int *) ;
+ int SSL_CTX_set_cert_verify_callback (int *,int ,void*) ;
+ int SSL_CTX_set_cipher_list (int *,char*) ;
+ int SSL_CTX_set_mode (int *,int ) ;
+ int SSL_CTX_set_quiet_shutdown (int *,int) ;
+ int SSL_CTX_set_verify (int *,int ,int ) ;
+ int SSL_CTX_set_verify_depth (int *,int) ;
+ int SSL_CTX_use_PrivateKey (int *,int ) ;
+ int SSL_CTX_use_certificate (int *,int ) ;
+ int SSL_MODE_AUTO_RETRY ;
+ int SSL_VERIFY_PEER ;
+ int X509_STORE_add_cert (int ,int ) ;
+ int ZERO_NULL ;
+ scalar_t__ sk_X509_num (int ) ;
+ int sk_X509_value (int ,scalar_t__) ;
+ int ssl_app_verify_callback ;
 
 __attribute__((used)) static CURLcode sslctxfun(CURL *curl, void *sslctx, void *parm)
 {

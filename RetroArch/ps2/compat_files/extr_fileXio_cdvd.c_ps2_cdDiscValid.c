@@ -1,54 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ int sceCdGetDiskType () ;
 
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
-#define  SCECdCDDA 141 
-#define  SCECdDETCT 140 
-#define  SCECdDETCTCD 139 
-#define  SCECdDETCTDVDD 138 
-#define  SCECdDETCTDVDS 137 
-#define  SCECdDVDV 136 
-#define  SCECdIllegalMedia 135 
-#define  SCECdNODISC 134 
-#define  SCECdPS2CD 133 
-#define  SCECdPS2CDDA 132 
-#define  SCECdPS2DVD 131 
-#define  SCECdPSCD 130 
-#define  SCECdPSCDDA 129 
-#define  SCECdUNKNOWN 128 
- int sceCdGetDiskType () ; 
-
-__attribute__((used)) static int ps2_cdDiscValid(void)  //returns 1 if disc valid, else returns 0
+__attribute__((used)) static int ps2_cdDiscValid(void)
 {
-	int cdmode = sceCdGetDiskType();
+ int cdmode = sceCdGetDiskType();
 
-	switch (cdmode) {
-		case SCECdPSCD:
-		case SCECdPSCDDA:
-		case SCECdPS2CD:
-		case SCECdPS2CDDA:
-		case SCECdPS2DVD:
-		case SCECdCDDA:
-		case SCECdDVDV:
-			return 1;
-		case SCECdNODISC:
-		case SCECdDETCT:
-		case SCECdDETCTCD:
-		case SCECdDETCTDVDS:
-		case SCECdDETCTDVDD:
-		case SCECdUNKNOWN:
-		case SCECdIllegalMedia:
-		default:
-			return 0;
-	}
+ switch (cdmode) {
+  case 130:
+  case 129:
+  case 133:
+  case 132:
+  case 131:
+  case 141:
+  case 136:
+   return 1;
+  case 134:
+  case 140:
+  case 139:
+  case 137:
+  case 138:
+  case 128:
+  case 135:
+  default:
+   return 0;
+ }
 }

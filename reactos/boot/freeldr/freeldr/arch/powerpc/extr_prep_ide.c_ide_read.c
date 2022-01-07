@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int bytespersec; int seek_sector; int seek_cylinder; int seek_head; int seekto; scalar_t__ port; } ;
-typedef  TYPE_1__ idectl_desc ;
+typedef TYPE_1__ idectl_desc ;
 
-/* Variables and functions */
- short GetPhysHalf (scalar_t__) ; 
- int /*<<< orphan*/  SetPhysByte (scalar_t__,int) ; 
- int /*<<< orphan*/  ide_bsy (void*) ; 
- int /*<<< orphan*/  ide_seek (void*,int,int) ; 
+
+ short GetPhysHalf (scalar_t__) ;
+ int SetPhysByte (scalar_t__,int) ;
+ int ide_bsy (void*) ;
+ int ide_seek (void*,int,int) ;
 
 int ide_read( void *extension, char *buffer, int bytes ) {
     idectl_desc *desc = (idectl_desc *)extension;

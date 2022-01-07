@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_6__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_6__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_7__ {scalar_t__ acp1; } ;
 struct TYPE_10__ {TYPE_1__ function; } ;
-struct TYPE_8__ {int topcountdown; int /*<<< orphan*/  speed; int /*<<< orphan*/  type; scalar_t__ direction; TYPE_3__* sector; TYPE_6__ thinker; } ;
-typedef  TYPE_2__ vldoor_t ;
+struct TYPE_8__ {int topcountdown; int speed; int type; scalar_t__ direction; TYPE_3__* sector; TYPE_6__ thinker; } ;
+typedef TYPE_2__ vldoor_t ;
 struct TYPE_9__ {scalar_t__ special; TYPE_2__* specialdata; } ;
-typedef  TYPE_3__ sector_t ;
-typedef  scalar_t__ actionf_p1 ;
+typedef TYPE_3__ sector_t ;
+typedef scalar_t__ actionf_p1 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PU_LEVSPEC ; 
- int /*<<< orphan*/  P_AddThinker (TYPE_6__*) ; 
- scalar_t__ T_VerticalDoor ; 
- int /*<<< orphan*/  VDOORSPEED ; 
- TYPE_2__* Z_Malloc (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  normal ; 
+
+ int PU_LEVSPEC ;
+ int P_AddThinker (TYPE_6__*) ;
+ scalar_t__ T_VerticalDoor ;
+ int VDOORSPEED ;
+ TYPE_2__* Z_Malloc (int,int ,int ) ;
+ int normal ;
 
 void P_SpawnDoorCloseIn30 (sector_t* sec)
 {
-    vldoor_t*	door;
-	
+    vldoor_t* door;
+
     door = Z_Malloc ( sizeof(*door), PU_LEVSPEC, 0);
 
     P_AddThinker (&door->thinker);

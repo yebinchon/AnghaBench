@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UNDServerRef ;
 
-/* Variables and functions */
- scalar_t__ IP_VALID (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ipc_port_release_send (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int UNDServerRef ;
+
+
+ scalar_t__ IP_VALID (int ) ;
+ int ipc_port_release_send (int ) ;
 
 __attribute__((used)) static void
 UNDServer_deallocate(
-	UNDServerRef	UNDServer)
+ UNDServerRef UNDServer)
 {
-	if (IP_VALID(UNDServer))
-		ipc_port_release_send(UNDServer);
+ if (IP_VALID(UNDServer))
+  ipc_port_release_send(UNDServer);
 }

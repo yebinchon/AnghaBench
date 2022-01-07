@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_vtab_cursor ;
-typedef  int /*<<< orphan*/  sqlite3_value ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int sqlite3_vtab_cursor ;
+typedef int sqlite3_value ;
 struct TYPE_4__ {scalar_t__ zInput; void* iLang; void* rLimit; } ;
-typedef  TYPE_1__ amatch_cursor ;
-typedef  void* amatch_cost ;
+typedef TYPE_1__ amatch_cursor ;
+typedef void* amatch_cost ;
 
-/* Variables and functions */
- int SQLITE_NOMEM ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  amatchAddWord (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  amatchClearCursor (TYPE_1__*) ; 
- int /*<<< orphan*/  amatchNext (int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3_mprintf (char*,char const*) ; 
- scalar_t__ sqlite3_value_int (int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3_value_text (int /*<<< orphan*/ *) ; 
+
+ int SQLITE_NOMEM ;
+ int SQLITE_OK ;
+ int amatchAddWord (TYPE_1__*,int ,int ,char*,char*) ;
+ int amatchClearCursor (TYPE_1__*) ;
+ int amatchNext (int *) ;
+ scalar_t__ sqlite3_mprintf (char*,char const*) ;
+ scalar_t__ sqlite3_value_int (int *) ;
+ scalar_t__ sqlite3_value_text (int *) ;
 
 __attribute__((used)) static int amatchFilter(
-  sqlite3_vtab_cursor *pVtabCursor, 
+  sqlite3_vtab_cursor *pVtabCursor,
   int idxNum, const char *idxStr,
   int argc, sqlite3_value **argv
 ){

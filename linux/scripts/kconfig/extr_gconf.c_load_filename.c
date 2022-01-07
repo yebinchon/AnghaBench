@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  gpointer ;
-typedef  int /*<<< orphan*/  gchar ;
-typedef  int /*<<< orphan*/  GtkFileSelection ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GTK_FILE_SELECTION (int /*<<< orphan*/ ) ; 
- scalar_t__ conf_read (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  display_tree (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * gtk_file_selection_get_filename (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rootmenu ; 
- int /*<<< orphan*/  text_insert_msg (char*,char*) ; 
+
+
+
+typedef int gpointer ;
+typedef int gchar ;
+typedef int GtkFileSelection ;
+
+
+ int GTK_FILE_SELECTION (int ) ;
+ scalar_t__ conf_read (int const*) ;
+ int display_tree (int *) ;
+ int * gtk_file_selection_get_filename (int ) ;
+ int rootmenu ;
+ int text_insert_msg (char*,char*) ;
 
 __attribute__((used)) static void
 load_filename(GtkFileSelection * file_selector, gpointer user_data)
 {
-	const gchar *fn;
+ const gchar *fn;
 
-	fn = gtk_file_selection_get_filename(GTK_FILE_SELECTION
-					     (user_data));
+ fn = gtk_file_selection_get_filename(GTK_FILE_SELECTION
+          (user_data));
 
-	if (conf_read(fn))
-		text_insert_msg("Error", "Unable to load configuration !");
-	else
-		display_tree(&rootmenu);
+ if (conf_read(fn))
+  text_insert_msg("Error", "Unable to load configuration !");
+ else
+  display_tree(&rootmenu);
 }

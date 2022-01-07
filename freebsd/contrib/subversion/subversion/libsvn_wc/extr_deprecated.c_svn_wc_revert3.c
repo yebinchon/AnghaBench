@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_wc_notify_func2_t ;
-typedef  int /*<<< orphan*/  svn_wc_context_t ;
-typedef  int /*<<< orphan*/  svn_wc_adm_access_t ;
-typedef  int /*<<< orphan*/  svn_wc__db_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_depth_t ;
-typedef  int /*<<< orphan*/  svn_cancel_func_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_array_header_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_dirent_get_absolute (char const**,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_error_trace (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * svn_wc__adm_get_db (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__context_create_with_db (int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc_context_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc_revert4 (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int svn_wc_notify_func2_t ;
+typedef int svn_wc_context_t ;
+typedef int svn_wc_adm_access_t ;
+typedef int svn_wc__db_t ;
+typedef int svn_error_t ;
+typedef int svn_depth_t ;
+typedef int svn_cancel_func_t ;
+typedef int svn_boolean_t ;
+typedef int apr_pool_t ;
+typedef int apr_array_header_t ;
+
+
+ int SVN_ERR (int ) ;
+ int svn_dirent_get_absolute (char const**,char const*,int *) ;
+ int * svn_error_trace (int ) ;
+ int * svn_wc__adm_get_db (int *) ;
+ int svn_wc__context_create_with_db (int **,int *,int *,int *) ;
+ int svn_wc_context_destroy (int *) ;
+ int svn_wc_revert4 (int *,char const*,int ,int ,int const*,int ,void*,int ,void*,int *) ;
 
 svn_error_t *
 svn_wc_revert3(const char *path,
@@ -46,7 +46,7 @@ svn_wc_revert3(const char *path,
   svn_wc__db_t *wc_db = svn_wc__adm_get_db(parent_access);
   const char *local_abspath;
 
-  SVN_ERR(svn_wc__context_create_with_db(&wc_ctx, NULL, wc_db, pool));
+  SVN_ERR(svn_wc__context_create_with_db(&wc_ctx, ((void*)0), wc_db, pool));
   SVN_ERR(svn_dirent_get_absolute(&local_abspath, path, pool));
 
   SVN_ERR(svn_wc_revert4(wc_ctx,

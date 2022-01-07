@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct connection {int /*<<< orphan*/  Out; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ADD_OPER (int) ; 
- int /*<<< orphan*/  cmd_delete ; 
- int /*<<< orphan*/  del_entry (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char const*) ; 
- int get_entry (char const*,int,long long) ; 
- long long get_hash (char const*,int) ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ verbosity ; 
- int /*<<< orphan*/  write_out (int /*<<< orphan*/ *,char*,int) ; 
+
+
+
+struct connection {int Out; } ;
+
+
+ int ADD_OPER (int) ;
+ int cmd_delete ;
+ int del_entry (int) ;
+ int fprintf (int ,char*,char const*) ;
+ int get_entry (char const*,int,long long) ;
+ long long get_hash (char const*,int) ;
+ int stderr ;
+ scalar_t__ verbosity ;
+ int write_out (int *,char*,int) ;
 
 int memcache_delete (struct connection *c, const char *key, int key_len) {
   if (verbosity > 0) {

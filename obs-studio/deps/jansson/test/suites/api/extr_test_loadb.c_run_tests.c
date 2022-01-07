@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  json_t ;
-struct TYPE_3__ {int line; int /*<<< orphan*/  text; } ;
-typedef  TYPE_1__ json_error_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fail (char*) ; 
- int /*<<< orphan*/  json_decref (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * json_loadb (char const*,size_t,int /*<<< orphan*/ ,TYPE_1__*) ; 
- scalar_t__ strcmp (int /*<<< orphan*/ ,char*) ; 
- size_t strlen (char const*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int json_t ;
+struct TYPE_3__ {int line; int text; } ;
+typedef TYPE_1__ json_error_t ;
+
+
+ int fail (char*) ;
+ int json_decref (int *) ;
+ int * json_loadb (char const*,size_t,int ,TYPE_1__*) ;
+ scalar_t__ strcmp (int ,char*) ;
+ size_t strlen (char const*) ;
 
 __attribute__((used)) static void run_tests()
 {

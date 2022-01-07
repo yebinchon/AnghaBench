@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct dentry {int /*<<< orphan*/  d_lock; struct dentry* d_parent; int /*<<< orphan*/  d_sb; } ;
-struct autofs_sb_info {int /*<<< orphan*/  lookup_lock; } ;
 
-/* Variables and functions */
- struct autofs_sb_info* autofs_sbi (int /*<<< orphan*/ ) ; 
- struct dentry* dget (struct dentry*) ; 
- int /*<<< orphan*/  dput (struct dentry*) ; 
- struct dentry* positive_after (struct dentry*,struct dentry*) ; 
- int /*<<< orphan*/  spin_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock (int /*<<< orphan*/ *) ; 
+
+
+
+struct dentry {int d_lock; struct dentry* d_parent; int d_sb; } ;
+struct autofs_sb_info {int lookup_lock; } ;
+
+
+ struct autofs_sb_info* autofs_sbi (int ) ;
+ struct dentry* dget (struct dentry*) ;
+ int dput (struct dentry*) ;
+ struct dentry* positive_after (struct dentry*,struct dentry*) ;
+ int spin_lock (int *) ;
+ int spin_unlock (int *) ;
 
 __attribute__((used)) static struct dentry *get_next_positive_dentry(struct dentry *prev,
-					       struct dentry *root)
+            struct dentry *root)
 {
-	struct autofs_sb_info *sbi = autofs_sbi(root->d_sb);
-	struct dentry *p = prev, *ret = NULL, *d = NULL;
+ struct autofs_sb_info *sbi = autofs_sbi(root->d_sb);
+ struct dentry *p = prev, *ret = ((void*)0), *d = ((void*)0);
 
-	if (prev == NULL)
-		return dget(root);
+ if (prev == ((void*)0))
+  return dget(root);
 
-	spin_lock(&sbi->lookup_lock);
-	spin_lock(&p->d_lock);
-	while (1) {
-		struct dentry *parent;
+ spin_lock(&sbi->lookup_lock);
+ spin_lock(&p->d_lock);
+ while (1) {
+  struct dentry *parent;
 
-		ret = positive_after(p, d);
-		if (ret || p == root)
-			break;
-		parent = p->d_parent;
-		spin_unlock(&p->d_lock);
-		spin_lock(&parent->d_lock);
-		d = p;
-		p = parent;
-	}
-	spin_unlock(&p->d_lock);
-	spin_unlock(&sbi->lookup_lock);
-	dput(prev);
-	return ret;
+  ret = positive_after(p, d);
+  if (ret || p == root)
+   break;
+  parent = p->d_parent;
+  spin_unlock(&p->d_lock);
+  spin_lock(&parent->d_lock);
+  d = p;
+  p = parent;
+ }
+ spin_unlock(&p->d_lock);
+ spin_unlock(&sbi->lookup_lock);
+ dput(prev);
+ return ret;
 }

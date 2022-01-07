@@ -1,61 +1,61 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_1__ ;
-typedef  struct TYPE_12__   TYPE_10__ ;
 
-/* Type definitions */
-typedef  size_t u8 ;
-typedef  int /*<<< orphan*/  tx ;
-typedef  int sqlite3_int64 ;
-typedef  int /*<<< orphan*/  sqlite3_context ;
-struct TYPE_13__ {int iJD; double s; int validJD; int tzSet; int validHMS; int D; int M; int Y; int /*<<< orphan*/  validTZ; int /*<<< orphan*/  rawS; int /*<<< orphan*/  m; int /*<<< orphan*/  h; int /*<<< orphan*/  validYMD; } ;
-struct TYPE_12__ {int nName; char const* zName; double rLimit; double rXform; int /*<<< orphan*/  eType; } ;
-typedef  TYPE_1__ DateTime ;
 
-/* Variables and functions */
- int ArraySize (TYPE_10__*) ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  SQLITE_UTF8 ; 
- TYPE_10__* aXformType ; 
- int /*<<< orphan*/  clearYMD_HMS_TZ (TYPE_1__*) ; 
- int /*<<< orphan*/  computeJD (TYPE_1__*) ; 
- int /*<<< orphan*/  computeYMD (TYPE_1__*) ; 
- int /*<<< orphan*/  computeYMD_HMS (TYPE_1__*) ; 
- int localtimeOffset (TYPE_1__*,int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  parseHhMmSs (char const*,TYPE_1__*) ; 
- int /*<<< orphan*/  sqlite3AtoF (char const*,double*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3Isdigit (char const) ; 
- int /*<<< orphan*/  sqlite3Isspace (char const) ; 
- int sqlite3Strlen30 (char const*) ; 
- int* sqlite3UpperToLower ; 
- int /*<<< orphan*/  sqlite3_stricmp (char const*,char*) ; 
- int /*<<< orphan*/  sqlite3_strnicmp (char const*,char const*,int) ; 
+
+typedef struct TYPE_13__ TYPE_1__ ;
+typedef struct TYPE_12__ TYPE_10__ ;
+
+
+typedef size_t u8 ;
+typedef int tx ;
+typedef int sqlite3_int64 ;
+typedef int sqlite3_context ;
+struct TYPE_13__ {int iJD; double s; int validJD; int tzSet; int validHMS; int D; int M; int Y; int validTZ; int rawS; int m; int h; int validYMD; } ;
+struct TYPE_12__ {int nName; char const* zName; double rLimit; double rXform; int eType; } ;
+typedef TYPE_1__ DateTime ;
+
+
+ int ArraySize (TYPE_10__*) ;
+ int SQLITE_OK ;
+ int SQLITE_UTF8 ;
+ TYPE_10__* aXformType ;
+ int clearYMD_HMS_TZ (TYPE_1__*) ;
+ int computeJD (TYPE_1__*) ;
+ int computeYMD (TYPE_1__*) ;
+ int computeYMD_HMS (TYPE_1__*) ;
+ int localtimeOffset (TYPE_1__*,int *,int*) ;
+ int memset (TYPE_1__*,int ,int) ;
+ int parseHhMmSs (char const*,TYPE_1__*) ;
+ int sqlite3AtoF (char const*,double*,int,int ) ;
+ int sqlite3Isdigit (char const) ;
+ int sqlite3Isspace (char const) ;
+ int sqlite3Strlen30 (char const*) ;
+ int* sqlite3UpperToLower ;
+ int sqlite3_stricmp (char const*,char*) ;
+ int sqlite3_strnicmp (char const*,char const*,int) ;
 
 __attribute__((used)) static int parseModifier(
-  sqlite3_context *pCtx,      /* Function context */
-  const char *z,              /* The text of the modifier */
-  int n,                      /* Length of zMod in bytes */
-  DateTime *p                 /* The date/time value to be modified */
+  sqlite3_context *pCtx,
+  const char *z,
+  int n,
+  DateTime *p
 ){
   int rc = 1;
   double r;
   switch(sqlite3UpperToLower[(u8)z[0]] ){
-#ifndef SQLITE_OMIT_LOCALTIME
+
     case 'l': {
-      /*    localtime
-      **
-      ** Assuming the current time value is UTC (a.k.a. GMT), shift it to
-      ** show local time.
-      */
+
+
+
+
+
       if( sqlite3_stricmp(z, "localtime")==0 ){
         computeJD(p);
         p->iJD += localtimeOffset(p, pCtx, &rc);
@@ -63,14 +63,14 @@ __attribute__((used)) static int parseModifier(
       }
       break;
     }
-#endif
+
     case 'u': {
-      /*
-      **    unixepoch
-      **
-      ** Treat the current value of p->s as the number of
-      ** seconds since 1970.  Convert to a real julian day number.
-      */
+
+
+
+
+
+
       if( sqlite3_stricmp(z, "unixepoch")==0 && p->rawS ){
         r = p->s*1000.0 + 210866760000000.0;
         if( r>=0.0 && r<464269060800000.0 ){
@@ -81,7 +81,7 @@ __attribute__((used)) static int parseModifier(
           rc = 0;
         }
       }
-#ifndef SQLITE_OMIT_LOCALTIME
+
       else if( sqlite3_stricmp(z, "utc")==0 ){
         if( p->tzSet==0 ){
           sqlite3_int64 c1;
@@ -97,17 +97,17 @@ __attribute__((used)) static int parseModifier(
           rc = SQLITE_OK;
         }
       }
-#endif
+
       break;
     }
     case 'w': {
-      /*
-      **    weekday N
-      **
-      ** Move the date to the same time on the next occurrence of
-      ** weekday N where 0==Sunday, 1==Monday, and so forth.  If the
-      ** date is already on the appropriate weekday, this is a no-op.
-      */
+
+
+
+
+
+
+
       if( sqlite3_strnicmp(z, "weekday ", 8)==0
                && sqlite3AtoF(&z[8], &r, sqlite3Strlen30(&z[8]), SQLITE_UTF8)
                && (n=(int)r)==r && n>=0 && r<7 ){
@@ -125,12 +125,12 @@ __attribute__((used)) static int parseModifier(
       break;
     }
     case 's': {
-      /*
-      **    start of TTTTT
-      **
-      ** Move the date backwards to the beginning of the current day,
-      ** or month or year.
-      */
+
+
+
+
+
+
       if( sqlite3_strnicmp(z, "start of ", 9)!=0 ) break;
       if( !p->validJD && !p->validYMD && !p->validHMS ) break;
       z += 9;
@@ -173,11 +173,11 @@ __attribute__((used)) static int parseModifier(
         break;
       }
       if( z[n]==':' ){
-        /* A modifier of the form (+|-)HH:MM:SS.FFF adds (or subtracts) the
-        ** specified number of hours, minutes, seconds, and fractional seconds
-        ** to the time.  The ".FFF" may be omitted.  The ":SS.FFF" may be
-        ** omitted.
-        */
+
+
+
+
+
         const char *z2 = z;
         DateTime tx;
         sqlite3_int64 day;
@@ -196,8 +196,8 @@ __attribute__((used)) static int parseModifier(
         break;
       }
 
-      /* If control reaches this point, it means the transformation is
-      ** one of the forms like "+NNN days".  */
+
+
       z += n;
       while( sqlite3Isspace(*z) ) z++;
       n = sqlite3Strlen30(z);
@@ -212,7 +212,7 @@ __attribute__((used)) static int parseModifier(
          && r>-aXformType[i].rLimit && r<aXformType[i].rLimit
         ){
           switch( aXformType[i].eType ){
-            case 1: { /* Special processing to add months */
+            case 1: {
               int x;
               computeYMD_HMS(p);
               p->M += (int)r;
@@ -223,7 +223,7 @@ __attribute__((used)) static int parseModifier(
               r -= (int)r;
               break;
             }
-            case 2: { /* Special processing to add years */
+            case 2: {
               int y = (int)r;
               computeYMD_HMS(p);
               p->Y += y;

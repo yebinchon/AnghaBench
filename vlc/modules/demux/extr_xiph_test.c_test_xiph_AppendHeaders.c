@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct params_s {int /*<<< orphan*/  p_append; scalar_t__ i_append; int /*<<< orphan*/ * packets; int /*<<< orphan*/ * packets_sizes; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EXPECT_CLEANUP (int,int /*<<< orphan*/ ) ; 
- int VLC_SUCCESS ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcmp (int /*<<< orphan*/  const*,int /*<<< orphan*/ ,scalar_t__) ; 
- int xiph_AppendHeaders (scalar_t__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint8_t ;
+struct params_s {int p_append; scalar_t__ i_append; int * packets; int * packets_sizes; } ;
+
+
+ int EXPECT_CLEANUP (int,int ) ;
+ int VLC_SUCCESS ;
+ int free (int ) ;
+ int memcmp (int const*,int ,scalar_t__) ;
+ int xiph_AppendHeaders (scalar_t__*,int *,int ,int ) ;
 
 __attribute__((used)) static int test_xiph_AppendHeaders(const char *run,
                  const uint8_t *p_extra, size_t i_extra,

@@ -1,35 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  memcpy (char*,char*,size_t) ; 
- char* strchr (char const*,char) ; 
- int strlen (char*) ; 
- char* strstr (char*,char*) ; 
+ int memcpy (char*,char*,size_t) ;
+ char* strchr (char const*,char) ;
+ int strlen (char*) ;
+ char* strstr (char*,char*) ;
 
 __attribute__((used)) static size_t parse_ass_subtitle(const char *ass, char *output)
 {
-    char *tok = NULL;
-    tok = strchr(ass, ':'); if (tok) tok += 1; // skip event
-    tok = strchr(tok, ','); if (tok) tok += 1; // skip layer
-    tok = strchr(tok, ','); if (tok) tok += 1; // skip start_time
-    tok = strchr(tok, ','); if (tok) tok += 1; // skip end_time
-    tok = strchr(tok, ','); if (tok) tok += 1; // skip style
-    tok = strchr(tok, ','); if (tok) tok += 1; // skip name
-    tok = strchr(tok, ','); if (tok) tok += 1; // skip margin_l
-    tok = strchr(tok, ','); if (tok) tok += 1; // skip margin_r
-    tok = strchr(tok, ','); if (tok) tok += 1; // skip margin_v
-    tok = strchr(tok, ','); if (tok) tok += 1; // skip effect
+    char *tok = ((void*)0);
+    tok = strchr(ass, ':'); if (tok) tok += 1;
+    tok = strchr(tok, ','); if (tok) tok += 1;
+    tok = strchr(tok, ','); if (tok) tok += 1;
+    tok = strchr(tok, ','); if (tok) tok += 1;
+    tok = strchr(tok, ','); if (tok) tok += 1;
+    tok = strchr(tok, ','); if (tok) tok += 1;
+    tok = strchr(tok, ','); if (tok) tok += 1;
+    tok = strchr(tok, ','); if (tok) tok += 1;
+    tok = strchr(tok, ','); if (tok) tok += 1;
+    tok = strchr(tok, ','); if (tok) tok += 1;
     if (tok) {
         char *text = tok;
         size_t idx = 0;

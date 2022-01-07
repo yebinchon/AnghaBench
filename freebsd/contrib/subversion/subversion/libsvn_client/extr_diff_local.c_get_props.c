@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_wc_context_t ;
+
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int svn_wc_context_t ;
 struct TYPE_8__ {scalar_t__ apr_err; } ;
-typedef  TYPE_1__ svn_error_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
+typedef TYPE_1__ svn_error_t ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
 
-/* Variables and functions */
- scalar_t__ SVN_ERR_WC_NOT_WORKING_COPY ; 
- scalar_t__ SVN_ERR_WC_PATH_NOT_FOUND ; 
- TYPE_1__* SVN_NO_ERROR ; 
- int /*<<< orphan*/ * apr_hash_make (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_error_clear (TYPE_1__*) ; 
- TYPE_1__* svn_error_trace (TYPE_1__*) ; 
- TYPE_1__* svn_wc_prop_list2 (int /*<<< orphan*/ **,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ scalar_t__ SVN_ERR_WC_NOT_WORKING_COPY ;
+ scalar_t__ SVN_ERR_WC_PATH_NOT_FOUND ;
+ TYPE_1__* SVN_NO_ERROR ;
+ int * apr_hash_make (int *) ;
+ int svn_error_clear (TYPE_1__*) ;
+ TYPE_1__* svn_error_trace (TYPE_1__*) ;
+ TYPE_1__* svn_wc_prop_list2 (int **,int *,char const*,int *,int *) ;
 
 __attribute__((used)) static svn_error_t *
 get_props(apr_hash_t **props,
@@ -45,7 +45,7 @@ get_props(apr_hash_t **props,
           svn_error_clear(err);
           *props = apr_hash_make(result_pool);
 
-          /* ### Apply autoprops, like 'svn add' would? */
+
         }
       else
         return svn_error_trace(err);

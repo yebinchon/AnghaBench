@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
+
+
+
+
+typedef int u32 ;
 struct iwl_mvm {int dummy; } ;
-struct iwl_mac_ctx_cmd {int /*<<< orphan*/  ap; } ;
+struct iwl_mac_ctx_cmd {int ap; } ;
 struct ieee80211_vif {scalar_t__ type; scalar_t__ p2p; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FW_CTXT_ACTION_ADD ; 
- scalar_t__ NL80211_IFTYPE_AP ; 
- int /*<<< orphan*/  WARN_ON (int) ; 
- int /*<<< orphan*/  iwl_mvm_mac_ctxt_cmd_common (struct iwl_mvm*,struct ieee80211_vif*,struct iwl_mac_ctx_cmd*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  iwl_mvm_mac_ctxt_cmd_fill_ap (struct iwl_mvm*,struct ieee80211_vif*,struct iwl_mac_ctx_cmd*,int /*<<< orphan*/ *,int) ; 
- int iwl_mvm_mac_ctxt_send_cmd (struct iwl_mvm*,struct iwl_mac_ctx_cmd*) ; 
+
+ int FW_CTXT_ACTION_ADD ;
+ scalar_t__ NL80211_IFTYPE_AP ;
+ int WARN_ON (int) ;
+ int iwl_mvm_mac_ctxt_cmd_common (struct iwl_mvm*,struct ieee80211_vif*,struct iwl_mac_ctx_cmd*,int *,int ) ;
+ int iwl_mvm_mac_ctxt_cmd_fill_ap (struct iwl_mvm*,struct ieee80211_vif*,struct iwl_mac_ctx_cmd*,int *,int) ;
+ int iwl_mvm_mac_ctxt_send_cmd (struct iwl_mvm*,struct iwl_mac_ctx_cmd*) ;
 
 __attribute__((used)) static int iwl_mvm_mac_ctxt_cmd_ap(struct iwl_mvm *mvm,
-				   struct ieee80211_vif *vif,
-				   u32 action)
+       struct ieee80211_vif *vif,
+       u32 action)
 {
-	struct iwl_mac_ctx_cmd cmd = {};
+ struct iwl_mac_ctx_cmd cmd = {};
 
-	WARN_ON(vif->type != NL80211_IFTYPE_AP || vif->p2p);
+ WARN_ON(vif->type != NL80211_IFTYPE_AP || vif->p2p);
 
-	/* Fill the common data for all mac context types */
-	iwl_mvm_mac_ctxt_cmd_common(mvm, vif, &cmd, NULL, action);
 
-	/* Fill the data specific for ap mode */
-	iwl_mvm_mac_ctxt_cmd_fill_ap(mvm, vif, &cmd, &cmd.ap,
-				     action == FW_CTXT_ACTION_ADD);
+ iwl_mvm_mac_ctxt_cmd_common(mvm, vif, &cmd, ((void*)0), action);
 
-	return iwl_mvm_mac_ctxt_send_cmd(mvm, &cmd);
+
+ iwl_mvm_mac_ctxt_cmd_fill_ap(mvm, vif, &cmd, &cmd.ap,
+         action == FW_CTXT_ACTION_ADD);
+
+ return iwl_mvm_mac_ctxt_send_cmd(mvm, &cmd);
 }

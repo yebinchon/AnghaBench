@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  json_t ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int json_t ;
 struct TYPE_4__ {int line; int column; int position; char* text; } ;
-typedef  TYPE_1__ json_error_t ;
+typedef TYPE_1__ json_error_t ;
 
-/* Variables and functions */
- size_t JSON_COMPACT ; 
- size_t JSON_ENSURE_ASCII ; 
- size_t JSON_INDENT (int) ; 
- size_t JSON_PRESERVE_ORDER ; 
- size_t JSON_REAL_PRECISION (int) ; 
- size_t JSON_SORT_KEYS ; 
- int /*<<< orphan*/  _O_BINARY ; 
- int /*<<< orphan*/  _fileno (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  _setmode (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,...) ; 
- size_t fread (char*,int,size_t,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (char*) ; 
- scalar_t__ getenv (char*) ; 
- int getenv_int (char*) ; 
- int /*<<< orphan*/  json_decref (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  json_dumpf (int /*<<< orphan*/ *,int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/ * json_loadf (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/ * json_loads (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  json_object_seed (int) ; 
- char* realloc (char*,size_t) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  stdin ; 
- int /*<<< orphan*/  stdout ; 
- int /*<<< orphan*/  strip (char*) ; 
+
+ size_t JSON_COMPACT ;
+ size_t JSON_ENSURE_ASCII ;
+ size_t JSON_INDENT (int) ;
+ size_t JSON_PRESERVE_ORDER ;
+ size_t JSON_REAL_PRECISION (int) ;
+ size_t JSON_SORT_KEYS ;
+ int _O_BINARY ;
+ int _fileno (int ) ;
+ int _setmode (int ,int ) ;
+ int fprintf (int ,char*,int,...) ;
+ size_t fread (char*,int,size_t,int ) ;
+ int free (char*) ;
+ scalar_t__ getenv (char*) ;
+ int getenv_int (char*) ;
+ int json_decref (int *) ;
+ int json_dumpf (int *,int ,size_t) ;
+ int * json_loadf (int ,int ,TYPE_1__*) ;
+ int * json_loads (int ,int ,TYPE_1__*) ;
+ int json_object_seed (int) ;
+ char* realloc (char*,size_t) ;
+ int stderr ;
+ int stdin ;
+ int stdout ;
+ int strip (char*) ;
 
 int use_env()
 {
@@ -47,14 +47,6 @@ int use_env()
     size_t flags = 0;
     json_t *json;
     json_error_t error;
-
-    #ifdef _WIN32
-    /* On Windows, set stdout and stderr to binary mode to avoid
-       outputting DOS line terminators */
-    _setmode(_fileno(stdout), _O_BINARY);
-    _setmode(_fileno(stderr), _O_BINARY);
-    #endif
-
     indent = getenv_int("JSON_INDENT");
     if(indent < 0 || indent > 31) {
         fprintf(stderr, "invalid value for JSON_INDENT: %d\n", indent);
@@ -89,9 +81,9 @@ int use_env()
         flags |= JSON_REAL_PRECISION(precision);
 
     if(getenv_int("STRIP")) {
-        /* Load to memory, strip leading and trailing whitespace */
+
         size_t size = 0, used = 0;
-        char *buffer = NULL, *buf_ck = NULL;
+        char *buffer = ((void*)0), *buf_ck = ((void*)0);
 
         while(1) {
             size_t count;

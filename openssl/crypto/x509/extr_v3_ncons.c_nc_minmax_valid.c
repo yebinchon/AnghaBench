@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ minimum; scalar_t__ maximum; } ;
-typedef  TYPE_1__ GENERAL_SUBTREE ;
-typedef  int /*<<< orphan*/  BIGNUM ;
+typedef TYPE_1__ GENERAL_SUBTREE ;
+typedef int BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * ASN1_INTEGER_to_BN (scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_is_zero (int /*<<< orphan*/ *) ; 
+
+ int * ASN1_INTEGER_to_BN (scalar_t__,int *) ;
+ int BN_free (int *) ;
+ int BN_is_zero (int *) ;
 
 __attribute__((used)) static int nc_minmax_valid(GENERAL_SUBTREE *sub) {
-    BIGNUM *bn = NULL;
+    BIGNUM *bn = ((void*)0);
     int ok = 1;
 
     if (sub->maximum)
         ok = 0;
 
     if (sub->minimum) {
-        bn = ASN1_INTEGER_to_BN(sub->minimum, NULL);
-        if (bn == NULL || !BN_is_zero(bn))
+        bn = ASN1_INTEGER_to_BN(sub->minimum, ((void*)0));
+        if (bn == ((void*)0) || !BN_is_zero(bn))
             ok = 0;
         BN_free(bn);
     }

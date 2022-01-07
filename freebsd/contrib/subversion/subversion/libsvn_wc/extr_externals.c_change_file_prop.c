@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_string_t ;
-struct TYPE_3__ {int /*<<< orphan*/  value; int /*<<< orphan*/  name; } ;
-typedef  TYPE_1__ svn_prop_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct edit_baton {int /*<<< orphan*/  pool; int /*<<< orphan*/  propchanges; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- TYPE_1__* apr_array_push (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  apr_pstrdup (int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  svn_string_dup (int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int svn_string_t ;
+struct TYPE_3__ {int value; int name; } ;
+typedef TYPE_1__ svn_prop_t ;
+typedef int svn_error_t ;
+struct edit_baton {int pool; int propchanges; } ;
+typedef int apr_pool_t ;
+
+
+ int * SVN_NO_ERROR ;
+ TYPE_1__* apr_array_push (int ) ;
+ int apr_pstrdup (int ,char const*) ;
+ int svn_string_dup (int const*,int ) ;
 
 __attribute__((used)) static svn_error_t *
 change_file_prop(void *file_baton,

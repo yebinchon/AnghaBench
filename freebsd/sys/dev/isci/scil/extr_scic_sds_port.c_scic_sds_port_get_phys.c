@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t U32 ;
-struct TYPE_4__ {int /*<<< orphan*/ ** phy_table; } ;
-typedef  TYPE_1__ SCIC_SDS_PORT_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SCIC_LOG_OBJECT_PORT ; 
- int /*<<< orphan*/  SCIC_LOG_TRACE (int /*<<< orphan*/ ) ; 
- size_t SCI_MAX_PHYS ; 
- int /*<<< orphan*/  sci_base_object_get_logger (TYPE_1__*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef size_t U32 ;
+struct TYPE_4__ {int ** phy_table; } ;
+typedef TYPE_1__ SCIC_SDS_PORT_T ;
+
+
+ int SCIC_LOG_OBJECT_PORT ;
+ int SCIC_LOG_TRACE (int ) ;
+ size_t SCI_MAX_PHYS ;
+ int sci_base_object_get_logger (TYPE_1__*) ;
 
 U32 scic_sds_port_get_phys(
    SCIC_SDS_PORT_T * this_port
@@ -39,7 +39,7 @@ U32 scic_sds_port_get_phys(
 
    for (index = 0; index < SCI_MAX_PHYS; index++)
    {
-      if (this_port->phy_table[index] != NULL)
+      if (this_port->phy_table[index] != ((void*)0))
       {
          mask |= (1 << index);
       }

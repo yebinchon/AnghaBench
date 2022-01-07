@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_fs_id_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR_FS_MALFORMED_NODEREV_ID ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/ * id_parse (char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_error_createf (int /*<<< orphan*/ ,int /*<<< orphan*/ *,char*) ; 
+
+
+
+typedef int svn_fs_id_t ;
+typedef int svn_error_t ;
+typedef int apr_pool_t ;
+
+
+ int SVN_ERR_FS_MALFORMED_NODEREV_ID ;
+ int * SVN_NO_ERROR ;
+ int * id_parse (char*,int *) ;
+ int * svn_error_createf (int ,int *,char*) ;
 
 svn_error_t *
 svn_fs_fs__id_parse(const svn_fs_id_t **id_p,
@@ -26,8 +26,8 @@ svn_fs_fs__id_parse(const svn_fs_id_t **id_p,
                     apr_pool_t *pool)
 {
   svn_fs_id_t *id = id_parse(data, pool);
-  if (id == NULL)
-    return svn_error_createf(SVN_ERR_FS_MALFORMED_NODEREV_ID, NULL,
+  if (id == ((void*)0))
+    return svn_error_createf(SVN_ERR_FS_MALFORMED_NODEREV_ID, ((void*)0),
                              "Malformed node revision ID string");
 
   *id_p = id;

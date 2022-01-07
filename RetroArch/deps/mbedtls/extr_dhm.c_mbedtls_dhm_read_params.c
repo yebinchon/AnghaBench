@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  P; int /*<<< orphan*/  len; int /*<<< orphan*/  GY; int /*<<< orphan*/  G; } ;
-typedef  TYPE_1__ mbedtls_dhm_context ;
 
-/* Variables and functions */
- int dhm_check_range (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int dhm_read_bignum (int /*<<< orphan*/ *,unsigned char**,unsigned char const*) ; 
- int /*<<< orphan*/  mbedtls_mpi_size (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int P; int len; int GY; int G; } ;
+typedef TYPE_1__ mbedtls_dhm_context ;
+
+
+ int dhm_check_range (int *,int *) ;
+ int dhm_read_bignum (int *,unsigned char**,unsigned char const*) ;
+ int mbedtls_mpi_size (int *) ;
 
 int mbedtls_dhm_read_params( mbedtls_dhm_context *ctx,
                      unsigned char **p,
@@ -25,8 +25,8 @@ int mbedtls_dhm_read_params( mbedtls_dhm_context *ctx,
 {
     int ret;
 
-    if( ( ret = dhm_read_bignum( &ctx->P,  p, end ) ) != 0 ||
-        ( ret = dhm_read_bignum( &ctx->G,  p, end ) ) != 0 ||
+    if( ( ret = dhm_read_bignum( &ctx->P, p, end ) ) != 0 ||
+        ( ret = dhm_read_bignum( &ctx->G, p, end ) ) != 0 ||
         ( ret = dhm_read_bignum( &ctx->GY, p, end ) ) != 0 )
         return( ret );
 

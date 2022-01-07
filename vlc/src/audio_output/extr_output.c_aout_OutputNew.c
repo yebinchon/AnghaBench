@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_22__   TYPE_4__ ;
-typedef  struct TYPE_21__   TYPE_3__ ;
-typedef  struct TYPE_20__   TYPE_2__ ;
-typedef  struct TYPE_19__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ vlc_fourcc_t ;
+
+
+typedef struct TYPE_22__ TYPE_4__ ;
+typedef struct TYPE_21__ TYPE_3__ ;
+typedef struct TYPE_20__ TYPE_2__ ;
+typedef struct TYPE_19__ TYPE_1__ ;
+
+
+typedef scalar_t__ vlc_fourcc_t ;
 struct TYPE_20__ {scalar_t__ channel_type; unsigned int i_channels; scalar_t__ i_format; scalar_t__ i_physical_channels; int i_bitspersample; scalar_t__ i_bytes_per_frame; scalar_t__ i_frame_length; } ;
-typedef  TYPE_2__ audio_sample_format_t ;
+typedef TYPE_2__ audio_sample_format_t ;
 struct TYPE_19__ {int headphones; } ;
 struct TYPE_21__ {int (* start ) (TYPE_3__*,TYPE_2__*) ;scalar_t__ pause; scalar_t__ time_get; scalar_t__ play; scalar_t__ flush; TYPE_1__ current_sink_info; } ;
-typedef  TYPE_3__ audio_output_t ;
-typedef  scalar_t__ audio_channel_type_t ;
-struct TYPE_22__ {scalar_t__ requested_stereo_mode; int /*<<< orphan*/  lock; int /*<<< orphan*/  input_profile; int /*<<< orphan*/  filters_cfg; TYPE_2__ filter_format; TYPE_2__ mixer_format; } ;
-typedef  TYPE_4__ aout_owner_t ;
-typedef  int /*<<< orphan*/  aout_filters_cfg_t ;
+typedef TYPE_3__ audio_output_t ;
+typedef scalar_t__ audio_channel_type_t ;
+struct TYPE_22__ {scalar_t__ requested_stereo_mode; int lock; int input_profile; int filters_cfg; TYPE_2__ filter_format; TYPE_2__ mixer_format; } ;
+typedef TYPE_4__ aout_owner_t ;
+typedef int aout_filters_cfg_t ;
 
-/* Variables and functions */
- scalar_t__ AOUT_CHANS_7_1 ; 
- scalar_t__ AOUT_CHANS_STEREO ; 
- scalar_t__ AOUT_CHAN_CENTER ; 
- scalar_t__ AOUT_FMT_LINEAR (TYPE_2__*) ; 
- scalar_t__ AOUT_VAR_CHAN_LEFT ; 
- scalar_t__ AOUT_VAR_CHAN_RIGHT ; 
- int ARRAY_SIZE (scalar_t__*) ; 
- scalar_t__ AUDIO_CHANNEL_TYPE_AMBISONICS ; 
- scalar_t__ AUDIO_CHANNEL_TYPE_BITMAP ; 
-#define  VLC_CODEC_A52 129 
-#define  VLC_CODEC_DTS 128 
- scalar_t__ VLC_CODEC_DTSHD ; 
- scalar_t__ VLC_CODEC_EAC3 ; 
- scalar_t__ VLC_CODEC_FL32 ; 
- scalar_t__ VLC_CODEC_S16N ; 
- int VLC_EGENERIC ; 
- int VLC_SUCCESS ; 
- scalar_t__ aout_FormatNbChannels (TYPE_2__*) ; 
- int /*<<< orphan*/  aout_FormatPrepare (TYPE_2__*) ; 
- int /*<<< orphan*/  aout_FormatPrint (TYPE_3__*,char*,TYPE_2__*) ; 
- int /*<<< orphan*/  aout_PrepareStereoMode (TYPE_3__*,TYPE_2__*,int /*<<< orphan*/ *,scalar_t__,unsigned int) ; 
- int /*<<< orphan*/  aout_SetWavePhysicalChannels (TYPE_2__*) ; 
- TYPE_4__* aout_owner (TYPE_3__*) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  msg_Err (TYPE_3__*,char*) ; 
- int stub1 (TYPE_3__*,TYPE_2__*) ; 
- int /*<<< orphan*/  vlc_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_mutex_unlock (int /*<<< orphan*/ *) ; 
+
+ scalar_t__ AOUT_CHANS_7_1 ;
+ scalar_t__ AOUT_CHANS_STEREO ;
+ scalar_t__ AOUT_CHAN_CENTER ;
+ scalar_t__ AOUT_FMT_LINEAR (TYPE_2__*) ;
+ scalar_t__ AOUT_VAR_CHAN_LEFT ;
+ scalar_t__ AOUT_VAR_CHAN_RIGHT ;
+ int ARRAY_SIZE (scalar_t__*) ;
+ scalar_t__ AUDIO_CHANNEL_TYPE_AMBISONICS ;
+ scalar_t__ AUDIO_CHANNEL_TYPE_BITMAP ;
+
+
+ scalar_t__ VLC_CODEC_DTSHD ;
+ scalar_t__ VLC_CODEC_EAC3 ;
+ scalar_t__ VLC_CODEC_FL32 ;
+ scalar_t__ VLC_CODEC_S16N ;
+ int VLC_EGENERIC ;
+ int VLC_SUCCESS ;
+ scalar_t__ aout_FormatNbChannels (TYPE_2__*) ;
+ int aout_FormatPrepare (TYPE_2__*) ;
+ int aout_FormatPrint (TYPE_3__*,char*,TYPE_2__*) ;
+ int aout_PrepareStereoMode (TYPE_3__*,TYPE_2__*,int *,scalar_t__,unsigned int) ;
+ int aout_SetWavePhysicalChannels (TYPE_2__*) ;
+ TYPE_4__* aout_owner (TYPE_3__*) ;
+ int assert (int) ;
+ int msg_Err (TYPE_3__*,char*) ;
+ int stub1 (TYPE_3__*,TYPE_2__*) ;
+ int vlc_mutex_lock (int *) ;
+ int vlc_mutex_unlock (int *) ;
 
 int aout_OutputNew (audio_output_t *aout)
 {
@@ -68,28 +68,28 @@ int aout_OutputNew (audio_output_t *aout)
         fmt->i_format, 0, 0
     };
 
-    /* Ideally, the audio filters would be created before the audio output,
-     * and the ideal audio format would be the output of the filters chain.
-     * But that scheme would not really play well with digital pass-through. */
+
+
+
     if (AOUT_FMT_LINEAR(fmt))
     {
         if (fmt->channel_type == AUDIO_CHANNEL_TYPE_BITMAP
          && aout_FormatNbChannels(fmt) == 0)
         {
-            /* The output channel map is unknown, use the WAVE one. */
+
             assert(fmt->i_channels > 0);
             aout_SetWavePhysicalChannels(fmt);
         }
 
         if (fmt->channel_type == AUDIO_CHANNEL_TYPE_AMBISONICS)
         {
-            /* Set the maximum of channels to render ambisonics contents. The
-             * aout module will still be free to select less channels in order
-             * to respect the sink setup. */
+
+
+
             fmt->i_physical_channels = AOUT_CHANS_7_1;
         }
 
-        /* Try to stay in integer domain if possible for no/slow FPU. */
+
         fmt->i_format = (fmt->i_bitspersample > 16) ? VLC_CODEC_FL32
                                                     : VLC_CODEC_S16N;
 
@@ -105,21 +105,21 @@ int aout_OutputNew (audio_output_t *aout)
     {
         switch (fmt->i_format)
         {
-            case VLC_CODEC_DTS:
+            case 128:
                 if (owner->input_profile > 0)
                 {
                     assert(ARRAY_SIZE(formats) >= 3);
-                    /* DTSHD can be played as DTSHD or as DTS */
+
                     formats[0] = VLC_CODEC_DTSHD;
-                    formats[1] = VLC_CODEC_DTS;
+                    formats[1] = 128;
                 }
                 break;
-            case VLC_CODEC_A52:
+            case 129:
                 if (owner->input_profile > 0)
                 {
                     assert(ARRAY_SIZE(formats) >= 3);
                     formats[0] = VLC_CODEC_EAC3;
-                    formats[1] = VLC_CODEC_A52;
+                    formats[1] = 129;
                 }
                 break;
             default:
@@ -127,7 +127,7 @@ int aout_OutputNew (audio_output_t *aout)
         }
     }
 
-    aout->current_sink_info.headphones = false;
+    aout->current_sink_info.headphones = 0;
 
     vlc_mutex_lock(&owner->lock);
     int ret = VLC_EGENERIC;

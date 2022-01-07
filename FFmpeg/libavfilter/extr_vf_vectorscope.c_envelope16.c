@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int envelope; } ;
-typedef  TYPE_1__ VectorscopeContext ;
-typedef  int /*<<< orphan*/  AVFrame ;
+typedef TYPE_1__ VectorscopeContext ;
+typedef int AVFrame ;
 
-/* Variables and functions */
- int /*<<< orphan*/  envelope_instant16 (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  envelope_peak16 (TYPE_1__*,int /*<<< orphan*/ *) ; 
+
+ int envelope_instant16 (TYPE_1__*,int *) ;
+ int envelope_peak16 (TYPE_1__*,int *) ;
 
 __attribute__((used)) static void envelope16(VectorscopeContext *s, AVFrame *out)
 {

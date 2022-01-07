@@ -1,62 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_24__   TYPE_6__ ;
-typedef  struct TYPE_23__   TYPE_5__ ;
-typedef  struct TYPE_22__   TYPE_4__ ;
-typedef  struct TYPE_21__   TYPE_3__ ;
-typedef  struct TYPE_20__   TYPE_2__ ;
-typedef  struct TYPE_19__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_2__* xsltTransformContextPtr ;
-typedef  TYPE_3__* xsltDocumentPtr ;
-typedef  int /*<<< orphan*/  xmlXPathParserContextPtr ;
-typedef  TYPE_4__* xmlXPathObjectPtr ;
-typedef  int /*<<< orphan*/ * xmlXPathContextPtr ;
-typedef  TYPE_5__* xmlURIPtr ;
-typedef  int /*<<< orphan*/ * xmlNodePtr ;
-typedef  TYPE_6__* xmlDocPtr ;
-typedef  char xmlChar ;
-struct TYPE_24__ {int /*<<< orphan*/  URL; } ;
-struct TYPE_23__ {int /*<<< orphan*/ * fragment; } ;
+
+
+typedef struct TYPE_24__ TYPE_6__ ;
+typedef struct TYPE_23__ TYPE_5__ ;
+typedef struct TYPE_22__ TYPE_4__ ;
+typedef struct TYPE_21__ TYPE_3__ ;
+typedef struct TYPE_20__ TYPE_2__ ;
+typedef struct TYPE_19__ TYPE_1__ ;
+
+
+typedef TYPE_2__* xsltTransformContextPtr ;
+typedef TYPE_3__* xsltDocumentPtr ;
+typedef int xmlXPathParserContextPtr ;
+typedef TYPE_4__* xmlXPathObjectPtr ;
+typedef int * xmlXPathContextPtr ;
+typedef TYPE_5__* xmlURIPtr ;
+typedef int * xmlNodePtr ;
+typedef TYPE_6__* xmlDocPtr ;
+typedef char xmlChar ;
+struct TYPE_24__ {int URL; } ;
+struct TYPE_23__ {int * fragment; } ;
 struct TYPE_22__ {int type; } ;
 struct TYPE_21__ {TYPE_6__* doc; } ;
 struct TYPE_20__ {TYPE_1__* style; } ;
 struct TYPE_19__ {TYPE_6__* doc; } ;
-
-/* Variables and functions */
-#define  XPATH_BOOLEAN 137 
-#define  XPATH_LOCATIONSET 136 
-#define  XPATH_NODESET 135 
-#define  XPATH_NUMBER 134 
-#define  XPATH_POINT 133 
-#define  XPATH_RANGE 132 
-#define  XPATH_STRING 131 
-#define  XPATH_UNDEFINED 130 
-#define  XPATH_USERS 129 
-#define  XPATH_XSLT_TREE 128 
- int /*<<< orphan*/  valuePush (int /*<<< orphan*/ ,TYPE_4__*) ; 
- int /*<<< orphan*/  xmlFree (char*) ; 
- int /*<<< orphan*/  xmlFreeURI (TYPE_5__*) ; 
- TYPE_5__* xmlParseURI (char const*) ; 
- char* xmlSaveUri (TYPE_5__*) ; 
- scalar_t__ xmlStrEqual (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  xmlXPathFreeContext (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  xmlXPathFreeObject (TYPE_4__*) ; 
- TYPE_4__* xmlXPathNewNodeSet (int /*<<< orphan*/ *) ; 
- TYPE_4__* xmlXPtrEval (char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * xmlXPtrNewContext (TYPE_6__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- TYPE_3__* xsltLoadDocument (TYPE_2__*,char*) ; 
- int /*<<< orphan*/  xsltTransformError (TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*,...) ; 
- TYPE_2__* xsltXPathGetTransformContext (int /*<<< orphan*/ ) ; 
+ int valuePush (int ,TYPE_4__*) ;
+ int xmlFree (char*) ;
+ int xmlFreeURI (TYPE_5__*) ;
+ TYPE_5__* xmlParseURI (char const*) ;
+ char* xmlSaveUri (TYPE_5__*) ;
+ scalar_t__ xmlStrEqual (int ,char*) ;
+ int xmlXPathFreeContext (int *) ;
+ int xmlXPathFreeObject (TYPE_4__*) ;
+ TYPE_4__* xmlXPathNewNodeSet (int *) ;
+ TYPE_4__* xmlXPtrEval (char*,int *) ;
+ int * xmlXPtrNewContext (TYPE_6__*,int *,int *) ;
+ TYPE_3__* xsltLoadDocument (TYPE_2__*,char*) ;
+ int xsltTransformError (TYPE_2__*,int *,int *,char*,...) ;
+ TYPE_2__* xsltXPathGetTransformContext (int ) ;
 
 __attribute__((used)) static void
 xsltDocumentFunctionLoadDocument(xmlXPathParserContextPtr ctxt, xmlChar* URI)
@@ -64,99 +52,85 @@ xsltDocumentFunctionLoadDocument(xmlXPathParserContextPtr ctxt, xmlChar* URI)
     xsltTransformContextPtr tctxt;
     xmlURIPtr uri;
     xmlChar *fragment;
-    xsltDocumentPtr idoc; /* document info */
+    xsltDocumentPtr idoc;
     xmlDocPtr doc;
-    xmlXPathContextPtr xptrctxt = NULL;
-    xmlXPathObjectPtr resObj = NULL;
+    xmlXPathContextPtr xptrctxt = ((void*)0);
+    xmlXPathObjectPtr resObj = ((void*)0);
 
     tctxt = xsltXPathGetTransformContext(ctxt);
-    if (tctxt == NULL) {
-	xsltTransformError(NULL, NULL, NULL,
-	    "document() : internal error tctxt == NULL\n");
-	valuePush(ctxt, xmlXPathNewNodeSet(NULL));
-	return;
+    if (tctxt == ((void*)0)) {
+ xsltTransformError(((void*)0), ((void*)0), ((void*)0),
+     "document() : internal error tctxt == NULL\n");
+ valuePush(ctxt, xmlXPathNewNodeSet(((void*)0)));
+ return;
     }
 
     uri = xmlParseURI((const char *) URI);
-    if (uri == NULL) {
-	xsltTransformError(tctxt, NULL, NULL,
-	    "document() : failed to parse URI\n");
-	valuePush(ctxt, xmlXPathNewNodeSet(NULL));
-	return;
+    if (uri == ((void*)0)) {
+ xsltTransformError(tctxt, ((void*)0), ((void*)0),
+     "document() : failed to parse URI\n");
+ valuePush(ctxt, xmlXPathNewNodeSet(((void*)0)));
+ return;
     }
 
-    /*
-     * check for and remove fragment identifier
-     */
+
+
+
     fragment = (xmlChar *)uri->fragment;
-    if (fragment != NULL) {
+    if (fragment != ((void*)0)) {
         xmlChar *newURI;
-	uri->fragment = NULL;
-	newURI = xmlSaveUri(uri);
-	idoc = xsltLoadDocument(tctxt, newURI);
-	xmlFree(newURI);
+ uri->fragment = ((void*)0);
+ newURI = xmlSaveUri(uri);
+ idoc = xsltLoadDocument(tctxt, newURI);
+ xmlFree(newURI);
     } else
-	idoc = xsltLoadDocument(tctxt, URI);
+ idoc = xsltLoadDocument(tctxt, URI);
     xmlFreeURI(uri);
 
-    if (idoc == NULL) {
-	if ((URI == NULL) ||
-	    (URI[0] == '#') ||
-	    ((tctxt->style->doc != NULL) &&
-	    (xmlStrEqual(tctxt->style->doc->URL, URI))))
-	{
-	    /*
-	    * This selects the stylesheet's doc itself.
-	    */
-	    doc = tctxt->style->doc;
-	} else {
-	    valuePush(ctxt, xmlXPathNewNodeSet(NULL));
+    if (idoc == ((void*)0)) {
+ if ((URI == ((void*)0)) ||
+     (URI[0] == '#') ||
+     ((tctxt->style->doc != ((void*)0)) &&
+     (xmlStrEqual(tctxt->style->doc->URL, URI))))
+ {
 
-	    if (fragment != NULL)
-		xmlFree(fragment);
 
-	    return;
-	}
+
+     doc = tctxt->style->doc;
+ } else {
+     valuePush(ctxt, xmlXPathNewNodeSet(((void*)0)));
+
+     if (fragment != ((void*)0))
+  xmlFree(fragment);
+
+     return;
+ }
     } else
-	doc = idoc->doc;
+ doc = idoc->doc;
 
-    if (fragment == NULL) {
-	valuePush(ctxt, xmlXPathNewNodeSet((xmlNodePtr) doc));
-	return;
+    if (fragment == ((void*)0)) {
+ valuePush(ctxt, xmlXPathNewNodeSet((xmlNodePtr) doc));
+ return;
     }
-
-    /* use XPointer of HTML location for fragment ID */
-#ifdef LIBXML_XPTR_ENABLED
-    xptrctxt = xmlXPtrNewContext(doc, NULL, NULL);
-    if (xptrctxt == NULL) {
-	xsltTransformError(tctxt, NULL, NULL,
-	    "document() : internal error xptrctxt == NULL\n");
-	goto out_fragment;
-    }
-
-    resObj = xmlXPtrEval(fragment, xptrctxt);
-    xmlXPathFreeContext(xptrctxt);
-#endif
-
-    if (resObj == NULL)
-	goto out_fragment;
+    if (resObj == ((void*)0))
+ goto out_fragment;
 
     switch (resObj->type) {
-	case XPATH_NODESET:
-	    break;
-	case XPATH_UNDEFINED:
-	case XPATH_BOOLEAN:
-	case XPATH_NUMBER:
-	case XPATH_STRING:
-	case XPATH_POINT:
-	case XPATH_USERS:
-	case XPATH_XSLT_TREE:
-	case XPATH_RANGE:
-	case XPATH_LOCATIONSET:
-	    xsltTransformError(tctxt, NULL, NULL,
-		"document() : XPointer does not select a node set: #%s\n",
-		fragment);
-	goto out_object;
+ case 135:
+     break;
+ case 130:
+ case 137:
+ case 134:
+ case 131:
+ case 133:
+ case 129:
+ case 128:
+ case 132:
+ case 136:
+     xsltTransformError(tctxt, ((void*)0), ((void*)0),
+  "document() : XPointer does not select a node set: #%s\n",
+  fragment);
+ goto out_object;
     }
 
     valuePush(ctxt, resObj);
@@ -167,6 +141,6 @@ out_object:
     xmlXPathFreeObject(resObj);
 
 out_fragment:
-    valuePush(ctxt, xmlXPathNewNodeSet(NULL));
+    valuePush(ctxt, xmlXPathNewNodeSet(((void*)0)));
     xmlFree(fragment);
 }

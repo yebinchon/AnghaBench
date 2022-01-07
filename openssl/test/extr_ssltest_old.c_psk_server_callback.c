@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  SSL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_printf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  bio_err ; 
- int /*<<< orphan*/  psk_key ; 
- unsigned int psk_key2bn (int /*<<< orphan*/ ,unsigned char*,unsigned int) ; 
- scalar_t__ strcmp (char const*,char*) ; 
+
+
+
+typedef int SSL ;
+
+
+ int BIO_printf (int ,char*) ;
+ int bio_err ;
+ int psk_key ;
+ unsigned int psk_key2bn (int ,unsigned char*,unsigned int) ;
+ scalar_t__ strcmp (char const*,char*) ;
 
 __attribute__((used)) static unsigned int psk_server_callback(SSL *ssl, const char *identity,
                                         unsigned char *psk,

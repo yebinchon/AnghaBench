@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
+
+
+
+
+typedef int u8 ;
 struct usb_ftdi {int dummy; } ;
 struct urb {int dummy; } ;
 struct platform_device {int dummy; } ;
 
-/* Variables and functions */
- int ftdi_elan_edset_output (struct usb_ftdi*,int /*<<< orphan*/ ,void*,struct urb*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void (*) (void*,struct urb*,int /*<<< orphan*/ *,int,int,int,int,int,int,int,int,int)) ; 
- struct usb_ftdi* platform_device_to_usb_ftdi (struct platform_device*) ; 
+
+ int ftdi_elan_edset_output (struct usb_ftdi*,int ,void*,struct urb*,int ,int ,int ,void (*) (void*,struct urb*,int *,int,int,int,int,int,int,int,int,int)) ;
+ struct usb_ftdi* platform_device_to_usb_ftdi (struct platform_device*) ;
 
 int usb_ftdi_elan_edset_output(struct platform_device *pdev, u8 ed_number,
         void *endp, struct urb *urb, u8 address, u8 ep_number, u8 toggle_bits,

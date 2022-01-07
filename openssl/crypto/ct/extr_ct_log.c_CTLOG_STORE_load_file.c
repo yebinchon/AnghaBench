@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {scalar_t__ invalid_log_entries; int /*<<< orphan*/ * conf; int /*<<< orphan*/ * log_store; } ;
-typedef  TYPE_1__ CTLOG_STORE_LOAD_CTX ;
-typedef  int /*<<< orphan*/  CTLOG_STORE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CONF_parse_list (char*,char,int,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  CT_F_CTLOG_STORE_LOAD_FILE ; 
- int /*<<< orphan*/  CT_R_LOG_CONF_INVALID ; 
- int /*<<< orphan*/  CTerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NCONF_free (int /*<<< orphan*/ *) ; 
- char* NCONF_get_string (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*) ; 
- scalar_t__ NCONF_load (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * NCONF_new (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ctlog_store_load_ctx_free (TYPE_1__*) ; 
- TYPE_1__* ctlog_store_load_ctx_new () ; 
- int /*<<< orphan*/  ctlog_store_load_log ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {scalar_t__ invalid_log_entries; int * conf; int * log_store; } ;
+typedef TYPE_1__ CTLOG_STORE_LOAD_CTX ;
+typedef int CTLOG_STORE ;
+
+
+ int CONF_parse_list (char*,char,int,int ,TYPE_1__*) ;
+ int CT_F_CTLOG_STORE_LOAD_FILE ;
+ int CT_R_LOG_CONF_INVALID ;
+ int CTerr (int ,int ) ;
+ int NCONF_free (int *) ;
+ char* NCONF_get_string (int *,int *,char*) ;
+ scalar_t__ NCONF_load (int *,char const*,int *) ;
+ int * NCONF_new (int *) ;
+ int ctlog_store_load_ctx_free (TYPE_1__*) ;
+ TYPE_1__* ctlog_store_load_ctx_new () ;
+ int ctlog_store_load_log ;
 
 int CTLOG_STORE_load_file(CTLOG_STORE *store, const char *file)
 {
@@ -34,20 +34,20 @@ int CTLOG_STORE_load_file(CTLOG_STORE *store, const char *file)
     char *enabled_logs;
     CTLOG_STORE_LOAD_CTX* load_ctx = ctlog_store_load_ctx_new();
 
-    if (load_ctx == NULL)
+    if (load_ctx == ((void*)0))
         return 0;
     load_ctx->log_store = store;
-    load_ctx->conf = NCONF_new(NULL);
-    if (load_ctx->conf == NULL)
+    load_ctx->conf = NCONF_new(((void*)0));
+    if (load_ctx->conf == ((void*)0))
         goto end;
 
-    if (NCONF_load(load_ctx->conf, file, NULL) <= 0) {
+    if (NCONF_load(load_ctx->conf, file, ((void*)0)) <= 0) {
         CTerr(CT_F_CTLOG_STORE_LOAD_FILE, CT_R_LOG_CONF_INVALID);
         goto end;
     }
 
-    enabled_logs = NCONF_get_string(load_ctx->conf, NULL, "enabled_logs");
-    if (enabled_logs == NULL) {
+    enabled_logs = NCONF_get_string(load_ctx->conf, ((void*)0), "enabled_logs");
+    if (enabled_logs == ((void*)0)) {
         CTerr(CT_F_CTLOG_STORE_LOAD_FILE, CT_R_LOG_CONF_INVALID);
         goto end;
     }

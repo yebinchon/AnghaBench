@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct kvm_memory_slot {int dummy; } ;
 struct kvm {int dummy; } ;
-typedef  int /*<<< orphan*/  pte_t ;
-typedef  int gpa_t ;
-typedef  int gfn_t ;
+typedef int pte_t ;
+typedef int gpa_t ;
+typedef int gfn_t ;
 
-/* Variables and functions */
- int PAGE_SHIFT ; 
- int /*<<< orphan*/ * kvm_mips_pte_for_gpa (struct kvm*,int /*<<< orphan*/ *,int) ; 
- int pte_young (int /*<<< orphan*/ ) ; 
+
+ int PAGE_SHIFT ;
+ int * kvm_mips_pte_for_gpa (struct kvm*,int *,int) ;
+ int pte_young (int ) ;
 
 __attribute__((used)) static int kvm_test_age_hva_handler(struct kvm *kvm, gfn_t gfn, gfn_t gfn_end,
-				    struct kvm_memory_slot *memslot, void *data)
+        struct kvm_memory_slot *memslot, void *data)
 {
-	gpa_t gpa = gfn << PAGE_SHIFT;
-	pte_t *gpa_pte = kvm_mips_pte_for_gpa(kvm, NULL, gpa);
+ gpa_t gpa = gfn << PAGE_SHIFT;
+ pte_t *gpa_pte = kvm_mips_pte_for_gpa(kvm, ((void*)0), gpa);
 
-	if (!gpa_pte)
-		return 0;
-	return pte_young(*gpa_pte);
+ if (!gpa_pte)
+  return 0;
+ return pte_young(*gpa_pte);
 }

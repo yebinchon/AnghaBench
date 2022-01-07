@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  nvlist_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IOC_INPUT_TEST (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ZFS_IOC_CLONE ; 
- int /*<<< orphan*/  fnvlist_add_string (int /*<<< orphan*/ *,char*,char const*) ; 
- int /*<<< orphan*/ * fnvlist_alloc () ; 
- int /*<<< orphan*/  nvlist_free (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int nvlist_t ;
+
+
+ int IOC_INPUT_TEST (int ,char const*,int *,int *,int ) ;
+ int ZFS_IOC_CLONE ;
+ int fnvlist_add_string (int *,char*,char const*) ;
+ int * fnvlist_alloc () ;
+ int nvlist_free (int *) ;
 
 __attribute__((used)) static void
 test_clone(const char *snapshot, const char *clone)
 {
-	nvlist_t *required = fnvlist_alloc();
-	nvlist_t *optional = fnvlist_alloc();
-	nvlist_t *props = fnvlist_alloc();
+ nvlist_t *required = fnvlist_alloc();
+ nvlist_t *optional = fnvlist_alloc();
+ nvlist_t *props = fnvlist_alloc();
 
-	fnvlist_add_string(required, "origin", snapshot);
+ fnvlist_add_string(required, "origin", snapshot);
 
-	IOC_INPUT_TEST(ZFS_IOC_CLONE, clone, required, NULL, 0);
+ IOC_INPUT_TEST(ZFS_IOC_CLONE, clone, required, ((void*)0), 0);
 
-	nvlist_free(props);
-	nvlist_free(optional);
-	nvlist_free(required);
+ nvlist_free(props);
+ nvlist_free(optional);
+ nvlist_free(required);
 }

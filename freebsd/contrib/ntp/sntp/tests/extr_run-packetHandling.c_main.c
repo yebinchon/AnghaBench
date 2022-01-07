@@ -1,32 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  RUN_TEST (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  UnityBegin (char*) ; 
- int UnityEnd () ; 
- char* progname ; 
- int /*<<< orphan*/  suite_setup () ; 
- int /*<<< orphan*/  test_GenerateAuthenticatedPacket ; 
- int /*<<< orphan*/  test_GenerateUnauthenticatedPacket ; 
- int /*<<< orphan*/  test_HandleCorrectPacket ; 
- int /*<<< orphan*/  test_HandleKodDemobilize ; 
- int /*<<< orphan*/  test_HandleKodRate ; 
- int /*<<< orphan*/  test_HandleServerAuthenticationFailure ; 
- int /*<<< orphan*/  test_HandleUnusablePacket ; 
- int /*<<< orphan*/  test_HandleUnusableServer ; 
- int /*<<< orphan*/  test_OffsetCalculationNegativeOffset ; 
- int /*<<< orphan*/  test_OffsetCalculationPositiveOffset ; 
+ int RUN_TEST (int ,int) ;
+ int UnityBegin (char*) ;
+ int UnityEnd () ;
+ char* progname ;
+ int suite_setup () ;
+ int test_GenerateAuthenticatedPacket ;
+ int test_GenerateUnauthenticatedPacket ;
+ int test_HandleCorrectPacket ;
+ int test_HandleKodDemobilize ;
+ int test_HandleKodRate ;
+ int test_HandleServerAuthenticationFailure ;
+ int test_HandleUnusablePacket ;
+ int test_HandleUnusableServer ;
+ int test_OffsetCalculationNegativeOffset ;
+ int test_OffsetCalculationPositiveOffset ;
 
 int main(int argc, char *argv[])
 {

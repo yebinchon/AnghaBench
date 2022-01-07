@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  br_config_option ;
 
-/* Variables and functions */
- int /*<<< orphan*/  const* config ; 
+
+
+
+typedef int br_config_option ;
+
+
+ int const* config ;
 
 const br_config_option *
 br_get_config(void)
 {
-	return config;
+ return config;
 }

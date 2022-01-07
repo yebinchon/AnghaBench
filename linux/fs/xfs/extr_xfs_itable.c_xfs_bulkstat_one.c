@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct xfs_ibulk {int icount; int /*<<< orphan*/  startino; int /*<<< orphan*/  mp; } ;
+
+
+
+
+struct xfs_ibulk {int icount; int startino; int mp; } ;
 struct xfs_bulkstat {int dummy; } ;
-struct xfs_bstat_chunk {int /*<<< orphan*/  buf; struct xfs_ibulk* breq; int /*<<< orphan*/  formatter; } ;
-typedef  int /*<<< orphan*/  bulkstat_one_fmt_pf ;
+struct xfs_bstat_chunk {int buf; struct xfs_ibulk* breq; int formatter; } ;
+typedef int bulkstat_one_fmt_pf ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- int ECANCELED ; 
- int ENOMEM ; 
- int /*<<< orphan*/  KM_MAYFAIL ; 
- int /*<<< orphan*/  kmem_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kmem_zalloc (int,int /*<<< orphan*/ ) ; 
- int xfs_bulkstat_one_int (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,struct xfs_bstat_chunk*) ; 
+
+ int ASSERT (int) ;
+ int ECANCELED ;
+ int ENOMEM ;
+ int KM_MAYFAIL ;
+ int kmem_free (int ) ;
+ int kmem_zalloc (int,int ) ;
+ int xfs_bulkstat_one_int (int ,int *,int ,struct xfs_bstat_chunk*) ;
 
 int
 xfs_bulkstat_one(
-	struct xfs_ibulk	*breq,
-	bulkstat_one_fmt_pf	formatter)
+ struct xfs_ibulk *breq,
+ bulkstat_one_fmt_pf formatter)
 {
-	struct xfs_bstat_chunk	bc = {
-		.formatter	= formatter,
-		.breq		= breq,
-	};
-	int			error;
+ struct xfs_bstat_chunk bc = {
+  .formatter = formatter,
+  .breq = breq,
+ };
+ int error;
 
-	ASSERT(breq->icount == 1);
+ ASSERT(breq->icount == 1);
 
-	bc.buf = kmem_zalloc(sizeof(struct xfs_bulkstat),
-			KM_MAYFAIL);
-	if (!bc.buf)
-		return -ENOMEM;
+ bc.buf = kmem_zalloc(sizeof(struct xfs_bulkstat),
+   KM_MAYFAIL);
+ if (!bc.buf)
+  return -ENOMEM;
 
-	error = xfs_bulkstat_one_int(breq->mp, NULL, breq->startino, &bc);
+ error = xfs_bulkstat_one_int(breq->mp, ((void*)0), breq->startino, &bc);
 
-	kmem_free(bc.buf);
+ kmem_free(bc.buf);
 
-	/*
-	 * If we reported one inode to userspace then we abort because we hit
-	 * the end of the buffer.  Don't leak that back to userspace.
-	 */
-	if (error == -ECANCELED)
-		error = 0;
 
-	return error;
+
+
+
+ if (error == -ECANCELED)
+  error = 0;
+
+ return error;
 }

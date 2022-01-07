@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct lis3lv02d {struct acpi_device* bus_priv; } ;
-struct acpi_device {int /*<<< orphan*/  handle; } ;
+struct acpi_device {int handle; } ;
 
-/* Variables and functions */
- scalar_t__ AE_OK ; 
- int EINVAL ; 
- int /*<<< orphan*/  METHOD_NAME__INI ; 
- scalar_t__ acpi_evaluate_object (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ scalar_t__ AE_OK ;
+ int EINVAL ;
+ int METHOD_NAME__INI ;
+ scalar_t__ acpi_evaluate_object (int ,int ,int *,int *) ;
 
 int lis3lv02d_acpi_init(struct lis3lv02d *lis3)
 {
-	struct acpi_device *dev = lis3->bus_priv;
-	if (acpi_evaluate_object(dev->handle, METHOD_NAME__INI,
-				 NULL, NULL) != AE_OK)
-		return -EINVAL;
+ struct acpi_device *dev = lis3->bus_priv;
+ if (acpi_evaluate_object(dev->handle, METHOD_NAME__INI,
+     ((void*)0), ((void*)0)) != AE_OK)
+  return -EINVAL;
 
-	return 0;
+ return 0;
 }

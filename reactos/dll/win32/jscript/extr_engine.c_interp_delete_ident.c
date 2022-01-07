@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  script_ctx_t ;
-struct TYPE_6__ {int /*<<< orphan*/  disp; int /*<<< orphan*/  id; } ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int script_ctx_t ;
+struct TYPE_6__ {int disp; int id; } ;
 struct TYPE_7__ {TYPE_1__ idref; } ;
 struct TYPE_8__ {int type; TYPE_2__ u; } ;
-typedef  TYPE_3__ exprval_t ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  BSTR ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef TYPE_3__ exprval_t ;
+typedef int HRESULT ;
+typedef int BSTR ;
+typedef int BOOL ;
 
-/* Variables and functions */
-#define  EXPRVAL_IDREF 130 
-#define  EXPRVAL_INVALID 129 
-#define  EXPRVAL_STACK_REF 128 
- int /*<<< orphan*/  E_NOTIMPL ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  FIXME (char*) ; 
- int /*<<< orphan*/  IDispatch_Release (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  debugstr_w (int /*<<< orphan*/  const) ; 
- int /*<<< orphan*/  disp_delete (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  exprval_release (TYPE_3__*) ; 
- int /*<<< orphan*/  get_op_bstr (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  identifier_eval (int /*<<< orphan*/ *,int /*<<< orphan*/  const,TYPE_3__*) ; 
- int /*<<< orphan*/  jsval_bool (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stack_push (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+
+ int E_NOTIMPL ;
+ scalar_t__ FAILED (int ) ;
+ int FALSE ;
+ int FIXME (char*) ;
+ int IDispatch_Release (int ) ;
+ int TRACE (char*,int ) ;
+ int TRUE ;
+ int debugstr_w (int const) ;
+ int disp_delete (int ,int ,int *) ;
+ int exprval_release (TYPE_3__*) ;
+ int get_op_bstr (int *,int ) ;
+ int identifier_eval (int *,int const,TYPE_3__*) ;
+ int jsval_bool (int ) ;
+ int stack_push (int *,int ) ;
 
 __attribute__((used)) static HRESULT interp_delete_ident(script_ctx_t *ctx)
 {
@@ -55,16 +55,16 @@ __attribute__((used)) static HRESULT interp_delete_ident(script_ctx_t *ctx)
         return hres;
 
     switch(exprval.type) {
-    case EXPRVAL_STACK_REF:
+    case 128:
         ret = FALSE;
         break;
-    case EXPRVAL_IDREF:
+    case 130:
         hres = disp_delete(exprval.u.idref.disp, exprval.u.idref.id, &ret);
         IDispatch_Release(exprval.u.idref.disp);
         if(FAILED(hres))
             return hres;
         break;
-    case EXPRVAL_INVALID:
+    case 129:
         ret = TRUE;
         break;
     default:

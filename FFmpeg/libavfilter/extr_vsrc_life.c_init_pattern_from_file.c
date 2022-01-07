@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_7__ {TYPE_1__* priv; } ;
-struct TYPE_6__ {char* file_buf; int file_bufsize; int w; int h; scalar_t__ buf_idx; int /*<<< orphan*/ ** buf; int /*<<< orphan*/ * filename; } ;
-typedef  TYPE_1__ LifeContext ;
-typedef  TYPE_2__ AVFilterContext ;
+struct TYPE_6__ {char* file_buf; int file_bufsize; int w; int h; scalar_t__ buf_idx; int ** buf; int * filename; } ;
+typedef TYPE_1__ LifeContext ;
+typedef TYPE_2__ AVFilterContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ALIVE_CELL ; 
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_LOG_DEBUG ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  ENOMEM ; 
- int FFMAX (int,int) ; 
- void* av_calloc (int,int) ; 
- int av_file_map (int /*<<< orphan*/ *,char**,int*,int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  av_freep (int /*<<< orphan*/ **) ; 
- scalar_t__ av_isgraph (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_log (TYPE_2__*,int /*<<< orphan*/ ,char*,int,int,...) ; 
+
+ int ALIVE_CELL ;
+ int AVERROR (int ) ;
+ int AV_LOG_DEBUG ;
+ int AV_LOG_ERROR ;
+ int EINVAL ;
+ int ENOMEM ;
+ int FFMAX (int,int) ;
+ void* av_calloc (int,int) ;
+ int av_file_map (int *,char**,int*,int ,TYPE_2__*) ;
+ int av_freep (int **) ;
+ scalar_t__ av_isgraph (int ) ;
+ int av_log (TYPE_2__*,int ,char*,int,int,...) ;
 
 __attribute__((used)) static int init_pattern_from_file(AVFilterContext *ctx)
 {
@@ -42,7 +42,7 @@ __attribute__((used)) static int init_pattern_from_file(AVFilterContext *ctx)
         return ret;
     av_freep(&life->filename);
 
-    /* prescan file to get the number of lines and the maximum width */
+
     w = 0;
     for (i = 0; i < life->file_bufsize; i++) {
         if (life->file_buf[i] == '\n') {
@@ -61,7 +61,7 @@ __attribute__((used)) static int init_pattern_from_file(AVFilterContext *ctx)
             return AVERROR(EINVAL);
         }
     } else {
-        /* size was not specified, set it to size of the grid */
+
         life->w = max_w;
         life->h = h;
     }
@@ -73,7 +73,7 @@ __attribute__((used)) static int init_pattern_from_file(AVFilterContext *ctx)
         return AVERROR(ENOMEM);
     }
 
-    /* fill buf[0] */
+
     p = life->file_buf;
     for (i0 = 0, i = (life->h - h)/2; i0 < h; i0++, i++) {
         for (j = (life->w - max_w)/2;; j++) {

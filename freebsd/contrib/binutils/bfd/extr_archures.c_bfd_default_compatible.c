@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {scalar_t__ arch; scalar_t__ bits_per_word; scalar_t__ mach; } ;
-typedef  TYPE_1__ bfd_arch_info_type ;
+typedef TYPE_1__ bfd_arch_info_type ;
 
-/* Variables and functions */
+
 
 const bfd_arch_info_type *
 bfd_default_compatible (const bfd_arch_info_type *a,
-			const bfd_arch_info_type *b)
+   const bfd_arch_info_type *b)
 {
   if (a->arch != b->arch)
-    return NULL;
+    return ((void*)0);
 
   if (a->bits_per_word != b->bits_per_word)
-    return NULL;
+    return ((void*)0);
 
   if (a->mach > b->mach)
     return a;

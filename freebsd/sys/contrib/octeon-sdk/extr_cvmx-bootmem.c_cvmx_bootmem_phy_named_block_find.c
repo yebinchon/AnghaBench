@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint64_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int /*<<< orphan*/  cvmx_bootmem_named_block_desc_t ;
 
-/* Variables and functions */
- int CVMX_BOOTMEM_DESC_GET_FIELD (int /*<<< orphan*/ ) ; 
- int CVMX_BOOTMEM_NAMED_GET_FIELD (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CVMX_BOOTMEM_NAMED_GET_NAME (int,char*,int) ; 
- int /*<<< orphan*/  __cvmx_bootmem_check_version (int) ; 
- int /*<<< orphan*/  __cvmx_bootmem_lock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  __cvmx_bootmem_unlock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cvmx_dprintf (char*,char const*) ; 
- int named_block_array_addr ; 
- int /*<<< orphan*/  named_block_name_len ; 
- int /*<<< orphan*/  named_block_num_blocks ; 
- int /*<<< orphan*/  size ; 
- int /*<<< orphan*/  strncmp (char const*,char*,int) ; 
+
+
+
+typedef int uint64_t ;
+typedef int uint32_t ;
+typedef int cvmx_bootmem_named_block_desc_t ;
+
+
+ int CVMX_BOOTMEM_DESC_GET_FIELD (int ) ;
+ int CVMX_BOOTMEM_NAMED_GET_FIELD (int,int ) ;
+ int CVMX_BOOTMEM_NAMED_GET_NAME (int,char*,int) ;
+ int __cvmx_bootmem_check_version (int) ;
+ int __cvmx_bootmem_lock (int ) ;
+ int __cvmx_bootmem_unlock (int ) ;
+ int cvmx_dprintf (char*,char const*) ;
+ int named_block_array_addr ;
+ int named_block_name_len ;
+ int named_block_num_blocks ;
+ int size ;
+ int strncmp (char const*,char*,int) ;
 
 uint64_t cvmx_bootmem_phy_named_block_find(const char *name, uint32_t flags)
 {
     uint64_t result = 0;
 
-#ifdef DEBUG
-    cvmx_dprintf("cvmx_bootmem_phy_named_block_find: %s\n", name);
-#endif
+
+
+
     __cvmx_bootmem_lock(flags);
     if (!__cvmx_bootmem_check_version(3))
     {

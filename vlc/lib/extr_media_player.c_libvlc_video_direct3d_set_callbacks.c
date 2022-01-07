@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  void* libvlc_video_swap_cb ;
-typedef  void* libvlc_video_direct3d_update_output_cb ;
-typedef  void* libvlc_video_direct3d_start_end_rendering_cb ;
-typedef  void* libvlc_video_direct3d_set_resize_cb ;
-typedef  void* libvlc_video_direct3d_select_plane_cb ;
-typedef  scalar_t__ libvlc_video_direct3d_engine_t ;
-typedef  void* libvlc_video_direct3d_device_setup_cb ;
-typedef  void* libvlc_video_direct3d_device_cleanup_cb ;
-typedef  int /*<<< orphan*/  libvlc_media_player_t ;
 
-/* Variables and functions */
- scalar_t__ libvlc_video_direct3d_engine_d3d11 ; 
- scalar_t__ libvlc_video_direct3d_engine_d3d9 ; 
- int /*<<< orphan*/  var_SetAddress (int /*<<< orphan*/ *,char*,void*) ; 
- int /*<<< orphan*/  var_SetString (int /*<<< orphan*/ *,char*,char*) ; 
+
+
+
+typedef void* libvlc_video_swap_cb ;
+typedef void* libvlc_video_direct3d_update_output_cb ;
+typedef void* libvlc_video_direct3d_start_end_rendering_cb ;
+typedef void* libvlc_video_direct3d_set_resize_cb ;
+typedef void* libvlc_video_direct3d_select_plane_cb ;
+typedef scalar_t__ libvlc_video_direct3d_engine_t ;
+typedef void* libvlc_video_direct3d_device_setup_cb ;
+typedef void* libvlc_video_direct3d_device_cleanup_cb ;
+typedef int libvlc_media_player_t ;
+
+
+ scalar_t__ libvlc_video_direct3d_engine_d3d11 ;
+ scalar_t__ libvlc_video_direct3d_engine_d3d9 ;
+ int var_SetAddress (int *,char*,void*) ;
+ int var_SetString (int *,char*,char*) ;
 
 bool libvlc_video_direct3d_set_callbacks(libvlc_media_player_t *mp,
                                          libvlc_video_direct3d_engine_t engine,
@@ -50,7 +50,7 @@ bool libvlc_video_direct3d_set_callbacks(libvlc_media_player_t *mp,
         var_SetString ( mp, "dec-dev", "d3d9-device" );
     }
     else
-        return false;
+        return 0;
 
     var_SetAddress( mp, "vout-cb-opaque", opaque );
     var_SetAddress( mp, "vout-cb-setup", setup_cb );
@@ -60,5 +60,5 @@ bool libvlc_video_direct3d_set_callbacks(libvlc_media_player_t *mp,
     var_SetAddress( mp, "vout-cb-swap", swap_cb );
     var_SetAddress( mp, "vout-cb-make-current", makeCurrent_cb );
     var_SetAddress( mp, "vout-cb-select-plane", select_plane_cb );
-    return true;
+    return 1;
 }

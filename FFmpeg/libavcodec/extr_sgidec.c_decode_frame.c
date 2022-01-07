@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_16__ {int /*<<< orphan*/  pix_fmt; TYPE_1__* priv_data; } ;
-struct TYPE_15__ {int key_frame; int* linesize; int /*<<< orphan*/ ** data; int /*<<< orphan*/  pict_type; } ;
-struct TYPE_14__ {int size; int /*<<< orphan*/  data; } ;
-struct TYPE_13__ {int bytes_per_channel; int height; int linesize; int /*<<< orphan*/  g; void* width; void* depth; } ;
-typedef  TYPE_1__ SgiState ;
-typedef  TYPE_2__ AVPacket ;
-typedef  TYPE_3__ AVFrame ;
-typedef  TYPE_4__ AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_PICTURE_TYPE_I ; 
- int /*<<< orphan*/  AV_PIX_FMT_GRAY16BE ; 
- int /*<<< orphan*/  AV_PIX_FMT_GRAY8 ; 
- int /*<<< orphan*/  AV_PIX_FMT_RGB24 ; 
- int /*<<< orphan*/  AV_PIX_FMT_RGB48BE ; 
- int /*<<< orphan*/  AV_PIX_FMT_RGBA ; 
- int /*<<< orphan*/  AV_PIX_FMT_RGBA64BE ; 
- int /*<<< orphan*/  SEEK_SET ; 
- void* SGI_GRAYSCALE ; 
- scalar_t__ SGI_HEADER_SIZE ; 
- void* SGI_MAGIC ; 
- void* SGI_RGB ; 
- void* SGI_RGBA ; 
- int /*<<< orphan*/  av_log (TYPE_4__*,int /*<<< orphan*/ ,char*,...) ; 
- void* bytestream2_get_be16u (int /*<<< orphan*/ *) ; 
- scalar_t__ bytestream2_get_bytes_left (int /*<<< orphan*/ *) ; 
- void* bytestream2_get_byteu (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bytestream2_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  bytestream2_seek (int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ ) ; 
- int ff_get_buffer (TYPE_4__*,TYPE_3__*,int /*<<< orphan*/ ) ; 
- int ff_set_dimensions (TYPE_4__*,void*,int) ; 
- int read_rle_sgi (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int read_uncompressed_sgi (int /*<<< orphan*/ *,TYPE_1__*) ; 
+
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_16__ {int pix_fmt; TYPE_1__* priv_data; } ;
+struct TYPE_15__ {int key_frame; int* linesize; int ** data; int pict_type; } ;
+struct TYPE_14__ {int size; int data; } ;
+struct TYPE_13__ {int bytes_per_channel; int height; int linesize; int g; void* width; void* depth; } ;
+typedef TYPE_1__ SgiState ;
+typedef TYPE_2__ AVPacket ;
+typedef TYPE_3__ AVFrame ;
+typedef TYPE_4__ AVCodecContext ;
+
+
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ int AV_PICTURE_TYPE_I ;
+ int AV_PIX_FMT_GRAY16BE ;
+ int AV_PIX_FMT_GRAY8 ;
+ int AV_PIX_FMT_RGB24 ;
+ int AV_PIX_FMT_RGB48BE ;
+ int AV_PIX_FMT_RGBA ;
+ int AV_PIX_FMT_RGBA64BE ;
+ int SEEK_SET ;
+ void* SGI_GRAYSCALE ;
+ scalar_t__ SGI_HEADER_SIZE ;
+ void* SGI_MAGIC ;
+ void* SGI_RGB ;
+ void* SGI_RGBA ;
+ int av_log (TYPE_4__*,int ,char*,...) ;
+ void* bytestream2_get_be16u (int *) ;
+ scalar_t__ bytestream2_get_bytes_left (int *) ;
+ void* bytestream2_get_byteu (int *) ;
+ int bytestream2_init (int *,int ,int) ;
+ int bytestream2_seek (int *,scalar_t__,int ) ;
+ int ff_get_buffer (TYPE_4__*,TYPE_3__*,int ) ;
+ int ff_set_dimensions (TYPE_4__*,void*,int) ;
+ int read_rle_sgi (int *,TYPE_1__*) ;
+ int read_uncompressed_sgi (int *,TYPE_1__*) ;
 
 __attribute__((used)) static int decode_frame(AVCodecContext *avctx,
                         void *data, int *got_frame,
@@ -67,25 +67,25 @@ __attribute__((used)) static int decode_frame(AVCodecContext *avctx,
         return AVERROR_INVALIDDATA;
     }
 
-    /* Test for SGI magic. */
+
     if (bytestream2_get_be16u(&s->g) != SGI_MAGIC) {
         av_log(avctx, AV_LOG_ERROR, "bad magic number\n");
         return AVERROR_INVALIDDATA;
     }
 
-    rle                  = bytestream2_get_byteu(&s->g);
+    rle = bytestream2_get_byteu(&s->g);
     s->bytes_per_channel = bytestream2_get_byteu(&s->g);
-    dimension            = bytestream2_get_be16u(&s->g);
-    s->width             = bytestream2_get_be16u(&s->g);
-    s->height            = bytestream2_get_be16u(&s->g);
-    s->depth             = bytestream2_get_be16u(&s->g);
+    dimension = bytestream2_get_be16u(&s->g);
+    s->width = bytestream2_get_be16u(&s->g);
+    s->height = bytestream2_get_be16u(&s->g);
+    s->depth = bytestream2_get_be16u(&s->g);
 
     if (s->bytes_per_channel != 1 && s->bytes_per_channel != 2) {
         av_log(avctx, AV_LOG_ERROR, "wrong channel number\n");
         return AVERROR_INVALIDDATA;
     }
 
-    /* Check for supported image dimensions. */
+
     if (dimension != 2 && dimension != 3) {
         av_log(avctx, AV_LOG_ERROR, "wrong dimension number\n");
         return AVERROR_INVALIDDATA;
@@ -117,7 +117,7 @@ __attribute__((used)) static int decode_frame(AVCodecContext *avctx,
 
     s->linesize = p->linesize[0];
 
-    /* Skip header. */
+
     bytestream2_seek(&s->g, SGI_HEADER_SIZE, SEEK_SET);
     if (rle) {
         ret = read_rle_sgi(out_end, s);

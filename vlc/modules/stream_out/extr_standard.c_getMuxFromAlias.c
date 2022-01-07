@@ -1,18 +1,10 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  strcasecmp (char const*,char const*) ; 
+ int strcasecmp (char const*,char const*) ;
 
 __attribute__((used)) static const char *getMuxFromAlias( const char *psz_alias )
 {
@@ -31,10 +23,10 @@ __attribute__((used)) static const char *getMuxFromAlias( const char *psz_alias 
         { "wma", "asf" },
         { "wmv", "asf" },
         { "trp", "ts" },
-        { "ts",  "ts" },
+        { "ts", "ts" },
         { "mpg", "ps" },
         { "mpeg","ps" },
-        { "ps",  "ps" },
+        { "ps", "ps" },
         { "mpeg1","mpeg1" },
         { "wav", "wav" },
         { "flv", "avformat{mux=flv}" },
@@ -43,11 +35,11 @@ __attribute__((used)) static const char *getMuxFromAlias( const char *psz_alias 
     };
 
     if( !psz_alias )
-        return NULL;
+        return ((void*)0);
 
     for( size_t i = 0; i < sizeof mux_alias / sizeof *mux_alias; i++ )
         if( !strcasecmp( psz_alias, mux_alias[i].alias ) )
             return mux_alias[i].mux;
 
-    return NULL;
+    return ((void*)0);
 }

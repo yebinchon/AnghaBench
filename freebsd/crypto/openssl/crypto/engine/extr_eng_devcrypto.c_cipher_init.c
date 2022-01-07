@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct cipher_data_st {int flags; int /*<<< orphan*/  blocksize; int /*<<< orphan*/  keylen; int /*<<< orphan*/  devcryptoid; } ;
-struct TYPE_3__ {scalar_t__ ses; void* key; int /*<<< orphan*/  keylen; int /*<<< orphan*/  cipher; } ;
-struct cipher_ctx {int mode; TYPE_1__ sess; int /*<<< orphan*/  blocksize; int /*<<< orphan*/  op; } ;
-typedef  int /*<<< orphan*/  EVP_CIPHER_CTX ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CIOCGSESSION ; 
- int /*<<< orphan*/  COP_DECRYPT ; 
- int /*<<< orphan*/  COP_ENCRYPT ; 
- scalar_t__ EVP_CIPHER_CTX_get_cipher_data (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EVP_CIPHER_CTX_nid (int /*<<< orphan*/ *) ; 
- int EVP_CIPH_MODE ; 
- int /*<<< orphan*/  SYS_F_IOCTL ; 
- int /*<<< orphan*/  SYSerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cfd ; 
- scalar_t__ clean_devcrypto_session (TYPE_1__*) ; 
- int /*<<< orphan*/  errno ; 
- struct cipher_data_st* get_cipher_data (int /*<<< orphan*/ ) ; 
- scalar_t__ ioctl (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct cipher_data_st {int flags; int blocksize; int keylen; int devcryptoid; } ;
+struct TYPE_3__ {scalar_t__ ses; void* key; int keylen; int cipher; } ;
+struct cipher_ctx {int mode; TYPE_1__ sess; int blocksize; int op; } ;
+typedef int EVP_CIPHER_CTX ;
+
+
+ int CIOCGSESSION ;
+ int COP_DECRYPT ;
+ int COP_ENCRYPT ;
+ scalar_t__ EVP_CIPHER_CTX_get_cipher_data (int *) ;
+ int EVP_CIPHER_CTX_nid (int *) ;
+ int EVP_CIPH_MODE ;
+ int SYS_F_IOCTL ;
+ int SYSerr (int ,int ) ;
+ int cfd ;
+ scalar_t__ clean_devcrypto_session (TYPE_1__*) ;
+ int errno ;
+ struct cipher_data_st* get_cipher_data (int ) ;
+ scalar_t__ ioctl (int ,int ,TYPE_1__*) ;
 
 __attribute__((used)) static int cipher_init(EVP_CIPHER_CTX *ctx, const unsigned char *key,
                        const unsigned char *iv, int enc)
@@ -39,7 +39,7 @@ __attribute__((used)) static int cipher_init(EVP_CIPHER_CTX *ctx, const unsigned
     const struct cipher_data_st *cipher_d =
         get_cipher_data(EVP_CIPHER_CTX_nid(ctx));
 
-    /* cleanup a previous session */
+
     if (cipher_ctx->sess.ses != 0 &&
         clean_devcrypto_session(&cipher_ctx->sess) == 0)
         return 0;

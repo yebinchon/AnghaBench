@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*,int) ; 
-#define  SERVICE_RUNNING 131 
-#define  SERVICE_START_PENDING 130 
-#define  SERVICE_STOPPED 129 
-#define  SERVICE_STOP_PENDING 128 
+
+
+
+typedef char WCHAR ;
+typedef int DWORD ;
+
+
+ int ERR (char*,int) ;
+
+
+
+
 
 __attribute__((used)) static const WCHAR *get_service_state( DWORD state )
 {
@@ -35,10 +35,10 @@ __attribute__((used)) static const WCHAR *get_service_state( DWORD state )
 
     switch (state)
     {
-    case SERVICE_STOPPED:       return stoppedW;
-    case SERVICE_START_PENDING: return start_pendingW;
-    case SERVICE_STOP_PENDING:  return stop_pendingW;
-    case SERVICE_RUNNING:       return runningW;
+    case 129: return stoppedW;
+    case 130: return start_pendingW;
+    case 128: return stop_pendingW;
+    case 131: return runningW;
     default:
         ERR("unknown state %u\n", state);
         return unknownW;

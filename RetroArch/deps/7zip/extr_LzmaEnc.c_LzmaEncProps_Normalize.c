@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  unsigned int uint32_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef unsigned int uint32_t ;
 struct TYPE_3__ {int level; int dictSize; int reduceSize; int lc; scalar_t__ lp; int pb; int algo; int fb; int btMode; int numHashBytes; int mc; int numThreads; } ;
-typedef  TYPE_1__ CLzmaEncProps ;
+typedef TYPE_1__ CLzmaEncProps ;
 
-/* Variables and functions */
+
 
 void LzmaEncProps_Normalize(CLzmaEncProps *p)
 {
@@ -46,9 +46,9 @@ void LzmaEncProps_Normalize(CLzmaEncProps *p)
 
   if (p->numThreads < 0)
     p->numThreads =
-      #ifndef _7ZIP_ST
+
       ((p->btMode && p->algo) ? 2 : 1);
-      #else
-      1;
-      #endif
+
+
+
 }

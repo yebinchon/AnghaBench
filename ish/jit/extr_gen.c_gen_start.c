@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct jit_block {void* addr; } ;
 struct gen_state {int capacity; struct jit_block* block; scalar_t__ block_patch_ip; scalar_t__* jump_ip; void* ip; scalar_t__ size; } ;
-typedef  void* addr_t ;
+typedef void* addr_t ;
 
-/* Variables and functions */
- int JIT_BLOCK_INITIAL_CAPACITY ; 
- struct jit_block* malloc (int) ; 
+
+ int JIT_BLOCK_INITIAL_CAPACITY ;
+ struct jit_block* malloc (int) ;
 
 void gen_start(addr_t addr, struct gen_state *state) {
     state->capacity = JIT_BLOCK_INITIAL_CAPACITY;

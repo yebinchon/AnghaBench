@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ULONG ;
-typedef  int /*<<< orphan*/  TempFileInfo ;
-typedef  int /*<<< orphan*/  PISO_FILE_INFO ;
-typedef  scalar_t__ OPENMODE ;
-typedef  int /*<<< orphan*/  ISO_FILE_INFO ;
-typedef  int /*<<< orphan*/  CHAR ;
-typedef  scalar_t__ ARC_STATUS ;
 
-/* Variables and functions */
- scalar_t__ EACCES ; 
- scalar_t__ ENOENT ; 
- scalar_t__ ENOMEM ; 
- scalar_t__ ESUCCESS ; 
- int /*<<< orphan*/  FrLdrTempAlloc (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FsGetDeviceId (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FsSetDeviceSpecific (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ IsoLookupFile (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ OpenReadOnly ; 
- int /*<<< orphan*/  RtlCopyMemory (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  RtlZeroMemory (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  TAG_ISO_FILE ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int ULONG ;
+typedef int TempFileInfo ;
+typedef int PISO_FILE_INFO ;
+typedef scalar_t__ OPENMODE ;
+typedef int ISO_FILE_INFO ;
+typedef int CHAR ;
+typedef scalar_t__ ARC_STATUS ;
+
+
+ scalar_t__ EACCES ;
+ scalar_t__ ENOENT ;
+ scalar_t__ ENOMEM ;
+ scalar_t__ ESUCCESS ;
+ int FrLdrTempAlloc (int,int ) ;
+ int FsGetDeviceId (int ) ;
+ int FsSetDeviceSpecific (int ,int ) ;
+ scalar_t__ IsoLookupFile (int *,int ,int *) ;
+ scalar_t__ OpenReadOnly ;
+ int RtlCopyMemory (int ,int *,int) ;
+ int RtlZeroMemory (int *,int) ;
+ int TAG_ISO_FILE ;
+ int TRACE (char*,int *) ;
 
 ARC_STATUS IsoOpen(CHAR* Path, OPENMODE OpenMode, ULONG* FileId)
 {

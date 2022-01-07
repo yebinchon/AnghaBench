@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  szPath; struct TYPE_5__* prev; struct TYPE_5__* next; } ;
-typedef  int /*<<< orphan*/  LPTSTR ;
-typedef  TYPE_1__* LPDIRENTRY ;
-typedef  int INT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DIRENTRY ; 
- int /*<<< orphan*/  FIELD_OFFSET (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WARN (char*) ; 
- int /*<<< orphan*/  _tcscpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int _tcslen (int /*<<< orphan*/ ) ; 
- TYPE_1__* cmd_alloc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  error_out_of_memory () ; 
- TYPE_1__* lpStackBottom ; 
- TYPE_1__* lpStackTop ; 
- int nErrorLevel ; 
- int /*<<< orphan*/  nStackDepth ; 
- int /*<<< orphan*/ * szPath ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int szPath; struct TYPE_5__* prev; struct TYPE_5__* next; } ;
+typedef int LPTSTR ;
+typedef TYPE_1__* LPDIRENTRY ;
+typedef int INT ;
+
+
+ int DIRENTRY ;
+ int FIELD_OFFSET (int ,int ) ;
+ int WARN (char*) ;
+ int _tcscpy (int ,int ) ;
+ int _tcslen (int ) ;
+ TYPE_1__* cmd_alloc (int ) ;
+ int error_out_of_memory () ;
+ TYPE_1__* lpStackBottom ;
+ TYPE_1__* lpStackTop ;
+ int nErrorLevel ;
+ int nStackDepth ;
+ int * szPath ;
 
 __attribute__((used)) static INT
 PushDirectory (LPTSTR pszPath)
@@ -41,9 +41,9 @@ PushDirectory (LPTSTR pszPath)
         return -1;
     }
 
-    lpDir->prev = NULL;
+    lpDir->prev = ((void*)0);
     lpDir->next = lpStackTop;
-    if (lpStackTop == NULL)
+    if (lpStackTop == ((void*)0))
         lpStackBottom = lpDir;
     else
         lpStackTop->prev = lpDir;

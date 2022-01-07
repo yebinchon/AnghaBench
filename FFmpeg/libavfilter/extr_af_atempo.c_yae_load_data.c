@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  scalar_t__ int64_t ;
-struct TYPE_3__ {scalar_t__* position; int const ring; double tempo; int stride; int tail; int size; int head; int /*<<< orphan*/ * buffer; } ;
-typedef  TYPE_1__ ATempoContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EAGAIN ; 
- void* FFMIN (int const,int) ; 
- int /*<<< orphan*/  av_assert0 (int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef scalar_t__ int64_t ;
+struct TYPE_3__ {scalar_t__* position; int const ring; double tempo; int stride; int tail; int size; int head; int * buffer; } ;
+typedef TYPE_1__ ATempoContext ;
+
+
+ int AVERROR (int ) ;
+ int EAGAIN ;
+ void* FFMIN (int const,int) ;
+ int av_assert0 (int) ;
+ int memcpy (int *,int const*,int) ;
 
 __attribute__((used)) static int yae_load_data(ATempoContext *atempo,
                          const uint8_t **src_ref,
                          const uint8_t *src_end,
                          int64_t stop_here)
 {
-    // shortcut:
+
     const uint8_t *src = *src_ref;
     const int read_size = stop_here - atempo->position[0];
 
@@ -36,13 +36,13 @@ __attribute__((used)) static int yae_load_data(ATempoContext *atempo,
         return 0;
     }
 
-    // samples are not expected to be skipped, unless tempo is greater than 2:
+
     av_assert0(read_size <= atempo->ring || atempo->tempo > 2.0);
 
     while (atempo->position[0] < stop_here && src < src_end) {
         int src_samples = (src_end - src) / atempo->stride;
 
-        // load data piece-wise, in order to avoid complicating the logic:
+
         int nsamples = FFMIN(read_size, src_samples);
         int na;
         int nb;
@@ -82,10 +82,10 @@ __attribute__((used)) static int yae_load_data(ATempoContext *atempo,
         }
     }
 
-    // pass back the updated source buffer pointer:
+
     *src_ref = src;
 
-    // sanity check:
+
     av_assert0(atempo->position[0] <= stop_here);
 
     return atempo->position[0] == stop_here ? 0 : AVERROR(EAGAIN);

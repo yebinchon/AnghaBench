@@ -1,63 +1,63 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct sockaddr {int sa_len; int ifma_refcount; struct sockaddr* ifma_lladdr; struct sockaddr* ifma_addr; int /*<<< orphan*/ * ifma_protospec; struct ifnet* ifma_ifp; } ;
+
+
+
+
+struct sockaddr {int sa_len; int ifma_refcount; struct sockaddr* ifma_lladdr; struct sockaddr* ifma_addr; int * ifma_protospec; struct ifnet* ifma_ifp; } ;
 struct ifnet {int dummy; } ;
-struct ifmultiaddr {int sa_len; int ifma_refcount; struct ifmultiaddr* ifma_lladdr; struct ifmultiaddr* ifma_addr; int /*<<< orphan*/ * ifma_protospec; struct ifnet* ifma_ifp; } ;
+struct ifmultiaddr {int sa_len; int ifma_refcount; struct ifmultiaddr* ifma_lladdr; struct ifmultiaddr* ifma_addr; int * ifma_protospec; struct ifnet* ifma_ifp; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  M_IFMADDR ; 
- int M_ZERO ; 
- int /*<<< orphan*/  bcopy (struct sockaddr*,struct sockaddr*,int) ; 
- int /*<<< orphan*/  free (struct sockaddr*,int /*<<< orphan*/ ) ; 
- void* malloc (int,int /*<<< orphan*/ ,int) ; 
+
+ int M_IFMADDR ;
+ int M_ZERO ;
+ int bcopy (struct sockaddr*,struct sockaddr*,int) ;
+ int free (struct sockaddr*,int ) ;
+ void* malloc (int,int ,int) ;
 
 __attribute__((used)) static struct ifmultiaddr *
 if_allocmulti(struct ifnet *ifp, struct sockaddr *sa, struct sockaddr *llsa,
     int mflags)
 {
-	struct ifmultiaddr *ifma;
-	struct sockaddr *dupsa;
+ struct ifmultiaddr *ifma;
+ struct sockaddr *dupsa;
 
-	ifma = malloc(sizeof *ifma, M_IFMADDR, mflags |
-	    M_ZERO);
-	if (ifma == NULL)
-		return (NULL);
+ ifma = malloc(sizeof *ifma, M_IFMADDR, mflags |
+     M_ZERO);
+ if (ifma == ((void*)0))
+  return (((void*)0));
 
-	dupsa = malloc(sa->sa_len, M_IFMADDR, mflags);
-	if (dupsa == NULL) {
-		free(ifma, M_IFMADDR);
-		return (NULL);
-	}
-	bcopy(sa, dupsa, sa->sa_len);
-	ifma->ifma_addr = dupsa;
+ dupsa = malloc(sa->sa_len, M_IFMADDR, mflags);
+ if (dupsa == ((void*)0)) {
+  free(ifma, M_IFMADDR);
+  return (((void*)0));
+ }
+ bcopy(sa, dupsa, sa->sa_len);
+ ifma->ifma_addr = dupsa;
 
-	ifma->ifma_ifp = ifp;
-	ifma->ifma_refcount = 1;
-	ifma->ifma_protospec = NULL;
+ ifma->ifma_ifp = ifp;
+ ifma->ifma_refcount = 1;
+ ifma->ifma_protospec = ((void*)0);
 
-	if (llsa == NULL) {
-		ifma->ifma_lladdr = NULL;
-		return (ifma);
-	}
+ if (llsa == ((void*)0)) {
+  ifma->ifma_lladdr = ((void*)0);
+  return (ifma);
+ }
 
-	dupsa = malloc(llsa->sa_len, M_IFMADDR, mflags);
-	if (dupsa == NULL) {
-		free(ifma->ifma_addr, M_IFMADDR);
-		free(ifma, M_IFMADDR);
-		return (NULL);
-	}
-	bcopy(llsa, dupsa, llsa->sa_len);
-	ifma->ifma_lladdr = dupsa;
+ dupsa = malloc(llsa->sa_len, M_IFMADDR, mflags);
+ if (dupsa == ((void*)0)) {
+  free(ifma->ifma_addr, M_IFMADDR);
+  free(ifma, M_IFMADDR);
+  return (((void*)0));
+ }
+ bcopy(llsa, dupsa, llsa->sa_len);
+ ifma->ifma_lladdr = dupsa;
 
-	return (ifma);
+ return (ifma);
 }

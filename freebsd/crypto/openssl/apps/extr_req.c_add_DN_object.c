@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buf ;
-typedef  int /*<<< orphan*/  X509_NAME ;
 
-/* Variables and functions */
- int /*<<< orphan*/  X509_NAME_add_entry_by_NID (int /*<<< orphan*/ *,int,unsigned long,unsigned char*,int,int,int) ; 
- int build_data (char*,char const*,char*,int,int,char*,int,char*,char*) ; 
+
+
+
+typedef int buf ;
+typedef int X509_NAME ;
+
+
+ int X509_NAME_add_entry_by_NID (int *,int,unsigned long,unsigned char*,int,int,int) ;
+ int build_data (char*,char const*,char*,int,int,char*,int,char*,char*) ;
 
 __attribute__((used)) static int add_DN_object(X509_NAME *n, char *text, const char *def,
                          char *value, int nid, int n_min, int n_max,

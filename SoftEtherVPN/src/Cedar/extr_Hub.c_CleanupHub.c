@@ -1,112 +1,112 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  name ;
-typedef  scalar_t__ UINT ;
-struct TYPE_9__ {int /*<<< orphan*/  UserList; struct TYPE_9__* Msg; int /*<<< orphan*/  AdminOptionList; int /*<<< orphan*/  SecurityLogger; int /*<<< orphan*/  PacketLogger; int /*<<< orphan*/  RadiusOptionLock; int /*<<< orphan*/  TicketList; int /*<<< orphan*/  TrafficLock; struct TYPE_9__* SecureNATOption; struct TYPE_9__* Option; int /*<<< orphan*/  OldTraffic; int /*<<< orphan*/  Traffic; int /*<<< orphan*/  SessionCounter; int /*<<< orphan*/  NumSessionsBridge; int /*<<< orphan*/  NumSessionsClient; int /*<<< orphan*/  NumSessions; int /*<<< orphan*/  LinkList; int /*<<< orphan*/  MonitorList; int /*<<< orphan*/  IpTable; int /*<<< orphan*/  MacHashTable; int /*<<< orphan*/  SessionList; struct TYPE_9__* Name; int /*<<< orphan*/  lock_online; int /*<<< orphan*/  lock; int /*<<< orphan*/  Cedar; int /*<<< orphan*/  HubDb; int /*<<< orphan*/  RadiusSecret; struct TYPE_9__* RadiusServerName; scalar_t__ WatchDogStarted; } ;
-typedef  TYPE_1__ HUB ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DeleteCounter (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DeleteHubDb (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DeleteLock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Free (TYPE_1__*) ; 
- int /*<<< orphan*/  FreeAccessList (TYPE_1__*) ; 
- int /*<<< orphan*/  FreeBuf (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FreeLog (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FreeTraffic (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FreeUserList (int /*<<< orphan*/ ) ; 
- TYPE_1__* LIST_DATA (int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__ LIST_NUM (int /*<<< orphan*/ ) ; 
- int MAX_SIZE ; 
- int /*<<< orphan*/  ReleaseAllLink (TYPE_1__*) ; 
- int /*<<< orphan*/  ReleaseCedar (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReleaseHashList (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReleaseList (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  StopHubWatchDog (TYPE_1__*) ; 
- int /*<<< orphan*/  StrCpy (char*,int,TYPE_1__*) ; 
+
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int name ;
+typedef scalar_t__ UINT ;
+struct TYPE_9__ {int UserList; struct TYPE_9__* Msg; int AdminOptionList; int SecurityLogger; int PacketLogger; int RadiusOptionLock; int TicketList; int TrafficLock; struct TYPE_9__* SecureNATOption; struct TYPE_9__* Option; int OldTraffic; int Traffic; int SessionCounter; int NumSessionsBridge; int NumSessionsClient; int NumSessions; int LinkList; int MonitorList; int IpTable; int MacHashTable; int SessionList; struct TYPE_9__* Name; int lock_online; int lock; int Cedar; int HubDb; int RadiusSecret; struct TYPE_9__* RadiusServerName; scalar_t__ WatchDogStarted; } ;
+typedef TYPE_1__ HUB ;
+
+
+ int DeleteCounter (int ) ;
+ int DeleteHubDb (int ) ;
+ int DeleteLock (int ) ;
+ int Free (TYPE_1__*) ;
+ int FreeAccessList (TYPE_1__*) ;
+ int FreeBuf (int ) ;
+ int FreeLog (int ) ;
+ int FreeTraffic (int ) ;
+ int FreeUserList (int ) ;
+ TYPE_1__* LIST_DATA (int ,scalar_t__) ;
+ scalar_t__ LIST_NUM (int ) ;
+ int MAX_SIZE ;
+ int ReleaseAllLink (TYPE_1__*) ;
+ int ReleaseCedar (int ) ;
+ int ReleaseHashList (int ) ;
+ int ReleaseList (int ) ;
+ int StopHubWatchDog (TYPE_1__*) ;
+ int StrCpy (char*,int,TYPE_1__*) ;
 
 void CleanupHub(HUB *h)
 {
-	UINT i;
-	char name[MAX_SIZE];
-	// Validate arguments
-	if (h == NULL)
-	{
-		return;
-	}
+ UINT i;
+ char name[MAX_SIZE];
 
-	StrCpy(name, sizeof(name), h->Name);
+ if (h == ((void*)0))
+ {
+  return;
+ }
 
-	if (h->WatchDogStarted)
-	{
-		StopHubWatchDog(h);
-	}
+ StrCpy(name, sizeof(name), h->Name);
 
-	FreeAccessList(h);
+ if (h->WatchDogStarted)
+ {
+  StopHubWatchDog(h);
+ }
 
-	if (h->RadiusServerName != NULL)
-	{
-		Free(h->RadiusServerName);
-		FreeBuf(h->RadiusSecret);
-	}
-	ReleaseAllLink(h);
-	DeleteHubDb(h->HubDb);
-	ReleaseCedar(h->Cedar);
-	DeleteLock(h->lock);
-	DeleteLock(h->lock_online);
-	Free(h->Name);
-	ReleaseList(h->SessionList);
-	ReleaseHashList(h->MacHashTable);
-	ReleaseList(h->IpTable);
-	ReleaseList(h->MonitorList);
-	ReleaseList(h->LinkList);
-	DeleteCounter(h->NumSessions);
-	DeleteCounter(h->NumSessionsClient);
-	DeleteCounter(h->NumSessionsBridge);
-	DeleteCounter(h->SessionCounter);
-	FreeTraffic(h->Traffic);
-	FreeTraffic(h->OldTraffic);
-	Free(h->Option);
+ FreeAccessList(h);
 
-	Free(h->SecureNATOption);
+ if (h->RadiusServerName != ((void*)0))
+ {
+  Free(h->RadiusServerName);
+  FreeBuf(h->RadiusSecret);
+ }
+ ReleaseAllLink(h);
+ DeleteHubDb(h->HubDb);
+ ReleaseCedar(h->Cedar);
+ DeleteLock(h->lock);
+ DeleteLock(h->lock_online);
+ Free(h->Name);
+ ReleaseList(h->SessionList);
+ ReleaseHashList(h->MacHashTable);
+ ReleaseList(h->IpTable);
+ ReleaseList(h->MonitorList);
+ ReleaseList(h->LinkList);
+ DeleteCounter(h->NumSessions);
+ DeleteCounter(h->NumSessionsClient);
+ DeleteCounter(h->NumSessionsBridge);
+ DeleteCounter(h->SessionCounter);
+ FreeTraffic(h->Traffic);
+ FreeTraffic(h->OldTraffic);
+ Free(h->Option);
 
-	DeleteLock(h->TrafficLock);
+ Free(h->SecureNATOption);
 
-	for (i = 0;i < LIST_NUM(h->TicketList);i++)
-	{
-		Free(LIST_DATA(h->TicketList, i));
-	}
+ DeleteLock(h->TrafficLock);
 
-	ReleaseList(h->TicketList);
+ for (i = 0;i < LIST_NUM(h->TicketList);i++)
+ {
+  Free(LIST_DATA(h->TicketList, i));
+ }
 
-	DeleteLock(h->RadiusOptionLock);
+ ReleaseList(h->TicketList);
 
-	FreeLog(h->PacketLogger);
-	FreeLog(h->SecurityLogger);
+ DeleteLock(h->RadiusOptionLock);
 
-	for (i = 0;i < LIST_NUM(h->AdminOptionList);i++)
-	{
-		Free(LIST_DATA(h->AdminOptionList, i));
-	}
-	ReleaseList(h->AdminOptionList);
+ FreeLog(h->PacketLogger);
+ FreeLog(h->SecurityLogger);
 
-	if (h->Msg != NULL)
-	{
-		Free(h->Msg);
-	}
+ for (i = 0;i < LIST_NUM(h->AdminOptionList);i++)
+ {
+  Free(LIST_DATA(h->AdminOptionList, i));
+ }
+ ReleaseList(h->AdminOptionList);
 
-	FreeUserList(h->UserList);
+ if (h->Msg != ((void*)0))
+ {
+  Free(h->Msg);
+ }
 
-	Free(h);
+ FreeUserList(h->UserList);
+
+ Free(h);
 }

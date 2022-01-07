@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct usb_driver {int dummy; } ;
 struct drm_driver {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  usb_deregister (struct usb_driver*) ; 
+
+ int usb_deregister (struct usb_driver*) ;
 
 void drm_usb_exit(struct drm_driver *driver,
-		  struct usb_driver *udriver)
+    struct usb_driver *udriver)
 {
-	usb_deregister(udriver);
+ usb_deregister(udriver);
 }

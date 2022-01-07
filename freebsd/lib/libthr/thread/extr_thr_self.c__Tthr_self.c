@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  pthread_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  _get_curthread () ; 
- int /*<<< orphan*/  _thr_check_init () ; 
+
+
+
+typedef int pthread_t ;
+
+
+ int _get_curthread () ;
+ int _thr_check_init () ;
 
 pthread_t
 _Tthr_self(void)
 {
-	_thr_check_init();
+ _thr_check_init();
 
-	/* Return the running thread pointer: */
-	return (_get_curthread());
+
+ return (_get_curthread());
 }

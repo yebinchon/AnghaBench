@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct btrfs_fs_info {int qgroup_rescan_running; int /*<<< orphan*/  qgroup_rescan_completion; int /*<<< orphan*/  qgroup_rescan_lock; int /*<<< orphan*/  qgroup_lock; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  wait_for_completion (int /*<<< orphan*/ *) ; 
- int wait_for_completion_interruptible (int /*<<< orphan*/ *) ; 
+
+
+
+struct btrfs_fs_info {int qgroup_rescan_running; int qgroup_rescan_completion; int qgroup_rescan_lock; int qgroup_lock; } ;
+
+
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
+ int spin_lock (int *) ;
+ int spin_unlock (int *) ;
+ int wait_for_completion (int *) ;
+ int wait_for_completion_interruptible (int *) ;
 
 int btrfs_qgroup_wait_for_completion(struct btrfs_fs_info *fs_info,
-				     bool interruptible)
+         bool interruptible)
 {
-	int running;
-	int ret = 0;
+ int running;
+ int ret = 0;
 
-	mutex_lock(&fs_info->qgroup_rescan_lock);
-	spin_lock(&fs_info->qgroup_lock);
-	running = fs_info->qgroup_rescan_running;
-	spin_unlock(&fs_info->qgroup_lock);
-	mutex_unlock(&fs_info->qgroup_rescan_lock);
+ mutex_lock(&fs_info->qgroup_rescan_lock);
+ spin_lock(&fs_info->qgroup_lock);
+ running = fs_info->qgroup_rescan_running;
+ spin_unlock(&fs_info->qgroup_lock);
+ mutex_unlock(&fs_info->qgroup_rescan_lock);
 
-	if (!running)
-		return 0;
+ if (!running)
+  return 0;
 
-	if (interruptible)
-		ret = wait_for_completion_interruptible(
-					&fs_info->qgroup_rescan_completion);
-	else
-		wait_for_completion(&fs_info->qgroup_rescan_completion);
+ if (interruptible)
+  ret = wait_for_completion_interruptible(
+     &fs_info->qgroup_rescan_completion);
+ else
+  wait_for_completion(&fs_info->qgroup_rescan_completion);
 
-	return ret;
+ return ret;
 }

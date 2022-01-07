@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sem_t ;
-typedef  int /*<<< orphan*/  pthread_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  printf (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pthread_self () ; 
- int /*<<< orphan*/  sem_wait (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int sem_t ;
+typedef int pthread_t ;
+
+
+ int printf (char*,int ) ;
+ int pthread_self () ;
+ int sem_wait (int *) ;
 
 __attribute__((used)) static void *
 entry(void * a_arg)
 {
-	pthread_t self = pthread_self();
-	sem_t *semp = (sem_t *) a_arg;
+ pthread_t self = pthread_self();
+ sem_t *semp = (sem_t *) a_arg;
 
-	printf("Thread %p waiting for semaphore...\n", self);
-	sem_wait(semp);
-	printf("Thread %p got semaphore\n", self);
+ printf("Thread %p waiting for semaphore...\n", self);
+ sem_wait(semp);
+ printf("Thread %p got semaphore\n", self);
 
-	return NULL;
+ return ((void*)0);
 }

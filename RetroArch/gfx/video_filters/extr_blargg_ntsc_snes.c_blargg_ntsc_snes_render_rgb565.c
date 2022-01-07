@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint16_t ;
-struct filter_data {int /*<<< orphan*/  burst_toggle; int /*<<< orphan*/  burst; int /*<<< orphan*/  ntsc; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  retroarch_snes_ntsc_blit (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ *,int,int,int) ; 
- int /*<<< orphan*/  retroarch_snes_ntsc_blit_hires (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ *,int,int,int) ; 
+
+
+
+typedef int uint16_t ;
+struct filter_data {int burst_toggle; int burst; int ntsc; } ;
+
+
+ int retroarch_snes_ntsc_blit (int ,int *,int,int ,int,int,int *,int,int,int) ;
+ int retroarch_snes_ntsc_blit_hires (int ,int *,int,int ,int,int,int *,int,int,int) ;
 
 __attribute__((used)) static void blargg_ntsc_snes_render_rgb565(void *data, int width, int height,
       int first, int last,

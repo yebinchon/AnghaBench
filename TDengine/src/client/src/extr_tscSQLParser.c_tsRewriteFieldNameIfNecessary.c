@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ int32_t ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef scalar_t__ int32_t ;
 struct TYPE_9__ {char* name; } ;
 struct TYPE_7__ {scalar_t__ numOfOutputCols; } ;
 struct TYPE_8__ {TYPE_1__ fieldsInfo; } ;
-typedef  TYPE_2__ SSqlCmd ;
+typedef TYPE_2__ SSqlCmd ;
 
-/* Variables and functions */
- scalar_t__ TSDB_CODE_INVALID_SQL ; 
- scalar_t__ TSDB_CODE_SUCCESS ; 
- scalar_t__ TSDB_COL_NAME_LEN ; 
- int /*<<< orphan*/  setErrMsg (TYPE_2__*,char const*) ; 
- scalar_t__ strncasecmp (char*,char*,scalar_t__) ; 
- scalar_t__ tListLen (char const*) ; 
- TYPE_3__* tscFieldInfoGetField (TYPE_2__*,scalar_t__) ; 
+
+ scalar_t__ TSDB_CODE_INVALID_SQL ;
+ scalar_t__ TSDB_CODE_SUCCESS ;
+ scalar_t__ TSDB_COL_NAME_LEN ;
+ int setErrMsg (TYPE_2__*,char const*) ;
+ scalar_t__ strncasecmp (char*,char*,scalar_t__) ;
+ scalar_t__ tListLen (char const*) ;
+ TYPE_3__* tscFieldInfoGetField (TYPE_2__*,scalar_t__) ;
 
 int32_t tsRewriteFieldNameIfNecessary(SSqlCmd* pCmd) {
   const char rep[] = {'(', ')', '*', ',', '.', '/', '\\', '+', '-', '%', ' '};
@@ -45,7 +45,7 @@ int32_t tsRewriteFieldNameIfNecessary(SSqlCmd* pCmd) {
     fieldName[TSDB_COL_NAME_LEN - 1] = 0;
   }
 
-  // the column name may be identical, here check again
+
   for (int32_t i = 0; i < pCmd->fieldsInfo.numOfOutputCols; ++i) {
     char* fieldName = tscFieldInfoGetField(pCmd, i)->name;
     for (int32_t j = i + 1; j < pCmd->fieldsInfo.numOfOutputCols; ++j) {

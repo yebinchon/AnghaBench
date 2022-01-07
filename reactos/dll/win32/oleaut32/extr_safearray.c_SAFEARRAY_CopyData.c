@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * VARIANT ;
-typedef  int ULONG ;
-struct TYPE_11__ {int fFeatures; int cbElements; int /*<<< orphan*/ ** pvData; } ;
-typedef  TYPE_1__ SAFEARRAY ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  IRecordInfo ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  GUID ;
-typedef  int /*<<< orphan*/ * BYTE ;
-typedef  int /*<<< orphan*/ * BSTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_INVALIDARG ; 
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- int FADF_BSTR ; 
- int FADF_CREATEVECTOR ; 
- int FADF_DATADELETED ; 
- int FADF_DISPATCH ; 
- int FADF_HAVEIID ; 
- int FADF_HAVEVARTYPE ; 
- int FADF_RECORD ; 
- int FADF_UNKNOWN ; 
- int FADF_VARIANT ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FIXME (char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  IRecordInfo_RecordCopy (int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IRecordInfo_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IUnknown_AddRef (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IUnknown_Release (int /*<<< orphan*/ *) ; 
- int SAFEARRAY_GetCellCount (TYPE_1__*) ; 
- int /*<<< orphan*/  SAFEARRAY_GetHiddenDWORD (TYPE_1__*) ; 
- int /*<<< orphan*/  SAFEARRAY_SetHiddenDWORD (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  SafeArrayGetIID (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SafeArrayGetRecordInfo (TYPE_1__*,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  SafeArraySetIID (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SafeArraySetRecordInfo (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * SysAllocStringByteLen (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SysFreeString (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SysStringByteLen (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  VariantCopy (int /*<<< orphan*/ **,int /*<<< orphan*/ **) ; 
- int ignored_copy_features ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ **,int /*<<< orphan*/ **,int) ; 
+
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef int * VARIANT ;
+typedef int ULONG ;
+struct TYPE_11__ {int fFeatures; int cbElements; int ** pvData; } ;
+typedef TYPE_1__ SAFEARRAY ;
+typedef int IUnknown ;
+typedef int IRecordInfo ;
+typedef int HRESULT ;
+typedef int GUID ;
+typedef int * BYTE ;
+typedef int * BSTR ;
+
+
+ int E_INVALIDARG ;
+ int E_OUTOFMEMORY ;
+ int FADF_BSTR ;
+ int FADF_CREATEVECTOR ;
+ int FADF_DATADELETED ;
+ int FADF_DISPATCH ;
+ int FADF_HAVEIID ;
+ int FADF_HAVEVARTYPE ;
+ int FADF_RECORD ;
+ int FADF_UNKNOWN ;
+ int FADF_VARIANT ;
+ scalar_t__ FAILED (int ) ;
+ int FIXME (char*,int ,int) ;
+ int IRecordInfo_RecordCopy (int *,int **,int **) ;
+ int IRecordInfo_Release (int *) ;
+ int IUnknown_AddRef (int *) ;
+ int IUnknown_Release (int *) ;
+ int SAFEARRAY_GetCellCount (TYPE_1__*) ;
+ int SAFEARRAY_GetHiddenDWORD (TYPE_1__*) ;
+ int SAFEARRAY_SetHiddenDWORD (TYPE_1__*,int ) ;
+ int S_OK ;
+ int SafeArrayGetIID (TYPE_1__*,int *) ;
+ int SafeArrayGetRecordInfo (TYPE_1__*,int **) ;
+ int SafeArraySetIID (TYPE_1__*,int *) ;
+ int SafeArraySetRecordInfo (TYPE_1__*,int *) ;
+ int * SysAllocStringByteLen (char*,int ) ;
+ int SysFreeString (int *) ;
+ int SysStringByteLen (int *) ;
+ int VariantCopy (int **,int **) ;
+ int ignored_copy_features ;
+ int memcpy (int **,int **,int) ;
 
 __attribute__((used)) static HRESULT SAFEARRAY_CopyData(SAFEARRAY *psa, SAFEARRAY *dest)
 {
@@ -79,7 +79,7 @@ __attribute__((used)) static HRESULT SAFEARRAY_CopyData(SAFEARRAY *psa, SAFEARRA
       {
         HRESULT hRet;
 
-        /* destination is cleared automatically */
+
         hRet = VariantCopy(dest_var, src_var);
         if (FAILED(hRet)) FIXME("VariantCopy failed with 0x%08x, element %u\n", hRet, ulCellCount);
         src_var++;
@@ -101,7 +101,7 @@ __attribute__((used)) static HRESULT SAFEARRAY_CopyData(SAFEARRAY *psa, SAFEARRA
             return E_OUTOFMEMORY;
         }
         else
-          *dest_bstr = NULL;
+          *dest_bstr = ((void*)0);
         src_bstr++;
         dest_bstr++;
       }
@@ -115,7 +115,7 @@ __attribute__((used)) static HRESULT SAFEARRAY_CopyData(SAFEARRAY *psa, SAFEARRA
       SafeArrayGetRecordInfo(psa, &record);
       while (ulCellCount--)
       {
-          /* RecordCopy() clears destination record */
+
           hr = IRecordInfo_RecordCopy(record, src_data, dest_data);
           if (FAILED(hr)) break;
           src_data += psa->cbElements;
@@ -123,8 +123,8 @@ __attribute__((used)) static HRESULT SAFEARRAY_CopyData(SAFEARRAY *psa, SAFEARRA
       }
 
       SafeArraySetRecordInfo(dest, record);
-      /* This value is set to 32 bytes by default on descriptor creation,
-         update with actual structure size. */
+
+
       dest->cbElements = psa->cbElements;
       IRecordInfo_Release(record);
     }
@@ -133,7 +133,7 @@ __attribute__((used)) static HRESULT SAFEARRAY_CopyData(SAFEARRAY *psa, SAFEARRA
       IUnknown **dest_unk = dest->pvData;
       IUnknown **src_unk = psa->pvData;
 
-      /* release old iface, addref new one */
+
       while (ulCellCount--)
       {
           if (*dest_unk)
@@ -147,7 +147,7 @@ __attribute__((used)) static HRESULT SAFEARRAY_CopyData(SAFEARRAY *psa, SAFEARRA
     }
     else
     {
-      /* Copy the data over */
+
       memcpy(dest->pvData, psa->pvData, ulCellCount * psa->cbElements);
     }
 

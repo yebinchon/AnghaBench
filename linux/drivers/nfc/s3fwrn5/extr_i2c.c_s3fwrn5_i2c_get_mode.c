@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct s3fwrn5_i2c_phy {int mode; int /*<<< orphan*/  mutex; } ;
-typedef  enum s3fwrn5_mode { ____Placeholder_s3fwrn5_mode } s3fwrn5_mode ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
+
+
+
+struct s3fwrn5_i2c_phy {int mode; int mutex; } ;
+typedef enum s3fwrn5_mode { ____Placeholder_s3fwrn5_mode } s3fwrn5_mode ;
+
+
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
 
 __attribute__((used)) static enum s3fwrn5_mode s3fwrn5_i2c_get_mode(void *phy_id)
 {
-	struct s3fwrn5_i2c_phy *phy = phy_id;
-	enum s3fwrn5_mode mode;
+ struct s3fwrn5_i2c_phy *phy = phy_id;
+ enum s3fwrn5_mode mode;
 
-	mutex_lock(&phy->mutex);
+ mutex_lock(&phy->mutex);
 
-	mode = phy->mode;
+ mode = phy->mode;
 
-	mutex_unlock(&phy->mutex);
+ mutex_unlock(&phy->mutex);
 
-	return mode;
+ return mode;
 }

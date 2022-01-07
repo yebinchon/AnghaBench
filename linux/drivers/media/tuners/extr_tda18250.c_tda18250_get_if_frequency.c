@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u32 ;
+
+
+
+
+typedef int u32 ;
 struct tda18250_dev {int if_frequency; } ;
 struct i2c_client {int dummy; } ;
 struct dvb_frontend {struct i2c_client* tuner_priv; } ;
 
-/* Variables and functions */
- struct tda18250_dev* i2c_get_clientdata (struct i2c_client*) ; 
+
+ struct tda18250_dev* i2c_get_clientdata (struct i2c_client*) ;
 
 __attribute__((used)) static int tda18250_get_if_frequency(struct dvb_frontend *fe, u32 *frequency)
 {
-	struct i2c_client *client = fe->tuner_priv;
-	struct tda18250_dev *dev = i2c_get_clientdata(client);
+ struct i2c_client *client = fe->tuner_priv;
+ struct tda18250_dev *dev = i2c_get_clientdata(client);
 
-	*frequency = dev->if_frequency * 1000;
-	return 0;
+ *frequency = dev->if_frequency * 1000;
+ return 0;
 }

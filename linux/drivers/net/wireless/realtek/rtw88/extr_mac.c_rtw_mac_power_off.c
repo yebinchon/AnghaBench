@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct rtw_dev {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  rtw_mac_power_switch (struct rtw_dev*,int) ; 
+
+ int rtw_mac_power_switch (struct rtw_dev*,int) ;
 
 void rtw_mac_power_off(struct rtw_dev *rtwdev)
 {
-	rtw_mac_power_switch(rtwdev, false);
+ rtw_mac_power_switch(rtwdev, 0);
 }

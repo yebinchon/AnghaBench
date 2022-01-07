@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct test_es_out_t {TYPE_1__* ids; } ;
-typedef  int /*<<< orphan*/  es_out_t ;
+typedef int es_out_t ;
 struct TYPE_4__ {struct TYPE_4__* next; } ;
-typedef  TYPE_1__ es_out_id_t ;
+typedef TYPE_1__ es_out_id_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IdDelete (TYPE_1__*) ; 
- int /*<<< orphan*/  abort () ; 
- int /*<<< orphan*/  debug (char*,void*) ; 
+
+ int IdDelete (TYPE_1__*) ;
+ int abort () ;
+ int debug (char*,void*) ;
 
 __attribute__((used)) static void EsOutDelete(es_out_t *out, es_out_id_t *id)
 {
@@ -28,7 +28,7 @@ __attribute__((used)) static void EsOutDelete(es_out_t *out, es_out_id_t *id)
 
     while (*pp != id)
     {
-        if (*pp == NULL)
+        if (*pp == ((void*)0))
             abort();
         pp = &((*pp)->next);
     }

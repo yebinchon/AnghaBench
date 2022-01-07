@@ -1,37 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  TEST_IMUL_IM (char*,char*,int,int) ; 
- int /*<<< orphan*/  test_divb (int,int) ; 
- int /*<<< orphan*/  test_divl (int,int,int) ; 
- int /*<<< orphan*/  test_divq (int,int,int) ; 
- int /*<<< orphan*/  test_divw (int,int,int) ; 
- int /*<<< orphan*/  test_idivb (int,int) ; 
- int /*<<< orphan*/  test_idivl (int,int,int) ; 
- int /*<<< orphan*/  test_idivq (int,int,int) ; 
- int /*<<< orphan*/  test_idivw (int,int,int) ; 
- int /*<<< orphan*/  test_imulb (int,int) ; 
- int /*<<< orphan*/  test_imull (int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  test_imull2 (int,int) ; 
- int /*<<< orphan*/  test_imulq (int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  test_imulq2 (int,int) ; 
- int /*<<< orphan*/  test_imulw (int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  test_imulw2 (int,int) ; 
- int /*<<< orphan*/  test_mulb (int,int) ; 
- int /*<<< orphan*/  test_mull (int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  test_mulq (int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  test_mulw (int /*<<< orphan*/ ,int,int) ; 
+ int TEST_IMUL_IM (char*,char*,int,int) ;
+ int test_divb (int,int) ;
+ int test_divl (int,int,int) ;
+ int test_divq (int,int,int) ;
+ int test_divw (int,int,int) ;
+ int test_idivb (int,int) ;
+ int test_idivl (int,int,int) ;
+ int test_idivq (int,int,int) ;
+ int test_idivw (int,int,int) ;
+ int test_imulb (int,int) ;
+ int test_imull (int ,int,int) ;
+ int test_imull2 (int,int) ;
+ int test_imulq (int ,int,int) ;
+ int test_imulq2 (int,int) ;
+ int test_imulw (int ,int,int) ;
+ int test_imulw2 (int,int) ;
+ int test_mulb (int,int) ;
+ int test_mull (int ,int,int) ;
+ int test_mulq (int ,int,int) ;
+ int test_mulw (int ,int,int) ;
 
 void test_mul(void)
 {
@@ -113,7 +105,7 @@ void test_mul(void)
     test_divl(0, 0x80000000, -1);
     test_divl(0x12343, 0x12345678, 0x81234567);
 
-#if defined(__x86_64__)
+
     test_imulq(0, 0x1234001d1234001d, 45);
     test_imulq(0, 23, -45);
     test_imulq(0, 0x8000000000000000, 0x8000000000000000);
@@ -143,5 +135,5 @@ void test_mul(void)
     test_divq(0, -233223, -45);
     test_divq(0, 0x8000000000000000, -1);
     test_divq(0x12343, 0x12345678, 0x81234567);
-#endif
+
 }

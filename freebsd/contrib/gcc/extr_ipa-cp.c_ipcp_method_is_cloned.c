@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct cgraph_node {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * ipcp_method_orig_node (struct cgraph_node*) ; 
+
+ int * ipcp_method_orig_node (struct cgraph_node*) ;
 
 __attribute__((used)) static inline bool
 ipcp_method_is_cloned (struct cgraph_node *node)
 {
-  return (ipcp_method_orig_node (node) != NULL);
+  return (ipcp_method_orig_node (node) != ((void*)0));
 }

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ifreq {void* ifr_data; int /*<<< orphan*/  ifr_name; } ;
-struct ethtool_drvinfo {int /*<<< orphan*/  driver; int /*<<< orphan*/  cmd; } ;
 
-/* Variables and functions */
- int ENOMEM ; 
- int /*<<< orphan*/  ETHTOOL_GDRVINFO ; 
- int /*<<< orphan*/  IFNAMSIZ ; 
- int /*<<< orphan*/  SIOCETHTOOL ; 
- int errno ; 
- int ethtool_connect_or_warn (int*,int) ; 
- int ioctl (int,int /*<<< orphan*/ ,struct ifreq*) ; 
- char* strdup (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strscpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*) ; 
+
+
+
+struct ifreq {void* ifr_data; int ifr_name; } ;
+struct ethtool_drvinfo {int driver; int cmd; } ;
+
+
+ int ENOMEM ;
+ int ETHTOOL_GDRVINFO ;
+ int IFNAMSIZ ;
+ int SIOCETHTOOL ;
+ int errno ;
+ int ethtool_connect_or_warn (int*,int) ;
+ int ioctl (int,int ,struct ifreq*) ;
+ char* strdup (int ) ;
+ int strscpy (int ,int ,char const*) ;
 
 int ethtool_get_driver(int *fd, const char *ifname, char **ret) {
         struct ethtool_drvinfo ecmd = {
@@ -35,7 +35,7 @@ int ethtool_get_driver(int *fd, const char *ifname, char **ret) {
         int r;
 
         if (*fd < 0) {
-                r = ethtool_connect_or_warn(fd, true);
+                r = ethtool_connect_or_warn(fd, 1);
                 if (r < 0)
                         return r;
         }

@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  u ;
-typedef  int /*<<< orphan*/  out ;
-typedef  int /*<<< orphan*/  k ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TEST_info (char*,unsigned int) ; 
- int /*<<< orphan*/  TEST_int_eq (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_true (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  X448 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fflush (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * in_scalar1 ; 
- int /*<<< orphan*/ * in_scalar2 ; 
- int /*<<< orphan*/ * in_u1 ; 
- int /*<<< orphan*/ * in_u2 ; 
- int /*<<< orphan*/ * in_u3 ; 
- unsigned int max ; 
- int /*<<< orphan*/  memcmp (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  out_u1 ; 
- int /*<<< orphan*/  out_u2 ; 
- int /*<<< orphan*/ * out_u3 ; 
- int /*<<< orphan*/  printf (char*) ; 
- int /*<<< orphan*/  stdout ; 
- scalar_t__ verbose ; 
+
+
+
+typedef int uint8_t ;
+typedef int u ;
+typedef int out ;
+typedef int k ;
+
+
+ int TEST_info (char*,unsigned int) ;
+ int TEST_int_eq (int ,int ) ;
+ int TEST_true (int ) ;
+ int X448 (int *,int *,int *) ;
+ int fflush (int ) ;
+ int * in_scalar1 ;
+ int * in_scalar2 ;
+ int * in_u1 ;
+ int * in_u2 ;
+ int * in_u3 ;
+ unsigned int max ;
+ int memcmp (int *,int ,int) ;
+ int memcpy (int *,int *,int) ;
+ int out_u1 ;
+ int out_u2 ;
+ int * out_u3 ;
+ int printf (char*) ;
+ int stdout ;
+ scalar_t__ verbose ;
 
 __attribute__((used)) static int test_x448(void)
 {
@@ -42,7 +42,7 @@ __attribute__((used)) static int test_x448(void)
     unsigned int i;
     int j = -1;
 
-    /* Curve448 tests */
+
 
     if (!TEST_true(X448(out, in_scalar1, in_u1))
           || !TEST_int_eq(memcmp(out, out_u1, sizeof(out)), 0)

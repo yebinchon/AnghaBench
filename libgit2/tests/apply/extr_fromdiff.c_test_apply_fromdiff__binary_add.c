@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  size; int /*<<< orphan*/  ptr; } ;
-typedef  TYPE_1__ git_buf ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FILE_BINARY_DELTA_MODIFIED ; 
- int /*<<< orphan*/  FILE_BINARY_DELTA_MODIFIED_LEN ; 
- TYPE_1__ GIT_BUF_INIT ; 
- int /*<<< orphan*/  apply_gitbuf (int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_1__*,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  binary_opts ; 
- int /*<<< orphan*/  cl_git_pass (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int size; int ptr; } ;
+typedef TYPE_1__ git_buf ;
+
+
+ int FILE_BINARY_DELTA_MODIFIED ;
+ int FILE_BINARY_DELTA_MODIFIED_LEN ;
+ TYPE_1__ GIT_BUF_INIT ;
+ int apply_gitbuf (int *,int *,TYPE_1__*,char*,int *,int *) ;
+ int binary_opts ;
+ int cl_git_pass (int ) ;
 
 void test_apply_fromdiff__binary_add(void)
 {
-	git_buf newfile = GIT_BUF_INIT;
+ git_buf newfile = GIT_BUF_INIT;
 
-	newfile.ptr = FILE_BINARY_DELTA_MODIFIED;
-	newfile.size = FILE_BINARY_DELTA_MODIFIED_LEN;
+ newfile.ptr = FILE_BINARY_DELTA_MODIFIED;
+ newfile.size = FILE_BINARY_DELTA_MODIFIED_LEN;
 
-	cl_git_pass(apply_gitbuf(
-		NULL, NULL,
-		&newfile, "binary.bin",
-		NULL, &binary_opts));
+ cl_git_pass(apply_gitbuf(
+  ((void*)0), ((void*)0),
+  &newfile, "binary.bin",
+  ((void*)0), &binary_opts));
 }

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {scalar_t__ frameAnnotationSize; scalar_t__ frameDataSize; scalar_t__ fqContextSize; int fqContextAddr; } ;
 struct TYPE_6__ {TYPE_1__ stashingParams; } ;
-typedef  TYPE_2__ t_QmFqrParams ;
-typedef  int /*<<< orphan*/  t_Error ;
+typedef TYPE_2__ t_QmFqrParams ;
+typedef int t_Error ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT_COND (TYPE_2__*) ; 
- int /*<<< orphan*/  CACHELINE_SIZE ; 
- int /*<<< orphan*/  E_INVALID_VALUE ; 
- int /*<<< orphan*/  E_OK ; 
- int /*<<< orphan*/  IS_ALIGNED (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MAJOR ; 
- scalar_t__ QM_CONTEXTA_MAX_STASH_SIZE ; 
- int /*<<< orphan*/  RETURN_ERROR (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
+
+ int ASSERT_COND (TYPE_2__*) ;
+ int CACHELINE_SIZE ;
+ int E_INVALID_VALUE ;
+ int E_OK ;
+ int IS_ALIGNED (int,int ) ;
+ int MAJOR ;
+ scalar_t__ QM_CONTEXTA_MAX_STASH_SIZE ;
+ int RETURN_ERROR (int ,int ,char*) ;
 
 __attribute__((used)) static __inline__ t_Error CheckStashParams(t_QmFqrParams *p_QmFqrParams)
 {

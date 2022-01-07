@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int int32_t ;
 
-/* Variables and functions */
- int ROUND_MULL (int const,int,int) ; 
+
+
+
+typedef int int32_t ;
+
+
+ int ROUND_MULL (int const,int,int) ;
 
 __attribute__((used)) static void silk_lsp2poly(const int32_t lsp[16], int32_t pol[16], int half_order)
 {
     int i, j;
 
-    pol[0] = 65536; // 1.0 in Q16
+    pol[0] = 65536;
     pol[1] = -lsp[0];
 
     for (i = 1; i < half_order; i++) {

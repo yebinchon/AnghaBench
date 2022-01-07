@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT64 ;
-typedef  int /*<<< orphan*/  UINT ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int UINT64 ;
+typedef int UINT ;
 struct TYPE_4__ {int JsonHint_IsDateTime; } ;
-typedef  int /*<<< orphan*/  PACK ;
-typedef  TYPE_1__ ELEMENT ;
+typedef int PACK ;
+typedef TYPE_1__ ELEMENT ;
 
-/* Variables and functions */
- TYPE_1__* PackAddInt64Ex (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ TYPE_1__* PackAddInt64Ex (int *,char*,int ,int ,int ) ;
 
 ELEMENT *PackAddTime64Ex(PACK *p, char *name, UINT64 i, UINT index, UINT total)
 {
-	ELEMENT *e = PackAddInt64Ex(p, name, i, index, total);
-	if (e != NULL)
-	{
-		e->JsonHint_IsDateTime = true;
-	}
-	return e;
+ ELEMENT *e = PackAddInt64Ex(p, name, i, index, total);
+ if (e != ((void*)0))
+ {
+  e->JsonHint_IsDateTime = 1;
+ }
+ return e;
 }

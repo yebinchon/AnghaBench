@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  const WCHAR ;
-typedef  int /*<<< orphan*/  DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FIXME (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  const* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  SHGetSpecialFolderPathW (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  const* get_unknown_dirid () ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int) ; 
- int strlenW (int /*<<< orphan*/  const*) ; 
+
+
+
+typedef int const WCHAR ;
+typedef int DWORD ;
+
+
+ int FIXME (char*,int ) ;
+ int GetProcessHeap () ;
+ int const* HeapAlloc (int ,int ,int) ;
+ int MAX_PATH ;
+ int SHGetSpecialFolderPathW (int *,int const*,int ,int ) ;
+ int TRUE ;
+ int const* get_unknown_dirid () ;
+ int memcpy (int const*,int const*,int) ;
+ int strlenW (int const*) ;
 
 __attribute__((used)) static const WCHAR *get_csidl_dir( DWORD csidl )
 {
     WCHAR buffer[MAX_PATH], *str;
     int len;
 
-    if (!SHGetSpecialFolderPathW( NULL, buffer, csidl, TRUE ))
+    if (!SHGetSpecialFolderPathW( ((void*)0), buffer, csidl, TRUE ))
     {
         FIXME( "CSIDL %x not found\n", csidl );
         return get_unknown_dirid();

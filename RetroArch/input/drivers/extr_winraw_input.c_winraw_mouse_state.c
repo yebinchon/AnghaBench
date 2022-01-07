@@ -1,48 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int x; int dlt_x; int y; int dlt_y; int /*<<< orphan*/  btn_b5; int /*<<< orphan*/  btn_b4; int /*<<< orphan*/  btn_m; int /*<<< orphan*/  whl_d; int /*<<< orphan*/  whl_u; int /*<<< orphan*/  btn_r; int /*<<< orphan*/  btn_l; } ;
-typedef  TYPE_2__ winraw_mouse_t ;
+
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int x; int dlt_x; int y; int dlt_y; int btn_b5; int btn_b4; int btn_m; int whl_d; int whl_u; int btn_r; int btn_l; } ;
+typedef TYPE_2__ winraw_mouse_t ;
 struct TYPE_9__ {TYPE_2__* mice; } ;
-typedef  TYPE_3__ winraw_input_t ;
+typedef TYPE_3__ winraw_input_t ;
 struct TYPE_7__ {unsigned int* input_mouse_index; } ;
 struct TYPE_10__ {TYPE_1__ uints; } ;
-typedef  TYPE_4__ settings_t ;
-typedef  int int16_t ;
+typedef TYPE_4__ settings_t ;
+typedef int int16_t ;
 
-/* Variables and functions */
- unsigned int MAX_USERS ; 
-#define  RETRO_DEVICE_ID_MOUSE_BUTTON_4 136 
-#define  RETRO_DEVICE_ID_MOUSE_BUTTON_5 135 
-#define  RETRO_DEVICE_ID_MOUSE_LEFT 134 
-#define  RETRO_DEVICE_ID_MOUSE_MIDDLE 133 
-#define  RETRO_DEVICE_ID_MOUSE_RIGHT 132 
-#define  RETRO_DEVICE_ID_MOUSE_WHEELDOWN 131 
-#define  RETRO_DEVICE_ID_MOUSE_WHEELUP 130 
-#define  RETRO_DEVICE_ID_MOUSE_X 129 
-#define  RETRO_DEVICE_ID_MOUSE_Y 128 
- TYPE_4__* config_get_ptr () ; 
- unsigned int g_mouse_cnt ; 
+
+ unsigned int MAX_USERS ;
+ TYPE_4__* config_get_ptr () ;
+ unsigned int g_mouse_cnt ;
 
 __attribute__((used)) static int16_t winraw_mouse_state(winraw_input_t *wr,
       unsigned port, bool abs, unsigned id)
 {
    unsigned i;
-   settings_t *settings  = config_get_ptr();
-   winraw_mouse_t *mouse = NULL;
+   settings_t *settings = config_get_ptr();
+   winraw_mouse_t *mouse = ((void*)0);
 
    if (port >= MAX_USERS)
       return 0;
@@ -61,23 +52,23 @@ __attribute__((used)) static int16_t winraw_mouse_state(winraw_input_t *wr,
 
    switch (id)
    {
-      case RETRO_DEVICE_ID_MOUSE_X:
+      case 129:
          return abs ? mouse->x : mouse->dlt_x;
-      case RETRO_DEVICE_ID_MOUSE_Y:
+      case 128:
          return abs ? mouse->y : mouse->dlt_y;
-      case RETRO_DEVICE_ID_MOUSE_LEFT:
+      case 134:
          return mouse->btn_l ? 1 : 0;
-      case RETRO_DEVICE_ID_MOUSE_RIGHT:
+      case 132:
          return mouse->btn_r ? 1 : 0;
-      case RETRO_DEVICE_ID_MOUSE_WHEELUP:
+      case 130:
          return mouse->whl_u ? 1 : 0;
-      case RETRO_DEVICE_ID_MOUSE_WHEELDOWN:
+      case 131:
          return mouse->whl_d ? 1 : 0;
-      case RETRO_DEVICE_ID_MOUSE_MIDDLE:
+      case 133:
          return mouse->btn_m ? 1 : 0;
-      case RETRO_DEVICE_ID_MOUSE_BUTTON_4:
+      case 136:
          return mouse->btn_b4 ? 1 : 0;
-      case RETRO_DEVICE_ID_MOUSE_BUTTON_5:
+      case 135:
          return mouse->btn_b5 ? 1 : 0;
    }
 

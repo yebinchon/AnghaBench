@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_7__ ;
-typedef  struct TYPE_15__   TYPE_6__ ;
-typedef  struct TYPE_14__   TYPE_5__ ;
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_16__ TYPE_7__ ;
+typedef struct TYPE_15__ TYPE_6__ ;
+typedef struct TYPE_14__ TYPE_5__ ;
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
 struct TYPE_13__ {int segment; TYPE_6__* out; TYPE_5__* pv; } ;
-typedef  TYPE_4__ nlmeans_thread_arg_t ;
-struct TYPE_11__ {int /*<<< orphan*/  color_range; int /*<<< orphan*/  color_matrix; int /*<<< orphan*/  color_transfer; int /*<<< orphan*/  color_prim; int /*<<< orphan*/  pix_fmt; } ;
-struct TYPE_14__ {int* prefilter; scalar_t__* strength; int /*<<< orphan*/  taskset; TYPE_7__* frame; int /*<<< orphan*/ * diff_max; int /*<<< orphan*/ * weight_fact_table; int /*<<< orphan*/ * exptable; int /*<<< orphan*/ * range; int /*<<< orphan*/ * patch_size; int /*<<< orphan*/ * origin_tune; int /*<<< orphan*/ * nframes; int /*<<< orphan*/  functions; TYPE_2__ output; } ;
-typedef  TYPE_5__ hb_filter_private_t ;
-struct TYPE_10__ {int /*<<< orphan*/  color_range; int /*<<< orphan*/  color_matrix; int /*<<< orphan*/  color_transfer; int /*<<< orphan*/  color_prim; } ;
-struct TYPE_15__ {int /*<<< orphan*/  s; TYPE_3__* plane; TYPE_1__ f; } ;
-typedef  TYPE_6__ hb_buffer_t ;
-struct TYPE_16__ {int /*<<< orphan*/  s; int /*<<< orphan*/ * plane; int /*<<< orphan*/  height; int /*<<< orphan*/  width; } ;
-struct TYPE_12__ {int /*<<< orphan*/  height; int /*<<< orphan*/  stride; int /*<<< orphan*/  width; int /*<<< orphan*/  data; } ;
-typedef  int /*<<< orphan*/  NLMeansFunctions ;
-typedef  TYPE_7__ Frame ;
+typedef TYPE_4__ nlmeans_thread_arg_t ;
+struct TYPE_11__ {int color_range; int color_matrix; int color_transfer; int color_prim; int pix_fmt; } ;
+struct TYPE_14__ {int* prefilter; scalar_t__* strength; int taskset; TYPE_7__* frame; int * diff_max; int * weight_fact_table; int * exptable; int * range; int * patch_size; int * origin_tune; int * nframes; int functions; TYPE_2__ output; } ;
+typedef TYPE_5__ hb_filter_private_t ;
+struct TYPE_10__ {int color_range; int color_matrix; int color_transfer; int color_prim; } ;
+struct TYPE_15__ {int s; TYPE_3__* plane; TYPE_1__ f; } ;
+typedef TYPE_6__ hb_buffer_t ;
+struct TYPE_16__ {int s; int * plane; int height; int width; } ;
+struct TYPE_12__ {int height; int stride; int width; int data; } ;
+typedef int NLMeansFunctions ;
+typedef TYPE_7__ Frame ;
 
-/* Variables and functions */
- int NLMEANS_PREFILTER_MODE_PASSTHRU ; 
- int /*<<< orphan*/  hb_deep_log (int,char*,int) ; 
- TYPE_6__* hb_frame_buffer_init (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nlmeans_deborder (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nlmeans_plane (int /*<<< orphan*/ *,TYPE_7__*,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nlmeans_prefilter (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  taskset_thread_complete (int /*<<< orphan*/ *,int) ; 
- scalar_t__ taskset_thread_stop (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  taskset_thread_wait4start (int /*<<< orphan*/ *,int) ; 
+
+ int NLMEANS_PREFILTER_MODE_PASSTHRU ;
+ int hb_deep_log (int,char*,int) ;
+ TYPE_6__* hb_frame_buffer_init (int ,int ,int ) ;
+ int nlmeans_deborder (int *,int ,int ,int ,int ) ;
+ int nlmeans_plane (int *,TYPE_7__*,int,int,int ,int ,int ,int ,int ,scalar_t__,int ,int ,int ,int ,int ,int ) ;
+ int nlmeans_prefilter (int *,int) ;
+ int taskset_thread_complete (int *,int) ;
+ scalar_t__ taskset_thread_stop (int *,int) ;
+ int taskset_thread_wait4start (int *,int) ;
 
 __attribute__((used)) static void nlmeans_filter_thread(void *thread_args_v)
 {
@@ -51,7 +51,7 @@ __attribute__((used)) static void nlmeans_filter_thread(void *thread_args_v)
 
     while (1)
     {
-        // Wait until there is work to do.
+
         taskset_thread_wait4start(&pv->taskset, segment);
 
         if (taskset_thread_stop(&pv->taskset, segment))
@@ -63,10 +63,10 @@ __attribute__((used)) static void nlmeans_filter_thread(void *thread_args_v)
         hb_buffer_t *buf;
         buf = hb_frame_buffer_init(pv->output.pix_fmt,
                                    frame->width, frame->height);
-        buf->f.color_prim     = pv->output.color_prim;
+        buf->f.color_prim = pv->output.color_prim;
         buf->f.color_transfer = pv->output.color_transfer;
-        buf->f.color_matrix   = pv->output.color_matrix;
-        buf->f.color_range    = pv->output.color_range ;
+        buf->f.color_matrix = pv->output.color_matrix;
+        buf->f.color_range = pv->output.color_range ;
 
 
         NLMeansFunctions *functions = &pv->functions;
@@ -89,7 +89,7 @@ __attribute__((used)) static void nlmeans_filter_thread(void *thread_args_v)
                 continue;
             }
 
-            // Process current plane
+
             nlmeans_plane(functions,
                           frame,
                           pv->prefilter[c],
@@ -110,7 +110,7 @@ __attribute__((used)) static void nlmeans_filter_thread(void *thread_args_v)
         buf->s = pv->frame[segment].s;
         thread_data->out = buf;
 
-        // Finished this segment, notify.
+
         taskset_thread_complete(&pv->taskset, segment);
     }
     taskset_thread_complete(&pv->taskset, segment);

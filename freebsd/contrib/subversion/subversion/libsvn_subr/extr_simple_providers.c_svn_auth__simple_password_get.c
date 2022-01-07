@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {char* data; } ;
-typedef  TYPE_1__ svn_string_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
+typedef TYPE_1__ svn_string_t ;
+typedef int svn_error_t ;
+typedef int svn_boolean_t ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  SVN_CONFIG_AUTHN_PASSWORD_KEY ; 
- int /*<<< orphan*/  SVN_CONFIG_AUTHN_USERNAME_KEY ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  TRUE ; 
- scalar_t__ strcmp (char*,char const*) ; 
- TYPE_1__* svn_hash_gets (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int FALSE ;
+ int SVN_CONFIG_AUTHN_PASSWORD_KEY ;
+ int SVN_CONFIG_AUTHN_USERNAME_KEY ;
+ int * SVN_NO_ERROR ;
+ int TRUE ;
+ scalar_t__ strcmp (char*,char const*) ;
+ TYPE_1__* svn_hash_gets (int *,int ) ;
 
 svn_error_t *
 svn_auth__simple_password_get(svn_boolean_t *done,

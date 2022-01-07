@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tsd_t ;
-typedef  int /*<<< orphan*/  quarantine_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LG_MAXOBJS_INIT ; 
- int /*<<< orphan*/  idalloctm (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/ * quarantine_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tcache_get (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  tsd_nominal (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * tsd_quarantine_get (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tsd_quarantine_set (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int tsd_t ;
+typedef int quarantine_t ;
+
+
+ int LG_MAXOBJS_INIT ;
+ int idalloctm (int *,int *,int ,int) ;
+ int * quarantine_init (int *,int ) ;
+ int tcache_get (int *,int) ;
+ int tsd_nominal (int *) ;
+ int * tsd_quarantine_get (int *) ;
+ int tsd_quarantine_set (int *,int *) ;
 
 void
 quarantine_alloc_hook_work(tsd_t *tsd)
 {
-	quarantine_t *quarantine;
+ quarantine_t *quarantine;
 
-	if (!tsd_nominal(tsd))
-		return;
+ if (!tsd_nominal(tsd))
+  return;
 
-	quarantine = quarantine_init(tsd, LG_MAXOBJS_INIT);
-	/*
-	 * Check again whether quarantine has been initialized, because
-	 * quarantine_init() may have triggered recursive initialization.
-	 */
-	if (tsd_quarantine_get(tsd) == NULL)
-		tsd_quarantine_set(tsd, quarantine);
-	else
-		idalloctm(tsd, quarantine, tcache_get(tsd, false), true);
+ quarantine = quarantine_init(tsd, LG_MAXOBJS_INIT);
+
+
+
+
+ if (tsd_quarantine_get(tsd) == ((void*)0))
+  tsd_quarantine_set(tsd, quarantine);
+ else
+  idalloctm(tsd, quarantine, tcache_get(tsd, 0), 1);
 }

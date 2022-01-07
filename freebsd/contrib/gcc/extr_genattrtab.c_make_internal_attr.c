@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct attr_desc {int is_numeric; int is_special; scalar_t__ default_val; scalar_t__ is_const; } ;
-typedef  int /*<<< orphan*/  rtx ;
+typedef int rtx ;
 
-/* Variables and functions */
- int ATTR_SPECIAL ; 
- struct attr_desc* find_attr (char const**,int) ; 
- int /*<<< orphan*/  gcc_assert (int) ; 
- scalar_t__ get_attr_value (int /*<<< orphan*/ ,struct attr_desc*,int) ; 
+
+ int ATTR_SPECIAL ;
+ struct attr_desc* find_attr (char const**,int) ;
+ int gcc_assert (int) ;
+ scalar_t__ get_attr_value (int ,struct attr_desc*,int) ;
 
 __attribute__((used)) static void
 make_internal_attr (const char *name, rtx value, int special)

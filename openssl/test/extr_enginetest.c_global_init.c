@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  OPENSSL_INIT_NO_LOAD_CONFIG ; 
- int OPENSSL_init_crypto (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+ int OPENSSL_INIT_NO_LOAD_CONFIG ;
+ int OPENSSL_init_crypto (int ,int *) ;
 
 int global_init(void)
 {
-    /*
-     * If the config file gets loaded, the dynamic engine will be loaded,
-     * and that interferes with our test above.
-     */
-    return OPENSSL_init_crypto(OPENSSL_INIT_NO_LOAD_CONFIG, NULL);
+
+
+
+
+    return OPENSSL_init_crypto(OPENSSL_INIT_NO_LOAD_CONFIG, ((void*)0));
 }

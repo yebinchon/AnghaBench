@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct led_classdev {int /*<<< orphan*/  max_brightness; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  led_set_brightness (struct led_classdev*,int /*<<< orphan*/ ) ; 
+
+
+
+struct led_classdev {int max_brightness; } ;
+
+
+ int led_set_brightness (struct led_classdev*,int ) ;
 
 __attribute__((used)) static void defon_trig_activate(struct led_classdev *led_cdev)
 {
-	led_set_brightness(led_cdev, led_cdev->max_brightness);
+ led_set_brightness(led_cdev, led_cdev->max_brightness);
 }

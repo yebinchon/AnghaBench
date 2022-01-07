@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  X ;
-struct TYPE_3__ {int /*<<< orphan*/  lock; int /*<<< orphan*/ * ServerK; int /*<<< orphan*/ * ServerX; } ;
-typedef  int /*<<< orphan*/  K ;
-typedef  TYPE_1__ CEDAR ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * CloneK (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * CloneX (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FreeK (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FreeX (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Lock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Unlock (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int X ;
+struct TYPE_3__ {int lock; int * ServerK; int * ServerX; } ;
+typedef int K ;
+typedef TYPE_1__ CEDAR ;
+
+
+ int * CloneK (int *) ;
+ int * CloneX (int *) ;
+ int FreeK (int *) ;
+ int FreeX (int *) ;
+ int Lock (int ) ;
+ int Unlock (int ) ;
 
 void SetCedarCert(CEDAR *c, X *server_x, K *server_k)
 {
-	// Validate arguments
-	if (server_x == NULL || server_k == NULL)
-	{
-		return;
-	}
 
-	Lock(c->lock);
-	{
-		if (c->ServerX != NULL)
-		{
-			FreeX(c->ServerX);
-		}
+ if (server_x == ((void*)0) || server_k == ((void*)0))
+ {
+  return;
+ }
 
-		if (c->ServerK != NULL)
-		{
-			FreeK(c->ServerK);
-		}
+ Lock(c->lock);
+ {
+  if (c->ServerX != ((void*)0))
+  {
+   FreeX(c->ServerX);
+  }
 
-		c->ServerX = CloneX(server_x);
-		c->ServerK = CloneK(server_k);
-	}
-	Unlock(c->lock);
+  if (c->ServerK != ((void*)0))
+  {
+   FreeK(c->ServerK);
+  }
+
+  c->ServerX = CloneX(server_x);
+  c->ServerK = CloneK(server_k);
+ }
+ Unlock(c->lock);
 }

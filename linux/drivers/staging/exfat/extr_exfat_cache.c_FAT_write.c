@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
+
+
+
+
+typedef int u32 ;
 struct super_block {int dummy; } ;
-typedef  int s32 ;
+typedef int s32 ;
 
-/* Variables and functions */
- int __FAT_write (struct super_block*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  down (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  f_sem ; 
- int /*<<< orphan*/  up (int /*<<< orphan*/ *) ; 
+
+ int __FAT_write (struct super_block*,int ,int ) ;
+ int down (int *) ;
+ int f_sem ;
+ int up (int *) ;
 
 int FAT_write(struct super_block *sb, u32 loc, u32 content)
 {
-	s32 ret;
+ s32 ret;
 
-	down(&f_sem);
-	ret = __FAT_write(sb, loc, content);
-	up(&f_sem);
+ down(&f_sem);
+ ret = __FAT_write(sb, loc, content);
+ up(&f_sem);
 
-	return ret;
+ return ret;
 }

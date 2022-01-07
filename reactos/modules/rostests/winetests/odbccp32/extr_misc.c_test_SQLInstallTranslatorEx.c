@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  path ;
-typedef  scalar_t__ WORD ;
-typedef  scalar_t__ LONG ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  scalar_t__ DWORD ;
-typedef  int /*<<< orphan*/  BYTE ;
-typedef  int BOOL ;
 
-/* Variables and functions */
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  GetSystemDirectoryA (char*,int) ; 
- int /*<<< orphan*/  HKEY_LOCAL_MACHINE ; 
- int /*<<< orphan*/  KEY_READ ; 
- int MAX_PATH ; 
- scalar_t__ ODBC_ERROR_COMPONENT_NOT_FOUND ; 
- scalar_t__ ODBC_ERROR_WRITING_SYSINFO_FAILED ; 
- int /*<<< orphan*/  ODBC_INSTALL_COMPLETE ; 
- scalar_t__ REG_SZ ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- scalar_t__ RegOpenKeyExA (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ RegQueryValueExA (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *,scalar_t__*,int /*<<< orphan*/ *,scalar_t__*) ; 
- int SQLInstallTranslatorEx (char*,char*,char*,int,scalar_t__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int SQLInstallerErrorW (int,scalar_t__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int SQLRemoveTranslator (char*,scalar_t__*) ; 
- scalar_t__ SQL_SUCCESS ; 
- int /*<<< orphan*/  memset (char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  strcat (char*,char*) ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
- scalar_t__ strlen (char*) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
+
+
+
+typedef int path ;
+typedef scalar_t__ WORD ;
+typedef scalar_t__ LONG ;
+typedef int HKEY ;
+typedef scalar_t__ DWORD ;
+typedef int BYTE ;
+typedef int BOOL ;
+
+
+ scalar_t__ ERROR_SUCCESS ;
+ int GetSystemDirectoryA (char*,int) ;
+ int HKEY_LOCAL_MACHINE ;
+ int KEY_READ ;
+ int MAX_PATH ;
+ scalar_t__ ODBC_ERROR_COMPONENT_NOT_FOUND ;
+ scalar_t__ ODBC_ERROR_WRITING_SYSINFO_FAILED ;
+ int ODBC_INSTALL_COMPLETE ;
+ scalar_t__ REG_SZ ;
+ int RegCloseKey (int ) ;
+ scalar_t__ RegOpenKeyExA (int ,char*,int ,int ,int *) ;
+ scalar_t__ RegQueryValueExA (int ,char*,int *,scalar_t__*,int *,scalar_t__*) ;
+ int SQLInstallTranslatorEx (char*,char*,char*,int,scalar_t__*,int ,int *) ;
+ int SQLInstallerErrorW (int,scalar_t__*,int *,int ,int *) ;
+ int SQLRemoveTranslator (char*,scalar_t__*) ;
+ scalar_t__ SQL_SUCCESS ;
+ int memset (char*,int ,int) ;
+ int ok (int,char*,...) ;
+ int strcat (char*,char*) ;
+ int strcmp (char*,char*) ;
+ int strcpy (char*,char*) ;
+ scalar_t__ strlen (char*) ;
+ int win_skip (char*) ;
 
 __attribute__((used)) static void test_SQLInstallTranslatorEx(void)
 {
@@ -56,8 +56,8 @@ __attribute__((used)) static void test_SQLInstallTranslatorEx(void)
     GetSystemDirectoryA(syspath, MAX_PATH);
 
     ret = SQLInstallTranslatorEx("WINE ODBC Translator\0Translator=sample.dll\0Setup=sample.dll\0",
-                                 NULL, path, MAX_PATH, &size, ODBC_INSTALL_COMPLETE, NULL);
-    sql_ret = SQLInstallerErrorW(1, &error_code, NULL, 0, NULL);
+                                 ((void*)0), path, MAX_PATH, &size, ODBC_INSTALL_COMPLETE, ((void*)0));
+    sql_ret = SQLInstallerErrorW(1, &error_code, ((void*)0), 0, ((void*)0));
     if (sql_ret && error_code == ODBC_ERROR_WRITING_SYSINFO_FAILED)
     {
          win_skip("not enough privileges\n");
@@ -68,8 +68,8 @@ __attribute__((used)) static void test_SQLInstallTranslatorEx(void)
     ok(size == strlen(path), "invalid length %d\n", size);
 
     ret = SQLInstallTranslatorEx("WINE ODBC Translator Path\0Translator=sample.dll\0Setup=sample.dll\0",
-                                 "c:\\temp", path, MAX_PATH, &size, ODBC_INSTALL_COMPLETE, NULL);
-    sql_ret = SQLInstallerErrorW(1, &error_code, NULL, 0, NULL);
+                                 "c:\\temp", path, MAX_PATH, &size, ODBC_INSTALL_COMPLETE, ((void*)0));
+    sql_ret = SQLInstallerErrorW(1, &error_code, ((void*)0), 0, ((void*)0));
     ok(sql_ret && error_code == SQL_SUCCESS, "SQLInstallTranslatorEx failed %d, %u\n", sql_ret, error_code);
     ok(!strcmp(path, "c:\\temp"), "invalid path %s\n", path);
     ok(size == strlen(path), "invalid length %d\n", size);
@@ -88,7 +88,7 @@ __attribute__((used)) static void test_SQLInstallTranslatorEx(void)
             strcat(driverpath, "\\sample.dll");
 
             memset(path, 0, sizeof(path));
-            res = RegQueryValueExA(hkey, "Translator", NULL, &type, (BYTE *)path, &size);
+            res = RegQueryValueExA(hkey, "Translator", ((void*)0), &type, (BYTE *)path, &size);
             ok(res == ERROR_SUCCESS, "RegGetValueA failed\n");
             ok(type == REG_SZ, "got %u\n", type);
             ok(size == strlen(driverpath) + 1, "got %u\n", size);
@@ -112,7 +112,7 @@ __attribute__((used)) static void test_SQLInstallTranslatorEx(void)
     ret = SQLRemoveTranslator("WINE ODBC Translator NonExist", &cnt);
     ok(!ret, "SQLRemoveTranslator succeeded\n");
     ok(cnt == 100, "SQLRemoveTranslator succeeded %d\n", cnt);
-    sql_ret = SQLInstallerErrorW(1, &error_code, NULL, 0, NULL);
+    sql_ret = SQLInstallerErrorW(1, &error_code, ((void*)0), 0, ((void*)0));
     ok(sql_ret && error_code == ODBC_ERROR_COMPONENT_NOT_FOUND,
         "SQLInstallTranslatorEx failed %d, %u\n", sql_ret, error_code);
 

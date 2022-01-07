@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  network_packet ;
 
-/* Variables and functions */
- int /*<<< orphan*/  g_free (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int network_packet ;
+
+
+ int g_free (int *) ;
 
 void network_packet_free(network_packet *packet) {
-	if (!packet) return;
+ if (!packet) return;
 
-	g_free(packet);
+ g_free(packet);
 }

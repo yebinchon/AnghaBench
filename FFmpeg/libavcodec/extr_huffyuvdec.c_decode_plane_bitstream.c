@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int bps; int /*<<< orphan*/  gb; scalar_t__** temp16; TYPE_1__* vlc; scalar_t__** temp; } ;
-struct TYPE_4__ {int /*<<< orphan*/  table; } ;
-typedef  TYPE_2__ HYuvContext ;
 
-/* Variables and functions */
- scalar_t__ BITS_LEFT (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CLOSE_READER (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  OP14bits ; 
- int /*<<< orphan*/  OP8bits ; 
- int /*<<< orphan*/  OPEN_READER (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  READ_2PIX_PLANE (scalar_t__,scalar_t__,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  READ_2PIX_PLANE16 (scalar_t__,scalar_t__,int) ; 
- unsigned int SHOW_UBITS (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  UPDATE_CACHE (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  VLC_BITS ; 
- int /*<<< orphan*/  VLC_INTERN (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- scalar_t__ get_bits (int /*<<< orphan*/ *,int) ; 
- int get_bits_left (int /*<<< orphan*/ *) ; 
- int get_vlc2 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  re ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int bps; int gb; scalar_t__** temp16; TYPE_1__* vlc; scalar_t__** temp; } ;
+struct TYPE_4__ {int table; } ;
+typedef TYPE_2__ HYuvContext ;
+
+
+ scalar_t__ BITS_LEFT (int ,int *) ;
+ int CLOSE_READER (int ,int *) ;
+ int OP14bits ;
+ int OP8bits ;
+ int OPEN_READER (int ,int *) ;
+ int READ_2PIX_PLANE (scalar_t__,scalar_t__,int,int ) ;
+ int READ_2PIX_PLANE16 (scalar_t__,scalar_t__,int) ;
+ unsigned int SHOW_UBITS (int ,int *,int ) ;
+ int UPDATE_CACHE (int ,int *) ;
+ int VLC_BITS ;
+ int VLC_INTERN (scalar_t__,int ,int *,int ,int ,int) ;
+ scalar_t__ get_bits (int *,int) ;
+ int get_bits_left (int *) ;
+ int get_vlc2 (int *,int ,int ,int) ;
+ int re ;
 
 __attribute__((used)) static void decode_plane_bitstream(HYuvContext *s, int width, int plane)
 {

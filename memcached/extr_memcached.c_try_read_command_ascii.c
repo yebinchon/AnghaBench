@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int rbytes; char* rcurr; char* rbuf; int rsize; int /*<<< orphan*/  last_cmd_time; } ;
-typedef  TYPE_1__ conn ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  conn_closing ; 
- int /*<<< orphan*/  conn_set_state (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  current_time ; 
- char* memchr (char*,char,int) ; 
- int /*<<< orphan*/  process_command (TYPE_1__*,char*) ; 
- scalar_t__ strncmp (char*,char*,int) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int rbytes; char* rcurr; char* rbuf; int rsize; int last_cmd_time; } ;
+typedef TYPE_1__ conn ;
+
+
+ int assert (int) ;
+ int conn_closing ;
+ int conn_set_state (TYPE_1__*,int ) ;
+ int current_time ;
+ char* memchr (char*,char,int) ;
+ int process_command (TYPE_1__*,char*) ;
+ scalar_t__ strncmp (char*,char*,int) ;
 
 __attribute__((used)) static int try_read_command_ascii(conn *c) {
     char *el, *cont;
@@ -32,12 +32,12 @@ __attribute__((used)) static int try_read_command_ascii(conn *c) {
     el = memchr(c->rcurr, '\n', c->rbytes);
     if (!el) {
         if (c->rbytes > 1024) {
-            /*
-             * We didn't have a '\n' in the first k. This _has_ to be a
-             * large multiget, if not we should just nuke the connection.
-             */
+
+
+
+
             char *ptr = c->rcurr;
-            while (*ptr == ' ') { /* ignore leading whitespaces */
+            while (*ptr == ' ') {
                 ++ptr;
             }
 

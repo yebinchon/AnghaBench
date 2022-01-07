@@ -1,83 +1,83 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_20__   TYPE_8__ ;
-typedef  struct TYPE_19__   TYPE_7__ ;
-typedef  struct TYPE_18__   TYPE_6__ ;
-typedef  struct TYPE_17__   TYPE_5__ ;
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint16_t ;
-struct TYPE_13__ {int /*<<< orphan*/  member_0; } ;
-struct TYPE_14__ {TYPE_1__ member_1; int /*<<< orphan*/  member_0; } ;
-typedef  TYPE_2__ tBT_UUID ;
-struct TYPE_15__ {int len; int /*<<< orphan*/ * p_value; } ;
-typedef  TYPE_3__ tBTA_GATT_UNFMT ;
-struct TYPE_16__ {int /*<<< orphan*/ * characteristics; int /*<<< orphan*/  uuid; } ;
-typedef  TYPE_4__ tBTA_GATTC_SERVICE ;
-struct TYPE_17__ {int /*<<< orphan*/ * p_srvc_cache; } ;
-typedef  TYPE_5__ tBTA_GATTC_SERV ;
-typedef  int /*<<< orphan*/  tBTA_GATTC_FIND_SERVICE_CB ;
-struct TYPE_18__ {int /*<<< orphan*/  handle; int /*<<< orphan*/  uuid; } ;
-typedef  TYPE_6__ tBTA_GATTC_DESCRIPTOR ;
-struct TYPE_19__ {scalar_t__ write_remote_svc_change_ccc_done; int /*<<< orphan*/  svc_change_descr_handle; } ;
-typedef  TYPE_7__ tBTA_GATTC_CONN ;
-struct TYPE_20__ {int /*<<< orphan*/ * descriptors; int /*<<< orphan*/  uuid; } ;
-typedef  TYPE_8__ tBTA_GATTC_CHARACTERISTIC ;
-typedef  int /*<<< orphan*/  list_t ;
-typedef  int /*<<< orphan*/  list_node_t ;
-typedef  int /*<<< orphan*/  UINT16 ;
-typedef  scalar_t__ BOOLEAN ;
-typedef  int /*<<< orphan*/  BD_ADDR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BTA_GATTC_TYPE_WRITE ; 
- int /*<<< orphan*/  BTA_GATTC_WriteCharDescr (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_3__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BTA_GATT_AUTH_REQ_NONE ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  GATT_CLT_CONFIG_INDICATION ; 
- int /*<<< orphan*/  GATT_UUID_CHAR_CLIENT_CONFIG ; 
- int /*<<< orphan*/  GATT_UUID_GATT_SRV_CHGD ; 
- int /*<<< orphan*/  LEN_UUID_16 ; 
- int /*<<< orphan*/  SERVICE_CHANGE_CACHE_NOT_FOUND ; 
- int /*<<< orphan*/  SERVICE_CHANGE_CCC_NOT_FOUND ; 
- int /*<<< orphan*/  SERVICE_CHANGE_CCC_WRITTEN_SUCCESS ; 
- int /*<<< orphan*/  SERVICE_CHANGE_CHAR_NOT_FOUND ; 
- int /*<<< orphan*/  SERVICE_CHANGE_SERVICE_NOT_FOUND ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  UUID_SERVCLASS_GATT_SERVER ; 
- TYPE_7__* bta_gattc_conn_find_alloc (int /*<<< orphan*/ ) ; 
- TYPE_5__* bta_gattc_find_srcb (int /*<<< orphan*/ ) ; 
- scalar_t__ bta_gattc_uuid_compare (TYPE_2__*,int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/ * list_begin (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * list_end (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * list_next (int /*<<< orphan*/ *) ; 
- void* list_node (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_20__ TYPE_8__ ;
+typedef struct TYPE_19__ TYPE_7__ ;
+typedef struct TYPE_18__ TYPE_6__ ;
+typedef struct TYPE_17__ TYPE_5__ ;
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint16_t ;
+struct TYPE_13__ {int member_0; } ;
+struct TYPE_14__ {TYPE_1__ member_1; int member_0; } ;
+typedef TYPE_2__ tBT_UUID ;
+struct TYPE_15__ {int len; int * p_value; } ;
+typedef TYPE_3__ tBTA_GATT_UNFMT ;
+struct TYPE_16__ {int * characteristics; int uuid; } ;
+typedef TYPE_4__ tBTA_GATTC_SERVICE ;
+struct TYPE_17__ {int * p_srvc_cache; } ;
+typedef TYPE_5__ tBTA_GATTC_SERV ;
+typedef int tBTA_GATTC_FIND_SERVICE_CB ;
+struct TYPE_18__ {int handle; int uuid; } ;
+typedef TYPE_6__ tBTA_GATTC_DESCRIPTOR ;
+struct TYPE_19__ {scalar_t__ write_remote_svc_change_ccc_done; int svc_change_descr_handle; } ;
+typedef TYPE_7__ tBTA_GATTC_CONN ;
+struct TYPE_20__ {int * descriptors; int uuid; } ;
+typedef TYPE_8__ tBTA_GATTC_CHARACTERISTIC ;
+typedef int list_t ;
+typedef int list_node_t ;
+typedef int UINT16 ;
+typedef scalar_t__ BOOLEAN ;
+typedef int BD_ADDR ;
+
+
+ int BTA_GATTC_TYPE_WRITE ;
+ int BTA_GATTC_WriteCharDescr (int ,int ,int ,TYPE_3__*,int ) ;
+ int BTA_GATT_AUTH_REQ_NONE ;
+ scalar_t__ FALSE ;
+ int GATT_CLT_CONFIG_INDICATION ;
+ int GATT_UUID_CHAR_CLIENT_CONFIG ;
+ int GATT_UUID_GATT_SRV_CHGD ;
+ int LEN_UUID_16 ;
+ int SERVICE_CHANGE_CACHE_NOT_FOUND ;
+ int SERVICE_CHANGE_CCC_NOT_FOUND ;
+ int SERVICE_CHANGE_CCC_WRITTEN_SUCCESS ;
+ int SERVICE_CHANGE_CHAR_NOT_FOUND ;
+ int SERVICE_CHANGE_SERVICE_NOT_FOUND ;
+ scalar_t__ TRUE ;
+ int UUID_SERVCLASS_GATT_SERVER ;
+ TYPE_7__* bta_gattc_conn_find_alloc (int ) ;
+ TYPE_5__* bta_gattc_find_srcb (int ) ;
+ scalar_t__ bta_gattc_uuid_compare (TYPE_2__*,int *,scalar_t__) ;
+ int * list_begin (int *) ;
+ int * list_end (int *) ;
+ int * list_next (int *) ;
+ void* list_node (int *) ;
 
 tBTA_GATTC_FIND_SERVICE_CB bta_gattc_register_service_change_notify(UINT16 conn_id, BD_ADDR remote_bda)
 {
-    tBTA_GATTC_SERV     *p_srcb = NULL;
-    list_t              *p_cache = NULL;
-    tBTA_GATTC_SERVICE *p_service = NULL;
-    tBTA_GATTC_CHARACTERISTIC *p_char = NULL;
-    tBTA_GATTC_DESCRIPTOR *p_desc = NULL;
-    tBTA_GATTC_FIND_SERVICE_CB    result;
-    BOOLEAN             gatt_cache_found = FALSE;
-    BOOLEAN             gatt_service_found = FALSE;
-    BOOLEAN             gatt_service_change_found = FALSE;
-    BOOLEAN             gatt_ccc_found = FALSE;
+    tBTA_GATTC_SERV *p_srcb = ((void*)0);
+    list_t *p_cache = ((void*)0);
+    tBTA_GATTC_SERVICE *p_service = ((void*)0);
+    tBTA_GATTC_CHARACTERISTIC *p_char = ((void*)0);
+    tBTA_GATTC_DESCRIPTOR *p_desc = ((void*)0);
+    tBTA_GATTC_FIND_SERVICE_CB result;
+    BOOLEAN gatt_cache_found = FALSE;
+    BOOLEAN gatt_service_found = FALSE;
+    BOOLEAN gatt_service_change_found = FALSE;
+    BOOLEAN gatt_ccc_found = FALSE;
 
     tBT_UUID gatt_service_uuid = {LEN_UUID_16, {UUID_SERVCLASS_GATT_SERVER}};
     tBT_UUID gatt_service_change_uuid = {LEN_UUID_16, {GATT_UUID_GATT_SRV_CHGD}};
@@ -88,14 +88,14 @@ tBTA_GATTC_FIND_SERVICE_CB bta_gattc_register_service_change_notify(UINT16 conn_
     }
 
     p_srcb = bta_gattc_find_srcb(remote_bda);
-    if ((p_srcb != NULL) && (p_srcb->p_srvc_cache != NULL)) {
+    if ((p_srcb != ((void*)0)) && (p_srcb->p_srvc_cache != ((void*)0))) {
         p_cache = p_srcb->p_srvc_cache;
         gatt_cache_found = TRUE;
     }
     else {
         result = SERVICE_CHANGE_CACHE_NOT_FOUND;
     }
-    /* start to find gatt service */
+
     if (gatt_cache_found == TRUE) {
         for (list_node_t *sn = list_begin(p_cache);
              sn != list_end(p_cache); sn = list_next(sn)) {
@@ -110,7 +110,7 @@ tBTA_GATTC_FIND_SERVICE_CB bta_gattc_register_service_change_notify(UINT16 conn_
         result = SERVICE_CHANGE_CACHE_NOT_FOUND;
     }
 
-    /* start to find gatt service change characteristic */
+
     if (gatt_service_found == TRUE) {
         if (p_service->characteristics) {
             for (list_node_t *cn = list_begin(p_service->characteristics);
@@ -124,10 +124,10 @@ tBTA_GATTC_FIND_SERVICE_CB bta_gattc_register_service_change_notify(UINT16 conn_
         }
     }
     else if (gatt_cache_found == TRUE) {
-        /* Gatt service not found, start a timer to wait for service discovery */
+
         result = SERVICE_CHANGE_SERVICE_NOT_FOUND;
     }
-    /* start to find gatt service change characteristic ccc */
+
     if (gatt_service_change_found == TRUE) {
         if (p_char->descriptors) {
             for (list_node_t *dn = list_begin(p_char->descriptors);
@@ -141,11 +141,11 @@ tBTA_GATTC_FIND_SERVICE_CB bta_gattc_register_service_change_notify(UINT16 conn_
         }
     }
     else if (gatt_service_found ==TRUE) {
-        /* Gatt service found, but service change char not found,
-         * Case1: remote device doesn't have service change char, we don't need to start a timer here to
-         * wait for service discovery
-         * Case2: remote device exist service change char, we have found gatt service, but have not found
-         * service change char, we need to start a timer here*/
+
+
+
+
+
         result = SERVICE_CHANGE_CHAR_NOT_FOUND;
     }
 
@@ -163,11 +163,11 @@ tBTA_GATTC_FIND_SERVICE_CB bta_gattc_register_service_change_notify(UINT16 conn_
 
     }
     else if (gatt_service_change_found == TRUE) {
-        /* Gatt service char found, but service change char ccc not found,
-         * Case1: remote device doesn't have service change char ccc, we don't need to start a timer here to
-         * wait for service discovery
-         * Case2: remote device exist service change char ccc, we have found gatt service change char, but have not found
-         * service change char ccc, we need to start a timer here */
+
+
+
+
+
         result = SERVICE_CHANGE_CCC_NOT_FOUND;
     }
 

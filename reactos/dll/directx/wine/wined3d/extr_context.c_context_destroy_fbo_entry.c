@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct wined3d_context {int /*<<< orphan*/  fbo_entry_count; } ;
-struct fbo_entry {int /*<<< orphan*/  entry; scalar_t__ id; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TRACE (char*,scalar_t__) ; 
- int /*<<< orphan*/  context_destroy_fbo (struct wined3d_context*,scalar_t__) ; 
- int /*<<< orphan*/  heap_free (struct fbo_entry*) ; 
- int /*<<< orphan*/  list_remove (int /*<<< orphan*/ *) ; 
+
+
+
+struct wined3d_context {int fbo_entry_count; } ;
+struct fbo_entry {int entry; scalar_t__ id; } ;
+
+
+ int TRACE (char*,scalar_t__) ;
+ int context_destroy_fbo (struct wined3d_context*,scalar_t__) ;
+ int heap_free (struct fbo_entry*) ;
+ int list_remove (int *) ;
 
 __attribute__((used)) static void context_destroy_fbo_entry(struct wined3d_context *context, struct fbo_entry *entry)
 {

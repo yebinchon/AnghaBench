@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct vnode {int dummy; } ;
-typedef  int /*<<< orphan*/  fhandle_t ;
-typedef  int /*<<< orphan*/  NFSPROC_T ;
+typedef int fhandle_t ;
+typedef int NFSPROC_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  M_TEMP ; 
- int /*<<< orphan*/  M_WAITOK ; 
- int /*<<< orphan*/  free (char*,int /*<<< orphan*/ ) ; 
- char* malloc (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int nfsrv_dsgetsockmnt (struct vnode*,int /*<<< orphan*/ ,char*,int*,int*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int M_TEMP ;
+ int M_WAITOK ;
+ int free (char*,int ) ;
+ char* malloc (int,int ,int ) ;
+ int nfsrv_dsgetsockmnt (struct vnode*,int ,char*,int*,int*,int *,int *,int *,char*,int *,int *,int *,int *,int *,int *) ;
 
 int
 nfsrv_dsgetdevandfh(struct vnode *vp, NFSPROC_T *p, int *mirrorcntp,
     fhandle_t *fhp, char *devid)
 {
-	int buflen, error;
-	char *buf;
+ int buflen, error;
+ char *buf;
 
-	buflen = 1024;
-	buf = malloc(buflen, M_TEMP, M_WAITOK);
-	error = nfsrv_dsgetsockmnt(vp, 0, buf, &buflen, mirrorcntp, p, NULL,
-	    fhp, devid, NULL, NULL, NULL, NULL, NULL, NULL);
-	free(buf, M_TEMP);
-	return (error);
+ buflen = 1024;
+ buf = malloc(buflen, M_TEMP, M_WAITOK);
+ error = nfsrv_dsgetsockmnt(vp, 0, buf, &buflen, mirrorcntp, p, ((void*)0),
+     fhp, devid, ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0));
+ free(buf, M_TEMP);
+ return (error);
 }

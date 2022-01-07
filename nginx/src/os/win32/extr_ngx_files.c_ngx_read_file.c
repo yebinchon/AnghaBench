@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  void* u_long ;
-typedef  int /*<<< orphan*/  u_char ;
-typedef  void* ssize_t ;
-typedef  int off_t ;
-struct TYPE_6__ {int /*<<< orphan*/  data; } ;
-struct TYPE_7__ {int /*<<< orphan*/  offset; TYPE_1__ name; int /*<<< orphan*/  log; int /*<<< orphan*/  fd; } ;
-typedef  TYPE_2__ ngx_file_t ;
-typedef  scalar_t__ ngx_err_t ;
-struct TYPE_8__ {int /*<<< orphan*/ * hEvent; void* OffsetHigh; void* Offset; scalar_t__ InternalHigh; scalar_t__ Internal; } ;
-typedef  TYPE_3__ OVERLAPPED ;
 
-/* Variables and functions */
- scalar_t__ ERROR_HANDLE_EOF ; 
- void* NGX_ERROR ; 
- int /*<<< orphan*/  NGX_LOG_ERR ; 
- scalar_t__ ReadFile (int /*<<< orphan*/ ,int /*<<< orphan*/ *,size_t,void**,TYPE_3__*) ; 
- scalar_t__ ngx_errno ; 
- int /*<<< orphan*/  ngx_log_error (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,char*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef void* u_long ;
+typedef int u_char ;
+typedef void* ssize_t ;
+typedef int off_t ;
+struct TYPE_6__ {int data; } ;
+struct TYPE_7__ {int offset; TYPE_1__ name; int log; int fd; } ;
+typedef TYPE_2__ ngx_file_t ;
+typedef scalar_t__ ngx_err_t ;
+struct TYPE_8__ {int * hEvent; void* OffsetHigh; void* Offset; scalar_t__ InternalHigh; scalar_t__ Internal; } ;
+typedef TYPE_3__ OVERLAPPED ;
+
+
+ scalar_t__ ERROR_HANDLE_EOF ;
+ void* NGX_ERROR ;
+ int NGX_LOG_ERR ;
+ scalar_t__ ReadFile (int ,int *,size_t,void**,TYPE_3__*) ;
+ scalar_t__ ngx_errno ;
+ int ngx_log_error (int ,int ,scalar_t__,char*,int ) ;
 
 ssize_t
 ngx_read_file(ngx_file_t *file, u_char *buf, size_t size, off_t offset)
 {
-    u_long      n;
-    ngx_err_t   err;
-    OVERLAPPED  ovlp, *povlp;
+    u_long n;
+    ngx_err_t err;
+    OVERLAPPED ovlp, *povlp;
 
     ovlp.Internal = 0;
     ovlp.InternalHigh = 0;
     ovlp.Offset = (u_long) offset;
     ovlp.OffsetHigh = (u_long) (offset >> 32);
-    ovlp.hEvent = NULL;
+    ovlp.hEvent = ((void*)0);
 
     povlp = &ovlp;
 

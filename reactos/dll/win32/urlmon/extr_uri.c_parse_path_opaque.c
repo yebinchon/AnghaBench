@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {scalar_t__ scheme_type; char const* path; int path_len; } ;
-typedef  TYPE_1__ parse_data ;
-typedef  char WCHAR ;
-typedef  int DWORD ;
-typedef  int BOOL ;
+typedef TYPE_1__ parse_data ;
+typedef char WCHAR ;
+typedef int DWORD ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int FALSE ; 
- int /*<<< orphan*/  TRACE (char*,char const**,TYPE_1__*,int,int /*<<< orphan*/ ,int) ; 
- int TRUE ; 
- scalar_t__ URL_SCHEME_FILE ; 
- scalar_t__ URL_SCHEME_MAILTO ; 
- scalar_t__ URL_SCHEME_UNKNOWN ; 
- int Uri_CREATE_FILE_USE_DOS_PATH ; 
- int /*<<< orphan*/  check_pct_encoded (char const**) ; 
- int /*<<< orphan*/  debugstr_wn (char const*,int) ; 
- scalar_t__ is_forbidden_dos_path_char (char const) ; 
- int /*<<< orphan*/  is_path_delim (scalar_t__,char const) ; 
+
+ int FALSE ;
+ int TRACE (char*,char const**,TYPE_1__*,int,int ,int) ;
+ int TRUE ;
+ scalar_t__ URL_SCHEME_FILE ;
+ scalar_t__ URL_SCHEME_MAILTO ;
+ scalar_t__ URL_SCHEME_UNKNOWN ;
+ int Uri_CREATE_FILE_USE_DOS_PATH ;
+ int check_pct_encoded (char const**) ;
+ int debugstr_wn (char const*,int) ;
+ scalar_t__ is_forbidden_dos_path_char (char const) ;
+ int is_path_delim (scalar_t__,char const) ;
 
 __attribute__((used)) static BOOL parse_path_opaque(const WCHAR **ptr, parse_data *data, DWORD flags) {
     const BOOL known_scheme = data->scheme_type != URL_SCHEME_UNKNOWN;
@@ -38,7 +38,7 @@ __attribute__((used)) static BOOL parse_path_opaque(const WCHAR **ptr, parse_dat
     if (is_mailto && (*ptr)[0] == '/' && (*ptr)[1] == '/')
     {
         if ((*ptr)[2]) data->path = *ptr + 2;
-        else data->path = NULL;
+        else data->path = ((void*)0);
     }
     else
         data->path = *ptr;
@@ -47,14 +47,14 @@ __attribute__((used)) static BOOL parse_path_opaque(const WCHAR **ptr, parse_dat
         if(**ptr == '%' && known_scheme) {
             if(!check_pct_encoded(ptr)) {
                 *ptr = data->path;
-                data->path = NULL;
+                data->path = ((void*)0);
                 return FALSE;
             } else
                 continue;
         } else if(is_forbidden_dos_path_char(**ptr) && is_file &&
                   (flags & Uri_CREATE_FILE_USE_DOS_PATH)) {
             *ptr = data->path;
-            data->path = NULL;
+            data->path = ((void*)0);
             return FALSE;
         }
 

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int png_byte ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int png_byte ;
 struct TYPE_4__ {struct TYPE_4__ const* next; } ;
-typedef  TYPE_1__ image_transform ;
+typedef TYPE_1__ image_transform ;
 
-/* Variables and functions */
- int PNG_COLOR_TYPE_GRAY ; 
- int PNG_COLOR_TYPE_RGB ; 
+
+ int PNG_COLOR_TYPE_GRAY ;
+ int PNG_COLOR_TYPE_RGB ;
 
 __attribute__((used)) static int
 image_transform_png_set_filler_add(image_transform *this,

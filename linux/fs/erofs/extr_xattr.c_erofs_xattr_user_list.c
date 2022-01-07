@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct dentry {int /*<<< orphan*/  d_sb; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EROFS_SB (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XATTR_USER ; 
- int test_opt (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct dentry {int d_sb; } ;
+
+
+ int EROFS_SB (int ) ;
+ int XATTR_USER ;
+ int test_opt (int ,int ) ;
 
 __attribute__((used)) static bool erofs_xattr_user_list(struct dentry *dentry)
 {
-	return test_opt(EROFS_SB(dentry->d_sb), XATTR_USER);
+ return test_opt(EROFS_SB(dentry->d_sb), XATTR_USER);
 }

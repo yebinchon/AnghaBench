@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  am_path; } ;
-typedef  TYPE_1__ am_node ;
 
-/* Variables and functions */
- scalar_t__ STREQ (int /*<<< orphan*/ ,char*) ; 
- TYPE_1__* get_first_exported_ap (int*) ; 
- TYPE_1__* get_next_exported_ap (int*) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int am_path; } ;
+typedef TYPE_1__ am_node ;
+
+
+ scalar_t__ STREQ (int ,char*) ;
+ TYPE_1__* get_first_exported_ap (int*) ;
+ TYPE_1__* get_next_exported_ap (int*) ;
 
 am_node *
 path_to_exported_ap(char *path)
@@ -26,7 +26,7 @@ path_to_exported_ap(char *path)
   am_node *mp;
 
   mp = get_first_exported_ap(&index);
-  while (mp != NULL) {
+  while (mp != ((void*)0)) {
     if (STREQ(mp->am_path, path))
       break;
     mp = get_next_exported_ap(&index);

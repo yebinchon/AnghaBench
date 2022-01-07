@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_18__   TYPE_3__ ;
-typedef  struct TYPE_17__   TYPE_2__ ;
-typedef  struct TYPE_16__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ svn_wc_operation_t ;
-typedef  int /*<<< orphan*/  svn_wc__db_t ;
-struct TYPE_17__ {int /*<<< orphan*/  data; } ;
-typedef  TYPE_2__ svn_string_t ;
-typedef  int /*<<< orphan*/  svn_stream_t ;
+
+
+typedef struct TYPE_18__ TYPE_3__ ;
+typedef struct TYPE_17__ TYPE_2__ ;
+typedef struct TYPE_16__ TYPE_1__ ;
+
+
+typedef scalar_t__ svn_wc_operation_t ;
+typedef int svn_wc__db_t ;
+struct TYPE_17__ {int data; } ;
+typedef TYPE_2__ svn_string_t ;
+typedef int svn_stream_t ;
 struct TYPE_18__ {struct TYPE_18__* next; TYPE_1__* children; } ;
-typedef  TYPE_3__ svn_skel_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_cancel_func_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
-typedef  int /*<<< orphan*/  apr_hash_index_t ;
+typedef TYPE_3__ svn_skel_t ;
+typedef int svn_error_t ;
+typedef int svn_cancel_func_t ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
+typedef int apr_hash_index_t ;
 struct TYPE_16__ {TYPE_3__* next; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/ * apr_hash_first (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * apr_hash_next (int /*<<< orphan*/ *) ; 
- char* apr_hash_this_key (int /*<<< orphan*/ *) ; 
- char* apr_pstrdup (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  prop_conflict_from_skel (TYPE_2__ const**,TYPE_3__ const*,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  prop_conflict_new (TYPE_2__ const**,char const*,TYPE_2__ const*,TYPE_2__ const*,TYPE_2__ const*,TYPE_2__ const*,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- TYPE_2__* svn_hash_gets (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  svn_io_file_del_none ; 
- int /*<<< orphan*/  svn_pool_clear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_pool_create (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_pool_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_stream_close (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_stream_open_unique (int /*<<< orphan*/ **,char const**,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_stream_puts (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_wc__conflict_read_info (scalar_t__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*,TYPE_3__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__conflict_read_prop_conflict (int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ **,int /*<<< orphan*/ **,int /*<<< orphan*/ **,int /*<<< orphan*/ *,char const*,TYPE_3__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__db_read_conflict (TYPE_3__**,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__db_read_pristine_props (int /*<<< orphan*/ **,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__db_temp_wcroot_tempdir (char const**,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_wc_operation_merge ; 
+
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int * apr_hash_first (int *,int *) ;
+ int * apr_hash_next (int *) ;
+ char* apr_hash_this_key (int *) ;
+ char* apr_pstrdup (int *,char const*) ;
+ int prop_conflict_from_skel (TYPE_2__ const**,TYPE_3__ const*,int ,void*,int *,int *) ;
+ int prop_conflict_new (TYPE_2__ const**,char const*,TYPE_2__ const*,TYPE_2__ const*,TYPE_2__ const*,TYPE_2__ const*,int ,void*,int *,int *) ;
+ TYPE_2__* svn_hash_gets (int *,char const*) ;
+ int svn_io_file_del_none ;
+ int svn_pool_clear (int *) ;
+ int * svn_pool_create (int *) ;
+ int svn_pool_destroy (int *) ;
+ int svn_stream_close (int *) ;
+ int svn_stream_open_unique (int **,char const**,char const*,int ,int *,int *) ;
+ int svn_stream_puts (int *,int ) ;
+ int svn_wc__conflict_read_info (scalar_t__*,int *,int *,int *,int *,int *,char const*,TYPE_3__*,int *,int *) ;
+ int svn_wc__conflict_read_prop_conflict (int *,int **,int **,int **,int **,int *,char const*,TYPE_3__*,int *,int *) ;
+ int svn_wc__db_read_conflict (TYPE_3__**,int *,int *,int *,char const*,int *,int *) ;
+ int svn_wc__db_read_pristine_props (int **,int *,char const*,int *,int *) ;
+ int svn_wc__db_temp_wcroot_tempdir (char const**,int *,char const*,int *,int *) ;
+ scalar_t__ svn_wc_operation_merge ;
 
 svn_error_t *
 svn_wc__create_prejfile(const char **tmp_prejfile_abspath,
@@ -78,7 +78,7 @@ svn_wc__create_prejfile(const char **tmp_prejfile_abspath,
   if (prop_conflict_data)
     {
       for (scan = prop_conflict_data->children->next;
-            scan != NULL; scan = scan->next)
+            scan != ((void*)0); scan = scan->next)
         {
           const svn_string_t *conflict_desc;
 
@@ -102,16 +102,16 @@ svn_wc__create_prejfile(const char **tmp_prejfile_abspath,
       apr_hash_t *conflicted_props;
       svn_skel_t *conflicts;
 
-      SVN_ERR(svn_wc__db_read_conflict(&conflicts, NULL, NULL,
+      SVN_ERR(svn_wc__db_read_conflict(&conflicts, ((void*)0), ((void*)0),
                                        db, local_abspath,
                                       scratch_pool, scratch_pool));
 
-      SVN_ERR(svn_wc__conflict_read_info(&operation, NULL, NULL, NULL, NULL,
+      SVN_ERR(svn_wc__conflict_read_info(&operation, ((void*)0), ((void*)0), ((void*)0), ((void*)0),
                                          db, local_abspath,
                                          conflicts,
                                          scratch_pool, scratch_pool));
 
-      SVN_ERR(svn_wc__conflict_read_prop_conflict(NULL,
+      SVN_ERR(svn_wc__conflict_read_prop_conflict(((void*)0),
                                                   &mine_props,
                                                   &their_original_props,
                                                   &their_props,
@@ -127,7 +127,7 @@ svn_wc__create_prejfile(const char **tmp_prejfile_abspath,
       else
         old_props = their_original_props;
 
-      /* ### TODO: Sort conflicts? */
+
       for (hi = apr_hash_first(scratch_pool, conflicted_props);
            hi;
            hi = apr_hash_next(hi))
@@ -141,13 +141,13 @@ svn_wc__create_prejfile(const char **tmp_prejfile_abspath,
 
           svn_pool_clear(iterpool);
 
-          old_value = old_props ? svn_hash_gets(old_props, propname) : NULL;
-          mine_value = mine_props ? svn_hash_gets(mine_props, propname) : NULL;
+          old_value = old_props ? svn_hash_gets(old_props, propname) : ((void*)0);
+          mine_value = mine_props ? svn_hash_gets(mine_props, propname) : ((void*)0);
           their_value = their_props ? svn_hash_gets(their_props, propname)
-                                    : NULL;
+                                    : ((void*)0);
           their_original_value = their_original_props
                                     ? svn_hash_gets(their_original_props, propname)
-                                    : NULL;
+                                    : ((void*)0);
 
           SVN_ERR(prop_conflict_new(&conflict_desc,
                                     propname, old_value, mine_value,

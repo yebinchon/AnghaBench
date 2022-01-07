@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t eventid_t ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef size_t eventid_t ;
 struct TYPE_6__ {TYPE_1__** event_table; } ;
-typedef  TYPE_2__ event_target_t ;
-struct TYPE_5__ {int /*<<< orphan*/ * handler_prop; } ;
-typedef  int /*<<< orphan*/  IDispatch ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  EventTarget ;
+typedef TYPE_2__ event_target_t ;
+struct TYPE_5__ {int * handler_prop; } ;
+typedef int IDispatch ;
+typedef int HRESULT ;
+typedef int EventTarget ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- int /*<<< orphan*/  IDispatch_AddRef (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  alloc_handler_vector (TYPE_2__*,size_t,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bind_event (int /*<<< orphan*/ *,size_t) ; 
- TYPE_2__* get_event_target_data (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  remove_event_handler (int /*<<< orphan*/ *,size_t) ; 
+
+ int E_OUTOFMEMORY ;
+ int IDispatch_AddRef (int *) ;
+ int S_OK ;
+ int TRUE ;
+ int alloc_handler_vector (TYPE_2__*,size_t,int ) ;
+ int bind_event (int *,size_t) ;
+ TYPE_2__* get_event_target_data (int *,int ) ;
+ int remove_event_handler (int *,size_t) ;
 
 __attribute__((used)) static HRESULT set_event_handler_disp(EventTarget *event_target, eventid_t eid, IDispatch *disp)
 {

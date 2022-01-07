@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  cxx_scope ;
-struct TYPE_5__ {int /*<<< orphan*/ * scope; struct TYPE_5__* previous; } ;
-typedef  TYPE_1__ cxx_binding ;
 
-/* Variables and functions */
- int /*<<< orphan*/  POP_TIMEVAR_AND_RETURN (int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  TV_NAME_LOOKUP ; 
- int /*<<< orphan*/  timevar_push (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int cxx_scope ;
+struct TYPE_5__ {int * scope; struct TYPE_5__* previous; } ;
+typedef TYPE_1__ cxx_binding ;
+
+
+ int POP_TIMEVAR_AND_RETURN (int ,TYPE_1__*) ;
+ int TV_NAME_LOOKUP ;
+ int timevar_push (int ) ;
 
 __attribute__((used)) static inline cxx_binding *
 find_binding (cxx_scope *scope, cxx_binding *binding)
 {
   timevar_push (TV_NAME_LOOKUP);
 
-  for (; binding != NULL; binding = binding->previous)
+  for (; binding != ((void*)0); binding = binding->previous)
     if (binding->scope == scope)
       POP_TIMEVAR_AND_RETURN (TV_NAME_LOOKUP, binding);
 

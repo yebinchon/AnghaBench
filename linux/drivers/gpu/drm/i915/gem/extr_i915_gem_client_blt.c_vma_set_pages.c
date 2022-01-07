@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct i915_vma {int /*<<< orphan*/  page_sizes; int /*<<< orphan*/  pages; struct i915_sleeve* private; } ;
-struct i915_sleeve {int /*<<< orphan*/  page_sizes; int /*<<< orphan*/  pages; } ;
 
-/* Variables and functions */
+
+
+
+struct i915_vma {int page_sizes; int pages; struct i915_sleeve* private; } ;
+struct i915_sleeve {int page_sizes; int pages; } ;
+
+
 
 __attribute__((used)) static int vma_set_pages(struct i915_vma *vma)
 {
-	struct i915_sleeve *sleeve = vma->private;
+ struct i915_sleeve *sleeve = vma->private;
 
-	vma->pages = sleeve->pages;
-	vma->page_sizes = sleeve->page_sizes;
+ vma->pages = sleeve->pages;
+ vma->page_sizes = sleeve->page_sizes;
 
-	return 0;
+ return 0;
 }

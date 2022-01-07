@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  strcmp (char*,char const*) ; 
+ int strcmp (char*,char const*) ;
 
 void
 svn_wc__eol_value_from_string(const char **value, const char *eol)
 {
-  if (eol == NULL)
-    *value = NULL;
+  if (eol == ((void*)0))
+    *value = ((void*)0);
   else if (! strcmp("\n", eol))
     *value = "LF";
   else if (! strcmp("\r", eol))
@@ -26,5 +18,5 @@ svn_wc__eol_value_from_string(const char **value, const char *eol)
   else if (! strcmp("\r\n", eol))
     *value = "CRLF";
   else
-    *value = NULL;
+    *value = ((void*)0);
 }

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  unsigned int usec_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef unsigned int usec_t ;
 struct TYPE_2__ {unsigned int cpu_quota_per_sec_usec; } ;
-typedef  TYPE_1__ CGroupContext ;
+typedef TYPE_1__ CGroupContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOG_ERR ; 
- unsigned int USEC_INFINITY ; 
- unsigned int USEC_PER_SEC ; 
- int /*<<< orphan*/  assert (char const*) ; 
- scalar_t__ isempty (char const*) ; 
- int /*<<< orphan*/  log_syntax (char const*,int /*<<< orphan*/ ,char const*,unsigned int,int,char*,char const*) ; 
- int parse_permille_unbounded (char const*) ; 
+
+ int LOG_ERR ;
+ unsigned int USEC_INFINITY ;
+ unsigned int USEC_PER_SEC ;
+ int assert (char const*) ;
+ scalar_t__ isempty (char const*) ;
+ int log_syntax (char const*,int ,char const*,unsigned int,int,char*,char const*) ;
+ int parse_permille_unbounded (char const*) ;
 
 int config_parse_cpu_quota(
                 const char *unit,

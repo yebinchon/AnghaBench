@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ngx_str_t ;
+
+
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int ngx_str_t ;
 struct TYPE_11__ {TYPE_2__* connection; } ;
-typedef  TYPE_3__ ngx_http_request_t ;
+typedef TYPE_3__ ngx_http_request_t ;
 struct TYPE_9__ {size_t size; } ;
-struct TYPE_12__ {TYPE_1__ u; int /*<<< orphan*/ * lengths; } ;
-typedef  TYPE_4__ ngx_http_complex_value_t ;
-struct TYPE_10__ {int /*<<< orphan*/  log; } ;
+struct TYPE_12__ {TYPE_1__ u; int * lengths; } ;
+typedef TYPE_4__ ngx_http_complex_value_t ;
+struct TYPE_10__ {int log; } ;
 
-/* Variables and functions */
- scalar_t__ NGX_ERROR ; 
- int /*<<< orphan*/  NGX_LOG_ERR ; 
- scalar_t__ NGX_OK ; 
- scalar_t__ ngx_http_complex_value (TYPE_3__*,TYPE_4__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ngx_log_error (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *) ; 
- size_t ngx_parse_size (int /*<<< orphan*/ *) ; 
+
+ scalar_t__ NGX_ERROR ;
+ int NGX_LOG_ERR ;
+ scalar_t__ NGX_OK ;
+ scalar_t__ ngx_http_complex_value (TYPE_3__*,TYPE_4__*,int *) ;
+ int ngx_log_error (int ,int ,int ,char*,int *) ;
+ size_t ngx_parse_size (int *) ;
 
 size_t
 ngx_http_complex_value_size(ngx_http_request_t *r,
     ngx_http_complex_value_t *val, size_t default_value)
 {
-    size_t     size;
-    ngx_str_t  value;
+    size_t size;
+    ngx_str_t value;
 
-    if (val == NULL) {
+    if (val == ((void*)0)) {
         return default_value;
     }
 
-    if (val->lengths == NULL) {
+    if (val->lengths == ((void*)0)) {
         return val->u.size;
     }
 

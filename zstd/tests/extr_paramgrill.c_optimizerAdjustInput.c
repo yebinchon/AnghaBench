@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t varInds_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef size_t varInds_t ;
 struct TYPE_3__ {scalar_t__* vals; } ;
-typedef  TYPE_1__ paramValues_t ;
-typedef  scalar_t__ U32 ;
+typedef TYPE_1__ paramValues_t ;
+typedef scalar_t__ U32 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DISPLAY (char*,...) ; 
- scalar_t__ MAX (scalar_t__,scalar_t__) ; 
- scalar_t__ MIN (scalar_t__,int /*<<< orphan*/ ) ; 
- size_t NUM_PARAMS ; 
- scalar_t__ PARAM_UNSET ; 
- scalar_t__ ZSTD_btlazy2 ; 
- int ZSTD_highbit32 (scalar_t__) ; 
- size_t clog_ind ; 
- int /*<<< orphan*/  displayParamVal (int /*<<< orphan*/ ,size_t,scalar_t__,int /*<<< orphan*/ ) ; 
- unsigned int* g_paramNames ; 
- size_t hlog_ind ; 
- int /*<<< orphan*/ * maxtable ; 
- scalar_t__* mintable ; 
- size_t slog_ind ; 
- int /*<<< orphan*/  stderr ; 
- size_t strt_ind ; 
- size_t wlog_ind ; 
+
+ int DISPLAY (char*,...) ;
+ scalar_t__ MAX (scalar_t__,scalar_t__) ;
+ scalar_t__ MIN (scalar_t__,int ) ;
+ size_t NUM_PARAMS ;
+ scalar_t__ PARAM_UNSET ;
+ scalar_t__ ZSTD_btlazy2 ;
+ int ZSTD_highbit32 (scalar_t__) ;
+ size_t clog_ind ;
+ int displayParamVal (int ,size_t,scalar_t__,int ) ;
+ unsigned int* g_paramNames ;
+ size_t hlog_ind ;
+ int * maxtable ;
+ scalar_t__* mintable ;
+ size_t slog_ind ;
+ int stderr ;
+ size_t strt_ind ;
+ size_t wlog_ind ;
 
 __attribute__((used)) static void optimizerAdjustInput(paramValues_t* pc, const size_t maxBlockSize)
 {
@@ -53,7 +53,7 @@ __attribute__((used)) static void optimizerAdjustInput(paramValues_t* pc, const 
     if(pc->vals[wlog_ind] != PARAM_UNSET) {
 
         U32 sshb = maxBlockSize > 1 ? ZSTD_highbit32((U32)(maxBlockSize-1)) + 1 : 1;
-        /* edge case of highBit not working for 0 */
+
 
         if(maxBlockSize < (1ULL << 31) && sshb + 1 < pc->vals[wlog_ind]) {
             U32 adjust = MAX(mintable[wlog_ind], sshb);

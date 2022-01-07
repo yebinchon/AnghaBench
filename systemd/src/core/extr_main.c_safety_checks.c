@@ -1,31 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ ACTION_RUN ; 
- scalar_t__ ACTION_TEST ; 
- int /*<<< orphan*/  EOPNOTSUPP ; 
- int /*<<< orphan*/  EPERM ; 
- int /*<<< orphan*/  EUNATCH ; 
- int /*<<< orphan*/  SYNTHETIC_ERRNO (int /*<<< orphan*/ ) ; 
- scalar_t__ arg_action ; 
- scalar_t__ arg_system ; 
- int /*<<< orphan*/  getenv (char*) ; 
- scalar_t__ geteuid () ; 
- int getpid_cached () ; 
- int log_error_errno (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ running_in_chroot () ; 
- scalar_t__ sd_booted () ; 
+ scalar_t__ ACTION_RUN ;
+ scalar_t__ ACTION_TEST ;
+ int EOPNOTSUPP ;
+ int EPERM ;
+ int EUNATCH ;
+ int SYNTHETIC_ERRNO (int ) ;
+ scalar_t__ arg_action ;
+ scalar_t__ arg_system ;
+ int getenv (char*) ;
+ scalar_t__ geteuid () ;
+ int getpid_cached () ;
+ int log_error_errno (int ,char*) ;
+ scalar_t__ running_in_chroot () ;
+ scalar_t__ sd_booted () ;
 
 __attribute__((used)) static int safety_checks(void) {
 

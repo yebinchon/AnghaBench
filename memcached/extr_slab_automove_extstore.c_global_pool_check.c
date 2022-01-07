@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
 struct window_global {int pool_low; int pool_high; } ;
 struct TYPE_3__ {int* free_mem; size_t window_cur; size_t window_size; int pool_filled_once; struct window_global* window_global; } ;
-typedef  TYPE_1__ slab_automove ;
+typedef TYPE_1__ slab_automove ;
 
-/* Variables and functions */
- unsigned int global_page_pool_size (int*) ; 
- int /*<<< orphan*/  memset (struct window_global*,int /*<<< orphan*/ ,int) ; 
+
+ unsigned int global_page_pool_size (int*) ;
+ int memset (struct window_global*,int ,int) ;
 
 __attribute__((used)) static void global_pool_check(slab_automove *a) {
     bool mem_limit_reached;
@@ -30,10 +30,10 @@ __attribute__((used)) static void global_pool_check(slab_automove *a) {
         return;
     if (count < free / 2) {
         wg->pool_low = 1;
-        a->pool_filled_once = true;
+        a->pool_filled_once = 1;
     } else if (count > free) {
         wg->pool_high = 1;
     } else {
-        a->pool_filled_once = true;
+        a->pool_filled_once = 1;
     }
 }

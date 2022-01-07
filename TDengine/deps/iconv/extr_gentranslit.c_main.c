@@ -1,30 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int EOF ; 
- int /*<<< orphan*/  abort () ; 
- int /*<<< orphan*/  exit (int) ; 
- scalar_t__ fclose (int /*<<< orphan*/ ) ; 
- scalar_t__ ferror (int /*<<< orphan*/ ) ; 
- int getc (int /*<<< orphan*/ ) ; 
- scalar_t__ malloc (int) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int scanf (char*,int*) ; 
- int /*<<< orphan*/  sprintf (char*,char*,int,...) ; 
- int /*<<< orphan*/  stdin ; 
- int /*<<< orphan*/  stdout ; 
- int /*<<< orphan*/  ungetc (int,int /*<<< orphan*/ ) ; 
+ int EOF ;
+ int abort () ;
+ int exit (int) ;
+ scalar_t__ fclose (int ) ;
+ scalar_t__ ferror (int ) ;
+ int getc (int ) ;
+ scalar_t__ malloc (int) ;
+ int printf (char*,...) ;
+ int scanf (char*,int*) ;
+ int sprintf (char*,char*,int,...) ;
+ int stdin ;
+ int stdout ;
+ int ungetc (int,int ) ;
 
 int main (int argc, char *argv[])
 {
@@ -90,7 +82,7 @@ int main (int argc, char *argv[])
           data[index++] = 0;
         }
         if (c >= 0x80) {
-          /* Finish reading an UTF-8 character. */
+
           if (c < 0xc0)
             exit(1);
           else {
@@ -139,16 +131,16 @@ int main (int argc, char *argv[])
     int i, j, p, j1, j2, t;
 
     for (p = 0; p < 0x1100; p++)
-      pages[p] = false;
+      pages[p] = 0;
     for (j = 0; j < 0x110000; j++)
       if (uni2index[j] >= 0)
-        pages[j>>8] = true;
+        pages[j>>8] = 1;
     for (j1 = 0; j1 < 0x22000; j1++) {
-      bool all_invalid = true;
+      bool all_invalid = 1;
       for (j2 = 0; j2 < 8; j2++) {
         j = 8*j1+j2;
         if (uni2index[j] >= 0)
-          all_invalid = false;
+          all_invalid = 0;
       }
       if (all_invalid)
         line[j1] = -1;
@@ -192,7 +184,7 @@ int main (int argc, char *argv[])
         }
         tables[t].suffix = s;
       } else
-        tables[t].suffix = NULL;
+        tables[t].suffix = ((void*)0);
     }
     {
       p = -1;

@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  npy_uint32 ;
-typedef  int npy_intp ;
-typedef  int npy_bool ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int npy_uint32 ;
+typedef int npy_intp ;
+typedef int npy_bool ;
 struct TYPE_3__ {int core_enabled; int core_num_dim_ix; int* core_num_dims; int nargs; int* core_offsets; int* core_dim_ixs; int* core_dim_sizes; int* core_dim_flags; int nin; void* core_signature; } ;
-typedef  TYPE_1__ PyUFuncObject ;
+typedef TYPE_1__ PyUFuncObject ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PyArray_free (void*) ; 
- void* PyArray_malloc (int) ; 
- void* PyArray_realloc (int*,int) ; 
- int /*<<< orphan*/  PyErr_Format (int /*<<< orphan*/ ,char*,char*,int,char const*) ; 
- int /*<<< orphan*/  PyErr_NoMemory () ; 
- int /*<<< orphan*/  PyErr_SetString (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  PyExc_RuntimeError ; 
- int /*<<< orphan*/  PyExc_ValueError ; 
- int UFUNC_CORE_DIM_CAN_IGNORE ; 
- int UFUNC_CORE_DIM_SIZE_INFERRED ; 
- int _get_end_of_name (char const*,int) ; 
- scalar_t__ _get_size (char const*) ; 
- scalar_t__ _is_alpha_underscore (char const) ; 
- int _is_same_name (char const*,char const*) ; 
- int _next_non_white_space (char const*,int) ; 
- int /*<<< orphan*/  strcpy (void*,char const*) ; 
- size_t strlen (char const*) ; 
+
+ int PyArray_free (void*) ;
+ void* PyArray_malloc (int) ;
+ void* PyArray_realloc (int*,int) ;
+ int PyErr_Format (int ,char*,char*,int,char const*) ;
+ int PyErr_NoMemory () ;
+ int PyErr_SetString (int ,char*) ;
+ int PyExc_RuntimeError ;
+ int PyExc_ValueError ;
+ int UFUNC_CORE_DIM_CAN_IGNORE ;
+ int UFUNC_CORE_DIM_SIZE_INFERRED ;
+ int _get_end_of_name (char const*,int) ;
+ scalar_t__ _get_size (char const*) ;
+ scalar_t__ _is_alpha_underscore (char const) ;
+ int _is_same_name (char const*,char const*) ;
+ int _next_non_white_space (char const*,int) ;
+ int strcpy (void*,char const*) ;
+ size_t strlen (char const*) ;
 
 __attribute__((used)) static int
 _parse_signature(PyUFuncObject *ufunc, const char *signature)
 {
     size_t len;
     char const **var_names;
-    int nd = 0;             /* number of dimension of the current argument */
-    int cur_arg = 0;        /* index into core_num_dims&core_offsets */
-    int cur_core_dim = 0;   /* index into core_dim_ixs */
+    int nd = 0;
+    int cur_arg = 0;
+    int cur_core_dim = 0;
     int i = 0;
-    char *parse_error = NULL;
+    char *parse_error = ((void*)0);
 
-    if (signature == NULL) {
+    if (signature == ((void*)0)) {
         PyErr_SetString(PyExc_RuntimeError,
                         "_parse_signature with NULL signature");
         return -1;
@@ -57,9 +57,9 @@ _parse_signature(PyUFuncObject *ufunc, const char *signature)
     if (ufunc->core_signature) {
         strcpy(ufunc->core_signature, signature);
     }
-    /* Allocate sufficient memory to store pointers to all dimension names */
+
     var_names = PyArray_malloc(sizeof(char const*) * len);
-    if (var_names == NULL) {
+    if (var_names == ((void*)0)) {
         PyErr_NoMemory();
         return -1;
     }
@@ -68,15 +68,15 @@ _parse_signature(PyUFuncObject *ufunc, const char *signature)
     ufunc->core_num_dim_ix = 0;
     ufunc->core_num_dims = PyArray_malloc(sizeof(int) * ufunc->nargs);
     ufunc->core_offsets = PyArray_malloc(sizeof(int) * ufunc->nargs);
-    /* The next three items will be shrunk later */
+
     ufunc->core_dim_ixs = PyArray_malloc(sizeof(int) * len);
     ufunc->core_dim_sizes = PyArray_malloc(sizeof(npy_intp) * len);
     ufunc->core_dim_flags = PyArray_malloc(sizeof(npy_uint32) * len);
 
-    if (ufunc->core_num_dims == NULL || ufunc->core_dim_ixs == NULL ||
-        ufunc->core_offsets == NULL ||
-        ufunc->core_dim_sizes == NULL ||
-        ufunc->core_dim_flags == NULL) {
+    if (ufunc->core_num_dims == ((void*)0) || ufunc->core_dim_ixs == ((void*)0) ||
+        ufunc->core_offsets == ((void*)0) ||
+        ufunc->core_dim_sizes == ((void*)0) ||
+        ufunc->core_dim_flags == ((void*)0)) {
         PyErr_NoMemory();
         goto fail;
     }
@@ -86,9 +86,9 @@ _parse_signature(PyUFuncObject *ufunc, const char *signature)
 
     i = _next_non_white_space(signature, 0);
     while (signature[i] != '\0') {
-        /* loop over input/output arguments */
+
         if (cur_arg == ufunc->nin) {
-            /* expect "->" */
+
             if (signature[i] != '-' || signature[i+1] != '>') {
                 parse_error = "expect '->'";
                 goto fail;
@@ -96,17 +96,17 @@ _parse_signature(PyUFuncObject *ufunc, const char *signature)
             i = _next_non_white_space(signature, i + 2);
         }
 
-        /*
-         * parse core dimensions of one argument,
-         * e.g. "()", "(i)", or "(i,j)"
-         */
+
+
+
+
         if (signature[i] != '(') {
             parse_error = "expect '('";
             goto fail;
         }
         i = _next_non_white_space(signature, i + 1);
         while (signature[i] != ')') {
-            /* loop over core dimensions */
+
             int ix, i_end;
             npy_intp frozen_size;
             npy_bool can_ignore;
@@ -115,9 +115,9 @@ _parse_signature(PyUFuncObject *ufunc, const char *signature)
                 parse_error = "unexpected end of signature string";
                 goto fail;
             }
-            /*
-             * Is this a variable or a fixed size dimension?
-             */
+
+
+
             if (_is_alpha_underscore(signature[i])) {
                 frozen_size = -1;
             }
@@ -128,13 +128,13 @@ _parse_signature(PyUFuncObject *ufunc, const char *signature)
                     goto fail;
                 }
             }
-            /* Is this dimension flexible? */
+
             i_end = _get_end_of_name(signature, i);
             can_ignore = (i_end > 0 && signature[i_end - 1] == '?');
-            /*
-             * Determine whether we already saw this dimension name,
-             * get its index, and set its properties
-             */
+
+
+
+
             for(ix = 0; ix < ufunc->core_num_dim_ix; ix++) {
                 if (frozen_size > 0 ?
                     frozen_size == ufunc->core_dim_sizes[ix] :
@@ -142,9 +142,9 @@ _parse_signature(PyUFuncObject *ufunc, const char *signature)
                     break;
                 }
             }
-            /*
-             * If a new dimension, store its properties; if old, check consistency.
-             */
+
+
+
             if (ix == ufunc->core_num_dim_ix) {
                 ufunc->core_num_dim_ix++;
                 var_names[ix] = signature + i;
@@ -191,10 +191,10 @@ _parse_signature(PyUFuncObject *ufunc, const char *signature)
 
         i = _next_non_white_space(signature, i + 1);
         if (cur_arg != ufunc->nin && cur_arg != ufunc->nargs) {
-            /*
-             * The list of input arguments (or output arguments) was
-             * only read partially
-             */
+
+
+
+
             if (signature[i] != ',') {
                 parse_error = "expect ','";
                 goto fail;
@@ -215,7 +215,7 @@ _parse_signature(PyUFuncObject *ufunc, const char *signature)
             ufunc->core_dim_flags,
             sizeof(npy_uint32) * ufunc->core_num_dim_ix);
 
-    /* check for trivial core-signature, e.g. "(),()->()" */
+
     if (cur_core_dim == 0) {
         ufunc->core_enabled = 0;
     }

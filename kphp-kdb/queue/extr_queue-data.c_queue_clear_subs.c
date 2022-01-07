@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  treap ;
-struct TYPE_4__ {int /*<<< orphan*/ * subs; int /*<<< orphan*/ * name; } ;
-typedef  TYPE_1__ queue ;
 
-/* Variables and functions */
- int /*<<< orphan*/  clear_subscr (TYPE_1__*) ; 
- int /*<<< orphan*/  dl_free (int /*<<< orphan*/ *,int) ; 
- scalar_t__ dl_get_memory_used () ; 
- int /*<<< orphan*/  queues_memory ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int treap ;
+struct TYPE_4__ {int * subs; int * name; } ;
+typedef TYPE_1__ queue ;
+
+
+ int clear_subscr (TYPE_1__*) ;
+ int dl_free (int *,int) ;
+ scalar_t__ dl_get_memory_used () ;
+ int queues_memory ;
 
 void queue_clear_subs (queue *q) {
-  if (q != NULL && q->name != NULL && q->subs != NULL) {
+  if (q != ((void*)0) && q->name != ((void*)0) && q->subs != ((void*)0)) {
     clear_subscr (q);
 
     queues_memory -= dl_get_memory_used();
     dl_free (q->subs, sizeof (treap));
     queues_memory += dl_get_memory_used();
-    q->subs = NULL;
+    q->subs = ((void*)0);
   }
 }

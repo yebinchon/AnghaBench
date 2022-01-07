@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  enum rtx_code { ____Placeholder_rtx_code } rtx_code ;
-typedef  int /*<<< orphan*/  HOST_WIDE_INT ;
 
-/* Variables and functions */
-#define  AND 132 
- int /*<<< orphan*/  ARM_SIGN_EXTEND (int /*<<< orphan*/ ) ; 
-#define  IOR 131 
-#define  MINUS 130 
-#define  PLUS 129 
-#define  XOR 128 
- int const_ok_for_arm (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gcc_unreachable () ; 
+
+
+
+typedef enum rtx_code { ____Placeholder_rtx_code } rtx_code ;
+typedef int HOST_WIDE_INT ;
+
+
+
+ int ARM_SIGN_EXTEND (int ) ;
+
+
+
+
+ int const_ok_for_arm (int ) ;
+ int gcc_unreachable () ;
 
 __attribute__((used)) static int
 const_ok_for_op (HOST_WIDE_INT i, enum rtx_code code)
@@ -31,15 +31,15 @@ const_ok_for_op (HOST_WIDE_INT i, enum rtx_code code)
 
   switch (code)
     {
-    case PLUS:
+    case 129:
       return const_ok_for_arm (ARM_SIGN_EXTEND (-i));
 
-    case MINUS:		/* Should only occur with (MINUS I reg) => rsb */
-    case XOR:
-    case IOR:
+    case 130:
+    case 128:
+    case 131:
       return 0;
 
-    case AND:
+    case 132:
       return const_ok_for_arm (ARM_SIGN_EXTEND (~i));
 
     default:

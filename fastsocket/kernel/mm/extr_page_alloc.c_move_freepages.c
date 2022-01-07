@@ -1,73 +1,64 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct zone {TYPE_1__* free_area; } ;
-struct page {int /*<<< orphan*/  lru; } ;
-struct TYPE_2__ {int /*<<< orphan*/ * free_list; } ;
+struct page {int lru; } ;
+struct TYPE_2__ {int * free_list; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BUG_ON (int) ; 
- int /*<<< orphan*/  PageBuddy (struct page*) ; 
- int /*<<< orphan*/  VM_BUG_ON (int) ; 
- int /*<<< orphan*/  list_add (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  list_del (int /*<<< orphan*/ *) ; 
- unsigned long page_order (struct page*) ; 
- scalar_t__ page_to_nid (struct page*) ; 
- int /*<<< orphan*/  page_to_pfn (struct page*) ; 
- scalar_t__ page_zone (struct page*) ; 
- int /*<<< orphan*/  pfn_valid_within (int /*<<< orphan*/ ) ; 
- scalar_t__ zone_to_nid (struct zone*) ; 
+
+ int BUG_ON (int) ;
+ int PageBuddy (struct page*) ;
+ int VM_BUG_ON (int) ;
+ int list_add (int *,int *) ;
+ int list_del (int *) ;
+ unsigned long page_order (struct page*) ;
+ scalar_t__ page_to_nid (struct page*) ;
+ int page_to_pfn (struct page*) ;
+ scalar_t__ page_zone (struct page*) ;
+ int pfn_valid_within (int ) ;
+ scalar_t__ zone_to_nid (struct zone*) ;
 
 __attribute__((used)) static int move_freepages(struct zone *zone,
-			  struct page *start_page, struct page *end_page,
-			  int migratetype)
+     struct page *start_page, struct page *end_page,
+     int migratetype)
 {
-	struct page *page;
-	unsigned long order;
-	int pages_moved = 0;
+ struct page *page;
+ unsigned long order;
+ int pages_moved = 0;
+ BUG_ON(page_zone(start_page) != page_zone(end_page));
 
-#ifndef CONFIG_HOLES_IN_ZONE
-	/*
-	 * page_zone is not safe to call in this context when
-	 * CONFIG_HOLES_IN_ZONE is set. This bug check is probably redundant
-	 * anyway as we check zone boundaries in move_freepages_block().
-	 * Remove at a later date when no bug reports exist related to
-	 * grouping pages by mobility
-	 */
-	BUG_ON(page_zone(start_page) != page_zone(end_page));
-#endif
 
-	for (page = start_page; page <= end_page;) {
-		/* Make sure we are not inadvertently changing nodes */
-		VM_BUG_ON(page_to_nid(page) != zone_to_nid(zone));
+ for (page = start_page; page <= end_page;) {
 
-		if (!pfn_valid_within(page_to_pfn(page))) {
-			page++;
-			continue;
-		}
+  VM_BUG_ON(page_to_nid(page) != zone_to_nid(zone));
 
-		if (!PageBuddy(page)) {
-			page++;
-			continue;
-		}
+  if (!pfn_valid_within(page_to_pfn(page))) {
+   page++;
+   continue;
+  }
 
-		order = page_order(page);
-		list_del(&page->lru);
-		list_add(&page->lru,
-			&zone->free_area[order].free_list[migratetype]);
-		page += 1 << order;
-		pages_moved += 1 << order;
-	}
+  if (!PageBuddy(page)) {
+   page++;
+   continue;
+  }
 
-	return pages_moved;
+  order = page_order(page);
+  list_del(&page->lru);
+  list_add(&page->lru,
+   &zone->free_area[order].free_list[migratetype]);
+  page += 1 << order;
+  pages_moved += 1 << order;
+ }
+
+ return pages_moved;
 }

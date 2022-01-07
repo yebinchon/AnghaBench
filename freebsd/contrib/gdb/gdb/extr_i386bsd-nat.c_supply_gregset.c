@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  gregset_t ;
 
-/* Variables and functions */
- scalar_t__ CANNOT_FETCH_REGISTER (int) ; 
- int I386_NUM_GREGS ; 
- int /*<<< orphan*/ * REG_ADDR (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  supply_register (int,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int gregset_t ;
+
+
+ scalar_t__ CANNOT_FETCH_REGISTER (int) ;
+ int I386_NUM_GREGS ;
+ int * REG_ADDR (int *,int) ;
+ int supply_register (int,int *) ;
 
 void
 supply_gregset (gregset_t *gregsetp)
@@ -26,8 +26,8 @@ supply_gregset (gregset_t *gregsetp)
   for (i = 0; i < I386_NUM_GREGS; i++)
     {
       if (CANNOT_FETCH_REGISTER (i))
-	supply_register (i, NULL);
+ supply_register (i, ((void*)0));
       else
-	supply_register (i, REG_ADDR (gregsetp, i));
+ supply_register (i, REG_ADDR (gregsetp, i));
     }
 }

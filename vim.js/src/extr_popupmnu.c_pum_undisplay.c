@@ -1,31 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  SOME_VALID ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/ * pum_array ; 
- int /*<<< orphan*/  redraw_all_later (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  redraw_tabline ; 
- int /*<<< orphan*/  status_redraw_all () ; 
+ int SOME_VALID ;
+ int TRUE ;
+ int * pum_array ;
+ int redraw_all_later (int ) ;
+ int redraw_tabline ;
+ int status_redraw_all () ;
 
 void
 pum_undisplay()
 {
-    pum_array = NULL;
+    pum_array = ((void*)0);
     redraw_all_later(SOME_VALID);
-#ifdef FEAT_WINDOWS
-    redraw_tabline = TRUE;
-#endif
+
+
+
     status_redraw_all();
 }

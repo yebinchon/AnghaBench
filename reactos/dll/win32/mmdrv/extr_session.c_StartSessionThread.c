@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {void* ready_event; void* go_event; int /*<<< orphan*/  handle; } ;
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {void* ready_event; void* go_event; int handle; } ;
 struct TYPE_8__ {scalar_t__ device_type; TYPE_1__ thread; } ;
-typedef  TYPE_2__ SessionInfo ;
-typedef  scalar_t__ MMRESULT ;
-typedef  TYPE_2__* LPTASKCALLBACK ;
-typedef  int /*<<< orphan*/  DWORD_PTR ;
+typedef TYPE_2__ SessionInfo ;
+typedef scalar_t__ MMRESULT ;
+typedef TYPE_2__* LPTASKCALLBACK ;
+typedef int DWORD_PTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (TYPE_2__*) ; 
- int /*<<< orphan*/  CloseHandle (void*) ; 
- void* CreateEvent (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DPRINT (char*) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  INFINITE ; 
- scalar_t__ MMSYSERR_NOERROR ; 
- scalar_t__ MMSYSERR_NOMEM ; 
- int /*<<< orphan*/  WaitForSingleObject (void*,int /*<<< orphan*/ ) ; 
- scalar_t__ WaveOutDevice ; 
- scalar_t__ WaveThread ; 
- scalar_t__ mmTaskCreate (TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int ASSERT (TYPE_2__*) ;
+ int CloseHandle (void*) ;
+ void* CreateEvent (int *,int ,int ,int *) ;
+ int DPRINT (char*) ;
+ int FALSE ;
+ int INFINITE ;
+ scalar_t__ MMSYSERR_NOERROR ;
+ scalar_t__ MMSYSERR_NOMEM ;
+ int WaitForSingleObject (void*,int ) ;
+ scalar_t__ WaveOutDevice ;
+ scalar_t__ WaveThread ;
+ scalar_t__ mmTaskCreate (TYPE_2__*,int *,int ) ;
 
 MMRESULT
 StartSessionThread(SessionInfo* session_info)
@@ -41,9 +41,9 @@ StartSessionThread(SessionInfo* session_info)
 
     ASSERT(session_info);
 
-    /* This is our "ready" event, sent when the thread is idle */
 
-    session_info->thread.ready_event = CreateEvent(NULL, FALSE, FALSE, NULL);
+
+    session_info->thread.ready_event = CreateEvent(((void*)0), FALSE, FALSE, ((void*)0));
 
     if ( ! session_info->thread.ready_event )
     {
@@ -51,9 +51,9 @@ StartSessionThread(SessionInfo* session_info)
         return MMSYSERR_NOMEM;
     }
 
-    /* This is our "go" event, sent when we want the thread to do something */
 
-    session_info->thread.go_event = CreateEvent(NULL, FALSE, FALSE, NULL);
+
+    session_info->thread.go_event = CreateEvent(((void*)0), FALSE, FALSE, ((void*)0));
 
     if ( ! session_info->thread.go_event )
     {
@@ -62,13 +62,13 @@ StartSessionThread(SessionInfo* session_info)
         return MMSYSERR_NOMEM;
     }
 
-    /* TODO - other kinds of devices need attention, too */
+
     task = ( session_info->device_type == WaveOutDevice )
-           ? (LPTASKCALLBACK) WaveThread : NULL;
+           ? (LPTASKCALLBACK) WaveThread : ((void*)0);
 
     ASSERT(task);
 
-    /* Effectively, this is a beefed-up CreateThread */
+
 
     result = mmTaskCreate(task,
                           &session_info->thread.handle,
@@ -82,7 +82,7 @@ StartSessionThread(SessionInfo* session_info)
         return result;
     }
 
-    /* Wait for the thread to be ready before completing */
+
 
     WaitForSingleObject(session_info->thread.ready_event, INFINITE);
 

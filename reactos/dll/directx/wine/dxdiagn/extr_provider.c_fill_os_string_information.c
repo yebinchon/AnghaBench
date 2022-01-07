@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  OSVERSIONINFOW ;
-typedef  int /*<<< orphan*/  IDxDiagContainerImpl_Container ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- size_t ARRAY_SIZE (char const**) ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  add_bstr_property (int /*<<< orphan*/ *,char const*,char const*) ; 
+
+
+
+typedef char WCHAR ;
+typedef int OSVERSIONINFOW ;
+typedef int IDxDiagContainerImpl_Container ;
+typedef int HRESULT ;
+
+
+ size_t ARRAY_SIZE (char const**) ;
+ scalar_t__ FAILED (int ) ;
+ int S_OK ;
+ int add_bstr_property (int *,char const*,char const*) ;
 
 __attribute__((used)) static HRESULT fill_os_string_information(IDxDiagContainerImpl_Container *node, OSVERSIONINFOW *info)
 {
@@ -37,8 +37,8 @@ __attribute__((used)) static HRESULT fill_os_string_information(IDxDiagContainer
     size_t i;
     HRESULT hr;
 
-    /* FIXME: OS detection should be performed, and localized OS strings
-     * should contain translated versions of the "build" phrase. */
+
+
     for (i = 0; i < ARRAY_SIZE(prop_list); i++)
     {
         hr = add_bstr_property(node, prop_list[i], winxpW);

@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  anal; } ;
-typedef  TYPE_1__ RCore ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cmd_anal_rtti (TYPE_1__*,char const*) ; 
- int /*<<< orphan*/  help_msg_av ; 
- int /*<<< orphan*/  r_anal_list_vtables (int /*<<< orphan*/ ,char const) ; 
- int /*<<< orphan*/  r_core_cmd_help (TYPE_1__*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int anal; } ;
+typedef TYPE_1__ RCore ;
+
+
+ int cmd_anal_rtti (TYPE_1__*,char const*) ;
+ int help_msg_av ;
+ int r_anal_list_vtables (int ,char const) ;
+ int r_core_cmd_help (TYPE_1__*,int ) ;
 
 __attribute__((used)) static void cmd_anal_virtual_functions(RCore *core, const char* input) {
-	switch (input[0]) {
-	case '\0': // "av"
-	case '*': // "av*"
-	case 'j': // "avj"
-		r_anal_list_vtables (core->anal, input[0]);
-		break;
-	case 'r': // "avr"
-		cmd_anal_rtti (core, input + 1);
-		break;
-	default :
-		r_core_cmd_help (core, help_msg_av);
-		break;
-	}
+ switch (input[0]) {
+ case '\0':
+ case '*':
+ case 'j':
+  r_anal_list_vtables (core->anal, input[0]);
+  break;
+ case 'r':
+  cmd_anal_rtti (core, input + 1);
+  break;
+ default :
+  r_core_cmd_help (core, help_msg_av);
+  break;
+ }
 }

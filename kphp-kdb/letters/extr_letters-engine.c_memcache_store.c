@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct connection {int /*<<< orphan*/  In; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INIT ; 
- int MAX_DELAY ; 
- int MAX_PRIORITY ; 
- int MAX_VALUE_LEN ; 
- int /*<<< orphan*/  RETURN (int /*<<< orphan*/ ,int) ; 
- int add_letter (int,long long,scalar_t__*) ; 
- int add_letter_priority (long long,int,int,scalar_t__*) ; 
- scalar_t__* buf ; 
- int /*<<< orphan*/  eat_at (char const*,int,char**,int*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char const*,int,int) ; 
- int /*<<< orphan*/  safe_read_in (int /*<<< orphan*/ *,scalar_t__*,int) ; 
- int /*<<< orphan*/  set ; 
- int sscanf (char*,char*,...) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  strncmp (char*,char*,int) ; 
- int verbosity ; 
+
+
+
+struct connection {int In; } ;
+
+
+ int INIT ;
+ int MAX_DELAY ;
+ int MAX_PRIORITY ;
+ int MAX_VALUE_LEN ;
+ int RETURN (int ,int) ;
+ int add_letter (int,long long,scalar_t__*) ;
+ int add_letter_priority (long long,int,int,scalar_t__*) ;
+ scalar_t__* buf ;
+ int eat_at (char const*,int,char**,int*) ;
+ int fprintf (int ,char*,char const*,int,int) ;
+ int safe_read_in (int *,scalar_t__*,int) ;
+ int set ;
+ int sscanf (char*,char*,...) ;
+ int stderr ;
+ int strncmp (char*,char*,int) ;
+ int verbosity ;
 
 int memcache_store (struct connection *c, int op, const char *old_key, int old_key_len, int flags, int delay, int size) {
   INIT;

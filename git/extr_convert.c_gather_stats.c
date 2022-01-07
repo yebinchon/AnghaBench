@@ -1,61 +1,61 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct text_stat {int /*<<< orphan*/  nonprintable; int /*<<< orphan*/  printable; int /*<<< orphan*/  nul; int /*<<< orphan*/  lonelf; int /*<<< orphan*/  lonecr; int /*<<< orphan*/  crlf; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memset (struct text_stat*,int /*<<< orphan*/ ,int) ; 
+
+
+
+struct text_stat {int nonprintable; int printable; int nul; int lonelf; int lonecr; int crlf; } ;
+
+
+ int memset (struct text_stat*,int ,int) ;
 
 __attribute__((used)) static void gather_stats(const char *buf, unsigned long size, struct text_stat *stats)
 {
-	unsigned long i;
+ unsigned long i;
 
-	memset(stats, 0, sizeof(*stats));
+ memset(stats, 0, sizeof(*stats));
 
-	for (i = 0; i < size; i++) {
-		unsigned char c = buf[i];
-		if (c == '\r') {
-			if (i+1 < size && buf[i+1] == '\n') {
-				stats->crlf++;
-				i++;
-			} else
-				stats->lonecr++;
-			continue;
-		}
-		if (c == '\n') {
-			stats->lonelf++;
-			continue;
-		}
-		if (c == 127)
-			/* DEL */
-			stats->nonprintable++;
-		else if (c < 32) {
-			switch (c) {
-				/* BS, HT, ESC and FF */
-			case '\b': case '\t': case '\033': case '\014':
-				stats->printable++;
-				break;
-			case 0:
-				stats->nul++;
-				/* fall through */
-			default:
-				stats->nonprintable++;
-			}
-		}
-		else
-			stats->printable++;
-	}
+ for (i = 0; i < size; i++) {
+  unsigned char c = buf[i];
+  if (c == '\r') {
+   if (i+1 < size && buf[i+1] == '\n') {
+    stats->crlf++;
+    i++;
+   } else
+    stats->lonecr++;
+   continue;
+  }
+  if (c == '\n') {
+   stats->lonelf++;
+   continue;
+  }
+  if (c == 127)
 
-	/* If file ends with EOF then don't count this EOF as non-printable. */
-	if (size >= 1 && buf[size-1] == '\032')
-		stats->nonprintable--;
+   stats->nonprintable++;
+  else if (c < 32) {
+   switch (c) {
+
+   case '\b': case '\t': case '\033': case '\014':
+    stats->printable++;
+    break;
+   case 0:
+    stats->nul++;
+
+   default:
+    stats->nonprintable++;
+   }
+  }
+  else
+   stats->printable++;
+ }
+
+
+ if (size >= 1 && buf[size-1] == '\032')
+  stats->nonprintable--;
 }

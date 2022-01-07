@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/ * proc_info_root ; 
- int /*<<< orphan*/  proc_info_root_name ; 
- int /*<<< orphan*/  remove_proc_entry (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+ int * proc_info_root ;
+ int proc_info_root_name ;
+ int remove_proc_entry (int ,int *) ;
 
 int reiserfs_proc_info_global_done(void)
 {
-	if (proc_info_root != NULL) {
-		proc_info_root = NULL;
-		remove_proc_entry(proc_info_root_name, NULL);
-	}
-	return 0;
+ if (proc_info_root != ((void*)0)) {
+  proc_info_root = ((void*)0);
+  remove_proc_entry(proc_info_root_name, ((void*)0));
+ }
+ return 0;
 }

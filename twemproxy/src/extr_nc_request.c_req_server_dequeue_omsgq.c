@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct msg {int request; int /*<<< orphan*/  mlen; } ;
+
+
+
+
+struct msg {int request; int mlen; } ;
 struct context {int dummy; } ;
-struct conn {int /*<<< orphan*/  owner; int /*<<< orphan*/  omsg_q; int /*<<< orphan*/  proxy; int /*<<< orphan*/  client; } ;
+struct conn {int owner; int omsg_q; int proxy; int client; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- int /*<<< orphan*/  TAILQ_REMOVE (int /*<<< orphan*/ *,struct msg*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  msg_tmo_delete (struct msg*) ; 
- int /*<<< orphan*/  out_queue ; 
- int /*<<< orphan*/  out_queue_bytes ; 
- int /*<<< orphan*/  s_tqe ; 
- int /*<<< orphan*/  stats_server_decr (struct context*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stats_server_decr_by (struct context*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int ASSERT (int) ;
+ int TAILQ_REMOVE (int *,struct msg*,int ) ;
+ int msg_tmo_delete (struct msg*) ;
+ int out_queue ;
+ int out_queue_bytes ;
+ int s_tqe ;
+ int stats_server_decr (struct context*,int ,int ) ;
+ int stats_server_decr_by (struct context*,int ,int ,int ) ;
 
 void
 req_server_dequeue_omsgq(struct context *ctx, struct conn *conn, struct msg *msg)

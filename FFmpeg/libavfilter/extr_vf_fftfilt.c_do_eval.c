@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_7__ {double frame_count_out; } ;
-struct TYPE_6__ {double* planewidth; double* planeheight; int* rdft_hlen; int* rdft_vlen; int /*<<< orphan*/ * weight_expr; int /*<<< orphan*/ ** weight; } ;
-typedef  TYPE_1__ FFTFILTContext ;
-typedef  TYPE_2__ AVFilterLink ;
+struct TYPE_6__ {double* planewidth; double* planeheight; int* rdft_hlen; int* rdft_vlen; int * weight_expr; int ** weight; } ;
+typedef TYPE_1__ FFTFILTContext ;
+typedef TYPE_2__ AVFilterLink ;
 
-/* Variables and functions */
- size_t VAR_H ; 
- size_t VAR_N ; 
- int VAR_VARS_NB ; 
- size_t VAR_W ; 
- size_t VAR_X ; 
- size_t VAR_Y ; 
- int /*<<< orphan*/  av_expr_eval (int /*<<< orphan*/ ,double*,TYPE_1__*) ; 
+
+ size_t VAR_H ;
+ size_t VAR_N ;
+ int VAR_VARS_NB ;
+ size_t VAR_W ;
+ size_t VAR_X ;
+ size_t VAR_Y ;
+ int av_expr_eval (int ,double*,TYPE_1__*) ;
 
 __attribute__((used)) static void do_eval(FFTFILTContext *s, AVFilterLink *inlink, int plane)
 {

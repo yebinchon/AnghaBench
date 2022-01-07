@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  qboolean ;
-typedef  int /*<<< orphan*/  byte ;
-typedef  int /*<<< orphan*/  HCRYPTPROV ;
-typedef  int /*<<< orphan*/  BYTE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CRYPT_VERIFYCONTEXT ; 
- int /*<<< orphan*/  CryptAcquireContext (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CryptGenRandom (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CryptReleaseContext (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PROV_RSA_FULL ; 
- int /*<<< orphan*/  qfalse ; 
- int /*<<< orphan*/  qtrue ; 
+
+
+
+typedef int qboolean ;
+typedef int byte ;
+typedef int HCRYPTPROV ;
+typedef int BYTE ;
+
+
+ int CRYPT_VERIFYCONTEXT ;
+ int CryptAcquireContext (int *,int *,int *,int ,int ) ;
+ int CryptGenRandom (int ,int,int *) ;
+ int CryptReleaseContext (int ,int ) ;
+ int PROV_RSA_FULL ;
+ int qfalse ;
+ int qtrue ;
 
 qboolean Sys_RandomBytes( byte *string, int len )
 {
-	HCRYPTPROV  prov;
+ HCRYPTPROV prov;
 
-	if( !CryptAcquireContext( &prov, NULL, NULL,
-		PROV_RSA_FULL, CRYPT_VERIFYCONTEXT ) )  {
+ if( !CryptAcquireContext( &prov, ((void*)0), ((void*)0),
+  PROV_RSA_FULL, CRYPT_VERIFYCONTEXT ) ) {
 
-		return qfalse;
-	}
+  return qfalse;
+ }
 
-	if( !CryptGenRandom( prov, len, (BYTE *)string ) )  {
-		CryptReleaseContext( prov, 0 );
-		return qfalse;
-	}
-	CryptReleaseContext( prov, 0 );
-	return qtrue;
+ if( !CryptGenRandom( prov, len, (BYTE *)string ) ) {
+  CryptReleaseContext( prov, 0 );
+  return qfalse;
+ }
+ CryptReleaseContext( prov, 0 );
+ return qtrue;
 }

@@ -1,59 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int do_hci_command (char*,int,char**) ; 
- int getopt (int,char**,char*) ; 
- int numeric_bdaddr ; 
- char* optarg ; 
- scalar_t__ optind ; 
- int /*<<< orphan*/  usage () ; 
- int verbose ; 
+ int do_hci_command (char*,int,char**) ;
+ int getopt (int,char**,char*) ;
+ int numeric_bdaddr ;
+ char* optarg ;
+ scalar_t__ optind ;
+ int usage () ;
+ int verbose ;
 
 int
 main(int argc, char *argv[])
 {
-	char	*node = NULL;
-	int	 n;
+ char *node = ((void*)0);
+ int n;
 
-	/* Process command line arguments */
-	while ((n = getopt(argc, argv, "n:Nvh")) != -1) {
-		switch (n) {
-		case 'n':
-			node = optarg;
-			break;
 
-		case 'N':
-			numeric_bdaddr = 1;
-			break;
+ while ((n = getopt(argc, argv, "n:Nvh")) != -1) {
+  switch (n) {
+  case 'n':
+   node = optarg;
+   break;
 
-		case 'v':
-			verbose = 1;
-			break;
+  case 'N':
+   numeric_bdaddr = 1;
+   break;
 
-		case 'h':
-		default:
-			usage();
-		}
-	}
+  case 'v':
+   verbose = 1;
+   break;
 
-	argc -= optind;
-	argv += optind;
+  case 'h':
+  default:
+   usage();
+  }
+ }
 
-	if (*argv == NULL)
-		usage();
+ argc -= optind;
+ argv += optind;
 
-	n = do_hci_command(node, argc, argv);
+ if (*argv == ((void*)0))
+  usage();
 
-	return (n);
+ n = do_hci_command(node, argc, argv);
+
+ return (n);
 }

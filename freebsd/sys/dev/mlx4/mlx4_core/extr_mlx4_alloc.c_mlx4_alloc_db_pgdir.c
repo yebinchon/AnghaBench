@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct mlx4_db_pgdir {int /*<<< orphan*/  db_page; int /*<<< orphan*/  db_dma; int /*<<< orphan*/  order1; int /*<<< orphan*/ * bits; int /*<<< orphan*/  order0; } ;
+
+
+
+
+struct mlx4_db_pgdir {int db_page; int db_dma; int order1; int * bits; int order0; } ;
 struct device {int dummy; } ;
-typedef  int /*<<< orphan*/  gfp_t ;
+typedef int gfp_t ;
 
-/* Variables and functions */
- int MLX4_DB_PER_PAGE ; 
- int /*<<< orphan*/  PAGE_SIZE ; 
- int /*<<< orphan*/  bitmap_fill (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  dma_alloc_coherent (struct device*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kfree (struct mlx4_db_pgdir*) ; 
- struct mlx4_db_pgdir* kzalloc (int,int /*<<< orphan*/ ) ; 
+
+ int MLX4_DB_PER_PAGE ;
+ int PAGE_SIZE ;
+ int bitmap_fill (int ,int) ;
+ int dma_alloc_coherent (struct device*,int ,int *,int ) ;
+ int kfree (struct mlx4_db_pgdir*) ;
+ struct mlx4_db_pgdir* kzalloc (int,int ) ;
 
 __attribute__((used)) static struct mlx4_db_pgdir *mlx4_alloc_db_pgdir(struct device *dma_device,
-						 gfp_t gfp)
+       gfp_t gfp)
 {
-	struct mlx4_db_pgdir *pgdir;
+ struct mlx4_db_pgdir *pgdir;
 
-	pgdir = kzalloc(sizeof *pgdir, gfp);
-	if (!pgdir)
-		return NULL;
+ pgdir = kzalloc(sizeof *pgdir, gfp);
+ if (!pgdir)
+  return ((void*)0);
 
-	bitmap_fill(pgdir->order1, MLX4_DB_PER_PAGE / 2);
-	pgdir->bits[0] = pgdir->order0;
-	pgdir->bits[1] = pgdir->order1;
-	pgdir->db_page = dma_alloc_coherent(dma_device, PAGE_SIZE,
-					    &pgdir->db_dma, gfp);
-	if (!pgdir->db_page) {
-		kfree(pgdir);
-		return NULL;
-	}
+ bitmap_fill(pgdir->order1, MLX4_DB_PER_PAGE / 2);
+ pgdir->bits[0] = pgdir->order0;
+ pgdir->bits[1] = pgdir->order1;
+ pgdir->db_page = dma_alloc_coherent(dma_device, PAGE_SIZE,
+         &pgdir->db_dma, gfp);
+ if (!pgdir->db_page) {
+  kfree(pgdir);
+  return ((void*)0);
+ }
 
-	return pgdir;
+ return pgdir;
 }

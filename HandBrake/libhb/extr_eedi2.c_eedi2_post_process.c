@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
 
-/* Variables and functions */
- int const abs (int) ; 
- int* eedi2_limlut ; 
+
+
+
+typedef int uint8_t ;
+
+
+ int const abs (int) ;
+ int* eedi2_limlut ;
 
 void eedi2_post_process( uint8_t * nmskp, int nmsk_pitch, uint8_t * omskp, int omsk_pitch,
                          uint8_t * dstp, int src_pitch, int field, int height, int width )

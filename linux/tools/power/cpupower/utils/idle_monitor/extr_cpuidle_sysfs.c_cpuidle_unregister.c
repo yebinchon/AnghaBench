@@ -1,30 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int cpu_count ; 
- int /*<<< orphan*/ ********* current_count ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ *********) ; 
- int /*<<< orphan*/ ********* previous_count ; 
+ int cpu_count ;
+ int ********* current_count ;
+ int free (int *********) ;
+ int ********* previous_count ;
 
 void cpuidle_unregister(void)
 {
-	int num;
+ int num;
 
-	for (num = 0; num < cpu_count; num++) {
-		free(previous_count[num]);
-		free(current_count[num]);
-	}
-	free(previous_count);
-	free(current_count);
+ for (num = 0; num < cpu_count; num++) {
+  free(previous_count[num]);
+  free(current_count[num]);
+ }
+ free(previous_count);
+ free(current_count);
 }

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct sockinfo {int /*<<< orphan*/  addr; } ;
+
+
+
+
+struct sockinfo {int addr; } ;
 struct sockaddr {int dummy; } ;
-typedef  int socklen_t ;
-typedef  int /*<<< orphan*/  si ;
+typedef int socklen_t ;
+typedef int si ;
 
-/* Variables and functions */
- int getpeername (int,struct sockaddr*,int*) ; 
- int /*<<< orphan*/  memset (struct sockinfo*,int /*<<< orphan*/ ,int) ; 
- char* nc_unresolve_addr (struct sockaddr*,int) ; 
+
+ int getpeername (int,struct sockaddr*,int*) ;
+ int memset (struct sockinfo*,int ,int) ;
+ char* nc_unresolve_addr (struct sockaddr*,int) ;
 
 char *
 nc_unresolve_peer_desc(int sd)

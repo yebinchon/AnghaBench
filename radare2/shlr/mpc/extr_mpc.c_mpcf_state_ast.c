@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mpc_val_t ;
-typedef  int /*<<< orphan*/  mpc_state_t ;
-typedef  int /*<<< orphan*/  mpc_ast_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * mpc_ast_state (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int mpc_val_t ;
+typedef int mpc_state_t ;
+typedef int mpc_ast_t ;
+
+
+ int free (int *) ;
+ int * mpc_ast_state (int *,int ) ;
 
 mpc_val_t *mpcf_state_ast(int n, mpc_val_t **xs) {
   mpc_state_t *s = ((mpc_state_t**)xs)[0];

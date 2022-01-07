@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  rcHeader; } ;
-typedef  int /*<<< orphan*/ * LPRECT ;
-typedef  int /*<<< orphan*/  LISTVIEW_INFO ;
-typedef  int /*<<< orphan*/  INT ;
 
-/* Variables and functions */
- TYPE_1__* LISTVIEW_GetColumnInfo (int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int rcHeader; } ;
+typedef int * LPRECT ;
+typedef int LISTVIEW_INFO ;
+typedef int INT ;
+
+
+ TYPE_1__* LISTVIEW_GetColumnInfo (int const*,int ) ;
 
 __attribute__((used)) static inline void LISTVIEW_GetHeaderRect(const LISTVIEW_INFO *infoPtr, INT nSubItem, LPRECT lprc)
 {

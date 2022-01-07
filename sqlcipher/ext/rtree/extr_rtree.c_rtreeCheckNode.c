@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-typedef  int i64 ;
-struct TYPE_7__ {scalar_t__ nDim; int /*<<< orphan*/  nLeaf; int /*<<< orphan*/  nNonLeaf; } ;
-typedef  TYPE_1__ RtreeCheck ;
 
-/* Variables and functions */
- int RTREE_MAX_DEPTH ; 
- int /*<<< orphan*/  assert (int) ; 
- int readInt16 (int /*<<< orphan*/ *) ; 
- int readInt64 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  rtreeCheckAppendMsg (TYPE_1__*,char*,int,...) ; 
- int /*<<< orphan*/  rtreeCheckCellCoord (TYPE_1__*,int,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * rtreeCheckGetNode (TYPE_1__*,int,int*) ; 
- int /*<<< orphan*/  rtreeCheckMapping (TYPE_1__*,int,int,int) ; 
- int /*<<< orphan*/  sqlite3_free (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int u8 ;
+typedef int i64 ;
+struct TYPE_7__ {scalar_t__ nDim; int nLeaf; int nNonLeaf; } ;
+typedef TYPE_1__ RtreeCheck ;
+
+
+ int RTREE_MAX_DEPTH ;
+ int assert (int) ;
+ int readInt16 (int *) ;
+ int readInt64 (int *) ;
+ int rtreeCheckAppendMsg (TYPE_1__*,char*,int,...) ;
+ int rtreeCheckCellCoord (TYPE_1__*,int,int,int *,int *) ;
+ int * rtreeCheckGetNode (TYPE_1__*,int,int*) ;
+ int rtreeCheckMapping (TYPE_1__*,int,int,int) ;
+ int sqlite3_free (int *) ;
 
 __attribute__((used)) static void rtreeCheckNode(
   RtreeCheck *pCheck,
-  int iDepth,                     /* Depth of iNode (0==leaf) */
-  u8 *aParent,                    /* Buffer containing parent coords */
-  i64 iNode                       /* Node to check */
+  int iDepth,
+  u8 *aParent,
+  i64 iNode
 ){
   u8 *aNode = 0;
   int nNode = 0;
@@ -42,12 +42,12 @@ __attribute__((used)) static void rtreeCheckNode(
   aNode = rtreeCheckGetNode(pCheck, iNode, &nNode);
   if( aNode ){
     if( nNode<4 ){
-      rtreeCheckAppendMsg(pCheck, 
+      rtreeCheckAppendMsg(pCheck,
           "Node %lld is too small (%d bytes)", iNode, nNode
       );
     }else{
-      int nCell;                  /* Number of cells on page */
-      int i;                      /* Used to iterate through cells */
+      int nCell;
+      int i;
       if( aParent==0 ){
         iDepth = readInt16(aNode);
         if( iDepth>RTREE_MAX_DEPTH ){
@@ -58,8 +58,8 @@ __attribute__((used)) static void rtreeCheckNode(
       }
       nCell = readInt16(&aNode[2]);
       if( (4 + nCell*(8 + pCheck->nDim*2*4))>nNode ){
-        rtreeCheckAppendMsg(pCheck, 
-            "Node %lld is too small for cell count of %d (%d bytes)", 
+        rtreeCheckAppendMsg(pCheck,
+            "Node %lld is too small for cell count of %d (%d bytes)",
             iNode, nCell, nNode
         );
       }else{

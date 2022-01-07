@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct mp_recorder_sink {int dummy; } ;
 struct demux_packet {size_t stream; } ;
-struct demux_internal {int enable_recording; scalar_t__ dumper_status; int /*<<< orphan*/ * recorder; int /*<<< orphan*/ * streams; TYPE_1__* opts; } ;
+struct demux_internal {int enable_recording; scalar_t__ dumper_status; int * recorder; int * streams; TYPE_1__* opts; } ;
 struct TYPE_2__ {scalar_t__* record_file; } ;
 
-/* Variables and functions */
- scalar_t__ CONTROL_OK ; 
- int /*<<< orphan*/  MP_ERR (struct demux_internal*,char*) ; 
- int /*<<< orphan*/  mp_recorder_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mp_recorder_feed_packet (struct mp_recorder_sink*,struct demux_packet*) ; 
- struct mp_recorder_sink* mp_recorder_get_sink (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * recorder_create (struct demux_internal*,scalar_t__*) ; 
- int /*<<< orphan*/  write_dump_packet (struct demux_internal*,struct demux_packet*) ; 
+
+ scalar_t__ CONTROL_OK ;
+ int MP_ERR (struct demux_internal*,char*) ;
+ int mp_recorder_destroy (int *) ;
+ int mp_recorder_feed_packet (struct mp_recorder_sink*,struct demux_packet*) ;
+ struct mp_recorder_sink* mp_recorder_get_sink (int *,int ) ;
+ int * recorder_create (struct demux_internal*,scalar_t__*) ;
+ int write_dump_packet (struct demux_internal*,struct demux_packet*) ;
 
 __attribute__((used)) static void record_packet(struct demux_internal *in, struct demux_packet *dp)
 {
-    // (should preferably be outside of the lock)
+
     if (in->enable_recording && !in->recorder &&
         in->opts->record_file && in->opts->record_file[0])
     {
-        // Later failures shouldn't make it retry and overwrite the previously
-        // recorded file.
-        in->enable_recording = false;
+
+
+        in->enable_recording = 0;
 
         in->recorder = recorder_create(in, in->opts->record_file);
         if (!in->recorder)
@@ -48,7 +48,7 @@ __attribute__((used)) static void record_packet(struct demux_internal *in, struc
         } else {
             MP_ERR(in, "New stream appeared; stopping recording.\n");
             mp_recorder_destroy(in->recorder);
-            in->recorder = NULL;
+            in->recorder = ((void*)0);
         }
     }
 

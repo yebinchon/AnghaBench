@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-struct xfrm_state_walk {struct xfrm_address_filter* filter; scalar_t__ seq; int /*<<< orphan*/  state; int /*<<< orphan*/  proto; int /*<<< orphan*/  all; } ;
+
+
+
+
+typedef int u8 ;
+struct xfrm_state_walk {struct xfrm_address_filter* filter; scalar_t__ seq; int state; int proto; int all; } ;
 struct xfrm_address_filter {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INIT_LIST_HEAD (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  XFRM_STATE_DEAD ; 
+
+ int INIT_LIST_HEAD (int *) ;
+ int XFRM_STATE_DEAD ;
 
 void xfrm_state_walk_init(struct xfrm_state_walk *walk, u8 proto,
-			  struct xfrm_address_filter *filter)
+     struct xfrm_address_filter *filter)
 {
-	INIT_LIST_HEAD(&walk->all);
-	walk->proto = proto;
-	walk->state = XFRM_STATE_DEAD;
-	walk->seq = 0;
-	walk->filter = filter;
+ INIT_LIST_HEAD(&walk->all);
+ walk->proto = proto;
+ walk->state = XFRM_STATE_DEAD;
+ walk->seq = 0;
+ walk->filter = filter;
 }

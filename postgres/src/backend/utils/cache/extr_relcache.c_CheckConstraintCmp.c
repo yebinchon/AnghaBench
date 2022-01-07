@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  ccname; } ;
-typedef  TYPE_1__ ConstrCheck ;
 
-/* Variables and functions */
- int strcmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int ccname; } ;
+typedef TYPE_1__ ConstrCheck ;
+
+
+ int strcmp (int ,int ) ;
 
 __attribute__((used)) static int
 CheckConstraintCmp(const void *a, const void *b)
 {
-	const ConstrCheck *ca = (const ConstrCheck *) a;
-	const ConstrCheck *cb = (const ConstrCheck *) b;
+ const ConstrCheck *ca = (const ConstrCheck *) a;
+ const ConstrCheck *cb = (const ConstrCheck *) b;
 
-	return strcmp(ca->ccname, cb->ccname);
+ return strcmp(ca->ccname, cb->ccname);
 }

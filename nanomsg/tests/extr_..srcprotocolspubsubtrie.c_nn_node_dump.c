@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int min; int max; scalar_t__ nbr; } ;
-struct TYPE_4__ {int /*<<< orphan*/ * children; } ;
+struct TYPE_4__ {int * children; } ;
 struct TYPE_6__ {TYPE_2__ dense; TYPE_1__ sparse; } ;
-struct nn_trie_node {int prefix_len; int type; TYPE_3__ u; int /*<<< orphan*/ * prefix; scalar_t__ refcount; } ;
+struct nn_trie_node {int prefix_len; int type; TYPE_3__ u; int * prefix; scalar_t__ refcount; } ;
 
-/* Variables and functions */
- int NN_TRIE_DENSE_TYPE ; 
- int /*<<< orphan*/  nn_node_indent (int) ; 
- int /*<<< orphan*/  nn_node_putchar (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
+
+ int NN_TRIE_DENSE_TYPE ;
+ int nn_node_indent (int) ;
+ int nn_node_putchar (int ) ;
+ int printf (char*,...) ;
 
 void nn_node_dump (struct nn_trie_node *self, int indent)
 {

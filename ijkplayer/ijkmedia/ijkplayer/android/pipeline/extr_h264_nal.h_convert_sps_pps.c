@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ALOGE (char*,...) ; 
- int /*<<< orphan*/  memcpy (int*,int const*,int) ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+
+
+ int ALOGE (char*,...) ;
+ int memcpy (int*,int const*,int) ;
 
 __attribute__((used)) static int convert_sps_pps( const uint8_t *p_buf, size_t i_buf_size,
                             uint8_t *p_out_buf, size_t i_out_buf_size,
                             size_t *p_sps_pps_size, size_t *p_nal_size)
 {
-    // int i_profile;
+
     uint32_t i_data_size = i_buf_size, i_nal_size, i_sps_pps_size = 0;
     unsigned int i_loop_end;
 
-    /* */
+
     if( i_data_size < 7 )
     {
         ALOGE( "Input Metadata too small" );
         return -1;
     }
 
-    /* Read infos in first 6 bytes */
-    // i_profile    = (p_buf[1] << 16) | (p_buf[2] << 8) | p_buf[3];
+
+
     if (p_nal_size)
-        *p_nal_size  = (p_buf[4] & 0x03) + 1;
-    p_buf       += 5;
+        *p_nal_size = (p_buf[4] & 0x03) + 1;
+    p_buf += 5;
     i_data_size -= 5;
 
     for ( unsigned int j = 0; j < 2; j++ )
     {
-        /* First time is SPS, Second is PPS */
+
         if( i_data_size < 1 )
         {
             ALOGE( "PPS too small after processing SPS/PPS %u",

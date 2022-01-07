@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  state; int /*<<< orphan*/  suffix_free; int /*<<< orphan*/  suffix; void* ex_arg; int /*<<< orphan*/  prefix_free; int /*<<< orphan*/  prefix; } ;
-struct TYPE_6__ {int /*<<< orphan*/  ex_free_func; int /*<<< orphan*/  ex_func; } ;
-typedef  TYPE_1__ BIO_ASN1_EX_FUNCS ;
-typedef  TYPE_2__ BIO_ASN1_BUF_CTX ;
-typedef  int /*<<< orphan*/  BIO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASN1_STATE_DONE ; 
- int /*<<< orphan*/  ASN1_STATE_HEADER ; 
- int /*<<< orphan*/  ASN1_STATE_POST_COPY ; 
-#define  BIO_CTRL_FLUSH 134 
-#define  BIO_C_GET_EX_ARG 133 
-#define  BIO_C_GET_PREFIX 132 
-#define  BIO_C_GET_SUFFIX 131 
-#define  BIO_C_SET_EX_ARG 130 
-#define  BIO_C_SET_PREFIX 129 
-#define  BIO_C_SET_SUFFIX 128 
- int /*<<< orphan*/  BIO_clear_retry_flags (int /*<<< orphan*/ *) ; 
- long BIO_ctrl (int /*<<< orphan*/ *,int,long,void*) ; 
- TYPE_2__* BIO_get_data (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BIO_next (int /*<<< orphan*/ *) ; 
- long asn1_bio_flush_ex (int /*<<< orphan*/ *,TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  asn1_bio_setup_ex (int /*<<< orphan*/ *,TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int state; int suffix_free; int suffix; void* ex_arg; int prefix_free; int prefix; } ;
+struct TYPE_6__ {int ex_free_func; int ex_func; } ;
+typedef TYPE_1__ BIO_ASN1_EX_FUNCS ;
+typedef TYPE_2__ BIO_ASN1_BUF_CTX ;
+typedef int BIO ;
+
+
+ int ASN1_STATE_DONE ;
+ int ASN1_STATE_HEADER ;
+ int ASN1_STATE_POST_COPY ;
+
+
+
+
+
+
+
+ int BIO_clear_retry_flags (int *) ;
+ long BIO_ctrl (int *,int,long,void*) ;
+ TYPE_2__* BIO_get_data (int *) ;
+ int * BIO_next (int *) ;
+ long asn1_bio_flush_ex (int *,TYPE_2__*,int ,int ) ;
+ int asn1_bio_setup_ex (int *,TYPE_2__*,int ,int ,int ) ;
 
 __attribute__((used)) static long asn1_bio_ctrl(BIO *b, int cmd, long arg1, void *arg2)
 {
@@ -44,48 +44,48 @@ __attribute__((used)) static long asn1_bio_ctrl(BIO *b, int cmd, long arg1, void
     BIO *next;
 
     ctx = BIO_get_data(b);
-    if (ctx == NULL)
+    if (ctx == ((void*)0))
         return 0;
     next = BIO_next(b);
     switch (cmd) {
 
-    case BIO_C_SET_PREFIX:
+    case 129:
         ex_func = arg2;
         ctx->prefix = ex_func->ex_func;
         ctx->prefix_free = ex_func->ex_free_func;
         break;
 
-    case BIO_C_GET_PREFIX:
+    case 132:
         ex_func = arg2;
         ex_func->ex_func = ctx->prefix;
         ex_func->ex_free_func = ctx->prefix_free;
         break;
 
-    case BIO_C_SET_SUFFIX:
+    case 128:
         ex_func = arg2;
         ctx->suffix = ex_func->ex_func;
         ctx->suffix_free = ex_func->ex_free_func;
         break;
 
-    case BIO_C_GET_SUFFIX:
+    case 131:
         ex_func = arg2;
         ex_func->ex_func = ctx->suffix;
         ex_func->ex_free_func = ctx->suffix_free;
         break;
 
-    case BIO_C_SET_EX_ARG:
+    case 130:
         ctx->ex_arg = arg2;
         break;
 
-    case BIO_C_GET_EX_ARG:
+    case 133:
         *(void **)arg2 = ctx->ex_arg;
         break;
 
-    case BIO_CTRL_FLUSH:
-        if (next == NULL)
+    case 134:
+        if (next == ((void*)0))
             return 0;
 
-        /* Call post function if possible */
+
         if (ctx->state == ASN1_STATE_HEADER) {
             if (!asn1_bio_setup_ex(b, ctx, ctx->suffix,
                                    ASN1_STATE_POST_COPY, ASN1_STATE_DONE))
@@ -107,7 +107,7 @@ __attribute__((used)) static long asn1_bio_ctrl(BIO *b, int cmd, long arg1, void
         }
 
     default:
-        if (next == NULL)
+        if (next == ((void*)0))
             return 0;
         return BIO_ctrl(next, cmd, arg1, arg2);
 

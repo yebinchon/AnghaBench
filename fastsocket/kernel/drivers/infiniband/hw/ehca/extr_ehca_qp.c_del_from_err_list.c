@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct list_head {int dummy; } ;
-struct ehca_cq {int /*<<< orphan*/  spinlock; } ;
+struct ehca_cq {int spinlock; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  list_del_init (struct list_head*) ; 
- int /*<<< orphan*/  list_empty (struct list_head*) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
+
+ int list_del_init (struct list_head*) ;
+ int list_empty (struct list_head*) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
 
 __attribute__((used)) static void del_from_err_list(struct ehca_cq *cq, struct list_head *node)
 {
-	unsigned long flags;
+ unsigned long flags;
 
-	spin_lock_irqsave(&cq->spinlock, flags);
+ spin_lock_irqsave(&cq->spinlock, flags);
 
-	if (!list_empty(node))
-		list_del_init(node);
+ if (!list_empty(node))
+  list_del_init(node);
 
-	spin_unlock_irqrestore(&cq->spinlock, flags);
+ spin_unlock_irqrestore(&cq->spinlock, flags);
 }

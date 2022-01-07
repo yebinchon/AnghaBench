@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {TYPE_1__* p_FmPcdPlcr; int /*<<< orphan*/  guestId; int /*<<< orphan*/  h_Fm; } ;
-typedef  TYPE_2__ t_FmPcd ;
-typedef  int /*<<< orphan*/  t_Error ;
-struct TYPE_6__ {scalar_t__ h_HwSpinlock; scalar_t__ h_SwSpinlock; scalar_t__ partNumOfPlcrProfiles; int /*<<< orphan*/  partPlcrProfilesBase; int /*<<< orphan*/  sharedProfilesIds; scalar_t__ numOfSharedProfiles; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_OK ; 
- int /*<<< orphan*/  FmUnregisterIntr (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FreeSharedProfiles (TYPE_2__*,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PlcrFreeProfilesForPartition (TYPE_2__*,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XX_FreeSpinlock (scalar_t__) ; 
- int /*<<< orphan*/  e_FM_INTR_TYPE_ERR ; 
- int /*<<< orphan*/  e_FM_INTR_TYPE_NORMAL ; 
- int /*<<< orphan*/  e_FM_MOD_PLCR ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {TYPE_1__* p_FmPcdPlcr; int guestId; int h_Fm; } ;
+typedef TYPE_2__ t_FmPcd ;
+typedef int t_Error ;
+struct TYPE_6__ {scalar_t__ h_HwSpinlock; scalar_t__ h_SwSpinlock; scalar_t__ partNumOfPlcrProfiles; int partPlcrProfilesBase; int sharedProfilesIds; scalar_t__ numOfSharedProfiles; } ;
+
+
+ int E_OK ;
+ int FmUnregisterIntr (int ,int ,int ,int ) ;
+ int FreeSharedProfiles (TYPE_2__*,scalar_t__,int ) ;
+ int PlcrFreeProfilesForPartition (TYPE_2__*,int ,scalar_t__,int ) ;
+ int XX_FreeSpinlock (scalar_t__) ;
+ int e_FM_INTR_TYPE_ERR ;
+ int e_FM_INTR_TYPE_NORMAL ;
+ int e_FM_MOD_PLCR ;
 
 t_Error PlcrFree(t_FmPcd *p_FmPcd)
 {

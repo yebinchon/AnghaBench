@@ -1,62 +1,62 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_6__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  json_t ;
-struct TYPE_8__ {int /*<<< orphan*/  text; } ;
-typedef  TYPE_1__ json_error_t ;
-struct TYPE_11__ {int /*<<< orphan*/  repo_mgr; int /*<<< orphan*/  sync_mgr; int /*<<< orphan*/  started; } ;
-struct TYPE_10__ {int /*<<< orphan*/ * head; } ;
+
+
+typedef struct TYPE_11__ TYPE_6__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int json_t ;
+struct TYPE_8__ {int text; } ;
+typedef TYPE_1__ json_error_t ;
+struct TYPE_11__ {int repo_mgr; int sync_mgr; int started; } ;
+struct TYPE_10__ {int * head; } ;
 struct TYPE_9__ {scalar_t__ in_sync; } ;
-typedef  TYPE_2__ SyncInfo ;
-typedef  TYPE_3__ SeafRepo ;
-typedef  int /*<<< orphan*/  SeafCloneManager ;
-typedef  scalar_t__ IgnoreReason ;
-typedef  int /*<<< orphan*/  GError ;
+typedef TYPE_2__ SyncInfo ;
+typedef TYPE_3__ SeafRepo ;
+typedef int SeafCloneManager ;
+typedef scalar_t__ IgnoreReason ;
+typedef int GError ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- scalar_t__ IGNORE_REASON_END_SPACE_PERIOD ; 
- int /*<<< orphan*/  SEAFILE_DOMAIN ; 
- int /*<<< orphan*/  SEAF_ERR_BAD_ARGS ; 
- int /*<<< orphan*/  SEAF_ERR_GENERAL ; 
- int /*<<< orphan*/  TRUE ; 
- char* add_task_common (int /*<<< orphan*/ *,char const*,int,char const*,char const*,char const*,char const*,int,char const*,char*,char const*,char const*,char const*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  check_encryption_args (char const*,int,char const*,char*,int /*<<< orphan*/ **) ; 
- char* g_build_filename (char const*,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  g_free (char*) ; 
- int /*<<< orphan*/  g_set_error (int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- char* g_strdup (int /*<<< orphan*/ ) ; 
- scalar_t__ is_duplicate_task (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  json_decref (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * json_loads (char const*,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/ * json_object_get (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  json_string_value (int /*<<< orphan*/ *) ; 
- char* make_worktree_for_download (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ **) ; 
- TYPE_6__* seaf ; 
- int /*<<< orphan*/  seaf_message (char*) ; 
- TYPE_3__* seaf_repo_manager_get_repo (int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  seaf_repo_manager_remove_garbage_repo (int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  seaf_repo_manager_remove_repo_ondisk (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ) ; 
- TYPE_2__* seaf_sync_manager_get_sync_info (int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  seaf_warning (char*,...) ; 
- scalar_t__ seafile_verify_repo_passwd (char const*,char const*,char const*,int,char*) ; 
- scalar_t__ should_ignore_on_checkout (char const*,scalar_t__*) ; 
+
+ int FALSE ;
+ scalar_t__ IGNORE_REASON_END_SPACE_PERIOD ;
+ int SEAFILE_DOMAIN ;
+ int SEAF_ERR_BAD_ARGS ;
+ int SEAF_ERR_GENERAL ;
+ int TRUE ;
+ char* add_task_common (int *,char const*,int,char const*,char const*,char const*,char const*,int,char const*,char*,char const*,char const*,char const*,char const*,int ,int **) ;
+ int check_encryption_args (char const*,int,char const*,char*,int **) ;
+ char* g_build_filename (char const*,char const*,int *) ;
+ int g_free (char*) ;
+ int g_set_error (int **,int ,int ,char*) ;
+ char* g_strdup (int ) ;
+ scalar_t__ is_duplicate_task (int *,char const*) ;
+ int json_decref (int *) ;
+ int * json_loads (char const*,int ,TYPE_1__*) ;
+ int * json_object_get (int *,char*) ;
+ int json_string_value (int *) ;
+ char* make_worktree_for_download (int *,char*,int **) ;
+ TYPE_6__* seaf ;
+ int seaf_message (char*) ;
+ TYPE_3__* seaf_repo_manager_get_repo (int ,char const*) ;
+ int seaf_repo_manager_remove_garbage_repo (int ,char const*) ;
+ int seaf_repo_manager_remove_repo_ondisk (int ,char const*,int ) ;
+ TYPE_2__* seaf_sync_manager_get_sync_info (int ,char const*) ;
+ int seaf_warning (char*,...) ;
+ scalar_t__ seafile_verify_repo_passwd (char const*,char const*,char const*,int,char*) ;
+ scalar_t__ should_ignore_on_checkout (char const*,scalar_t__*) ;
 
 char *
-seaf_clone_manager_add_download_task (SeafCloneManager *mgr, 
+seaf_clone_manager_add_download_task (SeafCloneManager *mgr,
                                       const char *repo_id,
                                       int repo_version,
                                       const char *peer_id,
@@ -73,30 +73,20 @@ seaf_clone_manager_add_download_task (SeafCloneManager *mgr,
                                       const char *more_info,
                                       GError **error)
 {
-    SeafRepo *repo = NULL;
-    char *wt_tmp = NULL;
-    char *worktree = NULL;
-    char *ret = NULL;
-    char *repo_salt = NULL;
+    SeafRepo *repo = ((void*)0);
+    char *wt_tmp = ((void*)0);
+    char *worktree = ((void*)0);
+    char *ret = ((void*)0);
+    char *repo_salt = ((void*)0);
 
     if (!seaf->started) {
         seaf_message ("System not started, skip adding clone task.\n");
         goto out;
     }
-
-#ifdef USE_GPL_CRYPTO
-    if (repo_version == 0 || (passwd && enc_version < 2)) {
-        seaf_warning ("Don't support syncing old version libraries.\n");
-        g_set_error (error, SEAFILE_DOMAIN, SEAF_ERR_BAD_ARGS,
-                     "Don't support syncing old version libraries");
-        goto out;
-    }
-#endif
-
     if (more_info) {
          json_error_t jerror;
          json_t *object;
- 
+
          object = json_loads (more_info, 0, &jerror);
          if (!object) {
              seaf_warning ("Failed to load more sync info from json: %s.\n", jerror.text);
@@ -113,10 +103,10 @@ seaf_clone_manager_add_download_task (SeafCloneManager *mgr,
         goto out;
     }
 
-    /* After a repo was unsynced, the sync task may still be blocked in the
-     * network, so the repo is not actually deleted yet.
-     * In this case just return an error to the user.
-     */
+
+
+
+
     SyncInfo *sync_info = seaf_sync_manager_get_sync_info (seaf->sync_mgr,
                                                            repo_id);
     if (sync_info && sync_info->in_sync) {
@@ -127,14 +117,14 @@ seaf_clone_manager_add_download_task (SeafCloneManager *mgr,
 
     repo = seaf_repo_manager_get_repo (seaf->repo_mgr, repo_id);
 
-    if (repo != NULL && repo->head != NULL) {
+    if (repo != ((void*)0) && repo->head != ((void*)0)) {
         g_set_error (error, SEAFILE_DOMAIN, SEAF_ERR_GENERAL,
                      "Repo already exists");
         goto out;
     }
 
     if (is_duplicate_task (mgr, repo_id)) {
-        g_set_error (error, SEAFILE_DOMAIN, SEAF_ERR_GENERAL, 
+        g_set_error (error, SEAFILE_DOMAIN, SEAF_ERR_GENERAL,
                      "Task is already in progress");
         goto out;
     }
@@ -157,21 +147,21 @@ seaf_clone_manager_add_download_task (SeafCloneManager *mgr,
         goto out;
     }
 
-    wt_tmp = g_build_filename (wt_parent, repo_name, NULL);
+    wt_tmp = g_build_filename (wt_parent, repo_name, ((void*)0));
 
     worktree = make_worktree_for_download (mgr, wt_tmp, error);
     if (!worktree) {
         goto out;
     }
 
-    /* If a repo was unsynced and then downloaded again, there may be
-     * a garbage record for this repo. We don't want the downloaded blocks
-     * be removed by GC.
-     */
+
+
+
+
     if (repo_version > 0)
         seaf_repo_manager_remove_garbage_repo (seaf->repo_mgr, repo_id);
 
-    /* Delete orphan information in the db in case the repo was corrupt. */
+
     if (!repo)
         seaf_repo_manager_remove_repo_ondisk (seaf->repo_mgr, repo_id, FALSE);
 

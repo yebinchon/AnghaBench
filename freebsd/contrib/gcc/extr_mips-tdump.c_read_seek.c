@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ off_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char const*,long,long) ; 
- int lseek (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  perror (char const*) ; 
- long read (int /*<<< orphan*/ ,void*,size_t) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  tfile_fd ; 
- scalar_t__ tfile_offset ; 
- void* xmalloc (size_t) ; 
+
+
+
+typedef scalar_t__ off_t ;
+
+
+ int exit (int) ;
+ int fprintf (int ,char*,char const*,long,long) ;
+ int lseek (int ,scalar_t__,int ) ;
+ int perror (char const*) ;
+ long read (int ,void*,size_t) ;
+ int stderr ;
+ int tfile_fd ;
+ scalar_t__ tfile_offset ;
+ void* xmalloc (size_t) ;
 
 __attribute__((used)) static void *
-read_seek (void *ptr, size_t size, off_t offset,  const char *context)
+read_seek (void *ptr, size_t size, off_t offset, const char *context)
 {
   long read_size = 0;
 
-  if (size == 0)		/* nothing to read */
+  if (size == 0)
     return ptr;
 
   if (!ptr)
@@ -44,7 +44,7 @@ read_seek (void *ptr, size_t size, off_t offset,  const char *context)
   if (read_size != (long) size)
     {
       fprintf (stderr, "%s: read %ld bytes, expected %ld bytes\n",
-	       context, read_size, (long) size);
+        context, read_size, (long) size);
       exit (1);
     }
 

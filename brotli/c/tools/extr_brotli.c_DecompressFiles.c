@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  force_overwrite; int /*<<< orphan*/  current_input_path; } ;
-typedef  TYPE_1__ Context ;
-typedef  int /*<<< orphan*/  BrotliDecoderState ;
-typedef  scalar_t__ BROTLI_BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BROTLI_DECODER_PARAM_LARGE_WINDOW ; 
- scalar_t__ BROTLI_FALSE ; 
- scalar_t__ BROTLI_TRUE ; 
- int /*<<< orphan*/ * BrotliDecoderCreateInstance (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BrotliDecoderDestroyInstance (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BrotliDecoderSetParameter (int /*<<< orphan*/ *,int /*<<< orphan*/ ,unsigned int) ; 
- int /*<<< orphan*/  CloseFiles (TYPE_1__*,scalar_t__) ; 
- scalar_t__ DecompressFile (TYPE_1__*,int /*<<< orphan*/ *) ; 
- scalar_t__ NextFile (TYPE_1__*) ; 
- scalar_t__ OpenFiles (TYPE_1__*) ; 
- int /*<<< orphan*/  STDIN_FILENO ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ isatty (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stderr ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int force_overwrite; int current_input_path; } ;
+typedef TYPE_1__ Context ;
+typedef int BrotliDecoderState ;
+typedef scalar_t__ BROTLI_BOOL ;
+
+
+ int BROTLI_DECODER_PARAM_LARGE_WINDOW ;
+ scalar_t__ BROTLI_FALSE ;
+ scalar_t__ BROTLI_TRUE ;
+ int * BrotliDecoderCreateInstance (int *,int *,int *) ;
+ int BrotliDecoderDestroyInstance (int *) ;
+ int BrotliDecoderSetParameter (int *,int ,unsigned int) ;
+ int CloseFiles (TYPE_1__*,scalar_t__) ;
+ scalar_t__ DecompressFile (TYPE_1__*,int *) ;
+ scalar_t__ NextFile (TYPE_1__*) ;
+ scalar_t__ OpenFiles (TYPE_1__*) ;
+ int STDIN_FILENO ;
+ int fprintf (int ,char*) ;
+ scalar_t__ isatty (int ) ;
+ int stderr ;
 
 __attribute__((used)) static BROTLI_BOOL DecompressFiles(Context* context) {
   while (NextFile(context)) {
     BROTLI_BOOL is_ok = BROTLI_TRUE;
-    BrotliDecoderState* s = BrotliDecoderCreateInstance(NULL, NULL, NULL);
+    BrotliDecoderState* s = BrotliDecoderCreateInstance(((void*)0), ((void*)0), ((void*)0));
     if (!s) {
       fprintf(stderr, "out of memory\n");
       return BROTLI_FALSE;
     }
-    /* This allows decoding "large-window" streams. Though it creates
-       fragmentation (new builds decode streams that old builds don't),
-       it is better from used experience perspective. */
+
+
+
     BrotliDecoderSetParameter(s, BROTLI_DECODER_PARAM_LARGE_WINDOW, 1u);
     is_ok = OpenFiles(context);
     if (is_ok && !context->current_input_path &&

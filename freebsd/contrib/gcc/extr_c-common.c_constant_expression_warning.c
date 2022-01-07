@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
 
-/* Variables and functions */
- scalar_t__ COMPLEX_CST ; 
- scalar_t__ INTEGER_CST ; 
- scalar_t__ REAL_CST ; 
- scalar_t__ TREE_CODE (int /*<<< orphan*/ ) ; 
- scalar_t__ TREE_CONSTANT_OVERFLOW (int /*<<< orphan*/ ) ; 
- scalar_t__ VECTOR_CST ; 
- scalar_t__ pedantic ; 
- int /*<<< orphan*/  pedwarn (char*) ; 
- scalar_t__ warn_overflow ; 
+
+
+
+typedef int tree ;
+
+
+ scalar_t__ COMPLEX_CST ;
+ scalar_t__ INTEGER_CST ;
+ scalar_t__ REAL_CST ;
+ scalar_t__ TREE_CODE (int ) ;
+ scalar_t__ TREE_CONSTANT_OVERFLOW (int ) ;
+ scalar_t__ VECTOR_CST ;
+ scalar_t__ pedantic ;
+ int pedwarn (char*) ;
+ scalar_t__ warn_overflow ;
 
 void
 constant_expression_warning (tree value)

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  fenv_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  __ldxfsr (int /*<<< orphan*/  const) ; 
+
+
+
+typedef int fenv_t ;
+
+
+ int __ldxfsr (int const) ;
 
 inline int
 fesetenv(const fenv_t *__envp)
 {
 
-	__ldxfsr(*__envp);
-	return (0);
+ __ldxfsr(*__envp);
+ return (0);
 }

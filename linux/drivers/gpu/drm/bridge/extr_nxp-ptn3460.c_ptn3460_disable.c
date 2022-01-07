@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ptn3460_bridge {int enabled; int /*<<< orphan*/  gpio_pd_n; int /*<<< orphan*/  gpio_rst_n; int /*<<< orphan*/  panel; } ;
+
+
+
+
+struct ptn3460_bridge {int enabled; int gpio_pd_n; int gpio_rst_n; int panel; } ;
 struct drm_bridge {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DRM_ERROR (char*) ; 
- struct ptn3460_bridge* bridge_to_ptn3460 (struct drm_bridge*) ; 
- scalar_t__ drm_panel_disable (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gpiod_set_value (int /*<<< orphan*/ ,int) ; 
+
+ int DRM_ERROR (char*) ;
+ struct ptn3460_bridge* bridge_to_ptn3460 (struct drm_bridge*) ;
+ scalar_t__ drm_panel_disable (int ) ;
+ int gpiod_set_value (int ,int) ;
 
 __attribute__((used)) static void ptn3460_disable(struct drm_bridge *bridge)
 {
-	struct ptn3460_bridge *ptn_bridge = bridge_to_ptn3460(bridge);
+ struct ptn3460_bridge *ptn_bridge = bridge_to_ptn3460(bridge);
 
-	if (!ptn_bridge->enabled)
-		return;
+ if (!ptn_bridge->enabled)
+  return;
 
-	ptn_bridge->enabled = false;
+ ptn_bridge->enabled = 0;
 
-	if (drm_panel_disable(ptn_bridge->panel)) {
-		DRM_ERROR("failed to disable panel\n");
-		return;
-	}
+ if (drm_panel_disable(ptn_bridge->panel)) {
+  DRM_ERROR("failed to disable panel\n");
+  return;
+ }
 
-	gpiod_set_value(ptn_bridge->gpio_rst_n, 1);
-	gpiod_set_value(ptn_bridge->gpio_pd_n, 0);
+ gpiod_set_value(ptn_bridge->gpio_rst_n, 1);
+ gpiod_set_value(ptn_bridge->gpio_pd_n, 0);
 }

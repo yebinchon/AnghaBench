@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/ * LPWSTR ;
-typedef  char* LPCWSTR ;
-typedef  int BOOL ;
 
-/* Variables and functions */
- size_t ARRAYSIZE (char const*) ; 
- int TRUE ; 
- int /*<<< orphan*/ * heap_strdupW (char*) ; 
- char* strchrW (char*,char) ; 
- int /*<<< orphan*/  strip_spaces (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strncmpiW (char*,char const*,size_t) ; 
+
+
+
+typedef char WCHAR ;
+typedef int * LPWSTR ;
+typedef char* LPCWSTR ;
+typedef int BOOL ;
+
+
+ size_t ARRAYSIZE (char const*) ;
+ int TRUE ;
+ int * heap_strdupW (char*) ;
+ char* strchrW (char*,char) ;
+ int strip_spaces (int *) ;
+ int strncmpiW (char*,char const*,size_t) ;
 
 __attribute__((used)) static inline BOOL is_basic_auth_value( LPCWSTR pszAuthValue, LPWSTR *pszRealm )
 {
-    static const WCHAR szBasic[] = {'B','a','s','i','c'}; /* Note: not nul-terminated */
-    static const WCHAR szRealm[] = {'r','e','a','l','m'}; /* Note: not nul-terminated */
+    static const WCHAR szBasic[] = {'B','a','s','i','c'};
+    static const WCHAR szRealm[] = {'r','e','a','l','m'};
     BOOL is_basic;
     is_basic = !strncmpiW(pszAuthValue, szBasic, ARRAYSIZE(szBasic)) &&
         ((pszAuthValue[ARRAYSIZE(szBasic)] == ' ') || !pszAuthValue[ARRAYSIZE(szBasic)]);
@@ -36,7 +36,7 @@ __attribute__((used)) static inline BOOL is_basic_auth_value( LPCWSTR pszAuthVal
         LPCWSTR ptr = &pszAuthValue[ARRAYSIZE(szBasic)];
         LPCWSTR realm;
         ptr++;
-        *pszRealm=NULL;
+        *pszRealm=((void*)0);
         token = strchrW(ptr,'=');
         if (!token)
             return TRUE;

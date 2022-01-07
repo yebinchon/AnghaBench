@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_21__   TYPE_9__ ;
-typedef  struct TYPE_20__   TYPE_8__ ;
-typedef  struct TYPE_19__   TYPE_7__ ;
-typedef  struct TYPE_18__   TYPE_6__ ;
-typedef  struct TYPE_17__   TYPE_5__ ;
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int /*<<< orphan*/  mfxExtBuffer ;
-struct TYPE_21__ {int /*<<< orphan*/  pool; int /*<<< orphan*/  sw_format; TYPE_8__* hwctx; TYPE_1__* internal; } ;
+
+
+typedef struct TYPE_21__ TYPE_9__ ;
+typedef struct TYPE_20__ TYPE_8__ ;
+typedef struct TYPE_19__ TYPE_7__ ;
+typedef struct TYPE_18__ TYPE_6__ ;
+typedef struct TYPE_17__ TYPE_5__ ;
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+typedef int mfxExtBuffer ;
+struct TYPE_21__ {int pool; int sw_format; TYPE_8__* hwctx; TYPE_1__* internal; } ;
 struct TYPE_20__ {int frame_type; int nb_surfaces; TYPE_6__* surfaces; } ;
-struct TYPE_15__ {int BufferSz; int /*<<< orphan*/  BufferId; } ;
+struct TYPE_15__ {int BufferSz; int BufferId; } ;
 struct TYPE_14__ {int NumSurface; int Type; TYPE_6__** Surfaces; } ;
 struct TYPE_16__ {TYPE_3__ Header; TYPE_2__ In; TYPE_2__ Out; } ;
-struct TYPE_19__ {int /*<<< orphan*/  session_cond; int /*<<< orphan*/  session_lock; scalar_t__ session_upload_init; scalar_t__ session_download_init; int /*<<< orphan*/ * session_upload; int /*<<< orphan*/ * session_download; int /*<<< orphan*/ * mem_ids; TYPE_4__ opaque_alloc; int /*<<< orphan*/ ** ext_buffers; TYPE_6__** surface_ptrs; } ;
-struct TYPE_17__ {int /*<<< orphan*/  MemId; } ;
+struct TYPE_19__ {int session_cond; int session_lock; scalar_t__ session_upload_init; scalar_t__ session_download_init; int * session_upload; int * session_download; int * mem_ids; TYPE_4__ opaque_alloc; int ** ext_buffers; TYPE_6__** surface_ptrs; } ;
+struct TYPE_17__ {int MemId; } ;
 struct TYPE_18__ {TYPE_5__ Data; } ;
 struct TYPE_13__ {TYPE_7__* priv; } ;
-typedef  TYPE_7__ QSVFramesContext ;
-typedef  TYPE_8__ AVQSVFramesContext ;
-typedef  TYPE_9__ AVHWFramesContext ;
+typedef TYPE_7__ QSVFramesContext ;
+typedef TYPE_8__ AVQSVFramesContext ;
+typedef TYPE_9__ AVHWFramesContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  ENOSYS ; 
- int /*<<< orphan*/  MFX_EXTBUFF_OPAQUE_SURFACE_ALLOCATION ; 
- int MFX_MEMTYPE_OPAQUE_FRAME ; 
- int /*<<< orphan*/  av_log (TYPE_9__*,int /*<<< orphan*/ ,char*) ; 
- void* av_mallocz_array (int,int) ; 
- int /*<<< orphan*/  pthread_cond_init (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_init (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  qsv_fourcc_from_pix_fmt (int /*<<< orphan*/ ) ; 
- int qsv_init_pool (TYPE_9__*,int /*<<< orphan*/ ) ; 
+
+ int AVERROR (int ) ;
+ int AV_LOG_ERROR ;
+ int ENOMEM ;
+ int ENOSYS ;
+ int MFX_EXTBUFF_OPAQUE_SURFACE_ALLOCATION ;
+ int MFX_MEMTYPE_OPAQUE_FRAME ;
+ int av_log (TYPE_9__*,int ,char*) ;
+ void* av_mallocz_array (int,int) ;
+ int pthread_cond_init (int *,int *) ;
+ int pthread_mutex_init (int *,int *) ;
+ int qsv_fourcc_from_pix_fmt (int ) ;
+ int qsv_init_pool (TYPE_9__*,int ) ;
 
 __attribute__((used)) static int qsv_frames_init(AVHWFramesContext *ctx)
 {
-    QSVFramesContext              *s = ctx->internal->priv;
+    QSVFramesContext *s = ctx->internal->priv;
     AVQSVFramesContext *frames_hwctx = ctx->hwctx;
 
     int opaque = !!(frames_hwctx->frame_type & MFX_MEMTYPE_OPAQUE_FRAME);
@@ -81,9 +81,9 @@ __attribute__((used)) static int qsv_frames_init(AVHWFramesContext *ctx)
         for (i = 0; i < frames_hwctx->nb_surfaces; i++)
             s->surface_ptrs[i] = frames_hwctx->surfaces + i;
 
-        s->opaque_alloc.In.Surfaces   = s->surface_ptrs;
+        s->opaque_alloc.In.Surfaces = s->surface_ptrs;
         s->opaque_alloc.In.NumSurface = frames_hwctx->nb_surfaces;
-        s->opaque_alloc.In.Type       = frames_hwctx->frame_type;
+        s->opaque_alloc.In.Type = frames_hwctx->frame_type;
 
         s->opaque_alloc.Out = s->opaque_alloc.In;
 
@@ -100,16 +100,16 @@ __attribute__((used)) static int qsv_frames_init(AVHWFramesContext *ctx)
             s->mem_ids[i] = frames_hwctx->surfaces[i].Data.MemId;
     }
 
-    s->session_download = NULL;
-    s->session_upload   = NULL;
+    s->session_download = ((void*)0);
+    s->session_upload = ((void*)0);
 
     s->session_download_init = 0;
-    s->session_upload_init   = 0;
+    s->session_upload_init = 0;
 
-#if HAVE_PTHREADS
-    pthread_mutex_init(&s->session_lock, NULL);
-    pthread_cond_init(&s->session_cond, NULL);
-#endif
+
+
+
+
 
     return 0;
 }

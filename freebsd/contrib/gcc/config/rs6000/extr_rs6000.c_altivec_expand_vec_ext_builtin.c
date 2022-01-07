@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
-typedef  int /*<<< orphan*/  rtx ;
-typedef  enum machine_mode { ____Placeholder_machine_mode } machine_mode ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TREE_CHAIN (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TREE_TYPE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TREE_VALUE (int /*<<< orphan*/ ) ; 
- int TYPE_MODE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  VECTOR_MODE_P (int) ; 
- int /*<<< orphan*/  expand_normal (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  force_reg (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gcc_assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_reg_rtx (int) ; 
- int get_element_number (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ optimize ; 
- int /*<<< orphan*/  register_operand (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  rs6000_expand_vector_extract (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int tree ;
+typedef int rtx ;
+typedef enum machine_mode { ____Placeholder_machine_mode } machine_mode ;
+
+
+ int TREE_CHAIN (int ) ;
+ int TREE_TYPE (int ) ;
+ int TREE_VALUE (int ) ;
+ int TYPE_MODE (int ) ;
+ int VECTOR_MODE_P (int) ;
+ int expand_normal (int ) ;
+ int force_reg (int,int ) ;
+ int gcc_assert (int ) ;
+ int gen_reg_rtx (int) ;
+ int get_element_number (int ,int ) ;
+ scalar_t__ optimize ;
+ int register_operand (int ,int) ;
+ int rs6000_expand_vector_extract (int ,int ,int) ;
 
 __attribute__((used)) static rtx
 altivec_expand_vec_ext_builtin (tree arglist, rtx target)

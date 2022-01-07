@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  MyProcPort ; 
- int /*<<< orphan*/  pq_settcpusertimeout (int,int /*<<< orphan*/ ) ; 
+ int MyProcPort ;
+ int pq_settcpusertimeout (int,int ) ;
 
 __attribute__((used)) static void
 assign_tcp_user_timeout(int newval, void *extra)
 {
-	/* See comments in assign_tcp_keepalives_idle */
-	(void) pq_settcpusertimeout(newval, MyProcPort);
+
+ (void) pq_settcpusertimeout(newval, MyProcPort);
 }

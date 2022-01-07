@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  pagesetup_data ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  HWND ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAY_SIZE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  COMDLG32_hInstance ; 
- scalar_t__ LoadStringW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PD32_MARGINS_IN_INCHES ; 
- int /*<<< orphan*/  PD32_MARGINS_IN_MILLIMETERS ; 
- int /*<<< orphan*/  SetDlgItemTextW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  grp4 ; 
- scalar_t__ is_metric (int /*<<< orphan*/  const*) ; 
+
+
+
+typedef int pagesetup_data ;
+typedef int WCHAR ;
+typedef int HWND ;
+
+
+ int ARRAY_SIZE (int *) ;
+ int COMDLG32_hInstance ;
+ scalar_t__ LoadStringW (int ,int ,int *,int ) ;
+ int PD32_MARGINS_IN_INCHES ;
+ int PD32_MARGINS_IN_MILLIMETERS ;
+ int SetDlgItemTextW (int ,int ,int *) ;
+ int grp4 ;
+ scalar_t__ is_metric (int const*) ;
 
 __attribute__((used)) static void set_margin_groupbox_title(HWND hDlg, const pagesetup_data *data)
 {

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  va_list ;
-typedef  int /*<<< orphan*/  scanner_t ;
-typedef  int /*<<< orphan*/  json_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * json_array () ; 
- scalar_t__ json_array_append_new (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  json_decref (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  next_token (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * pack (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  set_error (int /*<<< orphan*/ *,char*,char*) ; 
- char token (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int va_list ;
+typedef int scanner_t ;
+typedef int json_t ;
+
+
+ int * json_array () ;
+ scalar_t__ json_array_append_new (int *,int *) ;
+ int json_decref (int *) ;
+ int next_token (int *) ;
+ int * pack (int *,int *) ;
+ int set_error (int *,char*,char*) ;
+ char token (int *) ;
 
 __attribute__((used)) static json_t *pack_array(scanner_t *s, va_list *ap)
 {
@@ -51,5 +51,5 @@ __attribute__((used)) static json_t *pack_array(scanner_t *s, va_list *ap)
 
 error:
     json_decref(array);
-    return NULL;
+    return ((void*)0);
 }

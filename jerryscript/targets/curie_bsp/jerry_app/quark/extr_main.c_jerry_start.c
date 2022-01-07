@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  jerry_value_t ;
-typedef  int /*<<< orphan*/  jerry_char_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  JERRY_INIT_EMPTY ; 
- int /*<<< orphan*/  jerry_create_string (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jerry_get_global_object () ; 
- int /*<<< orphan*/  jerry_get_property (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jerry_init (int /*<<< orphan*/ ) ; 
- scalar_t__ jerry_port_get_current_time () ; 
- int /*<<< orphan*/  jerry_release_value (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  print_function ; 
- int /*<<< orphan*/  srand (unsigned int) ; 
+
+
+
+typedef int jerry_value_t ;
+typedef int jerry_char_t ;
+
+
+ int JERRY_INIT_EMPTY ;
+ int jerry_create_string (int *) ;
+ int jerry_get_global_object () ;
+ int jerry_get_property (int ,int ) ;
+ int jerry_init (int ) ;
+ scalar_t__ jerry_port_get_current_time () ;
+ int jerry_release_value (int ) ;
+ int print_function ;
+ int srand (unsigned int) ;
 
 void jerry_start ()
 {

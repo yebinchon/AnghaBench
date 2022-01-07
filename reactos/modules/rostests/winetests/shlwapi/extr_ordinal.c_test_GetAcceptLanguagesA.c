@@ -1,78 +1,78 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  original ;
-typedef  int /*<<< orphan*/  language ;
-typedef  int /*<<< orphan*/  buffer ;
-typedef  int /*<<< orphan*/  PBYTE ;
-typedef  char* LPCSTR ;
-typedef  char* LONG ;
-typedef  int /*<<< orphan*/  LCID ;
-typedef  size_t INT ;
-typedef  char* HRESULT ;
-typedef  int /*<<< orphan*/ * HKEY ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  BYTE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERROR_CANNOT_COPY ; 
- int /*<<< orphan*/  ERROR_MORE_DATA ; 
- char* ERROR_SUCCESS ; 
- char* E_FAIL ; 
- char* E_INVALIDARG ; 
- char* E_NOT_SUFFICIENT_BUFFER ; 
- int GetLocaleInfoA (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  GetUserDefaultLCID () ; 
- int /*<<< orphan*/  HKEY_CURRENT_USER ; 
- int /*<<< orphan*/  LOCALE_SISO3166CTRYNAME ; 
- int /*<<< orphan*/  LOCALE_SISO639LANGNAME ; 
- int /*<<< orphan*/  LOCALE_SNAME ; 
- char* LcidToRfc1766A (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  REG_SZ ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RegDeleteValueA (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- char* RegOpenKeyA (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- char* RegQueryValueExA (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int*) ; 
- char* RegSetValueExA (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int) ; 
- scalar_t__ SUCCEEDED (char*) ; 
- char* S_OK ; 
- char* __HRESULT_FROM_WIN32 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  acceptlanguage ; 
- int /*<<< orphan*/  ie_international ; 
- int /*<<< orphan*/  lstrcatA (char*,char*) ; 
- scalar_t__ lstrcmpA (char*,char*) ; 
- int lstrlenA (char*) ; 
- int /*<<< orphan*/  memcmp (char*,char*,int) ; 
- int /*<<< orphan*/  memset (char*,char,int) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- char* pGetAcceptLanguagesA (char*,int*) ; 
- int /*<<< orphan*/  skip (char*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  trace (char*,char*) ; 
- int /*<<< orphan*/  win_skip (char*,char*) ; 
+
+
+
+typedef int original ;
+typedef int language ;
+typedef int buffer ;
+typedef int PBYTE ;
+typedef char* LPCSTR ;
+typedef char* LONG ;
+typedef int LCID ;
+typedef size_t INT ;
+typedef char* HRESULT ;
+typedef int * HKEY ;
+typedef int DWORD ;
+typedef int BYTE ;
+
+
+ int ERROR_CANNOT_COPY ;
+ int ERROR_MORE_DATA ;
+ char* ERROR_SUCCESS ;
+ char* E_FAIL ;
+ char* E_INVALIDARG ;
+ char* E_NOT_SUFFICIENT_BUFFER ;
+ int GetLocaleInfoA (int ,int ,char*,int) ;
+ int GetUserDefaultLCID () ;
+ int HKEY_CURRENT_USER ;
+ int LOCALE_SISO3166CTRYNAME ;
+ int LOCALE_SISO639LANGNAME ;
+ int LOCALE_SNAME ;
+ char* LcidToRfc1766A (int ,char*,int) ;
+ int REG_SZ ;
+ int RegCloseKey (int *) ;
+ int RegDeleteValueA (int *,int ) ;
+ char* RegOpenKeyA (int ,int ,int **) ;
+ char* RegQueryValueExA (int *,int ,int ,int *,int ,int*) ;
+ char* RegSetValueExA (int *,int ,int ,int ,int const*,int) ;
+ scalar_t__ SUCCEEDED (char*) ;
+ char* S_OK ;
+ char* __HRESULT_FROM_WIN32 (int ) ;
+ int acceptlanguage ;
+ int ie_international ;
+ int lstrcatA (char*,char*) ;
+ scalar_t__ lstrcmpA (char*,char*) ;
+ int lstrlenA (char*) ;
+ int memcmp (char*,char*,int) ;
+ int memset (char*,char,int) ;
+ int ok (int,char*,...) ;
+ char* pGetAcceptLanguagesA (char*,int*) ;
+ int skip (char*,int ,char*) ;
+ int trace (char*,char*) ;
+ int win_skip (char*,char*) ;
 
 __attribute__((used)) static void test_GetAcceptLanguagesA(void)
 {
     static LPCSTR table[] = {"de,en-gb;q=0.7,en;q=0.3",
-                             "de,en;q=0.3,en-gb;q=0.7", /* sorting is ignored */
-                             "winetest",    /* content is ignored */
+                             "de,en;q=0.3,en-gb;q=0.7",
+                             "winetest",
                              "de-de,de;q=0.5",
                              "de",
-                             NULL};
+                             ((void*)0)};
 
     DWORD exactsize;
     char original[512];
     char language[32];
     char buffer[64];
-    HKEY hroot = NULL;
+    HKEY hroot = ((void*)0);
     LONG res_query = ERROR_SUCCESS;
     LONG lres;
     HRESULT hr;
@@ -84,7 +84,7 @@ __attribute__((used)) static void test_GetAcceptLanguagesA(void)
 
     lcid = GetUserDefaultLCID();
 
-    /* Get the original Value */
+
     lres = RegOpenKeyA(HKEY_CURRENT_USER, ie_international, &hroot);
     if (lres) {
         skip("RegOpenKey(%s) failed: %d\n", ie_international, lres);
@@ -92,11 +92,11 @@ __attribute__((used)) static void test_GetAcceptLanguagesA(void)
     }
     len = sizeof(original);
     original[0] = 0;
-    res_query = RegQueryValueExA(hroot, acceptlanguage, 0, NULL, (PBYTE)original, &len);
+    res_query = RegQueryValueExA(hroot, acceptlanguage, 0, ((void*)0), (PBYTE)original, &len);
 
     RegDeleteValueA(hroot, acceptlanguage);
 
-    /* Some windows versions use "lang-COUNTRY" as default */
+
     memset(language, 0, sizeof(language));
     len = GetLocaleInfoA(lcid, LOCALE_SISO639LANGNAME, language, sizeof(language));
 
@@ -108,12 +108,12 @@ __attribute__((used)) static void test_GetAcceptLanguagesA(void)
     }
     else
     {
-        /* LOCALE_SNAME has additional parts in some languages. Try only as last chance */
+
         memset(language, 0, sizeof(language));
         len = GetLocaleInfoA(lcid, LOCALE_SNAME, language, sizeof(language));
     }
 
-    /* get the default value */
+
     len = maxlen;
     memset(buffer, '#', maxlen);
     buffer[maxlen] = 0;
@@ -125,7 +125,7 @@ __attribute__((used)) static void test_GetAcceptLanguagesA(void)
     }
 
     if (lstrcmpA(buffer, language)) {
-        /* some windows versions use "lang" or "lang-country" as default */
+
         language[0] = 0;
         hr = LcidToRfc1766A(lcid, language, sizeof(language));
         ok(hr == S_OK, "LcidToRfc1766A returned 0x%x and %s\n", hr, language);
@@ -147,7 +147,7 @@ __attribute__((used)) static void test_GetAcceptLanguagesA(void)
         lres = RegSetValueExA(hroot, acceptlanguage, 0, REG_SZ, (const BYTE *) entry, exactsize + 1);
         ok(!lres, "got %d for RegSetValueExA: %s\n", lres, entry);
 
-        /* len includes space for the terminating 0 before vista/w2k8 */
+
         len = exactsize + 2;
         memset(buffer, '#', maxlen);
         buffer[maxlen] = 0;
@@ -172,17 +172,8 @@ __attribute__((used)) static void test_GetAcceptLanguagesA(void)
         memset(buffer, '#', maxlen);
         buffer[maxlen] = 0;
         hr = pGetAcceptLanguagesA( buffer, &len);
-
-        /* There is no space for the string in the registry.
-           When the buffer is large enough, the default language is returned
-
-           When the buffer is too small for that fallback, win7_32 and w2k8_64
-           fail with E_NOT_SUFFICIENT_BUFFER, win8 fails with HRESULT_FROM_WIN32(ERROR_MORE_DATA),
-           other versions succeed and return a partial result while older os succeed
-           and overflow the buffer */
-
         ok(((hr == E_INVALIDARG) && (len == 0)) ||
-            (((hr == S_OK) && !lstrcmpA(buffer, language)  && (len == lstrlenA(language))) ||
+            (((hr == S_OK) && !lstrcmpA(buffer, language) && (len == lstrlenA(language))) ||
             ((hr == S_OK) && !memcmp(buffer, language, len)) ||
             ((hr == E_NOT_SUFFICIENT_BUFFER) && !len) ||
             ((hr == __HRESULT_FROM_WIN32(ERROR_MORE_DATA)) && len == exactsize)),
@@ -194,7 +185,7 @@ __attribute__((used)) static void test_GetAcceptLanguagesA(void)
             buffer[maxlen] = 0;
             hr = pGetAcceptLanguagesA( buffer, &len);
             ok(((hr == E_INVALIDARG) && (len == 0)) ||
-                (((hr == S_OK) && !lstrcmpA(buffer, language)  && (len == lstrlenA(language))) ||
+                (((hr == S_OK) && !lstrcmpA(buffer, language) && (len == lstrlenA(language))) ||
                 ((hr == S_OK) && !memcmp(buffer, language, len)) ||
                 ((hr == E_NOT_SUFFICIENT_BUFFER) && !len) ||
                 ((hr == __HRESULT_FROM_WIN32(ERROR_MORE_DATA)) && len == exactsize - 1)),
@@ -206,17 +197,17 @@ __attribute__((used)) static void test_GetAcceptLanguagesA(void)
         buffer[maxlen] = 0;
         hr = pGetAcceptLanguagesA( buffer, &len);
         ok(((hr == E_INVALIDARG) && (len == 0)) ||
-            (((hr == S_OK) && !lstrcmpA(buffer, language)  && (len == lstrlenA(language))) ||
+            (((hr == S_OK) && !lstrcmpA(buffer, language) && (len == lstrlenA(language))) ||
             ((hr == S_OK) && !memcmp(buffer, language, len)) ||
             ((hr == E_NOT_SUFFICIENT_BUFFER) && !len) ||
             ((hr == __HRESULT_FROM_WIN32(ERROR_MORE_DATA)) && len == 1)),
             "=1_#%d: got 0x%x with %d and %s\n", i, hr, len, buffer);
 
         len = maxlen;
-        hr = pGetAcceptLanguagesA( NULL, &len);
+        hr = pGetAcceptLanguagesA( ((void*)0), &len);
 
-        /* w2k3 and below: E_FAIL and untouched len,
-           since w2k8: S_OK and needed size (excluding 0), win8 S_OK and size including 0. */
+
+
         ok( ((hr == S_OK) && ((len == exactsize) || (len == exactsize + 1))) ||
             ((hr == E_FAIL) && (len == maxlen)),
             "NULL,max #%d: got 0x%x with %d and %s\n", i, hr, len, buffer);
@@ -224,7 +215,7 @@ __attribute__((used)) static void test_GetAcceptLanguagesA(void)
         i++;
     }
 
-    /* without a value in the registry, a default language is returned */
+
     RegDeleteValueA(hroot, acceptlanguage);
 
     len = maxlen;
@@ -248,10 +239,10 @@ __attribute__((used)) static void test_GetAcceptLanguagesA(void)
     memset(buffer, '#', maxlen);
     buffer[maxlen] = 0;
     hr = pGetAcceptLanguagesA( buffer, &len);
-    /* When the buffer is too small, win7_32 and w2k8_64 and above fail with
-       E_NOT_SUFFICIENT_BUFFER, win8 ERROR_CANNOT_COPY,
-       other versions succeed and return a partial 0 terminated result while other versions
-       fail with E_INVALIDARG and return a partial unterminated result */
+
+
+
+
     ok( (((hr == S_OK) || (hr == E_INVALIDARG)) && !memcmp(buffer, language, len)) ||
         ((hr == E_NOT_SUFFICIENT_BUFFER) && !len) ||
         ((hr == __HRESULT_FROM_WIN32(ERROR_CANNOT_COPY)) && !len),
@@ -261,20 +252,20 @@ __attribute__((used)) static void test_GetAcceptLanguagesA(void)
     memset(buffer, '#', maxlen);
     buffer[maxlen] = 0;
     hr = pGetAcceptLanguagesA( buffer, &len);
-    /* w2k3 and below: E_FAIL, since w2k8: E_INVALIDARG, win8 ERROR_CANNOT_COPY */
+
     ok((hr == E_FAIL) || (hr == E_INVALIDARG) || (hr == __HRESULT_FROM_WIN32(ERROR_CANNOT_COPY)),
         "got 0x%x\n", hr);
 
     memset(buffer, '#', maxlen);
     buffer[maxlen] = 0;
-    hr = pGetAcceptLanguagesA( buffer, NULL);
-    /* w2k3 and below: E_FAIL, since w2k8: E_INVALIDARG */
+    hr = pGetAcceptLanguagesA( buffer, ((void*)0));
+
     ok((hr == E_FAIL) || (hr == E_INVALIDARG),
         "got 0x%x (expected E_FAIL or E_INVALIDARG)\n", hr);
 
 
-    hr = pGetAcceptLanguagesA( NULL, NULL);
-    /* w2k3 and below: E_FAIL, since w2k8: E_INVALIDARG */
+    hr = pGetAcceptLanguagesA( ((void*)0), ((void*)0));
+
     ok((hr == E_FAIL) || (hr == E_INVALIDARG),
         "got 0x%x (expected E_FAIL or E_INVALIDARG)\n", hr);
 

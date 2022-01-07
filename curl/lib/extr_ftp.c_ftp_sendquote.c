@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct pingpong {int /*<<< orphan*/  response; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct pingpong {int response; } ;
 struct ftp_conn {struct pingpong pp; } ;
 struct curl_slist {char* data; struct curl_slist* next; } ;
 struct TYPE_2__ {struct ftp_conn ftpc; } ;
-struct connectdata {int /*<<< orphan*/  data; TYPE_1__ proto; } ;
-typedef  int /*<<< orphan*/  ssize_t ;
-typedef  scalar_t__ CURLcode ;
+struct connectdata {int data; TYPE_1__ proto; } ;
+typedef int ssize_t ;
+typedef scalar_t__ CURLcode ;
 
-/* Variables and functions */
- scalar_t__ CURLE_OK ; 
- scalar_t__ CURLE_QUOTE_ERROR ; 
- scalar_t__ Curl_GetFTPResponse (int /*<<< orphan*/ *,struct connectdata*,int*) ; 
- int /*<<< orphan*/  Curl_now () ; 
- int FALSE ; 
- int /*<<< orphan*/  PPSENDF (struct pingpong*,char*,char*) ; 
- int TRUE ; 
- int /*<<< orphan*/  failf (int /*<<< orphan*/ ,char*,char*) ; 
+
+ scalar_t__ CURLE_OK ;
+ scalar_t__ CURLE_QUOTE_ERROR ;
+ scalar_t__ Curl_GetFTPResponse (int *,struct connectdata*,int*) ;
+ int Curl_now () ;
+ int FALSE ;
+ int PPSENDF (struct pingpong*,char*,char*) ;
+ int TRUE ;
+ int failf (int ,char*,char*) ;
 
 __attribute__((used)) static
 CURLcode ftp_sendquote(struct connectdata *conn, struct curl_slist *quote)
@@ -45,10 +45,10 @@ CURLcode ftp_sendquote(struct connectdata *conn, struct curl_slist *quote)
       char *cmd = item->data;
       bool acceptfail = FALSE;
 
-      /* if a command starts with an asterisk, which a legal FTP command never
-         can, the command will be allowed to fail without it causing any
-         aborts or cancels etc. It will cause libcurl to act as if the command
-         is successful, whatever the server reponds. */
+
+
+
+
 
       if(cmd[0] == '*') {
         cmd++;
@@ -57,7 +57,7 @@ CURLcode ftp_sendquote(struct connectdata *conn, struct curl_slist *quote)
 
       PPSENDF(&conn->proto.ftpc.pp, "%s", cmd);
 
-      pp->response = Curl_now(); /* timeout relative now */
+      pp->response = Curl_now();
 
       result = Curl_GetFTPResponse(&nread, conn, &ftpcode);
       if(result)

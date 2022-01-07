@@ -1,76 +1,67 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  enum clock_source_id { ____Placeholder_clock_source_id } clock_source_id ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ATOM_EXT_PLL1 ; 
- int /*<<< orphan*/  ATOM_PPLL0 ; 
- int /*<<< orphan*/  ATOM_PPLL1 ; 
- int /*<<< orphan*/  ATOM_PPLL2 ; 
- int /*<<< orphan*/  ATOM_PPLL_INVALID ; 
- int /*<<< orphan*/  BREAK_TO_DEBUGGER () ; 
-#define  CLOCK_SOURCE_ID_DFS 135 
-#define  CLOCK_SOURCE_ID_DP_DTO 134 
-#define  CLOCK_SOURCE_ID_EXTERNAL 133 
-#define  CLOCK_SOURCE_ID_PLL0 132 
-#define  CLOCK_SOURCE_ID_PLL1 131 
-#define  CLOCK_SOURCE_ID_PLL2 130 
-#define  CLOCK_SOURCE_ID_UNDEFINED 129 
-#define  CLOCK_SOURCE_ID_VCE 128 
 
+
+
+typedef int uint32_t ;
+typedef enum clock_source_id { ____Placeholder_clock_source_id } clock_source_id ;
+
+
+ int ATOM_EXT_PLL1 ;
+ int ATOM_PPLL0 ;
+ int ATOM_PPLL1 ;
+ int ATOM_PPLL2 ;
+ int ATOM_PPLL_INVALID ;
+ int BREAK_TO_DEBUGGER () ;
 __attribute__((used)) static bool clock_source_id_to_atom(
-	enum clock_source_id id,
-	uint32_t *atom_pll_id)
+ enum clock_source_id id,
+ uint32_t *atom_pll_id)
 {
-	bool result = true;
+ bool result = 1;
 
-	if (atom_pll_id != NULL)
-		switch (id) {
-		case CLOCK_SOURCE_ID_PLL0:
-			*atom_pll_id = ATOM_PPLL0;
-			break;
-		case CLOCK_SOURCE_ID_PLL1:
-			*atom_pll_id = ATOM_PPLL1;
-			break;
-		case CLOCK_SOURCE_ID_PLL2:
-			*atom_pll_id = ATOM_PPLL2;
-			break;
-		case CLOCK_SOURCE_ID_EXTERNAL:
-			*atom_pll_id = ATOM_PPLL_INVALID;
-			break;
-		case CLOCK_SOURCE_ID_DFS:
-			*atom_pll_id = ATOM_EXT_PLL1;
-			break;
-		case CLOCK_SOURCE_ID_VCE:
-			/* for VCE encoding,
-			 * we need to pass in ATOM_PPLL_INVALID
-			 */
-			*atom_pll_id = ATOM_PPLL_INVALID;
-			break;
-		case CLOCK_SOURCE_ID_DP_DTO:
-			/* When programming DP DTO PLL ID should be invalid */
-			*atom_pll_id = ATOM_PPLL_INVALID;
-			break;
-		case CLOCK_SOURCE_ID_UNDEFINED:
-			BREAK_TO_DEBUGGER(); /* check when this will happen! */
-			*atom_pll_id = ATOM_PPLL_INVALID;
-			result = false;
-			break;
-		default:
-			result = false;
-			break;
-		}
+ if (atom_pll_id != ((void*)0))
+  switch (id) {
+  case 132:
+   *atom_pll_id = ATOM_PPLL0;
+   break;
+  case 131:
+   *atom_pll_id = ATOM_PPLL1;
+   break;
+  case 130:
+   *atom_pll_id = ATOM_PPLL2;
+   break;
+  case 133:
+   *atom_pll_id = ATOM_PPLL_INVALID;
+   break;
+  case 135:
+   *atom_pll_id = ATOM_EXT_PLL1;
+   break;
+  case 128:
 
-	return result;
+
+
+   *atom_pll_id = ATOM_PPLL_INVALID;
+   break;
+  case 134:
+
+   *atom_pll_id = ATOM_PPLL_INVALID;
+   break;
+  case 129:
+   BREAK_TO_DEBUGGER();
+   *atom_pll_id = ATOM_PPLL_INVALID;
+   result = 0;
+   break;
+  default:
+   result = 0;
+   break;
+  }
+
+ return result;
 }

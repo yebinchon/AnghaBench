@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int DWORD ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- int D3DSPR_ADDR ; 
- int D3DSPR_ATTROUT ; 
- int D3DSPR_COLOROUT ; 
- int D3DSPR_CONST ; 
- int D3DSPR_INPUT ; 
- int D3DSPR_RASTOUT ; 
- int D3DSPR_SAMPLER ; 
- int D3DSPR_TEMP ; 
- int D3DSPR_TEXCRDOUT ; 
- int D3DSP_REGNUM_MASK ; 
- int D3DSP_REGTYPE_MASK ; 
- int D3DSP_REGTYPE_MASK2 ; 
- int D3DSP_REGTYPE_SHIFT ; 
- int D3DSP_REGTYPE_SHIFT2 ; 
- int D3DSP_SWIZZLE_MASK ; 
- int D3DSP_WRITEMASK_0 ; 
- int D3DSP_WRITEMASK_1 ; 
- int D3DSP_WRITEMASK_2 ; 
- int D3DSP_WRITEMASK_3 ; 
- int D3DSP_WRITEMASK_ALL ; 
- int D3DVS_NOSWIZZLE ; 
- int D3DVS_SWIZZLE_MASK ; 
- int D3DVS_SWIZZLE_SHIFT ; 
- int D3DVS_W_W ; 
- int D3DVS_W_X ; 
- int D3DVS_W_Y ; 
- int D3DVS_W_Z ; 
- int D3DVS_X_W ; 
- int D3DVS_X_X ; 
- int D3DVS_X_Y ; 
- int D3DVS_X_Z ; 
- int D3DVS_Y_W ; 
- int D3DVS_Y_X ; 
- int D3DVS_Y_Y ; 
- int D3DVS_Y_Z ; 
- int D3DVS_Z_W ; 
- int D3DVS_Z_X ; 
- int D3DVS_Z_Y ; 
- int D3DVS_Z_Z ; 
- int /*<<< orphan*/  sprintf (char*,char*,...) ; 
+
+
+
+typedef int DWORD ;
+typedef scalar_t__ BOOL ;
+
+
+ int D3DSPR_ADDR ;
+ int D3DSPR_ATTROUT ;
+ int D3DSPR_COLOROUT ;
+ int D3DSPR_CONST ;
+ int D3DSPR_INPUT ;
+ int D3DSPR_RASTOUT ;
+ int D3DSPR_SAMPLER ;
+ int D3DSPR_TEMP ;
+ int D3DSPR_TEXCRDOUT ;
+ int D3DSP_REGNUM_MASK ;
+ int D3DSP_REGTYPE_MASK ;
+ int D3DSP_REGTYPE_MASK2 ;
+ int D3DSP_REGTYPE_SHIFT ;
+ int D3DSP_REGTYPE_SHIFT2 ;
+ int D3DSP_SWIZZLE_MASK ;
+ int D3DSP_WRITEMASK_0 ;
+ int D3DSP_WRITEMASK_1 ;
+ int D3DSP_WRITEMASK_2 ;
+ int D3DSP_WRITEMASK_3 ;
+ int D3DSP_WRITEMASK_ALL ;
+ int D3DVS_NOSWIZZLE ;
+ int D3DVS_SWIZZLE_MASK ;
+ int D3DVS_SWIZZLE_SHIFT ;
+ int D3DVS_W_W ;
+ int D3DVS_W_X ;
+ int D3DVS_W_Y ;
+ int D3DVS_W_Z ;
+ int D3DVS_X_W ;
+ int D3DVS_X_X ;
+ int D3DVS_X_Y ;
+ int D3DVS_X_Z ;
+ int D3DVS_Y_W ;
+ int D3DVS_Y_X ;
+ int D3DVS_Y_Y ;
+ int D3DVS_Y_Z ;
+ int D3DVS_Z_W ;
+ int D3DVS_Z_X ;
+ int D3DVS_Z_Y ;
+ int D3DVS_Z_Z ;
+ int sprintf (char*,char*,...) ;
 
 __attribute__((used)) static int add_register(char *buffer, DWORD param, BOOL dst, BOOL ps)
 {

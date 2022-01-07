@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  marshal_data; int /*<<< orphan*/ * src_data; int /*<<< orphan*/ * cached_enum; } ;
-typedef  TYPE_1__ ole_clipbrd ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  IDataObject ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CoMarshalInterface (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IDataObject_AddRef (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IDataObject_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IDataObject_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IID_IDataObject ; 
- int /*<<< orphan*/  IID_IUnknown ; 
- int /*<<< orphan*/  IUnknown_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  MSHCTX_LOCAL ; 
- int /*<<< orphan*/  MSHLFLAGS_TABLESTRONG ; 
- int /*<<< orphan*/  get_clipbrd_window (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  release_marshal_data (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_clipboard_formats (TYPE_1__*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int marshal_data; int * src_data; int * cached_enum; } ;
+typedef TYPE_1__ ole_clipbrd ;
+typedef int IUnknown ;
+typedef int IDataObject ;
+typedef int HWND ;
+typedef int HRESULT ;
+
+
+ int CoMarshalInterface (int ,int *,int *,int ,int *,int ) ;
+ scalar_t__ FAILED (int ) ;
+ int GetProcessHeap () ;
+ int HeapFree (int ,int ,int *) ;
+ int IDataObject_AddRef (int *) ;
+ int IDataObject_QueryInterface (int *,int *,void**) ;
+ int IDataObject_Release (int *) ;
+ int IID_IDataObject ;
+ int IID_IUnknown ;
+ int IUnknown_Release (int *) ;
+ int MSHCTX_LOCAL ;
+ int MSHLFLAGS_TABLESTRONG ;
+ int get_clipbrd_window (TYPE_1__*,int *) ;
+ int release_marshal_data (int ) ;
+ int set_clipboard_formats (TYPE_1__*,int *) ;
 
 __attribute__((used)) static HRESULT set_src_dataobject(ole_clipbrd *clipbrd, IDataObject *data)
 {
@@ -47,9 +47,9 @@ __attribute__((used)) static HRESULT set_src_dataobject(ole_clipbrd *clipbrd, ID
         release_marshal_data(clipbrd->marshal_data);
 
         IDataObject_Release(clipbrd->src_data);
-        clipbrd->src_data = NULL;
+        clipbrd->src_data = ((void*)0);
         HeapFree(GetProcessHeap(), 0, clipbrd->cached_enum);
-        clipbrd->cached_enum = NULL;
+        clipbrd->cached_enum = ((void*)0);
     }
 
     if(data)
@@ -61,8 +61,8 @@ __attribute__((used)) static HRESULT set_src_dataobject(ole_clipbrd *clipbrd, ID
 
         IDataObject_QueryInterface(data, &IID_IUnknown, (void**)&unk);
         hr = CoMarshalInterface(clipbrd->marshal_data, &IID_IDataObject, unk,
-                                MSHCTX_LOCAL, NULL, MSHLFLAGS_TABLESTRONG);
-        IUnknown_Release(unk); /* Don't hold a ref on IUnknown, we have one on IDataObject. */
+                                MSHCTX_LOCAL, ((void*)0), MSHLFLAGS_TABLESTRONG);
+        IUnknown_Release(unk);
         if(FAILED(hr)) return hr;
         hr = set_clipboard_formats(clipbrd, data);
     }

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct alx_priv {int /*<<< orphan*/  hw; } ;
-typedef  int /*<<< orphan*/  irqreturn_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ALX_ISR ; 
- int /*<<< orphan*/  alx_intr_handle (struct alx_priv*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  alx_read_mem32 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+struct alx_priv {int hw; } ;
+typedef int irqreturn_t ;
+
+
+ int ALX_ISR ;
+ int alx_intr_handle (struct alx_priv*,int ) ;
+ int alx_read_mem32 (int *,int ) ;
 
 __attribute__((used)) static irqreturn_t alx_intr_msi(int irq, void *data)
 {
-	struct alx_priv *alx = data;
+ struct alx_priv *alx = data;
 
-	return alx_intr_handle(alx, alx_read_mem32(&alx->hw, ALX_ISR));
+ return alx_intr_handle(alx, alx_read_mem32(&alx->hw, ALX_ISR));
 }

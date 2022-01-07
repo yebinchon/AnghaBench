@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {scalar_t__ Type; int /*<<< orphan*/ * BulkRecvTube; int /*<<< orphan*/ * RecvTube; } ;
-typedef  int /*<<< orphan*/  SOCK_EVENT ;
-typedef  TYPE_1__ SOCK ;
 
-/* Variables and functions */
- scalar_t__ SOCK_INPROC ; 
- int /*<<< orphan*/  SetTubeSockEvent (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  UnixJoinSockToSockEvent (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Win32JoinSockToSockEvent (TYPE_1__*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {scalar_t__ Type; int * BulkRecvTube; int * RecvTube; } ;
+typedef int SOCK_EVENT ;
+typedef TYPE_1__ SOCK ;
+
+
+ scalar_t__ SOCK_INPROC ;
+ int SetTubeSockEvent (int *,int *) ;
+ int UnixJoinSockToSockEvent (TYPE_1__*,int *) ;
+ int Win32JoinSockToSockEvent (TYPE_1__*,int *) ;
 
 void JoinSockToSockEvent(SOCK *sock, SOCK_EVENT *event)
 {
-	// Validate arguments
-	if (sock == NULL || event == NULL)
-	{
-		return;
-	}
 
-	if (sock->Type == SOCK_INPROC)
-	{
-		// Set the SockEvent on the receiver TUBE for in-process type socket
-		SetTubeSockEvent(sock->RecvTube, event);
-		return;
-	}
+ if (sock == ((void*)0) || event == ((void*)0))
+ {
+  return;
+ }
 
-	if (sock->BulkRecvTube != NULL)
-	{
-		// Set the SockEvent on the receiver TUBE in case of R-UDP socket
-		SetTubeSockEvent(sock->BulkRecvTube, event);
-	}
+ if (sock->Type == SOCK_INPROC)
+ {
 
-#ifdef	OS_WIN32
-	Win32JoinSockToSockEvent(sock, event);
-#else
-	UnixJoinSockToSockEvent(sock, event);
-#endif	// OS_WIN32
+  SetTubeSockEvent(sock->RecvTube, event);
+  return;
+ }
+
+ if (sock->BulkRecvTube != ((void*)0))
+ {
+
+  SetTubeSockEvent(sock->BulkRecvTube, event);
+ }
+
+
+
+
+ UnixJoinSockToSockEvent(sock, event);
+
 }

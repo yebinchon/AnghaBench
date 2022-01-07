@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_9__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_13__ {int /*<<< orphan*/  command; } ;
-struct TYPE_12__ {void* pTimer; struct TYPE_12__* pHb; struct TYPE_12__* thandle; struct TYPE_12__* signature; struct TYPE_12__* pTscObj; struct TYPE_12__* param; TYPE_9__ cmd; int /*<<< orphan*/  fp; } ;
-typedef  TYPE_1__ STscObj ;
-typedef  TYPE_1__ SSqlObj ;
 
-/* Variables and functions */
- scalar_t__ TSDB_CODE_SUCCESS ; 
- int /*<<< orphan*/  TSDB_DEFAULT_PAYLOAD_SIZE ; 
- int /*<<< orphan*/  TSDB_SQL_HB ; 
- scalar_t__ calloc (int,int) ; 
- int /*<<< orphan*/  taosCloseRpcConn (TYPE_1__*) ; 
- int /*<<< orphan*/  tfree (TYPE_1__*) ; 
- scalar_t__ tscAllocPayload (TYPE_9__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tscCloseTscObj (TYPE_1__*) ; 
- int /*<<< orphan*/  tscFreeSqlObj (TYPE_1__*) ; 
- int /*<<< orphan*/  tscProcessHeartBeatRsp ; 
- int /*<<< orphan*/  tscProcessSql (TYPE_1__*) ; 
- scalar_t__ tscShouldFreeHeatBeat (TYPE_1__*) ; 
- int /*<<< orphan*/  tscTrace (char*,TYPE_1__*,TYPE_1__*) ; 
+
+typedef struct TYPE_13__ TYPE_9__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+struct TYPE_13__ {int command; } ;
+struct TYPE_12__ {void* pTimer; struct TYPE_12__* pHb; struct TYPE_12__* thandle; struct TYPE_12__* signature; struct TYPE_12__* pTscObj; struct TYPE_12__* param; TYPE_9__ cmd; int fp; } ;
+typedef TYPE_1__ STscObj ;
+typedef TYPE_1__ SSqlObj ;
+
+
+ scalar_t__ TSDB_CODE_SUCCESS ;
+ int TSDB_DEFAULT_PAYLOAD_SIZE ;
+ int TSDB_SQL_HB ;
+ scalar_t__ calloc (int,int) ;
+ int taosCloseRpcConn (TYPE_1__*) ;
+ int tfree (TYPE_1__*) ;
+ scalar_t__ tscAllocPayload (TYPE_9__*,int ) ;
+ int tscCloseTscObj (TYPE_1__*) ;
+ int tscFreeSqlObj (TYPE_1__*) ;
+ int tscProcessHeartBeatRsp ;
+ int tscProcessSql (TYPE_1__*) ;
+ scalar_t__ tscShouldFreeHeatBeat (TYPE_1__*) ;
+ int tscTrace (char*,TYPE_1__*,TYPE_1__*) ;
 
 void tscProcessActivityTimer(void *handle, void *tmrId) {
   STscObj *pObj = (STscObj *)handle;
 
-  if (pObj == NULL) return;
+  if (pObj == ((void*)0)) return;
   if (pObj->signature != pObj) return;
   if (pObj->pTimer != tmrId) return;
 
-  if (pObj->pHb == NULL) {
+  if (pObj->pHb == ((void*)0)) {
     SSqlObj *pSql = (SSqlObj *)calloc(1, sizeof(SSqlObj));
-    if (NULL == pSql) return;
+    if (((void*)0) == pSql) return;
 
     pSql->fp = tscProcessHeartBeatRsp;
     pSql->cmd.command = TSDB_SQL_HB;

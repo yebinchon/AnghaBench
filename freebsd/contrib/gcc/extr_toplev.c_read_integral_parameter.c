@@ -1,38 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ ISDIGIT (char const) ; 
- int atoi (char const*) ; 
- int /*<<< orphan*/  error (char*,char const*) ; 
+ scalar_t__ ISDIGIT (char const) ;
+ int atoi (char const*) ;
+ int error (char*,char const*) ;
 
 int
-read_integral_parameter (const char *p, const char *pname, const int  defval)
+read_integral_parameter (const char *p, const char *pname, const int defval)
 {
   const char *endp = p;
 
   while (*endp)
     {
       if (ISDIGIT (*endp))
-	endp++;
+ endp++;
       else
-	break;
+ break;
     }
 
   if (*endp != 0)
     {
       if (pname != 0)
-	error ("invalid option argument %qs", pname);
+ error ("invalid option argument %qs", pname);
       return defval;
     }
 

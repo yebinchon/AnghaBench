@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  size_t ssize_t ;
-struct TYPE_2__ {int /*<<< orphan*/  lock; int /*<<< orphan*/  cond; scalar_t__ nonblock; int /*<<< orphan*/  buffer; } ;
-typedef  TYPE_1__ coreaudio_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fifo_write (int /*<<< orphan*/ ,int /*<<< orphan*/  const*,size_t) ; 
- size_t fifo_write_avail (int /*<<< orphan*/ ) ; 
- int g_interrupted ; 
- int /*<<< orphan*/  scond_wait (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  scond_wait_timeout (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  slock_lock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  slock_unlock (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef size_t ssize_t ;
+struct TYPE_2__ {int lock; int cond; scalar_t__ nonblock; int buffer; } ;
+typedef TYPE_1__ coreaudio_t ;
+
+
+ int fifo_write (int ,int const*,size_t) ;
+ size_t fifo_write_avail (int ) ;
+ int g_interrupted ;
+ int scond_wait (int ,int ) ;
+ int scond_wait_timeout (int ,int ,int) ;
+ int slock_lock (int ) ;
+ int slock_unlock (int ) ;
 
 __attribute__((used)) static ssize_t coreaudio_write(void *data, const void *buf_, size_t size)
 {
-   coreaudio_t *dev   = (coreaudio_t*)data;
+   coreaudio_t *dev = (coreaudio_t*)data;
    const uint8_t *buf = (const uint8_t*)buf_;
-   size_t written     = 0;
+   size_t written = 0;
 
    while (!g_interrupted && size > 0)
    {
@@ -52,14 +52,14 @@ __attribute__((used)) static ssize_t coreaudio_write(void *data, const void *buf
          break;
       }
 
-#if TARGET_OS_IPHONE
-      if (write_avail == 0 && !scond_wait_timeout(
-               dev->cond, dev->lock, 3000000))
-         g_interrupted = true;
-#else
+
+
+
+
+
       if (write_avail == 0)
          scond_wait(dev->cond, dev->lock);
-#endif
+
       slock_unlock(dev->lock);
    }
 

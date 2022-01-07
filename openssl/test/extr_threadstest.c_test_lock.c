@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  CRYPTO_RWLOCK ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CRYPTO_THREAD_lock_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * CRYPTO_THREAD_lock_new () ; 
- int /*<<< orphan*/  CRYPTO_THREAD_read_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CRYPTO_THREAD_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TEST_true (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int CRYPTO_RWLOCK ;
+
+
+ int CRYPTO_THREAD_lock_free (int *) ;
+ int * CRYPTO_THREAD_lock_new () ;
+ int CRYPTO_THREAD_read_lock (int *) ;
+ int CRYPTO_THREAD_unlock (int *) ;
+ int TEST_true (int ) ;
 
 __attribute__((used)) static int test_lock(void)
 {

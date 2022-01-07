@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct tegra_mc_reset {int /*<<< orphan*/  bit; int /*<<< orphan*/  reset; } ;
+
+
+
+
+struct tegra_mc_reset {int bit; int reset; } ;
 struct tegra_mc {int dummy; } ;
 
-/* Variables and functions */
- int BIT (int /*<<< orphan*/ ) ; 
- int mc_readl (struct tegra_mc*,int /*<<< orphan*/ ) ; 
+
+ int BIT (int ) ;
+ int mc_readl (struct tegra_mc*,int ) ;
 
 __attribute__((used)) static int tegra20_mc_reset_status(struct tegra_mc *mc,
-				   const struct tegra_mc_reset *rst)
+       const struct tegra_mc_reset *rst)
 {
-	return (mc_readl(mc, rst->reset) & BIT(rst->bit)) == 0;
+ return (mc_readl(mc, rst->reset) & BIT(rst->bit)) == 0;
 }

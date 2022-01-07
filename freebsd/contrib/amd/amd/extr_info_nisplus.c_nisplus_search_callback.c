@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ voidp ;
-struct nisplus_search_callback_data {int /*<<< orphan*/  value; } ;
-typedef  int /*<<< orphan*/  nis_object ;
-typedef  int /*<<< orphan*/  nis_name ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ENTRY_LEN (int /*<<< orphan*/  const*,int) ; 
- int /*<<< orphan*/  ENTRY_VAL (int /*<<< orphan*/  const*,int) ; 
- int TRUE ; 
- int /*<<< orphan*/  dlog (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strnsave (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef scalar_t__ voidp ;
+struct nisplus_search_callback_data {int value; } ;
+typedef int nis_object ;
+typedef int nis_name ;
+
+
+ int ENTRY_LEN (int const*,int) ;
+ int ENTRY_VAL (int const*,int) ;
+ int TRUE ;
+ int dlog (char*,int ) ;
+ int strnsave (int ,int ) ;
 
 __attribute__((used)) static int
 nisplus_search_callback(const nis_name key, const nis_object *value, voidp opaquedata)

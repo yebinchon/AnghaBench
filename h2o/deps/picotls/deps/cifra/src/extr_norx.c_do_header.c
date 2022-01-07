@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  norx32_ctx ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DOMAIN_HEADER ; 
- int /*<<< orphan*/  input (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,size_t) ; 
- int /*<<< orphan*/  switch_domain (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint8_t ;
+typedef int norx32_ctx ;
+
+
+ int DOMAIN_HEADER ;
+ int input (int *,int ,int const*,size_t) ;
+ int switch_domain (int *,int ) ;
 
 __attribute__((used)) static void do_header(norx32_ctx *ctx, const uint8_t *buf, size_t nbuf)
 {

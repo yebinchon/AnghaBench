@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int flags; int width; int precision; void* type; } ;
-typedef  TYPE_1__ WPRINTF_FORMAT ;
-typedef  char* LPCSTR ;
-typedef  scalar_t__ INT ;
+typedef TYPE_1__ WPRINTF_FORMAT ;
+typedef char* LPCSTR ;
+typedef scalar_t__ INT ;
 
-/* Variables and functions */
- int WPRINTF_I64 ; 
- int WPRINTF_INTPTR ; 
- int WPRINTF_LEFTALIGN ; 
- int WPRINTF_LONG ; 
- int WPRINTF_PREFIX_HEX ; 
- int WPRINTF_SHORT ; 
- int WPRINTF_UPPER_HEX ; 
- int WPRINTF_WIDE ; 
- int WPRINTF_ZEROPAD ; 
- void* WPR_CHAR ; 
- void* WPR_HEXA ; 
- void* WPR_SIGNED ; 
- void* WPR_STRING ; 
- void* WPR_UNKNOWN ; 
- void* WPR_UNSIGNED ; 
- void* WPR_WCHAR ; 
- void* WPR_WSTRING ; 
+
+ int WPRINTF_I64 ;
+ int WPRINTF_INTPTR ;
+ int WPRINTF_LEFTALIGN ;
+ int WPRINTF_LONG ;
+ int WPRINTF_PREFIX_HEX ;
+ int WPRINTF_SHORT ;
+ int WPRINTF_UPPER_HEX ;
+ int WPRINTF_WIDE ;
+ int WPRINTF_ZEROPAD ;
+ void* WPR_CHAR ;
+ void* WPR_HEXA ;
+ void* WPR_SIGNED ;
+ void* WPR_STRING ;
+ void* WPR_UNKNOWN ;
+ void* WPR_UNSIGNED ;
+ void* WPR_WCHAR ;
+ void* WPR_WSTRING ;
 
 __attribute__((used)) static INT WPRINTF_ParseFormatA( LPCSTR format, WPRINTF_FORMAT *res )
 {
@@ -45,12 +45,12 @@ __attribute__((used)) static INT WPRINTF_ParseFormatA( LPCSTR format, WPRINTF_FO
     if (*p == '-') { res->flags |= WPRINTF_LEFTALIGN; p++; }
     if (*p == '#') { res->flags |= WPRINTF_PREFIX_HEX; p++; }
     if (*p == '0') { res->flags |= WPRINTF_ZEROPAD; p++; }
-    while ((*p >= '0') && (*p <= '9'))  /* width field */
+    while ((*p >= '0') && (*p <= '9'))
     {
         res->width = res->width * 10 + *p - '0';
         p++;
     }
-    if (*p == '.')  /* precision field */
+    if (*p == '.')
     {
         p++;
         while ((*p >= '0') && (*p <= '9'))
@@ -92,16 +92,16 @@ __attribute__((used)) static INT WPRINTF_ParseFormatA( LPCSTR format, WPRINTF_FO
     case 'p':
         res->width = 2 * sizeof(void *);
         res->flags |= WPRINTF_ZEROPAD | WPRINTF_INTPTR;
-        /* fall through */
+
     case 'X':
         res->flags |= WPRINTF_UPPER_HEX;
-        /* fall through */
+
     case 'x':
         res->type = WPR_HEXA;
         break;
-    default: /* unknown format char */
+    default:
         res->type = WPR_UNKNOWN;
-        p--;  /* print format as normal char */
+        p--;
         break;
     }
     return (INT)(p - format) + 1;

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  dh512_p ;
-typedef  int /*<<< orphan*/  dh512_g ;
-typedef  int /*<<< orphan*/  DH ;
-typedef  int /*<<< orphan*/  BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * BN_bin2bn (unsigned char*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DH_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * DH_new () ; 
- int /*<<< orphan*/  DH_set0_pqg (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int dh512_p ;
+typedef int dh512_g ;
+typedef int DH ;
+typedef int BIGNUM ;
+
+
+ int * BN_bin2bn (unsigned char*,int,int *) ;
+ int BN_free (int *) ;
+ int DH_free (int *) ;
+ int * DH_new () ;
+ int DH_set0_pqg (int *,int *,int *,int *) ;
 
 __attribute__((used)) static DH *get_dh512(void)
 {
@@ -43,15 +43,15 @@ __attribute__((used)) static DH *get_dh512(void)
     DH *dh;
     BIGNUM *p, *g;
 
-    if ((dh = DH_new()) == NULL)
-        return NULL;
-    p = BN_bin2bn(dh512_p, sizeof(dh512_p), NULL);
-    g = BN_bin2bn(dh512_g, sizeof(dh512_g), NULL);
-    if ((p == NULL) || (g == NULL) || !DH_set0_pqg(dh, p, NULL, g)) {
+    if ((dh = DH_new()) == ((void*)0))
+        return ((void*)0);
+    p = BN_bin2bn(dh512_p, sizeof(dh512_p), ((void*)0));
+    g = BN_bin2bn(dh512_g, sizeof(dh512_g), ((void*)0));
+    if ((p == ((void*)0)) || (g == ((void*)0)) || !DH_set0_pqg(dh, p, ((void*)0), g)) {
         DH_free(dh);
         BN_free(p);
         BN_free(g);
-        return NULL;
+        return ((void*)0);
     }
     return dh;
 }

@@ -1,76 +1,76 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_19__   TYPE_5__ ;
-typedef  struct TYPE_18__   TYPE_2__ ;
-typedef  struct TYPE_17__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  enum AVSampleFormat { ____Placeholder_AVSampleFormat } AVSampleFormat ;
+
+
+typedef struct TYPE_19__ TYPE_5__ ;
+typedef struct TYPE_18__ TYPE_2__ ;
+typedef struct TYPE_17__ TYPE_1__ ;
+
+
+typedef enum AVSampleFormat { ____Placeholder_AVSampleFormat } AVSampleFormat ;
 struct TYPE_19__ {scalar_t__* streams; } ;
-struct TYPE_18__ {int width; int height; int sample_fmt; int channels; int sample_rate; int /*<<< orphan*/  pix_fmt; } ;
-struct TYPE_17__ {scalar_t__ size; int /*<<< orphan*/ * data; } ;
-typedef  TYPE_1__ AVPacket ;
+struct TYPE_18__ {int width; int height; int sample_fmt; int channels; int sample_rate; int pix_fmt; } ;
+struct TYPE_17__ {scalar_t__ size; int * data; } ;
+typedef TYPE_1__ AVPacket ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AVMEDIA_TYPE_AUDIO ; 
- int /*<<< orphan*/  AVMEDIA_TYPE_VIDEO ; 
- int /*<<< orphan*/  ENOMEM ; 
- TYPE_2__* audio_dec_ctx ; 
- scalar_t__ audio_dst_file ; 
- char* audio_dst_filename ; 
- scalar_t__ audio_stream ; 
- size_t audio_stream_idx ; 
- int /*<<< orphan*/  av_dump_format (TYPE_5__*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_frame_alloc () ; 
- int /*<<< orphan*/  av_frame_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  av_free (int /*<<< orphan*/ ) ; 
- int av_get_packed_sample_fmt (int) ; 
- char* av_get_pix_fmt_name (int /*<<< orphan*/ ) ; 
- char* av_get_sample_fmt_name (int) ; 
- int av_image_alloc (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  av_init_packet (TYPE_1__*) ; 
- int /*<<< orphan*/  av_packet_unref (TYPE_1__*) ; 
- scalar_t__ av_read_frame (TYPE_5__*,TYPE_1__*) ; 
- scalar_t__ av_sample_fmt_is_planar (int) ; 
- int /*<<< orphan*/  avcodec_free_context (TYPE_2__**) ; 
- int /*<<< orphan*/  avformat_close_input (TYPE_5__**) ; 
- scalar_t__ avformat_find_stream_info (TYPE_5__*,int /*<<< orphan*/ *) ; 
- scalar_t__ avformat_open_input (TYPE_5__**,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int decode_packet (int*,int) ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fclose (scalar_t__) ; 
- TYPE_5__* fmt_ctx ; 
- scalar_t__ fopen (char*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  frame ; 
- int get_format_from_sample_fmt (char const**,int) ; 
- int height ; 
- scalar_t__ open_codec_context (size_t*,TYPE_2__**,TYPE_5__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pix_fmt ; 
- TYPE_1__ pkt ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int refcount ; 
- char* src_filename ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
- TYPE_2__* video_dec_ctx ; 
- int video_dst_bufsize ; 
- int /*<<< orphan*/ * video_dst_data ; 
- scalar_t__ video_dst_file ; 
- char* video_dst_filename ; 
- int /*<<< orphan*/  video_dst_linesize ; 
- scalar_t__ video_stream ; 
- size_t video_stream_idx ; 
- int width ; 
+
+ int AVERROR (int ) ;
+ int AVMEDIA_TYPE_AUDIO ;
+ int AVMEDIA_TYPE_VIDEO ;
+ int ENOMEM ;
+ TYPE_2__* audio_dec_ctx ;
+ scalar_t__ audio_dst_file ;
+ char* audio_dst_filename ;
+ scalar_t__ audio_stream ;
+ size_t audio_stream_idx ;
+ int av_dump_format (TYPE_5__*,int ,char*,int ) ;
+ int av_frame_alloc () ;
+ int av_frame_free (int *) ;
+ int av_free (int ) ;
+ int av_get_packed_sample_fmt (int) ;
+ char* av_get_pix_fmt_name (int ) ;
+ char* av_get_sample_fmt_name (int) ;
+ int av_image_alloc (int *,int ,int,int,int ,int) ;
+ int av_init_packet (TYPE_1__*) ;
+ int av_packet_unref (TYPE_1__*) ;
+ scalar_t__ av_read_frame (TYPE_5__*,TYPE_1__*) ;
+ scalar_t__ av_sample_fmt_is_planar (int) ;
+ int avcodec_free_context (TYPE_2__**) ;
+ int avformat_close_input (TYPE_5__**) ;
+ scalar_t__ avformat_find_stream_info (TYPE_5__*,int *) ;
+ scalar_t__ avformat_open_input (TYPE_5__**,char*,int *,int *) ;
+ int decode_packet (int*,int) ;
+ int exit (int) ;
+ int fclose (scalar_t__) ;
+ TYPE_5__* fmt_ctx ;
+ scalar_t__ fopen (char*,char*) ;
+ int fprintf (int ,char*,...) ;
+ int frame ;
+ int get_format_from_sample_fmt (char const**,int) ;
+ int height ;
+ scalar_t__ open_codec_context (size_t*,TYPE_2__**,TYPE_5__*,int ) ;
+ int pix_fmt ;
+ TYPE_1__ pkt ;
+ int printf (char*,...) ;
+ int refcount ;
+ char* src_filename ;
+ int stderr ;
+ int strcmp (char*,char*) ;
+ TYPE_2__* video_dec_ctx ;
+ int video_dst_bufsize ;
+ int * video_dst_data ;
+ scalar_t__ video_dst_file ;
+ char* video_dst_filename ;
+ int video_dst_linesize ;
+ scalar_t__ video_stream ;
+ size_t video_stream_idx ;
+ int width ;
 
 int main (int argc, char **argv)
 {
@@ -96,14 +96,14 @@ int main (int argc, char **argv)
     video_dst_filename = argv[2];
     audio_dst_filename = argv[3];
 
-    /* open input file, and allocate format context */
-    if (avformat_open_input(&fmt_ctx, src_filename, NULL, NULL) < 0) {
+
+    if (avformat_open_input(&fmt_ctx, src_filename, ((void*)0), ((void*)0)) < 0) {
         fprintf(stderr, "Could not open source file %s\n", src_filename);
         exit(1);
     }
 
-    /* retrieve stream information */
-    if (avformat_find_stream_info(fmt_ctx, NULL) < 0) {
+
+    if (avformat_find_stream_info(fmt_ctx, ((void*)0)) < 0) {
         fprintf(stderr, "Could not find stream information\n");
         exit(1);
     }
@@ -118,7 +118,7 @@ int main (int argc, char **argv)
             goto end;
         }
 
-        /* allocate image where the decoded image will be put */
+
         width = video_dec_ctx->width;
         height = video_dec_ctx->height;
         pix_fmt = video_dec_ctx->pix_fmt;
@@ -141,7 +141,7 @@ int main (int argc, char **argv)
         }
     }
 
-    /* dump input information to stderr */
+
     av_dump_format(fmt_ctx, 0, src_filename, 0);
 
     if (!audio_stream && !video_stream) {
@@ -157,9 +157,9 @@ int main (int argc, char **argv)
         goto end;
     }
 
-    /* initialize packet, set data to NULL, let the demuxer fill it */
+
     av_init_packet(&pkt);
-    pkt.data = NULL;
+    pkt.data = ((void*)0);
     pkt.size = 0;
 
     if (video_stream)
@@ -167,7 +167,7 @@ int main (int argc, char **argv)
     if (audio_stream)
         printf("Demuxing audio from file '%s' into '%s'\n", src_filename, audio_dst_filename);
 
-    /* read frames from the file */
+
     while (av_read_frame(fmt_ctx, &pkt) >= 0) {
         AVPacket orig_pkt = pkt;
         do {
@@ -180,8 +180,8 @@ int main (int argc, char **argv)
         av_packet_unref(&orig_pkt);
     }
 
-    /* flush cached frames */
-    pkt.data = NULL;
+
+    pkt.data = ((void*)0);
     pkt.size = 0;
     do {
         decode_packet(&got_frame, 1);

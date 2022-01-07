@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int quality; scalar_t__ target_size; scalar_t__ target_PSNR; int method; int segments; int sns_strength; int filter_strength; int filter_sharpness; int filter_type; int autofilter; int pass; int show_compressed; int preprocessing; int partitions; int partition_limit; scalar_t__ alpha_compression; scalar_t__ alpha_filtering; int alpha_quality; int lossless; int near_lossless; scalar_t__ image_hint; int emulate_jpeg_size; int thread_level; int low_memory; int exact; int use_delta_palette; int use_sharp_yuv; } ;
-typedef  TYPE_1__ WebPConfig ;
+typedef TYPE_1__ WebPConfig ;
 
-/* Variables and functions */
- scalar_t__ WEBP_HINT_LAST ; 
+
+ scalar_t__ WEBP_HINT_LAST ;
 
 int WebPValidateConfig(const WebPConfig* config) {
-  if (config == NULL) return 0;
+  if (config == ((void*)0)) return 0;
   if (config->quality < 0 || config->quality > 100) return 0;
   if (config->target_size < 0) return 0;
   if (config->target_PSNR < 0) return 0;

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  info ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int info ;
 struct TYPE_3__ {int lScale; } ;
-typedef  int PDH_STATUS ;
-typedef  int /*<<< orphan*/  PDH_HQUERY ;
-typedef  int /*<<< orphan*/ * PDH_HCOUNTER ;
-typedef  TYPE_1__ PDH_COUNTER_INFO_A ;
-typedef  int DWORD ;
+typedef int PDH_STATUS ;
+typedef int PDH_HQUERY ;
+typedef int * PDH_HCOUNTER ;
+typedef TYPE_1__ PDH_COUNTER_INFO_A ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int ERROR_SUCCESS ; 
- int PDH_INVALID_ARGUMENT ; 
- int PDH_INVALID_HANDLE ; 
- int PDH_MORE_DATA ; 
- int PdhAddCounterA (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int PdhCloseQuery (int /*<<< orphan*/ ) ; 
- int PdhGetCounterInfoA (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int*,TYPE_1__*) ; 
- int PdhOpenQueryA (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int PdhSetCounterScaleFactor (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  ok (int,char*,int) ; 
+
+ int ERROR_SUCCESS ;
+ int PDH_INVALID_ARGUMENT ;
+ int PDH_INVALID_HANDLE ;
+ int PDH_MORE_DATA ;
+ int PdhAddCounterA (int ,char*,int ,int **) ;
+ int PdhCloseQuery (int ) ;
+ int PdhGetCounterInfoA (int *,int ,int*,TYPE_1__*) ;
+ int PdhOpenQueryA (int *,int ,int *) ;
+ int PdhSetCounterScaleFactor (int *,int) ;
+ int ok (int,char*,int) ;
 
 __attribute__((used)) static void test_PdhGetCounterInfoA( void )
 {
@@ -39,23 +39,23 @@ __attribute__((used)) static void test_PdhGetCounterInfoA( void )
     PDH_COUNTER_INFO_A info;
     DWORD size;
 
-    ret = PdhOpenQueryA( NULL, 0, &query );
+    ret = PdhOpenQueryA( ((void*)0), 0, &query );
     ok(ret == ERROR_SUCCESS, "PdhOpenQueryA failed 0x%08x\n", ret);
 
     ret = PdhAddCounterA( query, "\\System\\System Up Time", 0, &counter );
     ok(ret == ERROR_SUCCESS, "PdhAddCounterA failed 0x%08x\n", ret);
 
-    ret = PdhGetCounterInfoA( NULL, 0, NULL, NULL );
+    ret = PdhGetCounterInfoA( ((void*)0), 0, ((void*)0), ((void*)0) );
     ok(ret == PDH_INVALID_HANDLE || ret == PDH_INVALID_ARGUMENT, "PdhGetCounterInfoA failed 0x%08x\n", ret);
 
-    ret = PdhGetCounterInfoA( counter, 0, NULL, NULL );
+    ret = PdhGetCounterInfoA( counter, 0, ((void*)0), ((void*)0) );
     ok(ret == PDH_INVALID_ARGUMENT, "PdhGetCounterInfoA failed 0x%08x\n", ret);
 
-    ret = PdhGetCounterInfoA( counter, 0, NULL, &info );
+    ret = PdhGetCounterInfoA( counter, 0, ((void*)0), &info );
     ok(ret == PDH_INVALID_ARGUMENT, "PdhGetCounterInfoA failed 0x%08x\n", ret);
 
     size = sizeof(info) - 1;
-    ret = PdhGetCounterInfoA( counter, 0, &size, NULL );
+    ret = PdhGetCounterInfoA( counter, 0, &size, ((void*)0) );
     ok(ret == PDH_MORE_DATA || ret == PDH_INVALID_ARGUMENT, "PdhGetCounterInfoA failed 0x%08x\n", ret);
 
     size = sizeof(info);

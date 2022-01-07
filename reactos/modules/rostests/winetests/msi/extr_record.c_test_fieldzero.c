@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int UINT ;
-typedef  scalar_t__ MSIHANDLE ;
-typedef  char* LPCSTR ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  CHAR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DeleteFileA (int /*<<< orphan*/ ) ; 
- int ERROR_INVALID_TABLE ; 
- int ERROR_SUCCESS ; 
- int FALSE ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  MSIDBOPEN_CREATE ; 
- int MSI_NULL_INTEGER ; 
- int MsiCloseHandle (scalar_t__) ; 
- scalar_t__ MsiCreateRecord (int) ; 
- int MsiDatabaseGetPrimaryKeysA (scalar_t__,char*,scalar_t__*) ; 
- int MsiDatabaseOpenViewA (scalar_t__,char*,scalar_t__*) ; 
- int MsiOpenDatabaseW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__*) ; 
- int MsiRecordGetInteger (scalar_t__,int) ; 
- int MsiRecordGetStringA (scalar_t__,int,int /*<<< orphan*/ *,int*) ; 
- int MsiRecordIsNull (scalar_t__,int /*<<< orphan*/ ) ; 
- int MsiRecordSetInteger (scalar_t__,int,int) ; 
- int MsiRecordSetStringA (scalar_t__,int,char*) ; 
- int MsiViewClose (scalar_t__) ; 
- int MsiViewExecute (scalar_t__,int /*<<< orphan*/ ) ; 
- int MsiViewFetch (scalar_t__,scalar_t__*) ; 
- int TRUE ; 
- int /*<<< orphan*/  lstrcmpA (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  lstrcpyA (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  msifile ; 
- int /*<<< orphan*/  msifileW ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
+
+
+
+typedef int UINT ;
+typedef scalar_t__ MSIHANDLE ;
+typedef char* LPCSTR ;
+typedef int DWORD ;
+typedef int CHAR ;
+
+
+ int DeleteFileA (int ) ;
+ int ERROR_INVALID_TABLE ;
+ int ERROR_SUCCESS ;
+ int FALSE ;
+ int MAX_PATH ;
+ int MSIDBOPEN_CREATE ;
+ int MSI_NULL_INTEGER ;
+ int MsiCloseHandle (scalar_t__) ;
+ scalar_t__ MsiCreateRecord (int) ;
+ int MsiDatabaseGetPrimaryKeysA (scalar_t__,char*,scalar_t__*) ;
+ int MsiDatabaseOpenViewA (scalar_t__,char*,scalar_t__*) ;
+ int MsiOpenDatabaseW (int ,int ,scalar_t__*) ;
+ int MsiRecordGetInteger (scalar_t__,int) ;
+ int MsiRecordGetStringA (scalar_t__,int,int *,int*) ;
+ int MsiRecordIsNull (scalar_t__,int ) ;
+ int MsiRecordSetInteger (scalar_t__,int,int) ;
+ int MsiRecordSetStringA (scalar_t__,int,char*) ;
+ int MsiViewClose (scalar_t__) ;
+ int MsiViewExecute (scalar_t__,int ) ;
+ int MsiViewFetch (scalar_t__,scalar_t__*) ;
+ int TRUE ;
+ int lstrcmpA (int *,char*) ;
+ int lstrcpyA (int *,char*) ;
+ int msifile ;
+ int msifileW ;
+ int ok (int,char*,...) ;
 
 __attribute__((used)) static void test_fieldzero(void)
 {

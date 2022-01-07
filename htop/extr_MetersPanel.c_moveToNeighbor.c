@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  super; int /*<<< orphan*/  meters; scalar_t__ moving; } ;
-typedef  int /*<<< orphan*/  Panel ;
-typedef  int /*<<< orphan*/  Object ;
-typedef  TYPE_1__ MetersPanel ;
-typedef  int /*<<< orphan*/  Meter ;
 
-/* Variables and functions */
- scalar_t__ Meter_toListItem (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  MetersPanel_setMoving (TYPE_1__*,int) ; 
- int /*<<< orphan*/  Panel_insert (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Panel_remove (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  Panel_setSelected (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  Vector_insert (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- int Vector_size (int /*<<< orphan*/ ) ; 
- scalar_t__ Vector_take (int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int super; int meters; scalar_t__ moving; } ;
+typedef int Panel ;
+typedef int Object ;
+typedef TYPE_1__ MetersPanel ;
+typedef int Meter ;
+
+
+ scalar_t__ Meter_toListItem (int *,int) ;
+ int MetersPanel_setMoving (TYPE_1__*,int) ;
+ int Panel_insert (int *,int,int *) ;
+ int Panel_remove (int *,int) ;
+ int Panel_setSelected (int *,int) ;
+ int Vector_insert (int ,int,int *) ;
+ int Vector_size (int ) ;
+ scalar_t__ Vector_take (int ,int) ;
 
 __attribute__((used)) static inline bool moveToNeighbor(MetersPanel* this, MetersPanel* neighbor, int selected) {
    Panel* super = (Panel*) this;
    if (this->moving) {
       if (neighbor) {
          if (selected < Vector_size(this->meters)) {
-            MetersPanel_setMoving(this, false);
+            MetersPanel_setMoving(this, 0);
 
             Meter* meter = (Meter*) Vector_take(this->meters, selected);
             Panel_remove(super, selected);
             Vector_insert(neighbor->meters, selected, meter);
-            Panel_insert(&(neighbor->super), selected, (Object*) Meter_toListItem(meter, false));
+            Panel_insert(&(neighbor->super), selected, (Object*) Meter_toListItem(meter, 0));
             Panel_setSelected(&(neighbor->super), selected);
 
-            MetersPanel_setMoving(neighbor, true);
-            return true;
+            MetersPanel_setMoving(neighbor, 1);
+            return 1;
          }
       }
    }
-   return false;
+   return 0;
 }

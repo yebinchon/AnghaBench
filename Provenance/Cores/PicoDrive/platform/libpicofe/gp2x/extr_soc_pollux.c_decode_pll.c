@@ -1,31 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
-
 __attribute__((used)) static int decode_pll(unsigned int reg)
 {
-	long long v;
-	int p, m, s;
+ long long v;
+ int p, m, s;
 
-	p = (reg >> 18) & 0x3f;
-	m = (reg >> 8) & 0x3ff;
-	s = reg & 0xff;
+ p = (reg >> 18) & 0x3f;
+ m = (reg >> 8) & 0x3ff;
+ s = reg & 0xff;
 
-	if (p == 0)
-		p = 1;
+ if (p == 0)
+  p = 1;
 
-	v = 27000000; // master clock
-	v = v * m / (p << s);
-	return v;
+ v = 27000000;
+ v = v * m / (p << s);
+ return v;
 }

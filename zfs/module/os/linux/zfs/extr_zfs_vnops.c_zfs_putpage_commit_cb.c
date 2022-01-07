@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct page {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ClearPageError (struct page*) ; 
- int /*<<< orphan*/  end_page_writeback (struct page*) ; 
+
+ int ClearPageError (struct page*) ;
+ int end_page_writeback (struct page*) ;
 
 __attribute__((used)) static void
 zfs_putpage_commit_cb(void *arg)
 {
-	struct page *pp = arg;
+ struct page *pp = arg;
 
-	ClearPageError(pp);
-	end_page_writeback(pp);
+ ClearPageError(pp);
+ end_page_writeback(pp);
 }

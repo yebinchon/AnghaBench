@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct seq_file {TYPE_1__* private; } ;
-struct TYPE_2__ {int /*<<< orphan*/  lock; } ;
-typedef  TYPE_1__ local_info_t ;
+struct TYPE_2__ {int lock; } ;
+typedef TYPE_1__ local_info_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  spin_unlock_bh (int /*<<< orphan*/ *) ; 
+
+ int spin_unlock_bh (int *) ;
 
 __attribute__((used)) static void prism2_bss_list_proc_stop(struct seq_file *m, void *v)
 {
-	local_info_t *local = m->private;
-	spin_unlock_bh(&local->lock);
+ local_info_t *local = m->private;
+ spin_unlock_bh(&local->lock);
 }

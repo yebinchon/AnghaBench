@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u32 ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int u32 ;
 struct TYPE_5__ {int state; int m68krcycles_done; scalar_t__ poll_cnt; scalar_t__ poll_cycles; scalar_t__ poll_addr; } ;
-typedef  TYPE_1__ SH2 ;
+typedef TYPE_1__ SH2 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EL_32X ; 
- int /*<<< orphan*/  EVT_POLL_END ; 
- int /*<<< orphan*/  elprintf_sh2 (TYPE_1__*,int /*<<< orphan*/ ,char*,int,int) ; 
- int /*<<< orphan*/  pevt_log_sh2_o (TYPE_1__*,int /*<<< orphan*/ ) ; 
+
+ int EL_32X ;
+ int EVT_POLL_END ;
+ int elprintf_sh2 (TYPE_1__*,int ,char*,int,int) ;
+ int pevt_log_sh2_o (TYPE_1__*,int ) ;
 
 void p32x_sh2_poll_event(SH2 *sh2, u32 flags, u32 m68k_cycles)
 {

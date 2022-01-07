@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ sqlite3_int64 ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef scalar_t__ sqlite3_int64 ;
 struct TYPE_4__ {int validJD; int Y; int M; int D; int h; int m; int s; int tz; scalar_t__ validTZ; scalar_t__ validHMS; scalar_t__ validYMD; scalar_t__ iJD; scalar_t__ rawS; } ;
-typedef  TYPE_1__ DateTime ;
+typedef TYPE_1__ DateTime ;
 
-/* Variables and functions */
- int /*<<< orphan*/  datetimeError (TYPE_1__*) ; 
+
+ int datetimeError (TYPE_1__*) ;
 
 __attribute__((used)) static void computeJD(DateTime *p){
   int Y, M, D, A, B, X1, X2;
@@ -27,7 +27,7 @@ __attribute__((used)) static void computeJD(DateTime *p){
     M = p->M;
     D = p->D;
   }else{
-    Y = 2000;  /* If no YMD specified, assume 2000-Jan-01 */
+    Y = 2000;
     M = 1;
     D = 1;
   }

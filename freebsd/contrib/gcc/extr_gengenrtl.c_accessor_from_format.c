@@ -1,18 +1,10 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  gcc_unreachable () ; 
+ int gcc_unreachable () ;
 
 __attribute__((used)) static const char *
 accessor_from_format (int c)
@@ -28,7 +20,7 @@ accessor_from_format (int c)
     case 's':
       return "XSTR";
 
-    case 'e':  case 'u':
+    case 'e': case 'u':
       return "XEXP";
 
     case 'E':

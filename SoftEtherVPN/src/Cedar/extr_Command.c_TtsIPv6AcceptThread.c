@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  ListenSocketV6; } ;
-typedef  TYPE_1__ TTS ;
-typedef  int /*<<< orphan*/  THREAD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TtsAcceptProc (TYPE_1__*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int ListenSocketV6; } ;
+typedef TYPE_1__ TTS ;
+typedef int THREAD ;
+
+
+ int TtsAcceptProc (TYPE_1__*,int ) ;
 
 void TtsIPv6AcceptThread(THREAD *thread, void *param)
 {
-	TTS *tts = (TTS *)param;
-	// Validate arguments
-	if (tts == NULL || param == NULL)
-	{
-		return;
-	}
+ TTS *tts = (TTS *)param;
 
-	TtsAcceptProc(tts, tts->ListenSocketV6);
+ if (tts == ((void*)0) || param == ((void*)0))
+ {
+  return;
+ }
+
+ TtsAcceptProc(tts, tts->ListenSocketV6);
 }

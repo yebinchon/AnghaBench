@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  s_addr; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int s_addr; } ;
 struct sockaddr_in {TYPE_1__ sin_addr; } ;
-struct sockaddr {int /*<<< orphan*/  sa_family; } ;
-struct ifreq {struct sockaddr ifr_addr; int /*<<< orphan*/  ifr_name; } ;
+struct sockaddr {int sa_family; } ;
+struct ifreq {struct sockaddr ifr_addr; int ifr_name; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_INET ; 
- int /*<<< orphan*/  IFNAMSIZ ; 
- int /*<<< orphan*/  SIOCGIFADDR ; 
- int /*<<< orphan*/  SOCK_DGRAM ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char const*,char*) ; 
- int ioctl (int,int /*<<< orphan*/ ,struct ifreq*) ; 
- int ntohl (int /*<<< orphan*/ ) ; 
- int socket (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  strcpy_s (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*) ; 
- char* strerror (int /*<<< orphan*/ ) ; 
+
+ int AF_INET ;
+ int IFNAMSIZ ;
+ int SIOCGIFADDR ;
+ int SOCK_DGRAM ;
+ int close (int) ;
+ int errno ;
+ int fprintf (int ,char*,char const*,char*) ;
+ int ioctl (int,int ,struct ifreq*) ;
+ int ntohl (int ) ;
+ int socket (int ,int ,int ) ;
+ int stderr ;
+ int strcpy_s (int ,int ,char const*) ;
+ char* strerror (int ) ;
 
 unsigned
 rawsock_get_adapter_ip(const char *ifname)
@@ -48,7 +48,7 @@ rawsock_get_adapter_ip(const char *ifname)
     x = ioctl(fd, SIOCGIFADDR, &ifr);
     if (x < 0) {
         fprintf(stderr, "ERROR:'%s': %s\n", ifname, strerror(errno));
-        //fprintf(stderr, "ERROR:'%s': couldn't discover IP address of network interface\n", ifname);
+
         close(fd);
         return 0;
     }

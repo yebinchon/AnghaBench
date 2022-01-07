@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* xsltTransformContextPtr ;
-typedef  int /*<<< orphan*/  xmlChar ;
-struct TYPE_4__ {int /*<<< orphan*/  style; } ;
 
-/* Variables and functions */
- void* testData ; 
- int /*<<< orphan*/ * testStyleData ; 
- int /*<<< orphan*/  xsltGenericDebug (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  xsltGenericDebugContext ; 
- int /*<<< orphan*/  xsltGenericErrorContext ; 
- int /*<<< orphan*/ * xsltStyleGetExtData (int /*<<< orphan*/ ,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  xsltTransformError (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef TYPE_1__* xsltTransformContextPtr ;
+typedef int xmlChar ;
+struct TYPE_4__ {int style; } ;
+
+
+ void* testData ;
+ int * testStyleData ;
+ int xsltGenericDebug (int ,char*,...) ;
+ int xsltGenericDebugContext ;
+ int xsltGenericErrorContext ;
+ int * xsltStyleGetExtData (int ,int const*) ;
+ int xsltTransformError (TYPE_1__*,int *,int *,char*) ;
 
 __attribute__((used)) static void *
 xsltExtInitTest(xsltTransformContextPtr ctxt, const xmlChar * URI)
 {
-    if (testStyleData == NULL) {
+    if (testStyleData == ((void*)0)) {
         xsltGenericDebug(xsltGenericErrorContext,
                          "xsltExtInitTest: not initialized,"
                          " calling xsltStyleGetExtData\n");
         testStyleData = xsltStyleGetExtData(ctxt->style, URI);
-        if (testStyleData == NULL) {
-            xsltTransformError(ctxt, NULL, NULL,
+        if (testStyleData == ((void*)0)) {
+            xsltTransformError(ctxt, ((void*)0), ((void*)0),
                                "xsltExtInitTest: not initialized\n");
-            return (NULL);
+            return (((void*)0));
         }
     }
-    if (testData != NULL) {
-        xsltTransformError(ctxt, NULL, NULL,
+    if (testData != ((void*)0)) {
+        xsltTransformError(ctxt, ((void*)0), ((void*)0),
                            "xsltExtInitTest: already initialized\n");
-        return (NULL);
+        return (((void*)0));
     }
     testData = (void *) "test data";
     xsltGenericDebug(xsltGenericDebugContext,

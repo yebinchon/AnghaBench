@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {TYPE_2__* sys; } ;
-typedef  TYPE_1__ vout_window_t ;
-struct TYPE_5__ {int /*<<< orphan*/  seats; } ;
-typedef  TYPE_2__ vout_window_sys_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
+typedef TYPE_1__ vout_window_t ;
+struct TYPE_5__ {int seats; } ;
+typedef TYPE_2__ vout_window_sys_t ;
+typedef int uint32_t ;
 struct wl_registry {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  seat_create (TYPE_1__*,struct wl_registry*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int seat_create (TYPE_1__*,struct wl_registry*,int ,int ,int *) ;
 
 __attribute__((used)) static void register_wl_seat(void *data, struct wl_registry *registry,
                              uint32_t name, uint32_t vers)

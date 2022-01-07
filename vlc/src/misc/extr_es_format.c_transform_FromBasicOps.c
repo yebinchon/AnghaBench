@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  video_transform_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TRANSFORM_ANTI_TRANSPOSE ; 
- int /*<<< orphan*/  TRANSFORM_HFLIP ; 
- int /*<<< orphan*/  TRANSFORM_IDENTITY ; 
- int /*<<< orphan*/  TRANSFORM_R180 ; 
- int /*<<< orphan*/  TRANSFORM_R270 ; 
- int /*<<< orphan*/  TRANSFORM_R90 ; 
- int /*<<< orphan*/  TRANSFORM_TRANSPOSE ; 
- int /*<<< orphan*/  TRANSFORM_VFLIP ; 
+
+
+
+typedef int video_transform_t ;
+
+
+ int TRANSFORM_ANTI_TRANSPOSE ;
+ int TRANSFORM_HFLIP ;
+ int TRANSFORM_IDENTITY ;
+ int TRANSFORM_R180 ;
+ int TRANSFORM_R270 ;
+ int TRANSFORM_R90 ;
+ int TRANSFORM_TRANSPOSE ;
+ int TRANSFORM_VFLIP ;
 
 __attribute__((used)) static video_transform_t transform_FromBasicOps( unsigned angle, bool hflip )
 {

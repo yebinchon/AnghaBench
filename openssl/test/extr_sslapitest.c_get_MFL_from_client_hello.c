@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  pkt3 ;
-typedef  int /*<<< orphan*/  pkt2 ;
-typedef  int /*<<< orphan*/  pkt ;
-typedef  int /*<<< orphan*/  PACKET ;
-typedef  int /*<<< orphan*/  BIO ;
 
-/* Variables and functions */
- long BIO_get_mem_data (int /*<<< orphan*/ *,char**) ; 
- scalar_t__ CLIENT_VERSION_LEN ; 
- int /*<<< orphan*/  PACKET_as_length_prefixed_2 (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PACKET_buf_init (int /*<<< orphan*/ *,unsigned char*,long) ; 
- int /*<<< orphan*/  PACKET_forward (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  PACKET_get_1 (int /*<<< orphan*/ *,unsigned int*) ; 
- int /*<<< orphan*/  PACKET_get_length_prefixed_1 (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PACKET_get_length_prefixed_2 (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PACKET_get_net_2 (int /*<<< orphan*/ *,unsigned int*) ; 
- scalar_t__ PACKET_remaining (int /*<<< orphan*/ *) ; 
- scalar_t__ SSL3_HM_HEADER_LENGTH ; 
- scalar_t__ SSL3_RANDOM_SIZE ; 
- scalar_t__ SSL3_RT_HEADER_LENGTH ; 
- int /*<<< orphan*/  TEST_true (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_uint_gt (long,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_uint_ne (scalar_t__,int /*<<< orphan*/ ) ; 
- unsigned int TLSEXT_TYPE_max_fragment_length ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int pkt3 ;
+typedef int pkt2 ;
+typedef int pkt ;
+typedef int PACKET ;
+typedef int BIO ;
+
+
+ long BIO_get_mem_data (int *,char**) ;
+ scalar_t__ CLIENT_VERSION_LEN ;
+ int PACKET_as_length_prefixed_2 (int *,int *) ;
+ int PACKET_buf_init (int *,unsigned char*,long) ;
+ int PACKET_forward (int *,scalar_t__) ;
+ int PACKET_get_1 (int *,unsigned int*) ;
+ int PACKET_get_length_prefixed_1 (int *,int *) ;
+ int PACKET_get_length_prefixed_2 (int *,int *) ;
+ int PACKET_get_net_2 (int *,unsigned int*) ;
+ scalar_t__ PACKET_remaining (int *) ;
+ scalar_t__ SSL3_HM_HEADER_LENGTH ;
+ scalar_t__ SSL3_RANDOM_SIZE ;
+ scalar_t__ SSL3_RT_HEADER_LENGTH ;
+ int TEST_true (int ) ;
+ int TEST_uint_gt (long,int ) ;
+ int TEST_uint_ne (scalar_t__,int ) ;
+ unsigned int TLSEXT_TYPE_max_fragment_length ;
+ int memset (int *,int ,int) ;
 
 __attribute__((used)) static int get_MFL_from_client_hello(BIO *bio, int *mfl_codemfl_code)
 {
@@ -51,24 +51,24 @@ __attribute__((used)) static int get_MFL_from_client_hello(BIO *bio, int *mfl_co
     memset(&pkt3, 0, sizeof(pkt3));
 
     if (!TEST_true( PACKET_buf_init( &pkt, data, len ) )
-               /* Skip the record header */
+
             || !PACKET_forward(&pkt, SSL3_RT_HEADER_LENGTH)
-               /* Skip the handshake message header */
+
             || !TEST_true(PACKET_forward(&pkt, SSL3_HM_HEADER_LENGTH))
-               /* Skip client version and random */
+
             || !TEST_true(PACKET_forward(&pkt, CLIENT_VERSION_LEN
                                                + SSL3_RANDOM_SIZE))
-               /* Skip session id */
+
             || !TEST_true(PACKET_get_length_prefixed_1(&pkt, &pkt2))
-               /* Skip ciphers */
+
             || !TEST_true(PACKET_get_length_prefixed_2(&pkt, &pkt2))
-               /* Skip compression */
+
             || !TEST_true(PACKET_get_length_prefixed_1(&pkt, &pkt2))
-               /* Extensions len */
+
             || !TEST_true(PACKET_as_length_prefixed_2(&pkt, &pkt2)))
         goto end;
 
-    /* Loop through all extensions */
+
     while (PACKET_remaining(&pkt2)) {
         if (!TEST_true(PACKET_get_net_2(&pkt2, &type))
                 || !TEST_true(PACKET_get_length_prefixed_2(&pkt2, &pkt3)))

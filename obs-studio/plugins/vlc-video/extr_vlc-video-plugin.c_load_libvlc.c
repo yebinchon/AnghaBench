@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  unsigned long long uint64_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOG_INFO ; 
- int /*<<< orphan*/  blog (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ libvlc ; 
- scalar_t__ libvlc_clock_ () ; 
- scalar_t__ libvlc_new_ (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- unsigned long long time_start ; 
+
+
+
+typedef unsigned long long uint64_t ;
+
+
+ int LOG_INFO ;
+ int blog (int ,char*) ;
+ scalar_t__ libvlc ;
+ scalar_t__ libvlc_clock_ () ;
+ scalar_t__ libvlc_new_ (int ,int ) ;
+ unsigned long long time_start ;
 
 bool load_libvlc(void)
 {
-	if (libvlc)
-		return true;
+ if (libvlc)
+  return 1;
 
-	libvlc = libvlc_new_(0, 0);
-	if (!libvlc) {
-		blog(LOG_INFO, "Couldn't create libvlc instance");
-		return false;
-	}
+ libvlc = libvlc_new_(0, 0);
+ if (!libvlc) {
+  blog(LOG_INFO, "Couldn't create libvlc instance");
+  return 0;
+ }
 
-	time_start = (uint64_t)libvlc_clock_() * 1000ULL;
-	return true;
+ time_start = (uint64_t)libvlc_clock_() * 1000ULL;
+ return 1;
 }

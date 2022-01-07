@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {scalar_t__ vbus; } ;
-typedef  TYPE_1__* PVBUS_EXT ;
-typedef  int /*<<< orphan*/  PVBUS ;
+typedef TYPE_1__* PVBUS_EXT ;
+typedef int PVBUS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ldm_on_timer (int /*<<< orphan*/ ) ; 
+
+ int ldm_on_timer (int ) ;
 
 __attribute__((used)) static void os_timer_for_ldm(void *arg)
 {
-	PVBUS_EXT vbus_ext = (PVBUS_EXT)arg;
-	ldm_on_timer((PVBUS)vbus_ext->vbus);
+ PVBUS_EXT vbus_ext = (PVBUS_EXT)arg;
+ ldm_on_timer((PVBUS)vbus_ext->vbus);
 }

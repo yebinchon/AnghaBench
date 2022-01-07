@@ -1,70 +1,70 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_18__   TYPE_5__ ;
-typedef  struct TYPE_17__   TYPE_4__ ;
-typedef  struct TYPE_16__   TYPE_3__ ;
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int /*<<< orphan*/  int16_t ;
-struct TYPE_14__ {scalar_t__ table; int /*<<< orphan*/  member_0; } ;
-typedef  TYPE_1__ VLC ;
+
+
+typedef struct TYPE_18__ TYPE_5__ ;
+typedef struct TYPE_17__ TYPE_4__ ;
+typedef struct TYPE_16__ TYPE_3__ ;
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef int int16_t ;
+struct TYPE_14__ {scalar_t__ table; int member_0; } ;
+typedef TYPE_1__ VLC ;
 struct TYPE_18__ {int channels; scalar_t__ sample_fmt; } ;
-struct TYPE_17__ {int nb_samples; int /*<<< orphan*/ ** data; } ;
-struct TYPE_16__ {int size; int /*<<< orphan*/ * data; } ;
-struct TYPE_15__ {int length; int current; int* bits; int* lengths; int* values; scalar_t__ maxlength; int /*<<< orphan*/  member_0; } ;
-typedef  TYPE_2__ HuffContext ;
-typedef  int /*<<< orphan*/  GetBitContext ;
-typedef  TYPE_3__ AVPacket ;
-typedef  TYPE_4__ AVFrame ;
-typedef  TYPE_5__ AVCodecContext ;
+struct TYPE_17__ {int nb_samples; int ** data; } ;
+struct TYPE_16__ {int size; int * data; } ;
+struct TYPE_15__ {int length; int current; int* bits; int* lengths; int* values; scalar_t__ maxlength; int member_0; } ;
+typedef TYPE_2__ HuffContext ;
+typedef int GetBitContext ;
+typedef TYPE_3__ AVPacket ;
+typedef TYPE_4__ AVFrame ;
+typedef TYPE_5__ AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_LOG_INFO ; 
- int AV_RL32 (int /*<<< orphan*/  const*) ; 
- scalar_t__ AV_SAMPLE_FMT_U8 ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  INIT_VLC_LE ; 
- int /*<<< orphan*/  SMKTREE_BITS ; 
- int av_bswap16 (int) ; 
- int /*<<< orphan*/  av_free (int*) ; 
- int /*<<< orphan*/  av_log (TYPE_5__*,int /*<<< orphan*/ ,char*) ; 
- void* av_mallocz (int) ; 
- int /*<<< orphan*/  ff_free_vlc (TYPE_1__*) ; 
- int ff_get_buffer (TYPE_5__*,TYPE_4__*,int /*<<< orphan*/ ) ; 
- int get_bits (int /*<<< orphan*/ *,int) ; 
- int get_bits1 (int /*<<< orphan*/ *) ; 
- scalar_t__ get_bits_left (int /*<<< orphan*/ *) ; 
- int get_vlc2 (int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ ,int) ; 
- int init_get_bits8 (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int) ; 
- int init_vlc (TYPE_1__*,int /*<<< orphan*/ ,int,int*,int,int,int*,int,int,int /*<<< orphan*/ ) ; 
- int sign_extend (int,int) ; 
- int /*<<< orphan*/  skip_bits1 (int /*<<< orphan*/ *) ; 
- scalar_t__ smacker_decode_tree (int /*<<< orphan*/ *,TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ int AV_LOG_INFO ;
+ int AV_RL32 (int const*) ;
+ scalar_t__ AV_SAMPLE_FMT_U8 ;
+ int ENOMEM ;
+ int INIT_VLC_LE ;
+ int SMKTREE_BITS ;
+ int av_bswap16 (int) ;
+ int av_free (int*) ;
+ int av_log (TYPE_5__*,int ,char*) ;
+ void* av_mallocz (int) ;
+ int ff_free_vlc (TYPE_1__*) ;
+ int ff_get_buffer (TYPE_5__*,TYPE_4__*,int ) ;
+ int get_bits (int *,int) ;
+ int get_bits1 (int *) ;
+ scalar_t__ get_bits_left (int *) ;
+ int get_vlc2 (int *,scalar_t__,int ,int) ;
+ int init_get_bits8 (int *,int const*,int) ;
+ int init_vlc (TYPE_1__*,int ,int,int*,int,int,int*,int,int,int ) ;
+ int sign_extend (int,int) ;
+ int skip_bits1 (int *) ;
+ scalar_t__ smacker_decode_tree (int *,TYPE_2__*,int ,int ) ;
 
 __attribute__((used)) static int smka_decode_frame(AVCodecContext *avctx, void *data,
                              int *got_frame_ptr, AVPacket *avpkt)
 {
-    AVFrame *frame     = data;
+    AVFrame *frame = data;
     const uint8_t *buf = avpkt->data;
     int buf_size = avpkt->size;
     GetBitContext gb;
     HuffContext h[4] = { { 0 } };
-    VLC vlc[4]       = { { 0 } };
+    VLC vlc[4] = { { 0 } };
     int16_t *samples;
     uint8_t *samples8;
     int val;
@@ -104,7 +104,7 @@ __attribute__((used)) static int smka_decode_frame(AVCodecContext *avctx, void *
         return AVERROR_INVALIDDATA;
     }
 
-    /* get output buffer */
+
     frame->nb_samples = unp_size / (avctx->channels * (bits + 1));
     if (unp_size % (avctx->channels * (bits + 1))) {
         av_log(avctx, AV_LOG_ERROR,
@@ -113,10 +113,10 @@ __attribute__((used)) static int smka_decode_frame(AVCodecContext *avctx, void *
     }
     if ((ret = ff_get_buffer(avctx, frame, 0)) < 0)
         return ret;
-    samples  = (int16_t *)frame->data[0];
-    samples8 =            frame->data[0];
+    samples = (int16_t *)frame->data[0];
+    samples8 = frame->data[0];
 
-    // Initialize
+
     for(i = 0; i < (1 << (bits + stereo)); i++) {
         h[i].length = 256;
         h[i].maxlength = 0;
@@ -145,8 +145,8 @@ __attribute__((used)) static int smka_decode_frame(AVCodecContext *avctx, void *
             }
         }
     }
-    /* this codec relies on wraparound instead of clipping audio */
-    if(bits) { //decode 16-bit data
+
+    if(bits) {
         for(i = stereo; i >= 0; i--)
             pred[i] = sign_extend(av_bswap16(get_bits(&gb, 16)), 16);
         for(i = 0; i <= stereo; i++)
@@ -166,7 +166,7 @@ __attribute__((used)) static int smka_decode_frame(AVCodecContext *avctx, void *
                     ret = AVERROR_INVALIDDATA;
                     goto error;
                 }
-                val  = h[2].values[res];
+                val = h[2].values[res];
                 if(vlc[3].table)
                     res = get_vlc2(&gb, vlc[3].table, SMKTREE_BITS, 3);
                 else
@@ -189,7 +189,7 @@ __attribute__((used)) static int smka_decode_frame(AVCodecContext *avctx, void *
                     ret = AVERROR_INVALIDDATA;
                     goto error;
                 }
-                val  = h[0].values[res];
+                val = h[0].values[res];
                 if(vlc[1].table)
                     res = get_vlc2(&gb, vlc[1].table, SMKTREE_BITS, 3);
                 else
@@ -204,7 +204,7 @@ __attribute__((used)) static int smka_decode_frame(AVCodecContext *avctx, void *
                 *samples++ = pred[0];
             }
         }
-    } else { //8-bit data
+    } else {
         for(i = stereo; i >= 0; i--)
             pred[i] = get_bits(&gb, 8);
         for(i = 0; i <= stereo; i++)

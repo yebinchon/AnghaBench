@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-struct TYPE_8__ {int MaximumLength; int /*<<< orphan*/ * Buffer; scalar_t__ Length; } ;
-typedef  TYPE_1__ UNICODE_STRING ;
-typedef  int /*<<< orphan*/  PWSTR ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
-typedef  char* LPWSTR ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPRINT1 (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  LPTR ; 
- int /*<<< orphan*/ * LocalAlloc (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  LocalFree (int /*<<< orphan*/ *) ; 
- scalar_t__ NT_SUCCESS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RtlAppendUnicodeToString (TYPE_1__*,char*) ; 
- int /*<<< orphan*/  RtlInitUnicodeString (TYPE_1__*,char*) ; 
- int /*<<< orphan*/  RtlQueryEnvironmentVariable_U (int /*<<< orphan*/ ,TYPE_1__*,TYPE_1__*) ; 
- int /*<<< orphan*/  RtlSetEnvironmentVariable (int /*<<< orphan*/ *,TYPE_1__*,TYPE_1__*) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  UNICODE_NULL ; 
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
+struct TYPE_8__ {int MaximumLength; int * Buffer; scalar_t__ Length; } ;
+typedef TYPE_1__ UNICODE_STRING ;
+typedef int PWSTR ;
+typedef int NTSTATUS ;
+typedef char* LPWSTR ;
+typedef int BOOL ;
+
+
+ int DPRINT1 (char*,int ) ;
+ int FALSE ;
+ int LPTR ;
+ int * LocalAlloc (int ,int) ;
+ int LocalFree (int *) ;
+ scalar_t__ NT_SUCCESS (int ) ;
+ int RtlAppendUnicodeToString (TYPE_1__*,char*) ;
+ int RtlInitUnicodeString (TYPE_1__*,char*) ;
+ int RtlQueryEnvironmentVariable_U (int ,TYPE_1__*,TYPE_1__*) ;
+ int RtlSetEnvironmentVariable (int *,TYPE_1__*,TYPE_1__*) ;
+ int TRUE ;
+ int UNICODE_NULL ;
 
 __attribute__((used)) static
 BOOL
@@ -47,7 +47,7 @@ AppendUserEnvironmentVariable(PWSTR* Environment,
     Value.Length = 0;
     Value.MaximumLength = 1024 * sizeof(WCHAR);
     Value.Buffer = LocalAlloc(LPTR, Value.MaximumLength);
-    if (Value.Buffer == NULL)
+    if (Value.Buffer == ((void*)0))
         return FALSE;
 
     Value.Buffer[0] = UNICODE_NULL;

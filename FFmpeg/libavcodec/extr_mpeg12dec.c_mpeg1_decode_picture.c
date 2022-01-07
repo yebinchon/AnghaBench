@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_5__ ;
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
+
+
+typedef struct TYPE_12__ TYPE_5__ ;
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_12__ {int err_recognition; int debug; TYPE_4__* priv_data; } ;
 struct TYPE_9__ {TYPE_1__* f; } ;
-struct TYPE_10__ {int pict_type; int vbv_delay; int** mpeg_f_code; int y_dc_scale; int c_dc_scale; TYPE_2__ current_picture; int /*<<< orphan*/  gb; void** full_pel; } ;
+struct TYPE_10__ {int pict_type; int vbv_delay; int** mpeg_f_code; int y_dc_scale; int c_dc_scale; TYPE_2__ current_picture; int gb; void** full_pel; } ;
 struct TYPE_11__ {TYPE_3__ mpeg_enc_ctx; } ;
 struct TYPE_8__ {int pict_type; int key_frame; } ;
-typedef  TYPE_3__ MpegEncContext ;
-typedef  TYPE_4__ Mpeg1Context ;
-typedef  TYPE_5__ AVCodecContext ;
+typedef TYPE_3__ MpegEncContext ;
+typedef TYPE_4__ Mpeg1Context ;
+typedef TYPE_5__ AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int AV_EF_BITSTREAM ; 
- int AV_EF_COMPLIANT ; 
- int /*<<< orphan*/  AV_LOG_DEBUG ; 
- int AV_PICTURE_TYPE_B ; 
- int AV_PICTURE_TYPE_I ; 
- int AV_PICTURE_TYPE_P ; 
- int FF_DEBUG_PICT_INFO ; 
- int /*<<< orphan*/  av_log (TYPE_5__*,int /*<<< orphan*/ ,char*,int,int,int) ; 
- void* get_bits (int /*<<< orphan*/ *,int) ; 
- void* get_bits1 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  init_get_bits (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int) ; 
+
+ int AVERROR_INVALIDDATA ;
+ int AV_EF_BITSTREAM ;
+ int AV_EF_COMPLIANT ;
+ int AV_LOG_DEBUG ;
+ int AV_PICTURE_TYPE_B ;
+ int AV_PICTURE_TYPE_I ;
+ int AV_PICTURE_TYPE_P ;
+ int FF_DEBUG_PICT_INFO ;
+ int av_log (TYPE_5__*,int ,char*,int,int,int) ;
+ void* get_bits (int *,int) ;
+ void* get_bits1 (int *) ;
+ int init_get_bits (int *,int const*,int) ;
 
 __attribute__((used)) static int mpeg1_decode_picture(AVCodecContext *avctx, const uint8_t *buf,
                                 int buf_size)
 {
-    Mpeg1Context *s1  = avctx->priv_data;
+    Mpeg1Context *s1 = avctx->priv_data;
     MpegEncContext *s = &s1->mpeg_enc_ctx;
     int ref, f_code, vbv_delay;
 
     init_get_bits(&s->gb, buf, buf_size * 8);
 
-    ref = get_bits(&s->gb, 10); /* temporal ref */
+    ref = get_bits(&s->gb, 10);
     s->pict_type = get_bits(&s->gb, 3);
     if (s->pict_type == 0 || s->pict_type > 3)
         return AVERROR_INVALIDDATA;

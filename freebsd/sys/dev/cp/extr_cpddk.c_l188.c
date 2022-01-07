@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_10__ {scalar_t__ l100; scalar_t__ l120; scalar_t__ l110; scalar_t__ l119; scalar_t__ l108; scalar_t__ l117; scalar_t__ l89; scalar_t__ l101; scalar_t__ l103; scalar_t__ l121; scalar_t__ l112; scalar_t__ l47; } ;
-struct TYPE_9__ {int /*<<< orphan*/  l100; int /*<<< orphan*/  l120; int /*<<< orphan*/  l110; int /*<<< orphan*/  l119; int /*<<< orphan*/  l108; int /*<<< orphan*/  l117; int /*<<< orphan*/  l89; int /*<<< orphan*/  l101; int /*<<< orphan*/  l103; int /*<<< orphan*/  l121; int /*<<< orphan*/  l112; int /*<<< orphan*/  l47; } ;
-struct TYPE_11__ {int l55; int t; int l105; unsigned int l109; scalar_t__ l161; TYPE_3__ n; TYPE_2__ l29; TYPE_3__* l118; scalar_t__ l38; TYPE_1__* d; scalar_t__ l58; int /*<<< orphan*/  l46; int /*<<< orphan*/  l31; } ;
-typedef  TYPE_4__ e ;
+struct TYPE_9__ {int l100; int l120; int l110; int l119; int l108; int l117; int l89; int l101; int l103; int l121; int l112; int l47; } ;
+struct TYPE_11__ {int l55; int t; int l105; unsigned int l109; scalar_t__ l161; TYPE_3__ n; TYPE_2__ l29; TYPE_3__* l118; scalar_t__ l38; TYPE_1__* d; scalar_t__ l58; int l46; int l31; } ;
+typedef TYPE_4__ e ;
 struct TYPE_8__ {scalar_t__ l30; } ;
 
-/* Variables and functions */
- short l57 (TYPE_4__*,int) ; 
- unsigned char l90 (TYPE_4__*,int,int) ; 
+
+ short l57 (TYPE_4__*,int) ;
+ unsigned char l90 (TYPE_4__*,int,int) ;
 
 __attribute__((used)) static void l188(e*a){unsigned char l77,
 l150;unsigned l47,l153,l58,l182,l111,l131;++a->l55;{if(!(!a->l161&&a

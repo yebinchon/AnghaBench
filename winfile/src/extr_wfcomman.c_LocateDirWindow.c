@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  TCHAR ;
-typedef  scalar_t__* LPTSTR ;
-typedef  int /*<<< orphan*/ * HWND ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- scalar_t__ CHAR_COLON ; 
- int /*<<< orphan*/  COUNTOF (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GW_CHILD ; 
- int /*<<< orphan*/  GW_HWNDNEXT ; 
- int /*<<< orphan*/  GetMDIWindowText (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * GetWindow (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * HasDirWindow (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  HasTreeWindow (int /*<<< orphan*/ *) ; 
- int MAXPATHLEN ; 
- int /*<<< orphan*/  StripFilespec (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * hwndMDIClient ; 
- int /*<<< orphan*/  lstrcmpi (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lstrcpy (int /*<<< orphan*/ *,scalar_t__*) ; 
- int lstrlen (scalar_t__*) ; 
+
+
+
+typedef int TCHAR ;
+typedef scalar_t__* LPTSTR ;
+typedef int * HWND ;
+typedef int BOOL ;
+
+
+ scalar_t__ CHAR_COLON ;
+ int COUNTOF (int *) ;
+ int GW_CHILD ;
+ int GW_HWNDNEXT ;
+ int GetMDIWindowText (int *,int *,int ) ;
+ int * GetWindow (int *,int ) ;
+ int * HasDirWindow (int *) ;
+ int HasTreeWindow (int *) ;
+ int MAXPATHLEN ;
+ int StripFilespec (int *) ;
+ int * hwndMDIClient ;
+ int lstrcmpi (int *,int *) ;
+ int lstrcpy (int *,scalar_t__*) ;
+ int lstrlen (scalar_t__*) ;
 
 HWND
 LocateDirWindow(
@@ -45,17 +45,17 @@ LocateDirWindow(
 
    pT2 = pszPath;
 
-   //
-   //  Only work with well-formed paths.
-   //
+
+
+
    if ((lstrlen(pT2) < 3) || (pT2[1] != CHAR_COLON))
    {
-      return (NULL);
+      return (((void*)0));
    }
 
-   //
-   //  Copy path to temp buffer and remove the filespec (if necessary).
-   //
+
+
+
    lstrcpy(szPath, pT2);
 
    if (!bNoFileSpec)
@@ -63,24 +63,24 @@ LocateDirWindow(
       StripFilespec(szPath);
    }
 
-   //
-   //  Cycle through all of the windows until a match is found.
-   //
+
+
+
    for (hwndT = GetWindow(hwndMDIClient, GW_CHILD);
         hwndT;
         hwndT = GetWindow(hwndT, GW_HWNDNEXT))
    {
       if (hwndDir = HasDirWindow(hwndT))
       {
-         //
-         //  Get the Window's path information and remove the file spec.
-         //
+
+
+
          GetMDIWindowText(hwndT, szTemp, COUNTOF(szTemp));
          StripFilespec(szTemp);
 
-         //
-         //  Compare the two paths.
-         //
+
+
+
          if (!lstrcmpi(szTemp, szPath) &&
             (!bNoTreeWindow || !HasTreeWindow(hwndT)))
          {

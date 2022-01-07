@@ -1,36 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ SIGTRAP ; 
- scalar_t__ WIFSTOPPED (int) ; 
- scalar_t__ WSTOPSIG (int) ; 
- int /*<<< orphan*/  printf (char*,char const*,char const*) ; 
- int /*<<< orphan*/  wait (int*) ; 
+ scalar_t__ SIGTRAP ;
+ scalar_t__ WIFSTOPPED (int) ;
+ scalar_t__ WSTOPSIG (int) ;
+ int printf (char*,char const*,char const*) ;
+ int wait (int*) ;
 
 __attribute__((used)) static void check_success(const char *msg)
 {
-	const char *msg2;
-	int status;
+ const char *msg2;
+ int status;
 
-	/* Wait for the child to SIGTRAP */
-	wait(&status);
 
-	msg2 = "Failed";
+ wait(&status);
 
-	if (WIFSTOPPED(status) && WSTOPSIG(status) == SIGTRAP) {
-		msg2 = "Child process hit the breakpoint";
-	}
+ msg2 = "Failed";
 
-	printf("%s Result: [%s]\n", msg, msg2);
+ if (WIFSTOPPED(status) && WSTOPSIG(status) == SIGTRAP) {
+  msg2 = "Child process hit the breakpoint";
+ }
+
+ printf("%s Result: [%s]\n", msg, msg2);
 }

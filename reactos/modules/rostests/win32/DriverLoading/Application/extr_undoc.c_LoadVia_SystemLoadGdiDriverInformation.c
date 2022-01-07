@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  DriverName; } ;
-typedef  TYPE_1__ SYSTEM_GDI_DRIVER_INFORMATION ;
-typedef  scalar_t__ NTSTATUS ;
-typedef  int /*<<< orphan*/  LPWSTR ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- scalar_t__ NtSetSystemInformation (int /*<<< orphan*/ ,TYPE_1__*,int) ; 
- int /*<<< orphan*/  NtUnloadDriver (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RtlInitUnicodeString (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int RtlNtStatusToDosError (scalar_t__) ; 
- scalar_t__ STATUS_PRIVILEGE_NOT_HELD ; 
- scalar_t__ STATUS_SUCCESS ; 
- scalar_t__ SetPrivilege (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SystemLoadGdiDriverInformation ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  ZeroMemory (TYPE_1__*,int) ; 
- int /*<<< orphan*/  wprintf (char*,...) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int DriverName; } ;
+typedef TYPE_1__ SYSTEM_GDI_DRIVER_INFORMATION ;
+typedef scalar_t__ NTSTATUS ;
+typedef int LPWSTR ;
+typedef int DWORD ;
+typedef int BOOL ;
+
+
+ int FALSE ;
+ scalar_t__ NtSetSystemInformation (int ,TYPE_1__*,int) ;
+ int NtUnloadDriver (int *) ;
+ int RtlInitUnicodeString (int *,int ) ;
+ int RtlNtStatusToDosError (scalar_t__) ;
+ scalar_t__ STATUS_PRIVILEGE_NOT_HELD ;
+ scalar_t__ STATUS_SUCCESS ;
+ scalar_t__ SetPrivilege (int ) ;
+ int SystemLoadGdiDriverInformation ;
+ int TRUE ;
+ int ZeroMemory (TYPE_1__*,int) ;
+ int wprintf (char*,...) ;
 
 BOOL
 LoadVia_SystemLoadGdiDriverInformation(LPWSTR lpDriverPath)

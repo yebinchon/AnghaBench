@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct scsi_cmnd {char* host_scribble; } ;
-struct TYPE_3__ {int /*<<< orphan*/  count; struct scsi_cmnd* head; struct scsi_cmnd* tail; } ;
-typedef  TYPE_1__ ips_wait_queue_entry_t ;
+struct TYPE_3__ {int count; struct scsi_cmnd* head; struct scsi_cmnd* tail; } ;
+typedef TYPE_1__ ips_wait_queue_entry_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  METHOD_TRACE (char*,int) ; 
+
+ int METHOD_TRACE (char*,int) ;
 
 __attribute__((used)) static void ips_putq_wait_tail(ips_wait_queue_entry_t *queue, struct scsi_cmnd *item)
 {
-	METHOD_TRACE("ips_putq_wait_tail", 1);
+ METHOD_TRACE("ips_putq_wait_tail", 1);
 
-	if (!item)
-		return;
+ if (!item)
+  return;
 
-	item->host_scribble = NULL;
+ item->host_scribble = ((void*)0);
 
-	if (queue->tail)
-		queue->tail->host_scribble = (char *) item;
+ if (queue->tail)
+  queue->tail->host_scribble = (char *) item;
 
-	queue->tail = item;
+ queue->tail = item;
 
-	if (!queue->head)
-		queue->head = item;
+ if (!queue->head)
+  queue->head = item;
 
-	queue->count++;
+ queue->count++;
 }

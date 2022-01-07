@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t UInt32 ;
-struct TYPE_4__ {size_t NumFolders; int /*<<< orphan*/ * Files; int /*<<< orphan*/ * Folders; int /*<<< orphan*/ * PackCRCs; int /*<<< orphan*/ * PackCRCsDefined; int /*<<< orphan*/ * PackSizes; } ;
-typedef  int /*<<< orphan*/  ISzAlloc ;
-typedef  TYPE_1__ CSzAr ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IAlloc_Free (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SzAr_Init (TYPE_1__*) ; 
- int /*<<< orphan*/  SzFolder_Free (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef size_t UInt32 ;
+struct TYPE_4__ {size_t NumFolders; int * Files; int * Folders; int * PackCRCs; int * PackCRCsDefined; int * PackSizes; } ;
+typedef int ISzAlloc ;
+typedef TYPE_1__ CSzAr ;
+
+
+ int IAlloc_Free (int *,int *) ;
+ int SzAr_Init (TYPE_1__*) ;
+ int SzFolder_Free (int *,int *) ;
 
 void SzAr_Free(CSzAr *p, ISzAlloc *alloc)
 {

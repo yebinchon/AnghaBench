@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct evbuffer {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EVBUFFER_EOL_ANY ; 
- char* evbuffer_readln (struct evbuffer*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int EVBUFFER_EOL_ANY ;
+ char* evbuffer_readln (struct evbuffer*,int *,int ) ;
 
 char *
 evbuffer_readline(struct evbuffer *buffer)
 {
-	return evbuffer_readln(buffer, NULL, EVBUFFER_EOL_ANY);
+ return evbuffer_readln(buffer, ((void*)0), EVBUFFER_EOL_ANY);
 }

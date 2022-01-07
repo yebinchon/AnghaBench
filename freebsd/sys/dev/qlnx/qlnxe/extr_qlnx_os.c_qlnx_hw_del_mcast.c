@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_6__ {int /*<<< orphan*/  nmcast; TYPE_1__* mcast; } ;
-typedef  TYPE_2__ qlnx_host_t ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_6__ {int nmcast; TYPE_1__* mcast; } ;
+typedef TYPE_2__ qlnx_host_t ;
 struct TYPE_5__ {scalar_t__* addr; } ;
 
-/* Variables and functions */
- int QLNX_MAX_NUM_MULTICAST_ADDRS ; 
- scalar_t__ QL_MAC_CMP (scalar_t__*,int /*<<< orphan*/ *) ; 
- scalar_t__ qlnx_config_mcast_mac_addr (TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int QLNX_MAX_NUM_MULTICAST_ADDRS ;
+ scalar_t__ QL_MAC_CMP (scalar_t__*,int *) ;
+ scalar_t__ qlnx_config_mcast_mac_addr (TYPE_2__*,int *,int ) ;
 
 __attribute__((used)) static int
 qlnx_hw_del_mcast(qlnx_host_t *ha, uint8_t *mta)
 {
-        int	i;
+        int i;
 
         for (i = 0; i < QLNX_MAX_NUM_MULTICAST_ADDRS; i++) {
                 if (QL_MAC_CMP(ha->mcast[i].addr, mta) == 0) {

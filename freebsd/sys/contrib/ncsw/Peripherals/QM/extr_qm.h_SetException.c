@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
 struct TYPE_4__ {int exceptions; } ;
-typedef  TYPE_1__ t_Qm ;
-typedef  int /*<<< orphan*/  t_Error ;
-typedef  int /*<<< orphan*/  e_QmExceptions ;
+typedef TYPE_1__ t_Qm ;
+typedef int t_Error ;
+typedef int e_QmExceptions ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT_COND (TYPE_1__*) ; 
- int /*<<< orphan*/  E_INVALID_VALUE ; 
- int /*<<< orphan*/  E_OK ; 
- int /*<<< orphan*/  GET_EXCEPTION_FLAG (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MAJOR ; 
- int /*<<< orphan*/  RETURN_ERROR (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
+
+ int ASSERT_COND (TYPE_1__*) ;
+ int E_INVALID_VALUE ;
+ int E_OK ;
+ int GET_EXCEPTION_FLAG (int,int ) ;
+ int MAJOR ;
+ int RETURN_ERROR (int ,int ,char*) ;
 
 __attribute__((used)) static __inline__ t_Error SetException(t_Qm *p_Qm, e_QmExceptions exception, bool enable)
 {
-    uint32_t            bitMask = 0;
+    uint32_t bitMask = 0;
 
     ASSERT_COND(p_Qm);
 

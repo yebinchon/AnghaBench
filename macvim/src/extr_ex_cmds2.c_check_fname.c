@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/ * b_ffname; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EMSG (int /*<<< orphan*/ ) ; 
- int FAIL ; 
- int OK ; 
- int /*<<< orphan*/  _ (int /*<<< orphan*/ ) ; 
- TYPE_1__* curbuf ; 
- int /*<<< orphan*/  e_noname ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int * b_ffname; } ;
+
+
+ int EMSG (int ) ;
+ int FAIL ;
+ int OK ;
+ int _ (int ) ;
+ TYPE_1__* curbuf ;
+ int e_noname ;
 
 int
 check_fname()
 {
-    if (curbuf->b_ffname == NULL)
+    if (curbuf->b_ffname == ((void*)0))
     {
-	EMSG(_(e_noname));
-	return FAIL;
+ EMSG(_(e_noname));
+ return FAIL;
     }
     return OK;
 }

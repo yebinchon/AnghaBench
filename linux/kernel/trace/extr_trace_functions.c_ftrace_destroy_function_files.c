@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct trace_array {int /*<<< orphan*/ * ops; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ftrace_destroy_filter_files (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  kfree (int /*<<< orphan*/ *) ; 
+
+
+
+struct trace_array {int * ops; } ;
+
+
+ int ftrace_destroy_filter_files (int *) ;
+ int kfree (int *) ;
 
 void ftrace_destroy_function_files(struct trace_array *tr)
 {
-	ftrace_destroy_filter_files(tr->ops);
-	kfree(tr->ops);
-	tr->ops = NULL;
+ ftrace_destroy_filter_files(tr->ops);
+ kfree(tr->ops);
+ tr->ops = ((void*)0);
 }

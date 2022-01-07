@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  SRes ;
 
-/* Variables and functions */
- int LZMA2_DIC_SIZE_FROM_PROP (int) ; 
- scalar_t__ LZMA2_LCLP_MAX ; 
- int /*<<< orphan*/  SZ_ERROR_UNSUPPORTED ; 
- int /*<<< orphan*/  SZ_OK ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef int SRes ;
+
+
+ int LZMA2_DIC_SIZE_FROM_PROP (int) ;
+ scalar_t__ LZMA2_LCLP_MAX ;
+ int SZ_ERROR_UNSUPPORTED ;
+ int SZ_OK ;
 
 __attribute__((used)) static SRes Lzma2Dec_GetOldProps(uint8_t prop, uint8_t *props)
 {

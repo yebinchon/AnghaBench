@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- size_t curscript ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free_typebuf () ; 
- int /*<<< orphan*/ * saved_typebuf ; 
- int /*<<< orphan*/ ** scriptin ; 
- int /*<<< orphan*/  typebuf ; 
+ size_t curscript ;
+ int fclose (int *) ;
+ int free_typebuf () ;
+ int * saved_typebuf ;
+ int ** scriptin ;
+ int typebuf ;
 
 __attribute__((used)) static void
 closescript()
@@ -26,7 +18,7 @@ closescript()
     typebuf = saved_typebuf[curscript];
 
     fclose(scriptin[curscript]);
-    scriptin[curscript] = NULL;
+    scriptin[curscript] = ((void*)0);
     if (curscript > 0)
-	--curscript;
+ --curscript;
 }

@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  zdev_t ;
-typedef  int /*<<< orphan*/  zbuf_t ;
-typedef  scalar_t__ u8_t ;
-typedef  int u16_t ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int zdev_t ;
+typedef int zbuf_t ;
+typedef scalar_t__ u8_t ;
+typedef int u16_t ;
 struct TYPE_3__ {scalar_t__ wmeConnected; scalar_t__ wmeParameterSetCount; int ac0PriorityHigherThanAc2; } ;
 struct TYPE_4__ {TYPE_1__ sta; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ZM_LV_0 ; 
- TYPE_2__* wd ; 
- int* zcCwTlb ; 
- int zfFindWifiElement (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  zfHpUpdateQosParameter (int /*<<< orphan*/ *,int*,int*,int*,int*) ; 
- int /*<<< orphan*/  zm_msg0_mm (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  zmw_get_wlan_dev (int /*<<< orphan*/ *) ; 
- void* zmw_rx_buf_readb (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int zmw_rx_buf_readh (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
+
+ int ZM_LV_0 ;
+ TYPE_2__* wd ;
+ int* zcCwTlb ;
+ int zfFindWifiElement (int *,int *,int,int) ;
+ int zfHpUpdateQosParameter (int *,int*,int*,int*,int*) ;
+ int zm_msg0_mm (int ,char*) ;
+ int zmw_get_wlan_dev (int *) ;
+ void* zmw_rx_buf_readb (int *,int *,int) ;
+ int zmw_rx_buf_readh (int *,int *,int) ;
 
 void zfStaUpdateWmeParameter(zdev_t* dev, zbuf_t* buf)
 {
-    u16_t   tmp;
-    u16_t   aifs[5];
-    u16_t   cwmin[5];
-    u16_t   cwmax[5];
-    u16_t   txop[5];
-    u8_t    acm;
-    u8_t    ac;
-    u16_t   len;
-    u16_t   i;
-   	u16_t   offset;
-    u8_t    rxWmeParameterSetCount;
+    u16_t tmp;
+    u16_t aifs[5];
+    u16_t cwmin[5];
+    u16_t cwmax[5];
+    u16_t txop[5];
+    u8_t acm;
+    u8_t ac;
+    u16_t len;
+    u16_t i;
+    u16_t offset;
+    u8_t rxWmeParameterSetCount;
 
     zmw_get_wlan_dev(dev);
 
-    /* Update if WME parameter set count is changed */
-    /* If connect to WME AP */
+
+
     if (wd->sta.wmeConnected != 0)
     {
-        /* Find WME parameter element */
+
         if ((offset = zfFindWifiElement(dev, buf, 2, 1)) != 0xffff)
         {
             if ((len = zmw_rx_buf_readb(dev, buf, offset+1)) >= 7)
@@ -60,7 +60,7 @@ void zfStaUpdateWmeParameter(zdev_t* dev, zbuf_t* buf)
                 {
                     zm_msg0_mm(ZM_LV_0, "wmeParameterSetCount changed!");
                     wd->sta.wmeParameterSetCount = rxWmeParameterSetCount;
-                    /* retrieve WME parameter and update TxQ parameters */
+
                     acm = 0xf;
                     for (i=0; i<4; i++)
                     {
@@ -74,7 +74,7 @@ void zfStaUpdateWmeParameter(zdev_t* dev, zbuf_t* buf)
                             }
                             aifs[ac] = ((tmp & 0xf) * 9) + 10;
                             tmp=zmw_rx_buf_readb(dev, buf, offset+11+i*4);
-                            /* Convert to 2^n */
+
                             cwmin[ac] = zcCwTlb[(tmp & 0xf)];
                             cwmax[ac] = zcCwTlb[(tmp >> 4)];
                             txop[ac]=zmw_rx_buf_readh(dev, buf,
@@ -112,5 +112,5 @@ void zfStaUpdateWmeParameter(zdev_t* dev, zbuf_t* buf)
                 }
             }
         }
-    } //if (wd->sta.wmeConnected != 0)
+    }
 }

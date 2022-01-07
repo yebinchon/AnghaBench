@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  swp_entry_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SWAP_MAP_SHMEM ; 
- int /*<<< orphan*/  __swap_duplicate (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int swp_entry_t ;
+
+
+ int SWAP_MAP_SHMEM ;
+ int __swap_duplicate (int ,int ) ;
 
 void swap_shmem_alloc(swp_entry_t entry)
 {
-	__swap_duplicate(entry, SWAP_MAP_SHMEM);
+ __swap_duplicate(entry, SWAP_MAP_SHMEM);
 }

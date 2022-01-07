@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {TYPE_2__* p_child; int /*<<< orphan*/  attr_dict; int /*<<< orphan*/  psz_node_name; } ;
-typedef  TYPE_1__ tt_node_t ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {TYPE_2__* p_child; int attr_dict; int psz_node_name; } ;
+typedef TYPE_1__ tt_node_t ;
 struct TYPE_6__ {scalar_t__ i_type; struct TYPE_6__* p_next; } ;
-typedef  TYPE_2__ tt_basenode_t ;
+typedef TYPE_2__ tt_basenode_t ;
 
-/* Variables and functions */
- scalar_t__ TT_NODE_TYPE_TEXT ; 
- int /*<<< orphan*/  strcmp (char*,char const*) ; 
- int /*<<< orphan*/  tt_node_NameCompare (int /*<<< orphan*/ ,char const*) ; 
- char* vlc_dictionary_value_for_key (int /*<<< orphan*/ *,char*) ; 
+
+ scalar_t__ TT_NODE_TYPE_TEXT ;
+ int strcmp (char*,char const*) ;
+ int tt_node_NameCompare (int ,char const*) ;
+ char* vlc_dictionary_value_for_key (int *,char*) ;
 
 __attribute__((used)) static tt_node_t * FindNode( tt_node_t *p_node, const char *psz_nodename,
                              size_t i_maxdepth, const char *psz_id )
 {
     if( !tt_node_NameCompare( p_node->psz_node_name, psz_nodename ) )
     {
-        if( psz_id != NULL )
+        if( psz_id != ((void*)0) )
         {
             char *psz = vlc_dictionary_value_for_key( &p_node->attr_dict, "xml:id" );
-            if( !psz ) /* People can't do xml properly */
+            if( !psz )
                 psz = vlc_dictionary_value_for_key( &p_node->attr_dict, "id" );
             if( psz && !strcmp( psz, psz_id ) )
                 return p_node;
@@ -40,7 +40,7 @@ __attribute__((used)) static tt_node_t * FindNode( tt_node_t *p_node, const char
     }
 
     if( i_maxdepth == 0 )
-        return NULL;
+        return ((void*)0);
 
     for( tt_basenode_t *p_child = p_node->p_child;
                         p_child; p_child = p_child->p_next )
@@ -53,5 +53,5 @@ __attribute__((used)) static tt_node_t * FindNode( tt_node_t *p_node, const char
             return p_node;
     }
 
-    return NULL;
+    return ((void*)0);
 }

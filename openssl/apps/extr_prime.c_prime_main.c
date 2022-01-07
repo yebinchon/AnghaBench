@@ -1,82 +1,74 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int OPTION_CHOICE ;
-typedef  int /*<<< orphan*/  BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_printf (int /*<<< orphan*/ ,char*,...) ; 
- char* BN_bn2dec (int /*<<< orphan*/ *) ; 
- char* BN_bn2hex (int /*<<< orphan*/ *) ; 
- scalar_t__ BN_check_prime (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int BN_dec2bn (int /*<<< orphan*/ **,char*) ; 
- int /*<<< orphan*/  BN_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_generate_prime_ex (int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int BN_hex2bn (int /*<<< orphan*/ **,char*) ; 
- int /*<<< orphan*/ * BN_new () ; 
- int /*<<< orphan*/  BN_print (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  OPENSSL_free (char*) ; 
-#define  OPT_BITS 135 
-#define  OPT_CHECKS 134 
-#define  OPT_EOF 133 
-#define  OPT_ERR 132 
-#define  OPT_GENERATE 131 
-#define  OPT_HELP 130 
-#define  OPT_HEX 129 
-#define  OPT_SAFE 128 
- int atoi (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bio_err ; 
- int /*<<< orphan*/  bio_out ; 
- int /*<<< orphan*/  opt_arg () ; 
- int /*<<< orphan*/  opt_help (int /*<<< orphan*/ ) ; 
- char* opt_init (int,char**,int /*<<< orphan*/ ) ; 
- int opt_next () ; 
- int opt_num_rest () ; 
- char** opt_rest () ; 
- int /*<<< orphan*/  prime_options ; 
+
+
+
+typedef int OPTION_CHOICE ;
+typedef int BIGNUM ;
+
+
+ int BIO_printf (int ,char*,...) ;
+ char* BN_bn2dec (int *) ;
+ char* BN_bn2hex (int *) ;
+ scalar_t__ BN_check_prime (int *,int *,int *) ;
+ int BN_dec2bn (int **,char*) ;
+ int BN_free (int *) ;
+ int BN_generate_prime_ex (int *,int,int,int *,int *,int *) ;
+ int BN_hex2bn (int **,char*) ;
+ int * BN_new () ;
+ int BN_print (int ,int *) ;
+ int OPENSSL_free (char*) ;
+ int atoi (int ) ;
+ int bio_err ;
+ int bio_out ;
+ int opt_arg () ;
+ int opt_help (int ) ;
+ char* opt_init (int,char**,int ) ;
+ int opt_next () ;
+ int opt_num_rest () ;
+ char** opt_rest () ;
+ int prime_options ;
 
 int prime_main(int argc, char **argv)
 {
-    BIGNUM *bn = NULL;
+    BIGNUM *bn = ((void*)0);
     int hex = 0, generate = 0, bits = 0, safe = 0, ret = 1;
     char *prog;
     OPTION_CHOICE o;
 
     prog = opt_init(argc, argv, prime_options);
-    while ((o = opt_next()) != OPT_EOF) {
+    while ((o = opt_next()) != 133) {
         switch (o) {
-        case OPT_EOF:
-        case OPT_ERR:
+        case 133:
+        case 132:
 opthelp:
             BIO_printf(bio_err, "%s: Use -help for summary.\n", prog);
             goto end;
-        case OPT_HELP:
+        case 130:
             opt_help(prime_options);
             ret = 0;
             goto end;
-        case OPT_HEX:
+        case 129:
             hex = 1;
             break;
-        case OPT_GENERATE:
+        case 131:
             generate = 1;
             break;
-        case OPT_BITS:
+        case 135:
             bits = atoi(opt_arg());
             break;
-        case OPT_SAFE:
+        case 128:
             safe = 1;
             break;
-        case OPT_CHECKS:
-            /* ignore parameter and argument */
+        case 134:
+
             opt_arg();
             break;
         }
@@ -102,16 +94,16 @@ opthelp:
             goto end;
         }
         bn = BN_new();
-        if (bn == NULL) {
+        if (bn == ((void*)0)) {
             BIO_printf(bio_err, "Out of memory.\n");
             goto end;
         }
-        if (!BN_generate_prime_ex(bn, bits, safe, NULL, NULL, NULL)) {
+        if (!BN_generate_prime_ex(bn, bits, safe, ((void*)0), ((void*)0), ((void*)0))) {
             BIO_printf(bio_err, "Failed to generate prime.\n");
             goto end;
         }
         s = hex ? BN_bn2hex(bn) : BN_bn2dec(bn);
-        if (s == NULL) {
+        if (s == ((void*)0)) {
             BIO_printf(bio_err, "Out of memory.\n");
             goto end;
         }
@@ -134,7 +126,7 @@ opthelp:
             BN_print(bio_out, bn);
             BIO_printf(bio_out, " (%s) %s prime\n",
                        argv[0],
-                       BN_check_prime(bn, NULL, NULL)
+                       BN_check_prime(bn, ((void*)0), ((void*)0))
                            ? "is" : "is not");
         }
     }

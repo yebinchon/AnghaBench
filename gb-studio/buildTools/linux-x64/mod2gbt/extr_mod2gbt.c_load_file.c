@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SEEK_END ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char const*,char*) ; 
- int fread (void*,unsigned int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (void*) ; 
- int /*<<< orphan*/  fseek (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- unsigned int ftell (int /*<<< orphan*/ *) ; 
- void* malloc (unsigned int) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  rewind (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int FILE ;
+
+
+ int SEEK_END ;
+ int fclose (int *) ;
+ int * fopen (char const*,char*) ;
+ int fread (void*,unsigned int,int,int *) ;
+ int free (void*) ;
+ int fseek (int *,int ,int ) ;
+ unsigned int ftell (int *) ;
+ void* malloc (unsigned int) ;
+ int printf (char*,...) ;
+ int rewind (int *) ;
 
 void *load_file(const char *filename)
 {
     unsigned int size;
-    void *buffer = NULL;
+    void *buffer = ((void*)0);
     FILE *datafile = fopen(filename, "rb");
 
-    if (datafile == NULL)
+    if (datafile == ((void*)0))
     {
         printf("ERROR: %s couldn't be opened!\n", filename);
-        return NULL;
+        return ((void*)0);
     }
 
     fseek(datafile, 0, SEEK_END);
@@ -42,16 +42,16 @@ void *load_file(const char *filename)
     {
         printf("ERROR: Size of %s is 0!\n", filename);
         fclose(datafile);
-        return NULL;
+        return ((void*)0);
     }
 
     rewind(datafile);
     buffer = malloc(size);
-    if (buffer == NULL)
+    if (buffer == ((void*)0))
     {
         printf("ERROR: Not enought memory to load %s!\n", filename);
         fclose(datafile);
-        return NULL;
+        return ((void*)0);
     }
 
     if (fread(buffer, size, 1, datafile) != 1)
@@ -59,7 +59,7 @@ void *load_file(const char *filename)
         printf("ERROR: Error while reading.\n");
         fclose(datafile);
         free(buffer);
-        return NULL;
+        return ((void*)0);
     }
 
     fclose(datafile);

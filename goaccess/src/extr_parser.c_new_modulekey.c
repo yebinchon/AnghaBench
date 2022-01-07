@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  uniq_nkey; int /*<<< orphan*/ * uniq_key; int /*<<< orphan*/  root_nkey; int /*<<< orphan*/ * root_key; int /*<<< orphan*/ * root; int /*<<< orphan*/  data_nkey; int /*<<< orphan*/ * data_key; int /*<<< orphan*/ * data; } ;
-typedef  TYPE_1__ GKeyData ;
 
-/* Variables and functions */
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int uniq_nkey; int * uniq_key; int root_nkey; int * root_key; int * root; int data_nkey; int * data_key; int * data; } ;
+typedef TYPE_1__ GKeyData ;
+
+
 
 __attribute__((used)) static void
 new_modulekey (GKeyData * kdata)
 {
   GKeyData key = {
-    .data = NULL,
-    .data_key = NULL,
+    .data = ((void*)0),
+    .data_key = ((void*)0),
     .data_nkey = 0,
-    .root = NULL,
-    .root_key = NULL,
+    .root = ((void*)0),
+    .root_key = ((void*)0),
     .root_nkey = 0,
-    .uniq_key = NULL,
+    .uniq_key = ((void*)0),
     .uniq_nkey = 0,
   };
   *kdata = key;

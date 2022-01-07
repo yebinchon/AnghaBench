@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  T2d; int /*<<< orphan*/  Z; int /*<<< orphan*/  YplusX; int /*<<< orphan*/  YminusX; } ;
-typedef  TYPE_1__ const ge25519_cached ;
 
-/* Variables and functions */
- unsigned char const equal (unsigned char const,int) ; 
- int /*<<< orphan*/  fe25519_copy (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fe25519_neg (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ge25519_cached_0 (TYPE_1__ const*) ; 
- int /*<<< orphan*/  ge25519_cmov_cached (TYPE_1__ const*,TYPE_1__ const*,unsigned char const) ; 
- unsigned char negative (char const) ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int T2d; int Z; int YplusX; int YminusX; } ;
+typedef TYPE_1__ const ge25519_cached ;
+
+
+ unsigned char const equal (unsigned char const,int) ;
+ int fe25519_copy (int ,int ) ;
+ int fe25519_neg (int ,int ) ;
+ int ge25519_cached_0 (TYPE_1__ const*) ;
+ int ge25519_cmov_cached (TYPE_1__ const*,TYPE_1__ const*,unsigned char const) ;
+ unsigned char negative (char const) ;
 
 __attribute__((used)) static void
 ge25519_cmov8_cached(ge25519_cached *t, const ge25519_cached cached[8], const signed char b)
 {
-    ge25519_cached      minust;
+    ge25519_cached minust;
     const unsigned char bnegative = negative(b);
-    const unsigned char babs      = b - (((-bnegative) & b) * ((signed char) 1 << 1));
+    const unsigned char babs = b - (((-bnegative) & b) * ((signed char) 1 << 1));
 
     ge25519_cached_0(t);
     ge25519_cmov_cached(t, &cached[0], equal(babs, 1));

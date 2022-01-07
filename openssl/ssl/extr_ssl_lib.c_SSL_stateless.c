@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_9__ {scalar_t__ cookieok; } ;
-struct TYPE_8__ {int /*<<< orphan*/  flags; } ;
+struct TYPE_8__ {int flags; } ;
 struct TYPE_10__ {scalar_t__ hello_retry_request; TYPE_2__ ext; TYPE_1__ s3; } ;
-typedef  TYPE_3__ SSL ;
+typedef TYPE_3__ SSL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR_clear_error () ; 
- scalar_t__ SSL_HRR_PENDING ; 
- int SSL_accept (TYPE_3__*) ; 
- int /*<<< orphan*/  SSL_clear (TYPE_3__*) ; 
- int /*<<< orphan*/  TLS1_FLAGS_STATELESS ; 
- int /*<<< orphan*/  ossl_statem_in_error (TYPE_3__*) ; 
+
+ int ERR_clear_error () ;
+ scalar_t__ SSL_HRR_PENDING ;
+ int SSL_accept (TYPE_3__*) ;
+ int SSL_clear (TYPE_3__*) ;
+ int TLS1_FLAGS_STATELESS ;
+ int ossl_statem_in_error (TYPE_3__*) ;
 
 int SSL_stateless(SSL *s)
 {
     int ret;
 
-    /* Ensure there is no state left over from a previous invocation */
+
     if (!SSL_clear(s))
         return 0;
 

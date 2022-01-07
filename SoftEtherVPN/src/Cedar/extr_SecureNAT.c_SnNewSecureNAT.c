@@ -1,61 +1,61 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_6__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VH_OPTION ;
-struct TYPE_11__ {int /*<<< orphan*/  Virtual; } ;
-struct TYPE_10__ {int /*<<< orphan*/  Cedar; } ;
-struct TYPE_9__ {TYPE_6__* Nat; int /*<<< orphan*/  lock; TYPE_2__* Hub; int /*<<< orphan*/  Cedar; } ;
-typedef  int /*<<< orphan*/  THREAD ;
-typedef  TYPE_1__ SNAT ;
-typedef  TYPE_2__ HUB ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NewLock () ; 
- int /*<<< orphan*/ * NewThread (int /*<<< orphan*/ ,TYPE_1__*) ; 
- TYPE_6__* NiNewNatEx (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ReleaseThread (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SnSecureNATThread ; 
- int /*<<< orphan*/  VirtualInit (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WaitThreadInit (int /*<<< orphan*/ *) ; 
- TYPE_1__* ZeroMalloc (int) ; 
+
+typedef struct TYPE_11__ TYPE_6__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int VH_OPTION ;
+struct TYPE_11__ {int Virtual; } ;
+struct TYPE_10__ {int Cedar; } ;
+struct TYPE_9__ {TYPE_6__* Nat; int lock; TYPE_2__* Hub; int Cedar; } ;
+typedef int THREAD ;
+typedef TYPE_1__ SNAT ;
+typedef TYPE_2__ HUB ;
+
+
+ int NewLock () ;
+ int * NewThread (int ,TYPE_1__*) ;
+ TYPE_6__* NiNewNatEx (TYPE_1__*,int *) ;
+ int ReleaseThread (int *) ;
+ int SnSecureNATThread ;
+ int VirtualInit (int ) ;
+ int WaitThreadInit (int *) ;
+ TYPE_1__* ZeroMalloc (int) ;
 
 SNAT *SnNewSecureNAT(HUB *h, VH_OPTION *o)
 {
-	SNAT *s;
-	THREAD *t;
-	// Validate arguments
-	if (h == NULL || o == NULL)
-	{
-		return NULL;
-	}
+ SNAT *s;
+ THREAD *t;
 
-	s = ZeroMalloc(sizeof(SNAT));
-	s->Cedar = h->Cedar;
-	s->Hub = h;
-	s->lock = NewLock();
+ if (h == ((void*)0) || o == ((void*)0))
+ {
+  return ((void*)0);
+ }
 
-	// Create a NAT
-	s->Nat = NiNewNatEx(s, o);
+ s = ZeroMalloc(sizeof(SNAT));
+ s->Cedar = h->Cedar;
+ s->Hub = h;
+ s->lock = NewLock();
 
-	// Initialize the virtual machine
-	VirtualInit(s->Nat->Virtual);
 
-	// Create a thread
-	t = NewThread(SnSecureNATThread, s);
-	WaitThreadInit(t);
-	ReleaseThread(t);
+ s->Nat = NiNewNatEx(s, o);
 
-	return s;
+
+ VirtualInit(s->Nat->Virtual);
+
+
+ t = NewThread(SnSecureNATThread, s);
+ WaitThreadInit(t);
+ ReleaseThread(t);
+
+ return s;
 }

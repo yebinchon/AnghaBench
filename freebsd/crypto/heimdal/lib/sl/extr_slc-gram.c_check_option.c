@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct assignment {int /*<<< orphan*/  name; struct assignment* next; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ex (struct assignment*,char*,...) ; 
- scalar_t__ strcmp (int /*<<< orphan*/ ,char*) ; 
+
+
+
+struct assignment {int name; struct assignment* next; } ;
+
+
+ int ex (struct assignment*,char*,...) ;
+ scalar_t__ strcmp (int ,char*) ;
 
 __attribute__((used)) static int
 check_option(struct assignment *as)
@@ -29,57 +29,57 @@ check_option(struct assignment *as)
     int seen_default = 0;
     int ret = 0;
 
-    for(a = as; a != NULL; a = a->next) {
-	if(strcmp(a->name, "long") == 0)
-	    seen_long++;
-	else if(strcmp(a->name, "short") == 0)
-	    seen_short++;
-	else if(strcmp(a->name, "name") == 0)
-	    seen_name++;
-	else if(strcmp(a->name, "type") == 0)
-	    seen_type++;
-	else if(strcmp(a->name, "argument") == 0)
-	    seen_argument++;
-	else if(strcmp(a->name, "help") == 0)
-	    seen_help++;
-	else if(strcmp(a->name, "default") == 0)
-	    seen_default++;
-	else {
-	    ex(a, "unknown name %s", a->name);
-	    ret++;
-	}
+    for(a = as; a != ((void*)0); a = a->next) {
+ if(strcmp(a->name, "long") == 0)
+     seen_long++;
+ else if(strcmp(a->name, "short") == 0)
+     seen_short++;
+ else if(strcmp(a->name, "name") == 0)
+     seen_name++;
+ else if(strcmp(a->name, "type") == 0)
+     seen_type++;
+ else if(strcmp(a->name, "argument") == 0)
+     seen_argument++;
+ else if(strcmp(a->name, "help") == 0)
+     seen_help++;
+ else if(strcmp(a->name, "default") == 0)
+     seen_default++;
+ else {
+     ex(a, "unknown name %s", a->name);
+     ret++;
+ }
     }
     if(seen_long == 0 && seen_short == 0) {
-	ex(as, "neither long nor short option");
-	ret++;
+ ex(as, "neither long nor short option");
+ ret++;
     }
     if (seen_long == 0 && seen_name == 0) {
-	ex(as, "either of long or name option must be used");
-	ret++;
+ ex(as, "either of long or name option must be used");
+ ret++;
     }
     if(seen_long > 1) {
-	ex(as, "multiple long options");
-	ret++;
+ ex(as, "multiple long options");
+ ret++;
     }
     if(seen_short > 1) {
-	ex(as, "multiple short options");
-	ret++;
+ ex(as, "multiple short options");
+ ret++;
     }
     if(seen_type > 1) {
-	ex(as, "multiple types");
-	ret++;
+ ex(as, "multiple types");
+ ret++;
     }
     if(seen_argument > 1) {
-	ex(as, "multiple arguments");
-	ret++;
+ ex(as, "multiple arguments");
+ ret++;
     }
     if(seen_help > 1) {
-	ex(as, "multiple help strings");
-	ret++;
+ ex(as, "multiple help strings");
+ ret++;
     }
     if(seen_default > 1) {
-	ex(as, "multiple default values");
-	ret++;
+ ex(as, "multiple default values");
+ ret++;
     }
     return ret;
 }

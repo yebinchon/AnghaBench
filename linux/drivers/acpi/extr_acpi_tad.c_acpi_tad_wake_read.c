@@ -1,64 +1,64 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {scalar_t__ value; } ;
-union acpi_object {TYPE_1__ integer; int /*<<< orphan*/  type; } ;
-typedef  scalar_t__ u32 ;
+union acpi_object {TYPE_1__ integer; int type; } ;
+typedef scalar_t__ u32 ;
 struct device {int dummy; } ;
-struct acpi_object_list {int /*<<< orphan*/  count; union acpi_object* pointer; } ;
-typedef  int /*<<< orphan*/  ssize_t ;
-typedef  int /*<<< orphan*/  acpi_status ;
-typedef  int /*<<< orphan*/  acpi_handle ;
+struct acpi_object_list {int count; union acpi_object* pointer; } ;
+typedef int ssize_t ;
+typedef int acpi_status ;
+typedef int acpi_handle ;
 
-/* Variables and functions */
- scalar_t__ ACPI_FAILURE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ACPI_HANDLE (struct device*) ; 
- scalar_t__ ACPI_TAD_WAKE_DISABLED ; 
- int /*<<< orphan*/  ACPI_TYPE_INTEGER ; 
- int /*<<< orphan*/  ARRAY_SIZE (union acpi_object*) ; 
- int /*<<< orphan*/  EIO ; 
- int /*<<< orphan*/  acpi_evaluate_integer (int /*<<< orphan*/ ,char*,struct acpi_object_list*,unsigned long long*) ; 
- int /*<<< orphan*/  pm_runtime_get_sync (struct device*) ; 
- int /*<<< orphan*/  pm_runtime_put_sync (struct device*) ; 
- int /*<<< orphan*/  sprintf (char*,char*,scalar_t__) ; 
+
+ scalar_t__ ACPI_FAILURE (int ) ;
+ int ACPI_HANDLE (struct device*) ;
+ scalar_t__ ACPI_TAD_WAKE_DISABLED ;
+ int ACPI_TYPE_INTEGER ;
+ int ARRAY_SIZE (union acpi_object*) ;
+ int EIO ;
+ int acpi_evaluate_integer (int ,char*,struct acpi_object_list*,unsigned long long*) ;
+ int pm_runtime_get_sync (struct device*) ;
+ int pm_runtime_put_sync (struct device*) ;
+ int sprintf (char*,char*,scalar_t__) ;
 
 __attribute__((used)) static ssize_t acpi_tad_wake_read(struct device *dev, char *buf, char *method,
-				  u32 timer_id, const char *specval)
+      u32 timer_id, const char *specval)
 {
-	acpi_handle handle = ACPI_HANDLE(dev);
-	union acpi_object args[] = {
-		{ .type = ACPI_TYPE_INTEGER, },
-	};
-	struct acpi_object_list arg_list = {
-		.pointer = args,
-		.count = ARRAY_SIZE(args),
-	};
-	unsigned long long retval;
-	acpi_status status;
+ acpi_handle handle = ACPI_HANDLE(dev);
+ union acpi_object args[] = {
+  { .type = ACPI_TYPE_INTEGER, },
+ };
+ struct acpi_object_list arg_list = {
+  .pointer = args,
+  .count = ARRAY_SIZE(args),
+ };
+ unsigned long long retval;
+ acpi_status status;
 
-	args[0].integer.value = timer_id;
+ args[0].integer.value = timer_id;
 
-	pm_runtime_get_sync(dev);
+ pm_runtime_get_sync(dev);
 
-	status = acpi_evaluate_integer(handle, method, &arg_list, &retval);
+ status = acpi_evaluate_integer(handle, method, &arg_list, &retval);
 
-	pm_runtime_put_sync(dev);
+ pm_runtime_put_sync(dev);
 
-	if (ACPI_FAILURE(status))
-		return -EIO;
+ if (ACPI_FAILURE(status))
+  return -EIO;
 
-	if ((u32)retval == ACPI_TAD_WAKE_DISABLED)
-		return sprintf(buf, "%s\n", specval);
+ if ((u32)retval == ACPI_TAD_WAKE_DISABLED)
+  return sprintf(buf, "%s\n", specval);
 
-	return sprintf(buf, "%u\n", (u32)retval);
+ return sprintf(buf, "%u\n", (u32)retval);
 }

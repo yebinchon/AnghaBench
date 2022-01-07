@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct unpack_trees_options {int /*<<< orphan*/  result; } ;
+
+
+
+
+struct unpack_trees_options {int result; } ;
 struct cache_entry {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  do_add_entry (struct unpack_trees_options*,int /*<<< orphan*/ ,unsigned int,unsigned int) ; 
- int /*<<< orphan*/  dup_cache_entry (struct cache_entry const*,int /*<<< orphan*/ *) ; 
+
+ int do_add_entry (struct unpack_trees_options*,int ,unsigned int,unsigned int) ;
+ int dup_cache_entry (struct cache_entry const*,int *) ;
 
 __attribute__((used)) static void add_entry(struct unpack_trees_options *o,
-		      const struct cache_entry *ce,
-		      unsigned int set, unsigned int clear)
+        const struct cache_entry *ce,
+        unsigned int set, unsigned int clear)
 {
-	do_add_entry(o, dup_cache_entry(ce, &o->result), set, clear);
+ do_add_entry(o, dup_cache_entry(ce, &o->result), set, clear);
 }

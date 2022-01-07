@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint64_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ isalpha (char const) ; 
- scalar_t__ isdigit (char const) ; 
- scalar_t__ ispunct (char const) ; 
- scalar_t__ isspace (char const) ; 
- int /*<<< orphan*/  stderr ; 
- int tolower (char const) ; 
+
+
+
+typedef int uint64_t ;
+
+
+ int exit (int) ;
+ int fprintf (int ,char*) ;
+ scalar_t__ isalpha (char const) ;
+ scalar_t__ isdigit (char const) ;
+ scalar_t__ ispunct (char const) ;
+ scalar_t__ isspace (char const) ;
+ int stderr ;
+ int tolower (char const) ;
 
 __attribute__((used)) static uint64_t
 parseSize(const char *value)
@@ -41,23 +41,23 @@ parseSize(const char *value)
         return num;
 
     switch (tolower(value[0])) {
-    case 'k': /* kilobyte */
+    case 'k':
         num *= 1024ULL;
         break;
-    case 'm': /* megabyte */
+    case 'm':
         num *= 1024ULL * 1024ULL;
         break;
-    case 'g': /* gigabyte */
+    case 'g':
         num *= 1024ULL * 1024ULL * 1024ULL;
         break;
-    case 't': /* terabyte, 'cause we roll that way */
-        num *=  1024ULL * 1024ULL * 1024ULL * 1024ULL;
+    case 't':
+        num *= 1024ULL * 1024ULL * 1024ULL * 1024ULL;
         break;
-    case 'p': /* petabyte, 'cause we are awesome */
-        num *=  1024ULL * 1024ULL * 1024ULL * 1024ULL * 1024ULL;
+    case 'p':
+        num *= 1024ULL * 1024ULL * 1024ULL * 1024ULL * 1024ULL;
         break;
-    case 'e': /* exabyte, now that's just silly */
-        num *=  1024ULL * 1024ULL * 1024ULL * 1024ULL * 1024ULL * 1024ULL;
+    case 'e':
+        num *= 1024ULL * 1024ULL * 1024ULL * 1024ULL * 1024ULL * 1024ULL;
         break;
     default:
         fprintf(stderr, "--rotate-size: unknown character\n");

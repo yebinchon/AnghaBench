@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct perf_event_context {int /*<<< orphan*/  lock; } ;
-struct perf_event {int /*<<< orphan*/  child_mutex; int /*<<< orphan*/  child_list; struct perf_event* parent; } ;
 
-/* Variables and functions */
- scalar_t__ WARN_ON_ONCE (int) ; 
- int /*<<< orphan*/  free_event (struct perf_event*) ; 
- int /*<<< orphan*/  list_del_event (struct perf_event*,struct perf_event_context*) ; 
- int /*<<< orphan*/  list_del_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  perf_group_detach (struct perf_event*) ; 
- int /*<<< orphan*/  put_event (struct perf_event*) ; 
- int /*<<< orphan*/  raw_spin_lock_irq (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  raw_spin_unlock_irq (int /*<<< orphan*/ *) ; 
+
+
+
+struct perf_event_context {int lock; } ;
+struct perf_event {int child_mutex; int child_list; struct perf_event* parent; } ;
+
+
+ scalar_t__ WARN_ON_ONCE (int) ;
+ int free_event (struct perf_event*) ;
+ int list_del_event (struct perf_event*,struct perf_event_context*) ;
+ int list_del_init (int *) ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
+ int perf_group_detach (struct perf_event*) ;
+ int put_event (struct perf_event*) ;
+ int raw_spin_lock_irq (int *) ;
+ int raw_spin_unlock_irq (int *) ;
 
 __attribute__((used)) static void perf_free_event(struct perf_event *event,
-			    struct perf_event_context *ctx)
+       struct perf_event_context *ctx)
 {
-	struct perf_event *parent = event->parent;
+ struct perf_event *parent = event->parent;
 
-	if (WARN_ON_ONCE(!parent))
-		return;
+ if (WARN_ON_ONCE(!parent))
+  return;
 
-	mutex_lock(&parent->child_mutex);
-	list_del_init(&event->child_list);
-	mutex_unlock(&parent->child_mutex);
+ mutex_lock(&parent->child_mutex);
+ list_del_init(&event->child_list);
+ mutex_unlock(&parent->child_mutex);
 
-	put_event(parent);
+ put_event(parent);
 
-	raw_spin_lock_irq(&ctx->lock);
-	perf_group_detach(event);
-	list_del_event(event, ctx);
-	raw_spin_unlock_irq(&ctx->lock);
-	free_event(event);
+ raw_spin_lock_irq(&ctx->lock);
+ perf_group_detach(event);
+ list_del_event(event, ctx);
+ raw_spin_unlock_irq(&ctx->lock);
+ free_event(event);
 }

@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_5__ ;
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_13__ {int /*<<< orphan*/  curr_config_route_index; int /*<<< orphan*/  current_activity_phy_index; } ;
+
+
+typedef struct TYPE_14__ TYPE_5__ ;
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+struct TYPE_13__ {int curr_config_route_index; int current_activity_phy_index; } ;
 struct TYPE_11__ {TYPE_4__ smp_device; } ;
 struct TYPE_14__ {TYPE_1__* domain; TYPE_2__ protocol_device; } ;
 struct TYPE_12__ {scalar_t__ low; scalar_t__ high; } ;
-struct TYPE_10__ {int /*<<< orphan*/  controller; } ;
-typedef  TYPE_3__ SCI_SAS_ADDRESS_T ;
-typedef  TYPE_4__ SCIF_SAS_SMP_REMOTE_DEVICE_T ;
-typedef  TYPE_5__ SCIF_SAS_REMOTE_DEVICE_T ;
+struct TYPE_10__ {int controller; } ;
+typedef TYPE_3__ SCI_SAS_ADDRESS_T ;
+typedef TYPE_4__ SCIF_SAS_SMP_REMOTE_DEVICE_T ;
+typedef TYPE_5__ SCIF_SAS_REMOTE_DEVICE_T ;
 
-/* Variables and functions */
- int SCIF_LOG_OBJECT_DOMAIN_DISCOVERY ; 
- int SCIF_LOG_OBJECT_REMOTE_DEVICE ; 
- int /*<<< orphan*/  SCIF_LOG_TRACE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  sci_base_object_get_logger (TYPE_5__*) ; 
- int /*<<< orphan*/  scif_cb_start_internal_io_task_schedule (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  scif_sas_controller_start_high_priority_io ; 
- int /*<<< orphan*/  scif_sas_smp_request_construct_config_route_info (int /*<<< orphan*/ ,TYPE_5__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_3__,int /*<<< orphan*/ ) ; 
+
+ int SCIF_LOG_OBJECT_DOMAIN_DISCOVERY ;
+ int SCIF_LOG_OBJECT_REMOTE_DEVICE ;
+ int SCIF_LOG_TRACE (int ) ;
+ int TRUE ;
+ int sci_base_object_get_logger (TYPE_5__*) ;
+ int scif_cb_start_internal_io_task_schedule (int ,int ,int ) ;
+ int scif_sas_controller_start_high_priority_io ;
+ int scif_sas_smp_request_construct_config_route_info (int ,TYPE_5__*,int ,int ,TYPE_3__,int ) ;
 
 void scif_sas_smp_remote_device_clean_route_table_entry(
    SCIF_SAS_REMOTE_DEVICE_T * fw_device
@@ -61,7 +61,7 @@ void scif_sas_smp_remote_device_clean_route_table_entry(
       TRUE
    );
 
-   //schedule the DPC.
+
    scif_cb_start_internal_io_task_schedule(
       fw_device->domain->controller,
       scif_sas_controller_start_high_priority_io,

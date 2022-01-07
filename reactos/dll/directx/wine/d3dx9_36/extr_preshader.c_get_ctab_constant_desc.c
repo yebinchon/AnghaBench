@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ctab_constant {int /*<<< orphan*/  constantinfo_reserved; int /*<<< orphan*/  desc; } ;
-typedef  int /*<<< orphan*/  WORD ;
-typedef  int /*<<< orphan*/  ID3DXConstantTable ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  D3DXHANDLE ;
-typedef  int /*<<< orphan*/  D3DXCONSTANT_DESC ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D3DERR_INVALIDCALL ; 
- int /*<<< orphan*/  D3D_OK ; 
- int /*<<< orphan*/  FIXME (char*) ; 
- struct ctab_constant* d3dx_shader_get_ctab_constant (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+struct ctab_constant {int constantinfo_reserved; int desc; } ;
+typedef int WORD ;
+typedef int ID3DXConstantTable ;
+typedef int HRESULT ;
+typedef int D3DXHANDLE ;
+typedef int D3DXCONSTANT_DESC ;
+
+
+ int D3DERR_INVALIDCALL ;
+ int D3D_OK ;
+ int FIXME (char*) ;
+ struct ctab_constant* d3dx_shader_get_ctab_constant (int *,int ) ;
 
 __attribute__((used)) static HRESULT get_ctab_constant_desc(ID3DXConstantTable *ctab, D3DXHANDLE hc, D3DXCONSTANT_DESC *desc,
         WORD *constantinfo_reserved)

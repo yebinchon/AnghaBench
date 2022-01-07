@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct chp_id {int dummy; } ;
 struct chp_link {struct chp_id chpid; } ;
 struct channel_path {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * __s390_vary_chpid_on ; 
- int /*<<< orphan*/  chp_update_desc (struct channel_path*) ; 
- struct channel_path* chpid_to_chp (struct chp_id) ; 
- int /*<<< orphan*/  css_wait_for_slow_path () ; 
- int /*<<< orphan*/  for_each_subchannel_staged (int /*<<< orphan*/ ,int /*<<< orphan*/ *,struct chp_link*) ; 
- int /*<<< orphan*/  memset (struct chp_link*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  s390_subchannel_vary_chpid_off ; 
- int /*<<< orphan*/  s390_subchannel_vary_chpid_on ; 
+
+ int * __s390_vary_chpid_on ;
+ int chp_update_desc (struct channel_path*) ;
+ struct channel_path* chpid_to_chp (struct chp_id) ;
+ int css_wait_for_slow_path () ;
+ int for_each_subchannel_staged (int ,int *,struct chp_link*) ;
+ int memset (struct chp_link*,int ,int) ;
+ int s390_subchannel_vary_chpid_off ;
+ int s390_subchannel_vary_chpid_on ;
 
 int chsc_chp_vary(struct chp_id chpid, int on)
 {
-	struct channel_path *chp = chpid_to_chp(chpid);
-	struct chp_link link;
+ struct channel_path *chp = chpid_to_chp(chpid);
+ struct chp_link link;
 
-	memset(&link, 0, sizeof(struct chp_link));
-	link.chpid = chpid;
-	/* Wait until previous actions have settled. */
-	css_wait_for_slow_path();
-	/*
-	 * Redo PathVerification on the devices the chpid connects to
-	 */
-	if (on) {
-		/* Try to update the channel path description. */
-		chp_update_desc(chp);
-		for_each_subchannel_staged(s390_subchannel_vary_chpid_on,
-					   __s390_vary_chpid_on, &link);
-	} else
-		for_each_subchannel_staged(s390_subchannel_vary_chpid_off,
-					   NULL, &link);
+ memset(&link, 0, sizeof(struct chp_link));
+ link.chpid = chpid;
 
-	return 0;
+ css_wait_for_slow_path();
+
+
+
+ if (on) {
+
+  chp_update_desc(chp);
+  for_each_subchannel_staged(s390_subchannel_vary_chpid_on,
+        __s390_vary_chpid_on, &link);
+ } else
+  for_each_subchannel_staged(s390_subchannel_vary_chpid_off,
+        ((void*)0), &link);
+
+ return 0;
 }

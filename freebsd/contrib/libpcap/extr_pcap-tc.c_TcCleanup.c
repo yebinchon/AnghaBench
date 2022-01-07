@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct pcap_tc {int /*<<< orphan*/ * PpiPacket; int /*<<< orphan*/ * TcInstance; int /*<<< orphan*/ * TcPacketsBuffer; } ;
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct pcap_tc {int * PpiPacket; int * TcInstance; int * TcPacketsBuffer; } ;
 struct TYPE_5__ {struct pcap_tc* priv; } ;
-typedef  TYPE_1__ pcap_t ;
-struct TYPE_6__ {int /*<<< orphan*/  (* InstanceClose ) (int /*<<< orphan*/ *) ;int /*<<< orphan*/  (* PacketsBufferDestroy ) (int /*<<< orphan*/ *) ;} ;
+typedef TYPE_1__ pcap_t ;
+struct TYPE_6__ {int (* InstanceClose ) (int *) ;int (* PacketsBufferDestroy ) (int *) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
- TYPE_3__ g_TcFunctions ; 
- int /*<<< orphan*/  pcap_cleanup_live_common (TYPE_1__*) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ *) ; 
+
+ int free (int *) ;
+ TYPE_3__ g_TcFunctions ;
+ int pcap_cleanup_live_common (TYPE_1__*) ;
+ int stub1 (int *) ;
+ int stub2 (int *) ;
 
 __attribute__((used)) static void TcCleanup(pcap_t *p)
 {
-	struct pcap_tc *pt = p->priv;
+ struct pcap_tc *pt = p->priv;
 
-	if (pt->TcPacketsBuffer != NULL)
-	{
-		g_TcFunctions.PacketsBufferDestroy(pt->TcPacketsBuffer);
-		pt->TcPacketsBuffer = NULL;
-	}
-	if (pt->TcInstance != NULL)
-	{
-		/*
-		 * here we do not check for the error values
-		 */
-		g_TcFunctions.InstanceClose(pt->TcInstance);
-		pt->TcInstance = NULL;
-	}
+ if (pt->TcPacketsBuffer != ((void*)0))
+ {
+  g_TcFunctions.PacketsBufferDestroy(pt->TcPacketsBuffer);
+  pt->TcPacketsBuffer = ((void*)0);
+ }
+ if (pt->TcInstance != ((void*)0))
+ {
 
-	if (pt->PpiPacket != NULL)
-	{
-		free(pt->PpiPacket);
-		pt->PpiPacket = NULL;
-	}
 
-	pcap_cleanup_live_common(p);
+
+  g_TcFunctions.InstanceClose(pt->TcInstance);
+  pt->TcInstance = ((void*)0);
+ }
+
+ if (pt->PpiPacket != ((void*)0))
+ {
+  free(pt->PpiPacket);
+  pt->PpiPacket = ((void*)0);
+ }
+
+ pcap_cleanup_live_common(p);
 }

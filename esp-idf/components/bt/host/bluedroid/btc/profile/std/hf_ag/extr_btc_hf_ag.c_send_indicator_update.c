@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {void* value; void* type; } ;
 struct TYPE_6__ {TYPE_1__ ind; } ;
-typedef  TYPE_2__ tBTA_AG_RES_DATA ;
-typedef  void* UINT16 ;
+typedef TYPE_2__ tBTA_AG_RES_DATA ;
+typedef void* UINT16 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BTA_AG_HANDLE_ALL ; 
- int /*<<< orphan*/  BTA_AG_IND_RES ; 
- int /*<<< orphan*/  BTA_AgResult (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  memset (TYPE_2__*,int /*<<< orphan*/ ,int) ; 
+
+ int BTA_AG_HANDLE_ALL ;
+ int BTA_AG_IND_RES ;
+ int BTA_AgResult (int ,int ,TYPE_2__*) ;
+ int memset (TYPE_2__*,int ,int) ;
 
 __attribute__((used)) static void send_indicator_update(UINT16 indicator, UINT16 value)
 {

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct ifnet {scalar_t__ if_softc; } ;
-struct TYPE_2__ {int /*<<< orphan*/ * mdio_write; int /*<<< orphan*/ * mdio_read; int /*<<< orphan*/ * phy_device; int /*<<< orphan*/  port; int /*<<< orphan*/  phy_id; } ;
-typedef  TYPE_1__ cvm_oct_private_t ;
+struct TYPE_2__ {int * mdio_write; int * mdio_read; int * phy_device; int port; int phy_id; } ;
+typedef TYPE_1__ cvm_oct_private_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cvmx_helper_board_get_mii_address (int /*<<< orphan*/ ) ; 
+
+ int cvmx_helper_board_get_mii_address (int ) ;
 
 int cvm_oct_mdio_setup_device(struct ifnet *ifp)
 {
-	cvm_oct_private_t *priv = (cvm_oct_private_t *)ifp->if_softc;
+ cvm_oct_private_t *priv = (cvm_oct_private_t *)ifp->if_softc;
 
-	priv->phy_id = cvmx_helper_board_get_mii_address(priv->port);
-	priv->phy_device = NULL;
-	priv->mdio_read = NULL;
-	priv->mdio_write = NULL;
+ priv->phy_id = cvmx_helper_board_get_mii_address(priv->port);
+ priv->phy_device = ((void*)0);
+ priv->mdio_read = ((void*)0);
+ priv->mdio_write = ((void*)0);
 
-	return 0;
+ return 0;
 }

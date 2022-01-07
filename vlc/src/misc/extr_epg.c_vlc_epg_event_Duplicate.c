@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_5__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int i_description_items; int /*<<< orphan*/  i_rating; TYPE_5__* description_items; void* psz_short_description; void* psz_name; void* psz_description; int /*<<< orphan*/  i_duration; int /*<<< orphan*/  i_start; int /*<<< orphan*/  i_id; } ;
-typedef  TYPE_1__ vlc_epg_event_t ;
+
+
+typedef struct TYPE_8__ TYPE_5__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int i_description_items; int i_rating; TYPE_5__* description_items; void* psz_short_description; void* psz_name; void* psz_description; int i_duration; int i_start; int i_id; } ;
+typedef TYPE_1__ vlc_epg_event_t ;
 struct TYPE_8__ {void* psz_value; void* psz_key; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (void*) ; 
- scalar_t__ likely (TYPE_1__*) ; 
- TYPE_5__* malloc (int) ; 
- void* strdup (void*) ; 
- TYPE_1__* vlc_epg_event_New (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int free (void*) ;
+ scalar_t__ likely (TYPE_1__*) ;
+ TYPE_5__* malloc (int) ;
+ void* strdup (void*) ;
+ TYPE_1__* vlc_epg_event_New (int ,int ,int ) ;
 
 vlc_epg_event_t * vlc_epg_event_Duplicate( const vlc_epg_event_t *p_src )
 {

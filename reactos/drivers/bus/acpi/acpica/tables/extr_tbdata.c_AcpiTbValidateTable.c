@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  Pointer; int /*<<< orphan*/  Flags; int /*<<< orphan*/  Length; } ;
-typedef  TYPE_1__ ACPI_TABLE_DESC ;
-typedef  int /*<<< orphan*/  ACPI_STATUS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACPI_FUNCTION_TRACE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AE_NO_MEMORY ; 
- int /*<<< orphan*/  AE_OK ; 
- int /*<<< orphan*/  AcpiTbAcquireTable (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TbValidateTable ; 
- int /*<<< orphan*/  return_ACPI_STATUS (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int Pointer; int Flags; int Length; } ;
+typedef TYPE_1__ ACPI_TABLE_DESC ;
+typedef int ACPI_STATUS ;
+
+
+ int ACPI_FUNCTION_TRACE (int ) ;
+ int AE_NO_MEMORY ;
+ int AE_OK ;
+ int AcpiTbAcquireTable (TYPE_1__*,int *,int *,int *) ;
+ int TbValidateTable ;
+ int return_ACPI_STATUS (int ) ;
 
 ACPI_STATUS
 AcpiTbValidateTable (
-    ACPI_TABLE_DESC         *TableDesc)
+    ACPI_TABLE_DESC *TableDesc)
 {
-    ACPI_STATUS             Status = AE_OK;
+    ACPI_STATUS Status = AE_OK;
 
 
     ACPI_FUNCTION_TRACE (TbValidateTable);
 
 
-    /* Validate the table if necessary */
+
 
     if (!TableDesc->Pointer)
     {

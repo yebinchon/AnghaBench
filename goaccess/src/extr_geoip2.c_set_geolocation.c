@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  MMDB_lookup_result_s ;
 
-/* Variables and functions */
- scalar_t__ geoip_city_type ; 
- int /*<<< orphan*/  geoip_lookup (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  geoip_query_city (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  geoip_query_continent (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  geoip_query_country (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  is_geoip_resource () ; 
+
+
+
+typedef int MMDB_lookup_result_s ;
+
+
+ scalar_t__ geoip_city_type ;
+ int geoip_lookup (int *,char*) ;
+ int geoip_query_city (int ,char*) ;
+ int geoip_query_continent (int ,char*) ;
+ int geoip_query_country (int ,char*) ;
+ int is_geoip_resource () ;
 
 int
 set_geolocation (char *host, char *continent, char *country, char *city)

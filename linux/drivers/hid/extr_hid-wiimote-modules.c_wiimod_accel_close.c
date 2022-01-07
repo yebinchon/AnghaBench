@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  lock; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int lock; } ;
 struct wiimote_data {TYPE_1__ state; } ;
 struct input_dev {int dummy; } ;
 
-/* Variables and functions */
- struct wiimote_data* input_get_drvdata (struct input_dev*) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  wiiproto_req_accel (struct wiimote_data*,int) ; 
+
+ struct wiimote_data* input_get_drvdata (struct input_dev*) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
+ int wiiproto_req_accel (struct wiimote_data*,int) ;
 
 __attribute__((used)) static void wiimod_accel_close(struct input_dev *dev)
 {
-	struct wiimote_data *wdata = input_get_drvdata(dev);
-	unsigned long flags;
+ struct wiimote_data *wdata = input_get_drvdata(dev);
+ unsigned long flags;
 
-	spin_lock_irqsave(&wdata->state.lock, flags);
-	wiiproto_req_accel(wdata, false);
-	spin_unlock_irqrestore(&wdata->state.lock, flags);
+ spin_lock_irqsave(&wdata->state.lock, flags);
+ wiiproto_req_accel(wdata, 0);
+ spin_unlock_irqrestore(&wdata->state.lock, flags);
 }

@@ -1,63 +1,63 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_5__ ;
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_char ;
-typedef  int /*<<< orphan*/  ngx_int_t ;
-typedef  int /*<<< orphan*/  ngx_http_request_t ;
+
+
+typedef struct TYPE_13__ TYPE_5__ ;
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int u_char ;
+typedef int ngx_int_t ;
+typedef int ngx_http_request_t ;
 struct TYPE_9__ {scalar_t__ pos; scalar_t__ last; scalar_t__ start; } ;
 struct TYPE_10__ {TYPE_1__ buffer; TYPE_4__* buf_in; TYPE_4__* bufs_in; } ;
-typedef  TYPE_2__ ngx_http_lua_socket_tcp_upstream_t ;
+typedef TYPE_2__ ngx_http_lua_socket_tcp_upstream_t ;
 struct TYPE_11__ {TYPE_4__* free_recv_bufs; } ;
-typedef  TYPE_3__ ngx_http_lua_ctx_t ;
+typedef TYPE_3__ ngx_http_lua_ctx_t ;
 struct TYPE_12__ {TYPE_5__* buf; struct TYPE_12__* next; } ;
-typedef  TYPE_4__ ngx_chain_t ;
+typedef TYPE_4__ ngx_chain_t ;
 struct TYPE_13__ {size_t last; size_t pos; } ;
-typedef  TYPE_5__ ngx_buf_t ;
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  int /*<<< orphan*/  luaL_Buffer ;
+typedef TYPE_5__ ngx_buf_t ;
+typedef int lua_State ;
+typedef int luaL_Buffer ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NGX_OK ; 
- int /*<<< orphan*/  dd (char*,...) ; 
- int /*<<< orphan*/  luaL_addlstring (int /*<<< orphan*/ *,char*,size_t) ; 
- int /*<<< orphan*/  luaL_buffinit (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  luaL_pushresult (int /*<<< orphan*/ *) ; 
- scalar_t__ lua_tostring (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  ngx_http_lua_probe_socket_tcp_receive_done (int /*<<< orphan*/ *,TYPE_2__*,int /*<<< orphan*/ *,size_t) ; 
+
+ int NGX_OK ;
+ int dd (char*,...) ;
+ int luaL_addlstring (int *,char*,size_t) ;
+ int luaL_buffinit (int *,int *) ;
+ int luaL_pushresult (int *) ;
+ scalar_t__ lua_tostring (int *,int) ;
+ int ngx_http_lua_probe_socket_tcp_receive_done (int *,TYPE_2__*,int *,size_t) ;
 
 __attribute__((used)) static ngx_int_t
 ngx_http_lua_socket_push_input_data(ngx_http_request_t *r,
     ngx_http_lua_ctx_t *ctx, ngx_http_lua_socket_tcp_upstream_t *u,
     lua_State *L)
 {
-    ngx_chain_t             *cl;
-    ngx_chain_t            **ll;
-#if (DDEBUG) || (NGX_DTRACE)
-    size_t                   size = 0;
-#endif
-    size_t                   chunk_size;
-    ngx_buf_t               *b;
-    size_t                   nbufs;
-    luaL_Buffer              luabuf;
+    ngx_chain_t *cl;
+    ngx_chain_t **ll;
+
+
+
+    size_t chunk_size;
+    ngx_buf_t *b;
+    size_t nbufs;
+    luaL_Buffer luabuf;
 
     dd("bufs_in: %p, buf_in: %p", u->bufs_in, u->buf_in);
 
     nbufs = 0;
-    ll = NULL;
+    ll = ((void*)0);
 
     luaL_buffinit(L, &luabuf);
 
@@ -74,25 +74,14 @@ ngx_http_lua_socket_push_input_data(ngx_http_request_t *r,
             ll = &cl->next;
         }
 
-#if (DDEBUG) || (NGX_DTRACE)
-        size += chunk_size;
-#endif
+
+
+
 
         nbufs++;
     }
 
     luaL_pushresult(&luabuf);
-
-#if (DDEBUG)
-    dd("size: %d, nbufs: %d", (int) size, (int) nbufs);
-#endif
-
-#if (NGX_DTRACE)
-    ngx_http_lua_probe_socket_tcp_receive_done(r, u,
-                                               (u_char *) lua_tostring(L, -1),
-                                               size);
-#endif
-
     if (nbufs > 1 && ll) {
         dd("recycle buffers: %d", (int) (nbufs - 1));
 

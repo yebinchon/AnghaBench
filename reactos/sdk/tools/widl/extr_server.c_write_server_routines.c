@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  statement_list_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  indent ; 
- scalar_t__ need_inline_stubs_file (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  need_stub ; 
- int /*<<< orphan*/  print_server (char*) ; 
- int /*<<< orphan*/  server ; 
- int /*<<< orphan*/  server_token ; 
- int /*<<< orphan*/  write_exceptions (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  write_expr_eval_routine_list (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int write_expr_eval_routines (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  write_formatstringsdecl (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  write_procformatstring (int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  write_rundown_routines () ; 
- int /*<<< orphan*/  write_server_stmts (int /*<<< orphan*/  const*,int,unsigned int*) ; 
- int /*<<< orphan*/  write_typeformatstring (int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  write_user_quad_list (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int statement_list_t ;
+
+
+ int indent ;
+ scalar_t__ need_inline_stubs_file (int const*) ;
+ int need_stub ;
+ int print_server (char*) ;
+ int server ;
+ int server_token ;
+ int write_exceptions (int ) ;
+ int write_expr_eval_routine_list (int ,int ) ;
+ int write_expr_eval_routines (int ,int ) ;
+ int write_formatstringsdecl (int ,int ,int const*,int ) ;
+ int write_procformatstring (int ,int const*,int ) ;
+ int write_rundown_routines () ;
+ int write_server_stmts (int const*,int,unsigned int*) ;
+ int write_typeformatstring (int ,int const*,int ) ;
+ int write_user_quad_list (int ) ;
 
 __attribute__((used)) static void write_server_routines(const statement_list_t *stmts)
 {

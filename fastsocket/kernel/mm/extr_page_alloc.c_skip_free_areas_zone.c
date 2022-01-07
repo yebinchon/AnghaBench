@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct zone {TYPE_1__* zone_pgdat; } ;
-struct TYPE_2__ {int /*<<< orphan*/  node_id; } ;
+struct TYPE_2__ {int node_id; } ;
 
-/* Variables and functions */
- unsigned int SHOW_MEM_FILTER_NODES ; 
- int /*<<< orphan*/  cpuset_current_mems_allowed ; 
- int /*<<< orphan*/  get_mems_allowed () ; 
- int /*<<< orphan*/  node_isset (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  put_mems_allowed () ; 
+
+ unsigned int SHOW_MEM_FILTER_NODES ;
+ int cpuset_current_mems_allowed ;
+ int get_mems_allowed () ;
+ int node_isset (int ,int ) ;
+ int put_mems_allowed () ;
 
 __attribute__((used)) static bool skip_free_areas_zone(unsigned int flags, const struct zone *zone)
 {
-	bool ret = false;
+ bool ret = 0;
 
-	if (!(flags & SHOW_MEM_FILTER_NODES))
-		goto out;
+ if (!(flags & SHOW_MEM_FILTER_NODES))
+  goto out;
 
-	get_mems_allowed();
-	ret = !node_isset(zone->zone_pgdat->node_id,
-				cpuset_current_mems_allowed);
-	put_mems_allowed();
+ get_mems_allowed();
+ ret = !node_isset(zone->zone_pgdat->node_id,
+    cpuset_current_mems_allowed);
+ put_mems_allowed();
 out:
-	return ret;
+ return ret;
 }

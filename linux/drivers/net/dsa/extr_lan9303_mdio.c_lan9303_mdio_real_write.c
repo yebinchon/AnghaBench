@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u16 ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u16 ;
 struct mdio_device {TYPE_1__* bus; } ;
-struct TYPE_2__ {int /*<<< orphan*/  (* write ) (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;} ;
+struct TYPE_2__ {int (* write ) (TYPE_1__*,int ,int ,int ) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PHY_ADDR (int) ; 
- int /*<<< orphan*/  PHY_REG (int) ; 
- int /*<<< orphan*/  stub1 (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int PHY_ADDR (int) ;
+ int PHY_REG (int) ;
+ int stub1 (TYPE_1__*,int ,int ,int ) ;
 
 __attribute__((used)) static void lan9303_mdio_real_write(struct mdio_device *mdio, int reg, u16 val)
 {
-	mdio->bus->write(mdio->bus, PHY_ADDR(reg), PHY_REG(reg), val);
+ mdio->bus->write(mdio->bus, PHY_ADDR(reg), PHY_REG(reg), val);
 }

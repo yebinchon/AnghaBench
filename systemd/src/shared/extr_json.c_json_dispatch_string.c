@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char* JsonVariant ;
-typedef  int /*<<< orphan*/  JsonDispatchFlags ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  SYNTHETIC_ERRNO (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert (char**) ; 
- int free_and_strdup (char**,int /*<<< orphan*/ ) ; 
- int json_log (char**,int /*<<< orphan*/ ,int,char*,...) ; 
- scalar_t__ json_variant_is_null (char**) ; 
- int /*<<< orphan*/  json_variant_is_string (char**) ; 
- int /*<<< orphan*/  json_variant_string (char**) ; 
- char* mfree (char*) ; 
- int /*<<< orphan*/  strna (char const*) ; 
+
+
+
+typedef char* JsonVariant ;
+typedef int JsonDispatchFlags ;
+
+
+ int EINVAL ;
+ int SYNTHETIC_ERRNO (int ) ;
+ int assert (char**) ;
+ int free_and_strdup (char**,int ) ;
+ int json_log (char**,int ,int,char*,...) ;
+ scalar_t__ json_variant_is_null (char**) ;
+ int json_variant_is_string (char**) ;
+ int json_variant_string (char**) ;
+ char* mfree (char*) ;
+ int strna (char const*) ;
 
 int json_dispatch_string(const char *name, JsonVariant *variant, JsonDispatchFlags flags, void *userdata) {
         char **s = userdata;

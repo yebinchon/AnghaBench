@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
+
+
+
+
+typedef int tree ;
 struct sra_elt {int dummy; } ;
 
-/* Variables and functions */
-#define  ARRAY_RANGE_REF 135 
-#define  ARRAY_REF 134 
-#define  COMPONENT_REF 133 
-#define  IMAGPART_EXPR 132 
- int /*<<< orphan*/  INSERT ; 
-#define  PARM_DECL 131 
- int /*<<< orphan*/  RANGE_EXPR ; 
-#define  REALPART_EXPR 130 
- int RECORD_TYPE ; 
-#define  RESULT_DECL 129 
- int TREE_CODE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TREE_OPERAND (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  TREE_TYPE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TYPE_DOMAIN (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TYPE_MAX_VALUE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TYPE_MIN_VALUE (int /*<<< orphan*/ ) ; 
-#define  VAR_DECL 128 
- int /*<<< orphan*/  build2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  in_array_bounds_p (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  integer_one_node ; 
- int /*<<< orphan*/  integer_type_node ; 
- int /*<<< orphan*/  integer_zero_node ; 
- int /*<<< orphan*/  is_sra_candidate_decl (int /*<<< orphan*/ ) ; 
- struct sra_elt* lookup_element (struct sra_elt*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  range_in_array_bounds_p (int /*<<< orphan*/ ) ; 
+
+
+
+
+
+ int INSERT ;
+
+ int RANGE_EXPR ;
+
+ int RECORD_TYPE ;
+
+ int TREE_CODE (int ) ;
+ int TREE_OPERAND (int ,int) ;
+ int TREE_TYPE (int ) ;
+ int TYPE_DOMAIN (int ) ;
+ int TYPE_MAX_VALUE (int ) ;
+ int TYPE_MIN_VALUE (int ) ;
+
+ int build2 (int ,int ,int ,int ) ;
+ int in_array_bounds_p (int ) ;
+ int integer_one_node ;
+ int integer_type_node ;
+ int integer_zero_node ;
+ int is_sra_candidate_decl (int ) ;
+ struct sra_elt* lookup_element (struct sra_elt*,int ,int ,int ) ;
+ int range_in_array_bounds_p (int ) ;
 
 __attribute__((used)) static struct sra_elt *
 maybe_lookup_element_for_expr (tree expr)
@@ -48,53 +48,53 @@ maybe_lookup_element_for_expr (tree expr)
 
   switch (TREE_CODE (expr))
     {
-    case VAR_DECL:
-    case PARM_DECL:
-    case RESULT_DECL:
+    case 128:
+    case 131:
+    case 129:
       if (is_sra_candidate_decl (expr))
-	return lookup_element (NULL, expr, TREE_TYPE (expr), INSERT);
-      return NULL;
+ return lookup_element (((void*)0), expr, TREE_TYPE (expr), INSERT);
+      return ((void*)0);
 
-    case ARRAY_REF:
-      /* We can't scalarize variable array indices.  */
+    case 134:
+
       if (in_array_bounds_p (expr))
         child = TREE_OPERAND (expr, 1);
       else
-	return NULL;
+ return ((void*)0);
       break;
 
-    case ARRAY_RANGE_REF:
-      /* We can't scalarize variable array indices.  */
+    case 135:
+
       if (range_in_array_bounds_p (expr))
-	{
-	  tree domain = TYPE_DOMAIN (TREE_TYPE (expr));
-	  child = build2 (RANGE_EXPR, integer_type_node,
-			  TYPE_MIN_VALUE (domain), TYPE_MAX_VALUE (domain));
-	}
+ {
+   tree domain = TYPE_DOMAIN (TREE_TYPE (expr));
+   child = build2 (RANGE_EXPR, integer_type_node,
+     TYPE_MIN_VALUE (domain), TYPE_MAX_VALUE (domain));
+ }
       else
-	return NULL;
+ return ((void*)0);
       break;
 
-    case COMPONENT_REF:
-      /* Don't look through unions.  */
+    case 133:
+
       if (TREE_CODE (TREE_TYPE (TREE_OPERAND (expr, 0))) != RECORD_TYPE)
-	return NULL;
+ return ((void*)0);
       child = TREE_OPERAND (expr, 1);
       break;
 
-    case REALPART_EXPR:
+    case 130:
       child = integer_zero_node;
       break;
-    case IMAGPART_EXPR:
+    case 132:
       child = integer_one_node;
       break;
 
     default:
-      return NULL;
+      return ((void*)0);
     }
 
   elt = maybe_lookup_element_for_expr (TREE_OPERAND (expr, 0));
   if (elt)
     return lookup_element (elt, child, TREE_TYPE (expr), INSERT);
-  return NULL;
+  return ((void*)0);
 }

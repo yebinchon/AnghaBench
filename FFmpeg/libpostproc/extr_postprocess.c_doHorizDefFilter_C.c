@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_3__ {int QP; } ;
-typedef  TYPE_1__ PPContext ;
+typedef TYPE_1__ PPContext ;
 
-/* Variables and functions */
- int BLOCK_SIZE ; 
- int const FFABS (int const) ; 
- int FFMAX (int,int const) ; 
- int FFMIN (int,int const) ; 
- int FFSIGN (int const) ; 
+
+ int BLOCK_SIZE ;
+ int const FFABS (int const) ;
+ int FFMAX (int,int const) ;
+ int FFMIN (int,int const) ;
+ int FFSIGN (int const) ;
 
 __attribute__((used)) static inline void doHorizDefFilter_C(uint8_t dst[], int stride, const PPContext *c)
 {
@@ -30,7 +30,7 @@ __attribute__((used)) static inline void doHorizDefFilter_C(uint8_t dst[], int s
 
         if(FFABS(middleEnergy) < 8*c->QP){
             const int q=(dst[3] - dst[4])/2;
-            const int leftEnergy=  5*(dst[2] - dst[1]) + 2*(dst[0] - dst[3]);
+            const int leftEnergy= 5*(dst[2] - dst[1]) + 2*(dst[0] - dst[3]);
             const int rightEnergy= 5*(dst[6] - dst[5]) + 2*(dst[4] - dst[7]);
 
             int d= FFABS(middleEnergy) - FFMIN( FFABS(leftEnergy), FFABS(rightEnergy) );

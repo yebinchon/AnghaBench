@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u64 ;
-struct irb {int /*<<< orphan*/  scsw; } ;
+
+
+
+
+typedef int u64 ;
+struct irb {int scsw; } ;
 struct dasd_device {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DBF_DEV_EVENT (int /*<<< orphan*/ ,struct dasd_device*,char*,char*,...) ; 
- int /*<<< orphan*/  DBF_EMERG ; 
- scalar_t__ dasd_get_sense (struct irb*) ; 
- int /*<<< orphan*/  scsw_cc (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  scsw_cstat (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  scsw_dstat (int /*<<< orphan*/ *) ; 
- scalar_t__ scsw_is_tm (int /*<<< orphan*/ *) ; 
+
+ int DBF_DEV_EVENT (int ,struct dasd_device*,char*,char*,...) ;
+ int DBF_EMERG ;
+ scalar_t__ dasd_get_sense (struct irb*) ;
+ int scsw_cc (int *) ;
+ int scsw_cstat (int *) ;
+ int scsw_dstat (int *) ;
+ scalar_t__ scsw_is_tm (int *) ;
 
 __attribute__((used)) static void
 dasd_fba_dump_sense_dbf(struct dasd_device *device, struct irb *irb,
-			char *reason)
+   char *reason)
 {
-	u64 *sense;
+ u64 *sense;
 
-	sense = (u64 *) dasd_get_sense(irb);
-	if (sense) {
-		DBF_DEV_EVENT(DBF_EMERG, device,
-			      "%s: %s %02x%02x%02x %016llx %016llx %016llx "
-			      "%016llx", reason,
-			      scsw_is_tm(&irb->scsw) ? "t" : "c",
-			      scsw_cc(&irb->scsw), scsw_cstat(&irb->scsw),
-			      scsw_dstat(&irb->scsw), sense[0], sense[1],
-			      sense[2], sense[3]);
-	} else {
-		DBF_DEV_EVENT(DBF_EMERG, device, "%s",
-			      "SORRY - NO VALID SENSE AVAILABLE\n");
-	}
+ sense = (u64 *) dasd_get_sense(irb);
+ if (sense) {
+  DBF_DEV_EVENT(DBF_EMERG, device,
+         "%s: %s %02x%02x%02x %016llx %016llx %016llx "
+         "%016llx", reason,
+         scsw_is_tm(&irb->scsw) ? "t" : "c",
+         scsw_cc(&irb->scsw), scsw_cstat(&irb->scsw),
+         scsw_dstat(&irb->scsw), sense[0], sense[1],
+         sense[2], sense[3]);
+ } else {
+  DBF_DEV_EVENT(DBF_EMERG, device, "%s",
+         "SORRY - NO VALID SENSE AVAILABLE\n");
+ }
 }

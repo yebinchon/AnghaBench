@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ulong ;
-struct TYPE_3__ {int length; int max; int /*<<< orphan*/ * data; int /*<<< orphan*/ * storage; } ;
-typedef  TYPE_1__ DwarfStack ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * malloc (int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  werrstr (char*,int,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int ulong ;
+struct TYPE_3__ {int length; int max; int * data; int * storage; } ;
+typedef TYPE_1__ DwarfStack ;
+
+
+ int free (int *) ;
+ int * malloc (int) ;
+ int memcpy (int *,int *,int) ;
+ int werrstr (char*,int,int ) ;
 
 void stackpush(DwarfStack *stack, ulong value)
 {

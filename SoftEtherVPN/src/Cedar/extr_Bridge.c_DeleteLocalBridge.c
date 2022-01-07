@@ -1,74 +1,74 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ UINT ;
-struct TYPE_8__ {int /*<<< orphan*/  HubList; int /*<<< orphan*/  LocalBridgeList; } ;
-struct TYPE_7__ {int /*<<< orphan*/ * Bridge; int /*<<< orphan*/  DeviceName; int /*<<< orphan*/  HubName; } ;
-typedef  TYPE_1__ LOCALBRIDGE ;
-typedef  TYPE_2__ CEDAR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BrFreeBridge (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Delete (int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  Free (TYPE_1__*) ; 
- TYPE_1__* LIST_DATA (int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__ LIST_NUM (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LockList (int /*<<< orphan*/ ) ; 
- scalar_t__ StrCmpi (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  UnlockList (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef scalar_t__ UINT ;
+struct TYPE_8__ {int HubList; int LocalBridgeList; } ;
+struct TYPE_7__ {int * Bridge; int DeviceName; int HubName; } ;
+typedef TYPE_1__ LOCALBRIDGE ;
+typedef TYPE_2__ CEDAR ;
+
+
+ int BrFreeBridge (int *) ;
+ int Delete (int ,TYPE_1__*) ;
+ int Free (TYPE_1__*) ;
+ TYPE_1__* LIST_DATA (int ,scalar_t__) ;
+ scalar_t__ LIST_NUM (int ) ;
+ int LockList (int ) ;
+ scalar_t__ StrCmpi (int ,char*) ;
+ int UnlockList (int ) ;
 
 bool DeleteLocalBridge(CEDAR *c, char *hubname, char *devicename)
 {
-	bool ret = false;
-	// Validate arguments
-	if (c == NULL || hubname == NULL || devicename == NULL)
-	{
-		return false;
-	}
+ bool ret = 0;
 
-	LockList(c->HubList);
-	{
-		LockList(c->LocalBridgeList);
-		{
-			UINT i;
+ if (c == ((void*)0) || hubname == ((void*)0) || devicename == ((void*)0))
+ {
+  return 0;
+ }
 
-			for (i = 0;i < LIST_NUM(c->LocalBridgeList);i++)
-			{
-				LOCALBRIDGE *br = LIST_DATA(c->LocalBridgeList, i);
+ LockList(c->HubList);
+ {
+  LockList(c->LocalBridgeList);
+  {
+   UINT i;
 
-				if (StrCmpi(br->HubName, hubname) == 0)
-				{
-					if (StrCmpi(br->DeviceName, devicename) == 0)
-					{
-						if (br->Bridge != NULL)
-						{
-							BrFreeBridge(br->Bridge);
-							br->Bridge = NULL;
-						}
+   for (i = 0;i < LIST_NUM(c->LocalBridgeList);i++)
+   {
+    LOCALBRIDGE *br = LIST_DATA(c->LocalBridgeList, i);
 
-						Delete(c->LocalBridgeList, br);
-						Free(br);
+    if (StrCmpi(br->HubName, hubname) == 0)
+    {
+     if (StrCmpi(br->DeviceName, devicename) == 0)
+     {
+      if (br->Bridge != ((void*)0))
+      {
+       BrFreeBridge(br->Bridge);
+       br->Bridge = ((void*)0);
+      }
 
-						ret = true;
-						break;
-					}
-				}
-			}
-		}
-		UnlockList(c->LocalBridgeList);
-	}
-	UnlockList(c->HubList);
+      Delete(c->LocalBridgeList, br);
+      Free(br);
 
-	return ret;
+      ret = 1;
+      break;
+     }
+    }
+   }
+  }
+  UnlockList(c->LocalBridgeList);
+ }
+ UnlockList(c->HubList);
+
+ return ret;
 }

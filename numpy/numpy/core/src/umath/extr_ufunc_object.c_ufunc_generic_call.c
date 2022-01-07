@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {int /*<<< orphan*/ * out; int /*<<< orphan*/ * in; int /*<<< orphan*/ * member_1; int /*<<< orphan*/ * member_0; } ;
-typedef  TYPE_1__ ufunc_full_args ;
+
+
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+struct TYPE_10__ {int * out; int * in; int * member_1; int * member_0; } ;
+typedef TYPE_1__ ufunc_full_args ;
 struct TYPE_11__ {int out_i; TYPE_1__ args; TYPE_3__* ufunc; } ;
-typedef  TYPE_2__ _ufunc_context ;
+typedef TYPE_2__ _ufunc_context ;
 struct TYPE_12__ {int nin; int nout; int nargs; } ;
-typedef  TYPE_3__ PyUFuncObject ;
-typedef  int /*<<< orphan*/  PyTupleObject ;
-typedef  int /*<<< orphan*/  PyObject ;
-typedef  int /*<<< orphan*/  PyArrayObject ;
+typedef TYPE_3__ PyUFuncObject ;
+typedef int PyTupleObject ;
+typedef int PyObject ;
+typedef int PyArrayObject ;
 
-/* Variables and functions */
- int NPY_MAXARGS ; 
- scalar_t__ PyTuple_New (int) ; 
- int /*<<< orphan*/  PyTuple_SET_ITEM (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- int PyUFunc_CheckOverride (TYPE_3__*,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int PyUFunc_GenericFunction (TYPE_3__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  Py_DECREF (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Py_XDECREF (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * _apply_array_wrap (int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_2__*) ; 
- int /*<<< orphan*/  _find_array_wrap (TYPE_1__,int /*<<< orphan*/ *,int /*<<< orphan*/ **,int,int) ; 
- scalar_t__ make_full_arg_tuple (TYPE_1__*,int,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int NPY_MAXARGS ;
+ scalar_t__ PyTuple_New (int) ;
+ int PyTuple_SET_ITEM (int *,int,int *) ;
+ int PyUFunc_CheckOverride (TYPE_3__*,char*,int *,int *,int **) ;
+ int PyUFunc_GenericFunction (TYPE_3__*,int *,int *,int **) ;
+ int Py_DECREF (int *) ;
+ int Py_XDECREF (int *) ;
+ int * _apply_array_wrap (int *,int *,TYPE_2__*) ;
+ int _find_array_wrap (TYPE_1__,int *,int **,int,int) ;
+ scalar_t__ make_full_arg_tuple (TYPE_1__*,int,int,int *,int *) ;
 
 __attribute__((used)) static PyObject *
 ufunc_generic_call(PyUFuncObject *ufunc, PyObject *args, PyObject *kwds)
@@ -42,13 +42,13 @@ ufunc_generic_call(PyUFuncObject *ufunc, PyObject *args, PyObject *kwds)
     PyArrayObject *mps[NPY_MAXARGS];
     PyObject *retobj[NPY_MAXARGS];
     PyObject *wraparr[NPY_MAXARGS];
-    PyObject *override = NULL;
-    ufunc_full_args full_args = {NULL, NULL};
+    PyObject *override = ((void*)0);
+    ufunc_full_args full_args = {((void*)0), ((void*)0)};
     int errval;
 
     errval = PyUFunc_CheckOverride(ufunc, "__call__", args, kwds, &override);
     if (errval) {
-        return NULL;
+        return ((void*)0);
     }
     else if (override) {
         return override;
@@ -56,37 +56,19 @@ ufunc_generic_call(PyUFuncObject *ufunc, PyObject *args, PyObject *kwds)
 
     errval = PyUFunc_GenericFunction(ufunc, args, kwds, mps);
     if (errval < 0) {
-        return NULL;
+        return ((void*)0);
     }
 
-    /* Free the input references */
+
     for (i = 0; i < ufunc->nin; i++) {
         Py_XDECREF(mps[i]);
     }
-
-    /*
-     * Use __array_wrap__ on all outputs
-     * if present on one of the input arguments.
-     * If present for multiple inputs:
-     * use __array_wrap__ of input object with largest
-     * __array_priority__ (default = 0.0)
-     *
-     * Exception:  we should not wrap outputs for items already
-     * passed in as output-arguments.  These items should either
-     * be left unwrapped or wrapped by calling their own __array_wrap__
-     * routine.
-     *
-     * For each output argument, wrap will be either
-     * NULL --- call PyArray_Return() -- default if no output arguments given
-     * None --- array-object passed in don't call PyArray_Return
-     * method --- the __array_wrap__ method to call.
-     */
     if (make_full_arg_tuple(&full_args, ufunc->nin, ufunc->nout, args, kwds) < 0) {
         goto fail;
     }
     _find_array_wrap(full_args, kwds, wraparr, ufunc->nin, ufunc->nout);
 
-    /* wrap outputs */
+
     for (i = 0; i < ufunc->nout; i++) {
         int j = ufunc->nin+i;
         _ufunc_context context;
@@ -97,8 +79,8 @@ ufunc_generic_call(PyUFuncObject *ufunc, PyObject *args, PyObject *kwds)
         context.out_i = i;
 
         wrapped = _apply_array_wrap(wraparr[i], mps[j], &context);
-        mps[j] = NULL;  /* Prevent fail double-freeing this */
-        if (wrapped == NULL) {
+        mps[j] = ((void*)0);
+        if (wrapped == ((void*)0)) {
             for (j = 0; j < i; j++) {
                 Py_DECREF(retobj[j]);
             }
@@ -130,5 +112,5 @@ fail:
     for (i = ufunc->nin; i < ufunc->nargs; i++) {
         Py_XDECREF(mps[i]);
     }
-    return NULL;
+    return ((void*)0);
 }

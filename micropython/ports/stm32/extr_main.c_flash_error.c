@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  PYB_LED_GREEN ; 
- int /*<<< orphan*/  PYB_LED_RED ; 
- int /*<<< orphan*/  led_state (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  mp_hal_delay_ms (int) ; 
+ int PYB_LED_GREEN ;
+ int PYB_LED_RED ;
+ int led_state (int ,int) ;
+ int mp_hal_delay_ms (int) ;
 
 void flash_error(int n) {
     for (int i = 0; i < n; i++) {

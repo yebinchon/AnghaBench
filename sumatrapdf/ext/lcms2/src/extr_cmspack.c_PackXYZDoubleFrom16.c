@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  cmsUInt8Number ;
-typedef  size_t cmsUInt32Number ;
-typedef  int /*<<< orphan*/  cmsUInt16Number ;
-typedef  int /*<<< orphan*/  cmsFloat64Number ;
-typedef  int /*<<< orphan*/  cmsContext ;
-struct TYPE_5__ {int /*<<< orphan*/  Z; int /*<<< orphan*/  Y; int /*<<< orphan*/  X; } ;
-typedef  TYPE_1__ cmsCIEXYZ ;
-struct TYPE_6__ {int /*<<< orphan*/  OutputFormat; } ;
-typedef  TYPE_2__ _cmsTRANSFORM ;
 
-/* Variables and functions */
- size_t PixelSize (int /*<<< orphan*/ ) ; 
- int T_EXTRA (int /*<<< orphan*/ ) ; 
- scalar_t__ T_PLANAR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cmsXYZEncoded2Float (int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int cmsUInt8Number ;
+typedef size_t cmsUInt32Number ;
+typedef int cmsUInt16Number ;
+typedef int cmsFloat64Number ;
+typedef int cmsContext ;
+struct TYPE_5__ {int Z; int Y; int X; } ;
+typedef TYPE_1__ cmsCIEXYZ ;
+struct TYPE_6__ {int OutputFormat; } ;
+typedef TYPE_2__ _cmsTRANSFORM ;
+
+
+ size_t PixelSize (int ) ;
+ int T_EXTRA (int ) ;
+ scalar_t__ T_PLANAR (int ) ;
+ int cmsXYZEncoded2Float (int ,TYPE_1__*,int *) ;
 
 __attribute__((used)) static
 cmsUInt8Number* PackXYZDoubleFrom16(cmsContext ContextID, register _cmsTRANSFORM* Info,
@@ -42,8 +42,8 @@ cmsUInt8Number* PackXYZDoubleFrom16(cmsContext ContextID, register _cmsTRANSFORM
 
         Stride /= PixelSize(Info->OutputFormat);
 
-        Out[0]        = XYZ.X;
-        Out[Stride]   = XYZ.Y;
+        Out[0] = XYZ.X;
+        Out[Stride] = XYZ.Y;
         Out[Stride*2] = XYZ.Z;
 
         return output + sizeof(cmsFloat64Number);

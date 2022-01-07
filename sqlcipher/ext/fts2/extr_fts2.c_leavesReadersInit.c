@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite_int64 ;
-typedef  int /*<<< orphan*/  sqlite3_stmt ;
-typedef  int /*<<< orphan*/  fulltext_vtab ;
-typedef  int /*<<< orphan*/  LeavesReader ;
 
-/* Variables and functions */
- int MERGE_COUNT ; 
- int /*<<< orphan*/  SEGDIR_SELECT_LEVEL_STMT ; 
- int SQLITE_DONE ; 
- int SQLITE_OK ; 
- int SQLITE_ROW ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  leavesReaderDestroy (int /*<<< orphan*/ *) ; 
- int leavesReaderInit (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  leavesReaderReorder (int /*<<< orphan*/ *,int) ; 
- int sql_get_statement (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int sqlite3_bind_int (int /*<<< orphan*/ *,int,int) ; 
- char* sqlite3_column_blob (int /*<<< orphan*/ *,int) ; 
- int sqlite3_column_bytes (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  sqlite3_column_int64 (int /*<<< orphan*/ *,int) ; 
- int sqlite3_step (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int sqlite_int64 ;
+typedef int sqlite3_stmt ;
+typedef int fulltext_vtab ;
+typedef int LeavesReader ;
+
+
+ int MERGE_COUNT ;
+ int SEGDIR_SELECT_LEVEL_STMT ;
+ int SQLITE_DONE ;
+ int SQLITE_OK ;
+ int SQLITE_ROW ;
+ int assert (int) ;
+ int leavesReaderDestroy (int *) ;
+ int leavesReaderInit (int *,int,int ,int ,char const*,int,int *) ;
+ int leavesReaderReorder (int *,int) ;
+ int sql_get_statement (int *,int ,int **) ;
+ int sqlite3_bind_int (int *,int,int) ;
+ char* sqlite3_column_blob (int *,int) ;
+ int sqlite3_column_bytes (int *,int) ;
+ int sqlite3_column_int64 (int *,int) ;
+ int sqlite3_step (int *) ;
 
 __attribute__((used)) static int leavesReadersInit(fulltext_vtab *v, int iLevel,
                              LeavesReader *pReaders, int *piReaders){
@@ -64,7 +64,7 @@ __attribute__((used)) static int leavesReadersInit(fulltext_vtab *v, int iLevel,
 
   *piReaders = i;
 
-  /* Leave our results sorted by term, then age. */
+
   while( i-- ){
     leavesReaderReorder(pReaders+i, *piReaders-i);
   }

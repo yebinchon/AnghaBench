@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct spdcache_entry {int /*<<< orphan*/ * sp; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  M_IPSEC_SPDCACHE ; 
- int /*<<< orphan*/  free (struct spdcache_entry*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  key_freesp (int /*<<< orphan*/ **) ; 
+
+
+
+struct spdcache_entry {int * sp; } ;
+
+
+ int M_IPSEC_SPDCACHE ;
+ int free (struct spdcache_entry*,int ) ;
+ int key_freesp (int **) ;
 
 void
 spdcache_entry_free(struct spdcache_entry *entry)
 {
 
-	if (entry->sp != NULL)
-		key_freesp(&entry->sp);
-	free(entry, M_IPSEC_SPDCACHE);
+ if (entry->sp != ((void*)0))
+  key_freesp(&entry->sp);
+ free(entry, M_IPSEC_SPDCACHE);
 }

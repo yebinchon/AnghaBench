@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct CallCount {scalar_t__ nTotal; scalar_t__ nStep; scalar_t__ nValue; } ;
-typedef  int /*<<< orphan*/  sqlite3_value ;
-typedef  int /*<<< orphan*/  sqlite3_context ;
+typedef int sqlite3_value ;
+typedef int sqlite3_context ;
 
-/* Variables and functions */
- int /*<<< orphan*/  UNUSED_PARAMETER (int) ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ sqlite3_aggregate_context (int /*<<< orphan*/ *,int) ; 
- scalar_t__ sqlite3_value_int64 (int /*<<< orphan*/ *) ; 
+
+ int UNUSED_PARAMETER (int) ;
+ int assert (int) ;
+ scalar_t__ sqlite3_aggregate_context (int *,int) ;
+ scalar_t__ sqlite3_value_int64 (int *) ;
 
 __attribute__((used)) static void percent_rankStepFunc(
-  sqlite3_context *pCtx, 
+  sqlite3_context *pCtx,
   int nArg,
   sqlite3_value **apArg
 ){

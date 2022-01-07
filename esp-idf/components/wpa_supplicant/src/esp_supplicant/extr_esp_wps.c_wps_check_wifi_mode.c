@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wifi_mode_t ;
 
-/* Variables and functions */
- int ESP_ERR_WIFI_MODE ; 
- int ESP_FAIL ; 
- int ESP_OK ; 
- int /*<<< orphan*/  MSG_ERROR ; 
- int /*<<< orphan*/  WIFI_MODE_AP ; 
- int /*<<< orphan*/  WIFI_MODE_NULL ; 
- int esp_wifi_get_mode (int /*<<< orphan*/ *) ; 
- int esp_wifi_get_promiscuous (int*) ; 
- int /*<<< orphan*/  wpa_printf (int /*<<< orphan*/ ,char*,int,...) ; 
+
+
+
+typedef int wifi_mode_t ;
+
+
+ int ESP_ERR_WIFI_MODE ;
+ int ESP_FAIL ;
+ int ESP_OK ;
+ int MSG_ERROR ;
+ int WIFI_MODE_AP ;
+ int WIFI_MODE_NULL ;
+ int esp_wifi_get_mode (int *) ;
+ int esp_wifi_get_promiscuous (int*) ;
+ int wpa_printf (int ,char*,int,...) ;
 
 int wps_check_wifi_mode(void)
 {
-    bool sniffer = false;
+    bool sniffer = 0;
     wifi_mode_t mode;
     int ret;
 
@@ -41,7 +41,7 @@ int wps_check_wifi_mode(void)
         return ESP_FAIL;
     }
 
-    if (mode == WIFI_MODE_AP || mode == WIFI_MODE_NULL || sniffer == true) {
+    if (mode == WIFI_MODE_AP || mode == WIFI_MODE_NULL || sniffer == 1) {
         wpa_printf(MSG_ERROR, "wps check wifi mode: wrong wifi mode=%d sniffer=%d", mode, sniffer);
         return ESP_ERR_WIFI_MODE;
     }

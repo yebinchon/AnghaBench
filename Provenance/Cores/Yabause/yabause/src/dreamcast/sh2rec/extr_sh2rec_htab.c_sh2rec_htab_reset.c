@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  htab_entry_t ;
 
-/* Variables and functions */
- int SH2REC_HTAB_ENTRIES ; 
- int /*<<< orphan*/  htab_free_chain (scalar_t__) ; 
- int /*<<< orphan*/  memset (scalar_t__*,int /*<<< orphan*/ ,int) ; 
- scalar_t__* table ; 
+
+
+
+typedef int htab_entry_t ;
+
+
+ int SH2REC_HTAB_ENTRIES ;
+ int htab_free_chain (scalar_t__) ;
+ int memset (scalar_t__*,int ,int) ;
+ scalar_t__* table ;
 
 void sh2rec_htab_reset(void) {
     int i;

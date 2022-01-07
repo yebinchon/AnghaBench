@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct script_ctx {int /*<<< orphan*/  client; } ;
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- int check_error (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  check_loglevel (int /*<<< orphan*/ *,int) ; 
- struct script_ctx* get_ctx (int /*<<< orphan*/ *) ; 
- char* luaL_checkstring (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  mpv_request_log_messages (int /*<<< orphan*/ ,char const*) ; 
+
+
+
+struct script_ctx {int client; } ;
+typedef int lua_State ;
+
+
+ int check_error (int *,int ) ;
+ int check_loglevel (int *,int) ;
+ struct script_ctx* get_ctx (int *) ;
+ char* luaL_checkstring (int *,int) ;
+ int mpv_request_log_messages (int ,char const*) ;
 
 __attribute__((used)) static int script_enable_messages(lua_State *L)
 {

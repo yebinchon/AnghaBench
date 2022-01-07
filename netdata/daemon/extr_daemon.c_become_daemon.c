@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ ssize_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D_SYSTEM ; 
- int O_CREAT ; 
- int O_WRONLY ; 
- scalar_t__ become_user (char const*,int) ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  create_needed_dir (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  debug (int /*<<< orphan*/ ,char*,char const*) ; 
- int /*<<< orphan*/  error (char*,char const*) ; 
- int /*<<< orphan*/  exit (int) ; 
- int fork () ; 
- scalar_t__ ftruncate (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  getgid () ; 
- int getpid () ; 
- int /*<<< orphan*/  getuid () ; 
- int /*<<< orphan*/  netdata_configured_cache_dir ; 
- int /*<<< orphan*/  netdata_configured_varlib_dir ; 
- int /*<<< orphan*/  oom_score_adj () ; 
- int open (char const*,int,int) ; 
- int /*<<< orphan*/  perror (char*) ; 
- char const* pidfile ; 
- int /*<<< orphan*/  sched_setscheduler_set () ; 
- scalar_t__ setsid () ; 
- int /*<<< orphan*/  sprintf (char*,char*,int) ; 
- int /*<<< orphan*/  strlen (char*) ; 
- int /*<<< orphan*/  umask (int) ; 
- scalar_t__ write (int,char*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef scalar_t__ ssize_t ;
+
+
+ int D_SYSTEM ;
+ int O_CREAT ;
+ int O_WRONLY ;
+ scalar_t__ become_user (char const*,int) ;
+ int close (int) ;
+ int create_needed_dir (int ,int ,int ) ;
+ int debug (int ,char*,char const*) ;
+ int error (char*,char const*) ;
+ int exit (int) ;
+ int fork () ;
+ scalar_t__ ftruncate (int,int ) ;
+ int getgid () ;
+ int getpid () ;
+ int getuid () ;
+ int netdata_configured_cache_dir ;
+ int netdata_configured_varlib_dir ;
+ int oom_score_adj () ;
+ int open (char const*,int,int) ;
+ int perror (char*) ;
+ char const* pidfile ;
+ int sched_setscheduler_set () ;
+ scalar_t__ setsid () ;
+ int sprintf (char*,char*,int) ;
+ int strlen (char*) ;
+ int umask (int) ;
+ scalar_t__ write (int,char*,int ) ;
 
 int become_daemon(int dont_fork, const char *user)
 {
@@ -49,27 +49,27 @@ int become_daemon(int dont_fork, const char *user)
             exit(1);
         }
         if(i != 0) {
-            exit(0); // the parent
+            exit(0);
         }
 
-        // become session leader
+
         if (setsid() < 0) {
             perror("Cannot become session leader.");
             exit(2);
         }
 
-        // fork() again
+
         i = fork();
         if(i == -1) {
             perror("cannot fork");
             exit(1);
         }
         if(i != 0) {
-            exit(0); // the parent
+            exit(0);
         }
     }
 
-    // generate our pid file
+
     int pidfd = -1;
     if(pidfile[0]) {
         pidfd = open(pidfile, O_WRONLY | O_CREAT, 0644);
@@ -86,13 +86,13 @@ int become_daemon(int dont_fork, const char *user)
         else error("Failed to open pidfile '%s'.", pidfile);
     }
 
-    // Set new file permissions
+
     umask(0007);
 
-    // adjust my Out-Of-Memory score
+
     oom_score_adj();
 
-    // never become a problem
+
     sched_setscheduler_set();
 
     if(user && *user) {

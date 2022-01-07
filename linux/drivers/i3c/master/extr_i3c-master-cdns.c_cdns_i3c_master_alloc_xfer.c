@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct cdns_i3c_xfer {unsigned int ncmds; int /*<<< orphan*/  ret; int /*<<< orphan*/  node; } ;
+
+
+
+
+struct cdns_i3c_xfer {unsigned int ncmds; int ret; int node; } ;
 struct cdns_i3c_master {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ETIMEDOUT ; 
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  INIT_LIST_HEAD (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cmds ; 
- struct cdns_i3c_xfer* kzalloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  struct_size (struct cdns_i3c_xfer*,int /*<<< orphan*/ ,unsigned int) ; 
+
+ int ETIMEDOUT ;
+ int GFP_KERNEL ;
+ int INIT_LIST_HEAD (int *) ;
+ int cmds ;
+ struct cdns_i3c_xfer* kzalloc (int ,int ) ;
+ int struct_size (struct cdns_i3c_xfer*,int ,unsigned int) ;
 
 __attribute__((used)) static struct cdns_i3c_xfer *
 cdns_i3c_master_alloc_xfer(struct cdns_i3c_master *master, unsigned int ncmds)
 {
-	struct cdns_i3c_xfer *xfer;
+ struct cdns_i3c_xfer *xfer;
 
-	xfer = kzalloc(struct_size(xfer, cmds, ncmds), GFP_KERNEL);
-	if (!xfer)
-		return NULL;
+ xfer = kzalloc(struct_size(xfer, cmds, ncmds), GFP_KERNEL);
+ if (!xfer)
+  return ((void*)0);
 
-	INIT_LIST_HEAD(&xfer->node);
-	xfer->ncmds = ncmds;
-	xfer->ret = -ETIMEDOUT;
+ INIT_LIST_HEAD(&xfer->node);
+ xfer->ncmds = ncmds;
+ xfer->ret = -ETIMEDOUT;
 
-	return xfer;
+ return xfer;
 }

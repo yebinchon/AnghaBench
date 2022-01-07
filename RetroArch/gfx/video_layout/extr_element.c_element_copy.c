@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int components_count; int /*<<< orphan*/ * components; int /*<<< orphan*/  render_bounds; int /*<<< orphan*/  bounds; int /*<<< orphan*/  state; int /*<<< orphan*/  name; } ;
-typedef  TYPE_1__ element_t ;
-typedef  int /*<<< orphan*/  component_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * calloc (int,int) ; 
- int /*<<< orphan*/  component_copy (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  init_string (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int components_count; int * components; int render_bounds; int bounds; int state; int name; } ;
+typedef TYPE_1__ element_t ;
+typedef int component_t ;
+
+
+ int * calloc (int,int) ;
+ int component_copy (int *,int *) ;
+ int init_string (int ) ;
 
 void element_copy(element_t *elem, const element_t *src)
 {
@@ -31,7 +31,7 @@ void element_copy(element_t *elem, const element_t *src)
    elem->render_bounds = src->render_bounds;
 
    elem->components = (component_t*)(src->components_count > 0 ?
-         calloc(src->components_count, sizeof(component_t)) : NULL);
+         calloc(src->components_count, sizeof(component_t)) : ((void*)0));
 
    for (i = 0; i < src->components_count; ++i)
       component_copy(&elem->components[i], &src->components[i]);

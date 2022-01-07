@@ -1,63 +1,63 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  chMsg ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  VOID ;
-typedef  scalar_t__ LPTSTR ;
-typedef  scalar_t__ LPCWSTR ;
-typedef  int /*<<< orphan*/ * HANDLE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DeregisterEventSource (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EVENTLOG_WARNING_TYPE ; 
- int GetLastError () ; 
- int /*<<< orphan*/ * RegisterEventSource (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReportEvent (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,scalar_t__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TEXT (char*) ; 
- int /*<<< orphan*/  _snwprintf (int /*<<< orphan*/ *,int,char*,int) ; 
- int /*<<< orphan*/  swprintf_s (int /*<<< orphan*/ *,int,char*,int) ; 
+
+
+
+typedef int chMsg ;
+typedef int WCHAR ;
+typedef int VOID ;
+typedef scalar_t__ LPTSTR ;
+typedef scalar_t__ LPCWSTR ;
+typedef int * HANDLE ;
+
+
+ int DeregisterEventSource (int *) ;
+ int EVENTLOG_WARNING_TYPE ;
+ int GetLastError () ;
+ int * RegisterEventSource (int *,int ) ;
+ int ReportEvent (int *,int ,int ,int ,int *,int,int ,scalar_t__*,int *) ;
+ int TEXT (char*) ;
+ int _snwprintf (int *,int,char*,int) ;
+ int swprintf_s (int *,int,char*,int) ;
 
 VOID
 tirpc_report(LPTSTR lpszMsg)
 {
-	WCHAR    chMsg[256];
-	HANDLE   hEventSource;
-	LPCWSTR  lpszStrings[2];
+ WCHAR chMsg[256];
+ HANDLE hEventSource;
+ LPCWSTR lpszStrings[2];
 
-	// Use event logging to log the error.
-	//
-	hEventSource = RegisterEventSource(NULL,
-									   TEXT("tirpc.dll"));
 
-#ifndef __REACTOS__
-	swprintf_s(chMsg, sizeof(chMsg), L"tirpc report: %d", GetLastError());
-#else
-	_snwprintf(chMsg, sizeof(chMsg) / sizeof(WCHAR), L"tirpc report: %d", GetLastError());
-#endif
-	lpszStrings[0] = (LPCWSTR)chMsg;
-	lpszStrings[1] = lpszMsg;
 
-	if (hEventSource != NULL) {
-		ReportEvent(hEventSource, // handle of event source
-			EVENTLOG_WARNING_TYPE, // event type
-			0,                    // event category
-			0,                    // event ID
-			NULL,                 // current user's SID
-			2,                    // strings in lpszStrings
-			0,                    // no bytes of raw data
-			lpszStrings,          // array of error strings
-			NULL);                // no raw data
+ hEventSource = RegisterEventSource(((void*)0),
+            TEXT("tirpc.dll"));
 
-		(VOID) DeregisterEventSource(hEventSource);
-	}
+
+ swprintf_s(chMsg, sizeof(chMsg), L"tirpc report: %d", GetLastError());
+
+
+
+ lpszStrings[0] = (LPCWSTR)chMsg;
+ lpszStrings[1] = lpszMsg;
+
+ if (hEventSource != ((void*)0)) {
+  ReportEvent(hEventSource,
+   EVENTLOG_WARNING_TYPE,
+   0,
+   0,
+   ((void*)0),
+   2,
+   0,
+   lpszStrings,
+   ((void*)0));
+
+  (VOID) DeregisterEventSource(hEventSource);
+ }
 }

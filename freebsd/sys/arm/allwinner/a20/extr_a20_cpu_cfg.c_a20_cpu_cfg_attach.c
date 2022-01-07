@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct a20_cpu_cfg_softc {int /*<<< orphan*/  res; int /*<<< orphan*/  bsh; int /*<<< orphan*/  bst; } ;
-typedef  int /*<<< orphan*/  device_t ;
 
-/* Variables and functions */
- int ENXIO ; 
- int /*<<< orphan*/  RF_ACTIVE ; 
- int /*<<< orphan*/  SYS_RES_MEMORY ; 
- struct a20_cpu_cfg_softc* a20_cpu_cfg_sc ; 
- int /*<<< orphan*/  bus_alloc_resource_any (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*,int /*<<< orphan*/ ) ; 
- struct a20_cpu_cfg_softc* device_get_softc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  device_printf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  rman_get_bushandle (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rman_get_bustag (int /*<<< orphan*/ ) ; 
+
+
+
+struct a20_cpu_cfg_softc {int res; int bsh; int bst; } ;
+typedef int device_t ;
+
+
+ int ENXIO ;
+ int RF_ACTIVE ;
+ int SYS_RES_MEMORY ;
+ struct a20_cpu_cfg_softc* a20_cpu_cfg_sc ;
+ int bus_alloc_resource_any (int ,int ,int*,int ) ;
+ struct a20_cpu_cfg_softc* device_get_softc (int ) ;
+ int device_printf (int ,char*) ;
+ int rman_get_bushandle (int ) ;
+ int rman_get_bustag (int ) ;
 
 __attribute__((used)) static int
 a20_cpu_cfg_attach(device_t dev)
 {
-	struct a20_cpu_cfg_softc *sc = device_get_softc(dev);
-	int rid = 0;
+ struct a20_cpu_cfg_softc *sc = device_get_softc(dev);
+ int rid = 0;
 
-	if (a20_cpu_cfg_sc)
-		return (ENXIO);
+ if (a20_cpu_cfg_sc)
+  return (ENXIO);
 
-	sc->res = bus_alloc_resource_any(dev, SYS_RES_MEMORY, &rid, RF_ACTIVE);
-	if (!sc->res) {
-		device_printf(dev, "could not allocate resource\n");
-		return (ENXIO);
-	}
+ sc->res = bus_alloc_resource_any(dev, SYS_RES_MEMORY, &rid, RF_ACTIVE);
+ if (!sc->res) {
+  device_printf(dev, "could not allocate resource\n");
+  return (ENXIO);
+ }
 
-	sc->bst = rman_get_bustag(sc->res);
-	sc->bsh = rman_get_bushandle(sc->res);
+ sc->bst = rman_get_bustag(sc->res);
+ sc->bsh = rman_get_bushandle(sc->res);
 
-	a20_cpu_cfg_sc = sc;
+ a20_cpu_cfg_sc = sc;
 
-	return (0);
+ return (0);
 }

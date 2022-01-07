@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_10__ {scalar_t__ encoder_id; int count_modes; TYPE_1__* modes; } ;
 struct TYPE_9__ {scalar_t__ encoder_id; } ;
-struct TYPE_8__ {int count_encoders; int /*<<< orphan*/ * encoders; } ;
-struct TYPE_7__ {int /*<<< orphan*/  vrefresh; int /*<<< orphan*/  vdisplay; int /*<<< orphan*/  hdisplay; int /*<<< orphan*/  name; } ;
+struct TYPE_8__ {int count_encoders; int * encoders; } ;
+struct TYPE_7__ {int vrefresh; int vdisplay; int hdisplay; int name; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RARCH_LOG (char*,unsigned int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RARCH_WARN (char*) ; 
- int /*<<< orphan*/  drmModeFreeEncoder (TYPE_3__*) ; 
- TYPE_3__* drmModeGetEncoder (int,int /*<<< orphan*/ ) ; 
- TYPE_4__* g_drm_connector ; 
- TYPE_3__* g_drm_encoder ; 
- TYPE_2__* g_drm_resources ; 
+
+ int RARCH_LOG (char*,unsigned int,int ,int ,int ,int ) ;
+ int RARCH_WARN (char*) ;
+ int drmModeFreeEncoder (TYPE_3__*) ;
+ TYPE_3__* drmModeGetEncoder (int,int ) ;
+ TYPE_4__* g_drm_connector ;
+ TYPE_3__* g_drm_encoder ;
+ TYPE_2__* g_drm_resources ;
 
 bool drm_get_encoder(int fd)
 {
@@ -43,13 +43,13 @@ bool drm_get_encoder(int fd)
          break;
 
       drmModeFreeEncoder(g_drm_encoder);
-      g_drm_encoder = NULL;
+      g_drm_encoder = ((void*)0);
    }
 
    if (!g_drm_encoder)
    {
       RARCH_WARN("[DRM]: Couldn't find DRM encoder.\n");
-      return false;
+      return 0;
    }
 
    for (i = 0; (int)i < g_drm_connector->count_modes; i++)
@@ -62,5 +62,5 @@ bool drm_get_encoder(int fd)
             g_drm_connector->modes[i].vrefresh);
    }
 
-   return true;
+   return 1;
 }

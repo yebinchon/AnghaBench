@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct qlnxr_srq_hwq_info {int /*<<< orphan*/  wr_prod_cnt; } ;
 
-/* Variables and functions */
+
+
+
+struct qlnxr_srq_hwq_info {int wr_prod_cnt; } ;
+
+
 
 __attribute__((used)) static
 void qlnxr_inc_srq_wr_prod (struct qlnxr_srq_hwq_info *info)
 {
-	info->wr_prod_cnt++;
+ info->wr_prod_cnt++;
 }

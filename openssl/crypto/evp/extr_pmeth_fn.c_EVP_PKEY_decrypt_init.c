@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  operation; TYPE_1__* pmeth; } ;
-struct TYPE_5__ {int (* decrypt_init ) (TYPE_2__*) ;int /*<<< orphan*/  decrypt; } ;
-typedef  TYPE_2__ EVP_PKEY_CTX ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EVP_F_EVP_PKEY_DECRYPT_INIT ; 
- int /*<<< orphan*/  EVP_PKEY_OP_DECRYPT ; 
- int /*<<< orphan*/  EVP_PKEY_OP_UNDEFINED ; 
- int /*<<< orphan*/  EVP_R_OPERATION_NOT_SUPPORTED_FOR_THIS_KEYTYPE ; 
- int /*<<< orphan*/  EVPerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int stub1 (TYPE_2__*) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int operation; TYPE_1__* pmeth; } ;
+struct TYPE_5__ {int (* decrypt_init ) (TYPE_2__*) ;int decrypt; } ;
+typedef TYPE_2__ EVP_PKEY_CTX ;
+
+
+ int EVP_F_EVP_PKEY_DECRYPT_INIT ;
+ int EVP_PKEY_OP_DECRYPT ;
+ int EVP_PKEY_OP_UNDEFINED ;
+ int EVP_R_OPERATION_NOT_SUPPORTED_FOR_THIS_KEYTYPE ;
+ int EVPerr (int ,int ) ;
+ int stub1 (TYPE_2__*) ;
 
 int EVP_PKEY_decrypt_init(EVP_PKEY_CTX *ctx)
 {

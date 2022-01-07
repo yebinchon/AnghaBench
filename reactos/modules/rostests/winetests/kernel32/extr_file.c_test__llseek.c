@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int LONG ;
-typedef  int INT ;
-typedef  scalar_t__ HFILE ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DeleteFileA (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FILE_BEGIN ; 
- int /*<<< orphan*/  FILE_CURRENT ; 
- int /*<<< orphan*/  FILE_END ; 
- int /*<<< orphan*/  GetLastError () ; 
- scalar_t__ HFILE_ERROR ; 
- int _hread (scalar_t__,char*,int) ; 
- int _hwrite (scalar_t__,char*,int) ; 
- scalar_t__ _lclose (scalar_t__) ; 
- scalar_t__ _lcreat (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int _llseek (scalar_t__,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  filename ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- char* sillytext ; 
- int strlen (char*) ; 
+
+
+
+typedef int LONG ;
+typedef int INT ;
+typedef scalar_t__ HFILE ;
+typedef int BOOL ;
+
+
+ int DeleteFileA (int ) ;
+ int FILE_BEGIN ;
+ int FILE_CURRENT ;
+ int FILE_END ;
+ int GetLastError () ;
+ scalar_t__ HFILE_ERROR ;
+ int _hread (scalar_t__,char*,int) ;
+ int _hwrite (scalar_t__,char*,int) ;
+ scalar_t__ _lclose (scalar_t__) ;
+ scalar_t__ _lcreat (int ,int ) ;
+ int _llseek (scalar_t__,int,int ) ;
+ int filename ;
+ int ok (int,char*,...) ;
+ char* sillytext ;
+ int strlen (char*) ;
 
 __attribute__((used)) static void test__llseek( void )
 {
@@ -66,5 +66,5 @@ __attribute__((used)) static void test__llseek( void )
     ok( HFILE_ERROR != _lclose(filehandle), "_lclose complains\n" );
 
     ret = DeleteFileA( filename );
-    ok( ret, "DeleteFile failed (%d)\n", GetLastError(  ) );
+    ok( ret, "DeleteFile failed (%d)\n", GetLastError( ) );
 }

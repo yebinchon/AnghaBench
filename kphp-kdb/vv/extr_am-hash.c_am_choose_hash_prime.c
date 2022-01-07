@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  p ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
+
+
+
+typedef int p ;
+
+
+ int assert (int) ;
 
 int am_choose_hash_prime (int x) {
   static const int p[] = {
-  //23,29,37,41,47,53,59,67,79,89,101,113,127,149,167,191,211,233,257,283,313,347,383,431,479,541,599,659,727,809,907,
+
   1103,1217,1361,1499,1657,1823,2011,2213,2437,2683,2953,3251,3581,3943,4339,
   4783,5273,5801,6389,7039,7753,8537,9391,10331,11369,12511,13763,15149,16673,18341,20177,22229,
   24469,26921,29629,32603,35869,39461,43411,47777,52561,57829,63617,69991,76991,84691,93169,102497,

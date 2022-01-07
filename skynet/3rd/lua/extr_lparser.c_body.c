@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_18__   TYPE_2__ ;
-typedef  struct TYPE_17__   TYPE_1__ ;
-typedef  struct TYPE_16__   TYPE_14__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  expdesc ;
+
+
+typedef struct TYPE_18__ TYPE_2__ ;
+typedef struct TYPE_17__ TYPE_1__ ;
+typedef struct TYPE_16__ TYPE_14__ ;
+
+
+typedef int expdesc ;
 struct TYPE_18__ {TYPE_14__* f; } ;
-struct TYPE_17__ {int /*<<< orphan*/  linenumber; } ;
-struct TYPE_16__ {int linedefined; int /*<<< orphan*/  lastlinedefined; } ;
-typedef  TYPE_1__ LexState ;
-typedef  TYPE_2__ FuncState ;
-typedef  int /*<<< orphan*/  BlockCnt ;
+struct TYPE_17__ {int linenumber; } ;
+struct TYPE_16__ {int linedefined; int lastlinedefined; } ;
+typedef TYPE_1__ LexState ;
+typedef TYPE_2__ FuncState ;
+typedef int BlockCnt ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TK_END ; 
- int /*<<< orphan*/  TK_FUNCTION ; 
- TYPE_14__* addprototype (TYPE_1__*) ; 
- int /*<<< orphan*/  adjustlocalvars (TYPE_1__*,int) ; 
- int /*<<< orphan*/  check_match (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  checknext (TYPE_1__*,char) ; 
- int /*<<< orphan*/  close_func (TYPE_1__*) ; 
- int /*<<< orphan*/  codeclosure (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  new_localvarliteral (TYPE_1__*,char*) ; 
- int /*<<< orphan*/  open_func (TYPE_1__*,TYPE_2__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  parlist (TYPE_1__*) ; 
- int /*<<< orphan*/  statlist (TYPE_1__*) ; 
+
+ int TK_END ;
+ int TK_FUNCTION ;
+ TYPE_14__* addprototype (TYPE_1__*) ;
+ int adjustlocalvars (TYPE_1__*,int) ;
+ int check_match (TYPE_1__*,int ,int ,int) ;
+ int checknext (TYPE_1__*,char) ;
+ int close_func (TYPE_1__*) ;
+ int codeclosure (TYPE_1__*,int *) ;
+ int new_localvarliteral (TYPE_1__*,char*) ;
+ int open_func (TYPE_1__*,TYPE_2__*,int *) ;
+ int parlist (TYPE_1__*) ;
+ int statlist (TYPE_1__*) ;
 
 __attribute__((used)) static void body (LexState *ls, expdesc *e, int ismethod, int line) {
-  /* body ->  '(' parlist ')' block END */
+
   FuncState new_fs;
   BlockCnt bl;
   new_fs.f = addprototype(ls);
@@ -44,7 +44,7 @@ __attribute__((used)) static void body (LexState *ls, expdesc *e, int ismethod, 
   open_func(ls, &new_fs, &bl);
   checknext(ls, '(');
   if (ismethod) {
-    new_localvarliteral(ls, "self");  /* create 'self' parameter */
+    new_localvarliteral(ls, "self");
     adjustlocalvars(ls, 1);
   }
   parlist(ls);

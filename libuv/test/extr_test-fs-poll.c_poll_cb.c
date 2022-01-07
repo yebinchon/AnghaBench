@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  zero_statbuf ;
-typedef  int /*<<< orphan*/  uv_stat_t ;
-typedef  int /*<<< orphan*/  uv_handle_t ;
-typedef  int /*<<< orphan*/  uv_fs_poll_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- int /*<<< orphan*/  FIXTURE ; 
- int UV_ENOENT ; 
- int /*<<< orphan*/  close_cb ; 
- int /*<<< orphan*/  memcmp (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  poll_cb_called ; 
- int /*<<< orphan*/  poll_handle ; 
- int /*<<< orphan*/  remove (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  timer_cb ; 
- int /*<<< orphan*/  timer_handle ; 
- int /*<<< orphan*/  touch_file (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  uv_close (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int uv_is_active (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  uv_timer_start (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int zero_statbuf ;
+typedef int uv_stat_t ;
+typedef int uv_handle_t ;
+typedef int uv_fs_poll_t ;
+
+
+ int ASSERT (int) ;
+ int FIXTURE ;
+ int UV_ENOENT ;
+ int close_cb ;
+ int memcmp (int const*,int *,int) ;
+ int memset (int *,int ,int) ;
+ int poll_cb_called ;
+ int poll_handle ;
+ int remove (int ) ;
+ int timer_cb ;
+ int timer_handle ;
+ int touch_file (int ) ;
+ int uv_close (int *,int ) ;
+ int uv_is_active (int *) ;
+ int uv_timer_start (int *,int ,int,int ) ;
 
 __attribute__((used)) static void poll_cb(uv_fs_poll_t* handle,
                     int status,
@@ -42,8 +42,8 @@ __attribute__((used)) static void poll_cb(uv_fs_poll_t* handle,
 
   ASSERT(handle == &poll_handle);
   ASSERT(1 == uv_is_active((uv_handle_t*) handle));
-  ASSERT(prev != NULL);
-  ASSERT(curr != NULL);
+  ASSERT(prev != ((void*)0));
+  ASSERT(curr != ((void*)0));
 
   switch (poll_cb_called++) {
   case 0:

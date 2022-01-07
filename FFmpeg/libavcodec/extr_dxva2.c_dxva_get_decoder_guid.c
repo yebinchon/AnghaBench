@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/ * guid; } ;
-typedef  TYPE_1__ dxva_mode ;
-struct TYPE_7__ {scalar_t__ pix_fmt; int /*<<< orphan*/  workaround; } ;
-typedef  int /*<<< orphan*/  GUID ;
-typedef  TYPE_2__ FFDXVASharedContext ;
-typedef  int /*<<< orphan*/  AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_LOG_VERBOSE ; 
- scalar_t__ AV_PIX_FMT_D3D11 ; 
- scalar_t__ AV_PIX_FMT_DXVA2_VLD ; 
- TYPE_2__* DXVA_SHARED_CONTEXT (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  FF_DXVA2_WORKAROUND_INTEL_CLEARVIDEO ; 
- scalar_t__ IsEqualGUID (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int d3d11va_validate_output (void*,int /*<<< orphan*/ ,void*) ; 
- int dxva2_validate_output (void*,int /*<<< orphan*/ ,void*) ; 
- int /*<<< orphan*/  dxva_check_codec_compatibility (int /*<<< orphan*/ *,TYPE_1__ const*) ; 
- int /*<<< orphan*/  dxva_list_guids_debug (int /*<<< orphan*/ *,void*,unsigned int,int /*<<< orphan*/  const*) ; 
- TYPE_1__* dxva_modes ; 
- int /*<<< orphan*/  const ff_DXVADDI_Intel_ModeH264_E ; 
- int /*<<< orphan*/  const ff_GUID_NULL ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int * guid; } ;
+typedef TYPE_1__ dxva_mode ;
+struct TYPE_7__ {scalar_t__ pix_fmt; int workaround; } ;
+typedef int GUID ;
+typedef TYPE_2__ FFDXVASharedContext ;
+typedef int AVCodecContext ;
+
+
+ int AVERROR (int ) ;
+ int AV_LOG_VERBOSE ;
+ scalar_t__ AV_PIX_FMT_D3D11 ;
+ scalar_t__ AV_PIX_FMT_DXVA2_VLD ;
+ TYPE_2__* DXVA_SHARED_CONTEXT (int *) ;
+ int EINVAL ;
+ int FF_DXVA2_WORKAROUND_INTEL_CLEARVIDEO ;
+ scalar_t__ IsEqualGUID (int *,int const*) ;
+ int av_log (int *,int ,char*) ;
+ int d3d11va_validate_output (void*,int ,void*) ;
+ int dxva2_validate_output (void*,int ,void*) ;
+ int dxva_check_codec_compatibility (int *,TYPE_1__ const*) ;
+ int dxva_list_guids_debug (int *,void*,unsigned int,int const*) ;
+ TYPE_1__* dxva_modes ;
+ int const ff_DXVADDI_Intel_ModeH264_E ;
+ int const ff_GUID_NULL ;
 
 __attribute__((used)) static int dxva_get_decoder_guid(AVCodecContext *avctx, void *service, void *surface_format,
                                  unsigned guid_count, const GUID *guid_list, GUID *decoder_guid)
@@ -58,15 +58,6 @@ __attribute__((used)) static int dxva_get_decoder_guid(AVCodecContext *avctx, vo
         }
         if (j == guid_count)
             continue;
-
-#if CONFIG_D3D11VA
-        if (sctx->pix_fmt == AV_PIX_FMT_D3D11)
-            validate = d3d11va_validate_output(service, *mode->guid, surface_format);
-#endif
-#if CONFIG_DXVA2
-        if (sctx->pix_fmt == AV_PIX_FMT_DXVA2_VLD)
-            validate = dxva2_validate_output(service, *mode->guid, surface_format);
-#endif
         if (validate) {
             *decoder_guid = *mode->guid;
             break;

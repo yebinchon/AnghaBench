@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct symbol {scalar_t__ type; int nsubsym; scalar_t__ lambda; int /*<<< orphan*/  firstset; TYPE_1__** subsym; int /*<<< orphan*/  index; struct rule* rule; int /*<<< orphan*/  name; } ;
-struct rule {int nrhs; struct symbol** rhs; struct rule* nextlhs; int /*<<< orphan*/  line; } ;
-struct lemon {int /*<<< orphan*/  errorcnt; int /*<<< orphan*/  filename; struct symbol* errsym; } ;
-struct config {int dot; int /*<<< orphan*/  fplp; int /*<<< orphan*/  fws; struct rule* rp; struct config* next; } ;
-struct TYPE_2__ {int /*<<< orphan*/  index; } ;
 
-/* Variables and functions */
- struct config* Configlist_add (struct rule*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ErrorMsg (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- scalar_t__ LEMON_FALSE ; 
- scalar_t__ MULTITERMINAL ; 
- scalar_t__ NONTERMINAL ; 
- int /*<<< orphan*/  Plink_add (int /*<<< orphan*/ *,struct config*) ; 
- int /*<<< orphan*/  SetAdd (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetUnion (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ TERMINAL ; 
- int /*<<< orphan*/  assert (int) ; 
- struct config* current ; 
- scalar_t__ currentend ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct symbol {scalar_t__ type; int nsubsym; scalar_t__ lambda; int firstset; TYPE_1__** subsym; int index; struct rule* rule; int name; } ;
+struct rule {int nrhs; struct symbol** rhs; struct rule* nextlhs; int line; } ;
+struct lemon {int errorcnt; int filename; struct symbol* errsym; } ;
+struct config {int dot; int fplp; int fws; struct rule* rp; struct config* next; } ;
+struct TYPE_2__ {int index; } ;
+
+
+ struct config* Configlist_add (struct rule*,int ) ;
+ int ErrorMsg (int ,int ,char*,int ) ;
+ scalar_t__ LEMON_FALSE ;
+ scalar_t__ MULTITERMINAL ;
+ scalar_t__ NONTERMINAL ;
+ int Plink_add (int *,struct config*) ;
+ int SetAdd (int ,int ) ;
+ int SetUnion (int ,int ) ;
+ scalar_t__ TERMINAL ;
+ int assert (int) ;
+ struct config* current ;
+ scalar_t__ currentend ;
 
 void Configlist_closure(struct lemon *lemp)
 {

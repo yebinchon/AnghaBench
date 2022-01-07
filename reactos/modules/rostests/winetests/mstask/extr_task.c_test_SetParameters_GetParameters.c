@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  float WCHAR ;
-typedef  float const* LPWSTR ;
-typedef  scalar_t__ HRESULT ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CoTaskMemFree (float const*) ; 
- scalar_t__ ITask_GetParameters (int /*<<< orphan*/ ,float const**) ; 
- scalar_t__ ITask_SetParameters (int /*<<< orphan*/ ,float const*) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  cleanup_task () ; 
- float const* empty ; 
- int /*<<< orphan*/  lstrcmpW (float const*,float const*) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  setup_task () ; 
- int /*<<< orphan*/  skip (char*) ; 
- int /*<<< orphan*/  test_task ; 
- scalar_t__ wine_dbgstr_w (float const*) ; 
+
+
+
+typedef float WCHAR ;
+typedef float const* LPWSTR ;
+typedef scalar_t__ HRESULT ;
+typedef int BOOL ;
+
+
+ int CoTaskMemFree (float const*) ;
+ scalar_t__ ITask_GetParameters (int ,float const**) ;
+ scalar_t__ ITask_SetParameters (int ,float const*) ;
+ scalar_t__ S_OK ;
+ int cleanup_task () ;
+ float const* empty ;
+ int lstrcmpW (float const*,float const*) ;
+ int ok (int,char*,...) ;
+ int setup_task () ;
+ int skip (char*) ;
+ int test_task ;
+ scalar_t__ wine_dbgstr_w (float const*) ;
 
 __attribute__((used)) static void test_SetParameters_GetParameters(void)
 {
@@ -46,7 +46,7 @@ __attribute__((used)) static void test_SetParameters_GetParameters(void)
         return;
     }
 
-    /* Get parameters before setting them */
+
     hres = ITask_GetParameters(test_task, &parameters);
     ok(hres == S_OK, "GetParameters failed: %08x\n", hres);
     if (hres == S_OK)
@@ -56,7 +56,7 @@ __attribute__((used)) static void test_SetParameters_GetParameters(void)
         CoTaskMemFree(parameters);
     }
 
-    /* Set parameters to a simple string */
+
     hres = ITask_SetParameters(test_task, parameters_a);
     ok(hres == S_OK, "Failed setting parameters %s: %08x\n",
             wine_dbgstr_w(parameters_a), hres);
@@ -69,7 +69,7 @@ __attribute__((used)) static void test_SetParameters_GetParameters(void)
         CoTaskMemFree(parameters);
     }
 
-    /* Update parameters to a different simple string */
+
     hres = ITask_SetParameters(test_task, parameters_b);
     ok(hres == S_OK, "Failed setting parameters %s: %08x\n",
             wine_dbgstr_w(parameters_b), hres);
@@ -82,7 +82,7 @@ __attribute__((used)) static void test_SetParameters_GetParameters(void)
         CoTaskMemFree(parameters);
     }
 
-    /* Clear parameters */
+
     hres = ITask_SetParameters(test_task, empty);
     ok(hres == S_OK, "Failed setting parameters %s: %08x\n",
             wine_dbgstr_w(empty), hres);

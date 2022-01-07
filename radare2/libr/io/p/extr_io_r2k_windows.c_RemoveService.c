@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  LPCTSTR ;
-typedef  scalar_t__ HANDLE ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CloseServiceHandle (scalar_t__) ; 
- int DELETE ; 
- int /*<<< orphan*/  DeleteService (scalar_t__) ; 
- int /*<<< orphan*/  FALSE ; 
- scalar_t__ OpenSCManager (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ OpenService (scalar_t__,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  SC_MANAGER_CREATE_SERVICE ; 
- int SERVICE_START ; 
- int SERVICE_STOP ; 
- int /*<<< orphan*/  TRUE ; 
+
+
+
+typedef int LPCTSTR ;
+typedef scalar_t__ HANDLE ;
+typedef int BOOL ;
+
+
+ int CloseServiceHandle (scalar_t__) ;
+ int DELETE ;
+ int DeleteService (scalar_t__) ;
+ int FALSE ;
+ scalar_t__ OpenSCManager (int *,int *,int ) ;
+ scalar_t__ OpenService (scalar_t__,int ,int) ;
+ int SC_MANAGER_CREATE_SERVICE ;
+ int SERVICE_START ;
+ int SERVICE_STOP ;
+ int TRUE ;
 
 __attribute__((used)) static BOOL RemoveService(LPCTSTR lpServiceName) {
-	HANDLE hService;
-	BOOL ret = FALSE;
-	HANDLE hSCManager = OpenSCManager (NULL, NULL, SC_MANAGER_CREATE_SERVICE);
-	if (hSCManager) {
-		hService = OpenService (hSCManager, lpServiceName, SERVICE_START | DELETE | SERVICE_STOP);
-		if (hService) {
-			DeleteService (hService);
-			CloseServiceHandle (hService);
-			ret = TRUE;
-		}
-		CloseServiceHandle (hSCManager);
-	}
-	return ret;
+ HANDLE hService;
+ BOOL ret = FALSE;
+ HANDLE hSCManager = OpenSCManager (((void*)0), ((void*)0), SC_MANAGER_CREATE_SERVICE);
+ if (hSCManager) {
+  hService = OpenService (hSCManager, lpServiceName, SERVICE_START | DELETE | SERVICE_STOP);
+  if (hService) {
+   DeleteService (hService);
+   CloseServiceHandle (hService);
+   ret = TRUE;
+  }
+  CloseServiceHandle (hSCManager);
+ }
+ return ret;
 }

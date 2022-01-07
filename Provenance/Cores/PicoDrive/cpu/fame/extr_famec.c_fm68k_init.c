@@ -1,31 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  fm68k_emulate (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  initialised ; 
- int /*<<< orphan*/  puts (char*) ; 
+ int fm68k_emulate (int ,int ) ;
+ int initialised ;
+ int puts (char*) ;
 
 void fm68k_init(void)
 {
-#ifdef FAMEC_DEBUG
-	puts("Initializing FAME...");
-#endif
+
+
+
 
     if (!initialised)
-	    fm68k_emulate(0, 0);
+     fm68k_emulate(0, 0);
 
-#ifdef FAMEC_DEBUG
-	puts("FAME initialized.");
-#endif
+
+
+
 }

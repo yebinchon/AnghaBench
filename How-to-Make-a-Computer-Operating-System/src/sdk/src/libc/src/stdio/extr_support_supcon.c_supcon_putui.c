@@ -1,42 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ int fputs (char*,int ) ;
+ int stdout ;
 
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  fputs (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stdout ; 
-
-void  supcon_putui( unsigned int num )
+void supcon_putui( unsigned int num )
 {
-  char buffer[ 128 ];	// You're generous. 
+  char buffer[ 128 ];
   int position = 126;
   unsigned int temp = num;
 
-  // Short circuit unnecessary work.
-  if ( num == 0 ) 
+
+  if ( num == 0 )
   {
-	  fputs("0",stdout);
-	return;
+   fputs("0",stdout);
+ return;
   }
 
   buffer[127] = 0;
-  
-  // Now reduce it.
+
+
   while ( temp > 0 )
   {
-	buffer[ position-- ] = '0' + (temp % 10);
-	temp = temp / 10;
+ buffer[ position-- ] = '0' + (temp % 10);
+ temp = temp / 10;
   }
-		  
-  // Now print it.
+
+
   fputs(buffer + position + 1 ,stdout);
 }

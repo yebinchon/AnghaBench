@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char const*) ; 
- int /*<<< orphan*/  stderr ; 
+ int fprintf (int ,char*,char const*) ;
+ int stderr ;
 
 void
 print_help(const char *appimage_path)
 {
-    // TODO: "--appimage-list                 List content from embedded filesystem image\n"
+
     fprintf(stderr,
         "AppImage options:\n\n"
         "  --appimage-extract [<pattern>]  Extract content from embedded filesystem image\n"

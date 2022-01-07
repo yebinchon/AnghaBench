@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_4__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_13__ {scalar_t__ type; int /*<<< orphan*/  in_queue; } ;
-typedef  TYPE_2__ sync_stream_t ;
+
+
+typedef struct TYPE_15__ TYPE_4__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+struct TYPE_13__ {scalar_t__ type; int in_queue; } ;
+typedef TYPE_2__ sync_stream_t ;
 struct TYPE_14__ {int stream_count; TYPE_2__* streams; } ;
-typedef  TYPE_3__ sync_common_t ;
+typedef TYPE_3__ sync_common_t ;
 struct TYPE_12__ {double start; double duration; double stop; } ;
 struct TYPE_15__ {TYPE_1__ s; } ;
-typedef  TYPE_4__ hb_buffer_t ;
+typedef TYPE_4__ hb_buffer_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_NOPTS_VALUE ; 
- scalar_t__ SYNC_TYPE_VIDEO ; 
- int /*<<< orphan*/  UpdateSCR (TYPE_2__*,TYPE_4__*) ; 
- int /*<<< orphan*/  alignStreams (TYPE_3__*,int /*<<< orphan*/ ) ; 
- int hb_list_count (int /*<<< orphan*/ ) ; 
- TYPE_4__* hb_list_item (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  hb_list_rem (int /*<<< orphan*/ ,TYPE_4__*) ; 
+
+ int AV_NOPTS_VALUE ;
+ scalar_t__ SYNC_TYPE_VIDEO ;
+ int UpdateSCR (TYPE_2__*,TYPE_4__*) ;
+ int alignStreams (TYPE_3__*,int ) ;
+ int hb_list_count (int ) ;
+ TYPE_4__* hb_list_item (int ,int) ;
+ int hb_list_rem (int ,TYPE_4__*) ;
 
 __attribute__((used)) static void computeInitialTS( sync_common_t * common,
                               sync_stream_t * first_stream )
 {
-    int           ii;
+    int ii;
     hb_buffer_t * prev, * buf;
 
-    // Process first_stream first since it has the initial PTS
-    prev = NULL;
+
+    prev = ((void*)0);
     for (ii = 0; ii < hb_list_count(first_stream->in_queue);)
     {
         buf = hb_list_item(first_stream->in_queue, ii);
@@ -50,7 +50,7 @@ __attribute__((used)) static void computeInitialTS( sync_common_t * common,
         else
         {
             ii++;
-            if (first_stream->type == SYNC_TYPE_VIDEO && prev != NULL)
+            if (first_stream->type == SYNC_TYPE_VIDEO && prev != ((void*)0))
             {
                 double duration = buf->s.start - prev->s.start;
                 if (duration > 0)
@@ -69,24 +69,24 @@ __attribute__((used)) static void computeInitialTS( sync_common_t * common,
 
         if (stream == first_stream)
         {
-            // skip first_stream, already done
+
             continue;
         }
 
         int jj;
-        prev = NULL;
+        prev = ((void*)0);
         for (jj = 0; jj < hb_list_count(stream->in_queue);)
         {
             buf = hb_list_item(stream->in_queue, jj);
             if (!UpdateSCR(stream, buf))
             {
-                // Subtitle put into delay queue, remove it from in_queue
+
                 hb_list_rem(stream->in_queue, buf);
             }
             else
             {
                 jj++;
-                if (stream->type == SYNC_TYPE_VIDEO && prev != NULL)
+                if (stream->type == SYNC_TYPE_VIDEO && prev != ((void*)0))
                 {
                     double duration = buf->s.start - prev->s.start;
                     if (duration > 0)

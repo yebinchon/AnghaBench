@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct sockaddr_in {int dummy; } ;
-struct sockaddr {void* sa_family; struct sockaddr* ifa_dstaddr; struct sockaddr* ifa_netmask; struct sockaddr* ifa_addr; int /*<<< orphan*/  ifa_name; } ;
-struct ifaddrs {void* sa_family; struct ifaddrs* ifa_dstaddr; struct ifaddrs* ifa_netmask; struct ifaddrs* ifa_addr; int /*<<< orphan*/  ifa_name; } ;
+struct sockaddr {void* sa_family; struct sockaddr* ifa_dstaddr; struct sockaddr* ifa_netmask; struct sockaddr* ifa_addr; int ifa_name; } ;
+struct ifaddrs {void* sa_family; struct ifaddrs* ifa_dstaddr; struct ifaddrs* ifa_netmask; struct ifaddrs* ifa_addr; int ifa_name; } ;
 
-/* Variables and functions */
- void* AF_INET ; 
- int /*<<< orphan*/  freeifaddrs (struct sockaddr*) ; 
- scalar_t__ malloc (int) ; 
- int /*<<< orphan*/  memset (struct sockaddr*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  strdup (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wiiu_iface_name ; 
+
+ void* AF_INET ;
+ int freeifaddrs (struct sockaddr*) ;
+ scalar_t__ malloc (int) ;
+ int memset (struct sockaddr*,int ,int) ;
+ int strdup (int ) ;
+ int wiiu_iface_name ;
 
 __attribute__((used)) static struct ifaddrs *buildEmptyIfa(void)
 {
@@ -47,5 +47,5 @@ __attribute__((used)) static struct ifaddrs *buildEmptyIfa(void)
    return result;
 error:
    freeifaddrs(result);
-   return NULL;
+   return ((void*)0);
 }

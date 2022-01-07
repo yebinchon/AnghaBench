@@ -1,62 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct wined3d_string_buffer_list {int dummy; } ;
-struct wined3d_string_buffer {int /*<<< orphan*/  buffer; } ;
+struct wined3d_string_buffer {int buffer; } ;
 struct wined3d_shader_reg_maps {int dummy; } ;
 struct TYPE_4__ {int tessellator_domain; } ;
 struct TYPE_5__ {TYPE_1__ ds; } ;
-struct wined3d_shader {int /*<<< orphan*/  patch_constant_signature; TYPE_3__* limits; TYPE_2__ u; struct wined3d_shader_reg_maps reg_maps; } ;
-struct wined3d_gl_info {int /*<<< orphan*/ * supported; } ;
+struct wined3d_shader {int patch_constant_signature; TYPE_3__* limits; TYPE_2__ u; struct wined3d_shader_reg_maps reg_maps; } ;
+struct wined3d_gl_info {int * supported; } ;
 struct wined3d_context {struct wined3d_gl_info* gl_info; } ;
 struct shader_glsl_priv {struct wined3d_string_buffer shader_buffer; struct wined3d_string_buffer_list string_buffers; } ;
 struct shader_glsl_ctx_priv {struct wined3d_string_buffer_list* string_buffers; struct ds_compile_args const* cur_ds_args; } ;
-struct ds_compile_args {int tessellator_output_primitive; int tessellator_partitioning; scalar_t__ next_shader_type; int /*<<< orphan*/  interpolation_mode; int /*<<< orphan*/  output_count; int /*<<< orphan*/  render_offscreen; } ;
-typedef  int /*<<< orphan*/  priv_ctx ;
-struct TYPE_6__ {int /*<<< orphan*/  packed_input; } ;
-typedef  int /*<<< orphan*/  GLuint ;
+struct ds_compile_args {int tessellator_output_primitive; int tessellator_partitioning; scalar_t__ next_shader_type; int interpolation_mode; int output_count; int render_offscreen; } ;
+typedef int priv_ctx ;
+struct TYPE_6__ {int packed_input; } ;
+typedef int GLuint ;
 
-/* Variables and functions */
- size_t ARB_CLIP_CONTROL ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GL_EXTCALL (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GL_TESS_EVALUATION_SHADER ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- scalar_t__ WINED3D_SHADER_TYPE_PIXEL ; 
-#define  WINED3D_TESSELLATOR_DOMAIN_LINE 138 
-#define  WINED3D_TESSELLATOR_DOMAIN_QUAD 137 
-#define  WINED3D_TESSELLATOR_DOMAIN_TRIANGLE 136 
-#define  WINED3D_TESSELLATOR_OUTPUT_LINE 135 
-#define  WINED3D_TESSELLATOR_OUTPUT_POINT 134 
-#define  WINED3D_TESSELLATOR_OUTPUT_TRIANGLE_CCW 133 
-#define  WINED3D_TESSELLATOR_OUTPUT_TRIANGLE_CW 132 
-#define  WINED3D_TESSELLATOR_PARTITIONING_FRACTIONAL_EVEN 131 
-#define  WINED3D_TESSELLATOR_PARTITIONING_FRACTIONAL_ODD 130 
-#define  WINED3D_TESSELLATOR_PARTITIONING_INTEGER 129 
-#define  WINED3D_TESSELLATOR_PARTITIONING_POW2 128 
- int /*<<< orphan*/  glCreateShader (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (struct shader_glsl_ctx_priv*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  shader_addline (struct wined3d_string_buffer*,char*,...) ; 
- int /*<<< orphan*/  shader_generate_code (struct wined3d_shader const*,struct wined3d_string_buffer*,struct wined3d_shader_reg_maps const*,struct shader_glsl_ctx_priv*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  shader_generate_glsl_declarations (struct wined3d_context const*,struct wined3d_string_buffer*,struct wined3d_shader const*,struct wined3d_shader_reg_maps const*,struct shader_glsl_ctx_priv*) ; 
- int /*<<< orphan*/  shader_glsl_add_version_declaration (struct wined3d_string_buffer*,struct wined3d_gl_info const*) ; 
- int /*<<< orphan*/  shader_glsl_compile (struct wined3d_gl_info const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  shader_glsl_enable_extensions (struct wined3d_string_buffer*,struct wined3d_gl_info const*) ; 
- int /*<<< orphan*/  shader_glsl_generate_patch_constant_setup (struct wined3d_string_buffer*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  shader_glsl_generate_sm4_output_setup (struct shader_glsl_priv*,struct wined3d_shader const*,int /*<<< orphan*/ ,struct wined3d_gl_info const*,int,int /*<<< orphan*/ ) ; 
+
+ size_t ARB_CLIP_CONTROL ;
+ scalar_t__ FAILED (int ) ;
+ int GL_EXTCALL (int ) ;
+ int GL_TESS_EVALUATION_SHADER ;
+ int TRACE (char*,int ) ;
+ int TRUE ;
+ scalar_t__ WINED3D_SHADER_TYPE_PIXEL ;
+ int glCreateShader (int ) ;
+ int memset (struct shader_glsl_ctx_priv*,int ,int) ;
+ int shader_addline (struct wined3d_string_buffer*,char*,...) ;
+ int shader_generate_code (struct wined3d_shader const*,struct wined3d_string_buffer*,struct wined3d_shader_reg_maps const*,struct shader_glsl_ctx_priv*,int *,int *) ;
+ int shader_generate_glsl_declarations (struct wined3d_context const*,struct wined3d_string_buffer*,struct wined3d_shader const*,struct wined3d_shader_reg_maps const*,struct shader_glsl_ctx_priv*) ;
+ int shader_glsl_add_version_declaration (struct wined3d_string_buffer*,struct wined3d_gl_info const*) ;
+ int shader_glsl_compile (struct wined3d_gl_info const*,int ,int ) ;
+ int shader_glsl_enable_extensions (struct wined3d_string_buffer*,struct wined3d_gl_info const*) ;
+ int shader_glsl_generate_patch_constant_setup (struct wined3d_string_buffer*,int *,int ) ;
+ int shader_glsl_generate_sm4_output_setup (struct shader_glsl_priv*,struct wined3d_shader const*,int ,struct wined3d_gl_info const*,int,int ) ;
 
 __attribute__((used)) static GLuint shader_glsl_generate_domain_shader(const struct wined3d_context *context,
         struct shader_glsl_priv *priv, const struct wined3d_shader *shader, const struct ds_compile_args *args)
@@ -82,46 +71,46 @@ __attribute__((used)) static GLuint shader_glsl_generate_domain_shader(const str
     shader_addline(buffer, "layout(");
     switch (shader->u.ds.tessellator_domain)
     {
-        case WINED3D_TESSELLATOR_DOMAIN_LINE:
+        case 138:
             shader_addline(buffer, "isolines");
             break;
-        case WINED3D_TESSELLATOR_DOMAIN_QUAD:
+        case 137:
             shader_addline(buffer, "quads");
             break;
-        case WINED3D_TESSELLATOR_DOMAIN_TRIANGLE:
+        case 136:
             shader_addline(buffer, "triangles");
             break;
     }
     switch (args->tessellator_output_primitive)
     {
-        case WINED3D_TESSELLATOR_OUTPUT_TRIANGLE_CW:
+        case 132:
             if (args->render_offscreen)
                 shader_addline(buffer, ", ccw");
             else
                 shader_addline(buffer, ", cw");
             break;
-        case WINED3D_TESSELLATOR_OUTPUT_TRIANGLE_CCW:
+        case 133:
             if (args->render_offscreen)
                 shader_addline(buffer, ", cw");
             else
                 shader_addline(buffer, ", ccw");
             break;
-        case WINED3D_TESSELLATOR_OUTPUT_POINT:
+        case 134:
             shader_addline(buffer, ", point_mode");
             break;
-        case WINED3D_TESSELLATOR_OUTPUT_LINE:
+        case 135:
             break;
     }
     switch (args->tessellator_partitioning)
     {
-        case WINED3D_TESSELLATOR_PARTITIONING_FRACTIONAL_ODD:
+        case 130:
             shader_addline(buffer, ", fractional_odd_spacing");
             break;
-        case WINED3D_TESSELLATOR_PARTITIONING_FRACTIONAL_EVEN:
+        case 131:
             shader_addline(buffer, ", fractional_even_spacing");
             break;
-        case WINED3D_TESSELLATOR_PARTITIONING_INTEGER:
-        case WINED3D_TESSELLATOR_PARTITIONING_POW2:
+        case 129:
+        case 128:
             shader_addline(buffer, ", equal_spacing");
             break;
     }
@@ -139,7 +128,7 @@ __attribute__((used)) static GLuint shader_glsl_generate_domain_shader(const str
     shader_addline(buffer, "void main()\n{\n");
     shader_addline(buffer, "setup_patch_constant_input();\n");
 
-    if (FAILED(shader_generate_code(shader, buffer, reg_maps, &priv_ctx, NULL, NULL)))
+    if (FAILED(shader_generate_code(shader, buffer, reg_maps, &priv_ctx, ((void*)0), ((void*)0))))
         return 0;
 
     shader_addline(buffer, "}\n");

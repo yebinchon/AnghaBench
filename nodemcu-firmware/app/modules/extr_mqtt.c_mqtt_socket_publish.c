@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int /*<<< orphan*/  uint16_t ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint16_t ;
 struct espconn {int dummy; } ;
-typedef  scalar_t__ sint8 ;
-typedef  int /*<<< orphan*/  msg_queue_t ;
-typedef  int /*<<< orphan*/  mqtt_message_t ;
-typedef  int /*<<< orphan*/  lua_State ;
-struct TYPE_4__ {int /*<<< orphan*/  pending_msg_q; int /*<<< orphan*/  mqtt_connection; } ;
-struct TYPE_5__ {TYPE_1__ mqtt_state; int /*<<< orphan*/ * pesp_conn; int /*<<< orphan*/  cb_puback_ref; int /*<<< orphan*/  connected; } ;
-typedef  TYPE_2__ lmqtt_userdata ;
+typedef scalar_t__ sint8 ;
+typedef int msg_queue_t ;
+typedef int mqtt_message_t ;
+typedef int lua_State ;
+struct TYPE_4__ {int pending_msg_q; int mqtt_connection; } ;
+struct TYPE_5__ {TYPE_1__ mqtt_state; int * pesp_conn; int cb_puback_ref; int connected; } ;
+typedef TYPE_2__ lmqtt_userdata ;
 
-/* Variables and functions */
- scalar_t__ ESPCONN_OK ; 
- int /*<<< orphan*/  LUA_REGISTRYINDEX ; 
- scalar_t__ LUA_TFUNCTION ; 
- scalar_t__ LUA_TLIGHTFUNCTION ; 
- int MQTT_BUF_SIZE ; 
- int /*<<< orphan*/  MQTT_MSG_TYPE_PUBLISH ; 
- int /*<<< orphan*/  NODE_DBG (char*,...) ; 
- int /*<<< orphan*/  luaL_argcheck (int /*<<< orphan*/ *,TYPE_2__*,int,char*) ; 
- int luaL_checkinteger (int /*<<< orphan*/ *,int) ; 
- char* luaL_checklstring (int /*<<< orphan*/ *,int,size_t*) ; 
- scalar_t__ luaL_checkudata (int /*<<< orphan*/ *,int,char*) ; 
- int luaL_error (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  luaL_ref (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  luaL_unref (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_pushboolean (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pushvalue (int /*<<< orphan*/ *,int) ; 
- scalar_t__ lua_type (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  mqtt_msg_init (int /*<<< orphan*/ *,int*,int) ; 
- int /*<<< orphan*/ * mqtt_msg_publish (int /*<<< orphan*/ *,char const*,char const*,size_t,int,int,int /*<<< orphan*/ *) ; 
- scalar_t__ mqtt_send_if_possible (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * msg_enqueue (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  msg_size (int /*<<< orphan*/ *) ; 
+
+ scalar_t__ ESPCONN_OK ;
+ int LUA_REGISTRYINDEX ;
+ scalar_t__ LUA_TFUNCTION ;
+ scalar_t__ LUA_TLIGHTFUNCTION ;
+ int MQTT_BUF_SIZE ;
+ int MQTT_MSG_TYPE_PUBLISH ;
+ int NODE_DBG (char*,...) ;
+ int luaL_argcheck (int *,TYPE_2__*,int,char*) ;
+ int luaL_checkinteger (int *,int) ;
+ char* luaL_checklstring (int *,int,size_t*) ;
+ scalar_t__ luaL_checkudata (int *,int,char*) ;
+ int luaL_error (int *,char*) ;
+ int luaL_ref (int *,int ) ;
+ int luaL_unref (int *,int ,int ) ;
+ int lua_pushboolean (int *,int) ;
+ int lua_pushvalue (int *,int) ;
+ scalar_t__ lua_type (int *,int) ;
+ int mqtt_msg_init (int *,int*,int) ;
+ int * mqtt_msg_publish (int *,char const*,char const*,size_t,int,int,int *) ;
+ scalar_t__ mqtt_send_if_possible (int *) ;
+ int * msg_enqueue (int *,int *,int ,int ,int) ;
+ int msg_size (int *) ;
 
 __attribute__((used)) static int mqtt_socket_publish( lua_State* L )
 {
   NODE_DBG("enter mqtt_socket_publish.\n");
-  struct espconn *pesp_conn = NULL;
+  struct espconn *pesp_conn = ((void*)0);
   lmqtt_userdata *mud;
   size_t l;
   uint8_t stack = 1;
@@ -59,13 +59,13 @@ __attribute__((used)) static int mqtt_socket_publish( lua_State* L )
   mud = (lmqtt_userdata *)luaL_checkudata(L, stack, "mqtt.socket");
   luaL_argcheck(L, mud, stack, "mqtt.socket expected");
   stack++;
-  if(mud==NULL){
+  if(mud==((void*)0)){
     NODE_DBG("userdata is nil.\n");
     lua_pushboolean(L, 0);
     return 1;
   }
 
-  if(mud->pesp_conn == NULL){
+  if(mud->pesp_conn == ((void*)0)){
     NODE_DBG("mud->pesp_conn is NULL.\n");
     lua_pushboolean(L, 0);
     return 1;
@@ -77,7 +77,7 @@ __attribute__((used)) static int mqtt_socket_publish( lua_State* L )
 
   const char *topic = luaL_checklstring( L, stack, &l );
   stack ++;
-  if (topic == NULL){
+  if (topic == ((void*)0)){
     return luaL_error( L, "need topic" );
   }
 
@@ -96,7 +96,7 @@ __attribute__((used)) static int mqtt_socket_publish( lua_State* L )
                        &msg_id);
 
   if (lua_type(L, stack) == LUA_TFUNCTION || lua_type(L, stack) == LUA_TLIGHTFUNCTION){
-    lua_pushvalue(L, stack);  // copy argument (func) to the top of stack
+    lua_pushvalue(L, stack);
     luaL_unref(L, LUA_REGISTRYINDEX, mud->cb_puback_ref);
     mud->cb_puback_ref = luaL_ref(L, LUA_REGISTRYINDEX);
   }
@@ -111,7 +111,7 @@ __attribute__((used)) static int mqtt_socket_publish( lua_State* L )
   if(!node || espconn_status != ESPCONN_OK){
     lua_pushboolean(L, 0);
   } else {
-    lua_pushboolean(L, 1);  // enqueued succeed.
+    lua_pushboolean(L, 1);
   }
 
   NODE_DBG("publish, queue size: %d\n", msg_size(&(mud->mqtt_state.pending_msg_q)));

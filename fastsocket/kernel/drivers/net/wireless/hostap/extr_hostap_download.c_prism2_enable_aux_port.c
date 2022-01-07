@@ -1,129 +1,129 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u16 ;
-struct net_device {int /*<<< orphan*/  name; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u16 ;
+struct net_device {int name; } ;
 struct hostap_interface {TYPE_1__* local; } ;
-struct TYPE_2__ {int /*<<< orphan*/  cmdlock; scalar_t__ no_pri; } ;
-typedef  TYPE_1__ local_info_t ;
+struct TYPE_2__ {int cmdlock; scalar_t__ no_pri; } ;
+typedef TYPE_1__ local_info_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEBUG_EXTRA2 ; 
- int ETIMEDOUT ; 
- int HFA384X_AUX_MAGIC0 ; 
- int HFA384X_AUX_MAGIC1 ; 
- int HFA384X_AUX_MAGIC2 ; 
- int HFA384X_AUX_PORT_DISABLE ; 
- int HFA384X_AUX_PORT_DISABLED ; 
- int HFA384X_AUX_PORT_ENABLE ; 
- int HFA384X_AUX_PORT_ENABLED ; 
- int HFA384X_AUX_PORT_MASK ; 
- int HFA384X_CMD_BUSY ; 
- int HFA384X_CMD_BUSY_TIMEOUT ; 
- int /*<<< orphan*/  HFA384X_CMD_OFF ; 
- int /*<<< orphan*/  HFA384X_CONTROL_OFF ; 
- int HFA384X_INW (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HFA384X_OUTW (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HFA384X_PARAM0_OFF ; 
- int /*<<< orphan*/  HFA384X_PARAM1_OFF ; 
- int /*<<< orphan*/  HFA384X_PARAM2_OFF ; 
- int /*<<< orphan*/  PDEBUG (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- struct hostap_interface* netdev_priv (struct net_device*) ; 
- int /*<<< orphan*/  printk (char*,...) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  udelay (int) ; 
+
+ int DEBUG_EXTRA2 ;
+ int ETIMEDOUT ;
+ int HFA384X_AUX_MAGIC0 ;
+ int HFA384X_AUX_MAGIC1 ;
+ int HFA384X_AUX_MAGIC2 ;
+ int HFA384X_AUX_PORT_DISABLE ;
+ int HFA384X_AUX_PORT_DISABLED ;
+ int HFA384X_AUX_PORT_ENABLE ;
+ int HFA384X_AUX_PORT_ENABLED ;
+ int HFA384X_AUX_PORT_MASK ;
+ int HFA384X_CMD_BUSY ;
+ int HFA384X_CMD_BUSY_TIMEOUT ;
+ int HFA384X_CMD_OFF ;
+ int HFA384X_CONTROL_OFF ;
+ int HFA384X_INW (int ) ;
+ int HFA384X_OUTW (int,int ) ;
+ int HFA384X_PARAM0_OFF ;
+ int HFA384X_PARAM1_OFF ;
+ int HFA384X_PARAM2_OFF ;
+ int PDEBUG (int ,char*,int ) ;
+ struct hostap_interface* netdev_priv (struct net_device*) ;
+ int printk (char*,...) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
+ int udelay (int) ;
 
 __attribute__((used)) static int prism2_enable_aux_port(struct net_device *dev, int enable)
 {
-	u16 val, reg;
-	int i, tries;
-	unsigned long flags;
-	struct hostap_interface *iface;
-	local_info_t *local;
+ u16 val, reg;
+ int i, tries;
+ unsigned long flags;
+ struct hostap_interface *iface;
+ local_info_t *local;
 
-	iface = netdev_priv(dev);
-	local = iface->local;
+ iface = netdev_priv(dev);
+ local = iface->local;
 
-	if (local->no_pri) {
-		if (enable) {
-			PDEBUG(DEBUG_EXTRA2, "%s: no PRI f/w - assuming Aux "
-			       "port is already enabled\n", dev->name);
-		}
-		return 0;
-	}
+ if (local->no_pri) {
+  if (enable) {
+   PDEBUG(DEBUG_EXTRA2, "%s: no PRI f/w - assuming Aux "
+          "port is already enabled\n", dev->name);
+  }
+  return 0;
+ }
 
-	spin_lock_irqsave(&local->cmdlock, flags);
+ spin_lock_irqsave(&local->cmdlock, flags);
 
-	/* wait until busy bit is clear */
-	tries = HFA384X_CMD_BUSY_TIMEOUT;
-	while (HFA384X_INW(HFA384X_CMD_OFF) & HFA384X_CMD_BUSY && tries > 0) {
-		tries--;
-		udelay(1);
-	}
-	if (tries == 0) {
-		reg = HFA384X_INW(HFA384X_CMD_OFF);
-		spin_unlock_irqrestore(&local->cmdlock, flags);
-		printk("%s: prism2_enable_aux_port - timeout - reg=0x%04x\n",
-		       dev->name, reg);
-		return -ETIMEDOUT;
-	}
 
-	val = HFA384X_INW(HFA384X_CONTROL_OFF);
+ tries = HFA384X_CMD_BUSY_TIMEOUT;
+ while (HFA384X_INW(HFA384X_CMD_OFF) & HFA384X_CMD_BUSY && tries > 0) {
+  tries--;
+  udelay(1);
+ }
+ if (tries == 0) {
+  reg = HFA384X_INW(HFA384X_CMD_OFF);
+  spin_unlock_irqrestore(&local->cmdlock, flags);
+  printk("%s: prism2_enable_aux_port - timeout - reg=0x%04x\n",
+         dev->name, reg);
+  return -ETIMEDOUT;
+ }
 
-	if (enable) {
-		HFA384X_OUTW(HFA384X_AUX_MAGIC0, HFA384X_PARAM0_OFF);
-		HFA384X_OUTW(HFA384X_AUX_MAGIC1, HFA384X_PARAM1_OFF);
-		HFA384X_OUTW(HFA384X_AUX_MAGIC2, HFA384X_PARAM2_OFF);
+ val = HFA384X_INW(HFA384X_CONTROL_OFF);
 
-		if ((val & HFA384X_AUX_PORT_MASK) != HFA384X_AUX_PORT_DISABLED)
-			printk("prism2_enable_aux_port: was not disabled!?\n");
-		val &= ~HFA384X_AUX_PORT_MASK;
-		val |= HFA384X_AUX_PORT_ENABLE;
-	} else {
-		HFA384X_OUTW(0, HFA384X_PARAM0_OFF);
-		HFA384X_OUTW(0, HFA384X_PARAM1_OFF);
-		HFA384X_OUTW(0, HFA384X_PARAM2_OFF);
+ if (enable) {
+  HFA384X_OUTW(HFA384X_AUX_MAGIC0, HFA384X_PARAM0_OFF);
+  HFA384X_OUTW(HFA384X_AUX_MAGIC1, HFA384X_PARAM1_OFF);
+  HFA384X_OUTW(HFA384X_AUX_MAGIC2, HFA384X_PARAM2_OFF);
 
-		if ((val & HFA384X_AUX_PORT_MASK) != HFA384X_AUX_PORT_ENABLED)
-			printk("prism2_enable_aux_port: was not enabled!?\n");
-		val &= ~HFA384X_AUX_PORT_MASK;
-		val |= HFA384X_AUX_PORT_DISABLE;
-	}
-	HFA384X_OUTW(val, HFA384X_CONTROL_OFF);
+  if ((val & HFA384X_AUX_PORT_MASK) != HFA384X_AUX_PORT_DISABLED)
+   printk("prism2_enable_aux_port: was not disabled!?\n");
+  val &= ~HFA384X_AUX_PORT_MASK;
+  val |= HFA384X_AUX_PORT_ENABLE;
+ } else {
+  HFA384X_OUTW(0, HFA384X_PARAM0_OFF);
+  HFA384X_OUTW(0, HFA384X_PARAM1_OFF);
+  HFA384X_OUTW(0, HFA384X_PARAM2_OFF);
 
-	udelay(5);
+  if ((val & HFA384X_AUX_PORT_MASK) != HFA384X_AUX_PORT_ENABLED)
+   printk("prism2_enable_aux_port: was not enabled!?\n");
+  val &= ~HFA384X_AUX_PORT_MASK;
+  val |= HFA384X_AUX_PORT_DISABLE;
+ }
+ HFA384X_OUTW(val, HFA384X_CONTROL_OFF);
 
-	i = 10000;
-	while (i > 0) {
-		val = HFA384X_INW(HFA384X_CONTROL_OFF);
-		val &= HFA384X_AUX_PORT_MASK;
+ udelay(5);
 
-		if ((enable && val == HFA384X_AUX_PORT_ENABLED) ||
-		    (!enable && val == HFA384X_AUX_PORT_DISABLED))
-			break;
+ i = 10000;
+ while (i > 0) {
+  val = HFA384X_INW(HFA384X_CONTROL_OFF);
+  val &= HFA384X_AUX_PORT_MASK;
 
-		udelay(10);
-		i--;
-	}
+  if ((enable && val == HFA384X_AUX_PORT_ENABLED) ||
+      (!enable && val == HFA384X_AUX_PORT_DISABLED))
+   break;
 
-	spin_unlock_irqrestore(&local->cmdlock, flags);
+  udelay(10);
+  i--;
+ }
 
-	if (i == 0) {
-		printk("prism2_enable_aux_port(%d) timed out\n",
-		       enable);
-		return -ETIMEDOUT;
-	}
+ spin_unlock_irqrestore(&local->cmdlock, flags);
 
-	return 0;
+ if (i == 0) {
+  printk("prism2_enable_aux_port(%d) timed out\n",
+         enable);
+  return -ETIMEDOUT;
+ }
+
+ return 0;
 }

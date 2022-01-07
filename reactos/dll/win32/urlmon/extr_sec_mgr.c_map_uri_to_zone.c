@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  IUri ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CoInternetGetSecurityUrlEx (int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IUri_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PSU_SECURITY_URL_ONLY ; 
- int /*<<< orphan*/  map_security_uri_to_zone (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int IUri ;
+typedef int HRESULT ;
+typedef int DWORD ;
+
+
+ int CoInternetGetSecurityUrlEx (int *,int **,int ,int ) ;
+ scalar_t__ FAILED (int ) ;
+ int IUri_Release (int *) ;
+ int PSU_SECURITY_URL_ONLY ;
+ int map_security_uri_to_zone (int *,int *) ;
 
 __attribute__((used)) static HRESULT map_uri_to_zone(IUri *uri, DWORD *zone, IUri **ret_uri)
 {

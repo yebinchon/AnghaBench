@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  opj_sparse_array_int32_t ;
-typedef  int /*<<< orphan*/  buffer ;
-typedef  int OPJ_UINT32 ;
-typedef  int OPJ_INT32 ;
-typedef  int OPJ_BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OPJ_FALSE ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  memset (int*,int,int) ; 
- int /*<<< orphan*/ * opj_sparse_array_int32_create (int,int,int,int) ; 
- int /*<<< orphan*/  opj_sparse_array_int32_free (int /*<<< orphan*/ *) ; 
- int opj_sparse_array_int32_read (int /*<<< orphan*/ *,int,int,int,int,int*,int,int,int /*<<< orphan*/ ) ; 
- int opj_sparse_array_int32_write (int /*<<< orphan*/ *,int,int,int,int,int*,int,int,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int opj_sparse_array_int32_t ;
+typedef int buffer ;
+typedef int OPJ_UINT32 ;
+typedef int OPJ_INT32 ;
+typedef int OPJ_BOOL ;
+
+
+ int OPJ_FALSE ;
+ int assert (int) ;
+ int memset (int*,int,int) ;
+ int * opj_sparse_array_int32_create (int,int,int,int) ;
+ int opj_sparse_array_int32_free (int *) ;
+ int opj_sparse_array_int32_read (int *,int,int,int,int,int*,int,int,int ) ;
+ int opj_sparse_array_int32_write (int *,int,int,int,int,int*,int,int,int ) ;
 
 int main()
 {
@@ -33,20 +33,20 @@ int main()
     opj_sparse_array_int32_t* sa;
 
     sa = opj_sparse_array_int32_create(0, 1, 1, 1);
-    assert(sa == NULL);
+    assert(sa == ((void*)0));
     opj_sparse_array_int32_free(sa);
 
     sa = opj_sparse_array_int32_create(1, 0, 1, 1);
-    assert(sa == NULL);
+    assert(sa == ((void*)0));
 
     sa = opj_sparse_array_int32_create(1, 1, 0, 1);
-    assert(sa == NULL);
+    assert(sa == ((void*)0));
 
     sa = opj_sparse_array_int32_create(1, 1, 1, 0);
-    assert(sa == NULL);
+    assert(sa == ((void*)0));
 
     sa = opj_sparse_array_int32_create(99, 101, ~0U, ~0U);
-    assert(sa == NULL);
+    assert(sa == ((void*)0));
 
     sa = opj_sparse_array_int32_create(99, 101, 15, 17);
     opj_sparse_array_int32_free(sa);

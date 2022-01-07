@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  char const* LPWSTR ;
-typedef  scalar_t__ HRESULT ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CoTaskMemFree (char const*) ; 
- scalar_t__ ITask_GetComment (int /*<<< orphan*/ ,char const**) ; 
- scalar_t__ ITask_SetComment (int /*<<< orphan*/ ,char const*) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  cleanup_task () ; 
- char const* empty ; 
- int /*<<< orphan*/  lstrcmpW (char const*,char const*) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  setup_task () ; 
- int /*<<< orphan*/  skip (char*) ; 
- int /*<<< orphan*/  test_task ; 
- scalar_t__ wine_dbgstr_w (char const*) ; 
+
+
+
+typedef char WCHAR ;
+typedef char const* LPWSTR ;
+typedef scalar_t__ HRESULT ;
+typedef int BOOL ;
+
+
+ int CoTaskMemFree (char const*) ;
+ scalar_t__ ITask_GetComment (int ,char const**) ;
+ scalar_t__ ITask_SetComment (int ,char const*) ;
+ scalar_t__ S_OK ;
+ int cleanup_task () ;
+ char const* empty ;
+ int lstrcmpW (char const*,char const*) ;
+ int ok (int,char*,...) ;
+ int setup_task () ;
+ int skip (char*) ;
+ int test_task ;
+ scalar_t__ wine_dbgstr_w (char const*) ;
 
 __attribute__((used)) static void test_SetComment_GetComment(void)
 {
@@ -46,7 +46,7 @@ __attribute__((used)) static void test_SetComment_GetComment(void)
         return;
     }
 
-    /* Get comment before setting it*/
+
     hres = ITask_GetComment(test_task, &comment);
     ok(hres == S_OK, "GetComment failed: %08x\n", hres);
     if (hres == S_OK)
@@ -56,7 +56,7 @@ __attribute__((used)) static void test_SetComment_GetComment(void)
         CoTaskMemFree(comment);
     }
 
-    /* Set comment to a simple string */
+
     hres = ITask_SetComment(test_task, comment_a);
     ok(hres == S_OK, "Failed setting comment %s: %08x\n",
             wine_dbgstr_w(comment_a), hres);
@@ -69,7 +69,7 @@ __attribute__((used)) static void test_SetComment_GetComment(void)
         CoTaskMemFree(comment);
     }
 
-    /* Update comment to a different simple string */
+
     hres = ITask_SetComment(test_task, comment_b);
     ok(hres == S_OK, "Failed setting comment %s: %08x\n",
             wine_dbgstr_w(comment_b), hres);
@@ -82,7 +82,7 @@ __attribute__((used)) static void test_SetComment_GetComment(void)
         CoTaskMemFree(comment);
     }
 
-    /* Clear comment */
+
     hres = ITask_SetComment(test_task, empty);
     ok(hres == S_OK, "Failed setting comment %s: %08x\n",
             wine_dbgstr_w(empty), hres);

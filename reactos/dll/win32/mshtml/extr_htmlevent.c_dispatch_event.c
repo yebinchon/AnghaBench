@@ -1,64 +1,64 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_7__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t eventid_t ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  VARIANT_BOOL ;
-typedef  int /*<<< orphan*/  VARIANT ;
+
+
+typedef struct TYPE_11__ TYPE_7__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef size_t eventid_t ;
+typedef int WCHAR ;
+typedef int VARIANT_BOOL ;
+typedef int VARIANT ;
 struct TYPE_11__ {int flags; } ;
-struct TYPE_10__ {int /*<<< orphan*/  nsnode; int /*<<< orphan*/  doc; } ;
-struct TYPE_9__ {int /*<<< orphan*/  IHTMLEventObj_iface; } ;
-typedef  int /*<<< orphan*/  IHTMLEventObj ;
-typedef  TYPE_1__ HTMLEventObj ;
-typedef  TYPE_2__ HTMLDOMNode ;
-typedef  int /*<<< orphan*/  HRESULT ;
+struct TYPE_10__ {int nsnode; int doc; } ;
+struct TYPE_9__ {int IHTMLEventObj_iface; } ;
+typedef int IHTMLEventObj ;
+typedef TYPE_1__ HTMLEventObj ;
+typedef TYPE_2__ HTMLDOMNode ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*) ; 
- size_t EVENTID_LAST ; 
- int EVENT_DEFAULTLISTENER ; 
- int /*<<< orphan*/  E_FAIL ; 
- int /*<<< orphan*/  E_INVALIDARG ; 
- int /*<<< orphan*/  E_NOTIMPL ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FIXME (char*,...) ; 
- int /*<<< orphan*/  IDispatch_QueryInterface (scalar_t__,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IHTMLEventObj_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IID_IHTMLEventObj ; 
- scalar_t__ SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  VARIANT_TRUE ; 
- scalar_t__ VT_DISPATCH ; 
- scalar_t__ VT_EMPTY ; 
- scalar_t__ VT_ERROR ; 
- scalar_t__ V_DISPATCH (int /*<<< orphan*/ *) ; 
- scalar_t__ V_VT (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  WARN (char*,int /*<<< orphan*/ ) ; 
- size_t attr_to_eid (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  debugstr_variant (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  debugstr_w (int /*<<< orphan*/  const*) ; 
- TYPE_7__* event_info ; 
- int /*<<< orphan*/  fire_event (int /*<<< orphan*/ ,size_t,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fire_event_obj (int /*<<< orphan*/ ,size_t,TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  set_event_info (TYPE_1__*,TYPE_2__*,size_t,int /*<<< orphan*/ *) ; 
- TYPE_1__* unsafe_impl_from_IHTMLEventObj (int /*<<< orphan*/ *) ; 
+
+ int ERR (char*) ;
+ size_t EVENTID_LAST ;
+ int EVENT_DEFAULTLISTENER ;
+ int E_FAIL ;
+ int E_INVALIDARG ;
+ int E_NOTIMPL ;
+ scalar_t__ FAILED (int ) ;
+ int FIXME (char*,...) ;
+ int IDispatch_QueryInterface (scalar_t__,int *,void**) ;
+ int IHTMLEventObj_Release (int *) ;
+ int IID_IHTMLEventObj ;
+ scalar_t__ SUCCEEDED (int ) ;
+ int S_OK ;
+ int TRUE ;
+ int VARIANT_TRUE ;
+ scalar_t__ VT_DISPATCH ;
+ scalar_t__ VT_EMPTY ;
+ scalar_t__ VT_ERROR ;
+ scalar_t__ V_DISPATCH (int *) ;
+ scalar_t__ V_VT (int *) ;
+ int WARN (char*,int ) ;
+ size_t attr_to_eid (int const*) ;
+ int debugstr_variant (int *) ;
+ int debugstr_w (int const*) ;
+ TYPE_7__* event_info ;
+ int fire_event (int ,size_t,int ,int ,int *,int *) ;
+ int fire_event_obj (int ,size_t,TYPE_1__*,int ,int *) ;
+ int set_event_info (TYPE_1__*,TYPE_2__*,size_t,int *) ;
+ TYPE_1__* unsafe_impl_from_IHTMLEventObj (int *) ;
 
 HRESULT dispatch_event(HTMLDOMNode *node, const WCHAR *event_name, VARIANT *event_var, VARIANT_BOOL *cancelled)
 {
-    HTMLEventObj *event_obj = NULL;
+    HTMLEventObj *event_obj = ((void*)0);
     eventid_t eid;
     HRESULT hres;
 
@@ -93,9 +93,9 @@ HRESULT dispatch_event(HTMLDOMNode *node, const WCHAR *event_name, VARIANT *even
     }
 
     if(event_obj) {
-        hres = set_event_info(event_obj, node, eid, NULL);
+        hres = set_event_info(event_obj, node, eid, ((void*)0));
         if(SUCCEEDED(hres))
-            fire_event_obj(node->doc, eid, event_obj, node->nsnode, NULL);
+            fire_event_obj(node->doc, eid, event_obj, node->nsnode, ((void*)0));
 
         IHTMLEventObj_Release(&event_obj->IHTMLEventObj_iface);
         if(FAILED(hres))
@@ -106,9 +106,9 @@ HRESULT dispatch_event(HTMLDOMNode *node, const WCHAR *event_name, VARIANT *even
             return E_NOTIMPL;
         }
 
-        fire_event(node->doc, eid, TRUE, node->nsnode, NULL, NULL);
+        fire_event(node->doc, eid, TRUE, node->nsnode, ((void*)0), ((void*)0));
     }
 
-    *cancelled = VARIANT_TRUE; /* FIXME */
+    *cancelled = VARIANT_TRUE;
     return S_OK;
 }

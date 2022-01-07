@@ -1,73 +1,73 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_5__ ;
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct pstore {int /*<<< orphan*/  metadata_wq; int /*<<< orphan*/  io_client; TYPE_1__* store; } ;
-struct mdata_req {int result; int /*<<< orphan*/  work; struct dm_io_request* io_req; struct dm_io_region* where; } ;
-struct TYPE_9__ {int /*<<< orphan*/ * fn; } ;
+
+
+typedef struct TYPE_10__ TYPE_5__ ;
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct pstore {int metadata_wq; int io_client; TYPE_1__* store; } ;
+struct mdata_req {int result; int work; struct dm_io_request* io_req; struct dm_io_region* where; } ;
+struct TYPE_9__ {int * fn; } ;
 struct TYPE_7__ {void* vma; } ;
-struct TYPE_8__ {TYPE_2__ ptr; int /*<<< orphan*/  type; } ;
-struct dm_io_request {int bi_op; int bi_op_flags; TYPE_4__ notify; int /*<<< orphan*/  client; TYPE_3__ mem; } ;
-struct dm_io_region {int sector; int count; int /*<<< orphan*/  bdev; } ;
-typedef  int chunk_t ;
-struct TYPE_10__ {int /*<<< orphan*/  bdev; } ;
-struct TYPE_6__ {int chunk_size; int /*<<< orphan*/  snap; } ;
+struct TYPE_8__ {TYPE_2__ ptr; int type; } ;
+struct dm_io_request {int bi_op; int bi_op_flags; TYPE_4__ notify; int client; TYPE_3__ mem; } ;
+struct dm_io_region {int sector; int count; int bdev; } ;
+typedef int chunk_t ;
+struct TYPE_10__ {int bdev; } ;
+struct TYPE_6__ {int chunk_size; int snap; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DM_IO_VMA ; 
- int /*<<< orphan*/  INIT_WORK_ONSTACK (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  destroy_work_on_stack (int /*<<< orphan*/ *) ; 
- int dm_io (struct dm_io_request*,int,struct dm_io_region*,int /*<<< orphan*/ *) ; 
- TYPE_5__* dm_snap_cow (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  do_metadata ; 
- int /*<<< orphan*/  flush_workqueue (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  queue_work (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int DM_IO_VMA ;
+ int INIT_WORK_ONSTACK (int *,int ) ;
+ int destroy_work_on_stack (int *) ;
+ int dm_io (struct dm_io_request*,int,struct dm_io_region*,int *) ;
+ TYPE_5__* dm_snap_cow (int ) ;
+ int do_metadata ;
+ int flush_workqueue (int ) ;
+ int queue_work (int ,int *) ;
 
 __attribute__((used)) static int chunk_io(struct pstore *ps, void *area, chunk_t chunk, int op,
-		    int op_flags, int metadata)
+      int op_flags, int metadata)
 {
-	struct dm_io_region where = {
-		.bdev = dm_snap_cow(ps->store->snap)->bdev,
-		.sector = ps->store->chunk_size * chunk,
-		.count = ps->store->chunk_size,
-	};
-	struct dm_io_request io_req = {
-		.bi_op = op,
-		.bi_op_flags = op_flags,
-		.mem.type = DM_IO_VMA,
-		.mem.ptr.vma = area,
-		.client = ps->io_client,
-		.notify.fn = NULL,
-	};
-	struct mdata_req req;
+ struct dm_io_region where = {
+  .bdev = dm_snap_cow(ps->store->snap)->bdev,
+  .sector = ps->store->chunk_size * chunk,
+  .count = ps->store->chunk_size,
+ };
+ struct dm_io_request io_req = {
+  .bi_op = op,
+  .bi_op_flags = op_flags,
+  .mem.type = DM_IO_VMA,
+  .mem.ptr.vma = area,
+  .client = ps->io_client,
+  .notify.fn = ((void*)0),
+ };
+ struct mdata_req req;
 
-	if (!metadata)
-		return dm_io(&io_req, 1, &where, NULL);
+ if (!metadata)
+  return dm_io(&io_req, 1, &where, ((void*)0));
 
-	req.where = &where;
-	req.io_req = &io_req;
+ req.where = &where;
+ req.io_req = &io_req;
 
-	/*
-	 * Issue the synchronous I/O from a different thread
-	 * to avoid generic_make_request recursion.
-	 */
-	INIT_WORK_ONSTACK(&req.work, do_metadata);
-	queue_work(ps->metadata_wq, &req.work);
-	flush_workqueue(ps->metadata_wq);
-	destroy_work_on_stack(&req.work);
 
-	return req.result;
+
+
+
+ INIT_WORK_ONSTACK(&req.work, do_metadata);
+ queue_work(ps->metadata_wq, &req.work);
+ flush_workqueue(ps->metadata_wq);
+ destroy_work_on_stack(&req.work);
+
+ return req.result;
 }

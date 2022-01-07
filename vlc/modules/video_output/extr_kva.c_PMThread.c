@@ -1,102 +1,102 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_19__   TYPE_5__ ;
-typedef  struct TYPE_18__   TYPE_4__ ;
-typedef  struct TYPE_17__   TYPE_3__ ;
-typedef  struct TYPE_16__   TYPE_2__ ;
-typedef  struct TYPE_15__   TYPE_1__ ;
-typedef  struct TYPE_14__   TYPE_10__ ;
 
-/* Type definitions */
-struct TYPE_18__ {int /*<<< orphan*/  close; int /*<<< orphan*/  control; int /*<<< orphan*/  display; int /*<<< orphan*/  prepare; TYPE_1__* cfg; TYPE_5__* sys; } ;
-typedef  TYPE_4__ vout_display_t ;
+
+
+typedef struct TYPE_19__ TYPE_5__ ;
+typedef struct TYPE_18__ TYPE_4__ ;
+typedef struct TYPE_17__ TYPE_3__ ;
+typedef struct TYPE_16__ TYPE_2__ ;
+typedef struct TYPE_15__ TYPE_1__ ;
+typedef struct TYPE_14__ TYPE_10__ ;
+
+
+struct TYPE_18__ {int close; int control; int display; int prepare; TYPE_1__* cfg; TYPE_5__* sys; } ;
+typedef TYPE_4__ vout_display_t ;
 struct TYPE_14__ {int ulMode; } ;
-struct TYPE_19__ {scalar_t__ frame; scalar_t__ client; int /*<<< orphan*/  ack_event; int /*<<< orphan*/  i_result; int /*<<< orphan*/  hab; int /*<<< orphan*/  hmq; scalar_t__ is_mouse_hidden; int /*<<< orphan*/  p_old_frame; TYPE_3__* parent_window; TYPE_10__ kvac; scalar_t__ parent; int /*<<< orphan*/  b_fixt23; } ;
-typedef  TYPE_5__ vout_display_sys_t ;
-typedef  int /*<<< orphan*/  vout_display_cfg_t ;
-typedef  int /*<<< orphan*/  video_format_t ;
-struct open_init {int /*<<< orphan*/ * fmtp; int /*<<< orphan*/ * cfg; TYPE_4__* vd; } ;
-typedef  int ULONG ;
+struct TYPE_19__ {scalar_t__ frame; scalar_t__ client; int ack_event; int i_result; int hab; int hmq; scalar_t__ is_mouse_hidden; int p_old_frame; TYPE_3__* parent_window; TYPE_10__ kvac; scalar_t__ parent; int b_fixt23; } ;
+typedef TYPE_5__ vout_display_sys_t ;
+typedef int vout_display_cfg_t ;
+typedef int video_format_t ;
+struct open_init {int * fmtp; int * cfg; TYPE_4__* vd; } ;
+typedef int ULONG ;
 struct TYPE_16__ {scalar_t__ hwnd; } ;
 struct TYPE_17__ {scalar_t__ type; TYPE_2__ handle; } ;
 struct TYPE_15__ {TYPE_3__* window; } ;
-typedef  int /*<<< orphan*/  QMSG ;
-typedef  int /*<<< orphan*/  PVOID ;
-typedef  scalar_t__ HWND ;
+typedef int QMSG ;
+typedef int PVOID ;
+typedef scalar_t__ HWND ;
 
-/* Variables and functions */
- int /*<<< orphan*/  COLOR_KEY ; 
- int CS_MOVENOTIFY ; 
- int CS_SIZEREDRAW ; 
- int /*<<< orphan*/  Close ; 
- int /*<<< orphan*/  CloseDisplay (TYPE_4__*) ; 
- int /*<<< orphan*/  Control ; 
- int /*<<< orphan*/  Display ; 
- int /*<<< orphan*/  DosPostEventSem (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- int FCF_MINMAX ; 
- int FCF_SIZEBORDER ; 
- int FCF_SYSMENU ; 
- int FCF_TASKLIST ; 
- int FCF_TITLEBAR ; 
- scalar_t__ HWND_DESKTOP ; 
- int KVAM_AUTO ; 
- int KVAM_DIVE ; 
- int KVAM_SNAP ; 
- int KVAM_VMAN ; 
- int KVAM_WO ; 
- int /*<<< orphan*/  MCW_EM ; 
- int /*<<< orphan*/  MorphToPM () ; 
- int /*<<< orphan*/  MyFrameWndProc ; 
- scalar_t__ NULLHANDLE ; 
- scalar_t__ OpenDisplay (TYPE_4__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Prepare ; 
- int /*<<< orphan*/  QWL_STYLE ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  VLC_EGENERIC ; 
- int /*<<< orphan*/  VLC_SUCCESS ; 
- scalar_t__ VOUT_WINDOW_TYPE_HWND ; 
- int /*<<< orphan*/  WC_VLC_KVA ; 
- int WS_CLIPCHILDREN ; 
- int /*<<< orphan*/  WS_VISIBLE ; 
- int /*<<< orphan*/  WinCreateMsgQueue (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ WinCreateStdWindow (scalar_t__,int /*<<< orphan*/ ,int*,int /*<<< orphan*/ ,char*,long,scalar_t__,int,scalar_t__*) ; 
- int /*<<< orphan*/  WinDestroyMsgQueue (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WinDestroyWindow (scalar_t__) ; 
- int /*<<< orphan*/  WinDispatchMsg (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ WinGetMsg (int /*<<< orphan*/ ,int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WinInitialize (int /*<<< orphan*/ ) ; 
- int WinQueryWindowULong (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WinRegisterClass (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  WinSetVisibleRegionNotify (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WinSetWindowPtr (scalar_t__,int /*<<< orphan*/ ,TYPE_4__*) ; 
- int /*<<< orphan*/  WinSetWindowULong (scalar_t__,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  WinShowPointer (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WinSubclassWindow (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WinTerminate (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WndProc ; 
- int /*<<< orphan*/  _control87 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  kvaCaps (TYPE_10__*) ; 
- int /*<<< orphan*/  kvaDisableScreenSaver () ; 
- int /*<<< orphan*/  kvaDone () ; 
- int /*<<< orphan*/  kvaEnableScreenSaver () ; 
- scalar_t__ kvaInit (int,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  msg_Dbg (TYPE_4__*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  msg_Err (TYPE_4__*,char*) ; 
- int /*<<< orphan*/ * psz_video_mode ; 
- scalar_t__ strcmp (char*,char*) ; 
- int /*<<< orphan*/  var_CreateGetBool (TYPE_4__*,char*) ; 
- char* var_CreateGetString (TYPE_4__*,char*) ; 
- int /*<<< orphan*/  video_format_ApplyRotation (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int COLOR_KEY ;
+ int CS_MOVENOTIFY ;
+ int CS_SIZEREDRAW ;
+ int Close ;
+ int CloseDisplay (TYPE_4__*) ;
+ int Control ;
+ int Display ;
+ int DosPostEventSem (int ) ;
+ int FALSE ;
+ int FCF_MINMAX ;
+ int FCF_SIZEBORDER ;
+ int FCF_SYSMENU ;
+ int FCF_TASKLIST ;
+ int FCF_TITLEBAR ;
+ scalar_t__ HWND_DESKTOP ;
+ int KVAM_AUTO ;
+ int KVAM_DIVE ;
+ int KVAM_SNAP ;
+ int KVAM_VMAN ;
+ int KVAM_WO ;
+ int MCW_EM ;
+ int MorphToPM () ;
+ int MyFrameWndProc ;
+ scalar_t__ NULLHANDLE ;
+ scalar_t__ OpenDisplay (TYPE_4__*,int *) ;
+ int Prepare ;
+ int QWL_STYLE ;
+ int TRUE ;
+ int VLC_EGENERIC ;
+ int VLC_SUCCESS ;
+ scalar_t__ VOUT_WINDOW_TYPE_HWND ;
+ int WC_VLC_KVA ;
+ int WS_CLIPCHILDREN ;
+ int WS_VISIBLE ;
+ int WinCreateMsgQueue (int ,int ) ;
+ scalar_t__ WinCreateStdWindow (scalar_t__,int ,int*,int ,char*,long,scalar_t__,int,scalar_t__*) ;
+ int WinDestroyMsgQueue (int ) ;
+ int WinDestroyWindow (scalar_t__) ;
+ int WinDispatchMsg (int ,int *) ;
+ scalar_t__ WinGetMsg (int ,int *,scalar_t__,int ,int ) ;
+ int WinInitialize (int ) ;
+ int WinQueryWindowULong (scalar_t__,int ) ;
+ int WinRegisterClass (int ,int ,int ,int,int) ;
+ int WinSetVisibleRegionNotify (scalar_t__,int ) ;
+ int WinSetWindowPtr (scalar_t__,int ,TYPE_4__*) ;
+ int WinSetWindowULong (scalar_t__,int ,int) ;
+ int WinShowPointer (scalar_t__,int ) ;
+ int WinSubclassWindow (scalar_t__,int ) ;
+ int WinTerminate (int ) ;
+ int WndProc ;
+ int _control87 (int ,int ) ;
+ int free (char*) ;
+ int kvaCaps (TYPE_10__*) ;
+ int kvaDisableScreenSaver () ;
+ int kvaDone () ;
+ int kvaEnableScreenSaver () ;
+ scalar_t__ kvaInit (int,scalar_t__,int ) ;
+ int msg_Dbg (TYPE_4__*,char*,int ) ;
+ int msg_Err (TYPE_4__*,char*) ;
+ int * psz_video_mode ;
+ scalar_t__ strcmp (char*,char*) ;
+ int var_CreateGetBool (TYPE_4__*,char*) ;
+ char* var_CreateGetString (TYPE_4__*,char*) ;
+ int video_format_ApplyRotation (int *,int *) ;
 
 __attribute__((used)) static void PMThread( void *arg )
 {
@@ -110,11 +110,11 @@ __attribute__((used)) static void PMThread( void *arg )
     char *psz_mode;
     ULONG i_kva_mode;
 
-    /* */
+
     video_format_t fmt;
     video_format_ApplyRotation(&fmt, fmtp);
 
-    /* */
+
     MorphToPM();
 
     sys->hab = WinInitialize( 0 );
@@ -129,7 +129,7 @@ __attribute__((used)) static void PMThread( void *arg )
     sys->b_fixt23 = var_CreateGetBool( vd, "kva-fixt23");
 
     if( !sys->b_fixt23 && vd->cfg->window->type == VOUT_WINDOW_TYPE_HWND )
-        /* If an external window was specified, we'll draw in it. */
+
         sys->parent_window = vd->cfg->window;
 
     if( sys->parent_window )
@@ -146,20 +146,20 @@ __attribute__((used)) static void PMThread( void *arg )
     {
         sys->parent = HWND_DESKTOP;
 
-        i_frame_flags = FCF_SYSMENU    | FCF_TITLEBAR | FCF_MINMAX |
+        i_frame_flags = FCF_SYSMENU | FCF_TITLEBAR | FCF_MINMAX |
                         FCF_SIZEBORDER | FCF_TASKLIST;
     }
 
     sys->frame =
-        WinCreateStdWindow( sys->parent,      /* parent window handle */
-                            WS_VISIBLE,       /* frame window style */
-                            &i_frame_flags,   /* window style */
-                            WC_VLC_KVA,       /* class name */
-                            "",               /* window title */
-                            0L,               /* default client style */
-                            NULLHANDLE,       /* resource in exe file */
-                            1,                /* frame window id */
-                            &sys->client );   /* client window handle */
+        WinCreateStdWindow( sys->parent,
+                            WS_VISIBLE,
+                            &i_frame_flags,
+                            WC_VLC_KVA,
+                            "",
+                            0L,
+                            NULLHANDLE,
+                            1,
+                            &sys->client );
 
     if( sys->frame == NULLHANDLE )
     {
@@ -211,15 +211,15 @@ __attribute__((used)) static void PMThread( void *arg )
 
     kvaDisableScreenSaver();
 
-    /* Setup vout_display now that everything is fine */
-    *fmtp       = fmt;
+
+    *fmtp = fmt;
 
     vd->prepare = Prepare;
     vd->display = Display;
     vd->control = Control;
     vd->close = Close;
 
-    /* Prevent SIG_FPE */
+
     _control87(MCW_EM, MCW_EM);
 
     sys->i_result = VLC_SUCCESS;
@@ -238,7 +238,7 @@ __attribute__((used)) static void PMThread( void *arg )
 
     CloseDisplay( vd );
 
-    /* fall through */
+
 
 exit_open_display :
     kvaDone();

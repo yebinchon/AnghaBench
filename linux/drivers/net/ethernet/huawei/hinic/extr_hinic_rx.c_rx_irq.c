@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct hinic_rxq {int /*<<< orphan*/  napi; int /*<<< orphan*/  netdev; struct hinic_rq* rq; } ;
-struct hinic_rq {int /*<<< orphan*/  msix_entry; } ;
-struct hinic_dev {int /*<<< orphan*/  hwdev; } ;
-typedef  int /*<<< orphan*/  irqreturn_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HINIC_MSIX_DISABLE ; 
- int /*<<< orphan*/  IRQ_HANDLED ; 
- int /*<<< orphan*/  hinic_hwdev_msix_cnt_set (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hinic_hwdev_set_msix_state (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  napi_schedule (int /*<<< orphan*/ *) ; 
- struct hinic_dev* netdev_priv (int /*<<< orphan*/ ) ; 
+
+
+
+struct hinic_rxq {int napi; int netdev; struct hinic_rq* rq; } ;
+struct hinic_rq {int msix_entry; } ;
+struct hinic_dev {int hwdev; } ;
+typedef int irqreturn_t ;
+
+
+ int HINIC_MSIX_DISABLE ;
+ int IRQ_HANDLED ;
+ int hinic_hwdev_msix_cnt_set (int ,int ) ;
+ int hinic_hwdev_set_msix_state (int ,int ,int ) ;
+ int napi_schedule (int *) ;
+ struct hinic_dev* netdev_priv (int ) ;
 
 __attribute__((used)) static irqreturn_t rx_irq(int irq, void *data)
 {
-	struct hinic_rxq *rxq = (struct hinic_rxq *)data;
-	struct hinic_rq *rq = rxq->rq;
-	struct hinic_dev *nic_dev;
+ struct hinic_rxq *rxq = (struct hinic_rxq *)data;
+ struct hinic_rq *rq = rxq->rq;
+ struct hinic_dev *nic_dev;
 
-	/* Disable the interrupt until napi will be completed */
-	nic_dev = netdev_priv(rxq->netdev);
-	hinic_hwdev_set_msix_state(nic_dev->hwdev,
-				   rq->msix_entry,
-				   HINIC_MSIX_DISABLE);
 
-	nic_dev = netdev_priv(rxq->netdev);
-	hinic_hwdev_msix_cnt_set(nic_dev->hwdev, rq->msix_entry);
+ nic_dev = netdev_priv(rxq->netdev);
+ hinic_hwdev_set_msix_state(nic_dev->hwdev,
+       rq->msix_entry,
+       HINIC_MSIX_DISABLE);
 
-	napi_schedule(&rxq->napi);
-	return IRQ_HANDLED;
+ nic_dev = netdev_priv(rxq->netdev);
+ hinic_hwdev_msix_cnt_set(nic_dev->hwdev, rq->msix_entry);
+
+ napi_schedule(&rxq->napi);
+ return IRQ_HANDLED;
 }

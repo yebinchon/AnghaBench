@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64_t ;
-struct TYPE_3__ {int /*<<< orphan*/  db_holds; } ;
-typedef  TYPE_1__ dmu_buf_impl_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  zfs_refcount_count (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint64_t ;
+struct TYPE_3__ {int db_holds; } ;
+typedef TYPE_1__ dmu_buf_impl_t ;
+
+
+ int zfs_refcount_count (int *) ;
 
 uint64_t
 dbuf_refcount(dmu_buf_impl_t *db)
 {
-	return (zfs_refcount_count(&db->db_holds));
+ return (zfs_refcount_count(&db->db_holds));
 }

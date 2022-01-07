@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct iio_dev {int dummy; } ;
-struct bmc150_accel_data {int /*<<< orphan*/  mutex; } ;
+struct bmc150_accel_data {int mutex; } ;
 
-/* Variables and functions */
- int __bmc150_accel_fifo_flush (struct iio_dev*,unsigned int,int) ; 
- struct bmc150_accel_data* iio_priv (struct iio_dev*) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
+
+ int __bmc150_accel_fifo_flush (struct iio_dev*,unsigned int,int) ;
+ struct bmc150_accel_data* iio_priv (struct iio_dev*) ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
 
 __attribute__((used)) static int bmc150_accel_fifo_flush(struct iio_dev *indio_dev, unsigned samples)
 {
-	struct bmc150_accel_data *data = iio_priv(indio_dev);
-	int ret;
+ struct bmc150_accel_data *data = iio_priv(indio_dev);
+ int ret;
 
-	mutex_lock(&data->mutex);
-	ret = __bmc150_accel_fifo_flush(indio_dev, samples, false);
-	mutex_unlock(&data->mutex);
+ mutex_lock(&data->mutex);
+ ret = __bmc150_accel_fifo_flush(indio_dev, samples, 0);
+ mutex_unlock(&data->mutex);
 
-	return ret;
+ return ret;
 }

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  posix_tnode ;
-typedef  int /*<<< orphan*/ * cmp_fn_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  trecurse (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int posix_tnode ;
+typedef int * cmp_fn_t ;
+
+
+ int trecurse (int const*,int *,int ) ;
 
 void
 twalk(const posix_tnode *vroot, cmp_fn_t action)
 {
-	if (vroot != NULL && action != NULL)
-		trecurse(vroot, action, 0);
+ if (vroot != ((void*)0) && action != ((void*)0))
+  trecurse(vroot, action, 0);
 }

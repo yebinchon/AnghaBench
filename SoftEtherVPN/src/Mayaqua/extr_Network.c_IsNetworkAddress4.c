@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int UINT ;
-typedef  int /*<<< orphan*/  IP ;
 
-/* Variables and functions */
- int IPToUINT (int /*<<< orphan*/ *) ; 
- int IsIP4 (int /*<<< orphan*/ *) ; 
- int IsSubnetMask4 (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int UINT ;
+typedef int IP ;
+
+
+ int IPToUINT (int *) ;
+ int IsIP4 (int *) ;
+ int IsSubnetMask4 (int *) ;
 
 bool IsNetworkAddress4(IP *ip, IP *mask)
 {
-	UINT a, b;
-	// Validate arguments
-	if (ip == NULL || mask == NULL)
-	{
-		return false;
-	}
+ UINT a, b;
 
-	if (IsIP4(ip) == false || IsIP4(mask) == false)
-	{
-		return false;
-	}
+ if (ip == ((void*)0) || mask == ((void*)0))
+ {
+  return 0;
+ }
 
-	if (IsSubnetMask4(mask) == false)
-	{
-		return false;
-	}
+ if (IsIP4(ip) == 0 || IsIP4(mask) == 0)
+ {
+  return 0;
+ }
 
-	a = IPToUINT(ip);
-	b = IPToUINT(mask);
+ if (IsSubnetMask4(mask) == 0)
+ {
+  return 0;
+ }
 
-	if ((a & b) == a)
-	{
-		return true;
-	}
+ a = IPToUINT(ip);
+ b = IPToUINT(mask);
 
-	return false;
+ if ((a & b) == a)
+ {
+  return 1;
+ }
+
+ return 0;
 }

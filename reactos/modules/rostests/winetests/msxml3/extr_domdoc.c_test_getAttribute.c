@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VARIANT_BOOL ;
-typedef  int /*<<< orphan*/  VARIANT ;
-typedef  int /*<<< orphan*/  IXMLDOMElement ;
-typedef  int /*<<< orphan*/  IXMLDOMDocument ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EXPECT_HR (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IID_IXMLDOMDocument ; 
- int /*<<< orphan*/  IXMLDOMDocument_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IXMLDOMDocument_get_documentElement (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IXMLDOMDocument_loadXML (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IXMLDOMElement_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IXMLDOMElement_getAttribute (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  S_FALSE ; 
- int /*<<< orphan*/  S_OK ; 
- scalar_t__ VT_BSTR ; 
- scalar_t__ VT_NULL ; 
- int /*<<< orphan*/  V_BSTR (int /*<<< orphan*/ *) ; 
- scalar_t__ V_VT (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  VariantClear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  VariantInit (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  _bstr_ (char*) ; 
- int /*<<< orphan*/ * create_document (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free_bstrs () ; 
- int /*<<< orphan*/  lstrcmpW (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
- char* szExampleXML ; 
- scalar_t__ wine_dbgstr_w (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int VARIANT_BOOL ;
+typedef int VARIANT ;
+typedef int IXMLDOMElement ;
+typedef int IXMLDOMDocument ;
+typedef int HRESULT ;
+
+
+ int EXPECT_HR (int ,int ) ;
+ int IID_IXMLDOMDocument ;
+ int IXMLDOMDocument_Release (int *) ;
+ int IXMLDOMDocument_get_documentElement (int *,int **) ;
+ int IXMLDOMDocument_loadXML (int *,int ,int *) ;
+ int IXMLDOMElement_Release (int *) ;
+ int IXMLDOMElement_getAttribute (int *,int ,int *) ;
+ int S_FALSE ;
+ int S_OK ;
+ scalar_t__ VT_BSTR ;
+ scalar_t__ VT_NULL ;
+ int V_BSTR (int *) ;
+ scalar_t__ V_VT (int *) ;
+ int VariantClear (int *) ;
+ int VariantInit (int *) ;
+ int _bstr_ (char*) ;
+ int * create_document (int *) ;
+ int free_bstrs () ;
+ int lstrcmpW (int ,int ) ;
+ int ok (int,char*,scalar_t__) ;
+ char* szExampleXML ;
+ scalar_t__ wine_dbgstr_w (int ) ;
 
 __attribute__((used)) static void test_getAttribute(void)
 {

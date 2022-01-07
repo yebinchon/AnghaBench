@@ -1,29 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  printf (char*,...) ; 
+ int printf (char*,...) ;
 
 void print_help(const char* name)
 {
     printf("\n");
     printf("Syntax: %s image_file [list of commands]\n\n", name);
-#if _WIN32
-    printf("Commands: [Note: both '/' and '-' are accepted as command prefixes.]\n");
-#else
+
+
+
     printf("Commands:\n");
-#endif
-    // printf("    -format <sectors> [<filesystem>] [<custom header label>]\n"
+
+
     printf("    -format <sectors> [<custom header label>]\n"
            "            Formats the disk image.\n");
     printf("    -boot <sector file>\n"

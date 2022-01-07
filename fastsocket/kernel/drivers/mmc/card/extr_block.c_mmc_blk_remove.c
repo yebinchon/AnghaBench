@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct mmc_card {int dummy; } ;
-struct mmc_blk_data {int /*<<< orphan*/  queue; int /*<<< orphan*/  disk; } ;
+struct mmc_blk_data {int queue; int disk; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  del_gendisk (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mmc_blk_put (struct mmc_blk_data*) ; 
- int /*<<< orphan*/  mmc_cleanup_queue (int /*<<< orphan*/ *) ; 
- struct mmc_blk_data* mmc_get_drvdata (struct mmc_card*) ; 
- int /*<<< orphan*/  mmc_set_drvdata (struct mmc_card*,int /*<<< orphan*/ *) ; 
+
+ int del_gendisk (int ) ;
+ int mmc_blk_put (struct mmc_blk_data*) ;
+ int mmc_cleanup_queue (int *) ;
+ struct mmc_blk_data* mmc_get_drvdata (struct mmc_card*) ;
+ int mmc_set_drvdata (struct mmc_card*,int *) ;
 
 __attribute__((used)) static void mmc_blk_remove(struct mmc_card *card)
 {
-	struct mmc_blk_data *md = mmc_get_drvdata(card);
+ struct mmc_blk_data *md = mmc_get_drvdata(card);
 
-	if (md) {
-		/* Stop new requests from getting into the queue */
-		del_gendisk(md->disk);
+ if (md) {
 
-		/* Then flush out any already in there */
-		mmc_cleanup_queue(&md->queue);
+  del_gendisk(md->disk);
 
-		mmc_blk_put(md);
-	}
-	mmc_set_drvdata(card, NULL);
+
+  mmc_cleanup_queue(&md->queue);
+
+  mmc_blk_put(md);
+ }
+ mmc_set_drvdata(card, ((void*)0));
 }

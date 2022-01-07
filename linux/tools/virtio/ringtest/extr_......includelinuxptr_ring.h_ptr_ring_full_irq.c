@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ptr_ring {int /*<<< orphan*/  producer_lock; } ;
 
-/* Variables and functions */
- int __ptr_ring_full (struct ptr_ring*) ; 
- int /*<<< orphan*/  spin_lock_irq (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock_irq (int /*<<< orphan*/ *) ; 
+
+
+
+struct ptr_ring {int producer_lock; } ;
+
+
+ int __ptr_ring_full (struct ptr_ring*) ;
+ int spin_lock_irq (int *) ;
+ int spin_unlock_irq (int *) ;
 
 __attribute__((used)) static inline bool ptr_ring_full_irq(struct ptr_ring *r)
 {
-	bool ret;
+ bool ret;
 
-	spin_lock_irq(&r->producer_lock);
-	ret = __ptr_ring_full(r);
-	spin_unlock_irq(&r->producer_lock);
+ spin_lock_irq(&r->producer_lock);
+ ret = __ptr_ring_full(r);
+ spin_unlock_irq(&r->producer_lock);
 
-	return ret;
+ return ret;
 }

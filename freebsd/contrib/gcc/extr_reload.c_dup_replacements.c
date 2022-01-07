@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct replacement {int /*<<< orphan*/  mode; int /*<<< orphan*/  what; int /*<<< orphan*/ * where; } ;
-typedef  int /*<<< orphan*/  rtx ;
 
-/* Variables and functions */
- int n_replacements ; 
- int /*<<< orphan*/  push_replacement (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- struct replacement* replacements ; 
+
+
+
+struct replacement {int mode; int what; int * where; } ;
+typedef int rtx ;
+
+
+ int n_replacements ;
+ int push_replacement (int *,int ,int ) ;
+ struct replacement* replacements ;
 
 __attribute__((used)) static void
 dup_replacements (rtx *dup_loc, rtx *orig_loc)
@@ -27,6 +27,6 @@ dup_replacements (rtx *dup_loc, rtx *orig_loc)
     {
       struct replacement *r = &replacements[i];
       if (r->where == orig_loc)
-	push_replacement (dup_loc, r->what, r->mode);
+ push_replacement (dup_loc, r->what, r->mode);
     }
 }

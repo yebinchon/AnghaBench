@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct vfp_double {scalar_t__ sign; int /*<<< orphan*/  significand; int /*<<< orphan*/  exponent; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  pr_debug (char*,char const*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct vfp_double {scalar_t__ sign; int significand; int exponent; } ;
+
+
+ int pr_debug (char*,char const*,int,int ,int ) ;
 
 __attribute__((used)) static void vfp_double_dump(const char *str, struct vfp_double *d)
 {
-	pr_debug("VFP: %s: sign=%d exponent=%d significand=%016llx\n",
-		 str, d->sign != 0, d->exponent, d->significand);
+ pr_debug("VFP: %s: sign=%d exponent=%d significand=%016llx\n",
+   str, d->sign != 0, d->exponent, d->significand);
 }

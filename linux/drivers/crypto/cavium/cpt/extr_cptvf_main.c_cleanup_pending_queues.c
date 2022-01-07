@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct pci_dev {int /*<<< orphan*/  dev; } ;
-struct cpt_vf {int /*<<< orphan*/  pqinfo; int /*<<< orphan*/  nr_queues; struct pci_dev* pdev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dev_info (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free_pending_queues (int /*<<< orphan*/ *) ; 
+
+
+
+struct pci_dev {int dev; } ;
+struct cpt_vf {int pqinfo; int nr_queues; struct pci_dev* pdev; } ;
+
+
+ int dev_info (int *,char*,int ) ;
+ int free_pending_queues (int *) ;
 
 __attribute__((used)) static void cleanup_pending_queues(struct cpt_vf *cptvf)
 {
-	struct pci_dev *pdev = cptvf->pdev;
+ struct pci_dev *pdev = cptvf->pdev;
 
-	if (!cptvf->nr_queues)
-		return;
+ if (!cptvf->nr_queues)
+  return;
 
-	dev_info(&pdev->dev, "Cleaning VQ pending queue (%u)\n",
-		 cptvf->nr_queues);
-	free_pending_queues(&cptvf->pqinfo);
+ dev_info(&pdev->dev, "Cleaning VQ pending queue (%u)\n",
+   cptvf->nr_queues);
+ free_pending_queues(&cptvf->pqinfo);
 }

@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
-typedef  int /*<<< orphan*/  AVFilterContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  EIO ; 
- int /*<<< orphan*/  ENOENT ; 
- int /*<<< orphan*/  av_freep (char**) ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,char const*) ; 
- int av_reallocp (char**,size_t) ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- scalar_t__ ferror (int /*<<< orphan*/ *) ; 
- int ff_opencl_filter_load_program (int /*<<< orphan*/ *,char const**,int) ; 
- int /*<<< orphan*/ * fopen (char const*,char*) ; 
- size_t fread (char*,int,size_t,int /*<<< orphan*/ *) ; 
- int snprintf (char*,size_t,char*,char const*) ; 
+
+
+
+typedef int FILE ;
+typedef int AVFilterContext ;
+
+
+ int AVERROR (int ) ;
+ int AV_LOG_ERROR ;
+ int EINVAL ;
+ int EIO ;
+ int ENOENT ;
+ int av_freep (char**) ;
+ int av_log (int *,int ,char*,char const*) ;
+ int av_reallocp (char**,size_t) ;
+ int errno ;
+ int fclose (int *) ;
+ scalar_t__ ferror (int *) ;
+ int ff_opencl_filter_load_program (int *,char const**,int) ;
+ int * fopen (char const*,char*) ;
+ size_t fread (char*,int,size_t,int *) ;
+ int snprintf (char*,size_t,char*,char const*) ;
 
 int ff_opencl_filter_load_program_from_file(AVFilterContext *avctx,
                                             const char *filename)
 {
     FILE *file;
-    char *src = NULL;
+    char *src = ((void*)0);
     size_t pos, len, rb;
     const char *src_const;
     int err;

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  int32_t ;
-struct TYPE_4__ {size_t fset; int /*<<< orphan*/ * filters; } ;
-typedef  TYPE_1__ APEContext ;
 
-/* Variables and functions */
- int APE_FILTER_LEVELS ; 
- int /*<<< orphan*/ ** ape_filter_fracbits ; 
- int /*<<< orphan*/ ** ape_filter_orders ; 
- int /*<<< orphan*/  apply_filter (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int int32_t ;
+struct TYPE_4__ {size_t fset; int * filters; } ;
+typedef TYPE_1__ APEContext ;
+
+
+ int APE_FILTER_LEVELS ;
+ int ** ape_filter_fracbits ;
+ int ** ape_filter_orders ;
+ int apply_filter (TYPE_1__*,int ,int *,int *,int,int ,int ) ;
 
 __attribute__((used)) static void ape_apply_filters(APEContext *ctx, int32_t *decoded0,
                               int32_t *decoded1, int count)

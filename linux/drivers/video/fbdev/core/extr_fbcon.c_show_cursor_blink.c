@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct fbcon_ops {int flags; } ;
 struct fb_info {struct fbcon_ops* fbcon_par; } ;
 struct device_attribute {int dummy; } ;
 struct device {int dummy; } ;
-typedef  int /*<<< orphan*/  ssize_t ;
+typedef int ssize_t ;
 
-/* Variables and functions */
- int FBCON_FLAGS_CURSOR_TIMER ; 
- int /*<<< orphan*/  PAGE_SIZE ; 
- int* con2fb_map ; 
- int /*<<< orphan*/  console_lock () ; 
- int /*<<< orphan*/  console_unlock () ; 
- size_t fg_console ; 
- struct fb_info** registered_fb ; 
- int /*<<< orphan*/  snprintf (char*,int /*<<< orphan*/ ,char*,int) ; 
+
+ int FBCON_FLAGS_CURSOR_TIMER ;
+ int PAGE_SIZE ;
+ int* con2fb_map ;
+ int console_lock () ;
+ int console_unlock () ;
+ size_t fg_console ;
+ struct fb_info** registered_fb ;
+ int snprintf (char*,int ,char*,int) ;
 
 __attribute__((used)) static ssize_t show_cursor_blink(struct device *device,
-				 struct device_attribute *attr, char *buf)
+     struct device_attribute *attr, char *buf)
 {
-	struct fb_info *info;
-	struct fbcon_ops *ops;
-	int idx, blink = -1;
+ struct fb_info *info;
+ struct fbcon_ops *ops;
+ int idx, blink = -1;
 
-	console_lock();
-	idx = con2fb_map[fg_console];
+ console_lock();
+ idx = con2fb_map[fg_console];
 
-	if (idx == -1 || registered_fb[idx] == NULL)
-		goto err;
+ if (idx == -1 || registered_fb[idx] == ((void*)0))
+  goto err;
 
-	info = registered_fb[idx];
-	ops = info->fbcon_par;
+ info = registered_fb[idx];
+ ops = info->fbcon_par;
 
-	if (!ops)
-		goto err;
+ if (!ops)
+  goto err;
 
-	blink = (ops->flags & FBCON_FLAGS_CURSOR_TIMER) ? 1 : 0;
+ blink = (ops->flags & FBCON_FLAGS_CURSOR_TIMER) ? 1 : 0;
 err:
-	console_unlock();
-	return snprintf(buf, PAGE_SIZE, "%d\n", blink);
+ console_unlock();
+ return snprintf(buf, PAGE_SIZE, "%d\n", blink);
 }

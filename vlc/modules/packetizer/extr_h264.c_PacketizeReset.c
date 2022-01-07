@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_7__ {TYPE_3__* p_sys; } ;
-typedef  TYPE_2__ decoder_t ;
-struct TYPE_6__ {int /*<<< orphan*/  pts; } ;
-struct TYPE_8__ {int b_recovered; int /*<<< orphan*/  dts; int /*<<< orphan*/  i_next_block_flags; TYPE_1__ prevdatedpoc; int /*<<< orphan*/  pocctx; int /*<<< orphan*/  i_recoveryfnum; int /*<<< orphan*/ * p_active_sps; int /*<<< orphan*/ * p_active_pps; int /*<<< orphan*/  b_slice; } ;
-typedef  TYPE_3__ decoder_sys_t ;
+typedef TYPE_2__ decoder_t ;
+struct TYPE_6__ {int pts; } ;
+struct TYPE_8__ {int b_recovered; int dts; int i_next_block_flags; TYPE_1__ prevdatedpoc; int pocctx; int i_recoveryfnum; int * p_active_sps; int * p_active_pps; int b_slice; } ;
+typedef TYPE_3__ decoder_sys_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BLOCK_FLAG_DISCONTINUITY ; 
- int /*<<< orphan*/  DropStoredNAL (TYPE_3__*) ; 
- int /*<<< orphan*/  ResetOutputVariables (TYPE_3__*) ; 
- int /*<<< orphan*/  UINT_MAX ; 
- int /*<<< orphan*/  VLC_TICK_INVALID ; 
- int /*<<< orphan*/  date_Set (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  h264_poc_context_init (int /*<<< orphan*/ *) ; 
+
+ int BLOCK_FLAG_DISCONTINUITY ;
+ int DropStoredNAL (TYPE_3__*) ;
+ int ResetOutputVariables (TYPE_3__*) ;
+ int UINT_MAX ;
+ int VLC_TICK_INVALID ;
+ int date_Set (int *,int ) ;
+ int h264_poc_context_init (int *) ;
 
 __attribute__((used)) static void PacketizeReset( void *p_private, bool b_flush )
 {
@@ -37,11 +37,11 @@ __attribute__((used)) static void PacketizeReset( void *p_private, bool b_flush 
     {
         DropStoredNAL( p_sys );
         ResetOutputVariables( p_sys );
-        p_sys->p_active_pps = NULL;
-        p_sys->p_active_sps = NULL;
-        p_sys->b_recovered = false;
+        p_sys->p_active_pps = ((void*)0);
+        p_sys->p_active_sps = ((void*)0);
+        p_sys->b_recovered = 0;
         p_sys->i_recoveryfnum = UINT_MAX;
-        /* POC */
+
         h264_poc_context_init( &p_sys->pocctx );
         p_sys->prevdatedpoc.pts = VLC_TICK_INVALID;
     }

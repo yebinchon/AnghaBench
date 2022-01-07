@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  quick_buffer ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  feof (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fgets (char*,int,int /*<<< orphan*/ *) ; 
- scalar_t__ realloc (char*,int) ; 
- char* strdup (char*) ; 
- int strlen (char*) ; 
+
+
+
+typedef int quick_buffer ;
+typedef int FILE ;
+
+
+ int feof (int *) ;
+ int fgets (char*,int,int *) ;
+ scalar_t__ realloc (char*,int) ;
+ char* strdup (char*) ;
+ int strlen (char*) ;
 
 char * stb_fgets_malloc(FILE *f)
 {
-   // avoid reallocing for small strings
+
    char quick_buffer[800];
    quick_buffer[sizeof(quick_buffer)-2] = 0;
    if (!fgets(quick_buffer, sizeof(quick_buffer), f))
-      return NULL;
+      return ((void*)0);
 
    if (quick_buffer[sizeof(quick_buffer)-2] == 0) {
       int n = strlen(quick_buffer);

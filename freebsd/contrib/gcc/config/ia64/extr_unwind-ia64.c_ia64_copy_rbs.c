@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct _Unwind_Context {unsigned long regstk_top; unsigned long rnat; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memcpy (char*,char*,long) ; 
+
+ int memcpy (char*,char*,long) ;
 
 __attribute__((used)) static void
 ia64_copy_rbs (struct _Unwind_Context *info, unsigned long dst,
@@ -26,9 +26,9 @@ ia64_copy_rbs (struct _Unwind_Context *info, unsigned long dst,
   len <<= 3;
   dst_rnat &= (1UL << ((dst >> 3) & 0x3f)) - 1;
   src_rnat = src >= info->regstk_top
-	     ? info->rnat : *(unsigned long *) (src | 0x1f8);
+      ? info->rnat : *(unsigned long *) (src | 0x1f8);
   src_rnat &= ~((1UL << ((src >> 3) & 0x3f)) - 1);
-  /* Just to make sure.  */
+
   src_rnat &= ~(1UL << 63);
   shift1 = ((dst - src) >> 3) & 0x3f;
   if ((dst & 0x1f8) < (src & 0x1f8))
@@ -44,8 +44,8 @@ ia64_copy_rbs (struct _Unwind_Context *info, unsigned long dst,
   while (len > 0)
     {
       src_rnat = src >= info->regstk_top
-		 ? info->rnat : *(unsigned long *) (src | 0x1f8);
-      /* Just to make sure.  */
+   ? info->rnat : *(unsigned long *) (src | 0x1f8);
+
       src_rnat &= ~(1UL << 63);
       count = shift2 << 3;
 first:
@@ -77,8 +77,8 @@ second:
       dst += 8;
       dst_rnat = 0;
     }
-  /* Set info->regstk_top to lowest rbs address which will use
-     info->rnat collection.  */
+
+
   info->regstk_top = dst & ~0x1ffUL;
   info->rnat = dst_rnat;
 }

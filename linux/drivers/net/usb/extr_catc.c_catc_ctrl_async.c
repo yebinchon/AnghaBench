@@ -1,62 +1,62 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  void* u8 ;
-typedef  void* u16 ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef void* u8 ;
+typedef void* u16 ;
 struct ctrl_queue {int len; void (* callback ) (struct catc*,struct ctrl_queue*) ;void* buf; void* index; void* value; void* request; void* dir; } ;
-struct catc {int ctrl_head; int ctrl_tail; int /*<<< orphan*/  ctrl_lock; int /*<<< orphan*/  flags; TYPE_1__* usbdev; struct ctrl_queue* ctrl_queue; } ;
-struct TYPE_2__ {int /*<<< orphan*/  dev; } ;
+struct catc {int ctrl_head; int ctrl_tail; int ctrl_lock; int flags; TYPE_1__* usbdev; struct ctrl_queue* ctrl_queue; } ;
+struct TYPE_2__ {int dev; } ;
 
-/* Variables and functions */
- int CTRL_QUEUE ; 
- int /*<<< orphan*/  CTRL_RUNNING ; 
- int /*<<< orphan*/  catc_ctrl_run (struct catc*) ; 
- int /*<<< orphan*/  dev_err (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  test_and_set_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int CTRL_QUEUE ;
+ int CTRL_RUNNING ;
+ int catc_ctrl_run (struct catc*) ;
+ int dev_err (int *,char*) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
+ int test_and_set_bit (int ,int *) ;
 
 __attribute__((used)) static int catc_ctrl_async(struct catc *catc, u8 dir, u8 request, u16 value,
-	u16 index, void *buf, int len, void (*callback)(struct catc *catc, struct ctrl_queue *q))
+ u16 index, void *buf, int len, void (*callback)(struct catc *catc, struct ctrl_queue *q))
 {
-	struct ctrl_queue *q;
-	int retval = 0;
-	unsigned long flags;
+ struct ctrl_queue *q;
+ int retval = 0;
+ unsigned long flags;
 
-	spin_lock_irqsave(&catc->ctrl_lock, flags);
-	
-	q = catc->ctrl_queue + catc->ctrl_head;
+ spin_lock_irqsave(&catc->ctrl_lock, flags);
 
-	q->dir = dir;
-	q->request = request;
-	q->value = value;
-	q->index = index;
-	q->buf = buf;
-	q->len = len;
-	q->callback = callback;
+ q = catc->ctrl_queue + catc->ctrl_head;
 
-	catc->ctrl_head = (catc->ctrl_head + 1) & (CTRL_QUEUE - 1);
+ q->dir = dir;
+ q->request = request;
+ q->value = value;
+ q->index = index;
+ q->buf = buf;
+ q->len = len;
+ q->callback = callback;
 
-	if (catc->ctrl_head == catc->ctrl_tail) {
-		dev_err(&catc->usbdev->dev, "ctrl queue full\n");
-		catc->ctrl_tail = (catc->ctrl_tail + 1) & (CTRL_QUEUE - 1);
-		retval = -1;
-	}
+ catc->ctrl_head = (catc->ctrl_head + 1) & (CTRL_QUEUE - 1);
 
-	if (!test_and_set_bit(CTRL_RUNNING, &catc->flags))
-		catc_ctrl_run(catc);
+ if (catc->ctrl_head == catc->ctrl_tail) {
+  dev_err(&catc->usbdev->dev, "ctrl queue full\n");
+  catc->ctrl_tail = (catc->ctrl_tail + 1) & (CTRL_QUEUE - 1);
+  retval = -1;
+ }
 
-	spin_unlock_irqrestore(&catc->ctrl_lock, flags);
+ if (!test_and_set_bit(CTRL_RUNNING, &catc->flags))
+  catc_ctrl_run(catc);
 
-	return retval;
+ spin_unlock_irqrestore(&catc->ctrl_lock, flags);
+
+ return retval;
 }

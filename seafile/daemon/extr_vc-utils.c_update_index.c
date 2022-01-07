@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct index_state {int dummy; } ;
 
-/* Variables and functions */
- int O_BINARY ; 
- int O_CREAT ; 
- int O_RDWR ; 
- int O_TRUNC ; 
- int SEAF_PATH_MAX ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  errno ; 
- int seaf_util_create (char*,int,int) ; 
- int seaf_util_rename (char*,char const*) ; 
- int /*<<< orphan*/  seaf_warning (char*,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,char const*) ; 
- int /*<<< orphan*/  strerror (int /*<<< orphan*/ ) ; 
- scalar_t__ write_index (struct index_state*,int) ; 
+
+ int O_BINARY ;
+ int O_CREAT ;
+ int O_RDWR ;
+ int O_TRUNC ;
+ int SEAF_PATH_MAX ;
+ int close (int) ;
+ int errno ;
+ int seaf_util_create (char*,int,int) ;
+ int seaf_util_rename (char*,char const*) ;
+ int seaf_warning (char*,int ,...) ;
+ int snprintf (char*,int,char*,char const*) ;
+ int strerror (int ) ;
+ scalar_t__ write_index (struct index_state*,int) ;
 
 int
 update_index (struct index_state *istate, const char *index_path)

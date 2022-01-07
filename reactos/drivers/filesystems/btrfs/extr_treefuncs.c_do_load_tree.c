@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_25__   TYPE_8__ ;
-typedef  struct TYPE_24__   TYPE_7__ ;
-typedef  struct TYPE_23__   TYPE_6__ ;
-typedef  struct TYPE_22__   TYPE_5__ ;
-typedef  struct TYPE_21__   TYPE_4__ ;
-typedef  struct TYPE_20__   TYPE_3__ ;
-typedef  struct TYPE_19__   TYPE_2__ ;
-typedef  struct TYPE_18__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_22__ {TYPE_4__* tree; int /*<<< orphan*/  generation; int /*<<< orphan*/  address; } ;
-typedef  TYPE_5__ tree_holder ;
-typedef  int /*<<< orphan*/  tree_data ;
+
+
+typedef struct TYPE_25__ TYPE_8__ ;
+typedef struct TYPE_24__ TYPE_7__ ;
+typedef struct TYPE_23__ TYPE_6__ ;
+typedef struct TYPE_22__ TYPE_5__ ;
+typedef struct TYPE_21__ TYPE_4__ ;
+typedef struct TYPE_20__ TYPE_3__ ;
+typedef struct TYPE_19__ TYPE_2__ ;
+typedef struct TYPE_18__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_22__ {TYPE_4__* tree; int generation; int address; } ;
+typedef TYPE_5__ tree_holder ;
+typedef int tree_data ;
 struct TYPE_23__ {TYPE_2__* nonpaged; } ;
-typedef  TYPE_6__ tree ;
+typedef TYPE_6__ tree ;
 struct TYPE_24__ {TYPE_3__* nonpaged; } ;
-typedef  TYPE_7__ root ;
-struct TYPE_18__ {int /*<<< orphan*/  node_size; } ;
+typedef TYPE_7__ root ;
+struct TYPE_18__ {int node_size; } ;
 struct TYPE_25__ {TYPE_1__ superblock; } ;
-typedef  TYPE_8__ device_extension ;
-typedef  int /*<<< orphan*/  chunk ;
-struct TYPE_21__ {int /*<<< orphan*/ * buf; } ;
-struct TYPE_20__ {int /*<<< orphan*/  load_tree_lock; } ;
-struct TYPE_19__ {int /*<<< orphan*/  mutex; } ;
-typedef  int /*<<< orphan*/  PIRP ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
+typedef TYPE_8__ device_extension ;
+typedef int chunk ;
+struct TYPE_21__ {int * buf; } ;
+struct TYPE_20__ {int load_tree_lock; } ;
+struct TYPE_19__ {int mutex; } ;
+typedef int PIRP ;
+typedef int NTSTATUS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ALLOC_TAG ; 
- int /*<<< orphan*/  ERR (char*,...) ; 
- int /*<<< orphan*/  ExAcquireFastMutex (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ExAcquireResourceExclusiveLite (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * ExAllocatePoolWithTag (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ExFreePool (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ExReleaseFastMutex (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ExReleaseResourceLite (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  NT_SUCCESS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NormalPagePriority ; 
- int /*<<< orphan*/  PagedPool ; 
- int /*<<< orphan*/  STATUS_INSUFFICIENT_RESOURCES ; 
- int /*<<< orphan*/  do_load_tree2 (TYPE_8__*,TYPE_5__*,int /*<<< orphan*/ *,TYPE_7__*,TYPE_6__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  read_data (TYPE_8__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
+
+ int ALLOC_TAG ;
+ int ERR (char*,...) ;
+ int ExAcquireFastMutex (int *) ;
+ int ExAcquireResourceExclusiveLite (int *,int) ;
+ int * ExAllocatePoolWithTag (int ,int ,int ) ;
+ int ExFreePool (int *) ;
+ int ExReleaseFastMutex (int *) ;
+ int ExReleaseResourceLite (int *) ;
+ int NT_SUCCESS (int ) ;
+ int NormalPagePriority ;
+ int PagedPool ;
+ int STATUS_INSUFFICIENT_RESOURCES ;
+ int do_load_tree2 (TYPE_8__*,TYPE_5__*,int *,TYPE_7__*,TYPE_6__*,int *) ;
+ int read_data (TYPE_8__*,int ,int ,int *,int,int *,int *,int **,int ,int ,int,int ) ;
 
 NTSTATUS do_load_tree(device_extension* Vcb, tree_holder* th, root* r, tree* t, tree_data* td, PIRP Irp) {
     NTSTATUS Status;
@@ -63,8 +63,8 @@ NTSTATUS do_load_tree(device_extension* Vcb, tree_holder* th, root* r, tree* t, 
         return STATUS_INSUFFICIENT_RESOURCES;
     }
 
-    Status = read_data(Vcb, th->address, Vcb->superblock.node_size, NULL, true, buf, NULL,
-                       &c, Irp, th->generation, false, NormalPagePriority);
+    Status = read_data(Vcb, th->address, Vcb->superblock.node_size, ((void*)0), 1, buf, ((void*)0),
+                       &c, Irp, th->generation, 0, NormalPagePriority);
     if (!NT_SUCCESS(Status)) {
         ERR("read_data returned 0x%08x\n", Status);
         ExFreePool(buf);
@@ -74,7 +74,7 @@ NTSTATUS do_load_tree(device_extension* Vcb, tree_holder* th, root* r, tree* t, 
     if (t)
         ExAcquireFastMutex(&t->nonpaged->mutex);
     else
-        ExAcquireResourceExclusiveLite(&r->nonpaged->load_tree_lock, true);
+        ExAcquireResourceExclusiveLite(&r->nonpaged->load_tree_lock, 1);
 
     Status = do_load_tree2(Vcb, th, buf, r, t, td);
 

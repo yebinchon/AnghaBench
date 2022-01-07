@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_28__   TYPE_5__ ;
-typedef  struct TYPE_27__   TYPE_4__ ;
-typedef  struct TYPE_26__   TYPE_3__ ;
-typedef  struct TYPE_25__   TYPE_2__ ;
-typedef  struct TYPE_24__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_26__ {int (* xOpen ) (TYPE_3__*,char const*,TYPE_4__*,int,int*) ;int /*<<< orphan*/  szOsFile; } ;
-typedef  TYPE_3__ sqlite3_vfs ;
-typedef  int sqlite3_int64 ;
+
+
+typedef struct TYPE_28__ TYPE_5__ ;
+typedef struct TYPE_27__ TYPE_4__ ;
+typedef struct TYPE_26__ TYPE_3__ ;
+typedef struct TYPE_25__ TYPE_2__ ;
+typedef struct TYPE_24__ TYPE_1__ ;
+
+
+struct TYPE_26__ {int (* xOpen ) (TYPE_3__*,char const*,TYPE_4__*,int,int*) ;int szOsFile; } ;
+typedef TYPE_3__ sqlite3_vfs ;
+typedef int sqlite3_int64 ;
 struct TYPE_27__ {TYPE_2__* pMethods; } ;
-typedef  TYPE_4__ sqlite3_file ;
-struct TYPE_24__ {int /*<<< orphan*/ * pMethods; } ;
+typedef TYPE_4__ sqlite3_file ;
+struct TYPE_24__ {int * pMethods; } ;
 struct TYPE_28__ {int iPgOne; scalar_t__ iMark; TYPE_1__ base; } ;
-struct TYPE_25__ {int (* xFileSize ) (TYPE_4__*,int*) ;int /*<<< orphan*/  (* xClose ) (TYPE_4__*) ;} ;
-typedef  TYPE_5__ ApndFile ;
+struct TYPE_25__ {int (* xFileSize ) (TYPE_4__*,int*) ;int (* xClose ) (TYPE_4__*) ;} ;
+typedef TYPE_5__ ApndFile ;
 
-/* Variables and functions */
- TYPE_4__* ORIGFILE (TYPE_4__*) ; 
- TYPE_3__* ORIGVFS (TYPE_3__*) ; 
- int SQLITE_CANTOPEN ; 
- int SQLITE_OK ; 
- int SQLITE_OPEN_CREATE ; 
- int SQLITE_OPEN_MAIN_DB ; 
- scalar_t__ apndIsOrdinaryDatabaseFile (int,TYPE_4__*) ; 
- int apndReadMark (int,TYPE_4__*) ; 
- int /*<<< orphan*/  apnd_io_methods ; 
- int /*<<< orphan*/  memmove (TYPE_4__*,TYPE_4__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (TYPE_5__*,int /*<<< orphan*/ ,int) ; 
- int stub1 (TYPE_3__*,char const*,TYPE_4__*,int,int*) ; 
- int stub2 (TYPE_3__*,char const*,TYPE_4__*,int,int*) ; 
- int stub3 (TYPE_4__*,int*) ; 
- int /*<<< orphan*/  stub4 (TYPE_4__*) ; 
- int /*<<< orphan*/  stub5 (TYPE_4__*) ; 
+
+ TYPE_4__* ORIGFILE (TYPE_4__*) ;
+ TYPE_3__* ORIGVFS (TYPE_3__*) ;
+ int SQLITE_CANTOPEN ;
+ int SQLITE_OK ;
+ int SQLITE_OPEN_CREATE ;
+ int SQLITE_OPEN_MAIN_DB ;
+ scalar_t__ apndIsOrdinaryDatabaseFile (int,TYPE_4__*) ;
+ int apndReadMark (int,TYPE_4__*) ;
+ int apnd_io_methods ;
+ int memmove (TYPE_4__*,TYPE_4__*,int ) ;
+ int memset (TYPE_5__*,int ,int) ;
+ int stub1 (TYPE_3__*,char const*,TYPE_4__*,int,int*) ;
+ int stub2 (TYPE_3__*,char const*,TYPE_4__*,int,int*) ;
+ int stub3 (TYPE_4__*,int*) ;
+ int stub4 (TYPE_4__*) ;
+ int stub5 (TYPE_4__*) ;
 
 __attribute__((used)) static int apndOpen(
   sqlite3_vfs *pVfs,

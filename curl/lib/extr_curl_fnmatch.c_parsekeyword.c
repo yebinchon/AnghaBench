@@ -1,69 +1,69 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int parsekey_state ;
 
-/* Variables and functions */
- size_t CURLFNM_ALNUM ; 
- size_t CURLFNM_ALPHA ; 
- size_t CURLFNM_BLANK ; 
- size_t CURLFNM_DIGIT ; 
- size_t CURLFNM_GRAPH ; 
- size_t CURLFNM_LOWER ; 
-#define  CURLFNM_PKW_DDOT 129 
-#define  CURLFNM_PKW_INIT 128 
- size_t CURLFNM_PRINT ; 
- size_t CURLFNM_SPACE ; 
- size_t CURLFNM_UPPER ; 
- size_t CURLFNM_XDIGIT ; 
- int FALSE ; 
- int /*<<< orphan*/  ISLOWER (char) ; 
- int KEYLEN ; 
- int SETCHARSET_FAIL ; 
- int SETCHARSET_OK ; 
- int TRUE ; 
- scalar_t__ strcmp (char*,char*) ; 
+
+
+
+typedef int parsekey_state ;
+
+
+ size_t CURLFNM_ALNUM ;
+ size_t CURLFNM_ALPHA ;
+ size_t CURLFNM_BLANK ;
+ size_t CURLFNM_DIGIT ;
+ size_t CURLFNM_GRAPH ;
+ size_t CURLFNM_LOWER ;
+
+
+ size_t CURLFNM_PRINT ;
+ size_t CURLFNM_SPACE ;
+ size_t CURLFNM_UPPER ;
+ size_t CURLFNM_XDIGIT ;
+ int FALSE ;
+ int ISLOWER (char) ;
+ int KEYLEN ;
+ int SETCHARSET_FAIL ;
+ int SETCHARSET_OK ;
+ int TRUE ;
+ scalar_t__ strcmp (char*,char*) ;
 
 __attribute__((used)) static int parsekeyword(unsigned char **pattern, unsigned char *charset)
 {
-  parsekey_state state = CURLFNM_PKW_INIT;
-#define KEYLEN 10
-  char keyword[KEYLEN] = { 0 };
+  parsekey_state state = 128;
+
+  char keyword[10] = { 0 };
   int found = FALSE;
   int i;
   unsigned char *p = *pattern;
   for(i = 0; !found; i++) {
     char c = *p++;
-    if(i >= KEYLEN)
+    if(i >= 10)
       return SETCHARSET_FAIL;
     switch(state) {
-    case CURLFNM_PKW_INIT:
+    case 128:
       if(ISLOWER(c))
         keyword[i] = c;
       else if(c == ':')
-        state = CURLFNM_PKW_DDOT;
+        state = 129;
       else
         return SETCHARSET_FAIL;
       break;
-    case CURLFNM_PKW_DDOT:
+    case 129:
       if(c == ']')
         found = TRUE;
       else
         return SETCHARSET_FAIL;
     }
   }
-#undef KEYLEN
 
-  *pattern = p; /* move caller's pattern pointer */
+
+  *pattern = p;
   if(strcmp(keyword, "digit") == 0)
     charset[CURLFNM_DIGIT] = 1;
   else if(strcmp(keyword, "alnum") == 0)

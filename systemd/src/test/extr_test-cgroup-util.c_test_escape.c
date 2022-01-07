@@ -1,20 +1,12 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  F_OK ; 
- scalar_t__ access (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_escape_one (char*,char*) ; 
+ int F_OK ;
+ scalar_t__ access (char*,int ) ;
+ int test_escape_one (char*,char*) ;
 
 __attribute__((used)) static void test_escape(void) {
         test_escape_one("foobar", "foobar");

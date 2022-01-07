@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  yaml_parser_t ;
-typedef  int /*<<< orphan*/  yaml_document_t ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fflush (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  stdout ; 
- int /*<<< orphan*/  yaml_document_delete (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  yaml_document_get_root_node (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  yaml_parser_delete (int /*<<< orphan*/ *) ; 
- int yaml_parser_initialize (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  yaml_parser_load (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  yaml_parser_set_input_file (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int yaml_parser_t ;
+typedef int yaml_document_t ;
+typedef int FILE ;
+
+
+ int assert (int) ;
+ int fclose (int *) ;
+ int fflush (int ) ;
+ int * fopen (char*,char*) ;
+ int printf (char*,...) ;
+ int stdout ;
+ int yaml_document_delete (int *) ;
+ int yaml_document_get_root_node (int *) ;
+ int yaml_parser_delete (int *) ;
+ int yaml_parser_initialize (int *) ;
+ int yaml_parser_load (int *,int *) ;
+ int yaml_parser_set_input_file (int *,int *) ;
 
 int
 main(int argc, char *argv[])

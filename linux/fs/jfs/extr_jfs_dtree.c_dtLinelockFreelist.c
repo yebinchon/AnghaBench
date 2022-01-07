@@ -1,84 +1,84 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct lv {int offset; int length; } ;
 struct dtslot {int next; } ;
 struct dt_lock {size_t index; size_t maxcnt; struct lv* lv; } ;
 struct TYPE_4__ {int freelist; } ;
 struct TYPE_5__ {struct dtslot* slot; TYPE_1__ header; } ;
-typedef  TYPE_2__ dtpage_t ;
+typedef TYPE_2__ dtpage_t ;
 
-/* Variables and functions */
- scalar_t__ txLinelock (struct dt_lock*) ; 
 
-__attribute__((used)) static void dtLinelockFreelist(dtpage_t * p,	/* directory page */
-			       int m,	/* max slot index */
-			       struct dt_lock ** dtlock)
+ scalar_t__ txLinelock (struct dt_lock*) ;
+
+__attribute__((used)) static void dtLinelockFreelist(dtpage_t * p,
+          int m,
+          struct dt_lock ** dtlock)
 {
-	int fsi;		/* free entry slot index */
-	struct dtslot *t;
-	int si;
-	struct dt_lock *dtlck = *dtlock;
-	struct lv *lv;
-	int xsi, n;
+ int fsi;
+ struct dtslot *t;
+ int si;
+ struct dt_lock *dtlck = *dtlock;
+ struct lv *lv;
+ int xsi, n;
 
-	/* get free entry slot index */
-	fsi = p->header.freelist;
 
-	/* open new linelock */
-	if (dtlck->index >= dtlck->maxcnt)
-		dtlck = (struct dt_lock *) txLinelock(dtlck);
-	lv = & dtlck->lv[dtlck->index];
+ fsi = p->header.freelist;
 
-	lv->offset = fsi;
 
-	n = 1;
-	xsi = fsi;
+ if (dtlck->index >= dtlck->maxcnt)
+  dtlck = (struct dt_lock *) txLinelock(dtlck);
+ lv = & dtlck->lv[dtlck->index];
 
-	t = &p->slot[fsi];
-	si = t->next;
+ lv->offset = fsi;
 
-	/* find the last/only segment */
-	while (si < m && si >= 0) {
-		/* is next slot contiguous ? */
-		if (si != xsi + 1) {
-			/* close current linelock */
-			lv->length = n;
-			dtlck->index++;
+ n = 1;
+ xsi = fsi;
 
-			/* open new linelock */
-			if (dtlck->index < dtlck->maxcnt)
-				lv++;
-			else {
-				dtlck = (struct dt_lock *) txLinelock(dtlck);
-				lv = & dtlck->lv[0];
-			}
+ t = &p->slot[fsi];
+ si = t->next;
 
-			lv->offset = si;
-			n = 0;
-		}
 
-		n++;
-		xsi = si;
+ while (si < m && si >= 0) {
 
-		t = &p->slot[si];
-		si = t->next;
-	}
+  if (si != xsi + 1) {
 
-	/* close current linelock */
-	lv->length = n;
-	dtlck->index++;
+   lv->length = n;
+   dtlck->index++;
 
-	*dtlock = dtlck;
+
+   if (dtlck->index < dtlck->maxcnt)
+    lv++;
+   else {
+    dtlck = (struct dt_lock *) txLinelock(dtlck);
+    lv = & dtlck->lv[0];
+   }
+
+   lv->offset = si;
+   n = 0;
+  }
+
+  n++;
+  xsi = si;
+
+  t = &p->slot[si];
+  si = t->next;
+ }
+
+
+ lv->length = n;
+ dtlck->index++;
+
+ *dtlock = dtlck;
 }

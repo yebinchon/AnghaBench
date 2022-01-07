@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_9__ {int key_len; int data_len; int timestamp; scalar_t__ key; scalar_t__ data; } ;
-typedef  TYPE_1__ hash_entry_t ;
+typedef TYPE_1__ hash_entry_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int /*<<< orphan*/  debug_dump_hash_entry (TYPE_1__*) ; 
- int /*<<< orphan*/  del_entry_time (TYPE_1__*) ; 
- int /*<<< orphan*/  entry_memory ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,TYPE_1__*) ; 
- int /*<<< orphan*/  free_entry (TYPE_1__*) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  tree ; 
- int /*<<< orphan*/  tree_delete (int /*<<< orphan*/ ,TYPE_1__*) ; 
- int verbosity ; 
- int /*<<< orphan*/  zzfree (scalar_t__,int) ; 
+
+ int assert (TYPE_1__*) ;
+ int debug_dump_hash_entry (TYPE_1__*) ;
+ int del_entry_time (TYPE_1__*) ;
+ int entry_memory ;
+ int fprintf (int ,char*,TYPE_1__*) ;
+ int free_entry (TYPE_1__*) ;
+ int stderr ;
+ int tree ;
+ int tree_delete (int ,TYPE_1__*) ;
+ int verbosity ;
+ int zzfree (scalar_t__,int) ;
 
 void del_entry (hash_entry_t *entry) {
   assert (entry);
@@ -37,8 +37,8 @@ void del_entry (hash_entry_t *entry) {
   del_entry_time (entry);
 
   tree = tree_delete (tree, entry);
-  
-  zzfree (entry->key, entry->key_len + 1); 
+
+  zzfree (entry->key, entry->key_len + 1);
   zzfree (entry->data, entry->data_len + 1);
   entry_memory -= entry->key_len + entry->data_len + 2;
 

@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-struct TYPE_6__ {int frame_flags; int /*<<< orphan*/  gb; } ;
-struct TYPE_5__ {int is_empty; int inherit_mv; int inherit_qdelta; int qdelta_present; int num_corr; int* corr; int rvmap_sel; int checksum; int glob_quant; scalar_t__ checksum_present; int /*<<< orphan*/  blk_vlc; int /*<<< orphan*/  data_size; } ;
-typedef  TYPE_1__ IVIBandDesc ;
-typedef  TYPE_2__ IVI45DecContext ;
-typedef  int /*<<< orphan*/  AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  IVI_BLK_HUFF ; 
- int /*<<< orphan*/  align_get_bits (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int) ; 
- int ff_ivi_dec_huff_desc (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int get_bits (int /*<<< orphan*/ *,int) ; 
- scalar_t__ get_bits1 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  get_bits_long (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  skip_hdr_extension (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_6__ {int frame_flags; int gb; } ;
+struct TYPE_5__ {int is_empty; int inherit_mv; int inherit_qdelta; int qdelta_present; int num_corr; int* corr; int rvmap_sel; int checksum; int glob_quant; scalar_t__ checksum_present; int blk_vlc; int data_size; } ;
+typedef TYPE_1__ IVIBandDesc ;
+typedef TYPE_2__ IVI45DecContext ;
+typedef int AVCodecContext ;
+
+
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ int IVI_BLK_HUFF ;
+ int align_get_bits (int *) ;
+ int av_log (int *,int ,char*,int) ;
+ int ff_ivi_dec_huff_desc (int *,int,int ,int *,int *) ;
+ int get_bits (int *,int) ;
+ scalar_t__ get_bits1 (int *) ;
+ int get_bits_long (int *,int) ;
+ int skip_hdr_extension (int *) ;
 
 __attribute__((used)) static int decode_band_hdr(IVI45DecContext *ctx, IVIBandDesc *band,
                            AVCodecContext *avctx)
 {
-    int         i, ret;
-    uint8_t     band_flags;
+    int i, ret;
+    uint8_t band_flags;
 
     band_flags = get_bits(&ctx->gb, 8);
 
@@ -46,30 +46,30 @@ __attribute__((used)) static int decode_band_hdr(IVI45DecContext *ctx, IVIBandDe
 
     band->data_size = (ctx->frame_flags & 0x80) ? get_bits_long(&ctx->gb, 24) : 0;
 
-    band->inherit_mv     = band_flags & 2;
+    band->inherit_mv = band_flags & 2;
     band->inherit_qdelta = band_flags & 8;
     band->qdelta_present = band_flags & 4;
     if (!band->qdelta_present) band->inherit_qdelta = 1;
 
-    /* decode rvmap probability corrections if any */
-    band->num_corr = 0; /* there are no corrections */
+
+    band->num_corr = 0;
     if (band_flags & 0x10) {
-        band->num_corr = get_bits(&ctx->gb, 8); /* get number of correction pairs */
+        band->num_corr = get_bits(&ctx->gb, 8);
         if (band->num_corr > 61) {
             av_log(avctx, AV_LOG_ERROR, "Too many corrections: %d\n",
                    band->num_corr);
             return AVERROR_INVALIDDATA;
         }
 
-        /* read correction pairs */
+
         for (i = 0; i < band->num_corr * 2; i++)
             band->corr[i] = get_bits(&ctx->gb, 8);
     }
 
-    /* select appropriate rvmap table for this band */
+
     band->rvmap_sel = (band_flags & 0x40) ? get_bits(&ctx->gb, 3) : 8;
 
-    /* decode block huffman codebook */
+
     ret = ff_ivi_dec_huff_desc(&ctx->gb, band_flags & 0x80, IVI_BLK_HUFF,
                                &band->blk_vlc, avctx);
     if (ret < 0)
@@ -81,8 +81,8 @@ __attribute__((used)) static int decode_band_hdr(IVI45DecContext *ctx, IVIBandDe
 
     band->glob_quant = get_bits(&ctx->gb, 5);
 
-    /* skip unknown extension if any */
-    if (band_flags & 0x20) { /* XXX: untested */
+
+    if (band_flags & 0x20) {
         align_get_bits(&ctx->gb);
         skip_hdr_extension(&ctx->gb);
     }

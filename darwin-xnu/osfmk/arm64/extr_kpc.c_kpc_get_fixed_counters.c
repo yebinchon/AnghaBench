@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64_t ;
 
-/* Variables and functions */
- int ENOTSUP ; 
- int /*<<< orphan*/  mt_fixed_counts (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int uint64_t ;
+
+
+ int ENOTSUP ;
+ int mt_fixed_counts (int *) ;
 
 int
 kpc_get_fixed_counters(uint64_t *counterv)
 {
-#if MONOTONIC
-	mt_fixed_counts(counterv);
-	return 0;
-#else /* MONOTONIC */
+
+
+
+
 #pragma unused(counterv)
-	return ENOTSUP;
-#endif /* !MONOTONIC */
+ return ENOTSUP;
+
 }

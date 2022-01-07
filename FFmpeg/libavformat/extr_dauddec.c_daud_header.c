@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_5__ {TYPE_1__* codecpar; } ;
-struct TYPE_4__ {int channels; int sample_rate; int bit_rate; int block_align; int bits_per_coded_sample; int /*<<< orphan*/  channel_layout; int /*<<< orphan*/  codec_tag; int /*<<< orphan*/  codec_id; int /*<<< orphan*/  codec_type; } ;
-typedef  TYPE_2__ AVStream ;
-typedef  int /*<<< orphan*/  AVFormatContext ;
+struct TYPE_4__ {int channels; int sample_rate; int bit_rate; int block_align; int bits_per_coded_sample; int channel_layout; int codec_tag; int codec_id; int codec_type; } ;
+typedef TYPE_2__ AVStream ;
+typedef int AVFormatContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AVMEDIA_TYPE_AUDIO ; 
- int /*<<< orphan*/  AV_CH_LAYOUT_5POINT1 ; 
- int /*<<< orphan*/  AV_CODEC_ID_PCM_S24DAUD ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  MKTAG (char,char,unsigned char,char) ; 
- TYPE_2__* avformat_new_stream (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int AVERROR (int ) ;
+ int AVMEDIA_TYPE_AUDIO ;
+ int AV_CH_LAYOUT_5POINT1 ;
+ int AV_CODEC_ID_PCM_S24DAUD ;
+ int ENOMEM ;
+ int MKTAG (char,char,unsigned char,char) ;
+ TYPE_2__* avformat_new_stream (int *,int *) ;
 
 __attribute__((used)) static int daud_header(AVFormatContext *s) {
-    AVStream *st = avformat_new_stream(s, NULL);
+    AVStream *st = avformat_new_stream(s, ((void*)0));
     if (!st)
         return AVERROR(ENOMEM);
     st->codecpar->codec_type = AVMEDIA_TYPE_AUDIO;

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  bufferarr; } ;
-typedef  TYPE_1__* ResourceOwner ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ResourceArrayEnlarge (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int bufferarr; } ;
+typedef TYPE_1__* ResourceOwner ;
+
+
+ int Assert (int ) ;
+ int ResourceArrayEnlarge (int *) ;
 
 void
 ResourceOwnerEnlargeBuffers(ResourceOwner owner)
 {
-	/* We used to allow pinning buffers without a resowner, but no more */
-	Assert(owner != NULL);
-	ResourceArrayEnlarge(&(owner->bufferarr));
+
+ Assert(owner != ((void*)0));
+ ResourceArrayEnlarge(&(owner->bufferarr));
 }

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct grub_reiserfs_key {int /*<<< orphan*/  object_id; int /*<<< orphan*/  directory_id; } ;
-typedef  scalar_t__ grub_uint64_t ;
-typedef  scalar_t__ grub_uint32_t ;
-typedef  enum grub_reiserfs_item_type { ____Placeholder_grub_reiserfs_item_type } grub_reiserfs_item_type ;
 
-/* Variables and functions */
- int GRUB_REISERFS_ANY ; 
- int GRUB_REISERFS_DIRECT ; 
- int GRUB_REISERFS_INDIRECT ; 
- scalar_t__ grub_le_to_cpu32 (int /*<<< orphan*/ ) ; 
- scalar_t__ grub_reiserfs_get_key_offset (struct grub_reiserfs_key const*) ; 
- int grub_reiserfs_get_key_type (struct grub_reiserfs_key const*) ; 
+
+
+
+struct grub_reiserfs_key {int object_id; int directory_id; } ;
+typedef scalar_t__ grub_uint64_t ;
+typedef scalar_t__ grub_uint32_t ;
+typedef enum grub_reiserfs_item_type { ____Placeholder_grub_reiserfs_item_type } grub_reiserfs_item_type ;
+
+
+ int GRUB_REISERFS_ANY ;
+ int GRUB_REISERFS_DIRECT ;
+ int GRUB_REISERFS_INDIRECT ;
+ scalar_t__ grub_le_to_cpu32 (int ) ;
+ scalar_t__ grub_reiserfs_get_key_offset (struct grub_reiserfs_key const*) ;
+ int grub_reiserfs_get_key_type (struct grub_reiserfs_key const*) ;
 
 __attribute__((used)) static int
 grub_reiserfs_compare_keys (const struct grub_reiserfs_key *key1,

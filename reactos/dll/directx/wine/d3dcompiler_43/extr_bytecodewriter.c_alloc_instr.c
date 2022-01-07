@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct instruction {unsigned int num_srcs; void* src; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*) ; 
- void* d3dcompiler_alloc (unsigned int) ; 
- int /*<<< orphan*/  d3dcompiler_free (struct instruction*) ; 
+
+ int ERR (char*) ;
+ void* d3dcompiler_alloc (unsigned int) ;
+ int d3dcompiler_free (struct instruction*) ;
 
 struct instruction *alloc_instr(unsigned int srcs) {
     struct instruction *ret = d3dcompiler_alloc(sizeof(*ret));
     if(!ret) {
         ERR("Failed to allocate memory for an instruction structure\n");
-        return NULL;
+        return ((void*)0);
     }
 
     if(srcs) {
@@ -29,7 +29,7 @@ struct instruction *alloc_instr(unsigned int srcs) {
         if(!ret->src) {
             ERR("Failed to allocate memory for instruction registers\n");
             d3dcompiler_free(ret);
-            return NULL;
+            return ((void*)0);
         }
         ret->num_srcs = srcs;
     }

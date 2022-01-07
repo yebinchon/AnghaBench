@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct netdata_static_thread {int /*<<< orphan*/  enabled; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NETDATA_MAIN_THREAD_EXITED ; 
- int /*<<< orphan*/  NETDATA_MAIN_THREAD_EXITING ; 
- int /*<<< orphan*/  info (char*) ; 
+
+
+
+struct netdata_static_thread {int enabled; } ;
+
+
+ int NETDATA_MAIN_THREAD_EXITED ;
+ int NETDATA_MAIN_THREAD_EXITING ;
+ int info (char*) ;
 
 __attribute__((used)) static void cpuidlejitter_main_cleanup(void *ptr) {
     struct netdata_static_thread *static_thread = (struct netdata_static_thread *)ptr;

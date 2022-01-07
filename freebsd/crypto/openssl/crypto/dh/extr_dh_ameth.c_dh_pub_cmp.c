@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_9__ {TYPE_1__* dh; } ;
 struct TYPE_10__ {TYPE_2__ pkey; } ;
-struct TYPE_8__ {int /*<<< orphan*/  pub_key; } ;
-typedef  TYPE_3__ EVP_PKEY ;
+struct TYPE_8__ {int pub_key; } ;
+typedef TYPE_3__ EVP_PKEY ;
 
-/* Variables and functions */
- scalar_t__ BN_cmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ dh_cmp_parameters (TYPE_3__ const*,TYPE_3__ const*) ; 
+
+ scalar_t__ BN_cmp (int ,int ) ;
+ scalar_t__ dh_cmp_parameters (TYPE_3__ const*,TYPE_3__ const*) ;
 
 __attribute__((used)) static int dh_pub_cmp(const EVP_PKEY *a, const EVP_PKEY *b)
 {

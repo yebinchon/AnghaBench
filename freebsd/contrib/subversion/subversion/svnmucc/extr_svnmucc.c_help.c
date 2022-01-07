@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  svn_cmdline_fputs (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_error_clear (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int apr_pool_t ;
+typedef int FILE ;
+
+
+ int _ (char*) ;
+ int svn_cmdline_fputs (int ,int *,int *) ;
+ int svn_error_clear (int ) ;
 
 __attribute__((used)) static void
 help(FILE *stream, apr_pool_t *pool)

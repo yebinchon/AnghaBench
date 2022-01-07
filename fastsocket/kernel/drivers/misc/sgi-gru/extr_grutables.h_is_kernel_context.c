@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct gru_thread_state {int /*<<< orphan*/  ts_mm; } ;
 
-/* Variables and functions */
+
+
+
+struct gru_thread_state {int ts_mm; } ;
+
+
 
 __attribute__((used)) static inline int is_kernel_context(struct gru_thread_state *gts)
 {
-	return !gts->ts_mm;
+ return !gts->ts_mm;
 }

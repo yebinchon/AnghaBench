@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  LED_BRIGHTNESS_HI ; 
- int /*<<< orphan*/  frenchdev_led_1_off () ; 
- int /*<<< orphan*/  frenchdev_led_1_on () ; 
- int /*<<< orphan*/  frenchdev_led_2_off () ; 
- int /*<<< orphan*/  frenchdev_led_2_on () ; 
- int /*<<< orphan*/  frenchdev_led_3_off () ; 
- int /*<<< orphan*/  frenchdev_led_3_on () ; 
- int /*<<< orphan*/  frenchdev_led_all_off () ; 
- int /*<<< orphan*/  frenchdev_led_all_set (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wait_ms (int) ; 
+ int LED_BRIGHTNESS_HI ;
+ int frenchdev_led_1_off () ;
+ int frenchdev_led_1_on () ;
+ int frenchdev_led_2_off () ;
+ int frenchdev_led_2_on () ;
+ int frenchdev_led_3_off () ;
+ int frenchdev_led_3_on () ;
+ int frenchdev_led_all_off () ;
+ int frenchdev_led_all_set (int ) ;
+ int wait_ms (int) ;
 
 void frenchdev_blink_all_leds(void)
 {

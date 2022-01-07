@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct fir16_state_t {int /*<<< orphan*/  history; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  kfree (int /*<<< orphan*/ ) ; 
+
+
+
+struct fir16_state_t {int history; } ;
+
+
+ int kfree (int ) ;
 
 __attribute__((used)) static inline void fir16_free(struct fir16_state_t *fir)
 {
-	kfree(fir->history);
+ kfree(fir->history);
 }

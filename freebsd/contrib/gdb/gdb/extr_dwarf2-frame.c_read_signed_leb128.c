@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  bfd_byte ;
-typedef  int /*<<< orphan*/  bfd ;
-typedef  unsigned char LONGEST ;
 
-/* Variables and functions */
- unsigned char bfd_get_8 (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int bfd_byte ;
+typedef int bfd ;
+typedef unsigned char LONGEST ;
+
+
+ unsigned char bfd_get_8 (int *,int *) ;
 
 __attribute__((used)) static LONGEST
 read_signed_leb128 (bfd *abfd, char *buf, unsigned int *bytes_read_ptr)

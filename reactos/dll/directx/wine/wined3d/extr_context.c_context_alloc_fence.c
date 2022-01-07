@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct wined3d_gl_info {scalar_t__* supported; } ;
-struct TYPE_2__ {int /*<<< orphan*/  id; int /*<<< orphan*/ * sync; } ;
-struct wined3d_fence {int /*<<< orphan*/  entry; struct wined3d_context* context; TYPE_1__ object; } ;
-struct wined3d_context {int free_fence_count; int /*<<< orphan*/  fences; TYPE_1__* free_fences; struct wined3d_gl_info* gl_info; } ;
+struct TYPE_2__ {int id; int * sync; } ;
+struct wined3d_fence {int entry; struct wined3d_context* context; TYPE_1__ object; } ;
+struct wined3d_context {int free_fence_count; int fences; TYPE_1__* free_fences; struct wined3d_gl_info* gl_info; } ;
 
-/* Variables and functions */
- size_t APPLE_FENCE ; 
- size_t ARB_SYNC ; 
- int /*<<< orphan*/  GL_EXTCALL (int /*<<< orphan*/ ) ; 
- size_t NV_FENCE ; 
- int /*<<< orphan*/  TRACE (char*,struct wined3d_context*,...) ; 
- int /*<<< orphan*/  WARN (char*) ; 
- int /*<<< orphan*/  checkGLcall (char*) ; 
- int /*<<< orphan*/  glGenFencesAPPLE (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  glGenFencesNV (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  list_add_head (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ size_t APPLE_FENCE ;
+ size_t ARB_SYNC ;
+ int GL_EXTCALL (int ) ;
+ size_t NV_FENCE ;
+ int TRACE (char*,struct wined3d_context*,...) ;
+ int WARN (char*) ;
+ int checkGLcall (char*) ;
+ int glGenFencesAPPLE (int,int *) ;
+ int glGenFencesNV (int,int *) ;
+ int list_add_head (int *,int *) ;
 
 void context_alloc_fence(struct wined3d_context *context, struct wined3d_fence *fence)
 {
@@ -40,8 +40,8 @@ void context_alloc_fence(struct wined3d_context *context, struct wined3d_fence *
     {
         if (gl_info->supported[ARB_SYNC])
         {
-            /* Using ARB_sync, not much to do here. */
-            fence->object.sync = NULL;
+
+            fence->object.sync = ((void*)0);
             TRACE("Allocated sync object in context %p.\n", context);
         }
         else if (gl_info->supported[APPLE_FENCE])

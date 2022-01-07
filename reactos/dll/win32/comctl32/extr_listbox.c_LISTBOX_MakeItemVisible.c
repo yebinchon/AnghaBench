@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_6__ {scalar_t__ top_item; int style; scalar_t__ width; int column_width; scalar_t__ page_size; int height; int item_height; TYPE_1__* items; } ;
 struct TYPE_5__ {int height; } ;
-typedef  TYPE_2__ LB_DESCR ;
-typedef  scalar_t__ INT ;
-typedef  scalar_t__ BOOL ;
+typedef TYPE_2__ LB_DESCR ;
+typedef scalar_t__ INT ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- int LBS_MULTICOLUMN ; 
- int LBS_OWNERDRAWVARIABLE ; 
- int /*<<< orphan*/  LISTBOX_SetTopItem (TYPE_2__*,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  TRUE ; 
+
+ int LBS_MULTICOLUMN ;
+ int LBS_OWNERDRAWVARIABLE ;
+ int LISTBOX_SetTopItem (TYPE_2__*,scalar_t__,int ) ;
+ int TRACE (char*,scalar_t__,scalar_t__,scalar_t__) ;
+ int TRUE ;
 
 __attribute__((used)) static void LISTBOX_MakeItemVisible( LB_DESCR *descr, INT index, BOOL fully )
 {

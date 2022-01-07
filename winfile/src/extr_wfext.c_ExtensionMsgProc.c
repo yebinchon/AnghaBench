@@ -1,67 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WPARAM ;
-typedef  int UINT ;
-typedef  long LRESULT ;
-typedef  int /*<<< orphan*/  LPARAM ;
-typedef  scalar_t__ HWND ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DrawMenuBar (scalar_t__) ; 
- int /*<<< orphan*/  FALSE ; 
- long FMFOCUS_DIR ; 
- long FMFOCUS_DRIVES ; 
- long FMFOCUS_SEARCH ; 
- long FMFOCUS_TREE ; 
-#define  FM_GETDRIVEINFOA 138 
-#define  FM_GETDRIVEINFOW 137 
-#define  FM_GETFILESELA 136 
-#define  FM_GETFILESELLFNA 135 
-#define  FM_GETFILESELLFNW 134 
-#define  FM_GETFILESELW 133 
-#define  FM_GETFOCUS 132 
-#define  FM_GETSELCOUNT 131 
-#define  FM_GETSELCOUNTLFN 130 
-#define  FM_REFRESH_WINDOWS 129 
-#define  FM_RELOAD_EXTENSIONS 128 
- int /*<<< orphan*/  FreeExtensions () ; 
- int /*<<< orphan*/  GW_CHILD ; 
- int /*<<< orphan*/  GW_HWNDNEXT ; 
- int /*<<< orphan*/  GW_OWNER ; 
- long GetDriveInfo (scalar_t__,int,int /*<<< orphan*/ ) ; 
- long GetExtSelection (scalar_t__,int,int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ ,int) ; 
- scalar_t__ GetTreeFocus (scalar_t__) ; 
- int /*<<< orphan*/  GetTreeWindows (scalar_t__,scalar_t__*,scalar_t__*) ; 
- scalar_t__ GetWindow (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  InitExtensions () ; 
- int /*<<< orphan*/  InvalidateRect (scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RefreshWindow (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SPC_SET_HITDISK (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SaveRestoreToolbar (int /*<<< orphan*/ ) ; 
- scalar_t__ SendMessage (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,long) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  UpdateDriveList () ; 
- int /*<<< orphan*/  UpdateStatus (scalar_t__) ; 
- int /*<<< orphan*/  WM_CANCELMODE ; 
- int /*<<< orphan*/  WM_MDIGETACTIVE ; 
- int /*<<< orphan*/  WM_SETREDRAW ; 
- scalar_t__ hwndDriveBar ; 
- scalar_t__ hwndFrame ; 
- scalar_t__ hwndMDIClient ; 
- scalar_t__ hwndSearch ; 
- scalar_t__ hwndToolbar ; 
- int /*<<< orphan*/  qFreeSpace ; 
+
+
+
+typedef int WPARAM ;
+typedef int UINT ;
+typedef long LRESULT ;
+typedef int LPARAM ;
+typedef scalar_t__ HWND ;
+typedef int BOOL ;
+
+
+ int DrawMenuBar (scalar_t__) ;
+ int FALSE ;
+ long FMFOCUS_DIR ;
+ long FMFOCUS_DRIVES ;
+ long FMFOCUS_SEARCH ;
+ long FMFOCUS_TREE ;
+ int FreeExtensions () ;
+ int GW_CHILD ;
+ int GW_HWNDNEXT ;
+ int GW_OWNER ;
+ long GetDriveInfo (scalar_t__,int,int ) ;
+ long GetExtSelection (scalar_t__,int,int ,int,int,int ,int) ;
+ scalar_t__ GetTreeFocus (scalar_t__) ;
+ int GetTreeWindows (scalar_t__,scalar_t__*,scalar_t__*) ;
+ scalar_t__ GetWindow (scalar_t__,int ) ;
+ int InitExtensions () ;
+ int InvalidateRect (scalar_t__,int *,int ) ;
+ int RefreshWindow (scalar_t__,int ,int ) ;
+ int SPC_SET_HITDISK (int ) ;
+ int SaveRestoreToolbar (int ) ;
+ scalar_t__ SendMessage (scalar_t__,int ,int ,long) ;
+ int TRUE ;
+ int UpdateDriveList () ;
+ int UpdateStatus (scalar_t__) ;
+ int WM_CANCELMODE ;
+ int WM_MDIGETACTIVE ;
+ int WM_SETREDRAW ;
+ scalar_t__ hwndDriveBar ;
+ scalar_t__ hwndFrame ;
+ scalar_t__ hwndMDIClient ;
+ scalar_t__ hwndSearch ;
+ scalar_t__ hwndToolbar ;
+ int qFreeSpace ;
 
 LRESULT
 ExtensionMsgProc(UINT wMsg, WPARAM wParam, LPARAM lParam)
@@ -74,7 +63,7 @@ ExtensionMsgProc(UINT wMsg, WPARAM wParam, LPARAM lParam)
 
    switch (wMsg) {
 
-   case FM_RELOAD_EXTENSIONS:
+   case 128:
       SendMessage(hwndFrame, WM_CANCELMODE, 0, 0L);
 
       SaveRestoreToolbar(TRUE);
@@ -86,15 +75,15 @@ ExtensionMsgProc(UINT wMsg, WPARAM wParam, LPARAM lParam)
       SaveRestoreToolbar(FALSE);
 
       SendMessage(hwndToolbar, WM_SETREDRAW, TRUE, 0L);
-      InvalidateRect(hwndToolbar, NULL, TRUE);
+      InvalidateRect(hwndToolbar, ((void*)0), TRUE);
 
       DrawMenuBar(hwndFrame);
       break;
 
-   case FM_GETFOCUS:
-      // wParam       unused
-      // lParam       unused
-      // return       window tyep with focus
+   case 132:
+
+
+
 
       if (hwndActive == hwndSearch)
          return FMFOCUS_SEARCH;
@@ -109,25 +98,16 @@ ExtensionMsgProc(UINT wMsg, WPARAM wParam, LPARAM lParam)
          return FMFOCUS_DRIVES;
       break;
 
-   case FM_GETDRIVEINFOA:
-   case FM_GETDRIVEINFOW:
+   case 138:
+   case 137:
 
-      // wParam       unused
-      // lParam       LPFMS_GETDRIVEINFO structure to be filled in
+
+
 
       return GetDriveInfo(hwndActive, wMsg, lParam);
       break;
 
-   case FM_REFRESH_WINDOWS:
-      // wParam       0 refresh the current window
-      //              non zero refresh all windows
-      // lParam       unused
-
-
-      //
-      // Note: For all windows that it refreshes,
-      // it requests a WNetGetDirectoryType flush cache.
-
+   case 129:
       UpdateDriveList();
 
       if (wParam == 0) {
@@ -151,29 +131,29 @@ ExtensionMsgProc(UINT wMsg, WPARAM wParam, LPARAM lParam)
       UpdateStatus(hwndActive);
       break;
 
-   case FM_GETSELCOUNT:
-   case FM_GETSELCOUNTLFN:
-      // wParam       unused
-      // lParam       unused
-      // return       # of selected items
+   case 131:
+   case 130:
 
-   case FM_GETFILESELA:
-   case FM_GETFILESELW:
-   case FM_GETFILESELLFNA:
-   case FM_GETFILESELLFNW:
 
-      // wParam       index of selected item to get
-      // lParam       LPFMS_GETFILESEL structure to be filled in
+
+
+   case 136:
+   case 133:
+   case 135:
+   case 134:
+
+
+
 
       if (hwndActive != hwndSearch && !hwndDir)
          return 0L;
 
-      // note, this uses the fact that LFN messages are odd!
+
 
       return GetExtSelection(hwndActive, (UINT)wParam, lParam,
-         hwndActive == hwndSearch, (wMsg & ~1) == FM_GETSELCOUNT,
+         hwndActive == hwndSearch, (wMsg & ~1) == 131,
          (BOOL)(wMsg & 1),
-         (wMsg == FM_GETFILESELW || wMsg == FM_GETFILESELLFNW));
+         (wMsg == 133 || wMsg == 134));
    }
 
    return 0;

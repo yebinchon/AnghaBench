@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  y ;
-typedef  int /*<<< orphan*/  x ;
+
+
+
+
+typedef int y ;
+typedef int x ;
 struct rlimit {scalar_t__ rlim_cur; scalar_t__ rlim_max; } ;
 
-/* Variables and functions */
- int RLIMIT_AS ; 
- int RLIMIT_DATA ; 
- int RLIMIT_STACK ; 
- scalar_t__ atoi (char*) ; 
- int bVdbeDebug ; 
- int eVerbosity ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  getrlimit (int,struct rlimit*) ; 
- int /*<<< orphan*/  memset (struct rlimit*,int /*<<< orphan*/ ,int) ; 
- void* mxCb ; 
- int numberOfVChar (char*) ; 
- int /*<<< orphan*/  printf (char*,char*,int,int) ; 
- int /*<<< orphan*/  setrlimit (int,struct rlimit*) ; 
- int /*<<< orphan*/  sqlite3MemTraceActivate (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  stdout ; 
- scalar_t__ strcmp (char*,char*) ; 
- void* strtol (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- void* szMax ; 
+
+ int RLIMIT_AS ;
+ int RLIMIT_DATA ;
+ int RLIMIT_STACK ;
+ scalar_t__ atoi (char*) ;
+ int bVdbeDebug ;
+ int eVerbosity ;
+ int exit (int) ;
+ int fprintf (int ,char*,char*) ;
+ int getrlimit (int,struct rlimit*) ;
+ int memset (struct rlimit*,int ,int) ;
+ void* mxCb ;
+ int numberOfVChar (char*) ;
+ int printf (char*,char*,int,int) ;
+ int setrlimit (int,struct rlimit*) ;
+ int sqlite3MemTraceActivate (int ) ;
+ int stderr ;
+ int stdout ;
+ scalar_t__ strcmp (char*,char*) ;
+ void* strtol (char*,int ,int ) ;
+ void* szMax ;
 
 int LLVMFuzzerInitialize(int *pArgc, char ***pArgv){
   int i, j, n;
@@ -77,7 +77,7 @@ int LLVMFuzzerInitialize(int *pArgc, char ***pArgv){
         szMax = strtol(argv[++i], 0, 0);
         continue;
       }
-#ifndef _WIN32
+
       if( strcmp(z,"max-stack")==0
        || strcmp(z,"max-data")==0
        || strcmp(z,"max-as")==0
@@ -104,11 +104,11 @@ int LLVMFuzzerInitialize(int *pArgc, char ***pArgv){
         setrlimit(resource, &y);
         memset(&y,0,sizeof(y));
         getrlimit(resource, &y);
-        printf("%s changed from %d to %d\n", 
+        printf("%s changed from %d to %d\n",
                zType, (int)x.rlim_cur, (int)y.rlim_cur);
         continue;
       }
-#endif /* _WIN32 */
+
     }
     argv[j++] = argv[i];
   }

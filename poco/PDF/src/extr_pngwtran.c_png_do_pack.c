@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int png_uint_32 ;
-typedef  TYPE_1__* png_row_infop ;
-typedef  int* png_bytep ;
-typedef  int png_byte ;
-struct TYPE_3__ {int bit_depth; int channels; int width; int pixel_depth; int /*<<< orphan*/  rowbytes; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PNG_ROWBYTES (int,int) ; 
- int /*<<< orphan*/  png_debug (int,char*) ; 
 
-void /* PRIVATE */
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int png_uint_32 ;
+typedef TYPE_1__* png_row_infop ;
+typedef int* png_bytep ;
+typedef int png_byte ;
+struct TYPE_3__ {int bit_depth; int channels; int width; int pixel_depth; int rowbytes; } ;
+
+
+ int PNG_ROWBYTES (int,int) ;
+ int png_debug (int,char*) ;
+
+void
 png_do_pack(png_row_infop row_info, png_bytep row, png_uint_32 bit_depth)
 {
    png_debug(1, "in png_do_pack\n");
    if (row_info->bit_depth == 8 &&
-#if defined(PNG_USELESS_TESTS_SUPPORTED)
-       row != NULL && row_info != NULL &&
-#endif
+
+
+
       row_info->channels == 1)
    {
       switch ((int)bit_depth)

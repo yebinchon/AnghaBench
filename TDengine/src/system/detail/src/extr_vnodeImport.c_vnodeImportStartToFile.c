@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {char* payload; int /*<<< orphan*/  rows; int /*<<< orphan*/  importedRows; int /*<<< orphan*/  key; int /*<<< orphan*/  firstKey; TYPE_1__* pObj; } ;
-struct TYPE_7__ {int /*<<< orphan*/  meterId; int /*<<< orphan*/  sid; int /*<<< orphan*/  vnode; } ;
-typedef  TYPE_1__ SMeterObj ;
-typedef  TYPE_2__ SImportInfo ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dTrace (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int vnodeFindKeyInFile (TYPE_2__*,int) ; 
- int /*<<< orphan*/  vnodeGetImportStartPart (TYPE_1__*,char*,int,int /*<<< orphan*/ ) ; 
- int vnodeImportToFile (TYPE_2__*) ; 
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_8__ {char* payload; int rows; int importedRows; int key; int firstKey; TYPE_1__* pObj; } ;
+struct TYPE_7__ {int meterId; int sid; int vnode; } ;
+typedef TYPE_1__ SMeterObj ;
+typedef TYPE_2__ SImportInfo ;
+
+
+ int dTrace (char*,int ,int ,int ) ;
+ int vnodeFindKeyInFile (TYPE_2__*,int) ;
+ int vnodeGetImportStartPart (TYPE_1__*,char*,int,int ) ;
+ int vnodeImportToFile (TYPE_2__*) ;
 
 int vnodeImportStartToFile(SImportInfo *pImport, char *payload, int rows) {
-  int        code = 0;
+  int code = 0;
   SMeterObj *pObj = pImport->pObj;
 
   code = vnodeFindKeyInFile(pImport, 1);

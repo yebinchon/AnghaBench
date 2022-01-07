@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u8 ;
-struct TYPE_7__ {int /*<<< orphan*/  name; } ;
-typedef  TYPE_1__ ide_drive_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ht6560b_lock ; 
- int ht_pio2timings (TYPE_1__*,int const) ; 
- int /*<<< orphan*/  ht_set_prefetch (TYPE_1__*,int const) ; 
- scalar_t__ ide_get_drivedata (TYPE_1__*) ; 
- int /*<<< orphan*/  ide_set_drivedata (TYPE_1__*,void*) ; 
- int /*<<< orphan*/  printk (char*,int /*<<< orphan*/ ,int const,int) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int u8 ;
+struct TYPE_7__ {int name; } ;
+typedef TYPE_1__ ide_drive_t ;
+
+
+ int ht6560b_lock ;
+ int ht_pio2timings (TYPE_1__*,int const) ;
+ int ht_set_prefetch (TYPE_1__*,int const) ;
+ scalar_t__ ide_get_drivedata (TYPE_1__*) ;
+ int ide_set_drivedata (TYPE_1__*,void*) ;
+ int printk (char*,int ,int const,int) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
 
 __attribute__((used)) static void ht6560b_set_pio_mode(ide_drive_t *drive, const u8 pio)
 {
-	unsigned long flags, config;
-	u8 timing;
-	
-	switch (pio) {
-	case 8:         /* set prefetch off */
-	case 9:         /* set prefetch on */
-		ht_set_prefetch(drive, pio & 1);
-		return;
-	}
+ unsigned long flags, config;
+ u8 timing;
 
-	timing = ht_pio2timings(drive, pio);
+ switch (pio) {
+ case 8:
+ case 9:
+  ht_set_prefetch(drive, pio & 1);
+  return;
+ }
 
-	spin_lock_irqsave(&ht6560b_lock, flags);
-	config = (unsigned long)ide_get_drivedata(drive);
-	config &= 0xff00;
-	config |= timing;
-	ide_set_drivedata(drive, (void *)config);
-	spin_unlock_irqrestore(&ht6560b_lock, flags);
+ timing = ht_pio2timings(drive, pio);
 
-#ifdef DEBUG
-	printk("ht6560b: drive %s tuned to pio mode %#x timing=%#x\n", drive->name, pio, timing);
-#endif
+ spin_lock_irqsave(&ht6560b_lock, flags);
+ config = (unsigned long)ide_get_drivedata(drive);
+ config &= 0xff00;
+ config |= timing;
+ ide_set_drivedata(drive, (void *)config);
+ spin_unlock_irqrestore(&ht6560b_lock, flags);
+
+
+
+
 }

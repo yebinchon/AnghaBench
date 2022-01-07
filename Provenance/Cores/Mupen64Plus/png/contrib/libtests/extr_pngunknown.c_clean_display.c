@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {char* file; char* test; int /*<<< orphan*/ * end_ptr; int /*<<< orphan*/ * info_ptr; int /*<<< orphan*/ * png_ptr; } ;
-typedef  TYPE_1__ display ;
 
-/* Variables and functions */
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*,char*) ; 
- int /*<<< orphan*/  png_destroy_read_struct (int /*<<< orphan*/ **,int /*<<< orphan*/ **,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  stderr ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {char* file; char* test; int * end_ptr; int * info_ptr; int * png_ptr; } ;
+typedef TYPE_1__ display ;
+
+
+ int exit (int) ;
+ int fprintf (int ,char*,char*,char*) ;
+ int png_destroy_read_struct (int **,int **,int **) ;
+ int stderr ;
 
 __attribute__((used)) static void
 clean_display(display *d)
 {
    png_destroy_read_struct(&d->png_ptr, &d->info_ptr, &d->end_ptr);
 
-   /* This must not happen - it might cause an app crash */
-   if (d->png_ptr != NULL || d->info_ptr != NULL || d->end_ptr != NULL)
+
+   if (d->png_ptr != ((void*)0) || d->info_ptr != ((void*)0) || d->end_ptr != ((void*)0))
    {
       fprintf(stderr, "%s(%s): png_destroy_read_struct error\n", d->file,
          d->test);

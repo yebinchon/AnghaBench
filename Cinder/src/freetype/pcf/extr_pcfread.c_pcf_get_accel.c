@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int fontAscent; int fontDescent; int /*<<< orphan*/  maxbounds; int /*<<< orphan*/  ink_maxbounds; int /*<<< orphan*/  minbounds; int /*<<< orphan*/  ink_minbounds; int /*<<< orphan*/  maxOverlap; scalar_t__ drawDirection; scalar_t__ inkMetrics; scalar_t__ inkInside; scalar_t__ constantWidth; scalar_t__ terminalFont; scalar_t__ constantMetrics; scalar_t__ noOverlap; } ;
-struct TYPE_6__ {int /*<<< orphan*/  count; int /*<<< orphan*/  tables; } ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int fontAscent; int fontDescent; int maxbounds; int ink_maxbounds; int minbounds; int ink_minbounds; int maxOverlap; scalar_t__ drawDirection; scalar_t__ inkMetrics; scalar_t__ inkInside; scalar_t__ constantWidth; scalar_t__ terminalFont; scalar_t__ constantMetrics; scalar_t__ noOverlap; } ;
+struct TYPE_6__ {int count; int tables; } ;
 struct TYPE_7__ {TYPE_1__ toc; TYPE_3__ accel; } ;
-typedef  TYPE_2__* PCF_Face ;
-typedef  TYPE_3__* PCF_Accel ;
-typedef  scalar_t__ FT_ULong ;
-typedef  int /*<<< orphan*/  FT_Stream ;
-typedef  scalar_t__ FT_Error ;
+typedef TYPE_2__* PCF_Face ;
+typedef TYPE_3__* PCF_Accel ;
+typedef scalar_t__ FT_ULong ;
+typedef int FT_Stream ;
+typedef scalar_t__ FT_Error ;
 
-/* Variables and functions */
- int FT_ABS (int) ; 
- scalar_t__ FT_READ_ULONG_LE (scalar_t__) ; 
- scalar_t__ FT_STREAM_READ_FIELDS (int /*<<< orphan*/ ,TYPE_3__*) ; 
- int /*<<< orphan*/  FT_TRACE0 (char*) ; 
- int /*<<< orphan*/  FT_TRACE4 (char*) ; 
- int /*<<< orphan*/  FT_TRACE5 (char*) ; 
- scalar_t__ MSBFirst ; 
- int /*<<< orphan*/  PCF_ACCEL_W_INKBOUNDS ; 
- scalar_t__ PCF_BDF_ACCELERATORS ; 
- scalar_t__ PCF_BYTE_ORDER (scalar_t__) ; 
- int /*<<< orphan*/  PCF_DEFAULT_FORMAT ; 
- scalar_t__ PCF_FORMAT_MASK ; 
- scalar_t__ PCF_FORMAT_MATCH (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pcf_accel_header ; 
- int /*<<< orphan*/  pcf_accel_msb_header ; 
- scalar_t__ pcf_get_metric (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ *) ; 
- scalar_t__ pcf_seek_to_table_type (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,scalar_t__*,scalar_t__*) ; 
+
+ int FT_ABS (int) ;
+ scalar_t__ FT_READ_ULONG_LE (scalar_t__) ;
+ scalar_t__ FT_STREAM_READ_FIELDS (int ,TYPE_3__*) ;
+ int FT_TRACE0 (char*) ;
+ int FT_TRACE4 (char*) ;
+ int FT_TRACE5 (char*) ;
+ scalar_t__ MSBFirst ;
+ int PCF_ACCEL_W_INKBOUNDS ;
+ scalar_t__ PCF_BDF_ACCELERATORS ;
+ scalar_t__ PCF_BYTE_ORDER (scalar_t__) ;
+ int PCF_DEFAULT_FORMAT ;
+ scalar_t__ PCF_FORMAT_MASK ;
+ scalar_t__ PCF_FORMAT_MATCH (scalar_t__,int ) ;
+ int pcf_accel_header ;
+ int pcf_accel_msb_header ;
+ scalar_t__ pcf_get_metric (int ,scalar_t__,int *) ;
+ scalar_t__ pcf_seek_to_table_type (int ,int ,int ,scalar_t__,scalar_t__*,scalar_t__*) ;
 
 __attribute__((used)) static FT_Error
-  pcf_get_accel( FT_Stream  stream,
-                 PCF_Face   face,
-                 FT_ULong   type )
+  pcf_get_accel( FT_Stream stream,
+                 PCF_Face face,
+                 FT_ULong type )
   {
-    FT_ULong   format, size;
-    FT_Error   error;
-    PCF_Accel  accel = &face->accel;
+    FT_ULong format, size;
+    FT_Error error;
+    PCF_Accel accel = &face->accel;
 
 
     error = pcf_seek_to_table_type( stream,
@@ -72,7 +72,7 @@ __attribute__((used)) static FT_Error
                 PCF_FORMAT_MATCH( format, PCF_ACCEL_W_INKBOUNDS ) ?
                   "accelerated" : "not accelerated" ));
 
-    if ( !PCF_FORMAT_MATCH( format, PCF_DEFAULT_FORMAT )    &&
+    if ( !PCF_FORMAT_MATCH( format, PCF_DEFAULT_FORMAT ) &&
          !PCF_FORMAT_MATCH( format, PCF_ACCEL_W_INKBOUNDS ) )
       goto Bail;
 
@@ -102,7 +102,7 @@ __attribute__((used)) static FT_Error
                 accel->fontDescent,
                 accel->maxOverlap ));
 
-    /* sanity checks */
+
     if ( FT_ABS( accel->fontAscent ) > 0x7FFF )
     {
       accel->fontAscent = accel->fontAscent < 0 ? -0x7FFF : 0x7FFF;

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int fps; int flags; scalar_t__ start; } ;
-typedef  TYPE_1__ AVTimecode ;
+typedef TYPE_1__ AVTimecode ;
 
-/* Variables and functions */
- int AV_TIMECODE_FLAG_24HOURSMAX ; 
- int AV_TIMECODE_FLAG_ALLOWNEGATIVE ; 
- int AV_TIMECODE_FLAG_DROPFRAME ; 
- int /*<<< orphan*/  AV_TIMECODE_STR_SIZE ; 
- int av_timecode_adjust_ntsc_framenum2 (int,int) ; 
- int /*<<< orphan*/  snprintf (char*,int /*<<< orphan*/ ,char*,char*,int,int,int,char,int) ; 
+
+ int AV_TIMECODE_FLAG_24HOURSMAX ;
+ int AV_TIMECODE_FLAG_ALLOWNEGATIVE ;
+ int AV_TIMECODE_FLAG_DROPFRAME ;
+ int AV_TIMECODE_STR_SIZE ;
+ int av_timecode_adjust_ntsc_framenum2 (int,int) ;
+ int snprintf (char*,int ,char*,char*,int,int,int,char,int) ;
 
 char *av_timecode_make_string(const AVTimecode *tc, char *buf, int framenum)
 {
@@ -36,8 +36,8 @@ char *av_timecode_make_string(const AVTimecode *tc, char *buf, int framenum)
         neg = tc->flags & AV_TIMECODE_FLAG_ALLOWNEGATIVE;
     }
     ff = framenum % fps;
-    ss = framenum / fps        % 60;
-    mm = framenum / (fps*60)   % 60;
+    ss = framenum / fps % 60;
+    mm = framenum / (fps*60) % 60;
     hh = framenum / (fps*3600);
     if (tc->flags & AV_TIMECODE_FLAG_24HOURSMAX)
         hh = hh % 24;

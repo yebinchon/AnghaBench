@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ int64_t ;
+
+
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef scalar_t__ int64_t ;
 struct TYPE_11__ {TYPE_2__** streams; } ;
 struct TYPE_10__ {int size; scalar_t__ duration; scalar_t__ data; scalar_t__ pts; scalar_t__ dts; } ;
 struct TYPE_9__ {scalar_t__ cur_dts; scalar_t__ duration; scalar_t__ start_time; TYPE_1__* codecpar; } ;
 struct TYPE_8__ {scalar_t__ frame_size; } ;
-typedef  TYPE_3__ AVPacket ;
-typedef  TYPE_4__ AVFormatContext ;
+typedef TYPE_3__ AVPacket ;
+typedef TYPE_4__ AVFormatContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_EOF ; 
- scalar_t__ AV_NOPTS_VALUE ; 
- int /*<<< orphan*/  AV_WL32 (scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  AV_WL64 (scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  ENOMEM ; 
- scalar_t__ FFMIN (scalar_t__,scalar_t__) ; 
- scalar_t__ av_new_packet (TYPE_3__*,int) ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_EOF ;
+ scalar_t__ AV_NOPTS_VALUE ;
+ int AV_WL32 (scalar_t__,scalar_t__) ;
+ int AV_WL64 (scalar_t__,scalar_t__) ;
+ int ENOMEM ;
+ scalar_t__ FFMIN (scalar_t__,scalar_t__) ;
+ scalar_t__ av_new_packet (TYPE_3__*,int) ;
 
 __attribute__((used)) static int sbg_read_packet(AVFormatContext *avf, AVPacket *packet)
 {

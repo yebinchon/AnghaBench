@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  dest ;
 
-/* Variables and functions */
- int EINVAL ; 
- size_t INT_MAX ; 
- int /*<<< orphan*/  LC_ALL ; 
- scalar_t__ broken (int) ; 
- int errno ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- scalar_t__ p__atodbl_l ; 
- int /*<<< orphan*/  setlocale (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
- size_t strxfrm (char*,char*,int) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
+
+
+
+typedef int dest ;
+
+
+ int EINVAL ;
+ size_t INT_MAX ;
+ int LC_ALL ;
+ scalar_t__ broken (int) ;
+ int errno ;
+ int ok (int,char*,...) ;
+ scalar_t__ p__atodbl_l ;
+ int setlocale (int ,char*) ;
+ int strcmp (char*,char*) ;
+ size_t strxfrm (char*,char*,int) ;
+ int win_skip (char*) ;
 
 __attribute__((used)) static void test_strxfrm(void)
 {
     char dest[256];
     size_t ret;
 
-    /* crashes on old version of msvcrt */
+
     if(p__atodbl_l) {
         errno = 0xdeadbeef;
-        ret = strxfrm(NULL, "src", 1);
+        ret = strxfrm(((void*)0), "src", 1);
         ok(ret == INT_MAX, "ret = %d\n", (int)ret);
         ok(errno == EINVAL, "errno = %d\n", errno);
 
         errno = 0xdeadbeef;
-        ret = strxfrm(dest, NULL, 100);
+        ret = strxfrm(dest, ((void*)0), 100);
         ok(ret == INT_MAX, "ret = %d\n", (int)ret);
         ok(errno == EINVAL, "errno = %d\n", errno);
     }
 
-    ret = strxfrm(NULL, "src", 0);
+    ret = strxfrm(((void*)0), "src", 0);
     ok(ret == 3, "ret = %d\n", (int)ret);
     dest[0] = 'a';
     ret = strxfrm(dest, "src", 0);
@@ -72,7 +72,7 @@ __attribute__((used)) static void test_strxfrm(void)
         return;
     }
 
-    ret = strxfrm(NULL, "src", 0);
+    ret = strxfrm(((void*)0), "src", 0);
     ok(ret < sizeof(dest)-1, "ret = %d\n", (int)ret);
     dest[0] = 'a';
     ret = strxfrm(dest, "src", 0);

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct MPContext {int osd_function; scalar_t__ step_frames; scalar_t__ paused; TYPE_1__* opts; scalar_t__ paused_for_cache; } ;
-struct TYPE_2__ {int /*<<< orphan*/  pause; } ;
+struct TYPE_2__ {int pause; } ;
 
-/* Variables and functions */
- int OSD_CLOCK ; 
- int OSD_PAUSE ; 
- int OSD_PLAY ; 
- scalar_t__ is_busy (struct MPContext*) ; 
- int /*<<< orphan*/  osd_get_function_sym (char*,size_t,int) ; 
+
+ int OSD_CLOCK ;
+ int OSD_PAUSE ;
+ int OSD_PLAY ;
+ scalar_t__ is_busy (struct MPContext*) ;
+ int osd_get_function_sym (char*,size_t,int) ;
 
 void get_current_osd_sym(struct MPContext *mpctx, char *buf, size_t buf_size)
 {

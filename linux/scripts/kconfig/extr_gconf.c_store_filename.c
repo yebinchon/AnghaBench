@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  gpointer ;
-typedef  int /*<<< orphan*/  gchar ;
-typedef  int /*<<< orphan*/  GtkFileSelection ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GTK_FILE_SELECTION (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GTK_WIDGET (int /*<<< orphan*/ ) ; 
- scalar_t__ conf_write (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/ * gtk_file_selection_get_filename (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gtk_widget_destroy (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  text_insert_msg (char*,char*) ; 
+
+
+
+typedef int gpointer ;
+typedef int gchar ;
+typedef int GtkFileSelection ;
+
+
+ int GTK_FILE_SELECTION (int ) ;
+ int GTK_WIDGET (int ) ;
+ scalar_t__ conf_write (int const*) ;
+ int * gtk_file_selection_get_filename (int ) ;
+ int gtk_widget_destroy (int ) ;
+ int text_insert_msg (char*,char*) ;
 
 __attribute__((used)) static void
 store_filename(GtkFileSelection * file_selector, gpointer user_data)
 {
-	const gchar *fn;
+ const gchar *fn;
 
-	fn = gtk_file_selection_get_filename(GTK_FILE_SELECTION
-					     (user_data));
+ fn = gtk_file_selection_get_filename(GTK_FILE_SELECTION
+          (user_data));
 
-	if (conf_write(fn))
-		text_insert_msg("Error", "Unable to save configuration !");
+ if (conf_write(fn))
+  text_insert_msg("Error", "Unable to save configuration !");
 
-	gtk_widget_destroy(GTK_WIDGET(user_data));
+ gtk_widget_destroy(GTK_WIDGET(user_data));
 }

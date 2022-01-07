@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  stb_uintptr ;
-typedef  int /*<<< orphan*/  stb__nochildren ;
-typedef  int /*<<< orphan*/  stb__chunked ;
-typedef  int stb__alloc_type ;
-struct TYPE_9__ {int /*<<< orphan*/ * child; } ;
-typedef  TYPE_1__ stb__alloc ;
 
-/* Variables and functions */
-#define  STB__alloc 131 
-#define  STB__chunk_raw 130 
-#define  STB__chunked 129 
-#define  STB__nochildren 128 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- scalar_t__ malloc (size_t) ; 
- void* stb__alloc_chunk (TYPE_1__*,int,int,int) ; 
- TYPE_1__* stb__get_context (void*) ; 
- int /*<<< orphan*/  stb__insert_alloc (TYPE_1__*,TYPE_1__*) ; 
- int /*<<< orphan*/  stb__insert_nochild (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stb__setchunks (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stb__setparent (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  stb_alloc_count_alloc ; 
- int /*<<< orphan*/  stb_is_pow2 (int) ; 
- int stb_lowbit8 (unsigned int) ; 
+
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int stb_uintptr ;
+typedef int stb__nochildren ;
+typedef int stb__chunked ;
+typedef int stb__alloc_type ;
+struct TYPE_9__ {int * child; } ;
+typedef TYPE_1__ stb__alloc ;
+
+
+
+
+
+
+ int assert (int ) ;
+ scalar_t__ malloc (size_t) ;
+ void* stb__alloc_chunk (TYPE_1__*,int,int,int) ;
+ TYPE_1__* stb__get_context (void*) ;
+ int stb__insert_alloc (TYPE_1__*,TYPE_1__*) ;
+ int stb__insert_nochild (TYPE_1__*,int *) ;
+ int stb__setchunks (TYPE_1__*,int *) ;
+ int stb__setparent (int *,TYPE_1__*) ;
+ int stb_alloc_count_alloc ;
+ int stb_is_pow2 (int) ;
+ int stb_lowbit8 (unsigned int) ;
 
 __attribute__((used)) static void * malloc_base(void *context, size_t size, stb__alloc_type t, int align)
 {
@@ -42,8 +42,8 @@ __attribute__((used)) static void * malloc_base(void *context, size_t size, stb_
    stb__alloc *src = stb__get_context(context);
 
    if (align <= 0) {
-      // compute worst-case C packed alignment
-      // e.g. a 24-byte struct is 8-aligned
+
+
       int align_proposed = 1 << stb_lowbit8((unsigned int) size);
 
       if (align_proposed < 0)
@@ -56,8 +56,8 @@ __attribute__((used)) static void * malloc_base(void *context, size_t size, stb_
             align_proposed = 256;
       }
 
-      // a negative alignment means 'don't align any larger
-      // than this'; so -16 means we align 1,2,4,8, or 16
+
+
 
       if (align < 0) {
          if (align_proposed > -align)
@@ -69,47 +69,47 @@ __attribute__((used)) static void * malloc_base(void *context, size_t size, stb_
 
    assert(stb_is_pow2(align));
 
-   // don't cause misalignment when allocating nochildren
-   if (t == STB__nochildren && align > 8)
-      t = STB__alloc;
+
+   if (t == 128 && align > 8)
+      t = 131;
 
    switch (t) {
-      case STB__alloc: {
+      case 131: {
          stb__alloc *s = (stb__alloc *) malloc(size + sizeof(*s));
-         if (s == NULL) return NULL;
+         if (s == ((void*)0)) return ((void*)0);
          p = s+1;
-         s->child = NULL;
+         s->child = ((void*)0);
          stb__insert_alloc(src, s);
 
-         stb__setchunks(s,NULL);
+         stb__setchunks(s,((void*)0));
          break;
       }
 
-      case STB__nochildren: {
+      case 128: {
          stb__nochildren *s = (stb__nochildren *) malloc(size + sizeof(*s));
-         if (s == NULL) return NULL;
+         if (s == ((void*)0)) return ((void*)0);
          p = s+1;
          stb__insert_nochild(src, s);
          break;
       }
 
-      case STB__chunk_raw: {
+      case 130: {
          p = stb__alloc_chunk(src, (int) size, align, 0);
-         if (p == NULL) return NULL;
+         if (p == ((void*)0)) return ((void*)0);
          break;
       }
 
-      case STB__chunked: {
+      case 129: {
          stb__chunked *s;
          if (align < sizeof(stb_uintptr)) align = sizeof(stb_uintptr);
          s = (stb__chunked *) stb__alloc_chunk(src, (int) size, align, sizeof(*s));
-         if (s == NULL) return NULL;
+         if (s == ((void*)0)) return ((void*)0);
          stb__setparent(s, src);
          p = s+1;
          break;
       }
 
-      default: p = NULL; assert(0); /* NOTREACHED */
+      default: p = ((void*)0); assert(0);
    }
 
    ++stb_alloc_count_alloc;

@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int UseNat; int UseDhcp; int SaveLog; int /*<<< orphan*/  DhcpPushRoutes; int /*<<< orphan*/  HubName; int /*<<< orphan*/  DhcpDomainName; int /*<<< orphan*/  DhcpDnsServerAddress2; int /*<<< orphan*/  DhcpDnsServerAddress; int /*<<< orphan*/  DhcpGatewayAddress; int /*<<< orphan*/  DhcpExpireTimeSpan; int /*<<< orphan*/  DhcpSubnetMask; int /*<<< orphan*/  DhcpLeaseIPEnd; int /*<<< orphan*/  DhcpLeaseIPStart; int /*<<< orphan*/  NatUdpTimeout; int /*<<< orphan*/  NatTcpTimeout; int /*<<< orphan*/  Mtu; int /*<<< orphan*/  Mask; int /*<<< orphan*/  Ip; int /*<<< orphan*/  MacAddress; } ;
-typedef  TYPE_1__ VH_OPTION ;
-typedef  int /*<<< orphan*/  PACK ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PackAddBool (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  PackAddData (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  PackAddInt (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PackAddIp (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PackAddStr (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int UseNat; int UseDhcp; int SaveLog; int DhcpPushRoutes; int HubName; int DhcpDomainName; int DhcpDnsServerAddress2; int DhcpDnsServerAddress; int DhcpGatewayAddress; int DhcpExpireTimeSpan; int DhcpSubnetMask; int DhcpLeaseIPEnd; int DhcpLeaseIPStart; int NatUdpTimeout; int NatTcpTimeout; int Mtu; int Mask; int Ip; int MacAddress; } ;
+typedef TYPE_1__ VH_OPTION ;
+typedef int PACK ;
+
+
+ int PackAddBool (int *,char*,int) ;
+ int PackAddData (int *,char*,int ,int) ;
+ int PackAddInt (int *,char*,int ) ;
+ int PackAddIp (int *,char*,int *) ;
+ int PackAddStr (int *,char*,int ) ;
 
 void OutVhOption(PACK *p, VH_OPTION *t)
 {
-	// Validate arguments
-	if (t == NULL || p == NULL)
-	{
-		return;
-	}
 
-	PackAddData(p, "MacAddress", t->MacAddress, 6);
-	PackAddIp(p, "Ip", &t->Ip);
-	PackAddIp(p, "Mask", &t->Mask);
-	PackAddBool(p, "UseNat", t->UseNat);
-	PackAddInt(p, "Mtu", t->Mtu);
-	PackAddInt(p, "NatTcpTimeout", t->NatTcpTimeout);
-	PackAddInt(p, "NatUdpTimeout", t->NatUdpTimeout);
-	PackAddBool(p, "UseDhcp", t->UseDhcp);
-	PackAddIp(p, "DhcpLeaseIPStart", &t->DhcpLeaseIPStart);
-	PackAddIp(p, "DhcpLeaseIPEnd", &t->DhcpLeaseIPEnd);
-	PackAddIp(p, "DhcpSubnetMask", &t->DhcpSubnetMask);
-	PackAddInt(p, "DhcpExpireTimeSpan", t->DhcpExpireTimeSpan);
-	PackAddIp(p, "DhcpGatewayAddress", &t->DhcpGatewayAddress);
-	PackAddIp(p, "DhcpDnsServerAddress", &t->DhcpDnsServerAddress);
-	PackAddIp(p, "DhcpDnsServerAddress2", &t->DhcpDnsServerAddress2);
-	PackAddStr(p, "DhcpDomainName", t->DhcpDomainName);
-	PackAddBool(p, "SaveLog", t->SaveLog);
-	PackAddStr(p, "RpcHubName", t->HubName);
-	PackAddBool(p, "ApplyDhcpPushRoutes", true);
-	PackAddStr(p, "DhcpPushRoutes", t->DhcpPushRoutes);
+ if (t == ((void*)0) || p == ((void*)0))
+ {
+  return;
+ }
+
+ PackAddData(p, "MacAddress", t->MacAddress, 6);
+ PackAddIp(p, "Ip", &t->Ip);
+ PackAddIp(p, "Mask", &t->Mask);
+ PackAddBool(p, "UseNat", t->UseNat);
+ PackAddInt(p, "Mtu", t->Mtu);
+ PackAddInt(p, "NatTcpTimeout", t->NatTcpTimeout);
+ PackAddInt(p, "NatUdpTimeout", t->NatUdpTimeout);
+ PackAddBool(p, "UseDhcp", t->UseDhcp);
+ PackAddIp(p, "DhcpLeaseIPStart", &t->DhcpLeaseIPStart);
+ PackAddIp(p, "DhcpLeaseIPEnd", &t->DhcpLeaseIPEnd);
+ PackAddIp(p, "DhcpSubnetMask", &t->DhcpSubnetMask);
+ PackAddInt(p, "DhcpExpireTimeSpan", t->DhcpExpireTimeSpan);
+ PackAddIp(p, "DhcpGatewayAddress", &t->DhcpGatewayAddress);
+ PackAddIp(p, "DhcpDnsServerAddress", &t->DhcpDnsServerAddress);
+ PackAddIp(p, "DhcpDnsServerAddress2", &t->DhcpDnsServerAddress2);
+ PackAddStr(p, "DhcpDomainName", t->DhcpDomainName);
+ PackAddBool(p, "SaveLog", t->SaveLog);
+ PackAddStr(p, "RpcHubName", t->HubName);
+ PackAddBool(p, "ApplyDhcpPushRoutes", 1);
+ PackAddStr(p, "DhcpPushRoutes", t->DhcpPushRoutes);
 }

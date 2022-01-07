@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8 ;
-typedef  int /*<<< orphan*/  PushFilter ;
 
-/* Variables and functions */
- int pushf_write (int /*<<< orphan*/ *,int*,int) ; 
+
+
+
+typedef int uint8 ;
+typedef int PushFilter ;
+
+
+ int pushf_write (int *,int*,int) ;
 
 __attribute__((used)) static int
 write_tag_only(PushFilter *dst, int tag)
 {
-	uint8		hdr = 0xC0 | tag;
+ uint8 hdr = 0xC0 | tag;
 
-	return pushf_write(dst, &hdr, 1);
+ return pushf_write(dst, &hdr, 1);
 }

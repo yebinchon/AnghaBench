@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct wined3d_state {struct wined3d_shader_resource_view*** shader_resource_view; TYPE_1__*** cb; struct wined3d_shader** shader; } ;
 struct wined3d_shader_sampler_map_entry {size_t resource_idx; } ;
-struct wined3d_shader_resource_view {int /*<<< orphan*/ * resource; } ;
+struct wined3d_shader_resource_view {int * resource; } ;
 struct TYPE_5__ {unsigned int count; struct wined3d_shader_sampler_map_entry* entries; } ;
 struct TYPE_6__ {TYPE_2__ sampler_map; } ;
 struct wined3d_shader {TYPE_3__ reg_maps; } ;
-struct TYPE_4__ {int /*<<< orphan*/  resource; } ;
+struct TYPE_4__ {int resource; } ;
 
-/* Variables and functions */
- unsigned int WINED3D_MAX_CBS ; 
- unsigned int WINED3D_SHADER_TYPE_COUNT ; 
- int /*<<< orphan*/  wined3d_resource_acquire (int /*<<< orphan*/ *) ; 
+
+ unsigned int WINED3D_MAX_CBS ;
+ unsigned int WINED3D_SHADER_TYPE_COUNT ;
+ int wined3d_resource_acquire (int *) ;
 
 __attribute__((used)) static void acquire_shader_resources(const struct wined3d_state *state, unsigned int shader_mask)
 {

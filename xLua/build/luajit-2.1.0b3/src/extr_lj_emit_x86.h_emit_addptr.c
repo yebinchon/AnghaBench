@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ int32_t ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef scalar_t__ int32_t ;
 struct TYPE_5__ {int flags; } ;
-typedef  int Reg ;
-typedef  TYPE_1__ ASMState ;
+typedef int Reg ;
+typedef TYPE_1__ ASMState ;
 
-/* Variables and functions */
- int JIT_F_LEA_AGU ; 
- int REX_GC64 ; 
- int /*<<< orphan*/  XG_ARITHi (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XO_LEA ; 
- int /*<<< orphan*/  XOg_ADD ; 
- int /*<<< orphan*/  emit_gri (TYPE_1__*,int /*<<< orphan*/ ,int,scalar_t__) ; 
- int /*<<< orphan*/  emit_rmro (TYPE_1__*,int /*<<< orphan*/ ,int,int,scalar_t__) ; 
+
+ int JIT_F_LEA_AGU ;
+ int REX_GC64 ;
+ int XG_ARITHi (int ) ;
+ int XO_LEA ;
+ int XOg_ADD ;
+ int emit_gri (TYPE_1__*,int ,int,scalar_t__) ;
+ int emit_rmro (TYPE_1__*,int ,int,int,scalar_t__) ;
 
 __attribute__((used)) static void emit_addptr(ASMState *as, Reg r, int32_t ofs)
 {

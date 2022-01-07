@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {scalar_t__ ndeclevels; int type; } ;
-typedef  TYPE_1__ DWTContext ;
+typedef TYPE_1__ DWTContext ;
 
-/* Variables and functions */
-#define  FF_DWT53 130 
-#define  FF_DWT97 129 
-#define  FF_DWT97_INT 128 
- int /*<<< orphan*/  dwt_encode53 (TYPE_1__*,void*) ; 
- int /*<<< orphan*/  dwt_encode97_float (TYPE_1__*,void*) ; 
- int /*<<< orphan*/  dwt_encode97_int (TYPE_1__*,void*) ; 
+
+
+
+
+ int dwt_encode53 (TYPE_1__*,void*) ;
+ int dwt_encode97_float (TYPE_1__*,void*) ;
+ int dwt_encode97_int (TYPE_1__*,void*) ;
 
 int ff_dwt_encode(DWTContext *s, void *t)
 {
@@ -28,11 +28,11 @@ int ff_dwt_encode(DWTContext *s, void *t)
         return 0;
 
     switch(s->type){
-        case FF_DWT97:
+        case 129:
             dwt_encode97_float(s, t); break;
-        case FF_DWT97_INT:
+        case 128:
             dwt_encode97_int(s, t); break;
-        case FF_DWT53:
+        case 130:
             dwt_encode53(s, t); break;
         default:
             return -1;

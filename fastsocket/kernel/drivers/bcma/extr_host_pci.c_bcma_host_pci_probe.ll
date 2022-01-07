@@ -1,0 +1,261 @@
+; ModuleID = '/home/carl/AnghaBench/fastsocket/kernel/drivers/bcma/extr_host_pci.c_bcma_host_pci_probe.c'
+source_filename = "/home/carl/AnghaBench/fastsocket/kernel/drivers/bcma/extr_host_pci.c_bcma_host_pci_probe.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+%struct.pci_dev = type { i32, i32, %struct.TYPE_3__*, i32 }
+%struct.TYPE_3__ = type { i8* }
+%struct.pci_device_id = type { i32 }
+%struct.bcma_bus = type { i32, %struct.pci_dev*, %struct.TYPE_4__, i32*, i32 }
+%struct.TYPE_4__ = type { i32, i32 }
+
+@ENOMEM = common dso_local global i32 0, align 4
+@GFP_KERNEL = common dso_local global i32 0, align 4
+@.str = private unnamed_addr constant [37 x i8] c"PCI card detected, report problems.\0A\00", align 1
+@BCMA_HOSTTYPE_PCI = common dso_local global i32 0, align 4
+@bcma_host_pci_ops = common dso_local global i32 0, align 4
+@llvm.used = appending global [1 x i8*] [i8* bitcast (i32 (%struct.pci_dev*, %struct.pci_device_id*)* @bcma_host_pci_probe to i8*)], section "llvm.metadata"
+
+; Function Attrs: noinline nounwind optnone uwtable
+define internal i32 @bcma_host_pci_probe(%struct.pci_dev* %0, %struct.pci_device_id* %1) #0 {
+  %3 = alloca i32, align 4
+  %4 = alloca %struct.pci_dev*, align 8
+  %5 = alloca %struct.pci_device_id*, align 8
+  %6 = alloca %struct.bcma_bus*, align 8
+  %7 = alloca i32, align 4
+  %8 = alloca i8*, align 8
+  %9 = alloca i32, align 4
+  store %struct.pci_dev* %0, %struct.pci_dev** %4, align 8
+  store %struct.pci_device_id* %1, %struct.pci_device_id** %5, align 8
+  %10 = load i32, i32* @ENOMEM, align 4
+  %11 = sub nsw i32 0, %10
+  store i32 %11, i32* %7, align 4
+  %12 = load i32, i32* @GFP_KERNEL, align 4
+  %13 = call %struct.bcma_bus* @kzalloc(i32 40, i32 %12)
+  store %struct.bcma_bus* %13, %struct.bcma_bus** %6, align 8
+  %14 = load %struct.bcma_bus*, %struct.bcma_bus** %6, align 8
+  %15 = icmp ne %struct.bcma_bus* %14, null
+  br i1 %15, label %17, label %16
+
+16:                                               ; preds = %2
+  br label %117
+
+17:                                               ; preds = %2
+  %18 = load %struct.pci_dev*, %struct.pci_dev** %4, align 8
+  %19 = call i32 @pci_enable_device(%struct.pci_dev* %18)
+  store i32 %19, i32* %7, align 4
+  %20 = load i32, i32* %7, align 4
+  %21 = icmp ne i32 %20, 0
+  br i1 %21, label %22, label %23
+
+22:                                               ; preds = %17
+  br label %131
+
+23:                                               ; preds = %17
+  %24 = load %struct.pci_dev*, %struct.pci_dev** %4, align 8
+  %25 = getelementptr inbounds %struct.pci_dev, %struct.pci_dev* %24, i32 0, i32 3
+  %26 = call i8* @dev_name(i32* %25)
+  store i8* %26, i8** %8, align 8
+  %27 = load %struct.pci_dev*, %struct.pci_dev** %4, align 8
+  %28 = getelementptr inbounds %struct.pci_dev, %struct.pci_dev* %27, i32 0, i32 2
+  %29 = load %struct.TYPE_3__*, %struct.TYPE_3__** %28, align 8
+  %30 = icmp ne %struct.TYPE_3__* %29, null
+  br i1 %30, label %31, label %44
+
+31:                                               ; preds = %23
+  %32 = load %struct.pci_dev*, %struct.pci_dev** %4, align 8
+  %33 = getelementptr inbounds %struct.pci_dev, %struct.pci_dev* %32, i32 0, i32 2
+  %34 = load %struct.TYPE_3__*, %struct.TYPE_3__** %33, align 8
+  %35 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %34, i32 0, i32 0
+  %36 = load i8*, i8** %35, align 8
+  %37 = icmp ne i8* %36, null
+  br i1 %37, label %38, label %44
+
+38:                                               ; preds = %31
+  %39 = load %struct.pci_dev*, %struct.pci_dev** %4, align 8
+  %40 = getelementptr inbounds %struct.pci_dev, %struct.pci_dev* %39, i32 0, i32 2
+  %41 = load %struct.TYPE_3__*, %struct.TYPE_3__** %40, align 8
+  %42 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %41, i32 0, i32 0
+  %43 = load i8*, i8** %42, align 8
+  store i8* %43, i8** %8, align 8
+  br label %44
+
+44:                                               ; preds = %38, %31, %23
+  %45 = load %struct.pci_dev*, %struct.pci_dev** %4, align 8
+  %46 = load i8*, i8** %8, align 8
+  %47 = call i32 @pci_request_regions(%struct.pci_dev* %45, i8* %46)
+  store i32 %47, i32* %7, align 4
+  %48 = load i32, i32* %7, align 4
+  %49 = icmp ne i32 %48, 0
+  br i1 %49, label %50, label %51
+
+50:                                               ; preds = %44
+  br label %128
+
+51:                                               ; preds = %44
+  %52 = load %struct.pci_dev*, %struct.pci_dev** %4, align 8
+  %53 = call i32 @pci_set_master(%struct.pci_dev* %52)
+  %54 = load %struct.pci_dev*, %struct.pci_dev** %4, align 8
+  %55 = call i32 @pci_read_config_dword(%struct.pci_dev* %54, i32 64, i32* %9)
+  %56 = load i32, i32* %9, align 4
+  %57 = and i32 %56, 65280
+  %58 = icmp ne i32 %57, 0
+  br i1 %58, label %59, label %64
+
+59:                                               ; preds = %51
+  %60 = load %struct.pci_dev*, %struct.pci_dev** %4, align 8
+  %61 = load i32, i32* %9, align 4
+  %62 = and i32 %61, -65281
+  %63 = call i32 @pci_write_config_dword(%struct.pci_dev* %60, i32 64, i32 %62)
+  br label %64
+
+64:                                               ; preds = %59, %51
+  %65 = load %struct.pci_dev*, %struct.pci_dev** %4, align 8
+  %66 = call i32 @pci_is_pcie(%struct.pci_dev* %65)
+  %67 = icmp ne i32 %66, 0
+  br i1 %67, label %71, label %68
+
+68:                                               ; preds = %64
+  %69 = load %struct.bcma_bus*, %struct.bcma_bus** %6, align 8
+  %70 = call i32 @bcma_err(%struct.bcma_bus* %69, i8* getelementptr inbounds ([37 x i8], [37 x i8]* @.str, i64 0, i64 0))
+  br label %71
+
+71:                                               ; preds = %68, %64
+  %72 = load i32, i32* @ENOMEM, align 4
+  %73 = sub nsw i32 0, %72
+  store i32 %73, i32* %7, align 4
+  %74 = load %struct.pci_dev*, %struct.pci_dev** %4, align 8
+  %75 = call i32 @pci_iomap(%struct.pci_dev* %74, i32 0, i64 -1)
+  %76 = load %struct.bcma_bus*, %struct.bcma_bus** %6, align 8
+  %77 = getelementptr inbounds %struct.bcma_bus, %struct.bcma_bus* %76, i32 0, i32 0
+  store i32 %75, i32* %77, align 8
+  %78 = load %struct.bcma_bus*, %struct.bcma_bus** %6, align 8
+  %79 = getelementptr inbounds %struct.bcma_bus, %struct.bcma_bus* %78, i32 0, i32 0
+  %80 = load i32, i32* %79, align 8
+  %81 = icmp ne i32 %80, 0
+  br i1 %81, label %83, label %82
+
+82:                                               ; preds = %71
+  br label %125
+
+83:                                               ; preds = %71
+  %84 = load %struct.pci_dev*, %struct.pci_dev** %4, align 8
+  %85 = load %struct.bcma_bus*, %struct.bcma_bus** %6, align 8
+  %86 = getelementptr inbounds %struct.bcma_bus, %struct.bcma_bus* %85, i32 0, i32 1
+  store %struct.pci_dev* %84, %struct.pci_dev** %86, align 8
+  %87 = load i32, i32* @BCMA_HOSTTYPE_PCI, align 4
+  %88 = load %struct.bcma_bus*, %struct.bcma_bus** %6, align 8
+  %89 = getelementptr inbounds %struct.bcma_bus, %struct.bcma_bus* %88, i32 0, i32 4
+  store i32 %87, i32* %89, align 8
+  %90 = load %struct.bcma_bus*, %struct.bcma_bus** %6, align 8
+  %91 = getelementptr inbounds %struct.bcma_bus, %struct.bcma_bus* %90, i32 0, i32 3
+  store i32* @bcma_host_pci_ops, i32** %91, align 8
+  %92 = load %struct.bcma_bus*, %struct.bcma_bus** %6, align 8
+  %93 = getelementptr inbounds %struct.bcma_bus, %struct.bcma_bus* %92, i32 0, i32 1
+  %94 = load %struct.pci_dev*, %struct.pci_dev** %93, align 8
+  %95 = getelementptr inbounds %struct.pci_dev, %struct.pci_dev* %94, i32 0, i32 1
+  %96 = load i32, i32* %95, align 4
+  %97 = load %struct.bcma_bus*, %struct.bcma_bus** %6, align 8
+  %98 = getelementptr inbounds %struct.bcma_bus, %struct.bcma_bus* %97, i32 0, i32 2
+  %99 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %98, i32 0, i32 1
+  store i32 %96, i32* %99, align 4
+  %100 = load %struct.bcma_bus*, %struct.bcma_bus** %6, align 8
+  %101 = getelementptr inbounds %struct.bcma_bus, %struct.bcma_bus* %100, i32 0, i32 1
+  %102 = load %struct.pci_dev*, %struct.pci_dev** %101, align 8
+  %103 = getelementptr inbounds %struct.pci_dev, %struct.pci_dev* %102, i32 0, i32 0
+  %104 = load i32, i32* %103, align 8
+  %105 = load %struct.bcma_bus*, %struct.bcma_bus** %6, align 8
+  %106 = getelementptr inbounds %struct.bcma_bus, %struct.bcma_bus* %105, i32 0, i32 2
+  %107 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %106, i32 0, i32 0
+  store i32 %104, i32* %107, align 8
+  %108 = load %struct.bcma_bus*, %struct.bcma_bus** %6, align 8
+  %109 = call i32 @bcma_bus_register(%struct.bcma_bus* %108)
+  store i32 %109, i32* %7, align 4
+  %110 = load i32, i32* %7, align 4
+  %111 = icmp ne i32 %110, 0
+  br i1 %111, label %112, label %113
+
+112:                                              ; preds = %83
+  br label %119
+
+113:                                              ; preds = %83
+  %114 = load %struct.pci_dev*, %struct.pci_dev** %4, align 8
+  %115 = load %struct.bcma_bus*, %struct.bcma_bus** %6, align 8
+  %116 = call i32 @pci_set_drvdata(%struct.pci_dev* %114, %struct.bcma_bus* %115)
+  br label %117
+
+117:                                              ; preds = %113, %16
+  %118 = load i32, i32* %7, align 4
+  store i32 %118, i32* %3, align 4
+  br label %135
+
+119:                                              ; preds = %112
+  %120 = load %struct.pci_dev*, %struct.pci_dev** %4, align 8
+  %121 = load %struct.bcma_bus*, %struct.bcma_bus** %6, align 8
+  %122 = getelementptr inbounds %struct.bcma_bus, %struct.bcma_bus* %121, i32 0, i32 0
+  %123 = load i32, i32* %122, align 8
+  %124 = call i32 @pci_iounmap(%struct.pci_dev* %120, i32 %123)
+  br label %125
+
+125:                                              ; preds = %119, %82
+  %126 = load %struct.pci_dev*, %struct.pci_dev** %4, align 8
+  %127 = call i32 @pci_release_regions(%struct.pci_dev* %126)
+  br label %128
+
+128:                                              ; preds = %125, %50
+  %129 = load %struct.pci_dev*, %struct.pci_dev** %4, align 8
+  %130 = call i32 @pci_disable_device(%struct.pci_dev* %129)
+  br label %131
+
+131:                                              ; preds = %128, %22
+  %132 = load %struct.bcma_bus*, %struct.bcma_bus** %6, align 8
+  %133 = call i32 @kfree(%struct.bcma_bus* %132)
+  %134 = load i32, i32* %7, align 4
+  store i32 %134, i32* %3, align 4
+  br label %135
+
+135:                                              ; preds = %131, %117
+  %136 = load i32, i32* %3, align 4
+  ret i32 %136
+}
+
+declare dso_local %struct.bcma_bus* @kzalloc(i32, i32) #1
+
+declare dso_local i32 @pci_enable_device(%struct.pci_dev*) #1
+
+declare dso_local i8* @dev_name(i32*) #1
+
+declare dso_local i32 @pci_request_regions(%struct.pci_dev*, i8*) #1
+
+declare dso_local i32 @pci_set_master(%struct.pci_dev*) #1
+
+declare dso_local i32 @pci_read_config_dword(%struct.pci_dev*, i32, i32*) #1
+
+declare dso_local i32 @pci_write_config_dword(%struct.pci_dev*, i32, i32) #1
+
+declare dso_local i32 @pci_is_pcie(%struct.pci_dev*) #1
+
+declare dso_local i32 @bcma_err(%struct.bcma_bus*, i8*) #1
+
+declare dso_local i32 @pci_iomap(%struct.pci_dev*, i32, i64) #1
+
+declare dso_local i32 @bcma_bus_register(%struct.bcma_bus*) #1
+
+declare dso_local i32 @pci_set_drvdata(%struct.pci_dev*, %struct.bcma_bus*) #1
+
+declare dso_local i32 @pci_iounmap(%struct.pci_dev*, i32) #1
+
+declare dso_local i32 @pci_release_regions(%struct.pci_dev*) #1
+
+declare dso_local i32 @pci_disable_device(%struct.pci_dev*) #1
+
+declare dso_local i32 @kfree(%struct.bcma_bus*) #1
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

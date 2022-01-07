@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  app_info; void* addr; } ;
-typedef  TYPE_1__ MEM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CRYPTO_MEM_CHECK_DISABLE ; 
- int /*<<< orphan*/  CRYPTO_MEM_CHECK_ENABLE ; 
- int /*<<< orphan*/  CRYPTO_mem_ctrl (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OPENSSL_free (TYPE_1__*) ; 
- int /*<<< orphan*/  app_info_free (int /*<<< orphan*/ ) ; 
- TYPE_1__* lh_MEM_delete (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  mem_check_on () ; 
- int /*<<< orphan*/ * mh ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int app_info; void* addr; } ;
+typedef TYPE_1__ MEM ;
+
+
+ int CRYPTO_MEM_CHECK_DISABLE ;
+ int CRYPTO_MEM_CHECK_ENABLE ;
+ int CRYPTO_mem_ctrl (int ) ;
+ int OPENSSL_free (TYPE_1__*) ;
+ int app_info_free (int ) ;
+ TYPE_1__* lh_MEM_delete (int *,TYPE_1__*) ;
+ int mem_check_on () ;
+ int * mh ;
 
 void CRYPTO_mem_debug_free(void *addr, int before_p,
         const char *file, int line)
@@ -31,15 +31,15 @@ void CRYPTO_mem_debug_free(void *addr, int before_p,
 
     switch (before_p) {
     case 0:
-        if (addr == NULL)
+        if (addr == ((void*)0))
             break;
 
-        if (mem_check_on() && (mh != NULL)) {
+        if (mem_check_on() && (mh != ((void*)0))) {
             CRYPTO_mem_ctrl(CRYPTO_MEM_CHECK_DISABLE);
 
             m.addr = addr;
             mp = lh_MEM_delete(mh, &m);
-            if (mp != NULL) {
+            if (mp != ((void*)0)) {
                 app_info_free(mp->app_info);
                 OPENSSL_free(mp);
             }

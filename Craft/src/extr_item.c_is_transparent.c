@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ int ABS (int) ;
 
-/* Forward declarations */
 
-/* Type definitions */
 
-/* Variables and functions */
- int ABS (int) ; 
-#define  EMPTY 130 
-#define  GLASS 129 
-#define  LEAVES 128 
- scalar_t__ is_plant (int) ; 
+ scalar_t__ is_plant (int) ;
 
 int is_transparent(int w) {
-    if (w == EMPTY) {
+    if (w == 130) {
         return 1;
     }
     w = ABS(w);
@@ -27,9 +19,9 @@ int is_transparent(int w) {
         return 1;
     }
     switch (w) {
-        case EMPTY:
-        case GLASS:
-        case LEAVES:
+        case 130:
+        case 129:
+        case 128:
             return 1;
         default:
             return 0;

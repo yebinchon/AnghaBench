@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  scalar_t__ uint32_t ;
-struct TYPE_3__ {scalar_t__ outlen; scalar_t__ outpos; int /*<<< orphan*/ * out; scalar_t__ inpos; scalar_t__ inlen; int /*<<< orphan*/ * in; } ;
-typedef  TYPE_1__ lzo_stream ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*,scalar_t__,...) ; 
- scalar_t__ LZO_PAGE_SIZE ; 
- int /*<<< orphan*/  NT_SUCCESS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RtlZeroMemory (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  STATUS_INTERNAL_ERROR ; 
- int /*<<< orphan*/  STATUS_SUCCESS ; 
- int /*<<< orphan*/  do_lzo_decompress (TYPE_1__*) ; 
- scalar_t__ min (scalar_t__,scalar_t__) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef scalar_t__ uint32_t ;
+struct TYPE_3__ {scalar_t__ outlen; scalar_t__ outpos; int * out; scalar_t__ inpos; scalar_t__ inlen; int * in; } ;
+typedef TYPE_1__ lzo_stream ;
+typedef int NTSTATUS ;
+
+
+ int ERR (char*,scalar_t__,...) ;
+ scalar_t__ LZO_PAGE_SIZE ;
+ int NT_SUCCESS (int ) ;
+ int RtlZeroMemory (int *,scalar_t__) ;
+ int STATUS_INTERNAL_ERROR ;
+ int STATUS_SUCCESS ;
+ int do_lzo_decompress (TYPE_1__*) ;
+ scalar_t__ min (scalar_t__,scalar_t__) ;
 
 NTSTATUS lzo_decompress(uint8_t* inbuf, uint32_t inlen, uint8_t* outbuf, uint32_t outlen, uint32_t inpageoff) {
     NTSTATUS Status;

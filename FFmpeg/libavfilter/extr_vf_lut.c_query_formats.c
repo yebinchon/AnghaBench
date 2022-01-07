@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  enum AVPixelFormat { ____Placeholder_AVPixelFormat } AVPixelFormat ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef enum AVPixelFormat { ____Placeholder_AVPixelFormat } AVPixelFormat ;
 struct TYPE_6__ {TYPE_1__* priv; } ;
 struct TYPE_5__ {scalar_t__ is_yuv; scalar_t__ is_rgb; } ;
-typedef  TYPE_1__ LutContext ;
-typedef  int /*<<< orphan*/  AVFilterFormats ;
-typedef  TYPE_2__ AVFilterContext ;
+typedef TYPE_1__ LutContext ;
+typedef int AVFilterFormats ;
+typedef TYPE_2__ AVFilterContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ENOMEM ; 
- int* all_pix_fmts ; 
- int /*<<< orphan*/ * ff_make_format_list (int const*) ; 
- int ff_set_common_formats (TYPE_2__*,int /*<<< orphan*/ *) ; 
- int* rgb_pix_fmts ; 
- int* yuv_pix_fmts ; 
+
+ int AVERROR (int ) ;
+ int ENOMEM ;
+ int* all_pix_fmts ;
+ int * ff_make_format_list (int const*) ;
+ int ff_set_common_formats (TYPE_2__*,int *) ;
+ int* rgb_pix_fmts ;
+ int* yuv_pix_fmts ;
 
 __attribute__((used)) static int query_formats(AVFilterContext *ctx)
 {

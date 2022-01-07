@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uv_os_sock_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uv_os_sock_t ;
 struct sockaddr_in {int dummy; } ;
-struct TYPE_3__ {int /*<<< orphan*/  poll_handle; } ;
-typedef  TYPE_1__ server_context_t ;
+struct TYPE_3__ {int poll_handle; } ;
+typedef TYPE_1__ server_context_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- int /*<<< orphan*/  TEST_PORT ; 
- int /*<<< orphan*/  UV_READABLE ; 
- int /*<<< orphan*/  create_bound_socket (struct sockaddr_in) ; 
- TYPE_1__* create_server_context (int /*<<< orphan*/ ) ; 
- int listen (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  server_poll_cb ; 
- scalar_t__ uv_ip4_addr (char*,int /*<<< orphan*/ ,struct sockaddr_in*) ; 
- int uv_poll_start (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int ASSERT (int) ;
+ int TEST_PORT ;
+ int UV_READABLE ;
+ int create_bound_socket (struct sockaddr_in) ;
+ TYPE_1__* create_server_context (int ) ;
+ int listen (int ,int) ;
+ int server_poll_cb ;
+ scalar_t__ uv_ip4_addr (char*,int ,struct sockaddr_in*) ;
+ int uv_poll_start (int *,int ,int ) ;
 
 __attribute__((used)) static void start_server(void) {
   server_context_t* context;

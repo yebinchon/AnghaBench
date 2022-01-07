@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ only_munmap; int fd; scalar_t__ ptr; scalar_t__ only_mmap; } ;
-typedef  TYPE_1__ RegOp ;
+typedef TYPE_1__ RegOp ;
 
-/* Variables and functions */
- scalar_t__ MAP_FAILED ; 
- int /*<<< orphan*/  MAP_SHARED ; 
- int /*<<< orphan*/  O_RDWR ; 
- int PROT_READ ; 
- int PROT_WRITE ; 
- int /*<<< orphan*/  RARCH_ERR (char*) ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  get_memory_size () ; 
- scalar_t__ mmap (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int munmap (scalar_t__,int /*<<< orphan*/ ) ; 
- int open (char*,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ MAP_FAILED ;
+ int MAP_SHARED ;
+ int O_RDWR ;
+ int PROT_READ ;
+ int PROT_WRITE ;
+ int RARCH_ERR (char*) ;
+ int close (int) ;
+ int exit (int) ;
+ int get_memory_size () ;
+ scalar_t__ mmap (int *,int ,int,int ,int,int ) ;
+ int munmap (scalar_t__,int ) ;
+ int open (char*,int ) ;
 
 __attribute__((used)) static void do_mmap_op(RegOp *regOp)
 {
@@ -37,7 +37,7 @@ __attribute__((used)) static void do_mmap_op(RegOp *regOp)
       if (regOp->fd < 1)
          return;
 
-      regOp->ptr = mmap(NULL, get_memory_size(), PROT_READ|PROT_WRITE, MAP_SHARED, regOp->fd, 0);
+      regOp->ptr = mmap(((void*)0), get_memory_size(), PROT_READ|PROT_WRITE, MAP_SHARED, regOp->fd, 0);
 
       if (regOp->ptr == MAP_FAILED)
       {

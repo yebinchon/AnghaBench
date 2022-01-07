@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_3__ {scalar_t__ frame_length_short; scalar_t__ sbr; scalar_t__ ps; } ;
-typedef  TYPE_1__ MPEG4AudioConfig ;
-typedef  int /*<<< orphan*/  GetBitContext ;
-typedef  int /*<<< orphan*/  AVCodecContext ;
-typedef  int /*<<< orphan*/  AACContext ;
+typedef TYPE_1__ MPEG4AudioConfig ;
+typedef int GetBitContext ;
+typedef int AVCodecContext ;
+typedef int AACContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int AVERROR_PATCHWELCOME ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int MAX_ELEM_ID ; 
- int /*<<< orphan*/  OC_GLOBAL_HDR ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  avpriv_report_missing_feature (int /*<<< orphan*/ *,char*,...) ; 
- int /*<<< orphan*/  avpriv_request_sample (int /*<<< orphan*/ *,char*) ; 
- int get_bits (int /*<<< orphan*/ *,int) ; 
- scalar_t__ get_bits1 (int /*<<< orphan*/ *) ; 
- int get_bits_left (int /*<<< orphan*/ *) ; 
- int output_configure (int /*<<< orphan*/ *,int /*<<< orphan*/ **,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  overread_err ; 
- int set_default_channel_config (int /*<<< orphan*/ *,int /*<<< orphan*/ **,int*,int) ; 
- int /*<<< orphan*/  skip_bits_long (int /*<<< orphan*/ *,int) ; 
+
+ int AVERROR_INVALIDDATA ;
+ int AVERROR_PATCHWELCOME ;
+ int AV_LOG_ERROR ;
+ int MAX_ELEM_ID ;
+ int OC_GLOBAL_HDR ;
+ int av_log (int *,int ,int ) ;
+ int avpriv_report_missing_feature (int *,char*,...) ;
+ int avpriv_request_sample (int *,char*) ;
+ int get_bits (int *,int) ;
+ scalar_t__ get_bits1 (int *) ;
+ int get_bits_left (int *) ;
+ int output_configure (int *,int **,int,int ,int ) ;
+ int overread_err ;
+ int set_default_channel_config (int *,int **,int*,int) ;
+ int skip_bits_long (int *,int) ;
 
 __attribute__((used)) static int decode_eld_specific_config(AACContext *ac, AVCodecContext *avctx,
                                      GetBitContext *gb,
@@ -45,16 +45,16 @@ __attribute__((used)) static int decode_eld_specific_config(AACContext *ac, AVCo
     int tags = 0;
     const int ELDEXT_TERM = 0;
 
-    m4ac->ps  = 0;
+    m4ac->ps = 0;
     m4ac->sbr = 0;
-#if USE_FIXED
-    if (get_bits1(gb)) { // frameLengthFlag
-        avpriv_request_sample(avctx, "960/120 MDCT window");
-        return AVERROR_PATCHWELCOME;
-    }
-#else
+
+
+
+
+
+
     m4ac->frame_length_short = get_bits1(gb);
-#endif
+
     res_flags = get_bits(gb, 3);
     if (res_flags) {
         avpriv_report_missing_feature(avctx,
@@ -63,7 +63,7 @@ __attribute__((used)) static int decode_eld_specific_config(AACContext *ac, AVCo
         return AVERROR_PATCHWELCOME;
     }
 
-    if (get_bits1(gb)) { // ldSbrPresentFlag
+    if (get_bits1(gb)) {
         avpriv_report_missing_feature(avctx,
                                       "Low Delay SBR");
         return AVERROR_PATCHWELCOME;

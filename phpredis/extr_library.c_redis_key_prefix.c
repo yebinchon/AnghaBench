@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * prefix; } ;
-typedef  TYPE_1__ RedisSock ;
 
-/* Variables and functions */
- int ZSTR_LEN (int /*<<< orphan*/ *) ; 
- char* ZSTR_VAL (int /*<<< orphan*/ *) ; 
- char* ecalloc (int,int) ; 
- int /*<<< orphan*/  memcpy (char*,char*,size_t) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * prefix; } ;
+typedef TYPE_1__ RedisSock ;
+
+
+ int ZSTR_LEN (int *) ;
+ char* ZSTR_VAL (int *) ;
+ char* ecalloc (int,int) ;
+ int memcpy (char*,char*,size_t) ;
 
 int
 redis_key_prefix(RedisSock *redis_sock, char **key, size_t *key_len) {
     int ret_len;
     char *ret;
 
-    if (redis_sock->prefix == NULL) {
+    if (redis_sock->prefix == ((void*)0)) {
         return 0;
     }
 

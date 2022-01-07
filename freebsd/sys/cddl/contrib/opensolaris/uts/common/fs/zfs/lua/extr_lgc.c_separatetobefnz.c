@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
-struct TYPE_4__ {int /*<<< orphan*/ * tobefnz; int /*<<< orphan*/ * finobj; } ;
-typedef  TYPE_1__ global_State ;
-struct TYPE_5__ {int /*<<< orphan*/ * next; int /*<<< orphan*/  marked; } ;
-typedef  int /*<<< orphan*/  GCObject ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FINALIZEDBIT ; 
- TYPE_1__* G (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SEPARATED ; 
- TYPE_2__* gch (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  isfinalized (int /*<<< orphan*/ *) ; 
- scalar_t__ iswhite (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  l_setbit (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_assert (int) ; 
- int testbit (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int lua_State ;
+struct TYPE_4__ {int * tobefnz; int * finobj; } ;
+typedef TYPE_1__ global_State ;
+struct TYPE_5__ {int * next; int marked; } ;
+typedef int GCObject ;
+
+
+ int FINALIZEDBIT ;
+ TYPE_1__* G (int *) ;
+ int SEPARATED ;
+ TYPE_2__* gch (int *) ;
+ int isfinalized (int *) ;
+ scalar_t__ iswhite (int *) ;
+ int l_setbit (int ,int ) ;
+ int lua_assert (int) ;
+ int testbit (int ,int ) ;
 
 __attribute__((used)) static void separatetobefnz (lua_State *L, int all) {
   global_State *g = G(L);
   GCObject **p = &g->finobj;
   GCObject *curr;
   GCObject **lastnext = &g->tobefnz;
-  /* find last 'next' field in 'tobefnz' list (to add elements in its end) */
-  while (*lastnext != NULL)
+
+  while (*lastnext != ((void*)0))
     lastnext = &gch(*lastnext)->next;
-  while ((curr = *p) != NULL) {  /* traverse all finalizable objects */
+  while ((curr = *p) != ((void*)0)) {
     lua_assert(!isfinalized(curr));
     lua_assert(testbit(gch(curr)->marked, SEPARATED));
-    if (!(iswhite(curr) || all))  /* not being collected? */
-      p = &gch(curr)->next;  /* don't bother with it */
+    if (!(iswhite(curr) || all))
+      p = &gch(curr)->next;
     else {
-      l_setbit(gch(curr)->marked, FINALIZEDBIT); /* won't be finalized again */
-      *p = gch(curr)->next;  /* remove 'curr' from 'finobj' list */
-      gch(curr)->next = *lastnext;  /* link at the end of 'tobefnz' list */
+      l_setbit(gch(curr)->marked, FINALIZEDBIT);
+      *p = gch(curr)->next;
+      gch(curr)->next = *lastnext;
       *lastnext = curr;
       lastnext = &gch(curr)->next;
     }

@@ -1,81 +1,81 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct rtllib_txb {unsigned int queue_index; int nr_frags; TYPE_2__** fragments; } ;
-struct TYPE_5__ {int /*<<< orphan*/  multicast; } ;
-struct rtllib_device {int /*<<< orphan*/  lock; int /*<<< orphan*/  rate; int /*<<< orphan*/  dev; int /*<<< orphan*/  (* softmac_data_hard_start_xmit ) (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;int /*<<< orphan*/ * skb_waitQ; scalar_t__ queue_stop; int /*<<< orphan*/  (* check_nic_enough_desc ) (int /*<<< orphan*/ ,unsigned int) ;TYPE_1__ stats; } ;
+struct TYPE_5__ {int multicast; } ;
+struct rtllib_device {int lock; int rate; int dev; int (* softmac_data_hard_start_xmit ) (TYPE_2__*,int ,int ) ;int * skb_waitQ; scalar_t__ queue_stop; int (* check_nic_enough_desc ) (int ,unsigned int) ;TYPE_1__ stats; } ;
 struct cb_desc {scalar_t__ bMulticast; } ;
 struct TYPE_6__ {scalar_t__ cb; } ;
 
-/* Variables and functions */
- scalar_t__ MAX_DEV_ADDR_SIZE ; 
- int /*<<< orphan*/  kfree_skb (TYPE_2__*) ; 
- int /*<<< orphan*/  rtllib_sta_wakeup (struct rtllib_device*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rtllib_txb_free (struct rtllib_txb*) ; 
- unsigned long skb_queue_len (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  skb_queue_tail (int /*<<< orphan*/ *,TYPE_2__*) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,unsigned int) ; 
- int /*<<< orphan*/  stub2 (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ MAX_DEV_ADDR_SIZE ;
+ int kfree_skb (TYPE_2__*) ;
+ int rtllib_sta_wakeup (struct rtllib_device*,int ) ;
+ int rtllib_txb_free (struct rtllib_txb*) ;
+ unsigned long skb_queue_len (int *) ;
+ int skb_queue_tail (int *,TYPE_2__*) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
+ int stub1 (int ,unsigned int) ;
+ int stub2 (TYPE_2__*,int ,int ) ;
 
 void rtllib_softmac_xmit(struct rtllib_txb *txb, struct rtllib_device *ieee)
 {
 
-	unsigned int queue_index = txb->queue_index;
-	unsigned long flags;
-	int  i;
-	struct cb_desc *tcb_desc = NULL;
-	unsigned long queue_len = 0;
+ unsigned int queue_index = txb->queue_index;
+ unsigned long flags;
+ int i;
+ struct cb_desc *tcb_desc = ((void*)0);
+ unsigned long queue_len = 0;
 
-	spin_lock_irqsave(&ieee->lock, flags);
+ spin_lock_irqsave(&ieee->lock, flags);
 
-	/* called with 2nd parm 0, no tx mgmt lock required */
-	rtllib_sta_wakeup(ieee, 0);
 
-	/* update the tx status */
-	tcb_desc = (struct cb_desc *)(txb->fragments[0]->cb +
-		   MAX_DEV_ADDR_SIZE);
-	if (tcb_desc->bMulticast)
-		ieee->stats.multicast++;
+ rtllib_sta_wakeup(ieee, 0);
 
-	/* if xmit available, just xmit it immediately, else just insert it to
-	 * the wait queue
-	 */
-	for (i = 0; i < txb->nr_frags; i++) {
-		queue_len = skb_queue_len(&ieee->skb_waitQ[queue_index]);
-		if ((queue_len  != 0) ||
-		    (!ieee->check_nic_enough_desc(ieee->dev, queue_index)) ||
-		    (ieee->queue_stop)) {
-			/* insert the skb packet to the wait queue
-			 * as for the completion function, it does not need
-			 * to check it any more.
-			 */
-			if (queue_len < 200)
-				skb_queue_tail(&ieee->skb_waitQ[queue_index],
-					       txb->fragments[i]);
-			else
-				kfree_skb(txb->fragments[i]);
-		} else {
-			ieee->softmac_data_hard_start_xmit(
-					txb->fragments[i],
-					ieee->dev, ieee->rate);
-		}
-	}
 
-	rtllib_txb_free(txb);
+ tcb_desc = (struct cb_desc *)(txb->fragments[0]->cb +
+     MAX_DEV_ADDR_SIZE);
+ if (tcb_desc->bMulticast)
+  ieee->stats.multicast++;
 
-	spin_unlock_irqrestore(&ieee->lock, flags);
+
+
+
+ for (i = 0; i < txb->nr_frags; i++) {
+  queue_len = skb_queue_len(&ieee->skb_waitQ[queue_index]);
+  if ((queue_len != 0) ||
+      (!ieee->check_nic_enough_desc(ieee->dev, queue_index)) ||
+      (ieee->queue_stop)) {
+
+
+
+
+   if (queue_len < 200)
+    skb_queue_tail(&ieee->skb_waitQ[queue_index],
+            txb->fragments[i]);
+   else
+    kfree_skb(txb->fragments[i]);
+  } else {
+   ieee->softmac_data_hard_start_xmit(
+     txb->fragments[i],
+     ieee->dev, ieee->rate);
+  }
+ }
+
+ rtllib_txb_free(txb);
+
+ spin_unlock_irqrestore(&ieee->lock, flags);
 
 }

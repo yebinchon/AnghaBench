@@ -1,93 +1,93 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
-struct vpdma_data {TYPE_1__* pdev; int /*<<< orphan*/  (* cb ) (TYPE_1__*) ;} ;
-struct vpdma_buf {scalar_t__ dma_addr; int /*<<< orphan*/  addr; } ;
-struct firmware {int /*<<< orphan*/  size; int /*<<< orphan*/  data; } ;
-struct TYPE_3__ {int /*<<< orphan*/  dev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  VPDMA_LIST_ADDR ; 
- int /*<<< orphan*/  VPDMA_LIST_ATTR ; 
- int /*<<< orphan*/  VPDMA_LIST_RDY_MASK ; 
- int /*<<< orphan*/  VPDMA_LIST_RDY_SHFT ; 
- int /*<<< orphan*/  dev_dbg (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  dev_err (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  msleep_interruptible (int) ; 
- scalar_t__ read_field_reg (struct vpdma_data*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  release_firmware (struct firmware const*) ; 
- int /*<<< orphan*/  stub1 (TYPE_1__*) ; 
- int /*<<< orphan*/  stub2 (TYPE_1__*) ; 
- int vpdma_alloc_desc_buf (struct vpdma_buf*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vpdma_free_desc_buf (struct vpdma_buf*) ; 
- int /*<<< orphan*/  vpdma_map_desc_buf (struct vpdma_data*,struct vpdma_buf*) ; 
- int /*<<< orphan*/  vpdma_unmap_desc_buf (struct vpdma_data*,struct vpdma_buf*) ; 
- int /*<<< orphan*/  write_reg (struct vpdma_data*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int u32 ;
+struct vpdma_data {TYPE_1__* pdev; int (* cb ) (TYPE_1__*) ;} ;
+struct vpdma_buf {scalar_t__ dma_addr; int addr; } ;
+struct firmware {int size; int data; } ;
+struct TYPE_3__ {int dev; } ;
+
+
+ int VPDMA_LIST_ADDR ;
+ int VPDMA_LIST_ATTR ;
+ int VPDMA_LIST_RDY_MASK ;
+ int VPDMA_LIST_RDY_SHFT ;
+ int dev_dbg (int *,char*) ;
+ int dev_err (int *,char*) ;
+ int memcpy (int ,int ,int ) ;
+ int msleep_interruptible (int) ;
+ scalar_t__ read_field_reg (struct vpdma_data*,int ,int ,int ) ;
+ int release_firmware (struct firmware const*) ;
+ int stub1 (TYPE_1__*) ;
+ int stub2 (TYPE_1__*) ;
+ int vpdma_alloc_desc_buf (struct vpdma_buf*,int ) ;
+ int vpdma_free_desc_buf (struct vpdma_buf*) ;
+ int vpdma_map_desc_buf (struct vpdma_data*,struct vpdma_buf*) ;
+ int vpdma_unmap_desc_buf (struct vpdma_data*,struct vpdma_buf*) ;
+ int write_reg (struct vpdma_data*,int ,int ) ;
 
 __attribute__((used)) static void vpdma_firmware_cb(const struct firmware *f, void *context)
 {
-	struct vpdma_data *vpdma = context;
-	struct vpdma_buf fw_dma_buf;
-	int i, r;
+ struct vpdma_data *vpdma = context;
+ struct vpdma_buf fw_dma_buf;
+ int i, r;
 
-	dev_dbg(&vpdma->pdev->dev, "firmware callback\n");
+ dev_dbg(&vpdma->pdev->dev, "firmware callback\n");
 
-	if (!f || !f->data) {
-		dev_err(&vpdma->pdev->dev, "couldn't get firmware\n");
-		return;
-	}
+ if (!f || !f->data) {
+  dev_err(&vpdma->pdev->dev, "couldn't get firmware\n");
+  return;
+ }
 
-	/* already initialized */
-	if (read_field_reg(vpdma, VPDMA_LIST_ATTR, VPDMA_LIST_RDY_MASK,
-			VPDMA_LIST_RDY_SHFT)) {
-		vpdma->cb(vpdma->pdev);
-		return;
-	}
 
-	r = vpdma_alloc_desc_buf(&fw_dma_buf, f->size);
-	if (r) {
-		dev_err(&vpdma->pdev->dev,
-			"failed to allocate dma buffer for firmware\n");
-		goto rel_fw;
-	}
+ if (read_field_reg(vpdma, VPDMA_LIST_ATTR, VPDMA_LIST_RDY_MASK,
+   VPDMA_LIST_RDY_SHFT)) {
+  vpdma->cb(vpdma->pdev);
+  return;
+ }
 
-	memcpy(fw_dma_buf.addr, f->data, f->size);
+ r = vpdma_alloc_desc_buf(&fw_dma_buf, f->size);
+ if (r) {
+  dev_err(&vpdma->pdev->dev,
+   "failed to allocate dma buffer for firmware\n");
+  goto rel_fw;
+ }
 
-	vpdma_map_desc_buf(vpdma, &fw_dma_buf);
+ memcpy(fw_dma_buf.addr, f->data, f->size);
 
-	write_reg(vpdma, VPDMA_LIST_ADDR, (u32) fw_dma_buf.dma_addr);
+ vpdma_map_desc_buf(vpdma, &fw_dma_buf);
 
-	for (i = 0; i < 100; i++) {		/* max 1 second */
-		msleep_interruptible(10);
+ write_reg(vpdma, VPDMA_LIST_ADDR, (u32) fw_dma_buf.dma_addr);
 
-		if (read_field_reg(vpdma, VPDMA_LIST_ATTR, VPDMA_LIST_RDY_MASK,
-				VPDMA_LIST_RDY_SHFT))
-			break;
-	}
+ for (i = 0; i < 100; i++) {
+  msleep_interruptible(10);
 
-	if (i == 100) {
-		dev_err(&vpdma->pdev->dev, "firmware upload failed\n");
-		goto free_buf;
-	}
+  if (read_field_reg(vpdma, VPDMA_LIST_ATTR, VPDMA_LIST_RDY_MASK,
+    VPDMA_LIST_RDY_SHFT))
+   break;
+ }
 
-	vpdma->cb(vpdma->pdev);
+ if (i == 100) {
+  dev_err(&vpdma->pdev->dev, "firmware upload failed\n");
+  goto free_buf;
+ }
+
+ vpdma->cb(vpdma->pdev);
 
 free_buf:
-	vpdma_unmap_desc_buf(vpdma, &fw_dma_buf);
+ vpdma_unmap_desc_buf(vpdma, &fw_dma_buf);
 
-	vpdma_free_desc_buf(&fw_dma_buf);
+ vpdma_free_desc_buf(&fw_dma_buf);
 rel_fw:
-	release_firmware(f);
+ release_firmware(f);
 }

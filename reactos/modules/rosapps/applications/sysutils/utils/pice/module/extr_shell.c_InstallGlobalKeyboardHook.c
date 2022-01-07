@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ ULONG ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ENTER_FUNC () ; 
- int /*<<< orphan*/  KeyboardIRQL ; 
- int /*<<< orphan*/  LEAVE_FUNC () ; 
- int /*<<< orphan*/  MaskIrqs () ; 
- scalar_t__ OldGlobalInt31Handler ; 
- scalar_t__ SetGlobalInt (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  UnmaskIrqs () ; 
+
+
+
+typedef scalar_t__ ULONG ;
+
+
+ int ENTER_FUNC () ;
+ int KeyboardIRQL ;
+ int LEAVE_FUNC () ;
+ int MaskIrqs () ;
+ scalar_t__ OldGlobalInt31Handler ;
+ scalar_t__ SetGlobalInt (int ,scalar_t__) ;
+ int UnmaskIrqs () ;
 
 void InstallGlobalKeyboardHook(void)
 {
-	ULONG LocalNewGlobalInt31Handler;
+ ULONG LocalNewGlobalInt31Handler;
 
-	ENTER_FUNC();
+ ENTER_FUNC();
 
-	MaskIrqs();
-	if(!OldGlobalInt31Handler)
-	{
-		__asm__("mov $NewGlobalInt31Handler,%0"
-			:"=r" (LocalNewGlobalInt31Handler)
-			:
-			:"eax");
-		OldGlobalInt31Handler=SetGlobalInt(KeyboardIRQL,(ULONG)LocalNewGlobalInt31Handler);
-	}
-	UnmaskIrqs();
+ MaskIrqs();
+ if(!OldGlobalInt31Handler)
+ {
+  __asm__("mov $NewGlobalInt31Handler,%0"
+   :"=r" (LocalNewGlobalInt31Handler)
+   :
+   :"eax");
+  OldGlobalInt31Handler=SetGlobalInt(KeyboardIRQL,(ULONG)LocalNewGlobalInt31Handler);
+ }
+ UnmaskIrqs();
 
     LEAVE_FUNC();
 }

@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {TYPE_2__* root; } ;
-typedef  TYPE_1__ ngx_trie_t ;
+typedef TYPE_1__ ngx_trie_t ;
 struct TYPE_5__ {struct TYPE_5__** next; struct TYPE_5__* search_clue; } ;
-typedef  TYPE_2__ ngx_trie_node_t ;
-typedef  int ngx_int_t ;
+typedef TYPE_2__ ngx_trie_node_t ;
+typedef int ngx_int_t ;
 
-/* Variables and functions */
- int NGX_OK ; 
- int NGX_TRIE_KIND ; 
- int NGX_TRIE_MAX_QUEUE_SIZE ; 
+
+ int NGX_OK ;
+ int NGX_TRIE_KIND ;
+ int NGX_TRIE_MAX_QUEUE_SIZE ;
 
 ngx_int_t
 ngx_trie_build_clue(ngx_trie_t *trie)
 {
-    ngx_int_t        i, head, tail;
+    ngx_int_t i, head, tail;
     ngx_trie_node_t *q[NGX_TRIE_MAX_QUEUE_SIZE], *p, *t, *root;
 
     head = tail = 0;
     root = trie->root;
     q[head++] = root;
-    root->search_clue = NULL;
+    root->search_clue = ((void*)0);
 
     while (head != tail) {
         t = q[tail++];
         tail %= NGX_TRIE_MAX_QUEUE_SIZE;
 
-        if (t->next == NULL) {
+        if (t->next == ((void*)0)) {
             continue;
         }
 
-        p = NULL;
+        p = ((void*)0);
 
         for (i = 0; i< NGX_TRIE_KIND; i++) {
-            if (t->next[i] == NULL) {
+            if (t->next[i] == ((void*)0)) {
                 continue;
             }
 
@@ -60,15 +60,15 @@ ngx_trie_build_clue(ngx_trie_t *trie)
 
             p = t->search_clue;
 
-            while (p != NULL) {
-                if (p->next !=NULL && p->next[i] != NULL) {
+            while (p != ((void*)0)) {
+                if (p->next !=((void*)0) && p->next[i] != ((void*)0)) {
                     t->next[i]->search_clue = p->next[i];
                     break;
                 }
                 p = p->search_clue;
             }
 
-            if (p == NULL) {
+            if (p == ((void*)0)) {
                 t->next[i]->search_clue = root;
             }
 

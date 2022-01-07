@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int n; int nAlloc; char* z; } ;
-typedef  TYPE_1__ String ;
+typedef TYPE_1__ String ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fatalError (char*) ; 
- int /*<<< orphan*/  memcpy (char*,char const*,int) ; 
- char* sqlite3_realloc (char*,int) ; 
- scalar_t__ strlen (char const*) ; 
+
+ int fatalError (char*) ;
+ int memcpy (char*,char const*,int) ;
+ char* sqlite3_realloc (char*,int) ;
+ scalar_t__ strlen (char const*) ;
 
 __attribute__((used)) static void stringAppend(String *p, const char *z, int n){
   if( n<0 ) n = (int)strlen(z);

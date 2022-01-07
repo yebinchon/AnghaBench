@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {double* data; } ;
-typedef  TYPE_1__ image ;
+typedef TYPE_1__ image ;
 
-/* Variables and functions */
- double* calloc (int,int) ; 
- TYPE_1__ make_empty_image (int,int,int) ; 
- double rand_normal () ; 
+
+ double* calloc (int,int) ;
+ TYPE_1__ make_empty_image (int,int,int) ;
+ double rand_normal () ;
 
 image make_random_image(int w, int h, int c)
 {

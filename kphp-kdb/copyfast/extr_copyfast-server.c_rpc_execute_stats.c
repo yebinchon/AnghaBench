@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  union engine_stats {int dummy; } engine_stats ;
-struct rpc_stats {int /*<<< orphan*/  stats; int /*<<< orphan*/  id; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef union engine_stats {int dummy; } engine_stats ;
+struct rpc_stats {int stats; int id; } ;
 struct connection {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/  stats; } ;
+struct TYPE_2__ {int stats; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int) ; 
- int get_node_idx (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- TYPE_1__* nodes ; 
- int nodes_num ; 
- int /*<<< orphan*/  stderr ; 
- int verbosity ; 
+
+ int assert (int) ;
+ int fprintf (int ,char*,int) ;
+ int get_node_idx (int ) ;
+ int memcpy (int *,int *,int) ;
+ TYPE_1__* nodes ;
+ int nodes_num ;
+ int stderr ;
+ int verbosity ;
 
 int rpc_execute_stats (struct connection *c, struct rpc_stats *P, int len) {
   if (verbosity >= 2) {

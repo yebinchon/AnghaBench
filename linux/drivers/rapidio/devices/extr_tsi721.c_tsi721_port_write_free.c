@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct tsi721_device {int /*<<< orphan*/  pw_fifo; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  kfifo_free (int /*<<< orphan*/ *) ; 
+
+
+
+struct tsi721_device {int pw_fifo; } ;
+
+
+ int kfifo_free (int *) ;
 
 __attribute__((used)) static void tsi721_port_write_free(struct tsi721_device *priv)
 {
-	kfifo_free(&priv->pw_fifo);
+ kfifo_free(&priv->pw_fifo);
 }

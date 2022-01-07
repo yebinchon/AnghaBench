@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct dpaa2_caam_priv {int /*<<< orphan*/  dfs_root; int /*<<< orphan*/  dev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  debugfs_create_dir (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  debugfs_create_file (char*,int,int /*<<< orphan*/ ,struct dpaa2_caam_priv*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  dev_name (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dpseci_dbg_fq_ops ; 
+
+
+
+struct dpaa2_caam_priv {int dfs_root; int dev; } ;
+
+
+ int debugfs_create_dir (int ,int *) ;
+ int debugfs_create_file (char*,int,int ,struct dpaa2_caam_priv*,int *) ;
+ int dev_name (int ) ;
+ int dpseci_dbg_fq_ops ;
 
 void dpaa2_dpseci_debugfs_init(struct dpaa2_caam_priv *priv)
 {
-	priv->dfs_root = debugfs_create_dir(dev_name(priv->dev), NULL);
+ priv->dfs_root = debugfs_create_dir(dev_name(priv->dev), ((void*)0));
 
-	debugfs_create_file("fq_stats", 0444, priv->dfs_root, priv,
-			    &dpseci_dbg_fq_ops);
+ debugfs_create_file("fq_stats", 0444, priv->dfs_root, priv,
+       &dpseci_dbg_fq_ops);
 }

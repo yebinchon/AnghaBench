@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct prioq_item {int dummy; } ;
-typedef  int /*<<< orphan*/  Prioq ;
+typedef int Prioq ;
 
-/* Variables and functions */
- struct prioq_item* find_item (int /*<<< orphan*/ *,void*,unsigned int*) ; 
- int /*<<< orphan*/  remove_item (int /*<<< orphan*/ *,struct prioq_item*) ; 
+
+ struct prioq_item* find_item (int *,void*,unsigned int*) ;
+ int remove_item (int *,struct prioq_item*) ;
 
 int prioq_remove(Prioq *q, void *data, unsigned *idx) {
         struct prioq_item *i;

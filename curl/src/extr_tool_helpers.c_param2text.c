@@ -1,61 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int ParameterError ;
 
-/* Variables and functions */
-#define  PARAM_BAD_NUMERIC 140 
-#define  PARAM_BAD_USE 139 
-#define  PARAM_GOT_EXTRA_PARAMETER 138 
-#define  PARAM_LIBCURL_DOESNT_SUPPORT 137 
-#define  PARAM_LIBCURL_UNSUPPORTED_PROTOCOL 136 
-#define  PARAM_NEGATIVE_NUMERIC 135 
-#define  PARAM_NO_MEM 134 
-#define  PARAM_NO_NOT_BOOLEAN 133 
-#define  PARAM_NO_PREFIX 132 
-#define  PARAM_NUMBER_TOO_LARGE 131 
-#define  PARAM_OPTION_AMBIGUOUS 130 
-#define  PARAM_OPTION_UNKNOWN 129 
-#define  PARAM_REQUIRES_PARAMETER 128 
 
+
+
+typedef int ParameterError ;
 const char *param2text(int res)
 {
   ParameterError error = (ParameterError)res;
   switch(error) {
-  case PARAM_GOT_EXTRA_PARAMETER:
+  case 138:
     return "had unsupported trailing garbage";
-  case PARAM_OPTION_UNKNOWN:
+  case 129:
     return "is unknown";
-  case PARAM_OPTION_AMBIGUOUS:
+  case 130:
     return "is ambiguous";
-  case PARAM_REQUIRES_PARAMETER:
+  case 128:
     return "requires parameter";
-  case PARAM_BAD_USE:
+  case 139:
     return "is badly used here";
-  case PARAM_BAD_NUMERIC:
+  case 140:
     return "expected a proper numerical parameter";
-  case PARAM_NEGATIVE_NUMERIC:
+  case 135:
     return "expected a positive numerical parameter";
-  case PARAM_LIBCURL_DOESNT_SUPPORT:
+  case 137:
     return "the installed libcurl version doesn't support this";
-  case PARAM_LIBCURL_UNSUPPORTED_PROTOCOL:
+  case 136:
     return "a specified protocol is unsupported by libcurl";
-  case PARAM_NO_MEM:
+  case 134:
     return "out of memory";
-  case PARAM_NO_PREFIX:
+  case 132:
     return "the given option can't be reversed with a --no- prefix";
-  case PARAM_NUMBER_TOO_LARGE:
+  case 131:
     return "too large number";
-  case PARAM_NO_NOT_BOOLEAN:
+  case 133:
     return "used '--no-' for option that isn't a boolean";
   default:
     return "unknown error";

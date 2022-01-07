@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint64_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
-struct nd_router_advert {scalar_t__ nd_ra_type; scalar_t__ nd_ra_code; int nd_ra_flags_reserved; int /*<<< orphan*/  nd_ra_router_lifetime; int /*<<< orphan*/  nd_ra_curhoplimit; } ;
-struct TYPE_5__ {int raw_size; int flags; int preference; int rindex; int /*<<< orphan*/  mtu; int /*<<< orphan*/  lifetime; int /*<<< orphan*/  hop_limit; } ;
-typedef  TYPE_1__ sd_ndisc_router ;
 
-/* Variables and functions */
- int EBADMSG ; 
- int /*<<< orphan*/  IN_SET (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IPV6_MIN_MTU ; 
- struct nd_router_advert* NDISC_ROUTER_RAW (TYPE_1__*) ; 
- scalar_t__ ND_ROUTER_ADVERT ; 
-#define  SD_NDISC_OPTION_DNSSL 133 
-#define  SD_NDISC_OPTION_FLAGS_EXTENSION 132 
-#define  SD_NDISC_OPTION_MTU 131 
-#define  SD_NDISC_OPTION_PREFIX_INFORMATION 130 
-#define  SD_NDISC_OPTION_RDNSS 129 
-#define  SD_NDISC_OPTION_ROUTE_INFORMATION 128 
- int /*<<< orphan*/  SD_NDISC_PREFERENCE_HIGH ; 
- int /*<<< orphan*/  SD_NDISC_PREFERENCE_LOW ; 
- int SD_NDISC_PREFERENCE_MEDIUM ; 
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int /*<<< orphan*/  be16toh (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  be32toh (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  log_ndisc (char*) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint64_t ;
+typedef int uint32_t ;
+struct nd_router_advert {scalar_t__ nd_ra_type; scalar_t__ nd_ra_code; int nd_ra_flags_reserved; int nd_ra_router_lifetime; int nd_ra_curhoplimit; } ;
+struct TYPE_5__ {int raw_size; int flags; int preference; int rindex; int mtu; int lifetime; int hop_limit; } ;
+typedef TYPE_1__ sd_ndisc_router ;
+
+
+ int EBADMSG ;
+ int IN_SET (int,int ,int ) ;
+ int IPV6_MIN_MTU ;
+ struct nd_router_advert* NDISC_ROUTER_RAW (TYPE_1__*) ;
+ scalar_t__ ND_ROUTER_ADVERT ;
+
+
+
+
+
+
+ int SD_NDISC_PREFERENCE_HIGH ;
+ int SD_NDISC_PREFERENCE_LOW ;
+ int SD_NDISC_PREFERENCE_MEDIUM ;
+ int assert (TYPE_1__*) ;
+ int be16toh (int ) ;
+ int be32toh (int ) ;
+ int log_ndisc (char*) ;
 
 int ndisc_router_parse(sd_ndisc_router *rt) {
         struct nd_router_advert *a;
         const uint8_t *p;
-        bool has_mtu = false, has_flag_extension = false;
+        bool has_mtu = 0, has_flag_extension = 0;
         size_t left;
 
         assert(rt);
@@ -51,7 +51,7 @@ int ndisc_router_parse(sd_ndisc_router *rt) {
                 return -EBADMSG;
         }
 
-        /* Router advertisement packets are neatly aligned to 64bit boundaries, hence we can access them directly */
+
         a = NDISC_ROUTER_RAW(rt);
 
         if (a->nd_ra_type != ND_ROUTER_ADVERT) {
@@ -65,7 +65,7 @@ int ndisc_router_parse(sd_ndisc_router *rt) {
         }
 
         rt->hop_limit = a->nd_ra_curhoplimit;
-        rt->flags = a->nd_ra_flags_reserved; /* the first 8bit */
+        rt->flags = a->nd_ra_flags_reserved;
         rt->lifetime = be16toh(a->nd_ra_router_lifetime);
 
         rt->preference = (rt->flags >> 3) & 3;
@@ -101,7 +101,7 @@ int ndisc_router_parse(sd_ndisc_router *rt) {
 
                 switch (type) {
 
-                case SD_NDISC_OPTION_PREFIX_INFORMATION:
+                case 130:
 
                         if (length != 4*8) {
                                 log_ndisc("Prefix option of invalid size, ignoring datagram.");
@@ -115,7 +115,7 @@ int ndisc_router_parse(sd_ndisc_router *rt) {
 
                         break;
 
-                case SD_NDISC_OPTION_MTU: {
+                case 131: {
                         uint32_t m;
 
                         if (has_mtu) {
@@ -129,14 +129,14 @@ int ndisc_router_parse(sd_ndisc_router *rt) {
                         }
 
                         m = be32toh(*(uint32_t*) (p + 4));
-                        if (m >= IPV6_MIN_MTU) /* ignore invalidly small MTUs */
+                        if (m >= IPV6_MIN_MTU)
                                 rt->mtu = m;
 
-                        has_mtu = true;
+                        has_mtu = 1;
                         break;
                 }
 
-                case SD_NDISC_OPTION_ROUTE_INFORMATION:
+                case 128:
                         if (length < 1*8 || length > 3*8) {
                                 log_ndisc("Route information option of invalid size, ignoring datagram.");
                                 return -EBADMSG;
@@ -149,7 +149,7 @@ int ndisc_router_parse(sd_ndisc_router *rt) {
 
                         break;
 
-                case SD_NDISC_OPTION_RDNSS:
+                case 129:
                         if (length < 3*8 || (length % (2*8)) != 1*8) {
                                 log_ndisc("RDNSS option has invalid size.");
                                 return -EBADMSG;
@@ -157,7 +157,7 @@ int ndisc_router_parse(sd_ndisc_router *rt) {
 
                         break;
 
-                case SD_NDISC_OPTION_FLAGS_EXTENSION:
+                case 132:
 
                         if (has_flag_extension) {
                                 log_ndisc("Flags extension option specified twice, ignoring.");
@@ -169,7 +169,7 @@ int ndisc_router_parse(sd_ndisc_router *rt) {
                                 return -EBADMSG;
                         }
 
-                        /* Add in the additional flags bits */
+
                         rt->flags |=
                                 ((uint64_t) p[2] << 8) |
                                 ((uint64_t) p[3] << 16) |
@@ -178,10 +178,10 @@ int ndisc_router_parse(sd_ndisc_router *rt) {
                                 ((uint64_t) p[6] << 40) |
                                 ((uint64_t) p[7] << 48);
 
-                        has_flag_extension = true;
+                        has_flag_extension = 1;
                         break;
 
-                case SD_NDISC_OPTION_DNSSL:
+                case 133:
                         if (length < 2*8) {
                                 log_ndisc("DNSSL option has invalid size.");
                                 return -EBADMSG;

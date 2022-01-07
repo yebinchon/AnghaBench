@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u8 ;
-typedef  int u64 ;
-typedef  int u32 ;
-typedef  int i64 ;
 
-/* Variables and functions */
- scalar_t__ CORRUPT_DB ; 
- int FOUR_BYTE_UINT (int const*) ; 
- int ONE_BYTE_INT (int const*) ; 
- int THREE_BYTE_INT (int const*) ; 
- int TWO_BYTE_INT (int const*) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  testcase (int const) ; 
+
+
+
+typedef int u8 ;
+typedef int u64 ;
+typedef int u32 ;
+typedef int i64 ;
+
+
+ scalar_t__ CORRUPT_DB ;
+ int FOUR_BYTE_UINT (int const*) ;
+ int ONE_BYTE_INT (int const*) ;
+ int THREE_BYTE_INT (int const*) ;
+ int TWO_BYTE_INT (int const*) ;
+ int assert (int) ;
+ int testcase (int const) ;
 
 __attribute__((used)) static i64 vdbeRecordDecodeInt(u32 serial_type, const u8 *aKey){
   u32 y;

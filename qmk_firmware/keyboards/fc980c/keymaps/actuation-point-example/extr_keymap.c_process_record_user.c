@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint16_t ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint16_t ;
 struct TYPE_4__ {scalar_t__ pressed; } ;
 struct TYPE_5__ {TYPE_1__ event; } ;
-typedef  TYPE_2__ keyrecord_t ;
+typedef TYPE_2__ keyrecord_t ;
 
-/* Variables and functions */
-#define  AP_DN 131 
-#define  AP_READ_EEPROM 130 
-#define  AP_READ_RDAC 129 
-#define  AP_UP 128 
- int /*<<< orphan*/  actuation_point_down () ; 
- int /*<<< orphan*/  actuation_point_up () ; 
- int /*<<< orphan*/  read_eeprom () ; 
- int /*<<< orphan*/  read_rdac () ; 
- int /*<<< orphan*/  xprintf (char*,int /*<<< orphan*/ ) ; 
+
+
+
+
+
+ int actuation_point_down () ;
+ int actuation_point_up () ;
+ int read_eeprom () ;
+ int read_rdac () ;
+ int xprintf (char*,int ) ;
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record)
 {
@@ -34,33 +34,33 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record)
     {
         switch (keycode)
         {
-        case AP_UP:
+        case 128:
         {
             actuation_point_up();
-            return false;
+            return 0;
         }
-        case AP_DN:
+        case 131:
         {
             actuation_point_down();
-            return false;
+            return 0;
         }
-        case AP_READ_RDAC:
+        case 129:
         {
             xprintf("RDAC: %d", read_rdac());
-            return false;
+            return 0;
         }
-        case AP_READ_EEPROM:
+        case 130:
         {
             xprintf("EEPROM: %d", read_eeprom());
-            return false;
+            return 0;
         }
 
         default:
-            return true;
+            return 1;
         }
     }
     else
     {
-        return true;
+        return 1;
     }
 }

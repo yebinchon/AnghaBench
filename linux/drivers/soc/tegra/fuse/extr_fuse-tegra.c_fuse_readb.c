@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  unsigned int u8 ;
-typedef  unsigned int u32 ;
-struct tegra_fuse {unsigned int (* read ) (struct tegra_fuse*,int /*<<< orphan*/ ) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  round_down (unsigned int,int) ; 
- unsigned int stub1 (struct tegra_fuse*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef unsigned int u8 ;
+typedef unsigned int u32 ;
+struct tegra_fuse {unsigned int (* read ) (struct tegra_fuse*,int ) ;} ;
+
+
+ int round_down (unsigned int,int) ;
+ unsigned int stub1 (struct tegra_fuse*,int ) ;
 
 __attribute__((used)) static u8 fuse_readb(struct tegra_fuse *fuse, unsigned int offset)
 {
-	u32 val;
+ u32 val;
 
-	val = fuse->read(fuse, round_down(offset, 4));
-	val >>= (offset % 4) * 8;
-	val &= 0xff;
+ val = fuse->read(fuse, round_down(offset, 4));
+ val >>= (offset % 4) * 8;
+ val &= 0xff;
 
-	return val;
+ return val;
 }

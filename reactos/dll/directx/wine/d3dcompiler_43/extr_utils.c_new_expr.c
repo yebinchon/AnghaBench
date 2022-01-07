@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct source_location {int dummy; } ;
 struct hlsl_type {int dimx; int dimy; } ;
-struct TYPE_4__ {int /*<<< orphan*/  col; int /*<<< orphan*/  line; int /*<<< orphan*/  file; } ;
+struct TYPE_4__ {int col; int line; int file; } ;
 struct hlsl_ir_node {TYPE_2__ loc; struct hlsl_type* data_type; } ;
-struct TYPE_3__ {struct hlsl_type* data_type; struct source_location loc; int /*<<< orphan*/  type; } ;
+struct TYPE_3__ {struct hlsl_type* data_type; struct source_location loc; int type; } ;
 struct hlsl_ir_expr {int op; struct hlsl_ir_node** operands; TYPE_1__ node; } ;
-typedef  enum hlsl_ir_expr_op { ____Placeholder_hlsl_ir_expr_op } hlsl_ir_expr_op ;
+typedef enum hlsl_ir_expr_op { ____Placeholder_hlsl_ir_expr_op } hlsl_ir_expr_op ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*,...) ; 
- int /*<<< orphan*/  HLSL_IR_EXPR ; 
- int /*<<< orphan*/  HLSL_LEVEL_WARNING ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ compare_hlsl_types (struct hlsl_type*,struct hlsl_type*) ; 
- struct hlsl_ir_expr* d3dcompiler_alloc (int) ; 
- int /*<<< orphan*/  d3dcompiler_free (struct hlsl_ir_expr*) ; 
- int /*<<< orphan*/  debug_hlsl_type (struct hlsl_type*) ; 
- struct hlsl_type* expr_common_type (struct hlsl_type*,struct hlsl_type*,struct source_location*) ; 
- int /*<<< orphan*/  hlsl_report_message (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- struct hlsl_ir_node* implicit_conversion (struct hlsl_ir_node*,struct hlsl_type*,TYPE_2__*) ; 
+
+ int ERR (char*,...) ;
+ int HLSL_IR_EXPR ;
+ int HLSL_LEVEL_WARNING ;
+ int TRACE (char*,int ,int ) ;
+ scalar_t__ compare_hlsl_types (struct hlsl_type*,struct hlsl_type*) ;
+ struct hlsl_ir_expr* d3dcompiler_alloc (int) ;
+ int d3dcompiler_free (struct hlsl_ir_expr*) ;
+ int debug_hlsl_type (struct hlsl_type*) ;
+ struct hlsl_type* expr_common_type (struct hlsl_type*,struct hlsl_type*,struct source_location*) ;
+ int hlsl_report_message (int ,int ,int ,int ,char*) ;
+ struct hlsl_ir_node* implicit_conversion (struct hlsl_ir_node*,struct hlsl_type*,TYPE_2__*) ;
 
 struct hlsl_ir_expr *new_expr(enum hlsl_ir_expr_op op, struct hlsl_ir_node **operands,
         struct source_location *loc)
@@ -43,7 +43,7 @@ struct hlsl_ir_expr *new_expr(enum hlsl_ir_expr_op op, struct hlsl_ir_node **ope
     if (!expr)
     {
         ERR("Out of memory\n");
-        return NULL;
+        return ((void*)0);
     }
     expr->node.type = HLSL_IR_EXPR;
     expr->node.loc = *loc;
@@ -56,7 +56,7 @@ struct hlsl_ir_expr *new_expr(enum hlsl_ir_expr_op op, struct hlsl_ir_node **ope
         if (!type)
         {
             d3dcompiler_free(expr);
-            return NULL;
+            return ((void*)0);
         }
     }
     for (i = 0; i <= 2; ++i)
@@ -78,7 +78,7 @@ struct hlsl_ir_expr *new_expr(enum hlsl_ir_expr_op op, struct hlsl_ir_node **ope
         {
             ERR("Impossible to convert expression operand %u to %s\n", i + 1, debug_hlsl_type(type));
             d3dcompiler_free(expr);
-            return NULL;
+            return ((void*)0);
         }
     }
     expr->node.data_type = type;

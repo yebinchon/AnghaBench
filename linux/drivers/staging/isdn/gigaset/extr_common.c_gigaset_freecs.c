@@ -1,97 +1,97 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct cardstate {int cs_init; int channels; int /*<<< orphan*/  mutex; int /*<<< orphan*/  bcs; int /*<<< orphan*/  inbuf; int /*<<< orphan*/  port; int /*<<< orphan*/  at_state; TYPE_1__* ops; int /*<<< orphan*/  timer; int /*<<< orphan*/  event_tasklet; int /*<<< orphan*/  lock; scalar_t__ running; } ;
-struct TYPE_2__ {int /*<<< orphan*/  (* freecshw ) (struct cardstate*) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEBUG_INIT ; 
- int /*<<< orphan*/  VALID_ID ; 
- int /*<<< orphan*/  clear_at_state (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  clear_events (struct cardstate*) ; 
- int /*<<< orphan*/  dealloc_temp_at_states (struct cardstate*) ; 
- int /*<<< orphan*/  del_timer_sync (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free_cs (struct cardstate*) ; 
- int /*<<< orphan*/  gig_dbg (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  gigaset_free_dev_sysfs (struct cardstate*) ; 
- int /*<<< orphan*/  gigaset_freebcs (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gigaset_if_free (struct cardstate*) ; 
- int /*<<< orphan*/  gigaset_isdn_unregdev (struct cardstate*) ; 
- int /*<<< orphan*/  kfree (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  make_invalid (struct cardstate*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  stub1 (struct cardstate*) ; 
- int /*<<< orphan*/  tasklet_kill (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tty_port_destroy (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct cardstate {int cs_init; int channels; int mutex; int bcs; int inbuf; int port; int at_state; TYPE_1__* ops; int timer; int event_tasklet; int lock; scalar_t__ running; } ;
+struct TYPE_2__ {int (* freecshw ) (struct cardstate*) ;} ;
+
+
+ int DEBUG_INIT ;
+ int VALID_ID ;
+ int clear_at_state (int *) ;
+ int clear_events (struct cardstate*) ;
+ int dealloc_temp_at_states (struct cardstate*) ;
+ int del_timer_sync (int *) ;
+ int free_cs (struct cardstate*) ;
+ int gig_dbg (int ,char*,...) ;
+ int gigaset_free_dev_sysfs (struct cardstate*) ;
+ int gigaset_freebcs (int ) ;
+ int gigaset_if_free (struct cardstate*) ;
+ int gigaset_isdn_unregdev (struct cardstate*) ;
+ int kfree (int ) ;
+ int make_invalid (struct cardstate*,int ) ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
+ int stub1 (struct cardstate*) ;
+ int tasklet_kill (int *) ;
+ int tty_port_destroy (int *) ;
 
 void gigaset_freecs(struct cardstate *cs)
 {
-	int i;
-	unsigned long flags;
+ int i;
+ unsigned long flags;
 
-	if (!cs)
-		return;
+ if (!cs)
+  return;
 
-	mutex_lock(&cs->mutex);
+ mutex_lock(&cs->mutex);
 
-	spin_lock_irqsave(&cs->lock, flags);
-	cs->running = 0;
-	spin_unlock_irqrestore(&cs->lock, flags); /* event handler and timer are
-						     not rescheduled below */
+ spin_lock_irqsave(&cs->lock, flags);
+ cs->running = 0;
+ spin_unlock_irqrestore(&cs->lock, flags);
 
-	tasklet_kill(&cs->event_tasklet);
-	del_timer_sync(&cs->timer);
 
-	switch (cs->cs_init) {
-	default:
-		/* clear B channel structures */
-		for (i = 0; i < cs->channels; ++i) {
-			gig_dbg(DEBUG_INIT, "clearing bcs[%d]", i);
-			gigaset_freebcs(cs->bcs + i);
-		}
+ tasklet_kill(&cs->event_tasklet);
+ del_timer_sync(&cs->timer);
 
-		/* clear device sysfs */
-		gigaset_free_dev_sysfs(cs);
+ switch (cs->cs_init) {
+ default:
 
-		gigaset_if_free(cs);
+  for (i = 0; i < cs->channels; ++i) {
+   gig_dbg(DEBUG_INIT, "clearing bcs[%d]", i);
+   gigaset_freebcs(cs->bcs + i);
+  }
 
-		gig_dbg(DEBUG_INIT, "clearing hw");
-		cs->ops->freecshw(cs);
 
-		/* fall through */
-	case 2: /* error in initcshw */
-		/* Deregister from LL */
-		make_invalid(cs, VALID_ID);
-		gigaset_isdn_unregdev(cs);
+  gigaset_free_dev_sysfs(cs);
 
-		/* fall through */
-	case 1: /* error when registering to LL */
-		gig_dbg(DEBUG_INIT, "clearing at_state");
-		clear_at_state(&cs->at_state);
-		dealloc_temp_at_states(cs);
-		clear_events(cs);
-		tty_port_destroy(&cs->port);
+  gigaset_if_free(cs);
 
-		/* fall through */
-	case 0:	/* error in basic setup */
-		gig_dbg(DEBUG_INIT, "freeing inbuf");
-		kfree(cs->inbuf);
-		kfree(cs->bcs);
-	}
+  gig_dbg(DEBUG_INIT, "clearing hw");
+  cs->ops->freecshw(cs);
 
-	mutex_unlock(&cs->mutex);
-	free_cs(cs);
+
+ case 2:
+
+  make_invalid(cs, VALID_ID);
+  gigaset_isdn_unregdev(cs);
+
+
+ case 1:
+  gig_dbg(DEBUG_INIT, "clearing at_state");
+  clear_at_state(&cs->at_state);
+  dealloc_temp_at_states(cs);
+  clear_events(cs);
+  tty_port_destroy(&cs->port);
+
+
+ case 0:
+  gig_dbg(DEBUG_INIT, "freeing inbuf");
+  kfree(cs->inbuf);
+  kfree(cs->bcs);
+ }
+
+ mutex_unlock(&cs->mutex);
+ free_cs(cs);
 }

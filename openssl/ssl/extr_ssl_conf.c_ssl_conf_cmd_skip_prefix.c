@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ prefixlen; int flags; scalar_t__ prefix; } ;
-typedef  TYPE_1__ SSL_CONF_CTX ;
+typedef TYPE_1__ SSL_CONF_CTX ;
 
-/* Variables and functions */
- int SSL_CONF_FLAG_CMDLINE ; 
- int SSL_CONF_FLAG_FILE ; 
- scalar_t__ strlen (char const*) ; 
- scalar_t__ strncasecmp (char const*,scalar_t__,scalar_t__) ; 
- scalar_t__ strncmp (char const*,scalar_t__,scalar_t__) ; 
+
+ int SSL_CONF_FLAG_CMDLINE ;
+ int SSL_CONF_FLAG_FILE ;
+ scalar_t__ strlen (char const*) ;
+ scalar_t__ strncasecmp (char const*,scalar_t__,scalar_t__) ;
+ scalar_t__ strncmp (char const*,scalar_t__,scalar_t__) ;
 
 __attribute__((used)) static int ssl_conf_cmd_skip_prefix(SSL_CONF_CTX *cctx, const char **pcmd)
 {
-    if (pcmd == NULL || *pcmd == NULL)
+    if (pcmd == ((void*)0) || *pcmd == ((void*)0))
         return 0;
-    /* If a prefix is set, check and skip */
+
     if (cctx->prefix) {
         if (strlen(*pcmd) <= cctx->prefixlen)
             return 0;

@@ -1,69 +1,69 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int mod; int rm; } ;
 
-/* Variables and functions */
- int DFLAG ; 
- int /*<<< orphan*/  INTERNAL_DISASSEMBLER_ERROR ; 
- int /*<<< orphan*/  MODRM_CHECK ; 
- int /*<<< orphan*/  OP_E (int,int) ; 
- int PREFIX_DATA ; 
- int REX_B ; 
- int REX_W ; 
- int /*<<< orphan*/  USED_REX (int) ; 
-#define  b_mode 129 
- int /*<<< orphan*/  codep ; 
- int /*<<< orphan*/  intel_syntax ; 
- TYPE_1__ modrm ; 
- int /*<<< orphan*/ * names16 ; 
- int /*<<< orphan*/ * names32 ; 
- int /*<<< orphan*/ * names64 ; 
- int /*<<< orphan*/ * names8 ; 
- int /*<<< orphan*/ * names8rex ; 
- int /*<<< orphan*/  oappend (int /*<<< orphan*/ ) ; 
- char* obuf ; 
- int prefixes ; 
- int rex ; 
- int strlen (char*) ; 
- int used_prefixes ; 
-#define  v_mode 128 
+
+ int DFLAG ;
+ int INTERNAL_DISASSEMBLER_ERROR ;
+ int MODRM_CHECK ;
+ int OP_E (int,int) ;
+ int PREFIX_DATA ;
+ int REX_B ;
+ int REX_W ;
+ int USED_REX (int) ;
+
+ int codep ;
+ int intel_syntax ;
+ TYPE_1__ modrm ;
+ int * names16 ;
+ int * names32 ;
+ int * names64 ;
+ int * names8 ;
+ int * names8rex ;
+ int oappend (int ) ;
+ char* obuf ;
+ int prefixes ;
+ int rex ;
+ int strlen (char*) ;
+ int used_prefixes ;
+
 
 __attribute__((used)) static void
 CRC32_Fixup (int bytemode, int sizeflag)
 {
-  /* Add proper suffix to "crc32".  */
+
   char *p = obuf + strlen (obuf);
 
   switch (bytemode)
     {
-    case b_mode:
+    case 129:
       if (intel_syntax)
-	break;
+ break;
 
       *p++ = 'b';
       break;
-    case v_mode:
+    case 128:
       if (intel_syntax)
-	break;
+ break;
 
       USED_REX (REX_W);
       if (rex & REX_W)
-	*p++ = 'q';
+ *p++ = 'q';
       else if (sizeflag & DFLAG)
-	*p++ = 'l';
+ *p++ = 'l';
       else
-	*p++ = 'w';
+ *p++ = 'w';
       used_prefixes |= (prefixes & PREFIX_DATA);
       break;
     default:
@@ -76,30 +76,30 @@ CRC32_Fixup (int bytemode, int sizeflag)
     {
       int add;
 
-      /* Skip mod/rm byte.  */
+
       MODRM_CHECK;
       codep++;
 
       USED_REX (REX_B);
       add = (rex & REX_B) ? 8 : 0;
-      if (bytemode == b_mode)
-	{
-	  USED_REX (0);
-	  if (rex)
-	    oappend (names8rex[modrm.rm + add]);
-	  else
-	    oappend (names8[modrm.rm + add]);
-	}
+      if (bytemode == 129)
+ {
+   USED_REX (0);
+   if (rex)
+     oappend (names8rex[modrm.rm + add]);
+   else
+     oappend (names8[modrm.rm + add]);
+ }
       else
-	{
-	  USED_REX (REX_W);
-	  if (rex & REX_W)
-	    oappend (names64[modrm.rm + add]);
-	  else if ((prefixes & PREFIX_DATA))
-	    oappend (names16[modrm.rm + add]);
-	  else
-	    oappend (names32[modrm.rm + add]);
-	}
+ {
+   USED_REX (REX_W);
+   if (rex & REX_W)
+     oappend (names64[modrm.rm + add]);
+   else if ((prefixes & PREFIX_DATA))
+     oappend (names16[modrm.rm + add]);
+   else
+     oappend (names32[modrm.rm + add]);
+ }
     }
   else
     OP_E (bytemode, sizeflag);

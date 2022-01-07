@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int time_t ;
+
+
+
+
+typedef int time_t ;
 struct tm {int dummy; } ;
-typedef  int int64_t ;
-typedef  int /*<<< orphan*/  JsonBuf ;
+typedef int int64_t ;
+typedef int JsonBuf ;
 
-/* Variables and functions */
- int /*<<< orphan*/  httpJsonString (int /*<<< orphan*/ *,char*,int) ; 
- struct tm* localtime (int*) ; 
- scalar_t__ snprintf (char*,int,char*,int) ; 
- scalar_t__ strftime (char*,int,char*,struct tm*) ; 
+
+ int httpJsonString (int *,char*,int) ;
+ struct tm* localtime (int*) ;
+ scalar_t__ snprintf (char*,int,char*,int) ;
+ scalar_t__ strftime (char*,int,char*,struct tm*) ;
 
 void httpJsonTimestamp(JsonBuf* buf, int64_t t, bool us) {
   char ts[35] = {0};

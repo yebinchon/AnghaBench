@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  strm_value ;
-typedef  int /*<<< orphan*/  strm_string ;
-typedef  int /*<<< orphan*/  strm_env ;
-typedef  scalar_t__ khiter_t ;
 
-/* Variables and functions */
- int STRM_NG ; 
- int STRM_OK ; 
- scalar_t__ kh_end (int /*<<< orphan*/ *) ; 
- scalar_t__ kh_get (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kh_value (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  strm_str_intern_p (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strm_str_intern_str (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int strm_value ;
+typedef int strm_string ;
+typedef int strm_env ;
+typedef scalar_t__ khiter_t ;
+
+
+ int STRM_NG ;
+ int STRM_OK ;
+ scalar_t__ kh_end (int *) ;
+ scalar_t__ kh_get (int *,int *,int ) ;
+ int kh_value (int *,scalar_t__) ;
+ int strm_str_intern_p (int ) ;
+ int strm_str_intern_str (int ) ;
 
 int
 env_get(strm_env* env, strm_string name, strm_value* val)

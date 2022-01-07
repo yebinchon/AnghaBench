@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct kobject {int dummy; } ;
 struct file {int dummy; } ;
 struct bin_attribute {int dummy; } ;
-typedef  int /*<<< orphan*/  ssize_t ;
-typedef  int /*<<< orphan*/  loff_t ;
+typedef int ssize_t ;
+typedef int loff_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PKEY_SIZE_AES_256 ; 
- int /*<<< orphan*/  pkey_ccacipher_aes_attr_read (int /*<<< orphan*/ ,int,char*,int /*<<< orphan*/ ,size_t) ; 
+
+ int PKEY_SIZE_AES_256 ;
+ int pkey_ccacipher_aes_attr_read (int ,int,char*,int ,size_t) ;
 
 __attribute__((used)) static ssize_t ccacipher_aes_256_xts_read(struct file *filp,
-					  struct kobject *kobj,
-					  struct bin_attribute *attr,
-					  char *buf, loff_t off,
-					  size_t count)
+       struct kobject *kobj,
+       struct bin_attribute *attr,
+       char *buf, loff_t off,
+       size_t count)
 {
-	return pkey_ccacipher_aes_attr_read(PKEY_SIZE_AES_256, true, buf,
-					    off, count);
+ return pkey_ccacipher_aes_attr_read(PKEY_SIZE_AES_256, 1, buf,
+         off, count);
 }

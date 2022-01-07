@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct priv {int num_buffers; scalar_t__ context; scalar_t__ config; int /*<<< orphan*/  av_device_ref; int /*<<< orphan*/  queue; int /*<<< orphan*/  hw_pool; int /*<<< orphan*/  display; int /*<<< orphan*/ * buffers; } ;
+
+
+
+
+struct priv {int num_buffers; scalar_t__ context; scalar_t__ config; int av_device_ref; int queue; int hw_pool; int display; int * buffers; } ;
 struct mp_filter {struct priv* priv; } ;
 
-/* Variables and functions */
- scalar_t__ VA_INVALID_ID ; 
- int /*<<< orphan*/  av_buffer_unref (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  flush_frames (struct mp_filter*) ; 
- int /*<<< orphan*/  talloc_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vaDestroyBuffer (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vaDestroyConfig (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  vaDestroyContext (int /*<<< orphan*/ ,scalar_t__) ; 
+
+ scalar_t__ VA_INVALID_ID ;
+ int av_buffer_unref (int *) ;
+ int flush_frames (struct mp_filter*) ;
+ int talloc_free (int ) ;
+ int vaDestroyBuffer (int ,int ) ;
+ int vaDestroyConfig (int ,scalar_t__) ;
+ int vaDestroyContext (int ,scalar_t__) ;
 
 __attribute__((used)) static void uninit(struct mp_filter *vf)
 {

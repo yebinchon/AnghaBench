@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int UnitNameFlags ;
 
-/* Variables and functions */
- int UNIT_NAME_INSTANCE ; 
- int UNIT_NAME_PLAIN ; 
- int UNIT_NAME_TEMPLATE ; 
- int /*<<< orphan*/  assert_se (int) ; 
- int /*<<< orphan*/  log_info (char*,char const*,char*,char*,char*,int /*<<< orphan*/ ) ; 
- int unit_name_is_valid (char const*,int) ; 
- int /*<<< orphan*/  yes_no (int) ; 
+
+
+
+typedef int UnitNameFlags ;
+
+
+ int UNIT_NAME_INSTANCE ;
+ int UNIT_NAME_PLAIN ;
+ int UNIT_NAME_TEMPLATE ;
+ int assert_se (int) ;
+ int log_info (char*,char const*,char*,char*,char*,int ) ;
+ int unit_name_is_valid (char const*,int) ;
+ int yes_no (int) ;
 
 __attribute__((used)) static void test_unit_name_is_valid_one(const char *name, UnitNameFlags flags, bool expected) {
         log_info("%s ( %s%s%s ): %s",

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct object {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OBJ_ANY ; 
- int /*<<< orphan*/  mark_object (struct object*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int OBJ_ANY ;
+ int mark_object (struct object*,int ,int *,int *) ;
 
 __attribute__((used)) static void mark_object_reachable(struct object *obj)
 {
-	mark_object(obj, OBJ_ANY, NULL, NULL);
+ mark_object(obj, OBJ_ANY, ((void*)0), ((void*)0));
 }

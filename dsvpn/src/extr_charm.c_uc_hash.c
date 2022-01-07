@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  endian_swap_rate (int*) ; 
- int /*<<< orphan*/  mem_cpy (unsigned char*,unsigned char const*,size_t) ; 
- int /*<<< orphan*/  memset (unsigned char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  permute (int*) ; 
- int /*<<< orphan*/  squeeze_permute (int*,unsigned char*) ; 
- int /*<<< orphan*/  xor128 (int*,unsigned char const*) ; 
+
+
+
+typedef int uint32_t ;
+
+
+ int endian_swap_rate (int*) ;
+ int mem_cpy (unsigned char*,unsigned char const*,size_t) ;
+ int memset (unsigned char*,int ,int) ;
+ int permute (int*) ;
+ int squeeze_permute (int*,unsigned char*) ;
+ int xor128 (int*,unsigned char const*) ;
 
 void uc_hash(uint32_t st[12], unsigned char h[32], const unsigned char *msg, size_t len)
 {
     unsigned char padded[16 + 1];
-    size_t        off = 0;
-    size_t        leftover;
+    size_t off = 0;
+    size_t leftover;
 
     if (len > 16) {
         for (; off < len - 16; off += 16) {

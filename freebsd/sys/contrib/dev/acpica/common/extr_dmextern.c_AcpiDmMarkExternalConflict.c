@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {char* InternalPath; struct TYPE_7__* Next; int /*<<< orphan*/  Flags; } ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {char* InternalPath; struct TYPE_7__* Next; int Flags; } ;
 struct TYPE_6__ {int Flags; } ;
-typedef  int /*<<< orphan*/  ACPI_STATUS ;
-typedef  TYPE_1__ ACPI_NAMESPACE_NODE ;
-typedef  TYPE_2__ ACPI_EXTERNAL_LIST ;
+typedef int ACPI_STATUS ;
+typedef TYPE_1__ ACPI_NAMESPACE_NODE ;
+typedef TYPE_2__ ACPI_EXTERNAL_LIST ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACPI_EXT_CONFLICTING_DECLARATION ; 
- scalar_t__ ACPI_FAILURE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ACPI_FREE (char*) ; 
- int /*<<< orphan*/  ACPI_FUNCTION_TRACE (int /*<<< orphan*/ ) ; 
- scalar_t__ AML_ROOT_PREFIX ; 
- int ANOBJ_IS_EXTERNAL ; 
- int /*<<< orphan*/  AcpiDmGetExternalAndInternalPath (TYPE_1__*,char**,char**) ; 
- int /*<<< orphan*/  AcpiDmRemoveRootPrefix (char**) ; 
- TYPE_2__* AcpiGbl_ExternalList ; 
- int /*<<< orphan*/  DmMarkExternalConflict ; 
- int /*<<< orphan*/  return_VOID ; 
- int /*<<< orphan*/  strcmp (scalar_t__*,char*) ; 
+
+ int ACPI_EXT_CONFLICTING_DECLARATION ;
+ scalar_t__ ACPI_FAILURE (int ) ;
+ int ACPI_FREE (char*) ;
+ int ACPI_FUNCTION_TRACE (int ) ;
+ scalar_t__ AML_ROOT_PREFIX ;
+ int ANOBJ_IS_EXTERNAL ;
+ int AcpiDmGetExternalAndInternalPath (TYPE_1__*,char**,char**) ;
+ int AcpiDmRemoveRootPrefix (char**) ;
+ TYPE_2__* AcpiGbl_ExternalList ;
+ int DmMarkExternalConflict ;
+ int return_VOID ;
+ int strcmp (scalar_t__*,char*) ;
 
 void
 AcpiDmMarkExternalConflict (
-    ACPI_NAMESPACE_NODE     *Node)
+    ACPI_NAMESPACE_NODE *Node)
 {
-    ACPI_EXTERNAL_LIST      *ExternalList = AcpiGbl_ExternalList;
-    char                    *ExternalPath;
-    char                    *InternalPath;
-    char                    *Temp;
-    ACPI_STATUS             Status;
+    ACPI_EXTERNAL_LIST *ExternalList = AcpiGbl_ExternalList;
+    char *ExternalPath;
+    char *InternalPath;
+    char *Temp;
+    ACPI_STATUS Status;
 
 
     ACPI_FUNCTION_TRACE (DmMarkExternalConflict);
@@ -51,7 +51,7 @@ AcpiDmMarkExternalConflict (
         return_VOID;
     }
 
-    /* Get the full external and internal pathnames to the node */
+
 
     Status = AcpiDmGetExternalAndInternalPath (Node,
         &ExternalPath, &InternalPath);
@@ -60,7 +60,7 @@ AcpiDmMarkExternalConflict (
         return_VOID;
     }
 
-    /* Remove the root backslash */
+
 
     Status = AcpiDmRemoveRootPrefix (&InternalPath);
     if (ACPI_FAILURE (Status))

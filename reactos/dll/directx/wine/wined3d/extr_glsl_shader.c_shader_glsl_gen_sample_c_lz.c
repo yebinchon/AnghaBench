@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct wined3d_string_buffer {int dummy; } ;
-struct wined3d_shader_version {int /*<<< orphan*/  type; } ;
+struct wined3d_shader_version {int type; } ;
 struct wined3d_shader_texel_offset {int u; int v; int w; } ;
 struct wined3d_shader_instruction {TYPE_3__* dst; TYPE_2__* ctx; struct wined3d_shader_texel_offset texel_offset; } ;
-struct glsl_sample_function {scalar_t__ offset_size; int /*<<< orphan*/  data_type; int /*<<< orphan*/  deriv_mask; } ;
-struct TYPE_6__ {int /*<<< orphan*/  write_mask; } ;
+struct glsl_sample_function {scalar_t__ offset_size; int data_type; int deriv_mask; } ;
+struct TYPE_6__ {int write_mask; } ;
 struct TYPE_5__ {struct wined3d_string_buffer* buffer; TYPE_1__* reg_maps; } ;
 struct TYPE_4__ {struct wined3d_shader_version shader_version; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  WARN (char*) ; 
- int /*<<< orphan*/  WINED3DSP_NOSWIZZLE ; 
- int /*<<< orphan*/  shader_addline (struct wined3d_string_buffer*,char*,...) ; 
- int /*<<< orphan*/  shader_glsl_append_dst_ext (struct wined3d_string_buffer*,struct wined3d_shader_instruction const*,TYPE_3__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  shader_glsl_append_imm_ivec (struct wined3d_string_buffer*,int*,scalar_t__) ; 
- int /*<<< orphan*/  shader_glsl_get_prefix (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  shader_glsl_swizzle_to_str (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- unsigned int wined3d_popcount (int /*<<< orphan*/ ) ; 
+
+ int FALSE ;
+ int WARN (char*) ;
+ int WINED3DSP_NOSWIZZLE ;
+ int shader_addline (struct wined3d_string_buffer*,char*,...) ;
+ int shader_glsl_append_dst_ext (struct wined3d_string_buffer*,struct wined3d_shader_instruction const*,TYPE_3__*,int ) ;
+ int shader_glsl_append_imm_ivec (struct wined3d_string_buffer*,int*,scalar_t__) ;
+ int shader_glsl_get_prefix (int ) ;
+ int shader_glsl_swizzle_to_str (int ,int ,int ,char*) ;
+ unsigned int wined3d_popcount (int ) ;
 
 __attribute__((used)) static void shader_glsl_gen_sample_c_lz(const struct wined3d_shader_instruction *ins,
         unsigned int sampler_bind_idx, const struct glsl_sample_function *sample_function,

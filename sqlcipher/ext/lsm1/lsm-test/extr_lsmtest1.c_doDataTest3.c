@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u8 ;
-typedef  size_t u32 ;
-typedef  int /*<<< orphan*/  aKey2 ;
-typedef  int /*<<< orphan*/  aKey1 ;
-typedef  int /*<<< orphan*/  aKey ;
-typedef  int /*<<< orphan*/  TestDb ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int u8 ;
+typedef size_t u32 ;
+typedef int aKey2 ;
+typedef int aKey1 ;
+typedef int aKey ;
+typedef int TestDb ;
 struct TYPE_3__ {int nRange; int nValMax; int nIter; int nWrite; int nValMin; int nDelete; } ;
-typedef  TYPE_1__ Datatest3 ;
+typedef TYPE_1__ Datatest3 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dt3PutKey (int*,int) ; 
- int tdb_fetch (int /*<<< orphan*/ *,int*,int,void**,int*) ; 
- int /*<<< orphan*/  testCaseFinish (int) ; 
- int /*<<< orphan*/  testCaseNDot () ; 
- int /*<<< orphan*/  testCaseProgress (int,int,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  testClose (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  testCompareInt (int,int,int*) ; 
- int /*<<< orphan*/  testDeleteRange (int /*<<< orphan*/ *,int*,int,int*,int,int*) ; 
- scalar_t__ testMalloc (int) ; 
- int /*<<< orphan*/ * testOpen (char const*,int,int*) ; 
- int /*<<< orphan*/  testPrngString (int,char*,int) ; 
- int testPrngValue (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  testReopen (int /*<<< orphan*/ **,int*) ; 
- int /*<<< orphan*/  testWrite (int /*<<< orphan*/ *,int*,int,char*,int,int*) ; 
+
+ int dt3PutKey (int*,int) ;
+ int tdb_fetch (int *,int*,int,void**,int*) ;
+ int testCaseFinish (int) ;
+ int testCaseNDot () ;
+ int testCaseProgress (int,int,int ,int*) ;
+ int testClose (int **) ;
+ int testCompareInt (int,int,int*) ;
+ int testDeleteRange (int *,int*,int,int*,int,int*) ;
+ scalar_t__ testMalloc (int) ;
+ int * testOpen (char const*,int,int*) ;
+ int testPrngString (int,char*,int) ;
+ int testPrngValue (int ) ;
+ int testReopen (int **,int*) ;
+ int testWrite (int *,int*,int,char*,int,int*) ;
 
 __attribute__((used)) static void doDataTest3(
-  const char *zSystem,            /* Database system to test */
-  Datatest3 *p,                   /* Structure containing test parameters */
-  int *pRc                        /* OUT: Error code */
+  const char *zSystem,
+  Datatest3 *p,
+  int *pRc
 ){
   int iDot = 0;
   int rc = *pRc;
   TestDb *pDb;
-  u8 *abPresent;                  /* Array of boolean */
-  char *aVal;                     /* Buffer to hold values */
+  u8 *abPresent;
+  char *aVal;
   int i;
-  u32 iSeq = 10;                  /* prng counter */
+  u32 iSeq = 10;
 
   abPresent = (u8 *)testMalloc(p->nRange+1);
   aVal = (char *)testMalloc(p->nValMax+1);
@@ -58,7 +58,7 @@ __attribute__((used)) static void doDataTest3(
 
     testCaseProgress(i, p->nIter, testCaseNDot(), &iDot);
 
-    /* Perform nWrite inserts */
+
     for(ii=0; ii<p->nWrite; ii++){
       u8 aKey[6];
       u32 iKey;
@@ -73,7 +73,7 @@ __attribute__((used)) static void doDataTest3(
       abPresent[iKey] = 1;
     }
 
-    /* Perform nDelete deletes */
+
     for(ii=0; ii<p->nDelete; ii++){
       u8 aKey1[6];
       u8 aKey2[6];

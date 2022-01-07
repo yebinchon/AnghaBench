@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  auth_token; } ;
-struct TYPE_5__ {int /*<<< orphan*/  password; } ;
-struct test_context {int /*<<< orphan*/  session; TYPE_2__ multi; TYPE_1__ up; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AUTH_TOKEN_HMAC_OK ; 
- int /*<<< orphan*/  assert_int_equal (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  generate_auth_token (TYPE_1__*,TYPE_2__*) ; 
- int /*<<< orphan*/  strcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  verify_auth_token (TYPE_1__*,TYPE_2__*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int auth_token; } ;
+struct TYPE_5__ {int password; } ;
+struct test_context {int session; TYPE_2__ multi; TYPE_1__ up; } ;
+
+
+ int AUTH_TOKEN_HMAC_OK ;
+ int assert_int_equal (int ,int ) ;
+ int generate_auth_token (TYPE_1__*,TYPE_2__*) ;
+ int strcpy (int ,int ) ;
+ int verify_auth_token (TYPE_1__*,TYPE_2__*,int *) ;
 
 __attribute__((used)) static void
 auth_token_basic_test(void **state)

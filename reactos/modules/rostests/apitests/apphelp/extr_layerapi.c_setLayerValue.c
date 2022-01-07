@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ LSTATUS ;
-typedef  int /*<<< orphan*/ * HKEY ;
-typedef  scalar_t__ DWORD ;
-typedef  int /*<<< orphan*/  BYTE ;
-typedef  int BOOL ;
 
-/* Variables and functions */
- scalar_t__ ERROR_FILE_NOT_FOUND ; 
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  HKEY_CURRENT_USER ; 
- int /*<<< orphan*/  HKEY_LOCAL_MACHINE ; 
- int KEY_SET_VALUE ; 
- int QueryFlag () ; 
- int /*<<< orphan*/  REG_SZ ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ *) ; 
- scalar_t__ RegCreateKeyExA (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
- scalar_t__ RegDeleteValueA (int /*<<< orphan*/ *,char const*) ; 
- scalar_t__ RegSetValueExA (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,scalar_t__) ; 
- scalar_t__ strlen (char const*) ; 
+
+
+
+typedef scalar_t__ LSTATUS ;
+typedef int * HKEY ;
+typedef scalar_t__ DWORD ;
+typedef int BYTE ;
+typedef int BOOL ;
+
+
+ scalar_t__ ERROR_FILE_NOT_FOUND ;
+ scalar_t__ ERROR_SUCCESS ;
+ int HKEY_CURRENT_USER ;
+ int HKEY_LOCAL_MACHINE ;
+ int KEY_SET_VALUE ;
+ int QueryFlag () ;
+ int REG_SZ ;
+ int RegCloseKey (int *) ;
+ scalar_t__ RegCreateKeyExA (int ,char*,int ,int *,int ,int,int *,int **,int *) ;
+ scalar_t__ RegDeleteValueA (int *,char const*) ;
+ scalar_t__ RegSetValueExA (int *,char const*,int ,int ,int const*,scalar_t__) ;
+ scalar_t__ strlen (char const*) ;
 
 __attribute__((used)) static BOOL setLayerValue(BOOL bMachine, const char* valueName, const char* value)
 {
-    HKEY key = NULL;
+    HKEY key = ((void*)0);
     LSTATUS lstatus = RegCreateKeyExA(bMachine ? HKEY_LOCAL_MACHINE : HKEY_CURRENT_USER,
-        "Software\\Microsoft\\Windows NT\\CurrentVersion\\AppCompatFlags\\Layers", 0, NULL, 0, QueryFlag() | KEY_SET_VALUE, NULL, &key, NULL);
+        "Software\\Microsoft\\Windows NT\\CurrentVersion\\AppCompatFlags\\Layers", 0, ((void*)0), 0, QueryFlag() | KEY_SET_VALUE, ((void*)0), &key, ((void*)0));
     if (lstatus == ERROR_SUCCESS)
     {
         if (value)

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {size_t l28; unsigned char** l136; int l571; unsigned long* l67; TYPE_1__* l32; int /*<<< orphan*/  (* l171 ) (TYPE_2__*,unsigned char*,int) ;int /*<<< orphan*/  l592; int /*<<< orphan*/  (* l65 ) (TYPE_2__*,int) ;int /*<<< orphan*/  l556; int /*<<< orphan*/  l52; int /*<<< orphan*/  l591; int /*<<< orphan*/  l200; } ;
-typedef  TYPE_2__ e ;
-struct TYPE_8__ {int /*<<< orphan*/  l88; int /*<<< orphan*/  t; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  stub1 (TYPE_2__*,int) ; 
- int /*<<< orphan*/  stub2 (TYPE_2__*,int) ; 
- int /*<<< orphan*/  stub3 (TYPE_2__*,int) ; 
- int /*<<< orphan*/  stub4 (TYPE_2__*,unsigned char*,int) ; 
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_9__ {size_t l28; unsigned char** l136; int l571; unsigned long* l67; TYPE_1__* l32; int (* l171 ) (TYPE_2__*,unsigned char*,int) ;int l592; int (* l65 ) (TYPE_2__*,int) ;int l556; int l52; int l591; int l200; } ;
+typedef TYPE_2__ e ;
+struct TYPE_8__ {int l88; int t; } ;
+
+
+ int stub1 (TYPE_2__*,int) ;
+ int stub2 (TYPE_2__*,int) ;
+ int stub3 (TYPE_2__*,int) ;
+ int stub4 (TYPE_2__*,unsigned char*,int) ;
 
 __attribute__((used)) static
 void l575(e*a){int w=(( * (volatile unsigned long* )&a->l32[a->l28].t

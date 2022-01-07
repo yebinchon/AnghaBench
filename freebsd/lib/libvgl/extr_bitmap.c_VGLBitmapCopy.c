@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_8__ {scalar_t__ Type; } ;
-typedef  TYPE_1__ VGLBitmap ;
+typedef TYPE_1__ VGLBitmap ;
 
-/* Variables and functions */
- scalar_t__ MEMBUF ; 
- TYPE_1__* VGLDisplay ; 
- int /*<<< orphan*/  VGLMouseFreeze () ; 
- int /*<<< orphan*/  VGLMouseUnFreeze () ; 
- TYPE_1__ VGLVDisplay ; 
- int __VGLBitmapCopy (TYPE_1__*,int,int,TYPE_1__*,int,int,int,int) ; 
+
+ scalar_t__ MEMBUF ;
+ TYPE_1__* VGLDisplay ;
+ int VGLMouseFreeze () ;
+ int VGLMouseUnFreeze () ;
+ TYPE_1__ VGLVDisplay ;
+ int __VGLBitmapCopy (TYPE_1__*,int,int,TYPE_1__*,int,int,int,int) ;
 
 int
 VGLBitmapCopy(VGLBitmap *src, int srcx, int srcy,
-	      VGLBitmap *dst, int dstx, int dsty, int width, int hight)
+       VGLBitmap *dst, int dstx, int dsty, int width, int hight)
 {
   int error;
 
@@ -33,7 +33,7 @@ VGLBitmapCopy(VGLBitmap *src, int srcx, int srcy,
   if (src == VGLDisplay)
     src = &VGLVDisplay;
   if (src->Type != MEMBUF)
-    return -1;		/* invalid */
+    return -1;
   if (dst == VGLDisplay) {
     VGLMouseFreeze();
     __VGLBitmapCopy(src, srcx, srcy, &VGLVDisplay, dstx, dsty, width, hight);
@@ -45,7 +45,7 @@ VGLBitmapCopy(VGLBitmap *src, int srcx, int srcy,
     srcx = dstx;
     srcy = dsty;
   } else if (dst->Type != MEMBUF)
-    return -1;		/* invalid */
+    return -1;
   error = __VGLBitmapCopy(src, srcx, srcy, dst, dstx, dsty, width, -hight);
   if (dst == VGLDisplay)
     VGLMouseUnFreeze();

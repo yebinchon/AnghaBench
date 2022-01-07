@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ZSTD_cParameter ;
-typedef  int /*<<< orphan*/  ZSTD_CCtx_params ;
-typedef  int /*<<< orphan*/  ZSTD_CCtx ;
 
-/* Variables and functions */
- size_t ZSTD_CCtxParams_setParameter (int /*<<< orphan*/ *,int /*<<< orphan*/ ,unsigned int) ; 
- size_t ZSTD_CCtx_setParameter (int /*<<< orphan*/ *,int /*<<< orphan*/ ,unsigned int) ; 
+
+
+
+typedef int ZSTD_cParameter ;
+typedef int ZSTD_CCtx_params ;
+typedef int ZSTD_CCtx ;
+
+
+ size_t ZSTD_CCtxParams_setParameter (int *,int ,unsigned int) ;
+ size_t ZSTD_CCtx_setParameter (int *,int ,unsigned int) ;
 
 __attribute__((used)) static size_t setCCtxParameter(ZSTD_CCtx* zc, ZSTD_CCtx_params* cctxParams,
                                ZSTD_cParameter param, unsigned value,

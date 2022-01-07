@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct clk {int /*<<< orphan*/  usecount; struct clk* parent; } ;
 
-/* Variables and functions */
+
+
+
+struct clk {int usecount; struct clk* parent; } ;
+
+
 
 __attribute__((used)) static void __clk_enable(struct clk *clk)
 {
-	if (clk->parent)
-		__clk_enable(clk->parent);
-	clk->usecount++;
+ if (clk->parent)
+  __clk_enable(clk->parent);
+ clk->usecount++;
 }

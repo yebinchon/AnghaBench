@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  TYPE_BASIC_BYTE ; 
- int /*<<< orphan*/  TYPE_BASIC_DOUBLE ; 
- int /*<<< orphan*/  TYPE_BASIC_ERROR_STATUS_T ; 
- int /*<<< orphan*/  TYPE_BASIC_FLOAT ; 
- int /*<<< orphan*/  TYPE_BASIC_HANDLE ; 
- int /*<<< orphan*/  TYPE_BASIC_WCHAR ; 
- int /*<<< orphan*/  decl_builtin_alias (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  decl_builtin_basic (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  type_new_basic (int /*<<< orphan*/ ) ; 
+ int TYPE_BASIC_BYTE ;
+ int TYPE_BASIC_DOUBLE ;
+ int TYPE_BASIC_ERROR_STATUS_T ;
+ int TYPE_BASIC_FLOAT ;
+ int TYPE_BASIC_HANDLE ;
+ int TYPE_BASIC_WCHAR ;
+ int decl_builtin_alias (char*,int ) ;
+ int decl_builtin_basic (char*,int ) ;
+ int type_new_basic (int ) ;
 
 void init_types(void)
 {

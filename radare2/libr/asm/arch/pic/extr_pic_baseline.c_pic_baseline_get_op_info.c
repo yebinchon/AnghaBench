@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  size_t PicBaselineOpcode ;
-typedef  int /*<<< orphan*/  PicBaselineOpInfo ;
 
-/* Variables and functions */
- size_t PIC_BASELINE_OPCODE_INVALID ; 
- int /*<<< orphan*/  const* pic_baseline_op_info ; 
+
+
+
+typedef size_t PicBaselineOpcode ;
+typedef int PicBaselineOpInfo ;
+
+
+ size_t PIC_BASELINE_OPCODE_INVALID ;
+ int const* pic_baseline_op_info ;
 
 const PicBaselineOpInfo *pic_baseline_get_op_info(PicBaselineOpcode opcode) {
-	if (opcode >= PIC_BASELINE_OPCODE_INVALID) {
-		return NULL;
-	}
-	return &pic_baseline_op_info[opcode];
+ if (opcode >= PIC_BASELINE_OPCODE_INVALID) {
+  return ((void*)0);
+ }
+ return &pic_baseline_op_info[opcode];
 }

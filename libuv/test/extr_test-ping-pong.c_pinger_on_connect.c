@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uv_stream_t ;
-typedef  int /*<<< orphan*/  uv_handle_t ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uv_stream_t ;
+typedef int uv_handle_t ;
 struct TYPE_5__ {TYPE_2__* handle; } ;
-typedef  TYPE_1__ uv_connect_t ;
-typedef  int /*<<< orphan*/  pinger_t ;
+typedef TYPE_1__ uv_connect_t ;
+typedef int pinger_t ;
 struct TYPE_6__ {scalar_t__ data; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- int /*<<< orphan*/  alloc_cb ; 
- int /*<<< orphan*/  pinger_on_connect_count ; 
- int /*<<< orphan*/  pinger_read_cb ; 
- int /*<<< orphan*/  pinger_write_ping (int /*<<< orphan*/ *) ; 
- scalar_t__ uv_is_closing (int /*<<< orphan*/ *) ; 
- int uv_is_readable (TYPE_2__*) ; 
- int uv_is_writable (TYPE_2__*) ; 
- int /*<<< orphan*/  uv_read_start (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int ASSERT (int) ;
+ int alloc_cb ;
+ int pinger_on_connect_count ;
+ int pinger_read_cb ;
+ int pinger_write_ping (int *) ;
+ scalar_t__ uv_is_closing (int *) ;
+ int uv_is_readable (TYPE_2__*) ;
+ int uv_is_writable (TYPE_2__*) ;
+ int uv_read_start (int *,int ,int ) ;
 
 __attribute__((used)) static void pinger_on_connect(uv_connect_t *req, int status) {
   pinger_t *pinger = (pinger_t*)req->handle->data;

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  timebase_callback_func ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PE_call_timebase_callback () ; 
- int /*<<< orphan*/  gTimebaseCallback ; 
+
+
+
+typedef int timebase_callback_func ;
+
+
+ int PE_call_timebase_callback () ;
+ int gTimebaseCallback ;
 
 void
 PE_register_timebase_callback(timebase_callback_func callback)
 {
-	gTimebaseCallback = callback;
+ gTimebaseCallback = callback;
 
-	PE_call_timebase_callback();
+ PE_call_timebase_callback();
 }

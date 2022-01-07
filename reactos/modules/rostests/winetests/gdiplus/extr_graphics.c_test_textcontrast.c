@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT ;
-typedef  int /*<<< orphan*/  HDC ;
-typedef  int /*<<< orphan*/  GpStatus ;
-typedef  int /*<<< orphan*/  GpGraphics ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GdipCreateFromHDC (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GdipDeleteGraphics (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipGetTextContrast (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GetDC (int /*<<< orphan*/ ) ; 
- int InvalidParameter ; 
- int Ok ; 
- int /*<<< orphan*/  ReleaseDC (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  expect (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hwnd ; 
+
+
+
+typedef int UINT ;
+typedef int HDC ;
+typedef int GpStatus ;
+typedef int GpGraphics ;
+
+
+ int GdipCreateFromHDC (int ,int **) ;
+ int GdipDeleteGraphics (int *) ;
+ int GdipGetTextContrast (int *,int *) ;
+ int GetDC (int ) ;
+ int InvalidParameter ;
+ int Ok ;
+ int ReleaseDC (int ,int ) ;
+ int expect (int,int ) ;
+ int hwnd ;
 
 __attribute__((used)) static void test_textcontrast(void)
 {
@@ -33,13 +33,13 @@ __attribute__((used)) static void test_textcontrast(void)
     GpGraphics *graphics;
     UINT contrast;
 
-    status = GdipGetTextContrast(NULL, NULL);
+    status = GdipGetTextContrast(((void*)0), ((void*)0));
     expect(InvalidParameter, status);
 
     status = GdipCreateFromHDC(hdc, &graphics);
     expect(Ok, status);
 
-    status = GdipGetTextContrast(graphics, NULL);
+    status = GdipGetTextContrast(graphics, ((void*)0));
     expect(InvalidParameter, status);
     status = GdipGetTextContrast(graphics, &contrast);
     expect(Ok, status);

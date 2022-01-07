@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct hlsl_scope {int /*<<< orphan*/  entry; struct hlsl_scope* upper; int /*<<< orphan*/  types; int /*<<< orphan*/  vars; } ;
-struct hlsl_parse_ctx {int /*<<< orphan*/  scopes; struct hlsl_scope* cur_scope; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*) ; 
- int /*<<< orphan*/  TRACE (char*) ; 
- int /*<<< orphan*/  compare_hlsl_types_rb ; 
- struct hlsl_scope* d3dcompiler_alloc (int) ; 
- int /*<<< orphan*/  list_add_tail (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  list_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  wine_rb_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+struct hlsl_scope {int entry; struct hlsl_scope* upper; int types; int vars; } ;
+struct hlsl_parse_ctx {int scopes; struct hlsl_scope* cur_scope; } ;
+
+
+ int ERR (char*) ;
+ int TRACE (char*) ;
+ int compare_hlsl_types_rb ;
+ struct hlsl_scope* d3dcompiler_alloc (int) ;
+ int list_add_tail (int *,int *) ;
+ int list_init (int *) ;
+ int wine_rb_init (int *,int ) ;
 
 void push_scope(struct hlsl_parse_ctx *ctx)
 {

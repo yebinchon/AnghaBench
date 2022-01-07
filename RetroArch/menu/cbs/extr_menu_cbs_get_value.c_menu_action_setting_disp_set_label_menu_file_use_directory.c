@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  file_list_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  menu_action_setting_generic_disp_set_label (unsigned int*,char*,size_t,char const*,int /*<<< orphan*/ *,char*,size_t) ; 
+
+
+
+typedef int file_list_t ;
+
+
+ int menu_action_setting_generic_disp_set_label (unsigned int*,char*,size_t,char const*,int *,char*,size_t) ;
 
 __attribute__((used)) static void menu_action_setting_disp_set_label_menu_file_use_directory(
       file_list_t* list,
@@ -24,5 +24,5 @@ __attribute__((used)) static void menu_action_setting_disp_set_label_menu_file_u
       char *s2, size_t len2)
 {
    menu_action_setting_generic_disp_set_label(w, s, len,
-         path, NULL, s2, len2);
+         path, ((void*)0), s2, len2);
 }

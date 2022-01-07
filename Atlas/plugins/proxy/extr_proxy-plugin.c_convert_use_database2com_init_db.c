@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ sql_token_id ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef scalar_t__ sql_token_id ;
 struct TYPE_6__ {scalar_t__ token_id; TYPE_1__* text; } ;
-typedef  TYPE_2__ sql_token ;
-typedef  int guint ;
+typedef TYPE_2__ sql_token ;
+typedef int guint ;
 struct TYPE_7__ {int len; scalar_t__ pdata; } ;
-struct TYPE_5__ {int /*<<< orphan*/  str; } ;
-typedef  int /*<<< orphan*/  GString ;
-typedef  TYPE_3__ GPtrArray ;
+struct TYPE_5__ {int str; } ;
+typedef int GString ;
+typedef TYPE_3__ GPtrArray ;
 
-/* Variables and functions */
- int /*<<< orphan*/  COM_INIT_DB ; 
- char COM_QUERY ; 
- scalar_t__ TK_COMMENT ; 
- scalar_t__ TK_LITERAL ; 
- scalar_t__ TK_SQL_USE ; 
- int /*<<< orphan*/  g_string_append_c (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  g_string_append_printf (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  g_string_truncate (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int COM_INIT_DB ;
+ char COM_QUERY ;
+ scalar_t__ TK_COMMENT ;
+ scalar_t__ TK_LITERAL ;
+ scalar_t__ TK_SQL_USE ;
+ int g_string_append_c (int *,int ) ;
+ int g_string_append_printf (int *,char*,int ) ;
+ int g_string_truncate (int *,int ) ;
 
 GString* convert_use_database2com_init_db(char type, GString *origin_packets, GPtrArray *tokens) {
-    if (type == COM_QUERY) { 
+    if (type == COM_QUERY) {
         sql_token **ts = (sql_token**)(tokens->pdata);
         guint tokens_len = tokens->len;
         if (tokens_len > 1) {
@@ -51,6 +51,6 @@ GString* convert_use_database2com_init_db(char type, GString *origin_packets, GP
             }
         }
     }
-    
+
     return origin_packets;
 }

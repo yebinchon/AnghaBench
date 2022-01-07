@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int numOfRows; } ;
-typedef  int /*<<< orphan*/  JsonBuf ;
-typedef  TYPE_1__ HttpSqlCmd ;
-typedef  int /*<<< orphan*/  HttpContext ;
+typedef int JsonBuf ;
+typedef TYPE_1__ HttpSqlCmd ;
+typedef int HttpContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  JsonArrEnd ; 
- int /*<<< orphan*/  JsonArrStt ; 
- int /*<<< orphan*/  httpJsonInt (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  httpJsonItemToken (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  httpJsonToken (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * httpMallocJsonBuf (int /*<<< orphan*/ *) ; 
+
+ int JsonArrEnd ;
+ int JsonArrStt ;
+ int httpJsonInt (int *,int) ;
+ int httpJsonItemToken (int *) ;
+ int httpJsonToken (int *,int ) ;
+ int * httpMallocJsonBuf (int *) ;
 
 void restBuildSqlAffectRowsJson(HttpContext *pContext, HttpSqlCmd *cmd, int affect_rows) {
   JsonBuf *jsonBuf = httpMallocJsonBuf(pContext);
-  if (jsonBuf == NULL) return;
+  if (jsonBuf == ((void*)0)) return;
 
-  // data row array begin
+
   httpJsonItemToken(jsonBuf);
   httpJsonToken(jsonBuf, JsonArrStt);
 
   httpJsonItemToken(jsonBuf);
   httpJsonInt(jsonBuf, affect_rows);
 
-  // data row array end
+
   httpJsonToken(jsonBuf, JsonArrEnd);
 
   cmd->numOfRows = affect_rows;

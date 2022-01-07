@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ vlc_tick_t ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ vlc_tick_t ;
 struct TYPE_3__ {double position; scalar_t__ time; scalar_t__ length; } ;
-struct TYPE_4__ {int /*<<< orphan*/  lock; TYPE_1__ stats; int /*<<< orphan*/  reader; int /*<<< orphan*/  out; int /*<<< orphan*/  name; } ;
-typedef  TYPE_2__ vlc_demux_chained_t ;
-typedef  int /*<<< orphan*/  demux_t ;
+struct TYPE_4__ {int lock; TYPE_1__ stats; int reader; int out; int name; } ;
+typedef TYPE_2__ vlc_demux_chained_t ;
+typedef int demux_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEMUX_GET_LENGTH ; 
- int /*<<< orphan*/  DEMUX_GET_POSITION ; 
- int /*<<< orphan*/  DEMUX_GET_TIME ; 
- int /*<<< orphan*/  DEMUX_SET_GROUP_ALL ; 
- int /*<<< orphan*/  UINT_MAX ; 
- int /*<<< orphan*/  VLC_OBJECT (int /*<<< orphan*/ ) ; 
- scalar_t__ VLC_TICK_FROM_MS (int) ; 
- scalar_t__ demux_Control (int /*<<< orphan*/ *,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  demux_Delete (int /*<<< orphan*/ *) ; 
- scalar_t__ demux_Demux (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * demux_New (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ demux_TestAndClearFlags (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vlc_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_stream_Delete (int /*<<< orphan*/ ) ; 
- scalar_t__ vlc_tick_now () ; 
+
+ int DEMUX_GET_LENGTH ;
+ int DEMUX_GET_POSITION ;
+ int DEMUX_GET_TIME ;
+ int DEMUX_SET_GROUP_ALL ;
+ int UINT_MAX ;
+ int VLC_OBJECT (int ) ;
+ scalar_t__ VLC_TICK_FROM_MS (int) ;
+ scalar_t__ demux_Control (int *,int ,...) ;
+ int demux_Delete (int *) ;
+ scalar_t__ demux_Demux (int *) ;
+ int * demux_New (int ,int ,int ,int ) ;
+ scalar_t__ demux_TestAndClearFlags (int *,int ) ;
+ int vlc_mutex_lock (int *) ;
+ int vlc_mutex_unlock (int *) ;
+ int vlc_stream_Delete (int ) ;
+ scalar_t__ vlc_tick_now () ;
 
 __attribute__((used)) static void *vlc_demux_chained_Thread(void *data)
 {
     vlc_demux_chained_t *dc = data;
     demux_t *demux = demux_New(VLC_OBJECT(dc->reader), dc->name, dc->reader,
                                dc->out);
-    if (demux == NULL)
+    if (demux == ((void*)0))
     {
         vlc_stream_Delete(dc->reader);
-        return NULL;
+        return ((void*)0);
     }
 
-    /* Stream FIFO cannot apply DVB filters.
-     * Get all programs and let the E/S output sort them out. */
+
+
     demux_Control(demux, DEMUX_SET_GROUP_ALL);
 
-    /* Main loop */
+
     vlc_tick_t next_update = 0;
 
     do
@@ -79,5 +79,5 @@ __attribute__((used)) static void *vlc_demux_chained_Thread(void *data)
     while (demux_Demux(demux) > 0);
 
     demux_Delete(demux);
-    return NULL;
+    return ((void*)0);
 }

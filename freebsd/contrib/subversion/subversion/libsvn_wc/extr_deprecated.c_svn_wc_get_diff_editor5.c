@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_wc_diff_callbacks3_t ;
-typedef  int /*<<< orphan*/  svn_wc_context_t ;
-typedef  int /*<<< orphan*/  svn_wc_adm_access_t ;
-typedef  int /*<<< orphan*/  svn_wc__db_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_depth_t ;
-typedef  int /*<<< orphan*/  svn_delta_editor_t ;
-typedef  int /*<<< orphan*/  svn_cancel_func_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-struct diff_callbacks3_wrapper_baton {int /*<<< orphan*/  anchor_abspath; int /*<<< orphan*/  anchor; int /*<<< orphan*/ * db; void* baton; int /*<<< orphan*/  const* callbacks3; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_array_header_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- struct diff_callbacks3_wrapper_baton* apr_palloc (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  diff_callbacks3_wrapper ; 
- int /*<<< orphan*/  svn_wc__adm_access_abspath (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_wc__adm_get_db (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__context_create_with_db (int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc_adm_access_path (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc_get_diff_editor6 (int /*<<< orphan*/  const**,void**,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,struct diff_callbacks3_wrapper_baton*,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int svn_wc_diff_callbacks3_t ;
+typedef int svn_wc_context_t ;
+typedef int svn_wc_adm_access_t ;
+typedef int svn_wc__db_t ;
+typedef int svn_error_t ;
+typedef int svn_depth_t ;
+typedef int svn_delta_editor_t ;
+typedef int svn_cancel_func_t ;
+typedef int svn_boolean_t ;
+struct diff_callbacks3_wrapper_baton {int anchor_abspath; int anchor; int * db; void* baton; int const* callbacks3; } ;
+typedef int apr_pool_t ;
+typedef int apr_array_header_t ;
+
+
+ int FALSE ;
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ struct diff_callbacks3_wrapper_baton* apr_palloc (int *,int) ;
+ int diff_callbacks3_wrapper ;
+ int svn_wc__adm_access_abspath (int *) ;
+ int * svn_wc__adm_get_db (int *) ;
+ int svn_wc__context_create_with_db (int **,int *,int *,int *) ;
+ int svn_wc_adm_access_path (int *) ;
+ int svn_wc_get_diff_editor6 (int const**,void**,int *,int ,char const*,int ,int ,int ,int ,int ,int ,int ,int const*,int *,struct diff_callbacks3_wrapper_baton*,int ,void*,int *,int *) ;
 
 svn_error_t *
 svn_wc_get_diff_editor5(svn_wc_adm_access_t *anchor,
@@ -55,7 +55,7 @@ svn_wc_get_diff_editor5(svn_wc_adm_access_t *anchor,
   svn_wc_context_t *wc_ctx;
   svn_wc__db_t *db = svn_wc__adm_get_db(anchor);
 
-  SVN_ERR(svn_wc__context_create_with_db(&wc_ctx, NULL, db, pool));
+  SVN_ERR(svn_wc__context_create_with_db(&wc_ctx, ((void*)0), db, pool));
 
   b->callbacks3 = callbacks;
   b->baton = callback_baton;
@@ -83,7 +83,7 @@ svn_wc_get_diff_editor5(svn_wc_adm_access_t *anchor,
                                    pool,
                                    pool));
 
-  /* Can't destroy wc_ctx. It is used by the diff editor */
+
 
    return SVN_NO_ERROR;
 }

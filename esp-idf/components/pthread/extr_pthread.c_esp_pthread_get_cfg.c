@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  esp_pthread_cfg_t ;
-typedef  int /*<<< orphan*/  esp_err_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ESP_ERR_NOT_FOUND ; 
- int /*<<< orphan*/  ESP_OK ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/ * pthread_getspecific (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  s_pthread_cfg_key ; 
+
+
+
+typedef int esp_pthread_cfg_t ;
+typedef int esp_err_t ;
+
+
+ int ESP_ERR_NOT_FOUND ;
+ int ESP_OK ;
+ int memset (int *,int ,int) ;
+ int * pthread_getspecific (int ) ;
+ int s_pthread_cfg_key ;
 
 esp_err_t esp_pthread_get_cfg(esp_pthread_cfg_t *p)
 {

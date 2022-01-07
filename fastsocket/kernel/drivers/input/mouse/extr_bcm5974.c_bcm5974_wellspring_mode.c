@@ -1,85 +1,85 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct bcm5974 {int /*<<< orphan*/  udev; } ;
 
-/* Variables and functions */
- char BCM5974_WELLSPRING_MODE_NORMAL_VALUE ; 
- int /*<<< orphan*/  BCM5974_WELLSPRING_MODE_READ_REQUEST_ID ; 
- int /*<<< orphan*/  BCM5974_WELLSPRING_MODE_REQUEST_INDEX ; 
- int /*<<< orphan*/  BCM5974_WELLSPRING_MODE_REQUEST_VALUE ; 
- char BCM5974_WELLSPRING_MODE_VENDOR_VALUE ; 
- int /*<<< orphan*/  BCM5974_WELLSPRING_MODE_WRITE_REQUEST_ID ; 
- int EIO ; 
- int ENOMEM ; 
- int /*<<< orphan*/  GFP_KERNEL ; 
- int USB_DIR_IN ; 
- int USB_DIR_OUT ; 
- int USB_RECIP_INTERFACE ; 
- int USB_TYPE_CLASS ; 
- int /*<<< orphan*/  dprintk (int,char*,char*) ; 
- int /*<<< orphan*/  err (char*) ; 
- int /*<<< orphan*/  kfree (char*) ; 
- char* kmalloc (int,int /*<<< orphan*/ ) ; 
- int usb_control_msg (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int,int) ; 
- int /*<<< orphan*/  usb_rcvctrlpipe (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  usb_sndctrlpipe (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct bcm5974 {int udev; } ;
+
+
+ char BCM5974_WELLSPRING_MODE_NORMAL_VALUE ;
+ int BCM5974_WELLSPRING_MODE_READ_REQUEST_ID ;
+ int BCM5974_WELLSPRING_MODE_REQUEST_INDEX ;
+ int BCM5974_WELLSPRING_MODE_REQUEST_VALUE ;
+ char BCM5974_WELLSPRING_MODE_VENDOR_VALUE ;
+ int BCM5974_WELLSPRING_MODE_WRITE_REQUEST_ID ;
+ int EIO ;
+ int ENOMEM ;
+ int GFP_KERNEL ;
+ int USB_DIR_IN ;
+ int USB_DIR_OUT ;
+ int USB_RECIP_INTERFACE ;
+ int USB_TYPE_CLASS ;
+ int dprintk (int,char*,char*) ;
+ int err (char*) ;
+ int kfree (char*) ;
+ char* kmalloc (int,int ) ;
+ int usb_control_msg (int ,int ,int ,int,int ,int ,char*,int,int) ;
+ int usb_rcvctrlpipe (int ,int ) ;
+ int usb_sndctrlpipe (int ,int ) ;
 
 __attribute__((used)) static int bcm5974_wellspring_mode(struct bcm5974 *dev, bool on)
 {
-	char *data = kmalloc(8, GFP_KERNEL);
-	int retval = 0, size;
+ char *data = kmalloc(8, GFP_KERNEL);
+ int retval = 0, size;
 
-	if (!data) {
-		err("bcm5974: out of memory");
-		retval = -ENOMEM;
-		goto out;
-	}
+ if (!data) {
+  err("bcm5974: out of memory");
+  retval = -ENOMEM;
+  goto out;
+ }
 
-	/* read configuration */
-	size = usb_control_msg(dev->udev, usb_rcvctrlpipe(dev->udev, 0),
-			BCM5974_WELLSPRING_MODE_READ_REQUEST_ID,
-			USB_DIR_IN | USB_TYPE_CLASS | USB_RECIP_INTERFACE,
-			BCM5974_WELLSPRING_MODE_REQUEST_VALUE,
-			BCM5974_WELLSPRING_MODE_REQUEST_INDEX, data, 8, 5000);
 
-	if (size != 8) {
-		err("bcm5974: could not read from device");
-		retval = -EIO;
-		goto out;
-	}
+ size = usb_control_msg(dev->udev, usb_rcvctrlpipe(dev->udev, 0),
+   BCM5974_WELLSPRING_MODE_READ_REQUEST_ID,
+   USB_DIR_IN | USB_TYPE_CLASS | USB_RECIP_INTERFACE,
+   BCM5974_WELLSPRING_MODE_REQUEST_VALUE,
+   BCM5974_WELLSPRING_MODE_REQUEST_INDEX, data, 8, 5000);
 
-	/* apply the mode switch */
-	data[0] = on ?
-		BCM5974_WELLSPRING_MODE_VENDOR_VALUE :
-		BCM5974_WELLSPRING_MODE_NORMAL_VALUE;
+ if (size != 8) {
+  err("bcm5974: could not read from device");
+  retval = -EIO;
+  goto out;
+ }
 
-	/* write configuration */
-	size = usb_control_msg(dev->udev, usb_sndctrlpipe(dev->udev, 0),
-			BCM5974_WELLSPRING_MODE_WRITE_REQUEST_ID,
-			USB_DIR_OUT | USB_TYPE_CLASS | USB_RECIP_INTERFACE,
-			BCM5974_WELLSPRING_MODE_REQUEST_VALUE,
-			BCM5974_WELLSPRING_MODE_REQUEST_INDEX, data, 8, 5000);
 
-	if (size != 8) {
-		err("bcm5974: could not write to device");
-		retval = -EIO;
-		goto out;
-	}
+ data[0] = on ?
+  BCM5974_WELLSPRING_MODE_VENDOR_VALUE :
+  BCM5974_WELLSPRING_MODE_NORMAL_VALUE;
 
-	dprintk(2, "bcm5974: switched to %s mode.\n",
-		on ? "wellspring" : "normal");
+
+ size = usb_control_msg(dev->udev, usb_sndctrlpipe(dev->udev, 0),
+   BCM5974_WELLSPRING_MODE_WRITE_REQUEST_ID,
+   USB_DIR_OUT | USB_TYPE_CLASS | USB_RECIP_INTERFACE,
+   BCM5974_WELLSPRING_MODE_REQUEST_VALUE,
+   BCM5974_WELLSPRING_MODE_REQUEST_INDEX, data, 8, 5000);
+
+ if (size != 8) {
+  err("bcm5974: could not write to device");
+  retval = -EIO;
+  goto out;
+ }
+
+ dprintk(2, "bcm5974: switched to %s mode.\n",
+  on ? "wellspring" : "normal");
 
  out:
-	kfree(data);
-	return retval;
+ kfree(data);
+ return retval;
 }

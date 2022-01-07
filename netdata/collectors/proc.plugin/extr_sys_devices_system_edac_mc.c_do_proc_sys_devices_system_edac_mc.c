@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  usec_t ;
-struct mc {int ce_updated; scalar_t__ ce_count; int ue_updated; scalar_t__ ue_count; void* ue_rd; int /*<<< orphan*/  name; scalar_t__ ue_count_filename; struct mc* next; void* ce_rd; scalar_t__ ce_count_filename; void* ue_ff; void* ce_ff; } ;
-typedef  scalar_t__ calculated_number ;
-typedef  int /*<<< orphan*/  RRDSET ;
 
-/* Variables and functions */
- int CONFIG_BOOLEAN_AUTO ; 
- int CONFIG_BOOLEAN_NO ; 
- int CONFIG_BOOLEAN_YES ; 
- int /*<<< orphan*/  NETDATA_CHART_PRIO_MEM_HW_ECC_CE ; 
- int /*<<< orphan*/  NETDATA_CHART_PRIO_MEM_HW_ECC_UE ; 
- int /*<<< orphan*/  PLUGIN_PROC_NAME ; 
- int /*<<< orphan*/  PROCFILE_FLAG_DEFAULT ; 
- int /*<<< orphan*/  RRDSET_TYPE_LINE ; 
- int /*<<< orphan*/  RRD_ALGORITHM_INCREMENTAL ; 
- int config_get_boolean_ondemand (char*,char*,int) ; 
- int /*<<< orphan*/  find_all_mc () ; 
- struct mc* mc_root ; 
- int netdata_zero_metrics_enabled ; 
- int procfile_lines (void*) ; 
- int /*<<< orphan*/  procfile_lineword (void*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int procfile_linewords (void*,int /*<<< orphan*/ ) ; 
- void* procfile_open (scalar_t__,char*,int /*<<< orphan*/ ) ; 
- void* procfile_readall (void*) ; 
- void* rrddim_add (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rrddim_set_by_pointer (int /*<<< orphan*/ *,void*,scalar_t__) ; 
- int /*<<< orphan*/ * rrdset_create_localhost (char*,char*,int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,char*,char*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rrdset_done (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  rrdset_next (int /*<<< orphan*/ *) ; 
- void* str2ull (int /*<<< orphan*/ ) ; 
- scalar_t__ unlikely (int) ; 
+
+
+
+typedef int usec_t ;
+struct mc {int ce_updated; scalar_t__ ce_count; int ue_updated; scalar_t__ ue_count; void* ue_rd; int name; scalar_t__ ue_count_filename; struct mc* next; void* ce_rd; scalar_t__ ce_count_filename; void* ue_ff; void* ce_ff; } ;
+typedef scalar_t__ calculated_number ;
+typedef int RRDSET ;
+
+
+ int CONFIG_BOOLEAN_AUTO ;
+ int CONFIG_BOOLEAN_NO ;
+ int CONFIG_BOOLEAN_YES ;
+ int NETDATA_CHART_PRIO_MEM_HW_ECC_CE ;
+ int NETDATA_CHART_PRIO_MEM_HW_ECC_UE ;
+ int PLUGIN_PROC_NAME ;
+ int PROCFILE_FLAG_DEFAULT ;
+ int RRDSET_TYPE_LINE ;
+ int RRD_ALGORITHM_INCREMENTAL ;
+ int config_get_boolean_ondemand (char*,char*,int) ;
+ int find_all_mc () ;
+ struct mc* mc_root ;
+ int netdata_zero_metrics_enabled ;
+ int procfile_lines (void*) ;
+ int procfile_lineword (void*,int ,int ) ;
+ int procfile_linewords (void*,int ) ;
+ void* procfile_open (scalar_t__,char*,int ) ;
+ void* procfile_readall (void*) ;
+ void* rrddim_add (int *,int ,int *,int,int,int ) ;
+ int rrddim_set_by_pointer (int *,void*,scalar_t__) ;
+ int * rrdset_create_localhost (char*,char*,int *,char*,int *,char*,char*,int ,char*,int ,int,int ) ;
+ int rrdset_done (int *) ;
+ int rrdset_next (int *) ;
+ void* str2ull (int ) ;
+ scalar_t__ unlikely (int) ;
 
 int do_proc_sys_devices_system_edac_mc(int update_every, usec_t dt) {
     (void)dt;
 
-    if(unlikely(mc_root == NULL)) {
+    if(unlikely(mc_root == ((void*)0))) {
         find_all_mc();
-        if(unlikely(mc_root == NULL))
+        if(unlikely(mc_root == ((void*)0)))
             return 1;
     }
 
@@ -104,21 +104,21 @@ int do_proc_sys_devices_system_edac_mc(int update_every, usec_t dt) {
         }
     }
 
-    // --------------------------------------------------------------------
+
 
     if(do_ce == CONFIG_BOOLEAN_YES || (do_ce == CONFIG_BOOLEAN_AUTO &&
                                        (ce_sum > 0 || netdata_zero_metrics_enabled == CONFIG_BOOLEAN_YES))) {
         do_ce = CONFIG_BOOLEAN_YES;
 
-        static RRDSET *ce_st = NULL;
+        static RRDSET *ce_st = ((void*)0);
 
         if(unlikely(!ce_st)) {
             ce_st = rrdset_create_localhost(
                     "mem"
                     , "ecc_ce"
-                    , NULL
+                    , ((void*)0)
                     , "ecc"
-                    , NULL
+                    , ((void*)0)
                     , "ECC Memory Correctable Errors"
                     , "errors"
                     , PLUGIN_PROC_NAME
@@ -134,7 +134,7 @@ int do_proc_sys_devices_system_edac_mc(int update_every, usec_t dt) {
         for(m = mc_root; m; m = m->next) {
             if (m->ce_count_filename && m->ce_updated) {
                 if(unlikely(!m->ce_rd))
-                    m->ce_rd = rrddim_add(ce_st, m->name, NULL, 1, 1, RRD_ALGORITHM_INCREMENTAL);
+                    m->ce_rd = rrddim_add(ce_st, m->name, ((void*)0), 1, 1, RRD_ALGORITHM_INCREMENTAL);
 
                 rrddim_set_by_pointer(ce_st, m->ce_rd, m->ce_count);
             }
@@ -143,21 +143,21 @@ int do_proc_sys_devices_system_edac_mc(int update_every, usec_t dt) {
         rrdset_done(ce_st);
     }
 
-    // --------------------------------------------------------------------
+
 
     if(do_ue == CONFIG_BOOLEAN_YES || (do_ue == CONFIG_BOOLEAN_AUTO &&
                                        (ue_sum > 0 || netdata_zero_metrics_enabled == CONFIG_BOOLEAN_YES))) {
         do_ue = CONFIG_BOOLEAN_YES;
 
-        static RRDSET *ue_st = NULL;
+        static RRDSET *ue_st = ((void*)0);
 
         if(unlikely(!ue_st)) {
             ue_st = rrdset_create_localhost(
                     "mem"
                     , "ecc_ue"
-                    , NULL
+                    , ((void*)0)
                     , "ecc"
-                    , NULL
+                    , ((void*)0)
                     , "ECC Memory Uncorrectable Errors"
                     , "errors"
                     , PLUGIN_PROC_NAME
@@ -173,7 +173,7 @@ int do_proc_sys_devices_system_edac_mc(int update_every, usec_t dt) {
         for(m = mc_root; m; m = m->next) {
             if (m->ue_count_filename && m->ue_updated) {
                 if(unlikely(!m->ue_rd))
-                    m->ue_rd = rrddim_add(ue_st, m->name, NULL, 1, 1, RRD_ALGORITHM_INCREMENTAL);
+                    m->ue_rd = rrddim_add(ue_st, m->name, ((void*)0), 1, 1, RRD_ALGORITHM_INCREMENTAL);
 
                 rrddim_set_by_pointer(ue_st, m->ue_rd, m->ue_count);
             }

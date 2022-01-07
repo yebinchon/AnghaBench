@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int ULONG ;
-typedef  int UINT ;
-struct TYPE_6__ {int biSize; int biWidth; int biHeight; int biPlanes; int biBitCount; int biXPelsPerMeter; int biYPelsPerMeter; int biClrUsed; scalar_t__ biClrImportant; scalar_t__ biSizeImage; int /*<<< orphan*/  biCompression; } ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int ULONG ;
+typedef int UINT ;
+struct TYPE_6__ {int biSize; int biWidth; int biHeight; int biPlanes; int biBitCount; int biXPelsPerMeter; int biYPelsPerMeter; int biClrUsed; scalar_t__ biClrImportant; scalar_t__ biSizeImage; int biCompression; } ;
 struct TYPE_7__ {TYPE_1__ bmiHeader; } ;
-typedef  int /*<<< orphan*/  RGBQUAD ;
-typedef  TYPE_2__* PVOID ;
-typedef  int /*<<< orphan*/  PBYTE ;
-typedef  scalar_t__ HDC ;
-typedef  scalar_t__ HBITMAP ;
-typedef  int /*<<< orphan*/  BITMAPINFOHEADER ;
-typedef  TYPE_2__ BITMAPINFO ;
+typedef int RGBQUAD ;
+typedef TYPE_2__* PVOID ;
+typedef int PBYTE ;
+typedef scalar_t__ HDC ;
+typedef scalar_t__ HBITMAP ;
+typedef int BITMAPINFOHEADER ;
+typedef TYPE_2__ BITMAPINFO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BI_RGB ; 
- scalar_t__ CreateBitmap (int,int,int,int,int /*<<< orphan*/ *) ; 
- scalar_t__ CreateCompatibleDC (int /*<<< orphan*/ ) ; 
- scalar_t__ CreateDIBSection (scalar_t__,TYPE_2__*,int /*<<< orphan*/ ,TYPE_2__**,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DIB_PAL_COLORS ; 
- int /*<<< orphan*/  DIB_RGB_COLORS ; 
- int /*<<< orphan*/  DeleteObject (scalar_t__) ; 
- int GetDIBColorTable (scalar_t__,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GetLastError () ; 
- scalar_t__ GetStockObject (int) ; 
- scalar_t__ SelectObject (scalar_t__,scalar_t__) ; 
- int SetDIBColorTable (scalar_t__,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SetLastError (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  ok_err (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ok_long (int,int) ; 
+
+ int BI_RGB ;
+ scalar_t__ CreateBitmap (int,int,int,int,int *) ;
+ scalar_t__ CreateCompatibleDC (int ) ;
+ scalar_t__ CreateDIBSection (scalar_t__,TYPE_2__*,int ,TYPE_2__**,int ,int ) ;
+ int DIB_PAL_COLORS ;
+ int DIB_RGB_COLORS ;
+ int DeleteObject (scalar_t__) ;
+ int GetDIBColorTable (scalar_t__,int ,int,int *) ;
+ int GetLastError () ;
+ scalar_t__ GetStockObject (int) ;
+ scalar_t__ SelectObject (scalar_t__,scalar_t__) ;
+ int SetDIBColorTable (scalar_t__,int ,int,int *) ;
+ int SetLastError (int ) ;
+ int ok (int,char*,...) ;
+ int ok_err (int ) ;
+ int ok_long (int,int) ;
 
 void Test_GetDIBColorTable()
 {
@@ -66,7 +66,7 @@ void Test_GetDIBColorTable()
     ok_long(aulColors[0], 0x000000);
     ok_long(aulColors[1], 0xffffff);
 
-    hbmp = CreateBitmap(1, 1, 1, 1, NULL);
+    hbmp = CreateBitmap(1, 1, 1, 1, ((void*)0));
     ok(hbmp != 0, "\n");
     hbmpOld = SelectObject(hdc, hbmp);
     ok(hbmpOld != 0, "Failed to select bitmap\n");
@@ -78,7 +78,7 @@ void Test_GetDIBColorTable()
     SelectObject(hdc, hbmpOld);
     DeleteObject(hbmp);
 
-    /* Initialize a BITMAPINFO */
+
     pbmi->bmiHeader.biSize = sizeof(BITMAPINFOHEADER);
     pbmi->bmiHeader.biWidth = 2;
     pbmi->bmiHeader.biHeight = 2;
@@ -95,7 +95,7 @@ void Test_GetDIBColorTable()
     bmibuffer.bmiColors[2] = 0x0000ff;
 
     hbmp = CreateDIBSection(hdc, pbmi, DIB_RGB_COLORS, (PVOID*)&pjBits, 0, 0 );
-    ok( hbmp != NULL, "error=%ld\n", GetLastError() );
+    ok( hbmp != ((void*)0), "error=%ld\n", GetLastError() );
     SelectObject(hdc, hbmp);
 
     cColors = GetDIBColorTable(hdc, 0, 257, (RGBQUAD*)aulColors);
@@ -129,7 +129,7 @@ void Test_GetDIBColorTable()
     bmibuffer.bmiColors[2] = 3;
 
     hbmp = CreateDIBSection(hdc, pbmi, DIB_PAL_COLORS, (PVOID*)&pjBits, 0, 0 );
-    ok( hbmp != NULL, "error=%ld\n", GetLastError() );
+    ok( hbmp != ((void*)0), "error=%ld\n", GetLastError() );
     SelectObject(hdc, hbmp);
 
 

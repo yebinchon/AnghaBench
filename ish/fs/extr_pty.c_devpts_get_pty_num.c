@@ -1,36 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- long INT_MAX ; 
- int _ENOENT ; 
- long atol (char const*) ; 
- int /*<<< orphan*/  devpts_pty_exists (int) ; 
- int /*<<< orphan*/  isdigits (char const*) ; 
- int /*<<< orphan*/ * strchr (char const*,char) ; 
- scalar_t__ strcmp (char const*,char*) ; 
+ long INT_MAX ;
+ int _ENOENT ;
+ long atol (char const*) ;
+ int devpts_pty_exists (int) ;
+ int isdigits (char const*) ;
+ int * strchr (char const*,char) ;
+ scalar_t__ strcmp (char const*,char*) ;
 
 __attribute__((used)) static int devpts_get_pty_num(const char *path) {
     if (strcmp(path, "") == 0)
-        return -1; // root
-    if (path[0] != '/' || path[1] == '\0' || strchr(path + 1, '/') != NULL)
+        return -1;
+    if (path[0] != '/' || path[1] == '\0' || strchr(path + 1, '/') != ((void*)0))
         return _ENOENT;
 
-    // there's one path component here, which had better be a pty number
-    const char *name = path + 1; // skip the initial /
+
+    const char *name = path + 1;
     if (!isdigits(name))
         return _ENOENT;
-    // it's not possible to correctly use atoi
+
     long pty_long = atol(name);
     if (pty_long > INT_MAX)
         return _ENOENT;

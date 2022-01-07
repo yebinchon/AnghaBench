@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  scalar_t__ DWORD ;
 
-/* Variables and functions */
- scalar_t__ ARRAY_SIZE (char*) ; 
- scalar_t__ DsClientMakeSpnForTargetServerW (char const*,char const*,scalar_t__*,char*) ; 
- scalar_t__ ERROR_BUFFER_OVERFLOW ; 
- scalar_t__ ERROR_INVALID_PARAMETER ; 
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  lstrcmpW (char*,char const*) ; 
- scalar_t__ lstrlenW (char const*) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
+
+
+
+typedef char WCHAR ;
+typedef scalar_t__ DWORD ;
+
+
+ scalar_t__ ARRAY_SIZE (char*) ;
+ scalar_t__ DsClientMakeSpnForTargetServerW (char const*,char const*,scalar_t__*,char*) ;
+ scalar_t__ ERROR_BUFFER_OVERFLOW ;
+ scalar_t__ ERROR_INVALID_PARAMETER ;
+ scalar_t__ ERROR_SUCCESS ;
+ int lstrcmpW (char*,char const*) ;
+ scalar_t__ lstrlenW (char const*) ;
+ int ok (int,char*,...) ;
 
 __attribute__((used)) static void test_DsClientMakeSpnForTargetServer(void)
 {
@@ -31,17 +31,17 @@ __attribute__((used)) static void test_DsClientMakeSpnForTargetServer(void)
     DWORD ret, len;
     WCHAR buf[256];
 
-    ret = DsClientMakeSpnForTargetServerW( NULL, NULL, NULL, NULL );
+    ret = DsClientMakeSpnForTargetServerW( ((void*)0), ((void*)0), ((void*)0), ((void*)0) );
     ok( ret == ERROR_INVALID_PARAMETER, "got %u\n", ret );
 
-    ret = DsClientMakeSpnForTargetServerW( classW, NULL, NULL, NULL );
+    ret = DsClientMakeSpnForTargetServerW( classW, ((void*)0), ((void*)0), ((void*)0) );
     ok( ret == ERROR_INVALID_PARAMETER, "got %u\n", ret );
 
-    ret = DsClientMakeSpnForTargetServerW( classW, hostW, NULL, NULL );
+    ret = DsClientMakeSpnForTargetServerW( classW, hostW, ((void*)0), ((void*)0) );
     ok( ret == ERROR_INVALID_PARAMETER, "got %u\n", ret );
 
     len = 0;
-    ret = DsClientMakeSpnForTargetServerW( classW, hostW, &len, NULL );
+    ret = DsClientMakeSpnForTargetServerW( classW, hostW, &len, ((void*)0) );
     ok( ret == ERROR_BUFFER_OVERFLOW, "got %u\n", ret );
     ok( len == lstrlenW(resultW) + 1, "got %u\n", len );
 

@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  VARIANT ;
-typedef  int /*<<< orphan*/  UINT ;
-typedef  int /*<<< orphan*/  SERVICE_STATUS ;
-typedef  int /*<<< orphan*/ * SC_HANDLE ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CloseServiceHandle (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ControlService (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GetLastError () ; 
- int /*<<< orphan*/ * OpenSCManagerW (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * OpenServiceW (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int) ; 
- int /*<<< orphan*/  SC_MANAGER_ENUMERATE_SERVICE ; 
- int SERVICE_PAUSE_CONTINUE ; 
- int SERVICE_START ; 
- int SERVICE_STOP ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  VT_UI4 ; 
- int /*<<< orphan*/  map_error (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_variant (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int WCHAR ;
+typedef int VARIANT ;
+typedef int UINT ;
+typedef int SERVICE_STATUS ;
+typedef int * SC_HANDLE ;
+typedef int HRESULT ;
+typedef int DWORD ;
+
+
+ int CloseServiceHandle (int *) ;
+ int ControlService (int *,int ,int *) ;
+ int GetLastError () ;
+ int * OpenSCManagerW (int *,int *,int ) ;
+ int * OpenServiceW (int *,int const*,int) ;
+ int SC_MANAGER_ENUMERATE_SERVICE ;
+ int SERVICE_PAUSE_CONTINUE ;
+ int SERVICE_START ;
+ int SERVICE_STOP ;
+ int S_OK ;
+ int VT_UI4 ;
+ int map_error (int ) ;
+ int set_variant (int ,int ,int *,int *) ;
 
 __attribute__((used)) static HRESULT control_service( const WCHAR *name, DWORD control, VARIANT *retval )
 {
-    SC_HANDLE manager, service = NULL;
+    SC_HANDLE manager, service = ((void*)0);
     SERVICE_STATUS status;
     UINT error = 0;
 
-    if (!(manager = OpenSCManagerW( NULL, NULL, SC_MANAGER_ENUMERATE_SERVICE )))
+    if (!(manager = OpenSCManagerW( ((void*)0), ((void*)0), SC_MANAGER_ENUMERATE_SERVICE )))
     {
         error = map_error( GetLastError() );
         goto done;
@@ -53,7 +53,7 @@ __attribute__((used)) static HRESULT control_service( const WCHAR *name, DWORD c
     CloseServiceHandle( service );
 
 done:
-    set_variant( VT_UI4, error, NULL, retval );
+    set_variant( VT_UI4, error, ((void*)0), retval );
     if (manager) CloseServiceHandle( manager );
     return S_OK;
 }

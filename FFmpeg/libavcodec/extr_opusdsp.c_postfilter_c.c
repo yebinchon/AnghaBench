@@ -1,18 +1,9 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
-
 __attribute__((used)) static void postfilter_c(float *data, int period, float *gains, int len)
 {
     const float g0 = gains[0];
@@ -26,7 +17,7 @@ __attribute__((used)) static void postfilter_c(float *data, int period, float *g
 
     for (int i = 0; i < len; i++) {
         float x0 = data[i - period + 2];
-        data[i] += g0 * x2        +
+        data[i] += g0 * x2 +
                    g1 * (x1 + x3) +
                    g2 * (x0 + x4);
         x4 = x3;

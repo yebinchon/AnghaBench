@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  acpi_status ;
-typedef  int /*<<< orphan*/ * acpi_handle ;
 
-/* Variables and functions */
- scalar_t__ ACPI_SUCCESS (int /*<<< orphan*/ ) ; 
- int ENODEV ; 
- int /*<<< orphan*/  acpi_get_handle (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ **) ; 
+
+
+
+typedef int acpi_status ;
+typedef int * acpi_handle ;
+
+
+ scalar_t__ ACPI_SUCCESS (int ) ;
+ int ENODEV ;
+ int acpi_get_handle (int *,char*,int **) ;
 
 __attribute__((used)) static int asus_handle_init(char *name, acpi_handle * handle,
-			    char **paths, int num_paths)
+       char **paths, int num_paths)
 {
-	int i;
-	acpi_status status;
+ int i;
+ acpi_status status;
 
-	for (i = 0; i < num_paths; i++) {
-		status = acpi_get_handle(NULL, paths[i], handle);
-		if (ACPI_SUCCESS(status))
-			return 0;
-	}
+ for (i = 0; i < num_paths; i++) {
+  status = acpi_get_handle(((void*)0), paths[i], handle);
+  if (ACPI_SUCCESS(status))
+   return 0;
+ }
 
-	*handle = NULL;
-	return -ENODEV;
+ *handle = ((void*)0);
+ return -ENODEV;
 }

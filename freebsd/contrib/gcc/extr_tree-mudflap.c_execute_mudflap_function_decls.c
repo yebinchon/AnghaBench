@@ -1,31 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  DECL_ARGUMENTS (int /*<<< orphan*/ ) ; 
- scalar_t__ DECL_ARTIFICIAL (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DECL_SAVED_TREE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  current_function_decl ; 
- scalar_t__ mf_marked_p (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mf_xform_decls (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pop_gimplify_context (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  push_gimplify_context () ; 
+ int DECL_ARGUMENTS (int ) ;
+ scalar_t__ DECL_ARTIFICIAL (int ) ;
+ int DECL_SAVED_TREE (int ) ;
+ int current_function_decl ;
+ scalar_t__ mf_marked_p (int ) ;
+ int mf_xform_decls (int ,int ) ;
+ int pop_gimplify_context (int *) ;
+ int push_gimplify_context () ;
 
 __attribute__((used)) static unsigned int
 execute_mudflap_function_decls (void)
 {
-  /* Don't instrument functions such as the synthetic constructor
-     built during mudflap_finish_file.  */
+
+
   if (mf_marked_p (current_function_decl) ||
       DECL_ARTIFICIAL (current_function_decl))
     return 0;
@@ -35,6 +27,6 @@ execute_mudflap_function_decls (void)
   mf_xform_decls (DECL_SAVED_TREE (current_function_decl),
                   DECL_ARGUMENTS (current_function_decl));
 
-  pop_gimplify_context (NULL);
+  pop_gimplify_context (((void*)0));
   return 0;
 }

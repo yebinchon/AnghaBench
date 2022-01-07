@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct cpumask {int dummy; } ;
 struct acpi_cpufreq_data {int dummy; } ;
 
-/* Variables and functions */
- unsigned int extract_freq (int /*<<< orphan*/ ,struct acpi_cpufreq_data*) ; 
- int /*<<< orphan*/  get_cur_val (struct cpumask const*) ; 
- int /*<<< orphan*/  udelay (int) ; 
+
+ unsigned int extract_freq (int ,struct acpi_cpufreq_data*) ;
+ int get_cur_val (struct cpumask const*) ;
+ int udelay (int) ;
 
 __attribute__((used)) static unsigned int check_freqs(const struct cpumask *mask, unsigned int freq,
-				struct acpi_cpufreq_data *data)
+    struct acpi_cpufreq_data *data)
 {
-	unsigned int cur_freq;
-	unsigned int i;
+ unsigned int cur_freq;
+ unsigned int i;
 
-	for (i = 0; i < 100; i++) {
-		cur_freq = extract_freq(get_cur_val(mask), data);
-		if (cur_freq == freq)
-			return 1;
-		udelay(10);
-	}
-	return 0;
+ for (i = 0; i < 100; i++) {
+  cur_freq = extract_freq(get_cur_val(mask), data);
+  if (cur_freq == freq)
+   return 1;
+  udelay(10);
+ }
+ return 0;
 }

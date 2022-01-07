@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ahc_pci_identity {int /*<<< orphan*/  name; } ;
-typedef  int /*<<< orphan*/  device_t ;
 
-/* Variables and functions */
- int BUS_PROBE_DEFAULT ; 
- int ENXIO ; 
- struct ahc_pci_identity* ahc_find_pci_device (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  device_set_desc (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct ahc_pci_identity {int name; } ;
+typedef int device_t ;
+
+
+ int BUS_PROBE_DEFAULT ;
+ int ENXIO ;
+ struct ahc_pci_identity* ahc_find_pci_device (int ) ;
+ int device_set_desc (int ,int ) ;
 
 __attribute__((used)) static int
 ahc_pci_probe(device_t dev)
 {
-	struct	ahc_pci_identity *entry;
+ struct ahc_pci_identity *entry;
 
-	entry = ahc_find_pci_device(dev);
-	if (entry != NULL) {
-		device_set_desc(dev, entry->name);
-		return (BUS_PROBE_DEFAULT);
-	}
-	return (ENXIO);
+ entry = ahc_find_pci_device(dev);
+ if (entry != ((void*)0)) {
+  device_set_desc(dev, entry->name);
+  return (BUS_PROBE_DEFAULT);
+ }
+ return (ENXIO);
 }

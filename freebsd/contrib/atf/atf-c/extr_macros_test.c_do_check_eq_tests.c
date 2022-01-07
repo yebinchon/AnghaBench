@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct check_eq_test {char* v1; char* v2; int /*<<< orphan*/  msg; scalar_t__ ok; int /*<<< orphan*/  body; int /*<<< orphan*/ * head; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ATF_CHECK (int) ; 
- int /*<<< orphan*/  ATF_REQUIRE (int) ; 
- int atf_utils_grep_file (char*,char*,...) ; 
- int exists (char*) ; 
- int /*<<< orphan*/  init_and_run_h_tc (char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printf (char*,char*,char*,char*) ; 
- int unlink (char*) ; 
+
+
+
+struct check_eq_test {char* v1; char* v2; int msg; scalar_t__ ok; int body; int * head; } ;
+
+
+ int ATF_CHECK (int) ;
+ int ATF_REQUIRE (int) ;
+ int atf_utils_grep_file (char*,char*,...) ;
+ int exists (char*) ;
+ int init_and_run_h_tc (char*,int *,int ) ;
+ int printf (char*,char*,char*,char*) ;
+ int unlink (char*) ;
 
 __attribute__((used)) static
 void
@@ -27,7 +27,7 @@ do_check_eq_tests(const struct check_eq_test *tests)
 {
     const struct check_eq_test *t;
 
-    for (t = &tests[0]; t->head != NULL; t++) {
+    for (t = &tests[0]; t->head != ((void*)0); t++) {
         printf("Checking with %s, %s and expecting %s\n", t->v1, t->v2,
                t->ok ? "true" : "false");
 

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {scalar_t__ currentIndex; int /*<<< orphan*/ * currentProperty; int /*<<< orphan*/  entry; } ;
-typedef  TYPE_1__* DTPropertyIterator ;
-typedef  int /*<<< orphan*/  DTEntry ;
 
-/* Variables and functions */
- int kSuccess ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {scalar_t__ currentIndex; int * currentProperty; int entry; } ;
+typedef TYPE_1__* DTPropertyIterator ;
+typedef int DTEntry ;
+
+
+ int kSuccess ;
 
 int
 DTInitPropertyIterator(const DTEntry entry, DTPropertyIterator iter)
 {
 
-	iter->entry = entry;
-	iter->currentProperty = NULL;
-	iter->currentIndex = 0;
-	return kSuccess;
+ iter->entry = entry;
+ iter->currentProperty = ((void*)0);
+ iter->currentIndex = 0;
+ return kSuccess;
 }

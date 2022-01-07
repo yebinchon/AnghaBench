@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  RDebug ;
 
-/* Variables and functions */
- int /*<<< orphan*/  is_io_bf (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int RDebug ;
+
+
+ int is_io_bf (int *) ;
 
 __attribute__((used)) static int r_debug_bf_attach(RDebug *dbg, int pid) {
-	if (!is_io_bf (dbg)) {
-		return false;
-	}
-	return true;
+ if (!is_io_bf (dbg)) {
+  return 0;
+ }
+ return 1;
 }

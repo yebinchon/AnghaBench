@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct bundle {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLOSE_STAYDOWN ; 
- int /*<<< orphan*/  LogPHASE ; 
- int /*<<< orphan*/  bundle_Close (struct bundle*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bundle_StopSessionTimer (struct bundle*) ; 
- int /*<<< orphan*/  log_Printf (int /*<<< orphan*/ ,char*) ; 
+
+ int CLOSE_STAYDOWN ;
+ int LogPHASE ;
+ int bundle_Close (struct bundle*,int *,int ) ;
+ int bundle_StopSessionTimer (struct bundle*) ;
+ int log_Printf (int ,char*) ;
 
 __attribute__((used)) static void
 bundle_SessionTimeout(void *v)
@@ -26,5 +26,5 @@ bundle_SessionTimeout(void *v)
 
   log_Printf(LogPHASE, "Session-Timeout timer expired\n");
   bundle_StopSessionTimer(bundle);
-  bundle_Close(bundle, NULL, CLOSE_STAYDOWN);
+  bundle_Close(bundle, ((void*)0), CLOSE_STAYDOWN);
 }

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct connection {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  clear_query_list () ; 
- scalar_t__ compile_add_query (char**) ; 
- int /*<<< orphan*/  complete_long_query (struct connection*,int) ; 
- scalar_t__ load_temp_data (struct connection*) ; 
- scalar_t__ parse_search_extras (char const*) ; 
- int /*<<< orphan*/  parse_search_query_termination (char*) ; 
- int /*<<< orphan*/  register_long_query (char const*,int) ; 
- int /*<<< orphan*/  return_one_key (struct connection*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sprintf (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  stats_buff ; 
- scalar_t__ strtol (char*,char**,int) ; 
- scalar_t__ tag_id ; 
- char* value_buff ; 
+
+ int clear_query_list () ;
+ scalar_t__ compile_add_query (char**) ;
+ int complete_long_query (struct connection*,int) ;
+ scalar_t__ load_temp_data (struct connection*) ;
+ scalar_t__ parse_search_extras (char const*) ;
+ int parse_search_query_termination (char*) ;
+ int register_long_query (char const*,int) ;
+ int return_one_key (struct connection*,char const*,int ,int ) ;
+ int sprintf (int ,char*,char*) ;
+ int stats_buff ;
+ scalar_t__ strtol (char*,char**,int) ;
+ scalar_t__ tag_id ;
+ char* value_buff ;
 
 int prepare_multiple_query_query (struct connection *c, const char *start, const char *key, int key_len) {
   char *cur = (char *) parse_search_extras (start), *q_ptr, *q_start = cur + 1;

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct cmdargs {int argn; int argc; int /*<<< orphan*/ * argv; } ;
 
-/* Variables and functions */
- int LINE_LEN ; 
- int LibAliasProxyRule (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  la ; 
- int /*<<< orphan*/  strcpy (char*,int /*<<< orphan*/ ) ; 
- size_t strlen (int /*<<< orphan*/ ) ; 
+
+
+
+struct cmdargs {int argn; int argc; int * argv; } ;
+
+
+ int LINE_LEN ;
+ int LibAliasProxyRule (int ,char*) ;
+ int la ;
+ int strcpy (char*,int ) ;
+ size_t strlen (int ) ;
 
 int
 nat_ProxyRule(struct cmdargs const *arg)

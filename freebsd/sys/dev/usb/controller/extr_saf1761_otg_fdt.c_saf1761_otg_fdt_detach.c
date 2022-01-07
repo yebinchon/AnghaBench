@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct saf1761_otg_softc {int /*<<< orphan*/  sc_bus; int /*<<< orphan*/ * sc_io_res; int /*<<< orphan*/ * sc_irq_res; int /*<<< orphan*/ * sc_intr_hdl; } ;
-typedef  int /*<<< orphan*/  device_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SYS_RES_IRQ ; 
- int /*<<< orphan*/  SYS_RES_MEMORY ; 
- int /*<<< orphan*/  bus_release_resource (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int bus_teardown_intr (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  device_delete_children (int /*<<< orphan*/ ) ; 
- struct saf1761_otg_softc* device_get_softc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  saf1761_otg_uninit (struct saf1761_otg_softc*) ; 
- int /*<<< orphan*/  usb_bus_mem_free_all (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+struct saf1761_otg_softc {int sc_bus; int * sc_io_res; int * sc_irq_res; int * sc_intr_hdl; } ;
+typedef int device_t ;
+
+
+ int SYS_RES_IRQ ;
+ int SYS_RES_MEMORY ;
+ int bus_release_resource (int ,int ,int ,int *) ;
+ int bus_teardown_intr (int ,int *,int *) ;
+ int device_delete_children (int ) ;
+ struct saf1761_otg_softc* device_get_softc (int ) ;
+ int saf1761_otg_uninit (struct saf1761_otg_softc*) ;
+ int usb_bus_mem_free_all (int *,int *) ;
 
 __attribute__((used)) static int
 saf1761_otg_fdt_detach(device_t dev)
 {
-	struct saf1761_otg_softc *sc = device_get_softc(dev);
-	int err;
+ struct saf1761_otg_softc *sc = device_get_softc(dev);
+ int err;
 
-	/* during module unload there are lots of children leftover */
-	device_delete_children(dev);
 
-	if (sc->sc_irq_res && sc->sc_intr_hdl) {
-		/*
-		 * Only call uninit() after init()
-		 */
-		saf1761_otg_uninit(sc);
+ device_delete_children(dev);
 
-		err = bus_teardown_intr(dev, sc->sc_irq_res,
-		    sc->sc_intr_hdl);
-		sc->sc_intr_hdl = NULL;
-	}
-	if (sc->sc_irq_res) {
-		bus_release_resource(dev, SYS_RES_IRQ, 0,
-		    sc->sc_irq_res);
-		sc->sc_irq_res = NULL;
-	}
-	if (sc->sc_io_res) {
-		bus_release_resource(dev, SYS_RES_MEMORY, 0,
-		    sc->sc_io_res);
-		sc->sc_io_res = NULL;
-	}
-	usb_bus_mem_free_all(&sc->sc_bus, NULL);
+ if (sc->sc_irq_res && sc->sc_intr_hdl) {
 
-	return (0);
+
+
+  saf1761_otg_uninit(sc);
+
+  err = bus_teardown_intr(dev, sc->sc_irq_res,
+      sc->sc_intr_hdl);
+  sc->sc_intr_hdl = ((void*)0);
+ }
+ if (sc->sc_irq_res) {
+  bus_release_resource(dev, SYS_RES_IRQ, 0,
+      sc->sc_irq_res);
+  sc->sc_irq_res = ((void*)0);
+ }
+ if (sc->sc_io_res) {
+  bus_release_resource(dev, SYS_RES_MEMORY, 0,
+      sc->sc_io_res);
+  sc->sc_io_res = ((void*)0);
+ }
+ usb_bus_mem_free_all(&sc->sc_bus, ((void*)0));
+
+ return (0);
 }

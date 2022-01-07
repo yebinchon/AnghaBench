@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct httpd_req_aux {int remaining_len; } ;
 struct TYPE_5__ {struct httpd_req_aux* aux; } ;
-typedef  TYPE_1__ httpd_req_t ;
+typedef TYPE_1__ httpd_req_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ESP_LOGD (int /*<<< orphan*/ ,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  ESP_LOGW (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int HTTPD_SOCK_ERR_INVALID ; 
- int /*<<< orphan*/  LOG_FMT (char*) ; 
- int /*<<< orphan*/  TAG ; 
- int httpd_recv (TYPE_1__*,char*,size_t) ; 
- int /*<<< orphan*/  httpd_valid_req (TYPE_1__*) ; 
+
+ int ESP_LOGD (int ,int ,...) ;
+ int ESP_LOGW (int ,int ) ;
+ int HTTPD_SOCK_ERR_INVALID ;
+ int LOG_FMT (char*) ;
+ int TAG ;
+ int httpd_recv (TYPE_1__*,char*,size_t) ;
+ int httpd_valid_req (TYPE_1__*) ;
 
 int httpd_req_recv(httpd_req_t *r, char *buf, size_t buf_len)
 {
-    if (r == NULL || buf == NULL) {
+    if (r == ((void*)0) || buf == ((void*)0)) {
         return HTTPD_SOCK_ERR_INVALID;
     }
 

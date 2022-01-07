@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct value {int dummy; } ;
-typedef  int /*<<< orphan*/  CORE_ADDR ;
+typedef int CORE_ADDR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TYPE_FIELD_TYPE (int /*<<< orphan*/ ,int) ; 
- int TYPE_NFIELDS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  VALUE_TYPE (struct value*) ; 
- struct value* convert_actual (struct value*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int TYPE_FIELD_TYPE (int ,int) ;
+ int TYPE_NFIELDS (int ) ;
+ int VALUE_TYPE (struct value*) ;
+ struct value* convert_actual (struct value*,int ,int *) ;
 
 void
 ada_convert_actuals (struct value *func, int nargs, struct value *args[],
-		     CORE_ADDR *sp)
+       CORE_ADDR *sp)
 {
   int i;
 

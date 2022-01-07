@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
 struct TYPE_6__ {scalar_t__ width; scalar_t__ height; int* argb; int argb_stride; } ;
-typedef  TYPE_1__ WebPPicture ;
+typedef TYPE_1__ WebPPicture ;
 struct TYPE_7__ {scalar_t__ x_offset_; scalar_t__ width_; scalar_t__ y_offset_; scalar_t__ height_; } ;
-typedef  TYPE_2__ FrameRectangle ;
+typedef TYPE_2__ FrameRectangle ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
+
+ int assert (int) ;
 
 __attribute__((used)) static int IsLosslessBlendingPossible(const WebPPicture* const src,
                                       const WebPPicture* const dst,
@@ -34,8 +34,8 @@ __attribute__((used)) static int IsLosslessBlendingPossible(const WebPPicture* c
       const uint32_t dst_pixel = dst->argb[j * dst->argb_stride + i];
       const uint32_t dst_alpha = dst_pixel >> 24;
       if (dst_alpha != 0xff && src_pixel != dst_pixel) {
-        // In this case, if we use blending, we can't attain the desired
-        // 'dst_pixel' value for this pixel. So, blending is not possible.
+
+
         return 0;
       }
     }

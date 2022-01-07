@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  nsAString ;
-typedef  char WCHAR ;
-struct TYPE_9__ {int /*<<< orphan*/  IHTMLWindow2_iface; } ;
+
+
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int nsAString ;
+typedef char WCHAR ;
+struct TYPE_9__ {int IHTMLWindow2_iface; } ;
 struct TYPE_10__ {TYPE_1__ base; struct TYPE_10__* parent; } ;
-typedef  int /*<<< orphan*/  PRUnichar ;
-typedef  TYPE_2__ HTMLOuterWindow ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef int PRUnichar ;
+typedef TYPE_2__ HTMLOuterWindow ;
+typedef int HRESULT ;
+typedef int BOOL ;
 
-/* Variables and functions */
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  IHTMLWindow2_AddRef (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  WARN (char*) ; 
- int /*<<< orphan*/  debugstr_w (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  get_frame_by_name (TYPE_2__*,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,TYPE_2__**) ; 
- int /*<<< orphan*/  get_top_window (TYPE_2__*,TYPE_2__**) ; 
- int /*<<< orphan*/  nsAString_GetData (int /*<<< orphan*/ *,int /*<<< orphan*/  const**) ; 
- int /*<<< orphan*/  strcmpiW (int /*<<< orphan*/  const*,char const*) ; 
+
+ scalar_t__ FAILED (int ) ;
+ int FALSE ;
+ int IHTMLWindow2_AddRef (int *) ;
+ int TRACE (char*,int ) ;
+ int TRUE ;
+ int WARN (char*) ;
+ int debugstr_w (int const*) ;
+ int get_frame_by_name (TYPE_2__*,int const*,int ,TYPE_2__**) ;
+ int get_top_window (TYPE_2__*,TYPE_2__**) ;
+ int nsAString_GetData (int *,int const**) ;
+ int strcmpiW (int const*,char const*) ;
 
 HTMLOuterWindow *get_target_window(HTMLOuterWindow *window, nsAString *target_str, BOOL *use_new_window)
 {
@@ -76,7 +76,7 @@ HTMLOuterWindow *get_target_window(HTMLOuterWindow *window, nsAString *target_st
     hres = get_frame_by_name(top_window, target, TRUE, &ret_window);
     if(FAILED(hres) || !ret_window) {
         *use_new_window = TRUE;
-        return NULL;
+        return ((void*)0);
     }
 
     IHTMLWindow2_AddRef(&ret_window->base.IHTMLWindow2_iface);

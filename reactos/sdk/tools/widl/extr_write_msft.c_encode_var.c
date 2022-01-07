@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_23__   TYPE_3__ ;
-typedef  struct TYPE_22__   TYPE_2__ ;
-typedef  struct TYPE_21__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  var_t ;
+
+
+typedef struct TYPE_23__ TYPE_3__ ;
+typedef struct TYPE_22__ TYPE_2__ ;
+typedef struct TYPE_21__ TYPE_1__ ;
+
+
+typedef int var_t ;
 struct TYPE_22__ {char* name; } ;
-typedef  TYPE_2__ type_t ;
-struct TYPE_23__ {int /*<<< orphan*/ ** typelib_segment_data; TYPE_1__* typelib_segdir; } ;
-typedef  TYPE_3__ msft_typelib_t ;
+typedef TYPE_2__ type_t ;
+struct TYPE_23__ {int ** typelib_segment_data; TYPE_1__* typelib_segdir; } ;
+typedef TYPE_3__ msft_typelib_t ;
 struct TYPE_21__ {int length; } ;
 
-/* Variables and functions */
- size_t MSFT_SEG_ARRAYDESC ; 
- size_t MSFT_SEG_TYPEDESC ; 
- int VT_ARRAY ; 
- int VT_BYREF ; 
- int VT_CARRAY ; 
- int VT_DISPATCH ; 
- int VT_PTR ; 
- scalar_t__ VT_SAFEARRAY ; 
- int VT_UNKNOWN ; 
- int /*<<< orphan*/  chat (char*,...) ; 
- int ctl2_alloc_segment (TYPE_3__*,size_t,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dump_type (TYPE_2__*) ; 
- int /*<<< orphan*/  encode_type (TYPE_3__*,int,TYPE_2__*,int*,int*) ; 
- int get_type_vt (TYPE_2__*) ; 
- scalar_t__ is_array (TYPE_2__*) ; 
- scalar_t__ is_ptr (TYPE_2__*) ; 
- TYPE_2__* type_alias_get_aliasee (TYPE_2__*) ; 
- int type_array_get_dim (TYPE_2__*) ; 
- TYPE_2__* type_array_get_element (TYPE_2__*) ; 
- int /*<<< orphan*/  type_array_is_decl_as_ptr (TYPE_2__*) ; 
- TYPE_2__* type_pointer_get_ref (TYPE_2__*) ; 
+
+ size_t MSFT_SEG_ARRAYDESC ;
+ size_t MSFT_SEG_TYPEDESC ;
+ int VT_ARRAY ;
+ int VT_BYREF ;
+ int VT_CARRAY ;
+ int VT_DISPATCH ;
+ int VT_PTR ;
+ scalar_t__ VT_SAFEARRAY ;
+ int VT_UNKNOWN ;
+ int chat (char*,...) ;
+ int ctl2_alloc_segment (TYPE_3__*,size_t,int,int ) ;
+ int dump_type (TYPE_2__*) ;
+ int encode_type (TYPE_3__*,int,TYPE_2__*,int*,int*) ;
+ int get_type_vt (TYPE_2__*) ;
+ scalar_t__ is_array (TYPE_2__*) ;
+ scalar_t__ is_ptr (TYPE_2__*) ;
+ TYPE_2__* type_alias_get_aliasee (TYPE_2__*) ;
+ int type_array_get_dim (TYPE_2__*) ;
+ TYPE_2__* type_array_get_element (TYPE_2__*) ;
+ int type_array_is_decl_as_ptr (TYPE_2__*) ;
+ TYPE_2__* type_pointer_get_ref (TYPE_2__*) ;
 
 __attribute__((used)) static int encode_var(
-	msft_typelib_t *typelib,   /* [I] The type library in which to encode the TYPEDESC. */
-	type_t *type,              /* [I] The type description to encode. */
-	var_t *var,                /* [I] The var to encode. */
-	int *encoded_type,         /* [O] The encoded type description. */
-	int *decoded_size)         /* [O] The total size of the unencoded TYPEDESCs, including nested descs. */
+ msft_typelib_t *typelib,
+ type_t *type,
+ var_t *var,
+ int *encoded_type,
+ int *decoded_size)
 {
     int typeoffset;
     int *typedata;
@@ -75,7 +75,7 @@ __attribute__((used)) static int encode_var(
             ++num_dims;
 
         chat("array with %d dimensions\n", num_dims);
-        encode_var(typelib, atype, var, &target_type, NULL);
+        encode_var(typelib, atype, var, &target_type, ((void*)0));
         arrayoffset = ctl2_alloc_segment(typelib, MSFT_SEG_ARRAYDESC, (2 + 2 * num_dims) * sizeof(int), 0);
         arraydata = (void *)&typelib->typelib_segment_data[MSFT_SEG_ARRAYDESC][arrayoffset];
 
@@ -101,7 +101,7 @@ __attribute__((used)) static int encode_var(
         typedata[1] = arrayoffset;
 
         *encoded_type = typeoffset;
-        *decoded_size = 20 /*sizeof(ARRAYDESC)*/ + (num_dims - 1) * 8 /*sizeof(SAFEARRAYBOUND)*/;
+        *decoded_size = 20 + (num_dims - 1) * 8 ;
         return 0;
     }
 
@@ -118,42 +118,42 @@ __attribute__((used)) static int encode_var(
             return 0;
         }
 
-	for (typeoffset = 0; typeoffset < typelib->typelib_segdir[MSFT_SEG_TYPEDESC].length; typeoffset += 8) {
-	    typedata = (void *)&typelib->typelib_segment_data[MSFT_SEG_TYPEDESC][typeoffset];
-	    if (((typedata[0] & 0xffff) == VT_PTR) && (typedata[1] == target_type)) break;
-	}
+ for (typeoffset = 0; typeoffset < typelib->typelib_segdir[MSFT_SEG_TYPEDESC].length; typeoffset += 8) {
+     typedata = (void *)&typelib->typelib_segment_data[MSFT_SEG_TYPEDESC][typeoffset];
+     if (((typedata[0] & 0xffff) == VT_PTR) && (typedata[1] == target_type)) break;
+ }
 
-	if (typeoffset == typelib->typelib_segdir[MSFT_SEG_TYPEDESC].length) {
-	    int mix_field;
+ if (typeoffset == typelib->typelib_segdir[MSFT_SEG_TYPEDESC].length) {
+     int mix_field;
 
-	    if (target_type & 0x80000000) {
-		mix_field = ((target_type >> 16) & 0x3fff) | VT_BYREF;
-	    } else if (get_type_vt(ref) == VT_SAFEARRAY) {
-		type_t *element_type = type_alias_get_aliasee(type_array_get_element(ref));
-		mix_field = get_type_vt(element_type) | VT_ARRAY | VT_BYREF;
-	    } else {
-		typedata = (void *)&typelib->typelib_segment_data[MSFT_SEG_TYPEDESC][target_type];
-		mix_field = ((typedata[0] >> 16) == 0x7fff)? 0x7fff: 0x7ffe;
-	    }
+     if (target_type & 0x80000000) {
+  mix_field = ((target_type >> 16) & 0x3fff) | VT_BYREF;
+     } else if (get_type_vt(ref) == VT_SAFEARRAY) {
+  type_t *element_type = type_alias_get_aliasee(type_array_get_element(ref));
+  mix_field = get_type_vt(element_type) | VT_ARRAY | VT_BYREF;
+     } else {
+  typedata = (void *)&typelib->typelib_segment_data[MSFT_SEG_TYPEDESC][target_type];
+  mix_field = ((typedata[0] >> 16) == 0x7fff)? 0x7fff: 0x7ffe;
+     }
 
-	    typeoffset = ctl2_alloc_segment(typelib, MSFT_SEG_TYPEDESC, 8, 0);
-	    typedata = (void *)&typelib->typelib_segment_data[MSFT_SEG_TYPEDESC][typeoffset];
+     typeoffset = ctl2_alloc_segment(typelib, MSFT_SEG_TYPEDESC, 8, 0);
+     typedata = (void *)&typelib->typelib_segment_data[MSFT_SEG_TYPEDESC][typeoffset];
 
-	    typedata[0] = (mix_field << 16) | VT_PTR;
-	    typedata[1] = target_type;
-	}
+     typedata[0] = (mix_field << 16) | VT_PTR;
+     typedata[1] = target_type;
+ }
 
-	*encoded_type = typeoffset;
+ *encoded_type = typeoffset;
 
-	*decoded_size = 8 /*sizeof(TYPEDESC)*/ + child_size;
+ *decoded_size = 8 + child_size;
         return 0;
     }
 
     dump_type(type);
 
     encode_type(typelib, vt, type, encoded_type, decoded_size);
-    /* these types already have an implicit pointer, so we don't need to
-     * add another */
+
+
     if(vt == VT_DISPATCH || vt == VT_UNKNOWN) return 2;
     return 0;
 }

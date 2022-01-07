@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ocfs2_super {int /*<<< orphan*/  osb_lock; int /*<<< orphan*/  s_inode_steal_slot; } ;
-typedef  int /*<<< orphan*/  s16 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  spin_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock (int /*<<< orphan*/ *) ; 
+
+
+
+struct ocfs2_super {int osb_lock; int s_inode_steal_slot; } ;
+typedef int s16 ;
+
+
+ int spin_lock (int *) ;
+ int spin_unlock (int *) ;
 
 __attribute__((used)) static inline s16 ocfs2_get_inode_steal_slot(struct ocfs2_super *osb)
 {
-	s16 slot;
+ s16 slot;
 
-	spin_lock(&osb->osb_lock);
-	slot = osb->s_inode_steal_slot;
-	spin_unlock(&osb->osb_lock);
+ spin_lock(&osb->osb_lock);
+ slot = osb->s_inode_steal_slot;
+ spin_unlock(&osb->osb_lock);
 
-	return slot;
+ return slot;
 }

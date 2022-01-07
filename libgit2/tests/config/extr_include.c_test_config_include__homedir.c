@@ -1,43 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  GIT_CONFIG_LEVEL_GLOBAL ; 
- int /*<<< orphan*/  GIT_OPT_SET_SEARCH_PATH ; 
- int /*<<< orphan*/  buf ; 
- int /*<<< orphan*/  cfg ; 
- int /*<<< orphan*/  cl_assert_equal_s (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cl_fixture (char*) ; 
- int /*<<< orphan*/  cl_git_mkfile (char*,char*) ; 
- int /*<<< orphan*/  cl_git_pass (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cl_sandbox_set_search_path_defaults () ; 
- int /*<<< orphan*/  git_buf_cstr (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  git_config_get_string_buf (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  git_config_open_ondisk (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  git_libgit2_opts (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  p_unlink (char*) ; 
+ int GIT_CONFIG_LEVEL_GLOBAL ;
+ int GIT_OPT_SET_SEARCH_PATH ;
+ int buf ;
+ int cfg ;
+ int cl_assert_equal_s (char*,int ) ;
+ int cl_fixture (char*) ;
+ int cl_git_mkfile (char*,char*) ;
+ int cl_git_pass (int ) ;
+ int cl_sandbox_set_search_path_defaults () ;
+ int git_buf_cstr (int *) ;
+ int git_config_get_string_buf (int *,int ,char*) ;
+ int git_config_open_ondisk (int *,char*) ;
+ int git_libgit2_opts (int ,int ,int ) ;
+ int p_unlink (char*) ;
 
 void test_config_include__homedir(void)
 {
-	cl_git_pass(git_libgit2_opts(GIT_OPT_SET_SEARCH_PATH, GIT_CONFIG_LEVEL_GLOBAL, cl_fixture("config")));
-	cl_git_mkfile("config-include-homedir",  "[include]\npath = ~/config-included");
+ cl_git_pass(git_libgit2_opts(GIT_OPT_SET_SEARCH_PATH, GIT_CONFIG_LEVEL_GLOBAL, cl_fixture("config")));
+ cl_git_mkfile("config-include-homedir", "[include]\npath = ~/config-included");
 
-	cl_git_pass(git_config_open_ondisk(&cfg, "config-include-homedir"));
+ cl_git_pass(git_config_open_ondisk(&cfg, "config-include-homedir"));
 
-	cl_git_pass(git_config_get_string_buf(&buf, cfg, "foo.bar.baz"));
-	cl_assert_equal_s("huzzah", git_buf_cstr(&buf));
+ cl_git_pass(git_config_get_string_buf(&buf, cfg, "foo.bar.baz"));
+ cl_assert_equal_s("huzzah", git_buf_cstr(&buf));
 
-	cl_sandbox_set_search_path_defaults();
+ cl_sandbox_set_search_path_defaults();
 
-	cl_git_pass(p_unlink("config-include-homedir"));
+ cl_git_pass(p_unlink("config-include-homedir"));
 }

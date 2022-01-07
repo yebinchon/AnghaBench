@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int cur; scalar_t__ last; unsigned long long value64; int /*<<< orphan*/  remaining; } ;
-typedef  TYPE_1__ gh_entry_t ;
 
-/* Variables and functions */
- TYPE_1__** GH ; 
- int GH_N ; 
- int GH_mode ; 
- scalar_t__ HINTS_MERGE_EXTENSION ; 
- scalar_t__ SEARCHX_EXTENSION ; 
- scalar_t__ SEARCH_EXTENSION ; 
- scalar_t__ TARG_EXTENSION ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int g_double ; 
- int g_hash ; 
- int /*<<< orphan*/  load_heap_v (TYPE_1__*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int cur; scalar_t__ last; unsigned long long value64; int remaining; } ;
+typedef TYPE_1__ gh_entry_t ;
+
+
+ TYPE_1__** GH ;
+ int GH_N ;
+ int GH_mode ;
+ scalar_t__ HINTS_MERGE_EXTENSION ;
+ scalar_t__ SEARCHX_EXTENSION ;
+ scalar_t__ SEARCH_EXTENSION ;
+ scalar_t__ TARG_EXTENSION ;
+ int assert (int ) ;
+ int g_double ;
+ int g_hash ;
+ int load_heap_v (TYPE_1__*) ;
 
 __attribute__((used)) static void gather_heap_advance (void) {
   gh_entry_t *H;

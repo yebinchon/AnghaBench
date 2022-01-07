@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {char* command; size_t wcnt; char** words; int /*<<< orphan*/  dbg; } ;
-typedef  TYPE_1__ mrdb_state ;
-typedef  int /*<<< orphan*/  mrb_state ;
-typedef  int /*<<< orphan*/  mrb_debug_breakpoint ;
-typedef  scalar_t__ mrb_bool ;
-typedef  size_t int32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BREAK_ERR_MSG_INVALIDBPNO_INFO ; 
- char* BREAK_ERR_MSG_NOBPNO_INFO ; 
- int /*<<< orphan*/  BREAK_INFO_MSG_HEADER ; 
- scalar_t__ FALSE ; 
- size_t MRB_DEBUG_BREAK_INVALID_NO ; 
- size_t MRB_DEBUG_OK ; 
- scalar_t__ TRUE ; 
- size_t mrb_debug_get_break (int /*<<< orphan*/ *,int /*<<< orphan*/ ,size_t,int /*<<< orphan*/ *) ; 
- size_t parse_breakpoint_no (char*) ; 
- int /*<<< orphan*/  print_api_common_error (size_t) ; 
- int /*<<< orphan*/  print_breakpoint (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  printf (char*,size_t) ; 
- int /*<<< orphan*/  puts (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {char* command; size_t wcnt; char** words; int dbg; } ;
+typedef TYPE_1__ mrdb_state ;
+typedef int mrb_state ;
+typedef int mrb_debug_breakpoint ;
+typedef scalar_t__ mrb_bool ;
+typedef size_t int32_t ;
+
+
+ int BREAK_ERR_MSG_INVALIDBPNO_INFO ;
+ char* BREAK_ERR_MSG_NOBPNO_INFO ;
+ int BREAK_INFO_MSG_HEADER ;
+ scalar_t__ FALSE ;
+ size_t MRB_DEBUG_BREAK_INVALID_NO ;
+ size_t MRB_DEBUG_OK ;
+ scalar_t__ TRUE ;
+ size_t mrb_debug_get_break (int *,int ,size_t,int *) ;
+ size_t parse_breakpoint_no (char*) ;
+ int print_api_common_error (size_t) ;
+ int print_breakpoint (int *) ;
+ int printf (char*,size_t) ;
+ int puts (int ) ;
 
 __attribute__((used)) static void
 info_break_select(mrb_state *mrb, mrdb_state *mrdb)

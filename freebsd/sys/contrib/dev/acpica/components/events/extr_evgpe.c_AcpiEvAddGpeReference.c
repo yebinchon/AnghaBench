@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {int RuntimeCount; } ;
-typedef  scalar_t__ BOOLEAN ;
-typedef  int /*<<< orphan*/  ACPI_STATUS ;
-typedef  TYPE_1__ ACPI_GPE_EVENT_INFO ;
+typedef scalar_t__ BOOLEAN ;
+typedef int ACPI_STATUS ;
+typedef TYPE_1__ ACPI_GPE_EVENT_INFO ;
 
-/* Variables and functions */
- scalar_t__ ACPI_FAILURE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ACPI_FUNCTION_TRACE (int /*<<< orphan*/ ) ; 
- scalar_t__ ACPI_SUCCESS (int /*<<< orphan*/ ) ; 
- int ACPI_UINT8_MAX ; 
- int /*<<< orphan*/  AE_LIMIT ; 
- int /*<<< orphan*/  AE_OK ; 
- int /*<<< orphan*/  AcpiEvEnableGpe (TYPE_1__*) ; 
- int /*<<< orphan*/  AcpiEvUpdateGpeEnableMask (TYPE_1__*) ; 
- int /*<<< orphan*/  AcpiHwClearGpe (TYPE_1__*) ; 
- int /*<<< orphan*/  EvAddGpeReference ; 
- int /*<<< orphan*/  return_ACPI_STATUS (int /*<<< orphan*/ ) ; 
+
+ scalar_t__ ACPI_FAILURE (int ) ;
+ int ACPI_FUNCTION_TRACE (int ) ;
+ scalar_t__ ACPI_SUCCESS (int ) ;
+ int ACPI_UINT8_MAX ;
+ int AE_LIMIT ;
+ int AE_OK ;
+ int AcpiEvEnableGpe (TYPE_1__*) ;
+ int AcpiEvUpdateGpeEnableMask (TYPE_1__*) ;
+ int AcpiHwClearGpe (TYPE_1__*) ;
+ int EvAddGpeReference ;
+ int return_ACPI_STATUS (int ) ;
 
 ACPI_STATUS
 AcpiEvAddGpeReference (
-    ACPI_GPE_EVENT_INFO     *GpeEventInfo,
-    BOOLEAN                 ClearOnEnable)
+    ACPI_GPE_EVENT_INFO *GpeEventInfo,
+    BOOLEAN ClearOnEnable)
 {
-    ACPI_STATUS             Status = AE_OK;
+    ACPI_STATUS Status = AE_OK;
 
 
     ACPI_FUNCTION_TRACE (EvAddGpeReference);
@@ -48,7 +48,7 @@ AcpiEvAddGpeReference (
     GpeEventInfo->RuntimeCount++;
     if (GpeEventInfo->RuntimeCount == 1)
     {
-        /* Enable on first reference */
+
 
         if (ClearOnEnable)
         {

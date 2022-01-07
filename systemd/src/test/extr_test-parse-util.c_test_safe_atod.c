@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int EINVAL ; 
- int /*<<< orphan*/  LC_NUMERIC ; 
- int /*<<< orphan*/  assert_se (int) ; 
- scalar_t__ errno ; 
- double fabs (double) ; 
- int safe_atod (char*,double*) ; 
- int setlocale (int /*<<< orphan*/ ,char*) ; 
- double strtod (char*,char**) ; 
+ int EINVAL ;
+ int LC_NUMERIC ;
+ int assert_se (int) ;
+ scalar_t__ errno ;
+ double fabs (double) ;
+ int safe_atod (char*,double*) ;
+ int setlocale (int ,char*) ;
+ double strtod (char*,char**) ;
 
 __attribute__((used)) static void test_safe_atod(void) {
         int r;
@@ -43,7 +35,7 @@ __attribute__((used)) static void test_safe_atod(void) {
         r = safe_atod("", &d);
         assert_se(r == -EINVAL);
 
-        /* Check if this really is locale independent */
+
         if (setlocale(LC_NUMERIC, "de_DE.utf8")) {
 
                 r = safe_atod("0.2244", &d);
@@ -60,7 +52,7 @@ __attribute__((used)) static void test_safe_atod(void) {
                 assert_se(r == -EINVAL);
         }
 
-        /* And check again, reset */
+
         assert_se(setlocale(LC_NUMERIC, "C"));
 
         r = safe_atod("0.2244", &d);

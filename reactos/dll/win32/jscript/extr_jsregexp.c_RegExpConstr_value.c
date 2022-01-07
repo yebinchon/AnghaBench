@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vdisp_t ;
-typedef  int /*<<< orphan*/  script_ctx_t ;
-typedef  int /*<<< orphan*/  jsval_t ;
-typedef  int /*<<< orphan*/  jsdisp_t ;
-typedef  int WORD ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
-#define  DISPATCH_CONSTRUCT 129 
-#define  DISPATCH_METHOD 128 
- int /*<<< orphan*/  E_NOTIMPL ; 
- int /*<<< orphan*/  FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FIXME (char*,...) ; 
- int /*<<< orphan*/  JSCLASS_REGEXP ; 
- int /*<<< orphan*/  JS_E_REGEXP_SYNTAX ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TRACE (char*) ; 
- int /*<<< orphan*/  create_regexp_var (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  get_object (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * iface_to_jsdisp (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  is_class (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  is_object_instance (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  is_undefined (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jsdisp_release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jsval_obj (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  throw_regexp_error (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int vdisp_t ;
+typedef int script_ctx_t ;
+typedef int jsval_t ;
+typedef int jsdisp_t ;
+typedef int WORD ;
+typedef int HRESULT ;
+
+
+
+
+ int E_NOTIMPL ;
+ int FAILED (int ) ;
+ int FIXME (char*,...) ;
+ int JSCLASS_REGEXP ;
+ int JS_E_REGEXP_SYNTAX ;
+ int S_OK ;
+ int TRACE (char*) ;
+ int create_regexp_var (int *,int ,int *,int **) ;
+ int get_object (int ) ;
+ int * iface_to_jsdisp (int ) ;
+ int is_class (int *,int ) ;
+ int is_object_instance (int ) ;
+ int is_undefined (int ) ;
+ int jsdisp_release (int *) ;
+ int jsval_obj (int *) ;
+ int throw_regexp_error (int *,int ,int *) ;
 
 __attribute__((used)) static HRESULT RegExpConstr_value(script_ctx_t *ctx, vdisp_t *jsthis, WORD flags, unsigned argc, jsval_t *argv,
         jsval_t *r)
@@ -43,7 +43,7 @@ __attribute__((used)) static HRESULT RegExpConstr_value(script_ctx_t *ctx, vdisp
     TRACE("\n");
 
     switch(flags) {
-    case DISPATCH_METHOD:
+    case 128:
         if(argc) {
             if(is_object_instance(argv[0])) {
                 jsdisp_t *jsdisp = iface_to_jsdisp(get_object(argv[0]));
@@ -51,7 +51,7 @@ __attribute__((used)) static HRESULT RegExpConstr_value(script_ctx_t *ctx, vdisp
                     if(is_class(jsdisp, JSCLASS_REGEXP)) {
                         if(argc > 1 && !is_undefined(argv[1])) {
                             jsdisp_release(jsdisp);
-                            return throw_regexp_error(ctx, JS_E_REGEXP_SYNTAX, NULL);
+                            return throw_regexp_error(ctx, JS_E_REGEXP_SYNTAX, ((void*)0));
                         }
 
                         if(r)
@@ -64,8 +64,8 @@ __attribute__((used)) static HRESULT RegExpConstr_value(script_ctx_t *ctx, vdisp
                 }
             }
         }
-        /* fall through */
-    case DISPATCH_CONSTRUCT: {
+
+    case 129: {
         jsdisp_t *ret;
         HRESULT hres;
 
@@ -74,7 +74,7 @@ __attribute__((used)) static HRESULT RegExpConstr_value(script_ctx_t *ctx, vdisp
             return E_NOTIMPL;
         }
 
-        hres = create_regexp_var(ctx, argv[0], argc > 1 ? argv+1 : NULL, &ret);
+        hres = create_regexp_var(ctx, argv[0], argc > 1 ? argv+1 : ((void*)0), &ret);
         if(FAILED(hres))
             return hres;
 

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int FALSE ; 
- int TRUE ; 
- char* fgets (char*,int,int /*<<< orphan*/ *) ; 
- size_t strlen (char*) ; 
+
+
+
+typedef int FILE ;
+
+
+ int FALSE ;
+ int TRUE ;
+ char* fgets (char*,int,int *) ;
+ size_t strlen (char*) ;
 
 char *Curl_get_line(char *buf, int len, FILE *input)
 {
@@ -32,11 +32,11 @@ char *Curl_get_line(char *buf, int len, FILE *input)
         }
         return b;
       }
-      /* read a partial, discard the next piece that ends with newline */
+
       partial = TRUE;
     }
     else
       break;
   }
-  return NULL;
+  return ((void*)0);
 }

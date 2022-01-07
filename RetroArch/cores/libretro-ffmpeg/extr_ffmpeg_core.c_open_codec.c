@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_8__ {TYPE_1__** streams; } ;
-struct TYPE_7__ {int /*<<< orphan*/  codec_id; } ;
+struct TYPE_7__ {int codec_id; } ;
 struct TYPE_6__ {TYPE_2__* codec; } ;
-typedef  TYPE_2__ AVCodecContext ;
-typedef  int /*<<< orphan*/  AVCodec ;
+typedef TYPE_2__ AVCodecContext ;
+typedef int AVCodec ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RETRO_LOG_ERROR ; 
- int /*<<< orphan*/ * avcodec_find_decoder (int /*<<< orphan*/ ) ; 
- scalar_t__ avcodec_open2 (TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- TYPE_4__* fctx ; 
- int /*<<< orphan*/  log_cb (int /*<<< orphan*/ ,char*) ; 
+
+ int RETRO_LOG_ERROR ;
+ int * avcodec_find_decoder (int ) ;
+ scalar_t__ avcodec_open2 (TYPE_2__*,int *,int *) ;
+ TYPE_4__* fctx ;
+ int log_cb (int ,char*) ;
 
 __attribute__((used)) static bool open_codec(AVCodecContext **ctx, unsigned index)
 {
@@ -33,12 +33,12 @@ __attribute__((used)) static bool open_codec(AVCodecContext **ctx, unsigned inde
    if (!codec)
    {
       log_cb(RETRO_LOG_ERROR, "Couldn't find suitable decoder, exiting ... \n");
-      return false;
+      return 0;
    }
 
    *ctx = fctx->streams[index]->codec;
-   if (avcodec_open2(*ctx, codec, NULL) < 0)
-      return false;
+   if (avcodec_open2(*ctx, codec, ((void*)0)) < 0)
+      return 0;
 
-   return true;
+   return 1;
 }

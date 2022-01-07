@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  scalar_t__ uint32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  QUARTER (scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- scalar_t__ read32_le (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  write32_le (scalar_t__,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int uint8_t ;
+typedef scalar_t__ uint32_t ;
+
+
+ int QUARTER (scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ scalar_t__ read32_le (int const*) ;
+ int write32_le (scalar_t__,int *) ;
 
 void cf_chacha20_core(const uint8_t key0[16],
                       const uint8_t key1[16],
@@ -44,23 +44,23 @@ void cf_chacha20_core(const uint8_t key0[16],
            xe = ze = read32_le(nonce + 8),
            xf = zf = read32_le(nonce + 12);
 
-#define QUARTER(a, b, c, d) \
-  a += b; d = rotl32(d ^ a, 16); \
-  c += d; b = rotl32(b ^ c, 12); \
-  a += b; d = rotl32(d ^ a, 8);  \
-  c += d; b = rotl32(b ^ c, 7);
+
+
+
+
+
 
   int i;
   for (i = 0; i < 10; i++)
   {
-    QUARTER(z0, z4, z8, zc);
-    QUARTER(z1, z5, z9, zd);
-    QUARTER(z2, z6, za, ze);
-    QUARTER(z3, z7, zb, zf);
-    QUARTER(z0, z5, za, zf);
-    QUARTER(z1, z6, zb, zc);
-    QUARTER(z2, z7, z8, zd);
-    QUARTER(z3, z4, z9, ze);
+    z0 += z4; zc = rotl32(zc ^ z0, 16); z8 += zc; z4 = rotl32(z4 ^ z8, 12); z0 += z4; zc = rotl32(zc ^ z0, 8); z8 += zc; z4 = rotl32(z4 ^ z8, 7);;
+    z1 += z5; zd = rotl32(zd ^ z1, 16); z9 += zd; z5 = rotl32(z5 ^ z9, 12); z1 += z5; zd = rotl32(zd ^ z1, 8); z9 += zd; z5 = rotl32(z5 ^ z9, 7);;
+    z2 += z6; ze = rotl32(ze ^ z2, 16); za += ze; z6 = rotl32(z6 ^ za, 12); z2 += z6; ze = rotl32(ze ^ z2, 8); za += ze; z6 = rotl32(z6 ^ za, 7);;
+    z3 += z7; zf = rotl32(zf ^ z3, 16); zb += zf; z7 = rotl32(z7 ^ zb, 12); z3 += z7; zf = rotl32(zf ^ z3, 8); zb += zf; z7 = rotl32(z7 ^ zb, 7);;
+    z0 += z5; zf = rotl32(zf ^ z0, 16); za += zf; z5 = rotl32(z5 ^ za, 12); z0 += z5; zf = rotl32(zf ^ z0, 8); za += zf; z5 = rotl32(z5 ^ za, 7);;
+    z1 += z6; zc = rotl32(zc ^ z1, 16); zb += zc; z6 = rotl32(z6 ^ zb, 12); z1 += z6; zc = rotl32(zc ^ z1, 8); zb += zc; z6 = rotl32(z6 ^ zb, 7);;
+    z2 += z7; zd = rotl32(zd ^ z2, 16); z8 += zd; z7 = rotl32(z7 ^ z8, 12); z2 += z7; zd = rotl32(zd ^ z2, 8); z8 += zd; z7 = rotl32(z7 ^ z8, 7);;
+    z3 += z4; ze = rotl32(ze ^ z3, 16); z9 += ze; z4 = rotl32(z4 ^ z9, 12); z3 += z4; ze = rotl32(ze ^ z3, 8); z9 += ze; z4 = rotl32(z4 ^ z9, 7);;
   }
 
   x0 += z0;

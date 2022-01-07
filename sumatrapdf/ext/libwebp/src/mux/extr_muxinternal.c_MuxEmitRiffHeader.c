@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  size_t uint32_t ;
 
-/* Variables and functions */
- size_t CHUNK_HEADER_SIZE ; 
- int CHUNK_SIZE_BYTES ; 
- size_t MKFOURCC (char,char,char,char) ; 
- int /*<<< orphan*/  PutLE32 (int /*<<< orphan*/ * const,size_t) ; 
- int RIFF_HEADER_SIZE ; 
- int TAG_SIZE ; 
- int /*<<< orphan*/  assert (int) ; 
+
+
+
+typedef int uint8_t ;
+typedef size_t uint32_t ;
+
+
+ size_t CHUNK_HEADER_SIZE ;
+ int CHUNK_SIZE_BYTES ;
+ size_t MKFOURCC (char,char,char,char) ;
+ int PutLE32 (int * const,size_t) ;
+ int RIFF_HEADER_SIZE ;
+ int TAG_SIZE ;
+ int assert (int) ;
 
 uint8_t* MuxEmitRiffHeader(uint8_t* const data, size_t size) {
   PutLE32(data + 0, MKFOURCC('R', 'I', 'F', 'F'));

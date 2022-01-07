@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  va_list ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int va_list ;
 struct TYPE_3__ {char* text; int line; int column; int position; } ;
-typedef  TYPE_1__ json_error_t ;
+typedef TYPE_1__ json_error_t ;
 
-/* Variables and functions */
- int JSON_ERROR_TEXT_LENGTH ; 
- int /*<<< orphan*/  vsnprintf (char*,int,char const*,int /*<<< orphan*/ ) ; 
+
+ int JSON_ERROR_TEXT_LENGTH ;
+ int vsnprintf (char*,int,char const*,int ) ;
 
 void jsonp_error_vset(json_error_t *error, int line, int column,
                       size_t position, const char *msg, va_list ap)
@@ -26,7 +26,7 @@ void jsonp_error_vset(json_error_t *error, int line, int column,
         return;
 
     if(error->text[0] != '\0') {
-        /* error already set */
+
         return;
     }
 

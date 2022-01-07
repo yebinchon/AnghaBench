@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {TYPE_2__* p_sys; } ;
-typedef  TYPE_1__ decoder_t ;
-struct TYPE_5__ {int /*<<< orphan*/ * mft; int /*<<< orphan*/ * output_type; int /*<<< orphan*/ * output_sample; int /*<<< orphan*/ * input_type; int /*<<< orphan*/ * event_generator; } ;
-typedef  TYPE_2__ decoder_sys_t ;
-typedef  int /*<<< orphan*/  IMFMediaBuffer ;
-typedef  int /*<<< orphan*/  HRESULT ;
+typedef TYPE_1__ decoder_t ;
+struct TYPE_5__ {int * mft; int * output_type; int * output_sample; int * input_type; int * event_generator; } ;
+typedef TYPE_2__ decoder_sys_t ;
+typedef int IMFMediaBuffer ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IMFMediaEventGenerator_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IMFMediaType_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IMFSample_GetBufferByIndex (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IMFSample_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IMFTransform_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ SUCCEEDED (int /*<<< orphan*/ ) ; 
+
+ int IMFMediaEventGenerator_Release (int *) ;
+ int IMFMediaType_Release (int *) ;
+ int IMFSample_GetBufferByIndex (int *,int ,int **) ;
+ int IMFSample_Release (int *) ;
+ int IMFTransform_Release (int *) ;
+ scalar_t__ SUCCEEDED (int ) ;
 
 __attribute__((used)) static void DestroyMFT(decoder_t *p_dec)
 {
@@ -37,7 +37,7 @@ __attribute__((used)) static void DestroyMFT(decoder_t *p_dec)
         IMFMediaType_Release(p_sys->input_type);
     if (p_sys->output_sample)
     {
-        IMFMediaBuffer *output_media_buffer = NULL;
+        IMFMediaBuffer *output_media_buffer = ((void*)0);
         HRESULT hr = IMFSample_GetBufferByIndex(p_sys->output_sample, 0, &output_media_buffer);
         if (SUCCEEDED(hr))
             IMFSample_Release(output_media_buffer);
@@ -48,9 +48,9 @@ __attribute__((used)) static void DestroyMFT(decoder_t *p_dec)
     if (p_sys->mft)
         IMFTransform_Release(p_sys->mft);
 
-    p_sys->event_generator = NULL;
-    p_sys->input_type = NULL;
-    p_sys->output_sample = NULL;
-    p_sys->output_type = NULL;
-    p_sys->mft = NULL;
+    p_sys->event_generator = ((void*)0);
+    p_sys->input_type = ((void*)0);
+    p_sys->output_sample = ((void*)0);
+    p_sys->output_type = ((void*)0);
+    p_sys->mft = ((void*)0);
 }

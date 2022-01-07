@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {char* cert_file_success; char const* cert_path; char* cert_pw_success; scalar_t__ cert_pw_cache_pool; scalar_t__ cert_cache_pool; int /*<<< orphan*/ * cached_cert_pw; int /*<<< orphan*/ * cached_cert; int /*<<< orphan*/  cert_pw_userdata; int /*<<< orphan*/  (* cert_pw_callback ) (int /*<<< orphan*/ ,char const*,char const**) ;int /*<<< orphan*/  pool; int /*<<< orphan*/  cert_userdata; int /*<<< orphan*/  (* cert_callback ) (int /*<<< orphan*/ ,char const**) ;} ;
-typedef  TYPE_1__ serf_ssl_context_t ;
-typedef  int /*<<< orphan*/  apr_status_t ;
-typedef  int /*<<< orphan*/  apr_file_t ;
-typedef  int /*<<< orphan*/  X509 ;
-typedef  int /*<<< orphan*/  SSL ;
-typedef  int /*<<< orphan*/  PKCS12 ;
-typedef  int /*<<< orphan*/  EVP_PKEY ;
-typedef  int /*<<< orphan*/  BIO_METHOD ;
-typedef  int /*<<< orphan*/  BIO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  APR_OS_DEFAULT ; 
- int /*<<< orphan*/  APR_READ ; 
- int /*<<< orphan*/  APR_SUCCESS ; 
- int /*<<< orphan*/ * BIO_new (int /*<<< orphan*/ *) ; 
- int ERR_GET_FUNC (int) ; 
- int ERR_GET_LIB (int) ; 
- int ERR_GET_REASON (int) ; 
- scalar_t__ ERR_LIB_PKCS12 ; 
- int /*<<< orphan*/  ERR_clear_error () ; 
- int ERR_get_error () ; 
- scalar_t__ PKCS12_R_MAC_VERIFY_FAILURE ; 
- int /*<<< orphan*/  PKCS12_free (int /*<<< orphan*/ *) ; 
- int PKCS12_parse (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ **,int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
- TYPE_1__* SSL_get_app_data (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  apr_file_close (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  apr_file_open (int /*<<< orphan*/ **,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  apr_pool_cleanup_null ; 
- int /*<<< orphan*/  apr_pool_userdata_setn (char const*,char*,int /*<<< orphan*/ ,scalar_t__) ; 
- char* apr_pstrdup (scalar_t__,char const*) ; 
- int /*<<< orphan*/ * bio_meth_file_new () ; 
- int /*<<< orphan*/  bio_meth_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bio_set_data (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * d2i_PKCS12_bio (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  printf (char*,int,int,int) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,char const**) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ ,char const*,char const**) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {char* cert_file_success; char const* cert_path; char* cert_pw_success; scalar_t__ cert_pw_cache_pool; scalar_t__ cert_cache_pool; int * cached_cert_pw; int * cached_cert; int cert_pw_userdata; int (* cert_pw_callback ) (int ,char const*,char const**) ;int pool; int cert_userdata; int (* cert_callback ) (int ,char const**) ;} ;
+typedef TYPE_1__ serf_ssl_context_t ;
+typedef int apr_status_t ;
+typedef int apr_file_t ;
+typedef int X509 ;
+typedef int SSL ;
+typedef int PKCS12 ;
+typedef int EVP_PKEY ;
+typedef int BIO_METHOD ;
+typedef int BIO ;
+
+
+ int APR_OS_DEFAULT ;
+ int APR_READ ;
+ int APR_SUCCESS ;
+ int * BIO_new (int *) ;
+ int ERR_GET_FUNC (int) ;
+ int ERR_GET_LIB (int) ;
+ int ERR_GET_REASON (int) ;
+ scalar_t__ ERR_LIB_PKCS12 ;
+ int ERR_clear_error () ;
+ int ERR_get_error () ;
+ scalar_t__ PKCS12_R_MAC_VERIFY_FAILURE ;
+ int PKCS12_free (int *) ;
+ int PKCS12_parse (int *,char const*,int **,int **,int *) ;
+ TYPE_1__* SSL_get_app_data (int *) ;
+ int apr_file_close (int *) ;
+ int apr_file_open (int **,char const*,int ,int ,int ) ;
+ int apr_pool_cleanup_null ;
+ int apr_pool_userdata_setn (char const*,char*,int ,scalar_t__) ;
+ char* apr_pstrdup (scalar_t__,char const*) ;
+ int * bio_meth_file_new () ;
+ int bio_meth_free (int *) ;
+ int bio_set_data (int *,int *) ;
+ int * d2i_PKCS12_bio (int *,int *) ;
+ int printf (char*,int,int,int) ;
+ int stub1 (int ,char const**) ;
+ int stub2 (int ,char const*,char const**) ;
 
 __attribute__((used)) static int ssl_need_client_cert(SSL *ssl, X509 **cert, EVP_PKEY **pkey)
 {
@@ -73,7 +73,7 @@ __attribute__((used)) static int ssl_need_client_cert(SSL *ssl, X509 **cert, EVP
         if (ctx->cert_file_success) {
             status = APR_SUCCESS;
             cert_path = ctx->cert_file_success;
-            ctx->cert_file_success = NULL;
+            ctx->cert_file_success = ((void*)0);
             retrying_success = 1;
         } else {
             status = ctx->cert_callback(ctx->cert_userdata, &cert_path);
@@ -83,7 +83,7 @@ __attribute__((used)) static int ssl_need_client_cert(SSL *ssl, X509 **cert, EVP
             break;
         }
 
-        /* Load the x.509 cert file stored in PKCS12 */
+
         status = apr_file_open(&cert_file, cert_path, APR_READ, APR_OS_DEFAULT,
                                ctx->pool);
 
@@ -96,10 +96,10 @@ __attribute__((used)) static int ssl_need_client_cert(SSL *ssl, X509 **cert, EVP
         bio_set_data(bio, cert_file);
 
         ctx->cert_path = cert_path;
-        p12 = d2i_PKCS12_bio(bio, NULL);
+        p12 = d2i_PKCS12_bio(bio, ((void*)0));
         apr_file_close(cert_file);
 
-        i = PKCS12_parse(p12, NULL, pkey, cert, NULL);
+        i = PKCS12_parse(p12, ((void*)0), pkey, cert, ((void*)0));
 
         if (i == 1) {
             PKCS12_free(p12);
@@ -128,7 +128,7 @@ __attribute__((used)) static int ssl_need_client_cert(SSL *ssl, X509 **cert, EVP
                     if (ctx->cert_pw_success) {
                         status = APR_SUCCESS;
                         password = ctx->cert_pw_success;
-                        ctx->cert_pw_success = NULL;
+                        ctx->cert_pw_success = ((void*)0);
                     } else {
                         status = ctx->cert_pw_callback(ctx->cert_pw_userdata,
                                                        ctx->cert_path,
@@ -136,7 +136,7 @@ __attribute__((used)) static int ssl_need_client_cert(SSL *ssl, X509 **cert, EVP
                     }
 
                     if (!status && password) {
-                        i = PKCS12_parse(p12, password, pkey, cert, NULL);
+                        i = PKCS12_parse(p12, password, pkey, cert, ((void*)0));
                         if (i == 1) {
                             PKCS12_free(p12);
                             bio_meth_free(biom);

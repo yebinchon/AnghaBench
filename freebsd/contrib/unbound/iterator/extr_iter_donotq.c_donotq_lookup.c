@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct sockaddr_storage {int dummy; } ;
-struct iter_donotq {int /*<<< orphan*/  tree; } ;
-typedef  int /*<<< orphan*/  socklen_t ;
+struct iter_donotq {int tree; } ;
+typedef int socklen_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * addr_tree_lookup (int /*<<< orphan*/ *,struct sockaddr_storage*,int /*<<< orphan*/ ) ; 
 
-int 
+ int * addr_tree_lookup (int *,struct sockaddr_storage*,int ) ;
+
+int
 donotq_lookup(struct iter_donotq* donotq, struct sockaddr_storage* addr,
         socklen_t addrlen)
 {
-	return addr_tree_lookup(&donotq->tree, addr, addrlen) != NULL;
+ return addr_tree_lookup(&donotq->tree, addr, addrlen) != ((void*)0);
 }

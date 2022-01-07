@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_11__ {struct TYPE_11__* pRight; struct TYPE_11__* pLeft; scalar_t__ bStart; scalar_t__ bEof; scalar_t__ iDocid; TYPE_3__* pPhrase; } ;
 struct TYPE_8__ {scalar_t__ iDocid; scalar_t__ pNextDocid; } ;
 struct TYPE_10__ {int nToken; scalar_t__ pOrPoslist; TYPE_1__ doclist; TYPE_2__* aToken; scalar_t__ bIncr; } ;
 struct TYPE_9__ {scalar_t__ pDeferred; scalar_t__ pSegcsr; } ;
-typedef  TYPE_2__ Fts3PhraseToken ;
-typedef  TYPE_3__ Fts3Phrase ;
-typedef  TYPE_4__ Fts3Expr ;
-typedef  int /*<<< orphan*/  Fts3Cursor ;
+typedef TYPE_2__ Fts3PhraseToken ;
+typedef TYPE_3__ Fts3Phrase ;
+typedef TYPE_4__ Fts3Expr ;
+typedef int Fts3Cursor ;
 
-/* Variables and functions */
- int SQLITE_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  fts3EvalInvalidatePoslist (TYPE_3__*) ; 
- int fts3EvalPhraseStart (int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_3__*) ; 
- int /*<<< orphan*/  sqlite3Fts3MsrIncrRestart (scalar_t__) ; 
+
+ int SQLITE_OK ;
+ int assert (int) ;
+ int fts3EvalInvalidatePoslist (TYPE_3__*) ;
+ int fts3EvalPhraseStart (int *,int ,TYPE_3__*) ;
+ int sqlite3Fts3MsrIncrRestart (scalar_t__) ;
 
 __attribute__((used)) static void fts3EvalRestart(
   Fts3Cursor *pCsr,

@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  i64 ;
-typedef  int /*<<< orphan*/  Vdbe ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int i64 ;
+typedef int Vdbe ;
 struct TYPE_7__ {int iValue; char* zToken; } ;
 struct TYPE_9__ {int flags; TYPE_1__ u; } ;
-struct TYPE_8__ {int /*<<< orphan*/ * pVdbe; } ;
-typedef  TYPE_2__ Parse ;
-typedef  TYPE_3__ Expr ;
+struct TYPE_8__ {int * pVdbe; } ;
+typedef TYPE_2__ Parse ;
+typedef TYPE_3__ Expr ;
 
-/* Variables and functions */
- int EP_IntValue ; 
- int /*<<< orphan*/  OP_Int64 ; 
- int /*<<< orphan*/  OP_Integer ; 
- int /*<<< orphan*/  P4_INT64 ; 
- int /*<<< orphan*/  SMALLEST_INT64 ; 
- int /*<<< orphan*/  SQLITE_UTF8 ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  codeReal (int /*<<< orphan*/ *,char const*,int,int) ; 
- char* dup8bytes (int /*<<< orphan*/ *,char*) ; 
- int sqlite3Atoi64 (char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3ErrorMsg (TYPE_2__*,char*,char*,char const*) ; 
- int /*<<< orphan*/  sqlite3Strlen30 (char const*) ; 
- int /*<<< orphan*/  sqlite3VdbeAddOp2 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  sqlite3VdbeAddOp4 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
+
+ int EP_IntValue ;
+ int OP_Int64 ;
+ int OP_Integer ;
+ int P4_INT64 ;
+ int SMALLEST_INT64 ;
+ int SQLITE_UTF8 ;
+ int assert (int) ;
+ int codeReal (int *,char const*,int,int) ;
+ char* dup8bytes (int *,char*) ;
+ int sqlite3Atoi64 (char const*,int *,int ,int ) ;
+ int sqlite3ErrorMsg (TYPE_2__*,char*,char*,char const*) ;
+ int sqlite3Strlen30 (char const*) ;
+ int sqlite3VdbeAddOp2 (int *,int ,int,int) ;
+ int sqlite3VdbeAddOp4 (int *,int ,int ,int,int ,char*,int ) ;
 
 __attribute__((used)) static void codeInteger(Parse *pParse, Expr *pExpr, int negFlag, int iMem){
   Vdbe *v = pParse->pVdbe;
@@ -56,11 +56,11 @@ __attribute__((used)) static void codeInteger(Parse *pParse, Expr *pExpr, int ne
       zV = dup8bytes(v, (char*)&value);
       sqlite3VdbeAddOp4(v, OP_Int64, 0, iMem, 0, zV, P4_INT64);
     }else{
-#ifdef SQLITE_OMIT_FLOATING_POINT
-      sqlite3ErrorMsg(pParse, "oversized integer: %s%s", negFlag ? "-" : "", z);
-#else
+
+
+
       codeReal(v, z, negFlag, iMem);
-#endif
+
     }
   }
 }

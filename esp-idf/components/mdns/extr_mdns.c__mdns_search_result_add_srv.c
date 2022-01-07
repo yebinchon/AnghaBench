@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint16_t ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint16_t ;
 struct TYPE_6__ {scalar_t__ max_results; scalar_t__ num_results; TYPE_2__* result; } ;
-typedef  TYPE_1__ mdns_search_once_t ;
-struct TYPE_7__ {scalar_t__ tcpip_if; scalar_t__ ip_protocol; struct TYPE_7__* next; int /*<<< orphan*/  port; int /*<<< orphan*/  hostname; } ;
-typedef  TYPE_2__ mdns_result_t ;
-typedef  scalar_t__ mdns_ip_protocol_t ;
-typedef  scalar_t__ mdns_if_t ;
+typedef TYPE_1__ mdns_search_once_t ;
+struct TYPE_7__ {scalar_t__ tcpip_if; scalar_t__ ip_protocol; struct TYPE_7__* next; int port; int hostname; } ;
+typedef TYPE_2__ mdns_result_t ;
+typedef scalar_t__ mdns_ip_protocol_t ;
+typedef scalar_t__ mdns_if_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HOOK_MALLOC_FAILED ; 
- int /*<<< orphan*/  _str_null_or_empty (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (TYPE_2__*) ; 
- scalar_t__ malloc (int) ; 
- int /*<<< orphan*/  memset (TYPE_2__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  strcasecmp (char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strdup (char const*) ; 
+
+ int HOOK_MALLOC_FAILED ;
+ int _str_null_or_empty (int ) ;
+ int free (TYPE_2__*) ;
+ scalar_t__ malloc (int) ;
+ int memset (TYPE_2__*,int ,int) ;
+ int strcasecmp (char const*,int ) ;
+ int strdup (char const*) ;
 
 __attribute__((used)) static void _mdns_search_result_add_srv(mdns_search_once_t * search, const char * hostname, uint16_t port, mdns_if_t tcpip_if, mdns_ip_protocol_t ip_protocol)
 {

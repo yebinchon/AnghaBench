@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  stdout_file; } ;
-typedef  TYPE_1__ process_info_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SEEK_SET ; 
- scalar_t__ ferror (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * fgets (char*,size_t,int /*<<< orphan*/ ) ; 
- int fseek (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  perror (char*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int stdout_file; } ;
+typedef TYPE_1__ process_info_t ;
+
+
+ int SEEK_SET ;
+ scalar_t__ ferror (int ) ;
+ int * fgets (char*,size_t,int ) ;
+ int fseek (int ,int ,int ) ;
+ int perror (char*) ;
 
 int process_read_last_line(process_info_t *p,
                            char* buffer,
@@ -34,7 +34,7 @@ int process_read_last_line(process_info_t *p,
 
   buffer[0] = '\0';
 
-  while (fgets(buffer, buffer_len, p->stdout_file) != NULL) {
+  while (fgets(buffer, buffer_len, p->stdout_file) != ((void*)0)) {
     for (ptr = buffer; *ptr && *ptr != '\r' && *ptr != '\n'; ptr++);
     *ptr = '\0';
   }

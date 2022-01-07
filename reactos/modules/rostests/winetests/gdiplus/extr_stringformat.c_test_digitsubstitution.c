@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  StringDigitSubstitute ;
-typedef  int /*<<< orphan*/  LANGID ;
-typedef  int /*<<< orphan*/  GpStringFormat ;
-typedef  int /*<<< orphan*/  GpStatus ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GdipCreateStringFormat (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GdipDeleteStringFormat (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipGetStringFormatDigitSubstitution (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipSetStringFormatDigitSubstitution (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  InvalidParameter ; 
- int /*<<< orphan*/  LANG_CHINESE ; 
- int /*<<< orphan*/  LANG_NEUTRAL ; 
- int /*<<< orphan*/  LANG_RUSSIAN ; 
- int /*<<< orphan*/  MAKELANGID (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Ok ; 
- int /*<<< orphan*/  SUBLANG_CHINESE_TRADITIONAL ; 
- int /*<<< orphan*/  StringDigitSubstituteNone ; 
- int /*<<< orphan*/  StringDigitSubstituteUser ; 
- int /*<<< orphan*/  expect (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int StringDigitSubstitute ;
+typedef int LANGID ;
+typedef int GpStringFormat ;
+typedef int GpStatus ;
+
+
+ int GdipCreateStringFormat (int ,int ,int **) ;
+ int GdipDeleteStringFormat (int *) ;
+ int GdipGetStringFormatDigitSubstitution (int *,int *,int *) ;
+ int GdipSetStringFormatDigitSubstitution (int *,int ,int ) ;
+ int InvalidParameter ;
+ int LANG_CHINESE ;
+ int LANG_NEUTRAL ;
+ int LANG_RUSSIAN ;
+ int MAKELANGID (int ,int ) ;
+ int Ok ;
+ int SUBLANG_CHINESE_TRADITIONAL ;
+ int StringDigitSubstituteNone ;
+ int StringDigitSubstituteUser ;
+ int expect (int ,int ) ;
 
 __attribute__((used)) static void test_digitsubstitution(void)
 {
@@ -41,41 +41,41 @@ __attribute__((used)) static void test_digitsubstitution(void)
     stat = GdipCreateStringFormat(0, LANG_RUSSIAN, &format);
     expect(Ok, stat);
 
-    /* NULL arguments */
-    stat = GdipGetStringFormatDigitSubstitution(NULL, NULL, NULL);
+
+    stat = GdipGetStringFormatDigitSubstitution(((void*)0), ((void*)0), ((void*)0));
     expect(InvalidParameter, stat);
-    stat = GdipGetStringFormatDigitSubstitution(format, NULL, NULL);
+    stat = GdipGetStringFormatDigitSubstitution(format, ((void*)0), ((void*)0));
     expect(Ok, stat);
-    stat = GdipGetStringFormatDigitSubstitution(NULL, &digitlang, NULL);
+    stat = GdipGetStringFormatDigitSubstitution(((void*)0), &digitlang, ((void*)0));
     expect(InvalidParameter, stat);
-    stat = GdipGetStringFormatDigitSubstitution(NULL, NULL, &digitsub);
+    stat = GdipGetStringFormatDigitSubstitution(((void*)0), ((void*)0), &digitsub);
     expect(InvalidParameter, stat);
-    stat = GdipGetStringFormatDigitSubstitution(NULL, &digitlang, &digitsub);
+    stat = GdipGetStringFormatDigitSubstitution(((void*)0), &digitlang, &digitsub);
     expect(InvalidParameter, stat);
-    stat = GdipSetStringFormatDigitSubstitution(NULL, LANG_NEUTRAL, StringDigitSubstituteNone);
+    stat = GdipSetStringFormatDigitSubstitution(((void*)0), LANG_NEUTRAL, StringDigitSubstituteNone);
     expect(InvalidParameter, stat);
 
-    /* try to get both and one by one */
+
     stat = GdipGetStringFormatDigitSubstitution(format, &digitlang, &digitsub);
     expect(Ok, stat);
     expect(StringDigitSubstituteUser, digitsub);
     expect(LANG_NEUTRAL, digitlang);
 
-    digitsub  = StringDigitSubstituteNone;
-    stat = GdipGetStringFormatDigitSubstitution(format, NULL, &digitsub);
+    digitsub = StringDigitSubstituteNone;
+    stat = GdipGetStringFormatDigitSubstitution(format, ((void*)0), &digitsub);
     expect(Ok, stat);
     expect(StringDigitSubstituteUser, digitsub);
 
     digitlang = LANG_RUSSIAN;
-    stat = GdipGetStringFormatDigitSubstitution(format, &digitlang, NULL);
+    stat = GdipGetStringFormatDigitSubstitution(format, &digitlang, ((void*)0));
     expect(Ok, stat);
     expect(LANG_NEUTRAL, digitlang);
 
-    /* set/get */
+
     stat = GdipSetStringFormatDigitSubstitution(format, MAKELANGID(LANG_CHINESE, SUBLANG_CHINESE_TRADITIONAL),
                                                         StringDigitSubstituteUser);
     expect(Ok, stat);
-    digitsub  = StringDigitSubstituteNone;
+    digitsub = StringDigitSubstituteNone;
     digitlang = LANG_RUSSIAN;
     stat = GdipGetStringFormatDigitSubstitution(format, &digitlang, &digitsub);
     expect(Ok, stat);

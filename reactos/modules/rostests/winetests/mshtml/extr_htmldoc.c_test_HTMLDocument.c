@@ -1,71 +1,71 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  IHTMLDocument2 ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLIENTSITE_EXPECTPATH ; 
- int /*<<< orphan*/  CLIENTSITE_SETNULL ; 
- int /*<<< orphan*/  CallUIActivate_AfterShow ; 
- int /*<<< orphan*/  CallUIActivate_None ; 
- int /*<<< orphan*/  CustomDocHostUIHandler ; 
- int DWL_CSS ; 
- int DWL_TRYCSS ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  IOleDocumentView_Release (int /*<<< orphan*/ *) ; 
- int IsWindow (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LD_DOLOAD ; 
- int /*<<< orphan*/  LD_NO ; 
- int /*<<< orphan*/  Moniker ; 
- int /*<<< orphan*/  OLECMDF_SUPPORTED ; 
- int /*<<< orphan*/  S_FALSE ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  call_UIActivate ; 
- int /*<<< orphan*/ * create_document () ; 
- int /*<<< orphan*/  doc_hwnd ; 
- int /*<<< orphan*/ * doc_unk ; 
- int /*<<< orphan*/  init_test (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ok (int,char*) ; 
- int /*<<< orphan*/  release_document (int /*<<< orphan*/ *) ; 
- scalar_t__ report_mime ; 
- int /*<<< orphan*/  set_custom_uihandler (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  test_Activate (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_Advise (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  test_Close (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_CloseView () ; 
- int /*<<< orphan*/  test_ConnectionPointContainer (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  test_GetCurMoniker (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_Hide () ; 
- int /*<<< orphan*/  test_InPlaceDeactivate (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_IsDirty (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_MSHTML_QueryStatus (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_OleCommandTarget (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  test_OleCommandTarget_fail (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  test_OnAmbientPropertyChange (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  test_OnAmbientPropertyChange2 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  test_Persist (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  test_QueryInterface (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  test_UIDeactivate () ; 
- int /*<<< orphan*/  test_ViewAdviseSink (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  test_Window (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_download (int) ; 
- int /*<<< orphan*/  test_elem_from_point (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  test_exec_optical_zoom (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  test_external (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_target_container (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  trace (char*,char*,char*) ; 
- int /*<<< orphan*/ * view ; 
+
+
+
+typedef int IUnknown ;
+typedef int IHTMLDocument2 ;
+typedef scalar_t__ BOOL ;
+
+
+ int CLIENTSITE_EXPECTPATH ;
+ int CLIENTSITE_SETNULL ;
+ int CallUIActivate_AfterShow ;
+ int CallUIActivate_None ;
+ int CustomDocHostUIHandler ;
+ int DWL_CSS ;
+ int DWL_TRYCSS ;
+ int FALSE ;
+ int IOleDocumentView_Release (int *) ;
+ int IsWindow (int ) ;
+ int LD_DOLOAD ;
+ int LD_NO ;
+ int Moniker ;
+ int OLECMDF_SUPPORTED ;
+ int S_FALSE ;
+ int TRUE ;
+ int call_UIActivate ;
+ int * create_document () ;
+ int doc_hwnd ;
+ int * doc_unk ;
+ int init_test (int ) ;
+ int ok (int,char*) ;
+ int release_document (int *) ;
+ scalar_t__ report_mime ;
+ int set_custom_uihandler (int *,int *) ;
+ int test_Activate (int *,int ) ;
+ int test_Advise (int *) ;
+ int test_Close (int *,int ) ;
+ int test_CloseView () ;
+ int test_ConnectionPointContainer (int *) ;
+ int test_GetCurMoniker (int *,int *,int *,int ) ;
+ int test_Hide () ;
+ int test_InPlaceDeactivate (int *,int ) ;
+ int test_IsDirty (int *,int ) ;
+ int test_MSHTML_QueryStatus (int *,int ) ;
+ int test_OleCommandTarget (int *) ;
+ int test_OleCommandTarget_fail (int *) ;
+ int test_OnAmbientPropertyChange (int *) ;
+ int test_OnAmbientPropertyChange2 (int *) ;
+ int test_Persist (int *,int *) ;
+ int test_QueryInterface (int *) ;
+ int test_UIDeactivate () ;
+ int test_ViewAdviseSink (int *) ;
+ int test_Window (int *,int ) ;
+ int test_download (int) ;
+ int test_elem_from_point (int *) ;
+ int test_exec_optical_zoom (int *,int) ;
+ int test_external (int *,int ) ;
+ int test_target_container (int *) ;
+ int trace (char*,char*,char*) ;
+ int * view ;
 
 __attribute__((used)) static void test_HTMLDocument(BOOL do_load, BOOL mime)
 {
@@ -87,7 +87,7 @@ __attribute__((used)) static void test_HTMLDocument(BOOL do_load, BOOL mime)
     test_external(doc, FALSE);
     test_ViewAdviseSink(doc);
     test_ConnectionPointContainer(doc);
-    test_GetCurMoniker((IUnknown*)doc, NULL, NULL, FALSE);
+    test_GetCurMoniker((IUnknown*)doc, ((void*)0), ((void*)0), FALSE);
     test_Persist(doc, &Moniker);
     if(!do_load)
         test_OnAmbientPropertyChange2(doc);
@@ -97,7 +97,7 @@ __attribute__((used)) static void test_HTMLDocument(BOOL do_load, BOOL mime)
     if(do_load) {
         set_custom_uihandler(doc, &CustomDocHostUIHandler);
         test_download(DWL_CSS|DWL_TRYCSS);
-        test_GetCurMoniker((IUnknown*)doc, &Moniker, NULL, FALSE);
+        test_GetCurMoniker((IUnknown*)doc, &Moniker, ((void*)0), FALSE);
         test_elem_from_point(doc);
     }
 
@@ -116,8 +116,8 @@ __attribute__((used)) static void test_HTMLDocument(BOOL do_load, BOOL mime)
     test_Window(doc, TRUE);
     test_InPlaceDeactivate(doc, TRUE);
 
-    /* Calling test_OleCommandTarget here causes Segmentation Fault with native
-     * MSHTML. It doesn't with Wine. */
+
+
 
     test_Window(doc, FALSE);
     test_Hide();
@@ -125,7 +125,7 @@ __attribute__((used)) static void test_HTMLDocument(BOOL do_load, BOOL mime)
     test_CloseView();
     test_Close(doc, FALSE);
 
-    /* Activate HTMLDocument again */
+
     test_Activate(doc, CLIENTSITE_SETNULL);
     test_Window(doc, TRUE);
     test_OleCommandTarget(doc);
@@ -133,13 +133,13 @@ __attribute__((used)) static void test_HTMLDocument(BOOL do_load, BOOL mime)
     test_InPlaceDeactivate(doc, TRUE);
     test_Close(doc, FALSE);
 
-    /* Activate HTMLDocument again, this time without UIActivate */
+
     call_UIActivate = CallUIActivate_None;
     test_Activate(doc, CLIENTSITE_SETNULL);
     test_Window(doc, TRUE);
 
     test_external(doc, TRUE);
-    set_custom_uihandler(doc, NULL);
+    set_custom_uihandler(doc, ((void*)0));
     test_external(doc, FALSE);
 
     test_UIDeactivate();
@@ -148,10 +148,10 @@ __attribute__((used)) static void test_HTMLDocument(BOOL do_load, BOOL mime)
     test_CloseView();
     test_Close(doc, TRUE);
     test_OnAmbientPropertyChange2(doc);
-    test_GetCurMoniker((IUnknown*)doc, do_load ? &Moniker : NULL, NULL, FALSE);
+    test_GetCurMoniker((IUnknown*)doc, do_load ? &Moniker : ((void*)0), ((void*)0), FALSE);
 
     if(!do_load) {
-        /* Activate HTMLDocument again, calling UIActivate after showing the window */
+
         call_UIActivate = CallUIActivate_AfterShow;
         test_Activate(doc, 0);
         test_Window(doc, TRUE);
@@ -164,7 +164,7 @@ __attribute__((used)) static void test_HTMLDocument(BOOL do_load, BOOL mime)
 
     if(view)
         IOleDocumentView_Release(view);
-    view = NULL;
+    view = ((void*)0);
 
     ok(IsWindow(doc_hwnd), "hwnd is destroyed\n");
     release_document(doc);

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  fz_location ;
 
-/* Variables and functions */
- int /*<<< orphan*/  clear_future () ; 
- int /*<<< orphan*/  ctx ; 
- int /*<<< orphan*/  currentpage ; 
- int /*<<< orphan*/  doc ; 
- int /*<<< orphan*/  fz_clamp_location (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  push_history () ; 
+
+
+
+typedef int fz_location ;
+
+
+ int clear_future () ;
+ int ctx ;
+ int currentpage ;
+ int doc ;
+ int fz_clamp_location (int ,int ,int ) ;
+ int push_history () ;
 
 __attribute__((used)) static void jump_to_location(fz_location loc)
 {
-	clear_future();
-	push_history();
-	currentpage = fz_clamp_location(ctx, doc, loc);
-	push_history();
+ clear_future();
+ push_history();
+ currentpage = fz_clamp_location(ctx, doc, loc);
+ push_history();
 }

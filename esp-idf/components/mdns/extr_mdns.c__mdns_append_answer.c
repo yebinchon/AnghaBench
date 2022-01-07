@@ -1,60 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_19__   TYPE_8__ ;
-typedef  struct TYPE_18__   TYPE_7__ ;
-typedef  struct TYPE_17__   TYPE_5__ ;
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int /*<<< orphan*/  uint16_t ;
+
+
+typedef struct TYPE_19__ TYPE_8__ ;
+typedef struct TYPE_18__ TYPE_7__ ;
+typedef struct TYPE_17__ TYPE_5__ ;
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint16_t ;
 struct esp_ip6_addr {scalar_t__ addr; } ;
-struct TYPE_16__ {scalar_t__ type; int /*<<< orphan*/  bye; int /*<<< orphan*/  flush; TYPE_8__* service; int /*<<< orphan*/  custom_proto; int /*<<< orphan*/  custom_service; int /*<<< orphan*/  custom_instance; } ;
-typedef  TYPE_4__ mdns_out_answer_t ;
-typedef  size_t mdns_if_t ;
-struct TYPE_13__ {int /*<<< orphan*/  addr; } ;
+struct TYPE_16__ {scalar_t__ type; int bye; int flush; TYPE_8__* service; int custom_proto; int custom_service; int custom_instance; } ;
+typedef TYPE_4__ mdns_out_answer_t ;
+typedef size_t mdns_if_t ;
+struct TYPE_13__ {int addr; } ;
 struct TYPE_17__ {TYPE_1__ ip; } ;
-typedef  TYPE_5__ esp_netif_ip_info_t ;
-struct TYPE_19__ {int /*<<< orphan*/  proto; int /*<<< orphan*/  service; } ;
+typedef TYPE_5__ esp_netif_ip_info_t ;
+struct TYPE_19__ {int proto; int service; } ;
 struct TYPE_18__ {TYPE_3__* interfaces; } ;
 struct TYPE_15__ {TYPE_2__* pcbs; } ;
-struct TYPE_14__ {scalar_t__ state; int /*<<< orphan*/  pcb; } ;
+struct TYPE_14__ {scalar_t__ state; int pcb; } ;
 
-/* Variables and functions */
- size_t MDNS_IP_PROTOCOL_V4 ; 
- size_t MDNS_IP_PROTOCOL_V6 ; 
- scalar_t__ MDNS_TYPE_A ; 
- scalar_t__ MDNS_TYPE_AAAA ; 
- scalar_t__ MDNS_TYPE_PTR ; 
- scalar_t__ MDNS_TYPE_SDPTR ; 
- scalar_t__ MDNS_TYPE_SRV ; 
- scalar_t__ MDNS_TYPE_TXT ; 
- scalar_t__ PCB_DUP ; 
- scalar_t__ _ipv6_address_is_zero (struct esp_ip6_addr) ; 
- scalar_t__ _mdns_append_a_record (int*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ _mdns_append_aaaa_record (int*,int /*<<< orphan*/ *,int*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ _mdns_append_ptr_record (int*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ _mdns_append_sdptr_record (int*,int /*<<< orphan*/ *,TYPE_8__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ _mdns_append_srv_record (int*,int /*<<< orphan*/ *,TYPE_8__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ _mdns_append_txt_record (int*,int /*<<< orphan*/ *,TYPE_8__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  _mdns_get_esp_netif (size_t) ; 
- size_t _mdns_get_other_if (size_t) ; 
- int /*<<< orphan*/  _mdns_get_service_instance_name (TYPE_8__*) ; 
- int /*<<< orphan*/  _mdns_if_is_dup (size_t) ; 
- TYPE_7__* _mdns_server ; 
- scalar_t__ esp_netif_get_ip6_linklocal (int /*<<< orphan*/ ,struct esp_ip6_addr*) ; 
- scalar_t__ esp_netif_get_ip_info (int /*<<< orphan*/ ,TYPE_5__*) ; 
+
+ size_t MDNS_IP_PROTOCOL_V4 ;
+ size_t MDNS_IP_PROTOCOL_V6 ;
+ scalar_t__ MDNS_TYPE_A ;
+ scalar_t__ MDNS_TYPE_AAAA ;
+ scalar_t__ MDNS_TYPE_PTR ;
+ scalar_t__ MDNS_TYPE_SDPTR ;
+ scalar_t__ MDNS_TYPE_SRV ;
+ scalar_t__ MDNS_TYPE_TXT ;
+ scalar_t__ PCB_DUP ;
+ scalar_t__ _ipv6_address_is_zero (struct esp_ip6_addr) ;
+ scalar_t__ _mdns_append_a_record (int*,int *,int ,int ,int ) ;
+ scalar_t__ _mdns_append_aaaa_record (int*,int *,int*,int ,int ) ;
+ scalar_t__ _mdns_append_ptr_record (int*,int *,int ,int ,int ,int ,int ) ;
+ scalar_t__ _mdns_append_sdptr_record (int*,int *,TYPE_8__*,int ,int ) ;
+ scalar_t__ _mdns_append_srv_record (int*,int *,TYPE_8__*,int ,int ) ;
+ scalar_t__ _mdns_append_txt_record (int*,int *,TYPE_8__*,int ,int ) ;
+ int _mdns_get_esp_netif (size_t) ;
+ size_t _mdns_get_other_if (size_t) ;
+ int _mdns_get_service_instance_name (TYPE_8__*) ;
+ int _mdns_if_is_dup (size_t) ;
+ TYPE_7__* _mdns_server ;
+ scalar_t__ esp_netif_get_ip6_linklocal (int ,struct esp_ip6_addr*) ;
+ scalar_t__ esp_netif_get_ip_info (int ,TYPE_5__*) ;
 
 __attribute__((used)) static uint8_t _mdns_append_answer(uint8_t * packet, uint16_t * index, mdns_out_answer_t * answer, mdns_if_t tcpip_if)
 {

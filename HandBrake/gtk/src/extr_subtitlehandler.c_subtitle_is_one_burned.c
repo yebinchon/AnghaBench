@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  gboolean ;
-typedef  int /*<<< orphan*/  GhbValue ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/ * ghb_array_get (int /*<<< orphan*/ *,int) ; 
- int ghb_array_len (int /*<<< orphan*/ *) ; 
- scalar_t__ ghb_dict_get_bool (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/ * ghb_get_job_subtitle_list (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int gboolean ;
+typedef int GhbValue ;
+
+
+ int FALSE ;
+ int TRUE ;
+ int * ghb_array_get (int *,int) ;
+ int ghb_array_len (int *) ;
+ scalar_t__ ghb_dict_get_bool (int *,char*) ;
+ int * ghb_get_job_subtitle_list (int *) ;
 
 __attribute__((used)) static gboolean subtitle_is_one_burned(GhbValue *settings)
 {
@@ -27,7 +27,7 @@ __attribute__((used)) static gboolean subtitle_is_one_burned(GhbValue *settings)
     int count, ii;
 
     subtitle_list = ghb_get_job_subtitle_list(settings);
-    if (subtitle_list == NULL)
+    if (subtitle_list == ((void*)0))
         return FALSE;
 
     count = ghb_array_len(subtitle_list);

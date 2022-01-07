@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  size_t uint32_t ;
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MOD_CHECK_ID (int /*<<< orphan*/ ,unsigned int) ; 
- int /*<<< orphan*/  PLATFORM_GPIO_OUTPUT ; 
- int /*<<< orphan*/  PLATFORM_GPIO_PULLUP ; 
- int /*<<< orphan*/  luaL_argcheck (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,char*) ; 
- void* luaL_checkinteger (int /*<<< orphan*/ *,int) ; 
- int luaL_error (int /*<<< orphan*/ *,char*) ; 
- int lua_gettop (int /*<<< orphan*/ *) ; 
- int* pin_num ; 
- int /*<<< orphan*/  platform_gpio_exists (size_t) ; 
- int /*<<< orphan*/  platform_gpio_mode (size_t,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  switec ; 
- scalar_t__ switec_close (unsigned int) ; 
- scalar_t__ switec_setup (unsigned int,int*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tasknumber ; 
+
+
+
+typedef size_t uint32_t ;
+typedef int lua_State ;
+
+
+ int MOD_CHECK_ID (int ,unsigned int) ;
+ int PLATFORM_GPIO_OUTPUT ;
+ int PLATFORM_GPIO_PULLUP ;
+ int luaL_argcheck (int *,int ,int,char*) ;
+ void* luaL_checkinteger (int *,int) ;
+ int luaL_error (int *,char*) ;
+ int lua_gettop (int *) ;
+ int* pin_num ;
+ int platform_gpio_exists (size_t) ;
+ int platform_gpio_mode (size_t,int ,int ) ;
+ int switec ;
+ scalar_t__ switec_close (unsigned int) ;
+ scalar_t__ switec_setup (unsigned int,int*,int,int ) ;
+ int tasknumber ;
 
 __attribute__((used)) static int lswitec_setup( lua_State* L )
 {

@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct d3dx_parameter {int class; int /*<<< orphan*/  element_count; } ;
+
+
+
+
+struct d3dx_parameter {int class; int element_count; } ;
 struct d3dx9_base_effect {int dummy; } ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  D3DXMATRIX ;
-typedef  int /*<<< orphan*/  D3DXHANDLE ;
+typedef int HRESULT ;
+typedef int D3DXMATRIX ;
+typedef int D3DXHANDLE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D3DERR_INVALIDCALL ; 
-#define  D3DXPC_MATRIX_ROWS 132 
-#define  D3DXPC_OBJECT 131 
-#define  D3DXPC_SCALAR 130 
-#define  D3DXPC_STRUCT 129 
-#define  D3DXPC_VECTOR 128 
- int /*<<< orphan*/  D3D_OK ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  FIXME (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  WARN (char*) ; 
- int /*<<< orphan*/  debug_d3dxparameter_class (int) ; 
- int /*<<< orphan*/  get_matrix (struct d3dx_parameter*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- struct d3dx_parameter* get_valid_parameter (struct d3dx9_base_effect*,int /*<<< orphan*/ ) ; 
+
+ int D3DERR_INVALIDCALL ;
+
+
+
+
+
+ int D3D_OK ;
+ int FALSE ;
+ int FIXME (char*,int ) ;
+ int TRACE (char*,int ) ;
+ int TRUE ;
+ int WARN (char*) ;
+ int debug_d3dxparameter_class (int) ;
+ int get_matrix (struct d3dx_parameter*,int *,int ) ;
+ struct d3dx_parameter* get_valid_parameter (struct d3dx9_base_effect*,int ) ;
 
 __attribute__((used)) static HRESULT d3dx9_base_effect_get_matrix_transpose(struct d3dx9_base_effect *base,
         D3DXHANDLE parameter, D3DXMATRIX *matrix)
@@ -44,17 +44,17 @@ __attribute__((used)) static HRESULT d3dx9_base_effect_get_matrix_transpose(stru
 
         switch (param->class)
         {
-            case D3DXPC_SCALAR:
-            case D3DXPC_VECTOR:
+            case 130:
+            case 128:
                 get_matrix(param, matrix, FALSE);
                 return D3D_OK;
 
-            case D3DXPC_MATRIX_ROWS:
+            case 132:
                 get_matrix(param, matrix, TRUE);
                 return D3D_OK;
 
-            case D3DXPC_OBJECT:
-            case D3DXPC_STRUCT:
+            case 131:
+            case 129:
                 break;
 
             default:

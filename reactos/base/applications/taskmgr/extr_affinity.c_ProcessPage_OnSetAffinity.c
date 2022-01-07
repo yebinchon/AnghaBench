@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  szTitle ;
-typedef  int /*<<< orphan*/  strErrorText ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  scalar_t__ DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AffinityDialogWndProc ; 
- int /*<<< orphan*/  CloseHandle (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DialogBoxW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GetLastErrorText (int /*<<< orphan*/ *,int) ; 
- scalar_t__ GetSelectedProcessId () ; 
- int /*<<< orphan*/  IDD_AFFINITY_DIALOG ; 
- int /*<<< orphan*/  IDS_MSG_ACCESSPROCESSAFF ; 
- int /*<<< orphan*/  LoadStringW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  MAKEINTRESOURCEW (int /*<<< orphan*/ ) ; 
- int MB_ICONSTOP ; 
- int MB_OK ; 
- int /*<<< orphan*/  MessageBoxW (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * OpenProcess (int,int /*<<< orphan*/ ,scalar_t__) ; 
- int PROCESS_QUERY_INFORMATION ; 
- int PROCESS_SET_INFORMATION ; 
- int /*<<< orphan*/  hInst ; 
- int /*<<< orphan*/  hMainWnd ; 
- int /*<<< orphan*/ * hProcessAffinityHandle ; 
+
+
+
+typedef int szTitle ;
+typedef int strErrorText ;
+typedef int WCHAR ;
+typedef scalar_t__ DWORD ;
+
+
+ int AffinityDialogWndProc ;
+ int CloseHandle (int *) ;
+ int DialogBoxW (int ,int ,int ,int ) ;
+ int FALSE ;
+ int GetLastErrorText (int *,int) ;
+ scalar_t__ GetSelectedProcessId () ;
+ int IDD_AFFINITY_DIALOG ;
+ int IDS_MSG_ACCESSPROCESSAFF ;
+ int LoadStringW (int ,int ,int *,int) ;
+ int MAKEINTRESOURCEW (int ) ;
+ int MB_ICONSTOP ;
+ int MB_OK ;
+ int MessageBoxW (int ,int *,int *,int) ;
+ int * OpenProcess (int,int ,scalar_t__) ;
+ int PROCESS_QUERY_INFORMATION ;
+ int PROCESS_SET_INFORMATION ;
+ int hInst ;
+ int hMainWnd ;
+ int * hProcessAffinityHandle ;
 
 void ProcessPage_OnSetAffinity(void)
 {
-    DWORD    dwProcessId;
-    WCHAR    strErrorText[260];
-    WCHAR    szTitle[256];
+    DWORD dwProcessId;
+    WCHAR strErrorText[260];
+    WCHAR szTitle[256];
 
     dwProcessId = GetSelectedProcessId();
 
@@ -55,8 +55,8 @@ void ProcessPage_OnSetAffinity(void)
         return;
     }
     DialogBoxW(hInst, MAKEINTRESOURCEW(IDD_AFFINITY_DIALOG), hMainWnd, AffinityDialogWndProc);
-    if (hProcessAffinityHandle)    {
+    if (hProcessAffinityHandle) {
         CloseHandle(hProcessAffinityHandle);
-        hProcessAffinityHandle = NULL;
+        hProcessAffinityHandle = ((void*)0);
     }
 }

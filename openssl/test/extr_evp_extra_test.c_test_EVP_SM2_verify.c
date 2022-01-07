@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int /*<<< orphan*/  signature ;
-typedef  int /*<<< orphan*/  EVP_PKEY_CTX ;
-typedef  int /*<<< orphan*/  EVP_PKEY ;
-typedef  int /*<<< orphan*/  EVP_MD_CTX ;
-typedef  int /*<<< orphan*/  BIO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BIO_new_mem_buf (char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EVP_DigestVerifyFinal (int /*<<< orphan*/ *,int const*,int) ; 
- int /*<<< orphan*/  EVP_DigestVerifyInit (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EVP_DigestVerifyUpdate (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EVP_MD_CTX_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * EVP_MD_CTX_new () ; 
- int /*<<< orphan*/  EVP_MD_CTX_set_pkey_ctx (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EVP_PKEY_CTX_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * EVP_PKEY_CTX_new (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EVP_PKEY_CTX_set1_id (int /*<<< orphan*/ *,int const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EVP_PKEY_SM2 ; 
- int /*<<< orphan*/  EVP_PKEY_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EVP_PKEY_set_alias_type (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EVP_sm3 () ; 
- int /*<<< orphan*/ * PEM_read_bio_PUBKEY (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TEST_int_gt (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_ptr (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TEST_true (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strlen (char const*) ; 
+
+
+
+typedef int uint8_t ;
+typedef int signature ;
+typedef int EVP_PKEY_CTX ;
+typedef int EVP_PKEY ;
+typedef int EVP_MD_CTX ;
+typedef int BIO ;
+
+
+ int BIO_free (int *) ;
+ int * BIO_new_mem_buf (char const*,int ) ;
+ int EVP_DigestVerifyFinal (int *,int const*,int) ;
+ int EVP_DigestVerifyInit (int *,int *,int ,int *,int *) ;
+ int EVP_DigestVerifyUpdate (int *,char const*,int ) ;
+ int EVP_MD_CTX_free (int *) ;
+ int * EVP_MD_CTX_new () ;
+ int EVP_MD_CTX_set_pkey_ctx (int *,int *) ;
+ int EVP_PKEY_CTX_free (int *) ;
+ int * EVP_PKEY_CTX_new (int *,int *) ;
+ int EVP_PKEY_CTX_set1_id (int *,int const*,int ) ;
+ int EVP_PKEY_SM2 ;
+ int EVP_PKEY_free (int *) ;
+ int EVP_PKEY_set_alias_type (int *,int ) ;
+ int EVP_sm3 () ;
+ int * PEM_read_bio_PUBKEY (int *,int *,int *,int *) ;
+ int TEST_int_gt (int ,int ) ;
+ int TEST_ptr (int *) ;
+ int TEST_true (int ) ;
+ int strlen (char const*) ;
 
 __attribute__((used)) static int test_EVP_SM2_verify(void)
 {
-    /* From https://tools.ietf.org/html/draft-shen-sm2-ecdsa-02#appendix-A */
+
     const char *pubkey =
        "-----BEGIN PUBLIC KEY-----\n"
        "MIIBMzCB7AYHKoZIzj0CATCB4AIBATAsBgcqhkjOPQEBAiEAhULWnkwETxjouSQ1\n"
@@ -71,17 +71,17 @@ __attribute__((used)) static int test_EVP_SM2_verify(void)
     };
 
     int rc = 0;
-    BIO *bio = NULL;
-    EVP_PKEY *pkey = NULL;
-    EVP_MD_CTX *mctx = NULL;
-    EVP_PKEY_CTX *pctx = NULL;
+    BIO *bio = ((void*)0);
+    EVP_PKEY *pkey = ((void*)0);
+    EVP_MD_CTX *mctx = ((void*)0);
+    EVP_PKEY_CTX *pctx = ((void*)0);
 
     bio = BIO_new_mem_buf(pubkey, strlen(pubkey));
-    if (!TEST_true(bio != NULL))
+    if (!TEST_true(bio != ((void*)0)))
         goto done;
 
-    pkey = PEM_read_bio_PUBKEY(bio, NULL, NULL, NULL);
-    if (!TEST_true(pkey != NULL))
+    pkey = PEM_read_bio_PUBKEY(bio, ((void*)0), ((void*)0), ((void*)0));
+    if (!TEST_true(pkey != ((void*)0)))
         goto done;
 
     if (!TEST_true(EVP_PKEY_set_alias_type(pkey, EVP_PKEY_SM2)))
@@ -90,7 +90,7 @@ __attribute__((used)) static int test_EVP_SM2_verify(void)
     if (!TEST_ptr(mctx = EVP_MD_CTX_new()))
         goto done;
 
-    if (!TEST_ptr(pctx = EVP_PKEY_CTX_new(pkey, NULL)))
+    if (!TEST_ptr(pctx = EVP_PKEY_CTX_new(pkey, ((void*)0))))
         goto done;
 
     if (!TEST_int_gt(EVP_PKEY_CTX_set1_id(pctx, (const uint8_t *)id,
@@ -99,7 +99,7 @@ __attribute__((used)) static int test_EVP_SM2_verify(void)
 
     EVP_MD_CTX_set_pkey_ctx(mctx, pctx);
 
-    if (!TEST_true(EVP_DigestVerifyInit(mctx, NULL, EVP_sm3(), NULL, pkey)))
+    if (!TEST_true(EVP_DigestVerifyInit(mctx, ((void*)0), EVP_sm3(), ((void*)0), pkey)))
         goto done;
 
     if (!TEST_true(EVP_DigestVerifyUpdate(mctx, msg, strlen(msg))))

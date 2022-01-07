@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int bus_type; } ;
-typedef  TYPE_1__ MPT_ADAPTER ;
+typedef TYPE_1__ MPT_ADAPTER ;
 
-/* Variables and functions */
-#define  FC 130 
-#define  SAS 129 
-#define  SPI 128 
+
+
+
+
 
 __attribute__((used)) static int
 mptscsih_get_tm_timeout(MPT_ADAPTER *ioc)
 {
-	switch (ioc->bus_type) {
-	case FC:
-		return 40;
-	case SAS:
-		return 30;
-	case SPI:
-	default:
-		return 10;
-	}
+ switch (ioc->bus_type) {
+ case 130:
+  return 40;
+ case 129:
+  return 30;
+ case 128:
+ default:
+  return 10;
+ }
 }

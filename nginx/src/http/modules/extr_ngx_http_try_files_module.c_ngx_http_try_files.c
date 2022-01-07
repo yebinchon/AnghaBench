@@ -1,66 +1,66 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_18__   TYPE_6__ ;
-typedef  struct TYPE_17__   TYPE_5__ ;
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int ngx_uint_t ;
+
+
+typedef struct TYPE_18__ TYPE_6__ ;
+typedef struct TYPE_17__ TYPE_5__ ;
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+typedef int ngx_uint_t ;
 struct TYPE_14__ {int len; char* data; } ;
-typedef  TYPE_2__ ngx_str_t ;
-typedef  int ngx_int_t ;
+typedef TYPE_2__ ngx_str_t ;
+typedef int ngx_int_t ;
 struct TYPE_15__ {TYPE_4__* try_files; } ;
-typedef  TYPE_3__ ngx_http_try_files_loc_conf_t ;
-struct TYPE_16__ {int test_dir; int code; TYPE_2__ name; int /*<<< orphan*/  values; int /*<<< orphan*/  lengths; } ;
-typedef  TYPE_4__ ngx_http_try_file_t ;
-struct TYPE_17__ {int variables; int complete_lengths; int complete_values; int /*<<< orphan*/ * values; int /*<<< orphan*/ * lengths; TYPE_2__* source; TYPE_6__* cf; } ;
-typedef  TYPE_5__ ngx_http_script_compile_t ;
-struct TYPE_18__ {TYPE_1__* args; int /*<<< orphan*/  pool; } ;
-typedef  TYPE_6__ ngx_conf_t ;
-typedef  int /*<<< orphan*/  ngx_command_t ;
+typedef TYPE_3__ ngx_http_try_files_loc_conf_t ;
+struct TYPE_16__ {int test_dir; int code; TYPE_2__ name; int values; int lengths; } ;
+typedef TYPE_4__ ngx_http_try_file_t ;
+struct TYPE_17__ {int variables; int complete_lengths; int complete_values; int * values; int * lengths; TYPE_2__* source; TYPE_6__* cf; } ;
+typedef TYPE_5__ ngx_http_script_compile_t ;
+struct TYPE_18__ {TYPE_1__* args; int pool; } ;
+typedef TYPE_6__ ngx_conf_t ;
+typedef int ngx_command_t ;
 struct TYPE_13__ {int nelts; TYPE_2__* elts; } ;
 
-/* Variables and functions */
- char* NGX_CONF_ERROR ; 
- char* NGX_CONF_OK ; 
- int NGX_ERROR ; 
- int /*<<< orphan*/  NGX_LOG_EMERG ; 
- scalar_t__ NGX_OK ; 
- int ngx_atoi (char*,int) ; 
- int /*<<< orphan*/  ngx_conf_log_error (int /*<<< orphan*/ ,TYPE_6__*,int /*<<< orphan*/ ,char*,int,char*) ; 
- scalar_t__ ngx_http_script_compile (TYPE_5__*) ; 
- int ngx_http_script_variables_count (TYPE_2__*) ; 
- int /*<<< orphan*/  ngx_memzero (TYPE_5__*,int) ; 
- TYPE_4__* ngx_pcalloc (int /*<<< orphan*/ ,int) ; 
+
+ char* NGX_CONF_ERROR ;
+ char* NGX_CONF_OK ;
+ int NGX_ERROR ;
+ int NGX_LOG_EMERG ;
+ scalar_t__ NGX_OK ;
+ int ngx_atoi (char*,int) ;
+ int ngx_conf_log_error (int ,TYPE_6__*,int ,char*,int,char*) ;
+ scalar_t__ ngx_http_script_compile (TYPE_5__*) ;
+ int ngx_http_script_variables_count (TYPE_2__*) ;
+ int ngx_memzero (TYPE_5__*,int) ;
+ TYPE_4__* ngx_pcalloc (int ,int) ;
 
 __attribute__((used)) static char *
 ngx_http_try_files(ngx_conf_t *cf, ngx_command_t *cmd, void *conf)
 {
     ngx_http_try_files_loc_conf_t *tlcf = conf;
 
-    ngx_str_t                  *value;
-    ngx_int_t                   code;
-    ngx_uint_t                  i, n;
-    ngx_http_try_file_t        *tf;
-    ngx_http_script_compile_t   sc;
+    ngx_str_t *value;
+    ngx_int_t code;
+    ngx_uint_t i, n;
+    ngx_http_try_file_t *tf;
+    ngx_http_script_compile_t sc;
 
     if (tlcf->try_files) {
         return "is duplicate";
     }
 
     tf = ngx_pcalloc(cf->pool, cf->args->nelts * sizeof(ngx_http_try_file_t));
-    if (tf == NULL) {
+    if (tf == ((void*)0)) {
         return NGX_CONF_ERROR;
     }
 
@@ -99,7 +99,7 @@ ngx_http_try_files(ngx_conf_t *cf, ngx_command_t *cmd, void *conf)
             }
 
         } else {
-            /* add trailing '\0' to length */
+
             tf[i].name.len++;
         }
     }

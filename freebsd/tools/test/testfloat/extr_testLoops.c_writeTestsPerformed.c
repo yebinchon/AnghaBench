@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int int16 ;
 
-/* Variables and functions */
- int errorCount ; 
- int /*<<< orphan*/  fflush (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,...) ; 
- int /*<<< orphan*/  fputs (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  stdout ; 
- int tenthousandsCount ; 
- int /*<<< orphan*/  writeFunctionName (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int int16 ;
+
+
+ int errorCount ;
+ int fflush (int ) ;
+ int fprintf (int ,char*,int,...) ;
+ int fputs (char*,int ) ;
+ int stderr ;
+ int stdout ;
+ int tenthousandsCount ;
+ int writeFunctionName (int ) ;
 
 __attribute__((used)) static void writeTestsPerformed( int16 count )
 {

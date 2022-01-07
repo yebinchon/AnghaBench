@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {char* kmod_name; } ;
-struct common_audit_data {TYPE_1__ u; int /*<<< orphan*/  type; } ;
+struct common_audit_data {TYPE_1__ u; int type; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LSM_AUDIT_DATA_KMOD ; 
- int /*<<< orphan*/  SECCLASS_SYSTEM ; 
- int /*<<< orphan*/  SECINITSID_KERNEL ; 
- int /*<<< orphan*/  SYSTEM__MODULE_REQUEST ; 
- int avc_has_perm (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct common_audit_data*) ; 
- int /*<<< orphan*/  current_sid () ; 
- int /*<<< orphan*/  selinux_state ; 
+
+ int LSM_AUDIT_DATA_KMOD ;
+ int SECCLASS_SYSTEM ;
+ int SECINITSID_KERNEL ;
+ int SYSTEM__MODULE_REQUEST ;
+ int avc_has_perm (int *,int ,int ,int ,int ,struct common_audit_data*) ;
+ int current_sid () ;
+ int selinux_state ;
 
 __attribute__((used)) static int selinux_kernel_module_request(char *kmod_name)
 {
-	struct common_audit_data ad;
+ struct common_audit_data ad;
 
-	ad.type = LSM_AUDIT_DATA_KMOD;
-	ad.u.kmod_name = kmod_name;
+ ad.type = LSM_AUDIT_DATA_KMOD;
+ ad.u.kmod_name = kmod_name;
 
-	return avc_has_perm(&selinux_state,
-			    current_sid(), SECINITSID_KERNEL, SECCLASS_SYSTEM,
-			    SYSTEM__MODULE_REQUEST, &ad);
+ return avc_has_perm(&selinux_state,
+       current_sid(), SECINITSID_KERNEL, SECCLASS_SYSTEM,
+       SYSTEM__MODULE_REQUEST, &ad);
 }

@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char* UINT ;
-typedef  int /*<<< orphan*/  MSIHANDLE ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DeleteFileA (int /*<<< orphan*/ ) ; 
- char* ERROR_FUNCTION_FAILED ; 
- char* ERROR_INSTALL_PACKAGE_REJECTED ; 
- char* ERROR_INVALID_HANDLE ; 
- char* ERROR_INVALID_PARAMETER ; 
- char* ERROR_MORE_DATA ; 
- char* ERROR_SUCCESS ; 
- int /*<<< orphan*/  MsiCloseHandle (int /*<<< orphan*/ ) ; 
- char* MsiGetPropertyA (int /*<<< orphan*/ ,char*,char*,int*) ; 
- char* MsiSetPropertyA (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  add_property_entry (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  check_prop_empty (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  create_package_db () ; 
- int /*<<< orphan*/  create_property_table (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  msifile ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- char* package_from_db (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  skip (char*) ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
+
+
+
+typedef char* UINT ;
+typedef int MSIHANDLE ;
+typedef int DWORD ;
+
+
+ int DeleteFileA (int ) ;
+ char* ERROR_FUNCTION_FAILED ;
+ char* ERROR_INSTALL_PACKAGE_REJECTED ;
+ char* ERROR_INVALID_HANDLE ;
+ char* ERROR_INVALID_PARAMETER ;
+ char* ERROR_MORE_DATA ;
+ char* ERROR_SUCCESS ;
+ int MsiCloseHandle (int ) ;
+ char* MsiGetPropertyA (int ,char*,char*,int*) ;
+ char* MsiSetPropertyA (int ,char*,char*) ;
+ int add_property_entry (int ,char*) ;
+ int check_prop_empty (int ,char*) ;
+ int create_package_db () ;
+ int create_property_table (int ) ;
+ int msifile ;
+ int ok (int,char*,...) ;
+ char* package_from_db (int ,int *) ;
+ int skip (char*) ;
+ int strcmp (char*,char*) ;
+ int strcpy (char*,char*) ;
 
 __attribute__((used)) static void test_props(void)
 {
@@ -57,22 +57,22 @@ __attribute__((used)) static void test_props(void)
     }
     ok( r == ERROR_SUCCESS, "failed to create package %u\n", r);
 
-    /* test invalid values */
-    r = MsiGetPropertyA( 0, NULL, NULL, NULL );
+
+    r = MsiGetPropertyA( 0, ((void*)0), ((void*)0), ((void*)0) );
     ok( r == ERROR_INVALID_PARAMETER, "wrong return val\n");
 
-    r = MsiGetPropertyA( hpkg, NULL, NULL, NULL );
+    r = MsiGetPropertyA( hpkg, ((void*)0), ((void*)0), ((void*)0) );
     ok( r == ERROR_INVALID_PARAMETER, "wrong return val\n");
 
-    r = MsiGetPropertyA( hpkg, "boo", NULL, NULL );
+    r = MsiGetPropertyA( hpkg, "boo", ((void*)0), ((void*)0) );
     ok( r == ERROR_SUCCESS, "wrong return val\n");
 
-    r = MsiGetPropertyA( hpkg, "boo", buffer, NULL );
+    r = MsiGetPropertyA( hpkg, "boo", buffer, ((void*)0) );
     ok( r == ERROR_INVALID_PARAMETER, "wrong return val\n");
 
-    /* test retrieving an empty/nonexistent property */
+
     sz = sizeof buffer;
-    r = MsiGetPropertyA( hpkg, "boo", NULL, &sz );
+    r = MsiGetPropertyA( hpkg, "boo", ((void*)0), &sz );
     ok( r == ERROR_SUCCESS, "wrong return val\n");
     ok( sz == 0, "wrong size returned\n");
 
@@ -91,17 +91,17 @@ __attribute__((used)) static void test_props(void)
     ok( buffer[0] == 0, "buffer was not changed\n");
     ok( sz == 0, "wrong size returned\n");
 
-    /* set the property to something */
-    r = MsiSetPropertyA( 0, NULL, NULL );
+
+    r = MsiSetPropertyA( 0, ((void*)0), ((void*)0) );
     ok( r == ERROR_INVALID_HANDLE, "wrong return val\n");
 
-    r = MsiSetPropertyA( hpkg, NULL, NULL );
+    r = MsiSetPropertyA( hpkg, ((void*)0), ((void*)0) );
     ok( r == ERROR_INVALID_PARAMETER, "wrong return val\n");
 
-    r = MsiSetPropertyA( hpkg, "", NULL );
+    r = MsiSetPropertyA( hpkg, "", ((void*)0) );
     ok( r == ERROR_SUCCESS, "wrong return val\n");
 
-    /* try set and get some illegal property identifiers */
+
     r = MsiSetPropertyA( hpkg, "", "asdf" );
     ok( r == ERROR_FUNCTION_FAILED, "wrong return val\n");
 
@@ -120,8 +120,8 @@ __attribute__((used)) static void test_props(void)
     ok( r == ERROR_SUCCESS, "wrong return val\n");
     ok( !strcmp(buffer,"asdf"), "buffer was not changed\n");
 
-    /* set empty values */
-    r = MsiSetPropertyA( hpkg, "boo", NULL );
+
+    r = MsiSetPropertyA( hpkg, "boo", ((void*)0) );
     ok( r == ERROR_SUCCESS, "wrong return val\n");
     ok( check_prop_empty( hpkg, "boo"), "prop wasn't empty\n");
 
@@ -129,7 +129,7 @@ __attribute__((used)) static void test_props(void)
     ok( r == ERROR_SUCCESS, "wrong return val\n");
     ok( check_prop_empty( hpkg, "boo"), "prop wasn't empty\n");
 
-    /* set a non-empty value */
+
     r = MsiSetPropertyA( hpkg, "boo", "xyz" );
     ok( r == ERROR_SUCCESS, "wrong return val\n");
 
@@ -179,7 +179,7 @@ __attribute__((used)) static void test_props(void)
     ok( r == ERROR_SUCCESS, "wrong return val\n");
 
     sz = 0;
-    r = MsiGetPropertyA(hpkg, "MetadataCompName", NULL, &sz );
+    r = MsiGetPropertyA(hpkg, "MetadataCompName", ((void*)0), &sz );
     ok( r == ERROR_SUCCESS, "return wrong\n");
     ok( sz == 13, "size wrong (%d)\n", sz);
 
@@ -196,7 +196,7 @@ __attribute__((used)) static void test_props(void)
     ok( r == ERROR_SUCCESS, "Expected ERROR_SUCCESS, got %d\n", r);
     ok( !strcmp(buffer, "value"), "Expected value, got %s\n", buffer);
 
-    r = MsiSetPropertyA(hpkg, "property", NULL);
+    r = MsiSetPropertyA(hpkg, "property", ((void*)0));
     ok( r == ERROR_SUCCESS, "Expected ERROR_SUCCESS, got %d\n", r);
 
     sz = 6;

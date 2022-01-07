@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int HPDF_INT32 ;
 
-/* Variables and functions */
- int HPDF_INT_LEN ; 
- int HPDF_LIMIT_MAX_INT ; 
- int HPDF_LIMIT_MIN_INT ; 
+
+
+
+typedef int HPDF_INT32 ;
+
+
+ int HPDF_INT_LEN ;
+ int HPDF_LIMIT_MAX_INT ;
+ int HPDF_LIMIT_MIN_INT ;
 
 char*
-HPDF_IToA  (char        *s,
-            HPDF_INT32   val,
-            char        *eptr)
+HPDF_IToA (char *s,
+            HPDF_INT32 val,
+            char *eptr)
 {
     char* t;
     char buf[HPDF_INT_LEN + 1];

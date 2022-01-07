@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_4__ {TYPE_1__* work_share; } ;
 struct gomp_thread {TYPE_2__ ts; } ;
-struct TYPE_3__ {int /*<<< orphan*/  lock; } ;
+struct TYPE_3__ {int lock; } ;
 
-/* Variables and functions */
- int gomp_iter_guided_next_locked (long*,long*) ; 
- int /*<<< orphan*/  gomp_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  gomp_mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  gomp_ordered_last () ; 
- int /*<<< orphan*/  gomp_ordered_next () ; 
- int /*<<< orphan*/  gomp_ordered_sync () ; 
- struct gomp_thread* gomp_thread () ; 
+
+ int gomp_iter_guided_next_locked (long*,long*) ;
+ int gomp_mutex_lock (int *) ;
+ int gomp_mutex_unlock (int *) ;
+ int gomp_ordered_last () ;
+ int gomp_ordered_next () ;
+ int gomp_ordered_sync () ;
+ struct gomp_thread* gomp_thread () ;
 
 __attribute__((used)) static bool
 gomp_loop_ordered_guided_next (long *istart, long *iend)

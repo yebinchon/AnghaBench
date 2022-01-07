@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT ;
-typedef  int /*<<< orphan*/  IWICPixelFormatInfo2 ;
-typedef  int /*<<< orphan*/  IWICComponentInfo ;
-typedef  scalar_t__ HRESULT ;
-typedef  int /*<<< orphan*/  GUID ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IID_IWICPixelFormatInfo ; 
- int /*<<< orphan*/  IID_IWICPixelFormatInfo2 ; 
- scalar_t__ IWICComponentInfo_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IWICComponentInfo_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IWICImagingFactory_CreateComponentInfo (int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ **) ; 
- scalar_t__ IWICPixelFormatInfo2_GetBitsPerPixel (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ IWICPixelFormatInfo2_GetChannelCount (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IWICPixelFormatInfo2_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IWICPixelFormatInfo2_SupportsTransparency (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  factory ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__,...) ; 
- int /*<<< orphan*/  wine_dbgstr_guid (int /*<<< orphan*/  const*) ; 
+
+
+
+typedef int UINT ;
+typedef int IWICPixelFormatInfo2 ;
+typedef int IWICComponentInfo ;
+typedef scalar_t__ HRESULT ;
+typedef int GUID ;
+typedef int BOOL ;
+
+
+ int IID_IWICPixelFormatInfo ;
+ int IID_IWICPixelFormatInfo2 ;
+ scalar_t__ IWICComponentInfo_QueryInterface (int *,int *,void**) ;
+ int IWICComponentInfo_Release (int *) ;
+ scalar_t__ IWICImagingFactory_CreateComponentInfo (int ,int const*,int **) ;
+ scalar_t__ IWICPixelFormatInfo2_GetBitsPerPixel (int *,int *) ;
+ scalar_t__ IWICPixelFormatInfo2_GetChannelCount (int *,int *) ;
+ int IWICPixelFormatInfo2_Release (int *) ;
+ scalar_t__ IWICPixelFormatInfo2_SupportsTransparency (int *,int *) ;
+ scalar_t__ S_OK ;
+ int factory ;
+ int ok (int,char*,scalar_t__,...) ;
+ int wine_dbgstr_guid (int const*) ;
 
 __attribute__((used)) static HRESULT get_pixelformat_info(const GUID *format, UINT *bpp, UINT *channels, BOOL *trasparency)
 {

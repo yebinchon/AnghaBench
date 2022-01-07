@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct t4_sq {int /*<<< orphan*/  queue; int /*<<< orphan*/  memsize; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct t4_sq {int queue; int memsize; } ;
 struct TYPE_4__ {TYPE_1__* pdev; } ;
 struct c4iw_rdev {TYPE_2__ lldi; } ;
-struct TYPE_3__ {int /*<<< orphan*/  dev; } ;
+struct TYPE_3__ {int dev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dma_free_coherent (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mapping ; 
- int /*<<< orphan*/  pci_unmap_addr (struct t4_sq*,int /*<<< orphan*/ ) ; 
+
+ int dma_free_coherent (int *,int ,int ,int ) ;
+ int mapping ;
+ int pci_unmap_addr (struct t4_sq*,int ) ;
 
 __attribute__((used)) static void dealloc_host_sq(struct c4iw_rdev *rdev, struct t4_sq *sq)
 {
-	dma_free_coherent(&(rdev->lldi.pdev->dev), sq->memsize, sq->queue,
-			  pci_unmap_addr(sq, mapping));
+ dma_free_coherent(&(rdev->lldi.pdev->dev), sq->memsize, sq->queue,
+     pci_unmap_addr(sq, mapping));
 }

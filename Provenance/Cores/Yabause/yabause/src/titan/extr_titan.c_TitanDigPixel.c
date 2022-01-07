@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u32 ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int u32 ;
 struct PixelData {int priority; int linescreen; int pixel; scalar_t__ shadow_type; scalar_t__ shadow_enabled; } ;
 struct TYPE_4__ {int SPCTL; } ;
 struct TYPE_3__ {int (* blend ) (int,int) ;int** linescreen; scalar_t__ (* trans ) (int) ;struct PixelData* backscreen; struct PixelData** vdp2framebuffer; } ;
 
-/* Variables and functions */
- scalar_t__ TITAN_MSB_SHADOW ; 
- scalar_t__ TITAN_NORMAL_SHADOW ; 
- int TITAN_SPRITE ; 
- void* TitanBlendPixelsTop (int,int) ; 
- TYPE_2__* Vdp2Regs ; 
- int stub1 (int,int) ; 
- scalar_t__ stub2 (int) ; 
- int stub3 (int,int) ; 
- scalar_t__ stub4 (int) ; 
- int stub5 (int,int) ; 
- TYPE_1__ tt_context ; 
+
+ scalar_t__ TITAN_MSB_SHADOW ;
+ scalar_t__ TITAN_NORMAL_SHADOW ;
+ int TITAN_SPRITE ;
+ void* TitanBlendPixelsTop (int,int) ;
+ TYPE_2__* Vdp2Regs ;
+ int stub1 (int,int) ;
+ scalar_t__ stub2 (int) ;
+ int stub3 (int,int) ;
+ scalar_t__ stub4 (int) ;
+ int stub5 (int,int) ;
+ TYPE_1__ tt_context ;
 
 __attribute__((used)) static u32 TitanDigPixel(int pos, int y)
 {
@@ -38,7 +38,7 @@ __attribute__((used)) static u32 TitanDigPixel(int pos, int y)
 
    int priority;
 
-   //sort the pixels from highest to lowest priority
+
    for (priority = 7; priority > 0; priority--)
    {
       int which_layer;
@@ -51,7 +51,7 @@ __attribute__((used)) static u32 TitanDigPixel(int pos, int y)
             pixel_stack_pos++;
 
             if (pixel_stack_pos == 2)
-               goto finished;//backscreen is unnecessary in this case
+               goto finished;
          }
       }
    }
@@ -67,7 +67,7 @@ finished:
 
    if ((pixel_stack[0].shadow_type == TITAN_MSB_SHADOW) && ((pixel_stack[0].pixel & 0xFFFFFF) == 0))
    {
-      //transparent sprite shadow
+
       if (pixel_stack[1].shadow_enabled)
       {
          pixel_stack[0].pixel = TitanBlendPixelsTop(0x20000000, pixel_stack[1].pixel);
@@ -85,7 +85,7 @@ finished:
          pixel_stack[0].pixel = tt_context.blend(pixel_stack[0].pixel, bottom);
       }
 
-      //sprite self-shadowing, only if sprite window is not enabled
+
       if (!(Vdp2Regs->SPCTL & 0x10))
          pixel_stack[0].pixel = TitanBlendPixelsTop(0x20000000, pixel_stack[0].pixel);
    }

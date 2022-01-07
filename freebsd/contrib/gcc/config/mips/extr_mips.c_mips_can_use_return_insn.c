@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int tree ;
 struct TYPE_6__ {TYPE_1__* machine; } ;
 struct TYPE_5__ {scalar_t__ total_size; scalar_t__ initialized; } ;
 struct TYPE_4__ {TYPE_2__ frame; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DECL_MODE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DECL_RESULT (int /*<<< orphan*/ ) ; 
- scalar_t__ GET_MODE_CLASS (int /*<<< orphan*/ ) ; 
- scalar_t__ GET_MODE_SIZE (int /*<<< orphan*/ ) ; 
- scalar_t__ MODE_FLOAT ; 
- scalar_t__ TARGET_MIPS16 ; 
- scalar_t__ UNITS_PER_FPVALUE ; 
- int /*<<< orphan*/  aggregate_value_p (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_3__* cfun ; 
- scalar_t__ compute_frame_size (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  current_function_decl ; 
- scalar_t__ current_function_profile ; 
- int /*<<< orphan*/  get_frame_size () ; 
- scalar_t__ mips16_hard_float ; 
- scalar_t__* regs_ever_live ; 
- int /*<<< orphan*/  reload_completed ; 
+
+ int DECL_MODE (int ) ;
+ int DECL_RESULT (int ) ;
+ scalar_t__ GET_MODE_CLASS (int ) ;
+ scalar_t__ GET_MODE_SIZE (int ) ;
+ scalar_t__ MODE_FLOAT ;
+ scalar_t__ TARGET_MIPS16 ;
+ scalar_t__ UNITS_PER_FPVALUE ;
+ int aggregate_value_p (int ,int ) ;
+ TYPE_3__* cfun ;
+ scalar_t__ compute_frame_size (int ) ;
+ int current_function_decl ;
+ scalar_t__ current_function_profile ;
+ int get_frame_size () ;
+ scalar_t__ mips16_hard_float ;
+ scalar_t__* regs_ever_live ;
+ int reload_completed ;
 
 int
 mips_can_use_return_insn (void)
@@ -49,9 +49,9 @@ mips_can_use_return_insn (void)
 
   return_type = DECL_RESULT (current_function_decl);
 
-  /* In mips16 mode, a function which returns a floating point value
-     needs to arrange to copy the return value into the floating point
-     registers.  */
+
+
+
   if (TARGET_MIPS16
       && mips16_hard_float
       && ! aggregate_value_p (return_type, current_function_decl)

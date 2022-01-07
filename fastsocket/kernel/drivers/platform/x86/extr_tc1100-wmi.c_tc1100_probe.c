@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct platform_device {int dummy; } ;
 
-/* Variables and functions */
- int add_fs () ; 
+
+ int add_fs () ;
 
 __attribute__((used)) static int tc1100_probe(struct platform_device *device)
 {
-	int result = 0;
+ int result = 0;
 
-	result = add_fs();
-	return result;
+ result = add_fs();
+ return result;
 }

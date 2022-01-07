@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int umask; int syslog_priority; int syslog_level_prefix; int ignore_sigpipe; int log_level_max; int /*<<< orphan*/  numa_policy; scalar_t__ restrict_namespaces; int /*<<< orphan*/  capability_bounding_set; int /*<<< orphan*/  timeout_clean_usec; TYPE_1__* directories; int /*<<< orphan*/  personality; int /*<<< orphan*/  timer_slack_nsec; int /*<<< orphan*/  cpu_sched_policy; int /*<<< orphan*/  ioprio; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int umask; int syslog_priority; int syslog_level_prefix; int ignore_sigpipe; int log_level_max; int numa_policy; scalar_t__ restrict_namespaces; int capability_bounding_set; int timeout_clean_usec; TYPE_1__* directories; int personality; int timer_slack_nsec; int cpu_sched_policy; int ioprio; } ;
 struct TYPE_5__ {int mode; } ;
-typedef  size_t ExecDirectoryType ;
-typedef  TYPE_2__ ExecContext ;
+typedef size_t ExecDirectoryType ;
+typedef TYPE_2__ ExecContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CAP_ALL ; 
- int /*<<< orphan*/  IOPRIO_CLASS_BE ; 
- int /*<<< orphan*/  IOPRIO_PRIO_VALUE (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int LOG_DAEMON ; 
- int LOG_INFO ; 
- scalar_t__ NAMESPACE_FLAGS_ALL ; 
- scalar_t__ NAMESPACE_FLAGS_INITIAL ; 
- int /*<<< orphan*/  NSEC_INFINITY ; 
- int /*<<< orphan*/  PERSONALITY_INVALID ; 
- int /*<<< orphan*/  SCHED_OTHER ; 
- int /*<<< orphan*/  USEC_INFINITY ; 
- size_t _EXEC_DIRECTORY_TYPE_MAX ; 
- int /*<<< orphan*/  assert (TYPE_2__*) ; 
- int /*<<< orphan*/  assert_cc (int) ; 
- int /*<<< orphan*/  numa_policy_reset (int /*<<< orphan*/ *) ; 
+
+ int CAP_ALL ;
+ int IOPRIO_CLASS_BE ;
+ int IOPRIO_PRIO_VALUE (int ,int ) ;
+ int LOG_DAEMON ;
+ int LOG_INFO ;
+ scalar_t__ NAMESPACE_FLAGS_ALL ;
+ scalar_t__ NAMESPACE_FLAGS_INITIAL ;
+ int NSEC_INFINITY ;
+ int PERSONALITY_INVALID ;
+ int SCHED_OTHER ;
+ int USEC_INFINITY ;
+ size_t _EXEC_DIRECTORY_TYPE_MAX ;
+ int assert (TYPE_2__*) ;
+ int assert_cc (int) ;
+ int numa_policy_reset (int *) ;
 
 void exec_context_init(ExecContext *c) {
         ExecDirectoryType i;
@@ -43,8 +43,8 @@ void exec_context_init(ExecContext *c) {
         c->ioprio = IOPRIO_PRIO_VALUE(IOPRIO_CLASS_BE, 0);
         c->cpu_sched_policy = SCHED_OTHER;
         c->syslog_priority = LOG_DAEMON|LOG_INFO;
-        c->syslog_level_prefix = true;
-        c->ignore_sigpipe = true;
+        c->syslog_level_prefix = 1;
+        c->ignore_sigpipe = 1;
         c->timer_slack_nsec = NSEC_INFINITY;
         c->personality = PERSONALITY_INVALID;
         for (i = 0; i < _EXEC_DIRECTORY_TYPE_MAX; i++)

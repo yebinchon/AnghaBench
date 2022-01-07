@@ -1,34 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {char* insts; int bytelen; char len; } ;
-typedef  TYPE_1__ ByteProg ;
-
-/* Variables and functions */
-#define  Any 139 
-#define  Bol 138 
-#define  Char 137 
-#define  Class 136 
-#define  ClassNot 135 
-#define  Eol 134 
-#define  Jmp 133 
-#define  Match 132 
-#define  NamedClass 131 
-#define  RSplit 130 
-#define  Save 129 
-#define  Split 128 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
+typedef TYPE_1__ ByteProg ;
+ int assert (int ) ;
+ int printf (char*,...) ;
 
 void re1_5_dumpcode(ByteProg *prog)
 {
@@ -39,29 +25,29 @@ void re1_5_dumpcode(ByteProg *prog)
                 switch(code[pc++]) {
                 default:
                         assert(0);
-//                        re1_5_fatal("printprog");
-                case Split:
+
+                case 128:
                         printf("split %d (%d)\n", pc + (signed char)code[pc] + 1, (signed char)code[pc]);
                         pc++;
                         break;
-                case RSplit:
+                case 130:
                         printf("rsplit %d (%d)\n", pc + (signed char)code[pc] + 1, (signed char)code[pc]);
                         pc++;
                         break;
-                case Jmp:
+                case 133:
                         printf("jmp %d (%d)\n", pc + (signed char)code[pc] + 1, (signed char)code[pc]);
                         pc++;
                         break;
-                case Char:
+                case 137:
                         printf("char %c\n", code[pc++]);
                         break;
-                case Any:
+                case 139:
                         printf("any\n");
                         break;
-                case Class:
-                case ClassNot: {
+                case 136:
+                case 135: {
                         int num = code[pc];
-                        printf("class%s %d", (code[pc - 1] == ClassNot ? "not" : ""), num);
+                        printf("class%s %d", (code[pc - 1] == 135 ? "not" : ""), num);
                         pc++;
                         while (num--) {
                             printf(" 0x%02x-0x%02x", code[pc], code[pc + 1]);
@@ -70,19 +56,19 @@ void re1_5_dumpcode(ByteProg *prog)
                         printf("\n");
                         break;
                 }
-                case NamedClass:
+                case 131:
                         printf("namedclass %c\n", code[pc++]);
                         break;
-                case Match:
+                case 132:
                         printf("match\n");
                         break;
-                case Save:
+                case 129:
                         printf("save %d\n", (unsigned char)code[pc++]);
                         break;
-                case Bol:
+                case 138:
                         printf("assert bol\n");
                         break;
-                case Eol:
+                case 134:
                         printf("assert eol\n");
                         break;
                 }

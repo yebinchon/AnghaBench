@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct lwp_info {struct lwp_info* next; int /*<<< orphan*/  signalled; int /*<<< orphan*/  stopped; } ;
 
-/* Variables and functions */
- struct lwp_info* lwp_list ; 
- int /*<<< orphan*/  resume_callback (struct lwp_info*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  resume_set_callback (struct lwp_info*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stop_callback (struct lwp_info*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stop_wait_callback (struct lwp_info*,int /*<<< orphan*/ *) ; 
+
+
+
+struct lwp_info {struct lwp_info* next; int signalled; int stopped; } ;
+
+
+ struct lwp_info* lwp_list ;
+ int resume_callback (struct lwp_info*,int *) ;
+ int resume_set_callback (struct lwp_info*,int *) ;
+ int stop_callback (struct lwp_info*,int *) ;
+ int stop_wait_callback (struct lwp_info*,int *) ;
 
 __attribute__((used)) static int
 stop_and_resume_callback (struct lwp_info *lp, void *data)
@@ -26,15 +26,15 @@ stop_and_resume_callback (struct lwp_info *lp, void *data)
 
   if (!lp->stopped && !lp->signalled)
     {
-      stop_callback (lp, NULL);
-      stop_wait_callback (lp, NULL);
-      /* Resume if the lwp still exists.  */
+      stop_callback (lp, ((void*)0));
+      stop_wait_callback (lp, ((void*)0));
+
       for (ptr = lwp_list; ptr; ptr = ptr->next)
-	if (lp == ptr)
-	  {
-	    resume_callback (lp, NULL);
-	    resume_set_callback (lp, NULL);
-	  }
+ if (lp == ptr)
+   {
+     resume_callback (lp, ((void*)0));
+     resume_set_callback (lp, ((void*)0));
+   }
     }
   return 0;
 }

@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
-typedef  scalar_t__ uint32_t ;
+
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint8_t ;
+typedef scalar_t__ uint32_t ;
 struct TYPE_7__ {scalar_t__* out_str; } ;
-typedef  TYPE_1__ pcre2_output_context ;
-typedef  scalar_t__ PCRE2_UCHAR ;
-typedef  scalar_t__* PCRE2_SPTR ;
-typedef  scalar_t__ BOOL ;
+typedef TYPE_1__ pcre2_output_context ;
+typedef scalar_t__ PCRE2_UCHAR ;
+typedef scalar_t__* PCRE2_SPTR ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- scalar_t__ CHAR_BACKSLASH ; 
- scalar_t__ CHAR_CIRCUMFLEX_ACCENT ; 
- scalar_t__ CHAR_COLON ; 
- scalar_t__ CHAR_EXCLAMATION_MARK ; 
- scalar_t__ CHAR_LEFT_PARENTHESIS ; 
- scalar_t__ CHAR_LEFT_SQUARE_BRACKET ; 
- scalar_t__ CHAR_LESS_THAN_SIGN ; 
- scalar_t__ CHAR_MINUS ; 
- scalar_t__ CHAR_QUESTION_MARK ; 
- scalar_t__ CHAR_RIGHT_PARENTHESIS ; 
- scalar_t__ CHAR_RIGHT_SQUARE_BRACKET ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  GETCHARINCTEST (scalar_t__,scalar_t__*) ; 
- int PCRE2_ERROR_CONVERT_SYNTAX ; 
- int PCRE2_ERROR_MISSING_SQUARE_BRACKET ; 
- scalar_t__ TRUE ; 
- scalar_t__ convert_glob_char_in_class (int,scalar_t__) ; 
- int convert_glob_parse_class (scalar_t__**,scalar_t__*,TYPE_1__*) ; 
- int /*<<< orphan*/  convert_glob_print_separator (TYPE_1__*,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  convert_glob_write (TYPE_1__*,scalar_t__) ; 
- int /*<<< orphan*/  convert_glob_write_str (TYPE_1__*,int) ; 
+
+ scalar_t__ CHAR_BACKSLASH ;
+ scalar_t__ CHAR_CIRCUMFLEX_ACCENT ;
+ scalar_t__ CHAR_COLON ;
+ scalar_t__ CHAR_EXCLAMATION_MARK ;
+ scalar_t__ CHAR_LEFT_PARENTHESIS ;
+ scalar_t__ CHAR_LEFT_SQUARE_BRACKET ;
+ scalar_t__ CHAR_LESS_THAN_SIGN ;
+ scalar_t__ CHAR_MINUS ;
+ scalar_t__ CHAR_QUESTION_MARK ;
+ scalar_t__ CHAR_RIGHT_PARENTHESIS ;
+ scalar_t__ CHAR_RIGHT_SQUARE_BRACKET ;
+ scalar_t__ FALSE ;
+ int GETCHARINCTEST (scalar_t__,scalar_t__*) ;
+ int PCRE2_ERROR_CONVERT_SYNTAX ;
+ int PCRE2_ERROR_MISSING_SQUARE_BRACKET ;
+ scalar_t__ TRUE ;
+ scalar_t__ convert_glob_char_in_class (int,scalar_t__) ;
+ int convert_glob_parse_class (scalar_t__**,scalar_t__*,TYPE_1__*) ;
+ int convert_glob_print_separator (TYPE_1__*,scalar_t__,scalar_t__) ;
+ int convert_glob_write (TYPE_1__*,scalar_t__) ;
+ int convert_glob_write_str (TYPE_1__*,int) ;
 
 __attribute__((used)) static int
 convert_glob_parse_range(PCRE2_SPTR *from, PCRE2_SPTR pattern_end,
@@ -51,11 +51,11 @@ BOOL is_negative = FALSE;
 BOOL separator_seen = FALSE;
 BOOL has_prev_c;
 PCRE2_SPTR pattern = *from;
-PCRE2_SPTR char_start = NULL;
+PCRE2_SPTR char_start = ((void*)0);
 uint32_t c, prev_c;
 int len, class_index;
 
-(void)utf; /* Avoid compiler warning. */
+(void)utf;
 
 if (pattern >= pattern_end)
   {

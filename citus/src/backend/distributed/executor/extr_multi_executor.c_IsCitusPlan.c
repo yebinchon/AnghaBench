@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {struct TYPE_4__* righttree; struct TYPE_4__* lefttree; } ;
-typedef  TYPE_1__ Plan ;
+typedef TYPE_1__ Plan ;
 
-/* Variables and functions */
- scalar_t__ IsCitusCustomScan (TYPE_1__*) ; 
+
+ scalar_t__ IsCitusCustomScan (TYPE_1__*) ;
 
 __attribute__((used)) static bool
 IsCitusPlan(Plan *plan)
 {
-	if (plan == NULL)
-	{
-		return false;
-	}
+ if (plan == ((void*)0))
+ {
+  return 0;
+ }
 
-	if (IsCitusCustomScan(plan))
-	{
-		return true;
-	}
+ if (IsCitusCustomScan(plan))
+ {
+  return 1;
+ }
 
-	if (plan->lefttree != NULL && IsCitusPlan(plan->lefttree))
-	{
-		return true;
-	}
+ if (plan->lefttree != ((void*)0) && IsCitusPlan(plan->lefttree))
+ {
+  return 1;
+ }
 
-	if (plan->righttree != NULL && IsCitusPlan(plan->righttree))
-	{
-		return true;
-	}
+ if (plan->righttree != ((void*)0) && IsCitusPlan(plan->righttree))
+ {
+  return 1;
+ }
 
-	return false;
+ return 0;
 }

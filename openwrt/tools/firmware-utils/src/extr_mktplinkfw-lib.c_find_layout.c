@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct flash_layout {int /*<<< orphan*/ * id; } ;
 
-/* Variables and functions */
- scalar_t__ strcasecmp (char const*,int /*<<< orphan*/ *) ; 
+
+
+
+struct flash_layout {int * id; } ;
+
+
+ scalar_t__ strcasecmp (char const*,int *) ;
 
 struct flash_layout *find_layout(struct flash_layout *layouts, const char *id)
 {
-	struct flash_layout *ret;
-	struct flash_layout *l;
+ struct flash_layout *ret;
+ struct flash_layout *l;
 
-	ret = NULL;
-	for (l = layouts; l->id != NULL; l++){
-		if (strcasecmp(id, l->id) == 0) {
-			ret = l;
-			break;
-		}
-	};
+ ret = ((void*)0);
+ for (l = layouts; l->id != ((void*)0); l++){
+  if (strcasecmp(id, l->id) == 0) {
+   ret = l;
+   break;
+  }
+ };
 
-	return ret;
+ return ret;
 }

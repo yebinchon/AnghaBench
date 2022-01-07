@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT ;
-struct TYPE_2__ {int (* WaitEvent ) (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ;} ;
-typedef  int /*<<< orphan*/  EVENT ;
 
-/* Variables and functions */
- TYPE_1__* os ; 
- int stub1 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int UINT ;
+struct TYPE_2__ {int (* WaitEvent ) (int *,int ) ;} ;
+typedef int EVENT ;
+
+
+ TYPE_1__* os ;
+ int stub1 (int *,int ) ;
 
 bool OSWaitEvent(EVENT *event, UINT timeout)
 {
-	return os->WaitEvent(event, timeout);
+ return os->WaitEvent(event, timeout);
 }

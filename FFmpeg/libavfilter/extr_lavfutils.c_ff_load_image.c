@@ -1,84 +1,84 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  enum AVPixelFormat { ____Placeholder_AVPixelFormat } AVPixelFormat ;
-struct TYPE_16__ {int /*<<< orphan*/  codec_id; } ;
+
+
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef enum AVPixelFormat { ____Placeholder_AVPixelFormat } AVPixelFormat ;
+struct TYPE_16__ {int codec_id; } ;
 struct TYPE_15__ {TYPE_1__** streams; } ;
-struct TYPE_14__ {int width; int height; int format; int /*<<< orphan*/  linesize; scalar_t__ data; } ;
+struct TYPE_14__ {int width; int height; int format; int linesize; scalar_t__ data; } ;
 struct TYPE_13__ {TYPE_4__* codecpar; } ;
-typedef  int /*<<< orphan*/  AVPacket ;
-typedef  int /*<<< orphan*/  AVInputFormat ;
-typedef  TYPE_2__ AVFrame ;
-typedef  TYPE_3__ AVFormatContext ;
-typedef  int /*<<< orphan*/  AVDictionary ;
-typedef  TYPE_4__ AVCodecParameters ;
-typedef  int /*<<< orphan*/  AVCodecContext ;
-typedef  int /*<<< orphan*/  AVCodec ;
+typedef int AVPacket ;
+typedef int AVInputFormat ;
+typedef TYPE_2__ AVFrame ;
+typedef TYPE_3__ AVFormatContext ;
+typedef int AVDictionary ;
+typedef TYPE_4__ AVCodecParameters ;
+typedef int AVCodecContext ;
+typedef int AVCodec ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  av_dict_free (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  av_dict_set (int /*<<< orphan*/ **,char*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * av_find_input_format (char*) ; 
- TYPE_2__* av_frame_alloc () ; 
- int /*<<< orphan*/  av_frame_free (TYPE_2__**) ; 
- int av_image_alloc (int /*<<< orphan*/ **,int*,int,int,int,int) ; 
- int /*<<< orphan*/  av_image_copy (int /*<<< orphan*/ **,int*,int /*<<< orphan*/  const**,int /*<<< orphan*/ ,int,int,int) ; 
- int /*<<< orphan*/  av_init_packet (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  av_log (void*,int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  av_packet_unref (int /*<<< orphan*/ *) ; 
- int av_read_frame (TYPE_3__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * avcodec_alloc_context3 (int /*<<< orphan*/ *) ; 
- int avcodec_decode_video2 (int /*<<< orphan*/ *,TYPE_2__*,int*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * avcodec_find_decoder (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  avcodec_free_context (int /*<<< orphan*/ **) ; 
- int avcodec_open2 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int avcodec_parameters_to_context (int /*<<< orphan*/ *,TYPE_4__*) ; 
- int /*<<< orphan*/  avformat_close_input (TYPE_3__**) ; 
- int avformat_find_stream_info (TYPE_3__*,int /*<<< orphan*/ *) ; 
- int avformat_open_input (TYPE_3__**,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int AVERROR (int ) ;
+ int AV_LOG_ERROR ;
+ int EINVAL ;
+ int ENOMEM ;
+ int av_dict_free (int **) ;
+ int av_dict_set (int **,char*,char*,int ) ;
+ int * av_find_input_format (char*) ;
+ TYPE_2__* av_frame_alloc () ;
+ int av_frame_free (TYPE_2__**) ;
+ int av_image_alloc (int **,int*,int,int,int,int) ;
+ int av_image_copy (int **,int*,int const**,int ,int,int,int) ;
+ int av_init_packet (int *) ;
+ int av_log (void*,int ,char*,...) ;
+ int av_packet_unref (int *) ;
+ int av_read_frame (TYPE_3__*,int *) ;
+ int * avcodec_alloc_context3 (int *) ;
+ int avcodec_decode_video2 (int *,TYPE_2__*,int*,int *) ;
+ int * avcodec_find_decoder (int ) ;
+ int avcodec_free_context (int **) ;
+ int avcodec_open2 (int *,int *,int **) ;
+ int avcodec_parameters_to_context (int *,TYPE_4__*) ;
+ int avformat_close_input (TYPE_3__**) ;
+ int avformat_find_stream_info (TYPE_3__*,int *) ;
+ int avformat_open_input (TYPE_3__**,char const*,int *,int *) ;
 
 int ff_load_image(uint8_t *data[4], int linesize[4],
                   int *w, int *h, enum AVPixelFormat *pix_fmt,
                   const char *filename, void *log_ctx)
 {
-    AVInputFormat *iformat = NULL;
-    AVFormatContext *format_ctx = NULL;
+    AVInputFormat *iformat = ((void*)0);
+    AVFormatContext *format_ctx = ((void*)0);
     AVCodec *codec;
     AVCodecContext *codec_ctx;
     AVCodecParameters *par;
     AVFrame *frame;
     int frame_decoded, ret = 0;
     AVPacket pkt;
-    AVDictionary *opt=NULL;
+    AVDictionary *opt=((void*)0);
 
     av_init_packet(&pkt);
 
     iformat = av_find_input_format("image2pipe");
-    if ((ret = avformat_open_input(&format_ctx, filename, iformat, NULL)) < 0) {
+    if ((ret = avformat_open_input(&format_ctx, filename, iformat, ((void*)0))) < 0) {
         av_log(log_ctx, AV_LOG_ERROR,
                "Failed to open input file '%s'\n", filename);
         return ret;
     }
 
-    if ((ret = avformat_find_stream_info(format_ctx, NULL)) < 0) {
+    if ((ret = avformat_find_stream_info(format_ctx, ((void*)0))) < 0) {
         av_log(log_ctx, AV_LOG_ERROR, "Find stream info failed\n");
         return ret;
     }
@@ -130,8 +130,8 @@ int ff_load_image(uint8_t *data[4], int linesize[4],
         goto end;
     }
 
-    *w       = frame->width;
-    *h       = frame->height;
+    *w = frame->width;
+    *h = frame->height;
     *pix_fmt = frame->format;
 
     if ((ret = av_image_alloc(data, linesize, *w, *h, *pix_fmt, 16)) < 0)

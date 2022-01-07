@@ -1,55 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int verbose; } ;
-
-/* Variables and functions */
-#define  SASL_LOG_DEBUG 134 
-#define  SASL_LOG_FAIL 133 
-#define  SASL_LOG_NONE 132 
-#define  SASL_LOG_NOTE 131 
-#define  SASL_LOG_PASS 130 
-#define  SASL_LOG_TRACE 129 
-#define  SASL_LOG_WARN 128 
- int SASL_OK ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,char const*) ; 
- TYPE_1__ settings ; 
- int /*<<< orphan*/  stderr ; 
+ int SASL_OK ;
+ int fprintf (int ,char*,int,char const*) ;
+ TYPE_1__ settings ;
+ int stderr ;
 
 __attribute__((used)) static int sasl_log(void *context, int level, const char *message)
 {
-    bool log = true;
+    bool log = 1;
 
     switch (level) {
-    case SASL_LOG_NONE:
-        log = false;
+    case 132:
+        log = 0;
         break;
-    case SASL_LOG_PASS:
-    case SASL_LOG_TRACE:
-    case SASL_LOG_DEBUG:
-    case SASL_LOG_NOTE:
+    case 130:
+    case 129:
+    case 134:
+    case 131:
         if (settings.verbose < 2) {
-            log = false;
+            log = 0;
         }
         break;
-    case SASL_LOG_WARN:
-    case SASL_LOG_FAIL:
+    case 128:
+    case 133:
         if (settings.verbose < 1) {
-            log = false;
+            log = 0;
         }
         break;
     default:
-        /* This is an error */
+
         ;
     }
 

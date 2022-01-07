@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  printf (char*,...) ; 
- int read_uleb128 (unsigned char*,unsigned int*) ; 
- scalar_t__ strlen (char*) ; 
+ int printf (char*,...) ;
+ int read_uleb128 (unsigned char*,unsigned int*) ;
+ scalar_t__ strlen (char*) ;
 
 __attribute__((used)) static unsigned char *
 display_gnu_attribute (unsigned char *p,
-		       unsigned char *(*display_proc_gnu_attribute)
-			    (unsigned char *, int))
+         unsigned char *(*display_proc_gnu_attribute)
+       (unsigned char *, int))
 {
   int tag;
   unsigned int len;
@@ -29,8 +21,8 @@ display_gnu_attribute (unsigned char *p,
   tag = read_uleb128 (p, &len);
   p += len;
 
-  /* Tag_compatibility is the only generic GNU attribute defined at
-     present.  */
+
+
   if (tag == 32)
     {
       val = read_uleb128 (p, &len);
@@ -44,9 +36,9 @@ display_gnu_attribute (unsigned char *p,
     return display_proc_gnu_attribute (p, tag);
 
   if (tag & 1)
-    type = 1; /* String.  */
+    type = 1;
   else
-    type = 2; /* uleb128.  */
+    type = 2;
   printf ("  Tag_unknown_%d: ", tag);
 
   if (type == 1)

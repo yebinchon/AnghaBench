@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct obs_context_data {void* data; } ;
 
-/* Variables and functions */
+
 
 void *obs_obj_get_data(void *obj)
 {
-	struct obs_context_data *context = obj;
-	if (!context)
-		return NULL;
+ struct obs_context_data *context = obj;
+ if (!context)
+  return ((void*)0);
 
-	return context->data;
+ return context->data;
 }

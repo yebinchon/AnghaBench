@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_9__ {int StateHasChanged; } ;
-struct TYPE_8__ {int Deleting; int /*<<< orphan*/  Spi; int /*<<< orphan*/  IkeClient; } ;
-typedef  TYPE_1__ IPSECSA ;
-typedef  TYPE_2__ IKE_SERVER ;
+struct TYPE_8__ {int Deleting; int Spi; int IkeClient; } ;
+typedef TYPE_1__ IPSECSA ;
+typedef TYPE_2__ IKE_SERVER ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Debug (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IPsecLog (TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_1__*,char*) ; 
- int /*<<< orphan*/  SendDeleteIPsecSaPacket (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int Debug (char*,int ) ;
+ int IPsecLog (TYPE_2__*,int *,int *,TYPE_1__*,char*) ;
+ int SendDeleteIPsecSaPacket (TYPE_2__*,int ,int ) ;
 
 void MarkIPsecSaAsDeleted(IKE_SERVER *ike, IPSECSA *sa)
 {
-	// Validate arguments
-	if (ike == NULL || sa == NULL)
-	{
-		return;
-	}
 
-	if (sa->Deleting)
-	{
-		return;
-	}
+ if (ike == ((void*)0) || sa == ((void*)0))
+ {
+  return;
+ }
 
-	ike->StateHasChanged = true;
+ if (sa->Deleting)
+ {
+  return;
+ }
 
-	sa->Deleting = true;
+ ike->StateHasChanged = 1;
 
-	Debug("IPsec SA 0x%X has been marked as being deleted.\n", sa->Spi);
+ sa->Deleting = 1;
 
-	SendDeleteIPsecSaPacket(ike, sa->IkeClient, sa->Spi);
+ Debug("IPsec SA 0x%X has been marked as being deleted.\n", sa->Spi);
 
-	IPsecLog(ike, NULL, NULL, sa, "LI_DELETE_IPSEC_SA");
+ SendDeleteIPsecSaPacket(ike, sa->IkeClient, sa->Spi);
+
+ IPsecLog(ike, ((void*)0), ((void*)0), sa, "LI_DELETE_IPSEC_SA");
 }

@@ -1,68 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  he ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int he ;
 struct TYPE_7__ {int dwSize; scalar_t__ dwAddress; scalar_t__ dwBlockSize; } ;
-struct TYPE_6__ {int wFlags; int /*<<< orphan*/ * lpData; } ;
-typedef  int /*<<< orphan*/ * PVOID ;
-typedef  TYPE_1__ PROCESS_HEAP_ENTRY ;
-typedef  TYPE_2__ HEAPENTRY32 ;
-typedef  scalar_t__ HANDLE ;
-typedef  scalar_t__ DWORD_PTR ;
-typedef  scalar_t__ BOOL ;
+struct TYPE_6__ {int wFlags; int * lpData; } ;
+typedef int * PVOID ;
+typedef TYPE_1__ PROCESS_HEAP_ENTRY ;
+typedef TYPE_2__ HEAPENTRY32 ;
+typedef scalar_t__ HANDLE ;
+typedef scalar_t__ DWORD_PTR ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CloseHandle (scalar_t__) ; 
- scalar_t__ CreateToolhelp32Snapshot (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  GetCurrentProcessId () ; 
- scalar_t__ Heap32First (TYPE_2__*,int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__ Heap32Next (TYPE_2__*) ; 
- int /*<<< orphan*/  HeapLock (scalar_t__) ; 
- int /*<<< orphan*/  HeapUnlock (scalar_t__) ; 
- scalar_t__ HeapWalk (scalar_t__,TYPE_1__*) ; 
- scalar_t__ INVALID_HANDLE_VALUE ; 
- int PROCESS_HEAP_ENTRY_BUSY ; 
- int /*<<< orphan*/  TH32CS_SNAPHEAPLIST ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  skip (char*) ; 
+
+ int CloseHandle (scalar_t__) ;
+ scalar_t__ CreateToolhelp32Snapshot (int ,int ) ;
+ scalar_t__ FALSE ;
+ int GetCurrentProcessId () ;
+ scalar_t__ Heap32First (TYPE_2__*,int ,scalar_t__) ;
+ scalar_t__ Heap32Next (TYPE_2__*) ;
+ int HeapLock (scalar_t__) ;
+ int HeapUnlock (scalar_t__) ;
+ scalar_t__ HeapWalk (scalar_t__,TYPE_1__*) ;
+ scalar_t__ INVALID_HANDLE_VALUE ;
+ int PROCESS_HEAP_ENTRY_BUSY ;
+ int TH32CS_SNAPHEAPLIST ;
+ scalar_t__ TRUE ;
+ int skip (char*) ;
 
 __attribute__((used)) static BOOL IsBlockFromHeap(HANDLE hHeap, PVOID ptr)
 {
-    /* Use when this is implemented */
-#if 0
-    PROCESS_HEAP_ENTRY Entry;
-    BOOL ret = FALSE;
-    if (!HeapLock(hHeap))
-    {
-        skip("Unable to lock heap\n");
-        return FALSE;
-    }
-
-    Entry.lpData = NULL;
-    while (!ret && HeapWalk(hHeap, &Entry))
-    {
-        if ((Entry.wFlags & PROCESS_HEAP_ENTRY_BUSY) &&
-            (Entry.lpData == ptr))
-        {
-            ret = TRUE;
-        }
-    }
-
-    HeapUnlock(hHeap);
-    return ret;
-#else
     HEAPENTRY32 he;
     BOOL ret = FALSE;
     HANDLE hHeapSnap = CreateToolhelp32Snapshot(TH32CS_SNAPHEAPLIST, GetCurrentProcessId());
@@ -83,5 +60,5 @@ __attribute__((used)) static BOOL IsBlockFromHeap(HANDLE hHeap, PVOID ptr)
     CloseHandle(hHeapSnap);
 
     return ret;
-#endif
+
 }

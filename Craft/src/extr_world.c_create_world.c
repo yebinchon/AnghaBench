@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  (* world_func ) (int,int,int,int,void*) ;
 
-/* Variables and functions */
- int CHUNK_SIZE ; 
- scalar_t__ SHOW_CLOUDS ; 
- scalar_t__ SHOW_PLANTS ; 
- int SHOW_TREES ; 
- double simplex2 (int,int,int,double,int) ; 
- double simplex3 (int,int,int,int,double,int) ; 
+
+
+
+typedef int (* world_func ) (int,int,int,int,void*) ;
+
+
+ int CHUNK_SIZE ;
+ scalar_t__ SHOW_CLOUDS ;
+ scalar_t__ SHOW_PLANTS ;
+ int SHOW_TREES ;
+ double simplex2 (int,int,int,double,int) ;
+ double simplex3 (int,int,int,int,double,int) ;
 
 void create_world(int p, int q, world_func func, void *arg) {
     int pad = 1;
@@ -40,23 +40,23 @@ void create_world(int p, int q, world_func func, void *arg) {
                 h = t;
                 w = 2;
             }
-            // sand and grass terrain
+
             for (int y = 0; y < h; y++) {
                 func(x, y, z, w * flag, arg);
             }
             if (w == 1) {
                 if (SHOW_PLANTS) {
-                    // grass
+
                     if (simplex2(-x * 0.1, z * 0.1, 4, 0.8, 2) > 0.6) {
                         func(x, h, z, 17 * flag, arg);
                     }
-                    // flowers
+
                     if (simplex2(x * 0.05, -z * 0.05, 4, 0.8, 2) > 0.7) {
                         int w = 18 + simplex2(x * 0.1, z * 0.1, 4, 0.8, 2) * 7;
                         func(x, h, z, w * flag, arg);
                     }
                 }
-                // trees
+
                 int ok = SHOW_TREES;
                 if (dx - 4 < 0 || dz - 4 < 0 ||
                     dx + 4 >= CHUNK_SIZE || dz + 4 >= CHUNK_SIZE)
@@ -80,7 +80,7 @@ void create_world(int p, int q, world_func func, void *arg) {
                     }
                 }
             }
-            // clouds
+
             if (SHOW_CLOUDS) {
                 for (int y = 64; y < 72; y++) {
                     if (simplex3(

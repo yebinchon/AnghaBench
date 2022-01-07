@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  _delay_ms (int) ; 
- int /*<<< orphan*/  i2c_init () ; 
- int i2c_initialized ; 
+
+
+
+typedef int uint8_t ;
+
+
+ int _delay_ms (int) ;
+ int i2c_init () ;
+ int i2c_initialized ;
 
 uint8_t init_mcp23017(void)
 {
-    i2c_initialized = false;
+    i2c_initialized = 0;
 
     if (i2c_initialized == 0)
     {
-        i2c_init();  // on pins D(1,0)
+        i2c_init();
         _delay_ms(1000);
     }
 

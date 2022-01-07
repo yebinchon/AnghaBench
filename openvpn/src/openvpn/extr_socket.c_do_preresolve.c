@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int sockflags; char* ip_remote_hint; struct connection_list* connection_list; } ;
 struct context {TYPE_1__ options; } ;
 struct connection_list {int len; struct connection_entry** array; } ;
-struct connection_entry {char* remote; char const* socks_proxy_server; char const* local; int /*<<< orphan*/  af; int /*<<< orphan*/  local_port; scalar_t__ bind_local; int /*<<< orphan*/  socks_proxy_port; TYPE_2__* http_proxy_options; int /*<<< orphan*/  remote_port; int /*<<< orphan*/  proto; } ;
-struct TYPE_4__ {char const* server; int /*<<< orphan*/  port; } ;
+struct connection_entry {char* remote; char const* socks_proxy_server; char const* local; int af; int local_port; scalar_t__ bind_local; int socks_proxy_port; TYPE_2__* http_proxy_options; int remote_port; int proto; } ;
+struct TYPE_4__ {char const* server; int port; } ;
 
-/* Variables and functions */
- int GETADDR_DATAGRAM ; 
- unsigned int GETADDR_FATAL ; 
- unsigned int GETADDR_MENTION_RESOLVE_RETRY ; 
- int GETADDR_PASSIVE ; 
- int GETADDR_RANDOMIZE ; 
- unsigned int GETADDR_RESOLVE ; 
- unsigned int GETADDR_UPDATE_MANAGEMENT_STATE ; 
- int SF_HOST_RANDOMIZE ; 
- int /*<<< orphan*/  SIGHUP ; 
- int do_preresolve_host (struct context*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned int const) ; 
- scalar_t__ proto_is_dgram (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  throw_signal_soft (int /*<<< orphan*/ ,char*) ; 
+
+ int GETADDR_DATAGRAM ;
+ unsigned int GETADDR_FATAL ;
+ unsigned int GETADDR_MENTION_RESOLVE_RETRY ;
+ int GETADDR_PASSIVE ;
+ int GETADDR_RANDOMIZE ;
+ unsigned int GETADDR_RESOLVE ;
+ unsigned int GETADDR_UPDATE_MANAGEMENT_STATE ;
+ int SF_HOST_RANDOMIZE ;
+ int SIGHUP ;
+ int do_preresolve_host (struct context*,char const*,int ,int ,unsigned int const) ;
+ scalar_t__ proto_is_dgram (int ) ;
+ int throw_signal_soft (int ,char*) ;
 
 void
 do_preresolve(struct context *c)
@@ -70,7 +70,7 @@ do_preresolve(struct context *c)
             remote = ce->remote;
         }
 
-        /* HTTP remote hostname does not need to be resolved */
+
         if (!ce->http_proxy_options)
         {
             status = do_preresolve_host(c, remote, ce->remote_port, ce->af, flags);
@@ -80,7 +80,7 @@ do_preresolve(struct context *c)
             }
         }
 
-        /* Preresolve proxy */
+
         if (ce->http_proxy_options)
         {
             status = do_preresolve_host(c,

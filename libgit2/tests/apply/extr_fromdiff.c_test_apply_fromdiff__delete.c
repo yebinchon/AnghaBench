@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  FILE_ORIGINAL ; 
- int /*<<< orphan*/  PATCH_DELETE_ORIGINAL ; 
- int /*<<< orphan*/  apply_buf (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cl_git_pass (int /*<<< orphan*/ ) ; 
+ int FILE_ORIGINAL ;
+ int PATCH_DELETE_ORIGINAL ;
+ int apply_buf (int ,char*,int *,int *,int ,int *) ;
+ int cl_git_pass (int ) ;
 
 void test_apply_fromdiff__delete(void)
 {
-	cl_git_pass(apply_buf(
-		FILE_ORIGINAL, "file.txt",
-		NULL, NULL,
-		PATCH_DELETE_ORIGINAL, NULL));
+ cl_git_pass(apply_buf(
+  FILE_ORIGINAL, "file.txt",
+  ((void*)0), ((void*)0),
+  PATCH_DELETE_ORIGINAL, ((void*)0)));
 }

@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int errno ; 
- int /*<<< orphan*/  free (void*) ; 
+ int errno ;
+ int free (void*) ;
 
 __attribute__((used)) static void
 free_keep_errno(void *p)
 {
-	int			save_errno = errno;
+ int save_errno = errno;
 
-	free(p);
-	errno = save_errno;
+ free(p);
+ errno = save_errno;
 }

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  qboolean ;
-struct TYPE_2__ {int /*<<< orphan*/  changesmade; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Controls_SetDefaults () ; 
- int /*<<< orphan*/  Controls_Update () ; 
- int /*<<< orphan*/  qtrue ; 
- TYPE_1__ s_controls ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int qboolean ;
+struct TYPE_2__ {int changesmade; } ;
+
+
+ int Controls_SetDefaults () ;
+ int Controls_Update () ;
+ int qtrue ;
+ TYPE_1__ s_controls ;
 
 __attribute__((used)) static void Controls_ResetDefaults_Action( qboolean result ) {
-	if( !result ) {
-		return;
-	}
+ if( !result ) {
+  return;
+ }
 
-	s_controls.changesmade = qtrue;
-	Controls_SetDefaults();
-	Controls_Update();
+ s_controls.changesmade = qtrue;
+ Controls_SetDefaults();
+ Controls_Update();
 }

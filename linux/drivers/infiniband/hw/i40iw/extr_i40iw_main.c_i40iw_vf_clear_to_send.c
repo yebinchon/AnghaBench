@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wait_queue_entry_t ;
-struct i40iw_sc_dev {int vchnl_up; int /*<<< orphan*/  vf_reqs; struct i40iw_device* back_dev; } ;
-struct i40iw_device {int /*<<< orphan*/  vchnl_msgs; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  I40IW_VCHNL_EVENT_TIMEOUT ; 
- int /*<<< orphan*/  add_wait_queue_exclusive (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ atomic_read (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  init_wait (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  remove_wait_queue (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  wait_event_timeout (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wq_has_sleeper (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int wait_queue_entry_t ;
+struct i40iw_sc_dev {int vchnl_up; int vf_reqs; struct i40iw_device* back_dev; } ;
+struct i40iw_device {int vchnl_msgs; } ;
+
+
+ int I40IW_VCHNL_EVENT_TIMEOUT ;
+ int add_wait_queue_exclusive (int *,int *) ;
+ scalar_t__ atomic_read (int *) ;
+ int init_wait (int *) ;
+ int remove_wait_queue (int *,int *) ;
+ int wait_event_timeout (int ,int,int ) ;
+ int wq_has_sleeper (int *) ;
 
 bool i40iw_vf_clear_to_send(struct i40iw_sc_dev *dev)
 {
-	struct i40iw_device *iwdev;
-	wait_queue_entry_t wait;
+ struct i40iw_device *iwdev;
+ wait_queue_entry_t wait;
 
-	iwdev = dev->back_dev;
+ iwdev = dev->back_dev;
 
-	if (!wq_has_sleeper(&dev->vf_reqs) &&
-	    (atomic_read(&iwdev->vchnl_msgs) == 0))
-		return true; /* virtual channel is clear */
+ if (!wq_has_sleeper(&dev->vf_reqs) &&
+     (atomic_read(&iwdev->vchnl_msgs) == 0))
+  return 1;
 
-	init_wait(&wait);
-	add_wait_queue_exclusive(&dev->vf_reqs, &wait);
+ init_wait(&wait);
+ add_wait_queue_exclusive(&dev->vf_reqs, &wait);
 
-	if (!wait_event_timeout(dev->vf_reqs,
-				(atomic_read(&iwdev->vchnl_msgs) == 0),
-				I40IW_VCHNL_EVENT_TIMEOUT))
-		dev->vchnl_up = false;
+ if (!wait_event_timeout(dev->vf_reqs,
+    (atomic_read(&iwdev->vchnl_msgs) == 0),
+    I40IW_VCHNL_EVENT_TIMEOUT))
+  dev->vchnl_up = 0;
 
-	remove_wait_queue(&dev->vf_reqs, &wait);
+ remove_wait_queue(&dev->vf_reqs, &wait);
 
-	return dev->vchnl_up;
+ return dev->vchnl_up;
 }

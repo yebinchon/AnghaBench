@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  nsresult ;
-typedef  int /*<<< orphan*/  nsIDOMNodeList ;
-typedef  int /*<<< orphan*/  nsAString ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  UINT32 ;
-struct TYPE_3__ {unsigned int elem_vars_cnt; unsigned int elem_vars_size; int /*<<< orphan*/ ** elem_vars; int /*<<< orphan*/  nsdoc; } ;
-typedef  TYPE_1__ HTMLDocumentNode ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  scalar_t__ DISPID ;
-typedef  int /*<<< orphan*/  BSTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DISP_E_UNKNOWNNAME ; 
- int /*<<< orphan*/  E_FAIL ; 
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- scalar_t__ MSHTML_DISPID_CUSTOM_MIN ; 
- scalar_t__ NS_FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/ ** heap_alloc (int) ; 
- int /*<<< orphan*/ ** heap_realloc (int /*<<< orphan*/ **,int) ; 
- int /*<<< orphan*/ * heap_strdupW (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nsAString_Finish (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsAString_InitDepend (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nsIDOMHTMLDocument_GetElementsByName (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  nsIDOMNodeList_GetLength (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsIDOMNodeList_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strcmpW (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int nsresult ;
+typedef int nsIDOMNodeList ;
+typedef int nsAString ;
+typedef int WCHAR ;
+typedef int UINT32 ;
+struct TYPE_3__ {unsigned int elem_vars_cnt; unsigned int elem_vars_size; int ** elem_vars; int nsdoc; } ;
+typedef TYPE_1__ HTMLDocumentNode ;
+typedef int HRESULT ;
+typedef scalar_t__ DISPID ;
+typedef int BSTR ;
+
+
+ int DISP_E_UNKNOWNNAME ;
+ int E_FAIL ;
+ int E_OUTOFMEMORY ;
+ scalar_t__ MSHTML_DISPID_CUSTOM_MIN ;
+ scalar_t__ NS_FAILED (int ) ;
+ int S_OK ;
+ int ** heap_alloc (int) ;
+ int ** heap_realloc (int **,int) ;
+ int * heap_strdupW (int ) ;
+ int nsAString_Finish (int *) ;
+ int nsAString_InitDepend (int *,int ) ;
+ int nsIDOMHTMLDocument_GetElementsByName (int ,int *,int **) ;
+ int nsIDOMNodeList_GetLength (int *,int *) ;
+ int nsIDOMNodeList_Release (int *) ;
+ int strcmpW (int ,int *) ;
 
 __attribute__((used)) static HRESULT dispid_from_elem_name(HTMLDocumentNode *This, BSTR name, DISPID *dispid)
 {

@@ -1,29 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  STR_IN_SET (char*,char*,char*) ; 
- int SYNTHETIC_ERRNO (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert_not_reached (char*) ; 
- int do_mount (char*) ; 
- int do_umount (char*) ; 
- int log_error_errno (int,char*) ; 
- int /*<<< orphan*/  log_open () ; 
- int /*<<< orphan*/  log_parse_environment () ; 
- int mac_selinux_init () ; 
- scalar_t__ streq (char*,char*) ; 
- int /*<<< orphan*/  umask (int) ; 
+ int EINVAL ;
+ int STR_IN_SET (char*,char*,char*) ;
+ int SYNTHETIC_ERRNO (int ) ;
+ int assert_not_reached (char*) ;
+ int do_mount (char*) ;
+ int do_umount (char*) ;
+ int log_error_errno (int,char*) ;
+ int log_open () ;
+ int log_parse_environment () ;
+ int mac_selinux_init () ;
+ scalar_t__ streq (char*,char*) ;
+ int umask (int) ;
 
 __attribute__((used)) static int run(int argc, char *argv[]) {
         int r;

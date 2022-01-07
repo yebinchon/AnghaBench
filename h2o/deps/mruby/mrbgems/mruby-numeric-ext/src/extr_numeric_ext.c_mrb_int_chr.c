@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mrb_value ;
-typedef  int /*<<< orphan*/  mrb_state ;
-typedef  int mrb_int ;
 
-/* Variables and functions */
- int CHAR_BIT ; 
- int /*<<< orphan*/  E_RANGE_ERROR ; 
- int /*<<< orphan*/  mrb_raisef (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_str_new (int /*<<< orphan*/ *,char*,int) ; 
- int to_int (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int mrb_value ;
+typedef int mrb_state ;
+typedef int mrb_int ;
+
+
+ int CHAR_BIT ;
+ int E_RANGE_ERROR ;
+ int mrb_raisef (int *,int ,char*,int ) ;
+ int mrb_str_new (int *,char*,int) ;
+ int to_int (int *,int ) ;
 
 __attribute__((used)) static mrb_value
 mrb_int_chr(mrb_state *mrb, mrb_value x)

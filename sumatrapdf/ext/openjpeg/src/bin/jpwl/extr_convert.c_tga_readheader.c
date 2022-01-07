@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SEEK_CUR ; 
- unsigned char TGA_HEADER_SIZE ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int fread (unsigned char*,unsigned char,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (unsigned char*) ; 
- int /*<<< orphan*/  fseek (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- unsigned short get_ushort (unsigned short) ; 
- scalar_t__ malloc (unsigned char) ; 
- int /*<<< orphan*/  stderr ; 
+
+
+
+typedef int FILE ;
+
+
+ int SEEK_CUR ;
+ unsigned char TGA_HEADER_SIZE ;
+ int fprintf (int ,char*) ;
+ int fread (unsigned char*,unsigned char,int,int *) ;
+ int free (unsigned char*) ;
+ int fseek (int *,int,int ) ;
+ unsigned short get_ushort (unsigned short) ;
+ scalar_t__ malloc (unsigned char) ;
+ int stderr ;
 
 __attribute__((used)) static int tga_readheader(FILE *fp, unsigned int *bits_per_pixel,
                           unsigned int *width, unsigned int *height, int *flip_image)
@@ -57,15 +57,15 @@ __attribute__((used)) static int tga_readheader(FILE *fp, unsigned int *bits_per
     image_w = get_ushort(*(unsigned short*)(&tga[12]));
     image_h = get_ushort(*(unsigned short*)(&tga[14]));
     pixel_depth = (unsigned char)tga[16];
-    image_desc  = (unsigned char)tga[17];
+    image_desc = (unsigned char)tga[17];
 
     free(tga);
 
     *bits_per_pixel = (unsigned int)pixel_depth;
-    *width  = (unsigned int)image_w;
+    *width = (unsigned int)image_w;
     *height = (unsigned int)image_h;
 
-    /* Ignore tga identifier, if present ... */
+
     if (id_len) {
         unsigned char *id = (unsigned char *) malloc(id_len);
         if (!fread(id, id_len, 1, fp)) {
@@ -77,9 +77,9 @@ __attribute__((used)) static int tga_readheader(FILE *fp, unsigned int *bits_per
         free(id);
     }
 
-    /* Test for compressed formats ... not yet supported ...
-    // Note :-  9 - RLE encoded palettized.
-    //         10 - RLE encoded RGB. */
+
+
+
     if (image_type > 8) {
         fprintf(stderr, "Sorry, compressed tga files are not currently supported.\n");
         return 0 ;
@@ -87,7 +87,7 @@ __attribute__((used)) static int tga_readheader(FILE *fp, unsigned int *bits_per
 
     *flip_image = !(image_desc & 32);
 
-    /* Palettized formats are not yet supported, skip over the palette, if present ... */
+
     palette_size = cmap_len * (cmap_entry_size / 8);
 
     if (palette_size > 0) {

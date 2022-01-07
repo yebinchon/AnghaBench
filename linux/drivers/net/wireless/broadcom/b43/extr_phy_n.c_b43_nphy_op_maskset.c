@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u16 ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u16 ;
 struct TYPE_2__ {int writes_counter; } ;
 struct b43_wldev {TYPE_1__ phy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  B43_MMIO_PHY_CONTROL ; 
- int /*<<< orphan*/  B43_MMIO_PHY_DATA ; 
- int /*<<< orphan*/  b43_maskset16 (struct b43_wldev*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  b43_write16f (struct b43_wldev*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  check_phyreg (struct b43_wldev*,int /*<<< orphan*/ ) ; 
+
+ int B43_MMIO_PHY_CONTROL ;
+ int B43_MMIO_PHY_DATA ;
+ int b43_maskset16 (struct b43_wldev*,int ,int ,int ) ;
+ int b43_write16f (struct b43_wldev*,int ,int ) ;
+ int check_phyreg (struct b43_wldev*,int ) ;
 
 __attribute__((used)) static void b43_nphy_op_maskset(struct b43_wldev *dev, u16 reg, u16 mask,
-				 u16 set)
+     u16 set)
 {
-	check_phyreg(dev, reg);
-	b43_write16f(dev, B43_MMIO_PHY_CONTROL, reg);
-	b43_maskset16(dev, B43_MMIO_PHY_DATA, mask, set);
-	dev->phy.writes_counter = 1;
+ check_phyreg(dev, reg);
+ b43_write16f(dev, B43_MMIO_PHY_CONTROL, reg);
+ b43_maskset16(dev, B43_MMIO_PHY_DATA, mask, set);
+ dev->phy.writes_counter = 1;
 }

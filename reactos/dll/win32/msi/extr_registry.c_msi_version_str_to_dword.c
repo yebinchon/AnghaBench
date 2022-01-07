@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ LPCWSTR ;
-typedef  int /*<<< orphan*/  DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MAKELONG (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MAKEWORD (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  atoiW (scalar_t__) ; 
- scalar_t__ strchrW (scalar_t__,char) ; 
+
+
+
+typedef scalar_t__ LPCWSTR ;
+typedef int DWORD ;
+
+
+ int MAKELONG (int ,int ) ;
+ int MAKEWORD (int ,int ) ;
+ int atoiW (scalar_t__) ;
+ scalar_t__ strchrW (scalar_t__,char) ;
 
 DWORD msi_version_str_to_dword(LPCWSTR p)
 {

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  type; int /*<<< orphan*/  gen_name; } ;
-typedef  TYPE_1__ Symbol ;
 
-/* Variables and functions */
- scalar_t__ asprintf (char**,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errx (int,char*) ; 
- int /*<<< orphan*/  fix_labels2 (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  free (char*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int type; int gen_name; } ;
+typedef TYPE_1__ Symbol ;
+
+
+ scalar_t__ asprintf (char**,char*,int ) ;
+ int errx (int,char*) ;
+ int fix_labels2 (int ,char*) ;
+ int free (char*) ;
 
 __attribute__((used)) static void
 fix_labels(Symbol *s)
 {
-    char *p = NULL;
-    if (asprintf(&p, "choice_%s", s->gen_name) < 0 || p == NULL)
-	errx(1, "malloc");
+    char *p = ((void*)0);
+    if (asprintf(&p, "choice_%s", s->gen_name) < 0 || p == ((void*)0))
+ errx(1, "malloc");
     fix_labels2(s->type, p);
     free(p);
 }

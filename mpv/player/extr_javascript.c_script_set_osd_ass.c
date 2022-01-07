@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct script_ctx {TYPE_1__* mpctx; int /*<<< orphan*/  client; } ;
-typedef  int /*<<< orphan*/  js_State ;
-struct TYPE_2__ {int /*<<< orphan*/  osd; } ;
 
-/* Variables and functions */
- struct script_ctx* jctx (int /*<<< orphan*/ *) ; 
- int jsL_checkint (int /*<<< orphan*/ *,int) ; 
- char* js_tostring (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  mp_wakeup_core (TYPE_1__*) ; 
- int /*<<< orphan*/  osd_set_external (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,char*) ; 
- int /*<<< orphan*/  push_success (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct script_ctx {TYPE_1__* mpctx; int client; } ;
+typedef int js_State ;
+struct TYPE_2__ {int osd; } ;
+
+
+ struct script_ctx* jctx (int *) ;
+ int jsL_checkint (int *,int) ;
+ char* js_tostring (int *,int) ;
+ int mp_wakeup_core (TYPE_1__*) ;
+ int osd_set_external (int ,int ,int,int,char*) ;
+ int push_success (int *) ;
 
 __attribute__((used)) static void script_set_osd_ass(js_State *J)
 {

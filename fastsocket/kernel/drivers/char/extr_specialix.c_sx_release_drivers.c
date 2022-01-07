@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  func_enter () ; 
- int /*<<< orphan*/  func_exit () ; 
- int /*<<< orphan*/  put_tty_driver (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  specialix_driver ; 
- int /*<<< orphan*/  tty_unregister_driver (int /*<<< orphan*/ ) ; 
+ int func_enter () ;
+ int func_exit () ;
+ int put_tty_driver (int ) ;
+ int specialix_driver ;
+ int tty_unregister_driver (int ) ;
 
 __attribute__((used)) static void sx_release_drivers(void)
 {
-	func_enter();
+ func_enter();
 
-	tty_unregister_driver(specialix_driver);
-	put_tty_driver(specialix_driver);
-	func_exit();
+ tty_unregister_driver(specialix_driver);
+ put_tty_driver(specialix_driver);
+ func_exit();
 }

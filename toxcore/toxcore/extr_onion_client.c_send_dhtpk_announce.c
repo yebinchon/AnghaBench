@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_5__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int /*<<< orphan*/  uint64_t ;
-typedef  scalar_t__ uint16_t ;
-typedef  int /*<<< orphan*/  no_replay ;
-struct TYPE_7__ {int /*<<< orphan*/ * self_public_key; } ;
-struct TYPE_6__ {scalar_t__ num_friends; TYPE_5__* dht; int /*<<< orphan*/  c; } ;
-typedef  TYPE_1__ Onion_Client ;
-typedef  int /*<<< orphan*/  Node_format ;
 
-/* Variables and functions */
- int DHTPK_DATA_MAX_LENGTH ; 
- int DHTPK_DATA_MIN_LENGTH ; 
- int MAX_SENT_NODES ; 
- int ONION_DATA_DHTPK ; 
- scalar_t__ closelist_nodes (TYPE_5__*,int /*<<< orphan*/ *,int) ; 
- scalar_t__ copy_connected_tcp_relays (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int crypto_box_PUBLICKEYBYTES ; 
- int /*<<< orphan*/  host_to_net (int*,int) ; 
- int /*<<< orphan*/  memcpy (int*,int /*<<< orphan*/ *,int) ; 
- int pack_nodes (int*,int,int /*<<< orphan*/ *,scalar_t__) ; 
- int send_dht_dhtpk (TYPE_1__*,scalar_t__,int*,int) ; 
- int send_onion_data (TYPE_1__*,scalar_t__,int*,int) ; 
- int /*<<< orphan*/  unix_time () ; 
+
+typedef struct TYPE_7__ TYPE_5__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint64_t ;
+typedef scalar_t__ uint16_t ;
+typedef int no_replay ;
+struct TYPE_7__ {int * self_public_key; } ;
+struct TYPE_6__ {scalar_t__ num_friends; TYPE_5__* dht; int c; } ;
+typedef TYPE_1__ Onion_Client ;
+typedef int Node_format ;
+
+
+ int DHTPK_DATA_MAX_LENGTH ;
+ int DHTPK_DATA_MIN_LENGTH ;
+ int MAX_SENT_NODES ;
+ int ONION_DATA_DHTPK ;
+ scalar_t__ closelist_nodes (TYPE_5__*,int *,int) ;
+ scalar_t__ copy_connected_tcp_relays (int ,int *,int) ;
+ int crypto_box_PUBLICKEYBYTES ;
+ int host_to_net (int*,int) ;
+ int memcpy (int*,int *,int) ;
+ int pack_nodes (int*,int,int *,scalar_t__) ;
+ int send_dht_dhtpk (TYPE_1__*,scalar_t__,int*,int) ;
+ int send_onion_data (TYPE_1__*,scalar_t__,int*,int) ;
+ int unix_time () ;
 
 __attribute__((used)) static int send_dhtpk_announce(Onion_Client *onion_c, uint16_t friend_num, uint8_t onion_dht_both)
 {

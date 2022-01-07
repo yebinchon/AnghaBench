@@ -1,75 +1,75 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_33__   TYPE_9__ ;
-typedef  struct TYPE_32__   TYPE_8__ ;
-typedef  struct TYPE_31__   TYPE_7__ ;
-typedef  struct TYPE_30__   TYPE_6__ ;
-typedef  struct TYPE_29__   TYPE_5__ ;
-typedef  struct TYPE_28__   TYPE_4__ ;
-typedef  struct TYPE_27__   TYPE_3__ ;
-typedef  struct TYPE_26__   TYPE_2__ ;
-typedef  struct TYPE_25__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ ngx_int_t ;
-struct TYPE_28__ {size_t phase_handler; int request_body_in_single_buf; int request_body_in_persistent_file; int request_body_in_clean_file; TYPE_3__* main; scalar_t__ header_sent; int /*<<< orphan*/  uri; TYPE_1__* connection; } ;
-typedef  TYPE_4__ ngx_http_request_t ;
+
+
+typedef struct TYPE_33__ TYPE_9__ ;
+typedef struct TYPE_32__ TYPE_8__ ;
+typedef struct TYPE_31__ TYPE_7__ ;
+typedef struct TYPE_30__ TYPE_6__ ;
+typedef struct TYPE_29__ TYPE_5__ ;
+typedef struct TYPE_28__ TYPE_4__ ;
+typedef struct TYPE_27__ TYPE_3__ ;
+typedef struct TYPE_26__ TYPE_2__ ;
+typedef struct TYPE_25__ TYPE_1__ ;
+
+
+typedef scalar_t__ ngx_int_t ;
+struct TYPE_28__ {size_t phase_handler; int request_body_in_single_buf; int request_body_in_persistent_file; int request_body_in_clean_file; TYPE_3__* main; scalar_t__ header_sent; int uri; TYPE_1__* connection; } ;
+typedef TYPE_4__ ngx_http_request_t ;
 struct TYPE_29__ {int next; } ;
-typedef  TYPE_5__ ngx_http_phase_handler_t ;
+typedef TYPE_5__ ngx_http_phase_handler_t ;
 struct TYPE_30__ {int postponed_to_access_phase_end; } ;
-typedef  TYPE_6__ ngx_http_lua_main_conf_t ;
+typedef TYPE_6__ ngx_http_lua_main_conf_t ;
 struct TYPE_31__ {scalar_t__ (* access_handler ) (TYPE_4__*) ;scalar_t__ force_read_body; } ;
-typedef  TYPE_7__ ngx_http_lua_loc_conf_t ;
-struct TYPE_32__ {scalar_t__ (* resume_handler ) (TYPE_4__*) ;int waiting_more_body; int /*<<< orphan*/  read_body_done; int /*<<< orphan*/  eof; scalar_t__ entered_access_phase; } ;
-typedef  TYPE_8__ ngx_http_lua_ctx_t ;
+typedef TYPE_7__ ngx_http_lua_loc_conf_t ;
+struct TYPE_32__ {scalar_t__ (* resume_handler ) (TYPE_4__*) ;int waiting_more_body; int read_body_done; int eof; scalar_t__ entered_access_phase; } ;
+typedef TYPE_8__ ngx_http_lua_ctx_t ;
 struct TYPE_26__ {TYPE_5__* handlers; } ;
 struct TYPE_33__ {TYPE_2__ phase_engine; } ;
-typedef  TYPE_9__ ngx_http_core_main_conf_t ;
-struct TYPE_27__ {int /*<<< orphan*/  count; } ;
-struct TYPE_25__ {int /*<<< orphan*/  log; } ;
+typedef TYPE_9__ ngx_http_core_main_conf_t ;
+struct TYPE_27__ {int count; } ;
+struct TYPE_25__ {int log; } ;
 
-/* Variables and functions */
- scalar_t__ NGX_AGAIN ; 
- scalar_t__ NGX_DECLINED ; 
- scalar_t__ NGX_DONE ; 
- scalar_t__ NGX_ERROR ; 
- scalar_t__ NGX_HTTP_INTERNAL_SERVER_ERROR ; 
- scalar_t__ NGX_HTTP_OK ; 
- scalar_t__ NGX_HTTP_SPECIAL_RESPONSE ; 
- int /*<<< orphan*/  NGX_LOG_DEBUG_HTTP ; 
- scalar_t__ NGX_OK ; 
- int /*<<< orphan*/  dd (char*,...) ; 
- int /*<<< orphan*/  memmove (TYPE_5__*,TYPE_5__*,int) ; 
- int /*<<< orphan*/  ngx_http_core_module ; 
- TYPE_8__* ngx_http_get_module_ctx (TYPE_4__*,int /*<<< orphan*/ ) ; 
- TYPE_7__* ngx_http_get_module_loc_conf (TYPE_4__*,int /*<<< orphan*/ ) ; 
- void* ngx_http_get_module_main_conf (TYPE_4__*,int /*<<< orphan*/ ) ; 
- TYPE_8__* ngx_http_lua_create_ctx (TYPE_4__*) ; 
- int /*<<< orphan*/  ngx_http_lua_generic_phase_post_read ; 
- int /*<<< orphan*/  ngx_http_lua_module ; 
- scalar_t__ ngx_http_lua_send_chain_link (TYPE_4__*,TYPE_8__*,int /*<<< orphan*/ *) ; 
- scalar_t__ ngx_http_read_client_request_body (TYPE_4__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_log_debug2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ stub1 (TYPE_4__*) ; 
- scalar_t__ stub2 (TYPE_4__*) ; 
+
+ scalar_t__ NGX_AGAIN ;
+ scalar_t__ NGX_DECLINED ;
+ scalar_t__ NGX_DONE ;
+ scalar_t__ NGX_ERROR ;
+ scalar_t__ NGX_HTTP_INTERNAL_SERVER_ERROR ;
+ scalar_t__ NGX_HTTP_OK ;
+ scalar_t__ NGX_HTTP_SPECIAL_RESPONSE ;
+ int NGX_LOG_DEBUG_HTTP ;
+ scalar_t__ NGX_OK ;
+ int dd (char*,...) ;
+ int memmove (TYPE_5__*,TYPE_5__*,int) ;
+ int ngx_http_core_module ;
+ TYPE_8__* ngx_http_get_module_ctx (TYPE_4__*,int ) ;
+ TYPE_7__* ngx_http_get_module_loc_conf (TYPE_4__*,int ) ;
+ void* ngx_http_get_module_main_conf (TYPE_4__*,int ) ;
+ TYPE_8__* ngx_http_lua_create_ctx (TYPE_4__*) ;
+ int ngx_http_lua_generic_phase_post_read ;
+ int ngx_http_lua_module ;
+ scalar_t__ ngx_http_lua_send_chain_link (TYPE_4__*,TYPE_8__*,int *) ;
+ scalar_t__ ngx_http_read_client_request_body (TYPE_4__*,int ) ;
+ int ngx_log_debug2 (int ,int ,int ,char*,int *,int ) ;
+ scalar_t__ stub1 (TYPE_4__*) ;
+ scalar_t__ stub2 (TYPE_4__*) ;
 
 ngx_int_t
 ngx_http_lua_access_handler(ngx_http_request_t *r)
 {
-    ngx_int_t                   rc;
-    ngx_http_lua_ctx_t         *ctx;
-    ngx_http_lua_loc_conf_t    *llcf;
-    ngx_http_lua_main_conf_t   *lmcf;
-    ngx_http_phase_handler_t    tmp, *ph, *cur_ph, *last_ph;
-    ngx_http_core_main_conf_t  *cmcf;
+    ngx_int_t rc;
+    ngx_http_lua_ctx_t *ctx;
+    ngx_http_lua_loc_conf_t *llcf;
+    ngx_http_lua_main_conf_t *lmcf;
+    ngx_http_phase_handler_t tmp, *ph, *cur_ph, *last_ph;
+    ngx_http_core_main_conf_t *cmcf;
 
     ngx_log_debug2(NGX_LOG_DEBUG_HTTP, r->connection->log, 0,
                    "lua access handler, uri:\"%V\" c:%ud", &r->uri,
@@ -86,17 +86,17 @@ ngx_http_lua_access_handler(ngx_http_request_t *r)
         ph = cmcf->phase_engine.handlers;
         cur_ph = &ph[r->phase_handler];
 
-        /* we should skip the post_access phase handler here too */
+
         last_ph = &ph[cur_ph->next - 2];
 
         dd("ph cur: %d, ph next: %d", (int) r->phase_handler,
            (int) (cur_ph->next - 2));
 
-#if 0
-        if (cur_ph == last_ph) {
-            dd("XXX our handler is already the last access phase handler");
-        }
-#endif
+
+
+
+
+
 
         if (cur_ph < last_ph) {
             dd("swapping the contents of cur_ph and last_ph...");
@@ -108,7 +108,7 @@ ngx_http_lua_access_handler(ngx_http_request_t *r)
 
             *last_ph = tmp;
 
-            r->phase_handler--; /* redo the current ph */
+            r->phase_handler--;
 
             return NGX_DECLINED;
         }
@@ -116,7 +116,7 @@ ngx_http_lua_access_handler(ngx_http_request_t *r)
 
     llcf = ngx_http_get_module_loc_conf(r, ngx_http_lua_module);
 
-    if (llcf->access_handler == NULL) {
+    if (llcf->access_handler == ((void*)0)) {
         dd("no access handler found");
         return NGX_DECLINED;
     }
@@ -125,9 +125,9 @@ ngx_http_lua_access_handler(ngx_http_request_t *r)
 
     dd("ctx = %p", ctx);
 
-    if (ctx == NULL) {
+    if (ctx == ((void*)0)) {
         ctx = ngx_http_lua_create_ctx(r);
-        if (ctx == NULL) {
+        if (ctx == ((void*)0)) {
             return NGX_HTTP_INTERNAL_SERVER_ERROR;
         }
     }
@@ -147,15 +147,15 @@ ngx_http_lua_access_handler(ngx_http_request_t *r)
             if (r->header_sent) {
                 dd("header already sent");
 
-                /* response header was already generated in access_by_lua*,
-                 * so it is no longer safe to proceed to later phases
-                 * which may generate responses again */
+
+
+
 
                 if (!ctx->eof) {
                     dd("eof not yet sent");
 
-                    rc = ngx_http_lua_send_chain_link(r, ctx, NULL
-                                                     /* indicate last_buf */);
+                    rc = ngx_http_lua_send_chain_link(r, ctx, ((void*)0)
+                                                                            );
                     if (rc == NGX_ERROR || rc > NGX_OK) {
                         return rc;
                     }
@@ -184,10 +184,10 @@ ngx_http_lua_access_handler(ngx_http_request_t *r)
                                        ngx_http_lua_generic_phase_post_read);
 
         if (rc == NGX_ERROR || rc >= NGX_HTTP_SPECIAL_RESPONSE) {
-#if (nginx_version < 1002006) ||                                             \
-        (nginx_version >= 1003000 && nginx_version < 1003009)
+
+
             r->main->count--;
-#endif
+
 
             return rc;
         }

@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  int16 ;
-typedef  TYPE_1__* TupleDesc ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int int16 ;
+typedef TYPE_1__* TupleDesc ;
 struct TYPE_5__ {int natts; } ;
-typedef  int /*<<< orphan*/  StringInfo ;
-typedef  int /*<<< orphan*/  List ;
+typedef int StringInfo ;
+typedef int List ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FrontendProtocol ; 
- int PG_PROTOCOL_MAJOR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SendRowDescriptionCols_2 (int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SendRowDescriptionCols_3 (int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pq_beginmessage_reuse (int /*<<< orphan*/ ,char) ; 
- int /*<<< orphan*/  pq_endmessage_reuse (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pq_sendint16 (int /*<<< orphan*/ ,int) ; 
+
+ int FrontendProtocol ;
+ int PG_PROTOCOL_MAJOR (int ) ;
+ int SendRowDescriptionCols_2 (int ,TYPE_1__*,int *,int *) ;
+ int SendRowDescriptionCols_3 (int ,TYPE_1__*,int *,int *) ;
+ int pq_beginmessage_reuse (int ,char) ;
+ int pq_endmessage_reuse (int ) ;
+ int pq_sendint16 (int ,int) ;
 
 void
 SendRowDescriptionMessage(StringInfo buf, TupleDesc typeinfo,
-						  List *targetlist, int16 *formats)
+        List *targetlist, int16 *formats)
 {
-	int			natts = typeinfo->natts;
-	int			proto = PG_PROTOCOL_MAJOR(FrontendProtocol);
+ int natts = typeinfo->natts;
+ int proto = PG_PROTOCOL_MAJOR(FrontendProtocol);
 
-	/* tuple descriptor message type */
-	pq_beginmessage_reuse(buf, 'T');
-	/* # of attrs in tuples */
-	pq_sendint16(buf, natts);
 
-	if (proto >= 3)
-		SendRowDescriptionCols_3(buf, typeinfo, targetlist, formats);
-	else
-		SendRowDescriptionCols_2(buf, typeinfo, targetlist, formats);
+ pq_beginmessage_reuse(buf, 'T');
 
-	pq_endmessage_reuse(buf);
+ pq_sendint16(buf, natts);
+
+ if (proto >= 3)
+  SendRowDescriptionCols_3(buf, typeinfo, targetlist, formats);
+ else
+  SendRowDescriptionCols_2(buf, typeinfo, targetlist, formats);
+
+ pq_endmessage_reuse(buf);
 }

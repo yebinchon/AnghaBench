@@ -1,19 +1,11 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  PyArray_MIN (int,int) ; 
- int memcmp (char*,char*,int /*<<< orphan*/ ) ; 
+ int PyArray_MIN (int,int) ;
+ int memcmp (char*,char*,int ) ;
 
 __attribute__((used)) static int
 _mystrncmp(char *s1, char *s2, int len1, int len2)
@@ -42,5 +34,5 @@ _mystrncmp(char *s1, char *s2, int len1, int len2)
         }
         sptr++;
     }
-    return 0; /* Only happens if NULLs are everywhere */
+    return 0;
 }

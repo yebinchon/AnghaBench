@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int size; char** keys; char** functions; } ;
-typedef  TYPE_1__ FunctionBar ;
+typedef TYPE_1__ FunctionBar ;
 
-/* Variables and functions */
- int /*<<< orphan*/  COLS ; 
- int* CRT_colors ; 
- scalar_t__ CRT_cursorX ; 
- size_t FUNCTION_BAR ; 
- size_t FUNCTION_KEY ; 
- scalar_t__ LINES ; 
- size_t RESET_COLOR ; 
- int /*<<< orphan*/  attrset (int) ; 
- int /*<<< orphan*/  curs_set (int) ; 
- int /*<<< orphan*/  mvaddstr (scalar_t__,int,char*) ; 
- int /*<<< orphan*/  mvhline (scalar_t__,int /*<<< orphan*/ ,char,int /*<<< orphan*/ ) ; 
- scalar_t__ strlen (char*) ; 
+
+ int COLS ;
+ int* CRT_colors ;
+ scalar_t__ CRT_cursorX ;
+ size_t FUNCTION_BAR ;
+ size_t FUNCTION_KEY ;
+ scalar_t__ LINES ;
+ size_t RESET_COLOR ;
+ int attrset (int) ;
+ int curs_set (int) ;
+ int mvaddstr (scalar_t__,int,char*) ;
+ int mvhline (scalar_t__,int ,char,int ) ;
+ scalar_t__ strlen (char*) ;
 
 void FunctionBar_drawAttr(const FunctionBar* this, char* buffer, int attr) {
    attrset(CRT_colors[FUNCTION_BAR]);

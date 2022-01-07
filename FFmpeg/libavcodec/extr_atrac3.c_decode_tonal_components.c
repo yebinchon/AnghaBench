@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int pos; int num_coefs; int* coef; } ;
-typedef  TYPE_1__ TonalComponent ;
-typedef  int /*<<< orphan*/  GetBitContext ;
+typedef TYPE_1__ TonalComponent ;
+typedef int GetBitContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int FFMIN (int,int) ; 
- int SAMPLES_PER_FRAME ; 
- float* ff_atrac_sf_table ; 
- int get_bits (int /*<<< orphan*/ *,int) ; 
- int get_bits1 (int /*<<< orphan*/ *) ; 
- float* inv_max_quant ; 
- int /*<<< orphan*/  read_quant_spectral_coeffs (int /*<<< orphan*/ *,int,int,int*,int) ; 
+
+ int AVERROR_INVALIDDATA ;
+ int FFMIN (int,int) ;
+ int SAMPLES_PER_FRAME ;
+ float* ff_atrac_sf_table ;
+ int get_bits (int *,int) ;
+ int get_bits1 (int *) ;
+ float* inv_max_quant ;
+ int read_quant_spectral_coeffs (int *,int,int,int*,int) ;
 
 __attribute__((used)) static int decode_tonal_components(GetBitContext *gb,
                                    TonalComponent *components, int num_bands)
@@ -35,7 +35,7 @@ __attribute__((used)) static int decode_tonal_components(GetBitContext *gb,
 
     nb_components = get_bits(gb, 5);
 
-    /* no tonal components */
+
     if (nb_components == 0)
         return 0;
 
@@ -80,8 +80,8 @@ __attribute__((used)) static int decode_tonal_components(GetBitContext *gb,
                 cmp->pos = b * 64 + get_bits(gb, 6);
 
                 max_coded_values = SAMPLES_PER_FRAME - cmp->pos;
-                coded_values     = coded_values_per_component + 1;
-                coded_values     = FFMIN(max_coded_values, coded_values);
+                coded_values = coded_values_per_component + 1;
+                coded_values = FFMIN(max_coded_values, coded_values);
 
                 scale_factor = ff_atrac_sf_table[sf_index] *
                                inv_max_quant[quant_step_index];
@@ -91,7 +91,7 @@ __attribute__((used)) static int decode_tonal_components(GetBitContext *gb,
 
                 cmp->num_coefs = coded_values;
 
-                /* inverse quant */
+
                 for (m = 0; m < coded_values; m++)
                     cmp->coef[m] = mantissa[m] * scale_factor;
 

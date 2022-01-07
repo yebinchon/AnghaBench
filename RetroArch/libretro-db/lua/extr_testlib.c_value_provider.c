@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct rmsgpack_dom_value {int dummy; } ;
-typedef  int /*<<< orphan*/  lua_State ;
+typedef int lua_State ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LUA_REGISTRYINDEX ; 
- int libretrodb_lua_to_rmsgpack_value (int /*<<< orphan*/ *,int,struct rmsgpack_dom_value*) ; 
- int /*<<< orphan*/  lua_getfield (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- scalar_t__ lua_isnil (int /*<<< orphan*/ *,int) ; 
- scalar_t__ lua_istable (int /*<<< orphan*/ *,int) ; 
- scalar_t__ lua_pcall (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_pop (int /*<<< orphan*/ *,int) ; 
- char* lua_tostring (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
+
+ int LUA_REGISTRYINDEX ;
+ int libretrodb_lua_to_rmsgpack_value (int *,int,struct rmsgpack_dom_value*) ;
+ int lua_getfield (int *,int ,char*) ;
+ scalar_t__ lua_isnil (int *,int) ;
+ scalar_t__ lua_istable (int *,int) ;
+ scalar_t__ lua_pcall (int *,int ,int,int ) ;
+ int lua_pop (int *,int) ;
+ char* lua_tostring (int *,int) ;
+ int printf (char*,...) ;
 
 __attribute__((used)) static int value_provider(void *ctx, struct rmsgpack_dom_value *out)
 {
-   int rv       = 0;
+   int rv = 0;
    lua_State *L = ctx;
 
    lua_getfield(L, LUA_REGISTRYINDEX, "testlib_get_value");

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct rcu_head {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  call_srcu (int /*<<< orphan*/ *,struct rcu_head*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  srcu_free_old_probes ; 
- int /*<<< orphan*/  tracepoint_srcu ; 
+
+ int call_srcu (int *,struct rcu_head*,int ) ;
+ int srcu_free_old_probes ;
+ int tracepoint_srcu ;
 
 __attribute__((used)) static void rcu_free_old_probes(struct rcu_head *head)
 {
-	call_srcu(&tracepoint_srcu, head, srcu_free_old_probes);
+ call_srcu(&tracepoint_srcu, head, srcu_free_old_probes);
 }

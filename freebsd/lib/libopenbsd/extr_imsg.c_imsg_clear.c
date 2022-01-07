@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct imsgbuf {int /*<<< orphan*/  w; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  close (int) ; 
- int imsg_get_fd (struct imsgbuf*) ; 
- int /*<<< orphan*/  msgbuf_clear (int /*<<< orphan*/ *) ; 
+
+
+
+struct imsgbuf {int w; } ;
+
+
+ int close (int) ;
+ int imsg_get_fd (struct imsgbuf*) ;
+ int msgbuf_clear (int *) ;
 
 void
 imsg_clear(struct imsgbuf *ibuf)
 {
-	int	fd;
+ int fd;
 
-	msgbuf_clear(&ibuf->w);
-	while ((fd = imsg_get_fd(ibuf)) != -1)
-		close(fd);
+ msgbuf_clear(&ibuf->w);
+ while ((fd = imsg_get_fd(ibuf)) != -1)
+  close(fd);
 }

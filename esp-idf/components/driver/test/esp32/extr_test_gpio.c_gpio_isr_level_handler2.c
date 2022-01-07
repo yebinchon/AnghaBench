@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GPIO_OUTPUT_IO ; 
- int /*<<< orphan*/  ets_printf (char*,int /*<<< orphan*/ ,scalar_t__,...) ; 
- scalar_t__ gpio_get_level (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gpio_set_level (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  level_intr_times ; 
+
+
+
+typedef int uint32_t ;
+
+
+ int GPIO_OUTPUT_IO ;
+ int ets_printf (char*,int ,scalar_t__,...) ;
+ scalar_t__ gpio_get_level (int ) ;
+ int gpio_set_level (int ,int) ;
+ int level_intr_times ;
 
 __attribute__((used)) static void gpio_isr_level_handler2(void* arg)
 {

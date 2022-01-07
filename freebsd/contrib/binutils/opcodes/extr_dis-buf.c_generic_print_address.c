@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct disassemble_info {int /*<<< orphan*/  stream; int /*<<< orphan*/  (* fprintf_func ) (int /*<<< orphan*/ ,char*,char*) ;} ;
-typedef  int /*<<< orphan*/  bfd_vma ;
 
-/* Variables and functions */
- int /*<<< orphan*/  sprintf_vma (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,char*,char*) ; 
+
+
+
+struct disassemble_info {int stream; int (* fprintf_func ) (int ,char*,char*) ;} ;
+typedef int bfd_vma ;
+
+
+ int sprintf_vma (char*,int ) ;
+ int stub1 (int ,char*,char*) ;
 
 void
 generic_print_address (bfd_vma addr, struct disassemble_info *info)

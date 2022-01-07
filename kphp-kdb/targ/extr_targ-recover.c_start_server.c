@@ -1,72 +1,72 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct in_addr {int dummy; } ;
-struct hostent {scalar_t__ h_addrtype; int h_length; scalar_t__ h_addr; int /*<<< orphan*/  h_addr_list; } ;
-struct TYPE_3__ {int /*<<< orphan*/  port; struct in_addr target; } ;
+struct hostent {scalar_t__ h_addrtype; int h_length; scalar_t__ h_addr; int h_addr_list; } ;
+struct TYPE_3__ {int port; struct in_addr target; } ;
 
-/* Variables and functions */
- scalar_t__ AF_INET ; 
- int NB_alloc ; 
- int NB_max ; 
- int NB_used ; 
- int O_CREAT ; 
- int O_EXCL ; 
- int O_WRONLY ; 
- int /*<<< orphan*/  SIGHUP ; 
- int /*<<< orphan*/  SIGINT ; 
- int /*<<< orphan*/  SIGTERM ; 
- int /*<<< orphan*/  SIGUSR1 ; 
- int /*<<< orphan*/  VB ; 
- int active_connections ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ change_user (char*) ; 
- int /*<<< orphan*/  conn ; 
- int /*<<< orphan*/  create_all_outbound_connections () ; 
- int /*<<< orphan*/  create_target (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cron () ; 
- scalar_t__ daemonize ; 
- TYPE_1__ default_ct ; 
- scalar_t__ disable_log ; 
- int /*<<< orphan*/  epoll_work (int) ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- struct hostent* gethostbyname (char*) ; 
- char* hostname ; 
- int /*<<< orphan*/  init_epoll () ; 
- int /*<<< orphan*/  init_netbuffers () ; 
- int /*<<< orphan*/  interactive ; 
- int maxconn ; 
- int now ; 
- scalar_t__ open (int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  port ; 
- scalar_t__ query_log ; 
- scalar_t__ quit_steps ; 
- int /*<<< orphan*/  setsid () ; 
- int /*<<< orphan*/  sighup_handler ; 
- int /*<<< orphan*/  sigint_handler ; 
- int /*<<< orphan*/  signal (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sigterm_handler ; 
- int /*<<< orphan*/  sigusr1_handler ; 
- int /*<<< orphan*/  sprintf (int /*<<< orphan*/ ,char*,char*) ; 
- scalar_t__ stat_log ; 
- int /*<<< orphan*/  stderr ; 
- char* suffix ; 
- int /*<<< orphan*/  test_mode ; 
- char* username ; 
- scalar_t__ verbosity ; 
 
-void start_server (void) { 
+ scalar_t__ AF_INET ;
+ int NB_alloc ;
+ int NB_max ;
+ int NB_used ;
+ int O_CREAT ;
+ int O_EXCL ;
+ int O_WRONLY ;
+ int SIGHUP ;
+ int SIGINT ;
+ int SIGTERM ;
+ int SIGUSR1 ;
+ int VB ;
+ int active_connections ;
+ int assert (int) ;
+ scalar_t__ change_user (char*) ;
+ int conn ;
+ int create_all_outbound_connections () ;
+ int create_target (TYPE_1__*,int ) ;
+ int cron () ;
+ scalar_t__ daemonize ;
+ TYPE_1__ default_ct ;
+ scalar_t__ disable_log ;
+ int epoll_work (int) ;
+ int exit (int) ;
+ int fprintf (int ,char*,...) ;
+ struct hostent* gethostbyname (char*) ;
+ char* hostname ;
+ int init_epoll () ;
+ int init_netbuffers () ;
+ int interactive ;
+ int maxconn ;
+ int now ;
+ scalar_t__ open (int ,int,int) ;
+ int port ;
+ scalar_t__ query_log ;
+ scalar_t__ quit_steps ;
+ int setsid () ;
+ int sighup_handler ;
+ int sigint_handler ;
+ int signal (int ,int ) ;
+ int sigterm_handler ;
+ int sigusr1_handler ;
+ int sprintf (int ,char*,char*) ;
+ scalar_t__ stat_log ;
+ int stderr ;
+ char* suffix ;
+ int test_mode ;
+ char* username ;
+ scalar_t__ verbosity ;
+
+void start_server (void) {
   int i;
   int prev_time;
   struct hostent *h;
@@ -96,7 +96,7 @@ void start_server (void) {
 
   if (!(h = gethostbyname (hostname)) || h->h_addrtype != AF_INET || h->h_length != 4 || !h->h_addr_list || !h->h_addr) {
     fprintf (stderr, "fatal: cannot resolve hostname %s: %m\n", hostname);
-    exit (1);                                       
+    exit (1);
   }
 
   default_ct.target = *(struct in_addr *) h->h_addr;
@@ -115,7 +115,7 @@ void start_server (void) {
   for (i = 0; ; i++) {
     if (verbosity > 0 && !(i & 255)) {
       fprintf (stderr, "epoll_work(): %d out of %d connections, network buffers: %d used, %d out of %d allocated\n",
-	       active_connections, maxconn, NB_used, NB_alloc, NB_max);
+        active_connections, maxconn, NB_used, NB_alloc, NB_max);
     }
     epoll_work (57);
     if (now != prev_time) {

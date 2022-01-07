@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  HEVCSEI ;
-typedef  int /*<<< orphan*/  HEVCParamSets ;
-typedef  int /*<<< orphan*/  GetBitContext ;
 
-/* Variables and functions */
- int decode_nal_sei_message (int /*<<< orphan*/ *,void*,int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int) ; 
- scalar_t__ more_rbsp_data (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int HEVCSEI ;
+typedef int HEVCParamSets ;
+typedef int GetBitContext ;
+
+
+ int decode_nal_sei_message (int *,void*,int *,int const*,int) ;
+ scalar_t__ more_rbsp_data (int *) ;
 
 int ff_hevc_decode_nal_sei(GetBitContext *gb, void *logctx, HEVCSEI *s,
                            const HEVCParamSets *ps, int type)

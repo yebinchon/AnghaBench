@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  octx; int /*<<< orphan*/  ictx; } ;
-typedef  TYPE_1__ crypto_auth_hmacsha512_state ;
 
-/* Variables and functions */
- int /*<<< orphan*/  crypto_hash_sha512_final (int /*<<< orphan*/ *,unsigned char*) ; 
- int /*<<< orphan*/  crypto_hash_sha512_update (int /*<<< orphan*/ *,unsigned char*,int) ; 
- int /*<<< orphan*/  sodium_memzero (void*,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int octx; int ictx; } ;
+typedef TYPE_1__ crypto_auth_hmacsha512_state ;
+
+
+ int crypto_hash_sha512_final (int *,unsigned char*) ;
+ int crypto_hash_sha512_update (int *,unsigned char*,int) ;
+ int sodium_memzero (void*,int) ;
 
 int
 crypto_auth_hmacsha512_final(crypto_auth_hmacsha512_state *state,
-                             unsigned char                *out)
+                             unsigned char *out)
 {
     unsigned char ihash[64];
 

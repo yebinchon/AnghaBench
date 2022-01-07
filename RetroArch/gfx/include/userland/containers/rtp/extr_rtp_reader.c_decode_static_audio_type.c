@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_18__   TYPE_7__ ;
-typedef  struct TYPE_17__   TYPE_6__ ;
-typedef  struct TYPE_16__   TYPE_5__ ;
-typedef  struct TYPE_15__   TYPE_4__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t uint32_t ;
+
+
+typedef struct TYPE_18__ TYPE_7__ ;
+typedef struct TYPE_17__ TYPE_6__ ;
+typedef struct TYPE_16__ TYPE_5__ ;
+typedef struct TYPE_15__ TYPE_4__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+typedef size_t uint32_t ;
 struct TYPE_16__ {TYPE_4__* priv; TYPE_6__* format; } ;
-typedef  TYPE_5__ VC_CONTAINER_TRACK_T ;
-typedef  int /*<<< orphan*/  const VC_CONTAINER_T ;
-typedef  int /*<<< orphan*/  VC_CONTAINER_STATUS_T ;
-struct TYPE_17__ {scalar_t__ codec; TYPE_2__* type; int /*<<< orphan*/  es_type; } ;
-typedef  TYPE_6__ VC_CONTAINER_ES_FORMAT_T ;
-typedef  int /*<<< orphan*/  VC_CONTAINERS_LIST_T ;
-struct TYPE_18__ {scalar_t__ codec; int channels; int /*<<< orphan*/  (* param_handler ) (int /*<<< orphan*/  const*,TYPE_5__*,int /*<<< orphan*/  const*) ;int /*<<< orphan*/  payload_handler; int /*<<< orphan*/  bits_per_sample; int /*<<< orphan*/  sample_rate; } ;
+typedef TYPE_5__ VC_CONTAINER_TRACK_T ;
+typedef int const VC_CONTAINER_T ;
+typedef int VC_CONTAINER_STATUS_T ;
+struct TYPE_17__ {scalar_t__ codec; TYPE_2__* type; int es_type; } ;
+typedef TYPE_6__ VC_CONTAINER_ES_FORMAT_T ;
+typedef int VC_CONTAINERS_LIST_T ;
+struct TYPE_18__ {scalar_t__ codec; int channels; int (* param_handler ) (int const*,TYPE_5__*,int const*) ;int payload_handler; int bits_per_sample; int sample_rate; } ;
 struct TYPE_15__ {TYPE_3__* module; } ;
-struct TYPE_14__ {int /*<<< orphan*/  payload_handler; int /*<<< orphan*/  timestamp_clock; } ;
-struct TYPE_12__ {int channels; int block_align; int /*<<< orphan*/  sample_rate; int /*<<< orphan*/  bits_per_sample; } ;
+struct TYPE_14__ {int payload_handler; int timestamp_clock; } ;
+struct TYPE_12__ {int channels; int block_align; int sample_rate; int bits_per_sample; } ;
 struct TYPE_13__ {TYPE_1__ audio; } ;
-typedef  TYPE_7__ AUDIO_PAYLOAD_TYPE_DATA_T ;
+typedef TYPE_7__ AUDIO_PAYLOAD_TYPE_DATA_T ;
 
-/* Variables and functions */
- int BITS_TO_BYTES (int /*<<< orphan*/ ) ; 
- scalar_t__ UNSUPPORTED_CODEC ; 
- int /*<<< orphan*/  VC_CONTAINER_ERROR_FORMAT_NOT_SUPPORTED ; 
- int /*<<< orphan*/  VC_CONTAINER_ES_TYPE_AUDIO ; 
- int /*<<< orphan*/  VC_CONTAINER_PARAM_UNUSED (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  VC_CONTAINER_SUCCESS ; 
- size_t countof (TYPE_7__*) ; 
- TYPE_7__* static_audio_payload_types ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/  const*,TYPE_5__*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  vc_container_assert (int) ; 
+
+ int BITS_TO_BYTES (int ) ;
+ scalar_t__ UNSUPPORTED_CODEC ;
+ int VC_CONTAINER_ERROR_FORMAT_NOT_SUPPORTED ;
+ int VC_CONTAINER_ES_TYPE_AUDIO ;
+ int VC_CONTAINER_PARAM_UNUSED (int const*) ;
+ int VC_CONTAINER_SUCCESS ;
+ size_t countof (TYPE_7__*) ;
+ TYPE_7__* static_audio_payload_types ;
+ int stub1 (int const*,TYPE_5__*,int const*) ;
+ int vc_container_assert (int) ;
 
 __attribute__((used)) static VC_CONTAINER_STATUS_T decode_static_audio_type(VC_CONTAINER_T *p_ctx,
       VC_CONTAINER_TRACK_T *track,

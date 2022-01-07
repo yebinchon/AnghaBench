@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  rq; } ;
-struct i915_execbuffer {scalar_t__ lut_size; int /*<<< orphan*/  buckets; TYPE_1__ reloc_cache; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GEM_BUG_ON (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kfree (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int rq; } ;
+struct i915_execbuffer {scalar_t__ lut_size; int buckets; TYPE_1__ reloc_cache; } ;
+
+
+ int GEM_BUG_ON (int ) ;
+ int kfree (int ) ;
 
 __attribute__((used)) static void eb_destroy(const struct i915_execbuffer *eb)
 {
-	GEM_BUG_ON(eb->reloc_cache.rq);
+ GEM_BUG_ON(eb->reloc_cache.rq);
 
-	if (eb->lut_size > 0)
-		kfree(eb->buckets);
+ if (eb->lut_size > 0)
+  kfree(eb->buckets);
 }

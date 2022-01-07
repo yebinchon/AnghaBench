@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  ret_val; } ;
-typedef  TYPE_1__ nlr_buf_t ;
-typedef  int /*<<< orphan*/  mp_obj_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MP_OBJ_FROM_PTR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MP_OBJ_NULL ; 
- int /*<<< orphan*/  mp_call_function_1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mp_obj_print_exception (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mp_plat_print ; 
- int /*<<< orphan*/  nlr_pop () ; 
- scalar_t__ nlr_push (TYPE_1__*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int ret_val; } ;
+typedef TYPE_1__ nlr_buf_t ;
+typedef int mp_obj_t ;
+
+
+ int MP_OBJ_FROM_PTR (int ) ;
+ int MP_OBJ_NULL ;
+ int mp_call_function_1 (int ,int ) ;
+ int mp_obj_print_exception (int *,int ) ;
+ int mp_plat_print ;
+ int nlr_pop () ;
+ scalar_t__ nlr_push (TYPE_1__*) ;
 
 mp_obj_t mp_call_function_1_protected(mp_obj_t fun, mp_obj_t arg) {
     nlr_buf_t nlr;

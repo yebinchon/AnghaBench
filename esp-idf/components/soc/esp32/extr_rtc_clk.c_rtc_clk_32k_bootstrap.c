@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLEAR_PERI_REG_MASK (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int RTC_IO_X32N_RDE ; 
- int RTC_IO_X32P_RUE ; 
- int /*<<< orphan*/  RTC_IO_XPD_XTAL_32K ; 
- int /*<<< orphan*/  RTC_IO_XTAL_32K_PAD_REG ; 
- int RTC_SLOW_CLK_FREQ_32K ; 
- int /*<<< orphan*/  SET_PERI_REG_MASK (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  XTAL_32K_BOOTSTRAP_DAC_VAL ; 
- int /*<<< orphan*/  XTAL_32K_BOOTSTRAP_DBIAS_VAL ; 
- int /*<<< orphan*/  XTAL_32K_BOOTSTRAP_DRES_VAL ; 
- int const XTAL_32K_BOOTSTRAP_TIME_US ; 
- int /*<<< orphan*/  ets_delay_us (int const) ; 
- int /*<<< orphan*/  gpio_output_set_high (int const,int const,int const,int const) ; 
- int /*<<< orphan*/  gpio_pad_select_gpio (int const) ; 
- int /*<<< orphan*/  rtc_clk_32k_enable_common (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint32_t ;
+
+
+ int CLEAR_PERI_REG_MASK (int ,int ) ;
+ int RTC_IO_X32N_RDE ;
+ int RTC_IO_X32P_RUE ;
+ int RTC_IO_XPD_XTAL_32K ;
+ int RTC_IO_XTAL_32K_PAD_REG ;
+ int RTC_SLOW_CLK_FREQ_32K ;
+ int SET_PERI_REG_MASK (int ,int) ;
+ int XTAL_32K_BOOTSTRAP_DAC_VAL ;
+ int XTAL_32K_BOOTSTRAP_DBIAS_VAL ;
+ int XTAL_32K_BOOTSTRAP_DRES_VAL ;
+ int const XTAL_32K_BOOTSTRAP_TIME_US ;
+ int ets_delay_us (int const) ;
+ int gpio_output_set_high (int const,int const,int const,int const) ;
+ int gpio_pad_select_gpio (int const) ;
+ int rtc_clk_32k_enable_common (int ,int ,int ) ;
 
 void rtc_clk_32k_bootstrap(uint32_t cycle)
 {
@@ -49,7 +49,7 @@ void rtc_clk_32k_bootstrap(uint32_t cycle)
             ets_delay_us(delay_us);
             cycle--;
         }
-        gpio_output_set_high(0, 0, 0, mask_32 | mask_33); // disable pins
+        gpio_output_set_high(0, 0, 0, mask_32 | mask_33);
     }
 
     CLEAR_PERI_REG_MASK(RTC_IO_XTAL_32K_PAD_REG, RTC_IO_XPD_XTAL_32K);

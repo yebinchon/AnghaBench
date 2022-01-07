@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ unsigned int LowPassMul (unsigned short,unsigned int,int*) ;
+ int deNoiseSpacial (unsigned char*,unsigned char*,unsigned int*,int,int,int,int,int*,int*) ;
+ int deNoiseTemporal (unsigned char*,unsigned char*,unsigned short*,int,int,int,int,int*) ;
+ unsigned short* malloc (int) ;
 
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- unsigned int LowPassMul (unsigned short,unsigned int,int*) ; 
- int /*<<< orphan*/  deNoiseSpacial (unsigned char*,unsigned char*,unsigned int*,int,int,int,int,int*,int*) ; 
- int /*<<< orphan*/  deNoiseTemporal (unsigned char*,unsigned char*,unsigned short*,int,int,int,int,int*) ; 
- unsigned short* malloc (int) ; 
-
-__attribute__((used)) static void deNoise(unsigned char *Frame,        // mpi->planes[x]
-                    unsigned char *FrameDest,    // dmpi->planes[x]
-                    unsigned int *LineAnt,      // vf->priv->Line (width bytes)
+__attribute__((used)) static void deNoise(unsigned char *Frame,
+                    unsigned char *FrameDest,
+                    unsigned int *LineAnt,
                     unsigned short **FrameAntPtr,
                     int W, int H, int sStride, int dStride,
                     int *Horizontal, int *Vertical, int *Temporal)
@@ -51,14 +43,14 @@ __attribute__((used)) static void deNoise(unsigned char *Frame,        // mpi->p
         return;
     }
 
-    /* First pixel has no left nor top neighbor. Only previous frame */
+
     LineAnt[0] = PixelAnt = Frame[0]<<16;
     PixelDst = LowPassMul(FrameAnt[0]<<8, PixelAnt, Temporal);
     FrameAnt[0] = ((PixelDst+0x1000007F)>>8);
     FrameDest[0]= ((PixelDst+0x10007FFF)>>16);
 
-    /* First line has no top neighbor. Only left one for each pixel and
-     * last frame */
+
+
     for (long X = 1; X < W; X++){
         LineAnt[X] = PixelAnt = LowPassMul(PixelAnt, Frame[X]<<16, Horizontal);
         PixelDst = LowPassMul(FrameAnt[X]<<8, PixelAnt, Temporal);
@@ -69,7 +61,7 @@ __attribute__((used)) static void deNoise(unsigned char *Frame,        // mpi->p
     for (long Y = 1; Y < H; Y++){
         unsigned short* LinePrev=&FrameAnt[Y*W];
         sLineOffs += sStride, dLineOffs += dStride;
-        /* First pixel on each line doesn't have previous pixel */
+
         PixelAnt = Frame[sLineOffs]<<16;
         LineAnt[0] = LowPassMul(LineAnt[0], PixelAnt, Vertical);
         PixelDst = LowPassMul(LinePrev[0]<<8, LineAnt[0], Temporal);
@@ -77,7 +69,7 @@ __attribute__((used)) static void deNoise(unsigned char *Frame,        // mpi->p
         FrameDest[dLineOffs]= ((PixelDst+0x10007FFF)>>16);
 
         for (long X = 1; X < W; X++){
-            /* The rest are normal */
+
             PixelAnt = LowPassMul(PixelAnt, Frame[sLineOffs+X]<<16, Horizontal);
             LineAnt[X] = LowPassMul(LineAnt[X], PixelAnt, Vertical);
             PixelDst = LowPassMul(LinePrev[X]<<8, LineAnt[X], Temporal);

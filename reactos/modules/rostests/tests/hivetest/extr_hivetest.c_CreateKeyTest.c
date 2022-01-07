@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UNICODE_STRING ;
-typedef  int /*<<< orphan*/  OBJECT_ATTRIBUTES ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
-typedef  int /*<<< orphan*/  HANDLE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  InitializeObjectAttributes (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  KEY_ALL_ACCESS ; 
- scalar_t__ NT_SUCCESS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NtClose (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NtCreateKey (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  OBJ_CASE_INSENSITIVE ; 
- int /*<<< orphan*/  REG_OPTION_NON_VOLATILE ; 
- int /*<<< orphan*/  RTL_CONSTANT_STRING (char*) ; 
- int /*<<< orphan*/  dprintf (char*,...) ; 
+
+
+
+typedef int UNICODE_STRING ;
+typedef int OBJECT_ATTRIBUTES ;
+typedef int NTSTATUS ;
+typedef int HANDLE ;
+
+
+ int InitializeObjectAttributes (int *,int *,int ,int *,int *) ;
+ int KEY_ALL_ACCESS ;
+ scalar_t__ NT_SUCCESS (int ) ;
+ int NtClose (int ) ;
+ int NtCreateKey (int *,int ,int *,int ,int *,int ,int *) ;
+ int OBJ_CASE_INSENSITIVE ;
+ int REG_OPTION_NON_VOLATILE ;
+ int RTL_CONSTANT_STRING (char*) ;
+ int dprintf (char*,...) ;
 
 void CreateKeyTest(void)
 {
@@ -36,18 +36,18 @@ void CreateKeyTest(void)
   dprintf("Create key '\\Registry\\Machine\\Software\\testkey':\n");
 
   InitializeObjectAttributes(&ObjectAttributes,
-			     &KeyName,
-			     OBJ_CASE_INSENSITIVE,
-			     NULL,
-			     NULL);
+        &KeyName,
+        OBJ_CASE_INSENSITIVE,
+        ((void*)0),
+        ((void*)0));
   dprintf("NtCreateKey:\n");
   Status = NtCreateKey(&hKey,
-		       KEY_ALL_ACCESS,
-		       &ObjectAttributes,
-		       0,
-		       NULL,
-		       REG_OPTION_NON_VOLATILE,
-		       NULL);
+         KEY_ALL_ACCESS,
+         &ObjectAttributes,
+         0,
+         ((void*)0),
+         REG_OPTION_NON_VOLATILE,
+         ((void*)0));
   dprintf("  Status = %lx\n",Status);
   if (NT_SUCCESS(Status))
     {

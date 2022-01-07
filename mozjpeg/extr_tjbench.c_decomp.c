@@ -1,69 +1,69 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * tjhandle ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int * tjhandle ;
 struct TYPE_3__ {int num; int denom; } ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef int FILE ;
 
-/* Variables and functions */
- int TJSCALED (int,TYPE_1__) ; 
- int TJ_GRAYSCALE ; 
- int /*<<< orphan*/  _throwtj (char*) ; 
- int /*<<< orphan*/  _throwtjg (char*) ; 
- int /*<<< orphan*/  _throwunix (char*) ; 
- unsigned char abs (unsigned char) ; 
- double benchTime ; 
- scalar_t__ decompOnly ; 
- scalar_t__ doTile ; 
- int /*<<< orphan*/  doWrite ; 
- scalar_t__ doYUV ; 
- char* ext ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  flags ; 
- int /*<<< orphan*/  free (unsigned char*) ; 
- double getTime () ; 
- scalar_t__ malloc (int) ; 
- int /*<<< orphan*/  memset (unsigned char*,int,int) ; 
- int min (int,int) ; 
- size_t pf ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int quiet ; 
- TYPE_1__ sf ; 
- char* sigfig (double,int,char*,int) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,...) ; 
- char* strrchr (char*,char) ; 
- char** subName ; 
- int* tjBlueOffset ; 
- int tjBufSizeYUV2 (int,int /*<<< orphan*/ ,int,int) ; 
- int tjDecodeYUV (int /*<<< orphan*/ *,unsigned char*,int /*<<< orphan*/ ,int,unsigned char*,int,int,int,size_t,int /*<<< orphan*/ ) ; 
- int tjDecompress2 (int /*<<< orphan*/ *,unsigned char*,unsigned long,unsigned char*,int,int,int,size_t,int /*<<< orphan*/ ) ; 
- int tjDecompressToYUV2 (int /*<<< orphan*/ *,unsigned char*,unsigned long,unsigned char*,int,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int tjDestroy (int /*<<< orphan*/ *) ; 
- int* tjGreenOffset ; 
- int /*<<< orphan*/ * tjInitDecompress () ; 
- int* tjPixelSize ; 
- int* tjRedOffset ; 
- int tjSaveImage (char*,unsigned char*,int,int /*<<< orphan*/ ,int,size_t,int /*<<< orphan*/ ) ; 
- double warmup ; 
- int /*<<< orphan*/  yuvPad ; 
+
+ int TJSCALED (int,TYPE_1__) ;
+ int TJ_GRAYSCALE ;
+ int _throwtj (char*) ;
+ int _throwtjg (char*) ;
+ int _throwunix (char*) ;
+ unsigned char abs (unsigned char) ;
+ double benchTime ;
+ scalar_t__ decompOnly ;
+ scalar_t__ doTile ;
+ int doWrite ;
+ scalar_t__ doYUV ;
+ char* ext ;
+ int fclose (int *) ;
+ int flags ;
+ int free (unsigned char*) ;
+ double getTime () ;
+ scalar_t__ malloc (int) ;
+ int memset (unsigned char*,int,int) ;
+ int min (int,int) ;
+ size_t pf ;
+ int printf (char*,...) ;
+ int quiet ;
+ TYPE_1__ sf ;
+ char* sigfig (double,int,char*,int) ;
+ int snprintf (char*,int,char*,...) ;
+ char* strrchr (char*,char) ;
+ char** subName ;
+ int* tjBlueOffset ;
+ int tjBufSizeYUV2 (int,int ,int,int) ;
+ int tjDecodeYUV (int *,unsigned char*,int ,int,unsigned char*,int,int,int,size_t,int ) ;
+ int tjDecompress2 (int *,unsigned char*,unsigned long,unsigned char*,int,int,int,size_t,int ) ;
+ int tjDecompressToYUV2 (int *,unsigned char*,unsigned long,unsigned char*,int,int ,int,int ) ;
+ int tjDestroy (int *) ;
+ int* tjGreenOffset ;
+ int * tjInitDecompress () ;
+ int* tjPixelSize ;
+ int* tjRedOffset ;
+ int tjSaveImage (char*,unsigned char*,int,int ,int,size_t,int ) ;
+ double warmup ;
+ int yuvPad ;
 
 int decomp(unsigned char *srcBuf, unsigned char **jpegBuf,
            unsigned long *jpegSize, unsigned char *dstBuf, int w, int h,
            int subsamp, int jpegQual, char *fileName, int tilew, int tileh)
 {
   char tempStr[1024], sizeStr[20] = "\0", qualStr[6] = "\0", *ptr;
-  FILE *file = NULL;
-  tjhandle handle = NULL;
+  FILE *file = ((void*)0);
+  tjhandle handle = ((void*)0);
   int row, col, iter = 0, dstBufAlloc = 0, retval = 0;
   double elapsed, elapsedDecode;
   int ps = tjPixelSize[pf];
@@ -71,23 +71,23 @@ int decomp(unsigned char *srcBuf, unsigned char **jpegBuf,
   int scaledh = TJSCALED(h, sf);
   int pitch = scaledw * ps;
   int ntilesw = (w + tilew - 1) / tilew, ntilesh = (h + tileh - 1) / tileh;
-  unsigned char *dstPtr, *dstPtr2, *yuvBuf = NULL;
+  unsigned char *dstPtr, *dstPtr2, *yuvBuf = ((void*)0);
 
   if (jpegQual > 0) {
     snprintf(qualStr, 6, "_Q%d", jpegQual);
     qualStr[5] = 0;
   }
 
-  if ((handle = tjInitDecompress()) == NULL)
+  if ((handle = tjInitDecompress()) == ((void*)0))
     _throwtj("executing tjInitDecompress()");
 
-  if (dstBuf == NULL) {
-    if ((dstBuf = (unsigned char *)malloc(pitch * scaledh)) == NULL)
+  if (dstBuf == ((void*)0)) {
+    if ((dstBuf = (unsigned char *)malloc(pitch * scaledh)) == ((void*)0))
       _throwunix("allocating destination buffer");
     dstBufAlloc = 1;
   }
-  /* Set the destination buffer to gray so we know whether the decompressor
-     attempted to write to it */
+
+
   memset(dstBuf, 127, pitch * scaledh);
 
   if (doYUV) {
@@ -95,12 +95,12 @@ int decomp(unsigned char *srcBuf, unsigned char **jpegBuf,
     int height = doTile ? tileh : scaledh;
     int yuvSize = tjBufSizeYUV2(width, yuvPad, height, subsamp);
 
-    if ((yuvBuf = (unsigned char *)malloc(yuvSize)) == NULL)
+    if ((yuvBuf = (unsigned char *)malloc(yuvSize)) == ((void*)0))
       _throwunix("allocating YUV buffer");
     memset(yuvBuf, 127, yuvSize);
   }
 
-  /* Benchmark */
+
   iter = -1;
   elapsed = elapsedDecode = 0.;
   while (1) {
@@ -143,7 +143,7 @@ int decomp(unsigned char *srcBuf, unsigned char **jpegBuf,
   if (doYUV) elapsed -= elapsedDecode;
 
   if (tjDestroy(handle) == -1) _throwtj("executing tjDestroy()");
-  handle = NULL;
+  handle = ((void*)0);
 
   if (quiet) {
     printf("%-6s%s",

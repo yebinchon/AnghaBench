@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ shortlen; char* shorterror; scalar_t__ longlen; char* longerror; } ;
-typedef  TYPE_1__ SLpassfail ;
-typedef  scalar_t__ INT ;
-typedef  char CHAR ;
+typedef TYPE_1__ SLpassfail ;
+typedef scalar_t__ INT ;
+typedef char CHAR ;
 
-/* Variables and functions */
- char* ERROR_FILE_NOT_FOUND ; 
- char* ERROR_INVALID_NAME ; 
- scalar_t__ ERROR_PATH_NOT_FOUND ; 
- int MAX_PATH ; 
- scalar_t__ lstrcmpiA (char*,char*) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- scalar_t__ pGetLongPathNameA ; 
- int /*<<< orphan*/  sprintf (char*,char*,char*,char*) ; 
- scalar_t__ strlen (char*) ; 
- int /*<<< orphan*/  test_ValidPathA (char*,char*,char*,char*,TYPE_1__*,char*) ; 
+
+ char* ERROR_FILE_NOT_FOUND ;
+ char* ERROR_INVALID_NAME ;
+ scalar_t__ ERROR_PATH_NOT_FOUND ;
+ int MAX_PATH ;
+ scalar_t__ lstrcmpiA (char*,char*) ;
+ int ok (int,char*,...) ;
+ scalar_t__ pGetLongPathNameA ;
+ int sprintf (char*,char*,char*,char*) ;
+ scalar_t__ strlen (char*) ;
+ int test_ValidPathA (char*,char*,char*,char*,TYPE_1__*,char*) ;
 
 __attribute__((used)) static void test_FunnyChars(CHAR *curdir,CHAR *curdir_short,CHAR *filename, INT valid,CHAR *errstr)
 {

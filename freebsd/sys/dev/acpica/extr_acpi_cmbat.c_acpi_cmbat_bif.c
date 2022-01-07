@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  oeminfo; int /*<<< orphan*/  type; int /*<<< orphan*/  serial; int /*<<< orphan*/  model; int /*<<< orphan*/  gra2; int /*<<< orphan*/  gra1; int /*<<< orphan*/  lcap; int /*<<< orphan*/  wcap; int /*<<< orphan*/  dvol; int /*<<< orphan*/  btech; int /*<<< orphan*/  lfcap; int /*<<< orphan*/  dcap; int /*<<< orphan*/  units; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int oeminfo; int type; int serial; int model; int gra2; int gra1; int lcap; int wcap; int dvol; int btech; int lfcap; int dcap; int units; } ;
 struct acpi_cmbat_softc {TYPE_1__ bif; } ;
-struct acpi_bif {int /*<<< orphan*/  oeminfo; int /*<<< orphan*/  type; int /*<<< orphan*/  serial; int /*<<< orphan*/  model; int /*<<< orphan*/  gra2; int /*<<< orphan*/  gra1; int /*<<< orphan*/  lcap; int /*<<< orphan*/  wcap; int /*<<< orphan*/  dvol; int /*<<< orphan*/  btech; int /*<<< orphan*/  lfcap; int /*<<< orphan*/  dcap; int /*<<< orphan*/  units; } ;
-typedef  int /*<<< orphan*/  device_t ;
+struct acpi_bif {int oeminfo; int type; int serial; int model; int gra2; int gra1; int lcap; int wcap; int dvol; int btech; int lfcap; int dcap; int units; } ;
+typedef int device_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACPI_SERIAL_BEGIN (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ACPI_SERIAL_END (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cmbat ; 
- struct acpi_cmbat_softc* device_get_softc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strncpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+ int ACPI_SERIAL_BEGIN (int ) ;
+ int ACPI_SERIAL_END (int ) ;
+ int cmbat ;
+ struct acpi_cmbat_softc* device_get_softc (int ) ;
+ int strncpy (int ,int ,int) ;
 
 __attribute__((used)) static int
 acpi_cmbat_bif(device_t dev, struct acpi_bif *bifp)
@@ -30,12 +30,12 @@ acpi_cmbat_bif(device_t dev, struct acpi_bif *bifp)
 
     sc = device_get_softc(dev);
 
-    /*
-     * Just copy the data.  The only value that should change is the
-     * last-full capacity, so we only update when we get a notify that says
-     * the info has changed.  Many systems apparently take a long time to
-     * process a _BIF call so we avoid it if possible.
-     */
+
+
+
+
+
+
     ACPI_SERIAL_BEGIN(cmbat);
     bifp->units = sc->bif.units;
     bifp->dcap = sc->bif.dcap;

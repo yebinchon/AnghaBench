@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ wchar_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MB_CUR_MAX ; 
- int /*<<< orphan*/ * ascii_literal_list ; 
- int mbtowc (scalar_t__*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (char*,char*,int) ; 
- char* stpcpy (char*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef scalar_t__ wchar_t ;
+
+
+ int MB_CUR_MAX ;
+ int * ascii_literal_list ;
+ int mbtowc (scalar_t__*,char*,int ) ;
+ int memcpy (char*,char*,int) ;
+ char* stpcpy (char*,int ) ;
 
 int convertNCharToReadable(char *str, int size, char *buf, int bufsize) {
   char *pstr = str;
   char *pbuf = buf;
-  // TODO
+
   wchar_t wc;
   while (size > 0) {
     if (*pstr == '\0') break;

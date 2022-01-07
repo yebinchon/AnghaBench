@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  TidyDoc ;
-typedef  int /*<<< orphan*/  TidyBuffer ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TidyForceOutput ; 
- int /*<<< orphan*/  TidyXhtmlOut ; 
- int /*<<< orphan*/  abort () ; 
- scalar_t__ tidyCleanAndRepair (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tidyCreate () ; 
- int /*<<< orphan*/  tidyOptSetBool (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ tidyParseBuffer (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tidyRelease (int /*<<< orphan*/ ) ; 
- scalar_t__ tidyRunDiagnostics (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tidySaveBuffer (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ tidySetErrorBuffer (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  yes ; 
+
+
+
+typedef int TidyDoc ;
+typedef int TidyBuffer ;
+
+
+ int TidyForceOutput ;
+ int TidyXhtmlOut ;
+ int abort () ;
+ scalar_t__ tidyCleanAndRepair (int ) ;
+ int tidyCreate () ;
+ int tidyOptSetBool (int ,int ,int ) ;
+ scalar_t__ tidyParseBuffer (int ,int *) ;
+ int tidyRelease (int ) ;
+ scalar_t__ tidyRunDiagnostics (int ) ;
+ int tidySaveBuffer (int ,int *) ;
+ scalar_t__ tidySetErrorBuffer (int ,int *) ;
+ int yes ;
 
 void run_tidy_parser(TidyBuffer* data_buffer,
                      TidyBuffer* output_buffer,

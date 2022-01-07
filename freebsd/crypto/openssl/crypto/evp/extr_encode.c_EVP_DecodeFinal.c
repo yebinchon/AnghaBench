@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {scalar_t__ num; int /*<<< orphan*/  enc_data; } ;
-typedef  TYPE_1__ EVP_ENCODE_CTX ;
 
-/* Variables and functions */
- int evp_decodeblock_int (TYPE_1__*,unsigned char*,int /*<<< orphan*/ ,scalar_t__) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {scalar_t__ num; int enc_data; } ;
+typedef TYPE_1__ EVP_ENCODE_CTX ;
+
+
+ int evp_decodeblock_int (TYPE_1__*,unsigned char*,int ,scalar_t__) ;
 
 int EVP_DecodeFinal(EVP_ENCODE_CTX *ctx, unsigned char *out, int *outl)
 {

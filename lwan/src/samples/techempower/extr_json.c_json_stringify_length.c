@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  SB ;
-typedef  int /*<<< orphan*/  JsonNode ;
 
-/* Variables and functions */
- int /*<<< orphan*/  emit_value (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  emit_value_indented (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,char const*,int /*<<< orphan*/ ) ; 
- char* sb_finish_length (int /*<<< orphan*/ *,size_t*) ; 
- int /*<<< orphan*/  sb_init (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int SB ;
+typedef int JsonNode ;
+
+
+ int emit_value (int *,int const*) ;
+ int emit_value_indented (int *,int const*,char const*,int ) ;
+ char* sb_finish_length (int *,size_t*) ;
+ int sb_init (int *) ;
 
 char *json_stringify_length(const JsonNode *node, const char *space, size_t *length)
 {
-	SB sb;
-	sb_init(&sb);
-	
-	if (space != NULL)
-		emit_value_indented(&sb, node, space, 0);
-	else
-		emit_value(&sb, node);
-	
-	return sb_finish_length(&sb, length);
+ SB sb;
+ sb_init(&sb);
+
+ if (space != ((void*)0))
+  emit_value_indented(&sb, node, space, 0);
+ else
+  emit_value(&sb, node);
+
+ return sb_finish_length(&sb, length);
 }

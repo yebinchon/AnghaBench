@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mrb_debug_bptype ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BREAK_ERR_MSG_BLANK ; 
- char* BREAK_ERR_MSG_INVALIDSTR ; 
- int /*<<< orphan*/  BREAK_ERR_MSG_RANGEOVER ; 
- scalar_t__ ISBLANK (char) ; 
- scalar_t__ ISCNTRL (char) ; 
- int /*<<< orphan*/  ISDIGIT (char) ; 
- scalar_t__ LINENO_MAX_DIGIT ; 
- int /*<<< orphan*/  MRB_DEBUG_BPTYPE_LINE ; 
- int /*<<< orphan*/  MRB_DEBUG_BPTYPE_METHOD ; 
- int /*<<< orphan*/  MRB_DEBUG_BPTYPE_NONE ; 
- int /*<<< orphan*/  printf (char*,char*) ; 
- int /*<<< orphan*/  puts (int /*<<< orphan*/ ) ; 
- scalar_t__ strlen (char*) ; 
+
+
+
+typedef int mrb_debug_bptype ;
+
+
+ int BREAK_ERR_MSG_BLANK ;
+ char* BREAK_ERR_MSG_INVALIDSTR ;
+ int BREAK_ERR_MSG_RANGEOVER ;
+ scalar_t__ ISBLANK (char) ;
+ scalar_t__ ISCNTRL (char) ;
+ int ISDIGIT (char) ;
+ scalar_t__ LINENO_MAX_DIGIT ;
+ int MRB_DEBUG_BPTYPE_LINE ;
+ int MRB_DEBUG_BPTYPE_METHOD ;
+ int MRB_DEBUG_BPTYPE_NONE ;
+ int printf (char*,char*) ;
+ int puts (int ) ;
+ scalar_t__ strlen (char*) ;
 
 mrb_debug_bptype
 check_bptype(char* args)

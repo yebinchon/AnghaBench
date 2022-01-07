@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_7__ {int state; unsigned int m68krcycles_done; struct TYPE_7__* other_sh2; } ;
-typedef  TYPE_1__ SH2 ;
+typedef TYPE_1__ SH2 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EL_32X ; 
- int SH2_IDLE_STATES ; 
- int SH2_STATE_RUN ; 
- int /*<<< orphan*/  elprintf_sh2 (TYPE_1__*,int /*<<< orphan*/ ,char*,unsigned int,int) ; 
- int event_time_next ; 
- int /*<<< orphan*/  run_sh2 (TYPE_1__*,int) ; 
- int sh2_cycles_left (TYPE_1__*) ; 
- int /*<<< orphan*/  sh2_end_run (TYPE_1__*,int) ; 
+
+ int EL_32X ;
+ int SH2_IDLE_STATES ;
+ int SH2_STATE_RUN ;
+ int elprintf_sh2 (TYPE_1__*,int ,char*,unsigned int,int) ;
+ int event_time_next ;
+ int run_sh2 (TYPE_1__*,int) ;
+ int sh2_cycles_left (TYPE_1__*) ;
+ int sh2_end_run (TYPE_1__*,int) ;
 
 void p32x_sync_other_sh2(SH2 *sh2, unsigned int m68k_target)
 {
@@ -47,7 +47,7 @@ void p32x_sync_other_sh2(SH2 *sh2, unsigned int m68k_target)
 
   run_sh2(osh2, m68k_cycles);
 
-  // there might be new event to schedule current sh2 to
+
   if (event_time_next) {
     left_to_event = event_time_next - m68k_target;
     left_to_event *= 3;

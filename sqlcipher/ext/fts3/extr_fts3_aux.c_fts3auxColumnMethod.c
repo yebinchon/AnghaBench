@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_vtab_cursor ;
-typedef  int /*<<< orphan*/  sqlite3_context ;
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int sqlite3_vtab_cursor ;
+typedef int sqlite3_context ;
 struct TYPE_4__ {char* zTerm; int nTerm; } ;
-struct TYPE_6__ {scalar_t__ isEof; size_t iCol; int /*<<< orphan*/  iLangid; TYPE_2__* aStat; TYPE_1__ csr; } ;
-struct TYPE_5__ {int /*<<< orphan*/  nOcc; int /*<<< orphan*/  nDoc; } ;
-typedef  TYPE_3__ Fts3auxCursor ;
+struct TYPE_6__ {scalar_t__ isEof; size_t iCol; int iLangid; TYPE_2__* aStat; TYPE_1__ csr; } ;
+struct TYPE_5__ {int nOcc; int nDoc; } ;
+typedef TYPE_3__ Fts3auxCursor ;
 
-/* Variables and functions */
- int SQLITE_OK ; 
- int /*<<< orphan*/  SQLITE_STATIC ; 
- int /*<<< orphan*/  SQLITE_TRANSIENT ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  sqlite3_result_int (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_result_int64 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_result_text (int /*<<< orphan*/ *,char*,int,int /*<<< orphan*/ ) ; 
+
+ int SQLITE_OK ;
+ int SQLITE_STATIC ;
+ int SQLITE_TRANSIENT ;
+ int assert (int) ;
+ int sqlite3_result_int (int *,int ) ;
+ int sqlite3_result_int64 (int *,int ) ;
+ int sqlite3_result_text (int *,char*,int,int ) ;
 
 __attribute__((used)) static int fts3auxColumnMethod(
-  sqlite3_vtab_cursor *pCursor,   /* Cursor to retrieve value from */
-  sqlite3_context *pCtx,          /* Context for sqlite3_result_xxx() calls */
-  int iCol                        /* Index of column to read value from */
+  sqlite3_vtab_cursor *pCursor,
+  sqlite3_context *pCtx,
+  int iCol
 ){
   Fts3auxCursor *p = (Fts3auxCursor *)pCursor;
 
   assert( p->isEof==0 );
   switch( iCol ){
-    case 0: /* term */
+    case 0:
       sqlite3_result_text(pCtx, p->csr.zTerm, p->csr.nTerm, SQLITE_TRANSIENT);
       break;
 
-    case 1: /* col */
+    case 1:
       if( p->iCol ){
         sqlite3_result_int(pCtx, p->iCol-1);
       }else{
@@ -50,15 +50,15 @@ __attribute__((used)) static int fts3auxColumnMethod(
       }
       break;
 
-    case 2: /* documents */
+    case 2:
       sqlite3_result_int64(pCtx, p->aStat[p->iCol].nDoc);
       break;
 
-    case 3: /* occurrences */
+    case 3:
       sqlite3_result_int64(pCtx, p->aStat[p->iCol].nOcc);
       break;
 
-    default: /* languageid */
+    default:
       assert( iCol==4 );
       sqlite3_result_int(pCtx, p->iLangid);
       break;

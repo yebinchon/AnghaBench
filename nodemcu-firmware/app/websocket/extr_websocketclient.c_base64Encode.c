@@ -1,19 +1,11 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int* bytes64 ; 
- scalar_t__ calloc (int,int) ; 
+ int* bytes64 ;
+ scalar_t__ calloc (int,int) ;
 
 __attribute__((used)) static char *base64Encode(char *data, unsigned int len) {
   int blen = (len + 2) / 3 * 4;
@@ -31,5 +23,5 @@ __attribute__((used)) static char *base64Encode(char *data, unsigned int len) {
     out[j++] = (i + 2 < len) ? bytes64[(c & 63)] : 61;
   }
 
-  return out; // Requires free
+  return out;
 }

@@ -1,41 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ isascii (int) ; 
- scalar_t__ isupper (int) ; 
- char* malloc (scalar_t__) ; 
- scalar_t__ strlen (char const*) ; 
- int /*<<< orphan*/  tolower (int) ; 
+ scalar_t__ isascii (int) ;
+ scalar_t__ isupper (int) ;
+ char* malloc (scalar_t__) ;
+ scalar_t__ strlen (char const*) ;
+ int tolower (int) ;
 
 __attribute__((used)) static char *unify(const char *src)
 {
-	const char *sptr;
-	char *dst, *dptr;
-	int c;
+ const char *sptr;
+ char *dst, *dptr;
+ int c;
 
-	if (!(dst = malloc(strlen(src) + 1)))
-		return NULL;
+ if (!(dst = malloc(strlen(src) + 1)))
+  return ((void*)0);
 
-	sptr = src;
-	dptr = dst;
-	do {
-		c = (unsigned char)*sptr;
-		if (isascii(c) && isupper(c))
-			*dptr++ = tolower(c);
-		else
-			*dptr++ = *sptr;
-	} while (*sptr++);
+ sptr = src;
+ dptr = dst;
+ do {
+  c = (unsigned char)*sptr;
+  if (isascii(c) && isupper(c))
+   *dptr++ = tolower(c);
+  else
+   *dptr++ = *sptr;
+ } while (*sptr++);
 
-	return dst;
+ return dst;
 }

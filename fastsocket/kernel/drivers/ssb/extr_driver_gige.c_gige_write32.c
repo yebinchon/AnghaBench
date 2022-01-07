@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
-typedef  int /*<<< orphan*/  u16 ;
-struct ssb_gige {int /*<<< orphan*/  dev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ssb_write32 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int u32 ;
+typedef int u16 ;
+struct ssb_gige {int dev; } ;
+
+
+ int ssb_write32 (int ,int ,int ) ;
 
 __attribute__((used)) static inline void gige_write32(struct ssb_gige *dev,
-				u16 offset, u32 value)
+    u16 offset, u32 value)
 {
-	ssb_write32(dev->dev, offset, value);
+ ssb_write32(dev->dev, offset, value);
 }

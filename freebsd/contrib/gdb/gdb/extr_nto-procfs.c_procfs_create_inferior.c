@@ -1,77 +1,77 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct inheritance {int flags; int /*<<< orphan*/  pgroup; int /*<<< orphan*/  nd; } ;
-typedef  int /*<<< orphan*/  sigset_t ;
-typedef  int pid_t ;
-typedef  int /*<<< orphan*/  inherit ;
-typedef  int /*<<< orphan*/  flags ;
-struct TYPE_2__ {int /*<<< orphan*/ * obfd; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DCMD_PROC_SET_FLAG ; 
- int EOK ; 
- int /*<<< orphan*/  ND_LOCAL_NODE ; 
- scalar_t__ ND_NODE_CMP (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  O_RDONLY ; 
- int /*<<< orphan*/  O_WRONLY ; 
- int /*<<< orphan*/  SIGUSR1 ; 
- int /*<<< orphan*/  SIG_BLOCK ; 
- int /*<<< orphan*/  SIG_IGN ; 
- int /*<<< orphan*/  SIG_UNBLOCK ; 
- int /*<<< orphan*/  SOLIB_CREATE_INFERIOR_HOOK (int) ; 
- int SPAWN_EXEC ; 
- int SPAWN_HOLD ; 
- int /*<<< orphan*/  SPAWN_NEWPGROUP ; 
- int SPAWN_SETGROUP ; 
- int SPAWN_SETND ; 
- int STDERR_FILENO ; 
- int STDIN_FILENO ; 
- int STDOUT_FILENO ; 
- int _DEBUG_FLAG_KLC ; 
- scalar_t__ attach_flag ; 
- int /*<<< orphan*/  breakup_args (char*,char**) ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  ctl_fd ; 
- int devctl (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  do_attach (int /*<<< orphan*/ ) ; 
- char* errno ; 
- int /*<<< orphan*/  error (char*,char*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * exec_bfd ; 
- char* get_exec_file (int) ; 
- char* inferior_io_terminal ; 
- int /*<<< orphan*/  inferior_ptid ; 
- int /*<<< orphan*/  memset (struct inheritance*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  nto_node () ; 
- char** nto_parse_redirection (char**,char**,char**,char**) ; 
- int /*<<< orphan*/  nto_procfs_node ; 
- int open (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  perror (char*) ; 
- int /*<<< orphan*/  pid_to_ptid (int) ; 
- int /*<<< orphan*/  procfs_ops ; 
- int /*<<< orphan*/  push_target (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  safe_strerror (char*) ; 
- int /*<<< orphan*/  sigaddset (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sigemptyset (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  signal (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sigprocmask (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int spawnp (char*,int,int*,struct inheritance*,char**,char**) ; 
- int strlen (char*) ; 
- TYPE_1__* symfile_objfile ; 
- int /*<<< orphan*/  target_terminal_init () ; 
- int /*<<< orphan*/  xfree (char*) ; 
- char** xmalloc (int) ; 
- char* xstrdup (char*) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct inheritance {int flags; int pgroup; int nd; } ;
+typedef int sigset_t ;
+typedef int pid_t ;
+typedef int inherit ;
+typedef int flags ;
+struct TYPE_2__ {int * obfd; } ;
+
+
+ int DCMD_PROC_SET_FLAG ;
+ int EOK ;
+ int ND_LOCAL_NODE ;
+ scalar_t__ ND_NODE_CMP (int ,int ) ;
+ int O_RDONLY ;
+ int O_WRONLY ;
+ int SIGUSR1 ;
+ int SIG_BLOCK ;
+ int SIG_IGN ;
+ int SIG_UNBLOCK ;
+ int SOLIB_CREATE_INFERIOR_HOOK (int) ;
+ int SPAWN_EXEC ;
+ int SPAWN_HOLD ;
+ int SPAWN_NEWPGROUP ;
+ int SPAWN_SETGROUP ;
+ int SPAWN_SETND ;
+ int STDERR_FILENO ;
+ int STDIN_FILENO ;
+ int STDOUT_FILENO ;
+ int _DEBUG_FLAG_KLC ;
+ scalar_t__ attach_flag ;
+ int breakup_args (char*,char**) ;
+ int close (int) ;
+ int ctl_fd ;
+ int devctl (int ,int ,int*,int,int ) ;
+ int do_attach (int ) ;
+ char* errno ;
+ int error (char*,char*,char*,int ) ;
+ int * exec_bfd ;
+ char* get_exec_file (int) ;
+ char* inferior_io_terminal ;
+ int inferior_ptid ;
+ int memset (struct inheritance*,int ,int) ;
+ int nto_node () ;
+ char** nto_parse_redirection (char**,char**,char**,char**) ;
+ int nto_procfs_node ;
+ int open (char*,int ) ;
+ int perror (char*) ;
+ int pid_to_ptid (int) ;
+ int procfs_ops ;
+ int push_target (int *) ;
+ int safe_strerror (char*) ;
+ int sigaddset (int *,int ) ;
+ int sigemptyset (int *) ;
+ int signal (int ,int ) ;
+ int sigprocmask (int ,int *,int *) ;
+ int spawnp (char*,int,int*,struct inheritance*,char**,char**) ;
+ int strlen (char*) ;
+ TYPE_1__* symfile_objfile ;
+ int target_terminal_init () ;
+ int xfree (char*) ;
+ char** xmalloc (int) ;
+ char* xstrdup (char*) ;
 
 __attribute__((used)) static void
 procfs_create_inferior (char *exec_file, char *allargs, char **env)
@@ -85,14 +85,14 @@ procfs_create_inferior (char *exec_file, char *allargs, char **env)
   sigset_t set;
 
   argv = xmalloc (((strlen (allargs) + 1) / (unsigned) 2 + 2) *
-		  sizeof (*argv));
+    sizeof (*argv));
   argv[0] = get_exec_file (1);
   if (!argv[0])
     {
       if (exec_file)
-	argv[0] = exec_file;
+ argv[0] = exec_file;
       else
-	return;
+ return;
     }
 
   args = xstrdup (allargs);
@@ -104,49 +104,49 @@ procfs_create_inferior (char *exec_file, char *allargs, char **env)
   fds[1] = STDOUT_FILENO;
   fds[2] = STDERR_FILENO;
 
-  /* If the user specified I/O via gdb's --tty= arg, use it, but only
-     if the i/o is not also being specified via redirection.  */
+
+
   if (inferior_io_terminal)
     {
       if (!in[0])
-	in = inferior_io_terminal;
+ in = inferior_io_terminal;
       if (!out[0])
-	out = inferior_io_terminal;
+ out = inferior_io_terminal;
       if (!err[0])
-	err = inferior_io_terminal;
+ err = inferior_io_terminal;
     }
 
   if (in[0])
     {
       fd = open (in, O_RDONLY);
       if (fd == -1)
-	perror (in);
+ perror (in);
       else
-	fds[0] = fd;
+ fds[0] = fd;
     }
   if (out[0])
     {
       fd = open (out, O_WRONLY);
       if (fd == -1)
-	perror (out);
+ perror (out);
       else
-	fds[1] = fd;
+ fds[1] = fd;
     }
   if (err[0])
     {
       fd = open (err, O_WRONLY);
       if (fd == -1)
-	perror (err);
+ perror (err);
       else
-	fds[2] = fd;
+ fds[2] = fd;
     }
 
-  /* Clear any pending SIGUSR1's but keep the behavior the same.  */
+
   signal (SIGUSR1, signal (SIGUSR1, SIG_IGN));
 
   sigemptyset (&set);
   sigaddset (&set, SIGUSR1);
-  sigprocmask (SIG_UNBLOCK, &set, NULL);
+  sigprocmask (SIG_UNBLOCK, &set, ((void*)0));
 
   memset (&inherit, 0, sizeof (inherit));
 
@@ -159,10 +159,10 @@ procfs_create_inferior (char *exec_file, char *allargs, char **env)
   inherit.flags |= SPAWN_SETGROUP | SPAWN_HOLD;
   inherit.pgroup = SPAWN_NEWPGROUP;
   pid = spawnp (argv[0], 3, fds, &inherit, argv,
-		ND_NODE_CMP (nto_procfs_node, ND_LOCAL_NODE) == 0 ? env : 0);
+  ND_NODE_CMP (nto_procfs_node, ND_LOCAL_NODE) == 0 ? env : 0);
   xfree (args);
 
-  sigprocmask (SIG_BLOCK, &set, NULL);
+  sigprocmask (SIG_BLOCK, &set, ((void*)0));
 
   if (pid == -1)
     error ("Error spawning %s: %d (%s)", argv[0], errno, safe_strerror (errno));
@@ -177,20 +177,20 @@ procfs_create_inferior (char *exec_file, char *allargs, char **env)
   inferior_ptid = do_attach (pid_to_ptid (pid));
 
   attach_flag = 0;
-  flags = _DEBUG_FLAG_KLC;	/* Kill-on-Last-Close flag.  */
+  flags = _DEBUG_FLAG_KLC;
   errn = devctl (ctl_fd, DCMD_PROC_SET_FLAG, &flags, sizeof (flags), 0);
   if (errn != EOK)
     {
-      /* FIXME: expected warning?  */
-      /* warning( "Failed to set Kill-on-Last-Close flag: errno = %d(%s)\n",
-         errn, strerror(errn) ); */
+
+
+
     }
   push_target (&procfs_ops);
   target_terminal_init ();
 
-#ifdef SOLIB_CREATE_INFERIOR_HOOK
-  if (exec_bfd != NULL
-      || (symfile_objfile != NULL && symfile_objfile->obfd != NULL))
-    SOLIB_CREATE_INFERIOR_HOOK (pid);
-#endif
+
+
+
+
+
 }

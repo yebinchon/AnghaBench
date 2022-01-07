@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_object_t ;
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int vlc_object_t ;
 struct TYPE_7__ {TYPE_2__* p_sys; } ;
-typedef  TYPE_1__ filter_t ;
-struct TYPE_8__ {int /*<<< orphan*/  heap; } ;
-typedef  TYPE_2__ filter_sys_t ;
+typedef TYPE_1__ filter_t ;
+struct TYPE_8__ {int heap; } ;
+typedef TYPE_2__ filter_sys_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CFG_FACTOR ; 
- int /*<<< orphan*/  CFG_MIN_ALPHA ; 
- int /*<<< orphan*/  CFG_MIN_START_STOP_INTERVAL ; 
- int /*<<< orphan*/  CFG_MIN_STOPS_INTERVAL ; 
- int /*<<< orphan*/  CFG_MIN_STOP_START_INTERVAL ; 
- int /*<<< orphan*/  CFG_MODE ; 
- int /*<<< orphan*/  CFG_OVERLAP ; 
- int /*<<< orphan*/  SubsdelayCallback ; 
- int /*<<< orphan*/  SubsdelayHeapDestroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (TYPE_2__*) ; 
- int /*<<< orphan*/  var_DelCallback (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  var_Destroy (TYPE_1__*,int /*<<< orphan*/ ) ; 
+
+ int CFG_FACTOR ;
+ int CFG_MIN_ALPHA ;
+ int CFG_MIN_START_STOP_INTERVAL ;
+ int CFG_MIN_STOPS_INTERVAL ;
+ int CFG_MIN_STOP_START_INTERVAL ;
+ int CFG_MODE ;
+ int CFG_OVERLAP ;
+ int SubsdelayCallback ;
+ int SubsdelayHeapDestroy (int *) ;
+ int free (TYPE_2__*) ;
+ int var_DelCallback (TYPE_1__*,int ,int ,TYPE_2__*) ;
+ int var_Destroy (TYPE_1__*,int ) ;
 
 __attribute__((used)) static void SubsdelayDestroy( vlc_object_t *p_this )
 {
@@ -39,7 +39,7 @@ __attribute__((used)) static void SubsdelayDestroy( vlc_object_t *p_this )
 
     SubsdelayHeapDestroy( &p_sys->heap );
 
-    /* destroy parameters */
+
 
     var_DelCallback( p_filter, CFG_MODE, SubsdelayCallback, p_sys );
     var_Destroy( p_filter, CFG_MODE );

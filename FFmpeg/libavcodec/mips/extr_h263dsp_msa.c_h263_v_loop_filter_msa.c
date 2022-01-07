@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int v8i16 ;
-typedef  int /*<<< orphan*/  v2i64 ;
-typedef  scalar_t__ v16u8 ;
-typedef  scalar_t__ v16i8 ;
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint64_t ;
-typedef  size_t int32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LD_UB4 (int /*<<< orphan*/ *,size_t,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  PCKEV_B2_SH (int,int,int,int,int,int) ; 
- int /*<<< orphan*/  SD4 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,size_t) ; 
- scalar_t__ __msa_adds_s_b (scalar_t__,scalar_t__) ; 
- scalar_t__ __msa_bmnz_v (scalar_t__,scalar_t__,scalar_t__) ; 
- scalar_t__ __msa_bmz_v (scalar_t__,scalar_t__,scalar_t__) ; 
- int __msa_clti_s_h (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  __msa_copy_u_d (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int __msa_fill_h (size_t) ; 
- int __msa_hsub_u_h (scalar_t__,scalar_t__) ; 
- scalar_t__ __msa_ilvr_b (scalar_t__,scalar_t__) ; 
- scalar_t__ __msa_subsus_u_b (scalar_t__,scalar_t__) ; 
- scalar_t__ __msa_xori_b (scalar_t__,int) ; 
- size_t* h263_loop_filter_strength_msa ; 
+
+
+
+typedef int v8i16 ;
+typedef int v2i64 ;
+typedef scalar_t__ v16u8 ;
+typedef scalar_t__ v16i8 ;
+typedef int uint8_t ;
+typedef int uint64_t ;
+typedef size_t int32_t ;
+
+
+ int LD_UB4 (int *,size_t,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ int PCKEV_B2_SH (int,int,int,int,int,int) ;
+ int SD4 (int ,int ,int ,int ,int *,size_t) ;
+ scalar_t__ __msa_adds_s_b (scalar_t__,scalar_t__) ;
+ scalar_t__ __msa_bmnz_v (scalar_t__,scalar_t__,scalar_t__) ;
+ scalar_t__ __msa_bmz_v (scalar_t__,scalar_t__,scalar_t__) ;
+ int __msa_clti_s_h (int,int ) ;
+ int __msa_copy_u_d (int ,int ) ;
+ int __msa_fill_h (size_t) ;
+ int __msa_hsub_u_h (scalar_t__,scalar_t__) ;
+ scalar_t__ __msa_ilvr_b (scalar_t__,scalar_t__) ;
+ scalar_t__ __msa_subsus_u_b (scalar_t__,scalar_t__) ;
+ scalar_t__ __msa_xori_b (scalar_t__,int) ;
+ size_t* h263_loop_filter_strength_msa ;
 
 __attribute__((used)) static void h263_v_loop_filter_msa(uint8_t *src, int32_t stride, int32_t qscale)
 {

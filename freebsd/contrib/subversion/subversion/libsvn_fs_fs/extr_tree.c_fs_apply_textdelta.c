@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {void* result_checksum; void* base_checksum; int /*<<< orphan*/ * pool; int /*<<< orphan*/  path; int /*<<< orphan*/ * root; } ;
-typedef  TYPE_1__ txdelta_baton_t ;
-typedef  int /*<<< orphan*/  svn_txdelta_window_handler_t ;
-typedef  int /*<<< orphan*/  svn_fs_root_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_checksum_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  apply_textdelta (TYPE_1__*,int /*<<< orphan*/ *) ; 
- TYPE_1__* apr_pcalloc (int /*<<< orphan*/ *,int) ; 
- void* svn_checksum_dup (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_fs__canonicalize_abspath (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  window_consumer ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {void* result_checksum; void* base_checksum; int * pool; int path; int * root; } ;
+typedef TYPE_1__ txdelta_baton_t ;
+typedef int svn_txdelta_window_handler_t ;
+typedef int svn_fs_root_t ;
+typedef int svn_error_t ;
+typedef int svn_checksum_t ;
+typedef int apr_pool_t ;
+
+
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int apply_textdelta (TYPE_1__*,int *) ;
+ TYPE_1__* apr_pcalloc (int *,int) ;
+ void* svn_checksum_dup (int *,int *) ;
+ int svn_fs__canonicalize_abspath (char const*,int *) ;
+ int window_consumer ;
 
 __attribute__((used)) static svn_error_t *
 fs_apply_textdelta(svn_txdelta_window_handler_t *contents_p,

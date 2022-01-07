@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  scalar_t__ uint64_t ;
-typedef  int int64_t ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int INT_MAX ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int atoi (char*) ; 
- int /*<<< orphan*/  fflush (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int fread (int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fseek (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- void* malloc (int) ; 
- int /*<<< orphan*/  print_results (scalar_t__*,double*,int,int,int) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int sscanf (char*,char*,int*,int*) ; 
- scalar_t__ ssd_plane (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- double ssim_plane (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int,int,int,int*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  stdout ; 
+
+
+
+typedef int uint8_t ;
+typedef scalar_t__ uint64_t ;
+typedef int int64_t ;
+typedef int FILE ;
+
+
+ int INT_MAX ;
+ int SEEK_SET ;
+ int atoi (char*) ;
+ int fflush (int ) ;
+ int * fopen (char*,char*) ;
+ int fprintf (int ,char*) ;
+ int fread (int *,int,int,int *) ;
+ int fseek (int *,int,int ) ;
+ void* malloc (int) ;
+ int print_results (scalar_t__*,double*,int,int,int) ;
+ int printf (char*,...) ;
+ int sscanf (char*,char*,int*,int*) ;
+ scalar_t__ ssd_plane (int *,int *,int) ;
+ double ssim_plane (int *,int,int *,int,int,int,int*,int *) ;
+ int stderr ;
+ int stdout ;
 
 int main(int argc, char* argv[])
 {
@@ -79,10 +79,10 @@ int main(int argc, char* argv[])
         if( fread(buf[1], frame_size, 1, f[1]) != 1) break;
         for( i=0; i<3; i++ )
         {
-            ssd_one[i]  = ssd_plane ( plane[0][i], plane[1][i], w*h>>2*!!i );
+            ssd_one[i] = ssd_plane ( plane[0][i], plane[1][i], w*h>>2*!!i );
             ssim_one[i] = ssim_plane( plane[0][i], w>>!!i,
                                      plane[1][i], w>>!!i,
-                                     w>>!!i, h>>!!i, temp, NULL );
+                                     w>>!!i, h>>!!i, temp, ((void*)0) );
             ssd[i] += ssd_one[i];
             ssim[i] += ssim_one[i];
         }

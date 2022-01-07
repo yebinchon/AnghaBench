@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  (* pGetPropValue ) (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ;} ;
-typedef  int /*<<< orphan*/  PROPVARIANT ;
-typedef  int /*<<< orphan*/  PROPERTYKEY ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  GUID ;
-typedef  int /*<<< orphan*/  EDataFlow ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_NOTIMPL ; 
- int /*<<< orphan*/  MMDevice_SetPropValue (int /*<<< orphan*/ *,int /*<<< orphan*/  const,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PropVariantClear (int /*<<< orphan*/ *) ; 
- scalar_t__ SUCCEEDED (int /*<<< orphan*/ ) ; 
- TYPE_1__ drvs ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int (* pGetPropValue ) (int *,int const*,int *) ;} ;
+typedef int PROPVARIANT ;
+typedef int PROPERTYKEY ;
+typedef int HRESULT ;
+typedef int GUID ;
+typedef int EDataFlow ;
+
+
+ int E_NOTIMPL ;
+ int MMDevice_SetPropValue (int *,int const,int const*,int *) ;
+ int PropVariantClear (int *) ;
+ scalar_t__ SUCCEEDED (int ) ;
+ TYPE_1__ drvs ;
+ int stub1 (int *,int const*,int *) ;
 
 __attribute__((used)) static HRESULT set_driver_prop_value(GUID *id, const EDataFlow flow, const PROPERTYKEY *prop)
 {

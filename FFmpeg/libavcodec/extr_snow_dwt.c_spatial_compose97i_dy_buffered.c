@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  slice_buffer ;
-struct TYPE_6__ {int y; int /*<<< orphan*/ * b3; int /*<<< orphan*/ * b2; int /*<<< orphan*/ * b1; int /*<<< orphan*/ * b0; } ;
-struct TYPE_5__ {int /*<<< orphan*/  (* horizontal_compose97i ) (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ;int /*<<< orphan*/  (* vertical_compose97i ) (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ;} ;
-typedef  TYPE_1__ SnowDWTContext ;
-typedef  int /*<<< orphan*/  IDWTELEM ;
-typedef  TYPE_2__ DWTCompose ;
 
-/* Variables and functions */
- int avpriv_mirror (int,int) ; 
- int /*<<< orphan*/ * slice_buffer_get_line (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  stub3 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  vertical_compose97iH0 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  vertical_compose97iH1 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  vertical_compose97iL0 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  vertical_compose97iL1 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int slice_buffer ;
+struct TYPE_6__ {int y; int * b3; int * b2; int * b1; int * b0; } ;
+struct TYPE_5__ {int (* horizontal_compose97i ) (int *,int *,int) ;int (* vertical_compose97i ) (int *,int *,int *,int *,int *,int *,int) ;} ;
+typedef TYPE_1__ SnowDWTContext ;
+typedef int IDWTELEM ;
+typedef TYPE_2__ DWTCompose ;
+
+
+ int avpriv_mirror (int,int) ;
+ int * slice_buffer_get_line (int *,int) ;
+ int stub1 (int *,int *,int *,int *,int *,int *,int) ;
+ int stub2 (int *,int *,int) ;
+ int stub3 (int *,int *,int) ;
+ int vertical_compose97iH0 (int *,int *,int *,int) ;
+ int vertical_compose97iH1 (int *,int *,int *,int) ;
+ int vertical_compose97iL0 (int *,int *,int *,int) ;
+ int vertical_compose97iL1 (int *,int *,int *,int) ;
 
 __attribute__((used)) static void spatial_compose97i_dy_buffered(SnowDWTContext *dsp, DWTCompose *cs,
                                            slice_buffer * sb, IDWTELEM *temp,
@@ -66,9 +66,9 @@ __attribute__((used)) static void spatial_compose97i_dy_buffered(SnowDWTContext 
     if (y + 0 < (unsigned)height)
         dsp->horizontal_compose97i(b1, temp, width);
 
-    cs->b0  = b2;
-    cs->b1  = b3;
-    cs->b2  = b4;
-    cs->b3  = b5;
-    cs->y  += 2;
+    cs->b0 = b2;
+    cs->b1 = b3;
+    cs->b2 = b4;
+    cs->b3 = b5;
+    cs->y += 2;
 }

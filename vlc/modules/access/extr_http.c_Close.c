@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_object_t ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int vlc_object_t ;
 struct TYPE_4__ {TYPE_2__* p_sys; } ;
-typedef  TYPE_1__ stream_t ;
-struct TYPE_5__ {int /*<<< orphan*/  psz_password; int /*<<< orphan*/  psz_username; int /*<<< orphan*/  psz_referrer; int /*<<< orphan*/  psz_user_agent; int /*<<< orphan*/  psz_icy_title; int /*<<< orphan*/  psz_icy_genre; int /*<<< orphan*/  psz_icy_name; int /*<<< orphan*/  psz_location; int /*<<< orphan*/  psz_mime; int /*<<< orphan*/  proxy; scalar_t__ b_proxy; int /*<<< orphan*/  url; } ;
-typedef  TYPE_2__ access_sys_t ;
+typedef TYPE_1__ stream_t ;
+struct TYPE_5__ {int psz_password; int psz_username; int psz_referrer; int psz_user_agent; int psz_icy_title; int psz_icy_genre; int psz_icy_name; int psz_location; int psz_mime; int proxy; scalar_t__ b_proxy; int url; } ;
+typedef TYPE_2__ access_sys_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Disconnect (TYPE_1__*) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vlc_UrlClean (int /*<<< orphan*/ *) ; 
+
+ int Disconnect (TYPE_1__*) ;
+ int free (int ) ;
+ int vlc_UrlClean (int *) ;
 
 __attribute__((used)) static void Close( vlc_object_t *p_this )
 {
-    stream_t     *p_access = (stream_t*)p_this;
+    stream_t *p_access = (stream_t*)p_this;
     access_sys_t *p_sys = p_access->p_sys;
 
     vlc_UrlClean( &p_sys->url );

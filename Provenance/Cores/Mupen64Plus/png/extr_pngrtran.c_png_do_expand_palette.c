@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int png_uint_32 ;
-typedef  int png_size_t ;
-typedef  TYPE_1__* png_row_infop ;
-typedef  TYPE_2__* png_const_colorp ;
-typedef  int /*<<< orphan*/ * png_const_bytep ;
-typedef  int* png_bytep ;
-typedef  int png_byte ;
-struct TYPE_6__ {int /*<<< orphan*/  red; int /*<<< orphan*/  green; int /*<<< orphan*/  blue; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int png_uint_32 ;
+typedef int png_size_t ;
+typedef TYPE_1__* png_row_infop ;
+typedef TYPE_2__* png_const_colorp ;
+typedef int * png_const_bytep ;
+typedef int* png_bytep ;
+typedef int png_byte ;
+struct TYPE_6__ {int red; int green; int blue; } ;
 struct TYPE_5__ {int width; int color_type; int bit_depth; int pixel_depth; int rowbytes; int channels; } ;
 
-/* Variables and functions */
- int PNG_COLOR_TYPE_PALETTE ; 
- int /*<<< orphan*/  png_debug (int,char*) ; 
+
+ int PNG_COLOR_TYPE_PALETTE ;
+ int png_debug (int,char*) ;
 
 __attribute__((used)) static void
 png_do_expand_palette(png_row_infop row_info, png_bytep row,

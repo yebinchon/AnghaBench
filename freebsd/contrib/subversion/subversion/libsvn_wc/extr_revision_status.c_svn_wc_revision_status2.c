@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {void* modified; void* switched; void* sparse_checkout; void* max_rev; void* min_rev; } ;
-typedef  TYPE_1__ svn_wc_revision_status_t ;
-struct TYPE_7__ {int /*<<< orphan*/  db; } ;
-typedef  TYPE_2__ svn_wc_context_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_cancel_func_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+typedef TYPE_1__ svn_wc_revision_status_t ;
+struct TYPE_7__ {int db; } ;
+typedef TYPE_2__ svn_wc_context_t ;
+typedef int svn_error_t ;
+typedef int svn_cancel_func_t ;
+typedef int svn_boolean_t ;
+typedef int apr_pool_t ;
 
-/* Variables and functions */
- void* FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_ASSERT (int /*<<< orphan*/ ) ; 
- void* SVN_INVALID_REVNUM ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  TRUE ; 
- TYPE_1__* apr_pcalloc (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  svn_dirent_is_absolute (char const*) ; 
- int /*<<< orphan*/  svn_wc__db_revision_status (void**,void**,void**,void**,void**,int /*<<< orphan*/ ,char const*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__node_has_local_mods (void**,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *) ; 
+
+ void* FALSE ;
+ int SVN_ERR (int ) ;
+ int SVN_ERR_ASSERT (int ) ;
+ void* SVN_INVALID_REVNUM ;
+ int * SVN_NO_ERROR ;
+ int TRUE ;
+ TYPE_1__* apr_pcalloc (int *,int) ;
+ int svn_dirent_is_absolute (char const*) ;
+ int svn_wc__db_revision_status (void**,void**,void**,void**,void**,int ,char const*,char const*,int ,int *) ;
+ int svn_wc__node_has_local_mods (void**,int *,int ,char const*,int ,int ,void*,int *) ;
 
 svn_error_t *
 svn_wc_revision_status2(svn_wc_revision_status_t **result_p,
@@ -50,9 +50,9 @@ svn_wc_revision_status2(svn_wc_revision_status_t **result_p,
 
   SVN_ERR_ASSERT(svn_dirent_is_absolute(local_abspath));
 
-  /* set result as nil */
-  result->min_rev  = SVN_INVALID_REVNUM;
-  result->max_rev  = SVN_INVALID_REVNUM;
+
+  result->min_rev = SVN_INVALID_REVNUM;
+  result->max_rev = SVN_INVALID_REVNUM;
   result->switched = FALSE;
   result->modified = FALSE;
   result->sparse_checkout = FALSE;
@@ -66,7 +66,7 @@ svn_wc_revision_status2(svn_wc_revision_status_t **result_p,
                                      scratch_pool));
 
   if (!result->modified)
-    SVN_ERR(svn_wc__node_has_local_mods(&result->modified, NULL,
+    SVN_ERR(svn_wc__node_has_local_mods(&result->modified, ((void*)0),
                                         wc_ctx->db, local_abspath, TRUE,
                                         cancel_func, cancel_baton,
                                         scratch_pool));

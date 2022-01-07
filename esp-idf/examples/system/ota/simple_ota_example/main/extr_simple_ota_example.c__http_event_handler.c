@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int event_id; int /*<<< orphan*/  data_len; int /*<<< orphan*/  header_value; int /*<<< orphan*/  header_key; } ;
-typedef  TYPE_1__ esp_http_client_event_t ;
-typedef  int /*<<< orphan*/  esp_err_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ESP_LOGD (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  ESP_OK ; 
-#define  HTTP_EVENT_DISCONNECTED 134 
-#define  HTTP_EVENT_ERROR 133 
-#define  HTTP_EVENT_HEADER_SENT 132 
-#define  HTTP_EVENT_ON_CONNECTED 131 
-#define  HTTP_EVENT_ON_DATA 130 
-#define  HTTP_EVENT_ON_FINISH 129 
-#define  HTTP_EVENT_ON_HEADER 128 
- int /*<<< orphan*/  TAG ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int event_id; int data_len; int header_value; int header_key; } ;
+typedef TYPE_1__ esp_http_client_event_t ;
+typedef int esp_err_t ;
+
+
+ int ESP_LOGD (int ,char*,...) ;
+ int ESP_OK ;
+
+
+
+
+
+
+
+ int TAG ;
 
 esp_err_t _http_event_handler(esp_http_client_event_t *evt)
 {
     switch (evt->event_id) {
-    case HTTP_EVENT_ERROR:
+    case 133:
         ESP_LOGD(TAG, "HTTP_EVENT_ERROR");
         break;
-    case HTTP_EVENT_ON_CONNECTED:
+    case 131:
         ESP_LOGD(TAG, "HTTP_EVENT_ON_CONNECTED");
         break;
-    case HTTP_EVENT_HEADER_SENT:
+    case 132:
         ESP_LOGD(TAG, "HTTP_EVENT_HEADER_SENT");
         break;
-    case HTTP_EVENT_ON_HEADER:
+    case 128:
         ESP_LOGD(TAG, "HTTP_EVENT_ON_HEADER, key=%s, value=%s", evt->header_key, evt->header_value);
         break;
-    case HTTP_EVENT_ON_DATA:
+    case 130:
         ESP_LOGD(TAG, "HTTP_EVENT_ON_DATA, len=%d", evt->data_len);
         break;
-    case HTTP_EVENT_ON_FINISH:
+    case 129:
         ESP_LOGD(TAG, "HTTP_EVENT_ON_FINISH");
         break;
-    case HTTP_EVENT_DISCONNECTED:
+    case 134:
         ESP_LOGD(TAG, "HTTP_EVENT_DISCONNECTED");
         break;
     }

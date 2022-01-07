@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct musb {int int_usb; int /*<<< orphan*/  lock; void* int_rx; void* int_tx; int /*<<< orphan*/  mregs; } ;
-typedef  int /*<<< orphan*/  irqreturn_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IRQ_NONE ; 
- int /*<<< orphan*/  MUSB_INTRRX ; 
- int /*<<< orphan*/  MUSB_INTRTX ; 
- int /*<<< orphan*/  MUSB_INTRUSB ; 
- int MUSB_INTR_RESET ; 
- int MUSB_INTR_RESUME ; 
- int MUSB_INTR_SOF ; 
- int MUSB_INTR_SUSPEND ; 
- int /*<<< orphan*/  musb_interrupt (struct musb*) ; 
- int musb_readb (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- void* musb_readw (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
+
+
+
+struct musb {int int_usb; int lock; void* int_rx; void* int_tx; int mregs; } ;
+typedef int irqreturn_t ;
+
+
+ int IRQ_NONE ;
+ int MUSB_INTRRX ;
+ int MUSB_INTRTX ;
+ int MUSB_INTRUSB ;
+ int MUSB_INTR_RESET ;
+ int MUSB_INTR_RESUME ;
+ int MUSB_INTR_SOF ;
+ int MUSB_INTR_SUSPEND ;
+ int musb_interrupt (struct musb*) ;
+ int musb_readb (int ,int ) ;
+ void* musb_readw (int ,int ) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
 
 __attribute__((used)) static irqreturn_t jz4740_musb_interrupt(int irq, void *__hci)
 {
-	unsigned long   flags;
-	irqreturn_t     retval = IRQ_NONE;
-	struct musb     *musb = __hci;
+ unsigned long flags;
+ irqreturn_t retval = IRQ_NONE;
+ struct musb *musb = __hci;
 
-	spin_lock_irqsave(&musb->lock, flags);
+ spin_lock_irqsave(&musb->lock, flags);
 
-	musb->int_usb = musb_readb(musb->mregs, MUSB_INTRUSB);
-	musb->int_tx = musb_readw(musb->mregs, MUSB_INTRTX);
-	musb->int_rx = musb_readw(musb->mregs, MUSB_INTRRX);
+ musb->int_usb = musb_readb(musb->mregs, MUSB_INTRUSB);
+ musb->int_tx = musb_readw(musb->mregs, MUSB_INTRTX);
+ musb->int_rx = musb_readw(musb->mregs, MUSB_INTRRX);
 
-	/*
-	 * The controller is gadget only, the state of the host mode IRQ bits is
-	 * undefined. Mask them to make sure that the musb driver core will
-	 * never see them set
-	 */
-	musb->int_usb &= MUSB_INTR_SUSPEND | MUSB_INTR_RESUME |
-	    MUSB_INTR_RESET | MUSB_INTR_SOF;
 
-	if (musb->int_usb || musb->int_tx || musb->int_rx)
-		retval = musb_interrupt(musb);
 
-	spin_unlock_irqrestore(&musb->lock, flags);
 
-	return retval;
+
+
+ musb->int_usb &= MUSB_INTR_SUSPEND | MUSB_INTR_RESUME |
+     MUSB_INTR_RESET | MUSB_INTR_SOF;
+
+ if (musb->int_usb || musb->int_tx || musb->int_rx)
+  retval = musb_interrupt(musb);
+
+ spin_unlock_irqrestore(&musb->lock, flags);
+
+ return retval;
 }

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VOID ;
-struct TYPE_5__ {scalar_t__ StringBuffer; int /*<<< orphan*/ * DataEntries; int /*<<< orphan*/ * Lang4Entries; int /*<<< orphan*/  Lang4Directory; int /*<<< orphan*/ * Lang3Entries; int /*<<< orphan*/  Lang3Directory; int /*<<< orphan*/ * Lang2Entries; int /*<<< orphan*/  Lang2Directory; int /*<<< orphan*/ * Lang1Entries; int /*<<< orphan*/  Lang1Directory; int /*<<< orphan*/ * Name2Entries; int /*<<< orphan*/  Name2Directory; int /*<<< orphan*/ * Name1Entries; int /*<<< orphan*/  Name1Directory; int /*<<< orphan*/ * TypeEntries; int /*<<< orphan*/  TypeDirectory; scalar_t__ StringIndex; } ;
-typedef  int /*<<< orphan*/  PVOID ;
-typedef  TYPE_1__* PTEST_RESOURCES ;
 
-/* Variables and functions */
- int /*<<< orphan*/  InitializeDataEntry (int /*<<< orphan*/ ,int /*<<< orphan*/ *,scalar_t__,int) ; 
- int /*<<< orphan*/  InitializeIdEntry (TYPE_1__*,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  InitializeNamedEntry (TYPE_1__*,int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  InitializeResourceDirectory (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  memset (scalar_t__,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int VOID ;
+struct TYPE_5__ {scalar_t__ StringBuffer; int * DataEntries; int * Lang4Entries; int Lang4Directory; int * Lang3Entries; int Lang3Directory; int * Lang2Entries; int Lang2Directory; int * Lang1Entries; int Lang1Directory; int * Name2Entries; int Name2Directory; int * Name1Entries; int Name1Directory; int * TypeEntries; int TypeDirectory; scalar_t__ StringIndex; } ;
+typedef int PVOID ;
+typedef TYPE_1__* PTEST_RESOURCES ;
+
+
+ int InitializeDataEntry (int ,int *,scalar_t__,int) ;
+ int InitializeIdEntry (TYPE_1__*,int *,int,int *) ;
+ int InitializeNamedEntry (TYPE_1__*,int *,char*,int *) ;
+ int InitializeResourceDirectory (int *,int,int) ;
+ int memset (scalar_t__,int ,int) ;
 
 __attribute__((used)) static
 VOID

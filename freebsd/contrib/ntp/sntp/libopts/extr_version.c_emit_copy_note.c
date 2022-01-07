@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/ * pzBugAddr; int /*<<< orphan*/ * pzPackager; int /*<<< orphan*/ * pzCopyNotice; int /*<<< orphan*/ * pzCopyright; } ;
-typedef  TYPE_1__ tOptions ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- scalar_t__ HAS_pzPkgDataDir (TYPE_1__*) ; 
- int /*<<< orphan*/  NL ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fputc (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fputs (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * optionVersion () ; 
- char* zPlsSendBugs ; 
- char* zao_ver_fmt ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int * pzBugAddr; int * pzPackager; int * pzCopyNotice; int * pzCopyright; } ;
+typedef TYPE_1__ tOptions ;
+typedef int FILE ;
+
+
+ scalar_t__ HAS_pzPkgDataDir (TYPE_1__*) ;
+ int NL ;
+ int fprintf (int *,char*,int *) ;
+ int fputc (int ,int *) ;
+ int fputs (int *,int *) ;
+ int * optionVersion () ;
+ char* zPlsSendBugs ;
+ char* zao_ver_fmt ;
 
 __attribute__((used)) static void
 emit_copy_note(tOptions * opts, FILE * fp)
 {
-    if (opts->pzCopyright != NULL)
+    if (opts->pzCopyright != ((void*)0))
         fputs(opts->pzCopyright, fp);
 
-    if (opts->pzCopyNotice != NULL)
+    if (opts->pzCopyNotice != ((void*)0))
         fputs(opts->pzCopyNotice, fp);
 
     fputc(NL, fp);
     fprintf(fp, zao_ver_fmt, optionVersion());
-    
-    if (HAS_pzPkgDataDir(opts) && (opts->pzPackager != NULL)) {
+
+    if (HAS_pzPkgDataDir(opts) && (opts->pzPackager != ((void*)0))) {
         fputc(NL, fp);
         fputs(opts->pzPackager, fp);
 
-    } else if (opts->pzBugAddr != NULL) {
+    } else if (opts->pzBugAddr != ((void*)0)) {
         fputc(NL, fp);
         fprintf(fp, zPlsSendBugs, opts->pzBugAddr);
     }

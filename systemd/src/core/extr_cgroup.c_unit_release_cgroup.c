@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int cgroup_control_inotify_wd; int cgroup_memory_inotify_wd; TYPE_1__* manager; int /*<<< orphan*/  id; scalar_t__ cgroup_path; } ;
-typedef  TYPE_2__ Unit ;
-struct TYPE_6__ {int /*<<< orphan*/  cgroup_memory_inotify_wd_unit; int /*<<< orphan*/  cgroup_inotify_fd; int /*<<< orphan*/  cgroup_control_inotify_wd_unit; int /*<<< orphan*/  cgroup_unit; } ;
 
-/* Variables and functions */
- scalar_t__ INT_TO_PTR (int) ; 
- int /*<<< orphan*/  assert (TYPE_2__*) ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  hashmap_remove (int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__ inotify_rm_watch (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  log_unit_debug_errno (TYPE_2__*,int /*<<< orphan*/ ,char*,int,int /*<<< orphan*/ ) ; 
- scalar_t__ mfree (scalar_t__) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int cgroup_control_inotify_wd; int cgroup_memory_inotify_wd; TYPE_1__* manager; int id; scalar_t__ cgroup_path; } ;
+typedef TYPE_2__ Unit ;
+struct TYPE_6__ {int cgroup_memory_inotify_wd_unit; int cgroup_inotify_fd; int cgroup_control_inotify_wd_unit; int cgroup_unit; } ;
+
+
+ scalar_t__ INT_TO_PTR (int) ;
+ int assert (TYPE_2__*) ;
+ int errno ;
+ int hashmap_remove (int ,scalar_t__) ;
+ scalar_t__ inotify_rm_watch (int ,int) ;
+ int log_unit_debug_errno (TYPE_2__*,int ,char*,int,int ) ;
+ scalar_t__ mfree (scalar_t__) ;
 
 void unit_release_cgroup(Unit *u) {
         assert(u);
 
-        /* Forgets all cgroup details for this cgroup — but does *not* destroy the cgroup. This is hence OK to call
-         * when we close down everything for reexecution, where we really want to leave the cgroup in place. */
+
+
 
         if (u->cgroup_path) {
                 (void) hashmap_remove(u->manager->cgroup_unit, u->cgroup_path);

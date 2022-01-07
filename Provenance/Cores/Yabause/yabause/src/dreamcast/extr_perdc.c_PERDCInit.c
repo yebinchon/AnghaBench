@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ int PORTDATA1 ;
+ int PerPadAdd (int *) ;
+ int PerPortReset () ;
+ int pad1 ;
 
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  PORTDATA1 ; 
- int /*<<< orphan*/  PerPadAdd (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PerPortReset () ; 
- int /*<<< orphan*/  pad1 ; 
-
-int PERDCInit(void)	{
+int PERDCInit(void) {
     PerPortReset();
     pad1 = PerPadAdd(&PORTDATA1);
-	return 0;
+ return 0;
 }

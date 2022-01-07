@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct resource {int dummy; } ;
-struct lookup_irq_request {int rid; scalar_t__ found; int checkrid; scalar_t__ counter; int /*<<< orphan*/  irq; int /*<<< orphan*/ * acpi_res; } ;
-typedef  int /*<<< orphan*/  device_t ;
-typedef  int /*<<< orphan*/  ACPI_STATUS ;
-typedef  int /*<<< orphan*/  ACPI_RESOURCE ;
+struct lookup_irq_request {int rid; scalar_t__ found; int checkrid; scalar_t__ counter; int irq; int * acpi_res; } ;
+typedef int device_t ;
+typedef int ACPI_STATUS ;
+typedef int ACPI_RESOURCE ;
 
-/* Variables and functions */
- scalar_t__ ACPI_SUCCESS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AE_NOT_FOUND ; 
- int /*<<< orphan*/  AcpiWalkResources (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,struct lookup_irq_request*) ; 
- int /*<<< orphan*/  acpi_get_handle (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  acpi_lookup_irq_handler ; 
- int /*<<< orphan*/  rman_get_start (struct resource*) ; 
+
+ scalar_t__ ACPI_SUCCESS (int ) ;
+ int AE_NOT_FOUND ;
+ int AcpiWalkResources (int ,char*,int ,struct lookup_irq_request*) ;
+ int acpi_get_handle (int ) ;
+ int acpi_lookup_irq_handler ;
+ int rman_get_start (struct resource*) ;
 
 ACPI_STATUS
 acpi_lookup_irq_resource(device_t dev, int rid, struct resource *res,
@@ -38,8 +38,8 @@ acpi_lookup_irq_resource(device_t dev, int rid, struct resource *res,
     req.found = 0;
     req.checkrid = 1;
     status = AcpiWalkResources(acpi_get_handle(dev), "_CRS",
-	acpi_lookup_irq_handler, &req);
+ acpi_lookup_irq_handler, &req);
     if (ACPI_SUCCESS(status) && req.found == 0)
-	status = AE_NOT_FOUND;
+ status = AE_NOT_FOUND;
     return (status);
 }

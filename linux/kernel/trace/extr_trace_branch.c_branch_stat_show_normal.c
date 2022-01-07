@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct seq_file {int dummy; } ;
-struct ftrace_branch_data {int /*<<< orphan*/  incorrect; int /*<<< orphan*/  correct; } ;
+struct ftrace_branch_data {int incorrect; int correct; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  branch_stat_show (struct seq_file*,struct ftrace_branch_data*,char const*) ; 
- int /*<<< orphan*/  seq_printf (struct seq_file*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int branch_stat_show (struct seq_file*,struct ftrace_branch_data*,char const*) ;
+ int seq_printf (struct seq_file*,char*,int ,int ) ;
 
 __attribute__((used)) static int branch_stat_show_normal(struct seq_file *m,
-				   struct ftrace_branch_data *p, const char *f)
+       struct ftrace_branch_data *p, const char *f)
 {
-	seq_printf(m, "%8lu %8lu ",  p->correct, p->incorrect);
-	branch_stat_show(m, p, f);
-	return 0;
+ seq_printf(m, "%8lu %8lu ", p->correct, p->incorrect);
+ branch_stat_show(m, p, f);
+ return 0;
 }

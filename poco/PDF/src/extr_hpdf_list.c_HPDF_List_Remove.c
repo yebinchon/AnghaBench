@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {void** obj; scalar_t__ count; } ;
-typedef  scalar_t__ HPDF_UINT ;
-typedef  int /*<<< orphan*/  HPDF_STATUS ;
-typedef  TYPE_1__* HPDF_List ;
+typedef scalar_t__ HPDF_UINT ;
+typedef int HPDF_STATUS ;
+typedef TYPE_1__* HPDF_List ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HPDF_ITEM_NOT_FOUND ; 
- int /*<<< orphan*/  HPDF_List_RemoveByIndex (TYPE_1__*,scalar_t__) ; 
- int /*<<< orphan*/  HPDF_OK ; 
- int /*<<< orphan*/  HPDF_PTRACE (char*) ; 
+
+ int HPDF_ITEM_NOT_FOUND ;
+ int HPDF_List_RemoveByIndex (TYPE_1__*,scalar_t__) ;
+ int HPDF_OK ;
+ int HPDF_PTRACE (char*) ;
 
 HPDF_STATUS
-HPDF_List_Remove  (HPDF_List  list,
-                   void       *item)
+HPDF_List_Remove (HPDF_List list,
+                   void *item)
 {
     HPDF_UINT i;
     void **obj = list->obj;

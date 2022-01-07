@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct sched_param {int /*<<< orphan*/  sched_priority; } ;
-struct TYPE_8__ {int /*<<< orphan*/  cpu_sched_priority; scalar_t__ cpu_sched_set; } ;
-typedef  TYPE_1__ sd_bus_message ;
-typedef  int /*<<< orphan*/  sd_bus_error ;
-typedef  TYPE_1__ sd_bus ;
-typedef  int /*<<< orphan*/  int32_t ;
-typedef  TYPE_1__ ExecContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- scalar_t__ sched_getparam (int /*<<< orphan*/ ,struct sched_param*) ; 
- int sd_bus_message_append (TYPE_1__*,char*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct sched_param {int sched_priority; } ;
+struct TYPE_8__ {int cpu_sched_priority; scalar_t__ cpu_sched_set; } ;
+typedef TYPE_1__ sd_bus_message ;
+typedef int sd_bus_error ;
+typedef TYPE_1__ sd_bus ;
+typedef int int32_t ;
+typedef TYPE_1__ ExecContext ;
+
+
+ int assert (TYPE_1__*) ;
+ scalar_t__ sched_getparam (int ,struct sched_param*) ;
+ int sd_bus_message_append (TYPE_1__*,char*,int ) ;
 
 __attribute__((used)) static int property_get_cpu_sched_priority(
                 sd_bus *bus,

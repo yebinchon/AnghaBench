@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct ng_mesg {int dummy; } ;
-typedef  int /*<<< orphan*/  ng_l2cap_p ;
+typedef int ng_l2cap_p ;
 
-/* Variables and functions */
- int ENOTSUP ; 
+
+ int ENOTSUP ;
 
 int
 ng_l2cap_l2ca_grp_close(ng_l2cap_p l2cap, struct ng_mesg *msg)
 {
-	return (ENOTSUP);
+ return (ENOTSUP);
 }

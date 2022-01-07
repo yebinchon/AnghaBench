@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Unit ;
-struct TYPE_9__ {void* exec_fd_event_source; void* timer_event_source; int /*<<< orphan*/  accept_socket; int /*<<< orphan*/  peer; void* usb_function_strings; void* usb_function_descriptors; void* bus_name_owner; void* bus_name; int /*<<< orphan*/  success_status; int /*<<< orphan*/  restart_force_status; int /*<<< orphan*/  restart_prevent_status; int /*<<< orphan*/  dynamic_creds; int /*<<< orphan*/ * main_command; int /*<<< orphan*/ * control_command; int /*<<< orphan*/  exec_command; int /*<<< orphan*/  exec_runtime; void* status_text; void* pid_file; } ;
-typedef  TYPE_1__ Service ;
 
-/* Variables and functions */
- TYPE_1__* SERVICE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  _SERVICE_EXEC_COMMAND_MAX ; 
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int /*<<< orphan*/  dynamic_creds_unref (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  exec_command_free_array (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  exec_runtime_unref (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  exit_status_set_free (int /*<<< orphan*/ *) ; 
- void* mfree (void*) ; 
- void* sd_event_source_unref (void*) ; 
- int /*<<< orphan*/  service_close_socket_fd (TYPE_1__*) ; 
- int /*<<< orphan*/  service_release_resources (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  service_stop_watchdog (TYPE_1__*) ; 
- int /*<<< orphan*/  service_unwatch_control_pid (TYPE_1__*) ; 
- int /*<<< orphan*/  service_unwatch_main_pid (TYPE_1__*) ; 
- int /*<<< orphan*/  service_unwatch_pid_file (TYPE_1__*) ; 
- int /*<<< orphan*/  socket_peer_unref (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  unit_ref_unset (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  unit_unwatch_bus_name (int /*<<< orphan*/ *,void*) ; 
+
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int Unit ;
+struct TYPE_9__ {void* exec_fd_event_source; void* timer_event_source; int accept_socket; int peer; void* usb_function_strings; void* usb_function_descriptors; void* bus_name_owner; void* bus_name; int success_status; int restart_force_status; int restart_prevent_status; int dynamic_creds; int * main_command; int * control_command; int exec_command; int exec_runtime; void* status_text; void* pid_file; } ;
+typedef TYPE_1__ Service ;
+
+
+ TYPE_1__* SERVICE (int *) ;
+ int _SERVICE_EXEC_COMMAND_MAX ;
+ int assert (TYPE_1__*) ;
+ int dynamic_creds_unref (int *) ;
+ int exec_command_free_array (int ,int ) ;
+ int exec_runtime_unref (int ,int) ;
+ int exit_status_set_free (int *) ;
+ void* mfree (void*) ;
+ void* sd_event_source_unref (void*) ;
+ int service_close_socket_fd (TYPE_1__*) ;
+ int service_release_resources (int *) ;
+ int service_stop_watchdog (TYPE_1__*) ;
+ int service_unwatch_control_pid (TYPE_1__*) ;
+ int service_unwatch_main_pid (TYPE_1__*) ;
+ int service_unwatch_pid_file (TYPE_1__*) ;
+ int socket_peer_unref (int ) ;
+ int unit_ref_unset (int *) ;
+ int unit_unwatch_bus_name (int *,void*) ;
 
 __attribute__((used)) static void service_done(Unit *u) {
         Service *s = SERVICE(u);
@@ -43,10 +43,10 @@ __attribute__((used)) static void service_done(Unit *u) {
         s->pid_file = mfree(s->pid_file);
         s->status_text = mfree(s->status_text);
 
-        s->exec_runtime = exec_runtime_unref(s->exec_runtime, false);
+        s->exec_runtime = exec_runtime_unref(s->exec_runtime, 0);
         exec_command_free_array(s->exec_command, _SERVICE_EXEC_COMMAND_MAX);
-        s->control_command = NULL;
-        s->main_command = NULL;
+        s->control_command = ((void*)0);
+        s->main_command = ((void*)0);
 
         dynamic_creds_unref(&s->dynamic_creds);
 
@@ -54,13 +54,13 @@ __attribute__((used)) static void service_done(Unit *u) {
         exit_status_set_free(&s->restart_force_status);
         exit_status_set_free(&s->success_status);
 
-        /* This will leak a process, but at least no memory or any of
-         * our resources */
+
+
         service_unwatch_main_pid(s);
         service_unwatch_control_pid(s);
         service_unwatch_pid_file(s);
 
-        if (s->bus_name)  {
+        if (s->bus_name) {
                 unit_unwatch_bus_name(u, s->bus_name);
                 s->bus_name = mfree(s->bus_name);
         }

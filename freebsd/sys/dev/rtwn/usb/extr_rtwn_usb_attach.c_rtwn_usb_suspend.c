@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct rtwn_usb_softc {int /*<<< orphan*/  uc_sc; } ;
-typedef  int /*<<< orphan*/  device_t ;
 
-/* Variables and functions */
- struct rtwn_usb_softc* device_get_softc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rtwn_suspend (int /*<<< orphan*/ *) ; 
+
+
+
+struct rtwn_usb_softc {int uc_sc; } ;
+typedef int device_t ;
+
+
+ struct rtwn_usb_softc* device_get_softc (int ) ;
+ int rtwn_suspend (int *) ;
 
 __attribute__((used)) static int
 rtwn_usb_suspend(device_t self)
 {
-	struct rtwn_usb_softc *uc = device_get_softc(self);
+ struct rtwn_usb_softc *uc = device_get_softc(self);
 
-	rtwn_suspend(&uc->uc_sc);
+ rtwn_suspend(&uc->uc_sc);
 
-	return (0);
+ return (0);
 }

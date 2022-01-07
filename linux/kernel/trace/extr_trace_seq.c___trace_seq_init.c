@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  size; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int size; } ;
 struct trace_seq {TYPE_1__ seq; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  trace_seq_init (struct trace_seq*) ; 
- scalar_t__ unlikely (int) ; 
+
+ int trace_seq_init (struct trace_seq*) ;
+ scalar_t__ unlikely (int) ;
 
 __attribute__((used)) static inline void __trace_seq_init(struct trace_seq *s)
 {
-	if (unlikely(!s->seq.size))
-		trace_seq_init(s);
+ if (unlikely(!s->seq.size))
+  trace_seq_init(s);
 }

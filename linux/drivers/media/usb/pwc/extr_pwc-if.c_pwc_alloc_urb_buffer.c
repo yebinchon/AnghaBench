@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct device {int dummy; } ;
-typedef  int /*<<< orphan*/  dma_addr_t ;
+typedef int dma_addr_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DMA_FROM_DEVICE ; 
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  dma_map_single (struct device*,void*,size_t,int /*<<< orphan*/ ) ; 
- scalar_t__ dma_mapping_error (struct device*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kfree (void*) ; 
- void* kmalloc (size_t,int /*<<< orphan*/ ) ; 
+
+ int DMA_FROM_DEVICE ;
+ int GFP_KERNEL ;
+ int dma_map_single (struct device*,void*,size_t,int ) ;
+ scalar_t__ dma_mapping_error (struct device*,int ) ;
+ int kfree (void*) ;
+ void* kmalloc (size_t,int ) ;
 
 __attribute__((used)) static void *pwc_alloc_urb_buffer(struct device *dev,
-				  size_t size, dma_addr_t *dma_handle)
+      size_t size, dma_addr_t *dma_handle)
 {
-	void *buffer = kmalloc(size, GFP_KERNEL);
+ void *buffer = kmalloc(size, GFP_KERNEL);
 
-	if (!buffer)
-		return NULL;
+ if (!buffer)
+  return ((void*)0);
 
-	*dma_handle = dma_map_single(dev, buffer, size, DMA_FROM_DEVICE);
-	if (dma_mapping_error(dev, *dma_handle)) {
-		kfree(buffer);
-		return NULL;
-	}
+ *dma_handle = dma_map_single(dev, buffer, size, DMA_FROM_DEVICE);
+ if (dma_mapping_error(dev, *dma_handle)) {
+  kfree(buffer);
+  return ((void*)0);
+ }
 
-	return buffer;
+ return buffer;
 }

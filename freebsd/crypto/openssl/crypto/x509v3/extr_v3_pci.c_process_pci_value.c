@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buf ;
+
+
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int buf ;
 struct TYPE_10__ {unsigned char* data; long length; } ;
-struct TYPE_9__ {unsigned char* value; int /*<<< orphan*/  name; } ;
-typedef  TYPE_1__ CONF_VALUE ;
-typedef  int /*<<< orphan*/  BIO ;
-typedef  TYPE_2__ ASN1_OCTET_STRING ;
-typedef  int /*<<< orphan*/  ASN1_OBJECT ;
-typedef  int /*<<< orphan*/  ASN1_INTEGER ;
+struct TYPE_9__ {unsigned char* value; int name; } ;
+typedef TYPE_1__ CONF_VALUE ;
+typedef int BIO ;
+typedef TYPE_2__ ASN1_OCTET_STRING ;
+typedef int ASN1_OBJECT ;
+typedef int ASN1_INTEGER ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASN1_OCTET_STRING_free (TYPE_2__*) ; 
- TYPE_2__* ASN1_OCTET_STRING_new () ; 
- int /*<<< orphan*/  BIO_free_all (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BIO_new_file (unsigned char*,char*) ; 
- int BIO_read (int /*<<< orphan*/ *,unsigned char*,int) ; 
- scalar_t__ BIO_should_retry (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ERR_R_BIO_LIB ; 
- int /*<<< orphan*/  ERR_R_MALLOC_FAILURE ; 
- int /*<<< orphan*/ * OBJ_txt2obj (unsigned char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OPENSSL_free (unsigned char*) ; 
- unsigned char* OPENSSL_hexstr2buf (unsigned char*,long*) ; 
- unsigned char* OPENSSL_realloc (unsigned char*,long) ; 
- int /*<<< orphan*/  X509V3_F_PROCESS_PCI_VALUE ; 
- int /*<<< orphan*/  X509V3_R_INCORRECT_POLICY_SYNTAX_TAG ; 
- int /*<<< orphan*/  X509V3_R_INVALID_OBJECT_IDENTIFIER ; 
- int /*<<< orphan*/  X509V3_R_POLICY_LANGUAGE_ALREADY_DEFINED ; 
- int /*<<< orphan*/  X509V3_R_POLICY_PATH_LENGTH ; 
- int /*<<< orphan*/  X509V3_R_POLICY_PATH_LENGTH_ALREADY_DEFINED ; 
- int /*<<< orphan*/  X509V3_conf_err (TYPE_1__*) ; 
- int /*<<< orphan*/  X509V3_get_value_int (TYPE_1__*,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  X509V3err (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (unsigned char*,unsigned char*,long) ; 
- scalar_t__ strcmp (int /*<<< orphan*/ ,char*) ; 
- long strlen (unsigned char*) ; 
- scalar_t__ strncmp (unsigned char*,char*,int) ; 
+
+ int ASN1_OCTET_STRING_free (TYPE_2__*) ;
+ TYPE_2__* ASN1_OCTET_STRING_new () ;
+ int BIO_free_all (int *) ;
+ int * BIO_new_file (unsigned char*,char*) ;
+ int BIO_read (int *,unsigned char*,int) ;
+ scalar_t__ BIO_should_retry (int *) ;
+ int ERR_R_BIO_LIB ;
+ int ERR_R_MALLOC_FAILURE ;
+ int * OBJ_txt2obj (unsigned char*,int ) ;
+ int OPENSSL_free (unsigned char*) ;
+ unsigned char* OPENSSL_hexstr2buf (unsigned char*,long*) ;
+ unsigned char* OPENSSL_realloc (unsigned char*,long) ;
+ int X509V3_F_PROCESS_PCI_VALUE ;
+ int X509V3_R_INCORRECT_POLICY_SYNTAX_TAG ;
+ int X509V3_R_INVALID_OBJECT_IDENTIFIER ;
+ int X509V3_R_POLICY_LANGUAGE_ALREADY_DEFINED ;
+ int X509V3_R_POLICY_PATH_LENGTH ;
+ int X509V3_R_POLICY_PATH_LENGTH_ALREADY_DEFINED ;
+ int X509V3_conf_err (TYPE_1__*) ;
+ int X509V3_get_value_int (TYPE_1__*,int **) ;
+ int X509V3err (int ,int ) ;
+ int memcpy (unsigned char*,unsigned char*,long) ;
+ scalar_t__ strcmp (int ,char*) ;
+ long strlen (unsigned char*) ;
+ scalar_t__ strncmp (unsigned char*,char*,int) ;
 
 __attribute__((used)) static int process_pci_value(CONF_VALUE *val,
                              ASN1_OBJECT **language, ASN1_INTEGER **pathlen,
@@ -61,7 +61,7 @@ __attribute__((used)) static int process_pci_value(CONF_VALUE *val,
             X509V3_conf_err(val);
             return 0;
         }
-        if ((*language = OBJ_txt2obj(val->value, 0)) == NULL) {
+        if ((*language = OBJ_txt2obj(val->value, 0)) == ((void*)0)) {
             X509V3err(X509V3_F_PROCESS_PCI_VALUE,
                       X509V3_R_INVALID_OBJECT_IDENTIFIER);
             X509V3_conf_err(val);
@@ -81,11 +81,11 @@ __attribute__((used)) static int process_pci_value(CONF_VALUE *val,
             return 0;
         }
     } else if (strcmp(val->name, "policy") == 0) {
-        unsigned char *tmp_data = NULL;
+        unsigned char *tmp_data = ((void*)0);
         long val_len;
         if (!*policy) {
             *policy = ASN1_OCTET_STRING_new();
-            if (*policy == NULL) {
+            if (*policy == ((void*)0)) {
                 X509V3err(X509V3_F_PROCESS_PCI_VALUE, ERR_R_MALLOC_FAILURE);
                 X509V3_conf_err(val);
                 return 0;
@@ -111,12 +111,12 @@ __attribute__((used)) static int process_pci_value(CONF_VALUE *val,
                 (*policy)->data[(*policy)->length] = '\0';
             } else {
                 OPENSSL_free(tmp_data2);
-                /*
-                 * realloc failure implies the original data space is b0rked
-                 * too!
-                 */
+
+
+
+
                 OPENSSL_free((*policy)->data);
-                (*policy)->data = NULL;
+                (*policy)->data = ((void*)0);
                 (*policy)->length = 0;
                 X509V3err(X509V3_F_PROCESS_PCI_VALUE, ERR_R_MALLOC_FAILURE);
                 X509V3_conf_err(val);
@@ -142,7 +142,7 @@ __attribute__((used)) static int process_pci_value(CONF_VALUE *val,
 
                 if (!tmp_data) {
                     OPENSSL_free((*policy)->data);
-                    (*policy)->data = NULL;
+                    (*policy)->data = ((void*)0);
                     (*policy)->length = 0;
                     X509V3err(X509V3_F_PROCESS_PCI_VALUE,
                               ERR_R_MALLOC_FAILURE);
@@ -174,12 +174,12 @@ __attribute__((used)) static int process_pci_value(CONF_VALUE *val,
                 (*policy)->length += val_len;
                 (*policy)->data[(*policy)->length] = '\0';
             } else {
-                /*
-                 * realloc failure implies the original data space is b0rked
-                 * too!
-                 */
+
+
+
+
                 OPENSSL_free((*policy)->data);
-                (*policy)->data = NULL;
+                (*policy)->data = ((void*)0);
                 (*policy)->length = 0;
                 X509V3err(X509V3_F_PROCESS_PCI_VALUE, ERR_R_MALLOC_FAILURE);
                 X509V3_conf_err(val);
@@ -201,7 +201,7 @@ __attribute__((used)) static int process_pci_value(CONF_VALUE *val,
  err:
     if (free_policy) {
         ASN1_OCTET_STRING_free(*policy);
-        *policy = NULL;
+        *policy = ((void*)0);
     }
     return 0;
 }

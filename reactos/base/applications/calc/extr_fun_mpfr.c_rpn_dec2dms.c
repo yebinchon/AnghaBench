@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mpfr_t ;
-struct TYPE_3__ {int /*<<< orphan*/  mf; } ;
-typedef  TYPE_1__ calc_number_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MPFR_DEFAULT_RND ; 
- int /*<<< orphan*/  mpfr_add (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mpfr_ceil (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mpfr_clear (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mpfr_div_ui (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mpfr_frac (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mpfr_init (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mpfr_mul_ui (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mpfr_trunc (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int mpfr_t ;
+struct TYPE_3__ {int mf; } ;
+typedef TYPE_1__ calc_number_t ;
+
+
+ int MPFR_DEFAULT_RND ;
+ int mpfr_add (int ,int ,int ,int ) ;
+ int mpfr_ceil (int ,int ) ;
+ int mpfr_clear (int ) ;
+ int mpfr_div_ui (int ,int ,int,int ) ;
+ int mpfr_frac (int ,int ,int ) ;
+ int mpfr_init (int ) ;
+ int mpfr_mul_ui (int ,int ,int,int ) ;
+ int mpfr_trunc (int ,int ) ;
 
 void rpn_dec2dms(calc_number_t *c)
 {

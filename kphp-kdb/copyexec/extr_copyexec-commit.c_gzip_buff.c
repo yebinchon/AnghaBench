@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uLongf ;
 
-/* Variables and functions */
- int INT_MAX ; 
- int Z_OK ; 
- int compress2 (unsigned char*,int*,unsigned char*,int,scalar_t__) ; 
- int compressBound (int) ; 
- scalar_t__ compress_level ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  kprintf (char*,...) ; 
- unsigned char* malloc (int) ; 
+
+
+
+typedef int uLongf ;
+
+
+ int INT_MAX ;
+ int Z_OK ;
+ int compress2 (unsigned char*,int*,unsigned char*,int,scalar_t__) ;
+ int compressBound (int) ;
+ scalar_t__ compress_level ;
+ int exit (int) ;
+ int kprintf (char*,...) ;
+ unsigned char* malloc (int) ;
 
 __attribute__((used)) static void gzip_buff (unsigned char *a, int n, unsigned char **b, int *m) {
-  *b = NULL;
+  *b = ((void*)0);
   if (compress_level <= 0) {
     kprintf ("compress_level should be strictly positive.\n");
     exit (1);

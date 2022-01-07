@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct tty {int dummy; } ;
 struct fd {int dummy; } ;
 
-/* Variables and functions */
- scalar_t__ IS_ERR (struct tty*) ; 
- int MAX_PTYS ; 
- int PTR_ERR (struct tty*) ; 
- int /*<<< orphan*/  TTY_PSEUDO_MASTER_MAJOR ; 
- int _ENOSPC ; 
- int /*<<< orphan*/  pty_master ; 
- int pty_reserve_next () ; 
- struct tty* tty_get (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int tty_open (struct tty*,struct fd*) ; 
+
+ scalar_t__ IS_ERR (struct tty*) ;
+ int MAX_PTYS ;
+ int PTR_ERR (struct tty*) ;
+ int TTY_PSEUDO_MASTER_MAJOR ;
+ int _ENOSPC ;
+ int pty_master ;
+ int pty_reserve_next () ;
+ struct tty* tty_get (int *,int ,int) ;
+ int tty_open (struct tty*,struct fd*) ;
 
 int ptmx_open(struct fd *fd) {
     int pty_num = pty_reserve_next();

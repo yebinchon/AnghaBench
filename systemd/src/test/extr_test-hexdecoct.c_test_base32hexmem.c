@@ -1,92 +1,84 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  STRLEN (char*) ; 
- int /*<<< orphan*/  assert_se (char*) ; 
- char* base32hexmem (char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  free (char*) ; 
- char* streq (char*,char*) ; 
+ int STRLEN (char*) ;
+ int assert_se (char*) ;
+ char* base32hexmem (char*,int ,int) ;
+ int free (char*) ;
+ char* streq (char*,char*) ;
 
 __attribute__((used)) static void test_base32hexmem(void) {
         char *b32;
 
-        b32 = base32hexmem("", STRLEN(""), true);
+        b32 = base32hexmem("", STRLEN(""), 1);
         assert_se(b32);
         assert_se(streq(b32, ""));
         free(b32);
 
-        b32 = base32hexmem("f", STRLEN("f"), true);
+        b32 = base32hexmem("f", STRLEN("f"), 1);
         assert_se(b32);
         assert_se(streq(b32, "CO======"));
         free(b32);
 
-        b32 = base32hexmem("fo", STRLEN("fo"), true);
+        b32 = base32hexmem("fo", STRLEN("fo"), 1);
         assert_se(b32);
         assert_se(streq(b32, "CPNG===="));
         free(b32);
 
-        b32 = base32hexmem("foo", STRLEN("foo"), true);
+        b32 = base32hexmem("foo", STRLEN("foo"), 1);
         assert_se(b32);
         assert_se(streq(b32, "CPNMU==="));
         free(b32);
 
-        b32 = base32hexmem("foob", STRLEN("foob"), true);
+        b32 = base32hexmem("foob", STRLEN("foob"), 1);
         assert_se(b32);
         assert_se(streq(b32, "CPNMUOG="));
         free(b32);
 
-        b32 = base32hexmem("fooba", STRLEN("fooba"), true);
+        b32 = base32hexmem("fooba", STRLEN("fooba"), 1);
         assert_se(b32);
         assert_se(streq(b32, "CPNMUOJ1"));
         free(b32);
 
-        b32 = base32hexmem("foobar", STRLEN("foobar"), true);
+        b32 = base32hexmem("foobar", STRLEN("foobar"), 1);
         assert_se(b32);
         assert_se(streq(b32, "CPNMUOJ1E8======"));
         free(b32);
 
-        b32 = base32hexmem("", STRLEN(""), false);
+        b32 = base32hexmem("", STRLEN(""), 0);
         assert_se(b32);
         assert_se(streq(b32, ""));
         free(b32);
 
-        b32 = base32hexmem("f", STRLEN("f"), false);
+        b32 = base32hexmem("f", STRLEN("f"), 0);
         assert_se(b32);
         assert_se(streq(b32, "CO"));
         free(b32);
 
-        b32 = base32hexmem("fo", STRLEN("fo"), false);
+        b32 = base32hexmem("fo", STRLEN("fo"), 0);
         assert_se(b32);
         assert_se(streq(b32, "CPNG"));
         free(b32);
 
-        b32 = base32hexmem("foo", STRLEN("foo"), false);
+        b32 = base32hexmem("foo", STRLEN("foo"), 0);
         assert_se(b32);
         assert_se(streq(b32, "CPNMU"));
         free(b32);
 
-        b32 = base32hexmem("foob", STRLEN("foob"), false);
+        b32 = base32hexmem("foob", STRLEN("foob"), 0);
         assert_se(b32);
         assert_se(streq(b32, "CPNMUOG"));
         free(b32);
 
-        b32 = base32hexmem("fooba", STRLEN("fooba"), false);
+        b32 = base32hexmem("fooba", STRLEN("fooba"), 0);
         assert_se(b32);
         assert_se(streq(b32, "CPNMUOJ1"));
         free(b32);
 
-        b32 = base32hexmem("foobar", STRLEN("foobar"), false);
+        b32 = base32hexmem("foobar", STRLEN("foobar"), 0);
         assert_se(b32);
         assert_se(streq(b32, "CPNMUOJ1E8"));
         free(b32);

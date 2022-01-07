@@ -1,64 +1,64 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_9__ {int alignment; } ;
-typedef  TYPE_1__ rh_info_t ;
-struct TYPE_10__ {unsigned long start; int size; int /*<<< orphan*/ * owner; } ;
-typedef  TYPE_2__ rh_block_t ;
+typedef TYPE_1__ rh_info_t ;
+struct TYPE_10__ {unsigned long start; int size; int * owner; } ;
+typedef TYPE_2__ rh_block_t ;
 
-/* Variables and functions */
- int ERANGE ; 
- scalar_t__ IS_ERR_VALUE (unsigned long) ; 
- int assure_empty (TYPE_1__*,int) ; 
- int /*<<< orphan*/  attach_free_block (TYPE_1__*,TYPE_2__*) ; 
- TYPE_2__* get_slot (TYPE_1__*) ; 
+
+ int ERANGE ;
+ scalar_t__ IS_ERR_VALUE (unsigned long) ;
+ int assure_empty (TYPE_1__*,int) ;
+ int attach_free_block (TYPE_1__*,TYPE_2__*) ;
+ TYPE_2__* get_slot (TYPE_1__*) ;
 
 int rh_attach_region(rh_info_t * info, unsigned long start, int size)
 {
-	rh_block_t *blk;
-	unsigned long s, e, m;
-	int r;
+ rh_block_t *blk;
+ unsigned long s, e, m;
+ int r;
 
-	/* The region must be aligned */
-	s = start;
-	e = s + size;
-	m = info->alignment - 1;
 
-	/* Round start up */
-	s = (s + m) & ~m;
+ s = start;
+ e = s + size;
+ m = info->alignment - 1;
 
-	/* Round end down */
-	e = e & ~m;
 
-	if (IS_ERR_VALUE(e) || (e < s))
-		return -ERANGE;
+ s = (s + m) & ~m;
 
-	/* Take final values */
-	start = s;
-	size = e - s;
 
-	/* Grow the blocks, if needed */
-	r = assure_empty(info, 1);
-	if (r < 0)
-		return r;
+ e = e & ~m;
 
-	blk = get_slot(info);
-	blk->start = start;
-	blk->size = size;
-	blk->owner = NULL;
+ if (IS_ERR_VALUE(e) || (e < s))
+  return -ERANGE;
 
-	attach_free_block(info, blk);
 
-	return 0;
+ start = s;
+ size = e - s;
+
+
+ r = assure_empty(info, 1);
+ if (r < 0)
+  return r;
+
+ blk = get_slot(info);
+ blk->start = start;
+ blk->size = size;
+ blk->owner = ((void*)0);
+
+ attach_free_block(info, blk);
+
+ return 0;
 }

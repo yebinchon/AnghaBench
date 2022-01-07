@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vm_page_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PAGE_SIZE ; 
- int /*<<< orphan*/  VM_PAGE_TO_PHYS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pmap_zero_page_generic (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int vm_page_t ;
+
+
+ int PAGE_SIZE ;
+ int VM_PAGE_TO_PHYS (int ) ;
+ int pmap_zero_page_generic (int ,int ,int ) ;
 
 void
 pmap_zero_page(vm_page_t m)
 {
-	pmap_zero_page_generic(VM_PAGE_TO_PHYS(m), 0, PAGE_SIZE);
+ pmap_zero_page_generic(VM_PAGE_TO_PHYS(m), 0, PAGE_SIZE);
 }

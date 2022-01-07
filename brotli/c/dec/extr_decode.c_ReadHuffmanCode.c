@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t uint32_t ;
-struct TYPE_10__ {int substate_huffman; size_t sub_loop_counter; int space; size_t symbol; size_t* next_symbol; int* symbol_lists; int /*<<< orphan*/ * code_length_histo; int /*<<< orphan*/  repeat_code_len; int /*<<< orphan*/  repeat; int /*<<< orphan*/  prev_code_len; int /*<<< orphan*/ * code_length_code_lengths; int /*<<< orphan*/  table; int /*<<< orphan*/  symbols_lists_array; } ;
+
+
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef size_t uint32_t ;
+struct TYPE_10__ {int substate_huffman; size_t sub_loop_counter; int space; size_t symbol; size_t* next_symbol; int* symbol_lists; int * code_length_histo; int repeat_code_len; int repeat; int prev_code_len; int * code_length_code_lengths; int table; int symbols_lists_array; } ;
 struct TYPE_9__ {TYPE_2__ header; } ;
-struct TYPE_11__ {TYPE_1__ arena; int /*<<< orphan*/  br; } ;
-typedef  int /*<<< orphan*/  HuffmanCode ;
-typedef  TYPE_2__ BrotliMetablockHeaderArena ;
-typedef  TYPE_3__ BrotliDecoderState ;
-typedef  int /*<<< orphan*/  BrotliDecoderErrorCode ;
-typedef  int /*<<< orphan*/  BrotliBitReader ;
+struct TYPE_11__ {TYPE_1__ arena; int br; } ;
+typedef int HuffmanCode ;
+typedef TYPE_2__ BrotliMetablockHeaderArena ;
+typedef TYPE_3__ BrotliDecoderState ;
+typedef int BrotliDecoderErrorCode ;
+typedef int BrotliBitReader ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BROTLI_DECODER_ERROR_FORMAT_HUFFMAN_SPACE ; 
- int /*<<< orphan*/  BROTLI_DECODER_ERROR_UNREACHABLE ; 
- int /*<<< orphan*/  BROTLI_DECODER_NEEDS_MORE_INPUT ; 
- int /*<<< orphan*/  BROTLI_DECODER_SUCCESS ; 
- int /*<<< orphan*/  BROTLI_FAILURE (int /*<<< orphan*/ ) ; 
- size_t BROTLI_HUFFMAN_MAX_CODE_LENGTH ; 
- int /*<<< orphan*/  BROTLI_HUFFMAN_MAX_CODE_LENGTH_CODE_LENGTH ; 
- int /*<<< orphan*/  BROTLI_INITIAL_REPEATED_CODE_LENGTH ; 
- int /*<<< orphan*/  BROTLI_LOG (char*) ; 
- int /*<<< orphan*/  BROTLI_LOG_UINT (size_t) ; 
-#define  BROTLI_STATE_HUFFMAN_COMPLEX 133 
-#define  BROTLI_STATE_HUFFMAN_LENGTH_SYMBOLS 132 
-#define  BROTLI_STATE_HUFFMAN_NONE 131 
-#define  BROTLI_STATE_HUFFMAN_SIMPLE_BUILD 130 
-#define  BROTLI_STATE_HUFFMAN_SIMPLE_READ 129 
-#define  BROTLI_STATE_HUFFMAN_SIMPLE_SIZE 128 
- int /*<<< orphan*/  BrotliBuildCodeLengthsHuffmanTable (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- size_t BrotliBuildHuffmanTable (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int*,int /*<<< orphan*/ *) ; 
- size_t BrotliBuildSimpleHuffmanTable (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/  BrotliSafeReadBits (int /*<<< orphan*/ *,int,size_t*) ; 
- int /*<<< orphan*/  HUFFMAN_TABLE_BITS ; 
- int /*<<< orphan*/  ReadCodeLengthCodeLengths (TYPE_3__*) ; 
- int /*<<< orphan*/  ReadSimpleHuffmanSymbols (size_t,size_t,TYPE_3__*) ; 
- int /*<<< orphan*/  ReadSymbolCodeLengths (size_t,TYPE_3__*) ; 
- int /*<<< orphan*/  SafeReadSymbolCodeLengths (size_t,TYPE_3__*) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
+
+ int BROTLI_DECODER_ERROR_FORMAT_HUFFMAN_SPACE ;
+ int BROTLI_DECODER_ERROR_UNREACHABLE ;
+ int BROTLI_DECODER_NEEDS_MORE_INPUT ;
+ int BROTLI_DECODER_SUCCESS ;
+ int BROTLI_FAILURE (int ) ;
+ size_t BROTLI_HUFFMAN_MAX_CODE_LENGTH ;
+ int BROTLI_HUFFMAN_MAX_CODE_LENGTH_CODE_LENGTH ;
+ int BROTLI_INITIAL_REPEATED_CODE_LENGTH ;
+ int BROTLI_LOG (char*) ;
+ int BROTLI_LOG_UINT (size_t) ;
+
+
+
+
+
+
+ int BrotliBuildCodeLengthsHuffmanTable (int ,int *,int *) ;
+ size_t BrotliBuildHuffmanTable (int *,int ,int*,int *) ;
+ size_t BrotliBuildSimpleHuffmanTable (int *,int ,int ,size_t) ;
+ int BrotliSafeReadBits (int *,int,size_t*) ;
+ int HUFFMAN_TABLE_BITS ;
+ int ReadCodeLengthCodeLengths (TYPE_3__*) ;
+ int ReadSimpleHuffmanSymbols (size_t,size_t,TYPE_3__*) ;
+ int ReadSymbolCodeLengths (size_t,TYPE_3__*) ;
+ int SafeReadSymbolCodeLengths (size_t,TYPE_3__*) ;
+ int memset (int *,int ,int) ;
 
 __attribute__((used)) static BrotliDecoderErrorCode ReadHuffmanCode(uint32_t alphabet_size_max,
                                               uint32_t alphabet_size_limit,
@@ -58,53 +58,53 @@ __attribute__((used)) static BrotliDecoderErrorCode ReadHuffmanCode(uint32_t alp
                                               BrotliDecoderState* s) {
   BrotliBitReader* br = &s->br;
   BrotliMetablockHeaderArena* h = &s->arena.header;
-  /* State machine. */
+
   for (;;) {
     switch (h->substate_huffman) {
-      case BROTLI_STATE_HUFFMAN_NONE:
+      case 131:
         if (!BrotliSafeReadBits(br, 2, &h->sub_loop_counter)) {
           return BROTLI_DECODER_NEEDS_MORE_INPUT;
         }
         BROTLI_LOG_UINT(h->sub_loop_counter);
-        /* The value is used as follows:
-           1 for simple code;
-           0 for no skipping, 2 skips 2 code lengths, 3 skips 3 code lengths */
+
+
+
         if (h->sub_loop_counter != 1) {
           h->space = 32;
-          h->repeat = 0;  /* num_codes */
+          h->repeat = 0;
           memset(&h->code_length_histo[0], 0, sizeof(h->code_length_histo[0]) *
               (BROTLI_HUFFMAN_MAX_CODE_LENGTH_CODE_LENGTH + 1));
           memset(&h->code_length_code_lengths[0], 0,
               sizeof(h->code_length_code_lengths));
-          h->substate_huffman = BROTLI_STATE_HUFFMAN_COMPLEX;
+          h->substate_huffman = 133;
           continue;
         }
-      /* Fall through. */
 
-      case BROTLI_STATE_HUFFMAN_SIMPLE_SIZE:
-        /* Read symbols, codes & code lengths directly. */
-        if (!BrotliSafeReadBits(br, 2, &h->symbol)) {  /* num_symbols */
-          h->substate_huffman = BROTLI_STATE_HUFFMAN_SIMPLE_SIZE;
+
+      case 128:
+
+        if (!BrotliSafeReadBits(br, 2, &h->symbol)) {
+          h->substate_huffman = 128;
           return BROTLI_DECODER_NEEDS_MORE_INPUT;
         }
         h->sub_loop_counter = 0;
-      /* Fall through. */
 
-      case BROTLI_STATE_HUFFMAN_SIMPLE_READ: {
+
+      case 129: {
         BrotliDecoderErrorCode result =
             ReadSimpleHuffmanSymbols(alphabet_size_max, alphabet_size_limit, s);
         if (result != BROTLI_DECODER_SUCCESS) {
           return result;
         }
       }
-      /* Fall through. */
 
-      case BROTLI_STATE_HUFFMAN_SIMPLE_BUILD: {
+
+      case 130: {
         uint32_t table_size;
         if (h->symbol == 3) {
           uint32_t bits;
           if (!BrotliSafeReadBits(br, 1, &bits)) {
-            h->substate_huffman = BROTLI_STATE_HUFFMAN_SIMPLE_BUILD;
+            h->substate_huffman = 130;
             return BROTLI_DECODER_NEEDS_MORE_INPUT;
           }
           h->symbol += bits;
@@ -115,12 +115,12 @@ __attribute__((used)) static BrotliDecoderErrorCode ReadHuffmanCode(uint32_t alp
         if (opt_table_size) {
           *opt_table_size = table_size;
         }
-        h->substate_huffman = BROTLI_STATE_HUFFMAN_NONE;
+        h->substate_huffman = 131;
         return BROTLI_DECODER_SUCCESS;
       }
 
-      /* Decode Huffman-coded code lengths. */
-      case BROTLI_STATE_HUFFMAN_COMPLEX: {
+
+      case 133: {
         uint32_t i;
         BrotliDecoderErrorCode result = ReadCodeLengthCodeLengths(s);
         if (result != BROTLI_DECODER_SUCCESS) {
@@ -140,11 +140,11 @@ __attribute__((used)) static BrotliDecoderErrorCode ReadHuffmanCode(uint32_t alp
         h->repeat = 0;
         h->repeat_code_len = 0;
         h->space = 32768;
-        h->substate_huffman = BROTLI_STATE_HUFFMAN_LENGTH_SYMBOLS;
+        h->substate_huffman = 132;
       }
-      /* Fall through. */
 
-      case BROTLI_STATE_HUFFMAN_LENGTH_SYMBOLS: {
+
+      case 132: {
         uint32_t table_size;
         BrotliDecoderErrorCode result = ReadSymbolCodeLengths(
             alphabet_size_limit, s);
@@ -164,7 +164,7 @@ __attribute__((used)) static BrotliDecoderErrorCode ReadHuffmanCode(uint32_t alp
         if (opt_table_size) {
           *opt_table_size = table_size;
         }
-        h->substate_huffman = BROTLI_STATE_HUFFMAN_NONE;
+        h->substate_huffman = 131;
         return BROTLI_DECODER_SUCCESS;
       }
 

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ bfd_vma ;
 
-/* Variables and functions */
- int /*<<< orphan*/  di ; 
- int /*<<< orphan*/  host_dasm_init () ; 
- int /*<<< orphan*/  init_done ; 
- char* lookup_name (scalar_t__) ; 
- scalar_t__ print_insn_func (scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
+
+
+
+typedef scalar_t__ bfd_vma ;
+
+
+ int di ;
+ int host_dasm_init () ;
+ int init_done ;
+ char* lookup_name (scalar_t__) ;
+ scalar_t__ print_insn_func (scalar_t__,int *) ;
+ int printf (char*,...) ;
 
 void host_dasm(void *addr, int len)
 {
@@ -31,7 +31,7 @@ void host_dasm(void *addr, int len)
   vma_end = vma + len;
   while (vma < vma_end) {
     name = lookup_name(vma);
-    if (name != NULL)
+    if (name != ((void*)0))
       printf("%s:\n", name);
 
     printf("   %08lx ", (long)vma);

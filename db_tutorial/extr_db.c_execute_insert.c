@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_4__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint32_t ;
-struct TYPE_12__ {int /*<<< orphan*/  pager; } ;
-typedef  TYPE_1__ Table ;
-struct TYPE_15__ {scalar_t__ cell_num; int /*<<< orphan*/  page_num; } ;
+
+
+typedef struct TYPE_15__ TYPE_4__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint32_t ;
+struct TYPE_12__ {int pager; } ;
+typedef TYPE_1__ Table ;
+struct TYPE_15__ {scalar_t__ cell_num; int page_num; } ;
 struct TYPE_14__ {scalar_t__ id; } ;
 struct TYPE_13__ {TYPE_3__ row_to_insert; } ;
-typedef  TYPE_2__ Statement ;
-typedef  TYPE_3__ Row ;
-typedef  int /*<<< orphan*/  ExecuteResult ;
-typedef  TYPE_4__ Cursor ;
+typedef TYPE_2__ Statement ;
+typedef TYPE_3__ Row ;
+typedef int ExecuteResult ;
+typedef TYPE_4__ Cursor ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EXECUTE_DUPLICATE_KEY ; 
- int /*<<< orphan*/  EXECUTE_SUCCESS ; 
- int /*<<< orphan*/  free (TYPE_4__*) ; 
- void* get_page (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  leaf_node_insert (TYPE_4__*,scalar_t__,TYPE_3__*) ; 
- scalar_t__* leaf_node_key (void*,scalar_t__) ; 
- scalar_t__* leaf_node_num_cells (void*) ; 
- TYPE_4__* table_find (TYPE_1__*,scalar_t__) ; 
+
+ int EXECUTE_DUPLICATE_KEY ;
+ int EXECUTE_SUCCESS ;
+ int free (TYPE_4__*) ;
+ void* get_page (int ,int ) ;
+ int leaf_node_insert (TYPE_4__*,scalar_t__,TYPE_3__*) ;
+ scalar_t__* leaf_node_key (void*,scalar_t__) ;
+ scalar_t__* leaf_node_num_cells (void*) ;
+ TYPE_4__* table_find (TYPE_1__*,scalar_t__) ;
 
 ExecuteResult execute_insert(Statement* statement, Table* table) {
   Row* row_to_insert = &(statement->row_to_insert);

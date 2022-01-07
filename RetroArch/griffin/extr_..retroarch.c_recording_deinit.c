@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  (* free ) (int /*<<< orphan*/ *) ;int /*<<< orphan*/  (* finalize ) (int /*<<< orphan*/ *) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * recording_data ; 
- TYPE_1__* recording_driver ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  video_driver_gpu_record_deinit () ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int (* free ) (int *) ;int (* finalize ) (int *) ;} ;
+
+
+ int * recording_data ;
+ TYPE_1__* recording_driver ;
+ int stub1 (int *) ;
+ int stub2 (int *) ;
+ int video_driver_gpu_record_deinit () ;
 
 __attribute__((used)) static bool recording_deinit(void)
 {
    if (!recording_data || !recording_driver)
-      return false;
+      return 0;
 
    if (recording_driver->finalize)
       recording_driver->finalize(recording_data);
@@ -31,10 +31,10 @@ __attribute__((used)) static bool recording_deinit(void)
    if (recording_driver->free)
       recording_driver->free(recording_data);
 
-   recording_data            = NULL;
-   recording_driver          = NULL;
+   recording_data = ((void*)0);
+   recording_driver = ((void*)0);
 
    video_driver_gpu_record_deinit();
 
-   return true;
+   return 1;
 }

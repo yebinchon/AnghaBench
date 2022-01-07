@@ -1,20 +1,12 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  BOTLIB_AI_CHARACTERISTIC_BINTEGER ; 
- int syscall (int /*<<< orphan*/ ,int,int,int,int) ; 
+ int BOTLIB_AI_CHARACTERISTIC_BINTEGER ;
+ int syscall (int ,int,int,int,int) ;
 
 int trap_Characteristic_BInteger(int character, int index, int min, int max) {
-	return syscall( BOTLIB_AI_CHARACTERISTIC_BINTEGER, character, index, min, max );
+ return syscall( BOTLIB_AI_CHARACTERISTIC_BINTEGER, character, index, min, max );
 }

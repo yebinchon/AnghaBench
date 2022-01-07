@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct collection {int num; int* A; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int sprintf (char*,char*,int,int,...) ; 
+
+ int assert (int) ;
+ int sprintf (char*,char*,int,int,...) ;
 
 __attribute__((used)) static char *serialize_collection (char *ptr, int no, struct collection *C, int grouping, int need_owner, int total) {
   static char buff[32];
@@ -37,7 +37,7 @@ __attribute__((used)) static char *serialize_collection (char *ptr, int no, stru
   }
 
   ptr += sprintf (ptr, "i:%d;a:%d:{i:0;i:%d;", no, n+1, total ? total : C->num);
-  
+
   for (i = 0; i < n; i++) {
     if (!need_owner) {
       ptr += sprintf (ptr, "i:%d;i:%d;", i+1, (int) C->A[i]);

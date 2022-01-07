@@ -1,103 +1,103 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t uInt ;
+
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef size_t uInt ;
 struct TYPE_8__ {scalar_t__ bytes; } ;
-typedef  TYPE_1__ decimal128 ;
-struct TYPE_9__ {scalar_t__ exponent; int /*<<< orphan*/  bits; } ;
-typedef  TYPE_2__ decNumber ;
-typedef  int Int ;
+typedef TYPE_1__ decimal128 ;
+struct TYPE_9__ {scalar_t__ exponent; int bits; } ;
+typedef TYPE_2__ decNumber ;
+typedef int Int ;
 
-/* Variables and functions */
- size_t* COMBEXP ; 
- size_t* COMBMSD ; 
- scalar_t__ DECIMAL128_Bias ; 
- int /*<<< orphan*/  DECINF ; 
- scalar_t__ DECLITEND ; 
- int /*<<< orphan*/  DECNAN ; 
- int /*<<< orphan*/  DECNEG ; 
- int /*<<< orphan*/  DECSNAN ; 
- void* UBTOUI (scalar_t__) ; 
- int /*<<< orphan*/  decDigitsFromDPD (TYPE_2__*,size_t*,int) ; 
- int /*<<< orphan*/  decNumberZero (TYPE_2__*) ; 
- int sourhi ; 
- void* sourlo ; 
- void* sourmh ; 
- void* sourml ; 
+
+ size_t* COMBEXP ;
+ size_t* COMBMSD ;
+ scalar_t__ DECIMAL128_Bias ;
+ int DECINF ;
+ scalar_t__ DECLITEND ;
+ int DECNAN ;
+ int DECNEG ;
+ int DECSNAN ;
+ void* UBTOUI (scalar_t__) ;
+ int decDigitsFromDPD (TYPE_2__*,size_t*,int) ;
+ int decNumberZero (TYPE_2__*) ;
+ int sourhi ;
+ void* sourlo ;
+ void* sourmh ;
+ void* sourml ;
 
 decNumber * decimal128ToNumber(const decimal128 *d128, decNumber *dn) {
-  uInt msd;                        // coefficient MSD
-  uInt exp;                        // exponent top two bits
-  uInt comb;                       // combination field
-  Int  need;                       // work
-  uInt uiwork;                     // for macros
-  uInt sourar[4];                  // source 128-bit
-  #define sourhi sourar[3]         // name the word with the sign
-  #define sourmh sourar[2]         // and the mid-high word
-  #define sourml sourar[1]         // and the mod-low word
-  #define sourlo sourar[0]         // and the lowest word
+  uInt msd;
+  uInt exp;
+  uInt comb;
+  Int need;
+  uInt uiwork;
+  uInt sourar[4];
 
-  // load source from storage; this is endian
+
+
+
+
+
   if (DECLITEND) {
-    sourlo=UBTOUI(d128->bytes   ); // directly load the low int
-    sourml=UBTOUI(d128->bytes+4 ); // then the mid-low
-    sourmh=UBTOUI(d128->bytes+8 ); // then the mid-high
-    sourhi=UBTOUI(d128->bytes+12); // then the high int
+    sourar[0]=UBTOUI(d128->bytes );
+    sourar[1]=UBTOUI(d128->bytes+4 );
+    sourar[2]=UBTOUI(d128->bytes+8 );
+    sourar[3]=UBTOUI(d128->bytes+12);
     }
    else {
-    sourhi=UBTOUI(d128->bytes   ); // directly load the high int
-    sourmh=UBTOUI(d128->bytes+4 ); // then the mid-high
-    sourml=UBTOUI(d128->bytes+8 ); // then the mid-low
-    sourlo=UBTOUI(d128->bytes+12); // then the low int
+    sourar[3]=UBTOUI(d128->bytes );
+    sourar[2]=UBTOUI(d128->bytes+4 );
+    sourar[1]=UBTOUI(d128->bytes+8 );
+    sourar[0]=UBTOUI(d128->bytes+12);
     }
 
-  comb=(sourhi>>26)&0x1f;          // combination field
+  comb=(sourar[3]>>26)&0x1f;
 
-  decNumberZero(dn);               // clean number
-  if (sourhi&0x80000000) dn->bits=DECNEG; // set sign if negative
+  decNumberZero(dn);
+  if (sourar[3]&0x80000000) dn->bits=DECNEG;
 
-  msd=COMBMSD[comb];               // decode the combination field
-  exp=COMBEXP[comb];               // ..
+  msd=COMBMSD[comb];
+  exp=COMBEXP[comb];
 
-  if (exp==3) {                    // is a special
+  if (exp==3) {
     if (msd==0) {
       dn->bits|=DECINF;
-      return dn;                   // no coefficient needed
+      return dn;
       }
-    else if (sourhi&0x02000000) dn->bits|=DECSNAN;
+    else if (sourar[3]&0x02000000) dn->bits|=DECSNAN;
     else dn->bits|=DECNAN;
-    msd=0;                         // no top digit
+    msd=0;
     }
-   else {                          // is a finite number
-    dn->exponent=(exp<<12)+((sourhi>>14)&0xfff)-DECIMAL128_Bias; // unbiased
+   else {
+    dn->exponent=(exp<<12)+((sourar[3]>>14)&0xfff)-DECIMAL128_Bias;
     }
 
-  // get the coefficient
-  sourhi&=0x00003fff;              // clean coefficient continuation
-  if (msd) {                       // non-zero msd
-    sourhi|=msd<<14;               // prefix to coefficient
-    need=12;                       // process 12 declets
-    }
-   else { // msd=0
-    if (sourhi) need=11;           // declets to process
-     else if (sourmh) need=10;
-     else if (sourml) need=7;
-     else if (sourlo) need=4;
-     else return dn;               // easy: coefficient is 0
-    } //msd=0
 
-  decDigitsFromDPD(dn, sourar, need);   // process declets
-  // decNumberShow(dn);
+  sourar[3]&=0x00003fff;
+  if (msd) {
+    sourar[3]|=msd<<14;
+    need=12;
+    }
+   else {
+    if (sourar[3]) need=11;
+     else if (sourar[2]) need=10;
+     else if (sourar[1]) need=7;
+     else if (sourar[0]) need=4;
+     else return dn;
+    }
+
+  decDigitsFromDPD(dn, sourar, need);
+
   return dn;
   }

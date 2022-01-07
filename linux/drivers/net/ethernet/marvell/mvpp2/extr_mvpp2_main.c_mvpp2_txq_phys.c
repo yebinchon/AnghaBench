@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int MVPP2_MAX_TCONT ; 
- int MVPP2_MAX_TXQ ; 
+ int MVPP2_MAX_TCONT ;
+ int MVPP2_MAX_TXQ ;
 
 __attribute__((used)) static inline int mvpp2_txq_phys(int port, int txq)
 {
-	return (MVPP2_MAX_TCONT + port) * MVPP2_MAX_TXQ + txq;
+ return (MVPP2_MAX_TCONT + port) * MVPP2_MAX_TXQ + txq;
 }

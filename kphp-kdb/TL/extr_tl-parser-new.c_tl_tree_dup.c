@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct tl_combinator_tree {struct tl_combinator_tree* right; struct tl_combinator_tree* left; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memcpy (struct tl_combinator_tree*,struct tl_combinator_tree*,int) ; 
- struct tl_combinator_tree* zmalloc (int) ; 
+
+ int memcpy (struct tl_combinator_tree*,struct tl_combinator_tree*,int) ;
+ struct tl_combinator_tree* zmalloc (int) ;
 
 struct tl_combinator_tree *tl_tree_dup (struct tl_combinator_tree *T) {
   if (!T) { return 0; }

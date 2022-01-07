@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_wc_adm_access_t ;
-typedef  int /*<<< orphan*/  svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * svn_wc_add_repos_file2 (char const*,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int svn_wc_adm_access_t ;
+typedef int svn_revnum_t ;
+typedef int svn_error_t ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
+
+
+ int * svn_wc_add_repos_file2 (char const*,int *,char const*,int *,int *,int *,char const*,int ,int *) ;
 
 svn_error_t *
 svn_wc_add_repos_file(const char *dst_path,
@@ -29,8 +29,8 @@ svn_wc_add_repos_file(const char *dst_path,
                       apr_pool_t *pool)
 {
   return svn_wc_add_repos_file2(dst_path, adm_access,
-                                new_text_path, NULL,
-                                new_props, NULL,
+                                new_text_path, ((void*)0),
+                                new_props, ((void*)0),
                                 copyfrom_url, copyfrom_rev,
                                 pool);
 }

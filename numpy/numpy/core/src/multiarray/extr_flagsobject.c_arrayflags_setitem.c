@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  PyObject ;
-typedef  int /*<<< orphan*/  PyArrayFlagsObject ;
 
-/* Variables and functions */
- char* PyBytes_AS_STRING (int /*<<< orphan*/ *) ; 
- scalar_t__ PyBytes_Check (int /*<<< orphan*/ *) ; 
- int PyBytes_GET_SIZE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyErr_SetString (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  PyExc_KeyError ; 
- int /*<<< orphan*/ * PyUnicode_AsASCIIString (int /*<<< orphan*/ *) ; 
- scalar_t__ PyUnicode_Check (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Py_DECREF (int /*<<< orphan*/ *) ; 
- int arrayflags_aligned_set (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int arrayflags_updateifcopy_set (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int arrayflags_writeable_set (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int arrayflags_writebackifcopy_set (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memcpy (char*,char*,int) ; 
- scalar_t__ strncmp (char*,char*,int) ; 
+
+
+
+typedef int PyObject ;
+typedef int PyArrayFlagsObject ;
+
+
+ char* PyBytes_AS_STRING (int *) ;
+ scalar_t__ PyBytes_Check (int *) ;
+ int PyBytes_GET_SIZE (int *) ;
+ int PyErr_SetString (int ,char*) ;
+ int PyExc_KeyError ;
+ int * PyUnicode_AsASCIIString (int *) ;
+ scalar_t__ PyUnicode_Check (int *) ;
+ int Py_DECREF (int *) ;
+ int arrayflags_aligned_set (int *,int *) ;
+ int arrayflags_updateifcopy_set (int *,int *) ;
+ int arrayflags_writeable_set (int *,int *) ;
+ int arrayflags_writebackifcopy_set (int *,int *) ;
+ int memcpy (char*,char*,int) ;
+ scalar_t__ strncmp (char*,char*,int) ;
 
 __attribute__((used)) static int
 arrayflags_setitem(PyArrayFlagsObject *self, PyObject *ind, PyObject *item)

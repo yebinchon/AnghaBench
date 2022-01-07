@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* drmVersionPtr ;
-typedef  int /*<<< orphan*/  buf ;
-struct TYPE_4__ {int /*<<< orphan*/  name; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  O_RDWR ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  drmFreeVersion (TYPE_1__*) ; 
- TYPE_1__* drmGetVersion (int) ; 
- int open (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,int) ; 
- scalar_t__ string_is_equal (int /*<<< orphan*/ ,char*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef TYPE_1__* drmVersionPtr ;
+typedef int buf ;
+struct TYPE_4__ {int name; } ;
+
+
+ int O_RDWR ;
+ int close (int) ;
+ int drmFreeVersion (TYPE_1__*) ;
+ TYPE_1__* drmGetVersion (int) ;
+ int open (char*,int ) ;
+ int snprintf (char*,int,char*,int) ;
+ scalar_t__ string_is_equal (int ,char*) ;
 
 __attribute__((used)) static int exynos_get_device_index(void)
 {
    drmVersionPtr ver;
-   char buf[32]       = {0};
-   int index          = 0;
-   bool found         = false;
+   char buf[32] = {0};
+   int index = 0;
+   bool found = 0;
 
    while (!found)
    {
@@ -43,7 +43,7 @@ __attribute__((used)) static int exynos_get_device_index(void)
       ver = drmGetVersion(fd);
 
       if (string_is_equal(ver->name, "exynos"))
-         found = true;
+         found = 1;
       else
          ++index;
 

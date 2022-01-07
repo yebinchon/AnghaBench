@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint16_t ;
-struct TYPE_3__ {int stride; int /*<<< orphan*/  stream_ptr; int /*<<< orphan*/  line_inc; scalar_t__ pixel_ptr; } ;
-typedef  TYPE_1__ IpvideoContext ;
-typedef  int /*<<< orphan*/  AVFrame ;
 
-/* Variables and functions */
- int bytestream2_get_byte (int /*<<< orphan*/ *) ; 
- void* bytestream2_get_le16 (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint16_t ;
+struct TYPE_3__ {int stride; int stream_ptr; int line_inc; scalar_t__ pixel_ptr; } ;
+typedef TYPE_1__ IpvideoContext ;
+typedef int AVFrame ;
+
+
+ int bytestream2_get_byte (int *) ;
+ void* bytestream2_get_le16 (int *) ;
 
 __attribute__((used)) static int ipvideo_decode_block_opcode_0x7_16(IpvideoContext *s, AVFrame *frame)
 {
@@ -27,7 +27,7 @@ __attribute__((used)) static int ipvideo_decode_block_opcode_0x7_16(IpvideoConte
     unsigned int flags;
     uint16_t *pixel_ptr = (uint16_t*)s->pixel_ptr;
 
-    /* 2-color encoding */
+
     P[0] = bytestream2_get_le16(&s->stream_ptr);
     P[1] = bytestream2_get_le16(&s->stream_ptr);
 
@@ -45,9 +45,9 @@ __attribute__((used)) static int ipvideo_decode_block_opcode_0x7_16(IpvideoConte
         flags = bytestream2_get_le16(&s->stream_ptr);
         for (y = 0; y < 8; y += 2) {
             for (x = 0; x < 8; x += 2, flags >>= 1) {
-                pixel_ptr[x                ] =
-                pixel_ptr[x + 1            ] =
-                pixel_ptr[x +     s->stride] =
+                pixel_ptr[x ] =
+                pixel_ptr[x + 1 ] =
+                pixel_ptr[x + s->stride] =
                 pixel_ptr[x + 1 + s->stride] = P[flags & 1];
             }
             pixel_ptr += s->stride * 2;

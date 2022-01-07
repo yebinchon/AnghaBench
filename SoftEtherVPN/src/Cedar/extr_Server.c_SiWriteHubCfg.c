@@ -1,136 +1,136 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {scalar_t__ RadiusServerPort; scalar_t__ RadiusRetryInterval; int RadiusConvertAllMsChapv2AuthRequestToEap; int RadiusUsePeapInsteadOfEap; int HubIsOnlineButHalting; scalar_t__ Type; scalar_t__ NumLogin; int /*<<< orphan*/  CreatedTime; int /*<<< orphan*/  LastLoginTime; int /*<<< orphan*/  LastCommTime; int /*<<< orphan*/  HubDb; TYPE_1__* Cedar; int /*<<< orphan*/  LogSetting; int /*<<< orphan*/  Msg; int /*<<< orphan*/  Option; int /*<<< orphan*/  Traffic; scalar_t__ Offline; int /*<<< orphan*/  SecurePassword; int /*<<< orphan*/  HashedPassword; int /*<<< orphan*/  RadiusOptionLock; int /*<<< orphan*/ * RadiusRealm; int /*<<< orphan*/ * RadiusSuffixFilter; int /*<<< orphan*/  RadiusSecret; int /*<<< orphan*/ * RadiusServerName; } ;
-struct TYPE_8__ {int Bridge; int /*<<< orphan*/  Server; } ;
-typedef  TYPE_2__ HUB ;
-typedef  int /*<<< orphan*/  FOLDER ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CfgAddBool (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  CfgAddBuf (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CfgAddByte (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  CfgAddInt (int /*<<< orphan*/ *,char*,scalar_t__) ; 
- int /*<<< orphan*/  CfgAddInt64 (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CfgAddStr (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CfgAddUniStr (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * CfgCreateFolder (int /*<<< orphan*/ *,char*) ; 
- scalar_t__ GetServerCapsBool (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ HUB_TYPE_FARM_STATIC ; 
- scalar_t__ HUB_TYPE_STANDALONE ; 
- int IsEmptyUniStr (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Lock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SiWriteHubAccessLists (int /*<<< orphan*/ *,TYPE_2__*) ; 
- int /*<<< orphan*/  SiWriteHubAdminOptions (int /*<<< orphan*/ *,TYPE_2__*) ; 
- int /*<<< orphan*/  SiWriteHubDb (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  SiWriteHubLinks (int /*<<< orphan*/ *,TYPE_2__*) ; 
- int /*<<< orphan*/  SiWriteHubLogCfg (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SiWriteHubOptionCfg (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SiWriteSecureNAT (TYPE_2__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SiWriteTraffic (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Unlock (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_9__ {scalar_t__ RadiusServerPort; scalar_t__ RadiusRetryInterval; int RadiusConvertAllMsChapv2AuthRequestToEap; int RadiusUsePeapInsteadOfEap; int HubIsOnlineButHalting; scalar_t__ Type; scalar_t__ NumLogin; int CreatedTime; int LastLoginTime; int LastCommTime; int HubDb; TYPE_1__* Cedar; int LogSetting; int Msg; int Option; int Traffic; scalar_t__ Offline; int SecurePassword; int HashedPassword; int RadiusOptionLock; int * RadiusRealm; int * RadiusSuffixFilter; int RadiusSecret; int * RadiusServerName; } ;
+struct TYPE_8__ {int Bridge; int Server; } ;
+typedef TYPE_2__ HUB ;
+typedef int FOLDER ;
+
+
+ int CfgAddBool (int *,char*,int) ;
+ int CfgAddBuf (int *,char*,int ) ;
+ int CfgAddByte (int *,char*,int ,int) ;
+ int CfgAddInt (int *,char*,scalar_t__) ;
+ int CfgAddInt64 (int *,char*,int ) ;
+ int CfgAddStr (int *,char*,int *) ;
+ int CfgAddUniStr (int *,char*,int ) ;
+ int * CfgCreateFolder (int *,char*) ;
+ scalar_t__ GetServerCapsBool (int ,char*) ;
+ scalar_t__ HUB_TYPE_FARM_STATIC ;
+ scalar_t__ HUB_TYPE_STANDALONE ;
+ int IsEmptyUniStr (int ) ;
+ int Lock (int ) ;
+ int SiWriteHubAccessLists (int *,TYPE_2__*) ;
+ int SiWriteHubAdminOptions (int *,TYPE_2__*) ;
+ int SiWriteHubDb (int *,int ,int) ;
+ int SiWriteHubLinks (int *,TYPE_2__*) ;
+ int SiWriteHubLogCfg (int *,int *) ;
+ int SiWriteHubOptionCfg (int *,int ) ;
+ int SiWriteSecureNAT (TYPE_2__*,int *) ;
+ int SiWriteTraffic (int *,char*,int ) ;
+ int Unlock (int ) ;
 
 void SiWriteHubCfg(FOLDER *f, HUB *h)
 {
-	// Validate arguments
-	if (f == NULL || h == NULL)
-	{
-		return;
-	}
 
-	// Radius server name
-	Lock(h->RadiusOptionLock);
-	{
-		if (h->RadiusServerName != NULL)
-		{
-			CfgAddStr(f, "RadiusServerName", h->RadiusServerName);
-			CfgAddBuf(f, "RadiusSecret", h->RadiusSecret);
-		}
-		CfgAddInt(f, "RadiusServerPort", h->RadiusServerPort);
-		CfgAddInt(f, "RadiusRetryInterval", h->RadiusRetryInterval);
-		CfgAddStr(f, "RadiusSuffixFilter", h->RadiusSuffixFilter);
-		CfgAddStr(f, "RadiusRealm", h->RadiusRealm);
+ if (f == ((void*)0) || h == ((void*)0))
+ {
+  return;
+ }
 
-		CfgAddBool(f, "RadiusConvertAllMsChapv2AuthRequestToEap", h->RadiusConvertAllMsChapv2AuthRequestToEap);
-		CfgAddBool(f, "RadiusUsePeapInsteadOfEap", h->RadiusUsePeapInsteadOfEap);
-	}
-	Unlock(h->RadiusOptionLock);
 
-	// Password
-	CfgAddByte(f, "HashedPassword", h->HashedPassword, sizeof(h->HashedPassword));
-	CfgAddByte(f, "SecurePassword", h->SecurePassword, sizeof(h->SecurePassword));
+ Lock(h->RadiusOptionLock);
+ {
+  if (h->RadiusServerName != ((void*)0))
+  {
+   CfgAddStr(f, "RadiusServerName", h->RadiusServerName);
+   CfgAddBuf(f, "RadiusSecret", h->RadiusSecret);
+  }
+  CfgAddInt(f, "RadiusServerPort", h->RadiusServerPort);
+  CfgAddInt(f, "RadiusRetryInterval", h->RadiusRetryInterval);
+  CfgAddStr(f, "RadiusSuffixFilter", h->RadiusSuffixFilter);
+  CfgAddStr(f, "RadiusRealm", h->RadiusRealm);
 
-	// Online / Offline flag
-	if (h->Cedar->Bridge == false)
-	{
-		CfgAddBool(f, "Online", (h->Offline && (h->HubIsOnlineButHalting == false)) ? false : true);
-	}
+  CfgAddBool(f, "RadiusConvertAllMsChapv2AuthRequestToEap", h->RadiusConvertAllMsChapv2AuthRequestToEap);
+  CfgAddBool(f, "RadiusUsePeapInsteadOfEap", h->RadiusUsePeapInsteadOfEap);
+ }
+ Unlock(h->RadiusOptionLock);
 
-	// Traffic information
-	SiWriteTraffic(f, "Traffic", h->Traffic);
 
-	// HUB options
-	SiWriteHubOptionCfg(CfgCreateFolder(f, "Option"), h->Option);
+ CfgAddByte(f, "HashedPassword", h->HashedPassword, sizeof(h->HashedPassword));
+ CfgAddByte(f, "SecurePassword", h->SecurePassword, sizeof(h->SecurePassword));
 
-	// Message
-	{
-		FOLDER *folder = CfgCreateFolder(f, "Message");
 
-		if (IsEmptyUniStr(h->Msg) == false)
-		{
-			CfgAddUniStr(folder, "MessageText", h->Msg);
-		}
-	}
+ if (h->Cedar->Bridge == 0)
+ {
+  CfgAddBool(f, "Online", (h->Offline && (h->HubIsOnlineButHalting == 0)) ? 0 : 1);
+ }
 
-	// HUB_LOG
-	SiWriteHubLogCfg(CfgCreateFolder(f, "LogSetting"), &h->LogSetting);
 
-	if (h->Type == HUB_TYPE_STANDALONE)
-	{
-		// Link list
-		SiWriteHubLinks(CfgCreateFolder(f, "CascadeList"), h);
-	}
+ SiWriteTraffic(f, "Traffic", h->Traffic);
 
-	if (h->Type != HUB_TYPE_FARM_STATIC)
-	{
-		if (GetServerCapsBool(h->Cedar->Server, "b_support_securenat"))
-		{
-			// SecureNAT
-			SiWriteSecureNAT(h, CfgCreateFolder(f, "SecureNAT"));
-		}
-	}
 
-	// Access list
-	SiWriteHubAccessLists(CfgCreateFolder(f, "AccessList"), h);
+ SiWriteHubOptionCfg(CfgCreateFolder(f, "Option"), h->Option);
 
-	// Administration options
-	SiWriteHubAdminOptions(CfgCreateFolder(f, "AdminOption"), h);
 
-	// Type of HUB
-	CfgAddInt(f, "Type", h->Type);
+ {
+  FOLDER *folder = CfgCreateFolder(f, "Message");
 
-	// Database
-	if (h->Cedar->Bridge == false)
-	{
-		SiWriteHubDb(CfgCreateFolder(f, "SecurityAccountDatabase"), h->HubDb,
-			false
-			);
-	}
+  if (IsEmptyUniStr(h->Msg) == 0)
+  {
+   CfgAddUniStr(folder, "MessageText", h->Msg);
+  }
+ }
 
-	// Usage status
-	CfgAddInt64(f, "LastCommTime", h->LastCommTime);
-	CfgAddInt64(f, "LastLoginTime", h->LastLoginTime);
-	CfgAddInt64(f, "CreatedTime", h->CreatedTime);
-	CfgAddInt(f, "NumLogin", h->NumLogin);
+
+ SiWriteHubLogCfg(CfgCreateFolder(f, "LogSetting"), &h->LogSetting);
+
+ if (h->Type == HUB_TYPE_STANDALONE)
+ {
+
+  SiWriteHubLinks(CfgCreateFolder(f, "CascadeList"), h);
+ }
+
+ if (h->Type != HUB_TYPE_FARM_STATIC)
+ {
+  if (GetServerCapsBool(h->Cedar->Server, "b_support_securenat"))
+  {
+
+   SiWriteSecureNAT(h, CfgCreateFolder(f, "SecureNAT"));
+  }
+ }
+
+
+ SiWriteHubAccessLists(CfgCreateFolder(f, "AccessList"), h);
+
+
+ SiWriteHubAdminOptions(CfgCreateFolder(f, "AdminOption"), h);
+
+
+ CfgAddInt(f, "Type", h->Type);
+
+
+ if (h->Cedar->Bridge == 0)
+ {
+  SiWriteHubDb(CfgCreateFolder(f, "SecurityAccountDatabase"), h->HubDb,
+   0
+   );
+ }
+
+
+ CfgAddInt64(f, "LastCommTime", h->LastCommTime);
+ CfgAddInt64(f, "LastLoginTime", h->LastLoginTime);
+ CfgAddInt64(f, "CreatedTime", h->CreatedTime);
+ CfgAddInt(f, "NumLogin", h->NumLogin);
 }

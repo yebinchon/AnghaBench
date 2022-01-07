@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  send_sighup; int /*<<< orphan*/  send_sigkill; int /*<<< orphan*/  final_kill_signal; int /*<<< orphan*/  kill_signal; int /*<<< orphan*/  kill_mode; } ;
-typedef  TYPE_1__ KillContext ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*,char const*,char*,char const*,char*,char const*,char*,char const*,char*,char const*,char*,char const*,char*) ; 
- char* kill_mode_to_string (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  restart_kill_signal (TYPE_1__*) ; 
- char* signal_to_string (int /*<<< orphan*/ ) ; 
- char* strempty (char const*) ; 
- char* yes_no (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int send_sighup; int send_sigkill; int final_kill_signal; int kill_signal; int kill_mode; } ;
+typedef TYPE_1__ KillContext ;
+typedef int FILE ;
+
+
+ int assert (TYPE_1__*) ;
+ int fprintf (int *,char*,char const*,char*,char const*,char*,char const*,char*,char const*,char*,char const*,char*,char const*,char*) ;
+ char* kill_mode_to_string (int ) ;
+ int restart_kill_signal (TYPE_1__*) ;
+ char* signal_to_string (int ) ;
+ char* strempty (char const*) ;
+ char* yes_no (int ) ;
 
 void kill_context_dump(KillContext *c, FILE *f, const char *prefix) {
         assert(c);

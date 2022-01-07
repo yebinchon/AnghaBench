@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  X509_ALGOR ;
-typedef  int /*<<< orphan*/  EVP_PKEY ;
-typedef  int /*<<< orphan*/  EVP_MD_CTX ;
-typedef  int /*<<< orphan*/  EVP_MD ;
-typedef  int /*<<< orphan*/  ASN1_ITEM ;
-typedef  int /*<<< orphan*/  ASN1_BIT_STRING ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASN1_F_ASN1_ITEM_SIGN ; 
- int ASN1_item_sign_ctx (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,void*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ASN1err (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ERR_R_MALLOC_FAILURE ; 
- int /*<<< orphan*/  EVP_DigestSignInit (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EVP_MD_CTX_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * EVP_MD_CTX_new () ; 
+
+
+
+typedef int X509_ALGOR ;
+typedef int EVP_PKEY ;
+typedef int EVP_MD_CTX ;
+typedef int EVP_MD ;
+typedef int ASN1_ITEM ;
+typedef int ASN1_BIT_STRING ;
+
+
+ int ASN1_F_ASN1_ITEM_SIGN ;
+ int ASN1_item_sign_ctx (int const*,int *,int *,int *,void*,int *) ;
+ int ASN1err (int ,int ) ;
+ int ERR_R_MALLOC_FAILURE ;
+ int EVP_DigestSignInit (int *,int *,int const*,int *,int *) ;
+ int EVP_MD_CTX_free (int *) ;
+ int * EVP_MD_CTX_new () ;
 
 int ASN1_item_sign(const ASN1_ITEM *it, X509_ALGOR *algor1,
                    X509_ALGOR *algor2, ASN1_BIT_STRING *signature, void *asn,
@@ -33,11 +33,11 @@ int ASN1_item_sign(const ASN1_ITEM *it, X509_ALGOR *algor1,
     int rv;
     EVP_MD_CTX *ctx = EVP_MD_CTX_new();
 
-    if (ctx == NULL) {
+    if (ctx == ((void*)0)) {
         ASN1err(ASN1_F_ASN1_ITEM_SIGN, ERR_R_MALLOC_FAILURE);
         return 0;
     }
-    if (!EVP_DigestSignInit(ctx, NULL, type, NULL, pkey)) {
+    if (!EVP_DigestSignInit(ctx, ((void*)0), type, ((void*)0), pkey)) {
         EVP_MD_CTX_free(ctx);
         return 0;
     }

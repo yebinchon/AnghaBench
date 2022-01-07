@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_5__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  codec; } ;
-typedef  TYPE_1__ mc_api_sys ;
-struct TYPE_8__ {int /*<<< orphan*/  p_obj; TYPE_1__* p_sys; } ;
-typedef  TYPE_2__ mc_api ;
-struct TYPE_10__ {int /*<<< orphan*/  release_output_buffer; } ;
-struct TYPE_9__ {int /*<<< orphan*/  (* CallVoidMethod ) (TYPE_3__**,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int) ;} ;
-typedef  TYPE_3__* JNIEnv ;
 
-/* Variables and functions */
- scalar_t__ CHECK_EXCEPTION () ; 
- int /*<<< orphan*/  GET_ENV () ; 
- int MC_API_ERROR ; 
- int /*<<< orphan*/  assert (int) ; 
- TYPE_5__ jfields ; 
- int /*<<< orphan*/  msg_Err (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  stub1 (TYPE_3__**,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int) ; 
+
+typedef struct TYPE_10__ TYPE_5__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int codec; } ;
+typedef TYPE_1__ mc_api_sys ;
+struct TYPE_8__ {int p_obj; TYPE_1__* p_sys; } ;
+typedef TYPE_2__ mc_api ;
+struct TYPE_10__ {int release_output_buffer; } ;
+struct TYPE_9__ {int (* CallVoidMethod ) (TYPE_3__**,int ,int ,int,int) ;} ;
+typedef TYPE_3__* JNIEnv ;
+
+
+ scalar_t__ CHECK_EXCEPTION () ;
+ int GET_ENV () ;
+ int MC_API_ERROR ;
+ int assert (int) ;
+ TYPE_5__ jfields ;
+ int msg_Err (int ,char*) ;
+ int stub1 (TYPE_3__**,int ,int ,int,int) ;
 
 __attribute__((used)) static int ReleaseOutput(mc_api *api, int i_index, bool b_render)
 {

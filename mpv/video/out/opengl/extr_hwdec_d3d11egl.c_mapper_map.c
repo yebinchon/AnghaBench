@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct ra_tex_params {int dimensions; int w; int h; int d; int render_src; int src_linear; int external_oes; int /*<<< orphan*/  format; } ;
-struct ra_hwdec_mapper {int /*<<< orphan*/ * tex; int /*<<< orphan*/  ra; TYPE_2__* src; struct priv* priv; TYPE_1__* owner; } ;
-struct priv_owner {int /*<<< orphan*/  egl_display; int /*<<< orphan*/  (* StreamConsumerAcquireKHR ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* StreamPostD3DTextureANGLE ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*,int*) ;} ;
-struct priv {int /*<<< orphan*/ * gl_textures; int /*<<< orphan*/  egl_stream; } ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct ra_tex_params {int dimensions; int w; int h; int d; int render_src; int src_linear; int external_oes; int format; } ;
+struct ra_hwdec_mapper {int * tex; int ra; TYPE_2__* src; struct priv* priv; TYPE_1__* owner; } ;
+struct priv_owner {int egl_display; int (* StreamConsumerAcquireKHR ) (int ,int ) ;int (* StreamPostD3DTextureANGLE ) (int ,int ,void*,int*) ;} ;
+struct priv {int * gl_textures; int egl_stream; } ;
 struct TYPE_7__ {int Width; int Height; } ;
 struct TYPE_6__ {scalar_t__* planes; } ;
 struct TYPE_5__ {struct priv_owner* priv; } ;
-typedef  int /*<<< orphan*/  ID3D11Texture2D ;
-typedef  int EGLAttrib ;
-typedef  TYPE_3__ D3D11_TEXTURE2D_DESC ;
+typedef int ID3D11Texture2D ;
+typedef int EGLAttrib ;
+typedef TYPE_3__ D3D11_TEXTURE2D_DESC ;
 
-/* Variables and functions */
- int EGL_D3D_TEXTURE_SUBRESOURCE_ID_ANGLE ; 
- int EGL_NONE ; 
- int /*<<< orphan*/  ID3D11Texture2D_GetDesc (int /*<<< orphan*/ *,TYPE_3__*) ; 
- int /*<<< orphan*/  ra_create_wrapped_tex (int /*<<< orphan*/ ,struct ra_tex_params*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ra_find_unorm_format (int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*,int*) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*,int*) ; 
- int /*<<< orphan*/  stub3 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int EGL_D3D_TEXTURE_SUBRESOURCE_ID_ANGLE ;
+ int EGL_NONE ;
+ int ID3D11Texture2D_GetDesc (int *,TYPE_3__*) ;
+ int ra_create_wrapped_tex (int ,struct ra_tex_params*,int ) ;
+ int ra_find_unorm_format (int ,int,int) ;
+ int stub1 (int ,int ,void*,int*) ;
+ int stub2 (int ,int ,void*,int*) ;
+ int stub3 (int ,int ) ;
 
 __attribute__((used)) static int mapper_map(struct ra_hwdec_mapper *mapper)
 {
@@ -51,7 +51,7 @@ __attribute__((used)) static int mapper_map(struct ra_hwdec_mapper *mapper)
     if (!o->StreamPostD3DTextureANGLE(o->egl_display, p->egl_stream,
                                       (void *)d3d_tex, attrs))
     {
-        // ANGLE changed the enum ID of this without warning at one point.
+
         attrs[0] = attrs[0] == 0x33AB ? 0x3AAB : 0x33AB;
         if (!o->StreamPostD3DTextureANGLE(o->egl_display, p->egl_stream,
                                               (void *)d3d_tex, attrs))
@@ -71,9 +71,9 @@ __attribute__((used)) static int mapper_map(struct ra_hwdec_mapper *mapper)
             .h = texdesc.Height / (n ? 2 : 1),
             .d = 1,
             .format = ra_find_unorm_format(mapper->ra, 1, n ? 2 : 1),
-            .render_src = true,
-            .src_linear = true,
-            .external_oes = true,
+            .render_src = 1,
+            .src_linear = 1,
+            .external_oes = 1,
         };
         if (!params.format)
             return -1;

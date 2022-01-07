@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct usb_fifo {int dummy; } ;
-struct ubtbcmfw_softc {int /*<<< orphan*/ * sc_xfer; } ;
+struct ubtbcmfw_softc {int * sc_xfer; } ;
 
-/* Variables and functions */
- size_t UBTBCMFW_INTR_DT_RD ; 
- struct ubtbcmfw_softc* usb_fifo_softc (struct usb_fifo*) ; 
- int /*<<< orphan*/  usbd_transfer_stop (int /*<<< orphan*/ ) ; 
+
+ size_t UBTBCMFW_INTR_DT_RD ;
+ struct ubtbcmfw_softc* usb_fifo_softc (struct usb_fifo*) ;
+ int usbd_transfer_stop (int ) ;
 
 __attribute__((used)) static void
 ubtbcmfw_stop_read(struct usb_fifo *fifo)
 {
-	struct ubtbcmfw_softc	*sc = usb_fifo_softc(fifo);
+ struct ubtbcmfw_softc *sc = usb_fifo_softc(fifo);
 
-	usbd_transfer_stop(sc->sc_xfer[UBTBCMFW_INTR_DT_RD]);
+ usbd_transfer_stop(sc->sc_xfer[UBTBCMFW_INTR_DT_RD]);
 }

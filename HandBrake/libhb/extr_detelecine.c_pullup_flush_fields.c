@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct pullup_field {scalar_t__ buffer; int /*<<< orphan*/  parity; struct pullup_field* next; } ;
+
+
+
+
+struct pullup_field {scalar_t__ buffer; int parity; struct pullup_field* next; } ;
 struct pullup_context {struct pullup_field* last; struct pullup_field* first; struct pullup_field* head; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  pullup_release_buffer (scalar_t__,int /*<<< orphan*/ ) ; 
+
+ int pullup_release_buffer (scalar_t__,int ) ;
 
 void pullup_flush_fields( struct pullup_context * c )
 {

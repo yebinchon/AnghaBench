@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_5__ ;
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t UCHAR ;
-struct TYPE_13__ {scalar_t__ sessionsLen; int /*<<< orphan*/  cs; TYPE_1__* sessions; } ;
+
+
+typedef struct TYPE_13__ TYPE_5__ ;
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef size_t UCHAR ;
+struct TYPE_13__ {scalar_t__ sessionsLen; int cs; TYPE_1__* sessions; } ;
 struct TYPE_12__ {int ncb_length; char* ncb_name; scalar_t__ ncb_buffer; } ;
-struct TYPE_11__ {size_t lsn; scalar_t__ sends_outstanding; scalar_t__ rcvs_outstanding; int /*<<< orphan*/  remote_name; int /*<<< orphan*/  local_name; int /*<<< orphan*/  state; } ;
+struct TYPE_11__ {size_t lsn; scalar_t__ sends_outstanding; scalar_t__ rcvs_outstanding; int remote_name; int local_name; int state; } ;
 struct TYPE_10__ {size_t num_sess; } ;
-struct TYPE_9__ {int /*<<< orphan*/  remote_name; int /*<<< orphan*/  local_name; int /*<<< orphan*/  state; scalar_t__ inUse; } ;
-typedef  int /*<<< orphan*/  SESSION_HEADER ;
-typedef  int /*<<< orphan*/  SESSION_BUFFER ;
-typedef  scalar_t__ PUCHAR ;
-typedef  TYPE_2__* PSESSION_HEADER ;
-typedef  TYPE_3__* PSESSION_BUFFER ;
-typedef  TYPE_4__* PNCB ;
-typedef  TYPE_5__ NetBIOSAdapter ;
+struct TYPE_9__ {int remote_name; int local_name; int state; scalar_t__ inUse; } ;
+typedef int SESSION_HEADER ;
+typedef int SESSION_BUFFER ;
+typedef scalar_t__ PUCHAR ;
+typedef TYPE_2__* PSESSION_HEADER ;
+typedef TYPE_3__* PSESSION_BUFFER ;
+typedef TYPE_4__* PNCB ;
+typedef TYPE_5__ NetBIOSAdapter ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EnterCriticalSection (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LeaveCriticalSection (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  NCBNAMSZ ; 
- size_t NRC_BADDR ; 
- size_t NRC_BUFLEN ; 
- size_t NRC_ENVNOTDEF ; 
- size_t NRC_GOODRET ; 
- size_t NRC_INVADDRESS ; 
- int /*<<< orphan*/  TRACE (char*,...) ; 
- int /*<<< orphan*/  memcmp (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (TYPE_2__*,int /*<<< orphan*/ ,int) ; 
+
+ int EnterCriticalSection (int *) ;
+ int LeaveCriticalSection (int *) ;
+ int NCBNAMSZ ;
+ size_t NRC_BADDR ;
+ size_t NRC_BUFLEN ;
+ size_t NRC_ENVNOTDEF ;
+ size_t NRC_GOODRET ;
+ size_t NRC_INVADDRESS ;
+ int TRACE (char*,...) ;
+ int memcmp (char*,int ,int ) ;
+ int memcpy (int ,int ,int ) ;
+ int memset (TYPE_2__*,int ,int) ;
 
 __attribute__((used)) static UCHAR nbSStat(NetBIOSAdapter *adapter, PNCB ncb)
 {
@@ -70,7 +70,7 @@ __attribute__((used)) static UCHAR nbSStat(NetBIOSAdapter *adapter, PNCB ncb)
             if (sstat->num_sess < spaceFor)
             {
                 PSESSION_BUFFER buf;
-               
+
                 buf = (PSESSION_BUFFER)((PUCHAR)sstat + sizeof(SESSION_HEADER)
                  + sstat->num_sess * sizeof(SESSION_BUFFER));
                 buf->lsn = i;

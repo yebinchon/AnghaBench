@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  strm_string ;
 
-/* Variables and functions */
- int strm_str_len (int /*<<< orphan*/ ) ; 
- char* strm_str_ptr (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int strm_string ;
+
+
+ int strm_str_len (int ) ;
+ char* strm_str_ptr (int ) ;
 
 __attribute__((used)) static int
 count_fields(strm_string line, char sep)

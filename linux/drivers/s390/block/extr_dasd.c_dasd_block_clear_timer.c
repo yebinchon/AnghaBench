@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct dasd_block {int /*<<< orphan*/  timer; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  del_timer (int /*<<< orphan*/ *) ; 
+
+
+
+struct dasd_block {int timer; } ;
+
+
+ int del_timer (int *) ;
 
 void dasd_block_clear_timer(struct dasd_block *block)
 {
-	del_timer(&block->timer);
+ del_timer(&block->timer);
 }

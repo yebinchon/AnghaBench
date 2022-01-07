@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_5__ ;
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct rendition_info {char* type; char* uri; char* defaultr; char* forced; char* characteristics; scalar_t__* assoc_language; int /*<<< orphan*/  name; int /*<<< orphan*/  language; int /*<<< orphan*/  group_id; } ;
-struct rendition {int type; char* group_id; char* language; char* name; int /*<<< orphan*/  disposition; TYPE_3__* playlist; } ;
-typedef  enum AVMediaType { ____Placeholder_AVMediaType } AVMediaType ;
+
+
+typedef struct TYPE_8__ TYPE_5__ ;
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct rendition_info {char* type; char* uri; char* defaultr; char* forced; char* characteristics; scalar_t__* assoc_language; int name; int language; int group_id; } ;
+struct rendition {int type; char* group_id; char* language; char* name; int disposition; TYPE_3__* playlist; } ;
+typedef enum AVMediaType { ____Placeholder_AVMediaType } AVMediaType ;
 struct TYPE_8__ {scalar_t__ strict_std_compliance; } ;
-struct TYPE_7__ {int /*<<< orphan*/  n_renditions; int /*<<< orphan*/  renditions; } ;
-struct TYPE_6__ {int /*<<< orphan*/  n_renditions; int /*<<< orphan*/  renditions; TYPE_5__* ctx; } ;
-typedef  TYPE_1__ HLSContext ;
+struct TYPE_7__ {int n_renditions; int renditions; } ;
+struct TYPE_6__ {int n_renditions; int renditions; TYPE_5__* ctx; } ;
+typedef TYPE_1__ HLSContext ;
 
-/* Variables and functions */
- int AVMEDIA_TYPE_AUDIO ; 
- int AVMEDIA_TYPE_SUBTITLE ; 
- int AVMEDIA_TYPE_UNKNOWN ; 
- int AVMEDIA_TYPE_VIDEO ; 
- int /*<<< orphan*/  AV_DISPOSITION_DEFAULT ; 
- int /*<<< orphan*/  AV_DISPOSITION_FORCED ; 
- int /*<<< orphan*/  AV_DISPOSITION_HEARING_IMPAIRED ; 
- int /*<<< orphan*/  AV_DISPOSITION_VISUAL_IMPAIRED ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_LOG_WARNING ; 
- scalar_t__ FF_COMPLIANCE_EXPERIMENTAL ; 
- int /*<<< orphan*/  av_log (TYPE_5__*,int /*<<< orphan*/ ,char*,...) ; 
- struct rendition* av_mallocz (int) ; 
- char* av_strtok (char*,char*,char**) ; 
- int /*<<< orphan*/  dynarray_add (int /*<<< orphan*/ *,int /*<<< orphan*/ *,struct rendition*) ; 
- TYPE_3__* new_playlist (TYPE_1__*,char*,char const*) ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
- int /*<<< orphan*/  strcpy (char*,int /*<<< orphan*/ ) ; 
- int strlen (char*) ; 
- int /*<<< orphan*/  strncpy (int /*<<< orphan*/ ,scalar_t__*,int) ; 
+
+ int AVMEDIA_TYPE_AUDIO ;
+ int AVMEDIA_TYPE_SUBTITLE ;
+ int AVMEDIA_TYPE_UNKNOWN ;
+ int AVMEDIA_TYPE_VIDEO ;
+ int AV_DISPOSITION_DEFAULT ;
+ int AV_DISPOSITION_FORCED ;
+ int AV_DISPOSITION_HEARING_IMPAIRED ;
+ int AV_DISPOSITION_VISUAL_IMPAIRED ;
+ int AV_LOG_ERROR ;
+ int AV_LOG_WARNING ;
+ scalar_t__ FF_COMPLIANCE_EXPERIMENTAL ;
+ int av_log (TYPE_5__*,int ,char*,...) ;
+ struct rendition* av_mallocz (int) ;
+ char* av_strtok (char*,char*,char**) ;
+ int dynarray_add (int *,int *,struct rendition*) ;
+ TYPE_3__* new_playlist (TYPE_1__*,char*,char const*) ;
+ int strcmp (char*,char*) ;
+ int strcpy (char*,int ) ;
+ int strlen (char*) ;
+ int strncpy (int ,scalar_t__*,int) ;
 
 __attribute__((used)) static struct rendition *new_rendition(HLSContext *c, struct rendition_info *info,
                                       const char *url_base)
@@ -59,31 +59,31 @@ __attribute__((used)) static struct rendition *new_rendition(HLSContext *c, stru
     else if (!strcmp(info->type, "SUBTITLES"))
         type = AVMEDIA_TYPE_SUBTITLE;
     else if (!strcmp(info->type, "CLOSED-CAPTIONS"))
-        /* CLOSED-CAPTIONS is ignored since we do not support CEA-608 CC in
-         * AVC SEI RBSP anyway */
-        return NULL;
+
+
+        return ((void*)0);
 
     if (type == AVMEDIA_TYPE_UNKNOWN) {
         av_log(c->ctx, AV_LOG_WARNING, "Can't support the type: %s\n", info->type);
-        return NULL;
+        return ((void*)0);
     }
 
-    /* URI is mandatory for subtitles as per spec */
+
     if (type == AVMEDIA_TYPE_SUBTITLE && !info->uri[0]) {
         av_log(c->ctx, AV_LOG_ERROR, "The URI tag is REQUIRED for subtitle.\n");
-        return NULL;
+        return ((void*)0);
     }
 
-    /* TODO: handle subtitles (each segment has to parsed separately) */
+
     if (c->ctx->strict_std_compliance > FF_COMPLIANCE_EXPERIMENTAL)
         if (type == AVMEDIA_TYPE_SUBTITLE) {
             av_log(c->ctx, AV_LOG_WARNING, "Can't support the subtitle(uri: %s)\n", info->uri);
-            return NULL;
+            return ((void*)0);
         }
 
     rend = av_mallocz(sizeof(struct rendition));
     if (!rend)
-        return NULL;
+        return ((void*)0);
 
     dynarray_add(&c->renditions, &c->n_renditions, rend);
 
@@ -92,7 +92,7 @@ __attribute__((used)) static struct rendition *new_rendition(HLSContext *c, stru
     strcpy(rend->language, info->language);
     strcpy(rend->name, info->name);
 
-    /* add the playlist if this is an external rendition */
+
     if (info->uri[0]) {
         rend->playlist = new_playlist(c, info->uri, url_base);
         if (rend->playlist)
@@ -121,7 +121,7 @@ __attribute__((used)) static struct rendition *new_rendition(HLSContext *c, stru
         else if (!strcmp(characteristic, "public.accessibility.describes-video"))
             rend->disposition |= AV_DISPOSITION_VISUAL_IMPAIRED;
 
-        chr_ptr = NULL;
+        chr_ptr = ((void*)0);
     }
 
     return rend;

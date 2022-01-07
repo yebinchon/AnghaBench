@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct cdev {int si_usecount; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dev_lock () ; 
- int /*<<< orphan*/  dev_unlock () ; 
+
+ int dev_lock () ;
+ int dev_unlock () ;
 
 int
 count_dev(struct cdev *dev)
 {
-	int count;
+ int count;
 
-	dev_lock();
-	count = dev->si_usecount;
-	dev_unlock();
-	return(count);
+ dev_lock();
+ count = dev->si_usecount;
+ dev_unlock();
+ return(count);
 }

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_wc_context_t ;
-typedef  int /*<<< orphan*/  svn_wc_adm_access_t ;
-typedef  int /*<<< orphan*/  svn_wc__db_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_cancel_func_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_ASSERT (int) ; 
- scalar_t__ strcmp (int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  svn_dirent_basename (char const*,int /*<<< orphan*/ *) ; 
- char* svn_dirent_join (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_error_trace (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_wc__adm_access_abspath (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_wc__adm_get_db (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__context_create_with_db (int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc_context_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc_remove_from_revision_control2 (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int svn_wc_context_t ;
+typedef int svn_wc_adm_access_t ;
+typedef int svn_wc__db_t ;
+typedef int svn_error_t ;
+typedef int svn_cancel_func_t ;
+typedef int svn_boolean_t ;
+typedef int apr_pool_t ;
+
+
+ int SVN_ERR (int ) ;
+ int SVN_ERR_ASSERT (int) ;
+ scalar_t__ strcmp (int ,char const*) ;
+ int svn_dirent_basename (char const*,int *) ;
+ char* svn_dirent_join (int ,char const*,int *) ;
+ int * svn_error_trace (int ) ;
+ int svn_wc__adm_access_abspath (int *) ;
+ int * svn_wc__adm_get_db (int *) ;
+ int svn_wc__context_create_with_db (int **,int *,int *,int *) ;
+ int svn_wc_context_destroy (int *) ;
+ int svn_wc_remove_from_revision_control2 (int *,char const*,int ,int ,int ,void*,int *) ;
 
 svn_error_t *
 svn_wc_remove_from_revision_control(svn_wc_adm_access_t *adm_access,
@@ -47,9 +47,9 @@ svn_wc_remove_from_revision_control(svn_wc_adm_access_t *adm_access,
                                     name,
                                     pool);
 
-  /* name must be an entry in adm_access, fail if not */
-  SVN_ERR_ASSERT(strcmp(svn_dirent_basename(name, NULL), name) == 0);
-  SVN_ERR(svn_wc__context_create_with_db(&wc_ctx, NULL, wc_db, pool));
+
+  SVN_ERR_ASSERT(strcmp(svn_dirent_basename(name, ((void*)0)), name) == 0);
+  SVN_ERR(svn_wc__context_create_with_db(&wc_ctx, ((void*)0), wc_db, pool));
 
   SVN_ERR(svn_wc_remove_from_revision_control2(wc_ctx,
                                                local_abspath,

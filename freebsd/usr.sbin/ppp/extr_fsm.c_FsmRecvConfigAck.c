@@ -1,62 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_char ;
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int u_char ;
 struct mbuf {int dummy; } ;
-struct fsmheader {int /*<<< orphan*/  id; int /*<<< orphan*/  length; } ;
+struct fsmheader {int id; int length; } ;
 struct fsm_opt_hdr {int dummy; } ;
-struct fsm_decode {int /*<<< orphan*/  rej; int /*<<< orphan*/  rejend; int /*<<< orphan*/  nak; int /*<<< orphan*/  nakend; int /*<<< orphan*/  ack; int /*<<< orphan*/  ackend; } ;
-struct fsm {int state; TYPE_3__* parent; TYPE_2__* fn; TYPE_1__* link; int /*<<< orphan*/  LogLevel; } ;
-struct TYPE_6__ {int /*<<< orphan*/  object; int /*<<< orphan*/  (* LayerDown ) (int /*<<< orphan*/ ,struct fsm*) ;int /*<<< orphan*/  (* LayerUp ) (int /*<<< orphan*/ ,struct fsm*) ;} ;
-struct TYPE_5__ {int /*<<< orphan*/  (* LayerDown ) (struct fsm*) ;int /*<<< orphan*/  (* LayerUp ) (struct fsm*) ;int /*<<< orphan*/  (* SendTerminateAck ) (struct fsm*,int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* DecodeConfig ) (struct fsm*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,struct fsm_decode*) ;} ;
-struct TYPE_4__ {int /*<<< orphan*/  lcp; } ;
+struct fsm_decode {int rej; int rejend; int nak; int nakend; int ack; int ackend; } ;
+struct fsm {int state; TYPE_3__* parent; TYPE_2__* fn; TYPE_1__* link; int LogLevel; } ;
+struct TYPE_6__ {int object; int (* LayerDown ) (int ,struct fsm*) ;int (* LayerUp ) (int ,struct fsm*) ;} ;
+struct TYPE_5__ {int (* LayerDown ) (struct fsm*) ;int (* LayerUp ) (struct fsm*) ;int (* SendTerminateAck ) (struct fsm*,int ) ;int (* DecodeConfig ) (struct fsm*,int *,int *,int ,struct fsm_decode*) ;} ;
+struct TYPE_4__ {int lcp; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FSM_REQ_TIMER ; 
- int /*<<< orphan*/  FSM_TRM_TIMER ; 
- int /*<<< orphan*/  FsmInitRestartCounter (struct fsm*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FsmSendConfigReq (struct fsm*) ; 
- int /*<<< orphan*/  FsmSendTerminateReq (struct fsm*) ; 
- int /*<<< orphan*/ * MBUF_CTOP (struct mbuf*) ; 
- int /*<<< orphan*/  MODE_ACK ; 
- int /*<<< orphan*/  NewState (struct fsm*,int const) ; 
-#define  ST_ACKRCVD 135 
-#define  ST_ACKSENT 134 
-#define  ST_CLOSED 133 
-#define  ST_CLOSING 132 
-#define  ST_OPENED 131 
-#define  ST_REQSENT 130 
-#define  ST_STOPPED 129 
-#define  ST_STOPPING 128 
- int /*<<< orphan*/  lcp_SendIdentification (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  log_Printf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  m_freem (struct mbuf*) ; 
- int m_length (struct mbuf*) ; 
- struct mbuf* m_pullup (struct mbuf*) ; 
- int ntohs (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 (struct fsm*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,struct fsm_decode*) ; 
- int /*<<< orphan*/  stub2 (struct fsm*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub3 (struct fsm*) ; 
- int /*<<< orphan*/  stub4 (int /*<<< orphan*/ ,struct fsm*) ; 
- int /*<<< orphan*/  stub5 (struct fsm*) ; 
- int /*<<< orphan*/  stub6 (struct fsm*) ; 
- int /*<<< orphan*/  stub7 (int /*<<< orphan*/ ,struct fsm*) ; 
+
+ int FSM_REQ_TIMER ;
+ int FSM_TRM_TIMER ;
+ int FsmInitRestartCounter (struct fsm*,int ) ;
+ int FsmSendConfigReq (struct fsm*) ;
+ int FsmSendTerminateReq (struct fsm*) ;
+ int * MBUF_CTOP (struct mbuf*) ;
+ int MODE_ACK ;
+ int NewState (struct fsm*,int const) ;
+ int lcp_SendIdentification (int *) ;
+ int log_Printf (int ,char*) ;
+ int m_freem (struct mbuf*) ;
+ int m_length (struct mbuf*) ;
+ struct mbuf* m_pullup (struct mbuf*) ;
+ int ntohs (int ) ;
+ int stub1 (struct fsm*,int *,int *,int ,struct fsm_decode*) ;
+ int stub2 (struct fsm*,int ) ;
+ int stub3 (struct fsm*) ;
+ int stub4 (int ,struct fsm*) ;
+ int stub5 (struct fsm*) ;
+ int stub6 (struct fsm*) ;
+ int stub7 (int ,struct fsm*) ;
 
 __attribute__((used)) static void
 FsmRecvConfigAck(struct fsm *fp, struct fsmheader *lhp, struct mbuf *bp)
-/* RCA */
+
 {
   struct fsm_decode dec;
   int plen, flen;
@@ -79,38 +71,38 @@ FsmRecvConfigAck(struct fsm *fp, struct fsmheader *lhp, struct mbuf *bp)
     log_Printf(fp->LogLevel, "  [EMPTY]\n");
 
   switch (fp->state) {
-    case ST_CLOSED:
-    case ST_STOPPED:
+    case 133:
+    case 129:
     (*fp->fn->SendTerminateAck)(fp, lhp->id);
     break;
-  case ST_CLOSING:
-  case ST_STOPPING:
+  case 132:
+  case 128:
     break;
-  case ST_REQSENT:
+  case 130:
     FsmInitRestartCounter(fp, FSM_REQ_TIMER);
-    NewState(fp, ST_ACKRCVD);
+    NewState(fp, 135);
     break;
-  case ST_ACKRCVD:
+  case 135:
     FsmSendConfigReq(fp);
-    NewState(fp, ST_REQSENT);
+    NewState(fp, 130);
     break;
-  case ST_ACKSENT:
+  case 134:
     FsmInitRestartCounter(fp, FSM_REQ_TIMER);
-    NewState(fp, ST_OPENED);
+    NewState(fp, 131);
     if ((*fp->fn->LayerUp)(fp))
       (*fp->parent->LayerUp)(fp->parent->object, fp);
     else {
       (*fp->fn->LayerDown)(fp);
       FsmInitRestartCounter(fp, FSM_TRM_TIMER);
       FsmSendTerminateReq(fp);
-      NewState(fp, ST_CLOSING);
+      NewState(fp, 132);
       lcp_SendIdentification(&fp->link->lcp);
     }
     break;
-  case ST_OPENED:
+  case 131:
     (*fp->fn->LayerDown)(fp);
     FsmSendConfigReq(fp);
-    NewState(fp, ST_REQSENT);
+    NewState(fp, 130);
     (*fp->parent->LayerDown)(fp->parent->object, fp);
     break;
   }

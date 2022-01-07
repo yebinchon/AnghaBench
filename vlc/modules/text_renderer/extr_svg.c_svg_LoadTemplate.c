@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct stat {int st_size; } ;
-typedef  int ssize_t ;
+typedef int ssize_t ;
 struct TYPE_8__ {TYPE_2__* p_sys; } ;
-typedef  TYPE_1__ filter_t ;
+typedef TYPE_1__ filter_t ;
 struct TYPE_9__ {char* psz_file_template; scalar_t__ psz_token; } ;
-typedef  TYPE_2__ filter_sys_t ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef TYPE_2__ filter_sys_t ;
+typedef int FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVG_TEMPLATE_BODY_TOKEN ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fileno (int /*<<< orphan*/ *) ; 
- int fread (char*,size_t,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (char*) ; 
- scalar_t__ fstat (int /*<<< orphan*/ ,struct stat*) ; 
- char* malloc (int) ; 
- int /*<<< orphan*/  msg_Dbg (TYPE_1__*,char*,unsigned long,char*) ; 
- int /*<<< orphan*/  msg_Err (TYPE_1__*,char*,...) ; 
- int /*<<< orphan*/  msg_Warn (TYPE_1__*,char*,char*) ; 
- scalar_t__ strstr (char*,int /*<<< orphan*/ ) ; 
- char* var_InheritString (TYPE_1__*,char*) ; 
- int /*<<< orphan*/ * vlc_fopen (char*,char*) ; 
+
+ int SVG_TEMPLATE_BODY_TOKEN ;
+ int fclose (int *) ;
+ int fileno (int *) ;
+ int fread (char*,size_t,int,int *) ;
+ int free (char*) ;
+ scalar_t__ fstat (int ,struct stat*) ;
+ char* malloc (int) ;
+ int msg_Dbg (TYPE_1__*,char*,unsigned long,char*) ;
+ int msg_Err (TYPE_1__*,char*,...) ;
+ int msg_Warn (TYPE_1__*,char*,char*) ;
+ scalar_t__ strstr (char*,int ) ;
+ char* var_InheritString (TYPE_1__*,char*) ;
+ int * vlc_fopen (char*,char*) ;
 
 __attribute__((used)) static void svg_LoadTemplate( filter_t *p_filter )
 {
     filter_sys_t *p_sys = p_filter->p_sys;
-    char *psz_template = NULL;
+    char *psz_template = ((void*)0);
     char *psz_filename = var_InheritString( p_filter, "svg-template-file" );
     if( psz_filename && psz_filename[0] )
     {
-        /* Read the template */
+
         FILE *file = vlc_fopen( psz_filename, "rt" );
         if( !file )
         {
@@ -69,7 +69,7 @@ __attribute__((used)) static void svg_LoadTemplate( filter_t *p_filter )
                     if( i_read != 1 )
                     {
                         free( psz_template );
-                        psz_template = NULL;
+                        psz_template = ((void*)0);
                     }
                 }
             }

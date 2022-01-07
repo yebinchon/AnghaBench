@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct pp_hwmgr {int dummy; } ;
 struct amd_pp_simple_clock_info {int dummy; } ;
 
-/* Variables and functions */
- int EINVAL ; 
+
+ int EINVAL ;
 
 __attribute__((used)) static int smu10_get_dal_power_level(struct pp_hwmgr *hwmgr,
-		struct amd_pp_simple_clock_info *info)
+  struct amd_pp_simple_clock_info *info)
 {
-	return -EINVAL;
+ return -EINVAL;
 }

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {void* created_path; int /*<<< orphan*/  has_mergeinfo; int /*<<< orphan*/  mergeinfo_count; void* prop_rep; void* data_rep; int /*<<< orphan*/  copyroot_rev; void* copyroot_path; int /*<<< orphan*/  copyfrom_rev; void* copyfrom_path; int /*<<< orphan*/  predecessor_count; scalar_t__ predecessor_id; int /*<<< orphan*/  kind; } ;
-typedef  TYPE_1__ node_revision_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- TYPE_1__* apr_pcalloc (int /*<<< orphan*/ *,int) ; 
- void* apr_pstrdup (int /*<<< orphan*/ *,void*) ; 
- scalar_t__ svn_fs_fs__id_copy (scalar_t__,int /*<<< orphan*/ *) ; 
- void* svn_fs_fs__rep_copy (void*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {void* created_path; int has_mergeinfo; int mergeinfo_count; void* prop_rep; void* data_rep; int copyroot_rev; void* copyroot_path; int copyfrom_rev; void* copyfrom_path; int predecessor_count; scalar_t__ predecessor_id; int kind; } ;
+typedef TYPE_1__ node_revision_t ;
+typedef int apr_pool_t ;
+
+
+ TYPE_1__* apr_pcalloc (int *,int) ;
+ void* apr_pstrdup (int *,void*) ;
+ scalar_t__ svn_fs_fs__id_copy (scalar_t__,int *) ;
+ void* svn_fs_fs__rep_copy (void*,int *) ;
 
 __attribute__((used)) static node_revision_t *
 copy_node_revision(node_revision_t *noderev,

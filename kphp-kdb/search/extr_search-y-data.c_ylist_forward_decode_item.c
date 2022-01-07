@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct ylist_decoder_stack_entry {int right_value; int left_idx; int right_idx; scalar_t__ right_subtree_offset; int middle_value; int left_value; } ;
-struct ylist_decoder {int p; int k; int K; int /*<<< orphan*/  br; struct ylist_decoder_stack_entry* stack; } ;
+struct ylist_decoder {int p; int k; int K; int br; struct ylist_decoder_stack_entry* stack; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  bread_seek (int /*<<< orphan*/ *,scalar_t__) ; 
- long long docid_to_itemid (int) ; 
- int /*<<< orphan*/  ylist_copy_positions (struct ylist_decoder*,struct ylist_decoder_stack_entry*) ; 
- int /*<<< orphan*/  ylist_decode_int (struct ylist_decoder*) ; 
- int /*<<< orphan*/  ylist_decode_node (struct ylist_decoder*,struct ylist_decoder_stack_entry*) ; 
- int /*<<< orphan*/  ylist_uptree (struct ylist_decoder*,struct ylist_decoder_stack_entry*,int) ; 
+
+ int assert (int) ;
+ int bread_seek (int *,scalar_t__) ;
+ long long docid_to_itemid (int) ;
+ int ylist_copy_positions (struct ylist_decoder*,struct ylist_decoder_stack_entry*) ;
+ int ylist_decode_int (struct ylist_decoder*) ;
+ int ylist_decode_node (struct ylist_decoder*,struct ylist_decoder_stack_entry*) ;
+ int ylist_uptree (struct ylist_decoder*,struct ylist_decoder_stack_entry*,int) ;
 
 int ylist_forward_decode_item (struct ylist_decoder *dec, long long item_id_lowerbound) {
   struct ylist_decoder_stack_entry *data = dec->stack;
@@ -75,13 +75,13 @@ int ylist_forward_decode_item (struct ylist_decoder *dec, long long item_id_lowe
         ylist_copy_positions (dec, data);
         return data->middle_value;
       }
-      //assert (data->left_value >= doc_id_lowerbound);
+
       ylist_uptree (dec, data, data->left_idx);
       return data->left_value;
     }
     struct ylist_decoder_stack_entry *next = data + 1;
     if (docid_to_itemid (data->middle_value) > item_id_lowerbound) {
-      // left subtree
+
       if (data->left_idx == middle - 1) {
         dec->k = middle;
         ylist_copy_positions (dec, data);

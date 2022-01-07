@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_char ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ChallengeResponse (char*,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memcpy (char*,int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int u_char ;
+
+
+ int ChallengeResponse (char*,char*,int *) ;
+ int memcpy (char*,int *,int) ;
 
 void
 mschap_NT(char *passwordHash, char *challenge)
@@ -23,5 +23,5 @@ mschap_NT(char *passwordHash, char *challenge)
 
     ChallengeResponse(challenge, passwordHash, response);
     memcpy(passwordHash, response, 24);
-    passwordHash[24] = 1;		/* NT-style response */
+    passwordHash[24] = 1;
 }

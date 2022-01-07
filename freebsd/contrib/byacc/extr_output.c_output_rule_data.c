@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  end_table () ; 
- int nrules ; 
- int /*<<< orphan*/  output_YYINT_typedef (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  output_file ; 
- int /*<<< orphan*/  output_int (int) ; 
- int /*<<< orphan*/  output_newline () ; 
- size_t* rlhs ; 
- int* rrhs ; 
- int /*<<< orphan*/  start_int_table (char*,int) ; 
- size_t start_symbol ; 
- int* symbol_value ; 
+ int end_table () ;
+ int nrules ;
+ int output_YYINT_typedef (int ) ;
+ int output_file ;
+ int output_int (int) ;
+ int output_newline () ;
+ size_t* rlhs ;
+ int* rrhs ;
+ int start_int_table (char*,int) ;
+ size_t start_symbol ;
+ int* symbol_value ;
 
 __attribute__((used)) static void
 output_rule_data(void)
@@ -37,15 +29,15 @@ output_rule_data(void)
     j = 10;
     for (i = 3; i < nrules; i++)
     {
-	if (j >= 10)
-	{
-	    output_newline();
-	    j = 1;
-	}
-	else
-	    ++j;
+ if (j >= 10)
+ {
+     output_newline();
+     j = 1;
+ }
+ else
+     ++j;
 
-	output_int(symbol_value[rlhs[i]]);
+ output_int(symbol_value[rlhs[i]]);
     }
     end_table();
 
@@ -54,15 +46,15 @@ output_rule_data(void)
     j = 10;
     for (i = 3; i < nrules; i++)
     {
-	if (j >= 10)
-	{
-	    output_newline();
-	    j = 1;
-	}
-	else
-	    j++;
+ if (j >= 10)
+ {
+     output_newline();
+     j = 1;
+ }
+ else
+     j++;
 
-	output_int(rrhs[i + 1] - rrhs[i] - 1);
+ output_int(rrhs[i + 1] - rrhs[i] - 1);
     }
     end_table();
 }

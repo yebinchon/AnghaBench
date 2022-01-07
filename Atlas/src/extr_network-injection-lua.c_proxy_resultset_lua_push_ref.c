@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  int /*<<< orphan*/  GRef ;
 
-/* Variables and functions */
- int /*<<< orphan*/  g_ref_ref (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ ** lua_newuserdata (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_setmetatable (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  methods_proxy_resultset ; 
- int /*<<< orphan*/  proxy_getmetatable (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int lua_State ;
+typedef int GRef ;
+
+
+ int g_ref_ref (int *) ;
+ int ** lua_newuserdata (int *,int) ;
+ int lua_setmetatable (int *,int) ;
+ int methods_proxy_resultset ;
+ int proxy_getmetatable (int *,int ) ;
 
 __attribute__((used)) static int proxy_resultset_lua_push_ref(lua_State *L, GRef *ref) {
-	GRef **ref_p;
+ GRef **ref_p;
 
-	g_ref_ref(ref);
-	
-	ref_p = lua_newuserdata(L, sizeof(GRef *));
-	*ref_p = ref;
+ g_ref_ref(ref);
 
-	proxy_getmetatable(L, methods_proxy_resultset);
-	lua_setmetatable(L, -2);
+ ref_p = lua_newuserdata(L, sizeof(GRef *));
+ *ref_p = ref;
 
-	return 1;
+ proxy_getmetatable(L, methods_proxy_resultset);
+ lua_setmetatable(L, -2);
+
+ return 1;
 }

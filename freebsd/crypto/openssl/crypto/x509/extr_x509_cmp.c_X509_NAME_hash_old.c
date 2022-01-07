@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_6__ {TYPE_1__* bytes; } ;
-typedef  TYPE_2__ X509_NAME ;
-struct TYPE_5__ {int /*<<< orphan*/  length; int /*<<< orphan*/  data; } ;
-typedef  int /*<<< orphan*/  EVP_MD_CTX ;
+typedef TYPE_2__ X509_NAME ;
+struct TYPE_5__ {int length; int data; } ;
+typedef int EVP_MD_CTX ;
 
-/* Variables and functions */
- scalar_t__ EVP_DigestFinal_ex (int /*<<< orphan*/ *,unsigned char*,int /*<<< orphan*/ *) ; 
- scalar_t__ EVP_DigestInit_ex (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ EVP_DigestUpdate (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EVP_MD_CTX_FLAG_NON_FIPS_ALLOW ; 
- int /*<<< orphan*/  EVP_MD_CTX_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * EVP_MD_CTX_new () ; 
- int /*<<< orphan*/  EVP_MD_CTX_set_flags (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EVP_md5 () ; 
- int /*<<< orphan*/  i2d_X509_NAME (TYPE_2__*,int /*<<< orphan*/ *) ; 
+
+ scalar_t__ EVP_DigestFinal_ex (int *,unsigned char*,int *) ;
+ scalar_t__ EVP_DigestInit_ex (int *,int ,int *) ;
+ scalar_t__ EVP_DigestUpdate (int *,int ,int ) ;
+ int EVP_MD_CTX_FLAG_NON_FIPS_ALLOW ;
+ int EVP_MD_CTX_free (int *) ;
+ int * EVP_MD_CTX_new () ;
+ int EVP_MD_CTX_set_flags (int *,int ) ;
+ int EVP_md5 () ;
+ int i2d_X509_NAME (TYPE_2__*,int *) ;
 
 unsigned long X509_NAME_hash_old(X509_NAME *x)
 {
@@ -34,15 +34,15 @@ unsigned long X509_NAME_hash_old(X509_NAME *x)
     unsigned long ret = 0;
     unsigned char md[16];
 
-    if (md_ctx == NULL)
+    if (md_ctx == ((void*)0))
         return ret;
 
-    /* Make sure X509_NAME structure contains valid cached encoding */
-    i2d_X509_NAME(x, NULL);
+
+    i2d_X509_NAME(x, ((void*)0));
     EVP_MD_CTX_set_flags(md_ctx, EVP_MD_CTX_FLAG_NON_FIPS_ALLOW);
-    if (EVP_DigestInit_ex(md_ctx, EVP_md5(), NULL)
+    if (EVP_DigestInit_ex(md_ctx, EVP_md5(), ((void*)0))
         && EVP_DigestUpdate(md_ctx, x->bytes->data, x->bytes->length)
-        && EVP_DigestFinal_ex(md_ctx, md, NULL))
+        && EVP_DigestFinal_ex(md_ctx, md, ((void*)0)))
         ret = (((unsigned long)md[0]) | ((unsigned long)md[1] << 8L) |
                ((unsigned long)md[2] << 16L) | ((unsigned long)md[3] << 24L)
             ) & 0xffffffffL;

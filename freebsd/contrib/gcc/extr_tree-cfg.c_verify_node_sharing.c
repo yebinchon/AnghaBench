@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * tree ;
-typedef  int /*<<< orphan*/  htab_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INSERT ; 
- void** htab_find_slot (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ tree_node_can_be_shared (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int * tree ;
+typedef int htab_t ;
+
+
+ int INSERT ;
+ void** htab_find_slot (int ,int *,int ) ;
+ scalar_t__ tree_node_can_be_shared (int *) ;
 
 __attribute__((used)) static tree
 verify_node_sharing (tree * tp, int *walk_subtrees, void *data)
@@ -26,8 +26,8 @@ verify_node_sharing (tree * tp, int *walk_subtrees, void *data)
 
   if (tree_node_can_be_shared (*tp))
     {
-      *walk_subtrees = false;
-      return NULL;
+      *walk_subtrees = 0;
+      return ((void*)0);
     }
 
   slot = htab_find_slot (htab, *tp, INSERT);
@@ -35,5 +35,5 @@ verify_node_sharing (tree * tp, int *walk_subtrees, void *data)
     return (tree) *slot;
   *slot = *tp;
 
-  return NULL;
+  return ((void*)0);
 }

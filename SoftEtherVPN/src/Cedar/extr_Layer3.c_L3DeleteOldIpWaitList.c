@@ -1,75 +1,75 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_6__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ UINT ;
+
+
+typedef struct TYPE_11__ TYPE_6__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef scalar_t__ UINT ;
 struct TYPE_11__ {TYPE_1__* PacketData; } ;
-struct TYPE_10__ {int /*<<< orphan*/ * IpWaitList; } ;
+struct TYPE_10__ {int * IpWaitList; } ;
 struct TYPE_9__ {scalar_t__ Expire; TYPE_6__* Packet; } ;
-typedef  int /*<<< orphan*/  LIST ;
-typedef  TYPE_1__ L3PACKET ;
-typedef  TYPE_2__ L3IF ;
+typedef int LIST ;
+typedef TYPE_1__ L3PACKET ;
+typedef TYPE_2__ L3IF ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Delete (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  Free (TYPE_1__*) ; 
- int /*<<< orphan*/  FreePacket (TYPE_6__*) ; 
- int /*<<< orphan*/  Insert (int /*<<< orphan*/ *,TYPE_1__*) ; 
- TYPE_1__* LIST_DATA (int /*<<< orphan*/ *,scalar_t__) ; 
- scalar_t__ LIST_NUM (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * NewListFast (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ReleaseList (int /*<<< orphan*/ *) ; 
- scalar_t__ Tick64 () ; 
+
+ int Delete (int *,TYPE_1__*) ;
+ int Free (TYPE_1__*) ;
+ int FreePacket (TYPE_6__*) ;
+ int Insert (int *,TYPE_1__*) ;
+ TYPE_1__* LIST_DATA (int *,scalar_t__) ;
+ scalar_t__ LIST_NUM (int *) ;
+ int * NewListFast (int *) ;
+ int ReleaseList (int *) ;
+ scalar_t__ Tick64 () ;
 
 void L3DeleteOldIpWaitList(L3IF *f)
 {
-	UINT i;
-	LIST *o = NULL;
-	// Validate arguments
-	if (f == NULL)
-	{
-		return;
-	}
+ UINT i;
+ LIST *o = ((void*)0);
 
-	for (i = 0;i < LIST_NUM(f->IpWaitList);i++)
-	{
-		L3PACKET *p = LIST_DATA(f->IpWaitList, i);
+ if (f == ((void*)0))
+ {
+  return;
+ }
 
-		if (p->Expire <= Tick64())
-		{
-			if (o == NULL)
-			{
-				o = NewListFast(NULL);
-			}
+ for (i = 0;i < LIST_NUM(f->IpWaitList);i++)
+ {
+  L3PACKET *p = LIST_DATA(f->IpWaitList, i);
 
-			Insert(o, p);
-		}
-	}
+  if (p->Expire <= Tick64())
+  {
+   if (o == ((void*)0))
+   {
+    o = NewListFast(((void*)0));
+   }
 
-	if (o != NULL)
-	{
-		for (i = 0;i < LIST_NUM(o);i++)
-		{
-			L3PACKET *p = LIST_DATA(o, i);
+   Insert(o, p);
+  }
+ }
 
-			Delete(f->IpWaitList, p);
+ if (o != ((void*)0))
+ {
+  for (i = 0;i < LIST_NUM(o);i++)
+  {
+   L3PACKET *p = LIST_DATA(o, i);
 
-			Free(p->Packet->PacketData);
-			FreePacket(p->Packet);
-			Free(p);
-		}
+   Delete(f->IpWaitList, p);
 
-		ReleaseList(o);
-	}
+   Free(p->Packet->PacketData);
+   FreePacket(p->Packet);
+   Free(p);
+  }
+
+  ReleaseList(o);
+ }
 }

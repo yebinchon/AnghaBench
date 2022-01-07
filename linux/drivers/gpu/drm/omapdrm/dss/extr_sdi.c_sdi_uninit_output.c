@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct sdi_device {int /*<<< orphan*/  output; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  omapdss_device_cleanup_output (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  omapdss_device_unregister (int /*<<< orphan*/ *) ; 
+
+
+
+struct sdi_device {int output; } ;
+
+
+ int omapdss_device_cleanup_output (int *) ;
+ int omapdss_device_unregister (int *) ;
 
 __attribute__((used)) static void sdi_uninit_output(struct sdi_device *sdi)
 {
-	omapdss_device_unregister(&sdi->output);
-	omapdss_device_cleanup_output(&sdi->output);
+ omapdss_device_unregister(&sdi->output);
+ omapdss_device_cleanup_output(&sdi->output);
 }

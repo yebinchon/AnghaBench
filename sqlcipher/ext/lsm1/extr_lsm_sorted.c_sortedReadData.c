@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int u8 ;
 struct TYPE_4__ {int nData; void* pData; } ;
-typedef  int /*<<< orphan*/  Segment ;
-typedef  int /*<<< orphan*/  Page ;
-typedef  TYPE_1__ LsmBlob ;
+typedef int Segment ;
+typedef int Page ;
+typedef TYPE_1__ LsmBlob ;
 
-/* Variables and functions */
- int LSM_CORRUPT_BKPT ; 
- int LSM_MIN (int,int) ; 
- int LSM_OK ; 
- int SEGMENT_BTREE_FLAG ; 
- int SEGMENT_EOF (int,int) ; 
- size_t SEGMENT_FLAGS_OFFSET (int) ; 
- size_t SEGMENT_NRECORD_OFFSET (int) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/ * fsPageData (int /*<<< orphan*/ *,int*) ; 
- int lsmFsDbPageNext (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  lsmFsPageRef (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lsmFsPageRelease (int /*<<< orphan*/ *) ; 
- int lsmGetU16 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lsmPageEnv (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int sortedBlobGrow (int /*<<< orphan*/ ,TYPE_1__*,int) ; 
+
+ int LSM_CORRUPT_BKPT ;
+ int LSM_MIN (int,int) ;
+ int LSM_OK ;
+ int SEGMENT_BTREE_FLAG ;
+ int SEGMENT_EOF (int,int) ;
+ size_t SEGMENT_FLAGS_OFFSET (int) ;
+ size_t SEGMENT_NRECORD_OFFSET (int) ;
+ int assert (int) ;
+ int * fsPageData (int *,int*) ;
+ int lsmFsDbPageNext (int *,int *,int,int **) ;
+ int lsmFsPageRef (int *) ;
+ int lsmFsPageRelease (int *) ;
+ int lsmGetU16 (int *) ;
+ int lsmPageEnv (int *) ;
+ int memcpy (int *,int *,int) ;
+ int sortedBlobGrow (int ,TYPE_1__*,int) ;
 
 __attribute__((used)) static int sortedReadData(
   Segment *pSeg,
@@ -61,21 +61,21 @@ __attribute__((used)) static int sortedReadData(
     int i = iOff;
     u8 *aDest;
 
-    /* Make sure the blob is big enough to store the value being loaded. */
+
     rc = sortedBlobGrow(lsmPageEnv(pPg), pBlob, nByte);
     if( rc!=LSM_OK ) return rc;
     pBlob->nData = nByte;
     aDest = (u8 *)pBlob->pData;
     *ppData = pBlob->pData;
 
-    /* Increment the pointer pages ref-count. */
+
     lsmFsPageRef(pPg);
 
     while( rc==LSM_OK ){
       Page *pNext;
       int flags;
 
-      /* Copy data from pPg into the output buffer. */
+
       int nCopy = LSM_MIN(nRem, iEnd-i);
       if( nCopy>0 ){
         memcpy(&aDest[nByte-nRem], &aData[i], nCopy);
@@ -87,7 +87,7 @@ __attribute__((used)) static int sortedReadData(
       if( nRem==0 ) break;
       i -= iEnd;
 
-      /* Grab the next page in the segment */
+
 
       do {
         rc = lsmFsDbPageNext(pSeg, pPg, 1, &pNext);

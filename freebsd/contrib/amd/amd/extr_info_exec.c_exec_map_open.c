@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  pid_t ;
 
-/* Variables and functions */
- scalar_t__ EINTR ; 
- int FD_SETSIZE ; 
- int O_NOCTTY ; 
- int O_WRONLY ; 
- int STDERR_FILENO ; 
- int STDOUT_FILENO ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  dup2 (int,int) ; 
- scalar_t__ errno ; 
- int /*<<< orphan*/  execve (char*,char**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  exit (scalar_t__) ; 
- int open (char*,int) ; 
- scalar_t__ pipe (int*) ; 
- int /*<<< orphan*/  set_nonblock (int) ; 
- int /*<<< orphan*/  vfork () ; 
- scalar_t__ waitpid (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int pid_t ;
+
+
+ scalar_t__ EINTR ;
+ int FD_SETSIZE ;
+ int O_NOCTTY ;
+ int O_WRONLY ;
+ int STDERR_FILENO ;
+ int STDOUT_FILENO ;
+ int close (int) ;
+ int dup2 (int,int) ;
+ scalar_t__ errno ;
+ int execve (char*,char**,int *) ;
+ int exit (scalar_t__) ;
+ int open (char*,int) ;
+ scalar_t__ pipe (int*) ;
+ int set_nonblock (int) ;
+ int vfork () ;
+ scalar_t__ waitpid (int ,int ,int ) ;
 
 __attribute__((used)) static int
 exec_map_open(char *emap, char *key)
@@ -42,7 +42,7 @@ exec_map_open(char *emap, char *key)
 
   argv[0] = emap;
   argv[1] = key;
-  argv[2] = NULL;
+  argv[2] = ((void*)0);
 
   if ((nullfd = open("/dev/null", O_WRONLY|O_NOCTTY)) < 0)
     return -1;
@@ -54,58 +54,58 @@ exec_map_open(char *emap, char *key)
 
   switch ((p1 = vfork())) {
   case -1:
-    /* parent: fork error */
+
     close(nullfd);
     close(pdes[0]);
     close(pdes[1]);
     return -1;
   case 0:
-    /* child #1 */
+
     p2 = vfork();
     switch (p2) {
     case -1:
-      /* child #1: fork error */
+
       exit(errno);
     case 0:
-      /* child #2: init will reap our status */
+
       if (pdes[1] != STDOUT_FILENO) {
-	dup2(pdes[1], STDOUT_FILENO);
-	close(pdes[1]);
+ dup2(pdes[1], STDOUT_FILENO);
+ close(pdes[1]);
       }
 
       if (nullfd != STDERR_FILENO) {
-	dup2(nullfd, STDERR_FILENO);
-	close(nullfd);
+ dup2(nullfd, STDERR_FILENO);
+ close(nullfd);
       }
 
       for (i=0; i<FD_SETSIZE; i++)
-	if (i != STDOUT_FILENO  &&  i != STDERR_FILENO)
-	  close(i);
+ if (i != STDOUT_FILENO && i != STDERR_FILENO)
+   close(i);
 
-      /* make the write descriptor non-blocking */
+
       if (!set_nonblock(STDOUT_FILENO)) {
-	close(STDOUT_FILENO);
-	exit(-1);
+ close(STDOUT_FILENO);
+ exit(-1);
       }
 
-      execve(emap, argv, NULL);
-      exit(errno);		/* in case execve failed */
+      execve(emap, argv, ((void*)0));
+      exit(errno);
     }
 
-    /* child #1 */
+
     exit(0);
   }
 
-  /* parent */
+
   close(nullfd);
   close(pdes[1]);
 
-  /* anti-zombie insurance */
+
   while (waitpid(p1, 0, 0) < 0)
     if (errno != EINTR)
       exit(errno);
 
-  /* make the read descriptor non-blocking */
+
   if (!set_nonblock(pdes[0])) {
     close(pdes[0]);
     return -1;

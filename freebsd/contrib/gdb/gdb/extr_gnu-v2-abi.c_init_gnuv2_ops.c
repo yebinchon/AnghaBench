@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {char* shortname; char* longname; char* doc; int /*<<< orphan*/  baseclass_offset; int /*<<< orphan*/  rtti_type; int /*<<< orphan*/  virtual_fn_field; int /*<<< orphan*/  is_operator_name; int /*<<< orphan*/  is_vtable_name; int /*<<< orphan*/  is_constructor_name; int /*<<< orphan*/  is_destructor_name; } ;
 
-/* Variables and functions */
- TYPE_1__ gnu_v2_abi_ops ; 
- int /*<<< orphan*/  gnuv2_baseclass_offset ; 
- int /*<<< orphan*/  gnuv2_is_constructor_name ; 
- int /*<<< orphan*/  gnuv2_is_destructor_name ; 
- int /*<<< orphan*/  gnuv2_is_operator_name ; 
- int /*<<< orphan*/  gnuv2_is_vtable_name ; 
- int /*<<< orphan*/  gnuv2_value_rtti_type ; 
- int /*<<< orphan*/  gnuv2_virtual_fn_field ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {char* shortname; char* longname; char* doc; int baseclass_offset; int rtti_type; int virtual_fn_field; int is_operator_name; int is_vtable_name; int is_constructor_name; int is_destructor_name; } ;
+
+
+ TYPE_1__ gnu_v2_abi_ops ;
+ int gnuv2_baseclass_offset ;
+ int gnuv2_is_constructor_name ;
+ int gnuv2_is_destructor_name ;
+ int gnuv2_is_operator_name ;
+ int gnuv2_is_vtable_name ;
+ int gnuv2_value_rtti_type ;
+ int gnuv2_virtual_fn_field ;
 
 __attribute__((used)) static void
 init_gnuv2_ops (void)

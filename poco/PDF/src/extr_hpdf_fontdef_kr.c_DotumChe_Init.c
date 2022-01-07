@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int ascent; int descent; int cap_height; int stemv; int /*<<< orphan*/  valid; int /*<<< orphan*/  type; scalar_t__ italic_angle; scalar_t__ flags; int /*<<< orphan*/  font_bbox; } ;
-typedef  int /*<<< orphan*/  HPDF_STATUS ;
-typedef  TYPE_1__* HPDF_FontDef ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DotumChe_W_ARRAY ; 
- int /*<<< orphan*/  HPDF_CIDFontDef_AddWidth (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HPDF_FONTDEF_TYPE_CID ; 
- scalar_t__ HPDF_FONT_FIXED_WIDTH ; 
- scalar_t__ HPDF_FONT_SYMBOLIC ; 
- int /*<<< orphan*/  HPDF_OK ; 
- int /*<<< orphan*/  HPDF_PTRACE (char*) ; 
- int /*<<< orphan*/  HPDF_TRUE ; 
- int /*<<< orphan*/  HPDF_ToBox (int /*<<< orphan*/ ,int,int,int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int ascent; int descent; int cap_height; int stemv; int valid; int type; scalar_t__ italic_angle; scalar_t__ flags; int font_bbox; } ;
+typedef int HPDF_STATUS ;
+typedef TYPE_1__* HPDF_FontDef ;
+
+
+ int DotumChe_W_ARRAY ;
+ int HPDF_CIDFontDef_AddWidth (TYPE_1__*,int ) ;
+ int HPDF_FONTDEF_TYPE_CID ;
+ scalar_t__ HPDF_FONT_FIXED_WIDTH ;
+ scalar_t__ HPDF_FONT_SYMBOLIC ;
+ int HPDF_OK ;
+ int HPDF_PTRACE (char*) ;
+ int HPDF_TRUE ;
+ int HPDF_ToBox (int ,int,int,int) ;
 
 __attribute__((used)) static HPDF_STATUS
-DotumChe_Init  (HPDF_FontDef   fontdef)
+DotumChe_Init (HPDF_FontDef fontdef)
 {
     HPDF_STATUS ret;
 

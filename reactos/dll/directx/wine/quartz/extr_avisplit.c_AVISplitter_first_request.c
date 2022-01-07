@@ -1,60 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
 struct thread_args {int stream; TYPE_4__* This; } ;
 struct TYPE_11__ {int cStreams; TYPE_1__* pInputPin; } ;
 struct TYPE_13__ {TYPE_3__* streams; TYPE_2__ Parser; } ;
-struct TYPE_12__ {scalar_t__ index_next; scalar_t__ index; scalar_t__ entries; int /*<<< orphan*/ * thread; scalar_t__ stdindex; int /*<<< orphan*/  seek; int /*<<< orphan*/  pos; int /*<<< orphan*/  pos_next; int /*<<< orphan*/  packet_queued; } ;
-struct TYPE_10__ {int /*<<< orphan*/  pReader; } ;
-typedef  TYPE_3__ StreamData ;
-typedef  TYPE_4__* LPVOID ;
-typedef  int /*<<< orphan*/  IMediaSample ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  DWORD_PTR ;
-typedef  int DWORD ;
-typedef  int BOOL ;
-typedef  TYPE_4__ AVISplitterImpl ;
+struct TYPE_12__ {scalar_t__ index_next; scalar_t__ index; scalar_t__ entries; int * thread; scalar_t__ stdindex; int seek; int pos; int pos_next; int packet_queued; } ;
+struct TYPE_10__ {int pReader; } ;
+typedef TYPE_3__ StreamData ;
+typedef TYPE_4__* LPVOID ;
+typedef int IMediaSample ;
+typedef int HRESULT ;
+typedef int DWORD_PTR ;
+typedef int DWORD ;
+typedef int BOOL ;
+typedef TYPE_4__ AVISplitterImpl ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AVISplitter_Sample (TYPE_4__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AVISplitter_SendEndOfFile (TYPE_4__*,int) ; 
- int /*<<< orphan*/  AVISplitter_next_request (TYPE_4__*,int) ; 
- int /*<<< orphan*/  AVISplitter_thread_reader ; 
- struct thread_args* CoTaskMemAlloc (int) ; 
- int /*<<< orphan*/ * CreateThread (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct thread_args*,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  ERR (char*,int /*<<< orphan*/ ) ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int FALSE ; 
- int /*<<< orphan*/  IAsyncReader_WaitForNext (int /*<<< orphan*/ ,int,int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IMediaSample_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ResetEvent (int /*<<< orphan*/ ) ; 
- scalar_t__ SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  S_FALSE ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TRACE (char*,...) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  VFW_E_NOT_CONNECTED ; 
- int /*<<< orphan*/  assert (int) ; 
+
+ int AVISplitter_Sample (TYPE_4__*,int *,int ) ;
+ int AVISplitter_SendEndOfFile (TYPE_4__*,int) ;
+ int AVISplitter_next_request (TYPE_4__*,int) ;
+ int AVISplitter_thread_reader ;
+ struct thread_args* CoTaskMemAlloc (int) ;
+ int * CreateThread (int *,int ,int ,struct thread_args*,int ,int*) ;
+ int ERR (char*,int ) ;
+ scalar_t__ FAILED (int ) ;
+ int FALSE ;
+ int IAsyncReader_WaitForNext (int ,int,int **,int *) ;
+ int IMediaSample_Release (int *) ;
+ int ResetEvent (int ) ;
+ scalar_t__ SUCCEEDED (int ) ;
+ int S_FALSE ;
+ int S_OK ;
+ int TRACE (char*,...) ;
+ int TRUE ;
+ int VFW_E_NOT_CONNECTED ;
+ int assert (int) ;
 
 __attribute__((used)) static HRESULT AVISplitter_first_request(LPVOID iface)
 {
     AVISplitterImpl *This = iface;
     HRESULT hr = S_OK;
     DWORD x;
-    IMediaSample *sample = NULL;
+    IMediaSample *sample = ((void*)0);
     BOOL have_sample = FALSE;
 
     TRACE("(%p)->()\n", This);
@@ -63,27 +63,19 @@ __attribute__((used)) static HRESULT AVISplitter_first_request(LPVOID iface)
     {
         StreamData *stream = This->streams + x;
 
-        /* Nothing should be running at this point */
+
         assert(!stream->thread);
 
         assert(!sample);
-        /* It could be we asked the thread to terminate, and the thread
-         * already terminated before receiving the deathwish */
+
+
         ResetEvent(stream->packet_queued);
 
         stream->pos_next = stream->pos;
         stream->index_next = stream->index;
 
-        /* This was sent after stopped->paused or stopped->playing, so set seek */
+
         stream->seek = TRUE;
-
-        /* There should be a packet queued from AVISplitter_next_request last time
-         * It needs to be done now because this is the only way to ensure that every
-         * stream will have at least 1 packet processed
-         * If this is done after the threads start it could go all awkward and we
-         * would have no guarantees that it's successful at all
-         */
-
         if (have_sample)
         {
             DWORD_PTR dwUser = ~0;
@@ -98,7 +90,7 @@ __attribute__((used)) static HRESULT AVISplitter_first_request(LPVOID iface)
         hr = AVISplitter_next_request(This, x);
         TRACE("-->%08x\n", hr);
 
-        /* Could be an EOF instead */
+
         have_sample = (hr == S_OK);
         if (hr == S_FALSE)
             AVISplitter_SendEndOfFile(This, x);
@@ -108,7 +100,7 @@ __attribute__((used)) static HRESULT AVISplitter_first_request(LPVOID iface)
         hr = S_OK;
     }
 
-    /* FIXME: Don't do this for each pin that sent an EOF */
+
     for (x = 0; x < This->Parser.cStreams && SUCCEEDED(hr); ++x)
     {
         struct thread_args *args;
@@ -117,14 +109,14 @@ __attribute__((used)) static HRESULT AVISplitter_first_request(LPVOID iface)
         if ((This->streams[x].stdindex && This->streams[x].index_next >= This->streams[x].entries) ||
             (!This->streams[x].stdindex && This->streams[x].index_next))
         {
-            This->streams[x].thread = NULL;
+            This->streams[x].thread = ((void*)0);
             continue;
         }
 
         args = CoTaskMemAlloc(sizeof(*args));
         args->This = This;
         args->stream = x;
-        This->streams[x].thread = CreateThread(NULL, 0, AVISplitter_thread_reader, args, 0, &tid);
+        This->streams[x].thread = CreateThread(((void*)0), 0, AVISplitter_thread_reader, args, 0, &tid);
         TRACE("Created stream %u thread 0x%08x\n", x, tid);
     }
 

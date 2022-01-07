@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  zend_string ;
 
-/* Variables and functions */
- int PHP_INI_STAGE_ACTIVATE ; 
- int PHP_INI_STAGE_HTACCESS ; 
- int PHP_INI_STAGE_RUNTIME ; 
- int ZEND_INI_PERDIR ; 
- int ZEND_INI_SYSTEM ; 
- scalar_t__ engine ; 
- int /*<<< orphan*/  mod_lsapi_mode ; 
- scalar_t__ strncasecmp (char const*,char*,int) ; 
- int /*<<< orphan*/  zend_alter_ini_entry_chars (int /*<<< orphan*/ *,char*,int,int,int) ; 
- int /*<<< orphan*/ * zend_string_init (char const*,int,int) ; 
- int /*<<< orphan*/  zend_string_release_ex (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int zend_string ;
+
+
+ int PHP_INI_STAGE_ACTIVATE ;
+ int PHP_INI_STAGE_HTACCESS ;
+ int PHP_INI_STAGE_RUNTIME ;
+ int ZEND_INI_PERDIR ;
+ int ZEND_INI_SYSTEM ;
+ scalar_t__ engine ;
+ int mod_lsapi_mode ;
+ scalar_t__ strncasecmp (char const*,char*,int) ;
+ int zend_alter_ini_entry_chars (int *,char*,int,int,int) ;
+ int * zend_string_init (char const*,int,int) ;
+ int zend_string_release_ex (int *,int) ;
 
 __attribute__((used)) static int alter_ini( const char * pKey, int keyLen, const char * pValue, int valLen,
                 void * arg )
@@ -36,12 +36,12 @@ __attribute__((used)) static int alter_ini( const char * pKey, int keyLen, const
         ++pKey;
         if ( *pKey == 4 ) {
             type = ZEND_INI_SYSTEM;
-            /*
-              Use ACTIVATE stage in legacy mode only.
 
-              RUNTIME stage should be used here,
-              as with ACTIVATE it's impossible to change the option from script with ini_set 
-            */
+
+
+
+
+
             if(!mod_lsapi_mode)
             {
                 stage = PHP_INI_STAGE_ACTIVATE;

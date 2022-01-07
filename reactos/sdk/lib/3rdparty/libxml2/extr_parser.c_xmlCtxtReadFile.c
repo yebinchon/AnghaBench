@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * xmlParserInputPtr ;
-typedef  int /*<<< orphan*/ * xmlParserCtxtPtr ;
-typedef  int /*<<< orphan*/ * xmlDocPtr ;
 
-/* Variables and functions */
- int /*<<< orphan*/  inputPush (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  xmlCtxtReset (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * xmlDoRead (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*,int,int) ; 
- int /*<<< orphan*/  xmlInitParser () ; 
- int /*<<< orphan*/ * xmlLoadExternalEntity (char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int * xmlParserInputPtr ;
+typedef int * xmlParserCtxtPtr ;
+typedef int * xmlDocPtr ;
+
+
+ int inputPush (int *,int *) ;
+ int xmlCtxtReset (int *) ;
+ int * xmlDoRead (int *,int *,char const*,int,int) ;
+ int xmlInitParser () ;
+ int * xmlLoadExternalEntity (char const*,int *,int *) ;
 
 xmlDocPtr
 xmlCtxtReadFile(xmlParserCtxtPtr ctxt, const char *filename,
@@ -27,18 +27,18 @@ xmlCtxtReadFile(xmlParserCtxtPtr ctxt, const char *filename,
 {
     xmlParserInputPtr stream;
 
-    if (filename == NULL)
-        return (NULL);
-    if (ctxt == NULL)
-        return (NULL);
+    if (filename == ((void*)0))
+        return (((void*)0));
+    if (ctxt == ((void*)0))
+        return (((void*)0));
     xmlInitParser();
 
     xmlCtxtReset(ctxt);
 
-    stream = xmlLoadExternalEntity(filename, NULL, ctxt);
-    if (stream == NULL) {
-        return (NULL);
+    stream = xmlLoadExternalEntity(filename, ((void*)0), ctxt);
+    if (stream == ((void*)0)) {
+        return (((void*)0));
     }
     inputPush(ctxt, stream);
-    return (xmlDoRead(ctxt, NULL, encoding, options, 1));
+    return (xmlDoRead(ctxt, ((void*)0), encoding, options, 1));
 }

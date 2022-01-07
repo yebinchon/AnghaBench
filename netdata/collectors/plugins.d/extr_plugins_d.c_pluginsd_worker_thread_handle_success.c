@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct plugind {int successful_collections; int update_every; scalar_t__ serial_failures; char* pid; scalar_t__ enabled; int /*<<< orphan*/  fullfilename; } ;
 
-/* Variables and functions */
- scalar_t__ SERIAL_FAILURES_THRESHOLD ; 
- int /*<<< orphan*/  error (char*,int /*<<< orphan*/ ,char*,scalar_t__) ; 
- int /*<<< orphan*/  info (char*,int /*<<< orphan*/ ,char*,char*) ; 
- scalar_t__ likely (int) ; 
- int /*<<< orphan*/  sleep (unsigned int) ; 
+
+
+
+struct plugind {int successful_collections; int update_every; scalar_t__ serial_failures; char* pid; scalar_t__ enabled; int fullfilename; } ;
+
+
+ scalar_t__ SERIAL_FAILURES_THRESHOLD ;
+ int error (char*,int ,char*,scalar_t__) ;
+ int info (char*,int ,char*,char*) ;
+ scalar_t__ likely (int) ;
+ int sleep (unsigned int) ;
 
 __attribute__((used)) static void pluginsd_worker_thread_handle_success(struct plugind *cd) {
     if (likely(cd->successful_collections)) {

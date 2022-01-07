@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct node {int dummy; } ;
 
-/* Variables and functions */
- size_t STEP_DISCONNECT ; 
- int /*<<< orphan*/ * completed ; 
- int /*<<< orphan*/  end_perf (struct node*,size_t) ; 
+
+ size_t STEP_DISCONNECT ;
+ int * completed ;
+ int end_perf (struct node*,size_t) ;
 
 __attribute__((used)) static void disc_handler(struct node *n)
 {
-	end_perf(n, STEP_DISCONNECT);
-	completed[STEP_DISCONNECT]++;
+ end_perf(n, STEP_DISCONNECT);
+ completed[STEP_DISCONNECT]++;
 }

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  format; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int format; } ;
 struct nv50_wndw_atom {TYPE_2__ image; } ;
-struct TYPE_3__ {int /*<<< orphan*/  format; } ;
+struct TYPE_3__ {int format; } ;
 struct nv50_head_atom {TYPE_1__ curs; } ;
 struct nv50_head {int dummy; } ;
 
-/* Variables and functions */
+
 
 int
 headc37d_curs_format(struct nv50_head *head, struct nv50_wndw_atom *asyw,
-		     struct nv50_head_atom *asyh)
+       struct nv50_head_atom *asyh)
 {
-	asyh->curs.format = asyw->image.format;
-	return 0;
+ asyh->curs.format = asyw->image.format;
+ return 0;
 }

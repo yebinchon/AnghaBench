@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_thread_t ;
-typedef  int /*<<< orphan*/  pthread_attr_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PTHREAD_CREATE_DETACHED ; 
- int /*<<< orphan*/  pthread_attr_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_attr_setdetachstate (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int vlc_clone_attr (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void* (*) (void*),void*,int) ; 
+
+
+
+typedef int vlc_thread_t ;
+typedef int pthread_attr_t ;
+
+
+ int PTHREAD_CREATE_DETACHED ;
+ int pthread_attr_init (int *) ;
+ int pthread_attr_setdetachstate (int *,int ) ;
+ int vlc_clone_attr (int *,int *,void* (*) (void*),void*,int) ;
 
 int vlc_clone_detach (vlc_thread_t *th, void *(*entry) (void *), void *data,
                       int priority)
@@ -25,7 +25,7 @@ int vlc_clone_detach (vlc_thread_t *th, void *(*entry) (void *), void *data,
     vlc_thread_t dummy;
     pthread_attr_t attr;
 
-    if (th == NULL)
+    if (th == ((void*)0))
         th = &dummy;
 
     pthread_attr_init (&attr);

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ Char ;
 
-/* Variables and functions */
- scalar_t__ AltKeyMap ; 
- int /*<<< orphan*/  CcAltMap ; 
- int /*<<< orphan*/  CcKeyMap ; 
- int /*<<< orphan*/  CurrentKeyMap ; 
+
+
+
+typedef scalar_t__ Char ;
+
+
+ scalar_t__ AltKeyMap ;
+ int CcAltMap ;
+ int CcKeyMap ;
+ int CurrentKeyMap ;
 
 __attribute__((used)) static void
 c_alternativ_key_map(int state)
 {
     switch (state) {
     case 0:
-	CurrentKeyMap = CcKeyMap;
-	break;
+ CurrentKeyMap = CcKeyMap;
+ break;
     case 1:
-	CurrentKeyMap = CcAltMap;
-	break;
+ CurrentKeyMap = CcAltMap;
+ break;
     default:
-	return;
+ return;
     }
 
     AltKeyMap = (Char) state;

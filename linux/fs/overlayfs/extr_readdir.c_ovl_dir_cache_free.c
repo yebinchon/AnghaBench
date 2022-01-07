@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ovl_dir_cache {int /*<<< orphan*/  entries; } ;
+
+
+
+
+struct ovl_dir_cache {int entries; } ;
 struct inode {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  kfree (struct ovl_dir_cache*) ; 
- int /*<<< orphan*/  ovl_cache_free (int /*<<< orphan*/ *) ; 
- struct ovl_dir_cache* ovl_dir_cache (struct inode*) ; 
+
+ int kfree (struct ovl_dir_cache*) ;
+ int ovl_cache_free (int *) ;
+ struct ovl_dir_cache* ovl_dir_cache (struct inode*) ;
 
 void ovl_dir_cache_free(struct inode *inode)
 {
-	struct ovl_dir_cache *cache = ovl_dir_cache(inode);
+ struct ovl_dir_cache *cache = ovl_dir_cache(inode);
 
-	if (cache) {
-		ovl_cache_free(&cache->entries);
-		kfree(cache);
-	}
+ if (cache) {
+  ovl_cache_free(&cache->entries);
+  kfree(cache);
+ }
 }

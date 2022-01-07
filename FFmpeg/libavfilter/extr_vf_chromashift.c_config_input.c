@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_6__ ;
-typedef  struct TYPE_13__   TYPE_5__ ;
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_14__ TYPE_6__ ;
+typedef struct TYPE_13__ TYPE_5__ ;
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_14__ {TYPE_1__* filter; TYPE_3__* priv; } ;
-struct TYPE_13__ {void* w; int /*<<< orphan*/  format; void* h; TYPE_6__* dst; } ;
-struct TYPE_12__ {int /*<<< orphan*/  log2_chroma_w; int /*<<< orphan*/  log2_chroma_h; int /*<<< orphan*/  nb_components; TYPE_2__* comp; } ;
-struct TYPE_11__ {int is_rgbashift; int depth; int /*<<< orphan*/  linesize; void** width; void** height; int /*<<< orphan*/  filter_slice; scalar_t__ edge; int /*<<< orphan*/  nb_planes; } ;
+struct TYPE_13__ {void* w; int format; void* h; TYPE_6__* dst; } ;
+struct TYPE_12__ {int log2_chroma_w; int log2_chroma_h; int nb_components; TYPE_2__* comp; } ;
+struct TYPE_11__ {int is_rgbashift; int depth; int linesize; void** width; void** height; int filter_slice; scalar_t__ edge; int nb_planes; } ;
 struct TYPE_10__ {int depth; } ;
-struct TYPE_9__ {int /*<<< orphan*/  name; } ;
-typedef  TYPE_3__ ChromaShiftContext ;
-typedef  TYPE_4__ AVPixFmtDescriptor ;
-typedef  TYPE_5__ AVFilterLink ;
-typedef  TYPE_6__ AVFilterContext ;
+struct TYPE_9__ {int name; } ;
+typedef TYPE_3__ ChromaShiftContext ;
+typedef TYPE_4__ AVPixFmtDescriptor ;
+typedef TYPE_5__ AVFilterLink ;
+typedef TYPE_6__ AVFilterContext ;
 
-/* Variables and functions */
- void* AV_CEIL_RSHIFT (void*,int /*<<< orphan*/ ) ; 
- int av_image_fill_linesizes (int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*) ; 
- TYPE_4__* av_pix_fmt_desc_get (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rgbasmear_slice16 ; 
- int /*<<< orphan*/  rgbasmear_slice8 ; 
- int /*<<< orphan*/  rgbawrap_slice16 ; 
- int /*<<< orphan*/  rgbawrap_slice8 ; 
- int /*<<< orphan*/  smear_slice16 ; 
- int /*<<< orphan*/  smear_slice8 ; 
- int /*<<< orphan*/  strcmp (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  wrap_slice16 ; 
- int /*<<< orphan*/  wrap_slice8 ; 
+
+ void* AV_CEIL_RSHIFT (void*,int ) ;
+ int av_image_fill_linesizes (int ,int ,void*) ;
+ TYPE_4__* av_pix_fmt_desc_get (int ) ;
+ int rgbasmear_slice16 ;
+ int rgbasmear_slice8 ;
+ int rgbawrap_slice16 ;
+ int rgbawrap_slice8 ;
+ int smear_slice16 ;
+ int smear_slice8 ;
+ int strcmp (int ,char*) ;
+ int wrap_slice16 ;
+ int wrap_slice8 ;
 
 __attribute__((used)) static int config_input(AVFilterLink *inlink)
 {

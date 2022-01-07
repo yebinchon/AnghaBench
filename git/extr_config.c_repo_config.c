@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct repository {int /*<<< orphan*/  config; } ;
-typedef  int /*<<< orphan*/  config_fn_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  configset_iter (int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*) ; 
- int /*<<< orphan*/  git_config_check_init (struct repository*) ; 
+
+
+
+struct repository {int config; } ;
+typedef int config_fn_t ;
+
+
+ int configset_iter (int ,int ,void*) ;
+ int git_config_check_init (struct repository*) ;
 
 void repo_config(struct repository *repo, config_fn_t fn, void *data)
 {
-	git_config_check_init(repo);
-	configset_iter(repo->config, fn, data);
+ git_config_check_init(repo);
+ configset_iter(repo->config, fn, data);
 }

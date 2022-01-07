@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
-struct TYPE_9__ {unsigned int custom_uint; int /*<<< orphan*/ * custom_object; } ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+struct TYPE_9__ {unsigned int custom_uint; int * custom_object; } ;
 struct TYPE_8__ {scalar_t__ status; } ;
-struct TYPE_7__ {int /*<<< orphan*/  sleep_count; int /*<<< orphan*/  lock_count; } ;
-typedef  TYPE_1__ TCP_con ;
-typedef  int /*<<< orphan*/  TCP_Connections ;
-typedef  TYPE_2__ TCP_Connection_to ;
-typedef  TYPE_3__ TCP_Client_Connection ;
+struct TYPE_7__ {int sleep_count; int lock_count; } ;
+typedef TYPE_1__ TCP_con ;
+typedef int TCP_Connections ;
+typedef TYPE_2__ TCP_Connection_to ;
+typedef TYPE_3__ TCP_Client_Connection ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TCP_CONNECTIONS_STATUS_ONLINE ; 
- int /*<<< orphan*/  TCP_CONNECTIONS_STATUS_REGISTERED ; 
- scalar_t__ TCP_CONN_SLEEPING ; 
- TYPE_2__* get_connection (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- TYPE_1__* get_tcp_connection (int /*<<< orphan*/ *,unsigned int) ; 
- int set_tcp_connection_status (TYPE_2__*,unsigned int,int /*<<< orphan*/ ,int) ; 
+
+ int TCP_CONNECTIONS_STATUS_ONLINE ;
+ int TCP_CONNECTIONS_STATUS_REGISTERED ;
+ scalar_t__ TCP_CONN_SLEEPING ;
+ TYPE_2__* get_connection (int *,int ) ;
+ TYPE_1__* get_tcp_connection (int *,unsigned int) ;
+ int set_tcp_connection_status (TYPE_2__*,unsigned int,int ,int) ;
 
 __attribute__((used)) static int tcp_status_callback(void *object, uint32_t number, uint8_t connection_id, uint8_t status)
 {

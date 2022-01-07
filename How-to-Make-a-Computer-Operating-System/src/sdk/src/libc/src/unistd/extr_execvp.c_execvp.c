@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tmp_exec ;
 
-/* Variables and functions */
- int /*<<< orphan*/  environ ; 
- int /*<<< orphan*/  execve (char const*,char* const*,int /*<<< orphan*/ ) ; 
- char* getenv (char*) ; 
- int /*<<< orphan*/  memcpy (char*,char*,size_t) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,char*,char const*) ; 
- char* strchr (char*,char) ; 
- size_t strlen (char*) ; 
+
+
+
+typedef int tmp_exec ;
+
+
+ int environ ;
+ int execve (char const*,char* const*,int ) ;
+ char* getenv (char*) ;
+ int memcpy (char*,char*,size_t) ;
+ int snprintf (char*,int,char*,char*,char const*) ;
+ char* strchr (char*,char) ;
+ size_t strlen (char*) ;
 
 int execvp( const char* filename, char* const argv[] ) {
     char* path;
@@ -31,14 +31,14 @@ int execvp( const char* filename, char* const argv[] ) {
 
     path = getenv( "PATH" );
 
-    if ( path == NULL ) {
+    if ( path == ((void*)0) ) {
         return -1;
     }
 
     do {
         separator = strchr( path, ':' );
 
-        if ( separator == NULL ) {
+        if ( separator == ((void*)0) ) {
             memcpy( tmp_path, path, strlen( path ) + 1 );
         } else {
             size_t length = ( separator - path );
@@ -51,7 +51,7 @@ int execvp( const char* filename, char* const argv[] ) {
         execve( tmp_exec, argv, environ );
 
         path = separator + 1;
-    } while ( separator != NULL );
+    } while ( separator != ((void*)0) );
 
     return -1;
 }

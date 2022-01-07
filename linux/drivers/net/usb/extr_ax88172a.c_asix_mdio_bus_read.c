@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct usbnet {int /*<<< orphan*/  net; } ;
+
+
+
+
+struct usbnet {int net; } ;
 struct mii_bus {scalar_t__ priv; } ;
 
-/* Variables and functions */
- int asix_mdio_read (int /*<<< orphan*/ ,int,int) ; 
+
+ int asix_mdio_read (int ,int,int) ;
 
 __attribute__((used)) static int asix_mdio_bus_read(struct mii_bus *bus, int phy_id, int regnum)
 {
-	return asix_mdio_read(((struct usbnet *)bus->priv)->net, phy_id,
-			      regnum);
+ return asix_mdio_read(((struct usbnet *)bus->priv)->net, phy_id,
+         regnum);
 }

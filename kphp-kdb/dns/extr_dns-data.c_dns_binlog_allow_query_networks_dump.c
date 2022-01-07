@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_4__ {unsigned int ipv4; int prefix_bits; } ;
-struct TYPE_3__ {int prefix_bits; int /*<<< orphan*/  ipv6; } ;
+struct TYPE_3__ {int prefix_bits; int ipv6; } ;
 
-/* Variables and functions */
- TYPE_2__* BAQN ; 
- TYPE_1__* BAQN6 ; 
- int binlog_allow_query_networks ; 
- int binlog_allow_query_networks6 ; 
- char* show_ipv6 (int /*<<< orphan*/ ) ; 
- int snprintf (char*,int,char*,...) ; 
+
+ TYPE_2__* BAQN ;
+ TYPE_1__* BAQN6 ;
+ int binlog_allow_query_networks ;
+ int binlog_allow_query_networks6 ;
+ char* show_ipv6 (int ) ;
+ int snprintf (char*,int,char*,...) ;
 
 int dns_binlog_allow_query_networks_dump (char *output, int avail_out) {
   int i, k = 0;

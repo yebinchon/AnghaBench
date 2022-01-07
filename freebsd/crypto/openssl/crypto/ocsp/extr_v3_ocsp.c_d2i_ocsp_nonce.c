@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  void ASN1_OCTET_STRING ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASN1_OCTET_STRING_free (void*) ; 
- void* ASN1_OCTET_STRING_new () ; 
- int /*<<< orphan*/  ASN1_OCTET_STRING_set (void*,unsigned char const*,long) ; 
- int /*<<< orphan*/  ERR_R_MALLOC_FAILURE ; 
- int /*<<< orphan*/  OCSP_F_D2I_OCSP_NONCE ; 
- int /*<<< orphan*/  OCSPerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef void ASN1_OCTET_STRING ;
+
+
+ int ASN1_OCTET_STRING_free (void*) ;
+ void* ASN1_OCTET_STRING_new () ;
+ int ASN1_OCTET_STRING_set (void*,unsigned char const*,long) ;
+ int ERR_R_MALLOC_FAILURE ;
+ int OCSP_F_D2I_OCSP_NONCE ;
+ int OCSPerr (int ,int ) ;
 
 __attribute__((used)) static void *d2i_ocsp_nonce(void *a, const unsigned char **pp, long length)
 {
     ASN1_OCTET_STRING *os, **pos;
     pos = a;
-    if (pos == NULL || *pos == NULL) {
+    if (pos == ((void*)0) || *pos == ((void*)0)) {
         os = ASN1_OCTET_STRING_new();
-        if (os == NULL)
+        if (os == ((void*)0))
             goto err;
     } else {
         os = *pos;
@@ -41,8 +41,8 @@ __attribute__((used)) static void *d2i_ocsp_nonce(void *a, const unsigned char *
     return os;
 
  err:
-    if ((pos == NULL) || (*pos != os))
+    if ((pos == ((void*)0)) || (*pos != os))
         ASN1_OCTET_STRING_free(os);
     OCSPerr(OCSP_F_D2I_OCSP_NONCE, ERR_R_MALLOC_FAILURE);
-    return NULL;
+    return ((void*)0);
 }

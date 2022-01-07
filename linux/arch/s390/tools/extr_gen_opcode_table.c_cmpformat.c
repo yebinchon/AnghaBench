@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct insn {int /*<<< orphan*/  format; } ;
 
-/* Variables and functions */
- int strcmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct insn {int format; } ;
+
+
+ int strcmp (int ,int ) ;
 
 __attribute__((used)) static int cmpformat(const void *a, const void *b)
 {
-	return strcmp(((struct insn *)a)->format, ((struct insn *)b)->format);
+ return strcmp(((struct insn *)a)->format, ((struct insn *)b)->format);
 }

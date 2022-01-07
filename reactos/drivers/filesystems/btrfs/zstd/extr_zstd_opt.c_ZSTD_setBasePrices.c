@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  offCodeSum; void* offCodeSumBasePrice; int /*<<< orphan*/  matchLengthSum; void* matchLengthSumBasePrice; int /*<<< orphan*/  litLengthSum; void* litLengthSumBasePrice; int /*<<< orphan*/  litSum; void* litSumBasePrice; } ;
-typedef  TYPE_1__ optState_t ;
 
-/* Variables and functions */
- void* WEIGHT (int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int offCodeSum; void* offCodeSumBasePrice; int matchLengthSum; void* matchLengthSumBasePrice; int litLengthSum; void* litLengthSumBasePrice; int litSum; void* litSumBasePrice; } ;
+typedef TYPE_1__ optState_t ;
+
+
+ void* WEIGHT (int ,int) ;
 
 __attribute__((used)) static void ZSTD_setBasePrices(optState_t* optPtr, int optLevel)
 {

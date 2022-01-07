@@ -1,0 +1,58 @@
+; ModuleID = '/home/carl/AnghaBench/qmk_firmware/keyboards/crkbd/keymaps/edvorakjp/extr_oled.c_read_host_led_state.c'
+source_filename = "/home/carl/AnghaBench/qmk_firmware/keyboards/crkbd/keymaps/edvorakjp/extr_oled.c_read_host_led_state.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+@read_host_led_state.led_str = internal global [24 x i8] zeroinitializer, align 16
+@USB_LED_NUM_LOCK = common dso_local global i32 0, align 4
+@.str = private unnamed_addr constant [5 x i8] c"NMLK\00", align 1
+@.str.1 = private unnamed_addr constant [5 x i8] c"    \00", align 1
+@USB_LED_CAPS_LOCK = common dso_local global i32 0, align 4
+@.str.2 = private unnamed_addr constant [6 x i8] c" CAPS\00", align 1
+@USB_LED_SCROLL_LOCK = common dso_local global i32 0, align 4
+@.str.3 = private unnamed_addr constant [6 x i8] c" SCLK\00", align 1
+@.str.4 = private unnamed_addr constant [6 x i8] c"     \00", align 1
+
+; Function Attrs: noinline nounwind optnone uwtable
+define dso_local i8* @read_host_led_state() #0 {
+  %1 = call i32 (...) @host_keyboard_leds()
+  %2 = load i32, i32* @USB_LED_NUM_LOCK, align 4
+  %3 = shl i32 1, %2
+  %4 = and i32 %1, %3
+  %5 = icmp ne i32 %4, 0
+  %6 = zext i1 %5 to i64
+  %7 = select i1 %5, i8* getelementptr inbounds ([5 x i8], [5 x i8]* @.str, i64 0, i64 0), i8* getelementptr inbounds ([5 x i8], [5 x i8]* @.str.1, i64 0, i64 0)
+  %8 = call i32 @strcpy(i8* getelementptr inbounds ([24 x i8], [24 x i8]* @read_host_led_state.led_str, i64 0, i64 0), i8* %7)
+  %9 = call i32 (...) @host_keyboard_leds()
+  %10 = load i32, i32* @USB_LED_CAPS_LOCK, align 4
+  %11 = shl i32 1, %10
+  %12 = and i32 %9, %11
+  %13 = icmp ne i32 %12, 0
+  %14 = zext i1 %13 to i64
+  %15 = select i1 %13, i8* getelementptr inbounds ([6 x i8], [6 x i8]* @.str.2, i64 0, i64 0), i8* getelementptr inbounds ([5 x i8], [5 x i8]* @.str.1, i64 0, i64 0)
+  %16 = call i32 @strcat(i8* getelementptr inbounds ([24 x i8], [24 x i8]* @read_host_led_state.led_str, i64 0, i64 0), i8* %15)
+  %17 = call i32 (...) @host_keyboard_leds()
+  %18 = load i32, i32* @USB_LED_SCROLL_LOCK, align 4
+  %19 = shl i32 1, %18
+  %20 = and i32 %17, %19
+  %21 = icmp ne i32 %20, 0
+  %22 = zext i1 %21 to i64
+  %23 = select i1 %21, i8* getelementptr inbounds ([6 x i8], [6 x i8]* @.str.3, i64 0, i64 0), i8* getelementptr inbounds ([6 x i8], [6 x i8]* @.str.4, i64 0, i64 0)
+  %24 = call i32 @strcat(i8* getelementptr inbounds ([24 x i8], [24 x i8]* @read_host_led_state.led_str, i64 0, i64 0), i8* %23)
+  ret i8* getelementptr inbounds ([24 x i8], [24 x i8]* @read_host_led_state.led_str, i64 0, i64 0)
+}
+
+declare dso_local i32 @strcpy(i8*, i8*) #1
+
+declare dso_local i32 @host_keyboard_leds(...) #1
+
+declare dso_local i32 @strcat(i8*, i8*) #1
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

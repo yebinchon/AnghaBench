@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  rgn ;
-struct TYPE_4__ {int dwSize; int nCount; int nRgnSize; int /*<<< orphan*/  const rcBound; int /*<<< orphan*/  iType; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int rgn ;
+struct TYPE_4__ {int dwSize; int nCount; int nRgnSize; int const rcBound; int iType; } ;
 struct TYPE_5__ {TYPE_1__ rdh; scalar_t__ Buffer; } ;
-typedef  int /*<<< orphan*/  RGNDATAHEADER ;
-typedef  TYPE_2__ RGNDATA ;
-typedef  int /*<<< orphan*/  RECT ;
-typedef  int /*<<< orphan*/  HRGN ;
-typedef  int DWORD ;
+typedef int RGNDATAHEADER ;
+typedef TYPE_2__ RGNDATA ;
+typedef int RECT ;
+typedef int HRGN ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EqualRect (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*) ; 
- int GetRegionData (int /*<<< orphan*/ ,int,TYPE_2__*) ; 
- scalar_t__ IsRectEmpty (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  RDH_RECTANGLES ; 
- scalar_t__ broken (int) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  trace (char*,int,...) ; 
- int /*<<< orphan*/  wine_dbgstr_rect (int /*<<< orphan*/  const*) ; 
+
+ int EqualRect (int const*,int const*) ;
+ int GetRegionData (int ,int,TYPE_2__*) ;
+ scalar_t__ IsRectEmpty (int const*) ;
+ int RDH_RECTANGLES ;
+ scalar_t__ broken (int) ;
+ int ok (int,char*,...) ;
+ int trace (char*,int,...) ;
+ int wine_dbgstr_rect (int const*) ;
 
 __attribute__((used)) static void verify_region(HRGN hrgn, const RECT *rc)
 {
@@ -41,7 +41,7 @@ __attribute__((used)) static void verify_region(HRGN hrgn, const RECT *rc)
     const RECT *rect;
     DWORD ret;
 
-    ret = GetRegionData(hrgn, 0, NULL);
+    ret = GetRegionData(hrgn, 0, ((void*)0));
     if (IsRectEmpty(rc))
         ok(ret == sizeof(rgn.data.rdh), "expected sizeof(rdh), got %u\n", ret);
     else
@@ -71,14 +71,14 @@ __attribute__((used)) static void verify_region(HRGN hrgn, const RECT *rc)
     {
         ok(rgn.data.rdh.nCount == 0, "expected 0, got %u\n", rgn.data.rdh.nCount);
         ok(rgn.data.rdh.nRgnSize == 0 ||
-           broken(rgn.data.rdh.nRgnSize == 168), /* NT4 */
+           broken(rgn.data.rdh.nRgnSize == 168),
            "expected 0, got %u\n", rgn.data.rdh.nRgnSize);
     }
     else
     {
         ok(rgn.data.rdh.nCount == 1, "expected 1, got %u\n", rgn.data.rdh.nCount);
         ok(rgn.data.rdh.nRgnSize == sizeof(RECT) ||
-           broken(rgn.data.rdh.nRgnSize == 168), /* NT4 */
+           broken(rgn.data.rdh.nRgnSize == 168),
            "expected sizeof(RECT), got %u\n", rgn.data.rdh.nRgnSize);
     }
     ok(EqualRect(&rgn.data.rdh.rcBound, rc), "rects don't match\n");

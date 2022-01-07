@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct pdo_sqlite_func {int /*<<< orphan*/  step; int /*<<< orphan*/  astep; } ;
-typedef  int /*<<< orphan*/  sqlite3_value ;
-typedef  int /*<<< orphan*/  sqlite3_context ;
 
-/* Variables and functions */
- int /*<<< orphan*/  do_callback (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int /*<<< orphan*/ **,int /*<<< orphan*/ *,int) ; 
- scalar_t__ sqlite3_user_data (int /*<<< orphan*/ *) ; 
+
+
+
+struct pdo_sqlite_func {int step; int astep; } ;
+typedef int sqlite3_value ;
+typedef int sqlite3_context ;
+
+
+ int do_callback (int *,int *,int,int **,int *,int) ;
+ scalar_t__ sqlite3_user_data (int *) ;
 
 __attribute__((used)) static void php_sqlite3_func_step_callback(sqlite3_context *context, int argc,
-	sqlite3_value **argv)
+ sqlite3_value **argv)
 {
-	struct pdo_sqlite_func *func = (struct pdo_sqlite_func*)sqlite3_user_data(context);
+ struct pdo_sqlite_func *func = (struct pdo_sqlite_func*)sqlite3_user_data(context);
 
-	do_callback(&func->astep, &func->step, argc, argv, context, 1);
+ do_callback(&func->astep, &func->step, argc, argv, context, 1);
 }

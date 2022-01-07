@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u64 ;
+
+
+
+
+typedef int u64 ;
 struct kvm_vcpu {int dummy; } ;
 
-/* Variables and functions */
- scalar_t__ VCPU (struct kvm_vcpu*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lid ; 
+
+ scalar_t__ VCPU (struct kvm_vcpu*,int ) ;
+ int lid ;
 
 __attribute__((used)) static inline u64 vcpu_get_lid(struct kvm_vcpu *vcpu)
 {
-	return ((u64)VCPU(vcpu, lid));
+ return ((u64)VCPU(vcpu, lid));
 }

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {void* moved_from_abspath; void* session_relpath; void* outgoing_prop_changes; void* incoming_prop_changes; void* copyfrom_url; void* url; void* path; } ;
-typedef  TYPE_1__ svn_client_commit_item3_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+typedef TYPE_1__ svn_client_commit_item3_t ;
+typedef int apr_pool_t ;
 
-/* Variables and functions */
- TYPE_1__* apr_palloc (int /*<<< orphan*/ *,int) ; 
- void* apr_pstrdup (int /*<<< orphan*/ *,void*) ; 
- void* svn_prop_array_dup (void*,int /*<<< orphan*/ *) ; 
+
+ TYPE_1__* apr_palloc (int *,int) ;
+ void* apr_pstrdup (int *,void*) ;
+ void* svn_prop_array_dup (void*,int *) ;
 
 svn_client_commit_item3_t *
 svn_client_commit_item3_dup(const svn_client_commit_item3_t *item,

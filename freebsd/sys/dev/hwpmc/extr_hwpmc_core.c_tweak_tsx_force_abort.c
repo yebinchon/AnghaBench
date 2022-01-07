@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  uintptr_t u_int ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MSR_TSX_FORCE_ABORT ; 
- int /*<<< orphan*/  wrmsr (int /*<<< orphan*/ ,uintptr_t) ; 
+
+
+
+typedef uintptr_t u_int ;
+
+
+ int MSR_TSX_FORCE_ABORT ;
+ int wrmsr (int ,uintptr_t) ;
 
 __attribute__((used)) static void
 tweak_tsx_force_abort(void *arg)
 {
-	u_int val;
+ u_int val;
 
-	val = (uintptr_t)arg;
-	wrmsr(MSR_TSX_FORCE_ABORT, val);
+ val = (uintptr_t)arg;
+ wrmsr(MSR_TSX_FORCE_ABORT, val);
 }

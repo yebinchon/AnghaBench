@@ -1,19 +1,11 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  sprintf (char*,char*,int) ; 
- char* strerror (int) ; 
+ int sprintf (char*,char*,int) ;
+ char* strerror (int) ;
 
 char *
 safe_strerror (int errnum)
@@ -22,7 +14,7 @@ safe_strerror (int errnum)
   static char buf[32];
 
   msg = strerror (errnum);
-  if (msg == NULL)
+  if (msg == ((void*)0))
     {
       sprintf (buf, "(undocumented errno %d)", errnum);
       msg = buf;

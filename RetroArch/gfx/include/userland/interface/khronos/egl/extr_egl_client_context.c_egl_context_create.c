@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/ * shared_state; } ;
-typedef  TYPE_1__ VG_CLIENT_STATE_T ;
-typedef  int /*<<< orphan*/  VG_CLIENT_SHARED_STATE_T ;
-struct TYPE_8__ {int type; int is_current; int is_destroyed; void* servercontext; int /*<<< orphan*/ * state; int /*<<< orphan*/  renderbuffer; int /*<<< orphan*/  configname; int /*<<< orphan*/  display; int /*<<< orphan*/  name; } ;
-typedef  int /*<<< orphan*/  GLXX_CLIENT_STATE_T ;
-typedef  int EGL_CONTEXT_TYPE_T ;
-typedef  TYPE_2__ EGL_CONTEXT_T ;
-typedef  int /*<<< orphan*/  EGLDisplay ;
-typedef  int /*<<< orphan*/  EGLContext ;
-typedef  int /*<<< orphan*/  EGLConfig ;
-typedef  int /*<<< orphan*/  CLIENT_THREAD_STATE_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * CLIENT_GET_THREAD_STATE () ; 
- int /*<<< orphan*/  EGLINTCREATEGLES11_ID ; 
- int /*<<< orphan*/  EGLINTCREATEGLES20_ID ; 
- int /*<<< orphan*/  EGLINTCREATEVG_ID ; 
- int /*<<< orphan*/  EGL_NONE ; 
-#define  OPENGL_ES_11 130 
-#define  OPENGL_ES_20 129 
-#define  OPENVG 128 
- int /*<<< orphan*/  RPC_CALL2_RES (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,void*,int const) ; 
- void* RPC_UINT_RES (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  UNREACHABLE () ; 
- int /*<<< orphan*/  eglIntCreateGLES11_impl ; 
- int /*<<< orphan*/  eglIntCreateGLES20_impl ; 
- int /*<<< orphan*/  eglIntCreateVG_impl ; 
- int /*<<< orphan*/  gl11_client_state_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  gl20_client_state_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  glxx_client_state_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  khrn_platform_free (TYPE_2__*) ; 
- scalar_t__ khrn_platform_malloc (int,char*) ; 
- int /*<<< orphan*/  vg_client_shared_state_acquire (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * vg_client_shared_state_alloc () ; 
- int /*<<< orphan*/  vg_client_shared_state_release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * vg_client_state_alloc (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vg_client_state_free (TYPE_1__*) ; 
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int * shared_state; } ;
+typedef TYPE_1__ VG_CLIENT_STATE_T ;
+typedef int VG_CLIENT_SHARED_STATE_T ;
+struct TYPE_8__ {int type; int is_current; int is_destroyed; void* servercontext; int * state; int renderbuffer; int configname; int display; int name; } ;
+typedef int GLXX_CLIENT_STATE_T ;
+typedef int EGL_CONTEXT_TYPE_T ;
+typedef TYPE_2__ EGL_CONTEXT_T ;
+typedef int EGLDisplay ;
+typedef int EGLContext ;
+typedef int EGLConfig ;
+typedef int CLIENT_THREAD_STATE_T ;
+
+
+ int * CLIENT_GET_THREAD_STATE () ;
+ int EGLINTCREATEGLES11_ID ;
+ int EGLINTCREATEGLES20_ID ;
+ int EGLINTCREATEVG_ID ;
+ int EGL_NONE ;
+
+
+
+ int RPC_CALL2_RES (int ,int *,int ,void*,int const) ;
+ void* RPC_UINT_RES (int ) ;
+ int UNREACHABLE () ;
+ int eglIntCreateGLES11_impl ;
+ int eglIntCreateGLES20_impl ;
+ int eglIntCreateVG_impl ;
+ int gl11_client_state_init (int *) ;
+ int gl20_client_state_init (int *) ;
+ int glxx_client_state_free (int *) ;
+ int khrn_platform_free (TYPE_2__*) ;
+ scalar_t__ khrn_platform_malloc (int,char*) ;
+ int vg_client_shared_state_acquire (int *) ;
+ int * vg_client_shared_state_alloc () ;
+ int vg_client_shared_state_release (int *) ;
+ int * vg_client_state_alloc (int *) ;
+ int vg_client_state_free (TYPE_1__*) ;
 
 EGL_CONTEXT_T *egl_context_create(EGL_CONTEXT_T *share_context, EGLContext name, EGLDisplay display, EGLConfig configname, EGL_CONTEXT_TYPE_T type)
 {
@@ -64,12 +64,12 @@ EGL_CONTEXT_T *egl_context_create(EGL_CONTEXT_T *share_context, EGLContext name,
 
    context->renderbuffer = EGL_NONE;
 
-   context->is_current = false;
-   context->is_destroyed = false;
+   context->is_current = 0;
+   context->is_destroyed = 0;
 
    switch (type) {
-#ifndef NO_OPENVG
-   case OPENVG:
+
+   case 128:
    {
       VG_CLIENT_SHARED_STATE_T *shared_state;
       if (share_context) {
@@ -92,12 +92,12 @@ EGL_CONTEXT_T *egl_context_create(EGL_CONTEXT_T *share_context, EGLContext name,
 
       {
       CLIENT_THREAD_STATE_T *thread = CLIENT_GET_THREAD_STATE();
-         /* uint64_t pid = khronos_platform_get_process_id(); */ /* unused */
+
       context->servercontext = RPC_UINT_RES(RPC_CALL2_RES(eglIntCreateVG_impl,
                                                              thread,
                                                              EGLINTCREATEVG_ID,
                                                              share_context ? share_context->servercontext : 0,
-                                                          share_context ? share_context->type : OPENVG/*ignored*/));
+                                                          share_context ? share_context->type : 128 ));
       }
       if (!context->servercontext) {
          vg_client_state_free((VG_CLIENT_STATE_T *)context->state);
@@ -107,8 +107,8 @@ EGL_CONTEXT_T *egl_context_create(EGL_CONTEXT_T *share_context, EGLContext name,
 
       break;
    }
-#endif /* NO_OPENVG */
-   case OPENGL_ES_11:
+
+   case 130:
    {
       GLXX_CLIENT_STATE_T *state = (GLXX_CLIENT_STATE_T *)khrn_platform_malloc(sizeof(GLXX_CLIENT_STATE_T), "GLXX_CLIENT_STATE_T");
       if (!state) {
@@ -123,7 +123,7 @@ EGL_CONTEXT_T *egl_context_create(EGL_CONTEXT_T *share_context, EGLContext name,
                                                              thread,
                                                              EGLINTCREATEGLES11_ID,
                                                              share_context ? share_context->servercontext : 0,
-                                                             share_context ? share_context->type : OPENGL_ES_11/*ignored*/));
+                                                             share_context ? share_context->type : 130 ));
          if (!context->servercontext) {
             glxx_client_state_free(state);
             khrn_platform_free(context);
@@ -132,7 +132,7 @@ EGL_CONTEXT_T *egl_context_create(EGL_CONTEXT_T *share_context, EGLContext name,
       }
       break;
    }
-   case OPENGL_ES_20:
+   case 129:
    {
       GLXX_CLIENT_STATE_T *state = (GLXX_CLIENT_STATE_T *)khrn_platform_malloc(sizeof(GLXX_CLIENT_STATE_T), "GLXX_CLIENT_STATE_T");
       if (!state) {
@@ -148,7 +148,7 @@ EGL_CONTEXT_T *egl_context_create(EGL_CONTEXT_T *share_context, EGLContext name,
                                                              thread,
                                                              EGLINTCREATEGLES20_ID,
                                                              share_context ? share_context->servercontext : 0,
-                                                             share_context ? share_context->type : OPENGL_ES_20/*ignored*/));
+                                                             share_context ? share_context->type : 129 ));
          if (!context->servercontext) {
             glxx_client_state_free(state);
             khrn_platform_free(context);

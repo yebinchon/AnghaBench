@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ t_Handle ;
-struct TYPE_3__ {int /*<<< orphan*/  (* f_FM_MAC_Init ) (scalar_t__) ;int /*<<< orphan*/  macId; int /*<<< orphan*/  enetMode; int /*<<< orphan*/  h_Fm; int /*<<< orphan*/  f_FM_MAC_ConfigResetOnInit; scalar_t__ resetOnInit; } ;
-typedef  TYPE_1__ t_FmMacControllerDriver ;
-typedef  int /*<<< orphan*/  t_Error ;
 
-/* Variables and functions */
- scalar_t__ ENET_INTERFACE_FROM_MODE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  E_INVALID_HANDLE ; 
- int /*<<< orphan*/  E_INVALID_STATE ; 
- int /*<<< orphan*/  E_NOT_SUPPORTED ; 
- scalar_t__ E_OK ; 
- scalar_t__ FmResetMac (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MAJOR ; 
- int /*<<< orphan*/  MINOR ; 
- char* NO_MSG ; 
- int /*<<< orphan*/  RETURN_ERROR (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  SANITY_CHECK_RETURN_ERROR (TYPE_1__*,int /*<<< orphan*/ ) ; 
- scalar_t__ e_ENET_IF_XGMII ; 
- int /*<<< orphan*/  e_FM_MAC_10G ; 
- int /*<<< orphan*/  e_FM_MAC_1G ; 
- int /*<<< orphan*/  stub1 (scalar_t__) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ t_Handle ;
+struct TYPE_3__ {int (* f_FM_MAC_Init ) (scalar_t__) ;int macId; int enetMode; int h_Fm; int f_FM_MAC_ConfigResetOnInit; scalar_t__ resetOnInit; } ;
+typedef TYPE_1__ t_FmMacControllerDriver ;
+typedef int t_Error ;
+
+
+ scalar_t__ ENET_INTERFACE_FROM_MODE (int ) ;
+ int E_INVALID_HANDLE ;
+ int E_INVALID_STATE ;
+ int E_NOT_SUPPORTED ;
+ scalar_t__ E_OK ;
+ scalar_t__ FmResetMac (int ,int ,int ) ;
+ int MAJOR ;
+ int MINOR ;
+ char* NO_MSG ;
+ int RETURN_ERROR (int ,int ,char*) ;
+ int SANITY_CHECK_RETURN_ERROR (TYPE_1__*,int ) ;
+ scalar_t__ e_ENET_IF_XGMII ;
+ int e_FM_MAC_10G ;
+ int e_FM_MAC_1G ;
+ int stub1 (scalar_t__) ;
 
 t_Error FM_MAC_Init (t_Handle h_FmMac)
 {

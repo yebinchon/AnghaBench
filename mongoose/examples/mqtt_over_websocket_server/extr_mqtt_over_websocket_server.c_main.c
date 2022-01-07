@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct mg_mgr {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mg_mgr_init (struct mg_mgr*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mg_mgr_poll (struct mg_mgr*,int) ; 
- int /*<<< orphan*/  s_http_address ; 
- int /*<<< orphan*/  s_mqtt_address ; 
- int /*<<< orphan*/  start_http_server (struct mg_mgr*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  start_mqtt_server (struct mg_mgr*,int /*<<< orphan*/ ) ; 
+
+ int mg_mgr_init (struct mg_mgr*,int *) ;
+ int mg_mgr_poll (struct mg_mgr*,int) ;
+ int s_http_address ;
+ int s_mqtt_address ;
+ int start_http_server (struct mg_mgr*,int ) ;
+ int start_mqtt_server (struct mg_mgr*,int ) ;
 
 int main(void) {
   struct mg_mgr mgr;
-  mg_mgr_init(&mgr, NULL);
+  mg_mgr_init(&mgr, ((void*)0));
   start_http_server(&mgr, s_http_address);
   start_mqtt_server(&mgr, s_mqtt_address);
   for (;;) {

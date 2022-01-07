@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ptest ;
-struct TYPE_5__ {int iProtocol; int /*<<< orphan*/  dwServiceFlags1; int /*<<< orphan*/  iSocketType; int /*<<< orphan*/  iVersion; int /*<<< orphan*/  iAddressFamily; int /*<<< orphan*/  szProtocol; } ;
-typedef  TYPE_1__ WSAPROTOCOL_INFOW ;
-typedef  int INT ;
-typedef  scalar_t__ DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetProcessHeap () ; 
- TYPE_1__* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int IPPROTO_TCP ; 
- int IPPROTO_UDP ; 
- int SOCKET_ERROR ; 
- scalar_t__ WSAEFAULT ; 
- scalar_t__ WSAENOBUFS ; 
- int WSAEnumProtocolsW (int*,TYPE_1__*,scalar_t__*) ; 
- int WSAGetLastError () ; 
- scalar_t__ broken (int) ; 
- int /*<<< orphan*/  lstrlenW (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  test_service_flags (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int ptest ;
+struct TYPE_5__ {int iProtocol; int dwServiceFlags1; int iSocketType; int iVersion; int iAddressFamily; int szProtocol; } ;
+typedef TYPE_1__ WSAPROTOCOL_INFOW ;
+typedef int INT ;
+typedef scalar_t__ DWORD ;
+
+
+ int GetProcessHeap () ;
+ TYPE_1__* HeapAlloc (int ,int ,scalar_t__) ;
+ int HeapFree (int ,int ,TYPE_1__*) ;
+ int IPPROTO_TCP ;
+ int IPPROTO_UDP ;
+ int SOCKET_ERROR ;
+ scalar_t__ WSAEFAULT ;
+ scalar_t__ WSAENOBUFS ;
+ int WSAEnumProtocolsW (int*,TYPE_1__*,scalar_t__*) ;
+ int WSAGetLastError () ;
+ scalar_t__ broken (int) ;
+ int lstrlenW (int ) ;
+ int ok (int,char*,...) ;
+ int test_service_flags (int ,int ,int ,int,int ) ;
 
 __attribute__((used)) static void test_WSAEnumProtocolsW(void)
 {
@@ -40,14 +40,14 @@ __attribute__((used)) static void test_WSAEnumProtocolsW(void)
     WSAPROTOCOL_INFOW info, *buffer;
     INT ptest[] = {0xdead, IPPROTO_TCP, 0xcafe, IPPROTO_UDP, 0xbeef, 0};
 
-    ret = WSAEnumProtocolsW( NULL, NULL, &len );
+    ret = WSAEnumProtocolsW( ((void*)0), ((void*)0), &len );
     ok( ret == SOCKET_ERROR, "WSAEnumProtocolsW() succeeded unexpectedly\n");
     error = WSAGetLastError();
     ok( error == WSAENOBUFS, "Expected 10055, received %d\n", error);
 
     len = 0;
 
-    ret = WSAEnumProtocolsW( NULL, &info, &len );
+    ret = WSAEnumProtocolsW( ((void*)0), &info, &len );
     ok( ret == SOCKET_ERROR, "WSAEnumProtocolsW() succeeded unexpectedly\n");
     error = WSAGetLastError();
     ok( error == WSAENOBUFS, "Expected 10055, received %d\n", error);
@@ -56,7 +56,7 @@ __attribute__((used)) static void test_WSAEnumProtocolsW(void)
 
     if (buffer)
     {
-        ret = WSAEnumProtocolsW( NULL, buffer, &len );
+        ret = WSAEnumProtocolsW( ((void*)0), buffer, &len );
         ok( ret != SOCKET_ERROR, "WSAEnumProtocolsW() failed unexpectedly: %d\n",
             WSAGetLastError() );
 
@@ -71,11 +71,11 @@ __attribute__((used)) static void test_WSAEnumProtocolsW(void)
         HeapFree( GetProcessHeap(), 0, buffer );
     }
 
-    /* Test invalid protocols in the list */
-    ret = WSAEnumProtocolsW( ptest, NULL, &len );
+
+    ret = WSAEnumProtocolsW( ptest, ((void*)0), &len );
     ok( ret == SOCKET_ERROR, "WSAEnumProtocolsW() succeeded unexpectedly\n");
     error = WSAGetLastError();
-    ok( error == WSAENOBUFS || broken(error == WSAEFAULT) /* NT4 */,
+    ok( error == WSAENOBUFS || broken(error == WSAEFAULT) ,
        "Expected 10055, received %d\n", error);
 
     buffer = HeapAlloc( GetProcessHeap(), 0, len );

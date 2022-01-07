@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  rnd2 ;
-typedef  int /*<<< orphan*/  rnd1 ;
-typedef  int /*<<< orphan*/  BYTE ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- scalar_t__ CryptGenRandom (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- scalar_t__ GetLastError () ; 
- scalar_t__ NTE_FAIL ; 
- int /*<<< orphan*/  hProv ; 
- int /*<<< orphan*/  memcmp (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ok (int /*<<< orphan*/ ,char*,...) ; 
+
+
+
+typedef int rnd2 ;
+typedef int rnd1 ;
+typedef int BYTE ;
+typedef scalar_t__ BOOL ;
+
+
+ scalar_t__ CryptGenRandom (int ,int,int *) ;
+ scalar_t__ GetLastError () ;
+ scalar_t__ NTE_FAIL ;
+ int hProv ;
+ int memcmp (int *,int *,int) ;
+ int memset (int *,int ,int) ;
+ int ok (int ,char*,...) ;
 
 __attribute__((used)) static void test_gen_random(void)
 {
@@ -34,10 +34,10 @@ __attribute__((used)) static void test_gen_random(void)
 
     result = CryptGenRandom(hProv, sizeof(rnd1), rnd1);
     if (!result && GetLastError() == NTE_FAIL) {
-        /* rsaenh compiled without OpenSSL */
+
         return;
     }
-    
+
     ok(result, "%08x\n", GetLastError());
 
     result = CryptGenRandom(hProv, sizeof(rnd2), rnd2);

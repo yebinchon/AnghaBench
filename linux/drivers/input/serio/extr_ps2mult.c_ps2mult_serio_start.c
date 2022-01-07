@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct serio {struct ps2mult_port* port_data; int /*<<< orphan*/  parent; } ;
+
+
+
+
+struct serio {struct ps2mult_port* port_data; int parent; } ;
 struct ps2mult_port {int registered; } ;
-struct ps2mult {int /*<<< orphan*/  lock; } ;
+struct ps2mult {int lock; } ;
 
-/* Variables and functions */
- struct ps2mult* serio_get_drvdata (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
+
+ struct ps2mult* serio_get_drvdata (int ) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
 
 __attribute__((used)) static int ps2mult_serio_start(struct serio *serio)
 {
-	struct ps2mult *psm = serio_get_drvdata(serio->parent);
-	struct ps2mult_port *port = serio->port_data;
-	unsigned long flags;
+ struct ps2mult *psm = serio_get_drvdata(serio->parent);
+ struct ps2mult_port *port = serio->port_data;
+ unsigned long flags;
 
-	spin_lock_irqsave(&psm->lock, flags);
-	port->registered = true;
-	spin_unlock_irqrestore(&psm->lock, flags);
+ spin_lock_irqsave(&psm->lock, flags);
+ port->registered = 1;
+ spin_unlock_irqrestore(&psm->lock, flags);
 
-	return 0;
+ return 0;
 }

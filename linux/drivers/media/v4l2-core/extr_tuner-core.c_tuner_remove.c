@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/ * analog_demod_priv; } ;
-struct tuner {int /*<<< orphan*/  list; TYPE_1__ fe; int /*<<< orphan*/  sd; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int * analog_demod_priv; } ;
+struct tuner {int list; TYPE_1__ fe; int sd; } ;
 struct i2c_client {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  i2c_get_clientdata (struct i2c_client*) ; 
- int /*<<< orphan*/  kfree (struct tuner*) ; 
- int /*<<< orphan*/  list_del (int /*<<< orphan*/ *) ; 
- struct tuner* to_tuner (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tuner_detach (TYPE_1__*) ; 
- int /*<<< orphan*/  v4l2_device_unregister_subdev (int /*<<< orphan*/ *) ; 
+
+ int i2c_get_clientdata (struct i2c_client*) ;
+ int kfree (struct tuner*) ;
+ int list_del (int *) ;
+ struct tuner* to_tuner (int ) ;
+ int tuner_detach (TYPE_1__*) ;
+ int v4l2_device_unregister_subdev (int *) ;
 
 __attribute__((used)) static int tuner_remove(struct i2c_client *client)
 {
-	struct tuner *t = to_tuner(i2c_get_clientdata(client));
+ struct tuner *t = to_tuner(i2c_get_clientdata(client));
 
-	v4l2_device_unregister_subdev(&t->sd);
-	tuner_detach(&t->fe);
-	t->fe.analog_demod_priv = NULL;
+ v4l2_device_unregister_subdev(&t->sd);
+ tuner_detach(&t->fe);
+ t->fe.analog_demod_priv = ((void*)0);
 
-	list_del(&t->list);
-	kfree(t);
-	return 0;
+ list_del(&t->list);
+ kfree(t);
+ return 0;
 }

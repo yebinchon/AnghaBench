@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  rtx ;
 
-/* Variables and functions */
- int /*<<< orphan*/  delete_insn (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  emit_jump_insn (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  emit_label_before (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_jump (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_label_rtx () ; 
- int get_attr_min_length (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  get_insns () ; 
+
+
+
+typedef int rtx ;
+
+
+ int delete_insn (int ) ;
+ int emit_jump_insn (int ) ;
+ int emit_label_before (int ,int ) ;
+ int gen_jump (int ) ;
+ int gen_label_rtx () ;
+ int get_attr_min_length (int ) ;
+ int get_insns () ;
 
 __attribute__((used)) static int
 get_uncond_jump_length (void)

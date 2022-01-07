@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  nsIDOMNode ;
-typedef  int /*<<< orphan*/  nsIDOMHTMLCollection ;
-struct TYPE_2__ {size_t len; size_t size; int /*<<< orphan*/ * buf; } ;
-typedef  TYPE_1__ elem_vector_t ;
-typedef  size_t UINT32 ;
-typedef  int /*<<< orphan*/  IHTMLElementCollection ;
-typedef  int /*<<< orphan*/  HTMLElement ;
-typedef  int /*<<< orphan*/  HTMLDocumentNode ;
-typedef  int /*<<< orphan*/  HTMLDOMNode ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * HTMLElementCollection_Create (int /*<<< orphan*/ *,size_t) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  elem_from_HTMLDOMNode (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  get_node (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/ * heap_alloc (int) ; 
- int /*<<< orphan*/  heap_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsIDOMHTMLCollection_GetLength (int /*<<< orphan*/ *,size_t*) ; 
- int /*<<< orphan*/  nsIDOMHTMLCollection_Item (int /*<<< orphan*/ *,size_t,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  nsIDOMNode_Release (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int nsIDOMNode ;
+typedef int nsIDOMHTMLCollection ;
+struct TYPE_2__ {size_t len; size_t size; int * buf; } ;
+typedef TYPE_1__ elem_vector_t ;
+typedef size_t UINT32 ;
+typedef int IHTMLElementCollection ;
+typedef int HTMLElement ;
+typedef int HTMLDocumentNode ;
+typedef int HTMLDOMNode ;
+typedef int HRESULT ;
+
+
+ scalar_t__ FAILED (int ) ;
+ int * HTMLElementCollection_Create (int *,size_t) ;
+ int S_OK ;
+ int TRUE ;
+ int elem_from_HTMLDOMNode (int *) ;
+ int get_node (int *,int *,int ,int **) ;
+ int * heap_alloc (int) ;
+ int heap_free (int *) ;
+ int nsIDOMHTMLCollection_GetLength (int *,size_t*) ;
+ int nsIDOMHTMLCollection_Item (int *,size_t,int **) ;
+ int nsIDOMNode_Release (int *) ;
 
 IHTMLElementCollection *create_collection_from_htmlcol(HTMLDocumentNode *doc, nsIDOMHTMLCollection *nscol)
 {
@@ -59,12 +59,12 @@ IHTMLElementCollection *create_collection_from_htmlcol(HTMLDocumentNode *doc, ns
             buf.buf[i] = elem_from_HTMLDOMNode(node);
         }
     }else {
-        buf.buf = NULL;
+        buf.buf = ((void*)0);
     }
 
     if(FAILED(hres)) {
         heap_free(buf.buf);
-        return NULL;
+        return ((void*)0);
     }
 
     return HTMLElementCollection_Create(buf.buf, buf.len);

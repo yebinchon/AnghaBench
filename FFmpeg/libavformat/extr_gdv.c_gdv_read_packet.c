@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
+
+
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_16__ {TYPE_3__* pb; TYPE_1__* priv_data; } ;
 struct TYPE_15__ {int error; } ;
-struct TYPE_14__ {int stream_index; int /*<<< orphan*/  flags; } ;
-struct TYPE_13__ {int audio_size; int is_audio; scalar_t__ is_first_video; int /*<<< orphan*/  pal; } ;
-typedef  TYPE_1__ GDVContext ;
-typedef  TYPE_2__ AVPacket ;
-typedef  TYPE_3__ AVIOContext ;
-typedef  TYPE_4__ AVFormatContext ;
+struct TYPE_14__ {int stream_index; int flags; } ;
+struct TYPE_13__ {int audio_size; int is_audio; scalar_t__ is_first_video; int pal; } ;
+typedef TYPE_1__ GDVContext ;
+typedef TYPE_2__ AVPacket ;
+typedef TYPE_3__ AVIOContext ;
+typedef TYPE_4__ AVFormatContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_EOF ; 
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AVPALETTE_SIZE ; 
- int /*<<< orphan*/  AV_PKT_DATA_PALETTE ; 
- int /*<<< orphan*/  AV_PKT_FLAG_KEY ; 
- int /*<<< orphan*/  ENOMEM ; 
- int av_get_packet (TYPE_3__*,TYPE_2__*,int) ; 
- int /*<<< orphan*/ * av_packet_new_side_data (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_packet_unref (TYPE_2__*) ; 
- scalar_t__ avio_feof (TYPE_3__*) ; 
- int avio_rl16 (TYPE_3__*) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_EOF ;
+ int AVERROR_INVALIDDATA ;
+ int AVPALETTE_SIZE ;
+ int AV_PKT_DATA_PALETTE ;
+ int AV_PKT_FLAG_KEY ;
+ int ENOMEM ;
+ int av_get_packet (TYPE_3__*,TYPE_2__*,int) ;
+ int * av_packet_new_side_data (TYPE_2__*,int ,int ) ;
+ int av_packet_unref (TYPE_2__*) ;
+ scalar_t__ avio_feof (TYPE_3__*) ;
+ int avio_rl16 (TYPE_3__*) ;
+ int memcpy (int *,int ,int ) ;
 
 __attribute__((used)) static int gdv_read_packet(AVFormatContext *ctx, AVPacket *pkt)
 {

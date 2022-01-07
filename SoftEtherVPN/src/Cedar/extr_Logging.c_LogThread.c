@@ -1,135 +1,127 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  current_logfile_datename ;
-typedef  int /*<<< orphan*/  current_file_name ;
-typedef  int /*<<< orphan*/  UINT64 ;
-typedef  scalar_t__ UINT ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int current_logfile_datename ;
+typedef int current_file_name ;
+typedef int UINT64 ;
+typedef scalar_t__ UINT ;
 struct TYPE_7__ {scalar_t__ num_item; } ;
-struct TYPE_6__ {int /*<<< orphan*/  Event; TYPE_2__* RecordQueue; scalar_t__ Halt; } ;
-typedef  int /*<<< orphan*/  THREAD ;
-typedef  TYPE_1__ LOG ;
-typedef  int /*<<< orphan*/  IO ;
-typedef  int /*<<< orphan*/  BUF ;
+struct TYPE_6__ {int Event; TYPE_2__* RecordQueue; scalar_t__ Halt; } ;
+typedef int THREAD ;
+typedef TYPE_1__ LOG ;
+typedef int IO ;
+typedef int BUF ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FileCloseEx (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  FreeBuf (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * GetIO4Stdout () ; 
- int /*<<< orphan*/  LockQueue (TYPE_2__*) ; 
- int /*<<< orphan*/  LogThreadWriteGeneral (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ **,int*,char*,char*) ; 
- int /*<<< orphan*/  LogThreadWriteStdout (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int MAX_SIZE ; 
- int /*<<< orphan*/  MsSetThreadPriorityIdle () ; 
- int /*<<< orphan*/  MsSetThreadPriorityRealtime () ; 
- int /*<<< orphan*/ * NewBuf () ; 
- int /*<<< orphan*/  NoticeThreadInit (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Tick64 () ; 
- int /*<<< orphan*/  UnlockQueue (TYPE_2__*) ; 
- int /*<<< orphan*/  Wait (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  Zero (char*,int) ; 
- scalar_t__ g_foreground ; 
+
+ int FileCloseEx (int *,int) ;
+ int FreeBuf (int *) ;
+ int * GetIO4Stdout () ;
+ int LockQueue (TYPE_2__*) ;
+ int LogThreadWriteGeneral (TYPE_1__*,int *,int **,int*,char*,char*) ;
+ int LogThreadWriteStdout (TYPE_1__*,int *,int *) ;
+ int MAX_SIZE ;
+ int MsSetThreadPriorityIdle () ;
+ int MsSetThreadPriorityRealtime () ;
+ int * NewBuf () ;
+ int NoticeThreadInit (int *) ;
+ int Tick64 () ;
+ int UnlockQueue (TYPE_2__*) ;
+ int Wait (int ,int) ;
+ int Zero (char*,int) ;
+ scalar_t__ g_foreground ;
 
 void LogThread(THREAD *thread, void *param)
 {
-	LOG *g;
-	IO *io;
-	BUF *b;
-	bool flag = false;
-	char current_file_name[MAX_SIZE];
-	char current_logfile_datename[MAX_SIZE];
-	bool log_date_changed = false;
-	// Validate arguments
-	if (thread == NULL || param == NULL)
-	{
-		return;
-	}
+ LOG *g;
+ IO *io;
+ BUF *b;
+ bool flag = 0;
+ char current_file_name[MAX_SIZE];
+ char current_logfile_datename[MAX_SIZE];
+ bool log_date_changed = 0;
 
-	Zero(current_file_name, sizeof(current_file_name));
-	Zero(current_logfile_datename, sizeof(current_logfile_datename));
+ if (thread == ((void*)0) || param == ((void*)0))
+ {
+  return;
+ }
 
-	g = (LOG *)param;
+ Zero(current_file_name, sizeof(current_file_name));
+ Zero(current_logfile_datename, sizeof(current_logfile_datename));
 
-	io = g_foreground ? GetIO4Stdout() : NULL;
-	b = NewBuf();
+ g = (LOG *)param;
 
-#ifdef	OS_WIN32
+ io = g_foreground ? GetIO4Stdout() : ((void*)0);
+ b = NewBuf();
+ NoticeThreadInit(thread);
 
-	// Lower priority to bottom
-	MsSetThreadPriorityIdle();
+ while (1)
+ {
+  UINT64 s = Tick64();
 
-#endif	// OS_WIN32
+  while (1)
+  {
+   if (g_foreground)
+   {
+    if (! LogThreadWriteStdout(g, b, io))
+    {
+     break;
+    }
+   }
+   else
+   {
+    if (! LogThreadWriteGeneral(g, b, &io, &log_date_changed, current_logfile_datename, current_file_name))
+    {
+     break;
+    }
+   }
+  }
 
-	NoticeThreadInit(thread);
+  if (g->Halt)
+  {
 
-	while (true)
-	{
-		UINT64 s = Tick64();
 
-		while (true)
-		{
-			if (g_foreground)
-			{
-				if (! LogThreadWriteStdout(g, b, io))
-				{
-					break;
-				}
-			}
-			else
-			{
-				if (! LogThreadWriteGeneral(g, b, &io, &log_date_changed, current_logfile_datename, current_file_name))
-				{
-					break;
-				}
-			}
-		}
+   UINT num;
 
-		if (g->Halt)
-		{
-			// Break after finishing to save all records
-			// when the stop flag stood
-			UINT num;
+   if (flag == 0)
+   {
 
-			if (flag == false)
-			{
-#ifdef	OS_WIN32
-				MsSetThreadPriorityRealtime();
-#endif	// OS_WIN32
-				flag = true;
-			}
 
-			LockQueue(g->RecordQueue);
-			{
-				num = g->RecordQueue->num_item;
-			}
-			UnlockQueue(g->RecordQueue);
 
-			if (num == 0 || io == NULL)
-			{
-				break;
-			}
-		}
-		else
-		{
-			Wait(g->Event, 9821);
-		}
-	}
+    flag = 1;
+   }
 
-	if (io != NULL && !g_foreground)
-	{
-		FileCloseEx(io, true);
-	}
+   LockQueue(g->RecordQueue);
+   {
+    num = g->RecordQueue->num_item;
+   }
+   UnlockQueue(g->RecordQueue);
 
-	FreeBuf(b);
+   if (num == 0 || io == ((void*)0))
+   {
+    break;
+   }
+  }
+  else
+  {
+   Wait(g->Event, 9821);
+  }
+ }
+
+ if (io != ((void*)0) && !g_foreground)
+ {
+  FileCloseEx(io, 1);
+ }
+
+ FreeBuf(b);
 }

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct platform_device {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  bcm2835_camera ; 
- int /*<<< orphan*/  cdev_del (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  device_destroy (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  platform_device_unregister (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vchiq_cdev ; 
- int /*<<< orphan*/  vchiq_class ; 
- int /*<<< orphan*/  vchiq_debugfs_deinit () ; 
- int /*<<< orphan*/  vchiq_devid ; 
+
+ int bcm2835_camera ;
+ int cdev_del (int *) ;
+ int device_destroy (int ,int ) ;
+ int platform_device_unregister (int ) ;
+ int vchiq_cdev ;
+ int vchiq_class ;
+ int vchiq_debugfs_deinit () ;
+ int vchiq_devid ;
 
 __attribute__((used)) static int vchiq_remove(struct platform_device *pdev)
 {
-	platform_device_unregister(bcm2835_camera);
-	vchiq_debugfs_deinit();
-	device_destroy(vchiq_class, vchiq_devid);
-	cdev_del(&vchiq_cdev);
+ platform_device_unregister(bcm2835_camera);
+ vchiq_debugfs_deinit();
+ device_destroy(vchiq_class, vchiq_devid);
+ cdev_del(&vchiq_cdev);
 
-	return 0;
+ return 0;
 }

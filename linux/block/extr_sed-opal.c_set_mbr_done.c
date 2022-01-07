@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
+
+
+
+
+typedef int u8 ;
 struct opal_dev {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OPAL_ENDLIST ; 
- int /*<<< orphan*/  OPAL_ENDNAME ; 
- size_t OPAL_MBRCONTROL ; 
- int /*<<< orphan*/  OPAL_MBRDONE ; 
- size_t OPAL_SET ; 
- int /*<<< orphan*/  OPAL_STARTLIST ; 
- int /*<<< orphan*/  OPAL_STARTNAME ; 
- int /*<<< orphan*/  OPAL_VALUES ; 
- int /*<<< orphan*/  add_token_u8 (int*,struct opal_dev*,int /*<<< orphan*/ ) ; 
- int cmd_start (struct opal_dev*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int finalize_and_send (struct opal_dev*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * opalmethod ; 
- int /*<<< orphan*/ * opaluid ; 
- int /*<<< orphan*/  parse_and_check_status ; 
- int /*<<< orphan*/  pr_debug (char*) ; 
+
+ int OPAL_ENDLIST ;
+ int OPAL_ENDNAME ;
+ size_t OPAL_MBRCONTROL ;
+ int OPAL_MBRDONE ;
+ size_t OPAL_SET ;
+ int OPAL_STARTLIST ;
+ int OPAL_STARTNAME ;
+ int OPAL_VALUES ;
+ int add_token_u8 (int*,struct opal_dev*,int ) ;
+ int cmd_start (struct opal_dev*,int ,int ) ;
+ int finalize_and_send (struct opal_dev*,int ) ;
+ int * opalmethod ;
+ int * opaluid ;
+ int parse_and_check_status ;
+ int pr_debug (char*) ;
 
 __attribute__((used)) static int set_mbr_done(struct opal_dev *dev, void *data)
 {
-	u8 *mbr_done_tf = data;
-	int err;
+ u8 *mbr_done_tf = data;
+ int err;
 
-	err = cmd_start(dev, opaluid[OPAL_MBRCONTROL],
-			opalmethod[OPAL_SET]);
+ err = cmd_start(dev, opaluid[OPAL_MBRCONTROL],
+   opalmethod[OPAL_SET]);
 
-	add_token_u8(&err, dev, OPAL_STARTNAME);
-	add_token_u8(&err, dev, OPAL_VALUES);
-	add_token_u8(&err, dev, OPAL_STARTLIST);
-	add_token_u8(&err, dev, OPAL_STARTNAME);
-	add_token_u8(&err, dev, OPAL_MBRDONE);
-	add_token_u8(&err, dev, *mbr_done_tf); /* Done T or F */
-	add_token_u8(&err, dev, OPAL_ENDNAME);
-	add_token_u8(&err, dev, OPAL_ENDLIST);
-	add_token_u8(&err, dev, OPAL_ENDNAME);
+ add_token_u8(&err, dev, OPAL_STARTNAME);
+ add_token_u8(&err, dev, OPAL_VALUES);
+ add_token_u8(&err, dev, OPAL_STARTLIST);
+ add_token_u8(&err, dev, OPAL_STARTNAME);
+ add_token_u8(&err, dev, OPAL_MBRDONE);
+ add_token_u8(&err, dev, *mbr_done_tf);
+ add_token_u8(&err, dev, OPAL_ENDNAME);
+ add_token_u8(&err, dev, OPAL_ENDLIST);
+ add_token_u8(&err, dev, OPAL_ENDNAME);
 
-	if (err) {
-		pr_debug("Error Building set MBR Done command\n");
-		return err;
-	}
+ if (err) {
+  pr_debug("Error Building set MBR Done command\n");
+  return err;
+ }
 
-	return finalize_and_send(dev, parse_and_check_status);
+ return finalize_and_send(dev, parse_and_check_status);
 }

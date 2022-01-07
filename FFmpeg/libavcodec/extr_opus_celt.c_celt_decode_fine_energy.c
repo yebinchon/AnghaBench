@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_5__ {float* energy; } ;
 struct TYPE_4__ {int start_band; int end_band; int* fine_bits; int channels; TYPE_2__* block; } ;
-typedef  int /*<<< orphan*/  OpusRangeCoder ;
-typedef  TYPE_1__ CeltFrame ;
-typedef  TYPE_2__ CeltBlock ;
+typedef int OpusRangeCoder ;
+typedef TYPE_1__ CeltFrame ;
+typedef TYPE_2__ CeltBlock ;
 
-/* Variables and functions */
- int ff_opus_rc_get_raw (int /*<<< orphan*/ *,int) ; 
+
+ int ff_opus_rc_get_raw (int *,int) ;
 
 __attribute__((used)) static void celt_decode_fine_energy(CeltFrame *f, OpusRangeCoder *rc)
 {

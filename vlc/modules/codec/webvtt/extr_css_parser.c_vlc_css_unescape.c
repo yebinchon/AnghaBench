@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  CodePointToUTF8 (unsigned int,char*) ; 
- scalar_t__ isxdigit (char) ; 
- scalar_t__ strchr (char*,char) ; 
- unsigned int strtoul (char const*,int /*<<< orphan*/ *,int) ; 
+ int CodePointToUTF8 (unsigned int,char*) ;
+ scalar_t__ isxdigit (char) ;
+ scalar_t__ strchr (char*,char) ;
+ unsigned int strtoul (char const*,int *,int) ;
 
 void vlc_css_unescape( char *psz )
 {
@@ -29,7 +21,7 @@ void vlc_css_unescape( char *psz )
         if( *r == '\\' )
         {
             r++;
-            /* newlines */
+
             if( *r == 0 )
             {
                 break;
@@ -65,7 +57,7 @@ void vlc_css_unescape( char *psz )
                     r++;
                 const char backup = *r;
                 *r = 0;
-                unsigned i_value = strtoul( p_start, NULL, 16 );
+                unsigned i_value = strtoul( p_start, ((void*)0), 16 );
                 *r = backup;
                 if( i < 6 && *r && *r == ' ' )
                     r++;

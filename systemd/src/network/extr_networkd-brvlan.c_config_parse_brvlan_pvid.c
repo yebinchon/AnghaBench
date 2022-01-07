@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint16_t ;
-struct TYPE_2__ {int use_br_vlan; int /*<<< orphan*/  pvid; } ;
-typedef  TYPE_1__ Network ;
 
-/* Variables and functions */
- int parse_vlanid (char const*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int uint16_t ;
+struct TYPE_2__ {int use_br_vlan; int pvid; } ;
+typedef TYPE_1__ Network ;
+
+
+ int parse_vlanid (char const*,int *) ;
 
 int config_parse_brvlan_pvid(const char *unit, const char *filename,
                              unsigned line, const char *section,
@@ -32,7 +32,7 @@ int config_parse_brvlan_pvid(const char *unit, const char *filename,
                 return r;
 
         network->pvid = pvid;
-        network->use_br_vlan = true;
+        network->use_br_vlan = 1;
 
         return 0;
 }

@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {char* name; char* uri; int /*<<< orphan*/  hr; } ;
-typedef  TYPE_1__ ns_item_t ;
-typedef  scalar_t__ VARIANT_BOOL ;
-typedef  int LONG ;
-typedef  int /*<<< orphan*/  IXMLDOMNodeList ;
-typedef  void IXMLDOMNode ;
-typedef  int /*<<< orphan*/  IXMLDOMNamedNodeMap ;
-typedef  int /*<<< orphan*/  IXMLDOMElement ;
-typedef  int /*<<< orphan*/  IXMLDOMDocument ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EXPECT_HR (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  E_INVALIDARG ; 
- int /*<<< orphan*/  IID_IXMLDOMDocument ; 
- int /*<<< orphan*/  IID_IXMLDOMElement ; 
- int /*<<< orphan*/  IXMLDOMDocument_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IXMLDOMDocument_get_documentElement (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IXMLDOMDocument_loadXML (int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__*) ; 
- int /*<<< orphan*/  IXMLDOMDocument_selectSingleNode (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IXMLDOMElement_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IXMLDOMElement_get_attributes (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IXMLDOMElement_get_childNodes (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IXMLDOMNamedNodeMap_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IXMLDOMNamedNodeMap_getNamedItem (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IXMLDOMNamedNodeMap_getQualifiedItem (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IXMLDOMNamedNodeMap_get_length (int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  IXMLDOMNodeList_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IXMLDOMNodeList_get_item (int /*<<< orphan*/ *,int,void**) ; 
- int /*<<< orphan*/  IXMLDOMNode_QueryInterface (void*,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IXMLDOMNode_Release (void*) ; 
- int /*<<< orphan*/  IXMLDOMNode_get_attributes (void*,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  S_OK ; 
- scalar_t__ VARIANT_TRUE ; 
- int /*<<< orphan*/ * _bstr_ (char*) ; 
- char* complete4A ; 
- int /*<<< orphan*/ * create_document (int /*<<< orphan*/ *) ; 
- char* default_ns_doc ; 
- int /*<<< orphan*/  free_bstrs () ; 
- TYPE_1__* named_item_tests ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- TYPE_1__* qualified_item_tests ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {char* name; char* uri; int hr; } ;
+typedef TYPE_1__ ns_item_t ;
+typedef scalar_t__ VARIANT_BOOL ;
+typedef int LONG ;
+typedef int IXMLDOMNodeList ;
+typedef void IXMLDOMNode ;
+typedef int IXMLDOMNamedNodeMap ;
+typedef int IXMLDOMElement ;
+typedef int IXMLDOMDocument ;
+typedef int HRESULT ;
+
+
+ int EXPECT_HR (int ,int ) ;
+ int E_INVALIDARG ;
+ int IID_IXMLDOMDocument ;
+ int IID_IXMLDOMElement ;
+ int IXMLDOMDocument_Release (int *) ;
+ int IXMLDOMDocument_get_documentElement (int *,int **) ;
+ int IXMLDOMDocument_loadXML (int *,int *,scalar_t__*) ;
+ int IXMLDOMDocument_selectSingleNode (int *,int *,void**) ;
+ int IXMLDOMElement_Release (int *) ;
+ int IXMLDOMElement_get_attributes (int *,int **) ;
+ int IXMLDOMElement_get_childNodes (int *,int **) ;
+ int IXMLDOMNamedNodeMap_Release (int *) ;
+ int IXMLDOMNamedNodeMap_getNamedItem (int *,int *,void**) ;
+ int IXMLDOMNamedNodeMap_getQualifiedItem (int *,int *,int *,void**) ;
+ int IXMLDOMNamedNodeMap_get_length (int *,int*) ;
+ int IXMLDOMNodeList_Release (int *) ;
+ int IXMLDOMNodeList_get_item (int *,int,void**) ;
+ int IXMLDOMNode_QueryInterface (void*,int *,void**) ;
+ int IXMLDOMNode_Release (void*) ;
+ int IXMLDOMNode_get_attributes (void*,int **) ;
+ int S_OK ;
+ scalar_t__ VARIANT_TRUE ;
+ int * _bstr_ (char*) ;
+ char* complete4A ;
+ int * create_document (int *) ;
+ char* default_ns_doc ;
+ int free_bstrs () ;
+ TYPE_1__* named_item_tests ;
+ int ok (int,char*,...) ;
+ TYPE_1__* qualified_item_tests ;
 
 __attribute__((used)) static void test_getQualifiedItem(void)
 {
@@ -91,18 +91,18 @@ __attribute__((used)) static void test_getQualifiedItem(void)
     EXPECT_HR(hr, S_OK);
     ok( len == 3, "length %d\n", len);
 
-    hr = IXMLDOMNamedNodeMap_getQualifiedItem(map, NULL, NULL, NULL);
+    hr = IXMLDOMNamedNodeMap_getQualifiedItem(map, ((void*)0), ((void*)0), ((void*)0));
     EXPECT_HR(hr, E_INVALIDARG);
 
     node = (void*)0xdeadbeef;
-    hr = IXMLDOMNamedNodeMap_getQualifiedItem(map, NULL, NULL, &node);
+    hr = IXMLDOMNamedNodeMap_getQualifiedItem(map, ((void*)0), ((void*)0), &node);
     EXPECT_HR(hr, E_INVALIDARG);
     ok( node == (void*)0xdeadbeef, "got %p\n", node);
 
-    hr = IXMLDOMNamedNodeMap_getQualifiedItem(map, _bstr_("id"), NULL, NULL);
+    hr = IXMLDOMNamedNodeMap_getQualifiedItem(map, _bstr_("id"), ((void*)0), ((void*)0));
     EXPECT_HR(hr, E_INVALIDARG);
 
-    hr = IXMLDOMNamedNodeMap_getQualifiedItem(map, _bstr_("id"), NULL, &node);
+    hr = IXMLDOMNamedNodeMap_getQualifiedItem(map, _bstr_("id"), ((void*)0), &node);
     EXPECT_HR(hr, S_OK);
 
     IXMLDOMNode_Release(node);
@@ -131,7 +131,7 @@ __attribute__((used)) static void test_getQualifiedItem(void)
        if (hr == S_OK)
            IXMLDOMNode_Release(node);
        else
-           ok(node == NULL, "%s, %s: got %p\n", ptr->name, ptr->uri, node);
+           ok(node == ((void*)0), "%s, %s: got %p\n", ptr->name, ptr->uri, node);
        ptr++;
     }
 
@@ -144,7 +144,7 @@ __attribute__((used)) static void test_getQualifiedItem(void)
        if (hr == S_OK)
            IXMLDOMNode_Release(node);
        else
-           ok(node == NULL, "%s: got %p\n", ptr->name, node);
+           ok(node == ((void*)0), "%s: got %p\n", ptr->name, node);
        ptr++;
     }
 

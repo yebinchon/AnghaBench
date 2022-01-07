@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  xmlreader ;
-struct element {int /*<<< orphan*/  qname; int /*<<< orphan*/  localname; int /*<<< orphan*/  prefix; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  reader_free (int /*<<< orphan*/ *,struct element*) ; 
- int /*<<< orphan*/  reader_free_strvalued (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int xmlreader ;
+struct element {int qname; int localname; int prefix; } ;
+
+
+ int reader_free (int *,struct element*) ;
+ int reader_free_strvalued (int *,int *) ;
 
 __attribute__((used)) static void reader_free_element(xmlreader *reader, struct element *element)
 {

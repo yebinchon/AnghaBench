@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  BIO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_f_buffer () ; 
- int /*<<< orphan*/  BIO_flush (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BIO_free (int /*<<< orphan*/ *) ; 
- int BIO_gets (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/ * BIO_new (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BIO_pop (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BIO_printf (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/ * BIO_push (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int BIO_read (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  BIO_write (int /*<<< orphan*/ *,char*,int) ; 
- int MAX_SMLEN ; 
- int SMIME_ASCIICRLF ; 
- int SMIME_BINARY ; 
- int SMIME_TEXT ; 
- char strip_eol (char*,int*,int) ; 
+
+
+
+typedef int BIO ;
+
+
+ int BIO_f_buffer () ;
+ int BIO_flush (int *) ;
+ int BIO_free (int *) ;
+ int BIO_gets (int *,char*,int) ;
+ int * BIO_new (int ) ;
+ int BIO_pop (int *) ;
+ int BIO_printf (int *,char*) ;
+ int * BIO_push (int *,int *) ;
+ int BIO_read (int *,char*,int) ;
+ int BIO_write (int *,char*,int) ;
+ int MAX_SMLEN ;
+ int SMIME_ASCIICRLF ;
+ int SMIME_BINARY ;
+ int SMIME_TEXT ;
+ char strip_eol (char*,int*,int) ;
 
 int SMIME_crlf_copy(BIO *in, BIO *out, int flags)
 {
@@ -35,12 +35,12 @@ int SMIME_crlf_copy(BIO *in, BIO *out, int flags)
     char eol;
     int len;
     char linebuf[MAX_SMLEN];
-    /*
-     * Buffer output so we don't write one line at a time. This is useful
-     * when streaming as we don't end up with one OCTET STRING per line.
-     */
+
+
+
+
     bf = BIO_new(BIO_f_buffer());
-    if (bf == NULL)
+    if (bf == ((void*)0))
         return 0;
     out = BIO_push(bf, out);
     if (flags & SMIME_BINARY) {
@@ -53,7 +53,7 @@ int SMIME_crlf_copy(BIO *in, BIO *out, int flags)
         while ((len = BIO_gets(in, linebuf, MAX_SMLEN)) > 0) {
             eol = strip_eol(linebuf, &len, flags);
             if (len) {
-                /* Not EOF: write out all CRLF */
+
                 if (flags & SMIME_ASCIICRLF) {
                     int i;
                     for (i = 0; i < eolcnt; i++)

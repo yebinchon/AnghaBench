@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/ * lpVtbl; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int * lpVtbl; } ;
 struct convert_charset {int ref; TYPE_1__ IMLangConvertCharset_iface; } ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  HRESULT ;
+typedef int IUnknown ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLASS_E_NOAGGREGATION ; 
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- struct convert_charset* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  LockModule () ; 
- int /*<<< orphan*/  MLangConvertCharsetVtbl ; 
- int /*<<< orphan*/  S_OK ; 
+
+ int CLASS_E_NOAGGREGATION ;
+ int E_OUTOFMEMORY ;
+ int GetProcessHeap () ;
+ struct convert_charset* HeapAlloc (int ,int ,int) ;
+ int LockModule () ;
+ int MLangConvertCharsetVtbl ;
+ int S_OK ;
 
 __attribute__((used)) static HRESULT MLangConvertCharset_create(IUnknown *outer, void **obj)
 {
@@ -32,7 +32,7 @@ __attribute__((used)) static HRESULT MLangConvertCharset_create(IUnknown *outer,
     if (outer)
         return CLASS_E_NOAGGREGATION;
 
-    *obj = NULL;
+    *obj = ((void*)0);
 
     convert = HeapAlloc(GetProcessHeap(), 0, sizeof(struct convert_charset));
     if (!convert) return E_OUTOFMEMORY;

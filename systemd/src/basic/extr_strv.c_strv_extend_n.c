@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int ENOMEM ; 
- int /*<<< orphan*/  assert (char***) ; 
- int /*<<< orphan*/  free (char*) ; 
- char** reallocarray (char**,size_t,int) ; 
- char* strdup (char const*) ; 
- size_t strv_length (char**) ; 
+ int ENOMEM ;
+ int assert (char***) ;
+ int free (char*) ;
+ char** reallocarray (char**,size_t,int) ;
+ char* strdup (char const*) ;
+ size_t strv_length (char**) ;
 
 int strv_extend_n(char ***l, const char *value, size_t n) {
         size_t i, j, k;
@@ -30,7 +22,7 @@ int strv_extend_n(char ***l, const char *value, size_t n) {
         if (n == 0)
                 return 0;
 
-        /* Adds the value n times to l */
+
 
         k = strv_length(*l);
 
@@ -46,13 +38,13 @@ int strv_extend_n(char ***l, const char *value, size_t n) {
                         goto rollback;
         }
 
-        nl[i] = NULL;
+        nl[i] = ((void*)0);
         return 0;
 
 rollback:
         for (j = k; j < i; j++)
                 free(nl[j]);
 
-        nl[k] = NULL;
+        nl[k] = ((void*)0);
         return -ENOMEM;
 }

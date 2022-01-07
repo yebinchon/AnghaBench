@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  X509_STORE_CTX ;
 
-/* Variables and functions */
- int X509_STORE_CTX_get_error (int /*<<< orphan*/ *) ; 
- int X509_V_ERR_NO_EXPLICIT_POLICY ; 
- int X509_V_OK ; 
- int /*<<< orphan*/  policies_print (int /*<<< orphan*/ *) ; 
- int verify_err ; 
+
+
+
+typedef int X509_STORE_CTX ;
+
+
+ int X509_STORE_CTX_get_error (int *) ;
+ int X509_V_ERR_NO_EXPLICIT_POLICY ;
+ int X509_V_OK ;
+ int policies_print (int *) ;
+ int verify_err ;
 
 __attribute__((used)) static int cms_cb(int ok, X509_STORE_CTX *ctx)
 {

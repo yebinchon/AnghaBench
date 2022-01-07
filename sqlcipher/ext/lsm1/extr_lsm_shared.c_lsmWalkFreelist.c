@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_5__ ;
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_12__ TYPE_5__ ;
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_10__ {TYPE_2__* pFreelist; TYPE_1__* pWorker; } ;
-typedef  TYPE_3__ lsm_db ;
+typedef TYPE_3__ lsm_db ;
 struct TYPE_11__ {int bReverse; int iFree; int (* xUsr ) (void*,int,i64) ;scalar_t__ bDone; void* pUsrctx; TYPE_2__* pFreelist; TYPE_3__* pDb; } ;
-typedef  TYPE_4__ WalkFreelistCtx ;
-struct TYPE_12__ {scalar_t__ iId; int /*<<< orphan*/  iBlk; } ;
+typedef TYPE_4__ WalkFreelistCtx ;
+struct TYPE_12__ {scalar_t__ iId; int iBlk; } ;
 struct TYPE_9__ {int nEntry; TYPE_5__* aEntry; } ;
 struct TYPE_8__ {TYPE_2__ freelist; } ;
-typedef  TYPE_5__ FreelistEntry ;
+typedef TYPE_5__ FreelistEntry ;
 
-/* Variables and functions */
- int LSM_OK ; 
- int lsmSortedWalkFreelist (TYPE_3__*,int,int (*) (void*,int,i64),void*) ; 
- int stub1 (void*,int /*<<< orphan*/ ,scalar_t__) ; 
- int walkFreelistCb (void*,int,i64) ; 
+
+ int LSM_OK ;
+ int lsmSortedWalkFreelist (TYPE_3__*,int,int (*) (void*,int,i64),void*) ;
+ int stub1 (void*,int ,scalar_t__) ;
+ int walkFreelistCb (void*,int,i64) ;
 
 int lsmWalkFreelist(
-  lsm_db *pDb,                    /* Database handle (must be worker) */
-  int bReverse,                   /* True to iterate from largest to smallest */
-  int (*x)(void *, int, i64),     /* Callback function */
-  void *pCtx                      /* First argument to pass to callback */
+  lsm_db *pDb,
+  int bReverse,
+  int (*x)(void *, int, i64),
+  void *pCtx
 ){
   const int iDir = (bReverse ? -1 : 1);
   int rc;
@@ -72,7 +72,7 @@ int lsmWalkFreelist(
     for(iCtx=0; iCtx<2; iCtx++){
       int i;
       WalkFreelistCtx *p = &ctx[iCtx];
-      for(i=p->iFree; 
+      for(i=p->iFree;
           p->pFreelist && rc==LSM_OK && i<p->pFreelist->nEntry && i>=0;
           i += iDir
          ){

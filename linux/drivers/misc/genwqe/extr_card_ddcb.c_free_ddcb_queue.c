@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct genwqe_dev {int dummy; } ;
-struct ddcb_queue {int ddcb_max; unsigned long long ddcb_daddr; int /*<<< orphan*/ * ddcb_vaddr; int /*<<< orphan*/ * ddcb_req; } ;
+struct ddcb_queue {int ddcb_max; unsigned long long ddcb_daddr; int * ddcb_vaddr; int * ddcb_req; } ;
 struct ddcb {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PAGE_SIZE ; 
- int /*<<< orphan*/  __genwqe_free_consistent (struct genwqe_dev*,unsigned int,int /*<<< orphan*/ *,unsigned long long) ; 
- int /*<<< orphan*/  kfree (int /*<<< orphan*/ *) ; 
- unsigned int roundup (int,int /*<<< orphan*/ ) ; 
+
+ int PAGE_SIZE ;
+ int __genwqe_free_consistent (struct genwqe_dev*,unsigned int,int *,unsigned long long) ;
+ int kfree (int *) ;
+ unsigned int roundup (int,int ) ;
 
 __attribute__((used)) static void free_ddcb_queue(struct genwqe_dev *cd, struct ddcb_queue *queue)
 {
-	unsigned int queue_size;
+ unsigned int queue_size;
 
-	queue_size = roundup(queue->ddcb_max * sizeof(struct ddcb), PAGE_SIZE);
+ queue_size = roundup(queue->ddcb_max * sizeof(struct ddcb), PAGE_SIZE);
 
-	kfree(queue->ddcb_req);
-	queue->ddcb_req = NULL;
+ kfree(queue->ddcb_req);
+ queue->ddcb_req = ((void*)0);
 
-	if (queue->ddcb_vaddr) {
-		__genwqe_free_consistent(cd, queue_size, queue->ddcb_vaddr,
-					queue->ddcb_daddr);
-		queue->ddcb_vaddr = NULL;
-		queue->ddcb_daddr = 0ull;
-	}
+ if (queue->ddcb_vaddr) {
+  __genwqe_free_consistent(cd, queue_size, queue->ddcb_vaddr,
+     queue->ddcb_daddr);
+  queue->ddcb_vaddr = ((void*)0);
+  queue->ddcb_daddr = 0ull;
+ }
 }

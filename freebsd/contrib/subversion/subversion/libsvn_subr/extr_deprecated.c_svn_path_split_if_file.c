@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {int /*<<< orphan*/  apr_err; } ;
-typedef  TYPE_1__ svn_error_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+
+
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_9__ {int apr_err; } ;
+typedef TYPE_1__ svn_error_t ;
+typedef int apr_pool_t ;
 struct TYPE_10__ {scalar_t__ filetype; } ;
-typedef  TYPE_2__ apr_finfo_t ;
+typedef TYPE_2__ apr_finfo_t ;
 
-/* Variables and functions */
- scalar_t__ APR_DIR ; 
- int /*<<< orphan*/  APR_FINFO_TYPE ; 
- scalar_t__ APR_REG ; 
- int /*<<< orphan*/  APR_STATUS_IS_ENOENT (int /*<<< orphan*/ ) ; 
- char* SVN_EMPTY_PATH ; 
- int /*<<< orphan*/  SVN_ERR_ASSERT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_BAD_FILENAME ; 
- TYPE_1__* SVN_NO_ERROR ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  svn_error_clear (TYPE_1__*) ; 
- TYPE_1__* svn_error_createf (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_1__* svn_io_stat (TYPE_2__*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_path_is_canonical (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_path_local_style (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_path_split (char const*,char const**,char const**,int /*<<< orphan*/ *) ; 
+
+ scalar_t__ APR_DIR ;
+ int APR_FINFO_TYPE ;
+ scalar_t__ APR_REG ;
+ int APR_STATUS_IS_ENOENT (int ) ;
+ char* SVN_EMPTY_PATH ;
+ int SVN_ERR_ASSERT (int ) ;
+ int SVN_ERR_BAD_FILENAME ;
+ TYPE_1__* SVN_NO_ERROR ;
+ int _ (char*) ;
+ int svn_error_clear (TYPE_1__*) ;
+ TYPE_1__* svn_error_createf (int ,int *,int ,int ) ;
+ TYPE_1__* svn_io_stat (TYPE_2__*,char const*,int ,int *) ;
+ int svn_path_is_canonical (char const*,int *) ;
+ int svn_path_local_style (char const*,int *) ;
+ int svn_path_split (char const*,char const**,char const**,int *) ;
 
 svn_error_t *
 svn_path_split_if_file(const char *path,
@@ -62,7 +62,7 @@ svn_path_split_if_file(const char *path,
     }
   else
     {
-      return svn_error_createf(SVN_ERR_BAD_FILENAME, NULL,
+      return svn_error_createf(SVN_ERR_BAD_FILENAME, ((void*)0),
                                _("'%s' is neither a file nor a directory name"),
                                svn_path_local_style(path, pool));
     }

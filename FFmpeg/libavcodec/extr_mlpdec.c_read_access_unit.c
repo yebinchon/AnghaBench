@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint16_t ;
+
+
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint16_t ;
 struct TYPE_16__ {scalar_t__ codec_id; TYPE_2__* priv_data; } ;
 struct TYPE_15__ {int* data; int size; } ;
-struct TYPE_14__ {int is_major_sync_unit; unsigned int num_substreams; unsigned int max_decoded_substream; scalar_t__ params_valid; TYPE_4__* avctx; int /*<<< orphan*/  filter_changed; scalar_t__ matrix_changed; TYPE_1__* substream; scalar_t__ major_sync_header_size; } ;
+struct TYPE_14__ {int is_major_sync_unit; unsigned int num_substreams; unsigned int max_decoded_substream; scalar_t__ params_valid; TYPE_4__* avctx; int filter_changed; scalar_t__ matrix_changed; TYPE_1__* substream; scalar_t__ major_sync_header_size; } ;
 struct TYPE_13__ {int restart_seen; scalar_t__ blockpos; } ;
-typedef  TYPE_1__ SubStream ;
-typedef  TYPE_2__ MLPDecodeContext ;
-typedef  int /*<<< orphan*/  GetBitContext ;
-typedef  TYPE_3__ AVPacket ;
-typedef  TYPE_4__ AVCodecContext ;
+typedef TYPE_1__ SubStream ;
+typedef TYPE_2__ MLPDecodeContext ;
+typedef int GetBitContext ;
+typedef TYPE_3__ AVPacket ;
+typedef TYPE_4__ AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- scalar_t__ AV_CODEC_ID_MLP ; 
- scalar_t__ AV_CODEC_ID_TRUEHD ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_LOG_INFO ; 
- int /*<<< orphan*/  AV_LOG_WARNING ; 
- int AV_RB16 (int const*) ; 
- scalar_t__ FFMIN (int,scalar_t__) ; 
- int MAX_SUBSTREAMS ; 
- int /*<<< orphan*/  av_log (TYPE_4__*,int /*<<< orphan*/ ,char*,...) ; 
- int ff_mlp_calculate_parity (int const*,int) ; 
- int ff_mlp_checksum8 (int const*,int) ; 
- int get_bits (int /*<<< orphan*/ *,int) ; 
- int get_bits1 (int /*<<< orphan*/ *) ; 
- int get_bits_count (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  init_get_bits (int /*<<< orphan*/ *,int const*,int) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int output_data (TYPE_2__*,unsigned int,void*,int*) ; 
- int read_block_data (TYPE_2__*,int /*<<< orphan*/ *,unsigned int) ; 
- scalar_t__ read_decoding_params (TYPE_2__*,int /*<<< orphan*/ *,unsigned int) ; 
- scalar_t__ read_major_sync (TYPE_2__*,int /*<<< orphan*/ *) ; 
- scalar_t__ read_restart_header (TYPE_2__*,int /*<<< orphan*/ *,int const*,unsigned int) ; 
- int show_bits_long (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  skip_bits (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  skip_bits1 (int /*<<< orphan*/ *) ; 
+
+ int AVERROR_INVALIDDATA ;
+ scalar_t__ AV_CODEC_ID_MLP ;
+ scalar_t__ AV_CODEC_ID_TRUEHD ;
+ int AV_LOG_ERROR ;
+ int AV_LOG_INFO ;
+ int AV_LOG_WARNING ;
+ int AV_RB16 (int const*) ;
+ scalar_t__ FFMIN (int,scalar_t__) ;
+ int MAX_SUBSTREAMS ;
+ int av_log (TYPE_4__*,int ,char*,...) ;
+ int ff_mlp_calculate_parity (int const*,int) ;
+ int ff_mlp_checksum8 (int const*,int) ;
+ int get_bits (int *,int) ;
+ int get_bits1 (int *) ;
+ int get_bits_count (int *) ;
+ int init_get_bits (int *,int const*,int) ;
+ int memset (int ,int ,int) ;
+ int output_data (TYPE_2__*,unsigned int,void*,int*) ;
+ int read_block_data (TYPE_2__*,int *,unsigned int) ;
+ scalar_t__ read_decoding_params (TYPE_2__*,int *,unsigned int) ;
+ scalar_t__ read_major_sync (TYPE_2__*,int *) ;
+ scalar_t__ read_restart_header (TYPE_2__*,int *,int const*,unsigned int) ;
+ int show_bits_long (int *,int) ;
+ int skip_bits (int *,int) ;
+ int skip_bits1 (int *) ;
 
 __attribute__((used)) static int read_access_unit(AVCodecContext *avctx, void* data,
                             int *got_frame_ptr, AVPacket *avpkt)
@@ -150,7 +150,7 @@ __attribute__((used)) static int read_access_unit(AVCodecContext *avctx, void* d
         substream_start = end;
     }
 
-    parity_bits  = ff_mlp_calculate_parity(buf, 4);
+    parity_bits = ff_mlp_calculate_parity(buf, 4);
     parity_bits ^= ff_mlp_calculate_parity(buf + header_size, substr_header_size);
 
     if ((((parity_bits >> 4) ^ parity_bits) & 0xF) != 0xF) {
@@ -171,7 +171,7 @@ __attribute__((used)) static int read_access_unit(AVCodecContext *avctx, void* d
         do {
             if (get_bits1(&gb)) {
                 if (get_bits1(&gb)) {
-                    /* A restart header should be present. */
+
                     if (read_restart_header(m, &gb, buf, substr) < 0)
                         goto next_substr;
                     s->restart_seen = 1;
@@ -203,9 +203,9 @@ __attribute__((used)) static int read_access_unit(AVCodecContext *avctx, void* d
                 return AVERROR_INVALIDDATA;
 
             shorten_by = get_bits(&gb, 16);
-            if      (m->avctx->codec_id == AV_CODEC_ID_TRUEHD && shorten_by  & 0x2000)
+            if (m->avctx->codec_id == AV_CODEC_ID_TRUEHD && shorten_by & 0x2000)
                 s->blockpos -= FFMIN(shorten_by & 0x1FFF, s->blockpos);
-            else if (m->avctx->codec_id == AV_CODEC_ID_MLP    && shorten_by != 0xD234)
+            else if (m->avctx->codec_id == AV_CODEC_ID_MLP && shorten_by != 0xD234)
                 return AVERROR_INVALIDDATA;
 
             if (substr == m->max_decoded_substream)
@@ -218,13 +218,13 @@ __attribute__((used)) static int read_access_unit(AVCodecContext *avctx, void* d
             if (substream_data_len[substr] * 8 - get_bits_count(&gb) != 16)
                 goto substream_length_mismatch;
 
-            parity   = ff_mlp_calculate_parity(buf, substream_data_len[substr] - 2);
-            checksum = ff_mlp_checksum8       (buf, substream_data_len[substr] - 2);
+            parity = ff_mlp_calculate_parity(buf, substream_data_len[substr] - 2);
+            checksum = ff_mlp_checksum8 (buf, substream_data_len[substr] - 2);
 
-            if ((get_bits(&gb, 8) ^ parity) != 0xa9    )
+            if ((get_bits(&gb, 8) ^ parity) != 0xa9 )
                 av_log(m->avctx, AV_LOG_ERROR, "Substream %d parity check failed.\n", substr);
-            if ( get_bits(&gb, 8)           != checksum)
-                av_log(m->avctx, AV_LOG_ERROR, "Substream %d checksum failed.\n"    , substr);
+            if ( get_bits(&gb, 8) != checksum)
+                av_log(m->avctx, AV_LOG_ERROR, "Substream %d checksum failed.\n" , substr);
         }
 
         if (substream_data_len[substr] * 8 != get_bits_count(&gb))

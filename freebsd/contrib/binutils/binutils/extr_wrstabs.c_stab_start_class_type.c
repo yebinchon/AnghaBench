@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct stab_write_handle {TYPE_1__* type_stack; } ;
-typedef  scalar_t__ bfd_boolean ;
+typedef scalar_t__ bfd_boolean ;
 struct TYPE_2__ {char* index; char* vtable; scalar_t__ definition; } ;
 
-/* Variables and functions */
- scalar_t__ FALSE ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  sprintf (char*,char*,char*) ; 
- char* stab_pop_type (struct stab_write_handle*) ; 
- int /*<<< orphan*/  stab_start_struct_type (void*,char const*,unsigned int,scalar_t__,unsigned int) ; 
- int strlen (char*) ; 
- scalar_t__ xmalloc (int) ; 
+
+ scalar_t__ FALSE ;
+ scalar_t__ TRUE ;
+ int assert (int) ;
+ int free (char*) ;
+ int sprintf (char*,char*,char*) ;
+ char* stab_pop_type (struct stab_write_handle*) ;
+ int stab_start_struct_type (void*,char const*,unsigned int,scalar_t__,unsigned int) ;
+ int strlen (char*) ;
+ scalar_t__ xmalloc (int) ;
 
 __attribute__((used)) static bfd_boolean
 stab_start_class_type (void *p, const char *tag, unsigned int id, bfd_boolean structp, unsigned int size, bfd_boolean vptr, bfd_boolean ownvptr)
@@ -36,7 +36,7 @@ stab_start_class_type (void *p, const char *tag, unsigned int id, bfd_boolean st
   if (! vptr || ownvptr)
     {
       definition = FALSE;
-      vstring = NULL;
+      vstring = ((void*)0);
     }
   else
     {
@@ -52,17 +52,17 @@ stab_start_class_type (void *p, const char *tag, unsigned int id, bfd_boolean st
       char *vtable;
 
       if (ownvptr)
-	{
-	  assert (info->type_stack->index > 0);
-	  vtable = (char *) xmalloc (20);
-	  sprintf (vtable, "~%%%ld", info->type_stack->index);
-	}
+ {
+   assert (info->type_stack->index > 0);
+   vtable = (char *) xmalloc (20);
+   sprintf (vtable, "~%%%ld", info->type_stack->index);
+ }
       else
-	{
-	  vtable = (char *) xmalloc (strlen (vstring) + 3);
-	  sprintf (vtable, "~%%%s", vstring);
-	  free (vstring);
-	}
+ {
+   vtable = (char *) xmalloc (strlen (vstring) + 3);
+   sprintf (vtable, "~%%%s", vstring);
+   free (vstring);
+ }
 
       info->type_stack->vtable = vtable;
     }

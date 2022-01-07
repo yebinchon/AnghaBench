@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_5__ {int max_size; int size; TYPE_2__** histograms; } ;
-typedef  TYPE_1__ VP8LHistogramSet ;
+typedef TYPE_1__ VP8LHistogramSet ;
 struct TYPE_6__ {int palette_code_bits_; } ;
-typedef  TYPE_2__ VP8LHistogram ;
+typedef TYPE_2__ VP8LHistogram ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HistogramSetResetPointers (TYPE_1__* const,int const) ; 
- size_t HistogramSetTotalSize (int const,int const) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,size_t const) ; 
+
+ int HistogramSetResetPointers (TYPE_1__* const,int const) ;
+ size_t HistogramSetTotalSize (int const,int const) ;
+ int memset (int *,int ,size_t const) ;
 
 void VP8LHistogramSetClear(VP8LHistogramSet* const set) {
   int i;

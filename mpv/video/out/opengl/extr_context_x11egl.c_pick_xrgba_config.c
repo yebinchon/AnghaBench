@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct vo {TYPE_1__* x11; } ;
 struct ra_ctx {struct vo* vo; struct priv* priv; } ;
-struct priv {int /*<<< orphan*/  egl_display; } ;
+struct priv {int egl_display; } ;
 struct TYPE_8__ {int visualid; } ;
-typedef  TYPE_2__ XVisualInfo ;
-struct TYPE_7__ {int /*<<< orphan*/  display; } ;
-typedef  int /*<<< orphan*/  EGLConfig ;
+typedef TYPE_2__ XVisualInfo ;
+struct TYPE_7__ {int display; } ;
+typedef int EGLConfig ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EGL_NATIVE_VISUAL_ID ; 
- int /*<<< orphan*/  VisualIDMask ; 
- int /*<<< orphan*/  XFree (TYPE_2__*) ; 
- TYPE_2__* XGetVisualInfo (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_2__*,int*) ; 
- int /*<<< orphan*/  eglGetConfigAttrib (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*) ; 
- int vo_x11_is_rgba_visual (TYPE_2__*) ; 
+
+ int EGL_NATIVE_VISUAL_ID ;
+ int VisualIDMask ;
+ int XFree (TYPE_2__*) ;
+ TYPE_2__* XGetVisualInfo (int ,int ,TYPE_2__*,int*) ;
+ int eglGetConfigAttrib (int ,int ,int ,int*) ;
+ int vo_x11_is_rgba_visual (TYPE_2__*) ;
 
 __attribute__((used)) static int pick_xrgba_config(void *user_data, EGLConfig *configs, int num_configs)
 {

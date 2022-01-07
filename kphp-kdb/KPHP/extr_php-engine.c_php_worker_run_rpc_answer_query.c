@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct connection {int dummy; } ;
-struct TYPE_5__ {scalar_t__ mode; int /*<<< orphan*/  req_id; struct connection* conn; } ;
-typedef  TYPE_1__ php_worker ;
+struct TYPE_5__ {scalar_t__ mode; int req_id; struct connection* conn; } ;
+typedef TYPE_1__ php_worker ;
 struct TYPE_6__ {int data_len; scalar_t__ data; } ;
-typedef  TYPE_2__ php_query_rpc_answer ;
+typedef TYPE_2__ php_query_rpc_answer ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RPC_REQ_ERROR ; 
- int /*<<< orphan*/  RPC_REQ_RESULT ; 
- int /*<<< orphan*/  php_script ; 
- int /*<<< orphan*/  php_script_query_answered (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  php_script_query_readed (int /*<<< orphan*/ ) ; 
- scalar_t__ rpc_worker ; 
- int /*<<< orphan*/  send_rpc_query (struct connection*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*,int) ; 
- int /*<<< orphan*/  vkprintf (int,char*,int,int /*<<< orphan*/ ) ; 
+
+ int RPC_REQ_ERROR ;
+ int RPC_REQ_RESULT ;
+ int php_script ;
+ int php_script_query_answered (int ) ;
+ int php_script_query_readed (int ) ;
+ scalar_t__ rpc_worker ;
+ int send_rpc_query (struct connection*,int ,int ,int*,int) ;
+ int vkprintf (int,char*,int,int ) ;
 
 void php_worker_run_rpc_answer_query (php_worker *worker, php_query_rpc_answer *ans) {
   if (worker->mode == rpc_worker) {

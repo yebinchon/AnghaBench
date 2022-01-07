@@ -1,62 +1,62 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_21__   TYPE_9__ ;
-typedef  struct TYPE_20__   TYPE_7__ ;
-typedef  struct TYPE_19__   TYPE_6__ ;
-typedef  struct TYPE_18__   TYPE_5__ ;
-typedef  struct TYPE_17__   TYPE_4__ ;
-typedef  struct TYPE_16__   TYPE_3__ ;
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
-typedef  struct TYPE_13__   TYPE_10__ ;
 
-/* Type definitions */
-typedef  char u_char ;
+
+
+typedef struct TYPE_21__ TYPE_9__ ;
+typedef struct TYPE_20__ TYPE_7__ ;
+typedef struct TYPE_19__ TYPE_6__ ;
+typedef struct TYPE_18__ TYPE_5__ ;
+typedef struct TYPE_17__ TYPE_4__ ;
+typedef struct TYPE_16__ TYPE_3__ ;
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+typedef struct TYPE_13__ TYPE_10__ ;
+
+
+typedef char u_char ;
 struct TYPE_15__ {scalar_t__ s_addr; } ;
 struct sockaddr_in {TYPE_2__ sin_addr; void* sin_port; void* sin_family; } ;
-struct TYPE_21__ {int /*<<< orphan*/  sockaddr; } ;
+struct TYPE_21__ {int sockaddr; } ;
 struct TYPE_14__ {size_t len; char* data; } ;
 struct TYPE_19__ {int len; char* data; } ;
 struct TYPE_18__ {int len; char* data; } ;
 struct TYPE_17__ {char* data; size_t len; } ;
-struct TYPE_20__ {int socklen; char* err; int last_port; void* port; int wildcard; int no_port; void* default_port; TYPE_9__ sockaddr; TYPE_3__* addrs; void* family; scalar_t__ no_resolve; scalar_t__ listen; TYPE_1__ host; TYPE_6__ port_text; TYPE_5__ uri; int /*<<< orphan*/  uri_part; TYPE_4__ url; } ;
-typedef  TYPE_7__ ngx_url_t ;
-typedef  int /*<<< orphan*/  ngx_pool_t ;
-typedef  int ngx_int_t ;
-typedef  void* in_port_t ;
+struct TYPE_20__ {int socklen; char* err; int last_port; void* port; int wildcard; int no_port; void* default_port; TYPE_9__ sockaddr; TYPE_3__* addrs; void* family; scalar_t__ no_resolve; scalar_t__ listen; TYPE_1__ host; TYPE_6__ port_text; TYPE_5__ uri; int uri_part; TYPE_4__ url; } ;
+typedef TYPE_7__ ngx_url_t ;
+typedef int ngx_pool_t ;
+typedef int ngx_int_t ;
+typedef void* in_port_t ;
 struct TYPE_16__ {int socklen; TYPE_10__* sockaddr; } ;
 struct TYPE_13__ {void* sa_family; } ;
 
-/* Variables and functions */
- void* AF_INET ; 
- scalar_t__ INADDR_ANY ; 
- scalar_t__ INADDR_NONE ; 
- int NGX_ERROR ; 
- int NGX_OK ; 
- void* htons (void*) ; 
- int ngx_atoi (char*,size_t) ; 
- int ngx_inet_add_addr (int /*<<< orphan*/ *,TYPE_7__*,int /*<<< orphan*/ *,int,int) ; 
- scalar_t__ ngx_inet_addr (char*,size_t) ; 
- int ngx_inet_resolve_host (int /*<<< orphan*/ *,TYPE_7__*) ; 
- int ngx_inet_wildcard (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ngx_memcpy (TYPE_9__*,TYPE_10__*,int) ; 
- char* ngx_strlchr (char*,char*,char) ; 
+
+ void* AF_INET ;
+ scalar_t__ INADDR_ANY ;
+ scalar_t__ INADDR_NONE ;
+ int NGX_ERROR ;
+ int NGX_OK ;
+ void* htons (void*) ;
+ int ngx_atoi (char*,size_t) ;
+ int ngx_inet_add_addr (int *,TYPE_7__*,int *,int,int) ;
+ scalar_t__ ngx_inet_addr (char*,size_t) ;
+ int ngx_inet_resolve_host (int *,TYPE_7__*) ;
+ int ngx_inet_wildcard (int *) ;
+ int ngx_memcpy (TYPE_9__*,TYPE_10__*,int) ;
+ char* ngx_strlchr (char*,char*,char) ;
 
 __attribute__((used)) static ngx_int_t
 ngx_parse_inet_url(ngx_pool_t *pool, ngx_url_t *u)
 {
-    u_char              *host, *port, *last, *uri, *args, *dash;
-    size_t               len;
-    ngx_int_t            n;
-    struct sockaddr_in  *sin;
+    u_char *host, *port, *last, *uri, *args, *dash;
+    size_t len;
+    ngx_int_t n;
+    struct sockaddr_in *sin;
 
     u->socklen = sizeof(struct sockaddr_in);
     sin = (struct sockaddr_in *) &u->sockaddr;
@@ -75,7 +75,7 @@ ngx_parse_inet_url(ngx_pool_t *pool, ngx_url_t *u)
     args = ngx_strlchr(host, last, '?');
 
     if (args) {
-        if (uri == NULL || args < uri) {
+        if (uri == ((void*)0) || args < uri) {
             uri = args;
         }
     }
@@ -92,7 +92,7 @@ ngx_parse_inet_url(ngx_pool_t *pool, ngx_url_t *u)
         last = uri;
 
         if (uri < port) {
-            port = NULL;
+            port = ((void*)0);
         }
     }
 
@@ -141,11 +141,11 @@ ngx_parse_inet_url(ngx_pool_t *pool, ngx_url_t *u)
         last = port - 1;
 
     } else {
-        if (uri == NULL) {
+        if (uri == ((void*)0)) {
 
             if (u->listen) {
 
-                /* test value as port only */
+
 
                 len = last - host;
 
@@ -205,7 +205,7 @@ ngx_parse_inet_url(ngx_pool_t *pool, ngx_url_t *u)
 
 no_port:
 
-        u->err = NULL;
+        u->err = ((void*)0);
         u->no_port = 1;
         u->port = u->default_port;
         sin->sin_port = htons(u->default_port);

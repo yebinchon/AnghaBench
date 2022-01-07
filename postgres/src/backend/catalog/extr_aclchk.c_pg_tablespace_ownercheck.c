@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  spcowner; } ;
-typedef  int /*<<< orphan*/  Oid ;
-typedef  int /*<<< orphan*/  HeapTuple ;
-typedef  TYPE_1__* Form_pg_tablespace ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERRCODE_UNDEFINED_OBJECT ; 
- int /*<<< orphan*/  ERROR ; 
- scalar_t__ GETSTRUCT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HeapTupleIsValid (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ObjectIdGetDatum (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReleaseSysCache (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SearchSysCache1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TABLESPACEOID ; 
- int /*<<< orphan*/  ereport (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errcode (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errmsg (char*,int /*<<< orphan*/ ) ; 
- int has_privs_of_role (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ superuser_arg (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int spcowner; } ;
+typedef int Oid ;
+typedef int HeapTuple ;
+typedef TYPE_1__* Form_pg_tablespace ;
+
+
+ int ERRCODE_UNDEFINED_OBJECT ;
+ int ERROR ;
+ scalar_t__ GETSTRUCT (int ) ;
+ int HeapTupleIsValid (int ) ;
+ int ObjectIdGetDatum (int ) ;
+ int ReleaseSysCache (int ) ;
+ int SearchSysCache1 (int ,int ) ;
+ int TABLESPACEOID ;
+ int ereport (int ,int ) ;
+ int errcode (int ) ;
+ int errmsg (char*,int ) ;
+ int has_privs_of_role (int ,int ) ;
+ scalar_t__ superuser_arg (int ) ;
 
 bool
 pg_tablespace_ownercheck(Oid spc_oid, Oid roleid)
 {
-	HeapTuple	spctuple;
-	Oid			spcowner;
+ HeapTuple spctuple;
+ Oid spcowner;
 
-	/* Superusers bypass all permission checking. */
-	if (superuser_arg(roleid))
-		return true;
 
-	/* Search syscache for pg_tablespace */
-	spctuple = SearchSysCache1(TABLESPACEOID, ObjectIdGetDatum(spc_oid));
-	if (!HeapTupleIsValid(spctuple))
-		ereport(ERROR,
-				(errcode(ERRCODE_UNDEFINED_OBJECT),
-				 errmsg("tablespace with OID %u does not exist", spc_oid)));
+ if (superuser_arg(roleid))
+  return 1;
 
-	spcowner = ((Form_pg_tablespace) GETSTRUCT(spctuple))->spcowner;
 
-	ReleaseSysCache(spctuple);
+ spctuple = SearchSysCache1(TABLESPACEOID, ObjectIdGetDatum(spc_oid));
+ if (!HeapTupleIsValid(spctuple))
+  ereport(ERROR,
+    (errcode(ERRCODE_UNDEFINED_OBJECT),
+     errmsg("tablespace with OID %u does not exist", spc_oid)));
 
-	return has_privs_of_role(roleid, spcowner);
+ spcowner = ((Form_pg_tablespace) GETSTRUCT(spctuple))->spcowner;
+
+ ReleaseSysCache(spctuple);
+
+ return has_privs_of_role(roleid, spcowner);
 }

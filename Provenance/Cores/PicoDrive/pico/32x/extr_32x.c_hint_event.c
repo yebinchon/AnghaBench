@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  P32XI_HINT ; 
- int /*<<< orphan*/  p32x_schedule_hint (int /*<<< orphan*/ *,unsigned int) ; 
- int /*<<< orphan*/  p32x_trigger_irq (int /*<<< orphan*/ *,unsigned int,int /*<<< orphan*/ ) ; 
+ int P32XI_HINT ;
+ int p32x_schedule_hint (int *,unsigned int) ;
+ int p32x_trigger_irq (int *,unsigned int,int ) ;
 
 __attribute__((used)) static void hint_event(unsigned int now)
 {
-  p32x_trigger_irq(NULL, now, P32XI_HINT);
-  p32x_schedule_hint(NULL, now);
+  p32x_trigger_irq(((void*)0), now, P32XI_HINT);
+  p32x_schedule_hint(((void*)0), now);
 }

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  xsltTransformFunction ;
-typedef  int /*<<< orphan*/  xsltStylesheetPtr ;
-typedef  int /*<<< orphan*/ * xsltElemPreCompPtr ;
-typedef  int /*<<< orphan*/  xsltElemPreComp ;
-typedef  int /*<<< orphan*/  xmlNodePtr ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- scalar_t__ xmlMalloc (int) ; 
- int /*<<< orphan*/  xsltFreeElemPreComp ; 
- int /*<<< orphan*/  xsltInitElemPreComp (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xsltTransformError (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,char*) ; 
+
+
+
+typedef int xsltTransformFunction ;
+typedef int xsltStylesheetPtr ;
+typedef int * xsltElemPreCompPtr ;
+typedef int xsltElemPreComp ;
+typedef int xmlNodePtr ;
+
+
+ int memset (int *,int ,int) ;
+ scalar_t__ xmlMalloc (int) ;
+ int xsltFreeElemPreComp ;
+ int xsltInitElemPreComp (int *,int ,int ,int ,int ) ;
+ int xsltTransformError (int *,int ,int *,char*) ;
 
 xsltElemPreCompPtr
 xsltNewElemPreComp(xsltStylesheetPtr style, xmlNodePtr inst,
@@ -30,10 +30,10 @@ xsltNewElemPreComp(xsltStylesheetPtr style, xmlNodePtr inst,
     xsltElemPreCompPtr cur;
 
     cur = (xsltElemPreCompPtr) xmlMalloc(sizeof(xsltElemPreComp));
-    if (cur == NULL) {
-        xsltTransformError(NULL, style, NULL,
+    if (cur == ((void*)0)) {
+        xsltTransformError(((void*)0), style, ((void*)0),
                            "xsltNewExtElement : malloc failed\n");
-        return (NULL);
+        return (((void*)0));
     }
     memset(cur, 0, sizeof(xsltElemPreComp));
 

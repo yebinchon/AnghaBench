@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vdisp_t ;
-typedef  int /*<<< orphan*/  script_ctx_t ;
-typedef  int /*<<< orphan*/  jsval_t ;
-typedef  int WORD ;
-struct TYPE_3__ {int /*<<< orphan*/  dispex; int /*<<< orphan*/  safearray; } ;
-typedef  TYPE_1__ VBArrayInstance ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
-#define  DISPATCH_CONSTRUCT 129 
-#define  DISPATCH_METHOD 128 
- int /*<<< orphan*/  E_NOTIMPL ; 
- int /*<<< orphan*/  FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FIXME (char*,int) ; 
- int /*<<< orphan*/  JS_E_VBARRAY_EXPECTED ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  SafeArrayCopy (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TRACE (char*) ; 
- int VT_ARRAY ; 
- int VT_VARIANT ; 
- int /*<<< orphan*/  V_ARRAY (int /*<<< orphan*/ ) ; 
- int V_VT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  alloc_vbarray (int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_1__**) ; 
- int /*<<< orphan*/  get_variant (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  is_variant (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jsdisp_release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jsval_copy (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jsval_obj (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  throw_type_error (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int vdisp_t ;
+typedef int script_ctx_t ;
+typedef int jsval_t ;
+typedef int WORD ;
+struct TYPE_3__ {int dispex; int safearray; } ;
+typedef TYPE_1__ VBArrayInstance ;
+typedef int HRESULT ;
+
+
+
+
+ int E_NOTIMPL ;
+ int FAILED (int ) ;
+ int FIXME (char*,int) ;
+ int JS_E_VBARRAY_EXPECTED ;
+ int S_OK ;
+ int SafeArrayCopy (int ,int *) ;
+ int TRACE (char*) ;
+ int VT_ARRAY ;
+ int VT_VARIANT ;
+ int V_ARRAY (int ) ;
+ int V_VT (int ) ;
+ int alloc_vbarray (int *,int *,TYPE_1__**) ;
+ int get_variant (int ) ;
+ int is_variant (int ) ;
+ int jsdisp_release (int *) ;
+ int jsval_copy (int ,int *) ;
+ int jsval_obj (int *) ;
+ int throw_type_error (int *,int ,int *) ;
 
 __attribute__((used)) static HRESULT VBArrayConstr_value(script_ctx_t *ctx, vdisp_t *vthis, WORD flags, unsigned argc, jsval_t *argv,
         jsval_t *r)
@@ -50,17 +50,17 @@ __attribute__((used)) static HRESULT VBArrayConstr_value(script_ctx_t *ctx, vdis
     TRACE("\n");
 
     switch(flags) {
-    case DISPATCH_METHOD:
+    case 128:
         if(argc<1 || !is_variant(argv[0]) || V_VT(get_variant(argv[0])) != (VT_ARRAY|VT_VARIANT))
-            return throw_type_error(ctx, JS_E_VBARRAY_EXPECTED, NULL);
+            return throw_type_error(ctx, JS_E_VBARRAY_EXPECTED, ((void*)0));
 
         return jsval_copy(argv[0], r);
 
-    case DISPATCH_CONSTRUCT:
+    case 129:
         if(argc<1 || !is_variant(argv[0]) || V_VT(get_variant(argv[0])) != (VT_ARRAY|VT_VARIANT))
-            return throw_type_error(ctx, JS_E_VBARRAY_EXPECTED, NULL);
+            return throw_type_error(ctx, JS_E_VBARRAY_EXPECTED, ((void*)0));
 
-        hres = alloc_vbarray(ctx, NULL, &vbarray);
+        hres = alloc_vbarray(ctx, ((void*)0), &vbarray);
         if(FAILED(hres))
             return hres;
 

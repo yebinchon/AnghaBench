@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint64_t ;
-typedef  int uint32_t ;
-typedef  int int64_t ;
-struct TYPE_3__ {int /*<<< orphan*/ * pb; } ;
-typedef  scalar_t__ GXFPktType ;
-typedef  int /*<<< orphan*/  AVIOContext ;
-typedef  TYPE_1__ AVFormatContext ;
 
-/* Variables and functions */
- int AV_NOPTS_VALUE ; 
- scalar_t__ PKT_MEDIA ; 
- int /*<<< orphan*/  READ_ONE () ; 
- int /*<<< orphan*/  SEEK_CUR ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int avio_r8 (int /*<<< orphan*/ *) ; 
- int avio_rb32 (int /*<<< orphan*/ *) ; 
- scalar_t__ avio_seek (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int avio_tell (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  parse_packet_header (int /*<<< orphan*/ *,scalar_t__*,int*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint64_t ;
+typedef int uint32_t ;
+typedef int int64_t ;
+struct TYPE_3__ {int * pb; } ;
+typedef scalar_t__ GXFPktType ;
+typedef int AVIOContext ;
+typedef TYPE_1__ AVFormatContext ;
+
+
+ int AV_NOPTS_VALUE ;
+ scalar_t__ PKT_MEDIA ;
+ int READ_ONE () ;
+ int SEEK_CUR ;
+ int SEEK_SET ;
+ int avio_r8 (int *) ;
+ int avio_rb32 (int *) ;
+ scalar_t__ avio_seek (int *,int,int ) ;
+ int avio_tell (int *) ;
+ int parse_packet_header (int *,scalar_t__*,int*) ;
 
 __attribute__((used)) static int64_t gxf_resync_media(AVFormatContext *s, uint64_t max_interval, int track, int timestamp) {
     uint32_t tmp;

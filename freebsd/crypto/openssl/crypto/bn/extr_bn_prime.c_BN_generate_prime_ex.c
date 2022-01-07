@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  prime_t ;
-typedef  int /*<<< orphan*/  BN_GENCB ;
-typedef  int /*<<< orphan*/  BN_CTX ;
-typedef  int /*<<< orphan*/  BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BN_CTX_end (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_CTX_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BN_CTX_get (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BN_CTX_new () ; 
- int /*<<< orphan*/  BN_CTX_start (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_F_BN_GENERATE_PRIME_EX ; 
- int /*<<< orphan*/  BN_GENCB_call (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  BN_R_BITS_TOO_SMALL ; 
- int BN_is_prime_fasttest_ex (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int BN_prime_checks_for_size (int) ; 
- int /*<<< orphan*/  BN_rshift1 (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BNerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int NUMPRIMES ; 
- int /*<<< orphan*/  OPENSSL_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * OPENSSL_zalloc (int) ; 
- int /*<<< orphan*/  bn_check_top (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bn_probable_prime_dh (int /*<<< orphan*/ *,int,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  probable_prime (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  probable_prime_dh_safe (int /*<<< orphan*/ *,int,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int prime_t ;
+typedef int BN_GENCB ;
+typedef int BN_CTX ;
+typedef int BIGNUM ;
+
+
+ int BN_CTX_end (int *) ;
+ int BN_CTX_free (int *) ;
+ int * BN_CTX_get (int *) ;
+ int * BN_CTX_new () ;
+ int BN_CTX_start (int *) ;
+ int BN_F_BN_GENERATE_PRIME_EX ;
+ int BN_GENCB_call (int *,int,int) ;
+ int BN_R_BITS_TOO_SMALL ;
+ int BN_is_prime_fasttest_ex (int *,int,int *,int ,int *) ;
+ int BN_prime_checks_for_size (int) ;
+ int BN_rshift1 (int *,int *) ;
+ int BNerr (int ,int ) ;
+ int NUMPRIMES ;
+ int OPENSSL_free (int *) ;
+ int * OPENSSL_zalloc (int) ;
+ int bn_check_top (int *) ;
+ int bn_probable_prime_dh (int *,int,int const*,int const*,int *) ;
+ int probable_prime (int *,int,int *) ;
+ int probable_prime_dh_safe (int *,int,int const*,int const*,int *) ;
 
 int BN_generate_prime_ex(BIGNUM *ret, int bits, int safe,
                          const BIGNUM *add, const BIGNUM *rem, BN_GENCB *cb)
@@ -42,38 +42,38 @@ int BN_generate_prime_ex(BIGNUM *ret, int bits, int safe,
     BIGNUM *t;
     int found = 0;
     int i, j, c1 = 0;
-    BN_CTX *ctx = NULL;
-    prime_t *mods = NULL;
+    BN_CTX *ctx = ((void*)0);
+    prime_t *mods = ((void*)0);
     int checks = BN_prime_checks_for_size(bits);
 
     if (bits < 2) {
-        /* There are no prime numbers this small. */
+
         BNerr(BN_F_BN_GENERATE_PRIME_EX, BN_R_BITS_TOO_SMALL);
         return 0;
-    } else if (add == NULL && safe && bits < 6 && bits != 3) {
-        /*
-         * The smallest safe prime (7) is three bits.
-         * But the following two safe primes with less than 6 bits (11, 23)
-         * are unreachable for BN_rand with BN_RAND_TOP_TWO.
-         */
+    } else if (add == ((void*)0) && safe && bits < 6 && bits != 3) {
+
+
+
+
+
         BNerr(BN_F_BN_GENERATE_PRIME_EX, BN_R_BITS_TOO_SMALL);
         return 0;
     }
 
     mods = OPENSSL_zalloc(sizeof(*mods) * NUMPRIMES);
-    if (mods == NULL)
+    if (mods == ((void*)0))
         goto err;
 
     ctx = BN_CTX_new();
-    if (ctx == NULL)
+    if (ctx == ((void*)0))
         goto err;
     BN_CTX_start(ctx);
     t = BN_CTX_get(ctx);
-    if (t == NULL)
+    if (t == ((void*)0))
         goto err;
  loop:
-    /* make a random number and set the top and bottom bits */
-    if (add == NULL) {
+
+    if (add == ((void*)0)) {
         if (!probable_prime(ret, bits, mods))
             goto err;
     } else {
@@ -87,7 +87,7 @@ int BN_generate_prime_ex(BIGNUM *ret, int bits, int safe,
     }
 
     if (!BN_GENCB_call(cb, 0, c1++))
-        /* aborted */
+
         goto err;
 
     if (!safe) {
@@ -97,10 +97,10 @@ int BN_generate_prime_ex(BIGNUM *ret, int bits, int safe,
         if (i == 0)
             goto loop;
     } else {
-        /*
-         * for "safe prime" generation, check that (p-1)/2 is prime. Since a
-         * prime is odd, We just need to divide by 2
-         */
+
+
+
+
         if (!BN_rshift1(t, ret))
             goto err;
 
@@ -119,10 +119,10 @@ int BN_generate_prime_ex(BIGNUM *ret, int bits, int safe,
 
             if (!BN_GENCB_call(cb, 2, c1 - 1))
                 goto err;
-            /* We have a safe prime test pass */
+
         }
     }
-    /* we have a prime :-) */
+
     found = 1;
  err:
     OPENSSL_free(mods);

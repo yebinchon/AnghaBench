@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UID ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int UID ;
 struct TYPE_5__ {int type; } ;
-typedef  TYPE_1__ MXFStructuralComponent ;
-typedef  int /*<<< orphan*/  MXFEssenceGroup ;
-typedef  int /*<<< orphan*/  MXFContext ;
+typedef TYPE_1__ MXFStructuralComponent ;
+typedef int MXFEssenceGroup ;
+typedef int MXFContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AnyType ; 
-#define  EssenceGroup 129 
-#define  SourceClip 128 
- TYPE_1__* mxf_resolve_essence_group_choice (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- TYPE_1__* mxf_resolve_strong_ref (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int AnyType ;
+
+
+ TYPE_1__* mxf_resolve_essence_group_choice (int *,int *) ;
+ TYPE_1__* mxf_resolve_strong_ref (int *,int *,int ) ;
 
 __attribute__((used)) static MXFStructuralComponent* mxf_resolve_sourceclip(MXFContext *mxf, UID *strong_ref)
 {
-    MXFStructuralComponent *component = NULL;
+    MXFStructuralComponent *component = ((void*)0);
 
     component = mxf_resolve_strong_ref(mxf, strong_ref, AnyType);
     if (!component)
-        return NULL;
+        return ((void*)0);
     switch (component->type) {
-        case SourceClip:
+        case 128:
             return component;
-        case EssenceGroup:
+        case 129:
             return mxf_resolve_essence_group_choice(mxf, (MXFEssenceGroup*) component);
         default:
             break;
     }
-    return NULL;
+    return ((void*)0);
 }

@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  block_t ;
-struct TYPE_6__ {int i_ref; int i_max_size; int b_own; TYPE_1__* vt; int /*<<< orphan*/ * p_block; } ;
-struct TYPE_5__ {int /*<<< orphan*/  GetBufferAndLength; int /*<<< orphan*/  GetMaxLength; int /*<<< orphan*/  SetLength; int /*<<< orphan*/  Release; int /*<<< orphan*/  AddRef; int /*<<< orphan*/  QueryInterface; } ;
-typedef  TYPE_1__ IMediaBuffer_vt ;
-typedef  TYPE_2__ CMediaBuffer ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AddRef ; 
- int /*<<< orphan*/  GetBufferAndLength ; 
- int /*<<< orphan*/  GetMaxLength ; 
- int /*<<< orphan*/  QueryInterface ; 
- int /*<<< orphan*/  Release ; 
- int /*<<< orphan*/  SetLength ; 
- int /*<<< orphan*/  free (TYPE_2__*) ; 
- scalar_t__ malloc (int) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int block_t ;
+struct TYPE_6__ {int i_ref; int i_max_size; int b_own; TYPE_1__* vt; int * p_block; } ;
+struct TYPE_5__ {int GetBufferAndLength; int GetMaxLength; int SetLength; int Release; int AddRef; int QueryInterface; } ;
+typedef TYPE_1__ IMediaBuffer_vt ;
+typedef TYPE_2__ CMediaBuffer ;
+
+
+ int AddRef ;
+ int GetBufferAndLength ;
+ int GetMaxLength ;
+ int QueryInterface ;
+ int Release ;
+ int SetLength ;
+ int free (TYPE_2__*) ;
+ scalar_t__ malloc (int) ;
 
 CMediaBuffer *CMediaBufferCreate( block_t *p_block, int i_max_size,
                                   bool b_own )
 {
     CMediaBuffer *p_mb = (CMediaBuffer *)malloc( sizeof(CMediaBuffer) );
-    if( !p_mb ) return NULL;
+    if( !p_mb ) return ((void*)0);
 
     p_mb->vt = (IMediaBuffer_vt *)malloc( sizeof(IMediaBuffer_vt) );
     if( !p_mb->vt )
     {
         free( p_mb );
-        return NULL;
+        return ((void*)0);
     }
 
     p_mb->i_ref = 1;

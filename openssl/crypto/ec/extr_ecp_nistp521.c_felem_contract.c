@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int limb ;
-typedef  int* felem ;
 
-/* Variables and functions */
- int bottom57bits ; 
- int bottom58bits ; 
- int /*<<< orphan*/  felem_assign (int*,int* const) ; 
- int* kPrime ; 
+
+
+
+typedef int limb ;
+typedef int* felem ;
+
+
+ int bottom57bits ;
+ int bottom58bits ;
+ int felem_assign (int*,int* const) ;
+ int* kPrime ;
 
 __attribute__((used)) static void felem_contract(felem out, const felem in)
 {
@@ -28,7 +28,7 @@ __attribute__((used)) static void felem_contract(felem out, const felem in)
 
     out[0] += out[8] >> 57;
     out[8] &= bottom57bits;
-    /* out[8] < 2^57 */
+
     out[1] += out[0] >> 58;
     out[0] &= bottom58bits;
     out[2] += out[1] >> 58;
@@ -45,18 +45,6 @@ __attribute__((used)) static void felem_contract(felem out, const felem in)
     out[6] &= bottom58bits;
     out[8] += out[7] >> 58;
     out[7] &= bottom58bits;
-    /* out[8] < 2^57 + 4 */
-
-    /*
-     * If the value is greater than 2^521-1 then we have to subtract 2^521-1
-     * out. See the comments in felem_is_zero regarding why we don't test for
-     * other multiples of the prime.
-     */
-
-    /*
-     * First, if |out| is equal to 2^521-1, we subtract it out to get zero.
-     */
-
     is_p = out[0] ^ kPrime[0];
     is_p |= out[1] ^ kPrime[1];
     is_p |= out[2] ^ kPrime[2];
@@ -77,7 +65,7 @@ __attribute__((used)) static void felem_contract(felem out, const felem in)
     is_p = 0 - (is_p >> 63);
     is_p = ~is_p;
 
-    /* is_p is 0 iff |out| == 2^521-1 and all ones otherwise */
+
 
     out[0] &= is_p;
     out[1] &= is_p;
@@ -89,10 +77,10 @@ __attribute__((used)) static void felem_contract(felem out, const felem in)
     out[7] &= is_p;
     out[8] &= is_p;
 
-    /*
-     * In order to test that |out| >= 2^521-1 we need only test if out[8] >>
-     * 57 is greater than zero as (2^521-1) + x >= 2^522
-     */
+
+
+
+
     is_greater = out[8] >> 57;
     is_greater |= is_greater << 32;
     is_greater |= is_greater << 16;
@@ -112,7 +100,7 @@ __attribute__((used)) static void felem_contract(felem out, const felem in)
     out[7] -= kPrime[7] & is_greater;
     out[8] -= kPrime[8] & is_greater;
 
-    /* Eliminate negative coefficients */
+
     sign = -(out[0] >> 63);
     out[0] += (two58 & sign);
     out[1] -= (1 & sign);

@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct mbuf {int dummy; } ;
 struct label {int dummy; } ;
-struct ipq {int /*<<< orphan*/  ipq_label; } ;
+struct ipq {int ipq_label; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MAC_POLICY_PERFORM_NOSLEEP (int /*<<< orphan*/ ,struct mbuf*,struct label*,struct ipq*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ipq_update ; 
- struct label* mac_mbuf_to_label (struct mbuf*) ; 
- scalar_t__ mac_policy_count ; 
+
+ int MAC_POLICY_PERFORM_NOSLEEP (int ,struct mbuf*,struct label*,struct ipq*,int ) ;
+ int ipq_update ;
+ struct label* mac_mbuf_to_label (struct mbuf*) ;
+ scalar_t__ mac_policy_count ;
 
 void
 mac_ipq_update(struct mbuf *m, struct ipq *q)
 {
-	struct label *label;
+ struct label *label;
 
-	if (mac_policy_count == 0)
-		return;
+ if (mac_policy_count == 0)
+  return;
 
-	label = mac_mbuf_to_label(m);
+ label = mac_mbuf_to_label(m);
 
-	MAC_POLICY_PERFORM_NOSLEEP(ipq_update, m, label, q, q->ipq_label);
+ MAC_POLICY_PERFORM_NOSLEEP(ipq_update, m, label, q, q->ipq_label);
 }

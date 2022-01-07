@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  info ;
-struct TYPE_7__ {int /*<<< orphan*/  ex_issuer; int /*<<< orphan*/  ex_subject; } ;
-typedef  TYPE_1__ cert_struct_test_t ;
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int info ;
+struct TYPE_7__ {int ex_issuer; int ex_subject; } ;
+typedef TYPE_1__ cert_struct_test_t ;
 struct TYPE_8__ {int lpszSubjectInfo; int lpszIssuerInfo; int lpszSignatureAlgName; int lpszEncryptionAlgName; int lpszProtocolName; int dwKeySize; } ;
-typedef  TYPE_2__ INTERNET_CERTIFICATE_INFOA ;
-typedef  int /*<<< orphan*/  HINTERNET ;
-typedef  int DWORD ;
-typedef  int BOOL ;
+typedef TYPE_2__ INTERNET_CERTIFICATE_INFOA ;
+typedef int HINTERNET ;
+typedef int DWORD ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int GetLastError () ; 
- int /*<<< orphan*/  INTERNET_OPTION_SECURITY_CERTIFICATE_STRUCT ; 
- int InternetQueryOptionA (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_2__*,int*) ; 
- int /*<<< orphan*/  memset (TYPE_2__*,int,int) ; 
- int /*<<< orphan*/  ok (int,char*,int) ; 
- int /*<<< orphan*/  release_cert_info (TYPE_2__*) ; 
- int /*<<< orphan*/  strcmp (int,int /*<<< orphan*/ ) ; 
+
+ int GetLastError () ;
+ int INTERNET_OPTION_SECURITY_CERTIFICATE_STRUCT ;
+ int InternetQueryOptionA (int ,int ,TYPE_2__*,int*) ;
+ int memset (TYPE_2__*,int,int) ;
+ int ok (int,char*,int) ;
+ int release_cert_info (TYPE_2__*) ;
+ int strcmp (int,int ) ;
 
 __attribute__((used)) static void test_cert_struct(HINTERNET req, const cert_struct_test_t *test)
 {

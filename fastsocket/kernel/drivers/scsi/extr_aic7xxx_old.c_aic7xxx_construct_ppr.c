@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct aic7xxx_scb {int /*<<< orphan*/  cmd; } ;
-struct aic7xxx_host {int msg_len; int /*<<< orphan*/  msg_index; scalar_t__* msg_buf; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct aic7xxx_scb {int cmd; } ;
+struct aic7xxx_host {int msg_len; int msg_index; scalar_t__* msg_buf; } ;
 struct TYPE_3__ {scalar_t__ options; scalar_t__ width; scalar_t__ offset; scalar_t__ period; } ;
 struct TYPE_4__ {TYPE_1__ goal; } ;
 
-/* Variables and functions */
- TYPE_2__* AIC_DEV (int /*<<< orphan*/ ) ; 
- scalar_t__ MSG_EXTENDED ; 
- scalar_t__ MSG_EXT_PPR ; 
- scalar_t__ MSG_EXT_PPR_LEN ; 
+
+ TYPE_2__* AIC_DEV (int ) ;
+ scalar_t__ MSG_EXTENDED ;
+ scalar_t__ MSG_EXT_PPR ;
+ scalar_t__ MSG_EXT_PPR_LEN ;
 
 __attribute__((used)) static void
 aic7xxx_construct_ppr(struct aic7xxx_host *p, struct aic7xxx_scb *scb)

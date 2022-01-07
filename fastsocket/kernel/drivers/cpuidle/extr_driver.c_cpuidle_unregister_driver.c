@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct cpuidle_driver {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * cpuidle_curr_driver ; 
- int /*<<< orphan*/  cpuidle_driver_lock ; 
- int /*<<< orphan*/  spin_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock (int /*<<< orphan*/ *) ; 
+
+ int * cpuidle_curr_driver ;
+ int cpuidle_driver_lock ;
+ int spin_lock (int *) ;
+ int spin_unlock (int *) ;
 
 void cpuidle_unregister_driver(struct cpuidle_driver *drv)
 {
-	if (!drv)
-		return;
+ if (!drv)
+  return;
 
-	spin_lock(&cpuidle_driver_lock);
-	cpuidle_curr_driver = NULL;
-	spin_unlock(&cpuidle_driver_lock);
+ spin_lock(&cpuidle_driver_lock);
+ cpuidle_curr_driver = ((void*)0);
+ spin_unlock(&cpuidle_driver_lock);
 }

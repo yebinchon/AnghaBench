@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  windres_bfd ;
-struct coff_file_info {char const* filename; scalar_t__ secaddr; int /*<<< orphan*/ * data_end; int /*<<< orphan*/ * data; } ;
-typedef  int /*<<< orphan*/  rc_res_id ;
-typedef  int /*<<< orphan*/  rc_res_directory ;
-typedef  int bfd_size_type ;
-typedef  int /*<<< orphan*/  bfd_byte ;
-typedef  int /*<<< orphan*/  bfd ;
-typedef  int /*<<< orphan*/  asection ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int windres_bfd ;
+struct coff_file_info {char const* filename; scalar_t__ secaddr; int * data_end; int * data; } ;
+typedef int rc_res_id ;
+typedef int rc_res_directory ;
+typedef int bfd_size_type ;
+typedef int bfd_byte ;
+typedef int bfd ;
+typedef int asection ;
 struct TYPE_3__ {scalar_t__ ImageBase; } ;
 struct TYPE_4__ {TYPE_1__ pe_opthdr; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  WR_KIND_BFD ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  bfd_check_format_matches (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char***) ; 
- int /*<<< orphan*/  bfd_close (int /*<<< orphan*/ *) ; 
- scalar_t__ bfd_error_file_ambiguously_recognized ; 
- int /*<<< orphan*/  bfd_fatal (char const*) ; 
- scalar_t__ bfd_get_error () ; 
- int /*<<< orphan*/  bfd_get_filename (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * bfd_get_section_by_name (int /*<<< orphan*/ *,char*) ; 
- scalar_t__ bfd_get_section_vma (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bfd_nonfatal (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bfd_object ; 
- int /*<<< orphan*/ * bfd_openr (char const*,char const*) ; 
- int bfd_section_size (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fatal (int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  get_windres_bfd_content (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  list_matching_formats (char**) ; 
- TYPE_2__* pe_data (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * read_coff_res_dir (int /*<<< orphan*/ *,int /*<<< orphan*/ *,struct coff_file_info*,int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- scalar_t__ res_alloc (int) ; 
- int /*<<< orphan*/  set_windres_bfd (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xexit (int) ; 
+
+ int WR_KIND_BFD ;
+ int _ (char*) ;
+ int bfd_check_format_matches (int *,int ,char***) ;
+ int bfd_close (int *) ;
+ scalar_t__ bfd_error_file_ambiguously_recognized ;
+ int bfd_fatal (char const*) ;
+ scalar_t__ bfd_get_error () ;
+ int bfd_get_filename (int *) ;
+ int * bfd_get_section_by_name (int *,char*) ;
+ scalar_t__ bfd_get_section_vma (int *,int *) ;
+ int bfd_nonfatal (int ) ;
+ int bfd_object ;
+ int * bfd_openr (char const*,char const*) ;
+ int bfd_section_size (int *,int *) ;
+ int fatal (int ,...) ;
+ int get_windres_bfd_content (int *,int *,int ,int) ;
+ int list_matching_formats (char**) ;
+ TYPE_2__* pe_data (int *) ;
+ int * read_coff_res_dir (int *,int *,struct coff_file_info*,int const*,int ) ;
+ scalar_t__ res_alloc (int) ;
+ int set_windres_bfd (int *,int *,int *,int ) ;
+ int xexit (int) ;
 
 rc_res_directory *
 read_coff_rsrc (const char *filename, const char *target)
@@ -59,23 +59,23 @@ read_coff_rsrc (const char *filename, const char *target)
   bfd_byte *data;
   struct coff_file_info finfo;
 
-  if (filename == NULL)
+  if (filename == ((void*)0))
     fatal (_("filename required for COFF input"));
 
   abfd = bfd_openr (filename, target);
-  if (abfd == NULL)
+  if (abfd == ((void*)0))
     bfd_fatal (filename);
 
   if (! bfd_check_format_matches (abfd, bfd_object, &matching))
     {
       bfd_nonfatal (bfd_get_filename (abfd));
       if (bfd_get_error () == bfd_error_file_ambiguously_recognized)
-	list_matching_formats (matching);
+ list_matching_formats (matching);
       xexit (1);
     }
 
   sec = bfd_get_section_by_name (abfd, ".rsrc");
-  if (sec == NULL)
+  if (sec == ((void*)0))
     {
       fatal (_("%s: no resource section"), filename);
     }
@@ -90,15 +90,15 @@ read_coff_rsrc (const char *filename, const char *target)
   finfo.data = data;
   finfo.data_end = data + size;
   finfo.secaddr = (bfd_get_section_vma (abfd, sec)
-		   - pe_data (abfd)->pe_opthdr.ImageBase);
+     - pe_data (abfd)->pe_opthdr.ImageBase);
 
-  /* Now just read in the top level resource directory.  Note that we
-     don't free data, since we create resource entries that point into
-     it.  If we ever want to free up the resource information we read,
-     this will have to be cleaned up.  */
 
-  ret = read_coff_res_dir (&wrbfd, data, &finfo, (const rc_res_id *) NULL, 0);
-  
+
+
+
+
+  ret = read_coff_res_dir (&wrbfd, data, &finfo, (const rc_res_id *) ((void*)0), 0);
+
   bfd_close (abfd);
 
   return ret;

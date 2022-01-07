@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_7__ {int scan_n; int* order; TYPE_4__* s; TYPE_1__* img_comp; } ;
-typedef  TYPE_2__ jpeg ;
+typedef TYPE_2__ jpeg ;
 struct TYPE_8__ {int img_n; } ;
 struct TYPE_6__ {int id; int hd; int ha; } ;
 
-/* Variables and functions */
- int e (char*,char*) ; 
- int get16 (TYPE_4__*) ; 
- void* get8 (TYPE_4__*) ; 
+
+ int e (char*,char*) ;
+ int get16 (TYPE_4__*) ;
+ void* get8 (TYPE_4__*) ;
 
 __attribute__((used)) static int process_scan_header(jpeg *z)
 {
@@ -37,12 +37,12 @@ __attribute__((used)) static int process_scan_header(jpeg *z)
          if (z->img_comp[which].id == id)
             break;
       if (which == z->s->img_n) return 0;
-      z->img_comp[which].hd = q >> 4;   if (z->img_comp[which].hd > 3) return e("bad DC huff","Corrupt JPEG");
-      z->img_comp[which].ha = q & 15;   if (z->img_comp[which].ha > 3) return e("bad AC huff","Corrupt JPEG");
+      z->img_comp[which].hd = q >> 4; if (z->img_comp[which].hd > 3) return e("bad DC huff","Corrupt JPEG");
+      z->img_comp[which].ha = q & 15; if (z->img_comp[which].ha > 3) return e("bad AC huff","Corrupt JPEG");
       z->order[i] = which;
    }
    if (get8(z->s) != 0) return e("bad SOS","Corrupt JPEG");
-   get8(z->s); // should be 63, but might be 0
+   get8(z->s);
    if (get8(z->s) != 0) return e("bad SOS","Corrupt JPEG");
 
    return 1;

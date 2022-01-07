@@ -1,74 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  npy_longlong ;
-typedef  int /*<<< orphan*/  buf ;
-typedef  int /*<<< orphan*/  _tmp_string_t ;
-struct TYPE_7__ {int type_num; scalar_t__ elsize; char byteorder; int /*<<< orphan*/  type; int /*<<< orphan*/  fields; int /*<<< orphan*/ * names; TYPE_1__* subarray; } ;
-struct TYPE_6__ {TYPE_2__* base; int /*<<< orphan*/ * shape; } ;
-typedef  scalar_t__ Py_ssize_t ;
-typedef  int /*<<< orphan*/  PyObject ;
-typedef  TYPE_2__ PyArray_Descr ;
-typedef  int /*<<< orphan*/  PyArrayObject ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Generic ; 
-#define  NPY_BOOL 149 
-#define  NPY_BYTE 148 
-#define  NPY_CDOUBLE 147 
-#define  NPY_CFLOAT 146 
-#define  NPY_CLONGDOUBLE 145 
-#define  NPY_DOUBLE 144 
-#define  NPY_FLOAT 143 
-#define  NPY_HALF 142 
-#define  NPY_INT 141 
-#define  NPY_LONG 140 
-#define  NPY_LONGDOUBLE 139 
-#define  NPY_LONGLONG 138 
-#define  NPY_OBJECT 137 
-#define  NPY_SHORT 136 
- int NPY_SIZEOF_LONG ; 
-#define  NPY_STRING 135 
-#define  NPY_UBYTE 134 
-#define  NPY_UINT 133 
-#define  NPY_ULONG 132 
-#define  NPY_ULONGLONG 131 
-#define  NPY_UNICODE 130 
-#define  NPY_USHORT 129 
-#define  NPY_VOID 128 
- scalar_t__ PyArray_IsScalar (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ PyDataType_HASFIELDS (TYPE_2__*) ; 
- int /*<<< orphan*/ * PyDict_GetItem (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyErr_Format (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  PyErr_SetString (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  PyExc_ValueError ; 
- scalar_t__ PyInt_AsLong (int /*<<< orphan*/ *) ; 
- scalar_t__ PyNumber_AsSsize_t (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyOS_snprintf (char*,int,char*,int) ; 
- scalar_t__ PyTuple_Check (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * PyTuple_GET_ITEM (int /*<<< orphan*/ *,int) ; 
- int PyTuple_GET_SIZE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * PyTuple_GetItem (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * Py_BuildValue (char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Py_DECREF (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Py_INCREF (int /*<<< orphan*/ *) ; 
- scalar_t__ _append_char (int /*<<< orphan*/ *,char) ; 
- scalar_t__ _append_field_name (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ _append_str (int /*<<< orphan*/ *,char*) ; 
- int _is_natively_aligned_at (TYPE_2__*,int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ error_converting (scalar_t__) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int npy_longlong ;
+typedef int buf ;
+typedef int _tmp_string_t ;
+struct TYPE_7__ {int type_num; scalar_t__ elsize; char byteorder; int type; int fields; int * names; TYPE_1__* subarray; } ;
+struct TYPE_6__ {TYPE_2__* base; int * shape; } ;
+typedef scalar_t__ Py_ssize_t ;
+typedef int PyObject ;
+typedef TYPE_2__ PyArray_Descr ;
+typedef int PyArrayObject ;
+
+
+ int Generic ;
+ int NPY_SIZEOF_LONG ;
+ scalar_t__ PyArray_IsScalar (int *,int ) ;
+ scalar_t__ PyDataType_HASFIELDS (TYPE_2__*) ;
+ int * PyDict_GetItem (int ,int *) ;
+ int PyErr_Format (int ,char*,int ,...) ;
+ int PyErr_SetString (int ,char*) ;
+ int PyExc_ValueError ;
+ scalar_t__ PyInt_AsLong (int *) ;
+ scalar_t__ PyNumber_AsSsize_t (int *,int *) ;
+ int PyOS_snprintf (char*,int,char*,int) ;
+ scalar_t__ PyTuple_Check (int *) ;
+ int * PyTuple_GET_ITEM (int *,int) ;
+ int PyTuple_GET_SIZE (int *) ;
+ int * PyTuple_GetItem (int *,int) ;
+ int * Py_BuildValue (char*,int *) ;
+ int Py_DECREF (int *) ;
+ int Py_INCREF (int *) ;
+ scalar_t__ _append_char (int *,char) ;
+ scalar_t__ _append_field_name (int *,int *) ;
+ scalar_t__ _append_str (int *,char*) ;
+ int _is_natively_aligned_at (TYPE_2__*,int *,scalar_t__) ;
+ int assert (int) ;
+ scalar_t__ error_converting (scalar_t__) ;
 
 __attribute__((used)) static int
 _buffer_format_string(PyArray_Descr *descr, _tmp_string_t *str,
@@ -79,10 +57,10 @@ _buffer_format_string(PyArray_Descr *descr, _tmp_string_t *str,
     char _active_byteorder = '@';
     Py_ssize_t _offset = 0;
 
-    if (active_byteorder == NULL) {
+    if (active_byteorder == ((void*)0)) {
         active_byteorder = &_active_byteorder;
     }
-    if (offset == NULL) {
+    if (offset == ((void*)0)) {
         offset = &_offset;
     }
 
@@ -114,7 +92,7 @@ _buffer_format_string(PyArray_Descr *descr, _tmp_string_t *str,
                 }
             }
             item = PyTuple_GET_ITEM(subarray_tuple, k);
-            dim_size = PyNumber_AsSsize_t(item, NULL);
+            dim_size = PyNumber_AsSsize_t(item, ((void*)0));
 
             PyOS_snprintf(buf, sizeof(buf), "%ld", (long)dim_size);
             if (_append_str(str, buf) < 0) {
@@ -158,7 +136,7 @@ _buffer_format_string(PyArray_Descr *descr, _tmp_string_t *str,
             }
             new_offset += base_offset;
 
-            /* Insert padding manually */
+
             if (*offset > new_offset) {
                 PyErr_SetString(
                     PyExc_ValueError,
@@ -172,14 +150,14 @@ _buffer_format_string(PyArray_Descr *descr, _tmp_string_t *str,
                 ++*offset;
             }
 
-            /* Insert child item */
+
             ret = _buffer_format_string(child, str, obj, offset,
                                   active_byteorder);
             if (ret < 0) {
                 return -1;
             }
 
-            /* Insert field name */
+
             if (_append_field_name(str, name) < 0) return -1;
         }
         if (_append_char(str, '}') < 0) return -1;
@@ -187,18 +165,18 @@ _buffer_format_string(PyArray_Descr *descr, _tmp_string_t *str,
     else {
         int is_standard_size = 1;
         int is_natively_aligned;
-        int is_native_only_type = (descr->type_num == NPY_LONGDOUBLE ||
-                                   descr->type_num == NPY_CLONGDOUBLE);
+        int is_native_only_type = (descr->type_num == 139 ||
+                                   descr->type_num == 145);
         if (sizeof(npy_longlong) != 8) {
             is_native_only_type = is_native_only_type || (
-                descr->type_num == NPY_LONGLONG ||
-                descr->type_num == NPY_ULONGLONG);
+                descr->type_num == 138 ||
+                descr->type_num == 131);
         }
 
         *offset += descr->elsize;
 
         if (PyArray_IsScalar(obj, Generic)) {
-            /* scalars are always natively aligned */
+
             is_natively_aligned = 1;
         }
         else {
@@ -207,7 +185,7 @@ _buffer_format_string(PyArray_Descr *descr, _tmp_string_t *str,
         }
 
         if (descr->byteorder == '=' && is_natively_aligned) {
-            /* Prefer native types, to cater for Cython */
+
             is_standard_size = 0;
             if (*active_byteorder != '@') {
                 if (_append_char(str, '@') < 0) return -1;
@@ -215,7 +193,7 @@ _buffer_format_string(PyArray_Descr *descr, _tmp_string_t *str,
             }
         }
         else if (descr->byteorder == '=' && is_native_only_type) {
-            /* Data types that have no standard size */
+
             is_standard_size = 0;
             if (*active_byteorder != '^') {
                 if (_append_char(str, '^') < 0) return -1;
@@ -231,10 +209,10 @@ _buffer_format_string(PyArray_Descr *descr, _tmp_string_t *str,
             }
 
             if (is_native_only_type) {
-                /*
-                 * It's not possible to express native-only data types
-                 * in non-native npy_byte orders
-                 */
+
+
+
+
                 PyErr_Format(PyExc_ValueError,
                              "cannot expose native-only dtype '%c' in "
                              "non-native byte order '%c' via buffer interface",
@@ -244,14 +222,14 @@ _buffer_format_string(PyArray_Descr *descr, _tmp_string_t *str,
         }
 
         switch (descr->type_num) {
-        case NPY_BOOL:         if (_append_char(str, '?') < 0) return -1; break;
-        case NPY_BYTE:         if (_append_char(str, 'b') < 0) return -1; break;
-        case NPY_UBYTE:        if (_append_char(str, 'B') < 0) return -1; break;
-        case NPY_SHORT:        if (_append_char(str, 'h') < 0) return -1; break;
-        case NPY_USHORT:       if (_append_char(str, 'H') < 0) return -1; break;
-        case NPY_INT:          if (_append_char(str, 'i') < 0) return -1; break;
-        case NPY_UINT:         if (_append_char(str, 'I') < 0) return -1; break;
-        case NPY_LONG:
+        case 149: if (_append_char(str, '?') < 0) return -1; break;
+        case 148: if (_append_char(str, 'b') < 0) return -1; break;
+        case 134: if (_append_char(str, 'B') < 0) return -1; break;
+        case 136: if (_append_char(str, 'h') < 0) return -1; break;
+        case 129: if (_append_char(str, 'H') < 0) return -1; break;
+        case 141: if (_append_char(str, 'i') < 0) return -1; break;
+        case 133: if (_append_char(str, 'I') < 0) return -1; break;
+        case 140:
             if (is_standard_size && (NPY_SIZEOF_LONG == 8)) {
                 if (_append_char(str, 'q') < 0) return -1;
             }
@@ -259,7 +237,7 @@ _buffer_format_string(PyArray_Descr *descr, _tmp_string_t *str,
                 if (_append_char(str, 'l') < 0) return -1;
             }
             break;
-        case NPY_ULONG:
+        case 132:
             if (is_standard_size && (NPY_SIZEOF_LONG == 8)) {
                 if (_append_char(str, 'Q') < 0) return -1;
             }
@@ -267,34 +245,34 @@ _buffer_format_string(PyArray_Descr *descr, _tmp_string_t *str,
                 if (_append_char(str, 'L') < 0) return -1;
             }
             break;
-        case NPY_LONGLONG:     if (_append_char(str, 'q') < 0) return -1; break;
-        case NPY_ULONGLONG:    if (_append_char(str, 'Q') < 0) return -1; break;
-        case NPY_HALF:         if (_append_char(str, 'e') < 0) return -1; break;
-        case NPY_FLOAT:        if (_append_char(str, 'f') < 0) return -1; break;
-        case NPY_DOUBLE:       if (_append_char(str, 'd') < 0) return -1; break;
-        case NPY_LONGDOUBLE:   if (_append_char(str, 'g') < 0) return -1; break;
-        case NPY_CFLOAT:       if (_append_str(str, "Zf") < 0) return -1; break;
-        case NPY_CDOUBLE:      if (_append_str(str, "Zd") < 0) return -1; break;
-        case NPY_CLONGDOUBLE:  if (_append_str(str, "Zg") < 0) return -1; break;
-        /* XXX NPY_DATETIME */
-        /* XXX NPY_TIMEDELTA */
-        case NPY_OBJECT:       if (_append_char(str, 'O') < 0) return -1; break;
-        case NPY_STRING: {
+        case 138: if (_append_char(str, 'q') < 0) return -1; break;
+        case 131: if (_append_char(str, 'Q') < 0) return -1; break;
+        case 142: if (_append_char(str, 'e') < 0) return -1; break;
+        case 143: if (_append_char(str, 'f') < 0) return -1; break;
+        case 144: if (_append_char(str, 'd') < 0) return -1; break;
+        case 139: if (_append_char(str, 'g') < 0) return -1; break;
+        case 146: if (_append_str(str, "Zf") < 0) return -1; break;
+        case 147: if (_append_str(str, "Zd") < 0) return -1; break;
+        case 145: if (_append_str(str, "Zg") < 0) return -1; break;
+
+
+        case 137: if (_append_char(str, 'O') < 0) return -1; break;
+        case 135: {
             char buf[128];
             PyOS_snprintf(buf, sizeof(buf), "%ds", descr->elsize);
             if (_append_str(str, buf) < 0) return -1;
             break;
         }
-        case NPY_UNICODE: {
-            /* NumPy Unicode is always 4-byte */
+        case 130: {
+
             char buf[128];
             assert(descr->elsize % 4 == 0);
             PyOS_snprintf(buf, sizeof(buf), "%dw", descr->elsize / 4);
             if (_append_str(str, buf) < 0) return -1;
             break;
         }
-        case NPY_VOID: {
-            /* Insert padding bytes */
+        case 128: {
+
             char buf[128];
             PyOS_snprintf(buf, sizeof(buf), "%dx", descr->elsize);
             if (_append_str(str, buf) < 0) return -1;

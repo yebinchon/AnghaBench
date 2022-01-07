@@ -1,106 +1,106 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct sock {int sk_state; unsigned long sk_lingertime; scalar_t__ sk_bound_dev_if; int /*<<< orphan*/  (* sk_state_change ) (struct sock*) ;int /*<<< orphan*/  sk_err; } ;
-struct iucv_sock {int /*<<< orphan*/ * hs_dev; int /*<<< orphan*/  backlog_skb_q; int /*<<< orphan*/  send_skb_q; int /*<<< orphan*/  transport; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_IUCV_FLAG_FIN ; 
- int /*<<< orphan*/  AF_IUCV_TRANS_HIPER ; 
- int /*<<< orphan*/  ECONNRESET ; 
- int IUCV_CLOSED ; 
-#define  IUCV_CLOSING 131 
-#define  IUCV_CONNECTED 130 
-#define  IUCV_DISCONN 129 
- unsigned long IUCV_DISCONN_TIMEOUT ; 
-#define  IUCV_LISTEN 128 
- int /*<<< orphan*/  SOCK_LINGER ; 
- int /*<<< orphan*/  SOCK_ZAPPED ; 
- int /*<<< orphan*/  dev_put (int /*<<< orphan*/ *) ; 
- int iucv_send_ctrl (struct sock*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  iucv_sever_path (struct sock*,int) ; 
- struct iucv_sock* iucv_sk (struct sock*) ; 
- int /*<<< orphan*/  iucv_sock_cleanup_listen (struct sock*) ; 
- int /*<<< orphan*/  iucv_sock_clear_timer (struct sock*) ; 
- int /*<<< orphan*/  iucv_sock_in_state (struct sock*,int,int /*<<< orphan*/ ) ; 
- int iucv_sock_wait (struct sock*,int /*<<< orphan*/ ,unsigned long) ; 
- int /*<<< orphan*/  lock_sock (struct sock*) ; 
- int /*<<< orphan*/  release_sock (struct sock*) ; 
- int /*<<< orphan*/  skb_queue_empty (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  skb_queue_purge (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sock_flag (struct sock*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sock_set_flag (struct sock*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 (struct sock*) ; 
- int /*<<< orphan*/  stub2 (struct sock*) ; 
- int /*<<< orphan*/  stub3 (struct sock*) ; 
- int /*<<< orphan*/  stub4 (struct sock*) ; 
+
+
+
+struct sock {int sk_state; unsigned long sk_lingertime; scalar_t__ sk_bound_dev_if; int (* sk_state_change ) (struct sock*) ;int sk_err; } ;
+struct iucv_sock {int * hs_dev; int backlog_skb_q; int send_skb_q; int transport; } ;
+
+
+ int AF_IUCV_FLAG_FIN ;
+ int AF_IUCV_TRANS_HIPER ;
+ int ECONNRESET ;
+ int IUCV_CLOSED ;
+
+
+
+ unsigned long IUCV_DISCONN_TIMEOUT ;
+
+ int SOCK_LINGER ;
+ int SOCK_ZAPPED ;
+ int dev_put (int *) ;
+ int iucv_send_ctrl (struct sock*,int ) ;
+ int iucv_sever_path (struct sock*,int) ;
+ struct iucv_sock* iucv_sk (struct sock*) ;
+ int iucv_sock_cleanup_listen (struct sock*) ;
+ int iucv_sock_clear_timer (struct sock*) ;
+ int iucv_sock_in_state (struct sock*,int,int ) ;
+ int iucv_sock_wait (struct sock*,int ,unsigned long) ;
+ int lock_sock (struct sock*) ;
+ int release_sock (struct sock*) ;
+ int skb_queue_empty (int *) ;
+ int skb_queue_purge (int *) ;
+ int sock_flag (struct sock*,int ) ;
+ int sock_set_flag (struct sock*,int ) ;
+ int stub1 (struct sock*) ;
+ int stub2 (struct sock*) ;
+ int stub3 (struct sock*) ;
+ int stub4 (struct sock*) ;
 
 __attribute__((used)) static void iucv_sock_close(struct sock *sk)
 {
-	struct iucv_sock *iucv = iucv_sk(sk);
-	unsigned long timeo;
-	int err = 0;
+ struct iucv_sock *iucv = iucv_sk(sk);
+ unsigned long timeo;
+ int err = 0;
 
-	iucv_sock_clear_timer(sk);
-	lock_sock(sk);
+ iucv_sock_clear_timer(sk);
+ lock_sock(sk);
 
-	switch (sk->sk_state) {
-	case IUCV_LISTEN:
-		iucv_sock_cleanup_listen(sk);
-		break;
+ switch (sk->sk_state) {
+ case 128:
+  iucv_sock_cleanup_listen(sk);
+  break;
 
-	case IUCV_CONNECTED:
-		if (iucv->transport == AF_IUCV_TRANS_HIPER) {
-			/* send fin */
-			err = iucv_send_ctrl(sk, AF_IUCV_FLAG_FIN);
-			sk->sk_state = IUCV_DISCONN;
-			sk->sk_state_change(sk);
-		}
-	case IUCV_DISCONN:   /* fall through */
-		sk->sk_state = IUCV_CLOSING;
-		sk->sk_state_change(sk);
+ case 130:
+  if (iucv->transport == AF_IUCV_TRANS_HIPER) {
 
-		if (!err && !skb_queue_empty(&iucv->send_skb_q)) {
-			if (sock_flag(sk, SOCK_LINGER) && sk->sk_lingertime)
-				timeo = sk->sk_lingertime;
-			else
-				timeo = IUCV_DISCONN_TIMEOUT;
-			err = iucv_sock_wait(sk,
-					iucv_sock_in_state(sk, IUCV_CLOSED, 0),
-					timeo);
-		}
+   err = iucv_send_ctrl(sk, AF_IUCV_FLAG_FIN);
+   sk->sk_state = 129;
+   sk->sk_state_change(sk);
+  }
+ case 129:
+  sk->sk_state = 131;
+  sk->sk_state_change(sk);
 
-	case IUCV_CLOSING:   /* fall through */
-		sk->sk_state = IUCV_CLOSED;
-		sk->sk_state_change(sk);
+  if (!err && !skb_queue_empty(&iucv->send_skb_q)) {
+   if (sock_flag(sk, SOCK_LINGER) && sk->sk_lingertime)
+    timeo = sk->sk_lingertime;
+   else
+    timeo = IUCV_DISCONN_TIMEOUT;
+   err = iucv_sock_wait(sk,
+     iucv_sock_in_state(sk, IUCV_CLOSED, 0),
+     timeo);
+  }
 
-		sk->sk_err = ECONNRESET;
-		sk->sk_state_change(sk);
+ case 131:
+  sk->sk_state = IUCV_CLOSED;
+  sk->sk_state_change(sk);
 
-		skb_queue_purge(&iucv->send_skb_q);
-		skb_queue_purge(&iucv->backlog_skb_q);
+  sk->sk_err = ECONNRESET;
+  sk->sk_state_change(sk);
 
-	default:   /* fall through */
-		iucv_sever_path(sk, 1);
-	}
+  skb_queue_purge(&iucv->send_skb_q);
+  skb_queue_purge(&iucv->backlog_skb_q);
 
-	if (iucv->hs_dev) {
-		dev_put(iucv->hs_dev);
-		iucv->hs_dev = NULL;
-		sk->sk_bound_dev_if = 0;
-	}
+ default:
+  iucv_sever_path(sk, 1);
+ }
 
-	/* mark socket for deletion by iucv_sock_kill() */
-	sock_set_flag(sk, SOCK_ZAPPED);
+ if (iucv->hs_dev) {
+  dev_put(iucv->hs_dev);
+  iucv->hs_dev = ((void*)0);
+  sk->sk_bound_dev_if = 0;
+ }
 
-	release_sock(sk);
+
+ sock_set_flag(sk, SOCK_ZAPPED);
+
+ release_sock(sk);
 }

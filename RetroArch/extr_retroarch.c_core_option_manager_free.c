@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {size_t size; struct TYPE_4__* opts; scalar_t__ conf; int /*<<< orphan*/ * vals; struct TYPE_4__* key; struct TYPE_4__* info; struct TYPE_4__* desc; int /*<<< orphan*/ * val_labels; } ;
-typedef  TYPE_1__ core_option_manager_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  config_file_free (scalar_t__) ; 
- int /*<<< orphan*/  free (TYPE_1__*) ; 
- int /*<<< orphan*/  string_list_free (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {size_t size; struct TYPE_4__* opts; scalar_t__ conf; int * vals; struct TYPE_4__* key; struct TYPE_4__* info; struct TYPE_4__* desc; int * val_labels; } ;
+typedef TYPE_1__ core_option_manager_t ;
+
+
+ int config_file_free (scalar_t__) ;
+ int free (TYPE_1__*) ;
+ int string_list_free (int *) ;
 
 __attribute__((used)) static void core_option_manager_free(core_option_manager_t *opt)
 {
@@ -40,10 +40,10 @@ __attribute__((used)) static void core_option_manager_free(core_option_manager_t
       if (opt->opts[i].val_labels)
          string_list_free(opt->opts[i].val_labels);
 
-      opt->opts[i].desc = NULL;
-      opt->opts[i].info = NULL;
-      opt->opts[i].key  = NULL;
-      opt->opts[i].vals = NULL;
+      opt->opts[i].desc = ((void*)0);
+      opt->opts[i].info = ((void*)0);
+      opt->opts[i].key = ((void*)0);
+      opt->opts[i].vals = ((void*)0);
    }
 
    if (opt->conf)

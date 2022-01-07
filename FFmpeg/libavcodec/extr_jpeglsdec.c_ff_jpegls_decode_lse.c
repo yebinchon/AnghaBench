@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t uint8_t ;
-typedef  int uint32_t ;
-struct TYPE_9__ {int debug; int bits_per_raw_sample; int /*<<< orphan*/  pix_fmt; } ;
-struct TYPE_8__ {int maxval; int t1; int t2; int t3; int reset; int palette_index; TYPE_4__* avctx; int /*<<< orphan*/  gb; TYPE_1__* picture_ptr; } ;
-struct TYPE_7__ {int /*<<< orphan*/  format; scalar_t__* data; } ;
-typedef  TYPE_2__ MJpegDecodeContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_INVALIDDATA ; 
- int AVERROR_PATCHWELCOME ; 
- int /*<<< orphan*/  AV_LOG_DEBUG ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_PIX_FMT_GRAY8 ; 
- int /*<<< orphan*/  AV_PIX_FMT_PAL8 ; 
- int /*<<< orphan*/  ENOSYS ; 
- int FFMIN (int,int) ; 
- int FF_DEBUG_PICT_INFO ; 
- int MAX_COMPONENTS ; 
- int /*<<< orphan*/  av_log (TYPE_4__*,int /*<<< orphan*/ ,char*,int,...) ; 
- int /*<<< orphan*/  avpriv_request_sample (TYPE_4__*,char*,...) ; 
- int /*<<< orphan*/  ff_dlog (TYPE_4__*,char*,int,int,int,int) ; 
- int get_bits (int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef size_t uint8_t ;
+typedef int uint32_t ;
+struct TYPE_9__ {int debug; int bits_per_raw_sample; int pix_fmt; } ;
+struct TYPE_8__ {int maxval; int t1; int t2; int t3; int reset; int palette_index; TYPE_4__* avctx; int gb; TYPE_1__* picture_ptr; } ;
+struct TYPE_7__ {int format; scalar_t__* data; } ;
+typedef TYPE_2__ MJpegDecodeContext ;
+
+
+ int AVERROR (int ) ;
+ int AVERROR_INVALIDDATA ;
+ int AVERROR_PATCHWELCOME ;
+ int AV_LOG_DEBUG ;
+ int AV_LOG_ERROR ;
+ int AV_PIX_FMT_GRAY8 ;
+ int AV_PIX_FMT_PAL8 ;
+ int ENOSYS ;
+ int FFMIN (int,int) ;
+ int FF_DEBUG_PICT_INFO ;
+ int MAX_COMPONENTS ;
+ int av_log (TYPE_4__*,int ,char*,int,...) ;
+ int avpriv_request_sample (TYPE_4__*,char*,...) ;
+ int ff_dlog (TYPE_4__*,char*,int,int,int,int) ;
+ int get_bits (int *,int) ;
 
 int ff_jpegls_decode_lse(MJpegDecodeContext *s)
 {
@@ -51,18 +51,18 @@ int ff_jpegls_decode_lse(MJpegDecodeContext *s)
             return AVERROR_INVALIDDATA;
 
         s->maxval = get_bits(&s->gb, 16);
-        s->t1     = get_bits(&s->gb, 16);
-        s->t2     = get_bits(&s->gb, 16);
-        s->t3     = get_bits(&s->gb, 16);
-        s->reset  = get_bits(&s->gb, 16);
+        s->t1 = get_bits(&s->gb, 16);
+        s->t2 = get_bits(&s->gb, 16);
+        s->t3 = get_bits(&s->gb, 16);
+        s->reset = get_bits(&s->gb, 16);
 
         if(s->avctx->debug & FF_DEBUG_PICT_INFO) {
             av_log(s->avctx, AV_LOG_DEBUG, "Coding parameters maxval:%d T1:%d T2:%d T3:%d reset:%d\n",
                    s->maxval, s->t1, s->t2, s->t3, s->reset);
         }
 
-//        ff_jpegls_reset_coding_parameters(s, 0);
-        //FIXME quant table?
+
+
         break;
     case 2:
         s->palette_index = 0;

@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_8__ {scalar_t__ Information; } ;
 struct TYPE_10__ {TYPE_1__ IoStatus; } ;
-struct TYPE_9__ {int MinorFunction; TYPE_3__* Irp; int /*<<< orphan*/  DeviceObject; } ;
-typedef  TYPE_2__* PNTFS_IRP_CONTEXT ;
-typedef  TYPE_3__* PIRP ;
-typedef  int /*<<< orphan*/  PDEVICE_OBJECT ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
+struct TYPE_9__ {int MinorFunction; TYPE_3__* Irp; int DeviceObject; } ;
+typedef TYPE_2__* PNTFS_IRP_CONTEXT ;
+typedef TYPE_3__* PIRP ;
+typedef int PDEVICE_OBJECT ;
+typedef int NTSTATUS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPRINT (char*) ; 
- int /*<<< orphan*/  DPRINT1 (char*,...) ; 
-#define  IRP_MN_KERNEL_CALL 131 
-#define  IRP_MN_MOUNT_VOLUME 130 
-#define  IRP_MN_USER_FS_REQUEST 129 
-#define  IRP_MN_VERIFY_VOLUME 128 
- int /*<<< orphan*/  NtfsMountVolume (int /*<<< orphan*/ ,TYPE_3__*) ; 
- int /*<<< orphan*/  NtfsUserFsRequest (int /*<<< orphan*/ ,TYPE_3__*) ; 
- int /*<<< orphan*/  NtfsVerifyVolume (int /*<<< orphan*/ ,TYPE_3__*) ; 
- int /*<<< orphan*/  STATUS_INVALID_DEVICE_REQUEST ; 
+
+ int DPRINT (char*) ;
+ int DPRINT1 (char*,...) ;
+
+
+
+
+ int NtfsMountVolume (int ,TYPE_3__*) ;
+ int NtfsUserFsRequest (int ,TYPE_3__*) ;
+ int NtfsVerifyVolume (int ,TYPE_3__*) ;
+ int STATUS_INVALID_DEVICE_REQUEST ;
 
 NTSTATUS
 NtfsFileSystemControl(PNTFS_IRP_CONTEXT IrpContext)
@@ -48,21 +48,21 @@ NtfsFileSystemControl(PNTFS_IRP_CONTEXT IrpContext)
 
     switch (IrpContext->MinorFunction)
     {
-        case IRP_MN_KERNEL_CALL:
+        case 131:
             DPRINT1("NTFS: IRP_MN_USER_FS_REQUEST\n");
             Status = STATUS_INVALID_DEVICE_REQUEST;
             break;
 
-        case IRP_MN_USER_FS_REQUEST:
+        case 129:
             Status = NtfsUserFsRequest(DeviceObject, Irp);
             break;
 
-        case IRP_MN_MOUNT_VOLUME:
+        case 130:
             DPRINT("NTFS: IRP_MN_MOUNT_VOLUME\n");
             Status = NtfsMountVolume(DeviceObject, Irp);
             break;
 
-        case IRP_MN_VERIFY_VOLUME:
+        case 128:
             DPRINT1("NTFS: IRP_MN_VERIFY_VOLUME\n");
             Status = NtfsVerifyVolume(DeviceObject, Irp);
             break;

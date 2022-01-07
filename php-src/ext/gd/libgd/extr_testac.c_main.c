@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  gdImagePtr ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  gdImageCreateFromPng (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  gdImageDestroy (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  testDrawing (int /*<<< orphan*/ ,double,int,int,char*) ; 
+
+
+
+typedef int gdImagePtr ;
+typedef int FILE ;
+
+
+ int exit (int) ;
+ int fclose (int *) ;
+ int * fopen (char*,char*) ;
+ int fprintf (int ,char*,...) ;
+ int gdImageCreateFromPng (int *) ;
+ int gdImageDestroy (int ) ;
+ int stderr ;
+ int testDrawing (int ,double,int,int,char*) ;
 
 int
 main (int argc, char *argv[])
 {
-  /* Input and output files */
+
   FILE *in;
   FILE *out;
 
-  /* Input image */
+
   gdImagePtr im_in = 0;
 
-  /* Colors */
+
   int lightBlue;
 
   if (argc != 2)
@@ -41,12 +41,12 @@ main (int argc, char *argv[])
       fprintf (stderr, "Usage: testac filename.png\n");
       exit (1);
     }
-  /* Load original PNG, which should contain alpha channel
-     information. We will use it in two ways: preserving it
-     literally, for use with compatible browsers, and
-     compositing it ourselves against a background of our
-     choosing (alpha blending). We'll change its size
-     and try creating palette versions of it. */
+
+
+
+
+
+
   in = fopen (argv[1], "rb");
   if (!in)
     {

@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct rrdhost_system_info {void* container_detection; void* container; void* virt_detection; void* virtualization; void* architecture; void* kernel_version; void* kernel_name; void* os_detection; void* os_version_id; void* os_version; void* os_id_like; void* os_id; void* os_name; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  freez (void*) ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
- void* strdupz (char*) ; 
+
+ int freez (void*) ;
+ int strcmp (char*,char*) ;
+ void* strdupz (char*) ;
 
 int rrdhost_set_system_info_variable(struct rrdhost_system_info *system_info, char *name, char *value) {
     int res = 0;

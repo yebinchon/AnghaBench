@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * xmlListPtr ;
 
-/* Variables and functions */
- int /*<<< orphan*/  xmlListClear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  xmlListDelete (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * xmlListDup (int /*<<< orphan*/ *) ; 
- scalar_t__ xmlListEmpty (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  xmlListMerge (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int * xmlListPtr ;
+
+
+ int xmlListClear (int *) ;
+ int xmlListDelete (int *) ;
+ int * xmlListDup (int *) ;
+ scalar_t__ xmlListEmpty (int *) ;
+ int xmlListMerge (int *,int *) ;
 
 void
 xmlListSort(xmlListPtr l)
 {
     xmlListPtr lTemp;
 
-    if (l == NULL)
+    if (l == ((void*)0))
         return;
     if(xmlListEmpty(l))
         return;
 
-    /* I think that the real answer is to implement quicksort, the
-     * alternative is to implement some list copying procedure which
-     * would be based on a list copy followed by a clear followed by
-     * an insert. This is slow...
-     */
 
-    if (NULL ==(lTemp = xmlListDup(l)))
+
+
+
+
+
+    if (((void*)0) ==(lTemp = xmlListDup(l)))
         return;
     xmlListClear(l);
     xmlListMerge(l, lTemp);

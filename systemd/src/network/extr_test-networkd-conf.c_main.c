@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  log_open () ; 
- int /*<<< orphan*/  log_parse_environment () ; 
- int /*<<< orphan*/  test_config_parse_address () ; 
- int /*<<< orphan*/  test_config_parse_duid_rawdata () ; 
- int /*<<< orphan*/  test_config_parse_duid_type () ; 
- int /*<<< orphan*/  test_config_parse_hwaddr () ; 
- int /*<<< orphan*/  test_config_parse_match_ifnames () ; 
- int /*<<< orphan*/  test_config_parse_match_strv () ; 
+ int log_open () ;
+ int log_parse_environment () ;
+ int test_config_parse_address () ;
+ int test_config_parse_duid_rawdata () ;
+ int test_config_parse_duid_type () ;
+ int test_config_parse_hwaddr () ;
+ int test_config_parse_match_ifnames () ;
+ int test_config_parse_match_strv () ;
 
 int main(int argc, char **argv) {
         log_parse_environment();

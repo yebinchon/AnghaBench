@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct reggroups {struct reggroup_el** last; } ;
 struct reggroup_el {struct reggroup_el* next; struct reggroup* group; } ;
 struct reggroup {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  gdb_assert (int /*<<< orphan*/ ) ; 
+
+ int gdb_assert (int ) ;
 
 __attribute__((used)) static void
 add_group (struct reggroups *groups, struct reggroup *group,
-	   struct reggroup_el *el)
+    struct reggroup_el *el)
 {
-  gdb_assert (group != NULL);
+  gdb_assert (group != ((void*)0));
   el->group = group;
-  el->next = NULL;
+  el->next = ((void*)0);
   (*groups->last) = el;
   groups->last = &el->next;
 }

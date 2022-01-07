@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint_t ;
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  out_buf ;
-struct TYPE_6__ {scalar_t__ avail_in; int avail_out; int /*<<< orphan*/ * next_out; int /*<<< orphan*/  next_in; } ;
-struct TYPE_5__ {int in_finish; int flags; size_t sec_size; int write_error; int /*<<< orphan*/  buf_lock; int /*<<< orphan*/  buf_cond; TYPE_3__ zstrm; int /*<<< orphan*/  fp; int /*<<< orphan*/  rc4_key; scalar_t__ canceled; scalar_t__ in_full; scalar_t__ in_avail; TYPE_1__* p_buf; TYPE_1__* buffer; } ;
-typedef  TYPE_2__ mm_backup_ctx ;
-struct TYPE_4__ {scalar_t__ avail; int /*<<< orphan*/  data; } ;
 
-/* Variables and functions */
- int MMBAK_FLAG_NO_CIPHER ; 
- int OUTPUT_BUFFER_SIZE ; 
- int /*<<< orphan*/  RC4 (int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int Z_BUF_ERROR ; 
- int /*<<< orphan*/  Z_FINISH ; 
- int /*<<< orphan*/  Z_NO_FLUSH ; 
- int Z_OK ; 
- int Z_STREAM_END ; 
- int deflate (TYPE_3__*,int /*<<< orphan*/ ) ; 
- scalar_t__ ferror (int /*<<< orphan*/ ) ; 
- size_t fwrite (int /*<<< orphan*/  const*,int,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pthread_cond_signal (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_cond_wait (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint_t ;
+typedef int uint8_t ;
+typedef int out_buf ;
+struct TYPE_6__ {scalar_t__ avail_in; int avail_out; int * next_out; int next_in; } ;
+struct TYPE_5__ {int in_finish; int flags; size_t sec_size; int write_error; int buf_lock; int buf_cond; TYPE_3__ zstrm; int fp; int rc4_key; scalar_t__ canceled; scalar_t__ in_full; scalar_t__ in_avail; TYPE_1__* p_buf; TYPE_1__* buffer; } ;
+typedef TYPE_2__ mm_backup_ctx ;
+struct TYPE_4__ {scalar_t__ avail; int data; } ;
+
+
+ int MMBAK_FLAG_NO_CIPHER ;
+ int OUTPUT_BUFFER_SIZE ;
+ int RC4 (int *,scalar_t__,int *,int *) ;
+ int Z_BUF_ERROR ;
+ int Z_FINISH ;
+ int Z_NO_FLUSH ;
+ int Z_OK ;
+ int Z_STREAM_END ;
+ int deflate (TYPE_3__*,int ) ;
+ scalar_t__ ferror (int ) ;
+ size_t fwrite (int const*,int,scalar_t__,int ) ;
+ int pthread_cond_signal (int *) ;
+ int pthread_cond_wait (int *,int *) ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
 
 __attribute__((used)) static void *write_thread_entry(void *ud)
 {
@@ -68,7 +68,7 @@ __attribute__((used)) static void *write_thread_entry(void *ud)
         uint8_t out_buf[OUTPUT_BUFFER_SIZE];
 
         if (ctx->canceled)
-            return NULL;
+            return ((void*)0);
         do {
             ctx->zstrm.next_out = out_buf;
             ctx->zstrm.avail_out = sizeof(out_buf);
@@ -98,12 +98,12 @@ __attribute__((used)) static void *write_thread_entry(void *ud)
         if (ret == Z_STREAM_END)
             break;
     }
-    return NULL;
+    return ((void*)0);
 
 bail:
     pthread_mutex_lock(&ctx->buf_lock);
     ctx->write_error = 1;
     pthread_cond_signal(&ctx->buf_cond);
     pthread_mutex_unlock(&ctx->buf_lock);
-    return NULL;
+    return ((void*)0);
 }

@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_6__ ;
-typedef  struct TYPE_13__   TYPE_5__ ;
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char u_char ;
-typedef  int /*<<< orphan*/  ngx_int_t ;
+
+
+typedef struct TYPE_14__ TYPE_6__ ;
+typedef struct TYPE_13__ TYPE_5__ ;
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef char u_char ;
+typedef int ngx_int_t ;
 struct TYPE_12__ {char* data; int len; } ;
 struct TYPE_10__ {char* data; int len; } ;
-struct TYPE_13__ {scalar_t__ file_type; TYPE_4__ file_path_s; void* get_appid; int /*<<< orphan*/  user_id; int /*<<< orphan*/  app_id; void* meta; TYPE_2__ appkey; } ;
-typedef  TYPE_5__ ngx_http_tfs_restful_ctx_t ;
+struct TYPE_13__ {scalar_t__ file_type; TYPE_4__ file_path_s; void* get_appid; int user_id; int app_id; void* meta; TYPE_2__ appkey; } ;
+typedef TYPE_5__ ngx_http_tfs_restful_ctx_t ;
 struct TYPE_9__ {char* data; int len; } ;
 struct TYPE_14__ {scalar_t__ method; TYPE_3__* connection; TYPE_1__ uri; } ;
-typedef  TYPE_6__ ngx_http_request_t ;
-struct TYPE_11__ {int /*<<< orphan*/  log; } ;
+typedef TYPE_6__ ngx_http_request_t ;
+struct TYPE_11__ {int log; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NGX_ERROR ; 
- scalar_t__ NGX_HTTP_GET ; 
- scalar_t__ NGX_HTTP_TFS_CUSTOM_FT_DIR ; 
- scalar_t__ NGX_HTTP_TFS_CUSTOM_FT_FILE ; 
- int NGX_HTTP_TFS_MAX_FILE_NAME_LEN ; 
- void* NGX_HTTP_TFS_YES ; 
- int /*<<< orphan*/  NGX_INT64_LEN ; 
- int /*<<< orphan*/  NGX_LOG_ERR ; 
- int /*<<< orphan*/  NGX_OK ; 
- int /*<<< orphan*/  ngx_http_tfs_atoull (char*,int,unsigned long long*) ; 
- int /*<<< orphan*/  ngx_log_error (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- scalar_t__ ngx_memcmp (char*,char*,int) ; 
- int /*<<< orphan*/  ngx_strncmp (char*,char*,int) ; 
+
+ int NGX_ERROR ;
+ scalar_t__ NGX_HTTP_GET ;
+ scalar_t__ NGX_HTTP_TFS_CUSTOM_FT_DIR ;
+ scalar_t__ NGX_HTTP_TFS_CUSTOM_FT_FILE ;
+ int NGX_HTTP_TFS_MAX_FILE_NAME_LEN ;
+ void* NGX_HTTP_TFS_YES ;
+ int NGX_INT64_LEN ;
+ int NGX_LOG_ERR ;
+ int NGX_OK ;
+ int ngx_http_tfs_atoull (char*,int,unsigned long long*) ;
+ int ngx_log_error (int ,int ,int ,char*) ;
+ scalar_t__ ngx_memcmp (char*,char*,int) ;
+ int ngx_strncmp (char*,char*,int) ;
 
 __attribute__((used)) static ngx_int_t
 ngx_http_restful_parse_custom_name(ngx_http_request_t *r,
     ngx_http_tfs_restful_ctx_t *ctx, u_char *data)
 {
-    u_char    *p, ch, *start, *last, *appid, *meta_data;
-    ngx_int_t  rc;
+    u_char *p, ch, *start, *last, *appid, *meta_data;
+    ngx_int_t rc;
 
     enum {
         sw_appkey = 0,
@@ -61,8 +61,8 @@ ngx_http_restful_parse_custom_name(ngx_http_request_t *r,
     state = sw_appkey;
     last = r->uri.data + r->uri.len;
     start = data;
-    appid = NULL;
-    meta_data = NULL;
+    appid = ((void*)0);
+    meta_data = ((void*)0);
 
     for (p = data; p < last; p++) {
         ch = *p;
@@ -74,7 +74,7 @@ ngx_http_restful_parse_custom_name(ngx_http_request_t *r,
                 ctx->appkey.len = p - start;
 
                 start = p + 1;
-                /* GET /v2/appkey/appid */
+
                 if (start < last) {
                     if (*start == 'a') {
                         state = sw_name;
@@ -170,7 +170,7 @@ ngx_http_restful_parse_custom_name(ngx_http_request_t *r,
         }
     }
 
-    if (r->method == NGX_HTTP_GET && appid != NULL) {
+    if (r->method == NGX_HTTP_GET && appid != ((void*)0)) {
         if (ngx_memcmp(appid, "appid", 5) == 0) {
             ctx->get_appid = NGX_HTTP_TFS_YES;
             ctx->file_path_s.data = appid;
@@ -187,7 +187,7 @@ ngx_http_restful_parse_custom_name(ngx_http_request_t *r,
         return NGX_ERROR;
     }
 
-    /* forbid file actions on "/" */
+
     if (ctx->file_type == NGX_HTTP_TFS_CUSTOM_FT_FILE
         && ctx->file_path_s.len == 1)
     {

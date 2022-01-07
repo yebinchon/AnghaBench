@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int STB__MT_LEN ; 
- int /*<<< orphan*/ * stb__mt_buffer ; 
- int stb__mt_index ; 
- int /*<<< orphan*/  stb_randLCG () ; 
- unsigned int stb_srandLCG (unsigned int) ; 
+ int STB__MT_LEN ;
+ int * stb__mt_buffer ;
+ int stb__mt_index ;
+ int stb_randLCG () ;
+ unsigned int stb_srandLCG (unsigned int) ;
 
 void stb_srand(unsigned int seed)
 {

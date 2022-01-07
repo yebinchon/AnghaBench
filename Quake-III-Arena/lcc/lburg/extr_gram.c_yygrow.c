@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  YYSTYPE ;
 
-/* Variables and functions */
- int YYMAXSTACKSIZE ; 
- int /*<<< orphan*/  printf (char*,int,int) ; 
- scalar_t__ yydebug ; 
- int /*<<< orphan*/  yyfree (short*) ; 
- scalar_t__ yyrealloc (char*,int) ; 
- short* yyss ; 
- int yystacksize ; 
- int /*<<< orphan*/ * yyvs ; 
+
+
+
+typedef int YYSTYPE ;
+
+
+ int YYMAXSTACKSIZE ;
+ int printf (char*,int,int) ;
+ scalar_t__ yydebug ;
+ int yyfree (short*) ;
+ scalar_t__ yyrealloc (char*,int) ;
+ short* yyss ;
+ int yystacksize ;
+ int * yyvs ;
 
 __attribute__((used)) static int
-#ifdef __GNUC__
+
 inline
-#endif
+
 yygrow ()
 {
     int old_stacksize = yystacksize;
@@ -37,11 +37,11 @@ yygrow ()
     yystacksize += (yystacksize + 1 ) / 2;
     if (yystacksize > YYMAXSTACKSIZE)
         yystacksize = YYMAXSTACKSIZE;
-#if YYDEBUG
-    if (yydebug)
-        printf("yydebug: growing stack size from %d to %d\n",
-               old_stacksize, yystacksize);
-#endif
+
+
+
+
+
     new_yyss = (short *) yyrealloc ((char *)yyss, yystacksize * sizeof (short));
     if (new_yyss == 0)
         return (1);

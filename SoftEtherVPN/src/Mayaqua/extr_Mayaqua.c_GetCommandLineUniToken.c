@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UNI_TOKEN_LIST ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * UniCopyToken (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * UniNullToken () ; 
- int /*<<< orphan*/ * cmdline_uni_token ; 
+
+
+
+typedef int UNI_TOKEN_LIST ;
+
+
+ int * UniCopyToken (int *) ;
+ int * UniNullToken () ;
+ int * cmdline_uni_token ;
 
 UNI_TOKEN_LIST *GetCommandLineUniToken()
 {
-	if (cmdline_uni_token == NULL)
-	{
-		return UniNullToken();
-	}
-	else
-	{
-		return UniCopyToken(cmdline_uni_token);
-	}
+ if (cmdline_uni_token == ((void*)0))
+ {
+  return UniNullToken();
+ }
+ else
+ {
+  return UniCopyToken(cmdline_uni_token);
+ }
 }

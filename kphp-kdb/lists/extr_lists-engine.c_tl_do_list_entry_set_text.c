@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct tl_list_entry_set_text {int /*<<< orphan*/  len; int /*<<< orphan*/  text; int /*<<< orphan*/  object_id; int /*<<< orphan*/  list_id; } ;
+
+
+
+
+struct tl_list_entry_set_text {int len; int text; int object_id; int list_id; } ;
 struct tl_act_extra {scalar_t__ extra; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TL_BOOL_FALSE ; 
- int /*<<< orphan*/  TL_BOOL_TRUE ; 
- int do_change_entry_text (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tl_store_int (int /*<<< orphan*/ ) ; 
 
-int tl_do_list_entry_set_text (struct tl_act_extra *extra) {  
+ int TL_BOOL_FALSE ;
+ int TL_BOOL_TRUE ;
+ int do_change_entry_text (int ,int ,int ,int ) ;
+ int tl_store_int (int ) ;
+
+int tl_do_list_entry_set_text (struct tl_act_extra *extra) {
   struct tl_list_entry_set_text *e = (void *)extra->extra;
   int res = do_change_entry_text (e->list_id, e->object_id, e->text, e->len);
   if (res == -2) { return -2; }

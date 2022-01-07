@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int DEFMAXPENDING ; 
- int MAXMAXPENDING ; 
- int OPT_DEBUG ; 
- int OPT_POLL ; 
- int /*<<< orphan*/  VERSION_MESSAGE (char*) ; 
- int /*<<< orphan*/  aargh (char*) ; 
- int atoi (char*) ; 
- char* config_text ; 
- int /*<<< orphan*/  exit (int) ; 
- scalar_t__ fclose (int /*<<< orphan*/ *) ; 
- scalar_t__ ferror (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*,int) ; 
- int /*<<< orphan*/  fputs (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int getopt (int,char**,char*) ; 
- scalar_t__ optind ; 
- int /*<<< orphan*/  perror (char*) ; 
- int /*<<< orphan*/  printhelp (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  proclog (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int) ; 
- char* progname ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/ * stdin ; 
- int /*<<< orphan*/ * stdout ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
- int /*<<< orphan*/  strncmp (char*,char*,int) ; 
- int /*<<< orphan*/  usage () ; 
+
+
+
+typedef int FILE ;
+
+
+ int DEFMAXPENDING ;
+ int MAXMAXPENDING ;
+ int OPT_DEBUG ;
+ int OPT_POLL ;
+ int VERSION_MESSAGE (char*) ;
+ int aargh (char*) ;
+ int atoi (char*) ;
+ char* config_text ;
+ int exit (int) ;
+ scalar_t__ fclose (int *) ;
+ scalar_t__ ferror (int *) ;
+ int * fopen (char*,char*) ;
+ int fprintf (int ,char*,char*,int) ;
+ int fputs (int ,int *) ;
+ int getopt (int,char**,char*) ;
+ scalar_t__ optind ;
+ int perror (char*) ;
+ int printhelp (int *) ;
+ int proclog (int *,int *,int,int) ;
+ char* progname ;
+ int stderr ;
+ int * stdin ;
+ int * stdout ;
+ int strcmp (char*,char*) ;
+ int strncmp (char*,char*,int) ;
+ int usage () ;
 
 int main(int argc, char *argv[]) {
   int c, opts, maxpending;
@@ -74,11 +74,11 @@ int main(int argc, char *argv[]) {
     case 'd':
       opts|= OPT_DEBUG;
       break;
-#ifdef HAVE_POLL
-    case 'p':
-      opts|= OPT_POLL;
-      break;
-#endif
+
+
+
+
+
     default:
       usage();
     }
@@ -86,7 +86,7 @@ int main(int argc, char *argv[]) {
   argc-= optind;
   argv+= optind;
 
-  inf= NULL;
+  inf= ((void*)0);
   if (argc == 0)
     inf= stdin;
   else if (argc == 1)

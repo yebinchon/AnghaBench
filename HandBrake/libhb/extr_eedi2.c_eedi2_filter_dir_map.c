@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
 
-/* Variables and functions */
- int const abs (int const) ; 
- int /*<<< orphan*/  eedi2_bit_blit (int*,int,int*,int,int,int) ; 
- int* eedi2_limlut ; 
- int /*<<< orphan*/  eedi2_sort_metrics (int*,int) ; 
+
+
+
+typedef int uint8_t ;
+
+
+ int const abs (int const) ;
+ int eedi2_bit_blit (int*,int,int*,int,int,int) ;
+ int* eedi2_limlut ;
+ int eedi2_sort_metrics (int*,int) ;
 
 void eedi2_filter_dir_map( uint8_t * mskp, int msk_pitch, uint8_t * dmskp, int dmsk_pitch,
                            uint8_t * dstp, int dst_pitch, int height, int width )
@@ -37,13 +37,13 @@ void eedi2_filter_dir_map( uint8_t * mskp, int msk_pitch, uint8_t * dmskp, int d
             if( mskp[x] != 0xFF ) continue;
             int u = 0, order[9];
             if( dmskpp[x-1] != 0xFF ) order[u++] = dmskpp[x-1];
-            if( dmskpp[x]   != 0xFF ) order[u++] = dmskpp[x];
+            if( dmskpp[x] != 0xFF ) order[u++] = dmskpp[x];
             if( dmskpp[x+1] != 0xFF ) order[u++] = dmskpp[x+1];
-            if(  dmskp[x-1] != 0xFF ) order[u++] =  dmskp[x-1];
-            if(  dmskp[x]   != 0xFF ) order[u++] =  dmskp[x];
-            if(  dmskp[x+1] != 0xFF ) order[u++] =  dmskp[x+1];
+            if( dmskp[x-1] != 0xFF ) order[u++] = dmskp[x-1];
+            if( dmskp[x] != 0xFF ) order[u++] = dmskp[x];
+            if( dmskp[x+1] != 0xFF ) order[u++] = dmskp[x+1];
             if( dmskpn[x-1] != 0xFF ) order[u++] = dmskpn[x-1];
-            if( dmskpn[x]   != 0xFF ) order[u++] = dmskpn[x];
+            if( dmskpn[x] != 0xFF ) order[u++] = dmskpn[x];
             if( dmskpn[x+1] != 0xFF ) order[u++] = dmskpn[x+1];
             if( u < 4 )
             {

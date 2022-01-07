@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct pcmcia_device {int config_index; int /*<<< orphan*/  config_regs; int /*<<< orphan*/  config_flags; TYPE_1__** resource; struct net_device* priv; int /*<<< orphan*/  dev; } ;
-struct net_device {int /*<<< orphan*/  watchdog_timeo; int /*<<< orphan*/ * ethtool_ops; int /*<<< orphan*/ * netdev_ops; } ;
-struct TYPE_5__ {int /*<<< orphan*/  tx_free_frames; int /*<<< orphan*/  bank_lock; struct pcmcia_device* p_dev; } ;
-typedef  TYPE_2__ mace_private ;
-struct TYPE_4__ {int end; int /*<<< orphan*/  flags; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AM2150_MAX_TX_FRAMES ; 
- int /*<<< orphan*/  CONF_ENABLE_IRQ ; 
- int ENOMEM ; 
- int /*<<< orphan*/  IO_DATA_PATH_WIDTH_AUTO ; 
- int /*<<< orphan*/  PRESENT_OPTION ; 
- int /*<<< orphan*/  TX_TIMEOUT ; 
- struct net_device* alloc_etherdev (int) ; 
- int /*<<< orphan*/  dev_dbg (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  mace_netdev_ops ; 
- int /*<<< orphan*/  netdev_ethtool_ops ; 
- TYPE_2__* netdev_priv (struct net_device*) ; 
- int nmclan_config (struct pcmcia_device*) ; 
- int /*<<< orphan*/  spin_lock_init (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct pcmcia_device {int config_index; int config_regs; int config_flags; TYPE_1__** resource; struct net_device* priv; int dev; } ;
+struct net_device {int watchdog_timeo; int * ethtool_ops; int * netdev_ops; } ;
+struct TYPE_5__ {int tx_free_frames; int bank_lock; struct pcmcia_device* p_dev; } ;
+typedef TYPE_2__ mace_private ;
+struct TYPE_4__ {int end; int flags; } ;
+
+
+ int AM2150_MAX_TX_FRAMES ;
+ int CONF_ENABLE_IRQ ;
+ int ENOMEM ;
+ int IO_DATA_PATH_WIDTH_AUTO ;
+ int PRESENT_OPTION ;
+ int TX_TIMEOUT ;
+ struct net_device* alloc_etherdev (int) ;
+ int dev_dbg (int *,char*) ;
+ int mace_netdev_ops ;
+ int netdev_ethtool_ops ;
+ TYPE_2__* netdev_priv (struct net_device*) ;
+ int nmclan_config (struct pcmcia_device*) ;
+ int spin_lock_init (int *) ;
 
 __attribute__((used)) static int nmclan_probe(struct pcmcia_device *link)
 {
@@ -40,14 +40,14 @@ __attribute__((used)) static int nmclan_probe(struct pcmcia_device *link)
 
     dev_dbg(&link->dev, "nmclan_attach()\n");
 
-    /* Create new ethernet device */
+
     dev = alloc_etherdev(sizeof(mace_private));
     if (!dev)
-	    return -ENOMEM;
+     return -ENOMEM;
     lp = netdev_priv(dev);
     lp->p_dev = link;
     link->priv = dev;
-    
+
     spin_lock_init(&lp->bank_lock);
     link->resource[0]->end = 32;
     link->resource[0]->flags |= IO_DATA_PATH_WIDTH_AUTO;

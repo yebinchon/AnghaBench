@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int ssize_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ATF_REQUIRE (int) ; 
- int /*<<< orphan*/  ATF_REQUIRE_MSG (int,char*,char const*) ; 
- int /*<<< orphan*/  O_RDONLY ; 
- int /*<<< orphan*/  close (int const) ; 
- int open (char const*,int /*<<< orphan*/ ) ; 
- int read (int const,void* const,size_t const) ; 
+
+
+
+typedef int ssize_t ;
+
+
+ int ATF_REQUIRE (int) ;
+ int ATF_REQUIRE_MSG (int,char*,char const*) ;
+ int O_RDONLY ;
+ int close (int const) ;
+ int open (char const*,int ) ;
+ int read (int const,void* const,size_t const) ;
 
 __attribute__((used)) static ssize_t
 read_file(const char *path, void *const buffer, const size_t buflen)

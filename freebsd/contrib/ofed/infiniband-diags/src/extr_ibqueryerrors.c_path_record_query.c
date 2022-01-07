@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  scalar_t__ uint64_t ;
-typedef  int /*<<< orphan*/  uint16_t ;
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef scalar_t__ uint64_t ;
+typedef int uint16_t ;
 struct sa_query_result {scalar_t__ status; } ;
 struct sa_handle {int dummy; } ;
-typedef  int /*<<< orphan*/  pr ;
-struct TYPE_7__ {int num_path; int /*<<< orphan*/  dgid; int /*<<< orphan*/  sgid; } ;
-typedef  TYPE_1__ ib_path_rec_t ;
-typedef  int /*<<< orphan*/  ib_net64_t ;
-struct TYPE_8__ {int /*<<< orphan*/  raw; } ;
-typedef  TYPE_2__ ib_gid_t ;
+typedef int pr ;
+struct TYPE_7__ {int num_path; int dgid; int sgid; } ;
+typedef TYPE_1__ ib_path_rec_t ;
+typedef int ib_net64_t ;
+struct TYPE_8__ {int raw; } ;
+typedef TYPE_2__ ib_gid_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHECK_AND_SET_GID (TYPE_2__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CHECK_AND_SET_VAL (int,int,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DEFAULT_HALF_WORLD_PR_TIMEOUT ; 
- int /*<<< orphan*/  DGID ; 
- int EIO ; 
- int /*<<< orphan*/  IB_GID_GUID_F ; 
- int /*<<< orphan*/  IB_MAD_METHOD_GET_TABLE ; 
- scalar_t__ IB_SA_ATTR_PATHRECORD ; 
- scalar_t__ IB_SA_MAD_STATUS_SUCCESS ; 
- int /*<<< orphan*/  NUMBPATH ; 
- int /*<<< orphan*/  PR ; 
- int /*<<< orphan*/  REVERSIBLE ; 
- int /*<<< orphan*/  SGID ; 
- int /*<<< orphan*/  cl_ntoh64 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  ibd_sakey ; 
- int /*<<< orphan*/  ibd_timeout ; 
- int /*<<< orphan*/  insert_lid2sl_table (struct sa_query_result*) ; 
- int /*<<< orphan*/  mad_encode_field (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__*) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  sa_free_handle (struct sa_handle*) ; 
- int /*<<< orphan*/  sa_free_result_mad (struct sa_query_result*) ; 
- struct sa_handle* sa_get_handle () ; 
- int sa_query (struct sa_handle*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*,int,struct sa_query_result*) ; 
- int /*<<< orphan*/  sa_report_err (scalar_t__) ; 
- int /*<<< orphan*/  stderr ; 
- char* strerror (int) ; 
+
+ int CHECK_AND_SET_GID (TYPE_2__,int ,int ,int ) ;
+ int CHECK_AND_SET_VAL (int,int,int,int,int ,int ) ;
+ int DEFAULT_HALF_WORLD_PR_TIMEOUT ;
+ int DGID ;
+ int EIO ;
+ int IB_GID_GUID_F ;
+ int IB_MAD_METHOD_GET_TABLE ;
+ scalar_t__ IB_SA_ATTR_PATHRECORD ;
+ scalar_t__ IB_SA_MAD_STATUS_SUCCESS ;
+ int NUMBPATH ;
+ int PR ;
+ int REVERSIBLE ;
+ int SGID ;
+ int cl_ntoh64 (int ) ;
+ int fprintf (int ,char*,char*) ;
+ int ibd_sakey ;
+ int ibd_timeout ;
+ int insert_lid2sl_table (struct sa_query_result*) ;
+ int mad_encode_field (int ,int ,scalar_t__*) ;
+ int memset (TYPE_1__*,int ,int) ;
+ int sa_free_handle (struct sa_handle*) ;
+ int sa_free_result_mad (struct sa_query_result*) ;
+ struct sa_handle* sa_get_handle () ;
+ int sa_query (struct sa_handle*,int ,int ,int ,int ,int ,TYPE_1__*,int,struct sa_query_result*) ;
+ int sa_report_err (scalar_t__) ;
+ int stderr ;
+ char* strerror (int) ;
 
 __attribute__((used)) static int path_record_query(ib_gid_t sgid,uint64_t dguid)
 {
@@ -61,19 +61,19 @@ __attribute__((used)) static int path_record_query(ib_gid_t sgid,uint64_t dguid)
      struct sa_handle * h;
 
      if (!(h = sa_get_handle()))
-	return -1;
+ return -1;
 
      ibd_timeout = DEFAULT_HALF_WORLD_PR_TIMEOUT;
      memset(&pr, 0, sizeof(pr));
 
      CHECK_AND_SET_GID(sgid, pr.sgid, PR, SGID);
      if(dguid) {
-	     mad_encode_field(sgid.raw, IB_GID_GUID_F, &dguid);
-	     CHECK_AND_SET_GID(sgid, pr.dgid, PR, DGID);
+      mad_encode_field(sgid.raw, IB_GID_GUID_F, &dguid);
+      CHECK_AND_SET_GID(sgid, pr.dgid, PR, DGID);
      }
 
-     CHECK_AND_SET_VAL(1, 8, -1, pr.num_path, PR, NUMBPATH);/*to get only one PathRecord for each source and destination pair*/
-     CHECK_AND_SET_VAL(1, 8, -1, reversible, PR, REVERSIBLE);/*for a reversible path*/
+     CHECK_AND_SET_VAL(1, 8, -1, pr.num_path, PR, NUMBPATH);
+     CHECK_AND_SET_VAL(1, 8, -1, reversible, PR, REVERSIBLE);
      pr.num_path |= reversible << 7;
      struct sa_query_result result;
      int ret = sa_query(h, IB_MAD_METHOD_GET_TABLE,

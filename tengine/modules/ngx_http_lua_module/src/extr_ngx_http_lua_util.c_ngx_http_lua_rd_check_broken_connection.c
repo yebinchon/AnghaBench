@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_21__   TYPE_5__ ;
-typedef  struct TYPE_20__   TYPE_4__ ;
-typedef  struct TYPE_19__   TYPE_3__ ;
-typedef  struct TYPE_18__   TYPE_2__ ;
-typedef  struct TYPE_17__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ ngx_int_t ;
-struct TYPE_19__ {int /*<<< orphan*/  (* write_event_handler ) (TYPE_3__*) ;TYPE_2__* connection; scalar_t__ done; } ;
-typedef  TYPE_3__ ngx_http_request_t ;
-struct TYPE_20__ {scalar_t__ entered_content_phase; TYPE_1__* on_abort_co_ctx; TYPE_1__* cur_co_ctx; int /*<<< orphan*/  resume_handler; int /*<<< orphan*/  uthreads; } ;
-typedef  TYPE_4__ ngx_http_lua_ctx_t ;
+
+
+typedef struct TYPE_21__ TYPE_5__ ;
+typedef struct TYPE_20__ TYPE_4__ ;
+typedef struct TYPE_19__ TYPE_3__ ;
+typedef struct TYPE_18__ TYPE_2__ ;
+typedef struct TYPE_17__ TYPE_1__ ;
+
+
+typedef scalar_t__ ngx_int_t ;
+struct TYPE_19__ {int (* write_event_handler ) (TYPE_3__*) ;TYPE_2__* connection; scalar_t__ done; } ;
+typedef TYPE_3__ ngx_http_request_t ;
+struct TYPE_20__ {scalar_t__ entered_content_phase; TYPE_1__* on_abort_co_ctx; TYPE_1__* cur_co_ctx; int resume_handler; int uthreads; } ;
+typedef TYPE_4__ ngx_http_lua_ctx_t ;
 struct TYPE_21__ {scalar_t__ active; } ;
-typedef  TYPE_5__ ngx_event_t ;
-struct TYPE_18__ {int error; int /*<<< orphan*/  log; TYPE_5__* read; } ;
+typedef TYPE_5__ ngx_event_t ;
+struct TYPE_18__ {int error; int log; TYPE_5__* read; } ;
 struct TYPE_17__ {scalar_t__ co_status; } ;
 
-/* Variables and functions */
- scalar_t__ NGX_HTTP_INTERNAL_SERVER_ERROR ; 
- scalar_t__ NGX_HTTP_LUA_CO_RUNNING ; 
- scalar_t__ NGX_HTTP_LUA_CO_SUSPENDED ; 
- int /*<<< orphan*/  NGX_LOG_DEBUG_HTTP ; 
- scalar_t__ NGX_OK ; 
- int /*<<< orphan*/  NGX_READ_EVENT ; 
- int NGX_USE_LEVEL_EVENT ; 
- scalar_t__ ngx_del_event (TYPE_5__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int ngx_event_flags ; 
- int /*<<< orphan*/  ngx_http_core_run_phases (TYPE_3__*) ; 
- TYPE_4__* ngx_http_get_module_ctx (TYPE_3__*,int /*<<< orphan*/ ) ; 
- scalar_t__ ngx_http_lua_check_broken_connection (TYPE_3__*,TYPE_5__*) ; 
- int /*<<< orphan*/  ngx_http_lua_content_wev_handler (TYPE_3__*) ; 
- int /*<<< orphan*/  ngx_http_lua_finalize_request (TYPE_3__*,scalar_t__) ; 
- int /*<<< orphan*/  ngx_http_lua_module ; 
- int /*<<< orphan*/  ngx_http_lua_on_abort_resume ; 
- int /*<<< orphan*/  ngx_http_lua_request_cleanup (TYPE_4__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_log_debug0 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  stub1 (TYPE_3__*) ; 
+
+ scalar_t__ NGX_HTTP_INTERNAL_SERVER_ERROR ;
+ scalar_t__ NGX_HTTP_LUA_CO_RUNNING ;
+ scalar_t__ NGX_HTTP_LUA_CO_SUSPENDED ;
+ int NGX_LOG_DEBUG_HTTP ;
+ scalar_t__ NGX_OK ;
+ int NGX_READ_EVENT ;
+ int NGX_USE_LEVEL_EVENT ;
+ scalar_t__ ngx_del_event (TYPE_5__*,int ,int ) ;
+ int ngx_event_flags ;
+ int ngx_http_core_run_phases (TYPE_3__*) ;
+ TYPE_4__* ngx_http_get_module_ctx (TYPE_3__*,int ) ;
+ scalar_t__ ngx_http_lua_check_broken_connection (TYPE_3__*,TYPE_5__*) ;
+ int ngx_http_lua_content_wev_handler (TYPE_3__*) ;
+ int ngx_http_lua_finalize_request (TYPE_3__*,scalar_t__) ;
+ int ngx_http_lua_module ;
+ int ngx_http_lua_on_abort_resume ;
+ int ngx_http_lua_request_cleanup (TYPE_4__*,int ) ;
+ int ngx_log_debug0 (int ,int ,int ,char*) ;
+ int stub1 (TYPE_3__*) ;
 
 void
 ngx_http_lua_rd_check_broken_connection(ngx_http_request_t *r)
 {
-    ngx_int_t                   rc;
-    ngx_event_t                *rev;
-    ngx_http_lua_ctx_t         *ctx;
+    ngx_int_t rc;
+    ngx_event_t *rev;
+    ngx_http_lua_ctx_t *ctx;
 
     if (r->done) {
         return;
@@ -63,14 +63,14 @@ ngx_http_lua_rd_check_broken_connection(ngx_http_request_t *r)
         return;
     }
 
-    /* rc == NGX_ERROR || rc > NGX_OK */
+
 
     ctx = ngx_http_get_module_ctx(r, ngx_http_lua_module);
-    if (ctx == NULL) {
+    if (ctx == ((void*)0)) {
         return;
     }
 
-    if (ctx->on_abort_co_ctx == NULL) {
+    if (ctx->on_abort_co_ctx == ((void*)0)) {
         r->connection->error = 1;
         ngx_http_lua_request_cleanup(ctx, 0);
         ngx_http_lua_finalize_request(r, rc);
@@ -79,7 +79,7 @@ ngx_http_lua_rd_check_broken_connection(ngx_http_request_t *r)
 
     if (ctx->on_abort_co_ctx->co_status != NGX_HTTP_LUA_CO_SUSPENDED) {
 
-        /* on_abort already run for the current request handler */
+
 
         rev = r->connection->read;
 

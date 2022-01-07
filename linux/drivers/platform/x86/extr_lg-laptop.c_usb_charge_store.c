@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  union acpi_object {int dummy; } acpi_object ;
+
+
+
+
+typedef union acpi_object {int dummy; } acpi_object ;
 struct device_attribute {int dummy; } ;
 struct device {int dummy; } ;
-typedef  int ssize_t ;
+typedef int ssize_t ;
 
-/* Variables and functions */
- int EIO ; 
- int /*<<< orphan*/  WMBB_USB_CHARGE ; 
- int /*<<< orphan*/  WM_SET ; 
- int /*<<< orphan*/  kfree (union acpi_object*) ; 
- int kstrtobool (char const*,int*) ; 
- union acpi_object* lg_wmbb (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+ int EIO ;
+ int WMBB_USB_CHARGE ;
+ int WM_SET ;
+ int kfree (union acpi_object*) ;
+ int kstrtobool (char const*,int*) ;
+ union acpi_object* lg_wmbb (int ,int ,int) ;
 
 __attribute__((used)) static ssize_t usb_charge_store(struct device *dev,
-				struct device_attribute *attr,
-				const char *buffer, size_t count)
+    struct device_attribute *attr,
+    const char *buffer, size_t count)
 {
-	bool value;
-	union acpi_object *r;
-	int ret;
+ bool value;
+ union acpi_object *r;
+ int ret;
 
-	ret = kstrtobool(buffer, &value);
-	if (ret)
-		return ret;
+ ret = kstrtobool(buffer, &value);
+ if (ret)
+  return ret;
 
-	r = lg_wmbb(WMBB_USB_CHARGE, WM_SET, value);
-	if (!r)
-		return -EIO;
+ r = lg_wmbb(WMBB_USB_CHARGE, WM_SET, value);
+ if (!r)
+  return -EIO;
 
-	kfree(r);
-	return count;
+ kfree(r);
+ return count;
 }

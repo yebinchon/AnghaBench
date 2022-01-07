@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/ * ctx; } ;
-typedef  TYPE_1__ pdfapp_t ;
-typedef  int /*<<< orphan*/  fz_context ;
 
-/* Variables and functions */
- int /*<<< orphan*/  XCloseDisplay (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XDestroyWindow (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XFreeCursor (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XFreeGC (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XFreePixmap (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fz_drop_context (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pdfapp_close (TYPE_1__*) ; 
- int /*<<< orphan*/  xcarrow ; 
- int /*<<< orphan*/  xccaret ; 
- int /*<<< orphan*/  xchand ; 
- int /*<<< orphan*/  xcwait ; 
- int /*<<< orphan*/  xdpy ; 
- int /*<<< orphan*/  xgc ; 
- int /*<<< orphan*/  xicon ; 
- int /*<<< orphan*/  xwin ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int * ctx; } ;
+typedef TYPE_1__ pdfapp_t ;
+typedef int fz_context ;
+
+
+ int XCloseDisplay (int ) ;
+ int XDestroyWindow (int ,int ) ;
+ int XFreeCursor (int ,int ) ;
+ int XFreeGC (int ,int ) ;
+ int XFreePixmap (int ,int ) ;
+ int fz_drop_context (int *) ;
+ int pdfapp_close (TYPE_1__*) ;
+ int xcarrow ;
+ int xccaret ;
+ int xchand ;
+ int xcwait ;
+ int xdpy ;
+ int xgc ;
+ int xicon ;
+ int xwin ;
 
 __attribute__((used)) static void cleanup(pdfapp_t *app)
 {
-	fz_context *ctx = app->ctx;
+ fz_context *ctx = app->ctx;
 
-	pdfapp_close(app);
+ pdfapp_close(app);
 
-	XDestroyWindow(xdpy, xwin);
+ XDestroyWindow(xdpy, xwin);
 
-	XFreePixmap(xdpy, xicon);
+ XFreePixmap(xdpy, xicon);
 
-	XFreeCursor(xdpy, xccaret);
-	XFreeCursor(xdpy, xcwait);
-	XFreeCursor(xdpy, xchand);
-	XFreeCursor(xdpy, xcarrow);
+ XFreeCursor(xdpy, xccaret);
+ XFreeCursor(xdpy, xcwait);
+ XFreeCursor(xdpy, xchand);
+ XFreeCursor(xdpy, xcarrow);
 
-	XFreeGC(xdpy, xgc);
+ XFreeGC(xdpy, xgc);
 
-	XCloseDisplay(xdpy);
+ XCloseDisplay(xdpy);
 
-	fz_drop_context(ctx);
+ fz_drop_context(ctx);
 }

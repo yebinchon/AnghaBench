@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint32_t ;
+
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
 struct TYPE_7__ {int error; scalar_t__ outlen; scalar_t__ outpos; } ;
-typedef  TYPE_1__ lzo_stream ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
+typedef TYPE_1__ lzo_stream ;
+typedef int NTSTATUS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  STATUS_INTERNAL_ERROR ; 
- int /*<<< orphan*/  STATUS_SUCCESS ; 
- int /*<<< orphan*/  lzo_copy (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lzo_copyback (TYPE_1__*,int,int /*<<< orphan*/ ) ; 
- int lzo_len (TYPE_1__*,int,int) ; 
- int lzo_nextbyte (TYPE_1__*) ; 
- int /*<<< orphan*/  min (int,int) ; 
+
+ int STATUS_INTERNAL_ERROR ;
+ int STATUS_SUCCESS ;
+ int lzo_copy (TYPE_1__*,int ) ;
+ int lzo_copyback (TYPE_1__*,int,int ) ;
+ int lzo_len (TYPE_1__*,int,int) ;
+ int lzo_nextbyte (TYPE_1__*) ;
+ int min (int,int) ;
 
 __attribute__((used)) static NTSTATUS do_lzo_decompress(lzo_stream* stream) {
     uint8_t byte;
     uint32_t len, back;
-    bool backcopy = false;
+    bool backcopy = 0;
 
-    stream->error = false;
+    stream->error = 0;
 
     byte = lzo_nextbyte(stream);
     if (stream->error) return STATUS_INTERNAL_ERROR;
@@ -51,7 +51,7 @@ __attribute__((used)) static NTSTATUS do_lzo_decompress(lzo_stream* stream) {
 
     while (1) {
         if (byte >> 4) {
-            backcopy = true;
+            backcopy = 1;
             if (byte >> 6) {
                 len = (byte >> 5) - 1;
                 back = (lzo_nextbyte(stream) << 3) + ((byte >> 2) & 7) + 1;

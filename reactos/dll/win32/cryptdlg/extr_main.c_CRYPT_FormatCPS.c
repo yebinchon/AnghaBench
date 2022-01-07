@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
 struct TYPE_5__ {int cbData; scalar_t__ pbData; } ;
 struct TYPE_6__ {TYPE_1__ Value; } ;
-typedef  int /*<<< orphan*/  LPWSTR ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
-typedef  int DWORD ;
-typedef  TYPE_2__ CERT_NAME_VALUE ;
-typedef  int /*<<< orphan*/  BYTE ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef int LPWSTR ;
+typedef int LPCWSTR ;
+typedef int DWORD ;
+typedef TYPE_2__ CERT_NAME_VALUE ;
+typedef int BYTE ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CRYPT_DECODE_ALLOC_FLAG ; 
- int CRYPT_FORMAT_STR_MULTI_LINE ; 
- int /*<<< orphan*/  CryptDecodeObjectEx (int,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,TYPE_2__**,int*) ; 
- int /*<<< orphan*/  ERROR_MORE_DATA ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  LocalFree (TYPE_2__*) ; 
- int /*<<< orphan*/  SetLastError (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  X509_UNICODE_ANY_STRING ; 
- int /*<<< orphan*/  commaSep ; 
- int /*<<< orphan*/  crlf ; 
- int /*<<< orphan*/  indent ; 
- int /*<<< orphan*/  lstrcpyW (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int lstrlenW (int /*<<< orphan*/ ) ; 
+
+ int CRYPT_DECODE_ALLOC_FLAG ;
+ int CRYPT_FORMAT_STR_MULTI_LINE ;
+ int CryptDecodeObjectEx (int,int ,int const*,int,int ,int *,TYPE_2__**,int*) ;
+ int ERROR_MORE_DATA ;
+ int FALSE ;
+ int LocalFree (TYPE_2__*) ;
+ int SetLastError (int ) ;
+ int X509_UNICODE_ANY_STRING ;
+ int commaSep ;
+ int crlf ;
+ int indent ;
+ int lstrcpyW (int *,int ) ;
+ int lstrlenW (int ) ;
 
 __attribute__((used)) static BOOL CRYPT_FormatCPS(DWORD dwCertEncodingType,
  DWORD dwFormatStrType, const BYTE *pbEncoded, DWORD cbEncoded,
@@ -46,7 +46,7 @@ __attribute__((used)) static BOOL CRYPT_FormatCPS(DWORD dwCertEncodingType,
     CERT_NAME_VALUE *cpsValue;
 
     if ((ret = CryptDecodeObjectEx(dwCertEncodingType, X509_UNICODE_ANY_STRING,
-     pbEncoded, cbEncoded, CRYPT_DECODE_ALLOC_FLAG, NULL, &cpsValue, &size)))
+     pbEncoded, cbEncoded, CRYPT_DECODE_ALLOC_FLAG, ((void*)0), &cpsValue, &size)))
     {
         LPCWSTR sep;
         DWORD sepLen;

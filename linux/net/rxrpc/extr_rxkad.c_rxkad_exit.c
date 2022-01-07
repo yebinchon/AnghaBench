@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  crypto_free_sync_skcipher (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rxkad_ci ; 
- int /*<<< orphan*/  rxkad_ci_req ; 
- int /*<<< orphan*/  skcipher_request_free (int /*<<< orphan*/ ) ; 
+ int crypto_free_sync_skcipher (int ) ;
+ int rxkad_ci ;
+ int rxkad_ci_req ;
+ int skcipher_request_free (int ) ;
 
 __attribute__((used)) static void rxkad_exit(void)
 {
-	crypto_free_sync_skcipher(rxkad_ci);
-	skcipher_request_free(rxkad_ci_req);
+ crypto_free_sync_skcipher(rxkad_ci);
+ skcipher_request_free(rxkad_ci_req);
 }

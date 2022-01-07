@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  l_fp ;
 
-/* Variables and functions */
- char* common_prettydate (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int l_fp ;
+
+
+ char* common_prettydate (int *,int) ;
 
 char *
 prettydate(
-	l_fp *ts
-	)
+ l_fp *ts
+ )
 {
-	return common_prettydate(ts, 1);
+ return common_prettydate(ts, 1);
 }

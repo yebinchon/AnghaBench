@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct tcp_sock {int /*<<< orphan*/  ecn_flags; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct tcp_sock {int ecn_flags; } ;
 struct request_sock {int dummy; } ;
 struct TYPE_2__ {scalar_t__ ecn_ok; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TCP_ECN_OK ; 
- TYPE_1__* inet_rsk (struct request_sock const*) ; 
+
+ int TCP_ECN_OK ;
+ TYPE_1__* inet_rsk (struct request_sock const*) ;
 
 __attribute__((used)) static void tcp_ecn_openreq_child(struct tcp_sock *tp,
-				  const struct request_sock *req)
+      const struct request_sock *req)
 {
-	tp->ecn_flags = inet_rsk(req)->ecn_ok ? TCP_ECN_OK : 0;
+ tp->ecn_flags = inet_rsk(req)->ecn_ok ? TCP_ECN_OK : 0;
 }

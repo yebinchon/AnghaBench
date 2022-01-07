@@ -1,68 +1,68 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char u_char ;
-typedef  int ngx_uint_t ;
+
+
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef char u_char ;
+typedef int ngx_uint_t ;
 struct TYPE_9__ {int len; char* data; } ;
-typedef  TYPE_1__ ngx_str_t ;
-typedef  scalar_t__ ngx_int_t ;
+typedef TYPE_1__ ngx_str_t ;
+typedef scalar_t__ ngx_int_t ;
 struct TYPE_12__ {int nelts; TYPE_1__* elts; } ;
-struct TYPE_10__ {int hsize; int /*<<< orphan*/  temp_pool; TYPE_4__* dns_wc_tail_hash; TYPE_4__ dns_wc_tail; TYPE_4__* dns_wc_head_hash; TYPE_4__ dns_wc_head; TYPE_4__* keys_hash; TYPE_4__ keys; } ;
-typedef  TYPE_2__ ngx_hash_keys_arrays_t ;
+struct TYPE_10__ {int hsize; int temp_pool; TYPE_4__* dns_wc_tail_hash; TYPE_4__ dns_wc_tail; TYPE_4__* dns_wc_head_hash; TYPE_4__ dns_wc_head; TYPE_4__* keys_hash; TYPE_4__ keys; } ;
+typedef TYPE_2__ ngx_hash_keys_arrays_t ;
 struct TYPE_11__ {void* value; scalar_t__ key_hash; TYPE_1__ key; } ;
-typedef  TYPE_3__ ngx_hash_key_t ;
-typedef  TYPE_4__ ngx_array_t ;
+typedef TYPE_3__ ngx_hash_key_t ;
+typedef TYPE_4__ ngx_array_t ;
 
-/* Variables and functions */
- scalar_t__ NGX_BUSY ; 
- scalar_t__ NGX_DECLINED ; 
- scalar_t__ NGX_ERROR ; 
- int NGX_HASH_READONLY_KEY ; 
- int NGX_HASH_WILDCARD_KEY ; 
- scalar_t__ NGX_OK ; 
- scalar_t__ ngx_array_init (TYPE_4__*,int /*<<< orphan*/ ,int,int) ; 
- void* ngx_array_push (TYPE_4__*) ; 
- int /*<<< orphan*/  ngx_cpystrn (char*,char*,int) ; 
- int ngx_hash (int,char) ; 
- scalar_t__ ngx_hash_key (char*,int) ; 
- int ngx_hash_strlow (char*,char*,int) ; 
- int /*<<< orphan*/  ngx_memcpy (char*,char*,size_t) ; 
- void* ngx_pnalloc (int /*<<< orphan*/ ,int) ; 
- scalar_t__ ngx_strncmp (char*,char*,size_t) ; 
- char ngx_tolower (char) ; 
+
+ scalar_t__ NGX_BUSY ;
+ scalar_t__ NGX_DECLINED ;
+ scalar_t__ NGX_ERROR ;
+ int NGX_HASH_READONLY_KEY ;
+ int NGX_HASH_WILDCARD_KEY ;
+ scalar_t__ NGX_OK ;
+ scalar_t__ ngx_array_init (TYPE_4__*,int ,int,int) ;
+ void* ngx_array_push (TYPE_4__*) ;
+ int ngx_cpystrn (char*,char*,int) ;
+ int ngx_hash (int,char) ;
+ scalar_t__ ngx_hash_key (char*,int) ;
+ int ngx_hash_strlow (char*,char*,int) ;
+ int ngx_memcpy (char*,char*,size_t) ;
+ void* ngx_pnalloc (int ,int) ;
+ scalar_t__ ngx_strncmp (char*,char*,size_t) ;
+ char ngx_tolower (char) ;
 
 ngx_int_t
 ngx_hash_add_key(ngx_hash_keys_arrays_t *ha, ngx_str_t *key, void *value,
     ngx_uint_t flags)
 {
-    size_t           len;
-    u_char          *p;
-    ngx_str_t       *name;
-    ngx_uint_t       i, k, n, skip, last;
-    ngx_array_t     *keys, *hwc;
-    ngx_hash_key_t  *hk;
+    size_t len;
+    u_char *p;
+    ngx_str_t *name;
+    ngx_uint_t i, k, n, skip, last;
+    ngx_array_t *keys, *hwc;
+    ngx_hash_key_t *hk;
 
     last = key->len;
 
     if (flags & NGX_HASH_WILDCARD_KEY) {
 
-        /*
-         * supported wildcards:
-         *     "*.example.com", ".example.com", and "www.example.*"
-         */
+
+
+
+
 
         n = 0;
 
@@ -107,7 +107,7 @@ ngx_hash_add_key(ngx_hash_keys_arrays_t *ha, ngx_str_t *key, void *value,
         }
     }
 
-    /* exact hash */
+
 
     k = 0;
 
@@ -120,7 +120,7 @@ ngx_hash_add_key(ngx_hash_keys_arrays_t *ha, ngx_str_t *key, void *value,
 
     k %= ha->hsize;
 
-    /* check conflicts in exact hash */
+
 
     name = ha->keys_hash[k].elts;
 
@@ -145,14 +145,14 @@ ngx_hash_add_key(ngx_hash_keys_arrays_t *ha, ngx_str_t *key, void *value,
     }
 
     name = ngx_array_push(&ha->keys_hash[k]);
-    if (name == NULL) {
+    if (name == ((void*)0)) {
         return NGX_ERROR;
     }
 
     *name = *key;
 
     hk = ngx_array_push(&ha->keys);
-    if (hk == NULL) {
+    if (hk == ((void*)0)) {
         return NGX_ERROR;
     }
 
@@ -165,7 +165,7 @@ ngx_hash_add_key(ngx_hash_keys_arrays_t *ha, ngx_str_t *key, void *value,
 
 wildcard:
 
-    /* wildcard hash */
+
 
     k = ngx_hash_strlow(&key->data[skip], &key->data[skip], last - skip);
 
@@ -173,7 +173,7 @@ wildcard:
 
     if (skip == 1) {
 
-        /* check conflicts in exact hash for ".example.com" */
+
 
         name = ha->keys_hash[k].elts;
 
@@ -200,13 +200,13 @@ wildcard:
         }
 
         name = ngx_array_push(&ha->keys_hash[k]);
-        if (name == NULL) {
+        if (name == ((void*)0)) {
             return NGX_ERROR;
         }
 
         name->len = last - 1;
         name->data = ngx_pnalloc(ha->temp_pool, name->len);
-        if (name->data == NULL) {
+        if (name->data == ((void*)0)) {
             return NGX_ERROR;
         }
 
@@ -216,13 +216,13 @@ wildcard:
 
     if (skip) {
 
-        /*
-         * convert "*.example.com" to "com.example.\0"
-         *      and ".example.com" to "com.example\0"
-         */
+
+
+
+
 
         p = ngx_pnalloc(ha->temp_pool, last);
-        if (p == NULL) {
+        if (p == ((void*)0)) {
             return NGX_ERROR;
         }
 
@@ -253,12 +253,12 @@ wildcard:
 
     } else {
 
-        /* convert "www.example.*" to "www.example\0" */
+
 
         last++;
 
         p = ngx_pnalloc(ha->temp_pool, last);
-        if (p == NULL) {
+        if (p == ((void*)0)) {
             return NGX_ERROR;
         }
 
@@ -269,7 +269,7 @@ wildcard:
     }
 
 
-    /* check conflicts in wildcard hash */
+
 
     name = keys->elts;
 
@@ -294,23 +294,23 @@ wildcard:
     }
 
     name = ngx_array_push(keys);
-    if (name == NULL) {
+    if (name == ((void*)0)) {
         return NGX_ERROR;
     }
 
     name->len = last - skip;
     name->data = ngx_pnalloc(ha->temp_pool, name->len);
-    if (name->data == NULL) {
+    if (name->data == ((void*)0)) {
         return NGX_ERROR;
     }
 
     ngx_memcpy(name->data, key->data + skip, name->len);
 
 
-    /* add to wildcard hash */
+
 
     hk = ngx_array_push(hwc);
-    if (hk == NULL) {
+    if (hk == ((void*)0)) {
         return NGX_ERROR;
     }
 

@@ -1,20 +1,12 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  pr_cont (char*,char*,char const*) ; 
+ int pr_cont (char*,char*,char const*) ;
 
 __attribute__((used)) static void _print_next_block(int idx, const char *blk)
 {
-	pr_cont("%s%s", idx ? ", " : "", blk);
+ pr_cont("%s%s", idx ? ", " : "", blk);
 }

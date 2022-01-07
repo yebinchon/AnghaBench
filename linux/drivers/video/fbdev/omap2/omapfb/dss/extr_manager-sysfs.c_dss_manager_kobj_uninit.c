@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct omap_overlay_manager {int /*<<< orphan*/  kobj; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  kobject_del (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  kobject_put (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
+
+
+
+struct omap_overlay_manager {int kobj; } ;
+
+
+ int kobject_del (int *) ;
+ int kobject_put (int *) ;
+ int memset (int *,int ,int) ;
 
 void dss_manager_kobj_uninit(struct omap_overlay_manager *mgr)
 {
-	kobject_del(&mgr->kobj);
-	kobject_put(&mgr->kobj);
+ kobject_del(&mgr->kobj);
+ kobject_put(&mgr->kobj);
 
-	memset(&mgr->kobj, 0, sizeof(mgr->kobj));
+ memset(&mgr->kobj, 0, sizeof(mgr->kobj));
 }

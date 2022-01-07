@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
-struct TYPE_7__ {int reduced_width; int width; TYPE_3__* image; int /*<<< orphan*/  gb; } ;
-typedef  TYPE_2__ WebPContext ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint8_t ;
+struct TYPE_7__ {int reduced_width; int width; TYPE_3__* image; int gb; } ;
+typedef TYPE_2__ WebPContext ;
 struct TYPE_8__ {int size_reduction; TYPE_1__* frame; } ;
 struct TYPE_6__ {int width; scalar_t__** data; } ;
-typedef  TYPE_3__ ImageContext ;
+typedef TYPE_3__ ImageContext ;
 
-/* Variables and functions */
- size_t IMAGE_ROLE_COLOR_INDEXING ; 
- int decode_entropy_coded_image (TYPE_2__*,size_t,int,int) ; 
- int get_bits (int /*<<< orphan*/ *,int) ; 
+
+ size_t IMAGE_ROLE_COLOR_INDEXING ;
+ int decode_entropy_coded_image (TYPE_2__*,size_t,int,int) ;
+ int get_bits (int *,int) ;
 
 __attribute__((used)) static int parse_transform_color_indexing(WebPContext *s)
 {
@@ -52,8 +52,8 @@ __attribute__((used)) static int parse_transform_color_indexing(WebPContext *s)
     if (width_bits > 0)
         s->reduced_width = (s->width + ((1 << width_bits) - 1)) >> width_bits;
 
-    /* color index values are delta-coded */
-    ct  = img->frame->data[0] + 4;
+
+    ct = img->frame->data[0] + 4;
     for (x = 4; x < img->frame->width * 4; x++, ct++)
         ct[0] += ct[-4];
 

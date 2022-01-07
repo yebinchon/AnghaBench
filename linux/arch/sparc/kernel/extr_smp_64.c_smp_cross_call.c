@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u64 ;
-typedef  int /*<<< orphan*/  u32 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cpu_online_mask ; 
- int /*<<< orphan*/  smp_cross_call_masked (unsigned long*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int u64 ;
+typedef int u32 ;
+
+
+ int cpu_online_mask ;
+ int smp_cross_call_masked (unsigned long*,int ,int ,int ,int ) ;
 
 __attribute__((used)) static void smp_cross_call(unsigned long *func, u32 ctx, u64 data1, u64 data2)
 {
-	smp_cross_call_masked(func, ctx, data1, data2, cpu_online_mask);
+ smp_cross_call_masked(func, ctx, data1, data2, cpu_online_mask);
 }

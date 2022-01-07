@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {float* postfilter_synth_mem; int /*<<< orphan*/  postfilter_agc_mem; scalar_t__ formant_mem; int /*<<< orphan*/  postfilter_tilt_mem; } ;
-typedef  TYPE_1__ QCELPContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  avpriv_scalarproduct_float_c (scalar_t__,scalar_t__,int) ; 
- int /*<<< orphan*/  ff_adaptive_gain_control (float*,float*,int /*<<< orphan*/ ,int,double,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ff_celp_lp_synthesis_filterf (float*,float*,float*,int,int) ; 
- int /*<<< orphan*/  ff_celp_lp_zero_synthesis_filterf (float*,float*,scalar_t__,int,int) ; 
- int /*<<< orphan*/  ff_tilt_compensation (int /*<<< orphan*/ *,double,float*,int) ; 
- int /*<<< orphan*/  memcpy (float*,float*,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {float* postfilter_synth_mem; int postfilter_agc_mem; scalar_t__ formant_mem; int postfilter_tilt_mem; } ;
+typedef TYPE_1__ QCELPContext ;
+
+
+ int avpriv_scalarproduct_float_c (scalar_t__,scalar_t__,int) ;
+ int ff_adaptive_gain_control (float*,float*,int ,int,double,int *) ;
+ int ff_celp_lp_synthesis_filterf (float*,float*,float*,int,int) ;
+ int ff_celp_lp_zero_synthesis_filterf (float*,float*,scalar_t__,int,int) ;
+ int ff_tilt_compensation (int *,double,float*,int) ;
+ int memcpy (float*,float*,int) ;
 
 __attribute__((used)) static void postfilter(QCELPContext *q, float *samples, float *lpc)
 {

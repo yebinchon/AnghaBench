@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct xfrm_dst {int dummy; } ;
 struct dst_entry {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_UNSPEC ; 
- int /*<<< orphan*/  xfrm_bundle_ok (int /*<<< orphan*/ *,struct xfrm_dst*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int AF_UNSPEC ;
+ int xfrm_bundle_ok (int *,struct xfrm_dst*,int *,int ,int ) ;
 
 __attribute__((used)) static int stale_bundle(struct dst_entry *dst)
 {
-	return !xfrm_bundle_ok(NULL, (struct xfrm_dst *)dst, NULL, AF_UNSPEC, 0);
+ return !xfrm_bundle_ok(((void*)0), (struct xfrm_dst *)dst, ((void*)0), AF_UNSPEC, 0);
 }

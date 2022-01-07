@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  int64_t ;
 
-/* Variables and functions */
- int EINVAL ; 
- size_t strlen (char const*) ; 
- int /*<<< orphan*/  strtoul (char const*,char**,int) ; 
+
+
+
+typedef int int64_t ;
+
+
+ int EINVAL ;
+ size_t strlen (char const*) ;
+ int strtoul (char const*,char**,int) ;
 
 __attribute__((used)) static int
 str2int64(const char *str, int64_t *value)
 {
-	char *end;
+ char *end;
 
-	if (str == NULL)
-		return (EINVAL);
+ if (str == ((void*)0))
+  return (EINVAL);
 
-	*value = strtoul(str, &end, 10);
-	if ((size_t)(end - str) != strlen(str))
-		return (EINVAL);
+ *value = strtoul(str, &end, 10);
+ if ((size_t)(end - str) != strlen(str))
+  return (EINVAL);
 
-	return (0);
+ return (0);
 }

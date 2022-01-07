@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct fd {TYPE_1__* ops; } ;
-struct elf_header {scalar_t__ type; scalar_t__ bitness; scalar_t__ endian; int elfversion1; scalar_t__ machine; int /*<<< orphan*/  magic; } ;
-struct TYPE_2__ {int (* read ) (struct fd*,struct elf_header*,int) ;scalar_t__ (* lseek ) (struct fd*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;} ;
+struct elf_header {scalar_t__ type; scalar_t__ bitness; scalar_t__ endian; int elfversion1; scalar_t__ machine; int magic; } ;
+struct TYPE_2__ {int (* read ) (struct fd*,struct elf_header*,int) ;scalar_t__ (* lseek ) (struct fd*,int ,int ) ;} ;
 
-/* Variables and functions */
- scalar_t__ ELF_32BIT ; 
- scalar_t__ ELF_DYNAMIC ; 
- scalar_t__ ELF_EXECUTABLE ; 
- scalar_t__ ELF_LITTLEENDIAN ; 
- int /*<<< orphan*/  ELF_MAGIC ; 
- scalar_t__ ELF_X86 ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int _EIO ; 
- int _ENOEXEC ; 
- scalar_t__ memcmp (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- scalar_t__ stub1 (struct fd*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int stub2 (struct fd*,struct elf_header*,int) ; 
+
+ scalar_t__ ELF_32BIT ;
+ scalar_t__ ELF_DYNAMIC ;
+ scalar_t__ ELF_EXECUTABLE ;
+ scalar_t__ ELF_LITTLEENDIAN ;
+ int ELF_MAGIC ;
+ scalar_t__ ELF_X86 ;
+ int SEEK_SET ;
+ int _EIO ;
+ int _ENOEXEC ;
+ scalar_t__ memcmp (int *,int ,int) ;
+ scalar_t__ stub1 (struct fd*,int ,int ) ;
+ int stub2 (struct fd*,struct elf_header*,int) ;
 
 __attribute__((used)) static int read_header(struct fd *fd, struct elf_header *header) {
     int err;

@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  apdwStyles ;
-typedef  int /*<<< orphan*/  albStyle ;
-typedef  int /*<<< orphan*/  alHatch ;
-typedef  int /*<<< orphan*/  aflJoin ;
-typedef  int /*<<< orphan*/  aflEndCap ;
-typedef  int /*<<< orphan*/  adwWidth ;
-typedef  int /*<<< orphan*/  adwStyleCount ;
-typedef  int ULONG_PTR ;
-typedef  int ULONG ;
-typedef  int UINT ;
-typedef  int* PULONG ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int PS_ALTERNATE ; 
- int PS_COSMETIC ; 
- int PS_DASH ; 
- int PS_DASHDOT ; 
- int PS_DASHDOTDOT ; 
- int PS_DOT ; 
- int PS_ENDCAP_FLAT ; 
- int PS_ENDCAP_ROUND ; 
- int PS_ENDCAP_SQUARE ; 
- int PS_GEOMETRIC ; 
- int PS_INSIDEFRAME ; 
- int PS_JOIN_BEVEL ; 
- int PS_JOIN_MITER ; 
- int PS_JOIN_ROUND ; 
- int PS_NULL ; 
- int PS_SOLID ; 
- int PS_USERSTYLE ; 
- int /*<<< orphan*/  Test_ExtCreatePen_Helper (int,int,int,int*,int,int) ; 
- int /*<<< orphan*/  printf (char*,int*,int*) ; 
+
+
+
+typedef int apdwStyles ;
+typedef int albStyle ;
+typedef int alHatch ;
+typedef int aflJoin ;
+typedef int aflEndCap ;
+typedef int adwWidth ;
+typedef int adwStyleCount ;
+typedef int ULONG_PTR ;
+typedef int ULONG ;
+typedef int UINT ;
+typedef int* PULONG ;
+typedef int DWORD ;
+
+
+ int PS_ALTERNATE ;
+ int PS_COSMETIC ;
+ int PS_DASH ;
+ int PS_DASHDOT ;
+ int PS_DASHDOTDOT ;
+ int PS_DOT ;
+ int PS_ENDCAP_FLAT ;
+ int PS_ENDCAP_ROUND ;
+ int PS_ENDCAP_SQUARE ;
+ int PS_GEOMETRIC ;
+ int PS_INSIDEFRAME ;
+ int PS_JOIN_BEVEL ;
+ int PS_JOIN_MITER ;
+ int PS_JOIN_ROUND ;
+ int PS_NULL ;
+ int PS_SOLID ;
+ int PS_USERSTYLE ;
+ int Test_ExtCreatePen_Helper (int,int,int,int*,int,int) ;
+ int printf (char*,int*,int*) ;
 
 void Test_ExtCreatePen_Params2()
 {
@@ -53,11 +53,11 @@ void Test_ExtCreatePen_Params2()
 
     printf("adwStyles=%p, adwStyles2=%p\n", adwStyles, adwStyles2);
 
-    //for (iType = 0; iType < sizeof(aflPenType) / sizeof(aflPenType[0]); iType++)
+
     for (iType = 0; iType < 3; iType++)
     {
         ULONG aflPenStyle[] = {PS_SOLID, PS_DASH, PS_DOT, PS_DASHDOT, PS_DASHDOTDOT, PS_NULL, PS_INSIDEFRAME, PS_USERSTYLE, PS_ALTERNATE, 9};
-        //for (iStyle = 0; iStyle < sizeof(aflPenStyle) / sizeof(aflPenStyle[0]); iStyle++)
+
         for (iStyle = 0; iStyle < 10; iStyle++)
         {
             ULONG aflEndCap[] = {PS_ENDCAP_ROUND, PS_ENDCAP_SQUARE, PS_ENDCAP_FLAT, 0x300, 0x400};
@@ -74,7 +74,7 @@ void Test_ExtCreatePen_Params2()
                         ULONG adwStyleCount[] = {0, 1, 2, 16, 17};
                         for (iStyleCount = 0; iStyleCount < sizeof(adwStyleCount) / sizeof(adwStyleCount[0]); iStyleCount++)
                         {
-                            PULONG apdwStyles[] = {NULL, adwStyles, adwStyles2};
+                            PULONG apdwStyles[] = {((void*)0), adwStyles, adwStyles2};
                             for (iStyles = 0; iStyles < sizeof(apdwStyles) / sizeof(apdwStyles[0]); iStyles++)
                             {
                                 UINT albStyle[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};

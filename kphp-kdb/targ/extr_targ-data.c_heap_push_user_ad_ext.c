@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_5__ ;
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_5__ ;
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct intree_node {int x; int z; } ;
 struct advert {int flags; scalar_t__ recent_views; scalar_t__ recent_views_limit; int category; scalar_t__ price; double expected_gain; int subcategory; double lambda; double delta; scalar_t__ group; } ;
 struct TYPE_9__ {TYPE_1__* g; } ;
 struct TYPE_8__ {double expected_gain; } ;
-struct TYPE_7__ {int /*<<< orphan*/  weights; } ;
+struct TYPE_7__ {int weights; } ;
 struct TYPE_6__ {double views; scalar_t__ clicks; } ;
 
-/* Variables and functions */
- int ADF_LIMIT_VIEWS ; 
- TYPE_5__ AdStats ; 
- TYPE_4__* H ; 
- scalar_t__ HN ; 
- long MAX_AD_VIEWS ; 
- int __and_mask ; 
- long long __cat_mask ; 
- int __exclude_ad_id ; 
- scalar_t__ __gsort_limit ; 
- scalar_t__ __use_views_limit ; 
- TYPE_2__* __user ; 
- int __xor_mask ; 
- double drand48 () ; 
- struct advert* get_ad (int) ; 
- int /*<<< orphan*/  heap_insert (double,struct advert*,int) ; 
- scalar_t__ is_user_in_group (TYPE_2__*,scalar_t__) ; 
- double log (double) ; 
- scalar_t__ targ_weights_at (int /*<<< orphan*/ ,int) ; 
- scalar_t__ unlikely (int) ; 
+
+ int ADF_LIMIT_VIEWS ;
+ TYPE_5__ AdStats ;
+ TYPE_4__* H ;
+ scalar_t__ HN ;
+ long MAX_AD_VIEWS ;
+ int __and_mask ;
+ long long __cat_mask ;
+ int __exclude_ad_id ;
+ scalar_t__ __gsort_limit ;
+ scalar_t__ __use_views_limit ;
+ TYPE_2__* __user ;
+ int __xor_mask ;
+ double drand48 () ;
+ struct advert* get_ad (int) ;
+ int heap_insert (double,struct advert*,int) ;
+ scalar_t__ is_user_in_group (TYPE_2__*,scalar_t__) ;
+ double log (double) ;
+ scalar_t__ targ_weights_at (int ,int) ;
+ scalar_t__ unlikely (int) ;
 
 int heap_push_user_ad_ext (struct intree_node *N) {
   int ad_id = N->x;

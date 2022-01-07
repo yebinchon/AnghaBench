@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ssize_t ;
-typedef  int /*<<< orphan*/  dma_addr_t ;
 
-/* Variables and functions */
- void* __dma_alloc_from_coherent (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  dma_coherent_default_memory ; 
+
+
+
+typedef int ssize_t ;
+typedef int dma_addr_t ;
+
+
+ void* __dma_alloc_from_coherent (int ,int ,int *) ;
+ int dma_coherent_default_memory ;
 
 void *dma_alloc_from_global_coherent(ssize_t size, dma_addr_t *dma_handle)
 {
-	if (!dma_coherent_default_memory)
-		return NULL;
+ if (!dma_coherent_default_memory)
+  return ((void*)0);
 
-	return __dma_alloc_from_coherent(dma_coherent_default_memory, size,
-			dma_handle);
+ return __dma_alloc_from_coherent(dma_coherent_default_memory, size,
+   dma_handle);
 }

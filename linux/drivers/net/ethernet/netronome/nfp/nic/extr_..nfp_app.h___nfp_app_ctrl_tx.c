@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct sk_buff {int /*<<< orphan*/  len; int /*<<< orphan*/  data; } ;
-struct nfp_app {int /*<<< orphan*/  ctrl; int /*<<< orphan*/  pf; } ;
 
-/* Variables and functions */
- int __nfp_ctrl_tx (int /*<<< orphan*/ ,struct sk_buff*) ; 
- int /*<<< orphan*/  priv_to_devlink (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  trace_devlink_hwmsg (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct sk_buff {int len; int data; } ;
+struct nfp_app {int ctrl; int pf; } ;
+
+
+ int __nfp_ctrl_tx (int ,struct sk_buff*) ;
+ int priv_to_devlink (int ) ;
+ int trace_devlink_hwmsg (int ,int,int ,int ,int ) ;
 
 __attribute__((used)) static inline bool __nfp_app_ctrl_tx(struct nfp_app *app, struct sk_buff *skb)
 {
-	trace_devlink_hwmsg(priv_to_devlink(app->pf), false, 0,
-			    skb->data, skb->len);
+ trace_devlink_hwmsg(priv_to_devlink(app->pf), 0, 0,
+       skb->data, skb->len);
 
-	return __nfp_ctrl_tx(app->ctrl, skb);
+ return __nfp_ctrl_tx(app->ctrl, skb);
 }

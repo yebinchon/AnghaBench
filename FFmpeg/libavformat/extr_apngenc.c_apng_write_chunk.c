@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  size_t uint32_t ;
-typedef  int /*<<< orphan*/  AVIOContext ;
-typedef  int /*<<< orphan*/  AVCRC ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_CRC_32_IEEE_LE ; 
- int /*<<< orphan*/  AV_WB32 (int /*<<< orphan*/ *,size_t) ; 
- int /*<<< orphan*/  av_assert0 (int /*<<< orphan*/  const*) ; 
- size_t av_crc (int /*<<< orphan*/  const*,size_t,int /*<<< orphan*/ *,size_t) ; 
- int /*<<< orphan*/ * av_crc_get_table (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  avio_wb32 (int /*<<< orphan*/ *,size_t) ; 
- int /*<<< orphan*/  avio_write (int /*<<< orphan*/ *,int /*<<< orphan*/ *,size_t) ; 
+
+
+
+typedef int uint8_t ;
+typedef size_t uint32_t ;
+typedef int AVIOContext ;
+typedef int AVCRC ;
+
+
+ int AV_CRC_32_IEEE_LE ;
+ int AV_WB32 (int *,size_t) ;
+ int av_assert0 (int const*) ;
+ size_t av_crc (int const*,size_t,int *,size_t) ;
+ int * av_crc_get_table (int ) ;
+ int avio_wb32 (int *,size_t) ;
+ int avio_write (int *,int *,size_t) ;
 
 __attribute__((used)) static void apng_write_chunk(AVIOContext *io_context, uint32_t tag,
                              uint8_t *buf, size_t length)

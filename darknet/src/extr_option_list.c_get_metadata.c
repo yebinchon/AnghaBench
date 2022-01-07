@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  classes; int /*<<< orphan*/  names; int /*<<< orphan*/  member_0; } ;
-typedef  TYPE_1__ metadata ;
-typedef  int /*<<< orphan*/  list ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  free_list (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  get_labels (char*) ; 
- int /*<<< orphan*/  option_find_int (int /*<<< orphan*/ *,char*,int) ; 
- char* option_find_str (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * read_data_cfg (char*) ; 
- int /*<<< orphan*/  stderr ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int classes; int names; int member_0; } ;
+typedef TYPE_1__ metadata ;
+typedef int list ;
+
+
+ int fprintf (int ,char*) ;
+ int free_list (int *) ;
+ int get_labels (char*) ;
+ int option_find_int (int *,char*,int) ;
+ char* option_find_str (int *,char*,int ) ;
+ int * read_data_cfg (char*) ;
+ int stderr ;
 
 metadata get_metadata(char *file)
 {

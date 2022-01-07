@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  void* rtx ;
 
-/* Variables and functions */
- void* NEXT_INSN (void*) ; 
- void* first_insn ; 
- void* last_insn ; 
- int /*<<< orphan*/  start_sequence () ; 
+
+
+
+typedef void* rtx ;
+
+
+ void* NEXT_INSN (void*) ;
+ void* first_insn ;
+ void* last_insn ;
+ int start_sequence () ;
 
 void
 push_to_sequence (rtx first)

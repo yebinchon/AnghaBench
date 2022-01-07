@@ -1,112 +1,84 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  retro_ctx_serialize_info_t ;
-struct TYPE_13__ {int is_replay; int is_connected; int nat_traversal_task_oustanding; int /*<<< orphan*/  desync; } ;
-typedef  TYPE_1__ netplay_t ;
-typedef  enum rarch_netplay_ctl_state { ____Placeholder_rarch_netplay_ctl_state } rarch_netplay_ctl_state ;
-struct TYPE_14__ {int /*<<< orphan*/  status; } ;
-typedef  TYPE_2__ discord_userdata_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CMD_EVENT_DISCORD_UPDATE ; 
- int /*<<< orphan*/  DISCORD_PRESENCE_NETPLAY_NETPLAY_STOPPED ; 
-#define  RARCH_NETPLAY_CTL_DESYNC_POP 147 
-#define  RARCH_NETPLAY_CTL_DESYNC_PUSH 146 
-#define  RARCH_NETPLAY_CTL_DISABLE 145 
-#define  RARCH_NETPLAY_CTL_DISCONNECT 144 
-#define  RARCH_NETPLAY_CTL_ENABLE_CLIENT 143 
-#define  RARCH_NETPLAY_CTL_ENABLE_SERVER 142 
-#define  RARCH_NETPLAY_CTL_FINISHED_NAT_TRAVERSAL 141 
-#define  RARCH_NETPLAY_CTL_GAME_WATCH 140 
-#define  RARCH_NETPLAY_CTL_IS_CONNECTED 139 
-#define  RARCH_NETPLAY_CTL_IS_DATA_INITED 138 
-#define  RARCH_NETPLAY_CTL_IS_ENABLED 137 
-#define  RARCH_NETPLAY_CTL_IS_REPLAYING 136 
-#define  RARCH_NETPLAY_CTL_IS_SERVER 135 
-#define  RARCH_NETPLAY_CTL_LOAD_SAVESTATE 134 
-#define  RARCH_NETPLAY_CTL_NONE 133 
-#define  RARCH_NETPLAY_CTL_PAUSE 132 
-#define  RARCH_NETPLAY_CTL_POST_FRAME 131 
-#define  RARCH_NETPLAY_CTL_PRE_FRAME 130 
-#define  RARCH_NETPLAY_CTL_RESET 129 
-#define  RARCH_NETPLAY_CTL_UNPAUSE 128 
- int /*<<< orphan*/  command_event (int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  discord_is_inited ; 
- int in_netplay ; 
- int /*<<< orphan*/  netplay_announce_nat_traversal (TYPE_1__*) ; 
- int /*<<< orphan*/  netplay_core_reset (TYPE_1__*) ; 
- TYPE_1__* netplay_data ; 
- int netplay_disconnect (TYPE_1__*) ; 
- int netplay_enabled ; 
- int /*<<< orphan*/  netplay_frontend_paused (TYPE_1__*,int) ; 
- int netplay_is_client ; 
- int /*<<< orphan*/  netplay_load_savestate (TYPE_1__*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  netplay_post_frame (TYPE_1__*) ; 
- int netplay_pre_frame (TYPE_1__*) ; 
- int /*<<< orphan*/  netplay_toggle_play_spectate (TYPE_1__*) ; 
+
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+typedef int retro_ctx_serialize_info_t ;
+struct TYPE_13__ {int is_replay; int is_connected; int nat_traversal_task_oustanding; int desync; } ;
+typedef TYPE_1__ netplay_t ;
+typedef enum rarch_netplay_ctl_state { ____Placeholder_rarch_netplay_ctl_state } rarch_netplay_ctl_state ;
+struct TYPE_14__ {int status; } ;
+typedef TYPE_2__ discord_userdata_t ;
+
+
+ int CMD_EVENT_DISCORD_UPDATE ;
+ int DISCORD_PRESENCE_NETPLAY_NETPLAY_STOPPED ;
+ int command_event (int ,TYPE_2__*) ;
+ int discord_is_inited ;
+ int in_netplay ;
+ int netplay_announce_nat_traversal (TYPE_1__*) ;
+ int netplay_core_reset (TYPE_1__*) ;
+ TYPE_1__* netplay_data ;
+ int netplay_disconnect (TYPE_1__*) ;
+ int netplay_enabled ;
+ int netplay_frontend_paused (TYPE_1__*,int) ;
+ int netplay_is_client ;
+ int netplay_load_savestate (TYPE_1__*,int *,int) ;
+ int netplay_post_frame (TYPE_1__*) ;
+ int netplay_pre_frame (TYPE_1__*) ;
+ int netplay_toggle_play_spectate (TYPE_1__*) ;
 
 bool netplay_driver_ctl(enum rarch_netplay_ctl_state state, void *data)
 {
    netplay_t *netplay = netplay_data;
-   bool ret           = true;
+   bool ret = 1;
 
    if (in_netplay)
-      return true;
-   in_netplay = true;
+      return 1;
+   in_netplay = 1;
 
    if (!netplay)
    {
       switch (state)
       {
-         case RARCH_NETPLAY_CTL_ENABLE_SERVER:
-            netplay_enabled = true;
-            netplay_is_client = false;
+         case 142:
+            netplay_enabled = 1;
+            netplay_is_client = 0;
             goto done;
 
-         case RARCH_NETPLAY_CTL_ENABLE_CLIENT:
-            netplay_enabled = true;
-            netplay_is_client = true;
+         case 143:
+            netplay_enabled = 1;
+            netplay_is_client = 1;
             break;
 
-         case RARCH_NETPLAY_CTL_DISABLE:
-            netplay_enabled = false;
-#ifdef HAVE_DISCORD
-            if (discord_is_inited)
-            {
-               discord_userdata_t userdata;
-               userdata.status = DISCORD_PRESENCE_NETPLAY_NETPLAY_STOPPED;
-               command_event(CMD_EVENT_DISCORD_UPDATE, &userdata);
-            }
-#endif
+         case 145:
+            netplay_enabled = 0;
             goto done;
 
-         case RARCH_NETPLAY_CTL_IS_ENABLED:
+         case 137:
             ret = netplay_enabled;
             goto done;
 
-         case RARCH_NETPLAY_CTL_IS_REPLAYING:
-         case RARCH_NETPLAY_CTL_IS_DATA_INITED:
-            ret = false;
+         case 136:
+         case 138:
+            ret = 0;
             goto done;
 
-         case RARCH_NETPLAY_CTL_IS_SERVER:
+         case 135:
             ret = netplay_enabled && !netplay_is_client;
             goto done;
 
-         case RARCH_NETPLAY_CTL_IS_CONNECTED:
-            ret = false;
+         case 139:
+            ret = 0;
             goto done;
 
          default:
@@ -116,71 +88,71 @@ bool netplay_driver_ctl(enum rarch_netplay_ctl_state state, void *data)
 
    switch (state)
    {
-      case RARCH_NETPLAY_CTL_ENABLE_SERVER:
-      case RARCH_NETPLAY_CTL_ENABLE_CLIENT:
-      case RARCH_NETPLAY_CTL_IS_DATA_INITED:
+      case 142:
+      case 143:
+      case 138:
          goto done;
-      case RARCH_NETPLAY_CTL_DISABLE:
-         ret = false;
+      case 145:
+         ret = 0;
          goto done;
-      case RARCH_NETPLAY_CTL_IS_ENABLED:
+      case 137:
          goto done;
-      case RARCH_NETPLAY_CTL_IS_REPLAYING:
+      case 136:
          ret = netplay->is_replay;
          goto done;
-      case RARCH_NETPLAY_CTL_IS_SERVER:
+      case 135:
          ret = netplay_enabled && !netplay_is_client;
          goto done;
-      case RARCH_NETPLAY_CTL_IS_CONNECTED:
+      case 139:
          ret = netplay->is_connected;
          goto done;
-      case RARCH_NETPLAY_CTL_POST_FRAME:
+      case 131:
          netplay_post_frame(netplay);
          break;
-      case RARCH_NETPLAY_CTL_PRE_FRAME:
+      case 130:
          ret = netplay_pre_frame(netplay);
          goto done;
-      case RARCH_NETPLAY_CTL_GAME_WATCH:
+      case 140:
          netplay_toggle_play_spectate(netplay);
          break;
-      case RARCH_NETPLAY_CTL_PAUSE:
-         netplay_frontend_paused(netplay, true);
+      case 132:
+         netplay_frontend_paused(netplay, 1);
          break;
-      case RARCH_NETPLAY_CTL_UNPAUSE:
-         netplay_frontend_paused(netplay, false);
+      case 128:
+         netplay_frontend_paused(netplay, 0);
          break;
-      case RARCH_NETPLAY_CTL_LOAD_SAVESTATE:
-         netplay_load_savestate(netplay, (retro_ctx_serialize_info_t*)data, true);
+      case 134:
+         netplay_load_savestate(netplay, (retro_ctx_serialize_info_t*)data, 1);
          break;
-      case RARCH_NETPLAY_CTL_RESET:
+      case 129:
          netplay_core_reset(netplay);
          break;
-      case RARCH_NETPLAY_CTL_DISCONNECT:
+      case 144:
          ret = netplay_disconnect(netplay);
          goto done;
-      case RARCH_NETPLAY_CTL_FINISHED_NAT_TRAVERSAL:
-         netplay->nat_traversal_task_oustanding = false;
-#ifndef HAVE_SOCKET_LEGACY
+      case 141:
+         netplay->nat_traversal_task_oustanding = 0;
+
          netplay_announce_nat_traversal(netplay);
-#endif
+
          goto done;
-      case RARCH_NETPLAY_CTL_DESYNC_PUSH:
+      case 146:
          netplay->desync++;
          break;
-      case RARCH_NETPLAY_CTL_DESYNC_POP:
+      case 147:
          if (netplay->desync)
          {
             netplay->desync--;
             if (!netplay->desync)
-               netplay_load_savestate(netplay, NULL, true);
+               netplay_load_savestate(netplay, ((void*)0), 1);
          }
          break;
       default:
-      case RARCH_NETPLAY_CTL_NONE:
-         ret = false;
+      case 133:
+         ret = 0;
    }
 
 done:
-   in_netplay = false;
+   in_netplay = 0;
    return ret;
 }

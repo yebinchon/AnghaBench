@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_3__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-typedef  scalar_t__ u16 ;
-struct TYPE_5__ {int usableSize; int /*<<< orphan*/  mutex; } ;
-struct TYPE_4__ {int hdrOffset; scalar_t__ nOverflow; scalar_t__ nCell; int nFree; int /*<<< orphan*/ * aCellIdx; int /*<<< orphan*/  pDbPage; TYPE_3__* pBt; int /*<<< orphan*/ * aData; } ;
-typedef  TYPE_1__ MemPage ;
 
-/* Variables and functions */
- scalar_t__ MX_CELL (TYPE_3__*) ; 
- int /*<<< orphan*/  assert (int) ; 
- int const get2byteNotZero (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  put2byte (int /*<<< orphan*/ *,int) ; 
- int sqlite3PagerIswriteable (int /*<<< orphan*/ ) ; 
- int sqlite3_mutex_held (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_3__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int u8 ;
+typedef scalar_t__ u16 ;
+struct TYPE_5__ {int usableSize; int mutex; } ;
+struct TYPE_4__ {int hdrOffset; scalar_t__ nOverflow; scalar_t__ nCell; int nFree; int * aCellIdx; int pDbPage; TYPE_3__* pBt; int * aData; } ;
+typedef TYPE_1__ MemPage ;
+
+
+ scalar_t__ MX_CELL (TYPE_3__*) ;
+ int assert (int) ;
+ int const get2byteNotZero (int *) ;
+ int memcpy (int *,int *,scalar_t__) ;
+ int put2byte (int *,int) ;
+ int sqlite3PagerIswriteable (int ) ;
+ int sqlite3_mutex_held (int ) ;
 
 __attribute__((used)) static void assemblePage(
-  MemPage *pPage,   /* The page to be assemblied */
-  int nCell,        /* The number of cells to add to this page */
-  u8 **apCell,      /* Pointers to cell bodies */
-  u16 *aSize        /* Sizes of the cells */
+  MemPage *pPage,
+  int nCell,
+  u8 **apCell,
+  u16 *aSize
 ){
-  int i;            /* Loop counter */
-  u8 *pCellptr;     /* Address of next cell pointer */
-  int cellbody;     /* Address of next cell body */
-  u8 * const data = pPage->aData;             /* Pointer to data for pPage */
-  const int hdr = pPage->hdrOffset;           /* Offset of header on pPage */
-  const int nUsable = pPage->pBt->usableSize; /* Usable size of page */
+  int i;
+  u8 *pCellptr;
+  int cellbody;
+  u8 * const data = pPage->aData;
+  const int hdr = pPage->hdrOffset;
+  const int nUsable = pPage->pBt->usableSize;
 
   assert( pPage->nOverflow==0 );
   assert( sqlite3_mutex_held(pPage->pBt->mutex) );
@@ -46,7 +46,7 @@ __attribute__((used)) static void assemblePage(
             && (int)MX_CELL(pPage->pBt)<=10921);
   assert( sqlite3PagerIswriteable(pPage->pDbPage) );
 
-  /* Check that the page has just been zeroed by zeroPage() */
+
   assert( pPage->nCell==0 );
   assert( get2byteNotZero(&data[hdr+5])==nUsable );
 

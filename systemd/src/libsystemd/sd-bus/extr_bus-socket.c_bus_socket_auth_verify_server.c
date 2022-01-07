@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {int rbuffer_size; int auth_rbegin; scalar_t__ auth; int can_fds; scalar_t__ rbuffer; int /*<<< orphan*/  accept_fd; } ;
-typedef  TYPE_1__ sd_bus ;
 
-/* Variables and functions */
- scalar_t__ BUS_AUTH_ANONYMOUS ; 
- scalar_t__ BUS_AUTH_EXTERNAL ; 
- int EIO ; 
- scalar_t__ _BUS_AUTH_INVALID ; 
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- scalar_t__ bus_socket_auth_needs_write (TYPE_1__*) ; 
- int bus_socket_auth_write (TYPE_1__*,char*) ; 
- int bus_socket_auth_write_ok (TYPE_1__*) ; 
- int bus_start_running (TYPE_1__*) ; 
- scalar_t__ line_begins (char const*,size_t,char*) ; 
- scalar_t__ line_equals (char const*,size_t,char*) ; 
- char* memmem (char const*,int,char*,int) ; 
- int /*<<< orphan*/  memmove (scalar_t__,char*,int) ; 
- size_t strlen (char*) ; 
- int verify_anonymous_token (TYPE_1__*,char const*,size_t) ; 
- int verify_external_token (TYPE_1__*,char const*,size_t) ; 
+
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+struct TYPE_10__ {int rbuffer_size; int auth_rbegin; scalar_t__ auth; int can_fds; scalar_t__ rbuffer; int accept_fd; } ;
+typedef TYPE_1__ sd_bus ;
+
+
+ scalar_t__ BUS_AUTH_ANONYMOUS ;
+ scalar_t__ BUS_AUTH_EXTERNAL ;
+ int EIO ;
+ scalar_t__ _BUS_AUTH_INVALID ;
+ int assert (TYPE_1__*) ;
+ scalar_t__ bus_socket_auth_needs_write (TYPE_1__*) ;
+ int bus_socket_auth_write (TYPE_1__*,char*) ;
+ int bus_socket_auth_write_ok (TYPE_1__*) ;
+ int bus_start_running (TYPE_1__*) ;
+ scalar_t__ line_begins (char const*,size_t,char*) ;
+ scalar_t__ line_equals (char const*,size_t,char*) ;
+ char* memmem (char const*,int,char*,int) ;
+ int memmove (scalar_t__,char*,int) ;
+ size_t strlen (char*) ;
+ int verify_anonymous_token (TYPE_1__*,char const*,size_t) ;
+ int verify_external_token (TYPE_1__*,char const*,size_t) ;
 
 __attribute__((used)) static int bus_socket_auth_verify_server(sd_bus *b) {
         char *e;
         const char *line;
         size_t l;
-        bool processed = false;
+        bool processed = 0;
         int r;
 
         assert(b);
@@ -44,19 +44,19 @@ __attribute__((used)) static int bus_socket_auth_verify_server(sd_bus *b) {
         if (b->rbuffer_size < 1)
                 return 0;
 
-        /* First char must be a NUL byte */
+
         if (*(char*) b->rbuffer != 0)
                 return -EIO;
 
         if (b->rbuffer_size < 3)
                 return 0;
 
-        /* Begin with the first line */
+
         if (b->auth_rbegin <= 0)
                 b->auth_rbegin = 1;
 
         for (;;) {
-                /* Check if line is complete */
+
                 line = (char*) b->rbuffer + b->auth_rbegin;
                 e = memmem(line, b->rbuffer_size - b->auth_rbegin, "\r\n", 2);
                 if (!e)
@@ -111,10 +111,10 @@ __attribute__((used)) static int bus_socket_auth_verify_server(sd_bus *b) {
                         if (b->auth == _BUS_AUTH_INVALID)
                                 r = bus_socket_auth_write(b, "ERROR\r\n");
                         else {
-                                /* We can't leave from the auth phase
-                                 * before we haven't written
-                                 * everything queued, so let's check
-                                 * that */
+
+
+
+
 
                                 if (bus_socket_auth_needs_write(b))
                                         return 1;
@@ -146,7 +146,7 @@ __attribute__((used)) static int bus_socket_auth_verify_server(sd_bus *b) {
                         if (b->auth == _BUS_AUTH_INVALID || !b->accept_fd)
                                 r = bus_socket_auth_write(b, "ERROR\r\n");
                         else {
-                                b->can_fds = true;
+                                b->can_fds = 1;
                                 r = bus_socket_auth_write(b, "AGREE_UNIX_FD\r\n");
                         }
                 } else
@@ -157,6 +157,6 @@ __attribute__((used)) static int bus_socket_auth_verify_server(sd_bus *b) {
 
                 b->auth_rbegin = e + 2 - (char*) b->rbuffer;
 
-                processed = true;
+                processed = 1;
         }
 }

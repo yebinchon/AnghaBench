@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t int32_t ;
-typedef  int /*<<< orphan*/  int16_t ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef size_t int32_t ;
+typedef int int16_t ;
 struct TYPE_4__ {size_t* raster_end; } ;
 struct TYPE_5__ {size_t* block_last_index; TYPE_1__ inter_scantable; } ;
-typedef  TYPE_2__ MpegEncContext ;
+typedef TYPE_2__ MpegEncContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  av_assert2 (int) ; 
- int /*<<< orphan*/  h263_dct_unquantize_msa (int /*<<< orphan*/ *,size_t,size_t,size_t,int /*<<< orphan*/ ) ; 
+
+ int av_assert2 (int) ;
+ int h263_dct_unquantize_msa (int *,size_t,size_t,size_t,int ) ;
 
 void ff_dct_unquantize_h263_inter_msa(MpegEncContext *s,
                                       int16_t *block, int32_t index,

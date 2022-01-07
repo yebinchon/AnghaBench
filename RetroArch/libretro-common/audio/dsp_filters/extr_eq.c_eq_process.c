@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct eq_data {float* buffer; unsigned int block_size; unsigned int block_ptr; scalar_t__* save; int /*<<< orphan*/ * fftblock; int /*<<< orphan*/  fft; int /*<<< orphan*/ * filter; scalar_t__* block; } ;
+
+
+
+
+struct eq_data {float* buffer; unsigned int block_size; unsigned int block_ptr; scalar_t__* save; int * fftblock; int fft; int * filter; scalar_t__* block; } ;
 struct dspfilter_output {float* samples; scalar_t__ frames; } ;
 struct dspfilter_input {float* samples; unsigned int frames; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fft_complex_mul (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fft_process_forward (int /*<<< orphan*/ ,int /*<<< orphan*/ *,scalar_t__*,int) ; 
- int /*<<< orphan*/  fft_process_inverse (int /*<<< orphan*/ ,float*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  memcpy (scalar_t__*,float const*,int) ; 
+
+ int fft_complex_mul (int ,int ) ;
+ int fft_process_forward (int ,int *,scalar_t__*,int) ;
+ int fft_process_inverse (int ,float*,int *,int) ;
+ int memcpy (scalar_t__*,float const*,int) ;
 
 __attribute__((used)) static void eq_process(void *data, struct dspfilter_output *output,
       const struct dspfilter_input *input)
@@ -28,12 +28,12 @@ __attribute__((used)) static void eq_process(void *data, struct dspfilter_output
    unsigned input_frames;
    struct eq_data *eq = (struct eq_data*)data;
 
-   output->samples    = eq->buffer;
-   output->frames     = 0;
+   output->samples = eq->buffer;
+   output->frames = 0;
 
-   out                = eq->buffer;
-   in                 = input->samples;
-   input_frames       = input->frames;
+   out = eq->buffer;
+   in = input->samples;
+   input_frames = input->frames;
 
    while (input_frames)
    {
@@ -48,7 +48,7 @@ __attribute__((used)) static void eq_process(void *data, struct dspfilter_output
       input_frames -= write_avail;
       eq->block_ptr += write_avail;
 
-      // Convolve a new block.
+
       if (eq->block_ptr == eq->block_size)
       {
          unsigned i, c;
@@ -61,11 +61,11 @@ __attribute__((used)) static void eq_process(void *data, struct dspfilter_output
             fft_process_inverse(eq->fft, out + c, eq->fftblock, 2);
          }
 
-         // Overlap add method, so add in saved block now.
+
          for (i = 0; i < 2 * eq->block_size; i++)
             out[i] += eq->save[i];
 
-         // Save block for later.
+
          memcpy(eq->save, out + 2 * eq->block_size, 2 * eq->block_size * sizeof(float));
 
          out += eq->block_size * 2;

@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int UINT ;
-typedef  int /*<<< orphan*/  RECT ;
-typedef  int /*<<< orphan*/ * LPRECT ;
-typedef  int /*<<< orphan*/  HDC ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int BF_ADJUST ; 
- int BF_MIDDLE ; 
- int BF_MONO ; 
- int BF_RECT ; 
- int BF_SOFT ; 
- int /*<<< orphan*/  COLOR_BTNFACE ; 
- int DFCS_ADJUSTRECT ; 
- int DFCS_CHECKED ; 
- int DFCS_FLAT ; 
- int DFCS_MONO ; 
- int DFCS_PUSHED ; 
- int EDGE_RAISED ; 
- int EDGE_SUNKEN ; 
- int /*<<< orphan*/  FillRect (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetSysColorBrush (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  InflateRect (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  IntDrawRectEdge (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int,int) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  UITOOLS_DrawCheckedRect (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int UINT ;
+typedef int RECT ;
+typedef int * LPRECT ;
+typedef int HDC ;
+typedef int BOOL ;
+
+
+ int BF_ADJUST ;
+ int BF_MIDDLE ;
+ int BF_MONO ;
+ int BF_RECT ;
+ int BF_SOFT ;
+ int COLOR_BTNFACE ;
+ int DFCS_ADJUSTRECT ;
+ int DFCS_CHECKED ;
+ int DFCS_FLAT ;
+ int DFCS_MONO ;
+ int DFCS_PUSHED ;
+ int EDGE_RAISED ;
+ int EDGE_SUNKEN ;
+ int FillRect (int ,int *,int ) ;
+ int GetSysColorBrush (int ) ;
+ int InflateRect (int *,int,int) ;
+ int IntDrawRectEdge (int ,int *,int,int,int) ;
+ int TRUE ;
+ int UITOOLS_DrawCheckedRect (int ,int *) ;
 
 __attribute__((used)) static BOOL UITOOLS95_DFC_ButtonPush(HDC dc, LPRECT r, UINT uFlags)
 {
@@ -69,7 +69,7 @@ __attribute__((used)) static BOOL UITOOLS95_DFC_ButtonPush(HDC dc, LPRECT r, UIN
         }
     }
 
-    /* Adjust rectangle if asked */
+
     if(uFlags & DFCS_ADJUSTRECT)
         InflateRect(r, -2, -2);
 

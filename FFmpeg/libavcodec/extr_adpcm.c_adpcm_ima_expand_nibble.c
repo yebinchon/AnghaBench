@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int int8_t ;
-typedef  int /*<<< orphan*/  int16_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int int8_t ;
+typedef int int16_t ;
 struct TYPE_3__ {size_t step_index; int predictor; } ;
-typedef  TYPE_1__ ADPCMChannelStatus ;
+typedef TYPE_1__ ADPCMChannelStatus ;
 
-/* Variables and functions */
- int av_clip (int,int /*<<< orphan*/ ,int) ; 
- int av_clip_int16 (int) ; 
- int* ff_adpcm_index_table ; 
- int* ff_adpcm_step_table ; 
+
+ int av_clip (int,int ,int) ;
+ int av_clip_int16 (int) ;
+ int* ff_adpcm_index_table ;
+ int* ff_adpcm_step_table ;
 
 __attribute__((used)) static inline int16_t adpcm_ima_expand_nibble(ADPCMChannelStatus *c, int8_t nibble, int shift)
 {
@@ -34,9 +34,9 @@ __attribute__((used)) static inline int16_t adpcm_ima_expand_nibble(ADPCMChannel
 
     sign = nibble & 8;
     delta = nibble & 7;
-    /* perform direct multiplication instead of series of jumps proposed by
-     * the reference ADPCM implementation since modern CPUs can do the mults
-     * quickly enough */
+
+
+
     diff = ((2 * delta + 1) * step) >> shift;
     predictor = c->predictor;
     if (sign) predictor -= diff;

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct utmpx {int /*<<< orphan*/  ut_host; int /*<<< orphan*/  ut_line; int /*<<< orphan*/  ut_user; int /*<<< orphan*/  ut_id; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ID0set0 () ; 
- int /*<<< orphan*/  ID0setuser () ; 
- int /*<<< orphan*/  LogID0 ; 
- int /*<<< orphan*/  log_Printf (int /*<<< orphan*/ ,char*,int,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pututxline (struct utmpx const*) ; 
+
+
+
+struct utmpx {int ut_host; int ut_line; int ut_user; int ut_id; } ;
+
+
+ int ID0set0 () ;
+ int ID0setuser () ;
+ int LogID0 ;
+ int log_Printf (int ,char*,int,int ,int,int ,int,int ,int,int ) ;
+ int pututxline (struct utmpx const*) ;
 
 void
 ID0login(const struct utmpx *ut)

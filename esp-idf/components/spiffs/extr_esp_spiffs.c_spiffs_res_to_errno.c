@@ -1,72 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int s32_t ;
 
-/* Variables and functions */
- int EBADF ; 
- int EEXIST ; 
- int EIO ; 
- int ENAMETOOLONG ; 
- int ENODEV ; 
- int ENOENT ; 
- int ENOSPC ; 
- int ENOTSUP ; 
- int EROFS ; 
-#define  SPIFFS_ERR_BAD_DESCRIPTOR 141 
-#define  SPIFFS_ERR_DELETED 140 
-#define  SPIFFS_ERR_FILE_DELETED 139 
-#define  SPIFFS_ERR_FILE_EXISTS 138 
-#define  SPIFFS_ERR_FULL 137 
-#define  SPIFFS_ERR_MOUNTED 136 
-#define  SPIFFS_ERR_NAME_TOO_LONG 135 
-#define  SPIFFS_ERR_NOT_A_FILE 134 
-#define  SPIFFS_ERR_NOT_A_FS 133 
-#define  SPIFFS_ERR_NOT_FOUND 132 
-#define  SPIFFS_ERR_NOT_MOUNTED 131 
-#define  SPIFFS_ERR_RO_ABORTED_OPERATION 130 
-#define  SPIFFS_ERR_RO_NOT_IMPL 129 
-#define  SPIFFS_OK 128 
 
+
+
+typedef int s32_t ;
+
+
+ int EBADF ;
+ int EEXIST ;
+ int EIO ;
+ int ENAMETOOLONG ;
+ int ENODEV ;
+ int ENOENT ;
+ int ENOSPC ;
+ int ENOTSUP ;
+ int EROFS ;
 __attribute__((used)) static int spiffs_res_to_errno(s32_t fr)
 {
     switch(fr) {
-    case SPIFFS_OK :
+    case 128 :
         return 0;
-    case SPIFFS_ERR_NOT_MOUNTED :
+    case 131 :
         return ENODEV;
-    case SPIFFS_ERR_NOT_A_FS :
+    case 133 :
         return ENODEV;
-    case SPIFFS_ERR_FULL :
+    case 137 :
         return ENOSPC;
-    case SPIFFS_ERR_BAD_DESCRIPTOR :
+    case 141 :
         return EBADF;
-    case SPIFFS_ERR_MOUNTED :
+    case 136 :
         return EEXIST;
-    case SPIFFS_ERR_FILE_EXISTS :
+    case 138 :
         return EEXIST;
-    case SPIFFS_ERR_NOT_FOUND :
+    case 132 :
         return ENOENT;
-    case SPIFFS_ERR_NOT_A_FILE :
+    case 134 :
         return ENOENT;
-    case SPIFFS_ERR_DELETED :
+    case 140 :
         return ENOENT;
-    case SPIFFS_ERR_FILE_DELETED :
+    case 139 :
         return ENOENT;
-    case SPIFFS_ERR_NAME_TOO_LONG :
+    case 135 :
         return ENAMETOOLONG;
-    case SPIFFS_ERR_RO_NOT_IMPL :
+    case 129 :
         return EROFS;
-    case SPIFFS_ERR_RO_ABORTED_OPERATION :
+    case 130 :
         return EROFS;
     default :
         return EIO;

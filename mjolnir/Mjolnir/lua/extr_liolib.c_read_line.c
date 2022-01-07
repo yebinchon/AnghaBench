@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  int /*<<< orphan*/  luaL_Buffer ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int EOF ; 
- int LUAL_BUFFERSIZE ; 
- int l_getc (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  l_lockfile (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  l_unlockfile (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  luaL_addchar (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  luaL_addsize (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  luaL_buffinit (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- char* luaL_prepbuffer (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  luaL_pushresult (int /*<<< orphan*/ *) ; 
- scalar_t__ lua_rawlen (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int lua_State ;
+typedef int luaL_Buffer ;
+typedef int FILE ;
+
+
+ int EOF ;
+ int LUAL_BUFFERSIZE ;
+ int l_getc (int *) ;
+ int l_lockfile (int *) ;
+ int l_unlockfile (int *) ;
+ int luaL_addchar (int *,int) ;
+ int luaL_addsize (int *,int) ;
+ int luaL_buffinit (int *,int *) ;
+ char* luaL_prepbuffer (int *) ;
+ int luaL_pushresult (int *) ;
+ scalar_t__ lua_rawlen (int *,int) ;
 
 __attribute__((used)) static int read_line (lua_State *L, FILE *f, int chop) {
   luaL_Buffer b;
   int c = '\0';
   luaL_buffinit(L, &b);
-  while (c != EOF && c != '\n') {  /* repeat until end of line */
-    char *buff = luaL_prepbuffer(&b);  /* preallocate buffer */
+  while (c != EOF && c != '\n') {
+    char *buff = luaL_prepbuffer(&b);
     int i = 0;
-    l_lockfile(f);  /* no memory errors can happen inside the lock */
+    l_lockfile(f);
     while (i < LUAL_BUFFERSIZE && (c = l_getc(f)) != EOF && c != '\n')
       buff[i++] = c;
     l_unlockfile(f);
     luaL_addsize(&b, i);
   }
-  if (!chop && c == '\n')  /* want a newline and have one? */
-    luaL_addchar(&b, c);  /* add ending newline to result */
-  luaL_pushresult(&b);  /* close buffer */
-  /* return ok if read something (either a newline or something else) */
+  if (!chop && c == '\n')
+    luaL_addchar(&b, c);
+  luaL_pushresult(&b);
+
   return (c == '\n' || lua_rawlen(L, -1) > 0);
 }

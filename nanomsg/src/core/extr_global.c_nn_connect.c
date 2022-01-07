@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct nn_sock {int dummy; } ;
 
-/* Variables and functions */
- int errno ; 
- int nn_global_create_ep (struct nn_sock*,char const*,int /*<<< orphan*/ ) ; 
- int nn_global_hold_socket (struct nn_sock**,int) ; 
- int /*<<< orphan*/  nn_global_rele_socket (struct nn_sock*) ; 
- scalar_t__ nn_slow (int) ; 
+
+ int errno ;
+ int nn_global_create_ep (struct nn_sock*,char const*,int ) ;
+ int nn_global_hold_socket (struct nn_sock**,int) ;
+ int nn_global_rele_socket (struct nn_sock*) ;
+ scalar_t__ nn_slow (int) ;
 
 int nn_connect (int s, const char *addr)
 {

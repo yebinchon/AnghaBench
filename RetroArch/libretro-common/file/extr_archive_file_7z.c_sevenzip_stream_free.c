@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  file; } ;
-struct sevenzip_context_t {TYPE_1__ archiveStream; int /*<<< orphan*/  allocImp; int /*<<< orphan*/  db; TYPE_2__* handle; int /*<<< orphan*/ * output; } ;
-struct TYPE_4__ {int /*<<< orphan*/ * data; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  File_Close (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IAlloc_Free (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SzArEx_Free (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int file; } ;
+struct sevenzip_context_t {TYPE_1__ archiveStream; int allocImp; int db; TYPE_2__* handle; int * output; } ;
+struct TYPE_4__ {int * data; } ;
+
+
+ int File_Close (int *) ;
+ int IAlloc_Free (int *,int *) ;
+ int SzArEx_Free (int *,int *) ;
 
 __attribute__((used)) static void sevenzip_stream_free(void *data)
 {
@@ -31,8 +31,8 @@ __attribute__((used)) static void sevenzip_stream_free(void *data)
    if (sevenzip_context->output)
    {
       IAlloc_Free(&sevenzip_context->allocImp, sevenzip_context->output);
-      sevenzip_context->output       = NULL;
-      sevenzip_context->handle->data = NULL;
+      sevenzip_context->output = ((void*)0);
+      sevenzip_context->handle->data = ((void*)0);
    }
 
    SzArEx_Free(&sevenzip_context->db, &sevenzip_context->allocImp);

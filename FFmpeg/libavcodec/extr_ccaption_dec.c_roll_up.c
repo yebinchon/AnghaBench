@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct Screen {scalar_t__ row_used; int /*<<< orphan*/ * charsets; int /*<<< orphan*/ * fonts; int /*<<< orphan*/ * colors; int /*<<< orphan*/ * characters; } ;
-struct TYPE_4__ {scalar_t__ mode; int cursor_row; int /*<<< orphan*/  rollup; } ;
-typedef  TYPE_1__ CCaptionSubContext ;
 
-/* Variables and functions */
- scalar_t__ CCMODE_TEXT ; 
- scalar_t__ CHECK_FLAG (scalar_t__,int const) ; 
- int FFMIN (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SCREEN_COLUMNS ; 
- int SCREEN_ROWS ; 
- int /*<<< orphan*/  SET_FLAG (scalar_t__,int const) ; 
- int /*<<< orphan*/  UNSET_FLAG (scalar_t__,int) ; 
- struct Screen* get_writing_screen (TYPE_1__*) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct Screen {scalar_t__ row_used; int * charsets; int * fonts; int * colors; int * characters; } ;
+struct TYPE_4__ {scalar_t__ mode; int cursor_row; int rollup; } ;
+typedef TYPE_1__ CCaptionSubContext ;
+
+
+ scalar_t__ CCMODE_TEXT ;
+ scalar_t__ CHECK_FLAG (scalar_t__,int const) ;
+ int FFMIN (int,int ) ;
+ int SCREEN_COLUMNS ;
+ int SCREEN_ROWS ;
+ int SET_FLAG (scalar_t__,int const) ;
+ int UNSET_FLAG (scalar_t__,int) ;
+ struct Screen* get_writing_screen (TYPE_1__*) ;
+ int memcpy (int ,int ,int ) ;
 
 __attribute__((used)) static void roll_up(CCaptionSubContext *ctx)
 {
@@ -36,9 +36,9 @@ __attribute__((used)) static void roll_up(CCaptionSubContext *ctx)
 
     screen = get_writing_screen(ctx);
 
-    /* +1 signify cursor_row starts from 0
-     * Can't keep lines less then row cursor pos
-     */
+
+
+
     keep_lines = FFMIN(ctx->cursor_row + 1, ctx->rollup);
 
     for (i = 0; i < SCREEN_ROWS; i++) {

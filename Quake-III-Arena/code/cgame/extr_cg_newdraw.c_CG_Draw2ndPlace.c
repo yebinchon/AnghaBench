@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vec4_t ;
-struct TYPE_4__ {int /*<<< orphan*/  y; int /*<<< orphan*/  x; } ;
-typedef  TYPE_1__ rectDef_t ;
-typedef  int /*<<< orphan*/  qhandle_t ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int vec4_t ;
+struct TYPE_4__ {int y; int x; } ;
+typedef TYPE_1__ rectDef_t ;
+typedef int qhandle_t ;
 struct TYPE_5__ {scalar_t__ scores2; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CG_Text_Paint (int /*<<< orphan*/ ,int /*<<< orphan*/ ,float,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- scalar_t__ SCORE_NOT_PRESENT ; 
- TYPE_2__ cgs ; 
- int /*<<< orphan*/  va (char*,scalar_t__) ; 
+
+ int CG_Text_Paint (int ,int ,float,int ,int ,int ,int ,int) ;
+ scalar_t__ SCORE_NOT_PRESENT ;
+ TYPE_2__ cgs ;
+ int va (char*,scalar_t__) ;
 
 __attribute__((used)) static void CG_Draw2ndPlace(rectDef_t *rect, float scale, vec4_t color, qhandle_t shader, int textStyle) {
-	if (cgs.scores2 != SCORE_NOT_PRESENT) {
-		CG_Text_Paint(rect->x, rect->y, scale, color, va("%2i", cgs.scores2),0, 0, textStyle); 
-	}
+ if (cgs.scores2 != SCORE_NOT_PRESENT) {
+  CG_Text_Paint(rect->x, rect->y, scale, color, va("%2i", cgs.scores2),0, 0, textStyle);
+ }
 }

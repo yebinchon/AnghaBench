@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_3__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  unsigned int uint16_t ;
+
+
+typedef struct TYPE_5__ TYPE_3__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef unsigned int uint16_t ;
 struct TYPE_5__ {int width; int height; } ;
 struct TYPE_4__ {unsigned int* frame_buffer; TYPE_3__* avctx; } ;
-typedef  int /*<<< orphan*/  GetByteContext ;
-typedef  TYPE_1__ FourXContext ;
+typedef int GetByteContext ;
+typedef TYPE_1__ FourXContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int FFALIGN (int const,int) ; 
- int /*<<< orphan*/  av_log (TYPE_3__*,int /*<<< orphan*/ ,char*) ; 
- unsigned int bytestream2_get_le16u (int /*<<< orphan*/ *) ; 
- unsigned int bytestream2_get_le32u (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bytestream2_init (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int) ; 
- unsigned int mix (unsigned int,unsigned int) ; 
+
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ int FFALIGN (int const,int) ;
+ int av_log (TYPE_3__*,int ,char*) ;
+ unsigned int bytestream2_get_le16u (int *) ;
+ unsigned int bytestream2_get_le32u (int *) ;
+ int bytestream2_init (int *,int const*,int) ;
+ unsigned int mix (unsigned int,unsigned int) ;
 
 __attribute__((used)) static int decode_i2_frame(FourXContext *f, const uint8_t *buf, int length)
 {
     int x, y, x2, y2;
-    const int width  = f->avctx->width;
+    const int width = f->avctx->width;
     const int height = f->avctx->height;
-    const int mbs    = (FFALIGN(width, 16) >> 4) * (FFALIGN(height, 16) >> 4);
-    uint16_t *dst    = f->frame_buffer;
+    const int mbs = (FFALIGN(width, 16) >> 4) * (FFALIGN(height, 16) >> 4);
+    uint16_t *dst = f->frame_buffer;
     const uint8_t *buf_end = buf + length;
     GetByteContext g3;
 
@@ -50,7 +50,7 @@ __attribute__((used)) static int decode_i2_frame(FourXContext *f, const uint8_t 
             unsigned int color[4] = { 0 }, bits;
             if (buf_end - buf < 8)
                 return AVERROR_INVALIDDATA;
-            // warning following is purely guessed ...
+
             color[0] = bytestream2_get_le16u(&g3);
             color[1] = bytestream2_get_le16u(&g3);
 

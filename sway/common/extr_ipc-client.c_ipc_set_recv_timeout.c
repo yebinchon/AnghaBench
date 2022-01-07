@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tv ;
+
+
+
+
+typedef int tv ;
 struct timeval {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SOL_SOCKET ; 
- int /*<<< orphan*/  SO_RCVTIMEO ; 
- int /*<<< orphan*/  SWAY_ERROR ; 
- int setsockopt (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct timeval*,int) ; 
- int /*<<< orphan*/  sway_log_errno (int /*<<< orphan*/ ,char*) ; 
+
+ int SOL_SOCKET ;
+ int SO_RCVTIMEO ;
+ int SWAY_ERROR ;
+ int setsockopt (int,int ,int ,struct timeval*,int) ;
+ int sway_log_errno (int ,char*) ;
 
 bool ipc_set_recv_timeout(int socketfd, struct timeval tv) {
-	if (setsockopt(socketfd, SOL_SOCKET, SO_RCVTIMEO, &tv, sizeof(tv)) == -1) {
-		sway_log_errno(SWAY_ERROR, "Failed to set ipc recv timeout");
-		return false;
-	}
-	return true;
+ if (setsockopt(socketfd, SOL_SOCKET, SO_RCVTIMEO, &tv, sizeof(tv)) == -1) {
+  sway_log_errno(SWAY_ERROR, "Failed to set ipc recv timeout");
+  return 0;
+ }
+ return 1;
 }

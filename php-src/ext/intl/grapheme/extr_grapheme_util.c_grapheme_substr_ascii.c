@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  size_t int32_t ;
 
-/* Variables and functions */
- size_t INT32_MAX ; 
+
+
+
+typedef size_t int32_t ;
+
+
+ size_t INT32_MAX ;
 
 void grapheme_substr_ascii(char *str, size_t str_len, int32_t f, int32_t l, char **sub_str, int32_t *sub_str_len)
 {
-	int32_t str_len2 = (int32_t)str_len; /* in order to avoid signed/unsigned problems */
-    *sub_str = NULL;
+ int32_t str_len2 = (int32_t)str_len;
+    *sub_str = ((void*)0);
 
     if(str_len > INT32_MAX) {
-    	/* We can not return long strings from ICU functions, so we won't here too */
-    	return;
+
+     return;
     }
 
     if ((l < 0 && -l > str_len2)) {
@@ -39,9 +39,9 @@ void grapheme_substr_ascii(char *str, size_t str_len, int32_t f, int32_t l, char
         return;
     }
 
-    /* if "from" position is negative, count start position from the end
-     * of the string
-     */
+
+
+
     if (f < 0) {
         f = str_len2 + f;
         if (f < 0) {
@@ -50,9 +50,9 @@ void grapheme_substr_ascii(char *str, size_t str_len, int32_t f, int32_t l, char
     }
 
 
-    /* if "length" position is negative, set it to the length
-     * needed to stop that many chars from the end of the string
-     */
+
+
+
     if (l < 0) {
         l = (str_len2 - f) + l;
         if (l < 0) {

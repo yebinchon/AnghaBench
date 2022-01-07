@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  int /*<<< orphan*/  lua_Debug ;
 
-/* Variables and functions */
-#define  LUA_OK 129 
-#define  LUA_YIELD 128 
- int /*<<< orphan*/  luaL_argcheck (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,char*) ; 
- int /*<<< orphan*/  lua_getstack (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_gettop (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_pushliteral (int /*<<< orphan*/ *,char*) ; 
- int lua_status (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * lua_tothread (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int lua_State ;
+typedef int lua_Debug ;
+
+
+
+
+ int luaL_argcheck (int *,int *,int,char*) ;
+ int lua_getstack (int *,int ,int *) ;
+ int lua_gettop (int *) ;
+ int lua_pushliteral (int *,char*) ;
+ int lua_status (int *) ;
+ int * lua_tothread (int *,int) ;
 
 __attribute__((used)) static int luaB_costatus (lua_State *L) {
   lua_State *co = lua_tothread(L, 1);
@@ -29,20 +29,20 @@ __attribute__((used)) static int luaB_costatus (lua_State *L) {
   if (L == co) lua_pushliteral(L, "running");
   else {
     switch (lua_status(co)) {
-      case LUA_YIELD:
+      case 128:
         lua_pushliteral(L, "suspended");
         break;
-      case LUA_OK: {
+      case 129: {
         lua_Debug ar;
-        if (lua_getstack(co, 0, &ar) > 0)  /* does it have frames? */
-          lua_pushliteral(L, "normal");  /* it is running */
+        if (lua_getstack(co, 0, &ar) > 0)
+          lua_pushliteral(L, "normal");
         else if (lua_gettop(co) == 0)
             lua_pushliteral(L, "dead");
         else
-          lua_pushliteral(L, "suspended");  /* initial state */
+          lua_pushliteral(L, "suspended");
         break;
       }
-      default:  /* some error occurred */
+      default:
         lua_pushliteral(L, "dead");
         break;
     }

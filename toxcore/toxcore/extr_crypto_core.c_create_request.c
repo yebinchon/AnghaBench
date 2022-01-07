@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  scalar_t__ uint32_t ;
 
-/* Variables and functions */
- scalar_t__ MAX_CRYPTO_REQUEST_SIZE ; 
- int /*<<< orphan*/  NET_PACKET_CRYPTO ; 
- scalar_t__ crypto_box_MACBYTES ; 
- scalar_t__ crypto_box_NONCEBYTES ; 
- int crypto_box_PUBLICKEYBYTES ; 
- int encrypt_data (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int) ; 
- int /*<<< orphan*/  new_nonce (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int uint8_t ;
+typedef scalar_t__ uint32_t ;
+
+
+ scalar_t__ MAX_CRYPTO_REQUEST_SIZE ;
+ int NET_PACKET_CRYPTO ;
+ scalar_t__ crypto_box_MACBYTES ;
+ scalar_t__ crypto_box_NONCEBYTES ;
+ int crypto_box_PUBLICKEYBYTES ;
+ int encrypt_data (int const*,int const*,int *,int *,scalar_t__,int *) ;
+ int memcpy (int *,int const*,int) ;
+ int new_nonce (int *) ;
 
 int create_request(const uint8_t *send_public_key, const uint8_t *send_secret_key, uint8_t *packet,
                    const uint8_t *recv_public_key, const uint8_t *data, uint32_t length, uint8_t request_id)
@@ -35,7 +35,7 @@ int create_request(const uint8_t *send_public_key, const uint8_t *send_secret_ke
 
     uint8_t *nonce = packet + 1 + crypto_box_PUBLICKEYBYTES * 2;
     new_nonce(nonce);
-    uint8_t temp[MAX_CRYPTO_REQUEST_SIZE]; // FIXME sodium_memzero before exit function
+    uint8_t temp[MAX_CRYPTO_REQUEST_SIZE];
     memcpy(temp + 1, data, length);
     temp[0] = request_id;
     int len = encrypt_data(recv_public_key, send_secret_key, nonce, temp, length + 1,

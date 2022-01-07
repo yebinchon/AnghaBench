@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int metafile_index; } ;
-typedef  TYPE_1__ list_t ;
-typedef  int /*<<< orphan*/  list_id_t ;
+typedef TYPE_1__ list_t ;
+typedef int list_id_t ;
 
-/* Variables and functions */
- TYPE_1__** List ; 
- int conv_list_id (int /*<<< orphan*/ ) ; 
- int find_metafile (int /*<<< orphan*/ ) ; 
+
+ TYPE_1__** List ;
+ int conv_list_id (int ) ;
+ int find_metafile (int ) ;
 
 __attribute__((used)) static inline int get_list_metafile (list_id_t list_id) {
   int i = conv_list_id (list_id);

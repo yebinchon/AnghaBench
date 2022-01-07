@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  (* Read ) (TYPE_2__*,void*,size_t*) ;} ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int (* Read ) (TYPE_2__*,void*,size_t*) ;} ;
 struct TYPE_3__ {size_t size; size_t pos; void* buf; TYPE_2__* realStream; } ;
-typedef  int /*<<< orphan*/  SRes ;
-typedef  TYPE_1__ CLookToRead ;
+typedef int SRes ;
+typedef TYPE_1__ CLookToRead ;
 
-/* Variables and functions */
- size_t LookToRead_BUF_SIZE ; 
- int /*<<< orphan*/  SZ_OK ; 
- int /*<<< orphan*/  stub1 (TYPE_2__*,void*,size_t*) ; 
+
+ size_t LookToRead_BUF_SIZE ;
+ int SZ_OK ;
+ int stub1 (TYPE_2__*,void*,size_t*) ;
 
 __attribute__((used)) static SRes LookToRead_Look_Exact(void *pp, const void **buf, size_t *size)
 {

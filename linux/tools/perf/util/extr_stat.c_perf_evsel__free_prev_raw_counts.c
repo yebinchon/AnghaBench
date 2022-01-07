@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct evsel {int /*<<< orphan*/ * prev_raw_counts; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  perf_counts__delete (int /*<<< orphan*/ *) ; 
+
+
+
+struct evsel {int * prev_raw_counts; } ;
+
+
+ int perf_counts__delete (int *) ;
 
 __attribute__((used)) static void perf_evsel__free_prev_raw_counts(struct evsel *evsel)
 {
-	perf_counts__delete(evsel->prev_raw_counts);
-	evsel->prev_raw_counts = NULL;
+ perf_counts__delete(evsel->prev_raw_counts);
+ evsel->prev_raw_counts = ((void*)0);
 }

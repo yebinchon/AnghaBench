@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int twt; int xsel; int iwt; int table; int mwt; int mrd; int ewt; int adrl; int frcl; int yrl; int negb; int zero; int bsel; int nofl; int adreb; void* masa; void* coef; void* shift; void* ewa; void* iwa; void* ira; void* ysel; void* twa; void* tra; } ;
-union ScspDspInstruction {scalar_t__ all; TYPE_1__ part; int /*<<< orphan*/  member_0; } ;
-typedef  scalar_t__ u64 ;
+union ScspDspInstruction {scalar_t__ all; TYPE_1__ part; int member_0; } ;
+typedef scalar_t__ u64 ;
 
-/* Variables and functions */
- void* ScspDspAssembleGetValue (char*) ; 
- char* strstr (char*,char*) ; 
+
+ void* ScspDspAssembleGetValue (char*) ;
+ char* strstr (char*,char*) ;
 
 u64 ScspDspAssembleLine(char* line)
 {
    union ScspDspInstruction instruction = { 0 };
 
-   char* temp = NULL;
+   char* temp = ((void*)0);
 
    if ((temp = strstr(line, "tra")))
    {

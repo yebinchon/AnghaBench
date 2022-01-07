@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  _delay_ms (int) ; 
- int /*<<< orphan*/  iwrap_mux_send (char*) ; 
- int /*<<< orphan*/  print_S (char*) ; 
- char* rcv_buf ; 
- int rcv_tail ; 
- int /*<<< orphan*/  strncmp (char*,char*,int) ; 
- int /*<<< orphan*/  strncpy (char*,char*,int) ; 
+ int _delay_ms (int) ;
+ int iwrap_mux_send (char*) ;
+ int print_S (char*) ;
+ char* rcv_buf ;
+ int rcv_tail ;
+ int strncmp (char*,char*,int) ;
+ int strncpy (char*,char*,int) ;
 
 void iwrap_unpair(void) {
     iwrap_mux_send("SET BT PAIR");

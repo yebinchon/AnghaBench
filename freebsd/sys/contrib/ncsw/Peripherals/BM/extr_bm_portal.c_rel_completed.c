@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
-struct TYPE_4__ {int rcrCons; int /*<<< orphan*/  p_BmPortalLow; } ;
-typedef  TYPE_1__ t_BmPortal ;
 
-/* Variables and functions */
- int BM_RCR_SIZE ; 
- int /*<<< orphan*/  bm_rcr_get_fill (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rel_set_thresh (TYPE_1__*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+struct TYPE_4__ {int rcrCons; int p_BmPortalLow; } ;
+typedef TYPE_1__ t_BmPortal ;
+
+
+ int BM_RCR_SIZE ;
+ int bm_rcr_get_fill (int ) ;
+ int rel_set_thresh (TYPE_1__*,int ) ;
 
 __attribute__((used)) static int rel_completed(t_BmPortal *p_BmPortal, uint32_t rcr_poll)
 {
@@ -32,7 +32,7 @@ __attribute__((used)) static int rel_completed(t_BmPortal *p_BmPortal, uint32_t 
     if ((rcr_poll - tr_cons) > BM_RCR_SIZE)
         return 1;
     if (!bm_rcr_get_fill(p_BmPortal->p_BmPortalLow))
-        /* If RCR is empty, we must have completed */
+
         return 1;
     rel_set_thresh(p_BmPortal, 0);
     return 0;

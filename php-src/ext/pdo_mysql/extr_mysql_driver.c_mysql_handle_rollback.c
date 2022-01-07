@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  server; } ;
-typedef  TYPE_1__ pdo_mysql_db_handle ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int server; } ;
+typedef TYPE_1__ pdo_mysql_db_handle ;
 struct TYPE_6__ {scalar_t__ driver_data; } ;
-typedef  TYPE_2__ pdo_dbh_t ;
+typedef TYPE_2__ pdo_dbh_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PDO_DBG_ENTER (char*) ; 
- int /*<<< orphan*/  PDO_DBG_INF_FMT (char*,TYPE_2__*) ; 
- int /*<<< orphan*/  PDO_DBG_RETURN (int) ; 
- scalar_t__ mysql_rollback (int /*<<< orphan*/ ) ; 
+
+ int PDO_DBG_ENTER (char*) ;
+ int PDO_DBG_INF_FMT (char*,TYPE_2__*) ;
+ int PDO_DBG_RETURN (int) ;
+ scalar_t__ mysql_rollback (int ) ;
 
 __attribute__((used)) static int mysql_handle_rollback(pdo_dbh_t *dbh)
 {
-	PDO_DBG_ENTER("mysql_handle_rollback");
-	PDO_DBG_INF_FMT("dbh=%p", dbh);
-	PDO_DBG_RETURN(0 <= mysql_rollback(((pdo_mysql_db_handle *)dbh->driver_data)->server));
+ PDO_DBG_ENTER("mysql_handle_rollback");
+ PDO_DBG_INF_FMT("dbh=%p", dbh);
+ PDO_DBG_RETURN(0 <= mysql_rollback(((pdo_mysql_db_handle *)dbh->driver_data)->server));
 }

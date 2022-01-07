@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct wined3d_shader_tgsm {unsigned int size; unsigned int stride; } ;
 struct TYPE_2__ {scalar_t__ type; } ;
-struct wined3d_shader_reg_maps {struct wined3d_shader_tgsm* tgsm; int /*<<< orphan*/  tgsm_count; int /*<<< orphan*/  tgsm_capacity; TYPE_1__ shader_version; } ;
-typedef  int /*<<< orphan*/  HRESULT ;
+struct wined3d_shader_reg_maps {struct wined3d_shader_tgsm* tgsm; int tgsm_count; int tgsm_capacity; TYPE_1__ shader_version; } ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*,unsigned int) ; 
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- int /*<<< orphan*/  FIXME (char*) ; 
- unsigned int MAX_TGSM_REGISTERS ; 
- int /*<<< orphan*/  S_OK ; 
- scalar_t__ WINED3D_SHADER_TYPE_COMPUTE ; 
- int /*<<< orphan*/  max (unsigned int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wined3d_array_reserve (void**,int /*<<< orphan*/ *,unsigned int,int) ; 
+
+ int ERR (char*,unsigned int) ;
+ int E_OUTOFMEMORY ;
+ int FIXME (char*) ;
+ unsigned int MAX_TGSM_REGISTERS ;
+ int S_OK ;
+ scalar_t__ WINED3D_SHADER_TYPE_COMPUTE ;
+ int max (unsigned int,int ) ;
+ int wined3d_array_reserve (void**,int *,unsigned int,int) ;
 
 __attribute__((used)) static HRESULT shader_reg_maps_add_tgsm(struct wined3d_shader_reg_maps *reg_maps,
         unsigned int register_idx, unsigned int size, unsigned int stride)

@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  EC_POINT ;
-typedef  int /*<<< orphan*/  EC_KEY ;
-typedef  int /*<<< orphan*/  EC_GROUP ;
-typedef  int /*<<< orphan*/  ECDSA_SIG ;
-typedef  int /*<<< orphan*/  BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BN_free (int /*<<< orphan*/ *) ; 
- int BN_hex2bn (int /*<<< orphan*/ **,char const*) ; 
- int /*<<< orphan*/  ECDSA_SIG_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ECDSA_SIG_get0 (int /*<<< orphan*/ *,int /*<<< orphan*/  const**,int /*<<< orphan*/  const**) ; 
- int /*<<< orphan*/  EC_KEY_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * EC_KEY_new () ; 
- int EC_KEY_set_group (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
- int EC_KEY_set_private_key (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int EC_KEY_set_public_key (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EC_POINT_free (int /*<<< orphan*/ *) ; 
- int EC_POINT_mul (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * EC_POINT_new (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  EVP_sm3 () ; 
- int /*<<< orphan*/  TEST_BN_eq (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  TEST_ptr (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TEST_size_t_eq (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_true (int) ; 
- int /*<<< orphan*/  fake_rand_bytes_offset ; 
- int /*<<< orphan*/  fake_rand_size ; 
- int /*<<< orphan*/  restore_rand () ; 
- int /*<<< orphan*/ * sm2_do_sign (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,size_t,int /*<<< orphan*/  const*,size_t const) ; 
- int sm2_do_verify (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/  const*,size_t,int /*<<< orphan*/  const*,size_t const) ; 
- int /*<<< orphan*/  start_fake_rand (char const*) ; 
- size_t strlen (char const*) ; 
+
+
+
+typedef int uint8_t ;
+typedef int EC_POINT ;
+typedef int EC_KEY ;
+typedef int EC_GROUP ;
+typedef int ECDSA_SIG ;
+typedef int BIGNUM ;
+
+
+ int BN_free (int *) ;
+ int BN_hex2bn (int **,char const*) ;
+ int ECDSA_SIG_free (int *) ;
+ int ECDSA_SIG_get0 (int *,int const**,int const**) ;
+ int EC_KEY_free (int *) ;
+ int * EC_KEY_new () ;
+ int EC_KEY_set_group (int *,int const*) ;
+ int EC_KEY_set_private_key (int *,int *) ;
+ int EC_KEY_set_public_key (int *,int *) ;
+ int EC_POINT_free (int *) ;
+ int EC_POINT_mul (int const*,int *,int *,int *,int *,int *) ;
+ int * EC_POINT_new (int const*) ;
+ int EVP_sm3 () ;
+ int TEST_BN_eq (int *,int const*) ;
+ int TEST_ptr (int *) ;
+ int TEST_size_t_eq (int ,int ) ;
+ int TEST_true (int) ;
+ int fake_rand_bytes_offset ;
+ int fake_rand_size ;
+ int restore_rand () ;
+ int * sm2_do_sign (int *,int ,int const*,size_t,int const*,size_t const) ;
+ int sm2_do_verify (int *,int ,int *,int const*,size_t,int const*,size_t const) ;
+ int start_fake_rand (char const*) ;
+ size_t strlen (char const*) ;
 
 __attribute__((used)) static int test_sm2_sign(const EC_GROUP *group,
                          const char *userid,
@@ -53,14 +53,14 @@ __attribute__((used)) static int test_sm2_sign(const EC_GROUP *group,
 {
     const size_t msg_len = strlen(message);
     int ok = 0;
-    BIGNUM *priv = NULL;
-    EC_POINT *pt = NULL;
-    EC_KEY *key = NULL;
-    ECDSA_SIG *sig = NULL;
-    const BIGNUM *sig_r = NULL;
-    const BIGNUM *sig_s = NULL;
-    BIGNUM *r = NULL;
-    BIGNUM *s = NULL;
+    BIGNUM *priv = ((void*)0);
+    EC_POINT *pt = ((void*)0);
+    EC_KEY *key = ((void*)0);
+    ECDSA_SIG *sig = ((void*)0);
+    const BIGNUM *sig_r = ((void*)0);
+    const BIGNUM *sig_s = ((void*)0);
+    BIGNUM *r = ((void*)0);
+    BIGNUM *s = ((void*)0);
 
     if (!TEST_true(BN_hex2bn(&priv, privkey_hex)))
         goto done;
@@ -73,7 +73,7 @@ __attribute__((used)) static int test_sm2_sign(const EC_GROUP *group,
 
     pt = EC_POINT_new(group);
     if (!TEST_ptr(pt)
-            || !TEST_true(EC_POINT_mul(group, pt, priv, NULL, NULL, NULL))
+            || !TEST_true(EC_POINT_mul(group, pt, priv, ((void*)0), ((void*)0), ((void*)0)))
             || !TEST_true(EC_KEY_set_public_key(key, pt)))
         goto done;
 
@@ -98,7 +98,7 @@ __attribute__((used)) static int test_sm2_sign(const EC_GROUP *group,
     ok = sm2_do_verify(key, EVP_sm3(), sig, (const uint8_t *)userid,
                        strlen(userid), (const uint8_t *)message, msg_len);
 
-    /* We goto done whether this passes or fails */
+
     TEST_true(ok);
 
  done:

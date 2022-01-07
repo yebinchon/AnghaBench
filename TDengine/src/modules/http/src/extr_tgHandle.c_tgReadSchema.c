@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SEEK_END ; 
- scalar_t__ calloc (size_t,int) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char const*,char*) ; 
- size_t fread (char*,int,size_t,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  fseek (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ftell (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  httpError (char*,char const*) ; 
- int /*<<< orphan*/  httpPrint (char*,char const*,...) ; 
- int /*<<< orphan*/  rewind (int /*<<< orphan*/ *) ; 
- int tgParseSchema (char*,char const*) ; 
+
+
+
+typedef int FILE ;
+
+
+ int SEEK_END ;
+ scalar_t__ calloc (size_t,int) ;
+ int fclose (int *) ;
+ int * fopen (char const*,char*) ;
+ size_t fread (char*,int,size_t,int *) ;
+ int free (char*) ;
+ int fseek (int *,int ,int ) ;
+ int ftell (int *) ;
+ int httpError (char*,char const*) ;
+ int httpPrint (char*,char const*,...) ;
+ int rewind (int *) ;
+ int tgParseSchema (char*,char const*) ;
 
 int tgReadSchema(const char *fileName) {
   FILE *fp = fopen(fileName, "r");
-  if (fp == NULL) {
+  if (fp == ((void*)0)) {
     return -1;
   }
 

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  npy_uint32 ;
-typedef  int /*<<< orphan*/  npy_intp ;
-struct TYPE_3__ {int nargs; int* core_num_dims; int core_num_dim_ix; int /*<<< orphan*/ * core_dim_flags; int /*<<< orphan*/ * core_dim_sizes; } ;
-typedef  TYPE_1__ PyUFuncObject ;
 
-/* Variables and functions */
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int npy_uint32 ;
+typedef int npy_intp ;
+struct TYPE_3__ {int nargs; int* core_num_dims; int core_num_dim_ix; int * core_dim_flags; int * core_dim_sizes; } ;
+typedef TYPE_1__ PyUFuncObject ;
+
+
 
 __attribute__((used)) static int
 _initialize_variable_parts(PyUFuncObject *ufunc,

@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_value ;
-typedef  int /*<<< orphan*/  sqlite3_context ;
-struct TYPE_5__ {int /*<<< orphan*/ * aLimit; } ;
-typedef  TYPE_1__ sqlite3 ;
-struct TYPE_6__ {int useMalloc; int /*<<< orphan*/  mxAlloc; } ;
-typedef  TYPE_2__ StrAccum ;
 
-/* Variables and functions */
- size_t SQLITE_LIMIT_LENGTH ; 
- scalar_t__ SQLITE_NULL ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  sqlite3StrAccumAppend (TYPE_2__*,char const*,int) ; 
- scalar_t__ sqlite3_aggregate_context (int /*<<< orphan*/ *,int) ; 
- TYPE_1__* sqlite3_context_db_handle (int /*<<< orphan*/ *) ; 
- int sqlite3_value_bytes (int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3_value_text (int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3_value_type (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int sqlite3_value ;
+typedef int sqlite3_context ;
+struct TYPE_5__ {int * aLimit; } ;
+typedef TYPE_1__ sqlite3 ;
+struct TYPE_6__ {int useMalloc; int mxAlloc; } ;
+typedef TYPE_2__ StrAccum ;
+
+
+ size_t SQLITE_LIMIT_LENGTH ;
+ scalar_t__ SQLITE_NULL ;
+ int assert (int) ;
+ int sqlite3StrAccumAppend (TYPE_2__*,char const*,int) ;
+ scalar_t__ sqlite3_aggregate_context (int *,int) ;
+ TYPE_1__* sqlite3_context_db_handle (int *) ;
+ int sqlite3_value_bytes (int *) ;
+ scalar_t__ sqlite3_value_text (int *) ;
+ scalar_t__ sqlite3_value_type (int *) ;
 
 __attribute__((used)) static void groupConcatStep(
   sqlite3_context *context,

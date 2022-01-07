@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct zd_chip {int /*<<< orphan*/  mutex; } ;
 
-/* Variables and functions */
- int disable_hwint (struct zd_chip*) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
+
+
+
+struct zd_chip {int mutex; } ;
+
+
+ int disable_hwint (struct zd_chip*) ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
 
 int zd_chip_disable_hwint(struct zd_chip *chip)
 {
-	int r;
+ int r;
 
-	mutex_lock(&chip->mutex);
-	r = disable_hwint(chip);
-	mutex_unlock(&chip->mutex);
-	return r;
+ mutex_lock(&chip->mutex);
+ r = disable_hwint(chip);
+ mutex_unlock(&chip->mutex);
+ return r;
 }

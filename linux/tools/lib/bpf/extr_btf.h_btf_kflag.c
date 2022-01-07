@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct btf_type {int /*<<< orphan*/  info; } ;
 
-/* Variables and functions */
- int BTF_INFO_KFLAG (int /*<<< orphan*/ ) ; 
+
+
+
+struct btf_type {int info; } ;
+
+
+ int BTF_INFO_KFLAG (int ) ;
 
 __attribute__((used)) static inline bool btf_kflag(const struct btf_type *t)
 {
-	return BTF_INFO_KFLAG(t->info);
+ return BTF_INFO_KFLAG(t->info);
 }

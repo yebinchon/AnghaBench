@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct vlc_http_msg {unsigned int count; int /*<<< orphan*/ ** headers; } ;
-typedef  unsigned int ssize_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  strcasecmp (int /*<<< orphan*/ ,char const*) ; 
+
+
+
+struct vlc_http_msg {unsigned int count; int ** headers; } ;
+typedef unsigned int ssize_t ;
+
+
+ int strcasecmp (int ,char const*) ;
 
 __attribute__((used)) static ssize_t vlc_http_msg_find_header(const struct vlc_http_msg *m,
                                         const char *name)

@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  cl_fixture (char const*) ; 
- char const* cl_git_path_url (int /*<<< orphan*/ ) ; 
+ int cl_fixture (char const*) ;
+ char const* cl_git_path_url (int ) ;
 
 const char* cl_git_fixture_url(const char *fixturename)
 {
-	return cl_git_path_url(cl_fixture(fixturename));
+ return cl_git_path_url(cl_fixture(fixturename));
 }

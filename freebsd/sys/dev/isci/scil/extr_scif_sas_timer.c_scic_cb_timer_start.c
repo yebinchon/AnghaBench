@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  U32 ;
-typedef  int /*<<< orphan*/  SCI_CONTROLLER_HANDLE_T ;
-typedef  int /*<<< orphan*/  SCIF_SAS_CONTROLLER_T ;
 
-/* Variables and functions */
- scalar_t__ sci_object_get_association (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  scif_cb_timer_start (int /*<<< orphan*/ *,void*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int U32 ;
+typedef int SCI_CONTROLLER_HANDLE_T ;
+typedef int SCIF_SAS_CONTROLLER_T ;
+
+
+ scalar_t__ sci_object_get_association (int ) ;
+ int scif_cb_timer_start (int *,void*,int ) ;
 
 void scic_cb_timer_start(
-   SCI_CONTROLLER_HANDLE_T   controller,
-   void                    * timer,
-   U32                       milliseconds
+   SCI_CONTROLLER_HANDLE_T controller,
+   void * timer,
+   U32 milliseconds
 )
 {
    SCIF_SAS_CONTROLLER_T * fw_controller = (SCIF_SAS_CONTROLLER_T *)

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  rtx ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GEN_INT (int) ; 
- int GET_CODE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GET_MODE (int /*<<< orphan*/ ) ; 
-#define  POST_DEC 131 
-#define  POST_INC 130 
-#define  PRE_DEC 129 
-#define  PRE_INC 128 
- int /*<<< orphan*/  XEXP (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  canon_rtx (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_rtx_PLUS (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int rtx ;
+
+
+ int GEN_INT (int) ;
+ int GET_CODE (int ) ;
+ int GET_MODE (int ) ;
+
+
+
+
+ int XEXP (int ,int ) ;
+ int canon_rtx (int ) ;
+ int gen_rtx_PLUS (int ,int ,int ) ;
 
 __attribute__((used)) static rtx
 addr_side_effect_eval (rtx addr, int size, int n_refs)
@@ -31,16 +31,16 @@ addr_side_effect_eval (rtx addr, int size, int n_refs)
 
   switch (GET_CODE (addr))
     {
-    case PRE_INC:
+    case 128:
       offset = (n_refs + 1) * size;
       break;
-    case PRE_DEC:
+    case 129:
       offset = -(n_refs + 1) * size;
       break;
-    case POST_INC:
+    case 130:
       offset = n_refs * size;
       break;
-    case POST_DEC:
+    case 131:
       offset = -n_refs * size;
       break;
 
@@ -50,7 +50,7 @@ addr_side_effect_eval (rtx addr, int size, int n_refs)
 
   if (offset)
     addr = gen_rtx_PLUS (GET_MODE (addr), XEXP (addr, 0),
-			 GEN_INT (offset));
+    GEN_INT (offset));
   else
     addr = XEXP (addr, 0);
   addr = canon_rtx (addr);

@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct connection {int dummy; } ;
 
-/* Variables and functions */
- int exec_mc_store (int,struct connection*,char*,int,int,int,int,int) ; 
- int strtol (char*,char**,int) ; 
+
+ int exec_mc_store (int,struct connection*,char*,int,int,int,int,int) ;
+ int strtol (char*,char**,int) ;
 
 int parse_mc_store (int op, struct connection *c, char *str, int len) {
   char *key, *ptr;
@@ -40,7 +40,7 @@ int parse_mc_store (int op, struct connection *c, char *str, int len) {
 
   noreply = strtol (str, &ptr, 10);
   if (ptr == str) { noreply = 0; } else { str = ptr; }
-  
+
   while (*str == ' ') str++;
   if (*str) return -1;
 

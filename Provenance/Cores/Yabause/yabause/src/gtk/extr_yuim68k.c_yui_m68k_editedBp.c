@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u32 ;
-typedef  char gchar ;
-struct TYPE_3__ {int* cbp; int /*<<< orphan*/  bpListStore; } ;
-typedef  TYPE_1__ YuiM68k ;
-typedef  int /*<<< orphan*/  GtkTreeIter ;
-typedef  int /*<<< orphan*/  GtkCellRendererText ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GTK_LIST_STORE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GTK_TREE_MODEL (int /*<<< orphan*/ ) ; 
- scalar_t__ M68KAddCodeBreakpoint (int) ; 
- int /*<<< orphan*/  M68KDelCodeBreakpoint (int) ; 
- int atoi (char*) ; 
- int /*<<< orphan*/  gtk_list_store_set (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  gtk_tree_model_get_iter_from_string (int /*<<< orphan*/ ,int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  sprintf (char*,char*,int) ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
- int strlen (char*) ; 
- int strtoul (char*,char**,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int u32 ;
+typedef char gchar ;
+struct TYPE_3__ {int* cbp; int bpListStore; } ;
+typedef TYPE_1__ YuiM68k ;
+typedef int GtkTreeIter ;
+typedef int GtkCellRendererText ;
+
+
+ int GTK_LIST_STORE (int ) ;
+ int GTK_TREE_MODEL (int ) ;
+ scalar_t__ M68KAddCodeBreakpoint (int) ;
+ int M68KDelCodeBreakpoint (int) ;
+ int atoi (char*) ;
+ int gtk_list_store_set (int ,int *,int ,char*,int) ;
+ int gtk_tree_model_get_iter_from_string (int ,int *,char*) ;
+ int sprintf (char*,char*,int) ;
+ int strcpy (char*,char*) ;
+ int strlen (char*) ;
+ int strtoul (char*,char**,int) ;
 
 __attribute__((used)) static void yui_m68k_editedBp( GtkCellRendererText *cellrenderertext,
-			     gchar *arg1,
-			     gchar *arg2,
-			     YuiM68k *m68k) {
-  /* breakpoint <arg1> has been set to address <arg2> */
+        gchar *arg1,
+        gchar *arg2,
+        YuiM68k *m68k) {
+
 
   GtkTreeIter iter;
   char bptext[10];
@@ -49,7 +49,7 @@ __attribute__((used)) static void yui_m68k_editedBp( GtkCellRendererText *cellre
   m68k->cbp[i] = 0xFFFFFFFF;
 
   if ((addr!=0xFFFFFFFF)&&(M68KAddCodeBreakpoint(addr) == 0)) {
-   
+
     sprintf(bptext, "%08X", (int)addr);
     m68k->cbp[i] = addr;
   } else strcpy(bptext,"<empty>");

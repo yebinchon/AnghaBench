@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  char* LPCWSTR ;
-typedef  int /*<<< orphan*/  LPBYTE ;
-typedef  scalar_t__ LONG ;
-typedef  scalar_t__ HKEY ;
-typedef  scalar_t__ DWORD ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- scalar_t__ ERROR_FILE_NOT_FOUND ; 
- scalar_t__ ERROR_NOT_ENOUGH_MEMORY ; 
- scalar_t__ ERROR_SUCCESS ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  GetLastError () ; 
- scalar_t__ GetSystemMetrics (int /*<<< orphan*/ ) ; 
- scalar_t__ HKEY_LOCAL_MACHINE ; 
- scalar_t__ INVALID_RUNCMD_RETURN ; 
- int /*<<< orphan*/  KEY_ALL_ACCESS ; 
- int /*<<< orphan*/  KEY_READ ; 
- scalar_t__ REG_SZ ; 
- int /*<<< orphan*/  RegCloseKey (scalar_t__) ; 
- scalar_t__ RegDeleteValueW (scalar_t__,char*) ; 
- scalar_t__ RegEnumValueW (scalar_t__,scalar_t__,char*,scalar_t__*,int /*<<< orphan*/ ,scalar_t__*,int /*<<< orphan*/ ,scalar_t__*) ; 
- scalar_t__ RegOpenKeyExW (scalar_t__,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__*) ; 
- scalar_t__ RegQueryInfoKeyW (scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__*,scalar_t__*,scalar_t__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SM_CLEANBOOT ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  free (char*) ; 
- char* malloc (scalar_t__) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- scalar_t__ runCmd (char*,int /*<<< orphan*/ *,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  wprintf (char*,char*) ; 
+
+
+
+typedef char WCHAR ;
+typedef char* LPCWSTR ;
+typedef int LPBYTE ;
+typedef scalar_t__ LONG ;
+typedef scalar_t__ HKEY ;
+typedef scalar_t__ DWORD ;
+typedef scalar_t__ BOOL ;
+
+
+ scalar_t__ ERROR_FILE_NOT_FOUND ;
+ scalar_t__ ERROR_NOT_ENOUGH_MEMORY ;
+ scalar_t__ ERROR_SUCCESS ;
+ scalar_t__ FALSE ;
+ int GetLastError () ;
+ scalar_t__ GetSystemMetrics (int ) ;
+ scalar_t__ HKEY_LOCAL_MACHINE ;
+ scalar_t__ INVALID_RUNCMD_RETURN ;
+ int KEY_ALL_ACCESS ;
+ int KEY_READ ;
+ scalar_t__ REG_SZ ;
+ int RegCloseKey (scalar_t__) ;
+ scalar_t__ RegDeleteValueW (scalar_t__,char*) ;
+ scalar_t__ RegEnumValueW (scalar_t__,scalar_t__,char*,scalar_t__*,int ,scalar_t__*,int ,scalar_t__*) ;
+ scalar_t__ RegOpenKeyExW (scalar_t__,char const*,int ,int ,scalar_t__*) ;
+ scalar_t__ RegQueryInfoKeyW (scalar_t__,int *,int *,int *,int *,int *,int *,scalar_t__*,scalar_t__*,scalar_t__*,int *,int *) ;
+ int SM_CLEANBOOT ;
+ scalar_t__ TRUE ;
+ int free (char*) ;
+ char* malloc (scalar_t__) ;
+ int printf (char*,...) ;
+ scalar_t__ runCmd (char*,int *,scalar_t__,scalar_t__) ;
+ int wprintf (char*,char*) ;
 
 __attribute__((used)) static BOOL ProcessRunKeys(HKEY hkRoot, LPCWSTR szKeyName, BOOL bDelete,
         BOOL bSynchronous)
@@ -49,11 +49,11 @@ __attribute__((used)) static BOOL ProcessRunKeys(HKEY hkRoot, LPCWSTR szKeyName,
     static const WCHAR WINKEY_NAME[]={'S','o','f','t','w','a','r','e','\\',
         'M','i','c','r','o','s','o','f','t','\\','W','i','n','d','o','w','s','\\',
         'C','u','r','r','e','n','t','V','e','r','s','i','o','n',0};
-    HKEY hkWin=NULL, hkRun=NULL;
+    HKEY hkWin=((void*)0), hkRun=((void*)0);
     LONG res=ERROR_SUCCESS;
     DWORD i, nMaxCmdLine=0, nMaxValue=0;
-    WCHAR *szCmdLine=NULL;
-    WCHAR *szValue=NULL;
+    WCHAR *szCmdLine=((void*)0);
+    WCHAR *szValue=((void*)0);
 
     if (hkRoot==HKEY_LOCAL_MACHINE)
         wprintf(L"processing %s entries under HKLM\n", szKeyName);
@@ -83,8 +83,8 @@ __attribute__((used)) static BOOL ProcessRunKeys(HKEY hkRoot, LPCWSTR szKeyName,
         goto end;
     }
 
-    if ((res=RegQueryInfoKeyW(hkRun, NULL, NULL, NULL, NULL, NULL, NULL, &i, &nMaxValue,
-                    &nMaxCmdLine, NULL, NULL))!=ERROR_SUCCESS)
+    if ((res=RegQueryInfoKeyW(hkRun, ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0), &i, &nMaxValue,
+                    &nMaxCmdLine, ((void*)0), ((void*)0)))!=ERROR_SUCCESS)
     {
         printf("Couldn't query key info (%ld)\n", res);
 
@@ -99,7 +99,7 @@ __attribute__((used)) static BOOL ProcessRunKeys(HKEY hkRoot, LPCWSTR szKeyName,
         goto end;
     }
 
-    if ((szCmdLine=malloc(nMaxCmdLine))==NULL)
+    if ((szCmdLine=malloc(nMaxCmdLine))==((void*)0))
     {
         printf("Couldn't allocate memory for the commands to be executed\n");
 
@@ -107,7 +107,7 @@ __attribute__((used)) static BOOL ProcessRunKeys(HKEY hkRoot, LPCWSTR szKeyName,
         goto end;
     }
 
-    if ((szValue=malloc((++nMaxValue)*sizeof(*szValue)))==NULL)
+    if ((szValue=malloc((++nMaxValue)*sizeof(*szValue)))==((void*)0))
     {
         printf("Couldn't allocate memory for the value names\n");
 
@@ -131,7 +131,7 @@ __attribute__((used)) static BOOL ProcessRunKeys(HKEY hkRoot, LPCWSTR szKeyName,
             continue;
         }
 
-        /* safe mode - force to run if prefixed with asterisk */
+
         if (GetSystemMetrics(SM_CLEANBOOT) && (szValue[0] != L'*')) continue;
 
         if (bDelete && (res=RegDeleteValueW(hkRun, szValue))!=ERROR_SUCCESS)
@@ -146,7 +146,7 @@ __attribute__((used)) static BOOL ProcessRunKeys(HKEY hkRoot, LPCWSTR szKeyName,
             continue;
         }
 
-        if ((res=runCmd(szCmdLine, NULL, bSynchronous, FALSE))==INVALID_RUNCMD_RETURN)
+        if ((res=runCmd(szCmdLine, ((void*)0), bSynchronous, FALSE))==INVALID_RUNCMD_RETURN)
         {
             printf("Error running cmd #%lu (%ld)\n", i, GetLastError());
         }
@@ -159,9 +159,9 @@ __attribute__((used)) static BOOL ProcessRunKeys(HKEY hkRoot, LPCWSTR szKeyName,
     res=ERROR_SUCCESS;
 
 end:
-    if (hkRun!=NULL)
+    if (hkRun!=((void*)0))
         RegCloseKey(hkRun);
-    if (hkWin!=NULL)
+    if (hkWin!=((void*)0))
         RegCloseKey(hkWin);
 
     printf("done\n");

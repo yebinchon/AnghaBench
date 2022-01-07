@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  X ;
-typedef  int /*<<< orphan*/  K ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SiGenerateDefaultCertEx (int /*<<< orphan*/ **,int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int X ;
+typedef int K ;
+
+
+ int SiGenerateDefaultCertEx (int **,int **,int *) ;
 
 void SiGenerateDefaultCert(X **server_x, K **server_k)
 {
-	SiGenerateDefaultCertEx(server_x, server_k, NULL);
+ SiGenerateDefaultCertEx(server_x, server_k, ((void*)0));
 }

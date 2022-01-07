@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  json_t ;
-struct TYPE_3__ {int line; int /*<<< orphan*/  text; } ;
-typedef  TYPE_1__ json_error_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fail (char*) ; 
- int /*<<< orphan*/ * json_load_file (char*,int /*<<< orphan*/ ,TYPE_1__*) ; 
- char* strchr (int /*<<< orphan*/ ,char) ; 
- scalar_t__ strcmp (int /*<<< orphan*/ ,char*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int json_t ;
+struct TYPE_3__ {int line; int text; } ;
+typedef TYPE_1__ json_error_t ;
+
+
+ int fail (char*) ;
+ int * json_load_file (char*,int ,TYPE_1__*) ;
+ char* strchr (int ,char) ;
+ scalar_t__ strcmp (int ,char*) ;
 
 __attribute__((used)) static void file_not_found()
 {
@@ -33,8 +33,8 @@ __attribute__((used)) static void file_not_found()
     if(error.line != -1)
         fail("json_load_file returned an invalid line number");
 
-    /* The error message is locale specific, only check the beginning
-       of the error message. */
+
+
 
     pos = strchr(error.text, ':');
     if(!pos)

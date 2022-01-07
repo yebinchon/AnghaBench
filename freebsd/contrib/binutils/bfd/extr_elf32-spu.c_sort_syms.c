@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ bfd_signed_vma ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef scalar_t__ bfd_signed_vma ;
 struct TYPE_5__ {int index; } ;
-typedef  TYPE_1__ asection ;
+typedef TYPE_1__ asection ;
 struct TYPE_6__ {scalar_t__ st_value; scalar_t__ st_size; } ;
-typedef  TYPE_2__ Elf_Internal_Sym ;
+typedef TYPE_2__ Elf_Internal_Sym ;
 
-/* Variables and functions */
- TYPE_1__** sort_syms_psecs ; 
- TYPE_2__* const sort_syms_syms ; 
+
+ TYPE_1__** sort_syms_psecs ;
+ TYPE_2__* const sort_syms_syms ;
 
 __attribute__((used)) static int
 sort_syms (const void *a, const void *b)

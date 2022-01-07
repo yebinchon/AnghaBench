@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_18__   TYPE_8__ ;
-typedef  struct TYPE_17__   TYPE_7__ ;
-typedef  struct TYPE_16__   TYPE_6__ ;
-typedef  struct TYPE_15__   TYPE_5__ ;
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_16__ {int /*<<< orphan*/  (* DrawElements ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* UniformMatrix4fv ) (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* VertexAttribPointer ) (int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* EnableVertexAttribArray ) (int) ;int /*<<< orphan*/  (* BindBuffer ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* BindTexture ) (int /*<<< orphan*/ ,scalar_t__) ;int /*<<< orphan*/  (* ActiveTexture ) (scalar_t__) ;} ;
-struct TYPE_17__ {scalar_t__* texture; int /*<<< orphan*/  nb_indices; TYPE_6__ vt; int /*<<< orphan*/  index_buffer_object; int /*<<< orphan*/  vertex_buffer_object; int /*<<< orphan*/ * texture_buffer_object; TYPE_2__* prgm; int /*<<< orphan*/  tex_height; int /*<<< orphan*/  tex_width; } ;
-typedef  TYPE_7__ vout_display_opengl_t ;
-struct TYPE_15__ {int /*<<< orphan*/  ZoomMatrix; int /*<<< orphan*/  ViewMatrix; int /*<<< orphan*/  ProjectionMatrix; int /*<<< orphan*/  OrientationMatrix; } ;
-struct TYPE_14__ {int /*<<< orphan*/  ZoomMatrix; int /*<<< orphan*/  ViewMatrix; int /*<<< orphan*/  ProjectionMatrix; int /*<<< orphan*/  OrientationMatrix; } ;
+
+
+typedef struct TYPE_18__ TYPE_8__ ;
+typedef struct TYPE_17__ TYPE_7__ ;
+typedef struct TYPE_16__ TYPE_6__ ;
+typedef struct TYPE_15__ TYPE_5__ ;
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+struct TYPE_16__ {int (* DrawElements ) (int ,int ,int ,int ) ;int (* UniformMatrix4fv ) (int ,int,int ,int ) ;int (* VertexAttribPointer ) (int,int,int ,int ,int ,int ) ;int (* EnableVertexAttribArray ) (int) ;int (* BindBuffer ) (int ,int ) ;int (* BindTexture ) (int ,scalar_t__) ;int (* ActiveTexture ) (scalar_t__) ;} ;
+struct TYPE_17__ {scalar_t__* texture; int nb_indices; TYPE_6__ vt; int index_buffer_object; int vertex_buffer_object; int * texture_buffer_object; TYPE_2__* prgm; int tex_height; int tex_width; } ;
+typedef TYPE_7__ vout_display_opengl_t ;
+struct TYPE_15__ {int ZoomMatrix; int ViewMatrix; int ProjectionMatrix; int OrientationMatrix; } ;
+struct TYPE_14__ {int ZoomMatrix; int ViewMatrix; int ProjectionMatrix; int OrientationMatrix; } ;
 struct TYPE_13__ {int* MultiTexCoord; int VertexPosition; } ;
 struct prgm {TYPE_5__ var; TYPE_4__ uloc; TYPE_3__ aloc; TYPE_8__* tc; } ;
-struct TYPE_18__ {int /*<<< orphan*/  tex_target; int /*<<< orphan*/  (* pf_prepare_shader ) (TYPE_8__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,float) ;} ;
-typedef  TYPE_8__ opengl_tex_converter_t ;
+struct TYPE_18__ {int tex_target; int (* pf_prepare_shader ) (TYPE_8__*,int ,int ,float) ;} ;
+typedef TYPE_8__ opengl_tex_converter_t ;
 struct TYPE_12__ {TYPE_1__* tc; } ;
 struct TYPE_11__ {unsigned int tex_count; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GL_ARRAY_BUFFER ; 
- int /*<<< orphan*/  GL_ELEMENT_ARRAY_BUFFER ; 
- int /*<<< orphan*/  GL_FALSE ; 
- int /*<<< orphan*/  GL_FLOAT ; 
- scalar_t__ GL_TEXTURE0 ; 
- int /*<<< orphan*/  GL_TRIANGLES ; 
- int /*<<< orphan*/  GL_UNSIGNED_SHORT ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  stub1 (TYPE_8__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,float) ; 
- int /*<<< orphan*/  stub10 (int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub11 (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub12 (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub13 (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub14 (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub15 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub2 (scalar_t__) ; 
- int /*<<< orphan*/  stub3 (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  stub4 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub5 (int) ; 
- int /*<<< orphan*/  stub6 (int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub7 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub8 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub9 (int) ; 
+
+ int GL_ARRAY_BUFFER ;
+ int GL_ELEMENT_ARRAY_BUFFER ;
+ int GL_FALSE ;
+ int GL_FLOAT ;
+ scalar_t__ GL_TEXTURE0 ;
+ int GL_TRIANGLES ;
+ int GL_UNSIGNED_SHORT ;
+ int assert (int) ;
+ int stub1 (TYPE_8__*,int ,int ,float) ;
+ int stub10 (int,int,int ,int ,int ,int ) ;
+ int stub11 (int ,int,int ,int ) ;
+ int stub12 (int ,int,int ,int ) ;
+ int stub13 (int ,int,int ,int ) ;
+ int stub14 (int ,int,int ,int ) ;
+ int stub15 (int ,int ,int ,int ) ;
+ int stub2 (scalar_t__) ;
+ int stub3 (int ,scalar_t__) ;
+ int stub4 (int ,int ) ;
+ int stub5 (int) ;
+ int stub6 (int,int,int ,int ,int ,int ) ;
+ int stub7 (int ,int ) ;
+ int stub8 (int ,int ) ;
+ int stub9 (int) ;
 
 __attribute__((used)) static void DrawWithShaders(vout_display_opengl_t *vgl, struct prgm *prgm)
 {

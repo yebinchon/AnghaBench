@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  pixel_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int pixel_t ;
 struct TYPE_3__ {int type; char* message; } ;
-typedef  TYPE_1__ OSDMessage_struct ;
+typedef TYPE_1__ OSDMessage_struct ;
 
-/* Variables and functions */
-#define  OSDMSG_STATUS 128 
- int /*<<< orphan*/  TitanWriteColor (int /*<<< orphan*/ *,int,int,int,int) ; 
- char** font ; 
+
+
+ int TitanWriteColor (int *,int,int,int,int) ;
+ char** font ;
 
 void OSDSoftDisplayMessage(OSDMessage_struct * message, pixel_t * buffer, int w, int h)
 {
@@ -26,11 +26,11 @@ void OSDSoftDisplayMessage(OSDMessage_struct * message, pixel_t * buffer, int w,
    char * c;
    int loffset = 0;
 
-   if (buffer == NULL) return;
+   if (buffer == ((void*)0)) return;
 
    switch (message->type)
    {
-      case OSDMSG_STATUS:
+      case 128:
          loffset = h - 48;
          break;
    }

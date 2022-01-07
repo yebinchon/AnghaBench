@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  str; } ;
-typedef  TYPE_1__ redisReply ;
-typedef  int /*<<< orphan*/  clusterManagerNode ;
 
-/* Variables and functions */
- TYPE_1__* clusterManagerGetNodeRedisInfo (int /*<<< orphan*/ *,char**) ; 
- int /*<<< orphan*/  freeReplyObject (TYPE_1__*) ; 
- scalar_t__ getLongInfoField (int /*<<< orphan*/ ,char*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int str; } ;
+typedef TYPE_1__ redisReply ;
+typedef int clusterManagerNode ;
+
+
+ TYPE_1__* clusterManagerGetNodeRedisInfo (int *,char**) ;
+ int freeReplyObject (TYPE_1__*) ;
+ scalar_t__ getLongInfoField (int ,char*) ;
 
 __attribute__((used)) static int clusterManagerNodeIsCluster(clusterManagerNode *node, char **err) {
     redisReply *info = clusterManagerGetNodeRedisInfo(node, err);
-    if (info == NULL) return 0;
+    if (info == ((void*)0)) return 0;
     int is_cluster = (int) getLongInfoField(info->str, "cluster_enabled");
     freeReplyObject(info);
     return is_cluster;

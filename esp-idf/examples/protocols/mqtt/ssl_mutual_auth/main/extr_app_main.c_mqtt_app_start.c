@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  esp_mqtt_client_handle_t ;
-struct TYPE_3__ {char* uri; char const* client_cert_pem; char const* client_key_pem; int /*<<< orphan*/  event_handle; } ;
-typedef  TYPE_1__ esp_mqtt_client_config_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ESP_LOGI (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TAG ; 
- scalar_t__ client_cert_pem_start ; 
- scalar_t__ client_key_pem_start ; 
- int /*<<< orphan*/  esp_get_free_heap_size () ; 
- int /*<<< orphan*/  esp_mqtt_client_init (TYPE_1__ const*) ; 
- int /*<<< orphan*/  esp_mqtt_client_start (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mqtt_event_handler ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int esp_mqtt_client_handle_t ;
+struct TYPE_3__ {char* uri; char const* client_cert_pem; char const* client_key_pem; int event_handle; } ;
+typedef TYPE_1__ esp_mqtt_client_config_t ;
+
+
+ int ESP_LOGI (int ,char*,int ) ;
+ int TAG ;
+ scalar_t__ client_cert_pem_start ;
+ scalar_t__ client_key_pem_start ;
+ int esp_get_free_heap_size () ;
+ int esp_mqtt_client_init (TYPE_1__ const*) ;
+ int esp_mqtt_client_start (int ) ;
+ int mqtt_event_handler ;
 
 __attribute__((used)) static void mqtt_app_start(void)
 {

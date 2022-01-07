@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct AACEncContext {scalar_t__ quantize_band_cost_cache_generation; TYPE_1__** quantize_band_cost_cache; } ;
 struct TYPE_2__ {scalar_t__ generation; int cb; int rtz; float rd; int bits; float energy; } ;
-typedef  TYPE_1__ AACQuantizeBandCostCacheEntry ;
+typedef TYPE_1__ AACQuantizeBandCostCacheEntry ;
 
-/* Variables and functions */
- int /*<<< orphan*/  av_assert1 (int) ; 
- float quantize_band_cost (struct AACEncContext*,float const*,float const*,int,int,int,float const,float const,int*,float*,int) ; 
+
+ int av_assert1 (int) ;
+ float quantize_band_cost (struct AACEncContext*,float const*,float const*,int,int,int,float const,float const,int*,float*,int) ;
 
 __attribute__((used)) static inline float quantize_band_cost_cached(struct AACEncContext *s, int w, int g, const float *in,
                                 const float *scaled, int size, int scale_idx,

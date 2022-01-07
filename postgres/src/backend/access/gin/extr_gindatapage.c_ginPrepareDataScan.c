@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int isData; int fullScan; int isBuild; int /*<<< orphan*/  prepareDownlink; int /*<<< orphan*/  fillRoot; int /*<<< orphan*/  execPlaceToPage; int /*<<< orphan*/  beginPlaceToPage; int /*<<< orphan*/  findChildPtr; int /*<<< orphan*/ * findItem; int /*<<< orphan*/  isMoveRight; int /*<<< orphan*/  getLeftMostChild; int /*<<< orphan*/  findChildPage; int /*<<< orphan*/  rootBlkno; int /*<<< orphan*/  index; } ;
-typedef  int /*<<< orphan*/  Relation ;
-typedef  int /*<<< orphan*/  GinBtreeData ;
-typedef  TYPE_1__* GinBtree ;
-typedef  int /*<<< orphan*/  BlockNumber ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dataBeginPlaceToPage ; 
- int /*<<< orphan*/  dataExecPlaceToPage ; 
- int /*<<< orphan*/  dataFindChildPtr ; 
- int /*<<< orphan*/  dataGetLeftMostPage ; 
- int /*<<< orphan*/  dataIsMoveRight ; 
- int /*<<< orphan*/  dataLocateItem ; 
- int /*<<< orphan*/  dataPrepareDownlink ; 
- int /*<<< orphan*/  ginDataFillRoot ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int isData; int fullScan; int isBuild; int prepareDownlink; int fillRoot; int execPlaceToPage; int beginPlaceToPage; int findChildPtr; int * findItem; int isMoveRight; int getLeftMostChild; int findChildPage; int rootBlkno; int index; } ;
+typedef int Relation ;
+typedef int GinBtreeData ;
+typedef TYPE_1__* GinBtree ;
+typedef int BlockNumber ;
+
+
+ int dataBeginPlaceToPage ;
+ int dataExecPlaceToPage ;
+ int dataFindChildPtr ;
+ int dataGetLeftMostPage ;
+ int dataIsMoveRight ;
+ int dataLocateItem ;
+ int dataPrepareDownlink ;
+ int ginDataFillRoot ;
+ int memset (TYPE_1__*,int ,int) ;
 
 __attribute__((used)) static void
 ginPrepareDataScan(GinBtree btree, Relation index, BlockNumber rootBlkno)
 {
-	memset(btree, 0, sizeof(GinBtreeData));
+ memset(btree, 0, sizeof(GinBtreeData));
 
-	btree->index = index;
-	btree->rootBlkno = rootBlkno;
+ btree->index = index;
+ btree->rootBlkno = rootBlkno;
 
-	btree->findChildPage = dataLocateItem;
-	btree->getLeftMostChild = dataGetLeftMostPage;
-	btree->isMoveRight = dataIsMoveRight;
-	btree->findItem = NULL;
-	btree->findChildPtr = dataFindChildPtr;
-	btree->beginPlaceToPage = dataBeginPlaceToPage;
-	btree->execPlaceToPage = dataExecPlaceToPage;
-	btree->fillRoot = ginDataFillRoot;
-	btree->prepareDownlink = dataPrepareDownlink;
+ btree->findChildPage = dataLocateItem;
+ btree->getLeftMostChild = dataGetLeftMostPage;
+ btree->isMoveRight = dataIsMoveRight;
+ btree->findItem = ((void*)0);
+ btree->findChildPtr = dataFindChildPtr;
+ btree->beginPlaceToPage = dataBeginPlaceToPage;
+ btree->execPlaceToPage = dataExecPlaceToPage;
+ btree->fillRoot = ginDataFillRoot;
+ btree->prepareDownlink = dataPrepareDownlink;
 
-	btree->isData = true;
-	btree->fullScan = false;
-	btree->isBuild = false;
+ btree->isData = 1;
+ btree->fullScan = 0;
+ btree->isBuild = 0;
 }

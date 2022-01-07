@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int nAlloc; } ;
 struct TYPE_4__ {TYPE_2__ blob2; TYPE_2__ blob1; scalar_t__ iCell; scalar_t__ eType; scalar_t__ nVal; scalar_t__ pVal; scalar_t__ nKey; scalar_t__ pKey; scalar_t__ nCell; scalar_t__ pPg; } ;
-typedef  TYPE_1__ SegmentPtr ;
+typedef TYPE_1__ SegmentPtr ;
 
-/* Variables and functions */
- int /*<<< orphan*/  lsmFsPageRelease (scalar_t__) ; 
- int /*<<< orphan*/  sortedBlobFree (TYPE_2__*) ; 
+
+ int lsmFsPageRelease (scalar_t__) ;
+ int sortedBlobFree (TYPE_2__*) ;
 
 __attribute__((used)) static void segmentPtrReset(SegmentPtr *pPtr, int nThreshold){
   lsmFsPageRelease(pPtr->pPg);

@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int UINT32 ;
-typedef  int /*<<< orphan*/  ACPI_GPE_EVENT_INFO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACPI_TO_POINTER (int) ; 
- int /*<<< orphan*/ * AcpiEvGetGpeEventInfo (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  AcpiEvGpeDispatch (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  AcpiOsPrintf (char*) ; 
- int strtoul (char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int UINT32 ;
+typedef int ACPI_GPE_EVENT_INFO ;
+
+
+ int ACPI_TO_POINTER (int) ;
+ int * AcpiEvGetGpeEventInfo (int ,int) ;
+ int AcpiEvGpeDispatch (int *,int *,int) ;
+ int AcpiOsPrintf (char*) ;
+ int strtoul (char*,int *,int ) ;
 
 void
 AcpiDbGenerateGpe (
-    char                    *GpeArg,
-    char                    *BlockArg)
+    char *GpeArg,
+    char *BlockArg)
 {
-    UINT32                  BlockNumber = 0;
-    UINT32                  GpeNumber;
-    ACPI_GPE_EVENT_INFO     *GpeEventInfo;
+    UINT32 BlockNumber = 0;
+    UINT32 GpeNumber;
+    ACPI_GPE_EVENT_INFO *GpeEventInfo;
 
 
-    GpeNumber = strtoul (GpeArg, NULL, 0);
+    GpeNumber = strtoul (GpeArg, ((void*)0), 0);
 
-    /*
-     * If no block arg, or block arg == 0 or 1, use the FADT-defined
-     * GPE blocks.
-     */
+
+
+
+
     if (BlockArg)
     {
-        BlockNumber = strtoul (BlockArg, NULL, 0);
+        BlockNumber = strtoul (BlockArg, ((void*)0), 0);
         if (BlockNumber == 1)
         {
             BlockNumber = 0;
@@ -53,5 +53,5 @@ AcpiDbGenerateGpe (
         return;
     }
 
-    (void) AcpiEvGpeDispatch (NULL, GpeEventInfo, GpeNumber);
+    (void) AcpiEvGpeDispatch (((void*)0), GpeEventInfo, GpeNumber);
 }

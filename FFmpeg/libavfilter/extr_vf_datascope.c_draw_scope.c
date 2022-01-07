@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_20__   TYPE_8__ ;
-typedef  struct TYPE_19__   TYPE_7__ ;
-typedef  struct TYPE_18__   TYPE_6__ ;
-typedef  struct TYPE_17__   TYPE_5__ ;
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_20__ TYPE_8__ ;
+typedef struct TYPE_19__ TYPE_7__ ;
+typedef struct TYPE_18__ TYPE_6__ ;
+typedef struct TYPE_17__ TYPE_5__ ;
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
 struct TYPE_20__ {int nb_planes; int* pixelstep; TYPE_4__* desc; } ;
 struct TYPE_19__ {int width; int height; int** data; int* linesize; } ;
-struct TYPE_13__ {int /*<<< orphan*/  member_0; } ;
+struct TYPE_13__ {int member_0; } ;
 struct TYPE_18__ {TYPE_1__ member_0; } ;
-struct TYPE_17__ {size_t nb_values; int max; TYPE_8__ draw; scalar_t__ scope; TYPE_2__* values; int /*<<< orphan*/  (* pick_color ) (TYPE_8__*,TYPE_6__*,TYPE_7__*,int,int,int*) ;} ;
+struct TYPE_17__ {size_t nb_values; int max; TYPE_8__ draw; scalar_t__ scope; TYPE_2__* values; int (* pick_color ) (TYPE_8__*,TYPE_6__*,TYPE_7__*,int,int,int*) ;} ;
 struct TYPE_16__ {TYPE_3__* comp; } ;
 struct TYPE_15__ {int depth; } ;
 struct TYPE_14__ {int* p; } ;
-typedef  int /*<<< orphan*/  PixelValues ;
-typedef  TYPE_5__ OscilloscopeContext ;
-typedef  TYPE_6__ FFDrawColor ;
-typedef  TYPE_7__ AVFrame ;
+typedef int PixelValues ;
+typedef TYPE_5__ OscilloscopeContext ;
+typedef TYPE_6__ FFDrawColor ;
+typedef TYPE_7__ AVFrame ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_WN16 (int*,int) ; 
- int FFABS (int) ; 
- int /*<<< orphan*/  stub1 (TYPE_8__*,TYPE_6__*,TYPE_7__*,int,int,int*) ; 
+
+ int AV_WN16 (int*,int) ;
+ int FFABS (int) ;
+ int stub1 (TYPE_8__*,TYPE_6__*,TYPE_7__*,int,int,int*) ;
 
 __attribute__((used)) static void draw_scope(OscilloscopeContext *s, int x0, int y0, int x1, int y1,
                        AVFrame *out, PixelValues *p, int state)

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_8__ {struct TYPE_8__* buffer; } ;
-typedef  TYPE_1__ KXLDArrayPool ;
+typedef TYPE_1__ KXLDArrayPool ;
 
-/* Variables and functions */
- int /*<<< orphan*/  bzero (TYPE_1__*,size_t) ; 
- int /*<<< orphan*/  finish ; 
- TYPE_1__* kxld_alloc (int) ; 
- TYPE_1__* kxld_page_alloc (size_t) ; 
- int /*<<< orphan*/  pool_destroy (TYPE_1__*,size_t) ; 
- int /*<<< orphan*/  require (TYPE_1__*,int /*<<< orphan*/ ) ; 
+
+ int bzero (TYPE_1__*,size_t) ;
+ int finish ;
+ TYPE_1__* kxld_alloc (int) ;
+ TYPE_1__* kxld_page_alloc (size_t) ;
+ int pool_destroy (TYPE_1__*,size_t) ;
+ int require (TYPE_1__*,int ) ;
 
 __attribute__((used)) static KXLDArrayPool *
 pool_create(size_t capacity)
 {
-    KXLDArrayPool *pool = NULL, *rval = NULL;
+    KXLDArrayPool *pool = ((void*)0), *rval = ((void*)0);
 
     pool = kxld_alloc(sizeof(*pool));
     require(pool, finish);
@@ -35,7 +35,7 @@ pool_create(size_t capacity)
     bzero(pool->buffer, capacity);
 
     rval = pool;
-    pool = NULL;
+    pool = ((void*)0);
 
 finish:
     if (pool) pool_destroy(pool, capacity);

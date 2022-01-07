@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct nes_cm_node {int /*<<< orphan*/  ref_count; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  atomic_inc (int /*<<< orphan*/ *) ; 
+
+
+
+struct nes_cm_node {int ref_count; } ;
+
+
+ int atomic_inc (int *) ;
 
 __attribute__((used)) static int add_ref_cm_node(struct nes_cm_node *cm_node)
 {
-	atomic_inc(&cm_node->ref_count);
-	return 0;
+ atomic_inc(&cm_node->ref_count);
+ return 0;
 }

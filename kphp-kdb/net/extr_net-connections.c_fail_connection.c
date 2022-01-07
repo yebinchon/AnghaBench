@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct connection {int flags; scalar_t__ status; int error; int /*<<< orphan*/  ev; TYPE_1__* target; } ;
-struct TYPE_2__ {int /*<<< orphan*/  active_outbound_connections; } ;
 
-/* Variables and functions */
- int C_FAILED ; 
- int C_WANTRD ; 
- int C_WANTWR ; 
- int /*<<< orphan*/  active_connections ; 
- int /*<<< orphan*/  active_outbound_connections ; 
- scalar_t__ conn_connecting ; 
- scalar_t__ conn_error ; 
- int /*<<< orphan*/  put_event_into_heap (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  total_connect_failures ; 
- int /*<<< orphan*/  total_failed_connections ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct connection {int flags; scalar_t__ status; int error; int ev; TYPE_1__* target; } ;
+struct TYPE_2__ {int active_outbound_connections; } ;
+
+
+ int C_FAILED ;
+ int C_WANTRD ;
+ int C_WANTWR ;
+ int active_connections ;
+ int active_outbound_connections ;
+ scalar_t__ conn_connecting ;
+ scalar_t__ conn_error ;
+ int put_event_into_heap (int ) ;
+ int total_connect_failures ;
+ int total_failed_connections ;
 
 int fail_connection (struct connection *c, int err) {
   if (!(c->flags & C_FAILED)) {

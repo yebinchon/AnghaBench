@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  emit_cmovb_imm (int,int) ; 
- int /*<<< orphan*/  emit_cmpimm (int,int) ; 
- int /*<<< orphan*/  emit_movimm (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  emit_zeroreg (int) ; 
+ int emit_cmovb_imm (int,int) ;
+ int emit_cmpimm (int,int) ;
+ int emit_movimm (int ,int) ;
+ int emit_zeroreg (int) ;
 
 void emit_sltiu32(int rs,int imm,int rt)
 {

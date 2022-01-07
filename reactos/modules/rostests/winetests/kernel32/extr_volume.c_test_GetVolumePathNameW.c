@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  drive_c2 ;
-typedef  int /*<<< orphan*/  drive_c1 ;
-typedef  char WCHAR ;
-typedef  int BOOL ;
 
-/* Variables and functions */
- scalar_t__ ERROR_FILENAME_EXCED_RANGE ; 
- scalar_t__ GetLastError () ; 
- int MAX_PATH ; 
- scalar_t__ broken (int) ; 
- scalar_t__ memcmp (char*,char*,int) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int pGetVolumePathNameW (char*,char*,int) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
+
+
+
+typedef int drive_c2 ;
+typedef int drive_c1 ;
+typedef char WCHAR ;
+typedef int BOOL ;
+
+
+ scalar_t__ ERROR_FILENAME_EXCED_RANGE ;
+ scalar_t__ GetLastError () ;
+ int MAX_PATH ;
+ scalar_t__ broken (int) ;
+ scalar_t__ memcmp (char*,char*,int) ;
+ int ok (int,char*,...) ;
+ int pGetVolumePathNameW (char*,char*,int) ;
+ int win_skip (char*) ;
 
 __attribute__((used)) static void test_GetVolumePathNameW(void)
 {
@@ -57,9 +57,9 @@ __attribute__((used)) static void test_GetVolumePathNameW(void)
     volume_path[0] = 0;
     volume_path[3] = 0x11;
     ret = pGetVolumePathNameW( drive_c1, volume_path, 3 );
-    ok(ret || broken(!ret) /* win2k */, "GetVolumePathNameW test failed unexpectedly.\n");
+    ok(ret || broken(!ret) , "GetVolumePathNameW test failed unexpectedly.\n");
     ok(memcmp(volume_path, drive_c1, sizeof(drive_c1)) == 0
-       || broken(volume_path[0] == 0) /* win2k */,
+       || broken(volume_path[0] == 0) ,
        "GetVolumePathNameW unexpectedly returned wrong path.\n");
     ok(volume_path[3] == 0x11, "GetVolumePathW corrupted byte after end of buffer.\n");
 

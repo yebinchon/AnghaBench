@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_9__ {scalar_t__ do_transform; } ;
 struct TYPE_8__ {TYPE_4__* entries; } ;
-struct st_gzip_context_t {scalar_t__ zs_is_open; int /*<<< orphan*/  zs; TYPE_3__ super; TYPE_2__ bufs; } ;
-typedef  int /*<<< orphan*/  processor ;
-struct TYPE_10__ {scalar_t__ len; int /*<<< orphan*/  raw; int /*<<< orphan*/  member_0; TYPE_1__* callbacks; } ;
-typedef  TYPE_4__ h2o_sendvec_t ;
-typedef  int /*<<< orphan*/  h2o_send_state_t ;
-typedef  int /*<<< orphan*/  h2o_compress_context_t ;
+struct st_gzip_context_t {scalar_t__ zs_is_open; int zs; TYPE_3__ super; TYPE_2__ bufs; } ;
+typedef int processor ;
+struct TYPE_10__ {scalar_t__ len; int raw; int member_0; TYPE_1__* callbacks; } ;
+typedef TYPE_4__ h2o_sendvec_t ;
+typedef int h2o_send_state_t ;
+typedef int h2o_compress_context_t ;
 struct TYPE_7__ {scalar_t__ flatten; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Z_FINISH ; 
- int /*<<< orphan*/  Z_NO_FLUSH ; 
- int /*<<< orphan*/  Z_SYNC_FLUSH ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  deflateEnd (int /*<<< orphan*/ *) ; 
- scalar_t__ do_compress ; 
- scalar_t__ h2o_send_state_is_in_progress (int /*<<< orphan*/ ) ; 
- scalar_t__ h2o_sendvec_flatten_raw ; 
- int /*<<< orphan*/  inflateEnd (int /*<<< orphan*/ *) ; 
- size_t process_chunk (struct st_gzip_context_t*,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,size_t,int /*<<< orphan*/ ) ; 
+
+ int Z_FINISH ;
+ int Z_NO_FLUSH ;
+ int Z_SYNC_FLUSH ;
+ int assert (int) ;
+ int deflateEnd (int *) ;
+ scalar_t__ do_compress ;
+ scalar_t__ h2o_send_state_is_in_progress (int ) ;
+ scalar_t__ h2o_sendvec_flatten_raw ;
+ int inflateEnd (int *) ;
+ size_t process_chunk (struct st_gzip_context_t*,int ,scalar_t__,int ,size_t,int ) ;
 
 __attribute__((used)) static h2o_send_state_t do_process(h2o_compress_context_t *_self, h2o_sendvec_t *inbufs, size_t inbufcnt, h2o_send_state_t state,
                                    h2o_sendvec_t **outbufs, size_t *outbufcnt, processor proc)

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3 ;
-struct TYPE_6__ {int /*<<< orphan*/ * pOwner; void* pEnd; void* pStart; int /*<<< orphan*/  eExclude; int /*<<< orphan*/  eStart; int /*<<< orphan*/  eEnd; int /*<<< orphan*/  eFrmType; void* pOrderBy; void* pPartition; int /*<<< orphan*/  pFunc; void* pFilter; int /*<<< orphan*/  zName; } ;
-typedef  TYPE_1__ Window ;
-typedef  int /*<<< orphan*/  Expr ;
 
-/* Variables and functions */
- scalar_t__ ALWAYS (TYPE_1__*) ; 
- TYPE_1__* sqlite3DbMallocZero (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  sqlite3DbStrDup (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- void* sqlite3ExprDup (int /*<<< orphan*/ *,void*,int /*<<< orphan*/ ) ; 
- void* sqlite3ExprListDup (int /*<<< orphan*/ *,void*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int sqlite3 ;
+struct TYPE_6__ {int * pOwner; void* pEnd; void* pStart; int eExclude; int eStart; int eEnd; int eFrmType; void* pOrderBy; void* pPartition; int pFunc; void* pFilter; int zName; } ;
+typedef TYPE_1__ Window ;
+typedef int Expr ;
+
+
+ scalar_t__ ALWAYS (TYPE_1__*) ;
+ TYPE_1__* sqlite3DbMallocZero (int *,int) ;
+ int sqlite3DbStrDup (int *,int ) ;
+ void* sqlite3ExprDup (int *,void*,int ) ;
+ void* sqlite3ExprListDup (int *,void*,int ) ;
 
 Window *sqlite3WindowDup(sqlite3 *db, Expr *pOwner, Window *p){
   Window *pNew = 0;

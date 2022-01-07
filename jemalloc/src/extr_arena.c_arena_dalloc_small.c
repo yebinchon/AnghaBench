@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tsdn_t ;
-typedef  int /*<<< orphan*/  extent_t ;
-typedef  int /*<<< orphan*/  arena_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  arena_dalloc_bin (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,void*) ; 
- int /*<<< orphan*/  arena_decay_tick (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * arena_get_from_extent (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * iealloc (int /*<<< orphan*/ *,void*) ; 
+
+
+
+typedef int tsdn_t ;
+typedef int extent_t ;
+typedef int arena_t ;
+
+
+ int arena_dalloc_bin (int *,int *,int *,void*) ;
+ int arena_decay_tick (int *,int *) ;
+ int * arena_get_from_extent (int *) ;
+ int * iealloc (int *,void*) ;
 
 void
 arena_dalloc_small(tsdn_t *tsdn, void *ptr) {
-	extent_t *extent = iealloc(tsdn, ptr);
-	arena_t *arena = arena_get_from_extent(extent);
+ extent_t *extent = iealloc(tsdn, ptr);
+ arena_t *arena = arena_get_from_extent(extent);
 
-	arena_dalloc_bin(tsdn, arena, extent, ptr);
-	arena_decay_tick(tsdn, arena);
+ arena_dalloc_bin(tsdn, arena, extent, ptr);
+ arena_decay_tick(tsdn, arena);
 }

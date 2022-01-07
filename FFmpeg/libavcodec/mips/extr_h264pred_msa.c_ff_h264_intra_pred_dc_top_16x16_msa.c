@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  v8u16 ;
-typedef  scalar_t__ v4u32 ;
-typedef  int /*<<< orphan*/  v4i32 ;
-typedef  scalar_t__ v2u64 ;
-typedef  int /*<<< orphan*/  v2i64 ;
-typedef  scalar_t__ v16u8 ;
-typedef  int /*<<< orphan*/  v16i8 ;
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int ptrdiff_t ;
 
-/* Variables and functions */
- scalar_t__ LD_UB (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ST_UB8 (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,int /*<<< orphan*/ *,int) ; 
- scalar_t__ __msa_hadd_u_d (scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  __msa_hadd_u_h (scalar_t__,scalar_t__) ; 
- scalar_t__ __msa_hadd_u_w (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ __msa_pckev_w (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ __msa_splati_b (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ __msa_srari_d (int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int v8u16 ;
+typedef scalar_t__ v4u32 ;
+typedef int v4i32 ;
+typedef scalar_t__ v2u64 ;
+typedef int v2i64 ;
+typedef scalar_t__ v16u8 ;
+typedef int v16i8 ;
+typedef int uint8_t ;
+typedef int ptrdiff_t ;
+
+
+ scalar_t__ LD_UB (int *) ;
+ int ST_UB8 (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,int *,int) ;
+ scalar_t__ __msa_hadd_u_d (scalar_t__,scalar_t__) ;
+ int __msa_hadd_u_h (scalar_t__,scalar_t__) ;
+ scalar_t__ __msa_hadd_u_w (int ,int ) ;
+ scalar_t__ __msa_pckev_w (int ,int ) ;
+ scalar_t__ __msa_splati_b (int ,int ) ;
+ scalar_t__ __msa_srari_d (int ,int) ;
 
 void ff_h264_intra_pred_dc_top_16x16_msa(uint8_t *src, ptrdiff_t stride)
 {

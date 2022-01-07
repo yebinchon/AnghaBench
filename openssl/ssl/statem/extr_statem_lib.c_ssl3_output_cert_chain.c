@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WPACKET ;
-typedef  int /*<<< orphan*/  SSL ;
-typedef  int /*<<< orphan*/  CERT_PKEY ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR_R_INTERNAL_ERROR ; 
- int /*<<< orphan*/  SSL_AD_INTERNAL_ERROR ; 
- int /*<<< orphan*/  SSL_F_SSL3_OUTPUT_CERT_CHAIN ; 
- int /*<<< orphan*/  SSLfatal (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WPACKET_close (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  WPACKET_start_sub_packet_u24 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ssl_add_cert_chain (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int WPACKET ;
+typedef int SSL ;
+typedef int CERT_PKEY ;
+
+
+ int ERR_R_INTERNAL_ERROR ;
+ int SSL_AD_INTERNAL_ERROR ;
+ int SSL_F_SSL3_OUTPUT_CERT_CHAIN ;
+ int SSLfatal (int *,int ,int ,int ) ;
+ int WPACKET_close (int *) ;
+ int WPACKET_start_sub_packet_u24 (int *) ;
+ int ssl_add_cert_chain (int *,int *,int *) ;
 
 unsigned long ssl3_output_cert_chain(SSL *s, WPACKET *pkt, CERT_PKEY *cpk)
 {

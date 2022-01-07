@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  user_index_data ;
-typedef  int /*<<< orphan*/  index_header ;
-struct TYPE_5__ {int user_cnt; int log_split_min; int log_split_max; int log_split_mod; struct TYPE_5__* user_index; int /*<<< orphan*/  created_at; scalar_t__ log_pos1_crc32; scalar_t__ log_pos0_crc32; scalar_t__ log_timestamp; scalar_t__ log_pos1; scalar_t__ log_pos0; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/ * fd ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int get_index_header_size (TYPE_1__*) ; 
- TYPE_1__ header ; 
- int header_size ; 
- int log_split_max ; 
- int log_split_min ; 
- int log_split_mod ; 
- scalar_t__ lseek (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int open_file (int /*<<< orphan*/ ,char*,int) ; 
- TYPE_1__* qmalloc0 (int) ; 
- int read (int /*<<< orphan*/ ,TYPE_1__*,int) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  time (int /*<<< orphan*/ *) ; 
- int verbosity ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int user_index_data ;
+typedef int index_header ;
+struct TYPE_5__ {int user_cnt; int log_split_min; int log_split_max; int log_split_mod; struct TYPE_5__* user_index; int created_at; scalar_t__ log_pos1_crc32; scalar_t__ log_pos0_crc32; scalar_t__ log_timestamp; scalar_t__ log_pos1; scalar_t__ log_pos0; } ;
+
+
+ int SEEK_SET ;
+ int assert (int) ;
+ int * fd ;
+ int fprintf (int ,char*,...) ;
+ int get_index_header_size (TYPE_1__*) ;
+ TYPE_1__ header ;
+ int header_size ;
+ int log_split_max ;
+ int log_split_min ;
+ int log_split_mod ;
+ scalar_t__ lseek (int ,int ,int ) ;
+ int open_file (int ,char*,int) ;
+ TYPE_1__* qmalloc0 (int) ;
+ int read (int ,TYPE_1__*,int) ;
+ int stderr ;
+ int time (int *) ;
+ int verbosity ;
 
 int load_header (char *indexname) {
   if (open_file (0, indexname, -1) == -1) {
 
     header.user_cnt = 0;
-    header.user_index = NULL;
+    header.user_index = ((void*)0);
 
     header.log_pos0 = 0;
     header.log_pos1 = 0;
@@ -49,13 +49,13 @@ int load_header (char *indexname) {
     header.log_pos0_crc32 = 0;
     header.log_pos1_crc32 = 0;
 
-    header.created_at = time (NULL);
+    header.created_at = time (((void*)0));
     header_size = sizeof (index_header);
 
     return 0;
   }
 
-  // read header
+
   assert (lseek (fd[0], 0, SEEK_SET) == 0);
 
   int size = sizeof (index_header) - sizeof (long);

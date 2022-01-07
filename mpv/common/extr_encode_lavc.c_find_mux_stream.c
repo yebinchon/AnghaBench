@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct mux_stream {int codec_type; } ;
 struct encode_priv {int num_streams; struct mux_stream** streams; } ;
 struct encode_lavc_context {struct encode_priv* priv; } ;
-typedef  enum AVMediaType { ____Placeholder_AVMediaType } AVMediaType ;
+typedef enum AVMediaType { ____Placeholder_AVMediaType } AVMediaType ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static struct mux_stream *find_mux_stream(struct encode_lavc_context *ctx,
                                           enum AVMediaType codec_type)
@@ -28,5 +28,5 @@ __attribute__((used)) static struct mux_stream *find_mux_stream(struct encode_la
             return s;
     }
 
-    return NULL;
+    return ((void*)0);
 }

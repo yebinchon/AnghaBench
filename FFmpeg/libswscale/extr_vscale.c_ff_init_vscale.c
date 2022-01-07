@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VScalerContext ;
-struct TYPE_7__ {int /*<<< orphan*/  use_mmx_vfilter; int /*<<< orphan*/  yuv2anyX; scalar_t__ yuv2packedX; int /*<<< orphan*/  yuv2packed2; int /*<<< orphan*/  yuv2packed1; int /*<<< orphan*/  yuv2nv12cX; int /*<<< orphan*/  yuv2planeX; int /*<<< orphan*/  yuv2plane1; int /*<<< orphan*/  needAlpha; int /*<<< orphan*/  dstFormat; } ;
-struct TYPE_6__ {int /*<<< orphan*/  alpha; int /*<<< orphan*/ * dst; int /*<<< orphan*/ * src; int /*<<< orphan*/ * instance; int /*<<< orphan*/  process; } ;
-typedef  int /*<<< orphan*/  SwsSlice ;
-typedef  TYPE_1__ SwsFilterDescriptor ;
-typedef  TYPE_2__ SwsContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  any_vscale ; 
- int /*<<< orphan*/ * av_mallocz (int) ; 
- int /*<<< orphan*/ * av_mallocz_array (int,int) ; 
- int /*<<< orphan*/  chr_planar_vscale ; 
- int /*<<< orphan*/  ff_init_vscale_pfn (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  isALPHA (int /*<<< orphan*/ ) ; 
- scalar_t__ isGray (int /*<<< orphan*/ ) ; 
- scalar_t__ isPlanarYUV (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lum_planar_vscale ; 
- int /*<<< orphan*/  packed_vscale ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int VScalerContext ;
+struct TYPE_7__ {int use_mmx_vfilter; int yuv2anyX; scalar_t__ yuv2packedX; int yuv2packed2; int yuv2packed1; int yuv2nv12cX; int yuv2planeX; int yuv2plane1; int needAlpha; int dstFormat; } ;
+struct TYPE_6__ {int alpha; int * dst; int * src; int * instance; int process; } ;
+typedef int SwsSlice ;
+typedef TYPE_1__ SwsFilterDescriptor ;
+typedef TYPE_2__ SwsContext ;
+
+
+ int AVERROR (int ) ;
+ int ENOMEM ;
+ int any_vscale ;
+ int * av_mallocz (int) ;
+ int * av_mallocz_array (int,int) ;
+ int chr_planar_vscale ;
+ int ff_init_vscale_pfn (TYPE_2__*,int ,int ,int ,int ,int ,scalar_t__,int ,int ) ;
+ int isALPHA (int ) ;
+ scalar_t__ isGray (int ) ;
+ scalar_t__ isPlanarYUV (int ) ;
+ int lum_planar_vscale ;
+ int packed_vscale ;
 
 int ff_init_vscale(SwsContext *c, SwsFilterDescriptor *desc, SwsSlice *src, SwsSlice *dst)
 {
-    VScalerContext *lumCtx = NULL;
-    VScalerContext *chrCtx = NULL;
+    VScalerContext *lumCtx = ((void*)0);
+    VScalerContext *chrCtx = ((void*)0);
 
     if (isPlanarYUV(c->dstFormat) || (isGray(c->dstFormat) && !isALPHA(c->dstFormat))) {
         lumCtx = av_mallocz(sizeof(VScalerContext));

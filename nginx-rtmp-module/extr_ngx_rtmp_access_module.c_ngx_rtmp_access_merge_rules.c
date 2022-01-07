@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ngx_int_t ;
-struct TYPE_5__ {scalar_t__ nelts; int size; int /*<<< orphan*/  elts; } ;
-typedef  TYPE_1__ ngx_array_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NGX_ERROR ; 
- int /*<<< orphan*/  NGX_OK ; 
- void* ngx_array_push_n (TYPE_1__*,scalar_t__) ; 
- int /*<<< orphan*/  ngx_memcpy (void*,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int ngx_int_t ;
+struct TYPE_5__ {scalar_t__ nelts; int size; int elts; } ;
+typedef TYPE_1__ ngx_array_t ;
+
+
+ int NGX_ERROR ;
+ int NGX_OK ;
+ void* ngx_array_push_n (TYPE_1__*,scalar_t__) ;
+ int ngx_memcpy (void*,int ,int) ;
 
 __attribute__((used)) static ngx_int_t
 ngx_rtmp_access_merge_rules(ngx_array_t *prev, ngx_array_t *rules)
 {
-    void   *p;
+    void *p;
 
     if (prev->nelts == 0) {
         return NGX_OK;
@@ -36,7 +36,7 @@ ngx_rtmp_access_merge_rules(ngx_array_t *prev, ngx_array_t *rules)
     }
 
     p = ngx_array_push_n(rules, prev->nelts);
-    if (p == NULL) {
+    if (p == ((void*)0)) {
         return NGX_ERROR;
     }
 

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u64 ;
-typedef  int u32 ;
+
+
+
+
+typedef int u64 ;
+typedef int u32 ;
 struct seq_file {int dummy; } ;
-typedef  int /*<<< orphan*/  data ;
+typedef int data ;
 
-/* Variables and functions */
- int seq_write (struct seq_file*,int*,int) ; 
+
+ int seq_write (struct seq_file*,int*,int) ;
 
 __attribute__((used)) static int seq_write_gcov_u64(struct seq_file *seq, u64 v)
 {
-	u32 data[2];
+ u32 data[2];
 
-	data[0] = (v & 0xffffffffUL);
-	data[1] = (v >> 32);
-	return seq_write(seq, data, sizeof(data));
+ data[0] = (v & 0xffffffffUL);
+ data[1] = (v >> 32);
+ return seq_write(seq, data, sizeof(data));
 }

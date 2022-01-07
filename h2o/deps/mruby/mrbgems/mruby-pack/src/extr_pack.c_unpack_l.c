@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  msg ;
-typedef  int /*<<< orphan*/  mrb_value ;
-typedef  int /*<<< orphan*/  mrb_state ;
-typedef  int mrb_int ;
-typedef  int int32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_RANGE_ERROR ; 
- int /*<<< orphan*/  FIXABLE (int) ; 
- unsigned int PACK_FLAG_LITTLEENDIAN ; 
- unsigned int PACK_FLAG_SIGNED ; 
- int /*<<< orphan*/  POSFIXABLE (int) ; 
- int /*<<< orphan*/  mrb_ary_push (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_fixnum_value (int) ; 
- int /*<<< orphan*/  mrb_raise (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,unsigned long) ; 
+
+
+
+typedef int uint32_t ;
+typedef int msg ;
+typedef int mrb_value ;
+typedef int mrb_state ;
+typedef int mrb_int ;
+typedef int int32_t ;
+
+
+ int E_RANGE_ERROR ;
+ int FIXABLE (int) ;
+ unsigned int PACK_FLAG_LITTLEENDIAN ;
+ unsigned int PACK_FLAG_SIGNED ;
+ int POSFIXABLE (int) ;
+ int mrb_ary_push (int *,int ,int ) ;
+ int mrb_fixnum_value (int) ;
+ int mrb_raise (int *,int ,char*) ;
+ int snprintf (char*,int,char*,unsigned long) ;
 
 __attribute__((used)) static int
 unpack_l(mrb_state *mrb, const unsigned char *src, int srclen, mrb_value ary, unsigned int flags)
 {
-#ifndef MRB_INT64
+
   char msg[60];
-#endif
+
   uint32_t ul;
   mrb_int n;
 
@@ -50,20 +50,20 @@ unpack_l(mrb_state *mrb, const unsigned char *src, int srclen, mrb_value ary, un
   }
   if (flags & PACK_FLAG_SIGNED) {
     int32_t sl = ul;
-#ifndef MRB_INT64
+
     if (!FIXABLE(sl)) {
       snprintf(msg, sizeof(msg), "cannot unpack to Fixnum: %ld", (long)sl);
       mrb_raise(mrb, E_RANGE_ERROR, msg);
     }
-#endif
+
     n = sl;
   } else {
-#ifndef MRB_INT64
+
     if (!POSFIXABLE(ul)) {
       snprintf(msg, sizeof(msg), "cannot unpack to Fixnum: %lu", (unsigned long)ul);
       mrb_raise(mrb, E_RANGE_ERROR, msg);
     }
-#endif
+
     n = ul;
   }
   mrb_ary_push(mrb, ary, mrb_fixnum_value(n));

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mpc_parser_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * mpc_expect (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  mpc_hex () ; 
- int /*<<< orphan*/  mpc_int () ; 
- int /*<<< orphan*/  mpc_oct () ; 
- int /*<<< orphan*/  mpc_or (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int mpc_parser_t ;
+
+
+ int * mpc_expect (int ,char*) ;
+ int mpc_hex () ;
+ int mpc_int () ;
+ int mpc_oct () ;
+ int mpc_or (int,int ,int ,int ) ;
 
 mpc_parser_t *mpc_number(void) { return mpc_expect(mpc_or(3, mpc_int(), mpc_hex(), mpc_oct()), "number"); }

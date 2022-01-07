@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct lagg_softc {size_t sc_proto; } ;
 struct lagg_port {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/  (* pr_portreq ) (struct lagg_port*,void*) ;} ;
+struct TYPE_2__ {int (* pr_portreq ) (struct lagg_port*,void*) ;} ;
 
-/* Variables and functions */
- TYPE_1__* lagg_protos ; 
- int /*<<< orphan*/  stub1 (struct lagg_port*,void*) ; 
+
+ TYPE_1__* lagg_protos ;
+ int stub1 (struct lagg_port*,void*) ;
 
 __attribute__((used)) static void
 lagg_proto_portreq(struct lagg_softc *sc, struct lagg_port *lp, void *v)
 {
 
-	if (lagg_protos[sc->sc_proto].pr_portreq != NULL)
-		lagg_protos[sc->sc_proto].pr_portreq(lp, v);
+ if (lagg_protos[sc->sc_proto].pr_portreq != ((void*)0))
+  lagg_protos[sc->sc_proto].pr_portreq(lp, v);
 }

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  usec_t ;
-typedef  int /*<<< orphan*/  RRDSET ;
-typedef  int /*<<< orphan*/  RRDDIM ;
 
-/* Variables and functions */
- int CPUSTATES ; 
- int GETSYSCTL_SIMPLE (char*,int*,long*) ; 
- int /*<<< orphan*/  NETDATA_CHART_PRIO_SYSTEM_CPU ; 
- int /*<<< orphan*/  RRDSET_TYPE_STACKED ; 
- int /*<<< orphan*/  RRD_ALGORITHM_PCENT_OVER_DIFF_TOTAL ; 
- int /*<<< orphan*/  error (char*,...) ; 
- int /*<<< orphan*/ * rrddim_add (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rrddim_hide (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  rrddim_set_by_pointer (int /*<<< orphan*/ *,int /*<<< orphan*/ *,long) ; 
- int /*<<< orphan*/ * rrdset_create_localhost (char*,char*,int /*<<< orphan*/ *,char*,char*,char*,char*,char*,char*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rrdset_done (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  rrdset_next (int /*<<< orphan*/ *) ; 
- scalar_t__ unlikely (int) ; 
+
+
+
+typedef int usec_t ;
+typedef int RRDSET ;
+typedef int RRDDIM ;
+
+
+ int CPUSTATES ;
+ int GETSYSCTL_SIMPLE (char*,int*,long*) ;
+ int NETDATA_CHART_PRIO_SYSTEM_CPU ;
+ int RRDSET_TYPE_STACKED ;
+ int RRD_ALGORITHM_PCENT_OVER_DIFF_TOTAL ;
+ int error (char*,...) ;
+ int * rrddim_add (int *,char*,int *,int,int,int ) ;
+ int rrddim_hide (int *,char*) ;
+ int rrddim_set_by_pointer (int *,int *,long) ;
+ int * rrdset_create_localhost (char*,char*,int *,char*,char*,char*,char*,char*,char*,int ,int,int ) ;
+ int rrdset_done (int *) ;
+ int rrdset_next (int *) ;
+ scalar_t__ unlikely (int) ;
 
 int do_kern_cp_time(int update_every, usec_t dt) {
     (void)dt;
@@ -47,16 +47,16 @@ int do_kern_cp_time(int update_every, usec_t dt) {
             return 1;
         } else {
 
-            // --------------------------------------------------------------------
 
-            static RRDSET *st = NULL;
-            static RRDDIM *rd_nice = NULL, *rd_system = NULL, *rd_user = NULL, *rd_interrupt = NULL, *rd_idle = NULL;
+
+            static RRDSET *st = ((void*)0);
+            static RRDDIM *rd_nice = ((void*)0), *rd_system = ((void*)0), *rd_user = ((void*)0), *rd_interrupt = ((void*)0), *rd_idle = ((void*)0);
 
             if (unlikely(!st)) {
                 st = rrdset_create_localhost(
                         "system",
                         "cpu",
-                        NULL,
+                        ((void*)0),
                         "cpu",
                         "system.cpu",
                         "Total CPU utilization",
@@ -68,11 +68,11 @@ int do_kern_cp_time(int update_every, usec_t dt) {
                         RRDSET_TYPE_STACKED
                 );
 
-                rd_nice         = rrddim_add(st, "nice", NULL, 1, 1, RRD_ALGORITHM_PCENT_OVER_DIFF_TOTAL);
-                rd_system       = rrddim_add(st, "system", NULL, 1, 1, RRD_ALGORITHM_PCENT_OVER_DIFF_TOTAL);
-                rd_user         = rrddim_add(st, "user", NULL, 1, 1, RRD_ALGORITHM_PCENT_OVER_DIFF_TOTAL);
-                rd_interrupt    = rrddim_add(st, "interrupt", NULL, 1, 1, RRD_ALGORITHM_PCENT_OVER_DIFF_TOTAL);
-                rd_idle         = rrddim_add(st, "idle", NULL, 1, 1, RRD_ALGORITHM_PCENT_OVER_DIFF_TOTAL);
+                rd_nice = rrddim_add(st, "nice", ((void*)0), 1, 1, RRD_ALGORITHM_PCENT_OVER_DIFF_TOTAL);
+                rd_system = rrddim_add(st, "system", ((void*)0), 1, 1, RRD_ALGORITHM_PCENT_OVER_DIFF_TOTAL);
+                rd_user = rrddim_add(st, "user", ((void*)0), 1, 1, RRD_ALGORITHM_PCENT_OVER_DIFF_TOTAL);
+                rd_interrupt = rrddim_add(st, "interrupt", ((void*)0), 1, 1, RRD_ALGORITHM_PCENT_OVER_DIFF_TOTAL);
+                rd_idle = rrddim_add(st, "idle", ((void*)0), 1, 1, RRD_ALGORITHM_PCENT_OVER_DIFF_TOTAL);
                 rrddim_hide(st, "idle");
             }
             else rrdset_next(st);

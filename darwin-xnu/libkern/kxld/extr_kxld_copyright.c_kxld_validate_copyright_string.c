@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u_long ;
-typedef  int /*<<< orphan*/  boolean_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
- int const_strlen (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dates_are_valid (char*,int) ; 
- int /*<<< orphan*/  kCopyrightToken ; 
- int /*<<< orphan*/  kRightsToken ; 
- char* kxld_alloc (int) ; 
- int /*<<< orphan*/  kxld_free (char*,int) ; 
- char* kxld_strstr (char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strncpy (char*,char const*,int) ; 
 
-boolean_t 
+
+
+typedef int u_long ;
+typedef int boolean_t ;
+
+
+ int FALSE ;
+ int TRUE ;
+ int const_strlen (int ) ;
+ int dates_are_valid (char*,int) ;
+ int kCopyrightToken ;
+ int kRightsToken ;
+ char* kxld_alloc (int) ;
+ int kxld_free (char*,int) ;
+ char* kxld_strstr (char const*,int ) ;
+ int strncpy (char*,char const*,int) ;
+
+boolean_t
 kxld_validate_copyright_string(const char *str)
 {
     boolean_t result = FALSE;
-    const char *copyright = NULL;
-    const char *rights = NULL;
-    char *date_str = NULL;
+    const char *copyright = ((void*)0);
+    const char *rights = ((void*)0);
+    char *date_str = ((void*)0);
     u_long len = 0;
 
     copyright = kxld_strstr(str, kCopyrightToken);

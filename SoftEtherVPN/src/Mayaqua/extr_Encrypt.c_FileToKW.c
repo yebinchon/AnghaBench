@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wchar_t ;
-typedef  int /*<<< orphan*/  K ;
-typedef  int /*<<< orphan*/  BUF ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * BufToK (int /*<<< orphan*/ *,int,int,char*) ; 
- int /*<<< orphan*/  FreeBuf (int /*<<< orphan*/ *) ; 
- int IsBase64 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * ReadDumpW (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int wchar_t ;
+typedef int K ;
+typedef int BUF ;
+
+
+ int * BufToK (int *,int,int,char*) ;
+ int FreeBuf (int *) ;
+ int IsBase64 (int *) ;
+ int * ReadDumpW (int *) ;
 
 K *FileToKW(wchar_t *filename, bool private_key, char *password)
 {
-	bool text;
-	BUF *b;
-	K *k;
-	// Validate arguments
-	if (filename == NULL)
-	{
-		return NULL;
-	}
+ bool text;
+ BUF *b;
+ K *k;
 
-	b = ReadDumpW(filename);
-	if (b == NULL)
-	{
-		return NULL;
-	}
+ if (filename == ((void*)0))
+ {
+  return ((void*)0);
+ }
 
-	text = IsBase64(b);
-	if (text == false)
-	{
-		k = BufToK(b, private_key, false, NULL);
-	}
-	else
-	{
-		k = BufToK(b, private_key, true, NULL);
-		if (k == NULL)
-		{
-			k = BufToK(b, private_key, true, password);
-		}
-	}
+ b = ReadDumpW(filename);
+ if (b == ((void*)0))
+ {
+  return ((void*)0);
+ }
 
-	FreeBuf(b);
+ text = IsBase64(b);
+ if (text == 0)
+ {
+  k = BufToK(b, private_key, 0, ((void*)0));
+ }
+ else
+ {
+  k = BufToK(b, private_key, 1, ((void*)0));
+  if (k == ((void*)0))
+  {
+   k = BufToK(b, private_key, 1, password);
+  }
+ }
 
-	return k;
+ FreeBuf(b);
+
+ return k;
 }

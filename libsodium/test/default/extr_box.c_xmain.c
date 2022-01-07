@@ -1,57 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  alicesk ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  bobpk ; 
- scalar_t__* c ; 
- int crypto_box (scalar_t__*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int crypto_box_BEFORENMBYTES ; 
- int /*<<< orphan*/  crypto_box_afternm (scalar_t__*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,unsigned char*) ; 
- int crypto_box_beforenm (unsigned char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- unsigned int crypto_box_beforenmbytes () ; 
- unsigned int crypto_box_boxzerobytes () ; 
- unsigned int crypto_box_curve25519xsalsa20poly1305_beforenmbytes () ; 
- unsigned int crypto_box_curve25519xsalsa20poly1305_boxzerobytes () ; 
- unsigned int crypto_box_curve25519xsalsa20poly1305_macbytes () ; 
- unsigned int crypto_box_curve25519xsalsa20poly1305_messagebytes_max () ; 
- unsigned int crypto_box_curve25519xsalsa20poly1305_noncebytes () ; 
- unsigned int crypto_box_curve25519xsalsa20poly1305_publickeybytes () ; 
- unsigned int crypto_box_curve25519xsalsa20poly1305_secretkeybytes () ; 
- unsigned int crypto_box_curve25519xsalsa20poly1305_seedbytes () ; 
- unsigned int crypto_box_curve25519xsalsa20poly1305_zerobytes () ; 
- unsigned int crypto_box_macbytes () ; 
- unsigned int crypto_box_messagebytes_max () ; 
- unsigned int crypto_box_noncebytes () ; 
- int /*<<< orphan*/  crypto_box_primitive () ; 
- unsigned int crypto_box_publickeybytes () ; 
- unsigned int crypto_box_secretkeybytes () ; 
- unsigned int crypto_box_seedbytes () ; 
- unsigned int crypto_box_zerobytes () ; 
- int /*<<< orphan*/  m ; 
- int /*<<< orphan*/  memset (scalar_t__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  nonce ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  small_order_p ; 
- scalar_t__ strcmp (int /*<<< orphan*/ ,char*) ; 
+ int alicesk ;
+ int assert (int) ;
+ int bobpk ;
+ scalar_t__* c ;
+ int crypto_box (scalar_t__*,int ,int,int ,int ,int ) ;
+ int crypto_box_BEFORENMBYTES ;
+ int crypto_box_afternm (scalar_t__*,int ,int,int ,unsigned char*) ;
+ int crypto_box_beforenm (unsigned char*,int ,int ) ;
+ unsigned int crypto_box_beforenmbytes () ;
+ unsigned int crypto_box_boxzerobytes () ;
+ unsigned int crypto_box_curve25519xsalsa20poly1305_beforenmbytes () ;
+ unsigned int crypto_box_curve25519xsalsa20poly1305_boxzerobytes () ;
+ unsigned int crypto_box_curve25519xsalsa20poly1305_macbytes () ;
+ unsigned int crypto_box_curve25519xsalsa20poly1305_messagebytes_max () ;
+ unsigned int crypto_box_curve25519xsalsa20poly1305_noncebytes () ;
+ unsigned int crypto_box_curve25519xsalsa20poly1305_publickeybytes () ;
+ unsigned int crypto_box_curve25519xsalsa20poly1305_secretkeybytes () ;
+ unsigned int crypto_box_curve25519xsalsa20poly1305_seedbytes () ;
+ unsigned int crypto_box_curve25519xsalsa20poly1305_zerobytes () ;
+ unsigned int crypto_box_macbytes () ;
+ unsigned int crypto_box_messagebytes_max () ;
+ unsigned int crypto_box_noncebytes () ;
+ int crypto_box_primitive () ;
+ unsigned int crypto_box_publickeybytes () ;
+ unsigned int crypto_box_secretkeybytes () ;
+ unsigned int crypto_box_seedbytes () ;
+ unsigned int crypto_box_zerobytes () ;
+ int m ;
+ int memset (scalar_t__*,int ,int) ;
+ int nonce ;
+ int printf (char*,...) ;
+ int small_order_p ;
+ scalar_t__ strcmp (int ,char*) ;
 
 int
 main(void)
 {
     unsigned char k[crypto_box_BEFORENMBYTES];
-    int           i;
-    int           ret;
+    int i;
+    int ret;
 
     ret = crypto_box(c, m, 163, nonce, bobpk, alicesk);
     assert(ret == 0);

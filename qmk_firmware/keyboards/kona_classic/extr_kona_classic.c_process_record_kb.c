@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint16_t ;
-typedef  int /*<<< orphan*/  keyrecord_t ;
 
-/* Variables and functions */
- int process_record_user (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int uint16_t ;
+typedef int keyrecord_t ;
+
+
+ int process_record_user (int ,int *) ;
 
 bool process_record_kb(uint16_t keycode, keyrecord_t *record) {
-    // put your per-action keyboard code here
-    // runs for every action, just before processing by the firmware
+
+
 
     return process_record_user(keycode, record);
 }

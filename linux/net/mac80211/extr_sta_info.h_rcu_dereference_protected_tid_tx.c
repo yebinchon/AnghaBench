@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct tid_ampdu_tx {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/  mtx; int /*<<< orphan*/ * tid_tx; } ;
-struct sta_info {TYPE_1__ ampdu_mlme; int /*<<< orphan*/  lock; } ;
+struct TYPE_2__ {int mtx; int * tid_tx; } ;
+struct sta_info {TYPE_1__ ampdu_mlme; int lock; } ;
 
-/* Variables and functions */
- scalar_t__ lockdep_is_held (int /*<<< orphan*/ *) ; 
- struct tid_ampdu_tx* rcu_dereference_protected (int /*<<< orphan*/ ,int) ; 
+
+ scalar_t__ lockdep_is_held (int *) ;
+ struct tid_ampdu_tx* rcu_dereference_protected (int ,int) ;
 
 __attribute__((used)) static inline struct tid_ampdu_tx *
 rcu_dereference_protected_tid_tx(struct sta_info *sta, int tid)
 {
-	return rcu_dereference_protected(sta->ampdu_mlme.tid_tx[tid],
-					 lockdep_is_held(&sta->lock) ||
-					 lockdep_is_held(&sta->ampdu_mlme.mtx));
+ return rcu_dereference_protected(sta->ampdu_mlme.tid_tx[tid],
+      lockdep_is_held(&sta->lock) ||
+      lockdep_is_held(&sta->ampdu_mlme.mtx));
 }

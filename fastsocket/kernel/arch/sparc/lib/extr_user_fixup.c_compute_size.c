@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {unsigned long fault_address; } ;
 
-/* Variables and functions */
- TYPE_1__* current_thread_info () ; 
+
+ TYPE_1__* current_thread_info () ;
 
 __attribute__((used)) static unsigned long compute_size(unsigned long start, unsigned long size, unsigned long *offset)
 {
-	unsigned long fault_addr = current_thread_info()->fault_address;
-	unsigned long end = start + size;
+ unsigned long fault_addr = current_thread_info()->fault_address;
+ unsigned long end = start + size;
 
-	if (fault_addr < start || fault_addr >= end) {
-		*offset = 0;
-	} else {
-		*offset = fault_addr - start;
-		size = end - fault_addr;
-	}
-	return size;
+ if (fault_addr < start || fault_addr >= end) {
+  *offset = 0;
+ } else {
+  *offset = fault_addr - start;
+  size = end - fault_addr;
+ }
+ return size;
 }

@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  temp_filename ;
-typedef  int /*<<< orphan*/  filename ;
-struct TYPE_13__ {char* url; int (* io_open ) (TYPE_4__*,int /*<<< orphan*/ **,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ;TYPE_1__** streams; TYPE_3__* priv_data; } ;
+
+
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int temp_filename ;
+typedef int filename ;
+struct TYPE_13__ {char* url; int (* io_open ) (TYPE_4__*,int **,char*,int ,int *) ;TYPE_1__** streams; TYPE_3__* priv_data; } ;
 struct TYPE_12__ {int nb_streams; TYPE_2__* streams; } ;
-struct TYPE_11__ {double last_ts; int bitrate; int /*<<< orphan*/  metadata_size; int /*<<< orphan*/  metadata; } ;
-struct TYPE_10__ {int /*<<< orphan*/  time_base; } ;
-typedef  TYPE_2__ OutputStream ;
-typedef  TYPE_3__ HDSContext ;
-typedef  int /*<<< orphan*/  AVIOContext ;
-typedef  TYPE_4__ AVFormatContext ;
+struct TYPE_11__ {double last_ts; int bitrate; int metadata_size; int metadata; } ;
+struct TYPE_10__ {int time_base; } ;
+typedef TYPE_2__ OutputStream ;
+typedef TYPE_3__ HDSContext ;
+typedef int AVIOContext ;
+typedef TYPE_4__ AVFormatContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AVIO_FLAG_WRITE ; 
- int AV_BASE64_SIZE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  av_base64_encode (char*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_basename (char*) ; 
- int /*<<< orphan*/  av_free (char*) ; 
- int /*<<< orphan*/  av_log (TYPE_4__*,int /*<<< orphan*/ ,char*,char*) ; 
- char* av_malloc (int) ; 
- double av_q2d (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  avio_flush (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  avio_printf (int /*<<< orphan*/ *,char*,...) ; 
- int /*<<< orphan*/  ff_format_io_close (TYPE_4__*,int /*<<< orphan*/ **) ; 
- int ff_rename (char*,char*,TYPE_4__*) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,char*) ; 
- int stub1 (TYPE_4__*,int /*<<< orphan*/ **,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int AVERROR (int ) ;
+ int AVIO_FLAG_WRITE ;
+ int AV_BASE64_SIZE (int ) ;
+ int AV_LOG_ERROR ;
+ int ENOMEM ;
+ int av_base64_encode (char*,int,int ,int ) ;
+ int av_basename (char*) ;
+ int av_free (char*) ;
+ int av_log (TYPE_4__*,int ,char*,char*) ;
+ char* av_malloc (int) ;
+ double av_q2d (int ) ;
+ int avio_flush (int *) ;
+ int avio_printf (int *,char*,...) ;
+ int ff_format_io_close (TYPE_4__*,int **) ;
+ int ff_rename (char*,char*,TYPE_4__*) ;
+ int snprintf (char*,int,char*,char*) ;
+ int stub1 (TYPE_4__*,int **,char*,int ,int *) ;
 
 __attribute__((used)) static int write_manifest(AVFormatContext *s, int final)
 {
@@ -57,7 +57,7 @@ __attribute__((used)) static int write_manifest(AVFormatContext *s, int final)
 
     snprintf(filename, sizeof(filename), "%s/index.f4m", s->url);
     snprintf(temp_filename, sizeof(temp_filename), "%s/index.f4m.tmp", s->url);
-    ret = s->io_open(s, &out, temp_filename, AVIO_FLAG_WRITE, NULL);
+    ret = s->io_open(s, &out, temp_filename, AVIO_FLAG_WRITE, ((void*)0));
     if (ret < 0) {
         av_log(s, AV_LOG_ERROR, "Unable to open %s for writing\n", temp_filename);
         return ret;

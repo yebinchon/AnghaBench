@@ -1,18 +1,10 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
+ int assert (int) ;
 
 __attribute__((used)) static int
 bsearch_lower_bound(const void *key,
@@ -24,10 +16,10 @@ bsearch_lower_bound(const void *key,
   int lower = 0;
   int upper = nelts - 1;
 
-  /* Binary search for the lowest position at which to insert KEY. */
+
   while (lower <= upper)
     {
-      int try = lower + (upper - lower) / 2;  /* careful to avoid overflow */
+      int try = lower + (upper - lower) / 2;
       int cmp = compare_func((const char *)base + try * elt_size, key);
 
       if (cmp < 0)

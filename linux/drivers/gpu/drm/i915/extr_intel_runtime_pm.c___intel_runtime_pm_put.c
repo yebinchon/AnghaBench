@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct intel_runtime_pm {struct device* kdev; } ;
 struct device {int dummy; } ;
-typedef  int /*<<< orphan*/  intel_wakeref_t ;
+typedef int intel_wakeref_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  intel_runtime_pm_release (struct intel_runtime_pm*,int) ; 
- int /*<<< orphan*/  pm_runtime_mark_last_busy (struct device*) ; 
- int /*<<< orphan*/  pm_runtime_put_autosuspend (struct device*) ; 
- int /*<<< orphan*/  untrack_intel_runtime_pm_wakeref (struct intel_runtime_pm*,int /*<<< orphan*/ ) ; 
+
+ int intel_runtime_pm_release (struct intel_runtime_pm*,int) ;
+ int pm_runtime_mark_last_busy (struct device*) ;
+ int pm_runtime_put_autosuspend (struct device*) ;
+ int untrack_intel_runtime_pm_wakeref (struct intel_runtime_pm*,int ) ;
 
 __attribute__((used)) static void __intel_runtime_pm_put(struct intel_runtime_pm *rpm,
-				   intel_wakeref_t wref,
-				   bool wakelock)
+       intel_wakeref_t wref,
+       bool wakelock)
 {
-	struct device *kdev = rpm->kdev;
+ struct device *kdev = rpm->kdev;
 
-	untrack_intel_runtime_pm_wakeref(rpm, wref);
+ untrack_intel_runtime_pm_wakeref(rpm, wref);
 
-	intel_runtime_pm_release(rpm, wakelock);
+ intel_runtime_pm_release(rpm, wakelock);
 
-	pm_runtime_mark_last_busy(kdev);
-	pm_runtime_put_autosuspend(kdev);
+ pm_runtime_mark_last_busy(kdev);
+ pm_runtime_put_autosuspend(kdev);
 }

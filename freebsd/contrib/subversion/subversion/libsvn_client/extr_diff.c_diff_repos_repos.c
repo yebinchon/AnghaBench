@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_ra_session_t ;
-struct TYPE_6__ {int /*<<< orphan*/  (* finish_report ) (void*,int /*<<< orphan*/ *) ;int /*<<< orphan*/  (* set_path ) (void*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ;} ;
-typedef  TYPE_1__ svn_ra_reporter3_t ;
-typedef  int /*<<< orphan*/  svn_opt_revision_t ;
-typedef  scalar_t__ svn_node_kind_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_diff_tree_processor_t ;
-typedef  int /*<<< orphan*/  svn_depth_t ;
-typedef  int /*<<< orphan*/  svn_delta_editor_t ;
-struct TYPE_7__ {int /*<<< orphan*/  cancel_baton; int /*<<< orphan*/  cancel_func; } ;
-typedef  TYPE_2__ svn_client_ctx_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-struct diff_driver_info_t {char const* orig_path_1; char const* orig_path_2; char const* anchor; int /*<<< orphan*/  session_relpath; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- char* apr_pstrdup (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  diff_prepare_repos_repos (char const**,char const**,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const**,char const**,char const**,char const**,scalar_t__*,scalar_t__*,int /*<<< orphan*/ **,TYPE_2__*,char const*,char const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub1 (void*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub2 (void*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_client__get_diff_editor2 (int /*<<< orphan*/  const**,void**,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_depth_infinity ; 
- int /*<<< orphan*/ * svn_diff__tree_processor_filter_create (int /*<<< orphan*/  const*,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_diff__tree_processor_reverse_create (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- char const* svn_dirent_dirname (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_error_trace (int /*<<< orphan*/ ) ; 
- scalar_t__ svn_node_dir ; 
- scalar_t__ svn_node_file ; 
- scalar_t__ svn_node_none ; 
- int /*<<< orphan*/  svn_path_is_url (char const*) ; 
- int /*<<< orphan*/  svn_ra__dup_session (int /*<<< orphan*/ **,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_ra_do_diff3 (int /*<<< orphan*/ *,TYPE_1__ const**,void**,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/  const*,void*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_ra_get_repos_root2 (int /*<<< orphan*/ *,char const**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_ra_get_session_url (int /*<<< orphan*/ *,char const**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_uri_skip_ancestor (char const*,char const*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int svn_revnum_t ;
+typedef int svn_ra_session_t ;
+struct TYPE_6__ {int (* finish_report ) (void*,int *) ;int (* set_path ) (void*,char*,int ,int ,int ,int *,int *) ;} ;
+typedef TYPE_1__ svn_ra_reporter3_t ;
+typedef int svn_opt_revision_t ;
+typedef scalar_t__ svn_node_kind_t ;
+typedef int svn_error_t ;
+typedef int svn_diff_tree_processor_t ;
+typedef int svn_depth_t ;
+typedef int svn_delta_editor_t ;
+struct TYPE_7__ {int cancel_baton; int cancel_func; } ;
+typedef TYPE_2__ svn_client_ctx_t ;
+typedef int svn_boolean_t ;
+struct diff_driver_info_t {char const* orig_path_1; char const* orig_path_2; char const* anchor; int session_relpath; } ;
+typedef int apr_pool_t ;
+
+
+ int FALSE ;
+ int SVN_ERR (int ) ;
+ char* apr_pstrdup (int *,char const*) ;
+ int diff_prepare_repos_repos (char const**,char const**,int *,int *,char const**,char const**,char const**,char const**,scalar_t__*,scalar_t__*,int **,TYPE_2__*,char const*,char const*,int const*,int const*,int const*,int *) ;
+ int stub1 (void*,char*,int ,int ,int ,int *,int *) ;
+ int stub2 (void*,int *) ;
+ int svn_client__get_diff_editor2 (int const**,void**,int *,int ,int ,int ,int const*,int ,int ,int *) ;
+ int svn_depth_infinity ;
+ int * svn_diff__tree_processor_filter_create (int const*,char const*,int *) ;
+ int * svn_diff__tree_processor_reverse_create (int const*,int *,int *) ;
+ char const* svn_dirent_dirname (char const*,int *) ;
+ int * svn_error_trace (int ) ;
+ scalar_t__ svn_node_dir ;
+ scalar_t__ svn_node_file ;
+ scalar_t__ svn_node_none ;
+ int svn_path_is_url (char const*) ;
+ int svn_ra__dup_session (int **,int *,char const*,int *,int *) ;
+ int svn_ra_do_diff3 (int *,TYPE_1__ const**,void**,int ,char const*,int ,int ,int ,char const*,int const*,void*,int *) ;
+ int svn_ra_get_repos_root2 (int *,char const**,int *) ;
+ int svn_ra_get_session_url (int *,char const**,int *) ;
+ int svn_uri_skip_ancestor (char const*,char const*,int *) ;
 
 __attribute__((used)) static svn_error_t *
 diff_repos_repos(const char **root_relpath,
@@ -88,7 +88,7 @@ diff_repos_repos(const char **root_relpath,
   const char *target2;
   svn_ra_session_t *ra_session;
 
-  /* Prepare info for the repos repos diff. */
+
   SVN_ERR(diff_prepare_repos_repos(&url1, &url2, &rev1, &rev2,
                                    &anchor1, &anchor2, &target1, &target2,
                                    &kind1, &kind2, &ra_session,
@@ -96,34 +96,34 @@ diff_repos_repos(const char **root_relpath,
                                    revision1, revision2, peg_revision,
                                    scratch_pool));
 
-  /* Set up the repos_diff editor on BASE_PATH, if available.
-     Otherwise, we just use "". */
+
+
 
   if (ddi)
     {
-      /* Get actual URLs. */
+
       ddi->orig_path_1 = url1;
       ddi->orig_path_2 = url2;
 
-      /* This should be moved to the diff writer
-         - path_or_url are provided by the caller
-         - target1 is available as *root_relpath
-         - (kind1 != svn_node_dir || kind2 != svn_node_dir) = !*root_is_dir */
+
+
+
+
 
       if (!svn_path_is_url(path_or_url2))
         ddi->anchor = path_or_url2;
       else if (!svn_path_is_url(path_or_url1))
         ddi->anchor = path_or_url1;
       else
-        ddi->anchor = NULL;
+        ddi->anchor = ((void*)0);
 
       if (*target1 && ddi->anchor
           && (kind1 != svn_node_dir || kind2 != svn_node_dir))
         ddi->anchor = svn_dirent_dirname(ddi->anchor, result_pool);
     }
 
-  /* The repository can bring in a new working copy, but not delete
-     everything. Luckily our new diff handler can just be reversed. */
+
+
   if (kind2 == svn_node_none)
     {
       const char *str_tmp;
@@ -146,12 +146,12 @@ diff_repos_repos(const char **root_relpath,
       target1 = str_tmp;
 
       diff_processor = svn_diff__tree_processor_reverse_create(diff_processor,
-                                                               NULL,
+                                                               ((void*)0),
                                                                scratch_pool);
     }
 
-  /* Filter the first path component using a filter processor, until we fixed
-     the diff processing to handle this directly */
+
+
   if (root_relpath)
     *root_relpath = apr_pstrdup(result_pool, target1);
   else if ((kind1 != svn_node_file && kind2 != svn_node_file)
@@ -161,9 +161,9 @@ diff_repos_repos(const char **root_relpath,
                                         diff_processor, target1, scratch_pool);
     }
 
-  /* Now, we open an extra RA session to the correct anchor
-     location for URL1.  This is used during the editor calls to fetch file
-     contents.  */
+
+
+
   SVN_ERR(svn_ra__dup_session(&extra_ra_session, ra_session, anchor1,
                               scratch_pool, scratch_pool));
 
@@ -191,16 +191,16 @@ diff_repos_repos(const char **root_relpath,
                 ctx->cancel_func, ctx->cancel_baton,
                 scratch_pool));
 
-  /* We want to switch our txn into URL2 */
+
   SVN_ERR(svn_ra_do_diff3(ra_session, &reporter, &reporter_baton,
                           rev2, target1,
                           depth, ignore_ancestry, text_deltas,
                           url2, diff_editor, diff_edit_baton, scratch_pool));
 
-  /* Drive the reporter; do the diff. */
+
   SVN_ERR(reporter->set_path(reporter_baton, "", rev1,
                              svn_depth_infinity,
-                             FALSE, NULL,
+                             FALSE, ((void*)0),
                              scratch_pool));
 
   return svn_error_trace(

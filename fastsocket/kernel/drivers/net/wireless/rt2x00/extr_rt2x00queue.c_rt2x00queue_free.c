@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct rt2x00_dev {int /*<<< orphan*/ * bcn; int /*<<< orphan*/ * tx; int /*<<< orphan*/ * rx; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  kfree (int /*<<< orphan*/ *) ; 
+
+
+
+struct rt2x00_dev {int * bcn; int * tx; int * rx; } ;
+
+
+ int kfree (int *) ;
 
 void rt2x00queue_free(struct rt2x00_dev *rt2x00dev)
 {
-	kfree(rt2x00dev->rx);
-	rt2x00dev->rx = NULL;
-	rt2x00dev->tx = NULL;
-	rt2x00dev->bcn = NULL;
+ kfree(rt2x00dev->rx);
+ rt2x00dev->rx = ((void*)0);
+ rt2x00dev->tx = ((void*)0);
+ rt2x00dev->bcn = ((void*)0);
 }

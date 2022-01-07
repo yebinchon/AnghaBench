@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct pex_obj {int count; int /*<<< orphan*/ * status; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memcpy (int*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  memset (int*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  pex_get_status_and_time (struct pex_obj*,int /*<<< orphan*/ ,char const**,int*) ; 
+
+
+
+struct pex_obj {int count; int * status; } ;
+
+
+ int memcpy (int*,int *,int) ;
+ int memset (int*,int ,int) ;
+ int pex_get_status_and_time (struct pex_obj*,int ,char const**,int*) ;
 
 int
 pex_get_status (struct pex_obj *obj, int count, int *vector)
 {
-  if (obj->status == NULL)
+  if (obj->status == ((void*)0))
     {
       const char *errmsg;
       int err;
 
       if (!pex_get_status_and_time (obj, 0, &errmsg, &err))
-	return 0;
+ return 0;
     }
 
   if (count > obj->count)

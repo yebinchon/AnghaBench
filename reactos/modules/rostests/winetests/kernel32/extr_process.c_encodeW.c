@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ WCHAR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (char*) ; 
- char* grab_memory (size_t) ; 
- int lstrlenW (scalar_t__ const*) ; 
- int /*<<< orphan*/  sprintf (char*,char*,unsigned int) ; 
+
+
+
+typedef scalar_t__ WCHAR ;
+
+
+ int assert (char*) ;
+ char* grab_memory (size_t) ;
+ int lstrlenW (scalar_t__ const*) ;
+ int sprintf (char*,char*,unsigned int) ;
 
 __attribute__((used)) static const char* encodeW(const WCHAR* str)
 {
-    char*       ptr;
-    size_t      len,i;
+    char* ptr;
+    size_t len,i;
 
     if (!str) return "";
     len = lstrlenW(str) + 1;

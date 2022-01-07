@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  EC_POINT ;
-typedef  int /*<<< orphan*/  EC_GROUP ;
-typedef  int /*<<< orphan*/  BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_printf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  BN_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_hex2bn (int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BN_print (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EC_GROUP_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EC_GROUP_get0_generator (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * EC_GROUP_new_by_curve_name (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * EC_POINT_dup (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EC_POINT_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  NID_X9_62_prime256v1 ; 
- int /*<<< orphan*/  TEST_BN_eq (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TEST_ptr (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TEST_true (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bio_out ; 
- int /*<<< orphan*/  kP256DefaultResult ; 
- int /*<<< orphan*/  num_repeats ; 
- scalar_t__ print_mode ; 
- int /*<<< orphan*/ * walk_curve (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int EC_POINT ;
+typedef int EC_GROUP ;
+typedef int BIGNUM ;
+
+
+ int BIO_printf (int ,char*) ;
+ int BN_free (int *) ;
+ int BN_hex2bn (int **,int ) ;
+ int BN_print (int ,int *) ;
+ int EC_GROUP_free (int *) ;
+ int EC_GROUP_get0_generator (int *) ;
+ int * EC_GROUP_new_by_curve_name (int ) ;
+ int * EC_POINT_dup (int ,int *) ;
+ int EC_POINT_free (int *) ;
+ int NID_X9_62_prime256v1 ;
+ int TEST_BN_eq (int *,int *) ;
+ int TEST_ptr (int *) ;
+ int TEST_true (int ) ;
+ int bio_out ;
+ int kP256DefaultResult ;
+ int num_repeats ;
+ scalar_t__ print_mode ;
+ int * walk_curve (int *,int *,int ) ;
 
 __attribute__((used)) static int test_curve(void)
 {
-    EC_GROUP *group = NULL;
-    EC_POINT *point = NULL;
-    BIGNUM *result = NULL, *expected_result = NULL;
+    EC_GROUP *group = ((void*)0);
+    EC_POINT *point = ((void*)0);
+    BIGNUM *result = ((void*)0), *expected_result = ((void*)0);
     int ret = 0;
 
-    /*
-     * We currently hard-code P-256, though adaptation to other curves.
-     * would be straightforward.
-     */
+
+
+
+
     if (!TEST_ptr(group = EC_GROUP_new_by_curve_name(NID_X9_62_prime256v1))
             || !TEST_ptr(point = EC_POINT_dup(EC_GROUP_get0_generator(group),
                                               group))

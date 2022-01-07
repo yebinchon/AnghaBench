@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  IActiveScriptParse ;
-typedef  scalar_t__ HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHECK_CALLED (int /*<<< orphan*/ ) ; 
- scalar_t__ IActiveScriptParse_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IActiveScriptParse_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IDispatch_Release (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IID_IVariantChangeType ; 
- int /*<<< orphan*/  IVariantChangeType_Release (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SET_EXPECT (int /*<<< orphan*/ ) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/ * create_script () ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
- int /*<<< orphan*/  parse_script_a (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  script_change_type ; 
- int /*<<< orphan*/  stored_obj ; 
- int /*<<< orphan*/  testArgConv ; 
- int /*<<< orphan*/  test_change_types (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int IActiveScriptParse ;
+typedef scalar_t__ HRESULT ;
+
+
+ int CHECK_CALLED (int ) ;
+ scalar_t__ IActiveScriptParse_QueryInterface (int *,int *,void**) ;
+ int IActiveScriptParse_Release (int *) ;
+ int IDispatch_Release (int ) ;
+ int IID_IVariantChangeType ;
+ int IVariantChangeType_Release (int ) ;
+ int SET_EXPECT (int ) ;
+ scalar_t__ S_OK ;
+ int * create_script () ;
+ int ok (int,char*,scalar_t__) ;
+ int parse_script_a (int *,char*) ;
+ int script_change_type ;
+ int stored_obj ;
+ int testArgConv ;
+ int test_change_types (int ,int ) ;
 
 __attribute__((used)) static void run_scripts(void)
 {

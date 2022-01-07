@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mpz_t ;
-typedef  int /*<<< orphan*/  mp_small ;
-typedef  int /*<<< orphan*/  mp_result ;
-typedef  int /*<<< orphan*/  mp_int ;
-typedef  int /*<<< orphan*/  mp_digit ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLEANUP_TEMP () ; 
- int /*<<< orphan*/  DECLARE_TEMP (int) ; 
- int /*<<< orphan*/  MP_OK ; 
- int MP_VALUE_DIGITS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  REQUIRE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEMP (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mp_int_div (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mp_int_to_int (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  s_fake (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int mpz_t ;
+typedef int mp_small ;
+typedef int mp_result ;
+typedef int mp_int ;
+typedef int mp_digit ;
+
+
+ int CLEANUP_TEMP () ;
+ int DECLARE_TEMP (int) ;
+ int MP_OK ;
+ int MP_VALUE_DIGITS (int ) ;
+ int REQUIRE (int ) ;
+ int TEMP (int ) ;
+ int mp_int_div (int ,int *,int ,int ) ;
+ int mp_int_to_int (int ,int *) ;
+ int s_fake (int *,int ,int *) ;
 
 mp_result
 mp_int_div_value(mp_int a, mp_small value, mp_int q, mp_small *r)
 {
-	mpz_t		vtmp;
-	mp_digit	vbuf[MP_VALUE_DIGITS(value)];
+ mpz_t vtmp;
+ mp_digit vbuf[MP_VALUE_DIGITS(value)];
 
-	s_fake(&vtmp, value, vbuf);
+ s_fake(&vtmp, value, vbuf);
 
-	DECLARE_TEMP(1);
-	REQUIRE(mp_int_div(a, &vtmp, q, TEMP(0)));
+ DECLARE_TEMP(1);
+ REQUIRE(mp_int_div(a, &vtmp, q, TEMP(0)));
 
-	if (r)
-		(void) mp_int_to_int(TEMP(0), r);	/* can't fail */
+ if (r)
+  (void) mp_int_to_int(TEMP(0), r);
 
-	CLEANUP_TEMP();
-	return MP_OK;
+ CLEANUP_TEMP();
+ return MP_OK;
 }

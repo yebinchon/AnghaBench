@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  netbuffer_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  advance_read_ptr (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  advance_skip_read_ptr (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  force_ready_bytes (int /*<<< orphan*/ *,int) ; 
- char* get_read_ptr (int /*<<< orphan*/ *) ; 
- int get_ready_bytes (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int netbuffer_t ;
+
+
+ int advance_read_ptr (int *,int) ;
+ int advance_skip_read_ptr (int *,int) ;
+ int assert (int) ;
+ int force_ready_bytes (int *,int) ;
+ char* get_read_ptr (int *) ;
+ int get_ready_bytes (int *) ;
 
 __attribute__((used)) static int parse_list (int *Res, int max_size, netbuffer_t *In, int bytes) {
   char *ptr = 0, *ptr_e = 0;

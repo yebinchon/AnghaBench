@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct v4l2_encoder_cmd {int cmd; int /*<<< orphan*/  flags; } ;
+
+
+
+
+struct v4l2_encoder_cmd {int cmd; int flags; } ;
 struct ivtv_open_id {struct ivtv* itv; } ;
 struct ivtv {int dummy; } ;
 struct file {int dummy; } ;
 
-/* Variables and functions */
- int EINVAL ; 
- int /*<<< orphan*/  IVTV_DEBUG_IOCTL (char*,...) ; 
-#define  V4L2_ENC_CMD_PAUSE 131 
-#define  V4L2_ENC_CMD_RESUME 130 
-#define  V4L2_ENC_CMD_START 129 
-#define  V4L2_ENC_CMD_STOP 128 
- int /*<<< orphan*/  V4L2_ENC_CMD_STOP_AT_GOP_END ; 
+
+ int EINVAL ;
+ int IVTV_DEBUG_IOCTL (char*,...) ;
+
+
+
+
+ int V4L2_ENC_CMD_STOP_AT_GOP_END ;
 
 __attribute__((used)) static int ivtv_try_encoder_cmd(struct file *file, void *fh, struct v4l2_encoder_cmd *enc)
 {
-	struct ivtv *itv = ((struct ivtv_open_id *)fh)->itv;
+ struct ivtv *itv = ((struct ivtv_open_id *)fh)->itv;
 
-	switch (enc->cmd) {
-	case V4L2_ENC_CMD_START:
-		IVTV_DEBUG_IOCTL("V4L2_ENC_CMD_START\n");
-		enc->flags = 0;
-		return 0;
+ switch (enc->cmd) {
+ case 129:
+  IVTV_DEBUG_IOCTL("V4L2_ENC_CMD_START\n");
+  enc->flags = 0;
+  return 0;
 
-	case V4L2_ENC_CMD_STOP:
-		IVTV_DEBUG_IOCTL("V4L2_ENC_CMD_STOP\n");
-		enc->flags &= V4L2_ENC_CMD_STOP_AT_GOP_END;
-		return 0;
+ case 128:
+  IVTV_DEBUG_IOCTL("V4L2_ENC_CMD_STOP\n");
+  enc->flags &= V4L2_ENC_CMD_STOP_AT_GOP_END;
+  return 0;
 
-	case V4L2_ENC_CMD_PAUSE:
-		IVTV_DEBUG_IOCTL("V4L2_ENC_CMD_PAUSE\n");
-		enc->flags = 0;
-		return 0;
+ case 131:
+  IVTV_DEBUG_IOCTL("V4L2_ENC_CMD_PAUSE\n");
+  enc->flags = 0;
+  return 0;
 
-	case V4L2_ENC_CMD_RESUME:
-		IVTV_DEBUG_IOCTL("V4L2_ENC_CMD_RESUME\n");
-		enc->flags = 0;
-		return 0;
-	default:
-		IVTV_DEBUG_IOCTL("Unknown cmd %d\n", enc->cmd);
-		return -EINVAL;
-	}
+ case 130:
+  IVTV_DEBUG_IOCTL("V4L2_ENC_CMD_RESUME\n");
+  enc->flags = 0;
+  return 0;
+ default:
+  IVTV_DEBUG_IOCTL("Unknown cmd %d\n", enc->cmd);
+  return -EINVAL;
+ }
 }

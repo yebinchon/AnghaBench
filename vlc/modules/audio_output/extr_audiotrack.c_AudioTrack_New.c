@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_22__   TYPE_4__ ;
-typedef  struct TYPE_21__   TYPE_3__ ;
-typedef  struct TYPE_20__   TYPE_2__ ;
-typedef  struct TYPE_19__   TYPE_1__ ;
-typedef  struct TYPE_18__   TYPE_11__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  jobject ;
-typedef  int /*<<< orphan*/  jint ;
+
+
+typedef struct TYPE_22__ TYPE_4__ ;
+typedef struct TYPE_21__ TYPE_3__ ;
+typedef struct TYPE_20__ TYPE_2__ ;
+typedef struct TYPE_19__ TYPE_1__ ;
+typedef struct TYPE_18__ TYPE_11__ ;
+
+
+typedef int jobject ;
+typedef int jint ;
 struct TYPE_20__ {TYPE_3__* sys; } ;
-typedef  TYPE_2__ audio_output_t ;
-struct TYPE_21__ {int /*<<< orphan*/  p_audiotrack; } ;
-typedef  TYPE_3__ aout_sys_t ;
-struct TYPE_22__ {int /*<<< orphan*/  (* DeleteLocalRef ) (TYPE_4__**,int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* NewGlobalRef ) (TYPE_4__**,int /*<<< orphan*/ ) ;} ;
-struct TYPE_19__ {scalar_t__ STATE_INITIALIZED; int /*<<< orphan*/  release; int /*<<< orphan*/  getState; scalar_t__ has_ctor_21; } ;
+typedef TYPE_2__ audio_output_t ;
+struct TYPE_21__ {int p_audiotrack; } ;
+typedef TYPE_3__ aout_sys_t ;
+struct TYPE_22__ {int (* DeleteLocalRef ) (TYPE_4__**,int ) ;int (* NewGlobalRef ) (TYPE_4__**,int ) ;} ;
+struct TYPE_19__ {scalar_t__ STATE_INITIALIZED; int release; int getState; scalar_t__ has_ctor_21; } ;
 struct TYPE_18__ {TYPE_1__ AudioTrack; } ;
-typedef  TYPE_4__* JNIEnv ;
+typedef TYPE_4__* JNIEnv ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AudioTrack_New21 (TYPE_4__**,TYPE_2__*,unsigned int,int,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AudioTrack_NewLegacy (TYPE_4__**,TYPE_2__*,unsigned int,int,int,int,int /*<<< orphan*/ ) ; 
- scalar_t__ CHECK_AT_EXCEPTION (char*) ; 
- scalar_t__ JNI_CALL_INT (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  JNI_CALL_VOID (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_11__ jfields ; 
- int /*<<< orphan*/  msg_Err (TYPE_2__*,char*) ; 
- int /*<<< orphan*/  msg_Warn (TYPE_2__*,char*) ; 
- int /*<<< orphan*/  stub1 (TYPE_4__**,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub2 (TYPE_4__**,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub3 (TYPE_4__**,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  var_InheritInteger (TYPE_2__*,char*) ; 
+
+ int AudioTrack_New21 (TYPE_4__**,TYPE_2__*,unsigned int,int,int,int,int ) ;
+ int AudioTrack_NewLegacy (TYPE_4__**,TYPE_2__*,unsigned int,int,int,int,int ) ;
+ scalar_t__ CHECK_AT_EXCEPTION (char*) ;
+ scalar_t__ JNI_CALL_INT (int ,int ) ;
+ int JNI_CALL_VOID (int ,int ) ;
+ TYPE_11__ jfields ;
+ int msg_Err (TYPE_2__*,char*) ;
+ int msg_Warn (TYPE_2__*,char*) ;
+ int stub1 (TYPE_4__**,int ) ;
+ int stub2 (TYPE_4__**,int ) ;
+ int stub3 (TYPE_4__**,int ) ;
+ int var_InheritInteger (TYPE_2__*,char*) ;
 
 __attribute__((used)) static int
 AudioTrack_New( JNIEnv *env, audio_output_t *p_aout, unsigned int i_rate,

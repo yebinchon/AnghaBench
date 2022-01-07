@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct wavesynth_context {scalar_t__ cur_ts; scalar_t__ next_ts; } ;
-typedef  scalar_t__ int64_t ;
-typedef  int int32_t ;
-typedef  int /*<<< orphan*/  int16_t ;
+typedef scalar_t__ int64_t ;
+typedef int int32_t ;
+typedef int int16_t ;
 struct TYPE_10__ {int channels; struct wavesynth_context* priv_data; } ;
 struct TYPE_9__ {int nb_samples; scalar_t__* data; } ;
 struct TYPE_8__ {int size; scalar_t__ data; } ;
-typedef  TYPE_1__ AVPacket ;
-typedef  TYPE_2__ AVFrame ;
-typedef  TYPE_3__ AVCodecContext ;
+typedef TYPE_1__ AVPacket ;
+typedef TYPE_2__ AVFrame ;
+typedef TYPE_3__ AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_INVALIDDATA ; 
- int AV_RL32 (scalar_t__) ; 
- scalar_t__ AV_RL64 (scalar_t__) ; 
- int /*<<< orphan*/  EINVAL ; 
- int WS_MAX_CHANNELS ; 
- int ff_get_buffer (TYPE_3__*,TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (int*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  wavesynth_enter_intervals (struct wavesynth_context*,scalar_t__) ; 
- int /*<<< orphan*/  wavesynth_seek (struct wavesynth_context*,scalar_t__) ; 
- int /*<<< orphan*/  wavesynth_synth_sample (struct wavesynth_context*,scalar_t__,int*) ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_INVALIDDATA ;
+ int AV_RL32 (scalar_t__) ;
+ scalar_t__ AV_RL64 (scalar_t__) ;
+ int EINVAL ;
+ int WS_MAX_CHANNELS ;
+ int ff_get_buffer (TYPE_3__*,TYPE_2__*,int ) ;
+ int memset (int*,int ,int) ;
+ int wavesynth_enter_intervals (struct wavesynth_context*,scalar_t__) ;
+ int wavesynth_seek (struct wavesynth_context*,scalar_t__) ;
+ int wavesynth_synth_sample (struct wavesynth_context*,scalar_t__,int*) ;
 
 __attribute__((used)) static int wavesynth_decode(AVCodecContext *avc, void *rframe, int *rgot_frame,
                             AVPacket *packet)

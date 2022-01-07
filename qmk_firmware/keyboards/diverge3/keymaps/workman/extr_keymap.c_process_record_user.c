@@ -1,49 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint16_t ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint16_t ;
 struct TYPE_4__ {scalar_t__ pressed; } ;
 struct TYPE_5__ {TYPE_1__ event; } ;
-typedef  TYPE_2__ keyrecord_t ;
-
-/* Variables and functions */
-#define  LO_0 138 
-#define  LO_1 137 
-#define  LO_2 136 
-#define  LO_3 135 
-#define  LO_4 134 
-#define  LO_5 133 
-#define  LO_6 132 
-#define  LO_7 131 
-#define  LO_8 130 
-#define  LO_9 129 
-#define  LO_BSPC 128 
- int /*<<< orphan*/  SEND_STRING (char*) ; 
- int SHIFT_MOD ; 
- char* SS_TAP (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  X_BSPACE ; 
- int /*<<< orphan*/  X_DELETE ; 
- int /*<<< orphan*/  clear_mods () ; 
- int get_mods () ; 
- int /*<<< orphan*/  set_mods (int) ; 
+typedef TYPE_2__ keyrecord_t ;
+ int SEND_STRING (char*) ;
+ int SHIFT_MOD ;
+ char* SS_TAP (int ) ;
+ int X_BSPACE ;
+ int X_DELETE ;
+ int clear_mods () ;
+ int get_mods () ;
+ int set_mods (int) ;
 
 bool process_record_user(uint16_t keycode, keyrecord_t* record)
 {
     if (record->event.pressed) {
         switch (keycode) {
-            case LO_BSPC:
+            case 128:
                 if (record->event.pressed) {
                     if (get_mods() & SHIFT_MOD) {
                         uint8_t current_mods = get_mods();
@@ -54,8 +41,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record)
                         SEND_STRING(SS_TAP(X_BSPACE));
                     }
                 }
-                return false;
-            case LO_1:
+                return 0;
+            case 137:
                 if (record->event.pressed) {
                     uint8_t current_mods = get_mods();
                     if (current_mods & SHIFT_MOD) {
@@ -66,8 +53,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record)
                         SEND_STRING("!");
                     }
                 }
-                return false;
-            case LO_2:
+                return 0;
+            case 136:
                 if (record->event.pressed) {
                     uint8_t current_mods = get_mods();
                     if (current_mods & SHIFT_MOD) {
@@ -78,8 +65,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record)
                         SEND_STRING("@");
                     }
                 }
-                return false;
-            case LO_3:
+                return 0;
+            case 135:
                 if (record->event.pressed) {
                     uint8_t current_mods = get_mods();
                     if (current_mods & SHIFT_MOD) {
@@ -90,8 +77,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record)
                         SEND_STRING("#");
                     }
                 }
-                return false;
-            case LO_4:
+                return 0;
+            case 134:
                 if (record->event.pressed) {
                     uint8_t current_mods = get_mods();
                     if (current_mods & SHIFT_MOD) {
@@ -102,8 +89,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record)
                         SEND_STRING("$");
                     }
                 }
-                return false;
-            case LO_5:
+                return 0;
+            case 133:
                 if (record->event.pressed) {
                     uint8_t current_mods = get_mods();
                     if (current_mods & SHIFT_MOD) {
@@ -114,8 +101,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record)
                         SEND_STRING("%");
                     }
                 }
-                return false;
-            case LO_6:
+                return 0;
+            case 132:
                 if (record->event.pressed) {
                     uint8_t current_mods = get_mods();
                     if (current_mods & SHIFT_MOD) {
@@ -126,8 +113,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record)
                         SEND_STRING("^");
                     }
                 }
-                return false;
-            case LO_7:
+                return 0;
+            case 131:
                 if (record->event.pressed) {
                     uint8_t current_mods = get_mods();
                     if (current_mods & SHIFT_MOD) {
@@ -138,8 +125,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record)
                         SEND_STRING("&");
                     }
                 }
-                return false;
-            case LO_8:
+                return 0;
+            case 130:
                 if (record->event.pressed) {
                     uint8_t current_mods = get_mods();
                     if (current_mods & SHIFT_MOD) {
@@ -150,8 +137,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record)
                         SEND_STRING("*");
                     }
                 }
-                return false;
-            case LO_9:
+                return 0;
+            case 129:
                 if (record->event.pressed) {
                     uint8_t current_mods = get_mods();
                     if (current_mods & SHIFT_MOD) {
@@ -162,8 +149,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record)
                         SEND_STRING("(");
                     }
                 }
-                return false;
-            case LO_0:
+                return 0;
+            case 138:
                 if (record->event.pressed) {
                     uint8_t current_mods = get_mods();
                     if (current_mods & SHIFT_MOD) {
@@ -174,8 +161,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record)
                         SEND_STRING(")");
                     }
                 }
-                return false;
+                return 0;
         }
     }
-    return true;
+    return 1;
 }

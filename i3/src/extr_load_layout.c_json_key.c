@@ -1,32 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  FREE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LOG (char*,int,unsigned char const*) ; 
- int /*<<< orphan*/  last_key ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,unsigned char const*,size_t) ; 
- scalar_t__ num_marks ; 
- int parsing_deco_rect ; 
- int parsing_focus ; 
- int parsing_gaps ; 
- int parsing_geometry ; 
- int parsing_marks ; 
- int parsing_rect ; 
- int parsing_swallows ; 
- int parsing_window_rect ; 
- int /*<<< orphan*/  scalloc (size_t,int) ; 
- scalar_t__ strcasecmp (int /*<<< orphan*/ ,char*) ; 
+ int FREE (int ) ;
+ int LOG (char*,int,unsigned char const*) ;
+ int last_key ;
+ int memcpy (int ,unsigned char const*,size_t) ;
+ scalar_t__ num_marks ;
+ int parsing_deco_rect ;
+ int parsing_focus ;
+ int parsing_gaps ;
+ int parsing_geometry ;
+ int parsing_marks ;
+ int parsing_rect ;
+ int parsing_swallows ;
+ int parsing_window_rect ;
+ int scalloc (size_t,int) ;
+ scalar_t__ strcasecmp (int ,char*) ;
 
 __attribute__((used)) static int json_key(void *ctx, const unsigned char *val, size_t len) {
     LOG("key: %.*s\n", (int)len, val);
@@ -34,29 +26,29 @@ __attribute__((used)) static int json_key(void *ctx, const unsigned char *val, s
     last_key = scalloc(len + 1, 1);
     memcpy(last_key, val, len);
     if (strcasecmp(last_key, "swallows") == 0)
-        parsing_swallows = true;
+        parsing_swallows = 1;
 
     if (strcasecmp(last_key, "gaps") == 0)
-        parsing_gaps = true;
+        parsing_gaps = 1;
 
     if (strcasecmp(last_key, "rect") == 0)
-        parsing_rect = true;
+        parsing_rect = 1;
 
     if (strcasecmp(last_key, "deco_rect") == 0)
-        parsing_deco_rect = true;
+        parsing_deco_rect = 1;
 
     if (strcasecmp(last_key, "window_rect") == 0)
-        parsing_window_rect = true;
+        parsing_window_rect = 1;
 
     if (strcasecmp(last_key, "geometry") == 0)
-        parsing_geometry = true;
+        parsing_geometry = 1;
 
     if (strcasecmp(last_key, "focus") == 0)
-        parsing_focus = true;
+        parsing_focus = 1;
 
     if (strcasecmp(last_key, "marks") == 0) {
         num_marks = 0;
-        parsing_marks = true;
+        parsing_marks = 1;
     }
 
     return 1;

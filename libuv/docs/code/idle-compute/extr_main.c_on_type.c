@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  result; } ;
-typedef  TYPE_1__ uv_fs_t ;
-typedef  int /*<<< orphan*/  uv_buf_t ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int result; } ;
+typedef TYPE_1__ uv_fs_t ;
+typedef int uv_buf_t ;
 struct TYPE_7__ {size_t result; } ;
 
-/* Variables and functions */
- char* buffer ; 
- int /*<<< orphan*/  crunch_away ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  idler ; 
- int /*<<< orphan*/  loop ; 
- int /*<<< orphan*/  printf (char*,char*) ; 
- int /*<<< orphan*/  stderr ; 
- TYPE_2__ stdin_watcher ; 
- int /*<<< orphan*/  uv_buf_init (char*,int) ; 
- int /*<<< orphan*/  uv_fs_read (int /*<<< orphan*/ ,TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int,void (*) (TYPE_1__*)) ; 
- int /*<<< orphan*/  uv_idle_start (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- char* uv_strerror (int /*<<< orphan*/ ) ; 
+
+ char* buffer ;
+ int crunch_away ;
+ int fprintf (int ,char*,char*) ;
+ int idler ;
+ int loop ;
+ int printf (char*,char*) ;
+ int stderr ;
+ TYPE_2__ stdin_watcher ;
+ int uv_buf_init (char*,int) ;
+ int uv_fs_read (int ,TYPE_2__*,int ,int *,int,int,void (*) (TYPE_1__*)) ;
+ int uv_idle_start (int *,int ) ;
+ char* uv_strerror (int ) ;
 
 void on_type(uv_fs_t *req) {
     if (stdin_watcher.result > 0) {

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int QuadPart; } ;
-struct dummystream {int readcalls; scalar_t__ writecalls; int seekcalls; int statcalls; TYPE_1__ pos; int /*<<< orphan*/  IStream_iface; scalar_t__ failreadcall; scalar_t__ failstatcall; } ;
-typedef  scalar_t__ BOOL ;
+struct dummystream {int readcalls; scalar_t__ writecalls; int seekcalls; int statcalls; TYPE_1__ pos; int IStream_iface; scalar_t__ failreadcall; scalar_t__ failstatcall; } ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  InitDummyStream (struct dummystream*) ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  ok (int,char*) ; 
- scalar_t__ pSHLWAPI_166 (int /*<<< orphan*/ *) ; 
+
+ scalar_t__ FALSE ;
+ int InitDummyStream (struct dummystream*) ;
+ scalar_t__ TRUE ;
+ int ok (int,char*) ;
+ scalar_t__ pSHLWAPI_166 (int *) ;
 
 __attribute__((used)) static BOOL test_SHLWAPI_166(void)
 {
@@ -34,7 +34,7 @@ __attribute__((used)) static BOOL test_SHLWAPI_166(void)
   bRet = pSHLWAPI_166(&streamobj.IStream_iface);
 
   if (bRet != TRUE)
-    return FALSE; /* This version doesn't support stream ops on clists */
+    return FALSE;
 
   ok(streamobj.readcalls == 0, "called Read()\n");
   ok(streamobj.writecalls == 0, "called Write()\n");
@@ -52,10 +52,10 @@ __attribute__((used)) static BOOL test_SHLWAPI_166(void)
   ok(streamobj.seekcalls == 0, "called Seek()\n");
   ok(streamobj.statcalls == 1, "wrong call count\n");
 
-  /* Failure cases */
+
   InitDummyStream(&streamobj);
   streamobj.pos.QuadPart = 50001;
-  streamobj.failstatcall = TRUE; /* 1: Stat() Bad, Read() OK */
+  streamobj.failstatcall = TRUE;
   bRet = pSHLWAPI_166(&streamobj.IStream_iface);
   ok(bRet == FALSE, "should be FALSE after read is OK\n");
   ok(streamobj.readcalls == 1, "wrong call count\n");
@@ -67,7 +67,7 @@ __attribute__((used)) static BOOL test_SHLWAPI_166(void)
   InitDummyStream(&streamobj);
   streamobj.pos.QuadPart = 50001;
   streamobj.failstatcall = TRUE;
-  streamobj.failreadcall = TRUE; /* 2: Stat() Bad, Read() Bad Also */
+  streamobj.failreadcall = TRUE;
   bRet = pSHLWAPI_166(&streamobj.IStream_iface);
   ok(bRet == TRUE, "Should be true after read fails\n");
   ok(streamobj.readcalls == 1, "wrong call count\n");

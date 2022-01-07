@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {scalar_t__ winver; int /*<<< orphan*/  dll; int /*<<< orphan*/  (* unhook ) (int /*<<< orphan*/ *) ;int /*<<< orphan*/  second; int /*<<< orphan*/  post; int /*<<< orphan*/  pre; int /*<<< orphan*/  reason; int /*<<< orphan*/  name; scalar_t__ (* hook ) (int /*<<< orphan*/ *) ;} ;
-typedef  int /*<<< orphan*/ * HMODULE ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FreeLibrary (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * GetModuleHandleW (int /*<<< orphan*/ ) ; 
- scalar_t__ GetProcAddress (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  LoadShimDLL (int /*<<< orphan*/ ,int /*<<< orphan*/ **,int /*<<< orphan*/ **) ; 
- scalar_t__ _WIN32_WINNT_WS03 ; 
- scalar_t__ g_Version ; 
- scalar_t__ get_module_version (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ok (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/ * pGetHookAPIs ; 
- void* pNotifyShims ; 
- int /*<<< orphan*/  skip (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,void*) ; 
- scalar_t__ stub1 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  test_one (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_1__* tests ; 
- int /*<<< orphan*/  trace (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wine_dbgstr_w (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {scalar_t__ winver; int dll; int (* unhook ) (int *) ;int second; int post; int pre; int reason; int name; scalar_t__ (* hook ) (int *) ;} ;
+typedef int * HMODULE ;
+typedef scalar_t__ BOOL ;
+
+
+ int FreeLibrary (int *) ;
+ int * GetModuleHandleW (int ) ;
+ scalar_t__ GetProcAddress (int *,char*) ;
+ int LoadShimDLL (int ,int **,int **) ;
+ scalar_t__ _WIN32_WINNT_WS03 ;
+ scalar_t__ g_Version ;
+ scalar_t__ get_module_version (int *) ;
+ int ok (int ,char*,...) ;
+ int * pGetHookAPIs ;
+ void* pNotifyShims ;
+ int skip (char*,int ,int ,int *,void*) ;
+ scalar_t__ stub1 (int *) ;
+ int stub2 (int *) ;
+ int test_one (int ,int ,int ,int ,int ) ;
+ TYPE_1__* tests ;
+ int trace (char*,int ) ;
+ int wine_dbgstr_w (int ) ;
 
 __attribute__((used)) static void run_test(size_t n, BOOL unload)
 {
@@ -40,7 +40,7 @@ __attribute__((used)) static void run_test(size_t n, BOOL unload)
     HMODULE dll;
 
     if (!LoadShimDLL(tests[n].dll, &dll, &pGetHookAPIs))
-        pGetHookAPIs = NULL;
+        pGetHookAPIs = ((void*)0);
     pNotifyShims = (void*)GetProcAddress(dll, "NotifyShims");
 
     if (!pGetHookAPIs || !pNotifyShims)
@@ -75,6 +75,6 @@ __attribute__((used)) static void run_test(size_t n, BOOL unload)
     if (unload)
     {
         dll = GetModuleHandleW(tests[n].dll);
-        ok(dll == NULL, "Unable to unload %s\n", wine_dbgstr_w(tests[n].dll));
+        ok(dll == ((void*)0), "Unable to unload %s\n", wine_dbgstr_w(tests[n].dll));
     }
 }

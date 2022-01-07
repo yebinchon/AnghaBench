@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ PWAVEFORMATEX ;
-typedef  int /*<<< orphan*/  PVOID ;
-typedef  int /*<<< orphan*/  HANDLE ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPRINT (char*) ; 
- int /*<<< orphan*/  DeviceIoControl (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GetWaveFormatExSize (scalar_t__) ; 
- int /*<<< orphan*/  IOCTL_WAVE_SET_FORMAT ; 
+
+
+
+typedef scalar_t__ PWAVEFORMATEX ;
+typedef int PVOID ;
+typedef int HANDLE ;
+typedef int DWORD ;
+typedef int BOOL ;
+
+
+ int DPRINT (char*) ;
+ int DeviceIoControl (int ,int ,int ,int ,int *,int ,int *,int *) ;
+ int GetWaveFormatExSize (scalar_t__) ;
+ int IOCTL_WAVE_SET_FORMAT ;
 
 BOOL
 SetWaveFormat(
@@ -38,8 +38,8 @@ SetWaveFormat(
                            IOCTL_WAVE_SET_FORMAT,
                            (PVOID) format,
                            size,
-                           NULL,
+                           ((void*)0),
                            0,
                            &bytes_returned,
-                           NULL);
+                           ((void*)0));
 }

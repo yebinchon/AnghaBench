@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  msft_header ;
-typedef  int /*<<< orphan*/  WCHAR ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int msft_header ;
+typedef int WCHAR ;
 struct TYPE_4__ {int wLibFlags; } ;
-typedef  TYPE_1__ TLIBATTR ;
-typedef  int LCID ;
-typedef  int /*<<< orphan*/  ITypeLib ;
-typedef  int /*<<< orphan*/  ICreateTypeLib2 ;
-typedef  int HRESULT ;
-typedef  scalar_t__ HANDLE ;
-typedef  int DWORD ;
+typedef TYPE_1__ TLIBATTR ;
+typedef int LCID ;
+typedef int ITypeLib ;
+typedef int ICreateTypeLib2 ;
+typedef int HRESULT ;
+typedef scalar_t__ HANDLE ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CP_ACP ; 
- int /*<<< orphan*/  CloseHandle (scalar_t__) ; 
- scalar_t__ CreateFileA (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int CreateTypeLib2 (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  DeleteFileA (char*) ; 
- int /*<<< orphan*/  GENERIC_READ ; 
- int /*<<< orphan*/  GetTempFileNameA (char*,char*,int /*<<< orphan*/ ,char*) ; 
- int ICreateTypeLib2_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  ICreateTypeLib2_Release (int /*<<< orphan*/ *) ; 
- int ICreateTypeLib2_SaveAllChanges (int /*<<< orphan*/ *) ; 
- int ICreateTypeLib2_SetLcid (int /*<<< orphan*/ *,int) ; 
- int ICreateTypeLib2_SetVersion (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  IID_ITypeLib ; 
- scalar_t__ INVALID_HANDLE_VALUE ; 
- int ITypeLib_GetLibAttr (int /*<<< orphan*/ *,TYPE_1__**) ; 
- int /*<<< orphan*/  ITypeLib_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ITypeLib_ReleaseTLibAttr (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int LIBFLAG_FHASDISKIMAGE ; 
- int LoadTypeLib (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  MultiByteToWideChar (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  OPEN_EXISTING ; 
- int /*<<< orphan*/  ReadFile (scalar_t__,int*,int,int*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SYS_WIN32 ; 
- int S_OK ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
+
+ int CP_ACP ;
+ int CloseHandle (scalar_t__) ;
+ scalar_t__ CreateFileA (char*,int ,int ,int *,int ,int ,int ) ;
+ int CreateTypeLib2 (int ,int *,int **) ;
+ int DeleteFileA (char*) ;
+ int GENERIC_READ ;
+ int GetTempFileNameA (char*,char*,int ,char*) ;
+ int ICreateTypeLib2_QueryInterface (int *,int *,void**) ;
+ int ICreateTypeLib2_Release (int *) ;
+ int ICreateTypeLib2_SaveAllChanges (int *) ;
+ int ICreateTypeLib2_SetLcid (int *,int) ;
+ int ICreateTypeLib2_SetVersion (int *,int,int) ;
+ int IID_ITypeLib ;
+ scalar_t__ INVALID_HANDLE_VALUE ;
+ int ITypeLib_GetLibAttr (int *,TYPE_1__**) ;
+ int ITypeLib_Release (int *) ;
+ int ITypeLib_ReleaseTLibAttr (int *,TYPE_1__*) ;
+ int LIBFLAG_FHASDISKIMAGE ;
+ int LoadTypeLib (int *,int **) ;
+ int MAX_PATH ;
+ int MultiByteToWideChar (int ,int ,char*,int,int *,int) ;
+ int OPEN_EXISTING ;
+ int ReadFile (scalar_t__,int*,int,int*,int *) ;
+ int SYS_WIN32 ;
+ int S_OK ;
+ int ok (int,char*,...) ;
 
 __attribute__((used)) static void test_create_typelib_lcid(LCID lcid)
 {
@@ -93,10 +93,10 @@ __attribute__((used)) static void test_create_typelib_lcid(LCID lcid)
     ITypeLib_Release(typelib);
     ICreateTypeLib2_Release(tl);
 
-    file = CreateFileA( filename, GENERIC_READ, 0, NULL, OPEN_EXISTING, 0, 0 );
+    file = CreateFileA( filename, GENERIC_READ, 0, ((void*)0), OPEN_EXISTING, 0, 0 );
     ok( file != INVALID_HANDLE_VALUE, "file creation failed\n" );
 
-    ReadFile( file, msft_header, sizeof(msft_header), &read, NULL );
+    ReadFile( file, msft_header, sizeof(msft_header), &read, ((void*)0) );
     ok(read == sizeof(msft_header), "read %d\n", read);
     CloseHandle( file );
 
@@ -108,7 +108,7 @@ __attribute__((used)) static void test_create_typelib_lcid(LCID lcid)
     ok(msft_header[6] == 0x00040003, "got %08x\n", msft_header[6]);
     ok(msft_header[7] == 0, "got %08x\n", msft_header[7]);
 
-    /* check flags after loading */
+
     hr = LoadTypeLib(name, &typelib);
     ok(hr == S_OK, "got %08x\n", hr);
 

@@ -1,81 +1,81 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_7__ ;
-typedef  struct TYPE_14__   TYPE_6__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_15__ {int rrd_history_entries; int /*<<< orphan*/  rrd_memory_mode; } ;
+
+
+typedef struct TYPE_15__ TYPE_7__ ;
+typedef struct TYPE_14__ TYPE_6__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+struct TYPE_15__ {int rrd_history_entries; int rrd_memory_mode; } ;
 struct TYPE_14__ {TYPE_3__* apps; } ;
-struct TYPE_13__ {int rrd_history_entries; int /*<<< orphan*/ * dict; int /*<<< orphan*/  rrd_memory_mode; int /*<<< orphan*/  default_options; void* metrics; void* name; TYPE_2__* charts; void* source; struct TYPE_13__* next; } ;
-struct TYPE_12__ {void* id; int /*<<< orphan*/  chart_type; void* priority; void* units; void* context; void* family; void* title; void* name; void* source; struct TYPE_12__* next; } ;
+struct TYPE_13__ {int rrd_history_entries; int * dict; int rrd_memory_mode; int default_options; void* metrics; void* name; TYPE_2__* charts; void* source; struct TYPE_13__* next; } ;
+struct TYPE_12__ {void* id; int chart_type; void* priority; void* units; void* context; void* family; void* title; void* name; void* source; struct TYPE_12__* next; } ;
 struct TYPE_11__ {char* metric; void* metric_pattern; } ;
-typedef  TYPE_1__ STATSD_APP_CHART_DIM ;
-typedef  TYPE_2__ STATSD_APP_CHART ;
-typedef  TYPE_3__ STATSD_APP ;
-typedef  int /*<<< orphan*/  RRDDIM_FLAGS ;
-typedef  int /*<<< orphan*/  FILE ;
-typedef  int /*<<< orphan*/  DICTIONARY ;
+typedef TYPE_1__ STATSD_APP_CHART_DIM ;
+typedef TYPE_2__ STATSD_APP_CHART ;
+typedef TYPE_3__ STATSD_APP ;
+typedef int RRDDIM_FLAGS ;
+typedef int FILE ;
+typedef int DICTIONARY ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DICTIONARY_FLAG_SINGLE_THREADED ; 
- int /*<<< orphan*/  D_CONFIG ; 
- int /*<<< orphan*/  D_STATSD ; 
- int /*<<< orphan*/  FILENAME_MAX ; 
- void* NETDATA_CHART_PRIO_STATSD_PRIVATE ; 
- int /*<<< orphan*/  RRDDIM_FLAG_DONT_DETECT_RESETS_OR_OVERFLOWS ; 
- int /*<<< orphan*/  RRDDIM_FLAG_HIDDEN ; 
- int /*<<< orphan*/  RRDDIM_FLAG_NONE ; 
- int /*<<< orphan*/  RRDSET_TYPE_LINE ; 
- int /*<<< orphan*/  SIMPLE_PATTERN_EXACT ; 
- int STATSD_CONF_LINE_MAX ; 
- int /*<<< orphan*/  STATSD_METRIC_OPTION_PRIVATE_CHART_ENABLED ; 
- int /*<<< orphan*/  STATSD_METRIC_OPTION_SHOW_GAPS_WHEN_NOT_COLLECTED ; 
- TYPE_1__* add_dimension_to_app_chart (TYPE_3__*,TYPE_2__*,char*,char*,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- void* atol (char*) ; 
- void* callocz (int,int) ; 
- int /*<<< orphan*/  debug (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/ * dictionary_create (int /*<<< orphan*/ ) ; 
- char* dictionary_get (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  dictionary_set (int /*<<< orphan*/ *,char*,char*,scalar_t__) ; 
- char* dirname (char*) ; 
- int /*<<< orphan*/  error (char*,...) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fgets (char*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char const*,char*) ; 
- int /*<<< orphan*/  freez (char*) ; 
- TYPE_7__* localhost ; 
- char* mallocz (int) ; 
- int /*<<< orphan*/  netdata_fix_chart_id (char*) ; 
- int /*<<< orphan*/  netdata_fix_chart_name (char*) ; 
- int /*<<< orphan*/  pluginsd_split_words (char*,char**,int) ; 
- int /*<<< orphan*/  rrd_memory_mode_id (char*) ; 
- int /*<<< orphan*/  rrdset_type_id (char*) ; 
- void* simple_pattern_create (char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  simple_pattern_free (void*) ; 
- int /*<<< orphan*/  snprintfz (char*,int /*<<< orphan*/ ,char*,size_t,char const*) ; 
- TYPE_6__ statsd ; 
- int str2l (char*) ; 
- char* strchr (char*,char) ; 
- scalar_t__ strcmp (char*,char*) ; 
- void* strdupz (char const*) ; 
- char* strdupz_path_subpath (char*,char*) ; 
- int /*<<< orphan*/  string2valuetype (char*,size_t,char const*) ; 
- scalar_t__ strlen (char*) ; 
- scalar_t__ strncmp (char*,char*,int) ; 
- int /*<<< orphan*/ * strstr (char*,char*) ; 
- char* trim (char*) ; 
- scalar_t__ unlikely (int /*<<< orphan*/ *) ; 
+
+ int DICTIONARY_FLAG_SINGLE_THREADED ;
+ int D_CONFIG ;
+ int D_STATSD ;
+ int FILENAME_MAX ;
+ void* NETDATA_CHART_PRIO_STATSD_PRIVATE ;
+ int RRDDIM_FLAG_DONT_DETECT_RESETS_OR_OVERFLOWS ;
+ int RRDDIM_FLAG_HIDDEN ;
+ int RRDDIM_FLAG_NONE ;
+ int RRDSET_TYPE_LINE ;
+ int SIMPLE_PATTERN_EXACT ;
+ int STATSD_CONF_LINE_MAX ;
+ int STATSD_METRIC_OPTION_PRIVATE_CHART_ENABLED ;
+ int STATSD_METRIC_OPTION_SHOW_GAPS_WHEN_NOT_COLLECTED ;
+ TYPE_1__* add_dimension_to_app_chart (TYPE_3__*,TYPE_2__*,char*,char*,int,int,int ,int ) ;
+ void* atol (char*) ;
+ void* callocz (int,int) ;
+ int debug (int ,char*,...) ;
+ int * dictionary_create (int ) ;
+ char* dictionary_get (int *,char*) ;
+ int dictionary_set (int *,char*,char*,scalar_t__) ;
+ char* dirname (char*) ;
+ int error (char*,...) ;
+ int fclose (int *) ;
+ int * fgets (char*,int,int *) ;
+ int * fopen (char const*,char*) ;
+ int freez (char*) ;
+ TYPE_7__* localhost ;
+ char* mallocz (int) ;
+ int netdata_fix_chart_id (char*) ;
+ int netdata_fix_chart_name (char*) ;
+ int pluginsd_split_words (char*,char**,int) ;
+ int rrd_memory_mode_id (char*) ;
+ int rrdset_type_id (char*) ;
+ void* simple_pattern_create (char*,int *,int ) ;
+ int simple_pattern_free (void*) ;
+ int snprintfz (char*,int ,char*,size_t,char const*) ;
+ TYPE_6__ statsd ;
+ int str2l (char*) ;
+ char* strchr (char*,char) ;
+ scalar_t__ strcmp (char*,char*) ;
+ void* strdupz (char const*) ;
+ char* strdupz_path_subpath (char*,char*) ;
+ int string2valuetype (char*,size_t,char const*) ;
+ scalar_t__ strlen (char*) ;
+ scalar_t__ strncmp (char*,char*,int) ;
+ int * strstr (char*,char*) ;
+ char* trim (char*) ;
+ scalar_t__ unlikely (int *) ;
 
 __attribute__((used)) static int statsd_readfile(const char *filename, STATSD_APP *app, STATSD_APP_CHART *chart, DICTIONARY *dict) {
     debug(D_STATSD, "STATSD configuration reading file '%s'", filename);
@@ -91,7 +91,7 @@ __attribute__((used)) static int statsd_readfile(const char *filename, STATSD_AP
 
     size_t line = 0;
     char *s;
-    while(fgets(buffer, STATSD_CONF_LINE_MAX, fp) != NULL) {
+    while(fgets(buffer, STATSD_CONF_LINE_MAX, fp) != ((void*)0)) {
         buffer[STATSD_CONF_LINE_MAX] = '\0';
         line++;
 
@@ -110,12 +110,12 @@ __attribute__((used)) static int statsd_readfile(const char *filename, STATSD_AP
                 if(*s == '/')
                     tmp = strdupz(s);
                 else {
-                    // the file to be included is relative to current file
-                    // find the directory name from the file we already read
-                    char *filename2 = strdupz(filename); // copy filename, since dirname() will change it
-                    char *dir = dirname(filename2);      // find the directory part of the filename
-                    tmp = strdupz_path_subpath(dir, s);  // compose the new filename to read;
-                    freez(filename2);                    // free the filename we copied
+
+
+                    char *filename2 = strdupz(filename);
+                    char *dir = dirname(filename2);
+                    tmp = strdupz_path_subpath(dir, s);
+                    freez(filename2);
                 }
                 statsd_readfile(tmp, app, chart, dict);
                 freez(tmp);
@@ -128,12 +128,12 @@ __attribute__((used)) static int statsd_readfile(const char *filename, STATSD_AP
 
         int len = (int) strlen(s);
         if (*s == '[' && s[len - 1] == ']') {
-            // new section
+
             s[len - 1] = '\0';
             s++;
 
             if (!strcmp(s, "app")) {
-                // a new app
+
                 app = callocz(sizeof(STATSD_APP), 1);
                 app->name = strdupz("unnamed");
                 app->rrd_memory_mode = localhost->rrd_memory_mode;
@@ -141,8 +141,8 @@ __attribute__((used)) static int statsd_readfile(const char *filename, STATSD_AP
 
                 app->next = statsd.apps;
                 statsd.apps = app;
-                chart = NULL;
-                dict = NULL;
+                chart = ((void*)0);
+                dict = ((void*)0);
 
                 {
                     char lineandfile[FILENAME_MAX + 1];
@@ -158,18 +158,18 @@ __attribute__((used)) static int statsd_readfile(const char *filename, STATSD_AP
                     dict = app->dict;
                 }
                 else {
-                    dict = NULL;
+                    dict = ((void*)0);
 
-                    // a new chart
+
                     chart = callocz(sizeof(STATSD_APP_CHART), 1);
                     netdata_fix_chart_id(s);
-                    chart->id         = strdupz(s);
-                    chart->name       = strdupz(s);
-                    chart->title      = strdupz("Statsd chart");
-                    chart->context    = strdupz(s);
-                    chart->family     = strdupz("overview");
-                    chart->units      = strdupz("value");
-                    chart->priority   = NETDATA_CHART_PRIO_STATSD_PRIVATE;
+                    chart->id = strdupz(s);
+                    chart->name = strdupz(s);
+                    chart->title = strdupz("Statsd chart");
+                    chart->context = strdupz(s);
+                    chart->family = strdupz("overview");
+                    chart->units = strdupz("value");
+                    chart->priority = NETDATA_CHART_PRIO_STATSD_PRIVATE;
                     chart->chart_type = RRDSET_TYPE_LINE;
 
                     chart->next = app->charts;
@@ -215,12 +215,12 @@ __attribute__((used)) static int statsd_readfile(const char *filename, STATSD_AP
         }
 
         if(unlikely(dict)) {
-            // parse [dictionary] members
+
 
             dictionary_set(dict, name, value, strlen(value) + 1);
         }
         else if(!chart) {
-            // parse [app] members
+
 
             if(!strcmp(name, "name")) {
                 freez((void *)app->name);
@@ -229,7 +229,7 @@ __attribute__((used)) static int statsd_readfile(const char *filename, STATSD_AP
             }
             else if (!strcmp(name, "metrics")) {
                 simple_pattern_free(app->metrics);
-                app->metrics = simple_pattern_create(value, NULL, SIMPLE_PATTERN_EXACT);
+                app->metrics = simple_pattern_create(value, ((void*)0), SIMPLE_PATTERN_EXACT);
             }
             else if (!strcmp(name, "private charts")) {
                 if (!strcmp(value, "yes") || !strcmp(value, "on"))
@@ -255,7 +255,7 @@ __attribute__((used)) static int statsd_readfile(const char *filename, STATSD_AP
             }
         }
         else {
-            // parse [chart] members
+
 
             if(!strcmp(name, "name")) {
                 freez((void *)chart->name);
@@ -286,30 +286,30 @@ __attribute__((used)) static int statsd_readfile(const char *filename, STATSD_AP
                 chart->chart_type = rrdset_type_id(value);
             }
             else if (!strcmp(name, "dimension")) {
-                // metric [name [type [multiplier [divisor]]]]
+
                 char *words[10];
                 pluginsd_split_words(value, words, 10);
 
                 int pattern = 0;
                 size_t i = 0;
-                char *metric_name   = words[i++];
+                char *metric_name = words[i++];
 
                 if(strcmp(metric_name, "pattern") == 0) {
                     metric_name = words[i++];
                     pattern = 1;
                 }
 
-                char *dim_name      = words[i++];
-                char *type          = words[i++];
-                char *multipler     = words[i++];
-                char *divisor       = words[i++];
-                char *options       = words[i++];
+                char *dim_name = words[i++];
+                char *type = words[i++];
+                char *multipler = words[i++];
+                char *divisor = words[i++];
+                char *options = words[i++];
 
                 RRDDIM_FLAGS flags = RRDDIM_FLAG_NONE;
                 if(options && *options) {
-                    if(strstr(options, "hidden") != NULL) flags |= RRDDIM_FLAG_HIDDEN;
-                    if(strstr(options, "noreset") != NULL) flags |= RRDDIM_FLAG_DONT_DETECT_RESETS_OR_OVERFLOWS;
-                    if(strstr(options, "nooverflow") != NULL) flags |= RRDDIM_FLAG_DONT_DETECT_RESETS_OR_OVERFLOWS;
+                    if(strstr(options, "hidden") != ((void*)0)) flags |= RRDDIM_FLAG_HIDDEN;
+                    if(strstr(options, "noreset") != ((void*)0)) flags |= RRDDIM_FLAG_DONT_DETECT_RESETS_OR_OVERFLOWS;
+                    if(strstr(options, "nooverflow") != ((void*)0)) flags |= RRDDIM_FLAG_DONT_DETECT_RESETS_OR_OVERFLOWS;
                 }
 
                 if(!pattern) {
@@ -339,7 +339,7 @@ __attribute__((used)) static int statsd_readfile(const char *filename, STATSD_AP
                 );
 
                 if(pattern)
-                    dim->metric_pattern = simple_pattern_create(dim->metric, NULL, SIMPLE_PATTERN_EXACT);
+                    dim->metric_pattern = simple_pattern_create(dim->metric, ((void*)0), SIMPLE_PATTERN_EXACT);
             }
             else {
                 error("STATSD: ignoring line %zu ('%s') of file '%s'. Unknown keyword for the [%s] section.", line, name, filename, chart->id);

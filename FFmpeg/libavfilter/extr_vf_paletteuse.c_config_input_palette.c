@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int w; int h; int /*<<< orphan*/ * dst; } ;
-typedef  TYPE_1__ AVFilterLink ;
-typedef  int /*<<< orphan*/  AVFilterContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVPALETTE_COUNT ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int,int,int,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int w; int h; int * dst; } ;
+typedef TYPE_1__ AVFilterLink ;
+typedef int AVFilterContext ;
+
+
+ int AVERROR (int ) ;
+ int AVPALETTE_COUNT ;
+ int AV_LOG_ERROR ;
+ int EINVAL ;
+ int av_log (int *,int ,char*,int,int,int,int) ;
 
 __attribute__((used)) static int config_input_palette(AVFilterLink *inlink)
 {

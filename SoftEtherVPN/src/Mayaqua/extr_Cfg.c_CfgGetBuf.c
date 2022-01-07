@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  size; int /*<<< orphan*/  Buf; } ;
-typedef  TYPE_1__ ITEM ;
-typedef  int /*<<< orphan*/  FOLDER ;
-typedef  int /*<<< orphan*/  BUF ;
 
-/* Variables and functions */
- TYPE_1__* CfgFindItem (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/ * NewBuf () ; 
- int /*<<< orphan*/  SeekBuf (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WriteBuf (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int size; int Buf; } ;
+typedef TYPE_1__ ITEM ;
+typedef int FOLDER ;
+typedef int BUF ;
+
+
+ TYPE_1__* CfgFindItem (int *,char*) ;
+ int * NewBuf () ;
+ int SeekBuf (int *,int ,int ) ;
+ int WriteBuf (int *,int ,int ) ;
 
 BUF *CfgGetBuf(FOLDER *f, char *name)
 {
-	ITEM *t;
-	BUF *b;
-	// Validate arguments
-	if (f == NULL || name == NULL)
-	{
-		return NULL;
-	}
+ ITEM *t;
+ BUF *b;
 
-	t = CfgFindItem(f, name);
-	if (t == NULL)
-	{
-		return NULL;
-	}
+ if (f == ((void*)0) || name == ((void*)0))
+ {
+  return ((void*)0);
+ }
 
-	b = NewBuf();
-	WriteBuf(b, t->Buf, t->size);
-	SeekBuf(b, 0, 0);
+ t = CfgFindItem(f, name);
+ if (t == ((void*)0))
+ {
+  return ((void*)0);
+ }
 
-	return b;
+ b = NewBuf();
+ WriteBuf(b, t->Buf, t->size);
+ SeekBuf(b, 0, 0);
+
+ return b;
 }

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint64_t ;
+
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int uint64_t ;
 struct TYPE_7__ {int* d; } ;
-typedef  TYPE_1__ secp256k1_scalar ;
+typedef TYPE_1__ secp256k1_scalar ;
 
-/* Variables and functions */
- int /*<<< orphan*/  VERIFY_CHECK (int) ; 
- int secp256k1_scalar_check_overflow (TYPE_1__*) ; 
- int /*<<< orphan*/  secp256k1_scalar_reduce (TYPE_1__*,int) ; 
+
+ int VERIFY_CHECK (int) ;
+ int secp256k1_scalar_check_overflow (TYPE_1__*) ;
+ int secp256k1_scalar_reduce (TYPE_1__*,int) ;
 
 __attribute__((used)) static int secp256k1_scalar_add(secp256k1_scalar *r, const secp256k1_scalar *a, const secp256k1_scalar *b) {
     int overflow;

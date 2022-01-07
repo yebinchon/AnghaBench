@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  LPD3DXINCLUDE ;
-typedef  int /*<<< orphan*/  LPD3DXCONSTANTTABLE ;
-typedef  int /*<<< orphan*/  LPD3DXBUFFER ;
-typedef  int /*<<< orphan*/  LPCTSTR ;
-typedef  int /*<<< orphan*/  LPCSTR ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  int /*<<< orphan*/  D3DXMACRO ;
 
-/* Variables and functions */
- scalar_t__ D3D9CompileShaderFromFile (int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int LPD3DXINCLUDE ;
+typedef int LPD3DXCONSTANTTABLE ;
+typedef int LPD3DXBUFFER ;
+typedef int LPCTSTR ;
+typedef int LPCSTR ;
+typedef int DWORD ;
+typedef int D3DXMACRO ;
+
+
+ scalar_t__ D3D9CompileShaderFromFile (int ,int const*,int ,int ,int ,int ,int *,int *,int *) ;
 
 bool d3d9x_compile_shader_from_file(
       const char *src,
@@ -32,19 +32,5 @@ bool d3d9x_compile_shader_from_file(
       void *pperrormsgs,
       void *ppconstanttable)
 {
-#if defined(HAVE_D3DX)
-   if (D3D9CompileShaderFromFile)
-      if (D3D9CompileShaderFromFile(
-               (LPCTSTR)src,
-               (const D3DXMACRO*)pdefines,
-               (LPD3DXINCLUDE)pinclude,
-               (LPCSTR)pfunctionname,
-               (LPCSTR)pprofile,
-               (DWORD)flags,
-               (LPD3DXBUFFER*)ppshader,
-               (LPD3DXBUFFER*)pperrormsgs,
-               (LPD3DXCONSTANTTABLE*)ppconstanttable) >= 0)
-         return true;
-#endif
-   return false;
+   return 0;
 }

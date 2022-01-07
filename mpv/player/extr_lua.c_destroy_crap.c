@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- void** luaL_checkudata (int /*<<< orphan*/ *,int,char*) ; 
- int /*<<< orphan*/  talloc_free (void*) ; 
+
+
+
+typedef int lua_State ;
+
+
+ void** luaL_checkudata (int *,int,char*) ;
+ int talloc_free (void*) ;
 
 __attribute__((used)) static int destroy_crap(lua_State *L)
 {
     void **data = luaL_checkudata(L, 1, "ohthispain");
     talloc_free(data[0]);
-    data[0] = NULL;
+    data[0] = ((void*)0);
     return 0;
 }

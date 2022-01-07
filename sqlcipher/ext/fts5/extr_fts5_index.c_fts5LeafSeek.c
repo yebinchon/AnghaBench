@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
-typedef  struct TYPE_13__   TYPE_11__ ;
 
-/* Type definitions */
-typedef  scalar_t__ u8 ;
-typedef  int u32 ;
+
+
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+typedef struct TYPE_13__ TYPE_11__ ;
+
+
+typedef scalar_t__ u8 ;
+typedef int u32 ;
 struct TYPE_15__ {scalar_t__ rc; } ;
-struct TYPE_14__ {int iLeafOffset; int iTermLeafOffset; int iEndofDoclist; int iPgidxOff; TYPE_11__* pLeaf; int /*<<< orphan*/  term; int /*<<< orphan*/  iLeafPgno; int /*<<< orphan*/  iTermLeafPgno; } ;
+struct TYPE_14__ {int iLeafOffset; int iTermLeafOffset; int iEndofDoclist; int iPgidxOff; TYPE_11__* pLeaf; int term; int iLeafPgno; int iTermLeafPgno; } ;
 struct TYPE_13__ {scalar_t__* p; int szLeaf; int nn; } ;
-typedef  TYPE_1__ Fts5SegIter ;
-typedef  TYPE_2__ Fts5Index ;
+typedef TYPE_1__ Fts5SegIter ;
+typedef TYPE_2__ Fts5Index ;
 
-/* Variables and functions */
- void* FTS5_CORRUPT ; 
- scalar_t__ MIN (int,int) ; 
- scalar_t__ SQLITE_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  fts5BufferAppendBlob (scalar_t__*,int /*<<< orphan*/ *,int,scalar_t__ const*) ; 
- int /*<<< orphan*/  fts5BufferSet (scalar_t__*,int /*<<< orphan*/ *,int,scalar_t__ const*) ; 
- int /*<<< orphan*/  fts5DataRelease (TYPE_11__*) ; 
- int /*<<< orphan*/  fts5FastGetVarint32 (scalar_t__ const*,int,int) ; 
- scalar_t__ fts5GetVarint32 (scalar_t__ const*,int) ; 
- scalar_t__ fts5LeafIsTermless (TYPE_11__*) ; 
- int /*<<< orphan*/  fts5SegIterLoadNPos (TYPE_2__*,TYPE_1__*) ; 
- int /*<<< orphan*/  fts5SegIterLoadRowid (TYPE_2__*,TYPE_1__*) ; 
- int /*<<< orphan*/  fts5SegIterNextPage (TYPE_2__*,TYPE_1__*) ; 
+
+ void* FTS5_CORRUPT ;
+ scalar_t__ MIN (int,int) ;
+ scalar_t__ SQLITE_OK ;
+ int assert (int) ;
+ int fts5BufferAppendBlob (scalar_t__*,int *,int,scalar_t__ const*) ;
+ int fts5BufferSet (scalar_t__*,int *,int,scalar_t__ const*) ;
+ int fts5DataRelease (TYPE_11__*) ;
+ int fts5FastGetVarint32 (scalar_t__ const*,int,int) ;
+ scalar_t__ fts5GetVarint32 (scalar_t__ const*,int) ;
+ scalar_t__ fts5LeafIsTermless (TYPE_11__*) ;
+ int fts5SegIterLoadNPos (TYPE_2__*,TYPE_1__*) ;
+ int fts5SegIterLoadRowid (TYPE_2__*,TYPE_1__*) ;
+ int fts5SegIterNextPage (TYPE_2__*,TYPE_1__*) ;
 
 __attribute__((used)) static void fts5LeafSeek(
-  Fts5Index *p,                   /* Leave any error code here */
-  int bGe,                        /* True for a >= search */
-  Fts5SegIter *pIter,             /* Iterator to seek */
-  const u8 *pTerm, int nTerm      /* Term to search for */
+  Fts5Index *p,
+  int bGe,
+  Fts5SegIter *pIter,
+  const u8 *pTerm, int nTerm
 ){
   int iOff;
   const u8 *a = pIter->pLeaf->p;
@@ -51,7 +51,7 @@ __attribute__((used)) static void fts5LeafSeek(
   u32 nKeep = 0;
   u32 nNew = 0;
   u32 iTermOff;
-  int iPgidx;                     /* Current offset in pgidx */
+  int iPgidx;
   int bEndOfPage = 0;
 
   assert( p->rc==SQLITE_OK );
@@ -66,7 +66,7 @@ __attribute__((used)) static void fts5LeafSeek(
 
   while( 1 ){
 
-    /* Figure out how many new bytes are in this term */
+
     fts5FastGetVarint32(a, iOff, nNew);
     if( nKeep<nMatch ){
       goto search_failed;
@@ -107,7 +107,7 @@ __attribute__((used)) static void fts5LeafSeek(
       return;
     }
 
-    /* Read the nKeep field of the next term. */
+
     fts5FastGetVarint32(a, iOff, nKeep);
   }
 

@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/ * lpVtbl; } ;
-struct TYPE_6__ {TYPE_3__ IClassFactory_iface; int /*<<< orphan*/ * m_pPropertyBag; int /*<<< orphan*/  m_clsidInstance; scalar_t__ m_cRef; } ;
-typedef  int /*<<< orphan*/  REFIID ;
-typedef  int /*<<< orphan*/ * REFCLSID ;
-typedef  int /*<<< orphan*/  LPVOID ;
-typedef  TYPE_1__ InstanceObjectFactory ;
-typedef  int /*<<< orphan*/  IPropertyBag ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_FAIL ; 
- int /*<<< orphan*/  IClassFactory_AddRef (TYPE_3__*) ; 
- int /*<<< orphan*/  IClassFactory_QueryInterface (TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IClassFactory_Release (TYPE_3__*) ; 
- int /*<<< orphan*/  IPropertyBag_AddRef (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  InstanceObjectFactory_IClassFactoryVtbl ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  debugstr_guid (int /*<<< orphan*/ ) ; 
- TYPE_1__* heap_alloc (int) ; 
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int * lpVtbl; } ;
+struct TYPE_6__ {TYPE_3__ IClassFactory_iface; int * m_pPropertyBag; int m_clsidInstance; scalar_t__ m_cRef; } ;
+typedef int REFIID ;
+typedef int * REFCLSID ;
+typedef int LPVOID ;
+typedef TYPE_1__ InstanceObjectFactory ;
+typedef int IPropertyBag ;
+typedef int HRESULT ;
+
+
+ int E_FAIL ;
+ int IClassFactory_AddRef (TYPE_3__*) ;
+ int IClassFactory_QueryInterface (TYPE_3__*,int ,int *) ;
+ int IClassFactory_Release (TYPE_3__*) ;
+ int IPropertyBag_AddRef (int *) ;
+ int InstanceObjectFactory_IClassFactoryVtbl ;
+ int TRACE (char*,int *,int ,int *) ;
+ int debugstr_guid (int ) ;
+ TYPE_1__* heap_alloc (int) ;
 
 __attribute__((used)) static HRESULT InstanceObjectFactory_Constructor(REFCLSID rclsid, IPropertyBag *pPropertyBag,
                                                  REFIID riid, LPVOID *ppvObject)

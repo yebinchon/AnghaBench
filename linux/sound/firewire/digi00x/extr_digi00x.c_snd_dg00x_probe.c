@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct snd_dg00x {int is_console; int /*<<< orphan*/  dwork; int /*<<< orphan*/  hwdep_wait; int /*<<< orphan*/  lock; int /*<<< orphan*/  mutex; int /*<<< orphan*/  unit; } ;
+
+
+
+
+struct snd_dg00x {int is_console; int dwork; int hwdep_wait; int lock; int mutex; int unit; } ;
 struct ieee1394_device_id {scalar_t__ model_id; } ;
-struct fw_unit {int /*<<< orphan*/  device; } ;
+struct fw_unit {int device; } ;
 
-/* Variables and functions */
- int ENOMEM ; 
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  INIT_DEFERRABLE_WORK (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ MODEL_CONSOLE ; 
- int /*<<< orphan*/  dev_set_drvdata (int /*<<< orphan*/ *,struct snd_dg00x*) ; 
- struct snd_dg00x* devm_kzalloc (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  do_registration ; 
- int /*<<< orphan*/  fw_unit_get (struct fw_unit*) ; 
- int /*<<< orphan*/  init_waitqueue_head (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  snd_fw_schedule_registration (struct fw_unit*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_lock_init (int /*<<< orphan*/ *) ; 
+
+ int ENOMEM ;
+ int GFP_KERNEL ;
+ int INIT_DEFERRABLE_WORK (int *,int ) ;
+ scalar_t__ MODEL_CONSOLE ;
+ int dev_set_drvdata (int *,struct snd_dg00x*) ;
+ struct snd_dg00x* devm_kzalloc (int *,int,int ) ;
+ int do_registration ;
+ int fw_unit_get (struct fw_unit*) ;
+ int init_waitqueue_head (int *) ;
+ int mutex_init (int *) ;
+ int snd_fw_schedule_registration (struct fw_unit*,int *) ;
+ int spin_lock_init (int *) ;
 
 __attribute__((used)) static int snd_dg00x_probe(struct fw_unit *unit,
-			   const struct ieee1394_device_id *entry)
+      const struct ieee1394_device_id *entry)
 {
-	struct snd_dg00x *dg00x;
+ struct snd_dg00x *dg00x;
 
-	/* Allocate this independent of sound card instance. */
-	dg00x = devm_kzalloc(&unit->device, sizeof(struct snd_dg00x),
-			     GFP_KERNEL);
-	if (!dg00x)
-		return -ENOMEM;
 
-	dg00x->unit = fw_unit_get(unit);
-	dev_set_drvdata(&unit->device, dg00x);
+ dg00x = devm_kzalloc(&unit->device, sizeof(struct snd_dg00x),
+        GFP_KERNEL);
+ if (!dg00x)
+  return -ENOMEM;
 
-	mutex_init(&dg00x->mutex);
-	spin_lock_init(&dg00x->lock);
-	init_waitqueue_head(&dg00x->hwdep_wait);
+ dg00x->unit = fw_unit_get(unit);
+ dev_set_drvdata(&unit->device, dg00x);
 
-	dg00x->is_console = entry->model_id == MODEL_CONSOLE;
+ mutex_init(&dg00x->mutex);
+ spin_lock_init(&dg00x->lock);
+ init_waitqueue_head(&dg00x->hwdep_wait);
 
-	/* Allocate and register this sound card later. */
-	INIT_DEFERRABLE_WORK(&dg00x->dwork, do_registration);
-	snd_fw_schedule_registration(unit, &dg00x->dwork);
+ dg00x->is_console = entry->model_id == MODEL_CONSOLE;
 
-	return 0;
+
+ INIT_DEFERRABLE_WORK(&dg00x->dwork, do_registration);
+ snd_fw_schedule_registration(unit, &dg00x->dwork);
+
+ return 0;
 }

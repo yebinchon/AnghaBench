@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int* reg; } ;
 struct TYPE_4__ {TYPE_1__ video; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BackFill (int,int) ; 
- int /*<<< orphan*/  DrawDisplay (int) ; 
- char* DrawLineDest ; 
- int DrawLineDestIncrement ; 
- int DrawScanline ; 
- int /*<<< orphan*/  FinalizeLine (int,int) ; 
- int /*<<< orphan*/  HighCol ; 
- scalar_t__ HighColIncrement ; 
- TYPE_2__ Pico ; 
- int PicoScanBegin (int) ; 
- int PicoScanEnd (int) ; 
- int skip_next_line ; 
+
+ int BackFill (int,int) ;
+ int DrawDisplay (int) ;
+ char* DrawLineDest ;
+ int DrawLineDestIncrement ;
+ int DrawScanline ;
+ int FinalizeLine (int,int) ;
+ int HighCol ;
+ scalar_t__ HighColIncrement ;
+ TYPE_2__ Pico ;
+ int PicoScanBegin (int) ;
+ int PicoScanEnd (int) ;
+ int skip_next_line ;
 
 __attribute__((used)) static void PicoLine(int line, int offs, int sh, int bgc)
 {
@@ -39,7 +39,7 @@ __attribute__((used)) static void PicoLine(int line, int offs, int sh, int bgc)
   }
 
   DrawScanline = line;
-  if (PicoScanBegin != NULL)
+  if (PicoScanBegin != ((void*)0))
     skip = PicoScanBegin(line + offs);
 
   if (skip) {
@@ -47,15 +47,15 @@ __attribute__((used)) static void PicoLine(int line, int offs, int sh, int bgc)
     return;
   }
 
-  // Draw screen:
+
   BackFill(bgc, sh);
   if (Pico.video.reg[1]&0x40)
     DrawDisplay(sh);
 
-  if (FinalizeLine != NULL)
+  if (FinalizeLine != ((void*)0))
     FinalizeLine(sh, line);
 
-  if (PicoScanEnd != NULL)
+  if (PicoScanEnd != ((void*)0))
     skip_next_line = PicoScanEnd(line + offs);
 
   HighCol += HighColIncrement;

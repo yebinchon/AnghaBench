@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_player_t ;
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  int /*<<< orphan*/  input_item_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  lua_pushnil (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * vlc_player_GetCurrentMedia (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_player_Lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_player_Unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * vlclua_get_player_internal (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlclua_input_item_get (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int vlc_player_t ;
+typedef int lua_State ;
+typedef int input_item_t ;
+
+
+ int lua_pushnil (int *) ;
+ int * vlc_player_GetCurrentMedia (int *) ;
+ int vlc_player_Lock (int *) ;
+ int vlc_player_Unlock (int *) ;
+ int * vlclua_get_player_internal (int *) ;
+ int vlclua_input_item_get (int *,int *) ;
 
 __attribute__((used)) static int vlclua_input_item_get_current( lua_State *L )
 {

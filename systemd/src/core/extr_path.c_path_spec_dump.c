@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  type; int /*<<< orphan*/  path; } ;
-typedef  TYPE_1__ PathSpec ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*,char const*,char*,int /*<<< orphan*/ ) ; 
- char* path_type_to_string (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int type; int path; } ;
+typedef TYPE_1__ PathSpec ;
+typedef int FILE ;
+
+
+ int fprintf (int *,char*,char const*,char*,int ) ;
+ char* path_type_to_string (int ) ;
 
 __attribute__((used)) static void path_spec_dump(PathSpec *s, FILE *f, const char *prefix) {
         fprintf(f,

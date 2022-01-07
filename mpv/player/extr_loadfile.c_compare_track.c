@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct track {scalar_t__ is_external; scalar_t__ auto_loaded; scalar_t__ forced_track; scalar_t__ default_track; scalar_t__ attached_picture; scalar_t__ user_tid; TYPE_1__* stream; int /*<<< orphan*/  lang; int /*<<< orphan*/  no_default; } ;
-struct MPOpts {scalar_t__ hls_bitrate; int /*<<< orphan*/  autoload_files; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct track {scalar_t__ is_external; scalar_t__ auto_loaded; scalar_t__ forced_track; scalar_t__ default_track; scalar_t__ attached_picture; scalar_t__ user_tid; TYPE_1__* stream; int lang; int no_default; } ;
+struct MPOpts {scalar_t__ hls_bitrate; int autoload_files; } ;
 struct TYPE_2__ {scalar_t__ hls_bitrate; } ;
 
-/* Variables and functions */
- int match_lang (char**,int /*<<< orphan*/ ) ; 
+
+ int match_lang (char**,int ) ;
 
 __attribute__((used)) static bool compare_track(struct track *t1, struct track *t2, char **langs,
                           struct MPOpts *opts)

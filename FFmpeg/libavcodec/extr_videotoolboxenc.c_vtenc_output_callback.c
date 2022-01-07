@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VTEncodeInfoFlags ;
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int VTEncodeInfoFlags ;
 struct TYPE_7__ {scalar_t__ async_error; } ;
-typedef  TYPE_1__ VTEncContext ;
-struct TYPE_8__ {int flags; int /*<<< orphan*/  extradata; TYPE_1__* priv_data; } ;
-typedef  scalar_t__ OSStatus ;
-typedef  int /*<<< orphan*/  ExtraSEI ;
-typedef  scalar_t__ CMSampleBufferRef ;
-typedef  TYPE_2__ AVCodecContext ;
+typedef TYPE_1__ VTEncContext ;
+struct TYPE_8__ {int flags; int extradata; TYPE_1__* priv_data; } ;
+typedef scalar_t__ OSStatus ;
+typedef int ExtraSEI ;
+typedef scalar_t__ CMSampleBufferRef ;
+typedef TYPE_2__ AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR_EXTERNAL ; 
- int AV_CODEC_FLAG_GLOBAL_HEADER ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  CFRelease (scalar_t__) ; 
- int /*<<< orphan*/  av_log (TYPE_2__*,int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  set_async_error (TYPE_1__*,int) ; 
- int set_extradata (TYPE_2__*,scalar_t__) ; 
- int /*<<< orphan*/  vtenc_q_push (TYPE_1__*,scalar_t__,int /*<<< orphan*/ *) ; 
+
+ int AVERROR_EXTERNAL ;
+ int AV_CODEC_FLAG_GLOBAL_HEADER ;
+ int AV_LOG_ERROR ;
+ int CFRelease (scalar_t__) ;
+ int av_log (TYPE_2__*,int ,char*,int) ;
+ int set_async_error (TYPE_1__*,int) ;
+ int set_extradata (TYPE_2__*,scalar_t__) ;
+ int vtenc_q_push (TYPE_1__*,scalar_t__,int *) ;
 
 __attribute__((used)) static void vtenc_output_callback(
     void *ctx,
@@ -39,7 +39,7 @@ __attribute__((used)) static void vtenc_output_callback(
     CMSampleBufferRef sample_buffer)
 {
     AVCodecContext *avctx = ctx;
-    VTEncContext   *vtctx = avctx->priv_data;
+    VTEncContext *vtctx = avctx->priv_data;
     ExtraSEI *sei = sourceFrameCtx;
 
     if (vtctx->async_error) {

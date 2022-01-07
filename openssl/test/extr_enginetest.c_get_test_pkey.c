@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  n ;
-typedef  int /*<<< orphan*/  e ;
-typedef  int /*<<< orphan*/  RSA ;
-typedef  int /*<<< orphan*/  EVP_PKEY ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BN_bin2bn (unsigned char*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EVP_PKEY_assign_RSA (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EVP_PKEY_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * EVP_PKEY_new () ; 
- int /*<<< orphan*/  RSA_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * RSA_new () ; 
- int /*<<< orphan*/  RSA_set0_key (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int n ;
+typedef int e ;
+typedef int RSA ;
+typedef int EVP_PKEY ;
+
+
+ int BN_bin2bn (unsigned char*,int,int *) ;
+ int EVP_PKEY_assign_RSA (int *,int *) ;
+ int EVP_PKEY_free (int *) ;
+ int * EVP_PKEY_new () ;
+ int RSA_free (int *) ;
+ int * RSA_new () ;
+ int RSA_set0_key (int *,int ,int ,int *) ;
 
 __attribute__((used)) static EVP_PKEY *get_test_pkey(void)
 {
@@ -37,16 +37,16 @@ __attribute__((used)) static EVP_PKEY *get_test_pkey(void)
     RSA *rsa = RSA_new();
     EVP_PKEY *pk = EVP_PKEY_new();
 
-    if (rsa == NULL || pk == NULL || !EVP_PKEY_assign_RSA(pk, rsa)) {
+    if (rsa == ((void*)0) || pk == ((void*)0) || !EVP_PKEY_assign_RSA(pk, rsa)) {
         RSA_free(rsa);
         EVP_PKEY_free(pk);
-        return NULL;
+        return ((void*)0);
     }
 
-    if (!RSA_set0_key(rsa, BN_bin2bn(n, sizeof(n)-1, NULL),
-                      BN_bin2bn(e, sizeof(e)-1, NULL), NULL)) {
+    if (!RSA_set0_key(rsa, BN_bin2bn(n, sizeof(n)-1, ((void*)0)),
+                      BN_bin2bn(e, sizeof(e)-1, ((void*)0)), ((void*)0))) {
         EVP_PKEY_free(pk);
-        return NULL;
+        return ((void*)0);
     }
 
     return pk;

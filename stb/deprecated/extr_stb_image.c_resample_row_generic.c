@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  stbi__uint8 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  STBI_NOTUSED (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int stbi__uint8 ;
+
+
+ int STBI_NOTUSED (int *) ;
 
 __attribute__((used)) static stbi__uint8 *resample_row_generic(stbi__uint8 *out, stbi__uint8 *in_near, stbi__uint8 *in_far, int w, int hs)
 {
-   // resample with nearest-neighbor
+
    int i,j;
    STBI_NOTUSED(in_far);
    for (i=0; i < w; ++i)

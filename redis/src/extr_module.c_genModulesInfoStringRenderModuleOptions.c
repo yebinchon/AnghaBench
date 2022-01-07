@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct RedisModule {int options; } ;
-typedef  int /*<<< orphan*/  sds ;
+typedef int sds ;
 
-/* Variables and functions */
- int REDISMODULE_OPTIONS_HANDLE_IO_ERRORS ; 
- int /*<<< orphan*/  sdscat (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  sdsnew (char*) ; 
- int /*<<< orphan*/  sdstrim (int /*<<< orphan*/ ,char*) ; 
+
+ int REDISMODULE_OPTIONS_HANDLE_IO_ERRORS ;
+ int sdscat (int ,char*) ;
+ int sdsnew (char*) ;
+ int sdstrim (int ,char*) ;
 
 sds genModulesInfoStringRenderModuleOptions(struct RedisModule *module) {
     sds output = sdsnew("[");

@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  execargs_free_count ; 
- int /*<<< orphan*/  thread_wakeup (int /*<<< orphan*/ *) ; 
+ int execargs_free_count ;
+ int thread_wakeup (int *) ;
 
 __attribute__((used)) static void
 execargs_wakeup_waiters(void) {
-	thread_wakeup(&execargs_free_count);
+ thread_wakeup(&execargs_free_count);
 }

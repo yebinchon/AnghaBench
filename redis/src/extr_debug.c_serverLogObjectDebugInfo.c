@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
 struct TYPE_11__ {TYPE_1__* zsl; } ;
-typedef  TYPE_2__ zset ;
-typedef  int sds ;
+typedef TYPE_2__ zset ;
+typedef int sds ;
 struct TYPE_12__ {int type; int encoding; int refcount; scalar_t__ ptr; } ;
-typedef  TYPE_3__ robj ;
+typedef TYPE_3__ robj ;
 struct TYPE_10__ {scalar_t__ level; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LL_WARNING ; 
- scalar_t__ OBJ_ENCODING_SKIPLIST ; 
- scalar_t__ OBJ_HASH ; 
- scalar_t__ OBJ_LIST ; 
- scalar_t__ OBJ_SET ; 
- scalar_t__ OBJ_STRING ; 
- scalar_t__ OBJ_ZSET ; 
- scalar_t__ hashTypeLength (TYPE_3__ const*) ; 
- scalar_t__ listTypeLength (TYPE_3__ const*) ; 
- scalar_t__ sdsEncodedObject (TYPE_3__ const*) ; 
- int sdscatrepr (int /*<<< orphan*/ ,scalar_t__,int) ; 
- int /*<<< orphan*/  sdsempty () ; 
- int /*<<< orphan*/  sdsfree (int) ; 
- int sdslen (scalar_t__) ; 
- int /*<<< orphan*/  serverLog (int /*<<< orphan*/ ,char*,int) ; 
- scalar_t__ setTypeSize (TYPE_3__ const*) ; 
- scalar_t__ zsetLength (TYPE_3__ const*) ; 
+
+ int LL_WARNING ;
+ scalar_t__ OBJ_ENCODING_SKIPLIST ;
+ scalar_t__ OBJ_HASH ;
+ scalar_t__ OBJ_LIST ;
+ scalar_t__ OBJ_SET ;
+ scalar_t__ OBJ_STRING ;
+ scalar_t__ OBJ_ZSET ;
+ scalar_t__ hashTypeLength (TYPE_3__ const*) ;
+ scalar_t__ listTypeLength (TYPE_3__ const*) ;
+ scalar_t__ sdsEncodedObject (TYPE_3__ const*) ;
+ int sdscatrepr (int ,scalar_t__,int) ;
+ int sdsempty () ;
+ int sdsfree (int) ;
+ int sdslen (scalar_t__) ;
+ int serverLog (int ,char*,int) ;
+ scalar_t__ setTypeSize (TYPE_3__ const*) ;
+ scalar_t__ zsetLength (TYPE_3__ const*) ;
 
 void serverLogObjectDebugInfo(const robj *o) {
     serverLog(LL_WARNING,"Object type: %d", o->type);

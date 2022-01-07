@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ yyStackEntry ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ yyStackEntry ;
 struct TYPE_3__ {int yystksz; scalar_t__* yystack; scalar_t__* yytos; scalar_t__ yystk0; } ;
-typedef  TYPE_1__ yyParser ;
-typedef  int /*<<< orphan*/  pNew ;
+typedef TYPE_1__ yyParser ;
+typedef int pNew ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fprintf (scalar_t__,char*,char*,int,int) ; 
- scalar_t__* malloc (int) ; 
- scalar_t__* realloc (scalar_t__*,int) ; 
- scalar_t__ yyTraceFILE ; 
- char* yyTracePrompt ; 
+
+ int fprintf (scalar_t__,char*,char*,int,int) ;
+ scalar_t__* malloc (int) ;
+ scalar_t__* realloc (scalar_t__*,int) ;
+ scalar_t__ yyTraceFILE ;
+ char* yyTracePrompt ;
 
 __attribute__((used)) static int yyGrowStack(yyParser *p){
   int newSize;
@@ -39,13 +39,13 @@ __attribute__((used)) static int yyGrowStack(yyParser *p){
   if( pNew ){
     p->yystack = pNew;
     p->yytos = &p->yystack[idx];
-#ifndef NDEBUG
+
     if( yyTraceFILE ){
       fprintf(yyTraceFILE,"%sStack grows from %d to %d entries.\n",
               yyTracePrompt, p->yystksz, newSize);
     }
-#endif
+
     p->yystksz = newSize;
   }
-  return pNew==0; 
+  return pNew==0;
 }

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ u32 ;
 
-/* Variables and functions */
- int ARRAY_SIZE (scalar_t__*) ; 
- int ENOENT ; 
- scalar_t__* msg_sizes ; 
+
+
+
+typedef scalar_t__ u32 ;
+
+
+ int ARRAY_SIZE (scalar_t__*) ;
+ int ENOENT ;
+ scalar_t__* msg_sizes ;
 
 __attribute__((used)) static inline int carm_lookup_bucket(u32 msg_size)
 {
-	int i;
+ int i;
 
-	for (i = 0; i < ARRAY_SIZE(msg_sizes); i++)
-		if (msg_size <= msg_sizes[i])
-			return i;
+ for (i = 0; i < ARRAY_SIZE(msg_sizes); i++)
+  if (msg_size <= msg_sizes[i])
+   return i;
 
-	return -ENOENT;
+ return -ENOENT;
 }

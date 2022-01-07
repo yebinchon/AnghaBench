@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  responses; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int responses; } ;
 struct TYPE_5__ {TYPE_1__ tbsResponseData; } ;
-typedef  int /*<<< orphan*/  OCSP_SINGLERESP ;
-typedef  TYPE_2__ OCSP_BASICRESP ;
+typedef int OCSP_SINGLERESP ;
+typedef TYPE_2__ OCSP_BASICRESP ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * sk_OCSP_SINGLERESP_value (int /*<<< orphan*/ ,int) ; 
+
+ int * sk_OCSP_SINGLERESP_value (int ,int) ;
 
 OCSP_SINGLERESP *OCSP_resp_get0(OCSP_BASICRESP *bs, int idx)
 {
     if (!bs)
-        return NULL;
+        return ((void*)0);
     return sk_OCSP_SINGLERESP_value(bs->tbsResponseData.responses, idx);
 }

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  prof_bt_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cassert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  config_prof ; 
- int /*<<< orphan*/  not_reached () ; 
+
+
+
+typedef int prof_bt_t ;
+
+
+ int cassert (int ) ;
+ int config_prof ;
+ int not_reached () ;
 
 void
 prof_backtrace(prof_bt_t *bt) {
-	cassert(config_prof);
-	not_reached();
+ cassert(config_prof);
+ not_reached();
 }

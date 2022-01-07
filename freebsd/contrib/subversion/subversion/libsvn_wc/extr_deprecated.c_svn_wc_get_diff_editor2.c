@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_wc_diff_callbacks_t ;
-typedef  int /*<<< orphan*/  svn_wc_adm_access_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_delta_editor_t ;
-typedef  int /*<<< orphan*/  svn_cancel_func_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-struct diff_callbacks_wrapper_baton {void* baton; int /*<<< orphan*/  const* callbacks; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_DEPTH_INFINITY_OR_FILES (int /*<<< orphan*/ ) ; 
- struct diff_callbacks_wrapper_baton* apr_palloc (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  diff_callbacks_wrapper ; 
- int /*<<< orphan*/ * svn_wc_get_diff_editor5 (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,struct diff_callbacks_wrapper_baton*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *,int /*<<< orphan*/  const**,void**,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int svn_wc_diff_callbacks_t ;
+typedef int svn_wc_adm_access_t ;
+typedef int svn_error_t ;
+typedef int svn_delta_editor_t ;
+typedef int svn_cancel_func_t ;
+typedef int svn_boolean_t ;
+struct diff_callbacks_wrapper_baton {void* baton; int const* callbacks; } ;
+typedef int apr_pool_t ;
+
+
+ int SVN_DEPTH_INFINITY_OR_FILES (int ) ;
+ struct diff_callbacks_wrapper_baton* apr_palloc (int *,int) ;
+ int diff_callbacks_wrapper ;
+ int * svn_wc_get_diff_editor5 (int *,char const*,int *,struct diff_callbacks_wrapper_baton*,int ,int ,int ,int ,int ,void*,int *,int const**,void**,int *) ;
 
 svn_error_t *
 svn_wc_get_diff_editor2(svn_wc_adm_access_t *anchor,
@@ -47,5 +47,5 @@ svn_wc_get_diff_editor2(svn_wc_adm_access_t *anchor,
                                  SVN_DEPTH_INFINITY_OR_FILES(recurse),
                                  ignore_ancestry, use_text_base,
                                  reverse_order, cancel_func, cancel_baton,
-                                 NULL, editor, edit_baton, pool);
+                                 ((void*)0), editor, edit_baton, pool);
 }

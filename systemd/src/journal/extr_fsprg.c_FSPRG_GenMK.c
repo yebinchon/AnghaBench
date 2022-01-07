@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint16_t ;
-typedef  int /*<<< orphan*/  gcry_mpi_t ;
 
-/* Variables and functions */
- int FSPRG_RECOMMENDED_SEEDLEN ; 
- int /*<<< orphan*/  GCRY_STRONG_RANDOM ; 
- int /*<<< orphan*/  RND_GEN_P ; 
- int /*<<< orphan*/  RND_GEN_Q ; 
- int /*<<< orphan*/  VALIDATE_SECPAR (unsigned int) ; 
- int /*<<< orphan*/  assert (int) ; 
- int gcry_mpi_get_nbits (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gcry_mpi_mul (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gcry_mpi_new (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gcry_mpi_release (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gcry_randomize (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  genprime3mod4 (int,void const*,size_t,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  initialize_libgcrypt (int) ; 
- int /*<<< orphan*/  mpi_export (void*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  store_secpar (void*,int) ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint16_t ;
+typedef int gcry_mpi_t ;
+
+
+ int FSPRG_RECOMMENDED_SEEDLEN ;
+ int GCRY_STRONG_RANDOM ;
+ int RND_GEN_P ;
+ int RND_GEN_Q ;
+ int VALIDATE_SECPAR (unsigned int) ;
+ int assert (int) ;
+ int gcry_mpi_get_nbits (int ) ;
+ int gcry_mpi_mul (int ,int ,int ) ;
+ int gcry_mpi_new (int ) ;
+ int gcry_mpi_release (int ) ;
+ int gcry_randomize (int *,int,int ) ;
+ int genprime3mod4 (int,void const*,size_t,int ) ;
+ int initialize_libgcrypt (int) ;
+ int mpi_export (void*,int,int ) ;
+ int store_secpar (void*,int) ;
 
 void FSPRG_GenMK(void *msk, void *mpk, const void *seed, size_t seedlen, unsigned _secpar) {
         uint8_t iseed[FSPRG_RECOMMENDED_SEEDLEN];
@@ -39,7 +39,7 @@ void FSPRG_GenMK(void *msk, void *mpk, const void *seed, size_t seedlen, unsigne
         VALIDATE_SECPAR(_secpar);
         secpar = _secpar;
 
-        initialize_libgcrypt(false);
+        initialize_libgcrypt(0);
 
         if (!seed) {
                 gcry_randomize(iseed, FSPRG_RECOMMENDED_SEEDLEN, GCRY_STRONG_RANDOM);

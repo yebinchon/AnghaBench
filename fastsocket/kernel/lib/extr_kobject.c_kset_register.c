@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct kset {int /*<<< orphan*/  kobj; } ;
 
-/* Variables and functions */
- int EINVAL ; 
- int /*<<< orphan*/  KOBJ_ADD ; 
- int kobject_add_internal (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  kobject_uevent (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kset_init (struct kset*) ; 
+
+
+
+struct kset {int kobj; } ;
+
+
+ int EINVAL ;
+ int KOBJ_ADD ;
+ int kobject_add_internal (int *) ;
+ int kobject_uevent (int *,int ) ;
+ int kset_init (struct kset*) ;
 
 int kset_register(struct kset *k)
 {
-	int err;
+ int err;
 
-	if (!k)
-		return -EINVAL;
+ if (!k)
+  return -EINVAL;
 
-	kset_init(k);
-	err = kobject_add_internal(&k->kobj);
-	if (err)
-		return err;
-	kobject_uevent(&k->kobj, KOBJ_ADD);
-	return 0;
+ kset_init(k);
+ err = kobject_add_internal(&k->kobj);
+ if (err)
+  return err;
+ kobject_uevent(&k->kobj, KOBJ_ADD);
+ return 0;
 }

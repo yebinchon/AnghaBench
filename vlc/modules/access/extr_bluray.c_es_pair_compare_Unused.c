@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int b_recyling; } ;
-typedef  TYPE_1__ es_pair_t ;
+typedef TYPE_1__ es_pair_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  VLC_UNUSED (void const*) ; 
+
+ int VLC_UNUSED (void const*) ;
 
 __attribute__((used)) static bool es_pair_compare_Unused(const es_pair_t *p_pair, const void *priv)
 {

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int enable; int transparencyenable; int specialprimode; int colornumber; int mapwh; int planew; int planeh; int x; int y; int patterndatasize; int patternwh; int pagewh; int cellw; int cellh; int supplementdata; int auxmode; int alpha; int coloroffset; int cor; int cog; int cob; int coordincx; int coordincy; void (* PlaneAddr ) (void*,int) ;int /*<<< orphan*/  priority; int /*<<< orphan*/ * PostPixelFetchCalc; } ;
-typedef  TYPE_1__ vdp2draw_struct ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int enable; int transparencyenable; int specialprimode; int colornumber; int mapwh; int planew; int planeh; int x; int y; int patterndatasize; int patternwh; int pagewh; int cellw; int cellh; int supplementdata; int auxmode; int alpha; int coloroffset; int cor; int cog; int cob; int coordincx; int coordincy; void (* PlaneAddr ) (void*,int) ;int priority; int * PostPixelFetchCalc; } ;
+typedef TYPE_1__ vdp2draw_struct ;
 struct TYPE_7__ {int disptoggle; } ;
 struct TYPE_6__ {int BGON; int SFPRMD; int CHCTLB; int PLSZ; int SCXN3; int SCYN3; int PNCN3; int CCCTL; int CCRNB; int CRAOFA; int CLOFEN; int CLOFSL; int COBR; int COBG; int COBB; int COAR; int COAG; int COAB; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DoColorCalc ; 
- int /*<<< orphan*/  DoColorCalcWithColorOffset ; 
- int /*<<< orphan*/  DoColorOffset ; 
- int /*<<< orphan*/  DoNothing ; 
- int /*<<< orphan*/  Vdp2DrawMap (TYPE_1__*) ; 
- TYPE_3__ Vdp2External ; 
- int /*<<< orphan*/  Vdp2NBG3PlaneAddr ; 
- TYPE_2__* Vdp2Regs ; 
- int /*<<< orphan*/  nbg3priority ; 
+
+ int DoColorCalc ;
+ int DoColorCalcWithColorOffset ;
+ int DoColorOffset ;
+ int DoNothing ;
+ int Vdp2DrawMap (TYPE_1__*) ;
+ TYPE_3__ Vdp2External ;
+ int Vdp2NBG3PlaneAddr ;
+ TYPE_2__* Vdp2Regs ;
+ int nbg3priority ;
 
 __attribute__((used)) static int Vdp2DrawNBG3(void)
 {
@@ -57,7 +57,7 @@ __attribute__((used)) static int Vdp2DrawNBG3(void)
       case 3:
          info.planew = info.planeh = 2;
          break;
-      default: // Not sure what 0x2 does
+      default:
          info.planew = info.planeh = 1;
          break;
    }
@@ -88,10 +88,10 @@ __attribute__((used)) static int Vdp2DrawNBG3(void)
 
    if (Vdp2Regs->CLOFEN & 0x8)
    {
-      // color offset enable
+
       if (Vdp2Regs->CLOFSL & 0x8)
       {
-         // color offset B
+
          info.cor = Vdp2Regs->COBR & 0xFF;
          if (Vdp2Regs->COBR & 0x100)
             info.cor |= 0xFFFFFF00;
@@ -106,7 +106,7 @@ __attribute__((used)) static int Vdp2DrawNBG3(void)
       }
       else
       {
-         // color offset A
+
          info.cor = Vdp2Regs->COAR & 0xFF;
          if (Vdp2Regs->COAR & 0x100)
             info.cor |= 0xFFFFFF00;
@@ -125,7 +125,7 @@ __attribute__((used)) static int Vdp2DrawNBG3(void)
       else
          info.PostPixelFetchCalc = &DoColorOffset;
    }
-   else // color offset disable
+   else
    {
       if (Vdp2Regs->CCCTL & 0x8)
          info.PostPixelFetchCalc = &DoColorCalc;

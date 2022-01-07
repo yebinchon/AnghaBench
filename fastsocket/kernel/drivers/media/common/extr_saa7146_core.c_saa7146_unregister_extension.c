@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct saa7146_extension {int /*<<< orphan*/  driver; int /*<<< orphan*/  name; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEB_EE (char*) ; 
- int /*<<< orphan*/  pci_unregister_driver (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  printk (char*,int /*<<< orphan*/ ) ; 
+
+
+
+struct saa7146_extension {int driver; int name; } ;
+
+
+ int DEB_EE (char*) ;
+ int pci_unregister_driver (int *) ;
+ int printk (char*,int ) ;
 
 int saa7146_unregister_extension(struct saa7146_extension* ext)
 {
-	DEB_EE(("ext:%p\n",ext));
-	printk("saa7146: unregister extension '%s'.\n",ext->name);
-	pci_unregister_driver(&ext->driver);
-	return 0;
+ DEB_EE(("ext:%p\n",ext));
+ printk("saa7146: unregister extension '%s'.\n",ext->name);
+ pci_unregister_driver(&ext->driver);
+ return 0;
 }

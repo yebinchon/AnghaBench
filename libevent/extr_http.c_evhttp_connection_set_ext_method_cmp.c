@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct evhttp_connection {int /*<<< orphan*/  ext_method_cmp; } ;
-typedef  int /*<<< orphan*/  evhttp_ext_method_cb ;
 
-/* Variables and functions */
+
+
+
+struct evhttp_connection {int ext_method_cmp; } ;
+typedef int evhttp_ext_method_cb ;
+
+
 
 void
 evhttp_connection_set_ext_method_cmp(struct evhttp_connection *evcon,
-	evhttp_ext_method_cb cmp)
+ evhttp_ext_method_cb cmp)
 {
-	evcon->ext_method_cmp = cmp;
+ evcon->ext_method_cmp = cmp;
 }

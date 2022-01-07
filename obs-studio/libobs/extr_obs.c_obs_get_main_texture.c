@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct obs_core_video {int /*<<< orphan*/ * render_texture; int /*<<< orphan*/  texture_rendered; } ;
-typedef  int /*<<< orphan*/  gs_texture_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct obs_core_video {int * render_texture; int texture_rendered; } ;
+typedef int gs_texture_t ;
 struct TYPE_2__ {struct obs_core_video video; } ;
 
-/* Variables and functions */
- TYPE_1__* obs ; 
+
+ TYPE_1__* obs ;
 
 gs_texture_t *obs_get_main_texture(void)
 {
-	struct obs_core_video *video;
+ struct obs_core_video *video;
 
-	if (!obs)
-		return NULL;
+ if (!obs)
+  return ((void*)0);
 
-	video = &obs->video;
-	if (!video->texture_rendered)
-		return NULL;
+ video = &obs->video;
+ if (!video->texture_rendered)
+  return ((void*)0);
 
-	return video->render_texture;
+ return video->render_texture;
 }

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ GLuint ;
-typedef  int /*<<< orphan*/  GLsizei ;
-typedef  scalar_t__ GLint ;
-typedef  scalar_t__ GLenum ;
-typedef  int /*<<< orphan*/  GLchar ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GL_COMPILE_STATUS ; 
- scalar_t__ GL_FRAGMENT_SHADER ; 
- scalar_t__ GL_TRUE ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  glCompileShader (scalar_t__) ; 
- scalar_t__ glCreateShader (scalar_t__) ; 
- int /*<<< orphan*/  glDeleteShader (scalar_t__) ; 
- int /*<<< orphan*/  glGetShaderInfoLog (scalar_t__,int,int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  glGetShaderiv (scalar_t__,int /*<<< orphan*/ ,scalar_t__*) ; 
- int /*<<< orphan*/  glShaderSource (scalar_t__,int,int /*<<< orphan*/  const**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stderr ; 
+
+
+
+typedef scalar_t__ GLuint ;
+typedef int GLsizei ;
+typedef scalar_t__ GLint ;
+typedef scalar_t__ GLenum ;
+typedef int GLchar ;
+
+
+ int GL_COMPILE_STATUS ;
+ scalar_t__ GL_FRAGMENT_SHADER ;
+ scalar_t__ GL_TRUE ;
+ int fprintf (int ,char*,char*) ;
+ int glCompileShader (scalar_t__) ;
+ scalar_t__ glCreateShader (scalar_t__) ;
+ int glDeleteShader (scalar_t__) ;
+ int glGetShaderInfoLog (scalar_t__,int,int *,char*) ;
+ int glGetShaderiv (scalar_t__,int ,scalar_t__*) ;
+ int glShaderSource (scalar_t__,int,int const**,int *) ;
+ int stderr ;
 
 __attribute__((used)) static GLuint make_shader(GLenum type, const char* text)
 {
@@ -39,7 +39,7 @@ __attribute__((used)) static GLuint make_shader(GLenum type, const char* text)
     shader = glCreateShader(type);
     if (shader != 0)
     {
-        glShaderSource(shader, 1, (const GLchar**)&text, NULL);
+        glShaderSource(shader, 1, (const GLchar**)&text, ((void*)0));
         glCompileShader(shader);
         glGetShaderiv(shader, GL_COMPILE_STATUS, &shader_ok);
         if (shader_ok != GL_TRUE)

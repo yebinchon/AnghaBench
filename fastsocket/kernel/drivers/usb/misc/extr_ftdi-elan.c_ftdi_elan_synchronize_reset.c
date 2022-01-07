@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct usb_ftdi {TYPE_1__* udev; int /*<<< orphan*/  bulk_out_endpointAddr; } ;
-struct urb {int /*<<< orphan*/  transfer_dma; int /*<<< orphan*/  transfer_flags; } ;
-struct TYPE_5__ {int /*<<< orphan*/  dev; } ;
 
-/* Variables and functions */
- int ENOMEM ; 
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  URB_NO_TRANSFER_DMA_MAP ; 
- int /*<<< orphan*/  dev_err (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  ftdi_elan_write_bulk_callback ; 
- struct urb* usb_alloc_urb (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- char* usb_buffer_alloc (TYPE_1__*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  usb_buffer_free (TYPE_1__*,int,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  usb_fill_bulk_urb (struct urb*,TYPE_1__*,int /*<<< orphan*/ ,char*,int,int /*<<< orphan*/ ,struct usb_ftdi*) ; 
- int /*<<< orphan*/  usb_free_urb (struct urb*) ; 
- int /*<<< orphan*/  usb_sndbulkpipe (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int usb_submit_urb (struct urb*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct usb_ftdi {TYPE_1__* udev; int bulk_out_endpointAddr; } ;
+struct urb {int transfer_dma; int transfer_flags; } ;
+struct TYPE_5__ {int dev; } ;
+
+
+ int ENOMEM ;
+ int GFP_KERNEL ;
+ int URB_NO_TRANSFER_DMA_MAP ;
+ int dev_err (int *,char*) ;
+ int ftdi_elan_write_bulk_callback ;
+ struct urb* usb_alloc_urb (int ,int ) ;
+ char* usb_buffer_alloc (TYPE_1__*,int,int ,int *) ;
+ int usb_buffer_free (TYPE_1__*,int,char*,int ) ;
+ int usb_fill_bulk_urb (struct urb*,TYPE_1__*,int ,char*,int,int ,struct usb_ftdi*) ;
+ int usb_free_urb (struct urb*) ;
+ int usb_sndbulkpipe (TYPE_1__*,int ) ;
+ int usb_submit_urb (struct urb*,int ) ;
 
 __attribute__((used)) static int ftdi_elan_synchronize_reset(struct usb_ftdi *ftdi)
 {

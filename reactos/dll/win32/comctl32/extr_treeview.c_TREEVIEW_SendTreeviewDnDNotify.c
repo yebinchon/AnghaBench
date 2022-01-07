@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_5__ ;
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT ;
-struct TYPE_13__ {int /*<<< orphan*/  lParam; int /*<<< orphan*/  state; } ;
-struct TYPE_10__ {int /*<<< orphan*/  y; int /*<<< orphan*/  x; } ;
-struct TYPE_9__ {int mask; int /*<<< orphan*/  lParam; int /*<<< orphan*/  state; TYPE_5__* hItem; } ;
-struct TYPE_12__ {int /*<<< orphan*/  hdr; TYPE_2__ ptDrag; TYPE_1__ itemNew; scalar_t__ action; } ;
-struct TYPE_11__ {int /*<<< orphan*/  y; int /*<<< orphan*/  x; } ;
-typedef  int /*<<< orphan*/  TREEVIEW_INFO ;
-typedef  TYPE_3__ POINT ;
-typedef  TYPE_4__ NMTREEVIEWW ;
-typedef  TYPE_5__* HTREEITEM ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ,TYPE_5__*) ; 
- int /*<<< orphan*/  TREEVIEW_SendRealNotify (int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int TVIF_HANDLE ; 
- int TVIF_PARAM ; 
- int TVIF_STATE ; 
+
+typedef struct TYPE_13__ TYPE_5__ ;
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int UINT ;
+struct TYPE_13__ {int lParam; int state; } ;
+struct TYPE_10__ {int y; int x; } ;
+struct TYPE_9__ {int mask; int lParam; int state; TYPE_5__* hItem; } ;
+struct TYPE_12__ {int hdr; TYPE_2__ ptDrag; TYPE_1__ itemNew; scalar_t__ action; } ;
+struct TYPE_11__ {int y; int x; } ;
+typedef int TREEVIEW_INFO ;
+typedef TYPE_3__ POINT ;
+typedef TYPE_4__ NMTREEVIEWW ;
+typedef TYPE_5__* HTREEITEM ;
+typedef int BOOL ;
+
+
+ int TRACE (char*,int ,TYPE_5__*) ;
+ int TREEVIEW_SendRealNotify (int const*,int ,int *) ;
+ int TVIF_HANDLE ;
+ int TVIF_PARAM ;
+ int TVIF_STATE ;
 
 __attribute__((used)) static BOOL
 TREEVIEW_SendTreeviewDnDNotify(const TREEVIEW_INFO *infoPtr, UINT code,
-			       HTREEITEM dragItem, POINT pt)
+          HTREEITEM dragItem, POINT pt)
 {
     NMTREEVIEWW nmhdr;
 

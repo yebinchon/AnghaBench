@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  close (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  epoll_close (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- scalar_t__* history_filename ; 
- int /*<<< orphan*/ * log_file ; 
- int /*<<< orphan*/  sfd ; 
- int /*<<< orphan*/  write_history (scalar_t__*) ; 
+ int close (int ) ;
+ int epoll_close (int ) ;
+ int fclose (int *) ;
+ scalar_t__* history_filename ;
+ int * log_file ;
+ int sfd ;
+ int write_history (scalar_t__*) ;
 
 void cleanup (void) {
   if (history_filename[0]) {
@@ -29,6 +21,6 @@ void cleanup (void) {
 
   if (log_file) {
     fclose (log_file);
-    log_file = NULL;
+    log_file = ((void*)0);
   }
 }

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  int32_t ;
-typedef  int /*<<< orphan*/  int16_t ;
-struct TYPE_3__ {int /*<<< orphan*/  (* readw_func ) (int) ;} ;
-typedef  TYPE_1__ Q68State ;
 
-/* Variables and functions */
- int /*<<< orphan*/  stub1 (int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+typedef int int32_t ;
+typedef int int16_t ;
+struct TYPE_3__ {int (* readw_func ) (int) ;} ;
+typedef TYPE_1__ Q68State ;
+
+
+ int stub1 (int) ;
 
 __attribute__((used)) static inline int32_t READS16(Q68State *state, uint32_t addr) {
     return (int16_t) state->readw_func(addr & 0xFFFFFF);

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  nsACString ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  BSTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  heap_free (char*) ; 
- char* heap_strdupWtoU (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nsACString_Init (int /*<<< orphan*/ *,char*) ; 
+
+
+
+typedef int nsACString ;
+typedef int HRESULT ;
+typedef int BSTR ;
+
+
+ int E_OUTOFMEMORY ;
+ int S_OK ;
+ int heap_free (char*) ;
+ char* heap_strdupWtoU (int ) ;
+ int nsACString_Init (int *,char*) ;
 
 __attribute__((used)) static HRESULT bstr_to_nsacstr(BSTR bstr, nsACString *str)
 {

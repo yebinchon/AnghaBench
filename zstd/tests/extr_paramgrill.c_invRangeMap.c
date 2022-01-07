@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  size_t varInds_t ;
-typedef  scalar_t__ U32 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DISPLAY (char*) ; 
- int /*<<< orphan*/  MAX (scalar_t__,scalar_t__) ; 
- scalar_t__ MIN (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
-#define  NUM_PARAMS 136 
- int TLEN_RANGE ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
-#define  clog_ind 135 
-#define  fadt_ind 134 
-#define  hlog_ind 133 
- int /*<<< orphan*/ * maxtable ; 
- scalar_t__* mintable ; 
-#define  mml_ind 132 
-#define  slog_ind 131 
-#define  strt_ind 130 
-#define  tlen_ind 129 
- scalar_t__* tlen_table ; 
-#define  wlog_ind 128 
+
+
+
+typedef size_t varInds_t ;
+typedef scalar_t__ U32 ;
+
+
+ int DISPLAY (char*) ;
+ int MAX (scalar_t__,scalar_t__) ;
+ scalar_t__ MIN (int ,int ) ;
+
+ int TLEN_RANGE ;
+ int assert (int ) ;
+
+
+
+ int * maxtable ;
+ scalar_t__* mintable ;
+
+
+
+
+ scalar_t__* tlen_table ;
+
 
 __attribute__((used)) static int invRangeMap(varInds_t param, U32 value)
 {
     value = MIN(MAX(mintable[param], value), maxtable[param]);
     switch(param) {
-        case wlog_ind:
-        case clog_ind:
-        case hlog_ind:
-        case slog_ind:
-        case mml_ind:
-        case strt_ind:
+        case 128:
+        case 135:
+        case 133:
+        case 131:
+        case 132:
+        case 130:
             return (int)(value - mintable[param]);
-        case tlen_ind: /* bin search */
+        case 129:
         {
             int lo = 0;
             int hi = TLEN_RANGE;
@@ -59,9 +59,9 @@ __attribute__((used)) static int invRangeMap(varInds_t param, U32 value)
             }
             return lo;
         }
-        case fadt_ind:
+        case 134:
             return (int)value + 1;
-        case NUM_PARAMS:
+        case 136:
         default:;
     }
     DISPLAY("Error, not a valid param\n ");

@@ -1,0 +1,32 @@
+; ModuleID = '/home/carl/AnghaBench/freebsd/contrib/libarchive/libarchive/extr_archive_write_set_format_7zip.c_compression_end_copy.c'
+source_filename = "/home/carl/AnghaBench/freebsd/contrib/libarchive/libarchive/extr_archive_write_set_format_7zip.c_compression_end_copy.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+%struct.archive = type { i32 }
+%struct.la_zstream = type { i64 }
+
+@ARCHIVE_OK = common dso_local global i32 0, align 4
+@llvm.used = appending global [1 x i8*] [i8* bitcast (i32 (%struct.archive*, %struct.la_zstream*)* @compression_end_copy to i8*)], section "llvm.metadata"
+
+; Function Attrs: noinline nounwind optnone uwtable
+define internal i32 @compression_end_copy(%struct.archive* %0, %struct.la_zstream* %1) #0 {
+  %3 = alloca %struct.archive*, align 8
+  %4 = alloca %struct.la_zstream*, align 8
+  store %struct.archive* %0, %struct.archive** %3, align 8
+  store %struct.la_zstream* %1, %struct.la_zstream** %4, align 8
+  %5 = load %struct.archive*, %struct.archive** %3, align 8
+  %6 = load %struct.la_zstream*, %struct.la_zstream** %4, align 8
+  %7 = getelementptr inbounds %struct.la_zstream, %struct.la_zstream* %6, i32 0, i32 0
+  store i64 0, i64* %7, align 8
+  %8 = load i32, i32* @ARCHIVE_OK, align 4
+  ret i32 %8
+}
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

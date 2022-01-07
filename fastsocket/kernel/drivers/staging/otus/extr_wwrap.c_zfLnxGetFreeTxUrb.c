@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {struct usbdrv_private* ml_priv; } ;
-typedef  TYPE_1__ zdev_t ;
-typedef  int u16_t ;
-struct usbdrv_private {scalar_t__ TxUrbCnt; int TxUrbTail; int /*<<< orphan*/  cs_lock; } ;
+typedef TYPE_1__ zdev_t ;
+typedef int u16_t ;
+struct usbdrv_private {scalar_t__ TxUrbCnt; int TxUrbTail; int cs_lock; } ;
 
-/* Variables and functions */
- int ZM_MAX_TX_URB_NUM ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
+
+ int ZM_MAX_TX_URB_NUM ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
 
 u16_t zfLnxGetFreeTxUrb(zdev_t *dev)
 {
@@ -29,9 +29,9 @@ u16_t zfLnxGetFreeTxUrb(zdev_t *dev)
 
     spin_lock_irqsave(&macp->cs_lock, irqFlag);
 
-    //idx = ((macp->TxUrbTail + 1) & (ZM_MAX_TX_URB_NUM - 1));
 
-    //if (idx != macp->TxUrbHead)
+
+
     if (macp->TxUrbCnt != 0)
     {
         idx = macp->TxUrbTail;
@@ -40,7 +40,7 @@ u16_t zfLnxGetFreeTxUrb(zdev_t *dev)
     }
     else
     {
-        //printk(KERN_ERR "macp->TxUrbCnt: %d\n", macp->TxUrbCnt);
+
         idx = 0xffff;
     }
 

@@ -1,61 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int DWORD ;
 
-/* Variables and functions */
-#define  TOKEN_CHAR 139 
-#define  TOKEN_CSTRING 138 
-#define  TOKEN_DOUBLE 137 
-#define  TOKEN_DWORD 136 
-#define  TOKEN_FLOAT 135 
-#define  TOKEN_LPSTR 134 
-#define  TOKEN_SDWORD 133 
-#define  TOKEN_SWORD 132 
-#define  TOKEN_UCHAR 131 
-#define  TOKEN_UNICODE 130 
-#define  TOKEN_VOID 129 
-#define  TOKEN_WORD 128 
 
+
+
+typedef int DWORD ;
 __attribute__((used)) static const char* get_primitive_string(DWORD token)
 {
   switch(token)
   {
-    case TOKEN_WORD:
+    case 128:
       return "WORD";
-    case TOKEN_DWORD:
+    case 136:
       return "DWORD";
-    case TOKEN_FLOAT:
+    case 135:
       return "FLOAT";
-    case TOKEN_DOUBLE:
+    case 137:
       return "DOUBLE";
-    case TOKEN_CHAR:
+    case 139:
       return "CHAR";
-    case TOKEN_UCHAR:
+    case 131:
       return "UCHAR";
-    case TOKEN_SWORD:
+    case 132:
       return "SWORD";
-    case TOKEN_SDWORD:
+    case 133:
       return "SDWORD";
-    case TOKEN_VOID:
+    case 129:
       return "VOID";
-    case TOKEN_LPSTR:
+    case 134:
       return "STRING";
-    case TOKEN_UNICODE:
+    case 130:
       return "UNICODE";
-    case TOKEN_CSTRING:
+    case 138:
       return "CSTRING ";
     default:
       break;
   }
-  return NULL;
+  return ((void*)0);
 }

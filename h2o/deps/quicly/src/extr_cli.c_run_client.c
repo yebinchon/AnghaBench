@@ -1,87 +1,87 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_7__ ;
-typedef  struct TYPE_13__   TYPE_5__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
+
+
+typedef struct TYPE_14__ TYPE_7__ ;
+typedef struct TYPE_13__ TYPE_5__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct timeval {scalar_t__ tv_usec; scalar_t__ tv_sec; } ;
-struct sockaddr_in {int msg_namelen; int msg_iovlen; struct iovec* msg_iov; struct sockaddr* msg_name; int /*<<< orphan*/  sin_family; } ;
-struct sockaddr {int /*<<< orphan*/  sa_family; } ;
-struct msghdr {int msg_namelen; int msg_iovlen; struct iovec* msg_iov; struct sockaddr* msg_name; int /*<<< orphan*/  sin_family; } ;
-struct iovec {int iov_len; int /*<<< orphan*/ * iov_base; } ;
-typedef  size_t ssize_t ;
-typedef  int /*<<< orphan*/  sa ;
-typedef  int /*<<< orphan*/  quicly_decoded_packet_t ;
+struct sockaddr_in {int msg_namelen; int msg_iovlen; struct iovec* msg_iov; struct sockaddr* msg_name; int sin_family; } ;
+struct sockaddr {int sa_family; } ;
+struct msghdr {int msg_namelen; int msg_iovlen; struct iovec* msg_iov; struct sockaddr* msg_name; int sin_family; } ;
+struct iovec {int iov_len; int * iov_base; } ;
+typedef size_t ssize_t ;
+typedef int sa ;
+typedef int quicly_decoded_packet_t ;
 struct TYPE_10__ {TYPE_3__* now; } ;
-typedef  TYPE_1__ quicly_context_t ;
-typedef  int /*<<< orphan*/  quicly_conn_t ;
-typedef  int /*<<< orphan*/  mess ;
-typedef  int /*<<< orphan*/  local ;
-typedef  scalar_t__ int64_t ;
-typedef  int /*<<< orphan*/  fd_set ;
-typedef  int /*<<< orphan*/  buf ;
-struct TYPE_14__ {int /*<<< orphan*/  master_id; } ;
+typedef TYPE_1__ quicly_context_t ;
+typedef int quicly_conn_t ;
+typedef int mess ;
+typedef int local ;
+typedef scalar_t__ int64_t ;
+typedef int fd_set ;
+typedef int buf ;
+struct TYPE_14__ {int master_id; } ;
 struct TYPE_13__ {TYPE_2__* now; } ;
 struct TYPE_12__ {scalar_t__ (* cb ) (TYPE_3__*) ;} ;
 struct TYPE_11__ {scalar_t__ (* cb ) (TYPE_2__*) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_INET ; 
- scalar_t__ EINTR ; 
- scalar_t__ FD_ISSET (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FD_SET (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FD_ZERO (int /*<<< orphan*/ *) ; 
- scalar_t__ INT64_MAX ; 
- int /*<<< orphan*/  IPPROTO_UDP ; 
- int QUICLY_ERROR_FREE_CONNECTION ; 
- size_t SIZE_MAX ; 
- int /*<<< orphan*/  SOCK_DGRAM ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ bind (int,void*,int) ; 
- TYPE_5__ ctx ; 
- int /*<<< orphan*/  enqueue_requests (int /*<<< orphan*/ *) ; 
- scalar_t__ enqueue_requests_at ; 
- scalar_t__ errno ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  hexdump (char*,int /*<<< orphan*/ *,size_t) ; 
- int /*<<< orphan*/  hs_properties ; 
- int /*<<< orphan*/  memset (struct sockaddr_in*,int /*<<< orphan*/ ,int) ; 
- TYPE_7__ next_cid ; 
- int /*<<< orphan*/  perror (char*) ; 
- int quicly_connect (int /*<<< orphan*/ **,TYPE_5__*,char const*,struct sockaddr*,int /*<<< orphan*/ *,TYPE_7__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- size_t quicly_decode_packet (TYPE_5__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,size_t) ; 
- int /*<<< orphan*/  quicly_free (int /*<<< orphan*/ *) ; 
- TYPE_1__* quicly_get_context (int /*<<< orphan*/ *) ; 
- scalar_t__ quicly_get_first_timeout (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  quicly_receive (int /*<<< orphan*/ *,int /*<<< orphan*/ *,struct sockaddr*,int /*<<< orphan*/ *) ; 
- size_t recvmsg (int,struct sockaddr_in*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  resumed_transport_params ; 
- int /*<<< orphan*/  resumption_token ; 
- int select (int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,struct timeval*) ; 
- int send_pending (int,int /*<<< orphan*/ *) ; 
- int socket (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ stub1 (TYPE_3__*) ; 
- scalar_t__ stub2 (TYPE_2__*) ; 
- int verbosity ; 
+
+ int AF_INET ;
+ scalar_t__ EINTR ;
+ scalar_t__ FD_ISSET (int,int *) ;
+ int FD_SET (int,int *) ;
+ int FD_ZERO (int *) ;
+ scalar_t__ INT64_MAX ;
+ int IPPROTO_UDP ;
+ int QUICLY_ERROR_FREE_CONNECTION ;
+ size_t SIZE_MAX ;
+ int SOCK_DGRAM ;
+ int assert (int) ;
+ scalar_t__ bind (int,void*,int) ;
+ TYPE_5__ ctx ;
+ int enqueue_requests (int *) ;
+ scalar_t__ enqueue_requests_at ;
+ scalar_t__ errno ;
+ int fprintf (int ,char*,int) ;
+ int hexdump (char*,int *,size_t) ;
+ int hs_properties ;
+ int memset (struct sockaddr_in*,int ,int) ;
+ TYPE_7__ next_cid ;
+ int perror (char*) ;
+ int quicly_connect (int **,TYPE_5__*,char const*,struct sockaddr*,int *,TYPE_7__*,int ,int *,int *) ;
+ size_t quicly_decode_packet (TYPE_5__*,int *,int *,size_t) ;
+ int quicly_free (int *) ;
+ TYPE_1__* quicly_get_context (int *) ;
+ scalar_t__ quicly_get_first_timeout (int *) ;
+ int quicly_receive (int *,int *,struct sockaddr*,int *) ;
+ size_t recvmsg (int,struct sockaddr_in*,int ) ;
+ int resumed_transport_params ;
+ int resumption_token ;
+ int select (int,int *,int *,int *,struct timeval*) ;
+ int send_pending (int,int *) ;
+ int socket (int ,int ,int ) ;
+ int stderr ;
+ scalar_t__ stub1 (TYPE_3__*) ;
+ scalar_t__ stub2 (TYPE_2__*) ;
+ int verbosity ;
 
 __attribute__((used)) static int run_client(struct sockaddr *sa, const char *host)
 {
     int fd, ret;
     struct sockaddr_in local;
-    quicly_conn_t *conn = NULL;
+    quicly_conn_t *conn = ((void*)0);
 
     if ((fd = socket(sa->sa_family, SOCK_DGRAM, IPPROTO_UDP)) == -1) {
         perror("socket(2) failed");
@@ -93,7 +93,7 @@ __attribute__((used)) static int run_client(struct sockaddr *sa, const char *hos
         perror("bind(2) failed");
         return 1;
     }
-    ret = quicly_connect(&conn, &ctx, host, sa, NULL, &next_cid, resumption_token, &hs_properties, &resumed_transport_params);
+    ret = quicly_connect(&conn, &ctx, host, sa, ((void*)0), &next_cid, resumption_token, &hs_properties, &resumed_transport_params);
     assert(ret == 0);
     ++next_cid.master_id;
     enqueue_requests(conn);
@@ -103,7 +103,7 @@ __attribute__((used)) static int run_client(struct sockaddr *sa, const char *hos
         fd_set readfds;
         struct timeval *tv, tvbuf;
         do {
-            int64_t timeout_at = conn != NULL ? quicly_get_first_timeout(conn) : INT64_MAX;
+            int64_t timeout_at = conn != ((void*)0) ? quicly_get_first_timeout(conn) : INT64_MAX;
             if (enqueue_requests_at < timeout_at)
                 timeout_at = enqueue_requests_at;
             if (timeout_at != INT64_MAX) {
@@ -118,11 +118,11 @@ __attribute__((used)) static int run_client(struct sockaddr *sa, const char *hos
                 }
                 tv = &tvbuf;
             } else {
-                tv = NULL;
+                tv = ((void*)0);
             }
             FD_ZERO(&readfds);
             FD_SET(fd, &readfds);
-        } while (select(fd + 1, &readfds, NULL, NULL, tv) == -1 && errno == EINTR);
+        } while (select(fd + 1, &readfds, ((void*)0), ((void*)0), tv) == -1 && errno == EINTR);
         if (enqueue_requests_at <= ctx.now->cb(ctx.now))
             enqueue_requests(conn);
         if (FD_ISSET(fd, &readfds)) {
@@ -148,15 +148,15 @@ __attribute__((used)) static int run_client(struct sockaddr *sa, const char *hos
                 size_t plen = quicly_decode_packet(&ctx, &packet, buf + off, rret - off);
                 if (plen == SIZE_MAX)
                     break;
-                quicly_receive(conn, NULL, &sa, &packet);
+                quicly_receive(conn, ((void*)0), &sa, &packet);
                 off += plen;
             }
         }
-        if (conn != NULL) {
+        if (conn != ((void*)0)) {
             ret = send_pending(fd, conn);
             if (ret != 0) {
                 quicly_free(conn);
-                conn = NULL;
+                conn = ((void*)0);
                 if (ret == QUICLY_ERROR_FREE_CONNECTION) {
                     return 0;
                 } else {

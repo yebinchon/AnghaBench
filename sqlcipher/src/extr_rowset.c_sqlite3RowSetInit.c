@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ u16 ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef scalar_t__ u16 ;
 struct RowSetEntry {int dummy; } ;
-typedef  int /*<<< orphan*/  sqlite3 ;
-struct TYPE_5__ {scalar_t__ iBatch; int /*<<< orphan*/  rsFlags; scalar_t__ nFresh; struct RowSetEntry* pFresh; scalar_t__ pForest; scalar_t__ pLast; scalar_t__ pEntry; int /*<<< orphan*/ * db; scalar_t__ pChunk; } ;
-typedef  TYPE_1__ RowSet ;
+typedef int sqlite3 ;
+struct TYPE_5__ {scalar_t__ iBatch; int rsFlags; scalar_t__ nFresh; struct RowSetEntry* pFresh; scalar_t__ pForest; scalar_t__ pLast; scalar_t__ pEntry; int * db; scalar_t__ pChunk; } ;
+typedef TYPE_1__ RowSet ;
 
-/* Variables and functions */
- int ROUND8 (int) ; 
- int /*<<< orphan*/  ROWSET_SORTED ; 
- TYPE_1__* sqlite3DbMallocRawNN (int /*<<< orphan*/ *,int) ; 
- int sqlite3DbMallocSize (int /*<<< orphan*/ *,TYPE_1__*) ; 
+
+ int ROUND8 (int) ;
+ int ROWSET_SORTED ;
+ TYPE_1__* sqlite3DbMallocRawNN (int *,int) ;
+ int sqlite3DbMallocSize (int *,TYPE_1__*) ;
 
 RowSet *sqlite3RowSetInit(sqlite3 *db){
   RowSet *p = sqlite3DbMallocRawNN(db, sizeof(*p));

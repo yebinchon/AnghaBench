@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_long ;
+
+
+
+
+typedef int u_long ;
 struct s_smc {int dummy; } ;
-struct s_phy {scalar_t__ np; int /*<<< orphan*/  pcm_timer0; int /*<<< orphan*/  timer0_exp; } ;
+struct s_phy {scalar_t__ np; int pcm_timer0; int timer0_exp; } ;
 
-/* Variables and functions */
- scalar_t__ EVENT_PCM ; 
- int /*<<< orphan*/  EV_TOKEN (scalar_t__,int) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  smt_timer_start (struct s_smc*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ EVENT_PCM ;
+ int EV_TOKEN (scalar_t__,int) ;
+ int FALSE ;
+ int smt_timer_start (struct s_smc*,int *,int ,int ) ;
 
 __attribute__((used)) static void start_pcm_timer0(struct s_smc *smc, u_long value, int event,
-			     struct s_phy *phy)
+        struct s_phy *phy)
 {
-	phy->timer0_exp = FALSE ;       /* clear timer event flag */
-	smt_timer_start(smc,&phy->pcm_timer0,value,
-		EV_TOKEN(EVENT_PCM+phy->np,event)) ;
+ phy->timer0_exp = FALSE ;
+ smt_timer_start(smc,&phy->pcm_timer0,value,
+  EV_TOKEN(EVENT_PCM+phy->np,event)) ;
 }

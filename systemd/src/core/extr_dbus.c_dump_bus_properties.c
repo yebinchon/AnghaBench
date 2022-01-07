@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bus_automount_vtable ; 
- int /*<<< orphan*/  bus_cgroup_vtable ; 
- int /*<<< orphan*/  bus_device_vtable ; 
- int /*<<< orphan*/  bus_exec_vtable ; 
- int /*<<< orphan*/  bus_job_vtable ; 
- int /*<<< orphan*/  bus_kill_vtable ; 
- int /*<<< orphan*/  bus_manager_vtable ; 
- int /*<<< orphan*/  bus_mount_vtable ; 
- int /*<<< orphan*/  bus_path_vtable ; 
- int /*<<< orphan*/  bus_scope_vtable ; 
- int /*<<< orphan*/  bus_service_vtable ; 
- int /*<<< orphan*/  bus_slice_vtable ; 
- int /*<<< orphan*/  bus_socket_vtable ; 
- int /*<<< orphan*/  bus_swap_vtable ; 
- int /*<<< orphan*/  bus_target_vtable ; 
- int /*<<< orphan*/  bus_timer_vtable ; 
- int /*<<< orphan*/  bus_unit_cgroup_vtable ; 
- int /*<<< orphan*/  bus_unit_vtable ; 
- int /*<<< orphan*/  vtable_dump_bus_properties (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int FILE ;
+
+
+ int assert (int *) ;
+ int bus_automount_vtable ;
+ int bus_cgroup_vtable ;
+ int bus_device_vtable ;
+ int bus_exec_vtable ;
+ int bus_job_vtable ;
+ int bus_kill_vtable ;
+ int bus_manager_vtable ;
+ int bus_mount_vtable ;
+ int bus_path_vtable ;
+ int bus_scope_vtable ;
+ int bus_service_vtable ;
+ int bus_slice_vtable ;
+ int bus_socket_vtable ;
+ int bus_swap_vtable ;
+ int bus_target_vtable ;
+ int bus_timer_vtable ;
+ int bus_unit_cgroup_vtable ;
+ int bus_unit_vtable ;
+ int vtable_dump_bus_properties (int *,int ) ;
 
 void dump_bus_properties(FILE *f) {
         assert(f);

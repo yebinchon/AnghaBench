@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {scalar_t__ amixdown; int /*<<< orphan*/  short_name; int /*<<< orphan*/  name; } ;
-typedef  TYPE_1__ hb_mixdown_t ;
-typedef  int /*<<< orphan*/  gdouble ;
-typedef  int /*<<< orphan*/  gchar ;
-typedef  int /*<<< orphan*/  GtkTreeIter ;
-typedef  int /*<<< orphan*/  GtkListStore ;
-typedef  int /*<<< orphan*/  GtkComboBox ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * GTK_LIST_STORE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  g_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * g_strdup_printf (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gtk_combo_box_get_model (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  gtk_list_store_append (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  gtk_list_store_clear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  gtk_list_store_set (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int) ; 
- TYPE_1__* hb_mixdown_get_next (TYPE_1__ const*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {scalar_t__ amixdown; int short_name; int name; } ;
+typedef TYPE_1__ hb_mixdown_t ;
+typedef int gdouble ;
+typedef int gchar ;
+typedef int GtkTreeIter ;
+typedef int GtkListStore ;
+typedef int GtkComboBox ;
+
+
+ int * GTK_LIST_STORE (int ) ;
+ int TRUE ;
+ int g_free (int *) ;
+ int * g_strdup_printf (char*,int ) ;
+ int gtk_combo_box_get_model (int *) ;
+ int gtk_list_store_append (int *,int *) ;
+ int gtk_list_store_clear (int *) ;
+ int gtk_list_store_set (int *,int *,int ,int *,int,int ,int,int ,int,int ,int) ;
+ TYPE_1__* hb_mixdown_get_next (TYPE_1__ const*) ;
 
 void
 ghb_mix_opts_set(GtkComboBox *combo)
@@ -41,7 +41,7 @@ ghb_mix_opts_set(GtkComboBox *combo)
     gtk_list_store_clear(store);
 
     const hb_mixdown_t *mix;
-    for (mix = hb_mixdown_get_next(NULL); mix != NULL;
+    for (mix = hb_mixdown_get_next(((void*)0)); mix != ((void*)0);
          mix = hb_mixdown_get_next(mix))
     {
         gtk_list_store_append(store, &iter);

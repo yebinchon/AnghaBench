@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ u32 ;
+
+
+
+
+typedef scalar_t__ u32 ;
 struct eeepc_laptop {int dummy; } ;
-typedef  int /*<<< orphan*/  acpi_handle ;
+typedef int acpi_handle ;
 
-/* Variables and functions */
- scalar_t__ ACPI_NOTIFY_BUS_CHECK ; 
- int /*<<< orphan*/  eeepc_rfkill_hotplug (struct eeepc_laptop*,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ ACPI_NOTIFY_BUS_CHECK ;
+ int eeepc_rfkill_hotplug (struct eeepc_laptop*,int ) ;
 
 __attribute__((used)) static void eeepc_rfkill_notify(acpi_handle handle, u32 event, void *data)
 {
-	struct eeepc_laptop *eeepc = data;
+ struct eeepc_laptop *eeepc = data;
 
-	if (event != ACPI_NOTIFY_BUS_CHECK)
-		return;
+ if (event != ACPI_NOTIFY_BUS_CHECK)
+  return;
 
-	eeepc_rfkill_hotplug(eeepc, handle);
+ eeepc_rfkill_hotplug(eeepc, handle);
 }

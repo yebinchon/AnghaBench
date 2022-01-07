@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int /*<<< orphan*/ ** ref_index; } ;
-struct TYPE_10__ {int mb_stride; TYPE_3__* slice_ctx; TYPE_2__ cur_pic; int /*<<< orphan*/  avctx; } ;
-struct TYPE_9__ {int mb_x; int mb_y; int mb_xy; int* ref_count; scalar_t__ mb_field_decoding_flag; scalar_t__ mb_mbaff; int /*<<< orphan*/ *** mv_cache; int /*<<< orphan*/ ** ref_cache; TYPE_1__** ref_list; int /*<<< orphan*/  non_zero_count_cache; } ;
-struct TYPE_7__ {int reference; int /*<<< orphan*/ * data; } ;
-typedef  TYPE_3__ H264SliceContext ;
-typedef  TYPE_4__ H264Context ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_LOG_DEBUG ; 
- int /*<<< orphan*/  av_assert1 (int) ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ff_h264_hl_decode_mb (TYPE_4__*,TYPE_3__*) ; 
- int /*<<< orphan*/  fill_rectangle (int /*<<< orphan*/ *,int,int,int,int,int) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int pack16to32 (int,int) ; 
- size_t* scan8 ; 
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int ** ref_index; } ;
+struct TYPE_10__ {int mb_stride; TYPE_3__* slice_ctx; TYPE_2__ cur_pic; int avctx; } ;
+struct TYPE_9__ {int mb_x; int mb_y; int mb_xy; int* ref_count; scalar_t__ mb_field_decoding_flag; scalar_t__ mb_mbaff; int *** mv_cache; int ** ref_cache; TYPE_1__** ref_list; int non_zero_count_cache; } ;
+struct TYPE_7__ {int reference; int * data; } ;
+typedef TYPE_3__ H264SliceContext ;
+typedef TYPE_4__ H264Context ;
+
+
+ int AV_LOG_DEBUG ;
+ int av_assert1 (int) ;
+ int av_log (int ,int ,char*) ;
+ int ff_h264_hl_decode_mb (TYPE_4__*,TYPE_3__*) ;
+ int fill_rectangle (int *,int,int,int,int,int) ;
+ int memset (int ,int ,int) ;
+ int pack16to32 (int,int) ;
+ size_t* scan8 ;
 
 __attribute__((used)) static void h264_er_decode_mb(void *opaque, int ref, int mv_dir, int mv_type,
                               int (*mv)[2][4][2],
@@ -43,10 +43,10 @@ __attribute__((used)) static void h264_er_decode_mb(void *opaque, int ref, int m
     sl->mb_xy = mb_x + mb_y * h->mb_stride;
     memset(sl->non_zero_count_cache, 0, sizeof(sl->non_zero_count_cache));
     av_assert1(ref >= 0);
-    /* FIXME: It is possible albeit uncommon that slice references
-     * differ between slices. We take the easy approach and ignore
-     * it for now. If this turns out to have any relevance in
-     * practice then correct remapping should be added. */
+
+
+
+
     if (ref >= sl->ref_count[0])
         ref = 0;
     if (!sl->ref_list[0][ref].data[0]) {

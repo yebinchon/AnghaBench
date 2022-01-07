@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  name; int /*<<< orphan*/  config_props; int /*<<< orphan*/  type; int /*<<< orphan*/  member_0; } ;
-typedef  TYPE_1__ AVFilterPad ;
-typedef  int /*<<< orphan*/  AVFilterContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AVMEDIA_TYPE_AUDIO ; 
- int /*<<< orphan*/  AVMEDIA_TYPE_VIDEO ; 
- int /*<<< orphan*/  AV_LOG_DEBUG ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  av_asprintf (char*,char const*,int) ; 
- int /*<<< orphan*/  av_freep (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  config_output ; 
- int ff_insert_inpad (int /*<<< orphan*/ *,int,TYPE_1__*) ; 
- int ff_insert_outpad (int /*<<< orphan*/ *,int,TYPE_1__*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int name; int config_props; int type; int member_0; } ;
+typedef TYPE_1__ AVFilterPad ;
+typedef int AVFilterContext ;
+
+
+ int AVERROR (int ) ;
+ int AVMEDIA_TYPE_AUDIO ;
+ int AVMEDIA_TYPE_VIDEO ;
+ int AV_LOG_DEBUG ;
+ int ENOMEM ;
+ int av_asprintf (char*,char const*,int) ;
+ int av_freep (int *) ;
+ int av_log (int *,int ,char*,char const*,int ) ;
+ int config_output ;
+ int ff_insert_inpad (int *,int,TYPE_1__*) ;
+ int ff_insert_outpad (int *,int,TYPE_1__*) ;
 
 __attribute__((used)) static int parse_definition(AVFilterContext *ctx, int nb_pads, int is_input, int is_audio)
 {
@@ -47,7 +47,7 @@ __attribute__((used)) static int parse_definition(AVFilterContext *ctx, int nb_p
         if (is_input) {
             ret = ff_insert_inpad(ctx, i, &pad);
         } else {
-            pad.config_props  = config_output;
+            pad.config_props = config_output;
             ret = ff_insert_outpad(ctx, i, &pad);
         }
 

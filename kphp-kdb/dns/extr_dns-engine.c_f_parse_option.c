@@ -1,29 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int DNS_MAX_RESPONSE_RECORDS ; 
- void* atoi (int /*<<< orphan*/ ) ; 
- int dns_max_response_records ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char,int) ; 
- int keep_going ; 
- int /*<<< orphan*/  kprintf (char*) ; 
- int /*<<< orphan*/  optarg ; 
- int /*<<< orphan*/  output_binlog_name ; 
- void* stats_port ; 
- int /*<<< orphan*/  stderr ; 
- int workers ; 
+ int DNS_MAX_RESPONSE_RECORDS ;
+ void* atoi (int ) ;
+ int dns_max_response_records ;
+ int exit (int) ;
+ int fprintf (int ,char*,char,int) ;
+ int keep_going ;
+ int kprintf (char*) ;
+ int optarg ;
+ int output_binlog_name ;
+ void* stats_port ;
+ int stderr ;
+ int workers ;
 
 int f_parse_option (int val) {
   int c;

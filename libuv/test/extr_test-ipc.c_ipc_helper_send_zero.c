@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uv_stream_t ;
-typedef  int /*<<< orphan*/  uv_handle_t ;
-typedef  int /*<<< orphan*/  uv_buf_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- int /*<<< orphan*/  MAKE_VALGRIND_HAPPY () ; 
- int /*<<< orphan*/  UV_RUN_DEFAULT ; 
- int /*<<< orphan*/  channel ; 
- int send_zero_write ; 
- int /*<<< orphan*/  send_zero_write_cb ; 
- int /*<<< orphan*/  uv_buf_init (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  uv_default_loop () ; 
- scalar_t__ uv_is_closing (int /*<<< orphan*/ *) ; 
- int uv_is_readable (int /*<<< orphan*/ *) ; 
- int uv_is_writable (int /*<<< orphan*/ *) ; 
- int uv_pipe_init (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  uv_pipe_open (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int uv_run (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int uv_write (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  write_req ; 
+
+
+
+typedef int uv_stream_t ;
+typedef int uv_handle_t ;
+typedef int uv_buf_t ;
+
+
+ int ASSERT (int) ;
+ int MAKE_VALGRIND_HAPPY () ;
+ int UV_RUN_DEFAULT ;
+ int channel ;
+ int send_zero_write ;
+ int send_zero_write_cb ;
+ int uv_buf_init (int ,int ) ;
+ int uv_default_loop () ;
+ scalar_t__ uv_is_closing (int *) ;
+ int uv_is_readable (int *) ;
+ int uv_is_writable (int *) ;
+ int uv_pipe_init (int ,int *,int ) ;
+ int uv_pipe_open (int *,int ) ;
+ int uv_run (int ,int ) ;
+ int uv_write (int *,int *,int *,int,int ) ;
+ int write_req ;
 
 int ipc_helper_send_zero(void) {
   int r;

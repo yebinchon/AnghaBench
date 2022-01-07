@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {char* name; } ;
-typedef  TYPE_1__ type_desc ;
+typedef TYPE_1__ type_desc ;
 
-/* Variables and functions */
- scalar_t__ MAX_FIELDS ; 
- int MAX_RETURN_FIELDS ; 
- scalar_t__ get_field_id_len (TYPE_1__*,char*,int) ; 
- scalar_t__* return_fields ; 
- int /*<<< orphan*/  strncmp (char*,char*,int) ; 
+
+ scalar_t__ MAX_FIELDS ;
+ int MAX_RETURN_FIELDS ;
+ scalar_t__ get_field_id_len (TYPE_1__*,char*,int) ;
+ scalar_t__* return_fields ;
+ int strncmp (char*,char*,int) ;
 
 int get_fields (type_desc *t, char *fields) {
   if (!fields[0]) {
@@ -31,7 +31,7 @@ int get_fields (type_desc *t, char *fields) {
     while (fields[j] != ',' && fields[j]) {
       j++;
     }
-//    dbg ("  look for (field = <%s>)\n", fields + i);
+
     return_fields[res] = get_field_id_len (t, fields + i, j - i);
     if (return_fields[res] < 0) {
       if ((!strncmp (fields + i, "location", 8) || !strncmp (fields + i, "original_location", 17)) && t->name[0] == 'p') {

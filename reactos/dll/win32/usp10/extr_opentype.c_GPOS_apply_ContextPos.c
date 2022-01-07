@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_18__   TYPE_7__ ;
-typedef  struct TYPE_17__   TYPE_6__ ;
-typedef  struct TYPE_16__   TYPE_5__ ;
-typedef  struct TYPE_15__   TYPE_4__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int WORD ;
-struct TYPE_18__ {int /*<<< orphan*/  PosFormat; int /*<<< orphan*/ * PosClassSet; int /*<<< orphan*/  ClassDef; int /*<<< orphan*/  Coverage; } ;
-struct TYPE_17__ {int /*<<< orphan*/  PosCount; int /*<<< orphan*/ * Class; int /*<<< orphan*/  GlyphCount; } ;
+
+
+typedef struct TYPE_18__ TYPE_7__ ;
+typedef struct TYPE_17__ TYPE_6__ ;
+typedef struct TYPE_16__ TYPE_5__ ;
+typedef struct TYPE_15__ TYPE_4__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+typedef int WORD ;
+struct TYPE_18__ {int PosFormat; int * PosClassSet; int ClassDef; int Coverage; } ;
+struct TYPE_17__ {int PosCount; int * Class; int GlyphCount; } ;
 struct TYPE_16__ {TYPE_1__* PosLookupRecord; } ;
-struct TYPE_15__ {int /*<<< orphan*/ * PosClassRule; int /*<<< orphan*/  PosClassRuleCnt; } ;
-struct TYPE_14__ {int /*<<< orphan*/  SubTableCount; } ;
-struct TYPE_13__ {int /*<<< orphan*/  fLogicalOrder; scalar_t__ fRTL; } ;
-struct TYPE_12__ {int /*<<< orphan*/  SequenceIndex; int /*<<< orphan*/  LookupListIndex; } ;
-typedef  int /*<<< orphan*/  ScriptCache ;
-typedef  TYPE_2__ SCRIPT_ANALYSIS ;
-typedef  int /*<<< orphan*/  OUTLINETEXTMETRICW ;
-typedef  TYPE_3__ OT_LookupTable ;
-typedef  int /*<<< orphan*/  OT_LookupList ;
-typedef  int /*<<< orphan*/  LOGFONTW ;
-typedef  TYPE_4__ GPOS_PosClassSet ;
-typedef  TYPE_5__ GPOS_PosClassRule_2 ;
-typedef  TYPE_6__ GPOS_PosClassRule_1 ;
-typedef  TYPE_7__ GPOS_ContextPosFormat2 ;
-typedef  int /*<<< orphan*/  GOFFSET ;
-typedef  int /*<<< orphan*/  BYTE ;
+struct TYPE_15__ {int * PosClassRule; int PosClassRuleCnt; } ;
+struct TYPE_14__ {int SubTableCount; } ;
+struct TYPE_13__ {int fLogicalOrder; scalar_t__ fRTL; } ;
+struct TYPE_12__ {int SequenceIndex; int LookupListIndex; } ;
+typedef int ScriptCache ;
+typedef TYPE_2__ SCRIPT_ANALYSIS ;
+typedef int OUTLINETEXTMETRICW ;
+typedef TYPE_3__ OT_LookupTable ;
+typedef int OT_LookupList ;
+typedef int LOGFONTW ;
+typedef TYPE_4__ GPOS_PosClassSet ;
+typedef TYPE_5__ GPOS_PosClassRule_2 ;
+typedef TYPE_6__ GPOS_PosClassRule_1 ;
+typedef TYPE_7__ GPOS_ContextPosFormat2 ;
+typedef int GOFFSET ;
+typedef int BYTE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FIXME (char*,...) ; 
- int GET_BE_WORD (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GPOS_apply_lookup (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,TYPE_2__ const*,int*,int /*<<< orphan*/  const*,unsigned int,int const*,unsigned int,unsigned int,int /*<<< orphan*/ *) ; 
- scalar_t__ GPOS_get_subtable (TYPE_3__ const*,int) ; 
- int GSUB_is_glyph_covered (int /*<<< orphan*/  const*,int const) ; 
- int OT_get_glyph_class (void const*,int const) ; 
- int /*<<< orphan*/  TRACE (char*,...) ; 
- int /*<<< orphan*/  WARN (char*,unsigned int,unsigned int,int) ; 
+
+ int FIXME (char*,...) ;
+ int GET_BE_WORD (int ) ;
+ int GPOS_apply_lookup (int const*,int const*,int const*,TYPE_2__ const*,int*,int const*,unsigned int,int const*,unsigned int,unsigned int,int *) ;
+ scalar_t__ GPOS_get_subtable (TYPE_3__ const*,int) ;
+ int GSUB_is_glyph_covered (int const*,int const) ;
+ int OT_get_glyph_class (void const*,int const) ;
+ int TRACE (char*,...) ;
+ int WARN (char*,unsigned int,unsigned int,int) ;
 
 __attribute__((used)) static unsigned int GPOS_apply_ContextPos(const ScriptCache *script_cache, const OUTLINETEXTMETRICW *otm,
         const LOGFONTW *logfont, const SCRIPT_ANALYSIS *analysis, int *advance, const OT_LookupList *lookup,
@@ -82,7 +82,7 @@ __attribute__((used)) static unsigned int GPOS_apply_ContextPos(const ScriptCach
             {
                 int k, count, class;
                 const GPOS_PosClassSet *pcs;
-                const void *glyph_class_table = NULL;
+                const void *glyph_class_table = ((void*)0);
 
                 offset = GET_BE_WORD(cpf2->ClassDef);
                 glyph_class_table = (const BYTE *)cpf2 + offset;

@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT ;
-typedef  int /*<<< orphan*/  SERVER ;
-typedef  int /*<<< orphan*/  PACK ;
-typedef  int /*<<< orphan*/  FARM_MEMBER ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FreePack (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * NewPack () ; 
- int /*<<< orphan*/  PackAddInt (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PackAddStr (int /*<<< orphan*/ *,char*,char*) ; 
- int /*<<< orphan*/ * SiCallTask (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*) ; 
+
+
+
+typedef int UINT ;
+typedef int SERVER ;
+typedef int PACK ;
+typedef int FARM_MEMBER ;
+
+
+ int FreePack (int *) ;
+ int * NewPack () ;
+ int PackAddInt (int *,char*,int ) ;
+ int PackAddStr (int *,char*,char*) ;
+ int * SiCallTask (int *,int *,char*) ;
 
 void SiCallDeleteIpTable(SERVER *s, FARM_MEMBER *f, char *hubname, UINT key)
 {
-	PACK *p;
-	// Validate arguments
-	if (s == NULL || f == NULL || hubname == NULL)
-	{
-		return;
-	}
+ PACK *p;
 
-	p = NewPack();
-	PackAddStr(p, "HubName", hubname);
-	PackAddInt(p, "Key", key);
+ if (s == ((void*)0) || f == ((void*)0) || hubname == ((void*)0))
+ {
+  return;
+ }
 
-	p = SiCallTask(f, p, "deleteiptable");
+ p = NewPack();
+ PackAddStr(p, "HubName", hubname);
+ PackAddInt(p, "Key", key);
 
-	FreePack(p);
+ p = SiCallTask(f, p, "deleteiptable");
+
+ FreePack(p);
 }

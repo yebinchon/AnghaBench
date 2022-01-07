@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int nb_units; scalar_t__ data_bit_padding; scalar_t__ data_size; int /*<<< orphan*/ * data; int /*<<< orphan*/  data_ref; int /*<<< orphan*/ * units; } ;
-typedef  TYPE_1__ CodedBitstreamFragment ;
-typedef  int /*<<< orphan*/  CodedBitstreamContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  av_buffer_unref (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cbs_unit_uninit (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int nb_units; scalar_t__ data_bit_padding; scalar_t__ data_size; int * data; int data_ref; int * units; } ;
+typedef TYPE_1__ CodedBitstreamFragment ;
+typedef int CodedBitstreamContext ;
+
+
+ int av_buffer_unref (int *) ;
+ int cbs_unit_uninit (int *,int *) ;
 
 void ff_cbs_fragment_reset(CodedBitstreamContext *ctx,
                            CodedBitstreamFragment *frag)
@@ -29,7 +29,7 @@ void ff_cbs_fragment_reset(CodedBitstreamContext *ctx,
     frag->nb_units = 0;
 
     av_buffer_unref(&frag->data_ref);
-    frag->data             = NULL;
-    frag->data_size        = 0;
+    frag->data = ((void*)0);
+    frag->data_size = 0;
     frag->data_bit_padding = 0;
 }

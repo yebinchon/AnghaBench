@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/ * server_cert_chain; int /*<<< orphan*/  whitelist; } ;
-typedef  TYPE_1__ vlc_tls_creds_sys_t ;
-struct TYPE_7__ {TYPE_1__* sys; int /*<<< orphan*/ * ops; } ;
-typedef  TYPE_2__ vlc_tls_client_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CFArrayCreateMutable (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int VLC_ENOMEM ; 
- int VLC_SUCCESS ; 
- int /*<<< orphan*/  kCFAllocatorDefault ; 
- int /*<<< orphan*/  kCFTypeArrayCallBacks ; 
- TYPE_1__* malloc (int) ; 
- int /*<<< orphan*/  msg_Dbg (TYPE_2__*,char*) ; 
- int /*<<< orphan*/  st_ClientOps ; 
- scalar_t__ unlikely (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int * server_cert_chain; int whitelist; } ;
+typedef TYPE_1__ vlc_tls_creds_sys_t ;
+struct TYPE_7__ {TYPE_1__* sys; int * ops; } ;
+typedef TYPE_2__ vlc_tls_client_t ;
+
+
+ int CFArrayCreateMutable (int ,int ,int *) ;
+ int VLC_ENOMEM ;
+ int VLC_SUCCESS ;
+ int kCFAllocatorDefault ;
+ int kCFTypeArrayCallBacks ;
+ TYPE_1__* malloc (int) ;
+ int msg_Dbg (TYPE_2__*,char*) ;
+ int st_ClientOps ;
+ scalar_t__ unlikely (int ) ;
 
 __attribute__((used)) static int OpenClient (vlc_tls_client_t *crd) {
 
     msg_Dbg(crd, "open st client");
 
     vlc_tls_creds_sys_t *sys = malloc (sizeof (*sys));
-    if (unlikely(sys == NULL))
+    if (unlikely(sys == ((void*)0)))
         return VLC_ENOMEM;
 
     sys->whitelist = CFArrayCreateMutable(kCFAllocatorDefault, 0, &kCFTypeArrayCallBacks);
-    sys->server_cert_chain = NULL;
+    sys->server_cert_chain = ((void*)0);
 
     crd->ops = &st_ClientOps;
     crd->sys = sys;

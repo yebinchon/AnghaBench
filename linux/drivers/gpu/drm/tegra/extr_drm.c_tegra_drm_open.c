@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct tegra_drm_file {int /*<<< orphan*/  lock; int /*<<< orphan*/  contexts; } ;
+
+
+
+
+struct tegra_drm_file {int lock; int contexts; } ;
 struct drm_file {struct tegra_drm_file* driver_priv; } ;
 struct drm_device {int dummy; } ;
 
-/* Variables and functions */
- int ENOMEM ; 
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  idr_init (int /*<<< orphan*/ *) ; 
- struct tegra_drm_file* kzalloc (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mutex_init (int /*<<< orphan*/ *) ; 
+
+ int ENOMEM ;
+ int GFP_KERNEL ;
+ int idr_init (int *) ;
+ struct tegra_drm_file* kzalloc (int,int ) ;
+ int mutex_init (int *) ;
 
 __attribute__((used)) static int tegra_drm_open(struct drm_device *drm, struct drm_file *filp)
 {
-	struct tegra_drm_file *fpriv;
+ struct tegra_drm_file *fpriv;
 
-	fpriv = kzalloc(sizeof(*fpriv), GFP_KERNEL);
-	if (!fpriv)
-		return -ENOMEM;
+ fpriv = kzalloc(sizeof(*fpriv), GFP_KERNEL);
+ if (!fpriv)
+  return -ENOMEM;
 
-	idr_init(&fpriv->contexts);
-	mutex_init(&fpriv->lock);
-	filp->driver_priv = fpriv;
+ idr_init(&fpriv->contexts);
+ mutex_init(&fpriv->lock);
+ filp->driver_priv = fpriv;
 
-	return 0;
+ return 0;
 }

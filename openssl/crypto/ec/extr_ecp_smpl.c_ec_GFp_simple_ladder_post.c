@@ -1,74 +1,74 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_38__   TYPE_3__ ;
-typedef  struct TYPE_37__   TYPE_2__ ;
-typedef  struct TYPE_36__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_38__ {TYPE_1__* meth; int /*<<< orphan*/  field; int /*<<< orphan*/ * a; int /*<<< orphan*/ * b; } ;
-struct TYPE_37__ {int /*<<< orphan*/ * Y; int /*<<< orphan*/ * Z; int /*<<< orphan*/ * X; } ;
-struct TYPE_36__ {int /*<<< orphan*/  (* field_mul ) (TYPE_3__ const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ;int /*<<< orphan*/  (* field_sqr ) (TYPE_3__ const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ;} ;
-typedef  TYPE_2__ EC_POINT ;
-typedef  TYPE_3__ EC_GROUP ;
-typedef  int /*<<< orphan*/  BN_CTX ;
-typedef  int /*<<< orphan*/  BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BN_CTX_end (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BN_CTX_get (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_CTX_start (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_copy (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ BN_is_zero (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_mod_add_quick (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BN_mod_lshift1_quick (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BN_mod_sub_quick (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EC_POINT_invert (TYPE_3__ const*,TYPE_2__*,int /*<<< orphan*/ *) ; 
- int EC_POINT_set_to_infinity (TYPE_3__ const*,TYPE_2__*) ; 
- int /*<<< orphan*/  stub1 (TYPE_3__ const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub10 (TYPE_3__ const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub11 (TYPE_3__ const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub12 (TYPE_3__ const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub13 (TYPE_3__ const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub14 (TYPE_3__ const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub15 (TYPE_3__ const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub16 (TYPE_3__ const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub17 (TYPE_3__ const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub18 (TYPE_3__ const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub19 (TYPE_3__ const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub2 (TYPE_3__ const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub20 (TYPE_3__ const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub21 (TYPE_3__ const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub22 (TYPE_3__ const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub23 (TYPE_3__ const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub24 (TYPE_3__ const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub3 (TYPE_3__ const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub4 (TYPE_3__ const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub5 (TYPE_3__ const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub6 (TYPE_3__ const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub7 (TYPE_3__ const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub8 (TYPE_3__ const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub9 (TYPE_3__ const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_38__ TYPE_3__ ;
+typedef struct TYPE_37__ TYPE_2__ ;
+typedef struct TYPE_36__ TYPE_1__ ;
+
+
+struct TYPE_38__ {TYPE_1__* meth; int field; int * a; int * b; } ;
+struct TYPE_37__ {int * Y; int * Z; int * X; } ;
+struct TYPE_36__ {int (* field_mul ) (TYPE_3__ const*,int *,int *,int *,int *) ;int (* field_sqr ) (TYPE_3__ const*,int *,int *,int *) ;} ;
+typedef TYPE_2__ EC_POINT ;
+typedef TYPE_3__ EC_GROUP ;
+typedef int BN_CTX ;
+typedef int BIGNUM ;
+
+
+ int BN_CTX_end (int *) ;
+ int * BN_CTX_get (int *) ;
+ int BN_CTX_start (int *) ;
+ int BN_copy (int *,int *) ;
+ scalar_t__ BN_is_zero (int *) ;
+ int BN_mod_add_quick (int *,int *,int *,int ) ;
+ int BN_mod_lshift1_quick (int *,int *,int ) ;
+ int BN_mod_sub_quick (int *,int *,int *,int ) ;
+ int EC_POINT_invert (TYPE_3__ const*,TYPE_2__*,int *) ;
+ int EC_POINT_set_to_infinity (TYPE_3__ const*,TYPE_2__*) ;
+ int stub1 (TYPE_3__ const*,int *,int *,int *,int *) ;
+ int stub10 (TYPE_3__ const*,int *,int *,int *,int *) ;
+ int stub11 (TYPE_3__ const*,int *,int *,int *,int *) ;
+ int stub12 (TYPE_3__ const*,int *,int *,int *,int *) ;
+ int stub13 (TYPE_3__ const*,int *,int *,int *,int *) ;
+ int stub14 (TYPE_3__ const*,int *,int *,int *,int *) ;
+ int stub15 (TYPE_3__ const*,int *,int *,int *) ;
+ int stub16 (TYPE_3__ const*,int *,int *,int *,int *) ;
+ int stub17 (TYPE_3__ const*,int *,int *,int *,int *) ;
+ int stub18 (TYPE_3__ const*,int *,int *,int *) ;
+ int stub19 (TYPE_3__ const*,int *,int *,int *,int *) ;
+ int stub2 (TYPE_3__ const*,int *,int *,int *) ;
+ int stub20 (TYPE_3__ const*,int *,int *,int *,int *) ;
+ int stub21 (TYPE_3__ const*,int *,int *,int *,int *) ;
+ int stub22 (TYPE_3__ const*,int *,int *,int *,int *) ;
+ int stub23 (TYPE_3__ const*,int *,int *,int *) ;
+ int stub24 (TYPE_3__ const*,int *,int *,int *,int *) ;
+ int stub3 (TYPE_3__ const*,int *,int *,int *,int *) ;
+ int stub4 (TYPE_3__ const*,int *,int *,int *,int *) ;
+ int stub5 (TYPE_3__ const*,int *,int *,int *,int *) ;
+ int stub6 (TYPE_3__ const*,int *,int *,int *,int *) ;
+ int stub7 (TYPE_3__ const*,int *,int *,int *,int *) ;
+ int stub8 (TYPE_3__ const*,int *,int *,int *,int *) ;
+ int stub9 (TYPE_3__ const*,int *,int *,int *) ;
 
 int ec_GFp_simple_ladder_post(const EC_GROUP *group,
                               EC_POINT *r, EC_POINT *s,
                               EC_POINT *p, BN_CTX *ctx)
 {
     int ret = 0;
-    BIGNUM *t0, *t1, *t2, *t3, *t4, *t5, *t6 = NULL;
+    BIGNUM *t0, *t1, *t2, *t3, *t4, *t5, *t6 = ((void*)0);
 
     if (BN_is_zero(r->Z))
         return EC_POINT_set_to_infinity(group, r);
 
     if (BN_is_zero(s->Z)) {
-        /* (X,Y,Z) -> (XZ,YZ**2,Z) */
+
         if (!group->meth->field_mul(group, r->X, p->X, p->Z, ctx)
             || !group->meth->field_sqr(group, r->Z, p->Z, ctx)
             || !group->meth->field_mul(group, r->Y, p->Y, r->Z, ctx)
@@ -87,7 +87,7 @@ int ec_GFp_simple_ladder_post(const EC_GROUP *group,
     t5 = BN_CTX_get(ctx);
     t6 = BN_CTX_get(ctx);
 
-    if (t6 == NULL
+    if (t6 == ((void*)0)
         || !BN_mod_lshift1_quick(t0, p->Y, group->field)
         || !group->meth->field_mul(group, t1, r->X, p->Z, ctx)
         || !group->meth->field_mul(group, t2, r->Z, s->Z, ctx)
@@ -113,8 +113,8 @@ int ec_GFp_simple_ladder_post(const EC_GROUP *group,
         || !group->meth->field_mul(group, r->Z, p->Z, s->Z, ctx)
         || !group->meth->field_mul(group, r->Z, t5, r->Z, ctx)
         || !group->meth->field_mul(group, r->Z, r->Z, t0, ctx)
-        /* t3 := X, t4 := Y */
-        /* (X,Y,Z) -> (XZ,YZ**2,Z) */
+
+
         || !group->meth->field_mul(group, r->X, t3, r->Z, ctx)
         || !group->meth->field_sqr(group, t3, r->Z, ctx)
         || !group->meth->field_mul(group, r->Y, t4, t3, ctx))

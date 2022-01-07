@@ -1,29 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  conv_rec ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  log_cur_pos () ; 
- int /*<<< orphan*/  rd_bytes ; 
- int /*<<< orphan*/  rd_rec ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  wr_bytes ; 
- int /*<<< orphan*/  wr_rec ; 
+ int conv_rec ;
+ int fprintf (int ,char*,int ,int ,int ,int ,int ,int ) ;
+ int log_cur_pos () ;
+ int rd_bytes ;
+ int rd_rec ;
+ int stderr ;
+ int wr_bytes ;
+ int wr_rec ;
 
 void output_stats (void) {
   fprintf (stderr,
-	   "read: %lld bytes (reported binlog position %lld), %lld records\n"
-	   "written: %lld bytes, %lld records (%lld out of them converted)\n",
-	   rd_bytes, log_cur_pos(), rd_rec, wr_bytes, wr_rec, conv_rec);
+    "read: %lld bytes (reported binlog position %lld), %lld records\n"
+    "written: %lld bytes, %lld records (%lld out of them converted)\n",
+    rd_bytes, log_cur_pos(), rd_rec, wr_bytes, wr_rec, conv_rec);
 }

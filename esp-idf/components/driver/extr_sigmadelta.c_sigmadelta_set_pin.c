@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ sigmadelta_channel_t ;
-typedef  size_t gpio_num_t ;
-typedef  int /*<<< orphan*/  esp_err_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ESP_ERR_INVALID_ARG ; 
- int /*<<< orphan*/  ESP_OK ; 
- int GPIO_IS_VALID_OUTPUT_GPIO (size_t) ; 
- int /*<<< orphan*/  GPIO_MODE_OUTPUT ; 
- int /*<<< orphan*/ * GPIO_PIN_MUX_REG ; 
- scalar_t__ GPIO_SD0_OUT_IDX ; 
- int /*<<< orphan*/  PIN_FUNC_GPIO ; 
- int /*<<< orphan*/  PIN_FUNC_SELECT (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SIGMADELTA_CHANNEL_ERR_STR ; 
- scalar_t__ SIGMADELTA_CHANNEL_MAX ; 
- int /*<<< orphan*/  SIGMADELTA_CHECK (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SIGMADELTA_IO_ERR_STR ; 
- int /*<<< orphan*/  gpio_matrix_out (size_t,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gpio_set_direction (size_t,int /*<<< orphan*/ ) ; 
+
+
+
+typedef scalar_t__ sigmadelta_channel_t ;
+typedef size_t gpio_num_t ;
+typedef int esp_err_t ;
+
+
+ int ESP_ERR_INVALID_ARG ;
+ int ESP_OK ;
+ int GPIO_IS_VALID_OUTPUT_GPIO (size_t) ;
+ int GPIO_MODE_OUTPUT ;
+ int * GPIO_PIN_MUX_REG ;
+ scalar_t__ GPIO_SD0_OUT_IDX ;
+ int PIN_FUNC_GPIO ;
+ int PIN_FUNC_SELECT (int ,int ) ;
+ int SIGMADELTA_CHANNEL_ERR_STR ;
+ scalar_t__ SIGMADELTA_CHANNEL_MAX ;
+ int SIGMADELTA_CHECK (int,int ,int ) ;
+ int SIGMADELTA_IO_ERR_STR ;
+ int gpio_matrix_out (size_t,scalar_t__,int ,int ) ;
+ int gpio_set_direction (size_t,int ) ;
 
 esp_err_t sigmadelta_set_pin(sigmadelta_channel_t channel, gpio_num_t gpio_num)
 {

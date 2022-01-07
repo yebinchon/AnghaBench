@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int T_ESCAPE_ECHO ; 
- int T_ESCAPE_PATH_SEGMENT ; 
- int T_ESCAPE_SHELL_CMD ; 
- int T_ESCAPE_URLENCODED ; 
- int T_ESCAPE_XML ; 
- int T_OS_ESCAPE_PATH ; 
- int /*<<< orphan*/  isalnum (unsigned int) ; 
- scalar_t__ iscntrl (unsigned int) ; 
- int /*<<< orphan*/  isprint (unsigned int) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- scalar_t__ strchr (char*,unsigned int) ; 
+ int T_ESCAPE_ECHO ;
+ int T_ESCAPE_PATH_SEGMENT ;
+ int T_ESCAPE_SHELL_CMD ;
+ int T_ESCAPE_URLENCODED ;
+ int T_ESCAPE_XML ;
+ int T_OS_ESCAPE_PATH ;
+ int isalnum (unsigned int) ;
+ scalar_t__ iscntrl (unsigned int) ;
+ int isprint (unsigned int) ;
+ int printf (char*,...) ;
+ scalar_t__ strchr (char*,unsigned int) ;
 
 int main(int argc, char *argv[])
 {
@@ -50,27 +42,10 @@ int main(int argc, char *argv[])
         flags = 0;
         if (c % 20 == 0)
             printf("\n    ");
-
-        /* escape_shell_cmd */
-#ifdef NEED_ENHANCED_ESCAPES
-        /* Win32/OS2 have many of the same vulnerable characters
-         * as Unix sh, plus the carriage return and percent char.
-         * The proper escaping of these characters varies from unix
-         * since Win32/OS2 use carets or doubled-double quotes,
-         * and neither lf nor cr can be escaped.  We escape unix
-         * specific as well, to assure that cross-compiled unix
-         * applications behave similiarly when invoked on win32/os2.
-         *
-         * Rem please keep in-sync with apr's list in win32/filesys.c
-         */
-        if (c && strchr("&;`'\"|*?~<>^()[]{}$\\\n\r%", c)) {
-            flags |= T_ESCAPE_SHELL_CMD;
-        }
-#else
         if (c && strchr("&;`'\"|*?~<>^()[]{}$\\\n", c)) {
             flags |= T_ESCAPE_SHELL_CMD;
         }
-#endif
+
 
         if (!isalnum(c) && !strchr("$-_.+!*'(),:@&=~", c)) {
             flags |= T_ESCAPE_PATH_SEGMENT;
@@ -84,11 +59,11 @@ int main(int argc, char *argv[])
             flags |= T_ESCAPE_URLENCODED;
         }
 
-        /* For logging, escape all control characters,
-         * double quotes (because they delimit the request in the log file)
-         * backslashes (because we use backslash for escaping)
-         * and 8-bit chars with the high bit set
-         */
+
+
+
+
+
         if (c && (!isprint(c) || c == '"' || c == '\\' || iscntrl(c))) {
             flags |= T_ESCAPE_ECHO;
         }

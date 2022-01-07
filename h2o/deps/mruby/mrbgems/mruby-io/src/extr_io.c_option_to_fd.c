@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mrb_value ;
-typedef  int /*<<< orphan*/  mrb_state ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_ARGUMENT_ERROR ; 
-#define  MRB_TT_DATA 129 
-#define  MRB_TT_FIXNUM 128 
- scalar_t__ mrb_fixnum (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_funcall (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_intern_static (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_io_fileno (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ mrb_nil_p (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_raise (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  mrb_symbol_value (int /*<<< orphan*/ ) ; 
- int mrb_type (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strlen (char const*) ; 
+
+
+
+typedef int mrb_value ;
+typedef int mrb_state ;
+
+
+ int E_ARGUMENT_ERROR ;
+
+
+ scalar_t__ mrb_fixnum (int ) ;
+ int mrb_funcall (int *,int ,char*,int,int ) ;
+ int mrb_intern_static (int *,char const*,int ) ;
+ int mrb_io_fileno (int *,int ) ;
+ scalar_t__ mrb_nil_p (int ) ;
+ int mrb_raise (int *,int ,char*) ;
+ int mrb_symbol_value (int ) ;
+ int mrb_type (int ) ;
+ int strlen (char const*) ;
 
 __attribute__((used)) static int
 option_to_fd(mrb_state *mrb, mrb_value obj, const char *key)
@@ -36,13 +36,13 @@ option_to_fd(mrb_state *mrb, mrb_value obj, const char *key)
   }
 
   switch (mrb_type(opt)) {
-    case MRB_TT_DATA: /* IO */
+    case 129:
       return (int)mrb_fixnum(mrb_io_fileno(mrb, opt));
-    case MRB_TT_FIXNUM:
+    case 128:
       return (int)mrb_fixnum(opt);
     default:
       mrb_raise(mrb, E_ARGUMENT_ERROR, "wrong exec redirect action");
       break;
   }
-  return -1; /* never reached */
+  return -1;
 }

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
-typedef  int /*<<< orphan*/  c_pretty_printer ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TREE_TYPE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TYPE_P (int /*<<< orphan*/ ) ; 
- int TYPE_QUALS (int /*<<< orphan*/ ) ; 
- int TYPE_QUAL_CONST ; 
- int TYPE_QUAL_RESTRICT ; 
- int TYPE_QUAL_VOLATILE ; 
- scalar_t__ flag_isoc99 ; 
- int /*<<< orphan*/  pp_c_cv_qualifier (int /*<<< orphan*/ *,char*) ; 
+
+
+
+typedef int tree ;
+typedef int c_pretty_printer ;
+
+
+ int TREE_TYPE (int ) ;
+ int TYPE_P (int ) ;
+ int TYPE_QUALS (int ) ;
+ int TYPE_QUAL_CONST ;
+ int TYPE_QUAL_RESTRICT ;
+ int TYPE_QUAL_VOLATILE ;
+ scalar_t__ flag_isoc99 ;
+ int pp_c_cv_qualifier (int *,char*) ;
 
 void
 pp_c_type_qualifier_list (c_pretty_printer *pp, tree t)

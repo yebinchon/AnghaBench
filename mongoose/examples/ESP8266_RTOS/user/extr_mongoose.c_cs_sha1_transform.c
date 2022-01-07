@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  union char64long16 {int dummy; } char64long16 ;
-typedef  scalar_t__ uint32_t ;
-typedef  int /*<<< orphan*/  block ;
 
-/* Variables and functions */
- int /*<<< orphan*/  R0 (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,int) ; 
- int /*<<< orphan*/  R1 (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,int) ; 
- int /*<<< orphan*/  R2 (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,int) ; 
- int /*<<< orphan*/  R3 (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,int) ; 
- int /*<<< orphan*/  R4 (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,int) ; 
- int /*<<< orphan*/  memcpy (union char64long16*,unsigned char const*,int) ; 
- int /*<<< orphan*/  memset (union char64long16*,int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef union char64long16 {int dummy; } char64long16 ;
+typedef scalar_t__ uint32_t ;
+typedef int block ;
+
+
+ int R0 (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,int) ;
+ int R1 (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,int) ;
+ int R2 (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,int) ;
+ int R3 (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,int) ;
+ int R4 (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,int) ;
+ int memcpy (union char64long16*,unsigned char const*,int) ;
+ int memset (union char64long16*,int ,int) ;
 
 void cs_sha1_transform(uint32_t state[5], const unsigned char buffer[64]) {
   uint32_t a, b, c, d, e;
@@ -118,8 +118,8 @@ void cs_sha1_transform(uint32_t state[5], const unsigned char buffer[64]) {
   state[2] += c;
   state[3] += d;
   state[4] += e;
-  /* Erase working structures. The order of operations is important,
-   * used to ensure that compiler doesn't optimize those out. */
+
+
   memset(block, 0, sizeof(block));
   a = b = c = d = e = 0;
   (void) a;

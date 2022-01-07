@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  STORE64_LE (unsigned char*,int /*<<< orphan*/ ) ; 
- int crypto_generichash_blake2b_PERSONALBYTES ; 
- int crypto_generichash_blake2b_SALTBYTES ; 
- int crypto_generichash_blake2b_salt_personal (unsigned char*,size_t,int /*<<< orphan*/ *,int /*<<< orphan*/ ,unsigned char const*,int /*<<< orphan*/ ,unsigned char*,unsigned char*) ; 
- size_t crypto_kdf_blake2b_BYTES_MAX ; 
- size_t crypto_kdf_blake2b_BYTES_MIN ; 
- int crypto_kdf_blake2b_CONTEXTBYTES ; 
- int /*<<< orphan*/  crypto_kdf_blake2b_KEYBYTES ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  memcpy (unsigned char*,char const*,int) ; 
- int /*<<< orphan*/  memset (unsigned char*,int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int uint64_t ;
+
+
+ int EINVAL ;
+ int STORE64_LE (unsigned char*,int ) ;
+ int crypto_generichash_blake2b_PERSONALBYTES ;
+ int crypto_generichash_blake2b_SALTBYTES ;
+ int crypto_generichash_blake2b_salt_personal (unsigned char*,size_t,int *,int ,unsigned char const*,int ,unsigned char*,unsigned char*) ;
+ size_t crypto_kdf_blake2b_BYTES_MAX ;
+ size_t crypto_kdf_blake2b_BYTES_MIN ;
+ int crypto_kdf_blake2b_CONTEXTBYTES ;
+ int crypto_kdf_blake2b_KEYBYTES ;
+ int errno ;
+ int memcpy (unsigned char*,char const*,int) ;
+ int memset (unsigned char*,int ,int) ;
 
 int crypto_kdf_blake2b_derive_from_key(unsigned char *subkey, size_t subkey_len,
                                        uint64_t subkey_id,
@@ -44,7 +44,7 @@ int crypto_kdf_blake2b_derive_from_key(unsigned char *subkey, size_t subkey_len,
         return -1;
     }
     return crypto_generichash_blake2b_salt_personal(subkey, subkey_len,
-                                                    NULL, 0,
+                                                    ((void*)0), 0,
                                                     key, crypto_kdf_blake2b_KEYBYTES,
                                                     salt, ctx_padded);
 }

@@ -1,66 +1,66 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_18__   TYPE_7__ ;
-typedef  struct TYPE_17__   TYPE_3__ ;
-typedef  struct TYPE_16__   TYPE_2__ ;
-typedef  struct TYPE_15__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  robj ;
-struct TYPE_15__ {TYPE_2__* db; int /*<<< orphan*/ ** argv; } ;
-typedef  TYPE_1__ client ;
-struct TYPE_18__ {int /*<<< orphan*/  dirty; scalar_t__ lazyfree_lazy_expire; int /*<<< orphan*/  masterhost; int /*<<< orphan*/  loading; } ;
-struct TYPE_17__ {int /*<<< orphan*/  cone; int /*<<< orphan*/ * del; int /*<<< orphan*/ * unlink; int /*<<< orphan*/  czero; } ;
-struct TYPE_16__ {int /*<<< orphan*/  id; } ;
 
-/* Variables and functions */
- scalar_t__ C_OK ; 
- int /*<<< orphan*/  NOTIFY_GENERIC ; 
- int UNIT_SECONDS ; 
- int /*<<< orphan*/  addReply (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int dbAsyncDelete (TYPE_2__*,int /*<<< orphan*/ *) ; 
- int dbSyncDelete (TYPE_2__*,int /*<<< orphan*/ *) ; 
- scalar_t__ getLongLongFromObjectOrReply (TYPE_1__*,int /*<<< orphan*/ *,long long*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * lookupKeyWrite (TYPE_2__*,int /*<<< orphan*/ *) ; 
- long long mstime () ; 
- int /*<<< orphan*/  notifyKeyspaceEvent (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rewriteClientCommandVector (TYPE_1__*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- TYPE_7__ server ; 
- int /*<<< orphan*/  serverAssertWithInfo (TYPE_1__*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  setExpire (TYPE_1__*,TYPE_2__*,int /*<<< orphan*/ *,long long) ; 
- TYPE_3__ shared ; 
- int /*<<< orphan*/  signalModifiedKey (TYPE_2__*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_18__ TYPE_7__ ;
+typedef struct TYPE_17__ TYPE_3__ ;
+typedef struct TYPE_16__ TYPE_2__ ;
+typedef struct TYPE_15__ TYPE_1__ ;
+
+
+typedef int robj ;
+struct TYPE_15__ {TYPE_2__* db; int ** argv; } ;
+typedef TYPE_1__ client ;
+struct TYPE_18__ {int dirty; scalar_t__ lazyfree_lazy_expire; int masterhost; int loading; } ;
+struct TYPE_17__ {int cone; int * del; int * unlink; int czero; } ;
+struct TYPE_16__ {int id; } ;
+
+
+ scalar_t__ C_OK ;
+ int NOTIFY_GENERIC ;
+ int UNIT_SECONDS ;
+ int addReply (TYPE_1__*,int ) ;
+ int dbAsyncDelete (TYPE_2__*,int *) ;
+ int dbSyncDelete (TYPE_2__*,int *) ;
+ scalar_t__ getLongLongFromObjectOrReply (TYPE_1__*,int *,long long*,int *) ;
+ int * lookupKeyWrite (TYPE_2__*,int *) ;
+ long long mstime () ;
+ int notifyKeyspaceEvent (int ,char*,int *,int ) ;
+ int rewriteClientCommandVector (TYPE_1__*,int,int *,int *) ;
+ TYPE_7__ server ;
+ int serverAssertWithInfo (TYPE_1__*,int *,int) ;
+ int setExpire (TYPE_1__*,TYPE_2__*,int *,long long) ;
+ TYPE_3__ shared ;
+ int signalModifiedKey (TYPE_2__*,int *) ;
 
 void expireGenericCommand(client *c, long long basetime, int unit) {
     robj *key = c->argv[1], *param = c->argv[2];
-    long long when; /* unix time in milliseconds when the key will expire. */
+    long long when;
 
-    if (getLongLongFromObjectOrReply(c, param, &when, NULL) != C_OK)
+    if (getLongLongFromObjectOrReply(c, param, &when, ((void*)0)) != C_OK)
         return;
 
     if (unit == UNIT_SECONDS) when *= 1000;
     when += basetime;
 
-    /* No key, return zero. */
-    if (lookupKeyWrite(c->db,key) == NULL) {
+
+    if (lookupKeyWrite(c->db,key) == ((void*)0)) {
         addReply(c,shared.czero);
         return;
     }
 
-    /* EXPIRE with negative TTL, or EXPIREAT with a timestamp into the past
-     * should never be executed as a DEL when load the AOF or in the context
-     * of a slave instance.
-     *
-     * Instead we take the other branch of the IF statement setting an expire
-     * (possibly in the past) and wait for an explicit DEL from the master. */
+
+
+
+
+
+
     if (when <= mstime() && !server.loading && !server.masterhost) {
         robj *aux;
 
@@ -69,7 +69,7 @@ void expireGenericCommand(client *c, long long basetime, int unit) {
         serverAssertWithInfo(c,key,deleted);
         server.dirty++;
 
-        /* Replicate/AOF this as an explicit DEL or UNLINK. */
+
         aux = server.lazyfree_lazy_expire ? shared.unlink : shared.del;
         rewriteClientCommandVector(c,2,aux,key);
         signalModifiedKey(c->db,key);

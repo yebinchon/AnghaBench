@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint32_t ;
-typedef  int /*<<< orphan*/  u_char ;
-struct TYPE_3__ {scalar_t__ len; int /*<<< orphan*/  data; } ;
-typedef  TYPE_1__ ngx_str_t ;
-typedef  int /*<<< orphan*/  ngx_int_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NGX_ERROR ; 
- int /*<<< orphan*/  NGX_OK ; 
- int /*<<< orphan*/  ngx_memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint32_t ;
+typedef int u_char ;
+struct TYPE_3__ {scalar_t__ len; int data; } ;
+typedef TYPE_1__ ngx_str_t ;
+typedef int ngx_int_t ;
+
+
+ int NGX_ERROR ;
+ int NGX_OK ;
+ int ngx_memcpy (int *,int ,scalar_t__) ;
 
 ngx_int_t
 ngx_http_tfs_serialize_string(u_char **p,
     ngx_str_t *string)
 {
-    if (p == NULL || *p == NULL || string == NULL) {
+    if (p == ((void*)0) || *p == ((void*)0) || string == ((void*)0)) {
         return NGX_ERROR;
     }
 

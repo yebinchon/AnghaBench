@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SIGKILL ; 
- int /*<<< orphan*/  do_some_sql (int) ; 
- int fork () ; 
- int getpid () ; 
- int /*<<< orphan*/  kill (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int rand () ; 
- int /*<<< orphan*/  sched_yield () ; 
- int /*<<< orphan*/  sqlite_close (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite_exec (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * sqlite_open (char*,int /*<<< orphan*/ ,char**) ; 
- int /*<<< orphan*/  unlink (char*) ; 
- int /*<<< orphan*/  usleep (int) ; 
- int /*<<< orphan*/  waitpid (int,int*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int sqlite ;
+
+
+ int SIGKILL ;
+ int do_some_sql (int) ;
+ int fork () ;
+ int getpid () ;
+ int kill (int,int ) ;
+ int printf (char*,...) ;
+ int rand () ;
+ int sched_yield () ;
+ int sqlite_close (int *) ;
+ int sqlite_exec (int *,char*,int ,int ,int ) ;
+ int * sqlite_open (char*,int ,char**) ;
+ int unlink (char*) ;
+ int usleep (int) ;
+ int waitpid (int,int*,int ) ;
 
 int main(int argc, char **argv){
   int i;

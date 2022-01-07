@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * pITfThreadMgrEx; int /*<<< orphan*/ * pITfTextInputProcessor; } ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  TYPE_1__ ActivatedTextService ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ITfTextInputProcessor_Deactivate (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ITfTextInputProcessor_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ITfThreadMgrEx_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  S_OK ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * pITfThreadMgrEx; int * pITfTextInputProcessor; } ;
+typedef int HRESULT ;
+typedef TYPE_1__ ActivatedTextService ;
+
+
+ int ITfTextInputProcessor_Deactivate (int *) ;
+ int ITfTextInputProcessor_Release (int *) ;
+ int ITfThreadMgrEx_Release (int *) ;
+ int S_OK ;
 
 __attribute__((used)) static HRESULT deactivate_given_ts(ActivatedTextService *actsvr)
 {
@@ -30,8 +30,8 @@ __attribute__((used)) static HRESULT deactivate_given_ts(ActivatedTextService *a
         hr = ITfTextInputProcessor_Deactivate(actsvr->pITfTextInputProcessor);
         ITfTextInputProcessor_Release(actsvr->pITfTextInputProcessor);
         ITfThreadMgrEx_Release(actsvr->pITfThreadMgrEx);
-        actsvr->pITfTextInputProcessor = NULL;
-        actsvr->pITfThreadMgrEx = NULL;
+        actsvr->pITfTextInputProcessor = ((void*)0);
+        actsvr->pITfThreadMgrEx = ((void*)0);
     }
 
     return hr;

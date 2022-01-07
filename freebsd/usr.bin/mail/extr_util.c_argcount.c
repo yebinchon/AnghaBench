@@ -1,24 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
-
 int
 argcount(char **argv)
 {
-	char **ap;
+ char **ap;
 
-	for (ap = argv; *ap++ != NULL;)
-		;
-	return (ap - argv - 1);
+ for (ap = argv; *ap++ != ((void*)0);)
+  ;
+ return (ap - argv - 1);
 }

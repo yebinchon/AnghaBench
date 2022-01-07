@@ -1,31 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  BUG_ON (int) ; 
- int /*<<< orphan*/  bitmap_clear (int /*<<< orphan*/ ,unsigned int,unsigned int) ; 
- int /*<<< orphan*/  minor_lock ; 
- int /*<<< orphan*/  minors ; 
- unsigned int nr_minors ; 
- int /*<<< orphan*/  spin_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock (int /*<<< orphan*/ *) ; 
+ int BUG_ON (int) ;
+ int bitmap_clear (int ,unsigned int,unsigned int) ;
+ int minor_lock ;
+ int minors ;
+ unsigned int nr_minors ;
+ int spin_lock (int *) ;
+ int spin_unlock (int *) ;
 
 __attribute__((used)) static void xlbd_release_minors(unsigned int minor, unsigned int nr)
 {
-	unsigned int end = minor + nr;
+ unsigned int end = minor + nr;
 
-	BUG_ON(end > nr_minors);
-	spin_lock(&minor_lock);
-	bitmap_clear(minors,  minor, nr);
-	spin_unlock(&minor_lock);
+ BUG_ON(end > nr_minors);
+ spin_lock(&minor_lock);
+ bitmap_clear(minors, minor, nr);
+ spin_unlock(&minor_lock);
 }

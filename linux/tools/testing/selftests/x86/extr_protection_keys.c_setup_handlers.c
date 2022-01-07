@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  SIGCHLD ; 
- int /*<<< orphan*/  setup_sigsegv_handler () ; 
- int /*<<< orphan*/  sig_chld ; 
- int /*<<< orphan*/  signal (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+ int SIGCHLD ;
+ int setup_sigsegv_handler () ;
+ int sig_chld ;
+ int signal (int ,int *) ;
 
 void setup_handlers(void)
 {
-	signal(SIGCHLD, &sig_chld);
-	setup_sigsegv_handler();
+ signal(SIGCHLD, &sig_chld);
+ setup_sigsegv_handler();
 }

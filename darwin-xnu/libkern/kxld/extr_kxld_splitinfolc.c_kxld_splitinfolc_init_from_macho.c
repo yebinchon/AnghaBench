@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct linkedit_data_command {int /*<<< orphan*/  has_splitinfolc; int /*<<< orphan*/  datasize; int /*<<< orphan*/  dataoff; int /*<<< orphan*/  cmdsize; } ;
-typedef  struct linkedit_data_command KXLDsplitinfolc ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  check (struct linkedit_data_command*) ; 
+
+
+
+struct linkedit_data_command {int has_splitinfolc; int datasize; int dataoff; int cmdsize; } ;
+typedef struct linkedit_data_command KXLDsplitinfolc ;
+
+
+ int TRUE ;
+ int check (struct linkedit_data_command*) ;
 
 void
 kxld_splitinfolc_init_from_macho(KXLDsplitinfolc *splitinfolc, struct linkedit_data_command *src)

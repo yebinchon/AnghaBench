@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  void* uint32_t ;
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef void* uint32_t ;
 struct TYPE_8__ {int rounds; TYPE_1__* rd_key; } ;
 struct TYPE_7__ {void** u; } ;
-typedef  TYPE_1__ ARIA_u128 ;
-typedef  TYPE_2__ ARIA_KEY ;
+typedef TYPE_1__ ARIA_u128 ;
+typedef TYPE_2__ ARIA_KEY ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARIA_BLOCK_SIZE ; 
- int /*<<< orphan*/  ARIA_DEC_DIFF_BYTE (void*,void*,void*,void*) ; 
- int /*<<< orphan*/  ARIA_DIFF_BYTE (void*,void*,void*,void*) ; 
- int /*<<< orphan*/  ARIA_DIFF_WORD (void*,void*,void*,void*) ; 
- int aria_set_encrypt_key (unsigned char const*,int const,TYPE_2__*) ; 
- int /*<<< orphan*/  memcpy (TYPE_1__*,TYPE_1__*,int /*<<< orphan*/ ) ; 
+
+ int ARIA_BLOCK_SIZE ;
+ int ARIA_DEC_DIFF_BYTE (void*,void*,void*,void*) ;
+ int ARIA_DIFF_BYTE (void*,void*,void*,void*) ;
+ int ARIA_DIFF_WORD (void*,void*,void*,void*) ;
+ int aria_set_encrypt_key (unsigned char const*,int const,TYPE_2__*) ;
+ int memcpy (TYPE_1__*,TYPE_1__*,int ) ;
 
 int aria_set_decrypt_key(const unsigned char *userKey, const int bits,
                          ARIA_KEY *key)

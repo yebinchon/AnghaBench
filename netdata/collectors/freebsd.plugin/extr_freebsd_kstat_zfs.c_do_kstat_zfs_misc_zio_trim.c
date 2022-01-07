@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  usec_t ;
-typedef  int /*<<< orphan*/  uint64_t ;
-typedef  int /*<<< orphan*/  RRDSET ;
-typedef  int /*<<< orphan*/  RRDDIM ;
 
-/* Variables and functions */
- scalar_t__ GETSYSCTL_SIMPLE (char*,int*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RRDSET_TYPE_LINE ; 
- int /*<<< orphan*/  RRDSET_TYPE_STACKED ; 
- int /*<<< orphan*/  RRD_ALGORITHM_INCREMENTAL ; 
- int /*<<< orphan*/  error (char*) ; 
- int /*<<< orphan*/ * rrddim_add (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rrddim_set_by_pointer (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * rrdset_create_localhost (char*,char*,int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,char*,char*,char*,char*,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rrdset_done (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  rrdset_next (int /*<<< orphan*/ *) ; 
- scalar_t__ unlikely (int) ; 
+
+
+
+typedef int usec_t ;
+typedef int uint64_t ;
+typedef int RRDSET ;
+typedef int RRDDIM ;
+
+
+ scalar_t__ GETSYSCTL_SIMPLE (char*,int*,int ) ;
+ int RRDSET_TYPE_LINE ;
+ int RRDSET_TYPE_STACKED ;
+ int RRD_ALGORITHM_INCREMENTAL ;
+ int error (char*) ;
+ int * rrddim_add (int *,char*,int *,int,int,int ) ;
+ int rrddim_set_by_pointer (int *,int *,int ) ;
+ int * rrdset_create_localhost (char*,char*,int *,char*,int *,char*,char*,char*,char*,int,int,int ) ;
+ int rrdset_done (int *) ;
+ int rrdset_next (int *) ;
+ scalar_t__ unlikely (int) ;
 
 int do_kstat_zfs_misc_zio_trim(int update_every, usec_t dt) {
     (void)dt;
@@ -44,18 +44,18 @@ int do_kstat_zfs_misc_zio_trim(int update_every, usec_t dt) {
         return 1;
      } else {
 
-     // --------------------------------------------------------------------
 
-        static RRDSET *st_bytes = NULL;
-        static RRDDIM *rd_bytes = NULL;
+
+        static RRDSET *st_bytes = ((void*)0);
+        static RRDDIM *rd_bytes = ((void*)0);
 
         if (unlikely(!st_bytes)) {
             st_bytes = rrdset_create_localhost(
                     "zfs",
                     "trim_bytes",
-                    NULL,
+                    ((void*)0),
                     "trim",
-                    NULL,
+                    ((void*)0),
                     "Successfully TRIMmed bytes",
                     "bytes",
                     "freebsd",
@@ -65,25 +65,25 @@ int do_kstat_zfs_misc_zio_trim(int update_every, usec_t dt) {
                     RRDSET_TYPE_LINE
             );
 
-            rd_bytes = rrddim_add(st_bytes, "TRIMmed", NULL, 1, 1, RRD_ALGORITHM_INCREMENTAL);
+            rd_bytes = rrddim_add(st_bytes, "TRIMmed", ((void*)0), 1, 1, RRD_ALGORITHM_INCREMENTAL);
         }
         else rrdset_next(st_bytes);
 
         rrddim_set_by_pointer(st_bytes, rd_bytes, bytes);
         rrdset_done(st_bytes);
 
-        // --------------------------------------------------------------------
 
-        static RRDSET *st_requests = NULL;
-        static RRDDIM *rd_successful = NULL, *rd_failed = NULL, *rd_unsupported = NULL;
+
+        static RRDSET *st_requests = ((void*)0);
+        static RRDDIM *rd_successful = ((void*)0), *rd_failed = ((void*)0), *rd_unsupported = ((void*)0);
 
         if (unlikely(!st_requests)) {
             st_requests = rrdset_create_localhost(
                     "zfs",
                     "trim_requests",
-                    NULL,
+                    ((void*)0),
                     "trim",
-                    NULL,
+                    ((void*)0),
                     "TRIM requests",
                     "requests",
                     "freebsd",
@@ -93,14 +93,14 @@ int do_kstat_zfs_misc_zio_trim(int update_every, usec_t dt) {
                     RRDSET_TYPE_STACKED
             );
 
-            rd_successful  = rrddim_add(st_requests, "successful",  NULL, 1, 1, RRD_ALGORITHM_INCREMENTAL);
-            rd_failed      = rrddim_add(st_requests, "failed",      NULL, 1, 1, RRD_ALGORITHM_INCREMENTAL);
-            rd_unsupported = rrddim_add(st_requests, "unsupported", NULL, 1, 1, RRD_ALGORITHM_INCREMENTAL);
+            rd_successful = rrddim_add(st_requests, "successful", ((void*)0), 1, 1, RRD_ALGORITHM_INCREMENTAL);
+            rd_failed = rrddim_add(st_requests, "failed", ((void*)0), 1, 1, RRD_ALGORITHM_INCREMENTAL);
+            rd_unsupported = rrddim_add(st_requests, "unsupported", ((void*)0), 1, 1, RRD_ALGORITHM_INCREMENTAL);
         }
         else rrdset_next(st_requests);
 
-        rrddim_set_by_pointer(st_requests, rd_successful,  success);
-        rrddim_set_by_pointer(st_requests, rd_failed,      failed);
+        rrddim_set_by_pointer(st_requests, rd_successful, success);
+        rrddim_set_by_pointer(st_requests, rd_failed, failed);
         rrddim_set_by_pointer(st_requests, rd_unsupported, unsupported);
         rrdset_done(st_requests);
 

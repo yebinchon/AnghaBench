@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int LSTATUS ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int ERROR_INVALID_PARAMETER ; 
- int ERROR_SUCCESS ; 
- int ERROR_UNSUPPORTED_TYPE ; 
- int /*<<< orphan*/  HKEY_CURRENT_USER ; 
- int MAX_PATH ; 
- int REG_SZ ; 
- int /*<<< orphan*/  REG_TEST_KEY ; 
- int /*<<< orphan*/  SRRF_RT_REG_DWORD ; 
- int /*<<< orphan*/  SRRF_RT_REG_EXPAND_SZ ; 
- int /*<<< orphan*/  SRRF_RT_REG_QWORD ; 
- int /*<<< orphan*/  SRRF_RT_REG_SZ ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int pSHRegGetValueA (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int*,char*,int*) ; 
- int /*<<< orphan*/  sExpTestpath1 ; 
- int /*<<< orphan*/  sTestpath1 ; 
- int /*<<< orphan*/  strcmp (char*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int LSTATUS ;
+typedef int DWORD ;
+
+
+ int ERROR_INVALID_PARAMETER ;
+ int ERROR_SUCCESS ;
+ int ERROR_UNSUPPORTED_TYPE ;
+ int HKEY_CURRENT_USER ;
+ int MAX_PATH ;
+ int REG_SZ ;
+ int REG_TEST_KEY ;
+ int SRRF_RT_REG_DWORD ;
+ int SRRF_RT_REG_EXPAND_SZ ;
+ int SRRF_RT_REG_QWORD ;
+ int SRRF_RT_REG_SZ ;
+ int ok (int,char*,...) ;
+ int pSHRegGetValueA (int ,int ,char*,int ,int*,char*,int*) ;
+ int sExpTestpath1 ;
+ int sTestpath1 ;
+ int strcmp (char*,int ) ;
 
 __attribute__((used)) static void test_SHRegGetValue(void)
 {

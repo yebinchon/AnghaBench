@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  pack; int /*<<< orphan*/  unpack; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int pack; int unpack; } ;
 struct TYPE_5__ {TYPE_1__ alignment; } ;
-typedef  int /*<<< orphan*/  GLint ;
-typedef  int GLenum ;
-typedef  TYPE_2__ GLXX_CLIENT_STATE_T ;
-typedef  int /*<<< orphan*/  CLIENT_THREAD_STATE_T ;
+typedef int GLint ;
+typedef int GLenum ;
+typedef TYPE_2__ GLXX_CLIENT_STATE_T ;
+typedef int CLIENT_THREAD_STATE_T ;
 
-/* Variables and functions */
- TYPE_2__* GLXX_GET_CLIENT_STATE (int /*<<< orphan*/ *) ; 
-#define  GL_PACK_ALIGNMENT 129 
-#define  GL_UNPACK_ALIGNMENT 128 
- int /*<<< orphan*/  UNREACHABLE () ; 
- int /*<<< orphan*/  vcos_assert (int /*<<< orphan*/ ) ; 
+
+ TYPE_2__* GLXX_GET_CLIENT_STATE (int *) ;
+
+
+ int UNREACHABLE () ;
+ int vcos_assert (int ) ;
 
 __attribute__((used)) static int get_integer_internal_20(CLIENT_THREAD_STATE_T *thread, GLenum pname, GLint *params)
 {
    GLXX_CLIENT_STATE_T *state = GLXX_GET_CLIENT_STATE(thread);
 
-   vcos_assert(state != NULL);
+   vcos_assert(state != ((void*)0));
 
    switch (pname) {
-   case GL_UNPACK_ALIGNMENT:
+   case 128:
       params[0] = state->alignment.unpack;
       return 1;
-   case GL_PACK_ALIGNMENT:
+   case 129:
       params[0] = state->alignment.pack;
       return 1;
    default:

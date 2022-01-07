@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct viafb_gpio {int /*<<< orphan*/  vg_port_index; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  VIASR ; 
- int /*<<< orphan*/  via_write_reg_mask (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+
+
+struct viafb_gpio {int vg_port_index; } ;
+
+
+ int VIASR ;
+ int via_write_reg_mask (int ,int ,int ,int) ;
 
 __attribute__((used)) static void viafb_gpio_disable(struct viafb_gpio *gpio)
 {
-	via_write_reg_mask(VIASR, gpio->vg_port_index, 0, 0x02);
+ via_write_reg_mask(VIASR, gpio->vg_port_index, 0, 0x02);
 }

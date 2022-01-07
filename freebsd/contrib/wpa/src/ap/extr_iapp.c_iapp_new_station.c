@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u16 ;
-struct sta_info {int /*<<< orphan*/  addr; } ;
-struct iapp_data {int /*<<< orphan*/  hapd; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HOSTAPD_LEVEL_DEBUG ; 
- int /*<<< orphan*/  HOSTAPD_MODULE_IAPP ; 
- int /*<<< orphan*/  hostapd_logger (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  iapp_send_add (struct iapp_data*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  iapp_send_layer2_update (struct iapp_data*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int u16 ;
+struct sta_info {int addr; } ;
+struct iapp_data {int hapd; } ;
+
+
+ int HOSTAPD_LEVEL_DEBUG ;
+ int HOSTAPD_MODULE_IAPP ;
+ int hostapd_logger (int ,int ,int ,int ,char*,int ) ;
+ int iapp_send_add (struct iapp_data*,int ,int ) ;
+ int iapp_send_layer2_update (struct iapp_data*,int ) ;
 
 void iapp_new_station(struct iapp_data *iapp, struct sta_info *sta)
 {
-	u16 seq = 0; /* TODO */
+ u16 seq = 0;
 
-	if (iapp == NULL)
-		return;
+ if (iapp == ((void*)0))
+  return;
 
-	/* IAPP-ADD.request(MAC Address, Sequence Number, Timeout) */
-	hostapd_logger(iapp->hapd, sta->addr, HOSTAPD_MODULE_IAPP,
-		       HOSTAPD_LEVEL_DEBUG, "IAPP-ADD.request(seq=%d)", seq);
-	iapp_send_layer2_update(iapp, sta->addr);
-	iapp_send_add(iapp, sta->addr, seq);
 
-	/* TODO: If this was reassociation:
-	 * IAPP-MOVE.request(MAC Address, Sequence Number, Old AP,
-	 *                   Context Block, Timeout)
-	 * TODO: Send IAPP-MOVE to the old AP; Map Old AP BSSID to
-	 * IP address */
+ hostapd_logger(iapp->hapd, sta->addr, HOSTAPD_MODULE_IAPP,
+         HOSTAPD_LEVEL_DEBUG, "IAPP-ADD.request(seq=%d)", seq);
+ iapp_send_layer2_update(iapp, sta->addr);
+ iapp_send_add(iapp, sta->addr, seq);
+
+
+
+
+
+
 }

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct lfs2_file_config {int /*<<< orphan*/  member_0; } ;
-typedef  int /*<<< orphan*/  lfs2_t ;
-typedef  int /*<<< orphan*/  lfs2_file_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LFS2_TRACE (char*,int,...) ; 
- int lfs2_file_opencfg (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*,int,struct lfs2_file_config const*) ; 
+
+
+
+struct lfs2_file_config {int member_0; } ;
+typedef int lfs2_t ;
+typedef int lfs2_file_t ;
+
+
+ int LFS2_TRACE (char*,int,...) ;
+ int lfs2_file_opencfg (int *,int *,char const*,int,struct lfs2_file_config const*) ;
 
 int lfs2_file_open(lfs2_t *lfs2, lfs2_file_t *file,
         const char *path, int flags) {

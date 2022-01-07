@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct eap_method {int /*<<< orphan*/  process; int /*<<< orphan*/  deinit; int /*<<< orphan*/  init; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EAP_PEER_METHOD_INTERFACE_VERSION ; 
- int /*<<< orphan*/  EAP_TYPE_GTC ; 
- int /*<<< orphan*/  EAP_VENDOR_IETF ; 
- int /*<<< orphan*/  eap_gtc_deinit ; 
- int /*<<< orphan*/  eap_gtc_init ; 
- int /*<<< orphan*/  eap_gtc_process ; 
- struct eap_method* eap_peer_method_alloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int eap_peer_method_register (struct eap_method*) ; 
+
+
+
+struct eap_method {int process; int deinit; int init; } ;
+
+
+ int EAP_PEER_METHOD_INTERFACE_VERSION ;
+ int EAP_TYPE_GTC ;
+ int EAP_VENDOR_IETF ;
+ int eap_gtc_deinit ;
+ int eap_gtc_init ;
+ int eap_gtc_process ;
+ struct eap_method* eap_peer_method_alloc (int ,int ,int ,char*) ;
+ int eap_peer_method_register (struct eap_method*) ;
 
 int eap_peer_gtc_register(void)
 {
-	struct eap_method *eap;
+ struct eap_method *eap;
 
-	eap = eap_peer_method_alloc(EAP_PEER_METHOD_INTERFACE_VERSION,
-				    EAP_VENDOR_IETF, EAP_TYPE_GTC, "GTC");
-	if (eap == NULL)
-		return -1;
+ eap = eap_peer_method_alloc(EAP_PEER_METHOD_INTERFACE_VERSION,
+        EAP_VENDOR_IETF, EAP_TYPE_GTC, "GTC");
+ if (eap == ((void*)0))
+  return -1;
 
-	eap->init = eap_gtc_init;
-	eap->deinit = eap_gtc_deinit;
-	eap->process = eap_gtc_process;
+ eap->init = eap_gtc_init;
+ eap->deinit = eap_gtc_deinit;
+ eap->process = eap_gtc_process;
 
-	return eap_peer_method_register(eap);
+ return eap_peer_method_register(eap);
 }

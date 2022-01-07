@@ -1,77 +1,77 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {int /*<<< orphan*/  header; int /*<<< orphan*/  bsc; } ;
-typedef  TYPE_1__ task_navigate_bsc_t ;
-typedef  scalar_t__ WCHAR ;
-typedef  int /*<<< orphan*/  const VARIANT ;
-typedef  int ULONG ;
-struct TYPE_10__ {int /*<<< orphan*/ * url; scalar_t__ doc_navigate; int /*<<< orphan*/  ready_state; } ;
-typedef  int /*<<< orphan*/  SAFEARRAY ;
-typedef  int /*<<< orphan*/ * PBYTE ;
-typedef  scalar_t__* LPWSTR ;
-typedef  scalar_t__* LPCWSTR ;
-typedef  int LONG ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  TYPE_2__ DocHost ;
-typedef  int /*<<< orphan*/  DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAY_SIZE (scalar_t__*) ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FIXME (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int INTERNET_MAX_URL_LENGTH ; 
- scalar_t__ PathIsURLW (scalar_t__*) ; 
- int /*<<< orphan*/  READYSTATE_LOADING ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  SafeArrayAccessData (int /*<<< orphan*/ *,void**) ; 
- int SafeArrayGetElemsize (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SafeArrayGetUBound (int /*<<< orphan*/ *,int,int*) ; 
- int /*<<< orphan*/  SafeArrayUnaccessData (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- int URL_APPLY_DEFAULT ; 
- int URL_APPLY_GUESSFILE ; 
- int URL_APPLY_GUESSSCHEME ; 
- int /*<<< orphan*/  UrlApplySchemeW (scalar_t__*,scalar_t__*,int /*<<< orphan*/ *,int) ; 
- int VT_ARRAY ; 
- int VT_BSTR ; 
- int VT_EMPTY ; 
- int VT_ERROR ; 
- int /*<<< orphan*/ * V_ARRAY (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/ ** V_ARRAYREF (int /*<<< orphan*/  const*) ; 
- scalar_t__* V_BSTR (int /*<<< orphan*/  const*) ; 
- scalar_t__ V_ISBYREF (int /*<<< orphan*/  const*) ; 
- int V_VT (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  WARN (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  async_doc_navigate (TYPE_2__*,scalar_t__*,scalar_t__*,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  create_callback (TYPE_2__*,scalar_t__*,int /*<<< orphan*/ *,int,scalar_t__*) ; 
- int /*<<< orphan*/  debugstr_variant (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  debugstr_w (scalar_t__*) ; 
- TYPE_1__* heap_alloc (int) ; 
- int /*<<< orphan*/  navigate_bsc_proc ; 
- int /*<<< orphan*/  navigate_bsc_task_destr ; 
- int /*<<< orphan*/  push_dochost_task (TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_doc_state (TYPE_2__*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_9__ {int header; int bsc; } ;
+typedef TYPE_1__ task_navigate_bsc_t ;
+typedef scalar_t__ WCHAR ;
+typedef int const VARIANT ;
+typedef int ULONG ;
+struct TYPE_10__ {int * url; scalar_t__ doc_navigate; int ready_state; } ;
+typedef int SAFEARRAY ;
+typedef int * PBYTE ;
+typedef scalar_t__* LPWSTR ;
+typedef scalar_t__* LPCWSTR ;
+typedef int LONG ;
+typedef int HRESULT ;
+typedef TYPE_2__ DocHost ;
+typedef int DWORD ;
+
+
+ int ARRAY_SIZE (scalar_t__*) ;
+ scalar_t__ FAILED (int ) ;
+ int FIXME (char*,int ,int ) ;
+ int INTERNET_MAX_URL_LENGTH ;
+ scalar_t__ PathIsURLW (scalar_t__*) ;
+ int READYSTATE_LOADING ;
+ int S_OK ;
+ int SafeArrayAccessData (int *,void**) ;
+ int SafeArrayGetElemsize (int *) ;
+ int SafeArrayGetUBound (int *,int,int*) ;
+ int SafeArrayUnaccessData (int *) ;
+ int TRACE (char*,int ) ;
+ int TRUE ;
+ int URL_APPLY_DEFAULT ;
+ int URL_APPLY_GUESSFILE ;
+ int URL_APPLY_GUESSSCHEME ;
+ int UrlApplySchemeW (scalar_t__*,scalar_t__*,int *,int) ;
+ int VT_ARRAY ;
+ int VT_BSTR ;
+ int VT_EMPTY ;
+ int VT_ERROR ;
+ int * V_ARRAY (int const*) ;
+ int ** V_ARRAYREF (int const*) ;
+ scalar_t__* V_BSTR (int const*) ;
+ scalar_t__ V_ISBYREF (int const*) ;
+ int V_VT (int const*) ;
+ int WARN (char*,int ) ;
+ int async_doc_navigate (TYPE_2__*,scalar_t__*,scalar_t__*,int *,int,int ) ;
+ int create_callback (TYPE_2__*,scalar_t__*,int *,int,scalar_t__*) ;
+ int debugstr_variant (int const*) ;
+ int debugstr_w (scalar_t__*) ;
+ TYPE_1__* heap_alloc (int) ;
+ int navigate_bsc_proc ;
+ int navigate_bsc_task_destr ;
+ int push_dochost_task (TYPE_2__*,int *,int ,int ,int ) ;
+ int set_doc_state (TYPE_2__*,int ) ;
 
 HRESULT navigate_url(DocHost *This, LPCWSTR url, const VARIANT *Flags,
                      const VARIANT *TargetFrameName, VARIANT *PostData, VARIANT *Headers)
 {
-    SAFEARRAY *post_array = NULL;
-    PBYTE post_data = NULL;
+    SAFEARRAY *post_array = ((void*)0);
+    PBYTE post_data = ((void*)0);
     ULONG post_data_len = 0;
-    LPWSTR headers = NULL;
+    LPWSTR headers = ((void*)0);
     HRESULT hres = S_OK;
 
     TRACE("navigating to %s\n", debugstr_w(url));
@@ -126,7 +126,7 @@ HRESULT navigate_url(DocHost *This, LPCWSTR url, const VARIANT *Flags,
 
         task = heap_alloc(sizeof(*task));
         task->bsc = create_callback(This, url, post_data, post_data_len, headers);
-        push_dochost_task(This, &task->header, navigate_bsc_proc, navigate_bsc_task_destr, This->url == NULL);
+        push_dochost_task(This, &task->header, navigate_bsc_proc, navigate_bsc_task_destr, This->url == ((void*)0));
     }
 
     if(post_data)

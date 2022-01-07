@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ size_t _MAX_DIR ;
+ int _MAX_EXT ;
+ int _MAX_FNAME ;
+ int strncat (char*,char const*,int) ;
+ char* strrchr (char const*,char) ;
 
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- size_t _MAX_DIR ; 
- int _MAX_EXT ; 
- int _MAX_FNAME ; 
- int /*<<< orphan*/  strncat (char*,char const*,int) ; 
- char* strrchr (char const*,char) ; 
-
-void wceex_splitpath( const char *path, 
+void wceex_splitpath( const char *path,
                       char *drive, char *dir, char *name, char *ext )
 {
     char *slash, *bslash;

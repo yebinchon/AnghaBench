@@ -1,29 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  UMH_WAIT_EXEC ; 
- int call_usermodehelper (char*,char**,char**,int /*<<< orphan*/ ) ; 
+ int UMH_WAIT_EXEC ;
+ int call_usermodehelper (char*,char**,char**,int ) ;
 
 int wf_critical_overtemp(void)
 {
-	static char * critical_overtemp_path = "/sbin/critical_overtemp";
-	char *argv[] = { critical_overtemp_path, NULL };
-	static char *envp[] = { "HOME=/",
-				"TERM=linux",
-				"PATH=/sbin:/usr/sbin:/bin:/usr/bin",
-				NULL };
+ static char * critical_overtemp_path = "/sbin/critical_overtemp";
+ char *argv[] = { critical_overtemp_path, ((void*)0) };
+ static char *envp[] = { "HOME=/",
+    "TERM=linux",
+    "PATH=/sbin:/usr/sbin:/bin:/usr/bin",
+    ((void*)0) };
 
-	return call_usermodehelper(critical_overtemp_path,
-				   argv, envp, UMH_WAIT_EXEC);
+ return call_usermodehelper(critical_overtemp_path,
+       argv, envp, UMH_WAIT_EXEC);
 }

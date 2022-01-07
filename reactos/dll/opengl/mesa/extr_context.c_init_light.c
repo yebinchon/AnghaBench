@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct gl_light {double SpotExponent; double SpotCutoff; double CosCutoff; double ConstantAttenuation; double LinearAttenuation; double QuadraticAttenuation; int /*<<< orphan*/  Enabled; int /*<<< orphan*/  Direction; int /*<<< orphan*/  Position; int /*<<< orphan*/  Specular; int /*<<< orphan*/  Diffuse; int /*<<< orphan*/  Ambient; } ;
-typedef  scalar_t__ GLuint ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSIGN_3V (int /*<<< orphan*/ ,double,double,double) ; 
- int /*<<< orphan*/  ASSIGN_4V (int /*<<< orphan*/ ,double,double,double,double) ; 
- int /*<<< orphan*/  GL_FALSE ; 
- int /*<<< orphan*/  gl_compute_spot_exp_table (struct gl_light*) ; 
+
+
+
+struct gl_light {double SpotExponent; double SpotCutoff; double CosCutoff; double ConstantAttenuation; double LinearAttenuation; double QuadraticAttenuation; int Enabled; int Direction; int Position; int Specular; int Diffuse; int Ambient; } ;
+typedef scalar_t__ GLuint ;
+
+
+ int ASSIGN_3V (int ,double,double,double) ;
+ int ASSIGN_4V (int ,double,double,double,double) ;
+ int GL_FALSE ;
+ int gl_compute_spot_exp_table (struct gl_light*) ;
 
 __attribute__((used)) static void init_light( struct gl_light *l, GLuint n )
 {

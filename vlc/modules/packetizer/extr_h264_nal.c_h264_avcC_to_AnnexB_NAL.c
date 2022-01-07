@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint16_t ;
 
-/* Variables and functions */
- int const* annexb_startcode4 ; 
- size_t get_avcC_to_AnnexB_NAL_size (int const*,size_t) ; 
- int* malloc (size_t) ; 
- int /*<<< orphan*/  memcpy (int*,int const*,int) ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint16_t ;
+
+
+ int const* annexb_startcode4 ;
+ size_t get_avcC_to_AnnexB_NAL_size (int const*,size_t) ;
+ int* malloc (size_t) ;
+ int memcpy (int*,int const*,int) ;
 
 uint8_t *h264_avcC_to_AnnexB_NAL( const uint8_t *p_buf, size_t i_buf,
                                   size_t *pi_result, uint8_t *pi_nal_length_size )
 {
-    *pi_result = get_avcC_to_AnnexB_NAL_size( p_buf, i_buf ); /* Does check min size */
+    *pi_result = get_avcC_to_AnnexB_NAL_size( p_buf, i_buf );
     if( *pi_result == 0 )
-        return NULL;
+        return ((void*)0);
 
-    /* Read infos in first 6 bytes */
+
     if ( pi_nal_length_size )
         *pi_nal_length_size = (p_buf[4] & 0x03) + 1;
 
@@ -35,7 +35,7 @@ uint8_t *h264_avcC_to_AnnexB_NAL( const uint8_t *p_buf, size_t i_buf,
     if( !p_out_buf )
     {
         *pi_result = 0;
-        return NULL;
+        return ((void*)0);
     }
 
     p_buf += 5;

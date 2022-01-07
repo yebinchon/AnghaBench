@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  out ;
-typedef  int /*<<< orphan*/  expected ;
-typedef  int /*<<< orphan*/  OSSL_PARAM ;
-typedef  int /*<<< orphan*/  EVP_KDF_CTX ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EVP_KDF_CTX_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EVP_KDF_CTX_set_params (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EVP_KDF_derive (int /*<<< orphan*/ *,unsigned char*,int) ; 
- int /*<<< orphan*/  OSSL_KDF_NAME_SCRYPT ; 
- int /*<<< orphan*/  OSSL_KDF_PARAM_PASSWORD ; 
- int /*<<< orphan*/  OSSL_KDF_PARAM_SALT ; 
- int /*<<< orphan*/  OSSL_KDF_PARAM_SCRYPT_MAXMEM ; 
- int /*<<< orphan*/  OSSL_KDF_PARAM_SCRYPT_N ; 
- int /*<<< orphan*/  OSSL_KDF_PARAM_SCRYPT_P ; 
- int /*<<< orphan*/  OSSL_KDF_PARAM_SCRYPT_R ; 
- int /*<<< orphan*/  OSSL_PARAM_construct_end () ; 
- void* OSSL_PARAM_construct_octet_string (int /*<<< orphan*/ ,char*,int) ; 
- void* OSSL_PARAM_construct_uint (int /*<<< orphan*/ ,unsigned int*) ; 
- int /*<<< orphan*/  OSSL_PARAM_set_uint (int /*<<< orphan*/ *,int) ; 
- scalar_t__ TEST_int_gt (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ TEST_mem_eq (unsigned char*,int,unsigned char const*,int) ; 
- scalar_t__ TEST_ptr (int /*<<< orphan*/ *) ; 
- scalar_t__ TEST_true (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * get_kdfbyname (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int out ;
+typedef int expected ;
+typedef int OSSL_PARAM ;
+typedef int EVP_KDF_CTX ;
+
+
+ int EVP_KDF_CTX_free (int *) ;
+ int EVP_KDF_CTX_set_params (int *,int *) ;
+ int EVP_KDF_derive (int *,unsigned char*,int) ;
+ int OSSL_KDF_NAME_SCRYPT ;
+ int OSSL_KDF_PARAM_PASSWORD ;
+ int OSSL_KDF_PARAM_SALT ;
+ int OSSL_KDF_PARAM_SCRYPT_MAXMEM ;
+ int OSSL_KDF_PARAM_SCRYPT_N ;
+ int OSSL_KDF_PARAM_SCRYPT_P ;
+ int OSSL_KDF_PARAM_SCRYPT_R ;
+ int OSSL_PARAM_construct_end () ;
+ void* OSSL_PARAM_construct_octet_string (int ,char*,int) ;
+ void* OSSL_PARAM_construct_uint (int ,unsigned int*) ;
+ int OSSL_PARAM_set_uint (int *,int) ;
+ scalar_t__ TEST_int_gt (int ,int ) ;
+ scalar_t__ TEST_mem_eq (unsigned char*,int,unsigned char const*,int) ;
+ scalar_t__ TEST_ptr (int *) ;
+ scalar_t__ TEST_true (int ) ;
+ int * get_kdfbyname (int ) ;
 
 __attribute__((used)) static int test_kdf_scrypt(void)
 {
@@ -67,8 +67,8 @@ __attribute__((used)) static int test_kdf_scrypt(void)
     ret =
         TEST_ptr(kctx = get_kdfbyname(OSSL_KDF_NAME_SCRYPT))
         && TEST_true(EVP_KDF_CTX_set_params(kctx, params))
-        /* failure test *//*
-        && TEST_int_le(EVP_KDF_derive(kctx, out, sizeof(out)), 0)*/
+
+
         && TEST_true(OSSL_PARAM_set_uint(p - 1, 10 * 1024 * 1024))
         && TEST_true(EVP_KDF_CTX_set_params(kctx, p - 1))
         && TEST_int_gt(EVP_KDF_derive(kctx, out, sizeof(out)), 0)

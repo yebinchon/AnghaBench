@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buf ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_printf (int /*<<< orphan*/ ,char*,...) ; 
- int BIO_snprintf (char*,int,char*,char const*,...) ; 
- int BSIZE ; 
- scalar_t__ ENOENT ; 
- scalar_t__ ENOTDIR ; 
- int /*<<< orphan*/  bio_err ; 
- scalar_t__ errno ; 
- int /*<<< orphan*/  perror (char*) ; 
- scalar_t__ rename (char const*,char const*) ; 
- int strlen (char const*) ; 
+
+
+
+typedef int buf ;
+
+
+ int BIO_printf (int ,char*,...) ;
+ int BIO_snprintf (char*,int,char*,char const*,...) ;
+ int BSIZE ;
+ scalar_t__ ENOENT ;
+ scalar_t__ ENOTDIR ;
+ int bio_err ;
+ scalar_t__ errno ;
+ int perror (char*) ;
+ scalar_t__ rename (char const*,char const*) ;
+ int strlen (char const*) ;
 
 int rotate_index(const char *dbfile, const char *new_suffix,
                  const char *old_suffix)
@@ -38,23 +38,23 @@ int rotate_index(const char *dbfile, const char *new_suffix,
         BIO_printf(bio_err, "file name too long\n");
         goto err;
     }
-#ifndef OPENSSL_SYS_VMS
+
     j = BIO_snprintf(buf[4], sizeof(buf[4]), "%s.attr", dbfile);
     j = BIO_snprintf(buf[3], sizeof(buf[3]), "%s.attr.%s", dbfile, old_suffix);
     j = BIO_snprintf(buf[2], sizeof(buf[2]), "%s.attr.%s", dbfile, new_suffix);
     j = BIO_snprintf(buf[1], sizeof(buf[1]), "%s.%s", dbfile, old_suffix);
     j = BIO_snprintf(buf[0], sizeof(buf[0]), "%s.%s", dbfile, new_suffix);
-#else
-    j = BIO_snprintf(buf[4], sizeof(buf[4]), "%s-attr", dbfile);
-    j = BIO_snprintf(buf[3], sizeof(buf[3]), "%s-attr-%s", dbfile, old_suffix);
-    j = BIO_snprintf(buf[2], sizeof(buf[2]), "%s-attr-%s", dbfile, new_suffix);
-    j = BIO_snprintf(buf[1], sizeof(buf[1]), "%s-%s", dbfile, old_suffix);
-    j = BIO_snprintf(buf[0], sizeof(buf[0]), "%s-%s", dbfile, new_suffix);
-#endif
+
+
+
+
+
+
+
     if (rename(dbfile, buf[1]) < 0 && errno != ENOENT
-#ifdef ENOTDIR
-        && errno != ENOTDIR
-#endif
+
+
+
         ) {
         BIO_printf(bio_err, "unable to rename %s to %s\n", dbfile, buf[1]);
         perror("reason");
@@ -67,9 +67,9 @@ int rotate_index(const char *dbfile, const char *new_suffix,
         goto err;
     }
     if (rename(buf[4], buf[3]) < 0 && errno != ENOENT
-#ifdef ENOTDIR
-        && errno != ENOTDIR
-#endif
+
+
+
         ) {
         BIO_printf(bio_err, "unable to rename %s to %s\n", buf[4], buf[3]);
         perror("reason");

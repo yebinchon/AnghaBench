@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8 ;
-typedef  int /*<<< orphan*/  uint32 ;
-typedef  scalar_t__ GR_CURSOR_ID ;
-typedef  int /*<<< orphan*/  GR_BITMAP ;
 
-/* Variables and functions */
- scalar_t__ GrNewCursor (int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  flipover (int /*<<< orphan*/ *) ; 
- int is1on (int /*<<< orphan*/ *,int,int) ; 
- int is24on (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  set1 (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/ * ui_create_glyph (int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ui_destroy_glyph (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int uint8 ;
+typedef int uint32 ;
+typedef scalar_t__ GR_CURSOR_ID ;
+typedef int GR_BITMAP ;
+
+
+ scalar_t__ GrNewCursor (int,int,int ,int ,int,int ,int *,int *) ;
+ int flipover (int *) ;
+ int is1on (int *,int,int) ;
+ int is24on (int *,int,int) ;
+ int memset (int *,int ,int) ;
+ int set1 (int *,int,int) ;
+ int * ui_create_glyph (int,int,int *) ;
+ int ui_destroy_glyph (int *) ;
 
 void * ui_create_cursor(uint32 x, uint32 y,
                         int width, int height,
@@ -48,7 +48,7 @@ void * ui_create_cursor(uint32 x, uint32 y,
     {
       mon = is24on(xormask, i1, i2);
       bon = is1on(andmask, i1, i2);
-      if (bon ^ mon) // xor
+      if (bon ^ mon)
       {
         set1(adata, i1, i2);
         if (!mon)

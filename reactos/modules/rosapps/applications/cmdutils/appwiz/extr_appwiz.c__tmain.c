@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  _TCHAR ;
-typedef  int /*<<< orphan*/  TCHAR ;
-typedef  int INT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  APP_ONLY ; 
- int /*<<< orphan*/  PrintHelp () ; 
- int /*<<< orphan*/  RunGUIAppWiz () ; 
- int /*<<< orphan*/  SHOW_ALL ; 
- int /*<<< orphan*/  SetConsoleTitle (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ShowAppList (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  UPD_ONLY ; 
- int /*<<< orphan*/  _T (char*) ; 
- scalar_t__ _tcsncmp (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int atoi (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  scanf (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int _TCHAR ;
+typedef int TCHAR ;
+typedef int INT ;
+
+
+ int APP_ONLY ;
+ int PrintHelp () ;
+ int RunGUIAppWiz () ;
+ int SHOW_ALL ;
+ int SetConsoleTitle (int ) ;
+ int ShowAppList (int ,int) ;
+ int UPD_ONLY ;
+ int _T (char*) ;
+ scalar_t__ _tcsncmp (int *,int ,int) ;
+ int atoi (int *) ;
+ int scanf (int ,int *) ;
 
 int _tmain(int argc, _TCHAR* argv[])
 {
@@ -40,11 +40,11 @@ int _tmain(int argc, _TCHAR* argv[])
         return 0;
     }
 
-	if (_tcsncmp(argv[1], _T("/?"), 2) == 0)
-	{
-		PrintHelp();
-		return 0;
-	}
+ if (_tcsncmp(argv[1], _T("/?"), 2) == 0)
+ {
+  PrintHelp();
+  return 0;
+ }
 
     if (_tcsncmp(argv[1], _T("/l"), 2) == 0)
     {
@@ -86,5 +86,5 @@ ShowAll:
         return 0;
     }
 
-	return 0;
+ return 0;
 }

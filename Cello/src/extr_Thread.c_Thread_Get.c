@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  struct Thread* var ;
-struct Thread {int /*<<< orphan*/  tls; } ;
 
-/* Variables and functions */
- struct Thread* deref (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  get (int /*<<< orphan*/ ,struct Thread*) ; 
+
+
+
+typedef struct Thread* var ;
+struct Thread {int tls; } ;
+
+
+ struct Thread* deref (int ) ;
+ int get (int ,struct Thread*) ;
 
 __attribute__((used)) static var Thread_Get(var self, var key) {
   struct Thread* t = self;

@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint64_t ;
-typedef  scalar_t__ uint32_t ;
-struct TYPE_7__ {scalar_t__ lgwin; int input_file_length; int /*<<< orphan*/  force_overwrite; int /*<<< orphan*/  current_output_path; scalar_t__ quality; } ;
-typedef  TYPE_1__ Context ;
-typedef  int /*<<< orphan*/  BrotliEncoderState ;
-typedef  scalar_t__ BROTLI_BOOL ;
 
-/* Variables and functions */
- scalar_t__ BROTLI_FALSE ; 
- scalar_t__ BROTLI_MAX_BACKWARD_LIMIT (scalar_t__) ; 
- scalar_t__ BROTLI_MAX_WINDOW_BITS ; 
- scalar_t__ BROTLI_MIN_WINDOW_BITS ; 
- int /*<<< orphan*/  BROTLI_PARAM_LARGE_WINDOW ; 
- int /*<<< orphan*/  BROTLI_PARAM_LGWIN ; 
- int /*<<< orphan*/  BROTLI_PARAM_QUALITY ; 
- int /*<<< orphan*/  BROTLI_PARAM_SIZE_HINT ; 
- scalar_t__ BROTLI_TRUE ; 
- int /*<<< orphan*/ * BrotliEncoderCreateInstance (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BrotliEncoderDestroyInstance (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BrotliEncoderSetParameter (int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  CloseFiles (TYPE_1__*,scalar_t__) ; 
- scalar_t__ CompressFile (TYPE_1__*,int /*<<< orphan*/ *) ; 
- scalar_t__ DEFAULT_LGWIN ; 
- scalar_t__ NextFile (TYPE_1__*) ; 
- scalar_t__ OpenFiles (TYPE_1__*) ; 
- int /*<<< orphan*/  STDOUT_FILENO ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ isatty (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stderr ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint64_t ;
+typedef scalar_t__ uint32_t ;
+struct TYPE_7__ {scalar_t__ lgwin; int input_file_length; int force_overwrite; int current_output_path; scalar_t__ quality; } ;
+typedef TYPE_1__ Context ;
+typedef int BrotliEncoderState ;
+typedef scalar_t__ BROTLI_BOOL ;
+
+
+ scalar_t__ BROTLI_FALSE ;
+ scalar_t__ BROTLI_MAX_BACKWARD_LIMIT (scalar_t__) ;
+ scalar_t__ BROTLI_MAX_WINDOW_BITS ;
+ scalar_t__ BROTLI_MIN_WINDOW_BITS ;
+ int BROTLI_PARAM_LARGE_WINDOW ;
+ int BROTLI_PARAM_LGWIN ;
+ int BROTLI_PARAM_QUALITY ;
+ int BROTLI_PARAM_SIZE_HINT ;
+ scalar_t__ BROTLI_TRUE ;
+ int * BrotliEncoderCreateInstance (int *,int *,int *) ;
+ int BrotliEncoderDestroyInstance (int *) ;
+ int BrotliEncoderSetParameter (int *,int ,scalar_t__) ;
+ int CloseFiles (TYPE_1__*,scalar_t__) ;
+ scalar_t__ CompressFile (TYPE_1__*,int *) ;
+ scalar_t__ DEFAULT_LGWIN ;
+ scalar_t__ NextFile (TYPE_1__*) ;
+ scalar_t__ OpenFiles (TYPE_1__*) ;
+ int STDOUT_FILENO ;
+ int fprintf (int ,char*) ;
+ scalar_t__ isatty (int ) ;
+ int stderr ;
 
 __attribute__((used)) static BROTLI_BOOL CompressFiles(Context* context) {
   while (NextFile(context)) {
     BROTLI_BOOL is_ok = BROTLI_TRUE;
-    BrotliEncoderState* s = BrotliEncoderCreateInstance(NULL, NULL, NULL);
+    BrotliEncoderState* s = BrotliEncoderCreateInstance(((void*)0), ((void*)0), ((void*)0));
     if (!s) {
       fprintf(stderr, "out of memory\n");
       return BROTLI_FALSE;
@@ -52,17 +52,17 @@ __attribute__((used)) static BROTLI_BOOL CompressFiles(Context* context) {
     BrotliEncoderSetParameter(s,
         BROTLI_PARAM_QUALITY, (uint32_t)context->quality);
     if (context->lgwin > 0) {
-      /* Specified by user. */
-      /* Do not enable "large-window" extension, if not required. */
+
+
       if (context->lgwin > BROTLI_MAX_WINDOW_BITS) {
         BrotliEncoderSetParameter(s, BROTLI_PARAM_LARGE_WINDOW, 1u);
       }
       BrotliEncoderSetParameter(s,
           BROTLI_PARAM_LGWIN, (uint32_t)context->lgwin);
     } else {
-      /* 0, or not specified by user; could be chosen by compressor. */
+
       uint32_t lgwin = DEFAULT_LGWIN;
-      /* Use file size to limit lgwin. */
+
       if (context->input_file_length >= 0) {
         lgwin = BROTLI_MIN_WINDOW_BITS;
         while (BROTLI_MAX_BACKWARD_LIMIT(lgwin) <

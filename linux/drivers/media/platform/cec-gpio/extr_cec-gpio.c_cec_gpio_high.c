@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct cec_gpio {int cec_is_low; int /*<<< orphan*/  cec_gpio; } ;
+
+
+
+
+struct cec_gpio {int cec_is_low; int cec_gpio; } ;
 struct cec_adapter {int dummy; } ;
 
-/* Variables and functions */
- struct cec_gpio* cec_get_drvdata (struct cec_adapter*) ; 
- int /*<<< orphan*/  gpiod_set_value (int /*<<< orphan*/ ,int) ; 
+
+ struct cec_gpio* cec_get_drvdata (struct cec_adapter*) ;
+ int gpiod_set_value (int ,int) ;
 
 __attribute__((used)) static void cec_gpio_high(struct cec_adapter *adap)
 {
-	struct cec_gpio *cec = cec_get_drvdata(adap);
+ struct cec_gpio *cec = cec_get_drvdata(adap);
 
-	if (!cec->cec_is_low)
-		return;
-	cec->cec_is_low = false;
-	gpiod_set_value(cec->cec_gpio, 1);
+ if (!cec->cec_is_low)
+  return;
+ cec->cec_is_low = 0;
+ gpiod_set_value(cec->cec_gpio, 1);
 }

@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int UInt32 ;
-typedef  int CLzRef ;
-typedef  scalar_t__ Byte ;
 
-/* Variables and functions */
- int kEmptyHashValue ; 
+
+
+
+typedef int UInt32 ;
+typedef int CLzRef ;
+typedef scalar_t__ Byte ;
+
+
+ int kEmptyHashValue ;
 
 UInt32 * GetMatchesSpec1(UInt32 lenLimit, UInt32 curMatch, UInt32 pos, const Byte *cur, CLzRef *son,
     UInt32 _cyclicBufferPos, UInt32 _cyclicBufferSize, UInt32 cutValue,

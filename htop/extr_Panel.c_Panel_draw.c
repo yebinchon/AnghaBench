@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int scrollH; int y; int x; int h; int w; int scrollV; int needsRedraw; int selected; int selectionColor; int selectedLen; int oldSelected; int /*<<< orphan*/  items; int /*<<< orphan*/  header; } ;
-typedef  TYPE_1__ Panel ;
-typedef  int /*<<< orphan*/  Object ;
 
-/* Variables and functions */
- int* CRT_colors ; 
- int MAX (int,int /*<<< orphan*/ ) ; 
- int MIN (int,int) ; 
- int /*<<< orphan*/  Object_display (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- size_t PANEL_HEADER_FOCUS ; 
- size_t PANEL_HEADER_UNFOCUS ; 
- size_t PANEL_SELECTION_UNFOCUS ; 
- size_t RESET_COLOR ; 
- int /*<<< orphan*/  RichString_begin (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RichString_end (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RichString_printoffnVal (int /*<<< orphan*/ ,int,int,int,int) ; 
- int /*<<< orphan*/  RichString_setAttr (int /*<<< orphan*/ *,int) ; 
- int RichString_sizeVal (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * Vector_get (int /*<<< orphan*/ ,int) ; 
- int Vector_size (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  attrset (int) ; 
- int /*<<< orphan*/  item ; 
- int /*<<< orphan*/  move (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mvhline (int,int,char,int) ; 
- int /*<<< orphan*/  new ; 
- int /*<<< orphan*/  old ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int scrollH; int y; int x; int h; int w; int scrollV; int needsRedraw; int selected; int selectionColor; int selectedLen; int oldSelected; int items; int header; } ;
+typedef TYPE_1__ Panel ;
+typedef int Object ;
+
+
+ int* CRT_colors ;
+ int MAX (int,int ) ;
+ int MIN (int,int) ;
+ int Object_display (int *,int *) ;
+ size_t PANEL_HEADER_FOCUS ;
+ size_t PANEL_HEADER_UNFOCUS ;
+ size_t PANEL_SELECTION_UNFOCUS ;
+ size_t RESET_COLOR ;
+ int RichString_begin (int ) ;
+ int RichString_end (int ) ;
+ int RichString_printoffnVal (int ,int,int,int,int) ;
+ int RichString_setAttr (int *,int) ;
+ int RichString_sizeVal (int ) ;
+ int * Vector_get (int ,int) ;
+ int Vector_size (int ) ;
+ int assert (int *) ;
+ int attrset (int) ;
+ int item ;
+ int move (int ,int ) ;
+ int mvhline (int,int,char,int) ;
+ int new ;
+ int old ;
 
 void Panel_draw(Panel* this, bool focus) {
-   assert (this != NULL);
+   assert (this != ((void*)0));
 
    int size = Vector_size(this->items);
    int scrollH = this->scrollH;
@@ -63,21 +63,21 @@ void Panel_draw(Panel* this, bool focus) {
       y++;
    }
 
-   // ensure scroll area is on screen
+
    if (this->scrollV < 0) {
       this->scrollV = 0;
-      this->needsRedraw = true;
+      this->needsRedraw = 1;
    } else if (this->scrollV >= size) {
       this->scrollV = MAX(size - 1, 0);
-      this->needsRedraw = true;
+      this->needsRedraw = 1;
    }
-   // ensure selection is on screen
+
    if (this->selected < this->scrollV) {
       this->scrollV = this->selected;
-      this->needsRedraw = true;
+      this->needsRedraw = 1;
    } else if (this->selected >= this->scrollV + h) {
       this->scrollV = this->selected - h + 1;
-      this->needsRedraw = true;
+      this->needsRedraw = 1;
    }
 
    int first = this->scrollV;
@@ -114,7 +114,7 @@ void Panel_draw(Panel* this, bool focus) {
          mvhline(y + line, x, ' ', this->w);
          line++;
       }
-      this->needsRedraw = false;
+      this->needsRedraw = 0;
 
    } else {
       Object* oldObj = Vector_get(this->items, this->oldSelected);

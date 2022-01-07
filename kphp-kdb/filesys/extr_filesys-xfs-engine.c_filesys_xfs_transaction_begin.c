@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct lev_filesys_xfs_transaction {int /*<<< orphan*/  id; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  delete_file (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  kprintf (char*,int /*<<< orphan*/ ) ; 
- int mkdir (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  pending_operations_reset (int) ; 
- scalar_t__ pending_saving_binlogpos_logpos ; 
- int /*<<< orphan*/  tmp_dir ; 
- scalar_t__ transaction_file_no ; 
- int /*<<< orphan*/  transaction_id ; 
- int /*<<< orphan*/  vkprintf (int,char*,int /*<<< orphan*/ ) ; 
+
+
+
+struct lev_filesys_xfs_transaction {int id; } ;
+
+
+ int delete_file (int ) ;
+ int exit (int) ;
+ int kprintf (char*,int ) ;
+ int mkdir (int ,int) ;
+ int pending_operations_reset (int) ;
+ scalar_t__ pending_saving_binlogpos_logpos ;
+ int tmp_dir ;
+ scalar_t__ transaction_file_no ;
+ int transaction_id ;
+ int vkprintf (int,char*,int ) ;
 
 __attribute__((used)) static void filesys_xfs_transaction_begin (struct lev_filesys_xfs_transaction *E) {
   pending_saving_binlogpos_logpos = 0;

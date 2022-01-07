@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_11__ {TYPE_1__* frame; } ;
 struct TYPE_10__ {int queued; size_t total_samples_tail; int samples_skipped; } ;
-struct TYPE_9__ {size_t nb_samples; int channels; scalar_t__ pts; size_t* linesize; size_t* extended_data; size_t* data; int /*<<< orphan*/  sample_rate; int /*<<< orphan*/  format; } ;
-typedef  TYPE_2__ FFFrameQueue ;
-typedef  TYPE_3__ FFFrameBucket ;
-typedef  int /*<<< orphan*/  AVRational ;
+struct TYPE_9__ {size_t nb_samples; int channels; scalar_t__ pts; size_t* linesize; size_t* extended_data; size_t* data; int sample_rate; int format; } ;
+typedef TYPE_2__ FFFrameQueue ;
+typedef TYPE_3__ FFFrameBucket ;
+typedef int AVRational ;
 
-/* Variables and functions */
- scalar_t__ AV_NOPTS_VALUE ; 
- int AV_NUM_DATA_POINTERS ; 
- int /*<<< orphan*/  av_assert1 (int) ; 
- size_t av_get_bytes_per_sample (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_make_q (int,int /*<<< orphan*/ ) ; 
- scalar_t__ av_rescale_q (size_t,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int av_sample_fmt_is_planar (int /*<<< orphan*/ ) ; 
- TYPE_3__* bucket (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  check_consistency (TYPE_2__*) ; 
- int /*<<< orphan*/  ff_framequeue_update_peeked (TYPE_2__*,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ AV_NOPTS_VALUE ;
+ int AV_NUM_DATA_POINTERS ;
+ int av_assert1 (int) ;
+ size_t av_get_bytes_per_sample (int ) ;
+ int av_make_q (int,int ) ;
+ scalar_t__ av_rescale_q (size_t,int ,int ) ;
+ int av_sample_fmt_is_planar (int ) ;
+ TYPE_3__* bucket (TYPE_2__*,int ) ;
+ int check_consistency (TYPE_2__*) ;
+ int ff_framequeue_update_peeked (TYPE_2__*,int ) ;
 
 void ff_framequeue_skip_samples(FFFrameQueue *fq, size_t samples, AVRational time_base)
 {

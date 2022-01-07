@@ -1,84 +1,84 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
+
+
+
+
+typedef int u32 ;
 struct dwc3_event_depevt {int status; } ;
-struct dwc3_ep {int flags; int /*<<< orphan*/  started_list; struct dwc3* dwc; } ;
-struct dwc3 {scalar_t__ revision; int /*<<< orphan*/  u1u2; int /*<<< orphan*/  regs; struct dwc3_ep** eps; } ;
+struct dwc3_ep {int flags; int started_list; struct dwc3* dwc; } ;
+struct dwc3 {scalar_t__ revision; int u1u2; int regs; struct dwc3_ep** eps; } ;
 
-/* Variables and functions */
- int DEPEVT_STATUS_BUSERR ; 
- int DEPEVT_STATUS_MISSED_ISOC ; 
- int /*<<< orphan*/  DWC3_DCTL ; 
- int DWC3_ENDPOINTS_NUM ; 
- int DWC3_EP_ENABLED ; 
- scalar_t__ DWC3_REVISION_183A ; 
- unsigned int ECONNRESET ; 
- unsigned int EXDEV ; 
- int /*<<< orphan*/  dwc3_gadget_endpoint_frame_from_event (struct dwc3_ep*,struct dwc3_event_depevt const*) ; 
- int /*<<< orphan*/  dwc3_gadget_ep_cleanup_completed_requests (struct dwc3_ep*,struct dwc3_event_depevt const*,unsigned int) ; 
- int /*<<< orphan*/  dwc3_readl (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dwc3_stop_active_transfer (struct dwc3_ep*,int,int) ; 
- int /*<<< orphan*/  dwc3_writel (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ list_empty (int /*<<< orphan*/ *) ; 
+
+ int DEPEVT_STATUS_BUSERR ;
+ int DEPEVT_STATUS_MISSED_ISOC ;
+ int DWC3_DCTL ;
+ int DWC3_ENDPOINTS_NUM ;
+ int DWC3_EP_ENABLED ;
+ scalar_t__ DWC3_REVISION_183A ;
+ unsigned int ECONNRESET ;
+ unsigned int EXDEV ;
+ int dwc3_gadget_endpoint_frame_from_event (struct dwc3_ep*,struct dwc3_event_depevt const*) ;
+ int dwc3_gadget_ep_cleanup_completed_requests (struct dwc3_ep*,struct dwc3_event_depevt const*,unsigned int) ;
+ int dwc3_readl (int ,int ) ;
+ int dwc3_stop_active_transfer (struct dwc3_ep*,int,int) ;
+ int dwc3_writel (int ,int ,int ) ;
+ scalar_t__ list_empty (int *) ;
 
 __attribute__((used)) static void dwc3_gadget_endpoint_transfer_in_progress(struct dwc3_ep *dep,
-		const struct dwc3_event_depevt *event)
+  const struct dwc3_event_depevt *event)
 {
-	struct dwc3		*dwc = dep->dwc;
-	unsigned		status = 0;
-	bool			stop = false;
+ struct dwc3 *dwc = dep->dwc;
+ unsigned status = 0;
+ bool stop = 0;
 
-	dwc3_gadget_endpoint_frame_from_event(dep, event);
+ dwc3_gadget_endpoint_frame_from_event(dep, event);
 
-	if (event->status & DEPEVT_STATUS_BUSERR)
-		status = -ECONNRESET;
+ if (event->status & DEPEVT_STATUS_BUSERR)
+  status = -ECONNRESET;
 
-	if (event->status & DEPEVT_STATUS_MISSED_ISOC) {
-		status = -EXDEV;
+ if (event->status & DEPEVT_STATUS_MISSED_ISOC) {
+  status = -EXDEV;
 
-		if (list_empty(&dep->started_list))
-			stop = true;
-	}
+  if (list_empty(&dep->started_list))
+   stop = 1;
+ }
 
-	dwc3_gadget_ep_cleanup_completed_requests(dep, event, status);
+ dwc3_gadget_ep_cleanup_completed_requests(dep, event, status);
 
-	if (stop) {
-		dwc3_stop_active_transfer(dep, true, true);
-		dep->flags = DWC3_EP_ENABLED;
-	}
+ if (stop) {
+  dwc3_stop_active_transfer(dep, 1, 1);
+  dep->flags = DWC3_EP_ENABLED;
+ }
 
-	/*
-	 * WORKAROUND: This is the 2nd half of U1/U2 -> U0 workaround.
-	 * See dwc3_gadget_linksts_change_interrupt() for 1st half.
-	 */
-	if (dwc->revision < DWC3_REVISION_183A) {
-		u32		reg;
-		int		i;
 
-		for (i = 0; i < DWC3_ENDPOINTS_NUM; i++) {
-			dep = dwc->eps[i];
 
-			if (!(dep->flags & DWC3_EP_ENABLED))
-				continue;
 
-			if (!list_empty(&dep->started_list))
-				return;
-		}
 
-		reg = dwc3_readl(dwc->regs, DWC3_DCTL);
-		reg |= dwc->u1u2;
-		dwc3_writel(dwc->regs, DWC3_DCTL, reg);
+ if (dwc->revision < DWC3_REVISION_183A) {
+  u32 reg;
+  int i;
 
-		dwc->u1u2 = 0;
-	}
+  for (i = 0; i < DWC3_ENDPOINTS_NUM; i++) {
+   dep = dwc->eps[i];
+
+   if (!(dep->flags & DWC3_EP_ENABLED))
+    continue;
+
+   if (!list_empty(&dep->started_list))
+    return;
+  }
+
+  reg = dwc3_readl(dwc->regs, DWC3_DCTL);
+  reg |= dwc->u1u2;
+  dwc3_writel(dwc->regs, DWC3_DCTL, reg);
+
+  dwc->u1u2 = 0;
+ }
 }

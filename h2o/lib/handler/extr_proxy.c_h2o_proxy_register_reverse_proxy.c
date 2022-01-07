@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int supports_request_streaming; int /*<<< orphan*/  on_req; int /*<<< orphan*/  dispose; int /*<<< orphan*/  on_context_dispose; int /*<<< orphan*/  on_context_init; } ;
-struct rp_handler_t {int /*<<< orphan*/ * sockpool; int /*<<< orphan*/  config; TYPE_1__ super; } ;
-typedef  int /*<<< orphan*/  h2o_socketpool_t ;
-typedef  int /*<<< orphan*/  h2o_proxy_config_vars_t ;
-typedef  int /*<<< orphan*/  h2o_pathconf_t ;
 
-/* Variables and functions */
- scalar_t__ h2o_create_handler (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  on_context_dispose ; 
- int /*<<< orphan*/  on_context_init ; 
- int /*<<< orphan*/  on_handler_dispose ; 
- int /*<<< orphan*/  on_req ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int supports_request_streaming; int on_req; int dispose; int on_context_dispose; int on_context_init; } ;
+struct rp_handler_t {int * sockpool; int config; TYPE_1__ super; } ;
+typedef int h2o_socketpool_t ;
+typedef int h2o_proxy_config_vars_t ;
+typedef int h2o_pathconf_t ;
+
+
+ scalar_t__ h2o_create_handler (int *,int) ;
+ int on_context_dispose ;
+ int on_context_init ;
+ int on_handler_dispose ;
+ int on_req ;
 
 void h2o_proxy_register_reverse_proxy(h2o_pathconf_t *pathconf, h2o_proxy_config_vars_t *config, h2o_socketpool_t *sockpool)
 {

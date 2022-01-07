@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT ;
-typedef  int /*<<< orphan*/  UCHAR ;
-typedef  int /*<<< orphan*/  IP ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IPToStr6 (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SetIP6 (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int UINT ;
+typedef int UCHAR ;
+typedef int IP ;
+
+
+ int IPToStr6 (char*,int ,int *) ;
+ int SetIP6 (int *,int *) ;
 
 void IPToStr6Array(char *str, UINT size, UCHAR *bytes)
 {
-	IP ip;
-	// Validate arguments
-	if (str == NULL || bytes == NULL)
-	{
-		return;
-	}
+ IP ip;
 
-	SetIP6(&ip, bytes);
+ if (str == ((void*)0) || bytes == ((void*)0))
+ {
+  return;
+ }
 
-	IPToStr6(str, size, &ip);
+ SetIP6(&ip, bytes);
+
+ IPToStr6(str, size, &ip);
 }

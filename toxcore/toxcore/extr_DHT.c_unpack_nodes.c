@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
-typedef  size_t uint32_t ;
-typedef  size_t uint16_t ;
-struct TYPE_5__ {int /*<<< orphan*/  ip6; scalar_t__ family; int /*<<< orphan*/  ip4; } ;
-struct TYPE_6__ {int /*<<< orphan*/  port; TYPE_1__ ip; } ;
-struct TYPE_7__ {int /*<<< orphan*/ * public_key; TYPE_2__ ip_port; } ;
-typedef  TYPE_3__ Node_format ;
 
-/* Variables and functions */
- scalar_t__ AF_INET ; 
- scalar_t__ AF_INET6 ; 
- size_t PACKED_NODE_SIZE_IP4 ; 
- size_t PACKED_NODE_SIZE_IP6 ; 
- int SIZE_IP4 ; 
- int SIZE_IP6 ; 
- scalar_t__ TCP_INET ; 
- scalar_t__ TCP_INET6 ; 
- scalar_t__ const TOX_AF_INET ; 
- scalar_t__ const TOX_AF_INET6 ; 
- scalar_t__ const TOX_TCP_INET ; 
- scalar_t__ const TOX_TCP_INET6 ; 
- int crypto_box_PUBLICKEYBYTES ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,scalar_t__ const*,int) ; 
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint8_t ;
+typedef size_t uint32_t ;
+typedef size_t uint16_t ;
+struct TYPE_5__ {int ip6; scalar_t__ family; int ip4; } ;
+struct TYPE_6__ {int port; TYPE_1__ ip; } ;
+struct TYPE_7__ {int * public_key; TYPE_2__ ip_port; } ;
+typedef TYPE_3__ Node_format ;
+
+
+ scalar_t__ AF_INET ;
+ scalar_t__ AF_INET6 ;
+ size_t PACKED_NODE_SIZE_IP4 ;
+ size_t PACKED_NODE_SIZE_IP6 ;
+ int SIZE_IP4 ;
+ int SIZE_IP6 ;
+ scalar_t__ TCP_INET ;
+ scalar_t__ TCP_INET6 ;
+ scalar_t__ const TOX_AF_INET ;
+ scalar_t__ const TOX_AF_INET6 ;
+ scalar_t__ const TOX_TCP_INET ;
+ scalar_t__ const TOX_TCP_INET6 ;
+ int crypto_box_PUBLICKEYBYTES ;
+ int memcpy (int *,scalar_t__ const*,int) ;
 
 int unpack_nodes(Node_format *nodes, uint16_t max_num_nodes, uint16_t *processed_data_len, const uint8_t *data,
                  uint16_t length, uint8_t tcp_enabled)

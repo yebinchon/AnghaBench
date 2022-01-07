@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  cmsTagSignature ;
-typedef  int /*<<< orphan*/  cmsNAMEDCOLORLIST ;
-typedef  int /*<<< orphan*/  cmsHPROFILE ;
-typedef  int /*<<< orphan*/  cmsContext ;
 
-/* Variables and functions */
- scalar_t__ cmsIsTag (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int cmsMAX_PATH ; 
- int cmsNamedColorCount (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cmsNamedColorInfo (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ cmsReadTag (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
+
+
+
+typedef int cmsTagSignature ;
+typedef int cmsNAMEDCOLORLIST ;
+typedef int cmsHPROFILE ;
+typedef int cmsContext ;
+
+
+ scalar_t__ cmsIsTag (int ,int ,int ) ;
+ int cmsMAX_PATH ;
+ int cmsNamedColorCount (int ,int *) ;
+ int cmsNamedColorInfo (int ,int *,int,char*,int *,int *,int *,int *) ;
+ scalar_t__ cmsReadTag (int ,int ,int ) ;
+ int printf (char*,...) ;
 
 __attribute__((used)) static
 void PrintColorantTable(cmsContext ContextID, cmsHPROFILE hInput, cmsTagSignature Sig, const char* Title)
@@ -34,7 +34,7 @@ void PrintColorantTable(cmsContext ContextID, cmsHPROFILE hInput, cmsTagSignatur
         printf("%s:\n", Title);
 
         list = (cmsNAMEDCOLORLIST*) cmsReadTag(ContextID, hInput, Sig);
-        if (list == NULL) {
+        if (list == ((void*)0)) {
             printf("(Unavailable)\n");
             return;
         }
@@ -44,7 +44,7 @@ void PrintColorantTable(cmsContext ContextID, cmsHPROFILE hInput, cmsTagSignatur
 
             char Name[cmsMAX_PATH];
 
-            cmsNamedColorInfo(ContextID, list, i, Name, NULL, NULL, NULL, NULL);
+            cmsNamedColorInfo(ContextID, list, i, Name, ((void*)0), ((void*)0), ((void*)0), ((void*)0));
             printf("\t%s\n", Name);
         }
 

@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  (* callbackex ) (char*,int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* callback ) (char*) ;} ;
-struct enumtimeformats_context {int flags; int type; int /*<<< orphan*/  lParam; TYPE_1__ u; scalar_t__ unicode; int /*<<< orphan*/  lcid; } ;
-typedef  char WCHAR ;
-typedef  int LCTYPE ;
-typedef  scalar_t__ INT ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAY_SIZE (char*) ; 
-#define  CALLBACK_ENUMPROC 130 
-#define  CALLBACK_ENUMPROCEX 129 
- int /*<<< orphan*/  ERROR_INVALID_PARAMETER ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  FIXME (char*,int) ; 
- scalar_t__ GetLocaleInfoA (int /*<<< orphan*/ ,int,char*,int /*<<< orphan*/ ) ; 
- scalar_t__ GetLocaleInfoW (int /*<<< orphan*/ ,int,char*,int /*<<< orphan*/ ) ; 
- int LOCALE_SSHORTTIME ; 
- int LOCALE_STIMEFORMAT ; 
- int LOCALE_USE_CP_ACP ; 
- int /*<<< orphan*/  SetLastError (int /*<<< orphan*/ ) ; 
-#define  TIME_NOSECONDS 128 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  stub1 (char*) ; 
- int /*<<< orphan*/  stub2 (char*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int (* callbackex ) (char*,int ) ;int (* callback ) (char*) ;} ;
+struct enumtimeformats_context {int flags; int type; int lParam; TYPE_1__ u; scalar_t__ unicode; int lcid; } ;
+typedef char WCHAR ;
+typedef int LCTYPE ;
+typedef scalar_t__ INT ;
+typedef int BOOL ;
+
+
+ int ARRAY_SIZE (char*) ;
+
+
+ int ERROR_INVALID_PARAMETER ;
+ int FALSE ;
+ int FIXME (char*,int) ;
+ scalar_t__ GetLocaleInfoA (int ,int,char*,int ) ;
+ scalar_t__ GetLocaleInfoW (int ,int,char*,int ) ;
+ int LOCALE_SSHORTTIME ;
+ int LOCALE_STIMEFORMAT ;
+ int LOCALE_USE_CP_ACP ;
+ int SetLastError (int ) ;
+
+ int TRUE ;
+ int stub1 (char*) ;
+ int stub2 (char*,int ) ;
 
 __attribute__((used)) static BOOL NLS_EnumTimeFormats(struct enumtimeformats_context *ctxt)
 {
@@ -54,7 +54,7 @@ __attribute__((used)) static BOOL NLS_EnumTimeFormats(struct enumtimeformats_con
     case 0:
         lctype = LOCALE_STIMEFORMAT;
         break;
-    case TIME_NOSECONDS:
+    case 128:
         lctype = LOCALE_SSHORTTIME;
         break;
     default:
@@ -73,10 +73,10 @@ __attribute__((used)) static BOOL NLS_EnumTimeFormats(struct enumtimeformats_con
     {
         switch (ctxt->type)
         {
-        case CALLBACK_ENUMPROC:
+        case 130:
             ctxt->u.callback(ctxt->unicode ? bufW : (WCHAR*)bufA);
             break;
-        case CALLBACK_ENUMPROCEX:
+        case 129:
             ctxt->u.callbackex(bufW, ctxt->lParam);
             break;
         default:

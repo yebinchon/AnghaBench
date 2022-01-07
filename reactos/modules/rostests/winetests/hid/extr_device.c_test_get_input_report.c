@@ -1,63 +1,63 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  device_name ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  USAGE ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int device_name ;
+typedef int WCHAR ;
+typedef int USAGE ;
 struct TYPE_4__ {int InputReportByteLength; } ;
-typedef  int /*<<< orphan*/  PHIDP_PREPARSED_DATA ;
-typedef  scalar_t__ NTSTATUS ;
-typedef  TYPE_1__ HIDP_CAPS ;
-typedef  scalar_t__ HANDLE ;
-typedef  int DWORD ;
-typedef  scalar_t__ CHAR ;
-typedef  int BYTE ;
-typedef  int BOOL ;
+typedef int PHIDP_PREPARSED_DATA ;
+typedef scalar_t__ NTSTATUS ;
+typedef TYPE_1__ HIDP_CAPS ;
+typedef scalar_t__ HANDLE ;
+typedef int DWORD ;
+typedef scalar_t__ CHAR ;
+typedef int BYTE ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CloseHandle (scalar_t__) ; 
- int /*<<< orphan*/  GENERIC_READ ; 
- scalar_t__ GetLastError () ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int GetTickCount () ; 
- scalar_t__ HIDP_STATUS_SUCCESS ; 
- int /*<<< orphan*/  HID_USAGE_GENERIC_GAMEPAD ; 
- int /*<<< orphan*/  HID_USAGE_GENERIC_JOYSTICK ; 
- int HID_USAGE_PAGE_GENERIC ; 
- void* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,...) ; 
- int HidD_FreePreparsedData (int /*<<< orphan*/ ) ; 
- int HidD_GetInputReport (scalar_t__,scalar_t__*,int) ; 
- int HidD_GetPreparsedData (scalar_t__,int /*<<< orphan*/ *) ; 
- int HidD_GetProductString (scalar_t__,int /*<<< orphan*/ *,int) ; 
- scalar_t__ HidP_GetCaps (int /*<<< orphan*/ ,TYPE_1__*) ; 
- int READ_MAX_TIME ; 
- int /*<<< orphan*/  Sleep (int) ; 
- scalar_t__ get_device (int,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  process_data (TYPE_1__,int /*<<< orphan*/ ,scalar_t__*,int) ; 
- int /*<<< orphan*/  sprintf (char*,char*,int) ; 
- int /*<<< orphan*/  strcat (char*,char*) ; 
- int /*<<< orphan*/  trace (char*,...) ; 
- int wine_dbgstr_w (int /*<<< orphan*/ *) ; 
- scalar_t__ winetest_interactive ; 
+
+ int CloseHandle (scalar_t__) ;
+ int GENERIC_READ ;
+ scalar_t__ GetLastError () ;
+ int GetProcessHeap () ;
+ int GetTickCount () ;
+ scalar_t__ HIDP_STATUS_SUCCESS ;
+ int HID_USAGE_GENERIC_GAMEPAD ;
+ int HID_USAGE_GENERIC_JOYSTICK ;
+ int HID_USAGE_PAGE_GENERIC ;
+ void* HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,...) ;
+ int HidD_FreePreparsedData (int ) ;
+ int HidD_GetInputReport (scalar_t__,scalar_t__*,int) ;
+ int HidD_GetPreparsedData (scalar_t__,int *) ;
+ int HidD_GetProductString (scalar_t__,int *,int) ;
+ scalar_t__ HidP_GetCaps (int ,TYPE_1__*) ;
+ int READ_MAX_TIME ;
+ int Sleep (int) ;
+ scalar_t__ get_device (int,int *,int,int ) ;
+ int ok (int,char*,...) ;
+ int process_data (TYPE_1__,int ,scalar_t__*,int) ;
+ int sprintf (char*,char*,int) ;
+ int strcat (char*,char*) ;
+ int trace (char*,...) ;
+ int wine_dbgstr_w (int *) ;
+ scalar_t__ winetest_interactive ;
 
 __attribute__((used)) static void test_get_input_report(void)
 {
     PHIDP_PREPARSED_DATA ppd;
     HIDP_CAPS Caps;
     WCHAR device_name[128];
-    CHAR *data = NULL;
+    CHAR *data = ((void*)0);
     DWORD tick, spent, max_time;
     char *report;
     BOOL rc;
@@ -67,7 +67,7 @@ __attribute__((used)) static void test_get_input_report(void)
     HANDLE device = get_device(HID_USAGE_PAGE_GENERIC, device_usages, 2, GENERIC_READ);
 
     if (!device)
-        device = get_device(0x0, NULL, 0x0, GENERIC_READ);
+        device = get_device(0x0, ((void*)0), 0x0, GENERIC_READ);
 
     if (!device)
     {
@@ -97,7 +97,7 @@ __attribute__((used)) static void test_get_input_report(void)
     {
         int i;
 
-        data[0] = 0; /* Just testing report ID 0 for now, That will catch most devices */
+        data[0] = 0;
         rc = HidD_GetInputReport(device, data, Caps.InputReportByteLength);
         spent = GetTickCount() - tick;
 

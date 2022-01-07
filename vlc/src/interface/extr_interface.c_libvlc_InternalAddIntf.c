@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  libvlc_int_t ;
 
-/* Variables and functions */
- int VLC_SUCCESS ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  free (char*) ; 
- int intf_Create (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  msg_Err (int /*<<< orphan*/ *,char*,char const*) ; 
- int /*<<< orphan*/  msg_Info (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  var_InheritBool (int /*<<< orphan*/ *,char*) ; 
- char* var_InheritString (int /*<<< orphan*/ *,char*) ; 
+
+
+
+typedef int libvlc_int_t ;
+
+
+ int VLC_SUCCESS ;
+ int _ (char*) ;
+ int free (char*) ;
+ int intf_Create (int *,char const*) ;
+ int msg_Err (int *,char*,char const*) ;
+ int msg_Info (int *,int ) ;
+ int var_InheritBool (int *,char*) ;
+ char* var_InheritString (int *,char*) ;
 
 int libvlc_InternalAddIntf(libvlc_int_t *libvlc, const char *name)
 {
     int ret;
 
-    if (name != NULL)
+    if (name != ((void*)0))
         ret = intf_Create(libvlc, name);
     else
-    {   /* Default interface */
+    {
         char *intf = var_InheritString(libvlc, "intf");
-        if (intf == NULL) /* "intf" has not been set */
+        if (intf == ((void*)0))
         {
-#if !defined(_WIN32) && !defined(__OS2__)
+
             if (!var_InheritBool(libvlc, "daemon"))
-#endif
+
                 msg_Info(libvlc, _("Running vlc with the default interface. "
                          "Use 'cvlc' to use vlc without interface."));
         }

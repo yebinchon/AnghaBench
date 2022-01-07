@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  u8_t ;
-struct TYPE_2__ {int /*<<< orphan*/ * client_task_handle; int /*<<< orphan*/  pcb; int /*<<< orphan*/  stream; } ;
-typedef  TYPE_1__ ppp_if_obj_t ;
-typedef  int /*<<< orphan*/  buf ;
 
-/* Variables and functions */
- int mp_stream_rw (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pdTRUE ; 
- int /*<<< orphan*/  pppos_input_tcpip (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- scalar_t__ ulTaskNotifyTake (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vTaskDelete (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int u8_t ;
+struct TYPE_2__ {int * client_task_handle; int pcb; int stream; } ;
+typedef TYPE_1__ ppp_if_obj_t ;
+typedef int buf ;
+
+
+ int mp_stream_rw (int ,int *,int,int*,int ) ;
+ int pdTRUE ;
+ int pppos_input_tcpip (int ,int *,int) ;
+ scalar_t__ ulTaskNotifyTake (int ,int ) ;
+ int vTaskDelete (int *) ;
 
 __attribute__((used)) static void pppos_client_task(void *self_in) {
     ppp_if_obj_t *self = (ppp_if_obj_t*)self_in;
@@ -36,6 +36,6 @@ __attribute__((used)) static void pppos_client_task(void *self_in) {
         }
     }
 
-    self->client_task_handle = NULL;
-    vTaskDelete(NULL);
+    self->client_task_handle = ((void*)0);
+    vTaskDelete(((void*)0));
 }

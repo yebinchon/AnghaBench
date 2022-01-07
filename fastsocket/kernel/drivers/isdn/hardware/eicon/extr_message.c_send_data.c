@@ -1,61 +1,61 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_6__ ;
-typedef  struct TYPE_14__   TYPE_5__ ;
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t word ;
-typedef  void* byte ;
-struct TYPE_15__ {int XNum; size_t ReqCh; void* Req; int /*<<< orphan*/  Id; TYPE_1__* X; } ;
-struct TYPE_14__ {int Length; int Flags; int /*<<< orphan*/  P; } ;
-struct TYPE_13__ {size_t* ncci_next; size_t* ncci_ch; int* ch_flow_control; scalar_t__* ncci_state; int /*<<< orphan*/  (* request ) (TYPE_6__*) ;int /*<<< orphan*/  Id; TYPE_3__* ncci; } ;
+
+
+typedef struct TYPE_15__ TYPE_6__ ;
+typedef struct TYPE_14__ TYPE_5__ ;
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef size_t word ;
+typedef void* byte ;
+struct TYPE_15__ {int XNum; size_t ReqCh; void* Req; int Id; TYPE_1__* X; } ;
+struct TYPE_14__ {int Length; int Flags; int P; } ;
+struct TYPE_13__ {size_t* ncci_next; size_t* ncci_ch; int* ch_flow_control; scalar_t__* ncci_state; int (* request ) (TYPE_6__*) ;int Id; TYPE_3__* ncci; } ;
 struct TYPE_12__ {size_t data_out; TYPE_5__* DBuffer; scalar_t__ data_pending; } ;
-struct TYPE_11__ {size_t ncci_ring_list; size_t send_disc; scalar_t__ B2_prot; scalar_t__ B3_prot; int data_sent; int /*<<< orphan*/  command; TYPE_6__ NL; void* nl_req; TYPE_1__* NData; int /*<<< orphan*/  data_sent_ptr; int /*<<< orphan*/  appl; TYPE_4__* adapter; } ;
+struct TYPE_11__ {size_t ncci_ring_list; size_t send_disc; scalar_t__ B2_prot; scalar_t__ B3_prot; int data_sent; int command; TYPE_6__ NL; void* nl_req; TYPE_1__* NData; int data_sent_ptr; int appl; TYPE_4__* adapter; } ;
 struct TYPE_10__ {int PLength; void* P; } ;
-typedef  TYPE_2__ PLCI ;
-typedef  TYPE_3__ NCCI ;
-typedef  TYPE_4__ DIVA_CAPI_ADAPTER ;
-typedef  TYPE_5__ DATA_B3_DESC ;
+typedef TYPE_2__ PLCI ;
+typedef TYPE_3__ NCCI ;
+typedef TYPE_4__ DIVA_CAPI_ADAPTER ;
+typedef TYPE_5__ DATA_B3_DESC ;
 
-/* Variables and functions */
- scalar_t__ B2_V120_ASYNC ; 
- scalar_t__ B2_V120_ASYNC_V42BIS ; 
- scalar_t__ B2_V120_BIT_TRANSPARENT ; 
- scalar_t__ B3_RTP ; 
- scalar_t__ CONNECTED ; 
- scalar_t__ INC_ACT_PENDING ; 
- scalar_t__ N_BDATA ; 
- int N_DATA ; 
- void* N_DISC ; 
- int N_OK_FC_PENDING ; 
- scalar_t__ N_UDATA ; 
- void* TransmitBufferGet (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  _DISCONNECT_B3_R ; 
- int /*<<< orphan*/  cleanup_ncci_data (TYPE_2__*,size_t) ; 
- int /*<<< orphan*/  dbug (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dprintf (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*) ; 
- int /*<<< orphan*/  stub1 (TYPE_6__*) ; 
- int /*<<< orphan*/  stub2 (TYPE_6__*) ; 
- void* v120_break_header ; 
- void* v120_default_header ; 
+
+ scalar_t__ B2_V120_ASYNC ;
+ scalar_t__ B2_V120_ASYNC_V42BIS ;
+ scalar_t__ B2_V120_BIT_TRANSPARENT ;
+ scalar_t__ B3_RTP ;
+ scalar_t__ CONNECTED ;
+ scalar_t__ INC_ACT_PENDING ;
+ scalar_t__ N_BDATA ;
+ int N_DATA ;
+ void* N_DISC ;
+ int N_OK_FC_PENDING ;
+ scalar_t__ N_UDATA ;
+ void* TransmitBufferGet (int ,int ) ;
+ int _DISCONNECT_B3_R ;
+ int cleanup_ncci_data (TYPE_2__*,size_t) ;
+ int dbug (int,int ) ;
+ int dprintf (char*,int ,int ,void*) ;
+ int stub1 (TYPE_6__*) ;
+ int stub2 (TYPE_6__*) ;
+ void* v120_break_header ;
+ void* v120_default_header ;
 
 __attribute__((used)) static void send_data(PLCI *plci)
 {
-  DIVA_CAPI_ADAPTER   * a;
-  DATA_B3_DESC   * data;
-  NCCI   *ncci_ptr;
+  DIVA_CAPI_ADAPTER * a;
+  DATA_B3_DESC * data;
+  NCCI *ncci_ptr;
   word ncci;
 
   if (!plci->nl_req && plci->ncci_ring_list)
@@ -106,7 +106,7 @@ __attribute__((used)) static void send_data(PLCI *plci)
             plci->NL.X = plci->NData;
             plci->NL.ReqCh = a->ncci_ch[ncci];
             dbug(1,dprintf("%x:DREQ(%x:%x)",a->Id,plci->NL.Id,plci->NL.Req));
-            plci->data_sent = true;
+            plci->data_sent = 1;
             plci->data_sent_ptr = data->P;
             a->request(&plci->NL);
           }
@@ -116,7 +116,7 @@ __attribute__((used)) static void send_data(PLCI *plci)
         }
         else if (plci->send_disc == ncci)
         {
-          /* dprintf("N_DISC"); */
+
           plci->NData[0].PLength = 0;
           plci->NL.ReqCh = a->ncci_ch[ncci];
           plci->NL.Req = plci->nl_req = N_DISC;

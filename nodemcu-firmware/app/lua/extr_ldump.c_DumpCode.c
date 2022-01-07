@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int sizecode; int /*<<< orphan*/ * code; } ;
-typedef  TYPE_1__ Proto ;
-typedef  int /*<<< orphan*/  Instruction ;
-typedef  int /*<<< orphan*/  DumpState ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Align4 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DumpBlock (char*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DumpInt (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  MaybeByteSwap (char*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memcpy (char*,int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int sizecode; int * code; } ;
+typedef TYPE_1__ Proto ;
+typedef int Instruction ;
+typedef int DumpState ;
+
+
+ int Align4 (int *) ;
+ int DumpBlock (char*,int,int *) ;
+ int DumpInt (int,int *) ;
+ int MaybeByteSwap (char*,int,int *) ;
+ int memcpy (char*,int *,int) ;
 
 __attribute__((used)) static void DumpCode(const Proto *f, DumpState* D)
 {

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct cpumask {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IPI_CPU_STOP ; 
- int /*<<< orphan*/  cpu_online_mask ; 
- int /*<<< orphan*/  cpumask_clear_cpu (int /*<<< orphan*/ ,struct cpumask*) ; 
- int /*<<< orphan*/  cpumask_copy (struct cpumask*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  send_ipi_message (struct cpumask*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  smp_processor_id () ; 
+
+ int IPI_CPU_STOP ;
+ int cpu_online_mask ;
+ int cpumask_clear_cpu (int ,struct cpumask*) ;
+ int cpumask_copy (struct cpumask*,int ) ;
+ int send_ipi_message (struct cpumask*,int ) ;
+ int smp_processor_id () ;
 
 void smp_send_stop(void)
 {
-	struct cpumask targets;
+ struct cpumask targets;
 
-	cpumask_copy(&targets, cpu_online_mask);
-	cpumask_clear_cpu(smp_processor_id(), &targets);
-	send_ipi_message(&targets, IPI_CPU_STOP);
+ cpumask_copy(&targets, cpu_online_mask);
+ cpumask_clear_cpu(smp_processor_id(), &targets);
+ send_ipi_message(&targets, IPI_CPU_STOP);
 }

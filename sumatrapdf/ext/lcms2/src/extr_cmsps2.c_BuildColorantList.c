@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  size_t cmsUInt32Number ;
-typedef  double cmsUInt16Number ;
 
-/* Variables and functions */
- size_t cmsMAXCHANNELS ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,double) ; 
- int /*<<< orphan*/  strcat (char*,char*) ; 
+
+
+
+typedef size_t cmsUInt32Number ;
+typedef double cmsUInt16Number ;
+
+
+ size_t cmsMAXCHANNELS ;
+ int snprintf (char*,int,char*,double) ;
+ int strcat (char*,char*) ;
 
 __attribute__((used)) static
 void BuildColorantList(char *Colorant, cmsUInt32Number nColorant, cmsUInt16Number Out[])

@@ -1,20 +1,12 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ scalar_t__ NONCACHE_OFFSET ;
 
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ NONCACHE_OFFSET ; 
-
-__attribute__((used)) static inline  void *_port2addr_ne(unsigned long port)
+__attribute__((used)) static inline void *_port2addr_ne(unsigned long port)
 {
-	return (void *)((port<<1) + NONCACHE_OFFSET + 0x02000000);
+ return (void *)((port<<1) + NONCACHE_OFFSET + 0x02000000);
 }

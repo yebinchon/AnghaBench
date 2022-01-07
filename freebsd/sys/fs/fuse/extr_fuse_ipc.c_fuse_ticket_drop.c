@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct fuse_ticket {int /*<<< orphan*/  tk_refcount; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fticket_destroy (struct fuse_ticket*) ; 
- int refcount_release (int /*<<< orphan*/ *) ; 
+
+
+
+struct fuse_ticket {int tk_refcount; } ;
+
+
+ int fticket_destroy (struct fuse_ticket*) ;
+ int refcount_release (int *) ;
 
 int
 fuse_ticket_drop(struct fuse_ticket *ftick)
 {
-	int die;
+ int die;
 
-	die = refcount_release(&ftick->tk_refcount);
-	if (die)
-		fticket_destroy(ftick);
+ die = refcount_release(&ftick->tk_refcount);
+ if (die)
+  fticket_destroy(ftick);
 
-	return die;
+ return die;
 }

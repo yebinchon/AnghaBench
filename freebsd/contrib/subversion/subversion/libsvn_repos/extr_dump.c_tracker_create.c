@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_revnum_t ;
-struct TYPE_4__ {int /*<<< orphan*/ * pool; int /*<<< orphan*/  revision; int /*<<< orphan*/  stack; } ;
-typedef  TYPE_1__ path_tracker_t ;
-typedef  int /*<<< orphan*/  path_tracker_entry_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  apr_array_make (int /*<<< orphan*/ *,int,int) ; 
- TYPE_1__* apr_pcalloc (int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int svn_revnum_t ;
+struct TYPE_4__ {int * pool; int revision; int stack; } ;
+typedef TYPE_1__ path_tracker_t ;
+typedef int path_tracker_entry_t ;
+typedef int apr_pool_t ;
+
+
+ int apr_array_make (int *,int,int) ;
+ TYPE_1__* apr_pcalloc (int *,int) ;
 
 __attribute__((used)) static path_tracker_t *
 tracker_create(svn_revnum_t revision,

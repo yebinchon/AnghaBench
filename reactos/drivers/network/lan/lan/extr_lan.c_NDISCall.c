@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_5__ ;
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  void* UINT ;
+
+
+typedef struct TYPE_12__ TYPE_5__ ;
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef void* UINT ;
 struct TYPE_9__ {void* InformationBufferLength; void* InformationBuffer; void* Oid; } ;
 struct TYPE_8__ {void* InformationBufferLength; void* InformationBuffer; void* Oid; } ;
 struct TYPE_10__ {TYPE_2__ QUERY_INFORMATION; TYPE_1__ SET_INFORMATION; } ;
 struct TYPE_12__ {TYPE_3__ DATA; scalar_t__ RequestType; } ;
-struct TYPE_11__ {scalar_t__ State; scalar_t__ NdisStatus; int /*<<< orphan*/  Event; int /*<<< orphan*/  NdisHandle; } ;
-typedef  void* PVOID ;
-typedef  TYPE_4__* PLAN_ADAPTER ;
-typedef  scalar_t__ NDIS_STATUS ;
-typedef  scalar_t__ NDIS_REQUEST_TYPE ;
-typedef  TYPE_5__ NDIS_REQUEST ;
-typedef  void* NDIS_OID ;
+struct TYPE_11__ {scalar_t__ State; scalar_t__ NdisStatus; int Event; int NdisHandle; } ;
+typedef void* PVOID ;
+typedef TYPE_4__* PLAN_ADAPTER ;
+typedef scalar_t__ NDIS_STATUS ;
+typedef scalar_t__ NDIS_REQUEST_TYPE ;
+typedef TYPE_5__ NDIS_REQUEST ;
+typedef void* NDIS_OID ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  KeWaitForSingleObject (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  KernelMode ; 
- scalar_t__ LAN_STATE_RESETTING ; 
- scalar_t__ NDIS_STATUS_NOT_ACCEPTED ; 
- scalar_t__ NDIS_STATUS_PENDING ; 
- int /*<<< orphan*/  NdisRequest (scalar_t__*,int /*<<< orphan*/ ,TYPE_5__*) ; 
- scalar_t__ NdisRequestSetInformation ; 
- int /*<<< orphan*/  UserRequest ; 
+
+ int FALSE ;
+ int KeWaitForSingleObject (int *,int ,int ,int ,int *) ;
+ int KernelMode ;
+ scalar_t__ LAN_STATE_RESETTING ;
+ scalar_t__ NDIS_STATUS_NOT_ACCEPTED ;
+ scalar_t__ NDIS_STATUS_PENDING ;
+ int NdisRequest (scalar_t__*,int ,TYPE_5__*) ;
+ scalar_t__ NdisRequestSetInformation ;
+ int UserRequest ;
 
 NDIS_STATUS
 NDISCall(
@@ -73,14 +73,14 @@ NDISCall(
         NdisStatus = NDIS_STATUS_NOT_ACCEPTED;
     }
 
-    /* Wait for NDIS to complete the request */
+
     if (NdisStatus == NDIS_STATUS_PENDING)
     {
         KeWaitForSingleObject(&Adapter->Event,
                               UserRequest,
                               KernelMode,
                               FALSE,
-                              NULL);
+                              ((void*)0));
         NdisStatus = Adapter->NdisStatus;
     }
 

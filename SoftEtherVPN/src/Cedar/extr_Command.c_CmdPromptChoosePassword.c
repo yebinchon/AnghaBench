@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wchar_t ;
-typedef  int /*<<< orphan*/  CONSOLE ;
 
-/* Variables and functions */
- char* CmdPasswordPrompt (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * CopyStrToUni (char*) ; 
- int /*<<< orphan*/  Free (char*) ; 
+
+
+
+typedef int wchar_t ;
+typedef int CONSOLE ;
+
+
+ char* CmdPasswordPrompt (int *) ;
+ int * CopyStrToUni (char*) ;
+ int Free (char*) ;
 
 wchar_t *CmdPromptChoosePassword(CONSOLE *c, void *param)
 {
-	char *s;
-	// Validate arguments
-	if (c == NULL)
-	{
-		return NULL;
-	}
+ char *s;
 
-	s = CmdPasswordPrompt(c);
+ if (c == ((void*)0))
+ {
+  return ((void*)0);
+ }
 
-	if (s == NULL)
-	{
-		return NULL;
-	}
-	else
-	{
-		wchar_t *ret = CopyStrToUni(s);
+ s = CmdPasswordPrompt(c);
 
-		Free(s);
+ if (s == ((void*)0))
+ {
+  return ((void*)0);
+ }
+ else
+ {
+  wchar_t *ret = CopyStrToUni(s);
 
-		return ret;
-	}
+  Free(s);
+
+  return ret;
+ }
 }

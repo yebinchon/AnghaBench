@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct mtk_eint {int /*<<< orphan*/  domain; } ;
 
-/* Variables and functions */
- int EINVAL ; 
- int irq_find_mapping (int /*<<< orphan*/ ,unsigned long) ; 
+
+
+
+struct mtk_eint {int domain; } ;
+
+
+ int EINVAL ;
+ int irq_find_mapping (int ,unsigned long) ;
 
 int mtk_eint_find_irq(struct mtk_eint *eint, unsigned long eint_n)
 {
-	int irq;
+ int irq;
 
-	irq = irq_find_mapping(eint->domain, eint_n);
-	if (!irq)
-		return -EINVAL;
+ irq = irq_find_mapping(eint->domain, eint_n);
+ if (!irq)
+  return -EINVAL;
 
-	return irq;
+ return irq;
 }

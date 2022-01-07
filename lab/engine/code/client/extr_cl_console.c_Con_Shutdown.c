@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  Cmd_RemoveCommand (char*) ; 
+ int Cmd_RemoveCommand (char*) ;
 
 void Con_Shutdown(void)
 {
-	Cmd_RemoveCommand("toggleconsole");
-	Cmd_RemoveCommand("togglemenu");
-	Cmd_RemoveCommand("messagemode");
-	Cmd_RemoveCommand("messagemode2");
-	Cmd_RemoveCommand("messagemode3");
-	Cmd_RemoveCommand("messagemode4");
-	Cmd_RemoveCommand("clear");
-	Cmd_RemoveCommand("condump");
+ Cmd_RemoveCommand("toggleconsole");
+ Cmd_RemoveCommand("togglemenu");
+ Cmd_RemoveCommand("messagemode");
+ Cmd_RemoveCommand("messagemode2");
+ Cmd_RemoveCommand("messagemode3");
+ Cmd_RemoveCommand("messagemode4");
+ Cmd_RemoveCommand("clear");
+ Cmd_RemoveCommand("condump");
 }

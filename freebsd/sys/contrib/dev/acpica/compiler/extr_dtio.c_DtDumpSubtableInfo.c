@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  Peer; int /*<<< orphan*/  Child; int /*<<< orphan*/  Parent; int /*<<< orphan*/  Flags; int /*<<< orphan*/  SizeOfLengthField; int /*<<< orphan*/  TotalLength; int /*<<< orphan*/  Length; int /*<<< orphan*/  Name; int /*<<< orphan*/  Depth; } ;
-typedef  TYPE_1__ DT_SUBTABLE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASL_DEBUG_OUTPUT ; 
- int /*<<< orphan*/  DbgPrint (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int Peer; int Child; int Parent; int Flags; int SizeOfLengthField; int TotalLength; int Length; int Name; int Depth; } ;
+typedef TYPE_1__ DT_SUBTABLE ;
+
+
+ int ASL_DEBUG_OUTPUT ;
+ int DbgPrint (int ,char*,int ,int ,int ,int ,int ,int ,TYPE_1__*,int ,int ,int ) ;
 
 __attribute__((used)) static void
 DtDumpSubtableInfo (
-    DT_SUBTABLE             *Subtable,
-    void                    *Context,
-    void                    *ReturnValue)
+    DT_SUBTABLE *Subtable,
+    void *Context,
+    void *ReturnValue)
 {
 
     DbgPrint (ASL_DEBUG_OUTPUT,

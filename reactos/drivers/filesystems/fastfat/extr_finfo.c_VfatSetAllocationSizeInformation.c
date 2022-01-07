@@ -1,73 +1,73 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_41__   TYPE_9__ ;
-typedef  struct TYPE_40__   TYPE_8__ ;
-typedef  struct TYPE_39__   TYPE_7__ ;
-typedef  struct TYPE_38__   TYPE_6__ ;
-typedef  struct TYPE_37__   TYPE_5__ ;
-typedef  struct TYPE_36__   TYPE_4__ ;
-typedef  struct TYPE_35__   TYPE_3__ ;
-typedef  struct TYPE_34__   TYPE_2__ ;
-typedef  struct TYPE_33__   TYPE_1__ ;
-typedef  struct TYPE_32__   TYPE_16__ ;
-typedef  struct TYPE_31__   TYPE_11__ ;
-typedef  struct TYPE_30__   TYPE_10__ ;
 
-/* Type definitions */
-typedef  scalar_t__ ULONG ;
+
+
+typedef struct TYPE_41__ TYPE_9__ ;
+typedef struct TYPE_40__ TYPE_8__ ;
+typedef struct TYPE_39__ TYPE_7__ ;
+typedef struct TYPE_38__ TYPE_6__ ;
+typedef struct TYPE_37__ TYPE_5__ ;
+typedef struct TYPE_36__ TYPE_4__ ;
+typedef struct TYPE_35__ TYPE_3__ ;
+typedef struct TYPE_34__ TYPE_2__ ;
+typedef struct TYPE_33__ TYPE_1__ ;
+typedef struct TYPE_32__ TYPE_16__ ;
+typedef struct TYPE_31__ TYPE_11__ ;
+typedef struct TYPE_30__ TYPE_10__ ;
+
+
+typedef scalar_t__ ULONG ;
 struct TYPE_33__ {scalar_t__ LowPart; scalar_t__ HighPart; } ;
-struct TYPE_41__ {TYPE_1__ u; int /*<<< orphan*/  LowPart; int /*<<< orphan*/  HighPart; } ;
+struct TYPE_41__ {TYPE_1__ u; int LowPart; int HighPart; } ;
 struct TYPE_36__ {scalar_t__ FileSize; unsigned short FirstCluster; scalar_t__ FirstClusterHigh; } ;
 struct TYPE_34__ {scalar_t__ FileSize; scalar_t__ FirstCluster; } ;
 struct TYPE_32__ {TYPE_4__ Fat; TYPE_2__ FatX; } ;
 struct TYPE_37__ {scalar_t__ LowPart; } ;
 struct TYPE_38__ {TYPE_5__ u; } ;
 struct TYPE_39__ {TYPE_6__ AllocationSize; } ;
-struct TYPE_40__ {scalar_t__ LastCluster; scalar_t__ LastOffset; int /*<<< orphan*/  Flags; TYPE_16__ entry; TYPE_7__ RFCB; int /*<<< orphan*/  PathNameU; } ;
+struct TYPE_40__ {scalar_t__ LastCluster; scalar_t__ LastOffset; int Flags; TYPE_16__ entry; TYPE_7__ RFCB; int PathNameU; } ;
 struct TYPE_35__ {scalar_t__ BytesPerCluster; scalar_t__ FatType; } ;
 struct TYPE_31__ {TYPE_3__ FatInfo; } ;
-struct TYPE_30__ {int /*<<< orphan*/  SectionObjectPointer; } ;
-typedef  TYPE_8__* PVFATFCB ;
-typedef  TYPE_9__* PLARGE_INTEGER ;
-typedef  TYPE_10__* PFILE_OBJECT ;
-typedef  TYPE_11__* PDEVICE_EXTENSION ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
-typedef  scalar_t__ BOOLEAN ;
+struct TYPE_30__ {int SectionObjectPointer; } ;
+typedef TYPE_8__* PVFATFCB ;
+typedef TYPE_9__* PLARGE_INTEGER ;
+typedef TYPE_10__* PFILE_OBJECT ;
+typedef TYPE_11__* PDEVICE_EXTENSION ;
+typedef int NTSTATUS ;
+typedef scalar_t__ BOOLEAN ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- int /*<<< orphan*/  DPRINT (char*,...) ; 
- int /*<<< orphan*/  DPRINT1 (char*,int /*<<< orphan*/ ) ; 
- scalar_t__ FALSE ; 
- scalar_t__ FAT32 ; 
- int /*<<< orphan*/  FAT32UpdateFreeClustersCount (TYPE_11__*) ; 
- int /*<<< orphan*/  FCB_IS_DIRTY ; 
- int /*<<< orphan*/  FILE_ACTION_MODIFIED ; 
- int /*<<< orphan*/  FILE_NOTIFY_CHANGE_SIZE ; 
- int /*<<< orphan*/  MmCanFileBeTruncated (int /*<<< orphan*/ ,TYPE_9__*) ; 
- scalar_t__ NT_SUCCESS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NextCluster (TYPE_11__*,scalar_t__,scalar_t__*,scalar_t__) ; 
- int /*<<< orphan*/  OffsetToCluster (TYPE_11__*,scalar_t__,scalar_t__,scalar_t__*,scalar_t__) ; 
- scalar_t__ ROUND_DOWN (scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  STATUS_DISK_FULL ; 
- int /*<<< orphan*/  STATUS_INVALID_PARAMETER ; 
- int /*<<< orphan*/  STATUS_SUCCESS ; 
- int /*<<< orphan*/  STATUS_USER_MAPPED_FILE ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  UpdateFileSize (TYPE_10__*,TYPE_8__*,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  VfatUpdateEntry (TYPE_11__*,TYPE_8__*) ; 
- int /*<<< orphan*/  WriteCluster (TYPE_11__*,scalar_t__,int) ; 
- scalar_t__ vfatDirEntryGetFirstCluster (TYPE_11__*,TYPE_16__*) ; 
- int /*<<< orphan*/  vfatReportChange (TYPE_11__*,TYPE_8__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ vfatVolumeIsFatX (TYPE_11__*) ; 
+
+ int ASSERT (int) ;
+ int DPRINT (char*,...) ;
+ int DPRINT1 (char*,int ) ;
+ scalar_t__ FALSE ;
+ scalar_t__ FAT32 ;
+ int FAT32UpdateFreeClustersCount (TYPE_11__*) ;
+ int FCB_IS_DIRTY ;
+ int FILE_ACTION_MODIFIED ;
+ int FILE_NOTIFY_CHANGE_SIZE ;
+ int MmCanFileBeTruncated (int ,TYPE_9__*) ;
+ scalar_t__ NT_SUCCESS (int ) ;
+ int NextCluster (TYPE_11__*,scalar_t__,scalar_t__*,scalar_t__) ;
+ int OffsetToCluster (TYPE_11__*,scalar_t__,scalar_t__,scalar_t__*,scalar_t__) ;
+ scalar_t__ ROUND_DOWN (scalar_t__,scalar_t__) ;
+ int STATUS_DISK_FULL ;
+ int STATUS_INVALID_PARAMETER ;
+ int STATUS_SUCCESS ;
+ int STATUS_USER_MAPPED_FILE ;
+ scalar_t__ TRUE ;
+ int UpdateFileSize (TYPE_10__*,TYPE_8__*,scalar_t__,scalar_t__,scalar_t__) ;
+ int VfatUpdateEntry (TYPE_11__*,TYPE_8__*) ;
+ int WriteCluster (TYPE_11__*,scalar_t__,int) ;
+ scalar_t__ vfatDirEntryGetFirstCluster (TYPE_11__*,TYPE_16__*) ;
+ int vfatReportChange (TYPE_11__*,TYPE_8__*,int ,int ) ;
+ scalar_t__ vfatVolumeIsFatX (TYPE_11__*) ;
 
 NTSTATUS
 VfatSetAllocationSizeInformation(
@@ -128,7 +128,7 @@ VfatSetAllocationSizeInformation(
                                      &NCluster, TRUE);
             if (NCluster == 0xffffffff || !NT_SUCCESS(Status))
             {
-                /* disk is full */
+
                 NCluster = Cluster = FirstCluster;
                 Status = STATUS_SUCCESS;
                 while (NT_SUCCESS(Status) && Cluster != 0xffffffff && Cluster > 1)
@@ -189,14 +189,14 @@ VfatSetAllocationSizeInformation(
             Fcb->LastCluster = Cluster;
             Fcb->LastOffset = Fcb->RFCB.AllocationSize.u.LowPart - ClusterSize;
 
-            /* FIXME: Check status */
-            /* Cluster points now to the last cluster within the chain */
+
+
             Status = OffsetToCluster(DeviceExt, Cluster,
                                      ROUND_DOWN(NewSize - 1, ClusterSize) - Fcb->LastOffset,
                                      &NCluster, TRUE);
             if (NCluster == 0xffffffff || !NT_SUCCESS(Status))
             {
-                /* disk is full */
+
                 NCluster = Cluster;
                 Status = NextCluster(DeviceExt, FirstCluster, &NCluster, FALSE);
                 WriteCluster(DeviceExt, Cluster, 0xffffffff);
@@ -224,7 +224,7 @@ VfatSetAllocationSizeInformation(
         DPRINT("Can set file size\n");
 
         AllocSizeChanged = TRUE;
-        /* FIXME: Use the cached cluster/offset better way. */
+
         Fcb->LastCluster = Fcb->LastOffset = 0;
         UpdateFileSize(FileObject, Fcb, NewSize, ClusterSize, vfatVolumeIsFatX(DeviceExt));
         if (NewSize > 0)
@@ -278,7 +278,7 @@ VfatSetAllocationSizeInformation(
         UpdateFileSize(FileObject, Fcb, NewSize, ClusterSize, vfatVolumeIsFatX(DeviceExt));
     }
 
-    /* Update the on-disk directory entry */
+
     Fcb->Flags |= FCB_IS_DIRTY;
     if (AllocSizeChanged)
     {

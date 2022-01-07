@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * HRGN ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BLACK_PEN ; 
- int /*<<< orphan*/  COMPLEXREGION ; 
- int /*<<< orphan*/  CombineRgn (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * CreateRectRgn (int,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  ERROR ; 
- int ERROR_INVALID_HANDLE ; 
- int GetLastError () ; 
- int /*<<< orphan*/ * GetStockObject (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NULLREGION ; 
- int /*<<< orphan*/  RGN_DIFF ; 
- int /*<<< orphan*/  SIMPLEREGION ; 
- int /*<<< orphan*/  SetLastError (int) ; 
- int /*<<< orphan*/  ok (int,char*,int) ; 
- int /*<<< orphan*/  ok_long (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int * HRGN ;
+
+
+ int BLACK_PEN ;
+ int COMPLEXREGION ;
+ int CombineRgn (int *,int *,int *,int ) ;
+ int * CreateRectRgn (int,int ,int,int) ;
+ int ERROR ;
+ int ERROR_INVALID_HANDLE ;
+ int GetLastError () ;
+ int * GetStockObject (int ) ;
+ int NULLREGION ;
+ int RGN_DIFF ;
+ int SIMPLEREGION ;
+ int SetLastError (int) ;
+ int ok (int,char*,int) ;
+ int ok_long (int ,int ) ;
 
 void Test_CombineRgn_DIFF()
 {
@@ -37,10 +37,10 @@ void Test_CombineRgn_DIFF()
     hrgn3 = CreateRectRgn(5, 0, 10, 5);
 
     SetLastError(0xbadbabe);
-    ok_long(CombineRgn(NULL, NULL, NULL, RGN_DIFF), ERROR);
-    ok_long(CombineRgn(hrgn1, NULL, NULL, RGN_DIFF), ERROR);
-    ok_long(CombineRgn(hrgn1, hrgn2, NULL, RGN_DIFF), ERROR);
-    ok_long(CombineRgn(hrgn1, NULL, hrgn2, RGN_DIFF), ERROR);
+    ok_long(CombineRgn(((void*)0), ((void*)0), ((void*)0), RGN_DIFF), ERROR);
+    ok_long(CombineRgn(hrgn1, ((void*)0), ((void*)0), RGN_DIFF), ERROR);
+    ok_long(CombineRgn(hrgn1, hrgn2, ((void*)0), RGN_DIFF), ERROR);
+    ok_long(CombineRgn(hrgn1, ((void*)0), hrgn2, RGN_DIFF), ERROR);
     ok_long(CombineRgn(hrgn1, GetStockObject(BLACK_PEN), hrgn2, RGN_DIFF), ERROR);
     ok_long(CombineRgn(hrgn1, hrgn2, GetStockObject(BLACK_PEN), RGN_DIFF), ERROR);
     ok((GetLastError() == 0xbadbabe) || (GetLastError() == ERROR_INVALID_HANDLE), "wrong error: %ld\n", GetLastError());

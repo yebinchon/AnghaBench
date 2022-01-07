@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wchar_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  __get_locale () ; 
- int wctomb_l (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int wchar_t ;
+
+
+ int __get_locale () ;
+ int wctomb_l (char*,int ,int ) ;
 
 int
 wctomb(char *s, wchar_t wchar)
 {
-	return wctomb_l(s, wchar, __get_locale());
+ return wctomb_l(s, wchar, __get_locale());
 }

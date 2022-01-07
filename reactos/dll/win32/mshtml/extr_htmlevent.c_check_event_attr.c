@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_6__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  nsresult ;
-typedef  int /*<<< orphan*/  nsIDOMNode ;
-typedef  int /*<<< orphan*/  nsIDOMHTMLElement ;
-typedef  int /*<<< orphan*/  nsAString ;
-struct TYPE_10__ {int /*<<< orphan*/  const* attr_name; } ;
-struct TYPE_9__ {int /*<<< orphan*/  event_target; } ;
-struct TYPE_8__ {int /*<<< orphan*/  window; } ;
-typedef  int /*<<< orphan*/  PRUnichar ;
-typedef  int /*<<< orphan*/  IDispatch ;
-typedef  TYPE_1__ HTMLDocumentNode ;
-typedef  TYPE_2__ HTMLDOMNode ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int EVENTID_LAST ; 
- int /*<<< orphan*/  IDispatch_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ NS_SUCCEEDED (int /*<<< orphan*/ ) ; 
- scalar_t__ SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  debugstr_w (int /*<<< orphan*/  const*) ; 
- TYPE_6__* event_info ; 
- int /*<<< orphan*/  get_elem_attr_value (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/  const**) ; 
- int /*<<< orphan*/  get_node (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_2__**) ; 
- int /*<<< orphan*/  node_release (TYPE_2__*) ; 
- int /*<<< orphan*/  nsAString_Finish (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * script_parse_event (int /*<<< orphan*/ ,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  set_event_handler_disp (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_10__ TYPE_6__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int nsresult ;
+typedef int nsIDOMNode ;
+typedef int nsIDOMHTMLElement ;
+typedef int nsAString ;
+struct TYPE_10__ {int const* attr_name; } ;
+struct TYPE_9__ {int event_target; } ;
+struct TYPE_8__ {int window; } ;
+typedef int PRUnichar ;
+typedef int IDispatch ;
+typedef TYPE_1__ HTMLDocumentNode ;
+typedef TYPE_2__ HTMLDOMNode ;
+typedef int HRESULT ;
+
+
+ int EVENTID_LAST ;
+ int IDispatch_Release (int *) ;
+ scalar_t__ NS_SUCCEEDED (int ) ;
+ scalar_t__ SUCCEEDED (int ) ;
+ int TRACE (char*,int *,int ,int ) ;
+ int TRUE ;
+ int debugstr_w (int const*) ;
+ TYPE_6__* event_info ;
+ int get_elem_attr_value (int *,int const*,int *,int const**) ;
+ int get_node (TYPE_1__*,int *,int ,TYPE_2__**) ;
+ int node_release (TYPE_2__*) ;
+ int nsAString_Finish (int *) ;
+ int * script_parse_event (int ,int const*) ;
+ int set_event_handler_disp (int *,int,int *) ;
 
 void check_event_attr(HTMLDocumentNode *doc, nsIDOMHTMLElement *nselem)
 {

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  decFloat ;
 
-/* Variables and functions */
- scalar_t__ DFISSIGNED (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/ * decFloatCompareTotal (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  decFloatCopyAbs (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
+
+
+
+typedef int decFloat ;
+
+
+ scalar_t__ DFISSIGNED (int const*) ;
+ int * decFloatCompareTotal (int *,int const*,int const*) ;
+ int decFloatCopyAbs (int *,int const*) ;
 
 decFloat * decFloatCompareTotalMag(decFloat *result,
                                 const decFloat *dfl, const decFloat *dfr) {
-  decFloat a, b;                        // for copy if needed
-  // copy and redirect signed operand(s)
+  decFloat a, b;
+
   if (DFISSIGNED(dfl)) {
     decFloatCopyAbs(&a, dfl);
     dfl=&a;

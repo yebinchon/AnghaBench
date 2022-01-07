@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct lev_targ_click_ext {int price; int user_id; } ;
 struct advert {int flags; int price; } ;
 
-/* Variables and functions */
- int ADF_ANCIENT ; 
- int /*<<< orphan*/  LEV_TARG_CLICK ; 
- int /*<<< orphan*/  LEV_TARG_CLICK_EXT ; 
- scalar_t__ ad_became_ancient (struct advert*) ; 
- struct lev_targ_click_ext* alloc_log_event (int /*<<< orphan*/ ,int,int) ; 
- int conv_user_id (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,...) ; 
- struct advert* get_ad_f (int,int /*<<< orphan*/ ) ; 
- int register_user_click (struct lev_targ_click_ext*) ; 
- int /*<<< orphan*/  stderr ; 
- int verbosity ; 
+
+ int ADF_ANCIENT ;
+ int LEV_TARG_CLICK ;
+ int LEV_TARG_CLICK_EXT ;
+ scalar_t__ ad_became_ancient (struct advert*) ;
+ struct lev_targ_click_ext* alloc_log_event (int ,int,int) ;
+ int conv_user_id (int) ;
+ int fprintf (int ,char*,int,...) ;
+ struct advert* get_ad_f (int,int ) ;
+ int register_user_click (struct lev_targ_click_ext*) ;
+ int stderr ;
+ int verbosity ;
 
 int do_register_user_click (int user_id, int ad_id, int price) {
   struct advert *A = get_ad_f (ad_id, 0);
@@ -41,8 +41,8 @@ int do_register_user_click (int user_id, int ad_id, int price) {
   }
   if (!A || (A->flags & ADF_ANCIENT) || ad_became_ancient (A) || (A->price > 0 && price < 0)) {
     if (verbosity > 0) {
-      fprintf (stderr, "warning: user %d clicks on ad %d, price %d; known ad price is %d, click ignored\n", 
-	user_id, ad_id, price, A ? A->price : -1);
+      fprintf (stderr, "warning: user %d clicks on ad %d, price %d; known ad price is %d, click ignored\n",
+ user_id, ad_id, price, A ? A->price : -1);
     }
     return -1;
   }

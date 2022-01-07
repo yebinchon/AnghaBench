@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {void* buf; scalar_t__ size; } ;
-typedef  TYPE_1__ memory ;
-typedef  int /*<<< orphan*/  CURL ;
+typedef TYPE_1__ memory ;
+typedef int CURL ;
 
-/* Variables and functions */
- long CURLAUTH_ANY ; 
- int /*<<< orphan*/  CURLOPT_ACCEPT_ENCODING ; 
- int /*<<< orphan*/  CURLOPT_CONNECTTIMEOUT ; 
- int /*<<< orphan*/  CURLOPT_COOKIEFILE ; 
- int /*<<< orphan*/  CURLOPT_EXPECT_100_TIMEOUT_MS ; 
- int /*<<< orphan*/  CURLOPT_FILETIME ; 
- int /*<<< orphan*/  CURLOPT_FOLLOWLOCATION ; 
- int /*<<< orphan*/  CURLOPT_HTTPAUTH ; 
- int /*<<< orphan*/  CURLOPT_HTTP_VERSION ; 
- int /*<<< orphan*/  CURLOPT_MAXREDIRS ; 
- int /*<<< orphan*/  CURLOPT_PRIVATE ; 
- int /*<<< orphan*/  CURLOPT_PROXYAUTH ; 
- int /*<<< orphan*/  CURLOPT_TIMEOUT ; 
- int /*<<< orphan*/  CURLOPT_UNRESTRICTED_AUTH ; 
- int /*<<< orphan*/  CURLOPT_URL ; 
- int /*<<< orphan*/  CURLOPT_USERAGENT ; 
- int /*<<< orphan*/  CURLOPT_WRITEDATA ; 
- int /*<<< orphan*/  CURLOPT_WRITEFUNCTION ; 
- long CURL_HTTP_VERSION_2TLS ; 
- int /*<<< orphan*/ * curl_easy_init () ; 
- int /*<<< orphan*/  curl_easy_setopt (int /*<<< orphan*/ *,int /*<<< orphan*/ ,...) ; 
- long grow_buffer ; 
- void* malloc (int) ; 
+
+ long CURLAUTH_ANY ;
+ int CURLOPT_ACCEPT_ENCODING ;
+ int CURLOPT_CONNECTTIMEOUT ;
+ int CURLOPT_COOKIEFILE ;
+ int CURLOPT_EXPECT_100_TIMEOUT_MS ;
+ int CURLOPT_FILETIME ;
+ int CURLOPT_FOLLOWLOCATION ;
+ int CURLOPT_HTTPAUTH ;
+ int CURLOPT_HTTP_VERSION ;
+ int CURLOPT_MAXREDIRS ;
+ int CURLOPT_PRIVATE ;
+ int CURLOPT_PROXYAUTH ;
+ int CURLOPT_TIMEOUT ;
+ int CURLOPT_UNRESTRICTED_AUTH ;
+ int CURLOPT_URL ;
+ int CURLOPT_USERAGENT ;
+ int CURLOPT_WRITEDATA ;
+ int CURLOPT_WRITEFUNCTION ;
+ long CURL_HTTP_VERSION_2TLS ;
+ int * curl_easy_init () ;
+ int curl_easy_setopt (int *,int ,...) ;
+ long grow_buffer ;
+ void* malloc (int) ;
 
 CURL *make_handle(char *url)
 {
   CURL *handle = curl_easy_init();
 
-  /* Important: use HTTP2 over HTTPS */
+
   curl_easy_setopt(handle, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_2TLS);
   curl_easy_setopt(handle, CURLOPT_URL, url);
 
-  /* buffer body */
+
   memory *mem = malloc(sizeof(memory));
   mem->size = 0;
   mem->buf = malloc(1);
@@ -56,7 +56,7 @@ CURL *make_handle(char *url)
   curl_easy_setopt(handle, CURLOPT_WRITEDATA, mem);
   curl_easy_setopt(handle, CURLOPT_PRIVATE, mem);
 
-  /* For completeness */
+
   curl_easy_setopt(handle, CURLOPT_ACCEPT_ENCODING, "");
   curl_easy_setopt(handle, CURLOPT_TIMEOUT, 5L);
   curl_easy_setopt(handle, CURLOPT_FOLLOWLOCATION, 1L);

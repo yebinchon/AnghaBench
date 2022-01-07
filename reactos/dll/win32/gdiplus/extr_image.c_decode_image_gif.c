@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int UINT ;
-struct TYPE_4__ {int /*<<< orphan*/ * palette; } ;
-typedef  int /*<<< orphan*/  IWICBitmapDecoder ;
-typedef  int /*<<< orphan*/  IStream ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  scalar_t__ GpStatus ;
-typedef  TYPE_1__ GpImage ;
 
-/* Variables and functions */
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GUID_ContainerFormatGif ; 
- int /*<<< orphan*/  IWICBitmapDecoder_GetFrameCount (int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  IWICBitmapDecoder_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ Ok ; 
- scalar_t__ decode_frame_wic (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__**) ; 
- int /*<<< orphan*/  gif_metadata_reader ; 
- int /*<<< orphan*/  heap_free (int /*<<< orphan*/ *) ; 
- scalar_t__ hresult_to_status (int /*<<< orphan*/ ) ; 
- scalar_t__ initialize_decoder_wic (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int UINT ;
+struct TYPE_4__ {int * palette; } ;
+typedef int IWICBitmapDecoder ;
+typedef int IStream ;
+typedef int HRESULT ;
+typedef scalar_t__ GpStatus ;
+typedef TYPE_1__ GpImage ;
+
+
+ scalar_t__ FAILED (int ) ;
+ int GUID_ContainerFormatGif ;
+ int IWICBitmapDecoder_GetFrameCount (int *,int*) ;
+ int IWICBitmapDecoder_Release (int *) ;
+ scalar_t__ Ok ;
+ scalar_t__ decode_frame_wic (int *,int,int ,int ,TYPE_1__**) ;
+ int gif_metadata_reader ;
+ int heap_free (int *) ;
+ scalar_t__ hresult_to_status (int ) ;
+ scalar_t__ initialize_decoder_wic (int *,int *,int **) ;
 
 __attribute__((used)) static GpStatus decode_image_gif(IStream* stream, GpImage **image)
 {
@@ -53,7 +53,7 @@ __attribute__((used)) static GpStatus decode_image_gif(IStream* stream, GpImage 
 
     if(frame_count > 1) {
         heap_free((*image)->palette);
-        (*image)->palette = NULL;
+        (*image)->palette = ((void*)0);
     }
     return Ok;
 }

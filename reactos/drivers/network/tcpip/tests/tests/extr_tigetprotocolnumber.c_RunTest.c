@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UNICODE_STRING ;
-typedef  int /*<<< orphan*/  PULONG ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RtlInitUnicodeString (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  TiGetProtocolNumber (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  _AssertEqualValue (int,int) ; 
+
+
+
+typedef int UNICODE_STRING ;
+typedef int PULONG ;
+
+
+ int RtlInitUnicodeString (int *,char*) ;
+ int TiGetProtocolNumber (int *,int ) ;
+ int _AssertEqualValue (int,int) ;
 
 __attribute__((used)) static void RunTest() {
     UNICODE_STRING Str;

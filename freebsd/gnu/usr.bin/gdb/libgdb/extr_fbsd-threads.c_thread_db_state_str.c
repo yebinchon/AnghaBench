@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int td_thr_state_e ;
-typedef  int /*<<< orphan*/  buf ;
 
-/* Variables and functions */
-#define  TD_THR_ACTIVE 133 
-#define  TD_THR_RUN 132 
-#define  TD_THR_SLEEP 131 
-#define  TD_THR_STOPPED 130 
-#define  TD_THR_STOPPED_ASLEEP 129 
-#define  TD_THR_ZOMBIE 128 
- int /*<<< orphan*/  snprintf (char*,int,char*,int) ; 
+
+
+
+typedef int td_thr_state_e ;
+typedef int buf ;
+ int snprintf (char*,int,char*,int) ;
 
 __attribute__((used)) static char *
 thread_db_state_str (td_thr_state_e state)
@@ -29,17 +21,17 @@ thread_db_state_str (td_thr_state_e state)
 
   switch (state)
     {
-    case TD_THR_STOPPED:
+    case 130:
       return "stopped by debugger";
-    case TD_THR_RUN:
+    case 132:
       return "runnable";
-    case TD_THR_ACTIVE:
+    case 133:
       return "active";
-    case TD_THR_ZOMBIE:
+    case 128:
       return "zombie";
-    case TD_THR_SLEEP:
+    case 131:
       return "sleeping";
-    case TD_THR_STOPPED_ASLEEP:
+    case 129:
       return "stopped by debugger AND blocked";
     default:
       snprintf (buf, sizeof (buf), "unknown thread_db state %d", state);

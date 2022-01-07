@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct rdma_addr_client {int /*<<< orphan*/  comp; int /*<<< orphan*/  refcount; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  atomic_set (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  init_completion (int /*<<< orphan*/ *) ; 
+
+
+
+struct rdma_addr_client {int comp; int refcount; } ;
+
+
+ int atomic_set (int *,int) ;
+ int init_completion (int *) ;
 
 void rdma_addr_register_client(struct rdma_addr_client *client)
 {
-	atomic_set(&client->refcount, 1);
-	init_completion(&client->comp);
+ atomic_set(&client->refcount, 1);
+ init_completion(&client->comp);
 }

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
+
+
+
+
+typedef int uint32_t ;
 struct cdev {int dummy; } ;
-typedef  int /*<<< orphan*/ * device_t ;
+typedef int * device_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PCMUNIT (struct cdev*) ; 
- int /*<<< orphan*/ * devclass_get_device (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pcm_devclass ; 
- int /*<<< orphan*/  pcm_setflags (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int PCMUNIT (struct cdev*) ;
+ int * devclass_get_device (int ,int ) ;
+ int pcm_devclass ;
+ int pcm_setflags (int *,int ) ;
 
 __attribute__((used)) static void
 dsp_set_flags(struct cdev *dev, uint32_t flags)
 {
-	device_t bdev;
+ device_t bdev;
 
-	bdev = devclass_get_device(pcm_devclass, PCMUNIT(dev));
+ bdev = devclass_get_device(pcm_devclass, PCMUNIT(dev));
 
-	if (bdev != NULL)
-		pcm_setflags(bdev, flags);
+ if (bdev != ((void*)0))
+  pcm_setflags(bdev, flags);
 }

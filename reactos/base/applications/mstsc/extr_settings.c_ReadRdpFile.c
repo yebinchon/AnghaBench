@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__* LPWSTR ;
-typedef  scalar_t__ HANDLE ;
-typedef  int DWORD ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- int GetFileSize (scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- scalar_t__* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__*) ; 
- scalar_t__ ReadFile (scalar_t__,scalar_t__*,int,int*,int /*<<< orphan*/ *) ; 
+
+
+
+typedef scalar_t__* LPWSTR ;
+typedef scalar_t__ HANDLE ;
+typedef int DWORD ;
+typedef scalar_t__ BOOL ;
+
+
+ int GetFileSize (scalar_t__,int *) ;
+ int GetProcessHeap () ;
+ scalar_t__* HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,scalar_t__*) ;
+ scalar_t__ ReadFile (scalar_t__,scalar_t__*,int,int*,int *) ;
 
 __attribute__((used)) static LPWSTR
 ReadRdpFile(HANDLE hFile)
 {
-    LPWSTR lpBuffer = NULL;
+    LPWSTR lpBuffer = ((void*)0);
     DWORD BytesToRead, BytesRead;
     BOOL bRes;
 
     if (hFile)
     {
-        BytesToRead = GetFileSize(hFile, NULL);
+        BytesToRead = GetFileSize(hFile, ((void*)0));
         if (BytesToRead)
         {
             lpBuffer = HeapAlloc(GetProcessHeap(),
@@ -43,7 +43,7 @@ ReadRdpFile(HANDLE hFile)
                                 lpBuffer,
                                 BytesToRead,
                                 &BytesRead,
-                                NULL);
+                                ((void*)0));
                 if (bRes)
                 {
                     lpBuffer[BytesRead / 2] = 0;
@@ -54,7 +54,7 @@ ReadRdpFile(HANDLE hFile)
                              0,
                              lpBuffer);
 
-                    lpBuffer = NULL;
+                    lpBuffer = ((void*)0);
                 }
             }
         }

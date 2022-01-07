@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uchar ;
-typedef  scalar_t__ iconv_t ;
-typedef  int cppchar_t ;
 
-/* Variables and functions */
- int E2BIG ; 
- int one_utf8_to_cppchar (int const**,size_t*,int*) ; 
+
+
+
+typedef int uchar ;
+typedef scalar_t__ iconv_t ;
+typedef int cppchar_t ;
+
+
+ int E2BIG ;
+ int one_utf8_to_cppchar (int const**,size_t*,int*) ;
 
 __attribute__((used)) static inline int
 one_utf8_to_utf32 (iconv_t bigend, const uchar **inbufp, size_t *inbytesleftp,
-		   uchar **outbufp, size_t *outbytesleftp)
+     uchar **outbufp, size_t *outbytesleftp)
 {
   uchar *outbuf;
   cppchar_t s = 0;
   int rval;
 
-  /* Check for space first, since we know exactly how much we need.  */
+
   if (*outbytesleftp < 4)
     return E2BIG;
 

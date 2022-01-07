@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct sec_buffer {int /*<<< orphan*/  offset; int /*<<< orphan*/  allocated; int /*<<< orphan*/  length; } ;
-typedef  int /*<<< orphan*/  krb5_storage ;
-typedef  int /*<<< orphan*/  krb5_error_code ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHECK (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  krb5_store_uint16 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  krb5_store_uint32 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+struct sec_buffer {int offset; int allocated; int length; } ;
+typedef int krb5_storage ;
+typedef int krb5_error_code ;
+
+
+ int CHECK (int ,int ) ;
+ int krb5_store_uint16 (int *,int ) ;
+ int krb5_store_uint32 (int *,int ) ;
 
 __attribute__((used)) static krb5_error_code
 store_sec_buffer(krb5_storage *sp, const struct sec_buffer *buf)

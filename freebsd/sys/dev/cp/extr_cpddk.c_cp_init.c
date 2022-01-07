@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {unsigned char* g; unsigned char p; int l125; int l137; int l83; int f; int l80; TYPE_2__* k; int /*<<< orphan*/  l39; scalar_t__ l116; scalar_t__ l174; scalar_t__ l30; } ;
-typedef  TYPE_1__ s ;
+
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_8__ {unsigned char* g; unsigned char p; int l125; int l137; int l83; int f; int l80; TYPE_2__* k; int l39; scalar_t__ l116; scalar_t__ l174; scalar_t__ l30; } ;
+typedef TYPE_1__ s ;
 struct TYPE_9__ {int f; TYPE_1__* d; } ;
-typedef  TYPE_2__ e ;
+typedef TYPE_2__ e ;
 
-/* Variables and functions */
- int /*<<< orphan*/  l189 (TYPE_2__*) ; 
- unsigned short l521 (TYPE_1__*) ; 
- int l529 (TYPE_1__*) ; 
- int /*<<< orphan*/  strcpy (int /*<<< orphan*/ ,char*) ; 
- int u (TYPE_1__*,int /*<<< orphan*/ ) ; 
+
+ int l189 (TYPE_2__*) ;
+ unsigned short l521 (TYPE_1__*) ;
+ int l529 (TYPE_1__*) ;
+ int strcpy (int ,char*) ;
+ int u (TYPE_1__*,int ) ;
 
 unsigned short cp_init(s*b,int p,
 unsigned char*g){unsigned char l56;unsigned short l224;e*a;b->g=g;b->

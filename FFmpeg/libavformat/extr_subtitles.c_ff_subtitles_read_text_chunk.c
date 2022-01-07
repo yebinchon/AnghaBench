@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  eol_buf ;
-typedef  int /*<<< orphan*/  FFTextReader ;
-typedef  int /*<<< orphan*/  AVBPrint ;
 
-/* Variables and functions */
- int /*<<< orphan*/  av_bprint_chars (int /*<<< orphan*/ *,char,int) ; 
- int /*<<< orphan*/  av_bprint_clear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  av_bprintf (int /*<<< orphan*/ *,char*,char*) ; 
- char ff_text_r8 (int /*<<< orphan*/ *) ; 
- scalar_t__ is_eol (char) ; 
+
+
+
+typedef int eol_buf ;
+typedef int FFTextReader ;
+typedef int AVBPrint ;
+
+
+ int av_bprint_chars (int *,char,int) ;
+ int av_bprint_clear (int *) ;
+ int av_bprintf (int *,char*,char*) ;
+ char ff_text_r8 (int *) ;
+ scalar_t__ is_eol (char) ;
 
 void ff_subtitles_read_text_chunk(FFTextReader *tr, AVBPrint *buf)
 {
@@ -34,11 +34,11 @@ void ff_subtitles_read_text_chunk(FFTextReader *tr, AVBPrint *buf)
         if (!c)
             break;
 
-        /* ignore all initial line breaks */
+
         if (n == 0 && is_eol(c))
             continue;
 
-        /* line break buffering: we don't want to add the trailing \r\n */
+
         if (is_eol(c)) {
             nb_eol += c == '\n' || last_was_cr;
             if (nb_eol == 2)
@@ -50,8 +50,8 @@ void ff_subtitles_read_text_chunk(FFTextReader *tr, AVBPrint *buf)
             continue;
         }
 
-        /* only one line break followed by data: we flush the line breaks
-         * buffer */
+
+
         if (i) {
             eol_buf[i] = 0;
             av_bprintf(buf, "%s", eol_buf);

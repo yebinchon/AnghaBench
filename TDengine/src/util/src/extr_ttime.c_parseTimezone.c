@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int int64_t ;
-typedef  size_t int32_t ;
 
-/* Variables and functions */
- char* strchr (char*,char) ; 
- int strnatoi (char*,int) ; 
+
+
+
+typedef int int64_t ;
+typedef size_t int32_t ;
+
+
+ char* strchr (char*,char) ;
+ int strnatoi (char*,int) ;
 
 int32_t parseTimezone(char* str, int64_t* tzOffset) {
   int64_t hour = 0;
@@ -28,7 +28,7 @@ int32_t parseTimezone(char* str, int64_t* tzOffset) {
   i++;
 
   char* sep = strchr(&str[i], ':');
-  if (sep != NULL) {
+  if (sep != ((void*)0)) {
     int32_t len = sep - &str[i];
 
     hour = strnatoi(&str[i], len);

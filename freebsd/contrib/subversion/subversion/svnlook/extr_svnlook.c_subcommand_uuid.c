@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  fs; } ;
-typedef  TYPE_1__ svnlook_ctxt_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int fs; } ;
+typedef TYPE_1__ svnlook_ctxt_t ;
+typedef int svn_error_t ;
 struct svnlook_opt_state {int dummy; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_getopt_t ;
+typedef int apr_pool_t ;
+typedef int apr_getopt_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  check_number_of_args (struct svnlook_opt_state*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  get_ctxt_baton (TYPE_1__**,struct svnlook_opt_state*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_cmdline_printf (int /*<<< orphan*/ *,char*,char const*) ; 
- int /*<<< orphan*/  svn_fs_get_uuid (int /*<<< orphan*/ ,char const**,int /*<<< orphan*/ *) ; 
+
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int check_number_of_args (struct svnlook_opt_state*,int ) ;
+ int get_ctxt_baton (TYPE_1__**,struct svnlook_opt_state*,int *) ;
+ int svn_cmdline_printf (int *,char*,char const*) ;
+ int svn_fs_get_uuid (int ,char const**,int *) ;
 
 __attribute__((used)) static svn_error_t *
 subcommand_uuid(apr_getopt_t *os, void *baton, apr_pool_t *pool)

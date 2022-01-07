@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {char* key; char* value; } ;
-typedef  TYPE_1__ AVDictionaryEntry ;
-typedef  int /*<<< orphan*/  AVDictionary ;
+typedef TYPE_1__ AVDictionaryEntry ;
+typedef int AVDictionary ;
 
-/* Variables and functions */
- int AV_DICT_APPEND ; 
- int AV_DICT_DONT_OVERWRITE ; 
- int AV_DICT_DONT_STRDUP_KEY ; 
- int AV_DICT_DONT_STRDUP_VAL ; 
- int /*<<< orphan*/  AV_DICT_IGNORE_SUFFIX ; 
- int /*<<< orphan*/  av_dict_free (int /*<<< orphan*/ **) ; 
- TYPE_1__* av_dict_get (int /*<<< orphan*/ *,char*,TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_dict_get_string (int /*<<< orphan*/ *,char**,char,char) ; 
- int /*<<< orphan*/  av_dict_set (int /*<<< orphan*/ **,char*,char*,int) ; 
- int /*<<< orphan*/  av_dict_set_int (int /*<<< orphan*/ **,char*,int,int) ; 
- int /*<<< orphan*/  av_freep (char**) ; 
- char* av_strdup (char*) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  test_separators (int /*<<< orphan*/ *,char,char) ; 
+
+ int AV_DICT_APPEND ;
+ int AV_DICT_DONT_OVERWRITE ;
+ int AV_DICT_DONT_STRDUP_KEY ;
+ int AV_DICT_DONT_STRDUP_VAL ;
+ int AV_DICT_IGNORE_SUFFIX ;
+ int av_dict_free (int **) ;
+ TYPE_1__* av_dict_get (int *,char*,TYPE_1__*,int ) ;
+ int av_dict_get_string (int *,char**,char,char) ;
+ int av_dict_set (int **,char*,char*,int) ;
+ int av_dict_set_int (int **,char*,int,int) ;
+ int av_freep (char**) ;
+ char* av_strdup (char*) ;
+ int printf (char*,...) ;
+ int test_separators (int *,char,char) ;
 
 int main(void)
 {
-    AVDictionary *dict = NULL;
+    AVDictionary *dict = ((void*)0);
     AVDictionaryEntry *e;
-    char *buffer = NULL;
+    char *buffer = ((void*)0);
 
     printf("Testing av_dict_get_string() and av_dict_parse_string()\n");
     av_dict_get_string(dict, &buffer, '=', ',');
@@ -54,7 +54,7 @@ int main(void)
     av_dict_set(&dict, "bbb", "bbb", 0);
     av_dict_set(&dict, "ccc", "ccc", 0);
     av_dict_set(&dict, "\\,=\'\"", "\\,=\'\"", 0);
-    test_separators(dict, '"',  '=');
+    test_separators(dict, '"', '=');
     test_separators(dict, '\'', '=');
     test_separators(dict, ',', '"');
     test_separators(dict, ',', '\'');
@@ -70,24 +70,24 @@ int main(void)
     av_dict_set(&dict, "e", "e", AV_DICT_DONT_OVERWRITE);
     av_dict_set(&dict, "e", "f", AV_DICT_DONT_OVERWRITE);
     av_dict_set(&dict, "f", "f", 0);
-    av_dict_set(&dict, "f", NULL, 0);
+    av_dict_set(&dict, "f", ((void*)0), 0);
     av_dict_set(&dict, "ff", "f", 0);
     av_dict_set(&dict, "ff", "f", AV_DICT_APPEND);
-    e = NULL;
+    e = ((void*)0);
     while ((e = av_dict_get(dict, "", e, AV_DICT_IGNORE_SUFFIX)))
         printf("%s %s\n", e->key, e->value);
     av_dict_free(&dict);
 
-    av_dict_set(&dict, NULL, "a", 0);
-    av_dict_set(&dict, NULL, "b", 0);
-    av_dict_get(dict, NULL, NULL, 0);
-    e = NULL;
+    av_dict_set(&dict, ((void*)0), "a", 0);
+    av_dict_set(&dict, ((void*)0), "b", 0);
+    av_dict_get(dict, ((void*)0), ((void*)0), 0);
+    e = ((void*)0);
     while ((e = av_dict_get(dict, "", e, AV_DICT_IGNORE_SUFFIX)))
         printf("'%s' '%s'\n", e->key, e->value);
     av_dict_free(&dict);
 
 
-    //valgrind sensible test
+
     printf("\nTesting av_dict_set_int()\n");
     av_dict_set_int(&dict, "1", 1, AV_DICT_DONT_STRDUP_VAL);
     av_dict_set_int(&dict, av_strdup("2"), 2, AV_DICT_DONT_STRDUP_KEY);
@@ -97,20 +97,20 @@ int main(void)
     av_dict_set_int(&dict, "5", 6, AV_DICT_DONT_OVERWRITE);
     av_dict_set_int(&dict, "12", 1, 0);
     av_dict_set_int(&dict, "12", 2, AV_DICT_APPEND);
-    e = NULL;
+    e = ((void*)0);
     while ((e = av_dict_get(dict, "", e, AV_DICT_IGNORE_SUFFIX)))
         printf("%s %s\n", e->key, e->value);
     av_dict_free(&dict);
 
-    //valgrind sensible test
+
     printf("\nTesting av_dict_set() with existing AVDictionaryEntry.key as key\n");
     av_dict_set(&dict, "key", "old", 0);
-    e = av_dict_get(dict, "key", NULL, 0);
+    e = av_dict_get(dict, "key", ((void*)0), 0);
     av_dict_set(&dict, e->key, "new val OK", 0);
-    e = av_dict_get(dict, "key", NULL, 0);
+    e = av_dict_get(dict, "key", ((void*)0), 0);
     printf("%s\n", e->value);
     av_dict_set(&dict, e->key, e->value, 0);
-    e = av_dict_get(dict, "key", NULL, 0);
+    e = av_dict_get(dict, "key", ((void*)0), 0);
     printf("%s\n", e->value);
     av_dict_free(&dict);
 

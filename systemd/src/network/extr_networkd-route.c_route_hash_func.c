@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct siphash {int dummy; } ;
 struct TYPE_4__ {int family; int dst_prefixlen; int dst; int src_prefixlen; int src; int gw; int prefsrc; int tos; int priority; int table; int protocol; int scope; int type; int initcwnd; int initrwnd; } ;
-typedef  TYPE_1__ Route ;
+typedef TYPE_1__ Route ;
 
-/* Variables and functions */
-#define  AF_INET 129 
-#define  AF_INET6 128 
- int FAMILY_ADDRESS_SIZE (int) ; 
- int /*<<< orphan*/  assert (TYPE_1__ const*) ; 
- int /*<<< orphan*/  siphash24_compress (int*,int,struct siphash*) ; 
+
+
+
+ int FAMILY_ADDRESS_SIZE (int) ;
+ int assert (TYPE_1__ const*) ;
+ int siphash24_compress (int*,int,struct siphash*) ;
 
 __attribute__((used)) static void route_hash_func(const Route *route, struct siphash *state) {
         assert(route);
@@ -28,8 +28,8 @@ __attribute__((used)) static void route_hash_func(const Route *route, struct sip
         siphash24_compress(&route->family, sizeof(route->family), state);
 
         switch (route->family) {
-        case AF_INET:
-        case AF_INET6:
+        case 129:
+        case 128:
                 siphash24_compress(&route->dst_prefixlen, sizeof(route->dst_prefixlen), state);
                 siphash24_compress(&route->dst, FAMILY_ADDRESS_SIZE(route->family), state);
 
@@ -52,7 +52,7 @@ __attribute__((used)) static void route_hash_func(const Route *route, struct sip
 
                 break;
         default:
-                /* treat any other address family as AF_UNSPEC */
+
                 break;
         }
 }

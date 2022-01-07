@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int HatchStyle ;
-typedef  int /*<<< orphan*/  GpStatus ;
-typedef  int /*<<< orphan*/  GpHatch ;
-typedef  int /*<<< orphan*/  GpBrush ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GdipCreateHatchBrush (int,int,int,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GdipDeleteBrush (int /*<<< orphan*/ *) ; 
- int HatchStyle05Percent ; 
- int HatchStyleMax ; 
- int HatchStyleMin ; 
- int /*<<< orphan*/  InvalidParameter ; 
- int /*<<< orphan*/  Ok ; 
- int /*<<< orphan*/  expect (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ok (int /*<<< orphan*/ ,char*) ; 
+
+
+
+typedef int HatchStyle ;
+typedef int GpStatus ;
+typedef int GpHatch ;
+typedef int GpBrush ;
+
+
+ int GdipCreateHatchBrush (int,int,int,int **) ;
+ int GdipDeleteBrush (int *) ;
+ int HatchStyle05Percent ;
+ int HatchStyleMax ;
+ int HatchStyleMin ;
+ int InvalidParameter ;
+ int Ok ;
+ int expect (int ,int ) ;
+ int ok (int ,char*) ;
 
 __attribute__((used)) static void test_createHatchBrush(void)
 {
@@ -33,17 +33,17 @@ __attribute__((used)) static void test_createHatchBrush(void)
 
     status = GdipCreateHatchBrush(HatchStyleMin, 1, 2, &brush);
     expect(Ok, status);
-    ok(brush != NULL, "Expected the brush to be initialized.\n");
+    ok(brush != ((void*)0), "Expected the brush to be initialized.\n");
 
     GdipDeleteBrush((GpBrush *)brush);
 
     status = GdipCreateHatchBrush(HatchStyleMax, 1, 2, &brush);
     expect(Ok, status);
-    ok(brush != NULL, "Expected the brush to be initialized.\n");
+    ok(brush != ((void*)0), "Expected the brush to be initialized.\n");
 
     GdipDeleteBrush((GpBrush *)brush);
 
-    status = GdipCreateHatchBrush(HatchStyle05Percent, 1, 2, NULL);
+    status = GdipCreateHatchBrush(HatchStyle05Percent, 1, 2, ((void*)0));
     expect(InvalidParameter, status);
 
     status = GdipCreateHatchBrush((HatchStyle)(HatchStyleMin - 1), 1, 2, &brush);

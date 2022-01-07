@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-typedef  int /*<<< orphan*/  u16 ;
-struct dvb_usb_device {int /*<<< orphan*/  usb_mutex; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
- int vp702x_usb_out_op_unlocked (struct dvb_usb_device*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int u8 ;
+typedef int u16 ;
+struct dvb_usb_device {int usb_mutex; } ;
+
+
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
+ int vp702x_usb_out_op_unlocked (struct dvb_usb_device*,int ,int ,int ,int *,int) ;
 
 __attribute__((used)) static int vp702x_usb_out_op(struct dvb_usb_device *d, u8 req, u16 value,
-			     u16 index, u8 *b, int blen)
+        u16 index, u8 *b, int blen)
 {
-	int ret;
+ int ret;
 
-	mutex_lock(&d->usb_mutex);
-	ret = vp702x_usb_out_op_unlocked(d, req, value, index, b, blen);
-	mutex_unlock(&d->usb_mutex);
+ mutex_lock(&d->usb_mutex);
+ ret = vp702x_usb_out_op_unlocked(d, req, value, index, b, blen);
+ mutex_unlock(&d->usb_mutex);
 
-	return ret;
+ return ret;
 }

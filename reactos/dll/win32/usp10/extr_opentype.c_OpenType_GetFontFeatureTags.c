@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
 struct TYPE_12__ {char tableType; scalar_t__ tag; } ;
-struct TYPE_11__ {scalar_t__ tag; int feature_count; TYPE_3__* features; int /*<<< orphan*/ * table; } ;
+struct TYPE_11__ {scalar_t__ tag; int feature_count; TYPE_3__* features; int * table; } ;
 struct TYPE_10__ {TYPE_2__ default_language; } ;
-typedef  int /*<<< orphan*/  ScriptCache ;
-typedef  scalar_t__ OPENTYPE_TAG ;
-typedef  TYPE_1__ LoadedScript ;
-typedef  TYPE_2__ LoadedLanguage ;
-typedef  TYPE_3__ LoadedFeature ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef int ScriptCache ;
+typedef scalar_t__ OPENTYPE_TAG ;
+typedef TYPE_1__ LoadedScript ;
+typedef TYPE_2__ LoadedLanguage ;
+typedef TYPE_3__ LoadedFeature ;
+typedef int HRESULT ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_INVALIDARG ; 
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- int /*<<< orphan*/  S_OK ; 
- size_t USP10_LANGUAGE_TABLE_GPOS ; 
- size_t USP10_LANGUAGE_TABLE_GSUB ; 
- int /*<<< orphan*/  _initialize_feature_cache (int /*<<< orphan*/ *,TYPE_2__*) ; 
- int /*<<< orphan*/  _initialize_language_cache (TYPE_1__*) ; 
- int /*<<< orphan*/  _initialize_script_cache (int /*<<< orphan*/ *) ; 
- TYPE_1__* usp10_script_cache_get_script (int /*<<< orphan*/ *,scalar_t__) ; 
- TYPE_2__* usp10_script_get_language (TYPE_1__*,scalar_t__) ; 
+
+ int E_INVALIDARG ;
+ int E_OUTOFMEMORY ;
+ int S_OK ;
+ size_t USP10_LANGUAGE_TABLE_GPOS ;
+ size_t USP10_LANGUAGE_TABLE_GSUB ;
+ int _initialize_feature_cache (int *,TYPE_2__*) ;
+ int _initialize_language_cache (TYPE_1__*) ;
+ int _initialize_script_cache (int *) ;
+ TYPE_1__* usp10_script_cache_get_script (int *,scalar_t__) ;
+ TYPE_2__* usp10_script_get_language (TYPE_1__*,scalar_t__) ;
 
 HRESULT OpenType_GetFontFeatureTags(ScriptCache *psc, OPENTYPE_TAG script_tag, OPENTYPE_TAG language_tag, BOOL filtered, OPENTYPE_TAG searchingFor, char tableType, int cMaxTags, OPENTYPE_TAG *pFeatureTags, int *pcTags, LoadedFeature** feature)
 {

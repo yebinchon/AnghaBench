@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct neon_type_el {scalar_t__ type; int size; } ;
 struct TYPE_4__ {int instruction; TYPE_1__* operands; } ;
 struct TYPE_3__ {int imm; int immisalign; } ;
 
-/* Variables and functions */
- int FAIL ; 
- int NEON_REGLIST_LENGTH (int) ; 
- int NEON_REG_STRIDE (int) ; 
- int /*<<< orphan*/  NS_NULL ; 
- scalar_t__ NT_invtype ; 
- int N_16 ; 
- int N_32 ; 
- int N_8 ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  constraint (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  first_error (int /*<<< orphan*/ ) ; 
- TYPE_2__ inst ; 
- int neon_alignment_bit (int,int,int*,int,int,int,int,int,...) ; 
- struct neon_type_el neon_check_type (int,int /*<<< orphan*/ ,int) ; 
- int neon_logbits (int) ; 
+
+ int FAIL ;
+ int NEON_REGLIST_LENGTH (int) ;
+ int NEON_REG_STRIDE (int) ;
+ int NS_NULL ;
+ scalar_t__ NT_invtype ;
+ int N_16 ;
+ int N_32 ;
+ int N_8 ;
+ int _ (char*) ;
+ int assert (int) ;
+ int constraint (int,int ) ;
+ int first_error (int ) ;
+ TYPE_2__ inst ;
+ int neon_alignment_bit (int,int,int*,int,int,int,int,int,...) ;
+ struct neon_type_el neon_check_type (int,int ,int) ;
+ int neon_logbits (int) ;
 
 __attribute__((used)) static void
 do_neon_ld_dup (void)
@@ -45,7 +45,7 @@ do_neon_ld_dup (void)
 
   switch ((inst.instruction >> 8) & 3)
     {
-    case 0:  /* VLD1.  */
+    case 0:
       assert (NEON_REG_STRIDE (inst.operands[0].imm) != 2);
       align_good = neon_alignment_bit (et.size, inst.operands[1].imm >> 8,
                                        &do_align, 16, 16, 32, 32, -1);
@@ -60,7 +60,7 @@ do_neon_ld_dup (void)
       inst.instruction |= neon_logbits (et.size) << 6;
       break;
 
-    case 1:  /* VLD2.  */
+    case 1:
       align_good = neon_alignment_bit (et.size, inst.operands[1].imm >> 8,
                                        &do_align, 8, 16, 16, 32, 32, 64, -1);
       if (align_good == FAIL)
@@ -72,7 +72,7 @@ do_neon_ld_dup (void)
       inst.instruction |= neon_logbits (et.size) << 6;
       break;
 
-    case 2:  /* VLD3.  */
+    case 2:
       constraint (inst.operands[1].immisalign,
                   _("can't use alignment with this instruction"));
       constraint (NEON_REGLIST_LENGTH (inst.operands[0].imm) != 3,
@@ -82,7 +82,7 @@ do_neon_ld_dup (void)
       inst.instruction |= neon_logbits (et.size) << 6;
       break;
 
-    case 3:  /* VLD4.  */
+    case 3:
       {
         int align = inst.operands[1].imm >> 8;
         align_good = neon_alignment_bit (et.size, align, &do_align, 8, 32,

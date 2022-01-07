@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- int /*<<< orphan*/  auxopen (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  base_funcs ; 
- int /*<<< orphan*/  ipairsaux ; 
- int /*<<< orphan*/  luaB_ipairs ; 
- int /*<<< orphan*/  luaB_newproxy ; 
- int /*<<< orphan*/  luaB_next ; 
- int /*<<< orphan*/  luaB_pairs ; 
- int /*<<< orphan*/  luaL_register (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_createtable (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  lua_pushcclosure (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  lua_pushliteral (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  lua_pushvalue (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_setfield (int /*<<< orphan*/ *,int,char*) ; 
- int /*<<< orphan*/  lua_setglobal (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  lua_setmetatable (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int lua_State ;
+
+
+ int auxopen (int *,char*,int ,int ) ;
+ int base_funcs ;
+ int ipairsaux ;
+ int luaB_ipairs ;
+ int luaB_newproxy ;
+ int luaB_next ;
+ int luaB_pairs ;
+ int luaL_register (int *,char*,int ) ;
+ int lua_createtable (int *,int ,int) ;
+ int lua_pushcclosure (int *,int ,int) ;
+ int lua_pushliteral (int *,char*) ;
+ int lua_pushvalue (int *,int) ;
+ int lua_setfield (int *,int,char*) ;
+ int lua_setglobal (int *,char*) ;
+ int lua_setmetatable (int *,int) ;
 
 __attribute__((used)) static void base_open(lua_State*L){
 lua_pushvalue(L,(-10002));

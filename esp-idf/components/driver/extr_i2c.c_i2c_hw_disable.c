@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ i2c_port_t ;
-typedef  int /*<<< orphan*/  esp_err_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ESP_OK ; 
- scalar_t__ I2C_NUM_0 ; 
- scalar_t__ I2C_NUM_1 ; 
- int /*<<< orphan*/  PERIPH_I2C0_MODULE ; 
- int /*<<< orphan*/  PERIPH_I2C1_MODULE ; 
- int /*<<< orphan*/  periph_module_disable (int /*<<< orphan*/ ) ; 
+
+
+
+typedef scalar_t__ i2c_port_t ;
+typedef int esp_err_t ;
+
+
+ int ESP_OK ;
+ scalar_t__ I2C_NUM_0 ;
+ scalar_t__ I2C_NUM_1 ;
+ int PERIPH_I2C0_MODULE ;
+ int PERIPH_I2C1_MODULE ;
+ int periph_module_disable (int ) ;
 
 __attribute__((used)) static esp_err_t i2c_hw_disable(i2c_port_t i2c_num)
 {

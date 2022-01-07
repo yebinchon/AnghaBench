@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct decoder_owner {int /*<<< orphan*/ * p_vout; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  decoder_Notify (struct decoder_owner*,int /*<<< orphan*/ ,int,unsigned int,unsigned int) ; 
- int /*<<< orphan*/  on_new_video_stats ; 
- int /*<<< orphan*/  vout_GetResetStatistic (int /*<<< orphan*/ *,unsigned int*,unsigned int*) ; 
+
+
+
+struct decoder_owner {int * p_vout; } ;
+
+
+ int decoder_Notify (struct decoder_owner*,int ,int,unsigned int,unsigned int) ;
+ int on_new_video_stats ;
+ int vout_GetResetStatistic (int *,unsigned int*,unsigned int*) ;
 
 __attribute__((used)) static void ModuleThread_UpdateStatVideo( struct decoder_owner *p_owner,
                                           bool lost )
 {
     unsigned displayed = 0;
     unsigned vout_lost = 0;
-    if( p_owner->p_vout != NULL )
+    if( p_owner->p_vout != ((void*)0) )
     {
         vout_GetResetStatistic( p_owner->p_vout, &displayed, &vout_lost );
     }

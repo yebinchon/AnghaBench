@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
 
-/* Variables and functions */
- scalar_t__ UINT8_MAX ; 
- size_t __MIN (size_t,scalar_t__) ; 
- int /*<<< orphan*/  memcpy (int*,char const*,size_t) ; 
- size_t strlen (char const*) ; 
+
+
+
+typedef int uint8_t ;
+
+
+ scalar_t__ UINT8_MAX ;
+ size_t __MIN (size_t,scalar_t__) ;
+ int memcpy (int*,char const*,size_t) ;
+ size_t strlen (char const*) ;
 
 __attribute__((used)) static inline size_t Write_AnnexA_String( uint8_t *p_dest, const char *p_src )
 {
     size_t i_src;
-    if( p_src == NULL || !(i_src = strlen( p_src )) )
+    if( p_src == ((void*)0) || !(i_src = strlen( p_src )) )
     {
         p_dest[0] = 0;
         return 1;
@@ -34,15 +34,15 @@ __attribute__((used)) static inline size_t Write_AnnexA_String( uint8_t *p_dest,
     if( b_latin )
     {
         i_src = __MIN( i_src, UINT8_MAX );
-        p_dest[0] = i_src; /* Total size */
+        p_dest[0] = i_src;
         memcpy( &p_dest[1], p_src, i_src );
         return 1 + i_src;
     }
     else
     {
         i_src = __MIN( i_src, UINT8_MAX - 1 );
-        p_dest[0] = 1 + i_src; /* Total size */
-        p_dest[1] = 0x15; /* UTF8 Encoding */
+        p_dest[0] = 1 + i_src;
+        p_dest[1] = 0x15;
         memcpy( &p_dest[2], p_src, i_src );
         return 2 + i_src;
     }

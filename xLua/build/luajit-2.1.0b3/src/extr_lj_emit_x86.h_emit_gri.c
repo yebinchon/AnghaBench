@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  x86Op ;
-typedef  int x86Group ;
-typedef  scalar_t__ int32_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int x86Op ;
+typedef int x86Group ;
+typedef scalar_t__ int32_t ;
 struct TYPE_3__ {scalar_t__* mcp; } ;
-typedef  int Reg ;
-typedef  scalar_t__ MCode ;
-typedef  TYPE_1__ ASMState ;
+typedef int Reg ;
+typedef scalar_t__ MCode ;
+typedef TYPE_1__ ASMState ;
 
-/* Variables and functions */
- int REX_64 ; 
- int /*<<< orphan*/  XG_TOXOi (int) ; 
- int /*<<< orphan*/  XG_TOXOi8 (int) ; 
- int /*<<< orphan*/  XM_REG ; 
- scalar_t__ checki8 (scalar_t__) ; 
- scalar_t__* emit_opm (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,scalar_t__*,int /*<<< orphan*/ ) ; 
+
+ int REX_64 ;
+ int XG_TOXOi (int) ;
+ int XG_TOXOi8 (int) ;
+ int XM_REG ;
+ scalar_t__ checki8 (scalar_t__) ;
+ scalar_t__* emit_opm (int ,int ,int,int,scalar_t__*,int ) ;
 
 __attribute__((used)) static void emit_gri(ASMState *as, x86Group xg, Reg rb, int32_t i)
 {

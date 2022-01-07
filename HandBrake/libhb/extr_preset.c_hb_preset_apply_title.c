@@ -1,85 +1,85 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  hb_value_t ;
-typedef  int /*<<< orphan*/  hb_value_array_t ;
+
+
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int hb_value_t ;
+typedef int hb_value_array_t ;
 struct TYPE_9__ {int num; int den; } ;
 struct TYPE_11__ {int width; int height; TYPE_1__ par; } ;
-struct TYPE_10__ {TYPE_3__ geometry; int /*<<< orphan*/  crop; int /*<<< orphan*/  list_chapter; } ;
-typedef  TYPE_2__ hb_title_t ;
-typedef  int /*<<< orphan*/  hb_handle_t ;
-typedef  TYPE_3__ hb_geometry_t ;
+struct TYPE_10__ {TYPE_3__ geometry; int crop; int list_chapter; } ;
+typedef TYPE_2__ hb_title_t ;
+typedef int hb_handle_t ;
+typedef TYPE_3__ hb_geometry_t ;
 struct TYPE_12__ {int* crop; int modulus; scalar_t__ mode; int keep; int itu_par; TYPE_3__ geometry; void* maxHeight; void* maxWidth; } ;
-typedef  TYPE_4__ hb_geometry_settings_t ;
-typedef  int /*<<< orphan*/  const hb_dict_t ;
+typedef TYPE_4__ hb_geometry_settings_t ;
+typedef int const hb_dict_t ;
 
-/* Variables and functions */
- int EVEN (int) ; 
- scalar_t__ HB_ANAMORPHIC_AUTO ; 
- scalar_t__ HB_ANAMORPHIC_CUSTOM ; 
- scalar_t__ HB_ANAMORPHIC_LOOSE ; 
- scalar_t__ HB_ANAMORPHIC_NONE ; 
- scalar_t__ HB_ANAMORPHIC_STRICT ; 
- int HB_FILTER_CROP_SCALE ; 
- int HB_KEEP_DISPLAY_ASPECT ; 
- int HB_KEEP_HEIGHT ; 
- int HB_KEEP_WIDTH ; 
- scalar_t__ HB_VALUE_TYPE_STRING ; 
- int MULTIPLE_MOD_DOWN (int,int) ; 
- int /*<<< orphan*/  hb_add_filter2 (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
- void* hb_dict_get (int /*<<< orphan*/  const*,char*) ; 
- int /*<<< orphan*/  const* hb_dict_init () ; 
- int /*<<< orphan*/  hb_dict_set (int /*<<< orphan*/  const*,char*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  hb_error (char*) ; 
- TYPE_2__* hb_find_title_by_index (int /*<<< orphan*/ *,int) ; 
- int hb_list_count (int /*<<< orphan*/ ) ; 
- scalar_t__ hb_preset_job_add_audio (int /*<<< orphan*/ *,int,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*) ; 
- scalar_t__ hb_preset_job_add_subtitles (int /*<<< orphan*/ *,int,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  hb_set_anamorphic_size2 (TYPE_3__*,TYPE_4__*,TYPE_3__*) ; 
- scalar_t__ hb_validate_filter_settings (int,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  const* hb_value_bool (int) ; 
- int /*<<< orphan*/  hb_value_free (int /*<<< orphan*/  const**) ; 
- int hb_value_get_bool (void*) ; 
- void* hb_value_get_int (void*) ; 
- char* hb_value_get_string (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  const* hb_value_int (int) ; 
- scalar_t__ hb_value_type (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memcpy (int*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  strcasecmp (char const*,char*) ; 
+
+ int EVEN (int) ;
+ scalar_t__ HB_ANAMORPHIC_AUTO ;
+ scalar_t__ HB_ANAMORPHIC_CUSTOM ;
+ scalar_t__ HB_ANAMORPHIC_LOOSE ;
+ scalar_t__ HB_ANAMORPHIC_NONE ;
+ scalar_t__ HB_ANAMORPHIC_STRICT ;
+ int HB_FILTER_CROP_SCALE ;
+ int HB_KEEP_DISPLAY_ASPECT ;
+ int HB_KEEP_HEIGHT ;
+ int HB_KEEP_WIDTH ;
+ scalar_t__ HB_VALUE_TYPE_STRING ;
+ int MULTIPLE_MOD_DOWN (int,int) ;
+ int hb_add_filter2 (int *,int const*) ;
+ void* hb_dict_get (int const*,char*) ;
+ int const* hb_dict_init () ;
+ int hb_dict_set (int const*,char*,int const*) ;
+ int hb_error (char*) ;
+ TYPE_2__* hb_find_title_by_index (int *,int) ;
+ int hb_list_count (int ) ;
+ scalar_t__ hb_preset_job_add_audio (int *,int,int const*,int const*) ;
+ scalar_t__ hb_preset_job_add_subtitles (int *,int,int const*,int const*) ;
+ int hb_set_anamorphic_size2 (TYPE_3__*,TYPE_4__*,TYPE_3__*) ;
+ scalar_t__ hb_validate_filter_settings (int,int const*) ;
+ int const* hb_value_bool (int) ;
+ int hb_value_free (int const**) ;
+ int hb_value_get_bool (void*) ;
+ void* hb_value_get_int (void*) ;
+ char* hb_value_get_string (int *) ;
+ int const* hb_value_int (int) ;
+ scalar_t__ hb_value_type (int *) ;
+ int memcpy (int*,int ,int) ;
+ int strcasecmp (char const*,char*) ;
 
 int hb_preset_apply_title(hb_handle_t *h, int title_index,
                           const hb_dict_t *preset, hb_dict_t *job_dict)
 {
-    // Apply preset settings  that requires the title
+
     hb_title_t *title = hb_find_title_by_index(h, title_index);
-    if (title == NULL)
+    if (title == ((void*)0))
         return -1;
 
     int chapters = hb_value_get_bool(hb_dict_get(preset, "ChapterMarkers"));
     if (hb_list_count(title->list_chapter) <= 1)
         chapters = 0;
 
-    // Set "Destination" settings in job
+
     hb_dict_t *dest_dict = hb_dict_get(job_dict, "Destination");
     hb_dict_set(dest_dict, "ChapterMarkers", hb_value_bool(chapters));
 
     hb_dict_t *filters_dict = hb_dict_get(job_dict, "Filters");
     hb_value_array_t *filter_list = hb_dict_get(filters_dict, "FilterList");
 
-    // Calculate default job geometry settings
+
     hb_geometry_t srcGeo, resultGeo;
     hb_geometry_settings_t geo;
     int keep_aspect;
@@ -101,7 +101,7 @@ int hb_preset_apply_title(hb_handle_t *h, int title_index,
         geo.modulus = 2;
     if (hb_value_get_bool(hb_dict_get(preset, "PictureLooseCrop")))
     {
-        // Crop a few extra pixels to avoid scaling to fit Modulus
+
         int extra1, extra2, crop_width, crop_height, width, height;
 
         crop_width = srcGeo.width - geo.crop[2] - geo.crop[3];
@@ -130,7 +130,7 @@ int hb_preset_apply_title(hb_handle_t *h, int title_index,
             geo.mode = HB_ANAMORPHIC_CUSTOM;
         else if (!strcasecmp(s, "auto"))
             geo.mode = HB_ANAMORPHIC_AUTO;
-        else // default loose
+        else
             geo.mode = HB_ANAMORPHIC_LOOSE;
     }
     else
@@ -139,7 +139,7 @@ int hb_preset_apply_title(hb_handle_t *h, int title_index,
     }
     keep_aspect = hb_value_get_bool(hb_dict_get(preset, "PictureKeepRatio"));
     if (geo.mode == HB_ANAMORPHIC_STRICT ||
-        geo.mode == HB_ANAMORPHIC_LOOSE  ||
+        geo.mode == HB_ANAMORPHIC_LOOSE ||
         geo.mode == HB_ANAMORPHIC_AUTO)
     {
         keep_aspect = 1;
@@ -190,7 +190,7 @@ int hb_preset_apply_title(hb_handle_t *h, int title_index,
     hb_dict_t *par_dict = hb_dict_get(job_dict, "PAR");
     hb_dict_set(par_dict, "Num", hb_value_int(resultGeo.par.num));
     hb_dict_set(par_dict, "Den", hb_value_int(resultGeo.par.den));
-    par_dict = NULL;
+    par_dict = ((void*)0);
 
     hb_dict_t *filter_dict;
     hb_dict_t *filter_settings;
@@ -213,13 +213,13 @@ int hb_preset_apply_title(hb_handle_t *h, int title_index,
     hb_dict_set(filter_dict, "ID", hb_value_int(HB_FILTER_CROP_SCALE));
     hb_dict_set(filter_dict, "Settings", filter_settings);
     hb_add_filter2(filter_list, filter_dict);
-    // Audio settings
+
     if (hb_preset_job_add_audio(h, title_index, preset, job_dict) != 0)
     {
         goto fail;
     }
 
-    // Subtitle settings
+
     if (hb_preset_job_add_subtitles(h, title_index, preset, job_dict) != 0)
     {
         goto fail;

@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_vfs ;
-typedef  int /*<<< orphan*/  sqlite3_io_methods ;
-typedef  int /*<<< orphan*/  sqlite3_file ;
-struct TYPE_3__ {int nChunkSize; int nSpill; int flags; char const* zJournal; int /*<<< orphan*/ * pVfs; int /*<<< orphan*/  const* pMethod; } ;
-typedef  TYPE_1__ MemJournal ;
-typedef  int /*<<< orphan*/  FileChunk ;
 
-/* Variables and functions */
- int MEMJOURNAL_DFLT_FILECHUNKSIZE ; 
- int /*<<< orphan*/  MemJournalMethods ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- int fileChunkSize (int) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int sqlite3OsOpen (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int sqlite3_vfs ;
+typedef int sqlite3_io_methods ;
+typedef int sqlite3_file ;
+struct TYPE_3__ {int nChunkSize; int nSpill; int flags; char const* zJournal; int * pVfs; int const* pMethod; } ;
+typedef TYPE_1__ MemJournal ;
+typedef int FileChunk ;
+
+
+ int MEMJOURNAL_DFLT_FILECHUNKSIZE ;
+ int MemJournalMethods ;
+ int SQLITE_OK ;
+ int assert (int) ;
+ int fileChunkSize (int) ;
+ int memset (TYPE_1__*,int ,int) ;
+ int sqlite3OsOpen (int *,char const*,int *,int,int ) ;
 
 int sqlite3JournalOpen(
-  sqlite3_vfs *pVfs,         /* The VFS to use for actual file I/O */
-  const char *zName,         /* Name of the journal file */
-  sqlite3_file *pJfd,        /* Preallocated, blank file handle */
-  int flags,                 /* Opening flags */
-  int nSpill                 /* Bytes buffered before opening the file */
+  sqlite3_vfs *pVfs,
+  const char *zName,
+  sqlite3_file *pJfd,
+  int flags,
+  int nSpill
 ){
   MemJournal *p = (MemJournal*)pJfd;
 
-  /* Zero the file-handle object. If nSpill was passed zero, initialize
-  ** it using the sqlite3OsOpen() function of the underlying VFS. In this
-  ** case none of the code in this module is executed as a result of calls
-  ** made on the journal file-handle.  */
+
+
+
+
   memset(p, 0, sizeof(MemJournal));
   if( nSpill==0 ){
     return sqlite3OsOpen(pVfs, zName, pJfd, flags, 0);

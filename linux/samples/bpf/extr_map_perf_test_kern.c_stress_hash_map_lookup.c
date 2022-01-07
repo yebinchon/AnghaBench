@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u32 ;
+
+
+
+
+typedef int u32 ;
 struct pt_regs {int dummy; } ;
 
-/* Variables and functions */
- long* bpf_map_lookup_elem (int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  hash_map ; 
+
+ long* bpf_map_lookup_elem (int *,int*) ;
+ int hash_map ;
 
 int stress_hash_map_lookup(struct pt_regs *ctx)
 {
-	u32 key = 1, i;
-	long *value;
+ u32 key = 1, i;
+ long *value;
 
 #pragma clang loop unroll(full)
-	for (i = 0; i < 64; ++i)
-		value = bpf_map_lookup_elem(&hash_map, &key);
+ for (i = 0; i < 64; ++i)
+  value = bpf_map_lookup_elem(&hash_map, &key);
 
-	return 0;
+ return 0;
 }

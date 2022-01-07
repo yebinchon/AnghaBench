@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct mxwriter_props_t {int bom; int disable_escape; int indent; int omitdecl; int standalone; int encoding; scalar_t__ clsid; } ;
-typedef  int VARIANT_BOOL ;
-typedef  int /*<<< orphan*/  IMXWriter ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  BSTR ;
+typedef int VARIANT_BOOL ;
+typedef int IMXWriter ;
+typedef int HRESULT ;
+typedef int BSTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLSCTX_INPROC_SERVER ; 
- int /*<<< orphan*/  CoCreateInstance (scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  EXPECT_HR (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IID_IMXWriter ; 
- int /*<<< orphan*/  IMXWriter_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IMXWriter_get_byteOrderMark (int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  IMXWriter_get_disableOutputEscaping (int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  IMXWriter_get_encoding (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IMXWriter_get_indent (int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  IMXWriter_get_omitXMLDeclaration (int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  IMXWriter_get_standalone (int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  SysFreeString (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  _bstr_ (int) ; 
- int /*<<< orphan*/  is_clsid_supported (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lstrcmpW (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mxwriter_support_data ; 
- int /*<<< orphan*/  ok (int,char*,int,int,int) ; 
- int wine_dbgstr_w (int /*<<< orphan*/ ) ; 
+
+ int CLSCTX_INPROC_SERVER ;
+ int CoCreateInstance (scalar_t__,int *,int ,int *,void**) ;
+ int EXPECT_HR (int ,int ) ;
+ int IID_IMXWriter ;
+ int IMXWriter_Release (int *) ;
+ int IMXWriter_get_byteOrderMark (int *,int*) ;
+ int IMXWriter_get_disableOutputEscaping (int *,int*) ;
+ int IMXWriter_get_encoding (int *,int *) ;
+ int IMXWriter_get_indent (int *,int*) ;
+ int IMXWriter_get_omitXMLDeclaration (int *,int*) ;
+ int IMXWriter_get_standalone (int *,int*) ;
+ int S_OK ;
+ int SysFreeString (int ) ;
+ int _bstr_ (int) ;
+ int is_clsid_supported (scalar_t__,int ) ;
+ int lstrcmpW (int ,int ) ;
+ int mxwriter_support_data ;
+ int ok (int,char*,int,int,int) ;
+ int wine_dbgstr_w (int ) ;
 
 __attribute__((used)) static void test_mxwriter_default_properties(const struct mxwriter_props_t *table)
 {
@@ -55,7 +55,7 @@ __attribute__((used)) static void test_mxwriter_default_properties(const struct 
             continue;
         }
 
-        hr = CoCreateInstance(table->clsid, NULL, CLSCTX_INPROC_SERVER,
+        hr = CoCreateInstance(table->clsid, ((void*)0), CLSCTX_INPROC_SERVER,
             &IID_IMXWriter, (void**)&writer);
         EXPECT_HR(hr, S_OK);
 

@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct sctp_chunk {int dummy; } ;
 struct sctp_association {int dummy; } ;
-typedef  int /*<<< orphan*/  sctp_init_chunk_t ;
-typedef  int /*<<< orphan*/  sctp_cmd_seq_t ;
-typedef  int /*<<< orphan*/  gfp_t ;
+typedef int sctp_init_chunk_t ;
+typedef int sctp_cmd_seq_t ;
+typedef int gfp_t ;
 
-/* Variables and functions */
- int ENOMEM ; 
- int /*<<< orphan*/  sctp_process_init (struct sctp_association*,struct sctp_chunk*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sctp_source (struct sctp_chunk*) ; 
+
+ int ENOMEM ;
+ int sctp_process_init (struct sctp_association*,struct sctp_chunk*,int ,int *,int ) ;
+ int sctp_source (struct sctp_chunk*) ;
 
 __attribute__((used)) static int sctp_cmd_process_init(sctp_cmd_seq_t *commands,
-				 struct sctp_association *asoc,
-				 struct sctp_chunk *chunk,
-				 sctp_init_chunk_t *peer_init,
-				 gfp_t gfp)
+     struct sctp_association *asoc,
+     struct sctp_chunk *chunk,
+     sctp_init_chunk_t *peer_init,
+     gfp_t gfp)
 {
-	int error;
+ int error;
 
-	/* We only process the init as a sideeffect in a single
-	 * case.   This is when we process the INIT-ACK.   If we
-	 * fail during INIT processing (due to malloc problems),
-	 * just return the error and stop processing the stack.
-	 */
-	if (!sctp_process_init(asoc, chunk, sctp_source(chunk), peer_init, gfp))
-		error = -ENOMEM;
-	else
-		error = 0;
 
-	return error;
+
+
+
+
+ if (!sctp_process_init(asoc, chunk, sctp_source(chunk), peer_init, gfp))
+  error = -ENOMEM;
+ else
+  error = 0;
+
+ return error;
 }

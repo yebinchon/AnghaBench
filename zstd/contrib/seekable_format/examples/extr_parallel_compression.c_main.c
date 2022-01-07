@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int atoi (char const*) ; 
- int /*<<< orphan*/  compressFile_orDie (char const* const,char const* const,int,unsigned int const,int const) ; 
- char* createOutFilename_orDie (char const* const) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
+ int atoi (char const*) ;
+ int compressFile_orDie (char const* const,char const* const,int,unsigned int const,int const) ;
+ char* createOutFilename_orDie (char const* const) ;
+ int printf (char*,...) ;
 
 int main(int argc, const char** argv) {
     const char* const exeName = argv[0];
@@ -26,7 +18,7 @@ int main(int argc, const char** argv) {
         return 1;
     }
 
-    {   const char* const inFileName = argv[1];
+    { const char* const inFileName = argv[1];
         unsigned const frameSize = (unsigned)atoi(argv[2]);
         int const nbThreads = atoi(argv[3]);
 

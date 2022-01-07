@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64_t ;
-typedef  int /*<<< orphan*/  time_t ;
+
+
+
+
+typedef int uint64_t ;
+typedef int time_t ;
 struct PreprocessedInfo {int dummy; } ;
 struct Output {int dummy; } ;
 
-/* Variables and functions */
+
 
 void
 handle_oproto(struct Output *out, time_t timestamp,
@@ -23,5 +23,5 @@ handle_oproto(struct Output *out, time_t timestamp,
               struct PreprocessedInfo *parsed,
               uint64_t entropy)
 {
-    
+
 }

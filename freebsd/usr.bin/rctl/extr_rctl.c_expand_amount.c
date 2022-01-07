@@ -1,90 +1,90 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uintmax_t ;
-typedef  scalar_t__ uint64_t ;
 
-/* Variables and functions */
- int asprintf (char**,char*,char const*,char const*,char const*,char const*,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- scalar_t__ expand_number (char const*,scalar_t__*) ; 
- int /*<<< orphan*/  free (char*) ; 
- char* strdup (char const*) ; 
- scalar_t__ strlen (char const*) ; 
- char* strsep (char**,char*) ; 
- int /*<<< orphan*/  warn (char*) ; 
- int /*<<< orphan*/  warnx (char*,char const*,char const*) ; 
+
+
+
+typedef int uintmax_t ;
+typedef scalar_t__ uint64_t ;
+
+
+ int asprintf (char**,char*,char const*,char const*,char const*,char const*,int ,...) ;
+ int assert (int ) ;
+ scalar_t__ expand_number (char const*,scalar_t__*) ;
+ int free (char*) ;
+ char* strdup (char const*) ;
+ scalar_t__ strlen (char const*) ;
+ char* strsep (char**,char*) ;
+ int warn (char*) ;
+ int warnx (char*,char const*,char const*) ;
 
 __attribute__((used)) static char *
 expand_amount(const char *rule, const char *unexpanded_rule)
 {
-	uint64_t num;
-	const char *subject, *subject_id, *resource, *action, *amount, *per;
-	char *copy, *expanded, *tofree;
-	int ret;
+ uint64_t num;
+ const char *subject, *subject_id, *resource, *action, *amount, *per;
+ char *copy, *expanded, *tofree;
+ int ret;
 
-	tofree = copy = strdup(rule);
-	if (copy == NULL) {
-		warn("strdup");
-		return (NULL);
-	}
+ tofree = copy = strdup(rule);
+ if (copy == ((void*)0)) {
+  warn("strdup");
+  return (((void*)0));
+ }
 
-	subject = strsep(&copy, ":");
-	subject_id = strsep(&copy, ":");
-	resource = strsep(&copy, ":");
-	action = strsep(&copy, "=/");
-	amount = strsep(&copy, "/");
-	per = copy;
+ subject = strsep(&copy, ":");
+ subject_id = strsep(&copy, ":");
+ resource = strsep(&copy, ":");
+ action = strsep(&copy, "=/");
+ amount = strsep(&copy, "/");
+ per = copy;
 
-	if (amount == NULL || strlen(amount) == 0) {
-		/*
-		 * The "copy" has already been tinkered with by strsep().
-		 */
-		free(tofree);
-		copy = strdup(rule);
-		if (copy == NULL) {
-			warn("strdup");
-			return (NULL);
-		}
-		return (copy);
-	}
+ if (amount == ((void*)0) || strlen(amount) == 0) {
 
-	assert(subject != NULL);
-	assert(subject_id != NULL);
-	assert(resource != NULL);
-	assert(action != NULL);
 
-	if (expand_number(amount, &num)) {
-		warnx("malformed rule '%s': invalid numeric value '%s'",
-		    unexpanded_rule, amount);
-		free(tofree);
-		return (NULL);
-	}
 
-	if (per == NULL) {
-		ret = asprintf(&expanded, "%s:%s:%s:%s=%ju",
-		    subject, subject_id, resource, action, (uintmax_t)num);
-	} else {
-		ret = asprintf(&expanded, "%s:%s:%s:%s=%ju/%s",
-		    subject, subject_id, resource, action, (uintmax_t)num, per);
-	}
+  free(tofree);
+  copy = strdup(rule);
+  if (copy == ((void*)0)) {
+   warn("strdup");
+   return (((void*)0));
+  }
+  return (copy);
+ }
 
-	if (ret <= 0) {
-		warn("asprintf");
-		free(tofree);
-		return (NULL);
-	}
+ assert(subject != ((void*)0));
+ assert(subject_id != ((void*)0));
+ assert(resource != ((void*)0));
+ assert(action != ((void*)0));
 
-	free(tofree);
+ if (expand_number(amount, &num)) {
+  warnx("malformed rule '%s': invalid numeric value '%s'",
+      unexpanded_rule, amount);
+  free(tofree);
+  return (((void*)0));
+ }
 
-	return (expanded);
+ if (per == ((void*)0)) {
+  ret = asprintf(&expanded, "%s:%s:%s:%s=%ju",
+      subject, subject_id, resource, action, (uintmax_t)num);
+ } else {
+  ret = asprintf(&expanded, "%s:%s:%s:%s=%ju/%s",
+      subject, subject_id, resource, action, (uintmax_t)num, per);
+ }
+
+ if (ret <= 0) {
+  warn("asprintf");
+  free(tofree);
+  return (((void*)0));
+ }
+
+ free(tofree);
+
+ return (expanded);
 }

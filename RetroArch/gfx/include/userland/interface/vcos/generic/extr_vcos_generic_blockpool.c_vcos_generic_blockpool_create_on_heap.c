@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VCOS_UNSIGNED ;
-typedef  scalar_t__ VCOS_STATUS_T ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int VCOS_UNSIGNED ;
+typedef scalar_t__ VCOS_STATUS_T ;
 struct TYPE_6__ {TYPE_1__* subpools; } ;
-typedef  TYPE_2__ VCOS_BLOCKPOOL_T ;
-struct TYPE_5__ {int /*<<< orphan*/  flags; } ;
+typedef TYPE_2__ VCOS_BLOCKPOOL_T ;
+struct TYPE_5__ {int flags; } ;
 
-/* Variables and functions */
- size_t VCOS_BLOCKPOOL_SIZE (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  VCOS_BLOCKPOOL_SUBPOOL_FLAG_OWNS_MEM ; 
- scalar_t__ VCOS_ENOMEM ; 
- int /*<<< orphan*/  VCOS_FUNCTION ; 
- scalar_t__ VCOS_SUCCESS ; 
- int /*<<< orphan*/  vcos_free (void*) ; 
- scalar_t__ vcos_generic_blockpool_init (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*,size_t,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  vcos_log_trace (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*) ; 
- void* vcos_malloc (size_t,char const*) ; 
+
+ size_t VCOS_BLOCKPOOL_SIZE (int ,int ,int ) ;
+ int VCOS_BLOCKPOOL_SUBPOOL_FLAG_OWNS_MEM ;
+ scalar_t__ VCOS_ENOMEM ;
+ int VCOS_FUNCTION ;
+ scalar_t__ VCOS_SUCCESS ;
+ int vcos_free (void*) ;
+ scalar_t__ vcos_generic_blockpool_init (TYPE_2__*,int ,int ,void*,size_t,int ,int ,char const*) ;
+ int vcos_log_trace (char*,int ,int ,int ,char const*) ;
+ void* vcos_malloc (size_t,char const*) ;
 
 VCOS_STATUS_T vcos_generic_blockpool_create_on_heap(VCOS_BLOCKPOOL_T *pool,
       VCOS_UNSIGNED num_blocks, VCOS_UNSIGNED block_size, VCOS_UNSIGNED align,

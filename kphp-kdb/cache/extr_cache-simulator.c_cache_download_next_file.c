@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct cache_uri {int dummy; } ;
 struct TYPE_8__ {struct cache_uri** H; } ;
 struct TYPE_7__ {struct cache_uri** H; } ;
 struct TYPE_6__ {long long const download_speed; long long const disk_size; } ;
-struct TYPE_5__ {size_t max_retrieved_files_between_two_priority_requests; int max_erased_files_between_two_priority_requests; int /*<<< orphan*/  priority_lists_requests; } ;
+struct TYPE_5__ {size_t max_retrieved_files_between_two_priority_requests; int max_erased_files_between_two_priority_requests; int priority_lists_requests; } ;
 
-/* Variables and functions */
- long long INT_MAX ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  cache_add (struct cache_uri*,int const) ; 
- double cache_get_uri_heuristic (struct cache_uri*) ; 
- long long cache_get_uri_size (struct cache_uri*,int) ; 
- int /*<<< orphan*/  cache_remove (struct cache_uri*,int const) ; 
- long long cached_bytes ; 
- int cached_ptr ; 
- TYPE_4__ heap_cached ; 
- int heap_cached_files ; 
- TYPE_3__ heap_uncached ; 
- size_t heap_uncached_files ; 
- long long next_download_file_time ; 
- long long next_priority_lists_request_time ; 
- int /*<<< orphan*/  resend_priority_lists_request (int const) ; 
- TYPE_2__ simulation_params ; 
- TYPE_1__ simulation_stats ; 
- size_t uncached_ptr ; 
- int /*<<< orphan*/  vkprintf (int,char*,long long) ; 
+
+ long long INT_MAX ;
+ int assert (int) ;
+ int cache_add (struct cache_uri*,int const) ;
+ double cache_get_uri_heuristic (struct cache_uri*) ;
+ long long cache_get_uri_size (struct cache_uri*,int) ;
+ int cache_remove (struct cache_uri*,int const) ;
+ long long cached_bytes ;
+ int cached_ptr ;
+ TYPE_4__ heap_cached ;
+ int heap_cached_files ;
+ TYPE_3__ heap_uncached ;
+ size_t heap_uncached_files ;
+ long long next_download_file_time ;
+ long long next_priority_lists_request_time ;
+ int resend_priority_lists_request (int const) ;
+ TYPE_2__ simulation_params ;
+ TYPE_1__ simulation_stats ;
+ size_t uncached_ptr ;
+ int vkprintf (int,char*,long long) ;
 
 __attribute__((used)) static void cache_download_next_file (void) {
   if (!simulation_stats.priority_lists_requests) {

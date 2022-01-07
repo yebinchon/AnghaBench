@@ -1,79 +1,79 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_19__   TYPE_8__ ;
-typedef  struct TYPE_18__   TYPE_5__ ;
-typedef  struct TYPE_17__   TYPE_4__ ;
-typedef  struct TYPE_16__   TYPE_3__ ;
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  json_t ;
-struct TYPE_14__ {int /*<<< orphan*/  text; } ;
-typedef  TYPE_1__ json_error_t ;
-typedef  int /*<<< orphan*/  gint64 ;
-typedef  int /*<<< orphan*/  gboolean ;
-struct TYPE_19__ {TYPE_5__* fs_mgr; int /*<<< orphan*/  branch_mgr; } ;
-struct TYPE_18__ {int /*<<< orphan*/  obj_store; } ;
-struct TYPE_17__ {int /*<<< orphan*/  release; int /*<<< orphan*/ * curl; } ;
-struct TYPE_16__ {int n_fs_objs; int /*<<< orphan*/  done_fs_objs; int /*<<< orphan*/  repo_version; int /*<<< orphan*/  repo_id; scalar_t__ is_clone; int /*<<< orphan*/  host; int /*<<< orphan*/  error; int /*<<< orphan*/  token; int /*<<< orphan*/  head; scalar_t__ use_fileserver_port; } ;
-struct TYPE_15__ {int /*<<< orphan*/  commit_id; } ;
-typedef  TYPE_2__ SeafBranch ;
-typedef  TYPE_3__ HttpTxTask ;
-typedef  int /*<<< orphan*/  GList ;
-typedef  int /*<<< orphan*/  GHashTable ;
-typedef  TYPE_4__ Connection ;
-typedef  int /*<<< orphan*/  CURL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int HTTP_OK ; 
- int /*<<< orphan*/  SYNC_ERROR_ID_SERVER ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  curl_easy_reset (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  g_free (char*) ; 
- int /*<<< orphan*/  g_hash_table_destroy (int /*<<< orphan*/ *) ; 
- scalar_t__ g_hash_table_lookup (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/ * g_hash_table_new_full (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/  (*) (char*),int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  g_hash_table_replace (int /*<<< orphan*/ *,char*,char*) ; 
- int /*<<< orphan*/ * g_list_prepend (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  g_str_equal ; 
- int /*<<< orphan*/  g_str_hash ; 
- char* g_strdup (char const*) ; 
- char* g_strdup_printf (char*,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  handle_curl_errors (TYPE_3__*,int) ; 
- int /*<<< orphan*/  handle_http_errors (TYPE_3__*,int) ; 
- scalar_t__ http_get (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int*,char**,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int*) ; 
- int /*<<< orphan*/ * json_array_get (int /*<<< orphan*/ *,int) ; 
- size_t json_array_size (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  json_decref (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * json_loadb (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*) ; 
- char* json_string_value (int /*<<< orphan*/ *) ; 
- TYPE_8__* seaf ; 
- TYPE_2__* seaf_branch_manager_get_branch (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  seaf_branch_unref (TYPE_2__*) ; 
- int /*<<< orphan*/  seaf_debug (char*,size_t,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  seaf_fs_manager_verify_object (TYPE_5__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  seaf_obj_store_obj_exists (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  seaf_warning (char*,...) ; 
- int /*<<< orphan*/  string_list_free (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_19__ TYPE_8__ ;
+typedef struct TYPE_18__ TYPE_5__ ;
+typedef struct TYPE_17__ TYPE_4__ ;
+typedef struct TYPE_16__ TYPE_3__ ;
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
+typedef int json_t ;
+struct TYPE_14__ {int text; } ;
+typedef TYPE_1__ json_error_t ;
+typedef int gint64 ;
+typedef int gboolean ;
+struct TYPE_19__ {TYPE_5__* fs_mgr; int branch_mgr; } ;
+struct TYPE_18__ {int obj_store; } ;
+struct TYPE_17__ {int release; int * curl; } ;
+struct TYPE_16__ {int n_fs_objs; int done_fs_objs; int repo_version; int repo_id; scalar_t__ is_clone; int host; int error; int token; int head; scalar_t__ use_fileserver_port; } ;
+struct TYPE_15__ {int commit_id; } ;
+typedef TYPE_2__ SeafBranch ;
+typedef TYPE_3__ HttpTxTask ;
+typedef int GList ;
+typedef int GHashTable ;
+typedef TYPE_4__ Connection ;
+typedef int CURL ;
+
+
+ int FALSE ;
+ int HTTP_OK ;
+ int SYNC_ERROR_ID_SERVER ;
+ int TRUE ;
+ int curl_easy_reset (int *) ;
+ int g_free (char*) ;
+ int g_hash_table_destroy (int *) ;
+ scalar_t__ g_hash_table_lookup (int *,char const*) ;
+ int * g_hash_table_new_full (int ,int ,int (*) (char*),int *) ;
+ int g_hash_table_replace (int *,char*,char*) ;
+ int * g_list_prepend (int *,char*) ;
+ int g_str_equal ;
+ int g_str_hash ;
+ char* g_strdup (char const*) ;
+ char* g_strdup_printf (char*,int ,char const*,int ,int ,...) ;
+ int handle_curl_errors (TYPE_3__*,int) ;
+ int handle_http_errors (TYPE_3__*,int) ;
+ scalar_t__ http_get (int *,char*,int ,int*,char**,int *,int *,int *,int,int*) ;
+ int * json_array_get (int *,int) ;
+ size_t json_array_size (int *) ;
+ int json_decref (int *) ;
+ int * json_loadb (char*,int ,int ,TYPE_1__*) ;
+ char* json_string_value (int *) ;
+ TYPE_8__* seaf ;
+ TYPE_2__* seaf_branch_manager_get_branch (int ,int ,char*) ;
+ int seaf_branch_unref (TYPE_2__*) ;
+ int seaf_debug (char*,size_t,int ,int ) ;
+ int seaf_fs_manager_verify_object (TYPE_5__*,int ,int ,char const*,int ,int *) ;
+ int seaf_obj_store_obj_exists (int ,int ,int ,char const*) ;
+ int seaf_warning (char*,...) ;
+ int string_list_free (int *) ;
 
 __attribute__((used)) static int
 get_needed_fs_id_list (HttpTxTask *task, Connection *conn, GList **fs_id_list)
 {
     SeafBranch *master;
     CURL *curl;
-    char *url = NULL;
+    char *url = ((void*)0);
     int status;
-    char *rsp_content = NULL;
+    char *rsp_content = ((void*)0);
     gint64 rsp_size;
     int ret = 0;
     json_t *array;
@@ -108,7 +108,7 @@ get_needed_fs_id_list (HttpTxTask *task, Connection *conn, GList **fs_id_list)
     int curl_error;
     if (http_get (curl, url, task->token, &status,
                   &rsp_content, &rsp_size,
-                  NULL, NULL, (!task->is_clone), &curl_error) < 0) {
+                  ((void*)0), ((void*)0), (!task->is_clone), &curl_error) < 0) {
         conn->release = TRUE;
         handle_curl_errors (task, curl_error);
         ret = -1;
@@ -140,7 +140,7 @@ get_needed_fs_id_list (HttpTxTask *task, Connection *conn, GList **fs_id_list)
     task->n_fs_objs = (int)n;
 
     GHashTable *checked_objs = g_hash_table_new_full (g_str_hash, g_str_equal,
-                                                      g_free, NULL);
+                                                      g_free, ((void*)0));
 
     for (i = 0; i < n; ++i) {
         str = json_array_get (array, i);

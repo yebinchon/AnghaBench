@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  lock; int /*<<< orphan*/ * sessions; } ;
-struct TYPE_5__ {long time; int /*<<< orphan*/ * cache; TYPE_2__* ctx; } ;
-typedef  TYPE_1__ TIMEOUT_PARAM ;
-typedef  TYPE_2__ SSL_CTX ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CRYPTO_THREAD_unlock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CRYPTO_THREAD_write_lock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lh_SSL_SESSION_doall_TIMEOUT_PARAM (int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_1__*) ; 
- unsigned long lh_SSL_SESSION_get_down_load (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lh_SSL_SESSION_set_down_load (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  timeout_cb ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int lock; int * sessions; } ;
+struct TYPE_5__ {long time; int * cache; TYPE_2__* ctx; } ;
+typedef TYPE_1__ TIMEOUT_PARAM ;
+typedef TYPE_2__ SSL_CTX ;
+
+
+ int CRYPTO_THREAD_unlock (int ) ;
+ int CRYPTO_THREAD_write_lock (int ) ;
+ int lh_SSL_SESSION_doall_TIMEOUT_PARAM (int *,int ,TYPE_1__*) ;
+ unsigned long lh_SSL_SESSION_get_down_load (int *) ;
+ int lh_SSL_SESSION_set_down_load (int *,unsigned long) ;
+ int timeout_cb ;
 
 void SSL_CTX_flush_sessions(SSL_CTX *s, long t)
 {
@@ -32,7 +32,7 @@ void SSL_CTX_flush_sessions(SSL_CTX *s, long t)
 
     tp.ctx = s;
     tp.cache = s->sessions;
-    if (tp.cache == NULL)
+    if (tp.cache == ((void*)0))
         return;
     tp.time = t;
     CRYPTO_THREAD_write_lock(s->lock);

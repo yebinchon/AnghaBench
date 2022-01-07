@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT ;
-struct TYPE_3__ {int /*<<< orphan*/  SaveType; } ;
-typedef  TYPE_1__ SYSLOG_SETTING ;
-typedef  int /*<<< orphan*/  SERVER ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SYSLOG_NONE ; 
- int /*<<< orphan*/  SiGetSysLogSetting (int /*<<< orphan*/ *,TYPE_1__*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int UINT ;
+struct TYPE_3__ {int SaveType; } ;
+typedef TYPE_1__ SYSLOG_SETTING ;
+typedef int SERVER ;
+
+
+ int SYSLOG_NONE ;
+ int SiGetSysLogSetting (int *,TYPE_1__*) ;
 
 UINT SiGetSysLogSaveStatus(SERVER *s)
 {
-	SYSLOG_SETTING set;
-	// Validate arguments
-	if (s == NULL)
-	{
-		return SYSLOG_NONE;
-	}
+ SYSLOG_SETTING set;
 
-	SiGetSysLogSetting(s, &set);
+ if (s == ((void*)0))
+ {
+  return SYSLOG_NONE;
+ }
 
-	return set.SaveType;
+ SiGetSysLogSetting(s, &set);
+
+ return set.SaveType;
 }

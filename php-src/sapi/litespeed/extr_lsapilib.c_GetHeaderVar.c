@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct lsapi_header_offset {int nameOff; int nameLen; int valueOff; int valueLen; } ;
 struct TYPE_7__ {char* m_pHttpHeader; TYPE_2__* m_pHeader; struct lsapi_header_offset* m_pUnknownHeader; TYPE_1__* m_pHeaderIndex; } ;
 struct TYPE_6__ {scalar_t__ m_cntUnknownHeaders; } ;
 struct TYPE_5__ {int* m_headerOff; int* m_headerLen; } ;
-typedef  TYPE_3__ LSAPI_Request ;
+typedef TYPE_3__ LSAPI_Request ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * CGI_HEADERS ; 
- int H_TRANSFER_ENCODING ; 
- scalar_t__ strcmp (char const*,int /*<<< orphan*/ ) ; 
- char toupper (char) ; 
+
+ int * CGI_HEADERS ;
+ int H_TRANSFER_ENCODING ;
+ scalar_t__ strcmp (char const*,int ) ;
+ char toupper (char) ;
 
 __attribute__((used)) static char * GetHeaderVar( LSAPI_Request * pReq, const char * name )
 {
@@ -50,7 +50,7 @@ __attribute__((used)) static char * GetHeaderVar( LSAPI_Request * pReq, const ch
         const char *p;
         char *pKey;
         char *pKeyEnd;
-        int  keyLen;
+        int keyLen;
         struct lsapi_header_offset * pCur, *pEnd;
         pCur = pReq->m_pUnknownHeader;
         pEnd = pCur + pReq->m_pHeader->m_cntUnknownHeaders;
@@ -81,5 +81,5 @@ __attribute__((used)) static char * GetHeaderVar( LSAPI_Request * pReq, const ch
             ++pCur;
         }
     }
-    return NULL;
+    return ((void*)0);
 }

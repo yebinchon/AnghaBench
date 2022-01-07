@@ -1,60 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ts ;
-typedef  int /*<<< orphan*/  bs ;
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int ts ;
+typedef int bs ;
 struct TYPE_8__ {unsigned long long referenced; unsigned long long exclusive; unsigned long long referenced_max; unsigned long long exclusive_max; } ;
-struct TYPE_7__ {int read_only; int /*<<< orphan*/  otime; } ;
-typedef  TYPE_1__ BtrfsSubvolInfo ;
-typedef  TYPE_2__ BtrfsQuotaInfo ;
+struct TYPE_7__ {int read_only; int otime; } ;
+typedef TYPE_1__ BtrfsSubvolInfo ;
+typedef TYPE_2__ BtrfsQuotaInfo ;
 
-/* Variables and functions */
- int BTRFS_REMOVE_QUOTA ; 
- int BTRFS_REMOVE_RECURSIVE ; 
- int BTRFS_SNAPSHOT_FALLBACK_COPY ; 
- int BTRFS_SNAPSHOT_QUOTA ; 
- int BTRFS_SNAPSHOT_READ_ONLY ; 
- int BTRFS_SNAPSHOT_RECURSIVE ; 
- int FORMAT_BYTES_MAX ; 
- int FORMAT_TIMESTAMP_MAX ; 
- int O_CLOEXEC ; 
- int O_DIRECTORY ; 
- int O_RDONLY ; 
- int /*<<< orphan*/  WRITE_STRING_FILE_CREATE ; 
- int /*<<< orphan*/  assert_se (int) ; 
- int btrfs_qgroup_get_quota (char*,int /*<<< orphan*/ ,TYPE_2__*) ; 
- int btrfs_qgroup_get_quota_fd (int,int /*<<< orphan*/ ,TYPE_2__*) ; 
- int btrfs_qgroup_set_limit (char*,int /*<<< orphan*/ ,unsigned long long) ; 
- int btrfs_subvol_auto_qgroup (char*,int /*<<< orphan*/ ,int) ; 
- int btrfs_subvol_get_info_fd (int,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int btrfs_subvol_get_read_only_fd (int) ; 
- int btrfs_subvol_get_subtree_quota (char*,int /*<<< orphan*/ ,TYPE_2__*) ; 
- int btrfs_subvol_make (char*) ; 
- int btrfs_subvol_remove (char*,int) ; 
- int btrfs_subvol_set_subtree_quota_limit (char*,int /*<<< orphan*/ ,unsigned long long) ; 
- int btrfs_subvol_snapshot (char*,char*,int) ; 
- int errno ; 
- int /*<<< orphan*/  format_bytes (char*,int,unsigned long long) ; 
- int /*<<< orphan*/  format_timestamp (char*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  log_error_errno (int,char*) ; 
- int /*<<< orphan*/  log_info (char*,int /*<<< orphan*/ ) ; 
- scalar_t__ mkdir (char*,int) ; 
- int open (char*,int) ; 
- int /*<<< orphan*/  safe_close (int) ; 
- int /*<<< orphan*/  strna (int /*<<< orphan*/ ) ; 
- int write_string_file (char*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  yes_no (int) ; 
+
+ int BTRFS_REMOVE_QUOTA ;
+ int BTRFS_REMOVE_RECURSIVE ;
+ int BTRFS_SNAPSHOT_FALLBACK_COPY ;
+ int BTRFS_SNAPSHOT_QUOTA ;
+ int BTRFS_SNAPSHOT_READ_ONLY ;
+ int BTRFS_SNAPSHOT_RECURSIVE ;
+ int FORMAT_BYTES_MAX ;
+ int FORMAT_TIMESTAMP_MAX ;
+ int O_CLOEXEC ;
+ int O_DIRECTORY ;
+ int O_RDONLY ;
+ int WRITE_STRING_FILE_CREATE ;
+ int assert_se (int) ;
+ int btrfs_qgroup_get_quota (char*,int ,TYPE_2__*) ;
+ int btrfs_qgroup_get_quota_fd (int,int ,TYPE_2__*) ;
+ int btrfs_qgroup_set_limit (char*,int ,unsigned long long) ;
+ int btrfs_subvol_auto_qgroup (char*,int ,int) ;
+ int btrfs_subvol_get_info_fd (int,int ,TYPE_1__*) ;
+ int btrfs_subvol_get_read_only_fd (int) ;
+ int btrfs_subvol_get_subtree_quota (char*,int ,TYPE_2__*) ;
+ int btrfs_subvol_make (char*) ;
+ int btrfs_subvol_remove (char*,int) ;
+ int btrfs_subvol_set_subtree_quota_limit (char*,int ,unsigned long long) ;
+ int btrfs_subvol_snapshot (char*,char*,int) ;
+ int errno ;
+ int format_bytes (char*,int,unsigned long long) ;
+ int format_timestamp (char*,int,int ) ;
+ int log_error_errno (int,char*) ;
+ int log_info (char*,int ) ;
+ scalar_t__ mkdir (char*,int) ;
+ int open (char*,int) ;
+ int safe_close (int) ;
+ int strna (int ) ;
+ int write_string_file (char*,char*,int ) ;
+ int yes_no (int) ;
 
 int main(int argc, char *argv[]) {
         BtrfsQuotaInfo quota;
@@ -179,7 +179,7 @@ int main(int argc, char *argv[]) {
         if (r < 0)
                 log_error_errno(r, "Failed to make subvolume: %m");
 
-        r = btrfs_subvol_auto_qgroup("/xxxquotatest", 0, true);
+        r = btrfs_subvol_auto_qgroup("/xxxquotatest", 0, 1);
         if (r < 0)
                 log_error_errno(r, "Failed to set up auto qgroup: %m");
 
@@ -187,7 +187,7 @@ int main(int argc, char *argv[]) {
         if (r < 0)
                 log_error_errno(r, "Failed to make subvolume: %m");
 
-        r = btrfs_subvol_auto_qgroup("/xxxquotatest/beneath", 0, false);
+        r = btrfs_subvol_auto_qgroup("/xxxquotatest/beneath", 0, 0);
         if (r < 0)
                 log_error_errno(r, "Failed to set up auto qgroup: %m");
 

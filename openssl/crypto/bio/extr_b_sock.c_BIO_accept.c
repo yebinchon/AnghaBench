@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  BIO_ADDR ;
 
-/* Variables and functions */
- char* BIO_ADDR_hostname_string (int /*<<< orphan*/ *,int) ; 
- char* BIO_ADDR_service_string (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  BIO_F_BIO_ACCEPT ; 
- int /*<<< orphan*/  BIO_R_ACCEPT_ERROR ; 
- int BIO_accept_ex (int,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BIO_closesocket (int) ; 
- scalar_t__ BIO_sock_should_retry (int) ; 
- int /*<<< orphan*/  BIOerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ERR_LIB_SYS ; 
- int /*<<< orphan*/  ERR_R_MALLOC_FAILURE ; 
- int /*<<< orphan*/  ERR_raise_data (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- scalar_t__ INVALID_SOCKET ; 
- int /*<<< orphan*/  OPENSSL_free (char*) ; 
- char* OPENSSL_zalloc (scalar_t__) ; 
- int /*<<< orphan*/  get_last_socket_error () ; 
- int /*<<< orphan*/  strcat (char*,char*) ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
- scalar_t__ strlen (char*) ; 
+
+
+
+typedef int BIO_ADDR ;
+
+
+ char* BIO_ADDR_hostname_string (int *,int) ;
+ char* BIO_ADDR_service_string (int *,int) ;
+ int BIO_F_BIO_ACCEPT ;
+ int BIO_R_ACCEPT_ERROR ;
+ int BIO_accept_ex (int,int *,int ) ;
+ int BIO_closesocket (int) ;
+ scalar_t__ BIO_sock_should_retry (int) ;
+ int BIOerr (int ,int ) ;
+ int ERR_LIB_SYS ;
+ int ERR_R_MALLOC_FAILURE ;
+ int ERR_raise_data (int ,int ,char*) ;
+ scalar_t__ INVALID_SOCKET ;
+ int OPENSSL_free (char*) ;
+ char* OPENSSL_zalloc (scalar_t__) ;
+ int get_last_socket_error () ;
+ int strcat (char*,char*) ;
+ int strcpy (char*,char*) ;
+ scalar_t__ strlen (char*) ;
 
 int BIO_accept(int sock, char **ip_port)
 {
@@ -49,15 +49,15 @@ int BIO_accept(int sock, char **ip_port)
         goto end;
     }
 
-    if (ip_port != NULL) {
+    if (ip_port != ((void*)0)) {
         char *host = BIO_ADDR_hostname_string(&res, 1);
         char *port = BIO_ADDR_service_string(&res, 1);
-        if (host != NULL && port != NULL)
+        if (host != ((void*)0) && port != ((void*)0))
             *ip_port = OPENSSL_zalloc(strlen(host) + strlen(port) + 2);
         else
-            *ip_port = NULL;
+            *ip_port = ((void*)0);
 
-        if (*ip_port == NULL) {
+        if (*ip_port == ((void*)0)) {
             BIOerr(BIO_F_BIO_ACCEPT, ERR_R_MALLOC_FAILURE);
             BIO_closesocket(ret);
             ret = (int)INVALID_SOCKET;

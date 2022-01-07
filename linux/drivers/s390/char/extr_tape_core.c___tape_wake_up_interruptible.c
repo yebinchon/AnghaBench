@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wait_queue_head_t ;
-struct tape_request {int /*<<< orphan*/ * callback; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  wake_up_interruptible (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int wait_queue_head_t ;
+struct tape_request {int * callback; } ;
+
+
+ int wake_up_interruptible (int *) ;
 
 __attribute__((used)) static void
 __tape_wake_up_interruptible(struct tape_request *request, void *data)
 {
-	request->callback = NULL;
-	wake_up_interruptible((wait_queue_head_t *) data);
+ request->callback = ((void*)0);
+ wake_up_interruptible((wait_queue_head_t *) data);
 }

@@ -1,0 +1,153 @@
+; ModuleID = '/home/carl/AnghaBench/freebsd/contrib/gdb/gdb/extr_remote-vx.c_vx_attach.c'
+source_filename = "/home/carl/AnghaBench/freebsd/contrib/gdb/gdb/extr_remote-vx.c_vx_attach.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+%struct.TYPE_5__ = type { i64 }
+%struct.TYPE_6__ = type { i32, i32 }
+
+@.str = private unnamed_addr constant [21 x i8] c"process-id to attach\00", align 1
+@.str.1 = private unnamed_addr constant [63 x i8] c"Invalid process-id -- give a single number in decimal or 0xhex\00", align 1
+@.str.2 = private unnamed_addr constant [19 x i8] c"Attaching pid %s.\0A\00", align 1
+@PTRACE_ATTACH = common dso_local global i32 0, align 4
+@rpcerr = common dso_local global i8* null, align 8
+@errno = common dso_local global i32 0, align 4
+@.str.3 = private unnamed_addr constant [25 x i8] c"Attaching remote process\00", align 1
+@inferior_ptid = common dso_local global i32 0, align 4
+@vx_run_ops = common dso_local global i32 0, align 4
+@vx_running = common dso_local global i64 0, align 8
+@llvm.used = appending global [1 x i8*] [i8* bitcast (void (i8*, i32)* @vx_attach to i8*)], section "llvm.metadata"
+
+; Function Attrs: noinline nounwind optnone uwtable
+define internal void @vx_attach(i8* %0, i32 %1) #0 {
+  %3 = alloca i8*, align 8
+  %4 = alloca i32, align 4
+  %5 = alloca i64, align 8
+  %6 = alloca i8*, align 8
+  %7 = alloca %struct.TYPE_5__, align 8
+  %8 = alloca %struct.TYPE_6__, align 4
+  %9 = alloca i32, align 4
+  store i8* %0, i8** %3, align 8
+  store i32 %1, i32* %4, align 4
+  store i8* null, i8** %6, align 8
+  %10 = load i8*, i8** %3, align 8
+  %11 = icmp ne i8* %10, null
+  br i1 %11, label %14, label %12
+
+12:                                               ; preds = %2
+  %13 = call i32 @error_no_arg(i8* getelementptr inbounds ([21 x i8], [21 x i8]* @.str, i64 0, i64 0))
+  br label %14
+
+14:                                               ; preds = %12, %2
+  %15 = load i8*, i8** %3, align 8
+  %16 = call i64 @strtoul(i8* %15, i8** %6, i32 0)
+  store i64 %16, i64* %5, align 8
+  %17 = load i8*, i8** %6, align 8
+  %18 = load i8*, i8** %3, align 8
+  %19 = icmp eq i8* %17, %18
+  br i1 %19, label %25, label %20
+
+20:                                               ; preds = %14
+  %21 = load i8*, i8** %6, align 8
+  %22 = load i8, i8* %21, align 1
+  %23 = sext i8 %22 to i32
+  %24 = icmp ne i32 %23, 0
+  br i1 %24, label %25, label %27
+
+25:                                               ; preds = %20, %14
+  %26 = call i32 @error(i8* getelementptr inbounds ([63 x i8], [63 x i8]* @.str.1, i64 0, i64 0))
+  br label %27
+
+27:                                               ; preds = %25, %20
+  %28 = load i32, i32* %4, align 4
+  %29 = icmp ne i32 %28, 0
+  br i1 %29, label %30, label %34
+
+30:                                               ; preds = %27
+  %31 = load i64, i64* %5, align 8
+  %32 = call i32 @local_hex_string(i64 %31)
+  %33 = call i32 @printf_unfiltered(i8* getelementptr inbounds ([19 x i8], [19 x i8]* @.str.2, i64 0, i64 0), i32 %32)
+  br label %34
+
+34:                                               ; preds = %30, %27
+  %35 = bitcast %struct.TYPE_5__* %7 to i8*
+  %36 = call i32 @memset(i8* %35, i8 signext 0, i32 8)
+  %37 = bitcast %struct.TYPE_6__* %8 to i8*
+  %38 = call i32 @memset(i8* %37, i8 signext 0, i32 8)
+  %39 = load i64, i64* %5, align 8
+  %40 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %7, i32 0, i32 0
+  store i64 %39, i64* %40, align 8
+  %41 = load i32, i32* @PTRACE_ATTACH, align 4
+  %42 = call i32 @net_ptrace_clnt_call(i32 %41, %struct.TYPE_5__* %7, %struct.TYPE_6__* %8)
+  store i32 %42, i32* %9, align 4
+  %43 = load i32, i32* %9, align 4
+  %44 = icmp eq i32 %43, -1
+  br i1 %44, label %45, label %48
+
+45:                                               ; preds = %34
+  %46 = load i8*, i8** @rpcerr, align 8
+  %47 = call i32 @error(i8* %46)
+  br label %48
+
+48:                                               ; preds = %45, %34
+  %49 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %8, i32 0, i32 0
+  %50 = load i32, i32* %49, align 4
+  %51 = icmp eq i32 %50, -1
+  br i1 %51, label %52, label %56
+
+52:                                               ; preds = %48
+  %53 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %8, i32 0, i32 1
+  %54 = load i32, i32* %53, align 4
+  store i32 %54, i32* @errno, align 4
+  %55 = call i32 @perror_with_name(i8* getelementptr inbounds ([25 x i8], [25 x i8]* @.str.3, i64 0, i64 0))
+  br label %56
+
+56:                                               ; preds = %52, %48
+  %57 = load i64, i64* %5, align 8
+  %58 = call i32 @pid_to_ptid(i64 %57)
+  store i32 %58, i32* @inferior_ptid, align 4
+  %59 = call i32 @push_target(i32* @vx_run_ops)
+  %60 = load i64, i64* @vx_running, align 8
+  %61 = icmp ne i64 %60, 0
+  br i1 %61, label %62, label %65
+
+62:                                               ; preds = %56
+  %63 = load i64, i64* @vx_running, align 8
+  %64 = call i32 @xfree(i64 %63)
+  br label %65
+
+65:                                               ; preds = %62, %56
+  store i64 0, i64* @vx_running, align 8
+  ret void
+}
+
+declare dso_local i32 @error_no_arg(i8*) #1
+
+declare dso_local i64 @strtoul(i8*, i8**, i32) #1
+
+declare dso_local i32 @error(i8*) #1
+
+declare dso_local i32 @printf_unfiltered(i8*, i32) #1
+
+declare dso_local i32 @local_hex_string(i64) #1
+
+declare dso_local i32 @memset(i8*, i8 signext, i32) #1
+
+declare dso_local i32 @net_ptrace_clnt_call(i32, %struct.TYPE_5__*, %struct.TYPE_6__*) #1
+
+declare dso_local i32 @perror_with_name(i8*) #1
+
+declare dso_local i32 @pid_to_ptid(i64) #1
+
+declare dso_local i32 @push_target(i32*) #1
+
+declare dso_local i32 @xfree(i64) #1
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

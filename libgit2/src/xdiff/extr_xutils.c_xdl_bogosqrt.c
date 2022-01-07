@@ -1,26 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
-
 long xdl_bogosqrt(long n) {
-	long i;
+ long i;
 
-	/*
-	 * Classical integer square root approximation using shifts.
-	 */
-	for (i = 1; n > 0; n >>= 2)
-		i <<= 1;
 
-	return i;
+
+
+ for (i = 1; n > 0; n >>= 2)
+  i <<= 1;
+
+ return i;
 }

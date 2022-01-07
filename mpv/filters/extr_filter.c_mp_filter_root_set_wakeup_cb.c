@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct mp_filter {TYPE_1__* in; } ;
-struct filter_runner {void (* wakeup_cb ) (void*) ;int /*<<< orphan*/  async_lock; void* wakeup_ctx; } ;
+struct filter_runner {void (* wakeup_cb ) (void*) ;int async_lock; void* wakeup_ctx; } ;
 struct TYPE_2__ {struct filter_runner* runner; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
+
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
 
 void mp_filter_root_set_wakeup_cb(struct mp_filter *root,
                                   void (*wakeup_cb)(void *ctx), void *ctx)

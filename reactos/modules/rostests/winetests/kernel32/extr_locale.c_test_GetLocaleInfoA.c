@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  val ;
-typedef  int LCID ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int BUFFER_SIZE ; 
- int COUNTOF (char*) ; 
- char* ERROR_INSUFFICIENT_BUFFER ; 
- char* GetLastError () ; 
- int GetLocaleInfoA (int,int,char*,int) ; 
- int LANG_ARABIC ; 
- int LANG_ENGLISH ; 
- int LANG_GERMAN ; 
- int LOCALE_ILANGUAGE ; 
- int LOCALE_RETURN_NUMBER ; 
- int LOCALE_SDAYNAME1 ; 
- int LOCALE_SLANGUAGE ; 
- int MAKELANGID (int,int /*<<< orphan*/ ) ; 
- int MAKELCID (int,int /*<<< orphan*/ ) ; 
- int NUO ; 
- int /*<<< orphan*/  SORT_DEFAULT ; 
- int /*<<< orphan*/  SUBLANG_DEFAULT ; 
- int /*<<< orphan*/  SUBLANG_ENGLISH_US ; 
- int /*<<< orphan*/  SetLastError (int) ; 
- int /*<<< orphan*/  lstrcmpA (char*,char*) ; 
- int /*<<< orphan*/  memset (char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
+
+
+
+typedef int val ;
+typedef int LCID ;
+typedef int DWORD ;
+
+
+ int BUFFER_SIZE ;
+ int COUNTOF (char*) ;
+ char* ERROR_INSUFFICIENT_BUFFER ;
+ char* GetLastError () ;
+ int GetLocaleInfoA (int,int,char*,int) ;
+ int LANG_ARABIC ;
+ int LANG_ENGLISH ;
+ int LANG_GERMAN ;
+ int LOCALE_ILANGUAGE ;
+ int LOCALE_RETURN_NUMBER ;
+ int LOCALE_SDAYNAME1 ;
+ int LOCALE_SLANGUAGE ;
+ int MAKELANGID (int,int ) ;
+ int MAKELCID (int,int ) ;
+ int NUO ;
+ int SORT_DEFAULT ;
+ int SUBLANG_DEFAULT ;
+ int SUBLANG_ENGLISH_US ;
+ int SetLastError (int) ;
+ int lstrcmpA (char*,char*) ;
+ int memset (char*,int ,int) ;
+ int ok (int,char*,...) ;
+ int strcmp (char*,char*) ;
+ int win_skip (char*) ;
 
 __attribute__((used)) static void test_GetLocaleInfoA(void)
 {
@@ -55,9 +55,9 @@ __attribute__((used)) static void test_GetLocaleInfoA(void)
   ok(ret, "got %d\n", ret);
   ok(val == lcid, "got 0x%08x\n", val);
 
-  /* en and ar use SUBLANG_NEUTRAL, but GetLocaleInfo assume SUBLANG_DEFAULT
-     Same is true for zh on pre-Vista, but on Vista and higher GetLocaleInfo
-     assumes SUBLANG_NEUTRAL for zh */
+
+
+
   memset(expected, 0, COUNTOF(expected));
   len = GetLocaleInfoA(MAKELANGID(LANG_ENGLISH, SUBLANG_DEFAULT), LOCALE_SLANGUAGE, expected, COUNTOF(expected));
   SetLastError(0xdeadbeef);
@@ -80,7 +80,7 @@ __attribute__((used)) static void test_GetLocaleInfoA(void)
   else
       win_skip("LANG_ARABIC not installed\n");
 
-  /* SUBLANG_DEFAULT is required for mlang.dll, but optional for GetLocaleInfo */
+
   memset(expected, 0, COUNTOF(expected));
   len = GetLocaleInfoA(MAKELANGID(LANG_GERMAN, SUBLANG_DEFAULT), LOCALE_SLANGUAGE, expected, COUNTOF(expected));
   SetLastError(0xdeadbeef);
@@ -91,9 +91,9 @@ __attribute__((used)) static void test_GetLocaleInfoA(void)
       ret, buffer, len, expected);
 
 
-  /* HTMLKit and "Font xplorer lite" expect GetLocaleInfoA to
-   * partially fill the buffer even if it is too short. See bug 637.
-   */
+
+
+
   SetLastError(0xdeadbeef);
   memset(buffer, 0, COUNTOF(buffer));
   ret = GetLocaleInfoA(lcid, NUO|LOCALE_SDAYNAME1, buffer, 0);

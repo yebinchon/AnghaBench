@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct stat {int /*<<< orphan*/  st_mode; } ;
-typedef  int /*<<< orphan*/  file_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  S_ISDIR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  free_filelist (int /*<<< orphan*/ *) ; 
- int getdir (char const* const,int /*<<< orphan*/ **,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  kprintf (char*,char const* const,...) ; 
- scalar_t__ stat (char const* const,struct stat*) ; 
- int /*<<< orphan*/  vkprintf (int,char*,char const* const) ; 
+
+
+
+struct stat {int st_mode; } ;
+typedef int file_t ;
+
+
+ int S_ISDIR (int ) ;
+ int exit (int) ;
+ int free_filelist (int *) ;
+ int getdir (char const* const,int **,int ,int) ;
+ int kprintf (char*,char const* const,...) ;
+ scalar_t__ stat (char const* const,struct stat*) ;
+ int vkprintf (int,char*,char const* const) ;
 
 __attribute__((used)) static int test_dir_exist_and_empty (const char *const path, struct stat *b) {
   if (stat (path, b) || !S_ISDIR (b->st_mode)) {

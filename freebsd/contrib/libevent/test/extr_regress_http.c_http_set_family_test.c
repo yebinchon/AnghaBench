@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  AF_UNSPEC ; 
- int /*<<< orphan*/  http_connection_test_ (void*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int AF_UNSPEC ;
+ int http_connection_test_ (void*,int ,char*,int *,int ,int ,int ) ;
 
 __attribute__((used)) static void
 http_set_family_test(void *arg)
 {
-	http_connection_test_(arg, 0, "127.0.0.1", NULL, 0, AF_UNSPEC, 0);
+ http_connection_test_(arg, 0, "127.0.0.1", ((void*)0), 0, AF_UNSPEC, 0);
 }

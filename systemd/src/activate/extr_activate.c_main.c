@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  fd; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int fd; } ;
 struct epoll_event {TYPE_1__ data; } ;
 
-/* Variables and functions */
- scalar_t__ EINTR ; 
- int EXIT_FAILURE ; 
- int EXIT_SUCCESS ; 
- int /*<<< orphan*/  SD_LISTEN_FDS_START ; 
- scalar_t__ arg_accept ; 
- int do_accept (char*,char**,char**,int /*<<< orphan*/ ) ; 
- scalar_t__ epoll_wait (int,struct epoll_event*,int,int) ; 
- scalar_t__ errno ; 
- int /*<<< orphan*/  exec_process (char*,char**,char**,int /*<<< orphan*/ ,size_t) ; 
- int install_chld_handler () ; 
- int /*<<< orphan*/  log_error (char*) ; 
- int /*<<< orphan*/  log_error_errno (scalar_t__,char*) ; 
- int /*<<< orphan*/  log_info (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  log_open () ; 
- int /*<<< orphan*/  log_parse_environment () ; 
- int /*<<< orphan*/  log_show_color (int) ; 
- int open_sockets (int*,scalar_t__) ; 
- size_t optind ; 
- int parse_argv (int,char**) ; 
+
+ scalar_t__ EINTR ;
+ int EXIT_FAILURE ;
+ int EXIT_SUCCESS ;
+ int SD_LISTEN_FDS_START ;
+ scalar_t__ arg_accept ;
+ int do_accept (char*,char**,char**,int ) ;
+ scalar_t__ epoll_wait (int,struct epoll_event*,int,int) ;
+ scalar_t__ errno ;
+ int exec_process (char*,char**,char**,int ,size_t) ;
+ int install_chld_handler () ;
+ int log_error (char*) ;
+ int log_error_errno (scalar_t__,char*) ;
+ int log_info (char*,int ) ;
+ int log_open () ;
+ int log_parse_environment () ;
+ int log_show_color (int) ;
+ int open_sockets (int*,scalar_t__) ;
+ size_t optind ;
+ int parse_argv (int,char**) ;
 
 int main(int argc, char **argv, char **envp) {
         int r, n;
         int epoll_fd = -1;
 
-        log_show_color(true);
+        log_show_color(1);
         log_parse_environment();
         log_open();
 

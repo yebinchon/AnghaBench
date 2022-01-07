@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- unsigned long PAGE_SIZE ; 
- unsigned int fls (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  num_online_cpus () ; 
+ unsigned long PAGE_SIZE ;
+ unsigned int fls (int ) ;
+ int num_online_cpus () ;
 
 __attribute__((used)) static unsigned long lazy_max_pages(void)
 {
-	unsigned int log;
+ unsigned int log;
 
-	log = fls(num_online_cpus());
+ log = fls(num_online_cpus());
 
-	return log * (32UL * 1024 * 1024 / PAGE_SIZE);
+ return log * (32UL * 1024 * 1024 / PAGE_SIZE);
 }

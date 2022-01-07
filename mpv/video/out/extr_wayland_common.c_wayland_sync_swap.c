@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  long long uint64_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef long long uint64_t ;
 struct vo_wayland_state {int sync_size; scalar_t__ last_ust; int last_msc; int last_sbc; int vsync_duration; long long last_sbc_mp_time; long long last_queue_display_time; TYPE_1__* sync; scalar_t__ last_skipped_vsyncs; } ;
 struct timespec {long long tv_sec; int tv_nsec; } ;
-typedef  int int64_t ;
+typedef int int64_t ;
 struct TYPE_2__ {scalar_t__ ust; scalar_t__ refresh_usec; int msc; int sbc; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLOCK_MONOTONIC ; 
- scalar_t__ clock_gettime (int /*<<< orphan*/ ,struct timespec*) ; 
- long long mp_time_us () ; 
+
+ int CLOCK_MONOTONIC ;
+ scalar_t__ clock_gettime (int ,struct timespec*) ;
+ long long mp_time_us () ;
 
 void wayland_sync_swap(struct vo_wayland_state *wl)
 {
@@ -28,8 +28,8 @@ void wayland_sync_swap(struct vo_wayland_state *wl)
 
     wl->last_skipped_vsyncs = 0;
 
-    // If these are the same (can happen if a frame takes too long), update
-    // the ust/msc/sbc based on when the next frame is expected to arrive.
+
+
     if (wl->sync[index].ust == wl->last_ust && wl->last_ust) {
         wl->sync[index].ust += wl->sync[index].refresh_usec;
         wl->sync[index].msc += 1;

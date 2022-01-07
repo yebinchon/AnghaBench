@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_8__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {int (* xDelete ) (TYPE_1__*,char const*,int) ;int (* xAccess ) (TYPE_1__*,char*,int /*<<< orphan*/ ,int*) ;} ;
-typedef  TYPE_1__ sqlite3_vfs ;
+
+
+typedef struct TYPE_10__ TYPE_8__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_9__ {int (* xDelete ) (TYPE_1__*,char const*,int) ;int (* xAccess ) (TYPE_1__*,char*,int ,int*) ;} ;
+typedef TYPE_1__ sqlite3_vfs ;
 struct TYPE_10__ {TYPE_1__* pOrigVfs; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SQLITE_ACCESS_EXISTS ; 
- int SQLITE_IOERR_NOMEM ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  SQLITE_OPEN_MAIN_JOURNAL ; 
- int /*<<< orphan*/  SQLITE_OPEN_WAL ; 
- TYPE_8__ gMultiplex ; 
- int /*<<< orphan*/  multiplexFilename (char const*,int,int /*<<< orphan*/ ,int,char*) ; 
- int /*<<< orphan*/  sqlite3_free (char*) ; 
- char* sqlite3_malloc64 (int) ; 
- scalar_t__ strlen (char const*) ; 
- int stub1 (TYPE_1__*,char const*,int) ; 
- int stub2 (TYPE_1__*,char*,int /*<<< orphan*/ ,int*) ; 
- int stub3 (TYPE_1__*,char*,int) ; 
- int stub4 (TYPE_1__*,char*,int /*<<< orphan*/ ,int*) ; 
- int stub5 (TYPE_1__*,char*,int) ; 
+
+ int SQLITE_ACCESS_EXISTS ;
+ int SQLITE_IOERR_NOMEM ;
+ int SQLITE_OK ;
+ int SQLITE_OPEN_MAIN_JOURNAL ;
+ int SQLITE_OPEN_WAL ;
+ TYPE_8__ gMultiplex ;
+ int multiplexFilename (char const*,int,int ,int,char*) ;
+ int sqlite3_free (char*) ;
+ char* sqlite3_malloc64 (int) ;
+ scalar_t__ strlen (char const*) ;
+ int stub1 (TYPE_1__*,char const*,int) ;
+ int stub2 (TYPE_1__*,char*,int ,int*) ;
+ int stub3 (TYPE_1__*,char*,int) ;
+ int stub4 (TYPE_1__*,char*,int ,int*) ;
+ int stub5 (TYPE_1__*,char*,int) ;
 
 __attribute__((used)) static int multiplexDelete(
-  sqlite3_vfs *pVfs,         /* The multiplex VFS */
-  const char *zName,         /* Name of file to delete */
+  sqlite3_vfs *pVfs,
+  const char *zName,
   int syncDir
 ){
   int rc;
-  sqlite3_vfs *pOrigVfs = gMultiplex.pOrigVfs;   /* Real VFS */
+  sqlite3_vfs *pOrigVfs = gMultiplex.pOrigVfs;
   rc = pOrigVfs->xDelete(pOrigVfs, zName, syncDir);
   if( rc==SQLITE_OK ){
-    /* If the main chunk was deleted successfully, also delete any subsequent
-    ** chunks - starting with the last (highest numbered). 
-    */
+
+
+
     int nName = (int)strlen(zName);
     char *z;
     z = sqlite3_malloc64(nName + 5);

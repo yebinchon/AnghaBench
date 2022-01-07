@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {unsigned long long volume_id; char* hostname; int /*<<< orphan*/  last_data_time; int /*<<< orphan*/  first_data_time; int /*<<< orphan*/  random_tag; scalar_t__ disabled; } ;
-typedef  TYPE_1__ host_t ;
-typedef  int /*<<< orphan*/  buf ;
 
-/* Variables and functions */
- TYPE_1__** HOSTS ; 
- int /*<<< orphan*/  assert (int) ; 
- int hosts ; 
- char* malloc (int) ; 
- scalar_t__ snprintf (char*,int,char*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sprintf (char*,char*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- char* strdup (char*) ; 
- int /*<<< orphan*/  vkprintf (int,char*,int,...) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {unsigned long long volume_id; char* hostname; int last_data_time; int first_data_time; int random_tag; scalar_t__ disabled; } ;
+typedef TYPE_1__ host_t ;
+typedef int buf ;
+
+
+ TYPE_1__** HOSTS ;
+ int assert (int) ;
+ int hosts ;
+ char* malloc (int) ;
+ scalar_t__ snprintf (char*,int,char*,char*,int ,int ,int ) ;
+ int sprintf (char*,char*,char*,int ,int ,int ) ;
+ char* strdup (char*) ;
+ int vkprintf (int,char*,int,...) ;
 
 char *get_disabled (unsigned long long volume_id) {
   vkprintf (3, "get_disabled (volume_id: %llu)\n", volume_id);
@@ -46,8 +46,8 @@ char *get_disabled (unsigned long long volume_id) {
   vkprintf (4, "get_disabled: l = %d, m = %d\n", l, m);
 
   char *z = malloc (l + 1), *p = z;
-  if (z == NULL) {
-    return NULL;
+  if (z == ((void*)0)) {
+    return ((void*)0);
   }
 
   for (i = 1; i <= hosts; i++) {

@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  SOCKET ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOG (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  exit (int) ; 
- size_t recv (int /*<<< orphan*/ ,char*,int,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int SOCKET ;
+
+
+ int LOG (int ,char*) ;
+ int exit (int) ;
+ size_t recv (int ,char*,int,int ) ;
 
 __attribute__((used)) static size_t
 recv_line(SOCKET fd, void *buf, size_t buf_size)

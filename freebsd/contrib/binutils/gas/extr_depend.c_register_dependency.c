@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct dependency {struct dependency* next; int /*<<< orphan*/  file; } ;
 
-/* Variables and functions */
- struct dependency* dep_chain ; 
- int /*<<< orphan*/ * dep_file ; 
- int /*<<< orphan*/  strcmp (char*,int /*<<< orphan*/ ) ; 
- scalar_t__ xmalloc (int) ; 
- int /*<<< orphan*/  xstrdup (char*) ; 
+
+
+
+struct dependency {struct dependency* next; int file; } ;
+
+
+ struct dependency* dep_chain ;
+ int * dep_file ;
+ int strcmp (char*,int ) ;
+ scalar_t__ xmalloc (int) ;
+ int xstrdup (char*) ;
 
 void
 register_dependency (char *filename)
 {
   struct dependency *dep;
 
-  if (dep_file == NULL)
+  if (dep_file == ((void*)0))
     return;
 
-  for (dep = dep_chain; dep != NULL; dep = dep->next)
+  for (dep = dep_chain; dep != ((void*)0); dep = dep->next)
     {
       if (!strcmp (filename, dep->file))
-	return;
+ return;
     }
 
   dep = (struct dependency *) xmalloc (sizeof (struct dependency));

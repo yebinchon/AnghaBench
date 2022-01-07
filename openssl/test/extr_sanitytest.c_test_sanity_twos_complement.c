@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  TEST_int_eq (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_long_eq (long,long) ; 
+ int TEST_int_eq (int,int ) ;
+ int TEST_long_eq (long,long) ;
 
 __attribute__((used)) static int test_sanity_twos_complement(void)
 {
-    /* Basic two's complement checks. */
+
     if (!TEST_int_eq(~(-1), 0)
         || !TEST_long_eq(~(-1L), 0L))
         return 0;

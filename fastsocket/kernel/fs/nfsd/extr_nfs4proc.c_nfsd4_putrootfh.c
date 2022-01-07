@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct svc_rqst {int dummy; } ;
-struct nfsd4_compound_state {int /*<<< orphan*/  current_fh; } ;
-typedef  int /*<<< orphan*/  __be32 ;
+struct nfsd4_compound_state {int current_fh; } ;
+typedef int __be32 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  exp_pseudoroot (struct svc_rqst*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fh_put (int /*<<< orphan*/ *) ; 
+
+ int exp_pseudoroot (struct svc_rqst*,int *) ;
+ int fh_put (int *) ;
 
 __attribute__((used)) static __be32
 nfsd4_putrootfh(struct svc_rqst *rqstp, struct nfsd4_compound_state *cstate,
-		void *arg)
+  void *arg)
 {
-	__be32 status;
+ __be32 status;
 
-	fh_put(&cstate->current_fh);
-	status = exp_pseudoroot(rqstp, &cstate->current_fh);
-	return status;
+ fh_put(&cstate->current_fh);
+ status = exp_pseudoroot(rqstp, &cstate->current_fh);
+ return status;
 }

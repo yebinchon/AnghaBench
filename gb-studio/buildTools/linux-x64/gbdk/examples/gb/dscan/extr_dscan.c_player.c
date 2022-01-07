@@ -1,62 +1,62 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int UINT16 ;
-typedef  int UBYTE ;
 
-/* Variables and functions */
- int DEF_PC0 ; 
- int DEF_PC1 ; 
- int DEF_PF ; 
- int /*<<< orphan*/  DEF_PY ; 
- int DEF_SP ; 
- int DIV_REG ; 
- int J_DOWN ; 
- int J_LEFT ; 
- int J_RIGHT ; 
- int J_SELECT ; 
- int J_START ; 
- int J_UP ; 
- scalar_t__ MAX_PX ; 
- int MAX_TT ; 
- scalar_t__ MIN_PX ; 
- int /*<<< orphan*/  delay (int) ; 
- int /*<<< orphan*/ * foreCGB ; 
- int /*<<< orphan*/  hide_msg () ; 
- int /*<<< orphan*/  init_enemy () ; 
- int /*<<< orphan*/  init_kirai () ; 
- int /*<<< orphan*/  init_player () ; 
- int /*<<< orphan*/  init_score () ; 
- int /*<<< orphan*/  init_tama () ; 
- int /*<<< orphan*/  initarand (int) ; 
- int joypad () ; 
- int k_left ; 
- int k_right ; 
- int /*<<< orphan*/  move_sprite (int,scalar_t__,int /*<<< orphan*/ ) ; 
- int pf ; 
- int pl ; 
- int ps ; 
- int pw ; 
- scalar_t__ px ; 
- int /*<<< orphan*/  set_sprite_attrb (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_sprite_tile (int,int) ; 
- int /*<<< orphan*/  show_gover () ; 
- int /*<<< orphan*/  show_level (int) ; 
- int /*<<< orphan*/  show_pause () ; 
- int /*<<< orphan*/  show_score (int) ; 
- int* tf ; 
- scalar_t__* tx ; 
- int /*<<< orphan*/ * ty ; 
- int /*<<< orphan*/  waitpadup () ; 
+
+
+
+typedef int UINT16 ;
+typedef int UBYTE ;
+
+
+ int DEF_PC0 ;
+ int DEF_PC1 ;
+ int DEF_PF ;
+ int DEF_PY ;
+ int DEF_SP ;
+ int DIV_REG ;
+ int J_DOWN ;
+ int J_LEFT ;
+ int J_RIGHT ;
+ int J_SELECT ;
+ int J_START ;
+ int J_UP ;
+ scalar_t__ MAX_PX ;
+ int MAX_TT ;
+ scalar_t__ MIN_PX ;
+ int delay (int) ;
+ int * foreCGB ;
+ int hide_msg () ;
+ int init_enemy () ;
+ int init_kirai () ;
+ int init_player () ;
+ int init_score () ;
+ int init_tama () ;
+ int initarand (int) ;
+ int joypad () ;
+ int k_left ;
+ int k_right ;
+ int move_sprite (int,scalar_t__,int ) ;
+ int pf ;
+ int pl ;
+ int ps ;
+ int pw ;
+ scalar_t__ px ;
+ int set_sprite_attrb (int,int ) ;
+ int set_sprite_tile (int,int) ;
+ int show_gover () ;
+ int show_level (int) ;
+ int show_pause () ;
+ int show_score (int) ;
+ int* tf ;
+ scalar_t__* tx ;
+ int * ty ;
+ int waitpadup () ;
 
 void player()
 {
@@ -65,10 +65,10 @@ void player()
   UINT16 seed;
 
   key = joypad();
-  /* pause */
+
   if( key & J_START ) {
     if( pf == DEF_PF ) {
-      /* Initialize the random number generator */
+
       seed = DIV_REG;
       waitpadup();
       seed |= ((UINT16)DIV_REG << 8);
@@ -115,7 +115,7 @@ void player()
         } else if( key & J_SELECT ) {
           i = k_right;
           k_right = k_left;
-          k_left  = i;
+          k_left = i;
           waitpadup();
         }
       }
@@ -126,7 +126,7 @@ void player()
     return;
   }
 
-  /* dead */
+
   if( pf > 1 ) {
     if( pf < DEF_PF ) {
       set_sprite_tile( 0, pf*2+DEF_PC0 );
@@ -142,7 +142,7 @@ void player()
     return;
   }
 
-  /* move */
+
   if( (key&J_LEFT)&&(px>MIN_PX) ) {
     px--;
     move_sprite( 0, px, DEF_PY ); move_sprite( 1, px+8, DEF_PY );
@@ -150,8 +150,8 @@ void player()
     px++;
     move_sprite( 0, px, DEF_PY ); move_sprite( 1, px+8, DEF_PY );
   }
-  /* shot */
-  if( key & k_left ) {  /* change J_B to J_A */
+
+  if( key & k_left ) {
     if( pf == 0 ) {
       pf = 1;
       for( i=0; i<MAX_TT; i++ ) {
@@ -161,7 +161,7 @@ void player()
         }
       }
     }
-  } else if( key & k_right ) {  /* change J_A to J_B */
+  } else if( key & k_right ) {
     if( pf == 0 ) {
       pf = 1;
       for( i=0; i<MAX_TT; i++ ) {

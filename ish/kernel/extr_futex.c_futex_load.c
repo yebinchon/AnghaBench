@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct futex {scalar_t__ mem; int /*<<< orphan*/  addr; } ;
-typedef  int /*<<< orphan*/  dword_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct futex {scalar_t__ mem; int addr; } ;
+typedef int dword_t ;
 struct TYPE_2__ {scalar_t__ mem; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MEM_READ ; 
- int /*<<< orphan*/  assert (int) ; 
- TYPE_1__* current ; 
- int /*<<< orphan*/ * mem_ptr (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int MEM_READ ;
+ int assert (int) ;
+ TYPE_1__* current ;
+ int * mem_ptr (scalar_t__,int ,int ) ;
 
 __attribute__((used)) static int futex_load(struct futex *futex, dword_t *out) {
     assert(futex->mem == current->mem);
     dword_t *ptr = mem_ptr(current->mem, futex->addr, MEM_READ);
-    if (ptr == NULL)
+    if (ptr == ((void*)0))
         return 1;
     *out = *ptr;
     return 0;

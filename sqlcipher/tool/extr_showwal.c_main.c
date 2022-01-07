@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct stat {int st_size; } ;
-typedef  int off_t ;
-typedef  int /*<<< orphan*/  Cksum ;
+typedef int off_t ;
+typedef int Cksum ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ISDIGIT (char) ; 
- int /*<<< orphan*/  O_RDONLY ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  close (scalar_t__) ; 
- int /*<<< orphan*/  decode_btree_page (unsigned char*,int,int,char*) ; 
- int /*<<< orphan*/  exit (int) ; 
- scalar_t__ fd ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  free (unsigned char*) ; 
- int /*<<< orphan*/  fstat (scalar_t__,struct stat*) ; 
- unsigned char* getContent (int,int) ; 
- int /*<<< orphan*/  lseek (scalar_t__,int,int /*<<< orphan*/ ) ; 
- int mxFrame ; 
- scalar_t__ open (char*,int /*<<< orphan*/ ) ; 
- int pagesize ; 
- int /*<<< orphan*/  print_frame (int) ; 
- int /*<<< orphan*/  print_oneline_frame (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  print_wal_header (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  read (scalar_t__,unsigned char*,int) ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ strcmp (char*,char*) ; 
- int strtol (char*,char**,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  truncate (char*,int) ; 
+
+ int ISDIGIT (char) ;
+ int O_RDONLY ;
+ int SEEK_SET ;
+ int close (scalar_t__) ;
+ int decode_btree_page (unsigned char*,int,int,char*) ;
+ int exit (int) ;
+ scalar_t__ fd ;
+ int fprintf (int ,char*,...) ;
+ int free (unsigned char*) ;
+ int fstat (scalar_t__,struct stat*) ;
+ unsigned char* getContent (int,int) ;
+ int lseek (scalar_t__,int,int ) ;
+ int mxFrame ;
+ scalar_t__ open (char*,int ) ;
+ int pagesize ;
+ int print_frame (int) ;
+ int print_oneline_frame (int,int *) ;
+ int print_wal_header (int *) ;
+ int printf (char*,...) ;
+ int read (scalar_t__,unsigned char*,int) ;
+ int stderr ;
+ scalar_t__ strcmp (char*,char*) ;
+ int strtol (char*,char**,int ) ;
+ int truncate (char*,int) ;
 
 int main(int argc, char **argv){
   struct stat sbuf;
@@ -108,14 +108,14 @@ int main(int argc, char **argv){
         decode_btree_page(a, iStart, hdrSize, zLeft+1);
         free(a);
         continue;
-#if !defined(_MSC_VER)
+
       }else if( zLeft && strcmp(zLeft,"truncate")==0 ){
-        /* Frame number followed by "truncate" truncates the WAL file
-        ** after that frame */
+
+
         off_t newSize = 32 + iStart*(pagesize+24);
         truncate(argv[1], newSize);
         continue;
-#endif
+
       }else{
         iEnd = iStart;
       }

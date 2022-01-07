@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  jv ;
-struct TYPE_2__ {int /*<<< orphan*/  number; } ;
-typedef  TYPE_1__ decNumberSingle ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEC_CONTEXT () ; 
- int /*<<< orphan*/  JVP_FLAGS_NUMBER_LITERAL ; 
- scalar_t__ JVP_HAS_FLAGS (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  JVP_HAS_KIND (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  JV_KIND_NUMBER ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  decNumberCompare (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ decNumberIsNegative (int /*<<< orphan*/ *) ; 
- scalar_t__ decNumberIsZero (int /*<<< orphan*/ *) ; 
- double jv_number_value (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jvp_dec_number_ptr (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int jv ;
+struct TYPE_2__ {int number; } ;
+typedef TYPE_1__ decNumberSingle ;
+
+
+ int DEC_CONTEXT () ;
+ int JVP_FLAGS_NUMBER_LITERAL ;
+ scalar_t__ JVP_HAS_FLAGS (int ,int ) ;
+ int JVP_HAS_KIND (int ,int ) ;
+ int JV_KIND_NUMBER ;
+ int assert (int ) ;
+ int decNumberCompare (int *,int ,int ,int ) ;
+ scalar_t__ decNumberIsNegative (int *) ;
+ scalar_t__ decNumberIsZero (int *) ;
+ double jv_number_value (int ) ;
+ int jvp_dec_number_ptr (int ) ;
 
 int jvp_number_cmp(jv a, jv b) {
   assert(JVP_HAS_KIND(a, JV_KIND_NUMBER));
   assert(JVP_HAS_KIND(b, JV_KIND_NUMBER));
 
   if(JVP_HAS_FLAGS(a, JVP_FLAGS_NUMBER_LITERAL) && JVP_HAS_FLAGS(b, JVP_FLAGS_NUMBER_LITERAL)) {
-    decNumberSingle res; 
-    decNumberCompare(&res.number, 
-                     jvp_dec_number_ptr(a), 
+    decNumberSingle res;
+    decNumberCompare(&res.number,
+                     jvp_dec_number_ptr(a),
                      jvp_dec_number_ptr(b),
                      DEC_CONTEXT()
                      );

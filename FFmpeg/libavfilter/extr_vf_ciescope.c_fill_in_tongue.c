@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint16_t ;
+
+
+
+
+typedef int uint16_t ;
 struct ColorSystem {int dummy; } ;
 
-/* Variables and functions */
- double FFMAX3 (double,double,double) ; 
- int const LUV ; 
- int const UCS ; 
- int const XYY ; 
- int /*<<< orphan*/  av_assert0 (int /*<<< orphan*/ ) ; 
- scalar_t__ constrain_rgb (double*,double*,double*) ; 
- int /*<<< orphan*/  find_tongue (int* const,int const,int const,int,int*,int*,int*) ; 
- int /*<<< orphan*/  gamma_correct_rgb (struct ColorSystem const* const,double*,double*,double*) ; 
- int /*<<< orphan*/  upvp_to_xy (double,double,double*,double*) ; 
- int /*<<< orphan*/  uv_to_xy (double,double,double*,double*) ; 
- int /*<<< orphan*/  xyz_to_rgb (double const**,double,double,double,double*,double*,double*) ; 
+
+ double FFMAX3 (double,double,double) ;
+ int const LUV ;
+ int const UCS ;
+ int const XYY ;
+ int av_assert0 (int ) ;
+ scalar_t__ constrain_rgb (double*,double*,double*) ;
+ int find_tongue (int* const,int const,int const,int,int*,int*,int*) ;
+ int gamma_correct_rgb (struct ColorSystem const* const,double*,double*,double*) ;
+ int upvp_to_xy (double,double,double*,double*) ;
+ int uv_to_xy (double,double,double*,double*) ;
+ int xyz_to_rgb (double const**,double,double,double,double*,double*,double*) ;
 
 __attribute__((used)) static void
-fill_in_tongue(uint16_t*                  const pixels,
-               int                        const linesize,
-               int                        const w,
-               int                        const h,
-               uint16_t                   const maxval,
+fill_in_tongue(uint16_t* const pixels,
+               int const linesize,
+               int const w,
+               int const h,
+               uint16_t const maxval,
                const struct ColorSystem * const cs,
-               double                     const m[3][3],
-               int                        const cie,
-               int                        const correct_gamma,
-               float                      const contrast)
+               double const m[3][3],
+               int const cie,
+               int const correct_gamma,
+               float const contrast)
 {
     int y;
 
-    /* Scan the image line by line and  fill  the  tongue  outline
-       with the RGB values determined by the color system for the x-y
-       co-ordinates within the tongue.
-    */
+
+
+
+
 
     for (y = 0; y < h; ++y) {
-        int  present;  /* There is some tongue on this line */
-        int leftEdge; /* x position of leftmost pixel in tongue on this line */
-        int rightEdge; /* same, but rightmost */
+        int present;
+        int leftEdge;
+        int rightEdge;
 
         find_tongue(pixels, w, linesize, y, &present, &leftEdge, &rightEdge);
 
@@ -81,10 +81,10 @@ fill_in_tongue(uint16_t*                  const pixels,
 
                 xyz_to_rgb(m, cx, cy, cz, &jr, &jg, &jb);
 
-                /* Check whether the requested color  is  within  the
-                   gamut  achievable with the given color system.  If
-                   not, draw it in a reduced  intensity,  interpolated
-                   by desaturation to the closest within-gamut color. */
+
+
+
+
 
                 if (constrain_rgb(&jr, &jg, &jb))
                     mx *= contrast;
@@ -95,7 +95,7 @@ fill_in_tongue(uint16_t*                  const pixels,
                     jg = jg / jmax;
                     jb = jb / jmax;
                 }
-                /* gamma correct from linear rgb to nonlinear rgb. */
+
                 if (correct_gamma)
                     gamma_correct_rgb(cs, &jr, &jg, &jb);
                 r = mx * jr;

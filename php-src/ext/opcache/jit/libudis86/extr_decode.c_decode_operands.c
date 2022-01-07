@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_6__ ;
-typedef  struct TYPE_11__   TYPE_5__ ;
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_12__ TYPE_6__ ;
+typedef struct TYPE_11__ TYPE_5__ ;
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct ud {TYPE_5__* itab_entry; TYPE_6__* operand; } ;
 struct TYPE_12__ {scalar_t__ type; } ;
-struct TYPE_10__ {int /*<<< orphan*/  size; int /*<<< orphan*/  type; } ;
-struct TYPE_9__ {int /*<<< orphan*/  size; int /*<<< orphan*/  type; } ;
-struct TYPE_8__ {int /*<<< orphan*/  size; int /*<<< orphan*/  type; } ;
-struct TYPE_7__ {int /*<<< orphan*/  size; int /*<<< orphan*/  type; } ;
+struct TYPE_10__ {int size; int type; } ;
+struct TYPE_9__ {int size; int type; } ;
+struct TYPE_8__ {int size; int type; } ;
+struct TYPE_7__ {int size; int type; } ;
 struct TYPE_11__ {TYPE_4__ operand4; TYPE_3__ operand3; TYPE_2__ operand2; TYPE_1__ operand1; } ;
 
-/* Variables and functions */
- scalar_t__ UD_NONE ; 
- int /*<<< orphan*/  decode_operand (struct ud*,TYPE_6__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ UD_NONE ;
+ int decode_operand (struct ud*,TYPE_6__*,int ,int ) ;
 
 __attribute__((used)) static int
 decode_operands(struct ud* u)

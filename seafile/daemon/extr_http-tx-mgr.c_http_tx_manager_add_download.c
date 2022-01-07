@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_5__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  gboolean ;
-struct TYPE_14__ {int /*<<< orphan*/  job_mgr; int /*<<< orphan*/  repo_mgr; } ;
+
+
+typedef struct TYPE_14__ TYPE_5__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef int gboolean ;
+struct TYPE_14__ {int job_mgr; int repo_mgr; } ;
 struct TYPE_13__ {TYPE_1__* priv; } ;
-struct TYPE_12__ {int protocol_version; void* repo_name; int /*<<< orphan*/  ref_cnt_lock; int /*<<< orphan*/  blk_ref_cnts; int /*<<< orphan*/  use_fileserver_port; int /*<<< orphan*/  state; void* email; int /*<<< orphan*/  head; } ;
-struct TYPE_11__ {int /*<<< orphan*/  download_tasks; } ;
-typedef  int /*<<< orphan*/  SeafRepo ;
-typedef  TYPE_2__ HttpTxTask ;
-typedef  TYPE_3__ HttpTxManager ;
-typedef  int /*<<< orphan*/  GError ;
+struct TYPE_12__ {int protocol_version; void* repo_name; int ref_cnt_lock; int blk_ref_cnts; int use_fileserver_port; int state; void* email; int head; } ;
+struct TYPE_11__ {int download_tasks; } ;
+typedef int SeafRepo ;
+typedef TYPE_2__ HttpTxTask ;
+typedef TYPE_3__ HttpTxManager ;
+typedef int GError ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HTTP_TASK_STATE_NORMAL ; 
- int /*<<< orphan*/  HTTP_TASK_TYPE_DOWNLOAD ; 
- int /*<<< orphan*/  SEAFILE_DOMAIN ; 
- int /*<<< orphan*/  SEAF_ERR_BAD_ARGS ; 
- int /*<<< orphan*/  clean_tasks_for_repo (TYPE_3__*,char const*) ; 
- int /*<<< orphan*/  g_free ; 
- int /*<<< orphan*/  g_hash_table_insert (int /*<<< orphan*/ ,void*,TYPE_2__*) ; 
- int /*<<< orphan*/  g_hash_table_new_full (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  g_hash_table_remove (int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  g_set_error (int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  g_str_equal ; 
- int /*<<< orphan*/  g_str_hash ; 
- void* g_strdup (char const*) ; 
- int /*<<< orphan*/  http_download_done ; 
- int /*<<< orphan*/  http_download_thread ; 
- TYPE_2__* http_tx_task_new (TYPE_3__*,char const*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*,char const*,char const*,char const*) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,char const*,int) ; 
- int /*<<< orphan*/  pthread_mutex_init (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- TYPE_5__* seaf ; 
- scalar_t__ seaf_job_manager_schedule_job (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/ * seaf_repo_manager_get_repo (int /*<<< orphan*/ ,char const*) ; 
+
+ int HTTP_TASK_STATE_NORMAL ;
+ int HTTP_TASK_TYPE_DOWNLOAD ;
+ int SEAFILE_DOMAIN ;
+ int SEAF_ERR_BAD_ARGS ;
+ int clean_tasks_for_repo (TYPE_3__*,char const*) ;
+ int g_free ;
+ int g_hash_table_insert (int ,void*,TYPE_2__*) ;
+ int g_hash_table_new_full (int ,int ,int ,int ) ;
+ int g_hash_table_remove (int ,char const*) ;
+ int g_set_error (int **,int ,int ,char*) ;
+ int g_str_equal ;
+ int g_str_hash ;
+ void* g_strdup (char const*) ;
+ int http_download_done ;
+ int http_download_thread ;
+ TYPE_2__* http_tx_task_new (TYPE_3__*,char const*,int,int ,int ,char const*,char const*,char const*,char const*) ;
+ int memcpy (int ,char const*,int) ;
+ int pthread_mutex_init (int *,int *) ;
+ TYPE_5__* seaf ;
+ scalar_t__ seaf_job_manager_schedule_job (int ,int ,int ,TYPE_2__*) ;
+ int * seaf_repo_manager_get_repo (int ,char const*) ;
 
 int
 http_tx_manager_add_download (HttpTxManager *manager,
@@ -95,7 +95,7 @@ http_tx_manager_add_download (HttpTxManager *manager,
 
     task->blk_ref_cnts = g_hash_table_new_full (g_str_hash, g_str_equal,
                                                 g_free, g_free);
-    pthread_mutex_init (&task->ref_cnt_lock, NULL);
+    pthread_mutex_init (&task->ref_cnt_lock, ((void*)0));
 
     g_hash_table_insert (manager->priv->download_tasks,
                          g_strdup(repo_id),

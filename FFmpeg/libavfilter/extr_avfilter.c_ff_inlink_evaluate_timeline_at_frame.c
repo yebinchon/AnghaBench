@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int int64_t ;
-struct TYPE_8__ {int* var_values; int /*<<< orphan*/  enable; int /*<<< orphan*/  enable_str; } ;
-struct TYPE_7__ {int frame_count_out; int w; int h; int /*<<< orphan*/  time_base; TYPE_3__* dst; } ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int int64_t ;
+struct TYPE_8__ {int* var_values; int enable; int enable_str; } ;
+struct TYPE_7__ {int frame_count_out; int w; int h; int time_base; TYPE_3__* dst; } ;
 struct TYPE_6__ {int pts; int pkt_pos; } ;
-typedef  TYPE_1__ AVFrame ;
-typedef  TYPE_2__ AVFilterLink ;
-typedef  TYPE_3__ AVFilterContext ;
+typedef TYPE_1__ AVFrame ;
+typedef TYPE_2__ AVFilterLink ;
+typedef TYPE_3__ AVFilterContext ;
 
-/* Variables and functions */
- int AV_NOPTS_VALUE ; 
- int NAN ; 
- size_t VAR_H ; 
- size_t VAR_N ; 
- size_t VAR_POS ; 
- size_t VAR_T ; 
- size_t VAR_W ; 
- int /*<<< orphan*/  av_expr_eval (int /*<<< orphan*/ ,int*,int /*<<< orphan*/ *) ; 
- int av_q2d (int /*<<< orphan*/ ) ; 
- double fabs (int /*<<< orphan*/ ) ; 
+
+ int AV_NOPTS_VALUE ;
+ int NAN ;
+ size_t VAR_H ;
+ size_t VAR_N ;
+ size_t VAR_POS ;
+ size_t VAR_T ;
+ size_t VAR_W ;
+ int av_expr_eval (int ,int*,int *) ;
+ int av_q2d (int ) ;
+ double fabs (int ) ;
 
 int ff_inlink_evaluate_timeline_at_frame(AVFilterLink *link, const AVFrame *frame)
 {
@@ -48,5 +48,5 @@ int ff_inlink_evaluate_timeline_at_frame(AVFilterLink *link, const AVFrame *fram
     dstctx->var_values[VAR_H] = link->h;
     dstctx->var_values[VAR_POS] = pos == -1 ? NAN : pos;
 
-    return fabs(av_expr_eval(dstctx->enable, dstctx->var_values, NULL)) >= 0.5;
+    return fabs(av_expr_eval(dstctx->enable, dstctx->var_values, ((void*)0))) >= 0.5;
 }

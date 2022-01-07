@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct file_operations {int dummy; } ;
 
-/* Variables and functions */
- struct file_operations tty_fops ; 
+
+ struct file_operations tty_fops ;
 
 void tty_default_fops(struct file_operations *fops)
 {
-	*fops = tty_fops;
+ *fops = tty_fops;
 }

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT8 ;
-typedef  int UINT32 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AcpiDmIndent (int) ; 
- int /*<<< orphan*/  AcpiOsPrintf (char*,...) ; 
+
+
+
+typedef int UINT8 ;
+typedef int UINT32 ;
+
+
+ int AcpiDmIndent (int) ;
+ int AcpiOsPrintf (char*,...) ;
 
 __attribute__((used)) static void
 AcpiDmDumpRawDataBuffer (
-    UINT8                   *Buffer,
-    UINT32                  Length,
-    UINT32                  Level)
+    UINT8 *Buffer,
+    UINT32 Length,
+    UINT32 Level)
 {
-    UINT32                  Index;
-    UINT32                  i;
-    UINT32                  j;
+    UINT32 Index;
+    UINT32 i;
+    UINT32 j;
 
 
     if (!Length)

@@ -1,31 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int GLFW_MOD_ALT ; 
- int GLFW_MOD_CAPS_LOCK ; 
- int GLFW_MOD_CONTROL ; 
- int GLFW_MOD_NUM_LOCK ; 
- int GLFW_MOD_SHIFT ; 
- int GLFW_MOD_SUPER ; 
- int GetAsyncKeyState (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  VK_CAPITAL ; 
- int /*<<< orphan*/  VK_CONTROL ; 
- int /*<<< orphan*/  VK_LWIN ; 
- int /*<<< orphan*/  VK_MENU ; 
- int /*<<< orphan*/  VK_NUMLOCK ; 
- int /*<<< orphan*/  VK_RWIN ; 
- int /*<<< orphan*/  VK_SHIFT ; 
+ int GLFW_MOD_ALT ;
+ int GLFW_MOD_CAPS_LOCK ;
+ int GLFW_MOD_CONTROL ;
+ int GLFW_MOD_NUM_LOCK ;
+ int GLFW_MOD_SHIFT ;
+ int GLFW_MOD_SUPER ;
+ int GetAsyncKeyState (int ) ;
+ int VK_CAPITAL ;
+ int VK_CONTROL ;
+ int VK_LWIN ;
+ int VK_MENU ;
+ int VK_NUMLOCK ;
+ int VK_RWIN ;
+ int VK_SHIFT ;
 
 __attribute__((used)) static int getAsyncKeyMods(void)
 {

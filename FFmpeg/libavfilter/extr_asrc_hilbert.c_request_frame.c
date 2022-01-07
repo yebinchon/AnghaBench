@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
 struct TYPE_13__ {TYPE_1__* priv; } ;
 struct TYPE_12__ {TYPE_4__* src; } ;
-struct TYPE_11__ {scalar_t__ pts; int /*<<< orphan*/ * data; } ;
-struct TYPE_10__ {scalar_t__ pts; scalar_t__ taps; scalar_t__ nb_taps; int /*<<< orphan*/  nb_samples; } ;
-typedef  TYPE_1__ HilbertContext ;
-typedef  TYPE_2__ AVFrame ;
-typedef  TYPE_3__ AVFilterLink ;
-typedef  TYPE_4__ AVFilterContext ;
+struct TYPE_11__ {scalar_t__ pts; int * data; } ;
+struct TYPE_10__ {scalar_t__ pts; scalar_t__ taps; scalar_t__ nb_taps; int nb_samples; } ;
+typedef TYPE_1__ HilbertContext ;
+typedef TYPE_2__ AVFrame ;
+typedef TYPE_3__ AVFilterLink ;
+typedef TYPE_4__ AVFilterContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_EOF ; 
- int /*<<< orphan*/  ENOMEM ; 
- int FFMIN (int /*<<< orphan*/ ,scalar_t__) ; 
- int ff_filter_frame (TYPE_3__*,TYPE_2__*) ; 
- TYPE_2__* ff_get_audio_buffer (TYPE_3__*,int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,scalar_t__,int) ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_EOF ;
+ int ENOMEM ;
+ int FFMIN (int ,scalar_t__) ;
+ int ff_filter_frame (TYPE_3__*,TYPE_2__*) ;
+ TYPE_2__* ff_get_audio_buffer (TYPE_3__*,int) ;
+ int memcpy (int ,scalar_t__,int) ;
 
 __attribute__((used)) static int request_frame(AVFilterLink *outlink)
 {
@@ -49,6 +49,6 @@ __attribute__((used)) static int request_frame(AVFilterLink *outlink)
     memcpy(frame->data[0], s->taps + s->pts, nb_samples * sizeof(float));
 
     frame->pts = s->pts;
-    s->pts    += nb_samples;
+    s->pts += nb_samples;
     return ff_filter_frame(outlink, frame);
 }

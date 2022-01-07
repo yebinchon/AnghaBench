@@ -1,47 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int ULONG ;
-typedef  int COLORREF ;
 
-/* Variables and functions */
-#define  BMF_16BPP_555 136 
-#define  BMF_16BPP_565 135 
-#define  BMF_1BPP 134 
-#define  BMF_24BPP_BGR 133 
-#define  BMF_24BPP_RGB 132 
-#define  BMF_32BPP_BGR 131 
-#define  BMF_32BPP_RGB 130 
-#define  BMF_4BPP 129 
-#define  BMF_8BPP 128 
- int GetBValue (int) ; 
- int GetGValue (int) ; 
- int GetRValue (int) ; 
- int RGB (int,int,int) ; 
+
+
+
+typedef int ULONG ;
+typedef int COLORREF ;
+ int GetBValue (int) ;
+ int GetGValue (int) ;
+ int GetRValue (int) ;
+ int RGB (int,int,int) ;
 
 __attribute__((used)) static
 COLORREF
 iXlateToRGB(ULONG iFormat, ULONG ulColor)
 {
     ULONG ulRed, ulGreen, ulBlue;
-    
+
     switch (iFormat)
     {
-        case BMF_1BPP:
+        case 134:
             return ulColor ? 0xffffff : 0;
 
-        case BMF_4BPP:
-        case BMF_8BPP:
-        case BMF_16BPP_555:
+        case 129:
+        case 128:
+        case 136:
             ulRed = (ulColor & 0x7C00) >> 7;
             ulRed |= ulRed >> 5;
             ulGreen = (ulColor & 0x3E0) >> 2;
@@ -50,7 +39,7 @@ iXlateToRGB(ULONG iFormat, ULONG ulColor)
             ulBlue |= ulBlue >> 5;
             return RGB(ulRed, ulGreen, ulBlue);
 
-        case BMF_16BPP_565:
+        case 135:
             ulRed = (ulColor & 0xF800) >> 8;
             ulRed |= ulRed >> 5;
             ulGreen = (ulColor & 0x7E0) >> 3;
@@ -59,12 +48,12 @@ iXlateToRGB(ULONG iFormat, ULONG ulColor)
             ulBlue |= ulBlue >> 5;
             return RGB(ulRed, ulGreen, ulBlue);
 
-        case BMF_24BPP_RGB:
-        case BMF_32BPP_RGB:
+        case 132:
+        case 130:
             return ulColor;
 
-        case BMF_24BPP_BGR:
-        case BMF_32BPP_BGR:
+        case 133:
+        case 131:
             ulRed = GetRValue(ulColor);
             ulGreen = GetGValue(ulColor);
             ulBlue = GetBValue(ulColor);

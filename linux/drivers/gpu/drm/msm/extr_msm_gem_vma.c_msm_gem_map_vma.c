@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct sg_table {int dummy; } ;
-struct msm_gem_vma {int mapped; int /*<<< orphan*/  iova; int /*<<< orphan*/  inuse; } ;
+struct msm_gem_vma {int mapped; int iova; int inuse; } ;
 struct msm_gem_address_space {TYPE_2__* mmu; } ;
 struct TYPE_4__ {TYPE_1__* funcs; } ;
-struct TYPE_3__ {int (* map ) (TYPE_2__*,int /*<<< orphan*/ ,struct sg_table*,unsigned int,int) ;} ;
+struct TYPE_3__ {int (* map ) (TYPE_2__*,int ,struct sg_table*,unsigned int,int) ;} ;
 
-/* Variables and functions */
- int EINVAL ; 
- int PAGE_SHIFT ; 
- scalar_t__ WARN_ON (int) ; 
- int stub1 (TYPE_2__*,int /*<<< orphan*/ ,struct sg_table*,unsigned int,int) ; 
+
+ int EINVAL ;
+ int PAGE_SHIFT ;
+ scalar_t__ WARN_ON (int) ;
+ int stub1 (TYPE_2__*,int ,struct sg_table*,unsigned int,int) ;
 
 int
 msm_gem_map_vma(struct msm_gem_address_space *aspace,
-		struct msm_gem_vma *vma, int prot,
-		struct sg_table *sgt, int npages)
+  struct msm_gem_vma *vma, int prot,
+  struct sg_table *sgt, int npages)
 {
-	unsigned size = npages << PAGE_SHIFT;
-	int ret = 0;
+ unsigned size = npages << PAGE_SHIFT;
+ int ret = 0;
 
-	if (WARN_ON(!vma->iova))
-		return -EINVAL;
+ if (WARN_ON(!vma->iova))
+  return -EINVAL;
 
-	/* Increase the usage counter */
-	vma->inuse++;
 
-	if (vma->mapped)
-		return 0;
+ vma->inuse++;
 
-	vma->mapped = true;
+ if (vma->mapped)
+  return 0;
 
-	if (aspace && aspace->mmu)
-		ret = aspace->mmu->funcs->map(aspace->mmu, vma->iova, sgt,
-				size, prot);
+ vma->mapped = 1;
 
-	if (ret)
-		vma->mapped = false;
+ if (aspace && aspace->mmu)
+  ret = aspace->mmu->funcs->map(aspace->mmu, vma->iova, sgt,
+    size, prot);
 
-	return ret;
+ if (ret)
+  vma->mapped = 0;
+
+ return ret;
 }

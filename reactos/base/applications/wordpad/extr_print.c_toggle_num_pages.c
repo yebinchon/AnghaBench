@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
 struct TYPE_2__ {int pages_shown; scalar_t__ zoomlevel; int saved_pages_shown; } ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  int /*<<< orphan*/  HINSTANCE ;
+typedef int HWND ;
+typedef int HINSTANCE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetDlgItem (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetModuleHandleW (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IDC_PREVIEW ; 
- int /*<<< orphan*/  IDC_REBAR ; 
- int /*<<< orphan*/  ID_PREVIEW_NUMPAGES ; 
- int /*<<< orphan*/  LoadStringW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int MAX_STRING_LEN ; 
- int /*<<< orphan*/  STRING_PREVIEW_ONEPAGE ; 
- int /*<<< orphan*/  STRING_PREVIEW_TWOPAGES ; 
- int /*<<< orphan*/  SetWindowTextW (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TRUE ; 
- TYPE_1__ preview ; 
- int /*<<< orphan*/  update_preview (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  update_preview_sizes (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int GetDlgItem (int ,int ) ;
+ int GetModuleHandleW (int ) ;
+ int IDC_PREVIEW ;
+ int IDC_REBAR ;
+ int ID_PREVIEW_NUMPAGES ;
+ int LoadStringW (int ,int ,int *,int) ;
+ int MAX_STRING_LEN ;
+ int STRING_PREVIEW_ONEPAGE ;
+ int STRING_PREVIEW_TWOPAGES ;
+ int SetWindowTextW (int ,int *) ;
+ int TRUE ;
+ TYPE_1__ preview ;
+ int update_preview (int ) ;
+ int update_preview_sizes (int ,int ) ;
 
 __attribute__((used)) static void toggle_num_pages(HWND hMainWnd)
 {

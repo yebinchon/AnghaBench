@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
-struct TYPE_7__ {int /*<<< orphan*/  obj; TYPE_1__* p_sessions; } ;
-typedef  TYPE_2__ cam_t ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint8_t ;
+struct TYPE_7__ {int obj; TYPE_1__* p_sessions; } ;
+typedef TYPE_2__ cam_t ;
 struct TYPE_6__ {scalar_t__ i_slot; } ;
 
-/* Variables and functions */
- int MAX_TPDU_DATA ; 
- int /*<<< orphan*/  ST_SESSION_NUMBER ; 
- scalar_t__ TPDURecv (TYPE_2__*,scalar_t__,scalar_t__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ TPDUSend (TYPE_2__*,scalar_t__,int /*<<< orphan*/ ,scalar_t__*,int) ; 
- int /*<<< orphan*/  T_DATA_LAST ; 
- int /*<<< orphan*/  T_DATA_MORE ; 
- scalar_t__ T_SB ; 
- int VLC_EGENERIC ; 
- scalar_t__ VLC_SUCCESS ; 
- int /*<<< orphan*/  free (scalar_t__*) ; 
- int /*<<< orphan*/  memcpy (scalar_t__*,scalar_t__*,int) ; 
- int /*<<< orphan*/  msg_Err (int /*<<< orphan*/ ,char*,int) ; 
- scalar_t__* xmalloc (int) ; 
+
+ int MAX_TPDU_DATA ;
+ int ST_SESSION_NUMBER ;
+ scalar_t__ TPDURecv (TYPE_2__*,scalar_t__,scalar_t__*,int *,int *) ;
+ scalar_t__ TPDUSend (TYPE_2__*,scalar_t__,int ,scalar_t__*,int) ;
+ int T_DATA_LAST ;
+ int T_DATA_MORE ;
+ scalar_t__ T_SB ;
+ int VLC_EGENERIC ;
+ scalar_t__ VLC_SUCCESS ;
+ int free (scalar_t__*) ;
+ int memcpy (scalar_t__*,scalar_t__*,int) ;
+ int msg_Err (int ,char*,int) ;
+ scalar_t__* xmalloc (int) ;
 
 __attribute__((used)) static int SPDUSend( cam_t * p_cam, int i_session_id,
                      uint8_t *p_data, int i_size )
@@ -78,7 +78,7 @@ __attribute__((used)) static int SPDUSend( cam_t * p_cam, int i_session_id,
             i_size = 0;
         }
 
-        if ( TPDURecv( p_cam, i_slot, &i_tag, NULL, NULL ) != VLC_SUCCESS
+        if ( TPDURecv( p_cam, i_slot, &i_tag, ((void*)0), ((void*)0) ) != VLC_SUCCESS
                || i_tag != T_SB )
         {
             msg_Err( p_cam->obj, "couldn't recv TPDU on session %d",

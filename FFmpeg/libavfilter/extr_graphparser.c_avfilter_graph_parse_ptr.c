@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_9__ {int nb_inputs; } ;
-struct TYPE_8__ {int /*<<< orphan*/ * filters; scalar_t__ nb_filters; } ;
-typedef  int /*<<< orphan*/  AVFilterInOut ;
-typedef  TYPE_1__ AVFilterGraph ;
-typedef  TYPE_2__ AVFilterContext ;
+struct TYPE_8__ {int * filters; scalar_t__ nb_filters; } ;
+typedef int AVFilterInOut ;
+typedef TYPE_1__ AVFilterGraph ;
+typedef TYPE_2__ AVFilterContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  WHITESPACES ; 
- int /*<<< orphan*/  av_freep (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  av_log (void*,int /*<<< orphan*/ ,char*,char const*) ; 
- int /*<<< orphan*/  avfilter_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  avfilter_inout_free (int /*<<< orphan*/ **) ; 
- int link_filter_inouts (TYPE_2__*,int /*<<< orphan*/ **,int /*<<< orphan*/ **,void*) ; 
- int parse_filter (TYPE_2__**,char const**,TYPE_1__*,int,void*) ; 
- int parse_inputs (char const**,int /*<<< orphan*/ **,int /*<<< orphan*/ **,void*) ; 
- int parse_outputs (char const**,int /*<<< orphan*/ **,int /*<<< orphan*/ **,int /*<<< orphan*/ **,void*) ; 
- int parse_sws_flags (char const**,TYPE_1__*) ; 
- int /*<<< orphan*/  strspn (char const*,int /*<<< orphan*/ ) ; 
+
+ int AVERROR (int ) ;
+ int AV_LOG_ERROR ;
+ int EINVAL ;
+ int WHITESPACES ;
+ int av_freep (int **) ;
+ int av_log (void*,int ,char*,char const*) ;
+ int avfilter_free (int ) ;
+ int avfilter_inout_free (int **) ;
+ int link_filter_inouts (TYPE_2__*,int **,int **,void*) ;
+ int parse_filter (TYPE_2__**,char const**,TYPE_1__*,int,void*) ;
+ int parse_inputs (char const**,int **,int **,void*) ;
+ int parse_outputs (char const**,int **,int **,int **,void*) ;
+ int parse_sws_flags (char const**,TYPE_1__*) ;
+ int strspn (char const*,int ) ;
 
 int avfilter_graph_parse_ptr(AVFilterGraph *graph, const char *filters,
                          AVFilterInOut **open_inputs_ptr, AVFilterInOut **open_outputs_ptr,
@@ -41,9 +41,9 @@ int avfilter_graph_parse_ptr(AVFilterGraph *graph, const char *filters,
     int index = 0, ret = 0;
     char chr = 0;
 
-    AVFilterInOut *curr_inputs = NULL;
-    AVFilterInOut *open_inputs  = open_inputs_ptr  ? *open_inputs_ptr  : NULL;
-    AVFilterInOut *open_outputs = open_outputs_ptr ? *open_outputs_ptr : NULL;
+    AVFilterInOut *curr_inputs = ((void*)0);
+    AVFilterInOut *open_inputs = open_inputs_ptr ? *open_inputs_ptr : ((void*)0);
+    AVFilterInOut *open_outputs = open_outputs_ptr ? *open_outputs_ptr : ((void*)0);
 
     if ((ret = parse_sws_flags(&filters, graph)) < 0)
         goto end;
@@ -60,7 +60,7 @@ int avfilter_graph_parse_ptr(AVFilterGraph *graph, const char *filters,
             goto end;
 
         if (filter->nb_inputs == 1 && !curr_inputs && !index) {
-            /* First input pad, assume it is "[in]" if not specified */
+
             const char *tmp = "[in]";
             if ((ret = parse_inputs(&tmp, &curr_inputs, &open_outputs, log_ctx)) < 0)
                 goto end;
@@ -95,7 +95,7 @@ int avfilter_graph_parse_ptr(AVFilterGraph *graph, const char *filters,
     }
 
     if (curr_inputs) {
-        /* Last output pad, assume it is "[out]" if not specified */
+
         const char *tmp = "[out]";
         if ((ret = parse_outputs(&tmp, &curr_inputs, &open_inputs, &open_outputs,
                                  log_ctx)) < 0)
@@ -103,7 +103,7 @@ int avfilter_graph_parse_ptr(AVFilterGraph *graph, const char *filters,
     }
 
 end:
-    /* clear open_in/outputs only if not passed as parameters */
+
     if (open_inputs_ptr) *open_inputs_ptr = open_inputs;
     else avfilter_inout_free(&open_inputs);
     if (open_outputs_ptr) *open_outputs_ptr = open_outputs;

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  TCHAR ;
 
-/* Variables and functions */
- int PrintRoutes () ; 
- int Usage () ; 
- int /*<<< orphan*/  _T (char*) ; 
- int /*<<< orphan*/  _tcscmp (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int add_route (int,int /*<<< orphan*/ **) ; 
- int del_route (int,int /*<<< orphan*/ **) ; 
+
+
+
+typedef int TCHAR ;
+
+
+ int PrintRoutes () ;
+ int Usage () ;
+ int _T (char*) ;
+ int _tcscmp (int *,int ) ;
+ int add_route (int,int **) ;
+ int del_route (int,int **) ;
 
 int _tmain( int argc, TCHAR **argv )
 {

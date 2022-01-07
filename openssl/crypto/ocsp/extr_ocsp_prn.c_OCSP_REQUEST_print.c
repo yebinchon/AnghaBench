@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {int /*<<< orphan*/  singleRequestExtensions; int /*<<< orphan*/ * reqCert; } ;
-struct TYPE_9__ {int /*<<< orphan*/  requestExtensions; int /*<<< orphan*/  requestList; int /*<<< orphan*/ * requestorName; int /*<<< orphan*/  version; } ;
+
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_10__ {int singleRequestExtensions; int * reqCert; } ;
+struct TYPE_9__ {int requestExtensions; int requestList; int * requestorName; int version; } ;
 struct TYPE_8__ {TYPE_1__* optionalSignature; TYPE_3__ tbsRequest; } ;
-struct TYPE_7__ {int /*<<< orphan*/  certs; int /*<<< orphan*/  signature; int /*<<< orphan*/  signatureAlgorithm; } ;
-typedef  TYPE_1__ OCSP_SIGNATURE ;
-typedef  TYPE_2__ OCSP_REQUEST ;
-typedef  TYPE_3__ OCSP_REQINFO ;
-typedef  TYPE_4__ OCSP_ONEREQ ;
-typedef  int /*<<< orphan*/  OCSP_CERTID ;
-typedef  int /*<<< orphan*/  BIO ;
+struct TYPE_7__ {int certs; int signature; int signatureAlgorithm; } ;
+typedef TYPE_1__ OCSP_SIGNATURE ;
+typedef TYPE_2__ OCSP_REQUEST ;
+typedef TYPE_3__ OCSP_REQINFO ;
+typedef TYPE_4__ OCSP_ONEREQ ;
+typedef int OCSP_CERTID ;
+typedef int BIO ;
 
-/* Variables and functions */
- long ASN1_INTEGER_get (int /*<<< orphan*/ ) ; 
- scalar_t__ BIO_printf (int /*<<< orphan*/ *,char*,long,long) ; 
- scalar_t__ BIO_write (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  GENERAL_NAME_print (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PEM_write_bio_X509 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  X509V3_extensions_print (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,unsigned long,int) ; 
- int /*<<< orphan*/  X509_print (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  X509_signature_print (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ocsp_certid_print (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int sk_OCSP_ONEREQ_num (int /*<<< orphan*/ ) ; 
- TYPE_4__* sk_OCSP_ONEREQ_value (int /*<<< orphan*/ ,int) ; 
- int sk_X509_num (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sk_X509_value (int /*<<< orphan*/ ,int) ; 
+
+ long ASN1_INTEGER_get (int ) ;
+ scalar_t__ BIO_printf (int *,char*,long,long) ;
+ scalar_t__ BIO_write (int *,char*,int) ;
+ int GENERAL_NAME_print (int *,int *) ;
+ int PEM_write_bio_X509 (int *,int ) ;
+ int X509V3_extensions_print (int *,char*,int ,unsigned long,int) ;
+ int X509_print (int *,int ) ;
+ int X509_signature_print (int *,int *,int ) ;
+ int ocsp_certid_print (int *,int *,int) ;
+ int sk_OCSP_ONEREQ_num (int ) ;
+ TYPE_4__* sk_OCSP_ONEREQ_value (int ,int) ;
+ int sk_X509_num (int ) ;
+ int sk_X509_value (int ,int) ;
 
 int OCSP_REQUEST_print(BIO *bp, OCSP_REQUEST *o, unsigned long flags)
 {
     int i;
     long l;
-    OCSP_CERTID *cid = NULL;
-    OCSP_ONEREQ *one = NULL;
+    OCSP_CERTID *cid = ((void*)0);
+    OCSP_ONEREQ *one = ((void*)0);
     OCSP_REQINFO *inf = &o->tbsRequest;
     OCSP_SIGNATURE *sig = o->optionalSignature;
 
@@ -54,7 +54,7 @@ int OCSP_REQUEST_print(BIO *bp, OCSP_REQUEST *o, unsigned long flags)
     l = ASN1_INTEGER_get(inf->version);
     if (BIO_printf(bp, "    Version: %lu (0x%lx)", l + 1, l) <= 0)
         goto err;
-    if (inf->requestorName != NULL) {
+    if (inf->requestorName != ((void*)0)) {
         if (BIO_write(bp, "\n    Requestor Name: ", 21) <= 0)
             goto err;
         GENERAL_NAME_print(bp, inf->requestorName);

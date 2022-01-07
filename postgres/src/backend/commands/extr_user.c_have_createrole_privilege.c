@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  GetUserId () ; 
- int has_createrole_privilege (int /*<<< orphan*/ ) ; 
+ int GetUserId () ;
+ int has_createrole_privilege (int ) ;
 
 __attribute__((used)) static bool
 have_createrole_privilege(void)
 {
-	return has_createrole_privilege(GetUserId());
+ return has_createrole_privilege(GetUserId());
 }

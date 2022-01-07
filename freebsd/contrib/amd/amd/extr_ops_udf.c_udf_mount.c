@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int mf_flags; int /*<<< orphan*/  mf_mopts; int /*<<< orphan*/  mf_info; int /*<<< orphan*/  mf_mount; } ;
-typedef  TYPE_1__ mntfs ;
-typedef  int /*<<< orphan*/  am_node ;
 
-/* Variables and functions */
- int MFF_ON_AUTOFS ; 
- int /*<<< orphan*/  XLOG_ERROR ; 
- int errno ; 
- int mount_udf (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  plog (int /*<<< orphan*/ ,char*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int mf_flags; int mf_mopts; int mf_info; int mf_mount; } ;
+typedef TYPE_1__ mntfs ;
+typedef int am_node ;
+
+
+ int MFF_ON_AUTOFS ;
+ int XLOG_ERROR ;
+ int errno ;
+ int mount_udf (int ,int ,int ,int) ;
+ int plog (int ,char*) ;
 
 __attribute__((used)) static int
 udf_mount(am_node *am, mntfs *mf)
 {
-	int on_autofs;
-	int error;
+ int on_autofs;
+ int error;
 
-	on_autofs = mf->mf_flags & MFF_ON_AUTOFS;
-	error = mount_udf(mf->mf_mount, mf->mf_info, mf->mf_mopts, on_autofs);
-	if (error) {
-		errno = error;
-		plog(XLOG_ERROR, "mount_udf: %m");
-		return error;
-	}
-	return 0;
+ on_autofs = mf->mf_flags & MFF_ON_AUTOFS;
+ error = mount_udf(mf->mf_mount, mf->mf_info, mf->mf_mopts, on_autofs);
+ if (error) {
+  errno = error;
+  plog(XLOG_ERROR, "mount_udf: %m");
+  return error;
+ }
+ return 0;
 }

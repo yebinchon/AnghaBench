@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  nvlist_t ;
-typedef  int /*<<< orphan*/  fileargs_t ;
-typedef  int /*<<< orphan*/  cap_channel_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cap_close (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * cap_init () ; 
- int /*<<< orphan*/ * fileargs_cinitnv (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fileargs_create (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nvlist_destroy (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int nvlist_t ;
+typedef int fileargs_t ;
+typedef int cap_channel_t ;
+
+
+ int cap_close (int *) ;
+ int * cap_init () ;
+ int * fileargs_cinitnv (int *,int *) ;
+ int * fileargs_create (int *,int ) ;
+ int nvlist_destroy (int *) ;
 
 fileargs_t *
 fileargs_initnv(nvlist_t *limits)
 {
         cap_channel_t *cas;
-	fileargs_t *fa;
+ fileargs_t *fa;
 
-	if (limits == NULL) {
-		return (fileargs_create(NULL, 0));
-	}
+ if (limits == ((void*)0)) {
+  return (fileargs_create(((void*)0), 0));
+ }
 
         cas = cap_init();
-        if (cas == NULL) {
-		nvlist_destroy(limits);
-                return (NULL);
-	}
+        if (cas == ((void*)0)) {
+  nvlist_destroy(limits);
+                return (((void*)0));
+ }
 
         fa = fileargs_cinitnv(cas, limits);
         cap_close(cas);
 
-	return (fa);
+ return (fa);
 }

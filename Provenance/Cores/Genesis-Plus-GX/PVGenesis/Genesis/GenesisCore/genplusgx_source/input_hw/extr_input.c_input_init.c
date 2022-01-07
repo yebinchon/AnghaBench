@@ -1,57 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_8__ {int special; } ;
 struct TYPE_7__ {TYPE_1__* input; } ;
 struct TYPE_6__ {int* system; void** dev; scalar_t__* pad; } ;
 struct TYPE_5__ {void* padtype; } ;
 
-/* Variables and functions */
- void* DEVICE_ACTIVATOR ; 
- void* DEVICE_LIGHTGUN ; 
- void* DEVICE_MOUSE ; 
- void* DEVICE_PAD2B ; 
- void* DEVICE_PADDLE ; 
- void* DEVICE_PICO ; 
- void* DEVICE_SPORTSPAD ; 
- void* DEVICE_TEREBI ; 
- void* DEVICE_XE_A1P ; 
- int HW_J_CART ; 
- int HW_TEREBI_OEKAKI ; 
- int MAX_DEVICES ; 
- int MAX_INPUTS ; 
- void* NO_DEVICE ; 
-#define  SYSTEM_ACTIVATOR 139 
-#define  SYSTEM_JUSTIFIER 138 
-#define  SYSTEM_LIGHTPHASER 137 
-#define  SYSTEM_MD_GAMEPAD 136 
-#define  SYSTEM_MENACER 135 
-#define  SYSTEM_MOUSE 134 
-#define  SYSTEM_MS_GAMEPAD 133 
-#define  SYSTEM_PADDLE 132 
- scalar_t__ SYSTEM_PICO ; 
-#define  SYSTEM_SPORTSPAD 131 
-#define  SYSTEM_TEAMPLAYER 130 
-#define  SYSTEM_WAYPLAY 129 
-#define  SYSTEM_XE_A1P 128 
- TYPE_4__ cart ; 
- TYPE_3__ config ; 
- TYPE_2__ input ; 
- scalar_t__ system_hw ; 
- int /*<<< orphan*/  teamplayer_init (int) ; 
+
+ void* DEVICE_ACTIVATOR ;
+ void* DEVICE_LIGHTGUN ;
+ void* DEVICE_MOUSE ;
+ void* DEVICE_PAD2B ;
+ void* DEVICE_PADDLE ;
+ void* DEVICE_PICO ;
+ void* DEVICE_SPORTSPAD ;
+ void* DEVICE_TEREBI ;
+ void* DEVICE_XE_A1P ;
+ int HW_J_CART ;
+ int HW_TEREBI_OEKAKI ;
+ int MAX_DEVICES ;
+ int MAX_INPUTS ;
+ void* NO_DEVICE ;
+ scalar_t__ SYSTEM_PICO ;
+
+
+
+
+ TYPE_4__ cart ;
+ TYPE_3__ config ;
+ TYPE_2__ input ;
+ scalar_t__ system_hw ;
+ int teamplayer_init (int) ;
 
 void input_init(void)
 {
@@ -64,14 +56,14 @@ void input_init(void)
     input.pad[i] = 0;
   }
 
-  /* PICO tablet */
+
   if (system_hw == SYSTEM_PICO)
   {
     input.dev[0] = DEVICE_PICO;
     return;
   }
 
-  /* Terebi Oekaki tablet */
+
   if (cart.special & HW_TEREBI_OEKAKI)
   {
     input.dev[0] = DEVICE_TEREBI;
@@ -80,42 +72,42 @@ void input_init(void)
 
   switch (input.system[0])
   {
-    case SYSTEM_MS_GAMEPAD:
+    case 133:
     {
       input.dev[0] = DEVICE_PAD2B;
       player++;
       break;
     }
 
-    case SYSTEM_MD_GAMEPAD:
+    case 136:
     {
       input.dev[0] = config.input[player].padtype;
       player++;
       break;
     }
 
-    case SYSTEM_MOUSE:
+    case 134:
     {
       input.dev[0] = DEVICE_MOUSE;
       player++;
       break;
     }
 
-    case SYSTEM_ACTIVATOR:
+    case 139:
     {
       input.dev[0] = DEVICE_ACTIVATOR;
       player++;
       break;
     }
 
-    case SYSTEM_XE_A1P:
+    case 128:
     {
       input.dev[0] = DEVICE_XE_A1P;
       player++;
       break;
     }
 
-    case SYSTEM_WAYPLAY:
+    case 129:
     {
       for (i=0; i< 4; i++)
       {
@@ -128,7 +120,7 @@ void input_init(void)
       break;
     }
 
-    case SYSTEM_TEAMPLAYER:
+    case 130:
     {
       for (i=0; i<4; i++)
       {
@@ -142,21 +134,21 @@ void input_init(void)
       break;
     }
 
-    case SYSTEM_LIGHTPHASER:
+    case 137:
     {
       input.dev[0] = DEVICE_LIGHTGUN;
       player++;
       break;
     }
 
-    case SYSTEM_PADDLE:
+    case 132:
     {
       input.dev[0] = DEVICE_PADDLE;
       player++;
       break;
     }
 
-    case SYSTEM_SPORTSPAD:
+    case 131:
     {
       input.dev[0] = DEVICE_SPORTSPAD;
       player++;
@@ -171,49 +163,49 @@ void input_init(void)
 
   switch (input.system[1])
   {
-    case SYSTEM_MS_GAMEPAD:
+    case 133:
     {
       input.dev[4] = DEVICE_PAD2B;
       player++;
       break;
     }
 
-    case SYSTEM_MD_GAMEPAD:
+    case 136:
     {
       input.dev[4] = config.input[player].padtype;
       player++;
       break;
     }
 
-    case SYSTEM_MOUSE:
+    case 134:
     {
       input.dev[4] = DEVICE_MOUSE;
       player++;
       break;
     }
 
-    case SYSTEM_ACTIVATOR:
+    case 139:
     {
       input.dev[4] = DEVICE_ACTIVATOR;
       player++;
       break;
     }
 
-    case SYSTEM_XE_A1P:
+    case 128:
     {
       input.dev[4] = DEVICE_XE_A1P;
       player++;
       break;
     }
 
-    case SYSTEM_MENACER:
+    case 135:
     {
       input.dev[4] = DEVICE_LIGHTGUN;
       player++;
       break;
     }
 
-    case SYSTEM_JUSTIFIER:
+    case 138:
     {
       for (i=4; i<6; i++)
       {
@@ -226,7 +218,7 @@ void input_init(void)
       break;
     }
 
-    case SYSTEM_TEAMPLAYER:
+    case 130:
     {
       for (i=4; i<8; i++)
       {
@@ -240,21 +232,21 @@ void input_init(void)
       break;
     }
 
-    case SYSTEM_LIGHTPHASER:
+    case 137:
     {
       input.dev[4] = DEVICE_LIGHTGUN;
       player++;
       break;
     }
 
-    case SYSTEM_PADDLE:
+    case 132:
     {
       input.dev[4] = DEVICE_PADDLE;
       player++;
       break;
     }
 
-    case SYSTEM_SPORTSPAD:
+    case 131:
     {
       input.dev[4] = DEVICE_SPORTSPAD;
       player++;
@@ -262,10 +254,10 @@ void input_init(void)
     }
   }
 
-  /* J-CART */
+
   if (cart.special & HW_J_CART)
   {
-    /* two additional gamepads */
+
     for (i=5; i<7; i++)
     {
       if (player < MAX_INPUTS)

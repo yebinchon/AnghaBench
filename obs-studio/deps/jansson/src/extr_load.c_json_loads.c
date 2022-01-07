@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {char const* data; scalar_t__ pos; } ;
-typedef  TYPE_1__ string_data_t ;
-typedef  int /*<<< orphan*/  lex_t ;
-typedef  int /*<<< orphan*/  json_t ;
-typedef  int /*<<< orphan*/  json_error_t ;
+typedef TYPE_1__ string_data_t ;
+typedef int lex_t ;
+typedef int json_t ;
+typedef int json_error_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  error_set (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  jsonp_error_init (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  lex_close (int /*<<< orphan*/ *) ; 
- scalar_t__ lex_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ,size_t,void*) ; 
- int /*<<< orphan*/ * parse_json (int /*<<< orphan*/ *,size_t,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  string_get ; 
+
+ int error_set (int *,int *,char*) ;
+ int jsonp_error_init (int *,char*) ;
+ int lex_close (int *) ;
+ scalar_t__ lex_init (int *,int ,size_t,void*) ;
+ int * parse_json (int *,size_t,int *) ;
+ int string_get ;
 
 json_t *json_loads(const char *string, size_t flags, json_error_t *error)
 {
@@ -33,16 +33,16 @@ json_t *json_loads(const char *string, size_t flags, json_error_t *error)
 
     jsonp_error_init(error, "<string>");
 
-    if (string == NULL) {
-        error_set(error, NULL, "wrong arguments");
-        return NULL;
+    if (string == ((void*)0)) {
+        error_set(error, ((void*)0), "wrong arguments");
+        return ((void*)0);
     }
 
     stream_data.data = string;
     stream_data.pos = 0;
 
     if(lex_init(&lex, string_get, flags, (void *)&stream_data))
-        return NULL;
+        return ((void*)0);
 
     result = parse_json(&lex, flags, error);
 

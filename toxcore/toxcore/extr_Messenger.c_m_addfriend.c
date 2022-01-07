@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  scalar_t__ uint32_t ;
-typedef  scalar_t__ uint16_t ;
-typedef  int /*<<< orphan*/  nospam ;
-typedef  int int32_t ;
-typedef  int /*<<< orphan*/  checksum ;
-typedef  int /*<<< orphan*/  check ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef scalar_t__ uint32_t ;
+typedef scalar_t__ uint16_t ;
+typedef int nospam ;
+typedef int int32_t ;
+typedef int checksum ;
+typedef int check ;
 struct TYPE_9__ {TYPE_2__* friendlist; TYPE_1__* net_crypto; } ;
-struct TYPE_8__ {scalar_t__ status; scalar_t__ friendrequest_nospam; scalar_t__* info; scalar_t__ info_size; int /*<<< orphan*/  friendrequest_timeout; } ;
-struct TYPE_7__ {int /*<<< orphan*/  self_public_key; } ;
-typedef  TYPE_3__ Messenger ;
+struct TYPE_8__ {scalar_t__ status; scalar_t__ friendrequest_nospam; scalar_t__* info; scalar_t__ info_size; int friendrequest_timeout; } ;
+struct TYPE_7__ {int self_public_key; } ;
+typedef TYPE_3__ Messenger ;
 
-/* Variables and functions */
- int FAERR_ALREADYSENT ; 
- int FAERR_BADCHECKSUM ; 
- int FAERR_NOMESSAGE ; 
- int FAERR_OWNKEY ; 
- int FAERR_SETNEWNOSPAM ; 
- int FAERR_TOOLONG ; 
- int /*<<< orphan*/  FRIENDREQUEST_TIMEOUT ; 
- int /*<<< orphan*/  FRIEND_ADDED ; 
- scalar_t__ FRIEND_ADDRESS_SIZE ; 
- scalar_t__ FRIEND_CONFIRMED ; 
- scalar_t__ MAX_FRIEND_REQUEST_DATA_SIZE ; 
- scalar_t__ address_checksum (int /*<<< orphan*/  const*,scalar_t__) ; 
- int crypto_box_PUBLICKEYBYTES ; 
- int getfriend_id (TYPE_3__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  id_copy (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
- scalar_t__ id_equal (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int init_new_friend (TYPE_3__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (scalar_t__*,int /*<<< orphan*/  const*,int) ; 
- int /*<<< orphan*/  public_key_valid (int /*<<< orphan*/ *) ; 
+
+ int FAERR_ALREADYSENT ;
+ int FAERR_BADCHECKSUM ;
+ int FAERR_NOMESSAGE ;
+ int FAERR_OWNKEY ;
+ int FAERR_SETNEWNOSPAM ;
+ int FAERR_TOOLONG ;
+ int FRIENDREQUEST_TIMEOUT ;
+ int FRIEND_ADDED ;
+ scalar_t__ FRIEND_ADDRESS_SIZE ;
+ scalar_t__ FRIEND_CONFIRMED ;
+ scalar_t__ MAX_FRIEND_REQUEST_DATA_SIZE ;
+ scalar_t__ address_checksum (int const*,scalar_t__) ;
+ int crypto_box_PUBLICKEYBYTES ;
+ int getfriend_id (TYPE_3__*,int *) ;
+ int id_copy (int *,int const*) ;
+ scalar_t__ id_equal (int *,int ) ;
+ int init_new_friend (TYPE_3__*,int *,int ) ;
+ int memcpy (scalar_t__*,int const*,int) ;
+ int public_key_valid (int *) ;
 
 int32_t m_addfriend(Messenger *m, const uint8_t *address, const uint8_t *data, uint16_t length)
 {

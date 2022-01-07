@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  void* ngx_msec_t ;
-typedef  int ngx_int_t ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef void* ngx_msec_t ;
+typedef int ngx_int_t ;
 struct TYPE_5__ {TYPE_1__* conf; void* connect_timeout; void* send_timeout; void* read_timeout; } ;
-typedef  TYPE_2__ ngx_http_lua_socket_tcp_upstream_t ;
-typedef  int /*<<< orphan*/  lua_State ;
+typedef TYPE_2__ ngx_http_lua_socket_tcp_upstream_t ;
+typedef int lua_State ;
 struct TYPE_4__ {void* connect_timeout; void* send_timeout; void* read_timeout; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SOCKET_CONNECT_TIMEOUT_INDEX ; 
- int /*<<< orphan*/  SOCKET_CTX_INDEX ; 
- int /*<<< orphan*/  SOCKET_READ_TIMEOUT_INDEX ; 
- int /*<<< orphan*/  SOCKET_SEND_TIMEOUT_INDEX ; 
- int luaL_error (int /*<<< orphan*/ *,char*,...) ; 
- int lua_gettop (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_pushinteger (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_rawgeti (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_rawseti (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- scalar_t__ lua_tonumber (int /*<<< orphan*/ *,int) ; 
- TYPE_2__* lua_touserdata (int /*<<< orphan*/ *,int) ; 
+
+ int SOCKET_CONNECT_TIMEOUT_INDEX ;
+ int SOCKET_CTX_INDEX ;
+ int SOCKET_READ_TIMEOUT_INDEX ;
+ int SOCKET_SEND_TIMEOUT_INDEX ;
+ int luaL_error (int *,char*,...) ;
+ int lua_gettop (int *) ;
+ int lua_pushinteger (int *,int) ;
+ int lua_rawgeti (int *,int,int ) ;
+ int lua_rawseti (int *,int,int ) ;
+ scalar_t__ lua_tonumber (int *,int) ;
+ TYPE_2__* lua_touserdata (int *,int) ;
 
 __attribute__((used)) static int
 ngx_http_lua_socket_tcp_settimeout(lua_State *L)
 {
-    int                     n;
-    ngx_int_t               timeout;
+    int n;
+    ngx_int_t timeout;
 
-    ngx_http_lua_socket_tcp_upstream_t  *u;
+    ngx_http_lua_socket_tcp_upstream_t *u;
 
     n = lua_gettop(L);
 

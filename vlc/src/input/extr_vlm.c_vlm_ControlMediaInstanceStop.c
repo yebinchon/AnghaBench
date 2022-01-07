@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlm_t ;
-typedef  int /*<<< orphan*/  vlm_media_sys_t ;
-typedef  int /*<<< orphan*/  vlm_media_instance_sys_t ;
-typedef  int /*<<< orphan*/  int64_t ;
 
-/* Variables and functions */
- int VLC_EGENERIC ; 
- int VLC_SUCCESS ; 
- int /*<<< orphan*/ * vlm_ControlMediaGetById (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * vlm_ControlMediaInstanceGetByName (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  vlm_MediaInstanceDelete (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int vlm_t ;
+typedef int vlm_media_sys_t ;
+typedef int vlm_media_instance_sys_t ;
+typedef int int64_t ;
+
+
+ int VLC_EGENERIC ;
+ int VLC_SUCCESS ;
+ int * vlm_ControlMediaGetById (int *,int ) ;
+ int * vlm_ControlMediaInstanceGetByName (int *,char const*) ;
+ int vlm_MediaInstanceDelete (int *,int ,int *,int *) ;
 
 __attribute__((used)) static int vlm_ControlMediaInstanceStop( vlm_t *p_vlm, int64_t id, const char *psz_id )
 {

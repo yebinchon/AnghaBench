@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  size_t esp_type_leak_t ;
-typedef  int esp_comp_leak_t ;
 
-/* Variables and functions */
- int COMP_LEAK_ALL ; 
- size_t TYPE_LEAK_MAX ; 
- size_t** test_unity_leak_level ; 
+
+
+
+typedef size_t esp_type_leak_t ;
+typedef int esp_comp_leak_t ;
+
+
+ int COMP_LEAK_ALL ;
+ size_t TYPE_LEAK_MAX ;
+ size_t** test_unity_leak_level ;
 
 size_t test_utils_get_leak_level(esp_type_leak_t type_of_leak, esp_comp_leak_t component)
 {

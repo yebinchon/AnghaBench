@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ tree ;
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef scalar_t__ tree ;
 struct loop {int dummy; } ;
-typedef  TYPE_1__* edge ;
-struct TYPE_6__ {int /*<<< orphan*/  src; } ;
+typedef TYPE_1__* edge ;
+struct TYPE_6__ {int src; } ;
 
-/* Variables and functions */
- scalar_t__ NULL_TREE ; 
- scalar_t__ chrec_contains_undetermined (scalar_t__) ; 
- scalar_t__ chrec_dont_know ; 
- int /*<<< orphan*/  free (TYPE_1__**) ; 
- TYPE_1__** get_loop_exit_edges (struct loop*,unsigned int*) ; 
- int /*<<< orphan*/  just_once_each_iteration_p (struct loop*,int /*<<< orphan*/ ) ; 
- scalar_t__ loop_niter_by_eval (struct loop*,TYPE_1__*) ; 
- int /*<<< orphan*/  tree_int_cst_lt (scalar_t__,scalar_t__) ; 
+
+ scalar_t__ NULL_TREE ;
+ scalar_t__ chrec_contains_undetermined (scalar_t__) ;
+ scalar_t__ chrec_dont_know ;
+ int free (TYPE_1__**) ;
+ TYPE_1__** get_loop_exit_edges (struct loop*,unsigned int*) ;
+ int just_once_each_iteration_p (struct loop*,int ) ;
+ scalar_t__ loop_niter_by_eval (struct loop*,TYPE_1__*) ;
+ int tree_int_cst_lt (scalar_t__,scalar_t__) ;
 
 tree
 find_loop_niter_by_eval (struct loop *loop, edge *exit)
@@ -34,20 +34,20 @@ find_loop_niter_by_eval (struct loop *loop, edge *exit)
   edge ex;
   tree niter = NULL_TREE, aniter;
 
-  *exit = NULL;
+  *exit = ((void*)0);
   for (i = 0; i < n_exits; i++)
     {
       ex = exits[i];
       if (!just_once_each_iteration_p (loop, ex->src))
-	continue;
+ continue;
 
       aniter = loop_niter_by_eval (loop, ex);
       if (chrec_contains_undetermined (aniter))
-	continue;
+ continue;
 
       if (niter
-	  && !tree_int_cst_lt (aniter, niter))
-	continue;
+   && !tree_int_cst_lt (aniter, niter))
+ continue;
 
       niter = aniter;
       *exit = ex;

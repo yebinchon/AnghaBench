@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  off_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SEEK_CUR ; 
- int /*<<< orphan*/ * file_desc ; 
- int /*<<< orphan*/ * ignore_initial ; 
- int /*<<< orphan*/  lseek (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int off_t ;
+
+
+ int SEEK_CUR ;
+ int * file_desc ;
+ int * ignore_initial ;
+ int lseek (int ,int ,int ) ;
 
 __attribute__((used)) static off_t
 file_position (int f)
@@ -26,7 +26,7 @@ file_position (int f)
 
   if (! positioned[f])
     {
-      positioned[f] = true;
+      positioned[f] = 1;
       position[f] = lseek (file_desc[f], ignore_initial[f], SEEK_CUR);
     }
   return position[f];

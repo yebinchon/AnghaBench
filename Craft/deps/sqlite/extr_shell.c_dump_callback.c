@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct callback_data {int writableSchema; int /*<<< orphan*/  db; int /*<<< orphan*/  out; } ;
-typedef  int /*<<< orphan*/  sqlite3_stmt ;
 
-/* Variables and functions */
- int SQLITE_CORRUPT ; 
- int SQLITE_OK ; 
- int SQLITE_ROW ; 
- int /*<<< orphan*/  UNUSED_PARAMETER (char**) ; 
- char* appendText (char*,char const*,char) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  free (char*) ; 
- int run_table_dump_query (struct callback_data*,char*,char const*) ; 
- scalar_t__ sqlite3_column_text (int /*<<< orphan*/ *,int) ; 
- int sqlite3_finalize (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_free (char*) ; 
- char* sqlite3_mprintf (char*,char const*,char const*,char const*) ; 
- int sqlite3_prepare (int /*<<< orphan*/ ,char*,int,int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
- int sqlite3_step (int /*<<< orphan*/ *) ; 
- scalar_t__ strcmp (char const*,char*) ; 
- scalar_t__ strncmp (char const*,char*,int) ; 
+
+
+
+struct callback_data {int writableSchema; int db; int out; } ;
+typedef int sqlite3_stmt ;
+
+
+ int SQLITE_CORRUPT ;
+ int SQLITE_OK ;
+ int SQLITE_ROW ;
+ int UNUSED_PARAMETER (char**) ;
+ char* appendText (char*,char const*,char) ;
+ int fprintf (int ,char*,...) ;
+ int free (char*) ;
+ int run_table_dump_query (struct callback_data*,char*,char const*) ;
+ scalar_t__ sqlite3_column_text (int *,int) ;
+ int sqlite3_finalize (int *) ;
+ int sqlite3_free (char*) ;
+ char* sqlite3_mprintf (char*,char const*,char const*,char const*) ;
+ int sqlite3_prepare (int ,char*,int,int **,int ) ;
+ int sqlite3_step (int *) ;
+ scalar_t__ strcmp (char const*,char*) ;
+ scalar_t__ strncmp (char const*,char*,int) ;
 
 __attribute__((used)) static int dump_callback(void *pArg, int nArg, char **azArg, char **azCol){
   int rc;
@@ -44,7 +44,7 @@ __attribute__((used)) static int dump_callback(void *pArg, int nArg, char **azAr
   zTable = azArg[0];
   zType = azArg[1];
   zSql = azArg[2];
-  
+
   if( strcmp(zTable, "sqlite_sequence")==0 ){
     zPrepStmt = "DELETE FROM sqlite_sequence;\n";
   }else if( strcmp(zTable, "sqlite_stat1")==0 ){
@@ -74,7 +74,7 @@ __attribute__((used)) static int dump_callback(void *pArg, int nArg, char **azAr
     char *zTableInfo = 0;
     char *zTmp = 0;
     int nRow = 0;
-   
+
     zTableInfo = appendText(zTableInfo, "PRAGMA table_info(", 0);
     zTableInfo = appendText(zTableInfo, zTable, '"');
     zTableInfo = appendText(zTableInfo, ");", 0);
@@ -86,8 +86,8 @@ __attribute__((used)) static int dump_callback(void *pArg, int nArg, char **azAr
     }
 
     zSelect = appendText(zSelect, "SELECT 'INSERT INTO ' || ", 0);
-    /* Always quote the table name, even if it appears to be pure ascii,
-    ** in case it is a keyword. Ex:  INSERT INTO "table" ... */
+
+
     zTmp = appendText(zTmp, zTable, '"');
     if( zTmp ){
       zSelect = appendText(zSelect, zTmp, '\'');

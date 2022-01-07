@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int* values; int size; int colorsPerLed; } ;
-typedef  TYPE_1__ ws2812_buffer ;
-typedef  int uint8_t ;
+typedef TYPE_1__ ws2812_buffer ;
+typedef int uint8_t ;
 struct TYPE_4__ {int* color; int brightness; TYPE_1__* buffer; } ;
 
-/* Variables and functions */
- int rand () ; 
- TYPE_2__* state ; 
+
+ int rand () ;
+ TYPE_2__* state ;
 
 __attribute__((used)) static int ws2812_effects_mode_flicker_int(uint8_t max_flicker) {
 
@@ -29,7 +29,7 @@ __attribute__((used)) static int ws2812_effects_mode_flicker_int(uint8_t max_fli
   uint8_t p_r = state->color[1];
   uint8_t p_b = state->color[2];
 
-  // Fill buffer
+
   int i,j;
   uint8_t * p = &buffer->values[0];
   for(i = 0; i < buffer->size; i++) {

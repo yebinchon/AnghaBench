@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tBTA_START_STOP_ADV_CMPL_CBACK ;
-struct TYPE_5__ {int /*<<< orphan*/  event; } ;
-struct TYPE_6__ {int /*<<< orphan*/ * p_stop_adv_cback; scalar_t__ start; TYPE_1__ hdr; } ;
-typedef  TYPE_2__ tBTA_DM_API_BLE_OBSERVE ;
-typedef  scalar_t__ BOOLEAN ;
 
-/* Variables and functions */
- int /*<<< orphan*/  APPL_TRACE_API (char*,scalar_t__) ; 
- int /*<<< orphan*/  BTA_DM_API_BLE_BROADCAST_EVT ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  bta_sys_sendmsg (TYPE_2__*) ; 
- int /*<<< orphan*/  memset (TYPE_2__*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ osi_malloc (int) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int tBTA_START_STOP_ADV_CMPL_CBACK ;
+struct TYPE_5__ {int event; } ;
+struct TYPE_6__ {int * p_stop_adv_cback; scalar_t__ start; TYPE_1__ hdr; } ;
+typedef TYPE_2__ tBTA_DM_API_BLE_OBSERVE ;
+typedef scalar_t__ BOOLEAN ;
+
+
+ int APPL_TRACE_API (char*,scalar_t__) ;
+ int BTA_DM_API_BLE_BROADCAST_EVT ;
+ scalar_t__ FALSE ;
+ int bta_sys_sendmsg (TYPE_2__*) ;
+ int memset (TYPE_2__*,int ,int) ;
+ scalar_t__ osi_malloc (int) ;
 
 extern void BTA_DmBleBroadcast (BOOLEAN start, tBTA_START_STOP_ADV_CMPL_CBACK *p_start_stop_adv_cb)
 {
-    tBTA_DM_API_BLE_OBSERVE   *p_msg;
+    tBTA_DM_API_BLE_OBSERVE *p_msg;
 
     APPL_TRACE_API("BTA_DmBleBroadcast: start = %d \n", start);
 
-    if ((p_msg = (tBTA_DM_API_BLE_OBSERVE *) osi_malloc(sizeof(tBTA_DM_API_BLE_OBSERVE))) != NULL) {
+    if ((p_msg = (tBTA_DM_API_BLE_OBSERVE *) osi_malloc(sizeof(tBTA_DM_API_BLE_OBSERVE))) != ((void*)0)) {
         memset(p_msg, 0, sizeof(tBTA_DM_API_BLE_OBSERVE));
 
         p_msg->hdr.event = BTA_DM_API_BLE_BROADCAST_EVT;

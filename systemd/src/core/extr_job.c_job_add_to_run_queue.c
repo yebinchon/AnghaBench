@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int in_run_queue; int /*<<< orphan*/  run_queue_idx; TYPE_1__* manager; struct TYPE_7__* installed; } ;
-struct TYPE_6__ {int /*<<< orphan*/  run_queue; int /*<<< orphan*/  run_queue_event_source; } ;
-typedef  TYPE_2__ Job ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SD_EVENT_ONESHOT ; 
- int /*<<< orphan*/  assert (TYPE_2__*) ; 
- int /*<<< orphan*/  log_warning_errno (int,char*) ; 
- scalar_t__ prioq_isempty (int /*<<< orphan*/ ) ; 
- int prioq_put (int /*<<< orphan*/ ,TYPE_2__*,int /*<<< orphan*/ *) ; 
- int sd_event_source_set_enabled (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int in_run_queue; int run_queue_idx; TYPE_1__* manager; struct TYPE_7__* installed; } ;
+struct TYPE_6__ {int run_queue; int run_queue_event_source; } ;
+typedef TYPE_2__ Job ;
+
+
+ int SD_EVENT_ONESHOT ;
+ int assert (TYPE_2__*) ;
+ int log_warning_errno (int,char*) ;
+ scalar_t__ prioq_isempty (int ) ;
+ int prioq_put (int ,TYPE_2__*,int *) ;
+ int sd_event_source_set_enabled (int ,int ) ;
 
 void job_add_to_run_queue(Job *j) {
         int r;
@@ -43,5 +43,5 @@ void job_add_to_run_queue(Job *j) {
         if (r < 0)
                 log_warning_errno(r, "Failed put job in run queue, ignoring: %m");
         else
-                j->in_run_queue = true;
+                j->in_run_queue = 1;
 }

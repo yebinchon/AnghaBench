@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  SIZE_T ;
-typedef  int /*<<< orphan*/  IStream ;
-typedef  int /*<<< orphan*/  IPersistStreamInit ;
-typedef  int /*<<< orphan*/  IHTMLDocument2 ;
-typedef  int /*<<< orphan*/  HGLOBAL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CreateStreamOnHGlobal (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GlobalAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IHTMLDocument2_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IID_IPersistStreamInit ; 
- int /*<<< orphan*/  IPersistStreamInit_Load (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IPersistStreamInit_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IStream_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/ * create_document () ; 
- int /*<<< orphan*/  doc_complete ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * notif_doc ; 
- int /*<<< orphan*/  strlen (char const*) ; 
+
+
+
+typedef int SIZE_T ;
+typedef int IStream ;
+typedef int IPersistStreamInit ;
+typedef int IHTMLDocument2 ;
+typedef int HGLOBAL ;
+
+
+ int CreateStreamOnHGlobal (int ,int ,int **) ;
+ int FALSE ;
+ int GlobalAlloc (int ,int ) ;
+ int IHTMLDocument2_QueryInterface (int *,int *,void**) ;
+ int IID_IPersistStreamInit ;
+ int IPersistStreamInit_Load (int *,int *) ;
+ int IPersistStreamInit_Release (int *) ;
+ int IStream_Release (int *) ;
+ int TRUE ;
+ int * create_document () ;
+ int doc_complete ;
+ int memcpy (int ,char const*,int ) ;
+ int * notif_doc ;
+ int strlen (char const*) ;
 
 __attribute__((used)) static IHTMLDocument2 *create_doc_with_string(const char *str)
 {
@@ -42,7 +42,7 @@ __attribute__((used)) static IHTMLDocument2 *create_doc_with_string(const char *
 
     notif_doc = doc = create_document();
     if(!doc)
-        return NULL;
+        return ((void*)0);
 
     doc_complete = FALSE;
     len = strlen(str);

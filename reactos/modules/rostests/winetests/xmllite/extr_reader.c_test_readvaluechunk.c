@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buf ;
-typedef  scalar_t__ XmlNodeType ;
-typedef  int WCHAR ;
-typedef  int UINT ;
-typedef  int /*<<< orphan*/  IXmlReader ;
-typedef  int HRESULT ;
 
-/* Variables and functions */
- int ARRAY_SIZE (int*) ; 
- int CreateXmlReader (int /*<<< orphan*/ *,void**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IID_IXmlReader ; 
- int IXmlReader_Read (int /*<<< orphan*/ *,scalar_t__*) ; 
- int IXmlReader_ReadValueChunk (int /*<<< orphan*/ *,int*,int,int*) ; 
- int /*<<< orphan*/  IXmlReader_Release (int /*<<< orphan*/ *) ; 
- int S_FALSE ; 
- int S_OK ; 
- scalar_t__ XmlNodeType_Comment ; 
- int /*<<< orphan*/  memset (int*,int,int) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  read_node (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  read_value_char (int /*<<< orphan*/ *,char) ; 
- int /*<<< orphan*/  reader_value (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  set_input_string (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  strcmp_wa (int*,char*) ; 
- int wine_dbgstr_w (int*) ; 
+
+
+
+typedef int buf ;
+typedef scalar_t__ XmlNodeType ;
+typedef int WCHAR ;
+typedef int UINT ;
+typedef int IXmlReader ;
+typedef int HRESULT ;
+
+
+ int ARRAY_SIZE (int*) ;
+ int CreateXmlReader (int *,void**,int *) ;
+ int IID_IXmlReader ;
+ int IXmlReader_Read (int *,scalar_t__*) ;
+ int IXmlReader_ReadValueChunk (int *,int*,int,int*) ;
+ int IXmlReader_Release (int *) ;
+ int S_FALSE ;
+ int S_OK ;
+ scalar_t__ XmlNodeType_Comment ;
+ int memset (int*,int,int) ;
+ int ok (int,char*,...) ;
+ int read_node (int *,scalar_t__) ;
+ int read_value_char (int *,char) ;
+ int reader_value (int *,char*) ;
+ int set_input_string (int *,char*) ;
+ int strcmp_wa (int*,char*) ;
+ int wine_dbgstr_w (int*) ;
 
 __attribute__((used)) static void test_readvaluechunk(void)
 {
@@ -45,7 +45,7 @@ __attribute__((used)) static void test_readvaluechunk(void)
     HRESULT hr;
     UINT c;
 
-    hr = CreateXmlReader(&IID_IXmlReader, (void**)&reader, NULL);
+    hr = CreateXmlReader(&IID_IXmlReader, (void**)&reader, ((void*)0));
     ok(hr == S_OK, "S_OK, got %08x\n", hr);
 
     set_input_string(reader, "<!-- comment1 --><!-- comment2 -->");
@@ -57,10 +57,10 @@ __attribute__((used)) static void test_readvaluechunk(void)
     read_value_char(reader, ' ');
     read_value_char(reader, 'c');
 
-    /* portion read as chunk is skipped from resulting node value */
+
     reader_value(reader, "omment1 ");
 
-    /* once value is returned/allocated it's not possible to read by chunk */
+
     c = 0;
     b = 0;
     hr = IXmlReader_ReadValueChunk(reader, &b, 1, &c);
@@ -75,7 +75,7 @@ __attribute__((used)) static void test_readvaluechunk(void)
 
     reader_value(reader, "omment1 ");
 
-    /* read comment2 */
+
     read_node(reader, XmlNodeType_Comment);
 
     c = 0xdeadbeef;
@@ -98,10 +98,10 @@ __attribute__((used)) static void test_readvaluechunk(void)
     ok(hr == S_FALSE, "got %08x\n", hr);
     ok(!c, "got %u\n", c);
 
-    /* portion read as chunk is skipped from resulting node value */
+
     reader_value(reader, "");
 
-    /* once value is returned/allocated it's not possible to read by chunk */
+
     c = 0xdeadbeef;
     b = 0xffff;
     hr = IXmlReader_ReadValueChunk(reader, &b, 1, &c);

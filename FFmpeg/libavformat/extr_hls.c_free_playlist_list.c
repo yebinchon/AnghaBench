@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_4__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_4__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {struct playlist** buffer; } ;
-struct playlist {TYPE_4__* ctx; scalar_t__ input_next_requested; int /*<<< orphan*/  input_next; scalar_t__ input_read_done; int /*<<< orphan*/  input; TYPE_1__ pb; int /*<<< orphan*/  pkt; struct playlist** init_sec_buf; int /*<<< orphan*/  id3_deferred_extra; int /*<<< orphan*/  id3_initial; struct playlist** id3_buf; struct playlist** renditions; struct playlist** main_streams; } ;
-struct TYPE_7__ {int /*<<< orphan*/ * pb; } ;
-struct TYPE_6__ {int n_playlists; struct playlist** playlists; int /*<<< orphan*/  ctx; } ;
-typedef  TYPE_2__ HLSContext ;
+struct playlist {TYPE_4__* ctx; scalar_t__ input_next_requested; int input_next; scalar_t__ input_read_done; int input; TYPE_1__ pb; int pkt; struct playlist** init_sec_buf; int id3_deferred_extra; int id3_initial; struct playlist** id3_buf; struct playlist** renditions; struct playlist** main_streams; } ;
+struct TYPE_7__ {int * pb; } ;
+struct TYPE_6__ {int n_playlists; struct playlist** playlists; int ctx; } ;
+typedef TYPE_2__ HLSContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  av_dict_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  av_free (struct playlist*) ; 
- int /*<<< orphan*/  av_freep (struct playlist***) ; 
- int /*<<< orphan*/  av_packet_unref (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  avformat_close_input (TYPE_4__**) ; 
- int /*<<< orphan*/  ff_format_io_close (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ff_id3v2_free_extra_meta (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free_init_section_list (struct playlist*) ; 
- int /*<<< orphan*/  free_segment_list (struct playlist*) ; 
+
+ int av_dict_free (int *) ;
+ int av_free (struct playlist*) ;
+ int av_freep (struct playlist***) ;
+ int av_packet_unref (int *) ;
+ int avformat_close_input (TYPE_4__**) ;
+ int ff_format_io_close (int ,int *) ;
+ int ff_id3v2_free_extra_meta (int *) ;
+ int free_init_section_list (struct playlist*) ;
+ int free_segment_list (struct playlist*) ;
 
 __attribute__((used)) static void free_playlist_list(HLSContext *c)
 {
@@ -50,7 +50,7 @@ __attribute__((used)) static void free_playlist_list(HLSContext *c)
         ff_format_io_close(c->ctx, &pls->input_next);
         pls->input_next_requested = 0;
         if (pls->ctx) {
-            pls->ctx->pb = NULL;
+            pls->ctx->pb = ((void*)0);
             avformat_close_input(&pls->ctx);
         }
         av_free(pls);

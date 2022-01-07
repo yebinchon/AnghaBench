@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  size_t const OPJ_SIZE_T ;
-typedef  int OPJ_INT32 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
+
+
+
+typedef size_t const OPJ_SIZE_T ;
+typedef int OPJ_INT32 ;
+
+
+ int assert (int) ;
 
 __attribute__((used)) static void opj_idwt3_v_cas1(OPJ_INT32* tmp,
                              const OPJ_INT32 sn,
@@ -29,8 +29,8 @@ __attribute__((used)) static void opj_idwt3_v_cas1(OPJ_INT32* tmp,
 
     assert(len > 2);
 
-    /* Performs lifting in one single iteration. Saves memory */
-    /* accesses and explicit interleaving. */
+
+
 
     s1 = in_even[stride];
     dc = in_odd[0] - ((in_even[0] + s1 + 2) >> 2);
@@ -40,7 +40,7 @@ __attribute__((used)) static void opj_idwt3_v_cas1(OPJ_INT32* tmp,
         s2 = in_even[(OPJ_SIZE_T)(j + 1) * stride];
 
         dn = in_odd[(OPJ_SIZE_T)j * stride] - ((s1 + s2 + 2) >> 2);
-        tmp[i  ] = dc;
+        tmp[i ] = dc;
         tmp[i + 1] = s1 + ((dn + dc) >> 1);
 
         dc = dn;

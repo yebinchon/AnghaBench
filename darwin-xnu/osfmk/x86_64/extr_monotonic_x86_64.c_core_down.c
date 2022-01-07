@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  cpu_monotonic; } ;
-typedef  TYPE_1__ cpu_data_t ;
 
-/* Variables and functions */
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  GLOBAL_CTRL ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ ml_get_interrupts_enabled () ; 
- int /*<<< orphan*/  mt_core_supported ; 
- int /*<<< orphan*/  mt_mtc_update_fixed_counts (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  wrmsr64 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int cpu_monotonic; } ;
+typedef TYPE_1__ cpu_data_t ;
+
+
+ scalar_t__ FALSE ;
+ int GLOBAL_CTRL ;
+ int assert (int) ;
+ scalar_t__ ml_get_interrupts_enabled () ;
+ int mt_core_supported ;
+ int mt_mtc_update_fixed_counts (int *,int *,int *) ;
+ int wrmsr64 (int ,int ) ;
 
 __attribute__((used)) static void
 core_down(cpu_data_t *cpu)
 {
-	if (!mt_core_supported) {
-		return;
-	}
+ if (!mt_core_supported) {
+  return;
+ }
 
-	assert(ml_get_interrupts_enabled() == FALSE);
+ assert(ml_get_interrupts_enabled() == FALSE);
 
-	wrmsr64(GLOBAL_CTRL, 0);
-	mt_mtc_update_fixed_counts(&cpu->cpu_monotonic, NULL, NULL);
+ wrmsr64(GLOBAL_CTRL, 0);
+ mt_mtc_update_fixed_counts(&cpu->cpu_monotonic, ((void*)0), ((void*)0));
 }

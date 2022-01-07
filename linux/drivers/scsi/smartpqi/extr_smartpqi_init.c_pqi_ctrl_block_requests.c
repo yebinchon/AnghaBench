@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct pqi_ctrl_info {int block_requests; int /*<<< orphan*/  scsi_host; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  scsi_block_requests (int /*<<< orphan*/ ) ; 
+
+
+
+struct pqi_ctrl_info {int block_requests; int scsi_host; } ;
+
+
+ int scsi_block_requests (int ) ;
 
 __attribute__((used)) static inline void pqi_ctrl_block_requests(struct pqi_ctrl_info *ctrl_info)
 {
-	ctrl_info->block_requests = true;
-	scsi_block_requests(ctrl_info->scsi_host);
+ ctrl_info->block_requests = 1;
+ scsi_block_requests(ctrl_info->scsi_host);
 }

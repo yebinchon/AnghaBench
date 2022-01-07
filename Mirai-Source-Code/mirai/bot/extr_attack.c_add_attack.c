@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct attack_method {int /*<<< orphan*/  func; int /*<<< orphan*/  vector; } ;
-typedef  int /*<<< orphan*/  ATTACK_VECTOR ;
-typedef  int /*<<< orphan*/  ATTACK_FUNC ;
 
-/* Variables and functions */
- struct attack_method* calloc (int,int) ; 
- struct attack_method** methods ; 
- int methods_len ; 
- struct attack_method** realloc (struct attack_method**,int) ; 
+
+
+
+struct attack_method {int func; int vector; } ;
+typedef int ATTACK_VECTOR ;
+typedef int ATTACK_FUNC ;
+
+
+ struct attack_method* calloc (int,int) ;
+ struct attack_method** methods ;
+ int methods_len ;
+ struct attack_method** realloc (struct attack_method**,int) ;
 
 __attribute__((used)) static void add_attack(ATTACK_VECTOR vector, ATTACK_FUNC func)
 {

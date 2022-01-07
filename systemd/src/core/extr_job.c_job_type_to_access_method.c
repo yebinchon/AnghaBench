@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ JobType ;
 
-/* Variables and functions */
- scalar_t__ IN_SET (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  JOB_RESTART ; 
- int /*<<< orphan*/  JOB_START ; 
- scalar_t__ JOB_STOP ; 
- int /*<<< orphan*/  JOB_TRY_RESTART ; 
- scalar_t__ _JOB_TYPE_MAX ; 
- int /*<<< orphan*/  assert (int) ; 
+
+
+
+typedef scalar_t__ JobType ;
+
+
+ scalar_t__ IN_SET (scalar_t__,int ,int ,int ) ;
+ int JOB_RESTART ;
+ int JOB_START ;
+ scalar_t__ JOB_STOP ;
+ int JOB_TRY_RESTART ;
+ scalar_t__ _JOB_TYPE_MAX ;
+ int assert (int) ;
 
 const char* job_type_to_access_method(JobType t) {
         assert(t >= 0);

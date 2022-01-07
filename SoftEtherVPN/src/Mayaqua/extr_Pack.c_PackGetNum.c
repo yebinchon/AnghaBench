@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT ;
-typedef  int /*<<< orphan*/  PACK ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MIN (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  PackGetInt (int /*<<< orphan*/ *,char*) ; 
+
+
+
+typedef int UINT ;
+typedef int PACK ;
+
+
+ int MIN (int ,int) ;
+ int PackGetInt (int *,char*) ;
 
 UINT PackGetNum(PACK *p, char *name)
 {
-	return MIN(PackGetInt(p, name), 65536);
+ return MIN(PackGetInt(p, name), 65536);
 }

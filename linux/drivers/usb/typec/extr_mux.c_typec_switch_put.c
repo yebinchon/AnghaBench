@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_6__ {TYPE_2__* parent; } ;
 struct typec_switch {TYPE_3__ dev; } ;
 struct TYPE_5__ {TYPE_1__* driver; } ;
-struct TYPE_4__ {int /*<<< orphan*/  owner; } ;
+struct TYPE_4__ {int owner; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IS_ERR_OR_NULL (struct typec_switch*) ; 
- int /*<<< orphan*/  module_put (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  put_device (TYPE_3__*) ; 
+
+ int IS_ERR_OR_NULL (struct typec_switch*) ;
+ int module_put (int ) ;
+ int put_device (TYPE_3__*) ;
 
 void typec_switch_put(struct typec_switch *sw)
 {
-	if (!IS_ERR_OR_NULL(sw)) {
-		module_put(sw->dev.parent->driver->owner);
-		put_device(&sw->dev);
-	}
+ if (!IS_ERR_OR_NULL(sw)) {
+  module_put(sw->dev.parent->driver->owner);
+  put_device(&sw->dev);
+ }
 }

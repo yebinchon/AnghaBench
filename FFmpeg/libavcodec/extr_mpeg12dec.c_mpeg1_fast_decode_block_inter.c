@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  scalar_t__ int32_t ;
-typedef  int int16_t ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef scalar_t__ int32_t ;
+typedef int int16_t ;
 struct TYPE_7__ {int* permutated; } ;
-struct TYPE_9__ {int qscale; int* block_last_index; int /*<<< orphan*/  gb; TYPE_1__ intra_scantable; } ;
-struct TYPE_8__ {int /*<<< orphan*/ * rl_vlc; } ;
-typedef  TYPE_2__ RLTable ;
-typedef  TYPE_3__ MpegEncContext ;
+struct TYPE_9__ {int qscale; int* block_last_index; int gb; TYPE_1__ intra_scantable; } ;
+struct TYPE_8__ {int * rl_vlc; } ;
+typedef TYPE_2__ RLTable ;
+typedef TYPE_3__ MpegEncContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLOSE_READER (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int GET_CACHE (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GET_RL_VLC (int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LAST_SKIP_BITS (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int MAX_INDEX ; 
- int /*<<< orphan*/  OPEN_READER (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int SHOW_SBITS (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int SHOW_UBITS (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  SKIP_BITS (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  TEX_VLC_BITS ; 
- int /*<<< orphan*/  UPDATE_CACHE (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  check_scantable_index (TYPE_3__*,int) ; 
- TYPE_2__ ff_rl_mpeg1 ; 
- int /*<<< orphan*/  re ; 
+
+ int CLOSE_READER (int ,int *) ;
+ int GET_CACHE (int ,int *) ;
+ int GET_RL_VLC (int,int,int ,int *,int ,int ,int,int ) ;
+ int LAST_SKIP_BITS (int ,int *,int) ;
+ int MAX_INDEX ;
+ int OPEN_READER (int ,int *) ;
+ int SHOW_SBITS (int ,int *,int) ;
+ int SHOW_UBITS (int ,int *,int) ;
+ int SKIP_BITS (int ,int *,int) ;
+ int TEX_VLC_BITS ;
+ int UPDATE_CACHE (int ,int *) ;
+ int check_scantable_index (TYPE_3__*,int) ;
+ TYPE_2__ ff_rl_mpeg1 ;
+ int re ;
 
 __attribute__((used)) static inline int mpeg1_fast_decode_block_inter(MpegEncContext *s,
                                                 int16_t *block, int n)
 {
     int level, i, j, run;
-    RLTable *rl              = &ff_rl_mpeg1;
+    RLTable *rl = &ff_rl_mpeg1;
     uint8_t *const scantable = s->intra_scantable.permutated;
-    const int qscale         = s->qscale;
+    const int qscale = s->qscale;
 
     {
         OPEN_READER(re, &s->gb);
         i = -1;
-        // Special case for first coefficient, no need to add second VLC table.
+
         UPDATE_CACHE(re, &s->gb);
         if (((int32_t) GET_CACHE(re, &s->gb)) < 0) {
             level = (3 * qscale) >> 1;
@@ -63,7 +63,7 @@ __attribute__((used)) static inline int mpeg1_fast_decode_block_inter(MpegEncCon
                 goto end;
         }
 
-        /* now quantify & encode AC coefficients */
+
         for (;;) {
             GET_RL_VLC(level, run, re, &s->gb, rl->rl_vlc[0],
                        TEX_VLC_BITS, 2, 0);
@@ -79,7 +79,7 @@ __attribute__((used)) static inline int mpeg1_fast_decode_block_inter(MpegEncCon
                         SHOW_SBITS(re, &s->gb, 1);
                 SKIP_BITS(re, &s->gb, 1);
             } else {
-                /* escape */
+
                 run = SHOW_UBITS(re, &s->gb, 6) + 1;
                 LAST_SKIP_BITS(re, &s->gb, 6);
                 UPDATE_CACHE(re, &s->gb);

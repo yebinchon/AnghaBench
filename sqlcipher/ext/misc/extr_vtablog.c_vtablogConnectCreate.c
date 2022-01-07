@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int nRow; int iInst; } ;
-typedef  TYPE_1__ vtablog_vtab ;
-typedef  int /*<<< orphan*/  sqlite3_vtab ;
-typedef  int /*<<< orphan*/  sqlite3 ;
+typedef TYPE_1__ vtablog_vtab ;
+typedef int sqlite3_vtab ;
+typedef int sqlite3 ;
 
-/* Variables and functions */
- int SQLITE_ERROR ; 
- int SQLITE_NOMEM ; 
- int SQLITE_OK ; 
- int atoi (char*) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int sqlite3_declare_vtab (int /*<<< orphan*/ *,char*) ; 
- TYPE_1__* sqlite3_malloc (int) ; 
- char* sqlite3_mprintf (char*) ; 
- scalar_t__ vtablog_string_parameter (char**,char*,char const*,char**) ; 
+
+ int SQLITE_ERROR ;
+ int SQLITE_NOMEM ;
+ int SQLITE_OK ;
+ int atoi (char*) ;
+ int memset (TYPE_1__*,int ,int) ;
+ int printf (char*,...) ;
+ int sqlite3_declare_vtab (int *,char*) ;
+ TYPE_1__* sqlite3_malloc (int) ;
+ char* sqlite3_mprintf (char*) ;
+ scalar_t__ vtablog_string_parameter (char**,char*,char const*,char**) ;
 
 __attribute__((used)) static int vtablogConnectCreate(
   sqlite3 *db,

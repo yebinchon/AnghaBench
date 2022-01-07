@@ -1,33 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int KEY_TEST_NUM ; 
- unsigned int NUM_TESTS ; 
- char* cbc_data ; 
- int* cbc_iv ; 
- int* cbc_key ; 
- int* cbc_ok ; 
- int* cfb64_ok ; 
- int** cipher_data ; 
- int** ecb_data ; 
- int* key_data ; 
- int** key_out ; 
- int* key_test ; 
- int* ofb64_ok ; 
- int** plain_data ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int strlen (char*) ; 
+ int KEY_TEST_NUM ;
+ unsigned int NUM_TESTS ;
+ char* cbc_data ;
+ int* cbc_iv ;
+ int* cbc_key ;
+ int* cbc_ok ;
+ int* cfb64_ok ;
+ int** cipher_data ;
+ int** ecb_data ;
+ int* key_data ;
+ int** key_out ;
+ int* key_test ;
+ int* ofb64_ok ;
+ int** plain_data ;
+ int printf (char*,...) ;
+ int strlen (char*) ;
 
 __attribute__((used)) static int print_test_data(void)
 {

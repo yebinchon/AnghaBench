@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  ecma_finalize_builtins () ; 
- int /*<<< orphan*/  ecma_finalize_global_lex_env () ; 
- int /*<<< orphan*/  ecma_finalize_lit_storage () ; 
- int /*<<< orphan*/  ecma_gc_run () ; 
+ int ecma_finalize_builtins () ;
+ int ecma_finalize_global_lex_env () ;
+ int ecma_finalize_lit_storage () ;
+ int ecma_gc_run () ;
 
 void
 ecma_finalize (void)

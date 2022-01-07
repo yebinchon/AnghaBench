@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct http_client {scalar_t__ sd; int /*<<< orphan*/  req; int /*<<< orphan*/  hread; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EVENT_TYPE_WRITE ; 
- int /*<<< orphan*/  close (scalar_t__) ; 
- int /*<<< orphan*/  eloop_cancel_timeout (int /*<<< orphan*/ ,struct http_client*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  eloop_unregister_sock (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  http_client_timeout ; 
- int /*<<< orphan*/  httpread_destroy (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  os_free (struct http_client*) ; 
- int /*<<< orphan*/  wpabuf_free (int /*<<< orphan*/ ) ; 
+
+
+
+struct http_client {scalar_t__ sd; int req; int hread; } ;
+
+
+ int EVENT_TYPE_WRITE ;
+ int close (scalar_t__) ;
+ int eloop_cancel_timeout (int ,struct http_client*,int *) ;
+ int eloop_unregister_sock (scalar_t__,int ) ;
+ int http_client_timeout ;
+ int httpread_destroy (int ) ;
+ int os_free (struct http_client*) ;
+ int wpabuf_free (int ) ;
 
 void http_client_free(struct http_client *c)
 {
-	if (c == NULL)
-		return;
-	httpread_destroy(c->hread);
-	wpabuf_free(c->req);
-	if (c->sd >= 0) {
-		eloop_unregister_sock(c->sd, EVENT_TYPE_WRITE);
-		close(c->sd);
-	}
-	eloop_cancel_timeout(http_client_timeout, c, NULL);
-	os_free(c);
+ if (c == ((void*)0))
+  return;
+ httpread_destroy(c->hread);
+ wpabuf_free(c->req);
+ if (c->sd >= 0) {
+  eloop_unregister_sock(c->sd, EVENT_TYPE_WRITE);
+  close(c->sd);
+ }
+ eloop_cancel_timeout(http_client_timeout, c, ((void*)0));
+ os_free(c);
 }

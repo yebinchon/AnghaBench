@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_30__   TYPE_5__ ;
-typedef  struct TYPE_29__   TYPE_4__ ;
-typedef  struct TYPE_28__   TYPE_3__ ;
-typedef  struct TYPE_27__   TYPE_2__ ;
-typedef  struct TYPE_26__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_26__ {int /*<<< orphan*/  (* FillBufferDone ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_2__*) ;int /*<<< orphan*/  (* EmptyBufferDone ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_2__*) ;} ;
-struct TYPE_30__ {int /*<<< orphan*/  callbacks_data; int /*<<< orphan*/  omx; TYPE_1__ callbacks; } ;
-struct TYPE_29__ {scalar_t__ direction; int actions; int /*<<< orphan*/  buffers_in_transit; int /*<<< orphan*/  index; TYPE_5__* component; } ;
+
+
+typedef struct TYPE_30__ TYPE_5__ ;
+typedef struct TYPE_29__ TYPE_4__ ;
+typedef struct TYPE_28__ TYPE_3__ ;
+typedef struct TYPE_27__ TYPE_2__ ;
+typedef struct TYPE_26__ TYPE_1__ ;
+
+
+struct TYPE_26__ {int (* FillBufferDone ) (int ,int ,TYPE_2__*) ;int (* EmptyBufferDone ) (int ,int ,TYPE_2__*) ;} ;
+struct TYPE_30__ {int callbacks_data; int omx; TYPE_1__ callbacks; } ;
+struct TYPE_29__ {scalar_t__ direction; int actions; int buffers_in_transit; int index; TYPE_5__* component; } ;
 struct TYPE_28__ {scalar_t__ data; scalar_t__ cmd; scalar_t__ user_data; } ;
 struct TYPE_27__ {scalar_t__ pBuffer; int nFlags; } ;
-typedef  int /*<<< orphan*/  OMX_HANDLETYPE ;
-typedef  int /*<<< orphan*/  OMX_ERRORTYPE ;
-typedef  TYPE_2__ OMX_BUFFERHEADERTYPE ;
-typedef  TYPE_3__ MMAL_BUFFER_HEADER_T ;
-typedef  int MMAL_BOOL_T ;
-typedef  TYPE_4__ MMALOMX_PORT_T ;
-typedef  TYPE_5__ MMALOMX_COMPONENT_T ;
+typedef int OMX_HANDLETYPE ;
+typedef int OMX_ERRORTYPE ;
+typedef TYPE_2__ OMX_BUFFERHEADERTYPE ;
+typedef TYPE_3__ MMAL_BUFFER_HEADER_T ;
+typedef int MMAL_BOOL_T ;
+typedef TYPE_4__ MMALOMX_PORT_T ;
+typedef TYPE_5__ MMALOMX_COMPONENT_T ;
 
-/* Variables and functions */
- scalar_t__ ENABLE_MMAL_EXTRA_LOGGING ; 
- int /*<<< orphan*/  LOG_TRACE (char*,TYPE_5__*,int /*<<< orphan*/ ,TYPE_2__*) ; 
- int MMALOMX_ACTION_CHECK_FLUSHED ; 
- int /*<<< orphan*/  MMALOMX_LOCK_PORT (TYPE_5__*,TYPE_4__*) ; 
- int /*<<< orphan*/  MMALOMX_UNLOCK_PORT (TYPE_5__*,TYPE_4__*) ; 
- int OMX_BUFFERFLAG_EOS ; 
- scalar_t__ OMX_DirInput ; 
- scalar_t__ OMX_DirOutput ; 
- int /*<<< orphan*/  OMX_ErrorNone ; 
- int /*<<< orphan*/  OMX_EventBufferFlag ; 
- int /*<<< orphan*/  mmal_buffer_header_release (TYPE_3__*) ; 
- int /*<<< orphan*/  mmalil_buffer_header_to_omx (TYPE_2__*,TYPE_3__*) ; 
- int /*<<< orphan*/  mmalomx_buffer_event (TYPE_4__*,TYPE_3__*) ; 
- int /*<<< orphan*/  mmalomx_callback_event_handler (TYPE_5__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mmalomx_commands_actions_signal (TYPE_5__*) ; 
- int /*<<< orphan*/  mmalomx_mark_process_outgoing (TYPE_5__*,TYPE_4__*,TYPE_2__*) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  vcos_assert (int) ; 
+
+ scalar_t__ ENABLE_MMAL_EXTRA_LOGGING ;
+ int LOG_TRACE (char*,TYPE_5__*,int ,TYPE_2__*) ;
+ int MMALOMX_ACTION_CHECK_FLUSHED ;
+ int MMALOMX_LOCK_PORT (TYPE_5__*,TYPE_4__*) ;
+ int MMALOMX_UNLOCK_PORT (TYPE_5__*,TYPE_4__*) ;
+ int OMX_BUFFERFLAG_EOS ;
+ scalar_t__ OMX_DirInput ;
+ scalar_t__ OMX_DirOutput ;
+ int OMX_ErrorNone ;
+ int OMX_EventBufferFlag ;
+ int mmal_buffer_header_release (TYPE_3__*) ;
+ int mmalil_buffer_header_to_omx (TYPE_2__*,TYPE_3__*) ;
+ int mmalomx_buffer_event (TYPE_4__*,TYPE_3__*) ;
+ int mmalomx_callback_event_handler (TYPE_5__*,int ,int ,int,int *) ;
+ int mmalomx_commands_actions_signal (TYPE_5__*) ;
+ int mmalomx_mark_process_outgoing (TYPE_5__*,TYPE_4__*,TYPE_2__*) ;
+ int stub1 (int ,int ,TYPE_2__*) ;
+ int stub2 (int ,int ,TYPE_2__*) ;
+ int vcos_assert (int) ;
 
 OMX_ERRORTYPE mmalomx_buffer_return(
    MMALOMX_PORT_T *port,
@@ -75,7 +75,7 @@ OMX_ERRORTYPE mmalomx_buffer_return(
    if ((omx_buffer->nFlags & OMX_BUFFERFLAG_EOS) && port->direction == OMX_DirOutput)
    {
       mmalomx_callback_event_handler(component, OMX_EventBufferFlag,
-                                     port->index, omx_buffer->nFlags, NULL);
+                                     port->index, omx_buffer->nFlags, ((void*)0));
    }
 
    mmalomx_mark_process_outgoing(component, port, omx_buffer);

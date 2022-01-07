@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  X509_NAME_ENTRY ;
-typedef  int /*<<< orphan*/  X509_NAME ;
-typedef  int /*<<< orphan*/  X509 ;
-struct TYPE_9__ {size_t length; unsigned char* data; int /*<<< orphan*/  type; scalar_t__ flags; } ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int X509_NAME_ENTRY ;
+typedef int X509_NAME ;
+typedef int X509 ;
+struct TYPE_9__ {size_t length; unsigned char* data; int type; scalar_t__ flags; } ;
 struct TYPE_7__ {TYPE_3__* dNSName; } ;
-struct TYPE_8__ {TYPE_1__ d; int /*<<< orphan*/  type; } ;
-typedef  int /*<<< orphan*/  NAME_CONSTRAINTS ;
-typedef  TYPE_2__ GENERAL_NAME ;
-typedef  TYPE_3__ ASN1_STRING ;
+struct TYPE_8__ {TYPE_1__ d; int type; } ;
+typedef int NAME_CONSTRAINTS ;
+typedef TYPE_2__ GENERAL_NAME ;
+typedef TYPE_3__ ASN1_STRING ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GEN_DNS ; 
- int /*<<< orphan*/  NID_commonName ; 
- int /*<<< orphan*/  OPENSSL_free (unsigned char*) ; 
- int /*<<< orphan*/  V_ASN1_IA5STRING ; 
- TYPE_3__* X509_NAME_ENTRY_get_data (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * X509_NAME_get_entry (int /*<<< orphan*/ *,int) ; 
- int X509_NAME_get_index_by_NID (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int X509_V_OK ; 
- int /*<<< orphan*/ * X509_get_subject_name (int /*<<< orphan*/ *) ; 
- int cn2dnsid (TYPE_3__*,unsigned char**,size_t*) ; 
- int nc_match (TYPE_2__*,int /*<<< orphan*/ *) ; 
+
+ int GEN_DNS ;
+ int NID_commonName ;
+ int OPENSSL_free (unsigned char*) ;
+ int V_ASN1_IA5STRING ;
+ TYPE_3__* X509_NAME_ENTRY_get_data (int *) ;
+ int * X509_NAME_get_entry (int *,int) ;
+ int X509_NAME_get_index_by_NID (int *,int ,int) ;
+ int X509_V_OK ;
+ int * X509_get_subject_name (int *) ;
+ int cn2dnsid (TYPE_3__*,unsigned char**,size_t*) ;
+ int nc_match (TYPE_2__*,int *) ;
 
 int NAME_CONSTRAINTS_check_CN(X509 *x, NAME_CONSTRAINTS *nc)
 {
@@ -48,7 +48,7 @@ int NAME_CONSTRAINTS_check_CN(X509 *x, NAME_CONSTRAINTS *nc)
     gntmp.type = GEN_DNS;
     gntmp.d.dNSName = &stmp;
 
-    /* Process any commonName attributes in subject name */
+
 
     for (i = -1;;) {
         X509_NAME_ENTRY *ne;
@@ -62,7 +62,7 @@ int NAME_CONSTRAINTS_check_CN(X509 *x, NAME_CONSTRAINTS *nc)
         ne = X509_NAME_get_entry(nm, i);
         cn = X509_NAME_ENTRY_get_data(ne);
 
-        /* Only process attributes that look like host names */
+
         if ((r = cn2dnsid(cn, &idval, &idlen)) != X509_V_OK)
             return r;
         if (idlen == 0)

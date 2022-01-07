@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  (* glBindFramebuffer ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* glDeleteFramebuffers ) (int,int /*<<< orphan*/ *) ;int /*<<< orphan*/  (* glFramebufferTexture2D ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* glGenFramebuffers ) (int,int /*<<< orphan*/ *) ;} ;
-struct TYPE_4__ {int /*<<< orphan*/  (* p_glDeleteTextures ) (int,int /*<<< orphan*/ *) ;int /*<<< orphan*/  (* p_glGetTexImage ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*) ;int /*<<< orphan*/  (* p_glBindTexture ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* p_glClear ) (int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* p_glClearColor ) (float,float,float,float) ;int /*<<< orphan*/  (* p_glTexImage2D ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ;int /*<<< orphan*/  (* p_glTexParameteri ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* p_glGenTextures ) (int,int /*<<< orphan*/ *) ;} ;
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int (* glBindFramebuffer ) (int ,int ) ;int (* glDeleteFramebuffers ) (int,int *) ;int (* glFramebufferTexture2D ) (int ,int ,int ,int ,int ) ;int (* glGenFramebuffers ) (int,int *) ;} ;
+struct TYPE_4__ {int (* p_glDeleteTextures ) (int,int *) ;int (* p_glGetTexImage ) (int ,int ,int ,int ,int*) ;int (* p_glBindTexture ) (int ,int ) ;int (* p_glClear ) (int ) ;int (* p_glClearColor ) (float,float,float,float) ;int (* p_glTexImage2D ) (int ,int ,int ,unsigned int,int,int ,int ,int ,int *) ;int (* p_glTexParameteri ) (int ,int ,int ) ;int (* p_glGenTextures ) (int,int *) ;} ;
 struct TYPE_5__ {TYPE_1__ gl; } ;
 struct wined3d_gl_info {TYPE_3__ fbo_ops; TYPE_2__ gl_ops; } ;
 struct wined3d_color {float member_0; float member_1; float member_2; float member_3; } ;
 struct wined3d_caps_gl_ctx {struct wined3d_gl_info* gl_info; } ;
-typedef  int /*<<< orphan*/  GLuint ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef int GLuint ;
+typedef int DWORD ;
+typedef int BOOL ;
 
-/* Variables and functions */
- unsigned int ARRAY_SIZE (int*) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GL_BGRA ; 
- int /*<<< orphan*/  GL_COLOR_ATTACHMENT0 ; 
- int /*<<< orphan*/  GL_COLOR_BUFFER_BIT ; 
- int /*<<< orphan*/  GL_EXTCALL (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GL_FRAMEBUFFER ; 
- int /*<<< orphan*/  GL_RGBA8 ; 
- int /*<<< orphan*/  GL_TEXTURE_2D ; 
- int /*<<< orphan*/  GL_TEXTURE_MAX_LEVEL ; 
- int /*<<< orphan*/  GL_UNSIGNED_INT_8_8_8_8_REV ; 
- int /*<<< orphan*/  TRACE (char*,int,int,int,int) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  checkGLcall (char*) ; 
- int /*<<< orphan*/  draw_test_quad (struct wined3d_caps_gl_ctx*,int /*<<< orphan*/ *,struct wined3d_color const*) ; 
- int /*<<< orphan*/  glViewportIndexedf (int /*<<< orphan*/ ,float const,float const,float,float) ; 
- int /*<<< orphan*/  stub1 (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub10 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub11 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  stub12 (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub13 (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub14 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub3 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub4 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub5 (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub6 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub7 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub8 (float,float,float,float) ; 
- int /*<<< orphan*/  stub9 (int /*<<< orphan*/ ) ; 
+
+ unsigned int ARRAY_SIZE (int*) ;
+ int FALSE ;
+ int GL_BGRA ;
+ int GL_COLOR_ATTACHMENT0 ;
+ int GL_COLOR_BUFFER_BIT ;
+ int GL_EXTCALL (int ) ;
+ int GL_FRAMEBUFFER ;
+ int GL_RGBA8 ;
+ int GL_TEXTURE_2D ;
+ int GL_TEXTURE_MAX_LEVEL ;
+ int GL_UNSIGNED_INT_8_8_8_8_REV ;
+ int TRACE (char*,int,int,int,int) ;
+ int TRUE ;
+ int checkGLcall (char*) ;
+ int draw_test_quad (struct wined3d_caps_gl_ctx*,int *,struct wined3d_color const*) ;
+ int glViewportIndexedf (int ,float const,float const,float,float) ;
+ int stub1 (int,int *) ;
+ int stub10 (int ,int ) ;
+ int stub11 (int ,int ,int ,int ,int*) ;
+ int stub12 (int,int *) ;
+ int stub13 (int,int *) ;
+ int stub14 (int ,int ) ;
+ int stub2 (int ,int ) ;
+ int stub3 (int ,int ,int ) ;
+ int stub4 (int ,int ,int ,unsigned int,int,int ,int ,int ,int *) ;
+ int stub5 (int,int *) ;
+ int stub6 (int ,int ) ;
+ int stub7 (int ,int ,int ,int ,int ) ;
+ int stub8 (float,float,float,float) ;
+ int stub9 (int ) ;
 
 BOOL wined3d_caps_gl_ctx_test_viewport_subpixel_bits(struct wined3d_caps_gl_ctx *ctx)
 {
@@ -68,7 +68,7 @@ BOOL wined3d_caps_gl_ctx_test_viewport_subpixel_bits(struct wined3d_caps_gl_ctx 
     gl_info->gl_ops.gl.p_glBindTexture(GL_TEXTURE_2D, texture);
     gl_info->gl_ops.gl.p_glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAX_LEVEL, 0);
     gl_info->gl_ops.gl.p_glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, ARRAY_SIZE(readback), 1, 0,
-            GL_BGRA, GL_UNSIGNED_INT_8_8_8_8_REV, NULL);
+            GL_BGRA, GL_UNSIGNED_INT_8_8_8_8_REV, ((void*)0));
     gl_info->fbo_ops.glGenFramebuffers(1, &fbo);
     gl_info->fbo_ops.glBindFramebuffer(GL_FRAMEBUFFER, fbo);
     gl_info->fbo_ops.glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0,
@@ -78,7 +78,7 @@ BOOL wined3d_caps_gl_ctx_test_viewport_subpixel_bits(struct wined3d_caps_gl_ctx 
     gl_info->gl_ops.gl.p_glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
     gl_info->gl_ops.gl.p_glClear(GL_COLOR_BUFFER_BIT);
     GL_EXTCALL(glViewportIndexedf(0, offset, offset, 4.0f, 1.0f));
-    draw_test_quad(ctx, NULL, &red);
+    draw_test_quad(ctx, ((void*)0), &red);
     checkGLcall("draw");
 
     gl_info->gl_ops.gl.p_glBindTexture(GL_TEXTURE_2D, texture);

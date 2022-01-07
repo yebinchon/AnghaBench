@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int usec_t ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int usec_t ;
 struct TYPE_4__ {int tv_sec; int tv_usec; } ;
 struct TYPE_3__ {int tv_sec; int tv_usec; } ;
-struct timeval {TYPE_2__ ru_stime; TYPE_1__ ru_utime; int /*<<< orphan*/  tv_sec; int /*<<< orphan*/  member_1; int /*<<< orphan*/  member_0; } ;
-struct rusage {TYPE_2__ ru_stime; TYPE_1__ ru_utime; int /*<<< orphan*/  tv_sec; int /*<<< orphan*/  member_1; int /*<<< orphan*/  member_0; } ;
+struct timeval {TYPE_2__ ru_stime; TYPE_1__ ru_utime; int tv_sec; int member_1; int member_0; } ;
+struct rusage {TYPE_2__ ru_stime; TYPE_1__ ru_utime; int tv_sec; int member_1; int member_0; } ;
 
-/* Variables and functions */
- int RATES_DETAIL ; 
- int /*<<< orphan*/  RUSAGE_SELF ; 
- int USEC_PER_SEC ; 
- int /*<<< orphan*/  all_files_len ; 
- int /*<<< orphan*/  all_pids_count ; 
- int /*<<< orphan*/  apps_groups_targets_count ; 
- int /*<<< orphan*/  calls_counter ; 
- int cgtime_fix_ratio ; 
- int cmajflt_fix_ratio ; 
- int cminflt_fix_ratio ; 
- int cstime_fix_ratio ; 
- int cutime_fix_ratio ; 
- int /*<<< orphan*/  file_counter ; 
- int /*<<< orphan*/  filenames_allocated_counter ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,...) ; 
- int /*<<< orphan*/  getrusage (int /*<<< orphan*/ ,struct timeval*) ; 
- int gtime_fix_ratio ; 
- scalar_t__ include_exited_childs ; 
- int /*<<< orphan*/  inodes_changed_counter ; 
- int /*<<< orphan*/  links_changed_counter ; 
- int majflt_fix_ratio ; 
- int /*<<< orphan*/  memmove (struct timeval*,struct timeval*,int) ; 
- int minflt_fix_ratio ; 
- int /*<<< orphan*/  now_monotonic_timeval (struct timeval*) ; 
- int /*<<< orphan*/  stdout ; 
- int stime_fix_ratio ; 
- int /*<<< orphan*/  targets_assignment_counter ; 
- scalar_t__ unlikely (int) ; 
- int /*<<< orphan*/  update_every ; 
- int utime_fix_ratio ; 
+
+ int RATES_DETAIL ;
+ int RUSAGE_SELF ;
+ int USEC_PER_SEC ;
+ int all_files_len ;
+ int all_pids_count ;
+ int apps_groups_targets_count ;
+ int calls_counter ;
+ int cgtime_fix_ratio ;
+ int cmajflt_fix_ratio ;
+ int cminflt_fix_ratio ;
+ int cstime_fix_ratio ;
+ int cutime_fix_ratio ;
+ int file_counter ;
+ int filenames_allocated_counter ;
+ int fprintf (int ,char*,int,...) ;
+ int getrusage (int ,struct timeval*) ;
+ int gtime_fix_ratio ;
+ scalar_t__ include_exited_childs ;
+ int inodes_changed_counter ;
+ int links_changed_counter ;
+ int majflt_fix_ratio ;
+ int memmove (struct timeval*,struct timeval*,int) ;
+ int minflt_fix_ratio ;
+ int now_monotonic_timeval (struct timeval*) ;
+ int stdout ;
+ int stime_fix_ratio ;
+ int targets_assignment_counter ;
+ scalar_t__ unlikely (int) ;
+ int update_every ;
+ int utime_fix_ratio ;
 
 void send_resource_usage_to_netdata(usec_t dt) {
     static struct timeval last = { 0, 0 };
@@ -164,11 +164,11 @@ void send_resource_usage_to_netdata(usec_t dt) {
             "SET majflt = %u\n"
             "END\n"
             , dt
-            , (unsigned int)(utime_fix_ratio   * 100 * RATES_DETAIL)
-            , (unsigned int)(stime_fix_ratio   * 100 * RATES_DETAIL)
-            , (unsigned int)(gtime_fix_ratio   * 100 * RATES_DETAIL)
-            , (unsigned int)(minflt_fix_ratio  * 100 * RATES_DETAIL)
-            , (unsigned int)(majflt_fix_ratio  * 100 * RATES_DETAIL)
+            , (unsigned int)(utime_fix_ratio * 100 * RATES_DETAIL)
+            , (unsigned int)(stime_fix_ratio * 100 * RATES_DETAIL)
+            , (unsigned int)(gtime_fix_ratio * 100 * RATES_DETAIL)
+            , (unsigned int)(minflt_fix_ratio * 100 * RATES_DETAIL)
+            , (unsigned int)(majflt_fix_ratio * 100 * RATES_DETAIL)
     );
 
     if(include_exited_childs)
@@ -181,9 +181,9 @@ void send_resource_usage_to_netdata(usec_t dt) {
             "SET cmajflt = %u\n"
             "END\n"
             , dt
-            , (unsigned int)(cutime_fix_ratio  * 100 * RATES_DETAIL)
-            , (unsigned int)(cstime_fix_ratio  * 100 * RATES_DETAIL)
-            , (unsigned int)(cgtime_fix_ratio  * 100 * RATES_DETAIL)
+            , (unsigned int)(cutime_fix_ratio * 100 * RATES_DETAIL)
+            , (unsigned int)(cstime_fix_ratio * 100 * RATES_DETAIL)
+            , (unsigned int)(cgtime_fix_ratio * 100 * RATES_DETAIL)
             , (unsigned int)(cminflt_fix_ratio * 100 * RATES_DETAIL)
             , (unsigned int)(cmajflt_fix_ratio * 100 * RATES_DETAIL)
             );

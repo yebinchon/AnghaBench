@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct ra_imgfmt_desc {int dummy; } ;
-struct ra {int /*<<< orphan*/  log; } ;
+struct ra {int log; } ;
 
-/* Variables and functions */
- int IMGFMT_END ; 
- int IMGFMT_START ; 
- int /*<<< orphan*/  MP_MSG (struct ra*,int,char*,...) ; 
- char* mp_imgfmt_to_name (int) ; 
- int /*<<< orphan*/  mp_msg_test (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ra_dump_imgfmt_desc (struct ra*,struct ra_imgfmt_desc*,int) ; 
- scalar_t__ ra_get_imgfmt_desc (struct ra*,int,struct ra_imgfmt_desc*) ; 
- scalar_t__ strcmp (char const*,char*) ; 
+
+ int IMGFMT_END ;
+ int IMGFMT_START ;
+ int MP_MSG (struct ra*,int,char*,...) ;
+ char* mp_imgfmt_to_name (int) ;
+ int mp_msg_test (int ,int) ;
+ int ra_dump_imgfmt_desc (struct ra*,struct ra_imgfmt_desc*,int) ;
+ scalar_t__ ra_get_imgfmt_desc (struct ra*,int,struct ra_imgfmt_desc*) ;
+ scalar_t__ strcmp (char const*,char*) ;
 
 void ra_dump_img_formats(struct ra *ra, int msgl)
 {

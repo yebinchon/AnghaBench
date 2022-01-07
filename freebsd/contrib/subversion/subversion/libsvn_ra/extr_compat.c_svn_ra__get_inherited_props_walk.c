@@ -1,67 +1,67 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_21__   TYPE_4__ ;
-typedef  struct TYPE_20__   TYPE_3__ ;
-typedef  struct TYPE_19__   TYPE_2__ ;
-typedef  struct TYPE_18__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_string_t ;
-typedef  int /*<<< orphan*/  svn_revnum_t ;
+
+
+typedef struct TYPE_21__ TYPE_4__ ;
+typedef struct TYPE_20__ TYPE_3__ ;
+typedef struct TYPE_19__ TYPE_2__ ;
+typedef struct TYPE_18__ TYPE_1__ ;
+
+
+typedef int svn_string_t ;
+typedef int svn_revnum_t ;
 struct TYPE_19__ {TYPE_1__* vtable; } ;
-typedef  TYPE_2__ svn_ra_session_t ;
-struct TYPE_20__ {int /*<<< orphan*/ * prop_hash; int /*<<< orphan*/  path_or_url; } ;
-typedef  TYPE_3__ svn_prop_inherited_item_t ;
+typedef TYPE_2__ svn_ra_session_t ;
+struct TYPE_20__ {int * prop_hash; int path_or_url; } ;
+typedef TYPE_3__ svn_prop_inherited_item_t ;
 struct TYPE_21__ {scalar_t__ apr_err; } ;
-typedef  TYPE_4__ svn_error_t ;
-typedef  int /*<<< orphan*/  apr_ssize_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
-typedef  int /*<<< orphan*/  apr_hash_index_t ;
-typedef  int /*<<< orphan*/  apr_array_header_t ;
-struct TYPE_18__ {TYPE_4__* (* get_dir ) (TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ;} ;
+typedef TYPE_4__ svn_error_t ;
+typedef int apr_ssize_t ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
+typedef int apr_hash_index_t ;
+typedef int apr_array_header_t ;
+struct TYPE_18__ {TYPE_4__* (* get_dir ) (TYPE_2__*,int *,int *,int **,char*,int ,int ,int *) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_DIRENT_ALL ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- scalar_t__ SVN_ERR_RA_DAV_FORBIDDEN ; 
- scalar_t__ SVN_ERR_RA_NOT_AUTHORIZED ; 
- TYPE_4__* SVN_NO_ERROR ; 
- int /*<<< orphan*/ * apr_array_make (int /*<<< orphan*/ *,int,int) ; 
- scalar_t__ apr_hash_count (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * apr_hash_first (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * apr_hash_make (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * apr_hash_next (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  apr_hash_set (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- char* apr_hash_this_key (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  apr_hash_this_key_len (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * apr_hash_this_val (int /*<<< orphan*/ *) ; 
- TYPE_3__* apr_palloc (int /*<<< orphan*/ *,int) ; 
- char* apr_pstrdup (int /*<<< orphan*/ *,char const*) ; 
- scalar_t__ strcmp (char const*,char const*) ; 
- TYPE_4__* stub1 (TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_error_clear (TYPE_4__*) ; 
- TYPE_4__* svn_error_trace (TYPE_4__*) ; 
- int /*<<< orphan*/  svn_pool_clear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_pool_create (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_pool_destroy (int /*<<< orphan*/ *) ; 
- scalar_t__ svn_prop_regular_kind ; 
- scalar_t__ svn_property_kind2 (char const*) ; 
- int /*<<< orphan*/  svn_ra_get_repos_root2 (TYPE_2__*,char const**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_ra_get_session_url (TYPE_2__*,char const**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_ra_reparent (TYPE_2__*,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_sort__array_insert (int /*<<< orphan*/ *,TYPE_3__**,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * svn_string_dup (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- char* svn_uri_dirname (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_uri_skip_ancestor (char const*,char const*,int /*<<< orphan*/ *) ; 
+
+ int SVN_DIRENT_ALL ;
+ int SVN_ERR (int ) ;
+ scalar_t__ SVN_ERR_RA_DAV_FORBIDDEN ;
+ scalar_t__ SVN_ERR_RA_NOT_AUTHORIZED ;
+ TYPE_4__* SVN_NO_ERROR ;
+ int * apr_array_make (int *,int,int) ;
+ scalar_t__ apr_hash_count (int *) ;
+ int * apr_hash_first (int *,int *) ;
+ int * apr_hash_make (int *) ;
+ int * apr_hash_next (int *) ;
+ int apr_hash_set (int *,char const*,int ,int *) ;
+ char* apr_hash_this_key (int *) ;
+ int apr_hash_this_key_len (int *) ;
+ int * apr_hash_this_val (int *) ;
+ TYPE_3__* apr_palloc (int *,int) ;
+ char* apr_pstrdup (int *,char const*) ;
+ scalar_t__ strcmp (char const*,char const*) ;
+ TYPE_4__* stub1 (TYPE_2__*,int *,int *,int **,char*,int ,int ,int *) ;
+ int svn_error_clear (TYPE_4__*) ;
+ TYPE_4__* svn_error_trace (TYPE_4__*) ;
+ int svn_pool_clear (int *) ;
+ int * svn_pool_create (int *) ;
+ int svn_pool_destroy (int *) ;
+ scalar_t__ svn_prop_regular_kind ;
+ scalar_t__ svn_property_kind2 (char const*) ;
+ int svn_ra_get_repos_root2 (TYPE_2__*,char const**,int *) ;
+ int svn_ra_get_session_url (TYPE_2__*,char const**,int *) ;
+ int svn_ra_reparent (TYPE_2__*,char const*,int *) ;
+ int svn_sort__array_insert (int *,TYPE_3__**,int ) ;
+ int * svn_string_dup (int *,int *) ;
+ char* svn_uri_dirname (char const*,int *) ;
+ int svn_uri_skip_ancestor (char const*,char const*,int *) ;
 
 svn_error_t *
 svn_ra__get_inherited_props_walk(svn_ra_session_t *session,
@@ -79,8 +79,8 @@ svn_ra__get_inherited_props_walk(svn_ra_session_t *session,
   *inherited_props =
     apr_array_make(result_pool, 1, sizeof(svn_prop_inherited_item_t *));
 
-  /* Walk to the root of the repository getting inherited
-     props for PATH. */
+
+
   SVN_ERR(svn_ra_get_repos_root2(session, &repos_root_url, scratch_pool));
   SVN_ERR(svn_ra_get_session_url(session, &session_url, scratch_pool));
   parent_url = session_url;
@@ -95,13 +95,13 @@ svn_ra__get_inherited_props_walk(svn_ra_session_t *session,
       svn_pool_clear(iterpool);
       parent_url = svn_uri_dirname(parent_url, scratch_pool);
       SVN_ERR(svn_ra_reparent(session, parent_url, iterpool));
-      err = session->vtable->get_dir(session, NULL, NULL,
+      err = session->vtable->get_dir(session, ((void*)0), ((void*)0),
                                      &parent_props, "",
                                      revision, SVN_DIRENT_ALL,
                                      iterpool);
 
-      /* If the user doesn't have read access to a parent path then
-         skip, but allow them to inherit from further up. */
+
+
       if (err)
         {
           if ((err->apr_err == SVN_ERR_RA_NOT_AUTHORIZED)
@@ -144,7 +144,7 @@ svn_ra__get_inherited_props_walk(svn_ra_session_t *session,
         }
     }
 
-  /* Reparent session back to original URL. */
+
   SVN_ERR(svn_ra_reparent(session, session_url, scratch_pool));
 
   svn_pool_destroy(iterpool);

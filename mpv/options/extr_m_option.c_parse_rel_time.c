@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct mp_log {int dummy; } ;
-struct m_rel_time {double pos; int /*<<< orphan*/  type; int /*<<< orphan*/  member_0; } ;
+struct m_rel_time {double pos; int type; int member_0; } ;
 struct bstr {scalar_t__ len; } ;
-typedef  int /*<<< orphan*/  m_option_t ;
+typedef int m_option_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BSTR_P (struct bstr) ; 
- int M_OPT_INVALID ; 
- int M_OPT_MISSING_PARAM ; 
- int /*<<< orphan*/  REL_TIME_ABSOLUTE ; 
- int /*<<< orphan*/  REL_TIME_CHAPTER ; 
- int /*<<< orphan*/  REL_TIME_NONE ; 
- int /*<<< orphan*/  REL_TIME_PERCENT ; 
- int /*<<< orphan*/  REL_TIME_RELATIVE ; 
- int /*<<< orphan*/  bstr_cut (struct bstr,int) ; 
- scalar_t__ bstr_endswith0 (struct bstr,char*) ; 
- scalar_t__ bstr_equals0 (struct bstr,char*) ; 
- int /*<<< orphan*/  bstr_splice (struct bstr,int /*<<< orphan*/ ,int) ; 
- scalar_t__ bstr_startswith0 (struct bstr,char*) ; 
- double bstrtod (int /*<<< orphan*/ ,struct bstr*) ; 
- int bstrtoll (int /*<<< orphan*/ ,struct bstr*,int) ; 
- int /*<<< orphan*/  mp_err (struct mp_log*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ parse_timestring (struct bstr,double*,int /*<<< orphan*/ ) ; 
+
+ int BSTR_P (struct bstr) ;
+ int M_OPT_INVALID ;
+ int M_OPT_MISSING_PARAM ;
+ int REL_TIME_ABSOLUTE ;
+ int REL_TIME_CHAPTER ;
+ int REL_TIME_NONE ;
+ int REL_TIME_PERCENT ;
+ int REL_TIME_RELATIVE ;
+ int bstr_cut (struct bstr,int) ;
+ scalar_t__ bstr_endswith0 (struct bstr,char*) ;
+ scalar_t__ bstr_equals0 (struct bstr,char*) ;
+ int bstr_splice (struct bstr,int ,int) ;
+ scalar_t__ bstr_startswith0 (struct bstr,char*) ;
+ double bstrtod (int ,struct bstr*) ;
+ int bstrtoll (int ,struct bstr*,int) ;
+ int mp_err (struct mp_log*,char*,int ,int ) ;
+ scalar_t__ parse_timestring (struct bstr,double*,int ) ;
 
 __attribute__((used)) static int parse_rel_time(struct mp_log *log, const m_option_t *opt,
                           struct bstr name, struct bstr param, void *dst)
@@ -47,7 +47,7 @@ __attribute__((used)) static int parse_rel_time(struct mp_log *log, const m_opti
         goto out;
     }
 
-    // Percent pos
+
     if (bstr_endswith0(param, "%")) {
         double percent = bstrtod(bstr_splice(param, 0, -1), &param);
         if (param.len == 0 && percent >= 0 && percent <= 100) {
@@ -57,7 +57,7 @@ __attribute__((used)) static int parse_rel_time(struct mp_log *log, const m_opti
         }
     }
 
-    // Chapter pos
+
     if (bstr_startswith0(param, "#")) {
         int chapter = bstrtoll(bstr_cut(param, 1), &param, 10);
         if (param.len == 0 && chapter >= 1) {

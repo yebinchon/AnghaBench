@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ WORD ;
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef scalar_t__ WORD ;
 struct TYPE_8__ {scalar_t__ syskind; } ;
-struct TYPE_7__ {scalar_t__ typekind; int cbSizeVft; int /*<<< orphan*/  guid; scalar_t__ cFuncs; } ;
-typedef  scalar_t__ TYPEKIND ;
-typedef  TYPE_1__ TYPEATTR ;
-typedef  TYPE_2__ TLIBATTR ;
-typedef  scalar_t__ SYSKIND ;
-typedef  int /*<<< orphan*/  ITypeLib ;
-typedef  int /*<<< orphan*/  ITypeInfo ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  HREFTYPE ;
-typedef  int /*<<< orphan*/  GUID ;
+struct TYPE_7__ {scalar_t__ typekind; int cbSizeVft; int guid; scalar_t__ cFuncs; } ;
+typedef scalar_t__ TYPEKIND ;
+typedef TYPE_1__ TYPEATTR ;
+typedef TYPE_2__ TLIBATTR ;
+typedef scalar_t__ SYSKIND ;
+typedef int ITypeLib ;
+typedef int ITypeInfo ;
+typedef int HRESULT ;
+typedef int HREFTYPE ;
+typedef int GUID ;
 
-/* Variables and functions */
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ITypeInfo_GetContainingTypeLib (int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ITypeInfo_GetRefTypeInfo (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  ITypeInfo_GetRefTypeOfImplType (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ITypeInfo_GetTypeAttr (int /*<<< orphan*/ *,TYPE_1__**) ; 
- int /*<<< orphan*/  ITypeInfo_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ITypeInfo_ReleaseTypeAttr (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  ITypeLib_GetLibAttr (int /*<<< orphan*/ *,TYPE_2__**) ; 
- int /*<<< orphan*/  ITypeLib_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ITypeLib_ReleaseTLibAttr (int /*<<< orphan*/ *,TYPE_2__*) ; 
- scalar_t__ SYS_WIN64 ; 
- scalar_t__ TKIND_DISPATCH ; 
+
+ scalar_t__ FAILED (int ) ;
+ int ITypeInfo_GetContainingTypeLib (int *,int **,int *) ;
+ int ITypeInfo_GetRefTypeInfo (int *,int ,int **) ;
+ int ITypeInfo_GetRefTypeOfImplType (int *,int,int *) ;
+ int ITypeInfo_GetTypeAttr (int *,TYPE_1__**) ;
+ int ITypeInfo_Release (int *) ;
+ int ITypeInfo_ReleaseTypeAttr (int *,TYPE_1__*) ;
+ int ITypeLib_GetLibAttr (int *,TYPE_2__**) ;
+ int ITypeLib_Release (int *) ;
+ int ITypeLib_ReleaseTLibAttr (int *,TYPE_2__*) ;
+ scalar_t__ SYS_WIN64 ;
+ scalar_t__ TKIND_DISPATCH ;
 
 __attribute__((used)) static HRESULT get_iface_info(ITypeInfo **typeinfo, WORD *funcs, WORD *parentfuncs,
         GUID *parentiid)
@@ -51,9 +51,9 @@ __attribute__((used)) static HRESULT get_iface_info(ITypeInfo **typeinfo, WORD *
     SYSKIND syskind;
     HRESULT hr;
 
-    /* Dual interfaces report their size to be sizeof(IDispatchVtbl) and their
-     * implemented type to be IDispatch. We need to retrieve the underlying
-     * interface to get that information. */
+
+
+
     hr = ITypeInfo_GetTypeAttr(*typeinfo, &typeattr);
     if (FAILED(hr))
         return hr;
@@ -73,7 +73,7 @@ __attribute__((used)) static HRESULT get_iface_info(ITypeInfo **typeinfo, WORD *
         *typeinfo = real_typeinfo;
     }
 
-    hr = ITypeInfo_GetContainingTypeLib(*typeinfo, &typelib, NULL);
+    hr = ITypeInfo_GetContainingTypeLib(*typeinfo, &typelib, ((void*)0));
     if (FAILED(hr))
         return hr;
 

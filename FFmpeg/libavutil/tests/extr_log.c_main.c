@@ -1,47 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int AV_LOG_DEBUG ; 
- int /*<<< orphan*/  AV_LOG_FATAL ; 
- int /*<<< orphan*/  AV_LOG_INFO ; 
- int /*<<< orphan*/  AV_LOG_PANIC ; 
- int AV_LOG_QUIET ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ *,int,char*,...) ; 
- int /*<<< orphan*/  av_log_set_level (int) ; 
- int call_log_format_line2 (char*,char*,int) ; 
- int /*<<< orphan*/  printf (char*) ; 
- scalar_t__ strncmp (char*,char*,int) ; 
- int use_color ; 
+ int AV_LOG_DEBUG ;
+ int AV_LOG_FATAL ;
+ int AV_LOG_INFO ;
+ int AV_LOG_PANIC ;
+ int AV_LOG_QUIET ;
+ int av_log (int *,int,char*,...) ;
+ int av_log_set_level (int) ;
+ int call_log_format_line2 (char*,char*,int) ;
+ int printf (char*) ;
+ scalar_t__ strncmp (char*,char*,int) ;
+ int use_color ;
 
 int main(int argc, char **argv)
 {
     int i;
     av_log_set_level(AV_LOG_DEBUG);
     for (use_color=0; use_color<=256; use_color = 255*use_color+1) {
-        av_log(NULL, AV_LOG_FATAL, "use_color: %d\n", use_color);
+        av_log(((void*)0), AV_LOG_FATAL, "use_color: %d\n", use_color);
         for (i = AV_LOG_DEBUG; i>=AV_LOG_QUIET; i-=8) {
-            av_log(NULL, i, " %d", i);
-            av_log(NULL, AV_LOG_INFO, "e ");
-            av_log(NULL, i + 256*123, "C%d", i);
-            av_log(NULL, AV_LOG_INFO, "e");
+            av_log(((void*)0), i, " %d", i);
+            av_log(((void*)0), AV_LOG_INFO, "e ");
+            av_log(((void*)0), i + 256*123, "C%d", i);
+            av_log(((void*)0), AV_LOG_INFO, "e");
         }
-        av_log(NULL, AV_LOG_PANIC, "\n");
+        av_log(((void*)0), AV_LOG_PANIC, "\n");
     }
     {
         int result;
         char buffer[4];
-        result = call_log_format_line2("foo", NULL, 0);
+        result = call_log_format_line2("foo", ((void*)0), 0);
         if(result != 3) {
             printf("Test NULL buffer failed.\n");
             return 1;

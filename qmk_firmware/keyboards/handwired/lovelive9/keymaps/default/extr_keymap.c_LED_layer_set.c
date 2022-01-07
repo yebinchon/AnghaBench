@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  LED_TYPE ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * aqours_color_h ; 
- int /*<<< orphan*/ * aqours_color_s ; 
- int /*<<< orphan*/ * aqours_color_v ; 
- int /*<<< orphan*/ * led ; 
- int /*<<< orphan*/  rgblight_set () ; 
- int /*<<< orphan*/  sethsv (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int LED_TYPE ;
+
+
+ int * aqours_color_h ;
+ int * aqours_color_s ;
+ int * aqours_color_v ;
+ int * led ;
+ int rgblight_set () ;
+ int sethsv (int ,int ,int ,int *) ;
 
 void LED_layer_set(int aqours_index) {
   for (int c = 0; c < 9; c++) {

@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int t_Handle ;
-struct TYPE_2__ {scalar_t__ portType; int pcdEngines; int /*<<< orphan*/  lock; int /*<<< orphan*/ * h_ReassemblyTree; int /*<<< orphan*/  h_FmPcd; scalar_t__ includeInPrsStatistics; int /*<<< orphan*/  hardwarePortId; int /*<<< orphan*/  netEnvId; int /*<<< orphan*/  h_Spinlock; scalar_t__ imEn; int /*<<< orphan*/  p_FmPortDriverParam; } ;
-typedef  TYPE_1__ t_FmPort ;
-typedef  scalar_t__ t_Error ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DBG (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ DeletePcd (int) ; 
- scalar_t__ DetachPCD (int) ; 
- scalar_t__ ERROR_CODE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  E_BUSY ; 
- int /*<<< orphan*/  E_INVALID_HANDLE ; 
- scalar_t__ E_INVALID_OPERATION ; 
- int /*<<< orphan*/  E_INVALID_STATE ; 
- scalar_t__ E_OK ; 
- scalar_t__ FALSE ; 
- scalar_t__ FM_PCD_CcRootDelete (int /*<<< orphan*/ *) ; 
- int FM_PCD_PRS ; 
- int /*<<< orphan*/  FmPcdDecNetEnvOwners (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FmPcdLockTryLockAll (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FmPcdLockUnlockAll (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FmPcdPrsIncludePortInStatistics (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  MAJOR ; 
- char* NO_MSG ; 
- int /*<<< orphan*/  RELEASE_LOCK (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RETURN_ERROR (int /*<<< orphan*/ ,scalar_t__,char*) ; 
- int /*<<< orphan*/  SANITY_CHECK_RETURN_ERROR (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE ; 
- int /*<<< orphan*/  TRY_LOCK (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ e_FM_PORT_TYPE_OH_OFFLINE_PARSING ; 
- scalar_t__ e_FM_PORT_TYPE_RX ; 
- scalar_t__ e_FM_PORT_TYPE_RX_10G ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int t_Handle ;
+struct TYPE_2__ {scalar_t__ portType; int pcdEngines; int lock; int * h_ReassemblyTree; int h_FmPcd; scalar_t__ includeInPrsStatistics; int hardwarePortId; int netEnvId; int h_Spinlock; scalar_t__ imEn; int p_FmPortDriverParam; } ;
+typedef TYPE_1__ t_FmPort ;
+typedef scalar_t__ t_Error ;
+
+
+ int DBG (int ,char*) ;
+ scalar_t__ DeletePcd (int) ;
+ scalar_t__ DetachPCD (int) ;
+ scalar_t__ ERROR_CODE (int ) ;
+ int E_BUSY ;
+ int E_INVALID_HANDLE ;
+ scalar_t__ E_INVALID_OPERATION ;
+ int E_INVALID_STATE ;
+ scalar_t__ E_OK ;
+ scalar_t__ FALSE ;
+ scalar_t__ FM_PCD_CcRootDelete (int *) ;
+ int FM_PCD_PRS ;
+ int FmPcdDecNetEnvOwners (int ,int ) ;
+ int FmPcdLockTryLockAll (int ) ;
+ int FmPcdLockUnlockAll (int ) ;
+ int FmPcdPrsIncludePortInStatistics (int ,int ,scalar_t__) ;
+ int MAJOR ;
+ char* NO_MSG ;
+ int RELEASE_LOCK (int ) ;
+ int RETURN_ERROR (int ,scalar_t__,char*) ;
+ int SANITY_CHECK_RETURN_ERROR (int,int ) ;
+ int TRACE ;
+ int TRY_LOCK (int ,int *) ;
+ scalar_t__ e_FM_PORT_TYPE_OH_OFFLINE_PARSING ;
+ scalar_t__ e_FM_PORT_TYPE_RX ;
+ scalar_t__ e_FM_PORT_TYPE_RX_10G ;
 
 t_Error FM_PORT_DeletePCD(t_Handle h_FmPort)
 {
@@ -77,7 +77,7 @@ t_Error FM_PORT_DeletePCD(t_Handle h_FmPort)
 
     FmPcdDecNetEnvOwners(p_FmPort->h_FmPcd, p_FmPort->netEnvId);
 
-    /* we do it anyway, instead of checking if included */
+
     if ((p_FmPort->pcdEngines & FM_PCD_PRS) && p_FmPort->includeInPrsStatistics)
     {
         FmPcdPrsIncludePortInStatistics(p_FmPort->h_FmPcd,
@@ -108,7 +108,7 @@ t_Error FM_PORT_DeletePCD(t_Handle h_FmPort)
             RELEASE_LOCK(p_FmPort->lock);
             RETURN_ERROR(MAJOR, err, NO_MSG);
         }
-        p_FmPort->h_ReassemblyTree = NULL;
+        p_FmPort->h_ReassemblyTree = ((void*)0);
     }RELEASE_LOCK(p_FmPort->lock);
 
     return err;

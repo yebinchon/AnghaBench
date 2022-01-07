@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int CURLcode ;
-typedef  int /*<<< orphan*/  CURL ;
 
-/* Variables and functions */
- int CURLE_OK ; 
- int /*<<< orphan*/  CURLINFO_EFFECTIVE_URL ; 
- int /*<<< orphan*/  CURLINFO_REDIRECT_COUNT ; 
- int /*<<< orphan*/  CURLINFO_REDIRECT_URL ; 
- int /*<<< orphan*/  CURLINFO_RESPONSE_CODE ; 
- int /*<<< orphan*/  CURLOPT_FOLLOWLOCATION ; 
- int /*<<< orphan*/  CURLOPT_URL ; 
- int TEST_ERR_MAJOR_BAD ; 
- int /*<<< orphan*/  curl_easy_cleanup (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  curl_easy_getinfo (int /*<<< orphan*/ *,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/ * curl_easy_init () ; 
- int curl_easy_perform (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  curl_global_cleanup () ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  printf (char*,int,int,int,char*,char*) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  test_setopt (int /*<<< orphan*/ *,int /*<<< orphan*/ ,...) ; 
+
+
+
+typedef int CURLcode ;
+typedef int CURL ;
+
+
+ int CURLE_OK ;
+ int CURLINFO_EFFECTIVE_URL ;
+ int CURLINFO_REDIRECT_COUNT ;
+ int CURLINFO_REDIRECT_URL ;
+ int CURLINFO_RESPONSE_CODE ;
+ int CURLOPT_FOLLOWLOCATION ;
+ int CURLOPT_URL ;
+ int TEST_ERR_MAJOR_BAD ;
+ int curl_easy_cleanup (int *) ;
+ int curl_easy_getinfo (int *,int ,...) ;
+ int * curl_easy_init () ;
+ int curl_easy_perform (int *) ;
+ int curl_global_cleanup () ;
+ int fprintf (int ,char*) ;
+ int printf (char*,int,int,int,char*,char*) ;
+ int stderr ;
+ int test_setopt (int *,int ,...) ;
 
 int test(char *URL)
 {
@@ -38,8 +38,8 @@ int test(char *URL)
   CURLcode res = CURLE_OK;
   long curlResponseCode;
   long curlRedirectCount;
-  char *effectiveUrl = NULL;
-  char *redirectUrl = NULL;
+  char *effectiveUrl = ((void*)0);
+  char *redirectUrl = ((void*)0);
 
   curl = curl_easy_init();
   if(!curl) {
@@ -49,10 +49,10 @@ int test(char *URL)
   }
 
   test_setopt(curl, CURLOPT_URL, URL);
-  /* just to make it explicit and visible in this test: */
+
   test_setopt(curl, CURLOPT_FOLLOWLOCATION, 0L);
 
-  /* Perform the request, res will get the return code */
+
   res = curl_easy_perform(curl);
 
   curl_easy_getinfo(curl, CURLINFO_RESPONSE_CODE, &curlResponseCode);
@@ -73,7 +73,7 @@ int test(char *URL)
 
 test_cleanup:
 
-  /* always cleanup */
+
   curl_easy_cleanup(curl);
   curl_global_cleanup();
 

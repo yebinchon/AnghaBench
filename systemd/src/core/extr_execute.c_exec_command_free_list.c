@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ExecCommand ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LIST_REMOVE (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  command ; 
- int /*<<< orphan*/  exec_command_done (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int ExecCommand ;
+
+
+ int LIST_REMOVE (int ,int *,int *) ;
+ int command ;
+ int exec_command_done (int *) ;
+ int free (int *) ;
 
 ExecCommand* exec_command_free_list(ExecCommand *c) {
         ExecCommand *i;
@@ -27,5 +27,5 @@ ExecCommand* exec_command_free_list(ExecCommand *c) {
                 free(i);
         }
 
-        return NULL;
+        return ((void*)0);
 }

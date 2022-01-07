@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_25__   TYPE_3__ ;
-typedef  struct TYPE_24__   TYPE_2__ ;
-typedef  struct TYPE_23__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_25__ {TYPE_1__* meth; int /*<<< orphan*/ * a; } ;
-struct TYPE_24__ {int /*<<< orphan*/  Y; int /*<<< orphan*/  X; scalar_t__ Z_is_one; } ;
-struct TYPE_23__ {int /*<<< orphan*/  (* field_mul ) (TYPE_3__ const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ;int /*<<< orphan*/  (* field_sqr ) (TYPE_3__ const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ;int /*<<< orphan*/  (* field_div ) (TYPE_3__ const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ;} ;
-typedef  TYPE_2__ EC_POINT ;
-typedef  TYPE_3__ EC_GROUP ;
-typedef  int /*<<< orphan*/  BN_CTX ;
-typedef  int /*<<< orphan*/  BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BN_CTX_end (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_CTX_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BN_CTX_get (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BN_CTX_new () ; 
- int /*<<< orphan*/  BN_CTX_start (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_GF2m_add (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ BN_GF2m_cmp (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_copy (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ BN_is_zero (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EC_POINT_copy (TYPE_2__*,TYPE_2__ const*) ; 
- int /*<<< orphan*/  EC_POINT_get_affine_coordinates (TYPE_3__ const*,TYPE_2__ const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ EC_POINT_is_at_infinity (TYPE_3__ const*,TYPE_2__ const*) ; 
- int /*<<< orphan*/  EC_POINT_set_affine_coordinates (TYPE_3__ const*,TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EC_POINT_set_to_infinity (TYPE_3__ const*,TYPE_2__*) ; 
- int /*<<< orphan*/  stub1 (TYPE_3__ const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub2 (TYPE_3__ const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub3 (TYPE_3__ const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub4 (TYPE_3__ const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub5 (TYPE_3__ const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_25__ TYPE_3__ ;
+typedef struct TYPE_24__ TYPE_2__ ;
+typedef struct TYPE_23__ TYPE_1__ ;
+
+
+struct TYPE_25__ {TYPE_1__* meth; int * a; } ;
+struct TYPE_24__ {int Y; int X; scalar_t__ Z_is_one; } ;
+struct TYPE_23__ {int (* field_mul ) (TYPE_3__ const*,int *,int *,int *,int *) ;int (* field_sqr ) (TYPE_3__ const*,int *,int *,int *) ;int (* field_div ) (TYPE_3__ const*,int *,int *,int *,int *) ;} ;
+typedef TYPE_2__ EC_POINT ;
+typedef TYPE_3__ EC_GROUP ;
+typedef int BN_CTX ;
+typedef int BIGNUM ;
+
+
+ int BN_CTX_end (int *) ;
+ int BN_CTX_free (int *) ;
+ int * BN_CTX_get (int *) ;
+ int * BN_CTX_new () ;
+ int BN_CTX_start (int *) ;
+ int BN_GF2m_add (int *,int *,int *) ;
+ scalar_t__ BN_GF2m_cmp (int *,int *) ;
+ int BN_copy (int *,int ) ;
+ scalar_t__ BN_is_zero (int *) ;
+ int EC_POINT_copy (TYPE_2__*,TYPE_2__ const*) ;
+ int EC_POINT_get_affine_coordinates (TYPE_3__ const*,TYPE_2__ const*,int *,int *,int *) ;
+ scalar_t__ EC_POINT_is_at_infinity (TYPE_3__ const*,TYPE_2__ const*) ;
+ int EC_POINT_set_affine_coordinates (TYPE_3__ const*,TYPE_2__*,int *,int *,int *) ;
+ int EC_POINT_set_to_infinity (TYPE_3__ const*,TYPE_2__*) ;
+ int stub1 (TYPE_3__ const*,int *,int *,int *,int *) ;
+ int stub2 (TYPE_3__ const*,int *,int *,int *) ;
+ int stub3 (TYPE_3__ const*,int *,int *,int *,int *) ;
+ int stub4 (TYPE_3__ const*,int *,int *,int *) ;
+ int stub5 (TYPE_3__ const*,int *,int *,int *,int *) ;
 
 int ec_GF2m_simple_add(const EC_GROUP *group, EC_POINT *r, const EC_POINT *a,
                        const EC_POINT *b, BN_CTX *ctx)
 {
-    BN_CTX *new_ctx = NULL;
+    BN_CTX *new_ctx = ((void*)0);
     BIGNUM *x0, *y0, *x1, *y1, *x2, *y2, *s, *t;
     int ret = 0;
 
@@ -61,9 +61,9 @@ int ec_GF2m_simple_add(const EC_GROUP *group, EC_POINT *r, const EC_POINT *a,
         return 1;
     }
 
-    if (ctx == NULL) {
+    if (ctx == ((void*)0)) {
         ctx = new_ctx = BN_CTX_new();
-        if (ctx == NULL)
+        if (ctx == ((void*)0))
             return 0;
     }
 
@@ -76,7 +76,7 @@ int ec_GF2m_simple_add(const EC_GROUP *group, EC_POINT *r, const EC_POINT *a,
     y2 = BN_CTX_get(ctx);
     s = BN_CTX_get(ctx);
     t = BN_CTX_get(ctx);
-    if (t == NULL)
+    if (t == ((void*)0))
         goto err;
 
     if (a->Z_is_one) {

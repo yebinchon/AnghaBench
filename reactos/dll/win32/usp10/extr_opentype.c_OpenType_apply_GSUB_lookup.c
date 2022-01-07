@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WORD ;
-struct TYPE_2__ {int /*<<< orphan*/  LookupList; } ;
-typedef  int /*<<< orphan*/  OT_LookupList ;
-typedef  TYPE_1__ GSUB_Header ;
-typedef  int /*<<< orphan*/  BYTE ;
 
-/* Variables and functions */
- int GET_BE_WORD (int /*<<< orphan*/ ) ; 
- int GSUB_apply_lookup (int /*<<< orphan*/  const*,unsigned int,int /*<<< orphan*/ *,unsigned int,int,int*) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int WORD ;
+struct TYPE_2__ {int LookupList; } ;
+typedef int OT_LookupList ;
+typedef TYPE_1__ GSUB_Header ;
+typedef int BYTE ;
+
+
+ int GET_BE_WORD (int ) ;
+ int GSUB_apply_lookup (int const*,unsigned int,int *,unsigned int,int,int*) ;
 
 int OpenType_apply_GSUB_lookup(const void *table, unsigned int lookup_index, WORD *glyphs,
         unsigned int glyph_index, int write_dir, int *glyph_count)

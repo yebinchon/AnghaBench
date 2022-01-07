@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ UINT32 ;
-typedef  int /*<<< orphan*/  ACPI_STATUS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AE_BAD_PARAMETER ; 
- int /*<<< orphan*/  AE_OK ; 
- scalar_t__ UUID_HYPHEN1_OFFSET ; 
- scalar_t__ UUID_HYPHEN2_OFFSET ; 
- scalar_t__ UUID_HYPHEN3_OFFSET ; 
- scalar_t__ UUID_HYPHEN4_OFFSET ; 
- scalar_t__ UUID_STRING_LENGTH ; 
- int /*<<< orphan*/  isxdigit (int) ; 
- scalar_t__ strlen (char*) ; 
+
+
+
+typedef scalar_t__ UINT32 ;
+typedef int ACPI_STATUS ;
+
+
+ int AE_BAD_PARAMETER ;
+ int AE_OK ;
+ scalar_t__ UUID_HYPHEN1_OFFSET ;
+ scalar_t__ UUID_HYPHEN2_OFFSET ;
+ scalar_t__ UUID_HYPHEN3_OFFSET ;
+ scalar_t__ UUID_HYPHEN4_OFFSET ;
+ scalar_t__ UUID_STRING_LENGTH ;
+ int isxdigit (int) ;
+ scalar_t__ strlen (char*) ;
 
 ACPI_STATUS
 AuValidateUuid (
-    char                    *InString)
+    char *InString)
 {
-    UINT32                  i;
+    UINT32 i;
 
 
     if (!InString || (strlen (InString) != UUID_STRING_LENGTH))
@@ -36,11 +36,11 @@ AuValidateUuid (
         return (AE_BAD_PARAMETER);
     }
 
-    /* Check all 36 characters for correct format */
+
 
     for (i = 0; i < UUID_STRING_LENGTH; i++)
     {
-        /* Must have 4 hyphens (dashes) in these positions: */
+
 
         if ((i == UUID_HYPHEN1_OFFSET) ||
             (i == UUID_HYPHEN2_OFFSET) ||
@@ -54,7 +54,7 @@ AuValidateUuid (
         }
         else
         {
-            /* All other positions must contain hex digits */
+
 
             if (!isxdigit ((int) InString[i]))
             {

@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct d_info_checkpoint {int /*<<< orphan*/  expansion; int /*<<< orphan*/  next_sub; int /*<<< orphan*/  next_comp; int /*<<< orphan*/  n; } ;
-struct d_info {int /*<<< orphan*/  expansion; int /*<<< orphan*/  next_sub; int /*<<< orphan*/  next_comp; int /*<<< orphan*/  n; } ;
 
-/* Variables and functions */
+
+
+
+struct d_info_checkpoint {int expansion; int next_sub; int next_comp; int n; } ;
+struct d_info {int expansion; int next_sub; int next_comp; int n; } ;
+
+
 
 __attribute__((used)) static void
 d_checkpoint (struct d_info *di, struct d_info_checkpoint *checkpoint)

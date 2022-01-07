@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_value ;
-typedef  int /*<<< orphan*/  sqlite3_context ;
-typedef  int /*<<< orphan*/  i64 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FTS5_SEGMENT_ROWID (int,int) ; 
- int /*<<< orphan*/  sqlite3_result_error (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  sqlite3_result_int64 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ sqlite3_stricmp (char const*,char*) ; 
- int sqlite3_value_int (int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3_value_text (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int sqlite3_value ;
+typedef int sqlite3_context ;
+typedef int i64 ;
+
+
+ int FTS5_SEGMENT_ROWID (int,int) ;
+ int sqlite3_result_error (int *,char*,int) ;
+ int sqlite3_result_int64 (int *,int ) ;
+ scalar_t__ sqlite3_stricmp (char const*,char*) ;
+ int sqlite3_value_int (int *) ;
+ scalar_t__ sqlite3_value_text (int *) ;
 
 __attribute__((used)) static void fts5RowidFunction(
-  sqlite3_context *pCtx,          /* Function call context */
-  int nArg,                       /* Number of args (always 2) */
-  sqlite3_value **apVal           /* Function arguments */
+  sqlite3_context *pCtx,
+  int nArg,
+  sqlite3_value **apVal
 ){
   const char *zArg;
   if( nArg==0 ){
@@ -36,7 +36,7 @@ __attribute__((used)) static void fts5RowidFunction(
       i64 iRowid;
       int segid, pgno;
       if( nArg!=3 ){
-        sqlite3_result_error(pCtx, 
+        sqlite3_result_error(pCtx,
             "should be: fts5_rowid('segment', segid, pgno))", -1
         );
       }else{
@@ -46,7 +46,7 @@ __attribute__((used)) static void fts5RowidFunction(
         sqlite3_result_int64(pCtx, iRowid);
       }
     }else{
-      sqlite3_result_error(pCtx, 
+      sqlite3_result_error(pCtx,
         "first arg to fts5_rowid() must be 'segment'" , -1
       );
     }

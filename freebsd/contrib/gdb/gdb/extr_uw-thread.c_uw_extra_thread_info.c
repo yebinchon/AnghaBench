@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct thread_map {int thr_state; scalar_t__ thr_lwpp; } ;
-struct thread_info {TYPE_1__* private; int /*<<< orphan*/  ptid; } ;
+struct thread_info {TYPE_1__* private; int ptid; } ;
 struct TYPE_5__ {int lwp_id; } ;
-typedef  TYPE_2__ __lwp_desc_t ;
-struct TYPE_4__ {int /*<<< orphan*/  mapp; int /*<<< orphan*/  stable; } ;
-typedef  int /*<<< orphan*/  CORE_ADDR ;
+typedef TYPE_2__ __lwp_desc_t ;
+struct TYPE_4__ {int mapp; int stable; } ;
+typedef int CORE_ADDR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ISTID (int /*<<< orphan*/ ) ; 
-#define  TS_FORK 133 
-#define  TS_ONPROC 132 
-#define  TS_RUNNABLE 131 
-#define  TS_SLEEP 130 
-#define  TS_SUSPENDED 129 
-#define  TS_ZOMBIE 128 
- int /*<<< orphan*/  read_lwp (int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  read_map (int /*<<< orphan*/ ,struct thread_map*) ; 
- int /*<<< orphan*/  sprintf (char*,char*,char*,int) ; 
+
+ int ISTID (int ) ;
+
+
+
+
+
+
+ int read_lwp (int ,TYPE_2__*) ;
+ int read_map (int ,struct thread_map*) ;
+ int sprintf (char*,char*,char*,int) ;
 
 __attribute__((used)) static char *
 uw_extra_thread_info (struct thread_info *info)
@@ -41,13 +41,13 @@ uw_extra_thread_info (struct thread_info *info)
   char *name;
 
   if (!ISTID (info->ptid))
-    return NULL;
+    return ((void*)0);
 
   if (!info->private->stable)
     return "switching";
 
   if (!read_map (info->private->mapp, &map))
-    return NULL;
+    return ((void*)0);
 
   if (!map.thr_lwpp || !read_lwp ((CORE_ADDR)map.thr_lwpp, &lwp))
     lwpid = 0;
@@ -55,15 +55,15 @@ uw_extra_thread_info (struct thread_info *info)
     lwpid = lwp.lwp_id;
 
   switch (map.thr_state) {
-  case TS_ONPROC:	name = "running";	break;
-  case TS_SLEEP:	name = "sleeping";	break;
-  case TS_RUNNABLE:	name = "runnable";	break;
-  case TS_ZOMBIE:	name = "zombie";	break;
-  case TS_SUSPENDED:	name = "suspended";	break;
-#ifdef TS_FORK
-  case TS_FORK:		name = "forking";	break;
-#endif
-  default:		name = "confused";	break;
+  case 132: name = "running"; break;
+  case 130: name = "sleeping"; break;
+  case 131: name = "runnable"; break;
+  case 128: name = "zombie"; break;
+  case 129: name = "suspended"; break;
+
+  case 133: name = "forking"; break;
+
+  default: name = "confused"; break;
   }
 
   if (!lwpid)

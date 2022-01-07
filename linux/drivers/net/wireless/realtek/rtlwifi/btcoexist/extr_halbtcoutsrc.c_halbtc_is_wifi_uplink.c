@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {scalar_t__ tx_busy_traffic; } ;
 struct rtl_priv {TYPE_1__ link_info; } ;
 
-/* Variables and functions */
+
 
 bool halbtc_is_wifi_uplink(struct rtl_priv *adapter)
 {
-	struct rtl_priv *rtlpriv = adapter;
+ struct rtl_priv *rtlpriv = adapter;
 
-	if (rtlpriv->link_info.tx_busy_traffic)
-		return true;
-	else
-		return false;
+ if (rtlpriv->link_info.tx_busy_traffic)
+  return 1;
+ else
+  return 0;
 }

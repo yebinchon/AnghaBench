@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct sys_device {int id; int /*<<< orphan*/  kobj; } ;
-struct cpuidle_device {int /*<<< orphan*/  kobj; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  KOBJ_ADD ; 
- int /*<<< orphan*/  cpuidle_devices ; 
- int kobject_init_and_add (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  kobject_uevent (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ktype_cpuidle ; 
- struct cpuidle_device* per_cpu (int /*<<< orphan*/ ,int) ; 
+
+
+
+struct sys_device {int id; int kobj; } ;
+struct cpuidle_device {int kobj; } ;
+
+
+ int KOBJ_ADD ;
+ int cpuidle_devices ;
+ int kobject_init_and_add (int *,int *,int *,char*) ;
+ int kobject_uevent (int *,int ) ;
+ int ktype_cpuidle ;
+ struct cpuidle_device* per_cpu (int ,int) ;
 
 int cpuidle_add_sysfs(struct sys_device *sysdev)
 {
-	int cpu = sysdev->id;
-	struct cpuidle_device *dev;
-	int error;
+ int cpu = sysdev->id;
+ struct cpuidle_device *dev;
+ int error;
 
-	dev = per_cpu(cpuidle_devices, cpu);
-	error = kobject_init_and_add(&dev->kobj, &ktype_cpuidle, &sysdev->kobj,
-				     "cpuidle");
-	if (!error)
-		kobject_uevent(&dev->kobj, KOBJ_ADD);
-	return error;
+ dev = per_cpu(cpuidle_devices, cpu);
+ error = kobject_init_and_add(&dev->kobj, &ktype_cpuidle, &sysdev->kobj,
+         "cpuidle");
+ if (!error)
+  kobject_uevent(&dev->kobj, KOBJ_ADD);
+ return error;
 }

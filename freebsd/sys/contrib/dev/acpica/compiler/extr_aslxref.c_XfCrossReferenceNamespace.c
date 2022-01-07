@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ACPI_WALK_STATE ;
-typedef  int /*<<< orphan*/  ACPI_STATUS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACPI_FREE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  AE_NO_MEMORY ; 
- int /*<<< orphan*/  AE_OK ; 
- int /*<<< orphan*/  ASL_WALK_VISIT_TWICE ; 
- int /*<<< orphan*/ * AcpiDsCreateWalkState (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  AslGbl_ParseTreeRoot ; 
- int /*<<< orphan*/  TrWalkParseTree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  XfNamespaceLocateBegin ; 
- int /*<<< orphan*/  XfNamespaceLocateEnd ; 
+
+
+
+typedef int ACPI_WALK_STATE ;
+typedef int ACPI_STATUS ;
+
+
+ int ACPI_FREE (int *) ;
+ int AE_NO_MEMORY ;
+ int AE_OK ;
+ int ASL_WALK_VISIT_TWICE ;
+ int * AcpiDsCreateWalkState (int ,int *,int *,int *) ;
+ int AslGbl_ParseTreeRoot ;
+ int TrWalkParseTree (int ,int ,int ,int ,int *) ;
+ int XfNamespaceLocateBegin ;
+ int XfNamespaceLocateEnd ;
 
 ACPI_STATUS
 XfCrossReferenceNamespace (
     void)
 {
-    ACPI_WALK_STATE         *WalkState;
+    ACPI_WALK_STATE *WalkState;
 
 
-    /*
-     * Create a new walk state for use when looking up names
-     * within the namespace (Passed as context to the callbacks)
-     */
-    WalkState = AcpiDsCreateWalkState (0, NULL, NULL, NULL);
+
+
+
+
+    WalkState = AcpiDsCreateWalkState (0, ((void*)0), ((void*)0), ((void*)0));
     if (!WalkState)
     {
         return (AE_NO_MEMORY);
     }
 
-    /* Walk the entire parse tree */
+
 
     TrWalkParseTree (AslGbl_ParseTreeRoot, ASL_WALK_VISIT_TWICE,
         XfNamespaceLocateBegin, XfNamespaceLocateEnd, WalkState);

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  bfd_boolean ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  bad_stab (char const*) ; 
- scalar_t__ parse_number (char const**,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int bfd_boolean ;
+
+
+ int FALSE ;
+ int TRUE ;
+ int bad_stab (char const*) ;
+ scalar_t__ parse_number (char const**,int *) ;
 
 __attribute__((used)) static bfd_boolean
 parse_stab_type_number (const char **pp, int *typenums)
@@ -28,24 +28,24 @@ parse_stab_type_number (const char **pp, int *typenums)
   if (**pp != '(')
     {
       typenums[0] = 0;
-      typenums[1] = (int) parse_number (pp, (bfd_boolean *) NULL);
+      typenums[1] = (int) parse_number (pp, (bfd_boolean *) ((void*)0));
     }
   else
     {
       ++*pp;
-      typenums[0] = (int) parse_number (pp, (bfd_boolean *) NULL);
+      typenums[0] = (int) parse_number (pp, (bfd_boolean *) ((void*)0));
       if (**pp != ',')
-	{
-	  bad_stab (orig);
-	  return FALSE;
-	}
+ {
+   bad_stab (orig);
+   return FALSE;
+ }
       ++*pp;
-      typenums[1] = (int) parse_number (pp, (bfd_boolean *) NULL);
+      typenums[1] = (int) parse_number (pp, (bfd_boolean *) ((void*)0));
       if (**pp != ')')
-	{
-	  bad_stab (orig);
-	  return FALSE;
-	}
+ {
+   bad_stab (orig);
+   return FALSE;
+ }
       ++*pp;
     }
 

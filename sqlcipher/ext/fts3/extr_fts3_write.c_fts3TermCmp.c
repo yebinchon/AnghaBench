@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int MIN (int,int) ; 
- int memcmp (char const*,char const*,int) ; 
+ int MIN (int,int) ;
+ int memcmp (char const*,char const*,int) ;
 
 __attribute__((used)) static int fts3TermCmp(
-  const char *zLhs, int nLhs,     /* LHS of comparison */
-  const char *zRhs, int nRhs      /* RHS of comparison */
+  const char *zLhs, int nLhs,
+  const char *zRhs, int nRhs
 ){
   int nCmp = MIN(nLhs, nRhs);
   int res;

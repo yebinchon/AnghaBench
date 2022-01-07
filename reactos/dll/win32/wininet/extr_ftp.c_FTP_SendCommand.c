@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  object_header_t ;
-typedef  int /*<<< orphan*/  LPSTR ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
-typedef  int /*<<< orphan*/  INTERNET_STATUS_CALLBACK ;
-typedef  int /*<<< orphan*/  INT ;
-typedef  int /*<<< orphan*/  FTP_COMMAND ;
-typedef  int /*<<< orphan*/  DWORD_PTR ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FTP_SendCommandA (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  heap_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  heap_strdupWtoA (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int object_header_t ;
+typedef int LPSTR ;
+typedef int LPCWSTR ;
+typedef int INTERNET_STATUS_CALLBACK ;
+typedef int INT ;
+typedef int FTP_COMMAND ;
+typedef int DWORD_PTR ;
+typedef int BOOL ;
+
+
+ int FTP_SendCommandA (int ,int ,int ,int ,int *,int ) ;
+ int heap_free (int ) ;
+ int heap_strdupWtoA (int ) ;
 
 __attribute__((used)) static BOOL FTP_SendCommand(INT nSocket, FTP_COMMAND ftpCmd, LPCWSTR lpszParam,
-	INTERNET_STATUS_CALLBACK lpfnStatusCB, object_header_t *hdr, DWORD_PTR dwContext)
+ INTERNET_STATUS_CALLBACK lpfnStatusCB, object_header_t *hdr, DWORD_PTR dwContext)
 {
     BOOL ret;
     LPSTR lpszParamA = heap_strdupWtoA(lpszParam);

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
-struct TYPE_4__ {int /*<<< orphan*/  metatable; } ;
-typedef  TYPE_1__ Table ;
-typedef  int /*<<< orphan*/  TValue ;
-typedef  int /*<<< orphan*/  StkId ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TM_INDEX ; 
- int /*<<< orphan*/  callTMres (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fasttm (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_1__* hvalue (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  luaG_runerror (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  luaG_typeerror (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,char*) ; 
- int /*<<< orphan*/ * luaH_get (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * luaT_gettmbyobj (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  setobj (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const*) ; 
- scalar_t__ ttisfunction (int /*<<< orphan*/  const*) ; 
- scalar_t__ ttisnil (int /*<<< orphan*/  const*) ; 
- scalar_t__ ttistable (int /*<<< orphan*/  const*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int lua_State ;
+struct TYPE_4__ {int metatable; } ;
+typedef TYPE_1__ Table ;
+typedef int TValue ;
+typedef int StkId ;
+
+
+ int TM_INDEX ;
+ int callTMres (int *,int ,int const*,int const*,int *) ;
+ int * fasttm (int *,int ,int ) ;
+ TYPE_1__* hvalue (int const*) ;
+ int luaG_runerror (int *,char*) ;
+ int luaG_typeerror (int *,int const*,char*) ;
+ int * luaH_get (TYPE_1__*,int *) ;
+ int * luaT_gettmbyobj (int *,int const*,int ) ;
+ int setobj (int *,int ,int const*) ;
+ scalar_t__ ttisfunction (int const*) ;
+ scalar_t__ ttisnil (int const*) ;
+ scalar_t__ ttistable (int const*) ;
 
 __attribute__((used)) static void luaV_gettable(lua_State*L,const TValue*t,TValue*key,StkId val){
 int loop;
@@ -39,7 +39,7 @@ if(ttistable(t)){
 Table*h=hvalue(t);
 const TValue*res=luaH_get(h,key);
 if(!ttisnil(res)||
-(tm=fasttm(L,h->metatable,TM_INDEX))==NULL){
+(tm=fasttm(L,h->metatable,TM_INDEX))==((void*)0)){
 setobj(L,val,res);
 return;
 }

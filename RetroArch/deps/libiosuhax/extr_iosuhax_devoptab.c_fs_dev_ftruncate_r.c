@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct _reent {int /*<<< orphan*/  _errno; } ;
-typedef  int /*<<< orphan*/  off_t ;
-struct TYPE_2__ {int /*<<< orphan*/  dev; } ;
-typedef  TYPE_1__ fs_dev_file_state_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  ENODEV ; 
- int /*<<< orphan*/  ENOTSUP ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct _reent {int _errno; } ;
+typedef int off_t ;
+struct TYPE_2__ {int dev; } ;
+typedef TYPE_1__ fs_dev_file_state_t ;
+
+
+ int EINVAL ;
+ int ENODEV ;
+ int ENOTSUP ;
 
 __attribute__((used)) static int fs_dev_ftruncate_r (struct _reent *r, void *fd, off_t len)
 {
@@ -39,6 +39,6 @@ __attribute__((used)) static int fs_dev_ftruncate_r (struct _reent *r, void *fd,
     }
 
     r->_errno = ENOTSUP;
-    /* TODO */
+
     return -1;
 }

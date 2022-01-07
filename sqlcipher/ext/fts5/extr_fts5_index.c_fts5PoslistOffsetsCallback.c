@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-struct TYPE_2__ {int iRead; int iWrite; int /*<<< orphan*/  pBuf; int /*<<< orphan*/  pColset; } ;
-typedef  TYPE_1__ PoslistOffsetsCtx ;
-typedef  int /*<<< orphan*/  Fts5Index ;
 
-/* Variables and functions */
- int /*<<< orphan*/  UNUSED_PARAM (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  assert_nc (int) ; 
- int /*<<< orphan*/  fts5BufferSafeAppendVarint (int /*<<< orphan*/ ,int) ; 
- scalar_t__ fts5GetVarint32 (int /*<<< orphan*/  const*,int) ; 
- scalar_t__ fts5IndexColsetTest (int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u8 ;
+struct TYPE_2__ {int iRead; int iWrite; int pBuf; int pColset; } ;
+typedef TYPE_1__ PoslistOffsetsCtx ;
+typedef int Fts5Index ;
+
+
+ int UNUSED_PARAM (int *) ;
+ int assert_nc (int) ;
+ int fts5BufferSafeAppendVarint (int ,int) ;
+ scalar_t__ fts5GetVarint32 (int const*,int) ;
+ scalar_t__ fts5IndexColsetTest (int ,int) ;
 
 __attribute__((used)) static void fts5PoslistOffsetsCallback(
-  Fts5Index *pUnused, 
-  void *pContext, 
+  Fts5Index *pUnused,
+  void *pContext,
   const u8 *pChunk, int nChunk
 ){
   PoslistOffsetsCtx *pCtx = (PoslistOffsetsCtx*)pContext;

@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct connection {int rdbuf_pos; int /*<<< orphan*/  rdbuf; } ;
 
-/* Variables and functions */
- char* TOKEN_RESPONSE ; 
- int strlen (char*) ; 
- int util_memsearch (int /*<<< orphan*/ ,int,char*,int) ; 
+
+
+
+struct connection {int rdbuf_pos; int rdbuf; } ;
+
+
+ char* TOKEN_RESPONSE ;
+ int strlen (char*) ;
+ int util_memsearch (int ,int,char*,int) ;
 
 int connection_upload_tftp(struct connection *conn)
 {

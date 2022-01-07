@@ -1,90 +1,82 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- void* BACKLOG ; 
- int CLUSTER_MODE_ANTISPAM ; 
- int CLUSTER_MODE_BAYES ; 
- int CLUSTER_MODE_DOT ; 
- int CLUSTER_MODE_FRIENDS ; 
- int CLUSTER_MODE_HINTS ; 
- int CLUSTER_MODE_HINTS_MERGE ; 
- int CLUSTER_MODE_LISTS ; 
- int CLUSTER_MODE_LOGS ; 
- int CLUSTER_MODE_MAGUS ; 
- int CLUSTER_MODE_MERGE ; 
- int CLUSTER_MODE_NEWS ; 
- int CLUSTER_MODE_NEWSR ; 
- int CLUSTER_MODE_NEWS_COMM ; 
- int CLUSTER_MODE_NEWS_G ; 
- int CLUSTER_MODE_NEWS_UG ; 
- int CLUSTER_MODE_PHOTO ; 
- int CLUSTER_MODE_RANDOM_MERGE ; 
- int CLUSTER_MODE_ROUNDROBIN ; 
- int CLUSTER_MODE_SEARCH ; 
- int CLUSTER_MODE_SEARCHX ; 
- int CLUSTER_MODE_STATSX ; 
- int CLUSTER_MODE_SUPPORT ; 
- int CLUSTER_MODE_TARG ; 
- int CLUSTER_MODE_TEMP ; 
- int CLUSTER_MODE_TEXT ; 
- int CLUSTER_MODE_WATCHCAT ; 
- scalar_t__ MAX_CONNECTIONS ; 
- int /*<<< orphan*/  MAX_PING_INTERVAL ; 
- int /*<<< orphan*/  MIN_PING_INTERVAL ; 
- int /*<<< orphan*/  aes_load_pwd_file (char*) ; 
- char* aes_pwd_file ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  atof (void*) ; 
- void* atoi (void*) ; 
- void* backlog ; 
- char* config_filename ; 
- int daemonize ; 
- int default_cluster_mode ; 
- scalar_t__ default_max_connections ; 
- scalar_t__ default_min_connections ; 
- int do_reload_config (int /*<<< orphan*/ ) ; 
- long long dynamic_data_buffer_size ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  extension_name ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int getopt (int,char**,char*) ; 
- int /*<<< orphan*/  init_dyn_data () ; 
- int /*<<< orphan*/  kprintf (char*) ; 
- void* logname ; 
- scalar_t__ maxconn ; 
- int /*<<< orphan*/  nice (void*) ; 
- int /*<<< orphan*/  only_first_cluster ; 
- void* optarg ; 
- int optind ; 
- int /*<<< orphan*/  perror (char*) ; 
- int /*<<< orphan*/  ping_interval ; 
- void* port ; 
- char* progname ; 
- scalar_t__ raise_file_rlimit (scalar_t__) ; 
- int /*<<< orphan*/  set_debug_handlers () ; 
- int sscanf (void*,char*,long long*,char*) ; 
- int /*<<< orphan*/  start_server () ; 
- int /*<<< orphan*/  start_time ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  strcmp (void*,char*) ; 
- int /*<<< orphan*/  strncpy (int /*<<< orphan*/ ,void*,int) ; 
- int /*<<< orphan*/  time (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  usage () ; 
- void* username ; 
- int /*<<< orphan*/  verbosity ; 
- int /*<<< orphan*/  vkprintf (int,char*) ; 
+ void* BACKLOG ;
+ int CLUSTER_MODE_ANTISPAM ;
+ int CLUSTER_MODE_BAYES ;
+ int CLUSTER_MODE_DOT ;
+ int CLUSTER_MODE_FRIENDS ;
+ int CLUSTER_MODE_HINTS ;
+ int CLUSTER_MODE_HINTS_MERGE ;
+ int CLUSTER_MODE_LISTS ;
+ int CLUSTER_MODE_LOGS ;
+ int CLUSTER_MODE_MAGUS ;
+ int CLUSTER_MODE_MERGE ;
+ int CLUSTER_MODE_NEWS ;
+ int CLUSTER_MODE_NEWSR ;
+ int CLUSTER_MODE_NEWS_COMM ;
+ int CLUSTER_MODE_NEWS_G ;
+ int CLUSTER_MODE_NEWS_UG ;
+ int CLUSTER_MODE_PHOTO ;
+ int CLUSTER_MODE_RANDOM_MERGE ;
+ int CLUSTER_MODE_ROUNDROBIN ;
+ int CLUSTER_MODE_SEARCH ;
+ int CLUSTER_MODE_SEARCHX ;
+ int CLUSTER_MODE_STATSX ;
+ int CLUSTER_MODE_SUPPORT ;
+ int CLUSTER_MODE_TARG ;
+ int CLUSTER_MODE_TEMP ;
+ int CLUSTER_MODE_TEXT ;
+ int CLUSTER_MODE_WATCHCAT ;
+ scalar_t__ MAX_CONNECTIONS ;
+ int MAX_PING_INTERVAL ;
+ int MIN_PING_INTERVAL ;
+ int aes_load_pwd_file (char*) ;
+ char* aes_pwd_file ;
+ int assert (int) ;
+ int atof (void*) ;
+ void* atoi (void*) ;
+ void* backlog ;
+ char* config_filename ;
+ int daemonize ;
+ int default_cluster_mode ;
+ scalar_t__ default_max_connections ;
+ scalar_t__ default_min_connections ;
+ int do_reload_config (int ) ;
+ long long dynamic_data_buffer_size ;
+ int errno ;
+ int exit (int) ;
+ int extension_name ;
+ int fprintf (int ,char*,...) ;
+ int getopt (int,char**,char*) ;
+ int init_dyn_data () ;
+ int kprintf (char*) ;
+ void* logname ;
+ scalar_t__ maxconn ;
+ int nice (void*) ;
+ int only_first_cluster ;
+ void* optarg ;
+ int optind ;
+ int perror (char*) ;
+ int ping_interval ;
+ void* port ;
+ char* progname ;
+ scalar_t__ raise_file_rlimit (scalar_t__) ;
+ int set_debug_handlers () ;
+ int sscanf (void*,char*,long long*,char*) ;
+ int start_server () ;
+ int start_time ;
+ int stderr ;
+ int strcmp (void*,char*) ;
+ int strncpy (int ,void*,int) ;
+ int time (int ) ;
+ int usage () ;
+ void* username ;
+ int verbosity ;
+ int vkprintf (int,char*) ;
 
 int main (int argc, char *argv[]) {
   int i;
@@ -124,13 +116,13 @@ int main (int argc, char *argv[]) {
     case 'y':
       i = atoi (optarg);
       if (i >= 1 && i <= 1000) {
-	default_min_connections = i;
+ default_min_connections = i;
       }
       break;
     case 'z':
       i = atoi (optarg);
       if (i >= 1 && i <= 1000) {
-	default_max_connections = i;
+ default_max_connections = i;
       }
       break;
     case 'p':
@@ -256,8 +248,8 @@ int main (int argc, char *argv[]) {
     case 'T':
       ping_interval = atof (optarg);
       if (ping_interval < MIN_PING_INTERVAL || ping_interval > MAX_PING_INTERVAL) {
-	usage ();
-	return 2;
+ usage ();
+ return 2;
       }
       break;
     case 'E':
@@ -270,14 +262,14 @@ int main (int argc, char *argv[]) {
       c = 0;
       assert (sscanf (optarg, "%lld%c", &x, &c) >= 1);
       switch (c | 0x20) {
-      case 'k':  x <<= 10; break;
-      case 'm':  x <<= 20; break;
-      case 'g':  x <<= 30; break;
-      case 't':  x <<= 40; break;
+      case 'k': x <<= 10; break;
+      case 'm': x <<= 20; break;
+      case 'g': x <<= 30; break;
+      case 't': x <<= 40; break;
       default: assert (c == 0x20);
       }
       if (x >= (1LL << 20) && x <= (sizeof(long) == 4 ? (3LL << 30) : (100LL << 30))) {
-	dynamic_data_buffer_size = x;
+ dynamic_data_buffer_size = x;
       }
       break;
     }

@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  byte ;
-struct TYPE_6__ {int PixelBytes; int VXsize; int VYsize; int /*<<< orphan*/ * Bitmap; } ;
-typedef  TYPE_1__ VGLBitmap ;
 
-/* Variables and functions */
- TYPE_1__* VGLDisplay ; 
- int /*<<< orphan*/  VGLMouseMerge (int,int,int,int /*<<< orphan*/ *) ; 
- scalar_t__ VGLMouseOverlap (int,int,int,int) ; 
- int /*<<< orphan*/  WriteVerticalLine (TYPE_1__*,int,int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * alloca (int) ; 
- int /*<<< orphan*/  bcopy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int byte ;
+struct TYPE_6__ {int PixelBytes; int VXsize; int VYsize; int * Bitmap; } ;
+typedef TYPE_1__ VGLBitmap ;
+
+
+ TYPE_1__* VGLDisplay ;
+ int VGLMouseMerge (int,int,int,int *) ;
+ scalar_t__ VGLMouseOverlap (int,int,int,int) ;
+ int WriteVerticalLine (TYPE_1__*,int,int,int,int *) ;
+ int * alloca (int) ;
+ int bcopy (int *,int *,int) ;
 
 int
 __VGLBitmapCopy(VGLBitmap *src, int srcx, int srcy,
-	      VGLBitmap *dst, int dstx, int dsty, int width, int hight)
+       VGLBitmap *dst, int dstx, int dsty, int width, int hight)
 {
   byte *buffer, *p;
   int mousemerge, srcline, dstline, yend, yextra, ystep;
-  
+
   mousemerge = 0;
   if (hight < 0) {
     hight = -hight;
     mousemerge = (dst == VGLDisplay &&
-		  VGLMouseOverlap(dstx, dsty, width, hight));
+    VGLMouseOverlap(dstx, dsty, width, hight));
     if (mousemerge)
       buffer = alloca(width*src->PixelBytes);
   }
   if (srcx>src->VXsize || srcy>src->VYsize
-	|| dstx>dst->VXsize || dsty>dst->VYsize)
-    return -1;  
+ || dstx>dst->VXsize || dsty>dst->VYsize)
+    return -1;
   if (srcx < 0) {
-    width=width+srcx; dstx-=srcx; srcx=0;    
+    width=width+srcx; dstx-=srcx; srcx=0;
   }
   if (srcy < 0) {
-    hight=hight+srcy; dsty-=srcy; srcy=0; 
+    hight=hight+srcy; dsty-=srcy; srcy=0;
   }
-  if (dstx < 0) {    
+  if (dstx < 0) {
     width=width+dstx; srcx-=dstx; dstx=0;
   }
   if (dsty < 0) {

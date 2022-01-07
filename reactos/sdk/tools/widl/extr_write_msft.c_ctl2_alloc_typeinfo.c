@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {int nrtypeinfos; } ;
 struct TYPE_7__ {int* typelib_typeinfo_offsets; TYPE_1__ typelib_header; scalar_t__* typelib_segment_data; } ;
-typedef  TYPE_2__ msft_typelib_t ;
+typedef TYPE_2__ msft_typelib_t ;
 struct TYPE_8__ {int typekind; int memoffset; int res3; int res4; int posguid; int NameOffset; int docstringoffs; int oCustData; int datatype1; int res19; scalar_t__ res18; scalar_t__ datatype2; scalar_t__ size; scalar_t__ cImplTypes; scalar_t__ cbSizeVft; scalar_t__ helpcontext; scalar_t__ helpstringcontext; scalar_t__ version; scalar_t__ flags; scalar_t__ resA; scalar_t__ res9; scalar_t__ res8; scalar_t__ res7; scalar_t__ cElement; scalar_t__ res5; scalar_t__ res2; } ;
-typedef  TYPE_3__ MSFT_TypeInfoBase ;
+typedef TYPE_3__ MSFT_TypeInfoBase ;
 
-/* Variables and functions */
- size_t MSFT_SEG_TYPEINFO ; 
- int ctl2_alloc_segment (TYPE_2__*,size_t,int,int /*<<< orphan*/ ) ; 
+
+ size_t MSFT_SEG_TYPEINFO ;
+ int ctl2_alloc_segment (TYPE_2__*,size_t,int,int ) ;
 
 __attribute__((used)) static int ctl2_alloc_typeinfo(
-	msft_typelib_t *typelib,   /* [I] The type library to allocate in. */
-	int nameoffset)            /* [I] The offset of the name for this typeinfo. */
+ msft_typelib_t *typelib,
+ int nameoffset)
 {
     int offset;
     MSFT_TypeInfoBase *typeinfo;
@@ -37,7 +37,7 @@ __attribute__((used)) static int ctl2_alloc_typeinfo(
     typeinfo = (void *)(typelib->typelib_segment_data[MSFT_SEG_TYPEINFO] + offset);
 
     typeinfo->typekind = (typelib->typelib_header.nrtypeinfos - 1) << 16;
-    typeinfo->memoffset = -1; /* should be EOF if no elements */
+    typeinfo->memoffset = -1;
     typeinfo->res2 = 0;
     typeinfo->res3 = -1;
     typeinfo->res4 = 3;

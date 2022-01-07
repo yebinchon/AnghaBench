@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  WRITE_STRING_FILE_DISABLE_BUFFER ; 
- int /*<<< orphan*/  delete_rule (char const*) ; 
- int log_error_errno (int,char*) ; 
- int write_string_file (char*,char const*,int /*<<< orphan*/ ) ; 
+ int WRITE_STRING_FILE_DISABLE_BUFFER ;
+ int delete_rule (char const*) ;
+ int log_error_errno (int,char*) ;
+ int write_string_file (char*,char const*,int ) ;
 
 __attribute__((used)) static int apply_rule(const char *rule) {
         int r;

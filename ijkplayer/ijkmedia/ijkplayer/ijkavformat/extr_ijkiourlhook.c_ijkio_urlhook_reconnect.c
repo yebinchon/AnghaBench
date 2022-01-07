@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_12__ {int /*<<< orphan*/  url; } ;
-struct TYPE_14__ {struct TYPE_14__* priv_data; scalar_t__ io_error; struct TYPE_14__* inner; TYPE_2__* prot; int /*<<< orphan*/  logical_size; int /*<<< orphan*/  logical_pos; int /*<<< orphan*/  inner_flags; TYPE_1__ app_io_ctrl; int /*<<< orphan*/  ijkio_app_ctx; int /*<<< orphan*/ * inner_options; scalar_t__ test_fail_point; int /*<<< orphan*/  test_fail_point_next; } ;
-struct TYPE_13__ {int (* url_open2 ) (TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ;int /*<<< orphan*/  (* url_seek ) (TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* url_close ) (TYPE_3__*) ;} ;
-typedef  TYPE_3__ IjkURLContext ;
-typedef  int /*<<< orphan*/  IjkAVDictionary ;
-typedef  TYPE_3__ Context ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IJKAVSEEK_SIZE ; 
- int /*<<< orphan*/  SEEK_CUR ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ijk_av_dict_copy (int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ijk_av_dict_free (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  ijk_av_freep (TYPE_3__**) ; 
- int ijkio_alloc_url (TYPE_3__**,int /*<<< orphan*/ ) ; 
- int stub1 (TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  stub2 (TYPE_3__*) ; 
- int /*<<< orphan*/  stub3 (TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub4 (TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+struct TYPE_12__ {int url; } ;
+struct TYPE_14__ {struct TYPE_14__* priv_data; scalar_t__ io_error; struct TYPE_14__* inner; TYPE_2__* prot; int logical_size; int logical_pos; int inner_flags; TYPE_1__ app_io_ctrl; int ijkio_app_ctx; int * inner_options; scalar_t__ test_fail_point; int test_fail_point_next; } ;
+struct TYPE_13__ {int (* url_open2 ) (TYPE_3__*,int ,int ,int **) ;int (* url_seek ) (TYPE_3__*,int ,int ) ;int (* url_close ) (TYPE_3__*) ;} ;
+typedef TYPE_3__ IjkURLContext ;
+typedef int IjkAVDictionary ;
+typedef TYPE_3__ Context ;
+
+
+ int IJKAVSEEK_SIZE ;
+ int SEEK_CUR ;
+ int assert (int *) ;
+ int ijk_av_dict_copy (int **,int *,int ) ;
+ int ijk_av_dict_free (int **) ;
+ int ijk_av_freep (TYPE_3__**) ;
+ int ijkio_alloc_url (TYPE_3__**,int ) ;
+ int stub1 (TYPE_3__*,int ,int ,int **) ;
+ int stub2 (TYPE_3__*) ;
+ int stub3 (TYPE_3__*,int ,int ) ;
+ int stub4 (TYPE_3__*,int ,int ) ;
 
 __attribute__((used)) static int ijkio_urlhook_reconnect(IjkURLContext *h, IjkAVDictionary *extra)
 {
     Context *c = h->priv_data;
     int ret = 0;
-    IjkURLContext *new_url = NULL;
-    IjkAVDictionary *inner_options = NULL;
+    IjkURLContext *new_url = ((void*)0);
+    IjkAVDictionary *inner_options = ((void*)0);
 
     c->test_fail_point_next += c->test_fail_point;
 
@@ -62,10 +62,10 @@ __attribute__((used)) static int ijkio_urlhook_reconnect(IjkURLContext *h, IjkAV
         ijk_av_freep(&c->inner);
     }
 
-    c->inner        = new_url;
-    c->logical_pos  = c->inner->prot->url_seek(c->inner, 0, SEEK_CUR);
+    c->inner = new_url;
+    c->logical_pos = c->inner->prot->url_seek(c->inner, 0, SEEK_CUR);
     c->logical_size = c->inner->prot->url_seek(c->inner, 0, IJKAVSEEK_SIZE);
-    c->io_error     = 0;
+    c->io_error = 0;
     if (inner_options) {
         ijk_av_dict_free(&inner_options);
     }

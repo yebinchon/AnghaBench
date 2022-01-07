@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buf ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_SP ; 
- scalar_t__ ENOPROTOOPT ; 
- int /*<<< orphan*/  NN_PUB ; 
- int /*<<< orphan*/  NN_SUB ; 
- int /*<<< orphan*/  NN_SUB_SUBSCRIBE ; 
- int /*<<< orphan*/  SOCKET_ADDRESS ; 
- int /*<<< orphan*/  errno_assert (int) ; 
- int /*<<< orphan*/  nn_assert (int) ; 
- scalar_t__ nn_errno () ; 
- int nn_getsockopt (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,size_t*) ; 
- int nn_setsockopt (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nn_sleep (int) ; 
- int /*<<< orphan*/  test_bind (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_close (int) ; 
- int /*<<< orphan*/  test_connect (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_recv (int,char*) ; 
- int /*<<< orphan*/  test_send (int,char*) ; 
- int test_socket (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int buf ;
+
+
+ int AF_SP ;
+ scalar_t__ ENOPROTOOPT ;
+ int NN_PUB ;
+ int NN_SUB ;
+ int NN_SUB_SUBSCRIBE ;
+ int SOCKET_ADDRESS ;
+ int errno_assert (int) ;
+ int nn_assert (int) ;
+ scalar_t__ nn_errno () ;
+ int nn_getsockopt (int,int ,int ,char*,size_t*) ;
+ int nn_setsockopt (int,int ,int ,char*,int ) ;
+ int nn_sleep (int) ;
+ int test_bind (int,int ) ;
+ int test_close (int) ;
+ int test_connect (int,int ) ;
+ int test_recv (int,char*) ;
+ int test_send (int,char*) ;
+ int test_socket (int ,int ) ;
 
 int main ()
 {
@@ -56,7 +56,7 @@ int main ()
     errno_assert (rc == 0);
     test_connect (sub2, SOCKET_ADDRESS);
 
-    /*  Wait till connections are established to prevent message loss. */
+
     nn_sleep (10);
 
     test_send (pub1, "0123456789012345678901234567890123456789");
@@ -67,7 +67,7 @@ int main ()
     test_close (sub1);
     test_close (sub2);
 
-    /*  Check receiving messages from two publishers. */
+
 
     sub1 = test_socket (AF_SP, NN_SUB);
     rc = nn_setsockopt (sub1, NN_SUB, NN_SUB_SUBSCRIBE, "", 0);

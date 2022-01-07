@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct counter {int /*<<< orphan*/  magic; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PDH_MAGIC_COUNTER ; 
- struct counter* heap_alloc_zero (int) ; 
+
+
+
+struct counter {int magic; } ;
+
+
+ int PDH_MAGIC_COUNTER ;
+ struct counter* heap_alloc_zero (int) ;
 
 __attribute__((used)) static struct counter *create_counter( void )
 {
@@ -25,5 +25,5 @@ __attribute__((used)) static struct counter *create_counter( void )
         counter->magic = PDH_MAGIC_COUNTER;
         return counter;
     }
-    return NULL;
+    return ((void*)0);
 }

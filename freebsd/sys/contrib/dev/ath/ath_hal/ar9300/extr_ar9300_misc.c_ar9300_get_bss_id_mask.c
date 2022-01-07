@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_int8_t ;
-struct ath_hal_9300 {int /*<<< orphan*/  ah_bssid_mask; } ;
+
+
+
+
+typedef int u_int8_t ;
+struct ath_hal_9300 {int ah_bssid_mask; } ;
 struct ath_hal {int dummy; } ;
 
-/* Variables and functions */
- struct ath_hal_9300* AH9300 (struct ath_hal*) ; 
- int /*<<< orphan*/  IEEE80211_ADDR_LEN ; 
- int /*<<< orphan*/  OS_MEMCPY (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ struct ath_hal_9300* AH9300 (struct ath_hal*) ;
+ int IEEE80211_ADDR_LEN ;
+ int OS_MEMCPY (int *,int ,int ) ;
 
 void
 ar9300_get_bss_id_mask(struct ath_hal *ah, u_int8_t *mask)

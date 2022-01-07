@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int cmsUInt16Number ;
-typedef  int cmsInt32Number ;
-typedef  int /*<<< orphan*/  cmsHTRANSFORM ;
-typedef  int /*<<< orphan*/  cmsContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DupContext (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FormattersPluginSample ; 
- int /*<<< orphan*/  FormattersPluginSample2 ; 
- int /*<<< orphan*/  INTENT_PERCEPTUAL ; 
- int /*<<< orphan*/  TYPE_RGB_565 ; 
- int /*<<< orphan*/  WatchDogContext (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cmsCreateTransform (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cmsDeleteContext (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cmsDeleteTransform (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cmsDoTransform (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*,int*,int) ; 
- int /*<<< orphan*/  cmsFLAGS_NULLTRANSFORM ; 
- int /*<<< orphan*/  cmsPlugin (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int cmsUInt16Number ;
+typedef int cmsInt32Number ;
+typedef int cmsHTRANSFORM ;
+typedef int cmsContext ;
+
+
+ int DupContext (int ,int *) ;
+ int FormattersPluginSample ;
+ int FormattersPluginSample2 ;
+ int INTENT_PERCEPTUAL ;
+ int TYPE_RGB_565 ;
+ int WatchDogContext (int *) ;
+ int cmsCreateTransform (int ,int *,int ,int *,int ,int ,int ) ;
+ int cmsDeleteContext (int ) ;
+ int cmsDeleteTransform (int ,int ) ;
+ int cmsDoTransform (int ,int ,int*,int*,int) ;
+ int cmsFLAGS_NULLTRANSFORM ;
+ int cmsPlugin (int ,int *) ;
 
 cmsInt32Number CheckFormattersPlugin(void)
 {
-    cmsContext ctx = WatchDogContext(NULL);
+    cmsContext ctx = WatchDogContext(((void*)0));
     cmsContext cpy;
     cmsHTRANSFORM xform;
     cmsUInt16Number stream[]= { 0xffffU, 0x1234U, 0x0000U, 0x33ddU };
@@ -40,11 +40,11 @@ cmsInt32Number CheckFormattersPlugin(void)
 
     cmsPlugin(ctx, &FormattersPluginSample);
 
-    cpy = DupContext(ctx, NULL);
+    cpy = DupContext(ctx, ((void*)0));
 
     cmsPlugin(cpy, &FormattersPluginSample2);
 
-    xform = cmsCreateTransform(cpy, NULL, TYPE_RGB_565, NULL, TYPE_RGB_565, INTENT_PERCEPTUAL, cmsFLAGS_NULLTRANSFORM);
+    xform = cmsCreateTransform(cpy, ((void*)0), TYPE_RGB_565, ((void*)0), TYPE_RGB_565, INTENT_PERCEPTUAL, cmsFLAGS_NULLTRANSFORM);
 
     cmsDoTransform(cpy, xform, stream, result, 4);
 

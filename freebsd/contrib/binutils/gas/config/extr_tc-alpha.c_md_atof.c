@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  LITTLENUM_TYPE ;
 
-/* Variables and functions */
- int MAX_LITTLENUMS ; 
- char* _ (char*) ; 
- char* atof_ieee (char*,int,int /*<<< orphan*/ *) ; 
- char* input_line_pointer ; 
- int /*<<< orphan*/  md_number_to_chars (char*,long,int) ; 
- char* vax_md_atof (int,char*,int*) ; 
+
+
+
+typedef int LITTLENUM_TYPE ;
+
+
+ int MAX_LITTLENUMS ;
+ char* _ (char*) ;
+ char* atof_ieee (char*,int,int *) ;
+ char* input_line_pointer ;
+ int md_number_to_chars (char*,long,int) ;
+ char* vax_md_atof (int,char*,int*) ;
 
 char *
 md_atof (int type, char *litP, int *sizeP)
@@ -30,15 +30,15 @@ md_atof (int type, char *litP, int *sizeP)
 
   switch (type)
     {
-      /* VAX floats.  */
+
     case 'G':
-      /* VAX md_atof doesn't like "G" for some reason.  */
+
       type = 'g';
     case 'F':
     case 'D':
       return vax_md_atof (type, litP, sizeP);
 
-      /* IEEE floats.  */
+
     case 'f':
       prec = 2;
       break;

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ r_ptr_rx; scalar_t__ w_ptr_rx; scalar_t__ r_ptr_tx; scalar_t__ w_ptr_tx; } ;
-typedef  TYPE_1__ uart_ring ;
+typedef TYPE_1__ uart_ring ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ENTER_CRITICAL () ; 
- int /*<<< orphan*/  EXIT_CRITICAL () ; 
+
+ int ENTER_CRITICAL () ;
+ int EXIT_CRITICAL () ;
 
 void clear_uart_buff(uart_ring *q) {
   ENTER_CRITICAL();

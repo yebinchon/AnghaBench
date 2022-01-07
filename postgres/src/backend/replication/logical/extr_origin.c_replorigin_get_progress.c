@@ -1,64 +1,64 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ XLogRecPtr ;
-struct TYPE_3__ {scalar_t__ roident; scalar_t__ remote_lsn; scalar_t__ local_lsn; int /*<<< orphan*/  lock; } ;
-typedef  TYPE_1__ ReplicationState ;
-typedef  scalar_t__ RepOriginId ;
 
-/* Variables and functions */
- scalar_t__ InvalidXLogRecPtr ; 
- int /*<<< orphan*/  LWLockAcquire (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LWLockRelease (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LW_SHARED ; 
- int /*<<< orphan*/ * ReplicationOriginLock ; 
- int /*<<< orphan*/  XLogFlush (scalar_t__) ; 
- int max_replication_slots ; 
- TYPE_1__* replication_states ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ XLogRecPtr ;
+struct TYPE_3__ {scalar_t__ roident; scalar_t__ remote_lsn; scalar_t__ local_lsn; int lock; } ;
+typedef TYPE_1__ ReplicationState ;
+typedef scalar_t__ RepOriginId ;
+
+
+ scalar_t__ InvalidXLogRecPtr ;
+ int LWLockAcquire (int *,int ) ;
+ int LWLockRelease (int *) ;
+ int LW_SHARED ;
+ int * ReplicationOriginLock ;
+ int XLogFlush (scalar_t__) ;
+ int max_replication_slots ;
+ TYPE_1__* replication_states ;
 
 XLogRecPtr
 replorigin_get_progress(RepOriginId node, bool flush)
 {
-	int			i;
-	XLogRecPtr	local_lsn = InvalidXLogRecPtr;
-	XLogRecPtr	remote_lsn = InvalidXLogRecPtr;
+ int i;
+ XLogRecPtr local_lsn = InvalidXLogRecPtr;
+ XLogRecPtr remote_lsn = InvalidXLogRecPtr;
 
-	/* prevent slots from being concurrently dropped */
-	LWLockAcquire(ReplicationOriginLock, LW_SHARED);
 
-	for (i = 0; i < max_replication_slots; i++)
-	{
-		ReplicationState *state;
+ LWLockAcquire(ReplicationOriginLock, LW_SHARED);
 
-		state = &replication_states[i];
+ for (i = 0; i < max_replication_slots; i++)
+ {
+  ReplicationState *state;
 
-		if (state->roident == node)
-		{
-			LWLockAcquire(&state->lock, LW_SHARED);
+  state = &replication_states[i];
 
-			remote_lsn = state->remote_lsn;
-			local_lsn = state->local_lsn;
+  if (state->roident == node)
+  {
+   LWLockAcquire(&state->lock, LW_SHARED);
 
-			LWLockRelease(&state->lock);
+   remote_lsn = state->remote_lsn;
+   local_lsn = state->local_lsn;
 
-			break;
-		}
-	}
+   LWLockRelease(&state->lock);
 
-	LWLockRelease(ReplicationOriginLock);
+   break;
+  }
+ }
 
-	if (flush && local_lsn != InvalidXLogRecPtr)
-		XLogFlush(local_lsn);
+ LWLockRelease(ReplicationOriginLock);
 
-	return remote_lsn;
+ if (flush && local_lsn != InvalidXLogRecPtr)
+  XLogFlush(local_lsn);
+
+ return remote_lsn;
 }

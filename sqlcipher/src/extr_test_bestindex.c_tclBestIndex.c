@@ -1,71 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_7__ {void* zErrMsg; } ;
-struct TYPE_8__ {TYPE_2__ base; int /*<<< orphan*/  pCmd; int /*<<< orphan*/ * interp; } ;
-typedef  TYPE_3__ tcl_vtab ;
-typedef  scalar_t__ tRowcnt ;
-struct sqlite3_index_orderby {int /*<<< orphan*/  desc; int /*<<< orphan*/  iColumn; } ;
-struct sqlite3_index_constraint {int op; int /*<<< orphan*/  usable; int /*<<< orphan*/  iColumn; } ;
-typedef  int /*<<< orphan*/  sqlite3_vtab ;
-struct TYPE_9__ {int nConstraint; int nOrderBy; int orderByConsumed; int idxNum; int needToFreeIdxStr; TYPE_1__* aConstraintUsage; scalar_t__ estimatedRows; void* idxStr; int /*<<< orphan*/  estimatedCost; int /*<<< orphan*/  colUsed; struct sqlite3_index_orderby* aOrderBy; struct sqlite3_index_constraint* aConstraint; } ;
-typedef  TYPE_4__ sqlite3_index_info ;
-typedef  scalar_t__ Tcl_WideInt ;
-typedef  int /*<<< orphan*/  Tcl_Obj ;
-typedef  int /*<<< orphan*/  Tcl_Interp ;
-struct TYPE_6__ {int omit; int /*<<< orphan*/  argvIndex; } ;
+struct TYPE_8__ {TYPE_2__ base; int pCmd; int * interp; } ;
+typedef TYPE_3__ tcl_vtab ;
+typedef scalar_t__ tRowcnt ;
+struct sqlite3_index_orderby {int desc; int iColumn; } ;
+struct sqlite3_index_constraint {int op; int usable; int iColumn; } ;
+typedef int sqlite3_vtab ;
+struct TYPE_9__ {int nConstraint; int nOrderBy; int orderByConsumed; int idxNum; int needToFreeIdxStr; TYPE_1__* aConstraintUsage; scalar_t__ estimatedRows; void* idxStr; int estimatedCost; int colUsed; struct sqlite3_index_orderby* aOrderBy; struct sqlite3_index_constraint* aConstraint; } ;
+typedef TYPE_4__ sqlite3_index_info ;
+typedef scalar_t__ Tcl_WideInt ;
+typedef int Tcl_Obj ;
+typedef int Tcl_Interp ;
+struct TYPE_6__ {int omit; int argvIndex; } ;
 
-/* Variables and functions */
- int SQLITE_ERROR ; 
-#define  SQLITE_INDEX_CONSTRAINT_EQ 141 
-#define  SQLITE_INDEX_CONSTRAINT_GE 140 
-#define  SQLITE_INDEX_CONSTRAINT_GLOB 139 
-#define  SQLITE_INDEX_CONSTRAINT_GT 138 
-#define  SQLITE_INDEX_CONSTRAINT_IS 137 
-#define  SQLITE_INDEX_CONSTRAINT_ISNOT 136 
-#define  SQLITE_INDEX_CONSTRAINT_ISNOTNULL 135 
-#define  SQLITE_INDEX_CONSTRAINT_ISNULL 134 
-#define  SQLITE_INDEX_CONSTRAINT_LE 133 
-#define  SQLITE_INDEX_CONSTRAINT_LIKE 132 
-#define  SQLITE_INDEX_CONSTRAINT_LT 131 
-#define  SQLITE_INDEX_CONSTRAINT_MATCH 130 
-#define  SQLITE_INDEX_CONSTRAINT_NE 129 
-#define  SQLITE_INDEX_CONSTRAINT_REGEXP 128 
- int SQLITE_OK ; 
- int /*<<< orphan*/  TCL_EVAL_GLOBAL ; 
- int TCL_OK ; 
- int /*<<< orphan*/  Tcl_DecrRefCount (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * Tcl_DuplicateObj (int /*<<< orphan*/ ) ; 
- int Tcl_EvalObjEx (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int Tcl_GetDoubleFromObj (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int Tcl_GetIntFromObj (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/ * Tcl_GetObjResult (int /*<<< orphan*/ *) ; 
- char const* Tcl_GetString (int /*<<< orphan*/ *) ; 
- char* Tcl_GetStringResult (int /*<<< orphan*/ *) ; 
- int Tcl_GetWideIntFromObj (int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__*) ; 
- int /*<<< orphan*/  Tcl_IncrRefCount (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Tcl_ListObjAppendElement (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int Tcl_ListObjGetElements (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*,int /*<<< orphan*/ ***) ; 
- int /*<<< orphan*/ * Tcl_NewIntObj (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * Tcl_NewObj () ; 
- int /*<<< orphan*/ * Tcl_NewStringObj (char const*,int) ; 
- int /*<<< orphan*/ * Tcl_NewWideIntObj (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_free (void*) ; 
- void* sqlite3_mprintf (char*,...) ; 
- scalar_t__ sqlite3_stricmp (char*,char const*) ; 
+
+ int SQLITE_ERROR ;
+ int SQLITE_OK ;
+ int TCL_EVAL_GLOBAL ;
+ int TCL_OK ;
+ int Tcl_DecrRefCount (int *) ;
+ int * Tcl_DuplicateObj (int ) ;
+ int Tcl_EvalObjEx (int *,int *,int ) ;
+ int Tcl_GetDoubleFromObj (int *,int *,int *) ;
+ int Tcl_GetIntFromObj (int *,int *,int*) ;
+ int * Tcl_GetObjResult (int *) ;
+ char const* Tcl_GetString (int *) ;
+ char* Tcl_GetStringResult (int *) ;
+ int Tcl_GetWideIntFromObj (int *,int *,scalar_t__*) ;
+ int Tcl_IncrRefCount (int *) ;
+ int Tcl_ListObjAppendElement (int *,int *,int *) ;
+ int Tcl_ListObjGetElements (int *,int *,int*,int ***) ;
+ int * Tcl_NewIntObj (int ) ;
+ int * Tcl_NewObj () ;
+ int * Tcl_NewStringObj (char const*,int) ;
+ int * Tcl_NewWideIntObj (int ) ;
+ int sqlite3_free (void*) ;
+ void* sqlite3_mprintf (char*,...) ;
+ scalar_t__ sqlite3_stricmp (char*,char const*) ;
 
 __attribute__((used)) static int tclBestIndex(sqlite3_vtab *tab, sqlite3_index_info *pIdxInfo){
   tcl_vtab *pTab = (tcl_vtab*)tab;
@@ -89,33 +75,33 @@ __attribute__((used)) static int tclBestIndex(sqlite3_vtab *tab, sqlite3_index_i
     Tcl_IncrRefCount(pElem);
 
     switch( pCons->op ){
-      case SQLITE_INDEX_CONSTRAINT_EQ:
+      case 141:
         zOp = "eq"; break;
-      case SQLITE_INDEX_CONSTRAINT_GT:
+      case 138:
         zOp = "gt"; break;
-      case SQLITE_INDEX_CONSTRAINT_LE:
+      case 133:
         zOp = "le"; break;
-      case SQLITE_INDEX_CONSTRAINT_LT:
+      case 131:
         zOp = "lt"; break;
-      case SQLITE_INDEX_CONSTRAINT_GE:
+      case 140:
         zOp = "ge"; break;
-      case SQLITE_INDEX_CONSTRAINT_MATCH:
+      case 130:
         zOp = "match"; break;
-      case SQLITE_INDEX_CONSTRAINT_LIKE:
+      case 132:
         zOp = "like"; break;
-      case SQLITE_INDEX_CONSTRAINT_GLOB:
+      case 139:
         zOp = "glob"; break;
-      case SQLITE_INDEX_CONSTRAINT_REGEXP:
+      case 128:
         zOp = "regexp"; break;
-      case SQLITE_INDEX_CONSTRAINT_NE:
+      case 129:
         zOp = "ne"; break;
-      case SQLITE_INDEX_CONSTRAINT_ISNOT:
+      case 136:
         zOp = "isnot"; break;
-      case SQLITE_INDEX_CONSTRAINT_ISNOTNULL:
+      case 135:
         zOp = "isnotnull"; break;
-      case SQLITE_INDEX_CONSTRAINT_ISNULL:
+      case 134:
         zOp = "isnull"; break;
-      case SQLITE_INDEX_CONSTRAINT_IS:
+      case 137:
         zOp = "is"; break;
     }
 
@@ -161,18 +147,6 @@ __attribute__((used)) static int tclBestIndex(sqlite3_vtab *tab, sqlite3_index_i
     rc = SQLITE_ERROR;
     pTab->base.zErrMsg = sqlite3_mprintf("%s", zErr);
   }else{
-    /* Analyze the scripts return value. The return value should be a tcl 
-    ** list object with an even number of elements. The first element of each
-    ** pair must be one of:
-    ** 
-    **   "orderby"          (value of orderByConsumed flag)
-    **   "cost"             (value of estimatedCost field)
-    **   "rows"             (value of estimatedRows field)
-    **   "use"              (index of used constraint in aConstraint[])
-    **   "idxnum"           (value of idxNum field)
-    **   "idxstr"           (value of idxStr field)
-    **   "omit"             (index of omitted constraint in aConstraint[])
-    */
     Tcl_Obj *pRes = Tcl_GetObjResult(interp);
     Tcl_Obj **apElem = 0;
     int nElem;
@@ -205,8 +179,8 @@ __attribute__((used)) static int tclBestIndex(sqlite3_vtab *tab, sqlite3_index_i
           rc = Tcl_GetWideIntFromObj(interp, p, &x);
           pIdxInfo->estimatedRows = (tRowcnt)x;
         }else
-        if( sqlite3_stricmp("use", zCmd)==0 
-         || sqlite3_stricmp("omit", zCmd)==0 
+        if( sqlite3_stricmp("use", zCmd)==0
+         || sqlite3_stricmp("omit", zCmd)==0
         ){
           int iCons;
           rc = Tcl_GetIntFromObj(interp, p, &iCons);

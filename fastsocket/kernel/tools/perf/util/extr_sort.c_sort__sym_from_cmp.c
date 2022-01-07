@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct hist_entry {scalar_t__ level; TYPE_1__* branch_info; } ;
-struct addr_map_symbol {int /*<<< orphan*/  addr; int /*<<< orphan*/  sym; } ;
-typedef  scalar_t__ int64_t ;
+struct addr_map_symbol {int addr; int sym; } ;
+typedef scalar_t__ int64_t ;
 struct TYPE_2__ {struct addr_map_symbol from; } ;
 
-/* Variables and functions */
- scalar_t__ _sort__sym_cmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ _sort__sym_cmp (int ,int ,int ,int ) ;
 
 __attribute__((used)) static int64_t
 sort__sym_from_cmp(struct hist_entry *left, struct hist_entry *right)
 {
-	struct addr_map_symbol *from_l = &left->branch_info->from;
-	struct addr_map_symbol *from_r = &right->branch_info->from;
+ struct addr_map_symbol *from_l = &left->branch_info->from;
+ struct addr_map_symbol *from_r = &right->branch_info->from;
 
-	if (!from_l->sym && !from_r->sym)
-		return right->level - left->level;
+ if (!from_l->sym && !from_r->sym)
+  return right->level - left->level;
 
-	return _sort__sym_cmp(from_l->sym, from_r->sym, from_l->addr,
-			     from_r->addr);
+ return _sort__sym_cmp(from_l->sym, from_r->sym, from_l->addr,
+        from_r->addr);
 }

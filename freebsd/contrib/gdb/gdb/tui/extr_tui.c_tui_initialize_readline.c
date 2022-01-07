@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {char key; scalar_t__ cmd; } ;
-typedef  scalar_t__ Keymap ;
+typedef scalar_t__ Keymap ;
 
-/* Variables and functions */
- char CTRL (char) ; 
- int /*<<< orphan*/  ISKMAP ; 
- scalar_t__ emacs_ctlx_keymap ; 
- int /*<<< orphan*/  rl_add_defun (char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  rl_bind_key_in_map (char,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  rl_generic_bind (int /*<<< orphan*/ ,char*,char*,scalar_t__) ; 
- int /*<<< orphan*/  rl_get_keymap () ; 
- int /*<<< orphan*/  rl_initialize () ; 
- scalar_t__ rl_make_bare_keymap () ; 
- TYPE_1__* tui_commands ; 
- scalar_t__ tui_keymap ; 
- int /*<<< orphan*/  tui_readline_standard_keymap ; 
- int /*<<< orphan*/  tui_rl_change_windows ; 
- int /*<<< orphan*/  tui_rl_command_key ; 
- int /*<<< orphan*/  tui_rl_command_mode ; 
- int /*<<< orphan*/  tui_rl_delete_other_windows ; 
- int /*<<< orphan*/  tui_rl_next_keymap ; 
- int /*<<< orphan*/  tui_rl_other_window ; 
- int /*<<< orphan*/  tui_rl_switch_mode ; 
+
+ char CTRL (char) ;
+ int ISKMAP ;
+ scalar_t__ emacs_ctlx_keymap ;
+ int rl_add_defun (char*,int ,int) ;
+ int rl_bind_key_in_map (char,int ,scalar_t__) ;
+ int rl_generic_bind (int ,char*,char*,scalar_t__) ;
+ int rl_get_keymap () ;
+ int rl_initialize () ;
+ scalar_t__ rl_make_bare_keymap () ;
+ TYPE_1__* tui_commands ;
+ scalar_t__ tui_keymap ;
+ int tui_readline_standard_keymap ;
+ int tui_rl_change_windows ;
+ int tui_rl_command_key ;
+ int tui_rl_command_mode ;
+ int tui_rl_delete_other_windows ;
+ int tui_rl_next_keymap ;
+ int tui_rl_other_window ;
+ int tui_rl_switch_mode ;
 
 void
 tui_initialize_readline (void)
@@ -56,8 +56,8 @@ tui_initialize_readline (void)
 
   rl_generic_bind (ISKMAP, "\\C-x", (char*) tui_ctlx_keymap, tui_keymap);
 
-  /* Bind all other keys to tui_rl_command_mode so that we switch
-     temporarily from SingleKey mode and can enter a gdb command.  */
+
+
   for (i = ' '; i < 0x7f; i++)
     {
       int j;

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  scalar_t__ MMAL_STATUS_T ;
 
-/* Variables and functions */
- scalar_t__ MMAL_SUCCESS ; 
- int UINT_MAX ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,scalar_t__,char*) ; 
- char* mmal_status_to_string (scalar_t__) ; 
- scalar_t__ mmal_vc_get_version (int*,int*,int*) ; 
- int /*<<< orphan*/  printf (char*,int,int,int) ; 
- int /*<<< orphan*/  stderr ; 
+
+
+
+typedef int uint32_t ;
+typedef scalar_t__ MMAL_STATUS_T ;
+
+
+ scalar_t__ MMAL_SUCCESS ;
+ int UINT_MAX ;
+ int fprintf (int ,char*,scalar_t__,char*) ;
+ char* mmal_status_to_string (scalar_t__) ;
+ scalar_t__ mmal_vc_get_version (int*,int*,int*) ;
+ int printf (char*,int,int,int) ;
+ int stderr ;
 
 __attribute__((used)) static int do_version(int argc, const char **argv)
 {

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct cmdargs {int argc; int argn; scalar_t__** argv; TYPE_1__* cx; } ;
-struct TYPE_2__ {int /*<<< orphan*/  physical; } ;
+struct TYPE_2__ {int physical; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LogWARN ; 
- int /*<<< orphan*/  log_Printf (int /*<<< orphan*/ ,char*,...) ; 
- scalar_t__ physical_SetSpeed (int /*<<< orphan*/ ,long) ; 
- int /*<<< orphan*/  physical_SetSync (int /*<<< orphan*/ ) ; 
- scalar_t__ strcasecmp (scalar_t__*,char*) ; 
- long strtol (scalar_t__*,char**,int) ; 
+
+ int LogWARN ;
+ int log_Printf (int ,char*,...) ;
+ scalar_t__ physical_SetSpeed (int ,long) ;
+ int physical_SetSync (int ) ;
+ scalar_t__ strcasecmp (scalar_t__*,char*) ;
+ long strtol (scalar_t__*,char**,int) ;
 
 __attribute__((used)) static int
 SetModemSpeed(struct cmdargs const *arg)
@@ -37,7 +37,7 @@ SetModemSpeed(struct cmdargs const *arg)
       physical_SetSync(arg->cx->physical);
       return 0;
     }
-    end = NULL;
+    end = ((void*)0);
     speed = strtol(arg->argv[arg->argn], &end, 10);
     if (*end || speed < 0) {
       log_Printf(LogWARN, "SetModemSpeed: Bad argument \"%s\"",

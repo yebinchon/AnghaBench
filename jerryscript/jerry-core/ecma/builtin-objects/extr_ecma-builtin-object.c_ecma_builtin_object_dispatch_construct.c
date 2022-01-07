@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ecma_value_t ;
-typedef  int /*<<< orphan*/  ecma_object_t ;
-typedef  scalar_t__ ecma_length_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  JERRY_ASSERT (int) ; 
- int /*<<< orphan*/  ecma_make_object_value (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ecma_op_create_object_object_arg (int /*<<< orphan*/  const) ; 
- int /*<<< orphan*/ * ecma_op_create_object_object_noarg () ; 
+
+
+
+typedef int ecma_value_t ;
+typedef int ecma_object_t ;
+typedef scalar_t__ ecma_length_t ;
+
+
+ int JERRY_ASSERT (int) ;
+ int ecma_make_object_value (int *) ;
+ int ecma_op_create_object_object_arg (int const) ;
+ int * ecma_op_create_object_object_noarg () ;
 
 ecma_value_t
-ecma_builtin_object_dispatch_construct (const ecma_value_t *arguments_list_p, /**< arguments list */
-                                        ecma_length_t arguments_list_len) /**< number of arguments */
+ecma_builtin_object_dispatch_construct (const ecma_value_t *arguments_list_p,
+                                        ecma_length_t arguments_list_len)
 {
-  JERRY_ASSERT (arguments_list_len == 0 || arguments_list_p != NULL);
+  JERRY_ASSERT (arguments_list_len == 0 || arguments_list_p != ((void*)0));
 
   if (arguments_list_len == 0)
   {

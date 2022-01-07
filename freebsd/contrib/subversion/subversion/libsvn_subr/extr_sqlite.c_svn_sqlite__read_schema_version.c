@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_sqlite__stmt_t ;
-typedef  int /*<<< orphan*/  svn_sqlite__db_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  prepare_statement (int /*<<< orphan*/ **,int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_error_trace (int /*<<< orphan*/ ) ; 
- int svn_sqlite__column_int (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_sqlite__finalize (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_sqlite__step_row (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int svn_sqlite__stmt_t ;
+typedef int svn_sqlite__db_t ;
+typedef int svn_error_t ;
+typedef int apr_pool_t ;
+
+
+ int SVN_ERR (int ) ;
+ int prepare_statement (int **,int *,char*,int *) ;
+ int * svn_error_trace (int ) ;
+ int svn_sqlite__column_int (int *,int ) ;
+ int svn_sqlite__finalize (int *) ;
+ int svn_sqlite__step_row (int *) ;
 
 svn_error_t *
 svn_sqlite__read_schema_version(int *version,

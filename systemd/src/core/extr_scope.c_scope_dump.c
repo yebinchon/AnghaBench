@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buf_runtime ;
-typedef  int /*<<< orphan*/  Unit ;
-struct TYPE_10__ {int /*<<< orphan*/  kill_context; int /*<<< orphan*/  runtime_max_usec; int /*<<< orphan*/  result; int /*<<< orphan*/  state; } ;
-typedef  TYPE_1__ Scope ;
-typedef  TYPE_1__ FILE ;
 
-/* Variables and functions */
- int FORMAT_TIMESPAN_MAX ; 
- TYPE_1__* SCOPE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  UNIT (TYPE_1__*) ; 
- int /*<<< orphan*/  USEC_PER_SEC ; 
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int /*<<< orphan*/  cgroup_context_dump (int /*<<< orphan*/ ,TYPE_1__*,char const*) ; 
- char* format_timespan (char*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (TYPE_1__*,char*,char const*,char*,char const*,char*,char const*,char*) ; 
- int /*<<< orphan*/  kill_context_dump (int /*<<< orphan*/ *,TYPE_1__*,char const*) ; 
- char* scope_result_to_string (int /*<<< orphan*/ ) ; 
- char* scope_state_to_string (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int buf_runtime ;
+typedef int Unit ;
+struct TYPE_10__ {int kill_context; int runtime_max_usec; int result; int state; } ;
+typedef TYPE_1__ Scope ;
+typedef TYPE_1__ FILE ;
+
+
+ int FORMAT_TIMESPAN_MAX ;
+ TYPE_1__* SCOPE (int *) ;
+ int UNIT (TYPE_1__*) ;
+ int USEC_PER_SEC ;
+ int assert (TYPE_1__*) ;
+ int cgroup_context_dump (int ,TYPE_1__*,char const*) ;
+ char* format_timespan (char*,int,int ,int ) ;
+ int fprintf (TYPE_1__*,char*,char const*,char*,char const*,char*,char const*,char*) ;
+ int kill_context_dump (int *,TYPE_1__*,char const*) ;
+ char* scope_result_to_string (int ) ;
+ char* scope_state_to_string (int ) ;
 
 __attribute__((used)) static void scope_dump(Unit *u, FILE *f, const char *prefix) {
         Scope *s = SCOPE(u);

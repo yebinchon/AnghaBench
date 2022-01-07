@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u8 ;
-typedef  int u16 ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int u8 ;
+typedef int u16 ;
 struct TYPE_4__ {int FBCR; int EWRR; int EWLR; int EWDR; } ;
-typedef  TYPE_1__ Vdp1 ;
+typedef TYPE_1__ Vdp1 ;
 struct TYPE_5__ {scalar_t__ manualerase; } ;
 
-/* Variables and functions */
- TYPE_2__ Vdp1External ; 
- int vdp1height ; 
- int vdp1pixelsize ; 
- int vdp1width ; 
+
+ TYPE_2__ Vdp1External ;
+ int vdp1height ;
+ int vdp1pixelsize ;
+ int vdp1width ;
 
 void VIDSoftVdp1EraseFrameBuffer(Vdp1* regs, u8 * back_framebuffer)
 {

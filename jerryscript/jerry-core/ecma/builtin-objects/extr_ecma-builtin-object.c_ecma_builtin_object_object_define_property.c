@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ecma_value_t ;
-typedef  int /*<<< orphan*/  ecma_string_t ;
-struct TYPE_5__ {int /*<<< orphan*/  flags; } ;
-typedef  TYPE_1__ ecma_property_descriptor_t ;
-typedef  int /*<<< orphan*/  ecma_object_t ;
 
-/* Variables and functions */
- scalar_t__ ECMA_IS_VALUE_ERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ECMA_PROP_IS_THROW ; 
- int /*<<< orphan*/  ecma_free_property_descriptor (TYPE_1__*) ; 
- int /*<<< orphan*/  ecma_free_value (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ecma_make_object_value (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ecma_op_object_define_own_property (int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  ecma_op_to_property_descriptor (int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  ecma_ref_object (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int ecma_value_t ;
+typedef int ecma_string_t ;
+struct TYPE_5__ {int flags; } ;
+typedef TYPE_1__ ecma_property_descriptor_t ;
+typedef int ecma_object_t ;
+
+
+ scalar_t__ ECMA_IS_VALUE_ERROR (int ) ;
+ int ECMA_PROP_IS_THROW ;
+ int ecma_free_property_descriptor (TYPE_1__*) ;
+ int ecma_free_value (int ) ;
+ int ecma_make_object_value (int *) ;
+ int ecma_op_object_define_own_property (int *,int *,TYPE_1__*) ;
+ int ecma_op_to_property_descriptor (int ,TYPE_1__*) ;
+ int ecma_ref_object (int *) ;
 
 ecma_value_t
-ecma_builtin_object_object_define_property (ecma_object_t *obj_p, /**< routine's first argument */
-                                            ecma_string_t *name_str_p, /**< routine's second argument */
-                                            ecma_value_t arg3) /**< routine's third argument */
+ecma_builtin_object_object_define_property (ecma_object_t *obj_p,
+                                            ecma_string_t *name_str_p,
+                                            ecma_value_t arg3)
 {
   ecma_property_descriptor_t prop_desc;
 

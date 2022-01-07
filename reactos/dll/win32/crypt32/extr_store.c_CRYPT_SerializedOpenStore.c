@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WINECRYPT_CERTSTORE ;
-typedef  int /*<<< orphan*/  HCRYPTPROV ;
-typedef  int /*<<< orphan*/ * HCERTSTORE ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  CRYPT_DATA_BLOB ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CERT_STORE_CREATE_NEW_FLAG ; 
- int CERT_STORE_DELETE_FLAG ; 
- int /*<<< orphan*/  CERT_STORE_PROV_MEMORY ; 
- int /*<<< orphan*/  CRYPT_ReadSerializedStoreFromBlob (int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CertCloseStore (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * CertOpenStore (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ERROR_CALL_NOT_IMPLEMENTED ; 
- int /*<<< orphan*/  SetLastError (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ *,...) ; 
+
+
+
+typedef int WINECRYPT_CERTSTORE ;
+typedef int HCRYPTPROV ;
+typedef int * HCERTSTORE ;
+typedef int DWORD ;
+typedef int CRYPT_DATA_BLOB ;
+
+
+ int CERT_STORE_CREATE_NEW_FLAG ;
+ int CERT_STORE_DELETE_FLAG ;
+ int CERT_STORE_PROV_MEMORY ;
+ int CRYPT_ReadSerializedStoreFromBlob (int const*,int *) ;
+ int CertCloseStore (int *,int ) ;
+ int * CertOpenStore (int ,int ,int ,int ,int *) ;
+ int ERROR_CALL_NOT_IMPLEMENTED ;
+ int SetLastError (int ) ;
+ int TRACE (char*,int *,...) ;
 
 __attribute__((used)) static WINECRYPT_CERTSTORE *CRYPT_SerializedOpenStore(HCRYPTPROV hCryptProv,
  DWORD dwFlags, const void *pvPara)
@@ -38,17 +38,17 @@ __attribute__((used)) static WINECRYPT_CERTSTORE *CRYPT_SerializedOpenStore(HCRY
     if (dwFlags & CERT_STORE_DELETE_FLAG)
     {
         SetLastError(ERROR_CALL_NOT_IMPLEMENTED);
-        return NULL;
+        return ((void*)0);
     }
 
     store = CertOpenStore(CERT_STORE_PROV_MEMORY, 0, 0,
-     CERT_STORE_CREATE_NEW_FLAG, NULL);
+     CERT_STORE_CREATE_NEW_FLAG, ((void*)0));
     if (store)
     {
         if (!CRYPT_ReadSerializedStoreFromBlob(data, store))
         {
             CertCloseStore(store, 0);
-            store = NULL;
+            store = ((void*)0);
         }
     }
     TRACE("returning %p\n", store);

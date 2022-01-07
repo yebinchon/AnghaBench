@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int WCHAR ;
 
-/* Variables and functions */
- int WC_ERR_INVALID_CHARS ; 
- int get_length_wcs_utf8 (int,int const*,int) ; 
- unsigned int get_surrogate_value (int const*,int) ; 
+
+
+
+typedef int WCHAR ;
+
+
+ int WC_ERR_INVALID_CHARS ;
+ int get_length_wcs_utf8 (int,int const*,int) ;
+ unsigned int get_surrogate_value (int const*,int) ;
 
 int wine_utf8_wcstombs( int flags, const WCHAR *src, int srclen, char *dst, int dstlen )
 {
@@ -28,16 +28,16 @@ int wine_utf8_wcstombs( int flags, const WCHAR *src, int srclen, char *dst, int 
         WCHAR ch = *src;
         unsigned int val;
 
-        if (ch < 0x80)  /* 0x00-0x7f: 1 byte */
+        if (ch < 0x80)
         {
-            if (!len--) return -1;  /* overflow */
+            if (!len--) return -1;
             *dst++ = ch;
             continue;
         }
 
-        if (ch < 0x800)  /* 0x80-0x7ff: 2 bytes */
+        if (ch < 0x800)
         {
-            if ((len -= 2) < 0) return -1;  /* overflow */
+            if ((len -= 2) < 0) return -1;
             dst[1] = 0x80 | (ch & 0x3f);
             ch >>= 6;
             dst[0] = 0xc0 | ch;
@@ -51,9 +51,9 @@ int wine_utf8_wcstombs( int flags, const WCHAR *src, int srclen, char *dst, int 
             continue;
         }
 
-        if (val < 0x10000)  /* 0x800-0xffff: 3 bytes */
+        if (val < 0x10000)
         {
-            if ((len -= 3) < 0) return -1;  /* overflow */
+            if ((len -= 3) < 0) return -1;
             dst[2] = 0x80 | (val & 0x3f);
             val >>= 6;
             dst[1] = 0x80 | (val & 0x3f);
@@ -61,9 +61,9 @@ int wine_utf8_wcstombs( int flags, const WCHAR *src, int srclen, char *dst, int 
             dst[0] = 0xe0 | val;
             dst += 3;
         }
-        else   /* 0x10000-0x10ffff: 4 bytes */
+        else
         {
-            if ((len -= 4) < 0) return -1;  /* overflow */
+            if ((len -= 4) < 0) return -1;
             dst[3] = 0x80 | (val & 0x3f);
             val >>= 6;
             dst[2] = 0x80 | (val & 0x3f);

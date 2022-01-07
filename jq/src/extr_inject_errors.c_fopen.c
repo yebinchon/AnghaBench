@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EIO ; 
- int /*<<< orphan*/  ENOSPC ; 
- int /*<<< orphan*/  GET_REAL (int /*<<< orphan*/ * (*) (char const*,char const*)) ; 
- int /*<<< orphan*/  error ; 
- int /*<<< orphan*/ * fail ; 
- void* fail_close ; 
- int /*<<< orphan*/ * fail_read ; 
- void* fail_write ; 
- int /*<<< orphan*/ * real_fopen (char const*,char const*) ; 
- scalar_t__ strcmp (char const*,char*) ; 
- scalar_t__ strncmp (char const*,char*,int) ; 
+
+
+
+typedef int FILE ;
+
+
+ int EIO ;
+ int ENOSPC ;
+ int GET_REAL (int * (*) (char const*,char const*)) ;
+ int error ;
+ int * fail ;
+ void* fail_close ;
+ int * fail_read ;
+ void* fail_write ;
+ int * real_fopen (char const*,char const*) ;
+ scalar_t__ strcmp (char const*,char*) ;
+ scalar_t__ strncmp (char const*,char*,int) ;
 
 FILE *fopen(const char *path, const char *mode) {
   GET_REAL(fopen);
@@ -33,7 +33,7 @@ FILE *fopen(const char *path, const char *mode) {
   if (strcmp(path, "fail_read") == 0) {
     fail = fail_read = f;
   } else if (strncmp(path, "fail_write", sizeof("fail_write") - 1) == 0) {
-    // Not that jq opens files for write anyways...
+
     fail = fail_write = f;
     if (strcmp(path, "fail_write_enospc") == 0)
       error = ENOSPC;

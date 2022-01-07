@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  scalar_t__ uint16_t ;
-typedef  int u_int ;
+
+
+
+
+typedef int uint8_t ;
+typedef scalar_t__ uint16_t ;
+typedef int u_int ;
 struct in6_addr {int dummy; } ;
-typedef  int /*<<< orphan*/  netdissect_options ;
-typedef  int /*<<< orphan*/  ident_buffer ;
+typedef int netdissect_options ;
+typedef int ident_buffer ;
 
-/* Variables and functions */
- scalar_t__ AF_INET ; 
- scalar_t__ AF_INET6 ; 
- int EXTRACT_32BITS (int /*<<< orphan*/  const*) ; 
- scalar_t__ ISIS_MASK_TLV_EXTD_IP6_IE (int) ; 
- scalar_t__ ISIS_MASK_TLV_EXTD_IP6_SUBTLV (int) ; 
- scalar_t__ ISIS_MASK_TLV_EXTD_IP_SUBTLV (int) ; 
- scalar_t__ ISIS_MASK_TLV_EXTD_IP_UPDOWN (int) ; 
- int /*<<< orphan*/  ND_PRINT (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ND_TTEST2 (int /*<<< orphan*/  const,int) ; 
- int /*<<< orphan*/  ip6addr_string (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ipaddr_string (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  isis_print_ip_reach_subtlv (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int,int,char*) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,char const*) ; 
+
+ scalar_t__ AF_INET ;
+ scalar_t__ AF_INET6 ;
+ int EXTRACT_32BITS (int const*) ;
+ scalar_t__ ISIS_MASK_TLV_EXTD_IP6_IE (int) ;
+ scalar_t__ ISIS_MASK_TLV_EXTD_IP6_SUBTLV (int) ;
+ scalar_t__ ISIS_MASK_TLV_EXTD_IP_SUBTLV (int) ;
+ scalar_t__ ISIS_MASK_TLV_EXTD_IP_UPDOWN (int) ;
+ int ND_PRINT (int *) ;
+ int ND_TTEST2 (int const,int) ;
+ int ip6addr_string (int *,int *) ;
+ int ipaddr_string (int *,int *) ;
+ int isis_print_ip_reach_subtlv (int *,int const*,int,int,char*) ;
+ int memcpy (int *,int const*,int) ;
+ int memset (int *,int ,int) ;
+ int snprintf (char*,int,char*,char const*) ;
 
 __attribute__((used)) static int
 isis_print_extd_ip_reach(netdissect_options *ndo,
                          const uint8_t *tptr, const char *ident, uint16_t afi)
 {
     char ident_buffer[20];
-    uint8_t prefix[sizeof(struct in6_addr)]; /* shared copy buffer for IPv4 and IPv6 prefixes */
+    uint8_t prefix[sizeof(struct in6_addr)];
     u_int metric, status_byte, bit_length, byte_length, sublen, processed, subtlvtype, subtlvlen;
 
     if (!ND_TTEST2(*tptr, 4))
@@ -49,7 +49,7 @@ isis_print_extd_ip_reach(netdissect_options *ndo,
     tptr+=4;
 
     if (afi == AF_INET) {
-        if (!ND_TTEST2(*tptr, 1)) /* fetch status byte */
+        if (!ND_TTEST2(*tptr, 1))
             return (0);
         status_byte=*(tptr++);
         bit_length = status_byte&0x3f;
@@ -61,7 +61,7 @@ isis_print_extd_ip_reach(netdissect_options *ndo,
         }
         processed++;
     } else if (afi == AF_INET6) {
-        if (!ND_TTEST2(*tptr, 2)) /* fetch status & prefix_len byte */
+        if (!ND_TTEST2(*tptr, 2))
             return (0);
         status_byte=*(tptr++);
         bit_length=*(tptr++);
@@ -73,14 +73,14 @@ isis_print_extd_ip_reach(netdissect_options *ndo,
         }
         processed+=2;
     } else
-        return (0); /* somebody is fooling us */
+        return (0);
 
-    byte_length = (bit_length + 7) / 8; /* prefix has variable length encoding */
+    byte_length = (bit_length + 7) / 8;
 
     if (!ND_TTEST2(*tptr, byte_length))
         return (0);
-    memset(prefix, 0, sizeof prefix);   /* clear the copy buffer */
-    memcpy(prefix,tptr,byte_length);    /* copy as much as is stored in the TLV */
+    memset(prefix, 0, sizeof prefix);
+    memcpy(prefix,tptr,byte_length);
     tptr+=byte_length;
     processed+=byte_length;
 
@@ -106,25 +106,25 @@ isis_print_extd_ip_reach(netdissect_options *ndo,
                ISIS_MASK_TLV_EXTD_IP6_IE(status_byte) ? "External" : "Internal",
                ISIS_MASK_TLV_EXTD_IP6_SUBTLV(status_byte) ? ", sub-TLVs present" : ""));
 
-    if ((afi == AF_INET  && ISIS_MASK_TLV_EXTD_IP_SUBTLV(status_byte))
+    if ((afi == AF_INET && ISIS_MASK_TLV_EXTD_IP_SUBTLV(status_byte))
      || (afi == AF_INET6 && ISIS_MASK_TLV_EXTD_IP6_SUBTLV(status_byte))
-	) {
-        /* assume that one prefix can hold more
-           than one subTLV - therefore the first byte must reflect
-           the aggregate bytecount of the subTLVs for this prefix
-        */
+ ) {
+
+
+
+
         if (!ND_TTEST2(*tptr, 1))
             return (0);
         sublen=*(tptr++);
         processed+=sublen+1;
-        ND_PRINT((ndo, " (%u)", sublen));   /* print out subTLV length */
+        ND_PRINT((ndo, " (%u)", sublen));
 
         while (sublen>0) {
             if (!ND_TTEST2(*tptr,2))
                 return (0);
             subtlvtype=*(tptr++);
             subtlvlen=*(tptr++);
-            /* prepend the indent string */
+
             snprintf(ident_buffer, sizeof(ident_buffer), "%s  ",ident);
             if (!isis_print_ip_reach_subtlv(ndo, tptr, subtlvtype, subtlvlen, ident_buffer))
                 return(0);

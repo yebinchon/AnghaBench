@@ -1,53 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int UCHAR ;
-typedef  int /*<<< orphan*/  PCHAR ;
 
-/* Variables and functions */
-#define  RCODE_FAILURE 133 
-#define  RCODE_FORMERR 132 
-#define  RCODE_NOERROR 131 
-#define  RCODE_NOTIMP 130 
-#define  RCODE_NXDOMAIN 129 
-#define  RCODE_REFUSED 128 
- int /*<<< orphan*/  RCodeFAILURE ; 
- int /*<<< orphan*/  RCodeFORMERR ; 
- int /*<<< orphan*/  RCodeNOERROR ; 
- int /*<<< orphan*/  RCodeNOTIMP ; 
- int /*<<< orphan*/  RCodeNXDOMAIN ; 
- int /*<<< orphan*/  RCodeREFUSED ; 
- int /*<<< orphan*/  RCodeReserved ; 
+
+
+
+typedef int UCHAR ;
+typedef int PCHAR ;
+ int RCodeFAILURE ;
+ int RCodeFORMERR ;
+ int RCodeNOERROR ;
+ int RCodeNOTIMP ;
+ int RCodeNXDOMAIN ;
+ int RCodeREFUSED ;
+ int RCodeReserved ;
 
 PCHAR RCodeIDtoRCodeName( UCHAR RCode )
 {
     switch( RCode & 0x0F )
     {
-    case RCODE_NOERROR:
+    case 131:
         return RCodeNOERROR;
 
-    case RCODE_FORMERR:
+    case 132:
         return RCodeFORMERR;
 
-    case RCODE_FAILURE:
+    case 133:
         return RCodeFAILURE;
 
-    case RCODE_NXDOMAIN:
+    case 129:
         return RCodeNXDOMAIN;
 
-    case RCODE_NOTIMP:
+    case 130:
         return RCodeNOTIMP;
 
-    case RCODE_REFUSED:
+    case 128:
         return RCodeREFUSED;
 
     default:

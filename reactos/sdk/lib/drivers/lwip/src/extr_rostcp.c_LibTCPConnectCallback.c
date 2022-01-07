@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_5__ ;
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_5__ ;
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_9__ {scalar_t__ Error; } ;
 struct TYPE_10__ {TYPE_4__ Connect; } ;
-struct TYPE_7__ {int /*<<< orphan*/  Port; int /*<<< orphan*/  IpAddress; TYPE_1__* Connection; } ;
+struct TYPE_7__ {int Port; int IpAddress; TYPE_1__* Connection; } ;
 struct TYPE_8__ {TYPE_2__ Connect; } ;
-struct lwip_callback_msg {int /*<<< orphan*/  Event; TYPE_5__ Output; TYPE_3__ Input; } ;
-typedef  scalar_t__ err_t ;
+struct lwip_callback_msg {int Event; TYPE_5__ Output; TYPE_3__ Input; } ;
+typedef scalar_t__ err_t ;
 struct TYPE_6__ {scalar_t__ SocketContext; } ;
-typedef  int /*<<< orphan*/  PTCP_PCB ;
+typedef int PTCP_PCB ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (void*) ; 
- scalar_t__ ERR_CLSD ; 
- scalar_t__ ERR_INPROGRESS ; 
- scalar_t__ ERR_OK ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  IO_NO_INCREMENT ; 
- int /*<<< orphan*/  InternalConnectEventHandler ; 
- int /*<<< orphan*/  InternalRecvEventHandler ; 
- int /*<<< orphan*/  InternalSendEventHandler ; 
- int /*<<< orphan*/  KeSetEvent (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ntohs (int /*<<< orphan*/ ) ; 
- scalar_t__ tcp_connect (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tcp_recv (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tcp_sent (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int ASSERT (void*) ;
+ scalar_t__ ERR_CLSD ;
+ scalar_t__ ERR_INPROGRESS ;
+ scalar_t__ ERR_OK ;
+ int FALSE ;
+ int IO_NO_INCREMENT ;
+ int InternalConnectEventHandler ;
+ int InternalRecvEventHandler ;
+ int InternalSendEventHandler ;
+ int KeSetEvent (int *,int ,int ) ;
+ int ntohs (int ) ;
+ scalar_t__ tcp_connect (int ,int ,int ,int ) ;
+ int tcp_recv (int ,int ) ;
+ int tcp_sent (int ,int ) ;
 
 __attribute__((used)) static
 void

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint16_t ;
-typedef  int /*<<< orphan*/  packet ;
-typedef  int /*<<< orphan*/  int32_t ;
-typedef  int /*<<< orphan*/  Messenger ;
 
-/* Variables and functions */
- unsigned int MAX_CRYPTO_DATA_SIZE ; 
- int /*<<< orphan*/  PACKET_ID_FILE_CONTROL ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int write_cryptpacket_id (int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint16_t ;
+typedef int packet ;
+typedef int int32_t ;
+typedef int Messenger ;
+
+
+ unsigned int MAX_CRYPTO_DATA_SIZE ;
+ int PACKET_ID_FILE_CONTROL ;
+ int memcpy (int *,int *,int ) ;
+ int write_cryptpacket_id (int const*,int ,int ,int *,int,int ) ;
 
 int send_file_control_packet(const Messenger *m, int32_t friendnumber, uint8_t send_receive, uint8_t filenumber,
                              uint8_t control_type, uint8_t *data, uint16_t data_length)

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct zip_error {int /*<<< orphan*/ * str; scalar_t__ sys_err; int /*<<< orphan*/  zip_err; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ZIP_ER_OK ; 
+
+
+
+struct zip_error {int * str; scalar_t__ sys_err; int zip_err; } ;
+
+
+ int ZIP_ER_OK ;
 
 void
 _zip_error_init(struct zip_error *err)
 {
     err->zip_err = ZIP_ER_OK;
     err->sys_err = 0;
-    err->str = NULL;
+    err->str = ((void*)0);
 }

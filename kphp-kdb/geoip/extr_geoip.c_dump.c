@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct tree {int text; unsigned int extra; int num; int level; struct tree* right; struct tree* left; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- unsigned int count (struct tree*,int) ; 
- int mode ; 
- int /*<<< orphan*/  printf (char*,int,int,...) ; 
- int /*<<< orphan*/  total_out ; 
+
+ int assert (int) ;
+ unsigned int count (struct tree*,int) ;
+ int mode ;
+ int printf (char*,int,int,...) ;
+ int total_out ;
 
 void dump (struct tree *tree, int color) {
   if (!tree) {
@@ -51,7 +51,7 @@ void dump (struct tree *tree, int color) {
       if (!mode || mode == 2) {
         printf ("%u %d %c%c\n", tree->num, tree->level, '?', '?');
       } else if (mode == 1) {
-        printf ("%u %d 00\n", tree->num, tree->level);        
+        printf ("%u %d 00\n", tree->num, tree->level);
       } else {
         assert (0);
       }

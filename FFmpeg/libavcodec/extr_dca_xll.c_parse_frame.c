@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_7__ {int frame_size; int /*<<< orphan*/  avctx; int /*<<< orphan*/  gb; } ;
-typedef  TYPE_1__ DCAXllDecoder ;
-typedef  int /*<<< orphan*/  DCAExssAsset ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- scalar_t__ ff_dca_seek_bits (int /*<<< orphan*/ *,int) ; 
- int init_get_bits8 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int parse_band_data (TYPE_1__*) ; 
- int parse_common_header (TYPE_1__*) ; 
- int parse_navi_table (TYPE_1__*) ; 
- int parse_sub_headers (TYPE_1__*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_7__ {int frame_size; int avctx; int gb; } ;
+typedef TYPE_1__ DCAXllDecoder ;
+typedef int DCAExssAsset ;
+
+
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ int av_log (int ,int ,char*) ;
+ scalar_t__ ff_dca_seek_bits (int *,int) ;
+ int init_get_bits8 (int *,int *,int) ;
+ int parse_band_data (TYPE_1__*) ;
+ int parse_common_header (TYPE_1__*) ;
+ int parse_navi_table (TYPE_1__*) ;
+ int parse_sub_headers (TYPE_1__*,int *) ;
 
 __attribute__((used)) static int parse_frame(DCAXllDecoder *s, uint8_t *data, int size, DCAExssAsset *asset)
 {

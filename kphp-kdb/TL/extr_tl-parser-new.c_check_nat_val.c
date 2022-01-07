@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct tl_var_value {long long num_val; struct tl_combinator_tree* val; } ;
-struct tl_combinator_tree {scalar_t__ type; scalar_t__ type_flags; int /*<<< orphan*/  data; } ;
+struct tl_combinator_tree {scalar_t__ type; scalar_t__ type_flags; int data; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  _T ; 
- scalar_t__ __tok ; 
- int /*<<< orphan*/  assert (int) ; 
- struct tl_combinator_tree* tl_get_var_value (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ tl_get_var_value_num (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ type_num ; 
- scalar_t__ type_num_value ; 
- scalar_t__ type_type ; 
- int /*<<< orphan*/  vkprintf (int,char*) ; 
+
+ int _T ;
+ scalar_t__ __tok ;
+ int assert (int) ;
+ struct tl_combinator_tree* tl_get_var_value (int ,int ) ;
+ scalar_t__ tl_get_var_value_num (int ,int ) ;
+ scalar_t__ type_num ;
+ scalar_t__ type_num_value ;
+ scalar_t__ type_type ;
+ int vkprintf (int,char*) ;
 
 void check_nat_val (struct tl_var_value v) {
   if (!__tok) { return; }

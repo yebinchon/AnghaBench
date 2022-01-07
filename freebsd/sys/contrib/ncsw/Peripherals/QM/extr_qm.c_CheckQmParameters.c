@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint64_t ;
-struct TYPE_5__ {scalar_t__ partCgsBase; scalar_t__ partNumOfCgs; scalar_t__ guestId; int /*<<< orphan*/  f_Exception; TYPE_1__* p_QmDriverParams; } ;
-typedef  TYPE_2__ t_Qm ;
-typedef  int /*<<< orphan*/  t_Error ;
-struct TYPE_4__ {scalar_t__ partFqidBase; scalar_t__ partNumOfFqids; int rtFramesDepth; int totalNumOfFqids; int /*<<< orphan*/  swPortalsBaseAddress; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_INVALID_VALUE ; 
- int /*<<< orphan*/  E_OK ; 
- int /*<<< orphan*/  MAJOR ; 
- int MEGABYTE ; 
- scalar_t__ NCSW_MASTER_ID ; 
- scalar_t__ QM_MAX_NUM_OF_CGS ; 
- scalar_t__ QM_MAX_NUM_OF_FQIDS ; 
- int /*<<< orphan*/  RETURN_ERROR (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  UINT_TO_PTR (int /*<<< orphan*/ ) ; 
- int XX_VirtToPhys (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint64_t ;
+struct TYPE_5__ {scalar_t__ partCgsBase; scalar_t__ partNumOfCgs; scalar_t__ guestId; int f_Exception; TYPE_1__* p_QmDriverParams; } ;
+typedef TYPE_2__ t_Qm ;
+typedef int t_Error ;
+struct TYPE_4__ {scalar_t__ partFqidBase; scalar_t__ partNumOfFqids; int rtFramesDepth; int totalNumOfFqids; int swPortalsBaseAddress; } ;
+
+
+ int E_INVALID_VALUE ;
+ int E_OK ;
+ int MAJOR ;
+ int MEGABYTE ;
+ scalar_t__ NCSW_MASTER_ID ;
+ scalar_t__ QM_MAX_NUM_OF_CGS ;
+ scalar_t__ QM_MAX_NUM_OF_FQIDS ;
+ int RETURN_ERROR (int ,int ,char*) ;
+ int UINT_TO_PTR (int ) ;
+ int XX_VirtToPhys (int ) ;
 
 __attribute__((used)) static t_Error CheckQmParameters(t_Qm *p_Qm)
 {
@@ -39,7 +39,7 @@ __attribute__((used)) static t_Error CheckQmParameters(t_Qm *p_Qm)
 
     if (p_Qm->guestId == NCSW_MASTER_ID)
     {
-        uint64_t            phyAddr;
+        uint64_t phyAddr;
 
         phyAddr = XX_VirtToPhys(UINT_TO_PTR(p_Qm->p_QmDriverParams->swPortalsBaseAddress));
 

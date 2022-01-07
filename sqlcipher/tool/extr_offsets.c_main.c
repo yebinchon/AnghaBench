@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  g ;
-struct TYPE_6__ {int bTrace; char* zErr; scalar_t__ f; int /*<<< orphan*/  iRoot; int /*<<< orphan*/  iCol; int /*<<< orphan*/  szPg; } ;
-typedef  TYPE_1__ GState ;
 
-/* Variables and functions */
- int /*<<< orphan*/  exit (int) ; 
- scalar_t__ fopen (char*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ofstRootAndColumn (TYPE_1__*,char*,char*,char*) ; 
- int /*<<< orphan*/  ofstTrace (TYPE_1__*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ofstWalkPage (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ strcmp (char*,char*) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int g ;
+struct TYPE_6__ {int bTrace; char* zErr; scalar_t__ f; int iRoot; int iCol; int szPg; } ;
+typedef TYPE_1__ GState ;
+
+
+ int exit (int) ;
+ scalar_t__ fopen (char*,char*) ;
+ int fprintf (int ,char*,char*) ;
+ int memset (TYPE_1__*,int ,int) ;
+ int ofstRootAndColumn (TYPE_1__*,char*,char*,char*) ;
+ int ofstTrace (TYPE_1__*,char*,int ) ;
+ int ofstWalkPage (TYPE_1__*,int ) ;
+ int stderr ;
+ scalar_t__ strcmp (char*,char*) ;
 
 int main(int argc, char **argv){
   GState g;
@@ -56,5 +56,5 @@ int main(int argc, char **argv){
     fprintf(stderr, "%s\n", g.zErr);
     exit(1);
   }
-  return 0; 
+  return 0;
 }

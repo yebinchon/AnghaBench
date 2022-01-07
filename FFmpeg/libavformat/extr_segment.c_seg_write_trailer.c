@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct AVFormatContext {TYPE_3__* priv_data; } ;
-struct TYPE_12__ {int /*<<< orphan*/  pb; } ;
-struct TYPE_9__ {int /*<<< orphan*/  filename; } ;
-struct TYPE_11__ {TYPE_4__* avf; TYPE_2__* segment_list_entries; TYPE_1__ cur_entry; int /*<<< orphan*/  frames; int /*<<< orphan*/  times; int /*<<< orphan*/  format_options; int /*<<< orphan*/  list_pb; scalar_t__ list; int /*<<< orphan*/  write_header_trailer; } ;
-struct TYPE_10__ {int /*<<< orphan*/  filename; struct TYPE_10__* next; } ;
-typedef  TYPE_2__ SegmentListEntry ;
-typedef  TYPE_3__ SegmentContext ;
-typedef  TYPE_4__ AVFormatContext ;
+struct TYPE_12__ {int pb; } ;
+struct TYPE_9__ {int filename; } ;
+struct TYPE_11__ {TYPE_4__* avf; TYPE_2__* segment_list_entries; TYPE_1__ cur_entry; int frames; int times; int format_options; int list_pb; scalar_t__ list; int write_header_trailer; } ;
+struct TYPE_10__ {int filename; struct TYPE_10__* next; } ;
+typedef TYPE_2__ SegmentListEntry ;
+typedef TYPE_3__ SegmentContext ;
+typedef TYPE_4__ AVFormatContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  av_dict_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  av_free (TYPE_2__*) ; 
- int /*<<< orphan*/  av_freep (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  av_opt_free (TYPE_3__*) ; 
- int av_write_trailer (TYPE_4__*) ; 
- int /*<<< orphan*/  avformat_free_context (TYPE_4__*) ; 
- int /*<<< orphan*/  close_null_ctxp (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ff_format_io_close (struct AVFormatContext*,int /*<<< orphan*/ *) ; 
- int open_null_ctx (int /*<<< orphan*/ *) ; 
- int segment_end (struct AVFormatContext*,int,int) ; 
+
+ int av_dict_free (int *) ;
+ int av_free (TYPE_2__*) ;
+ int av_freep (int *) ;
+ int av_opt_free (TYPE_3__*) ;
+ int av_write_trailer (TYPE_4__*) ;
+ int avformat_free_context (TYPE_4__*) ;
+ int close_null_ctxp (int *) ;
+ int ff_format_io_close (struct AVFormatContext*,int *) ;
+ int open_null_ctx (int *) ;
+ int segment_end (struct AVFormatContext*,int,int) ;
 
 __attribute__((used)) static int seg_write_trailer(struct AVFormatContext *s)
 {
@@ -74,6 +74,6 @@ fail:
     }
 
     avformat_free_context(oc);
-    seg->avf = NULL;
+    seg->avf = ((void*)0);
     return ret;
 }

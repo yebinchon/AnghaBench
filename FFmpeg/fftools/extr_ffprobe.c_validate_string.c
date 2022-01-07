@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char uint8_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
-struct TYPE_10__ {int string_validation; int /*<<< orphan*/  string_validation_replacement; int /*<<< orphan*/  string_validation_utf8_flags; } ;
-typedef  TYPE_1__ WriterContext ;
-struct TYPE_11__ {int /*<<< orphan*/  str; } ;
-typedef  TYPE_2__ AVBPrint ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_BPRINT_SIZE_AUTOMATIC ; 
- int /*<<< orphan*/  AV_BPRINT_SIZE_UNLIMITED ; 
- int /*<<< orphan*/  AV_LOG_DEBUG ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_LOG_WARNING ; 
-#define  WRITER_STRING_VALIDATION_FAIL 129 
- int WRITER_STRING_VALIDATION_IGNORE ; 
-#define  WRITER_STRING_VALIDATION_REPLACE 128 
- int /*<<< orphan*/  av_bprint_append_data (TYPE_2__*,char const*,int) ; 
- int /*<<< orphan*/  av_bprint_finalize (TYPE_2__*,char**) ; 
- int /*<<< orphan*/  av_bprint_init (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_bprintf (TYPE_2__*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_log (TYPE_1__*,int /*<<< orphan*/ ,char*,...) ; 
- scalar_t__ av_utf8_decode (int /*<<< orphan*/ *,char const**,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bprint_bytes (TYPE_2__*,char const*,int) ; 
- int strlen (char const*) ; 
+
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef char uint8_t ;
+typedef int uint32_t ;
+struct TYPE_10__ {int string_validation; int string_validation_replacement; int string_validation_utf8_flags; } ;
+typedef TYPE_1__ WriterContext ;
+struct TYPE_11__ {int str; } ;
+typedef TYPE_2__ AVBPrint ;
+
+
+ int AVERROR_INVALIDDATA ;
+ int AV_BPRINT_SIZE_AUTOMATIC ;
+ int AV_BPRINT_SIZE_UNLIMITED ;
+ int AV_LOG_DEBUG ;
+ int AV_LOG_ERROR ;
+ int AV_LOG_WARNING ;
+
+ int WRITER_STRING_VALIDATION_IGNORE ;
+
+ int av_bprint_append_data (TYPE_2__*,char const*,int) ;
+ int av_bprint_finalize (TYPE_2__*,char**) ;
+ int av_bprint_init (TYPE_2__*,int ,int ) ;
+ int av_bprintf (TYPE_2__*,char*,int ) ;
+ int av_log (TYPE_1__*,int ,char*,...) ;
+ scalar_t__ av_utf8_decode (int *,char const**,char const*,int ) ;
+ int bprint_bytes (TYPE_2__*,char const*,int) ;
+ int strlen (char const*) ;
 
 __attribute__((used)) static inline int validate_string(WriterContext *wctx, char **dstp, const char *src)
 {
@@ -65,14 +65,14 @@ __attribute__((used)) static inline int validate_string(WriterContext *wctx, cha
             invalid_chars_nb++;
 
             switch (wctx->string_validation) {
-            case WRITER_STRING_VALIDATION_FAIL:
+            case 129:
                 av_log(wctx, AV_LOG_ERROR,
                        "Invalid UTF-8 sequence found in string '%s'\n", src);
                 ret = AVERROR_INVALIDDATA;
                 goto end;
                 break;
 
-            case WRITER_STRING_VALIDATION_REPLACE:
+            case 128:
                 av_bprintf(&dstbuf, "%s", wctx->string_validation_replacement);
                 break;
             }
@@ -82,7 +82,7 @@ __attribute__((used)) static inline int validate_string(WriterContext *wctx, cha
             av_bprint_append_data(&dstbuf, p0, p-p0);
     }
 
-    if (invalid_chars_nb && wctx->string_validation == WRITER_STRING_VALIDATION_REPLACE) {
+    if (invalid_chars_nb && wctx->string_validation == 128) {
         av_log(wctx, AV_LOG_WARNING,
                "%d invalid UTF-8 sequence(s) found in string '%s', replaced with '%s'\n",
                invalid_chars_nb, src, wctx->string_validation_replacement);

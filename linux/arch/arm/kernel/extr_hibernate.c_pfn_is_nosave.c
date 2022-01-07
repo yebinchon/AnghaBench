@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  __nosave_begin ; 
- int /*<<< orphan*/  __nosave_end ; 
- unsigned long virt_to_pfn (int /*<<< orphan*/ *) ; 
+ int __nosave_begin ;
+ int __nosave_end ;
+ unsigned long virt_to_pfn (int *) ;
 
 int pfn_is_nosave(unsigned long pfn)
 {
-	unsigned long nosave_begin_pfn = virt_to_pfn(&__nosave_begin);
-	unsigned long nosave_end_pfn = virt_to_pfn(&__nosave_end - 1);
+ unsigned long nosave_begin_pfn = virt_to_pfn(&__nosave_begin);
+ unsigned long nosave_end_pfn = virt_to_pfn(&__nosave_end - 1);
 
-	return (pfn >= nosave_begin_pfn) && (pfn <= nosave_end_pfn);
+ return (pfn >= nosave_begin_pfn) && (pfn <= nosave_end_pfn);
 }

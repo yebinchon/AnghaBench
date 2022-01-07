@@ -1,18 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct string_index {int dummy; } ;
 struct progidredirect_data {int dummy; } ;
 struct entity_array {unsigned int num; struct entity* base; } ;
@@ -20,13 +20,13 @@ struct TYPE_4__ {unsigned int num; scalar_t__* progids; } ;
 struct TYPE_5__ {TYPE_1__ progids; scalar_t__ progid; } ;
 struct TYPE_6__ {TYPE_2__ comclass; } ;
 struct entity {scalar_t__ kind; TYPE_3__ u; } ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  GUID ;
+typedef int WCHAR ;
+typedef int GUID ;
 
-/* Variables and functions */
- scalar_t__ ACTIVATION_CONTEXT_SECTION_COM_SERVER_REDIRECTION ; 
- scalar_t__ aligned_string_len (int) ; 
- int strlenW (scalar_t__) ; 
+
+ scalar_t__ ACTIVATION_CONTEXT_SECTION_COM_SERVER_REDIRECTION ;
+ scalar_t__ aligned_string_len (int) ;
+ int strlenW (scalar_t__) ;
 
 __attribute__((used)) static void get_progid_datalen(struct entity_array *entities, unsigned int *count, unsigned int *total_len)
 {

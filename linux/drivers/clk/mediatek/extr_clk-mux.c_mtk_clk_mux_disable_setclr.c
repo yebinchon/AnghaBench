@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct mtk_clk_mux {TYPE_1__* data; int /*<<< orphan*/  regmap; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct mtk_clk_mux {TYPE_1__* data; int regmap; } ;
 struct clk_hw {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/  gate_shift; int /*<<< orphan*/  set_ofs; } ;
+struct TYPE_2__ {int gate_shift; int set_ofs; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  regmap_write (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- struct mtk_clk_mux* to_mtk_clk_mux (struct clk_hw*) ; 
+
+ int BIT (int ) ;
+ int regmap_write (int ,int ,int ) ;
+ struct mtk_clk_mux* to_mtk_clk_mux (struct clk_hw*) ;
 
 __attribute__((used)) static void mtk_clk_mux_disable_setclr(struct clk_hw *hw)
 {
-	struct mtk_clk_mux *mux = to_mtk_clk_mux(hw);
+ struct mtk_clk_mux *mux = to_mtk_clk_mux(hw);
 
-	regmap_write(mux->regmap, mux->data->set_ofs,
-			BIT(mux->data->gate_shift));
+ regmap_write(mux->regmap, mux->data->set_ofs,
+   BIT(mux->data->gate_shift));
 }

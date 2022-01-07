@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_player_t ;
-typedef  int /*<<< orphan*/  intf_thread_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int vlc_player_t ;
+typedef int intf_thread_t ;
 struct TYPE_3__ {char* psz_name; } ;
-typedef  TYPE_1__ input_item_t ;
+typedef TYPE_1__ input_item_t ;
 
-/* Variables and functions */
- char* GetDiscDevice (char*) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  intf_Eject (int /*<<< orphan*/ *,char*) ; 
- TYPE_1__* vlc_player_GetCurrentMedia (int /*<<< orphan*/ *) ; 
- int vlc_player_IsStarted (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_player_Lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_player_Unlock (int /*<<< orphan*/ *) ; 
+
+ char* GetDiscDevice (char*) ;
+ int free (char*) ;
+ int intf_Eject (int *,char*) ;
+ TYPE_1__* vlc_player_GetCurrentMedia (int *) ;
+ int vlc_player_IsStarted (int *) ;
+ int vlc_player_Lock (int *) ;
+ int vlc_player_Unlock (int *) ;
 
 __attribute__((used)) static void Eject(intf_thread_t *intf, vlc_player_t *player)
 {
     char *device, *name;
 
-    /* If there's a stream playing, we aren't allowed to eject ! */
+
     vlc_player_Lock(player);
     bool started = vlc_player_IsStarted(player);
     vlc_player_Unlock(player);
@@ -42,7 +42,7 @@ __attribute__((used)) static void Eject(intf_thread_t *intf, vlc_player_t *playe
     if (!current)
         return;
     name = current->psz_name;
-    device = name ? GetDiscDevice(name) : NULL;
+    device = name ? GetDiscDevice(name) : ((void*)0);
 
     if (device) {
         intf_Eject(intf, device);

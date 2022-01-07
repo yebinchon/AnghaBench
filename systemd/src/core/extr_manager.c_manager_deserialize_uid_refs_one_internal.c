@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  scalar_t__ uid_t ;
-typedef  char const Manager ;
-typedef  int /*<<< orphan*/  Hashmap ;
 
-/* Variables and functions */
- int DESTROY_IPC_FLAG ; 
- int PTR_TO_UINT32 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  UID_TO_PTR (scalar_t__) ; 
- int /*<<< orphan*/  UINT32_TO_PTR (int) ; 
- int /*<<< orphan*/  assert (char const*) ; 
- int hashmap_ensure_allocated (int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  hashmap_get (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int hashmap_replace (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  log_debug (char*) ; 
- int /*<<< orphan*/  log_debug_errno (int,char*) ; 
- int /*<<< orphan*/  log_oom () ; 
- int parse_uid (char const*,scalar_t__*) ; 
- int /*<<< orphan*/  trivial_hash_ops ; 
+
+
+
+typedef int uint32_t ;
+typedef scalar_t__ uid_t ;
+typedef char const Manager ;
+typedef int Hashmap ;
+
+
+ int DESTROY_IPC_FLAG ;
+ int PTR_TO_UINT32 (int ) ;
+ int UID_TO_PTR (scalar_t__) ;
+ int UINT32_TO_PTR (int) ;
+ int assert (char const*) ;
+ int hashmap_ensure_allocated (int **,int *) ;
+ int hashmap_get (int *,int ) ;
+ int hashmap_replace (int *,int ,int ) ;
+ int log_debug (char*) ;
+ int log_debug_errno (int,char*) ;
+ int log_oom () ;
+ int parse_uid (char const*,scalar_t__*) ;
+ int trivial_hash_ops ;
 
 __attribute__((used)) static void manager_deserialize_uid_refs_one_internal(
                 Manager *m,

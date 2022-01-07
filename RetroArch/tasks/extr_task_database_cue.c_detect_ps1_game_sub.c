@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int /*<<< orphan*/  intfstream_t ;
 
-/* Variables and functions */
- unsigned int MODETEST_VAL ; 
- int /*<<< orphan*/  SEEK_END ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  intfstream_read (int /*<<< orphan*/ *,...) ; 
- int intfstream_seek (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int intfstream_tell (int /*<<< orphan*/ *) ; 
- scalar_t__ isalnum (int) ; 
- scalar_t__ strncasecmp (char const*,char*,int) ; 
- void* toupper (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint8_t ;
+typedef int intfstream_t ;
+
+
+ unsigned int MODETEST_VAL ;
+ int SEEK_END ;
+ int SEEK_SET ;
+ int intfstream_read (int *,...) ;
+ int intfstream_seek (int *,int,int ) ;
+ int intfstream_tell (int *) ;
+ scalar_t__ isalnum (int) ;
+ scalar_t__ strncasecmp (char const*,char*,int) ;
+ void* toupper (int ) ;
 
 __attribute__((used)) static int detect_ps1_game_sub(intfstream_t *fp,
       char *game_id, int sub_channel_mixed)
@@ -33,7 +33,7 @@ __attribute__((used)) static int detect_ps1_game_sub(intfstream_t *fp,
    uint8_t buffer[2048 * 2];
 
    buffer[0] = '\0';
-   is_mode1  = 0;
+   is_mode1 = 0;
 
    if (intfstream_seek(fp, 0, SEEK_END) == -1)
       goto error;
@@ -53,7 +53,7 @@ __attribute__((used)) static int detect_ps1_game_sub(intfstream_t *fp,
       }
    }
 
-   skip       = is_mode1? 0: 24;
+   skip = is_mode1? 0: 24;
    frame_size = sub_channel_mixed? 2448: is_mode1? 2048: 2352;
 
    if (intfstream_seek(fp, 156 + skip + 16 * frame_size, SEEK_SET) == -1)

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ ULONG ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef scalar_t__ ULONG ;
 struct TYPE_7__ {int Flags; } ;
-struct TYPE_6__ {int /*<<< orphan*/  FatResource; int /*<<< orphan*/  (* GetNextCluster ) (TYPE_1__*,scalar_t__,int /*<<< orphan*/ ) ;} ;
-typedef  int /*<<< orphan*/  PULONG ;
-typedef  TYPE_1__* PDEVICE_EXTENSION ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
+struct TYPE_6__ {int FatResource; int (* GetNextCluster ) (TYPE_1__*,scalar_t__,int ) ;} ;
+typedef int PULONG ;
+typedef TYPE_1__* PDEVICE_EXTENSION ;
+typedef int NTSTATUS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- int /*<<< orphan*/  DPRINT (char*,TYPE_1__*,scalar_t__) ; 
- int /*<<< orphan*/  DPRINT1 (char*) ; 
- int /*<<< orphan*/  ExAcquireResourceSharedLite (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ExReleaseResourceLite (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  STATUS_FILE_CORRUPT_ERROR ; 
- int /*<<< orphan*/  TRUE ; 
- int VFAT_BREAK_ON_CORRUPTION ; 
- TYPE_3__* VfatGlobalData ; 
- int /*<<< orphan*/  stub1 (TYPE_1__*,scalar_t__,int /*<<< orphan*/ ) ; 
+
+ int ASSERT (int) ;
+ int DPRINT (char*,TYPE_1__*,scalar_t__) ;
+ int DPRINT1 (char*) ;
+ int ExAcquireResourceSharedLite (int *,int ) ;
+ int ExReleaseResourceLite (int *) ;
+ int STATUS_FILE_CORRUPT_ERROR ;
+ int TRUE ;
+ int VFAT_BREAK_ON_CORRUPTION ;
+ TYPE_3__* VfatGlobalData ;
+ int stub1 (TYPE_1__*,scalar_t__,int ) ;
 
 NTSTATUS
 GetNextCluster(

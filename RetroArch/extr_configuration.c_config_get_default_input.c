@@ -1,104 +1,81 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  enum input_driver_enum { ____Placeholder_input_driver_enum } input_driver_enum ;
 
-/* Variables and functions */
-#define  INPUT_ANDROID 152 
-#define  INPUT_COCOA 151 
-#define  INPUT_CTR 150 
- int INPUT_DEFAULT_DRIVER ; 
-#define  INPUT_DINPUT 149 
-#define  INPUT_DOS 148 
-#define  INPUT_LINUXRAW 147 
-#define  INPUT_NULL 146 
-#define  INPUT_PS2 145 
-#define  INPUT_PS3 144 
-#define  INPUT_PS4 143 
-#define  INPUT_PSP 142 
-#define  INPUT_QNX 141 
-#define  INPUT_RWEBINPUT 140 
-#define  INPUT_SDL 139 
-#define  INPUT_SDL2 138 
-#define  INPUT_SWITCH 137 
-#define  INPUT_UDEV 136 
-#define  INPUT_UWP 135 
-#define  INPUT_WAYLAND 134 
-#define  INPUT_WII 133 
-#define  INPUT_WIIU 132 
-#define  INPUT_WINRAW 131 
-#define  INPUT_X 130 
-#define  INPUT_XENON360 129 
-#define  INPUT_XINPUT 128 
 
+
+
+typedef enum input_driver_enum { ____Placeholder_input_driver_enum } input_driver_enum ;
+
+
+
+
+
+ int INPUT_DEFAULT_DRIVER ;
 const char *config_get_default_input(void)
 {
    enum input_driver_enum default_driver = INPUT_DEFAULT_DRIVER;
 
    switch (default_driver)
    {
-      case INPUT_ANDROID:
+      case 152:
          return "android";
-      case INPUT_PS4:
+      case 143:
          return "ps4";
-      case INPUT_PS3:
+      case 144:
          return "ps3";
-      case INPUT_PSP:
-#ifdef VITA
-         return "vita";
-#else
+      case 142:
+
+
+
          return "psp";
-#endif
-      case INPUT_PS2:
+
+      case 145:
          return "ps2";
-      case INPUT_CTR:
+      case 150:
          return "ctr";
-      case INPUT_SWITCH:
+      case 137:
          return "switch";
-      case INPUT_SDL:
+      case 139:
          return "sdl";
-      case INPUT_SDL2:
+      case 138:
          return "sdl2";
-      case INPUT_DINPUT:
+      case 149:
          return "dinput";
-      case INPUT_WINRAW:
+      case 131:
          return "raw";
-      case INPUT_X:
+      case 130:
          return "x";
-      case INPUT_WAYLAND:
+      case 134:
          return "wayland";
-      case INPUT_XENON360:
+      case 129:
          return "xenon360";
-      case INPUT_XINPUT:
+      case 128:
          return "xinput";
-      case INPUT_UWP:
+      case 135:
          return "uwp";
-      case INPUT_WII:
+      case 133:
          return "gx";
-      case INPUT_WIIU:
+      case 132:
          return "wiiu";
-      case INPUT_LINUXRAW:
+      case 147:
          return "linuxraw";
-      case INPUT_UDEV:
+      case 136:
          return "udev";
-      case INPUT_COCOA:
+      case 151:
          return "cocoa";
-      case INPUT_QNX:
+      case 141:
           return "qnx_input";
-      case INPUT_RWEBINPUT:
+      case 140:
           return "rwebinput";
-      case INPUT_DOS:
+      case 148:
          return "dos";
-      case INPUT_NULL:
+      case 146:
           break;
    }
 

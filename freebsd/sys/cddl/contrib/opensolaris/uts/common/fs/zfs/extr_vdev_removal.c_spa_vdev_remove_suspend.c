@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  svr_lock; int /*<<< orphan*/  svr_thread_exit; int /*<<< orphan*/  svr_cv; int /*<<< orphan*/ * svr_thread; } ;
-typedef  TYPE_1__ spa_vdev_removal_t ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int svr_lock; int svr_thread_exit; int svr_cv; int * svr_thread; } ;
+typedef TYPE_1__ spa_vdev_removal_t ;
 struct TYPE_5__ {TYPE_1__* spa_vdev_removal; } ;
-typedef  TYPE_2__ spa_t ;
+typedef TYPE_2__ spa_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  B_FALSE ; 
- int /*<<< orphan*/  B_TRUE ; 
- int /*<<< orphan*/  cv_wait (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_enter (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_exit (int /*<<< orphan*/ *) ; 
+
+ int B_FALSE ;
+ int B_TRUE ;
+ int cv_wait (int *,int *) ;
+ int mutex_enter (int *) ;
+ int mutex_exit (int *) ;
 
 void
 spa_vdev_remove_suspend(spa_t *spa)
 {
-	spa_vdev_removal_t *svr = spa->spa_vdev_removal;
+ spa_vdev_removal_t *svr = spa->spa_vdev_removal;
 
-	if (svr == NULL)
-		return;
+ if (svr == ((void*)0))
+  return;
 
-	mutex_enter(&svr->svr_lock);
-	svr->svr_thread_exit = B_TRUE;
-	while (svr->svr_thread != NULL)
-		cv_wait(&svr->svr_cv, &svr->svr_lock);
-	svr->svr_thread_exit = B_FALSE;
-	mutex_exit(&svr->svr_lock);
+ mutex_enter(&svr->svr_lock);
+ svr->svr_thread_exit = B_TRUE;
+ while (svr->svr_thread != ((void*)0))
+  cv_wait(&svr->svr_cv, &svr->svr_lock);
+ svr->svr_thread_exit = B_FALSE;
+ mutex_exit(&svr->svr_lock);
 }

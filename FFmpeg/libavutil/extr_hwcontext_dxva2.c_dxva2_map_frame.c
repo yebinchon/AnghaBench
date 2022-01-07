@@ -1,62 +1,62 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_4__ ;
-typedef  struct TYPE_16__   TYPE_3__ ;
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_17__ {scalar_t__ format; int /*<<< orphan*/ ** data; int /*<<< orphan*/ * linesize; int /*<<< orphan*/  hw_frames_ctx; } ;
-struct TYPE_16__ {scalar_t__ pBits; int /*<<< orphan*/  Pitch; } ;
-struct TYPE_15__ {int /*<<< orphan*/  Height; } ;
+
+
+typedef struct TYPE_17__ TYPE_4__ ;
+typedef struct TYPE_16__ TYPE_3__ ;
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_17__ {scalar_t__ format; int ** data; int * linesize; int hw_frames_ctx; } ;
+struct TYPE_16__ {scalar_t__ pBits; int Pitch; } ;
+struct TYPE_15__ {int Height; } ;
 struct TYPE_14__ {scalar_t__ palette_dummy; } ;
-typedef  int /*<<< orphan*/  IDirect3DSurface9 ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  TYPE_1__ DXVA2Mapping ;
-typedef  TYPE_2__ D3DSURFACE_DESC ;
-typedef  TYPE_3__ D3DLOCKED_RECT ;
-typedef  int /*<<< orphan*/  AVHWFramesContext ;
-typedef  TYPE_4__ AVFrame ;
+typedef int IDirect3DSurface9 ;
+typedef int HRESULT ;
+typedef TYPE_1__ DXVA2Mapping ;
+typedef TYPE_2__ D3DSURFACE_DESC ;
+typedef TYPE_3__ D3DLOCKED_RECT ;
+typedef int AVHWFramesContext ;
+typedef TYPE_4__ AVFrame ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_UNKNOWN ; 
- int AV_HWFRAME_MAP_OVERWRITE ; 
- int AV_HWFRAME_MAP_WRITE ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- scalar_t__ AV_PIX_FMT_PAL8 ; 
- int D3DLOCK_DISCARD ; 
- int D3DLOCK_READONLY ; 
- int /*<<< orphan*/  ENOMEM ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IDirect3DSurface9_GetDesc (int /*<<< orphan*/ *,TYPE_2__*) ; 
- int /*<<< orphan*/  IDirect3DSurface9_LockRect (int /*<<< orphan*/ *,TYPE_3__*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  IDirect3DSurface9_UnlockRect (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  av_freep (TYPE_1__**) ; 
- int /*<<< orphan*/  av_image_fill_pointers (int /*<<< orphan*/ **,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- TYPE_1__* av_mallocz (int) ; 
- int av_pix_fmt_count_planes (scalar_t__) ; 
- int /*<<< orphan*/  dxva2_unmap_frame ; 
- int ff_hwframe_map_create (int /*<<< orphan*/ ,TYPE_4__*,TYPE_4__ const*,int /*<<< orphan*/ ,TYPE_1__*) ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_UNKNOWN ;
+ int AV_HWFRAME_MAP_OVERWRITE ;
+ int AV_HWFRAME_MAP_WRITE ;
+ int AV_LOG_ERROR ;
+ scalar_t__ AV_PIX_FMT_PAL8 ;
+ int D3DLOCK_DISCARD ;
+ int D3DLOCK_READONLY ;
+ int ENOMEM ;
+ scalar_t__ FAILED (int ) ;
+ int IDirect3DSurface9_GetDesc (int *,TYPE_2__*) ;
+ int IDirect3DSurface9_LockRect (int *,TYPE_3__*,int *,int) ;
+ int IDirect3DSurface9_UnlockRect (int *) ;
+ int av_freep (TYPE_1__**) ;
+ int av_image_fill_pointers (int **,scalar_t__,int ,int *,int *) ;
+ int av_log (int *,int ,char*) ;
+ TYPE_1__* av_mallocz (int) ;
+ int av_pix_fmt_count_planes (scalar_t__) ;
+ int dxva2_unmap_frame ;
+ int ff_hwframe_map_create (int ,TYPE_4__*,TYPE_4__ const*,int ,TYPE_1__*) ;
 
 __attribute__((used)) static int dxva2_map_frame(AVHWFramesContext *ctx, AVFrame *dst, const AVFrame *src,
                            int flags)
 {
     IDirect3DSurface9 *surface = (IDirect3DSurface9*)src->data[3];
-    DXVA2Mapping      *map;
-    D3DSURFACE_DESC    surfaceDesc;
-    D3DLOCKED_RECT     LockedRect;
-    HRESULT            hr;
+    DXVA2Mapping *map;
+    D3DSURFACE_DESC surfaceDesc;
+    D3DLOCKED_RECT LockedRect;
+    HRESULT hr;
     int i, err, nb_planes;
     int lock_flags = 0;
 
@@ -73,7 +73,7 @@ __attribute__((used)) static int dxva2_map_frame(AVHWFramesContext *ctx, AVFrame
     if (flags & AV_HWFRAME_MAP_OVERWRITE)
         lock_flags |= D3DLOCK_DISCARD;
 
-    hr = IDirect3DSurface9_LockRect(surface, &LockedRect, NULL, lock_flags);
+    hr = IDirect3DSurface9_LockRect(surface, &LockedRect, ((void*)0), lock_flags);
     if (FAILED(hr)) {
         av_log(ctx, AV_LOG_ERROR, "Unable to lock DXVA2 surface\n");
         return AVERROR_UNKNOWN;

@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  bond_inet6addr_notifier ; 
- int /*<<< orphan*/  register_inet6addr_notifier (int /*<<< orphan*/ *) ; 
+ int bond_inet6addr_notifier ;
+ int register_inet6addr_notifier (int *) ;
 
 void bond_register_ipv6_notifier(void)
 {
-	register_inet6addr_notifier(&bond_inet6addr_notifier);
+ register_inet6addr_notifier(&bond_inet6addr_notifier);
 }

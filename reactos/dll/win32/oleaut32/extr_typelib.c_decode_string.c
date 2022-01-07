@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct bitstream {int length; scalar_t__ current; int /*<<< orphan*/  const* buffer; } ;
-typedef  int WORD ;
-typedef  char WCHAR ;
-struct TYPE_3__ {int /*<<< orphan*/  string_list; } ;
-typedef  int /*<<< orphan*/  const TLBString ;
-typedef  TYPE_1__ ITypeLibImpl ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  BYTE ;
-typedef  scalar_t__* BSTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CP_ACP ; 
- int /*<<< orphan*/  MultiByteToWideChar (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*,int,scalar_t__*,int) ; 
- scalar_t__* SysAllocStringLen (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  SysFreeString (scalar_t__*) ; 
- int /*<<< orphan*/  const* TLB_append_str (int /*<<< orphan*/ *,scalar_t__*) ; 
- char* lookup_code (int /*<<< orphan*/  const*,int,struct bitstream*) ; 
- int /*<<< orphan*/  strcatW (scalar_t__*,char const*) ; 
- int strlenW (scalar_t__*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct bitstream {int length; scalar_t__ current; int const* buffer; } ;
+typedef int WORD ;
+typedef char WCHAR ;
+struct TYPE_3__ {int string_list; } ;
+typedef int const TLBString ;
+typedef TYPE_1__ ITypeLibImpl ;
+typedef int DWORD ;
+typedef int BYTE ;
+typedef scalar_t__* BSTR ;
+
+
+ int CP_ACP ;
+ int MultiByteToWideChar (int ,int ,char const*,int,scalar_t__*,int) ;
+ scalar_t__* SysAllocStringLen (int *,int) ;
+ int SysFreeString (scalar_t__*) ;
+ int const* TLB_append_str (int *,scalar_t__*) ;
+ char* lookup_code (int const*,int,struct bitstream*) ;
+ int strcatW (scalar_t__*,char const*) ;
+ int strlenW (scalar_t__*) ;
 
 __attribute__((used)) static const TLBString *decode_string(const BYTE *table, const char *stream, DWORD stream_length, ITypeLibImpl *lib)
 {
@@ -39,7 +39,7 @@ __attribute__((used)) static const TLBString *decode_string(const BYTE *table, c
     BSTR buf;
     TLBString *tlbstr;
 
-    if (!stream_length) return NULL;
+    if (!stream_length) return ((void*)0);
 
     bits.buffer = (const BYTE *)stream;
     bits.length = stream_length;
@@ -50,7 +50,7 @@ __attribute__((used)) static const TLBString *decode_string(const BYTE *table, c
     table_size = *(const DWORD *)table;
     table += sizeof(DWORD);
 
-    buf = SysAllocStringLen(NULL, buf_size);
+    buf = SysAllocStringLen(((void*)0), buf_size);
     buf[0] = 0;
 
     while ((p = lookup_code(table, table_size, &bits)))

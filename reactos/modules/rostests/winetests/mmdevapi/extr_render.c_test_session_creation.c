@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WAVEFORMATEX ;
-typedef  int /*<<< orphan*/  ISimpleAudioVolume ;
-typedef  int /*<<< orphan*/  IMMDevice ;
-typedef  int /*<<< orphan*/  IAudioSessionManager ;
-typedef  int /*<<< orphan*/  IAudioClient ;
-typedef  scalar_t__ HRESULT ;
-typedef  int /*<<< orphan*/  GUID ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AUDCLNT_SHAREMODE_SHARED ; 
- int /*<<< orphan*/  AUDCLNT_STREAMFLAGS_NOPERSIST ; 
- int /*<<< orphan*/  CLSCTX_INPROC_SERVER ; 
- int /*<<< orphan*/  CoCreateGuid (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CoTaskMemFree (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FALSE ; 
- scalar_t__ IAudioClient_GetMixFormat (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- scalar_t__ IAudioClient_GetService (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- scalar_t__ IAudioClient_Initialize (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IAudioClient_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IAudioSessionManager_GetSimpleAudioVolume (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IAudioSessionManager_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IID_IAudioClient ; 
- int /*<<< orphan*/  IID_IAudioSessionManager ; 
- int /*<<< orphan*/  IID_ISimpleAudioVolume ; 
- scalar_t__ IMMDeviceEnumerator_GetDefaultAudioEndpoint (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- scalar_t__ IMMDevice_Activate (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IMMDevice_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ ISimpleAudioVolume_GetMasterVolume (int /*<<< orphan*/ *,float*) ; 
- int /*<<< orphan*/  ISimpleAudioVolume_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ ISimpleAudioVolume_SetMasterVolume (int /*<<< orphan*/ *,float,int /*<<< orphan*/ *) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/ * dev ; 
- int /*<<< orphan*/  eCapture ; 
- int /*<<< orphan*/  eMultimedia ; 
- float fabs (float) ; 
- int /*<<< orphan*/  mme ; 
- int /*<<< orphan*/  ok (int,char*,float) ; 
+
+
+
+typedef int WAVEFORMATEX ;
+typedef int ISimpleAudioVolume ;
+typedef int IMMDevice ;
+typedef int IAudioSessionManager ;
+typedef int IAudioClient ;
+typedef scalar_t__ HRESULT ;
+typedef int GUID ;
+
+
+ int AUDCLNT_SHAREMODE_SHARED ;
+ int AUDCLNT_STREAMFLAGS_NOPERSIST ;
+ int CLSCTX_INPROC_SERVER ;
+ int CoCreateGuid (int *) ;
+ int CoTaskMemFree (int *) ;
+ int FALSE ;
+ scalar_t__ IAudioClient_GetMixFormat (int *,int **) ;
+ scalar_t__ IAudioClient_GetService (int *,int *,void**) ;
+ scalar_t__ IAudioClient_Initialize (int *,int ,int ,int,int ,int *,int *) ;
+ int IAudioClient_Release (int *) ;
+ scalar_t__ IAudioSessionManager_GetSimpleAudioVolume (int *,int *,int ,int **) ;
+ int IAudioSessionManager_Release (int *) ;
+ int IID_IAudioClient ;
+ int IID_IAudioSessionManager ;
+ int IID_ISimpleAudioVolume ;
+ scalar_t__ IMMDeviceEnumerator_GetDefaultAudioEndpoint (int ,int ,int ,int **) ;
+ scalar_t__ IMMDevice_Activate (int *,int *,int ,int *,void**) ;
+ int IMMDevice_Release (int *) ;
+ scalar_t__ ISimpleAudioVolume_GetMasterVolume (int *,float*) ;
+ int ISimpleAudioVolume_Release (int *) ;
+ scalar_t__ ISimpleAudioVolume_SetMasterVolume (int *,float,int *) ;
+ scalar_t__ S_OK ;
+ int * dev ;
+ int eCapture ;
+ int eMultimedia ;
+ float fabs (float) ;
+ int mme ;
+ int ok (int,char*,float) ;
 
 __attribute__((used)) static void test_session_creation(void)
 {
@@ -62,23 +62,23 @@ __attribute__((used)) static void test_session_creation(void)
     CoCreateGuid(&session_guid);
 
     hr = IMMDevice_Activate(dev, &IID_IAudioSessionManager,
-            CLSCTX_INPROC_SERVER, NULL, (void**)&sesm);
-    ok((hr == S_OK)^(sesm == NULL), "Activate %08x &out pointer\n", hr);
+            CLSCTX_INPROC_SERVER, ((void*)0), (void**)&sesm);
+    ok((hr == S_OK)^(sesm == ((void*)0)), "Activate %08x &out pointer\n", hr);
     ok(hr == S_OK, "Activate failed: %08x\n", hr);
 
     hr = IAudioSessionManager_GetSimpleAudioVolume(sesm, &session_guid,
             FALSE, &sav);
     ok(hr == S_OK, "GetSimpleAudioVolume failed: %08x\n", hr);
 
-    hr = ISimpleAudioVolume_SetMasterVolume(sav, 0.6f, NULL);
+    hr = ISimpleAudioVolume_SetMasterVolume(sav, 0.6f, ((void*)0));
     ok(hr == S_OK, "SetMasterVolume failed: %08x\n", hr);
 
-    /* Release completely to show session persistence */
+
     ISimpleAudioVolume_Release(sav);
     IAudioSessionManager_Release(sesm);
 
-    /* test if we can create a capture audioclient in the session we just
-     * created from a SessionManager derived from a render device */
+
+
     hr = IMMDeviceEnumerator_GetDefaultAudioEndpoint(mme, eCapture,
             eMultimedia, &cap_dev);
     if(hr == S_OK){
@@ -88,8 +88,8 @@ __attribute__((used)) static void test_session_creation(void)
         IAudioSessionManager *cap_sesm;
 
         hr = IMMDevice_Activate(cap_dev, &IID_IAudioSessionManager,
-                CLSCTX_INPROC_SERVER, NULL, (void**)&cap_sesm);
-        ok((hr == S_OK)^(cap_sesm == NULL), "Activate %08x &out pointer\n", hr);
+                CLSCTX_INPROC_SERVER, ((void*)0), (void**)&cap_sesm);
+        ok((hr == S_OK)^(cap_sesm == ((void*)0)), "Activate %08x &out pointer\n", hr);
         ok(hr == S_OK, "Activate failed: %08x\n", hr);
 
         hr = IAudioSessionManager_GetSimpleAudioVolume(cap_sesm, &session_guid,
@@ -104,7 +104,7 @@ __attribute__((used)) static void test_session_creation(void)
         IAudioSessionManager_Release(cap_sesm);
 
         hr = IMMDevice_Activate(cap_dev, &IID_IAudioClient,
-                CLSCTX_INPROC_SERVER, NULL, (void**)&cap_ac);
+                CLSCTX_INPROC_SERVER, ((void*)0), (void**)&cap_ac);
         ok(hr == S_OK, "Activate failed: %08x\n", hr);
 
         IMMDevice_Release(cap_dev);
@@ -135,8 +135,8 @@ __attribute__((used)) static void test_session_creation(void)
     }
 
     hr = IMMDevice_Activate(dev, &IID_IAudioClient, CLSCTX_INPROC_SERVER,
-            NULL, (void**)&ac);
-    ok((hr == S_OK)^(ac == NULL), "Activate %08x &out pointer\n", hr);
+            ((void*)0), (void**)&ac);
+    ok((hr == S_OK)^(ac == ((void*)0)), "Activate %08x &out pointer\n", hr);
     ok(hr == S_OK, "Activation failed with %08x\n", hr);
     if(hr != S_OK)
         return;

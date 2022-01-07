@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-struct TYPE_4__ {int /*<<< orphan*/  (* diff_bytes ) (int*,int const*,int const*,int) ;} ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_4__ {int (* diff_bytes ) (int*,int const*,int const*,int) ;} ;
 struct TYPE_5__ {TYPE_1__ llvidencdsp; } ;
-typedef  TYPE_2__ HYuvContext ;
+typedef TYPE_2__ HYuvContext ;
 
-/* Variables and functions */
- int A ; 
- int B ; 
- int FFMIN (int,int) ; 
- int G ; 
- int R ; 
- int /*<<< orphan*/  stub1 (int*,int const*,int const*,int) ; 
+
+ int A ;
+ int B ;
+ int FFMIN (int,int) ;
+ int G ;
+ int R ;
+ int stub1 (int*,int const*,int const*,int) ;
 
 __attribute__((used)) static inline void sub_left_prediction_bgr32(HYuvContext *s, uint8_t *dst,
                                              const uint8_t *src, int w,
@@ -55,8 +55,8 @@ __attribute__((used)) static inline void sub_left_prediction_bgr32(HYuvContext *
 
     s->llvidencdsp.diff_bytes(dst + 32, src + 32, src + 32 - 4, w * 4 - 32);
 
-    *red   = src[(w - 1) * 4 + R];
+    *red = src[(w - 1) * 4 + R];
     *green = src[(w - 1) * 4 + G];
-    *blue  = src[(w - 1) * 4 + B];
+    *blue = src[(w - 1) * 4 + B];
     *alpha = src[(w - 1) * 4 + A];
 }

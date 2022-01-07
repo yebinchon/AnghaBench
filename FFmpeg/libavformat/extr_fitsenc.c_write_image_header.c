@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char uint8_t ;
-typedef  int /*<<< orphan*/  buffer ;
+
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef char uint8_t ;
+typedef int buffer ;
 struct TYPE_10__ {int format; int width; int height; } ;
-struct TYPE_9__ {int /*<<< orphan*/  pb; TYPE_1__* priv_data; TYPE_2__** streams; } ;
+struct TYPE_9__ {int pb; TYPE_1__* priv_data; TYPE_2__** streams; } ;
 struct TYPE_8__ {TYPE_4__* codecpar; } ;
 struct TYPE_7__ {scalar_t__ first_image; } ;
-typedef  TYPE_1__ FITSContext ;
-typedef  TYPE_2__ AVStream ;
-typedef  TYPE_3__ AVFormatContext ;
-typedef  TYPE_4__ AVCodecParameters ;
+typedef TYPE_1__ FITSContext ;
+typedef TYPE_2__ AVStream ;
+typedef TYPE_3__ AVFormatContext ;
+typedef TYPE_4__ AVCodecParameters ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
-#define  AV_PIX_FMT_GBRAP 133 
-#define  AV_PIX_FMT_GBRAP16BE 132 
-#define  AV_PIX_FMT_GBRP 131 
-#define  AV_PIX_FMT_GBRP16BE 130 
-#define  AV_PIX_FMT_GRAY16BE 129 
-#define  AV_PIX_FMT_GRAY8 128 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  avio_write (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  memcpy (char*,char*,int) ; 
- int /*<<< orphan*/  memset (char*,char,int) ; 
- int /*<<< orphan*/  write_keyword_value (TYPE_3__*,char*,int,int*) ; 
+
+ int AVERROR (int ) ;
+
+
+
+
+
+
+ int EINVAL ;
+ int avio_write (int ,char*,int) ;
+ int memcpy (char*,char*,int) ;
+ int memset (char*,char,int) ;
+ int write_keyword_value (TYPE_3__*,char*,int,int*) ;
 
 __attribute__((used)) static int write_image_header(AVFormatContext *s)
 {
@@ -48,32 +48,32 @@ __attribute__((used)) static int write_image_header(AVFormatContext *s)
     int bitpix, naxis, naxis3 = 1, bzero = 0, rgb = 0, lines_written = 0, lines_left;
 
     switch (encctx->format) {
-        case AV_PIX_FMT_GRAY8:
+        case 128:
             bitpix = 8;
             naxis = 2;
             break;
-        case AV_PIX_FMT_GRAY16BE:
+        case 129:
             bitpix = 16;
             naxis = 2;
             bzero = 32768;
             break;
-        case AV_PIX_FMT_GBRP:
-        case AV_PIX_FMT_GBRAP:
+        case 131:
+        case 133:
             bitpix = 8;
             naxis = 3;
             rgb = 1;
-            if (encctx->format == AV_PIX_FMT_GBRP) {
+            if (encctx->format == 131) {
                 naxis3 = 3;
             } else {
                 naxis3 = 4;
             }
             break;
-        case AV_PIX_FMT_GBRP16BE:
-        case AV_PIX_FMT_GBRAP16BE:
+        case 130:
+        case 132:
             bitpix = 16;
             naxis = 3;
             rgb = 1;
-            if (encctx->format == AV_PIX_FMT_GBRP16BE) {
+            if (encctx->format == 130) {
                 naxis3 = 3;
             } else {
                 naxis3 = 4;
@@ -96,13 +96,13 @@ __attribute__((used)) static int write_image_header(AVFormatContext *s)
     }
     lines_written++;
 
-    write_keyword_value(s, "BITPIX", bitpix, &lines_written);         // no of bits per pixel
-    write_keyword_value(s, "NAXIS", naxis, &lines_written);           // no of dimensions of image
-    write_keyword_value(s, "NAXIS1", encctx->width, &lines_written);   // first dimension i.e. width
-    write_keyword_value(s, "NAXIS2", encctx->height, &lines_written);  // second dimension i.e. height
+    write_keyword_value(s, "BITPIX", bitpix, &lines_written);
+    write_keyword_value(s, "NAXIS", naxis, &lines_written);
+    write_keyword_value(s, "NAXIS1", encctx->width, &lines_written);
+    write_keyword_value(s, "NAXIS2", encctx->height, &lines_written);
 
     if (rgb)
-        write_keyword_value(s, "NAXIS3", naxis3, &lines_written);     // third dimension to store RGBA planes
+        write_keyword_value(s, "NAXIS3", naxis3, &lines_written);
 
     if (!fitsctx->first_image) {
         write_keyword_value(s, "PCOUNT", 0, &lines_written);
@@ -111,11 +111,11 @@ __attribute__((used)) static int write_image_header(AVFormatContext *s)
         fitsctx->first_image = 0;
     }
 
-    /*
-     * Since FITS does not support unsigned 16 bit integers,
-     * BZERO = 32768 is used to store unsigned 16 bit integers as
-     * signed integers so that it can be read properly.
-     */
+
+
+
+
+
     if (bitpix == 16)
         write_keyword_value(s, "BZERO", bzero, &lines_written);
 

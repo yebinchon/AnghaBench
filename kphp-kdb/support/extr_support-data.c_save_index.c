@@ -1,62 +1,62 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  log_pos1_crc32; int /*<<< orphan*/  log_split_mod; int /*<<< orphan*/  log_split_max; int /*<<< orphan*/  log_split_min; int /*<<< orphan*/  log_timestamp; scalar_t__ log_pos1; int /*<<< orphan*/  created_at; int /*<<< orphan*/  magic; } ;
-typedef  TYPE_1__ index_header ;
-typedef  int /*<<< orphan*/  header ;
-struct TYPE_8__ {int /*<<< orphan*/  replica_prefix; } ;
 
-/* Variables and functions */
- int O_CREAT ; 
- int O_EXCL ; 
- int O_TRUNC ; 
- int O_WRONLY ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  SUPPORT_INDEX_MAGIC ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  binlog_disabled ; 
- scalar_t__ close (int) ; 
- int /*<<< orphan*/  dbg (char*) ; 
- TYPE_4__* engine_snapshot_replica ; 
- int /*<<< orphan*/  exit (int) ; 
- int* fd ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- scalar_t__ fsync (int) ; 
- long long get_index_header_size (TYPE_1__*) ; 
- char* get_new_snapshot_name (TYPE_4__*,scalar_t__,int /*<<< orphan*/ ) ; 
- scalar_t__ jump_log_pos ; 
- int /*<<< orphan*/  log_crc32_complement ; 
- scalar_t__ log_cur_pos () ; 
- int /*<<< orphan*/  log_last_ts ; 
- int /*<<< orphan*/  log_split_max ; 
- int /*<<< orphan*/  log_split_min ; 
- int /*<<< orphan*/  log_split_mod ; 
- long long lseek (int,long long,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int open (char*,int,int) ; 
- int /*<<< orphan*/  print_snapshot_name (char*) ; 
- int /*<<< orphan*/  relax_log_crc32 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  relax_write_log_crc32 () ; 
- scalar_t__ rename_temporary_snapshot (char*) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  time (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  unlink (char*) ; 
- scalar_t__ verbosity ; 
- int write (int,TYPE_1__*,int) ; 
+
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int log_pos1_crc32; int log_split_mod; int log_split_max; int log_split_min; int log_timestamp; scalar_t__ log_pos1; int created_at; int magic; } ;
+typedef TYPE_1__ index_header ;
+typedef int header ;
+struct TYPE_8__ {int replica_prefix; } ;
+
+
+ int O_CREAT ;
+ int O_EXCL ;
+ int O_TRUNC ;
+ int O_WRONLY ;
+ int SEEK_SET ;
+ int SUPPORT_INDEX_MAGIC ;
+ int assert (int) ;
+ int binlog_disabled ;
+ scalar_t__ close (int) ;
+ int dbg (char*) ;
+ TYPE_4__* engine_snapshot_replica ;
+ int exit (int) ;
+ int* fd ;
+ int fprintf (int ,char*,...) ;
+ scalar_t__ fsync (int) ;
+ long long get_index_header_size (TYPE_1__*) ;
+ char* get_new_snapshot_name (TYPE_4__*,scalar_t__,int ) ;
+ scalar_t__ jump_log_pos ;
+ int log_crc32_complement ;
+ scalar_t__ log_cur_pos () ;
+ int log_last_ts ;
+ int log_split_max ;
+ int log_split_min ;
+ int log_split_mod ;
+ long long lseek (int,long long,int ) ;
+ int memset (TYPE_1__*,int ,int) ;
+ int open (char*,int,int) ;
+ int print_snapshot_name (char*) ;
+ int relax_log_crc32 (int ) ;
+ int relax_write_log_crc32 () ;
+ scalar_t__ rename_temporary_snapshot (char*) ;
+ int stderr ;
+ int time (int *) ;
+ int unlink (char*) ;
+ scalar_t__ verbosity ;
+ int write (int,TYPE_1__*,int) ;
 
 int save_index (void) {
-  char *newidxname = NULL;
+  char *newidxname = ((void*)0);
 
   dbg ("save_index\n");
   if (engine_snapshot_replica) {
@@ -94,12 +94,12 @@ int save_index (void) {
   }
 
   header.magic = SUPPORT_INDEX_MAGIC;
-  header.created_at = time (NULL);
+  header.created_at = time (((void*)0));
 
   long long fCurr = get_index_header_size (&header);
   assert (lseek (fd[1], fCurr, SEEK_SET) == fCurr);
 
-  // write header
+
   header.log_pos1 = log_cur_pos();
   header.log_timestamp = log_last_ts;
   header.log_split_min = log_split_min;

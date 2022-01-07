@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ut64 ;
-struct TYPE_3__ {int /*<<< orphan*/  buf; } ;
-typedef  TYPE_1__ RBinFile ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NRO_OFFSET_MODMEMOFF ; 
- int /*<<< orphan*/  readLE32 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int ut64 ;
+struct TYPE_3__ {int buf; } ;
+typedef TYPE_1__ RBinFile ;
+
+
+ int NRO_OFFSET_MODMEMOFF ;
+ int readLE32 (int ,int ) ;
 
 __attribute__((used)) static ut64 baddr(RBinFile *bf) {
-	return bf? readLE32 (bf->buf, NRO_OFFSET_MODMEMOFF): 0;
+ return bf? readLE32 (bf->buf, NRO_OFFSET_MODMEMOFF): 0;
 }

@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_8__ ;
-typedef  struct TYPE_13__   TYPE_5__ ;
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {int /*<<< orphan*/  buffer; int /*<<< orphan*/  bottom; int /*<<< orphan*/  right; int /*<<< orphan*/  left; int /*<<< orphan*/  top; scalar_t__ serverSide; } ;
-struct TYPE_11__ {int /*<<< orphan*/  width; int /*<<< orphan*/  height; TYPE_2__ decorations; int /*<<< orphan*/  surface; } ;
-struct TYPE_12__ {TYPE_3__ wl; int /*<<< orphan*/  decorated; } ;
-typedef  TYPE_4__ _GLFWwindow ;
-struct TYPE_9__ {int /*<<< orphan*/  viewporter; } ;
+
+
+typedef struct TYPE_14__ TYPE_8__ ;
+typedef struct TYPE_13__ TYPE_5__ ;
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_10__ {int buffer; int bottom; int right; int left; int top; scalar_t__ serverSide; } ;
+struct TYPE_11__ {int width; int height; TYPE_2__ decorations; int surface; } ;
+struct TYPE_12__ {TYPE_3__ wl; int decorated; } ;
+typedef TYPE_4__ _GLFWwindow ;
+struct TYPE_9__ {int viewporter; } ;
 struct TYPE_14__ {TYPE_1__ wl; } ;
 struct TYPE_13__ {int member_0; int member_1; unsigned char* member_2; } ;
-typedef  TYPE_5__ GLFWimage ;
-typedef  int GLFWbool ;
+typedef TYPE_5__ GLFWimage ;
+typedef int GLFWbool ;
 
-/* Variables and functions */
- int /*<<< orphan*/  _GLFW_DECORATION_HORIZONTAL ; 
- int /*<<< orphan*/  _GLFW_DECORATION_TOP ; 
- int /*<<< orphan*/  _GLFW_DECORATION_WIDTH ; 
- TYPE_8__ _glfw ; 
- int /*<<< orphan*/  createDecoration (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  createShmBuffer (TYPE_5__ const*) ; 
+
+ int _GLFW_DECORATION_HORIZONTAL ;
+ int _GLFW_DECORATION_TOP ;
+ int _GLFW_DECORATION_WIDTH ;
+ TYPE_8__ _glfw ;
+ int createDecoration (int *,int ,int ,int,int ,int ,int ,int ) ;
+ int createShmBuffer (TYPE_5__ const*) ;
 
 __attribute__((used)) static void createDecorations(_GLFWwindow* window)
 {

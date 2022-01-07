@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  bottom; int /*<<< orphan*/  right; int /*<<< orphan*/  top; int /*<<< orphan*/  left; } ;
-typedef  TYPE_1__ RECT ;
-typedef  int /*<<< orphan*/  INT ;
-typedef  int /*<<< orphan*/  HRGN ;
-typedef  int /*<<< orphan*/  HDC ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLIPRGN ; 
- int /*<<< orphan*/  CreateCompatibleDC (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CreateRectRgn (int,int,int,int) ; 
- int /*<<< orphan*/  DeleteDC (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DeleteObject (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetRandomRgn (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetRgnBox (int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  MoveWindow (int /*<<< orphan*/ ,int,int,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SelectClipRgn (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ghdcWindow ; 
- int /*<<< orphan*/  ghwnd ; 
- int /*<<< orphan*/  ok_int (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ok_long (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  printf (char*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int bottom; int right; int top; int left; } ;
+typedef TYPE_1__ RECT ;
+typedef int INT ;
+typedef int HRGN ;
+typedef int HDC ;
+
+
+ int CLIPRGN ;
+ int CreateCompatibleDC (int ) ;
+ int CreateRectRgn (int,int,int,int) ;
+ int DeleteDC (int ) ;
+ int DeleteObject (int ) ;
+ int GetRandomRgn (int ,int ,int ) ;
+ int GetRgnBox (int ,TYPE_1__*) ;
+ int MoveWindow (int ,int,int,int,int,int ) ;
+ int SelectClipRgn (int ,int ) ;
+ int ghdcWindow ;
+ int ghwnd ;
+ int ok_int (int ,int) ;
+ int ok_long (int ,int) ;
+ int printf (char*) ;
 
 void Test_GetRandomRgn_CLIPRGN()
 {

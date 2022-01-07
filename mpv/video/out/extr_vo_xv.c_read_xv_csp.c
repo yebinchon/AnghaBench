@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct xvctx {scalar_t__ cached_csp; int /*<<< orphan*/  xv_port; } ;
+
+
+
+
+struct xvctx {scalar_t__ cached_csp; int xv_port; } ;
 struct vo {struct xvctx* priv; } ;
 
-/* Variables and functions */
- scalar_t__ MP_CSP_BT_601 ; 
- scalar_t__ MP_CSP_BT_709 ; 
- scalar_t__ xv_get_eq (struct vo*,int /*<<< orphan*/ ,char*,int*) ; 
+
+ scalar_t__ MP_CSP_BT_601 ;
+ scalar_t__ MP_CSP_BT_709 ;
+ scalar_t__ xv_get_eq (struct vo*,int ,char*,int*) ;
 
 __attribute__((used)) static void read_xv_csp(struct vo *vo)
 {

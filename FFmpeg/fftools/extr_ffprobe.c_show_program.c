@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WriterContext ;
-struct TYPE_6__ {int id; int program_num; int nb_stream_indexes; int pmt_pid; int pcr_pid; size_t* stream_index; int /*<<< orphan*/  metadata; int /*<<< orphan*/  end_time; int /*<<< orphan*/  start_time; } ;
-struct TYPE_5__ {int /*<<< orphan*/ * streams; int /*<<< orphan*/ * fmt_ctx; } ;
-typedef  TYPE_1__ InputFile ;
-typedef  TYPE_2__ AVProgram ;
-typedef  int /*<<< orphan*/  AVFormatContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_TIME_BASE_Q ; 
- int /*<<< orphan*/  SECTION_ID_PROGRAM ; 
- int /*<<< orphan*/  SECTION_ID_PROGRAM_STREAMS ; 
- int /*<<< orphan*/  SECTION_ID_PROGRAM_TAGS ; 
- scalar_t__ do_show_program_tags ; 
- int /*<<< orphan*/  print_int (char*,int) ; 
- int /*<<< orphan*/  print_time (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  print_ts (char*,int /*<<< orphan*/ ) ; 
- scalar_t__* selected_streams ; 
- int show_stream (int /*<<< orphan*/ *,int /*<<< orphan*/ *,size_t,int /*<<< orphan*/ *,int) ; 
- int show_tags (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  writer_print_section_footer (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  writer_print_section_header (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int WriterContext ;
+struct TYPE_6__ {int id; int program_num; int nb_stream_indexes; int pmt_pid; int pcr_pid; size_t* stream_index; int metadata; int end_time; int start_time; } ;
+struct TYPE_5__ {int * streams; int * fmt_ctx; } ;
+typedef TYPE_1__ InputFile ;
+typedef TYPE_2__ AVProgram ;
+typedef int AVFormatContext ;
+
+
+ int AV_TIME_BASE_Q ;
+ int SECTION_ID_PROGRAM ;
+ int SECTION_ID_PROGRAM_STREAMS ;
+ int SECTION_ID_PROGRAM_TAGS ;
+ scalar_t__ do_show_program_tags ;
+ int print_int (char*,int) ;
+ int print_time (char*,int ,int *) ;
+ int print_ts (char*,int ) ;
+ scalar_t__* selected_streams ;
+ int show_stream (int *,int *,size_t,int *,int) ;
+ int show_tags (int *,int ,int ) ;
+ int writer_print_section_footer (int *) ;
+ int writer_print_section_header (int *,int ) ;
 
 __attribute__((used)) static int show_program(WriterContext *w, InputFile *ifile, AVProgram *program)
 {

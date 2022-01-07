@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  seq; int /*<<< orphan*/  ms; } ;
-typedef  TYPE_1__ streamID ;
-typedef  int /*<<< orphan*/  sds ;
-typedef  int /*<<< orphan*/  rio ;
 
-/* Variables and functions */
- int rioWriteBulkString (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sdscatfmt (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sdsempty () ; 
- int /*<<< orphan*/  sdsfree (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sdslen (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int seq; int ms; } ;
+typedef TYPE_1__ streamID ;
+typedef int sds ;
+typedef int rio ;
+
+
+ int rioWriteBulkString (int *,int ,int ) ;
+ int sdscatfmt (int ,char*,int ,int ) ;
+ int sdsempty () ;
+ int sdsfree (int ) ;
+ int sdslen (int ) ;
 
 int rioWriteBulkStreamID(rio *r,streamID *id) {
     int retval;

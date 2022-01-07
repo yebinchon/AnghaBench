@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vm_offset_t ;
-typedef  size_t uint64_t ;
-typedef  size_t uint32_t ;
-typedef  scalar_t__ ppnum_t ;
-typedef  int /*<<< orphan*/  pmap_t ;
-typedef  int boolean_t ;
 
-/* Variables and functions */
- size_t MIN (size_t,size_t) ; 
- size_t PAGE_MASK ; 
- size_t PAGE_SIZE ; 
- int /*<<< orphan*/  bcopy_phys (size_t,size_t,size_t) ; 
- size_t kvtophys (int /*<<< orphan*/ ) ; 
- scalar_t__ pmap_find_phys (int /*<<< orphan*/ ,size_t) ; 
- scalar_t__ pmap_valid_page (scalar_t__) ; 
- size_t ptoa_64 (scalar_t__) ; 
+
+
+
+typedef int vm_offset_t ;
+typedef size_t uint64_t ;
+typedef size_t uint32_t ;
+typedef scalar_t__ ppnum_t ;
+typedef int pmap_t ;
+typedef int boolean_t ;
+
+
+ size_t MIN (size_t,size_t) ;
+ size_t PAGE_MASK ;
+ size_t PAGE_SIZE ;
+ int bcopy_phys (size_t,size_t,size_t) ;
+ size_t kvtophys (int ) ;
+ scalar_t__ pmap_find_phys (int ,size_t) ;
+ scalar_t__ pmap_valid_page (scalar_t__) ;
+ size_t ptoa_64 (scalar_t__) ;
 
 __attribute__((used)) static boolean_t
 debug_copyin(pmap_t p, uint64_t uaddr, void *dest, size_t size)

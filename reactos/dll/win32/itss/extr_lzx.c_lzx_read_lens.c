@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct lzx_bits {int bb; int bl; int* ip; } ;
 struct LZXstate {int dummy; } ;
-typedef  int /*<<< orphan*/  UWORD ;
-typedef  int ULONG ;
-typedef  int UBYTE ;
+typedef int UWORD ;
+typedef int ULONG ;
+typedef int UBYTE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BUILD_TABLE (int /*<<< orphan*/ ) ; 
- int* LENTABLE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PRETREE ; 
- int /*<<< orphan*/  READ_BITS (int,int) ; 
- int /*<<< orphan*/  READ_HUFFSYM (int /*<<< orphan*/ ,int) ; 
+
+ int BUILD_TABLE (int ) ;
+ int* LENTABLE (int ) ;
+ int PRETREE ;
+ int READ_BITS (int,int) ;
+ int READ_HUFFSYM (int ,int) ;
 
 __attribute__((used)) static int lzx_read_lens(struct LZXstate *pState, UBYTE *lens, ULONG first, ULONG last, struct lzx_bits *lb) {
     ULONG i,j, x,y;

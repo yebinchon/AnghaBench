@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct demuxer {struct demux_internal* in; } ;
-struct demux_internal {int threading; int thread_terminate; int /*<<< orphan*/  thread; int /*<<< orphan*/  lock; int /*<<< orphan*/  wakeup; struct demuxer* d_user; } ;
+struct demux_internal {int threading; int thread_terminate; int thread; int lock; int wakeup; struct demuxer* d_user; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  pthread_cond_signal (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_join (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
+
+ int assert (int) ;
+ int pthread_cond_signal (int *) ;
+ int pthread_join (int ,int *) ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
 
 void demux_stop_thread(struct demuxer *demuxer)
 {
@@ -27,11 +27,11 @@ void demux_stop_thread(struct demuxer *demuxer)
 
     if (in->threading) {
         pthread_mutex_lock(&in->lock);
-        in->thread_terminate = true;
+        in->thread_terminate = 1;
         pthread_cond_signal(&in->wakeup);
         pthread_mutex_unlock(&in->lock);
-        pthread_join(in->thread, NULL);
-        in->threading = false;
-        in->thread_terminate = false;
+        pthread_join(in->thread, ((void*)0));
+        in->threading = 0;
+        in->thread_terminate = 0;
     }
 }

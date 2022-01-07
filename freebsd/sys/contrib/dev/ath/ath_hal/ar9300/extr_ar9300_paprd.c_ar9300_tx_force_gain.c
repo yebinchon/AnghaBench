@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u_int32_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u_int32_t ;
 struct ath_hal {int dummy; } ;
 struct TYPE_2__ {int* paprd_gain_table_entries; } ;
 
-/* Variables and functions */
- TYPE_1__* AH9300 (struct ath_hal*) ; 
- int /*<<< orphan*/  AR_PHY_TPC_1 ; 
- int /*<<< orphan*/  AR_PHY_TPC_1_FORCED_DAC_GAIN ; 
- int /*<<< orphan*/  AR_PHY_TPC_1_FORCE_DAC_GAIN ; 
- int /*<<< orphan*/  AR_PHY_TX_FORCED_GAIN ; 
- int /*<<< orphan*/  AR_PHY_TX_FORCED_GAIN_FORCED_ENABLE_PAL ; 
- int /*<<< orphan*/  AR_PHY_TX_FORCED_GAIN_FORCED_PADRVGNA ; 
- int /*<<< orphan*/  AR_PHY_TX_FORCED_GAIN_FORCED_PADRVGNB ; 
- int /*<<< orphan*/  AR_PHY_TX_FORCED_GAIN_FORCED_PADRVGNC ; 
- int /*<<< orphan*/  AR_PHY_TX_FORCED_GAIN_FORCED_PADRVGND ; 
- int /*<<< orphan*/  AR_PHY_TX_FORCED_GAIN_FORCED_TXBB1DBGAIN ; 
- int /*<<< orphan*/  AR_PHY_TX_FORCED_GAIN_FORCED_TXBB6DBGAIN ; 
- int /*<<< orphan*/  AR_PHY_TX_FORCED_GAIN_FORCED_TXMXRGAIN ; 
- int /*<<< orphan*/  AR_PHY_TX_FORCED_GAIN_FORCE_TX_GAIN ; 
- int /*<<< orphan*/  OS_REG_RMW_FIELD_ALT (struct ath_hal*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+ TYPE_1__* AH9300 (struct ath_hal*) ;
+ int AR_PHY_TPC_1 ;
+ int AR_PHY_TPC_1_FORCED_DAC_GAIN ;
+ int AR_PHY_TPC_1_FORCE_DAC_GAIN ;
+ int AR_PHY_TX_FORCED_GAIN ;
+ int AR_PHY_TX_FORCED_GAIN_FORCED_ENABLE_PAL ;
+ int AR_PHY_TX_FORCED_GAIN_FORCED_PADRVGNA ;
+ int AR_PHY_TX_FORCED_GAIN_FORCED_PADRVGNB ;
+ int AR_PHY_TX_FORCED_GAIN_FORCED_PADRVGNC ;
+ int AR_PHY_TX_FORCED_GAIN_FORCED_PADRVGND ;
+ int AR_PHY_TX_FORCED_GAIN_FORCED_TXBB1DBGAIN ;
+ int AR_PHY_TX_FORCED_GAIN_FORCED_TXBB6DBGAIN ;
+ int AR_PHY_TX_FORCED_GAIN_FORCED_TXMXRGAIN ;
+ int AR_PHY_TX_FORCED_GAIN_FORCE_TX_GAIN ;
+ int OS_REG_RMW_FIELD_ALT (struct ath_hal*,int ,int ,int) ;
 
 __attribute__((used)) static void ar9300_tx_force_gain(struct ath_hal *ah, unsigned int gain_index)
 {
@@ -38,7 +38,7 @@ __attribute__((used)) static void ar9300_tx_force_gain(struct ath_hal *ah, unsig
     int padrvgn_a, padrvgn_b, padrvgn_c, padrvgn_d;
     u_int32_t *gain_table_entries = AH9300(ah)->paprd_gain_table_entries;
 
-    /*u_int32_t *gain_vs_table_index = ah->paprd_gain_table_index;*/
+
     selected_gain_entry = gain_table_entries[gain_index];
     txbb1dbgain = selected_gain_entry & 0x7;
     txbb6dbgain = (selected_gain_entry >> 3) & 0x3;

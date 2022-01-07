@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct ECPGtype {int dummy; } ;
-struct ECPGstruct_member {struct ECPGstruct_member* next; struct ECPGtype* type; int /*<<< orphan*/  name; } ;
+struct ECPGstruct_member {struct ECPGstruct_member* next; struct ECPGtype* type; int name; } ;
 
-/* Variables and functions */
- scalar_t__ mm_alloc (int) ; 
- int /*<<< orphan*/  mm_strdup (char const*) ; 
+
+ scalar_t__ mm_alloc (int) ;
+ int mm_strdup (char const*) ;
 
 void
 ECPGmake_struct_member(const char *name, struct ECPGtype *type, struct ECPGstruct_member **start)
 {
-	struct ECPGstruct_member *ptr,
-			   *ne =
-	(struct ECPGstruct_member *) mm_alloc(sizeof(struct ECPGstruct_member));
+ struct ECPGstruct_member *ptr,
+      *ne =
+ (struct ECPGstruct_member *) mm_alloc(sizeof(struct ECPGstruct_member));
 
-	ne->name = mm_strdup(name);
-	ne->type = type;
-	ne->next = NULL;
+ ne->name = mm_strdup(name);
+ ne->type = type;
+ ne->next = ((void*)0);
 
-	for (ptr = *start; ptr && ptr->next; ptr = ptr->next);
+ for (ptr = *start; ptr && ptr->next; ptr = ptr->next);
 
-	if (ptr)
-		ptr->next = ne;
-	else
-		*start = ne;
+ if (ptr)
+  ptr->next = ne;
+ else
+  *start = ne;
 }

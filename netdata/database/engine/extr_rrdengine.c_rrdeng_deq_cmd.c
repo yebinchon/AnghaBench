@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {size_t head; size_t tail; struct rrdeng_cmd* cmd_array; } ;
-struct rrdengine_worker_config {unsigned int queue_size; int /*<<< orphan*/  cmd_mutex; int /*<<< orphan*/  cmd_cond; TYPE_1__ cmd_queue; } ;
-struct rrdeng_cmd {int /*<<< orphan*/  opcode; } ;
+struct rrdengine_worker_config {unsigned int queue_size; int cmd_mutex; int cmd_cond; TYPE_1__ cmd_queue; } ;
+struct rrdeng_cmd {int opcode; } ;
 
-/* Variables and functions */
- int RRDENG_CMD_Q_MAX_SIZE ; 
- int /*<<< orphan*/  RRDENG_NOOP ; 
- int /*<<< orphan*/  uv_cond_signal (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  uv_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  uv_mutex_unlock (int /*<<< orphan*/ *) ; 
+
+ int RRDENG_CMD_Q_MAX_SIZE ;
+ int RRDENG_NOOP ;
+ int uv_cond_signal (int *) ;
+ int uv_mutex_lock (int *) ;
+ int uv_mutex_unlock (int *) ;
 
 struct rrdeng_cmd rrdeng_deq_cmd(struct rrdengine_worker_config* wc)
 {
@@ -32,7 +32,7 @@ struct rrdeng_cmd rrdeng_deq_cmd(struct rrdengine_worker_config* wc)
     if (queue_size == 0) {
         ret.opcode = RRDENG_NOOP;
     } else {
-        /* dequeue command */
+
         ret = wc->cmd_queue.cmd_array[wc->cmd_queue.head];
         if (queue_size == 1) {
             wc->cmd_queue.head = wc->cmd_queue.tail = 0;
@@ -42,7 +42,7 @@ struct rrdeng_cmd rrdeng_deq_cmd(struct rrdengine_worker_config* wc)
         }
         wc->queue_size = queue_size - 1;
 
-        /* wake up producers */
+
         uv_cond_signal(&wc->cmd_cond);
     }
     uv_mutex_unlock(&wc->cmd_mutex);

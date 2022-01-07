@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int virtualCursorPosX; int virtualCursorPosY; } ;
-typedef  TYPE_1__ _GLFWwindow ;
-typedef  int /*<<< orphan*/  MirPointerEvent ;
+typedef TYPE_1__ _GLFWwindow ;
+typedef int MirPointerEvent ;
 
-/* Variables and functions */
- int /*<<< orphan*/  _glfwInputCursorPos (TYPE_1__*,int,int) ; 
- int /*<<< orphan*/  _glfwInputScroll (TYPE_1__*,int,int) ; 
- int /*<<< orphan*/  mir_pointer_axis_hscroll ; 
- int /*<<< orphan*/  mir_pointer_axis_vscroll ; 
- int /*<<< orphan*/  mir_pointer_axis_x ; 
- int /*<<< orphan*/  mir_pointer_axis_y ; 
- int mir_pointer_event_axis_value (int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
+
+ int _glfwInputCursorPos (TYPE_1__*,int,int) ;
+ int _glfwInputScroll (TYPE_1__*,int,int) ;
+ int mir_pointer_axis_hscroll ;
+ int mir_pointer_axis_vscroll ;
+ int mir_pointer_axis_x ;
+ int mir_pointer_axis_y ;
+ int mir_pointer_event_axis_value (int const*,int ) ;
 
 __attribute__((used)) static void handlePointerMotion(_GLFWwindow* window,
                                 const MirPointerEvent* pointer_event)
 {
     int current_x = window->virtualCursorPosX;
     int current_y = window->virtualCursorPosY;
-    int x  = mir_pointer_event_axis_value(pointer_event, mir_pointer_axis_x);
-    int y  = mir_pointer_event_axis_value(pointer_event, mir_pointer_axis_y);
+    int x = mir_pointer_event_axis_value(pointer_event, mir_pointer_axis_x);
+    int y = mir_pointer_event_axis_value(pointer_event, mir_pointer_axis_y);
     int dx = mir_pointer_event_axis_value(pointer_event, mir_pointer_axis_hscroll);
     int dy = mir_pointer_event_axis_value(pointer_event, mir_pointer_axis_vscroll);
 

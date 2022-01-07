@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int ULONG ;
-struct TYPE_5__ {unsigned int vertex_count; unsigned int face_count; unsigned int vertex_per_face; int /*<<< orphan*/ * emissive; int /*<<< orphan*/ * specular; int /*<<< orphan*/  power; int /*<<< orphan*/  color; int /*<<< orphan*/  face_data_size; } ;
-struct TYPE_4__ {int /*<<< orphan*/  dSize; int /*<<< orphan*/  lpMemory; } ;
-typedef  int /*<<< orphan*/  IDirect3DRMTexture ;
-typedef  int /*<<< orphan*/  IDirect3DRMMesh ;
-typedef  int /*<<< orphan*/  IDirect3DRMMaterial ;
-typedef  int /*<<< orphan*/  IDirect3DRM ;
-typedef  int HRESULT ;
-typedef  int /*<<< orphan*/  GUID ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  int /*<<< orphan*/  D3DVALUE ;
-typedef  TYPE_1__ D3DRMLOADMEMORY ;
-typedef  int /*<<< orphan*/  D3DCOLOR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D3DRMLOAD_FROMMEMORY ; 
- int D3DRM_OK ; 
- int Direct3DRMCreate (int /*<<< orphan*/ **) ; 
- int IDirect3DRMMaterial_GetEmissive (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IDirect3DRMMaterial_GetPower (int /*<<< orphan*/ *) ; 
- int IDirect3DRMMaterial_GetSpecular (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IDirect3DRMMaterial_Release (int /*<<< orphan*/ *) ; 
- int IDirect3DRMMeshBuilder_CreateMesh (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IDirect3DRMMeshBuilder_Release (int /*<<< orphan*/ ) ; 
- int IDirect3DRMMesh_GetGroup (int /*<<< orphan*/ *,int,unsigned int*,unsigned int*,unsigned int*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IDirect3DRMMesh_GetGroupColor (int /*<<< orphan*/ *,int) ; 
- int IDirect3DRMMesh_GetGroupCount (int /*<<< orphan*/ *) ; 
- int IDirect3DRMMesh_GetGroupMaterial (int /*<<< orphan*/ *,int,int /*<<< orphan*/ **) ; 
- int IDirect3DRMMesh_GetGroupTexture (int /*<<< orphan*/ *,int,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IDirect3DRMMesh_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IDirect3DRMTexture_Release (int /*<<< orphan*/ *) ; 
- int IDirect3DRM_Load (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ **,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IDirect3DRM_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  const IID_IDirect3DRMFrame ; 
- int /*<<< orphan*/  data_frame_mesh_materials ; 
- TYPE_2__* groups ; 
- int /*<<< orphan*/  mesh_builder ; 
- int /*<<< orphan*/  object_load_callback_frame ; 
- int /*<<< orphan*/  ok (int,char*,int,...) ; 
- int /*<<< orphan*/  strlen (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int ULONG ;
+struct TYPE_5__ {unsigned int vertex_count; unsigned int face_count; unsigned int vertex_per_face; int * emissive; int * specular; int power; int color; int face_data_size; } ;
+struct TYPE_4__ {int dSize; int lpMemory; } ;
+typedef int IDirect3DRMTexture ;
+typedef int IDirect3DRMMesh ;
+typedef int IDirect3DRMMaterial ;
+typedef int IDirect3DRM ;
+typedef int HRESULT ;
+typedef int GUID ;
+typedef int DWORD ;
+typedef int D3DVALUE ;
+typedef TYPE_1__ D3DRMLOADMEMORY ;
+typedef int D3DCOLOR ;
+
+
+ int D3DRMLOAD_FROMMEMORY ;
+ int D3DRM_OK ;
+ int Direct3DRMCreate (int **) ;
+ int IDirect3DRMMaterial_GetEmissive (int *,int *,int *,int *) ;
+ int IDirect3DRMMaterial_GetPower (int *) ;
+ int IDirect3DRMMaterial_GetSpecular (int *,int *,int *,int *) ;
+ int IDirect3DRMMaterial_Release (int *) ;
+ int IDirect3DRMMeshBuilder_CreateMesh (int ,int **) ;
+ int IDirect3DRMMeshBuilder_Release (int ) ;
+ int IDirect3DRMMesh_GetGroup (int *,int,unsigned int*,unsigned int*,unsigned int*,int *,int *) ;
+ int IDirect3DRMMesh_GetGroupColor (int *,int) ;
+ int IDirect3DRMMesh_GetGroupCount (int *) ;
+ int IDirect3DRMMesh_GetGroupMaterial (int *,int,int **) ;
+ int IDirect3DRMMesh_GetGroupTexture (int *,int,int **) ;
+ int IDirect3DRMMesh_Release (int *) ;
+ int IDirect3DRMTexture_Release (int *) ;
+ int IDirect3DRM_Load (int *,TYPE_1__*,int *,int **,int,int ,int ,void*,int *,int *,int *) ;
+ int IDirect3DRM_Release (int *) ;
+ int const IID_IDirect3DRMFrame ;
+ int data_frame_mesh_materials ;
+ TYPE_2__* groups ;
+ int mesh_builder ;
+ int object_load_callback_frame ;
+ int ok (int,char*,int,...) ;
+ int strlen (int ) ;
 
 __attribute__((used)) static void test_frame_mesh_materials(void)
 {
@@ -70,7 +70,7 @@ __attribute__((used)) static void test_frame_mesh_materials(void)
 
     info.lpMemory = data_frame_mesh_materials;
     info.dSize = strlen(data_frame_mesh_materials);
-    hr = IDirect3DRM_Load(d3drm, &info, NULL, (GUID**)req_refiids, 1, D3DRMLOAD_FROMMEMORY, object_load_callback_frame, (void*)0xdeadbeef, NULL, NULL, NULL);
+    hr = IDirect3DRM_Load(d3drm, &info, ((void*)0), (GUID**)req_refiids, 1, D3DRMLOAD_FROMMEMORY, object_load_callback_frame, (void*)0xdeadbeef, ((void*)0), ((void*)0), ((void*)0));
     ok(hr == D3DRM_OK, "Cannot load data (hr = %x)\n", hr);
 
     hr = IDirect3DRMMeshBuilder_CreateMesh(mesh_builder, &mesh);
@@ -86,7 +86,7 @@ __attribute__((used)) static void test_frame_mesh_materials(void)
         unsigned vertex_count, face_count, vertex_per_face;
         DWORD face_data_size;
 
-        hr = IDirect3DRMMesh_GetGroup(mesh, i, &vertex_count, &face_count, &vertex_per_face, &face_data_size, NULL);
+        hr = IDirect3DRMMesh_GetGroup(mesh, i, &vertex_count, &face_count, &vertex_per_face, &face_data_size, ((void*)0));
         ok(hr == D3DRM_OK, "Group %d: IDirect3DRMMesh_GetGroup returned %x\n", i, hr);
         ok(vertex_count == groups[i].vertex_count, "Group %d: Wrong vertex count %d, expected %d\n", i, vertex_count, groups[i].vertex_count);
         ok(face_count == groups[i].face_count, "Group %d: Wrong face count %d; expected %d\n", i, face_count, groups[i].face_count);
@@ -98,9 +98,9 @@ __attribute__((used)) static void test_frame_mesh_materials(void)
 
         hr = IDirect3DRMMesh_GetGroupMaterial(mesh, i, &material);
         ok(hr == D3DRM_OK, "Group %d: IDirect3DRMMesh_GetGroupMaterial returned %x\n", i, hr);
-        ok(material != NULL, "Group %d: No material\n", i);
+        ok(material != ((void*)0), "Group %d: No material\n", i);
         power = IDirect3DRMMaterial_GetPower(material);
-        ok(power == groups[i].power, "Group %d: Wrong power %f, expected %f\n", i, power,  groups[i].power);
+        ok(power == groups[i].power, "Group %d: Wrong power %f, expected %f\n", i, power, groups[i].power);
         hr = IDirect3DRMMaterial_GetSpecular(material, &red, &green, &blue);
         ok(hr == D3DRM_OK, "Group %d: IDirect3DRMMaterial_GetSpecular returned %x\n", i, hr);
         ok(red == groups[i].specular[0], "Group %d: Wrong specular red %f, expected %f\n", i, red, groups[i].specular[0]);

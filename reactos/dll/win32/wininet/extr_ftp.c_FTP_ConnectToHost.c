@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  dwContext; } ;
-struct TYPE_8__ {TYPE_1__ hdr; int /*<<< orphan*/  lpszUserName; int /*<<< orphan*/  sndSocket; } ;
-typedef  TYPE_2__ ftp_session_t ;
-typedef  int INT ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  FTP_CMD_USER ; 
- int FTP_ReceiveResponse (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FTP_SendAccount (TYPE_2__*) ; 
- int /*<<< orphan*/  FTP_SendCommand (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FTP_SendPassword (TYPE_2__*) ; 
- int /*<<< orphan*/  FTP_SetResponseError (int) ; 
- int /*<<< orphan*/  TRACE (char*,...) ; 
- int /*<<< orphan*/  TRUE ; 
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int dwContext; } ;
+struct TYPE_8__ {TYPE_1__ hdr; int lpszUserName; int sndSocket; } ;
+typedef TYPE_2__ ftp_session_t ;
+typedef int INT ;
+typedef int BOOL ;
+
+
+ int FALSE ;
+ int FTP_CMD_USER ;
+ int FTP_ReceiveResponse (TYPE_2__*,int ) ;
+ int FTP_SendAccount (TYPE_2__*) ;
+ int FTP_SendCommand (int ,int ,int ,int ,int ,int ) ;
+ int FTP_SendPassword (TYPE_2__*) ;
+ int FTP_SetResponseError (int) ;
+ int TRACE (char*,...) ;
+ int TRUE ;
 
 __attribute__((used)) static BOOL FTP_ConnectToHost(ftp_session_t *lpwfs)
 {
@@ -43,13 +43,13 @@ __attribute__((used)) static BOOL FTP_ConnectToHost(ftp_session_t *lpwfs)
     nResCode = FTP_ReceiveResponse(lpwfs, lpwfs->hdr.dwContext);
     if (nResCode)
     {
-        /* Login successful... */
+
         if (nResCode == 230)
             bSuccess = TRUE;
-        /* User name okay, need password... */
+
         else if (nResCode == 331)
             bSuccess = FTP_SendPassword(lpwfs);
-        /* Need account for login... */
+
         else if (nResCode == 332)
             bSuccess = FTP_SendAccount(lpwfs);
         else

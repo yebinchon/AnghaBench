@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- char* alloca (size_t) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  fputs (char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  gcc_assert (int) ; 
- size_t graph_dump_format ; 
- char const** graph_ext ; 
- int /*<<< orphan*/  memcpy (char*,char const*,size_t) ; 
- int strlen (char const*) ; 
- size_t vcg ; 
+
+
+
+typedef int FILE ;
+
+
+ char* alloca (size_t) ;
+ int fclose (int *) ;
+ int * fopen (char*,char*) ;
+ int fputs (char*,int *) ;
+ int gcc_assert (int) ;
+ size_t graph_dump_format ;
+ char const** graph_ext ;
+ int memcpy (char*,char const*,size_t) ;
+ int strlen (char const*) ;
+ size_t vcg ;
 
 void
 finish_graph_dump_file (const char *base)
@@ -36,7 +36,7 @@ finish_graph_dump_file (const char *base)
   memcpy (buf + namelen, graph_ext[graph_dump_format], extlen);
 
   fp = fopen (buf, "a");
-  if (fp != NULL)
+  if (fp != ((void*)0))
     {
       gcc_assert (graph_dump_format == vcg);
       fputs ("}\n", fp);

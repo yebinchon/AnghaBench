@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  scalar_t__ DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAY_SIZE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CP_ACP ; 
- int /*<<< orphan*/  FALSE ; 
- int MAX_PATH ; 
- scalar_t__ MultiByteToWideChar (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- scalar_t__ lstrcmpW (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  ok (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ strcmp (char const*,char*) ; 
- scalar_t__ strlen (char const*) ; 
+
+
+
+typedef int WCHAR ;
+typedef scalar_t__ DWORD ;
+typedef int BOOL ;
+
+
+ int ARRAY_SIZE (int *) ;
+ int CP_ACP ;
+ int FALSE ;
+ int MAX_PATH ;
+ scalar_t__ MultiByteToWideChar (int ,int ,char const*,int,int *,int ) ;
+ int TRUE ;
+ scalar_t__ lstrcmpW (int *,int const*) ;
+ int ok (int ,char*) ;
+ scalar_t__ strcmp (char const*,char*) ;
+ scalar_t__ strlen (char const*) ;
 
 __attribute__((used)) static BOOL is_in_strarray(const WCHAR *needle, const char *hay)
 {

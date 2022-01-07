@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  start ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int start ;
 struct TYPE_4__ {char* helpstr; char valtype; scalar_t__* name; } ;
-typedef  TYPE_1__ OPTIONS ;
+typedef TYPE_1__ OPTIONS ;
 
-/* Variables and functions */
- int MAX_OPT_HELP_WIDTH ; 
- scalar_t__* OPT_HELP_STR ; 
- scalar_t__* OPT_MORE_STR ; 
- scalar_t__* OPT_SECTION_STR ; 
- int /*<<< orphan*/  memset (char*,char,int) ; 
- int /*<<< orphan*/  opt_printf_stderr (char const*,...) ; 
- int /*<<< orphan*/  prog ; 
- int /*<<< orphan*/  strcpy (char*,scalar_t__*) ; 
- int /*<<< orphan*/  strlen (int /*<<< orphan*/ ) ; 
- scalar_t__* valtype2param (TYPE_1__ const*) ; 
+
+ int MAX_OPT_HELP_WIDTH ;
+ scalar_t__* OPT_HELP_STR ;
+ scalar_t__* OPT_MORE_STR ;
+ scalar_t__* OPT_SECTION_STR ;
+ int memset (char*,char,int) ;
+ int opt_printf_stderr (char const*,...) ;
+ int prog ;
+ int strcpy (char*,scalar_t__*) ;
+ int strlen (int ) ;
+ scalar_t__* valtype2param (TYPE_1__ const*) ;
 
 void opt_print(const OPTIONS *o, int width)
 {
@@ -44,18 +44,18 @@ void opt_print(const OPTIONS *o, int width)
             return;
         }
 
-        /* Pad out prefix */
+
         memset(start, ' ', sizeof(start) - 1);
         start[sizeof(start) - 1] = '\0';
 
         if (o->name == OPT_MORE_STR) {
-            /* Continuation of previous line; pad and print. */
+
             start[width] = '\0';
             opt_printf_stderr("%s  %s\n", start, help);
             return;
         }
 
-        /* Build up the "-flag [param]" part. */
+
         p = start;
         *p++ = ' ';
         *p++ = '-';

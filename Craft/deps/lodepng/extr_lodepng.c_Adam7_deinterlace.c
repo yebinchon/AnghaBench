@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- unsigned int* ADAM7_DX ; 
- unsigned int* ADAM7_DY ; 
- unsigned int* ADAM7_IX ; 
- unsigned int* ADAM7_IY ; 
- int /*<<< orphan*/  Adam7_getpassvalues (unsigned int*,unsigned int*,size_t*,size_t*,size_t*,unsigned int,unsigned int,unsigned int) ; 
- unsigned char readBitFromReversedStream (size_t*,unsigned char const*) ; 
- int /*<<< orphan*/  setBitOfReversedStream0 (size_t*,unsigned char*,unsigned char) ; 
+ unsigned int* ADAM7_DX ;
+ unsigned int* ADAM7_DY ;
+ unsigned int* ADAM7_IX ;
+ unsigned int* ADAM7_IY ;
+ int Adam7_getpassvalues (unsigned int*,unsigned int*,size_t*,size_t*,size_t*,unsigned int,unsigned int,unsigned int) ;
+ unsigned char readBitFromReversedStream (size_t*,unsigned char const*) ;
+ int setBitOfReversedStream0 (size_t*,unsigned char*,unsigned char) ;
 
 __attribute__((used)) static void Adam7_deinterlace(unsigned char* out, const unsigned char* in, unsigned w, unsigned h, unsigned bpp)
 {
@@ -46,14 +38,14 @@ __attribute__((used)) static void Adam7_deinterlace(unsigned char* out, const un
       }
     }
   }
-  else /*bpp < 8: Adam7 with pixels < 8 bit is a bit trickier: with bit pointers*/
+  else
   {
     for(i = 0; i < 7; i++)
     {
       unsigned x, y, b;
       unsigned ilinebits = bpp * passw[i];
       unsigned olinebits = bpp * w;
-      size_t obp, ibp; /*bit pointers (for out and in buffer)*/
+      size_t obp, ibp;
       for(y = 0; y < passh[i]; y++)
       for(x = 0; x < passw[i]; x++)
       {
@@ -62,7 +54,7 @@ __attribute__((used)) static void Adam7_deinterlace(unsigned char* out, const un
         for(b = 0; b < bpp; b++)
         {
           unsigned char bit = readBitFromReversedStream(&ibp, in);
-          /*note that this function assumes the out buffer is completely 0, use setBitOfReversedStream otherwise*/
+
           setBitOfReversedStream0(&obp, out, bit);
         }
       }

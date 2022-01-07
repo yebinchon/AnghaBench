@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
 
-/* Variables and functions */
-#define  ADDR_EXPR 128 
- scalar_t__ DECL_NAME (int /*<<< orphan*/ ) ; 
- scalar_t__ DECL_P (int /*<<< orphan*/ ) ; 
- char const* IDENTIFIER_POINTER (scalar_t__) ; 
- int /*<<< orphan*/  STRIP_NOPS (int /*<<< orphan*/ ) ; 
- int TREE_CODE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TREE_OPERAND (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int tree ;
+
+
+
+ scalar_t__ DECL_NAME (int ) ;
+ scalar_t__ DECL_P (int ) ;
+ char const* IDENTIFIER_POINTER (scalar_t__) ;
+ int STRIP_NOPS (int ) ;
+ int TREE_CODE (int ) ;
+ int TREE_OPERAND (int ,int ) ;
 
 const char *
 get_name (tree t)
@@ -33,12 +33,12 @@ get_name (tree t)
   else
     {
       switch (TREE_CODE (stripped_decl))
-	{
-	case ADDR_EXPR:
-	  return get_name (TREE_OPERAND (stripped_decl, 0));
-	  break;
-	default:
-	  return NULL;
-	}
+ {
+ case 128:
+   return get_name (TREE_OPERAND (stripped_decl, 0));
+   break;
+ default:
+   return ((void*)0);
+ }
     }
 }

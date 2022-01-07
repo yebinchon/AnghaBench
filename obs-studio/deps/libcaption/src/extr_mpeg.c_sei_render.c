@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-struct TYPE_4__ {int /*<<< orphan*/  head; } ;
-typedef  TYPE_1__ sei_t ;
-typedef  int /*<<< orphan*/  sei_message_t ;
 
-/* Variables and functions */
- size_t _copy_from_rbsp (int*,int*,int) ; 
- int* sei_message_data (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * sei_message_head (TYPE_1__*) ; 
- int /*<<< orphan*/ * sei_message_next (int /*<<< orphan*/ *) ; 
- scalar_t__ sei_message_size (int /*<<< orphan*/ *) ; 
- int sei_message_type (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_4__ {int head; } ;
+typedef TYPE_1__ sei_t ;
+typedef int sei_message_t ;
+
+
+ size_t _copy_from_rbsp (int*,int*,int) ;
+ int* sei_message_data (int *) ;
+ int * sei_message_head (TYPE_1__*) ;
+ int * sei_message_next (int *) ;
+ scalar_t__ sei_message_size (int *) ;
+ int sei_message_type (int *) ;
 
 size_t sei_render(sei_t* sei, uint8_t* data)
 {
@@ -30,7 +30,7 @@ size_t sei_render(sei_t* sei, uint8_t* data)
         return 0;
     }
 
-    size_t escaped_size, size = 2; // nalu_type + stop bit
+    size_t escaped_size, size = 2;
     sei_message_t* msg;
     (*data) = 6;
     ++data;
@@ -70,7 +70,7 @@ size_t sei_render(sei_t* sei, uint8_t* data)
         size += escaped_size;
     }
 
-    // write stop bit and return
+
     (*data) = 0x80;
     return size;
 }

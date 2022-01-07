@@ -1,88 +1,75 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int sqlite3_uint64 ;
-typedef  int /*<<< orphan*/  r ;
-struct TYPE_5__ {int cMode; char* rowSeparator; char* nullValue; int* colWidth; int showHeader; int* actualWidth; size_t iIndent; size_t nIndent; char* colSeparator; char* zDestTable; int /*<<< orphan*/  out; int /*<<< orphan*/  cnt; int /*<<< orphan*/  pStmt; int /*<<< orphan*/ * aiIndent; } ;
-typedef  TYPE_1__ ShellState ;
 
-/* Variables and functions */
- int ArraySize (int*) ; 
- int /*<<< orphan*/  IsSpace (char) ; 
-#define  MODE_Ascii 140 
-#define  MODE_Column 139 
-#define  MODE_Csv 138 
-#define  MODE_EQP 137 
-#define  MODE_Explain 136 
-#define  MODE_Html 135 
-#define  MODE_Insert 134 
-#define  MODE_Line 133 
-#define  MODE_List 132 
-#define  MODE_Pretty 131 
-#define  MODE_Quote 130 
-#define  MODE_Semi 129 
-#define  MODE_Tcl 128 
- char* SEP_Row ; 
- int /*<<< orphan*/  SHFLG_Newlines ; 
- int SQLITE_BLOB ; 
- int SQLITE_FLOAT ; 
- int SQLITE_INTEGER ; 
- int SQLITE_NULL ; 
- int SQLITE_TEXT ; 
- int /*<<< orphan*/  ShellHasFlag (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  atoi (char*) ; 
- int /*<<< orphan*/  eqp_append (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  isNumber (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (int*,double*,int) ; 
- int /*<<< orphan*/  output_c_string (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  output_csv (TYPE_1__*,char*,int) ; 
- int /*<<< orphan*/  output_hex_blob (int /*<<< orphan*/ ,void const*,int) ; 
- int /*<<< orphan*/  output_html_string (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  output_quoted_escaped_string (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  output_quoted_string (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  printSchemaLine (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  printSchemaLineN (int /*<<< orphan*/ ,char*,int,char*) ; 
- int /*<<< orphan*/  quoteChar (char*) ; 
- int /*<<< orphan*/  raw_printf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  setBinaryMode (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  setTextMode (int /*<<< orphan*/ ,int) ; 
- void* sqlite3_column_blob (int /*<<< orphan*/ ,int) ; 
- int sqlite3_column_bytes (int /*<<< orphan*/ ,int) ; 
- double sqlite3_column_double (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  sqlite3_free (char*) ; 
- char* sqlite3_mprintf (char*,char*) ; 
- int /*<<< orphan*/  sqlite3_snprintf (int,char*,char*,double) ; 
- int /*<<< orphan*/  sqlite3_strlike (char*,char*,int /*<<< orphan*/ ) ; 
- int strlen30 (char*) ; 
- int strlenChar (char*) ; 
- int /*<<< orphan*/  utf8_printf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  utf8_width_print (int /*<<< orphan*/ ,int,char*) ; 
- int /*<<< orphan*/  wsToEol (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int sqlite3_uint64 ;
+typedef int r ;
+struct TYPE_5__ {int cMode; char* rowSeparator; char* nullValue; int* colWidth; int showHeader; int* actualWidth; size_t iIndent; size_t nIndent; char* colSeparator; char* zDestTable; int out; int cnt; int pStmt; int * aiIndent; } ;
+typedef TYPE_1__ ShellState ;
+
+
+ int ArraySize (int*) ;
+ int IsSpace (char) ;
+ char* SEP_Row ;
+ int SHFLG_Newlines ;
+ int SQLITE_BLOB ;
+ int SQLITE_FLOAT ;
+ int SQLITE_INTEGER ;
+ int SQLITE_NULL ;
+ int SQLITE_TEXT ;
+ int ShellHasFlag (TYPE_1__*,int ) ;
+ int assert (int) ;
+ int atoi (char*) ;
+ int eqp_append (TYPE_1__*,int ,int ,char*) ;
+ int isNumber (char*,int ) ;
+ int memcpy (int*,double*,int) ;
+ int output_c_string (int ,char*) ;
+ int output_csv (TYPE_1__*,char*,int) ;
+ int output_hex_blob (int ,void const*,int) ;
+ int output_html_string (int ,char*) ;
+ int output_quoted_escaped_string (int ,char*) ;
+ int output_quoted_string (int ,char*) ;
+ int printSchemaLine (int ,char*,char*) ;
+ int printSchemaLineN (int ,char*,int,char*) ;
+ int quoteChar (char*) ;
+ int raw_printf (int ,char*,...) ;
+ int setBinaryMode (int ,int) ;
+ int setTextMode (int ,int) ;
+ void* sqlite3_column_blob (int ,int) ;
+ int sqlite3_column_bytes (int ,int) ;
+ double sqlite3_column_double (int ,int) ;
+ int sqlite3_free (char*) ;
+ char* sqlite3_mprintf (char*,char*) ;
+ int sqlite3_snprintf (int,char*,char*,double) ;
+ int sqlite3_strlike (char*,char*,int ) ;
+ int strlen30 (char*) ;
+ int strlenChar (char*) ;
+ int utf8_printf (int ,char*,...) ;
+ int utf8_width_print (int ,int,char*) ;
+ int wsToEol (int ) ;
 
 __attribute__((used)) static int shell_callback(
   void *pArg,
-  int nArg,        /* Number of result columns */
-  char **azArg,    /* Text of each result column */
-  char **azCol,    /* Column names */
-  int *aiType      /* Column types */
+  int nArg,
+  char **azArg,
+  char **azCol,
+  int *aiType
 ){
   int i;
   ShellState *p = (ShellState*)pArg;
 
   if( azArg==0 ) return 0;
   switch( p->cMode ){
-    case MODE_Line: {
+    case 133: {
       int w = 5;
       if( azArg==0 ) break;
       for(i=0; i<nArg; i++){
@@ -96,13 +83,13 @@ __attribute__((used)) static int shell_callback(
       }
       break;
     }
-    case MODE_Explain:
-    case MODE_Column: {
+    case 136:
+    case 139: {
       static const int aExplainWidths[] = {4, 13, 4, 4, 4, 13, 2, 13};
       const int *colWidth;
       int showHdr;
       char *rowSep;
-      if( p->cMode==MODE_Column ){
+      if( p->cMode==139 ){
         colWidth = p->colWidth;
         showHdr = p->showHeader;
         rowSep = p->rowSeparator;
@@ -157,7 +144,7 @@ __attribute__((used)) static int shell_callback(
         }else{
            w = 10;
         }
-        if( p->cMode==MODE_Explain && azArg[i] && strlenChar(azArg[i])>w ){
+        if( p->cMode==136 && azArg[i] && strlenChar(azArg[i])>w ){
           w = strlenChar(azArg[i]);
         }
         if( i==1 && p->aiIndent && p->pStmt ){
@@ -171,11 +158,11 @@ __attribute__((used)) static int shell_callback(
       }
       break;
     }
-    case MODE_Semi: {   /* .schema and .fullschema output */
+    case 129: {
       printSchemaLine(p->out, azArg[0], ";\n");
       break;
     }
-    case MODE_Pretty: {  /* .schema and .fullschema with --indent */
+    case 131: {
       char *z;
       int j;
       int nParen = 0;
@@ -205,7 +192,7 @@ __attribute__((used)) static int shell_callback(
       while( j>0 && IsSpace(z[j-1]) ){ j--; }
       z[j] = 0;
       if( strlen30(z)>=79 ){
-        for(i=j=0; (c = z[i])!=0; i++){ /* Copy from z[i] back to z[j] */
+        for(i=j=0; (c = z[i])!=0; i++){
           if( c==cEnd ){
             cEnd = 0;
           }else if( c=='"' || c=='\'' || c=='`' ){
@@ -240,7 +227,7 @@ __attribute__((used)) static int shell_callback(
       sqlite3_free(z);
       break;
     }
-    case MODE_List: {
+    case 132: {
       if( p->cnt++==0 && p->showHeader ){
         for(i=0; i<nArg; i++){
           utf8_printf(p->out,"%s%s",azCol[i],
@@ -260,7 +247,7 @@ __attribute__((used)) static int shell_callback(
       }
       break;
     }
-    case MODE_Html: {
+    case 135: {
       if( p->cnt++==0 && p->showHeader ){
         raw_printf(p->out,"<TR>");
         for(i=0; i<nArg; i++){
@@ -280,7 +267,7 @@ __attribute__((used)) static int shell_callback(
       raw_printf(p->out,"</TR>\n");
       break;
     }
-    case MODE_Tcl: {
+    case 128: {
       if( p->cnt++==0 && p->showHeader ){
         for(i=0; i<nArg; i++){
           output_c_string(p->out,azCol[i] ? azCol[i] : "");
@@ -296,7 +283,7 @@ __attribute__((used)) static int shell_callback(
       utf8_printf(p->out, "%s", p->rowSeparator);
       break;
     }
-    case MODE_Csv: {
+    case 138: {
       setBinaryMode(p->out, 1);
       if( p->cnt++==0 && p->showHeader ){
         for(i=0; i<nArg; i++){
@@ -313,7 +300,7 @@ __attribute__((used)) static int shell_callback(
       setTextMode(p->out, 1);
       break;
     }
-    case MODE_Insert: {
+    case 134: {
       if( azArg==0 ) break;
       utf8_printf(p->out,"INSERT INTO %s",p->zDestTable);
       if( p->showHeader ){
@@ -371,7 +358,7 @@ __attribute__((used)) static int shell_callback(
       raw_printf(p->out,");\n");
       break;
     }
-    case MODE_Quote: {
+    case 130: {
       if( azArg==0 ) break;
       if( p->cnt==0 && p->showHeader ){
         for(i=0; i<nArg; i++){
@@ -407,7 +394,7 @@ __attribute__((used)) static int shell_callback(
       raw_printf(p->out,"\n");
       break;
     }
-    case MODE_Ascii: {
+    case 140: {
       if( p->cnt++==0 && p->showHeader ){
         for(i=0; i<nArg; i++){
           if( i>0 ) utf8_printf(p->out, "%s", p->colSeparator);
@@ -423,7 +410,7 @@ __attribute__((used)) static int shell_callback(
       utf8_printf(p->out, "%s", p->rowSeparator);
       break;
     }
-    case MODE_EQP: {
+    case 137: {
       eqp_append(p, atoi(azArg[0]), atoi(azArg[1]), azArg[3]);
       break;
     }

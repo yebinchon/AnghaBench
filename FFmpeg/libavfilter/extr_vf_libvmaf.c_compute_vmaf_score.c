@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int /*<<< orphan*/  enable_conf_interval; int /*<<< orphan*/  n_subsample; int /*<<< orphan*/  n_threads; int /*<<< orphan*/  pool; int /*<<< orphan*/  ms_ssim; int /*<<< orphan*/  ssim; int /*<<< orphan*/  psnr; int /*<<< orphan*/  phone_model; int /*<<< orphan*/  enable_transform; int /*<<< orphan*/  log_fmt; int /*<<< orphan*/  log_path; int /*<<< orphan*/  model_path; int /*<<< orphan*/  height; int /*<<< orphan*/  width; int /*<<< orphan*/  vmaf_score; int /*<<< orphan*/  error; TYPE_2__* desc; } ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int enable_conf_interval; int n_subsample; int n_threads; int pool; int ms_ssim; int ssim; int psnr; int phone_model; int enable_transform; int log_fmt; int log_path; int model_path; int height; int width; int vmaf_score; int error; TYPE_2__* desc; } ;
 struct TYPE_7__ {scalar_t__ name; TYPE_1__* comp; } ;
 struct TYPE_6__ {int depth; } ;
-typedef  TYPE_3__ LIBVMAFContext ;
+typedef TYPE_3__ LIBVMAFContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  compute_vmaf (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int (*) (float*,float*,float*,int,void*),TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int read_frame_10bit (float*,float*,float*,int,void*) ; 
- int read_frame_8bit (float*,float*,float*,int,void*) ; 
+
+ int compute_vmaf (int *,char*,int ,int ,int (*) (float*,float*,float*,int,void*),TYPE_3__*,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ) ;
+ int read_frame_10bit (float*,float*,float*,int,void*) ;
+ int read_frame_8bit (float*,float*,float*,int,void*) ;
 
 __attribute__((used)) static void compute_vmaf_score(LIBVMAFContext *s)
 {

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  s32 ;
-typedef  int /*<<< orphan*/  mutex_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LWP_THREADQ_NOTIMEOUT ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  __lwp_mutex_locksupp (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int s32 ;
+typedef int mutex_t ;
+
+
+ int LWP_THREADQ_NOTIMEOUT ;
+ int TRUE ;
+ int __lwp_mutex_locksupp (int ,int ,int ) ;
 
 s32 LWP_MutexLock(mutex_t mutex)
 {
-	return __lwp_mutex_locksupp(mutex,LWP_THREADQ_NOTIMEOUT,TRUE);
+ return __lwp_mutex_locksupp(mutex,LWP_THREADQ_NOTIMEOUT,TRUE);
 }

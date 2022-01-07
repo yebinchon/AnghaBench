@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int errno ; 
- int maybe_setgroups (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ setresgid (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ setresuid (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int errno ;
+ int maybe_setgroups (int ,int *) ;
+ scalar_t__ setresgid (int ,int ,int ) ;
+ scalar_t__ setresuid (int ,int ,int ) ;
 
 int reset_uid_gid(void) {
         int r;
 
-        r = maybe_setgroups(0, NULL);
+        r = maybe_setgroups(0, ((void*)0));
         if (r < 0)
                 return r;
 

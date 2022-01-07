@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {int typestring_offset; } ;
-typedef  TYPE_1__ type_t ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef TYPE_1__ type_t ;
+typedef int FILE ;
 
-/* Variables and functions */
- scalar_t__ TYPE_BASIC ; 
- scalar_t__ TYPE_ENUM ; 
- int /*<<< orphan*/  error (char*,scalar_t__) ; 
- unsigned char get_basic_fc (TYPE_1__ const*) ; 
- unsigned char get_enum_fc (TYPE_1__ const*) ; 
- int /*<<< orphan*/  print_file (int /*<<< orphan*/ *,int,char*,...) ; 
- int /*<<< orphan*/  string_of_type (unsigned char) ; 
- scalar_t__ type_get_type (TYPE_1__ const*) ; 
+
+ scalar_t__ TYPE_BASIC ;
+ scalar_t__ TYPE_ENUM ;
+ int error (char*,scalar_t__) ;
+ unsigned char get_basic_fc (TYPE_1__ const*) ;
+ unsigned char get_enum_fc (TYPE_1__ const*) ;
+ int print_file (int *,int,char*,...) ;
+ int string_of_type (unsigned char) ;
+ scalar_t__ type_get_type (TYPE_1__ const*) ;
 
 __attribute__((used)) static void write_branch_type(FILE *file, const type_t *t, unsigned int *tfsoff)
 {
-    if (t == NULL)
+    if (t == ((void*)0))
     {
         print_file(file, 2, "NdrFcShort(0x0),\t/* No type */\n");
     }

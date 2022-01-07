@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ (* PFNGLGETSTRINGIPROC ) (int /*<<< orphan*/ ,int) ;
-typedef  char GLubyte ;
-typedef  int GLint ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EXIT_FAILURE ; 
- int GLFW_OPENGL_API ; 
- int /*<<< orphan*/  GL_EXTENSIONS ; 
- int /*<<< orphan*/  GL_NUM_EXTENSIONS ; 
- int /*<<< orphan*/  exit (int /*<<< orphan*/ ) ; 
- char* get_api_name (int) ; 
- int /*<<< orphan*/  glGetIntegerv (int /*<<< orphan*/ ,int*) ; 
- char* glGetString (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glfwGetProcAddress (char*) ; 
- int /*<<< orphan*/  glfwTerminate () ; 
- int /*<<< orphan*/  printf (char*,char*) ; 
- int /*<<< orphan*/  putchar (char const) ; 
- int /*<<< orphan*/  puts (char const*) ; 
+
+
+
+typedef scalar_t__ (* PFNGLGETSTRINGIPROC ) (int ,int) ;
+typedef char GLubyte ;
+typedef int GLint ;
+
+
+ int EXIT_FAILURE ;
+ int GLFW_OPENGL_API ;
+ int GL_EXTENSIONS ;
+ int GL_NUM_EXTENSIONS ;
+ int exit (int ) ;
+ char* get_api_name (int) ;
+ int glGetIntegerv (int ,int*) ;
+ char* glGetString (int ) ;
+ int glfwGetProcAddress (char*) ;
+ int glfwTerminate () ;
+ int printf (char*,char*) ;
+ int putchar (char const) ;
+ int puts (char const*) ;
 
 __attribute__((used)) static void list_extensions(int api, int major, int minor)
 {
@@ -49,7 +49,7 @@ __attribute__((used)) static void list_extensions(int api, int major, int minor)
 
         glGetIntegerv(GL_NUM_EXTENSIONS, &count);
 
-        for (i = 0;  i < count;  i++)
+        for (i = 0; i < count; i++)
             puts((const char*) glGetStringi(GL_EXTENSIONS, i));
     }
     else

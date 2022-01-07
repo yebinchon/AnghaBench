@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_7__ {TYPE_2__** cbp; TYPE_1__* cbppattern; } ;
-struct TYPE_6__ {int bits; int /*<<< orphan*/  table; } ;
-struct TYPE_5__ {int /*<<< orphan*/  table; } ;
-typedef  TYPE_3__ RV34VLC ;
-typedef  int /*<<< orphan*/  GetBitContext ;
+struct TYPE_6__ {int bits; int table; } ;
+struct TYPE_5__ {int table; } ;
+typedef TYPE_3__ RV34VLC ;
+typedef int GetBitContext ;
 
-/* Variables and functions */
- size_t get_bits1 (int /*<<< orphan*/ *) ; 
- int const get_vlc2 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int) ; 
- int* modulo_three_table ; 
- int* rv34_count_ones ; 
+
+ size_t get_bits1 (int *) ;
+ int const get_vlc2 (int *,int ,int,int) ;
+ int* modulo_three_table ;
+ int* rv34_count_ones ;
 
 __attribute__((used)) static int rv34_decode_cbp(GetBitContext *gb, RV34VLC *vlc, int table)
 {

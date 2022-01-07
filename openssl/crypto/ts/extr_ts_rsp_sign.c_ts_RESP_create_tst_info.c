@@ -1,79 +1,79 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_4__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_13__ {int /*<<< orphan*/  dirn; } ;
-struct TYPE_15__ {TYPE_2__ d; int /*<<< orphan*/  type; } ;
-struct TYPE_14__ {int flags; int /*<<< orphan*/  signer_cert; TYPE_1__* request; int /*<<< orphan*/  micros; int /*<<< orphan*/  millis; int /*<<< orphan*/  seconds; int /*<<< orphan*/  clock_precision_digits; int /*<<< orphan*/  time_cb_data; int /*<<< orphan*/  (* time_cb ) (TYPE_3__*,int /*<<< orphan*/ ,long*,long*) ;int /*<<< orphan*/  serial_cb_data; int /*<<< orphan*/ * (* serial_cb ) (TYPE_3__*,int /*<<< orphan*/ ) ;} ;
-struct TYPE_12__ {int /*<<< orphan*/ * nonce; int /*<<< orphan*/  msg_imprint; } ;
-typedef  int /*<<< orphan*/  TS_TST_INFO ;
-typedef  TYPE_3__ TS_RESP_CTX ;
-typedef  int /*<<< orphan*/  TS_ACCURACY ;
-typedef  TYPE_4__ GENERAL_NAME ;
-typedef  int /*<<< orphan*/  ASN1_OBJECT ;
-typedef  int /*<<< orphan*/  ASN1_INTEGER ;
-typedef  int /*<<< orphan*/  ASN1_GENERALIZEDTIME ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASN1_GENERALIZEDTIME_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ASN1_INTEGER_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GENERAL_NAME_free (TYPE_4__*) ; 
- TYPE_4__* GENERAL_NAME_new () ; 
- int /*<<< orphan*/  GEN_DIRNAME ; 
- int /*<<< orphan*/  TS_ACCURACY_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * TS_ACCURACY_new () ; 
- int /*<<< orphan*/  TS_ACCURACY_set_micros (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TS_ACCURACY_set_millis (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TS_ACCURACY_set_seconds (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TS_F_TS_RESP_CREATE_TST_INFO ; 
- int TS_ORDERING ; 
- int /*<<< orphan*/  TS_RESP_CTX_set_status_info_cond (TYPE_3__*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/ * TS_RESP_set_genTime_with_precision (int /*<<< orphan*/ *,long,long,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TS_R_TST_INFO_SETUP_ERROR ; 
- int /*<<< orphan*/  TS_STATUS_REJECTION ; 
- int TS_TSA_NAME ; 
- int /*<<< orphan*/  TS_TST_INFO_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * TS_TST_INFO_new () ; 
- int /*<<< orphan*/  TS_TST_INFO_set_accuracy (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TS_TST_INFO_set_msg_imprint (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TS_TST_INFO_set_nonce (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  TS_TST_INFO_set_ordering (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  TS_TST_INFO_set_policy_id (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TS_TST_INFO_set_serial (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TS_TST_INFO_set_time (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TS_TST_INFO_set_tsa (int /*<<< orphan*/ *,TYPE_4__*) ; 
- int /*<<< orphan*/  TS_TST_INFO_set_version (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  TSerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  X509_NAME_dup (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  X509_get_subject_name (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * stub1 (TYPE_3__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub2 (TYPE_3__*,int /*<<< orphan*/ ,long*,long*) ; 
+
+typedef struct TYPE_15__ TYPE_4__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+struct TYPE_13__ {int dirn; } ;
+struct TYPE_15__ {TYPE_2__ d; int type; } ;
+struct TYPE_14__ {int flags; int signer_cert; TYPE_1__* request; int micros; int millis; int seconds; int clock_precision_digits; int time_cb_data; int (* time_cb ) (TYPE_3__*,int ,long*,long*) ;int serial_cb_data; int * (* serial_cb ) (TYPE_3__*,int ) ;} ;
+struct TYPE_12__ {int * nonce; int msg_imprint; } ;
+typedef int TS_TST_INFO ;
+typedef TYPE_3__ TS_RESP_CTX ;
+typedef int TS_ACCURACY ;
+typedef TYPE_4__ GENERAL_NAME ;
+typedef int ASN1_OBJECT ;
+typedef int ASN1_INTEGER ;
+typedef int ASN1_GENERALIZEDTIME ;
+
+
+ int ASN1_GENERALIZEDTIME_free (int *) ;
+ int ASN1_INTEGER_free (int *) ;
+ int GENERAL_NAME_free (TYPE_4__*) ;
+ TYPE_4__* GENERAL_NAME_new () ;
+ int GEN_DIRNAME ;
+ int TS_ACCURACY_free (int *) ;
+ int * TS_ACCURACY_new () ;
+ int TS_ACCURACY_set_micros (int *,int ) ;
+ int TS_ACCURACY_set_millis (int *,int ) ;
+ int TS_ACCURACY_set_seconds (int *,int ) ;
+ int TS_F_TS_RESP_CREATE_TST_INFO ;
+ int TS_ORDERING ;
+ int TS_RESP_CTX_set_status_info_cond (TYPE_3__*,int ,char*) ;
+ int * TS_RESP_set_genTime_with_precision (int *,long,long,int ) ;
+ int TS_R_TST_INFO_SETUP_ERROR ;
+ int TS_STATUS_REJECTION ;
+ int TS_TSA_NAME ;
+ int TS_TST_INFO_free (int *) ;
+ int * TS_TST_INFO_new () ;
+ int TS_TST_INFO_set_accuracy (int *,int *) ;
+ int TS_TST_INFO_set_msg_imprint (int *,int ) ;
+ int TS_TST_INFO_set_nonce (int *,int const*) ;
+ int TS_TST_INFO_set_ordering (int *,int) ;
+ int TS_TST_INFO_set_policy_id (int *,int *) ;
+ int TS_TST_INFO_set_serial (int *,int *) ;
+ int TS_TST_INFO_set_time (int *,int *) ;
+ int TS_TST_INFO_set_tsa (int *,TYPE_4__*) ;
+ int TS_TST_INFO_set_version (int *,int) ;
+ int TSerr (int ,int ) ;
+ int X509_NAME_dup (int ) ;
+ int X509_get_subject_name (int ) ;
+ int * stub1 (TYPE_3__*,int ) ;
+ int stub2 (TYPE_3__*,int ,long*,long*) ;
 
 __attribute__((used)) static TS_TST_INFO *ts_RESP_create_tst_info(TS_RESP_CTX *ctx,
                                             ASN1_OBJECT *policy)
 {
     int result = 0;
-    TS_TST_INFO *tst_info = NULL;
-    ASN1_INTEGER *serial = NULL;
-    ASN1_GENERALIZEDTIME *asn1_time = NULL;
+    TS_TST_INFO *tst_info = ((void*)0);
+    ASN1_INTEGER *serial = ((void*)0);
+    ASN1_GENERALIZEDTIME *asn1_time = ((void*)0);
     long sec, usec;
-    TS_ACCURACY *accuracy = NULL;
+    TS_ACCURACY *accuracy = ((void*)0);
     const ASN1_INTEGER *nonce;
-    GENERAL_NAME *tsa_name = NULL;
+    GENERAL_NAME *tsa_name = ((void*)0);
 
-    if ((tst_info = TS_TST_INFO_new()) == NULL)
+    if ((tst_info = TS_TST_INFO_new()) == ((void*)0))
         goto end;
     if (!TS_TST_INFO_set_version(tst_info, 1))
         goto end;
@@ -81,18 +81,18 @@ __attribute__((used)) static TS_TST_INFO *ts_RESP_create_tst_info(TS_RESP_CTX *c
         goto end;
     if (!TS_TST_INFO_set_msg_imprint(tst_info, ctx->request->msg_imprint))
         goto end;
-    if ((serial = ctx->serial_cb(ctx, ctx->serial_cb_data)) == NULL
+    if ((serial = ctx->serial_cb(ctx, ctx->serial_cb_data)) == ((void*)0)
         || !TS_TST_INFO_set_serial(tst_info, serial))
         goto end;
     if (!ctx->time_cb(ctx, ctx->time_cb_data, &sec, &usec)
         || (asn1_time =
-            TS_RESP_set_genTime_with_precision(NULL, sec, usec,
-                                        ctx->clock_precision_digits)) == NULL
+            TS_RESP_set_genTime_with_precision(((void*)0), sec, usec,
+                                        ctx->clock_precision_digits)) == ((void*)0)
         || !TS_TST_INFO_set_time(tst_info, asn1_time))
         goto end;
 
     if ((ctx->seconds || ctx->millis || ctx->micros)
-        && (accuracy = TS_ACCURACY_new()) == NULL)
+        && (accuracy = TS_ACCURACY_new()) == ((void*)0))
         goto end;
     if (ctx->seconds && !TS_ACCURACY_set_seconds(accuracy, ctx->seconds))
         goto end;
@@ -107,12 +107,12 @@ __attribute__((used)) static TS_TST_INFO *ts_RESP_create_tst_info(TS_RESP_CTX *c
         && !TS_TST_INFO_set_ordering(tst_info, 1))
         goto end;
 
-    if ((nonce = ctx->request->nonce) != NULL
+    if ((nonce = ctx->request->nonce) != ((void*)0)
         && !TS_TST_INFO_set_nonce(tst_info, nonce))
         goto end;
 
     if (ctx->flags & TS_TSA_NAME) {
-        if ((tsa_name = GENERAL_NAME_new()) == NULL)
+        if ((tsa_name = GENERAL_NAME_new()) == ((void*)0))
             goto end;
         tsa_name->type = GEN_DIRNAME;
         tsa_name->d.dirn =
@@ -127,7 +127,7 @@ __attribute__((used)) static TS_TST_INFO *ts_RESP_create_tst_info(TS_RESP_CTX *c
  end:
     if (!result) {
         TS_TST_INFO_free(tst_info);
-        tst_info = NULL;
+        tst_info = ((void*)0);
         TSerr(TS_F_TS_RESP_CREATE_TST_INFO, TS_R_TST_INFO_SETUP_ERROR);
         TS_RESP_CTX_set_status_info_cond(ctx, TS_STATUS_REJECTION,
                                          "Error during TSTInfo "

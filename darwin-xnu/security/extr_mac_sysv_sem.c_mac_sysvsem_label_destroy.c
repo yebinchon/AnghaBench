@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct semid_kernel {int /*<<< orphan*/ * label; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mac_sysv_sem_label_free (int /*<<< orphan*/ *) ; 
+
+
+
+struct semid_kernel {int * label; } ;
+
+
+ int mac_sysv_sem_label_free (int *) ;
 
 void
 mac_sysvsem_label_destroy(struct semid_kernel *semakptr)
 {
 
-	mac_sysv_sem_label_free(semakptr->label);
-	semakptr->label = NULL;
+ mac_sysv_sem_label_free(semakptr->label);
+ semakptr->label = ((void*)0);
 }

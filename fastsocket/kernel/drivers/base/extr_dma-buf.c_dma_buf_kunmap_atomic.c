@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct dma_buf {TYPE_1__* ops; } ;
-struct TYPE_2__ {int /*<<< orphan*/  (* kunmap_atomic ) (struct dma_buf*,unsigned long,void*) ;} ;
+struct TYPE_2__ {int (* kunmap_atomic ) (struct dma_buf*,unsigned long,void*) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  WARN_ON (int) ; 
- int /*<<< orphan*/  stub1 (struct dma_buf*,unsigned long,void*) ; 
+
+ int WARN_ON (int) ;
+ int stub1 (struct dma_buf*,unsigned long,void*) ;
 
 void dma_buf_kunmap_atomic(struct dma_buf *dmabuf, unsigned long page_num,
-			   void *vaddr)
+      void *vaddr)
 {
-	WARN_ON(!dmabuf);
+ WARN_ON(!dmabuf);
 
-	if (dmabuf->ops->kunmap_atomic)
-		dmabuf->ops->kunmap_atomic(dmabuf, page_num, vaddr);
+ if (dmabuf->ops->kunmap_atomic)
+  dmabuf->ops->kunmap_atomic(dmabuf, page_num, vaddr);
 }

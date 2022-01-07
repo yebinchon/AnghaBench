@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  texture; } ;
-typedef  TYPE_1__ RASPITEX_STATE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GLCHK (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GL_COLOR_ARRAY ; 
- int /*<<< orphan*/  GL_FLOAT ; 
- int /*<<< orphan*/  GL_TEXTURE_COORD_ARRAY ; 
- int /*<<< orphan*/  GL_TEXTURE_EXTERNAL_OES ; 
- int /*<<< orphan*/  GL_TRIANGLES ; 
- int /*<<< orphan*/  GL_VERTEX_ARRAY ; 
- int /*<<< orphan*/  angle ; 
- int /*<<< orphan*/  glBindTexture (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glDisableClientState (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glDrawArrays (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  glEnableClientState (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glLoadIdentity () ; 
- int /*<<< orphan*/  glRotatef (int /*<<< orphan*/ ,double,double,double) ; 
- int /*<<< orphan*/  glTexCoordPointer (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glVertexPointer (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tex_coords ; 
- int vcos_countof (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vertices ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int texture; } ;
+typedef TYPE_1__ RASPITEX_STATE ;
+
+
+ int GLCHK (int ) ;
+ int GL_COLOR_ARRAY ;
+ int GL_FLOAT ;
+ int GL_TEXTURE_COORD_ARRAY ;
+ int GL_TEXTURE_EXTERNAL_OES ;
+ int GL_TRIANGLES ;
+ int GL_VERTEX_ARRAY ;
+ int angle ;
+ int glBindTexture (int ,int ) ;
+ int glDisableClientState (int ) ;
+ int glDrawArrays (int ,int ,int) ;
+ int glEnableClientState (int ) ;
+ int glLoadIdentity () ;
+ int glRotatef (int ,double,double,double) ;
+ int glTexCoordPointer (int,int ,int ,int ) ;
+ int glVertexPointer (int,int ,int ,int ) ;
+ int tex_coords ;
+ int vcos_countof (int ) ;
+ int vertices ;
 
 __attribute__((used)) static int square_redraw(RASPITEX_STATE *state)
 {
-   /* Bind the OES texture which is used to render the camera preview */
+
    GLCHK(glBindTexture(GL_TEXTURE_EXTERNAL_OES, state->texture));
    glLoadIdentity();
    glRotatef(angle, 0.0, 0.0, 1.0);

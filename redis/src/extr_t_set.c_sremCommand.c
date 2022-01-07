@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_18__   TYPE_6__ ;
-typedef  struct TYPE_17__   TYPE_5__ ;
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  robj ;
+
+
+typedef struct TYPE_18__ TYPE_6__ ;
+typedef struct TYPE_17__ TYPE_5__ ;
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
+typedef int robj ;
 struct TYPE_14__ {int argc; TYPE_3__* db; TYPE_4__** argv; } ;
-typedef  TYPE_1__ client ;
+typedef TYPE_1__ client ;
 struct TYPE_18__ {int dirty; } ;
-struct TYPE_17__ {int /*<<< orphan*/  czero; } ;
-struct TYPE_16__ {int /*<<< orphan*/  ptr; } ;
-struct TYPE_15__ {int /*<<< orphan*/  id; } ;
+struct TYPE_17__ {int czero; } ;
+struct TYPE_16__ {int ptr; } ;
+struct TYPE_15__ {int id; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NOTIFY_GENERIC ; 
- int /*<<< orphan*/  NOTIFY_SET ; 
- int /*<<< orphan*/  OBJ_SET ; 
- int /*<<< orphan*/  addReplyLongLong (TYPE_1__*,int) ; 
- scalar_t__ checkType (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dbDelete (TYPE_3__*,TYPE_4__*) ; 
- int /*<<< orphan*/ * lookupKeyWriteOrReply (TYPE_1__*,TYPE_4__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  notifyKeyspaceEvent (int /*<<< orphan*/ ,char*,TYPE_4__*,int /*<<< orphan*/ ) ; 
- TYPE_6__ server ; 
- scalar_t__ setTypeRemove (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ setTypeSize (int /*<<< orphan*/ *) ; 
- TYPE_5__ shared ; 
- int /*<<< orphan*/  signalModifiedKey (TYPE_3__*,TYPE_4__*) ; 
+
+ int NOTIFY_GENERIC ;
+ int NOTIFY_SET ;
+ int OBJ_SET ;
+ int addReplyLongLong (TYPE_1__*,int) ;
+ scalar_t__ checkType (TYPE_1__*,int *,int ) ;
+ int dbDelete (TYPE_3__*,TYPE_4__*) ;
+ int * lookupKeyWriteOrReply (TYPE_1__*,TYPE_4__*,int ) ;
+ int notifyKeyspaceEvent (int ,char*,TYPE_4__*,int ) ;
+ TYPE_6__ server ;
+ scalar_t__ setTypeRemove (int *,int ) ;
+ scalar_t__ setTypeSize (int *) ;
+ TYPE_5__ shared ;
+ int signalModifiedKey (TYPE_3__*,TYPE_4__*) ;
 
 void sremCommand(client *c) {
     robj *set;
     int j, deleted = 0, keyremoved = 0;
 
-    if ((set = lookupKeyWriteOrReply(c,c->argv[1],shared.czero)) == NULL ||
+    if ((set = lookupKeyWriteOrReply(c,c->argv[1],shared.czero)) == ((void*)0) ||
         checkType(c,set,OBJ_SET)) return;
 
     for (j = 2; j < c->argc; j++) {

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  int PEKIND ;
-typedef  int LPWSTR ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int ARRAY_SIZE (char const*) ; 
- int /*<<< orphan*/  FALSE ; 
- int GetWindowsDirectoryW (int,int) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  WARN (char*,int) ; 
- int /*<<< orphan*/  lstrcpyW (int,char const*) ; 
-#define  peAMD64 131 
-#define  peI386 130 
-#define  peMSIL 129 
-#define  peNone 128 
- int /*<<< orphan*/  strcmp (char const*,char*) ; 
+
+
+
+typedef char WCHAR ;
+typedef int PEKIND ;
+typedef int LPWSTR ;
+typedef int DWORD ;
+typedef int BOOL ;
+
+
+ int ARRAY_SIZE (char const*) ;
+ int FALSE ;
+ int GetWindowsDirectoryW (int,int) ;
+ int TRUE ;
+ int WARN (char*,int) ;
+ int lstrcpyW (int,char const*) ;
+
+
+
+
+ int strcmp (char const*,char*) ;
 
 __attribute__((used)) static BOOL get_assembly_directory(LPWSTR dir, DWORD size, const char *version, PEKIND architecture)
 {
@@ -52,18 +52,18 @@ __attribute__((used)) static BOOL get_assembly_directory(LPWSTR dir, DWORD size,
     }
     switch (architecture)
     {
-        case peNone:
+        case 128:
             break;
 
-        case peMSIL:
+        case 129:
             lstrcpyW(dir + len, msil);
             break;
 
-        case peI386:
+        case 130:
             lstrcpyW(dir + len, x86);
             break;
 
-        case peAMD64:
+        case 131:
             lstrcpyW(dir + len, amd64);
             break;
 

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  ll; } ;
-struct TYPE_5__ {char* proto; int protolen; int /*<<< orphan*/  type; TYPE_1__ val; } ;
-typedef  TYPE_2__ RedisModuleCallReply ;
 
-/* Variables and functions */
- int /*<<< orphan*/  REDISMODULE_REPLY_INTEGER ; 
- char* strchr (char*,char) ; 
- int /*<<< orphan*/  string2ll (char*,int,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int ll; } ;
+struct TYPE_5__ {char* proto; int protolen; int type; TYPE_1__ val; } ;
+typedef TYPE_2__ RedisModuleCallReply ;
+
+
+ int REDISMODULE_REPLY_INTEGER ;
+ char* strchr (char*,char) ;
+ int string2ll (char*,int,int *) ;
 
 void moduleParseCallReply_Int(RedisModuleCallReply *reply) {
     char *proto = reply->proto;

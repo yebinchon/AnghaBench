@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ref {int /*<<< orphan*/  new_oid; } ;
 
-/* Variables and functions */
- struct ref* alloc_ref (char*) ; 
- int /*<<< orphan*/  oidclr (int /*<<< orphan*/ *) ; 
+
+
+
+struct ref {int new_oid; } ;
+
+
+ struct ref* alloc_ref (char*) ;
+ int oidclr (int *) ;
 
 __attribute__((used)) static struct ref *alloc_delete_ref(void)
 {
-	struct ref *ref = alloc_ref("(delete)");
-	oidclr(&ref->new_oid);
-	return ref;
+ struct ref *ref = alloc_ref("(delete)");
+ oidclr(&ref->new_oid);
+ return ref;
 }

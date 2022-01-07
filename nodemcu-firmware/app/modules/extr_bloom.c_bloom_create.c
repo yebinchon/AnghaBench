@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int lua_State ;
 struct TYPE_3__ {int size; int fns; } ;
-typedef  TYPE_1__ bloom_t ;
+typedef TYPE_1__ bloom_t ;
 
-/* Variables and functions */
- int luaL_checkinteger (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  luaL_getmetatable (int /*<<< orphan*/ *,char*) ; 
- scalar_t__ lua_newuserdata (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_setmetatable (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
+
+ int luaL_checkinteger (int *,int) ;
+ int luaL_getmetatable (int *,char*) ;
+ scalar_t__ lua_newuserdata (int *,int) ;
+ int lua_setmetatable (int *,int) ;
+ int memset (TYPE_1__*,int ,int) ;
 
 __attribute__((used)) static int bloom_create(lua_State *L) {
   int items = luaL_checkinteger(L, 1);
@@ -55,8 +55,8 @@ __attribute__((used)) static int bloom_create(lua_State *L) {
   }
 
   bloom_t *filter = (bloom_t *) lua_newuserdata(L, sizeof(bloom_t) + size);
-  //
-  // Associate its metatable
+
+
   luaL_getmetatable(L, "bloom.filter");
   lua_setmetatable(L, -2);
 

@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct child_blackbox {int /*<<< orphan*/  failures; } ;
-typedef  int /*<<< orphan*/  si ;
-typedef  int /*<<< orphan*/  blackbox ;
-struct TYPE_7__ {int /*<<< orphan*/ * hProcess; int /*<<< orphan*/ * hThread; } ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct child_blackbox {int failures; } ;
+typedef int si ;
+typedef int blackbox ;
+struct TYPE_7__ {int * hProcess; int * hThread; } ;
 struct TYPE_6__ {int cb; } ;
-typedef  TYPE_1__ STARTUPINFOA ;
-typedef  TYPE_2__ PROCESS_INFORMATION ;
-typedef  int /*<<< orphan*/ * HANDLE ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef TYPE_1__ STARTUPINFOA ;
+typedef TYPE_2__ PROCESS_INFORMATION ;
+typedef int * HANDLE ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CloseHandle (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CreateProcessA (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_1__*,TYPE_2__*) ; 
- int /*<<< orphan*/  EVENT_ALL_ACCESS ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GetLastError () ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- char* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int INFINITE ; 
- int MAX_PATH ; 
- int /*<<< orphan*/ * OpenEventA (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  SetEvent (int /*<<< orphan*/ *) ; 
- scalar_t__ WAIT_OBJECT_0 ; 
- scalar_t__ WaitForSingleObject (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  child_failures ; 
- int /*<<< orphan*/  child_ok (int,char*,...) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  save_blackbox (char const*,struct child_blackbox*,int) ; 
- int /*<<< orphan*/  sprintf (char*,char*,char*,char const*) ; 
- int /*<<< orphan*/  strcat (char*,char*) ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
- int /*<<< orphan*/  strcpy (char*,char const*) ; 
- scalar_t__ strlen (char const*) ; 
- char* strrchr (char const*,char) ; 
+
+ int CloseHandle (int *) ;
+ int CreateProcessA (int *,char*,int *,int *,int ,int ,int *,int *,TYPE_1__*,TYPE_2__*) ;
+ int EVENT_ALL_ACCESS ;
+ int FALSE ;
+ int GetLastError () ;
+ int GetProcessHeap () ;
+ char* HeapAlloc (int ,int ,scalar_t__) ;
+ int HeapFree (int ,int ,char*) ;
+ int INFINITE ;
+ int MAX_PATH ;
+ int * OpenEventA (int ,int ,char*) ;
+ int SetEvent (int *) ;
+ scalar_t__ WAIT_OBJECT_0 ;
+ scalar_t__ WaitForSingleObject (int *,int) ;
+ int child_failures ;
+ int child_ok (int,char*,...) ;
+ int memset (TYPE_1__*,int ,int) ;
+ int save_blackbox (char const*,struct child_blackbox*,int) ;
+ int sprintf (char*,char*,char*,char const*) ;
+ int strcat (char*,char*) ;
+ int strcmp (char*,char*) ;
+ int strcpy (char*,char const*) ;
+ scalar_t__ strlen (char const*) ;
+ char* strrchr (char const*,char) ;
 
 __attribute__((used)) static void doChildren(int argc, char **argv)
 {
@@ -69,7 +69,7 @@ __attribute__((used)) static void doChildren(int argc, char **argv)
     strcpy(event_name, p);
     strcat(event_name, "_init");
     event = OpenEventA(EVENT_ALL_ACCESS, FALSE, event_name);
-    child_ok(event != NULL, "OpenEvent failed, last error %d.\n", GetLastError());
+    child_ok(event != ((void*)0), "OpenEvent failed, last error %d.\n", GetLastError());
     SetEvent(event);
     CloseHandle(event);
 
@@ -78,7 +78,7 @@ __attribute__((used)) static void doChildren(int argc, char **argv)
     strcpy(event_name, p);
     strcat(event_name, "_attach");
     event = OpenEventA(EVENT_ALL_ACCESS, FALSE, event_name);
-    child_ok(event != NULL, "OpenEvent failed, last error %d.\n", GetLastError());
+    child_ok(event != ((void*)0), "OpenEvent failed, last error %d.\n", GetLastError());
     WaitForSingleObject(event, INFINITE);
     CloseHandle(event);
 
@@ -87,7 +87,7 @@ __attribute__((used)) static void doChildren(int argc, char **argv)
 
     memset(&si, 0, sizeof(si));
     si.cb = sizeof(si);
-    ret = CreateProcessA(NULL, cmd, NULL, NULL, FALSE, 0, NULL, NULL, &si, &pi);
+    ret = CreateProcessA(((void*)0), cmd, ((void*)0), ((void*)0), FALSE, 0, ((void*)0), ((void*)0), &si, &pi);
     child_ok(ret, "CreateProcess failed, last error %d.\n", GetLastError());
 
     child_ok(WaitForSingleObject(pi.hProcess, 10000) == WAIT_OBJECT_0,

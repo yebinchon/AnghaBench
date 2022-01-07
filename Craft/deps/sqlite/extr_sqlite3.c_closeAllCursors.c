@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_7__ {struct TYPE_7__* pParent; } ;
-typedef  TYPE_1__ VdbeFrame ;
-typedef  int /*<<< orphan*/  VdbeCursor ;
-struct TYPE_8__ {int nCursor; TYPE_1__* pDelFrame; int /*<<< orphan*/  nMem; int /*<<< orphan*/ * aMem; int /*<<< orphan*/ ** apCsr; scalar_t__ nFrame; TYPE_1__* pFrame; } ;
-typedef  TYPE_2__ Vdbe ;
+typedef TYPE_1__ VdbeFrame ;
+typedef int VdbeCursor ;
+struct TYPE_8__ {int nCursor; TYPE_1__* pDelFrame; int nMem; int * aMem; int ** apCsr; scalar_t__ nFrame; TYPE_1__* pFrame; } ;
+typedef TYPE_2__ Vdbe ;
 
-/* Variables and functions */
- int /*<<< orphan*/  releaseMemArray (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3VdbeFrameDelete (TYPE_1__*) ; 
- int /*<<< orphan*/  sqlite3VdbeFrameRestore (TYPE_1__*) ; 
- int /*<<< orphan*/  sqlite3VdbeFreeCursor (TYPE_2__*,int /*<<< orphan*/ *) ; 
+
+ int releaseMemArray (int *,int ) ;
+ int sqlite3VdbeFrameDelete (TYPE_1__*) ;
+ int sqlite3VdbeFrameRestore (TYPE_1__*) ;
+ int sqlite3VdbeFreeCursor (TYPE_2__*,int *) ;
 
 __attribute__((used)) static void closeAllCursors(Vdbe *p){
   if( p->pFrame ){

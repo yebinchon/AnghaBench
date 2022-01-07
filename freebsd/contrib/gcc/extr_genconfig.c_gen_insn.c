@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  rtx ;
 
-/* Variables and functions */
- scalar_t__ XVEC (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  XVECEXP (int /*<<< orphan*/ ,int,int) ; 
- int XVECLEN (int /*<<< orphan*/ ,int) ; 
- scalar_t__ clobbers_seen_this_insn ; 
- scalar_t__ dup_operands_seen_this_insn ; 
- scalar_t__ max_clobbers_per_insn ; 
- scalar_t__ max_dup_operands ; 
- int /*<<< orphan*/  walk_insn_part (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int rtx ;
+
+
+ scalar_t__ XVEC (int ,int) ;
+ int XVECEXP (int ,int,int) ;
+ int XVECLEN (int ,int) ;
+ scalar_t__ clobbers_seen_this_insn ;
+ scalar_t__ dup_operands_seen_this_insn ;
+ scalar_t__ max_clobbers_per_insn ;
+ scalar_t__ max_dup_operands ;
+ int walk_insn_part (int ,int,int ) ;
 
 __attribute__((used)) static void
 gen_insn (rtx insn)
 {
   int i;
 
-  /* Walk the insn pattern to gather the #define's status.  */
+
   clobbers_seen_this_insn = 0;
   dup_operands_seen_this_insn = 0;
   if (XVEC (insn, 1) != 0)

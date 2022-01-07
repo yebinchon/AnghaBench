@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  const ge_p3 ;
-typedef  int /*<<< orphan*/  ge_p2 ;
-typedef  int /*<<< orphan*/  ge_p1p1 ;
-typedef  int /*<<< orphan*/  ge_cached ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * Bi ; 
- int /*<<< orphan*/  ge_add (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ge_madd (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ge_msub (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ge_p1p1_to_p2 (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ge_p1p1_to_p3 (int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ge_p2_0 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ge_p2_dbl (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ge_p3_dbl (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  ge_p3_to_cached (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  ge_sub (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  slide (char*,int /*<<< orphan*/  const*) ; 
+
+
+
+typedef int uint8_t ;
+typedef int const ge_p3 ;
+typedef int ge_p2 ;
+typedef int ge_p1p1 ;
+typedef int ge_cached ;
+
+
+ int * Bi ;
+ int ge_add (int *,int const*,int *) ;
+ int ge_madd (int *,int const*,int *) ;
+ int ge_msub (int *,int const*,int *) ;
+ int ge_p1p1_to_p2 (int *,int *) ;
+ int ge_p1p1_to_p3 (int const*,int *) ;
+ int ge_p2_0 (int *) ;
+ int ge_p2_dbl (int *,int *) ;
+ int ge_p3_dbl (int *,int const*) ;
+ int ge_p3_to_cached (int *,int const*) ;
+ int ge_sub (int *,int const*,int *) ;
+ int slide (char*,int const*) ;
 
 __attribute__((used)) static void ge_double_scalarmult_vartime(ge_p2 *r, const uint8_t *a,
                                          const ge_p3 *A, const uint8_t *b)
 {
     signed char aslide[256];
     signed char bslide[256];
-    ge_cached Ai[8]; /* A,3A,5A,7A,9A,11A,13A,15A */
+    ge_cached Ai[8];
     ge_p1p1 t;
     ge_p3 u;
     ge_p3 A2;

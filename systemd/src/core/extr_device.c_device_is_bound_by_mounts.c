@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_8__ {int bind_mounts; } ;
-typedef  TYPE_1__ sd_device ;
-typedef  TYPE_1__ Device ;
+typedef TYPE_1__ sd_device ;
+typedef TYPE_1__ Device ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int /*<<< orphan*/  log_device_warning_errno (TYPE_1__*,int,char*,char const*) ; 
- int parse_boolean (char const*) ; 
- scalar_t__ sd_device_get_property_value (TYPE_1__*,char*,char const**) ; 
+
+ int assert (TYPE_1__*) ;
+ int log_device_warning_errno (TYPE_1__*,int,char*,char const*) ;
+ int parse_boolean (char const*) ;
+ scalar_t__ sd_device_get_property_value (TYPE_1__*,char*,char const**) ;
 
 __attribute__((used)) static bool device_is_bound_by_mounts(Device *d, sd_device *dev) {
         const char *bound_by;
@@ -35,7 +35,7 @@ __attribute__((used)) static bool device_is_bound_by_mounts(Device *d, sd_device
 
                 d->bind_mounts = r > 0;
         } else
-                d->bind_mounts = false;
+                d->bind_mounts = 0;
 
         return d->bind_mounts;
 }

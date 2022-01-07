@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
+
+
+
+
+typedef int uint32_t ;
 struct filter_data {unsigned int phosphor_bleed; unsigned int* phosphor_bloom_8888; } ;
 
-/* Variables and functions */
- unsigned int blue_xrgb8888 (int /*<<< orphan*/ ) ; 
- unsigned int clamp8 (unsigned int) ; 
- unsigned int green_xrgb8888 (int /*<<< orphan*/ ) ; 
- unsigned int red_xrgb8888 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_blue_xrgb8888 (int /*<<< orphan*/ ,unsigned int) ; 
- int /*<<< orphan*/  set_green_xrgb8888 (int /*<<< orphan*/ ,unsigned int) ; 
- int /*<<< orphan*/  set_red_xrgb8888 (int /*<<< orphan*/ ,unsigned int) ; 
+
+ unsigned int blue_xrgb8888 (int ) ;
+ unsigned int clamp8 (unsigned int) ;
+ unsigned int green_xrgb8888 (int ) ;
+ unsigned int red_xrgb8888 (int ) ;
+ int set_blue_xrgb8888 (int ,unsigned int) ;
+ int set_green_xrgb8888 (int ,unsigned int) ;
+ int set_red_xrgb8888 (int ,unsigned int) ;
 
 __attribute__((used)) static void bleed_phosphors_xrgb8888(void *data,
       uint32_t *scanline, unsigned width)
@@ -28,7 +28,7 @@ __attribute__((used)) static void bleed_phosphors_xrgb8888(void *data,
    unsigned x;
    struct filter_data *filt = (struct filter_data*)data;
 
-   /* Red phosphor */
+
    for (x = 0; x < width; x += 2)
    {
       unsigned r = red_xrgb8888(scanline[x]);
@@ -37,7 +37,7 @@ __attribute__((used)) static void bleed_phosphors_xrgb8888(void *data,
       set_red_xrgb8888(scanline[x + 1], r_set);
    }
 
-   /* Green phosphor */
+
    for (x = 0; x < width; x++)
    {
       unsigned g = green_xrgb8888(scanline[x]);
@@ -46,7 +46,7 @@ __attribute__((used)) static void bleed_phosphors_xrgb8888(void *data,
       set_green_xrgb8888(scanline[x], g_set);
    }
 
-   /* Blue phosphor */
+
    set_blue_xrgb8888(scanline[0], 0);
    for (x = 1; x < width; x += 2)
    {

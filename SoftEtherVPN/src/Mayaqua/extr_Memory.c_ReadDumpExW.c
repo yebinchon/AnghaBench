@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wchar_t ;
-typedef  int /*<<< orphan*/  UINT ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int wchar_t ;
+typedef int UINT ;
 struct TYPE_5__ {scalar_t__ Current; } ;
-typedef  int /*<<< orphan*/  IO ;
-typedef  TYPE_1__ BUF ;
+typedef int IO ;
+typedef TYPE_1__ BUF ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FileClose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * FileOpenExW (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  FileRead (int /*<<< orphan*/ *,void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FileSize (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Free (void*) ; 
- void* Malloc (int /*<<< orphan*/ ) ; 
- TYPE_1__* NewBuf () ; 
- int /*<<< orphan*/  WriteBuf (TYPE_1__*,void*,int /*<<< orphan*/ ) ; 
+
+ int FileClose (int *) ;
+ int * FileOpenExW (int *,int,int) ;
+ int FileRead (int *,void*,int ) ;
+ int FileSize (int *) ;
+ int Free (void*) ;
+ void* Malloc (int ) ;
+ TYPE_1__* NewBuf () ;
+ int WriteBuf (TYPE_1__*,void*,int ) ;
 
 BUF *ReadDumpExW(wchar_t *filename, bool read_lock)
 {
-	IO *o;
-	BUF *b;
-	UINT size;
-	void *data;
-	// Validate arguments
-	if (filename == NULL)
-	{
-		return NULL;
-	}
+ IO *o;
+ BUF *b;
+ UINT size;
+ void *data;
 
-	o = FileOpenExW(filename, false, read_lock);
-	if (o == NULL)
-	{
-		return NULL;
-	}
+ if (filename == ((void*)0))
+ {
+  return ((void*)0);
+ }
 
-	size = FileSize(o);
-	data = Malloc(size);
-	FileRead(o, data, size);
-	FileClose(o);
+ o = FileOpenExW(filename, 0, read_lock);
+ if (o == ((void*)0))
+ {
+  return ((void*)0);
+ }
 
-	b = NewBuf();
-	WriteBuf(b, data, size);
-	b->Current = 0;
-	Free(data);
+ size = FileSize(o);
+ data = Malloc(size);
+ FileRead(o, data, size);
+ FileClose(o);
 
-	return b;
+ b = NewBuf();
+ WriteBuf(b, data, size);
+ b->Current = 0;
+ Free(data);
+
+ return b;
 }

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct scsi_cmd {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  SYNTHETIC_ERRNO (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  info_scsi_cmd_err (char*,int) ; 
- int /*<<< orphan*/  log_debug (char*,unsigned char*,unsigned char*,unsigned char*) ; 
- int log_debug_errno (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  scsi_cmd_init (struct scsi_cmd*) ; 
- int scsi_cmd_run (struct scsi_cmd*,int,unsigned char*,int) ; 
- int /*<<< orphan*/  scsi_cmd_set (struct scsi_cmd*,int,int) ; 
+
+ int EINVAL ;
+ int SYNTHETIC_ERRNO (int ) ;
+ int info_scsi_cmd_err (char*,int) ;
+ int log_debug (char*,unsigned char*,unsigned char*,unsigned char*) ;
+ int log_debug_errno (int ,char*) ;
+ int scsi_cmd_init (struct scsi_cmd*) ;
+ int scsi_cmd_run (struct scsi_cmd*,int,unsigned char*,int) ;
+ int scsi_cmd_set (struct scsi_cmd*,int,int) ;
 
 __attribute__((used)) static int cd_inquiry(int fd) {
         struct scsi_cmd sc;

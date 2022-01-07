@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  AR724X_GPIO_FUNC_JTAG_DISABLE ; 
- int AR724X_GPIO_FUNC_SPI_CS_EN2 ; 
- int AR724X_GPIO_FUNC_SPI_EN ; 
- int /*<<< orphan*/  ath79_gpio_function_setup (int /*<<< orphan*/ ,int) ; 
+ int AR724X_GPIO_FUNC_JTAG_DISABLE ;
+ int AR724X_GPIO_FUNC_SPI_CS_EN2 ;
+ int AR724X_GPIO_FUNC_SPI_EN ;
+ int ath79_gpio_function_setup (int ,int) ;
 
 __attribute__((used)) static void rb750gr3_nand_enable_pins(void)
 {
-	ath79_gpio_function_setup(AR724X_GPIO_FUNC_JTAG_DISABLE,
-				  AR724X_GPIO_FUNC_SPI_EN |
-				  AR724X_GPIO_FUNC_SPI_CS_EN2);
+ ath79_gpio_function_setup(AR724X_GPIO_FUNC_JTAG_DISABLE,
+      AR724X_GPIO_FUNC_SPI_EN |
+      AR724X_GPIO_FUNC_SPI_CS_EN2);
 }

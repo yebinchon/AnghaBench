@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct virtio_mmio_platform_softc {int /*<<< orphan*/  ih_user; int /*<<< orphan*/  (* intr_handler ) (int /*<<< orphan*/ ) ;int /*<<< orphan*/  pio_recv; scalar_t__ use_pio; } ;
 
-/* Variables and functions */
- int PIO_READ (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PIO_SET (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mips_dcache_wbinv_all () ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ) ; 
+
+
+
+struct virtio_mmio_platform_softc {int ih_user; int (* intr_handler ) (int ) ;int pio_recv; scalar_t__ use_pio; } ;
+
+
+ int PIO_READ (int ) ;
+ int PIO_SET (int ,int,int ) ;
+ int mips_dcache_wbinv_all () ;
+ int stub1 (int ) ;
 
 __attribute__((used)) static void
 platform_intr(void *arg)
 {
-	struct virtio_mmio_platform_softc *sc;
-	int reg;
+ struct virtio_mmio_platform_softc *sc;
+ int reg;
 
-	sc = arg;
+ sc = arg;
 
-	if (sc->use_pio) {
-		/* Read pending */
-		reg = PIO_READ(sc->pio_recv);
+ if (sc->use_pio) {
 
-		/* Ack */
-		PIO_SET(sc->pio_recv, reg, 0);
-	}
+  reg = PIO_READ(sc->pio_recv);
 
-	/* Writeback, invalidate cache */
-	mips_dcache_wbinv_all();
 
-	if (sc->intr_handler != NULL)
-		sc->intr_handler(sc->ih_user);
+  PIO_SET(sc->pio_recv, reg, 0);
+ }
+
+
+ mips_dcache_wbinv_all();
+
+ if (sc->intr_handler != ((void*)0))
+  sc->intr_handler(sc->ih_user);
 }

@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct rrdhost_system_info {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CONFIG_SECTION_BACKEND ; 
- int /*<<< orphan*/  CONFIG_SECTION_GLOBAL ; 
- int /*<<< orphan*/  D_RRDHOST ; 
- int /*<<< orphan*/  config_get (int /*<<< orphan*/ ,char*,char*) ; 
- int config_get_number (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  debug (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  default_health_enabled ; 
- int /*<<< orphan*/  default_rrd_history_entries ; 
- int /*<<< orphan*/  default_rrd_memory_mode ; 
- int /*<<< orphan*/  default_rrd_update_every ; 
- int /*<<< orphan*/  default_rrdpush_api_key ; 
- int /*<<< orphan*/  default_rrdpush_destination ; 
- int /*<<< orphan*/  default_rrdpush_enabled ; 
- int /*<<< orphan*/  default_rrdpush_send_charts_matching ; 
- int gap_when_lost_iterations_above ; 
- int /*<<< orphan*/  health_init () ; 
- int /*<<< orphan*/  localhost ; 
- int /*<<< orphan*/  netdata_configured_timezone ; 
- int /*<<< orphan*/  os_type ; 
- int /*<<< orphan*/  program_name ; 
- int /*<<< orphan*/  program_version ; 
- int /*<<< orphan*/  registry_get_this_machine_guid () ; 
- int /*<<< orphan*/  registry_get_this_machine_hostname () ; 
- int /*<<< orphan*/  registry_init () ; 
- int /*<<< orphan*/  rrd_unlock () ; 
- int /*<<< orphan*/  rrd_wrlock () ; 
- int /*<<< orphan*/  rrdhost_create (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct rrdhost_system_info*,int) ; 
- int /*<<< orphan*/  rrdpush_init () ; 
- int rrdset_free_obsolete_time ; 
- int /*<<< orphan*/  web_client_api_v1_management_init () ; 
+
+ int CONFIG_SECTION_BACKEND ;
+ int CONFIG_SECTION_GLOBAL ;
+ int D_RRDHOST ;
+ int config_get (int ,char*,char*) ;
+ int config_get_number (int ,char*,int) ;
+ int debug (int ,char*,char*) ;
+ int default_health_enabled ;
+ int default_rrd_history_entries ;
+ int default_rrd_memory_mode ;
+ int default_rrd_update_every ;
+ int default_rrdpush_api_key ;
+ int default_rrdpush_destination ;
+ int default_rrdpush_enabled ;
+ int default_rrdpush_send_charts_matching ;
+ int gap_when_lost_iterations_above ;
+ int health_init () ;
+ int localhost ;
+ int netdata_configured_timezone ;
+ int os_type ;
+ int program_name ;
+ int program_version ;
+ int registry_get_this_machine_guid () ;
+ int registry_get_this_machine_hostname () ;
+ int registry_init () ;
+ int rrd_unlock () ;
+ int rrd_wrlock () ;
+ int rrdhost_create (char*,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,struct rrdhost_system_info*,int) ;
+ int rrdpush_init () ;
+ int rrdset_free_obsolete_time ;
+ int web_client_api_v1_management_init () ;
 
 void rrd_init(char *hostname, struct rrdhost_system_info *system_info) {
     rrdset_free_obsolete_time = config_get_number(CONFIG_SECTION_GLOBAL, "cleanup obsolete charts after seconds", rrdset_free_obsolete_time);
@@ -77,5 +77,5 @@ void rrd_init(char *hostname, struct rrdhost_system_info *system_info) {
             , 1
     );
     rrd_unlock();
-	web_client_api_v1_management_init();
+ web_client_api_v1_management_init();
 }

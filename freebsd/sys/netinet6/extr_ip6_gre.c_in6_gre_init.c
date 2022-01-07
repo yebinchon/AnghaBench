@@ -1,34 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  IS_DEFAULT_VNET (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  M_WAITOK ; 
- int /*<<< orphan*/  curvnet ; 
- int /*<<< orphan*/  ecookie ; 
- int /*<<< orphan*/  in6_gre_srcaddr ; 
- int /*<<< orphan*/  ip6_encap_attach (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ip6_encap_register_srcaddr (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ipv6_encap_cfg ; 
- int /*<<< orphan*/  ipv6_srcaddrtab ; 
+ int IS_DEFAULT_VNET (int ) ;
+ int M_WAITOK ;
+ int curvnet ;
+ int ecookie ;
+ int in6_gre_srcaddr ;
+ int ip6_encap_attach (int *,int *,int ) ;
+ int ip6_encap_register_srcaddr (int ,int *,int ) ;
+ int ipv6_encap_cfg ;
+ int ipv6_srcaddrtab ;
 
 void
 in6_gre_init(void)
 {
 
-	if (!IS_DEFAULT_VNET(curvnet))
-		return;
-	ipv6_srcaddrtab = ip6_encap_register_srcaddr(in6_gre_srcaddr,
-	    NULL, M_WAITOK);
-	ecookie = ip6_encap_attach(&ipv6_encap_cfg, NULL, M_WAITOK);
+ if (!IS_DEFAULT_VNET(curvnet))
+  return;
+ ipv6_srcaddrtab = ip6_encap_register_srcaddr(in6_gre_srcaddr,
+     ((void*)0), M_WAITOK);
+ ecookie = ip6_encap_attach(&ipv6_encap_cfg, ((void*)0), M_WAITOK);
 }

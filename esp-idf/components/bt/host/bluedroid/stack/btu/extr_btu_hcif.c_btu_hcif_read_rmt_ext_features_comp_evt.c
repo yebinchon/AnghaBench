@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ UINT8 ;
-typedef  int /*<<< orphan*/  UINT16 ;
 
-/* Variables and functions */
- scalar_t__ HCI_SUCCESS ; 
- int /*<<< orphan*/  STREAM_TO_UINT16 (int /*<<< orphan*/ ,scalar_t__*) ; 
- int /*<<< orphan*/  STREAM_TO_UINT8 (scalar_t__,scalar_t__*) ; 
- int /*<<< orphan*/  btm_read_remote_ext_features_complete (scalar_t__*) ; 
- int /*<<< orphan*/  btm_read_remote_ext_features_failed (scalar_t__,int /*<<< orphan*/ ) ; 
+
+
+
+typedef scalar_t__ UINT8 ;
+typedef int UINT16 ;
+
+
+ scalar_t__ HCI_SUCCESS ;
+ int STREAM_TO_UINT16 (int ,scalar_t__*) ;
+ int STREAM_TO_UINT8 (scalar_t__,scalar_t__*) ;
+ int btm_read_remote_ext_features_complete (scalar_t__*) ;
+ int btm_read_remote_ext_features_failed (scalar_t__,int ) ;
 
 __attribute__((used)) static void btu_hcif_read_rmt_ext_features_comp_evt (UINT8 *p)
 {

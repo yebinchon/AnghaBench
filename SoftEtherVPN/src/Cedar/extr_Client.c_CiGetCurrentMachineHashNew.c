@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  name ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetMachineName (char*,int) ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  Sha0 (void*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  StrLen (char*) ; 
- int /*<<< orphan*/  StrUpper (char*) ; 
- int /*<<< orphan*/  Trim (char*) ; 
+
+
+
+typedef int name ;
+
+
+ int GetMachineName (char*,int) ;
+ int MAX_PATH ;
+ int Sha0 (void*,char*,int ) ;
+ int StrLen (char*) ;
+ int StrUpper (char*) ;
+ int Trim (char*) ;
 
 void CiGetCurrentMachineHashNew(void *data)
 {
-	char name[MAX_PATH];
-	char *p;
+ char name[MAX_PATH];
+ char *p;
 
-	// Validate arguments
-	if (data == NULL)
-	{
-		return;
-	}
 
-	GetMachineName(name, sizeof(name));
+ if (data == ((void*)0))
+ {
+  return;
+ }
 
-	// Ignore after first period(.)
-	for(p=name; *p; p++)
-		if(*p == '.')
-			*p = 0;
+ GetMachineName(name, sizeof(name));
 
-	Trim(name);
-	StrUpper(name);
 
-	Sha0(data, name, StrLen(name));
+ for(p=name; *p; p++)
+  if(*p == '.')
+   *p = 0;
+
+ Trim(name);
+ StrUpper(name);
+
+ Sha0(data, name, StrLen(name));
 }

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct wined3d_texture {struct wined3d_swapchain* swapchain; } ;
 struct wined3d_swapchain {struct wined3d_texture const** back_buffers; struct wined3d_texture const* front_buffer; } ;
-typedef  int /*<<< orphan*/  GLenum ;
+typedef int GLenum ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*,struct wined3d_texture const*) ; 
- int /*<<< orphan*/  FIXME (char*) ; 
- int /*<<< orphan*/  GL_BACK ; 
- int /*<<< orphan*/  GL_FRONT ; 
- int /*<<< orphan*/  GL_NONE ; 
- int /*<<< orphan*/  TRACE (char*,...) ; 
+
+ int ERR (char*,struct wined3d_texture const*) ;
+ int FIXME (char*) ;
+ int GL_BACK ;
+ int GL_FRONT ;
+ int GL_NONE ;
+ int TRACE (char*,...) ;
 
 GLenum wined3d_texture_get_gl_buffer(const struct wined3d_texture *texture)
 {

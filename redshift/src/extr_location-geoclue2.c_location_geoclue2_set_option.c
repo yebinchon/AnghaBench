@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  location_geoclue2_state_t ;
 
-/* Variables and functions */
- char* _ (char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char const*) ; 
- int /*<<< orphan*/  stderr ; 
+
+
+
+typedef int location_geoclue2_state_t ;
+
+
+ char* _ (char*) ;
+ int fprintf (int ,char*,char const*) ;
+ int stderr ;
 
 __attribute__((used)) static int
 location_geoclue2_set_option(location_geoclue2_state_t *state,
-			     const char *key, const char *value)
+        const char *key, const char *value)
 {
-	fprintf(stderr, _("Unknown method parameter: `%s'.\n"), key);
-	return -1;
+ fprintf(stderr, _("Unknown method parameter: `%s'.\n"), key);
+ return -1;
 }

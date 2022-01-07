@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {struct nxp_74hc153_platform_data* platform_data; } ;
 struct platform_device {TYPE_1__ dev; } ;
-struct nxp_74hc153_platform_data {int /*<<< orphan*/  gpio_pin_s0; int /*<<< orphan*/  gpio_pin_s1; int /*<<< orphan*/  gpio_pin_1y; int /*<<< orphan*/  gpio_pin_2y; } ;
-struct nxp_74hc153_chip {int /*<<< orphan*/  gpio_chip; } ;
+struct nxp_74hc153_platform_data {int gpio_pin_s0; int gpio_pin_s1; int gpio_pin_1y; int gpio_pin_2y; } ;
+struct nxp_74hc153_chip {int gpio_chip; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  gpio_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gpiochip_remove (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  kfree (struct nxp_74hc153_chip*) ; 
- struct nxp_74hc153_chip* platform_get_drvdata (struct platform_device*) ; 
- int /*<<< orphan*/  platform_set_drvdata (struct platform_device*,int /*<<< orphan*/ *) ; 
+
+ int gpio_free (int ) ;
+ int gpiochip_remove (int *) ;
+ int kfree (struct nxp_74hc153_chip*) ;
+ struct nxp_74hc153_chip* platform_get_drvdata (struct platform_device*) ;
+ int platform_set_drvdata (struct platform_device*,int *) ;
 
 __attribute__((used)) static int nxp_74hc153_remove(struct platform_device *pdev)
 {
-	struct nxp_74hc153_chip *nxp = platform_get_drvdata(pdev);
-	struct nxp_74hc153_platform_data *pdata = pdev->dev.platform_data;
+ struct nxp_74hc153_chip *nxp = platform_get_drvdata(pdev);
+ struct nxp_74hc153_platform_data *pdata = pdev->dev.platform_data;
 
-	if (nxp) {
-		gpiochip_remove(&nxp->gpio_chip);
-		gpio_free(pdata->gpio_pin_2y);
-		gpio_free(pdata->gpio_pin_1y);
-		gpio_free(pdata->gpio_pin_s1);
-		gpio_free(pdata->gpio_pin_s0);
+ if (nxp) {
+  gpiochip_remove(&nxp->gpio_chip);
+  gpio_free(pdata->gpio_pin_2y);
+  gpio_free(pdata->gpio_pin_1y);
+  gpio_free(pdata->gpio_pin_s1);
+  gpio_free(pdata->gpio_pin_s0);
 
-		kfree(nxp);
-		platform_set_drvdata(pdev, NULL);
-	}
+  kfree(nxp);
+  platform_set_drvdata(pdev, ((void*)0));
+ }
 
-	return 0;
+ return 0;
 }

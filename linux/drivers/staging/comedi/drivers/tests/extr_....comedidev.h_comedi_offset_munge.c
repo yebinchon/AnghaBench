@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct comedi_subdevice {unsigned int maxdata; } ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static inline unsigned int comedi_offset_munge(struct comedi_subdevice *s,
-					       unsigned int val)
+            unsigned int val)
 {
-	return val ^ s->maxdata ^ (s->maxdata >> 1);
+ return val ^ s->maxdata ^ (s->maxdata >> 1);
 }

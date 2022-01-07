@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  startup ;
-typedef  int /*<<< orphan*/  flags ;
-struct TYPE_7__ {int /*<<< orphan*/  hProcess; int /*<<< orphan*/  hThread; } ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int startup ;
+typedef int flags ;
+struct TYPE_7__ {int hProcess; int hThread; } ;
 struct TYPE_6__ {int cb; } ;
-typedef  TYPE_1__ STARTUPINFOA ;
-typedef  TYPE_2__ PROCESS_INFORMATION ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  scalar_t__ DWORD ;
-typedef  int /*<<< orphan*/  BYTE ;
-typedef  int BOOL ;
+typedef TYPE_1__ STARTUPINFOA ;
+typedef TYPE_2__ PROCESS_INFORMATION ;
+typedef int HKEY ;
+typedef scalar_t__ DWORD ;
+typedef int BYTE ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CloseHandle (int /*<<< orphan*/ ) ; 
- int CreateProcessA (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_1__*,TYPE_2__*) ; 
- scalar_t__ ERROR_ACCESS_DENIED ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GetLastError () ; 
- int /*<<< orphan*/  HKEY_LOCAL_MACHINE ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  REG_DWORD ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- scalar_t__ RegCreateKeyA (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RegDeleteKeyA (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  RegDeleteValueA (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  RegSetValueExA (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ok (int,char*,char*,...) ; 
- int /*<<< orphan*/  skip (char*) ; 
- int /*<<< orphan*/  sprintf (char*,char*,char const*,...) ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
- int strlen (char*) ; 
- char* strrchr (char const*,char) ; 
- int /*<<< orphan*/  winetest_wait_child_process (int /*<<< orphan*/ ) ; 
+
+ int CloseHandle (int ) ;
+ int CreateProcessA (int *,char*,int *,int *,int ,int ,int *,int *,TYPE_1__*,TYPE_2__*) ;
+ scalar_t__ ERROR_ACCESS_DENIED ;
+ int FALSE ;
+ int GetLastError () ;
+ int HKEY_LOCAL_MACHINE ;
+ int MAX_PATH ;
+ int REG_DWORD ;
+ int RegCloseKey (int ) ;
+ scalar_t__ RegCreateKeyA (int ,char*,int *) ;
+ int RegDeleteKeyA (int ,char*) ;
+ int RegDeleteValueA (int ,char*) ;
+ int RegSetValueExA (int ,char*,int ,int ,int *,int) ;
+ int memset (TYPE_1__*,int ,int) ;
+ int ok (int,char*,char*,...) ;
+ int skip (char*) ;
+ int sprintf (char*,char*,char const*,...) ;
+ int strcmp (char*,char*) ;
+ int strlen (char*) ;
+ char* strrchr (char const*,char) ;
+ int winetest_wait_child_process (int ) ;
 
 __attribute__((used)) static void test_debug_heap( const char *argv0, DWORD flags )
 {
     char keyname[MAX_PATH];
     char buffer[MAX_PATH];
-    PROCESS_INFORMATION	info;
+    PROCESS_INFORMATION info;
     STARTUPINFOA startup;
     BOOL ret;
     DWORD err;
@@ -73,7 +73,7 @@ __attribute__((used)) static void test_debug_heap( const char *argv0, DWORD flag
     ok( !err, "failed to create '%s' error %u\n", keyname, err );
     if (err) return;
 
-    if (flags == 0xdeadbeef)  /* magic value for unsetting it */
+    if (flags == 0xdeadbeef)
         RegDeleteValueA( hkey, "GlobalFlag" );
     else
         RegSetValueExA( hkey, "GlobalFlag", 0, REG_DWORD, (BYTE *)&flags, sizeof(flags) );
@@ -82,7 +82,7 @@ __attribute__((used)) static void test_debug_heap( const char *argv0, DWORD flag
     startup.cb = sizeof(startup);
 
     sprintf( buffer, "%s heap.c 0x%x", argv0, flags );
-    ret = CreateProcessA( NULL, buffer, NULL, NULL, FALSE, 0, NULL, NULL, &startup, &info );
+    ret = CreateProcessA( ((void*)0), buffer, ((void*)0), ((void*)0), FALSE, 0, ((void*)0), ((void*)0), &startup, &info );
     ok( ret, "failed to create child process error %u\n", GetLastError() );
     if (ret)
     {

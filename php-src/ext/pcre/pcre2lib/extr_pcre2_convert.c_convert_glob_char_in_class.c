@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  PCRE2_UCHAR ;
-typedef  int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHAR_HT ; 
- int /*<<< orphan*/  CHAR_SPACE ; 
- int /*<<< orphan*/  CHAR_UNDERSCORE ; 
- int isalnum (int /*<<< orphan*/ ) ; 
- int isalpha (int /*<<< orphan*/ ) ; 
- int iscntrl (int /*<<< orphan*/ ) ; 
- int isdigit (int /*<<< orphan*/ ) ; 
- int isgraph (int /*<<< orphan*/ ) ; 
- int islower (int /*<<< orphan*/ ) ; 
- int isprint (int /*<<< orphan*/ ) ; 
- int ispunct (int /*<<< orphan*/ ) ; 
- int isspace (int /*<<< orphan*/ ) ; 
- int isupper (int /*<<< orphan*/ ) ; 
- int isxdigit (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int PCRE2_UCHAR ;
+typedef int BOOL ;
+
+
+ int CHAR_HT ;
+ int CHAR_SPACE ;
+ int CHAR_UNDERSCORE ;
+ int isalnum (int ) ;
+ int isalpha (int ) ;
+ int iscntrl (int ) ;
+ int isdigit (int ) ;
+ int isgraph (int ) ;
+ int islower (int ) ;
+ int isprint (int ) ;
+ int ispunct (int ) ;
+ int isspace (int ) ;
+ int isupper (int ) ;
+ int isxdigit (int ) ;
 
 __attribute__((used)) static BOOL
 convert_glob_char_in_class(int class_index, PCRE2_UCHAR c)

@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int int32_t ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int int32_t ;
 struct TYPE_6__ {int chroma_format_idc; } ;
 struct TYPE_5__ {int*** sl; int** sl_dc; } ;
-typedef  TYPE_1__ ScalingList ;
-typedef  TYPE_2__ HEVCSPS ;
-typedef  int /*<<< orphan*/  GetBitContext ;
-typedef  int /*<<< orphan*/  AVCodecContext ;
+typedef TYPE_1__ ScalingList ;
+typedef TYPE_2__ HEVCSPS ;
+typedef int GetBitContext ;
+typedef int AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int FFMIN (int,int) ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,unsigned int) ; 
- int* ff_hevc_diag_scan4x4_x ; 
- int* ff_hevc_diag_scan4x4_y ; 
- int* ff_hevc_diag_scan8x8_x ; 
- int* ff_hevc_diag_scan8x8_y ; 
- int /*<<< orphan*/  get_bits1 (int /*<<< orphan*/ *) ; 
- int get_se_golomb (int /*<<< orphan*/ *) ; 
- unsigned int get_ue_golomb_long (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memcpy (int*,int*,int) ; 
+
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ int FFMIN (int,int) ;
+ int av_log (int *,int ,char*,unsigned int) ;
+ int* ff_hevc_diag_scan4x4_x ;
+ int* ff_hevc_diag_scan4x4_y ;
+ int* ff_hevc_diag_scan8x8_x ;
+ int* ff_hevc_diag_scan8x8_y ;
+ int get_bits1 (int *) ;
+ int get_se_golomb (int *) ;
+ unsigned int get_ue_golomb_long (int *) ;
+ int memcpy (int*,int*,int) ;
 
 __attribute__((used)) static int scaling_list_data(GetBitContext *gb, AVCodecContext *avctx, ScalingList *sl, HEVCSPS *sps)
 {
@@ -47,10 +47,10 @@ __attribute__((used)) static int scaling_list_data(GetBitContext *gb, AVCodecCon
             scaling_list_pred_mode_flag = get_bits1(gb);
             if (!scaling_list_pred_mode_flag) {
                 unsigned int delta = get_ue_golomb_long(gb);
-                /* Only need to handle non-zero delta. Zero means default,
-                 * which should already be in the arrays. */
+
+
                 if (delta) {
-                    // Copy from previous array.
+
                     delta *= (size_id == 3) ? 3 : 1;
                     if (matrix_id < delta) {
                         av_log(avctx, AV_LOG_ERROR,
@@ -69,7 +69,7 @@ __attribute__((used)) static int scaling_list_data(GetBitContext *gb, AVCodecCon
                 int32_t scaling_list_delta_coef;
 
                 next_coef = 8;
-                coef_num  = FFMIN(64, 1 << (4 + (size_id << 1)));
+                coef_num = FFMIN(64, 1 << (4 + (size_id << 1)));
                 if (size_id > 1) {
                     scaling_list_dc_coef[size_id - 2][matrix_id] = get_se_golomb(gb) + 8;
                     next_coef = scaling_list_dc_coef[size_id - 2][matrix_id];

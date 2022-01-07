@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ULONG ;
-struct TYPE_2__ {int /*<<< orphan*/  iDesktop; } ;
-typedef  int /*<<< orphan*/  LPWSTR ;
-typedef  int /*<<< orphan*/ * LPITEMIDLIST ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- TYPE_1__ Globals ; 
- int /*<<< orphan*/  IShellFolder_ParseDisplayName (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int ULONG ;
+struct TYPE_2__ {int iDesktop; } ;
+typedef int LPWSTR ;
+typedef int * LPITEMIDLIST ;
+typedef int HWND ;
+typedef int HRESULT ;
+
+
+ scalar_t__ FAILED (int ) ;
+ TYPE_1__ Globals ;
+ int IShellFolder_ParseDisplayName (int ,int ,int *,int ,int *,int **,int *) ;
 
 __attribute__((used)) static LPITEMIDLIST get_path_pidl(LPWSTR path, HWND hwnd)
 {
-	LPITEMIDLIST pidl;
-	HRESULT hr;
-	ULONG len;
-	LPWSTR buffer = path;
+ LPITEMIDLIST pidl;
+ HRESULT hr;
+ ULONG len;
+ LPWSTR buffer = path;
 
-	hr = IShellFolder_ParseDisplayName(Globals.iDesktop, hwnd, NULL, buffer, &len, &pidl, NULL);
-	if (FAILED(hr))
-		return NULL;
+ hr = IShellFolder_ParseDisplayName(Globals.iDesktop, hwnd, ((void*)0), buffer, &len, &pidl, ((void*)0));
+ if (FAILED(hr))
+  return ((void*)0);
 
-	return pidl;
+ return pidl;
 }

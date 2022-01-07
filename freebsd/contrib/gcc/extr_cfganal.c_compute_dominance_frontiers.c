@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  bitmap ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TV_DOM_FRONTIERS ; 
- int /*<<< orphan*/  compute_dominance_frontiers_1 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  timevar_pop (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  timevar_push (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int bitmap ;
+
+
+ int TV_DOM_FRONTIERS ;
+ int compute_dominance_frontiers_1 (int *) ;
+ int timevar_pop (int ) ;
+ int timevar_push (int ) ;
 
 void
 compute_dominance_frontiers (bitmap *frontiers)

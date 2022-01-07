@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct nfc_hci_dev {int /*<<< orphan*/  ndev; int /*<<< orphan*/  msg_rx_queue; int /*<<< orphan*/  msg_rx_work; int /*<<< orphan*/  rx_hcp_frags; int /*<<< orphan*/  cmd_timer; int /*<<< orphan*/  msg_tx_work; int /*<<< orphan*/  msg_tx_queue; int /*<<< orphan*/  msg_tx_mutex; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INIT_LIST_HEAD (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  INIT_WORK (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mutex_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nfc_hci_cmd_timeout ; 
- int /*<<< orphan*/  nfc_hci_msg_rx_work ; 
- int /*<<< orphan*/  nfc_hci_msg_tx_work ; 
- int nfc_register_device (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  skb_queue_head_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  timer_setup (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct nfc_hci_dev {int ndev; int msg_rx_queue; int msg_rx_work; int rx_hcp_frags; int cmd_timer; int msg_tx_work; int msg_tx_queue; int msg_tx_mutex; } ;
+
+
+ int INIT_LIST_HEAD (int *) ;
+ int INIT_WORK (int *,int ) ;
+ int mutex_init (int *) ;
+ int nfc_hci_cmd_timeout ;
+ int nfc_hci_msg_rx_work ;
+ int nfc_hci_msg_tx_work ;
+ int nfc_register_device (int ) ;
+ int skb_queue_head_init (int *) ;
+ int timer_setup (int *,int ,int ) ;
 
 int nfc_hci_register_device(struct nfc_hci_dev *hdev)
 {
-	mutex_init(&hdev->msg_tx_mutex);
+ mutex_init(&hdev->msg_tx_mutex);
 
-	INIT_LIST_HEAD(&hdev->msg_tx_queue);
+ INIT_LIST_HEAD(&hdev->msg_tx_queue);
 
-	INIT_WORK(&hdev->msg_tx_work, nfc_hci_msg_tx_work);
+ INIT_WORK(&hdev->msg_tx_work, nfc_hci_msg_tx_work);
 
-	timer_setup(&hdev->cmd_timer, nfc_hci_cmd_timeout, 0);
+ timer_setup(&hdev->cmd_timer, nfc_hci_cmd_timeout, 0);
 
-	skb_queue_head_init(&hdev->rx_hcp_frags);
+ skb_queue_head_init(&hdev->rx_hcp_frags);
 
-	INIT_WORK(&hdev->msg_rx_work, nfc_hci_msg_rx_work);
+ INIT_WORK(&hdev->msg_rx_work, nfc_hci_msg_rx_work);
 
-	skb_queue_head_init(&hdev->msg_rx_queue);
+ skb_queue_head_init(&hdev->msg_rx_queue);
 
-	return nfc_register_device(hdev->ndev);
+ return nfc_register_device(hdev->ndev);
 }

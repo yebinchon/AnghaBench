@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-struct TYPE_7__ {int /*<<< orphan*/  Buffer; } ;
-typedef  TYPE_1__ UNICODE_STRING ;
-struct TYPE_9__ {int nMaxFile; int nMaxFileTitle; int Flags; scalar_t__ lStructSize; int /*<<< orphan*/  FlagsEx; int /*<<< orphan*/  dwReserved; int /*<<< orphan*/  pvReserved; int /*<<< orphan*/  lpTemplateName; void* lpstrDefExt; int /*<<< orphan*/  nFileExtension; int /*<<< orphan*/  nFileOffset; int /*<<< orphan*/  lpstrTitle; int /*<<< orphan*/  lpstrInitialDir; void* lpstrFileTitle; void* lpstrFile; int /*<<< orphan*/  nFilterIndex; scalar_t__ nMaxCustFilter; void* lpstrCustomFilter; void* lpstrFilter; int /*<<< orphan*/  hInstance; int /*<<< orphan*/  hwndOwner; } ;
-struct TYPE_8__ {int nMaxFile; int nMaxFileTitle; int Flags; int /*<<< orphan*/  FlagsEx; int /*<<< orphan*/  dwReserved; int /*<<< orphan*/  pvReserved; scalar_t__ lpTemplateName; int /*<<< orphan*/  lpstrDefExt; int /*<<< orphan*/  nFileExtension; int /*<<< orphan*/  nFileOffset; scalar_t__ lpstrTitle; scalar_t__ lpstrInitialDir; int /*<<< orphan*/  lpstrFileTitle; int /*<<< orphan*/  lpstrFile; int /*<<< orphan*/  nFilterIndex; scalar_t__ nMaxCustFilter; scalar_t__* lpstrCustomFilter; scalar_t__* lpstrFilter; int /*<<< orphan*/  hInstance; int /*<<< orphan*/  hwndOwner; } ;
-typedef  TYPE_2__ OPENFILENAMEA ;
-typedef  int /*<<< orphan*/  LPWSTR ;
-typedef  TYPE_3__* LPOPENFILENAMEW ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAY_SIZE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  COMDLG32_hInstance ; 
- void* FD31_DupToW (int /*<<< orphan*/ ,int) ; 
- void* FD31_MapStringPairsToW (scalar_t__*,scalar_t__) ; 
- int /*<<< orphan*/  IDS_OPEN_FILE ; 
- int /*<<< orphan*/  IDS_SAVE_AS ; 
- int /*<<< orphan*/  IS_INTRESOURCE (scalar_t__) ; 
- int /*<<< orphan*/  LoadStringW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int OFN_ENABLETEMPLATE ; 
- scalar_t__ OPENFILENAME_SIZE_VERSION_400W ; 
- int /*<<< orphan*/  RtlCreateUnicodeStringFromAsciiz (TYPE_1__*,scalar_t__) ; 
- int /*<<< orphan*/  heap_alloc (int) ; 
- int lstrlenW (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
+struct TYPE_7__ {int Buffer; } ;
+typedef TYPE_1__ UNICODE_STRING ;
+struct TYPE_9__ {int nMaxFile; int nMaxFileTitle; int Flags; scalar_t__ lStructSize; int FlagsEx; int dwReserved; int pvReserved; int lpTemplateName; void* lpstrDefExt; int nFileExtension; int nFileOffset; int lpstrTitle; int lpstrInitialDir; void* lpstrFileTitle; void* lpstrFile; int nFilterIndex; scalar_t__ nMaxCustFilter; void* lpstrCustomFilter; void* lpstrFilter; int hInstance; int hwndOwner; } ;
+struct TYPE_8__ {int nMaxFile; int nMaxFileTitle; int Flags; int FlagsEx; int dwReserved; int pvReserved; scalar_t__ lpTemplateName; int lpstrDefExt; int nFileExtension; int nFileOffset; scalar_t__ lpstrTitle; scalar_t__ lpstrInitialDir; int lpstrFileTitle; int lpstrFile; int nFilterIndex; scalar_t__ nMaxCustFilter; scalar_t__* lpstrCustomFilter; scalar_t__* lpstrFilter; int hInstance; int hwndOwner; } ;
+typedef TYPE_2__ OPENFILENAMEA ;
+typedef int LPWSTR ;
+typedef TYPE_3__* LPOPENFILENAMEW ;
+typedef int LPCWSTR ;
+typedef scalar_t__ BOOL ;
+
+
+ int ARRAY_SIZE (int *) ;
+ int COMDLG32_hInstance ;
+ void* FD31_DupToW (int ,int) ;
+ void* FD31_MapStringPairsToW (scalar_t__*,scalar_t__) ;
+ int IDS_OPEN_FILE ;
+ int IDS_SAVE_AS ;
+ int IS_INTRESOURCE (scalar_t__) ;
+ int LoadStringW (int ,int ,int *,int ) ;
+ int OFN_ENABLETEMPLATE ;
+ scalar_t__ OPENFILENAME_SIZE_VERSION_400W ;
+ int RtlCreateUnicodeStringFromAsciiz (TYPE_1__*,scalar_t__) ;
+ int heap_alloc (int) ;
+ int lstrlenW (int *) ;
+ int memcpy (int ,int *,int) ;
 
 __attribute__((used)) static void FD31_MapOfnStructA(const OPENFILENAMEA *ofnA, LPOPENFILENAMEW ofnW, BOOL open)
 {
@@ -86,13 +86,13 @@ __attribute__((used)) static void FD31_MapOfnStructA(const OPENFILENAMEA *ofnA, 
             RtlCreateUnicodeStringFromAsciiz (&usBuffer,ofnA->lpTemplateName);
             ofnW->lpTemplateName = usBuffer.Buffer;
         }
-        else /* numbered resource */
+        else
             ofnW->lpTemplateName = (LPCWSTR) ofnA->lpTemplateName;
     }
     if (ofnW->lStructSize > OPENFILENAME_SIZE_VERSION_400W)
     {
         ofnW->pvReserved = ofnA->pvReserved;
         ofnW->dwReserved = ofnA->dwReserved;
-        ofnW->FlagsEx    = ofnA->FlagsEx;
+        ofnW->FlagsEx = ofnA->FlagsEx;
     }
 }

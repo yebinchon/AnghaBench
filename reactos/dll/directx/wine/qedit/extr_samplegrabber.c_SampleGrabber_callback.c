@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ ULONG ;
-struct TYPE_5__ {int /*<<< orphan*/  csFilter; } ;
-struct TYPE_6__ {scalar_t__ bufferLen; int grabberMethod; int /*<<< orphan*/  grabberIface; TYPE_1__ filter; int /*<<< orphan*/ * bufferData; } ;
-typedef  TYPE_2__ SG_Impl ;
-typedef  int REFERENCE_TIME ;
-typedef  scalar_t__ LONG ;
-typedef  int /*<<< orphan*/  IMediaSample ;
-typedef  int /*<<< orphan*/  BYTE ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * CoTaskMemAlloc (scalar_t__) ; 
- int /*<<< orphan*/  CoTaskMemFree (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CopyMemory (int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  ERR (char*,TYPE_2__*,int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  EnterCriticalSection (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FIXME (char*,int) ; 
- scalar_t__ IMediaSample_AddRef (int /*<<< orphan*/ *) ; 
- scalar_t__ IMediaSample_GetActualDataLength (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IMediaSample_GetPointer (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IMediaSample_GetTime (int /*<<< orphan*/ *,int*,int*) ; 
- int /*<<< orphan*/  IMediaSample_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ISampleGrabberCB_BufferCB (int /*<<< orphan*/ ,double,int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  ISampleGrabberCB_SampleCB (int /*<<< orphan*/ ,double,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LeaveCriticalSection (int /*<<< orphan*/ *) ; 
- scalar_t__ SUCCEEDED (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef scalar_t__ ULONG ;
+struct TYPE_5__ {int csFilter; } ;
+struct TYPE_6__ {scalar_t__ bufferLen; int grabberMethod; int grabberIface; TYPE_1__ filter; int * bufferData; } ;
+typedef TYPE_2__ SG_Impl ;
+typedef int REFERENCE_TIME ;
+typedef scalar_t__ LONG ;
+typedef int IMediaSample ;
+typedef int BYTE ;
+
+
+ int * CoTaskMemAlloc (scalar_t__) ;
+ int CoTaskMemFree (int *) ;
+ int CopyMemory (int *,int *,scalar_t__) ;
+ int ERR (char*,TYPE_2__*,int *,scalar_t__) ;
+ int EnterCriticalSection (int *) ;
+ int FIXME (char*,int) ;
+ scalar_t__ IMediaSample_AddRef (int *) ;
+ scalar_t__ IMediaSample_GetActualDataLength (int *) ;
+ int IMediaSample_GetPointer (int *,int **) ;
+ int IMediaSample_GetTime (int *,int*,int*) ;
+ int IMediaSample_Release (int *) ;
+ int ISampleGrabberCB_BufferCB (int ,double,int *,scalar_t__) ;
+ int ISampleGrabberCB_SampleCB (int ,double,int *) ;
+ int LeaveCriticalSection (int *) ;
+ scalar_t__ SUCCEEDED (int ) ;
 
 __attribute__((used)) static void SampleGrabber_callback(SG_Impl *This, IMediaSample *sample)
 {
@@ -51,7 +51,7 @@ __attribute__((used)) static void SampleGrabber_callback(SG_Impl *This, IMediaSa
             EnterCriticalSection(&This->filter.csFilter);
             if (This->bufferLen != size) {
                 CoTaskMemFree(This->bufferData);
-                This->bufferData = size ? CoTaskMemAlloc(size) : NULL;
+                This->bufferData = size ? CoTaskMemAlloc(size) : ((void*)0);
                 This->bufferLen = size;
             }
             if (size)
@@ -65,18 +65,18 @@ __attribute__((used)) static void SampleGrabber_callback(SG_Impl *This, IMediaSa
         time = 1e-7 * tStart;
     switch (This->grabberMethod) {
         case 0:
-	    {
-		ULONG ref = IMediaSample_AddRef(sample);
-		ISampleGrabberCB_SampleCB(This->grabberIface, time, sample);
-		ref = IMediaSample_Release(sample) + 1 - ref;
-		if (ref)
-		{
-		    ERR("(%p) Callback referenced sample %p by %u\n", This, sample, ref);
-		    /* ugly as hell but some apps are sooo buggy */
-		    while (ref--)
-			IMediaSample_Release(sample);
-		}
-	    }
+     {
+  ULONG ref = IMediaSample_AddRef(sample);
+  ISampleGrabberCB_SampleCB(This->grabberIface, time, sample);
+  ref = IMediaSample_Release(sample) + 1 - ref;
+  if (ref)
+  {
+      ERR("(%p) Callback referenced sample %p by %u\n", This, sample, ref);
+
+      while (ref--)
+   IMediaSample_Release(sample);
+  }
+     }
             break;
         case 1:
             {
@@ -90,7 +90,7 @@ __attribute__((used)) static void SampleGrabber_callback(SG_Impl *This, IMediaSa
             break;
         default:
             FIXME("unsupported method %d\n", This->grabberMethod);
-            /* do not bother us again */
+
             This->grabberMethod = -1;
     }
 }

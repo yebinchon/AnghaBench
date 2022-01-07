@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  temp_path ;
-typedef  int /*<<< orphan*/  psadobe ;
-typedef  int /*<<< orphan*/  di ;
-typedef  int /*<<< orphan*/  buf ;
-typedef  int WORD ;
-struct TYPE_3__ {int cbSize; char* lpszDocName; char* lpszOutput; scalar_t__ fwType; int /*<<< orphan*/ * lpszDatatype; } ;
-typedef  int /*<<< orphan*/  HDC ;
-typedef  scalar_t__ HANDLE ;
-typedef  int DWORD ;
-typedef  TYPE_1__ DOCINFOA ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CloseHandle (scalar_t__) ; 
- scalar_t__ CreateFileA (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DOWNLOADHEADER ; 
- int /*<<< orphan*/  DeleteFileA (char*) ; 
- int EndDoc (int /*<<< orphan*/ ) ; 
- int Escape (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *) ; 
- int ExtEscape (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,char*) ; 
- int /*<<< orphan*/  GENERIC_READ ; 
- int /*<<< orphan*/  GetTempFileNameA (char*,char*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  GetTempPathA (int,char*) ; 
- scalar_t__ INVALID_HANDLE_VALUE ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  OPEN_EXISTING ; 
- int /*<<< orphan*/  POSTSCRIPT_PASSTHROUGH ; 
- int ReadFile (scalar_t__,char*,int,int*,int /*<<< orphan*/ *) ; 
- int StartDocA (int /*<<< orphan*/ ,TYPE_1__*) ; 
- scalar_t__ memcmp (char*,char const*,int) ; 
- int /*<<< orphan*/  memset (char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- char* strchr (char*,char) ; 
- scalar_t__ strcmp (char*,char*) ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
- int strlen (char*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int temp_path ;
+typedef int psadobe ;
+typedef int di ;
+typedef int buf ;
+typedef int WORD ;
+struct TYPE_3__ {int cbSize; char* lpszDocName; char* lpszOutput; scalar_t__ fwType; int * lpszDatatype; } ;
+typedef int HDC ;
+typedef scalar_t__ HANDLE ;
+typedef int DWORD ;
+typedef TYPE_1__ DOCINFOA ;
+
+
+ int CloseHandle (scalar_t__) ;
+ scalar_t__ CreateFileA (char*,int ,int ,int *,int ,int ,int ) ;
+ int DOWNLOADHEADER ;
+ int DeleteFileA (char*) ;
+ int EndDoc (int ) ;
+ int Escape (int ,int ,int ,char*,int *) ;
+ int ExtEscape (int ,int ,int ,int *,int,char*) ;
+ int GENERIC_READ ;
+ int GetTempFileNameA (char*,char*,int ,char*) ;
+ int GetTempPathA (int,char*) ;
+ scalar_t__ INVALID_HANDLE_VALUE ;
+ int MAX_PATH ;
+ int OPEN_EXISTING ;
+ int POSTSCRIPT_PASSTHROUGH ;
+ int ReadFile (scalar_t__,char*,int,int*,int *) ;
+ int StartDocA (int ,TYPE_1__*) ;
+ scalar_t__ memcmp (char*,char const*,int) ;
+ int memset (char*,int ,int) ;
+ int ok (int,char*,...) ;
+ char* strchr (char*,char) ;
+ scalar_t__ strcmp (char*,char*) ;
+ int strcpy (char*,char*) ;
+ int strlen (char*) ;
 
 __attribute__((used)) static void print_something(HDC hdc)
 {
@@ -62,37 +62,37 @@ __attribute__((used)) static void print_something(HDC hdc)
     di.cbSize = sizeof(di);
     di.lpszDocName = "Let's dance";
     di.lpszOutput = file_name;
-    di.lpszDatatype = NULL;
+    di.lpszDatatype = ((void*)0);
     di.fwType = 0;
     ret = StartDocA(hdc, &di);
     ok(ret > 0, "StartDoc failed: %d\n", ret);
 
     strcpy(buf + 2, "\n% ===> before DOWNLOADHEADER <===\n");
     *(WORD *)buf = strlen(buf + 2);
-    ret = Escape(hdc, POSTSCRIPT_PASSTHROUGH, 0, buf, NULL);
+    ret = Escape(hdc, POSTSCRIPT_PASSTHROUGH, 0, buf, ((void*)0));
     ok(ret == *(WORD *)buf, "POSTSCRIPT_PASSTHROUGH failed: %d\n", ret);
 
     strcpy(buf, "deadbeef");
-    ret = ExtEscape(hdc, DOWNLOADHEADER, 0, NULL, sizeof(buf), buf );
+    ret = ExtEscape(hdc, DOWNLOADHEADER, 0, ((void*)0), sizeof(buf), buf );
     ok(ret == 1, "DOWNLOADHEADER failed\n");
     ok(strcmp(buf, "deadbeef") != 0, "DOWNLOADHEADER failed\n");
 
     strcpy(buf + 2, "\n% ===> after DOWNLOADHEADER <===\n");
     *(WORD *)buf = strlen(buf + 2);
-    ret = Escape(hdc, POSTSCRIPT_PASSTHROUGH, 0, buf, NULL);
+    ret = Escape(hdc, POSTSCRIPT_PASSTHROUGH, 0, buf, ((void*)0));
     ok(ret == *(WORD *)buf, "POSTSCRIPT_PASSTHROUGH failed: %d\n", ret);
 
     ret = EndDoc(hdc);
     ok(ret == 1, "EndDoc failed\n");
 
-    hfile = CreateFileA(file_name, GENERIC_READ, 0, NULL, OPEN_EXISTING, 0, 0);
+    hfile = CreateFileA(file_name, GENERIC_READ, 0, ((void*)0), OPEN_EXISTING, 0, 0);
     ok(hfile != INVALID_HANDLE_VALUE, "CreateFile failed\n");
     memset(buf, 0, sizeof(buf));
-    ret = ReadFile(hfile, buf, sizeof(buf), &ret, NULL);
+    ret = ReadFile(hfile, buf, sizeof(buf), &ret, ((void*)0));
     ok(ret, "ReadFile failed\n");
     CloseHandle(hfile);
 
-    /* skip the HP PCL language selector */
+
     buf[sizeof(buf) - 1] = 0;
     p = buf;
     while (*p)

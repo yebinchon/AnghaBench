@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct metafile {int data; int /*<<< orphan*/ * aio; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct metafile {int data; int * aio; } ;
 struct TYPE_2__ {int user_id; int offset; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  WaitAioArrAdd (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  WaitAioArrClear () ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  check_aio_completion (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * create_aio_read_connection (int /*<<< orphan*/ ,int,long long,long,int /*<<< orphan*/ *,struct metafile*) ; 
- int /*<<< orphan*/  ct_metafile_aio ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int free_by_LRU () ; 
- int /*<<< orphan*/  idx_fd ; 
- int index_large_data_offset ; 
- struct metafile* large_metafiles ; 
- TYPE_1__* large_users ; 
- int large_users_number ; 
- int metafile_alloc (long) ; 
- int /*<<< orphan*/  stderr ; 
- int verbosity ; 
+
+ int WaitAioArrAdd (int *) ;
+ int WaitAioArrClear () ;
+ int assert (int) ;
+ int check_aio_completion (int *) ;
+ int * create_aio_read_connection (int ,int,long long,long,int *,struct metafile*) ;
+ int ct_metafile_aio ;
+ int fprintf (int ,char*,...) ;
+ int free_by_LRU () ;
+ int idx_fd ;
+ int index_large_data_offset ;
+ struct metafile* large_metafiles ;
+ TYPE_1__* large_users ;
+ int large_users_number ;
+ int metafile_alloc (long) ;
+ int stderr ;
+ int verbosity ;
 
 __attribute__((used)) static void load_metafile_aio (int pos) {
   WaitAioArrClear ();
-  //WaitAio = NULL;
+
 
   assert (0 <= pos && pos < large_users_number);
   assert (large_metafiles[pos].data);
@@ -48,10 +48,10 @@ __attribute__((used)) static void load_metafile_aio (int pos) {
     fprintf (stderr, "loading metafile %d for user %d (%ld bytes at position %lld) in aio mode\n", pos, user_id, data_len, idx_offset);
   }
 
-  if (meta->aio != NULL) {
+  if (meta->aio != ((void*)0)) {
     check_aio_completion (meta->aio);
-    if (meta->aio != NULL) {
-      //WaitAio = meta->aio;
+    if (meta->aio != ((void*)0)) {
+
       WaitAioArrAdd (meta->aio);
       return;
     }
@@ -78,8 +78,8 @@ __attribute__((used)) static void load_metafile_aio (int pos) {
   if (verbosity >= 4) {
     fprintf (stderr, "AIO query created\n");
   }
-  assert (meta->aio != NULL);
-  //WaitAio = meta->aio;
+  assert (meta->aio != ((void*)0));
+
   WaitAioArrAdd (meta->aio);
 
   return;

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_9__ {int c; int h; int w; } ;
-typedef  TYPE_1__ image ;
+typedef TYPE_1__ image ;
 
-/* Variables and functions */
- int /*<<< orphan*/  add_pixel (TYPE_1__,int,int,int,float) ; 
- int /*<<< orphan*/  free_image (TYPE_1__) ; 
- float get_pixel (TYPE_1__,int,int,int) ; 
- TYPE_1__ make_image (int,int,int) ; 
- int /*<<< orphan*/  set_pixel (TYPE_1__,int,int,int,float) ; 
+
+ int add_pixel (TYPE_1__,int,int,int,float) ;
+ int free_image (TYPE_1__) ;
+ float get_pixel (TYPE_1__,int,int,int) ;
+ TYPE_1__ make_image (int,int,int) ;
+ int set_pixel (TYPE_1__,int,int,int,float) ;
 
 image resize_image(image im, int w, int h)
 {
-    image resized = make_image(w, h, im.c);   
+    image resized = make_image(w, h, im.c);
     image part = make_image(w, im.h, im.c);
     int r, c, k;
     float w_scale = (float)(im.w - 1) / (w - 1);

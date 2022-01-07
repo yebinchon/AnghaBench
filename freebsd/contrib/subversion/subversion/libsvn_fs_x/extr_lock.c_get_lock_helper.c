@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_lock_t ;
-typedef  int /*<<< orphan*/  svn_fs_t ;
+
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int svn_lock_t ;
+typedef int svn_fs_t ;
 struct TYPE_7__ {scalar_t__ apr_err; } ;
-typedef  TYPE_1__ svn_error_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+typedef TYPE_1__ svn_error_t ;
+typedef int svn_boolean_t ;
+typedef int apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  SVN_ERR (TYPE_1__*) ; 
- scalar_t__ SVN_ERR_FS_LOCK_EXPIRED ; 
- scalar_t__ SVN_ERR_FS_NO_SUCH_LOCK ; 
- TYPE_1__* SVN_NO_ERROR ; 
- TYPE_1__* get_lock (int /*<<< orphan*/ **,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_error_clear (TYPE_1__*) ; 
+
+ int FALSE ;
+ int SVN_ERR (TYPE_1__*) ;
+ scalar_t__ SVN_ERR_FS_LOCK_EXPIRED ;
+ scalar_t__ SVN_ERR_FS_NO_SUCH_LOCK ;
+ TYPE_1__* SVN_NO_ERROR ;
+ TYPE_1__* get_lock (int **,int *,char const*,int ,int ,int *) ;
+ int svn_error_clear (TYPE_1__*) ;
 
 __attribute__((used)) static svn_error_t *
 get_lock_helper(svn_fs_t *fs,
@@ -39,13 +39,13 @@ get_lock_helper(svn_fs_t *fs,
 
   err = get_lock(&lock, fs, path, have_write_lock, FALSE, pool);
 
-  /* We've deliberately decided that this function doesn't tell the
-     caller *why* the lock is unavailable.  */
+
+
   if (err && ((err->apr_err == SVN_ERR_FS_NO_SUCH_LOCK)
               || (err->apr_err == SVN_ERR_FS_LOCK_EXPIRED)))
     {
       svn_error_clear(err);
-      *lock_p = NULL;
+      *lock_p = ((void*)0);
       return SVN_NO_ERROR;
     }
   else

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {char* name; } ;
-typedef  int /*<<< orphan*/  AVFormatContext ;
-typedef  TYPE_1__ AVCodecDescriptor ;
+typedef int AVFormatContext ;
+typedef TYPE_1__ AVCodecDescriptor ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  ENOSYS ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,char const*,char*) ; 
- TYPE_1__* avcodec_descriptor_get (int) ; 
+
+ int AVERROR (int ) ;
+ int AV_LOG_ERROR ;
+ int ENOSYS ;
+ int av_log (int *,int ,char*,char const*,char*) ;
+ TYPE_1__* avcodec_descriptor_get (int) ;
 
 __attribute__((used)) static int unsupported_codec(AVFormatContext *s,
                              const char* type, int codec_id)

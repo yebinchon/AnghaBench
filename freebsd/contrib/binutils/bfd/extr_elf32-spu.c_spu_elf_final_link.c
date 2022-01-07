@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct spu_link_hash_table {int /*<<< orphan*/  emit_stack_syms; scalar_t__ stack_analysis; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct spu_link_hash_table {int emit_stack_syms; scalar_t__ stack_analysis; } ;
 struct bfd_link_info {TYPE_1__* callbacks; } ;
-typedef  int /*<<< orphan*/  bfd_boolean ;
-typedef  int /*<<< orphan*/  bfd ;
-struct TYPE_2__ {int /*<<< orphan*/  (* einfo ) (char*) ;} ;
+typedef int bfd_boolean ;
+typedef int bfd ;
+struct TYPE_2__ {int (* einfo ) (char*) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  bfd_elf_final_link (int /*<<< orphan*/ *,struct bfd_link_info*) ; 
- int /*<<< orphan*/  spu_elf_stack_analysis (int /*<<< orphan*/ *,struct bfd_link_info*,int /*<<< orphan*/ ) ; 
- struct spu_link_hash_table* spu_hash_table (struct bfd_link_info*) ; 
- int /*<<< orphan*/  stub1 (char*) ; 
+
+ int bfd_elf_final_link (int *,struct bfd_link_info*) ;
+ int spu_elf_stack_analysis (int *,struct bfd_link_info*,int ) ;
+ struct spu_link_hash_table* spu_hash_table (struct bfd_link_info*) ;
+ int stub1 (char*) ;
 
 __attribute__((used)) static bfd_boolean
 spu_elf_final_link (bfd *output_bfd, struct bfd_link_info *info)

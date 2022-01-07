@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct elan_tp_data {TYPE_2__* client; TYPE_1__* ops; int /*<<< orphan*/  vcc; } ;
-struct TYPE_5__ {int /*<<< orphan*/  dev; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct elan_tp_data {TYPE_2__* client; TYPE_1__* ops; int vcc; } ;
+struct TYPE_5__ {int dev; } ;
 struct TYPE_4__ {int (* power_control ) (TYPE_2__*,int) ;} ;
 
-/* Variables and functions */
- int ETP_RETRY_COUNT ; 
- int /*<<< orphan*/  dev_err (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  msleep (int) ; 
- int regulator_disable (int /*<<< orphan*/ ) ; 
- int stub1 (TYPE_2__*,int) ; 
- int stub2 (TYPE_2__*,int) ; 
+
+ int ETP_RETRY_COUNT ;
+ int dev_err (int *,char*,int) ;
+ int msleep (int) ;
+ int regulator_disable (int ) ;
+ int stub1 (TYPE_2__*,int) ;
+ int stub2 (TYPE_2__*,int) ;
 
 __attribute__((used)) static int elan_disable_power(struct elan_tp_data *data)
 {
-	int repeat = ETP_RETRY_COUNT;
-	int error;
+ int repeat = ETP_RETRY_COUNT;
+ int error;
 
-	do {
-		error = data->ops->power_control(data->client, false);
-		if (!error) {
-			error = regulator_disable(data->vcc);
-			if (error) {
-				dev_err(&data->client->dev,
-					"failed to disable regulator: %d\n",
-					error);
-				/* Attempt to power the chip back up */
-				data->ops->power_control(data->client, true);
-				break;
-			}
+ do {
+  error = data->ops->power_control(data->client, 0);
+  if (!error) {
+   error = regulator_disable(data->vcc);
+   if (error) {
+    dev_err(&data->client->dev,
+     "failed to disable regulator: %d\n",
+     error);
 
-			return 0;
-		}
+    data->ops->power_control(data->client, 1);
+    break;
+   }
 
-		msleep(30);
-	} while (--repeat > 0);
+   return 0;
+  }
 
-	dev_err(&data->client->dev, "failed to disable power: %d\n", error);
-	return error;
+  msleep(30);
+ } while (--repeat > 0);
+
+ dev_err(&data->client->dev, "failed to disable power: %d\n", error);
+ return error;
 }

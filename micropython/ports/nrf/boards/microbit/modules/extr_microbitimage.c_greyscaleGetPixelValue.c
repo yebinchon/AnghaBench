@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  unsigned int uint8_t ;
-typedef  unsigned int mp_int_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef unsigned int uint8_t ;
+typedef unsigned int mp_int_t ;
 struct TYPE_3__ {unsigned int width; unsigned int* byte_data; } ;
-typedef  TYPE_1__ greyscale_t ;
+typedef TYPE_1__ greyscale_t ;
 
-/* Variables and functions */
+
 
 uint8_t greyscaleGetPixelValue(greyscale_t * p_greyscale, mp_int_t x, mp_int_t y) {
     unsigned int index = y*p_greyscale->width+x;

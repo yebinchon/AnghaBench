@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  rtx ;
 
-/* Variables and functions */
- scalar_t__ CONSTANT_P (int /*<<< orphan*/ ) ; 
- scalar_t__ CONST_INT ; 
- int /*<<< orphan*/  GEN_INT (int) ; 
- int /*<<< orphan*/  GET_CLASS_NARROWEST_MODE (int /*<<< orphan*/ ) ; 
- scalar_t__ GET_CODE (int /*<<< orphan*/ ) ; 
- int INTVAL (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MODE_INT ; 
- int /*<<< orphan*/  OPTAB_LIB_WIDEN ; 
- int /*<<< orphan*/  Pmode ; 
- scalar_t__ REG_P (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  add_optab ; 
- int /*<<< orphan*/  anti_adjust_stack (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  convert_modes (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  copy_to_mode_reg (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  expand_binop (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_rtx_PLUS (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memory_address (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  negate_rtx (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  plus_constant (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ptr_mode ; 
- int /*<<< orphan*/  virtual_outgoing_args_rtx ; 
+
+
+
+typedef int rtx ;
+
+
+ scalar_t__ CONSTANT_P (int ) ;
+ scalar_t__ CONST_INT ;
+ int GEN_INT (int) ;
+ int GET_CLASS_NARROWEST_MODE (int ) ;
+ scalar_t__ GET_CODE (int ) ;
+ int INTVAL (int ) ;
+ int MODE_INT ;
+ int OPTAB_LIB_WIDEN ;
+ int Pmode ;
+ scalar_t__ REG_P (int ) ;
+ int add_optab ;
+ int anti_adjust_stack (int ) ;
+ int convert_modes (int ,int ,int ,int) ;
+ int copy_to_mode_reg (int ,int ) ;
+ int expand_binop (int ,int ,int ,int ,int ,int ,int ) ;
+ int gen_rtx_PLUS (int ,int ,int ) ;
+ int memory_address (int ,int ) ;
+ int negate_rtx (int ,int ) ;
+ int plus_constant (int ,int) ;
+ int ptr_mode ;
+ int virtual_outgoing_args_rtx ;
 
 rtx
 push_block (rtx size, int extra, int below)
@@ -49,32 +49,32 @@ push_block (rtx size, int extra, int below)
     {
       temp = copy_to_mode_reg (Pmode, size);
       if (extra != 0)
-	temp = expand_binop (Pmode, add_optab, temp, GEN_INT (extra),
-			     temp, 0, OPTAB_LIB_WIDEN);
+ temp = expand_binop (Pmode, add_optab, temp, GEN_INT (extra),
+        temp, 0, OPTAB_LIB_WIDEN);
       anti_adjust_stack (temp);
     }
 
-#ifndef STACK_GROWS_DOWNWARD
+
   if (0)
-#else
-  if (1)
-#endif
+
+
+
     {
       temp = virtual_outgoing_args_rtx;
       if (extra != 0 && below)
-	temp = plus_constant (temp, extra);
+ temp = plus_constant (temp, extra);
     }
   else
     {
       if (GET_CODE (size) == CONST_INT)
-	temp = plus_constant (virtual_outgoing_args_rtx,
-			      -INTVAL (size) - (below ? 0 : extra));
+ temp = plus_constant (virtual_outgoing_args_rtx,
+         -INTVAL (size) - (below ? 0 : extra));
       else if (extra != 0 && !below)
-	temp = gen_rtx_PLUS (Pmode, virtual_outgoing_args_rtx,
-			     negate_rtx (Pmode, plus_constant (size, extra)));
+ temp = gen_rtx_PLUS (Pmode, virtual_outgoing_args_rtx,
+        negate_rtx (Pmode, plus_constant (size, extra)));
       else
-	temp = gen_rtx_PLUS (Pmode, virtual_outgoing_args_rtx,
-			     negate_rtx (Pmode, size));
+ temp = gen_rtx_PLUS (Pmode, virtual_outgoing_args_rtx,
+        negate_rtx (Pmode, size));
     }
 
   return memory_address (GET_CLASS_NARROWEST_MODE (MODE_INT), temp);

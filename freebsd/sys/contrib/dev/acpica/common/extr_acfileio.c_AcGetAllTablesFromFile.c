@@ -1,61 +1,61 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT8 ;
-typedef  int UINT32 ;
-struct TYPE_4__ {struct TYPE_4__* Next; int /*<<< orphan*/ * Table; } ;
-typedef  int /*<<< orphan*/  FILE ;
-typedef  int /*<<< orphan*/  ACPI_TABLE_HEADER ;
-typedef  scalar_t__ ACPI_STATUS ;
-typedef  TYPE_1__ ACPI_NEW_TABLE_DESC ;
 
-/* Variables and functions */
- scalar_t__ ACPI_FAILURE (scalar_t__) ; 
- scalar_t__ ACPI_SUCCESS (scalar_t__) ; 
- int ACPI_UINT32_MAX ; 
- scalar_t__ AE_BAD_HEADER ; 
- scalar_t__ AE_CTRL_TERMINATE ; 
- scalar_t__ AE_ERROR ; 
- scalar_t__ AE_NOT_EXIST ; 
- scalar_t__ AE_NO_MEMORY ; 
- scalar_t__ AE_OK ; 
- scalar_t__ AE_TYPE ; 
- scalar_t__ AcGetOneTableFromFile (char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  AcIsFileBinary (int /*<<< orphan*/ *) ; 
- TYPE_1__* AcpiOsAllocate (int) ; 
- int /*<<< orphan*/  AcpiOsFree (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  AcpiTbPrintTableHeader (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int CmGetFileSize (int /*<<< orphan*/ *) ; 
- scalar_t__ ENOENT ; 
- scalar_t__ errno ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*,...) ; 
- int /*<<< orphan*/  stderr ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int UINT8 ;
+typedef int UINT32 ;
+struct TYPE_4__ {struct TYPE_4__* Next; int * Table; } ;
+typedef int FILE ;
+typedef int ACPI_TABLE_HEADER ;
+typedef scalar_t__ ACPI_STATUS ;
+typedef TYPE_1__ ACPI_NEW_TABLE_DESC ;
+
+
+ scalar_t__ ACPI_FAILURE (scalar_t__) ;
+ scalar_t__ ACPI_SUCCESS (scalar_t__) ;
+ int ACPI_UINT32_MAX ;
+ scalar_t__ AE_BAD_HEADER ;
+ scalar_t__ AE_CTRL_TERMINATE ;
+ scalar_t__ AE_ERROR ;
+ scalar_t__ AE_NOT_EXIST ;
+ scalar_t__ AE_NO_MEMORY ;
+ scalar_t__ AE_OK ;
+ scalar_t__ AE_TYPE ;
+ scalar_t__ AcGetOneTableFromFile (char*,int *,int ,int **) ;
+ int AcIsFileBinary (int *) ;
+ TYPE_1__* AcpiOsAllocate (int) ;
+ int AcpiOsFree (int *) ;
+ int AcpiTbPrintTableHeader (int ,int *) ;
+ int CmGetFileSize (int *) ;
+ scalar_t__ ENOENT ;
+ scalar_t__ errno ;
+ int fclose (int *) ;
+ int * fopen (char*,char*) ;
+ int fprintf (int ,char*,char*,...) ;
+ int stderr ;
 
 ACPI_STATUS
 AcGetAllTablesFromFile (
-    char                    *Filename,
-    UINT8                   GetOnlyAmlTables,
-    ACPI_NEW_TABLE_DESC     **ReturnListHead)
+    char *Filename,
+    UINT8 GetOnlyAmlTables,
+    ACPI_NEW_TABLE_DESC **ReturnListHead)
 {
-    ACPI_NEW_TABLE_DESC     *ListHead = NULL;
-    ACPI_NEW_TABLE_DESC     *ListTail = NULL;
-    ACPI_NEW_TABLE_DESC     *TableDesc;
-    FILE                    *File;
-    ACPI_TABLE_HEADER       *Table = NULL;
-    UINT32                  FileSize;
-    ACPI_STATUS             Status = AE_OK;
+    ACPI_NEW_TABLE_DESC *ListHead = ((void*)0);
+    ACPI_NEW_TABLE_DESC *ListTail = ((void*)0);
+    ACPI_NEW_TABLE_DESC *TableDesc;
+    FILE *File;
+    ACPI_TABLE_HEADER *Table = ((void*)0);
+    UINT32 FileSize;
+    ACPI_STATUS Status = AE_OK;
 
 
     File = fopen (Filename, "rb");
@@ -70,7 +70,7 @@ AcGetAllTablesFromFile (
         return (AE_ERROR);
     }
 
-    /* Get the file size */
+
 
     FileSize = CmGetFileSize (File);
     if (FileSize == ACPI_UINT32_MAX)
@@ -83,7 +83,7 @@ AcGetAllTablesFromFile (
         "Input file %s, Length 0x%X (%u) bytes\n",
         Filename, FileSize, FileSize);
 
-    /* We must have at least one ACPI table header */
+
 
     if (FileSize < sizeof (ACPI_TABLE_HEADER))
     {
@@ -91,7 +91,7 @@ AcGetAllTablesFromFile (
         goto Exit;
     }
 
-    /* Check for an non-binary file */
+
 
     if (!AcIsFileBinary (File))
     {
@@ -102,11 +102,11 @@ AcGetAllTablesFromFile (
         goto Exit;
     }
 
-    /* Read all tables within the file */
+
 
     while (ACPI_SUCCESS (Status))
     {
-        /* Get one entire ACPI table */
+
 
         Status = AcGetOneTableFromFile (
             Filename, File, GetOnlyAmlTables, &Table);
@@ -125,16 +125,6 @@ AcGetAllTablesFromFile (
         {
             goto Exit;
         }
-
-        /* Print table header for iASL/disassembler only */
-
-#ifdef ACPI_ASL_COMPILER
-
-        AcpiTbPrintTableHeader (0, Table);
-#endif
-
-        /* Allocate and link a table descriptor */
-
         TableDesc = AcpiOsAllocate (sizeof (ACPI_NEW_TABLE_DESC));
         if (!TableDesc)
         {
@@ -144,9 +134,9 @@ AcGetAllTablesFromFile (
         }
 
         TableDesc->Table = Table;
-        TableDesc->Next = NULL;
+        TableDesc->Next = ((void*)0);
 
-        /* Link at the end of the local table list */
+
 
         if (!ListHead)
         {
@@ -160,7 +150,7 @@ AcGetAllTablesFromFile (
         }
     }
 
-    /* Add the local table list to the end of the global list */
+
 
     if (*ReturnListHead)
     {

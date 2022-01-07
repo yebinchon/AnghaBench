@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  try_cleanup_inode; int /*<<< orphan*/  path_from_inode; int /*<<< orphan*/  path_rename; int /*<<< orphan*/  path_unlink; int /*<<< orphan*/  path_link; int /*<<< orphan*/  inode_write_stat; int /*<<< orphan*/  inode_read_stat; int /*<<< orphan*/  path_create_path; int /*<<< orphan*/  path_create_stat; int /*<<< orphan*/  path_read_stat; int /*<<< orphan*/  path_get_inode; int /*<<< orphan*/  rollback; int /*<<< orphan*/  commit; int /*<<< orphan*/  begin; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int try_cleanup_inode; int path_from_inode; int path_rename; int path_unlink; int path_link; int inode_write_stat; int inode_read_stat; int path_create_path; int path_create_stat; int path_read_stat; int path_get_inode; int rollback; int commit; int begin; } ;
 struct mount {scalar_t__ db; TYPE_1__ stmt; } ;
 
-/* Variables and functions */
- int SQLITE_OK ; 
- int /*<<< orphan*/  printk (char*,int) ; 
- int sqlite3_close (scalar_t__) ; 
- int /*<<< orphan*/  sqlite3_finalize (int /*<<< orphan*/ ) ; 
+
+ int SQLITE_OK ;
+ int printk (char*,int) ;
+ int sqlite3_close (scalar_t__) ;
+ int sqlite3_finalize (int ) ;
 
 __attribute__((used)) static int fakefs_umount(struct mount *mount) {
     if (mount->db) {
@@ -41,6 +41,6 @@ __attribute__((used)) static int fakefs_umount(struct mount *mount) {
             printk("sqlite failed to close: %d\n", err);
         }
     }
-    /* return realfs.umount(mount); */
+
     return 0;
 }

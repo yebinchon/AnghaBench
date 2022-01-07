@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ vm_offset_t ;
-typedef  int /*<<< orphan*/  uintmax_t ;
-typedef  int /*<<< orphan*/  u_int ;
-struct bxe_softc {TYPE_1__* bar; int /*<<< orphan*/  dev; } ;
-struct TYPE_2__ {scalar_t__ kva; int /*<<< orphan*/ * resource; int /*<<< orphan*/  handle; int /*<<< orphan*/  tag; int /*<<< orphan*/  rid; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BLOGI (struct bxe_softc*,char*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int MAX_BARS ; 
- int /*<<< orphan*/  PCIR_BAR (int) ; 
- int /*<<< orphan*/  RF_ACTIVE ; 
- int /*<<< orphan*/  RF_SHAREABLE ; 
- int /*<<< orphan*/  SYS_RES_MEMORY ; 
- int /*<<< orphan*/ * bus_alloc_resource_any (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  rman_get_bushandle (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  rman_get_bustag (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  rman_get_end (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  rman_get_size (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  rman_get_start (int /*<<< orphan*/ *) ; 
- scalar_t__ rman_get_virtual (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef scalar_t__ vm_offset_t ;
+typedef int uintmax_t ;
+typedef int u_int ;
+struct bxe_softc {TYPE_1__* bar; int dev; } ;
+struct TYPE_2__ {scalar_t__ kva; int * resource; int handle; int tag; int rid; } ;
+
+
+ int BLOGI (struct bxe_softc*,char*,int,int ,int ,int ,int ,int ) ;
+ int MAX_BARS ;
+ int PCIR_BAR (int) ;
+ int RF_ACTIVE ;
+ int RF_SHAREABLE ;
+ int SYS_RES_MEMORY ;
+ int * bus_alloc_resource_any (int ,int ,int *,int ) ;
+ int memset (TYPE_1__*,int ,int) ;
+ int rman_get_bushandle (int *) ;
+ int rman_get_bustag (int *) ;
+ int rman_get_end (int *) ;
+ int rman_get_size (int *) ;
+ int rman_get_start (int *) ;
+ scalar_t__ rman_get_virtual (int *) ;
 
 __attribute__((used)) static int
 bxe_allocate_bars(struct bxe_softc *sc)
@@ -43,8 +43,8 @@ bxe_allocate_bars(struct bxe_softc *sc)
 
     for (i = 0; i < MAX_BARS; i++) {
 
-        /* memory resources reside at BARs 0, 2, 4 */
-        /* Run `pciconf -lb` to see mappings */
+
+
         if ((i != 0) && (i != 2) && (i != 4)) {
             continue;
         }
@@ -60,13 +60,13 @@ bxe_allocate_bars(struct bxe_softc *sc)
              bus_alloc_resource_any(sc->dev,
                                     SYS_RES_MEMORY,
                                     &sc->bar[i].rid,
-                                    flags)) == NULL) {
+                                    flags)) == ((void*)0)) {
             return (0);
         }
 
-        sc->bar[i].tag    = rman_get_bustag(sc->bar[i].resource);
+        sc->bar[i].tag = rman_get_bustag(sc->bar[i].resource);
         sc->bar[i].handle = rman_get_bushandle(sc->bar[i].resource);
-        sc->bar[i].kva    = (vm_offset_t)rman_get_virtual(sc->bar[i].resource);
+        sc->bar[i].kva = (vm_offset_t)rman_get_virtual(sc->bar[i].resource);
 
         BLOGI(sc, "PCI BAR%d [%02x] memory allocated: %#jx-%#jx (%jd) -> %#jx\n",
               i, PCIR_BAR(i),

@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mbedtls_mpi ;
 
-/* Variables and functions */
- int MBEDTLS_ERR_DHM_BAD_INPUT_DATA ; 
- int MBEDTLS_ERR_DHM_READ_PARAMS_FAILED ; 
- int mbedtls_mpi_read_binary (int /*<<< orphan*/ *,unsigned char*,int) ; 
+
+
+
+typedef int mbedtls_mpi ;
+
+
+ int MBEDTLS_ERR_DHM_BAD_INPUT_DATA ;
+ int MBEDTLS_ERR_DHM_READ_PARAMS_FAILED ;
+ int mbedtls_mpi_read_binary (int *,unsigned char*,int) ;
 
 __attribute__((used)) static int dhm_read_bignum( mbedtls_mpi *X,
                             unsigned char **p,

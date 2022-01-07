@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {scalar_t__ Type; int ListenMode; int /*<<< orphan*/  ReverseAcceptEvent; int /*<<< orphan*/  UnderlayProtocol; int /*<<< orphan*/  ReverseAcceptQueue; scalar_t__ CancelAccept; scalar_t__ Disconnecting; } ;
-typedef  TYPE_1__ SOCK ;
 
-/* Variables and functions */
- TYPE_1__* GetNext (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  INFINITE ; 
- int /*<<< orphan*/  LockQueue (int /*<<< orphan*/ ) ; 
- scalar_t__ SOCK_REVERSE_LISTEN ; 
- int /*<<< orphan*/  SOCK_UNDERLAY_AZURE ; 
- int /*<<< orphan*/  StrCpy (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  UnlockQueue (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Wait (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {scalar_t__ Type; int ListenMode; int ReverseAcceptEvent; int UnderlayProtocol; int ReverseAcceptQueue; scalar_t__ CancelAccept; scalar_t__ Disconnecting; } ;
+typedef TYPE_1__ SOCK ;
+
+
+ TYPE_1__* GetNext (int ) ;
+ int INFINITE ;
+ int LockQueue (int ) ;
+ scalar_t__ SOCK_REVERSE_LISTEN ;
+ int SOCK_UNDERLAY_AZURE ;
+ int StrCpy (int ,int,int ) ;
+ int UnlockQueue (int ) ;
+ int Wait (int ,int ) ;
 
 SOCK *AcceptReverse(SOCK *s)
 {
-	// Validate arguments
-	if (s == NULL || s->Type != SOCK_REVERSE_LISTEN || s->ListenMode == false)
-	{
-		return NULL;
-	}
 
-	while (true)
-	{
-		SOCK *ret;
-		if (s->Disconnecting || s->CancelAccept)
-		{
-			return NULL;
-		}
+ if (s == ((void*)0) || s->Type != SOCK_REVERSE_LISTEN || s->ListenMode == 0)
+ {
+  return ((void*)0);
+ }
 
-		LockQueue(s->ReverseAcceptQueue);
-		{
-			ret = GetNext(s->ReverseAcceptQueue);
-		}
-		UnlockQueue(s->ReverseAcceptQueue);
+ while (1)
+ {
+  SOCK *ret;
+  if (s->Disconnecting || s->CancelAccept)
+  {
+   return ((void*)0);
+  }
 
-		if (ret != NULL)
-		{
-			StrCpy(ret->UnderlayProtocol, sizeof(ret->UnderlayProtocol), SOCK_UNDERLAY_AZURE);
+  LockQueue(s->ReverseAcceptQueue);
+  {
+   ret = GetNext(s->ReverseAcceptQueue);
+  }
+  UnlockQueue(s->ReverseAcceptQueue);
 
-			return ret;
-		}
+  if (ret != ((void*)0))
+  {
+   StrCpy(ret->UnderlayProtocol, sizeof(ret->UnderlayProtocol), SOCK_UNDERLAY_AZURE);
 
-		Wait(s->ReverseAcceptEvent, INFINITE);
-	}
+   return ret;
+  }
+
+  Wait(s->ReverseAcceptEvent, INFINITE);
+ }
 }

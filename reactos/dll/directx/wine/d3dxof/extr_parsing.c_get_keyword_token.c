@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  parse_buffer ;
-typedef  int /*<<< orphan*/  WORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TOKEN_ARRAY ; 
- int /*<<< orphan*/  TOKEN_CHAR ; 
- int /*<<< orphan*/  TOKEN_CSTRING ; 
- int /*<<< orphan*/  TOKEN_DOUBLE ; 
- int /*<<< orphan*/  TOKEN_DWORD ; 
- int /*<<< orphan*/  TOKEN_FLOAT ; 
- int /*<<< orphan*/  TOKEN_LPSTR ; 
- int /*<<< orphan*/  TOKEN_SDWORD ; 
- int /*<<< orphan*/  TOKEN_SWORD ; 
- int /*<<< orphan*/  TOKEN_TEMPLATE ; 
- int /*<<< orphan*/  TOKEN_UCHAR ; 
- int /*<<< orphan*/  TOKEN_UNICODE ; 
- int /*<<< orphan*/  TOKEN_VOID ; 
- int /*<<< orphan*/  TOKEN_WORD ; 
- scalar_t__ is_keyword (int /*<<< orphan*/ *,char*) ; 
+
+
+
+typedef int parse_buffer ;
+typedef int WORD ;
+
+
+ int TOKEN_ARRAY ;
+ int TOKEN_CHAR ;
+ int TOKEN_CSTRING ;
+ int TOKEN_DOUBLE ;
+ int TOKEN_DWORD ;
+ int TOKEN_FLOAT ;
+ int TOKEN_LPSTR ;
+ int TOKEN_SDWORD ;
+ int TOKEN_SWORD ;
+ int TOKEN_TEMPLATE ;
+ int TOKEN_UCHAR ;
+ int TOKEN_UNICODE ;
+ int TOKEN_VOID ;
+ int TOKEN_WORD ;
+ scalar_t__ is_keyword (int *,char*) ;
 
 __attribute__((used)) static WORD get_keyword_token(parse_buffer* buf)
 {

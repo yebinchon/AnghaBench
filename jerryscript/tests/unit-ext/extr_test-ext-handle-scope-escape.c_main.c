@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  JERRY_GC_PRESSURE_LOW ; 
- int /*<<< orphan*/  JERRY_INIT_EMPTY ; 
- int /*<<< orphan*/  TEST_ASSERT (int) ; 
- int /*<<< orphan*/  jerry_cleanup () ; 
- int /*<<< orphan*/  jerry_gc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jerry_init (int /*<<< orphan*/ ) ; 
- int native_free_cb_call_count ; 
- int /*<<< orphan*/  test_handle_scope_val () ; 
+ int JERRY_GC_PRESSURE_LOW ;
+ int JERRY_INIT_EMPTY ;
+ int TEST_ASSERT (int) ;
+ int jerry_cleanup () ;
+ int jerry_gc (int ) ;
+ int jerry_init (int ) ;
+ int native_free_cb_call_count ;
+ int test_handle_scope_val () ;
 
 int
 main (void)

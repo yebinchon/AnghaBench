@@ -1,51 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
-#define  GLFW_API_UNAVAILABLE 137 
-#define  GLFW_FORMAT_UNAVAILABLE 136 
-#define  GLFW_INVALID_ENUM 135 
-#define  GLFW_INVALID_VALUE 134 
-#define  GLFW_NOT_INITIALIZED 133 
-#define  GLFW_NO_CURRENT_CONTEXT 132 
-#define  GLFW_NO_WINDOW_CONTEXT 131 
-#define  GLFW_OUT_OF_MEMORY 130 
-#define  GLFW_PLATFORM_ERROR 129 
-#define  GLFW_VERSION_UNAVAILABLE 128 
-
 __attribute__((used)) static const char* getErrorString(int error)
 {
     switch (error)
     {
-        case GLFW_NOT_INITIALIZED:
+        case 133:
             return "The GLFW library is not initialized";
-        case GLFW_NO_CURRENT_CONTEXT:
+        case 132:
             return "There is no current context";
-        case GLFW_INVALID_ENUM:
+        case 135:
             return "Invalid argument for enum parameter";
-        case GLFW_INVALID_VALUE:
+        case 134:
             return "Invalid value for parameter";
-        case GLFW_OUT_OF_MEMORY:
+        case 130:
             return "Out of memory";
-        case GLFW_API_UNAVAILABLE:
+        case 137:
             return "The requested API is unavailable";
-        case GLFW_VERSION_UNAVAILABLE:
+        case 128:
             return "The requested API version is unavailable";
-        case GLFW_PLATFORM_ERROR:
+        case 129:
             return "A platform-specific error occurred";
-        case GLFW_FORMAT_UNAVAILABLE:
+        case 136:
             return "The requested format is unavailable";
-        case GLFW_NO_WINDOW_CONTEXT:
+        case 131:
             return "The specified window has no context";
         default:
             return "ERROR: UNKNOWN GLFW ERROR";

@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct brcms_hardware {int clk; TYPE_1__* band; int /*<<< orphan*/  d11core; scalar_t__ noreset; int /*<<< orphan*/  wlc; int /*<<< orphan*/  unit; } ;
-struct TYPE_2__ {int /*<<< orphan*/  pi; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OFF ; 
- int /*<<< orphan*/  bcma_core_disable (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  brcms_b_core_phypll_ctl (struct brcms_hardware*,int) ; 
- int /*<<< orphan*/  brcms_dbg_info (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int brcms_deviceremoved (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wlc_phy_anacore (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wlc_phy_hw_clk_state_upd (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  wlc_phy_switch_radio (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct brcms_hardware {int clk; TYPE_1__* band; int d11core; scalar_t__ noreset; int wlc; int unit; } ;
+struct TYPE_2__ {int pi; } ;
+
+
+ int OFF ;
+ int bcma_core_disable (int ,int ) ;
+ int brcms_b_core_phypll_ctl (struct brcms_hardware*,int) ;
+ int brcms_dbg_info (int ,char*,int ) ;
+ int brcms_deviceremoved (int ) ;
+ int wlc_phy_anacore (int ,int ) ;
+ int wlc_phy_hw_clk_state_upd (int ,int) ;
+ int wlc_phy_switch_radio (int ,int ) ;
 
 __attribute__((used)) static void brcms_c_coredisable(struct brcms_hardware *wlc_hw)
 {
-	bool dev_gone;
+ bool dev_gone;
 
-	brcms_dbg_info(wlc_hw->d11core, "wl%d: disable core\n", wlc_hw->unit);
+ brcms_dbg_info(wlc_hw->d11core, "wl%d: disable core\n", wlc_hw->unit);
 
-	dev_gone = brcms_deviceremoved(wlc_hw->wlc);
+ dev_gone = brcms_deviceremoved(wlc_hw->wlc);
 
-	if (dev_gone)
-		return;
+ if (dev_gone)
+  return;
 
-	if (wlc_hw->noreset)
-		return;
+ if (wlc_hw->noreset)
+  return;
 
-	/* radio off */
-	wlc_phy_switch_radio(wlc_hw->band->pi, OFF);
 
-	/* turn off analog core */
-	wlc_phy_anacore(wlc_hw->band->pi, OFF);
+ wlc_phy_switch_radio(wlc_hw->band->pi, OFF);
 
-	/* turn off PHYPLL to save power */
-	brcms_b_core_phypll_ctl(wlc_hw, false);
 
-	wlc_hw->clk = false;
-	bcma_core_disable(wlc_hw->d11core, 0);
-	wlc_phy_hw_clk_state_upd(wlc_hw->band->pi, false);
+ wlc_phy_anacore(wlc_hw->band->pi, OFF);
+
+
+ brcms_b_core_phypll_ctl(wlc_hw, 0);
+
+ wlc_hw->clk = 0;
+ bcma_core_disable(wlc_hw->d11core, 0);
+ wlc_phy_hw_clk_state_upd(wlc_hw->band->pi, 0);
 }

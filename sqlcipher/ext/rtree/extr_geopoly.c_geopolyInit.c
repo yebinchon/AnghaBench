@@ -1,68 +1,68 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_vtab ;
-typedef  int /*<<< orphan*/  sqlite3_str ;
-typedef  int sqlite3_int64 ;
-typedef  int /*<<< orphan*/  sqlite3 ;
-struct TYPE_7__ {int /*<<< orphan*/ * pModule; } ;
-struct TYPE_8__ {int nBusy; char* zDb; char* zName; int nDim; int nDim2; int nAux; int nAuxNotNull; int nBytesPerCell; int /*<<< orphan*/  eCoordType; TYPE_1__ base; } ;
-typedef  TYPE_2__ Rtree ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RTREE_COORD_REAL32 ; 
- int SQLITE_ERROR ; 
- int SQLITE_NOMEM ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  SQLITE_VTAB_CONSTRAINT_SUPPORT ; 
- int /*<<< orphan*/  assert (int) ; 
- int getNodeSize (int /*<<< orphan*/ *,TYPE_2__*,int,char**) ; 
- int /*<<< orphan*/  memcpy (char*,char const* const,int) ; 
- int /*<<< orphan*/  memset (TYPE_2__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  rtreeModule ; 
- int /*<<< orphan*/  rtreeRelease (TYPE_2__*) ; 
- int rtreeSqlInit (TYPE_2__*,int /*<<< orphan*/ *,char const* const,char const* const,int) ; 
- int sqlite3_declare_vtab (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  sqlite3_errmsg (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_free (char*) ; 
- scalar_t__ sqlite3_malloc64 (int) ; 
- char* sqlite3_mprintf (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_str_appendf (int /*<<< orphan*/ *,char*,...) ; 
- char* sqlite3_str_finish (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * sqlite3_str_new (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_vtab_config (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int strlen (char const* const) ; 
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int sqlite3_vtab ;
+typedef int sqlite3_str ;
+typedef int sqlite3_int64 ;
+typedef int sqlite3 ;
+struct TYPE_7__ {int * pModule; } ;
+struct TYPE_8__ {int nBusy; char* zDb; char* zName; int nDim; int nDim2; int nAux; int nAuxNotNull; int nBytesPerCell; int eCoordType; TYPE_1__ base; } ;
+typedef TYPE_2__ Rtree ;
+
+
+ int RTREE_COORD_REAL32 ;
+ int SQLITE_ERROR ;
+ int SQLITE_NOMEM ;
+ int SQLITE_OK ;
+ int SQLITE_VTAB_CONSTRAINT_SUPPORT ;
+ int assert (int) ;
+ int getNodeSize (int *,TYPE_2__*,int,char**) ;
+ int memcpy (char*,char const* const,int) ;
+ int memset (TYPE_2__*,int ,int) ;
+ int rtreeModule ;
+ int rtreeRelease (TYPE_2__*) ;
+ int rtreeSqlInit (TYPE_2__*,int *,char const* const,char const* const,int) ;
+ int sqlite3_declare_vtab (int *,char*) ;
+ int sqlite3_errmsg (int *) ;
+ int sqlite3_free (char*) ;
+ scalar_t__ sqlite3_malloc64 (int) ;
+ char* sqlite3_mprintf (char*,int ) ;
+ int sqlite3_str_appendf (int *,char*,...) ;
+ char* sqlite3_str_finish (int *) ;
+ int * sqlite3_str_new (int *) ;
+ int sqlite3_vtab_config (int *,int ,int) ;
+ int strlen (char const* const) ;
 
 __attribute__((used)) static int geopolyInit(
-  sqlite3 *db,                        /* Database connection */
-  void *pAux,                         /* One of the RTREE_COORD_* constants */
-  int argc, const char *const*argv,   /* Parameters to CREATE TABLE statement */
-  sqlite3_vtab **ppVtab,              /* OUT: New virtual table */
-  char **pzErr,                       /* OUT: Error message, if any */
-  int isCreate                        /* True for xCreate, false for xConnect */
+  sqlite3 *db,
+  void *pAux,
+  int argc, const char *const*argv,
+  sqlite3_vtab **ppVtab,
+  char **pzErr,
+  int isCreate
 ){
   int rc = SQLITE_OK;
   Rtree *pRtree;
-  sqlite3_int64 nDb;              /* Length of string argv[1] */
-  sqlite3_int64 nName;            /* Length of string argv[2] */
+  sqlite3_int64 nDb;
+  sqlite3_int64 nName;
   sqlite3_str *pSql;
   char *zSql;
   int ii;
 
   sqlite3_vtab_config(db, SQLITE_VTAB_CONSTRAINT_SUPPORT, 1);
 
-  /* Allocate the sqlite3_vtab structure */
+
   nDb = strlen(argv[1]);
   nName = strlen(argv[2]);
   pRtree = (Rtree *)sqlite3_malloc64(sizeof(Rtree)+nDb+nName+2);
@@ -81,14 +81,14 @@ __attribute__((used)) static int geopolyInit(
   memcpy(pRtree->zName, argv[2], nName);
 
 
-  /* Create/Connect to the underlying relational database schema. If
-  ** that is successful, call sqlite3_declare_vtab() to configure
-  ** the r-tree table schema.
-  */
+
+
+
+
   pSql = sqlite3_str_new(db);
   sqlite3_str_appendf(pSql, "CREATE TABLE x(_shape");
-  pRtree->nAux = 1;         /* Add one for _shape */
-  pRtree->nAuxNotNull = 1;  /* The _shape column is always not-null */
+  pRtree->nAux = 1;
+  pRtree->nAuxNotNull = 1;
   for(ii=3; ii<argc; ii++){
     pRtree->nAux++;
     sqlite3_str_appendf(pSql, ",%s", argv[ii]);
@@ -104,7 +104,7 @@ __attribute__((used)) static int geopolyInit(
   if( rc ) goto geopolyInit_fail;
   pRtree->nBytesPerCell = 8 + pRtree->nDim2*4;
 
-  /* Figure out the node size to use. */
+
   rc = getNodeSize(db, pRtree, isCreate, pzErr);
   if( rc ) goto geopolyInit_fail;
   rc = rtreeSqlInit(pRtree, db, argv[1], argv[2], isCreate);

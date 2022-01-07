@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int /*<<< orphan*/  stream_t ;
 
-/* Variables and functions */
- int CDXA_PS ; 
- int const PS_STREAM_ID_END_STREAM ; 
- int const PS_STREAM_ID_PACK_HEADER ; 
- int /*<<< orphan*/  memcmp (int const*,int const*,int) ; 
- int vlc_stream_Peek (int /*<<< orphan*/ *,int const**,int) ; 
- int vlc_stream_Read (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int uint8_t ;
+typedef int stream_t ;
+
+
+ int CDXA_PS ;
+ int const PS_STREAM_ID_END_STREAM ;
+ int const PS_STREAM_ID_PACK_HEADER ;
+ int memcmp (int const*,int const*,int) ;
+ int vlc_stream_Peek (int *,int const**,int) ;
+ int vlc_stream_Read (int *,int *,int) ;
 
 __attribute__((used)) static int ps_pkt_resynch( stream_t *s, int format, bool b_pack )
 {
     const uint8_t *p_peek;
-    int     i_peek;
-    int     i_skip;
+    int i_peek;
+    int i_skip;
 
     if( vlc_stream_Peek( s, &p_peek, 4 ) < 4 )
     {
@@ -49,8 +49,8 @@ __attribute__((used)) static int ps_pkt_resynch( stream_t *s, int format, bool b
         {
             break;
         }
-        /* Handle mid stream 24 bytes padding+CRC creating emulated sync codes with incorrect
-           PES sizes and frelling up to UINT16_MAX bytes followed by 24 bytes CDXA Header */
+
+
         if( format == CDXA_PS && i_skip == 0 && i_peek >= 48 )
         {
             const uint8_t cdxasynccode[12] = { 0x00, 0xff, 0xff, 0xff, 0xff, 0xff,
@@ -68,12 +68,12 @@ __attribute__((used)) static int ps_pkt_resynch( stream_t *s, int format, bool b
             p_peek[3] >= PS_STREAM_ID_END_STREAM &&
             ( !b_pack || p_peek[3] == PS_STREAM_ID_PACK_HEADER ) )
         {
-            return vlc_stream_Read( s, NULL, i_skip ) == i_skip ? 1 : -1;
+            return vlc_stream_Read( s, ((void*)0), i_skip ) == i_skip ? 1 : -1;
         }
 
         p_peek++;
         i_peek--;
         i_skip++;
     }
-    return vlc_stream_Read( s, NULL, i_skip ) == i_skip ? 0 : -1;
+    return vlc_stream_Read( s, ((void*)0), i_skip ) == i_skip ? 0 : -1;
 }

@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_4__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_4__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct wl_surface {int dummy; } ;
 struct wl_region {int dummy; } ;
 struct wl_buffer {int dummy; } ;
-struct TYPE_6__ {int /*<<< orphan*/  surface; int /*<<< orphan*/  viewport; int /*<<< orphan*/  subsurface; } ;
-typedef  TYPE_2__ _GLFWdecorationWayland ;
-struct TYPE_5__ {int /*<<< orphan*/  compositor; int /*<<< orphan*/  viewporter; int /*<<< orphan*/  subcompositor; } ;
+struct TYPE_6__ {int surface; int viewport; int subsurface; } ;
+typedef TYPE_2__ _GLFWdecorationWayland ;
+struct TYPE_5__ {int compositor; int viewporter; int subcompositor; } ;
 struct TYPE_7__ {TYPE_1__ wl; } ;
-typedef  scalar_t__ GLFWbool ;
+typedef scalar_t__ GLFWbool ;
 
-/* Variables and functions */
- TYPE_4__ _glfw ; 
- struct wl_region* wl_compositor_create_region (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wl_compositor_create_surface (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wl_region_add (struct wl_region*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  wl_region_destroy (struct wl_region*) ; 
- int /*<<< orphan*/  wl_subcompositor_get_subsurface (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct wl_surface*) ; 
- int /*<<< orphan*/  wl_subsurface_set_position (int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  wl_surface_attach (int /*<<< orphan*/ ,struct wl_buffer*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wl_surface_commit (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wl_surface_set_opaque_region (int /*<<< orphan*/ ,struct wl_region*) ; 
- int /*<<< orphan*/  wp_viewport_set_destination (int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  wp_viewporter_get_viewport (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ TYPE_4__ _glfw ;
+ struct wl_region* wl_compositor_create_region (int ) ;
+ int wl_compositor_create_surface (int ) ;
+ int wl_region_add (struct wl_region*,int ,int ,int,int) ;
+ int wl_region_destroy (struct wl_region*) ;
+ int wl_subcompositor_get_subsurface (int ,int ,struct wl_surface*) ;
+ int wl_subsurface_set_position (int ,int,int) ;
+ int wl_surface_attach (int ,struct wl_buffer*,int ,int ) ;
+ int wl_surface_commit (int ) ;
+ int wl_surface_set_opaque_region (int ,struct wl_region*) ;
+ int wp_viewport_set_destination (int ,int,int) ;
+ int wp_viewporter_get_viewport (int ,int ) ;
 
 __attribute__((used)) static void createDecoration(_GLFWdecorationWayland* decoration,
                              struct wl_surface* parent,

@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_5__ ;
-typedef  struct TYPE_16__   TYPE_2__ ;
-typedef  struct TYPE_15__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-struct TYPE_17__ {int /*<<< orphan*/ * typeinfo; } ;
+
+
+typedef struct TYPE_17__ TYPE_5__ ;
+typedef struct TYPE_16__ TYPE_2__ ;
+typedef struct TYPE_15__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
+struct TYPE_17__ {int * typeinfo; } ;
 struct TYPE_16__ {TYPE_1__* plugin_host; } ;
-struct TYPE_15__ {TYPE_5__* sink; int /*<<< orphan*/  plugin_unk; } ;
-typedef  TYPE_1__ PluginHost ;
-typedef  int /*<<< orphan*/  ITypeInfo ;
-typedef  int /*<<< orphan*/  IProvideClassInfo ;
-typedef  int /*<<< orphan*/  IDispatch ;
-typedef  TYPE_2__ HTMLPluginContainer ;
-typedef  int /*<<< orphan*/  HTMLDocumentNode ;
-typedef  TYPE_1__* HRESULT ;
-typedef  int /*<<< orphan*/  DISPID ;
+struct TYPE_15__ {TYPE_5__* sink; int plugin_unk; } ;
+typedef TYPE_1__ PluginHost ;
+typedef int ITypeInfo ;
+typedef int IProvideClassInfo ;
+typedef int IDispatch ;
+typedef TYPE_2__ HTMLPluginContainer ;
+typedef int HTMLDocumentNode ;
+typedef TYPE_1__* HRESULT ;
+typedef int DISPID ;
 
-/* Variables and functions */
- scalar_t__ FAILED (TYPE_1__*) ; 
- int /*<<< orphan*/  FIXME (char*) ; 
- int /*<<< orphan*/  IID_IProvideClassInfo ; 
- TYPE_1__* IProvideClassInfo_GetClassInfo (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IProvideClassInfo_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ITypeInfo_AddRef (int /*<<< orphan*/ *) ; 
- TYPE_1__* ITypeInfo_GetIDsOfNames (int /*<<< orphan*/ *,int /*<<< orphan*/ **,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ITypeInfo_Release (int /*<<< orphan*/ *) ; 
- TYPE_1__* IUnknown_QueryInterface (int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  WARN (char*,TYPE_1__*) ; 
- int /*<<< orphan*/  add_sink_handler (TYPE_5__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- TYPE_5__* create_event_sink (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  debugstr_w (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * get_eventiface_info (TYPE_2__*,int /*<<< orphan*/ *) ; 
+
+ scalar_t__ FAILED (TYPE_1__*) ;
+ int FIXME (char*) ;
+ int IID_IProvideClassInfo ;
+ TYPE_1__* IProvideClassInfo_GetClassInfo (int *,int **) ;
+ int IProvideClassInfo_Release (int *) ;
+ int ITypeInfo_AddRef (int *) ;
+ TYPE_1__* ITypeInfo_GetIDsOfNames (int *,int **,int,int *) ;
+ int ITypeInfo_Release (int *) ;
+ TYPE_1__* IUnknown_QueryInterface (int ,int *,void**) ;
+ int TRACE (char*,int *,TYPE_1__*,int ,int *) ;
+ int WARN (char*,TYPE_1__*) ;
+ int add_sink_handler (TYPE_5__*,int ,int *) ;
+ TYPE_5__* create_event_sink (TYPE_1__*,int *) ;
+ int debugstr_w (int *) ;
+ int * get_eventiface_info (TYPE_2__*,int *) ;
 
 void bind_activex_event(HTMLDocumentNode *doc, HTMLPluginContainer *plugin_container, WCHAR *event, IDispatch *disp)
 {

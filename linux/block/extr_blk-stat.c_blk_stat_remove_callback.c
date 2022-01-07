@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct request_queue {TYPE_1__* stats; } ;
-struct blk_stat_callback {int /*<<< orphan*/  timer; int /*<<< orphan*/  list; } ;
-struct TYPE_2__ {int /*<<< orphan*/  lock; int /*<<< orphan*/  enable_accounting; int /*<<< orphan*/  callbacks; } ;
+struct blk_stat_callback {int timer; int list; } ;
+struct TYPE_2__ {int lock; int enable_accounting; int callbacks; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  QUEUE_FLAG_STATS ; 
- int /*<<< orphan*/  blk_queue_flag_clear (int /*<<< orphan*/ ,struct request_queue*) ; 
- int /*<<< orphan*/  del_timer_sync (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  list_del_rcu (int /*<<< orphan*/ *) ; 
- scalar_t__ list_empty (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock (int /*<<< orphan*/ *) ; 
+
+ int QUEUE_FLAG_STATS ;
+ int blk_queue_flag_clear (int ,struct request_queue*) ;
+ int del_timer_sync (int *) ;
+ int list_del_rcu (int *) ;
+ scalar_t__ list_empty (int *) ;
+ int spin_lock (int *) ;
+ int spin_unlock (int *) ;
 
 void blk_stat_remove_callback(struct request_queue *q,
-			      struct blk_stat_callback *cb)
+         struct blk_stat_callback *cb)
 {
-	spin_lock(&q->stats->lock);
-	list_del_rcu(&cb->list);
-	if (list_empty(&q->stats->callbacks) && !q->stats->enable_accounting)
-		blk_queue_flag_clear(QUEUE_FLAG_STATS, q);
-	spin_unlock(&q->stats->lock);
+ spin_lock(&q->stats->lock);
+ list_del_rcu(&cb->list);
+ if (list_empty(&q->stats->callbacks) && !q->stats->enable_accounting)
+  blk_queue_flag_clear(QUEUE_FLAG_STATS, q);
+ spin_unlock(&q->stats->lock);
 
-	del_timer_sync(&cb->timer);
+ del_timer_sync(&cb->timer);
 }

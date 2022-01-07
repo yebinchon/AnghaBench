@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint32_t ;
-struct TYPE_5__ {scalar_t__ numfriends; struct TYPE_5__* friendlist; int /*<<< orphan*/  net; int /*<<< orphan*/  dht; int /*<<< orphan*/  net_crypto; int /*<<< orphan*/  onion_c; int /*<<< orphan*/  onion_a; int /*<<< orphan*/  onion; int /*<<< orphan*/  fr_c; scalar_t__ tcp_server; } ;
-typedef  TYPE_1__ Messenger ;
 
-/* Variables and functions */
- int /*<<< orphan*/  clear_receipts (TYPE_1__*,scalar_t__) ; 
- int /*<<< orphan*/  free (TYPE_1__*) ; 
- int /*<<< orphan*/  kill_DHT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kill_TCP_server (scalar_t__) ; 
- int /*<<< orphan*/  kill_friend_connections (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kill_net_crypto (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kill_networking (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kill_onion (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kill_onion_announce (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kill_onion_client (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint32_t ;
+struct TYPE_5__ {scalar_t__ numfriends; struct TYPE_5__* friendlist; int net; int dht; int net_crypto; int onion_c; int onion_a; int onion; int fr_c; scalar_t__ tcp_server; } ;
+typedef TYPE_1__ Messenger ;
+
+
+ int clear_receipts (TYPE_1__*,scalar_t__) ;
+ int free (TYPE_1__*) ;
+ int kill_DHT (int ) ;
+ int kill_TCP_server (scalar_t__) ;
+ int kill_friend_connections (int ) ;
+ int kill_net_crypto (int ) ;
+ int kill_networking (int ) ;
+ int kill_onion (int ) ;
+ int kill_onion_announce (int ) ;
+ int kill_onion_client (int ) ;
 
 void kill_messenger(Messenger *m)
 {

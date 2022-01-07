@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u8 ;
-typedef  scalar_t__ u16 ;
 
-/* Variables and functions */
- int abs (int) ; 
- scalar_t__* mod_period ; 
- int /*<<< orphan*/  printf (char*,int,int,int) ; 
+
+
+
+typedef int u8 ;
+typedef scalar_t__ u16 ;
+
+
+ int abs (int) ;
+ scalar_t__* mod_period ;
+ int printf (char*,int,int,int) ;
 
 u8 mod_get_index_from_period(u16 period, int pattern, int step, int channel)
 {
@@ -24,7 +24,7 @@ u8 mod_get_index_from_period(u16 period, int pattern, int step, int channel)
     {
         if (period < mod_period[(6 * 12) - 1])
         {
-            if (channel != 4) // Pitch ignored for noise channel
+            if (channel != 4)
             {
                 printf("\nPattern %d, Step %d, Channel %d. Note too high!\n",
                        pattern, step, channel);
@@ -32,7 +32,7 @@ u8 mod_get_index_from_period(u16 period, int pattern, int step, int channel)
         }
         else if (period > mod_period[0])
         {
-            if (channel != 4) // Pitch ignored for noise channel
+            if (channel != 4)
             {
                 printf("\nPattern %d, Step %d, Channel %d. Note too low!\n",
                        pattern, step, channel);
@@ -49,7 +49,7 @@ u8 mod_get_index_from_period(u16 period, int pattern, int step, int channel)
         if (period == mod_period[i])
             return i;
 
-    // Couldn't find exact match... get nearest value
+
 
     u16 nearest_value = 0xFFFF;
     u8 nearest_index = 0;

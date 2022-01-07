@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int fileCount; TYPE_1__* files; int /*<<< orphan*/  name; } ;
+
+
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int fileCount; TYPE_1__* files; int name; } ;
 struct TYPE_7__ {int fileCount; char const* name; TYPE_2__* files; } ;
-struct TYPE_6__ {int patchCount; char const* name; int /*<<< orphan*/ * patches; int /*<<< orphan*/  fileSize; } ;
-struct TYPE_5__ {int patchCount; int /*<<< orphan*/  patches; int /*<<< orphan*/  name; int /*<<< orphan*/  fileSize; } ;
-typedef  TYPE_2__ PatchedFile ;
-typedef  int /*<<< orphan*/  PatchedByte ;
-typedef  TYPE_3__ Patch ;
+struct TYPE_6__ {int patchCount; char const* name; int * patches; int fileSize; } ;
+struct TYPE_5__ {int patchCount; int patches; int name; int fileSize; } ;
+typedef TYPE_2__ PatchedFile ;
+typedef int PatchedByte ;
+typedef TYPE_3__ Patch ;
 
-/* Variables and functions */
- size_t PATCH_BUFFER_SIZE ; 
- size_t SIZEOF_PATCH_BUFFER_MAGIC ; 
- int /*<<< orphan*/  free (char*) ; 
- char* loadFile (char*,size_t*) ; 
- char** m_argv ; 
- TYPE_4__ m_patch ; 
- int /*<<< orphan*/  m_patchBuffer ; 
- scalar_t__ memcmp (char*,int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/  memcpy (char*,int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/  memset (char*,int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- scalar_t__ saveFile (char const*,char*,size_t) ; 
- int /*<<< orphan*/  strcpy (char*,int /*<<< orphan*/ ) ; 
- size_t strlen (int /*<<< orphan*/ ) ; 
+
+ size_t PATCH_BUFFER_SIZE ;
+ size_t SIZEOF_PATCH_BUFFER_MAGIC ;
+ int free (char*) ;
+ char* loadFile (char*,size_t*) ;
+ char** m_argv ;
+ TYPE_4__ m_patch ;
+ int m_patchBuffer ;
+ scalar_t__ memcmp (char*,int ,size_t) ;
+ int memcpy (char*,int ,size_t) ;
+ int memset (char*,int ,size_t) ;
+ int printf (char*,...) ;
+ scalar_t__ saveFile (char const*,char*,size_t) ;
+ int strcpy (char*,int ) ;
+ size_t strlen (int ) ;
 
 __attribute__((used)) static int
 outputPatch(const char *outputFileName)
 {
-   char *patchExe, *patchBuffer = NULL;
+   char *patchExe, *patchBuffer = ((void*)0);
    size_t i, size, patchExeSize, patchSize, stringSize, stringOffset, patchOffset;
    Patch *patch;
    PatchedFile *files;
 
    printf("Putting patch into %s...\n", outputFileName);
 
-   /* Calculate size of the patch */
+
    patchSize = sizeof (Patch) + sizeof (PatchedFile) * m_patch.fileCount;
    stringSize = strlen(m_patch.name) + 1;
    for (i = 0; i < m_patch.fileCount; i++)
@@ -63,14 +63,14 @@ outputPatch(const char *outputFileName)
       return -1;
    }
 
-   /* Load patch.exe file into memory... */
+
    patchExe = loadFile(m_argv[0], &patchExeSize);
-   if (patchExe == NULL)
+   if (patchExe == ((void*)0))
    {
       return -1;
    }
 
-   /* Try to find the magic mark for the patch buffer */
+
    for (i = 0; i < (patchExeSize - SIZEOF_PATCH_BUFFER_MAGIC); i++)
    {
       if (memcmp(patchExe + i, m_patchBuffer, SIZEOF_PATCH_BUFFER_MAGIC) == 0)
@@ -87,7 +87,7 @@ outputPatch(const char *outputFileName)
       return -1;
    }
 
-   /* Pack patch together and replace string pointers by offsets */
+
    patch = (Patch *)patchBuffer;
    files = (PatchedFile *)(patchBuffer + sizeof (Patch));
    patchOffset = sizeof (Patch) + sizeof (PatchedFile) * m_patch.fileCount;
@@ -117,7 +117,7 @@ outputPatch(const char *outputFileName)
    size = patchSize + stringSize;
    memset(patchBuffer + size, 0, PATCH_BUFFER_SIZE - size);
 
-   /* Save file */
+
    if (saveFile(outputFileName, patchExe, patchExeSize) < 0)
    {
       free(patchExe);

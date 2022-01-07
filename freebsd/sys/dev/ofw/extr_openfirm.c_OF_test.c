@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int OFW_TEST (int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/ * ofw_def_impl ; 
- int /*<<< orphan*/  ofw_obj ; 
+ int OFW_TEST (int ,char const*) ;
+ int * ofw_def_impl ;
+ int ofw_obj ;
 
 int
 OF_test(const char *name)
 {
 
-	if (ofw_def_impl == NULL)
-		return (-1);
+ if (ofw_def_impl == ((void*)0))
+  return (-1);
 
-	return (OFW_TEST(ofw_obj, name));
+ return (OFW_TEST(ofw_obj, name));
 }

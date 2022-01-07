@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  temp ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int temp ;
 struct TYPE_5__ {scalar_t__ pwszVal; } ;
 struct TYPE_6__ {scalar_t__ vt; TYPE_1__ u; } ;
-typedef  TYPE_2__ PROPVARIANT ;
-typedef  int /*<<< orphan*/  PROPERTYKEY ;
-typedef  int /*<<< orphan*/  IPropertyStore ;
-typedef  scalar_t__ HRESULT ;
+typedef TYPE_2__ PROPVARIANT ;
+typedef int PROPERTYKEY ;
+typedef int IPropertyStore ;
+typedef scalar_t__ HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CP_ACP ; 
- int /*<<< orphan*/  DEVPKEY_DeviceInterface_ClassGuid ; 
- int /*<<< orphan*/  DEVPKEY_DeviceInterface_Enabled ; 
- int /*<<< orphan*/  DEVPKEY_DeviceInterface_FriendlyName ; 
- scalar_t__ IPropertyStore_GetValue (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,TYPE_2__*) ; 
- int /*<<< orphan*/  const PKEY_AudioEndpoint_GUID ; 
- int /*<<< orphan*/  PropVariantClear (TYPE_2__*) ; 
- scalar_t__ S_OK ; 
- scalar_t__ VT_EMPTY ; 
- scalar_t__ VT_LPWSTR ; 
- int /*<<< orphan*/  WideCharToMultiByte (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,int,char*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  trace (char*,char*) ; 
+
+ int CP_ACP ;
+ int DEVPKEY_DeviceInterface_ClassGuid ;
+ int DEVPKEY_DeviceInterface_Enabled ;
+ int DEVPKEY_DeviceInterface_FriendlyName ;
+ scalar_t__ IPropertyStore_GetValue (int *,int const*,TYPE_2__*) ;
+ int const PKEY_AudioEndpoint_GUID ;
+ int PropVariantClear (TYPE_2__*) ;
+ scalar_t__ S_OK ;
+ scalar_t__ VT_EMPTY ;
+ scalar_t__ VT_LPWSTR ;
+ int WideCharToMultiByte (int ,int ,scalar_t__,int,char*,int,int *,int *) ;
+ int ok (int,char*,...) ;
+ int trace (char*,char*) ;
 
 __attribute__((used)) static void test_propertystore(IPropertyStore *store)
 {
@@ -48,7 +48,7 @@ __attribute__((used)) static void test_propertystore(IPropertyStore *store)
     ok(pv.vt == VT_LPWSTR, "Value should be %i, is %i\n", VT_LPWSTR, pv.vt);
     if (hr == S_OK && pv.vt == VT_LPWSTR)
     {
-        WideCharToMultiByte(CP_ACP, 0, pv.u.pwszVal, -1, temp, sizeof(temp)-1, NULL, NULL);
+        WideCharToMultiByte(CP_ACP, 0, pv.u.pwszVal, -1, temp, sizeof(temp)-1, ((void*)0), ((void*)0));
         trace("guid: %s\n", temp);
         PropVariantClear(&pv);
     }

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  dwNumAddrs; int /*<<< orphan*/  dwOutDatagrams; int /*<<< orphan*/  dwInErrors; int /*<<< orphan*/  dwNoPorts; int /*<<< orphan*/  dwInDatagrams; } ;
-typedef  TYPE_1__ MIB_UDPSTATS ;
-typedef  scalar_t__ DWORD ;
 
-/* Variables and functions */
- scalar_t__ ERROR_INVALID_PARAMETER ; 
- scalar_t__ ERROR_NOT_SUPPORTED ; 
- scalar_t__ NO_ERROR ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
- scalar_t__ pGetUdpStatistics (TYPE_1__*) ; 
- int /*<<< orphan*/  skip (char*) ; 
- int /*<<< orphan*/  trace (char*,...) ; 
- int winetest_debug ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int dwNumAddrs; int dwOutDatagrams; int dwInErrors; int dwNoPorts; int dwInDatagrams; } ;
+typedef TYPE_1__ MIB_UDPSTATS ;
+typedef scalar_t__ DWORD ;
+
+
+ scalar_t__ ERROR_INVALID_PARAMETER ;
+ scalar_t__ ERROR_NOT_SUPPORTED ;
+ scalar_t__ NO_ERROR ;
+ int ok (int,char*,scalar_t__) ;
+ scalar_t__ pGetUdpStatistics (TYPE_1__*) ;
+ int skip (char*) ;
+ int trace (char*,...) ;
+ int winetest_debug ;
 
 __attribute__((used)) static void testGetUdpStatistics(void)
 {
@@ -31,7 +31,7 @@ __attribute__((used)) static void testGetUdpStatistics(void)
     DWORD apiReturn;
     MIB_UDPSTATS stats;
 
-    apiReturn = pGetUdpStatistics(NULL);
+    apiReturn = pGetUdpStatistics(((void*)0));
     if (apiReturn == ERROR_NOT_SUPPORTED) {
       skip("GetUdpStatistics is not supported\n");
       return;

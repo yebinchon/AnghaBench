@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  gint ;
-typedef  int /*<<< orphan*/  gchar ;
-typedef  int /*<<< orphan*/  gboolean ;
-typedef  int /*<<< orphan*/  GtkComboBox ;
-typedef  int /*<<< orphan*/  GtkBuilder ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GHB_WIDGET (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/ * GTK_COMBO_BOX (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  grey_combo_box_item (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int gint ;
+typedef int gchar ;
+typedef int gboolean ;
+typedef int GtkComboBox ;
+typedef int GtkBuilder ;
+
+
+ int GHB_WIDGET (int *,int const*) ;
+ int * GTK_COMBO_BOX (int ) ;
+ int grey_combo_box_item (int *,int ,int ) ;
 
 __attribute__((used)) static void
 grey_builder_combo_box_item(GtkBuilder *builder, const gchar *name, gint value, gboolean grey)

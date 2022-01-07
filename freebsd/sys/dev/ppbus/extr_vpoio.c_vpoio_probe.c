@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct vpoio_data {int /*<<< orphan*/  vpo_dev; } ;
-typedef  int /*<<< orphan*/  device_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INIT_TRIG_MICROSEQ ; 
- int vpoio_detect (struct vpoio_data*) ; 
+
+
+
+struct vpoio_data {int vpo_dev; } ;
+typedef int device_t ;
+
+
+ int INIT_TRIG_MICROSEQ ;
+ int vpoio_detect (struct vpoio_data*) ;
 
 int
 vpoio_probe(device_t dev, struct vpoio_data *vpo)
 {
-	int error;
+ int error;
 
-	/* ppbus dependent initialisation */
-	vpo->vpo_dev = dev;
 
-	/*
-	 * Initialize microsequence code
-	 */
-	INIT_TRIG_MICROSEQ;
+ vpo->vpo_dev = dev;
 
-	/* now, try to initialise the drive */
-	if ((error = vpoio_detect(vpo))) {
-		return (error);
-	}
 
-	return (0);
+
+
+ INIT_TRIG_MICROSEQ;
+
+
+ if ((error = vpoio_detect(vpo))) {
+  return (error);
+ }
+
+ return (0);
 }

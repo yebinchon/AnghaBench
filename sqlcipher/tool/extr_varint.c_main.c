@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u64 ;
-typedef  int i64 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*,...) ; 
- int hexValue (char) ; 
- int /*<<< orphan*/  memcpy (int*,int*,int) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int putVarint (unsigned char*,int) ; 
- int /*<<< orphan*/  stderr ; 
- int strlen (char*) ; 
- int toHex (unsigned char) ; 
+
+
+
+typedef int u64 ;
+typedef int i64 ;
+
+
+ int exit (int) ;
+ int fprintf (int ,char*,char*,...) ;
+ int hexValue (char) ;
+ int memcpy (int*,int*,int) ;
+ int printf (char*,...) ;
+ int putVarint (unsigned char*,int) ;
+ int stderr ;
+ int strlen (char*) ;
+ int toHex (unsigned char) ;
 
 int main(int argc, char **argv){
   int i;
@@ -33,7 +33,7 @@ int main(int argc, char **argv){
   unsigned char zHex[20];
 
   if( argc==1 ){
-    fprintf(stderr, 
+    fprintf(stderr,
          "Usage:\n"
          "  %s HH HH HH ...   Convert varint to decimal\n"
          "  %s DDDDD          Convert decimal to varint\n"
@@ -41,10 +41,10 @@ int main(int argc, char **argv){
          argv[0], argv[0]);
     exit(1);
   }
-  if( argc>2 
+  if( argc>2
    || (strlen(argv[1])==2 && hexValue(argv[1][0])>=0 && hexValue(argv[1][1])>=0)
   ){
-    /* Hex to decimal */
+
     for(i=1; i<argc && i<9; i++){
       if( strlen(argv[i])!=2 ){
         fprintf(stderr, "Not a hex byte: %s\n", argv[i]);

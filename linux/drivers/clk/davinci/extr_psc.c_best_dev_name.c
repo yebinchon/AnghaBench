@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct device {int /*<<< orphan*/  of_node; } ;
 
-/* Variables and functions */
- char const* dev_name (struct device*) ; 
- int /*<<< orphan*/  of_property_read_string (int /*<<< orphan*/ ,char*,char const**) ; 
+
+
+
+struct device {int of_node; } ;
+
+
+ char const* dev_name (struct device*) ;
+ int of_property_read_string (int ,char*,char const**) ;
 
 __attribute__((used)) static inline const char *best_dev_name(struct device *dev)
 {
-	const char *compatible;
+ const char *compatible;
 
-	if (!of_property_read_string(dev->of_node, "compatible", &compatible))
-		return compatible;
+ if (!of_property_read_string(dev->of_node, "compatible", &compatible))
+  return compatible;
 
-	return dev_name(dev);
+ return dev_name(dev);
 }

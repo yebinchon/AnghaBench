@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint16_t ;
-struct TYPE_6__ {int pc; int /*<<< orphan*/  cycles; } ;
-typedef  TYPE_1__ sh2rec_block_t ;
 
-/* Variables and functions */
- int INSTRUCTION_B (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  R2 ; 
- int /*<<< orphan*/  R8 ; 
- int /*<<< orphan*/  emitMOVLL4 (TYPE_1__*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  emitMOVLS4 (TYPE_1__*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  emitSHLR16 (TYPE_1__*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint16_t ;
+struct TYPE_6__ {int pc; int cycles; } ;
+typedef TYPE_1__ sh2rec_block_t ;
+
+
+ int INSTRUCTION_B (int ) ;
+ int R2 ;
+ int R8 ;
+ int emitMOVLL4 (TYPE_1__*,int ,int,int ) ;
+ int emitMOVLS4 (TYPE_1__*,int ,int,int ) ;
+ int emitSHLR16 (TYPE_1__*,int ) ;
 
 __attribute__((used)) static void generateSHLR16(uint16_t inst, sh2rec_block_t *b) {
     int regn = INSTRUCTION_B(inst);
 
-    emitMOVLL4(b, R8, regn, R2);    /* R2 <- sh2[Rn] */
-    emitSHLR16(b, R2);              /* R2 <- R2 >> 16 */
-    emitMOVLS4(b, R2, regn, R8);    /* sh2[Rn] <- R2 */
+    emitMOVLL4(b, R8, regn, R2);
+    emitSHLR16(b, R2);
+    emitMOVLS4(b, R2, regn, R8);
 
-    ++b->cycles;                    /* 1 Cycle */
+    ++b->cycles;
     b->pc += 2;
 }

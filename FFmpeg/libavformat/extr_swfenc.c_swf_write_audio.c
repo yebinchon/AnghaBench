@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_7__ {TYPE_1__* priv_data; } ;
-struct TYPE_6__ {int swf_frame_number; int /*<<< orphan*/  video_par; int /*<<< orphan*/  sound_samples; int /*<<< orphan*/  audio_fifo; } ;
-typedef  TYPE_1__ SWFContext ;
-typedef  TYPE_2__ AVFormatContext ;
-typedef  int /*<<< orphan*/  AVCodecParameters ;
+struct TYPE_6__ {int swf_frame_number; int video_par; int sound_samples; int audio_fifo; } ;
+typedef TYPE_1__ SWFContext ;
+typedef TYPE_2__ AVFormatContext ;
+typedef int AVCodecParameters ;
 
-/* Variables and functions */
- scalar_t__ AUDIO_FIFO_SIZE ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_LOG_INFO ; 
- int /*<<< orphan*/  av_fifo_generic_write (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- scalar_t__ av_fifo_size (int /*<<< orphan*/ ) ; 
- scalar_t__ av_get_audio_frame_duration2 (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  av_log (TYPE_2__*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  swf_write_video (TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ AUDIO_FIFO_SIZE ;
+ int AV_LOG_ERROR ;
+ int AV_LOG_INFO ;
+ int av_fifo_generic_write (int ,int *,int,int *) ;
+ scalar_t__ av_fifo_size (int ) ;
+ scalar_t__ av_get_audio_frame_duration2 (int *,int) ;
+ int av_log (TYPE_2__*,int ,char*) ;
+ int swf_write_video (TYPE_2__*,int *,int ,int ) ;
 
 __attribute__((used)) static int swf_write_audio(AVFormatContext *s,
                            AVCodecParameters *par, uint8_t *buf, int size)
 {
     SWFContext *swf = s->priv_data;
 
-    /* Flash Player limit */
+
     if (swf->swf_frame_number == 16000)
         av_log(s, AV_LOG_INFO, "warning: Flash Player limit of 16000 frames reached\n");
 
@@ -43,10 +43,10 @@ __attribute__((used)) static int swf_write_audio(AVFormatContext *s,
         return -1;
     }
 
-    av_fifo_generic_write(swf->audio_fifo, buf, size, NULL);
+    av_fifo_generic_write(swf->audio_fifo, buf, size, ((void*)0));
     swf->sound_samples += av_get_audio_frame_duration2(par, size);
 
-    /* if audio only stream make sure we add swf frames */
+
     if (!swf->video_par)
         swf_write_video(s, par, 0, 0);
 

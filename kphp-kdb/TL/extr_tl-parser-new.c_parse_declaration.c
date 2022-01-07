@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct tree {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PARSE_FAIL ; 
- int /*<<< orphan*/  PARSE_INIT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PARSE_TRY_OPT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  parse_builtin_combinator_decl ; 
- int /*<<< orphan*/  parse_combinator_decl ; 
- int /*<<< orphan*/  parse_final_decl ; 
- int /*<<< orphan*/  parse_partial_app_decl ; 
- int /*<<< orphan*/  type_declaration ; 
+
+ int PARSE_FAIL ;
+ int PARSE_INIT (int ) ;
+ int PARSE_TRY_OPT (int ) ;
+ int parse_builtin_combinator_decl ;
+ int parse_combinator_decl ;
+ int parse_final_decl ;
+ int parse_partial_app_decl ;
+ int type_declaration ;
 
 struct tree *parse_declaration (void) {
   PARSE_INIT (type_declaration);

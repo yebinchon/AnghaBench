@@ -1,34 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct enc28j60_net {int /*<<< orphan*/  irq_work; } ;
-typedef  int /*<<< orphan*/  irqreturn_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IRQ_HANDLED ; 
- int /*<<< orphan*/  schedule_work (int /*<<< orphan*/ *) ; 
+
+
+
+struct enc28j60_net {int irq_work; } ;
+typedef int irqreturn_t ;
+
+
+ int IRQ_HANDLED ;
+ int schedule_work (int *) ;
 
 __attribute__((used)) static irqreturn_t enc28j60_irq(int irq, void *dev_id)
 {
-	struct enc28j60_net *priv = dev_id;
+ struct enc28j60_net *priv = dev_id;
+ schedule_work(&priv->irq_work);
 
-	/*
-	 * Can't do anything in interrupt context because we need to
-	 * block (spi_sync() is blocking) so fire of the interrupt
-	 * handling workqueue.
-	 * Remember that we access enc28j60 registers through SPI bus
-	 * via spi_sync() call.
-	 */
-	schedule_work(&priv->irq_work);
-
-	return IRQ_HANDLED;
+ return IRQ_HANDLED;
 }

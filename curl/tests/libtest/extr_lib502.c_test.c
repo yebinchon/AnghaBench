@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct timeval {long tv_usec; scalar_t__ tv_sec; } ;
-typedef  int /*<<< orphan*/  fd_set ;
-typedef  int /*<<< orphan*/  CURLM ;
-typedef  int /*<<< orphan*/  CURL ;
+typedef int fd_set ;
+typedef int CURLM ;
+typedef int CURL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CURLOPT_URL ; 
- int /*<<< orphan*/  CURL_GLOBAL_ALL ; 
- int /*<<< orphan*/  FD_ZERO (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  abort_on_test_timeout () ; 
- int /*<<< orphan*/  curl_easy_cleanup (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  curl_global_cleanup () ; 
- int /*<<< orphan*/  curl_multi_cleanup (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  curl_multi_remove_handle (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  easy_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  easy_setopt (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  global_init (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  multi_add_handle (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  multi_fdset (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  multi_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  multi_perform (int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  select_test (int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,struct timeval*) ; 
- int /*<<< orphan*/  start_test_timing () ; 
+
+ int CURLOPT_URL ;
+ int CURL_GLOBAL_ALL ;
+ int FD_ZERO (int *) ;
+ int abort_on_test_timeout () ;
+ int curl_easy_cleanup (int *) ;
+ int curl_global_cleanup () ;
+ int curl_multi_cleanup (int *) ;
+ int curl_multi_remove_handle (int *,int *) ;
+ int easy_init (int *) ;
+ int easy_setopt (int *,int ,char*) ;
+ int global_init (int ) ;
+ int multi_add_handle (int *,int *) ;
+ int multi_fdset (int *,int *,int *,int *,int*) ;
+ int multi_init (int *) ;
+ int multi_perform (int *,int*) ;
+ int select_test (int,int *,int *,int *,struct timeval*) ;
+ int start_test_timing () ;
 
 int test(char *URL)
 {
-  CURL *c = NULL;
-  CURLM *m = NULL;
+  CURL *c = ((void*)0);
+  CURLM *m = ((void*)0);
   int res = 0;
   int running;
 
@@ -59,14 +59,14 @@ int test(char *URL)
     int maxfd = -99;
 
     timeout.tv_sec = 0;
-    timeout.tv_usec = 100000L; /* 100 ms */
+    timeout.tv_usec = 100000L;
 
     multi_perform(m, &running);
 
     abort_on_test_timeout();
 
     if(!running)
-      break; /* done */
+      break;
 
     FD_ZERO(&fdread);
     FD_ZERO(&fdwrite);
@@ -74,7 +74,7 @@ int test(char *URL)
 
     multi_fdset(m, &fdread, &fdwrite, &fdexcep, &maxfd);
 
-    /* At this point, maxfd is guaranteed to be greater or equal than -1. */
+
 
     select_test(maxfd + 1, &fdread, &fdwrite, &fdexcep, &timeout);
 
@@ -83,7 +83,7 @@ int test(char *URL)
 
 test_cleanup:
 
-  /* proper cleanup sequence - type PA */
+
 
   curl_multi_remove_handle(m, c);
   curl_multi_cleanup(m);

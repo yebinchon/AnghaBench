@@ -1,33 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  F_WRLCK ; 
- int O_CREAT ; 
- int O_EXCL ; 
- int O_WRONLY ; 
- int PATH_MAX ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ getpid () ; 
- int /*<<< orphan*/  kprintf (char*,char*) ; 
- scalar_t__ lock_whole_file (scalar_t__,int /*<<< orphan*/ ) ; 
- scalar_t__ open (char*,int,int) ; 
- scalar_t__ pid_fd ; 
- int /*<<< orphan*/  pid_filename ; 
- int snprintf (char*,int,char*,...) ; 
- char* szPidFilename ; 
- int write (scalar_t__,char*,int) ; 
- int /*<<< orphan*/  zstrdup (char*) ; 
+ int F_WRLCK ;
+ int O_CREAT ;
+ int O_EXCL ;
+ int O_WRONLY ;
+ int PATH_MAX ;
+ int assert (int) ;
+ scalar_t__ getpid () ;
+ int kprintf (char*,char*) ;
+ scalar_t__ lock_whole_file (scalar_t__,int ) ;
+ scalar_t__ open (char*,int,int) ;
+ scalar_t__ pid_fd ;
+ int pid_filename ;
+ int snprintf (char*,int,char*,...) ;
+ char* szPidFilename ;
+ int write (scalar_t__,char*,int) ;
+ int zstrdup (char*) ;
 
 int lock_pid_file (const char *const dir) {
   char a[PATH_MAX];

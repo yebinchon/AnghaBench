@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
-struct parser_exec_state {int /*<<< orphan*/ * ip_va; } ;
 
-/* Variables and functions */
+
+
+
+typedef int u32 ;
+struct parser_exec_state {int * ip_va; } ;
+
+
 
 __attribute__((used)) static inline u32 *cmd_ptr(struct parser_exec_state *s, int index)
 {
-	return s->ip_va + (index << 2);
+ return s->ip_va + (index << 2);
 }

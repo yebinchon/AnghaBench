@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-struct TYPE_2__ {int id; int /*<<< orphan*/  const* str; } ;
 
-/* Variables and functions */
- int DIRID_ABSOLUTE ; 
- int DIRID_ABSOLUTE_16BIT ; 
- int DIRID_NULL ; 
- int DIRID_USER ; 
- int MAX_CSIDL_DIRID ; 
- int MAX_SYSTEM_DIRID ; 
- int MIN_CSIDL_DIRID ; 
- int /*<<< orphan*/  WARN (char*,int) ; 
- int /*<<< orphan*/ * create_system_dirid (int) ; 
- int /*<<< orphan*/  const** csidl_dirids ; 
- int /*<<< orphan*/ * get_csidl_dir (int) ; 
- int /*<<< orphan*/  const* get_unknown_dirid () ; 
- int nb_user_dirids ; 
- int /*<<< orphan*/  const** system_dirids ; 
- TYPE_1__* user_dirids ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
+struct TYPE_2__ {int id; int const* str; } ;
+
+
+ int DIRID_ABSOLUTE ;
+ int DIRID_ABSOLUTE_16BIT ;
+ int DIRID_NULL ;
+ int DIRID_USER ;
+ int MAX_CSIDL_DIRID ;
+ int MAX_SYSTEM_DIRID ;
+ int MIN_CSIDL_DIRID ;
+ int WARN (char*,int) ;
+ int * create_system_dirid (int) ;
+ int const** csidl_dirids ;
+ int * get_csidl_dir (int) ;
+ int const* get_unknown_dirid () ;
+ int nb_user_dirids ;
+ int const** system_dirids ;
+ TYPE_1__* user_dirids ;
 
 const WCHAR *DIRID_get_string( int dirid )
 {
@@ -42,7 +42,7 @@ const WCHAR *DIRID_get_string( int dirid )
         for (i = 0; i < nb_user_dirids; i++)
             if (user_dirids[i].id == dirid) return user_dirids[i].str;
         WARN("user id %d not found\n", dirid );
-        return NULL;
+        return ((void*)0);
     }
     else if (dirid >= MIN_CSIDL_DIRID)
     {

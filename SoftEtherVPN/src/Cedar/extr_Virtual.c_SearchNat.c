@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  NatTable; } ;
-typedef  TYPE_1__ VH ;
-typedef  int /*<<< orphan*/  NAT_ENTRY ;
 
-/* Variables and functions */
- scalar_t__ Search (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int NatTable; } ;
+typedef TYPE_1__ VH ;
+typedef int NAT_ENTRY ;
+
+
+ scalar_t__ Search (int ,int *) ;
 
 NAT_ENTRY *SearchNat(VH *v, NAT_ENTRY *target)
 {
-	NAT_ENTRY *n;
-	// Validate arguments
-	if (v == NULL || target == NULL)
-	{
-		return NULL;
-	}
+ NAT_ENTRY *n;
 
-	// Binary search
-	n = (NAT_ENTRY *)Search(v->NatTable, target);
+ if (v == ((void*)0) || target == ((void*)0))
+ {
+  return ((void*)0);
+ }
 
-	return n;
+
+ n = (NAT_ENTRY *)Search(v->NatTable, target);
+
+ return n;
 }

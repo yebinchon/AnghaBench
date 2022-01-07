@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int cancelledDueToDeadlock; int /*<<< orphan*/  mutex; } ;
 
-/* Variables and functions */
- scalar_t__ IsInDistributedTransaction (TYPE_1__*) ; 
- TYPE_1__* MyBackendData ; 
- int /*<<< orphan*/  SpinLockAcquire (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SpinLockRelease (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int cancelledDueToDeadlock; int mutex; } ;
+
+
+ scalar_t__ IsInDistributedTransaction (TYPE_1__*) ;
+ TYPE_1__* MyBackendData ;
+ int SpinLockAcquire (int *) ;
+ int SpinLockRelease (int *) ;
 
 bool
 MyBackendGotCancelledDueToDeadlock(void)
 {
-	bool cancelledDueToDeadlock = false;
+ bool cancelledDueToDeadlock = 0;
 
-	/* backend might not have used citus yet and thus not initialized backend data */
-	if (!MyBackendData)
-	{
-		return false;
-	}
 
-	SpinLockAcquire(&MyBackendData->mutex);
+ if (!MyBackendData)
+ {
+  return 0;
+ }
 
-	if (IsInDistributedTransaction(MyBackendData))
-	{
-		cancelledDueToDeadlock = MyBackendData->cancelledDueToDeadlock;
-	}
+ SpinLockAcquire(&MyBackendData->mutex);
 
-	SpinLockRelease(&MyBackendData->mutex);
+ if (IsInDistributedTransaction(MyBackendData))
+ {
+  cancelledDueToDeadlock = MyBackendData->cancelledDueToDeadlock;
+ }
 
-	return cancelledDueToDeadlock;
+ SpinLockRelease(&MyBackendData->mutex);
+
+ return cancelledDueToDeadlock;
 }

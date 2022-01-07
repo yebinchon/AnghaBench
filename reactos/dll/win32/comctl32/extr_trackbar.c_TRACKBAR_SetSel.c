@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int dwStyle; scalar_t__ lSelMin; scalar_t__ lSelMax; scalar_t__ lRangeMin; scalar_t__ lRangeMax; int /*<<< orphan*/  flags; } ;
-typedef  TYPE_1__ TRACKBAR_INFO ;
-typedef  void* SHORT ;
-typedef  int /*<<< orphan*/  LRESULT ;
-typedef  int /*<<< orphan*/  LONG ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- scalar_t__ HIWORD (int /*<<< orphan*/ ) ; 
- scalar_t__ LOWORD (int /*<<< orphan*/ ) ; 
- int TBS_ENABLESELRANGE ; 
- int /*<<< orphan*/  TB_SELECTIONCHANGED ; 
- int /*<<< orphan*/  TRACKBAR_InvalidateAll (TYPE_1__*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int dwStyle; scalar_t__ lSelMin; scalar_t__ lSelMax; scalar_t__ lRangeMin; scalar_t__ lRangeMax; int flags; } ;
+typedef TYPE_1__ TRACKBAR_INFO ;
+typedef void* SHORT ;
+typedef int LRESULT ;
+typedef int LONG ;
+typedef scalar_t__ BOOL ;
+
+
+ scalar_t__ HIWORD (int ) ;
+ scalar_t__ LOWORD (int ) ;
+ int TBS_ENABLESELRANGE ;
+ int TB_SELECTIONCHANGED ;
+ int TRACKBAR_InvalidateAll (TYPE_1__*) ;
 
 __attribute__((used)) static inline LRESULT
 TRACKBAR_SetSel (TRACKBAR_INFO *infoPtr, BOOL fRedraw, LONG lSel)

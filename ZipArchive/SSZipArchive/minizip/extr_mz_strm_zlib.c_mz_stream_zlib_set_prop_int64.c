@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int window_bits; int /*<<< orphan*/  max_total_in; int /*<<< orphan*/  level; } ;
-typedef  TYPE_1__ mz_stream_zlib ;
-typedef  int /*<<< orphan*/  int64_t ;
-typedef  int int32_t ;
-typedef  int /*<<< orphan*/  int16_t ;
 
-/* Variables and functions */
- int MZ_EXIST_ERROR ; 
- int MZ_OK ; 
-#define  MZ_STREAM_PROP_COMPRESS_LEVEL 130 
-#define  MZ_STREAM_PROP_COMPRESS_WINDOW 129 
-#define  MZ_STREAM_PROP_TOTAL_IN_MAX 128 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int window_bits; int max_total_in; int level; } ;
+typedef TYPE_1__ mz_stream_zlib ;
+typedef int int64_t ;
+typedef int int32_t ;
+typedef int int16_t ;
+
+
+ int MZ_EXIST_ERROR ;
+ int MZ_OK ;
+
+
+
 
 int32_t mz_stream_zlib_set_prop_int64(void *stream, int32_t prop, int64_t value)
 {
     mz_stream_zlib *zlib = (mz_stream_zlib *)stream;
     switch (prop)
     {
-    case MZ_STREAM_PROP_COMPRESS_LEVEL:
+    case 130:
         zlib->level = (int16_t)value;
         break;
-    case MZ_STREAM_PROP_TOTAL_IN_MAX:
+    case 128:
         zlib->max_total_in = value;
         break;
-    case MZ_STREAM_PROP_COMPRESS_WINDOW:
+    case 129:
         zlib->window_bits = (int32_t)value;
         break;
     default:

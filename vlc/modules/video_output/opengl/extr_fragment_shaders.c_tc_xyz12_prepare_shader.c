@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/ * Texture; } ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int * Texture; } ;
 struct TYPE_7__ {TYPE_2__ uloc; TYPE_1__* vt; } ;
-typedef  TYPE_3__ opengl_tex_converter_t ;
-struct TYPE_5__ {int /*<<< orphan*/  (* Uniform1i ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;} ;
-typedef  int /*<<< orphan*/  GLsizei ;
+typedef TYPE_3__ opengl_tex_converter_t ;
+struct TYPE_5__ {int (* Uniform1i ) (int ,int ) ;} ;
+typedef int GLsizei ;
 
-/* Variables and functions */
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int stub1 (int ,int ) ;
 
 __attribute__((used)) static void
 tc_xyz12_prepare_shader(const opengl_tex_converter_t *tc,

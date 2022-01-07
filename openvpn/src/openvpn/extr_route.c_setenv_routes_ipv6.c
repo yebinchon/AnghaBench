@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct route_ipv6_list {struct route_ipv6* routes_ipv6; } ;
 struct route_ipv6 {struct route_ipv6* next; } ;
 struct env_set {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  setenv_route_ipv6 (struct env_set*,struct route_ipv6*,int /*<<< orphan*/ ) ; 
+
+ int setenv_route_ipv6 (struct env_set*,struct route_ipv6*,int ) ;
 
 void
 setenv_routes_ipv6(struct env_set *es, const struct route_ipv6_list *rl6)

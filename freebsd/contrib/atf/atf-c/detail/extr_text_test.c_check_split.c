@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  atf_list_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ATF_CHECK_EQ (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ATF_CHECK_STREQ (char const*,char const*) ; 
- int /*<<< orphan*/  CE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  array_size (char const**) ; 
- int /*<<< orphan*/  atf_list_fini (int /*<<< orphan*/ *) ; 
- scalar_t__ atf_list_index_c (int /*<<< orphan*/ *,size_t) ; 
- int /*<<< orphan*/  atf_list_size (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  atf_text_split (char const*,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
+
+
+
+typedef int atf_list_t ;
+
+
+ int ATF_CHECK_EQ (int ,int ) ;
+ int ATF_CHECK_STREQ (char const*,char const*) ;
+ int CE (int ) ;
+ int array_size (char const**) ;
+ int atf_list_fini (int *) ;
+ scalar_t__ atf_list_index_c (int *,size_t) ;
+ int atf_list_size (int *) ;
+ int atf_text_split (char const*,char const*,int *) ;
+ int printf (char*,...) ;
 
 __attribute__((used)) static
 void
@@ -37,7 +37,7 @@ check_split(const char *str, const char *delim, const char *words[])
     printf("Expecting %zd words\n", array_size(words));
     ATF_CHECK_EQ(atf_list_size(&list), array_size(words));
 
-    for (word = words, i = 0; *word != NULL; word++, i++) {
+    for (word = words, i = 0; *word != ((void*)0); word++, i++) {
         printf("Word at position %zd should be '%s'\n", i, words[i]);
         ATF_CHECK_STREQ((const char *)atf_list_index_c(&list, i), words[i]);
     }

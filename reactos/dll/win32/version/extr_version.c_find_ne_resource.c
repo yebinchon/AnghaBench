@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  nehd ;
-typedef  scalar_t__ WORD ;
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int nehd ;
+typedef scalar_t__ WORD ;
 struct TYPE_6__ {int ne_restab; int ne_rsrctab; } ;
 struct TYPE_5__ {scalar_t__ const id; scalar_t__ length; scalar_t__ offset; } ;
 struct TYPE_4__ {scalar_t__ const type_id; int count; } ;
-typedef  TYPE_1__ NE_TYPEINFO ;
-typedef  TYPE_2__ NE_NAMEINFO ;
-typedef  char* LPSTR ;
-typedef  scalar_t__ LPBYTE ;
-typedef  TYPE_3__ IMAGE_OS2_HEADER ;
-typedef  int /*<<< orphan*/  HFILE ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef TYPE_1__ NE_TYPEINFO ;
+typedef TYPE_2__ NE_NAMEINFO ;
+typedef char* LPSTR ;
+typedef scalar_t__ LPBYTE ;
+typedef TYPE_3__ IMAGE_OS2_HEADER ;
+typedef int HFILE ;
+typedef int DWORD ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- scalar_t__ HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- int LZRead (int /*<<< orphan*/ ,char*,int) ; 
- int LZSeek (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SEEK_CUR ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  TRACE (char*) ; 
- int /*<<< orphan*/  TRUE ; 
- int VS_FILE_INFO ; 
- int VS_VERSION_INFO ; 
+
+ int FALSE ;
+ int GetProcessHeap () ;
+ scalar_t__ HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,scalar_t__) ;
+ int LZRead (int ,char*,int) ;
+ int LZSeek (int ,int,int ) ;
+ int SEEK_CUR ;
+ int SEEK_SET ;
+ int TRACE (char*) ;
+ int TRUE ;
+ int VS_FILE_INFO ;
+ int VS_VERSION_INFO ;
 
 __attribute__((used)) static BOOL find_ne_resource( HFILE lzfd, DWORD *resLen, DWORD *resOff )
 {
@@ -53,7 +53,7 @@ __attribute__((used)) static BOOL find_ne_resource( HFILE lzfd, DWORD *resLen, D
     DWORD resTabSize;
     int count;
 
-    /* Read in NE header */
+
     nehdoffset = LZSeek( lzfd, 0, SEEK_CUR );
     if ( sizeof(nehd) != LZRead( lzfd, (LPSTR)&nehd, sizeof(nehd) ) ) return FALSE;
 
@@ -64,7 +64,7 @@ __attribute__((used)) static BOOL find_ne_resource( HFILE lzfd, DWORD *resLen, D
         return FALSE;
     }
 
-    /* Read in resource table */
+
     resTab = HeapAlloc( GetProcessHeap(), 0, resTabSize );
     if ( !resTab ) return FALSE;
 
@@ -75,7 +75,7 @@ __attribute__((used)) static BOOL find_ne_resource( HFILE lzfd, DWORD *resLen, D
         return FALSE;
     }
 
-    /* Find resource */
+
     typeInfo = (NE_TYPEINFO *)(resTab + 2);
     while (typeInfo->type_id)
     {
@@ -98,7 +98,7 @@ __attribute__((used)) static BOOL find_ne_resource( HFILE lzfd, DWORD *resLen, D
     return FALSE;
 
  found_name:
-    /* Return resource data */
+
     if ( resLen ) *resLen = nameInfo->length << *(WORD *)resTab;
     if ( resOff ) *resOff = nameInfo->offset << *(WORD *)resTab;
 

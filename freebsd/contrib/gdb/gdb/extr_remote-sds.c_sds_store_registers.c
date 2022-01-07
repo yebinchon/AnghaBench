@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int PBUFSIZ ; 
- void** deprecated_registers ; 
- int /*<<< orphan*/  sds_send (unsigned char*,int) ; 
- int /*<<< orphan*/ * sprs ; 
+ int PBUFSIZ ;
+ void** deprecated_registers ;
+ int sds_send (unsigned char*,int) ;
+ int * sprs ;
 
 __attribute__((used)) static void
 sds_store_registers (int regno)
@@ -23,7 +15,7 @@ sds_store_registers (int regno)
   unsigned char *p, buf[PBUFSIZ];
   int i;
 
-  /* Store all the special-purpose registers.  */
+
   p = buf;
   *p++ = 19;
   *p++ = 1;
@@ -38,7 +30,7 @@ sds_store_registers (int regno)
 
   sds_send (buf, p - buf);
 
-  /* Store all the general-purpose registers.  */
+
   p = buf;
   *p++ = 19;
   *p++ = 2;

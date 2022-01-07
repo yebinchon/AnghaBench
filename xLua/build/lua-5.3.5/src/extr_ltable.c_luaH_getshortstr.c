@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Table ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int Table ;
 struct TYPE_5__ {scalar_t__ tt; } ;
-typedef  int /*<<< orphan*/  TValue ;
-typedef  TYPE_1__ TString ;
-typedef  int /*<<< orphan*/  Node ;
+typedef int TValue ;
+typedef TYPE_1__ TString ;
+typedef int Node ;
 
-/* Variables and functions */
- scalar_t__ LUA_TSHRSTR ; 
- scalar_t__ eqshrstr (int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/ * gkey (int /*<<< orphan*/ *) ; 
- int gnext (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  const* gval (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * hashstr (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  const* luaO_nilobject ; 
- int /*<<< orphan*/  lua_assert (int) ; 
- int /*<<< orphan*/  tsvalue (int /*<<< orphan*/  const*) ; 
- scalar_t__ ttisshrstring (int /*<<< orphan*/  const*) ; 
+
+ scalar_t__ LUA_TSHRSTR ;
+ scalar_t__ eqshrstr (int ,TYPE_1__*) ;
+ int * gkey (int *) ;
+ int gnext (int *) ;
+ int const* gval (int *) ;
+ int * hashstr (int *,TYPE_1__*) ;
+ int const* luaO_nilobject ;
+ int lua_assert (int) ;
+ int tsvalue (int const*) ;
+ scalar_t__ ttisshrstring (int const*) ;
 
 const TValue *luaH_getshortstr (Table *t, TString *key) {
   Node *n = hashstr(t, key);
   lua_assert(key->tt == LUA_TSHRSTR);
-  for (;;) {  /* check whether 'key' is somewhere in the chain */
+  for (;;) {
     const TValue *k = gkey(n);
     if (ttisshrstring(k) && eqshrstr(tsvalue(k), key))
-      return gval(n);  /* that's it */
+      return gval(n);
     else {
       int nx = gnext(n);
       if (nx == 0)
-        return luaO_nilobject;  /* not found */
+        return luaO_nilobject;
       n += nx;
     }
   }

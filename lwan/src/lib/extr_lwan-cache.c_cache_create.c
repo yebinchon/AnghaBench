@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ time_t ;
-struct TYPE_8__ {int /*<<< orphan*/  table; int /*<<< orphan*/  lock; } ;
-struct TYPE_7__ {int /*<<< orphan*/  list; int /*<<< orphan*/  lock; } ;
+
+
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef scalar_t__ time_t ;
+struct TYPE_8__ {int table; int lock; } ;
+struct TYPE_7__ {int list; int lock; } ;
 struct TYPE_6__ {scalar_t__ time_to_live; } ;
 struct TYPE_5__ {int create_entry; int destroy_entry; void* context; } ;
 struct cache {TYPE_4__ hash; TYPE_3__ queue; TYPE_2__ settings; TYPE_1__ cb; } ;
-typedef  int cache_destroy_entry_cb ;
-typedef  int cache_create_entry_cb ;
+typedef int cache_destroy_entry_cb ;
+typedef int cache_create_entry_cb ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  cache_pruner_job ; 
- struct cache* calloc (int,int) ; 
- int /*<<< orphan*/  free (struct cache*) ; 
- int /*<<< orphan*/  hash_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hash_str_new (int /*<<< orphan*/  (*) (struct cache*),int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  list_head_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lwan_job_add (int /*<<< orphan*/ ,struct cache*) ; 
- int /*<<< orphan*/  pthread_rwlock_destroy (int /*<<< orphan*/ *) ; 
- scalar_t__ pthread_rwlock_init (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int assert (int) ;
+ int cache_pruner_job ;
+ struct cache* calloc (int,int) ;
+ int free (struct cache*) ;
+ int hash_free (int ) ;
+ int hash_str_new (int (*) (struct cache*),int *) ;
+ int list_head_init (int *) ;
+ int lwan_job_add (int ,struct cache*) ;
+ int pthread_rwlock_destroy (int *) ;
+ scalar_t__ pthread_rwlock_init (int *,int *) ;
 
 struct cache *cache_create(cache_create_entry_cb create_entry_cb,
                              cache_destroy_entry_cb destroy_entry_cb,
@@ -48,15 +48,15 @@ struct cache *cache_create(cache_create_entry_cb create_entry_cb,
 
     cache = calloc(1, sizeof(*cache));
     if (!cache)
-        return NULL;
+        return ((void*)0);
 
-    cache->hash.table = hash_str_new(free, NULL);
+    cache->hash.table = hash_str_new(free, ((void*)0));
     if (!cache->hash.table)
         goto error_no_hash;
 
-    if (pthread_rwlock_init(&cache->hash.lock, NULL))
+    if (pthread_rwlock_init(&cache->hash.lock, ((void*)0)))
         goto error_no_hash_lock;
-    if (pthread_rwlock_init(&cache->queue.lock, NULL))
+    if (pthread_rwlock_init(&cache->queue.lock, ((void*)0)))
         goto error_no_queue_lock;
 
     cache->cb.create_entry = create_entry_cb;
@@ -78,5 +78,5 @@ error_no_hash_lock:
 error_no_hash:
     free(cache);
 
-    return NULL;
+    return ((void*)0);
 }

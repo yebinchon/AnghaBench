@@ -1,49 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
 
-/* Variables and functions */
+
+
+
+typedef int uint8_t ;
+
+
 
 uint8_t* hb_annexb_find_next_nalu(const uint8_t *start, size_t *size)
 {
-    uint8_t *nal = NULL;
+    uint8_t *nal = ((void*)0);
     uint8_t *buf = (uint8_t*)start;
     uint8_t *end = (uint8_t*)start + *size;
 
-    /* Look for an Annex B start code prefix (3-byte sequence == 1) */
+
     while (end - buf > 3)
     {
         if (!buf[0] && !buf[1] && buf[2] == 1)
         {
-            nal = (buf += 3); // NAL unit begins after start code
+            nal = (buf += 3);
             break;
         }
         buf++;
     }
 
-    if (nal == NULL)
+    if (nal == ((void*)0))
     {
         *size = 0;
-        return NULL;
+        return ((void*)0);
     }
-
-    /*
-     * Start code prefix found, look for the next one to determine the size
-     *
-     * A 4-byte sequence == 1 is also a start code, so check for a 3-byte
-     * sequence == 0 too (start code emulation prevention will prevent such a
-     * sequence from occurring outside of a start code prefix)
-     */
     while (end - buf > 3)
     {
         if (!buf[0] && !buf[1] && (!buf[2] || buf[2] == 1))
@@ -55,5 +47,5 @@ uint8_t* hb_annexb_find_next_nalu(const uint8_t *start, size_t *size)
     }
 
     *size = end - nal;
-    return  nal;
+    return nal;
 }

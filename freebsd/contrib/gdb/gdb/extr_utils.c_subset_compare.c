@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ strlen (char*) ; 
- scalar_t__ strncmp (char*,char*,scalar_t__) ; 
+ scalar_t__ strlen (char*) ;
+ scalar_t__ strncmp (char*,char*,scalar_t__) ;
 
 int
 subset_compare (char *string_to_compare, char *template_string)
 {
   int match;
-  if (template_string != (char *) NULL && string_to_compare != (char *) NULL
+  if (template_string != (char *) ((void*)0) && string_to_compare != (char *) ((void*)0)
       && strlen (string_to_compare) <= strlen (template_string))
     match =
       (strncmp

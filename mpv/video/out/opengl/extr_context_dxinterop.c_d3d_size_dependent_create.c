@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct ra_ctx {int /*<<< orphan*/  vo; struct priv* priv; } ;
-struct TYPE_4__ {int /*<<< orphan*/  (* BindFramebuffer ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* FramebufferTexture2D ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* DXLockObjectsNV ) (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ;int /*<<< orphan*/  (* DXRegisterObjectNV ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* GenTextures ) (int,int /*<<< orphan*/ *) ;int /*<<< orphan*/  (* DXSetResourceShareHandleNV ) (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ;} ;
-struct priv {int /*<<< orphan*/  texture; int /*<<< orphan*/  main_fb; int /*<<< orphan*/  rtarget_h; int /*<<< orphan*/  device_h; int /*<<< orphan*/  rtarget; int /*<<< orphan*/  device; int /*<<< orphan*/  backbuffer; int /*<<< orphan*/  swapchain; TYPE_1__ gl; } ;
-struct TYPE_5__ {scalar_t__ Format; scalar_t__ Height; scalar_t__ Width; int /*<<< orphan*/  member_0; } ;
-typedef  int /*<<< orphan*/  IDirect3DSwapChain9 ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/ * HANDLE ;
-typedef  TYPE_1__ GL ;
-typedef  TYPE_2__ D3DSURFACE_DESC ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D3DBACKBUFFER_TYPE_MONO ; 
- int /*<<< orphan*/  D3DMULTISAMPLE_NONE ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GL_COLOR_ATTACHMENT0 ; 
- int /*<<< orphan*/  GL_FRAMEBUFFER ; 
- int /*<<< orphan*/  GL_TEXTURE_2D ; 
- int /*<<< orphan*/  IDirect3DDevice9Ex_CreateRenderTarget (int /*<<< orphan*/ ,scalar_t__,scalar_t__,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IDirect3DDevice9Ex_GetSwapChain (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IDirect3DSurface9_GetDesc (int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  IDirect3DSwapChain9Ex_GetBackBuffer (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IDirect3DSwapChain9_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IID_IDirect3DSwapChain9Ex ; 
- int /*<<< orphan*/  MP_ERR (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MP_VERBOSE (int /*<<< orphan*/ ,char*,unsigned int,...) ; 
- int /*<<< orphan*/  SAFE_RELEASE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  WGL_ACCESS_WRITE_DISCARD_NV ; 
- int /*<<< orphan*/  mp_HRESULT_to_str (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mp_LastError_to_str () ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub2 (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub3 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub4 (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub5 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub6 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub7 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct ra_ctx {int vo; struct priv* priv; } ;
+struct TYPE_4__ {int (* BindFramebuffer ) (int ,int ) ;int (* FramebufferTexture2D ) (int ,int ,int ,int ,int ) ;int (* DXLockObjectsNV ) (int ,int,int *) ;int (* DXRegisterObjectNV ) (int ,int ,int ,int ,int ) ;int (* GenTextures ) (int,int *) ;int (* DXSetResourceShareHandleNV ) (int ,int *) ;} ;
+struct priv {int texture; int main_fb; int rtarget_h; int device_h; int rtarget; int device; int backbuffer; int swapchain; TYPE_1__ gl; } ;
+struct TYPE_5__ {scalar_t__ Format; scalar_t__ Height; scalar_t__ Width; int member_0; } ;
+typedef int IDirect3DSwapChain9 ;
+typedef int HRESULT ;
+typedef int * HANDLE ;
+typedef TYPE_1__ GL ;
+typedef TYPE_2__ D3DSURFACE_DESC ;
+
+
+ int D3DBACKBUFFER_TYPE_MONO ;
+ int D3DMULTISAMPLE_NONE ;
+ scalar_t__ FAILED (int ) ;
+ int FALSE ;
+ int GL_COLOR_ATTACHMENT0 ;
+ int GL_FRAMEBUFFER ;
+ int GL_TEXTURE_2D ;
+ int IDirect3DDevice9Ex_CreateRenderTarget (int ,scalar_t__,scalar_t__,scalar_t__,int ,int ,int ,int *,int **) ;
+ int IDirect3DDevice9Ex_GetSwapChain (int ,int ,int **) ;
+ int IDirect3DSurface9_GetDesc (int ,TYPE_2__*) ;
+ int IDirect3DSwapChain9Ex_GetBackBuffer (int ,int ,int ,int *) ;
+ int IDirect3DSwapChain9_QueryInterface (int *,int *,void**) ;
+ int IID_IDirect3DSwapChain9Ex ;
+ int MP_ERR (int ,char*,int ) ;
+ int MP_VERBOSE (int ,char*,unsigned int,...) ;
+ int SAFE_RELEASE (int *) ;
+ int WGL_ACCESS_WRITE_DISCARD_NV ;
+ int mp_HRESULT_to_str (int ) ;
+ int mp_LastError_to_str () ;
+ int stub1 (int ,int *) ;
+ int stub2 (int,int *) ;
+ int stub3 (int ,int ,int ,int ,int ) ;
+ int stub4 (int ,int,int *) ;
+ int stub5 (int ,int ) ;
+ int stub6 (int ,int ,int ,int ,int ) ;
+ int stub7 (int ,int ) ;
 
 __attribute__((used)) static int d3d_size_dependent_create(struct ra_ctx *ctx)
 {
@@ -80,7 +80,7 @@ __attribute__((used)) static int d3d_size_dependent_create(struct ra_ctx *ctx)
         return -1;
     }
 
-    // Get the format of the backbuffer
+
     D3DSURFACE_DESC bb_desc = { 0 };
     IDirect3DSurface9_GetDesc(p->backbuffer, &bb_desc);
 
@@ -89,9 +89,9 @@ __attribute__((used)) static int d3d_size_dependent_create(struct ra_ctx *ctx)
     MP_VERBOSE(ctx->vo, "DX_interop backbuffer format: %u\n",
         (unsigned)bb_desc.Format);
 
-    // Create a rendertarget with the same format as the backbuffer for
-    // rendering from OpenGL
-    HANDLE share_handle = NULL;
+
+
+    HANDLE share_handle = ((void*)0);
     hr = IDirect3DDevice9Ex_CreateRenderTarget(p->device, bb_desc.Width,
         bb_desc.Height, bb_desc.Format, D3DMULTISAMPLE_NONE, 0, FALSE,
         &p->rtarget, &share_handle);
@@ -100,15 +100,15 @@ __attribute__((used)) static int d3d_size_dependent_create(struct ra_ctx *ctx)
         return -1;
     }
 
-    // Register the share handle with WGL_NV_DX_interop. Nvidia does not
-    // require the use of share handles, but Intel does.
+
+
     if (share_handle)
         gl->DXSetResourceShareHandleNV(p->rtarget, share_handle);
 
-    // Create the OpenGL-side texture
+
     gl->GenTextures(1, &p->texture);
 
-    // Now share the rendertarget with OpenGL as a texture
+
     p->rtarget_h = gl->DXRegisterObjectNV(p->device_h, p->rtarget, p->texture,
         GL_TEXTURE_2D, WGL_ACCESS_WRITE_DISCARD_NV);
     if (!p->rtarget_h) {
@@ -117,8 +117,8 @@ __attribute__((used)) static int d3d_size_dependent_create(struct ra_ctx *ctx)
         return -1;
     }
 
-    // Lock the rendertarget for use from OpenGL. This will only be unlocked in
-    // swap_buffers() when it is blitted to the real Direct3D backbuffer.
+
+
     if (!gl->DXLockObjectsNV(p->device_h, 1, &p->rtarget_h)) {
         MP_ERR(ctx->vo, "Couldn't lock rendertarget: %s\n",
                mp_LastError_to_str());

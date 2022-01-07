@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int ucs4_t ;
-typedef  TYPE_1__* conv_t ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int ucs4_t ;
+typedef TYPE_1__* conv_t ;
 struct TYPE_5__ {unsigned char ostate; } ;
 
-/* Variables and functions */
- int RET_ILUNI ; 
- int RET_TOOSMALL ; 
- int /*<<< orphan*/  abort () ; 
- int big5_wctomb (TYPE_1__*,unsigned char*,int,int) ; 
- int hkscs1999_wctomb (TYPE_1__*,unsigned char*,int,int) ; 
+
+ int RET_ILUNI ;
+ int RET_TOOSMALL ;
+ int abort () ;
+ int big5_wctomb (TYPE_1__*,unsigned char*,int,int) ;
+ int hkscs1999_wctomb (TYPE_1__*,unsigned char*,int,int) ;
 
 __attribute__((used)) static int
 big5hkscs1999_wctomb (conv_t conv, unsigned char *r, ucs4_t wc, int n)
@@ -29,19 +29,19 @@ big5hkscs1999_wctomb (conv_t conv, unsigned char *r, ucs4_t wc, int n)
   unsigned char last = conv->ostate;
 
   if (last) {
-    /* last is = 0x66 or = 0xa7. */
+
     if (wc == 0x0304 || wc == 0x030c) {
-      /* Output the combined character. */
+
       if (n >= 2) {
         r[0] = 0x88;
-        r[1] = last + ((wc & 24) >> 2) - 4; /* = 0x62 or 0x64 or 0xa3 or 0xa5 */
+        r[1] = last + ((wc & 24) >> 2) - 4;
         conv->ostate = 0;
         return 2;
       } else
         return RET_TOOSMALL;
     }
 
-    /* Output the buffered character. */
+
     if (n < 2)
       return RET_TOOSMALL;
     r[0] = 0x88;
@@ -50,9 +50,9 @@ big5hkscs1999_wctomb (conv_t conv, unsigned char *r, ucs4_t wc, int n)
     count = 2;
   }
 
-  /* Code set 0 (ASCII) */
+
   if (wc < 0x0080) {
-    /* Plain ASCII character. */
+
     if (n > count) {
       r[0] = (unsigned char) wc;
       conv->ostate = 0;
@@ -63,7 +63,7 @@ big5hkscs1999_wctomb (conv_t conv, unsigned char *r, ucs4_t wc, int n)
     unsigned char buf[2];
     int ret;
 
-    /* Code set 1 (BIG5 extended) */
+
     ret = big5_wctomb(conv,buf,wc,2);
     if (ret != RET_ILUNI) {
       if (ret != 2) abort();
@@ -81,10 +81,10 @@ big5hkscs1999_wctomb (conv_t conv, unsigned char *r, ucs4_t wc, int n)
     if (ret != RET_ILUNI) {
       if (ret != 2) abort();
       if ((wc & ~0x0020) == 0x00ca) {
-        /* A possible first character of a multi-character sequence. We have to
-           buffer it. */
+
+
         if (!(buf[0] == 0x88 && (buf[1] == 0x66 || buf[1] == 0xa7))) abort();
-        conv->ostate = buf[1]; /* = 0x66 or = 0xa7 */
+        conv->ostate = buf[1];
         return count+0;
       }
       if (n >= count+2) {

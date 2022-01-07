@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct key_type {int /*<<< orphan*/  cipher; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (struct key_type const*) ; 
- int /*<<< orphan*/  M_FATAL ; 
- scalar_t__ cipher_kt_mode_aead (int /*<<< orphan*/ ) ; 
- scalar_t__ cipher_kt_mode_ofb_cfb (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  msg (int /*<<< orphan*/ ,char*) ; 
+
+
+
+struct key_type {int cipher; } ;
+
+
+ int ASSERT (struct key_type const*) ;
+ int M_FATAL ;
+ scalar_t__ cipher_kt_mode_aead (int ) ;
+ scalar_t__ cipher_kt_mode_ofb_cfb (int ) ;
+ int msg (int ,char*) ;
 
 void
 check_replay_consistency(const struct key_type *kt, bool packet_id)

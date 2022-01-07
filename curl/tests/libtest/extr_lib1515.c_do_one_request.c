@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct timeval {int tv_sec; scalar_t__ tv_usec; } ;
 struct curl_slist {int dummy; } ;
-typedef  int /*<<< orphan*/  fd_set ;
+typedef int fd_set ;
 struct TYPE_4__ {int result; } ;
-struct TYPE_5__ {scalar_t__ msg; TYPE_1__ data; int /*<<< orphan*/ * easy_handle; } ;
-typedef  TYPE_2__ CURLMsg ;
-typedef  int /*<<< orphan*/  CURLM ;
-typedef  int /*<<< orphan*/  CURL ;
+struct TYPE_5__ {scalar_t__ msg; TYPE_1__ data; int * easy_handle; } ;
+typedef TYPE_2__ CURLMsg ;
+typedef int CURLM ;
+typedef int CURL ;
 
-/* Variables and functions */
- scalar_t__ CURLMSG_DONE ; 
- int /*<<< orphan*/  CURLOPT_DEBUGFUNCTION ; 
- int /*<<< orphan*/  CURLOPT_DNS_CACHE_TIMEOUT ; 
- int /*<<< orphan*/  CURLOPT_RESOLVE ; 
- int /*<<< orphan*/  CURLOPT_URL ; 
- int /*<<< orphan*/  CURLOPT_VERBOSE ; 
- int DNS_TIMEOUT ; 
- int /*<<< orphan*/  FD_ZERO (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  abort_on_test_timeout () ; 
- int /*<<< orphan*/  curl_easy_cleanup (int /*<<< orphan*/ *) ; 
- TYPE_2__* curl_multi_info_read (int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  curl_multi_remove_handle (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- struct curl_slist* curl_slist_append (struct curl_slist*,char*) ; 
- int /*<<< orphan*/  curl_slist_free_all (struct curl_slist*) ; 
- int debug_callback ; 
- int /*<<< orphan*/  easy_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  easy_setopt (int /*<<< orphan*/ *,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  multi_add_handle (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  multi_fdset (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  multi_perform (int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  select_test (int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,struct timeval*) ; 
+
+ scalar_t__ CURLMSG_DONE ;
+ int CURLOPT_DEBUGFUNCTION ;
+ int CURLOPT_DNS_CACHE_TIMEOUT ;
+ int CURLOPT_RESOLVE ;
+ int CURLOPT_URL ;
+ int CURLOPT_VERBOSE ;
+ int DNS_TIMEOUT ;
+ int FD_ZERO (int *) ;
+ int abort_on_test_timeout () ;
+ int curl_easy_cleanup (int *) ;
+ TYPE_2__* curl_multi_info_read (int *,int*) ;
+ int curl_multi_remove_handle (int *,int *) ;
+ struct curl_slist* curl_slist_append (struct curl_slist*,char*) ;
+ int curl_slist_free_all (struct curl_slist*) ;
+ int debug_callback ;
+ int easy_init (int *) ;
+ int easy_setopt (int *,int ,...) ;
+ int multi_add_handle (int *,int *) ;
+ int multi_fdset (int *,int *,int *,int *,int*) ;
+ int multi_perform (int *,int*) ;
+ int select_test (int,int *,int *,int *,struct timeval*) ;
 
 __attribute__((used)) static int do_one_request(CURLM *m, char *URL, char *resolve)
 {
   CURL *curls;
-  struct curl_slist *resolve_list = NULL;
+  struct curl_slist *resolve_list = ((void*)0);
   int still_running;
   int res = 0;
   CURLMsg *msg;

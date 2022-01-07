@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
 
-/* Variables and functions */
- int XDeint8x8DetectC (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  XDeint8x8FieldC (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  XDeint8x8FieldEC (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  XDeint8x8MergeC (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  XDeintNxN (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int,int,int) ; 
+
+
+
+typedef int uint8_t ;
+
+
+ int XDeint8x8DetectC (int *,int) ;
+ int XDeint8x8FieldC (int *,int,int *,int) ;
+ int XDeint8x8FieldEC (int *,int,int *,int) ;
+ int XDeint8x8MergeC (int *,int,int *,int,int *,int) ;
+ int XDeintNxN (int *,int,int *,int,int,int) ;
 
 __attribute__((used)) static inline void XDeintBand8x8C( uint8_t *dst, int i_dst,
                                    uint8_t *src, int i_src,

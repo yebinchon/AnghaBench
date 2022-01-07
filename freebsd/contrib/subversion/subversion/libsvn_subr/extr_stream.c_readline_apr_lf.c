@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {char* data; int len; scalar_t__ blocksize; } ;
-typedef  TYPE_1__ svn_stringbuf_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-typedef  scalar_t__ apr_status_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_file_t ;
+typedef TYPE_1__ svn_stringbuf_t ;
+typedef int svn_error_t ;
+typedef int svn_boolean_t ;
+typedef scalar_t__ apr_status_t ;
+typedef int apr_pool_t ;
+typedef int apr_file_t ;
 
-/* Variables and functions */
- scalar_t__ APR_STATUS_IS_EOF (scalar_t__) ; 
- scalar_t__ APR_SUCCESS ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- scalar_t__ SVN__LINE_CHUNK_SIZE ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  _ (char*) ; 
- scalar_t__ apr_file_gets (char*,int,int /*<<< orphan*/ *) ; 
- scalar_t__ strlen (char*) ; 
- int /*<<< orphan*/  svn_dirent_local_style (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_error_clear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_error_wrap_apr (scalar_t__,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/ * svn_io_file_name_get (char const**,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_stringbuf_chop (TYPE_1__*,int) ; 
- TYPE_1__* svn_stringbuf_create_ensure (scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_stringbuf_ensure (TYPE_1__*,scalar_t__) ; 
+
+ scalar_t__ APR_STATUS_IS_EOF (scalar_t__) ;
+ scalar_t__ APR_SUCCESS ;
+ int FALSE ;
+ int * SVN_NO_ERROR ;
+ scalar_t__ SVN__LINE_CHUNK_SIZE ;
+ int TRUE ;
+ int _ (char*) ;
+ scalar_t__ apr_file_gets (char*,int,int *) ;
+ scalar_t__ strlen (char*) ;
+ int svn_dirent_local_style (char const*,int *) ;
+ int svn_error_clear (int *) ;
+ int * svn_error_wrap_apr (scalar_t__,int ,...) ;
+ int * svn_io_file_name_get (char const**,int *,int *) ;
+ int svn_stringbuf_chop (TYPE_1__*,int) ;
+ TYPE_1__* svn_stringbuf_create_ensure (scalar_t__,int *) ;
+ int svn_stringbuf_ensure (TYPE_1__*,scalar_t__) ;
 
 __attribute__((used)) static svn_error_t *
 readline_apr_lf(apr_file_t *file,
@@ -57,7 +57,7 @@ readline_apr_lf(apr_file_t *file,
 
     if (APR_STATUS_IS_EOF(status))
       {
-        /* apr_file_gets() keeps the newline; strip it if necessary. */
+
         if (buf->len > 0 && buf->data[buf->len - 1] == '\n')
           svn_stringbuf_chop(buf, 1);
 
@@ -70,7 +70,7 @@ readline_apr_lf(apr_file_t *file,
         const char *fname;
         svn_error_t *err = svn_io_file_name_get(&fname, file, pool);
         if (err)
-          fname = NULL;
+          fname = ((void*)0);
         svn_error_clear(err);
 
         if (fname)
@@ -82,7 +82,7 @@ readline_apr_lf(apr_file_t *file,
                                     _("Can't read a line from stream"));
       }
 
-    /* Do we have the EOL?  If yes, strip it and return. */
+
     if (buf->len > 0 && buf->data[buf->len - 1] == '\n')
       {
         svn_stringbuf_chop(buf, 1);
@@ -91,7 +91,7 @@ readline_apr_lf(apr_file_t *file,
         return SVN_NO_ERROR;
       }
 
-    /* Otherwise, prepare to read the next chunk. */
+
     svn_stringbuf_ensure(buf, buf->blocksize + SVN__LINE_CHUNK_SIZE);
   }
 }

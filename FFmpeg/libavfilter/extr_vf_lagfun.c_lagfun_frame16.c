@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  float uint16_t ;
+
+
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef float uint16_t ;
 struct TYPE_6__ {TYPE_3__* old; TYPE_3__* out; TYPE_3__* in; } ;
-typedef  TYPE_1__ ThreadData ;
+typedef TYPE_1__ ThreadData ;
 struct TYPE_9__ {TYPE_2__* priv; } ;
 struct TYPE_8__ {int const* linesize; scalar_t__* data; } ;
 struct TYPE_7__ {float decay; int nb_planes; int* height; int planes; int* linesize; } ;
-typedef  TYPE_2__ LagfunContext ;
-typedef  TYPE_3__ AVFrame ;
-typedef  TYPE_4__ AVFilterContext ;
+typedef TYPE_2__ LagfunContext ;
+typedef TYPE_3__ AVFrame ;
+typedef TYPE_4__ AVFilterContext ;
 
-/* Variables and functions */
- float FFMAX (float const,float const) ; 
- int /*<<< orphan*/  av_image_copy_plane (int /*<<< orphan*/ *,int const,int /*<<< orphan*/ *,int const,int,int const) ; 
+
+ float FFMAX (float const,float const) ;
+ int av_image_copy_plane (int *,int const,int *,int const,int,int const) ;
 
 __attribute__((used)) static int lagfun_frame16(AVFilterContext *ctx, void *arg, int jobnr, int nb_jobs)
 {

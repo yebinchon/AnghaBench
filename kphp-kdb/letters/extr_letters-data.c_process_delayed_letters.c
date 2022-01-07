@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int real_priority; long long task_id; int time_received; int /*<<< orphan*/  id; TYPE_1__* l; struct TYPE_6__* next; } ;
-typedef  TYPE_2__ temp_letter ;
-struct TYPE_7__ {int /*<<< orphan*/  data; } ;
-struct TYPE_5__ {int data_len; int /*<<< orphan*/  data; } ;
 
-/* Variables and functions */
- int DELAYED_TABLE_SIZE ; 
- int GET_DELAYED_ID (scalar_t__) ; 
- int MAX_DELAY ; 
- int /*<<< orphan*/  assert (int) ; 
- TYPE_2__* delayed_head_letter ; 
- int /*<<< orphan*/  delete_letter (int /*<<< orphan*/ ) ; 
- int get_fields (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  is_deleted_task (long long,int) ; 
- int last_process_delayed_time ; 
- int /*<<< orphan*/  letter_add (int,int /*<<< orphan*/ ) ; 
- TYPE_3__* letter_buf ; 
- int /*<<< orphan*/ * letter_get (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- scalar_t__ now ; 
- int strlen (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int real_priority; long long task_id; int time_received; int id; TYPE_1__* l; struct TYPE_6__* next; } ;
+typedef TYPE_2__ temp_letter ;
+struct TYPE_7__ {int data; } ;
+struct TYPE_5__ {int data_len; int data; } ;
+
+
+ int DELAYED_TABLE_SIZE ;
+ int GET_DELAYED_ID (scalar_t__) ;
+ int MAX_DELAY ;
+ int assert (int) ;
+ TYPE_2__* delayed_head_letter ;
+ int delete_letter (int ) ;
+ int get_fields (int ) ;
+ int is_deleted_task (long long,int) ;
+ int last_process_delayed_time ;
+ int letter_add (int,int ) ;
+ TYPE_3__* letter_buf ;
+ int * letter_get (int ) ;
+ int memcpy (int ,int ,int) ;
+ scalar_t__ now ;
+ int strlen (int ) ;
 
 void process_delayed_letters (int all, int skip) {
-  while (letter_get (0) != NULL) {
+  while (letter_get (0) != ((void*)0)) {
   }
 
   int en = GET_DELAYED_ID(now + 1 + all * MAX_DELAY);
@@ -57,7 +57,7 @@ void process_delayed_letters (int all, int skip) {
       int time_received = cur_letter->time_received;
 
       delete_letter (cur_letter->id);
-      //DO NOT USE LETTER AFTER DELETE
+
 
       if (!is_deleted_task (task_id, time_received)) {
         letter_add (real_priority, 0);

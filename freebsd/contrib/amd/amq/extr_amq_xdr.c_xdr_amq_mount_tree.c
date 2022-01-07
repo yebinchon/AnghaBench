@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ voidp ;
-typedef  int /*<<< orphan*/  bool_t ;
-struct TYPE_3__ {int /*<<< orphan*/  mt_child; int /*<<< orphan*/  mt_next; int /*<<< orphan*/  mt_statfs; int /*<<< orphan*/  mt_readlink; int /*<<< orphan*/  mt_readdir; int /*<<< orphan*/  mt_lookup; int /*<<< orphan*/  mt_getattr; int /*<<< orphan*/  mt_mountuid; int /*<<< orphan*/  mt_mounttime; int /*<<< orphan*/  mt_type; int /*<<< orphan*/  mt_mountpoint; int /*<<< orphan*/  mt_directory; int /*<<< orphan*/  mt_mountinfo; } ;
-typedef  TYPE_1__ amq_mount_tree ;
-typedef  int /*<<< orphan*/  XDRPROC_T_TYPE ;
-typedef  int /*<<< orphan*/  XDR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  xdr_amq_string (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  xdr_int (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  xdr_pointer (int /*<<< orphan*/ *,char**,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xdr_time_type (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  xdr_u_short (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ voidp ;
+typedef int bool_t ;
+struct TYPE_3__ {int mt_child; int mt_next; int mt_statfs; int mt_readlink; int mt_readdir; int mt_lookup; int mt_getattr; int mt_mountuid; int mt_mounttime; int mt_type; int mt_mountpoint; int mt_directory; int mt_mountinfo; } ;
+typedef TYPE_1__ amq_mount_tree ;
+typedef int XDRPROC_T_TYPE ;
+typedef int XDR ;
+
+
+ int FALSE ;
+ int TRUE ;
+ int xdr_amq_string (int *,int *) ;
+ int xdr_int (int *,int *) ;
+ int xdr_pointer (int *,char**,int,int ) ;
+ int xdr_time_type (int *,int *) ;
+ int xdr_u_short (int *,int *) ;
 
 bool_t
 xdr_amq_mount_tree(XDR *xdrs, amq_mount_tree *objp)
@@ -76,16 +76,16 @@ xdr_amq_mount_tree(XDR *xdrs, amq_mount_tree *objp)
   }
 
   if (!xdr_pointer(xdrs,
-		   (char **) ((voidp) &objp->mt_next),
-		   sizeof(amq_mount_tree),
-		   (XDRPROC_T_TYPE) xdr_amq_mount_tree)) {
+     (char **) ((voidp) &objp->mt_next),
+     sizeof(amq_mount_tree),
+     (XDRPROC_T_TYPE) xdr_amq_mount_tree)) {
     return (FALSE);
   }
 
   if (!xdr_pointer(xdrs,
-		   (char **) ((voidp) &objp->mt_child),
-		   sizeof(amq_mount_tree),
-		   (XDRPROC_T_TYPE) xdr_amq_mount_tree)) {
+     (char **) ((voidp) &objp->mt_child),
+     sizeof(amq_mount_tree),
+     (XDRPROC_T_TYPE) xdr_amq_mount_tree)) {
     return (FALSE);
   }
 

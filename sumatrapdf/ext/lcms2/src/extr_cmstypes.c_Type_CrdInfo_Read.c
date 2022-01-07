@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct _cms_typehandler_struct {int dummy; } ;
-typedef  int cmsUInt32Number ;
-typedef  int /*<<< orphan*/  cmsMLU ;
-typedef  int /*<<< orphan*/  cmsIOHANDLER ;
-typedef  int /*<<< orphan*/  cmsContext ;
+typedef int cmsUInt32Number ;
+typedef int cmsMLU ;
+typedef int cmsIOHANDLER ;
+typedef int cmsContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ReadCountAndSting (int /*<<< orphan*/ ,struct _cms_typehandler_struct*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*,char*) ; 
- int /*<<< orphan*/ * cmsMLUalloc (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  cmsMLUfree (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int ReadCountAndSting (int ,struct _cms_typehandler_struct*,int *,int *,int*,char*) ;
+ int * cmsMLUalloc (int ,int) ;
+ int cmsMLUfree (int ,int *) ;
 
 __attribute__((used)) static
 void *Type_CrdInfo_Read(cmsContext ContextID, struct _cms_typehandler_struct* self, cmsIOHANDLER* io, cmsUInt32Number* nItems, cmsUInt32Number SizeOfTag)
@@ -38,6 +38,6 @@ void *Type_CrdInfo_Read(cmsContext ContextID, struct _cms_typehandler_struct* se
 
 Error:
     cmsMLUfree(ContextID, mlu);
-    return NULL;
+    return ((void*)0);
 
 }

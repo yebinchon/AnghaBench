@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct mpv_global {int /*<<< orphan*/  configdir; } ;
-struct MPOpts {char* force_configdir; int /*<<< orphan*/  load_config; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TA_FREEP (int /*<<< orphan*/ *) ; 
- char* getenv (char*) ; 
- int /*<<< orphan*/  talloc_strdup (struct mpv_global*,char const*) ; 
+
+
+
+struct mpv_global {int configdir; } ;
+struct MPOpts {char* force_configdir; int load_config; } ;
+
+
+ int TA_FREEP (int *) ;
+ char* getenv (char*) ;
+ int talloc_strdup (struct mpv_global*,char const*) ;
 
 void mp_init_paths(struct mpv_global *global, struct MPOpts *opts)
 {

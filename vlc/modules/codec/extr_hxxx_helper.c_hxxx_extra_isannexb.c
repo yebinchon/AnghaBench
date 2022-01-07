@@ -1,19 +1,11 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  annexb_startcode4 ; 
- scalar_t__ memcmp (void const*,int /*<<< orphan*/ ,int) ; 
+ int annexb_startcode4 ;
+ scalar_t__ memcmp (void const*,int ,int) ;
 
 __attribute__((used)) static bool
 hxxx_extra_isannexb(const void *p_extra, size_t i_extra)

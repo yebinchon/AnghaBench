@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct mdev_device {struct device* iommu_device; } ;
 struct device {int dummy; } ;
 
-/* Variables and functions */
- struct mdev_device* to_mdev_device (struct device*) ; 
+
+ struct mdev_device* to_mdev_device (struct device*) ;
 
 int mdev_set_iommu_device(struct device *dev, struct device *iommu_device)
 {
-	struct mdev_device *mdev = to_mdev_device(dev);
+ struct mdev_device *mdev = to_mdev_device(dev);
 
-	mdev->iommu_device = iommu_device;
+ mdev->iommu_device = iommu_device;
 
-	return 0;
+ return 0;
 }

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int UInt32 ;
-struct TYPE_6__ {int keepSizeBefore; int keepSizeAfter; int matchMaxLen; int numHashBytes; int hashMask; int hashSizeSum; int numSons; int historySize; int cyclicBufferSize; int /*<<< orphan*/  hash; scalar_t__ son; scalar_t__ btMode; scalar_t__ fixedHashSize; } ;
-typedef  int /*<<< orphan*/  ISzAlloc ;
-typedef  TYPE_1__ CMatchFinder ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AllocRefs (int,int /*<<< orphan*/ *) ; 
- scalar_t__ LzInWindow_Create (TYPE_1__*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  MatchFinder_Free (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  MatchFinder_FreeThisClassMemory (TYPE_1__*,int /*<<< orphan*/ *) ; 
- scalar_t__ kHash2Size ; 
- scalar_t__ kHash3Size ; 
- scalar_t__ kHash4Size ; 
- int kMaxHistorySize ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int UInt32 ;
+struct TYPE_6__ {int keepSizeBefore; int keepSizeAfter; int matchMaxLen; int numHashBytes; int hashMask; int hashSizeSum; int numSons; int historySize; int cyclicBufferSize; int hash; scalar_t__ son; scalar_t__ btMode; scalar_t__ fixedHashSize; } ;
+typedef int ISzAlloc ;
+typedef TYPE_1__ CMatchFinder ;
+
+
+ int AllocRefs (int,int *) ;
+ scalar_t__ LzInWindow_Create (TYPE_1__*,int,int *) ;
+ int MatchFinder_Free (TYPE_1__*,int *) ;
+ int MatchFinder_FreeThisClassMemory (TYPE_1__*,int *) ;
+ scalar_t__ kHash2Size ;
+ scalar_t__ kHash3Size ;
+ scalar_t__ kHash4Size ;
+ int kMaxHistorySize ;
 
 int MatchFinder_Create(CMatchFinder *p, UInt32 historySize,
     UInt32 keepAddBufferBefore, UInt32 matchMaxLen, UInt32 keepAddBufferAfter,
@@ -43,7 +43,7 @@ int MatchFinder_Create(CMatchFinder *p, UInt32 historySize,
 
   p->keepSizeBefore = historySize + keepAddBufferBefore + 1;
   p->keepSizeAfter = matchMaxLen + keepAddBufferAfter;
-  /* we need one additional byte, since we use MoveBlock after pos++ and before dictionary using */
+
   if (LzInWindow_Create(p, sizeReserv, alloc))
   {
     UInt32 newCyclicBufferSize = historySize + 1;
@@ -61,7 +61,7 @@ int MatchFinder_Create(CMatchFinder *p, UInt32 historySize,
         hs |= (hs >> 4);
         hs |= (hs >> 8);
         hs >>= 1;
-        hs |= 0xFFFF; /* don't change it! It's required for Deflate */
+        hs |= 0xFFFF;
         if (hs > (1 << 24))
         {
           if (p->numHashBytes == 3)

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct statfs64_ {int dummy; } ;
 struct mount {int dummy; } ;
-typedef  int /*<<< orphan*/  path_raw ;
-typedef  int dword_t ;
-typedef  int /*<<< orphan*/  addr_t ;
+typedef int path_raw ;
+typedef int dword_t ;
+typedef int addr_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AT_PWD ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  N_SYMLINK_NOFOLLOW ; 
- int /*<<< orphan*/  STRACE (char*,char*,int,int /*<<< orphan*/ ) ; 
- int _EFAULT ; 
- int _EINVAL ; 
- struct mount* mount_find (char*) ; 
- int /*<<< orphan*/  mount_release (struct mount*) ; 
- int path_normalize (int /*<<< orphan*/ ,char*,char*,int /*<<< orphan*/ ) ; 
- int statfs64_mount (struct mount*,int /*<<< orphan*/ ) ; 
- scalar_t__ user_read_string (int /*<<< orphan*/ ,char*,int) ; 
+
+ int AT_PWD ;
+ int MAX_PATH ;
+ int N_SYMLINK_NOFOLLOW ;
+ int STRACE (char*,char*,int,int ) ;
+ int _EFAULT ;
+ int _EINVAL ;
+ struct mount* mount_find (char*) ;
+ int mount_release (struct mount*) ;
+ int path_normalize (int ,char*,char*,int ) ;
+ int statfs64_mount (struct mount*,int ) ;
+ scalar_t__ user_read_string (int ,char*,int) ;
 
 dword_t sys_statfs64(addr_t path_addr, dword_t buf_size, addr_t buf_addr) {
     char path_raw[MAX_PATH];

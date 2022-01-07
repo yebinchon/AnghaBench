@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int* a ; 
- int /*<<< orphan*/  assert (int) ; 
- int* c ; 
- int /*<<< orphan*/  crypto_auth_hmacsha512 (int*,int*,unsigned int,int /*<<< orphan*/ ) ; 
- scalar_t__ crypto_auth_hmacsha512_verify (int*,int*,unsigned int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  crypto_auth_keygen (int /*<<< orphan*/ ) ; 
- int* guard_page ; 
- int /*<<< orphan*/  key ; 
- int /*<<< orphan*/  printf (char*,unsigned int) ; 
- int rand () ; 
- int /*<<< orphan*/  randombytes_buf (int*,size_t) ; 
+ int* a ;
+ int assert (int) ;
+ int* c ;
+ int crypto_auth_hmacsha512 (int*,int*,unsigned int,int ) ;
+ scalar_t__ crypto_auth_hmacsha512_verify (int*,int*,unsigned int,int ) ;
+ int crypto_auth_keygen (int ) ;
+ int* guard_page ;
+ int key ;
+ int printf (char*,unsigned int) ;
+ int rand () ;
+ int randombytes_buf (int*,size_t) ;
 
 int
 main(void)

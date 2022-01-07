@@ -1,77 +1,69 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ iswhite (char) ; 
+ scalar_t__ iswhite (char) ;
 
 int
 gv_tokenize(char *cptr, char *token[], int maxtoken)
 {
-	int tokennr;	/* Index of this token. */
-	char delim;	/* Delimiter for searching for the partner. */
-	
-	for (tokennr = 0; tokennr < maxtoken;) {
+ int tokennr;
+ char delim;
 
-		/* Skip leading white space. */
-		while (iswhite(*cptr))
-			cptr++;
+ for (tokennr = 0; tokennr < maxtoken;) {
 
-		/* End of line. */
-		if ((*cptr == '\0') || (*cptr == '\n') || (*cptr == '#'))
-			return tokennr;
 
-		delim = *cptr;
-		token[tokennr] = cptr;		/* Point to it. */
-		tokennr++;			/* One more. */
+  while (iswhite(*cptr))
+   cptr++;
 
-		/* Run off the end? */
-		if (tokennr == maxtoken)
-			return tokennr;
 
-		/* Quoted? */
-		if ((delim == '\'') || (delim == '"')) {
-			for (;;) {
-				cptr++;
+  if ((*cptr == '\0') || (*cptr == '\n') || (*cptr == '#'))
+   return tokennr;
 
-				/* Found the partner. */
-				if ((*cptr == delim) && (cptr[-1] != '\\')) {
-					cptr++;
+  delim = *cptr;
+  token[tokennr] = cptr;
+  tokennr++;
 
-					/* Space after closing quote needed. */
-					if (!iswhite(*cptr))
-						return -1;
 
-					/* Delimit. */
-					*cptr++ = '\0';
+  if (tokennr == maxtoken)
+   return tokennr;
 
-				/* End-of-line? */
-				} else if ((*cptr == '\0') || (*cptr == '\n'))
-					return -1;
-			}
 
-		/* Not quoted. */
-		} else {
-			while ((*cptr != '\0') &&
-			    (!iswhite(*cptr)) &&
-			    (*cptr != '\n'))
-				cptr++;
+  if ((delim == '\'') || (delim == '"')) {
+   for (;;) {
+    cptr++;
 
-			/* Not end-of-line; delimit and move to the next. */
-			if (*cptr != '\0')
-				*cptr++ = '\0';
-		}
-	}
 
-	/* Can't get here. */
-	return maxtoken;
+    if ((*cptr == delim) && (cptr[-1] != '\\')) {
+     cptr++;
+
+
+     if (!iswhite(*cptr))
+      return -1;
+
+
+     *cptr++ = '\0';
+
+
+    } else if ((*cptr == '\0') || (*cptr == '\n'))
+     return -1;
+   }
+
+
+  } else {
+   while ((*cptr != '\0') &&
+       (!iswhite(*cptr)) &&
+       (*cptr != '\n'))
+    cptr++;
+
+
+   if (*cptr != '\0')
+    *cptr++ = '\0';
+  }
+ }
+
+
+ return maxtoken;
 }

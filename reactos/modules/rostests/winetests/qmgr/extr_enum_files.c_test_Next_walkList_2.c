@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  size_t ULONG ;
-typedef  int /*<<< orphan*/  IBackgroundCopyFile ;
-typedef  scalar_t__ HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IBackgroundCopyFile_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IEnumBackgroundCopyFiles_Next (int /*<<< orphan*/ ,size_t,int /*<<< orphan*/ **,size_t*) ; 
- int NUM_FILES ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  test_enumFiles ; 
- size_t test_fileCount ; 
+
+
+
+typedef size_t ULONG ;
+typedef int IBackgroundCopyFile ;
+typedef scalar_t__ HRESULT ;
+
+
+ int IBackgroundCopyFile_Release (int *) ;
+ scalar_t__ IEnumBackgroundCopyFiles_Next (int ,size_t,int **,size_t*) ;
+ int NUM_FILES ;
+ scalar_t__ S_OK ;
+ int ok (int,char*,...) ;
+ int test_enumFiles ;
+ size_t test_fileCount ;
 
 __attribute__((used)) static void test_Next_walkList_2(void)
 {
@@ -31,7 +31,7 @@ __attribute__((used)) static void test_Next_walkList_2(void)
     ULONG i;
 
     for (i = 0; i < test_fileCount; i++)
-        files[i] = NULL;
+        files[i] = ((void*)0);
 
     fetched = 0;
     hres = IEnumBackgroundCopyFiles_Next(test_enumFiles, test_fileCount, files, &fetched);
@@ -40,7 +40,7 @@ __attribute__((used)) static void test_Next_walkList_2(void)
 
     for (i = 0; i < test_fileCount; i++)
     {
-        ok(files[i] != NULL, "Next returned NULL\n");
+        ok(files[i] != ((void*)0), "Next returned NULL\n");
         if (files[i])
             IBackgroundCopyFile_Release(files[i]);
     }

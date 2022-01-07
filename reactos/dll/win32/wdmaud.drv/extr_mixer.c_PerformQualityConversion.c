@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int USHORT ;
-typedef  int ULONG ;
-typedef  int /*<<< orphan*/  UCHAR ;
-typedef  int* PVOID ;
-typedef  int* PUSHORT ;
-typedef  int* PULONG ;
-typedef  int* PUCHAR ;
-typedef  int /*<<< orphan*/  DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- int /*<<< orphan*/  DPRINT1 (char*,int,int) ; 
- int /*<<< orphan*/  ERROR_NOT_ENOUGH_MEMORY ; 
- int /*<<< orphan*/  ERROR_NOT_SUPPORTED ; 
- int /*<<< orphan*/  ERROR_SUCCESS ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- void* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int _byteswap_ulong (int) ; 
- int _byteswap_ushort (int) ; 
+
+
+
+typedef int USHORT ;
+typedef int ULONG ;
+typedef int UCHAR ;
+typedef int* PVOID ;
+typedef int* PUSHORT ;
+typedef int* PULONG ;
+typedef int* PUCHAR ;
+typedef int DWORD ;
+
+
+ int ASSERT (int) ;
+ int DPRINT1 (char*,int,int) ;
+ int ERROR_NOT_ENOUGH_MEMORY ;
+ int ERROR_NOT_SUPPORTED ;
+ int ERROR_SUCCESS ;
+ int GetProcessHeap () ;
+ void* HeapAlloc (int ,int ,int) ;
+ int _byteswap_ulong (int) ;
+ int _byteswap_ushort (int) ;
 
 DWORD
 PerformQualityConversion(
@@ -45,9 +45,9 @@ PerformQualityConversion(
     ASSERT(OldWidth != NewWidth);
 
     Samples = BufferLength / (OldWidth / 8);
-    //DPRINT("Samples %u BufferLength %u\n", Samples, BufferLength);
 
-    //SND_TRACE(L"PerformQualityConversion OldWidth %u NewWidth %u\n", OldWidth, NewWidth);
+
+
 
     if (OldWidth == 8 && NewWidth == 16)
     {
@@ -58,11 +58,11 @@ PerformQualityConversion(
 
           for(Index = 0; Index < Samples; Index++)
           {
-              Sample = Buffer[Index];// & 0xFF);
+              Sample = Buffer[Index];
               Sample *= 2;
-#ifdef _X86_
-              Sample = _byteswap_ushort(Sample);
-#endif
+
+
+
               BufferOut[Index] = Sample;
           }
           *Result = BufferOut;
@@ -79,9 +79,9 @@ PerformQualityConversion(
           {
               Sample = Buffer[Index];
               Sample *= 16777216;
-#ifdef _X86_
-              Sample = _byteswap_ulong(Sample);
-#endif
+
+
+
               BufferOut[Index] = Sample;
           }
           *Result = BufferOut;
@@ -99,9 +99,9 @@ PerformQualityConversion(
           {
               Sample = BufferIn[Index];
               Sample *= 65536;
-#ifdef _X86_
-              Sample = _byteswap_ulong(Sample);
-#endif
+
+
+
               BufferOut[Index] = Sample;
           }
           *Result = BufferOut;
@@ -119,9 +119,9 @@ PerformQualityConversion(
           for(Index = 0; Index < Samples; Index++)
           {
               Sample = BufferIn[Index];
-#ifdef _X86_
-              Sample = _byteswap_ushort(Sample);
-#endif
+
+
+
               Sample /= 256;
               BufferOut[Index] = (Sample & 0xFF);
           }
@@ -139,9 +139,9 @@ PerformQualityConversion(
           for(Index = 0; Index < Samples; Index++)
           {
               Sample = BufferIn[Index];
-#ifdef _X86_
-              Sample = _byteswap_ulong(Sample);
-#endif
+
+
+
               Sample /= 16777216;
               BufferOut[Index] = (Sample & 0xFF);
           }
@@ -159,9 +159,9 @@ PerformQualityConversion(
           for(Index = 0; Index < Samples; Index++)
           {
               Sample = BufferIn[Index];
-#ifdef _X86_
-              Sample = _byteswap_ulong(Sample);
-#endif
+
+
+
               Sample /= 65536;
               BufferOut[Index] = (Sample & 0xFFFF);
           }

@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  LPVOID ;
-typedef  int /*<<< orphan*/  ITfTextEditSink ;
-typedef  int /*<<< orphan*/  ITfSource ;
-typedef  int /*<<< orphan*/  ITfEditSession ;
-typedef  int /*<<< orphan*/  ITfDocumentMgr ;
-typedef  int /*<<< orphan*/  ITfContext ;
-typedef  scalar_t__ HRESULT ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACPSink ; 
- scalar_t__ E_FAIL ; 
- scalar_t__ E_INVALIDARG ; 
- int /*<<< orphan*/  EditSession_Constructor (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IID_ITfSource ; 
- int /*<<< orphan*/  IID_ITfTextEditSink ; 
- int /*<<< orphan*/  ITextStoreACPSink_OnStatusChange (int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__ ITfContext_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ITfContext_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ ITfContext_RequestEditSession (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,scalar_t__*) ; 
- int /*<<< orphan*/  ITfDocumentMgr_GetTop (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  ITfDocumentMgr_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ITfEditSession_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ ITfSource_AdviseSink (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  ITfSource_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ ITfSource_UnadviseSink (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  ITfTextEditSink_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ITfThreadMgr_GetFocus (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  SINK_EXPECTED ; 
- int SUCCEEDED (scalar_t__) ; 
- int TF_ES_READWRITE ; 
- int TF_ES_SYNC ; 
- scalar_t__ TS_E_READONLY ; 
- scalar_t__ TS_SD_READONLY ; 
- int /*<<< orphan*/  TextEditSink_Constructor (int /*<<< orphan*/ **) ; 
- scalar_t__ documentStatus ; 
- int /*<<< orphan*/  g_tm ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  sink_check_ok (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  test_ACP_GetStatus ; 
- int /*<<< orphan*/  test_ACP_RequestLock ; 
- int /*<<< orphan*/  test_DoEditSession ; 
- int /*<<< orphan*/  test_OnEndEdit ; 
- int /*<<< orphan*/  tid ; 
+
+
+
+typedef int LPVOID ;
+typedef int ITfTextEditSink ;
+typedef int ITfSource ;
+typedef int ITfEditSession ;
+typedef int ITfDocumentMgr ;
+typedef int ITfContext ;
+typedef scalar_t__ HRESULT ;
+typedef int DWORD ;
+
+
+ int ACPSink ;
+ scalar_t__ E_FAIL ;
+ scalar_t__ E_INVALIDARG ;
+ int EditSession_Constructor (int **) ;
+ int IID_ITfSource ;
+ int IID_ITfTextEditSink ;
+ int ITextStoreACPSink_OnStatusChange (int ,scalar_t__) ;
+ scalar_t__ ITfContext_QueryInterface (int *,int *,int *) ;
+ int ITfContext_Release (int *) ;
+ scalar_t__ ITfContext_RequestEditSession (int *,int ,int *,int,scalar_t__*) ;
+ int ITfDocumentMgr_GetTop (int *,int **) ;
+ int ITfDocumentMgr_Release (int *) ;
+ int ITfEditSession_Release (int *) ;
+ scalar_t__ ITfSource_AdviseSink (int *,int *,int ,int*) ;
+ int ITfSource_Release (int *) ;
+ scalar_t__ ITfSource_UnadviseSink (int *,int) ;
+ int ITfTextEditSink_Release (int *) ;
+ int ITfThreadMgr_GetFocus (int ,int **) ;
+ int SINK_EXPECTED ;
+ int SUCCEEDED (scalar_t__) ;
+ int TF_ES_READWRITE ;
+ int TF_ES_SYNC ;
+ scalar_t__ TS_E_READONLY ;
+ scalar_t__ TS_SD_READONLY ;
+ int TextEditSink_Constructor (int **) ;
+ scalar_t__ documentStatus ;
+ int g_tm ;
+ int ok (int,char*,...) ;
+ int sink_check_ok (int *,char*) ;
+ int test_ACP_GetStatus ;
+ int test_ACP_RequestLock ;
+ int test_DoEditSession ;
+ int test_OnEndEdit ;
+ int tid ;
 
 __attribute__((used)) static void test_TStoApplicationText(void)
 {
@@ -62,7 +62,7 @@ __attribute__((used)) static void test_TStoApplicationText(void)
     ITfContext *cxt;
     ITfDocumentMgr *dm;
     ITfTextEditSink *sink;
-    ITfSource *source = NULL;
+    ITfSource *source = ((void*)0);
     DWORD editSinkCookie = -1;
 
     ITfThreadMgr_GetFocus(g_tm, &dm);
@@ -80,7 +80,7 @@ __attribute__((used)) static void test_TStoApplicationText(void)
     }
 
     hrSession = 0xfeedface;
-    /* Test no permissions flags */
+
     hr = ITfContext_RequestEditSession(cxt, tid, es, TF_ES_SYNC, &hrSession);
     ok(hr == E_INVALIDARG,"RequestEditSession should have failed with %x not %x\n",E_INVALIDARG,hr);
     ok(hrSession == E_FAIL,"hrSession should be %x not %x\n",E_FAIL,hrSession);
@@ -93,7 +93,7 @@ __attribute__((used)) static void test_TStoApplicationText(void)
     ok(hrSession == TS_E_READONLY,"Unexpected hrSession (%x)\n",hrSession);
     sink_check_ok(&test_ACP_GetStatus,"GetStatus");
 
-    /* signal a change to allow readwrite sessions */
+
     documentStatus = 0;
     test_ACP_RequestLock = SINK_EXPECTED;
     ITextStoreACPSink_OnStatusChange(ACPSink,documentStatus);

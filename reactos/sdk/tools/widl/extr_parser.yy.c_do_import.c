@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct imports {struct imports* next; void* name; } ;
-struct TYPE_2__ {char* temp_name; char* input_name; int line_number; int /*<<< orphan*/  state; } ;
-typedef  int /*<<< orphan*/  FILE ;
+struct TYPE_2__ {char* temp_name; char* input_name; int line_number; int state; } ;
+typedef int FILE ;
 
-/* Variables and functions */
- int MAX_IMPORT_DEPTH ; 
- int /*<<< orphan*/  YY_BUF_SIZE ; 
- int /*<<< orphan*/  YY_CURRENT_BUFFER ; 
- int /*<<< orphan*/  error (char*,char*) ; 
- int /*<<< orphan*/  error_loc (char*,...) ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fdopen (int,char*) ; 
- struct imports* first_import ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- TYPE_1__* import_stack ; 
- int import_stack_ptr ; 
- char* input_name ; 
- int line_number ; 
- int mkstemps (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  parser__create_buffer (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  parser__switch_to_buffer (int /*<<< orphan*/ ) ; 
- scalar_t__ strchr (char*,char) ; 
- scalar_t__ strcmp (void*,char*) ; 
- char* temp_name ; 
- char* wpp_find_include (char*,char*) ; 
- int wpp_parse (char*,int /*<<< orphan*/ *) ; 
- struct imports* xmalloc (int) ; 
- void* xstrdup (char*) ; 
+
+ int MAX_IMPORT_DEPTH ;
+ int YY_BUF_SIZE ;
+ int YY_CURRENT_BUFFER ;
+ int error (char*,char*) ;
+ int error_loc (char*,...) ;
+ int exit (int) ;
+ int fclose (int *) ;
+ int * fdopen (int,char*) ;
+ struct imports* first_import ;
+ int * fopen (char*,char*) ;
+ TYPE_1__* import_stack ;
+ int import_stack_ptr ;
+ char* input_name ;
+ int line_number ;
+ int mkstemps (char*,int ) ;
+ int parser__create_buffer (int *,int ) ;
+ int parser__switch_to_buffer (int ) ;
+ scalar_t__ strchr (char*,char) ;
+ scalar_t__ strcmp (void*,char*) ;
+ char* temp_name ;
+ char* wpp_find_include (char*,char*) ;
+ int wpp_parse (char*,int *) ;
+ struct imports* xmalloc (int) ;
+ void* xstrdup (char*) ;
 
 int do_import(char *fname)
 {
@@ -52,15 +52,15 @@ int do_import(char *fname)
     import = first_import;
     while (import && strcmp(import->name, fname))
         import = import->next;
-    if (import) return 0; /* already imported */
+    if (import) return 0;
 
     import = xmalloc(sizeof(struct imports));
     import->name = xstrdup(fname);
     import->next = first_import;
     first_import = import;
 
-    /* don't search for a file name with a path in the include directories,
-     * for compatibility with MIDL */
+
+
     if (strchr( fname, '/' ) || strchr( fname, '\\' ))
         path = xstrdup( fname );
     else if (!(path = wpp_find_include( fname, input_name )))
@@ -88,7 +88,7 @@ int do_import(char *fname)
     fclose( f );
     if (ret) exit(1);
 
-    if((f = fopen(temp_name, "r")) == NULL)
+    if((f = fopen(temp_name, "r")) == ((void*)0))
         error_loc("Unable to open %s\n", temp_name);
 
     import_stack[ptr].state = YY_CURRENT_BUFFER;

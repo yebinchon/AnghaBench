@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_8__ {scalar_t__ kind; } ;
-typedef  TYPE_1__ svn_lock_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  TYPE_1__ svn_dirent_t ;
-struct ls_baton {int /*<<< orphan*/  locks; int /*<<< orphan*/  dirents; int /*<<< orphan*/  pool; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+typedef TYPE_1__ svn_lock_t ;
+typedef int svn_error_t ;
+typedef TYPE_1__ svn_dirent_t ;
+struct ls_baton {int locks; int dirents; int pool; } ;
+typedef int apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- char* apr_pstrdup (int /*<<< orphan*/ ,char const*) ; 
- TYPE_1__* svn_dirent_dup (TYPE_1__ const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_hash_sets (int /*<<< orphan*/ ,char const*,TYPE_1__ const*) ; 
- scalar_t__ svn_node_file ; 
- char* svn_path_basename (char const*,int /*<<< orphan*/ ) ; 
+
+ int * SVN_NO_ERROR ;
+ char* apr_pstrdup (int ,char const*) ;
+ TYPE_1__* svn_dirent_dup (TYPE_1__ const*,int ) ;
+ int svn_hash_sets (int ,char const*,TYPE_1__ const*) ;
+ scalar_t__ svn_node_file ;
+ char* svn_path_basename (char const*,int ) ;
 
 __attribute__((used)) static svn_error_t *
 store_dirent(void *baton, const char *path, const svn_dirent_t *dirent,
@@ -32,17 +32,17 @@ store_dirent(void *baton, const char *path, const svn_dirent_t *dirent,
 {
   struct ls_baton *lb = baton;
 
-  /* The dirent is allocated in a temporary pool, so duplicate it into the
-     correct pool.  Note, however, that the locks are stored in the correct
-     pool already. */
+
+
+
   dirent = svn_dirent_dup(dirent, lb->pool);
 
-  /* An empty path means we are called for the target of the operation.
-     For compatibility, we only store the target if it is a file, and we
-     store it under the basename of the URL.  Note that this makes it
-     impossible to differentiate between the target being a directory with a
-     child with the same basename as the target and the target being a file,
-     but that's how it was implemented. */
+
+
+
+
+
+
   if (path[0] == '\0')
     {
       if (dirent->kind == svn_node_file)

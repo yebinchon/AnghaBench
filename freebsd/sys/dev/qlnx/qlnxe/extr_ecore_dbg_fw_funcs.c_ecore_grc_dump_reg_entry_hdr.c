@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u32 ;
 
-/* Variables and functions */
- int REG_DUMP_LEN_SHIFT ; 
+
+
+
+typedef int u32 ;
+
+
+ int REG_DUMP_LEN_SHIFT ;
 
 __attribute__((used)) static u32 ecore_grc_dump_reg_entry_hdr(u32 *dump_buf,
-										bool dump,
-										u32 addr,
-										u32 len)
+          bool dump,
+          u32 addr,
+          u32 len)
 {
-	if (dump)
-		*dump_buf = addr | (len << REG_DUMP_LEN_SHIFT);
+ if (dump)
+  *dump_buf = addr | (len << REG_DUMP_LEN_SHIFT);
 
-	return 1;
+ return 1;
 }

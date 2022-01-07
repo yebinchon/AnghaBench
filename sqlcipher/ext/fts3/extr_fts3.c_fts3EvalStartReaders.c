@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_4__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_4__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_7__ {int nToken; TYPE_1__* aToken; } ;
 struct TYPE_6__ {scalar_t__ eType; int bDeferred; struct TYPE_6__* pRight; struct TYPE_6__* pLeft; TYPE_4__* pPhrase; } ;
 struct TYPE_5__ {scalar_t__ pDeferred; } ;
-typedef  TYPE_2__ Fts3Expr ;
-typedef  int /*<<< orphan*/  Fts3Cursor ;
+typedef TYPE_2__ Fts3Expr ;
+typedef int Fts3Cursor ;
 
-/* Variables and functions */
- scalar_t__ FTSQUERY_PHRASE ; 
- int SQLITE_OK ; 
- int fts3EvalPhraseStart (int /*<<< orphan*/ *,int,TYPE_4__*) ; 
+
+ scalar_t__ FTSQUERY_PHRASE ;
+ int SQLITE_OK ;
+ int fts3EvalPhraseStart (int *,int,TYPE_4__*) ;
 
 __attribute__((used)) static void fts3EvalStartReaders(
-  Fts3Cursor *pCsr,               /* FTS Cursor handle */
-  Fts3Expr *pExpr,                /* Expression to initialize phrases in */
-  int *pRc                        /* IN/OUT: Error code */
+  Fts3Cursor *pCsr,
+  Fts3Expr *pExpr,
+  int *pRc
 ){
   if( pExpr && SQLITE_OK==*pRc ){
     if( pExpr->eType==FTSQUERY_PHRASE ){

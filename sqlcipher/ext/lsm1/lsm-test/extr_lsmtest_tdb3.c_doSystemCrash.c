@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-typedef  int /*<<< orphan*/  u32 ;
-typedef  int lsm_i64 ;
-typedef  int /*<<< orphan*/  lsm_file ;
-struct TYPE_10__ {int /*<<< orphan*/  (* xClose ) (int /*<<< orphan*/ *) ;int /*<<< orphan*/  (* xWrite ) (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int) ;int /*<<< orphan*/  (* xOpen ) (TYPE_3__*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ;} ;
-typedef  TYPE_3__ lsm_env ;
+
+
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int u8 ;
+typedef int u32 ;
+typedef int lsm_i64 ;
+typedef int lsm_file ;
+struct TYPE_10__ {int (* xClose ) (int *) ;int (* xWrite ) (int *,int,int *,int) ;int (* xOpen ) (TYPE_3__*,char*,int ,int **) ;} ;
+typedef TYPE_3__ lsm_env ;
 struct TYPE_11__ {char* zName; int szSector; TYPE_2__* aFile; } ;
 struct TYPE_9__ {int nSector; TYPE_1__* aSector; } ;
-struct TYPE_8__ {int /*<<< orphan*/ * aOld; } ;
-typedef  TYPE_4__ LsmDb ;
+struct TYPE_8__ {int * aOld; } ;
+typedef TYPE_4__ LsmDb ;
 
-/* Variables and functions */
- int /*<<< orphan*/  sqlite3_free (char*) ; 
- char* sqlite3_mprintf (char*,char*) ; 
- int /*<<< orphan*/  stub1 (TYPE_3__*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  stub3 (int /*<<< orphan*/ *) ; 
- TYPE_3__* tdb_lsm_env () ; 
- int /*<<< orphan*/  testFree (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  testPrngArray (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int testPrngValue (int /*<<< orphan*/ ) ; 
+
+ int sqlite3_free (char*) ;
+ char* sqlite3_mprintf (char*,char*) ;
+ int stub1 (TYPE_3__*,char*,int ,int **) ;
+ int stub2 (int *,int,int *,int) ;
+ int stub3 (int *) ;
+ TYPE_3__* tdb_lsm_env () ;
+ int testFree (int *) ;
+ int testPrngArray (int ,int *,int) ;
+ int testPrngValue (int ) ;
 
 __attribute__((used)) static void doSystemCrash(LsmDb *pDb){
   lsm_env *pEnv = tdb_lsm_env();
@@ -59,7 +59,7 @@ __attribute__((used)) static void doSystemCrash(LsmDb *pDb){
 
           case 1:
             testPrngArray(iSeed++, (u32 *)aOld, pDb->szSector/4);
-            /* Fall-through */
+
 
           case 2:
             pEnv->xWrite(

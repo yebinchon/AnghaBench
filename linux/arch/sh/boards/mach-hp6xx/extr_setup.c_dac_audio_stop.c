@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-typedef  int /*<<< orphan*/  u16 ;
-struct dac_audio_pdata {int /*<<< orphan*/  channel; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HD64461_GPADR ; 
- int /*<<< orphan*/  HD64461_GPADR_SPEAKER ; 
- int /*<<< orphan*/  PKDR ; 
- int /*<<< orphan*/  PKDR_SPEAKER ; 
- int /*<<< orphan*/  inb (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  inw (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  outb (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  outw (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sh_dac_disable (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sh_dac_output (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int u8 ;
+typedef int u16 ;
+struct dac_audio_pdata {int channel; } ;
+
+
+ int HD64461_GPADR ;
+ int HD64461_GPADR_SPEAKER ;
+ int PKDR ;
+ int PKDR_SPEAKER ;
+ int inb (int ) ;
+ int inw (int ) ;
+ int outb (int ,int ) ;
+ int outw (int ,int ) ;
+ int sh_dac_disable (int ) ;
+ int sh_dac_output (int ,int ) ;
 
 __attribute__((used)) static void dac_audio_stop(struct dac_audio_pdata *pdata)
 {
-	u16 v;
-	u8 v8;
+ u16 v;
+ u8 v8;
 
-	/* HP Jornada 680/690 speaker off */
-	v = inw(HD64461_GPADR);
-	v |= HD64461_GPADR_SPEAKER;
-	outw(v, HD64461_GPADR);
 
-	/* HP Palmtop 620lx/660lx speaker off */
-	v8 = inb(PKDR);
-	v8 |= PKDR_SPEAKER;
-	outb(v8, PKDR);
+ v = inw(HD64461_GPADR);
+ v |= HD64461_GPADR_SPEAKER;
+ outw(v, HD64461_GPADR);
 
-	sh_dac_output(0, pdata->channel);
-	sh_dac_disable(pdata->channel);
+
+ v8 = inb(PKDR);
+ v8 |= PKDR_SPEAKER;
+ outb(v8, PKDR);
+
+ sh_dac_output(0, pdata->channel);
+ sh_dac_disable(pdata->channel);
 }

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  type_t ;
-typedef  int /*<<< orphan*/  attr_list_t ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FC_FIXED_OFFSET ; 
- int /*<<< orphan*/  FC_VARIABLE_REPEAT ; 
- unsigned int USHRT_MAX ; 
- int /*<<< orphan*/  error (char*,unsigned int) ; 
- scalar_t__ is_conformant_array (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  print_file (int /*<<< orphan*/ *,int,char*,unsigned short,...) ; 
- int /*<<< orphan*/  type_array_get_element (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  type_array_has_variance (int /*<<< orphan*/ *) ; 
- unsigned int type_memsize (int /*<<< orphan*/ ) ; 
- int write_pointer_description_offsets (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,unsigned int*,unsigned int*,unsigned int*) ; 
+
+
+
+typedef int type_t ;
+typedef int attr_list_t ;
+typedef int FILE ;
+
+
+ int FC_FIXED_OFFSET ;
+ int FC_VARIABLE_REPEAT ;
+ unsigned int USHRT_MAX ;
+ int error (char*,unsigned int) ;
+ scalar_t__ is_conformant_array (int *) ;
+ int print_file (int *,int,char*,unsigned short,...) ;
+ int type_array_get_element (int *) ;
+ int type_array_has_variance (int *) ;
+ unsigned int type_memsize (int ) ;
+ int write_pointer_description_offsets (int *,int const*,int ,unsigned int*,unsigned int*,unsigned int*) ;
 
 __attribute__((used)) static int write_conformant_array_pointer_descriptions(
     FILE *file, const attr_list_t *attrs, type_t *type,
@@ -35,10 +35,10 @@ __attribute__((used)) static int write_conformant_array_pointer_descriptions(
     if (is_conformant_array(type) && !type_array_has_variance(type))
     {
         unsigned int temp = 0;
-        /* unfortunately, this needs to be done in two passes to avoid
-         * writing out redundant FC_VARIABLE_REPEAT descriptions */
+
+
         pointer_count = write_pointer_description_offsets(
-            NULL, attrs, type_array_get_element(type), NULL, NULL, &temp);
+            ((void*)0), attrs, type_array_get_element(type), ((void*)0), ((void*)0), &temp);
         if (pointer_count > 0)
         {
             unsigned int increment_size;

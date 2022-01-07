@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  vector (char*,char*,char*,char*,char*,char*) ; 
+ int vector (char*,char*,char*,char*,char*,char*) ;
 
 __attribute__((used)) static void test_vectors(void)
 {
-  /* Test vector from section 2.8.2. */
+
   vector("808182838485868788898a8b8c8d8e8f909192939495969798999a9b9c9d9e9f",
          "070000004041424344454647",
          "50515253c0c1c2c3c4c5c6c7",
@@ -24,7 +16,7 @@ __attribute__((used)) static void test_vectors(void)
          "d31a8d34648e60db7b86afbc53ef7ec2a4aded51296e08fea9e2b5a736ee62d63dbea45e8ca9671282fafb69da92728b1a71de0a9e060b2905d6a5b67ecd3b3692ddbd7f2d778b8c9803aee328091b58fab324e4fad675945585808b4831d7bc3ff4def08e4b7a9de576d26586cec64b6116",
          "1ae10b594f09e26a7e902ecbd0600691");
 
-  /* Test vector from A.5. */
+
   vector("1c9240a5eb55d38af333888604f6b5f0473917c1402b80099dca5cbc207075c0",
          "000000000102030405060708",
          "f33388860000000000004e91",

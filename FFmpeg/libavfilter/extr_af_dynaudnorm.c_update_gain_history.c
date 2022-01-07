@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int filter_size; double* prev_amplification_factor; int /*<<< orphan*/ * gain_history_minimum; int /*<<< orphan*/ * gain_history_smoothed; int /*<<< orphan*/ * gain_history_original; scalar_t__ alt_boundary_mode; } ;
-typedef  TYPE_1__ DynamicAudioNormalizerContext ;
 
-/* Variables and functions */
- double FFMIN (double,double) ; 
- int /*<<< orphan*/  av_assert0 (int) ; 
- scalar_t__ cqueue_empty (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cqueue_enqueue (int /*<<< orphan*/ ,double const) ; 
- double cqueue_peek (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  cqueue_pop (int /*<<< orphan*/ ) ; 
- int const cqueue_size (int /*<<< orphan*/ ) ; 
- double gaussian_filter (TYPE_1__*,int /*<<< orphan*/ ) ; 
- double minimum_filter (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int filter_size; double* prev_amplification_factor; int * gain_history_minimum; int * gain_history_smoothed; int * gain_history_original; scalar_t__ alt_boundary_mode; } ;
+typedef TYPE_1__ DynamicAudioNormalizerContext ;
+
+
+ double FFMIN (double,double) ;
+ int av_assert0 (int) ;
+ scalar_t__ cqueue_empty (int ) ;
+ int cqueue_enqueue (int ,double const) ;
+ double cqueue_peek (int ,int) ;
+ int cqueue_pop (int ) ;
+ int const cqueue_size (int ) ;
+ double gaussian_filter (TYPE_1__*,int ) ;
+ double minimum_filter (int ) ;
 
 __attribute__((used)) static void update_gain_history(DynamicAudioNormalizerContext *s, int channel,
                                 double current_gain_factor)

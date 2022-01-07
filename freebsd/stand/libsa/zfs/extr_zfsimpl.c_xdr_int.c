@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int be32dec (unsigned char const*) ; 
+ int be32dec (unsigned char const*) ;
 
 __attribute__((used)) static int
 xdr_int(const unsigned char **xdr, int *ip)
 {
-	*ip = be32dec(*xdr);
-	(*xdr) += 4;
-	return (0);
+ *ip = be32dec(*xdr);
+ (*xdr) += 4;
+ return (0);
 }

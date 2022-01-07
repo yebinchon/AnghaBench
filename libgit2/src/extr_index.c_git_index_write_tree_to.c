@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  git_repository ;
-typedef  int /*<<< orphan*/  git_oid ;
-typedef  int /*<<< orphan*/  git_index ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int git_tree__write_index (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int git_repository ;
+typedef int git_oid ;
+typedef int git_index ;
+
+
+ int assert (int ) ;
+ int git_tree__write_index (int *,int *,int *) ;
 
 int git_index_write_tree_to(
-	git_oid *oid, git_index *index, git_repository *repo)
+ git_oid *oid, git_index *index, git_repository *repo)
 {
-	assert(oid && index && repo);
-	return git_tree__write_index(oid, index, repo);
+ assert(oid && index && repo);
+ return git_tree__write_index(oid, index, repo);
 }

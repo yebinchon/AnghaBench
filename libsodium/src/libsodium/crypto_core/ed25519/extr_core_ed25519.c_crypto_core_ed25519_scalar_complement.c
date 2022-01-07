@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  COMPILER_ASSERT (int) ; 
- unsigned char* L ; 
- int crypto_core_ed25519_NONREDUCEDSCALARBYTES ; 
- int crypto_core_ed25519_SCALARBYTES ; 
- int /*<<< orphan*/  memcpy (unsigned char*,unsigned char const*,int) ; 
- int /*<<< orphan*/  memset (unsigned char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  sc25519_reduce (unsigned char*) ; 
- int /*<<< orphan*/  sodium_sub (unsigned char*,unsigned char*,int) ; 
+ int COMPILER_ASSERT (int) ;
+ unsigned char* L ;
+ int crypto_core_ed25519_NONREDUCEDSCALARBYTES ;
+ int crypto_core_ed25519_SCALARBYTES ;
+ int memcpy (unsigned char*,unsigned char const*,int) ;
+ int memset (unsigned char*,int ,int) ;
+ int sc25519_reduce (unsigned char*) ;
+ int sodium_sub (unsigned char*,unsigned char*,int) ;
 
 void
 crypto_core_ed25519_scalar_complement(unsigned char *comp,

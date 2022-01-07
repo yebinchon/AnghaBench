@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_5__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-struct d3dx9_base_effect {int parameter_count; int technique_count; int object_count; TYPE_1__* objects; TYPE_1__* parameters; TYPE_1__* techniques; int /*<<< orphan*/  version_counter; TYPE_5__* pool; int /*<<< orphan*/  param_tree; } ;
-typedef  size_t UINT ;
-struct TYPE_14__ {int /*<<< orphan*/  version_counter; } ;
-struct TYPE_13__ {int /*<<< orphan*/  param; int /*<<< orphan*/ * version_counter; scalar_t__ data; } ;
-typedef  scalar_t__ HRESULT ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- scalar_t__ D3D_OK ; 
- int /*<<< orphan*/  ERR (char*) ; 
- scalar_t__ E_OUTOFMEMORY ; 
- scalar_t__ FAILED (scalar_t__) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HEAP_ZERO_MEMORY ; 
- void* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  TRACE (char*,size_t) ; 
- int /*<<< orphan*/  WARN (char*,size_t) ; 
- int /*<<< orphan*/  add_param_to_tree (struct d3dx9_base_effect*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ d3dx9_copy_data (struct d3dx9_base_effect*,int,char const**) ; 
- scalar_t__ d3dx9_create_object (struct d3dx9_base_effect*,TYPE_1__*) ; 
- scalar_t__ d3dx9_parse_effect_parameter (struct d3dx9_base_effect*,TYPE_1__*,char const*,char const**,TYPE_1__*) ; 
- scalar_t__ d3dx9_parse_effect_technique (struct d3dx9_base_effect*,TYPE_1__*,char const*,char const**,TYPE_1__*) ; 
- scalar_t__ d3dx9_parse_resource (struct d3dx9_base_effect*,char const*,char const**,char const**,unsigned int) ; 
- scalar_t__ d3dx_pool_sync_shared_parameter (TYPE_5__*,TYPE_1__*) ; 
- int /*<<< orphan*/  free_object (TYPE_1__*) ; 
- int /*<<< orphan*/  free_technique (TYPE_1__*) ; 
- int /*<<< orphan*/  free_top_level_parameter (TYPE_1__*) ; 
- int /*<<< orphan*/  param_rb_compare ; 
- int /*<<< orphan*/  param_set_magic_number (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  param_set_top_level_param ; 
- int /*<<< orphan*/  read_dword (char const**,...) ; 
- int /*<<< orphan*/  set_dirty (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  skip_dword_unknown (char const**,int) ; 
- int /*<<< orphan*/  walk_parameter_tree (int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  wine_rb_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_14__ TYPE_5__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+struct d3dx9_base_effect {int parameter_count; int technique_count; int object_count; TYPE_1__* objects; TYPE_1__* parameters; TYPE_1__* techniques; int version_counter; TYPE_5__* pool; int param_tree; } ;
+typedef size_t UINT ;
+struct TYPE_14__ {int version_counter; } ;
+struct TYPE_13__ {int param; int * version_counter; scalar_t__ data; } ;
+typedef scalar_t__ HRESULT ;
+typedef int DWORD ;
+
+
+ scalar_t__ D3D_OK ;
+ int ERR (char*) ;
+ scalar_t__ E_OUTOFMEMORY ;
+ scalar_t__ FAILED (scalar_t__) ;
+ int GetProcessHeap () ;
+ int HEAP_ZERO_MEMORY ;
+ void* HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,TYPE_1__*) ;
+ int TRACE (char*,size_t) ;
+ int WARN (char*,size_t) ;
+ int add_param_to_tree (struct d3dx9_base_effect*,int *,int *,int ,int ) ;
+ scalar_t__ d3dx9_copy_data (struct d3dx9_base_effect*,int,char const**) ;
+ scalar_t__ d3dx9_create_object (struct d3dx9_base_effect*,TYPE_1__*) ;
+ scalar_t__ d3dx9_parse_effect_parameter (struct d3dx9_base_effect*,TYPE_1__*,char const*,char const**,TYPE_1__*) ;
+ scalar_t__ d3dx9_parse_effect_technique (struct d3dx9_base_effect*,TYPE_1__*,char const*,char const**,TYPE_1__*) ;
+ scalar_t__ d3dx9_parse_resource (struct d3dx9_base_effect*,char const*,char const**,char const**,unsigned int) ;
+ scalar_t__ d3dx_pool_sync_shared_parameter (TYPE_5__*,TYPE_1__*) ;
+ int free_object (TYPE_1__*) ;
+ int free_technique (TYPE_1__*) ;
+ int free_top_level_parameter (TYPE_1__*) ;
+ int param_rb_compare ;
+ int param_set_magic_number (int *) ;
+ int param_set_top_level_param ;
+ int read_dword (char const**,...) ;
+ int set_dirty (int *) ;
+ int skip_dword_unknown (char const**,int) ;
+ int walk_parameter_tree (int *,int ,TYPE_1__*) ;
+ int wine_rb_init (int *,int ) ;
 
 __attribute__((used)) static HRESULT d3dx9_parse_effect(struct d3dx9_base_effect *base, const char *data, UINT data_size,
         DWORD start, const char **skip_constants, unsigned int skip_constants_count)
@@ -99,7 +99,7 @@ __attribute__((used)) static HRESULT d3dx9_parse_effect(struct d3dx9_base_effect
             }
             walk_parameter_tree(&base->parameters[i].param, param_set_top_level_param,
                 &base->parameters[i]);
-            add_param_to_tree(base, &base->parameters[i].param, NULL, 0, 0);
+            add_param_to_tree(base, &base->parameters[i].param, ((void*)0), 0, 0);
         }
     }
 
@@ -179,7 +179,7 @@ err_out:
         for (i = 0; i < base->technique_count; ++i)
             free_technique(&base->techniques[i]);
         HeapFree(GetProcessHeap(), 0, base->techniques);
-        base->techniques = NULL;
+        base->techniques = ((void*)0);
     }
 
     if (base->parameters)
@@ -189,7 +189,7 @@ err_out:
             free_top_level_parameter(&base->parameters[i]);
         }
         HeapFree(GetProcessHeap(), 0, base->parameters);
-        base->parameters = NULL;
+        base->parameters = ((void*)0);
     }
 
     if (base->objects)
@@ -199,7 +199,7 @@ err_out:
             free_object(&base->objects[i]);
         }
         HeapFree(GetProcessHeap(), 0, base->objects);
-        base->objects = NULL;
+        base->objects = ((void*)0);
     }
 
     return hr;

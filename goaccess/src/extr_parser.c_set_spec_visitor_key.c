@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {scalar_t__ date_spec_hr; } ;
 
-/* Variables and functions */
- TYPE_1__ conf ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  memcpy (char*,char*,size_t) ; 
- char* strchr (char*,char) ; 
- size_t strlen (char*) ; 
- char* xmalloc (size_t) ; 
- char* xstrdup (char const*) ; 
+
+ TYPE_1__ conf ;
+ int free (char*) ;
+ int memcpy (char*,char*,size_t) ;
+ char* strchr (char*,char) ;
+ size_t strlen (char*) ;
+ char* xmalloc (size_t) ;
+ char* xstrdup (char const*) ;
 
 __attribute__((used)) static void
 set_spec_visitor_key (char **fdate, const char *ftime)
 {
   size_t dlen = 0, tlen = 0;
-  char *key = NULL, *tkey = NULL, *pch = NULL;
+  char *key = ((void*)0), *tkey = ((void*)0), *pch = ((void*)0);
 
   tkey = xstrdup (ftime);
   if (conf.date_spec_hr && (pch = strchr (tkey, ':')) && (pch - tkey) > 0)

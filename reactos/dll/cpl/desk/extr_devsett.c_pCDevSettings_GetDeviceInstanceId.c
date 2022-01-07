@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int ULONG ;
-typedef  int /*<<< orphan*/  const* PWSTR ;
-typedef  int /*<<< orphan*/  const* LPWSTR ;
-typedef  int /*<<< orphan*/  HLOCAL ;
-typedef  int /*<<< orphan*/  DEVINSTID_W ;
-typedef  int /*<<< orphan*/  DEVINST ;
-typedef  scalar_t__ CONFIGRET ;
 
-/* Variables and functions */
- scalar_t__ CM_Get_Device_IDW (int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int,int /*<<< orphan*/ ) ; 
- scalar_t__ CM_Get_Device_ID_Size (int*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CM_LOCATE_DEVNODE_NORMAL ; 
- scalar_t__ CM_Locate_DevNodeW (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ CR_SUCCESS ; 
- int /*<<< orphan*/  DPRINT1 (char*,...) ; 
- int /*<<< orphan*/  LMEM_FIXED ; 
- int /*<<< orphan*/ * LocalAlloc (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  LocalFree (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int WCHAR ;
+typedef int ULONG ;
+typedef int const* PWSTR ;
+typedef int const* LPWSTR ;
+typedef int HLOCAL ;
+typedef int DEVINSTID_W ;
+typedef int DEVINST ;
+typedef scalar_t__ CONFIGRET ;
+
+
+ scalar_t__ CM_Get_Device_IDW (int ,int const*,int,int ) ;
+ scalar_t__ CM_Get_Device_ID_Size (int*,int ,int ) ;
+ int CM_LOCATE_DEVNODE_NORMAL ;
+ scalar_t__ CM_Locate_DevNodeW (int *,int ,int ) ;
+ scalar_t__ CR_SUCCESS ;
+ int DPRINT1 (char*,...) ;
+ int LMEM_FIXED ;
+ int * LocalAlloc (int ,int) ;
+ int LocalFree (int ) ;
 
 __attribute__((used)) static PWSTR
 pCDevSettings_GetDeviceInstanceId(const WCHAR *pszDevice)
@@ -36,7 +36,7 @@ pCDevSettings_GetDeviceInstanceId(const WCHAR *pszDevice)
     DEVINST DevInst;
     CONFIGRET cr;
     ULONG BufLen;
-    LPWSTR lpDevInstId = NULL;
+    LPWSTR lpDevInstId = ((void*)0);
 
     DPRINT1("CDevSettings::GetDeviceInstanceId(%ws) UNIMPLEMENTED!\n", pszDevice);
 
@@ -55,7 +55,7 @@ pCDevSettings_GetDeviceInstanceId(const WCHAR *pszDevice)
             lpDevInstId = LocalAlloc(LMEM_FIXED,
                                      (BufLen + 1) * sizeof(WCHAR));
 
-            if (lpDevInstId != NULL)
+            if (lpDevInstId != ((void*)0))
             {
                 DPRINT1("Success3\n");
                 cr = CM_Get_Device_IDW(DevInst,
@@ -66,7 +66,7 @@ pCDevSettings_GetDeviceInstanceId(const WCHAR *pszDevice)
                 if (cr != CR_SUCCESS)
                 {
                     LocalFree((HLOCAL)lpDevInstId);
-                    lpDevInstId = NULL;
+                    lpDevInstId = ((void*)0);
                 }
                 DPRINT1("instance id: %ws\n", lpDevInstId);
             }

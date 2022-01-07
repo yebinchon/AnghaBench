@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- char** calendarHomes ; 
- scalar_t__ chdir (char*) ; 
- int /*<<< orphan*/ * fopen (char const*,char*) ; 
- char* getenv (char*) ; 
- unsigned int nitems (char**) ; 
- int /*<<< orphan*/  warnx (char*,...) ; 
+
+
+
+typedef int FILE ;
+
+
+ char** calendarHomes ;
+ scalar_t__ chdir (char*) ;
+ int * fopen (char const*,char*) ;
+ char* getenv (char*) ;
+ unsigned int nitems (char**) ;
+ int warnx (char*,...) ;
 
 __attribute__((used)) static FILE *
 cal_fopen(const char *file)
 {
-	FILE *fp;
-	char *home = getenv("HOME");
-	unsigned int i;
+ FILE *fp;
+ char *home = getenv("HOME");
+ unsigned int i;
 
-	if (home == NULL || *home == '\0') {
-		warnx("Cannot get home directory");
-		return (NULL);
-	}
+ if (home == ((void*)0) || *home == '\0') {
+  warnx("Cannot get home directory");
+  return (((void*)0));
+ }
 
-	if (chdir(home) != 0) {
-		warnx("Cannot enter home directory");
-		return (NULL);
-	}
+ if (chdir(home) != 0) {
+  warnx("Cannot enter home directory");
+  return (((void*)0));
+ }
 
-	for (i = 0; i < nitems(calendarHomes); i++) {
-		if (chdir(calendarHomes[i]) != 0)
-			continue;
+ for (i = 0; i < nitems(calendarHomes); i++) {
+  if (chdir(calendarHomes[i]) != 0)
+   continue;
 
-		if ((fp = fopen(file, "r")) != NULL)
-			return (fp);
-	}
+  if ((fp = fopen(file, "r")) != ((void*)0))
+   return (fp);
+ }
 
-	warnx("can't open calendar file \"%s\"", file);
+ warnx("can't open calendar file \"%s\"", file);
 
-	return (NULL);
+ return (((void*)0));
 }

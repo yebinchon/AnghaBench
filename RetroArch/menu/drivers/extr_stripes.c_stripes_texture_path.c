@@ -1,190 +1,111 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
-#define  STRIPES_TEXTURE_ACHIEVEMENT_LIST 177 
-#define  STRIPES_TEXTURE_ADD 176 
-#define  STRIPES_TEXTURE_ADD_FAVORITE 175 
-#define  STRIPES_TEXTURE_ARROW 174 
-#define  STRIPES_TEXTURE_BATTERY_CHARGING 173 
-#define  STRIPES_TEXTURE_BATTERY_FULL 172 
-#define  STRIPES_TEXTURE_CHEAT_OPTIONS 171 
-#define  STRIPES_TEXTURE_CLOCK 170 
-#define  STRIPES_TEXTURE_CLOSE 169 
-#define  STRIPES_TEXTURE_CORE 168 
-#define  STRIPES_TEXTURE_CORE_INFO 167 
-#define  STRIPES_TEXTURE_CORE_OPTIONS 166 
-#define  STRIPES_TEXTURE_CURSOR 165 
-#define  STRIPES_TEXTURE_DIALOG_SLICE 164 
-#define  STRIPES_TEXTURE_DISK_OPTIONS 163 
-#define  STRIPES_TEXTURE_FAVORITE 162 
-#define  STRIPES_TEXTURE_FAVORITES 161 
-#define  STRIPES_TEXTURE_FILE 160 
-#define  STRIPES_TEXTURE_FOLDER 159 
-#define  STRIPES_TEXTURE_HISTORY 158 
-#define  STRIPES_TEXTURE_IMAGE 157 
-#define  STRIPES_TEXTURE_IMAGES 156 
-#define  STRIPES_TEXTURE_INPUT_REMAPPING_OPTIONS 155 
-#define  STRIPES_TEXTURE_KEY 154 
-#define  STRIPES_TEXTURE_KEY_HOVER 153 
-#define  STRIPES_TEXTURE_LOADSTATE 152 
-#define  STRIPES_TEXTURE_MAIN_MENU 151 
-#define  STRIPES_TEXTURE_MOVIE 150 
-#define  STRIPES_TEXTURE_MOVIES 149 
-#define  STRIPES_TEXTURE_MUSIC 148 
-#define  STRIPES_TEXTURE_MUSICS 147 
-#define  STRIPES_TEXTURE_NETPLAY 146 
-#define  STRIPES_TEXTURE_POINTER 145 
-#define  STRIPES_TEXTURE_RDB 144 
-#define  STRIPES_TEXTURE_RELOAD 143 
-#define  STRIPES_TEXTURE_RENAME 142 
-#define  STRIPES_TEXTURE_RESUME 141 
-#define  STRIPES_TEXTURE_ROOM 140 
-#define  STRIPES_TEXTURE_RUN 139 
-#define  STRIPES_TEXTURE_SAVESTATE 138 
-#define  STRIPES_TEXTURE_SCREENSHOT 137 
-#define  STRIPES_TEXTURE_SETTING 136 
-#define  STRIPES_TEXTURE_SETTINGS 135 
-#define  STRIPES_TEXTURE_SHADER_OPTIONS 134 
-#define  STRIPES_TEXTURE_SUBSETTING 133 
-#define  STRIPES_TEXTURE_SWITCH_OFF 132 
-#define  STRIPES_TEXTURE_SWITCH_ON 131 
-#define  STRIPES_TEXTURE_UNDO 130 
-#define  STRIPES_TEXTURE_WIFI 129 
-#define  STRIPES_TEXTURE_ZIP 128 
-
 __attribute__((used)) static const char *stripes_texture_path(unsigned id)
 {
    switch (id)
    {
-      case STRIPES_TEXTURE_MAIN_MENU:
-#if defined(HAVE_LAKKA)
-         return "lakka.png";
-#else
+      case 151:
+
+
+
          return "retroarch.png";
-#endif
-      case STRIPES_TEXTURE_SETTINGS:
+
+      case 135:
          return "settings.png";
-      case STRIPES_TEXTURE_HISTORY:
+      case 158:
          return "history.png";
-      case STRIPES_TEXTURE_FAVORITES:
+      case 161:
          return "favorites.png";
-      case STRIPES_TEXTURE_ADD_FAVORITE:
+      case 175:
          return "add-favorite.png";
-      case STRIPES_TEXTURE_MUSICS:
+      case 147:
          return "musics.png";
-#ifdef HAVE_FFMPEG
-      case STRIPES_TEXTURE_MOVIES:
-         return "movies.png";
-#endif
-#ifdef HAVE_IMAGEVIEWER
-      case STRIPES_TEXTURE_IMAGES:
-         return "images.png";
-#endif
-      case STRIPES_TEXTURE_SETTING:
+      case 136:
          return "setting.png";
-      case STRIPES_TEXTURE_SUBSETTING:
+      case 133:
          return "subsetting.png";
-      case STRIPES_TEXTURE_ARROW:
+      case 174:
          return "arrow.png";
-      case STRIPES_TEXTURE_RUN:
+      case 139:
          return "run.png";
-      case STRIPES_TEXTURE_CLOSE:
+      case 169:
          return "close.png";
-      case STRIPES_TEXTURE_RESUME:
+      case 141:
          return "resume.png";
-      case STRIPES_TEXTURE_CLOCK:
+      case 170:
          return "clock.png";
-      case STRIPES_TEXTURE_BATTERY_FULL:
+      case 172:
          return "battery-full.png";
-      case STRIPES_TEXTURE_BATTERY_CHARGING:
+      case 173:
          return "battery-charging.png";
-      case STRIPES_TEXTURE_POINTER:
+      case 145:
          return "pointer.png";
-      case STRIPES_TEXTURE_SAVESTATE:
+      case 138:
          return "savestate.png";
-      case STRIPES_TEXTURE_LOADSTATE:
+      case 152:
          return "loadstate.png";
-      case STRIPES_TEXTURE_UNDO:
+      case 130:
          return "undo.png";
-      case STRIPES_TEXTURE_CORE_INFO:
+      case 167:
          return "core-infos.png";
-      case STRIPES_TEXTURE_WIFI:
+      case 129:
          return "wifi.png";
-      case STRIPES_TEXTURE_CORE_OPTIONS:
+      case 166:
          return "core-options.png";
-      case STRIPES_TEXTURE_INPUT_REMAPPING_OPTIONS:
+      case 155:
          return "core-input-remapping-options.png";
-      case STRIPES_TEXTURE_CHEAT_OPTIONS:
+      case 171:
          return "core-cheat-options.png";
-      case STRIPES_TEXTURE_DISK_OPTIONS:
+      case 163:
          return "core-disk-options.png";
-      case STRIPES_TEXTURE_SHADER_OPTIONS:
+      case 134:
          return "core-shader-options.png";
-      case STRIPES_TEXTURE_ACHIEVEMENT_LIST:
+      case 177:
          return "achievement-list.png";
-      case STRIPES_TEXTURE_SCREENSHOT:
+      case 137:
          return "screenshot.png";
-      case STRIPES_TEXTURE_RELOAD:
+      case 143:
          return "reload.png";
-      case STRIPES_TEXTURE_RENAME:
+      case 142:
          return "rename.png";
-      case STRIPES_TEXTURE_FILE:
+      case 160:
          return "file.png";
-      case STRIPES_TEXTURE_FOLDER:
+      case 159:
          return "folder.png";
-      case STRIPES_TEXTURE_ZIP:
+      case 128:
          return "zip.png";
-      case STRIPES_TEXTURE_MUSIC:
+      case 148:
          return "music.png";
-      case STRIPES_TEXTURE_FAVORITE:
+      case 162:
          return "favorites-content.png";
-      case STRIPES_TEXTURE_IMAGE:
+      case 157:
          return "image.png";
-      case STRIPES_TEXTURE_MOVIE:
+      case 150:
          return "movie.png";
-      case STRIPES_TEXTURE_CORE:
+      case 168:
          return "core.png";
-      case STRIPES_TEXTURE_RDB:
+      case 144:
          return "database.png";
-      case STRIPES_TEXTURE_CURSOR:
+      case 165:
          return "cursor.png";
-      case STRIPES_TEXTURE_SWITCH_ON:
+      case 131:
          return "on.png";
-      case STRIPES_TEXTURE_SWITCH_OFF:
+      case 132:
          return "off.png";
-      case STRIPES_TEXTURE_ADD:
+      case 176:
          return "add.png";
-#ifdef HAVE_NETWORKING
-      case STRIPES_TEXTURE_NETPLAY:
-         return "netplay.png";
-      case STRIPES_TEXTURE_ROOM:
-         return "room.png";
-      /* stub these out until we have the icons
-      case STRIPES_TEXTURE_ROOM_LAN:
-         return "room_lan.png";
-      case STRIPES_TEXTURE_ROOM_MITM:
-         return "room_mitm.png";
-      */
-#endif
-      case STRIPES_TEXTURE_KEY:
+      case 154:
          return "key.png";
-      case STRIPES_TEXTURE_KEY_HOVER:
+      case 153:
          return "key-hover.png";
-      case STRIPES_TEXTURE_DIALOG_SLICE:
+      case 164:
          return "dialog-slice.png";
 
    }
 
-   return NULL;
+   return ((void*)0);
 }

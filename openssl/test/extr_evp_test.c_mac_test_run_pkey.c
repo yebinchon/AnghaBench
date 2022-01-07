@@ -1,83 +1,74 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_7__ {char* err; TYPE_1__* data; } ;
-struct TYPE_6__ {scalar_t__ type; int /*<<< orphan*/  output_len; int /*<<< orphan*/  output; int /*<<< orphan*/  input_len; int /*<<< orphan*/  input; int /*<<< orphan*/  controls; int /*<<< orphan*/ * alg; int /*<<< orphan*/  key_len; int /*<<< orphan*/  key; } ;
-typedef  TYPE_1__ MAC_DATA ;
-typedef  TYPE_2__ EVP_TEST ;
-typedef  int /*<<< orphan*/  EVP_PKEY_CTX ;
-typedef  int /*<<< orphan*/  EVP_PKEY ;
-typedef  unsigned char EVP_MD_CTX ;
-typedef  unsigned char EVP_MD ;
+struct TYPE_6__ {scalar_t__ type; int output_len; int output; int input_len; int input; int controls; int * alg; int key_len; int key; } ;
+typedef TYPE_1__ MAC_DATA ;
+typedef TYPE_2__ EVP_TEST ;
+typedef int EVP_PKEY_CTX ;
+typedef int EVP_PKEY ;
+typedef unsigned char EVP_MD_CTX ;
+typedef unsigned char EVP_MD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EVP_DigestSignFinal (unsigned char*,unsigned char*,size_t*) ; 
- int /*<<< orphan*/  EVP_DigestSignInit (unsigned char*,int /*<<< orphan*/ **,unsigned char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EVP_DigestSignUpdate (unsigned char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EVP_MD_CTX_free (unsigned char*) ; 
- unsigned char* EVP_MD_CTX_new () ; 
- scalar_t__ EVP_PKEY_CMAC ; 
- int /*<<< orphan*/  EVP_PKEY_CTX_free (int /*<<< orphan*/ *) ; 
- scalar_t__ EVP_PKEY_HMAC ; 
- int /*<<< orphan*/  EVP_PKEY_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * EVP_PKEY_new_CMAC_key (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * EVP_PKEY_new_raw_private_key (scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EVP_get_cipherbyname (int /*<<< orphan*/ *) ; 
- unsigned char* EVP_get_digestbyname (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  OBJ_nid2sn (scalar_t__) ; 
- int /*<<< orphan*/  OPENSSL_free (unsigned char*) ; 
- unsigned char* OPENSSL_malloc (size_t) ; 
- int /*<<< orphan*/  TEST_info (char*,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  TEST_ptr (unsigned char const*) ; 
- int /*<<< orphan*/  mac_test_ctrl_pkey (TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memory_err_compare (TYPE_2__*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned char*,size_t) ; 
- int sk_OPENSSL_STRING_num (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sk_OPENSSL_STRING_value (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/ * strstr (int /*<<< orphan*/ *,char*) ; 
+
+ int EVP_DigestSignFinal (unsigned char*,unsigned char*,size_t*) ;
+ int EVP_DigestSignInit (unsigned char*,int **,unsigned char const*,int *,int *) ;
+ int EVP_DigestSignUpdate (unsigned char*,int ,int ) ;
+ int EVP_MD_CTX_free (unsigned char*) ;
+ unsigned char* EVP_MD_CTX_new () ;
+ scalar_t__ EVP_PKEY_CMAC ;
+ int EVP_PKEY_CTX_free (int *) ;
+ scalar_t__ EVP_PKEY_HMAC ;
+ int EVP_PKEY_free (int *) ;
+ int * EVP_PKEY_new_CMAC_key (int *,int ,int ,int ) ;
+ int * EVP_PKEY_new_raw_private_key (scalar_t__,int *,int ,int ) ;
+ int EVP_get_cipherbyname (int *) ;
+ unsigned char* EVP_get_digestbyname (int *) ;
+ int OBJ_nid2sn (scalar_t__) ;
+ int OPENSSL_free (unsigned char*) ;
+ unsigned char* OPENSSL_malloc (size_t) ;
+ int TEST_info (char*,int ,...) ;
+ int TEST_ptr (unsigned char const*) ;
+ int mac_test_ctrl_pkey (TYPE_2__*,int *,int ) ;
+ int memory_err_compare (TYPE_2__*,char*,int ,int ,unsigned char*,size_t) ;
+ int sk_OPENSSL_STRING_num (int ) ;
+ int sk_OPENSSL_STRING_value (int ,int) ;
+ int * strstr (int *,char*) ;
 
 __attribute__((used)) static int mac_test_run_pkey(EVP_TEST *t)
 {
     MAC_DATA *expected = t->data;
-    EVP_MD_CTX *mctx = NULL;
-    EVP_PKEY_CTX *pctx = NULL, *genctx = NULL;
-    EVP_PKEY *key = NULL;
-    const EVP_MD *md = NULL;
-    unsigned char *got = NULL;
+    EVP_MD_CTX *mctx = ((void*)0);
+    EVP_PKEY_CTX *pctx = ((void*)0), *genctx = ((void*)0);
+    EVP_PKEY *key = ((void*)0);
+    const EVP_MD *md = ((void*)0);
+    unsigned char *got = ((void*)0);
     size_t got_len;
     int i;
 
-    if (expected->alg == NULL)
+    if (expected->alg == ((void*)0))
         TEST_info("Trying the EVP_PKEY %s test", OBJ_nid2sn(expected->type));
     else
         TEST_info("Trying the EVP_PKEY %s test with %s",
                   OBJ_nid2sn(expected->type), expected->alg);
-
-#ifdef OPENSSL_NO_DES
-    if (expected->alg != NULL && strstr(expected->alg, "DES") != NULL) {
-        /* Skip DES */
-        t->err = NULL;
-        goto err;
-    }
-#endif
-
     if (expected->type == EVP_PKEY_CMAC)
-        key = EVP_PKEY_new_CMAC_key(NULL, expected->key, expected->key_len,
+        key = EVP_PKEY_new_CMAC_key(((void*)0), expected->key, expected->key_len,
                                     EVP_get_cipherbyname(expected->alg));
     else
-        key = EVP_PKEY_new_raw_private_key(expected->type, NULL, expected->key,
+        key = EVP_PKEY_new_raw_private_key(expected->type, ((void*)0), expected->key,
                                            expected->key_len);
-    if (key == NULL) {
+    if (key == ((void*)0)) {
         t->err = "MAC_KEY_CREATE_ERROR";
         goto err;
     }
@@ -92,7 +83,7 @@ __attribute__((used)) static int mac_test_run_pkey(EVP_TEST *t)
         t->err = "INTERNAL_ERROR";
         goto err;
     }
-    if (!EVP_DigestSignInit(mctx, &pctx, md, NULL, key)) {
+    if (!EVP_DigestSignInit(mctx, &pctx, md, ((void*)0), key)) {
         t->err = "DIGESTSIGNINIT_ERROR";
         goto err;
     }
@@ -107,7 +98,7 @@ __attribute__((used)) static int mac_test_run_pkey(EVP_TEST *t)
         t->err = "DIGESTSIGNUPDATE_ERROR";
         goto err;
     }
-    if (!EVP_DigestSignFinal(mctx, NULL, &got_len)) {
+    if (!EVP_DigestSignFinal(mctx, ((void*)0), &got_len)) {
         t->err = "DIGESTSIGNFINAL_LENGTH_ERROR";
         goto err;
     }
@@ -122,7 +113,7 @@ __attribute__((used)) static int mac_test_run_pkey(EVP_TEST *t)
         t->err = "TEST_MAC_ERR";
         goto err;
     }
-    t->err = NULL;
+    t->err = ((void*)0);
  err:
     EVP_MD_CTX_free(mctx);
     OPENSSL_free(got);

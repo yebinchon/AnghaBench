@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  current_cursor; int /*<<< orphan*/  last_cursor; int /*<<< orphan*/  answer; int /*<<< orphan*/  url; int /*<<< orphan*/  easy; scalar_t__* error; int /*<<< orphan*/  watchdog_timestamp; } ;
-typedef  TYPE_1__ Uploader ;
-typedef  scalar_t__ CURLcode ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLOCK_MONOTONIC ; 
- int /*<<< orphan*/  CURLINFO_RESPONSE_CODE ; 
- int EIO ; 
- int EUCLEAN ; 
- int /*<<< orphan*/  SYNTHETIC_ERRNO (int) ; 
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- scalar_t__ curl_easy_getinfo (int /*<<< orphan*/ ,int /*<<< orphan*/ ,long*) ; 
- scalar_t__ curl_easy_perform (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  curl_easy_strerror (scalar_t__) ; 
- int /*<<< orphan*/  free_and_replace (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  log_debug (char*,long,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  log_error (char*,int /*<<< orphan*/ ,int,...) ; 
- int log_error_errno (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  now (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strna (int /*<<< orphan*/ ) ; 
- int update_cursor_state (TYPE_1__*) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int current_cursor; int last_cursor; int answer; int url; int easy; scalar_t__* error; int watchdog_timestamp; } ;
+typedef TYPE_1__ Uploader ;
+typedef scalar_t__ CURLcode ;
+
+
+ int CLOCK_MONOTONIC ;
+ int CURLINFO_RESPONSE_CODE ;
+ int EIO ;
+ int EUCLEAN ;
+ int SYNTHETIC_ERRNO (int) ;
+ int assert (TYPE_1__*) ;
+ scalar_t__ curl_easy_getinfo (int ,int ,long*) ;
+ scalar_t__ curl_easy_perform (int ) ;
+ int curl_easy_strerror (scalar_t__) ;
+ int free_and_replace (int ,int ) ;
+ int log_debug (char*,long,int ) ;
+ int log_error (char*,int ,int,...) ;
+ int log_error_errno (int ,char*,int ,...) ;
+ int now (int ) ;
+ int strna (int ) ;
+ int update_cursor_state (TYPE_1__*) ;
 
 __attribute__((used)) static int perform_upload(Uploader *u) {
         CURLcode code;

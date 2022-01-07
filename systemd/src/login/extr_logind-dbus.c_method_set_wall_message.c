@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {unsigned int enable_wall_messages; int /*<<< orphan*/  wall_message; int /*<<< orphan*/  polkit_registry; } ;
-typedef  TYPE_1__ sd_bus_message ;
-typedef  int /*<<< orphan*/  sd_bus_error ;
-typedef  TYPE_1__ Manager ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CAP_SYS_ADMIN ; 
- int /*<<< orphan*/  UID_INVALID ; 
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int bus_verify_polkit_async (TYPE_1__*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  empty_to_null (char*) ; 
- int free_and_strdup (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int log_oom () ; 
- int sd_bus_message_read (TYPE_1__*,char*,char**,unsigned int*) ; 
- int sd_bus_reply_method_return (TYPE_1__*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_8__ {unsigned int enable_wall_messages; int wall_message; int polkit_registry; } ;
+typedef TYPE_1__ sd_bus_message ;
+typedef int sd_bus_error ;
+typedef TYPE_1__ Manager ;
+
+
+ int CAP_SYS_ADMIN ;
+ int UID_INVALID ;
+ int assert (TYPE_1__*) ;
+ int bus_verify_polkit_async (TYPE_1__*,int ,char*,int *,int,int ,int *,int *) ;
+ int empty_to_null (char*) ;
+ int free_and_strdup (int *,int ) ;
+ int log_oom () ;
+ int sd_bus_message_read (TYPE_1__*,char*,char**,unsigned int*) ;
+ int sd_bus_reply_method_return (TYPE_1__*,int *) ;
 
 __attribute__((used)) static int method_set_wall_message(
                 sd_bus_message *message,
@@ -47,15 +47,15 @@ __attribute__((used)) static int method_set_wall_message(
         r = bus_verify_polkit_async(message,
                                     CAP_SYS_ADMIN,
                                     "org.freedesktop.login1.set-wall-message",
-                                    NULL,
-                                    false,
+                                    ((void*)0),
+                                    0,
                                     UID_INVALID,
                                     &m->polkit_registry,
                                     error);
         if (r < 0)
                 return r;
         if (r == 0)
-                return 1; /* Will call us back */
+                return 1;
 
         r = free_and_strdup(&m->wall_message, empty_to_null(wall_message));
         if (r < 0)
@@ -63,5 +63,5 @@ __attribute__((used)) static int method_set_wall_message(
 
         m->enable_wall_messages = enable_wall_messages;
 
-        return sd_bus_reply_method_return(message, NULL);
+        return sd_bus_reply_method_return(message, ((void*)0));
 }

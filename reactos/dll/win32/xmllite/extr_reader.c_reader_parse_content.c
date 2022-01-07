@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
 struct TYPE_11__ {int resumestate; } ;
-typedef  TYPE_1__ xmlreader ;
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  HRESULT ;
+typedef TYPE_1__ xmlreader ;
+typedef char WCHAR ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*,int) ; 
-#define  XmlReadResumeState_CDATA 132 
-#define  XmlReadResumeState_CharData 131 
-#define  XmlReadResumeState_Comment 130 
- int XmlReadResumeState_Initial ; 
-#define  XmlReadResumeState_PIBody 129 
-#define  XmlReadResumeState_PITarget 128 
- char const* commentW ; 
- char const* ltW ; 
- char const* piW ; 
- int /*<<< orphan*/  reader_cmp (TYPE_1__*,char const*) ; 
- int /*<<< orphan*/  reader_parse_cdata (TYPE_1__*) ; 
- int /*<<< orphan*/  reader_parse_chardata (TYPE_1__*) ; 
- int /*<<< orphan*/  reader_parse_comment (TYPE_1__*) ; 
- int /*<<< orphan*/  reader_parse_element (TYPE_1__*) ; 
- int /*<<< orphan*/  reader_parse_endtag (TYPE_1__*) ; 
- int /*<<< orphan*/  reader_parse_pi (TYPE_1__*) ; 
- int /*<<< orphan*/  reader_shrink (TYPE_1__*) ; 
+
+ int ERR (char*,int) ;
+
+
+
+ int XmlReadResumeState_Initial ;
+
+
+ char const* commentW ;
+ char const* ltW ;
+ char const* piW ;
+ int reader_cmp (TYPE_1__*,char const*) ;
+ int reader_parse_cdata (TYPE_1__*) ;
+ int reader_parse_chardata (TYPE_1__*) ;
+ int reader_parse_comment (TYPE_1__*) ;
+ int reader_parse_element (TYPE_1__*) ;
+ int reader_parse_endtag (TYPE_1__*) ;
+ int reader_parse_pi (TYPE_1__*) ;
+ int reader_shrink (TYPE_1__*) ;
 
 __attribute__((used)) static HRESULT reader_parse_content(xmlreader *reader)
 {
@@ -45,14 +45,14 @@ __attribute__((used)) static HRESULT reader_parse_content(xmlreader *reader)
     {
         switch (reader->resumestate)
         {
-        case XmlReadResumeState_CDATA:
+        case 132:
             return reader_parse_cdata(reader);
-        case XmlReadResumeState_Comment:
+        case 130:
             return reader_parse_comment(reader);
-        case XmlReadResumeState_PIBody:
-        case XmlReadResumeState_PITarget:
+        case 129:
+        case 128:
             return reader_parse_pi(reader);
-        case XmlReadResumeState_CharData:
+        case 131:
             return reader_parse_chardata(reader);
         default:
             ERR("unknown resume state %d\n", reader->resumestate);
@@ -61,7 +61,7 @@ __attribute__((used)) static HRESULT reader_parse_content(xmlreader *reader)
 
     reader_shrink(reader);
 
-    /* handle end tag here, it indicates end of content as well */
+
     if (!reader_cmp(reader, etagW))
         return reader_parse_endtag(reader);
 
@@ -77,6 +77,6 @@ __attribute__((used)) static HRESULT reader_parse_content(xmlreader *reader)
     if (!reader_cmp(reader, ltW))
         return reader_parse_element(reader);
 
-    /* what's left must be CharData */
+
     return reader_parse_chardata(reader);
 }

@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
+
+
+
+
+typedef int u32 ;
 struct drm_device {int dummy; } ;
 
-/* Variables and functions */
- int DPI_FIFO_EMPTY ; 
- int /*<<< orphan*/  DRM_ERROR (char*) ; 
- int /*<<< orphan*/  MIPI_GEN_FIFO_STAT_REG (int /*<<< orphan*/ ) ; 
- int REG_READ (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  udelay (int) ; 
+
+ int DPI_FIFO_EMPTY ;
+ int DRM_ERROR (char*) ;
+ int MIPI_GEN_FIFO_STAT_REG (int ) ;
+ int REG_READ (int ) ;
+ int udelay (int) ;
 
 __attribute__((used)) static void mdfld_wait_for_DPI_CTRL_FIFO(struct drm_device *dev, u32 pipe)
 {
-	u32 gen_fifo_stat_reg = MIPI_GEN_FIFO_STAT_REG(pipe);
-	int timeout = 0;
+ u32 gen_fifo_stat_reg = MIPI_GEN_FIFO_STAT_REG(pipe);
+ int timeout = 0;
 
-	udelay(500);
+ udelay(500);
 
-	/* This will time out after approximately 2+ seconds */
-	while ((timeout < 20000) && ((REG_READ(gen_fifo_stat_reg) &
-					DPI_FIFO_EMPTY) != DPI_FIFO_EMPTY)) {
-		udelay(100);
-		timeout++;
-	}
 
-	if (timeout == 20000)
-		DRM_ERROR("MIPI: DPI FIFO was never cleared\n");
+ while ((timeout < 20000) && ((REG_READ(gen_fifo_stat_reg) &
+     DPI_FIFO_EMPTY) != DPI_FIFO_EMPTY)) {
+  udelay(100);
+  timeout++;
+ }
+
+ if (timeout == 20000)
+  DRM_ERROR("MIPI: DPI FIFO was never cleared\n");
 }

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tmp ;
-struct TYPE_11__ {scalar_t__ data; scalar_t__ extended_data; int /*<<< orphan*/  nb_samples; int /*<<< orphan*/  channel_layout; int /*<<< orphan*/  channels; int /*<<< orphan*/  height; int /*<<< orphan*/  width; int /*<<< orphan*/  format; int /*<<< orphan*/ * buf; } ;
-typedef  TYPE_1__ AVFrame ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EINVAL ; 
- int av_frame_copy (TYPE_1__*,TYPE_1__*) ; 
- int av_frame_copy_props (TYPE_1__*,TYPE_1__*) ; 
- int av_frame_get_buffer (TYPE_1__*,int) ; 
- scalar_t__ av_frame_is_writable (TYPE_1__*) ; 
- int /*<<< orphan*/  av_frame_unref (TYPE_1__*) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef int tmp ;
+struct TYPE_11__ {scalar_t__ data; scalar_t__ extended_data; int nb_samples; int channel_layout; int channels; int height; int width; int format; int * buf; } ;
+typedef TYPE_1__ AVFrame ;
+
+
+ int AVERROR (int ) ;
+ int EINVAL ;
+ int av_frame_copy (TYPE_1__*,TYPE_1__*) ;
+ int av_frame_copy_props (TYPE_1__*,TYPE_1__*) ;
+ int av_frame_get_buffer (TYPE_1__*,int) ;
+ scalar_t__ av_frame_is_writable (TYPE_1__*) ;
+ int av_frame_unref (TYPE_1__*) ;
+ int memset (TYPE_1__*,int ,int) ;
 
 int av_frame_make_writable(AVFrame *frame)
 {
@@ -37,12 +37,12 @@ int av_frame_make_writable(AVFrame *frame)
         return 0;
 
     memset(&tmp, 0, sizeof(tmp));
-    tmp.format         = frame->format;
-    tmp.width          = frame->width;
-    tmp.height         = frame->height;
-    tmp.channels       = frame->channels;
+    tmp.format = frame->format;
+    tmp.width = frame->width;
+    tmp.height = frame->height;
+    tmp.channels = frame->channels;
     tmp.channel_layout = frame->channel_layout;
-    tmp.nb_samples     = frame->nb_samples;
+    tmp.nb_samples = frame->nb_samples;
     ret = av_frame_get_buffer(&tmp, 32);
     if (ret < 0)
         return ret;

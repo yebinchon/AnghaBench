@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int datasize; int pipeline; int randomkeys; scalar_t__ randomkeys_keyspacelen; int quiet; int csv; int loop; int idlemode; int showerrors; scalar_t__ precision; scalar_t__ num_threads; int cluster_mode; int enable_tracking; void* dbnum; int /*<<< orphan*/  dbnumstr; void* tests; void* auth; void* hostsocket; void* hostport; void* hostip; void* keepalive; void* requests; void* numclients; } ;
 
-/* Variables and functions */
- scalar_t__ MAX_LATENCY_PRECISION ; 
- scalar_t__ MAX_THREADS ; 
- void* atoi (char const*) ; 
- TYPE_1__ config ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- void* sdscat (void*,char*) ; 
- int /*<<< orphan*/  sdsfromlonglong (void*) ; 
- void* sdsnew (char*) ; 
- int /*<<< orphan*/  sdstolower (void*) ; 
- int /*<<< orphan*/  strcmp (char const*,char*) ; 
- void* strdup (char const*) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int datasize; int pipeline; int randomkeys; scalar_t__ randomkeys_keyspacelen; int quiet; int csv; int loop; int idlemode; int showerrors; scalar_t__ precision; scalar_t__ num_threads; int cluster_mode; int enable_tracking; void* dbnum; int dbnumstr; void* tests; void* auth; void* hostsocket; void* hostport; void* hostip; void* keepalive; void* requests; void* numclients; } ;
+
+
+ scalar_t__ MAX_LATENCY_PRECISION ;
+ scalar_t__ MAX_THREADS ;
+ void* atoi (char const*) ;
+ TYPE_1__ config ;
+ int exit (int) ;
+ int printf (char*,...) ;
+ void* sdscat (void*,char*) ;
+ int sdsfromlonglong (void*) ;
+ void* sdsnew (char*) ;
+ int sdstolower (void*) ;
+ int strcmp (char const*,char*) ;
+ void* strdup (char const*) ;
 
 int parseOptions(int argc, const char **argv) {
     int i;
@@ -88,11 +88,11 @@ int parseOptions(int argc, const char **argv) {
             config.showerrors = 1;
         } else if (!strcmp(argv[i],"-t")) {
             if (lastarg) goto invalid;
-            /* We get the list of tests to run as a string in the form
-             * get,set,lrange,...,test_N. Then we add a comma before and
-             * after the string in order to make sure that searching
-             * for ",testname," will always get a match if the test is
-             * enabled. */
+
+
+
+
+
             config.tests = sdsnew(",");
             config.tests = sdscat(config.tests,(char*)argv[++i]);
             config.tests = sdscat(config.tests,",");
@@ -122,9 +122,9 @@ int parseOptions(int argc, const char **argv) {
             exit_status = 0;
             goto usage;
         } else {
-            /* Assume the user meant to provide an option when the arg starts
-             * with a dash. We're done otherwise and should use the remainder
-             * as the command and arguments for running the benchmark. */
+
+
+
             if (argv[i][0] == '-') goto invalid;
             return i;
         }

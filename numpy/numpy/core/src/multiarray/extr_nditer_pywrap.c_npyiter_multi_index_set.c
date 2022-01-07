@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ npy_intp ;
-struct TYPE_4__ {scalar_t__ finished; scalar_t__ started; int /*<<< orphan*/ * iter; } ;
-typedef  int /*<<< orphan*/  PyObject ;
-typedef  TYPE_1__ NewNpyArrayIterObject ;
 
-/* Variables and functions */
- int NPY_MAXDIMS ; 
- scalar_t__ NPY_SUCCEED ; 
- scalar_t__ NpyIter_GetNDim (int /*<<< orphan*/ *) ; 
- scalar_t__ NpyIter_GotoMultiIndex (int /*<<< orphan*/ *,scalar_t__*) ; 
- scalar_t__ NpyIter_HasMultiIndex (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyErr_SetString (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  PyExc_AttributeError ; 
- int /*<<< orphan*/  PyExc_ValueError ; 
- scalar_t__ PyInt_AsLong (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PySequence_Check (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * PySequence_GetItem (int /*<<< orphan*/ *,scalar_t__) ; 
- scalar_t__ PySequence_Size (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Py_XDECREF (int /*<<< orphan*/ *) ; 
- scalar_t__ error_converting (scalar_t__) ; 
- scalar_t__ npyiter_resetbasepointers (TYPE_1__*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef scalar_t__ npy_intp ;
+struct TYPE_4__ {scalar_t__ finished; scalar_t__ started; int * iter; } ;
+typedef int PyObject ;
+typedef TYPE_1__ NewNpyArrayIterObject ;
+
+
+ int NPY_MAXDIMS ;
+ scalar_t__ NPY_SUCCEED ;
+ scalar_t__ NpyIter_GetNDim (int *) ;
+ scalar_t__ NpyIter_GotoMultiIndex (int *,scalar_t__*) ;
+ scalar_t__ NpyIter_HasMultiIndex (int *) ;
+ int PyErr_SetString (int ,char*) ;
+ int PyExc_AttributeError ;
+ int PyExc_ValueError ;
+ scalar_t__ PyInt_AsLong (int *) ;
+ int PySequence_Check (int *) ;
+ int * PySequence_GetItem (int *,scalar_t__) ;
+ scalar_t__ PySequence_Size (int *) ;
+ int Py_XDECREF (int *) ;
+ scalar_t__ error_converting (scalar_t__) ;
+ scalar_t__ npyiter_resetbasepointers (TYPE_1__*) ;
 
 __attribute__((used)) static int
 npyiter_multi_index_set(NewNpyArrayIterObject *self, PyObject *value)
 {
     npy_intp idim, ndim, multi_index[NPY_MAXDIMS];
 
-    if (value == NULL) {
+    if (value == ((void*)0)) {
         PyErr_SetString(PyExc_AttributeError,
                 "Cannot delete nditer multi_index");
         return -1;
     }
-    if (self->iter == NULL) {
+    if (self->iter == ((void*)0)) {
         PyErr_SetString(PyExc_ValueError,
                 "Iterator is invalid");
         return -1;
@@ -75,7 +75,7 @@ npyiter_multi_index_set(NewNpyArrayIterObject *self, PyObject *value)
         self->started = 0;
         self->finished = 0;
 
-        /* If there is nesting, the nested iterators should be reset */
+
         if (npyiter_resetbasepointers(self) != NPY_SUCCEED) {
             return -1;
         }

@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_string_t ;
-typedef  int /*<<< orphan*/  svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_ra_svn_conn_t ;
-struct TYPE_6__ {int /*<<< orphan*/ * conn; } ;
-typedef  TYPE_1__ svn_ra_svn__session_baton_t ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int svn_string_t ;
+typedef int svn_revnum_t ;
+typedef int svn_ra_svn_conn_t ;
+struct TYPE_6__ {int * conn; } ;
+typedef TYPE_1__ svn_ra_svn__session_baton_t ;
 struct TYPE_7__ {TYPE_1__* priv; } ;
-typedef  TYPE_2__ svn_ra_session_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  scalar_t__ svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+typedef TYPE_2__ svn_ra_session_t ;
+typedef int svn_error_t ;
+typedef scalar_t__ svn_boolean_t ;
+typedef int apr_pool_t ;
 
-/* Variables and functions */
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_ASSERT (scalar_t__) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  SVN_RA_SVN_CAP_ATOMIC_REVPROPS ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  handle_auth_request (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ra_svn_has_capability (TYPE_2__*,scalar_t__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_ra_svn__read_cmd_response (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  svn_ra_svn__write_cmd_change_rev_prop (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  svn_ra_svn__write_cmd_change_rev_prop2 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/  const*,scalar_t__,int /*<<< orphan*/  const*) ; 
+
+ scalar_t__ FALSE ;
+ int SVN_ERR (int ) ;
+ int SVN_ERR_ASSERT (scalar_t__) ;
+ int * SVN_NO_ERROR ;
+ int SVN_RA_SVN_CAP_ATOMIC_REVPROPS ;
+ scalar_t__ TRUE ;
+ int handle_auth_request (TYPE_1__*,int *) ;
+ int ra_svn_has_capability (TYPE_2__*,scalar_t__*,int ,int *) ;
+ int svn_ra_svn__read_cmd_response (int *,int *,char*) ;
+ int svn_ra_svn__write_cmd_change_rev_prop (int *,int *,int ,char const*,int const*) ;
+ int svn_ra_svn__write_cmd_change_rev_prop2 (int *,int *,int ,char const*,int const*,scalar_t__,int const*) ;
 
 __attribute__((used)) static svn_error_t *ra_svn_change_rev_prop(svn_ra_session_t *session, svn_revnum_t rev,
                                            const char *name,
@@ -54,7 +54,7 @@ __attribute__((used)) static svn_error_t *ra_svn_change_rev_prop(svn_ra_session_
 
   if (old_value_p)
     {
-      /* How did you get past the same check in svn_ra_change_rev_prop2()? */
+
       SVN_ERR_ASSERT(has_atomic_revprops);
 
       dont_care = FALSE;
@@ -63,7 +63,7 @@ __attribute__((used)) static svn_error_t *ra_svn_change_rev_prop(svn_ra_session_
   else
     {
       dont_care = TRUE;
-      old_value = NULL;
+      old_value = ((void*)0);
     }
 
   if (has_atomic_revprops)

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct cvpxpic_ctx {int /*<<< orphan*/  nb_fields; int /*<<< orphan*/  on_released_data; int /*<<< orphan*/  cvpx; int /*<<< orphan*/  (* on_released_cb ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;int /*<<< orphan*/  rc; } ;
-typedef  int /*<<< orphan*/  picture_context_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CFRelease (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ vlc_atomic_rc_dec (int /*<<< orphan*/ *) ; 
+
+
+
+struct cvpxpic_ctx {int nb_fields; int on_released_data; int cvpx; int (* on_released_cb ) (int ,int ,int ) ;int rc; } ;
+typedef int picture_context_t ;
+
+
+ int CFRelease (int ) ;
+ int free (int *) ;
+ int stub1 (int ,int ,int ) ;
+ scalar_t__ vlc_atomic_rc_dec (int *) ;
 
 __attribute__((used)) static void
 cvpxpic_destroy_cb(picture_context_t *opaque)

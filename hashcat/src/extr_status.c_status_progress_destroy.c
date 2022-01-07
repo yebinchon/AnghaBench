@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/ * words_progress_restored; int /*<<< orphan*/ * words_progress_rejected; int /*<<< orphan*/ * words_progress_done; } ;
-typedef  TYPE_1__ status_ctx_t ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int * words_progress_restored; int * words_progress_rejected; int * words_progress_done; } ;
+typedef TYPE_1__ status_ctx_t ;
 struct TYPE_5__ {TYPE_1__* status_ctx; } ;
-typedef  TYPE_2__ hashcat_ctx_t ;
+typedef TYPE_2__ hashcat_ctx_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  hcfree (int /*<<< orphan*/ *) ; 
+
+ int hcfree (int *) ;
 
 void status_progress_destroy (hashcat_ctx_t *hashcat_ctx)
 {
@@ -28,7 +28,7 @@ void status_progress_destroy (hashcat_ctx_t *hashcat_ctx)
   hcfree (status_ctx->words_progress_rejected);
   hcfree (status_ctx->words_progress_restored);
 
-  status_ctx->words_progress_done     = NULL;
-  status_ctx->words_progress_rejected = NULL;
-  status_ctx->words_progress_restored = NULL;
+  status_ctx->words_progress_done = ((void*)0);
+  status_ctx->words_progress_rejected = ((void*)0);
+  status_ctx->words_progress_restored = ((void*)0);
 }

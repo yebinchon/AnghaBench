@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  native_suffixW ;
-typedef  int /*<<< orphan*/  native_prefixW ;
-typedef  int /*<<< orphan*/  jsstr_t ;
-typedef  char WCHAR ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int native_suffixW ;
+typedef int native_prefixW ;
+typedef int jsstr_t ;
+typedef char WCHAR ;
 struct TYPE_2__ {char const* name; } ;
-typedef  TYPE_1__ NativeFunction ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  FunctionInstance ;
-typedef  int DWORD ;
+typedef TYPE_1__ NativeFunction ;
+typedef int HRESULT ;
+typedef int FunctionInstance ;
+typedef int DWORD ;
 
-/* Variables and functions */
- scalar_t__ ARRAY_SIZE (char const*) ; 
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/ * jsstr_alloc_buf (scalar_t__,char**) ; 
- int lstrlenW (char const*) ; 
- int /*<<< orphan*/  memcpy (char*,char const*,int) ; 
+
+ scalar_t__ ARRAY_SIZE (char const*) ;
+ int E_OUTOFMEMORY ;
+ int S_OK ;
+ int * jsstr_alloc_buf (scalar_t__,char**) ;
+ int lstrlenW (char const*) ;
+ int memcpy (char*,char const*,int) ;
 
 __attribute__((used)) static HRESULT NativeFunction_toString(FunctionInstance *func, jsstr_t **ret)
 {

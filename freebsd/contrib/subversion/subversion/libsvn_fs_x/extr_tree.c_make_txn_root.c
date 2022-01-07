@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_fs_x__txn_id_t ;
-typedef  int /*<<< orphan*/  svn_fs_t ;
-struct TYPE_6__ {TYPE_2__* fsap_data; int /*<<< orphan*/  rev; int /*<<< orphan*/  txn_flags; int /*<<< orphan*/  pool; int /*<<< orphan*/  txn; int /*<<< orphan*/  is_txn_root; } ;
-typedef  TYPE_1__ svn_fs_root_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct TYPE_7__ {int /*<<< orphan*/  txn_id; } ;
-typedef  TYPE_2__ fs_txn_root_data_t ;
-typedef  int /*<<< orphan*/  apr_uint32_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  TRUE ; 
- TYPE_2__* apr_pcalloc (int /*<<< orphan*/ ,int) ; 
- TYPE_1__* make_root (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_fs_x__txn_name (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int svn_revnum_t ;
+typedef int svn_fs_x__txn_id_t ;
+typedef int svn_fs_t ;
+struct TYPE_6__ {TYPE_2__* fsap_data; int rev; int txn_flags; int pool; int txn; int is_txn_root; } ;
+typedef TYPE_1__ svn_fs_root_t ;
+typedef int svn_error_t ;
+struct TYPE_7__ {int txn_id; } ;
+typedef TYPE_2__ fs_txn_root_data_t ;
+typedef int apr_uint32_t ;
+typedef int apr_pool_t ;
+
+
+ int * SVN_NO_ERROR ;
+ int TRUE ;
+ TYPE_2__* apr_pcalloc (int ,int) ;
+ TYPE_1__* make_root (int *,int *) ;
+ int svn_fs_x__txn_name (int ,int ) ;
 
 __attribute__((used)) static svn_error_t *
 make_txn_root(svn_fs_root_t **root_p,

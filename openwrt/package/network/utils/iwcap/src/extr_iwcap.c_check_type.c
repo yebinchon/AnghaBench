@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {scalar_t__ sa_family; } ;
-struct ifreq {TYPE_1__ ifr_hwaddr; int /*<<< orphan*/  ifr_name; } ;
+struct ifreq {TYPE_1__ ifr_hwaddr; int ifr_name; } ;
 
-/* Variables and functions */
- scalar_t__ ARPHRD_IEEE80211_RADIOTAP ; 
- int /*<<< orphan*/  IFNAMSIZ ; 
- int /*<<< orphan*/  SIOCGIFHWADDR ; 
- int /*<<< orphan*/  capture_sock ; 
- int /*<<< orphan*/  ifname ; 
- scalar_t__ ioctl (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct ifreq*) ; 
- int /*<<< orphan*/  strncpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ ARPHRD_IEEE80211_RADIOTAP ;
+ int IFNAMSIZ ;
+ int SIOCGIFHWADDR ;
+ int capture_sock ;
+ int ifname ;
+ scalar_t__ ioctl (int ,int ,struct ifreq*) ;
+ int strncpy (int ,int ,int ) ;
 
 int check_type(void)
 {
-	struct ifreq ifr;
+ struct ifreq ifr;
 
-	strncpy(ifr.ifr_name, ifname, IFNAMSIZ);
+ strncpy(ifr.ifr_name, ifname, IFNAMSIZ);
 
-	if (ioctl(capture_sock, SIOCGIFHWADDR, &ifr) < 0)
-		return -1;
+ if (ioctl(capture_sock, SIOCGIFHWADDR, &ifr) < 0)
+  return -1;
 
-	return (ifr.ifr_hwaddr.sa_family == ARPHRD_IEEE80211_RADIOTAP);
+ return (ifr.ifr_hwaddr.sa_family == ARPHRD_IEEE80211_RADIOTAP);
 }

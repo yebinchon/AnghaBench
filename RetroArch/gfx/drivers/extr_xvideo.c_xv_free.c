@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_4__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  shmid; int /*<<< orphan*/  shmaddr; } ;
-struct TYPE_6__ {scalar_t__ font; TYPE_1__* font_driver; struct TYPE_6__* vtable; struct TYPE_6__* utable; struct TYPE_6__* ytable; int /*<<< orphan*/  image; TYPE_4__ shminfo; } ;
-typedef  TYPE_2__ xv_t ;
-struct TYPE_5__ {int /*<<< orphan*/  (* free ) (scalar_t__) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IPC_RMID ; 
- int /*<<< orphan*/  XCloseDisplay (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XFree (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XShmDetach (int /*<<< orphan*/ ,TYPE_4__*) ; 
- int /*<<< orphan*/  free (TYPE_2__*) ; 
- int /*<<< orphan*/  g_x11_dpy ; 
- int /*<<< orphan*/  shmctl (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  shmdt (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 (scalar_t__) ; 
- int /*<<< orphan*/  x11_colormap_destroy () ; 
- int /*<<< orphan*/  x11_input_ctx_destroy () ; 
- int /*<<< orphan*/  x11_window_destroy (int) ; 
+
+typedef struct TYPE_7__ TYPE_4__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int shmid; int shmaddr; } ;
+struct TYPE_6__ {scalar_t__ font; TYPE_1__* font_driver; struct TYPE_6__* vtable; struct TYPE_6__* utable; struct TYPE_6__* ytable; int image; TYPE_4__ shminfo; } ;
+typedef TYPE_2__ xv_t ;
+struct TYPE_5__ {int (* free ) (scalar_t__) ;} ;
+
+
+ int IPC_RMID ;
+ int XCloseDisplay (int ) ;
+ int XFree (int ) ;
+ int XShmDetach (int ,TYPE_4__*) ;
+ int free (TYPE_2__*) ;
+ int g_x11_dpy ;
+ int shmctl (int ,int ,int *) ;
+ int shmdt (int ) ;
+ int stub1 (scalar_t__) ;
+ int x11_colormap_destroy () ;
+ int x11_input_ctx_destroy () ;
+ int x11_window_destroy (int) ;
 
 __attribute__((used)) static void xv_free(void *data)
 {
@@ -43,10 +43,10 @@ __attribute__((used)) static void xv_free(void *data)
 
    XShmDetach(g_x11_dpy, &xv->shminfo);
    shmdt(xv->shminfo.shmaddr);
-   shmctl(xv->shminfo.shmid, IPC_RMID, NULL);
+   shmctl(xv->shminfo.shmid, IPC_RMID, ((void*)0));
    XFree(xv->image);
 
-   x11_window_destroy(true);
+   x11_window_destroy(1);
    x11_colormap_destroy();
 
    XCloseDisplay(g_x11_dpy);

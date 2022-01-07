@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct x509_pm {int /*<<< orphan*/ * ex_crt; } ;
-struct ssl_pm {int /*<<< orphan*/  ssl; } ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct x509_pm {int * ex_crt; } ;
+struct ssl_pm {int ssl; } ;
 struct TYPE_7__ {TYPE_2__* session; scalar_t__ ssl_pm; } ;
 struct TYPE_6__ {TYPE_1__* peer; } ;
 struct TYPE_5__ {scalar_t__ x509_pm; } ;
-typedef  TYPE_3__ SSL ;
+typedef TYPE_3__ SSL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SSL_DEBUG (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  SSL_PLATFORM_ERROR_LEVEL ; 
- int mbedtls_ssl_close_notify (int /*<<< orphan*/ *) ; 
+
+ int SSL_DEBUG (int ,char*,int) ;
+ int SSL_PLATFORM_ERROR_LEVEL ;
+ int mbedtls_ssl_close_notify (int *) ;
 
 int ssl_pm_shutdown(SSL *ssl)
 {
@@ -37,7 +37,7 @@ int ssl_pm_shutdown(SSL *ssl)
     } else {
         struct x509_pm *x509_pm = (struct x509_pm *)ssl->session->peer->x509_pm;
 
-        x509_pm->ex_crt = NULL;
+        x509_pm->ex_crt = ((void*)0);
     }
 
     return ret;

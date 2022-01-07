@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  zval ;
-typedef  int /*<<< orphan*/  zend_string ;
-typedef  int /*<<< orphan*/  RedisSock ;
 
-/* Variables and functions */
- int SUCCESS ; 
- int ZSTR_LEN (int /*<<< orphan*/ *) ; 
- char* ZSTR_VAL (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  add_assoc_double_ex (int /*<<< orphan*/ *,char*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  atof (char*) ; 
- int /*<<< orphan*/  efree (char*) ; 
- char* redis_sock_read (int /*<<< orphan*/ *,int*) ; 
- scalar_t__ redis_unpack (int /*<<< orphan*/ *,char*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  zend_string_release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  zval_dtor (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * zval_get_string (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int zval ;
+typedef int zend_string ;
+typedef int RedisSock ;
+
+
+ int SUCCESS ;
+ int ZSTR_LEN (int *) ;
+ char* ZSTR_VAL (int *) ;
+ int add_assoc_double_ex (int *,char*,int,int ) ;
+ int atof (char*) ;
+ int efree (char*) ;
+ char* redis_sock_read (int *,int*) ;
+ scalar_t__ redis_unpack (int *,char*,int,int *) ;
+ int zend_string_release (int *) ;
+ int zval_dtor (int *) ;
+ int * zval_get_string (int *) ;
 
 int mbulk_resp_loop_zipdbl(RedisSock *redis_sock, zval *z_result,
                            long long count, void *ctx)
 {
-    char *line, *key = NULL;
+    char *line, *key = ((void*)0);
     int line_len, key_len = 0;
     long long idx = 0;
 
-    // Our context will need to be divisible by 2
+
     if (count %2 != 0) {
         return -1;
     }
 
-    // While we have elements
+
     while (count--) {
         line = redis_sock_read(redis_sock, &line_len);
-        if (line != NULL) {
+        if (line != ((void*)0)) {
             if (idx++ % 2 == 0) {
                 key = line;
                 key_len = line_len;
@@ -57,7 +57,7 @@ int mbulk_resp_loop_zipdbl(RedisSock *redis_sock, zval *z_result,
                     add_assoc_double_ex(z_result, key, key_len, atof(line));
                 }
 
-                /* Free our key and line */
+
                 efree(key);
                 efree(line);
             }

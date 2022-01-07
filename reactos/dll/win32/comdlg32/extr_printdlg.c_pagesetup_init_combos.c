@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  pagesetup_data ;
-typedef  int /*<<< orphan*/  LPWSTR ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  int /*<<< orphan*/  DEVMODEW ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PRINTDLG_SetUpPaperComboBoxW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PRINTDLG_SetUpPrinterListComboW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cmb1 ; 
- int /*<<< orphan*/  cmb2 ; 
- int /*<<< orphan*/  cmb3 ; 
- int /*<<< orphan*/ * pagesetup_get_devmode (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pagesetup_get_devname (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pagesetup_get_portname (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pagesetup_release_a_devname (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pagesetup_release_devmode (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int pagesetup_data ;
+typedef int LPWSTR ;
+typedef int HWND ;
+typedef int DEVMODEW ;
+
+
+ int PRINTDLG_SetUpPaperComboBoxW (int ,int ,int ,int ,int *) ;
+ int PRINTDLG_SetUpPrinterListComboW (int ,int ,int ) ;
+ int cmb1 ;
+ int cmb2 ;
+ int cmb3 ;
+ int * pagesetup_get_devmode (int *) ;
+ int pagesetup_get_devname (int *) ;
+ int pagesetup_get_portname (int *) ;
+ int pagesetup_release_a_devname (int *,int ) ;
+ int pagesetup_release_devmode (int *,int *) ;
 
 __attribute__((used)) static void pagesetup_init_combos(HWND hDlg, pagesetup_data *data)
 {
     DEVMODEW *dm;
     LPWSTR devname, portname;
 
-    dm       = pagesetup_get_devmode(data);
-    devname  = pagesetup_get_devname(data);
+    dm = pagesetup_get_devmode(data);
+    devname = pagesetup_get_devname(data);
     portname = pagesetup_get_portname(data);
 
     PRINTDLG_SetUpPrinterListComboW(hDlg, cmb1, devname);

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct etnaviv_gem_object {int /*<<< orphan*/  vaddr; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  put_pages (struct etnaviv_gem_object*) ; 
- int /*<<< orphan*/  vunmap (int /*<<< orphan*/ ) ; 
+
+
+
+struct etnaviv_gem_object {int vaddr; } ;
+
+
+ int put_pages (struct etnaviv_gem_object*) ;
+ int vunmap (int ) ;
 
 __attribute__((used)) static void etnaviv_gem_shmem_release(struct etnaviv_gem_object *etnaviv_obj)
 {
-	vunmap(etnaviv_obj->vaddr);
-	put_pages(etnaviv_obj);
+ vunmap(etnaviv_obj->vaddr);
+ put_pages(etnaviv_obj);
 }

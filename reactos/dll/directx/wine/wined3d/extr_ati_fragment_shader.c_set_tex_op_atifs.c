@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct wined3d_state {int /*<<< orphan*/ * textures; } ;
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct wined3d_state {int * textures; } ;
 struct wined3d_gl_info {int dummy; } ;
 struct wined3d_device {struct atifs_private_data* fragment_priv; } ;
 struct TYPE_4__ {unsigned int ffp_blend_stages; } ;
 struct wined3d_d3d_info {TYPE_1__ limits; } ;
 struct wined3d_context {scalar_t__* tex_unit_map; struct atifs_context_private_data* fragment_pipe_data; struct wined3d_d3d_info* d3d_info; struct wined3d_gl_info* gl_info; struct wined3d_device* device; } ;
 struct ffp_frag_settings {TYPE_2__* op; } ;
-struct atifs_private_data {int /*<<< orphan*/  fragment_shaders; } ;
+struct atifs_private_data {int fragment_shaders; } ;
 struct TYPE_6__ {struct ffp_frag_settings settings; } ;
-typedef  struct atifs_ffp_desc {unsigned int num_textures_used; int* constants; int /*<<< orphan*/  shader; TYPE_3__ parent; } const atifs_ffp_desc ;
+typedef struct atifs_ffp_desc {unsigned int num_textures_used; int* constants; int shader; TYPE_3__ parent; } const atifs_ffp_desc ;
 struct atifs_context_private_data {struct atifs_ffp_desc const* last_shader; } ;
 struct TYPE_5__ {scalar_t__ cop; } ;
-typedef  scalar_t__ DWORD ;
+typedef scalar_t__ DWORD ;
 
-/* Variables and functions */
-#define  ATIFS_CONSTANT_BUMP 130 
-#define  ATIFS_CONSTANT_STAGE 129 
-#define  ATIFS_CONSTANT_TFACTOR 128 
- int /*<<< orphan*/  ERR (char*,...) ; 
- int /*<<< orphan*/  GL_EXTCALL (int /*<<< orphan*/ ) ; 
- unsigned int MAX_TEXTURES ; 
- int /*<<< orphan*/  STATE_RENDER (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  STATE_TEXTURESTAGE (unsigned int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,struct atifs_ffp_desc const*) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  WINED3D_RS_TEXTUREFACTOR ; 
- scalar_t__ WINED3D_TOP_DISABLE ; 
- int /*<<< orphan*/  WINED3D_TSS_BUMPENV_MAT00 ; 
- int /*<<< orphan*/  WINED3D_TSS_CONSTANT ; 
- scalar_t__ WINED3D_UNMAPPED_STAGE ; 
- int /*<<< orphan*/  add_ffp_frag_shader (int /*<<< orphan*/ *,TYPE_3__*) ; 
- int /*<<< orphan*/  atifs_stage_constant (struct wined3d_context*,struct wined3d_state const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  atifs_tfactor (struct wined3d_context*,struct wined3d_state const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  context_active_texture (struct wined3d_context*,struct wined3d_gl_info const*,scalar_t__) ; 
- scalar_t__ find_ffp_frag_shader (int /*<<< orphan*/ *,struct ffp_frag_settings*) ; 
- int /*<<< orphan*/  gen_ati_shader (TYPE_2__*,struct wined3d_gl_info const*,int*) ; 
- int /*<<< orphan*/  gen_ffp_frag_op (struct wined3d_context*,struct wined3d_state const*,struct ffp_frag_settings*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glBindFragmentShaderATI (int /*<<< orphan*/ ) ; 
- struct atifs_ffp_desc const* heap_alloc_zero (int) ; 
- int /*<<< orphan*/  set_bumpmat (struct wined3d_context*,struct wined3d_state const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  texture_activate_dimensions (int /*<<< orphan*/ ,struct wined3d_gl_info const*) ; 
+
+
+
+
+ int ERR (char*,...) ;
+ int GL_EXTCALL (int ) ;
+ unsigned int MAX_TEXTURES ;
+ int STATE_RENDER (int ) ;
+ int STATE_TEXTURESTAGE (unsigned int,int ) ;
+ int TRACE (char*,struct atifs_ffp_desc const*) ;
+ int TRUE ;
+ int WINED3D_RS_TEXTUREFACTOR ;
+ scalar_t__ WINED3D_TOP_DISABLE ;
+ int WINED3D_TSS_BUMPENV_MAT00 ;
+ int WINED3D_TSS_CONSTANT ;
+ scalar_t__ WINED3D_UNMAPPED_STAGE ;
+ int add_ffp_frag_shader (int *,TYPE_3__*) ;
+ int atifs_stage_constant (struct wined3d_context*,struct wined3d_state const*,int ) ;
+ int atifs_tfactor (struct wined3d_context*,struct wined3d_state const*,int ) ;
+ int context_active_texture (struct wined3d_context*,struct wined3d_gl_info const*,scalar_t__) ;
+ scalar_t__ find_ffp_frag_shader (int *,struct ffp_frag_settings*) ;
+ int gen_ati_shader (TYPE_2__*,struct wined3d_gl_info const*,int*) ;
+ int gen_ffp_frag_op (struct wined3d_context*,struct wined3d_state const*,struct ffp_frag_settings*,int ) ;
+ int glBindFragmentShaderATI (int ) ;
+ struct atifs_ffp_desc const* heap_alloc_zero (int) ;
+ int set_bumpmat (struct wined3d_context*,struct wined3d_state const*,int ) ;
+ int texture_activate_dimensions (int ,struct wined3d_gl_info const*) ;
 
 __attribute__((used)) static void set_tex_op_atifs(struct wined3d_context *context, const struct wined3d_state *state, DWORD state_id)
 {
@@ -93,9 +93,9 @@ __attribute__((used)) static void set_tex_op_atifs(struct wined3d_context *conte
         desc = new_desc;
     }
 
-    /* GL_ATI_fragment_shader depends on the GL_TEXTURE_xD enable settings. Update the texture stages
-     * used by this shader
-     */
+
+
+
     for (i = 0; i < desc->num_textures_used; ++i)
     {
         mapped_stage = context->tex_unit_map[i];
@@ -116,15 +116,15 @@ __attribute__((used)) static void set_tex_op_atifs(struct wined3d_context *conte
 
         switch (desc->constants[i])
         {
-            case ATIFS_CONSTANT_BUMP:
+            case 130:
                 set_bumpmat(context, state, STATE_TEXTURESTAGE(i, WINED3D_TSS_BUMPENV_MAT00));
                 break;
 
-            case ATIFS_CONSTANT_TFACTOR:
+            case 128:
                 atifs_tfactor(context, state, STATE_RENDER(WINED3D_RS_TEXTUREFACTOR));
                 break;
 
-            case ATIFS_CONSTANT_STAGE:
+            case 129:
                 atifs_stage_constant(context, state, STATE_TEXTURESTAGE(i, WINED3D_TSS_CONSTANT));
                 break;
 

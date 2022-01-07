@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct ra_hwdec_mapper {int /*<<< orphan*/ * tex; int /*<<< orphan*/  ra; struct priv* priv; } ;
-struct priv {int /*<<< orphan*/ * rtarget; scalar_t__ texture; scalar_t__ rtarget_h; scalar_t__ device_h; } ;
-struct TYPE_3__ {int /*<<< orphan*/  (* DeleteTextures ) (int,scalar_t__*) ;int /*<<< orphan*/  (* DXUnregisterObjectNV ) (scalar_t__,scalar_t__) ;int /*<<< orphan*/  (* DXUnlockObjectsNV ) (scalar_t__,int,scalar_t__*) ;} ;
-typedef  TYPE_1__ GL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IDirect3DSurface9_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  MP_ERR (struct ra_hwdec_mapper*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mp_LastError_to_str () ; 
- TYPE_1__* ra_gl_get (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ra_tex_free (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub1 (scalar_t__,int,scalar_t__*) ; 
- int /*<<< orphan*/  stub2 (scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  stub3 (int,scalar_t__*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct ra_hwdec_mapper {int * tex; int ra; struct priv* priv; } ;
+struct priv {int * rtarget; scalar_t__ texture; scalar_t__ rtarget_h; scalar_t__ device_h; } ;
+struct TYPE_3__ {int (* DeleteTextures ) (int,scalar_t__*) ;int (* DXUnregisterObjectNV ) (scalar_t__,scalar_t__) ;int (* DXUnlockObjectsNV ) (scalar_t__,int,scalar_t__*) ;} ;
+typedef TYPE_1__ GL ;
+
+
+ int IDirect3DSurface9_Release (int *) ;
+ int MP_ERR (struct ra_hwdec_mapper*,char*,int ) ;
+ int mp_LastError_to_str () ;
+ TYPE_1__* ra_gl_get (int ) ;
+ int ra_tex_free (int ,int *) ;
+ int stub1 (scalar_t__,int,scalar_t__*) ;
+ int stub2 (scalar_t__,scalar_t__) ;
+ int stub3 (int,scalar_t__*) ;
 
 __attribute__((used)) static void mapper_uninit(struct ra_hwdec_mapper *mapper)
 {
@@ -52,7 +52,7 @@ __attribute__((used)) static void mapper_uninit(struct ra_hwdec_mapper *mapper)
 
     if (p->rtarget) {
         IDirect3DSurface9_Release(p->rtarget);
-        p->rtarget = NULL;
+        p->rtarget = ((void*)0);
     }
 
     ra_tex_free(mapper->ra, &mapper->tex[0]);

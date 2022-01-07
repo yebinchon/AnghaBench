@@ -1,20 +1,12 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int __cvmx_helper_initialize_fpa_pool (int,int,int,char*) ; 
- int /*<<< orphan*/  cvmx_dprintf (char*,int) ; 
- int /*<<< orphan*/  cvmx_fpa_enable () ; 
+ int __cvmx_helper_initialize_fpa_pool (int,int,int,char*) ;
+ int cvmx_dprintf (char*,int) ;
+ int cvmx_fpa_enable () ;
 
 __attribute__((used)) static int __cvmx_helper_initialize_fpa(int pip_pool, int pip_size, int pip_buffers,
                                         int wqe_pool, int wqe_size, int wqe_entries,

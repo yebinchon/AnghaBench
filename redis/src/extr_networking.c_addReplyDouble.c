@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sbuf ;
-typedef  int /*<<< orphan*/  dbuf ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int sbuf ;
+typedef int dbuf ;
 struct TYPE_5__ {int resp; } ;
-typedef  TYPE_1__ client ;
+typedef TYPE_1__ client ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MAX_LONG_DOUBLE_CHARS ; 
- int /*<<< orphan*/  addReplyBulkCString (TYPE_1__*,char*) ; 
- int /*<<< orphan*/  addReplyProto (TYPE_1__*,char*,int) ; 
- scalar_t__ isinf (double) ; 
- int snprintf (char*,int,char*,double,...) ; 
+
+ int MAX_LONG_DOUBLE_CHARS ;
+ int addReplyBulkCString (TYPE_1__*,char*) ;
+ int addReplyProto (TYPE_1__*,char*,int) ;
+ scalar_t__ isinf (double) ;
+ int snprintf (char*,int,char*,double,...) ;
 
 void addReplyDouble(client *c, double d) {
     if (isinf(d)) {
-        /* Libc in odd systems (Hi Solaris!) will format infinite in a
-         * different way, so better to handle it in an explicit way. */
+
+
         if (c->resp == 2) {
             addReplyBulkCString(c, d > 0 ? "inf" : "-inf");
         } else {

@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SEEK_END ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int fread (char*,int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  fseek (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int ftell (int /*<<< orphan*/ *) ; 
- scalar_t__ malloc (int) ; 
+
+
+
+typedef int FILE ;
+
+
+ int SEEK_END ;
+ int SEEK_SET ;
+ int fclose (int *) ;
+ int * fopen (char*,char*) ;
+ int fread (char*,int,int,int *) ;
+ int free (char*) ;
+ int fseek (int *,int ,int ) ;
+ int ftell (int *) ;
+ scalar_t__ malloc (int) ;
 
 int load_file(char *filename, char **result)
 {
     int size = 0;
     FILE *f = fopen(filename, "rb");
 
-    if (f == NULL) {
-        *result = NULL;
-        return -1; // -1 means file opening fail
+    if (f == ((void*)0)) {
+        *result = ((void*)0);
+        return -1;
     }
 
     fseek(f, 0, SEEK_END);
@@ -41,7 +41,7 @@ int load_file(char *filename, char **result)
     if (size != fread(*result, sizeof(char), size, f)) {
         free(*result);
         fclose(f);
-        return -2; // -2 means file reading fail
+        return -2;
     }
 
     fclose(f);

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  DumpableObject ;
-typedef  size_t DumpId ;
 
-/* Variables and functions */
- size_t allocedDumpIds ; 
- int /*<<< orphan*/ ** dumpIdMap ; 
+
+
+
+typedef int DumpableObject ;
+typedef size_t DumpId ;
+
+
+ size_t allocedDumpIds ;
+ int ** dumpIdMap ;
 
 DumpableObject *
 findObjectByDumpId(DumpId dumpId)
 {
-	if (dumpId <= 0 || dumpId >= allocedDumpIds)
-		return NULL;			/* out of range? */
-	return dumpIdMap[dumpId];
+ if (dumpId <= 0 || dumpId >= allocedDumpIds)
+  return ((void*)0);
+ return dumpIdMap[dumpId];
 }

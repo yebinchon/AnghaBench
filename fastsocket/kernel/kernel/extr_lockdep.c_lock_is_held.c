@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct lockdep_map {int dummy; } ;
 struct TYPE_2__ {int lockdep_recursion; } ;
 
-/* Variables and functions */
- int __lock_is_held (struct lockdep_map*) ; 
- int /*<<< orphan*/  check_flags (unsigned long) ; 
- TYPE_1__* current ; 
- int /*<<< orphan*/  raw_local_irq_restore (unsigned long) ; 
- int /*<<< orphan*/  raw_local_irq_save (unsigned long) ; 
- scalar_t__ unlikely (int) ; 
+
+ int __lock_is_held (struct lockdep_map*) ;
+ int check_flags (unsigned long) ;
+ TYPE_1__* current ;
+ int raw_local_irq_restore (unsigned long) ;
+ int raw_local_irq_save (unsigned long) ;
+ scalar_t__ unlikely (int) ;
 
 int lock_is_held(struct lockdep_map *lock)
 {
-	unsigned long flags;
-	int ret = 0;
+ unsigned long flags;
+ int ret = 0;
 
-	if (unlikely(current->lockdep_recursion))
-		return ret;
+ if (unlikely(current->lockdep_recursion))
+  return ret;
 
-	raw_local_irq_save(flags);
-	check_flags(flags);
+ raw_local_irq_save(flags);
+ check_flags(flags);
 
-	current->lockdep_recursion = 1;
-	ret = __lock_is_held(lock);
-	current->lockdep_recursion = 0;
-	raw_local_irq_restore(flags);
+ current->lockdep_recursion = 1;
+ ret = __lock_is_held(lock);
+ current->lockdep_recursion = 0;
+ raw_local_irq_restore(flags);
 
-	return ret;
+ return ret;
 }

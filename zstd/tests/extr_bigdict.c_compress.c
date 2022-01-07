@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {void* member_0; size_t member_1; scalar_t__ pos; int /*<<< orphan*/  member_2; } ;
-typedef  TYPE_1__ ZSTD_outBuffer ;
-struct TYPE_8__ {void const* member_0; size_t member_1; scalar_t__ pos; scalar_t__ size; int /*<<< orphan*/  member_2; } ;
-typedef  TYPE_2__ ZSTD_inBuffer ;
-typedef  int /*<<< orphan*/  ZSTD_EndDirective ;
-typedef  int /*<<< orphan*/  ZSTD_DCtx ;
-typedef  int /*<<< orphan*/  ZSTD_CCtx ;
 
-/* Variables and functions */
- size_t ZSTD_compressStream2 (int /*<<< orphan*/ *,TYPE_1__*,TYPE_2__*,int /*<<< orphan*/ ) ; 
- size_t ZSTD_decompressStream (int /*<<< orphan*/ *,TYPE_1__*,TYPE_2__*) ; 
- int /*<<< orphan*/  ZSTD_e_end ; 
- char* ZSTD_getErrorName (size_t) ; 
- scalar_t__ ZSTD_isError (size_t) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  stderr ; 
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {void* member_0; size_t member_1; scalar_t__ pos; int member_2; } ;
+typedef TYPE_1__ ZSTD_outBuffer ;
+struct TYPE_8__ {void const* member_0; size_t member_1; scalar_t__ pos; scalar_t__ size; int member_2; } ;
+typedef TYPE_2__ ZSTD_inBuffer ;
+typedef int ZSTD_EndDirective ;
+typedef int ZSTD_DCtx ;
+typedef int ZSTD_CCtx ;
+
+
+ size_t ZSTD_compressStream2 (int *,TYPE_1__*,TYPE_2__*,int ) ;
+ size_t ZSTD_decompressStream (int *,TYPE_1__*,TYPE_2__*) ;
+ int ZSTD_e_end ;
+ char* ZSTD_getErrorName (size_t) ;
+ scalar_t__ ZSTD_isError (size_t) ;
+ int fprintf (int ,char*,...) ;
+ int stderr ;
 
 __attribute__((used)) static int
 compress(ZSTD_CCtx* cctx, ZSTD_DCtx* dctx,

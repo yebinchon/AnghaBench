@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sz_text_sitemap ;
-typedef  int /*<<< orphan*/  stream_t ;
-struct TYPE_8__ {int /*<<< orphan*/  buf; } ;
-typedef  TYPE_1__ strbuf_t ;
-typedef  int /*<<< orphan*/  insert_type_t ;
-typedef  int /*<<< orphan*/  HHInfo ;
-typedef  int /*<<< orphan*/  ContentItem ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INSERT_CHILD ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  _strnicmp (int /*<<< orphan*/ ,char*,int) ; 
- char* get_attr (int /*<<< orphan*/ ,char*,int*) ; 
- int /*<<< orphan*/  get_node_name (TYPE_1__*,TYPE_1__*) ; 
- int /*<<< orphan*/ * insert_item (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcmp (char const*,char const*,int) ; 
- scalar_t__ next_node (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/ * parse_sitemap_object (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strbuf_free (TYPE_1__*) ; 
- int /*<<< orphan*/  strbuf_init (TYPE_1__*) ; 
- int /*<<< orphan*/  strbuf_zero (TYPE_1__*) ; 
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int sz_text_sitemap ;
+typedef int stream_t ;
+struct TYPE_8__ {int buf; } ;
+typedef TYPE_1__ strbuf_t ;
+typedef int insert_type_t ;
+typedef int HHInfo ;
+typedef int ContentItem ;
+
+
+ int INSERT_CHILD ;
+ int TRACE (char*,int ) ;
+ int _strnicmp (int ,char*,int) ;
+ char* get_attr (int ,char*,int*) ;
+ int get_node_name (TYPE_1__*,TYPE_1__*) ;
+ int * insert_item (int *,int *,int ) ;
+ int memcmp (char const*,char const*,int) ;
+ scalar_t__ next_node (int *,TYPE_1__*) ;
+ int * parse_sitemap_object (int *,int *,int *,int *) ;
+ int strbuf_free (TYPE_1__*) ;
+ int strbuf_init (TYPE_1__*) ;
+ int strbuf_zero (TYPE_1__*) ;
 
 __attribute__((used)) static ContentItem *parse_ul(HHInfo *info, stream_t *stream, ContentItem *hhc_root)
 {
     strbuf_t node, node_name;
-    ContentItem *ret = NULL, *prev = NULL, *new_item = NULL;
+    ContentItem *ret = ((void*)0), *prev = ((void*)0), *new_item = ((void*)0);
     insert_type_t it;
 
     strbuf_init(&node);

@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  gint64 ;
+
+
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int gint64 ;
 struct TYPE_11__ {TYPE_1__* http_tx_mgr; } ;
-struct TYPE_10__ {int /*<<< orphan*/  error_code; void* success; void* is_deleted; int /*<<< orphan*/  token; int /*<<< orphan*/  repo_id; int /*<<< orphan*/  host; int /*<<< orphan*/  use_fileserver_port; } ;
-struct TYPE_9__ {void* release; int /*<<< orphan*/ * curl; } ;
-struct TYPE_8__ {int /*<<< orphan*/ * priv; } ;
-typedef  int /*<<< orphan*/  HttpTxPriv ;
-typedef  int /*<<< orphan*/  ConnectionPool ;
-typedef  TYPE_2__ Connection ;
-typedef  TYPE_3__ CheckHeadData ;
-typedef  int /*<<< orphan*/  CURL ;
+struct TYPE_10__ {int error_code; void* success; void* is_deleted; int token; int repo_id; int host; int use_fileserver_port; } ;
+struct TYPE_9__ {void* release; int * curl; } ;
+struct TYPE_8__ {int * priv; } ;
+typedef int HttpTxPriv ;
+typedef int ConnectionPool ;
+typedef TYPE_2__ Connection ;
+typedef TYPE_3__ CheckHeadData ;
+typedef int CURL ;
 
-/* Variables and functions */
- int HTTP_OK ; 
- int HTTP_REPO_DELETED ; 
- void* TRUE ; 
- TYPE_2__* connection_pool_get_connection (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  connection_pool_return_connection (int /*<<< orphan*/ *,TYPE_2__*) ; 
- int /*<<< orphan*/  curl_error_to_http_task_error (int) ; 
- int /*<<< orphan*/ * find_connection_pool (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  g_free (char*) ; 
- char* g_strdup_printf (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  http_error_to_http_task_error (int) ; 
- scalar_t__ http_get (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int*,char**,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,void*,int*) ; 
- scalar_t__ parse_head_commit_info (char*,int /*<<< orphan*/ ,TYPE_3__*) ; 
- TYPE_4__* seaf ; 
- int /*<<< orphan*/  seaf_warning (char*,char*,...) ; 
+
+ int HTTP_OK ;
+ int HTTP_REPO_DELETED ;
+ void* TRUE ;
+ TYPE_2__* connection_pool_get_connection (int *) ;
+ int connection_pool_return_connection (int *,TYPE_2__*) ;
+ int curl_error_to_http_task_error (int) ;
+ int * find_connection_pool (int *,int ) ;
+ int g_free (char*) ;
+ char* g_strdup_printf (char*,int ,int ) ;
+ int http_error_to_http_task_error (int) ;
+ scalar_t__ http_get (int *,char*,int ,int*,char**,int *,int *,int *,void*,int*) ;
+ scalar_t__ parse_head_commit_info (char*,int ,TYPE_3__*) ;
+ TYPE_4__* seaf ;
+ int seaf_warning (char*,char*,...) ;
 
 __attribute__((used)) static void *
 check_head_commit_thread (void *vdata)
@@ -51,7 +51,7 @@ check_head_commit_thread (void *vdata)
     CURL *curl;
     char *url;
     int status;
-    char *rsp_content = NULL;
+    char *rsp_content = ((void*)0);
     gint64 rsp_size;
 
     pool = find_connection_pool (priv, data->host);
@@ -77,7 +77,7 @@ check_head_commit_thread (void *vdata)
 
     int curl_error;
     if (http_get (curl, url, data->token, &status, &rsp_content, &rsp_size,
-                  NULL, NULL, TRUE, &curl_error) < 0) {
+                  ((void*)0), ((void*)0), TRUE, &curl_error) < 0) {
         conn->release = TRUE;
         data->error_code = curl_error_to_http_task_error (curl_error);
         goto out;

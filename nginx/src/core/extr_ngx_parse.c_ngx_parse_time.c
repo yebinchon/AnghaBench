@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char u_char ;
-typedef  int ngx_uint_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef char u_char ;
+typedef int ngx_uint_t ;
 struct TYPE_3__ {char* data; int len; } ;
-typedef  TYPE_1__ ngx_str_t ;
-typedef  char ngx_int_t ;
+typedef TYPE_1__ ngx_str_t ;
+typedef char ngx_int_t ;
 
-/* Variables and functions */
- char NGX_ERROR ; 
- int NGX_MAX_INT_T_VALUE ; 
+
+ char NGX_ERROR ;
+ int NGX_MAX_INT_T_VALUE ;
 
 ngx_int_t
 ngx_parse_time(ngx_str_t *line, ngx_uint_t is_sec)
 {
-    u_char      *p, *last;
-    ngx_int_t    value, total, scale;
-    ngx_int_t    max, cutoff, cutlim;
-    ngx_uint_t   valid;
+    u_char *p, *last;
+    ngx_int_t value, total, scale;
+    ngx_int_t max, cutoff, cutlim;
+    ngx_uint_t valid;
     enum {
         st_start = 0,
         st_year,

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_object_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DMX_STOP ; 
- int VLC_EGENERIC ; 
- int VLC_SUCCESS ; 
- int /*<<< orphan*/  errno ; 
- scalar_t__ ioctl (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  msg_Dbg (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  msg_Err (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vlc_close (int) ; 
- int /*<<< orphan*/  vlc_strerror_c (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int vlc_object_t ;
+
+
+ int DMX_STOP ;
+ int VLC_EGENERIC ;
+ int VLC_SUCCESS ;
+ int errno ;
+ scalar_t__ ioctl (int,int ) ;
+ int msg_Dbg (int *,char*,int) ;
+ int msg_Err (int *,char*,int ) ;
+ int vlc_close (int) ;
+ int vlc_strerror_c (int ) ;
 
 int DMXUnsetFilter( vlc_object_t *p_access, int i_fd )
 {

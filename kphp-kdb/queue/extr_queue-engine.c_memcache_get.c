@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct connection {int dummy; } ;
 struct TYPE_4__ {char* name; int ref_cnt; int ev_first; int keys_cnt; int subscr_cnt; } ;
-typedef  TYPE_1__ queue ;
-typedef  int /*<<< orphan*/  qkey ;
-typedef  int ll ;
+typedef TYPE_1__ queue ;
+typedef int qkey ;
+typedef int ll ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GET_LOG ; 
- int KEY_LEN ; 
- int /*<<< orphan*/  LOG_HISTORY ; 
- int /*<<< orphan*/  QRETURN (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Q_DEF ; 
- int /*<<< orphan*/  SET_LOG_VERBOSITY ; 
- int STATS_BUFF_SIZE ; 
- char* buf ; 
- int /*<<< orphan*/  cmd_get ; 
- int /*<<< orphan*/  dl_log_add (int /*<<< orphan*/ ,int,char*,...) ; 
- int /*<<< orphan*/  eat_at (char const*,int,char**,int*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char const*,int) ; 
- int /*<<< orphan*/  get ; 
- char* get_events_http (int /*<<< orphan*/ *) ; 
- char* get_news_key (int,long long,int,int) ; 
- TYPE_1__* get_queue (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  get_queue_alias (char*,int*) ; 
- TYPE_1__* get_queue_by_alias (int) ; 
- int /*<<< orphan*/  get_queue_news_alias (int,int*) ; 
- char* get_timestamp_key (char*,int,long long,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- char* get_watchcat_key (char*,int,long long,int) ; 
- int /*<<< orphan*/  memcpy (char*,char*,int) ; 
- double mytime () ; 
- int prepare_stats (struct connection*,char*,int) ; 
- int /*<<< orphan*/  query ; 
- int queue_prepare_stats () ; 
- int /*<<< orphan*/  return_one_key (struct connection*,char const*,char*,int) ; 
- int /*<<< orphan*/  sprintf (char*,char*,...) ; 
- int sscanf (char*,char*,int*,...) ; 
- char* stats_buff ; 
- int /*<<< orphan*/  stderr ; 
- int strlen (char*) ; 
- int /*<<< orphan*/  strncmp (char*,char*,int) ; 
- int /*<<< orphan*/  upd_secret (int) ; 
- int /*<<< orphan*/ * validate_key (char*,int,long long,int,int /*<<< orphan*/ ,char*) ; 
- int verbosity ; 
+
+ int GET_LOG ;
+ int KEY_LEN ;
+ int LOG_HISTORY ;
+ int QRETURN (int ,int ) ;
+ int Q_DEF ;
+ int SET_LOG_VERBOSITY ;
+ int STATS_BUFF_SIZE ;
+ char* buf ;
+ int cmd_get ;
+ int dl_log_add (int ,int,char*,...) ;
+ int eat_at (char const*,int,char**,int*) ;
+ int fprintf (int ,char*,char const*,int) ;
+ int get ;
+ char* get_events_http (int *) ;
+ char* get_news_key (int,long long,int,int) ;
+ TYPE_1__* get_queue (char*,int ) ;
+ int get_queue_alias (char*,int*) ;
+ TYPE_1__* get_queue_by_alias (int) ;
+ int get_queue_news_alias (int,int*) ;
+ char* get_timestamp_key (char*,int,long long,int,int *,int ) ;
+ char* get_watchcat_key (char*,int,long long,int) ;
+ int memcpy (char*,char*,int) ;
+ double mytime () ;
+ int prepare_stats (struct connection*,char*,int) ;
+ int query ;
+ int queue_prepare_stats () ;
+ int return_one_key (struct connection*,char const*,char*,int) ;
+ int sprintf (char*,char*,...) ;
+ int sscanf (char*,char*,int*,...) ;
+ char* stats_buff ;
+ int stderr ;
+ int strlen (char*) ;
+ int strncmp (char*,char*,int) ;
+ int upd_secret (int) ;
+ int * validate_key (char*,int,long long,int,int ,char*) ;
+ int verbosity ;
 
 int memcache_get (struct connection *c, const char *old_key, int old_key_len) {
   if (verbosity > 1) {
@@ -91,7 +91,7 @@ int memcache_get (struct connection *c, const char *old_key, int old_key_len) {
       memcpy (s, key + st + 1, len);
       s[len] = 0;
       dl_log_add (LOG_HISTORY, 1, "GET KEY (%s) id = %d, ip = %lld\n", s, id, ip);
-      s = get_timestamp_key (s, id, ip, timeout, NULL, Q_DEF);
+      s = get_timestamp_key (s, id, ip, timeout, ((void*)0), Q_DEF);
       return_one_key (c, old_key, s, strlen (s));
     }
 
@@ -114,7 +114,7 @@ int memcache_get (struct connection *c, const char *old_key, int old_key_len) {
       ll res;
       if (is_news) {
         ll id;
-        if (sscanf (s, "%lld", &id) != 1 || !get_queue_news_alias (id, &res)) {//TODO get alias_news(1qwerty)
+        if (sscanf (s, "%lld", &id) != 1 || !get_queue_news_alias (id, &res)) {
           QRETURN(get, 0);
         }
       } else {
@@ -136,7 +136,7 @@ int memcache_get (struct connection *c, const char *old_key, int old_key_len) {
     int st;
     if (sscanf (key, "qname_by_alias%lld%n", &id, &st) == 1 && key[st] == 0) {
       queue *q = get_queue_by_alias (id);
-      if (q != NULL) {
+      if (q != ((void*)0)) {
         sprintf (buf, "%s : ref_cnt = %d, ev_first = %p, keys_cnt = %d, subscr_cnt = %d", q->name, q->ref_cnt, q->ev_first, q->keys_cnt, q->subscr_cnt);
         return_one_key (c, old_key, buf, strlen (buf));
       }
@@ -150,7 +150,7 @@ int memcache_get (struct connection *c, const char *old_key, int old_key_len) {
       key[key_len - 1] = 0;
       char *qname = key + 11;
       queue *q = get_queue (qname, 0);
-      if (q != NULL) {
+      if (q != ((void*)0)) {
         sprintf (buf,
           "name\t%s\n"
           "ref_cnt\t%d\n"
@@ -182,7 +182,7 @@ int memcache_get (struct connection *c, const char *old_key, int old_key_len) {
       }
 
       s = get_watchcat_key (s, id, ip, timeout);
-      if (s != NULL) {
+      if (s != ((void*)0)) {
         return_one_key (c, old_key, s, strlen (s));
       }
     }
@@ -198,7 +198,7 @@ int memcache_get (struct connection *c, const char *old_key, int old_key_len) {
       char *s;
       dl_log_add (LOG_HISTORY, 1, "GET NEWS KEY (%lld) id = %d, ip = %lld\n", uid, id, ip);
       s = get_news_key (id, ip, timeout, uid);
-      if (s != NULL) {
+      if (s != ((void*)0)) {
         return_one_key (c, old_key, s, strlen (s));
       }
     }
@@ -219,10 +219,10 @@ int memcache_get (struct connection *c, const char *old_key, int old_key_len) {
 
         qkey *k;
 
-        //fprintf (stderr, "mc validate : %s %d %lld %d\n", s, id, ip, ts);
+
 
         char err;
-        if ((k = validate_key (s, id, ip, ts, 0, &err)) != NULL) {
+        if ((k = validate_key (s, id, ip, ts, 0, &err)) != ((void*)0)) {
           ans = get_events_http (k);
         }
       }

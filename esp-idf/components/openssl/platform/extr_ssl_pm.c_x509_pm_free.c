@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct x509_pm {int /*<<< orphan*/ * x509_crt; } ;
-struct TYPE_3__ {int /*<<< orphan*/ * x509_pm; } ;
-typedef  TYPE_1__ X509 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mbedtls_x509_crt_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ssl_mem_free (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct x509_pm {int * x509_crt; } ;
+struct TYPE_3__ {int * x509_pm; } ;
+typedef TYPE_1__ X509 ;
+
+
+ int mbedtls_x509_crt_free (int *) ;
+ int ssl_mem_free (int *) ;
 
 void x509_pm_free(X509 *x)
 {
@@ -27,9 +27,9 @@ void x509_pm_free(X509 *x)
         mbedtls_x509_crt_free(x509_pm->x509_crt);
 
         ssl_mem_free(x509_pm->x509_crt);
-        x509_pm->x509_crt = NULL;
+        x509_pm->x509_crt = ((void*)0);
     }
 
     ssl_mem_free(x->x509_pm);
-    x->x509_pm = NULL;
+    x->x509_pm = ((void*)0);
 }

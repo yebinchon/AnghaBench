@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct spi_nor {int /*<<< orphan*/  write_reg; int /*<<< orphan*/  read_reg; int /*<<< orphan*/  write; int /*<<< orphan*/  read; int /*<<< orphan*/  spimem; int /*<<< orphan*/  dev; } ;
 
-/* Variables and functions */
- int EINVAL ; 
- int /*<<< orphan*/  pr_err (char*) ; 
+
+
+
+struct spi_nor {int write_reg; int read_reg; int write; int read; int spimem; int dev; } ;
+
+
+ int EINVAL ;
+ int pr_err (char*) ;
 
 __attribute__((used)) static int spi_nor_check(struct spi_nor *nor)
 {
-	if (!nor->dev ||
-	    (!nor->spimem &&
-	    (!nor->read || !nor->write || !nor->read_reg ||
-	      !nor->write_reg))) {
-		pr_err("spi-nor: please fill all the necessary fields!\n");
-		return -EINVAL;
-	}
+ if (!nor->dev ||
+     (!nor->spimem &&
+     (!nor->read || !nor->write || !nor->read_reg ||
+       !nor->write_reg))) {
+  pr_err("spi-nor: please fill all the necessary fields!\n");
+  return -EINVAL;
+ }
 
-	return 0;
+ return 0;
 }

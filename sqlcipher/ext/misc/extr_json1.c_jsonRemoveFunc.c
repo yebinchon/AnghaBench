@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t u32 ;
-typedef  int /*<<< orphan*/  sqlite3_value ;
-typedef  int /*<<< orphan*/  sqlite3_context ;
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef size_t u32 ;
+typedef int sqlite3_value ;
+typedef int sqlite3_context ;
 struct TYPE_10__ {int jnFlags; } ;
 struct TYPE_9__ {int jnFlags; } ;
-struct TYPE_8__ {TYPE_3__* aNode; scalar_t__ nErr; int /*<<< orphan*/  nNode; } ;
-typedef  TYPE_1__ JsonParse ;
-typedef  TYPE_2__ JsonNode ;
+struct TYPE_8__ {TYPE_3__* aNode; scalar_t__ nErr; int nNode; } ;
+typedef TYPE_1__ JsonParse ;
+typedef TYPE_2__ JsonNode ;
 
-/* Variables and functions */
- int JNODE_REMOVE ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- TYPE_2__* jsonLookup (TYPE_1__*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ jsonParse (TYPE_1__*,int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  jsonParseReset (TYPE_1__*) ; 
- int /*<<< orphan*/  jsonReturnJson (TYPE_3__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ sqlite3_value_text (int /*<<< orphan*/ *) ; 
+
+ int JNODE_REMOVE ;
+ int assert (int ) ;
+ TYPE_2__* jsonLookup (TYPE_1__*,char const*,int ,int *) ;
+ scalar_t__ jsonParse (TYPE_1__*,int *,char const*) ;
+ int jsonParseReset (TYPE_1__*) ;
+ int jsonReturnJson (TYPE_3__*,int *,int ) ;
+ scalar_t__ sqlite3_value_text (int *) ;
 
 __attribute__((used)) static void jsonRemoveFunc(
   sqlite3_context *ctx,
   int argc,
   sqlite3_value **argv
 ){
-  JsonParse x;          /* The parse */
+  JsonParse x;
   JsonNode *pNode;
   const char *zPath;
   u32 i;

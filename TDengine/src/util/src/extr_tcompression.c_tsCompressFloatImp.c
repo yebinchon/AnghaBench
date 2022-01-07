@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint32_t ;
 
-/* Variables and functions */
- int const BITS_PER_BYTE ; 
- int BUILDIN_CLZ (int) ; 
- int BUILDIN_CTZ (int) ; 
- int const FLOAT_BYTES ; 
- int INT8MASK (int) ; 
- int /*<<< orphan*/  encodeFloatValue (int,int,char* const,int*) ; 
- int /*<<< orphan*/  memcpy (char* const,char const* const,int) ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+
+
+ int const BITS_PER_BYTE ;
+ int BUILDIN_CLZ (int) ;
+ int BUILDIN_CTZ (int) ;
+ int const FLOAT_BYTES ;
+ int INT8MASK (int) ;
+ int encodeFloatValue (int,int,char* const,int*) ;
+ int memcpy (char* const,char const* const,int) ;
 
 int tsCompressFloatImp(const char *const input, const int nelements, char *const output) {
   float *istream = (float *)input;
-  int    byte_limit = nelements * FLOAT_BYTES + 1;
-  int    opos = 1;
+  int byte_limit = nelements * FLOAT_BYTES + 1;
+  int opos = 1;
 
   uint32_t prev_value = 0;
   uint32_t prev_diff = 0;
-  uint8_t  prev_flag = 0;
+  uint8_t prev_flag = 0;
 
-  // Main loop
+
   for (int i = 0; i < nelements; i++) {
     union {
-      float    real;
+      float real;
       uint32_t bits;
     } curr;
 
     curr.real = istream[i];
 
-    // Here we assume the next value is the same as previous one.
+
     uint32_t predicted = prev_value;
     uint32_t diff = curr.bits ^ predicted;
 

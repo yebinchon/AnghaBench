@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_8__ {TYPE_1__* pMethods; } ;
-typedef  TYPE_2__ sqlite3_file ;
+typedef TYPE_2__ sqlite3_file ;
 struct TYPE_7__ {int (* xShmMap ) (TYPE_2__*,int,int,int,void volatile**) ;} ;
 
-/* Variables and functions */
- TYPE_2__* quotaSubOpen (TYPE_2__*) ; 
- int stub1 (TYPE_2__*,int,int,int,void volatile**) ; 
+
+ TYPE_2__* quotaSubOpen (TYPE_2__*) ;
+ int stub1 (TYPE_2__*,int,int,int,void volatile**) ;
 
 __attribute__((used)) static int quotaShmMap(
-  sqlite3_file *pConn,            /* Handle open on database file */
-  int iRegion,                    /* Region to retrieve */
-  int szRegion,                   /* Size of regions */
-  int bExtend,                    /* True to extend file if necessary */
-  void volatile **pp              /* OUT: Mapped memory */
+  sqlite3_file *pConn,
+  int iRegion,
+  int szRegion,
+  int bExtend,
+  void volatile **pp
 ){
   sqlite3_file *pSubOpen = quotaSubOpen(pConn);
   return pSubOpen->pMethods->xShmMap(pSubOpen, iRegion, szRegion, bExtend, pp);

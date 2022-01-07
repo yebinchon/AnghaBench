@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  toolinfo ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int toolinfo ;
 struct cred_dialog_params {scalar_t__ hwndBalloonTip; } ;
-typedef  int /*<<< orphan*/  WCHAR ;
-struct TYPE_2__ {int cbSize; int /*<<< orphan*/  uId; int /*<<< orphan*/ * lpReserved; scalar_t__ lParam; int /*<<< orphan*/ * lpszText; int /*<<< orphan*/ * hinst; int /*<<< orphan*/  rect; int /*<<< orphan*/  hwnd; int /*<<< orphan*/  uFlags; } ;
-typedef  TYPE_1__ TTTOOLINFOW ;
-typedef  int /*<<< orphan*/  LPARAM ;
-typedef  int /*<<< orphan*/  HWND ;
+typedef int WCHAR ;
+struct TYPE_2__ {int cbSize; int uId; int * lpReserved; scalar_t__ lParam; int * lpszText; int * hinst; int rect; int hwnd; int uFlags; } ;
+typedef TYPE_1__ TTTOOLINFOW ;
+typedef int LPARAM ;
+typedef int HWND ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAY_SIZE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CW_USEDEFAULT ; 
- scalar_t__ CreateWindowExW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ERR (char*) ; 
- int /*<<< orphan*/  HWND_TOPMOST ; 
- int /*<<< orphan*/  IDS_CAPSLOCKON ; 
- int /*<<< orphan*/  IDS_INCORRECTPASSWORD ; 
- int /*<<< orphan*/  LoadStringW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int SWP_NOACTIVATE ; 
- int SWP_NOMOVE ; 
- int SWP_NOSIZE ; 
- int /*<<< orphan*/  SendMessageW (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetRectEmpty (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SetWindowPos (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  TOOLID_CAPSLOCKON ; 
- int /*<<< orphan*/  TOOLID_INCORRECTPASSWORD ; 
- int /*<<< orphan*/  TOOLTIPS_CLASSW ; 
- int /*<<< orphan*/  TTF_TRACK ; 
- int /*<<< orphan*/  TTM_ADDTOOLW ; 
- int TTS_BALLOON ; 
- int TTS_NOPREFIX ; 
- int /*<<< orphan*/  WS_EX_TOOLWINDOW ; 
- int WS_POPUP ; 
- int /*<<< orphan*/  hinstCredUI ; 
+
+ int ARRAY_SIZE (int *) ;
+ int CW_USEDEFAULT ;
+ scalar_t__ CreateWindowExW (int ,int ,int *,int,int ,int ,int ,int ,int ,int *,int ,int *) ;
+ int ERR (char*) ;
+ int HWND_TOPMOST ;
+ int IDS_CAPSLOCKON ;
+ int IDS_INCORRECTPASSWORD ;
+ int LoadStringW (int ,int ,int *,int ) ;
+ int SWP_NOACTIVATE ;
+ int SWP_NOMOVE ;
+ int SWP_NOSIZE ;
+ int SendMessageW (scalar_t__,int ,int ,int ) ;
+ int SetRectEmpty (int *) ;
+ int SetWindowPos (scalar_t__,int ,int ,int ,int ,int ,int) ;
+ int TOOLID_CAPSLOCKON ;
+ int TOOLID_INCORRECTPASSWORD ;
+ int TOOLTIPS_CLASSW ;
+ int TTF_TRACK ;
+ int TTM_ADDTOOLW ;
+ int TTS_BALLOON ;
+ int TTS_NOPREFIX ;
+ int WS_EX_TOOLWINDOW ;
+ int WS_POPUP ;
+ int hinstCredUI ;
 
 __attribute__((used)) static void CredDialogCreateBalloonTip(HWND hwndDlg, struct cred_dialog_params *params)
 {
@@ -54,9 +54,9 @@ __attribute__((used)) static void CredDialogCreateBalloonTip(HWND hwndDlg, struc
         return;
 
     params->hwndBalloonTip = CreateWindowExW(WS_EX_TOOLWINDOW, TOOLTIPS_CLASSW,
-        NULL, WS_POPUP | TTS_NOPREFIX | TTS_BALLOON, CW_USEDEFAULT,
-        CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT, hwndDlg, NULL,
-        hinstCredUI, NULL);
+        ((void*)0), WS_POPUP | TTS_NOPREFIX | TTS_BALLOON, CW_USEDEFAULT,
+        CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT, hwndDlg, ((void*)0),
+        hinstCredUI, ((void*)0));
     SetWindowPos(params->hwndBalloonTip, HWND_TOPMOST, 0, 0, 0, 0,
                  SWP_NOMOVE | SWP_NOSIZE | SWP_NOACTIVATE);
 
@@ -71,10 +71,10 @@ __attribute__((used)) static void CredDialogCreateBalloonTip(HWND hwndDlg, struc
     toolinfo.hwnd = hwndDlg;
     toolinfo.uId = TOOLID_INCORRECTPASSWORD;
     SetRectEmpty(&toolinfo.rect);
-    toolinfo.hinst = NULL;
+    toolinfo.hinst = ((void*)0);
     toolinfo.lpszText = wszText;
     toolinfo.lParam = 0;
-    toolinfo.lpReserved = NULL;
+    toolinfo.lpReserved = ((void*)0);
     SendMessageW(params->hwndBalloonTip, TTM_ADDTOOLW, 0, (LPARAM)&toolinfo);
 
     if (!LoadStringW(hinstCredUI, IDS_CAPSLOCKON, wszText, ARRAY_SIZE(wszText)))

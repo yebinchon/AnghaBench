@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
+
+
+
+
+typedef int u32 ;
 struct e1000_hw {int dummy; } ;
-typedef  int /*<<< orphan*/  s32 ;
+typedef int s32 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E1000_PHY_CTRL_D0A_LPLU ; 
- int /*<<< orphan*/  POEMB ; 
- int /*<<< orphan*/  er32 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ew32 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int E1000_PHY_CTRL_D0A_LPLU ;
+ int POEMB ;
+ int er32 (int ) ;
+ int ew32 (int ,int ) ;
 
 __attribute__((used)) static s32 e1000_set_d0_lplu_state_82574(struct e1000_hw *hw, bool active)
 {
-	u32 data = er32(POEMB);
+ u32 data = er32(POEMB);
 
-	if (active)
-		data |= E1000_PHY_CTRL_D0A_LPLU;
-	else
-		data &= ~E1000_PHY_CTRL_D0A_LPLU;
+ if (active)
+  data |= E1000_PHY_CTRL_D0A_LPLU;
+ else
+  data &= ~E1000_PHY_CTRL_D0A_LPLU;
 
-	ew32(POEMB, data);
-	return 0;
+ ew32(POEMB, data);
+ return 0;
 }

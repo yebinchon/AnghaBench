@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tsd_t ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int tsd_t ;
 struct TYPE_5__ {struct TYPE_5__* next; } ;
-typedef  TYPE_1__ tcaches_t ;
-typedef  int /*<<< orphan*/  tcache_t ;
+typedef TYPE_1__ tcaches_t ;
+typedef int tcache_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  malloc_mutex_lock (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  malloc_mutex_unlock (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tcache_destroy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- TYPE_1__* tcaches ; 
- TYPE_1__* tcaches_avail ; 
- int /*<<< orphan*/ * tcaches_elm_remove (int /*<<< orphan*/ *,TYPE_1__*,int) ; 
- int /*<<< orphan*/  tcaches_mtx ; 
- int /*<<< orphan*/  tsd_tsdn (int /*<<< orphan*/ *) ; 
+
+ int malloc_mutex_lock (int ,int *) ;
+ int malloc_mutex_unlock (int ,int *) ;
+ int tcache_destroy (int *,int *,int) ;
+ TYPE_1__* tcaches ;
+ TYPE_1__* tcaches_avail ;
+ int * tcaches_elm_remove (int *,TYPE_1__*,int) ;
+ int tcaches_mtx ;
+ int tsd_tsdn (int *) ;
 
 void
 tcaches_destroy(tsd_t *tsd, unsigned ind) {
-	malloc_mutex_lock(tsd_tsdn(tsd), &tcaches_mtx);
-	tcaches_t *elm = &tcaches[ind];
-	tcache_t *tcache = tcaches_elm_remove(tsd, elm, false);
-	elm->next = tcaches_avail;
-	tcaches_avail = elm;
-	malloc_mutex_unlock(tsd_tsdn(tsd), &tcaches_mtx);
-	if (tcache != NULL) {
-		tcache_destroy(tsd, tcache, false);
-	}
+ malloc_mutex_lock(tsd_tsdn(tsd), &tcaches_mtx);
+ tcaches_t *elm = &tcaches[ind];
+ tcache_t *tcache = tcaches_elm_remove(tsd, elm, 0);
+ elm->next = tcaches_avail;
+ tcaches_avail = elm;
+ malloc_mutex_unlock(tsd_tsdn(tsd), &tcaches_mtx);
+ if (tcache != ((void*)0)) {
+  tcache_destroy(tsd, tcache, 0);
+ }
 }

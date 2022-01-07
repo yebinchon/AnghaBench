@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  features; } ;
-typedef  int /*<<< orphan*/  FEATURES_T ;
-typedef  scalar_t__ EGLint ;
 
-/* Variables and functions */
- scalar_t__ FEATURES_UNPACK_ALPHA (int /*<<< orphan*/ ) ; 
- scalar_t__ FEATURES_UNPACK_BLUE (int /*<<< orphan*/ ) ; 
- scalar_t__ FEATURES_UNPACK_COLOR (int /*<<< orphan*/ ) ; 
- scalar_t__ FEATURES_UNPACK_DEPTH (int /*<<< orphan*/ ) ; 
- scalar_t__ FEATURES_UNPACK_GREEN (int /*<<< orphan*/ ) ; 
- scalar_t__ FEATURES_UNPACK_MASK (int /*<<< orphan*/ ) ; 
- scalar_t__ FEATURES_UNPACK_MULTI (int /*<<< orphan*/ ) ; 
- scalar_t__ FEATURES_UNPACK_RED (int /*<<< orphan*/ ) ; 
- scalar_t__ FEATURES_UNPACK_STENCIL (int /*<<< orphan*/ ) ; 
- TYPE_1__* formats ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int features; } ;
+typedef int FEATURES_T ;
+typedef scalar_t__ EGLint ;
+
+
+ scalar_t__ FEATURES_UNPACK_ALPHA (int ) ;
+ scalar_t__ FEATURES_UNPACK_BLUE (int ) ;
+ scalar_t__ FEATURES_UNPACK_COLOR (int ) ;
+ scalar_t__ FEATURES_UNPACK_DEPTH (int ) ;
+ scalar_t__ FEATURES_UNPACK_GREEN (int ) ;
+ scalar_t__ FEATURES_UNPACK_MASK (int ) ;
+ scalar_t__ FEATURES_UNPACK_MULTI (int ) ;
+ scalar_t__ FEATURES_UNPACK_RED (int ) ;
+ scalar_t__ FEATURES_UNPACK_STENCIL (int ) ;
+ TYPE_1__* formats ;
 
 __attribute__((used)) static bool less_than(int id0, int id1, bool use_red, bool use_green, bool use_blue, bool use_alpha)
 {
@@ -67,10 +67,10 @@ __attribute__((used)) static bool less_than(int id0, int id1, bool use_red, bool
       used1 += FEATURES_UNPACK_ALPHA(features1);
    }
 
-   return used0 > used1    ||    (used0 == used1 &&
-      (all0 < all1         ||     (all0 == all1 &&
-      (multi0 < multi1     ||   (multi0 == multi1 &&
-      (depth0 < depth1     ||   (depth0 == depth1 &&
+   return used0 > used1 || (used0 == used1 &&
+      (all0 < all1 || (all0 == all1 &&
+      (multi0 < multi1 || (multi0 == multi1 &&
+      (depth0 < depth1 || (depth0 == depth1 &&
       (stencil0 < stencil1 || (stencil0 == stencil1 &&
       (mask0 < mask1))))))))));
 }

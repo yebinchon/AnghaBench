@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct m_option {int flags; int /*<<< orphan*/  max; int /*<<< orphan*/  min; struct m_opt_choice_alternatives* priv; int /*<<< orphan*/ * type; } ;
-struct m_opt_choice_alternatives {int /*<<< orphan*/  value; scalar_t__ name; } ;
 
-/* Variables and functions */
- int INT_MAX ; 
- int INT_MIN ; 
- int MPMAX (int,int /*<<< orphan*/ ) ; 
- int MPMIN (int,int /*<<< orphan*/ ) ; 
- int M_OPT_MAX ; 
- int M_OPT_MIN ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  m_option_type_choice ; 
+
+
+
+struct m_option {int flags; int max; int min; struct m_opt_choice_alternatives* priv; int * type; } ;
+struct m_opt_choice_alternatives {int value; scalar_t__ name; } ;
+
+
+ int INT_MAX ;
+ int INT_MIN ;
+ int MPMAX (int,int ) ;
+ int MPMIN (int,int ) ;
+ int M_OPT_MAX ;
+ int M_OPT_MIN ;
+ int assert (int) ;
+ int m_option_type_choice ;
 
 __attribute__((used)) static void choice_get_min_max(const struct m_option *opt, int *min, int *max)
 {

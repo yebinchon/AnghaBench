@@ -1,31 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  CONSTANTS ; 
- int /*<<< orphan*/  GLOBAL ; 
- int /*<<< orphan*/  checkref ; 
- int /*<<< orphan*/  constants ; 
- int /*<<< orphan*/  doconst ; 
- int /*<<< orphan*/  doextern ; 
- int /*<<< orphan*/  doglobal ; 
- int /*<<< orphan*/  externals ; 
- int /*<<< orphan*/  foreach (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  identifiers ; 
+ int CONSTANTS ;
+ int GLOBAL ;
+ int checkref ;
+ int constants ;
+ int doconst ;
+ int doextern ;
+ int doglobal ;
+ int externals ;
+ int foreach (int ,int ,int ,int *) ;
+ int identifiers ;
 
 void finalize(void) {
-	foreach(externals,   GLOBAL,    doextern, NULL);
-	foreach(identifiers, GLOBAL,    doglobal, NULL);
-	foreach(identifiers, GLOBAL,    checkref, NULL);
-	foreach(constants,   CONSTANTS, doconst,  NULL);
+ foreach(externals, GLOBAL, doextern, ((void*)0));
+ foreach(identifiers, GLOBAL, doglobal, ((void*)0));
+ foreach(identifiers, GLOBAL, checkref, ((void*)0));
+ foreach(constants, CONSTANTS, doconst, ((void*)0));
 }

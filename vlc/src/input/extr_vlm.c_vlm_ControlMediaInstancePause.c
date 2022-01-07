@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlm_t ;
-typedef  int /*<<< orphan*/  vlm_media_sys_t ;
-struct TYPE_3__ {int /*<<< orphan*/  player; } ;
-typedef  TYPE_1__ vlm_media_instance_sys_t ;
-typedef  int /*<<< orphan*/  int64_t ;
 
-/* Variables and functions */
- int VLC_EGENERIC ; 
- int VLC_SUCCESS ; 
- int /*<<< orphan*/  vlc_player_Lock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vlc_player_TogglePause (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vlc_player_Unlock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * vlm_ControlMediaGetById (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- TYPE_1__* vlm_ControlMediaInstanceGetByName (int /*<<< orphan*/ *,char const*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int vlm_t ;
+typedef int vlm_media_sys_t ;
+struct TYPE_3__ {int player; } ;
+typedef TYPE_1__ vlm_media_instance_sys_t ;
+typedef int int64_t ;
+
+
+ int VLC_EGENERIC ;
+ int VLC_SUCCESS ;
+ int vlc_player_Lock (int ) ;
+ int vlc_player_TogglePause (int ) ;
+ int vlc_player_Unlock (int ) ;
+ int * vlm_ControlMediaGetById (int *,int ) ;
+ TYPE_1__* vlm_ControlMediaInstanceGetByName (int *,char const*) ;
 
 __attribute__((used)) static int vlm_ControlMediaInstancePause( vlm_t *p_vlm, int64_t id, const char *psz_id )
 {

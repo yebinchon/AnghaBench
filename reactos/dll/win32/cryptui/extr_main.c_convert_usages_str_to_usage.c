@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__* LPSTR ;
-typedef  int /*<<< orphan*/  CERT_ENHKEY_USAGE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HEAP_ZERO_MEMORY ; 
- int /*<<< orphan*/ * HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/ * add_oid_to_usage (int /*<<< orphan*/ *,scalar_t__*) ; 
- scalar_t__* strchr (scalar_t__*,char) ; 
+
+
+
+typedef scalar_t__* LPSTR ;
+typedef int CERT_ENHKEY_USAGE ;
+
+
+ int GetProcessHeap () ;
+ int HEAP_ZERO_MEMORY ;
+ int * HeapAlloc (int ,int ,int) ;
+ int * add_oid_to_usage (int *,scalar_t__*) ;
+ scalar_t__* strchr (scalar_t__*,char) ;
 
 __attribute__((used)) static CERT_ENHKEY_USAGE *convert_usages_str_to_usage(LPSTR usageStr)
 {
@@ -30,8 +30,8 @@ __attribute__((used)) static CERT_ENHKEY_USAGE *convert_usages_str_to_usage(LPST
         LPSTR ptr, comma;
 
         for (ptr = usageStr, comma = strchr(ptr, ','); usage && ptr && *ptr;
-         ptr = comma ? comma + 1 : NULL,
-         comma = ptr ? strchr(ptr, ',') : NULL)
+         ptr = comma ? comma + 1 : ((void*)0),
+         comma = ptr ? strchr(ptr, ',') : ((void*)0))
         {
             if (comma)
                 *comma = 0;

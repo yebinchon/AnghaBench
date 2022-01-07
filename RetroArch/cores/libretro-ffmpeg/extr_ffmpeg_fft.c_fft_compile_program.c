@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  log_info ;
-typedef  int /*<<< orphan*/  fft_t ;
-typedef  int /*<<< orphan*/  GLuint ;
-typedef  int /*<<< orphan*/  GLsizei ;
-typedef  scalar_t__ GLint ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GL_FRAGMENT_SHADER ; 
- int /*<<< orphan*/  GL_LINK_STATUS ; 
- int /*<<< orphan*/  GL_VERTEX_SHADER ; 
- int /*<<< orphan*/  RETRO_LOG_ERROR ; 
- int /*<<< orphan*/  fft_compile_shader (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  glAttachShader (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glCreateProgram () ; 
- int /*<<< orphan*/  glDeleteShader (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glGetProgramInfoLog (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  glGetProgramiv (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__*) ; 
- int /*<<< orphan*/  glLinkProgram (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  log_cb (int /*<<< orphan*/ ,char*,...) ; 
+
+
+
+typedef int log_info ;
+typedef int fft_t ;
+typedef int GLuint ;
+typedef int GLsizei ;
+typedef scalar_t__ GLint ;
+
+
+ int GL_FRAGMENT_SHADER ;
+ int GL_LINK_STATUS ;
+ int GL_VERTEX_SHADER ;
+ int RETRO_LOG_ERROR ;
+ int fft_compile_shader (int *,int ,char const*) ;
+ int glAttachShader (int ,int ) ;
+ int glCreateProgram () ;
+ int glDeleteShader (int ) ;
+ int glGetProgramInfoLog (int ,int,int *,char*) ;
+ int glGetProgramiv (int ,int ,scalar_t__*) ;
+ int glLinkProgram (int ) ;
+ int log_cb (int ,char*,...) ;
 
 __attribute__((used)) static GLuint fft_compile_program(fft_t *fft,
       const char *vertex_source, const char *fragment_source)
 {
    GLint status = 0;
-   GLuint prog  = glCreateProgram();
-   GLuint vert  = fft_compile_shader(fft, GL_VERTEX_SHADER, vertex_source);
-   GLuint frag  = fft_compile_shader(fft, GL_FRAGMENT_SHADER, fragment_source);
+   GLuint prog = glCreateProgram();
+   GLuint vert = fft_compile_shader(fft, GL_VERTEX_SHADER, vertex_source);
+   GLuint frag = fft_compile_shader(fft, GL_FRAGMENT_SHADER, fragment_source);
 
    glAttachShader(prog, vert);
    glAttachShader(prog, frag);

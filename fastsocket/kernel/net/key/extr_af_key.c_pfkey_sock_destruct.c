@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct sock {int /*<<< orphan*/  sk_wmem_alloc; int /*<<< orphan*/  sk_rmem_alloc; int /*<<< orphan*/  sk_receive_queue; } ;
-struct netns_pfkey {int /*<<< orphan*/  socks_nr; } ;
+
+
+
+
+struct sock {int sk_wmem_alloc; int sk_rmem_alloc; int sk_receive_queue; } ;
+struct netns_pfkey {int socks_nr; } ;
 struct net {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SOCK_DEAD ; 
- int /*<<< orphan*/  WARN_ON (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  atomic_dec (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  atomic_read (int /*<<< orphan*/ *) ; 
- struct netns_pfkey* net_generic (struct net*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pfkey_net_id ; 
- int /*<<< orphan*/  pfkey_sk (struct sock*) ; 
- int /*<<< orphan*/  pfkey_terminate_dump (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printk (char*,struct sock*) ; 
- int /*<<< orphan*/  skb_queue_purge (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sock_flag (struct sock*,int /*<<< orphan*/ ) ; 
- struct net* sock_net (struct sock*) ; 
+
+ int SOCK_DEAD ;
+ int WARN_ON (int ) ;
+ int atomic_dec (int *) ;
+ int atomic_read (int *) ;
+ struct netns_pfkey* net_generic (struct net*,int ) ;
+ int pfkey_net_id ;
+ int pfkey_sk (struct sock*) ;
+ int pfkey_terminate_dump (int ) ;
+ int printk (char*,struct sock*) ;
+ int skb_queue_purge (int *) ;
+ int sock_flag (struct sock*,int ) ;
+ struct net* sock_net (struct sock*) ;
 
 __attribute__((used)) static void pfkey_sock_destruct(struct sock *sk)
 {
-	struct net *net = sock_net(sk);
-	struct netns_pfkey *net_pfkey = net_generic(net, pfkey_net_id);
+ struct net *net = sock_net(sk);
+ struct netns_pfkey *net_pfkey = net_generic(net, pfkey_net_id);
 
-	pfkey_terminate_dump(pfkey_sk(sk));
-	skb_queue_purge(&sk->sk_receive_queue);
+ pfkey_terminate_dump(pfkey_sk(sk));
+ skb_queue_purge(&sk->sk_receive_queue);
 
-	if (!sock_flag(sk, SOCK_DEAD)) {
-		printk("Attempt to release alive pfkey socket: %p\n", sk);
-		return;
-	}
+ if (!sock_flag(sk, SOCK_DEAD)) {
+  printk("Attempt to release alive pfkey socket: %p\n", sk);
+  return;
+ }
 
-	WARN_ON(atomic_read(&sk->sk_rmem_alloc));
-	WARN_ON(atomic_read(&sk->sk_wmem_alloc));
+ WARN_ON(atomic_read(&sk->sk_rmem_alloc));
+ WARN_ON(atomic_read(&sk->sk_wmem_alloc));
 
-	atomic_dec(&net_pfkey->socks_nr);
+ atomic_dec(&net_pfkey->socks_nr);
 }

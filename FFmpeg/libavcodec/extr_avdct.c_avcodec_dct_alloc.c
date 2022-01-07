@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/ * av_class; } ;
-typedef  TYPE_1__ AVDCT ;
 
-/* Variables and functions */
- TYPE_1__* av_mallocz (int) ; 
- int /*<<< orphan*/  av_opt_set_defaults (TYPE_1__*) ; 
- int /*<<< orphan*/  avdct_class ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int * av_class; } ;
+typedef TYPE_1__ AVDCT ;
+
+
+ TYPE_1__* av_mallocz (int) ;
+ int av_opt_set_defaults (TYPE_1__*) ;
+ int avdct_class ;
 
 AVDCT *avcodec_dct_alloc(void)
 {
     AVDCT *dsp = av_mallocz(sizeof(AVDCT));
 
     if (!dsp)
-        return NULL;
+        return ((void*)0);
 
     dsp->av_class = &avdct_class;
     av_opt_set_defaults(dsp);

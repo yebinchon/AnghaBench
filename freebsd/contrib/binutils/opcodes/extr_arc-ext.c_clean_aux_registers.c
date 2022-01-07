@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct ExtAuxRegister {struct ExtAuxRegister* name; struct ExtAuxRegister* next; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (struct ExtAuxRegister*) ; 
+
+ int free (struct ExtAuxRegister*) ;
 
 __attribute__((used)) static void
 clean_aux_registers(struct ExtAuxRegister *r)
@@ -23,7 +23,7 @@ clean_aux_registers(struct ExtAuxRegister *r)
       clean_aux_registers( r->next);
       free(r -> name);
       free(r -> next);
-      r ->next = NULL;
+      r ->next = ((void*)0);
     }
   else
     free(r -> name);

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct _reent {int _errno; } ;
-typedef  size_t ssize_t ;
-struct TYPE_4__ {int pos; TYPE_1__* dev; int /*<<< orphan*/  fd; int /*<<< orphan*/  read; } ;
-typedef  TYPE_2__ sd_fat_file_state_t ;
-struct TYPE_3__ {int /*<<< orphan*/  pMutex; int /*<<< orphan*/  pCmd; int /*<<< orphan*/  pClient; } ;
+typedef size_t ssize_t ;
+struct TYPE_4__ {int pos; TYPE_1__* dev; int fd; int read; } ;
+typedef TYPE_2__ sd_fat_file_state_t ;
+struct TYPE_3__ {int pMutex; int pCmd; int pClient; } ;
 
-/* Variables and functions */
- int EACCES ; 
- int ENODEV ; 
- int ENOMEM ; 
- int FSReadFile (int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned char*,int,size_t,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- size_t FS_ALIGN (size_t) ; 
- int /*<<< orphan*/  FS_ALIGNMENT ; 
- int /*<<< orphan*/  OSLockMutex (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OSUnlockMutex (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (unsigned char*) ; 
- scalar_t__ memalign (int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/  memcpy (char*,unsigned char*,size_t) ; 
+
+ int EACCES ;
+ int ENODEV ;
+ int ENOMEM ;
+ int FSReadFile (int ,int ,unsigned char*,int,size_t,int ,int ,int) ;
+ size_t FS_ALIGN (size_t) ;
+ int FS_ALIGNMENT ;
+ int OSLockMutex (int ) ;
+ int OSUnlockMutex (int ) ;
+ int free (unsigned char*) ;
+ scalar_t__ memalign (int ,size_t) ;
+ int memcpy (char*,unsigned char*,size_t) ;
 
 __attribute__((used)) static ssize_t sd_fat_read_r (struct _reent *r, void* fd, char *ptr, size_t len)
 {
@@ -73,7 +73,7 @@ __attribute__((used)) static ssize_t sd_fat_read_r (struct _reent *r, void* fd, 
         }
         else if(result == 0)
         {
-            /*! TODO: error on read_size > 0 */
+
             break;
         }
         else

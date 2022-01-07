@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_string_t ;
-typedef  int /*<<< orphan*/  svn_ra_serf__xml_estate_t ;
-struct TYPE_4__ {char const* name; int /*<<< orphan*/  const* value; } ;
-typedef  TYPE_1__ svn_prop_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct TYPE_5__ {int /*<<< orphan*/  prop_diffs; int /*<<< orphan*/  rev_props; int /*<<< orphan*/  state_pool; int /*<<< orphan*/ * stream; int /*<<< orphan*/  file_rev_baton; int /*<<< orphan*/  (* file_rev ) (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ;} ;
-typedef  TYPE_2__ blame_context_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int FILE_REV ; 
- int MERGED_REVISION ; 
- int REMOVE_PROP ; 
- int REV_PROP ; 
- int SET_PROP ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_ASSERT (int) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  SVN_STR_TO_REV (char const*) ; 
- int TXDELTA ; 
- TYPE_1__* apr_array_push (int /*<<< orphan*/ ) ; 
- char* apr_pstrdup (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ strcmp (char const*,char*) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_base64_decode_string (int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- char* svn_hash_gets (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  svn_hash_sets (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  svn_ra_serf__xml_note (int /*<<< orphan*/ *,int,char*,char*) ; 
- int /*<<< orphan*/  svn_stream_close (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_string_dup (int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int svn_string_t ;
+typedef int svn_ra_serf__xml_estate_t ;
+struct TYPE_4__ {char const* name; int const* value; } ;
+typedef TYPE_1__ svn_prop_t ;
+typedef int svn_error_t ;
+struct TYPE_5__ {int prop_diffs; int rev_props; int state_pool; int * stream; int file_rev_baton; int (* file_rev ) (int ,char const*,int ,int ,int ,int *,int *,int ,int *) ;} ;
+typedef TYPE_2__ blame_context_t ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
+
+
+ int FALSE ;
+ int FILE_REV ;
+ int MERGED_REVISION ;
+ int REMOVE_PROP ;
+ int REV_PROP ;
+ int SET_PROP ;
+ int SVN_ERR (int ) ;
+ int SVN_ERR_ASSERT (int) ;
+ int * SVN_NO_ERROR ;
+ int SVN_STR_TO_REV (char const*) ;
+ int TXDELTA ;
+ TYPE_1__* apr_array_push (int ) ;
+ char* apr_pstrdup (int ,char*) ;
+ scalar_t__ strcmp (char const*,char*) ;
+ int stub1 (int ,char const*,int ,int ,int ,int *,int *,int ,int *) ;
+ int * svn_base64_decode_string (int const*,int ) ;
+ char* svn_hash_gets (int *,char*) ;
+ int svn_hash_sets (int ,char const*,int const*) ;
+ int svn_ra_serf__xml_note (int *,int,char*,char*) ;
+ int svn_stream_close (int *) ;
+ int * svn_string_dup (int const*,int ) ;
 
 __attribute__((used)) static svn_error_t *
 blame_closed(svn_ra_serf__xml_estate_t *xes,
@@ -57,9 +57,9 @@ blame_closed(svn_ra_serf__xml_estate_t *xes,
 
   if (leaving_state == FILE_REV)
     {
-      /* Note that we test STREAM, but any pointer is currently invalid.
-         It was closed when left the TXDELTA state.  */
-      if (blame_ctx->stream == NULL)
+
+
+      if (blame_ctx->stream == ((void*)0))
         {
           const char *path;
           const char *rev;
@@ -67,12 +67,12 @@ blame_closed(svn_ra_serf__xml_estate_t *xes,
           path = svn_hash_gets(attrs, "path");
           rev = svn_hash_gets(attrs, "rev");
 
-          /* Send a "no content" notification.  */
+
           SVN_ERR(blame_ctx->file_rev(blame_ctx->file_rev_baton,
                                       path, SVN_STR_TO_REV(rev),
                                       blame_ctx->rev_props,
-                                      FALSE /* result_of_merge */,
-                                      NULL, NULL, /* txdelta / baton */
+                                      FALSE ,
+                                      ((void*)0), ((void*)0),
                                       blame_ctx->prop_diffs,
                                       scratch_pool));
         }
@@ -99,7 +99,7 @@ blame_closed(svn_ra_serf__xml_estate_t *xes,
 
       if (leaving_state == REMOVE_PROP)
         {
-          value = NULL;
+          value = ((void*)0);
         }
       else
         {

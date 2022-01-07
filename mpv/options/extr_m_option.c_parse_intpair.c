@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct mp_log {int dummy; } ;
 struct m_option {int dummy; } ;
 struct bstr {scalar_t__ len; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BSTR_P (struct bstr) ; 
- int M_OPT_INVALID ; 
- int M_OPT_MISSING_PARAM ; 
- struct bstr bstr_cut (struct bstr,int) ; 
- int /*<<< orphan*/  bstr_startswith0 (struct bstr,char*) ; 
- int bstrtoll (struct bstr,struct bstr*,int) ; 
- int /*<<< orphan*/  mp_err (struct mp_log*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int BSTR_P (struct bstr) ;
+ int M_OPT_INVALID ;
+ int M_OPT_MISSING_PARAM ;
+ struct bstr bstr_cut (struct bstr,int) ;
+ int bstr_startswith0 (struct bstr,char*) ;
+ int bstrtoll (struct bstr,struct bstr*,int) ;
+ int mp_err (struct mp_log*,char*,int ,int ) ;
 
 __attribute__((used)) static int parse_intpair(struct mp_log *log, const struct m_option *opt,
                          struct bstr name, struct bstr param, void *dst)

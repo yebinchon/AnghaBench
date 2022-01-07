@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  key; } ;
-typedef  TYPE_1__ hash_entry_t ;
 
-/* Variables and functions */
- unsigned int HASH_STR_PRIME ; 
- TYPE_1__** HS ; 
- scalar_t__ MAX_STR ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  strcmp (int /*<<< orphan*/ ,char const*) ; 
- scalar_t__ tot_str ; 
- TYPE_1__* zmalloc0 (int) ; 
- int /*<<< orphan*/  zstrdup (char const*) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int key; } ;
+typedef TYPE_1__ hash_entry_t ;
+
+
+ unsigned int HASH_STR_PRIME ;
+ TYPE_1__** HS ;
+ scalar_t__ MAX_STR ;
+ int assert (int) ;
+ int strcmp (int ,char const*) ;
+ scalar_t__ tot_str ;
+ TYPE_1__* zmalloc0 (int) ;
+ int zstrdup (char const*) ;
 
 __attribute__((used)) static hash_entry_t *get_str_f (const char *s, int force) {
   unsigned int h1 = 0, h2 = 0;
@@ -51,5 +51,5 @@ __attribute__((used)) static hash_entry_t *get_str_f (const char *s, int force) 
     HS[h1]->key = zstrdup (s);
     return HS[h1];
   }
-  return NULL;
+  return ((void*)0);
 }

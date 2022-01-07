@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT ;
-typedef  scalar_t__ INT ;
-typedef  int /*<<< orphan*/  DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DDHAL_CB32_CANCREATESURFACE ; 
- int /*<<< orphan*/  DDHAL_CB32_CREATEPALETTE ; 
- int /*<<< orphan*/  DDHAL_CB32_CREATESURFACE ; 
- int /*<<< orphan*/  DDHAL_CB32_GETSCANLINE ; 
- int /*<<< orphan*/  DDHAL_CB32_MAPMEMORY ; 
- int /*<<< orphan*/  DDHAL_CB32_SETCOLORKEY ; 
- int /*<<< orphan*/  DDHAL_CB32_SETMODE ; 
- int /*<<< orphan*/  DDHAL_CB32_WAITFORVERTICALBLANK ; 
- int /*<<< orphan*/  DDHAL_PALCB32_DESTROYPALETTE ; 
- int /*<<< orphan*/  DDHAL_PALCB32_SETENTRIES ; 
- int /*<<< orphan*/  DDHAL_SURFCB32_ADDATTACHEDSURFACE ; 
- int /*<<< orphan*/  DDHAL_SURFCB32_BLT ; 
- int /*<<< orphan*/  DDHAL_SURFCB32_DESTROYSURFACE ; 
- int /*<<< orphan*/  DDHAL_SURFCB32_FLIP ; 
- int /*<<< orphan*/  DDHAL_SURFCB32_GETBLTSTATUS ; 
- int /*<<< orphan*/  DDHAL_SURFCB32_GETFLIPSTATUS ; 
- int /*<<< orphan*/  DDHAL_SURFCB32_LOCK ; 
- int /*<<< orphan*/  DDHAL_SURFCB32_RESERVED4 ; 
- int /*<<< orphan*/  DDHAL_SURFCB32_SETCLIPLIST ; 
- int /*<<< orphan*/  DDHAL_SURFCB32_SETCOLORKEY ; 
- int /*<<< orphan*/  DDHAL_SURFCB32_SETOVERLAYPOSITION ; 
- int /*<<< orphan*/  DDHAL_SURFCB32_SETPALETTE ; 
- int /*<<< orphan*/  DDHAL_SURFCB32_UNLOCK ; 
- int /*<<< orphan*/  DDHAL_SURFCB32_UPDATEOVERLAY ; 
- int /*<<< orphan*/  checkflag (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  endcheckflag (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
+
+
+
+typedef int UINT ;
+typedef scalar_t__ INT ;
+typedef int DWORD ;
+
+
+ int DDHAL_CB32_CANCREATESURFACE ;
+ int DDHAL_CB32_CREATEPALETTE ;
+ int DDHAL_CB32_CREATESURFACE ;
+ int DDHAL_CB32_GETSCANLINE ;
+ int DDHAL_CB32_MAPMEMORY ;
+ int DDHAL_CB32_SETCOLORKEY ;
+ int DDHAL_CB32_SETMODE ;
+ int DDHAL_CB32_WAITFORVERTICALBLANK ;
+ int DDHAL_PALCB32_DESTROYPALETTE ;
+ int DDHAL_PALCB32_SETENTRIES ;
+ int DDHAL_SURFCB32_ADDATTACHEDSURFACE ;
+ int DDHAL_SURFCB32_BLT ;
+ int DDHAL_SURFCB32_DESTROYSURFACE ;
+ int DDHAL_SURFCB32_FLIP ;
+ int DDHAL_SURFCB32_GETBLTSTATUS ;
+ int DDHAL_SURFCB32_GETFLIPSTATUS ;
+ int DDHAL_SURFCB32_LOCK ;
+ int DDHAL_SURFCB32_RESERVED4 ;
+ int DDHAL_SURFCB32_SETCLIPLIST ;
+ int DDHAL_SURFCB32_SETCOLORKEY ;
+ int DDHAL_SURFCB32_SETOVERLAYPOSITION ;
+ int DDHAL_SURFCB32_SETPALETTE ;
+ int DDHAL_SURFCB32_UNLOCK ;
+ int DDHAL_SURFCB32_UPDATEOVERLAY ;
+ int checkflag (int ,int ,char*) ;
+ int endcheckflag (int ,char*) ;
+ int printf (char*,...) ;
 
 void
 dump_CallBackFlags(DWORD *pCallBackFlags, char *text)
@@ -64,7 +64,7 @@ dump_CallBackFlags(DWORD *pCallBackFlags, char *text)
     checkflag(flag,DDHAL_CB32_WAITFORVERTICALBLANK,"DDHAL_CB32_WAITFORVERTICALBLANK");
     endcheckflag(flag,"pCallBackFlags[0]");
 
-    /* SURFACE callback */
+
     printf("pCallBackFlags[1] : ");
     flag = pCallBackFlags[1];
     count = 0;
@@ -85,7 +85,7 @@ dump_CallBackFlags(DWORD *pCallBackFlags, char *text)
     endcheckflag(flag,"pCallBackFlags[1]");
 
 
-    /* palleted */
+
     printf("pCallBackFlags[2] : ");
     flag = pCallBackFlags[2];
     count = 0;

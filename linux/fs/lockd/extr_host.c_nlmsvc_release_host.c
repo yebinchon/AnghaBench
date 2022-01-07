@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct nlm_host {int /*<<< orphan*/  h_count; int /*<<< orphan*/  h_server; int /*<<< orphan*/  h_name; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  WARN_ON_ONCE (int) ; 
- int /*<<< orphan*/  dprintk (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  refcount_dec (int /*<<< orphan*/ *) ; 
+
+
+
+struct nlm_host {int h_count; int h_server; int h_name; } ;
+
+
+ int WARN_ON_ONCE (int) ;
+ int dprintk (char*,int ) ;
+ int refcount_dec (int *) ;
 
 void nlmsvc_release_host(struct nlm_host *host)
 {
-	if (host == NULL)
-		return;
+ if (host == ((void*)0))
+  return;
 
-	dprintk("lockd: release server host %s\n", host->h_name);
+ dprintk("lockd: release server host %s\n", host->h_name);
 
-	WARN_ON_ONCE(!host->h_server);
-	refcount_dec(&host->h_count);
+ WARN_ON_ONCE(!host->h_server);
+ refcount_dec(&host->h_count);
 }

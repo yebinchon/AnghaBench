@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  watch ;
-struct xenbus_watch {int /*<<< orphan*/  list; int /*<<< orphan*/  node; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BUG_ON (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  down_read (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  find_watch (char*) ; 
- int /*<<< orphan*/  list_add (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  list_del (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sprintf (char*,char*,long) ; 
- int /*<<< orphan*/  up_read (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  watches ; 
- int /*<<< orphan*/  watches_lock ; 
- int xs_watch (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  xs_watch_rwsem ; 
+
+
+
+typedef int watch ;
+struct xenbus_watch {int list; int node; } ;
+
+
+ int BUG_ON (int ) ;
+ int down_read (int *) ;
+ int find_watch (char*) ;
+ int list_add (int *,int *) ;
+ int list_del (int *) ;
+ int spin_lock (int *) ;
+ int spin_unlock (int *) ;
+ int sprintf (char*,char*,long) ;
+ int up_read (int *) ;
+ int watches ;
+ int watches_lock ;
+ int xs_watch (int ,char*) ;
+ int xs_watch_rwsem ;
 
 int register_xenbus_watch(struct xenbus_watch *watch)
 {
-	/* Pointer in ascii is the token. */
-	char token[sizeof(watch) * 2 + 1];
-	int err;
 
-	sprintf(token, "%lX", (long)watch);
+ char token[sizeof(watch) * 2 + 1];
+ int err;
 
-	down_read(&xs_watch_rwsem);
+ sprintf(token, "%lX", (long)watch);
 
-	spin_lock(&watches_lock);
-	BUG_ON(find_watch(token));
-	list_add(&watch->list, &watches);
-	spin_unlock(&watches_lock);
+ down_read(&xs_watch_rwsem);
 
-	err = xs_watch(watch->node, token);
+ spin_lock(&watches_lock);
+ BUG_ON(find_watch(token));
+ list_add(&watch->list, &watches);
+ spin_unlock(&watches_lock);
 
-	if (err) {
-		spin_lock(&watches_lock);
-		list_del(&watch->list);
-		spin_unlock(&watches_lock);
-	}
+ err = xs_watch(watch->node, token);
 
-	up_read(&xs_watch_rwsem);
+ if (err) {
+  spin_lock(&watches_lock);
+  list_del(&watch->list);
+  spin_unlock(&watches_lock);
+ }
 
-	return err;
+ up_read(&xs_watch_rwsem);
+
+ return err;
 }

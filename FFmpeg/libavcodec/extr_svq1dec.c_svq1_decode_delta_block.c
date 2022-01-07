@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_5__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint32_t ;
+
+
+typedef struct TYPE_7__ TYPE_5__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
 struct TYPE_6__ {scalar_t__ y; scalar_t__ x; } ;
-typedef  TYPE_1__ svq1_pmv ;
-typedef  int /*<<< orphan*/  ptrdiff_t ;
-struct TYPE_7__ {int /*<<< orphan*/  table; } ;
-typedef  int /*<<< orphan*/  HpelDSPContext ;
-typedef  int /*<<< orphan*/  GetBitContext ;
-typedef  int /*<<< orphan*/  AVCodecContext ;
+typedef TYPE_1__ svq1_pmv ;
+typedef int ptrdiff_t ;
+struct TYPE_7__ {int table; } ;
+typedef int HpelDSPContext ;
+typedef int GetBitContext ;
+typedef int AVCodecContext ;
 
-/* Variables and functions */
-#define  SVQ1_BLOCK_INTER 131 
-#define  SVQ1_BLOCK_INTER_4V 130 
-#define  SVQ1_BLOCK_INTRA 129 
-#define  SVQ1_BLOCK_SKIP 128 
- int /*<<< orphan*/  ff_dlog (int /*<<< orphan*/ *,char*,int) ; 
- int get_vlc2 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int) ; 
- TYPE_5__ svq1_block_type ; 
- int svq1_decode_block_intra (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int svq1_decode_block_non_intra (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int svq1_motion_inter_4v_block (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_1__*,int,int,int,int) ; 
- int svq1_motion_inter_block (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_1__*,int,int,int,int) ; 
- int /*<<< orphan*/  svq1_skip_block (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int) ; 
+
+
+
+
+
+ int ff_dlog (int *,char*,int) ;
+ int get_vlc2 (int *,int ,int,int) ;
+ TYPE_5__ svq1_block_type ;
+ int svq1_decode_block_intra (int *,int *,int ) ;
+ int svq1_decode_block_non_intra (int *,int *,int ) ;
+ int svq1_motion_inter_4v_block (int *,int *,int *,int *,int ,TYPE_1__*,int,int,int,int) ;
+ int svq1_motion_inter_block (int *,int *,int *,int *,int ,TYPE_1__*,int,int,int,int) ;
+ int svq1_skip_block (int *,int *,int ,int,int) ;
 
 __attribute__((used)) static int svq1_decode_delta_block(AVCodecContext *avctx, HpelDSPContext *hdsp,
                                    GetBitContext *bitbuf,
@@ -45,13 +45,13 @@ __attribute__((used)) static int svq1_decode_delta_block(AVCodecContext *avctx, 
     uint32_t block_type;
     int result = 0;
 
-    /* get block type */
+
     block_type = get_vlc2(bitbuf, svq1_block_type.table, 2, 2);
 
-    /* reset motion vectors */
-    if (block_type == SVQ1_BLOCK_SKIP || block_type == SVQ1_BLOCK_INTRA) {
-        motion[0].x         =
-        motion[0].y         =
+
+    if (block_type == 128 || block_type == 129) {
+        motion[0].x =
+        motion[0].y =
         motion[x / 8 + 2].x =
         motion[x / 8 + 2].y =
         motion[x / 8 + 3].x =
@@ -59,11 +59,11 @@ __attribute__((used)) static int svq1_decode_delta_block(AVCodecContext *avctx, 
     }
 
     switch (block_type) {
-    case SVQ1_BLOCK_SKIP:
+    case 128:
         svq1_skip_block(current, previous, pitch, x, y);
         break;
 
-    case SVQ1_BLOCK_INTER:
+    case 131:
         result = svq1_motion_inter_block(hdsp, bitbuf, current, previous,
                                          pitch, motion, x, y, width, height);
 
@@ -74,7 +74,7 @@ __attribute__((used)) static int svq1_decode_delta_block(AVCodecContext *avctx, 
         result = svq1_decode_block_non_intra(bitbuf, current, pitch);
         break;
 
-    case SVQ1_BLOCK_INTER_4V:
+    case 130:
         result = svq1_motion_inter_4v_block(hdsp, bitbuf, current, previous,
                                             pitch, motion, x, y, width, height);
 
@@ -85,7 +85,7 @@ __attribute__((used)) static int svq1_decode_delta_block(AVCodecContext *avctx, 
         result = svq1_decode_block_non_intra(bitbuf, current, pitch);
         break;
 
-    case SVQ1_BLOCK_INTRA:
+    case 129:
         result = svq1_decode_block_intra(bitbuf, current, pitch);
         break;
     }

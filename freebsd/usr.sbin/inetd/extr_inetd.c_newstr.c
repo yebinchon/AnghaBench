@@ -1,30 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  EX_OSERR ; 
- int /*<<< orphan*/  LOG_ERR ; 
- int /*<<< orphan*/  exit (int /*<<< orphan*/ ) ; 
- char* strdup (char const*) ; 
- int /*<<< orphan*/  syslog (int /*<<< orphan*/ ,char*) ; 
+ int EX_OSERR ;
+ int LOG_ERR ;
+ int exit (int ) ;
+ char* strdup (char const*) ;
+ int syslog (int ,char*) ;
 
 __attribute__((used)) static char *
 newstr(const char *cp)
 {
-	char *cr;
+ char *cr;
 
-	if ((cr = strdup(cp != NULL ? cp : "")))
-		return (cr);
-	syslog(LOG_ERR, "strdup: %m");
-	exit(EX_OSERR);
+ if ((cr = strdup(cp != ((void*)0) ? cp : "")))
+  return (cr);
+ syslog(LOG_ERR, "strdup: %m");
+ exit(EX_OSERR);
 }

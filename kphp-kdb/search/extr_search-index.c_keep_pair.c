@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int doc_id; unsigned int freqs; int /*<<< orphan*/  word; } ;
-typedef  TYPE_1__ pair_t ;
-typedef  int /*<<< orphan*/  hash_t ;
 
-/* Variables and functions */
- TYPE_1__* P ; 
- scalar_t__ PC ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,scalar_t__) ; 
- scalar_t__ max_pairs ; 
- int /*<<< orphan*/  stderr ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int doc_id; unsigned int freqs; int word; } ;
+typedef TYPE_1__ pair_t ;
+typedef int hash_t ;
+
+
+ TYPE_1__* P ;
+ scalar_t__ PC ;
+ int exit (int) ;
+ int fprintf (int ,char*,scalar_t__) ;
+ scalar_t__ max_pairs ;
+ int stderr ;
 
 void keep_pair (int doc_id, hash_t word, unsigned freqs) {
   if (PC >= max_pairs) {

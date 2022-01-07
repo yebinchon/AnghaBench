@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ ULONG ;
-struct TYPE_7__ {struct TYPE_7__* Next; int /*<<< orphan*/  Data; } ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef scalar_t__ ULONG ;
+struct TYPE_7__ {struct TYPE_7__* Next; int Data; } ;
 struct TYPE_6__ {scalar_t__ FieldCount; TYPE_3__* FirstField; } ;
-struct TYPE_5__ {int /*<<< orphan*/ * Line; } ;
-typedef  scalar_t__ SIZE_T ;
-typedef  scalar_t__* PULONG ;
-typedef  TYPE_1__* PINFCONTEXT ;
-typedef  TYPE_2__* PINFCACHELINE ;
-typedef  TYPE_3__* PINFCACHEFIELD ;
-typedef  scalar_t__* PCHAR ;
-typedef  int /*<<< orphan*/  BOOLEAN ;
+struct TYPE_5__ {int * Line; } ;
+typedef scalar_t__ SIZE_T ;
+typedef scalar_t__* PULONG ;
+typedef TYPE_1__* PINFCONTEXT ;
+typedef TYPE_2__* PINFCACHELINE ;
+typedef TYPE_3__* PINFCACHEFIELD ;
+typedef scalar_t__* PCHAR ;
+typedef int BOOLEAN ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  strcpy (scalar_t__*,int /*<<< orphan*/ ) ; 
- scalar_t__ strlen (int /*<<< orphan*/ ) ; 
+
+ int FALSE ;
+ int TRUE ;
+ int strcpy (scalar_t__*,int ) ;
+ scalar_t__ strlen (int ) ;
 
 BOOLEAN
 InfGetMultiSzField (
@@ -46,13 +46,13 @@ InfGetMultiSzField (
     SIZE_T Size;
     PCHAR Ptr;
 
-    if ((Context == NULL) || (Context->Line == NULL) || (FieldIndex == 0))
+    if ((Context == ((void*)0)) || (Context->Line == ((void*)0)) || (FieldIndex == 0))
     {
-//      DPRINT("Invalid parameter\n");
+
         return FALSE;
     }
 
-    if (RequiredSize != NULL)
+    if (RequiredSize != ((void*)0))
         *RequiredSize = 0;
 
     CacheLine = (PINFCACHELINE)Context->Line;
@@ -64,28 +64,28 @@ InfGetMultiSzField (
     for (Index = 1; Index < FieldIndex; Index++)
         CacheField = CacheField->Next;
 
-    /* Calculate the required buffer size */
+
     FieldPtr = CacheField;
     Size = 0;
-    while (FieldPtr != NULL)
+    while (FieldPtr != ((void*)0))
     {
         Size += (strlen(FieldPtr->Data) + 1);
         FieldPtr = FieldPtr->Next;
     }
     Size++;
 
-    if (RequiredSize != NULL)
+    if (RequiredSize != ((void*)0))
         *RequiredSize = (ULONG)Size;
 
-    if (ReturnBuffer != NULL)
+    if (ReturnBuffer != ((void*)0))
     {
         if (ReturnBufferSize < Size)
             return FALSE;
 
-        /* Copy multi-sz string */
+
         Ptr = ReturnBuffer;
         FieldPtr = CacheField;
-        while (FieldPtr != NULL)
+        while (FieldPtr != ((void*)0))
         {
             Size = strlen(FieldPtr->Data) + 1;
 

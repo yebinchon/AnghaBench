@@ -1,19 +1,11 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  fatal (int /*<<< orphan*/ ,char*) ; 
+ int _ (char*) ;
+ int fatal (int ,char*) ;
 
 __attribute__((used)) static int
 integer_arg (char *s)
@@ -35,13 +27,13 @@ integer_arg (char *s)
 
   value = 0;
   while (((c = *p++) >= '0' && c <= '9')
-	 || (radix == 16 && (c & ~40) >= 'A' && (c & ~40) <= 'Z'))
+  || (radix == 16 && (c & ~40) >= 'A' && (c & ~40) <= 'Z'))
     {
       value *= radix;
       if (c >= '0' && c <= '9')
-	value += c - '0';
+ value += c - '0';
       else
-	value += (c & ~40) - 'A';
+ value += (c & ~40) - 'A';
     }
 
   if (c == 'b')

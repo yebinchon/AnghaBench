@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  cmsHTRANSFORM ;
-typedef  int /*<<< orphan*/  cmsHPROFILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Create_AboveRGB () ; 
- int /*<<< orphan*/  DbgThread () ; 
- int /*<<< orphan*/  INTENT_PERCEPTUAL ; 
- int /*<<< orphan*/  TYPE_RGB_8_PLANAR ; 
- int /*<<< orphan*/  cmsCloseProfile (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cmsCreateTransform (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cmsCreate_sRGBProfile (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cmsDeleteTransform (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int cmsHTRANSFORM ;
+typedef int cmsHPROFILE ;
+
+
+ int Create_AboveRGB () ;
+ int DbgThread () ;
+ int INTENT_PERCEPTUAL ;
+ int TYPE_RGB_8_PLANAR ;
+ int cmsCloseProfile (int ,int ) ;
+ int cmsCreateTransform (int ,int ,int ,int ,int ,int ,int ) ;
+ int cmsCreate_sRGBProfile (int ) ;
+ int cmsDeleteTransform (int ,int ) ;
 
 __attribute__((used)) static
 int CheckPlanar8opt(void)

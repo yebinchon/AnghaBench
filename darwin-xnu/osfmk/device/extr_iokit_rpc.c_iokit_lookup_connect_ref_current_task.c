@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mach_port_name_t ;
-typedef  int /*<<< orphan*/  io_object_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IKOT_IOKIT_CONNECT ; 
- int /*<<< orphan*/  current_space () ; 
- int /*<<< orphan*/  iokit_lookup_object_in_space_with_port_name (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int mach_port_name_t ;
+typedef int io_object_t ;
+
+
+ int IKOT_IOKIT_CONNECT ;
+ int current_space () ;
+ int iokit_lookup_object_in_space_with_port_name (int ,int ,int ) ;
 
 io_object_t
 iokit_lookup_connect_ref_current_task(mach_port_name_t name)

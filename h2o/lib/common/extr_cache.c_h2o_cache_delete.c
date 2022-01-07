@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64_t ;
-typedef  int /*<<< orphan*/  khiter_t ;
-struct TYPE_12__ {int /*<<< orphan*/  len; int /*<<< orphan*/  base; } ;
-typedef  TYPE_1__ h2o_iovec_t ;
-struct TYPE_13__ {int /*<<< orphan*/  table; } ;
-typedef  TYPE_2__ h2o_cache_t ;
+
+
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+typedef int uint64_t ;
+typedef int khiter_t ;
+struct TYPE_12__ {int len; int base; } ;
+typedef TYPE_1__ h2o_iovec_t ;
+struct TYPE_13__ {int table; } ;
+typedef TYPE_2__ h2o_cache_t ;
 struct TYPE_14__ {scalar_t__ keyhash; TYPE_1__ key; } ;
-typedef  TYPE_3__ h2o_cache_ref_t ;
-typedef  scalar_t__ h2o_cache_hashcode_t ;
+typedef TYPE_3__ h2o_cache_ref_t ;
+typedef scalar_t__ h2o_cache_hashcode_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  erase_ref (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ h2o_cache_calchash (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kh_end (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kh_get (TYPE_2__*,int /*<<< orphan*/ ,TYPE_3__*) ; 
- int /*<<< orphan*/  lock_cache (TYPE_2__*) ; 
- int /*<<< orphan*/  purge (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  unlock_cache (TYPE_2__*) ; 
+
+ int erase_ref (TYPE_2__*,int ,int ) ;
+ scalar_t__ h2o_cache_calchash (int ,int ) ;
+ int kh_end (int ) ;
+ int kh_get (TYPE_2__*,int ,TYPE_3__*) ;
+ int lock_cache (TYPE_2__*) ;
+ int purge (TYPE_2__*,int ) ;
+ int unlock_cache (TYPE_2__*) ;
 
 void h2o_cache_delete(h2o_cache_t *cache, uint64_t now, h2o_iovec_t key, h2o_cache_hashcode_t keyhash)
 {

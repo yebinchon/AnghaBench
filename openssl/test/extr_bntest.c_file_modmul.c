@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  STANZA ;
-typedef  int /*<<< orphan*/  BN_MONT_CTX ;
-typedef  int /*<<< orphan*/  BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BN_MONT_CTX_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BN_MONT_CTX_new () ; 
- int /*<<< orphan*/  BN_MONT_CTX_set (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BN_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_from_montgomery (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ BN_is_odd (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_mod_mul (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BN_mod_mul_montgomery (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * BN_new () ; 
- int /*<<< orphan*/  BN_nnmod (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BN_to_montgomery (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_ptr (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TEST_true (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ctx ; 
- int /*<<< orphan*/  equalBN (char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * getBN (int /*<<< orphan*/ *,char*) ; 
+
+
+
+typedef int STANZA ;
+typedef int BN_MONT_CTX ;
+typedef int BIGNUM ;
+
+
+ int BN_MONT_CTX_free (int *) ;
+ int * BN_MONT_CTX_new () ;
+ int BN_MONT_CTX_set (int *,int *,int ) ;
+ int BN_free (int *) ;
+ int BN_from_montgomery (int *,int *,int *,int ) ;
+ scalar_t__ BN_is_odd (int *) ;
+ int BN_mod_mul (int *,int *,int *,int *,int ) ;
+ int BN_mod_mul_montgomery (int *,int *,int *,int *,int ) ;
+ int * BN_new () ;
+ int BN_nnmod (int *,int *,int *,int ) ;
+ int BN_to_montgomery (int *,int *,int *,int ) ;
+ int TEST_ptr (int *) ;
+ int TEST_true (int ) ;
+ int ctx ;
+ int equalBN (char*,int *,int *) ;
+ int * getBN (int *,char*) ;
 
 __attribute__((used)) static int file_modmul(STANZA *s)
 {
-    BIGNUM *a = NULL, *b = NULL, *m = NULL, *mod_mul = NULL, *ret = NULL;
+    BIGNUM *a = ((void*)0), *b = ((void*)0), *m = ((void*)0), *mod_mul = ((void*)0), *ret = ((void*)0);
     int st = 0;
 
     if (!TEST_ptr(a = getBN(s, "A"))
@@ -49,12 +49,12 @@ __attribute__((used)) static int file_modmul(STANZA *s)
         goto err;
 
     if (BN_is_odd(m)) {
-        /* Reduce |a| and |b| and test the Montgomery version. */
+
         BN_MONT_CTX *mont = BN_MONT_CTX_new();
         BIGNUM *a_tmp = BN_new();
         BIGNUM *b_tmp = BN_new();
 
-        if (mont == NULL || a_tmp == NULL || b_tmp == NULL
+        if (mont == ((void*)0) || a_tmp == ((void*)0) || b_tmp == ((void*)0)
                 || !TEST_true(BN_MONT_CTX_set(mont, m, ctx))
                 || !TEST_true(BN_nnmod(a_tmp, a, m, ctx))
                 || !TEST_true(BN_nnmod(b_tmp, b, m, ctx))

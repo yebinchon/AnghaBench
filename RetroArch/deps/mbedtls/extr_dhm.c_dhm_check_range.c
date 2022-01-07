@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mbedtls_mpi ;
 
-/* Variables and functions */
- int MBEDTLS_ERR_DHM_BAD_INPUT_DATA ; 
- int /*<<< orphan*/  MBEDTLS_MPI_CHK (int /*<<< orphan*/ ) ; 
- scalar_t__ mbedtls_mpi_cmp_mpi (int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mbedtls_mpi_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mbedtls_mpi_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mbedtls_mpi_lset (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  mbedtls_mpi_sub_int (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int) ; 
+
+
+
+typedef int mbedtls_mpi ;
+
+
+ int MBEDTLS_ERR_DHM_BAD_INPUT_DATA ;
+ int MBEDTLS_MPI_CHK (int ) ;
+ scalar_t__ mbedtls_mpi_cmp_mpi (int const*,int *) ;
+ int mbedtls_mpi_free (int *) ;
+ int mbedtls_mpi_init (int *) ;
+ int mbedtls_mpi_lset (int *,int) ;
+ int mbedtls_mpi_sub_int (int *,int const*,int) ;
 
 __attribute__((used)) static int dhm_check_range( const mbedtls_mpi *param, const mbedtls_mpi *P )
 {

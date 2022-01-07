@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int int64_t ;
 
-/* Variables and functions */
- int* costbl_12 ; 
- int* costbl_4 ; 
- int* costbl_8 ; 
- int* sintbl_12 ; 
- int* sintbl_4 ; 
- int* sintbl_8 ; 
+
+
+
+typedef int int64_t ;
+
+
+ int* costbl_12 ;
+ int* costbl_4 ;
+ int* costbl_8 ;
+ int* sintbl_12 ;
+ int* sintbl_4 ;
+ int* sintbl_8 ;
 
 __attribute__((used)) static void make_filters_from_proto(int (*filter)[8][2], const int *proto, int bands)
 {

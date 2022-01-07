@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
-struct TYPE_3__ {int /*<<< orphan*/  fdt; } ;
-typedef  TYPE_1__ DTBLOB_T ;
 
-/* Variables and functions */
- int FDT_ERR_BADSTRUCTURE ; 
- int FDT_ERR_INTERNAL ; 
- int dtoverlay_read_u32 (void*,int) ; 
- int /*<<< orphan*/  dtoverlay_write_u32 (void*,int,int) ; 
- int fdt_first_property_offset (int /*<<< orphan*/ ,int) ; 
- int fdt_first_subnode (int /*<<< orphan*/ ,int) ; 
- char* fdt_get_name (int /*<<< orphan*/ ,int,int*) ; 
- void* fdt_getprop_by_offset (int /*<<< orphan*/ ,int,char const**,int*) ; 
- void* fdt_getprop_w (int /*<<< orphan*/ ,int,char const*,int*) ; 
- int fdt_next_property_offset (int /*<<< orphan*/ ,int) ; 
- int fdt_next_subnode (int /*<<< orphan*/ ,int) ; 
- int fdt_subnode_offset_namelen (int /*<<< orphan*/ ,int,char const*,int) ; 
- int /*<<< orphan*/  phandle_debug (char*,int,int,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+struct TYPE_3__ {int fdt; } ;
+typedef TYPE_1__ DTBLOB_T ;
+
+
+ int FDT_ERR_BADSTRUCTURE ;
+ int FDT_ERR_INTERNAL ;
+ int dtoverlay_read_u32 (void*,int) ;
+ int dtoverlay_write_u32 (void*,int,int) ;
+ int fdt_first_property_offset (int ,int) ;
+ int fdt_first_subnode (int ,int) ;
+ char* fdt_get_name (int ,int,int*) ;
+ void* fdt_getprop_by_offset (int ,int,char const**,int*) ;
+ void* fdt_getprop_w (int ,int,char const*,int*) ;
+ int fdt_next_property_offset (int ,int) ;
+ int fdt_next_subnode (int ,int) ;
+ int fdt_subnode_offset_namelen (int ,int,char const*,int) ;
+ int phandle_debug (char*,int,int,int) ;
 
 __attribute__((used)) static int dtoverlay_apply_fixups_node(DTBLOB_T *dtb, int fix_off,
                                        int target_off, uint32_t phandle_offset)
 {
-   // The fixups are arranged as a subtree mirroring the structure of the
-   // overall tree. Walk this tree in order. Each property is an array of cells
-   // containing offsets to patch within the corresponding node/property of
-   // the target tree.
+
+
+
+
    int err = 0;
    int prop_off;
    int subfix_off;
 
-   // Merge each property of the node
+
    for (prop_off = fdt_first_property_offset(dtb->fdt, fix_off);
         (prop_off >= 0) && (err == 0);
         prop_off = fdt_next_property_offset(dtb->fdt, prop_off))
@@ -76,7 +76,7 @@ __attribute__((used)) static int dtoverlay_apply_fixups_node(DTBLOB_T *dtb, int 
       }
    }
 
-   // Merge each subnode of the node
+
    for (subfix_off = fdt_first_subnode(dtb->fdt, fix_off);
         (subfix_off >= 0) && (err == 0);
         subfix_off = fdt_next_subnode(dtb->fdt, subfix_off))

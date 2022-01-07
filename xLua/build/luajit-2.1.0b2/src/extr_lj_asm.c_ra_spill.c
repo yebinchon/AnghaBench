@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int int32_t ;
-struct TYPE_6__ {int evenspill; int oddspill; int /*<<< orphan*/  J; TYPE_1__* ir; } ;
-struct TYPE_5__ {int s; int /*<<< orphan*/  t; } ;
-typedef  TYPE_1__ IRIns ;
-typedef  TYPE_2__ ASMState ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LJ_TRERR_SPILLOV ; 
- int REF_TRUE ; 
- scalar_t__ irt_is64 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lj_trace_err (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_assert (int) ; 
- int /*<<< orphan*/  ra_hasspill (int) ; 
- int sps_scale (int) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int int32_t ;
+struct TYPE_6__ {int evenspill; int oddspill; int J; TYPE_1__* ir; } ;
+struct TYPE_5__ {int s; int t; } ;
+typedef TYPE_1__ IRIns ;
+typedef TYPE_2__ ASMState ;
+
+
+ int LJ_TRERR_SPILLOV ;
+ int REF_TRUE ;
+ scalar_t__ irt_is64 (int ) ;
+ int lj_trace_err (int ,int ) ;
+ int lua_assert (int) ;
+ int ra_hasspill (int) ;
+ int sps_scale (int) ;
 
 __attribute__((used)) static int32_t ra_spill(ASMState *as, IRIns *ir)
 {

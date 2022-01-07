@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct git__dirent {int dummy; } ;
-struct TYPE_4__ {int /*<<< orphan*/  entry; } ;
-typedef  TYPE_1__ git__DIR ;
+struct TYPE_4__ {int entry; } ;
+typedef TYPE_1__ git__DIR ;
 
-/* Variables and functions */
- scalar_t__ git__readdir_ext (TYPE_1__*,int /*<<< orphan*/ *,struct git__dirent**,int /*<<< orphan*/ *) ; 
+
+ scalar_t__ git__readdir_ext (TYPE_1__*,int *,struct git__dirent**,int *) ;
 
 struct git__dirent *git__readdir(git__DIR *d)
 {
-	struct git__dirent *result;
-	if (git__readdir_ext(d, &d->entry, &result, NULL) < 0)
-		return NULL;
-	return result;
+ struct git__dirent *result;
+ if (git__readdir_ext(d, &d->entry, &result, ((void*)0)) < 0)
+  return ((void*)0);
+ return result;
 }

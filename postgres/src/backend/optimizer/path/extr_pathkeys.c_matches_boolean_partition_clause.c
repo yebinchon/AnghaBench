@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/ * partexprs; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int * partexprs; } ;
 struct TYPE_5__ {scalar_t__ clause; } ;
-typedef  TYPE_1__ RestrictInfo ;
-typedef  TYPE_2__ RelOptInfo ;
-typedef  int /*<<< orphan*/  Node ;
-typedef  int /*<<< orphan*/  Expr ;
+typedef TYPE_1__ RestrictInfo ;
+typedef TYPE_2__ RelOptInfo ;
+typedef int Node ;
+typedef int Expr ;
 
-/* Variables and functions */
- scalar_t__ equal (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ get_notclausearg (int /*<<< orphan*/ *) ; 
- scalar_t__ is_notclause (int /*<<< orphan*/ *) ; 
- scalar_t__ linitial (int /*<<< orphan*/ ) ; 
+
+ scalar_t__ equal (int *,int *) ;
+ scalar_t__ get_notclausearg (int *) ;
+ scalar_t__ is_notclause (int *) ;
+ scalar_t__ linitial (int ) ;
 
 __attribute__((used)) static bool
 matches_boolean_partition_clause(RestrictInfo *rinfo,
-								 RelOptInfo *partrel, int partkeycol)
+         RelOptInfo *partrel, int partkeycol)
 {
-	Node	   *clause = (Node *) rinfo->clause;
-	Node	   *partexpr = (Node *) linitial(partrel->partexprs[partkeycol]);
+ Node *clause = (Node *) rinfo->clause;
+ Node *partexpr = (Node *) linitial(partrel->partexprs[partkeycol]);
 
-	/* Direct match? */
-	if (equal(partexpr, clause))
-		return true;
-	/* NOT clause? */
-	else if (is_notclause(clause))
-	{
-		Node	   *arg = (Node *) get_notclausearg((Expr *) clause);
 
-		if (equal(partexpr, arg))
-			return true;
-	}
+ if (equal(partexpr, clause))
+  return 1;
 
-	return false;
+ else if (is_notclause(clause))
+ {
+  Node *arg = (Node *) get_notclausearg((Expr *) clause);
+
+  if (equal(partexpr, arg))
+   return 1;
+ }
+
+ return 0;
 }

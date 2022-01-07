@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * remap_fun_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int * remap_fun_t ;
 struct TYPE_3__ {int i_format; } ;
-typedef  TYPE_1__ audio_format_t ;
+typedef TYPE_1__ audio_format_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * RemapAddFL32 ; 
- int /*<<< orphan*/ * RemapAddFL64 ; 
- int /*<<< orphan*/ * RemapAddS16N ; 
- int /*<<< orphan*/ * RemapAddS32N ; 
- int /*<<< orphan*/ * RemapAddU8 ; 
- int /*<<< orphan*/ * RemapCopyFL32 ; 
- int /*<<< orphan*/ * RemapCopyFL64 ; 
- int /*<<< orphan*/ * RemapCopyS16N ; 
- int /*<<< orphan*/ * RemapCopyS32N ; 
- int /*<<< orphan*/ * RemapCopyU8 ; 
-#define  VLC_CODEC_FL32 132 
-#define  VLC_CODEC_FL64 131 
-#define  VLC_CODEC_S16N 130 
-#define  VLC_CODEC_S32N 129 
-#define  VLC_CODEC_U8 128 
+
+ int * RemapAddFL32 ;
+ int * RemapAddFL64 ;
+ int * RemapAddS16N ;
+ int * RemapAddS32N ;
+ int * RemapAddU8 ;
+ int * RemapCopyFL32 ;
+ int * RemapCopyFL64 ;
+ int * RemapCopyS16N ;
+ int * RemapCopyS32N ;
+ int * RemapCopyU8 ;
+
+
+
+
+
 
 __attribute__((used)) static inline remap_fun_t GetRemapFun( audio_format_t *p_format, bool b_add )
 {
@@ -38,15 +38,15 @@ __attribute__((used)) static inline remap_fun_t GetRemapFun( audio_format_t *p_f
     {
         switch( p_format->i_format )
         {
-            case VLC_CODEC_U8:
+            case 128:
                 return RemapAddU8;
-            case VLC_CODEC_S16N:
+            case 130:
                 return RemapAddS16N;
-            case VLC_CODEC_S32N:
+            case 129:
                 return RemapAddS32N;
-            case VLC_CODEC_FL32:
+            case 132:
                 return RemapAddFL32;
-            case VLC_CODEC_FL64:
+            case 131:
                 return RemapAddFL64;
         }
     }
@@ -54,18 +54,18 @@ __attribute__((used)) static inline remap_fun_t GetRemapFun( audio_format_t *p_f
     {
         switch( p_format->i_format )
         {
-            case VLC_CODEC_U8:
+            case 128:
                 return RemapCopyU8;
-            case VLC_CODEC_S16N:
+            case 130:
                 return RemapCopyS16N;
-            case VLC_CODEC_S32N:
+            case 129:
                 return RemapCopyS32N;
-            case VLC_CODEC_FL32:
+            case 132:
                 return RemapCopyFL32;
-            case VLC_CODEC_FL64:
+            case 131:
                 return RemapCopyFL64;
         }
     }
 
-    return NULL;
+    return ((void*)0);
 }

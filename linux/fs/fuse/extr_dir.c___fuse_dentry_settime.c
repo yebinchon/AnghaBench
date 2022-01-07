@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-union fuse_dentry {int /*<<< orphan*/  time; } ;
-typedef  int /*<<< orphan*/  u64 ;
+
+
+
+
+union fuse_dentry {int time; } ;
+typedef int u64 ;
 struct dentry {scalar_t__ d_fsdata; } ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static inline void __fuse_dentry_settime(struct dentry *dentry, u64 time)
 {
-	((union fuse_dentry *) dentry->d_fsdata)->time = time;
+ ((union fuse_dentry *) dentry->d_fsdata)->time = time;
 }

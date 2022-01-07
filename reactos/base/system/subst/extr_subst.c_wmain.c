@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int INT ;
 
-/* Variables and functions */
- int AddSubst (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ConInitStdStreams () ; 
- int /*<<< orphan*/  ConResPrintf (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ConResPuts (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int DeleteSubst (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DumpSubstedDrives () ; 
- int /*<<< orphan*/  IDS_INCORRECT_PARAMETER_COUNT ; 
- int /*<<< orphan*/  IDS_INVALID_PARAMETER ; 
- int /*<<< orphan*/  IDS_USAGE ; 
- int /*<<< orphan*/  StdErr ; 
- int /*<<< orphan*/  StdOut ; 
- int /*<<< orphan*/  _wcsicmp (int /*<<< orphan*/ *,char*) ; 
+
+
+
+typedef int WCHAR ;
+typedef int INT ;
+
+
+ int AddSubst (int *,int *) ;
+ int ConInitStdStreams () ;
+ int ConResPrintf (int ,int ,int *) ;
+ int ConResPuts (int ,int ) ;
+ int DeleteSubst (int *) ;
+ int DumpSubstedDrives () ;
+ int IDS_INCORRECT_PARAMETER_COUNT ;
+ int IDS_INVALID_PARAMETER ;
+ int IDS_USAGE ;
+ int StdErr ;
+ int StdOut ;
+ int _wcsicmp (int *,char*) ;
 
 int wmain(int argc, WCHAR* argv[])
 {
     INT i;
 
-    /* Initialize the Console Standard Streams */
+
     ConInitStdStreams();
 
     for (i = 0; i < argc; i++)

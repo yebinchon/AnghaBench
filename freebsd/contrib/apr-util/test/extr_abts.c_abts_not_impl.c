@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_5__ {TYPE_1__* suite; } ;
-typedef  TYPE_2__ abts_case ;
-struct TYPE_4__ {int /*<<< orphan*/  not_impl; } ;
+typedef TYPE_2__ abts_case ;
+struct TYPE_4__ {int not_impl; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fflush (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,char const*) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  update_status () ; 
- scalar_t__ verbose ; 
+
+ int fflush (int ) ;
+ int fprintf (int ,char*,int,char const*) ;
+ int stderr ;
+ int update_status () ;
+ scalar_t__ verbose ;
 
 void abts_not_impl(abts_case *tc, const char *message, int lineno)
 {

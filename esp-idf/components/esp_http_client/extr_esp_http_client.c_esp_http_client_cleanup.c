@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* esp_http_client_handle_t ;
-typedef  int /*<<< orphan*/  esp_err_t ;
-struct TYPE_7__ {struct TYPE_7__* auth_header; struct TYPE_7__* location; struct TYPE_7__* current_header_key; struct TYPE_7__* auth_data; struct TYPE_7__* parser_settings; struct TYPE_7__* parser; struct TYPE_7__* response; struct TYPE_7__* buffer; struct TYPE_7__* data; int /*<<< orphan*/  headers; struct TYPE_7__* request; int /*<<< orphan*/  transport_list; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ESP_FAIL ; 
- int /*<<< orphan*/  ESP_OK ; 
- int /*<<< orphan*/  _clear_auth_data (TYPE_1__*) ; 
- int /*<<< orphan*/  _clear_connection_info (TYPE_1__*) ; 
- int /*<<< orphan*/  esp_http_client_close (TYPE_1__*) ; 
- int /*<<< orphan*/  esp_transport_list_destroy (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (TYPE_1__*) ; 
- int /*<<< orphan*/  http_header_destroy (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef TYPE_1__* esp_http_client_handle_t ;
+typedef int esp_err_t ;
+struct TYPE_7__ {struct TYPE_7__* auth_header; struct TYPE_7__* location; struct TYPE_7__* current_header_key; struct TYPE_7__* auth_data; struct TYPE_7__* parser_settings; struct TYPE_7__* parser; struct TYPE_7__* response; struct TYPE_7__* buffer; struct TYPE_7__* data; int headers; struct TYPE_7__* request; int transport_list; } ;
+
+
+ int ESP_FAIL ;
+ int ESP_OK ;
+ int _clear_auth_data (TYPE_1__*) ;
+ int _clear_connection_info (TYPE_1__*) ;
+ int esp_http_client_close (TYPE_1__*) ;
+ int esp_transport_list_destroy (int ) ;
+ int free (TYPE_1__*) ;
+ int http_header_destroy (int ) ;
 
 esp_err_t esp_http_client_cleanup(esp_http_client_handle_t client)
 {
-    if (client == NULL) {
+    if (client == ((void*)0)) {
         return ESP_FAIL;
     }
     esp_http_client_close(client);

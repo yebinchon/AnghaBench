@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint16_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_RL16 (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  av_crc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,unsigned int) ; 
- int /*<<< orphan*/  crc_2D ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint16_t ;
+
+
+ int AV_RL16 (int const*) ;
+ int av_crc (int ,int ,int const*,unsigned int) ;
+ int crc_2D ;
 
 uint16_t ff_mlp_checksum16(const uint8_t *buf, unsigned int buf_size)
 {

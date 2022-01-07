@@ -1,64 +1,64 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  backslashResult ;
-typedef  int /*<<< orphan*/  PsqlScanState ;
-typedef  int /*<<< orphan*/  PQExpBuffer ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OT_NORMAL ; 
- int /*<<< orphan*/  PSQL_CMD_ERROR ; 
- int /*<<< orphan*/  PSQL_CMD_SKIP_LINE ; 
- int /*<<< orphan*/  copy_previous_query (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int do_watch (int /*<<< orphan*/ ,double) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  ignore_slash_options (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  psql_scan_reset (int /*<<< orphan*/ ) ; 
- char* psql_scan_slash_option (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  resetPQExpBuffer (int /*<<< orphan*/ ) ; 
- double strtod (char*,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int backslashResult ;
+typedef int PsqlScanState ;
+typedef int PQExpBuffer ;
+
+
+ int OT_NORMAL ;
+ int PSQL_CMD_ERROR ;
+ int PSQL_CMD_SKIP_LINE ;
+ int copy_previous_query (int ,int ) ;
+ int do_watch (int ,double) ;
+ int free (char*) ;
+ int ignore_slash_options (int ) ;
+ int psql_scan_reset (int ) ;
+ char* psql_scan_slash_option (int ,int ,int *,int) ;
+ int resetPQExpBuffer (int ) ;
+ double strtod (char*,int *) ;
 
 __attribute__((used)) static backslashResult
 exec_command_watch(PsqlScanState scan_state, bool active_branch,
-				   PQExpBuffer query_buf, PQExpBuffer previous_buf)
+       PQExpBuffer query_buf, PQExpBuffer previous_buf)
 {
-	bool		success = true;
+ bool success = 1;
 
-	if (active_branch)
-	{
-		char	   *opt = psql_scan_slash_option(scan_state,
-												 OT_NORMAL, NULL, true);
-		double		sleep = 2;
+ if (active_branch)
+ {
+  char *opt = psql_scan_slash_option(scan_state,
+             OT_NORMAL, ((void*)0), 1);
+  double sleep = 2;
 
-		/* Convert optional sleep-length argument */
-		if (opt)
-		{
-			sleep = strtod(opt, NULL);
-			if (sleep <= 0)
-				sleep = 1;
-			free(opt);
-		}
 
-		/* If query_buf is empty, recall and execute previous query */
-		copy_previous_query(query_buf, previous_buf);
+  if (opt)
+  {
+   sleep = strtod(opt, ((void*)0));
+   if (sleep <= 0)
+    sleep = 1;
+   free(opt);
+  }
 
-		success = do_watch(query_buf, sleep);
 
-		/* Reset the query buffer as though for \r */
-		resetPQExpBuffer(query_buf);
-		psql_scan_reset(scan_state);
-	}
-	else
-		ignore_slash_options(scan_state);
+  copy_previous_query(query_buf, previous_buf);
 
-	return success ? PSQL_CMD_SKIP_LINE : PSQL_CMD_ERROR;
+  success = do_watch(query_buf, sleep);
+
+
+  resetPQExpBuffer(query_buf);
+  psql_scan_reset(scan_state);
+ }
+ else
+  ignore_slash_options(scan_state);
+
+ return success ? PSQL_CMD_SKIP_LINE : PSQL_CMD_ERROR;
 }

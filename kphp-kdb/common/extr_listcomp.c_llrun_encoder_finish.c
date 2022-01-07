@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct list_encoder {int k; int K; int* L; int /*<<< orphan*/  bw; int /*<<< orphan*/  N; } ;
-typedef  int /*<<< orphan*/  dyn_mark_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HUFFMAN_MAX_CODE_LENGTH ; 
- int /*<<< orphan*/  assert (int) ; 
- size_t bsr (int) ; 
- int /*<<< orphan*/  bwrite_huffman_codes (int /*<<< orphan*/ *,int*,int) ; 
- int /*<<< orphan*/  bwrite_nbits (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  canonical_huffman (int*,int,int /*<<< orphan*/ ,int*,int*,int*) ; 
- int /*<<< orphan*/  dyn_mark (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dyn_release (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (int*) ; 
- int* get_huffman_codes_lengths (int*,int,int /*<<< orphan*/ ,int*) ; 
- int get_max_possible_gap (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  list_encode_nbits (struct list_encoder*,int,int) ; 
- scalar_t__ llhuf_check_codes_lengths (int*,int) ; 
- int llrun_get_buckets_quantity (int) ; 
- int* zmalloc0 (int) ; 
+
+
+
+struct list_encoder {int k; int K; int* L; int bw; int N; } ;
+typedef int dyn_mark_t ;
+
+
+ int HUFFMAN_MAX_CODE_LENGTH ;
+ int assert (int) ;
+ size_t bsr (int) ;
+ int bwrite_huffman_codes (int *,int*,int) ;
+ int bwrite_nbits (int *,int,int) ;
+ int canonical_huffman (int*,int,int ,int*,int*,int*) ;
+ int dyn_mark (int ) ;
+ int dyn_release (int ) ;
+ int free (int*) ;
+ int* get_huffman_codes_lengths (int*,int,int ,int*) ;
+ int get_max_possible_gap (int ,int) ;
+ int list_encode_nbits (struct list_encoder*,int,int) ;
+ scalar_t__ llhuf_check_codes_lengths (int*,int) ;
+ int llrun_get_buckets_quantity (int) ;
+ int* zmalloc0 (int) ;
 
 __attribute__((used)) static void llrun_encoder_finish (struct list_encoder *enc) {
   dyn_mark_t mrk;

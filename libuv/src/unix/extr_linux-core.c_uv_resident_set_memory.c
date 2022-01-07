@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int ssize_t ;
-typedef  int /*<<< orphan*/  buf ;
 
-/* Variables and functions */
- scalar_t__ EINTR ; 
- int /*<<< orphan*/  O_RDONLY ; 
- int UV_EINVAL ; 
- int UV__ERR (scalar_t__) ; 
- scalar_t__ errno ; 
- long getpagesize () ; 
- int open (char*,int /*<<< orphan*/ ) ; 
- int read (int,char*,int) ; 
- char* strchr (char const*,char) ; 
- long strtol (char const*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  uv__close (int) ; 
+
+
+
+typedef int ssize_t ;
+typedef int buf ;
+
+
+ scalar_t__ EINTR ;
+ int O_RDONLY ;
+ int UV_EINVAL ;
+ int UV__ERR (scalar_t__) ;
+ scalar_t__ errno ;
+ long getpagesize () ;
+ int open (char*,int ) ;
+ int read (int,char*,int) ;
+ char* strchr (char const*,char) ;
+ long strtol (char const*,int *,int) ;
+ int uv__close (int) ;
 
 int uv_resident_set_memory(size_t* rss) {
   char buf[1024];
@@ -51,7 +51,7 @@ int uv_resident_set_memory(size_t* rss) {
   buf[n] = '\0';
 
   s = strchr(buf, ' ');
-  if (s == NULL)
+  if (s == ((void*)0))
     goto err;
 
   s += 1;
@@ -59,17 +59,17 @@ int uv_resident_set_memory(size_t* rss) {
     goto err;
 
   s = strchr(s, ')');
-  if (s == NULL)
+  if (s == ((void*)0))
     goto err;
 
   for (i = 1; i <= 22; i++) {
     s = strchr(s + 1, ' ');
-    if (s == NULL)
+    if (s == ((void*)0))
       goto err;
   }
 
   errno = 0;
-  val = strtol(s, NULL, 10);
+  val = strtol(s, ((void*)0), 10);
   if (errno != 0)
     goto err;
   if (val < 0)

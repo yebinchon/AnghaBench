@@ -1,137 +1,137 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u32 ;
-typedef  int /*<<< orphan*/  acpi_object_type ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACPI_TYPE_BUFFER ; 
- int /*<<< orphan*/  ACPI_TYPE_INTEGER ; 
- int /*<<< orphan*/  ACPI_TYPE_PACKAGE ; 
- int /*<<< orphan*/  ACPI_TYPE_STRING ; 
+
+
+
+typedef int u32 ;
+typedef int acpi_object_type ;
+
+
+ int ACPI_TYPE_BUFFER ;
+ int ACPI_TYPE_INTEGER ;
+ int ACPI_TYPE_PACKAGE ;
+ int ACPI_TYPE_STRING ;
 
 char *acpi_db_get_next_token(char *string,
-			     char **next, acpi_object_type *return_type)
+        char **next, acpi_object_type *return_type)
 {
-	char *start;
-	u32 depth;
-	acpi_object_type type = ACPI_TYPE_INTEGER;
+ char *start;
+ u32 depth;
+ acpi_object_type type = ACPI_TYPE_INTEGER;
 
-	/* At end of buffer? */
 
-	if (!string || !(*string)) {
-		return (NULL);
-	}
 
-	/* Remove any spaces at the beginning */
+ if (!string || !(*string)) {
+  return (((void*)0));
+ }
 
-	if (*string == ' ') {
-		while (*string && (*string == ' ')) {
-			string++;
-		}
 
-		if (!(*string)) {
-			return (NULL);
-		}
-	}
 
-	switch (*string) {
-	case '"':
+ if (*string == ' ') {
+  while (*string && (*string == ' ')) {
+   string++;
+  }
 
-		/* This is a quoted string, scan until closing quote */
+  if (!(*string)) {
+   return (((void*)0));
+  }
+ }
 
-		string++;
-		start = string;
-		type = ACPI_TYPE_STRING;
+ switch (*string) {
+ case '"':
 
-		/* Find end of string */
 
-		while (*string && (*string != '"')) {
-			string++;
-		}
-		break;
 
-	case '(':
+  string++;
+  start = string;
+  type = ACPI_TYPE_STRING;
 
-		/* This is the start of a buffer, scan until closing paren */
 
-		string++;
-		start = string;
-		type = ACPI_TYPE_BUFFER;
 
-		/* Find end of buffer */
+  while (*string && (*string != '"')) {
+   string++;
+  }
+  break;
 
-		while (*string && (*string != ')')) {
-			string++;
-		}
-		break;
+ case '(':
 
-	case '[':
 
-		/* This is the start of a package, scan until closing bracket */
 
-		string++;
-		depth = 1;
-		start = string;
-		type = ACPI_TYPE_PACKAGE;
+  string++;
+  start = string;
+  type = ACPI_TYPE_BUFFER;
 
-		/* Find end of package (closing bracket) */
 
-		while (*string) {
 
-			/* Handle String package elements */
+  while (*string && (*string != ')')) {
+   string++;
+  }
+  break;
 
-			if (*string == '"') {
-				/* Find end of string */
+ case '[':
 
-				string++;
-				while (*string && (*string != '"')) {
-					string++;
-				}
-				if (!(*string)) {
-					break;
-				}
-			} else if (*string == '[') {
-				depth++;	/* A nested package declaration */
-			} else if (*string == ']') {
-				depth--;
-				if (depth == 0) {	/* Found final package closing bracket */
-					break;
-				}
-			}
 
-			string++;
-		}
-		break;
 
-	default:
+  string++;
+  depth = 1;
+  start = string;
+  type = ACPI_TYPE_PACKAGE;
 
-		start = string;
 
-		/* Find end of token */
 
-		while (*string && (*string != ' ')) {
-			string++;
-		}
-		break;
-	}
+  while (*string) {
 
-	if (!(*string)) {
-		*next = NULL;
-	} else {
-		*string = 0;
-		*next = string + 1;
-	}
 
-	*return_type = type;
-	return (start);
+
+   if (*string == '"') {
+
+
+    string++;
+    while (*string && (*string != '"')) {
+     string++;
+    }
+    if (!(*string)) {
+     break;
+    }
+   } else if (*string == '[') {
+    depth++;
+   } else if (*string == ']') {
+    depth--;
+    if (depth == 0) {
+     break;
+    }
+   }
+
+   string++;
+  }
+  break;
+
+ default:
+
+  start = string;
+
+
+
+  while (*string && (*string != ' ')) {
+   string++;
+  }
+  break;
+ }
+
+ if (!(*string)) {
+  *next = ((void*)0);
+ } else {
+  *string = 0;
+  *next = string + 1;
+ }
+
+ *return_type = type;
+ return (start);
 }

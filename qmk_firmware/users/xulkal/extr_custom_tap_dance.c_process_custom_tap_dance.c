@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint16_t ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint16_t ;
 struct TYPE_4__ {scalar_t__ pressed; } ;
 struct TYPE_5__ {TYPE_1__ event; } ;
-typedef  TYPE_2__ keyrecord_t ;
+typedef TYPE_2__ keyrecord_t ;
 
-/* Variables and functions */
- scalar_t__ KC_TRANSPARENT ; 
- scalar_t__ TAPPING_TERM ; 
- scalar_t__ TD_MAX ; 
- scalar_t__ TD_MIN ; 
- int /*<<< orphan*/  run_custom_tap_dance (int) ; 
- scalar_t__ td_keycode ; 
- scalar_t__ td_timer ; 
- scalar_t__ timer_expired (scalar_t__) ; 
- scalar_t__ timer_read () ; 
+
+ scalar_t__ KC_TRANSPARENT ;
+ scalar_t__ TAPPING_TERM ;
+ scalar_t__ TD_MAX ;
+ scalar_t__ TD_MIN ;
+ int run_custom_tap_dance (int) ;
+ scalar_t__ td_keycode ;
+ scalar_t__ td_timer ;
+ scalar_t__ timer_expired (scalar_t__) ;
+ scalar_t__ timer_read () ;
 
 bool process_custom_tap_dance(uint16_t keycode, keyrecord_t *record)
 {
@@ -42,10 +42,10 @@ bool process_custom_tap_dance(uint16_t keycode, keyrecord_t *record)
             else
                 run_custom_tap_dance(1);
         }
-        return false;
+        return 0;
     }
 
     if (td_keycode != KC_TRANSPARENT)
         run_custom_tap_dance(0);
-    return true;
+    return 1;
 }

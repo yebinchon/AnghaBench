@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {unsigned int uTicFreq; unsigned int lRangeMax; unsigned int lRangeMin; int* tics; unsigned int uNumTics; } ;
-typedef  TYPE_1__ TRACKBAR_INFO ;
-typedef  int /*<<< orphan*/  DWORD ;
+typedef TYPE_1__ TRACKBAR_INFO ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Free (int*) ; 
- int /*<<< orphan*/  NM_OUTOFMEMORY ; 
- int* ReAlloc (int*,unsigned int) ; 
- int /*<<< orphan*/  notify (TYPE_1__*,int /*<<< orphan*/ ) ; 
+
+ int Free (int*) ;
+ int NM_OUTOFMEMORY ;
+ int* ReAlloc (int*,unsigned int) ;
+ int notify (TYPE_1__*,int ) ;
 
 __attribute__((used)) static void TRACKBAR_RecalculateTics (TRACKBAR_INFO *infoPtr)
 {
@@ -28,26 +28,26 @@ __attribute__((used)) static void TRACKBAR_RecalculateTics (TRACKBAR_INFO *infoP
 
     if (infoPtr->uTicFreq && infoPtr->lRangeMax >= infoPtr->lRangeMin) {
         nrTics=(infoPtr->lRangeMax - infoPtr->lRangeMin)/infoPtr->uTicFreq;
-        /* don't add extra tic if there's no remainder */
+
         if (nrTics && ((infoPtr->lRangeMax - infoPtr->lRangeMin) % infoPtr->uTicFreq == 0))
           nrTics--;
     }
     else {
         Free (infoPtr->tics);
-        infoPtr->tics = NULL;
+        infoPtr->tics = ((void*)0);
         infoPtr->uNumTics = 0;
         return;
     }
 
     if (nrTics != infoPtr->uNumTics) {
-    	infoPtr->tics=ReAlloc (infoPtr->tics,
+     infoPtr->tics=ReAlloc (infoPtr->tics,
                                         (nrTics+1)*sizeof (DWORD));
-	if (!infoPtr->tics) {
-	    infoPtr->uNumTics = 0;
-	    notify(infoPtr, NM_OUTOFMEMORY);
-	    return;
-	}
-    	infoPtr->uNumTics = nrTics;
+ if (!infoPtr->tics) {
+     infoPtr->uNumTics = 0;
+     notify(infoPtr, NM_OUTOFMEMORY);
+     return;
+ }
+     infoPtr->uNumTics = nrTics;
     }
 
     tic = infoPtr->lRangeMin + infoPtr->uTicFreq;

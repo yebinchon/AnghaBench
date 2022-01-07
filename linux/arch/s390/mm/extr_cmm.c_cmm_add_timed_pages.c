@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  cmm_kick_thread () ; 
- long cmm_timed_pages_target ; 
+ int cmm_kick_thread () ;
+ long cmm_timed_pages_target ;
 
 __attribute__((used)) static void cmm_add_timed_pages(long nr)
 {
-	cmm_timed_pages_target += nr;
-	cmm_kick_thread();
+ cmm_timed_pages_target += nr;
+ cmm_kick_thread();
 }

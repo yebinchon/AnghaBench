@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VOID ;
-typedef  int UINT_PTR ;
-struct TYPE_3__ {int Transparancy; int /*<<< orphan*/  hSelf; int /*<<< orphan*/  bOpaque; } ;
-typedef  int /*<<< orphan*/  RECT ;
-typedef  int /*<<< orphan*/  POINT ;
-typedef  TYPE_1__* PFLT_WND ;
-typedef  int LONG_PTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GWL_EXSTYLE ; 
- int /*<<< orphan*/  GetCursorPos (int /*<<< orphan*/ *) ; 
- int GetWindowLongPtr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetWindowRect (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
-#define  ID_TIMER1 130 
-#define  ID_TIMER2 129 
-#define  ID_TIMER3 128 
- int /*<<< orphan*/  KillTimer (int /*<<< orphan*/ ,int const) ; 
- int /*<<< orphan*/  LWA_ALPHA ; 
- int /*<<< orphan*/  PtInRect (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetLayeredWindowAttributes (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetTimer (int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SetWindowLongPtr (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  TRUE ; 
- int WS_EX_LAYERED ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int VOID ;
+typedef int UINT_PTR ;
+struct TYPE_3__ {int Transparancy; int hSelf; int bOpaque; } ;
+typedef int RECT ;
+typedef int POINT ;
+typedef TYPE_1__* PFLT_WND ;
+typedef int LONG_PTR ;
+
+
+ int FALSE ;
+ int GWL_EXSTYLE ;
+ int GetCursorPos (int *) ;
+ int GetWindowLongPtr (int ,int ) ;
+ int GetWindowRect (int ,int *) ;
+
+
+
+ int KillTimer (int ,int const) ;
+ int LWA_ALPHA ;
+ int PtInRect (int *,int ) ;
+ int SetLayeredWindowAttributes (int ,int ,int,int ) ;
+ int SetTimer (int ,int,int,int *) ;
+ int SetWindowLongPtr (int ,int ,int) ;
+ int TRUE ;
+ int WS_EX_LAYERED ;
 
 __attribute__((used)) static VOID
 DoTimer(PFLT_WND FltInfo,
@@ -43,16 +43,16 @@ DoTimer(PFLT_WND FltInfo,
 {
     switch (idTimer)
     {
-        /* timer to check if cursor is in toolbar coords */
-        case ID_TIMER1:
+
+        case 130:
         {
             POINT pt;
 
-            /* kill timer if toobar is not opaque */
+
             if (FltInfo->bOpaque != TRUE)
             {
                 KillTimer(FltInfo->hSelf,
-                          ID_TIMER1);
+                          130);
                 break;
             }
 
@@ -67,30 +67,30 @@ DoTimer(PFLT_WND FltInfo,
                                   pt))
                     {
                         KillTimer(FltInfo->hSelf,
-                                  ID_TIMER1);
+                                  130);
                         KillTimer(FltInfo->hSelf,
-                                  ID_TIMER2);
+                                  129);
 
-                        /* timer to fade out toolbar */
+
                         SetTimer(FltInfo->hSelf,
-                                 ID_TIMER3,
+                                 128,
                                  50,
-                                 NULL);
+                                 ((void*)0));
                     }
                 }
             }
         }
         break;
 
-        /* timer to fade in toolbar */
-        case ID_TIMER2:
+
+        case 129:
         {
             SetLayeredWindowAttributes(FltInfo->hSelf,
                                        0,
                                        (255 * FltInfo->Transparancy) / 100,
                                        LWA_ALPHA);
 
-            /* increment transparancy until it is opaque (100) */
+
             FltInfo->Transparancy += 5;
 
             if (FltInfo->Transparancy == 100)
@@ -103,12 +103,12 @@ DoTimer(PFLT_WND FltInfo,
                 FltInfo->bOpaque = TRUE;
 
                 KillTimer(FltInfo->hSelf,
-                          ID_TIMER2);
+                          129);
             }
         }
         break;
 
-        case ID_TIMER3:
+        case 128:
         {
             LONG_PTR Style;
 
@@ -126,7 +126,7 @@ DoTimer(PFLT_WND FltInfo,
 
             if (FltInfo->Transparancy >= 60)
             {
-                /* set the tranclucency to 60% */
+
                 SetLayeredWindowAttributes(FltInfo->hSelf,
                                            0,
                                            (255 * FltInfo->Transparancy) / 100,
@@ -137,7 +137,7 @@ DoTimer(PFLT_WND FltInfo,
                     FltInfo->bOpaque = FALSE;
 
                     KillTimer(FltInfo->hSelf,
-                              ID_TIMER3);
+                              128);
                 }
 
             }

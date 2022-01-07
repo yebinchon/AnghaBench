@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u64 ;
+
+
+
+
+typedef int u64 ;
 struct btrfs_fs_info {int dummy; } ;
 
-/* Variables and functions */
- int unpin_extent_range (struct btrfs_fs_info*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+ int unpin_extent_range (struct btrfs_fs_info*,int ,int ,int) ;
 
 int btrfs_error_unpin_extent_range(struct btrfs_fs_info *fs_info,
-				   u64 start, u64 end)
+       u64 start, u64 end)
 {
-	return unpin_extent_range(fs_info, start, end, false);
+ return unpin_extent_range(fs_info, start, end, 0);
 }

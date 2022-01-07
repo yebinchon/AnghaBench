@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_9__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_12__ TYPE_9__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
 struct TYPE_12__ {scalar_t__ data; } ;
-struct TYPE_11__ {int pix_fmt; int /*<<< orphan*/  height; int /*<<< orphan*/  width; } ;
-struct TYPE_10__ {int* linesize; scalar_t__* data; TYPE_9__** buf; int /*<<< orphan*/  height; int /*<<< orphan*/  width; } ;
-typedef  TYPE_1__ AVFrame ;
-typedef  TYPE_2__ AVCodecContext ;
-typedef  int /*<<< orphan*/  AVBufferPool ;
+struct TYPE_11__ {int pix_fmt; int height; int width; } ;
+struct TYPE_10__ {int* linesize; scalar_t__* data; TYPE_9__** buf; int height; int width; } ;
+typedef TYPE_1__ AVFrame ;
+typedef TYPE_2__ AVCodecContext ;
+typedef int AVBufferPool ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
-#define  AV_PIX_FMT_NV12 129 
-#define  AV_PIX_FMT_P010 128 
- int /*<<< orphan*/  ENOMEM ; 
- int FFALIGN (int /*<<< orphan*/ ,int) ; 
- TYPE_9__* av_buffer_pool_get (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  av_log (TYPE_2__*,int /*<<< orphan*/ ,char*) ; 
- int ff_attach_decode_data (TYPE_1__*) ; 
- int /*<<< orphan*/  ff_decode_frame_props (TYPE_2__*,TYPE_1__*) ; 
+
+ int AVERROR (int ) ;
+ int AV_LOG_ERROR ;
+
+
+ int ENOMEM ;
+ int FFALIGN (int ,int) ;
+ TYPE_9__* av_buffer_pool_get (int *) ;
+ int av_log (TYPE_2__*,int ,char*) ;
+ int ff_attach_decode_data (TYPE_1__*) ;
+ int ff_decode_frame_props (TYPE_2__*,TYPE_1__*) ;
 
 __attribute__((used)) static int ff_qsv_get_continuous_buffer(AVCodecContext *avctx, AVFrame *frame, AVBufferPool *pool)
 {
@@ -38,14 +38,14 @@ __attribute__((used)) static int ff_qsv_get_continuous_buffer(AVCodecContext *av
 
     ff_decode_frame_props(avctx, frame);
 
-    frame->width       = avctx->width;
-    frame->height      = avctx->height;
+    frame->width = avctx->width;
+    frame->height = avctx->height;
 
     switch (avctx->pix_fmt) {
-    case AV_PIX_FMT_NV12:
+    case 129:
         frame->linesize[0] = FFALIGN(avctx->width, 128);
         break;
-    case AV_PIX_FMT_P010:
+    case 128:
         frame->linesize[0] = 2 * FFALIGN(avctx->width, 128);
         break;
     default:
@@ -54,7 +54,7 @@ __attribute__((used)) static int ff_qsv_get_continuous_buffer(AVCodecContext *av
     }
 
     frame->linesize[1] = frame->linesize[0];
-    frame->buf[0]      = av_buffer_pool_get(pool);
+    frame->buf[0] = av_buffer_pool_get(pool);
     if (!frame->buf[0])
         return AVERROR(ENOMEM);
 

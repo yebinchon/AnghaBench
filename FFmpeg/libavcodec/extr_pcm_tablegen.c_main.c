@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  WRITE_ARRAY (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  linear_to_alaw ; 
- int /*<<< orphan*/  linear_to_ulaw ; 
- int /*<<< orphan*/  linear_to_vidc ; 
- int /*<<< orphan*/  pcm_alaw_tableinit () ; 
- int /*<<< orphan*/  pcm_ulaw_tableinit () ; 
- int /*<<< orphan*/  pcm_vidc_tableinit () ; 
- int /*<<< orphan*/  uint8_t ; 
- int /*<<< orphan*/  write_fileheader () ; 
+ int WRITE_ARRAY (char*,int ,int ) ;
+ int linear_to_alaw ;
+ int linear_to_ulaw ;
+ int linear_to_vidc ;
+ int pcm_alaw_tableinit () ;
+ int pcm_ulaw_tableinit () ;
+ int pcm_vidc_tableinit () ;
+ int uint8_t ;
+ int write_fileheader () ;
 
 int main(void)
 {

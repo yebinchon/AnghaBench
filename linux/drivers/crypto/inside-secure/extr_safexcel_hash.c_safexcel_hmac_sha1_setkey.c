@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
+
+
+
+
+typedef int u8 ;
 struct crypto_ahash {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SHA1_DIGEST_SIZE ; 
- int safexcel_hmac_alg_setkey (struct crypto_ahash*,int /*<<< orphan*/  const*,unsigned int,char*,int /*<<< orphan*/ ) ; 
+
+ int SHA1_DIGEST_SIZE ;
+ int safexcel_hmac_alg_setkey (struct crypto_ahash*,int const*,unsigned int,char*,int ) ;
 
 __attribute__((used)) static int safexcel_hmac_sha1_setkey(struct crypto_ahash *tfm, const u8 *key,
-				     unsigned int keylen)
+         unsigned int keylen)
 {
-	return safexcel_hmac_alg_setkey(tfm, key, keylen, "safexcel-sha1",
-					SHA1_DIGEST_SIZE);
+ return safexcel_hmac_alg_setkey(tfm, key, keylen, "safexcel-sha1",
+     SHA1_DIGEST_SIZE);
 }

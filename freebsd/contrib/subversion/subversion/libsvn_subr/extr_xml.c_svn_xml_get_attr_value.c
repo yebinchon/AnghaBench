@@ -1,18 +1,10 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ strcmp (char const* const,char const*) ; 
+ scalar_t__ strcmp (char const* const,char const*) ;
 
 const char *
 svn_xml_get_attr_value(const char *name, const char *const *atts)
@@ -22,9 +14,9 @@ svn_xml_get_attr_value(const char *name, const char *const *atts)
       if (strcmp(atts[0], name) == 0)
         return atts[1];
       else
-        atts += 2; /* continue looping */
+        atts += 2;
     }
 
-  /* Else no such attribute name seen. */
-  return NULL;
+
+  return ((void*)0);
 }

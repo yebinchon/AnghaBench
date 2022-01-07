@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {scalar_t__ base_font; int /*<<< orphan*/  attr; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_5__ {scalar_t__ base_font; int attr; } ;
 struct TYPE_4__ {char* tag_name; int* tag_name2; scalar_t__ base_font; } ;
-typedef  size_t HPDF_UINT ;
-typedef  TYPE_1__* HPDF_TTFontDefAttr ;
-typedef  TYPE_2__* HPDF_FontDef ;
-typedef  int /*<<< orphan*/  HPDF_BYTE ;
+typedef size_t HPDF_UINT ;
+typedef TYPE_1__* HPDF_TTFontDefAttr ;
+typedef TYPE_2__* HPDF_FontDef ;
+typedef int HPDF_BYTE ;
 
-/* Variables and functions */
- int HPDF_LIMIT_MAX_NAME_LEN ; 
- int /*<<< orphan*/  HPDF_MemCpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  HPDF_MemSet (char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HPDF_PTRACE (char*) ; 
- size_t HPDF_StrLen (char*,int) ; 
- size_t HPDF_TTF_FONT_TAG_LEN ; 
+
+ int HPDF_LIMIT_MAX_NAME_LEN ;
+ int HPDF_MemCpy (int *,int *,int) ;
+ int HPDF_MemSet (char*,int ,int) ;
+ int HPDF_PTRACE (char*) ;
+ size_t HPDF_StrLen (char*,int) ;
+ size_t HPDF_TTF_FONT_TAG_LEN ;
 
 void
-HPDF_TTFontDef_SetTagName  (HPDF_FontDef   fontdef,
-                            char     *tag)
+HPDF_TTFontDef_SetTagName (HPDF_FontDef fontdef,
+                            char *tag)
 {
     HPDF_TTFontDefAttr attr = (HPDF_TTFontDefAttr)fontdef->attr;
     char buf[HPDF_LIMIT_MAX_NAME_LEN + 1];

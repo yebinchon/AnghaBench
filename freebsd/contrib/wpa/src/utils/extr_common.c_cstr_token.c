@@ -1,40 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ os_strchr (char const*,char const) ; 
+ scalar_t__ os_strchr (char const*,char const) ;
 
 const char * cstr_token(const char *str, const char *delim, const char **last)
 {
-	const char *end, *token = str;
+ const char *end, *token = str;
 
-	if (!str || !delim || !last)
-		return NULL;
+ if (!str || !delim || !last)
+  return ((void*)0);
 
-	if (*last)
-		token = *last;
+ if (*last)
+  token = *last;
 
-	while (*token && os_strchr(delim, *token))
-		token++;
+ while (*token && os_strchr(delim, *token))
+  token++;
 
-	if (!*token)
-		return NULL;
+ if (!*token)
+  return ((void*)0);
 
-	end = token + 1;
+ end = token + 1;
 
-	while (*end && !os_strchr(delim, *end))
-		end++;
+ while (*end && !os_strchr(delim, *end))
+  end++;
 
-	*last = end;
-	return token;
+ *last = end;
+ return token;
 }

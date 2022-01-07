@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct orangefs_khandle {int /*<<< orphan*/  u; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memcpy (void*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  memset (void*,int /*<<< orphan*/ ,int) ; 
+
+
+
+struct orangefs_khandle {int u; } ;
+
+
+ int memcpy (void*,int ,int) ;
+ int memset (void*,int ,int) ;
 
 __attribute__((used)) static inline void ORANGEFS_khandle_to(const struct orangefs_khandle *kh,
-				   void *p, int size)
+       void *p, int size)
 {
 
-	memcpy(p, kh->u, 16);
-	memset(p + 16, 0, size - 16);
+ memcpy(p, kh->u, 16);
+ memset(p + 16, 0, size - 16);
 
 }

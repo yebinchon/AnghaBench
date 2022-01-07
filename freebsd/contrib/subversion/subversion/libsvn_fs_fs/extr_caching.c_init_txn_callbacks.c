@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * pool; } ;
-typedef  TYPE_1__ svn_fs_t ;
-typedef  int /*<<< orphan*/  svn_cache__t ;
-struct txn_cleanup_baton_t {int /*<<< orphan*/ * fs_pool; int /*<<< orphan*/ * txn_pool; int /*<<< orphan*/ ** to_reset; int /*<<< orphan*/ * txn_cache; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- struct txn_cleanup_baton_t* apr_palloc (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  apr_pool_cleanup_null ; 
- int /*<<< orphan*/  apr_pool_cleanup_register (int /*<<< orphan*/ *,struct txn_cleanup_baton_t*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  remove_txn_cache_fs ; 
- int /*<<< orphan*/  remove_txn_cache_txn ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * pool; } ;
+typedef TYPE_1__ svn_fs_t ;
+typedef int svn_cache__t ;
+struct txn_cleanup_baton_t {int * fs_pool; int * txn_pool; int ** to_reset; int * txn_cache; } ;
+typedef int apr_pool_t ;
+
+
+ struct txn_cleanup_baton_t* apr_palloc (int *,int) ;
+ int apr_pool_cleanup_null ;
+ int apr_pool_cleanup_register (int *,struct txn_cleanup_baton_t*,int ,int ) ;
+ int remove_txn_cache_fs ;
+ int remove_txn_cache_txn ;
 
 __attribute__((used)) static void
 init_txn_callbacks(svn_fs_t *fs,
                    svn_cache__t **cache,
                    apr_pool_t *pool)
 {
-  if (*cache != NULL)
+  if (*cache != ((void*)0))
     {
       struct txn_cleanup_baton_t *baton;
 
@@ -39,10 +39,10 @@ init_txn_callbacks(svn_fs_t *fs,
       baton->txn_pool = pool;
       baton->fs_pool = fs->pool;
 
-      /* If any of these pools gets cleaned, we must reset the cache.
-       * We don't know which one will get cleaned up first, so register
-       * cleanup actions for both and during the cleanup action, unregister
-       * the respective other action. */
+
+
+
+
       apr_pool_cleanup_register(pool,
                                 baton,
                                 remove_txn_cache_txn,

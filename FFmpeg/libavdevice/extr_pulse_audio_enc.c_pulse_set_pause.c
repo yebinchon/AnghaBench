@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  pa_operation ;
-struct TYPE_5__ {int /*<<< orphan*/  stream; int /*<<< orphan*/  mainloop; } ;
-typedef  TYPE_1__ PulseData ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * pa_stream_cork (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  pa_threaded_mainloop_lock (int /*<<< orphan*/ ) ; 
- int pulse_finish_stream_operation (TYPE_1__*,int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  pulse_stream_result ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int pa_operation ;
+struct TYPE_5__ {int stream; int mainloop; } ;
+typedef TYPE_1__ PulseData ;
+
+
+ int * pa_stream_cork (int ,int,int ,TYPE_1__*) ;
+ int pa_threaded_mainloop_lock (int ) ;
+ int pulse_finish_stream_operation (TYPE_1__*,int *,char*) ;
+ int pulse_stream_result ;
 
 __attribute__((used)) static int pulse_set_pause(PulseData *s, int pause)
 {

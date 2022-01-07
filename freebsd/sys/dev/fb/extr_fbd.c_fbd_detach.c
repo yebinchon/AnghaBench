@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct fbd_softc {int /*<<< orphan*/  sc_info; } ;
-typedef  int /*<<< orphan*/  device_t ;
 
-/* Variables and functions */
- struct fbd_softc* device_get_softc (int /*<<< orphan*/ ) ; 
- int fbd_unregister (int /*<<< orphan*/ ) ; 
+
+
+
+struct fbd_softc {int sc_info; } ;
+typedef int device_t ;
+
+
+ struct fbd_softc* device_get_softc (int ) ;
+ int fbd_unregister (int ) ;
 
 __attribute__((used)) static int
 fbd_detach(device_t dev)
 {
-	struct fbd_softc *sc;
-	int err;
+ struct fbd_softc *sc;
+ int err;
 
-	sc = device_get_softc(dev);
+ sc = device_get_softc(dev);
 
-	err = fbd_unregister(sc->sc_info);
+ err = fbd_unregister(sc->sc_info);
 
-	return (err);
+ return (err);
 }

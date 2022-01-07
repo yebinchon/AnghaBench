@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_5__ ;
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
+
+
+typedef struct TYPE_15__ TYPE_5__ ;
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_15__ {unsigned int width; unsigned int height; TYPE_3__* priv_data; } ;
-struct TYPE_14__ {int /*<<< orphan*/ * data; } ;
-struct TYPE_13__ {int bpp; TYPE_2__* frame2; int /*<<< orphan*/ * delta; int /*<<< orphan*/  delta_size; TYPE_1__* frame1; int /*<<< orphan*/  gb; } ;
-struct TYPE_12__ {int* linesize; int /*<<< orphan*/ ** data; } ;
-struct TYPE_11__ {int* linesize; int /*<<< orphan*/ ** data; } ;
-typedef  TYPE_3__ RASCContext ;
-typedef  int /*<<< orphan*/  GetByteContext ;
-typedef  TYPE_4__ AVPacket ;
-typedef  TYPE_5__ AVCodecContext ;
+struct TYPE_14__ {int * data; } ;
+struct TYPE_13__ {int bpp; TYPE_2__* frame2; int * delta; int delta_size; TYPE_1__* frame1; int gb; } ;
+struct TYPE_12__ {int* linesize; int ** data; } ;
+struct TYPE_11__ {int* linesize; int ** data; } ;
+typedef TYPE_3__ RASCContext ;
+typedef int GetByteContext ;
+typedef TYPE_4__ AVPacket ;
+typedef TYPE_5__ AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_INVALIDDATA ; 
- int AVERROR_PATCHWELCOME ; 
- int /*<<< orphan*/  ENOMEM ; 
- int INT32_MAX ; 
- int /*<<< orphan*/  av_fast_padded_malloc (int /*<<< orphan*/ **,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  avpriv_request_sample (TYPE_5__*,char*,unsigned int) ; 
- unsigned int bytestream2_get_bytes_left (int /*<<< orphan*/ *) ; 
- int bytestream2_get_le16 (int /*<<< orphan*/ *) ; 
- unsigned int bytestream2_get_le32 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bytestream2_init (int /*<<< orphan*/ *,int /*<<< orphan*/ *,unsigned int) ; 
- int /*<<< orphan*/  bytestream2_skip (int /*<<< orphan*/ *,unsigned int) ; 
- unsigned int bytestream2_tell (int /*<<< orphan*/ *) ; 
- int decode_zlib (TYPE_5__*,TYPE_4__*,unsigned int,unsigned int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_INVALIDDATA ;
+ int AVERROR_PATCHWELCOME ;
+ int ENOMEM ;
+ int INT32_MAX ;
+ int av_fast_padded_malloc (int **,int *,int) ;
+ int avpriv_request_sample (TYPE_5__*,char*,unsigned int) ;
+ unsigned int bytestream2_get_bytes_left (int *) ;
+ int bytestream2_get_le16 (int *) ;
+ unsigned int bytestream2_get_le32 (int *) ;
+ int bytestream2_init (int *,int *,unsigned int) ;
+ int bytestream2_skip (int *,unsigned int) ;
+ unsigned int bytestream2_tell (int *) ;
+ int decode_zlib (TYPE_5__*,TYPE_4__*,unsigned int,unsigned int) ;
+ int memcpy (int *,int *,int) ;
+ int memset (int *,int ,int) ;
 
 __attribute__((used)) static int decode_move(AVCodecContext *avctx,
                        AVPacket *avpkt, unsigned size)

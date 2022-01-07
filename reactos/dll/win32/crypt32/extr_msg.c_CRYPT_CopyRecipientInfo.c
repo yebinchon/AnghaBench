@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_4__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_4__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_7__ {scalar_t__ cbData; } ;
-struct TYPE_6__ {int /*<<< orphan*/  Issuer; int /*<<< orphan*/  SerialNumber; } ;
+struct TYPE_6__ {int Issuer; int SerialNumber; } ;
 struct TYPE_5__ {TYPE_4__ Issuer; TYPE_4__ SerialNumber; } ;
-typedef  int /*<<< orphan*/ * LPBYTE ;
-typedef  scalar_t__ DWORD ;
-typedef  TYPE_1__ CERT_ISSUER_SERIAL_NUMBER ;
-typedef  TYPE_2__ CERT_INFO ;
-typedef  int /*<<< orphan*/  BYTE ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef int * LPBYTE ;
+typedef scalar_t__ DWORD ;
+typedef TYPE_1__ CERT_ISSUER_SERIAL_NUMBER ;
+typedef TYPE_2__ CERT_INFO ;
+typedef int BYTE ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CRYPT_CopyBlob (int /*<<< orphan*/ *,TYPE_4__*,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  ERROR_MORE_DATA ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  SetLastError (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,void*,...) ; 
- int /*<<< orphan*/  TRUE ; 
+
+ int CRYPT_CopyBlob (int *,TYPE_4__*,int **) ;
+ int ERROR_MORE_DATA ;
+ int FALSE ;
+ int SetLastError (int ) ;
+ int TRACE (char*,void*,...) ;
+ int TRUE ;
 
 __attribute__((used)) static BOOL CRYPT_CopyRecipientInfo(void *pvData, DWORD *pcbData,
  const CERT_ISSUER_SERIAL_NUMBER *in)

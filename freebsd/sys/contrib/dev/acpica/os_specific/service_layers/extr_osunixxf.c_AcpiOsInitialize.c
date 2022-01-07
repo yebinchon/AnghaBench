@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ACPI_STATUS ;
 
-/* Variables and functions */
- scalar_t__ ACPI_FAILURE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AE_OK ; 
- int /*<<< orphan*/  AcpiGbl_OutputFile ; 
- int /*<<< orphan*/  AcpiGbl_PrintLock ; 
- int /*<<< orphan*/  AcpiOsCreateLock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  OsEnterLineEditMode () ; 
- int /*<<< orphan*/  stdout ; 
+
+
+
+typedef int ACPI_STATUS ;
+
+
+ scalar_t__ ACPI_FAILURE (int ) ;
+ int AE_OK ;
+ int AcpiGbl_OutputFile ;
+ int AcpiGbl_PrintLock ;
+ int AcpiOsCreateLock (int *) ;
+ int OsEnterLineEditMode () ;
+ int stdout ;
 
 ACPI_STATUS
 AcpiOsInitialize (
     void)
 {
-    ACPI_STATUS            Status;
+    ACPI_STATUS Status;
 
 
     AcpiGbl_OutputFile = stdout;

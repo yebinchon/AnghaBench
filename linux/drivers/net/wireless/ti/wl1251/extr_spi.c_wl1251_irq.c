@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct wl1251 {int /*<<< orphan*/  irq_work; int /*<<< orphan*/  hw; } ;
-typedef  int /*<<< orphan*/  irqreturn_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEBUG_IRQ ; 
- int /*<<< orphan*/  IRQ_HANDLED ; 
- int /*<<< orphan*/  ieee80211_queue_work (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  wl1251_debug (int /*<<< orphan*/ ,char*) ; 
+
+
+
+struct wl1251 {int irq_work; int hw; } ;
+typedef int irqreturn_t ;
+
+
+ int DEBUG_IRQ ;
+ int IRQ_HANDLED ;
+ int ieee80211_queue_work (int ,int *) ;
+ int wl1251_debug (int ,char*) ;
 
 __attribute__((used)) static irqreturn_t wl1251_irq(int irq, void *cookie)
 {
-	struct wl1251 *wl;
+ struct wl1251 *wl;
 
-	wl1251_debug(DEBUG_IRQ, "IRQ");
+ wl1251_debug(DEBUG_IRQ, "IRQ");
 
-	wl = cookie;
+ wl = cookie;
 
-	ieee80211_queue_work(wl->hw, &wl->irq_work);
+ ieee80211_queue_work(wl->hw, &wl->irq_work);
 
-	return IRQ_HANDLED;
+ return IRQ_HANDLED;
 }

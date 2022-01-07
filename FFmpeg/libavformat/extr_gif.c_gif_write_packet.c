@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_3__ ;
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint16_t ;
-struct TYPE_16__ {int /*<<< orphan*/ * pb; TYPE_1__* priv_data; } ;
+
+
+typedef struct TYPE_16__ TYPE_3__ ;
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
+typedef int uint16_t ;
+struct TYPE_16__ {int * pb; TYPE_1__* priv_data; } ;
 struct TYPE_15__ {int size; int* data; } ;
-struct TYPE_14__ {int have_end; scalar_t__ loop; TYPE_2__* prev_pkt; int /*<<< orphan*/  last_pos; } ;
-typedef  TYPE_1__ GIFContext ;
-typedef  TYPE_2__ AVPacket ;
-typedef  int /*<<< orphan*/  AVIOContext ;
-typedef  TYPE_3__ AVFormatContext ;
+struct TYPE_14__ {int have_end; scalar_t__ loop; TYPE_2__* prev_pkt; int last_pos; } ;
+typedef TYPE_1__ GIFContext ;
+typedef TYPE_2__ AVPacket ;
+typedef int AVIOContext ;
+typedef TYPE_3__ AVFormatContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  ENOMEM ; 
- int GIF_APP_EXT_LABEL ; 
- int GIF_EXTENSION_INTRODUCER ; 
- int GIF_TRAILER ; 
- TYPE_2__* av_packet_alloc () ; 
- int av_packet_ref (TYPE_2__*,TYPE_2__*) ; 
- int /*<<< orphan*/  av_packet_unref (TYPE_2__*) ; 
- int /*<<< orphan*/  avio_tell (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  avio_w8 (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  avio_wl16 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  avio_write (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  gif_get_delay (TYPE_1__*,TYPE_2__*,TYPE_2__*) ; 
- int gif_parse_packet (TYPE_3__*,int*,int) ; 
+
+ int AVERROR (int ) ;
+ int EINVAL ;
+ int ENOMEM ;
+ int GIF_APP_EXT_LABEL ;
+ int GIF_EXTENSION_INTRODUCER ;
+ int GIF_TRAILER ;
+ TYPE_2__* av_packet_alloc () ;
+ int av_packet_ref (TYPE_2__*,TYPE_2__*) ;
+ int av_packet_unref (TYPE_2__*) ;
+ int avio_tell (int *) ;
+ int avio_w8 (int *,int) ;
+ int avio_wl16 (int *,int ) ;
+ int avio_write (int *,char*,int) ;
+ int gif_get_delay (TYPE_1__*,TYPE_2__*,TYPE_2__*) ;
+ int gif_parse_packet (TYPE_3__*,int*,int) ;
 
 __attribute__((used)) static int gif_write_packet(AVFormatContext *s, AVPacket *new_pkt)
 {
@@ -77,16 +77,16 @@ __attribute__((used)) static int gif_write_packet(AVFormatContext *s, AVPacket *
         if (pkt->size <= off)
             return AVERROR(EINVAL);
 
-        /* "NETSCAPE EXTENSION" for looped animation GIF */
+
         if (gif->loop >= 0) {
-            avio_w8(pb, GIF_EXTENSION_INTRODUCER); /* GIF Extension code */
-            avio_w8(pb, GIF_APP_EXT_LABEL); /* Application Extension Label */
-            avio_w8(pb, 0x0b); /* Length of Application Block */
+            avio_w8(pb, GIF_EXTENSION_INTRODUCER);
+            avio_w8(pb, GIF_APP_EXT_LABEL);
+            avio_w8(pb, 0x0b);
             avio_write(pb, "NETSCAPE2.0", sizeof("NETSCAPE2.0") - 1);
-            avio_w8(pb, 0x03); /* Length of Data Sub-Block */
+            avio_w8(pb, 0x03);
             avio_w8(pb, 0x01);
             avio_wl16(pb, (uint16_t)gif->loop);
-            avio_w8(pb, 0x00); /* Data Sub-block Terminator */
+            avio_w8(pb, 0x00);
         }
 
         delay_pos = gif_parse_packet(s, pkt->data + off, pkt->size - off);

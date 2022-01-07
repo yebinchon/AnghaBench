@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  ADD_ALL_TESTS (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ADD_TEST (int /*<<< orphan*/ ) ; 
- int OSSL_NELEM (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  case_change ; 
- int /*<<< orphan*/  test_ctype_chars ; 
- int /*<<< orphan*/  test_ctype_eof ; 
- int /*<<< orphan*/  test_ctype_tolower ; 
- int /*<<< orphan*/  test_ctype_toupper ; 
+ int ADD_ALL_TESTS (int ,int) ;
+ int ADD_TEST (int ) ;
+ int OSSL_NELEM (int ) ;
+ int case_change ;
+ int test_ctype_chars ;
+ int test_ctype_eof ;
+ int test_ctype_tolower ;
+ int test_ctype_toupper ;
 
 int setup_tests(void)
 {

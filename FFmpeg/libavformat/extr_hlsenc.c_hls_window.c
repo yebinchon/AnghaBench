@@ -1,65 +1,65 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_18__   TYPE_4__ ;
-typedef  struct TYPE_17__   TYPE_3__ ;
-typedef  struct TYPE_16__   TYPE_2__ ;
-typedef  struct TYPE_15__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  temp_vtt_filename ;
-typedef  int /*<<< orphan*/  temp_filename ;
-typedef  scalar_t__ int64_t ;
-struct TYPE_15__ {char* m3u8_name; scalar_t__ discontinuity_set; char* vtt_m3u8_name; int /*<<< orphan*/  out; int /*<<< orphan*/  baseurl; TYPE_2__* segments; int /*<<< orphan*/  init_range_length; int /*<<< orphan*/  fmp4_init_filename; scalar_t__ has_video; int /*<<< orphan*/  initial_prog_date_time; scalar_t__ nb_entries; scalar_t__ sequence; } ;
-typedef  TYPE_1__ VariantStream ;
+
+
+typedef struct TYPE_18__ TYPE_4__ ;
+typedef struct TYPE_17__ TYPE_3__ ;
+typedef struct TYPE_16__ TYPE_2__ ;
+typedef struct TYPE_15__ TYPE_1__ ;
+
+
+typedef int temp_vtt_filename ;
+typedef int temp_filename ;
+typedef scalar_t__ int64_t ;
+struct TYPE_15__ {char* m3u8_name; scalar_t__ discontinuity_set; char* vtt_m3u8_name; int out; int baseurl; TYPE_2__* segments; int init_range_length; int fmp4_init_filename; scalar_t__ has_video; int initial_prog_date_time; scalar_t__ nb_entries; scalar_t__ sequence; } ;
+typedef TYPE_1__ VariantStream ;
 struct TYPE_18__ {TYPE_3__* priv_data; } ;
-struct TYPE_17__ {scalar_t__ start_sequence; int flags; scalar_t__ pl_type; scalar_t__ max_seg_size; int version; scalar_t__ segment_type; scalar_t__ master_pl_name; int /*<<< orphan*/  sub_m3u8_out; int /*<<< orphan*/  m3u8_out; int /*<<< orphan*/  allowcache; scalar_t__ ignore_io_errors; scalar_t__ key_info_file; scalar_t__ encrypt; } ;
-struct TYPE_16__ {int duration; char const* key_uri; char* iv_string; int /*<<< orphan*/  sub_filename; int /*<<< orphan*/  pos; int /*<<< orphan*/  size; struct TYPE_16__* next; int /*<<< orphan*/  keyframe_pos; int /*<<< orphan*/  keyframe_size; int /*<<< orphan*/  filename; int /*<<< orphan*/  discont; } ;
-typedef  TYPE_2__ HLSSegment ;
-typedef  TYPE_3__ HLSContext ;
-typedef  TYPE_4__ AVFormatContext ;
-typedef  int /*<<< orphan*/  AVDictionary ;
+struct TYPE_17__ {scalar_t__ start_sequence; int flags; scalar_t__ pl_type; scalar_t__ max_seg_size; int version; scalar_t__ segment_type; scalar_t__ master_pl_name; int sub_m3u8_out; int m3u8_out; int allowcache; scalar_t__ ignore_io_errors; scalar_t__ key_info_file; scalar_t__ encrypt; } ;
+struct TYPE_16__ {int duration; char const* key_uri; char* iv_string; int sub_filename; int pos; int size; struct TYPE_16__* next; int keyframe_pos; int keyframe_size; int filename; int discont; } ;
+typedef TYPE_2__ HLSSegment ;
+typedef TYPE_3__ HLSContext ;
+typedef TYPE_4__ AVFormatContext ;
+typedef int AVDictionary ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_LOG_WARNING ; 
- scalar_t__ FFMAX (scalar_t__,scalar_t__) ; 
- int HLS_DISCONT_START ; 
- int HLS_INDEPENDENT_SEGMENTS ; 
- int HLS_I_FRAMES_ONLY ; 
- int HLS_OMIT_ENDLIST ; 
- int HLS_PROGRAM_DATE_TIME ; 
- int HLS_ROUND_DURATIONS ; 
- int HLS_SINGLE_FILE ; 
- int HLS_TEMP_FILE ; 
- int MAX_URL_SIZE ; 
- scalar_t__ PLAYLIST_TYPE_NONE ; 
- scalar_t__ PLAYLIST_TYPE_VOD ; 
- scalar_t__ SEGMENT_TYPE_FMP4 ; 
- int /*<<< orphan*/  av_dict_free (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  av_log (TYPE_4__*,int /*<<< orphan*/ ,char*) ; 
- scalar_t__ av_strcasecmp (char*,char*) ; 
- char* avio_find_protocol_name (char*) ; 
- int /*<<< orphan*/  avio_printf (int /*<<< orphan*/ ,char*,...) ; 
- scalar_t__ create_master_playlist (TYPE_4__*,TYPE_1__*) ; 
- int /*<<< orphan*/  ff_hls_write_end_list (int /*<<< orphan*/ ) ; 
- int ff_hls_write_file_entry (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,double*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ff_hls_write_init_file (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ff_hls_write_playlist_header (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int,scalar_t__,scalar_t__,int) ; 
- int /*<<< orphan*/  ff_rename (char*,char*,TYPE_4__*) ; 
- int hlsenc_io_close (TYPE_4__*,int /*<<< orphan*/ *,char*) ; 
- int hlsenc_io_open (TYPE_4__*,int /*<<< orphan*/ *,char*,int /*<<< orphan*/ **) ; 
- int lrint (int) ; 
- int /*<<< orphan*/  set_http_options (TYPE_4__*,int /*<<< orphan*/ **,TYPE_3__*) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,char*) ; 
- scalar_t__ strcmp (char const*,char*) ; 
+
+ int AV_LOG_ERROR ;
+ int AV_LOG_WARNING ;
+ scalar_t__ FFMAX (scalar_t__,scalar_t__) ;
+ int HLS_DISCONT_START ;
+ int HLS_INDEPENDENT_SEGMENTS ;
+ int HLS_I_FRAMES_ONLY ;
+ int HLS_OMIT_ENDLIST ;
+ int HLS_PROGRAM_DATE_TIME ;
+ int HLS_ROUND_DURATIONS ;
+ int HLS_SINGLE_FILE ;
+ int HLS_TEMP_FILE ;
+ int MAX_URL_SIZE ;
+ scalar_t__ PLAYLIST_TYPE_NONE ;
+ scalar_t__ PLAYLIST_TYPE_VOD ;
+ scalar_t__ SEGMENT_TYPE_FMP4 ;
+ int av_dict_free (int **) ;
+ int av_log (TYPE_4__*,int ,char*) ;
+ scalar_t__ av_strcasecmp (char*,char*) ;
+ char* avio_find_protocol_name (char*) ;
+ int avio_printf (int ,char*,...) ;
+ scalar_t__ create_master_playlist (TYPE_4__*,TYPE_1__*) ;
+ int ff_hls_write_end_list (int ) ;
+ int ff_hls_write_file_entry (int ,int ,int,int,int,int ,int ,int ,int ,double*,int ,int ,int) ;
+ int ff_hls_write_init_file (int ,int ,int,int ,int ) ;
+ int ff_hls_write_playlist_header (int ,int,int ,int,scalar_t__,scalar_t__,int) ;
+ int ff_rename (char*,char*,TYPE_4__*) ;
+ int hlsenc_io_close (TYPE_4__*,int *,char*) ;
+ int hlsenc_io_open (TYPE_4__*,int *,char*,int **) ;
+ int lrint (int) ;
+ int set_http_options (TYPE_4__*,int **,TYPE_3__*) ;
+ int snprintf (char*,int,char*,char*) ;
+ scalar_t__ strcmp (char const*,char*) ;
 
 __attribute__((used)) static int hls_window(AVFormatContext *s, int last, VariantStream *vs)
 {
@@ -74,11 +74,11 @@ __attribute__((used)) static int hls_window(AVFormatContext *s, int last, Varian
     int is_file_proto = proto && !strcmp(proto, "file");
     int use_temp_file = is_file_proto && ((hls->flags & HLS_TEMP_FILE) || !(hls->pl_type == PLAYLIST_TYPE_VOD));
     static unsigned warned_non_file;
-    char *key_uri = NULL;
-    char *iv_string = NULL;
-    AVDictionary *options = NULL;
+    char *key_uri = ((void*)0);
+    char *iv_string = ((void*)0);
+    AVDictionary *options = ((void*)0);
     double prog_date_time = vs->initial_prog_date_time;
-    double *prog_date_time_p = (hls->flags & HLS_PROGRAM_DATE_TIME) ? &prog_date_time : NULL;
+    double *prog_date_time_p = (hls->flags & HLS_PROGRAM_DATE_TIME) ? &prog_date_time : ((void*)0);
     int byterange_mode = (hls->flags & HLS_SINGLE_FILE) || (hls->max_seg_size > 0);
 
     hls->version = 3;
@@ -162,7 +162,7 @@ __attribute__((used)) static int hls_window(AVFormatContext *s, int last, Varian
         for (en = vs->segments; en; en = en->next) {
             ret = ff_hls_write_file_entry(hls->sub_m3u8_out, 0, byterange_mode,
                                           en->duration, 0, en->size, en->pos,
-                                          vs->baseurl, en->sub_filename, NULL, 0, 0, 0);
+                                          vs->baseurl, en->sub_filename, ((void*)0), 0, 0, 0);
             if (ret < 0) {
                 av_log(s, AV_LOG_WARNING, "ff_hls_write_file_entry get error\n");
             }

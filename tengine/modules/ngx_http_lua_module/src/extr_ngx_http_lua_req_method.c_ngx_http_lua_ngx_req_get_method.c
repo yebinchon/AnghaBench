@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  len; scalar_t__ data; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int len; scalar_t__ data; } ;
 struct TYPE_6__ {TYPE_1__ method_name; } ;
-typedef  TYPE_2__ ngx_http_request_t ;
-typedef  int /*<<< orphan*/  lua_State ;
+typedef TYPE_2__ ngx_http_request_t ;
+typedef int lua_State ;
 
-/* Variables and functions */
- int luaL_error (int /*<<< orphan*/ *,char*,...) ; 
- int lua_gettop (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_pushlstring (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_http_lua_check_fake_request (int /*<<< orphan*/ *,TYPE_2__*) ; 
- TYPE_2__* ngx_http_lua_get_req (int /*<<< orphan*/ *) ; 
+
+ int luaL_error (int *,char*,...) ;
+ int lua_gettop (int *) ;
+ int lua_pushlstring (int *,char*,int ) ;
+ int ngx_http_lua_check_fake_request (int *,TYPE_2__*) ;
+ TYPE_2__* ngx_http_lua_get_req (int *) ;
 
 __attribute__((used)) static int
 ngx_http_lua_ngx_req_get_method(lua_State *L)
 {
-    int                      n;
-    ngx_http_request_t      *r;
+    int n;
+    ngx_http_request_t *r;
 
     n = lua_gettop(L);
     if (n != 0) {
@@ -36,7 +36,7 @@ ngx_http_lua_ngx_req_get_method(lua_State *L)
     }
 
     r = ngx_http_lua_get_req(L);
-    if (r == NULL) {
+    if (r == ((void*)0)) {
         return luaL_error(L, "request object not found");
     }
 

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct d3dx_parameter {scalar_t__ type; int /*<<< orphan*/  data; } ;
+
+
+
+
+struct d3dx_parameter {scalar_t__ type; int data; } ;
 struct d3dx9_base_effect {int dummy; } ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  D3DXHANDLE ;
+typedef int HRESULT ;
+typedef int D3DXHANDLE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D3DERR_INVALIDCALL ; 
- scalar_t__ D3DXPT_STRING ; 
- int /*<<< orphan*/  WARN (char*) ; 
- struct d3dx_parameter* get_valid_parameter (struct d3dx9_base_effect*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_dirty (struct d3dx_parameter*) ; 
- int /*<<< orphan*/  set_string (int /*<<< orphan*/ ,char const*) ; 
+
+ int D3DERR_INVALIDCALL ;
+ scalar_t__ D3DXPT_STRING ;
+ int WARN (char*) ;
+ struct d3dx_parameter* get_valid_parameter (struct d3dx9_base_effect*,int ) ;
+ int set_dirty (struct d3dx_parameter*) ;
+ int set_string (int ,char const*) ;
 
 __attribute__((used)) static HRESULT d3dx9_base_effect_set_string(struct d3dx9_base_effect *base,
         D3DXHANDLE parameter, const char *string)

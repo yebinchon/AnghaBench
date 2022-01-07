@@ -1,74 +1,74 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  height; int /*<<< orphan*/  width; scalar_t__ y; scalar_t__ x; } ;
-struct TYPE_4__ {int bpp; int /*<<< orphan*/  vs_height; int /*<<< orphan*/  vs_width; } ;
-typedef  scalar_t__ GR_CURSOR_ID ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GR_ROOT_WINDOW_ID ; 
- int /*<<< orphan*/  GrClose () ; 
- int /*<<< orphan*/  GrDestroyGC (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GrDestroyWindow (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GrFillRect (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GrGetScreenInfo (TYPE_1__*) ; 
- int /*<<< orphan*/  GrMainLoop (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GrMapWindow (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GrNewGC () ; 
- int /*<<< orphan*/  GrNewWindow (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ GrOpen () ; 
- int /*<<< orphan*/  GrRegisterInput (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GrSelectEvents (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  GrSetGCForeground (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int g_Bpp ; 
- int g_bpp ; 
- TYPE_2__ g_clip ; 
- int /*<<< orphan*/  g_directory ; 
- int /*<<< orphan*/  g_domain ; 
- int /*<<< orphan*/  g_flags ; 
- int /*<<< orphan*/  g_gc ; 
- int /*<<< orphan*/  g_gc_clean ; 
- int /*<<< orphan*/  g_height ; 
- scalar_t__ g_null_cursor ; 
- int /*<<< orphan*/  g_password ; 
- int /*<<< orphan*/  g_sck ; 
- TYPE_1__ g_screen_info ; 
- int g_server_bpp ; 
- int /*<<< orphan*/  g_servername ; 
- int /*<<< orphan*/  g_shell ; 
- int /*<<< orphan*/  g_width ; 
- int /*<<< orphan*/  g_wnd ; 
- int /*<<< orphan*/  get_username_and_hostname () ; 
- int /*<<< orphan*/  init_keys () ; 
- int /*<<< orphan*/  nanox_event ; 
- int /*<<< orphan*/  parse_parameters (int,char**) ; 
- int /*<<< orphan*/  rdp_connect (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ ui_create_cursor (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ui_destroy_cursor (void*) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int height; int width; scalar_t__ y; scalar_t__ x; } ;
+struct TYPE_4__ {int bpp; int vs_height; int vs_width; } ;
+typedef scalar_t__ GR_CURSOR_ID ;
+
+
+ int GR_ROOT_WINDOW_ID ;
+ int GrClose () ;
+ int GrDestroyGC (int ) ;
+ int GrDestroyWindow (int ) ;
+ int GrFillRect (int ,int ,int ,int ,int ,int ) ;
+ int GrGetScreenInfo (TYPE_1__*) ;
+ int GrMainLoop (int ) ;
+ int GrMapWindow (int ) ;
+ int GrNewGC () ;
+ int GrNewWindow (int ,int ,int ,int ,int ,int ,int ,int ) ;
+ scalar_t__ GrOpen () ;
+ int GrRegisterInput (int ) ;
+ int GrSelectEvents (int ,int) ;
+ int GrSetGCForeground (int ,int ) ;
+ int exit (int) ;
+ int fprintf (int ,char*,...) ;
+ int g_Bpp ;
+ int g_bpp ;
+ TYPE_2__ g_clip ;
+ int g_directory ;
+ int g_domain ;
+ int g_flags ;
+ int g_gc ;
+ int g_gc_clean ;
+ int g_height ;
+ scalar_t__ g_null_cursor ;
+ int g_password ;
+ int g_sck ;
+ TYPE_1__ g_screen_info ;
+ int g_server_bpp ;
+ int g_servername ;
+ int g_shell ;
+ int g_width ;
+ int g_wnd ;
+ int get_username_and_hostname () ;
+ int init_keys () ;
+ int nanox_event ;
+ int parse_parameters (int,char**) ;
+ int rdp_connect (int ,int ,int ,int ,int ,int ) ;
+ int stderr ;
+ scalar_t__ ui_create_cursor (int ,int ,int,int,int ,int ) ;
+ int ui_destroy_cursor (void*) ;
 
 int main(int in_argc, char ** in_argv)
 {
   get_username_and_hostname();
-  /* read command line options */
+
   if (!parse_parameters(in_argc, in_argv))
   {
     exit(0);
   }
-  /* connect to server */
+
   if (GrOpen() < 0)
   {
     fprintf(stderr, "Couldn't connect to Nano-X server\n");
@@ -92,7 +92,7 @@ int main(int in_argc, char ** in_argv)
     exit(0);
   }
   init_keys();
-  /* connect to server */
+
   if (!rdp_connect(g_servername, g_flags, g_domain, g_password, g_shell,
                    g_directory))
   {
@@ -100,30 +100,30 @@ int main(int in_argc, char ** in_argv)
     GrClose();
     exit(1);
   }
-  /* create window */
+
   g_wnd = GrNewWindow(GR_ROOT_WINDOW_ID, 0, 0, g_width, g_height, 0, 0, 0);
-  /* show window */
+
   GrMapWindow(g_wnd);
-  /* create graphic context */
+
   g_gc = GrNewGC();
   g_gc_clean = GrNewGC();
-  /* clear screen */
+
   GrSetGCForeground(g_gc, 0);
   GrFillRect(g_wnd, g_gc, 0, 0, g_width, g_height);
-  /* create null cursor */
+
   g_null_cursor = (GR_CURSOR_ID)ui_create_cursor(0, 0, 32, 32, 0, 0);
-  /* register callbacks, set mask, and run main loop */
-  GrSelectEvents(g_wnd, -1); /* all events */
+
+  GrSelectEvents(g_wnd, -1);
   GrRegisterInput(g_sck);
   GrMainLoop(nanox_event);
-  /* free null cursor */
+
   ui_destroy_cursor((void*)g_null_cursor);
-  /* free graphic context */
+
   GrDestroyGC(g_gc);
   GrDestroyGC(g_gc_clean);
-  /* free window */
+
   GrDestroyWindow(g_wnd);
-  /* close connection */
+
   GrClose();
   return 0;
 }

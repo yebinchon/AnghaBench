@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  strcspn (char*,char const*) ; 
- int /*<<< orphan*/  strspn (char*,char const*) ; 
+ int strcspn (char*,char const*) ;
+ int strspn (char*,char const*) ;
 
 char *tokenize(char *str, const char *delim, char **key) {
     char *result;
-    if (str == NULL) {
+    if (str == ((void*)0)) {
         str = *key;
     }
     str += strspn(str, delim);
     if (*str == '\0') {
-        return NULL;
+        return ((void*)0);
     }
     result = str;
     str += strcspn(str, delim);

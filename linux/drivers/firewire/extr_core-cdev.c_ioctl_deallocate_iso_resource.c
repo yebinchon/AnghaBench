@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  handle; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int handle; } ;
 union ioctl_arg {TYPE_1__ deallocate; } ;
 struct client {int dummy; } ;
 
-/* Variables and functions */
- int release_client_resource (struct client*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  release_iso_resource ; 
+
+ int release_client_resource (struct client*,int ,int ,int *) ;
+ int release_iso_resource ;
 
 __attribute__((used)) static int ioctl_deallocate_iso_resource(struct client *client,
-					 union ioctl_arg *arg)
+      union ioctl_arg *arg)
 {
-	return release_client_resource(client,
-			arg->deallocate.handle, release_iso_resource, NULL);
+ return release_client_resource(client,
+   arg->deallocate.handle, release_iso_resource, ((void*)0));
 }

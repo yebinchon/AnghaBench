@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  hpriv_p ;
-typedef  int /*<<< orphan*/  hook_p ;
 
-/* Variables and functions */
- int /*<<< orphan*/  M_NETGRAPH ; 
- int /*<<< orphan*/  NG_HOOK_PRIVATE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NG_HOOK_SET_PRIVATE (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/  const,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int hpriv_p ;
+typedef int hook_p ;
+
+
+ int M_NETGRAPH ;
+ int NG_HOOK_PRIVATE (int ) ;
+ int NG_HOOK_SET_PRIVATE (int ,int *) ;
+ int free (int const,int ) ;
 
 __attribute__((used)) static int
 ng_ipfw_disconnect(hook_p hook)
 {
-	const hpriv_p hpriv = NG_HOOK_PRIVATE(hook);
+ const hpriv_p hpriv = NG_HOOK_PRIVATE(hook);
 
-	free(hpriv, M_NETGRAPH);
-	NG_HOOK_SET_PRIVATE(hook, NULL);
+ free(hpriv, M_NETGRAPH);
+ NG_HOOK_SET_PRIVATE(hook, ((void*)0));
 
-	return (0);
+ return (0);
 }

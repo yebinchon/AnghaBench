@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_5__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ media_status_t ;
-struct TYPE_8__ {int /*<<< orphan*/  onImageAvailable; TYPE_2__* context; } ;
+
+
+typedef struct TYPE_8__ TYPE_5__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef scalar_t__ media_status_t ;
+struct TYPE_8__ {int onImageAvailable; TYPE_2__* context; } ;
 struct TYPE_7__ {TYPE_1__* priv_data; } ;
-struct TYPE_6__ {int /*<<< orphan*/  image_reader_window; int /*<<< orphan*/  image_reader; TYPE_5__ image_listener; int /*<<< orphan*/  height; int /*<<< orphan*/  width; } ;
-typedef  TYPE_1__ AndroidCameraCtx ;
-typedef  TYPE_2__ AVFormatContext ;
+struct TYPE_6__ {int image_reader_window; int image_reader; TYPE_5__ image_listener; int height; int width; } ;
+typedef TYPE_1__ AndroidCameraCtx ;
+typedef TYPE_2__ AVFormatContext ;
 
-/* Variables and functions */
- scalar_t__ AImageReader_getWindow (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ AImageReader_new (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ AImageReader_setImageListener (int /*<<< orphan*/ ,TYPE_5__*) ; 
- scalar_t__ AMEDIA_OK ; 
- int AVERROR_EXTERNAL ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  IMAGE_FORMAT_ANDROID ; 
- int /*<<< orphan*/  MAX_BUF_COUNT ; 
- int /*<<< orphan*/  av_log (TYPE_2__*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  image_available ; 
- int /*<<< orphan*/  media_status_string (scalar_t__) ; 
+
+ scalar_t__ AImageReader_getWindow (int ,int *) ;
+ scalar_t__ AImageReader_new (int ,int ,int ,int ,int *) ;
+ scalar_t__ AImageReader_setImageListener (int ,TYPE_5__*) ;
+ scalar_t__ AMEDIA_OK ;
+ int AVERROR_EXTERNAL ;
+ int AV_LOG_ERROR ;
+ int IMAGE_FORMAT_ANDROID ;
+ int MAX_BUF_COUNT ;
+ int av_log (TYPE_2__*,int ,char*,int ) ;
+ int image_available ;
+ int media_status_string (scalar_t__) ;
 
 __attribute__((used)) static int create_image_reader(AVFormatContext *avctx)
 {

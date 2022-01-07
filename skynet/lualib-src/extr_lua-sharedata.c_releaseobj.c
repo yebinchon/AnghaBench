@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct table {int /*<<< orphan*/ * L; } ;
-struct state {int /*<<< orphan*/  ref; } ;
-struct ctrl {int /*<<< orphan*/ * update; struct table* root; } ;
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ATOM_DEC (int /*<<< orphan*/ *) ; 
- void* lua_touserdata (int /*<<< orphan*/ *,int) ; 
+
+
+
+struct table {int * L; } ;
+struct state {int ref; } ;
+struct ctrl {int * update; struct table* root; } ;
+typedef int lua_State ;
+
+
+ int ATOM_DEC (int *) ;
+ void* lua_touserdata (int *,int) ;
 
 __attribute__((used)) static int
 releaseobj(lua_State *L) {
-	struct ctrl *c = lua_touserdata(L, 1);
-	struct table *tbl = c->root;
-	struct state *s = lua_touserdata(tbl->L, 1);
-	ATOM_DEC(&s->ref);
-	c->root = NULL;
-	c->update = NULL;
+ struct ctrl *c = lua_touserdata(L, 1);
+ struct table *tbl = c->root;
+ struct state *s = lua_touserdata(tbl->L, 1);
+ ATOM_DEC(&s->ref);
+ c->root = ((void*)0);
+ c->update = ((void*)0);
 
-	return 0;
+ return 0;
 }

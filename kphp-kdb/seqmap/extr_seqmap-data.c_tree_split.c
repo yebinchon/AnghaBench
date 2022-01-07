@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct item {struct item* right; struct item* left; int /*<<< orphan*/  key; int /*<<< orphan*/  key_len; } ;
 
-/* Variables and functions */
- scalar_t__ key_cmp (int,int const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  update_counters (struct item*) ; 
+
+
+
+struct item {struct item* right; struct item* left; int key; int key_len; } ;
+
+
+ scalar_t__ key_cmp (int,int const*,int ,int ) ;
+ int update_counters (struct item*) ;
 
 __attribute__((used)) static void tree_split (struct item **L, struct item **R, struct item *T, int key_len, const int *key) {
   if (!T) { *L = *R = 0; return; }

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * p_socket ;
 
-/* Variables and functions */
- int IO_DONE ; 
- int WSAGetLastError () ; 
- scalar_t__ listen (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  socket_setblocking (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  socket_setnonblocking (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int * p_socket ;
+
+
+ int IO_DONE ;
+ int WSAGetLastError () ;
+ scalar_t__ listen (int ,int) ;
+ int socket_setblocking (int *) ;
+ int socket_setnonblocking (int *) ;
 
 int socket_listen(p_socket ps, int backlog) {
     int err = IO_DONE;

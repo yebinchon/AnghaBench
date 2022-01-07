@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_9__ {TYPE_1__* priv_data; } ;
 struct TYPE_8__ {char* instreamid; void* ccgroup; void* language; } ;
 struct TYPE_7__ {char const* cc_stream_map; int nb_ccstreams; TYPE_2__* cc_streams; } ;
-typedef  TYPE_1__ HLSContext ;
-typedef  TYPE_2__ ClosedCaptionsStream ;
-typedef  TYPE_3__ AVFormatContext ;
+typedef TYPE_1__ HLSContext ;
+typedef TYPE_2__ ClosedCaptionsStream ;
+typedef TYPE_3__ AVFormatContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  ENOMEM ; 
- int atoi (char const*) ; 
- int /*<<< orphan*/  av_freep (char**) ; 
- int /*<<< orphan*/  av_log (TYPE_3__*,int /*<<< orphan*/ ,char*,...) ; 
- TYPE_2__* av_mallocz (int) ; 
- void* av_strdup (char const*) ; 
- scalar_t__ av_strstart (char*,char*,char const**) ; 
- char* av_strtok (char*,char*,char**) ; 
+
+ int AVERROR (int ) ;
+ int AV_LOG_ERROR ;
+ int EINVAL ;
+ int ENOMEM ;
+ int atoi (char const*) ;
+ int av_freep (char**) ;
+ int av_log (TYPE_3__*,int ,char*,...) ;
+ TYPE_2__* av_mallocz (int) ;
+ void* av_strdup (char const*) ;
+ scalar_t__ av_strstart (char*,char*,char const**) ;
+ char* av_strtok (char*,char*,char**) ;
 
 __attribute__((used)) static int parse_cc_stream_mapstring(AVFormatContext *s)
 {
     HLSContext *hls = s->priv_data;
     int nb_ccstreams;
     char *p, *q, *ccstr, *keyval;
-    char *saveptr1 = NULL, *saveptr2 = NULL;
+    char *saveptr1 = ((void*)0), *saveptr2 = ((void*)0);
     const char *val;
     ClosedCaptionsStream *ccs;
 
@@ -48,7 +48,7 @@ __attribute__((used)) static int parse_cc_stream_mapstring(AVFormatContext *s)
 
     q = p;
     while (av_strtok(q, " \t", &saveptr1)) {
-        q = NULL;
+        q = ((void*)0);
         hls->nb_ccstreams++;
     }
     av_freep(&p);
@@ -60,7 +60,7 @@ __attribute__((used)) static int parse_cc_stream_mapstring(AVFormatContext *s)
     p = hls->cc_stream_map;
     nb_ccstreams = 0;
     while (ccstr = av_strtok(p, " \t", &saveptr1)) {
-        p = NULL;
+        p = ((void*)0);
 
         if (nb_ccstreams < hls->nb_ccstreams)
             ccs = &(hls->cc_streams[nb_ccstreams++]);
@@ -68,7 +68,7 @@ __attribute__((used)) static int parse_cc_stream_mapstring(AVFormatContext *s)
             return AVERROR(EINVAL);
 
         while (keyval = av_strtok(ccstr, ",", &saveptr2)) {
-            ccstr = NULL;
+            ccstr = ((void*)0);
 
             if (av_strstart(keyval, "ccgroup:", &val)) {
                 ccs->ccgroup = av_strdup(val);

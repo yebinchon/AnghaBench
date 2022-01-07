@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  COP0_BADVADDR ; 
- int /*<<< orphan*/  COP0_CAUSE ; 
- int /*<<< orphan*/  COP0_EPC ; 
- int /*<<< orphan*/  COP0_STATUS ; 
- int /*<<< orphan*/  CVMX_MF_COP0 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ HI32 (int /*<<< orphan*/ ) ; 
- scalar_t__ LO32 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cvmx_safe_printf (char*,int /*<<< orphan*/ ,int,unsigned int,unsigned int,int /*<<< orphan*/ ,int,unsigned int,unsigned int) ; 
- int /*<<< orphan*/  print_reg64 (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * reg_names ; 
+
+
+
+typedef int uint64_t ;
+
+
+ int COP0_BADVADDR ;
+ int COP0_CAUSE ;
+ int COP0_EPC ;
+ int COP0_STATUS ;
+ int CVMX_MF_COP0 (int ,int ) ;
+ scalar_t__ HI32 (int ) ;
+ scalar_t__ LO32 (int ) ;
+ int cvmx_safe_printf (char*,int ,int,unsigned int,unsigned int,int ,int,unsigned int,unsigned int) ;
+ int print_reg64 (char*,int ) ;
+ int * reg_names ;
 
 __attribute__((used)) static void __cvmx_interrupt_dump_registers(uint64_t *registers)
 {

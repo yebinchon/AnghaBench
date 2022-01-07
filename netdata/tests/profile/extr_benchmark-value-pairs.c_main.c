@@ -1,78 +1,78 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {char* name; void* hash; } ;
 
-/* Variables and functions */
- void* active_anon_hash ; 
- void* active_file_hash ; 
- int /*<<< orphan*/  begin_clock () ; 
- void* cache_hash ; 
- void* dirty_hash ; 
- unsigned long end_clock () ; 
- void* hierarchical_memory_limit_hash ; 
- void* inactive_anon_hash ; 
- void* inactive_file_hash ; 
- void* mapped_file_hash ; 
- TYPE_1__* pairs ; 
- void* pgfault_hash ; 
- void* pgmajfault_hash ; 
- void* pgpgin_hash ; 
- void* pgpgout_hash ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- void* rss_hash ; 
- void* rss_huge_hash ; 
- void* simple_hash (char*) ; 
- int /*<<< orphan*/  simple_hash2 (char*) ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
- int /*<<< orphan*/  strtoull (char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- void* swap_hash ; 
- int /*<<< orphan*/  test1 () ; 
- int /*<<< orphan*/  test2 () ; 
- int /*<<< orphan*/  test3 () ; 
- int /*<<< orphan*/  test4 () ; 
- int /*<<< orphan*/  test5 () ; 
- int /*<<< orphan*/  test6 () ; 
- int /*<<< orphan*/  test7 () ; 
- int /*<<< orphan*/  test8 () ; 
- int /*<<< orphan*/  test9 () ; 
- void* total_active_anon_hash ; 
- void* total_active_file_hash ; 
- void* total_cache_hash ; 
- void* total_dirty_hash ; 
- void* total_inactive_anon_hash ; 
- void* total_inactive_file_hash ; 
- void* total_mapped_file_hash ; 
- void* total_pgfault_hash ; 
- void* total_pgmajfault_hash ; 
- void* total_pgpgin_hash ; 
- void* total_pgpgout_hash ; 
- void* total_rss_hash ; 
- void* total_rss_huge_hash ; 
- void* total_swap_hash ; 
- void* total_unevictable_hash ; 
- void* total_writeback_hash ; 
- void* unevictable_hash ; 
- int /*<<< orphan*/ * values1 ; 
- int /*<<< orphan*/ * values2 ; 
- int /*<<< orphan*/ * values3 ; 
- int /*<<< orphan*/ * values4 ; 
- int /*<<< orphan*/ * values5 ; 
- int /*<<< orphan*/ * values6 ; 
- int /*<<< orphan*/ * values7 ; 
- int /*<<< orphan*/ * values8 ; 
- int /*<<< orphan*/ * values9 ; 
- void* writeback_hash ; 
+
+ void* active_anon_hash ;
+ void* active_file_hash ;
+ int begin_clock () ;
+ void* cache_hash ;
+ void* dirty_hash ;
+ unsigned long end_clock () ;
+ void* hierarchical_memory_limit_hash ;
+ void* inactive_anon_hash ;
+ void* inactive_file_hash ;
+ void* mapped_file_hash ;
+ TYPE_1__* pairs ;
+ void* pgfault_hash ;
+ void* pgmajfault_hash ;
+ void* pgpgin_hash ;
+ void* pgpgout_hash ;
+ int printf (char*,...) ;
+ void* rss_hash ;
+ void* rss_huge_hash ;
+ void* simple_hash (char*) ;
+ int simple_hash2 (char*) ;
+ int strcmp (char*,char*) ;
+ int strtoull (char*,int *,int ) ;
+ void* swap_hash ;
+ int test1 () ;
+ int test2 () ;
+ int test3 () ;
+ int test4 () ;
+ int test5 () ;
+ int test6 () ;
+ int test7 () ;
+ int test8 () ;
+ int test9 () ;
+ void* total_active_anon_hash ;
+ void* total_active_file_hash ;
+ void* total_cache_hash ;
+ void* total_dirty_hash ;
+ void* total_inactive_anon_hash ;
+ void* total_inactive_file_hash ;
+ void* total_mapped_file_hash ;
+ void* total_pgfault_hash ;
+ void* total_pgmajfault_hash ;
+ void* total_pgpgin_hash ;
+ void* total_pgpgout_hash ;
+ void* total_rss_hash ;
+ void* total_rss_huge_hash ;
+ void* total_swap_hash ;
+ void* total_unevictable_hash ;
+ void* total_writeback_hash ;
+ void* unevictable_hash ;
+ int * values1 ;
+ int * values2 ;
+ int * values3 ;
+ int * values4 ;
+ int * values5 ;
+ int * values6 ;
+ int * values7 ;
+ int * values8 ;
+ int * values9 ;
+ void* writeback_hash ;
 
 int main(void)
 {
@@ -116,10 +116,10 @@ int main(void)
     total_active_file_hash = simple_hash("total_active_file");
     total_unevictable_hash = simple_hash("total_unevictable");
 
-    // cache functions
+
     (void)simple_hash2("hello world");
     (void)strcmp("1", "2");
-    (void)strtoull("123", NULL, 0);
+    (void)strtoull("123", ((void*)0), 0);
 
   unsigned long i, c1 = 0, c2 = 0, c3 = 0, c4 = 0, c5 = 0, c6 = 0, c7 = 0, c8 = 0, c9 = 0;
   unsigned long max = 1000000;
@@ -131,7 +131,7 @@ int main(void)
   begin_clock();
   for(i = 0; i <= max ;i++) test2();
   c2 = end_clock();
-    
+
   begin_clock();
   for(i = 0; i <= max ;i++) test3();
   c3 = end_clock();
@@ -162,7 +162,7 @@ int main(void)
 
     for(i = 0; i < 11 ; i++)
         printf("value %lu: %llu %llu %llu %llu %llu %llu %llu %llu %llu\n", i, values1[i], values2[i], values3[i], values4[i], values5[i], values6[i], values7[i], values8[i], values9[i]);
-  
+
   printf("\n\nRESULTS\n");
   printf("test1() [1] in %lu usecs: simple system strcmp().\n"
          "test2() [4] in %lu usecs: inline simple_hash() with system strtoull().\n"

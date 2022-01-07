@@ -1,69 +1,69 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct page {int dummy; } ;
 struct cx23885_audio_dev {struct cx23885_audio_buffer* buf; } ;
-struct cx23885_audio_buffer {int nr_pages; int /*<<< orphan*/ * vaddr; int /*<<< orphan*/ * sglist; } ;
+struct cx23885_audio_buffer {int nr_pages; int * vaddr; int * sglist; } ;
 
-/* Variables and functions */
- int ENOMEM ; 
- int PAGE_SHIFT ; 
- int PAGE_SIZE ; 
- int /*<<< orphan*/  array_size (int,int) ; 
- int /*<<< orphan*/  dprintk (int,char*,int,...) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  sg_init_table (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  sg_set_page (int /*<<< orphan*/ *,struct page*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vfree (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * vmalloc_32 (int) ; 
- struct page* vmalloc_to_page (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * vzalloc (int /*<<< orphan*/ ) ; 
+
+ int ENOMEM ;
+ int PAGE_SHIFT ;
+ int PAGE_SIZE ;
+ int array_size (int,int) ;
+ int dprintk (int,char*,int,...) ;
+ int memset (int *,int ,int) ;
+ int sg_init_table (int *,int) ;
+ int sg_set_page (int *,struct page*,int,int ) ;
+ int vfree (int *) ;
+ int * vmalloc_32 (int) ;
+ struct page* vmalloc_to_page (int *) ;
+ int * vzalloc (int ) ;
 
 __attribute__((used)) static int cx23885_alsa_dma_init(struct cx23885_audio_dev *chip, int nr_pages)
 {
-	struct cx23885_audio_buffer *buf = chip->buf;
-	struct page *pg;
-	int i;
+ struct cx23885_audio_buffer *buf = chip->buf;
+ struct page *pg;
+ int i;
 
-	buf->vaddr = vmalloc_32(nr_pages << PAGE_SHIFT);
-	if (NULL == buf->vaddr) {
-		dprintk(1, "vmalloc_32(%d pages) failed\n", nr_pages);
-		return -ENOMEM;
-	}
+ buf->vaddr = vmalloc_32(nr_pages << PAGE_SHIFT);
+ if (((void*)0) == buf->vaddr) {
+  dprintk(1, "vmalloc_32(%d pages) failed\n", nr_pages);
+  return -ENOMEM;
+ }
 
-	dprintk(1, "vmalloc is at addr %p, size=%d\n",
-		buf->vaddr, nr_pages << PAGE_SHIFT);
+ dprintk(1, "vmalloc is at addr %p, size=%d\n",
+  buf->vaddr, nr_pages << PAGE_SHIFT);
 
-	memset(buf->vaddr, 0, nr_pages << PAGE_SHIFT);
-	buf->nr_pages = nr_pages;
+ memset(buf->vaddr, 0, nr_pages << PAGE_SHIFT);
+ buf->nr_pages = nr_pages;
 
-	buf->sglist = vzalloc(array_size(sizeof(*buf->sglist), buf->nr_pages));
-	if (NULL == buf->sglist)
-		goto vzalloc_err;
+ buf->sglist = vzalloc(array_size(sizeof(*buf->sglist), buf->nr_pages));
+ if (((void*)0) == buf->sglist)
+  goto vzalloc_err;
 
-	sg_init_table(buf->sglist, buf->nr_pages);
-	for (i = 0; i < buf->nr_pages; i++) {
-		pg = vmalloc_to_page(buf->vaddr + i * PAGE_SIZE);
-		if (NULL == pg)
-			goto vmalloc_to_page_err;
-		sg_set_page(&buf->sglist[i], pg, PAGE_SIZE, 0);
-	}
-	return 0;
+ sg_init_table(buf->sglist, buf->nr_pages);
+ for (i = 0; i < buf->nr_pages; i++) {
+  pg = vmalloc_to_page(buf->vaddr + i * PAGE_SIZE);
+  if (((void*)0) == pg)
+   goto vmalloc_to_page_err;
+  sg_set_page(&buf->sglist[i], pg, PAGE_SIZE, 0);
+ }
+ return 0;
 
 vmalloc_to_page_err:
-	vfree(buf->sglist);
-	buf->sglist = NULL;
+ vfree(buf->sglist);
+ buf->sglist = ((void*)0);
 vzalloc_err:
-	vfree(buf->vaddr);
-	buf->vaddr = NULL;
-	return -ENOMEM;
+ vfree(buf->vaddr);
+ buf->vaddr = ((void*)0);
+ return -ENOMEM;
 }

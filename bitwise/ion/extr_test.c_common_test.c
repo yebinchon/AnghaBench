@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  buf_test () ; 
- int /*<<< orphan*/  intern_test () ; 
- int /*<<< orphan*/  map_test () ; 
- scalar_t__ strcmp (char*,char*) ; 
- char* strf (char*,...) ; 
+ int assert (int) ;
+ int buf_test () ;
+ int intern_test () ;
+ int map_test () ;
+ scalar_t__ strcmp (char*,char*) ;
+ char* strf (char*,...) ;
 
 void common_test(void) {
     buf_test();

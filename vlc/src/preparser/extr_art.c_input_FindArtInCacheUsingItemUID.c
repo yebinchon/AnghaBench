@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  input_item_t ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- char* GetDirByItemUIDs (char*) ; 
- char* GetFileByItemUID (char*,char*) ; 
- int VLC_EGENERIC ; 
- int VLC_SUCCESS ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fgets (char*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (char*) ; 
- char* input_item_GetInfo (int /*<<< orphan*/ *,char*,char*) ; 
- int /*<<< orphan*/  input_item_SetArtURL (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/ * vlc_fopen (char*,char*) ; 
+
+
+
+typedef int input_item_t ;
+typedef int FILE ;
+
+
+ char* GetDirByItemUIDs (char*) ;
+ char* GetFileByItemUID (char*,char*) ;
+ int VLC_EGENERIC ;
+ int VLC_SUCCESS ;
+ int fclose (int *) ;
+ int * fgets (char*,int,int *) ;
+ int free (char*) ;
+ char* input_item_GetInfo (int *,char*,char*) ;
+ int input_item_SetArtURL (int *,char*) ;
+ int * vlc_fopen (char*,char*) ;
 
 int input_FindArtInCacheUsingItemUID( input_item_t *p_item )
 {
@@ -34,8 +34,8 @@ int input_FindArtInCacheUsingItemUID( input_item_t *p_item )
         return VLC_EGENERIC;
     }
 
-    /* we have an input item uid set */
-    bool b_done = false;
+
+    bool b_done = 0;
     char *psz_byuiddir = GetDirByItemUIDs( uid );
     char *psz_byuidfile = GetFileByItemUID( psz_byuiddir, "arturl" );
     free( psz_byuiddir );
@@ -45,11 +45,11 @@ int input_FindArtInCacheUsingItemUID( input_item_t *p_item )
         if ( fd )
         {
             char sz_cachefile[2049];
-            /* read the cache hash url */
-            if ( fgets( sz_cachefile, 2048, fd ) != NULL )
+
+            if ( fgets( sz_cachefile, 2048, fd ) != ((void*)0) )
             {
                 input_item_SetArtURL( p_item, sz_cachefile );
-                b_done = true;
+                b_done = 1;
             }
             fclose( fd );
         }

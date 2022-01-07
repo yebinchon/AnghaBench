@@ -1,34 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int ENOMEM ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pr_info (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  prog ; 
- int /*<<< orphan*/  strdup (char*) ; 
- int /*<<< orphan*/  strerror (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  topic ; 
+ int ENOMEM ;
+ int errno ;
+ int free (int ) ;
+ int pr_info (char*,int ,int ,char*) ;
+ int prog ;
+ int strdup (char*) ;
+ int strerror (int ) ;
+ int topic ;
 
 __attribute__((used)) static int add_topic(char *bname)
 {
-	free(topic);
-	topic = strdup(bname);
-	if (!topic) {
-		pr_info("%s: strdup() error %s for file %s\n", prog,
-				strerror(errno), bname);
-		return -ENOMEM;
-	}
-	return 0;
+ free(topic);
+ topic = strdup(bname);
+ if (!topic) {
+  pr_info("%s: strdup() error %s for file %s\n", prog,
+    strerror(errno), bname);
+  return -ENOMEM;
+ }
+ return 0;
 }

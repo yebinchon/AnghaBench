@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64_t ;
-typedef  int /*<<< orphan*/  stream_t ;
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  scalar_t__ lua_Integer ;
 
-/* Variables and functions */
- scalar_t__ luaL_checkinteger (int /*<<< orphan*/ *,int) ; 
- scalar_t__ luaL_checkudata (int /*<<< orphan*/ *,int,char*) ; 
- int luaL_error (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  lua_pushboolean (int /*<<< orphan*/ *,int) ; 
- int vlc_stream_Seek (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint64_t ;
+typedef int stream_t ;
+typedef int lua_State ;
+typedef scalar_t__ lua_Integer ;
+
+
+ scalar_t__ luaL_checkinteger (int *,int) ;
+ scalar_t__ luaL_checkudata (int *,int,char*) ;
+ int luaL_error (int *,char*) ;
+ int lua_pushboolean (int *,int) ;
+ int vlc_stream_Seek (int *,int ) ;
 
 __attribute__((used)) static int vlclua_stream_seek( lua_State *L )
 {

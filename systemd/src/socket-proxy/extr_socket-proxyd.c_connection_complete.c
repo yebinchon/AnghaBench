@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  client_to_server_buffer_size; int /*<<< orphan*/  client_to_server_buffer; int /*<<< orphan*/  server_to_client_buffer_size; int /*<<< orphan*/  server_to_client_buffer; } ;
-typedef  TYPE_1__ Connection ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int connection_create_pipes (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int connection_enable_event_sources (TYPE_1__*) ; 
- int /*<<< orphan*/  connection_free (TYPE_1__*) ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int client_to_server_buffer_size; int client_to_server_buffer; int server_to_client_buffer_size; int server_to_client_buffer; } ;
+typedef TYPE_1__ Connection ;
+
+
+ int assert (TYPE_1__*) ;
+ int connection_create_pipes (TYPE_1__*,int ,int *) ;
+ int connection_enable_event_sources (TYPE_1__*) ;
+ int connection_free (TYPE_1__*) ;
 
 __attribute__((used)) static int connection_complete(Connection *c) {
         int r;
@@ -41,5 +41,5 @@ __attribute__((used)) static int connection_complete(Connection *c) {
 
 fail:
         connection_free(c);
-        return 0; /* ignore errors, continue serving */
+        return 0;
 }

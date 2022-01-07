@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  void GSLList ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HOSTS ; 
- int /*<<< orphan*/  free (void*) ; 
- void* ht_get_host_agent_list (int /*<<< orphan*/ ,int) ; 
- int ht_get_keymap (int /*<<< orphan*/ ,char const*) ; 
- int list_count (void*) ; 
+
+
+
+typedef void GSLList ;
+
+
+ int HOSTS ;
+ int free (void*) ;
+ void* ht_get_host_agent_list (int ,int) ;
+ int ht_get_keymap (int ,char const*) ;
+ int list_count (void*) ;
 
 int
 set_host_agents (const char *addr, void (*func) (void *, void *, int),
@@ -41,9 +41,9 @@ set_host_agents (const char *addr, void (*func) (void *, void *, int),
 
   func (list, arr, count);
 
-#ifdef TCB_MEMHASH
-  free (list);
-#endif
+
+
+
 
   return 0;
 }

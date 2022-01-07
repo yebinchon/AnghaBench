@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct sysctl_oid_list {int dummy; } ;
 struct sysctl_oid {int dummy; } ;
 struct sysctl_ctx_list {int dummy; } ;
-struct TYPE_5__ {int /*<<< orphan*/  pkts_cnt_oversized; int /*<<< orphan*/  pkts_droped_unknown; int /*<<< orphan*/  lro_flows_active; int /*<<< orphan*/  lro_flows_deleted; int /*<<< orphan*/  lro_flows_added; int /*<<< orphan*/  rds_prime_success; int /*<<< orphan*/  rds_prime_trys; int /*<<< orphan*/  invalid_mac_addr; int /*<<< orphan*/  re1_fbq_error; int /*<<< orphan*/  unxpctd_mcast_pkts; int /*<<< orphan*/  pkts_dropped_no_rds; int /*<<< orphan*/  oversized_pkts; int /*<<< orphan*/  pkts_dropped_no_sds_host; int /*<<< orphan*/  pkts_dropped_no_sds_card; int /*<<< orphan*/  pkts_wo_acntxts; int /*<<< orphan*/  ip_chksum_err; int /*<<< orphan*/  sw_pkt_count; int /*<<< orphan*/  lro_pkt_count; int /*<<< orphan*/  total_pkts; int /*<<< orphan*/  total_bytes; } ;
+struct TYPE_5__ {int pkts_cnt_oversized; int pkts_droped_unknown; int lro_flows_active; int lro_flows_deleted; int lro_flows_added; int rds_prime_success; int rds_prime_trys; int invalid_mac_addr; int re1_fbq_error; int unxpctd_mcast_pkts; int pkts_dropped_no_rds; int oversized_pkts; int pkts_dropped_no_sds_host; int pkts_dropped_no_sds_card; int pkts_wo_acntxts; int ip_chksum_err; int sw_pkt_count; int lro_pkt_count; int total_pkts; int total_bytes; } ;
 struct TYPE_6__ {TYPE_1__ rcv; } ;
-struct TYPE_7__ {TYPE_2__ hw; int /*<<< orphan*/  pci_dev; } ;
-typedef  TYPE_3__ qla_host_t ;
+struct TYPE_7__ {TYPE_2__ hw; int pci_dev; } ;
+typedef TYPE_3__ qla_host_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CTLFLAG_RD ; 
- int /*<<< orphan*/  OID_AUTO ; 
- struct sysctl_oid* SYSCTL_ADD_NODE (struct sysctl_ctx_list*,struct sysctl_oid_list*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  SYSCTL_ADD_QUAD (struct sysctl_ctx_list*,struct sysctl_oid_list*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,char*) ; 
- struct sysctl_oid_list* SYSCTL_CHILDREN (struct sysctl_oid*) ; 
- struct sysctl_ctx_list* device_get_sysctl_ctx (int /*<<< orphan*/ ) ; 
- struct sysctl_oid* device_get_sysctl_tree (int /*<<< orphan*/ ) ; 
+
+ int CTLFLAG_RD ;
+ int OID_AUTO ;
+ struct sysctl_oid* SYSCTL_ADD_NODE (struct sysctl_ctx_list*,struct sysctl_oid_list*,int ,char*,int ,int *,char*) ;
+ int SYSCTL_ADD_QUAD (struct sysctl_ctx_list*,struct sysctl_oid_list*,int ,char*,int ,int *,char*) ;
+ struct sysctl_oid_list* SYSCTL_CHILDREN (struct sysctl_oid*) ;
+ struct sysctl_ctx_list* device_get_sysctl_ctx (int ) ;
+ struct sysctl_oid* device_get_sysctl_tree (int ) ;
 
 __attribute__((used)) static void
 qlnx_add_hw_rcv_stats_sysctls(qla_host_t *ha)
 {
-        struct sysctl_ctx_list  *ctx;
-        struct sysctl_oid_list  *children;
-        struct sysctl_oid       *ctx_oid;
+        struct sysctl_ctx_list *ctx;
+        struct sysctl_oid_list *children;
+        struct sysctl_oid *ctx_oid;
 
         ctx = device_get_sysctl_ctx(ha->pci_dev);
         children = SYSCTL_CHILDREN(device_get_sysctl_tree(ha->pci_dev));
 
         ctx_oid = SYSCTL_ADD_NODE(ctx, children, OID_AUTO, "stats_hw_rcv",
-                        CTLFLAG_RD, NULL, "stats_hw_rcv");
+                        CTLFLAG_RD, ((void*)0), "stats_hw_rcv");
         children = SYSCTL_CHILDREN(ctx_oid);
 
         SYSCTL_ADD_QUAD(ctx, children,
@@ -144,5 +144,5 @@ qlnx_add_hw_rcv_stats_sysctls(qla_host_t *ha)
                 CTLFLAG_RD, &ha->hw.rcv.pkts_cnt_oversized,
                 "pkts_cnt_oversized");
 
-	return;
+ return;
 }

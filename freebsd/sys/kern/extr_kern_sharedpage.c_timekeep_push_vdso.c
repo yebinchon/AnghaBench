@@ -1,30 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/ * compat32_svtk ; 
- int /*<<< orphan*/ * host_svtk ; 
- int /*<<< orphan*/  timehands_update (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  timehands_update32 (int /*<<< orphan*/ *) ; 
+ int * compat32_svtk ;
+ int * host_svtk ;
+ int timehands_update (int *) ;
+ int timehands_update32 (int *) ;
 
 void
 timekeep_push_vdso(void)
 {
 
-	if (host_svtk != NULL)
-		timehands_update(host_svtk);
-#ifdef COMPAT_FREEBSD32
-	if (compat32_svtk != NULL)
-		timehands_update32(compat32_svtk);
-#endif
+ if (host_svtk != ((void*)0))
+  timehands_update(host_svtk);
+
+
+
+
 }

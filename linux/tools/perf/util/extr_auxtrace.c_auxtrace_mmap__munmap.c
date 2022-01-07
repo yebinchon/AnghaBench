@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct auxtrace_mmap {int /*<<< orphan*/ * base; int /*<<< orphan*/  len; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  munmap (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+struct auxtrace_mmap {int * base; int len; } ;
+
+
+ int munmap (int *,int ) ;
 
 void auxtrace_mmap__munmap(struct auxtrace_mmap *mm)
 {
-	if (mm->base) {
-		munmap(mm->base, mm->len);
-		mm->base = NULL;
-	}
+ if (mm->base) {
+  munmap(mm->base, mm->len);
+  mm->base = ((void*)0);
+ }
 }

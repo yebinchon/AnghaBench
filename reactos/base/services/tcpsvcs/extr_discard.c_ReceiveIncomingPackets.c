@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char TCHAR ;
-typedef  int /*<<< orphan*/  SOCKET ;
-typedef  scalar_t__ INT ;
-typedef  int /*<<< orphan*/  CHAR ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int BUFSIZE ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  LOG_ERROR ; 
- int /*<<< orphan*/  LOG_FILE ; 
- int /*<<< orphan*/  LogEvent (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ SOCKET_ERROR ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  WSAGetLastError () ; 
- int /*<<< orphan*/  bShutdown ; 
- scalar_t__ recv (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  swprintf (char*,char*,scalar_t__) ; 
+
+
+
+typedef char TCHAR ;
+typedef int SOCKET ;
+typedef scalar_t__ INT ;
+typedef int CHAR ;
+typedef int BOOL ;
+
+
+ int BUFSIZE ;
+ int FALSE ;
+ int LOG_ERROR ;
+ int LOG_FILE ;
+ int LogEvent (char*,int ,int ,int ) ;
+ scalar_t__ SOCKET_ERROR ;
+ int TRUE ;
+ int WSAGetLastError () ;
+ int bShutdown ;
+ scalar_t__ recv (int ,int *,int,int ) ;
+ int swprintf (char*,char*,scalar_t__) ;
 
 __attribute__((used)) static BOOL
 ReceiveIncomingPackets(SOCKET sock)

@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_5__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t U8 ;
+
+
+typedef struct TYPE_10__ TYPE_5__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef size_t U8 ;
 struct TYPE_10__ {scalar_t__ current_state_id; } ;
 struct TYPE_9__ {TYPE_2__* domains; } ;
 struct TYPE_7__ {TYPE_5__ state_machine; } ;
 struct TYPE_8__ {TYPE_1__ parent; } ;
-typedef  scalar_t__ SCI_STATUS ;
-typedef  TYPE_2__ SCIF_SAS_DOMAIN_T ;
-typedef  TYPE_3__ SCIF_SAS_CONTROLLER_T ;
+typedef scalar_t__ SCI_STATUS ;
+typedef TYPE_2__ SCIF_SAS_DOMAIN_T ;
+typedef TYPE_3__ SCIF_SAS_CONTROLLER_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SCIF_LOG_OBJECT_CONTROLLER ; 
- int /*<<< orphan*/  SCIF_LOG_TRACE (int /*<<< orphan*/ ) ; 
- scalar_t__ SCI_BASE_DOMAIN_STATE_DISCOVERING ; 
- scalar_t__ SCI_BASE_DOMAIN_STATE_READY ; 
- int /*<<< orphan*/  SCI_BASE_DOMAIN_STATE_STOPPING ; 
- size_t SCI_MAX_DOMAINS ; 
- scalar_t__ SCI_SUCCESS ; 
- int /*<<< orphan*/  sci_base_object_get_logger (TYPE_3__*) ; 
- int /*<<< orphan*/  sci_base_state_machine_change_state (TYPE_5__*,int /*<<< orphan*/ ) ; 
+
+ int SCIF_LOG_OBJECT_CONTROLLER ;
+ int SCIF_LOG_TRACE (int ) ;
+ scalar_t__ SCI_BASE_DOMAIN_STATE_DISCOVERING ;
+ scalar_t__ SCI_BASE_DOMAIN_STATE_READY ;
+ int SCI_BASE_DOMAIN_STATE_STOPPING ;
+ size_t SCI_MAX_DOMAINS ;
+ scalar_t__ SCI_SUCCESS ;
+ int sci_base_object_get_logger (TYPE_3__*) ;
+ int sci_base_state_machine_change_state (TYPE_5__*,int ) ;
 
 __attribute__((used)) static
 SCI_STATUS scif_sas_controller_stop_domains(
@@ -54,8 +54,8 @@ SCI_STATUS scif_sas_controller_stop_domains(
    {
       fw_domain = &fw_controller->domains[index];
 
-      //Change this domain to STOPPING state. All the remote devices will be
-      //stopped subsquentially.
+
+
       if (fw_domain->parent.state_machine.current_state_id ==
              SCI_BASE_DOMAIN_STATE_READY
           || fw_domain->parent.state_machine.current_state_id ==

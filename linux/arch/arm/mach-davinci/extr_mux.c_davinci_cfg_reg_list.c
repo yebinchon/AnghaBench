@@ -1,30 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int EINVAL ; 
- int davinci_cfg_reg (short const) ; 
+ int EINVAL ;
+ int davinci_cfg_reg (short const) ;
 
 int davinci_cfg_reg_list(const short pins[])
 {
-	int i, error = -EINVAL;
+ int i, error = -EINVAL;
 
-	if (pins)
-		for (i = 0; pins[i] >= 0; i++) {
-			error = davinci_cfg_reg(pins[i]);
-			if (error)
-				break;
-		}
+ if (pins)
+  for (i = 0; pins[i] >= 0; i++) {
+   error = davinci_cfg_reg(pins[i]);
+   if (error)
+    break;
+  }
 
-	return error;
+ return error;
 }

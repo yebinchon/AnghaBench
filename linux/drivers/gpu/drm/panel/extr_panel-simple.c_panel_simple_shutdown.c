@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct panel_simple {int /*<<< orphan*/  base; } ;
+
+
+
+
+struct panel_simple {int base; } ;
 struct device {int dummy; } ;
 
-/* Variables and functions */
- struct panel_simple* dev_get_drvdata (struct device*) ; 
- int /*<<< orphan*/  panel_simple_disable (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  panel_simple_unprepare (int /*<<< orphan*/ *) ; 
+
+ struct panel_simple* dev_get_drvdata (struct device*) ;
+ int panel_simple_disable (int *) ;
+ int panel_simple_unprepare (int *) ;
 
 __attribute__((used)) static void panel_simple_shutdown(struct device *dev)
 {
-	struct panel_simple *panel = dev_get_drvdata(dev);
+ struct panel_simple *panel = dev_get_drvdata(dev);
 
-	panel_simple_disable(&panel->base);
-	panel_simple_unprepare(&panel->base);
+ panel_simple_disable(&panel->base);
+ panel_simple_unprepare(&panel->base);
 }

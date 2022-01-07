@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VC_CONTAINER_T ;
-struct TYPE_4__ {int size; int /*<<< orphan*/  value; } ;
-typedef  TYPE_1__ VC_CONTAINER_METADATA_T ;
-typedef  int /*<<< orphan*/  VC_CONTAINER_METADATA_KEY_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOG_DEBUG (int /*<<< orphan*/ *,char*,unsigned int) ; 
- int /*<<< orphan*/  READ_STRING (int /*<<< orphan*/ *,int /*<<< orphan*/ ,unsigned int,char*) ; 
- int /*<<< orphan*/  READ_STRING_UTF16 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,unsigned int,char*) ; 
- int /*<<< orphan*/  SKIP_BYTES (int /*<<< orphan*/ *,unsigned int) ; 
- TYPE_1__* id3_metadata_append (int /*<<< orphan*/ *,int /*<<< orphan*/ ,unsigned int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int VC_CONTAINER_T ;
+struct TYPE_4__ {int size; int value; } ;
+typedef TYPE_1__ VC_CONTAINER_METADATA_T ;
+typedef int VC_CONTAINER_METADATA_KEY_T ;
+
+
+ int LOG_DEBUG (int *,char*,unsigned int) ;
+ int READ_STRING (int *,int ,unsigned int,char*) ;
+ int READ_STRING_UTF16 (int *,int ,unsigned int,char*) ;
+ int SKIP_BYTES (int *,unsigned int) ;
+ TYPE_1__* id3_metadata_append (int *,int ,unsigned int) ;
 
 __attribute__((used)) static VC_CONTAINER_METADATA_T *id3_read_metadata_entry_ex( VC_CONTAINER_T *p_ctx,
    VC_CONTAINER_METADATA_KEY_T key, unsigned int len, const char *encoding )
 {
    VC_CONTAINER_METADATA_T *meta;
 
-   if ((meta = id3_metadata_append(p_ctx, key, encoding ? len + 2 : len + 1)) != NULL)
+   if ((meta = id3_metadata_append(p_ctx, key, encoding ? len + 2 : len + 1)) != ((void*)0))
    {
       unsigned int size;
 

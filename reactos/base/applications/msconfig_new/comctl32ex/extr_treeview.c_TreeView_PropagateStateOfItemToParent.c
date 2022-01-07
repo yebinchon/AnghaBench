@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ UINT ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  int /*<<< orphan*/  HTREEITEM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INDEXTOSTATEIMAGEMASK (scalar_t__) ; 
- int /*<<< orphan*/  TVIS_STATEIMAGEMASK ; 
- int /*<<< orphan*/  TreeView_GetParent (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ TreeView_GetRealSubtreeState (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TreeView_SetItemState (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef scalar_t__ UINT ;
+typedef int HWND ;
+typedef int HTREEITEM ;
+
+
+ int INDEXTOSTATEIMAGEMASK (scalar_t__) ;
+ int TVIS_STATEIMAGEMASK ;
+ int TreeView_GetParent (int ,int ) ;
+ scalar_t__ TreeView_GetRealSubtreeState (int ,int ) ;
+ int TreeView_SetItemState (int ,int ,int ,int ) ;
 
 void TreeView_PropagateStateOfItemToParent(HWND hTree, HTREEITEM htiItem)
 {
     HTREEITEM htiParent;
     UINT uGlobalSiblingsCheckState;
 
-    if (!hTree || !htiItem /* || htiItem == TVI_ROOT */)
+    if (!hTree || !htiItem )
         return;
 
     htiParent = TreeView_GetParent(hTree, htiItem);

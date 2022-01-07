@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct postponed_operation {scalar_t__ size; struct postponed_operation* next; scalar_t__ E; scalar_t__ time; } ;
 struct lev_generic {int dummy; } ;
 struct TYPE_2__ {int tot_lists; } ;
 
-/* Variables and functions */
- TYPE_1__ Header ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ lists_replay_logevent (struct lev_generic*,scalar_t__) ; 
- int metafile_mode ; 
- scalar_t__ now_override ; 
- struct postponed_operation** postponed ; 
- int /*<<< orphan*/  postponed_operations_performed ; 
- int postponed_replay ; 
- int /*<<< orphan*/  zfree (struct postponed_operation*,scalar_t__) ; 
+
+ TYPE_1__ Header ;
+ int assert (int) ;
+ scalar_t__ lists_replay_logevent (struct lev_generic*,scalar_t__) ;
+ int metafile_mode ;
+ scalar_t__ now_override ;
+ struct postponed_operation** postponed ;
+ int postponed_operations_performed ;
+ int postponed_replay ;
+ int zfree (struct postponed_operation*,scalar_t__) ;
 
 void do_postponed (int x) {
   assert (0 <= x && x < Header.tot_lists);

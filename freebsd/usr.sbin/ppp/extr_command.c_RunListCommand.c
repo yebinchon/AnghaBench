@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct cmdargs {int argc; char** argv; int argn; scalar_t__ prompt; int /*<<< orphan*/  cx; TYPE_1__* cmd; int /*<<< orphan*/  bundle; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct cmdargs {int argc; char** argv; int argn; scalar_t__ prompt; int cx; TYPE_1__* cmd; int bundle; } ;
 struct TYPE_2__ {scalar_t__ args; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FindExec (int /*<<< orphan*/ ,scalar_t__,int,int,char**,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LogWARN ; 
- scalar_t__ NatCommands ; 
- int /*<<< orphan*/  log_Printf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  prompt_Printf (scalar_t__,char*,...) ; 
- char tolower (char) ; 
+
+ int FindExec (int ,scalar_t__,int,int,char**,scalar_t__,int ) ;
+ int LogWARN ;
+ scalar_t__ NatCommands ;
+ int log_Printf (int ,char*,...) ;
+ int prompt_Printf (scalar_t__,char*,...) ;
+ char tolower (char) ;
 
 __attribute__((used)) static int
 RunListCommand(struct cmdargs const *arg)
 {
   const char *cmd = arg->argc ? arg->argv[arg->argc - 1] : "???";
 
-#ifndef NONAT
+
   if (arg->cmd->args == NatCommands &&
       tolower(*arg->argv[arg->argn - 1]) == 'a') {
     if (arg->prompt)
@@ -35,7 +35,7 @@ RunListCommand(struct cmdargs const *arg)
     else
       log_Printf(LogWARN, "The alias command is deprecated\n");
   }
-#endif
+
 
   if (arg->argc > arg->argn)
     FindExec(arg->bundle, arg->cmd->args, arg->argc, arg->argn, arg->argv,

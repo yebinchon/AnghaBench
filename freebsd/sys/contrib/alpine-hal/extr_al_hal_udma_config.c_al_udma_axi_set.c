@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-struct udma_gen_axi {int /*<<< orphan*/  endian_cfg; int /*<<< orphan*/  cfg_2; int /*<<< orphan*/  cfg_1; } ;
-struct al_udma_axi_conf {scalar_t__ swap_8_bytes; scalar_t__ swap_s2m_data; scalar_t__ swap_s2m_desc; scalar_t__ swap_m2s_data; scalar_t__ swap_m2s_desc; int /*<<< orphan*/  arb_promotion; int /*<<< orphan*/  axi_timeout; } ;
 
-/* Variables and functions */
- scalar_t__ AL_TRUE ; 
- int /*<<< orphan*/  UDMA_GEN_AXI_CFG_2_ARB_PROMOTION_MASK ; 
- int /*<<< orphan*/  UDMA_GEN_AXI_ENDIAN_CFG_SWAP_64B_EN ; 
- int /*<<< orphan*/  UDMA_GEN_AXI_ENDIAN_CFG_SWAP_M2S_DATA ; 
- int /*<<< orphan*/  UDMA_GEN_AXI_ENDIAN_CFG_SWAP_M2S_DESC ; 
- int /*<<< orphan*/  UDMA_GEN_AXI_ENDIAN_CFG_SWAP_S2M_DATA ; 
- int /*<<< orphan*/  UDMA_GEN_AXI_ENDIAN_CFG_SWAP_S2M_DESC ; 
- int /*<<< orphan*/  al_reg_read32 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  al_reg_write32 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint32_t ;
+struct udma_gen_axi {int endian_cfg; int cfg_2; int cfg_1; } ;
+struct al_udma_axi_conf {scalar_t__ swap_8_bytes; scalar_t__ swap_s2m_data; scalar_t__ swap_s2m_desc; scalar_t__ swap_m2s_data; scalar_t__ swap_m2s_desc; int arb_promotion; int axi_timeout; } ;
+
+
+ scalar_t__ AL_TRUE ;
+ int UDMA_GEN_AXI_CFG_2_ARB_PROMOTION_MASK ;
+ int UDMA_GEN_AXI_ENDIAN_CFG_SWAP_64B_EN ;
+ int UDMA_GEN_AXI_ENDIAN_CFG_SWAP_M2S_DATA ;
+ int UDMA_GEN_AXI_ENDIAN_CFG_SWAP_M2S_DESC ;
+ int UDMA_GEN_AXI_ENDIAN_CFG_SWAP_S2M_DATA ;
+ int UDMA_GEN_AXI_ENDIAN_CFG_SWAP_S2M_DESC ;
+ int al_reg_read32 (int *) ;
+ int al_reg_write32 (int *,int ) ;
 
 int al_udma_axi_set(struct udma_gen_axi *axi_regs,
-					struct al_udma_axi_conf *axi)
+     struct al_udma_axi_conf *axi)
 {
         uint32_t reg;
 

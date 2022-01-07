@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
-struct TYPE_4__ {TYPE_1__* bufs; int /*<<< orphan*/  self_ref; int /*<<< orphan*/  cb_vu_ref; int /*<<< orphan*/  cb_stopped_ref; int /*<<< orphan*/  cb_paused_ref; int /*<<< orphan*/  cb_drained_ref; int /*<<< orphan*/  cb_data_ref; } ;
-struct TYPE_3__ {int /*<<< orphan*/ * data; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GET_PUD () ; 
- int /*<<< orphan*/  UNREF_CB (int /*<<< orphan*/ ) ; 
- TYPE_2__* cfg ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int lua_State ;
+struct TYPE_4__ {TYPE_1__* bufs; int self_ref; int cb_vu_ref; int cb_stopped_ref; int cb_paused_ref; int cb_drained_ref; int cb_data_ref; } ;
+struct TYPE_3__ {int * data; } ;
+
+
+ int GET_PUD () ;
+ int UNREF_CB (int ) ;
+ TYPE_2__* cfg ;
+ int free (int *) ;
 
 __attribute__((used)) static int pcm_drv_free( lua_State *L )
 {
@@ -35,11 +35,11 @@ __attribute__((used)) static int pcm_drv_free( lua_State *L )
 
   if (cfg->bufs[0].data) {
     free( cfg->bufs[0].data );
-    cfg->bufs[0].data = NULL;
+    cfg->bufs[0].data = ((void*)0);
   }
   if (cfg->bufs[1].data) {
     free( cfg->bufs[1].data );
-    cfg->bufs[1].data = NULL;
+    cfg->bufs[1].data = ((void*)0);
   }
 
   return 0;

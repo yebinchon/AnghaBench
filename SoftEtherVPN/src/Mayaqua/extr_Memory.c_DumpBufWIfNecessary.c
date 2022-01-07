@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wchar_t ;
-typedef  int /*<<< orphan*/  BUF ;
 
-/* Variables and functions */
- scalar_t__ CompareBuf (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int DumpBufW (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FreeBuf (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * ReadDumpW (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int wchar_t ;
+typedef int BUF ;
+
+
+ scalar_t__ CompareBuf (int *,int *) ;
+ int DumpBufW (int *,int *) ;
+ int FreeBuf (int *) ;
+ int * ReadDumpW (int *) ;
 
 bool DumpBufWIfNecessary(BUF *b, wchar_t *filename)
 {
-	BUF *now;
-	bool need = true;
-	// Validate arguments
-	if (b == NULL || filename == NULL)
-	{
-		return false;
-	}
+ BUF *now;
+ bool need = 1;
 
-	now = ReadDumpW(filename);
+ if (b == ((void*)0) || filename == ((void*)0))
+ {
+  return 0;
+ }
 
-	if (now != NULL)
-	{
-		if (CompareBuf(now, b))
-		{
-			need = false;
-		}
+ now = ReadDumpW(filename);
 
-		FreeBuf(now);
-	}
+ if (now != ((void*)0))
+ {
+  if (CompareBuf(now, b))
+  {
+   need = 0;
+  }
 
-	if (need == false)
-	{
-		return true;
-	}
-	else
-	{
-		return DumpBufW(b, filename);
-	}
+  FreeBuf(now);
+ }
+
+ if (need == 0)
+ {
+  return 1;
+ }
+ else
+ {
+  return DumpBufW(b, filename);
+ }
 }

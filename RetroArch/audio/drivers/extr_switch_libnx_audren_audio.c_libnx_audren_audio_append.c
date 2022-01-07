@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int ssize_t ;
-struct TYPE_4__ {size_t current_pool_ptr; size_t mempool; int buffer_size; size_t current_size; int /*<<< orphan*/ * current_wavebuf; int /*<<< orphan*/  drv; int /*<<< orphan*/  update_lock; int /*<<< orphan*/ * wavebufs; } ;
-typedef  TYPE_1__ libnx_audren_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  armDCacheFlush (void*,size_t) ; 
- int /*<<< orphan*/  audrvUpdate (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  audrvVoiceAddWaveBuf (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  audrvVoiceIsPlaying (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  audrvVoiceStart (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int libnx_audren_audio_get_free_wavebuf_idx (TYPE_1__*) ; 
- int /*<<< orphan*/  memcpy (void*,void const*,size_t) ; 
- int /*<<< orphan*/  mutexLock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutexUnlock (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int ssize_t ;
+struct TYPE_4__ {size_t current_pool_ptr; size_t mempool; int buffer_size; size_t current_size; int * current_wavebuf; int drv; int update_lock; int * wavebufs; } ;
+typedef TYPE_1__ libnx_audren_t ;
+
+
+ int armDCacheFlush (void*,size_t) ;
+ int audrvUpdate (int *) ;
+ int audrvVoiceAddWaveBuf (int *,int ,int *) ;
+ int audrvVoiceIsPlaying (int *,int ) ;
+ int audrvVoiceStart (int *,int ) ;
+ int libnx_audren_audio_get_free_wavebuf_idx (TYPE_1__*) ;
+ int memcpy (void*,void const*,size_t) ;
+ int mutexLock (int *) ;
+ int mutexUnlock (int *) ;
 
 __attribute__((used)) static size_t libnx_audren_audio_append(libnx_audren_t* aud, const void *buf, size_t size)
 {
@@ -65,7 +65,7 @@ __attribute__((used)) static size_t libnx_audren_audio_append(libnx_audren_t* au
          audrvVoiceStart(&aud->drv, 0);
       }
 
-      aud->current_wavebuf = NULL;
+      aud->current_wavebuf = ((void*)0);
    }
 
    return size;

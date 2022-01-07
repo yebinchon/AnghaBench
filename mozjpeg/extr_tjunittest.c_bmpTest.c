@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  TJFLAG_BOTTOMUP ; 
- int TJ_NUMPF ; 
- int doBmpTest (char*,int,int,int,int,int /*<<< orphan*/ ) ; 
- char** pixFormatStr ; 
- int /*<<< orphan*/  printf (char*,...) ; 
+ int TJFLAG_BOTTOMUP ;
+ int TJ_NUMPF ;
+ int doBmpTest (char*,int,int,int,int,int ) ;
+ char** pixFormatStr ;
+ int printf (char*,...) ;
 
 int bmpTest(void)
 {

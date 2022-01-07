@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_7__ {scalar_t__ command; } ;
 struct TYPE_5__ {scalar_t__ qhandle; int code; } ;
-struct TYPE_6__ {void (* fp ) () ;int /*<<< orphan*/  fetchFp; TYPE_1__ res; TYPE_3__ cmd; } ;
-typedef  int /*<<< orphan*/  TAOS_RES ;
-typedef  TYPE_1__ SSqlRes ;
-typedef  TYPE_2__ SSqlObj ;
-typedef  TYPE_3__ SSqlCmd ;
+struct TYPE_6__ {void (* fp ) () ;int fetchFp; TYPE_1__ res; TYPE_3__ cmd; } ;
+typedef int TAOS_RES ;
+typedef TYPE_1__ SSqlRes ;
+typedef TYPE_2__ SSqlObj ;
+typedef TYPE_3__ SSqlCmd ;
 
-/* Variables and functions */
- scalar_t__ TSDB_SQL_FETCH ; 
- scalar_t__ TSDB_SQL_LOCAL ; 
- scalar_t__ TSDB_SQL_MGMT ; 
- scalar_t__ TSDB_SQL_RETRIEVE ; 
- scalar_t__ TSDB_SQL_RETRIEVE_METRIC ; 
- int /*<<< orphan*/  tscError (char*) ; 
- int /*<<< orphan*/  tscProcessSql (TYPE_2__*) ; 
- int /*<<< orphan*/  tscQueueAsyncError (int /*<<< orphan*/ ,void*) ; 
+
+ scalar_t__ TSDB_SQL_FETCH ;
+ scalar_t__ TSDB_SQL_LOCAL ;
+ scalar_t__ TSDB_SQL_MGMT ;
+ scalar_t__ TSDB_SQL_RETRIEVE ;
+ scalar_t__ TSDB_SQL_RETRIEVE_METRIC ;
+ int tscError (char*) ;
+ int tscProcessSql (TYPE_2__*) ;
+ int tscQueueAsyncError (int ,void*) ;
 
 __attribute__((used)) static void tscProcessAsyncRetrieveImpl(void *param, TAOS_RES *tres, int numOfRows, void (*fp)()) {
   SSqlObj *pSql = (SSqlObj *)tres;
-  if (pSql == NULL) {  // error
+  if (pSql == ((void*)0)) {
     tscError("sql object is NULL");
     tscQueueAsyncError(pSql->fetchFp, param);
     return;

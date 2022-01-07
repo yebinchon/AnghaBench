@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ UINT ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef scalar_t__ UINT ;
 struct TYPE_4__ {scalar_t__ device_type; scalar_t__ device_id; struct TYPE_4__* next; } ;
-typedef  TYPE_1__ SessionInfo ;
-typedef  scalar_t__ DeviceType ;
+typedef TYPE_1__ SessionInfo ;
+typedef scalar_t__ DeviceType ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EnterCriticalSection (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LeaveCriticalSection (int /*<<< orphan*/ *) ; 
- TYPE_1__* session_list ; 
- int /*<<< orphan*/  session_lock ; 
+
+ int EnterCriticalSection (int *) ;
+ int LeaveCriticalSection (int *) ;
+ TYPE_1__* session_list ;
+ int session_lock ;
 
 SessionInfo*
 GetSession(
@@ -45,5 +45,5 @@ GetSession(
     }
 
     LeaveCriticalSection(&session_lock);
-    return NULL;
+    return ((void*)0);
 }

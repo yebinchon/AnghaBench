@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  esp_slave_context_t ;
-typedef  int /*<<< orphan*/  esp_err_t ;
 
-/* Variables and functions */
- int CONFIG_FREERTOS_HZ ; 
- int /*<<< orphan*/  ESP_ERROR_CHECK (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ESP_LOGI (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  TAG ; 
- int /*<<< orphan*/  job_fifo (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  job_getint (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  job_write_reg (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  process_event (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  slave_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  slave_power_on () ; 
- int /*<<< orphan*/  slave_reset (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vTaskDelay (int) ; 
- int xTaskGetTickCount () ; 
+
+
+
+typedef int uint32_t ;
+typedef int esp_slave_context_t ;
+typedef int esp_err_t ;
+
+
+ int CONFIG_FREERTOS_HZ ;
+ int ESP_ERROR_CHECK (int ) ;
+ int ESP_LOGI (int ,char*) ;
+ int TAG ;
+ int job_fifo (int *) ;
+ int job_getint (int *) ;
+ int job_write_reg (int *,int) ;
+ int process_event (int *) ;
+ int slave_init (int *) ;
+ int slave_power_on () ;
+ int slave_reset (int *) ;
+ int vTaskDelay (int) ;
+ int xTaskGetTickCount () ;
 
 void app_main(void)
 {
     esp_slave_context_t context;
     esp_err_t err;
 
-    //enable the power if on espressif SDIO master-slave board
+
     slave_power_on();
 
     ESP_LOGI(TAG, "host ready, start initializing slave...");

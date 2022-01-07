@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
+
+
+
+
+typedef int uint8_t ;
 struct hast_resource {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  control_set_role_common (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,struct hast_resource*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int control_set_role_common (int *,int *,int ,struct hast_resource*,int *,int ) ;
 
 void
 control_set_role(struct hast_resource *res, uint8_t role)
 {
 
-	control_set_role_common(NULL, NULL, role, res, NULL, 0);
+ control_set_role_common(((void*)0), ((void*)0), role, res, ((void*)0), 0);
 }

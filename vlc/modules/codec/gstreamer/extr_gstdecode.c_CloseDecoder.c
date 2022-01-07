@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_object_t ;
-typedef  int gboolean ;
+
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int vlc_object_t ;
+typedef int gboolean ;
 struct TYPE_8__ {TYPE_2__* p_sys; } ;
-typedef  TYPE_1__ decoder_t ;
+typedef TYPE_1__ decoder_t ;
 struct TYPE_9__ {int b_running; scalar_t__ p_decoder; scalar_t__ p_decode_out; scalar_t__ p_decode_in; scalar_t__ p_decode_src; scalar_t__ p_bus; scalar_t__ p_allocator; scalar_t__ p_que; } ;
-typedef  TYPE_2__ decoder_sys_t ;
-typedef  int /*<<< orphan*/  GstMessage ;
-typedef  int /*<<< orphan*/  GstFlowReturn ;
-typedef  int /*<<< orphan*/  GstBuffer ;
+typedef TYPE_2__ decoder_sys_t ;
+typedef int GstMessage ;
+typedef int GstFlowReturn ;
+typedef int GstBuffer ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GST_APP_SRC_CAST (scalar_t__) ; 
-#define  GST_MESSAGE_EOS 128 
- int GST_MESSAGE_ERROR ; 
- int GST_MESSAGE_TYPE (int /*<<< orphan*/ *) ; 
- scalar_t__ GST_STATE_CHANGE_SUCCESS ; 
- int /*<<< orphan*/  GST_STATE_NULL ; 
- int /*<<< orphan*/  default_msg_handler (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (TYPE_2__*) ; 
- int /*<<< orphan*/  gst_app_src_end_of_stream (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * gst_atomic_queue_pop (scalar_t__) ; 
- int /*<<< orphan*/  gst_atomic_queue_unref (scalar_t__) ; 
- int /*<<< orphan*/  gst_buffer_unref (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * gst_bus_timed_pop_filtered (scalar_t__,unsigned long long,int) ; 
- scalar_t__ gst_element_set_state (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gst_flow_get_name (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gst_message_unref (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  gst_object_unref (scalar_t__) ; 
- int /*<<< orphan*/  msg_Dbg (TYPE_1__*,char*,...) ; 
- int /*<<< orphan*/  msg_Err (TYPE_1__*,char*) ; 
- int /*<<< orphan*/  msg_Warn (TYPE_1__*,char*) ; 
+
+ int GST_APP_SRC_CAST (scalar_t__) ;
+
+ int GST_MESSAGE_ERROR ;
+ int GST_MESSAGE_TYPE (int *) ;
+ scalar_t__ GST_STATE_CHANGE_SUCCESS ;
+ int GST_STATE_NULL ;
+ int default_msg_handler (TYPE_1__*,int *) ;
+ int free (TYPE_2__*) ;
+ int gst_app_src_end_of_stream (int ) ;
+ int * gst_atomic_queue_pop (scalar_t__) ;
+ int gst_atomic_queue_unref (scalar_t__) ;
+ int gst_buffer_unref (int *) ;
+ int * gst_bus_timed_pop_filtered (scalar_t__,unsigned long long,int) ;
+ scalar_t__ gst_element_set_state (scalar_t__,int ) ;
+ int gst_flow_get_name (int ) ;
+ int gst_message_unref (int *) ;
+ int gst_object_unref (scalar_t__) ;
+ int msg_Dbg (TYPE_1__*,char*,...) ;
+ int msg_Err (TYPE_1__*,char*) ;
+ int msg_Warn (TYPE_1__*,char*) ;
 
 __attribute__((used)) static void CloseDecoder( vlc_object_t *p_this )
 {
@@ -55,21 +55,21 @@ __attribute__((used)) static void CloseDecoder( vlc_object_t *p_this )
         GstMessage *p_msg;
         GstFlowReturn i_ret;
 
-        p_sys->b_running = false;
+        p_sys->b_running = 0;
 
-        /* Send EOS to the pipeline */
+
         i_ret = gst_app_src_end_of_stream(
                 GST_APP_SRC_CAST( p_sys->p_decode_src ));
         msg_Dbg( p_dec, "app src eos: %s", gst_flow_get_name( i_ret ) );
 
-        /* and catch it on the bus with a timeout */
+
         p_msg = gst_bus_timed_pop_filtered( p_sys->p_bus,
-                2000000000ULL, GST_MESSAGE_EOS | GST_MESSAGE_ERROR );
+                2000000000ULL, 128 | GST_MESSAGE_ERROR );
 
         if( p_msg )
         {
             switch( GST_MESSAGE_TYPE( p_msg ) ){
-            case GST_MESSAGE_EOS:
+            case 128:
                 msg_Dbg( p_dec, "got eos" );
                 break;
             default:
@@ -88,7 +88,7 @@ __attribute__((used)) static void CloseDecoder( vlc_object_t *p_this )
                     "no message, pipeline may not close gracefully" );
     }
 
-    /* Remove any left-over buffers from the queue */
+
     if( p_sys->p_que )
     {
         GstBuffer *p_buf;
@@ -100,8 +100,8 @@ __attribute__((used)) static void CloseDecoder( vlc_object_t *p_this )
     if( b_running && gst_element_set_state( p_sys->p_decoder, GST_STATE_NULL )
             != GST_STATE_CHANGE_SUCCESS )
         msg_Err( p_dec,
-                "failed to change the state to NULL," \
-                "pipeline may not close gracefully" );
+                "failed to change the state to NULL," "pipeline may not close gracefully" );
+
 
     if( p_sys->p_allocator )
         gst_object_unref( p_sys->p_allocator );

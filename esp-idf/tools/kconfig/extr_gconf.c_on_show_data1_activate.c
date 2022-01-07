@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  gpointer ;
-struct TYPE_2__ {int /*<<< orphan*/  active; } ;
-typedef  int /*<<< orphan*/  GtkTreeViewColumn ;
-typedef  int /*<<< orphan*/  GtkMenuItem ;
 
-/* Variables and functions */
- int /*<<< orphan*/  COL_VALUE ; 
- TYPE_1__* GTK_CHECK_MENU_ITEM (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GTK_TREE_VIEW (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gtk_tree_view_column_set_visible (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * gtk_tree_view_get_column (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  show_value ; 
- int /*<<< orphan*/  tree2_w ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int gpointer ;
+struct TYPE_2__ {int active; } ;
+typedef int GtkTreeViewColumn ;
+typedef int GtkMenuItem ;
+
+
+ int COL_VALUE ;
+ TYPE_1__* GTK_CHECK_MENU_ITEM (int *) ;
+ int GTK_TREE_VIEW (int ) ;
+ int gtk_tree_view_column_set_visible (int *,int ) ;
+ int * gtk_tree_view_get_column (int ,int ) ;
+ int show_value ;
+ int tree2_w ;
 
 void on_show_data1_activate(GtkMenuItem * menuitem, gpointer user_data)
 {
-	GtkTreeViewColumn *col;
+ GtkTreeViewColumn *col;
 
-	show_value = GTK_CHECK_MENU_ITEM(menuitem)->active;
-	col = gtk_tree_view_get_column(GTK_TREE_VIEW(tree2_w), COL_VALUE);
-	if (col)
-		gtk_tree_view_column_set_visible(col, show_value);
+ show_value = GTK_CHECK_MENU_ITEM(menuitem)->active;
+ col = gtk_tree_view_get_column(GTK_TREE_VIEW(tree2_w), COL_VALUE);
+ if (col)
+  gtk_tree_view_column_set_visible(col, show_value);
 }

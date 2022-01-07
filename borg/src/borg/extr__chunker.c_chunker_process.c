@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
-struct TYPE_4__ {int chunk_mask; size_t min_size; size_t window_size; int done; scalar_t__ bytes_read; scalar_t__ bytes_yielded; size_t remaining; int position; size_t last; int /*<<< orphan*/ * data; int /*<<< orphan*/  table; scalar_t__ eof; } ;
-typedef  int /*<<< orphan*/  PyObject ;
-typedef  TYPE_1__ Chunker ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PyBUF_READ ; 
- int /*<<< orphan*/  PyErr_SetNone (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PyErr_SetString (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  PyExc_Exception ; 
- int /*<<< orphan*/  PyExc_StopIteration ; 
- int /*<<< orphan*/ * PyMemoryView_FromMemory (char*,size_t,int /*<<< orphan*/ ) ; 
- int buzhash (int /*<<< orphan*/ *,size_t,int /*<<< orphan*/ ) ; 
- int buzhash_update (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,size_t,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  chunker_fill (TYPE_1__*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+struct TYPE_4__ {int chunk_mask; size_t min_size; size_t window_size; int done; scalar_t__ bytes_read; scalar_t__ bytes_yielded; size_t remaining; int position; size_t last; int * data; int table; scalar_t__ eof; } ;
+typedef int PyObject ;
+typedef TYPE_1__ Chunker ;
+
+
+ int PyBUF_READ ;
+ int PyErr_SetNone (int ) ;
+ int PyErr_SetString (int ,char*) ;
+ int PyExc_Exception ;
+ int PyExc_StopIteration ;
+ int * PyMemoryView_FromMemory (char*,size_t,int ) ;
+ int buzhash (int *,size_t,int ) ;
+ int buzhash_update (int,int ,int ,size_t,int ) ;
+ int chunker_fill (TYPE_1__*) ;
 
 __attribute__((used)) static PyObject *
 chunker_process(Chunker *c)
@@ -38,14 +38,14 @@ chunker_process(Chunker *c)
             PyErr_SetNone(PyExc_StopIteration);
         else
             PyErr_SetString(PyExc_Exception, "chunkifier byte count mismatch");
-        return NULL;
+        return ((void*)0);
     }
-    while(c->remaining < min_size + window_size + 1 && !c->eof) {  /* see assert in Chunker init */
+    while(c->remaining < min_size + window_size + 1 && !c->eof) {
         if(!chunker_fill(c)) {
-            return NULL;
+            return ((void*)0);
         }
     }
-    /* here we either are at eof ... */
+
     if(c->eof) {
         c->done = 1;
         if(c->remaining) {
@@ -57,13 +57,13 @@ chunker_process(Chunker *c)
                 PyErr_SetNone(PyExc_StopIteration);
             else
                 PyErr_SetString(PyExc_Exception, "chunkifier byte count mismatch");
-            return NULL;
+            return ((void*)0);
         }
     }
-    /* ... or we have at least min_size + window_size + 1 bytes remaining.
-     * We do not want to "cut" a chunk smaller than min_size and the hash
-     * window starts at the potential cutting place.
-     */
+
+
+
+
     c->position += min_size;
     c->remaining -= min_size;
     n += min_size;
@@ -77,7 +77,7 @@ chunker_process(Chunker *c)
         n++;
         if(c->remaining <= window_size) {
             if(!chunker_fill(c)) {
-                return NULL;
+                return ((void*)0);
             }
         }
     }

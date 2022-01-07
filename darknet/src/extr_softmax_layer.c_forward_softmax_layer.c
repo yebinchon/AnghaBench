@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int batch; int inputs; int groups; int /*<<< orphan*/  loss; int /*<<< orphan*/ * cost; int /*<<< orphan*/  delta; scalar_t__ output; int /*<<< orphan*/  noloss; int /*<<< orphan*/  temperature; TYPE_1__* softmax_tree; } ;
-typedef  TYPE_2__ softmax_layer ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int batch; int inputs; int groups; int loss; int * cost; int delta; scalar_t__ output; int noloss; int temperature; TYPE_1__* softmax_tree; } ;
+typedef TYPE_2__ softmax_layer ;
 struct TYPE_8__ {scalar_t__ truth; scalar_t__ input; } ;
-typedef  TYPE_3__ network ;
+typedef TYPE_3__ network ;
 struct TYPE_6__ {int groups; int* group_size; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  softmax_cpu (scalar_t__,int,int,int,int,int,int,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  softmax_x_ent_cpu (int,scalar_t__,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sum_array (int /*<<< orphan*/ ,int) ; 
+
+ int softmax_cpu (scalar_t__,int,int,int,int,int,int,int ,scalar_t__) ;
+ int softmax_x_ent_cpu (int,scalar_t__,scalar_t__,int ,int ) ;
+ int sum_array (int ,int) ;
 
 void forward_softmax_layer(const softmax_layer l, network net)
 {

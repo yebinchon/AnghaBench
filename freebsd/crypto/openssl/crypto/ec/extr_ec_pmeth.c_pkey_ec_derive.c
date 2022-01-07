@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_6__ ;
-typedef  struct TYPE_12__   TYPE_5__ ;
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_13__ {int /*<<< orphan*/ * co_key; } ;
+
+
+typedef struct TYPE_13__ TYPE_6__ ;
+typedef struct TYPE_12__ TYPE_5__ ;
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_13__ {int * co_key; } ;
 struct TYPE_12__ {TYPE_4__* peerkey; TYPE_2__* pkey; TYPE_6__* data; } ;
-struct TYPE_10__ {int /*<<< orphan*/  ec; } ;
+struct TYPE_10__ {int ec; } ;
 struct TYPE_11__ {TYPE_3__ pkey; } ;
-struct TYPE_8__ {int /*<<< orphan*/ * ec; } ;
+struct TYPE_8__ {int * ec; } ;
 struct TYPE_9__ {TYPE_1__ pkey; } ;
-typedef  TYPE_5__ EVP_PKEY_CTX ;
-typedef  int /*<<< orphan*/  EC_POINT ;
-typedef  TYPE_6__ EC_PKEY_CTX ;
-typedef  int /*<<< orphan*/  EC_KEY ;
-typedef  int /*<<< orphan*/  EC_GROUP ;
+typedef TYPE_5__ EVP_PKEY_CTX ;
+typedef int EC_POINT ;
+typedef TYPE_6__ EC_PKEY_CTX ;
+typedef int EC_KEY ;
+typedef int EC_GROUP ;
 
-/* Variables and functions */
- int ECDH_compute_key (unsigned char*,size_t,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EC_F_PKEY_EC_DERIVE ; 
- int EC_GROUP_get_degree (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/ * EC_KEY_get0_group (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * EC_KEY_get0_public_key (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EC_R_KEYS_NOT_SET ; 
- int /*<<< orphan*/  ECerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int ECDH_compute_key (unsigned char*,size_t,int const*,int *,int ) ;
+ int EC_F_PKEY_EC_DERIVE ;
+ int EC_GROUP_get_degree (int const*) ;
+ int * EC_KEY_get0_group (int *) ;
+ int * EC_KEY_get0_public_key (int ) ;
+ int EC_R_KEYS_NOT_SET ;
+ int ECerr (int ,int ) ;
 
 __attribute__((used)) static int pkey_ec_derive(EVP_PKEY_CTX *ctx, unsigned char *key, size_t *keylen)
 {
     int ret;
     size_t outlen;
-    const EC_POINT *pubkey = NULL;
+    const EC_POINT *pubkey = ((void*)0);
     EC_KEY *eckey;
     EC_PKEY_CTX *dctx = ctx->data;
     if (!ctx->pkey || !ctx->peerkey) {
@@ -59,10 +59,10 @@ __attribute__((used)) static int pkey_ec_derive(EVP_PKEY_CTX *ctx, unsigned char
     }
     pubkey = EC_KEY_get0_public_key(ctx->peerkey->pkey.ec);
 
-    /*
-     * NB: unlike PKCS#3 DH, if *outlen is less than maximum size this is not
-     * an error, the result is truncated.
-     */
+
+
+
+
 
     outlen = *keylen;
 

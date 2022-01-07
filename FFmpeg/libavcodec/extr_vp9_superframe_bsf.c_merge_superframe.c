@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t uint8_t ;
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef size_t uint8_t ;
 struct TYPE_6__ {size_t* data; size_t size; } ;
-typedef  TYPE_1__ AVPacket ;
+typedef TYPE_1__ AVPacket ;
 
-/* Variables and functions */
- size_t AV_WL16 (size_t*,size_t) ; 
- size_t AV_WL24 (size_t*,size_t) ; 
- size_t AV_WL32 (size_t*,size_t) ; 
- int /*<<< orphan*/  av_assert0 (int) ; 
- int av_log2 (unsigned int) ; 
- int av_new_packet (TYPE_1__*,unsigned int) ; 
- int /*<<< orphan*/  memcpy (size_t*,size_t*,size_t) ; 
- int /*<<< orphan*/  stats (TYPE_1__* const*,int,unsigned int*,unsigned int*) ; 
- int /*<<< orphan*/  wloop (unsigned int,size_t) ; 
+
+ size_t AV_WL16 (size_t*,size_t) ;
+ size_t AV_WL24 (size_t*,size_t) ;
+ size_t AV_WL32 (size_t*,size_t) ;
+ int av_assert0 (int) ;
+ int av_log2 (unsigned int) ;
+ int av_new_packet (TYPE_1__*,unsigned int) ;
+ int memcpy (size_t*,size_t*,size_t) ;
+ int stats (TYPE_1__* const*,int,unsigned int*,unsigned int*) ;
+ int wloop (unsigned int,size_t) ;
 
 __attribute__((used)) static int merge_superframe(AVPacket * const *in, int n_in, AVPacket *out)
 {
@@ -44,29 +44,19 @@ __attribute__((used)) static int merge_superframe(AVPacket * const *in, int n_in
         memcpy(ptr, in[n]->data, in[n]->size);
         ptr += in[n]->size;
     }
-
-#define wloop(mag, wr) \
-    do { \
-        for (n = 0; n < n_in; n++) { \
-            wr; \
-            ptr += mag + 1; \
-        } \
-    } while (0)
-
-    // write superframe with marker 110[mag:2][nframes:3]
     *ptr++ = marker;
     switch (mag) {
     case 0:
-        wloop(mag, *ptr = in[n]->size);
+        do { for (n = 0; n < n_in; n++) { *ptr = in[n]->size; ptr += mag + 1; } } while (0);
         break;
     case 1:
-        wloop(mag, AV_WL16(ptr, in[n]->size));
+        do { for (n = 0; n < n_in; n++) { AV_WL16(ptr, in[n]->size); ptr += mag + 1; } } while (0);
         break;
     case 2:
-        wloop(mag, AV_WL24(ptr, in[n]->size));
+        do { for (n = 0; n < n_in; n++) { AV_WL24(ptr, in[n]->size); ptr += mag + 1; } } while (0);
         break;
     case 3:
-        wloop(mag, AV_WL32(ptr, in[n]->size));
+        do { for (n = 0; n < n_in; n++) { AV_WL32(ptr, in[n]->size); ptr += mag + 1; } } while (0);
         break;
     }
     *ptr++ = marker;

@@ -1,49 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int MAP_ANON ; 
- scalar_t__ MAP_FAILED ; 
- int MAP_FIXED ; 
- int MAP_PRIVATE ; 
- int PROT_READ ; 
- int PROT_WRITE ; 
- int /*<<< orphan*/  __tsan_acquire (void*,char*) ; 
- int /*<<< orphan*/  __tsan_fini () ; 
- int /*<<< orphan*/  __tsan_free (char*,int) ; 
- int /*<<< orphan*/  __tsan_func_enter (void*,char*) ; 
- int /*<<< orphan*/  __tsan_func_exit (void*) ; 
- int /*<<< orphan*/  __tsan_go_end (void*) ; 
- int /*<<< orphan*/  __tsan_go_start (void*,void**,char*) ; 
- int /*<<< orphan*/  __tsan_init (void**,void**,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  __tsan_malloc (void*,char*,char*,int) ; 
- int /*<<< orphan*/  __tsan_map_shadow (char*,int) ; 
- int /*<<< orphan*/  __tsan_proc_create (void**) ; 
- int /*<<< orphan*/  __tsan_proc_destroy (void*) ; 
- int /*<<< orphan*/  __tsan_read (void*,char*,char*) ; 
- int /*<<< orphan*/  __tsan_release (void*,char*) ; 
- int /*<<< orphan*/  __tsan_release_merge (void*,char*) ; 
- int /*<<< orphan*/  __tsan_write (void*,char*,char*) ; 
- int /*<<< orphan*/  barfoo ; 
- scalar_t__ buf0 ; 
- void* current_proc ; 
- int errno ; 
- int /*<<< orphan*/  foobar ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  go_heap ; 
- scalar_t__ mmap (int /*<<< orphan*/ ,int,int,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  symbolize_cb ; 
+ int MAP_ANON ;
+ scalar_t__ MAP_FAILED ;
+ int MAP_FIXED ;
+ int MAP_PRIVATE ;
+ int PROT_READ ;
+ int PROT_WRITE ;
+ int __tsan_acquire (void*,char*) ;
+ int __tsan_fini () ;
+ int __tsan_free (char*,int) ;
+ int __tsan_func_enter (void*,char*) ;
+ int __tsan_func_exit (void*) ;
+ int __tsan_go_end (void*) ;
+ int __tsan_go_start (void*,void**,char*) ;
+ int __tsan_init (void**,void**,int ) ;
+ int __tsan_malloc (void*,char*,char*,int) ;
+ int __tsan_map_shadow (char*,int) ;
+ int __tsan_proc_create (void**) ;
+ int __tsan_proc_destroy (void*) ;
+ int __tsan_read (void*,char*,char*) ;
+ int __tsan_release (void*,char*) ;
+ int __tsan_release_merge (void*,char*) ;
+ int __tsan_write (void*,char*,char*) ;
+ int barfoo ;
+ scalar_t__ buf0 ;
+ void* current_proc ;
+ int errno ;
+ int foobar ;
+ int fprintf (int ,char*,int ,int) ;
+ int go_heap ;
+ scalar_t__ mmap (int ,int,int,int,int,int ) ;
+ int stderr ;
+ int symbolize_cb ;
 
 int main(void) {
   void *thr0 = 0;
@@ -51,7 +43,7 @@ int main(void) {
   __tsan_init(&thr0, &proc0, symbolize_cb);
   current_proc = proc0;
 
-  // Allocate something resembling a heap in Go.
+
   buf0 = mmap(go_heap, 16384, PROT_READ | PROT_WRITE,
               MAP_PRIVATE | MAP_FIXED | MAP_ANON, -1, 0);
   if (buf0 == MAP_FAILED) {

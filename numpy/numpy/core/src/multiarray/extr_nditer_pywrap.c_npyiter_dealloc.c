@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  (* tp_free ) (int /*<<< orphan*/ *) ;} ;
-struct TYPE_5__ {int /*<<< orphan*/ * nested_child; int /*<<< orphan*/ * iter; } ;
-typedef  int /*<<< orphan*/  PyObject ;
-typedef  TYPE_1__ NewNpyArrayIterObject ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NpyIter_Deallocate (int /*<<< orphan*/ *) ; 
- scalar_t__ PyErr_WarnEx (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  PyErr_WriteUnraisable (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyExc_RuntimeWarning ; 
- int /*<<< orphan*/ * PyUString_FromString (char*) ; 
- int /*<<< orphan*/  Py_DECREF (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * Py_None ; 
- TYPE_3__* Py_TYPE (TYPE_1__*) ; 
- int /*<<< orphan*/  Py_XDECREF (int /*<<< orphan*/ *) ; 
- scalar_t__ npyiter_has_writeback (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int (* tp_free ) (int *) ;} ;
+struct TYPE_5__ {int * nested_child; int * iter; } ;
+typedef int PyObject ;
+typedef TYPE_1__ NewNpyArrayIterObject ;
+
+
+ int NpyIter_Deallocate (int *) ;
+ scalar_t__ PyErr_WarnEx (int ,char*,int) ;
+ int PyErr_WriteUnraisable (int *) ;
+ int PyExc_RuntimeWarning ;
+ int * PyUString_FromString (char*) ;
+ int Py_DECREF (int *) ;
+ int * Py_None ;
+ TYPE_3__* Py_TYPE (TYPE_1__*) ;
+ int Py_XDECREF (int *) ;
+ scalar_t__ npyiter_has_writeback (int *) ;
+ int stub1 (int *) ;
 
 __attribute__((used)) static void
 npyiter_dealloc(NewNpyArrayIterObject *self)
@@ -53,9 +53,9 @@ npyiter_dealloc(NewNpyArrayIterObject *self)
             }
         }
         NpyIter_Deallocate(self->iter);
-        self->iter = NULL;
+        self->iter = ((void*)0);
         Py_XDECREF(self->nested_child);
-        self->nested_child = NULL;
+        self->nested_child = ((void*)0);
     }
     Py_TYPE(self)->tp_free((PyObject*)self);
 }

@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int LockClauseStrength ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Assert (int) ; 
-#define  LCS_FORKEYSHARE 132 
-#define  LCS_FORNOKEYUPDATE 131 
-#define  LCS_FORSHARE 130 
-#define  LCS_FORUPDATE 129 
-#define  LCS_NONE 128 
+
+
+
+typedef int LockClauseStrength ;
+
+
+ int Assert (int) ;
+
+
+
+
+
 
 const char *
 LCS_asString(LockClauseStrength strength)
 {
-	switch (strength)
-	{
-		case LCS_NONE:
-			Assert(false);
-			break;
-		case LCS_FORKEYSHARE:
-			return "FOR KEY SHARE";
-		case LCS_FORSHARE:
-			return "FOR SHARE";
-		case LCS_FORNOKEYUPDATE:
-			return "FOR NO KEY UPDATE";
-		case LCS_FORUPDATE:
-			return "FOR UPDATE";
-	}
-	return "FOR some";			/* shouldn't happen */
+ switch (strength)
+ {
+  case 128:
+   Assert(0);
+   break;
+  case 132:
+   return "FOR KEY SHARE";
+  case 130:
+   return "FOR SHARE";
+  case 131:
+   return "FOR NO KEY UPDATE";
+  case 129:
+   return "FOR UPDATE";
+ }
+ return "FOR some";
 }

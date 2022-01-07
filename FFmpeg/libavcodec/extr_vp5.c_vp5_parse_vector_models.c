@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VP56RangeCoder ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int VP56RangeCoder ;
 struct TYPE_4__ {void*** vector_pdv; void*** vector_pdi; void** vector_sig; void** vector_dct; } ;
-typedef  TYPE_1__ VP56Model ;
-struct TYPE_5__ {TYPE_1__* modelp; int /*<<< orphan*/  c; } ;
-typedef  TYPE_2__ VP56Context ;
+typedef TYPE_1__ VP56Model ;
+struct TYPE_5__ {TYPE_1__* modelp; int c; } ;
+typedef TYPE_2__ VP56Context ;
 
-/* Variables and functions */
- scalar_t__ vp56_rac_get_prob_branchy (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- void* vp56_rac_gets_nn (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ ** vp5_vmc_pct ; 
+
+ scalar_t__ vp56_rac_get_prob_branchy (int *,int ) ;
+ void* vp56_rac_gets_nn (int *,int) ;
+ int ** vp5_vmc_pct ;
 
 __attribute__((used)) static void vp5_parse_vector_models(VP56Context *s)
 {

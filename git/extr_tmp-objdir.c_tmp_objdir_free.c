@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct tmp_objdir {int /*<<< orphan*/  env; int /*<<< orphan*/  path; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  argv_array_clear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (struct tmp_objdir*) ; 
- int /*<<< orphan*/  strbuf_release (int /*<<< orphan*/ *) ; 
+
+
+
+struct tmp_objdir {int env; int path; } ;
+
+
+ int argv_array_clear (int *) ;
+ int free (struct tmp_objdir*) ;
+ int strbuf_release (int *) ;
 
 __attribute__((used)) static void tmp_objdir_free(struct tmp_objdir *t)
 {
-	strbuf_release(&t->path);
-	argv_array_clear(&t->env);
-	free(t);
+ strbuf_release(&t->path);
+ argv_array_clear(&t->env);
+ free(t);
 }

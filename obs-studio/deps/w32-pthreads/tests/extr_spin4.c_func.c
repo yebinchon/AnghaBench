@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ GetDurationMilliSecs (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PTW32_FTIME (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  currSysTimeStart ; 
- int /*<<< orphan*/  currSysTimeStop ; 
- int /*<<< orphan*/  lock ; 
- scalar_t__ pthread_spin_lock (int /*<<< orphan*/ *) ; 
- scalar_t__ pthread_spin_unlock (int /*<<< orphan*/ *) ; 
- int washere ; 
+ scalar_t__ GetDurationMilliSecs (int ,int ) ;
+ int PTW32_FTIME (int *) ;
+ int assert (int) ;
+ int currSysTimeStart ;
+ int currSysTimeStop ;
+ int lock ;
+ scalar_t__ pthread_spin_lock (int *) ;
+ scalar_t__ pthread_spin_unlock (int *) ;
+ int washere ;
 
 void * func(void * arg)
 {

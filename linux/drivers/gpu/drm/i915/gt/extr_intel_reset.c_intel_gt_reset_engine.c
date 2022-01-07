@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct intel_engine_cs {int /*<<< orphan*/  mask; int /*<<< orphan*/  gt; } ;
 
-/* Variables and functions */
- int __intel_gt_reset (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct intel_engine_cs {int mask; int gt; } ;
+
+
+ int __intel_gt_reset (int ,int ) ;
 
 __attribute__((used)) static inline int intel_gt_reset_engine(struct intel_engine_cs *engine)
 {
-	return __intel_gt_reset(engine->gt, engine->mask);
+ return __intel_gt_reset(engine->gt, engine->mask);
 }

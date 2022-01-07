@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char uint8_t ;
-typedef  int uint32_t ;
 
-/* Variables and functions */
- char const* CLUT_to_chunks ; 
- size_t CLUT_to_chunks_len ; 
- int GetDWBE (char const*) ; 
- int VLC_FOURCC (char const,char const,char const,char const) ; 
- char* malloc (size_t) ; 
- int /*<<< orphan*/  memcpy (char*,char const*,size_t const) ; 
+
+
+
+typedef char uint8_t ;
+typedef int uint32_t ;
+
+
+ char const* CLUT_to_chunks ;
+ size_t CLUT_to_chunks_len ;
+ int GetDWBE (char const*) ;
+ int VLC_FOURCC (char const,char const,char const,char const) ;
+ char* malloc (size_t) ;
+ int memcpy (char*,char const*,size_t const) ;
 
 bool ts_arib_inject_png_palette( const uint8_t *p_in, size_t i_in, uint8_t **pp_out, size_t *pi_out )
 {
     const uint8_t *p_data = p_in;
-    const uint8_t *p_idat = NULL;
+    const uint8_t *p_idat = ((void*)0);
     size_t i_data = i_in - 8;
     p_data += 8;
     i_data -= 8;
@@ -47,12 +47,12 @@ bool ts_arib_inject_png_palette( const uint8_t *p_in, size_t i_in, uint8_t **pp_
     }
 
     if( !p_idat )
-        return false;
+        return 0;
 
     {
         uint8_t *p_out = *pp_out = malloc( i_in + CLUT_to_chunks_len );
         if( !p_out )
-            return false;
+            return 0;
         *pi_out = i_in + CLUT_to_chunks_len;
 
         const size_t i_head = p_data - p_in;
@@ -61,5 +61,5 @@ bool ts_arib_inject_png_palette( const uint8_t *p_in, size_t i_in, uint8_t **pp_
         memcpy( &p_out[i_head + CLUT_to_chunks_len], p_data, i_in - i_head );
     }
 
-    return true;
+    return 1;
 }

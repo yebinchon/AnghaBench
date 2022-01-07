@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  device_t ;
 
-/* Variables and functions */
- int cpufreq_unregister (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sema_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vc_sema ; 
+
+
+
+typedef int device_t ;
+
+
+ int cpufreq_unregister (int ) ;
+ int sema_destroy (int *) ;
+ int vc_sema ;
 
 __attribute__((used)) static int
 bcm2835_cpufreq_detach(device_t dev)
 {
 
-	sema_destroy(&vc_sema);
+ sema_destroy(&vc_sema);
 
-	return (cpufreq_unregister(dev));
+ return (cpufreq_unregister(dev));
 }

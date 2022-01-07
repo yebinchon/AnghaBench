@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct in_addr {scalar_t__ s_addr; } ;
-struct cmdargs {int argc; int argn; int /*<<< orphan*/ * argv; } ;
+struct cmdargs {int argc; int argn; int * argv; } ;
 
-/* Variables and functions */
- struct in_addr GetIpAddr (int /*<<< orphan*/ ) ; 
- void* INADDR_ANY ; 
- scalar_t__ INADDR_NONE ; 
- int /*<<< orphan*/  LibAliasSetTarget (int /*<<< orphan*/ ,struct in_addr) ; 
- int /*<<< orphan*/  LogWARN ; 
- int /*<<< orphan*/  la ; 
- int /*<<< orphan*/  log_Printf (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strcasecmp (int /*<<< orphan*/ ,char*) ; 
+
+ struct in_addr GetIpAddr (int ) ;
+ void* INADDR_ANY ;
+ scalar_t__ INADDR_NONE ;
+ int LibAliasSetTarget (int ,struct in_addr) ;
+ int LogWARN ;
+ int la ;
+ int log_Printf (int ,char*,int ) ;
+ int strcasecmp (int ,char*) ;
 
 int
 nat_SetTarget(struct cmdargs const *arg)

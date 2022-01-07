@@ -1,18 +1,9 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
-
 __attribute__((used)) static int
 is_legal_utf8(const unsigned char *bytes, int length)
 {
@@ -24,7 +15,7 @@ is_legal_utf8(const unsigned char *bytes, int length)
     {
     default:
         return 0;
-        // Everything else falls through when true.
+
     case 4:
         if ((a = (*--srcptr)) < 0x80 || a > 0xBF) return 0;
     case 3:

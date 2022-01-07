@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_25__   TYPE_9__ ;
-typedef  struct TYPE_24__   TYPE_8__ ;
-typedef  struct TYPE_23__   TYPE_7__ ;
-typedef  struct TYPE_22__   TYPE_6__ ;
-typedef  struct TYPE_21__   TYPE_5__ ;
-typedef  struct TYPE_20__   TYPE_4__ ;
-typedef  struct TYPE_19__   TYPE_3__ ;
-typedef  struct TYPE_18__   TYPE_2__ ;
-typedef  struct TYPE_17__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
+
+
+typedef struct TYPE_25__ TYPE_9__ ;
+typedef struct TYPE_24__ TYPE_8__ ;
+typedef struct TYPE_23__ TYPE_7__ ;
+typedef struct TYPE_22__ TYPE_6__ ;
+typedef struct TYPE_21__ TYPE_5__ ;
+typedef struct TYPE_20__ TYPE_4__ ;
+typedef struct TYPE_19__ TYPE_3__ ;
+typedef struct TYPE_18__ TYPE_2__ ;
+typedef struct TYPE_17__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_22__ {TYPE_2__* pps; TYPE_5__* sps; } ;
-struct TYPE_17__ {int /*<<< orphan*/  disable_deblocking_filter_flag; } ;
+struct TYPE_17__ {int disable_deblocking_filter_flag; } ;
 struct TYPE_25__ {int* cbf_luma; TYPE_6__ ps; TYPE_1__ sh; TYPE_8__* HEVClc; } ;
 struct TYPE_23__ {int max_trafo_depth; scalar_t__ pred_mode; scalar_t__ part_mode; scalar_t__ cu_transquant_bypass_flag; scalar_t__ intra_split_flag; } ;
-struct TYPE_20__ {int /*<<< orphan*/ * chroma_mode_c; int /*<<< orphan*/ * intra_pred_mode_c; int /*<<< orphan*/ * intra_pred_mode; } ;
-struct TYPE_19__ {int /*<<< orphan*/  chroma_mode_c; int /*<<< orphan*/  intra_pred_mode_c; int /*<<< orphan*/  intra_pred_mode; } ;
+struct TYPE_20__ {int * chroma_mode_c; int * intra_pred_mode_c; int * intra_pred_mode; } ;
+struct TYPE_19__ {int chroma_mode_c; int intra_pred_mode_c; int intra_pred_mode; } ;
 struct TYPE_24__ {TYPE_7__ cu; TYPE_4__ pu; TYPE_3__ tu; } ;
 struct TYPE_21__ {int chroma_format_idc; int log2_max_trafo_size; int log2_min_tb_size; scalar_t__ max_transform_hierarchy_depth_inter; int min_tb_width; } ;
 struct TYPE_18__ {scalar_t__ transquant_bypass_enable_flag; } ;
-typedef  TYPE_8__ HEVCLocalContext ;
-typedef  TYPE_9__ HEVCContext ;
+typedef TYPE_8__ HEVCLocalContext ;
+typedef TYPE_9__ HEVCContext ;
 
-/* Variables and functions */
- scalar_t__ MODE_INTER ; 
- scalar_t__ MODE_INTRA ; 
- scalar_t__ PART_2Nx2N ; 
- int /*<<< orphan*/  SUBDIVIDE (int const,int const,int) ; 
- int ff_hevc_cbf_cb_cr_decode (TYPE_9__*,int) ; 
- int ff_hevc_cbf_luma_decode (TYPE_9__*,int) ; 
- int /*<<< orphan*/  ff_hevc_deblocking_boundary_strengths (TYPE_9__*,int,int,int) ; 
- int ff_hevc_split_transform_flag_decode (TYPE_9__*,int) ; 
- int hls_transform_unit (TYPE_9__*,int,int,int,int,int,int,int,int,int,int,int*,int*) ; 
- int /*<<< orphan*/  set_deblocking_bypass (TYPE_9__*,int,int,int) ; 
+
+ scalar_t__ MODE_INTER ;
+ scalar_t__ MODE_INTRA ;
+ scalar_t__ PART_2Nx2N ;
+ int SUBDIVIDE (int const,int const,int) ;
+ int ff_hevc_cbf_cb_cr_decode (TYPE_9__*,int) ;
+ int ff_hevc_cbf_luma_decode (TYPE_9__*,int) ;
+ int ff_hevc_deblocking_boundary_strengths (TYPE_9__*,int,int,int) ;
+ int ff_hevc_split_transform_flag_decode (TYPE_9__*,int) ;
+ int hls_transform_unit (TYPE_9__*,int,int,int,int,int,int,int,int,int,int,int*,int*) ;
+ int set_deblocking_bypass (TYPE_9__*,int,int,int) ;
 
 __attribute__((used)) static int hls_transform_tree(HEVCContext *s, int x0, int y0,
                               int xBase, int yBase, int cb_xBase, int cb_yBase,
@@ -63,24 +63,24 @@ __attribute__((used)) static int hls_transform_tree(HEVCContext *s, int x0, int 
 
     if (lc->cu.intra_split_flag) {
         if (trafo_depth == 1) {
-            lc->tu.intra_pred_mode   = lc->pu.intra_pred_mode[blk_idx];
+            lc->tu.intra_pred_mode = lc->pu.intra_pred_mode[blk_idx];
             if (s->ps.sps->chroma_format_idc == 3) {
                 lc->tu.intra_pred_mode_c = lc->pu.intra_pred_mode_c[blk_idx];
-                lc->tu.chroma_mode_c     = lc->pu.chroma_mode_c[blk_idx];
+                lc->tu.chroma_mode_c = lc->pu.chroma_mode_c[blk_idx];
             } else {
                 lc->tu.intra_pred_mode_c = lc->pu.intra_pred_mode_c[0];
-                lc->tu.chroma_mode_c     = lc->pu.chroma_mode_c[0];
+                lc->tu.chroma_mode_c = lc->pu.chroma_mode_c[0];
             }
         }
     } else {
-        lc->tu.intra_pred_mode   = lc->pu.intra_pred_mode[0];
+        lc->tu.intra_pred_mode = lc->pu.intra_pred_mode[0];
         lc->tu.intra_pred_mode_c = lc->pu.intra_pred_mode_c[0];
-        lc->tu.chroma_mode_c     = lc->pu.chroma_mode_c[0];
+        lc->tu.chroma_mode_c = lc->pu.chroma_mode_c[0];
     }
 
     if (log2_trafo_size <= s->ps.sps->log2_max_trafo_size &&
-        log2_trafo_size >  s->ps.sps->log2_min_tb_size    &&
-        trafo_depth     < lc->cu.max_trafo_depth       &&
+        log2_trafo_size > s->ps.sps->log2_min_tb_size &&
+        trafo_depth < lc->cu.max_trafo_depth &&
         !(lc->cu.intra_split_flag && trafo_depth == 0)) {
         split_transform_flag = ff_hevc_split_transform_flag_decode(s, log2_trafo_size);
     } else {
@@ -114,27 +114,17 @@ __attribute__((used)) static int hls_transform_tree(HEVCContext *s, int x0, int 
         const int trafo_size_split = 1 << (log2_trafo_size - 1);
         const int x1 = x0 + trafo_size_split;
         const int y1 = y0 + trafo_size_split;
+        do { ret = hls_transform_tree(s, x0, y0, x0, y0, cb_xBase, cb_yBase, log2_cb_size, log2_trafo_size - 1, trafo_depth + 1, 0, cbf_cb, cbf_cr); if (ret < 0) return ret; } while (0);
+        do { ret = hls_transform_tree(s, x1, y0, x0, y0, cb_xBase, cb_yBase, log2_cb_size, log2_trafo_size - 1, trafo_depth + 1, 1, cbf_cb, cbf_cr); if (ret < 0) return ret; } while (0);
+        do { ret = hls_transform_tree(s, x0, y1, x0, y0, cb_xBase, cb_yBase, log2_cb_size, log2_trafo_size - 1, trafo_depth + 1, 2, cbf_cb, cbf_cr); if (ret < 0) return ret; } while (0);
+        do { ret = hls_transform_tree(s, x1, y1, x0, y0, cb_xBase, cb_yBase, log2_cb_size, log2_trafo_size - 1, trafo_depth + 1, 3, cbf_cb, cbf_cr); if (ret < 0) return ret; } while (0);
 
-#define SUBDIVIDE(x, y, idx)                                                    \
-do {                                                                            \
-    ret = hls_transform_tree(s, x, y, x0, y0, cb_xBase, cb_yBase, log2_cb_size, \
-                             log2_trafo_size - 1, trafo_depth + 1, idx,         \
-                             cbf_cb, cbf_cr);                                   \
-    if (ret < 0)                                                                \
-        return ret;                                                             \
-} while (0)
 
-        SUBDIVIDE(x0, y0, 0);
-        SUBDIVIDE(x1, y0, 1);
-        SUBDIVIDE(x0, y1, 2);
-        SUBDIVIDE(x1, y1, 3);
-
-#undef SUBDIVIDE
     } else {
-        int min_tu_size      = 1 << s->ps.sps->log2_min_tb_size;
+        int min_tu_size = 1 << s->ps.sps->log2_min_tb_size;
         int log2_min_tu_size = s->ps.sps->log2_min_tb_size;
-        int min_tu_width     = s->ps.sps->min_tb_width;
-        int cbf_luma         = 1;
+        int min_tu_width = s->ps.sps->min_tb_width;
+        int cbf_luma = 1;
 
         if (lc->cu.pred_mode == MODE_INTRA || trafo_depth != 0 ||
             cbf_cb[0] || cbf_cr[0] ||
@@ -147,7 +137,7 @@ do {                                                                            
                                  blk_idx, cbf_luma, cbf_cb, cbf_cr);
         if (ret < 0)
             return ret;
-        // TODO: store cbf_luma somewhere else
+
         if (cbf_luma) {
             int i, j;
             for (i = 0; i < (1 << log2_trafo_size); i += min_tu_size)

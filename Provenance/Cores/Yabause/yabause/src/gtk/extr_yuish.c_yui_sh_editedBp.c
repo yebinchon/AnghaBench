@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  PC; } ;
-typedef  TYPE_1__ sh2regs_struct ;
-typedef  char gchar ;
-struct TYPE_8__ {int /*<<< orphan*/  debugsh; int /*<<< orphan*/  bpListStore; } ;
-typedef  TYPE_2__ YuiSh ;
-typedef  int /*<<< orphan*/  GtkTreeIter ;
-typedef  int /*<<< orphan*/  GtkCellRendererText ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GTK_TREE_MODEL (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SH2AddCodeBreakpoint (int /*<<< orphan*/ ,unsigned int) ; 
- int /*<<< orphan*/  SH2DelCodeBreakpoint (int /*<<< orphan*/ ,unsigned int) ; 
- int /*<<< orphan*/  SH2GetRegisters (int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  SH2UpdateBreakpointList (TYPE_2__*) ; 
- int /*<<< orphan*/  SH2UpdateCodeList (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  g_free (char*) ; 
- int /*<<< orphan*/  gtk_tree_model_get (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char**,int) ; 
- int /*<<< orphan*/  gtk_tree_model_get_iter_from_string (int /*<<< orphan*/ ,int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  sscanf (char*,char*,unsigned int*) ; 
- int strlen (char*) ; 
- unsigned int strtoul (char*,char**,int) ; 
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int PC; } ;
+typedef TYPE_1__ sh2regs_struct ;
+typedef char gchar ;
+struct TYPE_8__ {int debugsh; int bpListStore; } ;
+typedef TYPE_2__ YuiSh ;
+typedef int GtkTreeIter ;
+typedef int GtkCellRendererText ;
+
+
+ int GTK_TREE_MODEL (int ) ;
+ int SH2AddCodeBreakpoint (int ,unsigned int) ;
+ int SH2DelCodeBreakpoint (int ,unsigned int) ;
+ int SH2GetRegisters (int ,TYPE_1__*) ;
+ int SH2UpdateBreakpointList (TYPE_2__*) ;
+ int SH2UpdateCodeList (TYPE_2__*,int ) ;
+ int g_free (char*) ;
+ int gtk_tree_model_get (int ,int *,int ,char**,int) ;
+ int gtk_tree_model_get_iter_from_string (int ,int *,char*) ;
+ int sscanf (char*,char*,unsigned int*) ;
+ int strlen (char*) ;
+ unsigned int strtoul (char*,char**,int) ;
 
 __attribute__((used)) static void yui_sh_editedBp( GtkCellRendererText *cellrenderertext,
-			     gchar *arg1,
-			     gchar *arg2,
-			     YuiSh *sh2) {
-  /* breakpoint <arg1> has been set to address <arg2> */
+        gchar *arg1,
+        gchar *arg2,
+        YuiSh *sh2) {
+
 
   GtkTreeIter iter;
   char *endptr;

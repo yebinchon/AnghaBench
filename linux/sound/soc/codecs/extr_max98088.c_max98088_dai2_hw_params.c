@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
+
+
+
+
+typedef int u8 ;
 struct snd_soc_dai {struct snd_soc_component* component; } ;
-struct snd_soc_component {int /*<<< orphan*/  dev; } ;
+struct snd_soc_component {int dev; } ;
 struct snd_pcm_substream {int dummy; } ;
 struct snd_pcm_hw_params {int dummy; } ;
 struct max98088_priv {scalar_t__ sysclk; struct max98088_cdata* dai; } ;
 struct max98088_cdata {unsigned int rate; } ;
 
-/* Variables and functions */
- int EINVAL ; 
- int /*<<< orphan*/  M98088_CLKMODE_MASK ; 
- int /*<<< orphan*/  M98088_DAI_DHF ; 
- int M98088_DAI_MAS ; 
- int /*<<< orphan*/  M98088_DAI_WS ; 
- int /*<<< orphan*/  M98088_REG_19_DAI2_CLKMODE ; 
- int /*<<< orphan*/  M98088_REG_1A_DAI2_CLKCFG_HI ; 
- int /*<<< orphan*/  M98088_REG_1B_DAI2_CLKCFG_LO ; 
- int /*<<< orphan*/  M98088_REG_1C_DAI2_FORMAT ; 
- int /*<<< orphan*/  M98088_REG_20_DAI2_FILTERS ; 
- int /*<<< orphan*/  M98088_REG_51_PWR_SYS ; 
- int /*<<< orphan*/  M98088_SHDNRUN ; 
- int /*<<< orphan*/  dev_err (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  do_div (unsigned long long,unsigned long long) ; 
- unsigned int params_rate (struct snd_pcm_hw_params*) ; 
- int params_width (struct snd_pcm_hw_params*) ; 
- scalar_t__ rate_value (unsigned int,int /*<<< orphan*/ *) ; 
- struct max98088_priv* snd_soc_component_get_drvdata (struct snd_soc_component*) ; 
- int snd_soc_component_read32 (struct snd_soc_component*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  snd_soc_component_update_bits (struct snd_soc_component*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  snd_soc_component_write (struct snd_soc_component*,int /*<<< orphan*/ ,unsigned long long) ; 
+
+ int EINVAL ;
+ int M98088_CLKMODE_MASK ;
+ int M98088_DAI_DHF ;
+ int M98088_DAI_MAS ;
+ int M98088_DAI_WS ;
+ int M98088_REG_19_DAI2_CLKMODE ;
+ int M98088_REG_1A_DAI2_CLKCFG_HI ;
+ int M98088_REG_1B_DAI2_CLKCFG_LO ;
+ int M98088_REG_1C_DAI2_FORMAT ;
+ int M98088_REG_20_DAI2_FILTERS ;
+ int M98088_REG_51_PWR_SYS ;
+ int M98088_SHDNRUN ;
+ int dev_err (int ,char*) ;
+ int do_div (unsigned long long,unsigned long long) ;
+ unsigned int params_rate (struct snd_pcm_hw_params*) ;
+ int params_width (struct snd_pcm_hw_params*) ;
+ scalar_t__ rate_value (unsigned int,int *) ;
+ struct max98088_priv* snd_soc_component_get_drvdata (struct snd_soc_component*) ;
+ int snd_soc_component_read32 (struct snd_soc_component*,int ) ;
+ int snd_soc_component_update_bits (struct snd_soc_component*,int ,int ,int ) ;
+ int snd_soc_component_write (struct snd_soc_component*,int ,unsigned long long) ;
 
 __attribute__((used)) static int max98088_dai2_hw_params(struct snd_pcm_substream *substream,
                                   struct snd_pcm_hw_params *params,
@@ -78,7 +78,7 @@ __attribute__((used)) static int max98088_dai2_hw_params(struct snd_pcm_substrea
                M98088_CLKMODE_MASK, regval);
        cdata->rate = rate;
 
-       /* Configure NI when operating as master */
+
        if (snd_soc_component_read32(component, M98088_REG_1C_DAI2_FORMAT)
                & M98088_DAI_MAS) {
                if (max98088->sysclk == 0) {
@@ -94,7 +94,7 @@ __attribute__((used)) static int max98088_dai2_hw_params(struct snd_pcm_substrea
                        ni & 0xFF);
        }
 
-       /* Update sample rate mode */
+
        if (rate < 50000)
                snd_soc_component_update_bits(component, M98088_REG_20_DAI2_FILTERS,
                        M98088_DAI_DHF, 0);

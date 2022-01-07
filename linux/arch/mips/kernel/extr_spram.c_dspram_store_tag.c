@@ -1,37 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- unsigned int CKSEG0 ; 
- int /*<<< orphan*/  ERRCTL_SPRAM ; 
- int /*<<< orphan*/  Index_Store_Tag_D ; 
- unsigned int bis_c0_errctl (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cache_op (int /*<<< orphan*/ ,unsigned int) ; 
- int /*<<< orphan*/  ehb () ; 
- int /*<<< orphan*/  write_c0_dtaglo (unsigned int) ; 
- int /*<<< orphan*/  write_c0_errctl (unsigned int) ; 
+ unsigned int CKSEG0 ;
+ int ERRCTL_SPRAM ;
+ int Index_Store_Tag_D ;
+ unsigned int bis_c0_errctl (int ) ;
+ int cache_op (int ,unsigned int) ;
+ int ehb () ;
+ int write_c0_dtaglo (unsigned int) ;
+ int write_c0_errctl (unsigned int) ;
 
 __attribute__((used)) static void dspram_store_tag(unsigned int offset, unsigned int data)
 {
-	unsigned int errctl;
+ unsigned int errctl;
 
-	/* enable SPRAM tag access */
-	errctl = bis_c0_errctl(ERRCTL_SPRAM);
-	ehb();
-	write_c0_dtaglo(data);
-	ehb();
-	cache_op(Index_Store_Tag_D, CKSEG0 | offset);
-	ehb();
-	write_c0_errctl(errctl);
-	ehb();
+
+ errctl = bis_c0_errctl(ERRCTL_SPRAM);
+ ehb();
+ write_c0_dtaglo(data);
+ ehb();
+ cache_op(Index_Store_Tag_D, CKSEG0 | offset);
+ ehb();
+ write_c0_errctl(errctl);
+ ehb();
 }

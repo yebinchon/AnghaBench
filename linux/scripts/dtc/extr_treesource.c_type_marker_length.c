@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct marker {size_t offset; int /*<<< orphan*/  next; } ;
 
-/* Variables and functions */
- struct marker* next_type_marker (int /*<<< orphan*/ ) ; 
+
+
+
+struct marker {size_t offset; int next; } ;
+
+
+ struct marker* next_type_marker (int ) ;
 
 size_t type_marker_length(struct marker *m)
 {
-	struct marker *next = next_type_marker(m->next);
+ struct marker *next = next_type_marker(m->next);
 
-	if (next)
-		return next->offset - m->offset;
-	return 0;
+ if (next)
+  return next->offset - m->offset;
+ return 0;
 }

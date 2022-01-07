@@ -1,65 +1,65 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_23__   TYPE_7__ ;
-typedef  struct TYPE_22__   TYPE_6__ ;
-typedef  struct TYPE_21__   TYPE_5__ ;
-typedef  struct TYPE_20__   TYPE_4__ ;
-typedef  struct TYPE_19__   TYPE_3__ ;
-typedef  struct TYPE_18__   TYPE_2__ ;
-typedef  struct TYPE_17__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_23__ TYPE_7__ ;
+typedef struct TYPE_22__ TYPE_6__ ;
+typedef struct TYPE_21__ TYPE_5__ ;
+typedef struct TYPE_20__ TYPE_4__ ;
+typedef struct TYPE_19__ TYPE_3__ ;
+typedef struct TYPE_18__ TYPE_2__ ;
+typedef struct TYPE_17__ TYPE_1__ ;
+
+
 struct TYPE_19__ {TYPE_4__* priv; } ;
-typedef  TYPE_3__ svn_ra_session_t ;
-typedef  int /*<<< orphan*/  svn_ra_serf__xml_context_t ;
-struct TYPE_17__ {int /*<<< orphan*/  path; } ;
+typedef TYPE_3__ svn_ra_session_t ;
+typedef int svn_ra_serf__xml_context_t ;
+struct TYPE_17__ {int path; } ;
 struct TYPE_20__ {TYPE_1__ session_url; } ;
-typedef  TYPE_4__ svn_ra_serf__session_t ;
+typedef TYPE_4__ svn_ra_serf__session_t ;
 struct TYPE_18__ {int code; } ;
-struct TYPE_21__ {char* method; char const* path; char* body_type; TYPE_2__ sline; TYPE_7__* response_baton; int /*<<< orphan*/  response_handler; int /*<<< orphan*/  no_dav_headers; TYPE_7__* header_delegate_baton; int /*<<< orphan*/  header_delegate; TYPE_7__* body_delegate_baton; int /*<<< orphan*/  body_delegate; } ;
-typedef  TYPE_5__ svn_ra_serf__handler_t ;
-struct TYPE_22__ {scalar_t__ token; int /*<<< orphan*/  path; } ;
-typedef  TYPE_6__ svn_lock_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct TYPE_23__ {char const* path; TYPE_6__* lock; TYPE_5__* handler; struct TYPE_23__* inner_baton; int /*<<< orphan*/  inner_handler; int /*<<< orphan*/ * pool; } ;
-typedef  TYPE_7__ lock_info_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+struct TYPE_21__ {char* method; char const* path; char* body_type; TYPE_2__ sline; TYPE_7__* response_baton; int response_handler; int no_dav_headers; TYPE_7__* header_delegate_baton; int header_delegate; TYPE_7__* body_delegate_baton; int body_delegate; } ;
+typedef TYPE_5__ svn_ra_serf__handler_t ;
+struct TYPE_22__ {scalar_t__ token; int path; } ;
+typedef TYPE_6__ svn_lock_t ;
+typedef int svn_error_t ;
+struct TYPE_23__ {char const* path; TYPE_6__* lock; TYPE_5__* handler; struct TYPE_23__* inner_baton; int inner_handler; int * pool; } ;
+typedef TYPE_7__ lock_info_t ;
+typedef int apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR_FS_NOT_FOUND ; 
- int /*<<< orphan*/  SVN_ERR_RA_NOT_IMPLEMENTED ; 
- int /*<<< orphan*/  SVN_ERR_UNSUPPORTED_FEATURE ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  _ (char*) ; 
- TYPE_7__* apr_pcalloc (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  apr_pstrdup (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  create_getlock_body ; 
- int /*<<< orphan*/  handle_lock ; 
- int /*<<< orphan*/  locks_closed ; 
- int /*<<< orphan*/  locks_expected_status ; 
- int /*<<< orphan*/  locks_ttable ; 
- int /*<<< orphan*/  setup_getlock_headers ; 
- int /*<<< orphan*/  svn_error_clear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_error_create (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ svn_error_find_cause (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * svn_error_trace (int /*<<< orphan*/ ) ; 
- TYPE_6__* svn_lock_create (int /*<<< orphan*/ *) ; 
- char* svn_path_url_add_component2 (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_pool_create (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_pool_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_ra_serf__context_run_one (TYPE_5__*,int /*<<< orphan*/ *) ; 
- TYPE_5__* svn_ra_serf__create_expat_handler (TYPE_4__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_ra_serf__unexpected_status (TYPE_5__*) ; 
- int /*<<< orphan*/ * svn_ra_serf__xml_context_create (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,TYPE_7__*,int /*<<< orphan*/ *) ; 
+
+ int SVN_ERR_FS_NOT_FOUND ;
+ int SVN_ERR_RA_NOT_IMPLEMENTED ;
+ int SVN_ERR_UNSUPPORTED_FEATURE ;
+ int * SVN_NO_ERROR ;
+ int TRUE ;
+ int _ (char*) ;
+ TYPE_7__* apr_pcalloc (int *,int) ;
+ int apr_pstrdup (int *,char const*) ;
+ int create_getlock_body ;
+ int handle_lock ;
+ int locks_closed ;
+ int locks_expected_status ;
+ int locks_ttable ;
+ int setup_getlock_headers ;
+ int svn_error_clear (int *) ;
+ int svn_error_create (int ,int *,int ) ;
+ scalar_t__ svn_error_find_cause (int *,int ) ;
+ int * svn_error_trace (int ) ;
+ TYPE_6__* svn_lock_create (int *) ;
+ char* svn_path_url_add_component2 (int ,char const*,int *) ;
+ int * svn_pool_create (int *) ;
+ int svn_pool_destroy (int *) ;
+ int * svn_ra_serf__context_run_one (TYPE_5__*,int *) ;
+ TYPE_5__* svn_ra_serf__create_expat_handler (TYPE_4__*,int *,int ,int *) ;
+ int svn_ra_serf__unexpected_status (TYPE_5__*) ;
+ int * svn_ra_serf__xml_context_create (int ,int *,int ,int *,TYPE_7__*,int *) ;
 
 svn_error_t *
 svn_ra_serf__get_lock(svn_ra_session_t *ra_session,
@@ -85,7 +85,7 @@ svn_ra_serf__get_lock(svn_ra_session_t *ra_session,
   lock_ctx->lock->path = apr_pstrdup(result_pool, path);
 
   xmlctx = svn_ra_serf__xml_context_create(locks_ttable,
-                                           NULL, locks_closed, NULL,
+                                           ((void*)0), locks_closed, ((void*)0),
                                            lock_ctx,
                                            scratch_pool);
   handler = svn_ra_serf__create_expat_handler(session, xmlctx,
@@ -119,14 +119,14 @@ svn_ra_serf__get_lock(svn_ra_session_t *ra_session,
              svn_error_create(SVN_ERR_RA_NOT_IMPLEMENTED, err,
                               _("Server does not support locking features")));
   else if (svn_error_find_cause(err, SVN_ERR_FS_NOT_FOUND))
-    svn_error_clear(err); /* Behave like the other RA layers */
+    svn_error_clear(err);
   else if (handler->sline.code != 207)
     return svn_error_trace(svn_ra_serf__unexpected_status(handler));
 
   if (lock_ctx->lock && lock_ctx->lock->token)
     *lock = lock_ctx->lock;
   else
-    *lock = NULL;
+    *lock = ((void*)0);
 
   svn_pool_destroy(scratch_pool);
 

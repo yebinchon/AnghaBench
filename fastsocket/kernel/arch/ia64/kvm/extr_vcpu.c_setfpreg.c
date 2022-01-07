@@ -1,163 +1,163 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct kvm_pt_regs {int dummy; } ;
 struct ia64_fpreg {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CASE_FIXED_FP (int) ; 
- unsigned long IA64_FIRST_ROTATING_FR ; 
- unsigned long fph_index (struct kvm_pt_regs*,unsigned long) ; 
+
+ int CASE_FIXED_FP (int) ;
+ unsigned long IA64_FIRST_ROTATING_FR ;
+ unsigned long fph_index (struct kvm_pt_regs*,unsigned long) ;
 
 void setfpreg(unsigned long regnum, struct ia64_fpreg *fpval,
-					struct kvm_pt_regs *regs)
+     struct kvm_pt_regs *regs)
 {
-	/* Take floating register rotation into consideration*/
-	if (regnum >= IA64_FIRST_ROTATING_FR)
-		regnum = IA64_FIRST_ROTATING_FR + fph_index(regs, regnum);
 
-#define CASE_FIXED_FP(reg)			\
-	case (reg) :				\
-		ia64_ldf_fill(reg, fpval);	\
-	break
+ if (regnum >= IA64_FIRST_ROTATING_FR)
+  regnum = IA64_FIRST_ROTATING_FR + fph_index(regs, regnum);
 
-	switch (regnum) {
-		CASE_FIXED_FP(2);
-		CASE_FIXED_FP(3);
-		CASE_FIXED_FP(4);
-		CASE_FIXED_FP(5);
 
-		CASE_FIXED_FP(6);
-		CASE_FIXED_FP(7);
-		CASE_FIXED_FP(8);
-		CASE_FIXED_FP(9);
-		CASE_FIXED_FP(10);
-		CASE_FIXED_FP(11);
 
-		CASE_FIXED_FP(12);
-		CASE_FIXED_FP(13);
-		CASE_FIXED_FP(14);
-		CASE_FIXED_FP(15);
-		CASE_FIXED_FP(16);
-		CASE_FIXED_FP(17);
-		CASE_FIXED_FP(18);
-		CASE_FIXED_FP(19);
-		CASE_FIXED_FP(20);
-		CASE_FIXED_FP(21);
-		CASE_FIXED_FP(22);
-		CASE_FIXED_FP(23);
-		CASE_FIXED_FP(24);
-		CASE_FIXED_FP(25);
-		CASE_FIXED_FP(26);
-		CASE_FIXED_FP(27);
-		CASE_FIXED_FP(28);
-		CASE_FIXED_FP(29);
-		CASE_FIXED_FP(30);
-		CASE_FIXED_FP(31);
-		CASE_FIXED_FP(32);
-		CASE_FIXED_FP(33);
-		CASE_FIXED_FP(34);
-		CASE_FIXED_FP(35);
-		CASE_FIXED_FP(36);
-		CASE_FIXED_FP(37);
-		CASE_FIXED_FP(38);
-		CASE_FIXED_FP(39);
-		CASE_FIXED_FP(40);
-		CASE_FIXED_FP(41);
-		CASE_FIXED_FP(42);
-		CASE_FIXED_FP(43);
-		CASE_FIXED_FP(44);
-		CASE_FIXED_FP(45);
-		CASE_FIXED_FP(46);
-		CASE_FIXED_FP(47);
-		CASE_FIXED_FP(48);
-		CASE_FIXED_FP(49);
-		CASE_FIXED_FP(50);
-		CASE_FIXED_FP(51);
-		CASE_FIXED_FP(52);
-		CASE_FIXED_FP(53);
-		CASE_FIXED_FP(54);
-		CASE_FIXED_FP(55);
-		CASE_FIXED_FP(56);
-		CASE_FIXED_FP(57);
-		CASE_FIXED_FP(58);
-		CASE_FIXED_FP(59);
-		CASE_FIXED_FP(60);
-		CASE_FIXED_FP(61);
-		CASE_FIXED_FP(62);
-		CASE_FIXED_FP(63);
-		CASE_FIXED_FP(64);
-		CASE_FIXED_FP(65);
-		CASE_FIXED_FP(66);
-		CASE_FIXED_FP(67);
-		CASE_FIXED_FP(68);
-		CASE_FIXED_FP(69);
-		CASE_FIXED_FP(70);
-		CASE_FIXED_FP(71);
-		CASE_FIXED_FP(72);
-		CASE_FIXED_FP(73);
-		CASE_FIXED_FP(74);
-		CASE_FIXED_FP(75);
-		CASE_FIXED_FP(76);
-		CASE_FIXED_FP(77);
-		CASE_FIXED_FP(78);
-		CASE_FIXED_FP(79);
-		CASE_FIXED_FP(80);
-		CASE_FIXED_FP(81);
-		CASE_FIXED_FP(82);
-		CASE_FIXED_FP(83);
-		CASE_FIXED_FP(84);
-		CASE_FIXED_FP(85);
-		CASE_FIXED_FP(86);
-		CASE_FIXED_FP(87);
-		CASE_FIXED_FP(88);
-		CASE_FIXED_FP(89);
-		CASE_FIXED_FP(90);
-		CASE_FIXED_FP(91);
-		CASE_FIXED_FP(92);
-		CASE_FIXED_FP(93);
-		CASE_FIXED_FP(94);
-		CASE_FIXED_FP(95);
-		CASE_FIXED_FP(96);
-		CASE_FIXED_FP(97);
-		CASE_FIXED_FP(98);
-		CASE_FIXED_FP(99);
-		CASE_FIXED_FP(100);
-		CASE_FIXED_FP(101);
-		CASE_FIXED_FP(102);
-		CASE_FIXED_FP(103);
-		CASE_FIXED_FP(104);
-		CASE_FIXED_FP(105);
-		CASE_FIXED_FP(106);
-		CASE_FIXED_FP(107);
-		CASE_FIXED_FP(108);
-		CASE_FIXED_FP(109);
-		CASE_FIXED_FP(110);
-		CASE_FIXED_FP(111);
-		CASE_FIXED_FP(112);
-		CASE_FIXED_FP(113);
-		CASE_FIXED_FP(114);
-		CASE_FIXED_FP(115);
-		CASE_FIXED_FP(116);
-		CASE_FIXED_FP(117);
-		CASE_FIXED_FP(118);
-		CASE_FIXED_FP(119);
-		CASE_FIXED_FP(120);
-		CASE_FIXED_FP(121);
-		CASE_FIXED_FP(122);
-		CASE_FIXED_FP(123);
-		CASE_FIXED_FP(124);
-		CASE_FIXED_FP(125);
-		CASE_FIXED_FP(126);
-		CASE_FIXED_FP(127);
-	}
+
+
+
+ switch (regnum) {
+  case (2) : ia64_ldf_fill(2, fpval); break;
+  case (3) : ia64_ldf_fill(3, fpval); break;
+  case (4) : ia64_ldf_fill(4, fpval); break;
+  case (5) : ia64_ldf_fill(5, fpval); break;
+
+  case (6) : ia64_ldf_fill(6, fpval); break;
+  case (7) : ia64_ldf_fill(7, fpval); break;
+  case (8) : ia64_ldf_fill(8, fpval); break;
+  case (9) : ia64_ldf_fill(9, fpval); break;
+  case (10) : ia64_ldf_fill(10, fpval); break;
+  case (11) : ia64_ldf_fill(11, fpval); break;
+
+  case (12) : ia64_ldf_fill(12, fpval); break;
+  case (13) : ia64_ldf_fill(13, fpval); break;
+  case (14) : ia64_ldf_fill(14, fpval); break;
+  case (15) : ia64_ldf_fill(15, fpval); break;
+  case (16) : ia64_ldf_fill(16, fpval); break;
+  case (17) : ia64_ldf_fill(17, fpval); break;
+  case (18) : ia64_ldf_fill(18, fpval); break;
+  case (19) : ia64_ldf_fill(19, fpval); break;
+  case (20) : ia64_ldf_fill(20, fpval); break;
+  case (21) : ia64_ldf_fill(21, fpval); break;
+  case (22) : ia64_ldf_fill(22, fpval); break;
+  case (23) : ia64_ldf_fill(23, fpval); break;
+  case (24) : ia64_ldf_fill(24, fpval); break;
+  case (25) : ia64_ldf_fill(25, fpval); break;
+  case (26) : ia64_ldf_fill(26, fpval); break;
+  case (27) : ia64_ldf_fill(27, fpval); break;
+  case (28) : ia64_ldf_fill(28, fpval); break;
+  case (29) : ia64_ldf_fill(29, fpval); break;
+  case (30) : ia64_ldf_fill(30, fpval); break;
+  case (31) : ia64_ldf_fill(31, fpval); break;
+  case (32) : ia64_ldf_fill(32, fpval); break;
+  case (33) : ia64_ldf_fill(33, fpval); break;
+  case (34) : ia64_ldf_fill(34, fpval); break;
+  case (35) : ia64_ldf_fill(35, fpval); break;
+  case (36) : ia64_ldf_fill(36, fpval); break;
+  case (37) : ia64_ldf_fill(37, fpval); break;
+  case (38) : ia64_ldf_fill(38, fpval); break;
+  case (39) : ia64_ldf_fill(39, fpval); break;
+  case (40) : ia64_ldf_fill(40, fpval); break;
+  case (41) : ia64_ldf_fill(41, fpval); break;
+  case (42) : ia64_ldf_fill(42, fpval); break;
+  case (43) : ia64_ldf_fill(43, fpval); break;
+  case (44) : ia64_ldf_fill(44, fpval); break;
+  case (45) : ia64_ldf_fill(45, fpval); break;
+  case (46) : ia64_ldf_fill(46, fpval); break;
+  case (47) : ia64_ldf_fill(47, fpval); break;
+  case (48) : ia64_ldf_fill(48, fpval); break;
+  case (49) : ia64_ldf_fill(49, fpval); break;
+  case (50) : ia64_ldf_fill(50, fpval); break;
+  case (51) : ia64_ldf_fill(51, fpval); break;
+  case (52) : ia64_ldf_fill(52, fpval); break;
+  case (53) : ia64_ldf_fill(53, fpval); break;
+  case (54) : ia64_ldf_fill(54, fpval); break;
+  case (55) : ia64_ldf_fill(55, fpval); break;
+  case (56) : ia64_ldf_fill(56, fpval); break;
+  case (57) : ia64_ldf_fill(57, fpval); break;
+  case (58) : ia64_ldf_fill(58, fpval); break;
+  case (59) : ia64_ldf_fill(59, fpval); break;
+  case (60) : ia64_ldf_fill(60, fpval); break;
+  case (61) : ia64_ldf_fill(61, fpval); break;
+  case (62) : ia64_ldf_fill(62, fpval); break;
+  case (63) : ia64_ldf_fill(63, fpval); break;
+  case (64) : ia64_ldf_fill(64, fpval); break;
+  case (65) : ia64_ldf_fill(65, fpval); break;
+  case (66) : ia64_ldf_fill(66, fpval); break;
+  case (67) : ia64_ldf_fill(67, fpval); break;
+  case (68) : ia64_ldf_fill(68, fpval); break;
+  case (69) : ia64_ldf_fill(69, fpval); break;
+  case (70) : ia64_ldf_fill(70, fpval); break;
+  case (71) : ia64_ldf_fill(71, fpval); break;
+  case (72) : ia64_ldf_fill(72, fpval); break;
+  case (73) : ia64_ldf_fill(73, fpval); break;
+  case (74) : ia64_ldf_fill(74, fpval); break;
+  case (75) : ia64_ldf_fill(75, fpval); break;
+  case (76) : ia64_ldf_fill(76, fpval); break;
+  case (77) : ia64_ldf_fill(77, fpval); break;
+  case (78) : ia64_ldf_fill(78, fpval); break;
+  case (79) : ia64_ldf_fill(79, fpval); break;
+  case (80) : ia64_ldf_fill(80, fpval); break;
+  case (81) : ia64_ldf_fill(81, fpval); break;
+  case (82) : ia64_ldf_fill(82, fpval); break;
+  case (83) : ia64_ldf_fill(83, fpval); break;
+  case (84) : ia64_ldf_fill(84, fpval); break;
+  case (85) : ia64_ldf_fill(85, fpval); break;
+  case (86) : ia64_ldf_fill(86, fpval); break;
+  case (87) : ia64_ldf_fill(87, fpval); break;
+  case (88) : ia64_ldf_fill(88, fpval); break;
+  case (89) : ia64_ldf_fill(89, fpval); break;
+  case (90) : ia64_ldf_fill(90, fpval); break;
+  case (91) : ia64_ldf_fill(91, fpval); break;
+  case (92) : ia64_ldf_fill(92, fpval); break;
+  case (93) : ia64_ldf_fill(93, fpval); break;
+  case (94) : ia64_ldf_fill(94, fpval); break;
+  case (95) : ia64_ldf_fill(95, fpval); break;
+  case (96) : ia64_ldf_fill(96, fpval); break;
+  case (97) : ia64_ldf_fill(97, fpval); break;
+  case (98) : ia64_ldf_fill(98, fpval); break;
+  case (99) : ia64_ldf_fill(99, fpval); break;
+  case (100) : ia64_ldf_fill(100, fpval); break;
+  case (101) : ia64_ldf_fill(101, fpval); break;
+  case (102) : ia64_ldf_fill(102, fpval); break;
+  case (103) : ia64_ldf_fill(103, fpval); break;
+  case (104) : ia64_ldf_fill(104, fpval); break;
+  case (105) : ia64_ldf_fill(105, fpval); break;
+  case (106) : ia64_ldf_fill(106, fpval); break;
+  case (107) : ia64_ldf_fill(107, fpval); break;
+  case (108) : ia64_ldf_fill(108, fpval); break;
+  case (109) : ia64_ldf_fill(109, fpval); break;
+  case (110) : ia64_ldf_fill(110, fpval); break;
+  case (111) : ia64_ldf_fill(111, fpval); break;
+  case (112) : ia64_ldf_fill(112, fpval); break;
+  case (113) : ia64_ldf_fill(113, fpval); break;
+  case (114) : ia64_ldf_fill(114, fpval); break;
+  case (115) : ia64_ldf_fill(115, fpval); break;
+  case (116) : ia64_ldf_fill(116, fpval); break;
+  case (117) : ia64_ldf_fill(117, fpval); break;
+  case (118) : ia64_ldf_fill(118, fpval); break;
+  case (119) : ia64_ldf_fill(119, fpval); break;
+  case (120) : ia64_ldf_fill(120, fpval); break;
+  case (121) : ia64_ldf_fill(121, fpval); break;
+  case (122) : ia64_ldf_fill(122, fpval); break;
+  case (123) : ia64_ldf_fill(123, fpval); break;
+  case (124) : ia64_ldf_fill(124, fpval); break;
+  case (125) : ia64_ldf_fill(125, fpval); break;
+  case (126) : ia64_ldf_fill(126, fpval); break;
+  case (127) : ia64_ldf_fill(127, fpval); break;
+ }
 }

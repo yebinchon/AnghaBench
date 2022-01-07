@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ut8 ;
-typedef  int ut32 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  r_write_le8 (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int ut8 ;
+typedef int ut32 ;
+
+
+ int r_write_le8 (int *,int) ;
 
 __attribute__((used)) static inline void r_write_le24(void *_dest, ut32 val) {
-	ut8* dest = (ut8*)_dest;
-	r_write_le8 (dest++, val);
-	r_write_le8 (dest++, val >> 8);
-	r_write_le8 (dest,   val >> 16);
+ ut8* dest = (ut8*)_dest;
+ r_write_le8 (dest++, val);
+ r_write_le8 (dest++, val >> 8);
+ r_write_le8 (dest, val >> 16);
 }

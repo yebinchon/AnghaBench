@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  src_buf ;
-typedef  int /*<<< orphan*/  sqlite3_value ;
-typedef  int /*<<< orphan*/  sqlite3_context ;
-struct TYPE_3__ {int /*<<< orphan*/  cnv; } ;
-typedef  TYPE_1__ mm_cipher_context_t ;
-typedef  int int32_t ;
-typedef  int /*<<< orphan*/  buf ;
-typedef  scalar_t__ UErrorCode ;
-typedef  char UChar ;
 
-/* Variables and functions */
- int SQLITE_BLOB ; 
- int /*<<< orphan*/  SQLITE_ERROR ; 
- int /*<<< orphan*/  SQLITE_MISUSE ; 
- int /*<<< orphan*/  SQLITE_TRANSIENT ; 
- scalar_t__ U_BUFFER_OVERFLOW_ERROR ; 
- scalar_t__ U_FAILURE (scalar_t__) ; 
- scalar_t__ U_STRING_NOT_TERMINATED_WARNING ; 
- scalar_t__ U_ZERO_ERROR ; 
- int /*<<< orphan*/  do_rc4 (TYPE_1__*,char*,int) ; 
- int /*<<< orphan*/  memcpy (char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  sqlite3_free (char*) ; 
- scalar_t__ sqlite3_malloc (int) ; 
- int /*<<< orphan*/  sqlite3_mm_set_last_error (char*) ; 
- int /*<<< orphan*/  sqlite3_result_error_code (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_result_text16 (int /*<<< orphan*/ *,char*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_result_value (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3_user_data (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_value_blob (int /*<<< orphan*/ *) ; 
- int sqlite3_value_bytes (int /*<<< orphan*/ *) ; 
- int sqlite3_value_type (int /*<<< orphan*/ *) ; 
- int ucnv_toUChars (int /*<<< orphan*/ ,char*,int,char*,int,scalar_t__*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int src_buf ;
+typedef int sqlite3_value ;
+typedef int sqlite3_context ;
+struct TYPE_3__ {int cnv; } ;
+typedef TYPE_1__ mm_cipher_context_t ;
+typedef int int32_t ;
+typedef int buf ;
+typedef scalar_t__ UErrorCode ;
+typedef char UChar ;
+
+
+ int SQLITE_BLOB ;
+ int SQLITE_ERROR ;
+ int SQLITE_MISUSE ;
+ int SQLITE_TRANSIENT ;
+ scalar_t__ U_BUFFER_OVERFLOW_ERROR ;
+ scalar_t__ U_FAILURE (scalar_t__) ;
+ scalar_t__ U_STRING_NOT_TERMINATED_WARNING ;
+ scalar_t__ U_ZERO_ERROR ;
+ int do_rc4 (TYPE_1__*,char*,int) ;
+ int memcpy (char*,int ,int) ;
+ int sqlite3_free (char*) ;
+ scalar_t__ sqlite3_malloc (int) ;
+ int sqlite3_mm_set_last_error (char*) ;
+ int sqlite3_result_error_code (int *,int ) ;
+ int sqlite3_result_text16 (int *,char*,int,int ) ;
+ int sqlite3_result_value (int *,int *) ;
+ scalar_t__ sqlite3_user_data (int *) ;
+ int sqlite3_value_blob (int *) ;
+ int sqlite3_value_bytes (int *) ;
+ int sqlite3_value_type (int *) ;
+ int ucnv_toUChars (int ,char*,int,char*,int,scalar_t__*) ;
 
 __attribute__((used)) static void mmdec_func(sqlite3_context *db, int argc, sqlite3_value **argv)
 {
@@ -56,13 +56,13 @@ __attribute__((used)) static void mmdec_func(sqlite3_context *db, int argc, sqli
     UErrorCode status = U_ZERO_ERROR;
     int arg_type;
 
-    // only accept 1 argument.
+
     if (argc != 1)
         goto error_misuse;
 
     arg_type = sqlite3_value_type(argv[0]);
 
-    // for data types other than BLOB, just return them.
+
     if (arg_type != SQLITE_BLOB) {
         sqlite3_result_value(db, argv[0]);
         return;
@@ -77,11 +77,11 @@ __attribute__((used)) static void mmdec_func(sqlite3_context *db, int argc, sqli
     }
     memcpy(src, sqlite3_value_blob(argv[0]), src_len);
 
-    // decrypt transformed BOCU-1 string.
+
     do_rc4(ctx, src, src_len);
 
-    // transform input string from BOCU-1 encoding.
-    // try stack buffer first, if it doesn't fit, malloc a new buffer.
+
+
     dst_len = ucnv_toUChars(ctx->cnv, dst, sizeof(buf), src, src_len, &status);
     if (status == U_BUFFER_OVERFLOW_ERROR) {
         status = U_ZERO_ERROR;
@@ -94,7 +94,7 @@ __attribute__((used)) static void mmdec_func(sqlite3_context *db, int argc, sqli
         goto error_error;
     }
 
-    // return
+
     sqlite3_result_text16(db, dst, dst_len * sizeof(UChar), SQLITE_TRANSIENT);
     if (src != src_buf)
         sqlite3_free(src);

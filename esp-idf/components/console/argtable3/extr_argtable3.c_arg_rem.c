@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {char const* datatype; char const* glossary; int mincount; int maxcount; int /*<<< orphan*/ * errorfn; int /*<<< orphan*/ * checkfn; int /*<<< orphan*/ * scanfn; int /*<<< orphan*/ * resetfn; struct arg_rem* parent; int /*<<< orphan*/ * longopts; int /*<<< orphan*/ * shortopts; scalar_t__ flag; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {char const* datatype; char const* glossary; int mincount; int maxcount; int * errorfn; int * checkfn; int * scanfn; int * resetfn; struct arg_rem* parent; int * longopts; int * shortopts; scalar_t__ flag; } ;
 struct arg_rem {TYPE_1__ hdr; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARG_TRACE (char*) ; 
- scalar_t__ malloc (int) ; 
+
+ int ARG_TRACE (char*) ;
+ scalar_t__ malloc (int) ;
 
 struct arg_rem *arg_rem(const char *datatype, const char *glossary)
 {
@@ -24,17 +24,17 @@ struct arg_rem *arg_rem(const char *datatype, const char *glossary)
     if (result)
     {
         result->hdr.flag = 0;
-        result->hdr.shortopts = NULL;
-        result->hdr.longopts = NULL;
+        result->hdr.shortopts = ((void*)0);
+        result->hdr.longopts = ((void*)0);
         result->hdr.datatype = datatype;
         result->hdr.glossary = glossary;
         result->hdr.mincount = 1;
         result->hdr.maxcount = 1;
         result->hdr.parent = result;
-        result->hdr.resetfn = NULL;
-        result->hdr.scanfn = NULL;
-        result->hdr.checkfn = NULL;
-        result->hdr.errorfn = NULL;
+        result->hdr.resetfn = ((void*)0);
+        result->hdr.scanfn = ((void*)0);
+        result->hdr.checkfn = ((void*)0);
+        result->hdr.errorfn = ((void*)0);
     }
 
     ARG_TRACE(("arg_rem() returns %p\n", result));

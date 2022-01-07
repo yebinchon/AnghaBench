@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vorb ;
 
-/* Variables and functions */
- int /*<<< orphan*/  VORBIS_missing_capture_pattern ; 
- int /*<<< orphan*/  capture_pattern (int /*<<< orphan*/ *) ; 
- int error (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int start_page_no_capturepattern (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int vorb ;
+
+
+ int VORBIS_missing_capture_pattern ;
+ int capture_pattern (int *) ;
+ int error (int *,int ) ;
+ int start_page_no_capturepattern (int *) ;
 
 __attribute__((used)) static int start_page(vorb *f)
 {

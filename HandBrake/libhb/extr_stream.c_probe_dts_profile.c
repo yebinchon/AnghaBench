@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_11__ {int (* bsinfo ) (TYPE_1__*,int /*<<< orphan*/ ,TYPE_2__*) ;int /*<<< orphan*/  codec_param; } ;
-typedef  TYPE_1__ hb_work_object_t ;
+
+
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+struct TYPE_11__ {int (* bsinfo ) (TYPE_1__*,int ,TYPE_2__*) ;int codec_param; } ;
+typedef TYPE_1__ hb_work_object_t ;
 struct TYPE_12__ {int profile; } ;
-typedef  TYPE_2__ hb_work_info_t ;
-struct TYPE_13__ {int /*<<< orphan*/  h; } ;
-typedef  TYPE_3__ hb_stream_t ;
-struct TYPE_14__ {int stream_type; scalar_t__* codec_name; int /*<<< orphan*/  codec_param; void* stream_kind; int /*<<< orphan*/  codec; int /*<<< orphan*/  stream_id; int /*<<< orphan*/  probe_buf; } ;
-typedef  TYPE_4__ hb_pes_stream_t ;
-typedef  int /*<<< orphan*/  AVCodec ;
+typedef TYPE_2__ hb_work_info_t ;
+struct TYPE_13__ {int h; } ;
+typedef TYPE_3__ hb_stream_t ;
+struct TYPE_14__ {int stream_type; scalar_t__* codec_name; int codec_param; void* stream_kind; int codec; int stream_id; int probe_buf; } ;
+typedef TYPE_4__ hb_pes_stream_t ;
+typedef int AVCodec ;
 
-/* Variables and functions */
- void* A ; 
-#define  FF_PROFILE_DTS 132 
-#define  FF_PROFILE_DTS_96_24 131 
-#define  FF_PROFILE_DTS_ES 130 
-#define  FF_PROFILE_DTS_HD_HRA 129 
-#define  FF_PROFILE_DTS_HD_MA 128 
- int /*<<< orphan*/  HB_ACODEC_DCA ; 
- char* av_get_profile_name (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * avcodec_find_decoder (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (TYPE_1__*) ; 
- TYPE_1__* hb_audio_decoder (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hb_log (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strncpy (scalar_t__*,char const*,int) ; 
- int stub1 (TYPE_1__*,int /*<<< orphan*/ ,TYPE_2__*) ; 
+
+ void* A ;
+
+
+
+
+
+ int HB_ACODEC_DCA ;
+ char* av_get_profile_name (int *,int) ;
+ int * avcodec_find_decoder (int ) ;
+ int free (TYPE_1__*) ;
+ TYPE_1__* hb_audio_decoder (int ,int ) ;
+ int hb_log (char*,int ,int ,int ) ;
+ int strncpy (scalar_t__*,char const*,int) ;
+ int stub1 (TYPE_1__*,int ,TYPE_2__*) ;
 
 __attribute__((used)) static int probe_dts_profile( hb_stream_t *stream, hb_pes_stream_t *pes )
 {
@@ -55,16 +55,16 @@ __attribute__((used)) static int probe_dts_profile( hb_stream_t *stream, hb_pes_
     }
     switch (info.profile)
     {
-        case FF_PROFILE_DTS:
-        case FF_PROFILE_DTS_ES:
-        case FF_PROFILE_DTS_96_24:
+        case 132:
+        case 130:
+        case 131:
             pes->codec = HB_ACODEC_DCA;
             pes->stream_type = 0x82;
             pes->stream_kind = A;
             break;
 
-        case FF_PROFILE_DTS_HD_HRA:
-        case FF_PROFILE_DTS_HD_MA:
+        case 129:
+        case 128:
             pes->stream_type = 0;
             pes->stream_kind = A;
             break;

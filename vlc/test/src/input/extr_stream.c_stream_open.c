@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  s; } ;
-struct reader {char* psz_name; TYPE_2__* p_data; int /*<<< orphan*/  pf_seek; int /*<<< orphan*/  pf_tell; int /*<<< orphan*/  pf_peek; int /*<<< orphan*/  pf_read; int /*<<< orphan*/  pf_getsize; int /*<<< orphan*/  pf_close; TYPE_1__ u; } ;
-struct TYPE_6__ {int /*<<< orphan*/  p_libvlc_int; } ;
-typedef  TYPE_2__ libvlc_instance_t ;
-typedef  int /*<<< orphan*/  argv ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (struct reader*) ; 
- struct reader* calloc (int,int) ; 
- int /*<<< orphan*/  free (struct reader*) ; 
- TYPE_2__* libvlc_new (int,char const**) ; 
- int /*<<< orphan*/  libvlc_release (TYPE_2__*) ; 
- int /*<<< orphan*/  stream_close ; 
- int /*<<< orphan*/  stream_getsize ; 
- int /*<<< orphan*/  stream_peek ; 
- int /*<<< orphan*/  stream_read ; 
- int /*<<< orphan*/  stream_seek ; 
- int /*<<< orphan*/  stream_tell ; 
- int /*<<< orphan*/  vlc_stream_NewURL (int /*<<< orphan*/ ,char const*) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int s; } ;
+struct reader {char* psz_name; TYPE_2__* p_data; int pf_seek; int pf_tell; int pf_peek; int pf_read; int pf_getsize; int pf_close; TYPE_1__ u; } ;
+struct TYPE_6__ {int p_libvlc_int; } ;
+typedef TYPE_2__ libvlc_instance_t ;
+typedef int argv ;
+
+
+ int assert (struct reader*) ;
+ struct reader* calloc (int,int) ;
+ int free (struct reader*) ;
+ TYPE_2__* libvlc_new (int,char const**) ;
+ int libvlc_release (TYPE_2__*) ;
+ int stream_close ;
+ int stream_getsize ;
+ int stream_peek ;
+ int stream_read ;
+ int stream_seek ;
+ int stream_tell ;
+ int vlc_stream_NewURL (int ,char const*) ;
 
 __attribute__((used)) static struct reader *
 stream_open( const char *psz_url )
@@ -51,14 +51,14 @@ stream_open( const char *psz_url )
     assert( p_reader );
 
     p_vlc = libvlc_new( sizeof(argv) / sizeof(argv[0]), argv );
-    assert( p_vlc != NULL );
+    assert( p_vlc != ((void*)0) );
 
     p_reader->u.s = vlc_stream_NewURL( p_vlc->p_libvlc_int, psz_url );
     if( !p_reader->u.s )
     {
         libvlc_release( p_vlc );
         free( p_reader );
-        return NULL;
+        return ((void*)0);
     }
     p_reader->pf_close = stream_close;
     p_reader->pf_getsize = stream_getsize;

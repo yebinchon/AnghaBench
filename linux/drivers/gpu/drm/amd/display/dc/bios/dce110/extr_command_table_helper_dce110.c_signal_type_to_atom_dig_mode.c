@@ -1,58 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  enum signal_type { ____Placeholder_signal_type } signal_type ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ATOM_TRANSMITTER_DIGMODE_V5_DP ; 
- int /*<<< orphan*/  ATOM_TRANSMITTER_DIGMODE_V5_DP_MST ; 
- int /*<<< orphan*/  ATOM_TRANSMITTER_DIGMODE_V5_DVI ; 
- int /*<<< orphan*/  ATOM_TRANSMITTER_DIGMODE_V5_HDMI ; 
- int /*<<< orphan*/  ATOM_TRANSMITTER_DIGMODE_V5_LVDS ; 
-#define  SIGNAL_TYPE_DISPLAY_PORT 134 
-#define  SIGNAL_TYPE_DISPLAY_PORT_MST 133 
-#define  SIGNAL_TYPE_DVI_DUAL_LINK 132 
-#define  SIGNAL_TYPE_DVI_SINGLE_LINK 131 
-#define  SIGNAL_TYPE_EDP 130 
-#define  SIGNAL_TYPE_HDMI_TYPE_A 129 
-#define  SIGNAL_TYPE_LVDS 128 
 
+
+
+typedef int uint8_t ;
+typedef enum signal_type { ____Placeholder_signal_type } signal_type ;
+
+
+ int ATOM_TRANSMITTER_DIGMODE_V5_DP ;
+ int ATOM_TRANSMITTER_DIGMODE_V5_DP_MST ;
+ int ATOM_TRANSMITTER_DIGMODE_V5_DVI ;
+ int ATOM_TRANSMITTER_DIGMODE_V5_HDMI ;
+ int ATOM_TRANSMITTER_DIGMODE_V5_LVDS ;
 __attribute__((used)) static uint8_t signal_type_to_atom_dig_mode(enum signal_type s)
 {
-	uint8_t atom_dig_mode = ATOM_TRANSMITTER_DIGMODE_V5_DP;
+ uint8_t atom_dig_mode = ATOM_TRANSMITTER_DIGMODE_V5_DP;
 
-	switch (s) {
-	case SIGNAL_TYPE_DISPLAY_PORT:
-	case SIGNAL_TYPE_EDP:
-		atom_dig_mode = ATOM_TRANSMITTER_DIGMODE_V5_DP;
-		break;
-	case SIGNAL_TYPE_LVDS:
-		atom_dig_mode = ATOM_TRANSMITTER_DIGMODE_V5_LVDS;
-		break;
-	case SIGNAL_TYPE_DVI_SINGLE_LINK:
-	case SIGNAL_TYPE_DVI_DUAL_LINK:
-		atom_dig_mode = ATOM_TRANSMITTER_DIGMODE_V5_DVI;
-		break;
-	case SIGNAL_TYPE_HDMI_TYPE_A:
-		atom_dig_mode = ATOM_TRANSMITTER_DIGMODE_V5_HDMI;
-		break;
-	case SIGNAL_TYPE_DISPLAY_PORT_MST:
-		atom_dig_mode = ATOM_TRANSMITTER_DIGMODE_V5_DP_MST;
-		break;
-	default:
-		atom_dig_mode = ATOM_TRANSMITTER_DIGMODE_V5_DVI;
-		break;
-	}
+ switch (s) {
+ case 134:
+ case 130:
+  atom_dig_mode = ATOM_TRANSMITTER_DIGMODE_V5_DP;
+  break;
+ case 128:
+  atom_dig_mode = ATOM_TRANSMITTER_DIGMODE_V5_LVDS;
+  break;
+ case 131:
+ case 132:
+  atom_dig_mode = ATOM_TRANSMITTER_DIGMODE_V5_DVI;
+  break;
+ case 129:
+  atom_dig_mode = ATOM_TRANSMITTER_DIGMODE_V5_HDMI;
+  break;
+ case 133:
+  atom_dig_mode = ATOM_TRANSMITTER_DIGMODE_V5_DP_MST;
+  break;
+ default:
+  atom_dig_mode = ATOM_TRANSMITTER_DIGMODE_V5_DVI;
+  break;
+ }
 
-	return atom_dig_mode;
+ return atom_dig_mode;
 }

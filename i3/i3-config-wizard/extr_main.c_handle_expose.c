@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  color_t ;
 
-/* Variables and functions */
- scalar_t__ MOD_Mod4 ; 
- scalar_t__ STEP_GENERATE ; 
- scalar_t__ STEP_WELCOME ; 
- int /*<<< orphan*/  bold_font ; 
- int /*<<< orphan*/  config_path ; 
- int /*<<< orphan*/  conn ; 
- scalar_t__ current_step ; 
- int /*<<< orphan*/  draw_util_clear_surface (int /*<<< orphan*/ *,int /*<<< orphan*/  const) ; 
- int /*<<< orphan*/  draw_util_hex_to_color (char*) ; 
- int /*<<< orphan*/  font ; 
- int /*<<< orphan*/  free (char*) ; 
- scalar_t__ modifier ; 
- int /*<<< orphan*/  sasprintf (char**,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_font (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  surface ; 
- int /*<<< orphan*/  txt (int,int,char*,int /*<<< orphan*/  const,int /*<<< orphan*/  const) ; 
- int /*<<< orphan*/  xcb_flush (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int color_t ;
+
+
+ scalar_t__ MOD_Mod4 ;
+ scalar_t__ STEP_GENERATE ;
+ scalar_t__ STEP_WELCOME ;
+ int bold_font ;
+ int config_path ;
+ int conn ;
+ scalar_t__ current_step ;
+ int draw_util_clear_surface (int *,int const) ;
+ int draw_util_hex_to_color (char*) ;
+ int font ;
+ int free (char*) ;
+ scalar_t__ modifier ;
+ int sasprintf (char**,char*,int ) ;
+ int set_font (int *) ;
+ int surface ;
+ int txt (int,int,char*,int const,int const) ;
+ int xcb_flush (int ) ;
 
 __attribute__((used)) static int handle_expose(void) {
     const color_t black = draw_util_hex_to_color("#000000");
@@ -37,7 +37,7 @@ __attribute__((used)) static int handle_expose(void) {
     const color_t green = draw_util_hex_to_color("#00FF00");
     const color_t red = draw_util_hex_to_color("#FF0000");
 
-    /* draw background */
+
     draw_util_clear_surface(&surface, black);
 
     set_font(&font);
@@ -67,13 +67,13 @@ __attribute__((used)) static int handle_expose(void) {
         txt(13, 9, "to write the config", white, black);
         txt(13, 10, "to abort", white, black);
 
-        /* the not-selected modifier */
+
         if (modifier == MOD_Mod4)
             txt(5, 5, "<Alt>", white, black);
         else
             txt(5, 4, "<Win>", white, black);
 
-        /* the selected modifier */
+
         set_font(&bold_font);
         if (modifier == MOD_Mod4)
             txt(2, 4, "-> <Win>", white, black);

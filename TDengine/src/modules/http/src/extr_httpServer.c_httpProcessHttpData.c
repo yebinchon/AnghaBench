@@ -1,65 +1,65 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_19__   TYPE_4__ ;
-typedef  struct TYPE_18__   TYPE_3__ ;
-typedef  struct TYPE_17__   TYPE_2__ ;
-typedef  struct TYPE_16__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_19__ TYPE_4__ ;
+typedef struct TYPE_18__ TYPE_3__ ;
+typedef struct TYPE_17__ TYPE_2__ ;
+typedef struct TYPE_16__ TYPE_1__ ;
+
+
 struct TYPE_16__ {TYPE_4__* ptr; } ;
 struct epoll_event {int events; TYPE_1__ data; } ;
-typedef  int /*<<< orphan*/  sigset_t ;
-struct TYPE_19__ {scalar_t__ fd; int /*<<< orphan*/  accessTimes; int /*<<< orphan*/  state; int /*<<< orphan*/  ipstr; TYPE_3__* pThread; struct TYPE_19__* signature; } ;
-struct TYPE_18__ {int numOfFds; TYPE_2__* pServer; int /*<<< orphan*/  (* processData ) (TYPE_4__*) ;int /*<<< orphan*/  pollFd; int /*<<< orphan*/  threadMutex; int /*<<< orphan*/  fdReady; } ;
-struct TYPE_17__ {int /*<<< orphan*/  requestNum; int /*<<< orphan*/  online; } ;
-typedef  TYPE_3__ HttpThread ;
-typedef  TYPE_4__ HttpContext ;
+typedef int sigset_t ;
+struct TYPE_19__ {scalar_t__ fd; int accessTimes; int state; int ipstr; TYPE_3__* pThread; struct TYPE_19__* signature; } ;
+struct TYPE_18__ {int numOfFds; TYPE_2__* pServer; int (* processData ) (TYPE_4__*) ;int pollFd; int threadMutex; int fdReady; } ;
+struct TYPE_17__ {int requestNum; int online; } ;
+typedef TYPE_3__ HttpThread ;
+typedef TYPE_4__ HttpContext ;
 
-/* Variables and functions */
- int EPOLLERR ; 
- int EPOLLHUP ; 
- int EPOLLPRI ; 
- int EPOLLRDHUP ; 
- int /*<<< orphan*/  HTTP_CONTEXT_STATE_READY ; 
- int HTTP_MAX_EVENTS ; 
- int /*<<< orphan*/  HTTP_SERVER_OFFLINE ; 
- int /*<<< orphan*/  SIGPIPE ; 
- int /*<<< orphan*/  SIG_SETMASK ; 
- int /*<<< orphan*/  atomic_fetch_add_32 (int /*<<< orphan*/ *,int) ; 
- int epoll_wait (int /*<<< orphan*/ ,struct epoll_event*,int,int) ; 
- int /*<<< orphan*/  httpAlterContextState (TYPE_4__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  httpCloseContextByServer (TYPE_3__*,TYPE_4__*) ; 
- int /*<<< orphan*/  httpContextStateStr (int /*<<< orphan*/ ) ; 
- scalar_t__ httpReadData (TYPE_3__*,TYPE_4__*) ; 
- int /*<<< orphan*/  httpReadDirtyData (TYPE_4__*) ; 
- int /*<<< orphan*/  httpRemoveContextFromEpoll (TYPE_3__*,TYPE_4__*) ; 
- int /*<<< orphan*/  httpSendErrorResp (TYPE_4__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  httpTrace (char*,TYPE_4__*,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  pthread_cond_wait (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_sigmask (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sigaddset (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sigemptyset (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub1 (TYPE_4__*) ; 
+
+ int EPOLLERR ;
+ int EPOLLHUP ;
+ int EPOLLPRI ;
+ int EPOLLRDHUP ;
+ int HTTP_CONTEXT_STATE_READY ;
+ int HTTP_MAX_EVENTS ;
+ int HTTP_SERVER_OFFLINE ;
+ int SIGPIPE ;
+ int SIG_SETMASK ;
+ int atomic_fetch_add_32 (int *,int) ;
+ int epoll_wait (int ,struct epoll_event*,int,int) ;
+ int httpAlterContextState (TYPE_4__*,int ,int ) ;
+ int httpCloseContextByServer (TYPE_3__*,TYPE_4__*) ;
+ int httpContextStateStr (int ) ;
+ scalar_t__ httpReadData (TYPE_3__*,TYPE_4__*) ;
+ int httpReadDirtyData (TYPE_4__*) ;
+ int httpRemoveContextFromEpoll (TYPE_3__*,TYPE_4__*) ;
+ int httpSendErrorResp (TYPE_4__*,int ) ;
+ int httpTrace (char*,TYPE_4__*,scalar_t__,int ,int ,...) ;
+ int pthread_cond_wait (int *,int *) ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
+ int pthread_sigmask (int ,int *,int *) ;
+ int sigaddset (int *,int ) ;
+ int sigemptyset (int *) ;
+ int stub1 (TYPE_4__*) ;
 
 void httpProcessHttpData(void *param) {
-  HttpThread  *pThread = (HttpThread *)param;
+  HttpThread *pThread = (HttpThread *)param;
   HttpContext *pContext;
-  int          fdNum;
+  int fdNum;
 
   sigset_t set;
   sigemptyset(&set);
   sigaddset(&set, SIGPIPE);
-  pthread_sigmask(SIG_SETMASK, &set, NULL);
+  pthread_sigmask(SIG_SETMASK, &set, ((void*)0));
 
   while (1) {
     pthread_mutex_lock(&pThread->threadMutex);
@@ -69,7 +69,7 @@ void httpProcessHttpData(void *param) {
     pthread_mutex_unlock(&pThread->threadMutex);
 
     struct epoll_event events[HTTP_MAX_EVENTS];
-    //-1 means uncertainty, 0-nowait, 1-wait 1 ms, set it from -1 to 1
+
     fdNum = epoll_wait(pThread->pollFd, events, HTTP_MAX_EVENTS, 1);
     if (fdNum <= 0) continue;
 

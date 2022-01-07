@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* i2eBordStrPtr ;
-struct TYPE_3__ {int /*<<< orphan*/  i2eStatus; } ;
 
-/* Variables and functions */
- int STE_OUT_MAIL ; 
- int inb (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef TYPE_1__* i2eBordStrPtr ;
+struct TYPE_3__ {int i2eStatus; } ;
+
+
+ int STE_OUT_MAIL ;
+ int inb (int ) ;
 
 __attribute__((used)) static int
 iiTxMailEmptyIIEX(i2eBordStrPtr pB)
 {
-	return !(inb(pB->i2eStatus) & STE_OUT_MAIL);
+ return !(inb(pB->i2eStatus) & STE_OUT_MAIL);
 }

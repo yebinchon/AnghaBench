@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {unsigned int nbufs; scalar_t__ off; int /*<<< orphan*/ * bufs; int /*<<< orphan*/ * bufsml; } ;
-typedef  TYPE_1__ uv_fs_t ;
-typedef  int /*<<< orphan*/  uv_buf_t ;
-typedef  scalar_t__ ssize_t ;
 
-/* Variables and functions */
- scalar_t__ EINTR ; 
- scalar_t__ errno ; 
- int /*<<< orphan*/  uv__free (int /*<<< orphan*/ *) ; 
- unsigned int uv__fs_buf_offset (int /*<<< orphan*/ *,scalar_t__) ; 
- scalar_t__ uv__fs_write (TYPE_1__*) ; 
- unsigned int uv__getiovmax () ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {unsigned int nbufs; scalar_t__ off; int * bufs; int * bufsml; } ;
+typedef TYPE_1__ uv_fs_t ;
+typedef int uv_buf_t ;
+typedef scalar_t__ ssize_t ;
+
+
+ scalar_t__ EINTR ;
+ scalar_t__ errno ;
+ int uv__free (int *) ;
+ unsigned int uv__fs_buf_offset (int *,scalar_t__) ;
+ scalar_t__ uv__fs_write (TYPE_1__*) ;
+ unsigned int uv__getiovmax () ;
 
 __attribute__((used)) static ssize_t uv__fs_write_all(uv_fs_t* req) {
   unsigned int iovmax;
@@ -63,7 +63,7 @@ __attribute__((used)) static ssize_t uv__fs_write_all(uv_fs_t* req) {
   if (bufs != req->bufsml)
     uv__free(bufs);
 
-  req->bufs = NULL;
+  req->bufs = ((void*)0);
   req->nbufs = 0;
 
   return total;

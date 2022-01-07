@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct NBCmdQueue {int /*<<< orphan*/  cs; } ;
-typedef  int /*<<< orphan*/  UCHAR ;
-typedef  int /*<<< orphan*/  PNCB ;
 
-/* Variables and functions */
- scalar_t__* CANCEL_EVENT_PTR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EnterCriticalSection (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LeaveCriticalSection (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * NBCmdQueueFindNBC (struct NBCmdQueue*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * NEXT_PTR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NRC_BADDR ; 
- int /*<<< orphan*/  NRC_GOODRET ; 
- int /*<<< orphan*/  NRC_INVADDRESS ; 
- int /*<<< orphan*/  SetEvent (scalar_t__) ; 
- int /*<<< orphan*/  TRACE (char*,struct NBCmdQueue*,...) ; 
+
+
+
+struct NBCmdQueue {int cs; } ;
+typedef int UCHAR ;
+typedef int PNCB ;
+
+
+ scalar_t__* CANCEL_EVENT_PTR (int ) ;
+ int EnterCriticalSection (int *) ;
+ int LeaveCriticalSection (int *) ;
+ int * NBCmdQueueFindNBC (struct NBCmdQueue*,int ) ;
+ int * NEXT_PTR (int ) ;
+ int NRC_BADDR ;
+ int NRC_GOODRET ;
+ int NRC_INVADDRESS ;
+ int SetEvent (scalar_t__) ;
+ int TRACE (char*,struct NBCmdQueue*,...) ;
 
 UCHAR NBCmdQueueComplete(struct NBCmdQueue *queue, PNCB ncb, UCHAR retcode)
 {

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  has_sprp; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  hypfs_dbfs_create_file (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  hypfs_sprp_file ; 
- TYPE_1__ sclp ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int has_sprp; } ;
+
+
+ int hypfs_dbfs_create_file (int *) ;
+ int hypfs_sprp_file ;
+ TYPE_1__ sclp ;
 
 void hypfs_sprp_init(void)
 {
-	if (!sclp.has_sprp)
-		return;
-	hypfs_dbfs_create_file(&hypfs_sprp_file);
+ if (!sclp.has_sprp)
+  return;
+ hypfs_dbfs_create_file(&hypfs_sprp_file);
 }

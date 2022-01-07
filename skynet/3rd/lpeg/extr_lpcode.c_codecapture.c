@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  key; int /*<<< orphan*/  cap; } ;
-typedef  TYPE_1__ TTree ;
-typedef  int /*<<< orphan*/  CompileState ;
-typedef  int /*<<< orphan*/  Charset ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Cclose ; 
- int /*<<< orphan*/  ICloseCapture ; 
- int /*<<< orphan*/  IFullCapture ; 
- int /*<<< orphan*/  IOpenCapture ; 
- int MAXOFF ; 
- int /*<<< orphan*/  addinstcap (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  codegen (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/  const*) ; 
- int fixedlen (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hascaptures (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sib1 (TYPE_1__*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int key; int cap; } ;
+typedef TYPE_1__ TTree ;
+typedef int CompileState ;
+typedef int Charset ;
+
+
+ int Cclose ;
+ int ICloseCapture ;
+ int IFullCapture ;
+ int IOpenCapture ;
+ int MAXOFF ;
+ int addinstcap (int *,int ,int ,int ,int) ;
+ int codegen (int *,int ,int ,int,int const*) ;
+ int fixedlen (int ) ;
+ int hascaptures (int ) ;
+ int sib1 (TYPE_1__*) ;
 
 __attribute__((used)) static void codecapture (CompileState *compst, TTree *tree, int tt,
                          const Charset *fl) {

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct vnode {scalar_t__ v_type; scalar_t__ v_ubcinfo; } ;
 
-/* Variables and functions */
- scalar_t__ UBC_INFO_NULL ; 
- scalar_t__ VREG ; 
 
-int 
+ scalar_t__ UBC_INFO_NULL ;
+ scalar_t__ VREG ;
+
+int
 UBCINFOEXISTS(const struct vnode * vp)
 {
         return((vp) && ((vp)->v_type == VREG) && ((vp)->v_ubcinfo != UBC_INFO_NULL));

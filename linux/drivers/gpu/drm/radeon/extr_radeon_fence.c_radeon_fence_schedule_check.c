@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct radeon_device {TYPE_1__* fence_drv; } ;
-struct TYPE_2__ {int /*<<< orphan*/  lockup_work; } ;
+struct TYPE_2__ {int lockup_work; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RADEON_FENCE_JIFFIES_TIMEOUT ; 
- int /*<<< orphan*/  queue_delayed_work (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  system_power_efficient_wq ; 
+
+ int RADEON_FENCE_JIFFIES_TIMEOUT ;
+ int queue_delayed_work (int ,int *,int ) ;
+ int system_power_efficient_wq ;
 
 __attribute__((used)) static void radeon_fence_schedule_check(struct radeon_device *rdev, int ring)
 {
-	/*
-	 * Do not reset the timer here with mod_delayed_work,
-	 * this can livelock in an interaction with TTM delayed destroy.
-	 */
-	queue_delayed_work(system_power_efficient_wq,
-			   &rdev->fence_drv[ring].lockup_work,
-			   RADEON_FENCE_JIFFIES_TIMEOUT);
+
+
+
+
+ queue_delayed_work(system_power_efficient_wq,
+      &rdev->fence_drv[ring].lockup_work,
+      RADEON_FENCE_JIFFIES_TIMEOUT);
 }

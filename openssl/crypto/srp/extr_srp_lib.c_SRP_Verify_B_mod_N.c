@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  BN_CTX ;
-typedef  int /*<<< orphan*/  BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BN_CTX_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BN_CTX_new () ; 
- int /*<<< orphan*/  BN_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_is_zero (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BN_new () ; 
- int /*<<< orphan*/  BN_nnmod (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int BN_CTX ;
+typedef int BIGNUM ;
+
+
+ int BN_CTX_free (int *) ;
+ int * BN_CTX_new () ;
+ int BN_free (int *) ;
+ int BN_is_zero (int *) ;
+ int * BN_new () ;
+ int BN_nnmod (int *,int const*,int const*,int *) ;
 
 int SRP_Verify_B_mod_N(const BIGNUM *B, const BIGNUM *N)
 {
@@ -27,12 +27,12 @@ int SRP_Verify_B_mod_N(const BIGNUM *B, const BIGNUM *N)
     BN_CTX *bn_ctx;
     int ret = 0;
 
-    if (B == NULL || N == NULL || (bn_ctx = BN_CTX_new()) == NULL)
+    if (B == ((void*)0) || N == ((void*)0) || (bn_ctx = BN_CTX_new()) == ((void*)0))
         return 0;
 
-    if ((r = BN_new()) == NULL)
+    if ((r = BN_new()) == ((void*)0))
         goto err;
-    /* Checks if B % N == 0 */
+
     if (!BN_nnmod(r, B, N, bn_ctx))
         goto err;
     ret = !BN_is_zero(r);

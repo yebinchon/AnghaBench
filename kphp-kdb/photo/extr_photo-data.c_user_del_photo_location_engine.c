@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  user ;
 
-/* Variables and functions */
- int /*<<< orphan*/  READ_CHAR (char*,char) ; 
- int /*<<< orphan*/  READ_INT (char*,int) ; 
- int /*<<< orphan*/  READ_LONG (char*,unsigned long long) ; 
- int /*<<< orphan*/  assert (char) ; 
- char* location_buf ; 
- int /*<<< orphan*/  memcpy (char*,char*,int) ; 
- char mode ; 
- int /*<<< orphan*/  save_location (char*,char,int,int,int,unsigned long long) ; 
- char user_loaded (int /*<<< orphan*/ *) ; 
- char* user_photo_get_location (int /*<<< orphan*/ *,int,int,int,int*) ; 
- int user_photo_set_location (int /*<<< orphan*/ *,int,int,char*,int) ; 
- scalar_t__ write_only ; 
+
+
+
+typedef int user ;
+
+
+ int READ_CHAR (char*,char) ;
+ int READ_INT (char*,int) ;
+ int READ_LONG (char*,unsigned long long) ;
+ int assert (char) ;
+ char* location_buf ;
+ int memcpy (char*,char*,int) ;
+ char mode ;
+ int save_location (char*,char,int,int,int,unsigned long long) ;
+ char user_loaded (int *) ;
+ char* user_photo_get_location (int *,int,int,int,int*) ;
+ int user_photo_set_location (int *,int,int,char*,int) ;
+ scalar_t__ write_only ;
 
 int user_del_photo_location_engine (user *u, int pid, int original, char size, int rotate) {
   if ((size != -1 && size < 'a') || size > 'z' || rotate < -1 || rotate > 3) {
@@ -40,7 +40,7 @@ int user_del_photo_location_engine (user *u, int pid, int original, char size, i
   int len;
   char *loc = user_photo_get_location (u, pid, original, 1, &len);
 
-  if (loc == NULL) {
+  if (loc == ((void*)0)) {
     return 0;
   }
 

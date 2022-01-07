@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ll ;
 
-/* Variables and functions */
- int MAX_WORDS ; 
- int /*<<< orphan*/  add_kludge (int,int) ; 
- int /*<<< orphan*/  add_word (scalar_t__*) ; 
- int /*<<< orphan*/  bayes_string_to_utf8 (unsigned char*,scalar_t__*) ; 
- scalar_t__ binlog_readed ; 
- char* buf_debug ; 
- int /*<<< orphan*/  cmp_ll ; 
- int /*<<< orphan*/  correct_lang (scalar_t__*) ; 
- int delete_links () ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int get_type_case (scalar_t__) ; 
- int get_type_lang (scalar_t__) ; 
- scalar_t__ is_letter (scalar_t__) ; 
- int /*<<< orphan*/  put_string_utf8 (scalar_t__*,char*) ; 
- int /*<<< orphan*/  qsort (scalar_t__*,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stderr ; 
- int strlen (char*) ; 
- scalar_t__* v ; 
- int verbosity ; 
- scalar_t__* words ; 
- int words_len ; 
+
+
+
+typedef int ll ;
+
+
+ int MAX_WORDS ;
+ int add_kludge (int,int) ;
+ int add_word (scalar_t__*) ;
+ int bayes_string_to_utf8 (unsigned char*,scalar_t__*) ;
+ scalar_t__ binlog_readed ;
+ char* buf_debug ;
+ int cmp_ll ;
+ int correct_lang (scalar_t__*) ;
+ int delete_links () ;
+ int fprintf (int ,char*,...) ;
+ int get_type_case (scalar_t__) ;
+ int get_type_lang (scalar_t__) ;
+ scalar_t__ is_letter (scalar_t__) ;
+ int put_string_utf8 (scalar_t__*,char*) ;
+ int qsort (scalar_t__*,int,int,int ) ;
+ int stderr ;
+ int strlen (char*) ;
+ scalar_t__* v ;
+ int verbosity ;
+ scalar_t__* words ;
+ int words_len ;
 
 int get_words (char *s) {
   if (verbosity > 2 && binlog_readed) {
@@ -50,7 +50,7 @@ int get_words (char *s) {
   for (i = strlen (s); i > 0 && s[i - 1] != '\t'; i--) ;
 
   bayes_string_to_utf8 ((unsigned char *)(s + i), v);
-  s = NULL;
+  s = ((void*)0);
 
   if (verbosity > 1 && binlog_readed) {
     put_string_utf8 (v, buf_debug);
@@ -73,7 +73,7 @@ int get_words (char *s) {
 
   int cur_mixed_case = 0;
   for (i = 0; v[i] && v[i + 1] && cur_mixed_case < 25; i++) {
-//    if (get_type_case (v[i]) == 0 && get_type_case (v[i + 1]) == 1 && ((i != 0 && is_letter (v[i - 1])) || is_letter (v[i + 2]))) {
+
     if (get_type_case (v[i]) == 0 && get_type_case (v[i + 1]) == 1 && get_type_case (v[i + 2]) == 1) {
       add_kludge (1, cur_mixed_case++);
     }

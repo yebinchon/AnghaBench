@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  double int16_t ;
+
+
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef double int16_t ;
 struct TYPE_14__ {TYPE_1__* priv_data; } ;
 struct TYPE_13__ {int nb_samples; scalar_t__* data; } ;
 struct TYPE_12__ {int* data; int size; } ;
-struct TYPE_11__ {int order; double* samples32; int* ref_coef; int /*<<< orphan*/  lpc; } ;
-typedef  TYPE_1__ CNGContext ;
-typedef  TYPE_2__ AVPacket ;
-typedef  TYPE_3__ AVFrame ;
-typedef  TYPE_4__ AVCodecContext ;
+struct TYPE_11__ {int order; double* samples32; int* ref_coef; int lpc; } ;
+typedef TYPE_1__ CNGContext ;
+typedef TYPE_2__ AVPacket ;
+typedef TYPE_3__ AVFrame ;
+typedef TYPE_4__ AVCodecContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  av_assert1 (int) ; 
- int av_clip_uintp2 (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  av_log (TYPE_4__*,int /*<<< orphan*/ ,char*) ; 
- int ff_alloc_packet2 (TYPE_4__*,TYPE_2__*,int,int) ; 
- int /*<<< orphan*/  ff_lpc_calc_ref_coefs (int /*<<< orphan*/ *,double*,int,int*) ; 
- int /*<<< orphan*/  floor (double) ; 
- int log10 (double) ; 
+
+ int AV_LOG_ERROR ;
+ int av_assert1 (int) ;
+ int av_clip_uintp2 (int ,int) ;
+ int av_log (TYPE_4__*,int ,char*) ;
+ int ff_alloc_packet2 (TYPE_4__*,TYPE_2__*,int,int) ;
+ int ff_lpc_calc_ref_coefs (int *,double*,int,int*) ;
+ int floor (double) ;
+ int log10 (double) ;
 
 __attribute__((used)) static int cng_encode_frame(AVCodecContext *avctx, AVPacket *avpkt,
                             const AVFrame *frame, int *got_packet_ptr)

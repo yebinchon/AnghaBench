@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
 struct TYPE_12__ {TYPE_1__* priv; } ;
 struct TYPE_11__ {int sample_rate; int channels; int min_samples; int max_samples; int partial_buf_size; TYPE_3__* dst; } ;
-struct TYPE_10__ {int fir_len; int delay; int remaining; int rdft_len; int nsamples_max; int cepstrum_len; int analysis_rdft_len; int accuracy; scalar_t__ fixed; void* conv_idx; void* conv_buf; void* kernel_buf; void* kernel_tmp_buf; void* analysis_buf; scalar_t__ multi; void* dump_buf; void* analysis_rdft; scalar_t__ dumpfile; void* analysis_irdft; void* cepstrum_buf; void* cepstrum_irdft; void* cepstrum_rdft; scalar_t__ min_phase; int /*<<< orphan*/  fft_ctx; scalar_t__ fft2; void* irdft; void* rdft; scalar_t__ frame_nsamples_max; scalar_t__ next_pts; } ;
-typedef  TYPE_1__ FIREqualizerContext ;
-typedef  TYPE_2__ AVFilterLink ;
-typedef  TYPE_3__ AVFilterContext ;
+struct TYPE_10__ {int fir_len; int delay; int remaining; int rdft_len; int nsamples_max; int cepstrum_len; int analysis_rdft_len; int accuracy; scalar_t__ fixed; void* conv_idx; void* conv_buf; void* kernel_buf; void* kernel_tmp_buf; void* analysis_buf; scalar_t__ multi; void* dump_buf; void* analysis_rdft; scalar_t__ dumpfile; void* analysis_irdft; void* cepstrum_buf; void* cepstrum_irdft; void* cepstrum_rdft; scalar_t__ min_phase; int fft_ctx; scalar_t__ fft2; void* irdft; void* rdft; scalar_t__ frame_nsamples_max; scalar_t__ next_pts; } ;
+typedef TYPE_1__ FIREqualizerContext ;
+typedef TYPE_2__ AVFilterLink ;
+typedef TYPE_3__ AVFilterContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_LOG_DEBUG ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  DFT_R2C ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  ENOMEM ; 
- int FFMAX (int,int) ; 
- int FFMIN (int,int) ; 
- int /*<<< orphan*/  IDFT_C2R ; 
- int RDFT_BITS_MAX ; 
- int RDFT_BITS_MIN ; 
- int /*<<< orphan*/  SELECT_GAIN (TYPE_1__*) ; 
- int /*<<< orphan*/  SELECT_GAIN_ENTRY (TYPE_1__*) ; 
- void* av_calloc (int,int) ; 
- int /*<<< orphan*/  av_fft_init (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_log (TYPE_3__*,int /*<<< orphan*/ ,char*,...) ; 
- void* av_malloc_array (int,int) ; 
- void* av_rdft_init (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  common_uninit (TYPE_1__*) ; 
- int generate_kernel (TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int AVERROR (int ) ;
+ int AV_LOG_DEBUG ;
+ int AV_LOG_ERROR ;
+ int DFT_R2C ;
+ int EINVAL ;
+ int ENOMEM ;
+ int FFMAX (int,int) ;
+ int FFMIN (int,int) ;
+ int IDFT_C2R ;
+ int RDFT_BITS_MAX ;
+ int RDFT_BITS_MIN ;
+ int SELECT_GAIN (TYPE_1__*) ;
+ int SELECT_GAIN_ENTRY (TYPE_1__*) ;
+ void* av_calloc (int,int) ;
+ int av_fft_init (int,int ) ;
+ int av_log (TYPE_3__*,int ,char*,...) ;
+ void* av_malloc_array (int,int) ;
+ void* av_rdft_init (int,int ) ;
+ int common_uninit (TYPE_1__*) ;
+ int generate_kernel (TYPE_3__*,int ,int ) ;
 
 __attribute__((used)) static int config_input(AVFilterLink *inlink)
 {
@@ -115,8 +115,8 @@ __attribute__((used)) static int config_input(AVFilterLink *inlink)
     s->analysis_buf = av_malloc_array(s->analysis_rdft_len, sizeof(*s->analysis_buf));
     s->kernel_tmp_buf = av_malloc_array(s->rdft_len * (s->multi ? inlink->channels : 1), sizeof(*s->kernel_tmp_buf));
     s->kernel_buf = av_malloc_array(s->rdft_len * (s->multi ? inlink->channels : 1), sizeof(*s->kernel_buf));
-    s->conv_buf   = av_calloc(2 * s->rdft_len * inlink->channels, sizeof(*s->conv_buf));
-    s->conv_idx   = av_calloc(inlink->channels, sizeof(*s->conv_idx));
+    s->conv_buf = av_calloc(2 * s->rdft_len * inlink->channels, sizeof(*s->conv_buf));
+    s->conv_idx = av_calloc(inlink->channels, sizeof(*s->conv_idx));
     if (!s->analysis_buf || !s->kernel_tmp_buf || !s->kernel_buf || !s->conv_buf || !s->conv_idx)
         return AVERROR(ENOMEM);
 

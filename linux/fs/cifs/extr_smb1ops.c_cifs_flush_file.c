@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct cifs_tcon {int dummy; } ;
-struct cifs_fid {int /*<<< orphan*/  netfid; } ;
+struct cifs_fid {int netfid; } ;
 
-/* Variables and functions */
- int CIFSSMBFlush (unsigned int const,struct cifs_tcon*,int /*<<< orphan*/ ) ; 
+
+ int CIFSSMBFlush (unsigned int const,struct cifs_tcon*,int ) ;
 
 __attribute__((used)) static int
 cifs_flush_file(const unsigned int xid, struct cifs_tcon *tcon,
-		struct cifs_fid *fid)
+  struct cifs_fid *fid)
 {
-	return CIFSSMBFlush(xid, tcon, fid->netfid);
+ return CIFSSMBFlush(xid, tcon, fid->netfid);
 }

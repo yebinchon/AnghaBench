@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-union in_addr_union {int /*<<< orphan*/  in6; } ;
-typedef  scalar_t__ uint8_t ;
-struct TYPE_2__ {scalar_t__ sixrd_prefixlen; int /*<<< orphan*/  sixrd_prefix; } ;
-typedef  TYPE_1__ Tunnel ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_INET6 ; 
- int /*<<< orphan*/  LOG_ERR ; 
- int /*<<< orphan*/  assert (char const*) ; 
- int in_addr_prefix_from_string (char const*,int /*<<< orphan*/ ,union in_addr_union*,scalar_t__*) ; 
- int /*<<< orphan*/  log_syntax (char const*,int /*<<< orphan*/ ,char const*,unsigned int,int,char*,char const*) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+union in_addr_union {int in6; } ;
+typedef scalar_t__ uint8_t ;
+struct TYPE_2__ {scalar_t__ sixrd_prefixlen; int sixrd_prefix; } ;
+typedef TYPE_1__ Tunnel ;
+
+
+ int AF_INET6 ;
+ int LOG_ERR ;
+ int assert (char const*) ;
+ int in_addr_prefix_from_string (char const*,int ,union in_addr_union*,scalar_t__*) ;
+ int log_syntax (char const*,int ,char const*,unsigned int,int,char*,char const*) ;
 
 int config_parse_6rd_prefix(const char* unit,
                             const char *filename,

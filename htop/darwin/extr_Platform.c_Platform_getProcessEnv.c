@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int pid_t ;
-typedef  int /*<<< orphan*/  argmax ;
 
-/* Variables and functions */
- int CTL_KERN ; 
- int KERN_ARGMAX ; 
- int KERN_PROCARGS2 ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  memcpy (char*,char*,size_t) ; 
- char* strchr (char*,int /*<<< orphan*/ ) ; 
- char* strrchr (char*,int /*<<< orphan*/ ) ; 
- scalar_t__ sysctl (int*,int,...) ; 
- char* xMalloc (size_t) ; 
+
+
+
+typedef int pid_t ;
+typedef int argmax ;
+
+
+ int CTL_KERN ;
+ int KERN_ARGMAX ;
+ int KERN_PROCARGS2 ;
+ int free (char*) ;
+ int memcpy (char*,char*,size_t) ;
+ char* strchr (char*,int ) ;
+ char* strrchr (char*,int ) ;
+ scalar_t__ sysctl (int*,int,...) ;
+ char* xMalloc (size_t) ;
 
 char* Platform_getProcessEnv(pid_t pid) {
-   char* env = NULL;
+   char* env = ((void*)0);
 
    int argmax;
    size_t bufsz = sizeof(argmax);
@@ -46,18 +46,18 @@ char* Platform_getProcessEnv(pid_t pid) {
                int argc = *(int*)p;
                p += sizeof(int);
 
-               // skip exe
+
                p = strchr(p, 0)+1;
 
-               // skip padding
+
                while(!*p && p < endp)
                   ++p;
 
-               // skip argv
+
                for (; argc-- && p < endp; p = strrchr(p, 0)+1)
                   ;
 
-               // skip padding
+
                while(!*p && p < endp)
                   ++p;
 

@@ -1,60 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_ra_session_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_diff_tree_processor_t ;
-typedef  int /*<<< orphan*/  svn_depth_t ;
-struct TYPE_11__ {struct edit_baton* fetch_baton; int /*<<< orphan*/  fetch_base_func; int /*<<< orphan*/  fetch_props_func; int /*<<< orphan*/  fetch_kind_func; } ;
-typedef  TYPE_1__ svn_delta_shim_callbacks_t ;
-struct TYPE_12__ {int /*<<< orphan*/  absent_file; int /*<<< orphan*/  absent_directory; int /*<<< orphan*/  close_edit; int /*<<< orphan*/  change_dir_prop; int /*<<< orphan*/  change_file_prop; int /*<<< orphan*/  close_directory; int /*<<< orphan*/  close_file; int /*<<< orphan*/  apply_textdelta; int /*<<< orphan*/  open_file; int /*<<< orphan*/  add_file; int /*<<< orphan*/  open_directory; int /*<<< orphan*/  add_directory; int /*<<< orphan*/  delete_entry; int /*<<< orphan*/  open_root; int /*<<< orphan*/  set_target_revision; } ;
-typedef  TYPE_2__ svn_delta_editor_t ;
-typedef  int /*<<< orphan*/  svn_cancel_func_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-struct edit_baton {int /*<<< orphan*/ * pool; void* cancel_baton; int /*<<< orphan*/  cancel_func; int /*<<< orphan*/  text_deltas; int /*<<< orphan*/  empty_hash; int /*<<< orphan*/ * empty_file; int /*<<< orphan*/  target_revision; int /*<<< orphan*/  revision; int /*<<< orphan*/ * ra_session; int /*<<< orphan*/  const* processor; int /*<<< orphan*/  depth; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_INVALID_REVNUM ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  absent_directory ; 
- int /*<<< orphan*/  absent_file ; 
- int /*<<< orphan*/  add_directory ; 
- int /*<<< orphan*/  add_file ; 
- int /*<<< orphan*/  apply_textdelta ; 
- int /*<<< orphan*/  apr_hash_make (int /*<<< orphan*/ *) ; 
- struct edit_baton* apr_pcalloc (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  change_dir_prop ; 
- int /*<<< orphan*/  change_file_prop ; 
- int /*<<< orphan*/  close_directory ; 
- int /*<<< orphan*/  close_edit ; 
- int /*<<< orphan*/  close_file ; 
- int /*<<< orphan*/  delete_entry ; 
- int /*<<< orphan*/  fetch_base_func ; 
- int /*<<< orphan*/  fetch_kind_func ; 
- int /*<<< orphan*/  fetch_props_func ; 
- int /*<<< orphan*/  open_directory ; 
- int /*<<< orphan*/  open_file ; 
- int /*<<< orphan*/  open_root ; 
- int /*<<< orphan*/  set_target_revision ; 
- TYPE_2__* svn_delta_default_editor (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_delta_get_cancellation_editor (int /*<<< orphan*/ ,void*,TYPE_2__*,struct edit_baton*,TYPE_2__ const**,void**,int /*<<< orphan*/ *) ; 
- TYPE_1__* svn_delta_shim_callbacks_default (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_editor__insert_shims (TYPE_2__ const**,void**,TYPE_2__ const*,void*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_pool_create (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef int svn_revnum_t ;
+typedef int svn_ra_session_t ;
+typedef int svn_error_t ;
+typedef int svn_diff_tree_processor_t ;
+typedef int svn_depth_t ;
+struct TYPE_11__ {struct edit_baton* fetch_baton; int fetch_base_func; int fetch_props_func; int fetch_kind_func; } ;
+typedef TYPE_1__ svn_delta_shim_callbacks_t ;
+struct TYPE_12__ {int absent_file; int absent_directory; int close_edit; int change_dir_prop; int change_file_prop; int close_directory; int close_file; int apply_textdelta; int open_file; int add_file; int open_directory; int add_directory; int delete_entry; int open_root; int set_target_revision; } ;
+typedef TYPE_2__ svn_delta_editor_t ;
+typedef int svn_cancel_func_t ;
+typedef int svn_boolean_t ;
+struct edit_baton {int * pool; void* cancel_baton; int cancel_func; int text_deltas; int empty_hash; int * empty_file; int target_revision; int revision; int * ra_session; int const* processor; int depth; } ;
+typedef int apr_pool_t ;
+
+
+ int SVN_ERR (int ) ;
+ int SVN_INVALID_REVNUM ;
+ int * SVN_NO_ERROR ;
+ int absent_directory ;
+ int absent_file ;
+ int add_directory ;
+ int add_file ;
+ int apply_textdelta ;
+ int apr_hash_make (int *) ;
+ struct edit_baton* apr_pcalloc (int *,int) ;
+ int change_dir_prop ;
+ int change_file_prop ;
+ int close_directory ;
+ int close_edit ;
+ int close_file ;
+ int delete_entry ;
+ int fetch_base_func ;
+ int fetch_kind_func ;
+ int fetch_props_func ;
+ int open_directory ;
+ int open_file ;
+ int open_root ;
+ int set_target_revision ;
+ TYPE_2__* svn_delta_default_editor (int *) ;
+ int svn_delta_get_cancellation_editor (int ,void*,TYPE_2__*,struct edit_baton*,TYPE_2__ const**,void**,int *) ;
+ TYPE_1__* svn_delta_shim_callbacks_default (int *) ;
+ int svn_editor__insert_shims (TYPE_2__ const**,void**,TYPE_2__ const*,void*,int *,int *,TYPE_1__*,int *,int *) ;
+ int * svn_pool_create (int *) ;
 
 svn_error_t *
 svn_client__get_diff_editor2(const svn_delta_editor_t **editor,
@@ -83,7 +83,7 @@ svn_client__get_diff_editor2(const svn_delta_editor_t **editor,
 
   eb->revision = revision;
   eb->target_revision = SVN_INVALID_REVNUM;
-  eb->empty_file = NULL;
+  eb->empty_file = ((void*)0);
   eb->empty_hash = apr_hash_make(eb->pool);
   eb->text_deltas = text_deltas;
   eb->cancel_func = cancel_func;
@@ -116,7 +116,7 @@ svn_client__get_diff_editor2(const svn_delta_editor_t **editor,
   shim_callbacks->fetch_baton = eb;
 
   SVN_ERR(svn_editor__insert_shims(editor, edit_baton, *editor, *edit_baton,
-                                   NULL, NULL, shim_callbacks,
+                                   ((void*)0), ((void*)0), shim_callbacks,
                                    result_pool, result_pool));
 
   return SVN_NO_ERROR;

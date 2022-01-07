@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct in_addr {int s_addr; } ;
-typedef  int /*<<< orphan*/  sd_netlink_message ;
-typedef  int /*<<< orphan*/  sd_netlink ;
+typedef int sd_netlink_message ;
+typedef int sd_netlink ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_INET ; 
- int EXIT_SUCCESS ; 
- int /*<<< orphan*/  IFLA_IFNAME ; 
- int /*<<< orphan*/  IFLA_INFO_DATA ; 
- int /*<<< orphan*/  IFLA_IPTUN_LOCAL ; 
- int /*<<< orphan*/  IFLA_IPTUN_PROTO ; 
- int /*<<< orphan*/  IFLA_IPTUN_REMOTE ; 
- int /*<<< orphan*/  IFLA_LINKINFO ; 
- int /*<<< orphan*/  IFLA_MTU ; 
- int /*<<< orphan*/  IPPROTO_IPIP ; 
- int /*<<< orphan*/  RTM_NEWLINK ; 
- int /*<<< orphan*/  assert_se (int) ; 
- scalar_t__ getuid () ; 
- int /*<<< orphan*/  inet_pton (int /*<<< orphan*/ ,char*,int*) ; 
- int load_module (char*) ; 
- int log_tests_skipped (char*) ; 
- int log_tests_skipped_errno (int,char*) ; 
- int sd_netlink_call (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- scalar_t__ sd_netlink_message_append_string (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- scalar_t__ sd_netlink_message_append_u32 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- scalar_t__ sd_netlink_message_append_u8 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ sd_netlink_message_close_container (int /*<<< orphan*/ *) ; 
- scalar_t__ sd_netlink_message_open_container (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ sd_netlink_message_open_container_union (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/ * sd_netlink_message_unref (int /*<<< orphan*/ *) ; 
- scalar_t__ sd_rtnl_message_new_link (int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int AF_INET ;
+ int EXIT_SUCCESS ;
+ int IFLA_IFNAME ;
+ int IFLA_INFO_DATA ;
+ int IFLA_IPTUN_LOCAL ;
+ int IFLA_IPTUN_PROTO ;
+ int IFLA_IPTUN_REMOTE ;
+ int IFLA_LINKINFO ;
+ int IFLA_MTU ;
+ int IPPROTO_IPIP ;
+ int RTM_NEWLINK ;
+ int assert_se (int) ;
+ scalar_t__ getuid () ;
+ int inet_pton (int ,char*,int*) ;
+ int load_module (char*) ;
+ int log_tests_skipped (char*) ;
+ int log_tests_skipped_errno (int,char*) ;
+ int sd_netlink_call (int *,int *,int,int ) ;
+ scalar_t__ sd_netlink_message_append_string (int *,int ,char*) ;
+ scalar_t__ sd_netlink_message_append_u32 (int *,int ,int) ;
+ scalar_t__ sd_netlink_message_append_u8 (int *,int ,int ) ;
+ scalar_t__ sd_netlink_message_close_container (int *) ;
+ scalar_t__ sd_netlink_message_open_container (int *,int ) ;
+ scalar_t__ sd_netlink_message_open_container_union (int *,int ,char*) ;
+ int * sd_netlink_message_unref (int *) ;
+ scalar_t__ sd_rtnl_message_new_link (int *,int **,int ,int ) ;
 
 __attribute__((used)) static int test_tunnel_configure(sd_netlink *rtnl) {
         int r;
         sd_netlink_message *m, *n;
         struct in_addr local, remote;
 
-        /* skip test if module cannot be loaded */
+
         r = load_module("ipip");
         if (r < 0)
                 return log_tests_skipped_errno(r, "failed to load module 'ipip'");
@@ -59,7 +59,7 @@ __attribute__((used)) static int test_tunnel_configure(sd_netlink *rtnl) {
         if (getuid() != 0)
                 return log_tests_skipped("not root");
 
-        /* IPIP tunnel */
+
         assert_se(sd_rtnl_message_new_link(rtnl, &m, RTM_NEWLINK, 0) >= 0);
         assert_se(m);
 
@@ -81,9 +81,9 @@ __attribute__((used)) static int test_tunnel_configure(sd_netlink *rtnl) {
 
         assert_se(sd_netlink_call(rtnl, m, -1, 0) == 1);
 
-        assert_se((m = sd_netlink_message_unref(m)) == NULL);
+        assert_se((m = sd_netlink_message_unref(m)) == ((void*)0));
 
-        /* sit */
+
         assert_se(sd_rtnl_message_new_link(rtnl, &n, RTM_NEWLINK, 0) >= 0);
         assert_se(n);
 
@@ -107,7 +107,7 @@ __attribute__((used)) static int test_tunnel_configure(sd_netlink *rtnl) {
 
         assert_se(sd_netlink_call(rtnl, n, -1, 0) == 1);
 
-        assert_se((n = sd_netlink_message_unref(n)) == NULL);
+        assert_se((n = sd_netlink_message_unref(n)) == ((void*)0));
 
         return EXIT_SUCCESS;
 }

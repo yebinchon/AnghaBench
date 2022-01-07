@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * settings; } ;
-typedef  TYPE_1__ signal_user_data_t ;
-typedef  int gint ;
-typedef  int /*<<< orphan*/  gdouble ;
-typedef  int gboolean ;
-typedef  int /*<<< orphan*/  GtkWidget ;
-typedef  int /*<<< orphan*/  GtkListBoxRow ;
-typedef  int /*<<< orphan*/  GhbValue ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GTK_COMBO_BOX (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GTK_WIDGET (int /*<<< orphan*/ *) ; 
- int HB_ACODEC_AUTO_PASS ; 
- int HB_ACODEC_PASS_FLAG ; 
- scalar_t__ HB_INVALID_AUDIO_QUALITY ; 
- int /*<<< orphan*/  audio_def_settings_quality_set_sensitive (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  audio_quality_update_limits (int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * audio_settings_get_row (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * find_widget (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/ * ghb_array_get (int /*<<< orphan*/ *,int) ; 
- int ghb_array_len (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ghb_audio_bitrate_opts_filter (int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  ghb_audio_samplerate_opts_filter (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ghb_dict_get_double (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/ * ghb_dict_get_value (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  ghb_mix_opts_filter (int /*<<< orphan*/ ,int) ; 
- int ghb_select_fallback (int /*<<< orphan*/ *,int) ; 
- int ghb_settings_audio_encoder_codec (int /*<<< orphan*/ *,char*) ; 
- int ghb_settings_audio_samplerate_rate (int /*<<< orphan*/ *,char*) ; 
- int ghb_settings_mixdown_mix (int /*<<< orphan*/ *,char*) ; 
- int gtk_list_box_row_get_index (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  hb_audio_bitrate_get_limits (int,int,int,int*,int*) ; 
- scalar_t__ hb_audio_quality_get_default (int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * settings; } ;
+typedef TYPE_1__ signal_user_data_t ;
+typedef int gint ;
+typedef int gdouble ;
+typedef int gboolean ;
+typedef int GtkWidget ;
+typedef int GtkListBoxRow ;
+typedef int GhbValue ;
+
+
+ int GTK_COMBO_BOX (int *) ;
+ int GTK_WIDGET (int *) ;
+ int HB_ACODEC_AUTO_PASS ;
+ int HB_ACODEC_PASS_FLAG ;
+ scalar_t__ HB_INVALID_AUDIO_QUALITY ;
+ int audio_def_settings_quality_set_sensitive (int ,int) ;
+ int audio_quality_update_limits (int *,int,int,int ) ;
+ int * audio_settings_get_row (int *) ;
+ int * find_widget (int ,char*) ;
+ int * ghb_array_get (int *,int) ;
+ int ghb_array_len (int *) ;
+ int ghb_audio_bitrate_opts_filter (int ,int,int) ;
+ int ghb_audio_samplerate_opts_filter (int ,int) ;
+ int ghb_dict_get_double (int *,char*) ;
+ int * ghb_dict_get_value (int *,char*) ;
+ int ghb_mix_opts_filter (int ,int) ;
+ int ghb_select_fallback (int *,int) ;
+ int ghb_settings_audio_encoder_codec (int *,char*) ;
+ int ghb_settings_audio_samplerate_rate (int *,char*) ;
+ int ghb_settings_mixdown_mix (int *,char*) ;
+ int gtk_list_box_row_get_index (int *) ;
+ int hb_audio_bitrate_get_limits (int,int,int,int*,int*) ;
+ scalar_t__ hb_audio_quality_get_default (int) ;
 
 void audio_def_set_limits(signal_user_data_t *ud, GtkWidget *widget, gboolean set_default)
 {
@@ -62,9 +62,9 @@ void audio_def_set_limits(signal_user_data_t *ud, GtkWidget *widget, gboolean se
                                                     "AudioEncoderFallback");
     gdouble quality = ghb_dict_get_double(adict, "AudioTrackQuality");
 
-    // Allow quality settings if the current encoder supports quality
-    // or if the encoder is auto-passthru and the fallback encoder
-    // supports quality.
+
+
+
     gboolean sensitive =
         hb_audio_quality_get_default(codec) != HB_INVALID_AUDIO_QUALITY ||
         (codec == HB_ACODEC_AUTO_PASS &&

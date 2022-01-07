@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  value_set_t ;
-typedef  int /*<<< orphan*/  tree ;
-typedef  int /*<<< orphan*/  basic_block ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ANTIC_SAFE_LOADS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ARRAY_REF ; 
- int /*<<< orphan*/  CALL_EXPR ; 
- int /*<<< orphan*/  COMPONENT_REF ; 
- int /*<<< orphan*/  INDIRECT_REF ; 
- int /*<<< orphan*/  SSA_NAME ; 
- int /*<<< orphan*/  TREE_CHAIN (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TREE_CODE (int /*<<< orphan*/ ) ; 
- int TREE_CODE_CLASS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TREE_OPERAND (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  TREE_VALUE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  VALUE_HANDLE ; 
- int /*<<< orphan*/  VALUE_HANDLE_VUSES (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gcc_assert (int) ; 
- int /*<<< orphan*/  gcc_unreachable () ; 
- int /*<<< orphan*/  get_value_handle (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  is_gimple_min_invariant (int /*<<< orphan*/ ) ; 
- int set_contains_value (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
-#define  tcc_binary 134 
-#define  tcc_comparison 133 
-#define  tcc_declaration 132 
-#define  tcc_exceptional 131 
-#define  tcc_expression 130 
-#define  tcc_reference 129 
-#define  tcc_unary 128 
- int /*<<< orphan*/  vuses_dies_in_block_x (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int value_set_t ;
+typedef int tree ;
+typedef int basic_block ;
+
+
+ int ANTIC_SAFE_LOADS (int ) ;
+ int ARRAY_REF ;
+ int CALL_EXPR ;
+ int COMPONENT_REF ;
+ int INDIRECT_REF ;
+ int SSA_NAME ;
+ int TREE_CHAIN (int ) ;
+ int TREE_CODE (int ) ;
+ int TREE_CODE_CLASS (int ) ;
+ int TREE_OPERAND (int ,int) ;
+ int TREE_VALUE (int ) ;
+ int VALUE_HANDLE ;
+ int VALUE_HANDLE_VUSES (int ) ;
+ int gcc_assert (int) ;
+ int gcc_unreachable () ;
+ int get_value_handle (int ) ;
+ int is_gimple_min_invariant (int ) ;
+ int set_contains_value (int ,int ) ;
+
+
+
+
+
+
+
+ int vuses_dies_in_block_x (int ,int ) ;
 
 __attribute__((used)) static bool
 valid_in_set (value_set_t set, tree expr, basic_block block)
@@ -48,92 +48,92 @@ valid_in_set (value_set_t set, tree expr, basic_block block)
  tree vh = get_value_handle (expr);
  switch (TREE_CODE_CLASS (TREE_CODE (expr)))
     {
-    case tcc_binary:
-    case tcc_comparison:
+    case 134:
+    case 133:
       {
-	tree op1 = TREE_OPERAND (expr, 0);
-	tree op2 = TREE_OPERAND (expr, 1);
-	return set_contains_value (set, op1) && set_contains_value (set, op2);
+ tree op1 = TREE_OPERAND (expr, 0);
+ tree op2 = TREE_OPERAND (expr, 1);
+ return set_contains_value (set, op1) && set_contains_value (set, op2);
       }
 
-    case tcc_unary:
+    case 128:
       {
-	tree op1 = TREE_OPERAND (expr, 0);
-	return set_contains_value (set, op1);
+ tree op1 = TREE_OPERAND (expr, 0);
+ return set_contains_value (set, op1);
       }
 
-    case tcc_expression:
+    case 130:
       {
-	if (TREE_CODE (expr) == CALL_EXPR)
-	  {
-	    tree op0 = TREE_OPERAND (expr, 0);
-	    tree arglist = TREE_OPERAND (expr, 1);
-	    tree op2 = TREE_OPERAND (expr, 2);
+ if (TREE_CODE (expr) == CALL_EXPR)
+   {
+     tree op0 = TREE_OPERAND (expr, 0);
+     tree arglist = TREE_OPERAND (expr, 1);
+     tree op2 = TREE_OPERAND (expr, 2);
 
-	    /* Check the non-list operands first.  */
-	    if (!set_contains_value (set, op0)
-		|| (op2 && !set_contains_value (set, op2)))
-	      return false;
 
-	    /* Now check the operands.  */
-	    for (; arglist; arglist = TREE_CHAIN (arglist))
-	      {
-		if (!set_contains_value (set, TREE_VALUE (arglist)))
-		  return false;
-	      }
-	    return !vuses_dies_in_block_x (VALUE_HANDLE_VUSES (vh), block);
-	  }
-	return false;
+     if (!set_contains_value (set, op0)
+  || (op2 && !set_contains_value (set, op2)))
+       return 0;
+
+
+     for (; arglist; arglist = TREE_CHAIN (arglist))
+       {
+  if (!set_contains_value (set, TREE_VALUE (arglist)))
+    return 0;
+       }
+     return !vuses_dies_in_block_x (VALUE_HANDLE_VUSES (vh), block);
+   }
+ return 0;
       }
 
-    case tcc_reference:
+    case 129:
       {
-	if (TREE_CODE (expr) == INDIRECT_REF
-	    || TREE_CODE (expr) == COMPONENT_REF
+ if (TREE_CODE (expr) == INDIRECT_REF
+     || TREE_CODE (expr) == COMPONENT_REF
             || TREE_CODE (expr) == ARRAY_REF)
-	  {
-	    tree op0 = TREE_OPERAND (expr, 0);
-	    gcc_assert (is_gimple_min_invariant (op0)
-			|| TREE_CODE (op0) == VALUE_HANDLE);
-	    if (!set_contains_value (set, op0))
-	      return false;
-	    if (TREE_CODE (expr) == ARRAY_REF)
-	      {
-		tree op1 = TREE_OPERAND (expr, 1);
-		tree op2 = TREE_OPERAND (expr, 2);
-		tree op3 = TREE_OPERAND (expr, 3);
-		gcc_assert (is_gimple_min_invariant (op1)
-		            || TREE_CODE (op1) == VALUE_HANDLE);
-		if (!set_contains_value (set, op1))
-		  return false;
-		gcc_assert (!op2 || is_gimple_min_invariant (op2)
-		            || TREE_CODE (op2) == VALUE_HANDLE);
-		if (op2
-		    && !set_contains_value (set, op2))
-		  return false;
-		gcc_assert (!op3 || is_gimple_min_invariant (op3)
-		            || TREE_CODE (op3) == VALUE_HANDLE);
-		if (op3
-		    && !set_contains_value (set, op3))
-		  return false;
-	    }
-	  return set_contains_value (ANTIC_SAFE_LOADS (block),
-				     vh)
-	    || !vuses_dies_in_block_x (VALUE_HANDLE_VUSES (vh),
-				       block);
-	  }
+   {
+     tree op0 = TREE_OPERAND (expr, 0);
+     gcc_assert (is_gimple_min_invariant (op0)
+   || TREE_CODE (op0) == VALUE_HANDLE);
+     if (!set_contains_value (set, op0))
+       return 0;
+     if (TREE_CODE (expr) == ARRAY_REF)
+       {
+  tree op1 = TREE_OPERAND (expr, 1);
+  tree op2 = TREE_OPERAND (expr, 2);
+  tree op3 = TREE_OPERAND (expr, 3);
+  gcc_assert (is_gimple_min_invariant (op1)
+              || TREE_CODE (op1) == VALUE_HANDLE);
+  if (!set_contains_value (set, op1))
+    return 0;
+  gcc_assert (!op2 || is_gimple_min_invariant (op2)
+              || TREE_CODE (op2) == VALUE_HANDLE);
+  if (op2
+      && !set_contains_value (set, op2))
+    return 0;
+  gcc_assert (!op3 || is_gimple_min_invariant (op3)
+              || TREE_CODE (op3) == VALUE_HANDLE);
+  if (op3
+      && !set_contains_value (set, op3))
+    return 0;
+     }
+   return set_contains_value (ANTIC_SAFE_LOADS (block),
+         vh)
+     || !vuses_dies_in_block_x (VALUE_HANDLE_VUSES (vh),
+           block);
+   }
       }
-      return false;
+      return 0;
 
-    case tcc_exceptional:
+    case 131:
       gcc_assert (TREE_CODE (expr) == SSA_NAME);
-      return true;
+      return 1;
 
-    case tcc_declaration:
+    case 132:
       return !vuses_dies_in_block_x (VALUE_HANDLE_VUSES (vh), block);
 
     default:
-      /* No other cases should be encountered.  */
+
       gcc_unreachable ();
    }
 }

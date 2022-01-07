@@ -1,86 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char* LPCSTR ;
-typedef  int HRESULT ;
 
-/* Variables and functions */
-#define  DPERR_ABORTED 192 
-#define  DPERR_ACCESSDENIED 191 
-#define  DPERR_ACTIVEPLAYERS 190 
-#define  DPERR_ALREADYINITIALIZED 189 
-#define  DPERR_ALREADYREGISTERED 188 
-#define  DPERR_APPNOTSTARTED 187 
-#define  DPERR_AUTHENTICATIONFAILED 186 
-#define  DPERR_BUFFERTOOLARGE 185 
-#define  DPERR_BUFFERTOOSMALL 184 
-#define  DPERR_BUSY 183 
-#define  DPERR_CANCELFAILED 182 
-#define  DPERR_CANCELLED 181 
-#define  DPERR_CANNOTCREATESERVER 180 
-#define  DPERR_CANTADDPLAYER 179 
-#define  DPERR_CANTCREATEGROUP 178 
-#define  DPERR_CANTCREATEPLAYER 177 
-#define  DPERR_CANTCREATEPROCESS 176 
-#define  DPERR_CANTCREATESESSION 175 
-#define  DPERR_CANTLOADCAPI 174 
-#define  DPERR_CANTLOADSECURITYPACKAGE 173 
-#define  DPERR_CANTLOADSSPI 172 
-#define  DPERR_CAPSNOTAVAILABLEYET 171 
-#define  DPERR_CONNECTING 170 
-#define  DPERR_CONNECTIONLOST 169 
-#define  DPERR_ENCRYPTIONFAILED 168 
-#define  DPERR_ENCRYPTIONNOTSUPPORTED 167 
-#define  DPERR_EXCEPTION 166 
-#define  DPERR_GENERIC 165 
-#define  DPERR_INVALIDFLAGS 164 
-#define  DPERR_INVALIDGROUP 163 
-#define  DPERR_INVALIDINTERFACE 162 
-#define  DPERR_INVALIDOBJECT 161 
-#define  DPERR_INVALIDPARAMS 160 
-#define  DPERR_INVALIDPASSWORD 159 
-#define  DPERR_INVALIDPLAYER 158 
-#define  DPERR_INVALIDPRIORITY 157 
-#define  DPERR_LOGONDENIED 156 
-#define  DPERR_NOCAPS 155 
-#define  DPERR_NOCONNECTION 154 
-#define  DPERR_NOINTERFACE 153 
-#define  DPERR_NOMESSAGES 152 
-#define  DPERR_NONAMESERVERFOUND 151 
-#define  DPERR_NONEWPLAYERS 150 
-#define  DPERR_NOPLAYERS 149 
-#define  DPERR_NOSERVICEPROVIDER 148 
-#define  DPERR_NOSESSIONS 147 
-#define  DPERR_NOTHANDLED 146 
-#define  DPERR_NOTLOBBIED 145 
-#define  DPERR_NOTLOGGEDIN 144 
-#define  DPERR_NOTREGISTERED 143 
-#define  DPERR_OUTOFMEMORY 142 
-#define  DPERR_PENDING 141 
-#define  DPERR_PLAYERLOST 140 
-#define  DPERR_SENDTOOBIG 139 
-#define  DPERR_SERVICEPROVIDERLOADED 138 
-#define  DPERR_SESSIONLOST 137 
-#define  DPERR_SIGNFAILED 136 
-#define  DPERR_TIMEOUT 135 
-#define  DPERR_UNAVAILABLE 134 
-#define  DPERR_UNINITIALIZED 133 
-#define  DPERR_UNKNOWNAPPLICATION 132 
-#define  DPERR_UNKNOWNMESSAGE 131 
-#define  DPERR_UNSUPPORTED 130 
-#define  DPERR_USERCANCEL 129 
-#define  DP_OK 128 
- int /*<<< orphan*/  WARN (char*,int) ; 
- int /*<<< orphan*/  wsprintfA (char*,char*,int) ; 
+
+
+
+typedef char* LPCSTR ;
+typedef int HRESULT ;
+ int WARN (char*,int) ;
+ int wsprintfA (char*,char*,int) ;
 
 LPCSTR DPLAYX_HresultToString(HRESULT hr)
 {
@@ -88,139 +21,139 @@ LPCSTR DPLAYX_HresultToString(HRESULT hr)
 
   switch (hr)
   {
-    case DP_OK:
+    case 128:
       return "DP_OK";
-    case DPERR_ALREADYINITIALIZED:
+    case 189:
       return "DPERR_ALREADYINITIALIZED";
-    case DPERR_ACCESSDENIED:
+    case 191:
       return "DPERR_ACCESSDENIED";
-    case DPERR_ACTIVEPLAYERS:
+    case 190:
       return "DPERR_ACTIVEPLAYERS";
-    case DPERR_BUFFERTOOSMALL:
+    case 184:
       return "DPERR_BUFFERTOOSMALL";
-    case DPERR_CANTADDPLAYER:
+    case 179:
       return "DPERR_CANTADDPLAYER";
-    case DPERR_CANTCREATEGROUP:
+    case 178:
       return "DPERR_CANTCREATEGROUP";
-    case DPERR_CANTCREATEPLAYER:
+    case 177:
       return "DPERR_CANTCREATEPLAYER";
-    case DPERR_CANTCREATESESSION:
+    case 175:
       return "DPERR_CANTCREATESESSION";
-    case DPERR_CAPSNOTAVAILABLEYET:
+    case 171:
       return "DPERR_CAPSNOTAVAILABLEYET";
-    case DPERR_EXCEPTION:
+    case 166:
       return "DPERR_EXCEPTION";
-    case DPERR_GENERIC:
+    case 165:
       return "DPERR_GENERIC";
-    case DPERR_INVALIDFLAGS:
+    case 164:
       return "DPERR_INVALIDFLAGS";
-    case DPERR_INVALIDOBJECT:
+    case 161:
       return "DPERR_INVALIDOBJECT";
-    case DPERR_INVALIDPARAMS:
+    case 160:
       return "DPERR_INVALIDPARAMS";
-    case DPERR_INVALIDPLAYER:
+    case 158:
       return "DPERR_INVALIDPLAYER";
-    case DPERR_INVALIDGROUP:
+    case 163:
       return "DPERR_INVALIDGROUP";
-    case DPERR_NOCAPS:
+    case 155:
       return "DPERR_NOCAPS";
-    case DPERR_NOCONNECTION:
+    case 154:
       return "DPERR_NOCONNECTION";
-    case DPERR_OUTOFMEMORY:
+    case 142:
       return "DPERR_OUTOFMEMORY";
-    case DPERR_NOMESSAGES:
+    case 152:
       return "DPERR_NOMESSAGES";
-    case DPERR_NONAMESERVERFOUND:
+    case 151:
       return "DPERR_NONAMESERVERFOUND";
-    case DPERR_NOPLAYERS:
+    case 149:
       return "DPERR_NOPLAYERS";
-    case DPERR_NOSESSIONS:
+    case 147:
       return "DPERR_NOSESSIONS";
-    case DPERR_PENDING:
+    case 141:
       return "DPERR_PENDING";
-    case DPERR_SENDTOOBIG:
+    case 139:
       return "DPERR_SENDTOOBIG";
-    case DPERR_TIMEOUT:
+    case 135:
       return "DPERR_TIMEOUT";
-    case DPERR_UNAVAILABLE:
+    case 134:
       return "DPERR_UNAVAILABLE";
-    case DPERR_UNSUPPORTED:
+    case 130:
       return "DPERR_UNSUPPORTED";
-    case DPERR_BUSY:
+    case 183:
       return "DPERR_BUSY";
-    case DPERR_USERCANCEL:
+    case 129:
       return "DPERR_USERCANCEL";
-    case DPERR_NOINTERFACE:
+    case 153:
       return "DPERR_NOINTERFACE";
-    case DPERR_CANNOTCREATESERVER:
+    case 180:
       return "DPERR_CANNOTCREATESERVER";
-    case DPERR_PLAYERLOST:
+    case 140:
       return "DPERR_PLAYERLOST";
-    case DPERR_SESSIONLOST:
+    case 137:
       return "DPERR_SESSIONLOST";
-    case DPERR_UNINITIALIZED:
+    case 133:
       return "DPERR_UNINITIALIZED";
-    case DPERR_NONEWPLAYERS:
+    case 150:
       return "DPERR_NONEWPLAYERS";
-    case DPERR_INVALIDPASSWORD:
+    case 159:
       return "DPERR_INVALIDPASSWORD";
-    case DPERR_CONNECTING:
+    case 170:
       return "DPERR_CONNECTING";
-    case DPERR_CONNECTIONLOST:
+    case 169:
       return "DPERR_CONNECTIONLOST";
-    case DPERR_UNKNOWNMESSAGE:
+    case 131:
       return "DPERR_UNKNOWNMESSAGE";
-    case DPERR_CANCELFAILED:
+    case 182:
       return "DPERR_CANCELFAILED";
-    case DPERR_INVALIDPRIORITY:
+    case 157:
       return "DPERR_INVALIDPRIORITY";
-    case DPERR_NOTHANDLED:
+    case 146:
       return "DPERR_NOTHANDLED";
-    case DPERR_CANCELLED:
+    case 181:
       return "DPERR_CANCELLED";
-    case DPERR_ABORTED:
+    case 192:
       return "DPERR_ABORTED";
-    case DPERR_BUFFERTOOLARGE:
+    case 185:
       return "DPERR_BUFFERTOOLARGE";
-    case DPERR_CANTCREATEPROCESS:
+    case 176:
       return "DPERR_CANTCREATEPROCESS";
-    case DPERR_APPNOTSTARTED:
+    case 187:
       return "DPERR_APPNOTSTARTED";
-    case DPERR_INVALIDINTERFACE:
+    case 162:
       return "DPERR_INVALIDINTERFACE";
-    case DPERR_NOSERVICEPROVIDER:
+    case 148:
       return "DPERR_NOSERVICEPROVIDER";
-    case DPERR_UNKNOWNAPPLICATION:
+    case 132:
       return "DPERR_UNKNOWNAPPLICATION";
-    case DPERR_NOTLOBBIED:
+    case 145:
       return "DPERR_NOTLOBBIED";
-    case DPERR_SERVICEPROVIDERLOADED:
+    case 138:
       return "DPERR_SERVICEPROVIDERLOADED";
-    case DPERR_ALREADYREGISTERED:
+    case 188:
       return "DPERR_ALREADYREGISTERED";
-    case DPERR_NOTREGISTERED:
+    case 143:
       return "DPERR_NOTREGISTERED";
-    case DPERR_AUTHENTICATIONFAILED:
+    case 186:
       return "DPERR_AUTHENTICATIONFAILED";
-    case DPERR_CANTLOADSSPI:
+    case 172:
       return "DPERR_CANTLOADSSPI";
-    case DPERR_ENCRYPTIONFAILED:
+    case 168:
       return "DPERR_ENCRYPTIONFAILED";
-    case DPERR_SIGNFAILED:
+    case 136:
       return "DPERR_SIGNFAILED";
-    case DPERR_CANTLOADSECURITYPACKAGE:
+    case 173:
       return "DPERR_CANTLOADSECURITYPACKAGE";
-    case DPERR_ENCRYPTIONNOTSUPPORTED:
+    case 167:
       return "DPERR_ENCRYPTIONNOTSUPPORTED";
-    case DPERR_CANTLOADCAPI:
+    case 174:
       return "DPERR_CANTLOADCAPI";
-    case DPERR_NOTLOGGEDIN:
+    case 144:
       return "DPERR_NOTLOGGEDIN";
-    case DPERR_LOGONDENIED:
+    case 156:
       return "DPERR_LOGONDENIED";
     default:
-      /* For errors not in the list, return HRESULT as a string
-         This part is not thread safe */
+
+
       WARN( "Unknown error 0x%08x\n", hr );
       wsprintfA( szTempStr, "0x%08x", hr );
       return szTempStr;

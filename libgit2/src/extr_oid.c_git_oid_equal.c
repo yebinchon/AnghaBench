@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  git_oid ;
 
-/* Variables and functions */
- scalar_t__ git_oid__cmp (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*) ; 
+
+
+
+typedef int git_oid ;
+
+
+ scalar_t__ git_oid__cmp (int const*,int const*) ;
 
 int git_oid_equal(const git_oid *a, const git_oid *b)
 {
-	return (git_oid__cmp(a, b) == 0);
+ return (git_oid__cmp(a, b) == 0);
 }

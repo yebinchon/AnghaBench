@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int GLenum ;
 
-/* Variables and functions */
- int GL_LINEAR ; 
-#define  GL_LINEAR_MIPMAP_LINEAR 129 
- int GL_NEAREST ; 
-#define  GL_NEAREST_MIPMAP_NEAREST 128 
+
+
+
+typedef int GLenum ;
+
+
+ int GL_LINEAR ;
+
+ int GL_NEAREST ;
+
 
 __attribute__((used)) static GLenum gl2_min_filter_to_mag(GLenum type)
 {
    switch (type)
    {
-      case GL_LINEAR_MIPMAP_LINEAR:
+      case 129:
          return GL_LINEAR;
-      case GL_NEAREST_MIPMAP_NEAREST:
+      case 128:
          return GL_NEAREST;
       default:
          break;

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UNICODE_STRING ;
-typedef  int /*<<< orphan*/  OBJECT_ATTRIBUTES ;
-typedef  scalar_t__ NTSTATUS ;
-typedef  scalar_t__ HANDLE ;
-typedef  int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GENERIC_ALL ; 
- int /*<<< orphan*/  InitializeObjectAttributes (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  OBJ_OPENIF ; 
- scalar_t__ STATUS_OBJECT_NAME_EXISTS ; 
- int /*<<< orphan*/  pNtClose (scalar_t__) ; 
- scalar_t__ pNtCreateMutant (scalar_t__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pRtlCreateUnicodeStringFromAsciiz (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  pRtlFreeUnicodeString (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int UNICODE_STRING ;
+typedef int OBJECT_ATTRIBUTES ;
+typedef scalar_t__ NTSTATUS ;
+typedef scalar_t__ HANDLE ;
+typedef int BOOL ;
+
+
+ int FALSE ;
+ int GENERIC_ALL ;
+ int InitializeObjectAttributes (int *,int *,int ,scalar_t__,int *) ;
+ int OBJ_OPENIF ;
+ scalar_t__ STATUS_OBJECT_NAME_EXISTS ;
+ int pNtClose (scalar_t__) ;
+ scalar_t__ pNtCreateMutant (scalar_t__*,int ,int *,int ) ;
+ int pRtlCreateUnicodeStringFromAsciiz (int *,char const*) ;
+ int pRtlFreeUnicodeString (int *) ;
 
 __attribute__((used)) static BOOL is_correct_dir( HANDLE dir, const char *name )
 {
@@ -35,7 +35,7 @@ __attribute__((used)) static BOOL is_correct_dir( HANDLE dir, const char *name )
     HANDLE h = 0;
 
     pRtlCreateUnicodeStringFromAsciiz(&str, name);
-    InitializeObjectAttributes(&attr, &str, OBJ_OPENIF, dir, NULL);
+    InitializeObjectAttributes(&attr, &str, OBJ_OPENIF, dir, ((void*)0));
     status = pNtCreateMutant(&h, GENERIC_ALL, &attr, FALSE);
     pRtlFreeUnicodeString(&str);
     if (h) pNtClose( h );

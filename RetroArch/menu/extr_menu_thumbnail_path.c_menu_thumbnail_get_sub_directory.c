@@ -1,38 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
-
 bool menu_thumbnail_get_sub_directory(unsigned type_idx, const char **sub_directory)
 {
    if (!sub_directory)
-      return false;
-   
+      return 0;
+
    switch (type_idx)
    {
       case 1:
          *sub_directory = "Named_Snaps";
-         return true;
+         return 1;
       case 2:
          *sub_directory = "Named_Titles";
-         return true;
+         return 1;
       case 3:
          *sub_directory = "Named_Boxarts";
-         return true;
+         return 1;
       case 0:
       default:
          break;
    }
-   
-   return false;
+
+   return 0;
 }

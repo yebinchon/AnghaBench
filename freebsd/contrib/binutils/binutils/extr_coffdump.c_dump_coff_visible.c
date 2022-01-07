@@ -1,33 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct coff_visible {int type; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  abort () ; 
-#define  coff_vis_auto 138 
-#define  coff_vis_autoparam 137 
-#define  coff_vis_common 136 
-#define  coff_vis_ext_def 135 
-#define  coff_vis_ext_ref 134 
-#define  coff_vis_int_def 133 
-#define  coff_vis_member_of_enum 132 
-#define  coff_vis_member_of_struct 131 
-#define  coff_vis_register 130 
-#define  coff_vis_regparam 129 
-#define  coff_vis_tag 128 
- int /*<<< orphan*/  nl () ; 
- int /*<<< orphan*/  printf (char*) ; 
- int /*<<< orphan*/  tab (int) ; 
+
+ int abort () ;
+ int nl () ;
+ int printf (char*) ;
+ int tab (int) ;
 
 __attribute__((used)) static void
 dump_coff_visible (struct coff_visible *p)
@@ -35,37 +24,37 @@ dump_coff_visible (struct coff_visible *p)
   tab (1);
   switch (p->type)
     {
-    case coff_vis_ext_def:
+    case 135:
       printf ("coff_vis_ext_def");
       break;
-    case coff_vis_ext_ref:
+    case 134:
       printf ("coff_vis_ext_ref");
       break;
-    case coff_vis_int_def:
+    case 133:
       printf ("coff_vis_int_def");
       break;
-    case coff_vis_common:
+    case 136:
       printf ("coff_vis_common");
       break;
-    case coff_vis_auto:
+    case 138:
       printf ("coff_vis_auto");
       break;
-    case coff_vis_autoparam:
+    case 137:
       printf ("coff_vis_autoparam");
       break;
-    case coff_vis_regparam:
+    case 129:
       printf ("coff_vis_regparam");
       break;
-    case coff_vis_register:
+    case 130:
       printf ("coff_vis_register");
       break;
-    case coff_vis_tag:
+    case 128:
       printf ("coff_vis_tag");
       break;
-    case coff_vis_member_of_struct:
+    case 131:
       printf ("coff_vis_member_of_struct");
       break;
-    case coff_vis_member_of_enum:
+    case 132:
       printf ("coff_vis_member_of_enum");
       break;
     default:

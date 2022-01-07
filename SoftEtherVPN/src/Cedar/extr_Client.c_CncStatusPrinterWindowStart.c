@@ -1,88 +1,88 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_5__ ;
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_17__ TYPE_5__ ;
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
 struct TYPE_17__ {TYPE_4__* Session; TYPE_3__* Sock; } ;
 struct TYPE_16__ {TYPE_2__* Account; } ;
 struct TYPE_15__ {TYPE_5__* Param; } ;
 struct TYPE_14__ {TYPE_1__* ClientOption; } ;
-struct TYPE_13__ {int /*<<< orphan*/  AccountName; } ;
-typedef  int /*<<< orphan*/  THREAD ;
-typedef  TYPE_3__ SOCK ;
-typedef  TYPE_4__ SESSION ;
-typedef  int /*<<< orphan*/  PACK ;
-typedef  TYPE_5__ CNC_STATUS_PRINTER_WINDOW_PARAM ;
+struct TYPE_13__ {int AccountName; } ;
+typedef int THREAD ;
+typedef TYPE_3__ SOCK ;
+typedef TYPE_4__ SESSION ;
+typedef int PACK ;
+typedef TYPE_5__ CNC_STATUS_PRINTER_WINDOW_PARAM ;
 
-/* Variables and functions */
- TYPE_3__* CncConnect () ; 
- int /*<<< orphan*/  CncStatusPrinterWindowThreadProc ; 
- int /*<<< orphan*/  FreePack (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * NewPack () ; 
- int /*<<< orphan*/ * NewThread (int /*<<< orphan*/ ,TYPE_5__*) ; 
- int /*<<< orphan*/  PackAddStr (int /*<<< orphan*/ *,char*,char*) ; 
- int /*<<< orphan*/  PackAddUniStr (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReleaseSock (TYPE_3__*) ; 
- int /*<<< orphan*/  ReleaseThread (int /*<<< orphan*/ *) ; 
- int SendPack (TYPE_3__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  WaitThreadInit (int /*<<< orphan*/ *) ; 
- TYPE_5__* ZeroMalloc (int) ; 
+
+ TYPE_3__* CncConnect () ;
+ int CncStatusPrinterWindowThreadProc ;
+ int FreePack (int *) ;
+ int * NewPack () ;
+ int * NewThread (int ,TYPE_5__*) ;
+ int PackAddStr (int *,char*,char*) ;
+ int PackAddUniStr (int *,char*,int ) ;
+ int ReleaseSock (TYPE_3__*) ;
+ int ReleaseThread (int *) ;
+ int SendPack (TYPE_3__*,int *) ;
+ int WaitThreadInit (int *) ;
+ TYPE_5__* ZeroMalloc (int) ;
 
 SOCK *CncStatusPrinterWindowStart(SESSION *s)
 {
-	SOCK *sock;
-	PACK *p;
-	THREAD *t;
-	CNC_STATUS_PRINTER_WINDOW_PARAM *param;
-	// Validate arguments
-	if (s == NULL)
-	{
-		return NULL;
-	}
+ SOCK *sock;
+ PACK *p;
+ THREAD *t;
+ CNC_STATUS_PRINTER_WINDOW_PARAM *param;
 
-	sock = CncConnect();
+ if (s == ((void*)0))
+ {
+  return ((void*)0);
+ }
 
-	if (sock == NULL)
-	{
-		return NULL;
-	}
+ sock = CncConnect();
 
-	p = NewPack();
-	PackAddStr(p, "function", "status_printer");
-	PackAddUniStr(p, "account_name", s->Account->ClientOption->AccountName);
+ if (sock == ((void*)0))
+ {
+  return ((void*)0);
+ }
 
-	if (SendPack(sock, p) == false)
-	{
-		FreePack(p);
-		ReleaseSock(sock);
+ p = NewPack();
+ PackAddStr(p, "function", "status_printer");
+ PackAddUniStr(p, "account_name", s->Account->ClientOption->AccountName);
 
-		return NULL;
-	}
+ if (SendPack(sock, p) == 0)
+ {
+  FreePack(p);
+  ReleaseSock(sock);
 
-	FreePack(p);
+  return ((void*)0);
+ }
 
-	param = ZeroMalloc(sizeof(CNC_STATUS_PRINTER_WINDOW_PARAM));
-	param->Sock = sock;
-	param->Session = s;
+ FreePack(p);
 
-	sock->Param = param;
+ param = ZeroMalloc(sizeof(CNC_STATUS_PRINTER_WINDOW_PARAM));
+ param->Sock = sock;
+ param->Session = s;
 
-	t = NewThread(CncStatusPrinterWindowThreadProc, param);
-	WaitThreadInit(t);
+ sock->Param = param;
 
-	ReleaseThread(t);
+ t = NewThread(CncStatusPrinterWindowThreadProc, param);
+ WaitThreadInit(t);
 
-	return sock;
+ ReleaseThread(t);
+
+ return sock;
 }

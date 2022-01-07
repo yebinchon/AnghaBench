@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_13__ {int duration; int nb_samples; int amplitude; double (* filter ) (double,int /*<<< orphan*/ ) ;int pts; int /*<<< orphan*/  infinite; int /*<<< orphan*/  buf; int /*<<< orphan*/  c; } ;
+
+
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+struct TYPE_13__ {int duration; int nb_samples; int amplitude; double (* filter ) (double,int ) ;int pts; int infinite; int buf; int c; } ;
 struct TYPE_12__ {TYPE_4__* priv; } ;
 struct TYPE_11__ {TYPE_3__* src; } ;
 struct TYPE_10__ {int pts; scalar_t__* data; } ;
-typedef  TYPE_1__ AVFrame ;
-typedef  TYPE_2__ AVFilterLink ;
-typedef  TYPE_3__ AVFilterContext ;
-typedef  TYPE_4__ ANoiseSrcContext ;
+typedef TYPE_1__ AVFrame ;
+typedef TYPE_2__ AVFilterLink ;
+typedef TYPE_3__ AVFilterContext ;
+typedef TYPE_4__ ANoiseSrcContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_EOF ; 
- int /*<<< orphan*/  ENOMEM ; 
- scalar_t__ av_lfg_get (int /*<<< orphan*/ *) ; 
- int ff_filter_frame (TYPE_2__*,TYPE_1__*) ; 
- TYPE_1__* ff_get_audio_buffer (TYPE_2__*,int) ; 
- double stub1 (double,int /*<<< orphan*/ ) ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_EOF ;
+ int ENOMEM ;
+ scalar_t__ av_lfg_get (int *) ;
+ int ff_filter_frame (TYPE_2__*,TYPE_1__*) ;
+ TYPE_1__* ff_get_audio_buffer (TYPE_2__*,int) ;
+ double stub1 (double,int ) ;
 
 __attribute__((used)) static int request_frame(AVFilterLink *outlink)
 {
@@ -62,6 +62,6 @@ __attribute__((used)) static int request_frame(AVFilterLink *outlink)
         s->duration -= nb_samples;
 
     frame->pts = s->pts;
-    s->pts    += nb_samples;
+    s->pts += nb_samples;
     return ff_filter_frame(outlink, frame);
 }

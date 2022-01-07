@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int UINT ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int UINT ;
 struct TYPE_5__ {int InWhatSequence; } ;
-typedef  TYPE_1__ MSIPACKAGE ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef TYPE_1__ MSIPACKAGE ;
+typedef int LPCWSTR ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int SEQUENCE_EXEC ; 
- int SEQUENCE_UI ; 
- int /*<<< orphan*/  TRACE (char*) ; 
- int /*<<< orphan*/  TRUE ; 
- scalar_t__ msi_action_is_unique (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  msi_register_unique_action (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int msidbCustomActionTypeClientRepeat ; 
- int msidbCustomActionTypeFirstSequence ; 
- int msidbCustomActionTypeOncePerProcess ; 
+
+ int FALSE ;
+ int SEQUENCE_EXEC ;
+ int SEQUENCE_UI ;
+ int TRACE (char*) ;
+ int TRUE ;
+ scalar_t__ msi_action_is_unique (TYPE_1__*,int ) ;
+ int msi_register_unique_action (TYPE_1__*,int ) ;
+ int msidbCustomActionTypeClientRepeat ;
+ int msidbCustomActionTypeFirstSequence ;
+ int msidbCustomActionTypeOncePerProcess ;
 
 __attribute__((used)) static BOOL check_execution_scheduling_options(MSIPACKAGE *package, LPCWSTR action, UINT options)
 {

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int quit; int /*<<< orphan*/  sem_decoded; int /*<<< orphan*/  sem_drawn; int /*<<< orphan*/  mutex; scalar_t__ stop_reason; } ;
-typedef  TYPE_1__ VIDTEX_T ;
-typedef  scalar_t__ VCOS_STATUS_T ;
-typedef  int /*<<< orphan*/  EGLNativeWindowType ;
 
-/* Variables and functions */
- scalar_t__ VCOS_SUCCESS ; 
- TYPE_1__* vcos_calloc (int,int,char*) ; 
- int /*<<< orphan*/  vcos_free (TYPE_1__*) ; 
- int /*<<< orphan*/  vcos_log_trace (char*) ; 
- scalar_t__ vcos_mutex_create (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  vcos_mutex_delete (int /*<<< orphan*/ *) ; 
- scalar_t__ vcos_semaphore_create (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vcos_semaphore_delete (int /*<<< orphan*/ *) ; 
- scalar_t__ vidtex_gl_init (TYPE_1__*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int quit; int sem_decoded; int sem_drawn; int mutex; scalar_t__ stop_reason; } ;
+typedef TYPE_1__ VIDTEX_T ;
+typedef scalar_t__ VCOS_STATUS_T ;
+typedef int EGLNativeWindowType ;
+
+
+ scalar_t__ VCOS_SUCCESS ;
+ TYPE_1__* vcos_calloc (int,int,char*) ;
+ int vcos_free (TYPE_1__*) ;
+ int vcos_log_trace (char*) ;
+ scalar_t__ vcos_mutex_create (int *,char*) ;
+ int vcos_mutex_delete (int *) ;
+ scalar_t__ vcos_semaphore_create (int *,char*,int ) ;
+ int vcos_semaphore_delete (int *) ;
+ scalar_t__ vidtex_gl_init (TYPE_1__*,int ) ;
 
 __attribute__((used)) static VIDTEX_T *vidtex_create(EGLNativeWindowType win)
 {
@@ -33,10 +33,10 @@ __attribute__((used)) static VIDTEX_T *vidtex_create(EGLNativeWindowType win)
    VCOS_STATUS_T st;
 
    vt = vcos_calloc(1, sizeof(*vt), "vidtex");
-   if (vt == NULL)
+   if (vt == ((void*)0))
    {
       vcos_log_trace("Memory allocation failure");
-      return NULL;
+      return ((void*)0);
    }
 
    st = vcos_semaphore_create(&vt->sem_decoded, "vidtex-dec", 0);
@@ -66,7 +66,7 @@ __attribute__((used)) static VIDTEX_T *vidtex_create(EGLNativeWindowType win)
       goto error_mutex;
    }
 
-   vt->quit = false;
+   vt->quit = 0;
    vt->stop_reason = 0;
 
    return vt;
@@ -79,5 +79,5 @@ error_sem1:
    vcos_semaphore_delete(&vt->sem_decoded);
 error_ctx:
    vcos_free(vt);
-   return NULL;
+   return ((void*)0);
 }

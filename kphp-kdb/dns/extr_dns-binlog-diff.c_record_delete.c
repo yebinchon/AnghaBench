@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct lev_dns_delete_records {int /*<<< orphan*/  name; } ;
-struct TYPE_4__ {scalar_t__ qtype; scalar_t__ name_len; int /*<<< orphan*/  name; } ;
-typedef  TYPE_1__ record_t ;
 
-/* Variables and functions */
- scalar_t__ LEV_DNS_DELETE_RECORDS ; 
- struct lev_dns_delete_records* alloc_log_event (scalar_t__,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  cmp_str (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,scalar_t__) ; 
- int compute_uncommitted_log_bytes () ; 
- int /*<<< orphan*/  delete_logevents ; 
- int /*<<< orphan*/  flush_binlog_forced (int /*<<< orphan*/ ) ; 
- TYPE_1__* last_deleted_record ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  try_change_zone () ; 
- int /*<<< orphan*/  vkprintf (int,char*,scalar_t__,int /*<<< orphan*/ ,scalar_t__) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct lev_dns_delete_records {int name; } ;
+struct TYPE_4__ {scalar_t__ qtype; scalar_t__ name_len; int name; } ;
+typedef TYPE_1__ record_t ;
+
+
+ scalar_t__ LEV_DNS_DELETE_RECORDS ;
+ struct lev_dns_delete_records* alloc_log_event (scalar_t__,int ,scalar_t__) ;
+ int cmp_str (int ,scalar_t__,int ,scalar_t__) ;
+ int compute_uncommitted_log_bytes () ;
+ int delete_logevents ;
+ int flush_binlog_forced (int ) ;
+ TYPE_1__* last_deleted_record ;
+ int memcpy (int ,int ,scalar_t__) ;
+ int try_change_zone () ;
+ int vkprintf (int,char*,scalar_t__,int ,scalar_t__) ;
 
 __attribute__((used)) static void record_delete (record_t *r) {
   if (last_deleted_record && !cmp_str (last_deleted_record->name, last_deleted_record->name_len, r->name, r->name_len) && last_deleted_record->qtype == r->qtype) {

@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  CGEN_INSN ;
 
-/* Variables and functions */
- unsigned int CGEN_INSN_BASE_MASK (int /*<<< orphan*/  const*) ; 
+
+
+
+typedef int CGEN_INSN ;
+
+
+ unsigned int CGEN_INSN_BASE_MASK (int const*) ;
 
 __attribute__((used)) static int
 count_decodable_bits (const CGEN_INSN *insn)
@@ -24,7 +24,7 @@ count_decodable_bits (const CGEN_INSN *insn)
   for (m = 1; m != 0; m <<= 1)
     {
       if (mask & m)
-	++bits;
+ ++bits;
     }
   return bits;
 }

@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ u8 ;
-typedef  scalar_t__ u16 ;
-struct TYPE_4__ {int FirstSeg; int LastSeg; int Offset; int TxFWInfoSize; int OWN; int /*<<< orphan*/  TxBuffAddr; int /*<<< orphan*/  TxBufferSize; scalar_t__ RATid; int /*<<< orphan*/  QueueSelect; scalar_t__ PktSize; scalar_t__ CmdInit; int /*<<< orphan*/  LINIP; } ;
-typedef  TYPE_1__ tx_desc_819x_pci ;
-struct sk_buff {int /*<<< orphan*/  len; scalar_t__ cb; int /*<<< orphan*/  data; } ;
-struct rtl8192_tx_ring {unsigned int idx; unsigned int entries; int /*<<< orphan*/  queue; TYPE_1__* desc; } ;
-struct r8192_priv {int /*<<< orphan*/  irq_th_lock; int /*<<< orphan*/  pdev; struct rtl8192_tx_ring* tx_ring; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef scalar_t__ u8 ;
+typedef scalar_t__ u16 ;
+struct TYPE_4__ {int FirstSeg; int LastSeg; int Offset; int TxFWInfoSize; int OWN; int TxBuffAddr; int TxBufferSize; scalar_t__ RATid; int QueueSelect; scalar_t__ PktSize; scalar_t__ CmdInit; int LINIP; } ;
+typedef TYPE_1__ tx_desc_819x_pci ;
+struct sk_buff {int len; scalar_t__ cb; int data; } ;
+struct rtl8192_tx_ring {unsigned int idx; unsigned int entries; int queue; TYPE_1__* desc; } ;
+struct r8192_priv {int irq_th_lock; int pdev; struct rtl8192_tx_ring* tx_ring; } ;
 struct net_device {int dummy; } ;
-typedef  int /*<<< orphan*/  dma_addr_t ;
-struct TYPE_5__ {scalar_t__ bCmdOrInit; scalar_t__ pkt_size; int /*<<< orphan*/  bLastIniPkt; } ;
-typedef  TYPE_2__ cb_desc ;
-typedef  int /*<<< orphan*/  TX_FWINFO_8190PCI ;
+typedef int dma_addr_t ;
+struct TYPE_5__ {scalar_t__ bCmdOrInit; scalar_t__ pkt_size; int bLastIniPkt; } ;
+typedef TYPE_2__ cb_desc ;
+typedef int TX_FWINFO_8190PCI ;
 
-/* Variables and functions */
- scalar_t__ DESC_PACKET_TYPE_INIT ; 
- scalar_t__ DESC_PACKET_TYPE_NORMAL ; 
- scalar_t__ MAX_DEV_ADDR_SIZE ; 
- int /*<<< orphan*/  PCI_DMA_TODEVICE ; 
- int /*<<< orphan*/  QSLT_CMD ; 
- int /*<<< orphan*/  TPPoll ; 
- int /*<<< orphan*/  TPPoll_CQ ; 
- size_t TXCMD_QUEUE ; 
- int /*<<< orphan*/  __skb_queue_tail (int /*<<< orphan*/ *,struct sk_buff*) ; 
- int /*<<< orphan*/  cpu_to_le32 (int /*<<< orphan*/ ) ; 
- struct r8192_priv* ieee80211_priv (struct net_device*) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  pci_map_single (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printk (char*,...) ; 
- unsigned int skb_queue_len (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  write_nic_byte (struct net_device*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ DESC_PACKET_TYPE_INIT ;
+ scalar_t__ DESC_PACKET_TYPE_NORMAL ;
+ scalar_t__ MAX_DEV_ADDR_SIZE ;
+ int PCI_DMA_TODEVICE ;
+ int QSLT_CMD ;
+ int TPPoll ;
+ int TPPoll_CQ ;
+ size_t TXCMD_QUEUE ;
+ int __skb_queue_tail (int *,struct sk_buff*) ;
+ int cpu_to_le32 (int ) ;
+ struct r8192_priv* ieee80211_priv (struct net_device*) ;
+ int memset (TYPE_1__*,int ,int) ;
+ int pci_map_single (int ,int ,int ,int ) ;
+ int printk (char*,...) ;
+ unsigned int skb_queue_len (int *) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
+ int write_nic_byte (struct net_device*,int ,int ) ;
 
 void rtl819xE_tx_cmd(struct net_device *dev, struct sk_buff *skb)
 {
@@ -65,8 +65,8 @@ void rtl819xE_tx_cmd(struct net_device *dev, struct sk_buff *skb)
     tcb_desc = (cb_desc *)(skb->cb + MAX_DEV_ADDR_SIZE);
     memset(entry,0,12);
     entry->LINIP = tcb_desc->bLastIniPkt;
-    entry->FirstSeg = 1;//first segment
-    entry->LastSeg = 1; //last segment
+    entry->FirstSeg = 1;
+    entry->LastSeg = 1;
     if(tcb_desc->bCmdOrInit == DESC_PACKET_TYPE_INIT) {
         entry->CmdInit = DESC_PACKET_TYPE_INIT;
     } else {
@@ -80,17 +80,6 @@ void rtl819xE_tx_cmd(struct net_device *dev, struct sk_buff *skb)
     entry->TxBufferSize = skb->len;
     entry->TxBuffAddr = cpu_to_le32(mapping);
     entry->OWN = 1;
-
-#ifdef JOHN_DUMP_TXDESC
-    {       int i;
-        tx_desc_819x_pci *entry1 =  &ring->desc[0];
-        unsigned int *ptr= (unsigned int *)entry1;
-        printk("<Tx descriptor>:\n");
-        for (i = 0; i < 8; i++)
-            printk("%8x ", ptr[i]);
-        printk("\n");
-    }
-#endif
     __skb_queue_tail(&ring->queue, skb);
     spin_unlock_irqrestore(&priv->irq_th_lock,flags);
 

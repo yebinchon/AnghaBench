@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct trace_pid_list {int dummy; } ;
 struct TYPE_4__ {TYPE_1__* data; } ;
-struct trace_array {TYPE_2__ trace_buffer; int /*<<< orphan*/  filtered_pids; } ;
+struct trace_array {TYPE_2__ trace_buffer; int filtered_pids; } ;
 struct task_struct {int dummy; } ;
-struct TYPE_3__ {int /*<<< orphan*/  ignore_pid; } ;
+struct TYPE_3__ {int ignore_pid; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  current ; 
- struct trace_pid_list* rcu_dereference_sched (int /*<<< orphan*/ ) ; 
- scalar_t__ this_cpu_read (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  this_cpu_write (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  trace_ignore_this_task (struct trace_pid_list*,int /*<<< orphan*/ ) ; 
+
+ int current ;
+ struct trace_pid_list* rcu_dereference_sched (int ) ;
+ scalar_t__ this_cpu_read (int ) ;
+ int this_cpu_write (int ,int ) ;
+ int trace_ignore_this_task (struct trace_pid_list*,int ) ;
 
 __attribute__((used)) static void
 event_filter_pid_sched_wakeup_probe_post(void *data, struct task_struct *task)
 {
-	struct trace_array *tr = data;
-	struct trace_pid_list *pid_list;
+ struct trace_array *tr = data;
+ struct trace_pid_list *pid_list;
 
-	/* Nothing to do if we are not tracing */
-	if (this_cpu_read(tr->trace_buffer.data->ignore_pid))
-		return;
 
-	pid_list = rcu_dereference_sched(tr->filtered_pids);
+ if (this_cpu_read(tr->trace_buffer.data->ignore_pid))
+  return;
 
-	/* Set tracing if current is enabled */
-	this_cpu_write(tr->trace_buffer.data->ignore_pid,
-		       trace_ignore_this_task(pid_list, current));
+ pid_list = rcu_dereference_sched(tr->filtered_pids);
+
+
+ this_cpu_write(tr->trace_buffer.data->ignore_pid,
+         trace_ignore_this_task(pid_list, current));
 }

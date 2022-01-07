@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_5__ ;
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ngx_str_t ;
-typedef  int /*<<< orphan*/  ngx_int_t ;
+
+
+typedef struct TYPE_13__ TYPE_5__ ;
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int ngx_str_t ;
+typedef int ngx_int_t ;
 struct TYPE_12__ {int not_found; } ;
-typedef  TYPE_4__ ngx_http_variable_value_t ;
+typedef TYPE_4__ ngx_http_variable_value_t ;
 struct TYPE_13__ {TYPE_3__* upstream; } ;
-typedef  TYPE_5__ ngx_http_request_t ;
-struct TYPE_9__ {int /*<<< orphan*/  part; } ;
+typedef TYPE_5__ ngx_http_request_t ;
+struct TYPE_9__ {int part; } ;
 struct TYPE_10__ {TYPE_1__ headers; } ;
 struct TYPE_11__ {TYPE_2__ headers_in; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NGX_OK ; 
- int /*<<< orphan*/  ngx_http_variable_unknown_header (TYPE_4__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
+
+ int NGX_OK ;
+ int ngx_http_variable_unknown_header (TYPE_4__*,int *,int *,int) ;
 
 __attribute__((used)) static ngx_int_t
 ngx_http_upstream_header_variable(ngx_http_request_t *r,
     ngx_http_variable_value_t *v, uintptr_t data)
 {
-    if (r->upstream == NULL) {
+    if (r->upstream == ((void*)0)) {
         v->not_found = 1;
         return NGX_OK;
     }

@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  int64_t ;
+
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int int64_t ;
 struct TYPE_10__ {int nb_streams; TYPE_3__** streams; TYPE_2__* priv_data; } ;
 struct TYPE_9__ {TYPE_1__* codecpar; } ;
 struct TYPE_8__ {char* major_brand; int mode; int flags; } ;
 struct TYPE_7__ {scalar_t__ codec_type; scalar_t__ codec_id; } ;
-typedef  TYPE_2__ MOVMuxContext ;
-typedef  TYPE_3__ AVStream ;
-typedef  int /*<<< orphan*/  AVIOContext ;
-typedef  TYPE_4__ AVFormatContext ;
+typedef TYPE_2__ MOVMuxContext ;
+typedef TYPE_3__ AVStream ;
+typedef int AVIOContext ;
+typedef TYPE_4__ AVFormatContext ;
 
-/* Variables and functions */
- scalar_t__ AVMEDIA_TYPE_VIDEO ; 
- scalar_t__ AV_CODEC_ID_H264 ; 
- int FF_MOV_FLAG_DASH ; 
- int FF_MOV_FLAG_DEFAULT_BASE_MOOF ; 
- int FF_MOV_FLAG_FRAGMENT ; 
- int FF_MOV_FLAG_GLOBAL_SIDX ; 
- int FF_MOV_FLAG_NEGATIVE_CTS_OFFSETS ; 
- int MODE_3G2 ; 
- int MODE_3GP ; 
- int MODE_F4V ; 
- int MODE_IPOD ; 
- int MODE_ISM ; 
- int MODE_MOV ; 
- int MODE_MP4 ; 
- int MODE_PSP ; 
- int /*<<< orphan*/  avio_tell (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  avio_wb32 (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  ffio_wfourcc (int /*<<< orphan*/ *,char*) ; 
- scalar_t__ is_cover_image (TYPE_3__*) ; 
- int strlen (char*) ; 
- int update_size (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ AVMEDIA_TYPE_VIDEO ;
+ scalar_t__ AV_CODEC_ID_H264 ;
+ int FF_MOV_FLAG_DASH ;
+ int FF_MOV_FLAG_DEFAULT_BASE_MOOF ;
+ int FF_MOV_FLAG_FRAGMENT ;
+ int FF_MOV_FLAG_GLOBAL_SIDX ;
+ int FF_MOV_FLAG_NEGATIVE_CTS_OFFSETS ;
+ int MODE_3G2 ;
+ int MODE_3GP ;
+ int MODE_F4V ;
+ int MODE_IPOD ;
+ int MODE_ISM ;
+ int MODE_MOV ;
+ int MODE_MP4 ;
+ int MODE_PSP ;
+ int avio_tell (int *) ;
+ int avio_wb32 (int *,int) ;
+ int ffio_wfourcc (int *,char*) ;
+ scalar_t__ is_cover_image (TYPE_3__*) ;
+ int strlen (char*) ;
+ int update_size (int *,int ) ;
 
 __attribute__((used)) static int mov_write_ftyp_tag(AVIOContext *pb, AVFormatContext *s)
 {
@@ -65,21 +65,21 @@ __attribute__((used)) static int mov_write_ftyp_tag(AVIOContext *pb, AVFormatCon
             has_h264 = 1;
     }
 
-    avio_wb32(pb, 0); /* size */
+    avio_wb32(pb, 0);
     ffio_wfourcc(pb, "ftyp");
 
     if (mov->major_brand && strlen(mov->major_brand) >= 4)
         ffio_wfourcc(pb, mov->major_brand);
     else if (mov->mode == MODE_3GP) {
-        ffio_wfourcc(pb, has_h264 ? "3gp6"  : "3gp4");
-        minor =     has_h264 ?   0x100 :   0x200;
+        ffio_wfourcc(pb, has_h264 ? "3gp6" : "3gp4");
+        minor = has_h264 ? 0x100 : 0x200;
     } else if (mov->mode & MODE_3G2) {
-        ffio_wfourcc(pb, has_h264 ? "3g2b"  : "3g2a");
-        minor =     has_h264 ? 0x20000 : 0x10000;
+        ffio_wfourcc(pb, has_h264 ? "3g2b" : "3g2a");
+        minor = has_h264 ? 0x20000 : 0x10000;
     } else if (mov->mode == MODE_PSP)
         ffio_wfourcc(pb, "MSNV");
     else if (mov->mode == MODE_MP4 && mov->flags & FF_MOV_FLAG_DEFAULT_BASE_MOOF)
-        ffio_wfourcc(pb, "iso5"); // Required when using default-base-is-moof
+        ffio_wfourcc(pb, "iso5");
     else if (mov->mode == MODE_MP4 && mov->flags & FF_MOV_FLAG_NEGATIVE_CTS_OFFSETS)
         ffio_wfourcc(pb, "iso4");
     else if (mov->mode == MODE_MP4)
@@ -106,8 +106,8 @@ __attribute__((used)) static int mov_write_ftyp_tag(AVIOContext *pb, AVFormatCon
             ffio_wfourcc(pb, "avc1");
     }
 
-    // We add tfdt atoms when fragmenting, signal this with the iso6 compatible
-    // brand. This is compatible with users that don't understand tfdt.
+
+
     if (mov->flags & FF_MOV_FLAG_FRAGMENT && mov->mode != MODE_ISM)
         ffio_wfourcc(pb, "iso6");
 

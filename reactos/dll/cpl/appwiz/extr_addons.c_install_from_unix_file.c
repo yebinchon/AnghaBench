@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  enum install_res { ____Placeholder_install_res } install_res ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int UINT ;
-typedef  char* LPWSTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CP_ACP ; 
- int INSTALL_FAILED ; 
- int INSTALL_NEXT ; 
- int MultiByteToWideChar (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int,char*,int) ; 
- int /*<<< orphan*/  O_RDONLY ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WARN (char*) ; 
- int /*<<< orphan*/  _close (int) ; 
- int _open (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  debugstr_a (char*) ; 
- char* heap_alloc (int) ; 
- int /*<<< orphan*/  heap_free (char*) ; 
- int install_file (char*) ; 
- int /*<<< orphan*/  memcpy (char*,char const*,int) ; 
- int /*<<< orphan*/  strcpy (char*,char const*) ; 
- int strlen (char const*) ; 
+
+
+
+typedef enum install_res { ____Placeholder_install_res } install_res ;
+typedef int WCHAR ;
+typedef int UINT ;
+typedef char* LPWSTR ;
+
+
+ int CP_ACP ;
+ int INSTALL_FAILED ;
+ int INSTALL_NEXT ;
+ int MultiByteToWideChar (int ,int ,char*,int,char*,int) ;
+ int O_RDONLY ;
+ int TRACE (char*,int ) ;
+ int WARN (char*) ;
+ int _close (int) ;
+ int _open (char*,int ) ;
+ int debugstr_a (char*) ;
+ char* heap_alloc (int) ;
+ int heap_free (char*) ;
+ int install_file (char*) ;
+ int memcpy (char*,char const*,int) ;
+ int strcpy (char*,char const*) ;
+ int strlen (char const*) ;
 
 __attribute__((used)) static enum install_res install_from_unix_file(const char *dir, const char *subdir, const char *file_name)
 {

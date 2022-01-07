@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  scalar_t__ apr_status_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  APR_FILEPATH_NATIVE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_EXTERNAL_PROGRAM ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  _ (char*) ; 
- scalar_t__ apr_filepath_get (char**,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ apr_filepath_set (char const*,int /*<<< orphan*/ *) ; 
- char* apr_psprintf (int /*<<< orphan*/ *,char*,char const*,char const*) ; 
- int /*<<< orphan*/  find_editor_binary (char const**,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  svn_dirent_split (char const**,char const**,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_error_createf (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*,int) ; 
- int /*<<< orphan*/ * svn_error_wrap_apr (scalar_t__,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  svn_handle_error2 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  svn_path_cstring_from_utf8 (char const**,char const*,int /*<<< orphan*/ *) ; 
- int system (char const*) ; 
+
+
+
+typedef int svn_error_t ;
+typedef scalar_t__ apr_status_t ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
+
+
+ int APR_FILEPATH_NATIVE ;
+ int SVN_ERR (int ) ;
+ int SVN_ERR_EXTERNAL_PROGRAM ;
+ int * SVN_NO_ERROR ;
+ int TRUE ;
+ int _ (char*) ;
+ scalar_t__ apr_filepath_get (char**,int ,int *) ;
+ scalar_t__ apr_filepath_set (char const*,int *) ;
+ char* apr_psprintf (int *,char*,char const*,char const*) ;
+ int find_editor_binary (char const**,char const*,int *) ;
+ int stderr ;
+ int svn_dirent_split (char const**,char const**,char const*,int *) ;
+ int * svn_error_createf (int ,int *,int ,char const*,int) ;
+ int * svn_error_wrap_apr (scalar_t__,int ,...) ;
+ int svn_handle_error2 (int *,int ,int ,char*) ;
+ int svn_path_cstring_from_utf8 (char const**,char const*,int *) ;
+ int system (char const*) ;
 
 svn_error_t *
 svn_cmdline__edit_file_externally(const char *path,
@@ -53,7 +53,7 @@ svn_cmdline__edit_file_externally(const char *path,
   if (apr_err)
     return svn_error_wrap_apr(apr_err, _("Can't get working directory"));
 
-  /* APR doesn't like "" directories */
+
   if (base_dir[0] == '\0')
     base_dir_apr = ".";
   else
@@ -71,12 +71,12 @@ svn_cmdline__edit_file_externally(const char *path,
   if (apr_err)
     svn_handle_error2(svn_error_wrap_apr
                       (apr_err, _("Can't restore working directory")),
-                      stderr, TRUE /* fatal */, "svn: ");
+                      stderr, TRUE , "svn: ");
 
   if (sys_err)
-    /* Extracting any meaning from sys_err is platform specific, so just
-       use the raw value. */
-    return svn_error_createf(SVN_ERR_EXTERNAL_PROGRAM, NULL,
+
+
+    return svn_error_createf(SVN_ERR_EXTERNAL_PROGRAM, ((void*)0),
                              _("system('%s') returned %d"), cmd, sys_err);
 
   return SVN_NO_ERROR;

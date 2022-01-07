@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
 struct TYPE_13__ {int num_model_matches; TYPE_1__* model_matches; } ;
-struct TYPE_12__ {int /*<<< orphan*/  ransac_err; int /*<<< orphan*/  alfg; } ;
+struct TYPE_12__ {int ransac_err; int alfg; } ;
 struct TYPE_11__ {int should_consider; } ;
-typedef  TYPE_1__ MotionVector ;
-typedef  TYPE_2__ DeshakeOpenCLContext ;
-typedef  TYPE_3__ DebugMatches ;
+typedef TYPE_1__ MotionVector ;
+typedef TYPE_2__ DeshakeOpenCLContext ;
+typedef TYPE_3__ DebugMatches ;
 
-/* Variables and functions */
- int FFMAX (int const,int) ; 
- int find_inliers (TYPE_1__*,int const,double*,int /*<<< orphan*/ ,double const) ; 
- int get_subset (int /*<<< orphan*/ *,TYPE_1__*,int const,TYPE_1__*,int) ; 
- int ransac_update_num_iters (double const,double,int) ; 
- int /*<<< orphan*/  run_estimate_kernel (TYPE_1__*,double*) ; 
+
+ int FFMAX (int const,int) ;
+ int find_inliers (TYPE_1__*,int const,double*,int ,double const) ;
+ int get_subset (int *,TYPE_1__*,int const,TYPE_1__*,int) ;
+ int ransac_update_num_iters (double const,double,int) ;
+ int run_estimate_kernel (TYPE_1__*,double*) ;
 
 __attribute__((used)) static bool estimate_affine_2d(
     DeshakeOpenCLContext *deshake_ctx,
@@ -37,25 +37,25 @@ __attribute__((used)) static bool estimate_affine_2d(
     const int max_iters,
     const double confidence
 ) {
-    bool result = false;
+    bool result = 0;
     double best_model[6], model[6];
     MotionVector pairs_subset[3], best_pairs[3];
 
     int iter, niters = FFMAX(max_iters, 1);
     int good_count, max_good_count = 0;
 
-    // We need at least 3 points to build a model from
+
     if (num_point_pairs < 3) {
-        return false;
+        return 0;
     } else if (num_point_pairs == 3) {
-        // There are only 3 points, so RANSAC doesn't apply here
+
         run_estimate_kernel(point_pairs, model_out);
 
         for (int i = 0; i < 3; ++i) {
-            point_pairs[i].should_consider = true;
+            point_pairs[i].should_consider = 1;
         }
 
-        return true;
+        return 1;
     }
 
     for (iter = 0; iter < niters; ++iter) {
@@ -63,7 +63,7 @@ __attribute__((used)) static bool estimate_affine_2d(
 
         if (!found) {
             if (iter == 0) {
-                return false;
+                return 0;
             }
 
             break;
@@ -100,9 +100,9 @@ __attribute__((used)) static bool estimate_affine_2d(
         }
         debug_matches->num_model_matches = 3;
 
-        // Find the inliers again for the best model for debugging
+
         find_inliers(point_pairs, num_point_pairs, best_model, deshake_ctx->ransac_err, threshold);
-        result = true;
+        result = 1;
     }
 
     return result;

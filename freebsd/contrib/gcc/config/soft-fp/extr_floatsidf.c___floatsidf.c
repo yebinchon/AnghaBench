@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  SItype ;
-typedef  int /*<<< orphan*/  DFtype ;
 
-/* Variables and functions */
- int /*<<< orphan*/  A ; 
- int /*<<< orphan*/  FP_DECL_D (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FP_DECL_EX ; 
- int /*<<< orphan*/  FP_FROM_INT_D (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FP_HANDLE_EXCEPTIONS ; 
- int /*<<< orphan*/  FP_PACK_RAW_D (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SI_BITS ; 
- int /*<<< orphan*/  USItype ; 
+
+
+
+typedef int SItype ;
+typedef int DFtype ;
+
+
+ int A ;
+ int FP_DECL_D (int ) ;
+ int FP_DECL_EX ;
+ int FP_FROM_INT_D (int ,int ,int ,int ) ;
+ int FP_HANDLE_EXCEPTIONS ;
+ int FP_PACK_RAW_D (int ,int ) ;
+ int SI_BITS ;
+ int USItype ;
 
 DFtype __floatsidf(SItype i)
 {

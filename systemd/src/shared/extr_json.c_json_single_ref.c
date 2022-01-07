@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int n_ref; struct TYPE_4__* parent; scalar_t__ is_embedded; } ;
-typedef  TYPE_1__ JsonVariant ;
+typedef TYPE_1__ JsonVariant ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  json_variant_is_regular (TYPE_1__*) ; 
+
+ int assert (int) ;
+ int json_variant_is_regular (TYPE_1__*) ;
 
 __attribute__((used)) static bool json_single_ref(JsonVariant *v) {
 
-        /* Checks whether the caller is the single owner of the object, i.e. can get away with changing it */
+
 
         if (!json_variant_is_regular(v))
-                return false;
+                return 0;
 
         if (v->is_embedded)
                 return json_single_ref(v->parent);

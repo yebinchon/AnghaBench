@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct vars {int /*<<< orphan*/ * start; } ;
-struct sset {int flags; int /*<<< orphan*/ * lastseen; } ;
-struct dfa {int nssused; struct sset* ssets; int /*<<< orphan*/ * lastnopr; } ;
-typedef  int /*<<< orphan*/  chr ;
 
-/* Variables and functions */
- int NOPROGRESS ; 
 
-__attribute__((used)) static chr *					/* endpoint, or NULL */
+
+
+struct vars {int * start; } ;
+struct sset {int flags; int * lastseen; } ;
+struct dfa {int nssused; struct sset* ssets; int * lastnopr; } ;
+typedef int chr ;
+
+
+ int NOPROGRESS ;
+
+__attribute__((used)) static chr *
 lastcold(struct vars *v,
-		 struct dfa *d)
+   struct dfa *d)
 {
-	struct sset *ss;
-	chr		   *nopr;
-	int			i;
+ struct sset *ss;
+ chr *nopr;
+ int i;
 
-	nopr = d->lastnopr;
-	if (nopr == NULL)
-		nopr = v->start;
-	for (ss = d->ssets, i = d->nssused; i > 0; ss++, i--)
-		if ((ss->flags & NOPROGRESS) && nopr < ss->lastseen)
-			nopr = ss->lastseen;
-	return nopr;
+ nopr = d->lastnopr;
+ if (nopr == ((void*)0))
+  nopr = v->start;
+ for (ss = d->ssets, i = d->nssused; i > 0; ss++, i--)
+  if ((ss->flags & NOPROGRESS) && nopr < ss->lastseen)
+   nopr = ss->lastseen;
+ return nopr;
 }

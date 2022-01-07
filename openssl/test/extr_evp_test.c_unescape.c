@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  OPENSSL_free (unsigned char*) ; 
- unsigned char* OPENSSL_malloc (size_t) ; 
- unsigned char* OPENSSL_zalloc (int) ; 
- int /*<<< orphan*/  TEST_error (char*) ; 
- int /*<<< orphan*/  TEST_ptr (unsigned char*) ; 
+ int OPENSSL_free (unsigned char*) ;
+ unsigned char* OPENSSL_malloc (size_t) ;
+ unsigned char* OPENSSL_zalloc (int) ;
+ int TEST_error (char*) ;
+ int TEST_ptr (unsigned char*) ;
 
 __attribute__((used)) static unsigned char* unescape(const char *input, size_t input_len,
                                size_t *out_len)
@@ -29,9 +21,9 @@ __attribute__((used)) static unsigned char* unescape(const char *input, size_t i
         return OPENSSL_zalloc(1);
     }
 
-    /* Escaping is non-expanding; over-allocate original size for simplicity. */
+
     if (!TEST_ptr(ret = p = OPENSSL_malloc(input_len)))
-        return NULL;
+        return ((void*)0);
 
     for (i = 0; i < input_len; i++) {
         if (*input == '\\') {
@@ -52,5 +44,5 @@ __attribute__((used)) static unsigned char* unescape(const char *input, size_t i
 
  err:
     OPENSSL_free(ret);
-    return NULL;
+    return ((void*)0);
 }

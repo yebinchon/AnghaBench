@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  CfgRw; } ;
-typedef  int /*<<< orphan*/  FOLDER ;
-typedef  TYPE_1__ EL ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * CfgCreateFolder (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CfgDeleteFolder (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ElSaveConfigToFolder (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SaveCfgRw (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TAG_ROOT ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int CfgRw; } ;
+typedef int FOLDER ;
+typedef TYPE_1__ EL ;
+
+
+ int * CfgCreateFolder (int *,int ) ;
+ int CfgDeleteFolder (int *) ;
+ int ElSaveConfigToFolder (TYPE_1__*,int *) ;
+ int SaveCfgRw (int ,int *) ;
+ int TAG_ROOT ;
 
 void ElSaveConfig(EL *e)
 {
-	FOLDER *root;
-	// Validate arguments
-	if (e == NULL)
-	{
-		return;
-	}
+ FOLDER *root;
 
-	root = CfgCreateFolder(NULL, TAG_ROOT);
+ if (e == ((void*)0))
+ {
+  return;
+ }
 
-	ElSaveConfigToFolder(e, root);
+ root = CfgCreateFolder(((void*)0), TAG_ROOT);
 
-	SaveCfgRw(e->CfgRw, root);
+ ElSaveConfigToFolder(e, root);
 
-	CfgDeleteFolder(root);
+ SaveCfgRw(e->CfgRw, root);
+
+ CfgDeleteFolder(root);
 }

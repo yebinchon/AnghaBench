@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int is384; void** state; scalar_t__* total; } ;
-typedef  TYPE_1__ mbedtls_sha512_context ;
+typedef TYPE_1__ mbedtls_sha512_context ;
 
-/* Variables and functions */
- void* UL64 (int) ; 
+
+ void* UL64 (int) ;
 
 void mbedtls_sha512_starts( mbedtls_sha512_context *ctx, int is384 )
 {
@@ -24,7 +24,7 @@ void mbedtls_sha512_starts( mbedtls_sha512_context *ctx, int is384 )
 
     if( is384 == 0 )
     {
-        /* SHA-512 */
+
         ctx->state[0] = UL64(0x6A09E667F3BCC908);
         ctx->state[1] = UL64(0xBB67AE8584CAA73B);
         ctx->state[2] = UL64(0x3C6EF372FE94F82B);
@@ -36,7 +36,7 @@ void mbedtls_sha512_starts( mbedtls_sha512_context *ctx, int is384 )
     }
     else
     {
-        /* SHA-384 */
+
         ctx->state[0] = UL64(0xCBBB9D5DC1059ED8);
         ctx->state[1] = UL64(0x629A292A367CD507);
         ctx->state[2] = UL64(0x9159015A3070DD17);

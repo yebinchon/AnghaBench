@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int DWORD ;
 
-/* Variables and functions */
- int FILE_APPEND_DATA ; 
- int FILE_DELETE_CHILD ; 
- int FILE_EXECUTE ; 
- int FILE_LIST_DIRECTORY ; 
- int FILE_READ_ATTRIBUTES ; 
- int FILE_READ_DATA ; 
- int FILE_READ_EA ; 
- int FILE_TRAVERSE ; 
- int FILE_WRITE_ATTRIBUTES ; 
- int FILE_WRITE_DATA ; 
- int FILE_WRITE_EA ; 
- int STANDARD_RIGHTS_READ ; 
- int STANDARD_RIGHTS_WRITE ; 
- int SYNCHRONIZE ; 
- int /*<<< orphan*/  dlog_file ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int g_debug_level ; 
+
+
+
+typedef int DWORD ;
+
+
+ int FILE_APPEND_DATA ;
+ int FILE_DELETE_CHILD ;
+ int FILE_EXECUTE ;
+ int FILE_LIST_DIRECTORY ;
+ int FILE_READ_ATTRIBUTES ;
+ int FILE_READ_DATA ;
+ int FILE_READ_EA ;
+ int FILE_TRAVERSE ;
+ int FILE_WRITE_ATTRIBUTES ;
+ int FILE_WRITE_DATA ;
+ int FILE_WRITE_EA ;
+ int STANDARD_RIGHTS_READ ;
+ int STANDARD_RIGHTS_WRITE ;
+ int SYNCHRONIZE ;
+ int dlog_file ;
+ int fprintf (int ,char*) ;
+ int g_debug_level ;
 
 void print_access_mask(int level, DWORD access_mask) {
     if (level > g_debug_level) return;

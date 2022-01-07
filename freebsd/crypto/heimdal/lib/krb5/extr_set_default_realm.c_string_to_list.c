@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * krb5_realm ;
-typedef  int /*<<< orphan*/  krb5_error_code ;
-typedef  int /*<<< orphan*/  krb5_context ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  N_ (char*,char*) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  krb5_set_error_message (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ ** malloc (int) ; 
- int /*<<< orphan*/ * strdup (char const*) ; 
+
+
+
+typedef int * krb5_realm ;
+typedef int krb5_error_code ;
+typedef int krb5_context ;
+
+
+ int ENOMEM ;
+ int N_ (char*,char*) ;
+ int free (int **) ;
+ int krb5_set_error_message (int ,int ,int ) ;
+ int ** malloc (int) ;
+ int * strdup (char const*) ;
 
 __attribute__((used)) static krb5_error_code
 string_to_list (krb5_context context, const char *s, krb5_realm **list)
 {
 
     *list = malloc (2 * sizeof(**list));
-    if (*list == NULL) {
-	krb5_set_error_message(context, ENOMEM,
-			       N_("malloc: out of memory", ""));
-	return ENOMEM;
+    if (*list == ((void*)0)) {
+ krb5_set_error_message(context, ENOMEM,
+          N_("malloc: out of memory", ""));
+ return ENOMEM;
     }
     (*list)[0] = strdup (s);
-    if ((*list)[0] == NULL) {
-	free (*list);
-	krb5_set_error_message(context, ENOMEM,
-			       N_("malloc: out of memory", ""));
-	return ENOMEM;
+    if ((*list)[0] == ((void*)0)) {
+ free (*list);
+ krb5_set_error_message(context, ENOMEM,
+          N_("malloc: out of memory", ""));
+ return ENOMEM;
     }
-    (*list)[1] = NULL;
+    (*list)[1] = ((void*)0);
     return 0;
 }

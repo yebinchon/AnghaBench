@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  OPENSSL_DIR_CTX ;
-typedef  int /*<<< orphan*/  BIO ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * BIO_new_file (char*,char*) ; 
- int /*<<< orphan*/  CONF_F_GET_NEXT_FILE ; 
- int /*<<< orphan*/  CONFerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ERR_R_MALLOC_FAILURE ; 
- int /*<<< orphan*/  OPENSSL_DIR_end (int /*<<< orphan*/ **) ; 
- char* OPENSSL_DIR_read (int /*<<< orphan*/ **,char const*) ; 
- int /*<<< orphan*/  OPENSSL_free (char*) ; 
- int /*<<< orphan*/  OPENSSL_strlcat (char*,char const*,size_t) ; 
- int /*<<< orphan*/  OPENSSL_strlcpy (char*,char const*,size_t) ; 
- char* OPENSSL_zalloc (size_t) ; 
- scalar_t__ strcasecmp (char const*,char*) ; 
- size_t strlen (char const*) ; 
+
+
+
+typedef int OPENSSL_DIR_CTX ;
+typedef int BIO ;
+
+
+ int * BIO_new_file (char*,char*) ;
+ int CONF_F_GET_NEXT_FILE ;
+ int CONFerr (int ,int ) ;
+ int ERR_R_MALLOC_FAILURE ;
+ int OPENSSL_DIR_end (int **) ;
+ char* OPENSSL_DIR_read (int **,char const*) ;
+ int OPENSSL_free (char*) ;
+ int OPENSSL_strlcat (char*,char const*,size_t) ;
+ int OPENSSL_strlcpy (char*,char const*,size_t) ;
+ char* OPENSSL_zalloc (size_t) ;
+ scalar_t__ strcasecmp (char const*,char*) ;
+ size_t strlen (char const*) ;
 
 __attribute__((used)) static BIO *get_next_file(const char *path, OPENSSL_DIR_CTX **dirctx)
 {
     const char *filename;
 
-    while ((filename = OPENSSL_DIR_read(dirctx, path)) != NULL) {
+    while ((filename = OPENSSL_DIR_read(dirctx, path)) != ((void*)0)) {
         size_t namelen;
 
         namelen = strlen(filename);
@@ -45,25 +45,10 @@ __attribute__((used)) static BIO *get_next_file(const char *path, OPENSSL_DIR_CT
 
             newlen = strlen(path) + namelen + 2;
             newpath = OPENSSL_zalloc(newlen);
-            if (newpath == NULL) {
+            if (newpath == ((void*)0)) {
                 CONFerr(CONF_F_GET_NEXT_FILE, ERR_R_MALLOC_FAILURE);
                 break;
             }
-#ifdef OPENSSL_SYS_VMS
-            /*
-             * If the given path isn't clear VMS syntax,
-             * we treat it as on Unix.
-             */
-            {
-                size_t pathlen = strlen(path);
-
-                if (path[pathlen - 1] == ']' || path[pathlen - 1] == '>'
-                    || path[pathlen - 1] == ':') {
-                    /* Clear VMS directory syntax, just copy as is */
-                    OPENSSL_strlcpy(newpath, path, newlen);
-                }
-            }
-#endif
             if (newpath[0] == '\0') {
                 OPENSSL_strlcpy(newpath, path, newlen);
                 OPENSSL_strlcat(newpath, "/", newlen);
@@ -72,12 +57,12 @@ __attribute__((used)) static BIO *get_next_file(const char *path, OPENSSL_DIR_CT
 
             bio = BIO_new_file(newpath, "r");
             OPENSSL_free(newpath);
-            /* Errors when opening files are non-fatal. */
-            if (bio != NULL)
+
+            if (bio != ((void*)0))
                 return bio;
         }
     }
     OPENSSL_DIR_end(dirctx);
-    *dirctx = NULL;
-    return NULL;
+    *dirctx = ((void*)0);
+    return ((void*)0);
 }

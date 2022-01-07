@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * LPCTSTR ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  _T (char) ; 
- int /*<<< orphan*/ * _tcsrchr (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int * LPCTSTR ;
+typedef int BOOL ;
+
+
+ int _T (char) ;
+ int * _tcsrchr (int *,int ) ;
 
 BOOL HasFileExtension(LPCTSTR szFilename)
 {
@@ -24,5 +24,5 @@ BOOL HasFileExtension(LPCTSTR szFilename)
     s = _tcsrchr(szFilename, _T('\\'));
     if (s)
         szFilename = s;
-    return _tcsrchr(szFilename, _T('.')) != NULL;
+    return _tcsrchr(szFilename, _T('.')) != ((void*)0);
 }

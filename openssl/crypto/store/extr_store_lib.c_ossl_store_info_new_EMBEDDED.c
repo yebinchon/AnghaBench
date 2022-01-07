@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int /*<<< orphan*/ * pem_name; int /*<<< orphan*/ * blob; } ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int * pem_name; int * blob; } ;
 struct TYPE_7__ {TYPE_2__ embedded; } ;
 struct TYPE_9__ {TYPE_1__ _; } ;
-typedef  TYPE_3__ OSSL_STORE_INFO ;
-typedef  int /*<<< orphan*/  BUF_MEM ;
+typedef TYPE_3__ OSSL_STORE_INFO ;
+typedef int BUF_MEM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR_R_MALLOC_FAILURE ; 
- int /*<<< orphan*/ * OPENSSL_strdup (char const*) ; 
- int /*<<< orphan*/  OSSL_STORE_F_OSSL_STORE_INFO_NEW_EMBEDDED ; 
- int /*<<< orphan*/  OSSL_STORE_INFO_EMBEDDED ; 
- int /*<<< orphan*/  OSSL_STORE_INFO_free (TYPE_3__*) ; 
- int /*<<< orphan*/  OSSL_STOREerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_3__* store_info_new (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int ERR_R_MALLOC_FAILURE ;
+ int * OPENSSL_strdup (char const*) ;
+ int OSSL_STORE_F_OSSL_STORE_INFO_NEW_EMBEDDED ;
+ int OSSL_STORE_INFO_EMBEDDED ;
+ int OSSL_STORE_INFO_free (TYPE_3__*) ;
+ int OSSL_STOREerr (int ,int ) ;
+ TYPE_3__* store_info_new (int ,int *) ;
 
 OSSL_STORE_INFO *ossl_store_info_new_EMBEDDED(const char *new_pem_name,
                                               BUF_MEM *embedded)
 {
-    OSSL_STORE_INFO *info = store_info_new(OSSL_STORE_INFO_EMBEDDED, NULL);
+    OSSL_STORE_INFO *info = store_info_new(OSSL_STORE_INFO_EMBEDDED, ((void*)0));
 
-    if (info == NULL) {
+    if (info == ((void*)0)) {
         OSSL_STOREerr(OSSL_STORE_F_OSSL_STORE_INFO_NEW_EMBEDDED,
                       ERR_R_MALLOC_FAILURE);
-        return NULL;
+        return ((void*)0);
     }
 
     info->_.embedded.blob = embedded;
     info->_.embedded.pem_name =
-        new_pem_name == NULL ? NULL : OPENSSL_strdup(new_pem_name);
+        new_pem_name == ((void*)0) ? ((void*)0) : OPENSSL_strdup(new_pem_name);
 
-    if (new_pem_name != NULL && info->_.embedded.pem_name == NULL) {
+    if (new_pem_name != ((void*)0) && info->_.embedded.pem_name == ((void*)0)) {
         OSSL_STOREerr(OSSL_STORE_F_OSSL_STORE_INFO_NEW_EMBEDDED,
                       ERR_R_MALLOC_FAILURE);
         OSSL_STORE_INFO_free(info);
-        info = NULL;
+        info = ((void*)0);
     }
 
     return info;

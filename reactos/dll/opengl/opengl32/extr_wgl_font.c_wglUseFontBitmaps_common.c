@@ -1,70 +1,70 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_21__   TYPE_8__ ;
-typedef  struct TYPE_20__   TYPE_7__ ;
-typedef  struct TYPE_19__   TYPE_6__ ;
-typedef  struct TYPE_18__   TYPE_5__ ;
-typedef  struct TYPE_17__   TYPE_4__ ;
-typedef  struct TYPE_16__   TYPE_3__ ;
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int UINT_PTR ;
-struct TYPE_21__ {int /*<<< orphan*/  (* PixelStorei ) (int /*<<< orphan*/ ,int) ;int /*<<< orphan*/  (* EndList ) () ;int /*<<< orphan*/  (* Bitmap ) (int,unsigned int,scalar_t__,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*) ;int /*<<< orphan*/  (* NewList ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* GetIntegerv ) (int /*<<< orphan*/ ,int*) ;} ;
-struct TYPE_18__ {scalar_t__ y; int /*<<< orphan*/  x; } ;
-struct TYPE_20__ {unsigned int gmBlackBoxX; unsigned int gmBlackBoxY; int /*<<< orphan*/  gmCellIncY; int /*<<< orphan*/  gmCellIncX; TYPE_5__ gmptGlyphOrigin; } ;
-struct TYPE_17__ {int member_1; int /*<<< orphan*/  member_0; } ;
-struct TYPE_16__ {int /*<<< orphan*/  member_1; int /*<<< orphan*/  member_0; } ;
-struct TYPE_15__ {int /*<<< orphan*/  member_1; int /*<<< orphan*/  member_0; } ;
-struct TYPE_14__ {int member_1; int /*<<< orphan*/  member_0; } ;
+
+
+typedef struct TYPE_21__ TYPE_8__ ;
+typedef struct TYPE_20__ TYPE_7__ ;
+typedef struct TYPE_19__ TYPE_6__ ;
+typedef struct TYPE_18__ TYPE_5__ ;
+typedef struct TYPE_17__ TYPE_4__ ;
+typedef struct TYPE_16__ TYPE_3__ ;
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
+typedef int UINT_PTR ;
+struct TYPE_21__ {int (* PixelStorei ) (int ,int) ;int (* EndList ) () ;int (* Bitmap ) (int,unsigned int,scalar_t__,scalar_t__,int ,int ,void*) ;int (* NewList ) (int ,int ) ;int (* GetIntegerv ) (int ,int*) ;} ;
+struct TYPE_18__ {scalar_t__ y; int x; } ;
+struct TYPE_20__ {unsigned int gmBlackBoxX; unsigned int gmBlackBoxY; int gmCellIncY; int gmCellIncX; TYPE_5__ gmptGlyphOrigin; } ;
+struct TYPE_17__ {int member_1; int member_0; } ;
+struct TYPE_16__ {int member_1; int member_0; } ;
+struct TYPE_15__ {int member_1; int member_0; } ;
+struct TYPE_14__ {int member_1; int member_0; } ;
 struct TYPE_19__ {TYPE_4__ member_3; TYPE_3__ member_2; TYPE_2__ member_1; TYPE_1__ member_0; } ;
-typedef  TYPE_6__ MAT2 ;
-typedef  int /*<<< orphan*/  HDC ;
-typedef  TYPE_7__ GLYPHMETRICS ;
-typedef  TYPE_8__ GLDISPATCHTABLE ;
-typedef  unsigned int DWORD ;
-typedef  int BOOL ;
+typedef TYPE_6__ MAT2 ;
+typedef int HDC ;
+typedef TYPE_7__ GLYPHMETRICS ;
+typedef TYPE_8__ GLDISPATCHTABLE ;
+typedef unsigned int DWORD ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int FALSE ; 
- unsigned int GDI_ERROR ; 
- int /*<<< orphan*/  GGO_BITMAP ; 
- int /*<<< orphan*/  GL_COMPILE ; 
- int /*<<< orphan*/  GL_UNPACK_ALIGNMENT ; 
- unsigned int GetGlyphOutlineA (int /*<<< orphan*/ ,unsigned int,int /*<<< orphan*/ ,TYPE_7__*,unsigned int,void*,TYPE_6__ const*) ; 
- unsigned int GetGlyphOutlineW (int /*<<< orphan*/ ,unsigned int,int /*<<< orphan*/ ,TYPE_7__*,unsigned int,void*,TYPE_6__ const*) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HEAP_ZERO_MEMORY ; 
- void* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*) ; 
- TYPE_8__* IntGetCurrentDispatchTable () ; 
- int /*<<< orphan*/  TRACE (char*,...) ; 
- scalar_t__ TRACE_ON (int /*<<< orphan*/ ) ; 
- int TRUE ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  stub3 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub4 (int,unsigned int,scalar_t__,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*) ; 
- int /*<<< orphan*/  stub5 (int,unsigned int,scalar_t__,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*) ; 
- int /*<<< orphan*/  stub6 () ; 
- int /*<<< orphan*/  stub7 (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  wgl ; 
+
+ int FALSE ;
+ unsigned int GDI_ERROR ;
+ int GGO_BITMAP ;
+ int GL_COMPILE ;
+ int GL_UNPACK_ALIGNMENT ;
+ unsigned int GetGlyphOutlineA (int ,unsigned int,int ,TYPE_7__*,unsigned int,void*,TYPE_6__ const*) ;
+ unsigned int GetGlyphOutlineW (int ,unsigned int,int ,TYPE_7__*,unsigned int,void*,TYPE_6__ const*) ;
+ int GetProcessHeap () ;
+ int HEAP_ZERO_MEMORY ;
+ void* HeapAlloc (int ,int ,unsigned int) ;
+ int HeapFree (int ,int ,void*) ;
+ TYPE_8__* IntGetCurrentDispatchTable () ;
+ int TRACE (char*,...) ;
+ scalar_t__ TRACE_ON (int ) ;
+ int TRUE ;
+ int stub1 (int ,int*) ;
+ int stub2 (int ,int) ;
+ int stub3 (int ,int ) ;
+ int stub4 (int,unsigned int,scalar_t__,scalar_t__,int ,int ,void*) ;
+ int stub5 (int,unsigned int,scalar_t__,scalar_t__,int ,int ,void*) ;
+ int stub6 () ;
+ int stub7 (int ,int) ;
+ int wgl ;
 
 __attribute__((used)) static BOOL wglUseFontBitmaps_common( HDC hdc, DWORD first, DWORD count, DWORD listBase, BOOL unicode )
 {
     const GLDISPATCHTABLE * funcs = IntGetCurrentDispatchTable();
     GLYPHMETRICS gm;
     unsigned int glyph, size = 0;
-    void *bitmap = NULL, *gl_bitmap = NULL;
+    void *bitmap = ((void*)0), *gl_bitmap = ((void*)0);
     int org_alignment;
     BOOL ret = TRUE;
 
@@ -76,9 +76,9 @@ __attribute__((used)) static BOOL wglUseFontBitmaps_common( HDC hdc, DWORD first
         unsigned int needed_size, height, width, width_int;
 
         if (unicode)
-            needed_size = GetGlyphOutlineW(hdc, glyph, GGO_BITMAP, &gm, 0, NULL, &identity);
+            needed_size = GetGlyphOutlineW(hdc, glyph, GGO_BITMAP, &gm, 0, ((void*)0), &identity);
         else
-            needed_size = GetGlyphOutlineA(hdc, glyph, GGO_BITMAP, &gm, 0, NULL, &identity);
+            needed_size = GetGlyphOutlineA(hdc, glyph, GGO_BITMAP, &gm, 0, ((void*)0), &identity);
 
         TRACE("Glyph: %3d / List: %d size %d\n", glyph, listBase, needed_size);
         if (needed_size == GDI_ERROR) {
@@ -126,9 +126,9 @@ __attribute__((used)) static BOOL wglUseFontBitmaps_common( HDC hdc, DWORD first
             }
         }
 
-         /* In OpenGL, the bitmap is drawn from the bottom to the top... So we need to invert the
-         * glyph for it to be drawn properly.
-         */
+
+
+
         if (needed_size != 0) {
             width_int = (gm.gmBlackBoxX + 31) / 32;
             for (height = 0; height < gm.gmBlackBoxY; height++) {
@@ -146,8 +146,8 @@ __attribute__((used)) static BOOL wglUseFontBitmaps_common( HDC hdc, DWORD first
                     gm.gmCellIncX, gm.gmCellIncY,
                     gl_bitmap);
         } else {
-            /* This is the case of 'empty' glyphs like the space character */
-            funcs->Bitmap(0, 0, 0, 0, gm.gmCellIncX, gm.gmCellIncY, NULL);
+
+            funcs->Bitmap(0, 0, 0, 0, gm.gmCellIncX, gm.gmCellIncY, ((void*)0));
         }
         funcs->EndList();
     }

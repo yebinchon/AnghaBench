@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t uint8_t ;
-typedef  int uint32_t ;
-struct TYPE_5__ {scalar_t__ family; TYPE_1__* packethandlers; int /*<<< orphan*/  sock; } ;
-struct TYPE_4__ {int /*<<< orphan*/  object; int /*<<< orphan*/  (* function ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,size_t*,int) ;} ;
-typedef  TYPE_2__ Networking_Core ;
-typedef  int /*<<< orphan*/  IP_Port ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOGGER_WARNING (char*,size_t) ; 
- int MAX_UDP_PACKET_SIZE ; 
- int receivepacket (int /*<<< orphan*/ ,int /*<<< orphan*/ *,size_t*,int*) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,size_t*,int) ; 
- int /*<<< orphan*/  unix_time_update () ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef size_t uint8_t ;
+typedef int uint32_t ;
+struct TYPE_5__ {scalar_t__ family; TYPE_1__* packethandlers; int sock; } ;
+struct TYPE_4__ {int object; int (* function ) (int ,int ,size_t*,int) ;} ;
+typedef TYPE_2__ Networking_Core ;
+typedef int IP_Port ;
+
+
+ int LOGGER_WARNING (char*,size_t) ;
+ int MAX_UDP_PACKET_SIZE ;
+ int receivepacket (int ,int *,size_t*,int*) ;
+ int stub1 (int ,int ,size_t*,int) ;
+ int unix_time_update () ;
 
 void networking_poll(Networking_Core *net)
 {
-    if (net->family == 0) /* Socket not initialized */
+    if (net->family == 0)
         return;
 
     unix_time_update();

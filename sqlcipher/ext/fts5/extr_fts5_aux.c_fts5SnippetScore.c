@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int sqlite3_int64 ;
-struct TYPE_3__ {int (* xInstCount ) (int /*<<< orphan*/ *,int*) ;int (* xInst ) (int /*<<< orphan*/ *,int,int*,int*,int*) ;int (* xPhraseSize ) (int /*<<< orphan*/ *,int) ;} ;
-typedef  TYPE_1__ Fts5ExtensionApi ;
-typedef  int /*<<< orphan*/  Fts5Context ;
 
-/* Variables and functions */
- int SQLITE_OK ; 
- int stub1 (int /*<<< orphan*/ *,int*) ; 
- int stub2 (int /*<<< orphan*/ *,int,int*,int*,int*) ; 
- int stub3 (int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int sqlite3_int64 ;
+struct TYPE_3__ {int (* xInstCount ) (int *,int*) ;int (* xInst ) (int *,int,int*,int*,int*) ;int (* xPhraseSize ) (int *,int) ;} ;
+typedef TYPE_1__ Fts5ExtensionApi ;
+typedef int Fts5Context ;
+
+
+ int SQLITE_OK ;
+ int stub1 (int *,int*) ;
+ int stub2 (int *,int,int*,int*,int*) ;
+ int stub3 (int *,int) ;
 
 __attribute__((used)) static int fts5SnippetScore(
-  const Fts5ExtensionApi *pApi,   /* API offered by current FTS version */
-  Fts5Context *pFts,              /* First arg to pass to pApi functions */
-  int nDocsize,                   /* Size of column in tokens */
-  unsigned char *aSeen,           /* Array with one element per query phrase */
-  int iCol,                       /* Column to score */
-  int iPos,                       /* Starting offset to score */
-  int nToken,                     /* Max tokens per snippet */
-  int *pnScore,                   /* OUT: Score */
-  int *piPos                      /* OUT: Adjusted offset */
+  const Fts5ExtensionApi *pApi,
+  Fts5Context *pFts,
+  int nDocsize,
+  unsigned char *aSeen,
+  int iCol,
+  int iPos,
+  int nToken,
+  int *pnScore,
+  int *piPos
 ){
   int rc;
   int i;

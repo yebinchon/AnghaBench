@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_8__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  opt ;
-typedef  int /*<<< orphan*/  gboolean ;
-typedef  int /*<<< orphan*/  data ;
-struct TYPE_15__ {int /*<<< orphan*/  commit_mgr; int /*<<< orphan*/  repo_mgr; } ;
-struct TYPE_14__ {struct TYPE_14__* data; int /*<<< orphan*/  dir_cb; int /*<<< orphan*/  file_cb; int /*<<< orphan*/  version; int /*<<< orphan*/  store_id; int /*<<< orphan*/  fold_dir_diff; int /*<<< orphan*/ ** results; } ;
-struct TYPE_13__ {char* root_id; int /*<<< orphan*/ * second_parent_id; int /*<<< orphan*/ * parent_id; int /*<<< orphan*/  repo_id; } ;
-struct TYPE_12__ {int /*<<< orphan*/  version; int /*<<< orphan*/  id; } ;
-typedef  TYPE_1__ SeafRepo ;
-typedef  TYPE_2__ SeafCommit ;
-typedef  int /*<<< orphan*/  GList ;
-typedef  TYPE_3__ DiffOptions ;
-typedef  TYPE_3__ DiffData ;
 
-/* Variables and functions */
- int /*<<< orphan*/  diff_resolve_renames (int /*<<< orphan*/ **) ; 
- int diff_trees (int,char const**,TYPE_3__*) ; 
- int /*<<< orphan*/  g_return_val_if_fail (int,int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  memset (TYPE_3__*,int /*<<< orphan*/ ,int) ; 
- TYPE_8__* seaf ; 
- TYPE_2__* seaf_commit_manager_get_commit (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  seaf_commit_unref (TYPE_2__*) ; 
- TYPE_1__* seaf_repo_manager_get_repo (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  seaf_warning (char*,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  threeway_diff_dirs ; 
- int /*<<< orphan*/  threeway_diff_files ; 
+
+typedef struct TYPE_15__ TYPE_8__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+typedef int opt ;
+typedef int gboolean ;
+typedef int data ;
+struct TYPE_15__ {int commit_mgr; int repo_mgr; } ;
+struct TYPE_14__ {struct TYPE_14__* data; int dir_cb; int file_cb; int version; int store_id; int fold_dir_diff; int ** results; } ;
+struct TYPE_13__ {char* root_id; int * second_parent_id; int * parent_id; int repo_id; } ;
+struct TYPE_12__ {int version; int id; } ;
+typedef TYPE_1__ SeafRepo ;
+typedef TYPE_2__ SeafCommit ;
+typedef int GList ;
+typedef TYPE_3__ DiffOptions ;
+typedef TYPE_3__ DiffData ;
+
+
+ int diff_resolve_renames (int **) ;
+ int diff_trees (int,char const**,TYPE_3__*) ;
+ int g_return_val_if_fail (int,int) ;
+ int memcpy (int ,int ,int) ;
+ int memset (TYPE_3__*,int ,int) ;
+ TYPE_8__* seaf ;
+ TYPE_2__* seaf_commit_manager_get_commit (int ,int ,int ,int *) ;
+ int seaf_commit_unref (TYPE_2__*) ;
+ TYPE_1__* seaf_repo_manager_get_repo (int ,int ) ;
+ int seaf_warning (char*,int ,...) ;
+ int threeway_diff_dirs ;
+ int threeway_diff_files ;
 
 int
 diff_merge (SeafCommit *merge, GList **results, gboolean fold_dir_diff)
 {
-    SeafRepo *repo = NULL;
+    SeafRepo *repo = ((void*)0);
     DiffOptions opt;
     const char *roots[3];
     SeafCommit *parent1, *parent2;
 
-    g_return_val_if_fail (*results == NULL, -1);
-    g_return_val_if_fail (merge->parent_id != NULL &&
-                          merge->second_parent_id != NULL,
+    g_return_val_if_fail (*results == ((void*)0), -1);
+    g_return_val_if_fail (merge->parent_id != ((void*)0) &&
+                          merge->second_parent_id != ((void*)0),
                           -1);
 
     repo = seaf_repo_manager_get_repo (seaf->repo_mgr, merge->repo_id);

@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct vdp_functions {int /*<<< orphan*/  (* video_surface_create ) (int /*<<< orphan*/ ,scalar_t__,int,int,scalar_t__*) ;int /*<<< orphan*/  (* output_surface_create ) (int /*<<< orphan*/ ,scalar_t__,int,int,scalar_t__*) ;int /*<<< orphan*/  (* video_surface_destroy ) (scalar_t__) ;int /*<<< orphan*/  (* output_surface_destroy ) (scalar_t__) ;} ;
-struct surface_entry {int allocated; int w; int h; int rgb; scalar_t__ chroma; scalar_t__ rgb_format; scalar_t__ osurface; scalar_t__ surface; scalar_t__ age; int /*<<< orphan*/  in_use; } ;
-struct mp_vdpau_ctx {int /*<<< orphan*/  pool_lock; int /*<<< orphan*/  vdp_device; struct surface_entry* video_surfaces; struct vdp_functions vdp; } ;
+
+
+
+
+struct vdp_functions {int (* video_surface_create ) (int ,scalar_t__,int,int,scalar_t__*) ;int (* output_surface_create ) (int ,scalar_t__,int,int,scalar_t__*) ;int (* video_surface_destroy ) (scalar_t__) ;int (* output_surface_destroy ) (scalar_t__) ;} ;
+struct surface_entry {int allocated; int w; int h; int rgb; scalar_t__ chroma; scalar_t__ rgb_format; scalar_t__ osurface; scalar_t__ surface; scalar_t__ age; int in_use; } ;
+struct mp_vdpau_ctx {int pool_lock; int vdp_device; struct surface_entry* video_surfaces; struct vdp_functions vdp; } ;
 struct mp_image {int dummy; } ;
-typedef  int /*<<< orphan*/  VdpStatus ;
-typedef  scalar_t__ VdpRGBAFormat ;
-typedef  scalar_t__ VdpChromaType ;
+typedef int VdpStatus ;
+typedef scalar_t__ VdpRGBAFormat ;
+typedef scalar_t__ VdpChromaType ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHECK_VDP_WARNING (struct mp_vdpau_ctx*,char*) ; 
- int MAX_VIDEO_SURFACES ; 
- int /*<<< orphan*/  MP_ERR (struct mp_vdpau_ctx*,char*) ; 
- scalar_t__ VDP_INVALID_HANDLE ; 
- int /*<<< orphan*/  assert (int) ; 
- struct mp_image* create_ref (struct mp_vdpau_ctx*,int) ; 
- scalar_t__ mp_vdpau_handle_preemption (struct mp_vdpau_ctx*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub1 (scalar_t__) ; 
- int /*<<< orphan*/  stub2 (scalar_t__) ; 
- int /*<<< orphan*/  stub3 (int /*<<< orphan*/ ,scalar_t__,int,int,scalar_t__*) ; 
- int /*<<< orphan*/  stub4 (int /*<<< orphan*/ ,scalar_t__,int,int,scalar_t__*) ; 
+
+ int CHECK_VDP_WARNING (struct mp_vdpau_ctx*,char*) ;
+ int MAX_VIDEO_SURFACES ;
+ int MP_ERR (struct mp_vdpau_ctx*,char*) ;
+ scalar_t__ VDP_INVALID_HANDLE ;
+ int assert (int) ;
+ struct mp_image* create_ref (struct mp_vdpau_ctx*,int) ;
+ scalar_t__ mp_vdpau_handle_preemption (struct mp_vdpau_ctx*,int *) ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
+ int stub1 (scalar_t__) ;
+ int stub2 (scalar_t__) ;
+ int stub3 (int ,scalar_t__,int,int,scalar_t__*) ;
+ int stub4 (int ,scalar_t__,int,int,scalar_t__*) ;
 
 __attribute__((used)) static struct mp_image *mp_vdpau_get_surface(struct mp_vdpau_ctx *ctx,
                                              VdpChromaType chroma,
@@ -50,7 +50,7 @@ __attribute__((used)) static struct mp_image *mp_vdpau_get_surface(struct mp_vdp
 
     pthread_mutex_lock(&ctx->pool_lock);
 
-    // Destroy all unused surfaces that don't have matching parameters
+
     for (int n = 0; n < MAX_VIDEO_SURFACES; n++) {
         struct surface_entry *e = &ctx->video_surfaces[n];
         if (!e->in_use && e->allocated) {
@@ -64,12 +64,12 @@ __attribute__((used)) static struct mp_image *mp_vdpau_get_surface(struct mp_vdp
                 }
                 CHECK_VDP_WARNING(ctx, "Error when destroying surface");
                 e->surface = e->osurface = VDP_INVALID_HANDLE;
-                e->allocated = false;
+                e->allocated = 0;
             }
         }
     }
 
-    // Try to find an existing unused surface
+
     for (int n = 0; n < MAX_VIDEO_SURFACES; n++) {
         struct surface_entry *e = &ctx->video_surfaces[n];
         if (!e->in_use && e->allocated) {
@@ -89,7 +89,7 @@ __attribute__((used)) static struct mp_image *mp_vdpau_get_surface(struct mp_vdp
     if (surface_index >= 0)
         goto done;
 
-    // Allocate new surface
+
     for (int n = 0; n < MAX_VIDEO_SURFACES; n++) {
         struct surface_entry *e = &ctx->video_surfaces[n];
         if (!e->in_use) {
@@ -101,7 +101,7 @@ __attribute__((used)) static struct mp_image *mp_vdpau_get_surface(struct mp_vdp
             e->rgb = rgb;
             e->w = w;
             e->h = h;
-            if (mp_vdpau_handle_preemption(ctx, NULL) >= 0) {
+            if (mp_vdpau_handle_preemption(ctx, ((void*)0)) >= 0) {
                 if (rgb) {
                     vdp_st = vdp->output_surface_create(ctx->vdp_device, rgb_format,
                                                         w, h, &e->osurface);
@@ -113,7 +113,7 @@ __attribute__((used)) static struct mp_image *mp_vdpau_get_surface(struct mp_vdp
                 }
                 CHECK_VDP_WARNING(ctx, "Error when allocating surface");
             } else {
-                e->allocated = false;
+                e->allocated = 0;
                 e->osurface = VDP_INVALID_HANDLE;
                 e->surface = VDP_INVALID_HANDLE;
             }
@@ -123,7 +123,7 @@ __attribute__((used)) static struct mp_image *mp_vdpau_get_surface(struct mp_vdp
     }
 
 done: ;
-    struct mp_image *mpi = NULL;
+    struct mp_image *mpi = ((void*)0);
     if (surface_index >= 0)
         mpi = create_ref(ctx, surface_index);
 

@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct sigaction {int /*<<< orphan*/  sa_handler; scalar_t__ sa_flags; int /*<<< orphan*/  sa_mask; } ;
-typedef  int /*<<< orphan*/  sigset_t ;
-typedef  int /*<<< orphan*/  sa ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOG_CRIT ; 
- int /*<<< orphan*/  SIGABRT ; 
- int /*<<< orphan*/  SIG_BLOCK ; 
- int /*<<< orphan*/  SIG_DFL ; 
- int /*<<< orphan*/  _exit (int) ; 
- int /*<<< orphan*/  getpid () ; 
- int /*<<< orphan*/  kill (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (struct sigaction*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  sigaction (int /*<<< orphan*/ ,struct sigaction*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sigdelset (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sigemptyset (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sigfillset (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sigprocmask (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  syslog (int /*<<< orphan*/ ,char*,char const*) ; 
+
+
+
+struct sigaction {int sa_handler; scalar_t__ sa_flags; int sa_mask; } ;
+typedef int sigset_t ;
+typedef int sa ;
+
+
+ int LOG_CRIT ;
+ int SIGABRT ;
+ int SIG_BLOCK ;
+ int SIG_DFL ;
+ int _exit (int) ;
+ int getpid () ;
+ int kill (int ,int ) ;
+ int memset (struct sigaction*,int ,int) ;
+ int sigaction (int ,struct sigaction*,int *) ;
+ int sigdelset (int *,int ) ;
+ int sigemptyset (int *) ;
+ int sigfillset (int *) ;
+ int sigprocmask (int ,int *,int *) ;
+ int syslog (int ,char*,char const*) ;
 
 __attribute__((used)) static void
 __fail(const char *msg)
 {
-	struct sigaction sa;
-	sigset_t mask;
+ struct sigaction sa;
+ sigset_t mask;
 
-	/* Immediately block all signal handlers from running code */
-	(void)sigfillset(&mask);
-	(void)sigdelset(&mask, SIGABRT);
-	(void)sigprocmask(SIG_BLOCK, &mask, NULL);
 
-	/* This may fail on a chroot jail... */
-	syslog(LOG_CRIT, "%s", msg);
+ (void)sigfillset(&mask);
+ (void)sigdelset(&mask, SIGABRT);
+ (void)sigprocmask(SIG_BLOCK, &mask, ((void*)0));
 
-	(void)memset(&sa, 0, sizeof(sa));
-	(void)sigemptyset(&sa.sa_mask);
-	sa.sa_flags = 0;
-	sa.sa_handler = SIG_DFL;
-	(void)sigaction(SIGABRT, &sa, NULL);
-	(void)kill(getpid(), SIGABRT);
-	_exit(127);
+
+ syslog(LOG_CRIT, "%s", msg);
+
+ (void)memset(&sa, 0, sizeof(sa));
+ (void)sigemptyset(&sa.sa_mask);
+ sa.sa_flags = 0;
+ sa.sa_handler = SIG_DFL;
+ (void)sigaction(SIGABRT, &sa, ((void*)0));
+ (void)kill(getpid(), SIGABRT);
+ _exit(127);
 }

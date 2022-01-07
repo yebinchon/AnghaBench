@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/ * ppPins; } ;
-typedef  TYPE_1__ TestFilterImpl ;
-struct TYPE_9__ {int /*<<< orphan*/  achName; int /*<<< orphan*/  pGraph; } ;
-struct TYPE_8__ {int /*<<< orphan*/  pFilter; } ;
-typedef  TYPE_2__ PIN_INFO ;
-typedef  int /*<<< orphan*/  IPin ;
-typedef  scalar_t__ HRESULT ;
-typedef  TYPE_3__ FILTER_INFO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CP_ACP ; 
- scalar_t__ ERROR_CALL_NOT_IMPLEMENTED ; 
- scalar_t__ E_NOTIMPL ; 
- scalar_t__ GetLastError () ; 
- scalar_t__ IBaseFilter_QueryFilterInfo (int /*<<< orphan*/ ,TYPE_3__*) ; 
- int /*<<< orphan*/  IBaseFilter_Release (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IFilterGraph_Release (int /*<<< orphan*/ ) ; 
- scalar_t__ IPin_ConnectedTo (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- scalar_t__ IPin_QueryPinInfo (int /*<<< orphan*/ *,TYPE_2__*) ; 
- int /*<<< orphan*/  IPin_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  MAX_FILTER_NAME ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  SetLastError (int) ; 
- int /*<<< orphan*/  WideCharToMultiByte (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int * ppPins; } ;
+typedef TYPE_1__ TestFilterImpl ;
+struct TYPE_9__ {int achName; int pGraph; } ;
+struct TYPE_8__ {int pFilter; } ;
+typedef TYPE_2__ PIN_INFO ;
+typedef int IPin ;
+typedef scalar_t__ HRESULT ;
+typedef TYPE_3__ FILTER_INFO ;
+
+
+ int CP_ACP ;
+ scalar_t__ ERROR_CALL_NOT_IMPLEMENTED ;
+ scalar_t__ E_NOTIMPL ;
+ scalar_t__ GetLastError () ;
+ scalar_t__ IBaseFilter_QueryFilterInfo (int ,TYPE_3__*) ;
+ int IBaseFilter_Release (int ) ;
+ int IFilterGraph_Release (int ) ;
+ scalar_t__ IPin_ConnectedTo (int ,int **) ;
+ scalar_t__ IPin_QueryPinInfo (int *,TYPE_2__*) ;
+ int IPin_Release (int *) ;
+ int MAX_FILTER_NAME ;
+ scalar_t__ S_OK ;
+ int SetLastError (int) ;
+ int WideCharToMultiByte (int ,int ,int ,int,char*,int ,int *,int *) ;
+ int ok (int,char*,scalar_t__) ;
 
 __attribute__((used)) static HRESULT get_connected_filter_name(TestFilterImpl *pFilter, char *FilterName)
 {
-    IPin *pin = NULL;
+    IPin *pin = ((void*)0);
     PIN_INFO pinInfo;
     FILTER_INFO filterInfo;
     HRESULT hr;
@@ -67,7 +67,7 @@ __attribute__((used)) static HRESULT get_connected_filter_name(TestFilterImpl *p
 
     IFilterGraph_Release(filterInfo.pGraph);
 
-    WideCharToMultiByte(CP_ACP, 0, filterInfo.achName, -1, FilterName, MAX_FILTER_NAME, NULL, NULL);
+    WideCharToMultiByte(CP_ACP, 0, filterInfo.achName, -1, FilterName, MAX_FILTER_NAME, ((void*)0), ((void*)0));
 
     return S_OK;
 }

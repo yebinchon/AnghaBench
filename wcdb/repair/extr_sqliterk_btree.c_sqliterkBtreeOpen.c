@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqliterk_pager ;
-struct TYPE_6__ {int maxLocal; int minLocal; int maxLeaf; int minLeaf; int /*<<< orphan*/ * rk; int /*<<< orphan*/ * pager; int /*<<< orphan*/  rootpage; int /*<<< orphan*/  type; } ;
-typedef  TYPE_1__ sqliterk_btree ;
-typedef  int /*<<< orphan*/  sqliterk ;
 
-/* Variables and functions */
- int SQLITERK_DAMAGED ; 
- int SQLITERK_MISUSE ; 
- int SQLITERK_NOMEM ; 
- int SQLITERK_OK ; 
- int /*<<< orphan*/  sqliterkBtreeClose (TYPE_1__*) ; 
- int sqliterkBtreeSetMeta (TYPE_1__*,char*,int /*<<< orphan*/ ) ; 
- TYPE_1__* sqliterkOSMalloc (int) ; 
- int sqliterkPageAcquire (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqliterkPageClearData (int /*<<< orphan*/ ) ; 
- int sqliterkPageGetType (int /*<<< orphan*/ ) ; 
- int sqliterkPagerGetUsableSize (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqliterk_btree_type_index ; 
- int /*<<< orphan*/  sqliterk_btree_type_master ; 
- int /*<<< orphan*/  sqliterk_btree_type_table ; 
-#define  sqliterk_page_type_interior_index 131 
-#define  sqliterk_page_type_interior_table 130 
-#define  sqliterk_page_type_leaf_index 129 
-#define  sqliterk_page_type_leaf_table 128 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int sqliterk_pager ;
+struct TYPE_6__ {int maxLocal; int minLocal; int maxLeaf; int minLeaf; int * rk; int * pager; int rootpage; int type; } ;
+typedef TYPE_1__ sqliterk_btree ;
+typedef int sqliterk ;
+
+
+ int SQLITERK_DAMAGED ;
+ int SQLITERK_MISUSE ;
+ int SQLITERK_NOMEM ;
+ int SQLITERK_OK ;
+ int sqliterkBtreeClose (TYPE_1__*) ;
+ int sqliterkBtreeSetMeta (TYPE_1__*,char*,int ) ;
+ TYPE_1__* sqliterkOSMalloc (int) ;
+ int sqliterkPageAcquire (int *,int,int *) ;
+ int sqliterkPageClearData (int ) ;
+ int sqliterkPageGetType (int ) ;
+ int sqliterkPagerGetUsableSize (int *) ;
+ int sqliterk_btree_type_index ;
+ int sqliterk_btree_type_master ;
+ int sqliterk_btree_type_table ;
+
+
+
+
 
 int sqliterkBtreeOpen(sqliterk *rk,
                       sqliterk_pager *pager,
@@ -64,12 +64,12 @@ int sqliterkBtreeOpen(sqliterk *rk,
         }
     } else {
         switch (sqliterkPageGetType(theBtree->rootpage)) {
-            case sqliterk_page_type_interior_index:
-            case sqliterk_page_type_leaf_index:
+            case 131:
+            case 129:
                 theBtree->type = sqliterk_btree_type_index;
                 break;
-            case sqliterk_page_type_interior_table:
-            case sqliterk_page_type_leaf_table:
+            case 130:
+            case 128:
                 theBtree->type = sqliterk_btree_type_table;
                 break;
             default:
@@ -77,7 +77,7 @@ int sqliterkBtreeOpen(sqliterk *rk,
                 goto sqliterkBtreeOpen_Failed;
         }
     }
-    // Save memory
+
     sqliterkPageClearData(theBtree->rootpage);
 
     theBtree->maxLocal =
@@ -97,6 +97,6 @@ sqliterkBtreeOpen_Failed:
     if (theBtree) {
         sqliterkBtreeClose(theBtree);
     }
-    *btree = NULL;
+    *btree = ((void*)0);
     return rc;
 }

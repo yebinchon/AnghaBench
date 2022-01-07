@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Oid ;
-typedef  scalar_t__ LockAcquireResult ;
-typedef  int /*<<< orphan*/  LOCKTAG ;
-typedef  int /*<<< orphan*/  LOCKMODE ;
-typedef  int /*<<< orphan*/  LOCALLOCK ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AcceptInvalidationMessages () ; 
- scalar_t__ LOCKACQUIRE_ALREADY_CLEAR ; 
- scalar_t__ LOCKACQUIRE_NOT_AVAIL ; 
- scalar_t__ LockAcquireExtended (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int,int,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  MarkLockClear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SetLocktagRelationOid (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int Oid ;
+typedef scalar_t__ LockAcquireResult ;
+typedef int LOCKTAG ;
+typedef int LOCKMODE ;
+typedef int LOCALLOCK ;
+
+
+ int AcceptInvalidationMessages () ;
+ scalar_t__ LOCKACQUIRE_ALREADY_CLEAR ;
+ scalar_t__ LOCKACQUIRE_NOT_AVAIL ;
+ scalar_t__ LockAcquireExtended (int *,int ,int,int,int,int **) ;
+ int MarkLockClear (int *) ;
+ int SetLocktagRelationOid (int *,int ) ;
 
 bool
 ConditionalLockRelationOid(Oid relid, LOCKMODE lockmode)
 {
-	LOCKTAG		tag;
-	LOCALLOCK  *locallock;
-	LockAcquireResult res;
+ LOCKTAG tag;
+ LOCALLOCK *locallock;
+ LockAcquireResult res;
 
-	SetLocktagRelationOid(&tag, relid);
+ SetLocktagRelationOid(&tag, relid);
 
-	res = LockAcquireExtended(&tag, lockmode, false, true, true, &locallock);
+ res = LockAcquireExtended(&tag, lockmode, 0, 1, 1, &locallock);
 
-	if (res == LOCKACQUIRE_NOT_AVAIL)
-		return false;
+ if (res == LOCKACQUIRE_NOT_AVAIL)
+  return 0;
 
-	/*
-	 * Now that we have the lock, check for invalidation messages; see notes
-	 * in LockRelationOid.
-	 */
-	if (res != LOCKACQUIRE_ALREADY_CLEAR)
-	{
-		AcceptInvalidationMessages();
-		MarkLockClear(locallock);
-	}
 
-	return true;
+
+
+
+ if (res != LOCKACQUIRE_ALREADY_CLEAR)
+ {
+  AcceptInvalidationMessages();
+  MarkLockClear(locallock);
+ }
+
+ return 1;
 }

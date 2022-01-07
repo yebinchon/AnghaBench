@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_19__   TYPE_4__ ;
-typedef  struct TYPE_18__   TYPE_3__ ;
-typedef  struct TYPE_17__   TYPE_2__ ;
-typedef  struct TYPE_16__   TYPE_1__ ;
-typedef  struct TYPE_15__   TYPE_14__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  text ;
+
+
+typedef struct TYPE_19__ TYPE_4__ ;
+typedef struct TYPE_18__ TYPE_3__ ;
+typedef struct TYPE_17__ TYPE_2__ ;
+typedef struct TYPE_16__ TYPE_1__ ;
+typedef struct TYPE_15__ TYPE_14__ ;
+
+
+typedef int text ;
 struct TYPE_19__ {TYPE_3__** outputs; TYPE_1__* priv; } ;
 struct TYPE_18__ {int frame_count_in; int h; TYPE_4__* dst; } ;
-struct TYPE_17__ {int /*<<< orphan*/  linesize; int /*<<< orphan*/  data; int /*<<< orphan*/  height; int /*<<< orphan*/  width; } ;
-struct TYPE_16__ {int nb_values; int width; int height; int statistics; int nb_comps; int components; size_t* rgba_map; scalar_t__ oy; scalar_t__ ox; int /*<<< orphan*/  white; int /*<<< orphan*/  draw; scalar_t__ is_rgb; TYPE_14__* values; int /*<<< orphan*/  (* draw_trace ) (TYPE_1__*,TYPE_2__*) ;int /*<<< orphan*/  gray; scalar_t__ grid; int /*<<< orphan*/  dark; int /*<<< orphan*/  y2; int /*<<< orphan*/  x2; int /*<<< orphan*/  y1; int /*<<< orphan*/  x1; } ;
+struct TYPE_17__ {int linesize; int data; int height; int width; } ;
+struct TYPE_16__ {int nb_values; int width; int height; int statistics; int nb_comps; int components; size_t* rgba_map; scalar_t__ oy; scalar_t__ ox; int white; int draw; scalar_t__ is_rgb; TYPE_14__* values; int (* draw_trace ) (TYPE_1__*,TYPE_2__*) ;int gray; scalar_t__ grid; int dark; int y2; int x2; int y1; int x1; } ;
 struct TYPE_15__ {scalar_t__* p; } ;
-typedef  TYPE_1__ OscilloscopeContext ;
-typedef  TYPE_2__ AVFrame ;
-typedef  TYPE_3__ AVFilterLink ;
-typedef  TYPE_4__ AVFilterContext ;
+typedef TYPE_1__ OscilloscopeContext ;
+typedef TYPE_2__ AVFrame ;
+typedef TYPE_3__ AVFilterLink ;
+typedef TYPE_4__ AVFilterContext ;
 
-/* Variables and functions */
- int FFMAX (int,scalar_t__) ; 
- int FFMIN (int,scalar_t__) ; 
- int INT_MAX ; 
- int av_popcount (int) ; 
- int /*<<< orphan*/  draw_scope (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_2__*,TYPE_14__*,int) ; 
- int /*<<< orphan*/  draw_text (int /*<<< orphan*/ *,TYPE_2__*,int /*<<< orphan*/ *,scalar_t__,scalar_t__,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ff_blend_rectangle (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,scalar_t__,int,int) ; 
- int /*<<< orphan*/  ff_fill_rectangle (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,scalar_t__,int,int) ; 
- int ff_filter_frame (TYPE_3__*,TYPE_2__*) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,char const,float,int,int) ; 
- int /*<<< orphan*/  stub1 (TYPE_1__*,TYPE_2__*) ; 
+
+ int FFMAX (int,scalar_t__) ;
+ int FFMIN (int,scalar_t__) ;
+ int INT_MAX ;
+ int av_popcount (int) ;
+ int draw_scope (TYPE_1__*,int ,int ,int ,int ,TYPE_2__*,TYPE_14__*,int) ;
+ int draw_text (int *,TYPE_2__*,int *,scalar_t__,scalar_t__,char*,int ) ;
+ int ff_blend_rectangle (int *,int *,int ,int ,int ,int ,scalar_t__,scalar_t__,int,int) ;
+ int ff_fill_rectangle (int *,int *,int ,int ,scalar_t__,scalar_t__,int,int) ;
+ int ff_filter_frame (TYPE_3__*,TYPE_2__*) ;
+ int snprintf (char*,int,char*,char const,float,int,int) ;
+ int stub1 (TYPE_1__*,TYPE_2__*) ;
 
 __attribute__((used)) static int oscilloscope_filter_frame(AVFilterLink *inlink, AVFrame *frame)
 {
-    AVFilterContext *ctx  = inlink->dst;
+    AVFilterContext *ctx = inlink->dst;
     OscilloscopeContext *s = ctx->priv;
     AVFilterLink *outlink = ctx->outputs[0];
     float average[4] = { 0 };
@@ -96,7 +96,7 @@ __attribute__((used)) static int oscilloscope_filter_frame(AVFilterLink *inlink,
                 char text[128];
 
                 snprintf(text, sizeof(text), "%c avg:%.1f min:%d max:%d\n", s->is_rgb ? rgba[c] : yuva[c], average[c], min[c], max[c]);
-                draw_text(&s->draw, frame, &s->white, s->ox +  2 + 280 * i++, s->oy + s->height + 4, text, 0);
+                draw_text(&s->draw, frame, &s->white, s->ox + 2 + 280 * i++, s->oy + s->height + 4, text, 0);
             }
         }
     }

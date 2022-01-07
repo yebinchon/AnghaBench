@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  datadir ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- char const* FFMPEG_DATADIR ; 
- scalar_t__ GetModuleFileNameA (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  GetModuleHandleA (int /*<<< orphan*/ *) ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  av_strlcpy (char*,char const*,size_t) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- char const* getenv (char*) ; 
- int /*<<< orphan*/  snprintf (char*,size_t,char*,char const*,char*,char const*,...) ; 
- int strlen (char*) ; 
- int /*<<< orphan*/  strncat (char*,char*,int) ; 
- char* strrchr (char*,char) ; 
+
+
+
+typedef int datadir ;
+typedef int FILE ;
+
+
+ char const* FFMPEG_DATADIR ;
+ scalar_t__ GetModuleFileNameA (int ,char*,int) ;
+ int GetModuleHandleA (int *) ;
+ int MAX_PATH ;
+ int av_strlcpy (char*,char const*,size_t) ;
+ int * fopen (char*,char*) ;
+ char const* getenv (char*) ;
+ int snprintf (char*,size_t,char*,char const*,char*,char const*,...) ;
+ int strlen (char*) ;
+ int strncat (char*,char*,int) ;
+ char* strrchr (char*,char) ;
 
 FILE *get_preset_file(char *filename, size_t filename_size,
                       const char *preset_name, int is_path,
                       const char *codec_name)
 {
-    FILE *f = NULL;
+    FILE *f = ((void*)0);
     int i;
     const char *base[3] = { getenv("FFMPEG_DATADIR"),
                             getenv("HOME"),
@@ -40,23 +40,6 @@ FILE *get_preset_file(char *filename, size_t filename_size,
         av_strlcpy(filename, preset_name, filename_size);
         f = fopen(filename, "r");
     } else {
-#ifdef _WIN32
-        char datadir[MAX_PATH], *ls;
-        base[2] = NULL;
-
-        if (GetModuleFileNameA(GetModuleHandleA(NULL), datadir, sizeof(datadir) - 1))
-        {
-            for (ls = datadir; ls < datadir + strlen(datadir); ls++)
-                if (*ls == '\\') *ls = '/';
-
-            if (ls = strrchr(datadir, '/'))
-            {
-                *ls = 0;
-                strncat(datadir, "/ffpresets",  sizeof(datadir) - 1 - strlen(datadir));
-                base[2] = datadir;
-            }
-        }
-#endif
         for (i = 0; i < 3 && !f; i++) {
             if (!base[i])
                 continue;

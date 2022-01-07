@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  other; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int other; } ;
 struct tty {TYPE_1__ pty; } ;
 
-/* Variables and functions */
- int tty_input (int /*<<< orphan*/ ,void const*,size_t,int) ; 
+
+ int tty_input (int ,void const*,size_t,int) ;
 
 __attribute__((used)) static int pty_write(struct tty *tty, const void *buf, size_t len, bool blocking) {
     return tty_input(tty->pty.other, buf, len, blocking);

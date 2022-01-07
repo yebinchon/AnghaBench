@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  trie_arr_node ;
 
-/* Variables and functions */
- int /*<<< orphan*/  aho_black_list ; 
- int /*<<< orphan*/  aho_black_list_size ; 
- int /*<<< orphan*/  black_list ; 
- scalar_t__ buff ; 
- int /*<<< orphan*/  dl_free (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dl_malloc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  trie_arr_aho (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  trie_encode (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int trie_arr_node ;
+
+
+ int aho_black_list ;
+ int aho_black_list_size ;
+ int black_list ;
+ scalar_t__ buff ;
+ int dl_free (int ,int ) ;
+ int dl_malloc (int ) ;
+ int memcpy (int ,scalar_t__,int ) ;
+ int trie_arr_aho (int *) ;
+ int trie_encode (int ,scalar_t__,int ) ;
 
 void black_list_force (void) {
   dl_free (aho_black_list, aho_black_list_size);

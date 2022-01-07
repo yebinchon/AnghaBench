@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u8 ;
-typedef  int /*<<< orphan*/  u64 ;
-struct machine {int /*<<< orphan*/  single_address_space; } ;
 
-/* Variables and functions */
-#define  PERF_RECORD_MISC_GUEST_KERNEL 131 
-#define  PERF_RECORD_MISC_GUEST_USER 130 
-#define  PERF_RECORD_MISC_KERNEL 129 
-#define  PERF_RECORD_MISC_USER 128 
- int machine__kernel_ip (struct machine*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int u8 ;
+typedef int u64 ;
+struct machine {int single_address_space; } ;
+
+
+
+
+
+
+ int machine__kernel_ip (struct machine*,int ) ;
 
 u8 machine__addr_cpumode(struct machine *machine, u8 cpumode, u64 addr)
 {
-	u8 addr_cpumode = cpumode;
-	bool kernel_ip;
+ u8 addr_cpumode = cpumode;
+ bool kernel_ip;
 
-	if (!machine->single_address_space)
-		goto out;
+ if (!machine->single_address_space)
+  goto out;
 
-	kernel_ip = machine__kernel_ip(machine, addr);
-	switch (cpumode) {
-	case PERF_RECORD_MISC_KERNEL:
-	case PERF_RECORD_MISC_USER:
-		addr_cpumode = kernel_ip ? PERF_RECORD_MISC_KERNEL :
-					   PERF_RECORD_MISC_USER;
-		break;
-	case PERF_RECORD_MISC_GUEST_KERNEL:
-	case PERF_RECORD_MISC_GUEST_USER:
-		addr_cpumode = kernel_ip ? PERF_RECORD_MISC_GUEST_KERNEL :
-					   PERF_RECORD_MISC_GUEST_USER;
-		break;
-	default:
-		break;
-	}
+ kernel_ip = machine__kernel_ip(machine, addr);
+ switch (cpumode) {
+ case 129:
+ case 128:
+  addr_cpumode = kernel_ip ? 129 :
+        128;
+  break;
+ case 131:
+ case 130:
+  addr_cpumode = kernel_ip ? 131 :
+        130;
+  break;
+ default:
+  break;
+ }
 out:
-	return addr_cpumode;
+ return addr_cpumode;
 }

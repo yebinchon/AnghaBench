@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  stat_t ;
-struct TYPE_8__ {int /*<<< orphan*/ * dstFile; } ;
-typedef  TYPE_1__ dRess_t ;
+
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int stat_t ;
+struct TYPE_8__ {int * dstFile; } ;
+typedef TYPE_1__ dRess_t ;
 struct TYPE_9__ {scalar_t__ testMode; } ;
-typedef  TYPE_2__ FIO_prefs_t ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef TYPE_2__ FIO_prefs_t ;
+typedef int FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DISPLAYLEVEL (int,char*,char const*,int /*<<< orphan*/ ) ; 
- int FIO_decompressFrames (TYPE_2__* const,TYPE_1__,int /*<<< orphan*/ *,char const*,char const*) ; 
- int /*<<< orphan*/ * FIO_openDstFile (TYPE_2__* const,char const*,char const*) ; 
- int /*<<< orphan*/  FIO_remove (char const*) ; 
- scalar_t__ UTIL_getFileStat (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  UTIL_setFileStat (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  addHandler (char const*) ; 
- int /*<<< orphan*/  clearHandler () ; 
- int /*<<< orphan*/  errno ; 
- scalar_t__ fclose (int /*<<< orphan*/ * const) ; 
- int /*<<< orphan*/  nulmark ; 
- int /*<<< orphan*/  stdinmark ; 
- int /*<<< orphan*/  stdoutmark ; 
- scalar_t__ strcmp (char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strerror (int /*<<< orphan*/ ) ; 
+
+ int DISPLAYLEVEL (int,char*,char const*,int ) ;
+ int FIO_decompressFrames (TYPE_2__* const,TYPE_1__,int *,char const*,char const*) ;
+ int * FIO_openDstFile (TYPE_2__* const,char const*,char const*) ;
+ int FIO_remove (char const*) ;
+ scalar_t__ UTIL_getFileStat (char const*,int *) ;
+ int UTIL_setFileStat (char const*,int *) ;
+ int addHandler (char const*) ;
+ int clearHandler () ;
+ int errno ;
+ scalar_t__ fclose (int * const) ;
+ int nulmark ;
+ int stdinmark ;
+ int stdoutmark ;
+ scalar_t__ strcmp (char const*,int ) ;
+ int strerror (int ) ;
 
 __attribute__((used)) static int FIO_decompressDstFile(FIO_prefs_t* const prefs,
                                  dRess_t ress, FILE* srcFile,
@@ -45,19 +45,19 @@ __attribute__((used)) static int FIO_decompressDstFile(FIO_prefs_t* const prefs,
     int transfer_permissions = 0;
     int releaseDstFile = 0;
 
-    if ((ress.dstFile == NULL) && (prefs->testMode==0)) {
+    if ((ress.dstFile == ((void*)0)) && (prefs->testMode==0)) {
         releaseDstFile = 1;
 
         ress.dstFile = FIO_openDstFile(prefs, srcFileName, dstFileName);
-        if (ress.dstFile==NULL) return 1;
+        if (ress.dstFile==((void*)0)) return 1;
 
-        /* Must only be added after FIO_openDstFile() succeeds.
-         * Otherwise we may delete the destination file if it already exists,
-         * and the user presses Ctrl-C when asked if they wish to overwrite.
-         */
+
+
+
+
         addHandler(dstFileName);
 
-        if ( strcmp(srcFileName, stdinmark)   /* special case : don't transfer permissions from stdin */
+        if ( strcmp(srcFileName, stdinmark)
           && UTIL_getFileStat(srcFileName, &statbuf) )
             transfer_permissions = 1;
     }
@@ -67,22 +67,22 @@ __attribute__((used)) static int FIO_decompressDstFile(FIO_prefs_t* const prefs,
     if (releaseDstFile) {
         FILE* const dstFile = ress.dstFile;
         clearHandler();
-        ress.dstFile = NULL;
+        ress.dstFile = ((void*)0);
         if (fclose(dstFile)) {
             DISPLAYLEVEL(1, "zstd: %s: %s \n", dstFileName, strerror(errno));
             result = 1;
         }
 
-        if ( (result != 0)  /* operation failure */
-          && strcmp(dstFileName, nulmark)     /* special case : don't remove() /dev/null (#316) */
-          && strcmp(dstFileName, stdoutmark)  /* special case : don't remove() stdout */
+        if ( (result != 0)
+          && strcmp(dstFileName, nulmark)
+          && strcmp(dstFileName, stdoutmark)
           ) {
-            FIO_remove(dstFileName);  /* remove decompression artefact; note: don't do anything special if remove() fails */
-        } else {  /* operation success */
-            if ( strcmp(dstFileName, stdoutmark) /* special case : don't chmod stdout */
-              && strcmp(dstFileName, nulmark)    /* special case : don't chmod /dev/null */
-              && transfer_permissions )          /* file permissions correctly extracted from src */
-                UTIL_setFileStat(dstFileName, &statbuf);  /* transfer file permissions from src into dst */
+            FIO_remove(dstFileName);
+        } else {
+            if ( strcmp(dstFileName, stdoutmark)
+              && strcmp(dstFileName, nulmark)
+              && transfer_permissions )
+                UTIL_setFileStat(dstFileName, &statbuf);
         }
     }
 

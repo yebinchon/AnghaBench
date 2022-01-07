@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {scalar_t__ count; } ;
-typedef  TYPE_1__ trbudget_t ;
+typedef TYPE_1__ trbudget_t ;
 
-/* Variables and functions */
- int tr_ilg (int) ; 
- int /*<<< orphan*/  tr_introsort (int*,int*,int*,int*,int*,TYPE_1__*) ; 
- int /*<<< orphan*/  trbudget_init (TYPE_1__*,int,int) ; 
+
+ int tr_ilg (int) ;
+ int tr_introsort (int*,int*,int*,int*,int*,TYPE_1__*) ;
+ int trbudget_init (TYPE_1__*,int,int) ;
 
 __attribute__((used)) static
 void
@@ -28,7 +28,7 @@ trsort(int *ISA, int *SA, int n, int depth) {
   int t, skip, unsorted;
 
   trbudget_init(&budget, tr_ilg(n) * 2 / 3, n);
-/*  trbudget_init(&budget, tr_ilg(n) * 3 / 4, n); */
+
   for(ISAd = ISA + depth; -n < *SA; ISAd += ISAd - ISA) {
     first = SA;
     skip = 0;

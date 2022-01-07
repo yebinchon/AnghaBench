@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_8__ {float re; float im; } ;
 struct TYPE_7__ {float member_0; float member_1; float re; float im; } ;
-struct TYPE_6__ {int cqt_len; float* h_buf; float* bar_v_buf; int fcount; int width; float* rcp_h_buf; float* sono_v_buf; scalar_t__ format; int /*<<< orphan*/  cscheme_v; int /*<<< orphan*/  cmatrix; int /*<<< orphan*/  sono_g; TYPE_3__* cqt_result; int /*<<< orphan*/  c_buf; int /*<<< orphan*/  bar_g; int /*<<< orphan*/  sono_count; } ;
-typedef  TYPE_1__ ShowCQTContext ;
-typedef  TYPE_2__ FFTComplex ;
+struct TYPE_6__ {int cqt_len; float* h_buf; float* bar_v_buf; int fcount; int width; float* rcp_h_buf; float* sono_v_buf; scalar_t__ format; int cscheme_v; int cmatrix; int sono_g; TYPE_3__* cqt_result; int c_buf; int bar_g; int sono_count; } ;
+typedef TYPE_1__ ShowCQTContext ;
+typedef TYPE_2__ FFTComplex ;
 
-/* Variables and functions */
- scalar_t__ AV_PIX_FMT_RGB24 ; 
- float calculate_gamma (float,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rgb_from_cqt (int /*<<< orphan*/ ,TYPE_3__*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  yuv_from_cqt (int /*<<< orphan*/ ,TYPE_3__*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ AV_PIX_FMT_RGB24 ;
+ float calculate_gamma (float,int ) ;
+ int rgb_from_cqt (int ,TYPE_3__*,int ,int,int ) ;
+ int yuv_from_cqt (int ,TYPE_3__*,int ,int,int ,int ) ;
 
 __attribute__((used)) static void process_cqt(ShowCQTContext *s)
 {

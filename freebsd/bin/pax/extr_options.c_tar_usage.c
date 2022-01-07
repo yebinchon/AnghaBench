@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fputs (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stderr ; 
+ int exit (int) ;
+ int fputs (char*,int ) ;
+ int stderr ;
 
 void
 tar_usage(void)
 {
-	(void)fputs("usage: tar [-]{crtux}[-befhjmopqsvwyzHLOPXZ014578] [blocksize] ",
-		 stderr);
-	(void)fputs("[archive] [replstr] [-C directory] [-I file] [file ...]\n",
-	    stderr);
-	exit(1);
+ (void)fputs("usage: tar [-]{crtux}[-befhjmopqsvwyzHLOPXZ014578] [blocksize] ",
+   stderr);
+ (void)fputs("[archive] [replstr] [-C directory] [-I file] [file ...]\n",
+     stderr);
+ exit(1);
 }

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {size_t dwVolNameMax; int /*<<< orphan*/ * szVolNameMinusFour; } ;
-typedef  int /*<<< orphan*/ * LPTSTR ;
-typedef  scalar_t__ DWORD ;
-typedef  size_t DRIVE ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHAR_NULL ; 
- int /*<<< orphan*/  CHAR_OPENBRACK ; 
- scalar_t__ ERROR_SUCCESS ; 
- scalar_t__ GETRETVAL (int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/  SZ_CLOSEBRACK ; 
- int /*<<< orphan*/  U_VolInfo (size_t) ; 
- int /*<<< orphan*/  VolInfo ; 
- TYPE_1__* aDriveInfo ; 
- int /*<<< orphan*/  lstrcat (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {size_t dwVolNameMax; int * szVolNameMinusFour; } ;
+typedef int * LPTSTR ;
+typedef scalar_t__ DWORD ;
+typedef size_t DRIVE ;
+typedef scalar_t__ BOOL ;
+
+
+ int CHAR_NULL ;
+ int CHAR_OPENBRACK ;
+ scalar_t__ ERROR_SUCCESS ;
+ scalar_t__ GETRETVAL (int ,size_t) ;
+ int SZ_CLOSEBRACK ;
+ int U_VolInfo (size_t) ;
+ int VolInfo ;
+ TYPE_1__* aDriveInfo ;
+ int lstrcat (int *,int ) ;
 
 DWORD
 GetVolumeLabel(DRIVE drive, LPTSTR* ppszVol, BOOL bBrackets)

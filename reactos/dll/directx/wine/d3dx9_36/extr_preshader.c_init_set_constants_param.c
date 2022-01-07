@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct d3dx_parameter {int element_count; unsigned int member_count; int rows; int columns; int bytes; int /*<<< orphan*/  name; int /*<<< orphan*/  type; int /*<<< orphan*/  flags; int /*<<< orphan*/  class; struct d3dx_parameter* members; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct d3dx_parameter {int element_count; unsigned int member_count; int rows; int columns; int bytes; int name; int type; int flags; int class; struct d3dx_parameter* members; } ;
 struct d3dx_const_tab {unsigned int const_set_count; size_t* regset2table; } ;
-struct d3dx_const_param_eval_output {int element_count; size_t table; int direct_copy; int /*<<< orphan*/  register_count; int /*<<< orphan*/  register_index; int /*<<< orphan*/  constant_class; struct d3dx_parameter* param; } ;
-struct const_upload_info {int count; scalar_t__ minor; scalar_t__ major_stride; scalar_t__ major_count; scalar_t__ major; scalar_t__ minor_remainder; int /*<<< orphan*/  transpose; } ;
-typedef  enum pres_value_type { ____Placeholder_pres_value_type } pres_value_type ;
+struct d3dx_const_param_eval_output {int element_count; size_t table; int direct_copy; int register_count; int register_index; int constant_class; struct d3dx_parameter* param; } ;
+struct const_upload_info {int count; scalar_t__ minor; scalar_t__ major_stride; scalar_t__ major_count; scalar_t__ major; scalar_t__ minor_remainder; int transpose; } ;
+typedef enum pres_value_type { ____Placeholder_pres_value_type } pres_value_type ;
 struct TYPE_5__ {int component_size; int type; } ;
-struct TYPE_4__ {unsigned int Elements; unsigned int StructMembers; int RegisterSet; int /*<<< orphan*/  RegisterCount; int /*<<< orphan*/  RegisterIndex; int /*<<< orphan*/  Class; int /*<<< orphan*/  Bytes; int /*<<< orphan*/  Columns; int /*<<< orphan*/  Rows; int /*<<< orphan*/  Name; } ;
-typedef  int /*<<< orphan*/  ID3DXConstantTable ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  D3DXHANDLE ;
-typedef  TYPE_1__ D3DXCONSTANT_DESC ;
-typedef  scalar_t__ BOOL ;
+struct TYPE_4__ {unsigned int Elements; unsigned int StructMembers; int RegisterSet; int RegisterCount; int RegisterIndex; int Class; int Bytes; int Columns; int Rows; int Name; } ;
+typedef int ID3DXConstantTable ;
+typedef int HRESULT ;
+typedef int D3DXHANDLE ;
+typedef TYPE_1__ D3DXCONSTANT_DESC ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- int ARRAY_SIZE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  D3DERR_INVALIDCALL ; 
- int /*<<< orphan*/  D3D_OK ; 
- int /*<<< orphan*/  ERR (char*,size_t) ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  FIXME (char*,...) ; 
- int /*<<< orphan*/  ID3DXConstantTable_GetConstant (int /*<<< orphan*/ *,int /*<<< orphan*/ ,unsigned int) ; 
- int /*<<< orphan*/  ID3DXConstantTable_GetConstantElement (int /*<<< orphan*/ *,int /*<<< orphan*/ ,unsigned int) ; 
- size_t PRES_REGTAB_COUNT ; 
- scalar_t__ PRES_VT_COUNT ; 
- int /*<<< orphan*/  TRACE (char*,int,...) ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  WARN (char*) ; 
- int /*<<< orphan*/  append_const_set (struct d3dx_const_tab*,struct d3dx_const_param_eval_output*) ; 
- int /*<<< orphan*/  assert (int) ; 
- int debugstr_a (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  get_const_upload_info (struct d3dx_const_param_eval_output*,struct const_upload_info*) ; 
- int /*<<< orphan*/  get_ctab_constant_desc (int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ *) ; 
- int get_offset_reg (size_t,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  merge_const_set_entries (struct d3dx_const_tab*,struct d3dx_parameter*,unsigned int) ; 
- int /*<<< orphan*/  shad_regset2table ; 
- TYPE_2__* table_info ; 
- int table_type_from_param_type (int /*<<< orphan*/ ) ; 
+
+ int ARRAY_SIZE (int ) ;
+ int D3DERR_INVALIDCALL ;
+ int D3D_OK ;
+ int ERR (char*,size_t) ;
+ scalar_t__ FAILED (int ) ;
+ scalar_t__ FALSE ;
+ int FIXME (char*,...) ;
+ int ID3DXConstantTable_GetConstant (int *,int ,unsigned int) ;
+ int ID3DXConstantTable_GetConstantElement (int *,int ,unsigned int) ;
+ size_t PRES_REGTAB_COUNT ;
+ scalar_t__ PRES_VT_COUNT ;
+ int TRACE (char*,int,...) ;
+ scalar_t__ TRUE ;
+ int WARN (char*) ;
+ int append_const_set (struct d3dx_const_tab*,struct d3dx_const_param_eval_output*) ;
+ int assert (int) ;
+ int debugstr_a (int ) ;
+ int get_const_upload_info (struct d3dx_const_param_eval_output*,struct const_upload_info*) ;
+ int get_ctab_constant_desc (int *,int ,TYPE_1__*,int *) ;
+ int get_offset_reg (size_t,int ) ;
+ int merge_const_set_entries (struct d3dx_const_tab*,struct d3dx_parameter*,unsigned int) ;
+ int shad_regset2table ;
+ TYPE_2__* table_info ;
+ int table_type_from_param_type (int ) ;
 
 __attribute__((used)) static HRESULT init_set_constants_param(struct d3dx_const_tab *const_tab, ID3DXConstantTable *ctab,
         D3DXHANDLE hc, struct d3dx_parameter *param)
@@ -62,7 +62,7 @@ __attribute__((used)) static HRESULT init_set_constants_param(struct d3dx_const_
     enum pres_value_type table_type;
     HRESULT hr;
 
-    if (FAILED(get_ctab_constant_desc(ctab, hc, &desc, NULL)))
+    if (FAILED(get_ctab_constant_desc(ctab, hc, &desc, ((void*)0))))
         return D3DERR_INVALIDCALL;
 
     if (param->element_count)

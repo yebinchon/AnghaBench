@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * CFTypeRef ;
-typedef  scalar_t__ CFStringRef ;
-typedef  int /*<<< orphan*/ * CFDictionaryRef ;
-typedef  int /*<<< orphan*/ * CFArrayRef ;
-typedef  int /*<<< orphan*/  ACPresence ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AC_ABSENT ; 
- int /*<<< orphan*/  AC_ERROR ; 
- int /*<<< orphan*/  AC_PRESENT ; 
- int CFArrayGetCount (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CFArrayGetValueAtIndex (int /*<<< orphan*/ *,int) ; 
- scalar_t__ CFDictionaryGetValue (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CFNumberGetValue (scalar_t__,int /*<<< orphan*/ ,double*) ; 
- int /*<<< orphan*/  CFRelease (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CFRetain (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CFSTR (int /*<<< orphan*/ ) ; 
- scalar_t__ CFStringCompare (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * IOPSCopyPowerSourcesInfo () ; 
- int /*<<< orphan*/ * IOPSCopyPowerSourcesList (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * IOPSGetPowerSourceDescription (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ kCFCompareEqualTo ; 
- int /*<<< orphan*/  kCFNumberDoubleType ; 
- int /*<<< orphan*/  kIOPSACPowerValue ; 
- int /*<<< orphan*/  kIOPSCurrentCapacityKey ; 
- int /*<<< orphan*/  kIOPSInternalType ; 
- int /*<<< orphan*/  kIOPSMaxCapacityKey ; 
- int /*<<< orphan*/  kIOPSPowerSourceStateKey ; 
- int /*<<< orphan*/  kIOPSTransportTypeKey ; 
+
+
+
+typedef int * CFTypeRef ;
+typedef scalar_t__ CFStringRef ;
+typedef int * CFDictionaryRef ;
+typedef int * CFArrayRef ;
+typedef int ACPresence ;
+
+
+ int AC_ABSENT ;
+ int AC_ERROR ;
+ int AC_PRESENT ;
+ int CFArrayGetCount (int *) ;
+ int CFArrayGetValueAtIndex (int *,int) ;
+ scalar_t__ CFDictionaryGetValue (int *,int ) ;
+ int CFNumberGetValue (scalar_t__,int ,double*) ;
+ int CFRelease (int *) ;
+ int CFRetain (int *) ;
+ int CFSTR (int ) ;
+ scalar_t__ CFStringCompare (scalar_t__,int ,int ) ;
+ int * IOPSCopyPowerSourcesInfo () ;
+ int * IOPSCopyPowerSourcesList (int *) ;
+ int * IOPSGetPowerSourceDescription (int *,int ) ;
+ scalar_t__ kCFCompareEqualTo ;
+ int kCFNumberDoubleType ;
+ int kIOPSACPowerValue ;
+ int kIOPSCurrentCapacityKey ;
+ int kIOPSInternalType ;
+ int kIOPSMaxCapacityKey ;
+ int kIOPSPowerSourceStateKey ;
+ int kIOPSTransportTypeKey ;
 
 void Battery_getData(double* level, ACPresence* isOnAC) {
    CFTypeRef power_sources = IOPSCopyPowerSourcesInfo();
@@ -46,16 +46,16 @@ void Battery_getData(double* level, ACPresence* isOnAC) {
    *level = -1;
    *isOnAC = AC_ERROR;
 
-   if(NULL == power_sources) {
+   if(((void*)0) == power_sources) {
       return;
    }
 
-   if(power_sources != NULL) {
+   if(power_sources != ((void*)0)) {
       CFArrayRef list = IOPSCopyPowerSourcesList(power_sources);
-      CFDictionaryRef battery = NULL;
+      CFDictionaryRef battery = ((void*)0);
       int len;
 
-      if(NULL == list) {
+      if(((void*)0) == list) {
          CFRelease(power_sources);
 
          return;
@@ -63,15 +63,15 @@ void Battery_getData(double* level, ACPresence* isOnAC) {
 
       len = CFArrayGetCount(list);
 
-      /* Get the battery */
-      for(int i = 0; i < len && battery == NULL; ++i) {
+
+      for(int i = 0; i < len && battery == ((void*)0); ++i) {
          CFDictionaryRef candidate = IOPSGetPowerSourceDescription(power_sources,
-                                     CFArrayGetValueAtIndex(list, i)); /* GET rule */
+                                     CFArrayGetValueAtIndex(list, i));
          CFStringRef type;
 
-         if(NULL != candidate) {
+         if(((void*)0) != candidate) {
             type = (CFStringRef) CFDictionaryGetValue(candidate,
-                   CFSTR(kIOPSTransportTypeKey)); /* GET rule */
+                   CFSTR(kIOPSTransportTypeKey));
 
             if(kCFCompareEqualTo == CFStringCompare(type, CFSTR(kIOPSInternalType), 0)) {
                CFRetain(candidate);
@@ -80,15 +80,15 @@ void Battery_getData(double* level, ACPresence* isOnAC) {
          }
       }
 
-      if(NULL != battery) {
-         /* Determine the AC state */
+      if(((void*)0) != battery) {
+
          CFStringRef power_state = CFDictionaryGetValue(battery, CFSTR(kIOPSPowerSourceStateKey));
 
          *isOnAC = (kCFCompareEqualTo == CFStringCompare(power_state, CFSTR(kIOPSACPowerValue), 0))
                  ? AC_PRESENT
                  : AC_ABSENT;
 
-         /* Get the percentage remaining */
+
          double current;
          double max;
 

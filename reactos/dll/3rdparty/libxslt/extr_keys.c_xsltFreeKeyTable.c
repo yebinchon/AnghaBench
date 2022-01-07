@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* xsltKeyTablePtr ;
-typedef  int /*<<< orphan*/  xsltKeyTable ;
-struct TYPE_5__ {int /*<<< orphan*/ * keys; struct TYPE_5__* nameURI; struct TYPE_5__* name; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memset (TYPE_1__*,int,int) ; 
- int /*<<< orphan*/  xmlFree (TYPE_1__*) ; 
- int /*<<< orphan*/  xmlHashFree (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xsltFreeNodeSetEntry ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef TYPE_1__* xsltKeyTablePtr ;
+typedef int xsltKeyTable ;
+struct TYPE_5__ {int * keys; struct TYPE_5__* nameURI; struct TYPE_5__* name; } ;
+
+
+ int memset (TYPE_1__*,int,int) ;
+ int xmlFree (TYPE_1__*) ;
+ int xmlHashFree (int *,int ) ;
+ int xsltFreeNodeSetEntry ;
 
 __attribute__((used)) static void
 xsltFreeKeyTable(xsltKeyTablePtr keyt) {
-    if (keyt == NULL)
-	return;
-    if (keyt->name != NULL)
-	xmlFree(keyt->name);
-    if (keyt->nameURI != NULL)
-	xmlFree(keyt->nameURI);
-    if (keyt->keys != NULL)
-	xmlHashFree(keyt->keys, xsltFreeNodeSetEntry);
+    if (keyt == ((void*)0))
+ return;
+    if (keyt->name != ((void*)0))
+ xmlFree(keyt->name);
+    if (keyt->nameURI != ((void*)0))
+ xmlFree(keyt->nameURI);
+    if (keyt->keys != ((void*)0))
+ xmlHashFree(keyt->keys, xsltFreeNodeSetEntry);
     memset(keyt, -1, sizeof(xsltKeyTable));
     xmlFree(keyt);
 }

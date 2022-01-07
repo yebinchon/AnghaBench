@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct codec_softc {int dummy; } ;
-typedef  int /*<<< orphan*/ * device_t ;
+typedef int * device_t ;
 
-/* Variables and functions */
- int CI20_HP_PIN ; 
- int CI20_HP_PORT ; 
- int /*<<< orphan*/  GPIO_PIN_OUTPUT ; 
- int GPIO_PIN_SET (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int GPIO_PIN_SETFLAGS (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  devclass_find (char*) ; 
- int /*<<< orphan*/ * devclass_get_device (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  device_get_nameunit (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  device_printf (int /*<<< orphan*/ *,char*,int,int /*<<< orphan*/ ) ; 
+
+ int CI20_HP_PIN ;
+ int CI20_HP_PORT ;
+ int GPIO_PIN_OUTPUT ;
+ int GPIO_PIN_SET (int *,int,int ) ;
+ int GPIO_PIN_SETFLAGS (int *,int,int ) ;
+ int devclass_find (char*) ;
+ int * devclass_get_device (int ,int) ;
+ int device_get_nameunit (int *) ;
+ int device_printf (int *,char*,int,int ) ;
 
 __attribute__((used)) static int
 ci20_hp_unmute(struct codec_softc *sc)
 {
-	device_t dev;
-	int port;
-	int err;
-	int pin;
+ device_t dev;
+ int port;
+ int err;
+ int pin;
 
-	pin = CI20_HP_PIN;
-	port = CI20_HP_PORT;
+ pin = CI20_HP_PIN;
+ port = CI20_HP_PORT;
 
-	dev = devclass_get_device(devclass_find("gpio"), port);
-	if (dev == NULL)
-		return (0);
+ dev = devclass_get_device(devclass_find("gpio"), port);
+ if (dev == ((void*)0))
+  return (0);
 
-	err = GPIO_PIN_SETFLAGS(dev, pin, GPIO_PIN_OUTPUT);
-	if (err != 0) {
-		device_printf(dev, "Cannot configure GPIO pin %d on %s\n",
-		    pin, device_get_nameunit(dev));
-		return (err);
-	}
+ err = GPIO_PIN_SETFLAGS(dev, pin, GPIO_PIN_OUTPUT);
+ if (err != 0) {
+  device_printf(dev, "Cannot configure GPIO pin %d on %s\n",
+      pin, device_get_nameunit(dev));
+  return (err);
+ }
 
-	err = GPIO_PIN_SET(dev, pin, 0);
-	if (err != 0) {
-		device_printf(dev, "Cannot configure GPIO pin %d on %s\n",
-		    pin, device_get_nameunit(dev));
-		return (err);
-	}
+ err = GPIO_PIN_SET(dev, pin, 0);
+ if (err != 0) {
+  device_printf(dev, "Cannot configure GPIO pin %d on %s\n",
+      pin, device_get_nameunit(dev));
+  return (err);
+ }
 
-	return (0);
+ return (0);
 }

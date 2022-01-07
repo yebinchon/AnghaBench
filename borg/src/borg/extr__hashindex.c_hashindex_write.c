@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  value_size; int /*<<< orphan*/  key_size; int /*<<< orphan*/  num_buckets; int /*<<< orphan*/  num_entries; int /*<<< orphan*/  magic; } ;
-struct TYPE_4__ {int bucket_size; scalar_t__ buckets; int /*<<< orphan*/  value_size; int /*<<< orphan*/  key_size; scalar_t__ num_buckets; scalar_t__ num_entries; } ;
-typedef  int Py_ssize_t ;
-typedef  char PyObject ;
-typedef  TYPE_1__ HashIndex ;
-typedef  TYPE_2__ HashHeader ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MAGIC ; 
- int /*<<< orphan*/  PyBUF_READ ; 
- int /*<<< orphan*/  PyErr_Clear () ; 
- scalar_t__ PyErr_ExceptionMatches (int /*<<< orphan*/ ) ; 
- scalar_t__ PyErr_Occurred () ; 
- int /*<<< orphan*/  PyErr_SetString (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  PyExc_AttributeError ; 
- int /*<<< orphan*/  PyExc_OverflowError ; 
- int /*<<< orphan*/  PyExc_ValueError ; 
- char* PyMemoryView_FromMemory (char*,int,int /*<<< orphan*/ ) ; 
- int PyNumber_AsSsize_t (char*,int /*<<< orphan*/ ) ; 
- char* PyObject_CallMethod (char*,char*,char*,...) ; 
- int /*<<< orphan*/  Py_DECREF (char*) ; 
- int /*<<< orphan*/  Py_XDECREF (char*) ; 
- int /*<<< orphan*/  _htole32 (scalar_t__) ; 
- int /*<<< orphan*/  assert (scalar_t__) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int value_size; int key_size; int num_buckets; int num_entries; int magic; } ;
+struct TYPE_4__ {int bucket_size; scalar_t__ buckets; int value_size; int key_size; scalar_t__ num_buckets; scalar_t__ num_entries; } ;
+typedef int Py_ssize_t ;
+typedef char PyObject ;
+typedef TYPE_1__ HashIndex ;
+typedef TYPE_2__ HashHeader ;
+
+
+ int MAGIC ;
+ int PyBUF_READ ;
+ int PyErr_Clear () ;
+ scalar_t__ PyErr_ExceptionMatches (int ) ;
+ scalar_t__ PyErr_Occurred () ;
+ int PyErr_SetString (int ,char*) ;
+ int PyExc_AttributeError ;
+ int PyExc_OverflowError ;
+ int PyExc_ValueError ;
+ char* PyMemoryView_FromMemory (char*,int,int ) ;
+ int PyNumber_AsSsize_t (char*,int ) ;
+ char* PyObject_CallMethod (char*,char*,char*,...) ;
+ int Py_DECREF (char*) ;
+ int Py_XDECREF (char*) ;
+ int _htole32 (scalar_t__) ;
+ int assert (scalar_t__) ;
 
 __attribute__((used)) static void
 hashindex_write(HashIndex *index, PyObject *file_py)
@@ -65,21 +65,21 @@ hashindex_write(HashIndex *index, PyObject *file_py)
         return;
     }
 
-    /*
-     * Hash the header
-     */
+
+
+
     tmp = PyObject_CallMethod(file_py, "hash_part", "s", "HashHeader");
     Py_XDECREF(tmp);
     if(PyErr_Occurred()) {
         if(PyErr_ExceptionMatches(PyExc_AttributeError)) {
-            /* Be able to work with regular file objects which do not have a hash_part method. */
+
             PyErr_Clear();
         } else {
             return;
         }
     }
 
-    /* Note: explicitly construct view; BuildValue can convert (pointer, length) to Python objects, but copies them for doing so */
+
     buckets_view = PyMemoryView_FromMemory((char*)index->buckets, buckets_length, PyBUF_READ);
     if(!buckets_view) {
         assert(PyErr_Occurred());

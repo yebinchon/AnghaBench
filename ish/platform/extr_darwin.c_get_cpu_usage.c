@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct cpu_usage {int /*<<< orphan*/  nice_ticks; int /*<<< orphan*/  idle_ticks; int /*<<< orphan*/  system_ticks; int /*<<< orphan*/  user_ticks; } ;
-typedef  int /*<<< orphan*/  mach_msg_type_number_t ;
-typedef  int /*<<< orphan*/  host_info_t ;
-struct TYPE_2__ {int /*<<< orphan*/ * cpu_ticks; } ;
-typedef  TYPE_1__ host_cpu_load_info_data_t ;
 
-/* Variables and functions */
- size_t CPU_STATE_IDLE ; 
- size_t CPU_STATE_NICE ; 
- size_t CPU_STATE_SYSTEM ; 
- size_t CPU_STATE_USER ; 
- int /*<<< orphan*/  HOST_CPU_LOAD_INFO ; 
- int /*<<< orphan*/  HOST_CPU_LOAD_INFO_COUNT ; 
- int /*<<< orphan*/  host_statistics (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mach_host_self () ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct cpu_usage {int nice_ticks; int idle_ticks; int system_ticks; int user_ticks; } ;
+typedef int mach_msg_type_number_t ;
+typedef int host_info_t ;
+struct TYPE_2__ {int * cpu_ticks; } ;
+typedef TYPE_1__ host_cpu_load_info_data_t ;
+
+
+ size_t CPU_STATE_IDLE ;
+ size_t CPU_STATE_NICE ;
+ size_t CPU_STATE_SYSTEM ;
+ size_t CPU_STATE_USER ;
+ int HOST_CPU_LOAD_INFO ;
+ int HOST_CPU_LOAD_INFO_COUNT ;
+ int host_statistics (int ,int ,int ,int *) ;
+ int mach_host_self () ;
 
 struct cpu_usage get_cpu_usage() {
     host_cpu_load_info_data_t load;

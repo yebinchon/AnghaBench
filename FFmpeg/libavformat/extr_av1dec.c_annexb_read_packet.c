@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  scalar_t__ int64_t ;
-struct TYPE_6__ {int /*<<< orphan*/  pb; TYPE_1__* priv_data; } ;
-struct TYPE_5__ {int temporal_unit_size; int frame_unit_size; int /*<<< orphan*/  bsf; } ;
-typedef  TYPE_1__ AnnexBContext ;
-typedef  int /*<<< orphan*/  AVPacket ;
-typedef  TYPE_2__ AVFormatContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_EOF ; 
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  EAGAIN ; 
- int /*<<< orphan*/  EIO ; 
- int av_bsf_receive_packet (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int av_bsf_send_packet (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int av_get_packet (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  av_log (TYPE_2__*,int /*<<< orphan*/ ,char*) ; 
- scalar_t__ avio_feof (int /*<<< orphan*/ ) ; 
- int leb (int /*<<< orphan*/ ,int*) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+typedef scalar_t__ int64_t ;
+struct TYPE_6__ {int pb; TYPE_1__* priv_data; } ;
+struct TYPE_5__ {int temporal_unit_size; int frame_unit_size; int bsf; } ;
+typedef TYPE_1__ AnnexBContext ;
+typedef int AVPacket ;
+typedef TYPE_2__ AVFormatContext ;
+
+
+ int AVERROR (int ) ;
+ int AVERROR_EOF ;
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ int EAGAIN ;
+ int EIO ;
+ int av_bsf_receive_packet (int ,int *) ;
+ int av_bsf_send_packet (int ,int *) ;
+ int av_get_packet (int ,int *,int) ;
+ int av_log (TYPE_2__*,int ,char*) ;
+ scalar_t__ avio_feof (int ) ;
+ int leb (int ,int*) ;
 
 __attribute__((used)) static int annexb_read_packet(AVFormatContext *s, AVPacket *pkt)
 {
@@ -44,7 +44,7 @@ retry:
     if (avio_feof(s->pb)) {
         if (c->temporal_unit_size || c->frame_unit_size)
             return AVERROR(EIO);
-        av_bsf_send_packet(c->bsf, NULL);
+        av_bsf_send_packet(c->bsf, ((void*)0));
         goto end;
     }
 

@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_8__ ;
-typedef  struct TYPE_16__   TYPE_7__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VFATCCB ;
-struct TYPE_17__ {int /*<<< orphan*/ * Buffer; } ;
-struct TYPE_16__ {int /*<<< orphan*/  CcbLookasideList; } ;
-struct TYPE_15__ {int /*<<< orphan*/  IoVPB; } ;
-struct TYPE_14__ {int /*<<< orphan*/  Vpb; int /*<<< orphan*/ * FsContext2; TYPE_1__* FsContext; int /*<<< orphan*/ * SectionObjectPointer; } ;
-struct TYPE_13__ {int /*<<< orphan*/  Flags; int /*<<< orphan*/  PathNameU; int /*<<< orphan*/  SectionObjectPointers; int /*<<< orphan*/  RefCount; int /*<<< orphan*/  LongNameU; } ;
-typedef  TYPE_1__* PVFATFCB ;
-typedef  int /*<<< orphan*/ * PVFATCCB ;
-typedef  TYPE_2__* PFILE_OBJECT ;
-typedef  TYPE_3__* PDEVICE_EXTENSION ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPRINT (char*,TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DPRINT1 (char*,TYPE_1__*,TYPE_2__*,int /*<<< orphan*/ ) ; 
- TYPE_8__ DebugFile ; 
- int /*<<< orphan*/ * ExAllocateFromNPagedLookasideList (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  FCB_CLEANED_UP ; 
- int /*<<< orphan*/  FCB_CLOSED ; 
- scalar_t__ FsRtlIsNameInExpression (TYPE_8__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RtlZeroMemory (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  STATUS_INSUFFICIENT_RESOURCES ; 
- int /*<<< orphan*/  STATUS_SUCCESS ; 
- TYPE_7__* VfatGlobalData ; 
+
+typedef struct TYPE_17__ TYPE_8__ ;
+typedef struct TYPE_16__ TYPE_7__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+typedef int VFATCCB ;
+struct TYPE_17__ {int * Buffer; } ;
+struct TYPE_16__ {int CcbLookasideList; } ;
+struct TYPE_15__ {int IoVPB; } ;
+struct TYPE_14__ {int Vpb; int * FsContext2; TYPE_1__* FsContext; int * SectionObjectPointer; } ;
+struct TYPE_13__ {int Flags; int PathNameU; int SectionObjectPointers; int RefCount; int LongNameU; } ;
+typedef TYPE_1__* PVFATFCB ;
+typedef int * PVFATCCB ;
+typedef TYPE_2__* PFILE_OBJECT ;
+typedef TYPE_3__* PDEVICE_EXTENSION ;
+typedef int NTSTATUS ;
+
+
+ int DPRINT (char*,TYPE_1__*,int *) ;
+ int DPRINT1 (char*,TYPE_1__*,TYPE_2__*,int ) ;
+ TYPE_8__ DebugFile ;
+ int * ExAllocateFromNPagedLookasideList (int *) ;
+ int FALSE ;
+ int FCB_CLEANED_UP ;
+ int FCB_CLOSED ;
+ scalar_t__ FsRtlIsNameInExpression (TYPE_8__*,int *,int ,int *) ;
+ int RtlZeroMemory (int *,int) ;
+ int STATUS_INSUFFICIENT_RESOURCES ;
+ int STATUS_SUCCESS ;
+ TYPE_7__* VfatGlobalData ;
 
 NTSTATUS
 vfatAttachFCBToFileObject(
@@ -48,18 +48,10 @@ vfatAttachFCBToFileObject(
     PFILE_OBJECT fileObject)
 {
     PVFATCCB newCCB;
-
-#ifdef KDBG
-    if (DebugFile.Buffer != NULL && FsRtlIsNameInExpression(&DebugFile, &fcb->LongNameU, FALSE, NULL))
-    {
-        DPRINT1("Attaching %p to %p (%d)\n", fcb, fileObject, fcb->RefCount);
-    }
-#endif
-
     newCCB = ExAllocateFromNPagedLookasideList(&VfatGlobalData->CcbLookasideList);
-    if (newCCB == NULL)
+    if (newCCB == ((void*)0))
     {
-        return  STATUS_INSUFFICIENT_RESOURCES;
+        return STATUS_INSUFFICIENT_RESOURCES;
     }
     RtlZeroMemory(newCCB, sizeof (VFATCCB));
 
@@ -69,10 +61,10 @@ vfatAttachFCBToFileObject(
     fileObject->Vpb = vcb->IoVPB;
     DPRINT("file open: fcb:%p PathName:%wZ\n", fcb, &fcb->PathNameU);
 
-#ifdef KDBG
-    fcb->Flags &= ~FCB_CLEANED_UP;
-    fcb->Flags &= ~FCB_CLOSED;
-#endif
+
+
+
+
 
     return STATUS_SUCCESS;
 }

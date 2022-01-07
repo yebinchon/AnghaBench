@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint32_t ;
-typedef  scalar_t__ time_t ;
-struct TYPE_7__ {int machines_memory; int /*<<< orphan*/  machines; int /*<<< orphan*/  machines_count; } ;
-struct TYPE_6__ {int /*<<< orphan*/  guid; scalar_t__ usages; scalar_t__ last_t; scalar_t__ first_t; int /*<<< orphan*/  machine_urls; } ;
-typedef  TYPE_1__ REGISTRY_MACHINE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DICTIONARY_FLAGS ; 
- int /*<<< orphan*/  D_REGISTRY ; 
- int /*<<< orphan*/  GUID_LEN ; 
- int /*<<< orphan*/  debug (int /*<<< orphan*/ ,char*,char const*,...) ; 
- int /*<<< orphan*/  dictionary_create (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dictionary_set (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*,int) ; 
- TYPE_1__* mallocz (int) ; 
- TYPE_3__ registry ; 
- int /*<<< orphan*/  strncpyz (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint32_t ;
+typedef scalar_t__ time_t ;
+struct TYPE_7__ {int machines_memory; int machines; int machines_count; } ;
+struct TYPE_6__ {int guid; scalar_t__ usages; scalar_t__ last_t; scalar_t__ first_t; int machine_urls; } ;
+typedef TYPE_1__ REGISTRY_MACHINE ;
+
+
+ int DICTIONARY_FLAGS ;
+ int D_REGISTRY ;
+ int GUID_LEN ;
+ int debug (int ,char*,char const*,...) ;
+ int dictionary_create (int ) ;
+ int dictionary_set (int ,int ,TYPE_1__*,int) ;
+ TYPE_1__* mallocz (int) ;
+ TYPE_3__ registry ;
+ int strncpyz (int ,char const*,int ) ;
 
 REGISTRY_MACHINE *registry_machine_allocate(const char *machine_guid, time_t when) {
     debug(D_REGISTRY, "Registry: registry_machine_allocate('%s'): creating new machine, sizeof(MACHINE)=%zu", machine_guid, sizeof(REGISTRY_MACHINE));

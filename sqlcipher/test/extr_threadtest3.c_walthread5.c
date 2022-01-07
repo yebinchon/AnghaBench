@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_20__   TYPE_3__ ;
-typedef  struct TYPE_19__   TYPE_2__ ;
-typedef  struct TYPE_18__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_18__ {int /*<<< orphan*/  member_0; } ;
-typedef  TYPE_1__ Threadset ;
-struct TYPE_20__ {scalar_t__ rc; int /*<<< orphan*/  member_0; } ;
-struct TYPE_19__ {int /*<<< orphan*/  member_0; } ;
-typedef  TYPE_2__ Sqlite ;
-typedef  TYPE_3__ Error ;
 
-/* Variables and functions */
- scalar_t__ SQLITE_OK ; 
- int /*<<< orphan*/  closedb (TYPE_3__*,TYPE_2__*) ; 
- int /*<<< orphan*/  filecopy (TYPE_3__*,char*,char*) ; 
- scalar_t__ filesize (TYPE_3__*,char*) ; 
- int /*<<< orphan*/  join_all_threads (TYPE_3__*,TYPE_1__*) ; 
- int /*<<< orphan*/  launch_thread (TYPE_3__*,TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  opendb (TYPE_3__*,TYPE_2__*,char*,int) ; 
- int /*<<< orphan*/  print_and_free_err (TYPE_3__*) ; 
- int /*<<< orphan*/  printf (char*,int) ; 
- int /*<<< orphan*/  setstoptime (TYPE_3__*,int) ; 
- int /*<<< orphan*/  sql_script (TYPE_3__*,TYPE_2__*,char*) ; 
- int /*<<< orphan*/  walthread5_thread ; 
+
+typedef struct TYPE_20__ TYPE_3__ ;
+typedef struct TYPE_19__ TYPE_2__ ;
+typedef struct TYPE_18__ TYPE_1__ ;
+
+
+struct TYPE_18__ {int member_0; } ;
+typedef TYPE_1__ Threadset ;
+struct TYPE_20__ {scalar_t__ rc; int member_0; } ;
+struct TYPE_19__ {int member_0; } ;
+typedef TYPE_2__ Sqlite ;
+typedef TYPE_3__ Error ;
+
+
+ scalar_t__ SQLITE_OK ;
+ int closedb (TYPE_3__*,TYPE_2__*) ;
+ int filecopy (TYPE_3__*,char*,char*) ;
+ scalar_t__ filesize (TYPE_3__*,char*) ;
+ int join_all_threads (TYPE_3__*,TYPE_1__*) ;
+ int launch_thread (TYPE_3__*,TYPE_1__*,int ,int ) ;
+ int opendb (TYPE_3__*,TYPE_2__*,char*,int) ;
+ int print_and_free_err (TYPE_3__*) ;
+ int printf (char*,int) ;
+ int setstoptime (TYPE_3__*,int) ;
+ int sql_script (TYPE_3__*,TYPE_2__*,char*) ;
+ int walthread5_thread ;
 
 __attribute__((used)) static void walthread5(int nMs){
   Error err = {0};
@@ -40,7 +40,7 @@ __attribute__((used)) static void walthread5(int nMs){
   Threadset threads = {0};
 
   opendb(&err, &db, "test.db", 1);
-  sql_script(&err, &db, 
+  sql_script(&err, &db,
       "PRAGMA wal_autocheckpoint = 0;"
       "PRAGMA page_size = 1024;"
       "PRAGMA journal_mode = WAL;"

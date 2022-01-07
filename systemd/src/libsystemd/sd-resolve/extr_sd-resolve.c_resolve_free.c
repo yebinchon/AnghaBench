@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
 struct TYPE_13__ {TYPE_2__* floating; } ;
-typedef  TYPE_1__ sd_resolve_query ;
-struct TYPE_14__ {int dead; scalar_t__* fds; unsigned int n_valid_workers; int /*<<< orphan*/ * workers; int /*<<< orphan*/ ** default_resolve_ptr; TYPE_1__* queries; } ;
-typedef  TYPE_2__ sd_resolve ;
-struct TYPE_15__ {int length; int /*<<< orphan*/  type; } ;
-typedef  TYPE_3__ RHeader ;
+typedef TYPE_1__ sd_resolve_query ;
+struct TYPE_14__ {int dead; scalar_t__* fds; unsigned int n_valid_workers; int * workers; int ** default_resolve_ptr; TYPE_1__* queries; } ;
+typedef TYPE_2__ sd_resolve ;
+struct TYPE_15__ {int length; int type; } ;
+typedef TYPE_3__ RHeader ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MSG_NOSIGNAL ; 
- int /*<<< orphan*/  PROTECT_ERRNO ; 
- size_t REQUEST_SEND_FD ; 
- int /*<<< orphan*/  REQUEST_TERMINATE ; 
- int /*<<< orphan*/  _FD_MAX ; 
- int /*<<< orphan*/  assert (TYPE_2__*) ; 
- int /*<<< orphan*/  close_many (scalar_t__*,int /*<<< orphan*/ ) ; 
- TYPE_2__* mfree (TYPE_2__*) ; 
- int /*<<< orphan*/  pthread_join (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  resolve_query_disconnect (TYPE_1__*) ; 
- int /*<<< orphan*/  sd_resolve_detach_event (TYPE_2__*) ; 
- int /*<<< orphan*/  sd_resolve_query_unref (TYPE_1__*) ; 
- int /*<<< orphan*/  send (scalar_t__,TYPE_3__*,int,int /*<<< orphan*/ ) ; 
+
+ int MSG_NOSIGNAL ;
+ int PROTECT_ERRNO ;
+ size_t REQUEST_SEND_FD ;
+ int REQUEST_TERMINATE ;
+ int _FD_MAX ;
+ int assert (TYPE_2__*) ;
+ int close_many (scalar_t__*,int ) ;
+ TYPE_2__* mfree (TYPE_2__*) ;
+ int pthread_join (int ,int *) ;
+ int resolve_query_disconnect (TYPE_1__*) ;
+ int sd_resolve_detach_event (TYPE_2__*) ;
+ int sd_resolve_query_unref (TYPE_1__*) ;
+ int send (scalar_t__,TYPE_3__*,int,int ) ;
 
 __attribute__((used)) static sd_resolve *resolve_free(sd_resolve *resolve) {
         PROTECT_ERRNO;
@@ -49,9 +49,9 @@ __attribute__((used)) static sd_resolve *resolve_free(sd_resolve *resolve) {
         }
 
         if (resolve->default_resolve_ptr)
-                *(resolve->default_resolve_ptr) = NULL;
+                *(resolve->default_resolve_ptr) = ((void*)0);
 
-        resolve->dead = true;
+        resolve->dead = 1;
 
         sd_resolve_detach_event(resolve);
 
@@ -62,17 +62,17 @@ __attribute__((used)) static sd_resolve *resolve_free(sd_resolve *resolve) {
                         .length = sizeof req,
                 };
 
-                /* Send one termination packet for each worker */
+
                 for (i = 0; i < resolve->n_valid_workers; i++)
                         (void) send(resolve->fds[REQUEST_SEND_FD], &req, req.length, MSG_NOSIGNAL);
         }
 
-        /* Now terminate them and wait until they are gone.
-           If we get an error than most likely the thread already exited. */
-        for (i = 0; i < resolve->n_valid_workers; i++)
-                (void) pthread_join(resolve->workers[i], NULL);
 
-        /* Close all communication channels */
+
+        for (i = 0; i < resolve->n_valid_workers; i++)
+                (void) pthread_join(resolve->workers[i], ((void*)0));
+
+
         close_many(resolve->fds, _FD_MAX);
 
         return mfree(resolve);

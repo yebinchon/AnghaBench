@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  redisReply ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int redisReply ;
 struct TYPE_2__ {int interval; scalar_t__ latency_history; } ;
 
-/* Variables and functions */
- int LATENCY_HISTORY_DEFAULT_INTERVAL ; 
- int LATENCY_SAMPLE_RATE ; 
- TYPE_1__ config ; 
- int /*<<< orphan*/  context ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fflush (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  freeReplyObject (int /*<<< orphan*/ *) ; 
- long long mstime () ; 
- int /*<<< orphan*/  printf (char*,float,...) ; 
- int /*<<< orphan*/ * redisCommand (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  stdout ; 
- int /*<<< orphan*/  usleep (int) ; 
+
+ int LATENCY_HISTORY_DEFAULT_INTERVAL ;
+ int LATENCY_SAMPLE_RATE ;
+ TYPE_1__ config ;
+ int context ;
+ int exit (int) ;
+ int fflush (int ) ;
+ int fprintf (int ,char*) ;
+ int freeReplyObject (int *) ;
+ long long mstime () ;
+ int printf (char*,float,...) ;
+ int * redisCommand (int ,char*) ;
+ int stderr ;
+ int stdout ;
+ int usleep (int) ;
 
 __attribute__((used)) static void latencyMode(void) {
     redisReply *reply;
@@ -43,7 +43,7 @@ __attribute__((used)) static void latencyMode(void) {
     while(1) {
         start = mstime();
         reply = redisCommand(context,"PING");
-        if (reply == NULL) {
+        if (reply == ((void*)0)) {
             fprintf(stderr,"\nI/O error\n");
             exit(1);
         }

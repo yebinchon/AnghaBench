@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct nvt_dev {int /*<<< orphan*/  cr_efir; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EFER_EFM_DISABLE ; 
- int /*<<< orphan*/  outb (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct nvt_dev {int cr_efir; } ;
+
+
+ int EFER_EFM_DISABLE ;
+ int outb (int ,int ) ;
 
 __attribute__((used)) static inline void nvt_efm_disable(struct nvt_dev *nvt)
 {
-	outb(EFER_EFM_DISABLE, nvt->cr_efir);
+ outb(EFER_EFM_DISABLE, nvt->cr_efir);
 }

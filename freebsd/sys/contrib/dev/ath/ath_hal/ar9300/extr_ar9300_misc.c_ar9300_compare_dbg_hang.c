@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u_int8_t ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int u_int8_t ;
 struct ath_hal {int dummy; } ;
 struct TYPE_5__ {int dma_dbg_4; int dma_dbg_5; int dma_dbg_6; } ;
-typedef  TYPE_1__ mac_dbg_regs_t ;
-typedef  int hal_mac_hangs_t ;
+typedef TYPE_1__ mac_dbg_regs_t ;
+typedef int hal_mac_hangs_t ;
 struct TYPE_6__ {int dcu_chain_state; int dcu_complete_state; } ;
-typedef  TYPE_2__ hal_mac_hang_check_t ;
+typedef TYPE_2__ hal_mac_hang_check_t ;
 
-/* Variables and functions */
- int dcu_chain_state ; 
- int dcu_complete_state ; 
+
+ int dcu_chain_state ;
+ int dcu_complete_state ;
 
 __attribute__((used)) static hal_mac_hangs_t
 ar9300_compare_dbg_hang(struct ath_hal *ah, mac_dbg_regs_t mac_dbg,

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint64_t ;
+
+
+
+
+typedef int uint64_t ;
 struct priv {int dummy; } ;
 
-/* Variables and functions */
- int MP_ARRAY_SIZE (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  MP_VERBOSE (struct priv*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ ** fudge_pairs ; 
- int mp_chmap_to_lavc (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mp_chmap_to_str (int /*<<< orphan*/ *) ; 
+
+ int MP_ARRAY_SIZE (int **) ;
+ int MP_VERBOSE (struct priv*,char*,int ,int ) ;
+ int ** fudge_pairs ;
+ int mp_chmap_to_lavc (int *) ;
+ int mp_chmap_to_str (int *) ;
 
 __attribute__((used)) static uint64_t fudge_layout_conversion(struct priv *p,
                                         uint64_t in, uint64_t out)

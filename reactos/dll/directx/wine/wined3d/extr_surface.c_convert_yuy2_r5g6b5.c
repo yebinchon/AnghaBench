@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int WORD ;
-typedef  unsigned int DWORD ;
-typedef  scalar_t__ BYTE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TRACE (char*,unsigned int,unsigned int,unsigned int,unsigned int) ; 
- int cliptobyte (int) ; 
+
+
+
+typedef int WORD ;
+typedef unsigned int DWORD ;
+typedef scalar_t__ BYTE ;
+
+
+ int TRACE (char*,unsigned int,unsigned int,unsigned int,unsigned int) ;
+ int cliptobyte (int) ;
 
 __attribute__((used)) static void convert_yuy2_r5g6b5(const BYTE *src, BYTE *dst,
         DWORD pitch_in, DWORD pitch_out, unsigned int w, unsigned int h)
@@ -32,14 +32,14 @@ __attribute__((used)) static void convert_yuy2_r5g6b5(const BYTE *src, BYTE *dst
         WORD *dst_line = (WORD *)(dst + y * pitch_out);
         for (x = 0; x < w; ++x)
         {
-            /* YUV to RGB conversion formulas from http://en.wikipedia.org/wiki/YUV:
-             *     C = Y - 16; D = U - 128; E = V - 128;
-             *     R = cliptobyte((298 * C + 409 * E + 128) >> 8);
-             *     G = cliptobyte((298 * C - 100 * D - 208 * E + 128) >> 8);
-             *     B = cliptobyte((298 * C + 516 * D + 128) >> 8);
-             * Two adjacent YUY2 pixels are stored as four bytes: Y0 U Y1 V .
-             * U and V are shared between the pixels. */
-            if (!(x & 1)) /* For every even pixel, read new U and V. */
+
+
+
+
+
+
+
+            if (!(x & 1))
             {
                 d = (int) src_line[1] - 128;
                 e = (int) src_line[3] - 128;
@@ -48,12 +48,12 @@ __attribute__((used)) static void convert_yuy2_r5g6b5(const BYTE *src, BYTE *dst
                 b2 = 516 * d + 128;
             }
             c2 = 298 * ((int) src_line[0] - 16);
-            dst_line[x] = (cliptobyte((c2 + r2) >> 8) >> 3) << 11   /* red   */
-                | (cliptobyte((c2 + g2) >> 8) >> 2) << 5            /* green */
-                | (cliptobyte((c2 + b2) >> 8) >> 3);                /* blue  */
-                /* Scale RGB values to 0..255 range,
-                 * then clip them if still not in range (may be negative),
-                 * then shift them within DWORD if necessary. */
+            dst_line[x] = (cliptobyte((c2 + r2) >> 8) >> 3) << 11
+                | (cliptobyte((c2 + g2) >> 8) >> 2) << 5
+                | (cliptobyte((c2 + b2) >> 8) >> 3);
+
+
+
             src_line += 2;
         }
     }

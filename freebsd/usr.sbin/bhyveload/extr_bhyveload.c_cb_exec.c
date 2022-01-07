@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BSP ; 
- int /*<<< orphan*/  USERBOOT_EXIT_QUIT ; 
- int /*<<< orphan*/  cb_exit (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ cr3 ; 
- int /*<<< orphan*/  ctx ; 
- int /*<<< orphan*/  gdtbase ; 
- int /*<<< orphan*/  perror (char*) ; 
- int /*<<< orphan*/  rsp ; 
- int vm_setup_freebsd_registers (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int vm_setup_freebsd_registers_i386 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint64_t ;
+
+
+ int BSP ;
+ int USERBOOT_EXIT_QUIT ;
+ int cb_exit (int *,int ) ;
+ scalar_t__ cr3 ;
+ int ctx ;
+ int gdtbase ;
+ int perror (char*) ;
+ int rsp ;
+ int vm_setup_freebsd_registers (int ,int ,int ,scalar_t__,int ,int ) ;
+ int vm_setup_freebsd_registers_i386 (int ,int ,int ,int ,int ) ;
 
 __attribute__((used)) static void
 cb_exec(void *arg, uint64_t rip)
 {
-	int error;
+ int error;
 
-	if (cr3 == 0)
-		error = vm_setup_freebsd_registers_i386(ctx, BSP, rip, gdtbase,
-		    rsp);
-	else
-		error = vm_setup_freebsd_registers(ctx, BSP, rip, cr3, gdtbase,
-		    rsp);
-	if (error) {
-		perror("vm_setup_freebsd_registers");
-		cb_exit(NULL, USERBOOT_EXIT_QUIT);
-	}
+ if (cr3 == 0)
+  error = vm_setup_freebsd_registers_i386(ctx, BSP, rip, gdtbase,
+      rsp);
+ else
+  error = vm_setup_freebsd_registers(ctx, BSP, rip, cr3, gdtbase,
+      rsp);
+ if (error) {
+  perror("vm_setup_freebsd_registers");
+  cb_exit(((void*)0), USERBOOT_EXIT_QUIT);
+ }
 
-	cb_exit(NULL, 0);
+ cb_exit(((void*)0), 0);
 }

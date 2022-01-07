@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct cxgbi_hba {int /*<<< orphan*/  ipv4addr; } ;
-typedef  int /*<<< orphan*/  __be32 ;
 
-/* Variables and functions */
+
+
+
+struct cxgbi_hba {int ipv4addr; } ;
+typedef int __be32 ;
+
+
 
 __attribute__((used)) static inline __be32 cxgbi_get_iscsi_ipv4(struct cxgbi_hba *chba)
 {
-	return chba->ipv4addr;
+ return chba->ipv4addr;
 }

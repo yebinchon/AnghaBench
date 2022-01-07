@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct js_event {int type; } ;
-typedef  int /*<<< orphan*/  name ;
-typedef  int /*<<< orphan*/  event ;
-struct TYPE_2__ {int /*<<< orphan*/  integer; } ;
+typedef int name ;
+typedef int event ;
+struct TYPE_2__ {int integer; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Com_Printf (char*,...) ; 
- int /*<<< orphan*/  JSIOCGAXES ; 
- int /*<<< orphan*/  JSIOCGBUTTONS ; 
- int /*<<< orphan*/  JSIOCGNAME (int) ; 
- int JS_EVENT_INIT ; 
- int O_NONBLOCK ; 
- int O_RDONLY ; 
- int PATH_MAX ; 
- TYPE_1__* in_joystick ; 
- scalar_t__ ioctl (int,int /*<<< orphan*/ ,char*) ; 
- int joy_fd ; 
- int open (char*,int) ; 
- int read (int,struct js_event*,int) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,int) ; 
- int /*<<< orphan*/  strncpy (char*,char*,int) ; 
+
+ int Com_Printf (char*,...) ;
+ int JSIOCGAXES ;
+ int JSIOCGBUTTONS ;
+ int JSIOCGNAME (int) ;
+ int JS_EVENT_INIT ;
+ int O_NONBLOCK ;
+ int O_RDONLY ;
+ int PATH_MAX ;
+ TYPE_1__* in_joystick ;
+ scalar_t__ ioctl (int,int ,char*) ;
+ int joy_fd ;
+ int open (char*,int) ;
+ int read (int,struct js_event*,int) ;
+ int snprintf (char*,int,char*,int) ;
+ int strncpy (char*,char*,int) ;
 
 void IN_StartupJoystick( void )
 {
@@ -60,35 +60,35 @@ void IN_StartupJoystick( void )
 
       Com_Printf( "Joystick %s found\n", filename );
 
-      /* Get rid of initialization messages. */
-      do {
-	n = read( joy_fd, &event, sizeof( event ) );
 
-	if( n == -1 ) {
-	  break;
-	}
+      do {
+ n = read( joy_fd, &event, sizeof( event ) );
+
+ if( n == -1 ) {
+   break;
+ }
 
       } while( ( event.type & JS_EVENT_INIT ) );
 
-      /* Get joystick statistics. */
+
       ioctl( joy_fd, JSIOCGAXES, &axes );
       ioctl( joy_fd, JSIOCGBUTTONS, &buttons );
 
       if( ioctl( joy_fd, JSIOCGNAME( sizeof( name ) ), name ) < 0 ) {
-	strncpy( name, "Unknown", sizeof( name ) );
+ strncpy( name, "Unknown", sizeof( name ) );
       }
 
       Com_Printf( "Name:    %s\n", name );
       Com_Printf( "Axes:    %d\n", axes );
       Com_Printf( "Buttons: %d\n", buttons );
 
-      /* Our work here is done. */
+
       return;
     }
 
   }
 
-  /* No soup for you. */
+
   if( joy_fd == -1 ) {
     Com_Printf( "No joystick found.\n" );
     return;

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct vo {struct priv* priv; } ;
-struct priv {int /*<<< orphan*/  canvas; int /*<<< orphan*/  display; int /*<<< orphan*/ * dither_buffer; int /*<<< orphan*/ * dither; } ;
+struct priv {int canvas; int display; int * dither_buffer; int * dither; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  caca_free_canvas (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  caca_free_display (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  caca_free_dither (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  talloc_free (int /*<<< orphan*/ *) ; 
+
+ int caca_free_canvas (int ) ;
+ int caca_free_display (int ) ;
+ int caca_free_dither (int *) ;
+ int talloc_free (int *) ;
 
 __attribute__((used)) static void uninit(struct vo *vo)
 {
     struct priv *priv = vo->priv;
     caca_free_dither(priv->dither);
-    priv->dither = NULL;
+    priv->dither = ((void*)0);
     talloc_free(priv->dither_buffer);
-    priv->dither_buffer = NULL;
+    priv->dither_buffer = ((void*)0);
     caca_free_display(priv->display);
     caca_free_canvas(priv->canvas);
 }

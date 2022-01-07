@@ -1,70 +1,70 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_26__   TYPE_6__ ;
-typedef  struct TYPE_25__   TYPE_5__ ;
-typedef  struct TYPE_24__   TYPE_4__ ;
-typedef  struct TYPE_23__   TYPE_3__ ;
-typedef  struct TYPE_22__   TYPE_2__ ;
-typedef  struct TYPE_21__   TYPE_1__ ;
-typedef  struct TYPE_20__   TYPE_19__ ;
 
-/* Type definitions */
-struct TYPE_26__ {int alloc_size; int length; int flags; int /*<<< orphan*/  data; } ;
-struct TYPE_25__ {TYPE_4__* format; int /*<<< orphan*/  buffer_num_recommended; int /*<<< orphan*/  buffer_num; int /*<<< orphan*/  buffer_size_recommended; int /*<<< orphan*/  buffer_size; scalar_t__ is_enabled; } ;
-struct TYPE_24__ {TYPE_3__* es; int /*<<< orphan*/  encoding; } ;
+
+
+typedef struct TYPE_26__ TYPE_6__ ;
+typedef struct TYPE_25__ TYPE_5__ ;
+typedef struct TYPE_24__ TYPE_4__ ;
+typedef struct TYPE_23__ TYPE_3__ ;
+typedef struct TYPE_22__ TYPE_2__ ;
+typedef struct TYPE_21__ TYPE_1__ ;
+typedef struct TYPE_20__ TYPE_19__ ;
+
+
+struct TYPE_26__ {int alloc_size; int length; int flags; int data; } ;
+struct TYPE_25__ {TYPE_4__* format; int buffer_num_recommended; int buffer_num; int buffer_size_recommended; int buffer_size; scalar_t__ is_enabled; } ;
+struct TYPE_24__ {TYPE_3__* es; int encoding; } ;
 struct TYPE_21__ {void* height; void* width; scalar_t__ y; scalar_t__ x; } ;
 struct TYPE_22__ {int width; int height; TYPE_1__ crop; } ;
 struct TYPE_23__ {TYPE_2__ video; } ;
 struct TYPE_20__ {TYPE_5__** output; scalar_t__ status; TYPE_5__** input; } ;
-typedef  scalar_t__ MMAL_STATUS_T ;
-typedef  TYPE_5__ MMAL_PORT_T ;
-typedef  int /*<<< orphan*/  MMAL_FOURCC_T ;
-typedef  TYPE_6__ MMAL_BUFFER_HEADER_T ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef scalar_t__ MMAL_STATUS_T ;
+typedef TYPE_5__ MMAL_PORT_T ;
+typedef int MMAL_FOURCC_T ;
+typedef TYPE_6__ MMAL_BUFFER_HEADER_T ;
+typedef int FILE ;
 
-/* Variables and functions */
- void* HEIGHT ; 
- int /*<<< orphan*/  INPUT_ENC ; 
- int MMAL_BUFFER_HEADER_FLAG_EOS ; 
- scalar_t__ MMAL_EAGAIN ; 
- int /*<<< orphan*/  MMAL_PARAMETER_JPEG_Q_FACTOR ; 
- scalar_t__ MMAL_SUCCESS ; 
- int /*<<< orphan*/  MMAL_WRAPPER_FLAG_PAYLOAD_ALLOCATE ; 
- void* VCOS_ALIGN_UP (void*,int) ; 
- void* WIDTH ; 
- int /*<<< orphan*/  create_rgba_test_image (int /*<<< orphan*/ ,int,int) ; 
- TYPE_19__* encoder ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char const*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int fwrite (int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mmal_buffer_header_release (TYPE_6__*) ; 
- int /*<<< orphan*/  mmal_port_flush (TYPE_5__*) ; 
- scalar_t__ mmal_port_format_commit (TYPE_5__*) ; 
- int /*<<< orphan*/  mmal_port_parameter_set_uint32 (TYPE_5__*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ mmal_port_send_buffer (TYPE_5__*,TYPE_6__*) ; 
- scalar_t__ mmal_wrapper_buffer_get_empty (TYPE_5__*,TYPE_6__**,int /*<<< orphan*/ ) ; 
- scalar_t__ mmal_wrapper_buffer_get_full (TYPE_5__*,TYPE_6__**,int /*<<< orphan*/ ) ; 
- scalar_t__ mmal_wrapper_port_disable (TYPE_5__*) ; 
- scalar_t__ mmal_wrapper_port_enable (TYPE_5__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  sem ; 
- int /*<<< orphan*/  stderr ; 
- char* strerror (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vcos_semaphore_wait (int /*<<< orphan*/ *) ; 
 
-void mmal_encode_test(MMAL_FOURCC_T encoding, // Encoding
-                      const char* filename) // File name
+ void* HEIGHT ;
+ int INPUT_ENC ;
+ int MMAL_BUFFER_HEADER_FLAG_EOS ;
+ scalar_t__ MMAL_EAGAIN ;
+ int MMAL_PARAMETER_JPEG_Q_FACTOR ;
+ scalar_t__ MMAL_SUCCESS ;
+ int MMAL_WRAPPER_FLAG_PAYLOAD_ALLOCATE ;
+ void* VCOS_ALIGN_UP (void*,int) ;
+ void* WIDTH ;
+ int create_rgba_test_image (int ,int,int) ;
+ TYPE_19__* encoder ;
+ int errno ;
+ int exit (int) ;
+ int fclose (int *) ;
+ int * fopen (char const*,char*) ;
+ int fprintf (int ,char*,...) ;
+ int fwrite (int ,int,int,int *) ;
+ int mmal_buffer_header_release (TYPE_6__*) ;
+ int mmal_port_flush (TYPE_5__*) ;
+ scalar_t__ mmal_port_format_commit (TYPE_5__*) ;
+ int mmal_port_parameter_set_uint32 (TYPE_5__*,int ,int) ;
+ scalar_t__ mmal_port_send_buffer (TYPE_5__*,TYPE_6__*) ;
+ scalar_t__ mmal_wrapper_buffer_get_empty (TYPE_5__*,TYPE_6__**,int ) ;
+ scalar_t__ mmal_wrapper_buffer_get_full (TYPE_5__*,TYPE_6__**,int ) ;
+ scalar_t__ mmal_wrapper_port_disable (TYPE_5__*) ;
+ scalar_t__ mmal_wrapper_port_enable (TYPE_5__*,int ) ;
+ int printf (char*,...) ;
+ int sem ;
+ int stderr ;
+ char* strerror (int ) ;
+ int vcos_semaphore_wait (int *) ;
+
+void mmal_encode_test(MMAL_FOURCC_T encoding,
+                      const char* filename)
 {
    MMAL_PORT_T* portIn;
    MMAL_PORT_T* portOut;
@@ -79,7 +79,7 @@ void mmal_encode_test(MMAL_FOURCC_T encoding, // Encoding
 
    printf("Encoding test image %s\n", filename);
 
-   // Configure input
+
 
    portIn = encoder->input[0];
    encoder->status = MMAL_SUCCESS;
@@ -116,7 +116,7 @@ void mmal_encode_test(MMAL_FOURCC_T encoding, // Encoding
           (char*)&portIn->format->encoding,
           portIn->format->es->video.width, portIn->format->es->video.height);
 
-   // Configure output
+
 
    portOut = encoder->output[0];
 
@@ -146,7 +146,7 @@ void mmal_encode_test(MMAL_FOURCC_T encoding, // Encoding
 
    printf("- output %4.4s\n", (char*)&encoding);
 
-   // Perform the encoding
+
 
    outFile = fopen(filename, "w");
    if (!outFile) {
@@ -156,7 +156,7 @@ void mmal_encode_test(MMAL_FOURCC_T encoding, // Encoding
 
    while (!eos) {
 
-      // Send output buffers to be filled with encoded image.
+
       while (mmal_wrapper_buffer_get_empty(portOut, &out, 0) == MMAL_SUCCESS) {
          if (mmal_port_send_buffer(portOut, out) != MMAL_SUCCESS) {
             fprintf(stderr, "Failed to send buffer\n");
@@ -164,7 +164,7 @@ void mmal_encode_test(MMAL_FOURCC_T encoding, // Encoding
          }
       }
 
-      // Send image to be encoded.
+
       if (!sent && mmal_wrapper_buffer_get_empty(portIn, &in, 0) == MMAL_SUCCESS) {
          printf("- sending %u bytes to encoder\n", in->alloc_size);
          create_rgba_test_image(in->data, in->alloc_size, portIn->format->es->video.width);
@@ -177,10 +177,10 @@ void mmal_encode_test(MMAL_FOURCC_T encoding, // Encoding
          sent = 1;
       }
 
-      // Get filled output buffers.
+
       status = mmal_wrapper_buffer_get_full(portOut, &out, 0);
       if (status == MMAL_EAGAIN) {
-         // No buffer available, wait for callback and loop.
+
          vcos_semaphore_wait(&sem);
          continue;
       } else if (status != MMAL_SUCCESS) {

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VC_URI_PARTS_T ;
 
-/* Variables and functions */
- scalar_t__ check_accessors (int /*<<< orphan*/ *) ; 
- scalar_t__ check_build_parameters (int /*<<< orphan*/ *) ; 
- scalar_t__ check_get_defaults (int /*<<< orphan*/ *) ; 
- scalar_t__ check_null_uri_pointer () ; 
- scalar_t__ check_parse_parameters (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int VC_URI_PARTS_T ;
+
+
+ scalar_t__ check_accessors (int *) ;
+ scalar_t__ check_build_parameters (int *) ;
+ scalar_t__ check_get_defaults (int *) ;
+ scalar_t__ check_null_uri_pointer () ;
+ scalar_t__ check_parse_parameters (int *) ;
 
 __attribute__((used)) static int test_parameter_validation(VC_URI_PARTS_T *uri)
 {

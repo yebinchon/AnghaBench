@@ -1,32 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int errno ; 
- int /*<<< orphan*/ * ev_signal_pair ; 
- int /*<<< orphan*/ * evsigcaught ; 
- int evsignal_caught ; 
- int /*<<< orphan*/  write (int /*<<< orphan*/ ,char*,int) ; 
+ int errno ;
+ int * ev_signal_pair ;
+ int * evsigcaught ;
+ int evsignal_caught ;
+ int write (int ,char*,int) ;
 
 __attribute__((used)) static void
 evsignal_handler(int sig)
 {
-	int save_errno = errno;
+ int save_errno = errno;
 
-	evsigcaught[sig]++;
-	evsignal_caught = 1;
+ evsigcaught[sig]++;
+ evsignal_caught = 1;
 
-	/* Wake up our notification mechanism */
-	write(ev_signal_pair[0], "a", 1);
-	errno = save_errno;
+
+ write(ev_signal_pair[0], "a", 1);
+ errno = save_errno;
 }

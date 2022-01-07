@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char WCHAR ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef char WCHAR ;
 struct TYPE_6__ {TYPE_1__* Part; } ;
-struct TYPE_5__ {int LowerLimit; int UpperLimit; int /*<<< orphan*/  EditHwnd; } ;
-typedef  TYPE_1__ IPPART_INFO ;
-typedef  TYPE_2__ IPADDRESS_INFO ;
-typedef  int /*<<< orphan*/  BOOL ;
+struct TYPE_5__ {int LowerLimit; int UpperLimit; int EditHwnd; } ;
+typedef TYPE_1__ IPPART_INFO ;
+typedef TYPE_2__ IPADDRESS_INFO ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GetWindowTextW (int /*<<< orphan*/ ,char*,int) ; 
- int IPADDRESS_IPNotify (TYPE_2__ const*,int,int) ; 
- int /*<<< orphan*/  SetWindowTextW (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  TRACE (char*,int) ; 
- int atoiW (char*) ; 
- int debugstr_w (char*) ; 
- int /*<<< orphan*/  wsprintfW (char*,char const*,int) ; 
+
+ int FALSE ;
+ int GetWindowTextW (int ,char*,int) ;
+ int IPADDRESS_IPNotify (TYPE_2__ const*,int,int) ;
+ int SetWindowTextW (int ,char*) ;
+ int TRACE (char*,int) ;
+ int atoiW (char*) ;
+ int debugstr_w (char*) ;
+ int wsprintfW (char*,char const*,int) ;
 
 __attribute__((used)) static BOOL IPADDRESS_ConstrainField (const IPADDRESS_INFO *infoPtr, int currentfield)
 {

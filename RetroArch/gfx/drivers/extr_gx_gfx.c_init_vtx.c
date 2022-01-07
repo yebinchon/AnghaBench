@@ -1,101 +1,101 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_4__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_4__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int input_scale; int rgb32; } ;
-typedef  TYPE_1__ video_info_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int /*<<< orphan*/  u8 ;
+typedef TYPE_1__ video_info_t ;
+typedef int uint32_t ;
+typedef int u8 ;
 struct TYPE_6__ {int scale; int rgb32; int should_resize; } ;
-typedef  TYPE_2__ gx_video_t ;
-struct TYPE_7__ {int width; int height; int /*<<< orphan*/  data; } ;
-typedef  int /*<<< orphan*/  Mtx44 ;
+typedef TYPE_2__ gx_video_t ;
+struct TYPE_7__ {int width; int height; int data; } ;
+typedef int Mtx44 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DCFlushRange (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  GX_AF_NONE ; 
- int /*<<< orphan*/  GX_ALWAYS ; 
- int /*<<< orphan*/  GX_BL_INVSRCALPHA ; 
- int /*<<< orphan*/  GX_BL_SRCALPHA ; 
- int /*<<< orphan*/  GX_BM_BLEND ; 
- int /*<<< orphan*/  GX_CLIP_DISABLE ; 
- int /*<<< orphan*/  GX_CLR_RGBA ; 
- int /*<<< orphan*/  GX_COLOR0A0 ; 
- int /*<<< orphan*/  GX_CULL_NONE ; 
- int /*<<< orphan*/  GX_ClearVtxDesc () ; 
- int /*<<< orphan*/  GX_DF_NONE ; 
- int /*<<< orphan*/  GX_DISABLE ; 
- int /*<<< orphan*/  GX_ENABLE ; 
- int /*<<< orphan*/  GX_F32 ; 
- int /*<<< orphan*/  GX_FALSE ; 
- int /*<<< orphan*/  GX_Flush () ; 
- int /*<<< orphan*/  GX_INDEX8 ; 
- int /*<<< orphan*/  GX_InvVtxCache () ; 
- int /*<<< orphan*/  GX_LIGHTNULL ; 
- int /*<<< orphan*/  GX_LO_CLEAR ; 
- int /*<<< orphan*/  GX_LoadProjectionMtx (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GX_MODULATE ; 
- int /*<<< orphan*/  GX_ORTHOGRAPHIC ; 
- int /*<<< orphan*/  GX_POS_XYZ ; 
- int /*<<< orphan*/  GX_RGBA8 ; 
- int /*<<< orphan*/  GX_SRC_REG ; 
- int /*<<< orphan*/  GX_SRC_VTX ; 
- int /*<<< orphan*/  GX_SetAlphaUpdate (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GX_SetArray (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  GX_SetBlendMode (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GX_SetChanCtrl (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GX_SetClipMode (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GX_SetColorUpdate (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GX_SetCullMode (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GX_SetNumChans (int) ; 
- int /*<<< orphan*/  GX_SetNumTexGens (int) ; 
- int /*<<< orphan*/  GX_SetTevOp (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GX_SetTevOrder (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GX_SetVtxAttrFmt (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GX_SetVtxDesc (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GX_SetZMode (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GX_TEVSTAGE0 ; 
- int /*<<< orphan*/  GX_TEXCOORD0 ; 
- int /*<<< orphan*/  GX_TEXMAP0 ; 
- int /*<<< orphan*/  GX_TEX_ST ; 
- int /*<<< orphan*/  GX_TRUE ; 
- int /*<<< orphan*/  GX_VA_CLR0 ; 
- int /*<<< orphan*/  GX_VA_POS ; 
- int /*<<< orphan*/  GX_VA_TEX0 ; 
- int /*<<< orphan*/  GX_VTXFMT0 ; 
- int /*<<< orphan*/  RARCH_ERR (char*) ; 
- int /*<<< orphan*/  RARCH_LOG (char*) ; 
- int RARCH_SCALE_BASE ; 
- int /*<<< orphan*/  _CPU_ISR_Disable (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  _CPU_ISR_Restore (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  color_ptr ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ ) ; 
- TYPE_4__ g_tex ; 
- int /*<<< orphan*/  guOrtho (int /*<<< orphan*/ ,int,int,int,int,double,double) ; 
- int /*<<< orphan*/  init_texture (void*,int,int) ; 
- int /*<<< orphan*/  memalign (int,int) ; 
- int /*<<< orphan*/  referenceRetraceCount ; 
- int /*<<< orphan*/  retraceCount ; 
- int /*<<< orphan*/  vertex_ptr ; 
- int /*<<< orphan*/  verts ; 
+
+ int DCFlushRange (int ,int) ;
+ int GX_AF_NONE ;
+ int GX_ALWAYS ;
+ int GX_BL_INVSRCALPHA ;
+ int GX_BL_SRCALPHA ;
+ int GX_BM_BLEND ;
+ int GX_CLIP_DISABLE ;
+ int GX_CLR_RGBA ;
+ int GX_COLOR0A0 ;
+ int GX_CULL_NONE ;
+ int GX_ClearVtxDesc () ;
+ int GX_DF_NONE ;
+ int GX_DISABLE ;
+ int GX_ENABLE ;
+ int GX_F32 ;
+ int GX_FALSE ;
+ int GX_Flush () ;
+ int GX_INDEX8 ;
+ int GX_InvVtxCache () ;
+ int GX_LIGHTNULL ;
+ int GX_LO_CLEAR ;
+ int GX_LoadProjectionMtx (int ,int ) ;
+ int GX_MODULATE ;
+ int GX_ORTHOGRAPHIC ;
+ int GX_POS_XYZ ;
+ int GX_RGBA8 ;
+ int GX_SRC_REG ;
+ int GX_SRC_VTX ;
+ int GX_SetAlphaUpdate (int ) ;
+ int GX_SetArray (int ,int ,int) ;
+ int GX_SetBlendMode (int ,int ,int ,int ) ;
+ int GX_SetChanCtrl (int ,int ,int ,int ,int ,int ,int ) ;
+ int GX_SetClipMode (int ) ;
+ int GX_SetColorUpdate (int ) ;
+ int GX_SetCullMode (int ) ;
+ int GX_SetNumChans (int) ;
+ int GX_SetNumTexGens (int) ;
+ int GX_SetTevOp (int ,int ) ;
+ int GX_SetTevOrder (int ,int ,int ,int ) ;
+ int GX_SetVtxAttrFmt (int ,int ,int ,int ,int ) ;
+ int GX_SetVtxDesc (int ,int ) ;
+ int GX_SetZMode (int ,int ,int ) ;
+ int GX_TEVSTAGE0 ;
+ int GX_TEXCOORD0 ;
+ int GX_TEXMAP0 ;
+ int GX_TEX_ST ;
+ int GX_TRUE ;
+ int GX_VA_CLR0 ;
+ int GX_VA_POS ;
+ int GX_VA_TEX0 ;
+ int GX_VTXFMT0 ;
+ int RARCH_ERR (char*) ;
+ int RARCH_LOG (char*) ;
+ int RARCH_SCALE_BASE ;
+ int _CPU_ISR_Disable (int ) ;
+ int _CPU_ISR_Restore (int ) ;
+ int color_ptr ;
+ int exit (int) ;
+ int free (int ) ;
+ TYPE_4__ g_tex ;
+ int guOrtho (int ,int,int,int,int,double,double) ;
+ int init_texture (void*,int,int) ;
+ int memalign (int,int) ;
+ int referenceRetraceCount ;
+ int retraceCount ;
+ int vertex_ptr ;
+ int verts ;
 
 __attribute__((used)) static void init_vtx(void *data, const video_info_t *video)
 {
    Mtx44 m;
-   gx_video_t *gx      = (gx_video_t*)data;
-   uint32_t level      = 0;
+   gx_video_t *gx = (gx_video_t*)data;
+   uint32_t level = 0;
    _CPU_ISR_Disable(level);
    referenceRetraceCount = retraceCount;
    _CPU_ISR_Restore(level);
@@ -153,7 +153,7 @@ __attribute__((used)) static void init_vtx(void *data, const video_info_t *video
 
    gx->rgb32 = video->rgb32;
    gx->scale = video->input_scale;
-   gx->should_resize = true;
+   gx->should_resize = 1;
 
    init_texture(data, g_tex.width, g_tex.height);
    GX_Flush();

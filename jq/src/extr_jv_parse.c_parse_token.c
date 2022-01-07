@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct jv_parser {int stackpos; void** stack; void* next; } ;
-typedef  char* pfunc ;
+typedef char* pfunc ;
 
-/* Variables and functions */
- int /*<<< orphan*/  JV_KIND_ARRAY ; 
- int /*<<< orphan*/  JV_KIND_OBJECT ; 
- int /*<<< orphan*/  JV_KIND_STRING ; 
- int MAX_PARSING_DEPTH ; 
- int /*<<< orphan*/  assert (int) ; 
- void* jv_array () ; 
- void* jv_array_append (void*,void*) ; 
- int /*<<< orphan*/  jv_array_length (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jv_copy (void*) ; 
- int /*<<< orphan*/  jv_free (void*) ; 
- int /*<<< orphan*/  jv_get_kind (void*) ; 
- void* jv_invalid () ; 
- int /*<<< orphan*/  jv_is_valid (void*) ; 
- void* jv_object () ; 
- int /*<<< orphan*/  jv_object_length (int /*<<< orphan*/ ) ; 
- void* jv_object_set (void*,void*,void*) ; 
- int /*<<< orphan*/  push (struct jv_parser*,void*) ; 
+
+ int JV_KIND_ARRAY ;
+ int JV_KIND_OBJECT ;
+ int JV_KIND_STRING ;
+ int MAX_PARSING_DEPTH ;
+ int assert (int) ;
+ void* jv_array () ;
+ void* jv_array_append (void*,void*) ;
+ int jv_array_length (int ) ;
+ int jv_copy (void*) ;
+ int jv_free (void*) ;
+ int jv_get_kind (void*) ;
+ void* jv_invalid () ;
+ int jv_is_valid (void*) ;
+ void* jv_object () ;
+ int jv_object_length (int ) ;
+ void* jv_object_set (void*,void*,void*) ;
+ int push (struct jv_parser*,void*) ;
 
 __attribute__((used)) static pfunc parse_token(struct jv_parser* p, char ch) {
   switch (ch) {
@@ -72,7 +72,7 @@ __attribute__((used)) static pfunc parse_token(struct jv_parser* p, char ch) {
       p->stackpos--;
       p->next = jv_invalid();
     } else {
-      // this case hits on input like {"a", "b"}
+
       return "Objects must consist of key:value pairs";
     }
     break;
@@ -85,7 +85,7 @@ __attribute__((used)) static pfunc parse_token(struct jv_parser* p, char ch) {
       p->next = jv_invalid();
     } else {
       if (jv_array_length(jv_copy(p->stack[p->stackpos-1])) != 0) {
-        // this case hits on input like [1,2,3,]
+
         return "Expected another array element";
       }
     }

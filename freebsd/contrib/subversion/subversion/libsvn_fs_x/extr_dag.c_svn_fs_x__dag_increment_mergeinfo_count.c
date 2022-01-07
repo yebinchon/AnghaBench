@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int /*<<< orphan*/  data; } ;
-typedef  TYPE_1__ svn_string_t ;
-struct TYPE_9__ {int mergeinfo_count; scalar_t__ kind; int /*<<< orphan*/  noderev_id; } ;
-typedef  TYPE_2__ svn_fs_x__noderev_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int data; } ;
+typedef TYPE_1__ svn_string_t ;
+struct TYPE_9__ {int mergeinfo_count; scalar_t__ kind; int noderev_id; } ;
+typedef TYPE_2__ svn_fs_x__noderev_t ;
+typedef int svn_error_t ;
 struct TYPE_10__ {TYPE_2__* node_revision; } ;
-typedef  TYPE_3__ dag_node_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  scalar_t__ apr_int64_t ;
+typedef TYPE_3__ dag_node_t ;
+typedef int apr_pool_t ;
+typedef scalar_t__ apr_int64_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  APR_INT64_T_FMT ; 
- int /*<<< orphan*/  SVN_ERR_FS_CORRUPT ; 
- int /*<<< orphan*/  SVN_ERR_FS_NOT_MUTABLE ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  apr_psprintf (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * noderev_changed (TYPE_3__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_error_createf (int /*<<< orphan*/ ,int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  svn_fs_x__dag_check_mutable (TYPE_3__*) ; 
- TYPE_1__* svn_fs_x__id_unparse (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_node_file ; 
+
+ int APR_INT64_T_FMT ;
+ int SVN_ERR_FS_CORRUPT ;
+ int SVN_ERR_FS_NOT_MUTABLE ;
+ int * SVN_NO_ERROR ;
+ int _ (char*) ;
+ int apr_psprintf (int *,int ,int ) ;
+ int * noderev_changed (TYPE_3__*,int *) ;
+ int * svn_error_createf (int ,int *,char*,int ,...) ;
+ int svn_fs_x__dag_check_mutable (TYPE_3__*) ;
+ TYPE_1__* svn_fs_x__id_unparse (int *,int *) ;
+ scalar_t__ svn_node_file ;
 
 svn_error_t *
 svn_fs_x__dag_increment_mergeinfo_count(dag_node_t *node,
@@ -43,13 +43,13 @@ svn_fs_x__dag_increment_mergeinfo_count(dag_node_t *node,
 {
   svn_fs_x__noderev_t *noderev = node->node_revision;
 
-  /* Sanity check: this node better be mutable! */
+
   if (! svn_fs_x__dag_check_mutable(node))
     {
       svn_string_t *idstr = svn_fs_x__id_unparse(&noderev->noderev_id,
                                                  scratch_pool);
       return svn_error_createf
-        (SVN_ERR_FS_NOT_MUTABLE, NULL,
+        (SVN_ERR_FS_NOT_MUTABLE, ((void*)0),
          "Can't increment mergeinfo count on *immutable* node-revision %s",
          idstr->data);
     }
@@ -63,7 +63,7 @@ svn_fs_x__dag_increment_mergeinfo_count(dag_node_t *node,
       svn_string_t *idstr = svn_fs_x__id_unparse(&noderev->noderev_id,
                                                  scratch_pool);
       return svn_error_createf
-        (SVN_ERR_FS_CORRUPT, NULL,
+        (SVN_ERR_FS_CORRUPT, ((void*)0),
          apr_psprintf(scratch_pool,
                       _("Can't increment mergeinfo count on node-revision %%s "
                         "to negative value %%%s"),
@@ -75,7 +75,7 @@ svn_fs_x__dag_increment_mergeinfo_count(dag_node_t *node,
       svn_string_t *idstr = svn_fs_x__id_unparse(&noderev->noderev_id,
                                                  scratch_pool);
       return svn_error_createf
-        (SVN_ERR_FS_CORRUPT, NULL,
+        (SVN_ERR_FS_CORRUPT, ((void*)0),
          apr_psprintf(scratch_pool,
                       _("Can't increment mergeinfo count on *file* "
                         "node-revision %%s to %%%s (> 1)"),
@@ -83,6 +83,6 @@ svn_fs_x__dag_increment_mergeinfo_count(dag_node_t *node,
          idstr->data, noderev->mergeinfo_count);
     }
 
-  /* Flush it out. */
+
   return noderev_changed(node, scratch_pool);
 }

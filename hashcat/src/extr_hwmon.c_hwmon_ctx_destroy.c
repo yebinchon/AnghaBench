@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_12__ {int enabled; int /*<<< orphan*/  hm_device; int /*<<< orphan*/  od_clock_mem_status; scalar_t__ hm_sysfs; scalar_t__ hm_adl; scalar_t__ hm_nvapi; scalar_t__ hm_nvml; } ;
-typedef  TYPE_1__ hwmon_ctx_t ;
+
+
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+struct TYPE_12__ {int enabled; int hm_device; int od_clock_mem_status; scalar_t__ hm_sysfs; scalar_t__ hm_adl; scalar_t__ hm_nvapi; scalar_t__ hm_nvml; } ;
+typedef TYPE_1__ hwmon_ctx_t ;
 struct TYPE_13__ {TYPE_1__* hwmon_ctx; } ;
-typedef  TYPE_2__ hashcat_ctx_t ;
+typedef TYPE_2__ hashcat_ctx_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  adl_close (TYPE_2__*) ; 
- int /*<<< orphan*/  hcfree (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hm_ADL_Main_Control_Destroy (TYPE_2__*) ; 
- int /*<<< orphan*/  hm_NVML_nvmlShutdown (TYPE_2__*) ; 
- int /*<<< orphan*/  hm_NvAPI_Unload (TYPE_2__*) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  nvapi_close (TYPE_2__*) ; 
- int /*<<< orphan*/  nvml_close (TYPE_2__*) ; 
- int /*<<< orphan*/  sysfs_close (TYPE_2__*) ; 
+
+ int adl_close (TYPE_2__*) ;
+ int hcfree (int ) ;
+ int hm_ADL_Main_Control_Destroy (TYPE_2__*) ;
+ int hm_NVML_nvmlShutdown (TYPE_2__*) ;
+ int hm_NvAPI_Unload (TYPE_2__*) ;
+ int memset (TYPE_1__*,int ,int) ;
+ int nvapi_close (TYPE_2__*) ;
+ int nvml_close (TYPE_2__*) ;
+ int sysfs_close (TYPE_2__*) ;
 
 void hwmon_ctx_destroy (hashcat_ctx_t *hashcat_ctx)
 {
   hwmon_ctx_t *hwmon_ctx = hashcat_ctx->hwmon_ctx;
 
-  if (hwmon_ctx->enabled == false) return;
+  if (hwmon_ctx->enabled == 0) return;
 
-  // unload shared libraries
+
 
   if (hwmon_ctx->hm_nvml)
   {
@@ -63,7 +63,7 @@ void hwmon_ctx_destroy (hashcat_ctx_t *hashcat_ctx)
     sysfs_close (hashcat_ctx);
   }
 
-  // free memory
+
 
   hcfree (hwmon_ctx->od_clock_mem_status);
 

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  jobject ;
-typedef  int /*<<< orphan*/  JNIEnv ;
-typedef  int /*<<< orphan*/  IJKFF_Pipeline ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ffpipeline_get_surface_as_global_ref_l (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ffpipeline_lock_surface (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ffpipeline_unlock_surface (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int jobject ;
+typedef int JNIEnv ;
+typedef int IJKFF_Pipeline ;
+
+
+ int ffpipeline_get_surface_as_global_ref_l (int *,int *) ;
+ int ffpipeline_lock_surface (int *) ;
+ int ffpipeline_unlock_surface (int *) ;
 
 jobject ffpipeline_get_surface_as_global_ref(JNIEnv *env, IJKFF_Pipeline* pipeline)
 {

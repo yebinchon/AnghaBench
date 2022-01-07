@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct cmtp_session {int /*<<< orphan*/  applications; } ;
-struct cmtp_application {int /*<<< orphan*/  list; int /*<<< orphan*/  appl; int /*<<< orphan*/  state; } ;
-typedef  int /*<<< orphan*/  __u16 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BT_DBG (char*,struct cmtp_session*,struct cmtp_application*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BT_OPEN ; 
- int /*<<< orphan*/  GFP_KERNEL ; 
- struct cmtp_application* kzalloc (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  list_add_tail (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+struct cmtp_session {int applications; } ;
+struct cmtp_application {int list; int appl; int state; } ;
+typedef int __u16 ;
+
+
+ int BT_DBG (char*,struct cmtp_session*,struct cmtp_application*,int ) ;
+ int BT_OPEN ;
+ int GFP_KERNEL ;
+ struct cmtp_application* kzalloc (int,int ) ;
+ int list_add_tail (int *,int *) ;
 
 __attribute__((used)) static struct cmtp_application *cmtp_application_add(struct cmtp_session *session, __u16 appl)
 {
-	struct cmtp_application *app = kzalloc(sizeof(*app), GFP_KERNEL);
+ struct cmtp_application *app = kzalloc(sizeof(*app), GFP_KERNEL);
 
-	BT_DBG("session %p application %p appl %d", session, app, appl);
+ BT_DBG("session %p application %p appl %d", session, app, appl);
 
-	if (!app)
-		return NULL;
+ if (!app)
+  return ((void*)0);
 
-	app->state = BT_OPEN;
-	app->appl = appl;
+ app->state = BT_OPEN;
+ app->appl = appl;
 
-	list_add_tail(&app->list, &session->applications);
+ list_add_tail(&app->list, &session->applications);
 
-	return app;
+ return app;
 }

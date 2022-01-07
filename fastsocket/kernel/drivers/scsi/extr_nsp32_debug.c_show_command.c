@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  cmnd; } ;
-typedef  TYPE_1__ Scsi_Cmnd ;
 
-/* Variables and functions */
- int /*<<< orphan*/  print_commandk (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int cmnd; } ;
+typedef TYPE_1__ Scsi_Cmnd ;
+
+
+ int print_commandk (int ) ;
 
 __attribute__((used)) static void show_command(Scsi_Cmnd *SCpnt)
 {
-	print_commandk(SCpnt->cmnd);
+ print_commandk(SCpnt->cmnd);
 }

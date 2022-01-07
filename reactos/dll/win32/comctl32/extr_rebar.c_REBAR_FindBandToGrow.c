@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {scalar_t__ cxMinBand; scalar_t__ cxEffective; int fStyle; } ;
-typedef  int /*<<< orphan*/  REBAR_INFO ;
-typedef  TYPE_1__ REBAR_BAND ;
-typedef  scalar_t__ INT ;
+typedef int REBAR_INFO ;
+typedef TYPE_1__ REBAR_BAND ;
+typedef scalar_t__ INT ;
 
-/* Variables and functions */
- int RBBS_FIXEDSIZE ; 
- TYPE_1__* REBAR_GetBand (int /*<<< orphan*/  const*,scalar_t__) ; 
- int /*<<< orphan*/  TRACE (char*,scalar_t__,scalar_t__,scalar_t__) ; 
- scalar_t__ prev_visible (int /*<<< orphan*/  const*,scalar_t__) ; 
+
+ int RBBS_FIXEDSIZE ;
+ TYPE_1__* REBAR_GetBand (int const*,scalar_t__) ;
+ int TRACE (char*,scalar_t__,scalar_t__,scalar_t__) ;
+ scalar_t__ prev_visible (int const*,scalar_t__) ;
 
 __attribute__((used)) static REBAR_BAND *REBAR_FindBandToGrow(const REBAR_INFO *infoPtr, INT iBeginBand, INT iEndBand)
 {

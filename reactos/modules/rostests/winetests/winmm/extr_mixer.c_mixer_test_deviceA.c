@@ -1,76 +1,76 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_21__   TYPE_6__ ;
-typedef  struct TYPE_20__   TYPE_5__ ;
-typedef  struct TYPE_19__   TYPE_4__ ;
-typedef  struct TYPE_18__   TYPE_3__ ;
-typedef  struct TYPE_17__   TYPE_2__ ;
-typedef  struct TYPE_16__   TYPE_1__ ;
-typedef  struct TYPE_15__   TYPE_12__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mixerlineA ;
-typedef  int /*<<< orphan*/  controls ;
-typedef  int /*<<< orphan*/  capsA2 ;
-typedef  int /*<<< orphan*/  capsA ;
-typedef  scalar_t__ ULONG_PTR ;
-typedef  int UINT_PTR ;
+
+
+typedef struct TYPE_21__ TYPE_6__ ;
+typedef struct TYPE_20__ TYPE_5__ ;
+typedef struct TYPE_19__ TYPE_4__ ;
+typedef struct TYPE_18__ TYPE_3__ ;
+typedef struct TYPE_17__ TYPE_2__ ;
+typedef struct TYPE_16__ TYPE_1__ ;
+typedef struct TYPE_15__ TYPE_12__ ;
+
+
+typedef int mixerlineA ;
+typedef int controls ;
+typedef int capsA2 ;
+typedef int capsA ;
+typedef scalar_t__ ULONG_PTR ;
+typedef int UINT_PTR ;
 struct TYPE_17__ {int cSteps; } ;
-struct TYPE_21__ {size_t szName; int dwControlID; size_t cMultipleItems; TYPE_2__ Metrics; int /*<<< orphan*/  Bounds; int /*<<< orphan*/  fdwControl; int /*<<< orphan*/  dwControlType; int /*<<< orphan*/  szShortName; } ;
-struct TYPE_20__ {int vDriverVersion; size_t cDestinations; int /*<<< orphan*/  szPname; int /*<<< orphan*/  wPid; int /*<<< orphan*/  wMid; } ;
-struct TYPE_16__ {int vDriverVersion; int /*<<< orphan*/  wPid; int /*<<< orphan*/  wMid; int /*<<< orphan*/  szPname; int /*<<< orphan*/  dwDeviceID; int /*<<< orphan*/  dwType; } ;
-struct TYPE_19__ {int cbStruct; size_t dwDestination; scalar_t__ dwUser; size_t dwSource; size_t dwLineID; size_t cConnections; int cControls; TYPE_1__ Target; int /*<<< orphan*/  dwComponentType; int /*<<< orphan*/  fdwLine; int /*<<< orphan*/  cChannels; int /*<<< orphan*/  szName; int /*<<< orphan*/  szShortName; } ;
+struct TYPE_21__ {size_t szName; int dwControlID; size_t cMultipleItems; TYPE_2__ Metrics; int Bounds; int fdwControl; int dwControlType; int szShortName; } ;
+struct TYPE_20__ {int vDriverVersion; size_t cDestinations; int szPname; int wPid; int wMid; } ;
+struct TYPE_16__ {int vDriverVersion; int wPid; int wMid; int szPname; int dwDeviceID; int dwType; } ;
+struct TYPE_19__ {int cbStruct; size_t dwDestination; scalar_t__ dwUser; size_t dwSource; size_t dwLineID; size_t cConnections; int cControls; TYPE_1__ Target; int dwComponentType; int fdwLine; int cChannels; int szName; int szShortName; } ;
 struct TYPE_18__ {int cbStruct; int cControls; size_t dwLineID; int cbmxctrl; TYPE_6__* pamxctrl; } ;
-struct TYPE_15__ {size_t dwMaximum; int /*<<< orphan*/  dwMinimum; } ;
-typedef  scalar_t__ MMRESULT ;
-typedef  TYPE_3__ MIXERLINECONTROLSA ;
-typedef  TYPE_4__ MIXERLINEA ;
-typedef  int /*<<< orphan*/  MIXERCONTROLA ;
-typedef  TYPE_5__ MIXERCAPSA ;
-typedef  TYPE_6__* LPMIXERCONTROLA ;
-typedef  scalar_t__ HMIXEROBJ ;
-typedef  int /*<<< orphan*/  HMIXER ;
-typedef  size_t DWORD ;
+struct TYPE_15__ {size_t dwMaximum; int dwMinimum; } ;
+typedef scalar_t__ MMRESULT ;
+typedef TYPE_3__ MIXERLINECONTROLSA ;
+typedef TYPE_4__ MIXERLINEA ;
+typedef int MIXERCONTROLA ;
+typedef TYPE_5__ MIXERCAPSA ;
+typedef TYPE_6__* LPMIXERCONTROLA ;
+typedef scalar_t__ HMIXEROBJ ;
+typedef int HMIXER ;
+typedef size_t DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HEAP_ZERO_MEMORY ; 
- TYPE_6__* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_6__*) ; 
- scalar_t__ MIXERR_INVALLINE ; 
- int MIXER_GETLINECONTROLSF_ALL ; 
- int MIXER_GETLINEINFOF_DESTINATION ; 
- int MIXER_GETLINEINFOF_SOURCE ; 
- scalar_t__ MMSYSERR_INVALFLAG ; 
- scalar_t__ MMSYSERR_INVALPARAM ; 
- scalar_t__ MMSYSERR_NODRIVER ; 
- scalar_t__ MMSYSERR_NOERROR ; 
- TYPE_12__ S1 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  component_type (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  control_flags (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  control_type (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  line_flags (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (TYPE_3__*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ mixerGetDevCapsA (int,TYPE_5__*,int) ; 
- scalar_t__ mixerGetLineControlsA (scalar_t__,TYPE_3__*,int) ; 
- scalar_t__ mixerGetLineInfoA (scalar_t__,TYPE_4__*,int) ; 
- scalar_t__ mixerOpen (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mixer_test_controlA (scalar_t__,TYPE_6__*) ; 
- int /*<<< orphan*/  mmsys_error (scalar_t__) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  strcmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  target_type (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_mixerClose (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  trace (char*,...) ; 
- scalar_t__ winetest_interactive ; 
+
+ int GetProcessHeap () ;
+ int HEAP_ZERO_MEMORY ;
+ TYPE_6__* HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,TYPE_6__*) ;
+ scalar_t__ MIXERR_INVALLINE ;
+ int MIXER_GETLINECONTROLSF_ALL ;
+ int MIXER_GETLINEINFOF_DESTINATION ;
+ int MIXER_GETLINEINFOF_SOURCE ;
+ scalar_t__ MMSYSERR_INVALFLAG ;
+ scalar_t__ MMSYSERR_INVALPARAM ;
+ scalar_t__ MMSYSERR_NODRIVER ;
+ scalar_t__ MMSYSERR_NOERROR ;
+ TYPE_12__ S1 (int ) ;
+ int component_type (int ) ;
+ int control_flags (int ) ;
+ int control_type (int ) ;
+ int line_flags (int ) ;
+ int memset (TYPE_3__*,int ,int) ;
+ scalar_t__ mixerGetDevCapsA (int,TYPE_5__*,int) ;
+ scalar_t__ mixerGetLineControlsA (scalar_t__,TYPE_3__*,int) ;
+ scalar_t__ mixerGetLineInfoA (scalar_t__,TYPE_4__*,int) ;
+ scalar_t__ mixerOpen (int *,int,int ,int ,int ) ;
+ int mixer_test_controlA (scalar_t__,TYPE_6__*) ;
+ int mmsys_error (scalar_t__) ;
+ int ok (int,char*,...) ;
+ int strcmp (int ,int ) ;
+ int target_type (int ) ;
+ int test_mixerClose (int ) ;
+ int trace (char*,...) ;
+ scalar_t__ winetest_interactive ;
 
 __attribute__((used)) static void mixer_test_deviceA(int device)
 {
@@ -162,7 +162,7 @@ __attribute__((used)) static void mixer_test_deviceA(int device)
             if (rc==MMSYSERR_NODRIVER)
                 trace("  No Driver\n");
             else if (rc==MMSYSERR_NOERROR) {
-	      if (winetest_interactive) {
+       if (winetest_interactive) {
                 trace("    %d: \"%s\" (%s) Destination=%d Source=%d\n",
                       d,mixerlineA.szShortName, mixerlineA.szName,
                       mixerlineA.dwDestination,mixerlineA.dwSource);
@@ -182,7 +182,7 @@ __attribute__((used)) static void mixer_test_deviceA(int device)
                       mixerlineA.Target.vDriverVersion >> 8,
                       mixerlineA.Target.vDriverVersion & 0xff,
                       mixerlineA.Target.wMid, mixerlineA.Target.wPid);
-	      }
+       }
               ns=mixerlineA.cConnections;
               for(s=0;s<ns;s++) {
                 mixerlineA.cbStruct = sizeof(mixerlineA);
@@ -196,7 +196,7 @@ __attribute__((used)) static void mixer_test_deviceA(int device)
                 if (rc==MMSYSERR_NODRIVER)
                     trace("  No Driver\n");
                 else if (rc==MMSYSERR_NOERROR) {
-                    LPMIXERCONTROLA    array;
+                    LPMIXERCONTROLA array;
                     MIXERLINECONTROLSA controls;
                     if (winetest_interactive) {
                         trace("      %d: \"%s\" (%s) Destination=%d Source=%d\n",
@@ -243,9 +243,9 @@ __attribute__((used)) static void mixer_test_deviceA(int device)
                             controls.pamxctrl = array;
                             controls.cbmxctrl = sizeof(MIXERCONTROLA);
 
-                            /* FIXME: do MIXER_GETLINECONTROLSF_ONEBYID
-                             * and MIXER_GETLINECONTROLSF_ONEBYTYPE
-                             */
+
+
+
                             rc = mixerGetLineControlsA(mix, &controls, MIXER_GETLINECONTROLSF_ALL);
                             ok(rc==MMSYSERR_NOERROR,
                                "mixerGetLineControlsA(MIXER_GETLINECONTROLSF_ALL): "

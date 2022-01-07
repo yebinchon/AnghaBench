@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct sf_buf {int /*<<< orphan*/  m; int /*<<< orphan*/  kva; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  pmap_qenter (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
+
+
+
+struct sf_buf {int m; int kva; } ;
+
+
+ int pmap_qenter (int ,int *,int) ;
 
 void
 sf_buf_map(struct sf_buf *sf, int flags)
 {
 
-	pmap_qenter(sf->kva, &sf->m, 1);
+ pmap_qenter(sf->kva, &sf->m, 1);
 }

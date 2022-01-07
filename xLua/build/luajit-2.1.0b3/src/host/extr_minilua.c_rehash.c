@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  int /*<<< orphan*/  Table ;
-typedef  int /*<<< orphan*/  TValue ;
 
-/* Variables and functions */
- int computesizes (int*,int*) ; 
- scalar_t__ countint (int /*<<< orphan*/  const*,int*) ; 
- int numusearray (int /*<<< orphan*/ *,int*) ; 
- scalar_t__ numusehash (int /*<<< orphan*/ *,int*,int*) ; 
- int /*<<< orphan*/  resize (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int) ; 
+
+
+
+typedef int lua_State ;
+typedef int Table ;
+typedef int TValue ;
+
+
+ int computesizes (int*,int*) ;
+ scalar_t__ countint (int const*,int*) ;
+ int numusearray (int *,int*) ;
+ scalar_t__ numusehash (int *,int*,int*) ;
+ int resize (int *,int *,int,int) ;
 
 __attribute__((used)) static void rehash(lua_State*L,Table*t,const TValue*ek){
 int nasize,na;

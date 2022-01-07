@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint16_t ;
-struct TYPE_2__ {scalar_t__ size; int /*<<< orphan*/ * data; scalar_t__ len; } ;
-struct stats {int interval; int sd; int /*<<< orphan*/  sum; int /*<<< orphan*/  shadow; int /*<<< orphan*/  current; scalar_t__ aggregate; scalar_t__ updated; int /*<<< orphan*/  ncurr_conn_str; int /*<<< orphan*/  ntotal_conn_str; int /*<<< orphan*/  timestamp_str; int /*<<< orphan*/  uptime_str; int /*<<< orphan*/  version; int /*<<< orphan*/  version_str; int /*<<< orphan*/  source; int /*<<< orphan*/  source_str; int /*<<< orphan*/  service; int /*<<< orphan*/  service_str; scalar_t__ tid; TYPE_1__ buf; scalar_t__ start_ts; int /*<<< orphan*/  addr; int /*<<< orphan*/  port; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int uint16_t ;
+struct TYPE_2__ {scalar_t__ size; int * data; scalar_t__ len; } ;
+struct stats {int interval; int sd; int sum; int shadow; int current; scalar_t__ aggregate; scalar_t__ updated; int ncurr_conn_str; int ntotal_conn_str; int timestamp_str; int uptime_str; int version; int version_str; int source; int source_str; int service; int service_str; scalar_t__ tid; TYPE_1__ buf; scalar_t__ start_ts; int addr; int port; } ;
 struct array {int dummy; } ;
-typedef  scalar_t__ rstatus_t ;
-typedef  scalar_t__ pthread_t ;
-typedef  scalar_t__ int64_t ;
+typedef scalar_t__ rstatus_t ;
+typedef scalar_t__ pthread_t ;
+typedef scalar_t__ int64_t ;
 
-/* Variables and functions */
- scalar_t__ NC_OK ; 
- char* NC_VERSION_STRING ; 
- int /*<<< orphan*/  array_null (int /*<<< orphan*/ *) ; 
- struct stats* nc_alloc (int) ; 
- scalar_t__ stats_create_buf (struct stats*) ; 
- int /*<<< orphan*/  stats_destroy (struct stats*) ; 
- scalar_t__ stats_pool_map (int /*<<< orphan*/ *,struct array*) ; 
- scalar_t__ stats_start_aggregator (struct stats*) ; 
- int /*<<< orphan*/  string_set_raw (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  string_set_text (int /*<<< orphan*/ *,char*) ; 
- scalar_t__ time (int /*<<< orphan*/ *) ; 
+
+ scalar_t__ NC_OK ;
+ char* NC_VERSION_STRING ;
+ int array_null (int *) ;
+ struct stats* nc_alloc (int) ;
+ scalar_t__ stats_create_buf (struct stats*) ;
+ int stats_destroy (struct stats*) ;
+ scalar_t__ stats_pool_map (int *,struct array*) ;
+ scalar_t__ stats_start_aggregator (struct stats*) ;
+ int string_set_raw (int *,char*) ;
+ int string_set_text (int *,char*) ;
+ scalar_t__ time (int *) ;
 
 struct stats *
 stats_create(uint16_t stats_port, char *stats_ip, int stats_interval,
@@ -40,18 +40,18 @@ stats_create(uint16_t stats_port, char *stats_ip, int stats_interval,
     struct stats *st;
 
     st = nc_alloc(sizeof(*st));
-    if (st == NULL) {
-        return NULL;
+    if (st == ((void*)0)) {
+        return ((void*)0);
     }
 
     st->port = stats_port;
     st->interval = stats_interval;
     string_set_raw(&st->addr, stats_ip);
 
-    st->start_ts = (int64_t)time(NULL);
+    st->start_ts = (int64_t)time(((void*)0));
 
     st->buf.len = 0;
-    st->buf.data = NULL;
+    st->buf.data = ((void*)0);
     st->buf.size = 0;
 
     array_null(&st->current);
@@ -79,7 +79,7 @@ stats_create(uint16_t stats_port, char *stats_ip, int stats_interval,
     st->updated = 0;
     st->aggregate = 0;
 
-    /* map server pool to current (a), shadow (b) and sum (c) */
+
 
     status = stats_pool_map(&st->current, server_pool);
     if (status != NC_OK) {
@@ -110,5 +110,5 @@ stats_create(uint16_t stats_port, char *stats_ip, int stats_interval,
 
 error:
     stats_destroy(st);
-    return NULL;
+    return ((void*)0);
 }

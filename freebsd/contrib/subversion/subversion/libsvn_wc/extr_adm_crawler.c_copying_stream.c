@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_stream_t ;
-struct copying_stream_baton {int /*<<< orphan*/ * target; int /*<<< orphan*/ * source; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- struct copying_stream_baton* apr_palloc (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  close_handler_copy ; 
- int /*<<< orphan*/  read_handler_copy ; 
- int /*<<< orphan*/  seek_handler_copy ; 
- int /*<<< orphan*/ * svn_stream_create (struct copying_stream_baton*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_stream_set_close (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_stream_set_read2 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_stream_set_seek (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ svn_stream_supports_reset (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int svn_stream_t ;
+struct copying_stream_baton {int * target; int * source; } ;
+typedef int apr_pool_t ;
+
+
+ struct copying_stream_baton* apr_palloc (int *,int) ;
+ int close_handler_copy ;
+ int read_handler_copy ;
+ int seek_handler_copy ;
+ int * svn_stream_create (struct copying_stream_baton*,int *) ;
+ int svn_stream_set_close (int *,int ) ;
+ int svn_stream_set_read2 (int *,int *,int ) ;
+ int svn_stream_set_seek (int *,int ) ;
+ scalar_t__ svn_stream_supports_reset (int *) ;
 
 __attribute__((used)) static svn_stream_t *
 copying_stream(svn_stream_t *source,
@@ -38,7 +38,7 @@ copying_stream(svn_stream_t *source,
   baton->target = target;
 
   stream = svn_stream_create(baton, pool);
-  svn_stream_set_read2(stream, NULL /* only full read support */,
+  svn_stream_set_read2(stream, ((void*)0) ,
                        read_handler_copy);
   svn_stream_set_close(stream, close_handler_copy);
 

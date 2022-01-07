@@ -1,93 +1,93 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_5__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_5__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct net_device {TYPE_1__* ml_priv; } ;
 struct iw_request_info {int dummy; } ;
-struct TYPE_9__ {char* name; int /*<<< orphan*/  (* set_proc ) (TYPE_1__*,char*) ;} ;
-struct TYPE_8__ {int /*<<< orphan*/  ioctl_if; int /*<<< orphan*/  ioctl_if_type; } ;
-struct TYPE_7__ {int /*<<< orphan*/  OS_Cookie; } ;
-typedef  TYPE_1__* PRTMP_ADAPTER ;
-typedef  TYPE_2__* POS_COOKIE ;
+struct TYPE_9__ {char* name; int (* set_proc ) (TYPE_1__*,char*) ;} ;
+struct TYPE_8__ {int ioctl_if; int ioctl_if_type; } ;
+struct TYPE_7__ {int OS_Cookie; } ;
+typedef TYPE_1__* PRTMP_ADAPTER ;
+typedef TYPE_2__* POS_COOKIE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DBGPRINT (int /*<<< orphan*/ ,char*) ; 
- int EINVAL ; 
- int ENETDOWN ; 
- int /*<<< orphan*/  INT_MAIN ; 
- int /*<<< orphan*/  MAIN_MBSSID ; 
- TYPE_5__* PRTMP_PRIVATE_SET_PROC ; 
- TYPE_5__* RTMP_PRIVATE_SUPPORT_PROC ; 
- int /*<<< orphan*/  RTMP_TEST_FLAG (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RT_DEBUG_TRACE ; 
- int /*<<< orphan*/  fRTMP_ADAPTER_INTERRUPT_IN_USE ; 
- char* rtstrchr (char*,char) ; 
- scalar_t__ strcmp (char*,char*) ; 
- int /*<<< orphan*/  stub1 (TYPE_1__*,char*) ; 
+
+ int DBGPRINT (int ,char*) ;
+ int EINVAL ;
+ int ENETDOWN ;
+ int INT_MAIN ;
+ int MAIN_MBSSID ;
+ TYPE_5__* PRTMP_PRIVATE_SET_PROC ;
+ TYPE_5__* RTMP_PRIVATE_SUPPORT_PROC ;
+ int RTMP_TEST_FLAG (TYPE_1__*,int ) ;
+ int RT_DEBUG_TRACE ;
+ int fRTMP_ADAPTER_INTERRUPT_IN_USE ;
+ char* rtstrchr (char*,char) ;
+ scalar_t__ strcmp (char*,char*) ;
+ int stub1 (TYPE_1__*,char*) ;
 
 __attribute__((used)) static int
 rt_ioctl_setparam(struct net_device *dev, struct iw_request_info *info,
-			 void *w, char *extra)
+    void *w, char *extra)
 {
-	PRTMP_ADAPTER pAdapter = dev->ml_priv;
-	POS_COOKIE pObj = (POS_COOKIE)pAdapter->OS_Cookie;
-	char *this_char = extra;
-	char *value;
-	int  Status=0;
+ PRTMP_ADAPTER pAdapter = dev->ml_priv;
+ POS_COOKIE pObj = (POS_COOKIE)pAdapter->OS_Cookie;
+ char *this_char = extra;
+ char *value;
+ int Status=0;
 
-	{
-		pObj->ioctl_if_type = INT_MAIN;
+ {
+  pObj->ioctl_if_type = INT_MAIN;
         pObj->ioctl_if = MAIN_MBSSID;
-	}
+ }
 
-	//check if the interface is down
-    	if(!RTMP_TEST_FLAG(pAdapter, fRTMP_ADAPTER_INTERRUPT_IN_USE))
-    	{
-      		DBGPRINT(RT_DEBUG_TRACE, ("INFO::Network is down!\n"));
-			return -ENETDOWN;
-    	}
 
-	if (!*this_char)
-		return -EINVAL;
+     if(!RTMP_TEST_FLAG(pAdapter, fRTMP_ADAPTER_INTERRUPT_IN_USE))
+     {
+        DBGPRINT(RT_DEBUG_TRACE, ("INFO::Network is down!\n"));
+   return -ENETDOWN;
+     }
 
-	if ((value = rtstrchr(this_char, '=')) != NULL)
-	    *value++ = 0;
+ if (!*this_char)
+  return -EINVAL;
 
-	if (!value)
-	    return -EINVAL;
+ if ((value = rtstrchr(this_char, '=')) != ((void*)0))
+     *value++ = 0;
 
-	// reject setting nothing besides ANY ssid(ssidLen=0)
+ if (!value)
+     return -EINVAL;
+
+
     if (!*value && (strcmp(this_char, "SSID") != 0))
         return -EINVAL;
 
-	for (PRTMP_PRIVATE_SET_PROC = RTMP_PRIVATE_SUPPORT_PROC; PRTMP_PRIVATE_SET_PROC->name; PRTMP_PRIVATE_SET_PROC++)
-	{
-	    if (strcmp(this_char, PRTMP_PRIVATE_SET_PROC->name) == 0)
-	    {
-	        if(!PRTMP_PRIVATE_SET_PROC->set_proc(pAdapter, value))
-	        {	//FALSE:Set private failed then return Invalid argument
-			    Status = -EINVAL;
-	        }
-		    break;	//Exit for loop.
-	    }
-	}
+ for (PRTMP_PRIVATE_SET_PROC = RTMP_PRIVATE_SUPPORT_PROC; PRTMP_PRIVATE_SET_PROC->name; PRTMP_PRIVATE_SET_PROC++)
+ {
+     if (strcmp(this_char, PRTMP_PRIVATE_SET_PROC->name) == 0)
+     {
+         if(!PRTMP_PRIVATE_SET_PROC->set_proc(pAdapter, value))
+         {
+       Status = -EINVAL;
+         }
+      break;
+     }
+ }
 
-	if(PRTMP_PRIVATE_SET_PROC->name == NULL)
-	{  //Not found argument
-	    Status = -EINVAL;
-	    DBGPRINT(RT_DEBUG_TRACE, ("===>rt_ioctl_setparam:: (iwpriv) Not Support Set Command [%s=%s]\n", this_char, value));
-	}
+ if(PRTMP_PRIVATE_SET_PROC->name == ((void*)0))
+ {
+     Status = -EINVAL;
+     DBGPRINT(RT_DEBUG_TRACE, ("===>rt_ioctl_setparam:: (iwpriv) Not Support Set Command [%s=%s]\n", this_char, value));
+ }
 
     return Status;
 }

@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_3__ {scalar_t__* data; } ;
-typedef  int /*<<< orphan*/  CVPixelBufferRef ;
-typedef  TYPE_1__ AVFrame ;
-typedef  int /*<<< orphan*/  AVCodecContext ;
+typedef int CVPixelBufferRef ;
+typedef TYPE_1__ AVFrame ;
+typedef int AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR_EXTERNAL ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- scalar_t__ CVPixelBufferGetBaseAddress (int /*<<< orphan*/ ) ; 
- scalar_t__ CVPixelBufferGetBaseAddressOfPlane (int /*<<< orphan*/ ,int) ; 
- int CVPixelBufferGetBytesPerRow (int /*<<< orphan*/ ) ; 
- int CVPixelBufferGetBytesPerRowOfPlane (int /*<<< orphan*/ ,int) ; 
- size_t CVPixelBufferGetPlaneCount (int /*<<< orphan*/ ) ; 
- scalar_t__ CVPixelBufferIsPlanar (int /*<<< orphan*/ ) ; 
- int CVPixelBufferLockBaseAddress (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int CVPixelBufferUnlockBaseAddress (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,size_t) ; 
 
-__attribute__((used)) static int copy_avframe_to_pixel_buffer(AVCodecContext   *avctx,
-                                        const AVFrame    *frame,
+ int AVERROR_EXTERNAL ;
+ int AV_LOG_ERROR ;
+ scalar_t__ CVPixelBufferGetBaseAddress (int ) ;
+ scalar_t__ CVPixelBufferGetBaseAddressOfPlane (int ,int) ;
+ int CVPixelBufferGetBytesPerRow (int ) ;
+ int CVPixelBufferGetBytesPerRowOfPlane (int ,int) ;
+ size_t CVPixelBufferGetPlaneCount (int ) ;
+ scalar_t__ CVPixelBufferIsPlanar (int ) ;
+ int CVPixelBufferLockBaseAddress (int ,int ) ;
+ int CVPixelBufferUnlockBaseAddress (int ,int ) ;
+ int av_log (int *,int ,char*,...) ;
+ int memcpy (int *,int *,size_t) ;
+
+__attribute__((used)) static int copy_avframe_to_pixel_buffer(AVCodecContext *avctx,
+                                        const AVFrame *frame,
                                         CVPixelBufferRef cv_img,
-                                        const size_t     *plane_strides,
-                                        const size_t     *plane_rows)
+                                        const size_t *plane_strides,
+                                        const size_t *plane_rows)
 {
     int i, j;
     size_t plane_count;

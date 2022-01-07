@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct mkuz_fifo_queue {int wakeup_len; int /*<<< orphan*/  cvar; int /*<<< orphan*/  mtx; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  errx (int,char*) ; 
- struct mkuz_fifo_queue* mkuz_safe_zmalloc (int) ; 
- scalar_t__ pthread_cond_init (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ pthread_mutex_init (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+struct mkuz_fifo_queue {int wakeup_len; int cvar; int mtx; } ;
+
+
+ int errx (int,char*) ;
+ struct mkuz_fifo_queue* mkuz_safe_zmalloc (int) ;
+ scalar_t__ pthread_cond_init (int *,int *) ;
+ scalar_t__ pthread_mutex_init (int *,int *) ;
 
 struct mkuz_fifo_queue *
 mkuz_fqueue_ctor(int wakeup_len)
@@ -25,10 +25,10 @@ mkuz_fqueue_ctor(int wakeup_len)
 
     fqp = mkuz_safe_zmalloc(sizeof(struct mkuz_fifo_queue));
     fqp->wakeup_len = wakeup_len;
-    if (pthread_mutex_init(&fqp->mtx, NULL) != 0) {
+    if (pthread_mutex_init(&fqp->mtx, ((void*)0)) != 0) {
         errx(1, "pthread_mutex_init() failed");
     }
-    if (pthread_cond_init(&fqp->cvar, NULL) != 0) {
+    if (pthread_cond_init(&fqp->cvar, ((void*)0)) != 0) {
         errx(1, "pthread_cond_init() failed");
     }
     return (fqp);

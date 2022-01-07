@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint16_t ;
-typedef  int /*<<< orphan*/  jerry_init_flag_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  jerry_init (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jerryx_debugger_after_connect (int) ; 
- scalar_t__ jerryx_debugger_rp_create () ; 
- int jerryx_debugger_serial_create (char*) ; 
- int jerryx_debugger_tcp_create (int /*<<< orphan*/ ) ; 
- scalar_t__ jerryx_debugger_ws_create () ; 
- int /*<<< orphan*/  jerryx_handler_assert ; 
- int /*<<< orphan*/  jerryx_handler_gc ; 
- int /*<<< orphan*/  jerryx_handler_print ; 
- int /*<<< orphan*/  jerryx_handler_resource_name ; 
- int /*<<< orphan*/  register_js_function (char*,int /*<<< orphan*/ ) ; 
- scalar_t__ strcmp (char*,char*) ; 
+
+
+
+typedef int uint16_t ;
+typedef int jerry_init_flag_t ;
+
+
+ int assert (int) ;
+ int jerry_init (int ) ;
+ int jerryx_debugger_after_connect (int) ;
+ scalar_t__ jerryx_debugger_rp_create () ;
+ int jerryx_debugger_serial_create (char*) ;
+ int jerryx_debugger_tcp_create (int ) ;
+ scalar_t__ jerryx_debugger_ws_create () ;
+ int jerryx_handler_assert ;
+ int jerryx_handler_gc ;
+ int jerryx_handler_print ;
+ int jerryx_handler_resource_name ;
+ int register_js_function (char*,int ) ;
+ scalar_t__ strcmp (char*,char*) ;
 
 __attribute__((used)) static void
-init_engine (jerry_init_flag_t flags, /**< initialized flags for the engine */
-             char *debug_channel, /**< enable the debugger init or not */
-             char *debug_protocol, /**< enable the debugger init or not */
-             uint16_t debug_port, /**< the debugger port for tcp protocol */
-             char *debug_serial_config) /**< configuration string for serial protocol */
+init_engine (jerry_init_flag_t flags,
+             char *debug_channel,
+             char *debug_protocol,
+             uint16_t debug_port,
+             char *debug_serial_config)
 {
   jerry_init (flags);
   if (strcmp (debug_channel, ""))
   {
-    bool protocol = false;
+    bool protocol = 0;
 
     if (!strcmp (debug_protocol, "tcp"))
     {

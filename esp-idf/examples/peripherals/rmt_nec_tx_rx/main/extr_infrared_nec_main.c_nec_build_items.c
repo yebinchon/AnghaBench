@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint16_t ;
-typedef  int /*<<< orphan*/  rmt_item32_t ;
 
-/* Variables and functions */
- int NEC_DATA_ITEM_NUM ; 
- int /*<<< orphan*/  nec_fill_item_bit_one (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nec_fill_item_bit_zero (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nec_fill_item_end (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nec_fill_item_header (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint16_t ;
+typedef int rmt_item32_t ;
+
+
+ int NEC_DATA_ITEM_NUM ;
+ int nec_fill_item_bit_one (int *) ;
+ int nec_fill_item_bit_zero (int *) ;
+ int nec_fill_item_end (int *) ;
+ int nec_fill_item_header (int ) ;
 
 __attribute__((used)) static int nec_build_items(int channel, rmt_item32_t* item, int item_num, uint16_t addr, uint16_t cmd_data)
 {

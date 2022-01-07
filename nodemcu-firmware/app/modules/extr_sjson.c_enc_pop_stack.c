@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int lua_State ;
 struct TYPE_5__ {size_t level; TYPE_1__* stack; } ;
-struct TYPE_4__ {int /*<<< orphan*/  lua_key_ref; int /*<<< orphan*/  lua_object_ref; } ;
-typedef  TYPE_1__ ENC_DATA_STATE ;
-typedef  TYPE_2__ ENC_DATA ;
+struct TYPE_4__ {int lua_key_ref; int lua_object_ref; } ;
+typedef TYPE_1__ ENC_DATA_STATE ;
+typedef TYPE_2__ ENC_DATA ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LUA_NOREF ; 
- int /*<<< orphan*/  LUA_REFNIL ; 
- int /*<<< orphan*/  luaL_error (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  lua_unref (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int LUA_NOREF ;
+ int LUA_REFNIL ;
+ int luaL_error (int *,char*) ;
+ int lua_unref (int *,int ) ;
 
 __attribute__((used)) static void enc_pop_stack(lua_State *L, ENC_DATA *data) {
   if (data->level < 0) {

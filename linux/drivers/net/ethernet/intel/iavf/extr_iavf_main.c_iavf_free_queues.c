@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct iavf_adapter {int /*<<< orphan*/ * rx_rings; int /*<<< orphan*/ * tx_rings; scalar_t__ num_active_queues; int /*<<< orphan*/  vsi_res; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  kfree (int /*<<< orphan*/ *) ; 
+
+
+
+struct iavf_adapter {int * rx_rings; int * tx_rings; scalar_t__ num_active_queues; int vsi_res; } ;
+
+
+ int kfree (int *) ;
 
 __attribute__((used)) static void iavf_free_queues(struct iavf_adapter *adapter)
 {
-	if (!adapter->vsi_res)
-		return;
-	adapter->num_active_queues = 0;
-	kfree(adapter->tx_rings);
-	adapter->tx_rings = NULL;
-	kfree(adapter->rx_rings);
-	adapter->rx_rings = NULL;
+ if (!adapter->vsi_res)
+  return;
+ adapter->num_active_queues = 0;
+ kfree(adapter->tx_rings);
+ adapter->tx_rings = ((void*)0);
+ kfree(adapter->rx_rings);
+ adapter->rx_rings = ((void*)0);
 }

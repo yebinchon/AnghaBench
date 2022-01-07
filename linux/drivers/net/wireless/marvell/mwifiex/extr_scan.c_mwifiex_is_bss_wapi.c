@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {scalar_t__ wapi_enabled; } ;
 struct mwifiex_private {TYPE_1__ sec_info; } ;
-struct mwifiex_bssdescriptor {int /*<<< orphan*/  bcn_wapi_ie; } ;
+struct mwifiex_bssdescriptor {int bcn_wapi_ie; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  WLAN_EID_BSS_AC_ACCESS_DELAY ; 
- scalar_t__ has_ieee_hdr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int WLAN_EID_BSS_AC_ACCESS_DELAY ;
+ scalar_t__ has_ieee_hdr (int ,int ) ;
 
 __attribute__((used)) static bool
 mwifiex_is_bss_wapi(struct mwifiex_private *priv,
-		    struct mwifiex_bssdescriptor *bss_desc)
+      struct mwifiex_bssdescriptor *bss_desc)
 {
-	if (priv->sec_info.wapi_enabled &&
-	    has_ieee_hdr(bss_desc->bcn_wapi_ie, WLAN_EID_BSS_AC_ACCESS_DELAY))
-		return true;
-	return false;
+ if (priv->sec_info.wapi_enabled &&
+     has_ieee_hdr(bss_desc->bcn_wapi_ie, WLAN_EID_BSS_AC_ACCESS_DELAY))
+  return 1;
+ return 0;
 }

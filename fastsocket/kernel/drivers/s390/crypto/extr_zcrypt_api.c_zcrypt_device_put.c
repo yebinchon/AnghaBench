@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct zcrypt_device {int /*<<< orphan*/  refcount; } ;
 
-/* Variables and functions */
- int kref_put (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  zcrypt_device_release ; 
+
+
+
+struct zcrypt_device {int refcount; } ;
+
+
+ int kref_put (int *,int ) ;
+ int zcrypt_device_release ;
 
 int zcrypt_device_put(struct zcrypt_device *zdev)
 {
-	return kref_put(&zdev->refcount, zcrypt_device_release);
+ return kref_put(&zdev->refcount, zcrypt_device_release);
 }

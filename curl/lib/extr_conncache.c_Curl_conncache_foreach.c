@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct curl_llist_element {struct connectdata* ptr; struct curl_llist_element* next; } ;
 struct curl_hash_iterator {int dummy; } ;
 struct curl_hash_element {struct connectbundle* ptr; } ;
-typedef  struct connectdata connectdata ;
+typedef struct connectdata connectdata ;
 struct TYPE_2__ {struct curl_llist_element* head; } ;
 struct connectbundle {TYPE_1__ conn_list; } ;
-struct conncache {int /*<<< orphan*/  hash; } ;
+struct conncache {int hash; } ;
 struct Curl_easy {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CONN_LOCK (struct Curl_easy*) ; 
- int /*<<< orphan*/  CONN_UNLOCK (struct Curl_easy*) ; 
- struct curl_hash_element* Curl_hash_next_element (struct curl_hash_iterator*) ; 
- int /*<<< orphan*/  Curl_hash_start_iterate (int /*<<< orphan*/ *,struct curl_hash_iterator*) ; 
- int FALSE ; 
- int TRUE ; 
+
+ int CONN_LOCK (struct Curl_easy*) ;
+ int CONN_UNLOCK (struct Curl_easy*) ;
+ struct curl_hash_element* Curl_hash_next_element (struct curl_hash_iterator*) ;
+ int Curl_hash_start_iterate (int *,struct curl_hash_iterator*) ;
+ int FALSE ;
+ int TRUE ;
 
 bool Curl_conncache_foreach(struct Curl_easy *data,
                             struct conncache *connc,
@@ -52,8 +52,8 @@ bool Curl_conncache_foreach(struct Curl_easy *data,
 
     curr = bundle->conn_list.head;
     while(curr) {
-      /* Yes, we need to update curr before calling func(), because func()
-         might decide to remove the connection */
+
+
       struct connectdata *conn = curr->ptr;
       curr = curr->next;
 

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  v8u16 ;
-typedef  scalar_t__ v4u32 ;
-typedef  int /*<<< orphan*/  v4i32 ;
-typedef  scalar_t__ v2u64 ;
-typedef  scalar_t__ v16u8 ;
-typedef  scalar_t__ uint8_t ;
-typedef  int uint32_t ;
-typedef  size_t ptrdiff_t ;
 
-/* Variables and functions */
- scalar_t__ LD_UB (scalar_t__*) ; 
- int /*<<< orphan*/  ST_UB8 (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__*,size_t) ; 
- int __msa_copy_u_w (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ __msa_fill_b (int) ; 
- scalar_t__ __msa_hadd_u_d (scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  __msa_hadd_u_h (scalar_t__,scalar_t__) ; 
- scalar_t__ __msa_hadd_u_w (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ __msa_pckev_w (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int v8u16 ;
+typedef scalar_t__ v4u32 ;
+typedef int v4i32 ;
+typedef scalar_t__ v2u64 ;
+typedef scalar_t__ v16u8 ;
+typedef scalar_t__ uint8_t ;
+typedef int uint32_t ;
+typedef size_t ptrdiff_t ;
+
+
+ scalar_t__ LD_UB (scalar_t__*) ;
+ int ST_UB8 (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__*,size_t) ;
+ int __msa_copy_u_w (int ,int ) ;
+ scalar_t__ __msa_fill_b (int) ;
+ scalar_t__ __msa_hadd_u_d (scalar_t__,scalar_t__) ;
+ int __msa_hadd_u_h (scalar_t__,scalar_t__) ;
+ scalar_t__ __msa_hadd_u_w (int ,int ) ;
+ scalar_t__ __msa_pckev_w (int ,int ) ;
 
 void ff_h264_intra_pred_dc_16x16_msa(uint8_t *src, ptrdiff_t stride)
 {

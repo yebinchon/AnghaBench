@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  BIO_printf (int /*<<< orphan*/ ,char*,int,int /*<<< orphan*/ ,double) ; 
- int /*<<< orphan*/  BIO_puts (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  bio_err ; 
- int /*<<< orphan*/  exit (int) ; 
- double* lengths ; 
- scalar_t__ mr ; 
- int /*<<< orphan*/ * names ; 
- double** results ; 
+ int BIO_printf (int ,char*,int,int ,double) ;
+ int BIO_puts (int ,char*) ;
+ int bio_err ;
+ int exit (int) ;
+ double* lengths ;
+ scalar_t__ mr ;
+ int * names ;
+ double** results ;
 
 __attribute__((used)) static void print_result(int alg, int run_no, int count, double time_used)
 {

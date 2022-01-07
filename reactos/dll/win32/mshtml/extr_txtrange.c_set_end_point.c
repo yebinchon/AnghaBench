@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  off; int /*<<< orphan*/  node; } ;
-typedef  TYPE_1__ rangepoint_t ;
-typedef  int /*<<< orphan*/  nsresult ;
-struct TYPE_6__ {int /*<<< orphan*/  nsrange; } ;
-typedef  TYPE_2__ HTMLTxtRange ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*,int /*<<< orphan*/ ) ; 
- scalar_t__ NS_FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nsIDOMRange_SetEnd (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int off; int node; } ;
+typedef TYPE_1__ rangepoint_t ;
+typedef int nsresult ;
+struct TYPE_6__ {int nsrange; } ;
+typedef TYPE_2__ HTMLTxtRange ;
+
+
+ int ERR (char*,int ) ;
+ scalar_t__ NS_FAILED (int ) ;
+ int nsIDOMRange_SetEnd (int ,int ,int ) ;
 
 __attribute__((used)) static void set_end_point(HTMLTxtRange *This, const rangepoint_t *end)
 {

@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u16 ;
 
-/* Variables and functions */
- int HFNUM_MAX_FRNUM ; 
+
+
+
+typedef int u16 ;
+
+
+ int HFNUM_MAX_FRNUM ;
 
 __attribute__((used)) static inline u16 dwc2_full_frame_num(u16 frame)
 {
-	return (frame & HFNUM_MAX_FRNUM) >> 3;
+ return (frame & HFNUM_MAX_FRNUM) >> 3;
 }

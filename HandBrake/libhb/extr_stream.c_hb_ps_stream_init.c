@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_9__ {int alloc; int count; TYPE_4__* list; } ;
 struct TYPE_10__ {TYPE_1__ pes; scalar_t__ scan; } ;
-typedef  TYPE_2__ hb_stream_t ;
-struct TYPE_11__ {int stream_id; int next; scalar_t__ stream_kind; int /*<<< orphan*/  stream_type; int /*<<< orphan*/  stream_id_ext; } ;
+typedef TYPE_2__ hb_stream_t ;
+struct TYPE_11__ {int stream_id; int next; scalar_t__ stream_kind; int stream_type; int stream_id_ext; } ;
 
-/* Variables and functions */
- scalar_t__ A ; 
- scalar_t__ N ; 
- scalar_t__ S ; 
- scalar_t__ V ; 
- int /*<<< orphan*/  hb_log (char*,...) ; 
- int /*<<< orphan*/  hb_ps_resolve_stream_types (TYPE_2__*) ; 
- int /*<<< orphan*/  hb_ps_stream_find_streams (TYPE_2__*) ; 
- int /*<<< orphan*/  hb_stream_delete_ps_entry (TYPE_2__*,int) ; 
- int /*<<< orphan*/  stream_type_name2 (TYPE_2__*,TYPE_4__*) ; 
+
+ scalar_t__ A ;
+ scalar_t__ N ;
+ scalar_t__ S ;
+ scalar_t__ V ;
+ int hb_log (char*,...) ;
+ int hb_ps_resolve_stream_types (TYPE_2__*) ;
+ int hb_ps_stream_find_streams (TYPE_2__*) ;
+ int hb_stream_delete_ps_entry (TYPE_2__*,int) ;
+ int stream_type_name2 (TYPE_2__*,TYPE_4__*) ;
 
 __attribute__((used)) static void hb_ps_stream_init(hb_stream_t *stream)
 {
@@ -43,7 +43,7 @@ __attribute__((used)) static void hb_ps_stream_init(hb_stream_t *stream)
     }
     stream->pes.count = 0;
 
-    // Find the audio and video pids in the stream
+
     hb_ps_stream_find_streams(stream);
     hb_ps_resolve_stream_types(stream);
 

@@ -1,66 +1,66 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct test_data   TYPE_6__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct test_data {int /*<<< orphan*/  res_x; int /*<<< orphan*/  res_y; int /*<<< orphan*/  scale; int /*<<< orphan*/  pen_unit; int /*<<< orphan*/  page_unit; int /*<<< orphan*/  pen_width; scalar_t__ cx; scalar_t__ cy; scalar_t__ path_cx; scalar_t__ path_cy; } ;
+
+
+typedef struct test_data TYPE_6__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct test_data {int res_x; int res_y; int scale; int pen_unit; int page_unit; int pen_width; scalar_t__ cx; scalar_t__ cy; scalar_t__ path_cx; scalar_t__ path_cy; } ;
 struct TYPE_8__ {int Stride; scalar_t__ Scan0; } ;
 struct TYPE_7__ {double X; double Y; } ;
-typedef  int /*<<< orphan*/  REAL ;
-typedef  scalar_t__ INT ;
-typedef  int /*<<< orphan*/  GpUnit ;
-typedef  int /*<<< orphan*/  GpStatus ;
-typedef  TYPE_1__ GpPointF ;
-typedef  int /*<<< orphan*/  GpPen ;
-typedef  int /*<<< orphan*/  GpPath ;
-typedef  int /*<<< orphan*/  GpImage ;
-typedef  int /*<<< orphan*/  GpGraphics ;
-typedef  int /*<<< orphan*/  GpBitmap ;
-typedef  TYPE_2__ BitmapData ;
-typedef  int BYTE ;
+typedef int REAL ;
+typedef scalar_t__ INT ;
+typedef int GpUnit ;
+typedef int GpStatus ;
+typedef TYPE_1__ GpPointF ;
+typedef int GpPen ;
+typedef int GpPath ;
+typedef int GpImage ;
+typedef int GpGraphics ;
+typedef int GpBitmap ;
+typedef TYPE_2__ BitmapData ;
+typedef int BYTE ;
 
-/* Variables and functions */
- int ARRAY_SIZE (TYPE_6__ const*) ; 
- int /*<<< orphan*/  CoordinateSpaceDevice ; 
- int /*<<< orphan*/  CoordinateSpaceWorld ; 
- int /*<<< orphan*/  FillModeAlternate ; 
- int /*<<< orphan*/  GdipAddPathLine (int /*<<< orphan*/ *,int,int,int,int) ; 
- int /*<<< orphan*/  GdipBitmapLockBits (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  GdipBitmapSetResolution (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GdipBitmapUnlockBits (int /*<<< orphan*/ *,TYPE_2__*) ; 
- int /*<<< orphan*/  GdipClosePathFigure (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipCreateBitmapFromScan0 (int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GdipCreatePath (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GdipCreatePen1 (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GdipDeleteGraphics (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipDeletePath (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipDeletePen (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipDisposeImage (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipDrawLine (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int,int,int) ; 
- int /*<<< orphan*/  GdipDrawPath (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipGetImageGraphicsContext (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GdipGraphicsClear (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  GdipSetPageScale (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GdipSetPageUnit (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GdipTransformPoints (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*,int) ; 
- int /*<<< orphan*/  ImageLockModeRead ; 
- int /*<<< orphan*/  Ok ; 
- int /*<<< orphan*/  PixelFormat24bppRGB ; 
-#define  UnitInch 130 
-#define  UnitPixel 129 
-#define  UnitWorld 128 
- int /*<<< orphan*/  expect (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ok (int,char*,int,scalar_t__,scalar_t__) ; 
+
+ int ARRAY_SIZE (TYPE_6__ const*) ;
+ int CoordinateSpaceDevice ;
+ int CoordinateSpaceWorld ;
+ int FillModeAlternate ;
+ int GdipAddPathLine (int *,int,int,int,int) ;
+ int GdipBitmapLockBits (int *,int *,int ,int ,TYPE_2__*) ;
+ int GdipBitmapSetResolution (int *,int ,int ) ;
+ int GdipBitmapUnlockBits (int *,TYPE_2__*) ;
+ int GdipClosePathFigure (int *) ;
+ int GdipCreateBitmapFromScan0 (int,int,int ,int ,int *,int **) ;
+ int GdipCreatePath (int ,int **) ;
+ int GdipCreatePen1 (int,int ,int ,int **) ;
+ int GdipDeleteGraphics (int *) ;
+ int GdipDeletePath (int *) ;
+ int GdipDeletePen (int *) ;
+ int GdipDisposeImage (int *) ;
+ int GdipDrawLine (int *,int *,int,int,int,int) ;
+ int GdipDrawPath (int *,int *,int *) ;
+ int GdipGetImageGraphicsContext (int *,int **) ;
+ int GdipGraphicsClear (int *,int) ;
+ int GdipSetPageScale (int *,int ) ;
+ int GdipSetPageUnit (int *,int ) ;
+ int GdipTransformPoints (int *,int ,int ,TYPE_1__*,int) ;
+ int ImageLockModeRead ;
+ int Ok ;
+ int PixelFormat24bppRGB ;
+
+
+
+ int expect (int ,int ) ;
+ int ok (int,char*,int,scalar_t__,scalar_t__) ;
 
 __attribute__((used)) static void test_pen_thickness(void)
 {
@@ -72,15 +72,15 @@ __attribute__((used)) static void test_pen_thickness(void)
         INT cx, cy, path_cx, path_cy;
     } td[] =
     {
-        { 10.0, 10.0, 1.0, UnitPixel, UnitPixel, 1.0, 1, 1, 1, 1 },
-        { 10.0, 10.0, 1.0, UnitPixel, UnitPixel, 0.0, 0, 0, 1, 1 },
-        { 10.0, 10.0, 1.0, UnitPixel, UnitPixel, 0.1, 1, 1, 1, 1 },
-        { 10.0, 10.0, 3.0, UnitPixel, UnitPixel, 2.0, 2, 2, 2, 2 },
-        { 10.0, 10.0, 30.0, UnitPixel, UnitInch, 1.0, 1, 1, 1, 1 },
-        { 10.0, 10.0, 1.0, UnitWorld, UnitPixel, 1.0, 1, 1, 1, 1 },
-        { 10.0, 10.0, 1.0, UnitWorld, UnitPixel, 0.0, 1, 1, 1, 1 },
-        { 10.0, 10.0, 3.0, UnitWorld, UnitPixel, 2.0, 6, 6, 6, 6 },
-        { 10.0, 10.0, 2.0, UnitWorld, UnitInch, 1.0, 20, 20, 20, 20 },
+        { 10.0, 10.0, 1.0, 129, 129, 1.0, 1, 1, 1, 1 },
+        { 10.0, 10.0, 1.0, 129, 129, 0.0, 0, 0, 1, 1 },
+        { 10.0, 10.0, 1.0, 129, 129, 0.1, 1, 1, 1, 1 },
+        { 10.0, 10.0, 3.0, 129, 129, 2.0, 2, 2, 2, 2 },
+        { 10.0, 10.0, 30.0, 129, 130, 1.0, 1, 1, 1, 1 },
+        { 10.0, 10.0, 1.0, 128, 129, 1.0, 1, 1, 1, 1 },
+        { 10.0, 10.0, 1.0, 128, 129, 0.0, 1, 1, 1, 1 },
+        { 10.0, 10.0, 3.0, 128, 129, 2.0, 6, 6, 6, 6 },
+        { 10.0, 10.0, 2.0, 128, 130, 1.0, 20, 20, 20, 20 },
     };
     GpStatus status;
     int i, j;
@@ -98,7 +98,7 @@ __attribute__((used)) static void test_pen_thickness(void)
 
     for (i = 0; i < ARRAY_SIZE(td); i++)
     {
-        status = GdipCreateBitmapFromScan0(100, 100, 0, PixelFormat24bppRGB, NULL, &u.bitmap);
+        status = GdipCreateBitmapFromScan0(100, 100, 0, PixelFormat24bppRGB, ((void*)0), &u.bitmap);
         expect(Ok, status);
 
         status = GdipBitmapSetResolution(u.bitmap, td[i].res_x, td[i].res_y);
@@ -126,7 +126,7 @@ __attribute__((used)) static void test_pen_thickness(void)
         status = GdipDrawLine(graphics, pen, 0, corner.Y/2, corner.X, corner.Y/2);
         expect(Ok, status);
 
-        status = GdipBitmapLockBits(u.bitmap, NULL, ImageLockModeRead, PixelFormat24bppRGB, &bd);
+        status = GdipBitmapLockBits(u.bitmap, ((void*)0), ImageLockModeRead, PixelFormat24bppRGB, &bd);
         expect(Ok, status);
 
         min = -1;
@@ -202,7 +202,7 @@ __attribute__((used)) static void test_pen_thickness(void)
 
         GdipDeletePath(path);
 
-        status = GdipBitmapLockBits(u.bitmap, NULL, ImageLockModeRead, PixelFormat24bppRGB, &bd);
+        status = GdipBitmapLockBits(u.bitmap, ((void*)0), ImageLockModeRead, PixelFormat24bppRGB, &bd);
         expect(Ok, status);
 
         min = -1;

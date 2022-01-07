@@ -1,81 +1,81 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_6__ ;
-typedef  struct TYPE_16__   TYPE_5__ ;
-typedef  struct TYPE_15__   TYPE_4__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_3__* lpNSCacheData ;
-typedef  TYPE_4__* lpNSCache ;
-struct TYPE_17__ {int /*<<< orphan*/  guidInstance; } ;
-struct TYPE_12__ {int /*<<< orphan*/ * lpszSessionNameA; } ;
-struct TYPE_13__ {TYPE_1__ u1; int /*<<< orphan*/  guidInstance; } ;
+
+
+typedef struct TYPE_17__ TYPE_6__ ;
+typedef struct TYPE_16__ TYPE_5__ ;
+typedef struct TYPE_15__ TYPE_4__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+typedef TYPE_3__* lpNSCacheData ;
+typedef TYPE_4__* lpNSCache ;
+struct TYPE_17__ {int guidInstance; } ;
+struct TYPE_12__ {int * lpszSessionNameA; } ;
+struct TYPE_13__ {TYPE_1__ u1; int guidInstance; } ;
 struct TYPE_16__ {TYPE_2__ sd; } ;
-struct TYPE_15__ {TYPE_3__* present; int /*<<< orphan*/  first; } ;
-struct TYPE_14__ {int /*<<< orphan*/  dwTime; TYPE_2__* data; void* lpNSAddrHdr; } ;
-typedef  int /*<<< orphan*/  LPVOID ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
-typedef  int /*<<< orphan*/  LPCVOID ;
-typedef  TYPE_5__* LPCDPMSG_ENUMSESSIONSREPLY ;
-typedef  int DWORD ;
+struct TYPE_15__ {TYPE_3__* present; int first; } ;
+struct TYPE_14__ {int dwTime; TYPE_2__* data; void* lpNSAddrHdr; } ;
+typedef int LPVOID ;
+typedef int LPCWSTR ;
+typedef int LPCVOID ;
+typedef TYPE_5__* LPCDPMSG_ENUMSESSIONSREPLY ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CP_ACP ; 
- int /*<<< orphan*/  CopyMemory (void*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  DPQ_INSERT (int /*<<< orphan*/ ,TYPE_3__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DPQ_REMOVE_ENTRY_CB (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_3__*) ; 
- int /*<<< orphan*/  ERR (char*) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HEAP_ZERO_MEMORY ; 
- void* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_3__*) ; 
- int /*<<< orphan*/  NS_PruneSessionCache (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ,...) ; 
- int WideCharToMultiByte (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cbDeleteNSNodeFromHeap (TYPE_3__*) ; 
- int /*<<< orphan*/  cbUglyPig ; 
- TYPE_6__* data ; 
- int /*<<< orphan*/  debugstr_guid (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  next ; 
- int /*<<< orphan*/  timeGetTime () ; 
 
-void NS_AddRemoteComputerAsNameServer( LPCVOID                      lpcNSAddrHdr,
-                                       DWORD                        dwHdrSize,
-                                       LPCDPMSG_ENUMSESSIONSREPLY   lpcMsg,
-                                       LPVOID                       lpNSInfo )
+ int CP_ACP ;
+ int CopyMemory (void*,int ,int) ;
+ int DPQ_INSERT (int ,TYPE_3__*,int ) ;
+ int DPQ_REMOVE_ENTRY_CB (int ,int ,int ,int ,int ,TYPE_3__*) ;
+ int ERR (char*) ;
+ int GetProcessHeap () ;
+ int HEAP_ZERO_MEMORY ;
+ void* HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,TYPE_3__*) ;
+ int NS_PruneSessionCache (int ) ;
+ int TRACE (char*,int ,...) ;
+ int WideCharToMultiByte (int ,int ,int ,int,int *,int,int *,int *) ;
+ int cbDeleteNSNodeFromHeap (TYPE_3__*) ;
+ int cbUglyPig ;
+ TYPE_6__* data ;
+ int debugstr_guid (int *) ;
+ int next ;
+ int timeGetTime () ;
+
+void NS_AddRemoteComputerAsNameServer( LPCVOID lpcNSAddrHdr,
+                                       DWORD dwHdrSize,
+                                       LPCDPMSG_ENUMSESSIONSREPLY lpcMsg,
+                                       LPVOID lpNSInfo )
 {
   DWORD len;
-  lpNSCache     lpCache = (lpNSCache)lpNSInfo;
+  lpNSCache lpCache = (lpNSCache)lpNSInfo;
   lpNSCacheData lpCacheNode;
 
   TRACE( "%p, %p, %p\n", lpcNSAddrHdr, lpcMsg, lpNSInfo );
 
-  /* See if we can find this session. If we can, remove it as it's a dup */
+
   DPQ_REMOVE_ENTRY_CB( lpCache->first, next, data->guidInstance, cbUglyPig,
                        lpcMsg->sd.guidInstance, lpCacheNode );
 
-  if( lpCacheNode != NULL )
+  if( lpCacheNode != ((void*)0) )
   {
     TRACE( "Duplicate session entry for %s removed - updated version kept\n",
            debugstr_guid( &lpCacheNode->data->guidInstance ) );
     cbDeleteNSNodeFromHeap( lpCacheNode );
   }
 
-  /* Add this to the list */
+
   lpCacheNode = HeapAlloc( GetProcessHeap(), HEAP_ZERO_MEMORY, sizeof( *lpCacheNode ) );
 
-  if( lpCacheNode == NULL )
+  if( lpCacheNode == ((void*)0) )
   {
     ERR( "no memory for NS node\n" );
     return;
@@ -87,7 +87,7 @@ void NS_AddRemoteComputerAsNameServer( LPCVOID                      lpcNSAddrHdr
 
   lpCacheNode->data = HeapAlloc( GetProcessHeap(), HEAP_ZERO_MEMORY, sizeof( *(lpCacheNode->data) ) );
 
-  if( lpCacheNode->data == NULL )
+  if( lpCacheNode->data == ((void*)0) )
   {
     ERR( "no memory for SESSIONDESC2\n" );
     HeapFree( GetProcessHeap(), 0, lpCacheNode );
@@ -95,11 +95,11 @@ void NS_AddRemoteComputerAsNameServer( LPCVOID                      lpcNSAddrHdr
   }
 
   *lpCacheNode->data = lpcMsg->sd;
-  len = WideCharToMultiByte( CP_ACP, 0, (LPCWSTR)(lpcMsg+1), -1, NULL, 0, NULL, NULL );
+  len = WideCharToMultiByte( CP_ACP, 0, (LPCWSTR)(lpcMsg+1), -1, ((void*)0), 0, ((void*)0), ((void*)0) );
   if ((lpCacheNode->data->u1.lpszSessionNameA = HeapAlloc( GetProcessHeap(), 0, len )))
   {
       WideCharToMultiByte( CP_ACP, 0, (LPCWSTR)(lpcMsg+1), -1,
-                           lpCacheNode->data->u1.lpszSessionNameA, len, NULL, NULL );
+                           lpCacheNode->data->u1.lpszSessionNameA, len, ((void*)0), ((void*)0) );
   }
 
   lpCacheNode->dwTime = timeGetTime();
@@ -108,8 +108,8 @@ void NS_AddRemoteComputerAsNameServer( LPCVOID                      lpcNSAddrHdr
 
   lpCache->present = lpCacheNode;
 
-  /* Use this message as an opportunity to weed out any old sessions so
-   * that we don't enum them again
-   */
+
+
+
   NS_PruneSessionCache( lpNSInfo );
 }

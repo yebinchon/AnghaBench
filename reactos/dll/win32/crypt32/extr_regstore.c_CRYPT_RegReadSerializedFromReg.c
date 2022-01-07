@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  hash ;
-struct TYPE_5__ {int /*<<< orphan*/  (* addContextToStore ) (int /*<<< orphan*/ ,void const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ;scalar_t__ (* getProp ) (void const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int*) ;} ;
-typedef  TYPE_1__ WINE_CONTEXT_INTERFACE ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/ * LPBYTE ;
-typedef  int /*<<< orphan*/  LONG ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  int /*<<< orphan*/  HCERTSTORE ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  BYTE ;
 
-/* Variables and functions */
- int ARRAY_SIZE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BlobW ; 
- int /*<<< orphan*/  CERT_HASH_PROP_ID ; 
- int /*<<< orphan*/  CERT_STORE_ADD_REPLACE_EXISTING ; 
-#define  CERT_STORE_CERTIFICATE_CONTEXT 130 
-#define  CERT_STORE_CRL_CONTEXT 129 
-#define  CERT_STORE_CTL_CONTEXT 128 
- int /*<<< orphan*/  CRYPT_HashToStr (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- void* CRYPT_ReadSerializedElement (int /*<<< orphan*/ *,int,int,int*) ; 
- int /*<<< orphan*/  Context_Release (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * CryptMemAlloc (int) ; 
- int /*<<< orphan*/  CryptMemFree (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ERROR_SUCCESS ; 
- int /*<<< orphan*/  KEY_READ ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RegEnumKeyExW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RegOpenKeyExW (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RegQueryValueExW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  TRACE (char*,...) ; 
- int /*<<< orphan*/  context_from_ptr (void const*) ; 
- int /*<<< orphan*/  debugstr_w (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lstrcmpW (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- TYPE_1__* pCRLInterface ; 
- TYPE_1__* pCTLInterface ; 
- TYPE_1__* pCertInterface ; 
- scalar_t__ stub1 (void const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ ,void const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int hash ;
+struct TYPE_5__ {int (* addContextToStore ) (int ,void const*,int ,int *) ;scalar_t__ (* getProp ) (void const*,int ,int *,int*) ;} ;
+typedef TYPE_1__ WINE_CONTEXT_INTERFACE ;
+typedef int WCHAR ;
+typedef int * LPBYTE ;
+typedef int LONG ;
+typedef int HKEY ;
+typedef int HCERTSTORE ;
+typedef int DWORD ;
+typedef int BYTE ;
+
+
+ int ARRAY_SIZE (int *) ;
+ int BlobW ;
+ int CERT_HASH_PROP_ID ;
+ int CERT_STORE_ADD_REPLACE_EXISTING ;
+
+
+
+ int CRYPT_HashToStr (int *,int *) ;
+ void* CRYPT_ReadSerializedElement (int *,int,int,int*) ;
+ int Context_Release (int ) ;
+ int * CryptMemAlloc (int) ;
+ int CryptMemFree (int *) ;
+ int ERROR_SUCCESS ;
+ int KEY_READ ;
+ int MAX_PATH ;
+ int RegCloseKey (int ) ;
+ int RegEnumKeyExW (int ,int ,int *,int*,int *,int *,int *,int *) ;
+ int RegOpenKeyExW (int ,int *,int ,int ,int *) ;
+ int RegQueryValueExW (int ,int ,int *,int *,int *,int*) ;
+ int TRACE (char*,...) ;
+ int context_from_ptr (void const*) ;
+ int debugstr_w (int *) ;
+ int lstrcmpW (int *,int *) ;
+ TYPE_1__* pCRLInterface ;
+ TYPE_1__* pCTLInterface ;
+ TYPE_1__* pCertInterface ;
+ scalar_t__ stub1 (void const*,int ,int *,int*) ;
+ int stub2 (int ,void const*,int ,int *) ;
 
 __attribute__((used)) static void CRYPT_RegReadSerializedFromReg(HKEY key, DWORD contextType,
  HCERTSTORE store)
@@ -62,8 +62,8 @@ __attribute__((used)) static void CRYPT_RegReadSerializedFromReg(HKEY key, DWORD
     do {
         DWORD size = ARRAY_SIZE(subKeyName);
 
-        rc = RegEnumKeyExW(key, index++, subKeyName, &size, NULL, NULL, NULL,
-         NULL);
+        rc = RegEnumKeyExW(key, index++, subKeyName, &size, ((void*)0), ((void*)0), ((void*)0),
+         ((void*)0));
         if (!rc)
         {
             HKEY subKey;
@@ -71,15 +71,15 @@ __attribute__((used)) static void CRYPT_RegReadSerializedFromReg(HKEY key, DWORD
             rc = RegOpenKeyExW(key, subKeyName, 0, KEY_READ, &subKey);
             if (!rc)
             {
-                LPBYTE buf = NULL;
+                LPBYTE buf = ((void*)0);
 
                 size = 0;
-                rc = RegQueryValueExW(subKey, BlobW, NULL, NULL, NULL, &size);
+                rc = RegQueryValueExW(subKey, BlobW, ((void*)0), ((void*)0), ((void*)0), &size);
                 if (!rc)
                     buf = CryptMemAlloc(size);
                 if (buf)
                 {
-                    rc = RegQueryValueExW(subKey, BlobW, NULL, NULL, buf,
+                    rc = RegQueryValueExW(subKey, BlobW, ((void*)0), ((void*)0), buf,
                      &size);
                     if (!rc)
                     {
@@ -97,17 +97,17 @@ __attribute__((used)) static void CRYPT_RegReadSerializedFromReg(HKEY key, DWORD
 
                             switch (addedType)
                             {
-                            case CERT_STORE_CERTIFICATE_CONTEXT:
+                            case 130:
                                 contextInterface = pCertInterface;
                                 break;
-                            case CERT_STORE_CRL_CONTEXT:
+                            case 129:
                                 contextInterface = pCRLInterface;
                                 break;
-                            case CERT_STORE_CTL_CONTEXT:
+                            case 128:
                                 contextInterface = pCTLInterface;
                                 break;
                             default:
-                                contextInterface = NULL;
+                                contextInterface = ((void*)0);
                             }
                             if (contextInterface)
                             {
@@ -126,7 +126,7 @@ __attribute__((used)) static void CRYPT_RegReadSerializedFromReg(HKEY key, DWORD
                                         TRACE("hash matches, adding\n");
                                         contextInterface->addContextToStore(
                                          store, context,
-                                         CERT_STORE_ADD_REPLACE_EXISTING, NULL);
+                                         CERT_STORE_ADD_REPLACE_EXISTING, ((void*)0));
                                     }
                                     else
                                         TRACE("hash doesn't match, ignoring\n");
@@ -139,7 +139,7 @@ __attribute__((used)) static void CRYPT_RegReadSerializedFromReg(HKEY key, DWORD
                 }
                 RegCloseKey(subKey);
             }
-            /* Ignore intermediate errors, continue enumerating */
+
             rc = ERROR_SUCCESS;
         }
     } while (!rc);

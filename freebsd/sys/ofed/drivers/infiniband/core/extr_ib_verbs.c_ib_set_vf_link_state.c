@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-struct ib_device {int (* set_vf_link_state ) (struct ib_device*,int,int /*<<< orphan*/ ,int) ;} ;
 
-/* Variables and functions */
- int ENOSYS ; 
- int stub1 (struct ib_device*,int,int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int u8 ;
+struct ib_device {int (* set_vf_link_state ) (struct ib_device*,int,int ,int) ;} ;
+
+
+ int ENOSYS ;
+ int stub1 (struct ib_device*,int,int ,int) ;
 
 int ib_set_vf_link_state(struct ib_device *device, int vf, u8 port,
-			 int state)
+    int state)
 {
-	if (!device->set_vf_link_state)
-		return -ENOSYS;
+ if (!device->set_vf_link_state)
+  return -ENOSYS;
 
-	return device->set_vf_link_state(device, vf, port, state);
+ return device->set_vf_link_state(device, vf, port, state);
 }

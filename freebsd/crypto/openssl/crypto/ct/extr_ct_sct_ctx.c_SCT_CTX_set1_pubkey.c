@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  X509_PUBKEY ;
-struct TYPE_3__ {int /*<<< orphan*/ * pkey; int /*<<< orphan*/  pkeyhashlen; int /*<<< orphan*/  pkeyhash; } ;
-typedef  TYPE_1__ SCT_CTX ;
-typedef  int /*<<< orphan*/  EVP_PKEY ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EVP_PKEY_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * X509_PUBKEY_get (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ct_public_key_hash (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int X509_PUBKEY ;
+struct TYPE_3__ {int * pkey; int pkeyhashlen; int pkeyhash; } ;
+typedef TYPE_1__ SCT_CTX ;
+typedef int EVP_PKEY ;
+
+
+ int EVP_PKEY_free (int *) ;
+ int * X509_PUBKEY_get (int *) ;
+ int ct_public_key_hash (int *,int *,int *) ;
 
 int SCT_CTX_set1_pubkey(SCT_CTX *sctx, X509_PUBKEY *pubkey)
 {
     EVP_PKEY *pkey = X509_PUBKEY_get(pubkey);
 
-    if (pkey == NULL)
+    if (pkey == ((void*)0))
         return 0;
 
     if (!ct_public_key_hash(pubkey, &sctx->pkeyhash, &sctx->pkeyhashlen)) {

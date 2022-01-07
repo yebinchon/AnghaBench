@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  enum tree_code { ____Placeholder_tree_code } tree_code ;
-typedef  enum rtx_code { ____Placeholder_rtx_code } rtx_code ;
 
-/* Variables and functions */
- int EQ ; 
-#define  EQ_EXPR 141 
- int GE ; 
- int GEU ; 
-#define  GE_EXPR 140 
- int GT ; 
- int GTU ; 
-#define  GT_EXPR 139 
- int LE ; 
- int LEU ; 
-#define  LE_EXPR 138 
- int LT ; 
- int LTGT ; 
-#define  LTGT_EXPR 137 
- int LTU ; 
-#define  LT_EXPR 136 
- int NE ; 
-#define  NE_EXPR 135 
- int ORDERED ; 
-#define  ORDERED_EXPR 134 
- int UNEQ ; 
-#define  UNEQ_EXPR 133 
- int UNGE ; 
-#define  UNGE_EXPR 132 
- int UNGT ; 
-#define  UNGT_EXPR 131 
- int UNLE ; 
-#define  UNLE_EXPR 130 
- int UNLT ; 
-#define  UNLT_EXPR 129 
- int UNORDERED ; 
-#define  UNORDERED_EXPR 128 
- int /*<<< orphan*/  gcc_unreachable () ; 
+
+
+
+typedef enum tree_code { ____Placeholder_tree_code } tree_code ;
+typedef enum rtx_code { ____Placeholder_rtx_code } rtx_code ;
+
+
+ int EQ ;
+
+ int GE ;
+ int GEU ;
+
+ int GT ;
+ int GTU ;
+
+ int LE ;
+ int LEU ;
+
+ int LT ;
+ int LTGT ;
+
+ int LTU ;
+
+ int NE ;
+
+ int ORDERED ;
+
+ int UNEQ ;
+
+ int UNGE ;
+
+ int UNGT ;
+
+ int UNLE ;
+
+ int UNLT ;
+
+ int UNORDERED ;
+
+ int gcc_unreachable () ;
 
 __attribute__((used)) static enum rtx_code
 get_rtx_code (enum tree_code tcode, bool unsignedp)
@@ -54,47 +54,47 @@ get_rtx_code (enum tree_code tcode, bool unsignedp)
   enum rtx_code code;
   switch (tcode)
     {
-    case EQ_EXPR:
+    case 141:
       code = EQ;
       break;
-    case NE_EXPR:
+    case 135:
       code = NE;
       break;
-    case LT_EXPR:
+    case 136:
       code = unsignedp ? LTU : LT;
       break;
-    case LE_EXPR:
+    case 138:
       code = unsignedp ? LEU : LE;
       break;
-    case GT_EXPR:
+    case 139:
       code = unsignedp ? GTU : GT;
       break;
-    case GE_EXPR:
+    case 140:
       code = unsignedp ? GEU : GE;
       break;
 
-    case UNORDERED_EXPR:
+    case 128:
       code = UNORDERED;
       break;
-    case ORDERED_EXPR:
+    case 134:
       code = ORDERED;
       break;
-    case UNLT_EXPR:
+    case 129:
       code = UNLT;
       break;
-    case UNLE_EXPR:
+    case 130:
       code = UNLE;
       break;
-    case UNGT_EXPR:
+    case 131:
       code = UNGT;
       break;
-    case UNGE_EXPR:
+    case 132:
       code = UNGE;
       break;
-    case UNEQ_EXPR:
+    case 133:
       code = UNEQ;
       break;
-    case LTGT_EXPR:
+    case 137:
       code = LTGT;
       break;
 

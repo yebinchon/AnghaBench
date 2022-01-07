@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct tree_rpc_target {struct rpc_target* x; } ;
 struct TYPE_3__ {scalar_t__ ip; } ;
-struct rpc_target {int /*<<< orphan*/  inbound_num; struct connection* last; struct connection* first; TYPE_1__ PID; } ;
+struct rpc_target {int inbound_num; struct connection* last; struct connection* first; TYPE_1__ PID; } ;
 struct connection {struct connection* next; struct connection* prev; scalar_t__ target; } ;
 struct TYPE_4__ {TYPE_1__ remote_pid; } ;
 
-/* Variables and functions */
- TYPE_2__* RPCS_DATA (struct connection*) ; 
- int /*<<< orphan*/  assert (int) ; 
- struct rpc_target* rpc_target_alloc (TYPE_1__) ; 
- int /*<<< orphan*/  rpc_target_tree ; 
- scalar_t__ rpc_targets_cur_host ; 
- int /*<<< orphan*/  st_update_host () ; 
- struct tree_rpc_target* tree_lookup_rpc_target (int /*<<< orphan*/ ,struct rpc_target*) ; 
+
+ TYPE_2__* RPCS_DATA (struct connection*) ;
+ int assert (int) ;
+ struct rpc_target* rpc_target_alloc (TYPE_1__) ;
+ int rpc_target_tree ;
+ scalar_t__ rpc_targets_cur_host ;
+ int st_update_host () ;
+ struct tree_rpc_target* tree_lookup_rpc_target (int ,struct rpc_target*) ;
 
 void rpc_target_insert_conn (struct connection *c) {
   if (c->target) { return; }

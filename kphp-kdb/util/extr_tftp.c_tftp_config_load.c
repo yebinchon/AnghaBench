@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {scalar_t__ size; int /*<<< orphan*/  data; int /*<<< orphan*/  filename; } ;
-typedef  TYPE_1__ tftp_file_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {scalar_t__ size; int data; int filename; } ;
+typedef TYPE_1__ tftp_file_t ;
 struct stat {scalar_t__ st_size; } ;
-typedef  scalar_t__ ssize_t ;
-typedef  int /*<<< orphan*/  s ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef scalar_t__ ssize_t ;
+typedef int s ;
+typedef int FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  O_RDONLY ; 
- scalar_t__ TFTP_MAX_FILE_SIZE ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fgets (char*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char const*,char*) ; 
- scalar_t__ fstat (int,struct stat*) ; 
- TYPE_1__* get_file_f (char*,int) ; 
- int /*<<< orphan*/  kprintf (char*,...) ; 
- int open (char*,int /*<<< orphan*/ ) ; 
- scalar_t__ read (int,int /*<<< orphan*/ ,scalar_t__) ; 
- int strlen (char*) ; 
- char* strtok_r (char*,char*,char**) ; 
- int tot_files ; 
- int /*<<< orphan*/  zmalloc (scalar_t__) ; 
- int /*<<< orphan*/  zstrdup (char*) ; 
+
+ int O_RDONLY ;
+ scalar_t__ TFTP_MAX_FILE_SIZE ;
+ int assert (int) ;
+ int close (int) ;
+ int fclose (int *) ;
+ int * fgets (char*,int,int *) ;
+ int * fopen (char const*,char*) ;
+ scalar_t__ fstat (int,struct stat*) ;
+ TYPE_1__* get_file_f (char*,int) ;
+ int kprintf (char*,...) ;
+ int open (char*,int ) ;
+ scalar_t__ read (int,int ,scalar_t__) ;
+ int strlen (char*) ;
+ char* strtok_r (char*,char*,char**) ;
+ int tot_files ;
+ int zmalloc (scalar_t__) ;
+ int zstrdup (char*) ;
 
 int tftp_config_load (const char *config_filename) {
   char s[16384];
   FILE *f = fopen (config_filename, "r");
-  if (f == NULL) {
+  if (f == ((void*)0)) {
     kprintf ("fail to open config file '%s'. %m\n", config_filename);
     return -1;
   }
   int line = 0, res = 0, fd = -1;
-  while (fgets (s, sizeof (s), f) != NULL) {
+  while (fgets (s, sizeof (s), f) != ((void*)0)) {
     line++;
     int l = strlen (s);
     if (l >= sizeof (s) - 1) {
@@ -55,11 +55,11 @@ int tftp_config_load (const char *config_filename) {
     }
     char *ptr;
     char *alias = strtok_r (s, "\t\n ", &ptr);
-    if (alias == NULL) {
+    if (alias == ((void*)0)) {
       continue;
     }
-    char *filename = strtok_r (NULL, "\t\n ", &ptr);
-    if (filename == NULL) {
+    char *filename = strtok_r (((void*)0), "\t\n ", &ptr);
+    if (filename == ((void*)0)) {
       kprintf ("at the %d line of config filename for alias '%s' wasn't given.\n", line, alias);
       res--;
       break;
@@ -85,7 +85,7 @@ int tftp_config_load (const char *config_filename) {
     }
     F->size = st.st_size;
     if (F->size > TFTP_MAX_FILE_SIZE) {
-      kprintf ("file '%s' for alias '%s' is too big (more than %lld bytes) (config line: %d). %m\n", filename, alias, F->size,  line);
+      kprintf ("file '%s' for alias '%s' is too big (more than %lld bytes) (config line: %d). %m\n", filename, alias, F->size, line);
       res--;
       break;
     }

@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint32_t ;
-typedef  void* uint16_t ;
-struct TYPE_11__ {int width; scalar_t__ codec_id; int codec_tag; int extradata_size; int height; int /*<<< orphan*/ * extradata; } ;
-struct TYPE_10__ {int key_frame; int /*<<< orphan*/ * linesize; int /*<<< orphan*/ ** data; int /*<<< orphan*/  pict_type; } ;
+
+
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef void* uint16_t ;
+struct TYPE_11__ {int width; scalar_t__ codec_id; int codec_tag; int extradata_size; int height; int * extradata; } ;
+struct TYPE_10__ {int key_frame; int * linesize; int ** data; int pict_type; } ;
 struct TYPE_9__ {int size; scalar_t__ data; } ;
-typedef  TYPE_1__ AVPacket ;
-typedef  TYPE_2__ AVFrame ;
-typedef  TYPE_3__ AVCodecContext ;
+typedef TYPE_1__ AVPacket ;
+typedef TYPE_2__ AVFrame ;
+typedef TYPE_3__ AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- scalar_t__ AV_CODEC_ID_AVRP ; 
- scalar_t__ AV_CODEC_ID_R10K ; 
- scalar_t__ AV_CODEC_ID_R210 ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_PICTURE_TYPE_I ; 
- int FFALIGN (int,int) ; 
- int MKTAG (char,char,int /*<<< orphan*/ ,char) ; 
- int av_be2ne32 (int /*<<< orphan*/ ) ; 
- int av_le2ne32 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_log (TYPE_3__*,int /*<<< orphan*/ ,char*) ; 
- int ff_get_buffer (TYPE_3__*,TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcmp (int /*<<< orphan*/ *,char*,int) ; 
+
+ int AVERROR_INVALIDDATA ;
+ scalar_t__ AV_CODEC_ID_AVRP ;
+ scalar_t__ AV_CODEC_ID_R10K ;
+ scalar_t__ AV_CODEC_ID_R210 ;
+ int AV_LOG_ERROR ;
+ int AV_PICTURE_TYPE_I ;
+ int FFALIGN (int,int) ;
+ int MKTAG (char,char,int ,char) ;
+ int av_be2ne32 (int ) ;
+ int av_le2ne32 (int ) ;
+ int av_log (TYPE_3__*,int ,char*) ;
+ int ff_get_buffer (TYPE_3__*,TYPE_2__*,int ) ;
+ int memcmp (int *,char*,int) ;
 
 __attribute__((used)) static int decode_frame(AVCodecContext *avctx, void *data, int *got_frame,
                         AVPacket *avpkt)
@@ -79,15 +79,15 @@ __attribute__((used)) static int decode_frame(AVCodecContext *avctx, void *data,
                 pixel = av_be2ne32(*src++);
             }
             if (avctx->codec_id == AV_CODEC_ID_R210) {
-                b =  pixel & 0x3ff;
+                b = pixel & 0x3ff;
                 g = (pixel >> 10) & 0x3ff;
                 r = (pixel >> 20) & 0x3ff;
             } else if (r10) {
-                r =  pixel & 0x3ff;
+                r = pixel & 0x3ff;
                 g = (pixel >> 10) & 0x3ff;
                 b = (pixel >> 20) & 0x3ff;
             } else {
-                b = (pixel >>  2) & 0x3ff;
+                b = (pixel >> 2) & 0x3ff;
                 g = (pixel >> 12) & 0x3ff;
                 r = (pixel >> 22) & 0x3ff;
             }
@@ -101,7 +101,7 @@ __attribute__((used)) static int decode_frame(AVCodecContext *avctx, void *data,
         r_line += pic->linesize[2];
     }
 
-    *got_frame      = 1;
+    *got_frame = 1;
 
     return avpkt->size;
 }

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  realdir ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CCHMAXPATH ; 
- char* FromLocaleDup (char*) ; 
- char* config_GetBaseDir () ; 
- int /*<<< orphan*/  config_GetRelDir (char const*) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,char*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int realdir ;
+
+
+ int CCHMAXPATH ;
+ char* FromLocaleDup (char*) ;
+ char* config_GetBaseDir () ;
+ int config_GetRelDir (char const*) ;
+ int snprintf (char*,int,char*,char*,int ) ;
 
 __attribute__((used)) static char *config_GetRealDir( const char *dir )
 {

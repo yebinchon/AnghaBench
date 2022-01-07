@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  unsigned int uint32_t ;
-struct TYPE_8__ {int /*<<< orphan*/  public_key; int /*<<< orphan*/  ip_port; } ;
-struct TYPE_7__ {unsigned int path_nodes_index; unsigned int path_nodes_index_bs; TYPE_3__* path_nodes; TYPE_3__* path_nodes_bs; int /*<<< orphan*/  onion_paths_self; TYPE_1__* clients_announce_list; } ;
-struct TYPE_6__ {int timestamp; int last_pinged; int /*<<< orphan*/  path_used; int /*<<< orphan*/  ping_id; int /*<<< orphan*/  public_key; int /*<<< orphan*/  ip_port; scalar_t__ is_stored; } ;
-typedef  TYPE_1__ Onion_Node ;
-typedef  TYPE_2__ Onion_Client ;
-typedef  TYPE_3__ Node_format ;
 
-/* Variables and functions */
- unsigned int ANNOUNCE_INTERVAL_ANNOUNCED ; 
- unsigned int ANNOUNCE_INTERVAL_NOT_ANNOUNCED ; 
- unsigned int MAX_ONION_CLIENTS_ANNOUNCE ; 
- unsigned int MAX_PATH_NODES ; 
- unsigned int ONION_NODE_TIMEOUT ; 
- scalar_t__ client_send_announce_request (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ is_timeout (int,unsigned int) ; 
- scalar_t__ path_exists (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- unsigned int rand () ; 
- int unix_time () ; 
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef unsigned int uint32_t ;
+struct TYPE_8__ {int public_key; int ip_port; } ;
+struct TYPE_7__ {unsigned int path_nodes_index; unsigned int path_nodes_index_bs; TYPE_3__* path_nodes; TYPE_3__* path_nodes_bs; int onion_paths_self; TYPE_1__* clients_announce_list; } ;
+struct TYPE_6__ {int timestamp; int last_pinged; int path_used; int ping_id; int public_key; int ip_port; scalar_t__ is_stored; } ;
+typedef TYPE_1__ Onion_Node ;
+typedef TYPE_2__ Onion_Client ;
+typedef TYPE_3__ Node_format ;
+
+
+ unsigned int ANNOUNCE_INTERVAL_ANNOUNCED ;
+ unsigned int ANNOUNCE_INTERVAL_NOT_ANNOUNCED ;
+ unsigned int MAX_ONION_CLIENTS_ANNOUNCE ;
+ unsigned int MAX_PATH_NODES ;
+ unsigned int ONION_NODE_TIMEOUT ;
+ scalar_t__ client_send_announce_request (TYPE_2__*,int ,int ,int ,int ,int ) ;
+ scalar_t__ is_timeout (int,unsigned int) ;
+ scalar_t__ path_exists (int *,int ) ;
+ unsigned int rand () ;
+ int unix_time () ;
 
 __attribute__((used)) static void do_announce(Onion_Client *onion_c)
 {
@@ -44,7 +44,7 @@ __attribute__((used)) static void do_announce(Onion_Client *onion_c)
 
         ++count;
 
-        /* Don't announce ourselves the first time this is run to new peers */
+
         if (list_nodes[i].last_pinged == 0) {
             list_nodes[i].last_pinged = 1;
             continue;

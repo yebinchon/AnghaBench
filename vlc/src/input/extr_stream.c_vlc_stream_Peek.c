@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  stream_t ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int stream_t ;
 struct TYPE_6__ {TYPE_2__* peek; TYPE_2__* block; } ;
-typedef  TYPE_1__ stream_priv_t ;
-typedef  scalar_t__ ssize_t ;
-struct TYPE_7__ {size_t i_buffer; int /*<<< orphan*/ * p_buffer; } ;
-typedef  TYPE_2__ block_t ;
+typedef TYPE_1__ stream_priv_t ;
+typedef scalar_t__ ssize_t ;
+struct TYPE_7__ {size_t i_buffer; int * p_buffer; } ;
+typedef TYPE_2__ block_t ;
 
-/* Variables and functions */
- scalar_t__ VLC_ENOMEM ; 
- TYPE_2__* block_Alloc (size_t) ; 
- TYPE_2__* block_TryRealloc (TYPE_2__*,int /*<<< orphan*/ ,size_t) ; 
- scalar_t__ unlikely (int /*<<< orphan*/ ) ; 
- scalar_t__ vlc_stream_ReadRaw (int /*<<< orphan*/ *,int /*<<< orphan*/ *,size_t) ; 
+
+ scalar_t__ VLC_ENOMEM ;
+ TYPE_2__* block_Alloc (size_t) ;
+ TYPE_2__* block_TryRealloc (TYPE_2__*,int ,size_t) ;
+ scalar_t__ unlikely (int ) ;
+ scalar_t__ vlc_stream_ReadRaw (int *,int *,size_t) ;
 
 ssize_t vlc_stream_Peek(stream_t *s, const uint8_t **restrict bufp, size_t len)
 {
@@ -33,17 +33,17 @@ ssize_t vlc_stream_Peek(stream_t *s, const uint8_t **restrict bufp, size_t len)
     block_t *peek;
 
     peek = priv->peek;
-    if (peek == NULL)
+    if (peek == ((void*)0))
     {
         peek = priv->block;
         priv->peek = peek;
-        priv->block = NULL;
+        priv->block = ((void*)0);
     }
 
-    if (peek == NULL)
+    if (peek == ((void*)0))
     {
         peek = block_Alloc(len);
-        if (unlikely(peek == NULL))
+        if (unlikely(peek == ((void*)0)))
             return VLC_ENOMEM;
 
         peek->i_buffer = 0;
@@ -54,7 +54,7 @@ ssize_t vlc_stream_Peek(stream_t *s, const uint8_t **restrict bufp, size_t len)
         size_t avail = peek->i_buffer;
 
         peek = block_TryRealloc(peek, 0, len);
-        if (unlikely(peek == NULL))
+        if (unlikely(peek == ((void*)0)))
             return VLC_ENOMEM;
 
         peek->i_buffer = avail;

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  size_t uint8_t ;
-typedef  int /*<<< orphan*/  BN_CTX ;
-typedef  int /*<<< orphan*/  BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BN_CTX_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BN_CTX_new () ; 
- int /*<<< orphan*/ * BN_bin2bn (size_t const*,size_t,int /*<<< orphan*/ *) ; 
- scalar_t__ BN_cmp (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_free (int /*<<< orphan*/ *) ; 
- scalar_t__ BN_is_zero (int /*<<< orphan*/ *) ; 
- int BN_mod_exp (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int BN_mod_exp_simple (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BN_new () ; 
- int /*<<< orphan*/  BN_print_fp (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_set_negative (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  ERR_clear_error () ; 
- int /*<<< orphan*/  OPENSSL_assert (int) ; 
- int /*<<< orphan*/  putchar (char) ; 
- int /*<<< orphan*/  stdout ; 
+
+
+
+typedef size_t uint8_t ;
+typedef int BN_CTX ;
+typedef int BIGNUM ;
+
+
+ int BN_CTX_free (int *) ;
+ int * BN_CTX_new () ;
+ int * BN_bin2bn (size_t const*,size_t,int *) ;
+ scalar_t__ BN_cmp (int *,int *) ;
+ int BN_free (int *) ;
+ scalar_t__ BN_is_zero (int *) ;
+ int BN_mod_exp (int *,int *,int *,int *,int *) ;
+ int BN_mod_exp_simple (int *,int *,int *,int *,int *) ;
+ int * BN_new () ;
+ int BN_print_fp (int ,int *) ;
+ int BN_set_negative (int *,int) ;
+ int ERR_clear_error () ;
+ int OPENSSL_assert (int) ;
+ int putchar (char) ;
+ int stdout ;
 
 int FuzzerTestOneInput(const uint8_t *buf, size_t len)
 {
@@ -50,10 +50,10 @@ int FuzzerTestOneInput(const uint8_t *buf, size_t len)
     b5 = BN_new();
     ctx = BN_CTX_new();
 
-    /* Divide the input into three parts, using the values of the first two
-     * bytes to choose lengths, which generate b1, b2 and b3. Use three bits
-     * of the third byte to choose signs for the three numbers.
-     */
+
+
+
+
     if (len > 2) {
         len -= 3;
         l1 = (buf[0] * len) / 255;
@@ -72,7 +72,7 @@ int FuzzerTestOneInput(const uint8_t *buf, size_t len)
     OPENSSL_assert(BN_bin2bn(buf + l1 + l2, l3, b3) == b3);
     BN_set_negative(b3, s3);
 
-    /* mod 0 is undefined */
+
     if (BN_is_zero(b3)) {
         success = 1;
         goto done;

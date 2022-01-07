@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int PIO_SODR; } ;
-typedef  TYPE_1__* AT91PS_PIO ;
+typedef TYPE_1__* AT91PS_PIO ;
 
-/* Variables and functions */
- TYPE_1__* AT91C_BASE_PIOB ; 
 
-void	yellow_LED_off(void)
+ TYPE_1__* AT91C_BASE_PIOB ;
+
+void yellow_LED_off(void)
 {
-	AT91PS_PIO	PIOB	= AT91C_BASE_PIOB;
-//	PIOB->PIO_SODR		= YELLOW_LED;
-	PIOB->PIO_SODR		= (1 << 1);
+ AT91PS_PIO PIOB = AT91C_BASE_PIOB;
+
+ PIOB->PIO_SODR = (1 << 1);
 }

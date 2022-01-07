@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  nlmeans_filter_median_opt (int /*<<< orphan*/ *,int const) ; 
+
+
+
+typedef int uint8_t ;
+
+
+ int nlmeans_filter_median_opt (int *,int const) ;
 
 __attribute__((used)) static void nlmeans_filter_median(const uint8_t *src,
                                         uint8_t *dst,
@@ -22,10 +22,10 @@ __attribute__((used)) static void nlmeans_filter_median(const uint8_t *src,
                                   const int border,
                                   const int size)
 {
-    // Median filter
+
     const int bw = w + 2 * border;
     const int offset_min = -((size - 1) /2);
-    const int offset_max =   (size + 1) /2;
+    const int offset_max = (size + 1) /2;
     int index;
     uint8_t pixels[size * size];
     for (int y = 0; y < h; y++)

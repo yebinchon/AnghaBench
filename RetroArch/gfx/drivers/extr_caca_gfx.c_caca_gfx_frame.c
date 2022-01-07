@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {scalar_t__ menu_is_alive; } ;
-typedef  TYPE_1__ video_frame_info_t ;
-typedef  int /*<<< orphan*/  uint64_t ;
+typedef TYPE_1__ video_frame_info_t ;
+typedef int uint64_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  caca_clear_canvas (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  caca_cv ; 
- int /*<<< orphan*/  caca_display ; 
- int /*<<< orphan*/  caca_dither ; 
- int /*<<< orphan*/  caca_dither_bitmap (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned int,unsigned int,int /*<<< orphan*/ ,void const*) ; 
- void* caca_export_canvas_to_memory (int /*<<< orphan*/ ,char*,size_t*) ; 
- unsigned int caca_get_canvas_height (int /*<<< orphan*/ ) ; 
- unsigned int caca_get_canvas_width (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  caca_gfx_create () ; 
- int /*<<< orphan*/  caca_gfx_free (int /*<<< orphan*/ *) ; 
- void* caca_menu_frame ; 
- int /*<<< orphan*/  caca_refresh_display (int /*<<< orphan*/ ) ; 
- unsigned int caca_video_height ; 
- unsigned int caca_video_pitch ; 
- unsigned int caca_video_width ; 
- int /*<<< orphan*/  font_driver_render_msg (TYPE_1__*,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (void*) ; 
- int /*<<< orphan*/  menu_driver_frame (TYPE_1__*) ; 
+
+ int caca_clear_canvas (int ) ;
+ int caca_cv ;
+ int caca_display ;
+ int caca_dither ;
+ int caca_dither_bitmap (int ,int ,int ,unsigned int,unsigned int,int ,void const*) ;
+ void* caca_export_canvas_to_memory (int ,char*,size_t*) ;
+ unsigned int caca_get_canvas_height (int ) ;
+ unsigned int caca_get_canvas_width (int ) ;
+ int caca_gfx_create () ;
+ int caca_gfx_free (int *) ;
+ void* caca_menu_frame ;
+ int caca_refresh_display (int ) ;
+ unsigned int caca_video_height ;
+ unsigned int caca_video_pitch ;
+ unsigned int caca_video_width ;
+ int font_driver_render_msg (TYPE_1__*,int *,char const*,int *) ;
+ int free (void*) ;
+ int menu_driver_frame (TYPE_1__*) ;
 
 __attribute__((used)) static bool caca_gfx_frame(void *data, const void *frame,
       unsigned frame_width, unsigned frame_height, uint64_t frame_count,
       unsigned pitch, const char *msg, video_frame_info_t *video_info)
 {
    size_t len = 0;
-   void *buffer = NULL;
+   void *buffer = ((void*)0);
    const void *frame_to_copy = frame;
    unsigned width = 0;
    unsigned height = 0;
-   bool draw = true;
+   bool draw = 1;
 
    (void)data;
    (void)frame;
@@ -54,24 +54,24 @@ __attribute__((used)) static bool caca_gfx_frame(void *data, const void *frame,
    (void)msg;
 
    if (!frame || !frame_width || !frame_height)
-      return true;
+      return 1;
 
-   if (  caca_video_width  != frame_width   ||
-         caca_video_height != frame_height  ||
-         caca_video_pitch  != pitch)
+   if ( caca_video_width != frame_width ||
+         caca_video_height != frame_height ||
+         caca_video_pitch != pitch)
    {
       if (frame_width > 4 && frame_height > 4)
       {
          caca_video_width = frame_width;
          caca_video_height = frame_height;
          caca_video_pitch = pitch;
-         caca_gfx_free(NULL);
+         caca_gfx_free(((void*)0));
          caca_gfx_create();
       }
    }
 
    if (!caca_cv)
-      return true;
+      return 1;
 
    if (caca_menu_frame && video_info->menu_is_alive)
       frame_to_copy = caca_menu_frame;
@@ -79,23 +79,23 @@ __attribute__((used)) static bool caca_gfx_frame(void *data, const void *frame,
    width = caca_get_canvas_width(caca_cv);
    height = caca_get_canvas_height(caca_cv);
 
-   if (  frame_to_copy == frame &&
-         frame_width   == 4 &&
-         frame_height  == 4 &&
+   if ( frame_to_copy == frame &&
+         frame_width == 4 &&
+         frame_height == 4 &&
          (frame_width < width && frame_height < height))
-      draw = false;
+      draw = 0;
 
    if (video_info->menu_is_alive)
-      draw = false;
+      draw = 0;
 
    caca_clear_canvas(caca_cv);
 
-#ifdef HAVE_MENU
-   menu_driver_frame(video_info);
-#endif
+
+
+
 
    if (msg)
-      font_driver_render_msg(video_info, NULL, msg, NULL);
+      font_driver_render_msg(video_info, ((void*)0), msg, ((void*)0));
 
    if (draw)
    {
@@ -115,5 +115,5 @@ __attribute__((used)) static bool caca_gfx_frame(void *data, const void *frame,
       }
    }
 
-   return true;
+   return 1;
 }

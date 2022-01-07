@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  PKEY_DISABLE_ACCESS ; 
- int /*<<< orphan*/  pkey_disable_clear (int,int /*<<< orphan*/ ) ; 
+ int PKEY_DISABLE_ACCESS ;
+ int pkey_disable_clear (int,int ) ;
 
 void pkey_access_allow(int pkey)
 {
-	pkey_disable_clear(pkey, PKEY_DISABLE_ACCESS);
+ pkey_disable_clear(pkey, PKEY_DISABLE_ACCESS);
 }

@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct st_redis_socket_data_t {int /*<<< orphan*/  socket; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  h2o_socket_read_start (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  on_read ; 
+
+
+
+struct st_redis_socket_data_t {int socket; } ;
+
+
+ int h2o_socket_read_start (int ,int ) ;
+ int on_read ;
 
 __attribute__((used)) static void socket_add_read(void *privdata)
 {

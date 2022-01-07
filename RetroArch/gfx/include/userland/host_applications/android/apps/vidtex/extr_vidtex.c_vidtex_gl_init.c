@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  texture; int /*<<< orphan*/  context; int /*<<< orphan*/  surface; int /*<<< orphan*/  display; } ;
-typedef  TYPE_1__ VIDTEX_T ;
-typedef  int EGLint ;
-typedef  int /*<<< orphan*/  EGLNativeWindowType ;
-typedef  int /*<<< orphan*/  EGLConfig ;
 
-/* Variables and functions */
- int EGL_BLUE_SIZE ; 
- int /*<<< orphan*/  EGL_DEFAULT_DISPLAY ; 
- int EGL_DEPTH_SIZE ; 
- int EGL_GREEN_SIZE ; 
- int EGL_NONE ; 
- int EGL_RED_SIZE ; 
- int /*<<< orphan*/  GL_DITHER ; 
- int /*<<< orphan*/  GL_FLAT ; 
- int /*<<< orphan*/  GL_SCISSOR_TEST ; 
- int /*<<< orphan*/  GL_TEXTURE_2D ; 
- int /*<<< orphan*/  GL_TEXTURE_EXTERNAL_OES ; 
- int /*<<< orphan*/  eglChooseConfig (int /*<<< orphan*/ ,int const*,int /*<<< orphan*/ *,int,int*) ; 
- int /*<<< orphan*/  eglCreateContext (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  eglCreateWindowSurface (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  eglGetDisplay (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  eglInitialize (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  eglMakeCurrent (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glDisable (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glEnable (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glGenTextures (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  glShadeModel (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vidtex_gl_term (TYPE_1__*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int texture; int context; int surface; int display; } ;
+typedef TYPE_1__ VIDTEX_T ;
+typedef int EGLint ;
+typedef int EGLNativeWindowType ;
+typedef int EGLConfig ;
+
+
+ int EGL_BLUE_SIZE ;
+ int EGL_DEFAULT_DISPLAY ;
+ int EGL_DEPTH_SIZE ;
+ int EGL_GREEN_SIZE ;
+ int EGL_NONE ;
+ int EGL_RED_SIZE ;
+ int GL_DITHER ;
+ int GL_FLAT ;
+ int GL_SCISSOR_TEST ;
+ int GL_TEXTURE_2D ;
+ int GL_TEXTURE_EXTERNAL_OES ;
+ int eglChooseConfig (int ,int const*,int *,int,int*) ;
+ int eglCreateContext (int ,int ,int *,int *) ;
+ int eglCreateWindowSurface (int ,int ,int ,int *) ;
+ int eglGetDisplay (int ) ;
+ int eglInitialize (int ,int ,int ) ;
+ int eglMakeCurrent (int ,int ,int ,int ) ;
+ int glDisable (int ) ;
+ int glEnable (int ) ;
+ int glGenTextures (int,int *) ;
+ int glShadeModel (int ) ;
+ int vidtex_gl_term (TYPE_1__*) ;
 
 __attribute__((used)) static int vidtex_gl_init(VIDTEX_T *vt, EGLNativeWindowType win)
 {
    const EGLint attribs[] =
    {
-      EGL_RED_SIZE,   8,
+      EGL_RED_SIZE, 8,
       EGL_GREEN_SIZE, 8,
-      EGL_BLUE_SIZE,  8,
+      EGL_BLUE_SIZE, 8,
       EGL_DEPTH_SIZE, 0,
       EGL_NONE
    };
@@ -59,8 +59,8 @@ __attribute__((used)) static int vidtex_gl_init(VIDTEX_T *vt, EGLNativeWindowTyp
 
    eglChooseConfig(vt->display, attribs, &config, 1, &num_configs);
 
-   vt->surface = eglCreateWindowSurface(vt->display, config, win, NULL);
-   vt->context = eglCreateContext(vt->display, config, NULL, NULL);
+   vt->surface = eglCreateWindowSurface(vt->display, config, win, ((void*)0));
+   vt->context = eglCreateContext(vt->display, config, ((void*)0), ((void*)0));
 
    if (!eglMakeCurrent(vt->display, vt->surface, vt->surface, vt->context))
    {

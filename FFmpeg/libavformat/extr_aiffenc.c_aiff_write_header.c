@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint64_t ;
+
+
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int uint64_t ;
 struct TYPE_12__ {int audio_stream_idx; void* ssnd; void* frames; void* form; } ;
-struct TYPE_11__ {scalar_t__ codec_type; scalar_t__ codec_tag; int block_align; int channels; int bits_per_coded_sample; int extradata_size; int /*<<< orphan*/  sample_rate; int /*<<< orphan*/  extradata; int /*<<< orphan*/  codec_id; scalar_t__ channel_layout; } ;
-struct TYPE_10__ {int nb_streams; TYPE_1__** streams; int /*<<< orphan*/ * pb; TYPE_4__* priv_data; } ;
+struct TYPE_11__ {scalar_t__ codec_type; scalar_t__ codec_tag; int block_align; int channels; int bits_per_coded_sample; int extradata_size; int sample_rate; int extradata; int codec_id; scalar_t__ channel_layout; } ;
+struct TYPE_10__ {int nb_streams; TYPE_1__** streams; int * pb; TYPE_4__* priv_data; } ;
 struct TYPE_9__ {TYPE_3__* codecpar; } ;
-typedef  TYPE_1__ AVStream ;
-typedef  int /*<<< orphan*/  AVIOContext ;
-typedef  TYPE_2__ AVFormatContext ;
-typedef  TYPE_3__ AVCodecParameters ;
-typedef  TYPE_4__ AIFFOutputContext ;
+typedef TYPE_1__ AVStream ;
+typedef int AVIOContext ;
+typedef TYPE_2__ AVFormatContext ;
+typedef TYPE_3__ AVCodecParameters ;
+typedef TYPE_4__ AIFFOutputContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- scalar_t__ AVMEDIA_TYPE_AUDIO ; 
- scalar_t__ AVMEDIA_TYPE_VIDEO ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  EINVAL ; 
- scalar_t__ MKTAG (char,char,char,char) ; 
- int UINT64_C (int) ; 
- int av_double2int (int /*<<< orphan*/ ) ; 
- int av_get_bits_per_sample (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_log (TYPE_2__*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  avio_flush (int /*<<< orphan*/ *) ; 
- void* avio_tell (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  avio_wb16 (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  avio_wb32 (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  avio_wb64 (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  avio_wl32 (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  avio_write (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  avpriv_set_pts_info (TYPE_1__*,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ff_mov_write_chan (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  ffio_wfourcc (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  put_meta (TYPE_2__*,char*,scalar_t__) ; 
+
+ int AVERROR (int ) ;
+ scalar_t__ AVMEDIA_TYPE_AUDIO ;
+ scalar_t__ AVMEDIA_TYPE_VIDEO ;
+ int AV_LOG_ERROR ;
+ int EINVAL ;
+ scalar_t__ MKTAG (char,char,char,char) ;
+ int UINT64_C (int) ;
+ int av_double2int (int ) ;
+ int av_get_bits_per_sample (int ) ;
+ int av_log (TYPE_2__*,int ,char*) ;
+ int avio_flush (int *) ;
+ void* avio_tell (int *) ;
+ int avio_wb16 (int *,int) ;
+ int avio_wb32 (int *,int) ;
+ int avio_wb64 (int *,int) ;
+ int avio_wl32 (int *,scalar_t__) ;
+ int avio_write (int *,int ,int) ;
+ int avpriv_set_pts_info (TYPE_1__*,int,int,int ) ;
+ int ff_mov_write_chan (int *,scalar_t__) ;
+ int ffio_wfourcc (int *,char*) ;
+ int put_meta (TYPE_2__*,char*,scalar_t__) ;
 
 __attribute__((used)) static int aiff_write_header(AVFormatContext *s)
 {
@@ -73,24 +73,24 @@ __attribute__((used)) static int aiff_write_header(AVFormatContext *s)
 
     par = s->streams[aiff->audio_stream_idx]->codecpar;
 
-    /* First verify if format is ok */
+
     if (!par->codec_tag)
         return AVERROR(EINVAL);
     if (par->codec_tag != MKTAG('N','O','N','E'))
         aifc = 1;
 
-    /* FORM AIFF header */
+
     ffio_wfourcc(pb, "FORM");
     aiff->form = avio_tell(pb);
-    avio_wb32(pb, 0);                    /* file length */
+    avio_wb32(pb, 0);
     ffio_wfourcc(pb, aifc ? "AIFC" : "AIFF");
 
-    if (aifc) { // compressed audio
+    if (aifc) {
         if (!par->block_align) {
             av_log(s, AV_LOG_ERROR, "block align not set\n");
             return AVERROR(EINVAL);
         }
-        /* Version chunk */
+
         ffio_wfourcc(pb, "FVER");
         avio_wb32(pb, 4);
         avio_wb32(pb, 0xA2805140);
@@ -102,18 +102,18 @@ __attribute__((used)) static int aiff_write_header(AVFormatContext *s)
         ff_mov_write_chan(pb, par->channel_layout);
     }
 
-    put_meta(s, "title",     MKTAG('N', 'A', 'M', 'E'));
-    put_meta(s, "author",    MKTAG('A', 'U', 'T', 'H'));
+    put_meta(s, "title", MKTAG('N', 'A', 'M', 'E'));
+    put_meta(s, "author", MKTAG('A', 'U', 'T', 'H'));
     put_meta(s, "copyright", MKTAG('(', 'c', ')', ' '));
-    put_meta(s, "comment",   MKTAG('A', 'N', 'N', 'O'));
+    put_meta(s, "comment", MKTAG('A', 'N', 'N', 'O'));
 
-    /* Common chunk */
+
     ffio_wfourcc(pb, "COMM");
-    avio_wb32(pb, aifc ? 24 : 18); /* size */
-    avio_wb16(pb, par->channels);  /* Number of channels */
+    avio_wb32(pb, aifc ? 24 : 18);
+    avio_wb16(pb, par->channels);
 
     aiff->frames = avio_tell(pb);
-    avio_wb32(pb, 0);              /* Number of frames */
+    avio_wb32(pb, 0);
 
     if (!par->bits_per_coded_sample)
         par->bits_per_coded_sample = av_get_bits_per_sample(par->codec_id);
@@ -124,7 +124,7 @@ __attribute__((used)) static int aiff_write_header(AVFormatContext *s)
     if (!par->block_align)
         par->block_align = (par->bits_per_coded_sample * par->channels) >> 3;
 
-    avio_wb16(pb, par->bits_per_coded_sample); /* Sample size */
+    avio_wb16(pb, par->bits_per_coded_sample);
 
     sample_rate = av_double2int(par->sample_rate);
     avio_wb16(pb, (sample_rate >> 52) + (16383 - 1023));
@@ -135,24 +135,24 @@ __attribute__((used)) static int aiff_write_header(AVFormatContext *s)
         avio_wb16(pb, 0);
     }
 
-    if (  (par->codec_tag == MKTAG('Q','D','M','2')
+    if ( (par->codec_tag == MKTAG('Q','D','M','2')
         || par->codec_tag == MKTAG('Q','c','l','p')) && par->extradata_size) {
         ffio_wfourcc(pb, "wave");
         avio_wb32(pb, par->extradata_size);
         avio_write(pb, par->extradata, par->extradata_size);
     }
 
-    /* Sound data chunk */
+
     ffio_wfourcc(pb, "SSND");
-    aiff->ssnd = avio_tell(pb);         /* Sound chunk size */
-    avio_wb32(pb, 0);                    /* Sound samples data size */
-    avio_wb32(pb, 0);                    /* Data offset */
-    avio_wb32(pb, 0);                    /* Block-size (block align) */
+    aiff->ssnd = avio_tell(pb);
+    avio_wb32(pb, 0);
+    avio_wb32(pb, 0);
+    avio_wb32(pb, 0);
 
     avpriv_set_pts_info(s->streams[aiff->audio_stream_idx], 64, 1,
                         s->streams[aiff->audio_stream_idx]->codecpar->sample_rate);
 
-    /* Data is starting here */
+
     avio_flush(pb);
 
     return 0;

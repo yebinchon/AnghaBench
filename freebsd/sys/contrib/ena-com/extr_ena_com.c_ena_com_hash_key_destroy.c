@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ena_rss {int /*<<< orphan*/ * hash_key; int /*<<< orphan*/  hash_key_mem_handle; int /*<<< orphan*/  hash_key_dma_addr; } ;
-struct ena_com_dev {int /*<<< orphan*/  dmadev; struct ena_rss rss; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ENA_MEM_FREE_COHERENT (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct ena_rss {int * hash_key; int hash_key_mem_handle; int hash_key_dma_addr; } ;
+struct ena_com_dev {int dmadev; struct ena_rss rss; } ;
+
+
+ int ENA_MEM_FREE_COHERENT (int ,int,int *,int ,int ) ;
 
 __attribute__((used)) static void ena_com_hash_key_destroy(struct ena_com_dev *ena_dev)
 {
-	struct ena_rss *rss = &ena_dev->rss;
+ struct ena_rss *rss = &ena_dev->rss;
 
-	if (rss->hash_key)
-		ENA_MEM_FREE_COHERENT(ena_dev->dmadev,
-				      sizeof(*rss->hash_key),
-				      rss->hash_key,
-				      rss->hash_key_dma_addr,
-				      rss->hash_key_mem_handle);
-	rss->hash_key = NULL;
+ if (rss->hash_key)
+  ENA_MEM_FREE_COHERENT(ena_dev->dmadev,
+          sizeof(*rss->hash_key),
+          rss->hash_key,
+          rss->hash_key_dma_addr,
+          rss->hash_key_mem_handle);
+ rss->hash_key = ((void*)0);
 }

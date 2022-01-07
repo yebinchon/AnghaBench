@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_11__ {int /*<<< orphan*/  cbData; int /*<<< orphan*/  pbData; } ;
+
+
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+struct TYPE_11__ {int cbData; int pbData; } ;
 struct TYPE_13__ {int type; TYPE_1__ msg_data; } ;
-struct TYPE_12__ {int /*<<< orphan*/  Content; int /*<<< orphan*/  pszObjId; } ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  CRYPT_DER_BLOB ;
-typedef  TYPE_2__ CRYPT_CONTENT_INFO ;
-typedef  TYPE_3__ CDecodeMsg ;
-typedef  int /*<<< orphan*/  BOOL ;
+struct TYPE_12__ {int Content; int pszObjId; } ;
+typedef int DWORD ;
+typedef int CRYPT_DER_BLOB ;
+typedef TYPE_2__ CRYPT_CONTENT_INFO ;
+typedef TYPE_3__ CDecodeMsg ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CDecodeMsg_DecodeDataContent (TYPE_3__*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  CDecodeMsg_DecodeEnvelopedContent (TYPE_3__*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  CDecodeMsg_DecodeHashedContent (TYPE_3__*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  CDecodeMsg_DecodeSignedContent (TYPE_3__*,int /*<<< orphan*/  const*) ; 
-#define  CMSG_DATA 131 
-#define  CMSG_ENVELOPED 130 
-#define  CMSG_HASHED 129 
-#define  CMSG_SIGNED 128 
- int /*<<< orphan*/  CRYPT_DECODE_ALLOC_FLAG ; 
- int /*<<< orphan*/  CRYPT_E_INVALID_MSG_TYPE ; 
- int /*<<< orphan*/  CryptDecodeObjectEx (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,TYPE_2__**,int*) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  LocalFree (TYPE_2__*) ; 
- int /*<<< orphan*/  PKCS_CONTENT_INFO ; 
- int /*<<< orphan*/  SetLastError (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  X509_ASN_ENCODING ; 
- int /*<<< orphan*/  strcmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  szOID_RSA_data ; 
- int /*<<< orphan*/  szOID_RSA_digestedData ; 
- int /*<<< orphan*/  szOID_RSA_envelopedData ; 
- int /*<<< orphan*/  szOID_RSA_signedData ; 
+
+ int CDecodeMsg_DecodeDataContent (TYPE_3__*,int const*) ;
+ int CDecodeMsg_DecodeEnvelopedContent (TYPE_3__*,int const*) ;
+ int CDecodeMsg_DecodeHashedContent (TYPE_3__*,int const*) ;
+ int CDecodeMsg_DecodeSignedContent (TYPE_3__*,int const*) ;
+
+
+
+
+ int CRYPT_DECODE_ALLOC_FLAG ;
+ int CRYPT_E_INVALID_MSG_TYPE ;
+ int CryptDecodeObjectEx (int ,int ,int ,int ,int ,int *,TYPE_2__**,int*) ;
+ int FALSE ;
+ int LocalFree (TYPE_2__*) ;
+ int PKCS_CONTENT_INFO ;
+ int SetLastError (int ) ;
+ int X509_ASN_ENCODING ;
+ int strcmp (int ,int ) ;
+ int szOID_RSA_data ;
+ int szOID_RSA_digestedData ;
+ int szOID_RSA_envelopedData ;
+ int szOID_RSA_signedData ;
 
 __attribute__((used)) static BOOL CDecodeMsg_DecodeContent(CDecodeMsg *msg, const CRYPT_DER_BLOB *blob,
  DWORD type)
@@ -52,21 +52,21 @@ __attribute__((used)) static BOOL CDecodeMsg_DecodeContent(CDecodeMsg *msg, cons
 
     switch (type)
     {
-    case CMSG_DATA:
+    case 131:
         if ((ret = CDecodeMsg_DecodeDataContent(msg, blob)))
-            msg->type = CMSG_DATA;
+            msg->type = 131;
         break;
-    case CMSG_HASHED:
+    case 129:
         if ((ret = CDecodeMsg_DecodeHashedContent(msg, blob)))
-            msg->type = CMSG_HASHED;
+            msg->type = 129;
         break;
-    case CMSG_ENVELOPED:
+    case 130:
         if ((ret = CDecodeMsg_DecodeEnvelopedContent(msg, blob)))
-            msg->type = CMSG_ENVELOPED;
+            msg->type = 130;
         break;
-    case CMSG_SIGNED:
+    case 128:
         if ((ret = CDecodeMsg_DecodeSignedContent(msg, blob)))
-            msg->type = CMSG_SIGNED;
+            msg->type = 128;
         break;
     default:
     {
@@ -75,20 +75,20 @@ __attribute__((used)) static BOOL CDecodeMsg_DecodeContent(CDecodeMsg *msg, cons
 
         ret = CryptDecodeObjectEx(X509_ASN_ENCODING, PKCS_CONTENT_INFO,
          msg->msg_data.pbData, msg->msg_data.cbData, CRYPT_DECODE_ALLOC_FLAG,
-         NULL, &info, &size);
+         ((void*)0), &info, &size);
         if (ret)
         {
             if (!strcmp(info->pszObjId, szOID_RSA_data))
-                ret = CDecodeMsg_DecodeContent(msg, &info->Content, CMSG_DATA);
+                ret = CDecodeMsg_DecodeContent(msg, &info->Content, 131);
             else if (!strcmp(info->pszObjId, szOID_RSA_digestedData))
                 ret = CDecodeMsg_DecodeContent(msg, &info->Content,
-                 CMSG_HASHED);
+                 129);
             else if (!strcmp(info->pszObjId, szOID_RSA_envelopedData))
                 ret = CDecodeMsg_DecodeContent(msg, &info->Content,
-                 CMSG_ENVELOPED);
+                 130);
             else if (!strcmp(info->pszObjId, szOID_RSA_signedData))
                 ret = CDecodeMsg_DecodeContent(msg, &info->Content,
-                 CMSG_SIGNED);
+                 128);
             else
             {
                 SetLastError(CRYPT_E_INVALID_MSG_TYPE);

@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  DisaGetEa (char*,int,int) ; 
- int /*<<< orphan*/  DisaText ; 
- int* Tasm ; 
- int /*<<< orphan*/  sprintf (int /*<<< orphan*/ ,char*,int,char*) ; 
+ int DisaGetEa (char*,int,int) ;
+ int DisaText ;
+ int* Tasm ;
+ int sprintf (int ,char*,int,char*) ;
 
 __attribute__((used)) static int DisaExt(int op)
 {
-  // Ext 01001000 1x000nnn (x=size, eeeeee=EA)
+
   char eat[64]="";
   int size=0;
 

@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int major; int minor; int EXT_swap_control; int SGI_swap_control; int MESA_swap_control; int ARB_multisample; int ARB_framebuffer_sRGB; int EXT_framebuffer_sRGB; int ARB_create_context; int ARB_create_context_robustness; int ARB_create_context_profile; int EXT_create_context_es2_profile; int ARB_context_flush_control; scalar_t__ CreateContextAttribsARB; scalar_t__ SwapIntervalMESA; scalar_t__ SwapIntervalSGI; scalar_t__ SwapIntervalEXT; int /*<<< orphan*/  eventBase; int /*<<< orphan*/  errorBase; int /*<<< orphan*/  handle; void* GetProcAddressARB; void* GetProcAddress; void* GetVisualFromFBConfig; void* CreateNewContext; void* QueryExtensionsString; void* SwapBuffers; void* MakeCurrent; void* DestroyContext; void* QueryVersion; void* QueryExtension; void* GetClientString; void* GetFBConfigAttrib; void* GetFBConfigs; } ;
-struct TYPE_4__ {int /*<<< orphan*/  display; } ;
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int major; int minor; int EXT_swap_control; int SGI_swap_control; int MESA_swap_control; int ARB_multisample; int ARB_framebuffer_sRGB; int EXT_framebuffer_sRGB; int ARB_create_context; int ARB_create_context_robustness; int ARB_create_context_profile; int EXT_create_context_es2_profile; int ARB_context_flush_control; scalar_t__ CreateContextAttribsARB; scalar_t__ SwapIntervalMESA; scalar_t__ SwapIntervalSGI; scalar_t__ SwapIntervalEXT; int eventBase; int errorBase; int handle; void* GetProcAddressARB; void* GetProcAddress; void* GetVisualFromFBConfig; void* CreateNewContext; void* QueryExtensionsString; void* SwapBuffers; void* MakeCurrent; void* DestroyContext; void* QueryVersion; void* QueryExtension; void* GetClientString; void* GetFBConfigAttrib; void* GetFBConfigs; } ;
+struct TYPE_4__ {int display; } ;
 struct TYPE_6__ {TYPE_2__ glx; TYPE_1__ x11; } ;
-typedef  scalar_t__ PFNGLXSWAPINTERVALSGIPROC ;
-typedef  scalar_t__ PFNGLXSWAPINTERVALMESAPROC ;
-typedef  scalar_t__ PFNGLXSWAPINTERVALEXTPROC ;
-typedef  scalar_t__ PFNGLXCREATECONTEXTATTRIBSARBPROC ;
+typedef scalar_t__ PFNGLXSWAPINTERVALSGIPROC ;
+typedef scalar_t__ PFNGLXSWAPINTERVALMESAPROC ;
+typedef scalar_t__ PFNGLXSWAPINTERVALEXTPROC ;
+typedef scalar_t__ PFNGLXCREATECONTEXTATTRIBSARBPROC ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GLFW_API_UNAVAILABLE ; 
- int GL_FALSE ; 
- int GL_TRUE ; 
- int RTLD_GLOBAL ; 
- int RTLD_LAZY ; 
- TYPE_3__ _glfw ; 
- int /*<<< orphan*/  _glfwCreateContextTLS () ; 
- int /*<<< orphan*/  _glfwInputError (int /*<<< orphan*/ ,char*,...) ; 
- scalar_t__ _glfwPlatformExtensionSupported (char*) ; 
- scalar_t__ _glfwPlatformGetProcAddress (char*) ; 
- int /*<<< orphan*/  _glfw_glXQueryExtension (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  _glfw_glXQueryVersion (int /*<<< orphan*/ ,int*,int*) ; 
- int /*<<< orphan*/  dlerror () ; 
- int /*<<< orphan*/  dlopen (char const*,int) ; 
- void* dlsym (int /*<<< orphan*/ ,char*) ; 
+
+ int GLFW_API_UNAVAILABLE ;
+ int GL_FALSE ;
+ int GL_TRUE ;
+ int RTLD_GLOBAL ;
+ int RTLD_LAZY ;
+ TYPE_3__ _glfw ;
+ int _glfwCreateContextTLS () ;
+ int _glfwInputError (int ,char*,...) ;
+ scalar_t__ _glfwPlatformExtensionSupported (char*) ;
+ scalar_t__ _glfwPlatformGetProcAddress (char*) ;
+ int _glfw_glXQueryExtension (int ,int *,int *) ;
+ int _glfw_glXQueryVersion (int ,int*,int*) ;
+ int dlerror () ;
+ int dlopen (char const*,int) ;
+ void* dlsym (int ,char*) ;
 
 int _glfwInitContextAPI(void)
 {
-#if defined(__CYGWIN__)
-    const char* soname = "libGL-1.so";
-#else
+
+
+
     const char* soname = "libGL.so.1";
-#endif
+
 
     if (!_glfwCreateContextTLS())
         return GL_FALSE;

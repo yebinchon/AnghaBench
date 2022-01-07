@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int FLAC__bool ;
 
-/* Variables and functions */
+
+
+
+typedef int FLAC__bool ;
+
+
 
 FLAC__bool FLAC__format_blocksize_is_subset(unsigned blocksize, unsigned sample_rate)
 {
-	if(blocksize > 16384)
-		return false;
-	else if(sample_rate <= 48000 && blocksize > 4608)
-		return false;
-	else
-		return true;
+ if(blocksize > 16384)
+  return 0;
+ else if(sample_rate <= 48000 && blocksize > 4608)
+  return 0;
+ else
+  return 1;
 }

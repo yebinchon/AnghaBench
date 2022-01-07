@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  signal_user_data_t ;
-typedef  int gboolean ;
-typedef  int /*<<< orphan*/  GhbValue ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  audio_deps (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  block_updates ; 
- int /*<<< orphan*/  free (char*) ; 
- char* get_drc_string (double) ; 
- char* get_gain_string (double) ; 
- double get_quality (int,double) ; 
- char* get_quality_string (int,double) ; 
- int ghb_audio_quality_enabled (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * ghb_bool_value_new (int) ; 
- double ghb_dict_get_double (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/ * ghb_dict_get_value (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/ * ghb_double_value (double) ; 
- int ghb_settings_audio_encoder_codec (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/ * ghb_string_value (char*) ; 
- int /*<<< orphan*/  ghb_ui_update (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int signal_user_data_t ;
+typedef int gboolean ;
+typedef int GhbValue ;
+
+
+ int FALSE ;
+ int TRUE ;
+ int audio_deps (int *,int *,int *) ;
+ int block_updates ;
+ int free (char*) ;
+ char* get_drc_string (double) ;
+ char* get_gain_string (double) ;
+ double get_quality (int,double) ;
+ char* get_quality_string (int,double) ;
+ int ghb_audio_quality_enabled (int *) ;
+ int * ghb_bool_value_new (int) ;
+ double ghb_dict_get_double (int *,char*) ;
+ int * ghb_dict_get_value (int *,char*) ;
+ int * ghb_double_value (double) ;
+ int ghb_settings_audio_encoder_codec (int *,char*) ;
+ int * ghb_string_value (char*) ;
+ int ghb_ui_update (int *,char*,int *) ;
 
 __attribute__((used)) static void
 audio_update_dialog_widgets(signal_user_data_t *ud, GhbValue *asettings)
 {
-    if (asettings != NULL)
+    if (asettings != ((void*)0))
     {
         double gain, drc, quality, qualityx;
         char *s_gain, *s_drc, *s_quality;
@@ -50,7 +50,7 @@ audio_update_dialog_widgets(signal_user_data_t *ud, GhbValue *asettings)
         ghb_ui_update(ud, "AudioBitrate",
                       ghb_dict_get_value(asettings, "Bitrate"));
         GhbValue *val = ghb_dict_get_value(asettings, "Name");
-        if (val != NULL)
+        if (val != ((void*)0))
         {
             ghb_ui_update(ud, "AudioTrackName", val);
         }
@@ -81,8 +81,8 @@ audio_update_dialog_widgets(signal_user_data_t *ud, GhbValue *asettings)
         s_quality = get_quality_string(codec, quality);
         ghb_ui_update(ud, "AudioTrackQualityValue", ghb_string_value(s_quality));
         free(s_quality);
-        // Setting a radio button to FALSE does not automatically make
-        // the other one TRUE
+
+
         qe = ghb_audio_quality_enabled(asettings);
         if (qe)
         {
@@ -96,5 +96,5 @@ audio_update_dialog_widgets(signal_user_data_t *ud, GhbValue *asettings)
         }
         block_updates = FALSE;
     }
-    audio_deps(ud, asettings, NULL);
+    audio_deps(ud, asettings, ((void*)0));
 }

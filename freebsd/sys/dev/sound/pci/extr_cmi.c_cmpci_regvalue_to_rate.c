@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u_int32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEB (int /*<<< orphan*/ ) ; 
- int* cmi_rates ; 
- int /*<<< orphan*/  printf (char*,int,int) ; 
+
+
+
+typedef int u_int32_t ;
+
+
+ int DEB (int ) ;
+ int* cmi_rates ;
+ int printf (char*,int,int) ;
 
 __attribute__((used)) static int
 cmpci_regvalue_to_rate(u_int32_t r)
 {
-	int i;
+ int i;
 
-	i = ((r << 1) | (r >> 2)) & 0x07;
-	DEB(printf("cmpci_regvalue_to_rate: %d -> %d\n", r, i));
-	return cmi_rates[i];
+ i = ((r << 1) | (r >> 2)) & 0x07;
+ DEB(printf("cmpci_regvalue_to_rate: %d -> %d\n", r, i));
+ return cmi_rates[i];
 }

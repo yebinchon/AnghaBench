@@ -1,32 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int MAX_ISOPATHNAME ; 
- int /*<<< orphan*/  cdio_assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (char*) ; 
- int iso9660_dirname_valid_p (char*) ; 
- scalar_t__ iso9660_is_dchar (char const) ; 
- char* strdup (char const*) ; 
- int strlen (char const*) ; 
- char* strrchr (char const*,char) ; 
+ int MAX_ISOPATHNAME ;
+ int cdio_assert (int ) ;
+ int free (char*) ;
+ int iso9660_dirname_valid_p (char*) ;
+ scalar_t__ iso9660_is_dchar (char const) ;
+ char* strdup (char const*) ;
+ int strlen (char const*) ;
+ char* strrchr (char const*,char) ;
 
 bool
 iso9660_pathname_valid_p (const char pathname[])
 {
-  const char *p = NULL;
+  const char *p = ((void*)0);
 
-  cdio_assert (pathname != NULL);
+  cdio_assert (pathname != ((void*)0));
 
   if ((p = strrchr (pathname, '/')))
     {
@@ -40,7 +32,7 @@ iso9660_pathname_valid_p (const char pathname[])
       free (_tmp);
 
       if (!rc)
-        return false;
+        return 0;
 
       p++;
     }
@@ -48,7 +40,7 @@ iso9660_pathname_valid_p (const char pathname[])
     p = pathname;
 
   if (strlen (pathname) > (MAX_ISOPATHNAME - 6))
-    return false;
+    return 0;
 
   {
     int len = 0;
@@ -59,23 +51,23 @@ iso9660_pathname_valid_p (const char pathname[])
         {
           len++;
           if (dots == 0 ? len > 8 : len > 3)
-            return false;
+            return 0;
         }
       else if (*p == '.')
         {
           dots++;
           if (dots > 1)
-            return false;
+            return 0;
           if (!len)
-            return false;
+            return 0;
           len = 0;
         }
       else
-        return false;
+        return 0;
 
     if (dots != 1)
-      return false;
+      return 0;
   }
 
-  return true;
+  return 1;
 }

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int bytes; int /*<<< orphan*/  packet; } ;
-typedef  TYPE_1__ ogg_packet ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int bytes; int packet; } ;
+typedef TYPE_1__ ogg_packet ;
 struct TYPE_7__ {int extradata_size; scalar_t__ extradata; } ;
-typedef  TYPE_2__ AVCodecContext ;
+typedef TYPE_2__ AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_WB16 (scalar_t__,int) ; 
- int /*<<< orphan*/  av_log (TYPE_2__*,int /*<<< orphan*/ ,char*,char const*) ; 
- int av_reallocp (scalar_t__*,int) ; 
- int /*<<< orphan*/  memcpy (scalar_t__,int /*<<< orphan*/ ,int) ; 
+
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ int AV_WB16 (scalar_t__,int) ;
+ int av_log (TYPE_2__*,int ,char*,char const*) ;
+ int av_reallocp (scalar_t__*,int) ;
+ int memcpy (scalar_t__,int ,int) ;
 
 __attribute__((used)) static int concatenate_packet(unsigned int* offset,
                               AVCodecContext* avc_context,
                               const ogg_packet* packet)
 {
-    const char* message = NULL;
+    const char* message = ((void*)0);
     int newsize = avc_context->extradata_size + 2 + packet->bytes;
     int err = AVERROR_INVALIDDATA;
 

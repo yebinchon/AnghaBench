@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  jerry_value_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  JERRY_INIT_EMPTY ; 
- int /*<<< orphan*/  TEST_ASSERT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  freeze_property (int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  jerry_cleanup () ; 
- int /*<<< orphan*/  jerry_create_object () ; 
- int /*<<< orphan*/  jerry_get_global_object () ; 
- int /*<<< orphan*/  jerry_init (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jerry_release_value (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jerry_value_is_error (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jerryx_set_property_str (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int jerry_value_t ;
+
+
+ int JERRY_INIT_EMPTY ;
+ int TEST_ASSERT (int ) ;
+ int freeze_property (int ,char const*) ;
+ int jerry_cleanup () ;
+ int jerry_create_object () ;
+ int jerry_get_global_object () ;
+ int jerry_init (int ) ;
+ int jerry_release_value (int ) ;
+ int jerry_value_is_error (int ) ;
+ int jerryx_set_property_str (int ,char const*,int ) ;
 
 __attribute__((used)) static void
 test_error_setvalue (void)

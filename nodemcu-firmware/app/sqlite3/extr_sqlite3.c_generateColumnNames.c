@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_21__   TYPE_7__ ;
-typedef  struct TYPE_20__   TYPE_6__ ;
-typedef  struct TYPE_19__   TYPE_5__ ;
-typedef  struct TYPE_18__   TYPE_4__ ;
-typedef  struct TYPE_17__   TYPE_3__ ;
-typedef  struct TYPE_16__   TYPE_2__ ;
-typedef  struct TYPE_15__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_21__ TYPE_7__ ;
+typedef struct TYPE_20__ TYPE_6__ ;
+typedef struct TYPE_19__ TYPE_5__ ;
+typedef struct TYPE_18__ TYPE_4__ ;
+typedef struct TYPE_17__ TYPE_3__ ;
+typedef struct TYPE_16__ TYPE_2__ ;
+typedef struct TYPE_15__ TYPE_1__ ;
+
+
 struct TYPE_17__ {int flags; scalar_t__ mallocFailed; } ;
-typedef  TYPE_3__ sqlite3 ;
-typedef  int /*<<< orphan*/  Vdbe ;
-struct TYPE_18__ {int iPKey; int nCol; int /*<<< orphan*/  zName; TYPE_1__* aCol; } ;
-typedef  TYPE_4__ Table ;
-struct TYPE_21__ {scalar_t__ op; int iColumn; int /*<<< orphan*/  iTable; } ;
+typedef TYPE_3__ sqlite3 ;
+typedef int Vdbe ;
+struct TYPE_18__ {int iPKey; int nCol; int zName; TYPE_1__* aCol; } ;
+typedef TYPE_4__ Table ;
+struct TYPE_21__ {scalar_t__ op; int iColumn; int iTable; } ;
 struct TYPE_20__ {int nExpr; TYPE_2__* a; } ;
-struct TYPE_19__ {int colNamesSet; scalar_t__ explain; TYPE_3__* db; int /*<<< orphan*/ * pVdbe; } ;
+struct TYPE_19__ {int colNamesSet; scalar_t__ explain; TYPE_3__* db; int * pVdbe; } ;
 struct TYPE_16__ {char* zName; char const* zSpan; TYPE_7__* pExpr; } ;
 struct TYPE_15__ {char* zName; } ;
-typedef  int /*<<< orphan*/  SrcList ;
-typedef  TYPE_5__ Parse ;
-typedef  TYPE_6__ ExprList ;
-typedef  TYPE_7__ Expr ;
+typedef int SrcList ;
+typedef TYPE_5__ Parse ;
+typedef TYPE_6__ ExprList ;
+typedef TYPE_7__ Expr ;
 
-/* Variables and functions */
- int /*<<< orphan*/  COLNAME_NAME ; 
- scalar_t__ NEVER (int) ; 
- int /*<<< orphan*/  SQLITE_DYNAMIC ; 
- int SQLITE_FullColNames ; 
- int SQLITE_ShortColNames ; 
- int /*<<< orphan*/  SQLITE_TRANSIENT ; 
- scalar_t__ TK_AGG_COLUMN ; 
- scalar_t__ TK_COLUMN ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  generateColumnTypes (TYPE_5__*,int /*<<< orphan*/ *,TYPE_6__*) ; 
- char const* sqlite3DbStrDup (TYPE_3__*,char const*) ; 
- char const* sqlite3MPrintf (TYPE_3__*,char*,int,...) ; 
- int /*<<< orphan*/  sqlite3VdbeSetColName (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3VdbeSetNumCols (int /*<<< orphan*/ *,int) ; 
- TYPE_4__* tableWithCursor (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int COLNAME_NAME ;
+ scalar_t__ NEVER (int) ;
+ int SQLITE_DYNAMIC ;
+ int SQLITE_FullColNames ;
+ int SQLITE_ShortColNames ;
+ int SQLITE_TRANSIENT ;
+ scalar_t__ TK_AGG_COLUMN ;
+ scalar_t__ TK_COLUMN ;
+ int assert (int) ;
+ int generateColumnTypes (TYPE_5__*,int *,TYPE_6__*) ;
+ char const* sqlite3DbStrDup (TYPE_3__*,char const*) ;
+ char const* sqlite3MPrintf (TYPE_3__*,char*,int,...) ;
+ int sqlite3VdbeSetColName (int *,int,int ,char const*,int ) ;
+ int sqlite3VdbeSetNumCols (int *,int) ;
+ TYPE_4__* tableWithCursor (int *,int ) ;
 
 __attribute__((used)) static void generateColumnNames(
-  Parse *pParse,      /* Parser context */
-  SrcList *pTabList,  /* List of tables */
-  ExprList *pEList    /* Expressions defining the result set */
+  Parse *pParse,
+  SrcList *pTabList,
+  ExprList *pEList
 ){
   Vdbe *v = pParse->pVdbe;
   int i;
@@ -60,12 +60,12 @@ __attribute__((used)) static void generateColumnNames(
   sqlite3 *db = pParse->db;
   int fullNames, shortNames;
 
-#ifndef SQLITE_OMIT_EXPLAIN
-  /* If this is an EXPLAIN, skip this step */
+
+
   if( pParse->explain ){
     return;
   }
-#endif
+
 
   if( pParse->colNamesSet || db->mallocFailed ) return;
   assert( v!=0 );

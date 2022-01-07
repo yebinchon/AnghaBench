@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u16 ;
+
+
+
+
+typedef int u16 ;
 struct niu {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  XMAC_HASH_TBL (int) ; 
- int /*<<< orphan*/  nw64_mac (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int XMAC_HASH_TBL (int) ;
+ int nw64_mac (int ,int ) ;
 
 __attribute__((used)) static void niu_load_hash_xmac(struct niu *np, u16 *hash)
 {
-	int i;
+ int i;
 
-	for (i = 0; i < 16; i++)
-		nw64_mac(XMAC_HASH_TBL(i), hash[i]);
+ for (i = 0; i < 16; i++)
+  nw64_mac(XMAC_HASH_TBL(i), hash[i]);
 }

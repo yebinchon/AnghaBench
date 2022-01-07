@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ULONG_PTR ;
-struct TYPE_3__ {int lbStyle; int /*<<< orphan*/  lbHatch; } ;
-typedef  TYPE_1__ LOGBRUSH ;
-typedef  int /*<<< orphan*/  HGDIOBJ ;
-typedef  int /*<<< orphan*/  GpStatus ;
 
-/* Variables and functions */
-#define  BS_PATTERN 128 
- int /*<<< orphan*/  DeleteObject (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Ok ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int ULONG_PTR ;
+struct TYPE_3__ {int lbStyle; int lbHatch; } ;
+typedef TYPE_1__ LOGBRUSH ;
+typedef int HGDIOBJ ;
+typedef int GpStatus ;
+
+
+
+ int DeleteObject (int ) ;
+ int Ok ;
 
 __attribute__((used)) static GpStatus free_gdi_logbrush(LOGBRUSH *lb)
 {
     switch (lb->lbStyle)
     {
-        case BS_PATTERN:
+        case 128:
             DeleteObject((HGDIOBJ)(ULONG_PTR)lb->lbHatch);
             break;
     }

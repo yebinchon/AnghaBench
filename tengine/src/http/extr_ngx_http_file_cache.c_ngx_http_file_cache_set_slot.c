@@ -1,99 +1,99 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_32__   TYPE_9__ ;
-typedef  struct TYPE_31__   TYPE_8__ ;
-typedef  struct TYPE_30__   TYPE_7__ ;
-typedef  struct TYPE_29__   TYPE_6__ ;
-typedef  struct TYPE_28__   TYPE_5__ ;
-typedef  struct TYPE_27__   TYPE_4__ ;
-typedef  struct TYPE_26__   TYPE_3__ ;
-typedef  struct TYPE_25__   TYPE_2__ ;
-typedef  struct TYPE_24__   TYPE_22__ ;
-typedef  struct TYPE_23__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char u_char ;
-typedef  int time_t ;
-typedef  scalar_t__ ssize_t ;
-typedef  scalar_t__ off_t ;
-typedef  size_t ngx_uint_t ;
+
+
+typedef struct TYPE_32__ TYPE_9__ ;
+typedef struct TYPE_31__ TYPE_8__ ;
+typedef struct TYPE_30__ TYPE_7__ ;
+typedef struct TYPE_29__ TYPE_6__ ;
+typedef struct TYPE_28__ TYPE_5__ ;
+typedef struct TYPE_27__ TYPE_4__ ;
+typedef struct TYPE_26__ TYPE_3__ ;
+typedef struct TYPE_25__ TYPE_2__ ;
+typedef struct TYPE_24__ TYPE_22__ ;
+typedef struct TYPE_23__ TYPE_1__ ;
+
+
+typedef char u_char ;
+typedef int time_t ;
+typedef scalar_t__ ssize_t ;
+typedef scalar_t__ off_t ;
+typedef size_t ngx_uint_t ;
 struct TYPE_28__ {int len; char* data; } ;
-typedef  TYPE_5__ ngx_str_t ;
-typedef  int /*<<< orphan*/  ngx_path_t ;
-typedef  void* ngx_msec_t ;
-typedef  scalar_t__ ngx_int_t ;
+typedef TYPE_5__ ngx_str_t ;
+typedef int ngx_path_t ;
+typedef void* ngx_msec_t ;
+typedef scalar_t__ ngx_int_t ;
 struct TYPE_29__ {size_t use_temp_path; int inactive; scalar_t__ max_size; TYPE_9__* shm_zone; TYPE_22__* path; void* manager_threshold; void* manager_sleep; scalar_t__ manager_files; void* loader_threshold; void* loader_sleep; scalar_t__ loader_files; } ;
-typedef  TYPE_6__ ngx_http_file_cache_t ;
-struct TYPE_30__ {TYPE_4__* conf_file; TYPE_1__* args; int /*<<< orphan*/  cycle; int /*<<< orphan*/  pool; } ;
-typedef  TYPE_7__ ngx_conf_t ;
-struct TYPE_31__ {int offset; int /*<<< orphan*/  post; TYPE_5__ name; } ;
-typedef  TYPE_8__ ngx_command_t ;
-typedef  int /*<<< orphan*/  ngx_array_t ;
-struct TYPE_32__ {TYPE_6__* data; int /*<<< orphan*/  init; } ;
-struct TYPE_25__ {int /*<<< orphan*/  data; } ;
+typedef TYPE_6__ ngx_http_file_cache_t ;
+struct TYPE_30__ {TYPE_4__* conf_file; TYPE_1__* args; int cycle; int pool; } ;
+typedef TYPE_7__ ngx_conf_t ;
+struct TYPE_31__ {int offset; int post; TYPE_5__ name; } ;
+typedef TYPE_8__ ngx_command_t ;
+typedef int ngx_array_t ;
+struct TYPE_32__ {TYPE_6__* data; int init; } ;
+struct TYPE_25__ {int data; } ;
 struct TYPE_26__ {TYPE_2__ name; } ;
-struct TYPE_27__ {int /*<<< orphan*/  line; TYPE_3__ file; } ;
-struct TYPE_24__ {int len; int /*<<< orphan*/  line; int /*<<< orphan*/  conf_file; TYPE_6__* data; int /*<<< orphan*/  loader; int /*<<< orphan*/  manager; scalar_t__* level; TYPE_5__ name; } ;
+struct TYPE_27__ {int line; TYPE_3__ file; } ;
+struct TYPE_24__ {int len; int line; int conf_file; TYPE_6__* data; int loader; int manager; scalar_t__* level; TYPE_5__ name; } ;
 struct TYPE_23__ {size_t nelts; TYPE_5__* elts; } ;
 
-/* Variables and functions */
- char* NGX_CONF_ERROR ; 
- char* NGX_CONF_OK ; 
- scalar_t__ NGX_ERROR ; 
- int /*<<< orphan*/  NGX_LOG_EMERG ; 
- scalar_t__ NGX_MAX_OFF_T_VALUE ; 
- size_t NGX_MAX_PATH_LEVEL ; 
- scalar_t__ NGX_OK ; 
- scalar_t__ ngx_add_path (TYPE_7__*,TYPE_22__**) ; 
- TYPE_6__** ngx_array_push (int /*<<< orphan*/ *) ; 
- scalar_t__ ngx_atoi (char*,int) ; 
- scalar_t__ ngx_conf_full_name (int /*<<< orphan*/ ,TYPE_5__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_conf_log_error (int /*<<< orphan*/ ,TYPE_7__*,int /*<<< orphan*/ ,char*,TYPE_5__*) ; 
- int /*<<< orphan*/  ngx_http_file_cache_init ; 
- int /*<<< orphan*/  ngx_http_file_cache_loader ; 
- int /*<<< orphan*/  ngx_http_file_cache_manager ; 
- int ngx_pagesize ; 
- scalar_t__ ngx_parse_offset (TYPE_5__*) ; 
- scalar_t__ ngx_parse_size (TYPE_5__*) ; 
- void* ngx_parse_time (TYPE_5__*,int) ; 
- void* ngx_pcalloc (int /*<<< orphan*/ ,int) ; 
- TYPE_9__* ngx_shared_memory_add (TYPE_7__*,TYPE_5__*,scalar_t__,int /*<<< orphan*/ ) ; 
- scalar_t__ ngx_strchr (char*,char) ; 
- scalar_t__ ngx_strcmp (char*,char*) ; 
- scalar_t__ ngx_strncmp (char*,char*,int) ; 
+
+ char* NGX_CONF_ERROR ;
+ char* NGX_CONF_OK ;
+ scalar_t__ NGX_ERROR ;
+ int NGX_LOG_EMERG ;
+ scalar_t__ NGX_MAX_OFF_T_VALUE ;
+ size_t NGX_MAX_PATH_LEVEL ;
+ scalar_t__ NGX_OK ;
+ scalar_t__ ngx_add_path (TYPE_7__*,TYPE_22__**) ;
+ TYPE_6__** ngx_array_push (int *) ;
+ scalar_t__ ngx_atoi (char*,int) ;
+ scalar_t__ ngx_conf_full_name (int ,TYPE_5__*,int ) ;
+ int ngx_conf_log_error (int ,TYPE_7__*,int ,char*,TYPE_5__*) ;
+ int ngx_http_file_cache_init ;
+ int ngx_http_file_cache_loader ;
+ int ngx_http_file_cache_manager ;
+ int ngx_pagesize ;
+ scalar_t__ ngx_parse_offset (TYPE_5__*) ;
+ scalar_t__ ngx_parse_size (TYPE_5__*) ;
+ void* ngx_parse_time (TYPE_5__*,int) ;
+ void* ngx_pcalloc (int ,int) ;
+ TYPE_9__* ngx_shared_memory_add (TYPE_7__*,TYPE_5__*,scalar_t__,int ) ;
+ scalar_t__ ngx_strchr (char*,char) ;
+ scalar_t__ ngx_strcmp (char*,char*) ;
+ scalar_t__ ngx_strncmp (char*,char*,int) ;
 
 char *
 ngx_http_file_cache_set_slot(ngx_conf_t *cf, ngx_command_t *cmd, void *conf)
 {
-    char  *confp = conf;
+    char *confp = conf;
 
-    off_t                   max_size;
-    u_char                 *last, *p;
-    time_t                  inactive;
-    ssize_t                 size;
-    ngx_str_t               s, name, *value;
-    ngx_int_t               loader_files, manager_files;
-    ngx_msec_t              loader_sleep, manager_sleep, loader_threshold,
+    off_t max_size;
+    u_char *last, *p;
+    time_t inactive;
+    ssize_t size;
+    ngx_str_t s, name, *value;
+    ngx_int_t loader_files, manager_files;
+    ngx_msec_t loader_sleep, manager_sleep, loader_threshold,
                             manager_threshold;
-    ngx_uint_t              i, n, use_temp_path;
-    ngx_array_t            *caches;
-    ngx_http_file_cache_t  *cache, **ce;
+    ngx_uint_t i, n, use_temp_path;
+    ngx_array_t *caches;
+    ngx_http_file_cache_t *cache, **ce;
 
     cache = ngx_pcalloc(cf->pool, sizeof(ngx_http_file_cache_t));
-    if (cache == NULL) {
+    if (cache == ((void*)0)) {
         return NGX_CONF_ERROR;
     }
 
     cache->path = ngx_pcalloc(cf->pool, sizeof(ngx_path_t));
-    if (cache->path == NULL) {
+    if (cache->path == ((void*)0)) {
         return NGX_CONF_ERROR;
     }
 
@@ -189,7 +189,7 @@ ngx_http_file_cache_set_slot(ngx_conf_t *cf, ngx_command_t *cmd, void *conf)
 
             p = (u_char *) ngx_strchr(name.data, ':');
 
-            if (p == NULL) {
+            if (p == ((void*)0)) {
                 ngx_conf_log_error(NGX_LOG_EMERG, cf, 0,
                                    "invalid keys zone size \"%V\"", &value[i]);
                 return NGX_CONF_ERROR;
@@ -360,7 +360,7 @@ ngx_http_file_cache_set_slot(ngx_conf_t *cf, ngx_command_t *cmd, void *conf)
     }
 
     cache->shm_zone = ngx_shared_memory_add(cf, &name, size, cmd->post);
-    if (cache->shm_zone == NULL) {
+    if (cache->shm_zone == ((void*)0)) {
         return NGX_CONF_ERROR;
     }
 
@@ -382,7 +382,7 @@ ngx_http_file_cache_set_slot(ngx_conf_t *cf, ngx_command_t *cmd, void *conf)
     caches = (ngx_array_t *) (confp + cmd->offset);
 
     ce = ngx_array_push(caches);
-    if (ce == NULL) {
+    if (ce == ((void*)0)) {
         return NGX_CONF_ERROR;
     }
 

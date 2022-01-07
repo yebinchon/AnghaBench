@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wchar_t ;
-typedef  int /*<<< orphan*/  tmp2 ;
-typedef  int /*<<< orphan*/  tmp ;
-struct TYPE_5__ {int /*<<< orphan*/  (* Write ) (TYPE_1__*,int /*<<< orphan*/ *) ;} ;
-typedef  TYPE_1__ CONSOLE ;
 
-/* Variables and functions */
- scalar_t__ IsEmptyUniStr (int /*<<< orphan*/ *) ; 
- int IsFileExistsW (int /*<<< orphan*/ *) ; 
- int MAX_PATH ; 
- int MAX_SIZE ; 
- int /*<<< orphan*/  UniFormat (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  UniStrCpy (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * _UU (char*) ; 
- int /*<<< orphan*/  stub1 (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub2 (TYPE_1__*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int wchar_t ;
+typedef int tmp2 ;
+typedef int tmp ;
+struct TYPE_5__ {int (* Write ) (TYPE_1__*,int *) ;} ;
+typedef TYPE_1__ CONSOLE ;
+
+
+ scalar_t__ IsEmptyUniStr (int *) ;
+ int IsFileExistsW (int *) ;
+ int MAX_PATH ;
+ int MAX_SIZE ;
+ int UniFormat (int *,int,int *,int *) ;
+ int UniStrCpy (int *,int,int *) ;
+ int * _UU (char*) ;
+ int stub1 (TYPE_1__*,int *) ;
+ int stub2 (TYPE_1__*,int *) ;
 
 bool CmdEvalIsFile(CONSOLE *c, wchar_t *str, void *param)
 {
-	wchar_t tmp[MAX_PATH];
-	// Validate arguments
-	if (c == NULL || str == NULL)
-	{
-		return false;
-	}
+ wchar_t tmp[MAX_PATH];
 
-	UniStrCpy(tmp, sizeof(tmp), str);
+ if (c == ((void*)0) || str == ((void*)0))
+ {
+  return 0;
+ }
 
-	if (IsEmptyUniStr(tmp))
-	{
-		c->Write(c, _UU("CMD_FILE_NAME_EMPTY"));
-		return false;
-	}
+ UniStrCpy(tmp, sizeof(tmp), str);
 
-	if (IsFileExistsW(tmp) == false)
-	{
-		wchar_t tmp2[MAX_SIZE];
+ if (IsEmptyUniStr(tmp))
+ {
+  c->Write(c, _UU("CMD_FILE_NAME_EMPTY"));
+  return 0;
+ }
 
-		UniFormat(tmp2, sizeof(tmp2), _UU("CMD_FILE_NOT_FOUND"), tmp);
-		c->Write(c, tmp2);
+ if (IsFileExistsW(tmp) == 0)
+ {
+  wchar_t tmp2[MAX_SIZE];
 
-		return false;
-	}
+  UniFormat(tmp2, sizeof(tmp2), _UU("CMD_FILE_NOT_FOUND"), tmp);
+  c->Write(c, tmp2);
 
-	return true;
+  return 0;
+ }
+
+ return 1;
 }

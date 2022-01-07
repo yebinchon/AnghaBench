@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  scalar_t__ uint64_t ;
-struct TYPE_5__ {size_t buflen; int /*<<< orphan*/  const* buf; } ;
-typedef  TYPE_1__ blake2b_state ;
 
-/* Variables and functions */
- int BLAKE2B_BLOCKBYTES ; 
- int /*<<< orphan*/  blake2b_compress (TYPE_1__*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  blake2b_increment_counter (TYPE_1__*,int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,scalar_t__) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef scalar_t__ uint64_t ;
+struct TYPE_5__ {size_t buflen; int const* buf; } ;
+typedef TYPE_1__ blake2b_state ;
+
+
+ int BLAKE2B_BLOCKBYTES ;
+ int blake2b_compress (TYPE_1__*,int const*) ;
+ int blake2b_increment_counter (TYPE_1__*,int) ;
+ int memcpy (int const*,int const*,scalar_t__) ;
 
 int
 blake2b_update(blake2b_state *S, const uint8_t *in, uint64_t inlen)
@@ -30,19 +30,19 @@ blake2b_update(blake2b_state *S, const uint8_t *in, uint64_t inlen)
         size_t fill = 2 * BLAKE2B_BLOCKBYTES - left;
 
         if (inlen > fill) {
-            memcpy(S->buf + left, in, fill); /* Fill buffer */
+            memcpy(S->buf + left, in, fill);
             S->buflen += fill;
             blake2b_increment_counter(S, BLAKE2B_BLOCKBYTES);
-            blake2b_compress(S, S->buf); /* Compress */
+            blake2b_compress(S, S->buf);
             memcpy(S->buf, S->buf + BLAKE2B_BLOCKBYTES,
-                   BLAKE2B_BLOCKBYTES); /* Shift buffer left */
+                   BLAKE2B_BLOCKBYTES);
             S->buflen -= BLAKE2B_BLOCKBYTES;
             in += fill;
             inlen -= fill;
-        } else /* inlen <= fill */
+        } else
         {
             memcpy(S->buf + left, in, inlen);
-            S->buflen += inlen; /* Be lazy, do not compress */
+            S->buflen += inlen;
             in += inlen;
             inlen -= inlen;
         }

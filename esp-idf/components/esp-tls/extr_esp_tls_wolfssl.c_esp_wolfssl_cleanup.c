@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ priv_ctx; scalar_t__ priv_ssl; } ;
-typedef  TYPE_1__ esp_tls_t ;
-typedef  int /*<<< orphan*/  WOLFSSL_CTX ;
-typedef  int /*<<< orphan*/  WOLFSSL ;
+typedef TYPE_1__ esp_tls_t ;
+typedef int WOLFSSL_CTX ;
+typedef int WOLFSSL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  wolfSSL_CTX_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  wolfSSL_Cleanup () ; 
- int /*<<< orphan*/  wolfSSL_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  wolfSSL_shutdown (int /*<<< orphan*/ *) ; 
+
+ int wolfSSL_CTX_free (int *) ;
+ int wolfSSL_Cleanup () ;
+ int wolfSSL_free (int *) ;
+ int wolfSSL_shutdown (int *) ;
 
 void esp_wolfssl_cleanup(esp_tls_t *tls)
 {

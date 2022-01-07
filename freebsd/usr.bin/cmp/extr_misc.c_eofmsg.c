@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  DIFF_EXIT ; 
- int /*<<< orphan*/  exit (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sflag ; 
- int /*<<< orphan*/  warnx (char*,char const*) ; 
+ int DIFF_EXIT ;
+ int exit (int ) ;
+ int sflag ;
+ int warnx (char*,char const*) ;
 
 void
 eofmsg(const char *file)
 {
-	if (!sflag)
-		warnx("EOF on %s", file);
-	exit(DIFF_EXIT);
+ if (!sflag)
+  warnx("EOF on %s", file);
+ exit(DIFF_EXIT);
 }

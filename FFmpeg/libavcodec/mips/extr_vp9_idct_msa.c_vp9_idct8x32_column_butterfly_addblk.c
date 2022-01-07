@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  v8i16 ;
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int int32_t ;
-typedef  int /*<<< orphan*/  int16_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ADD4 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LD_SH (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SRARI_H4_SH (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  SUB4 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  VP9_ADDBLK_ST8x4_UB (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int v8i16 ;
+typedef int uint8_t ;
+typedef int int32_t ;
+typedef int int16_t ;
+
+
+ int ADD4 (int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ) ;
+ int LD_SH (int *) ;
+ int SRARI_H4_SH (int ,int ,int ,int ,int) ;
+ int SUB4 (int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ) ;
+ int VP9_ADDBLK_ST8x4_UB (int *,int,int ,int ,int ,int ) ;
 
 __attribute__((used)) static void vp9_idct8x32_column_butterfly_addblk(int16_t *tmp_eve_buf,
                                                  int16_t *tmp_odd_buf,
@@ -30,7 +30,7 @@ __attribute__((used)) static void vp9_idct8x32_column_butterfly_addblk(int16_t *
     v8i16 vec0, vec1, vec2, vec3, loc0, loc1, loc2, loc3;
     v8i16 m0, m1, m2, m3, m4, m5, m6, m7, n0, n1, n2, n3, n4, n5, n6, n7;
 
-    /* FINAL BUTTERFLY : Dependency on Even & Odd */
+
     vec0 = LD_SH(tmp_odd_buf);
     vec1 = LD_SH(tmp_odd_buf + 9 * 8);
     vec2 = LD_SH(tmp_odd_buf + 14 * 8);
@@ -49,7 +49,7 @@ __attribute__((used)) static void vp9_idct8x32_column_butterfly_addblk(int16_t *
     VP9_ADDBLK_ST8x4_UB((dst + 19 * dst_stride), (4 * dst_stride),
                         m0, m2, m4, m6);
 
-    /* Load 8 & Store 8 */
+
     vec0 = LD_SH(tmp_odd_buf + 4 * 8);
     vec1 = LD_SH(tmp_odd_buf + 13 * 8);
     vec2 = LD_SH(tmp_odd_buf + 10 * 8);
@@ -69,7 +69,7 @@ __attribute__((used)) static void vp9_idct8x32_column_butterfly_addblk(int16_t *
     VP9_ADDBLK_ST8x4_UB((dst + 17 * dst_stride), (4 * dst_stride),
                         m1, m3, m5, m7);
 
-    /* Load 8 & Store 8 */
+
     vec0 = LD_SH(tmp_odd_buf + 2 * 8);
     vec1 = LD_SH(tmp_odd_buf + 11 * 8);
     vec2 = LD_SH(tmp_odd_buf + 12 * 8);
@@ -89,7 +89,7 @@ __attribute__((used)) static void vp9_idct8x32_column_butterfly_addblk(int16_t *
     VP9_ADDBLK_ST8x4_UB((dst + 18 * dst_stride), (4 * dst_stride),
                         n0, n2, n4, n6);
 
-    /* Load 8 & Store 8 */
+
     vec0 = LD_SH(tmp_odd_buf + 5 * 8);
     vec1 = LD_SH(tmp_odd_buf + 15 * 8);
     vec2 = LD_SH(tmp_odd_buf + 8 * 8);

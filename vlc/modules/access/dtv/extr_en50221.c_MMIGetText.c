@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_3__ {int /*<<< orphan*/  obj; } ;
-typedef  TYPE_1__ cam_t ;
 
-/* Variables and functions */
- int AOT_TEXT_LAST ; 
- int /*<<< orphan*/ * APDUGetLength (int /*<<< orphan*/ *,int*) ; 
- int APDUGetTag (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  msg_Err (int /*<<< orphan*/ ,char*,int) ; 
- char* strdup (char*) ; 
- char* vlc_from_EIT (int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_3__ {int obj; } ;
+typedef TYPE_1__ cam_t ;
+
+
+ int AOT_TEXT_LAST ;
+ int * APDUGetLength (int *,int*) ;
+ int APDUGetTag (int *,int) ;
+ int msg_Err (int ,char*,int) ;
+ char* strdup (char*) ;
+ char* vlc_from_EIT (int *,int) ;
 
 __attribute__((used)) static char *MMIGetText( cam_t *p_cam, uint8_t **pp_apdu, int *pi_size )
 {

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uchar ;
-typedef  int /*<<< orphan*/  PortAddr ;
 
-/* Variables and functions */
- scalar_t__ AscHostReqRiscHalt (int /*<<< orphan*/ ) ; 
- int AscSetChipSynRegAtID (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AscStartChip (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uchar ;
+typedef int PortAddr ;
+
+
+ scalar_t__ AscHostReqRiscHalt (int ) ;
+ int AscSetChipSynRegAtID (int ,int ,int ) ;
+ int AscStartChip (int ) ;
 
 __attribute__((used)) static bool
 AscSetRunChipSynRegAtID(PortAddr iop_base, uchar tid_no, uchar sdtr_data)
 {
-	bool sta = false;
+ bool sta = 0;
 
-	if (AscHostReqRiscHalt(iop_base)) {
-		sta = AscSetChipSynRegAtID(iop_base, tid_no, sdtr_data);
-		AscStartChip(iop_base);
-	}
-	return sta;
+ if (AscHostReqRiscHalt(iop_base)) {
+  sta = AscSetChipSynRegAtID(iop_base, tid_no, sdtr_data);
+  AscStartChip(iop_base);
+ }
+ return sta;
 }

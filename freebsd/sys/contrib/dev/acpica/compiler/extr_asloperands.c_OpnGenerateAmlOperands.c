@@ -1,52 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_2__ ;
-typedef  struct TYPE_15__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_16__ TYPE_2__ ;
+typedef struct TYPE_15__ TYPE_1__ ;
+
+
 struct TYPE_15__ {scalar_t__ AmlOpcode; int ParseOpcode; } ;
 struct TYPE_16__ {TYPE_1__ Asl; } ;
-typedef  TYPE_2__ ACPI_PARSE_OBJECT ;
+typedef TYPE_2__ ACPI_PARSE_OBJECT ;
 
-/* Variables and functions */
- scalar_t__ AML_RAW_DATA_BYTE ; 
- int /*<<< orphan*/  OpnAttachNameToNode (TYPE_2__*) ; 
- int /*<<< orphan*/  OpnDoBankField (TYPE_2__*) ; 
- int /*<<< orphan*/  OpnDoBuffer (TYPE_2__*) ; 
- int /*<<< orphan*/  OpnDoDefinitionBlock (TYPE_2__*) ; 
- int /*<<< orphan*/  OpnDoField (TYPE_2__*) ; 
- int /*<<< orphan*/  OpnDoIndexField (TYPE_2__*) ; 
- int /*<<< orphan*/  OpnDoLoadTable (TYPE_2__*) ; 
- int /*<<< orphan*/  OpnDoMethod (TYPE_2__*) ; 
- int /*<<< orphan*/  OpnDoMutex (TYPE_2__*) ; 
- int /*<<< orphan*/  OpnDoRegion (TYPE_2__*) ; 
-#define  PARSEOP_BANKFIELD 141 
-#define  PARSEOP_BUFFER 140 
-#define  PARSEOP_DEFINITION_BLOCK 139 
-#define  PARSEOP_FIELD 138 
-#define  PARSEOP_INDEXFIELD 137 
-#define  PARSEOP_LOADTABLE 136 
-#define  PARSEOP_METHOD 135 
-#define  PARSEOP_METHODCALL 134 
-#define  PARSEOP_MUTEX 133 
-#define  PARSEOP_NAMESEG 132 
-#define  PARSEOP_NAMESTRING 131 
-#define  PARSEOP_OPERATIONREGION 130 
-#define  PARSEOP_RESOURCETEMPLATE 129 
-#define  PARSEOP_STRING_LITERAL 128 
- int /*<<< orphan*/  RsDoResourceTemplate (TYPE_2__*) ; 
+
+ scalar_t__ AML_RAW_DATA_BYTE ;
+ int OpnAttachNameToNode (TYPE_2__*) ;
+ int OpnDoBankField (TYPE_2__*) ;
+ int OpnDoBuffer (TYPE_2__*) ;
+ int OpnDoDefinitionBlock (TYPE_2__*) ;
+ int OpnDoField (TYPE_2__*) ;
+ int OpnDoIndexField (TYPE_2__*) ;
+ int OpnDoLoadTable (TYPE_2__*) ;
+ int OpnDoMethod (TYPE_2__*) ;
+ int OpnDoMutex (TYPE_2__*) ;
+ int OpnDoRegion (TYPE_2__*) ;
+ int RsDoResourceTemplate (TYPE_2__*) ;
 
 void
 OpnGenerateAmlOperands (
-    ACPI_PARSE_OBJECT       *Op)
+    ACPI_PARSE_OBJECT *Op)
 {
 
 
@@ -57,66 +43,66 @@ OpnGenerateAmlOperands (
 
     switch (Op->Asl.ParseOpcode)
     {
-    case PARSEOP_DEFINITION_BLOCK:
+    case 139:
 
         OpnDoDefinitionBlock (Op);
         break;
 
-    case PARSEOP_METHOD:
+    case 135:
 
         OpnDoMethod (Op);
         break;
 
-    case PARSEOP_MUTEX:
+    case 133:
 
         OpnDoMutex (Op);
         break;
 
-    case PARSEOP_FIELD:
+    case 138:
 
         OpnDoField (Op);
         break;
 
-    case PARSEOP_INDEXFIELD:
+    case 137:
 
         OpnDoIndexField (Op);
         break;
 
-    case PARSEOP_BANKFIELD:
+    case 141:
 
         OpnDoBankField (Op);
         break;
 
-    case PARSEOP_BUFFER:
+    case 140:
 
         OpnDoBuffer (Op);
         break;
 
-    case PARSEOP_LOADTABLE:
+    case 136:
 
         OpnDoLoadTable (Op);
         break;
 
-    case PARSEOP_OPERATIONREGION:
+    case 130:
 
         OpnDoRegion (Op);
         break;
 
-    case PARSEOP_RESOURCETEMPLATE:
+    case 129:
 
         RsDoResourceTemplate (Op);
         break;
 
-    case PARSEOP_NAMESEG:
-    case PARSEOP_NAMESTRING:
-    case PARSEOP_METHODCALL:
-    case PARSEOP_STRING_LITERAL:
+    case 132:
+    case 131:
+    case 134:
+    case 128:
     default:
 
         break;
     }
 
-    /* TBD: move */
+
 
     OpnAttachNameToNode (Op);
 }

@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {scalar_t__ dwCheckPoint; scalar_t__ dwCurrentState; int dwWaitHint; int /*<<< orphan*/  member_0; } ;
-typedef  TYPE_1__ SERVICE_STATUS_PROCESS ;
-typedef  int /*<<< orphan*/  SERVICE_STATUS ;
-typedef  int /*<<< orphan*/  SC_HANDLE ;
-typedef  int /*<<< orphan*/  LPWSTR ;
-typedef  int /*<<< orphan*/  LPBYTE ;
-typedef  scalar_t__ HWND ;
-typedef  scalar_t__ DWORD ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CloseServiceHandle (int /*<<< orphan*/ ) ; 
- scalar_t__ ControlService (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DEFAULT_STEP ; 
- scalar_t__ FALSE ; 
- scalar_t__ GetTickCount () ; 
- int /*<<< orphan*/  IncrementProgressBar (scalar_t__,int /*<<< orphan*/ ) ; 
- scalar_t__ MAX_WAIT_TIME ; 
- int /*<<< orphan*/  OpenSCManagerW (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OpenServiceW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- scalar_t__ QueryServiceStatusEx (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,scalar_t__*) ; 
- int /*<<< orphan*/  SC_MANAGER_CONNECT ; 
- int /*<<< orphan*/  SC_STATUS_PROCESS_INFO ; 
-#define  SERVICE_CONTROL_CONTINUE 129 
-#define  SERVICE_CONTROL_PAUSE 128 
- int SERVICE_INTERROGATE ; 
- scalar_t__ SERVICE_PAUSED ; 
- int SERVICE_PAUSE_CONTINUE ; 
- int SERVICE_QUERY_STATUS ; 
- scalar_t__ SERVICE_RUNNING ; 
- int /*<<< orphan*/  Sleep (int) ; 
- scalar_t__ TRUE ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {scalar_t__ dwCheckPoint; scalar_t__ dwCurrentState; int dwWaitHint; int member_0; } ;
+typedef TYPE_1__ SERVICE_STATUS_PROCESS ;
+typedef int SERVICE_STATUS ;
+typedef int SC_HANDLE ;
+typedef int LPWSTR ;
+typedef int LPBYTE ;
+typedef scalar_t__ HWND ;
+typedef scalar_t__ DWORD ;
+typedef scalar_t__ BOOL ;
+
+
+ int CloseServiceHandle (int ) ;
+ scalar_t__ ControlService (int ,scalar_t__,int *) ;
+ int DEFAULT_STEP ;
+ scalar_t__ FALSE ;
+ scalar_t__ GetTickCount () ;
+ int IncrementProgressBar (scalar_t__,int ) ;
+ scalar_t__ MAX_WAIT_TIME ;
+ int OpenSCManagerW (int *,int *,int ) ;
+ int OpenServiceW (int ,int ,int) ;
+ scalar_t__ QueryServiceStatusEx (int ,int ,int ,int,scalar_t__*) ;
+ int SC_MANAGER_CONNECT ;
+ int SC_STATUS_PROCESS_INFO ;
+
+
+ int SERVICE_INTERROGATE ;
+ scalar_t__ SERVICE_PAUSED ;
+ int SERVICE_PAUSE_CONTINUE ;
+ int SERVICE_QUERY_STATUS ;
+ scalar_t__ SERVICE_RUNNING ;
+ int Sleep (int) ;
+ scalar_t__ TRUE ;
 
 BOOL
 DoControlService(LPWSTR ServiceName,
@@ -61,22 +61,22 @@ DoControlService(LPWSTR ServiceName,
     DWORD ReqState, i;
     BOOL Result;
 
-    /* Set the state we're interested in */
+
     switch (Control)
     {
-        case SERVICE_CONTROL_PAUSE:
+        case 128:
             ReqState = SERVICE_PAUSED;
             break;
-        case SERVICE_CONTROL_CONTINUE:
+        case 129:
             ReqState = SERVICE_RUNNING;
             break;
         default:
-            /* Unhandled control code */
+
             return FALSE;
     }
 
-    hSCManager = OpenSCManagerW(NULL,
-                                NULL,
+    hSCManager = OpenSCManagerW(((void*)0),
+                                ((void*)0),
                                 SC_MANAGER_CONNECT);
     if (!hSCManager) return FALSE;
 
@@ -89,7 +89,7 @@ DoControlService(LPWSTR ServiceName,
         return FALSE;
     }
 
-        /* Send the control message to the service */
+
     Result = ControlService(hService,
                             Control,
                             &Status);
@@ -97,11 +97,11 @@ DoControlService(LPWSTR ServiceName,
     {
         if (hProgress)
         {
-            /* Increment the progress bar */
+
             IncrementProgressBar(hProgress, DEFAULT_STEP);
         }
 
-        /* Get the service status */
+
         Result = QueryServiceStatusEx(hService,
                                       SC_STATUS_PROCESS_INFO,
                                       (LPBYTE)&ServiceStatus,
@@ -114,51 +114,51 @@ DoControlService(LPWSTR ServiceName,
             OldCheckPoint = ServiceStatus.dwCheckPoint;
             StartTickCount = GetTickCount();
 
-            /* Loop until it's at the correct state */
+
             while (ServiceStatus.dwCurrentState != ReqState)
             {
-                /* Fixup the wait time */
+
                 WaitTime = ServiceStatus.dwWaitHint / 10;
 
                 if (WaitTime < 1000) WaitTime = 1000;
                 else if (WaitTime > 10000) WaitTime = 10000;
 
-                /* We don't wanna wait for up to 10 secs without incrementing */
+
                 for (i = WaitTime / 1000; i > 0; i--)
                 {
                     Sleep(1000);
                     if (hProgress)
                     {
-                        /* Increment the progress bar */
+
                         IncrementProgressBar(hProgress, DEFAULT_STEP);
                     }
                 }
 
-                /* Get the latest status info */
+
                 if (!QueryServiceStatusEx(hService,
                                             SC_STATUS_PROCESS_INFO,
                                             (LPBYTE)&ServiceStatus,
                                             sizeof(SERVICE_STATUS_PROCESS),
                                             &BytesNeeded))
                 {
-                    /* Something went wrong... */
+
                     break;
                 }
 
-                /* Is the service making progress? */
+
                 if (ServiceStatus.dwCheckPoint > OldCheckPoint)
                 {
-                    /* It is, get the latest tickcount to reset the max wait time */
+
                     StartTickCount = GetTickCount();
                     OldCheckPoint = ServiceStatus.dwCheckPoint;
                     IncrementProgressBar(hProgress, DEFAULT_STEP);
                 }
                 else
                 {
-                    /* It's not, make sure we haven't exceeded our wait time */
+
                     if(GetTickCount() >= StartTickCount + MaxWait)
                     {
-                        /* We have, give up */
+
                         break;
                     }
                 }

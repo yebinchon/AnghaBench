@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct shim_callbacks_baton {int /*<<< orphan*/  wc_ctx; int /*<<< orphan*/  relpath_map; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/ * apr_hash_make (int /*<<< orphan*/ *) ; 
- char* svn_hash_gets (int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  svn_wc_get_pristine_props (int /*<<< orphan*/ **,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int svn_revnum_t ;
+typedef int svn_error_t ;
+struct shim_callbacks_baton {int wc_ctx; int relpath_map; } ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
+
+
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int * apr_hash_make (int *) ;
+ char* svn_hash_gets (int ,char const*) ;
+ int svn_wc_get_pristine_props (int **,int ,char const*,int *,int *) ;
 
 __attribute__((used)) static svn_error_t *
 fetch_props_func(apr_hash_t **props,
@@ -41,7 +41,7 @@ fetch_props_func(apr_hash_t **props,
       return SVN_NO_ERROR;
     }
 
-  /* Reads the pristine properties of WORKING, not those of BASE */
+
   SVN_ERR(svn_wc_get_pristine_props(props, scb->wc_ctx, local_abspath,
                                     result_pool, scratch_pool));
 

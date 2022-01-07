@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct roff_meta {scalar_t__ macroset; TYPE_1__* first; } ;
 struct mparse {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/  child; } ;
+struct TYPE_2__ {int child; } ;
 
-/* Variables and functions */
- scalar_t__ MACROSET_MDOC ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  mparse_readfd (struct mparse*,int,char const*) ; 
- struct roff_meta* mparse_result (struct mparse*) ; 
- int /*<<< orphan*/  pman (int /*<<< orphan*/ ,int*,int*,int) ; 
- int /*<<< orphan*/  pmdoc (int /*<<< orphan*/ ,int*,int*,int) ; 
- int /*<<< orphan*/  putchar (char) ; 
+
+ scalar_t__ MACROSET_MDOC ;
+ int close (int) ;
+ int mparse_readfd (struct mparse*,int,char const*) ;
+ struct roff_meta* mparse_result (struct mparse*) ;
+ int pman (int ,int*,int*,int) ;
+ int pmdoc (int ,int*,int*,int) ;
+ int putchar (char) ;
 
 __attribute__((used)) static void
 pmandoc(struct mparse *mp, int fd, const char *fn, int list)
 {
-	struct roff_meta	*meta;
-	int		 line, col;
+ struct roff_meta *meta;
+ int line, col;
 
-	mparse_readfd(mp, fd, fn);
-	close(fd);
-	meta = mparse_result(mp);
-	line = 1;
-	col = 0;
+ mparse_readfd(mp, fd, fn);
+ close(fd);
+ meta = mparse_result(mp);
+ line = 1;
+ col = 0;
 
-	if (meta->macroset == MACROSET_MDOC)
-		pmdoc(meta->first->child, &line, &col, list);
-	else
-		pman(meta->first->child, &line, &col, list);
+ if (meta->macroset == MACROSET_MDOC)
+  pmdoc(meta->first->child, &line, &col, list);
+ else
+  pman(meta->first->child, &line, &col, list);
 
-	if ( ! list)
-		putchar('\n');
+ if ( ! list)
+  putchar('\n');
 }

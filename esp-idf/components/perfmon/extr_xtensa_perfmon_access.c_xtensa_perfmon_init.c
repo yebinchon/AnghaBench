@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  int uint16_t ;
-typedef  int /*<<< orphan*/  int32_t ;
-typedef  int /*<<< orphan*/  esp_err_t ;
 
-/* Variables and functions */
- int ERI_PERFMON_MAX ; 
- scalar_t__ ERI_PERFMON_PM0 ; 
- scalar_t__ ERI_PERFMON_PMCTRL0 ; 
- int /*<<< orphan*/  ESP_ERR_INVALID_ARG ; 
- int /*<<< orphan*/  ESP_OK ; 
- int PMCTRL_KRNLCNT_SHIFT ; 
- int PMCTRL_MASK_MASK ; 
- int PMCTRL_MASK_SHIFT ; 
- int PMCTRL_SELECT_MASK ; 
- int PMCTRL_SELECT_SHIFT ; 
- int PMCTRL_TRACELEVEL_MASK ; 
- int PMCTRL_TRACELEVEL_SHIFT ; 
- int /*<<< orphan*/  eri_write (scalar_t__,int) ; 
+
+
+
+typedef int uint32_t ;
+typedef int uint16_t ;
+typedef int int32_t ;
+typedef int esp_err_t ;
+
+
+ int ERI_PERFMON_MAX ;
+ scalar_t__ ERI_PERFMON_PM0 ;
+ scalar_t__ ERI_PERFMON_PMCTRL0 ;
+ int ESP_ERR_INVALID_ARG ;
+ int ESP_OK ;
+ int PMCTRL_KRNLCNT_SHIFT ;
+ int PMCTRL_MASK_MASK ;
+ int PMCTRL_MASK_SHIFT ;
+ int PMCTRL_SELECT_MASK ;
+ int PMCTRL_SELECT_SHIFT ;
+ int PMCTRL_TRACELEVEL_MASK ;
+ int PMCTRL_TRACELEVEL_SHIFT ;
+ int eri_write (scalar_t__,int) ;
 
 esp_err_t xtensa_perfmon_init(int id, uint16_t select, uint16_t mask, int kernelcnt, int tracelevel)
 {

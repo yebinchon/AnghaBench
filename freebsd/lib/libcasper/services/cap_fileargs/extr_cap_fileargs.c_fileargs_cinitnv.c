@@ -1,69 +1,69 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  nvlist_t ;
-typedef  int /*<<< orphan*/  fileargs_t ;
-typedef  int /*<<< orphan*/  cap_channel_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cap_close (int /*<<< orphan*/ *) ; 
- int cap_limit_set (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * cap_service_open (int /*<<< orphan*/ *,char*) ; 
- int errno ; 
- int /*<<< orphan*/ * fileargs_create (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  nvlist_destroy (int /*<<< orphan*/ *) ; 
- int nvlist_get_number (int /*<<< orphan*/ *,char*) ; 
+
+
+
+typedef int nvlist_t ;
+typedef int fileargs_t ;
+typedef int cap_channel_t ;
+
+
+ int assert (int ) ;
+ int cap_close (int *) ;
+ int cap_limit_set (int *,int *) ;
+ int * cap_service_open (int *,char*) ;
+ int errno ;
+ int * fileargs_create (int *,int) ;
+ int nvlist_destroy (int *) ;
+ int nvlist_get_number (int *,char*) ;
 
 fileargs_t *
 fileargs_cinitnv(cap_channel_t *cas, nvlist_t *limits)
 {
-	cap_channel_t *chann;
-	fileargs_t *fa;
-	int serrno, ret;
-	int flags, operations;
+ cap_channel_t *chann;
+ fileargs_t *fa;
+ int serrno, ret;
+ int flags, operations;
 
-	assert(cas != NULL);
+ assert(cas != ((void*)0));
 
-	if (limits == NULL) {
-		return (fileargs_create(NULL, 0));
-	}
+ if (limits == ((void*)0)) {
+  return (fileargs_create(((void*)0), 0));
+ }
 
-	chann = NULL;
-	fa = NULL;
+ chann = ((void*)0);
+ fa = ((void*)0);
 
-	chann = cap_service_open(cas, "system.fileargs");
-	if (chann == NULL) {
-		nvlist_destroy(limits);
-		return (NULL);
-	}
+ chann = cap_service_open(cas, "system.fileargs");
+ if (chann == ((void*)0)) {
+  nvlist_destroy(limits);
+  return (((void*)0));
+ }
 
-	flags = nvlist_get_number(limits, "flags");
-	operations = nvlist_get_number(limits, "operations");
+ flags = nvlist_get_number(limits, "flags");
+ operations = nvlist_get_number(limits, "operations");
 
-	/* Limits are consumed no need to free them. */
-	ret = cap_limit_set(chann, limits);
-	if (ret < 0)
-		goto out;
 
-	fa = fileargs_create(chann, flags);
-	if (fa == NULL)
-		goto out;
+ ret = cap_limit_set(chann, limits);
+ if (ret < 0)
+  goto out;
 
-	return (fa);
+ fa = fileargs_create(chann, flags);
+ if (fa == ((void*)0))
+  goto out;
+
+ return (fa);
 out:
-	serrno = errno;
-	if (chann != NULL)
-		cap_close(chann);
-	errno = serrno;
-	return (NULL);
+ serrno = errno;
+ if (chann != ((void*)0))
+  cap_close(chann);
+ errno = serrno;
+ return (((void*)0));
 }

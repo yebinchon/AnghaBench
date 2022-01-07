@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct ra_swapchain {struct priv* priv; } ;
-struct priv {TYPE_1__* opts; int /*<<< orphan*/  swapchain; int /*<<< orphan*/  last_submit_qpc; } ;
-struct TYPE_5__ {int /*<<< orphan*/  QuadPart; } ;
-struct TYPE_4__ {int /*<<< orphan*/  sync_interval; } ;
-typedef  TYPE_2__ LARGE_INTEGER ;
+struct priv {TYPE_1__* opts; int swapchain; int last_submit_qpc; } ;
+struct TYPE_5__ {int QuadPart; } ;
+struct TYPE_4__ {int sync_interval; } ;
+typedef TYPE_2__ LARGE_INTEGER ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IDXGISwapChain_Present (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  QueryPerformanceCounter (TYPE_2__*) ; 
+
+ int IDXGISwapChain_Present (int ,int ,int ) ;
+ int QueryPerformanceCounter (TYPE_2__*) ;
 
 __attribute__((used)) static void d3d11_swap_buffers(struct ra_swapchain *sw)
 {

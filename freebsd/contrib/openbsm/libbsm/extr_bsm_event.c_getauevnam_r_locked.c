@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct au_event_ent {int /*<<< orphan*/  ae_name; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AUDIT_EVENT_FILE ; 
- int /*<<< orphan*/  AU_LINE_MAX ; 
- int /*<<< orphan*/ * eventfromstr (int /*<<< orphan*/ ,struct au_event_ent*) ; 
- int /*<<< orphan*/ * fgets (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/ * fp ; 
- int /*<<< orphan*/  linestr ; 
- int /*<<< orphan*/  setauevent_locked () ; 
- scalar_t__ strcmp (char const*,int /*<<< orphan*/ ) ; 
- char* strrchr (int /*<<< orphan*/ ,char) ; 
+
+
+
+struct au_event_ent {int ae_name; } ;
+
+
+ int AUDIT_EVENT_FILE ;
+ int AU_LINE_MAX ;
+ int * eventfromstr (int ,struct au_event_ent*) ;
+ int * fgets (int ,int ,int *) ;
+ int * fopen (int ,char*) ;
+ int * fp ;
+ int linestr ;
+ int setauevent_locked () ;
+ scalar_t__ strcmp (char const*,int ) ;
+ char* strrchr (int ,char) ;
 
 __attribute__((used)) static struct au_event_ent *
 getauevnam_r_locked(struct au_event_ent *e, const char *name)
 {
-	char *nl;
+ char *nl;
 
-	if (name == NULL)
-		return (NULL);
+ if (name == ((void*)0))
+  return (((void*)0));
 
-	/* Rewind to beginning of the file. */
-	setauevent_locked();
 
-	if ((fp == NULL) && ((fp = fopen(AUDIT_EVENT_FILE, "r")) == NULL))
-		return (NULL);
+ setauevent_locked();
 
-	while (fgets(linestr, AU_LINE_MAX, fp) != NULL) {
-		/* Remove new lines. */
-		if ((nl = strrchr(linestr, '\n')) != NULL)
-			*nl = '\0';
+ if ((fp == ((void*)0)) && ((fp = fopen(AUDIT_EVENT_FILE, "r")) == ((void*)0)))
+  return (((void*)0));
 
-		if (eventfromstr(linestr, e) != NULL) {
-			if (strcmp(name, e->ae_name) == 0)
-				return (e);
-		}
-	}
+ while (fgets(linestr, AU_LINE_MAX, fp) != ((void*)0)) {
 
-	return (NULL);
+  if ((nl = strrchr(linestr, '\n')) != ((void*)0))
+   *nl = '\0';
+
+  if (eventfromstr(linestr, e) != ((void*)0)) {
+   if (strcmp(name, e->ae_name) == 0)
+    return (e);
+  }
+ }
+
+ return (((void*)0));
 }

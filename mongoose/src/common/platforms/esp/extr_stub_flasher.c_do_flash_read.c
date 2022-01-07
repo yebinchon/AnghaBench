@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint32_t ;
+
+
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
 struct MD5Context {int dummy; } ;
-typedef  int /*<<< orphan*/  num_acked ;
-typedef  int /*<<< orphan*/  digest ;
-typedef  int /*<<< orphan*/  buf ;
+typedef int num_acked ;
+typedef int digest ;
+typedef int buf ;
 
-/* Variables and functions */
- int FLASH_SECTOR_SIZE ; 
- int /*<<< orphan*/  MD5Final (int /*<<< orphan*/ *,struct MD5Context*) ; 
- int /*<<< orphan*/  MD5Init (struct MD5Context*) ; 
- int /*<<< orphan*/  MD5Update (struct MD5Context*,int /*<<< orphan*/ *,int) ; 
- int SLIP_recv (int*,int) ; 
- scalar_t__ esp_rom_spiflash_read (int,int*,int) ; 
- int /*<<< orphan*/  send_packet (int /*<<< orphan*/ *,int) ; 
+
+ int FLASH_SECTOR_SIZE ;
+ int MD5Final (int *,struct MD5Context*) ;
+ int MD5Init (struct MD5Context*) ;
+ int MD5Update (struct MD5Context*,int *,int) ;
+ int SLIP_recv (int*,int) ;
+ scalar_t__ esp_rom_spiflash_read (int,int*,int) ;
+ int send_packet (int *,int) ;
 
 int do_flash_read(uint32_t addr, uint32_t len, uint32_t block_size,
                   uint32_t max_in_flight) {

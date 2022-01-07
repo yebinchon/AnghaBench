@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct wordent {int /*<<< orphan*/  next; } ;
 
-/* Variables and functions */
- int ALEFT ; 
- int /*<<< orphan*/  ERR_ALIASLOOP ; 
- int /*<<< orphan*/  HLEFT ; 
- scalar_t__ asyntax (int /*<<< orphan*/ ,struct wordent*) ; 
- int /*<<< orphan*/  hleft ; 
- int /*<<< orphan*/  stderror (int /*<<< orphan*/ ) ; 
+
+
+
+struct wordent {int next; } ;
+
+
+ int ALEFT ;
+ int ERR_ALIASLOOP ;
+ int HLEFT ;
+ scalar_t__ asyntax (int ,struct wordent*) ;
+ int hleft ;
+ int stderror (int ) ;
 
 void
 alias(struct wordent *lexp)
@@ -28,7 +28,7 @@ alias(struct wordent *lexp)
     aleft = ALEFT;
     hleft = HLEFT;
     do {
-	if (--aleft == 0)
-	    stderror(ERR_ALIASLOOP);
+ if (--aleft == 0)
+     stderror(ERR_ALIASLOOP);
     } while (asyntax(lexp->next, lexp) != 0);
 }

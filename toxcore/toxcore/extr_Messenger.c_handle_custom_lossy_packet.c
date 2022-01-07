@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t uint8_t ;
-typedef  int /*<<< orphan*/  uint16_t ;
-struct TYPE_9__ {int /*<<< orphan*/  lossy_packethandler_userdata; int /*<<< orphan*/  (* lossy_packethandler ) (TYPE_3__*,int,size_t const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;TYPE_2__* friendlist; } ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef size_t uint8_t ;
+typedef int uint16_t ;
+struct TYPE_9__ {int lossy_packethandler_userdata; int (* lossy_packethandler ) (TYPE_3__*,int,size_t const*,int ,int ) ;TYPE_2__* friendlist; } ;
 struct TYPE_8__ {TYPE_1__* lossy_rtp_packethandlers; } ;
-struct TYPE_7__ {int (* function ) (TYPE_3__*,int,size_t const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;int /*<<< orphan*/  object; } ;
-typedef  TYPE_3__ Messenger ;
+struct TYPE_7__ {int (* function ) (TYPE_3__*,int,size_t const*,int ,int ) ;int object; } ;
+typedef TYPE_3__ Messenger ;
 
-/* Variables and functions */
- size_t const PACKET_ID_LOSSY_RANGE_START ; 
- size_t const PACKET_LOSSY_AV_RESERVED ; 
- scalar_t__ friend_not_valid (TYPE_3__*,int) ; 
- int stub1 (TYPE_3__*,int,size_t const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub2 (TYPE_3__*,int,size_t const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ size_t const PACKET_ID_LOSSY_RANGE_START ;
+ size_t const PACKET_LOSSY_AV_RESERVED ;
+ scalar_t__ friend_not_valid (TYPE_3__*,int) ;
+ int stub1 (TYPE_3__*,int,size_t const*,int ,int ) ;
+ int stub2 (TYPE_3__*,int,size_t const*,int ,int ) ;
 
 __attribute__((used)) static int handle_custom_lossy_packet(void *object, int friend_num, const uint8_t *packet, uint16_t length)
 {

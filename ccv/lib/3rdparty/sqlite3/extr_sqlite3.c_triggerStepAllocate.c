@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-typedef  int /*<<< orphan*/  sqlite3 ;
-struct TYPE_6__ {char* zTarget; int /*<<< orphan*/  zSpan; int /*<<< orphan*/  op; } ;
-typedef  TYPE_1__ TriggerStep ;
-struct TYPE_7__ {scalar_t__ n; int /*<<< orphan*/  z; } ;
-typedef  TYPE_2__ Token ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memcpy (char*,int /*<<< orphan*/ ,scalar_t__) ; 
- TYPE_1__* sqlite3DbMallocZero (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  sqlite3Dequote (char*) ; 
- int /*<<< orphan*/  triggerSpanDup (int /*<<< orphan*/ *,char const*,char const*) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int u8 ;
+typedef int sqlite3 ;
+struct TYPE_6__ {char* zTarget; int zSpan; int op; } ;
+typedef TYPE_1__ TriggerStep ;
+struct TYPE_7__ {scalar_t__ n; int z; } ;
+typedef TYPE_2__ Token ;
+
+
+ int memcpy (char*,int ,scalar_t__) ;
+ TYPE_1__* sqlite3DbMallocZero (int *,scalar_t__) ;
+ int sqlite3Dequote (char*) ;
+ int triggerSpanDup (int *,char const*,char const*) ;
 
 __attribute__((used)) static TriggerStep *triggerStepAllocate(
-  sqlite3 *db,                /* Database connection */
-  u8 op,                      /* Trigger opcode */
-  Token *pName,               /* The target name */
-  const char *zStart,         /* Start of SQL text */
-  const char *zEnd            /* End of SQL text */
+  sqlite3 *db,
+  u8 op,
+  Token *pName,
+  const char *zStart,
+  const char *zEnd
 ){
   TriggerStep *pTriggerStep;
 

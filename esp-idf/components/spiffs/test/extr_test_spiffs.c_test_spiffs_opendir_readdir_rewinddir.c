@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct dirent {char* d_name; scalar_t__ d_type; } ;
-typedef  int /*<<< orphan*/  name_dir_inner_file ;
-typedef  int /*<<< orphan*/  name_dir_inner ;
-typedef  int /*<<< orphan*/  name_dir_file2 ;
-typedef  int /*<<< orphan*/  name_dir_file1 ;
-typedef  struct dirent DIR ;
+typedef int name_dir_inner_file ;
+typedef int name_dir_inner ;
+typedef int name_dir_file2 ;
+typedef int name_dir_file1 ;
+typedef struct dirent DIR ;
 
-/* Variables and functions */
- scalar_t__ DT_REG ; 
- int /*<<< orphan*/  TEST_ASSERT_EQUAL (int,int) ; 
- int /*<<< orphan*/  TEST_ASSERT_NOT_NULL (struct dirent*) ; 
- int /*<<< orphan*/  TEST_ASSERT_TRUE (int) ; 
- int /*<<< orphan*/  TEST_FAIL_MESSAGE (char*) ; 
- int closedir (struct dirent*) ; 
- struct dirent* opendir (char const*) ; 
- int /*<<< orphan*/  printf (char*,char*) ; 
- struct dirent* readdir (struct dirent*) ; 
- int /*<<< orphan*/  rewinddir (struct dirent*) ; 
- int /*<<< orphan*/  rmdir (char const*) ; 
- int /*<<< orphan*/  seekdir (struct dirent*,int) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,char const*) ; 
- int strcasecmp (char*,char const*) ; 
- int /*<<< orphan*/  test_spiffs_create_file_with_text (char*,char*) ; 
- int /*<<< orphan*/  unlink (char*) ; 
+
+ scalar_t__ DT_REG ;
+ int TEST_ASSERT_EQUAL (int,int) ;
+ int TEST_ASSERT_NOT_NULL (struct dirent*) ;
+ int TEST_ASSERT_TRUE (int) ;
+ int TEST_FAIL_MESSAGE (char*) ;
+ int closedir (struct dirent*) ;
+ struct dirent* opendir (char const*) ;
+ int printf (char*,char*) ;
+ struct dirent* readdir (struct dirent*) ;
+ int rewinddir (struct dirent*) ;
+ int rmdir (char const*) ;
+ int seekdir (struct dirent*,int) ;
+ int snprintf (char*,int,char*,char const*) ;
+ int strcasecmp (char*,char const*) ;
+ int test_spiffs_create_file_with_text (char*,char*) ;
+ int unlink (char*) ;
 
 void test_spiffs_opendir_readdir_rewinddir(const char* dir_prefix)
 {

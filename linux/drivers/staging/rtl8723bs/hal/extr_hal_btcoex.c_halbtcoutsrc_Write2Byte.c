@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
-typedef  int /*<<< orphan*/  u16 ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u32 ;
+typedef int u16 ;
 struct adapter {int dummy; } ;
 struct TYPE_2__ {struct adapter* Adapter; } ;
-typedef  TYPE_1__* PBTC_COEXIST ;
+typedef TYPE_1__* PBTC_COEXIST ;
 
-/* Variables and functions */
- int /*<<< orphan*/  rtw_write16 (struct adapter*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int rtw_write16 (struct adapter*,int ,int ) ;
 
 __attribute__((used)) static void halbtcoutsrc_Write2Byte(void *pBtcContext, u32 RegAddr, u16 Data)
 {
-	PBTC_COEXIST pBtCoexist;
-	struct adapter *padapter;
+ PBTC_COEXIST pBtCoexist;
+ struct adapter *padapter;
 
 
-	pBtCoexist = (PBTC_COEXIST)pBtcContext;
-	padapter = pBtCoexist->Adapter;
+ pBtCoexist = (PBTC_COEXIST)pBtcContext;
+ padapter = pBtCoexist->Adapter;
 
-	rtw_write16(padapter, RegAddr, Data);
+ rtw_write16(padapter, RegAddr, Data);
 }

@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct snd_compr {int /*<<< orphan*/  card; } ;
 
-/* Variables and functions */
- int EINVAL ; 
- int /*<<< orphan*/  pr_err (char*,int) ; 
- int snd_card_register (int /*<<< orphan*/ ) ; 
+
+
+
+struct snd_compr {int card; } ;
+
+
+ int EINVAL ;
+ int pr_err (char*,int) ;
+ int snd_card_register (int ) ;
 
 __attribute__((used)) static int snd_compress_add_device(struct snd_compr *device)
 {
-	int ret;
+ int ret;
 
-	if (!device->card)
-		return -EINVAL;
+ if (!device->card)
+  return -EINVAL;
 
-	/* register the card */
-	ret = snd_card_register(device->card);
-	if (ret)
-		goto out;
-	return 0;
+
+ ret = snd_card_register(device->card);
+ if (ret)
+  goto out;
+ return 0;
 
 out:
-	pr_err("failed with %d\n", ret);
-	return ret;
+ pr_err("failed with %d\n", ret);
+ return ret;
 
 }

@@ -1,102 +1,102 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct rsxx_cardinfo {int n_targets; int halt; int /*<<< orphan*/  disk_id; int /*<<< orphan*/  regmap; int /*<<< orphan*/  debugfs_dir; int /*<<< orphan*/  irq_lock; int /*<<< orphan*/  event_work; } ;
-struct pci_dev {int /*<<< orphan*/  irq; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CARD_TO_DEV (struct rsxx_cardinfo*) ; 
- int /*<<< orphan*/  CR_INTR_ALL ; 
- int /*<<< orphan*/  CR_INTR_DMA (int) ; 
- int /*<<< orphan*/  CR_INTR_EVENT ; 
- int /*<<< orphan*/  cancel_work_sync (int /*<<< orphan*/ *) ; 
- int card_shutdown (struct rsxx_cardinfo*) ; 
- int /*<<< orphan*/  debugfs_remove_recursive (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dev_crit (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  dev_info (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  force_legacy ; 
- int /*<<< orphan*/  free_irq (int /*<<< orphan*/ ,struct rsxx_cardinfo*) ; 
- int /*<<< orphan*/  ida_free (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kfree (struct rsxx_cardinfo*) ; 
- int /*<<< orphan*/  pci_disable_device (struct pci_dev*) ; 
- int /*<<< orphan*/  pci_disable_msi (struct pci_dev*) ; 
- struct rsxx_cardinfo* pci_get_drvdata (struct pci_dev*) ; 
- int /*<<< orphan*/  pci_iounmap (struct pci_dev*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pci_release_regions (struct pci_dev*) ; 
- int /*<<< orphan*/  rsxx_creg_destroy (struct rsxx_cardinfo*) ; 
- int /*<<< orphan*/  rsxx_destroy_dev (struct rsxx_cardinfo*) ; 
- int /*<<< orphan*/  rsxx_detach_dev (struct rsxx_cardinfo*) ; 
- int /*<<< orphan*/  rsxx_disable_ier_and_isr (struct rsxx_cardinfo*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rsxx_disk_ida ; 
- int /*<<< orphan*/  rsxx_dma_destroy (struct rsxx_cardinfo*) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
+
+
+
+struct rsxx_cardinfo {int n_targets; int halt; int disk_id; int regmap; int debugfs_dir; int irq_lock; int event_work; } ;
+struct pci_dev {int irq; } ;
+
+
+ int CARD_TO_DEV (struct rsxx_cardinfo*) ;
+ int CR_INTR_ALL ;
+ int CR_INTR_DMA (int) ;
+ int CR_INTR_EVENT ;
+ int cancel_work_sync (int *) ;
+ int card_shutdown (struct rsxx_cardinfo*) ;
+ int debugfs_remove_recursive (int ) ;
+ int dev_crit (int ,char*) ;
+ int dev_info (int ,char*) ;
+ int force_legacy ;
+ int free_irq (int ,struct rsxx_cardinfo*) ;
+ int ida_free (int *,int ) ;
+ int kfree (struct rsxx_cardinfo*) ;
+ int pci_disable_device (struct pci_dev*) ;
+ int pci_disable_msi (struct pci_dev*) ;
+ struct rsxx_cardinfo* pci_get_drvdata (struct pci_dev*) ;
+ int pci_iounmap (struct pci_dev*,int ) ;
+ int pci_release_regions (struct pci_dev*) ;
+ int rsxx_creg_destroy (struct rsxx_cardinfo*) ;
+ int rsxx_destroy_dev (struct rsxx_cardinfo*) ;
+ int rsxx_detach_dev (struct rsxx_cardinfo*) ;
+ int rsxx_disable_ier_and_isr (struct rsxx_cardinfo*,int ) ;
+ int rsxx_disk_ida ;
+ int rsxx_dma_destroy (struct rsxx_cardinfo*) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
 
 __attribute__((used)) static void rsxx_pci_remove(struct pci_dev *dev)
 {
-	struct rsxx_cardinfo *card = pci_get_drvdata(dev);
-	unsigned long flags;
-	int st;
-	int i;
+ struct rsxx_cardinfo *card = pci_get_drvdata(dev);
+ unsigned long flags;
+ int st;
+ int i;
 
-	if (!card)
-		return;
+ if (!card)
+  return;
 
-	dev_info(CARD_TO_DEV(card),
-		"Removing PCI-Flash SSD.\n");
+ dev_info(CARD_TO_DEV(card),
+  "Removing PCI-Flash SSD.\n");
 
-	rsxx_detach_dev(card);
+ rsxx_detach_dev(card);
 
-	for (i = 0; i < card->n_targets; i++) {
-		spin_lock_irqsave(&card->irq_lock, flags);
-		rsxx_disable_ier_and_isr(card, CR_INTR_DMA(i));
-		spin_unlock_irqrestore(&card->irq_lock, flags);
-	}
+ for (i = 0; i < card->n_targets; i++) {
+  spin_lock_irqsave(&card->irq_lock, flags);
+  rsxx_disable_ier_and_isr(card, CR_INTR_DMA(i));
+  spin_unlock_irqrestore(&card->irq_lock, flags);
+ }
 
-	st = card_shutdown(card);
-	if (st)
-		dev_crit(CARD_TO_DEV(card), "Shutdown failed!\n");
+ st = card_shutdown(card);
+ if (st)
+  dev_crit(CARD_TO_DEV(card), "Shutdown failed!\n");
 
-	/* Sync outstanding event handlers. */
-	spin_lock_irqsave(&card->irq_lock, flags);
-	rsxx_disable_ier_and_isr(card, CR_INTR_EVENT);
-	spin_unlock_irqrestore(&card->irq_lock, flags);
 
-	cancel_work_sync(&card->event_work);
+ spin_lock_irqsave(&card->irq_lock, flags);
+ rsxx_disable_ier_and_isr(card, CR_INTR_EVENT);
+ spin_unlock_irqrestore(&card->irq_lock, flags);
 
-	rsxx_destroy_dev(card);
-	rsxx_dma_destroy(card);
+ cancel_work_sync(&card->event_work);
 
-	spin_lock_irqsave(&card->irq_lock, flags);
-	rsxx_disable_ier_and_isr(card, CR_INTR_ALL);
-	spin_unlock_irqrestore(&card->irq_lock, flags);
+ rsxx_destroy_dev(card);
+ rsxx_dma_destroy(card);
 
-	/* Prevent work_structs from re-queuing themselves. */
-	card->halt = 1;
+ spin_lock_irqsave(&card->irq_lock, flags);
+ rsxx_disable_ier_and_isr(card, CR_INTR_ALL);
+ spin_unlock_irqrestore(&card->irq_lock, flags);
 
-	debugfs_remove_recursive(card->debugfs_dir);
 
-	free_irq(dev->irq, card);
+ card->halt = 1;
 
-	if (!force_legacy)
-		pci_disable_msi(dev);
+ debugfs_remove_recursive(card->debugfs_dir);
 
-	rsxx_creg_destroy(card);
+ free_irq(dev->irq, card);
 
-	pci_iounmap(dev, card->regmap);
+ if (!force_legacy)
+  pci_disable_msi(dev);
 
-	pci_disable_device(dev);
-	pci_release_regions(dev);
+ rsxx_creg_destroy(card);
 
-	ida_free(&rsxx_disk_ida, card->disk_id);
-	kfree(card);
+ pci_iounmap(dev, card->regmap);
+
+ pci_disable_device(dev);
+ pci_release_regions(dev);
+
+ ida_free(&rsxx_disk_ida, card->disk_id);
+ kfree(card);
 }

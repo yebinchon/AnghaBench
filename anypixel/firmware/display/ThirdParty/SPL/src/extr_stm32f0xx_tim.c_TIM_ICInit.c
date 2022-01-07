@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {scalar_t__ TIM_Channel; int /*<<< orphan*/  TIM_ICPrescaler; int /*<<< orphan*/  TIM_ICFilter; int /*<<< orphan*/  TIM_ICSelection; int /*<<< orphan*/  TIM_ICPolarity; } ;
-typedef  int /*<<< orphan*/  TIM_TypeDef ;
-typedef  TYPE_1__ TIM_ICInitTypeDef ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IS_TIM_CHANNEL (scalar_t__) ; 
- int /*<<< orphan*/  IS_TIM_IC_FILTER (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IS_TIM_IC_POLARITY (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IS_TIM_IC_PRESCALER (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IS_TIM_IC_SELECTION (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IS_TIM_LIST3_PERIPH (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IS_TIM_LIST4_PERIPH (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IS_TIM_LIST6_PERIPH (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TI1_Config (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TI2_Config (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TI3_Config (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TI4_Config (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ TIM_Channel_1 ; 
- scalar_t__ TIM_Channel_2 ; 
- scalar_t__ TIM_Channel_3 ; 
- int /*<<< orphan*/  TIM_SetIC1Prescaler (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TIM_SetIC2Prescaler (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TIM_SetIC3Prescaler (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TIM_SetIC4Prescaler (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert_param (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {scalar_t__ TIM_Channel; int TIM_ICPrescaler; int TIM_ICFilter; int TIM_ICSelection; int TIM_ICPolarity; } ;
+typedef int TIM_TypeDef ;
+typedef TYPE_1__ TIM_ICInitTypeDef ;
+
+
+ int IS_TIM_CHANNEL (scalar_t__) ;
+ int IS_TIM_IC_FILTER (int ) ;
+ int IS_TIM_IC_POLARITY (int ) ;
+ int IS_TIM_IC_PRESCALER (int ) ;
+ int IS_TIM_IC_SELECTION (int ) ;
+ int IS_TIM_LIST3_PERIPH (int *) ;
+ int IS_TIM_LIST4_PERIPH (int *) ;
+ int IS_TIM_LIST6_PERIPH (int *) ;
+ int TI1_Config (int *,int ,int ,int ) ;
+ int TI2_Config (int *,int ,int ,int ) ;
+ int TI3_Config (int *,int ,int ,int ) ;
+ int TI4_Config (int *,int ,int ,int ) ;
+ scalar_t__ TIM_Channel_1 ;
+ scalar_t__ TIM_Channel_2 ;
+ scalar_t__ TIM_Channel_3 ;
+ int TIM_SetIC1Prescaler (int *,int ) ;
+ int TIM_SetIC2Prescaler (int *,int ) ;
+ int TIM_SetIC3Prescaler (int *,int ) ;
+ int TIM_SetIC4Prescaler (int *,int ) ;
+ int assert_param (int ) ;
 
 void TIM_ICInit(TIM_TypeDef* TIMx, TIM_ICInitTypeDef* TIM_ICInitStruct)
 {
-  /* Check the parameters */
+
   assert_param(IS_TIM_LIST4_PERIPH(TIMx));
-  assert_param(IS_TIM_CHANNEL(TIM_ICInitStruct->TIM_Channel));  
+  assert_param(IS_TIM_CHANNEL(TIM_ICInitStruct->TIM_Channel));
   assert_param(IS_TIM_IC_SELECTION(TIM_ICInitStruct->TIM_ICSelection));
   assert_param(IS_TIM_IC_PRESCALER(TIM_ICInitStruct->TIM_ICPrescaler));
   assert_param(IS_TIM_IC_FILTER(TIM_ICInitStruct->TIM_ICFilter));
@@ -50,41 +50,41 @@ void TIM_ICInit(TIM_TypeDef* TIMx, TIM_ICInitTypeDef* TIM_ICInitStruct)
   if (TIM_ICInitStruct->TIM_Channel == TIM_Channel_1)
   {
     assert_param(IS_TIM_LIST4_PERIPH(TIMx));
-    /* TI1 Configuration */
+
     TI1_Config(TIMx, TIM_ICInitStruct->TIM_ICPolarity,
                TIM_ICInitStruct->TIM_ICSelection,
                TIM_ICInitStruct->TIM_ICFilter);
-    /* Set the Input Capture Prescaler value */
+
     TIM_SetIC1Prescaler(TIMx, TIM_ICInitStruct->TIM_ICPrescaler);
   }
   else if (TIM_ICInitStruct->TIM_Channel == TIM_Channel_2)
   {
     assert_param(IS_TIM_LIST6_PERIPH(TIMx));
-    /* TI2 Configuration */
+
     TI2_Config(TIMx, TIM_ICInitStruct->TIM_ICPolarity,
                TIM_ICInitStruct->TIM_ICSelection,
                TIM_ICInitStruct->TIM_ICFilter);
-    /* Set the Input Capture Prescaler value */
+
     TIM_SetIC2Prescaler(TIMx, TIM_ICInitStruct->TIM_ICPrescaler);
   }
   else if (TIM_ICInitStruct->TIM_Channel == TIM_Channel_3)
   {
     assert_param(IS_TIM_LIST3_PERIPH(TIMx));
-    /* TI3 Configuration */
-    TI3_Config(TIMx,  TIM_ICInitStruct->TIM_ICPolarity,
+
+    TI3_Config(TIMx, TIM_ICInitStruct->TIM_ICPolarity,
                TIM_ICInitStruct->TIM_ICSelection,
                TIM_ICInitStruct->TIM_ICFilter);
-    /* Set the Input Capture Prescaler value */
+
     TIM_SetIC3Prescaler(TIMx, TIM_ICInitStruct->TIM_ICPrescaler);
   }
   else
   {
     assert_param(IS_TIM_LIST3_PERIPH(TIMx));
-    /* TI4 Configuration */
+
     TI4_Config(TIMx, TIM_ICInitStruct->TIM_ICPolarity,
                TIM_ICInitStruct->TIM_ICSelection,
                TIM_ICInitStruct->TIM_ICFilter);
-    /* Set the Input Capture Prescaler value */
+
     TIM_SetIC4Prescaler(TIMx, TIM_ICInitStruct->TIM_ICPrescaler);
   }
 }

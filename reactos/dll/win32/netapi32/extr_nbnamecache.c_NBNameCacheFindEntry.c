@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct NBNameCache {int /*<<< orphan*/  cs; } ;
-typedef  char UCHAR ;
-struct TYPE_3__ {int /*<<< orphan*/ * entry; } ;
-typedef  TYPE_1__ NBNameCacheNode ;
-typedef  int /*<<< orphan*/  NBNameCacheEntry ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EnterCriticalSection (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LeaveCriticalSection (int /*<<< orphan*/ *) ; 
- TYPE_1__** NBNameCacheWalk (struct NBNameCache*,char const*) ; 
- int NCBNAMSZ ; 
- int /*<<< orphan*/  memcpy (char*,char const*,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct NBNameCache {int cs; } ;
+typedef char UCHAR ;
+struct TYPE_3__ {int * entry; } ;
+typedef TYPE_1__ NBNameCacheNode ;
+typedef int NBNameCacheEntry ;
+
+
+ int EnterCriticalSection (int *) ;
+ int LeaveCriticalSection (int *) ;
+ TYPE_1__** NBNameCacheWalk (struct NBNameCache*,char const*) ;
+ int NCBNAMSZ ;
+ int memcpy (char*,char const*,int) ;
 
 const NBNameCacheEntry *NBNameCacheFindEntry(struct NBNameCache *cache,
  const UCHAR name[NCBNAMSZ])
@@ -41,10 +41,10 @@ const NBNameCacheEntry *NBNameCacheFindEntry(struct NBNameCache *cache,
         if (node)
             ret = (*node)->entry;
         else
-            ret = NULL;
+            ret = ((void*)0);
         LeaveCriticalSection(&cache->cs);
     }
     else
-        ret = NULL;
+        ret = ((void*)0);
     return ret;
 }

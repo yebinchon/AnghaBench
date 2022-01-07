@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {scalar_t__ size; int /*<<< orphan*/ * buf; } ;
-struct demangle_data {int ptr; int ref; int cnst; int array; int cnst_fn; int class_name; int /*<<< orphan*/  vec; int /*<<< orphan*/  arg; int /*<<< orphan*/  type; TYPE_1__ array_str; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ENCODE_FUNC ; 
- int /*<<< orphan*/  vector_str_dest (int /*<<< orphan*/ *) ; 
- int vector_str_init (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {scalar_t__ size; int * buf; } ;
+struct demangle_data {int ptr; int ref; int cnst; int array; int cnst_fn; int class_name; int vec; int arg; int type; TYPE_1__ array_str; } ;
+
+
+ int ENCODE_FUNC ;
+ int vector_str_dest (int *) ;
+ int vector_str_init (int *) ;
 
 __attribute__((used)) static bool
 init_demangle_data(struct demangle_data *d)
 {
 
-	if (d == NULL)
-		return (false);
+ if (d == ((void*)0))
+  return (0);
 
-	d->ptr = false;
-	d->ref = false;
-	d->cnst = false;
-	d->array = false;
-	d->cnst_fn = false;
-	d->class_name = false;
+ d->ptr = 0;
+ d->ref = 0;
+ d->cnst = 0;
+ d->array = 0;
+ d->cnst_fn = 0;
+ d->class_name = 0;
 
-	d->array_str.buf = NULL;
-	d->array_str.size = 0;
+ d->array_str.buf = ((void*)0);
+ d->array_str.size = 0;
 
-	d->type = ENCODE_FUNC;
+ d->type = ENCODE_FUNC;
 
-	if (vector_str_init(&d->vec) == false)
-		return (false);
+ if (vector_str_init(&d->vec) == 0)
+  return (0);
 
-	if (vector_str_init(&d->arg) == false) {
-		vector_str_dest(&d->vec);
+ if (vector_str_init(&d->arg) == 0) {
+  vector_str_dest(&d->vec);
 
-		return (false);
-	}
+  return (0);
+ }
 
-	return (true);
+ return (1);
 }

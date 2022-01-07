@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct softfilter_work_packet {int dummy; } ;
-struct filter_thread_data {int done; int /*<<< orphan*/  thread; int /*<<< orphan*/  cond; int /*<<< orphan*/  lock; int /*<<< orphan*/  userdata; } ;
-struct config_file_userdata {char** prefix; int /*<<< orphan*/  conf; } ;
-typedef  int /*<<< orphan*/  softfilter_simd_mask_t ;
-struct TYPE_5__ {scalar_t__ num_plugs; int pix_fmt; int out_pix_fmt; unsigned int max_width; unsigned int max_height; unsigned int threads; struct filter_thread_data* thread_data; int /*<<< orphan*/  impl_data; struct softfilter_work_packet* packets; TYPE_2__* impl; int /*<<< orphan*/  conf; } ;
-typedef  TYPE_1__ rarch_softfilter_t ;
-typedef  int /*<<< orphan*/  name ;
-typedef  int /*<<< orphan*/  key ;
-typedef  enum retro_pixel_format { ____Placeholder_retro_pixel_format } retro_pixel_format ;
-struct TYPE_6__ {char* short_ident; unsigned int (* query_input_formats ) () ;unsigned int (* query_output_formats ) (unsigned int) ;unsigned int (* query_num_threads ) (int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* create ) (int /*<<< orphan*/ *,unsigned int,unsigned int,unsigned int,unsigned int,unsigned int,int /*<<< orphan*/ ,struct config_file_userdata*) ;} ;
+struct filter_thread_data {int done; int thread; int cond; int lock; int userdata; } ;
+struct config_file_userdata {char** prefix; int conf; } ;
+typedef int softfilter_simd_mask_t ;
+struct TYPE_5__ {scalar_t__ num_plugs; int pix_fmt; int out_pix_fmt; unsigned int max_width; unsigned int max_height; unsigned int threads; struct filter_thread_data* thread_data; int impl_data; struct softfilter_work_packet* packets; TYPE_2__* impl; int conf; } ;
+typedef TYPE_1__ rarch_softfilter_t ;
+typedef int name ;
+typedef int key ;
+typedef enum retro_pixel_format { ____Placeholder_retro_pixel_format } retro_pixel_format ;
+struct TYPE_6__ {char* short_ident; unsigned int (* query_input_formats ) () ;unsigned int (* query_output_formats ) (unsigned int) ;unsigned int (* query_num_threads ) (int ) ;int (* create ) (int *,unsigned int,unsigned int,unsigned int,unsigned int,unsigned int,int ,struct config_file_userdata*) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RARCH_ERR (char*) ; 
- int /*<<< orphan*/  RARCH_LOG (char*,unsigned int) ; 
- unsigned int RARCH_SOFTFILTER_THREADS_AUTO ; 
-#define  RETRO_PIXEL_FORMAT_RGB565 129 
-#define  RETRO_PIXEL_FORMAT_XRGB8888 128 
- unsigned int SOFTFILTER_FMT_RGB565 ; 
- unsigned int SOFTFILTER_FMT_XRGB8888 ; 
- scalar_t__ calloc (unsigned int,int) ; 
- int /*<<< orphan*/  config_get_array (int /*<<< orphan*/ ,char*,char*,int) ; 
- unsigned int cpu_features_get_core_amount () ; 
- int /*<<< orphan*/  filter_thread_loop ; 
- int /*<<< orphan*/  scond_new () ; 
- int /*<<< orphan*/  slock_new () ; 
- int /*<<< orphan*/  snprintf (char*,int,char*) ; 
- int /*<<< orphan*/  softfilter_config ; 
- TYPE_2__* softfilter_find_implementation (TYPE_1__*,char*) ; 
- int /*<<< orphan*/  sthread_create (int /*<<< orphan*/ ,struct filter_thread_data*) ; 
- unsigned int stub1 () ; 
- unsigned int stub2 (unsigned int) ; 
- int /*<<< orphan*/  stub3 (int /*<<< orphan*/ *,unsigned int,unsigned int,unsigned int,unsigned int,unsigned int,int /*<<< orphan*/ ,struct config_file_userdata*) ; 
- unsigned int stub4 (int /*<<< orphan*/ ) ; 
+
+ int RARCH_ERR (char*) ;
+ int RARCH_LOG (char*,unsigned int) ;
+ unsigned int RARCH_SOFTFILTER_THREADS_AUTO ;
+
+
+ unsigned int SOFTFILTER_FMT_RGB565 ;
+ unsigned int SOFTFILTER_FMT_XRGB8888 ;
+ scalar_t__ calloc (unsigned int,int) ;
+ int config_get_array (int ,char*,char*,int) ;
+ unsigned int cpu_features_get_core_amount () ;
+ int filter_thread_loop ;
+ int scond_new () ;
+ int slock_new () ;
+ int snprintf (char*,int,char*) ;
+ int softfilter_config ;
+ TYPE_2__* softfilter_find_implementation (TYPE_1__*,char*) ;
+ int sthread_create (int ,struct filter_thread_data*) ;
+ unsigned int stub1 () ;
+ unsigned int stub2 (unsigned int) ;
+ int stub3 (int *,unsigned int,unsigned int,unsigned int,unsigned int,unsigned int,int ,struct config_file_userdata*) ;
+ unsigned int stub4 (int ) ;
 
 __attribute__((used)) static bool create_softfilter_graph(rarch_softfilter_t *filt,
       enum retro_pixel_format in_pixel_format,
@@ -65,61 +65,61 @@ __attribute__((used)) static bool create_softfilter_graph(rarch_softfilter_t *fi
    if (!config_get_array(filt->conf, key, name, sizeof(name)))
    {
       RARCH_ERR("Could not find 'filter' array in config.\n");
-      return false;
+      return 0;
    }
 
    if (filt->num_plugs == 0)
    {
       RARCH_ERR("No filter plugs found. Exiting...\n");
-      return false;
+      return 0;
    }
 
    filt->impl = softfilter_find_implementation(filt, name);
    if (!filt->impl)
    {
       RARCH_ERR("Could not find implementation.\n");
-      return false;
+      return 0;
    }
 
    userdata.conf = filt->conf;
-   /* Index-specific configs take priority over ident-specific. */
+
    userdata.prefix[0] = key;
    userdata.prefix[1] = filt->impl->short_ident;
 
-   /* Simple assumptions. */
+
    filt->pix_fmt = in_pixel_format;
    input_fmts = filt->impl->query_input_formats();
 
    switch (in_pixel_format)
    {
-      case RETRO_PIXEL_FORMAT_XRGB8888:
+      case 128:
          input_fmt = SOFTFILTER_FMT_XRGB8888;
          break;
-      case RETRO_PIXEL_FORMAT_RGB565:
+      case 129:
          input_fmt = SOFTFILTER_FMT_RGB565;
          break;
       default:
-         return false;
+         return 0;
    }
 
    if (!(input_fmt & input_fmts))
    {
       RARCH_ERR("Softfilter does not support input format.\n");
-      return false;
+      return 0;
    }
 
    output_fmts = filt->impl->query_output_formats(input_fmt);
-   /* If we have a match of input/output formats, use that. */
+
    if (output_fmts & input_fmt)
       filt->out_pix_fmt = in_pixel_format;
    else if (output_fmts & SOFTFILTER_FMT_XRGB8888)
-      filt->out_pix_fmt = RETRO_PIXEL_FORMAT_XRGB8888;
+      filt->out_pix_fmt = 128;
    else if (output_fmts & SOFTFILTER_FMT_RGB565)
-      filt->out_pix_fmt = RETRO_PIXEL_FORMAT_RGB565;
+      filt->out_pix_fmt = 129;
    else
    {
       RARCH_ERR("Did not find suitable output format for softfilter.\n");
-      return false;
+      return 0;
    }
 
    filt->max_width = max_width;
@@ -133,14 +133,14 @@ __attribute__((used)) static bool create_softfilter_graph(rarch_softfilter_t *fi
    if (!filt->impl_data)
    {
       RARCH_ERR("Failed to create softfilter state.\n");
-      return false;
+      return 0;
    }
 
    threads = filt->impl->query_num_threads(filt->impl_data);
    if (!threads)
    {
       RARCH_ERR("Invalid number of threads.\n");
-      return false;
+      return 0;
    }
 
    filt->threads = threads;
@@ -151,32 +151,7 @@ __attribute__((used)) static bool create_softfilter_graph(rarch_softfilter_t *fi
    if (!filt->packets)
    {
       RARCH_ERR("Failed to allocate softfilter packets.\n");
-      return false;
+      return 0;
    }
-
-#ifdef HAVE_THREADS
-   filt->thread_data = (struct filter_thread_data*)
-      calloc(threads, sizeof(*filt->thread_data));
-   if (!filt->thread_data)
-      return false;
-
-   for (i = 0; i < threads; i++)
-   {
-      filt->thread_data[i].userdata = filt->impl_data;
-      filt->thread_data[i].done = true;
-
-      filt->thread_data[i].lock = slock_new();
-      if (!filt->thread_data[i].lock)
-         return false;
-      filt->thread_data[i].cond = scond_new();
-      if (!filt->thread_data[i].cond)
-         return false;
-      filt->thread_data[i].thread = sthread_create(
-            filter_thread_loop, &filt->thread_data[i]);
-      if (!filt->thread_data[i].thread)
-         return false;
-   }
-#endif
-
-   return true;
+   return 1;
 }

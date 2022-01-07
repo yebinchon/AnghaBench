@@ -1,61 +1,61 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_22__   TYPE_6__ ;
-typedef  struct TYPE_21__   TYPE_5__ ;
-typedef  struct TYPE_20__   TYPE_4__ ;
-typedef  struct TYPE_19__   TYPE_3__ ;
-typedef  struct TYPE_18__   TYPE_2__ ;
-typedef  struct TYPE_17__   TYPE_1__ ;
-typedef  struct TYPE_16__   TYPE_10__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
+
+
+typedef struct TYPE_22__ TYPE_6__ ;
+typedef struct TYPE_21__ TYPE_5__ ;
+typedef struct TYPE_20__ TYPE_4__ ;
+typedef struct TYPE_19__ TYPE_3__ ;
+typedef struct TYPE_18__ TYPE_2__ ;
+typedef struct TYPE_17__ TYPE_1__ ;
+typedef struct TYPE_16__ TYPE_10__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_22__ {scalar_t__ data; } ;
-struct TYPE_21__ {int /*<<< orphan*/  stream; TYPE_1__* internal; int /*<<< orphan*/  cuda_ctx; } ;
+struct TYPE_21__ {int stream; TYPE_1__* internal; int cuda_ctx; } ;
 struct TYPE_20__ {TYPE_5__* hwctx; } ;
-struct TYPE_19__ {TYPE_2__* cudl; int /*<<< orphan*/  decoder; TYPE_10__* cvdl; int /*<<< orphan*/  cuda_ctx; int /*<<< orphan*/  stream; int /*<<< orphan*/  hw_device_ref; } ;
-struct TYPE_18__ {int /*<<< orphan*/  (* cuCtxPopCurrent ) (int /*<<< orphan*/ *) ;int /*<<< orphan*/  (* cuCtxPushCurrent ) (int /*<<< orphan*/ ) ;} ;
+struct TYPE_19__ {TYPE_2__* cudl; int decoder; TYPE_10__* cvdl; int cuda_ctx; int stream; int hw_device_ref; } ;
+struct TYPE_18__ {int (* cuCtxPopCurrent ) (int *) ;int (* cuCtxPushCurrent ) (int ) ;} ;
 struct TYPE_17__ {TYPE_2__* cuda_dl; } ;
-struct TYPE_16__ {int /*<<< orphan*/  (* cuvidCreateDecoder ) (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ;} ;
-typedef  TYPE_3__ NVDECDecoder ;
-typedef  int /*<<< orphan*/  CUcontext ;
-typedef  int /*<<< orphan*/  CUVIDDECODECREATEINFO ;
-typedef  TYPE_4__ AVHWDeviceContext ;
-typedef  TYPE_5__ AVCUDADeviceContext ;
-typedef  TYPE_6__ AVBufferRef ;
+struct TYPE_16__ {int (* cuvidCreateDecoder ) (int *,int *) ;} ;
+typedef TYPE_3__ NVDECDecoder ;
+typedef int CUcontext ;
+typedef int CUVIDDECODECREATEINFO ;
+typedef TYPE_4__ AVHWDeviceContext ;
+typedef TYPE_5__ AVCUDADeviceContext ;
+typedef TYPE_6__ AVBufferRef ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_BUFFER_FLAG_READONLY ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int CHECK_CU (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ENOMEM ; 
- TYPE_6__* av_buffer_create (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_buffer_ref (TYPE_6__*) ; 
- int /*<<< orphan*/  av_buffer_unref (TYPE_6__**) ; 
- int /*<<< orphan*/  av_freep (TYPE_3__**) ; 
- int /*<<< orphan*/  av_log (void*,int /*<<< orphan*/ ,char*) ; 
- TYPE_3__* av_mallocz (int) ; 
- int cuvid_load_functions (TYPE_10__**,void*) ; 
- int /*<<< orphan*/  nvdec_decoder_free ; 
- int nvdec_test_capabilities (TYPE_3__*,int /*<<< orphan*/ *,void*) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub3 (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub4 (int /*<<< orphan*/ *) ; 
+
+ int AVERROR (int ) ;
+ int AV_BUFFER_FLAG_READONLY ;
+ int AV_LOG_ERROR ;
+ int CHECK_CU (int ) ;
+ int ENOMEM ;
+ TYPE_6__* av_buffer_create (int *,int,int ,int *,int ) ;
+ int av_buffer_ref (TYPE_6__*) ;
+ int av_buffer_unref (TYPE_6__**) ;
+ int av_freep (TYPE_3__**) ;
+ int av_log (void*,int ,char*) ;
+ TYPE_3__* av_mallocz (int) ;
+ int cuvid_load_functions (TYPE_10__**,void*) ;
+ int nvdec_decoder_free ;
+ int nvdec_test_capabilities (TYPE_3__*,int *,void*) ;
+ int stub1 (int ) ;
+ int stub2 (int *) ;
+ int stub3 (int *,int *) ;
+ int stub4 (int *) ;
 
 __attribute__((used)) static int nvdec_decoder_create(AVBufferRef **out, AVBufferRef *hw_device_ref,
                                 CUVIDDECODECREATEINFO *params, void *logctx)
 {
-    AVHWDeviceContext  *hw_device_ctx = (AVHWDeviceContext*)hw_device_ref->data;
+    AVHWDeviceContext *hw_device_ctx = (AVHWDeviceContext*)hw_device_ref->data;
     AVCUDADeviceContext *device_hwctx = hw_device_ctx->hwctx;
 
     AVBufferRef *decoder_ref;
@@ -69,7 +69,7 @@ __attribute__((used)) static int nvdec_decoder_create(AVBufferRef **out, AVBuffe
         return AVERROR(ENOMEM);
 
     decoder_ref = av_buffer_create((uint8_t*)decoder, sizeof(*decoder),
-                                   nvdec_decoder_free, NULL, AV_BUFFER_FLAG_READONLY);
+                                   nvdec_decoder_free, ((void*)0), AV_BUFFER_FLAG_READONLY);
     if (!decoder_ref) {
         av_freep(&decoder);
         return AVERROR(ENOMEM);

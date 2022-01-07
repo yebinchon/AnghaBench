@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  enum AVPixelFormat { ____Placeholder_AVPixelFormat } AVPixelFormat ;
-typedef  enum AVChromaLocation { ____Placeholder_AVChromaLocation } AVChromaLocation ;
-typedef  int /*<<< orphan*/  AVFormatContext ;
 
-/* Variables and functions */
- int AVCHROMA_LOC_LEFT ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int VPX_SUBSAMPLING_420_COLLOCATED_WITH_LUMA ; 
- int VPX_SUBSAMPLING_420_VERTICAL ; 
- int VPX_SUBSAMPLING_422 ; 
- int VPX_SUBSAMPLING_444 ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int) ; 
- scalar_t__ av_pix_fmt_get_chroma_sub_sample (int,int*,int*) ; 
+
+
+
+typedef enum AVPixelFormat { ____Placeholder_AVPixelFormat } AVPixelFormat ;
+typedef enum AVChromaLocation { ____Placeholder_AVChromaLocation } AVChromaLocation ;
+typedef int AVFormatContext ;
+
+
+ int AVCHROMA_LOC_LEFT ;
+ int AV_LOG_ERROR ;
+ int VPX_SUBSAMPLING_420_COLLOCATED_WITH_LUMA ;
+ int VPX_SUBSAMPLING_420_VERTICAL ;
+ int VPX_SUBSAMPLING_422 ;
+ int VPX_SUBSAMPLING_444 ;
+ int av_log (int *,int ,char*,int) ;
+ scalar_t__ av_pix_fmt_get_chroma_sub_sample (int,int*,int*) ;
 
 __attribute__((used)) static int get_vpx_chroma_subsampling(AVFormatContext *s,
                                       enum AVPixelFormat pixel_format,

@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int Function; int /*<<< orphan*/  ValueMask; int /*<<< orphan*/  Ref; } ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int Function; int ValueMask; int Ref; } ;
 struct TYPE_7__ {TYPE_1__ Stencil; } ;
-typedef  int /*<<< orphan*/  GLuint ;
-typedef  int GLint ;
-typedef  int GLenum ;
-typedef  TYPE_2__ GLcontext ;
+typedef int GLuint ;
+typedef int GLint ;
+typedef int GLenum ;
+typedef TYPE_2__ GLcontext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLAMP (int,int /*<<< orphan*/ ,int) ; 
-#define  GL_ALWAYS 135 
-#define  GL_EQUAL 134 
-#define  GL_GEQUAL 133 
-#define  GL_GREATER 132 
- int /*<<< orphan*/  GL_INVALID_ENUM ; 
- int /*<<< orphan*/  GL_INVALID_OPERATION ; 
-#define  GL_LEQUAL 131 
-#define  GL_LESS 130 
-#define  GL_NEVER 129 
-#define  GL_NOTEQUAL 128 
- scalar_t__ INSIDE_BEGIN_END (TYPE_2__*) ; 
- int STENCIL_BITS ; 
- int /*<<< orphan*/  gl_error (TYPE_2__*,int /*<<< orphan*/ ,char*) ; 
+
+ int CLAMP (int,int ,int) ;
+
+
+
+
+ int GL_INVALID_ENUM ;
+ int GL_INVALID_OPERATION ;
+
+
+
+
+ scalar_t__ INSIDE_BEGIN_END (TYPE_2__*) ;
+ int STENCIL_BITS ;
+ int gl_error (TYPE_2__*,int ,char*) ;
 
 void gl_StencilFunc( GLcontext *ctx, GLenum func, GLint ref, GLuint mask )
 {
@@ -45,14 +45,14 @@ void gl_StencilFunc( GLcontext *ctx, GLenum func, GLint ref, GLuint mask )
    }
 
    switch (func) {
-      case GL_NEVER:
-      case GL_LESS:
-      case GL_LEQUAL:
-      case GL_GREATER:
-      case GL_GEQUAL:
-      case GL_EQUAL:
-      case GL_NOTEQUAL:
-      case GL_ALWAYS:
+      case 129:
+      case 130:
+      case 131:
+      case 132:
+      case 133:
+      case 134:
+      case 128:
+      case 135:
          ctx->Stencil.Function = func;
          break;
       default:

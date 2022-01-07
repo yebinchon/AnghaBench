@@ -1,0 +1,143 @@
+; ModuleID = '/home/carl/AnghaBench/fastsocket/kernel/sound/soc/codecs/extr_wm8990.c_wm8990_set_dai_pll.c'
+source_filename = "/home/carl/AnghaBench/fastsocket/kernel/sound/soc/codecs/extr_wm8990.c_wm8990_set_dai_pll.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+%struct.snd_soc_dai = type { %struct.snd_soc_codec* }
+%struct.snd_soc_codec = type { i32 }
+%struct._pll_div = type { i32, i32, i64 }
+
+@WM8990_POWER_MANAGEMENT_2 = common dso_local global i32 0, align 4
+@WM8990_PLL_ENA = common dso_local global i32 0, align 4
+@WM8990_CLOCKING_2 = common dso_local global i32 0, align 4
+@WM8990_SYSCLK_SRC = common dso_local global i32 0, align 4
+@WM8990_PLL1 = common dso_local global i32 0, align 4
+@WM8990_SDM = common dso_local global i32 0, align 4
+@WM8990_PRESCALE = common dso_local global i32 0, align 4
+@WM8990_PLL2 = common dso_local global i32 0, align 4
+@WM8990_PLL3 = common dso_local global i32 0, align 4
+@llvm.used = appending global [1 x i8*] [i8* bitcast (i32 (%struct.snd_soc_dai*, i32, i32, i32)* @wm8990_set_dai_pll to i8*)], section "llvm.metadata"
+
+; Function Attrs: noinline nounwind optnone uwtable
+define internal i32 @wm8990_set_dai_pll(%struct.snd_soc_dai* %0, i32 %1, i32 %2, i32 %3) #0 {
+  %5 = alloca %struct.snd_soc_dai*, align 8
+  %6 = alloca i32, align 4
+  %7 = alloca i32, align 4
+  %8 = alloca i32, align 4
+  %9 = alloca i32, align 4
+  %10 = alloca %struct.snd_soc_codec*, align 8
+  %11 = alloca %struct._pll_div, align 8
+  store %struct.snd_soc_dai* %0, %struct.snd_soc_dai** %5, align 8
+  store i32 %1, i32* %6, align 4
+  store i32 %2, i32* %7, align 4
+  store i32 %3, i32* %8, align 4
+  %12 = load %struct.snd_soc_dai*, %struct.snd_soc_dai** %5, align 8
+  %13 = getelementptr inbounds %struct.snd_soc_dai, %struct.snd_soc_dai* %12, i32 0, i32 0
+  %14 = load %struct.snd_soc_codec*, %struct.snd_soc_codec** %13, align 8
+  store %struct.snd_soc_codec* %14, %struct.snd_soc_codec** %10, align 8
+  %15 = load i32, i32* %7, align 4
+  %16 = icmp ne i32 %15, 0
+  br i1 %16, label %17, label %72
+
+17:                                               ; preds = %4
+  %18 = load i32, i32* %8, align 4
+  %19 = icmp ne i32 %18, 0
+  br i1 %19, label %20, label %72
+
+20:                                               ; preds = %17
+  %21 = load i32, i32* %8, align 4
+  %22 = mul i32 %21, 4
+  %23 = load i32, i32* %7, align 4
+  %24 = call i32 @pll_factors(%struct._pll_div* %11, i32 %22, i32 %23)
+  %25 = load %struct.snd_soc_codec*, %struct.snd_soc_codec** %10, align 8
+  %26 = load i32, i32* @WM8990_POWER_MANAGEMENT_2, align 4
+  %27 = call i32 @snd_soc_read(%struct.snd_soc_codec* %25, i32 %26)
+  store i32 %27, i32* %9, align 4
+  %28 = load i32, i32* @WM8990_PLL_ENA, align 4
+  %29 = load i32, i32* %9, align 4
+  %30 = or i32 %29, %28
+  store i32 %30, i32* %9, align 4
+  %31 = load %struct.snd_soc_codec*, %struct.snd_soc_codec** %10, align 8
+  %32 = load i32, i32* @WM8990_POWER_MANAGEMENT_2, align 4
+  %33 = load i32, i32* %9, align 4
+  %34 = call i32 @snd_soc_write(%struct.snd_soc_codec* %31, i32 %32, i32 %33)
+  %35 = load %struct.snd_soc_codec*, %struct.snd_soc_codec** %10, align 8
+  %36 = load i32, i32* @WM8990_CLOCKING_2, align 4
+  %37 = call i32 @snd_soc_read(%struct.snd_soc_codec* %35, i32 %36)
+  store i32 %37, i32* %9, align 4
+  %38 = load %struct.snd_soc_codec*, %struct.snd_soc_codec** %10, align 8
+  %39 = load i32, i32* @WM8990_CLOCKING_2, align 4
+  %40 = load i32, i32* %9, align 4
+  %41 = load i32, i32* @WM8990_SYSCLK_SRC, align 4
+  %42 = or i32 %40, %41
+  %43 = call i32 @snd_soc_write(%struct.snd_soc_codec* %38, i32 %39, i32 %42)
+  %44 = load %struct.snd_soc_codec*, %struct.snd_soc_codec** %10, align 8
+  %45 = load i32, i32* @WM8990_PLL1, align 4
+  %46 = getelementptr inbounds %struct._pll_div, %struct._pll_div* %11, i32 0, i32 0
+  %47 = load i32, i32* %46, align 8
+  %48 = load i32, i32* @WM8990_SDM, align 4
+  %49 = or i32 %47, %48
+  %50 = getelementptr inbounds %struct._pll_div, %struct._pll_div* %11, i32 0, i32 2
+  %51 = load i64, i64* %50, align 8
+  %52 = icmp ne i64 %51, 0
+  br i1 %52, label %53, label %55
+
+53:                                               ; preds = %20
+  %54 = load i32, i32* @WM8990_PRESCALE, align 4
+  br label %56
+
+55:                                               ; preds = %20
+  br label %56
+
+56:                                               ; preds = %55, %53
+  %57 = phi i32 [ %54, %53 ], [ 0, %55 ]
+  %58 = or i32 %49, %57
+  %59 = call i32 @snd_soc_write(%struct.snd_soc_codec* %44, i32 %45, i32 %58)
+  %60 = load %struct.snd_soc_codec*, %struct.snd_soc_codec** %10, align 8
+  %61 = load i32, i32* @WM8990_PLL2, align 4
+  %62 = getelementptr inbounds %struct._pll_div, %struct._pll_div* %11, i32 0, i32 1
+  %63 = load i32, i32* %62, align 4
+  %64 = ashr i32 %63, 8
+  %65 = call i32 @snd_soc_write(%struct.snd_soc_codec* %60, i32 %61, i32 %64)
+  %66 = load %struct.snd_soc_codec*, %struct.snd_soc_codec** %10, align 8
+  %67 = load i32, i32* @WM8990_PLL3, align 4
+  %68 = getelementptr inbounds %struct._pll_div, %struct._pll_div* %11, i32 0, i32 1
+  %69 = load i32, i32* %68, align 4
+  %70 = and i32 %69, 255
+  %71 = call i32 @snd_soc_write(%struct.snd_soc_codec* %66, i32 %67, i32 %70)
+  br label %84
+
+72:                                               ; preds = %17, %4
+  %73 = load %struct.snd_soc_codec*, %struct.snd_soc_codec** %10, align 8
+  %74 = load i32, i32* @WM8990_POWER_MANAGEMENT_2, align 4
+  %75 = call i32 @snd_soc_read(%struct.snd_soc_codec* %73, i32 %74)
+  store i32 %75, i32* %9, align 4
+  %76 = load i32, i32* @WM8990_PLL_ENA, align 4
+  %77 = xor i32 %76, -1
+  %78 = load i32, i32* %9, align 4
+  %79 = and i32 %78, %77
+  store i32 %79, i32* %9, align 4
+  %80 = load %struct.snd_soc_codec*, %struct.snd_soc_codec** %10, align 8
+  %81 = load i32, i32* @WM8990_POWER_MANAGEMENT_2, align 4
+  %82 = load i32, i32* %9, align 4
+  %83 = call i32 @snd_soc_write(%struct.snd_soc_codec* %80, i32 %81, i32 %82)
+  br label %84
+
+84:                                               ; preds = %72, %56
+  ret i32 0
+}
+
+declare dso_local i32 @pll_factors(%struct._pll_div*, i32, i32) #1
+
+declare dso_local i32 @snd_soc_read(%struct.snd_soc_codec*, i32) #1
+
+declare dso_local i32 @snd_soc_write(%struct.snd_soc_codec*, i32, i32) #1
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

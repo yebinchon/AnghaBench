@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct nfc_llc_ops {int dummy; } ;
-struct nfc_llc_engine {int /*<<< orphan*/  entry; struct nfc_llc_ops* ops; int /*<<< orphan*/ * name; } ;
+struct nfc_llc_engine {int entry; struct nfc_llc_ops* ops; int * name; } ;
 
-/* Variables and functions */
- int ENOMEM ; 
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  INIT_LIST_HEAD (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  kfree (struct nfc_llc_engine*) ; 
- int /*<<< orphan*/ * kstrdup (char const*,int /*<<< orphan*/ ) ; 
- struct nfc_llc_engine* kzalloc (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  list_add_tail (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  llc_engines ; 
+
+ int ENOMEM ;
+ int GFP_KERNEL ;
+ int INIT_LIST_HEAD (int *) ;
+ int kfree (struct nfc_llc_engine*) ;
+ int * kstrdup (char const*,int ) ;
+ struct nfc_llc_engine* kzalloc (int,int ) ;
+ int list_add_tail (int *,int *) ;
+ int llc_engines ;
 
 int nfc_llc_register(const char *name, struct nfc_llc_ops *ops)
 {
-	struct nfc_llc_engine *llc_engine;
+ struct nfc_llc_engine *llc_engine;
 
-	llc_engine = kzalloc(sizeof(struct nfc_llc_engine), GFP_KERNEL);
-	if (llc_engine == NULL)
-		return -ENOMEM;
+ llc_engine = kzalloc(sizeof(struct nfc_llc_engine), GFP_KERNEL);
+ if (llc_engine == ((void*)0))
+  return -ENOMEM;
 
-	llc_engine->name = kstrdup(name, GFP_KERNEL);
-	if (llc_engine->name == NULL) {
-		kfree(llc_engine);
-		return -ENOMEM;
-	}
-	llc_engine->ops = ops;
+ llc_engine->name = kstrdup(name, GFP_KERNEL);
+ if (llc_engine->name == ((void*)0)) {
+  kfree(llc_engine);
+  return -ENOMEM;
+ }
+ llc_engine->ops = ops;
 
-	INIT_LIST_HEAD(&llc_engine->entry);
-	list_add_tail(&llc_engine->entry, &llc_engines);
+ INIT_LIST_HEAD(&llc_engine->entry);
+ list_add_tail(&llc_engine->entry, &llc_engines);
 
-	return 0;
+ return 0;
 }

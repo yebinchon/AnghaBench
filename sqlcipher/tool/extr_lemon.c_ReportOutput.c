@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct symbol {char* name; scalar_t__ type; int prec; scalar_t__ bContent; scalar_t__ firstset; scalar_t__ lambda; } ;
 struct state {int statenum; struct action* ap; struct config* cfp; struct config* bp; } ;
 struct rule {int iRule; TYPE_2__* precsym; struct rule* next; } ;
 struct lemon {int nxstate; int nsymbol; int nterminal; struct rule* rule; struct symbol** symbols; scalar_t__ basisflag; struct state** sorted; } ;
-struct config {scalar_t__ dot; struct config* next; struct config* bp; int /*<<< orphan*/  bplp; int /*<<< orphan*/  fplp; int /*<<< orphan*/  fws; TYPE_1__* rp; } ;
+struct config {scalar_t__ dot; struct config* next; struct config* bp; int bplp; int fplp; int fws; TYPE_1__* rp; } ;
 struct action {struct action* next; } ;
 struct TYPE_4__ {char* name; int prec; } ;
-struct TYPE_3__ {scalar_t__ nrhs; int /*<<< orphan*/  iRule; } ;
-typedef  int /*<<< orphan*/  FILE ;
+struct TYPE_3__ {scalar_t__ nrhs; int iRule; } ;
+typedef int FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ConfigPrint (int /*<<< orphan*/ *,struct config*) ; 
- scalar_t__ NONTERMINAL ; 
- int /*<<< orphan*/  PlinkPrint (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- scalar_t__ PrintAction (struct action*,int /*<<< orphan*/ *,int) ; 
- scalar_t__ SetFind (scalar_t__,int) ; 
- int /*<<< orphan*/  SetPrint (int /*<<< orphan*/ *,int /*<<< orphan*/ ,struct lemon*) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * file_open (struct lemon*,char*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*,...) ; 
- int /*<<< orphan*/  lemon_sprintf (char*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rule_print (int /*<<< orphan*/ *,struct rule*) ; 
- scalar_t__ strlen (char*) ; 
+
+ int ConfigPrint (int *,struct config*) ;
+ scalar_t__ NONTERMINAL ;
+ int PlinkPrint (int *,int ,char*) ;
+ scalar_t__ PrintAction (struct action*,int *,int) ;
+ scalar_t__ SetFind (scalar_t__,int) ;
+ int SetPrint (int *,int ,struct lemon*) ;
+ int fclose (int *) ;
+ int * file_open (struct lemon*,char*,char*) ;
+ int fprintf (int *,char*,...) ;
+ int lemon_sprintf (char*,char*,int ) ;
+ int rule_print (int *,struct rule*) ;
+ scalar_t__ strlen (char*) ;
 
 void ReportOutput(struct lemon *lemp)
 {
@@ -51,7 +51,7 @@ void ReportOutput(struct lemon *lemp)
     stp = lemp->sorted[i];
     fprintf(fp,"State %d:\n",stp->statenum);
     if( lemp->basisflag ) cfp=stp->bp;
-    else                  cfp=stp->cfp;
+    else cfp=stp->cfp;
     while( cfp ){
       char buf[20];
       if( cfp->dot==cfp->rp->nrhs ){
@@ -62,13 +62,13 @@ void ReportOutput(struct lemon *lemp)
       }
       ConfigPrint(fp,cfp);
       fprintf(fp,"\n");
-#if 0
-      SetPrint(fp,cfp->fws,lemp);
-      PlinkPrint(fp,cfp->fplp,"To  ");
-      PlinkPrint(fp,cfp->bplp,"From");
-#endif
+
+
+
+
+
       if( lemp->basisflag ) cfp=cfp->bp;
-      else                  cfp=cfp->next;
+      else cfp=cfp->next;
     }
     fprintf(fp,"\n");
     for(ap=stp->ap; ap; ap=ap->next){

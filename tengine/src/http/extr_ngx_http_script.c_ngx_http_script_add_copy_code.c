@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char u_char ;
-typedef  scalar_t__ ngx_uint_t ;
-struct TYPE_7__ {size_t len; int /*<<< orphan*/  data; } ;
-typedef  TYPE_1__ ngx_str_t ;
-typedef  int /*<<< orphan*/  ngx_int_t ;
-struct TYPE_8__ {size_t len; int /*<<< orphan*/  code; } ;
-typedef  TYPE_2__ ngx_http_script_copy_code_t ;
-struct TYPE_9__ {int /*<<< orphan*/  zero; int /*<<< orphan*/  main; int /*<<< orphan*/ * values; int /*<<< orphan*/ * lengths; } ;
-typedef  TYPE_3__ ngx_http_script_compile_t ;
-typedef  int /*<<< orphan*/  ngx_http_script_code_pt ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NGX_ERROR ; 
- int /*<<< orphan*/  NGX_OK ; 
- char* ngx_cpymem (char*,int /*<<< orphan*/ ,size_t) ; 
- TYPE_2__* ngx_http_script_add_code (int /*<<< orphan*/ ,size_t,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ngx_http_script_copy_code ; 
- scalar_t__ ngx_http_script_copy_len_code ; 
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef char u_char ;
+typedef scalar_t__ ngx_uint_t ;
+struct TYPE_7__ {size_t len; int data; } ;
+typedef TYPE_1__ ngx_str_t ;
+typedef int ngx_int_t ;
+struct TYPE_8__ {size_t len; int code; } ;
+typedef TYPE_2__ ngx_http_script_copy_code_t ;
+struct TYPE_9__ {int zero; int main; int * values; int * lengths; } ;
+typedef TYPE_3__ ngx_http_script_compile_t ;
+typedef int ngx_http_script_code_pt ;
+
+
+ int NGX_ERROR ;
+ int NGX_OK ;
+ char* ngx_cpymem (char*,int ,size_t) ;
+ TYPE_2__* ngx_http_script_add_code (int ,size_t,int *) ;
+ int ngx_http_script_copy_code ;
+ scalar_t__ ngx_http_script_copy_len_code ;
 
 __attribute__((used)) static ngx_int_t
 ngx_http_script_add_copy_code(ngx_http_script_compile_t *sc, ngx_str_t *value,
     ngx_uint_t last)
 {
-    u_char                       *p;
-    size_t                        size, len, zero;
-    ngx_http_script_copy_code_t  *code;
+    u_char *p;
+    size_t size, len, zero;
+    ngx_http_script_copy_code_t *code;
 
     zero = (sc->zero && last);
     len = value->len + zero;
 
     code = ngx_http_script_add_code(*sc->lengths,
-                                    sizeof(ngx_http_script_copy_code_t), NULL);
-    if (code == NULL) {
+                                    sizeof(ngx_http_script_copy_code_t), ((void*)0));
+    if (code == ((void*)0)) {
         return NGX_ERROR;
     }
 
@@ -57,7 +57,7 @@ ngx_http_script_add_copy_code(ngx_http_script_compile_t *sc, ngx_str_t *value,
             & ~(sizeof(uintptr_t) - 1);
 
     code = ngx_http_script_add_code(*sc->values, size, &sc->main);
-    if (code == NULL) {
+    if (code == ((void*)0)) {
         return NGX_ERROR;
     }
 

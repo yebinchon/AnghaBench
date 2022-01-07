@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_5__ ;
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int /*<<< orphan*/  data; int /*<<< orphan*/  len; } ;
-typedef  TYPE_1__ ngx_str_t ;
-typedef  scalar_t__ (* ngx_ssl_variable_handler_pt ) (TYPE_2__*,int /*<<< orphan*/ ,TYPE_1__*) ;
-typedef  scalar_t__ ngx_int_t ;
-struct TYPE_10__ {int valid; int not_found; scalar_t__ no_cacheable; int /*<<< orphan*/  len; int /*<<< orphan*/  data; } ;
-typedef  TYPE_4__ ngx_http_variable_value_t ;
-struct TYPE_11__ {int /*<<< orphan*/  pool; TYPE_2__* connection; } ;
-typedef  TYPE_5__ ngx_http_request_t ;
+
+
+typedef struct TYPE_11__ TYPE_5__ ;
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int data; int len; } ;
+typedef TYPE_1__ ngx_str_t ;
+typedef scalar_t__ (* ngx_ssl_variable_handler_pt ) (TYPE_2__*,int ,TYPE_1__*) ;
+typedef scalar_t__ ngx_int_t ;
+struct TYPE_10__ {int valid; int not_found; scalar_t__ no_cacheable; int len; int data; } ;
+typedef TYPE_4__ ngx_http_variable_value_t ;
+struct TYPE_11__ {int pool; TYPE_2__* connection; } ;
+typedef TYPE_5__ ngx_http_request_t ;
 struct TYPE_9__ {scalar_t__ ssl; } ;
 
-/* Variables and functions */
- scalar_t__ NGX_ERROR ; 
- scalar_t__ NGX_OK ; 
+
+ scalar_t__ NGX_ERROR ;
+ scalar_t__ NGX_OK ;
 
 __attribute__((used)) static ngx_int_t
 ngx_http_ssl_variable(ngx_http_request_t *r, ngx_http_variable_value_t *v,
     uintptr_t data)
 {
-    ngx_ssl_variable_handler_pt  handler = (ngx_ssl_variable_handler_pt) data;
+    ngx_ssl_variable_handler_pt handler = (ngx_ssl_variable_handler_pt) data;
 
-    ngx_str_t  s;
+    ngx_str_t s;
 
     if (r->connection->ssl) {
 

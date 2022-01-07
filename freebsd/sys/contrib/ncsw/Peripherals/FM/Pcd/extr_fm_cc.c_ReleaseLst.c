@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  t_List ;
-typedef  int /*<<< orphan*/  t_CcNodeInformation ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * DequeueAdditionalInfoFromRelevantLst (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  NCSW_LIST_Del (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  NCSW_LIST_IsEmpty (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  XX_Free (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int t_List ;
+typedef int t_CcNodeInformation ;
+
+
+ int * DequeueAdditionalInfoFromRelevantLst (int *) ;
+ int NCSW_LIST_Del (int *) ;
+ int NCSW_LIST_IsEmpty (int *) ;
+ int XX_Free (int *) ;
 
 void ReleaseLst(t_List *p_List)
 {
-    t_CcNodeInformation *p_CcNodeInfo = NULL;
+    t_CcNodeInformation *p_CcNodeInfo = ((void*)0);
 
     if (!NCSW_LIST_IsEmpty(p_List))
     {

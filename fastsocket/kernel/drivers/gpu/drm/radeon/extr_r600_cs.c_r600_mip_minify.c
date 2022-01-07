@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- unsigned int max (unsigned int,unsigned int) ; 
- unsigned int roundup_pow_of_two (unsigned int) ; 
+ unsigned int max (unsigned int,unsigned int) ;
+ unsigned int roundup_pow_of_two (unsigned int) ;
 
 unsigned r600_mip_minify(unsigned size, unsigned level)
 {
-	unsigned val;
+ unsigned val;
 
-	val = max(1U, size >> level);
-	if (level > 0)
-		val = roundup_pow_of_two(val);
-	return val;
+ val = max(1U, size >> level);
+ if (level > 0)
+  val = roundup_pow_of_two(val);
+ return val;
 }

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct tagMSIVIEW {int dummy; } ;
-typedef  int /*<<< orphan*/  UINT ;
-struct TYPE_2__ {int /*<<< orphan*/  num_rows; } ;
-typedef  TYPE_1__ MSISTORAGESVIEW ;
+typedef int UINT ;
+struct TYPE_2__ {int num_rows; } ;
+typedef TYPE_1__ MSISTORAGESVIEW ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERROR_SUCCESS ; 
- int /*<<< orphan*/  NUM_STORAGES_COLS ; 
- int /*<<< orphan*/  TRACE (char*,struct tagMSIVIEW*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int ERROR_SUCCESS ;
+ int NUM_STORAGES_COLS ;
+ int TRACE (char*,struct tagMSIVIEW*,int *,int *) ;
 
 __attribute__((used)) static UINT STORAGES_get_dimensions(struct tagMSIVIEW *view, UINT *rows, UINT *cols)
 {

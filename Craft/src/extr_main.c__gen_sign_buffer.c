@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  GLfloat ;
 
-/* Variables and functions */
- int MIN (int,float) ; 
- int char_width (char) ; 
- int /*<<< orphan*/  make_character_3d (int /*<<< orphan*/ *,float,float,float,float,int,char) ; 
- int string_width (char*) ; 
- int strlen (char*) ; 
- char* tokenize (char*,char*,char**) ; 
- int wrap (char const*,float,char*,int) ; 
+
+
+
+typedef int GLfloat ;
+
+
+ int MIN (int,float) ;
+ int char_width (char) ;
+ int make_character_3d (int *,float,float,float,float,int,char) ;
+ int string_width (char*) ;
+ int strlen (char*) ;
+ char* tokenize (char*,char*,char**) ;
+ int wrap (char const*,float,char*,int) ;
 
 int _gen_sign_buffer(
     GLfloat *data, float x, float y, float z, int face, const char *text)
@@ -75,7 +75,7 @@ int _gen_sign_buffer(
         sx += n * line_height * ldx;
         sy += n * line_height * ldy;
         sz += n * line_height * ldz;
-        line = tokenize(NULL, "\n", &key);
+        line = tokenize(((void*)0), "\n", &key);
         rows--;
         if (rows <= 0) {
             break;

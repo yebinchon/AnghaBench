@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_7__ {TYPE_2__* pEList; struct TYPE_7__* pPrior; } ;
 struct TYPE_6__ {int nExpr; TYPE_1__* a; } ;
-struct TYPE_5__ {int /*<<< orphan*/  pExpr; } ;
-typedef  TYPE_3__ Select ;
-typedef  int /*<<< orphan*/  Parse ;
-typedef  int /*<<< orphan*/  CollSeq ;
+struct TYPE_5__ {int pExpr; } ;
+typedef TYPE_3__ Select ;
+typedef int Parse ;
+typedef int CollSeq ;
 
-/* Variables and functions */
- scalar_t__ ALWAYS (int) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/ * sqlite3ExprCollSeq (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ ALWAYS (int) ;
+ int assert (int) ;
+ int * sqlite3ExprCollSeq (int *,int ) ;
 
 __attribute__((used)) static CollSeq *multiSelectCollSeq(Parse *pParse, Select *p, int iCol){
   CollSeq *pRet;
@@ -33,9 +33,9 @@ __attribute__((used)) static CollSeq *multiSelectCollSeq(Parse *pParse, Select *
     pRet = 0;
   }
   assert( iCol>=0 );
-  /* iCol must be less than p->pEList->nExpr.  Otherwise an error would
-  ** have been thrown during name resolution and we would not have gotten
-  ** this far */
+
+
+
   if( pRet==0 && ALWAYS(iCol<p->pEList->nExpr) ){
     pRet = sqlite3ExprCollSeq(pParse, p->pEList->a[iCol].pExpr);
   }

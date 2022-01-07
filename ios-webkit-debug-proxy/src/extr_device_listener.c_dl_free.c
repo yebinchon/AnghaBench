@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct dl_struct {int dummy; } ;
 struct dl_private {int dummy; } ;
-typedef  TYPE_1__* dl_t ;
-typedef  TYPE_1__* dl_private_t ;
-struct TYPE_6__ {int /*<<< orphan*/  device_num_to_device_id; int /*<<< orphan*/  in; struct TYPE_6__* private_state; } ;
+typedef TYPE_1__* dl_t ;
+typedef TYPE_1__* dl_private_t ;
+struct TYPE_6__ {int device_num_to_device_id; int in; struct TYPE_6__* private_state; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cb_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (TYPE_1__*) ; 
- int /*<<< orphan*/  ht_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
+
+ int cb_free (int ) ;
+ int free (TYPE_1__*) ;
+ int ht_free (int ) ;
+ int memset (TYPE_1__*,int ,int) ;
 
 void dl_free(dl_t self) {
   if (self) {

@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ UINT ;
-struct TYPE_9__ {scalar_t__ nLevels; int wFlags; scalar_t__ dwAttribs; int /*<<< orphan*/  szName; scalar_t__ dwNetType; struct TYPE_9__* pParent; } ;
-typedef  int /*<<< orphan*/  TCHAR ;
-typedef  TYPE_1__* PDNODE ;
-typedef  int /*<<< orphan*/  LPTSTR ;
-typedef  long LPARAM ;
-typedef  int INT ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  scalar_t__ DWORD ;
-typedef  int /*<<< orphan*/  DNODE ;
-typedef  scalar_t__ BYTE ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- scalar_t__ ByteCountOf (scalar_t__) ; 
- scalar_t__ CALC_EXTENT (TYPE_1__*) ; 
- int CompareNodes (TYPE_1__*,TYPE_1__*) ; 
- int /*<<< orphan*/  GWL_XTREEMAX ; 
- int /*<<< orphan*/  GetDlgItem (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ GetFileAttributes (int /*<<< orphan*/ *) ; 
- scalar_t__ GetRealExtent (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,scalar_t__*) ; 
- int /*<<< orphan*/  GetTreePath (TYPE_1__*,int /*<<< orphan*/ *) ; 
- scalar_t__ GetWindowLongPtr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IDCW_TREELISTBOX ; 
- scalar_t__ INVALID_FILE_ATTRIBUTES ; 
- scalar_t__ IsLFN (int /*<<< orphan*/ ) ; 
- int LB_ERR ; 
- int /*<<< orphan*/  LB_GETCOUNT ; 
- int /*<<< orphan*/  LB_GETTEXT ; 
- int /*<<< orphan*/  LB_INSERTSTRING ; 
- int /*<<< orphan*/  LB_SETHORIZONTALEXTENT ; 
- int /*<<< orphan*/  LPTR ; 
- scalar_t__ LocalAlloc (int /*<<< orphan*/ ,scalar_t__) ; 
- int MAXPATHLEN ; 
- scalar_t__ SendMessage (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,long) ; 
- int /*<<< orphan*/  SetWindowLongPtr (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- int TF_EXPANDED ; 
- int TF_HASCHILDREN ; 
- int TF_LASTLEVELENTRY ; 
- int TF_LFN ; 
- int TF_LOWERCASE ; 
- int /*<<< orphan*/  lstrcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ lstrlen (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef scalar_t__ UINT ;
+struct TYPE_9__ {scalar_t__ nLevels; int wFlags; scalar_t__ dwAttribs; int szName; scalar_t__ dwNetType; struct TYPE_9__* pParent; } ;
+typedef int TCHAR ;
+typedef TYPE_1__* PDNODE ;
+typedef int LPTSTR ;
+typedef long LPARAM ;
+typedef int INT ;
+typedef int HWND ;
+typedef scalar_t__ DWORD ;
+typedef int DNODE ;
+typedef scalar_t__ BYTE ;
+typedef scalar_t__ BOOL ;
+
+
+ scalar_t__ ByteCountOf (scalar_t__) ;
+ scalar_t__ CALC_EXTENT (TYPE_1__*) ;
+ int CompareNodes (TYPE_1__*,TYPE_1__*) ;
+ int GWL_XTREEMAX ;
+ int GetDlgItem (int ,int ) ;
+ scalar_t__ GetFileAttributes (int *) ;
+ scalar_t__ GetRealExtent (TYPE_1__*,int ,int *,scalar_t__*) ;
+ int GetTreePath (TYPE_1__*,int *) ;
+ scalar_t__ GetWindowLongPtr (int ,int ) ;
+ int IDCW_TREELISTBOX ;
+ scalar_t__ INVALID_FILE_ATTRIBUTES ;
+ scalar_t__ IsLFN (int ) ;
+ int LB_ERR ;
+ int LB_GETCOUNT ;
+ int LB_GETTEXT ;
+ int LB_INSERTSTRING ;
+ int LB_SETHORIZONTALEXTENT ;
+ int LPTR ;
+ scalar_t__ LocalAlloc (int ,scalar_t__) ;
+ int MAXPATHLEN ;
+ scalar_t__ SendMessage (int ,int ,int,long) ;
+ int SetWindowLongPtr (int ,int ,scalar_t__) ;
+ int TF_EXPANDED ;
+ int TF_HASCHILDREN ;
+ int TF_LASTLEVELENTRY ;
+ int TF_LFN ;
+ int TF_LOWERCASE ;
+ int lstrcpy (int ,int ) ;
+ scalar_t__ lstrlen (int ) ;
 
 INT
 InsertDirectory(
@@ -80,38 +80,30 @@ InsertDirectory(
    {
       if (ppNode)
       {
-         *ppNode = NULL;
+         *ppNode = ((void*)0);
       }
       return (0);
    }
 
    pNode->pParent = pParentNode;
    pNode->nLevels = pParentNode ? (pParentNode->nLevels + (BYTE)1) : (BYTE)0;
-   pNode->wFlags  = 0;
+   pNode->wFlags = 0;
    pNode->dwNetType = (DWORD)-1;
-
-#ifdef USE_TF_LFN
-   if (IsLFN(szName))
-   {
-      pNode->wFlags |= TF_LFN;
-   }
-#endif
-
    if (!bCasePreserved)
       pNode->wFlags |= TF_LOWERCASE;
 
    lstrcpy(pNode->szName, szName);
 
    if (pParentNode)
-      pParentNode->wFlags |= TF_HASCHILDREN | TF_EXPANDED;      // mark the parent
+      pParentNode->wFlags |= TF_HASCHILDREN | TF_EXPANDED;
 
    hwndLB = GetDlgItem(hwndTreeCtl, IDCW_TREELISTBOX);
 
-   /*
-    *  Get the real text extent for the current directory and save it
-    *  in the pNode.
-    */
-   x = GetRealExtent(pNode, hwndLB, NULL, &len);
+
+
+
+
+   x = GetRealExtent(pNode, hwndLB, ((void*)0), &len);
    x = CALC_EXTENT(pNode);
 
    xTreeMax = GetWindowLongPtr(hwndTreeCtl, GWL_XTREEMAX);
@@ -125,14 +117,14 @@ InsertDirectory(
 
    if (iMax > 0)
    {
-      // do a binary insert
+
 
       iMin = iParentNode + 1;
-      iMax--;         // last index
+      iMax--;
 
-      //
-      // Hack speedup: check if goes last.
-      //
+
+
+
       SendMessage(hwndLB, LB_GETTEXT, iMax, (LPARAM)&pMid);
 
       if (bPartialSort && CompareNodes(pNode, pMid) > 0)
@@ -141,7 +133,7 @@ InsertDirectory(
       }
       else
       {
-	     int iCmp;
+      int iCmp;
          do
          {
             iMid = (iMax + iMin) / 2;
@@ -160,10 +152,10 @@ InsertDirectory(
 
          } while (iMax > iMin);
 
-         // result is that new node may be:
-         // a. inserted before iMax (normal case)
-         // b. inserted after iMax (if at end of list)
-         // c. same as iMax -- return right away
+
+
+
+
          SendMessage(hwndLB, LB_GETTEXT, iMax, (LPARAM)&pMid);
          iCmp = CompareNodes(pNode, pMid);
          if (iCmp == 0)
@@ -177,15 +169,15 @@ InsertDirectory(
 
         if (iCmp > 0)
         {
-            iMax++;         // insert after this one
+            iMax++;
         }
       }
    }
 
-   // now reset the TF_LASTLEVEL flags as appropriate
 
-   // look for the first guy on our level above us and turn off
-   // his TF_LASTLEVELENTRY flag so he draws a line down to us
+
+
+
 
    iMid = iMax - 1;
 
@@ -203,18 +195,18 @@ InsertDirectory(
       }
    }
 
-   // if no one below me or the level of the guy below is less, then
-   // this is the last entry for this level
+
+
 
    if (((INT)SendMessage(hwndLB, LB_GETTEXT, iMax, (LPARAM)&pMid) == LB_ERR) ||
        (pMid->nLevels < pNode->nLevels))
    {
-      pNode->wFlags |=  TF_LASTLEVELENTRY;
+      pNode->wFlags |= TF_LASTLEVELENTRY;
    }
 
-   //
-   //  Set the attributes for this directory.
-   //
+
+
+
    if (dwAttribs == INVALID_FILE_ATTRIBUTES)
    {
        GetTreePath(pNode, szPathName);

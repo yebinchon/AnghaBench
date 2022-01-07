@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct SMACK {unsigned int is_nocase; char* name; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- scalar_t__ malloc (int) ; 
- int /*<<< orphan*/  memcpy (char*,char const*,int) ; 
- int /*<<< orphan*/  memset (struct SMACK*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  stderr ; 
- int strlen (char const*) ; 
+
+ int exit (int) ;
+ int fprintf (int ,char*,char*) ;
+ scalar_t__ malloc (int) ;
+ int memcpy (char*,char const*,int) ;
+ int memset (struct SMACK*,int ,int) ;
+ int stderr ;
+ int strlen (char const*) ;
 
 struct SMACK *
 smack_create(const char *name, unsigned nocase)
@@ -27,7 +27,7 @@ smack_create(const char *name, unsigned nocase)
     struct SMACK *smack;
 
     smack = (struct SMACK *)malloc(sizeof (struct SMACK));
-    if (smack == NULL) {
+    if (smack == ((void*)0)) {
         fprintf(stderr, "%s: out of memory error\n", "smack");
         exit(1);
     }
@@ -35,7 +35,7 @@ smack_create(const char *name, unsigned nocase)
 
     smack->is_nocase = nocase;
     smack->name = (char*)malloc(strlen(name)+1);
-    if (smack->name == NULL) {
+    if (smack->name == ((void*)0)) {
         fprintf(stderr, "%s: out of memory error\n", "smack");
         exit(1);
     }

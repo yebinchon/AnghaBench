@@ -1,70 +1,70 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * priv_key; int /*<<< orphan*/ * pub_key; int /*<<< orphan*/ * q; int /*<<< orphan*/ * g; int /*<<< orphan*/ * p; } ;
-typedef  TYPE_1__ DSA ;
-typedef  int /*<<< orphan*/  DH ;
-typedef  int /*<<< orphan*/  BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * BN_dup (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DH_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * DH_new () ; 
- int /*<<< orphan*/  DH_set0_key (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DH_set0_pqg (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * priv_key; int * pub_key; int * q; int * g; int * p; } ;
+typedef TYPE_1__ DSA ;
+typedef int DH ;
+typedef int BIGNUM ;
+
+
+ int * BN_dup (int *) ;
+ int BN_free (int *) ;
+ int DH_free (int *) ;
+ int * DH_new () ;
+ int DH_set0_key (int *,int *,int *) ;
+ int DH_set0_pqg (int *,int *,int *,int *) ;
 
 DH *DSA_dup_DH(const DSA *r)
 {
-    /*
-     * DSA has p, q, g, optional pub_key, optional priv_key. DH has p,
-     * optional length, g, optional pub_key, optional priv_key, optional q.
-     */
 
-    DH *ret = NULL;
-    BIGNUM *p = NULL, *q = NULL, *g = NULL, *pub_key = NULL, *priv_key = NULL;
 
-    if (r == NULL)
+
+
+
+    DH *ret = ((void*)0);
+    BIGNUM *p = ((void*)0), *q = ((void*)0), *g = ((void*)0), *pub_key = ((void*)0), *priv_key = ((void*)0);
+
+    if (r == ((void*)0))
         goto err;
     ret = DH_new();
-    if (ret == NULL)
+    if (ret == ((void*)0))
         goto err;
-    if (r->p != NULL || r->g != NULL || r->q != NULL) {
-        if (r->p == NULL || r->g == NULL || r->q == NULL) {
-            /* Shouldn't happen */
+    if (r->p != ((void*)0) || r->g != ((void*)0) || r->q != ((void*)0)) {
+        if (r->p == ((void*)0) || r->g == ((void*)0) || r->q == ((void*)0)) {
+
             goto err;
         }
         p = BN_dup(r->p);
         g = BN_dup(r->g);
         q = BN_dup(r->q);
-        if (p == NULL || g == NULL || q == NULL || !DH_set0_pqg(ret, p, q, g))
+        if (p == ((void*)0) || g == ((void*)0) || q == ((void*)0) || !DH_set0_pqg(ret, p, q, g))
             goto err;
-        p = g = q = NULL;
+        p = g = q = ((void*)0);
     }
 
-    if (r->pub_key != NULL) {
+    if (r->pub_key != ((void*)0)) {
         pub_key = BN_dup(r->pub_key);
-        if (pub_key == NULL)
+        if (pub_key == ((void*)0))
             goto err;
-        if (r->priv_key != NULL) {
+        if (r->priv_key != ((void*)0)) {
             priv_key = BN_dup(r->priv_key);
-            if (priv_key == NULL)
+            if (priv_key == ((void*)0))
                 goto err;
         }
         if (!DH_set0_key(ret, pub_key, priv_key))
             goto err;
-    } else if (r->priv_key != NULL) {
-        /* Shouldn't happen */
+    } else if (r->priv_key != ((void*)0)) {
+
         goto err;
     }
 
@@ -77,5 +77,5 @@ DH *DSA_dup_DH(const DSA *r)
     BN_free(pub_key);
     BN_free(priv_key);
     DH_free(ret);
-    return NULL;
+    return ((void*)0);
 }

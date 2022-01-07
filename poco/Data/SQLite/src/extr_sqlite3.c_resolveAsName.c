@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_7__ {char* zToken; } ;
 struct TYPE_10__ {scalar_t__ op; TYPE_1__ u; } ;
 struct TYPE_9__ {int nExpr; TYPE_2__* a; } ;
 struct TYPE_8__ {char* zName; } ;
-typedef  int /*<<< orphan*/  Parse ;
-typedef  TYPE_3__ ExprList ;
-typedef  TYPE_4__ Expr ;
+typedef int Parse ;
+typedef TYPE_3__ ExprList ;
+typedef TYPE_4__ Expr ;
 
-/* Variables and functions */
- scalar_t__ TK_ID ; 
- int /*<<< orphan*/  UNUSED_PARAMETER (int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3StrICmp (char*,char*) ; 
+
+ scalar_t__ TK_ID ;
+ int UNUSED_PARAMETER (int *) ;
+ scalar_t__ sqlite3StrICmp (char*,char*) ;
 
 __attribute__((used)) static int resolveAsName(
-  Parse *pParse,     /* Parsing context for error messages */
-  ExprList *pEList,  /* List of expressions to scan */
-  Expr *pE           /* Expression we are trying to match */
+  Parse *pParse,
+  ExprList *pEList,
+  Expr *pE
 ){
-  int i;             /* Loop counter */
+  int i;
 
   UNUSED_PARAMETER(pParse);
 

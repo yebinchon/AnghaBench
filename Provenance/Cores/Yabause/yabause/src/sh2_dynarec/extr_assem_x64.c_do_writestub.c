@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u32 ;
+
+
+
+
+typedef int u32 ;
 struct regstat {char* regmap; } ;
 
-/* Variables and functions */
- int AGEN1 ; 
- int EDI ; 
- int ESI ; 
- int STOREB_STUB ; 
- int STOREL_STUB ; 
- int STOREW_STUB ; 
- scalar_t__ WriteInvalidateByteSwapped ; 
- scalar_t__ WriteInvalidateLong ; 
- scalar_t__ WriteInvalidateWord ; 
- int /*<<< orphan*/  assem_debug (char*,scalar_t__) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  emit_call (int) ; 
- int /*<<< orphan*/  emit_jmp (int) ; 
- int /*<<< orphan*/  emit_mov (int,int) ; 
- int /*<<< orphan*/  emit_xchg (int,int) ; 
- int get_reg (char*,int) ; 
- scalar_t__ out ; 
- int /*<<< orphan*/  restore_regs (int) ; 
- int* rs1 ; 
- int /*<<< orphan*/  save_regs (int) ; 
- int /*<<< orphan*/  set_jump_target (int,int) ; 
- scalar_t__ start ; 
- int** stubs ; 
+
+ int AGEN1 ;
+ int EDI ;
+ int ESI ;
+ int STOREB_STUB ;
+ int STOREL_STUB ;
+ int STOREW_STUB ;
+ scalar_t__ WriteInvalidateByteSwapped ;
+ scalar_t__ WriteInvalidateLong ;
+ scalar_t__ WriteInvalidateWord ;
+ int assem_debug (char*,scalar_t__) ;
+ int assert (int) ;
+ int emit_call (int) ;
+ int emit_jmp (int) ;
+ int emit_mov (int,int) ;
+ int emit_xchg (int,int) ;
+ int get_reg (char*,int) ;
+ scalar_t__ out ;
+ int restore_regs (int) ;
+ int* rs1 ;
+ int save_regs (int) ;
+ int set_jump_target (int,int) ;
+ scalar_t__ start ;
+ int** stubs ;
 
 do_writestub(int n)
 {
@@ -55,7 +55,7 @@ do_writestub(int n)
   if(addr<0) addr=get_reg(i_regmap,-1);
   assert(addr>=0);
   save_regs(reglist);
-  // "FASTCALL" api: address in edi, data in esi
+
   if(rs!=EDI) {
     if(rt==EDI) {
       if(rs==ESI) emit_xchg(EDI,ESI);
@@ -70,36 +70,13 @@ do_writestub(int n)
     }
   }
   else if(rt!=ESI) emit_mov(rt,ESI);
-  //if(type==STOREB_STUB) emit_xorimm(EAX,1,EAX); // WriteInvalidateByteSwapped does this
-  
-  /*int temp;
-  int cc=get_reg(i_regmap,CCREG);
-  if(cc<0) {
-    if(addr==HOST_CCREG)
-    {
-      cc=0;temp=1;
-      assert(cc!=HOST_CCREG);
-      assert(temp!=HOST_CCREG);
-      emit_loadreg(CCREG,cc);
-    }
-    else
-    {
-      cc=HOST_CCREG;
-      emit_loadreg(CCREG,cc);
-      temp=!addr;
-    }
-  }
-  else
-  {
-    temp=!addr;
-  }*/
   if(type==STOREB_STUB)
     emit_call((int)WriteInvalidateByteSwapped);
   if(type==STOREW_STUB)
     emit_call((int)WriteInvalidateWord);
   if(type==STOREL_STUB)
     emit_call((int)WriteInvalidateLong);
-  
+
   restore_regs(reglist);
-  emit_jmp(stubs[n][2]); // return address
+  emit_jmp(stubs[n][2]);
 }

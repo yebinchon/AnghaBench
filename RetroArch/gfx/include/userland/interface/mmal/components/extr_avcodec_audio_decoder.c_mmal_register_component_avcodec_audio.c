@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  avcodec_init () ; 
- int /*<<< orphan*/  avcodec_register_all () ; 
- int /*<<< orphan*/  mmal_component_create_avcodec ; 
- int /*<<< orphan*/  mmal_component_supplier_register (char*,int /*<<< orphan*/ ) ; 
+ int avcodec_init () ;
+ int avcodec_register_all () ;
+ int mmal_component_create_avcodec ;
+ int mmal_component_supplier_register (char*,int ) ;
 
 void mmal_register_component_avcodec_audio(void)
 {

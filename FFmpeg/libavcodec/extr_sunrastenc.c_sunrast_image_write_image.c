@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint32_t ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
 struct TYPE_5__ {int width; int height; TYPE_1__* priv_data; } ;
-struct TYPE_4__ {int maplength; int depth; scalar_t__ type; int length; int /*<<< orphan*/  p; } ;
-typedef  TYPE_1__ SUNRASTContext ;
-typedef  int /*<<< orphan*/  PutByteContext ;
-typedef  TYPE_2__ AVCodecContext ;
+struct TYPE_4__ {int maplength; int depth; scalar_t__ type; int length; int p; } ;
+typedef TYPE_1__ SUNRASTContext ;
+typedef int PutByteContext ;
+typedef TYPE_2__ AVCodecContext ;
 
-/* Variables and functions */
- int GET_VALUE ; 
- int RLE_TRIGGER ; 
- scalar_t__ RT_BYTE_ENCODED ; 
- int /*<<< orphan*/  bytestream2_put_be16u (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  bytestream2_put_buffer (int /*<<< orphan*/ *,int const*,int) ; 
- int /*<<< orphan*/  bytestream2_put_byteu (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  bytestream2_skip_p (int /*<<< orphan*/ *,int) ; 
- int bytestream2_tell_p (int /*<<< orphan*/ *) ; 
+
+ int GET_VALUE ;
+ int RLE_TRIGGER ;
+ scalar_t__ RT_BYTE_ENCODED ;
+ int bytestream2_put_be16u (int *,int) ;
+ int bytestream2_put_buffer (int *,int const*,int) ;
+ int bytestream2_put_byteu (int *,int) ;
+ int bytestream2_skip_p (int *,int) ;
+ int bytestream2_tell_p (int *) ;
 
 __attribute__((used)) static void sunrast_image_write_image(AVCodecContext *avctx,
                                       const uint8_t *pixels,
@@ -39,7 +39,7 @@ __attribute__((used)) static void sunrast_image_write_image(AVCodecContext *avct
     const uint8_t *ptr;
     int len, alen, x, y;
 
-    if (s->maplength) {     // palettized
+    if (s->maplength) {
         PutByteContext pb_r, pb_g;
         int len = s->maplength / 3;
 
@@ -52,14 +52,14 @@ __attribute__((used)) static void sunrast_image_write_image(AVCodecContext *avct
             uint32_t pixel = palette_data[x];
 
             bytestream2_put_byteu(&pb_r, (pixel >> 16) & 0xFF);
-            bytestream2_put_byteu(&pb_g, (pixel >> 8)  & 0xFF);
-            bytestream2_put_byteu(&s->p,  pixel        & 0xFF);
+            bytestream2_put_byteu(&pb_g, (pixel >> 8) & 0xFF);
+            bytestream2_put_byteu(&s->p, pixel & 0xFF);
         }
     }
 
-    len  = (s->depth * avctx->width + 7) >> 3;
+    len = (s->depth * avctx->width + 7) >> 3;
     alen = len + (len & 1);
-    ptr  = pixels;
+    ptr = pixels;
 
      if (s->type == RT_BYTE_ENCODED) {
         uint8_t value, value2;
@@ -67,10 +67,10 @@ __attribute__((used)) static void sunrast_image_write_image(AVCodecContext *avct
 
         ptr = pixels;
 
-#define GET_VALUE y >= avctx->height ? 0 : x >= len ? ptr[len-1] : ptr[x]
+
 
         x = 0, y = 0;
-        value2 = GET_VALUE;
+        value2 = y >= avctx->height ? 0 : x >= len ? ptr[len-1] : ptr[x];
         while (y < avctx->height) {
             run = 1;
             value = value2;
@@ -80,7 +80,7 @@ __attribute__((used)) static void sunrast_image_write_image(AVCodecContext *avct
                 ptr += linesize, y++;
             }
 
-            value2 = GET_VALUE;
+            value2 = y >= avctx->height ? 0 : x >= len ? ptr[len-1] : ptr[x];
             while (value2 == value && run < 256 && y < avctx->height) {
                 x++;
                 run++;
@@ -88,7 +88,7 @@ __attribute__((used)) static void sunrast_image_write_image(AVCodecContext *avct
                     x = 0;
                     ptr += linesize, y++;
                 }
-                value2 = GET_VALUE;
+                value2 = y >= avctx->height ? 0 : x >= len ? ptr[len-1] : ptr[x];
             }
 
             if (run > 2 || value == RLE_TRIGGER) {
@@ -102,7 +102,7 @@ __attribute__((used)) static void sunrast_image_write_image(AVCodecContext *avct
                 bytestream2_put_be16u(&s->p, (value << 8) | value);
         }
 
-        // update data length for header
+
         s->length = bytestream2_tell_p(&s->p) - 32 - s->maplength;
     } else {
         for (y = 0; y < avctx->height; y++) {

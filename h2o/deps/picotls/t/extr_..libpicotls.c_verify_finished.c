@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_9__ ;
-typedef  struct TYPE_15__   TYPE_6__ ;
-typedef  struct TYPE_14__   TYPE_5__ ;
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  verify_data ;
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_10__ {int /*<<< orphan*/  secret; } ;
+
+
+typedef struct TYPE_16__ TYPE_9__ ;
+typedef struct TYPE_15__ TYPE_6__ ;
+typedef struct TYPE_14__ TYPE_5__ ;
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int verify_data ;
+typedef int uint8_t ;
+struct TYPE_10__ {int secret; } ;
 struct TYPE_11__ {TYPE_1__ dec; } ;
 struct TYPE_14__ {TYPE_9__* key_schedule; TYPE_2__ traffic_protection; } ;
-typedef  TYPE_5__ ptls_t ;
+typedef TYPE_5__ ptls_t ;
 struct TYPE_15__ {scalar_t__ len; scalar_t__ base; } ;
-typedef  TYPE_6__ ptls_iovec_t ;
+typedef TYPE_6__ ptls_iovec_t ;
 struct TYPE_16__ {TYPE_4__* hashes; } ;
 struct TYPE_13__ {TYPE_3__* algo; } ;
 struct TYPE_12__ {scalar_t__ digest_size; } ;
 
-/* Variables and functions */
- int PTLS_ALERT_DECODE_ERROR ; 
- int PTLS_ALERT_HANDSHAKE_FAILURE ; 
- scalar_t__ PTLS_HANDSHAKE_HEADER_SIZE ; 
- int PTLS_MAX_DIGEST_SIZE ; 
- int calc_verify_data (int /*<<< orphan*/ *,TYPE_9__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ptls_clear_memory (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  ptls_mem_equal (scalar_t__,int /*<<< orphan*/ *,scalar_t__) ; 
+
+ int PTLS_ALERT_DECODE_ERROR ;
+ int PTLS_ALERT_HANDSHAKE_FAILURE ;
+ scalar_t__ PTLS_HANDSHAKE_HEADER_SIZE ;
+ int PTLS_MAX_DIGEST_SIZE ;
+ int calc_verify_data (int *,TYPE_9__*,int ) ;
+ int ptls_clear_memory (int *,int) ;
+ int ptls_mem_equal (scalar_t__,int *,scalar_t__) ;
 
 __attribute__((used)) static int verify_finished(ptls_t *tls, ptls_iovec_t message)
 {

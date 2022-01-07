@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  libvlc_media_t ;
-struct TYPE_6__ {int /*<<< orphan*/  p_mi; int /*<<< orphan*/  p_mlist; } ;
-typedef  TYPE_1__ libvlc_media_list_player_t ;
-typedef  int /*<<< orphan*/  libvlc_media_list_path_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  libvlc_media_list_path_of_item (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  libvlc_media_player_play (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  libvlc_printerr (char*) ; 
- int /*<<< orphan*/  lock (TYPE_1__*) ; 
- int /*<<< orphan*/  set_current_playing_item (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  unlock (TYPE_1__*) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int libvlc_media_t ;
+struct TYPE_6__ {int p_mi; int p_mlist; } ;
+typedef TYPE_1__ libvlc_media_list_player_t ;
+typedef int libvlc_media_list_path_t ;
+
+
+ int libvlc_media_list_path_of_item (int ,int *) ;
+ int libvlc_media_player_play (int ) ;
+ int libvlc_printerr (char*) ;
+ int lock (TYPE_1__*) ;
+ int set_current_playing_item (TYPE_1__*,int ) ;
+ int unlock (TYPE_1__*) ;
 
 int libvlc_media_list_player_play_item(libvlc_media_list_player_t * p_mlp, libvlc_media_t * p_md)
 {

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
-typedef  int /*<<< orphan*/  fixed20_12 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dfixed_frac (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dfixed_init (unsigned int) ; 
+
+
+
+typedef int u32 ;
+typedef int fixed20_12 ;
+
+
+ int dfixed_frac (int ) ;
+ int dfixed_init (unsigned int) ;
 
 __attribute__((used)) static inline u32 compute_initial_dda(unsigned int in)
 {
-	fixed20_12 inf = dfixed_init(in);
-	return dfixed_frac(inf);
+ fixed20_12 inf = dfixed_init(in);
+ return dfixed_frac(inf);
 }

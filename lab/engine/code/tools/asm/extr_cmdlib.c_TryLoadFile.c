@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int Q_filelength (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SafeRead (int /*<<< orphan*/ *,void*,int) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- void* malloc (int) ; 
- int /*<<< orphan*/ * myfopen (char const*,char*) ; 
 
-int    TryLoadFile (const char *filename, void **bufferptr)
+
+
+typedef int FILE ;
+
+
+ int Q_filelength (int *) ;
+ int SafeRead (int *,void*,int) ;
+ int fclose (int *) ;
+ void* malloc (int) ;
+ int * myfopen (char const*,char*) ;
+
+int TryLoadFile (const char *filename, void **bufferptr)
 {
-	FILE	*f;
-	int    length;
-	void    *buffer;
+ FILE *f;
+ int length;
+ void *buffer;
 
-	*bufferptr = NULL;
+ *bufferptr = ((void*)0);
 
-	f = myfopen (filename, "rb");
-	if (!f)
-		return -1;
-	length = Q_filelength (f);
-	buffer = malloc (length+1);
-	((char *)buffer)[length] = 0;
-	SafeRead (f, buffer, length);
-	fclose (f);
+ f = myfopen (filename, "rb");
+ if (!f)
+  return -1;
+ length = Q_filelength (f);
+ buffer = malloc (length+1);
+ ((char *)buffer)[length] = 0;
+ SafeRead (f, buffer, length);
+ fclose (f);
 
-	*bufferptr = buffer;
-	return length;
+ *bufferptr = buffer;
+ return length;
 }

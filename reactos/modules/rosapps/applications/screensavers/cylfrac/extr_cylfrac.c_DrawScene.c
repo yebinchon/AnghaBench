@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  PAINTSTRUCT ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  int /*<<< orphan*/  HDC ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BeginPaint (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DrawCylinder (int /*<<< orphan*/ ,int,double) ; 
- int /*<<< orphan*/  EndPaint (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int GL_COLOR_BUFFER_BIT ; 
- int GL_DEPTH_BUFFER_BIT ; 
- int /*<<< orphan*/  HLStoRGB (int,double,double,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SwapBuffers (int /*<<< orphan*/ ) ; 
- int angle ; 
- int /*<<< orphan*/  bval ; 
- int colorh ; 
- int /*<<< orphan*/  glClear (int) ; 
- int /*<<< orphan*/  glRotatef (int,double,double,double) ; 
- int /*<<< orphan*/  gval ; 
- int /*<<< orphan*/  lvls ; 
- int /*<<< orphan*/  rval ; 
+
+
+
+typedef int PAINTSTRUCT ;
+typedef int HWND ;
+typedef int HDC ;
+
+
+ int BeginPaint (int ,int *) ;
+ int DrawCylinder (int ,int,double) ;
+ int EndPaint (int ,int *) ;
+ int GL_COLOR_BUFFER_BIT ;
+ int GL_DEPTH_BUFFER_BIT ;
+ int HLStoRGB (int,double,double,int *,int *,int *) ;
+ int SwapBuffers (int ) ;
+ int angle ;
+ int bval ;
+ int colorh ;
+ int glClear (int) ;
+ int glRotatef (int,double,double,double) ;
+ int gval ;
+ int lvls ;
+ int rval ;
 
 void DrawScene(HWND hwnd, HDC dc, int ticks)
 {

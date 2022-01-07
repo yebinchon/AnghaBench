@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* p_unix ;
-typedef  int /*<<< orphan*/  lua_State ;
-struct TYPE_2__ {int /*<<< orphan*/  sock; } ;
 
-/* Variables and functions */
- int IO_DONE ; 
- int /*<<< orphan*/  auxiliar_checkclass (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  auxiliar_setclass (int /*<<< orphan*/ *,char*,int) ; 
- scalar_t__ luaL_optnumber (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  lua_pushnil (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_pushnumber (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pushstring (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int socket_listen (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  socket_strerror (int) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef TYPE_1__* p_unix ;
+typedef int lua_State ;
+struct TYPE_2__ {int sock; } ;
+
+
+ int IO_DONE ;
+ int auxiliar_checkclass (int *,char*,int) ;
+ int auxiliar_setclass (int *,char*,int) ;
+ scalar_t__ luaL_optnumber (int *,int,int) ;
+ int lua_pushnil (int *) ;
+ int lua_pushnumber (int *,int) ;
+ int lua_pushstring (int *,int ) ;
+ int socket_listen (int *,int) ;
+ int socket_strerror (int) ;
 
 __attribute__((used)) static int meth_listen(lua_State *L)
 {
@@ -36,7 +36,7 @@ __attribute__((used)) static int meth_listen(lua_State *L)
         lua_pushstring(L, socket_strerror(err));
         return 2;
     }
-    /* turn master object into a server object */
+
     auxiliar_setclass(L, "unix{server}", 1);
     lua_pushnumber(L, 1);
     return 1;

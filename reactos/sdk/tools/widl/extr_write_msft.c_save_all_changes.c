@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_5__ ;
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_15__ TYPE_5__ ;
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
 struct TYPE_14__ {int varflags; int nrtypeinfos; } ;
 struct TYPE_12__ {TYPE_5__* typelib; TYPE_4__ typelib_segdir; TYPE_4__ typelib_header; TYPE_4__* typelib_typeinfo_offsets; TYPE_4__ help_string_dll_offset; } ;
-typedef  TYPE_1__ msft_typelib_t ;
+typedef TYPE_1__ msft_typelib_t ;
 struct TYPE_13__ {int cval; } ;
-typedef  TYPE_2__ expr_t ;
-struct TYPE_15__ {int /*<<< orphan*/  attrs; } ;
-typedef  int /*<<< orphan*/  MSFT_SegDir ;
-typedef  int /*<<< orphan*/  MSFT_Header ;
+typedef TYPE_2__ expr_t ;
+struct TYPE_15__ {int attrs; } ;
+typedef int MSFT_SegDir ;
+typedef int MSFT_Header ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ATTR_ID ; 
- int /*<<< orphan*/  MSFT_SEG_ARRAYDESC ; 
- int /*<<< orphan*/  MSFT_SEG_CUSTDATA ; 
- int /*<<< orphan*/  MSFT_SEG_CUSTDATAGUID ; 
- int /*<<< orphan*/  MSFT_SEG_GUID ; 
- int /*<<< orphan*/  MSFT_SEG_GUIDHASH ; 
- int /*<<< orphan*/  MSFT_SEG_IMPORTFILES ; 
- int /*<<< orphan*/  MSFT_SEG_IMPORTINFO ; 
- int /*<<< orphan*/  MSFT_SEG_NAME ; 
- int /*<<< orphan*/  MSFT_SEG_NAMEHASH ; 
- int /*<<< orphan*/  MSFT_SEG_REFERENCES ; 
- int /*<<< orphan*/  MSFT_SEG_STRING ; 
- int /*<<< orphan*/  MSFT_SEG_TYPEDESC ; 
- int /*<<< orphan*/  MSFT_SEG_TYPEINFO ; 
- int /*<<< orphan*/  add_output_to_resources (char*,char*) ; 
- scalar_t__ byte_swapped ; 
- int /*<<< orphan*/  chat (char*,TYPE_1__*) ; 
- scalar_t__ ctl2_finalize_segment (TYPE_1__*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ctl2_finalize_typeinfos (TYPE_1__*,int) ; 
- int /*<<< orphan*/  ctl2_write_segment (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ctl2_write_typeinfos (TYPE_1__*) ; 
- int /*<<< orphan*/  flush_output_buffer (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  flush_output_resources (int /*<<< orphan*/ ) ; 
- TYPE_2__* get_attrp (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  init_output_buffer () ; 
- int /*<<< orphan*/  output_typelib_regscript (TYPE_5__*) ; 
- int /*<<< orphan*/  put_data (TYPE_4__*,int) ; 
- int /*<<< orphan*/  sprintf (char*,char*,int) ; 
- scalar_t__ strendswith (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  typelib_name ; 
+
+ int ATTR_ID ;
+ int MSFT_SEG_ARRAYDESC ;
+ int MSFT_SEG_CUSTDATA ;
+ int MSFT_SEG_CUSTDATAGUID ;
+ int MSFT_SEG_GUID ;
+ int MSFT_SEG_GUIDHASH ;
+ int MSFT_SEG_IMPORTFILES ;
+ int MSFT_SEG_IMPORTINFO ;
+ int MSFT_SEG_NAME ;
+ int MSFT_SEG_NAMEHASH ;
+ int MSFT_SEG_REFERENCES ;
+ int MSFT_SEG_STRING ;
+ int MSFT_SEG_TYPEDESC ;
+ int MSFT_SEG_TYPEINFO ;
+ int add_output_to_resources (char*,char*) ;
+ scalar_t__ byte_swapped ;
+ int chat (char*,TYPE_1__*) ;
+ scalar_t__ ctl2_finalize_segment (TYPE_1__*,int,int ) ;
+ int ctl2_finalize_typeinfos (TYPE_1__*,int) ;
+ int ctl2_write_segment (TYPE_1__*,int ) ;
+ int ctl2_write_typeinfos (TYPE_1__*) ;
+ int flush_output_buffer (int ) ;
+ int flush_output_resources (int ) ;
+ TYPE_2__* get_attrp (int ,int ) ;
+ int init_output_buffer () ;
+ int output_typelib_regscript (TYPE_5__*) ;
+ int put_data (TYPE_4__*,int) ;
+ int sprintf (char*,char*,int) ;
+ scalar_t__ strendswith (int ,char*) ;
+ int typelib_name ;
 
 __attribute__((used)) static void save_all_changes(msft_typelib_t *typelib)
 {
@@ -62,7 +62,7 @@ __attribute__((used)) static void save_all_changes(msft_typelib_t *typelib)
     chat("save_all_changes(%p)\n", typelib);
 
     filepos = sizeof(MSFT_Header) + sizeof(MSFT_SegDir);
-    if(typelib->typelib_header.varflags & 0x100) filepos += 4; /* helpstringdll */
+    if(typelib->typelib_header.varflags & 0x100) filepos += 4;
     filepos += typelib->typelib_header.nrtypeinfos * 4;
 
     filepos += ctl2_finalize_segment(typelib, filepos, MSFT_SEG_TYPEINFO);
@@ -106,7 +106,7 @@ __attribute__((used)) static void save_all_changes(msft_typelib_t *typelib)
 
     ctl2_write_typeinfos(typelib);
 
-    if (strendswith( typelib_name, ".res" ))  /* create a binary resource file */
+    if (strendswith( typelib_name, ".res" ))
     {
         char typelib_id[13] = "#1";
 
@@ -115,9 +115,9 @@ __attribute__((used)) static void save_all_changes(msft_typelib_t *typelib)
             sprintf( typelib_id, "#%d", expr->cval );
         add_output_to_resources( "TYPELIB", typelib_id );
         output_typelib_regscript( typelib->typelib );
-#ifdef __REACTOS__
-        flush_output_resources( typelib_name );
-#endif
+
+
+
     }
     else flush_output_buffer( typelib_name );
 }

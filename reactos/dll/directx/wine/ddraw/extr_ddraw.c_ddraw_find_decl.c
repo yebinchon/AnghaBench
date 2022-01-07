@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct wined3d_vertex_declaration {int dummy; } ;
-struct ddraw {int numConvertedDecls; int declArraySize; struct FvfToDecl* decls; int /*<<< orphan*/  wined3d_device; } ;
+struct ddraw {int numConvertedDecls; int declArraySize; struct FvfToDecl* decls; int wined3d_device; } ;
 struct FvfToDecl {scalar_t__ fvf; struct wined3d_vertex_declaration* decl; } ;
-typedef  int /*<<< orphan*/  convertedDecls ;
-typedef  scalar_t__ HRESULT ;
-typedef  scalar_t__ DWORD ;
+typedef int convertedDecls ;
+typedef scalar_t__ HRESULT ;
+typedef scalar_t__ DWORD ;
 
-/* Variables and functions */
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  TRACE (char*,scalar_t__,...) ; 
- int /*<<< orphan*/  ddraw_null_wined3d_parent_ops ; 
- struct FvfToDecl* heap_realloc (struct FvfToDecl*,unsigned int) ; 
- unsigned int max (int,int) ; 
- int /*<<< orphan*/  memmove (struct FvfToDecl*,struct FvfToDecl*,int) ; 
- scalar_t__ wined3d_vertex_declaration_create_from_fvf (int /*<<< orphan*/ ,scalar_t__,struct ddraw*,int /*<<< orphan*/ *,struct wined3d_vertex_declaration**) ; 
- int /*<<< orphan*/  wined3d_vertex_declaration_decref (struct wined3d_vertex_declaration*) ; 
+
+ scalar_t__ S_OK ;
+ int TRACE (char*,scalar_t__,...) ;
+ int ddraw_null_wined3d_parent_ops ;
+ struct FvfToDecl* heap_realloc (struct FvfToDecl*,unsigned int) ;
+ unsigned int max (int,int) ;
+ int memmove (struct FvfToDecl*,struct FvfToDecl*,int) ;
+ scalar_t__ wined3d_vertex_declaration_create_from_fvf (int ,scalar_t__,struct ddraw*,int *,struct wined3d_vertex_declaration**) ;
+ int wined3d_vertex_declaration_decref (struct wined3d_vertex_declaration*) ;
 
 struct wined3d_vertex_declaration *ddraw_find_decl(struct ddraw *This, DWORD fvf)
 {
-    struct wined3d_vertex_declaration *pDecl = NULL;
+    struct wined3d_vertex_declaration *pDecl = ((void*)0);
     HRESULT hr;
-    int p, low, high; /* deliberately signed */
+    int p, low, high;
     struct FvfToDecl *convertedDecls = This->decls;
 
     TRACE("Searching for declaration for fvf %08x... ", fvf);
@@ -54,7 +54,7 @@ struct wined3d_vertex_declaration *ddraw_find_decl(struct ddraw *This, DWORD fvf
 
     hr = wined3d_vertex_declaration_create_from_fvf(This->wined3d_device,
             fvf, This, &ddraw_null_wined3d_parent_ops, &pDecl);
-    if (hr != S_OK) return NULL;
+    if (hr != S_OK) return ((void*)0);
 
     if (This->declArraySize == This->numConvertedDecls)
     {
@@ -64,7 +64,7 @@ struct wined3d_vertex_declaration *ddraw_find_decl(struct ddraw *This, DWORD fvf
                 (This->numConvertedDecls + grow) * sizeof(*convertedDecls))))
         {
             wined3d_vertex_declaration_decref(pDecl);
-            return NULL;
+            return ((void*)0);
         }
         This->decls = convertedDecls;
         This->declArraySize += grow;

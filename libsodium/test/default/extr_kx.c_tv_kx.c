@@ -1,41 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  crypto_kx_PRIMITIVE ; 
- int crypto_kx_PUBLICKEYBYTES ; 
- int crypto_kx_SECRETKEYBYTES ; 
- int crypto_kx_SEEDBYTES ; 
- int crypto_kx_SESSIONKEYBYTES ; 
- scalar_t__ crypto_kx_client_session_keys (unsigned char*,unsigned char*,unsigned char*,unsigned char*,unsigned char*) ; 
- int /*<<< orphan*/  crypto_kx_keypair (unsigned char*,unsigned char*) ; 
- int /*<<< orphan*/  crypto_kx_primitive () ; 
- int crypto_kx_publickeybytes () ; 
- int crypto_kx_secretkeybytes () ; 
- int /*<<< orphan*/  crypto_kx_seed_keypair (unsigned char*,unsigned char*,unsigned char*) ; 
- int crypto_kx_seedbytes () ; 
- scalar_t__ crypto_kx_server_session_keys (unsigned char*,unsigned char*,unsigned char*,unsigned char*,unsigned char*) ; 
- int crypto_kx_sessionkeybytes () ; 
- scalar_t__ memcmp (unsigned char*,unsigned char*,int) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  randombytes_buf (unsigned char*,int) ; 
- unsigned char* small_order_p ; 
- int /*<<< orphan*/  sodium_bin2hex (char*,int,unsigned char*,int) ; 
- int /*<<< orphan*/  sodium_free (unsigned char*) ; 
- int /*<<< orphan*/  sodium_increment (unsigned char*,int) ; 
- scalar_t__ sodium_malloc (int) ; 
- scalar_t__ strcmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int assert (int) ;
+ int crypto_kx_PRIMITIVE ;
+ int crypto_kx_PUBLICKEYBYTES ;
+ int crypto_kx_SECRETKEYBYTES ;
+ int crypto_kx_SEEDBYTES ;
+ int crypto_kx_SESSIONKEYBYTES ;
+ scalar_t__ crypto_kx_client_session_keys (unsigned char*,unsigned char*,unsigned char*,unsigned char*,unsigned char*) ;
+ int crypto_kx_keypair (unsigned char*,unsigned char*) ;
+ int crypto_kx_primitive () ;
+ int crypto_kx_publickeybytes () ;
+ int crypto_kx_secretkeybytes () ;
+ int crypto_kx_seed_keypair (unsigned char*,unsigned char*,unsigned char*) ;
+ int crypto_kx_seedbytes () ;
+ scalar_t__ crypto_kx_server_session_keys (unsigned char*,unsigned char*,unsigned char*,unsigned char*,unsigned char*) ;
+ int crypto_kx_sessionkeybytes () ;
+ scalar_t__ memcmp (unsigned char*,unsigned char*,int) ;
+ int printf (char*,...) ;
+ int randombytes_buf (unsigned char*,int) ;
+ unsigned char* small_order_p ;
+ int sodium_bin2hex (char*,int,unsigned char*,int) ;
+ int sodium_free (unsigned char*) ;
+ int sodium_increment (unsigned char*,int) ;
+ scalar_t__ sodium_malloc (int) ;
+ scalar_t__ strcmp (int ,int ) ;
 
 __attribute__((used)) static void
 tv_kx(void)
@@ -45,8 +37,8 @@ tv_kx(void)
     unsigned char *client_rx, *client_tx;
     unsigned char *server_pk, *server_sk;
     unsigned char *server_rx, *server_tx;
-    char           hex[65];
-    int            i;
+    char hex[65];
+    int i;
 
     seed = (unsigned char *) sodium_malloc(crypto_kx_SEEDBYTES);
     for (i = 0; i < crypto_kx_SEEDBYTES; i++) {
@@ -136,13 +128,13 @@ tv_kx(void)
     randombytes_buf(client_tx, crypto_kx_SESSIONKEYBYTES);
     randombytes_buf(server_rx, crypto_kx_SESSIONKEYBYTES);
     randombytes_buf(server_tx, crypto_kx_SESSIONKEYBYTES);
-    if (crypto_kx_client_session_keys(client_rx, NULL,
+    if (crypto_kx_client_session_keys(client_rx, ((void*)0),
                                       client_pk, client_sk, server_pk) != 0 ||
-        crypto_kx_client_session_keys(NULL, client_tx,
+        crypto_kx_client_session_keys(((void*)0), client_tx,
                                       client_pk, client_sk, server_pk) != 0 ||
-        crypto_kx_server_session_keys(server_rx, NULL,
+        crypto_kx_server_session_keys(server_rx, ((void*)0),
                                       server_pk, server_sk, client_pk) != 0 ||
-        crypto_kx_server_session_keys(NULL, server_tx,
+        crypto_kx_server_session_keys(((void*)0), server_tx,
                                       server_pk, server_sk, client_pk) != 0) {
         printf("failure when one of the pointers happens to be NULL");
     }

@@ -1,36 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  WARN_ON_ONCE (int) ; 
- int /*<<< orphan*/ * current ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_trylock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  prepare_lock ; 
- int /*<<< orphan*/ * prepare_owner ; 
- int prepare_refcnt ; 
+ int WARN_ON_ONCE (int) ;
+ int * current ;
+ int mutex_lock (int *) ;
+ int mutex_trylock (int *) ;
+ int prepare_lock ;
+ int * prepare_owner ;
+ int prepare_refcnt ;
 
 __attribute__((used)) static void clk_prepare_lock(void)
 {
-	if (!mutex_trylock(&prepare_lock)) {
-		if (prepare_owner == current) {
-			prepare_refcnt++;
-			return;
-		}
-		mutex_lock(&prepare_lock);
-	}
-	WARN_ON_ONCE(prepare_owner != NULL);
-	WARN_ON_ONCE(prepare_refcnt != 0);
-	prepare_owner = current;
-	prepare_refcnt = 1;
+ if (!mutex_trylock(&prepare_lock)) {
+  if (prepare_owner == current) {
+   prepare_refcnt++;
+   return;
+  }
+  mutex_lock(&prepare_lock);
+ }
+ WARN_ON_ONCE(prepare_owner != ((void*)0));
+ WARN_ON_ONCE(prepare_refcnt != 0);
+ prepare_owner = current;
+ prepare_refcnt = 1;
 }

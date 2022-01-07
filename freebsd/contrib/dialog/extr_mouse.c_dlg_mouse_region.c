@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mseRegion ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/ * any_mouse_region (int,int,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int mseRegion ;
+
+
+ int TRUE ;
+ int * any_mouse_region (int,int,int ) ;
 
 mseRegion *
 dlg_mouse_region(int y, int x)

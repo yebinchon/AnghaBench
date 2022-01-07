@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char macro_scope ;
+
+
+
+
+typedef char macro_scope ;
 struct cleanup {int dummy; } ;
 
-/* Variables and functions */
- char* default_macro_scope () ; 
- int /*<<< orphan*/  do_cleanups (struct cleanup*) ; 
- int /*<<< orphan*/  error (char*) ; 
- int /*<<< orphan*/  fputs_filtered (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free_current_contents ; 
- int /*<<< orphan*/  gdb_stdout ; 
- char* macro_expand (char*,int /*<<< orphan*/ ,char*) ; 
- struct cleanup* make_cleanup (int /*<<< orphan*/ ,char**) ; 
- int /*<<< orphan*/  standard_macro_lookup ; 
+
+ char* default_macro_scope () ;
+ int do_cleanups (struct cleanup*) ;
+ int error (char*) ;
+ int fputs_filtered (char*,int ) ;
+ int free_current_contents ;
+ int gdb_stdout ;
+ char* macro_expand (char*,int ,char*) ;
+ struct cleanup* make_cleanup (int ,char**) ;
+ int standard_macro_lookup ;
 
 __attribute__((used)) static void
 macro_expand_command (char *exp, int from_tty)
 {
-  struct macro_scope *ms = NULL;
-  char *expanded = NULL;
+  struct macro_scope *ms = ((void*)0);
+  char *expanded = ((void*)0);
   struct cleanup *cleanup_chain = make_cleanup (free_current_contents, &ms);
   make_cleanup (free_current_contents, &expanded);
 
-  /* You know, when the user doesn't specify any expression, it would be
-     really cool if this defaulted to the last expression evaluated.
-     Then it would be easy to ask, "Hey, what did I just evaluate?"  But
-     at the moment, the `print' commands don't save the last expression
-     evaluated, just its value.  */
+
+
+
+
+
   if (! exp || ! *exp)
     error ("You must follow the `macro expand' command with the"
            " expression you\n"

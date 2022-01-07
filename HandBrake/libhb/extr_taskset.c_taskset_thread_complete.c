@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  task_cond_lock; int /*<<< orphan*/  task_complete; int /*<<< orphan*/  bitmap_elements; int /*<<< orphan*/  task_complete_bitmap; } ;
-typedef  TYPE_1__ taskset_t ;
 
-/* Variables and functions */
- scalar_t__ allbits_set (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bit_set (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  hb_cond_signal (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hb_lock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hb_unlock (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int task_cond_lock; int task_complete; int bitmap_elements; int task_complete_bitmap; } ;
+typedef TYPE_1__ taskset_t ;
+
+
+ scalar_t__ allbits_set (int ,int ) ;
+ int bit_set (int ,int) ;
+ int hb_cond_signal (int ) ;
+ int hb_lock (int ) ;
+ int hb_unlock (int ) ;
 
 void
 taskset_thread_complete( taskset_t *ts, int thr_idx )

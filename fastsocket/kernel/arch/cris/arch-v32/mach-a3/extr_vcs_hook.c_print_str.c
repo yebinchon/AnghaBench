@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  hook_call (int /*<<< orphan*/ ,int,char const*) ; 
- int /*<<< orphan*/  hook_print_str ; 
+ int hook_call (int ,int,char const*) ;
+ int hook_print_str ;
 
 void print_str(const char *str)
 {
-	int i;
-	/* find null at end of string */
-	for (i = 1; str[i]; i++) ;
-	hook_call(hook_print_str, i, str);
+ int i;
+
+ for (i = 1; str[i]; i++) ;
+ hook_call(hook_print_str, i, str);
 }

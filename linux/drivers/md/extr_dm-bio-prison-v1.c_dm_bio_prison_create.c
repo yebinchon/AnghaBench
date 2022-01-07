@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct dm_bio_prison {int /*<<< orphan*/  cells; int /*<<< orphan*/  cell_pool; int /*<<< orphan*/  lock; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  MIN_CELLS ; 
- int /*<<< orphan*/  RB_ROOT ; 
- int /*<<< orphan*/  _cell_cache ; 
- int /*<<< orphan*/  kfree (struct dm_bio_prison*) ; 
- struct dm_bio_prison* kzalloc (int,int /*<<< orphan*/ ) ; 
- int mempool_init_slab_pool (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  spin_lock_init (int /*<<< orphan*/ *) ; 
+
+
+
+struct dm_bio_prison {int cells; int cell_pool; int lock; } ;
+
+
+ int GFP_KERNEL ;
+ int MIN_CELLS ;
+ int RB_ROOT ;
+ int _cell_cache ;
+ int kfree (struct dm_bio_prison*) ;
+ struct dm_bio_prison* kzalloc (int,int ) ;
+ int mempool_init_slab_pool (int *,int ,int ) ;
+ int spin_lock_init (int *) ;
 
 struct dm_bio_prison *dm_bio_prison_create(void)
 {
-	struct dm_bio_prison *prison = kzalloc(sizeof(*prison), GFP_KERNEL);
-	int ret;
+ struct dm_bio_prison *prison = kzalloc(sizeof(*prison), GFP_KERNEL);
+ int ret;
 
-	if (!prison)
-		return NULL;
+ if (!prison)
+  return ((void*)0);
 
-	spin_lock_init(&prison->lock);
+ spin_lock_init(&prison->lock);
 
-	ret = mempool_init_slab_pool(&prison->cell_pool, MIN_CELLS, _cell_cache);
-	if (ret) {
-		kfree(prison);
-		return NULL;
-	}
+ ret = mempool_init_slab_pool(&prison->cell_pool, MIN_CELLS, _cell_cache);
+ if (ret) {
+  kfree(prison);
+  return ((void*)0);
+ }
 
-	prison->cells = RB_ROOT;
+ prison->cells = RB_ROOT;
 
-	return prison;
+ return prison;
 }

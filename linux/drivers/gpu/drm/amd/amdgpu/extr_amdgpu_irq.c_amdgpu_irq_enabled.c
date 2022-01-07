@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct amdgpu_irq_src {unsigned int num_types; int /*<<< orphan*/ * enabled_types; TYPE_2__* funcs; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct amdgpu_irq_src {unsigned int num_types; int * enabled_types; TYPE_2__* funcs; } ;
 struct amdgpu_device {TYPE_1__* ddev; } ;
-struct TYPE_4__ {int /*<<< orphan*/  set; } ;
-struct TYPE_3__ {int /*<<< orphan*/  irq_enabled; } ;
+struct TYPE_4__ {int set; } ;
+struct TYPE_3__ {int irq_enabled; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  atomic_read (int /*<<< orphan*/ *) ; 
+
+ int atomic_read (int *) ;
 
 bool amdgpu_irq_enabled(struct amdgpu_device *adev, struct amdgpu_irq_src *src,
-			unsigned type)
+   unsigned type)
 {
-	if (!adev->ddev->irq_enabled)
-		return false;
+ if (!adev->ddev->irq_enabled)
+  return 0;
 
-	if (type >= src->num_types)
-		return false;
+ if (type >= src->num_types)
+  return 0;
 
-	if (!src->enabled_types || !src->funcs->set)
-		return false;
+ if (!src->enabled_types || !src->funcs->set)
+  return 0;
 
-	return !!atomic_read(&src->enabled_types[type]);
+ return !!atomic_read(&src->enabled_types[type]);
 }

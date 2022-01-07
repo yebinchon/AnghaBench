@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  __u8 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  WTCSR_TME ; 
- int /*<<< orphan*/  del_timer (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sh_wdt_read_csr () ; 
- int /*<<< orphan*/  sh_wdt_write_csr (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  shwdt_lock ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  timer ; 
+
+
+
+typedef int __u8 ;
+
+
+ int WTCSR_TME ;
+ int del_timer (int *) ;
+ int sh_wdt_read_csr () ;
+ int sh_wdt_write_csr (int ) ;
+ int shwdt_lock ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
+ int timer ;
 
 __attribute__((used)) static void sh_wdt_stop(void)
 {
-	__u8 csr;
-	unsigned long flags;
+ __u8 csr;
+ unsigned long flags;
 
-	spin_lock_irqsave(&shwdt_lock, flags);
+ spin_lock_irqsave(&shwdt_lock, flags);
 
-	del_timer(&timer);
+ del_timer(&timer);
 
-	csr = sh_wdt_read_csr();
-	csr &= ~WTCSR_TME;
-	sh_wdt_write_csr(csr);
-	spin_unlock_irqrestore(&shwdt_lock, flags);
+ csr = sh_wdt_read_csr();
+ csr &= ~WTCSR_TME;
+ sh_wdt_write_csr(csr);
+ spin_unlock_irqrestore(&shwdt_lock, flags);
 }

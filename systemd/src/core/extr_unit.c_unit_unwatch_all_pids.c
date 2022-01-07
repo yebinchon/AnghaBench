@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  pids; } ;
-typedef  TYPE_1__ Unit ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PTR_TO_PID (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int /*<<< orphan*/  set_first (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_isempty (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  unit_unwatch_pid (TYPE_1__*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int pids; } ;
+typedef TYPE_1__ Unit ;
+
+
+ int PTR_TO_PID (int ) ;
+ int assert (TYPE_1__*) ;
+ int set_first (int ) ;
+ int set_free (int ) ;
+ int set_isempty (int ) ;
+ int unit_unwatch_pid (TYPE_1__*,int ) ;
 
 void unit_unwatch_all_pids(Unit *u) {
         assert(u);

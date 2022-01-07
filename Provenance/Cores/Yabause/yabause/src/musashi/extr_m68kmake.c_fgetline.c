@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * fgets (char*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  g_line_number ; 
- int /*<<< orphan*/  memcpy (char*,char*,int) ; 
- int strlen (char*) ; 
+
+
+
+typedef int FILE ;
+
+
+ int * fgets (char*,int,int *) ;
+ int g_line_number ;
+ int memcpy (char*,char*,int) ;
+ int strlen (char*) ;
 
 int fgetline(char* buff, int nchars, FILE* file)
 {
-	int length;
+ int length;
 
-	if(fgets(buff, nchars, file) == NULL)
-		return -1;
-	if(buff[0] == '\r')
-		memcpy(buff, buff + 1, nchars - 1);
+ if(fgets(buff, nchars, file) == ((void*)0))
+  return -1;
+ if(buff[0] == '\r')
+  memcpy(buff, buff + 1, nchars - 1);
 
-	length = strlen(buff);
-	while(length && (buff[length-1] == '\r' || buff[length-1] == '\n'))
-		length--;
-	buff[length] = 0;
-	g_line_number++;
+ length = strlen(buff);
+ while(length && (buff[length-1] == '\r' || buff[length-1] == '\n'))
+  length--;
+ buff[length] = 0;
+ g_line_number++;
 
-	return length;
+ return length;
 }

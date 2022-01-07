@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  xcb_window_t ;
-typedef  int /*<<< orphan*/  xcb_get_property_reply_t ;
-typedef  int /*<<< orphan*/  xcb_connection_t ;
-typedef  void app ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int xcb_window_t ;
+typedef int xcb_get_property_reply_t ;
+typedef int xcb_connection_t ;
+typedef void app ;
 struct TYPE_5__ {TYPE_2__* p_sys; } ;
-typedef  TYPE_1__ services_discovery_t ;
-struct TYPE_6__ {void* apps; int /*<<< orphan*/  net_client_list; int /*<<< orphan*/  root_window; int /*<<< orphan*/ * conn; } ;
-typedef  TYPE_2__ services_discovery_sys_t ;
+typedef TYPE_1__ services_discovery_t ;
+struct TYPE_6__ {void* apps; int net_client_list; int root_window; int * conn; } ;
+typedef TYPE_2__ services_discovery_sys_t ;
 
-/* Variables and functions */
- void* AddApp (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DelApp (void*) ; 
- int /*<<< orphan*/  XA_WINDOW ; 
- int /*<<< orphan*/  cmpapp ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tdelete (void*,void**,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tdestroy (void*,int /*<<< orphan*/  (*) (void*)) ; 
- void** tfind (int /*<<< orphan*/ *,void**,int /*<<< orphan*/ ) ; 
- void** tsearch (void*,void**,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xcb_get_property (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/ * xcb_get_property_reply (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * xcb_get_property_value (int /*<<< orphan*/ *) ; 
- int xcb_get_property_value_length (int /*<<< orphan*/ *) ; 
+
+ void* AddApp (TYPE_1__*,int ) ;
+ int DelApp (void*) ;
+ int XA_WINDOW ;
+ int cmpapp ;
+ int free (int *) ;
+ int tdelete (void*,void**,int ) ;
+ int tdestroy (void*,int (*) (void*)) ;
+ void** tfind (int *,void**,int ) ;
+ void** tsearch (void*,void**,int ) ;
+ int xcb_get_property (int *,int,int ,int ,int ,int ,int) ;
+ int * xcb_get_property_reply (int *,int ,int *) ;
+ int * xcb_get_property_value (int *) ;
+ int xcb_get_property_value_length (int *) ;
 
 __attribute__((used)) static void UpdateApps (services_discovery_t *sd)
 {
@@ -43,15 +43,15 @@ __attribute__((used)) static void UpdateApps (services_discovery_t *sd)
 
     xcb_get_property_reply_t *r =
         xcb_get_property_reply (conn,
-            xcb_get_property (conn, false, p_sys->root_window,
+            xcb_get_property (conn, 0, p_sys->root_window,
                               p_sys->net_client_list, XA_WINDOW, 0, 1024),
-            NULL);
-    if (r == NULL)
-        return; /* FIXME: remove all entries */
+            ((void*)0));
+    if (r == ((void*)0))
+        return;
 
     xcb_window_t *ent = xcb_get_property_value (r);
     int n = xcb_get_property_value_length (r) / 4;
-    void *newnodes = NULL, *oldnodes = p_sys->apps;
+    void *newnodes = ((void*)0), *oldnodes = p_sys->apps;
 
     for (int i = 0; i < n; i++)
     {
@@ -59,25 +59,25 @@ __attribute__((used)) static void UpdateApps (services_discovery_t *sd)
         struct app *app;
 
         void **pa = tfind (&id, &oldnodes, cmpapp);
-        if (pa != NULL) /* existing entry */
+        if (pa != ((void*)0))
         {
             app = *pa;
             tdelete (app, &oldnodes, cmpapp);
         }
-        else /* new entry */
+        else
         {
             app = AddApp (sd, id);
-            if (app == NULL)
+            if (app == ((void*)0))
                 continue;
         }
 
         pa = tsearch (app, &newnodes, cmpapp);
-        if (pa == NULL /* OOM */ || *pa != app /* buggy window manager */)
+        if (pa == ((void*)0) || *pa != app )
             DelApp (app);
     }
     free (r);
 
-    /* Remove old nodes */
+
     tdestroy (oldnodes, DelApp);
     p_sys->apps = newnodes;
 }

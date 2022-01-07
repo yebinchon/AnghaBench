@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct iwl_rx_cmd_buffer {int /*<<< orphan*/  _rx_page_order; int /*<<< orphan*/  _page; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  __free_pages (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct iwl_rx_cmd_buffer {int _rx_page_order; int _page; } ;
+
+
+ int __free_pages (int ,int ) ;
 
 __attribute__((used)) static inline void iwl_free_rxb(struct iwl_rx_cmd_buffer *r)
 {
-	__free_pages(r->_page, r->_rx_page_order);
+ __free_pages(r->_page, r->_rx_page_order);
 }

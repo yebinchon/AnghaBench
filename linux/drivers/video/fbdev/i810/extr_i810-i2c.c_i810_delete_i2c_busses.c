@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct i810fb_par {TYPE_1__* chan; } ;
-struct TYPE_2__ {int /*<<< orphan*/ * par; int /*<<< orphan*/  adapter; } ;
+struct TYPE_2__ {int * par; int adapter; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  i2c_del_adapter (int /*<<< orphan*/ *) ; 
+
+ int i2c_del_adapter (int *) ;
 
 void i810_delete_i2c_busses(struct i810fb_par *par)
 {
         if (par->chan[0].par)
-		i2c_del_adapter(&par->chan[0].adapter);
-        par->chan[0].par = NULL;
+  i2c_del_adapter(&par->chan[0].adapter);
+        par->chan[0].par = ((void*)0);
 
-	if (par->chan[1].par)
-		i2c_del_adapter(&par->chan[1].adapter);
-	par->chan[1].par = NULL;
+ if (par->chan[1].par)
+  i2c_del_adapter(&par->chan[1].adapter);
+ par->chan[1].par = ((void*)0);
 
-	if (par->chan[2].par)
-		i2c_del_adapter(&par->chan[2].adapter);
-	par->chan[2].par = NULL;
+ if (par->chan[2].par)
+  i2c_del_adapter(&par->chan[2].adapter);
+ par->chan[2].par = ((void*)0);
 }

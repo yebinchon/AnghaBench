@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int p; int q; int /*<<< orphan*/ *** light_maps; int /*<<< orphan*/ *** block_maps; } ;
-typedef  TYPE_1__ WorkerItem ;
-typedef  int /*<<< orphan*/  Map ;
 
-/* Variables and functions */
- int /*<<< orphan*/  create_world (int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  db_load_blocks (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  db_load_lights (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  map_set_func ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int p; int q; int *** light_maps; int *** block_maps; } ;
+typedef TYPE_1__ WorkerItem ;
+typedef int Map ;
+
+
+ int create_world (int,int,int ,int *) ;
+ int db_load_blocks (int *,int,int) ;
+ int db_load_lights (int *,int,int) ;
+ int map_set_func ;
 
 void load_chunk(WorkerItem *item) {
     int p = item->p;

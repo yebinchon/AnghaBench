@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-typedef  int /*<<< orphan*/  u32 ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int u8 ;
+typedef int u32 ;
 struct dirent {char* d_name; } ;
-struct TYPE_3__ {size_t hash_cnt; int /*<<< orphan*/ * hash_buf; } ;
-typedef  TYPE_1__ brain_server_dbs_t ;
-typedef  int /*<<< orphan*/  brain_server_db_hash_t ;
-typedef  int /*<<< orphan*/  DIR ;
+struct TYPE_3__ {size_t hash_cnt; int * hash_buf; } ;
+typedef TYPE_1__ brain_server_dbs_t ;
+typedef int brain_server_db_hash_t ;
+typedef int DIR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  brain_logging (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  brain_server_db_hash_init (int /*<<< orphan*/ *,int /*<<< orphan*/  const) ; 
- int brain_server_read_hash_dump (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  byte_swap_32 (int /*<<< orphan*/ ) ; 
- int chdir (char const*) ; 
- int /*<<< orphan*/  closedir (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  hex_to_u32 (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/ * opendir (char const*) ; 
- struct dirent* readdir (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  strerror (int /*<<< orphan*/ ) ; 
- size_t strlen (char*) ; 
+
+ int brain_logging (int ,int ,char*,char const*,int ) ;
+ int brain_server_db_hash_init (int *,int const) ;
+ int brain_server_read_hash_dump (int *,char*) ;
+ int byte_swap_32 (int ) ;
+ int chdir (char const*) ;
+ int closedir (int *) ;
+ int errno ;
+ int hex_to_u32 (int const*) ;
+ int * opendir (char const*) ;
+ struct dirent* readdir (int *) ;
+ int stderr ;
+ int strerror (int ) ;
+ size_t strlen (char*) ;
 
 bool brain_server_read_hash_dumps (brain_server_dbs_t *brain_server_dbs, const char *path)
 {
@@ -42,21 +42,21 @@ bool brain_server_read_hash_dumps (brain_server_dbs_t *brain_server_dbs, const c
   {
     brain_logging (stderr, 0, "%s: %s\n", path, strerror (errno));
 
-    return false;
+    return 0;
   }
 
   DIR *dirp = opendir (path);
 
-  if (dirp == NULL)
+  if (dirp == ((void*)0))
   {
     brain_logging (stderr, 0, "%s: %s\n", path, strerror (errno));
 
-    return false;
+    return 0;
   }
 
   struct dirent *entry;
 
-  while ((entry = readdir (dirp)) != NULL)
+  while ((entry = readdir (dirp)) != ((void*)0))
   {
     char *file = entry->d_name;
 
@@ -83,12 +83,12 @@ bool brain_server_read_hash_dumps (brain_server_dbs_t *brain_server_dbs, const c
 
     brain_server_db_hash_init (brain_server_db_hash, brain_session);
 
-    if (brain_server_read_hash_dump (brain_server_db_hash, file) == false) continue;
+    if (brain_server_read_hash_dump (brain_server_db_hash, file) == 0) continue;
 
     brain_server_dbs->hash_cnt++;
   }
 
   closedir (dirp);
 
-  return true;
+  return 1;
 }

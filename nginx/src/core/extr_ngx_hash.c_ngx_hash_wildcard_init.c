@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_19__   TYPE_6__ ;
-typedef  struct TYPE_18__   TYPE_5__ ;
-typedef  struct TYPE_17__   TYPE_4__ ;
-typedef  struct TYPE_16__   TYPE_3__ ;
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t ngx_uint_t ;
-typedef  scalar_t__ ngx_int_t ;
+
+
+typedef struct TYPE_19__ TYPE_6__ ;
+typedef struct TYPE_18__ TYPE_5__ ;
+typedef struct TYPE_17__ TYPE_4__ ;
+typedef struct TYPE_16__ TYPE_3__ ;
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
+typedef size_t ngx_uint_t ;
+typedef scalar_t__ ngx_int_t ;
 struct TYPE_15__ {void* value; } ;
-typedef  TYPE_2__ ngx_hash_wildcard_t ;
+typedef TYPE_2__ ngx_hash_wildcard_t ;
 struct TYPE_19__ {size_t len; char* data; } ;
 struct TYPE_16__ {void* value; TYPE_6__ key; scalar_t__ key_hash; } ;
-typedef  TYPE_3__ ngx_hash_key_t ;
-struct TYPE_17__ {int /*<<< orphan*/ * hash; TYPE_1__* pool; scalar_t__ (* key ) (char*,size_t) ;int /*<<< orphan*/  temp_pool; } ;
-typedef  TYPE_4__ ngx_hash_init_t ;
+typedef TYPE_3__ ngx_hash_key_t ;
+struct TYPE_17__ {int * hash; TYPE_1__* pool; scalar_t__ (* key ) (char*,size_t) ;int temp_pool; } ;
+typedef TYPE_4__ ngx_hash_init_t ;
 struct TYPE_18__ {size_t nelts; scalar_t__ elts; } ;
-typedef  TYPE_5__ ngx_array_t ;
-struct TYPE_14__ {int /*<<< orphan*/  log; } ;
+typedef TYPE_5__ ngx_array_t ;
+struct TYPE_14__ {int log; } ;
 
-/* Variables and functions */
- scalar_t__ NGX_ERROR ; 
- int /*<<< orphan*/  NGX_LOG_ALERT ; 
- scalar_t__ NGX_OK ; 
- scalar_t__ ngx_array_init (TYPE_5__*,int /*<<< orphan*/ ,size_t,int) ; 
- TYPE_3__* ngx_array_push (TYPE_5__*) ; 
- scalar_t__ ngx_hash_init (TYPE_4__*,TYPE_3__*,size_t) ; 
- int /*<<< orphan*/  ngx_log_error (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,TYPE_6__*,...) ; 
- scalar_t__ ngx_strncmp (char*,char*,size_t) ; 
- scalar_t__ stub1 (char*,size_t) ; 
+
+ scalar_t__ NGX_ERROR ;
+ int NGX_LOG_ALERT ;
+ scalar_t__ NGX_OK ;
+ scalar_t__ ngx_array_init (TYPE_5__*,int ,size_t,int) ;
+ TYPE_3__* ngx_array_push (TYPE_5__*) ;
+ scalar_t__ ngx_hash_init (TYPE_4__*,TYPE_3__*,size_t) ;
+ int ngx_log_error (int ,int ,int ,char*,TYPE_6__*,...) ;
+ scalar_t__ ngx_strncmp (char*,char*,size_t) ;
+ scalar_t__ stub1 (char*,size_t) ;
 
 ngx_int_t
 ngx_hash_wildcard_init(ngx_hash_init_t *hinit, ngx_hash_key_t *names,
     ngx_uint_t nelts)
 {
-    size_t                len, dot_len;
-    ngx_uint_t            i, n, dot;
-    ngx_array_t           curr_names, next_names;
-    ngx_hash_key_t       *name, *next_name;
-    ngx_hash_init_t       h;
-    ngx_hash_wildcard_t  *wdc;
+    size_t len, dot_len;
+    ngx_uint_t i, n, dot;
+    ngx_array_t curr_names, next_names;
+    ngx_hash_key_t *name, *next_name;
+    ngx_hash_init_t h;
+    ngx_hash_wildcard_t *wdc;
 
     if (ngx_array_init(&curr_names, hinit->temp_pool, nelts,
                        sizeof(ngx_hash_key_t))
@@ -67,10 +67,10 @@ ngx_hash_wildcard_init(ngx_hash_init_t *hinit, ngx_hash_key_t *names,
 
     for (n = 0; n < nelts; n = i) {
 
-#if 0
-        ngx_log_error(NGX_LOG_ALERT, hinit->pool->log, 0,
-                      "wc0: \"%V\"", &names[n].key);
-#endif
+
+
+
+
 
         dot = 0;
 
@@ -82,7 +82,7 @@ ngx_hash_wildcard_init(ngx_hash_init_t *hinit, ngx_hash_key_t *names,
         }
 
         name = ngx_array_push(&curr_names);
-        if (name == NULL) {
+        if (name == ((void*)0)) {
             return NGX_ERROR;
         }
 
@@ -91,10 +91,10 @@ ngx_hash_wildcard_init(ngx_hash_init_t *hinit, ngx_hash_key_t *names,
         name->key_hash = hinit->key(name->key.data, name->key.len);
         name->value = names[n].value;
 
-#if 0
-        ngx_log_error(NGX_LOG_ALERT, hinit->pool->log, 0,
-                      "wc1: \"%V\" %ui", &name->key, dot);
-#endif
+
+
+
+
 
         dot_len = len + 1;
 
@@ -106,7 +106,7 @@ ngx_hash_wildcard_init(ngx_hash_init_t *hinit, ngx_hash_key_t *names,
 
         if (names[n].key.len != len) {
             next_name = ngx_array_push(&next_names);
-            if (next_name == NULL) {
+            if (next_name == ((void*)0)) {
                 return NGX_ERROR;
             }
 
@@ -115,10 +115,10 @@ ngx_hash_wildcard_init(ngx_hash_init_t *hinit, ngx_hash_key_t *names,
             next_name->key_hash = 0;
             next_name->value = names[n].value;
 
-#if 0
-            ngx_log_error(NGX_LOG_ALERT, hinit->pool->log, 0,
-                          "wc2: \"%V\"", &next_name->key);
-#endif
+
+
+
+
         }
 
         for (i = n + 1; i < nelts; i++) {
@@ -134,7 +134,7 @@ ngx_hash_wildcard_init(ngx_hash_init_t *hinit, ngx_hash_key_t *names,
             }
 
             next_name = ngx_array_push(&next_names);
-            if (next_name == NULL) {
+            if (next_name == ((void*)0)) {
                 return NGX_ERROR;
             }
 
@@ -143,16 +143,16 @@ ngx_hash_wildcard_init(ngx_hash_init_t *hinit, ngx_hash_key_t *names,
             next_name->key_hash = 0;
             next_name->value = names[i].value;
 
-#if 0
-            ngx_log_error(NGX_LOG_ALERT, hinit->pool->log, 0,
-                          "wc3: \"%V\"", &next_name->key);
-#endif
+
+
+
+
         }
 
         if (next_names.nelts) {
 
             h = *hinit;
-            h.hash = NULL;
+            h.hash = ((void*)0);
 
             if (ngx_hash_wildcard_init(&h, (ngx_hash_key_t *) next_names.elts,
                                        next_names.nelts)

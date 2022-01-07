@@ -1,134 +1,122 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_42__   TYPE_9__ ;
-typedef  struct TYPE_41__   TYPE_8__ ;
-typedef  struct TYPE_40__   TYPE_7__ ;
-typedef  struct TYPE_39__   TYPE_6__ ;
-typedef  struct TYPE_38__   TYPE_5__ ;
-typedef  struct TYPE_37__   TYPE_4__ ;
-typedef  struct TYPE_36__   TYPE_3__ ;
-typedef  struct TYPE_35__   TYPE_2__ ;
-typedef  struct TYPE_34__   TYPE_1__ ;
-typedef  struct TYPE_33__   TYPE_10__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT8 ;
-typedef  size_t UINT32 ;
+
+
+typedef struct TYPE_42__ TYPE_9__ ;
+typedef struct TYPE_41__ TYPE_8__ ;
+typedef struct TYPE_40__ TYPE_7__ ;
+typedef struct TYPE_39__ TYPE_6__ ;
+typedef struct TYPE_38__ TYPE_5__ ;
+typedef struct TYPE_37__ TYPE_4__ ;
+typedef struct TYPE_36__ TYPE_3__ ;
+typedef struct TYPE_35__ TYPE_2__ ;
+typedef struct TYPE_34__ TYPE_1__ ;
+typedef struct TYPE_33__ TYPE_10__ ;
+
+
+typedef int UINT8 ;
+typedef size_t UINT32 ;
 struct TYPE_42__ {size_t BitOffset; int Level; TYPE_8__* MappingOp; } ;
-struct TYPE_37__ {int Integer; int /*<<< orphan*/  Name; TYPE_8__* Arg; int /*<<< orphan*/  String; } ;
-struct TYPE_38__ {int DisasmFlags; int DisasmOpcode; int AmlOpcode; TYPE_4__ Value; int /*<<< orphan*/  Parent; } ;
-struct TYPE_34__ {int /*<<< orphan*/ * Data; int /*<<< orphan*/  Name; } ;
+struct TYPE_37__ {int Integer; int Name; TYPE_8__* Arg; int String; } ;
+struct TYPE_38__ {int DisasmFlags; int DisasmOpcode; int AmlOpcode; TYPE_4__ Value; int Parent; } ;
+struct TYPE_34__ {int * Data; int Name; } ;
 struct TYPE_41__ {TYPE_5__ Common; TYPE_1__ Named; } ;
-struct TYPE_40__ {int /*<<< orphan*/  ResultCount; TYPE_3__* Results; } ;
+struct TYPE_40__ {int ResultCount; TYPE_3__* Results; } ;
 struct TYPE_39__ {char* Description; } ;
-struct TYPE_35__ {int /*<<< orphan*/ * ObjDesc; } ;
+struct TYPE_35__ {int * ObjDesc; } ;
 struct TYPE_36__ {TYPE_2__ Results; } ;
 struct TYPE_33__ {char* Name; } ;
-typedef  TYPE_6__ AH_DEVICE_ID ;
-typedef  TYPE_7__ ACPI_WALK_STATE ;
-typedef  int /*<<< orphan*/  ACPI_STATUS ;
-typedef  TYPE_8__ ACPI_PARSE_OBJECT ;
-typedef  TYPE_9__ ACPI_OP_WALK_INFO ;
-typedef  TYPE_10__ ACPI_OPCODE_INFO ;
+typedef TYPE_6__ AH_DEVICE_ID ;
+typedef TYPE_7__ ACPI_WALK_STATE ;
+typedef int ACPI_STATUS ;
+typedef TYPE_8__ ACPI_PARSE_OBJECT ;
+typedef TYPE_9__ ACPI_OP_WALK_INFO ;
+typedef TYPE_10__ ACPI_OPCODE_INFO ;
 
-/* Variables and functions */
- int ACPI_DASM_BUFFER ; 
- int ACPI_DASM_CASE ; 
- int ACPI_DASM_EISAID ; 
- int ACPI_DASM_HID_STRING ; 
- int ACPI_DASM_LNOT_PREFIX ; 
-#define  ACPI_DASM_LNOT_SUFFIX 151 
-#define  ACPI_DASM_MATCHOP 150 
- int ACPI_DASM_PLD_METHOD ; 
- void* ACPI_DASM_RESOURCE ; 
- int ACPI_DASM_STRING ; 
- int ACPI_DASM_SWITCH ; 
- int ACPI_DASM_UNICODE ; 
- int ACPI_DASM_UUID ; 
- char* ACPI_DIV_8 (int) ; 
- char* ACPI_FORMAT_UINT64 (int) ; 
- int ACPI_PARSEOP_ELSEIF ; 
- int ACPI_PARSEOP_IGNORE ; 
- size_t ACPI_RESULTS_FRAME_OBJ_NUM ; 
- int /*<<< orphan*/  ACPI_SUCCESS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ACPI_UINT16_MAX ; 
- int /*<<< orphan*/  AE_AML_NO_RESOURCE_END_TAG ; 
- int /*<<< orphan*/  AMLCOMMENT_INLINE ; 
-#define  AML_BUFFER_OP 149 
-#define  AML_BYTE_OP 148 
- int /*<<< orphan*/  AML_COMMENT_END_NODE ; 
-#define  AML_DWORD_OP 147 
-#define  AML_ELSE_OP 146 
-#define  AML_EXTERNAL_OP 145 
-#define  AML_IF_OP 144 
-#define  AML_INT_ACCESSFIELD_OP 143 
-#define  AML_INT_BYTELIST_OP 142 
-#define  AML_INT_CONNECTION_OP 141 
-#define  AML_INT_EXTACCESSFIELD_OP 140 
-#define  AML_INT_METHODCALL_OP 139 
-#define  AML_INT_NAMEDFIELD_OP 138 
-#define  AML_INT_NAMEPATH_OP 137 
-#define  AML_INT_RESERVEDFIELD_OP 136 
- int AML_INT_RETURN_VALUE_OP ; 
-#define  AML_LOGICAL_EQUAL_OP 135 
-#define  AML_LOGICAL_GREATER_OP 134 
-#define  AML_LOGICAL_LESS_OP 133 
-#define  AML_LOGICAL_NOT_OP 132 
- int /*<<< orphan*/  AML_NAMECOMMENT ; 
-#define  AML_QWORD_OP 131 
-#define  AML_STRING_OP 130 
-#define  AML_WHILE_OP 129 
-#define  AML_WORD_OP 128 
- int /*<<< orphan*/  ASL_CV_PRINT_ONE_COMMENT (TYPE_8__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- TYPE_6__* AcpiAhMatchHardwareId (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AcpiDbDecodeInternalObject (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AcpiDmByteList (TYPE_9__*,TYPE_8__*) ; 
- int /*<<< orphan*/  AcpiDmCommaIfFieldMember (TYPE_8__*) ; 
- int /*<<< orphan*/  AcpiDmConvertToElseIf (TYPE_8__*) ; 
- int /*<<< orphan*/  AcpiDmDecodeAttribute (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AcpiDmDecompressEisaId (size_t) ; 
- size_t AcpiDmDumpName (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AcpiDmEmitExternal (TYPE_8__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AcpiDmIndent (int) ; 
- int /*<<< orphan*/  AcpiDmIsPldBuffer (TYPE_8__*) ; 
- int /*<<< orphan*/  AcpiDmIsResourceTemplate (TYPE_7__*,TYPE_8__*) ; 
- int /*<<< orphan*/  AcpiDmIsStringBuffer (TYPE_8__*) ; 
- int /*<<< orphan*/  AcpiDmIsUnicodeBuffer (TYPE_8__*) ; 
- int /*<<< orphan*/  AcpiDmIsUuidBuffer (TYPE_8__*) ; 
- int /*<<< orphan*/  AcpiDmMatchKeyword (TYPE_8__*) ; 
- int /*<<< orphan*/  AcpiDmNamestring (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AcpiDmResourceTemplate (TYPE_9__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,size_t) ; 
- char** AcpiGbl_AccessTypes ; 
- int /*<<< orphan*/  AcpiGbl_CstyleDisassembly ; 
- int /*<<< orphan*/  AcpiGbl_DmEmitExternalOpcodes ; 
- int /*<<< orphan*/  AcpiGbl_NoResourceDisassembly ; 
- int /*<<< orphan*/  AcpiOsPrintf (char*,...) ; 
- int /*<<< orphan*/  AcpiPsGetArg (TYPE_8__*,int /*<<< orphan*/ ) ; 
- TYPE_8__* AcpiPsGetDepthNext (int /*<<< orphan*/ *,TYPE_8__*) ; 
- TYPE_10__* AcpiPsGetOpcodeInfo (int) ; 
- int /*<<< orphan*/  AcpiUtPrintString (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int ACPI_DASM_BUFFER ;
+ int ACPI_DASM_CASE ;
+ int ACPI_DASM_EISAID ;
+ int ACPI_DASM_HID_STRING ;
+ int ACPI_DASM_LNOT_PREFIX ;
+
+
+ int ACPI_DASM_PLD_METHOD ;
+ void* ACPI_DASM_RESOURCE ;
+ int ACPI_DASM_STRING ;
+ int ACPI_DASM_SWITCH ;
+ int ACPI_DASM_UNICODE ;
+ int ACPI_DASM_UUID ;
+ char* ACPI_DIV_8 (int) ;
+ char* ACPI_FORMAT_UINT64 (int) ;
+ int ACPI_PARSEOP_ELSEIF ;
+ int ACPI_PARSEOP_IGNORE ;
+ size_t ACPI_RESULTS_FRAME_OBJ_NUM ;
+ int ACPI_SUCCESS (int ) ;
+ int ACPI_UINT16_MAX ;
+ int AE_AML_NO_RESOURCE_END_TAG ;
+ int AMLCOMMENT_INLINE ;
+
+
+ int AML_COMMENT_END_NODE ;
+ int AML_INT_RETURN_VALUE_OP ;
+
+
+
+
+ int AML_NAMECOMMENT ;
+
+
+
+
+ int ASL_CV_PRINT_ONE_COMMENT (TYPE_8__*,int ,int *,int ) ;
+ TYPE_6__* AcpiAhMatchHardwareId (int ) ;
+ int AcpiDbDecodeInternalObject (int ) ;
+ int AcpiDmByteList (TYPE_9__*,TYPE_8__*) ;
+ int AcpiDmCommaIfFieldMember (TYPE_8__*) ;
+ int AcpiDmConvertToElseIf (TYPE_8__*) ;
+ int AcpiDmDecodeAttribute (int ) ;
+ int AcpiDmDecompressEisaId (size_t) ;
+ size_t AcpiDmDumpName (int ) ;
+ int AcpiDmEmitExternal (TYPE_8__*,int ) ;
+ int AcpiDmIndent (int) ;
+ int AcpiDmIsPldBuffer (TYPE_8__*) ;
+ int AcpiDmIsResourceTemplate (TYPE_7__*,TYPE_8__*) ;
+ int AcpiDmIsStringBuffer (TYPE_8__*) ;
+ int AcpiDmIsUnicodeBuffer (TYPE_8__*) ;
+ int AcpiDmIsUuidBuffer (TYPE_8__*) ;
+ int AcpiDmMatchKeyword (TYPE_8__*) ;
+ int AcpiDmNamestring (int ) ;
+ int AcpiDmResourceTemplate (TYPE_9__*,int ,int *,size_t) ;
+ char** AcpiGbl_AccessTypes ;
+ int AcpiGbl_CstyleDisassembly ;
+ int AcpiGbl_DmEmitExternalOpcodes ;
+ int AcpiGbl_NoResourceDisassembly ;
+ int AcpiOsPrintf (char*,...) ;
+ int AcpiPsGetArg (TYPE_8__*,int ) ;
+ TYPE_8__* AcpiPsGetDepthNext (int *,TYPE_8__*) ;
+ TYPE_10__* AcpiPsGetOpcodeInfo (int) ;
+ int AcpiUtPrintString (int ,int ) ;
 
 void
 AcpiDmDisassembleOneOp (
-    ACPI_WALK_STATE         *WalkState,
-    ACPI_OP_WALK_INFO       *Info,
-    ACPI_PARSE_OBJECT       *Op)
+    ACPI_WALK_STATE *WalkState,
+    ACPI_OP_WALK_INFO *Info,
+    ACPI_PARSE_OBJECT *Op)
 {
-    const ACPI_OPCODE_INFO  *OpInfo = NULL;
-    UINT32                  Offset;
-    UINT32                  Length;
-    ACPI_PARSE_OBJECT       *Child;
-    ACPI_STATUS             Status;
-    UINT8                   *Aml;
-    const AH_DEVICE_ID      *IdInfo;
+    const ACPI_OPCODE_INFO *OpInfo = ((void*)0);
+    UINT32 Offset;
+    UINT32 Length;
+    ACPI_PARSE_OBJECT *Child;
+    ACPI_STATUS Status;
+    UINT8 *Aml;
+    const AH_DEVICE_ID *IdInfo;
 
 
     if (!Op)
@@ -139,31 +127,31 @@ AcpiDmDisassembleOneOp (
 
     if (Op->Common.DisasmFlags & ACPI_PARSEOP_ELSEIF)
     {
-        return; /* ElseIf macro was already emitted */
+        return;
     }
 
     switch (Op->Common.DisasmOpcode)
     {
-    case ACPI_DASM_MATCHOP:
+    case 150:
 
         AcpiDmMatchKeyword (Op);
         return;
 
-    case ACPI_DASM_LNOT_SUFFIX:
+    case 151:
 
         if (!AcpiGbl_CstyleDisassembly)
         {
             switch (Op->Common.AmlOpcode)
             {
-            case AML_LOGICAL_EQUAL_OP:
+            case 135:
                 AcpiOsPrintf ("LNotEqual");
                 break;
 
-            case AML_LOGICAL_GREATER_OP:
+            case 134:
                 AcpiOsPrintf ("LLessEqual");
                 break;
 
-            case AML_LOGICAL_LESS_OP:
+            case 133:
                 AcpiOsPrintf ("LGreaterEqual");
                 break;
 
@@ -182,18 +170,18 @@ AcpiDmDisassembleOneOp (
 
     OpInfo = AcpiPsGetOpcodeInfo (Op->Common.AmlOpcode);
 
-    /* The op and arguments */
+
 
     switch (Op->Common.AmlOpcode)
     {
-    case AML_LOGICAL_NOT_OP:
+    case 132:
 
         Child = Op->Common.Value.Arg;
-        if ((Child->Common.AmlOpcode == AML_LOGICAL_EQUAL_OP) ||
-            (Child->Common.AmlOpcode == AML_LOGICAL_GREATER_OP) ||
-            (Child->Common.AmlOpcode == AML_LOGICAL_LESS_OP))
+        if ((Child->Common.AmlOpcode == 135) ||
+            (Child->Common.AmlOpcode == 134) ||
+            (Child->Common.AmlOpcode == 133))
         {
-            Child->Common.DisasmOpcode = ACPI_DASM_LNOT_SUFFIX;
+            Child->Common.DisasmOpcode = 151;
             Op->Common.DisasmOpcode = ACPI_DASM_LNOT_PREFIX;
         }
         else
@@ -202,12 +190,12 @@ AcpiDmDisassembleOneOp (
         }
         break;
 
-    case AML_BYTE_OP:
+    case 148:
 
         AcpiOsPrintf ("0x%2.2X", (UINT32) Op->Common.Value.Integer);
         break;
 
-    case AML_WORD_OP:
+    case 128:
 
         if (Op->Common.DisasmOpcode == ACPI_DASM_EISAID)
         {
@@ -219,7 +207,7 @@ AcpiDmDisassembleOneOp (
         }
         break;
 
-    case AML_DWORD_OP:
+    case 147:
 
         if (Op->Common.DisasmOpcode == ACPI_DASM_EISAID)
         {
@@ -231,21 +219,21 @@ AcpiDmDisassembleOneOp (
         }
         break;
 
-    case AML_QWORD_OP:
+    case 131:
 
         AcpiOsPrintf ("0x%8.8X%8.8X",
             ACPI_FORMAT_UINT64 (Op->Common.Value.Integer));
         break;
 
-    case AML_STRING_OP:
+    case 130:
 
         AcpiUtPrintString (Op->Common.Value.String, ACPI_UINT16_MAX);
 
-        /* For _HID/_CID strings, attempt to output a descriptive comment */
+
 
         if (Op->Common.DisasmOpcode == ACPI_DASM_HID_STRING)
         {
-            /* If we know about the ID, emit the description */
+
 
             IdInfo = AcpiAhMatchHardwareId (Op->Common.Value.String);
             if (IdInfo)
@@ -255,19 +243,7 @@ AcpiDmDisassembleOneOp (
         }
         break;
 
-    case AML_BUFFER_OP:
-        /*
-         * Determine the type of buffer. We can have one of the following:
-         *
-         * 1) ResourceTemplate containing Resource Descriptors.
-         * 2) Unicode String buffer
-         * 3) ASCII String buffer
-         * 4) Raw data buffer (if none of the above)
-         *
-         * Since there are no special AML opcodes to differentiate these
-         * types of buffers, we have to closely look at the data in the
-         * buffer to determine the type.
-         */
+    case 149:
         if (!AcpiGbl_NoResourceDisassembly)
         {
             Status = AcpiDmIsResourceTemplate (WalkState, Op);
@@ -312,17 +288,17 @@ AcpiDmDisassembleOneOp (
         }
         break;
 
-    case AML_INT_NAMEPATH_OP:
+    case 137:
 
         AcpiDmNamestring (Op->Common.Value.Name);
         break;
 
-    case AML_INT_NAMEDFIELD_OP:
+    case 138:
 
         Length = AcpiDmDumpName (Op->Named.Name);
 
         AcpiOsPrintf (",");
-        ASL_CV_PRINT_ONE_COMMENT (Op, AML_NAMECOMMENT, NULL, 0);
+        ASL_CV_PRINT_ONE_COMMENT (Op, AML_NAMECOMMENT, ((void*)0), 0);
         AcpiOsPrintf ("%*.s  %u", (unsigned) (5 - Length), " ",
             (UINT32) Op->Common.Value.Integer);
 
@@ -331,9 +307,9 @@ AcpiDmDisassembleOneOp (
         Info->BitOffset += (UINT32) Op->Common.Value.Integer;
         break;
 
-    case AML_INT_RESERVEDFIELD_OP:
+    case 136:
 
-        /* Offset() -- Must account for previous offsets */
+
 
         Offset = (UINT32) Op->Common.Value.Integer;
         Info->BitOffset += Offset;
@@ -350,15 +326,15 @@ AcpiDmDisassembleOneOp (
         AcpiDmCommaIfFieldMember (Op);
         break;
 
-    case AML_INT_ACCESSFIELD_OP:
-    case AML_INT_EXTACCESSFIELD_OP:
+    case 143:
+    case 140:
 
         AcpiOsPrintf ("AccessAs (%s, ",
             AcpiGbl_AccessTypes [(UINT32) (Op->Common.Value.Integer & 0x7)]);
 
         AcpiDmDecodeAttribute ((UINT8) (Op->Common.Value.Integer >> 8));
 
-        if (Op->Common.AmlOpcode == AML_INT_EXTACCESSFIELD_OP)
+        if (Op->Common.AmlOpcode == 140)
         {
             AcpiOsPrintf (" (0x%2.2X)", (unsigned)
                 ((Op->Common.Value.Integer >> 16) & 0xFF));
@@ -366,18 +342,18 @@ AcpiDmDisassembleOneOp (
 
         AcpiOsPrintf (")");
         AcpiDmCommaIfFieldMember (Op);
-        ASL_CV_PRINT_ONE_COMMENT (Op, AML_COMMENT_END_NODE, NULL, 0);
+        ASL_CV_PRINT_ONE_COMMENT (Op, AML_COMMENT_END_NODE, ((void*)0), 0);
         break;
 
-    case AML_INT_CONNECTION_OP:
-        /*
-         * Two types of Connection() - one with a buffer object, the
-         * other with a namestring that points to a buffer object.
-         */
+    case 141:
+
+
+
+
         AcpiOsPrintf ("Connection (");
         Child = Op->Common.Value.Arg;
 
-        if (Child->Common.AmlOpcode == AML_INT_BYTELIST_OP)
+        if (Child->Common.AmlOpcode == 142)
         {
             AcpiOsPrintf ("\n");
 
@@ -400,28 +376,28 @@ AcpiDmDisassembleOneOp (
 
         AcpiOsPrintf (")");
         AcpiDmCommaIfFieldMember (Op);
-        ASL_CV_PRINT_ONE_COMMENT (Op, AML_COMMENT_END_NODE, NULL, 0);
-        ASL_CV_PRINT_ONE_COMMENT (Op, AMLCOMMENT_INLINE, NULL, 0);
+        ASL_CV_PRINT_ONE_COMMENT (Op, AML_COMMENT_END_NODE, ((void*)0), 0);
+        ASL_CV_PRINT_ONE_COMMENT (Op, AMLCOMMENT_INLINE, ((void*)0), 0);
         AcpiOsPrintf ("\n");
 
-        Op->Common.DisasmFlags |= ACPI_PARSEOP_IGNORE; /* for now, ignore in AcpiDmAscendingOp */
+        Op->Common.DisasmFlags |= ACPI_PARSEOP_IGNORE;
         Child->Common.DisasmFlags |= ACPI_PARSEOP_IGNORE;
         break;
 
-    case AML_INT_BYTELIST_OP:
+    case 142:
 
         AcpiDmByteList (Info, Op);
         break;
 
-    case AML_INT_METHODCALL_OP:
+    case 139:
 
-        Op = AcpiPsGetDepthNext (NULL, Op);
+        Op = AcpiPsGetDepthNext (((void*)0), Op);
         Op->Common.DisasmFlags |= ACPI_PARSEOP_IGNORE;
 
         AcpiDmNamestring (Op->Common.Value.Name);
         break;
 
-    case AML_WHILE_OP:
+    case 129:
 
         if (Op->Common.DisasmOpcode == ACPI_DASM_SWITCH)
         {
@@ -432,7 +408,7 @@ AcpiDmDisassembleOneOp (
         AcpiOsPrintf ("%s", OpInfo->Name);
         break;
 
-    case AML_IF_OP:
+    case 144:
 
         if (Op->Common.DisasmOpcode == ACPI_DASM_CASE)
         {
@@ -443,12 +419,12 @@ AcpiDmDisassembleOneOp (
         AcpiOsPrintf ("%s", OpInfo->Name);
         break;
 
-    case AML_ELSE_OP:
+    case 146:
 
         AcpiDmConvertToElseIf (Op);
         break;
 
-    case AML_EXTERNAL_OP:
+    case 145:
 
         if (AcpiGbl_DmEmitExternalOpcodes)
         {
@@ -459,25 +435,9 @@ AcpiDmDisassembleOneOp (
 
     default:
 
-        /* Just get the opcode name and print it */
+
 
         AcpiOsPrintf ("%s", OpInfo->Name);
-
-
-#ifdef ACPI_DEBUGGER
-
-        if ((Op->Common.AmlOpcode == AML_INT_RETURN_VALUE_OP) &&
-            (WalkState) &&
-            (WalkState->Results) &&
-            (WalkState->ResultCount))
-        {
-            AcpiDbDecodeInternalObject (
-                WalkState->Results->Results.ObjDesc [
-                    (WalkState->ResultCount - 1) %
-                        ACPI_RESULTS_FRAME_OBJ_NUM]);
-        }
-#endif
-
         break;
     }
 }

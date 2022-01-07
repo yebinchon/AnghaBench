@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u32 ;
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MOD_CHECK_ID (int /*<<< orphan*/ ,int) ; 
- int PLATFORM_SPI_CPHA_HIGH ; 
- int PLATFORM_SPI_CPHA_LOW ; 
- int PLATFORM_SPI_CPOL_HIGH ; 
- int PLATFORM_SPI_CPOL_LOW ; 
- int PLATFORM_SPI_MASTER ; 
- int PLATFORM_SPI_SLAVE ; 
- int SPI_FULLDUPLEX ; 
- int SPI_HALFDUPLEX ; 
- void* luaL_checkinteger (int /*<<< orphan*/ *,int) ; 
- int luaL_error (int /*<<< orphan*/ *,char*) ; 
- int luaL_optinteger (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  lua_pushinteger (int /*<<< orphan*/ *,int) ; 
- int platform_spi_setup (int,int,int,int,int) ; 
- int /*<<< orphan*/  spi ; 
- int* spi_databits ; 
- int* spi_duplex ; 
+
+
+
+typedef int u32 ;
+typedef int lua_State ;
+
+
+ int MOD_CHECK_ID (int ,int) ;
+ int PLATFORM_SPI_CPHA_HIGH ;
+ int PLATFORM_SPI_CPHA_LOW ;
+ int PLATFORM_SPI_CPOL_HIGH ;
+ int PLATFORM_SPI_CPOL_LOW ;
+ int PLATFORM_SPI_MASTER ;
+ int PLATFORM_SPI_SLAVE ;
+ int SPI_FULLDUPLEX ;
+ int SPI_HALFDUPLEX ;
+ void* luaL_checkinteger (int *,int) ;
+ int luaL_error (int *,char*) ;
+ int luaL_optinteger (int *,int,int) ;
+ int lua_pushinteger (int *,int) ;
+ int platform_spi_setup (int,int,int,int,int) ;
+ int spi ;
+ int* spi_databits ;
+ int* spi_duplex ;
 
 __attribute__((used)) static int spi_setup( lua_State *L )
 {
-  int id          = luaL_checkinteger( L, 1 );
-  int mode        = luaL_checkinteger( L, 2 );
-  int cpol        = luaL_checkinteger( L, 3 );
-  int cpha        = luaL_checkinteger( L, 4 );
-  int databits    = luaL_checkinteger( L, 5 );
-  u32 clock_div   = luaL_checkinteger( L, 6 );
+  int id = luaL_checkinteger( L, 1 );
+  int mode = luaL_checkinteger( L, 2 );
+  int cpol = luaL_checkinteger( L, 3 );
+  int cpha = luaL_checkinteger( L, 4 );
+  int databits = luaL_checkinteger( L, 5 );
+  u32 clock_div = luaL_checkinteger( L, 6 );
   int duplex_mode = luaL_optinteger( L, 7, SPI_HALFDUPLEX );
 
   MOD_CHECK_ID( spi, id );
@@ -61,7 +61,7 @@ __attribute__((used)) static int spi_setup( lua_State *L )
   }
 
   if (clock_div == 0) {
-    // defaulting to 8 for backward compatibility
+
     clock_div = 8;
   }
 

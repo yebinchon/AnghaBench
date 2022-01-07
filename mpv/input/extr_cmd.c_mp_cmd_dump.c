@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct mp_log {int dummy; } ;
-struct mp_cmd {int nargs; TYPE_1__* args; int /*<<< orphan*/  flags; int /*<<< orphan*/  name; } ;
-struct TYPE_2__ {int /*<<< orphan*/  v; int /*<<< orphan*/  type; } ;
+struct mp_cmd {int nargs; TYPE_1__* args; int flags; int name; } ;
+struct TYPE_2__ {int v; int type; } ;
 
-/* Variables and functions */
- char* m_option_print (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mp_msg (struct mp_log*,int,char*,...) ; 
- int /*<<< orphan*/  mp_msg_test (struct mp_log*,int) ; 
- int /*<<< orphan*/  talloc_free (char*) ; 
+
+ char* m_option_print (int ,int *) ;
+ int mp_msg (struct mp_log*,int,char*,...) ;
+ int mp_msg_test (struct mp_log*,int) ;
+ int talloc_free (char*) ;
 
 void mp_cmd_dump(struct mp_log *log, int msgl, char *header, struct mp_cmd *cmd)
 {

@@ -1,31 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int ARRAY_SIZE (scalar_t__*) ; 
- scalar_t__ PsndRate ; 
- scalar_t__* sound_rates ; 
+ int ARRAY_SIZE (scalar_t__*) ;
+ scalar_t__ PsndRate ;
+ scalar_t__* sound_rates ;
 
 void pemu_sound_stop(void)
 {
-	int i;
+ int i;
 
-	/* get back from Pollux pain */
-	PsndRate += 1000;
-	for (i = 0; i < ARRAY_SIZE(sound_rates); i++) {
-		if (PsndRate >= sound_rates[i]) {
-			PsndRate = sound_rates[i];
-			break;
-		}
-	}
+
+ PsndRate += 1000;
+ for (i = 0; i < ARRAY_SIZE(sound_rates); i++) {
+  if (PsndRate >= sound_rates[i]) {
+   PsndRate = sound_rates[i];
+   break;
+  }
+ }
 }

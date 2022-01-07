@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct bfa_dport_s {int /*<<< orphan*/ * cbarg; int /*<<< orphan*/  (* cbfn ) (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ;} ;
-typedef  int /*<<< orphan*/  bfa_status_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+struct bfa_dport_s {int * cbarg; int (* cbfn ) (int *,int ) ;} ;
+typedef int bfa_status_t ;
+
+
+ int stub1 (int *,int ) ;
 
 __attribute__((used)) static void
 bfa_cb_fcdiag_dport(struct bfa_dport_s *dport, bfa_status_t bfa_status)
 {
-	if (dport->cbfn != NULL) {
-		dport->cbfn(dport->cbarg, bfa_status);
-		dport->cbfn = NULL;
-		dport->cbarg = NULL;
-	}
+ if (dport->cbfn != ((void*)0)) {
+  dport->cbfn(dport->cbarg, bfa_status);
+  dport->cbfn = ((void*)0);
+  dport->cbarg = ((void*)0);
+ }
 }

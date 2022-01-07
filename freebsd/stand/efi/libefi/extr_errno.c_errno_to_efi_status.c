@@ -1,91 +1,79 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  EFI_STATUS ;
 
-/* Variables and functions */
-#define  EACCES 139 
- int /*<<< orphan*/  EFI_ACCESS_DENIED ; 
- int /*<<< orphan*/  EFI_BUFFER_TOO_SMALL ; 
- int /*<<< orphan*/  EFI_DEVICE_ERROR ; 
- int /*<<< orphan*/  EFI_INVALID_PARAMETER ; 
- int /*<<< orphan*/  EFI_MEDIA_CHANGED ; 
- int /*<<< orphan*/  EFI_NOT_FOUND ; 
- int /*<<< orphan*/  EFI_NO_MEDIA ; 
- int /*<<< orphan*/  EFI_OUT_OF_RESOURCES ; 
- int /*<<< orphan*/  EFI_SUCCESS ; 
- int /*<<< orphan*/  EFI_UNSUPPORTED ; 
- int /*<<< orphan*/  EFI_VOLUME_FULL ; 
- int /*<<< orphan*/  EFI_WRITE_PROTECTED ; 
-#define  EINVAL 138 
-#define  EIO 137 
-#define  ENODEV 136 
-#define  ENOENT 135 
-#define  ENOMEM 134 
-#define  ENOSPC 133 
-#define  ENOTSUP 132 
-#define  ENXIO 131 
-#define  EOVERFLOW 130 
-#define  EPERM 129 
-#define  ESTALE 128 
 
+
+
+typedef int EFI_STATUS ;
+
+
+
+ int EFI_ACCESS_DENIED ;
+ int EFI_BUFFER_TOO_SMALL ;
+ int EFI_DEVICE_ERROR ;
+ int EFI_INVALID_PARAMETER ;
+ int EFI_MEDIA_CHANGED ;
+ int EFI_NOT_FOUND ;
+ int EFI_NO_MEDIA ;
+ int EFI_OUT_OF_RESOURCES ;
+ int EFI_SUCCESS ;
+ int EFI_UNSUPPORTED ;
+ int EFI_VOLUME_FULL ;
+ int EFI_WRITE_PROTECTED ;
 EFI_STATUS
 errno_to_efi_status(int errno)
 {
         EFI_STATUS status;
 
         switch (errno) {
-        case EPERM:
+        case 129:
                 status = EFI_ACCESS_DENIED;
                 break;
 
-        case EOVERFLOW:
+        case 130:
                 status = EFI_BUFFER_TOO_SMALL;
                 break;
 
-        case EIO:
+        case 137:
                 status = EFI_DEVICE_ERROR;
                 break;
 
-        case EINVAL:
+        case 138:
                 status = EFI_INVALID_PARAMETER;
                 break;
 
-        case ESTALE:
+        case 128:
                 status = EFI_MEDIA_CHANGED;
                 break;
 
-        case ENXIO:
+        case 131:
                 status = EFI_NO_MEDIA;
                 break;
 
-        case ENOENT:
+        case 135:
                 status = EFI_NOT_FOUND;
                 break;
 
-        case ENOMEM:
+        case 134:
                 status = EFI_OUT_OF_RESOURCES;
                 break;
 
-        case ENOTSUP:
-        case ENODEV:
+        case 132:
+        case 136:
                 status = EFI_UNSUPPORTED;
                 break;
 
-        case ENOSPC:
+        case 133:
                 status = EFI_VOLUME_FULL;
                 break;
 
-        case EACCES:
+        case 139:
                 status = EFI_WRITE_PROTECTED;
                 break;
 

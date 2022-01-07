@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64_t ;
-typedef  int /*<<< orphan*/  keybytes ;
-typedef  int /*<<< orphan*/  X509_NAME ;
-typedef  int /*<<< orphan*/  OCSP_CERTID ;
-typedef  int /*<<< orphan*/  OCSP_BASICRESP ;
-typedef  int /*<<< orphan*/  ASN1_TIME ;
-typedef  int /*<<< orphan*/  ASN1_INTEGER ;
-typedef  int /*<<< orphan*/  ASN1_BIT_STRING ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASN1_BIT_STRING_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * ASN1_BIT_STRING_new () ; 
- int /*<<< orphan*/  ASN1_BIT_STRING_set (int /*<<< orphan*/ *,unsigned char*,int) ; 
- int /*<<< orphan*/  ASN1_INTEGER_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * ASN1_INTEGER_new () ; 
- int /*<<< orphan*/  ASN1_INTEGER_set_uint64 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ASN1_TIME_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * ASN1_TIME_set (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  EVP_sha256 () ; 
- int /*<<< orphan*/  MBSTRING_ASC ; 
- int /*<<< orphan*/  NID_commonName ; 
- int /*<<< orphan*/  OCSP_BASICRESP_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * OCSP_BASICRESP_new () ; 
- int /*<<< orphan*/  OCSP_CERTID_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  OCSP_basic_add1_status (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * OCSP_cert_id_new (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TEST_ptr (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TEST_true (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  V_OCSP_CERTSTATUS_UNKNOWN ; 
- int /*<<< orphan*/  X509_NAME_add_entry_by_NID (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned char const*,int,int,int) ; 
- int /*<<< orphan*/  X509_NAME_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * X509_NAME_new () ; 
- scalar_t__ time (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int uint64_t ;
+typedef int keybytes ;
+typedef int X509_NAME ;
+typedef int OCSP_CERTID ;
+typedef int OCSP_BASICRESP ;
+typedef int ASN1_TIME ;
+typedef int ASN1_INTEGER ;
+typedef int ASN1_BIT_STRING ;
+
+
+ int ASN1_BIT_STRING_free (int *) ;
+ int * ASN1_BIT_STRING_new () ;
+ int ASN1_BIT_STRING_set (int *,unsigned char*,int) ;
+ int ASN1_INTEGER_free (int *) ;
+ int * ASN1_INTEGER_new () ;
+ int ASN1_INTEGER_set_uint64 (int *,int ) ;
+ int ASN1_TIME_free (int *) ;
+ int * ASN1_TIME_set (int *,scalar_t__) ;
+ int EVP_sha256 () ;
+ int MBSTRING_ASC ;
+ int NID_commonName ;
+ int OCSP_BASICRESP_free (int *) ;
+ int * OCSP_BASICRESP_new () ;
+ int OCSP_CERTID_free (int *) ;
+ int OCSP_basic_add1_status (int *,int *,int ,int ,int *,int *,int *) ;
+ int * OCSP_cert_id_new (int ,int *,int *,int *) ;
+ int TEST_ptr (int *) ;
+ int TEST_true (int ) ;
+ int V_OCSP_CERTSTATUS_UNKNOWN ;
+ int X509_NAME_add_entry_by_NID (int *,int ,int ,unsigned char const*,int,int,int) ;
+ int X509_NAME_free (int *) ;
+ int * X509_NAME_new () ;
+ scalar_t__ time (int *) ;
 
 __attribute__((used)) static OCSP_BASICRESP *make_dummy_resp(void)
 {
     const unsigned char namestr[] = "openssl.example.com";
     unsigned char keybytes[128] = {7};
     OCSP_BASICRESP *bs = OCSP_BASICRESP_new();
-    OCSP_BASICRESP *bs_out = NULL;
-    OCSP_CERTID *cid = NULL;
-    ASN1_TIME *thisupd = ASN1_TIME_set(NULL, time(NULL));
-    ASN1_TIME *nextupd = ASN1_TIME_set(NULL, time(NULL) + 200);
+    OCSP_BASICRESP *bs_out = ((void*)0);
+    OCSP_CERTID *cid = ((void*)0);
+    ASN1_TIME *thisupd = ASN1_TIME_set(((void*)0), time(((void*)0)));
+    ASN1_TIME *nextupd = ASN1_TIME_set(((void*)0), time(((void*)0)) + 200);
     X509_NAME *name = X509_NAME_new();
     ASN1_BIT_STRING *key = ASN1_BIT_STRING_new();
     ASN1_INTEGER *serial = ASN1_INTEGER_new();
@@ -69,10 +69,10 @@ __attribute__((used)) static OCSP_BASICRESP *make_dummy_resp(void)
         || !TEST_ptr(cid)
         || !TEST_true(OCSP_basic_add1_status(bs, cid,
                                              V_OCSP_CERTSTATUS_UNKNOWN,
-                                             0, NULL, thisupd, nextupd)))
+                                             0, ((void*)0), thisupd, nextupd)))
         goto err;
     bs_out = bs;
-    bs = NULL;
+    bs = ((void*)0);
  err:
     ASN1_TIME_free(thisupd);
     ASN1_TIME_free(nextupd);

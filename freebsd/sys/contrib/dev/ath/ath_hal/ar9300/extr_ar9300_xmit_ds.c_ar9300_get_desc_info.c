@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct ath_hal {int dummy; } ;
-struct TYPE_3__ {int /*<<< orphan*/  rxstatus_offset; int /*<<< orphan*/  rxstatus_numwords; int /*<<< orphan*/  rxctl_offset; int /*<<< orphan*/  rxctl_numwords; int /*<<< orphan*/  txstatus_offset; int /*<<< orphan*/  txstatus_numwords; int /*<<< orphan*/  txctl_offset; int /*<<< orphan*/  txctl_numwords; } ;
-typedef  TYPE_1__ HAL_DESC_INFO ;
+struct TYPE_3__ {int rxstatus_offset; int rxstatus_numwords; int rxctl_offset; int rxctl_numwords; int txstatus_offset; int txstatus_numwords; int txctl_offset; int txctl_numwords; } ;
+typedef TYPE_1__ HAL_DESC_INFO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RXCTL_NUMWORDS (struct ath_hal*) ; 
- int /*<<< orphan*/  RXCTL_OFFSET (struct ath_hal*) ; 
- int /*<<< orphan*/  RXSTATUS_NUMWORDS (struct ath_hal*) ; 
- int /*<<< orphan*/  RXSTATUS_OFFSET (struct ath_hal*) ; 
- int /*<<< orphan*/  TXCTL_NUMWORDS (struct ath_hal*) ; 
- int /*<<< orphan*/  TXCTL_OFFSET (struct ath_hal*) ; 
- int /*<<< orphan*/  TXSTATUS_NUMWORDS (struct ath_hal*) ; 
- int /*<<< orphan*/  TXSTATUS_OFFSET (struct ath_hal*) ; 
+
+ int RXCTL_NUMWORDS (struct ath_hal*) ;
+ int RXCTL_OFFSET (struct ath_hal*) ;
+ int RXSTATUS_NUMWORDS (struct ath_hal*) ;
+ int RXSTATUS_OFFSET (struct ath_hal*) ;
+ int TXCTL_NUMWORDS (struct ath_hal*) ;
+ int TXCTL_OFFSET (struct ath_hal*) ;
+ int TXSTATUS_NUMWORDS (struct ath_hal*) ;
+ int TXSTATUS_OFFSET (struct ath_hal*) ;
 
 void
 ar9300_get_desc_info(struct ath_hal *ah, HAL_DESC_INFO *desc_info)

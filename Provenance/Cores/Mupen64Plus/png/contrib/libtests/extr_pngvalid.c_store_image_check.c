@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ png_uint_32 ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ png_uint_32 ;
 struct TYPE_3__ {int* image; size_t cb_image; int cb_row; scalar_t__ image_h; } ;
-typedef  TYPE_1__ png_store ;
-typedef  int png_size_t ;
-typedef  int /*<<< orphan*/  png_const_structp ;
-typedef  int* png_const_bytep ;
+typedef TYPE_1__ png_store ;
+typedef int png_size_t ;
+typedef int png_const_structp ;
+typedef int* png_const_bytep ;
 
-/* Variables and functions */
- int /*<<< orphan*/  png_error (int /*<<< orphan*/ ,char*) ; 
+
+ int png_error (int ,char*) ;
 
 __attribute__((used)) static void
 store_image_check(const png_store* ps, png_const_structp pp, int iImage)
@@ -35,7 +35,7 @@ store_image_check(const png_store* ps, png_const_structp pp, int iImage)
 
       image += iImage * (cbRow+5) * ps->image_h;
 
-      image += 2; /* skip image first row markers */
+      image += 2;
 
       for (; rows > 0; --rows)
       {

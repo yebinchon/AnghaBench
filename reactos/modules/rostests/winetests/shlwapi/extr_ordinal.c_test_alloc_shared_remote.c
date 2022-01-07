@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  val ;
-struct shared_struct {int value; int /*<<< orphan*/ * handle; } ;
-typedef  int /*<<< orphan*/ * HANDLE ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetCurrentProcessId () ; 
- int GetLastError () ; 
- int /*<<< orphan*/  SetLastError (int) ; 
- scalar_t__ broken (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/ * pSHAllocShared (struct shared_struct*,int,int /*<<< orphan*/ ) ; 
- int pSHFreeShared (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- struct shared_struct* pSHLockShared (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * pSHMapHandle (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int pSHUnlockShared (struct shared_struct*) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
+
+
+
+typedef int val ;
+struct shared_struct {int value; int * handle; } ;
+typedef int * HANDLE ;
+typedef int DWORD ;
+typedef int BOOL ;
+
+
+ int GetCurrentProcessId () ;
+ int GetLastError () ;
+ int SetLastError (int) ;
+ scalar_t__ broken (int ) ;
+ int ok (int,char*,...) ;
+ int * pSHAllocShared (struct shared_struct*,int,int ) ;
+ int pSHFreeShared (int *,int ) ;
+ struct shared_struct* pSHLockShared (int *,int ) ;
+ int * pSHMapHandle (int *,int ,int ,int ,int ) ;
+ int pSHUnlockShared (struct shared_struct*) ;
+ int win_skip (char*) ;
 
 __attribute__((used)) static void test_alloc_shared_remote(DWORD procid, HANDLE hmem)
 {
@@ -35,10 +35,10 @@ __attribute__((used)) static void test_alloc_shared_remote(DWORD procid, HANDLE 
     HANDLE hmem2;
     BOOL ret;
 
-    /* test directly accessing shared memory of a remote process */
+
     p = pSHLockShared(hmem, procid);
-    ok(p != NULL || broken(p == NULL) /* Windows 7/8 */, "SHLockShared failed: %u\n", GetLastError());
-    if (p == NULL)
+    ok(p != ((void*)0) || broken(p == ((void*)0)) , "SHLockShared failed: %u\n", GetLastError());
+    if (p == ((void*)0))
     {
         win_skip("Subprocess failed to modify shared memory, skipping test\n");
         return;
@@ -50,33 +50,33 @@ __attribute__((used)) static void test_alloc_shared_remote(DWORD procid, HANDLE 
     val.value = 0xDEADBEEF;
     val.handle = 0;
     p->handle = pSHAllocShared(&val, sizeof(val), procid);
-    ok(p->handle != NULL, "SHAllocShared failed: %u\n", GetLastError());
+    ok(p->handle != ((void*)0), "SHAllocShared failed: %u\n", GetLastError());
 
     ret = pSHUnlockShared(p);
     ok(ret, "SHUnlockShared failed: %u\n", GetLastError());
 
-    /* test SHMapHandle */
+
     SetLastError(0xdeadbeef);
-    hmem2 = pSHMapHandle(NULL, procid, GetCurrentProcessId(), 0, 0);
-    ok(hmem2 == NULL, "expected NULL, got new handle\n");
+    hmem2 = pSHMapHandle(((void*)0), procid, GetCurrentProcessId(), 0, 0);
+    ok(hmem2 == ((void*)0), "expected NULL, got new handle\n");
     ok(GetLastError() == 0xdeadbeef, "last error should not have changed, got %u\n", GetLastError());
 
     hmem2 = pSHMapHandle(hmem, procid, GetCurrentProcessId(), 0, 0);
 
-    /* It seems like Windows Vista/2008 uses a different internal implementation
-     * for shared memory, and calling SHMapHandle fails. */
-    ok(hmem2 != NULL || broken(hmem2 == NULL),
+
+
+    ok(hmem2 != ((void*)0) || broken(hmem2 == ((void*)0)),
        "SHMapHandle failed: %u\n", GetLastError());
-    if (hmem2 == NULL)
+    if (hmem2 == ((void*)0))
     {
         win_skip("Subprocess failed to map shared memory, skipping test\n");
         return;
     }
 
     p = pSHLockShared(hmem2, GetCurrentProcessId());
-    ok(p != NULL, "SHLockShared failed: %u\n", GetLastError());
+    ok(p != ((void*)0), "SHLockShared failed: %u\n", GetLastError());
 
-    if (p != NULL)
+    if (p != ((void*)0))
         ok(p->value == 0x12345679, "Wrong value in shared memory: %d instead of %d\n", p->value, 0x12345679);
 
     ret = pSHUnlockShared(p);

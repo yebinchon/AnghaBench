@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  REFIID ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  IConnectionPointContainer ;
-typedef  int /*<<< orphan*/  IConnectionPoint ;
-typedef  scalar_t__ HRESULT ;
-typedef  int /*<<< orphan*/  DWORD ;
 
-/* Variables and functions */
- scalar_t__ IConnectionPointContainer_FindConnectionPoint (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IConnectionPointContainer_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IConnectionPoint_Advise (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IConnectionPoint_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IID_IConnectionPointContainer ; 
- scalar_t__ IUnknown_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
+
+
+
+typedef int REFIID ;
+typedef int IUnknown ;
+typedef int IConnectionPointContainer ;
+typedef int IConnectionPoint ;
+typedef scalar_t__ HRESULT ;
+typedef int DWORD ;
+
+
+ scalar_t__ IConnectionPointContainer_FindConnectionPoint (int *,int ,int **) ;
+ int IConnectionPointContainer_Release (int *) ;
+ scalar_t__ IConnectionPoint_Advise (int *,int *,int *) ;
+ int IConnectionPoint_Release (int *) ;
+ int IID_IConnectionPointContainer ;
+ scalar_t__ IUnknown_QueryInterface (int *,int *,void**) ;
+ scalar_t__ S_OK ;
+ int ok (int,char*,scalar_t__) ;
 
 __attribute__((used)) static void do_advise(IUnknown *unk, REFIID riid, IUnknown *unk_advise)
 {

@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  bs_copy_mem (char*,char*,int) ; 
- int /*<<< orphan*/  bs_set_pixel (int,int,int,int,int /*<<< orphan*/ ) ; 
- scalar_t__ bs_warp_coords (int*,int*,int*,int*,int*,int*) ; 
- int g_Bpp ; 
- char* get_bs_ptr (int,int) ; 
+ int bs_copy_mem (char*,char*,int) ;
+ int bs_set_pixel (int,int,int,int,int ) ;
+ scalar_t__ bs_warp_coords (int*,int*,int*,int*,int*,int*) ;
+ int g_Bpp ;
+ char* get_bs_ptr (int,int) ;
 
 void
 bs_memblt(int opcode, int x, int y, int cx, int cy,
@@ -31,7 +23,7 @@ bs_memblt(int opcode, int x, int y, int cx, int cy,
 
   if (bs_warp_coords(&x, &y, &cx, &cy, &srcx, &srcy))
   {
-    if (opcode == 12) /* copy */
+    if (opcode == 12)
     {
       if (g_Bpp == 1)
       {
@@ -55,7 +47,7 @@ bs_memblt(int opcode, int x, int y, int cx, int cy,
         }
       }
     }
-    else /* slow */
+    else
     {
       if (g_Bpp == 1)
       {

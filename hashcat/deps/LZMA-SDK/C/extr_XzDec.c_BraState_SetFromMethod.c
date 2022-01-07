@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ UInt64 ;
-typedef  scalar_t__ UInt32 ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef scalar_t__ UInt64 ;
+typedef scalar_t__ UInt32 ;
 struct TYPE_5__ {int encodeMode; scalar_t__ methodId; } ;
-struct TYPE_4__ {int /*<<< orphan*/  Filter; int /*<<< orphan*/  Code2; int /*<<< orphan*/  Init; int /*<<< orphan*/  SetProps; int /*<<< orphan*/  Free; TYPE_2__* p; } ;
-typedef  int /*<<< orphan*/  SRes ;
-typedef  int /*<<< orphan*/  ISzAllocPtr ;
-typedef  TYPE_1__ IStateCoder ;
-typedef  TYPE_2__ CBraState ;
+struct TYPE_4__ {int Filter; int Code2; int Init; int SetProps; int Free; TYPE_2__* p; } ;
+typedef int SRes ;
+typedef int ISzAllocPtr ;
+typedef TYPE_1__ IStateCoder ;
+typedef TYPE_2__ CBraState ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BraState_Code2 ; 
- int /*<<< orphan*/  BraState_Filter ; 
- int /*<<< orphan*/  BraState_Free ; 
- int /*<<< orphan*/  BraState_Init ; 
- int /*<<< orphan*/  BraState_SetProps ; 
- scalar_t__ ISzAlloc_Alloc (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  SZ_ERROR_MEM ; 
- int /*<<< orphan*/  SZ_ERROR_UNSUPPORTED ; 
- int /*<<< orphan*/  SZ_OK ; 
- scalar_t__ XZ_ID_Delta ; 
- scalar_t__ XZ_ID_SPARC ; 
+
+ int BraState_Code2 ;
+ int BraState_Filter ;
+ int BraState_Free ;
+ int BraState_Init ;
+ int BraState_SetProps ;
+ scalar_t__ ISzAlloc_Alloc (int ,int) ;
+ int SZ_ERROR_MEM ;
+ int SZ_ERROR_UNSUPPORTED ;
+ int SZ_OK ;
+ scalar_t__ XZ_ID_Delta ;
+ scalar_t__ XZ_ID_SPARC ;
 
 SRes BraState_SetFromMethod(IStateCoder *p, UInt64 id, int encodeMode, ISzAllocPtr alloc)
 {

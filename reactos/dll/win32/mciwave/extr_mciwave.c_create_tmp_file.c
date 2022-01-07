@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  scalar_t__* LPWSTR ;
-typedef  scalar_t__ HMMIO ;
-typedef  int /*<<< orphan*/  DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAY_SIZE (char*) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  GetTempFileNameW (char*,char*,int /*<<< orphan*/ ,scalar_t__*) ; 
- int /*<<< orphan*/  GetTempPathW (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  HEAP_ZERO_MEMORY ; 
- scalar_t__* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__*) ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  MCIERR_FILE_NOT_FOUND ; 
- int MMIO_ALLOCBUF ; 
- int MMIO_CREATE ; 
- int MMIO_READWRITE ; 
- int /*<<< orphan*/  MMSYSERR_NOERROR ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WARN (char*,...) ; 
- int /*<<< orphan*/  debugstr_w (scalar_t__*) ; 
- scalar_t__ mmioOpenW (scalar_t__*,int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef char WCHAR ;
+typedef scalar_t__* LPWSTR ;
+typedef scalar_t__ HMMIO ;
+typedef int DWORD ;
+
+
+ int ARRAY_SIZE (char*) ;
+ int GetProcessHeap () ;
+ int GetTempFileNameW (char*,char*,int ,scalar_t__*) ;
+ int GetTempPathW (int ,char*) ;
+ int HEAP_ZERO_MEMORY ;
+ scalar_t__* HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,scalar_t__*) ;
+ int MAX_PATH ;
+ int MCIERR_FILE_NOT_FOUND ;
+ int MMIO_ALLOCBUF ;
+ int MMIO_CREATE ;
+ int MMIO_READWRITE ;
+ int MMSYSERR_NOERROR ;
+ int TRACE (char*,int ) ;
+ int WARN (char*,...) ;
+ int debugstr_w (scalar_t__*) ;
+ scalar_t__ mmioOpenW (scalar_t__*,int *,int) ;
 
 __attribute__((used)) static DWORD create_tmp_file(HMMIO* hFile, LPWSTR* pszTmpFileName)
 {
-    WCHAR       szTmpPath[MAX_PATH];
-    WCHAR       szPrefix[4];
-    DWORD       dwRet = MMSYSERR_NOERROR;
+    WCHAR szTmpPath[MAX_PATH];
+    WCHAR szPrefix[4];
+    DWORD dwRet = MMSYSERR_NOERROR;
 
     szPrefix[0] = 'M';
     szPrefix[1] = 'C';
@@ -47,7 +47,7 @@ __attribute__((used)) static DWORD create_tmp_file(HMMIO* hFile, LPWSTR* pszTmpF
 
     if (!GetTempPathW(ARRAY_SIZE(szTmpPath), szTmpPath)) {
         WARN("can't retrieve temp path!\n");
-        *pszTmpFileName = NULL;
+        *pszTmpFileName = ((void*)0);
         return MCIERR_FILE_NOT_FOUND;
     }
 
@@ -64,12 +64,12 @@ __attribute__((used)) static DWORD create_tmp_file(HMMIO* hFile, LPWSTR* pszTmpF
 
     if (*pszTmpFileName && (*pszTmpFileName)[0]) {
 
-        *hFile = mmioOpenW(*pszTmpFileName, NULL,
+        *hFile = mmioOpenW(*pszTmpFileName, ((void*)0),
                            MMIO_ALLOCBUF | MMIO_READWRITE | MMIO_CREATE);
 
         if (*hFile == 0) {
             WARN("can't create file=%s!\n", debugstr_w(*pszTmpFileName));
-            /* temporary file could not be created. clean filename. */
+
             HeapFree(GetProcessHeap(), 0, *pszTmpFileName);
             dwRet = MCIERR_FILE_NOT_FOUND;
         }

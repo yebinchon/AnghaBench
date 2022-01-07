@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  rtx ;
 
-/* Variables and functions */
- size_t FIRST_PSEUDO_REGISTER ; 
- scalar_t__ GET_CODE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GET_MODE (int /*<<< orphan*/ ) ; 
- scalar_t__ MEM ; 
- int /*<<< orphan*/  Pmode ; 
- scalar_t__ REG ; 
- size_t REGNO (int /*<<< orphan*/ ) ; 
- scalar_t__ TARGET_ARCH64 ; 
- int /*<<< orphan*/  XEXP (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int const_zero_operand (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int fp_high_losum_p (int /*<<< orphan*/ ) ; 
- int fp_mov_p (int /*<<< orphan*/ ) ; 
- int fp_sethi_p (int /*<<< orphan*/ ) ; 
- scalar_t__ mem_min_alignment (int /*<<< orphan*/ ,int) ; 
- scalar_t__* reg_renumber ; 
- int register_ok_for_ldd (int /*<<< orphan*/ ) ; 
- scalar_t__ reload_in_progress ; 
- scalar_t__ strict_memory_address_p (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int rtx ;
+
+
+ size_t FIRST_PSEUDO_REGISTER ;
+ scalar_t__ GET_CODE (int ) ;
+ int GET_MODE (int ) ;
+ scalar_t__ MEM ;
+ int Pmode ;
+ scalar_t__ REG ;
+ size_t REGNO (int ) ;
+ scalar_t__ TARGET_ARCH64 ;
+ int XEXP (int ,int ) ;
+ int const_zero_operand (int ,int ) ;
+ int fp_high_losum_p (int ) ;
+ int fp_mov_p (int ) ;
+ int fp_sethi_p (int ) ;
+ scalar_t__ mem_min_alignment (int ,int) ;
+ scalar_t__* reg_renumber ;
+ int register_ok_for_ldd (int ) ;
+ scalar_t__ reload_in_progress ;
+ scalar_t__ strict_memory_address_p (int ,int ) ;
 
 int
 sparc_extra_constraint_check (rtx op, int c, int strict)
@@ -54,10 +54,10 @@ sparc_extra_constraint_check (rtx op, int c, int strict)
 
     case 'U':
       if (! strict
-	  || (GET_CODE (op) == REG
-	      && (REGNO (op) < FIRST_PSEUDO_REGISTER
-		  || reg_renumber[REGNO (op)] >= 0)))
-	return register_ok_for_ldd (op);
+   || (GET_CODE (op) == REG
+       && (REGNO (op) < FIRST_PSEUDO_REGISTER
+    || reg_renumber[REGNO (op)] >= 0)))
+ return register_ok_for_ldd (op);
 
       return 0;
 
@@ -72,23 +72,23 @@ sparc_extra_constraint_check (rtx op, int c, int strict)
       return 0;
     }
 
-  /* Our memory extra constraints have to emulate the
-     behavior of 'm' and 'o' in order for reload to work
-     correctly.  */
+
+
+
   if (GET_CODE (op) == MEM)
     {
       reload_ok_mem = 0;
       if ((TARGET_ARCH64 || mem_min_alignment (op, 8))
-	  && (! strict
-	      || strict_memory_address_p (Pmode, XEXP (op, 0))))
-	reload_ok_mem = 1;
+   && (! strict
+       || strict_memory_address_p (Pmode, XEXP (op, 0))))
+ reload_ok_mem = 1;
     }
   else
     {
       reload_ok_mem = (reload_in_progress
-		       && GET_CODE (op) == REG
-		       && REGNO (op) >= FIRST_PSEUDO_REGISTER
-		       && reg_renumber [REGNO (op)] < 0);
+         && GET_CODE (op) == REG
+         && REGNO (op) >= FIRST_PSEUDO_REGISTER
+         && reg_renumber [REGNO (op)] < 0);
     }
 
   return reload_ok_mem;

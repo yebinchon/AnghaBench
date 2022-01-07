@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  png_uint_32 ;
-typedef  TYPE_1__* png_structrp ;
-typedef  int /*<<< orphan*/ * png_const_uint_16p ;
-typedef  int /*<<< orphan*/  png_byte ;
+
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int png_uint_32 ;
+typedef TYPE_1__* png_structrp ;
+typedef int * png_const_uint_16p ;
+typedef int png_byte ;
 struct TYPE_7__ {scalar_t__ num_palette; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  png_debug (int,char*) ; 
- int /*<<< orphan*/  png_debug2 (int,char*,int,scalar_t__) ; 
- int /*<<< orphan*/  png_hIST ; 
- int /*<<< orphan*/  png_save_uint_16 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  png_warning (TYPE_1__*,char*) ; 
- int /*<<< orphan*/  png_write_chunk_data (TYPE_1__*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  png_write_chunk_end (TYPE_1__*) ; 
- int /*<<< orphan*/  png_write_chunk_header (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
 
-void /* PRIVATE */
+ int png_debug (int,char*) ;
+ int png_debug2 (int,char*,int,scalar_t__) ;
+ int png_hIST ;
+ int png_save_uint_16 (int *,int ) ;
+ int png_warning (TYPE_1__*,char*) ;
+ int png_write_chunk_data (TYPE_1__*,int *,int) ;
+ int png_write_chunk_end (TYPE_1__*) ;
+ int png_write_chunk_header (TYPE_1__*,int ,int ) ;
+
+void
 png_write_hIST(png_structrp png_ptr, png_const_uint_16p hist, int num_hist)
 {
    int i;

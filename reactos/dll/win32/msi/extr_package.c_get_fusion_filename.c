@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  path ;
-typedef  float WCHAR ;
-typedef  int /*<<< orphan*/  MSIPACKAGE ;
-typedef  float* LPWSTR ;
-typedef  scalar_t__ LONG ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  BYTE ;
 
-/* Variables and functions */
- scalar_t__ ERROR_SUCCESS ; 
- scalar_t__ GetFileAttributesW (float*) ; 
- int /*<<< orphan*/  GetWindowsDirectoryW (float*,int) ; 
- int /*<<< orphan*/  HKEY_LOCAL_MACHINE ; 
- scalar_t__ INVALID_FILE_ATTRIBUTES ; 
- int /*<<< orphan*/  KEY_CREATE_SUB_KEY ; 
- int /*<<< orphan*/  KEY_QUERY_VALUE ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RegCreateKeyExW (int /*<<< orphan*/ ,float const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ RegOpenKeyExW (int /*<<< orphan*/ ,float const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RegQueryValueExW (int /*<<< orphan*/ ,float const*,int /*<<< orphan*/ *,int*,int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  debugstr_w (float*) ; 
- float* msi_alloc (int) ; 
- int /*<<< orphan*/  strcatW (float*,float const*) ; 
- int /*<<< orphan*/  strcpyW (float*,float*) ; 
- int strlenW (float const*) ; 
- float const* szBackSlash ; 
+
+
+
+typedef int path ;
+typedef float WCHAR ;
+typedef int MSIPACKAGE ;
+typedef float* LPWSTR ;
+typedef scalar_t__ LONG ;
+typedef int HKEY ;
+typedef int DWORD ;
+typedef int BYTE ;
+
+
+ scalar_t__ ERROR_SUCCESS ;
+ scalar_t__ GetFileAttributesW (float*) ;
+ int GetWindowsDirectoryW (float*,int) ;
+ int HKEY_LOCAL_MACHINE ;
+ scalar_t__ INVALID_FILE_ATTRIBUTES ;
+ int KEY_CREATE_SUB_KEY ;
+ int KEY_QUERY_VALUE ;
+ int MAX_PATH ;
+ int RegCloseKey (int ) ;
+ int RegCreateKeyExW (int ,float const*,int ,int *,int ,int ,int *,int *,int *) ;
+ scalar_t__ RegOpenKeyExW (int ,float const*,int ,int ,int *) ;
+ int RegQueryValueExW (int ,float const*,int *,int*,int *,int*) ;
+ int TRACE (char*,int ) ;
+ int debugstr_w (float*) ;
+ float* msi_alloc (int) ;
+ int strcatW (float*,float const*) ;
+ int strcpyW (float*,float*) ;
+ int strlenW (float const*) ;
+ float const* szBackSlash ;
 
 __attribute__((used)) static LPWSTR get_fusion_filename(MSIPACKAGE *package)
 {
@@ -58,19 +58,19 @@ __attribute__((used)) static LPWSTR get_fusion_filename(MSIPACKAGE *package)
     HKEY netsetup, hkey;
     LONG res;
     DWORD size, len, type;
-    WCHAR windir[MAX_PATH], path[MAX_PATH], *filename = NULL;
+    WCHAR windir[MAX_PATH], path[MAX_PATH], *filename = ((void*)0);
 
     res = RegOpenKeyExW(HKEY_LOCAL_MACHINE, subkey, 0, KEY_CREATE_SUB_KEY, &netsetup);
     if (res != ERROR_SUCCESS)
-        return NULL;
+        return ((void*)0);
 
-    if (!RegCreateKeyExW(netsetup, v4client, 0, NULL, 0, KEY_QUERY_VALUE, NULL, &hkey, NULL))
+    if (!RegCreateKeyExW(netsetup, v4client, 0, ((void*)0), 0, KEY_QUERY_VALUE, ((void*)0), &hkey, ((void*)0)))
     {
         size = sizeof(path)/sizeof(path[0]);
-        if (!RegQueryValueExW(hkey, installpath, NULL, &type, (BYTE *)path, &size))
+        if (!RegQueryValueExW(hkey, installpath, ((void*)0), &type, (BYTE *)path, &size))
         {
             len = strlenW(path) + strlenW(fusion) + 2;
-            if (!(filename = msi_alloc(len * sizeof(WCHAR)))) return NULL;
+            if (!(filename = msi_alloc(len * sizeof(WCHAR)))) return ((void*)0);
 
             strcpyW(filename, path);
             strcatW(filename, szBackSlash);
@@ -86,12 +86,12 @@ __attribute__((used)) static LPWSTR get_fusion_filename(MSIPACKAGE *package)
         RegCloseKey(hkey);
     }
 
-    if (!RegCreateKeyExW(netsetup, v2050727, 0, NULL, 0, KEY_QUERY_VALUE, NULL, &hkey, NULL))
+    if (!RegCreateKeyExW(netsetup, v2050727, 0, ((void*)0), 0, KEY_QUERY_VALUE, ((void*)0), &hkey, ((void*)0)))
     {
         RegCloseKey(hkey);
         GetWindowsDirectoryW(windir, MAX_PATH);
         len = strlenW(windir) + strlenW(subdir) + strlenW(v2050727) + strlenW(fusion) + 3;
-        if (!(filename = msi_alloc(len * sizeof(WCHAR)))) return NULL;
+        if (!(filename = msi_alloc(len * sizeof(WCHAR)))) return ((void*)0);
 
         strcpyW(filename, windir);
         strcatW(filename, szBackSlash);

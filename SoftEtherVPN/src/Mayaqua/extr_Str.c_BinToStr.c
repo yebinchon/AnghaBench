@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int UINT ;
-typedef  int UCHAR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Free (char*) ; 
- int /*<<< orphan*/  StrCpy (char*,int,char*) ; 
- char* ZeroMalloc (int) ; 
- int /*<<< orphan*/  sprintf (char*,char*,int) ; 
+
+
+
+typedef int UINT ;
+typedef int UCHAR ;
+
+
+ int Free (char*) ;
+ int StrCpy (char*,int,char*) ;
+ char* ZeroMalloc (int) ;
+ int sprintf (char*,char*,int) ;
 
 void BinToStr(char *str, UINT str_size, void *data, UINT data_size)
 {
-	char *tmp;
-	UCHAR *buf = (UCHAR *)data;
-	UINT size;
-	UINT i;
-	// Validate arguments
-	if (str == NULL || data == NULL)
-	{
-		if (str != NULL)
-		{
-			str[0] = 0;
-		}
-		return;
-	}
+ char *tmp;
+ UCHAR *buf = (UCHAR *)data;
+ UINT size;
+ UINT i;
 
-	// Calculation of size
-	size = data_size * 2 + 1;
-	// Memory allocation
-	tmp = ZeroMalloc(size);
-	// Conversion
-	for (i = 0;i < data_size;i++)
-	{
-		sprintf(&tmp[i * 2], "%02X", buf[i]);
-	}
-	// Copy
-	StrCpy(str, str_size, tmp);
-	// Memory release
-	Free(tmp);
+ if (str == ((void*)0) || data == ((void*)0))
+ {
+  if (str != ((void*)0))
+  {
+   str[0] = 0;
+  }
+  return;
+ }
+
+
+ size = data_size * 2 + 1;
+
+ tmp = ZeroMalloc(size);
+
+ for (i = 0;i < data_size;i++)
+ {
+  sprintf(&tmp[i * 2], "%02X", buf[i]);
+ }
+
+ StrCpy(str, str_size, tmp);
+
+ Free(tmp);
 }

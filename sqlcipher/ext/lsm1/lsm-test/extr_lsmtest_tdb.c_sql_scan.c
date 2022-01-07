@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_stmt ;
-typedef  int /*<<< orphan*/  TestDb ;
-struct TYPE_2__ {int /*<<< orphan*/ ** apScan; } ;
-typedef  TYPE_1__ SqlDb ;
 
-/* Variables and functions */
- scalar_t__ SQLITE_ROW ; 
- int /*<<< orphan*/  SQLITE_STATIC ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  sqlite3_bind_blob (int /*<<< orphan*/ *,int,void*,int,int /*<<< orphan*/ ) ; 
- scalar_t__ sqlite3_column_blob (int /*<<< orphan*/ *,int) ; 
- int sqlite3_column_bytes (int /*<<< orphan*/ *,int) ; 
- int sqlite3_reset (int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3_step (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int sqlite3_stmt ;
+typedef int TestDb ;
+struct TYPE_2__ {int ** apScan; } ;
+typedef TYPE_1__ SqlDb ;
+
+
+ scalar_t__ SQLITE_ROW ;
+ int SQLITE_STATIC ;
+ int assert (int) ;
+ int sqlite3_bind_blob (int *,int,void*,int,int ) ;
+ scalar_t__ sqlite3_column_blob (int *,int) ;
+ int sqlite3_column_bytes (int *,int) ;
+ int sqlite3_reset (int *) ;
+ scalar_t__ sqlite3_step (int *) ;
 
 __attribute__((used)) static int sql_scan(
   TestDb *pTestDb,

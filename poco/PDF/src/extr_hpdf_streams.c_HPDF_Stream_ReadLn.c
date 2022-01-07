@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  error; int /*<<< orphan*/  read_fn; int /*<<< orphan*/  seek_fn; } ;
-typedef  scalar_t__ HPDF_UINT ;
-typedef  TYPE_1__* HPDF_Stream ;
-typedef  scalar_t__ HPDF_STATUS ;
-typedef  int /*<<< orphan*/  HPDF_BYTE ;
 
-/* Variables and functions */
- scalar_t__ HPDF_INVALID_OPERATION ; 
- scalar_t__ HPDF_INVALID_PARAMETER ; 
- scalar_t__ HPDF_OK ; 
- int /*<<< orphan*/  HPDF_PTRACE (char*) ; 
- int /*<<< orphan*/  HPDF_SEEK_CUR ; 
- int HPDF_STREAM_BUF_SIZ ; 
- scalar_t__ HPDF_STREAM_EOF ; 
- scalar_t__ HPDF_STREAM_READLN_CONTINUE ; 
- scalar_t__ HPDF_SetError (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ) ; 
- scalar_t__ HPDF_Stream_Read (TYPE_1__*,int /*<<< orphan*/ *,scalar_t__*) ; 
- scalar_t__ HPDF_Stream_Seek (TYPE_1__*,scalar_t__,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int error; int read_fn; int seek_fn; } ;
+typedef scalar_t__ HPDF_UINT ;
+typedef TYPE_1__* HPDF_Stream ;
+typedef scalar_t__ HPDF_STATUS ;
+typedef int HPDF_BYTE ;
+
+
+ scalar_t__ HPDF_INVALID_OPERATION ;
+ scalar_t__ HPDF_INVALID_PARAMETER ;
+ scalar_t__ HPDF_OK ;
+ int HPDF_PTRACE (char*) ;
+ int HPDF_SEEK_CUR ;
+ int HPDF_STREAM_BUF_SIZ ;
+ scalar_t__ HPDF_STREAM_EOF ;
+ scalar_t__ HPDF_STREAM_READLN_CONTINUE ;
+ scalar_t__ HPDF_SetError (int ,scalar_t__,int ) ;
+ scalar_t__ HPDF_Stream_Read (TYPE_1__*,int *,scalar_t__*) ;
+ scalar_t__ HPDF_Stream_Seek (TYPE_1__*,scalar_t__,int ) ;
 
 HPDF_STATUS
-HPDF_Stream_ReadLn  (HPDF_Stream  stream,
-                     char    *s,
-                     HPDF_UINT    *size)
+HPDF_Stream_ReadLn (HPDF_Stream stream,
+                     char *s,
+                     HPDF_UINT *size)
 {
     char buf[HPDF_STREAM_BUF_SIZ];
     HPDF_UINT r_size = *size;
@@ -69,7 +69,7 @@ HPDF_Stream_ReadLn  (HPDF_Stream  stream,
                 *s = 0;
                 read_size--;
 
-                /* handling CR-LF marker */
+
                 if (*pbuf == 0x0D || read_size > 1) {
                     pbuf++;
 

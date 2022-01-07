@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_5__ {int* out; int output_channels; int out_size; scalar_t__ redundancy_idx; scalar_t__* redundancy_output; int /*<<< orphan*/ * celt_output; TYPE_1__* fdsp; int /*<<< orphan*/  celt_delay; int /*<<< orphan*/  avctx; int /*<<< orphan*/  swr; } ;
-struct TYPE_4__ {int /*<<< orphan*/  (* vector_fmac_scalar ) (int,int /*<<< orphan*/ ,double,int) ;} ;
-typedef  TYPE_2__ OpusStreamContext ;
 
-/* Variables and functions */
- int AVERROR_BUG ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  av_audio_fifo_read (int /*<<< orphan*/ ,void**,int) ; 
- int av_audio_fifo_size (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,...) ; 
- scalar_t__ ff_celt_window2 ; 
- int /*<<< orphan*/  opus_fade (int,int,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  stub1 (int,int /*<<< orphan*/ ,double,int) ; 
- int swr_convert (int /*<<< orphan*/ ,int /*<<< orphan*/ **,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_5__ {int* out; int output_channels; int out_size; scalar_t__ redundancy_idx; scalar_t__* redundancy_output; int * celt_output; TYPE_1__* fdsp; int celt_delay; int avctx; int swr; } ;
+struct TYPE_4__ {int (* vector_fmac_scalar ) (int,int ,double,int) ;} ;
+typedef TYPE_2__ OpusStreamContext ;
+
+
+ int AVERROR_BUG ;
+ int AV_LOG_ERROR ;
+ int av_audio_fifo_read (int ,void**,int) ;
+ int av_audio_fifo_size (int ) ;
+ int av_log (int ,int ,char*,...) ;
+ scalar_t__ ff_celt_window2 ;
+ int opus_fade (int,int,scalar_t__,scalar_t__,scalar_t__) ;
+ int stub1 (int,int ,double,int) ;
+ int swr_convert (int ,int **,int,int *,int ) ;
 
 __attribute__((used)) static int opus_flush_resample(OpusStreamContext *s, int nb_samples)
 {
@@ -34,7 +34,7 @@ __attribute__((used)) static int opus_flush_resample(OpusStreamContext *s, int n
     int ret, i;
     ret = swr_convert(s->swr,
                       (uint8_t**)s->out, nb_samples,
-                      NULL, 0);
+                      ((void*)0), 0);
     if (ret < 0)
         return ret;
     else if (ret != nb_samples) {
@@ -64,8 +64,8 @@ __attribute__((used)) static int opus_flush_resample(OpusStreamContext *s, int n
         s->redundancy_idx = 0;
     }
 
-    s->out[0]   += nb_samples;
-    s->out[1]   += nb_samples;
+    s->out[0] += nb_samples;
+    s->out[1] += nb_samples;
     s->out_size -= nb_samples * sizeof(float);
 
     return 0;

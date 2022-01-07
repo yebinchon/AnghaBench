@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct backref_node {scalar_t__ locked; int /*<<< orphan*/  eb; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  btrfs_tree_unlock (int /*<<< orphan*/ ) ; 
+
+
+
+struct backref_node {scalar_t__ locked; int eb; } ;
+
+
+ int btrfs_tree_unlock (int ) ;
 
 __attribute__((used)) static void unlock_node_buffer(struct backref_node *node)
 {
-	if (node->locked) {
-		btrfs_tree_unlock(node->eb);
-		node->locked = 0;
-	}
+ if (node->locked) {
+  btrfs_tree_unlock(node->eb);
+  node->locked = 0;
+ }
 }

@@ -1,66 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  scalar_t__ uint32_t ;
-typedef  int /*<<< orphan*/  types ;
-typedef  int /*<<< orphan*/  jerry_value_t ;
-typedef  int /*<<< orphan*/  jerry_typedarray_type_t ;
 
-/* Variables and functions */
- scalar_t__ JERRY_ERROR_TYPE ; 
-#define  JERRY_TYPEDARRAY_FLOAT32 136 
-#define  JERRY_TYPEDARRAY_FLOAT64 135 
-#define  JERRY_TYPEDARRAY_INT16 134 
-#define  JERRY_TYPEDARRAY_INT32 133 
-#define  JERRY_TYPEDARRAY_INT8 132 
-#define  JERRY_TYPEDARRAY_UINT16 131 
-#define  JERRY_TYPEDARRAY_UINT32 130 
-#define  JERRY_TYPEDARRAY_UINT8 129 
-#define  JERRY_TYPEDARRAY_UINT8CLAMPED 128 
- int /*<<< orphan*/  TEST_ASSERT (int) ; 
- int /*<<< orphan*/  jerry_create_arraybuffer_external (scalar_t__ const,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jerry_create_typedarray_for_arraybuffer (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jerry_create_typedarray_for_arraybuffer_sz (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  jerry_detach_arraybuffer (int /*<<< orphan*/ ) ; 
- scalar_t__ const jerry_get_arraybuffer_byte_length (int /*<<< orphan*/ ) ; 
- int jerry_get_boolean_value (int /*<<< orphan*/ ) ; 
- scalar_t__ jerry_get_error_type (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jerry_is_arraybuffer_detachable (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jerry_release_value (int /*<<< orphan*/ ) ; 
- int jerry_value_is_arraybuffer (int /*<<< orphan*/ ) ; 
- int jerry_value_is_error (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint8_t ;
+typedef scalar_t__ uint32_t ;
+typedef int types ;
+typedef int jerry_value_t ;
+typedef int jerry_typedarray_type_t ;
+
+
+ scalar_t__ JERRY_ERROR_TYPE ;
+ int TEST_ASSERT (int) ;
+ int jerry_create_arraybuffer_external (scalar_t__ const,int *,int *) ;
+ int jerry_create_typedarray_for_arraybuffer (int ,int ) ;
+ int jerry_create_typedarray_for_arraybuffer_sz (int ,int ,int ,int) ;
+ int jerry_detach_arraybuffer (int ) ;
+ scalar_t__ const jerry_get_arraybuffer_byte_length (int ) ;
+ int jerry_get_boolean_value (int ) ;
+ scalar_t__ jerry_get_error_type (int ) ;
+ int jerry_is_arraybuffer_detachable (int ) ;
+ int jerry_release_value (int ) ;
+ int jerry_value_is_arraybuffer (int ) ;
+ int jerry_value_is_error (int ) ;
 
 __attribute__((used)) static void
 test_detached_arraybuffer (void)
 {
   static jerry_typedarray_type_t types[] =
   {
-    JERRY_TYPEDARRAY_UINT8,
-    JERRY_TYPEDARRAY_UINT8CLAMPED,
-    JERRY_TYPEDARRAY_INT8,
-    JERRY_TYPEDARRAY_UINT16,
-    JERRY_TYPEDARRAY_INT16,
-    JERRY_TYPEDARRAY_UINT32,
-    JERRY_TYPEDARRAY_INT32,
-    JERRY_TYPEDARRAY_FLOAT32,
-    JERRY_TYPEDARRAY_FLOAT64,
+    129,
+    128,
+    132,
+    131,
+    134,
+    130,
+    133,
+    136,
+    135,
   };
 
-  /* Creating an TypedArray for a detached array buffer with a given length/offset is invalid */
+
   {
     uint8_t buf[1];
     const uint32_t length = 1;
-    jerry_value_t arraybuffer = jerry_create_arraybuffer_external (length, buf, NULL);
+    jerry_value_t arraybuffer = jerry_create_arraybuffer_external (length, buf, ((void*)0));
     TEST_ASSERT (!jerry_value_is_error (arraybuffer));
     TEST_ASSERT (jerry_value_is_arraybuffer (arraybuffer));
     TEST_ASSERT (jerry_get_arraybuffer_byte_length (arraybuffer) == length);
@@ -85,11 +76,11 @@ test_detached_arraybuffer (void)
     jerry_release_value (arraybuffer);
   }
 
-  /* Creating an TypedArray for a detached array buffer without length/offset is valid */
+
   {
     uint8_t buf[1];
     const uint32_t length = 1;
-    jerry_value_t arraybuffer = jerry_create_arraybuffer_external (length, buf, NULL);
+    jerry_value_t arraybuffer = jerry_create_arraybuffer_external (length, buf, ((void*)0));
     TEST_ASSERT (!jerry_value_is_error (arraybuffer));
     TEST_ASSERT (jerry_value_is_arraybuffer (arraybuffer));
     TEST_ASSERT (jerry_get_arraybuffer_byte_length (arraybuffer) == length);

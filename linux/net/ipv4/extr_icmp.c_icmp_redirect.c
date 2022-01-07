@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct sk_buff {int len; int /*<<< orphan*/  dev; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct sk_buff {int len; int dev; } ;
 struct iphdr {int dummy; } ;
-struct TYPE_3__ {int /*<<< orphan*/  gateway; } ;
+struct TYPE_3__ {int gateway; } ;
 struct TYPE_4__ {TYPE_1__ un; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ICMP_MIB_INERRORS ; 
- int /*<<< orphan*/  __ICMP_INC_STATS (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dev_net (int /*<<< orphan*/ ) ; 
- TYPE_2__* icmp_hdr (struct sk_buff*) ; 
- int /*<<< orphan*/  icmp_socket_deliver (struct sk_buff*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ntohl (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pskb_may_pull (struct sk_buff*,int) ; 
+
+ int ICMP_MIB_INERRORS ;
+ int __ICMP_INC_STATS (int ,int ) ;
+ int dev_net (int ) ;
+ TYPE_2__* icmp_hdr (struct sk_buff*) ;
+ int icmp_socket_deliver (struct sk_buff*,int ) ;
+ int ntohl (int ) ;
+ int pskb_may_pull (struct sk_buff*,int) ;
 
 __attribute__((used)) static bool icmp_redirect(struct sk_buff *skb)
 {
-	if (skb->len < sizeof(struct iphdr)) {
-		__ICMP_INC_STATS(dev_net(skb->dev), ICMP_MIB_INERRORS);
-		return false;
-	}
+ if (skb->len < sizeof(struct iphdr)) {
+  __ICMP_INC_STATS(dev_net(skb->dev), ICMP_MIB_INERRORS);
+  return 0;
+ }
 
-	if (!pskb_may_pull(skb, sizeof(struct iphdr))) {
-		/* there aught to be a stat */
-		return false;
-	}
+ if (!pskb_may_pull(skb, sizeof(struct iphdr))) {
 
-	icmp_socket_deliver(skb, ntohl(icmp_hdr(skb)->un.gateway));
-	return true;
+  return 0;
+ }
+
+ icmp_socket_deliver(skb, ntohl(icmp_hdr(skb)->un.gateway));
+ return 1;
 }

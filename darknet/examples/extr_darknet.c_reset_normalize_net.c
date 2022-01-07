@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_7__ {int n; TYPE_2__* layers; } ;
-typedef  TYPE_1__ network ;
+typedef TYPE_1__ network ;
 struct TYPE_8__ {scalar_t__ type; struct TYPE_8__* state_h_layer; struct TYPE_8__* state_r_layer; struct TYPE_8__* state_z_layer; struct TYPE_8__* input_h_layer; struct TYPE_8__* input_r_layer; struct TYPE_8__* input_z_layer; scalar_t__ batch_normalize; } ;
-typedef  TYPE_2__ layer ;
+typedef TYPE_2__ layer ;
 
-/* Variables and functions */
- scalar_t__ CONNECTED ; 
- scalar_t__ CONVOLUTIONAL ; 
- scalar_t__ GRU ; 
- int /*<<< orphan*/  denormalize_connected_layer (TYPE_2__) ; 
- int /*<<< orphan*/  denormalize_convolutional_layer (TYPE_2__) ; 
- int gpu_index ; 
- TYPE_1__* load_network (char*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  save_weights (TYPE_1__*,char*) ; 
+
+ scalar_t__ CONNECTED ;
+ scalar_t__ CONVOLUTIONAL ;
+ scalar_t__ GRU ;
+ int denormalize_connected_layer (TYPE_2__) ;
+ int denormalize_convolutional_layer (TYPE_2__) ;
+ int gpu_index ;
+ TYPE_1__* load_network (char*,char*,int ) ;
+ int save_weights (TYPE_1__*,char*) ;
 
 void reset_normalize_net(char *cfgfile, char *weightfile, char *outfile)
 {

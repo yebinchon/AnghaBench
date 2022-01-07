@@ -1,81 +1,81 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_19__   TYPE_5__ ;
-typedef  struct TYPE_18__   TYPE_4__ ;
-typedef  struct TYPE_17__   TYPE_3__ ;
-typedef  struct TYPE_16__   TYPE_2__ ;
-typedef  struct TYPE_15__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char uint64_t ;
-typedef  char u_char ;
-typedef  scalar_t__ ssize_t ;
-typedef  scalar_t__ off_t ;
+
+
+typedef struct TYPE_19__ TYPE_5__ ;
+typedef struct TYPE_18__ TYPE_4__ ;
+typedef struct TYPE_17__ TYPE_3__ ;
+typedef struct TYPE_16__ TYPE_2__ ;
+typedef struct TYPE_15__ TYPE_1__ ;
+
+
+typedef char uint64_t ;
+typedef char u_char ;
+typedef scalar_t__ ssize_t ;
+typedef scalar_t__ off_t ;
 struct TYPE_17__ {TYPE_2__* connection; } ;
-typedef  TYPE_3__ ngx_rtmp_session_t ;
-struct TYPE_18__ {scalar_t__ fd; double duration; int discont; int active; char id; char key_id; int /*<<< orphan*/  name; int /*<<< orphan*/  log; } ;
-typedef  TYPE_4__ ngx_rtmp_hls_frag_t ;
-struct TYPE_15__ {int /*<<< orphan*/  data; } ;
+typedef TYPE_3__ ngx_rtmp_session_t ;
+struct TYPE_18__ {scalar_t__ fd; double duration; int discont; int active; char id; char key_id; int name; int log; } ;
+typedef TYPE_4__ ngx_rtmp_hls_frag_t ;
+struct TYPE_15__ {int data; } ;
 struct TYPE_19__ {char frag; scalar_t__ nfrags; TYPE_1__ playlist; } ;
-typedef  TYPE_5__ ngx_rtmp_hls_ctx_t ;
-typedef  int ngx_int_t ;
-typedef  TYPE_4__ ngx_file_t ;
-typedef  int /*<<< orphan*/  file ;
-typedef  int /*<<< orphan*/  buffer ;
-struct TYPE_16__ {int /*<<< orphan*/  log; } ;
+typedef TYPE_5__ ngx_rtmp_hls_ctx_t ;
+typedef int ngx_int_t ;
+typedef TYPE_4__ ngx_file_t ;
+typedef int file ;
+typedef int buffer ;
+struct TYPE_16__ {int log; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NGX_FILE_OPEN ; 
- int /*<<< orphan*/  NGX_FILE_RDONLY ; 
- scalar_t__ NGX_INVALID_FILE ; 
- int /*<<< orphan*/  NGX_LOG_DEBUG_RTMP ; 
- int /*<<< orphan*/  NGX_LOG_ERR ; 
- int /*<<< orphan*/  NGX_RTMP_DISCONT ; 
- size_t NGX_RTMP_DISCONT_LEN ; 
- int /*<<< orphan*/  NGX_RTMP_EXTINF ; 
- size_t NGX_RTMP_EXTINF_LEN ; 
- int /*<<< orphan*/  NGX_RTMP_MSEQ ; 
- size_t NGX_RTMP_MSEQ_LEN ; 
- int /*<<< orphan*/  NGX_RTMP_XKEY ; 
- size_t NGX_RTMP_XKEY_LEN ; 
- int /*<<< orphan*/  ngx_close_file (scalar_t__) ; 
- int /*<<< orphan*/  ngx_log_debug0 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ngx_log_debug1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,double) ; 
- int /*<<< orphan*/  ngx_log_debug6 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,size_t,char*,char,double,double,scalar_t__) ; 
- int /*<<< orphan*/  ngx_log_error (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- scalar_t__ ngx_memcmp (char*,int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/  ngx_memzero (TYPE_4__*,int) ; 
- scalar_t__ ngx_open_file (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ ngx_read_file (TYPE_4__*,char*,int,scalar_t__) ; 
- TYPE_5__* ngx_rtmp_get_module_ctx (TYPE_3__*,int /*<<< orphan*/ ) ; 
- TYPE_4__* ngx_rtmp_hls_get_frag (TYPE_3__*,scalar_t__) ; 
- int /*<<< orphan*/  ngx_rtmp_hls_module ; 
- int /*<<< orphan*/  ngx_rtmp_hls_next_frag (TYPE_3__*) ; 
- int /*<<< orphan*/  ngx_str_set (int /*<<< orphan*/ *,char*) ; 
- char* ngx_strlchr (char*,char*,char) ; 
- double strtod (char const*,int /*<<< orphan*/ *) ; 
+
+ int NGX_FILE_OPEN ;
+ int NGX_FILE_RDONLY ;
+ scalar_t__ NGX_INVALID_FILE ;
+ int NGX_LOG_DEBUG_RTMP ;
+ int NGX_LOG_ERR ;
+ int NGX_RTMP_DISCONT ;
+ size_t NGX_RTMP_DISCONT_LEN ;
+ int NGX_RTMP_EXTINF ;
+ size_t NGX_RTMP_EXTINF_LEN ;
+ int NGX_RTMP_MSEQ ;
+ size_t NGX_RTMP_MSEQ_LEN ;
+ int NGX_RTMP_XKEY ;
+ size_t NGX_RTMP_XKEY_LEN ;
+ int ngx_close_file (scalar_t__) ;
+ int ngx_log_debug0 (int ,int ,int ,char*) ;
+ int ngx_log_debug1 (int ,int ,int ,char*,double) ;
+ int ngx_log_debug6 (int ,int ,int ,char*,size_t,char*,char,double,double,scalar_t__) ;
+ int ngx_log_error (int ,int ,int ,char*) ;
+ scalar_t__ ngx_memcmp (char*,int ,size_t) ;
+ int ngx_memzero (TYPE_4__*,int) ;
+ scalar_t__ ngx_open_file (int ,int ,int ,int ) ;
+ scalar_t__ ngx_read_file (TYPE_4__*,char*,int,scalar_t__) ;
+ TYPE_5__* ngx_rtmp_get_module_ctx (TYPE_3__*,int ) ;
+ TYPE_4__* ngx_rtmp_hls_get_frag (TYPE_3__*,scalar_t__) ;
+ int ngx_rtmp_hls_module ;
+ int ngx_rtmp_hls_next_frag (TYPE_3__*) ;
+ int ngx_str_set (int *,char*) ;
+ char* ngx_strlchr (char*,char*,char) ;
+ double strtod (char const*,int *) ;
 
 __attribute__((used)) static void
 ngx_rtmp_hls_restore_stream(ngx_rtmp_session_t *s)
 {
-    ngx_rtmp_hls_ctx_t             *ctx;
-    ngx_file_t                      file;
-    ssize_t                         ret;
-    off_t                           offset;
-    u_char                         *p, *last, *end, *next, *pa, *pp, c;
-    ngx_rtmp_hls_frag_t            *f;
-    double                          duration;
-    ngx_int_t                       discont;
-    uint64_t                        mag, key_id, base;
-    static u_char                   buffer[4096];
+    ngx_rtmp_hls_ctx_t *ctx;
+    ngx_file_t file;
+    ssize_t ret;
+    off_t offset;
+    u_char *p, *last, *end, *next, *pa, *pp, c;
+    ngx_rtmp_hls_frag_t *f;
+    double duration;
+    ngx_int_t discont;
+    uint64_t mag, key_id, base;
+    static u_char buffer[4096];
 
     ctx = ngx_rtmp_get_module_ctx(s, ngx_rtmp_hls_module);
 
@@ -93,7 +93,7 @@ ngx_rtmp_hls_restore_stream(ngx_rtmp_session_t *s)
 
     offset = 0;
     ctx->nfrags = 0;
-    f = NULL;
+    f = ((void*)0);
     duration = 0;
     discont = 0;
     key_id = 0;
@@ -111,7 +111,7 @@ ngx_rtmp_hls_restore_stream(ngx_rtmp_session_t *s)
         for ( ;; ) {
             last = ngx_strlchr(p, end, '\n');
 
-            if (last == NULL) {
+            if (last == ((void*)0)) {
                 if (p == buffer) {
                     goto done;
                 }
@@ -126,26 +126,26 @@ ngx_rtmp_hls_restore_stream(ngx_rtmp_session_t *s)
             }
 
 
-#define NGX_RTMP_MSEQ           "#EXT-X-MEDIA-SEQUENCE:"
-#define NGX_RTMP_MSEQ_LEN       (sizeof(NGX_RTMP_MSEQ) - 1)
 
 
-            if (ngx_memcmp(p, NGX_RTMP_MSEQ, NGX_RTMP_MSEQ_LEN) == 0) {
+
+
+            if (ngx_memcmp(p, "#EXT-X-MEDIA-SEQUENCE:", (sizeof("#EXT-X-MEDIA-SEQUENCE:") - 1)) == 0) {
 
                 ctx->frag = (uint64_t) strtod((const char *)
-                                              &p[NGX_RTMP_MSEQ_LEN], NULL);
+                                              &p[(sizeof("#EXT-X-MEDIA-SEQUENCE:") - 1)], ((void*)0));
 
                 ngx_log_debug1(NGX_LOG_DEBUG_RTMP, s->connection->log, 0,
                                "hls: restore sequence frag=%uL", ctx->frag);
             }
 
 
-#define NGX_RTMP_XKEY           "#EXT-X-KEY:"
-#define NGX_RTMP_XKEY_LEN       (sizeof(NGX_RTMP_XKEY) - 1)
 
-            if (ngx_memcmp(p, NGX_RTMP_XKEY, NGX_RTMP_XKEY_LEN) == 0) {
 
-                /* recover key id from initialization vector */
+
+            if (ngx_memcmp(p, "#EXT-X-KEY:", (sizeof("#EXT-X-KEY:") - 1)) == 0) {
+
+
 
                 key_id = 0;
                 base = 1;
@@ -188,24 +188,24 @@ ngx_rtmp_hls_restore_stream(ngx_rtmp_session_t *s)
             }
 
 
-#define NGX_RTMP_EXTINF         "#EXTINF:"
-#define NGX_RTMP_EXTINF_LEN     (sizeof(NGX_RTMP_EXTINF) - 1)
 
 
-            if (ngx_memcmp(p, NGX_RTMP_EXTINF, NGX_RTMP_EXTINF_LEN) == 0) {
 
-                duration = strtod((const char *) &p[NGX_RTMP_EXTINF_LEN], NULL);
+
+            if (ngx_memcmp(p, "#EXTINF:", (sizeof("#EXTINF:") - 1)) == 0) {
+
+                duration = strtod((const char *) &p[(sizeof("#EXTINF:") - 1)], ((void*)0));
 
                 ngx_log_debug1(NGX_LOG_DEBUG_RTMP, s->connection->log, 0,
                                "hls: restore durarion=%.3f", duration);
             }
 
 
-#define NGX_RTMP_DISCONT        "#EXT-X-DISCONTINUITY"
-#define NGX_RTMP_DISCONT_LEN    (sizeof(NGX_RTMP_DISCONT) - 1)
 
 
-            if (ngx_memcmp(p, NGX_RTMP_DISCONT, NGX_RTMP_DISCONT_LEN) == 0) {
+
+
+            if (ngx_memcmp(p, "#EXT-X-DISCONTINUITY", (sizeof("#EXT-X-DISCONTINUITY") - 1)) == 0) {
 
                 discont = 1;
 
@@ -213,7 +213,7 @@ ngx_rtmp_hls_restore_stream(ngx_rtmp_session_t *s)
                                "hls: discontinuity");
             }
 
-            /* find '.ts\r' */
+
 
             if (p + 4 <= last &&
                 last[-3] == '.' && last[-2] == 't' && last[-1] == 's')

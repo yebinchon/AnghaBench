@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  time_t ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Abort (char*,char*) ; 
- int EOF ; 
- char* ctime (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int fgetc (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*,...) ; 
- int /*<<< orphan*/  fputc (char,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fputs (char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * stdout ; 
- int /*<<< orphan*/  time (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int time_t ;
+typedef int FILE ;
+
+
+ int Abort (char*,char*) ;
+ int EOF ;
+ char* ctime (int *) ;
+ int fclose (int *) ;
+ int fgetc (int *) ;
+ int * fopen (char*,char*) ;
+ int fprintf (int *,char*,...) ;
+ int fputc (char,int *) ;
+ int fputs (char*,int *) ;
+ int * stdout ;
+ int time (int *) ;
 
 int main (int argc, char **argv)
 {
-  FILE  *inFile;
-  FILE  *outFile = stdout;
-  time_t now     = time (NULL);
-  int    ch, i;
+  FILE *inFile;
+  FILE *outFile = stdout;
+  time_t now = time (((void*)0));
+  int ch, i;
 
   if (argc != 2)
      Abort ("Usage: %s bin-file [> result]", argv[0]);
 
-  if ((inFile = fopen(argv[1],"rb")) == NULL)
+  if ((inFile = fopen(argv[1],"rb")) == ((void*)0))
      Abort ("Cannot open %s\n", argv[1]);
 
   fprintf (outFile,

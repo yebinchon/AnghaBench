@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct dwarf_expr_baton {int /*<<< orphan*/  frame; } ;
-typedef  enum lval_type { ____Placeholder_lval_type } lval_type ;
-typedef  int /*<<< orphan*/  CORE_ADDR ;
 
-/* Variables and functions */
- int DWARF2_REG_TO_REGNUM (int) ; 
- scalar_t__ alloca (int) ; 
- int /*<<< orphan*/  current_gdbarch ; 
- int /*<<< orphan*/  extract_unsigned_integer (char*,int) ; 
- int /*<<< orphan*/  frame_register (int /*<<< orphan*/ ,int,int*,int*,int /*<<< orphan*/ *,int*,char*) ; 
- int register_size (int /*<<< orphan*/ ,int) ; 
+
+
+
+struct dwarf_expr_baton {int frame; } ;
+typedef enum lval_type { ____Placeholder_lval_type } lval_type ;
+typedef int CORE_ADDR ;
+
+
+ int DWARF2_REG_TO_REGNUM (int) ;
+ scalar_t__ alloca (int) ;
+ int current_gdbarch ;
+ int extract_unsigned_integer (char*,int) ;
+ int frame_register (int ,int,int*,int*,int *,int*,char*) ;
+ int register_size (int ,int) ;
 
 __attribute__((used)) static CORE_ADDR
 dwarf_expr_read_reg (void *baton, int dwarf_regnum)
@@ -36,9 +36,9 @@ dwarf_expr_read_reg (void *baton, int dwarf_regnum)
   buf = (char *) alloca (regsize);
 
   frame_register (debaton->frame, regnum, &optimized, &lval_type, &save_addr,
-		  &realnum, buf);
-  /* NOTE: cagney/2003-05-22: This extract is assuming that a DWARF 2
-     address is always unsigned.  That may or may not be true.  */
+    &realnum, buf);
+
+
   result = extract_unsigned_integer (buf, regsize);
 
   return result;

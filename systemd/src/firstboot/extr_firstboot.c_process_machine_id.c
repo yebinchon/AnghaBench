@@ -1,31 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  F_OK ; 
- int SD_ID128_STRING_MAX ; 
- int WRITE_STRING_FILE_CREATE ; 
- int WRITE_STRING_FILE_MKDIR_0755 ; 
- int WRITE_STRING_FILE_SYNC ; 
- int /*<<< orphan*/  arg_machine_id ; 
- int /*<<< orphan*/  arg_root ; 
- scalar_t__ laccess (char const*,int /*<<< orphan*/ ) ; 
- int log_error_errno (int,char*) ; 
- int /*<<< orphan*/  log_info (char*,char const*) ; 
- char* prefix_roota (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ sd_id128_is_null (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sd_id128_to_string (int /*<<< orphan*/ ,char*) ; 
- int write_string_file (char const*,int /*<<< orphan*/ ,int) ; 
+ int F_OK ;
+ int SD_ID128_STRING_MAX ;
+ int WRITE_STRING_FILE_CREATE ;
+ int WRITE_STRING_FILE_MKDIR_0755 ;
+ int WRITE_STRING_FILE_SYNC ;
+ int arg_machine_id ;
+ int arg_root ;
+ scalar_t__ laccess (char const*,int ) ;
+ int log_error_errno (int,char*) ;
+ int log_info (char*,char const*) ;
+ char* prefix_roota (int ,char*) ;
+ scalar_t__ sd_id128_is_null (int ) ;
+ int sd_id128_to_string (int ,char*) ;
+ int write_string_file (char const*,int ,int) ;
 
 __attribute__((used)) static int process_machine_id(void) {
         const char *etc_machine_id;

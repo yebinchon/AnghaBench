@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint16_t ;
 
-/* Variables and functions */
- int FanCapture ; 
- int /*<<< orphan*/  FanLastIrq ; 
- int /*<<< orphan*/  LocalTime ; 
- scalar_t__ SET ; 
- int /*<<< orphan*/  TIM3 ; 
- int /*<<< orphan*/  TIM_ClearITPendingBit (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- void* TIM_GetCapture1 (int /*<<< orphan*/ ) ; 
- scalar_t__ TIM_GetITStatus (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TIM_IT_CC1 ; 
- int /*<<< orphan*/  captureCounter ; 
- void** captures ; 
+
+
+
+typedef int uint16_t ;
+
+
+ int FanCapture ;
+ int FanLastIrq ;
+ int LocalTime ;
+ scalar_t__ SET ;
+ int TIM3 ;
+ int TIM_ClearITPendingBit (int ,int ) ;
+ void* TIM_GetCapture1 (int ) ;
+ scalar_t__ TIM_GetITStatus (int ,int ) ;
+ int TIM_IT_CC1 ;
+ int captureCounter ;
+ void** captures ;
 
 void TIM3_IRQHandler(void) {
     static uint16_t CaptureNumber = 0;
     static uint16_t inval1, inval2;
     if(TIM_GetITStatus(TIM3, TIM_IT_CC1) == SET) {
         captures[captureCounter++ % 32] = TIM_GetCapture1(TIM3);
-        // clear the CC interrupt pending bit
+
         TIM_ClearITPendingBit(TIM3, TIM_IT_CC1);
         if(CaptureNumber == 0) {
             inval1 = TIM_GetCapture1(TIM3);

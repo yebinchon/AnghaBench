@@ -1,52 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  enum tpacpi_rfkill_state { ____Placeholder_tpacpi_rfkill_state } tpacpi_rfkill_state ;
 
-/* Variables and functions */
- int EIO ; 
- int /*<<< orphan*/  TPACPI_DBG_RFKILL ; 
- int TPACPI_RFK_RADIO_ON ; 
- int TP_ACPI_BLUETOOTH_RADIOSSW ; 
- int TP_ACPI_BLUETOOTH_RESUMECTRL ; 
- int /*<<< orphan*/  acpi_evalf (int /*<<< orphan*/ ,int /*<<< orphan*/ *,char*,char*,int) ; 
- scalar_t__ dbg_bluetoothemul ; 
- int /*<<< orphan*/  hkey_handle ; 
- int tpacpi_bluetooth_emulstate ; 
- int /*<<< orphan*/  vdbg_printk (int /*<<< orphan*/ ,char*,char*) ; 
+
+
+
+typedef enum tpacpi_rfkill_state { ____Placeholder_tpacpi_rfkill_state } tpacpi_rfkill_state ;
+
+
+ int EIO ;
+ int TPACPI_DBG_RFKILL ;
+ int TPACPI_RFK_RADIO_ON ;
+ int TP_ACPI_BLUETOOTH_RADIOSSW ;
+ int TP_ACPI_BLUETOOTH_RESUMECTRL ;
+ int acpi_evalf (int ,int *,char*,char*,int) ;
+ scalar_t__ dbg_bluetoothemul ;
+ int hkey_handle ;
+ int tpacpi_bluetooth_emulstate ;
+ int vdbg_printk (int ,char*,char*) ;
 
 __attribute__((used)) static int bluetooth_set_status(enum tpacpi_rfkill_state state)
 {
-	int status;
+ int status;
 
-	vdbg_printk(TPACPI_DBG_RFKILL,
-		"will attempt to %s bluetooth\n",
-		(state == TPACPI_RFK_RADIO_ON) ? "enable" : "disable");
+ vdbg_printk(TPACPI_DBG_RFKILL,
+  "will attempt to %s bluetooth\n",
+  (state == TPACPI_RFK_RADIO_ON) ? "enable" : "disable");
+ if (state == TPACPI_RFK_RADIO_ON)
+  status = TP_ACPI_BLUETOOTH_RADIOSSW
+     | TP_ACPI_BLUETOOTH_RESUMECTRL;
+ else
+  status = 0;
 
-#ifdef CONFIG_THINKPAD_ACPI_DEBUGFACILITIES
-	if (dbg_bluetoothemul) {
-		tpacpi_bluetooth_emulstate = (state == TPACPI_RFK_RADIO_ON);
-		return 0;
-	}
-#endif
+ if (!acpi_evalf(hkey_handle, ((void*)0), "SBDC", "vd", status))
+  return -EIO;
 
-	if (state == TPACPI_RFK_RADIO_ON)
-		status = TP_ACPI_BLUETOOTH_RADIOSSW
-			  | TP_ACPI_BLUETOOTH_RESUMECTRL;
-	else
-		status = 0;
-
-	if (!acpi_evalf(hkey_handle, NULL, "SBDC", "vd", status))
-		return -EIO;
-
-	return 0;
+ return 0;
 }

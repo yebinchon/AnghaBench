@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ l ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ l ;
 struct TYPE_3__ {int flags; } ;
-typedef  TYPE_1__ EVP_ENCODE_CTX ;
+typedef TYPE_1__ EVP_ENCODE_CTX ;
 
-/* Variables and functions */
- scalar_t__ B64_NOT_BASE64 (int) ; 
- int B64_WS ; 
- int EVP_ENCODE_CTX_USE_SRP_ALPHABET ; 
- int conv_ascii2bin (unsigned char const,unsigned char const*) ; 
- unsigned char* data_ascii2bin ; 
- unsigned char* srpdata_ascii2bin ; 
+
+ scalar_t__ B64_NOT_BASE64 (int) ;
+ int B64_WS ;
+ int EVP_ENCODE_CTX_USE_SRP_ALPHABET ;
+ int conv_ascii2bin (unsigned char const,unsigned char const*) ;
+ unsigned char* data_ascii2bin ;
+ unsigned char* srpdata_ascii2bin ;
 
 __attribute__((used)) static int evp_decodeblock_int(EVP_ENCODE_CTX *ctx, unsigned char *t,
                                const unsigned char *f, int n)
@@ -30,21 +30,21 @@ __attribute__((used)) static int evp_decodeblock_int(EVP_ENCODE_CTX *ctx, unsign
     unsigned long l;
     const unsigned char *table;
 
-    if (ctx != NULL && (ctx->flags & EVP_ENCODE_CTX_USE_SRP_ALPHABET) != 0)
+    if (ctx != ((void*)0) && (ctx->flags & EVP_ENCODE_CTX_USE_SRP_ALPHABET) != 0)
         table = srpdata_ascii2bin;
     else
         table = data_ascii2bin;
 
-    /* trim white space from the start of the line. */
+
     while ((conv_ascii2bin(*f, table) == B64_WS) && (n > 0)) {
         f++;
         n--;
     }
 
-    /*
-     * strip off stuff at the end of the line ascii2bin values B64_WS,
-     * B64_EOLN, B64_EOLN and B64_EOF
-     */
+
+
+
+
     while ((n > 3) && (B64_NOT_BASE64(conv_ascii2bin(f[n - 1], table))))
         n--;
 

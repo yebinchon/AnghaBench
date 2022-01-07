@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct pxa_irda {int /*<<< orphan*/ * cur_clk; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  clk_disable (int /*<<< orphan*/ *) ; 
+
+
+
+struct pxa_irda {int * cur_clk; } ;
+
+
+ int clk_disable (int *) ;
 
 __attribute__((used)) static inline void pxa_irda_disable_clk(struct pxa_irda *si)
 {
-	if (si->cur_clk)
-		clk_disable(si->cur_clk);
-	si->cur_clk = NULL;
+ if (si->cur_clk)
+  clk_disable(si->cur_clk);
+ si->cur_clk = ((void*)0);
 }

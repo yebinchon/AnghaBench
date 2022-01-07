@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  zval ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Z_PTR_P (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  delete_psdl_int (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int zval ;
+
+
+ int Z_PTR_P (int *) ;
+ int delete_psdl_int (int ) ;
+ int free (int ) ;
 
 __attribute__((used)) static void delete_psdl(zval *zv)
 {
-	delete_psdl_int(Z_PTR_P(zv));
-	free(Z_PTR_P(zv));
+ delete_psdl_int(Z_PTR_P(zv));
+ free(Z_PTR_P(zv));
 }

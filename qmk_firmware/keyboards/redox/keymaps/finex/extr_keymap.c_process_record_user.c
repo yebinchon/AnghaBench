@@ -1,113 +1,96 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint16_t ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint16_t ;
 struct TYPE_4__ {scalar_t__ pressed; } ;
 struct TYPE_5__ {TYPE_1__ event; } ;
-typedef  TYPE_2__ keyrecord_t ;
-
-/* Variables and functions */
-#define  ASC_BKT 142 
-#define  ASC_CBRL 141 
-#define  ASC_CBRR 140 
-#define  ASC_CIRC 139 
-#define  ASC_DAR 138 
-#define  ASC_DQT 137 
-#define  ASC_HAP 136 
-#define  ASC_SAD 135 
-#define  ASC_SAR 134 
-#define  ASC_SQT 133 
-#define  ASC_TILD 132 
-#define  COLEMAKDHMK 131 
-#define  COLEMAKDHMK_MAC 130 
-#define  QWERTY 129 
-#define  QWERTY_MAC 128 
- int /*<<< orphan*/  SEND_STRING (char*) ; 
- char* SS_LSFT (char*) ; 
- char* SS_RALT (char*) ; 
- int /*<<< orphan*/  _COLEMAKDHMK ; 
- int /*<<< orphan*/  _COLEMAKDHMK_MAC ; 
- int /*<<< orphan*/  _QWERTY ; 
- int /*<<< orphan*/  _QWERTY_MAC ; 
- int /*<<< orphan*/  set_single_persistent_default_layer (int /*<<< orphan*/ ) ; 
+typedef TYPE_2__ keyrecord_t ;
+ int SEND_STRING (char*) ;
+ char* SS_LSFT (char*) ;
+ char* SS_RALT (char*) ;
+ int _COLEMAKDHMK ;
+ int _COLEMAKDHMK_MAC ;
+ int _QWERTY ;
+ int _QWERTY_MAC ;
+ int set_single_persistent_default_layer (int ) ;
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   if (record->event.pressed) {
     switch(keycode) {
-      case ASC_SAR:
+      case 134:
         SEND_STRING("->");
-        return false;
-      case ASC_DAR:
+        return 0;
+      case 138:
         SEND_STRING("=>");
-        return false;
-      case ASC_SQT:
-        // SS_RALT(): Avoid sending dead key on software intl layouts
+        return 0;
+      case 133:
+
         SEND_STRING(SS_RALT("'"));
-        return false;
-      case ASC_DQT:
-        // SS_RALT(SS_LSFT()): Avoid sending dead key on software intl layouts
+        return 0;
+      case 137:
+
         SEND_STRING(SS_RALT(SS_LSFT("\"")));
-        return false;
-      case ASC_CIRC:
-        // SS_RALT(): Avoid sending dead key on software intl layouts
+        return 0;
+      case 139:
+
         SEND_STRING(SS_RALT("^"));
-        return false;
-      case ASC_TILD:
-        // SS_RALT(SS_LSFT()): Avoid sending dead key on software intl layouts
+        return 0;
+      case 132:
+
         SEND_STRING(SS_RALT(SS_LSFT("~")));
-        return false;
-      case ASC_HAP:
+        return 0;
+      case 136:
         SEND_STRING(":-) ");
-        return false;
-      case ASC_SAD:
+        return 0;
+      case 135:
         SEND_STRING(":-( ");
-        return false;
-      case ASC_BKT:
-        // SS_RALT(): Avoid sending dead key on software intl layouts
+        return 0;
+      case 142:
+
         SEND_STRING(SS_RALT("`"));
-        return false;
-      case ASC_CBRL:
+        return 0;
+      case 141:
         SEND_STRING("{");
-        return false;
-      case ASC_CBRR:
+        return 0;
+      case 140:
         SEND_STRING("}");
-        return false;
-      case QWERTY:
+        return 0;
+      case 129:
         if (record->event.pressed) {
           set_single_persistent_default_layer(_QWERTY);
         }
-        return false;
+        return 0;
         break;
-      case COLEMAKDHMK:
+      case 131:
         if (record->event.pressed) {
           set_single_persistent_default_layer(_COLEMAKDHMK);
         }
-        return false;
+        return 0;
         break;
-      case QWERTY_MAC:
+      case 128:
         if (record->event.pressed) {
           set_single_persistent_default_layer(_QWERTY_MAC);
         }
-        return false;
+        return 0;
         break;
-      case COLEMAKDHMK_MAC:
+      case 130:
         if (record->event.pressed) {
           set_single_persistent_default_layer(_COLEMAKDHMK_MAC);
         }
-        return false;
+        return 0;
         break;
     }
   }
-  return true;
+  return 1;
 }

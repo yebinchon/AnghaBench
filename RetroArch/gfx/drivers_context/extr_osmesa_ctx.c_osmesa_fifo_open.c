@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct sockaddr_un {int /*<<< orphan*/  sun_path; int /*<<< orphan*/  sun_family; } ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct sockaddr_un {int sun_path; int sun_family; } ;
 struct TYPE_3__ {scalar_t__ socket; int client; int width; int height; int pixsize; } ;
-typedef  TYPE_1__ gfx_ctx_osmesa_data_t ;
+typedef TYPE_1__ gfx_ctx_osmesa_data_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_UNIX ; 
- int /*<<< orphan*/  SOCK_STREAM ; 
- scalar_t__ bind (scalar_t__,struct sockaddr_un*,int) ; 
- int /*<<< orphan*/  close (scalar_t__) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- char* g_osmesa_fifo ; 
- scalar_t__ listen (scalar_t__,int) ; 
- int /*<<< orphan*/  perror (char*) ; 
- scalar_t__ socket (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  strlcpy (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  unlink (char*) ; 
+
+ int AF_UNIX ;
+ int SOCK_STREAM ;
+ scalar_t__ bind (scalar_t__,struct sockaddr_un*,int) ;
+ int close (scalar_t__) ;
+ int fprintf (int ,char*,...) ;
+ char* g_osmesa_fifo ;
+ scalar_t__ listen (scalar_t__,int) ;
+ int perror (char*) ;
+ scalar_t__ socket (int ,int ,int ) ;
+ int stderr ;
+ int strlcpy (int ,char*,int) ;
+ int unlink (char*) ;
 
 __attribute__((used)) static void osmesa_fifo_open(gfx_ctx_osmesa_data_t *osmesa)
 {

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
+
+
+
+
+typedef int uint8_t ;
 struct gc_arena {int dummy; } ;
-typedef  int /*<<< orphan*/  md_kt_t ;
+typedef int md_kt_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D_SHOW_KEY_SOURCE ; 
- int /*<<< orphan*/  dmsg (int /*<<< orphan*/ ,char*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  format_hex (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,struct gc_arena*) ; 
- int /*<<< orphan*/  gc_free (struct gc_arena*) ; 
- scalar_t__ gc_malloc (int,int,struct gc_arena*) ; 
- struct gc_arena gc_new () ; 
- int /*<<< orphan*/ * md_kt_get (char*) ; 
- int /*<<< orphan*/  secure_memzero (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  tls1_P_hash (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int,int /*<<< orphan*/  const*,int,int /*<<< orphan*/ *,int) ; 
+
+ int D_SHOW_KEY_SOURCE ;
+ int dmsg (int ,char*,int,int ) ;
+ int format_hex (int *,int,int ,struct gc_arena*) ;
+ int gc_free (struct gc_arena*) ;
+ scalar_t__ gc_malloc (int,int,struct gc_arena*) ;
+ struct gc_arena gc_new () ;
+ int * md_kt_get (char*) ;
+ int secure_memzero (int *,int) ;
+ int tls1_P_hash (int const*,int const*,int,int const*,int,int *,int) ;
 
 __attribute__((used)) static void
 tls1_PRF(const uint8_t *label,
@@ -40,12 +40,12 @@ tls1_PRF(const uint8_t *label,
     const uint8_t *S1,*S2;
     uint8_t *out2;
 
-    out2 = (uint8_t *) gc_malloc(olen, false, &gc);
+    out2 = (uint8_t *) gc_malloc(olen, 0, &gc);
 
     len = slen/2;
     S1 = sec;
     S2 = &(sec[len]);
-    len += (slen&1); /* add for odd, make longer */
+    len += (slen&1);
 
     tls1_P_hash(md5,S1,len,label,label_len,out1,olen);
     tls1_P_hash(sha1,S2,len,label,label_len,out2,olen);

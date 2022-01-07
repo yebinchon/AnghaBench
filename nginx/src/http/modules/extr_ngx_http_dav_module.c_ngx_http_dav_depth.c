@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_5__ ;
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_11__ TYPE_5__ ;
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_11__ {int len; char* data; } ;
 struct TYPE_9__ {TYPE_5__ value; } ;
-typedef  TYPE_3__ ngx_table_elt_t ;
-typedef  int ngx_int_t ;
+typedef TYPE_3__ ngx_table_elt_t ;
+typedef int ngx_int_t ;
 struct TYPE_8__ {TYPE_3__* depth; } ;
 struct TYPE_10__ {TYPE_1__* connection; TYPE_2__ headers_in; } ;
-typedef  TYPE_4__ ngx_http_request_t ;
-struct TYPE_7__ {int /*<<< orphan*/  log; } ;
+typedef TYPE_4__ ngx_http_request_t ;
+struct TYPE_7__ {int log; } ;
 
-/* Variables and functions */
- int NGX_HTTP_DAV_INFINITY_DEPTH ; 
- int NGX_HTTP_DAV_INVALID_DEPTH ; 
- int /*<<< orphan*/  NGX_LOG_ERR ; 
- int /*<<< orphan*/  ngx_log_error (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,TYPE_5__*) ; 
- scalar_t__ ngx_strcmp (char*,char*) ; 
+
+ int NGX_HTTP_DAV_INFINITY_DEPTH ;
+ int NGX_HTTP_DAV_INVALID_DEPTH ;
+ int NGX_LOG_ERR ;
+ int ngx_log_error (int ,int ,int ,char*,TYPE_5__*) ;
+ scalar_t__ ngx_strcmp (char*,char*) ;
 
 __attribute__((used)) static ngx_int_t
 ngx_http_dav_depth(ngx_http_request_t *r, ngx_int_t dflt)
 {
-    ngx_table_elt_t  *depth;
+    ngx_table_elt_t *depth;
 
     depth = r->headers_in.depth;
 
-    if (depth == NULL) {
+    if (depth == ((void*)0)) {
         return dflt;
     }
 

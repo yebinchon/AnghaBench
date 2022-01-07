@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  int64_t ;
-typedef  int /*<<< orphan*/  MOVTrack ;
-typedef  int /*<<< orphan*/  MOVMuxContext ;
-typedef  int /*<<< orphan*/  AVIOContext ;
-typedef  int /*<<< orphan*/  AVFormatContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  avio_tell (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  avio_wb32 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ffio_wfourcc (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  mov_write_hdlr_tag (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mov_write_mdhd_tag (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int mov_write_minf_tag (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int update_size (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int int64_t ;
+typedef int MOVTrack ;
+typedef int MOVMuxContext ;
+typedef int AVIOContext ;
+typedef int AVFormatContext ;
+
+
+ int avio_tell (int *) ;
+ int avio_wb32 (int *,int ) ;
+ int ffio_wfourcc (int *,char*) ;
+ int mov_write_hdlr_tag (int *,int *,int *) ;
+ int mov_write_mdhd_tag (int *,int *,int *) ;
+ int mov_write_minf_tag (int *,int *,int *,int *) ;
+ int update_size (int *,int ) ;
 
 __attribute__((used)) static int mov_write_mdia_tag(AVFormatContext *s, AVIOContext *pb,
                               MOVMuxContext *mov, MOVTrack *track)
@@ -31,7 +31,7 @@ __attribute__((used)) static int mov_write_mdia_tag(AVFormatContext *s, AVIOCont
     int64_t pos = avio_tell(pb);
     int ret;
 
-    avio_wb32(pb, 0); /* size */
+    avio_wb32(pb, 0);
     ffio_wfourcc(pb, "mdia");
     mov_write_mdhd_tag(pb, mov, track);
     mov_write_hdlr_tag(s, pb, track);

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  acpi_status ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AE_ERROR ; 
- int /*<<< orphan*/  AE_OK ; 
- int acpi_debugger_notify_command_complete () ; 
+
+
+
+typedef int acpi_status ;
+
+
+ int AE_ERROR ;
+ int AE_OK ;
+ int acpi_debugger_notify_command_complete () ;
 
 acpi_status acpi_os_notify_command_complete(void)
 {
-	int ret;
+ int ret;
 
-	ret = acpi_debugger_notify_command_complete();
-	if (ret < 0)
-		return AE_ERROR;
-	return AE_OK;
+ ret = acpi_debugger_notify_command_complete();
+ if (ret < 0)
+  return AE_ERROR;
+ return AE_OK;
 }

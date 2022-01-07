@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct vlc_http_stream {int dummy; } ;
-typedef  int /*<<< orphan*/  block_t ;
+typedef int block_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  block_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  chunked_stream ; 
- int /*<<< orphan*/  chunked_tls ; 
- int stream_bad ; 
- char const* stream_content ; 
- int /*<<< orphan*/  stream_length ; 
- int /*<<< orphan*/  strlen (char const*) ; 
- struct vlc_http_stream* vlc_chunked_open (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * vlc_http_error ; 
- int /*<<< orphan*/  vlc_http_stream_close (struct vlc_http_stream*,int) ; 
- int /*<<< orphan*/ * vlc_http_stream_read (struct vlc_http_stream*) ; 
+
+ int assert (int ) ;
+ int block_Release (int *) ;
+ int chunked_stream ;
+ int chunked_tls ;
+ int stream_bad ;
+ char const* stream_content ;
+ int stream_length ;
+ int strlen (char const*) ;
+ struct vlc_http_stream* vlc_chunked_open (int *,int *) ;
+ int * vlc_http_error ;
+ int vlc_http_stream_close (struct vlc_http_stream*,int) ;
+ int * vlc_http_stream_read (struct vlc_http_stream*) ;
 
 __attribute__((used)) static void test_bad(const char *payload)
 {
@@ -34,16 +34,16 @@ __attribute__((used)) static void test_bad(const char *payload)
 
     stream_content = payload;
     stream_length = strlen(payload);
-    stream_bad = true;
+    stream_bad = 1;
 
     s = vlc_chunked_open(&chunked_stream, &chunked_tls);
-    assert(s != NULL);
+    assert(s != ((void*)0));
 
     while ((b = vlc_http_stream_read(s)) != vlc_http_error)
     {
-        assert(b != NULL);
+        assert(b != ((void*)0));
         block_Release(b);
     }
 
-    vlc_http_stream_close(s, false);
+    vlc_http_stream_close(s, 0);
 }

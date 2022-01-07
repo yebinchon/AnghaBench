@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  TNC_UInt32 ;
-typedef  int /*<<< orphan*/  TNC_Result ;
-typedef  int /*<<< orphan*/  TNC_IMVID ;
-typedef  int /*<<< orphan*/  TNC_ConnectionID ;
-typedef  int /*<<< orphan*/  TNC_BufferReference ;
-typedef  int /*<<< orphan*/  TNC_AttributeID ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MSG_DEBUG ; 
- int /*<<< orphan*/  TNC_RESULT_SUCCESS ; 
- int /*<<< orphan*/  wpa_printf (int /*<<< orphan*/ ,char*) ; 
+
+
+
+typedef int TNC_UInt32 ;
+typedef int TNC_Result ;
+typedef int TNC_IMVID ;
+typedef int TNC_ConnectionID ;
+typedef int TNC_BufferReference ;
+typedef int TNC_AttributeID ;
+
+
+ int MSG_DEBUG ;
+ int TNC_RESULT_SUCCESS ;
+ int wpa_printf (int ,char*) ;
 
 __attribute__((used)) static TNC_Result TNC_TNCS_GetAttribute(
-	TNC_IMVID imvID,
-	TNC_ConnectionID connectionID,
-	TNC_AttributeID attribureID,
-	TNC_UInt32 bufferLength,
-	TNC_BufferReference buffer,
-	TNC_UInt32 *pOutValueLength)
+ TNC_IMVID imvID,
+ TNC_ConnectionID connectionID,
+ TNC_AttributeID attribureID,
+ TNC_UInt32 bufferLength,
+ TNC_BufferReference buffer,
+ TNC_UInt32 *pOutValueLength)
 {
-	wpa_printf(MSG_DEBUG, "TNC: TNC_TNCS_GetAttribute");
-	/* TODO */
-	return TNC_RESULT_SUCCESS;
+ wpa_printf(MSG_DEBUG, "TNC: TNC_TNCS_GetAttribute");
+
+ return TNC_RESULT_SUCCESS;
 }

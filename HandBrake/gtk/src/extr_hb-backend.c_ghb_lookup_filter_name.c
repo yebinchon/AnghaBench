@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {char const* name; int /*<<< orphan*/  short_name; } ;
-typedef  TYPE_1__ hb_filter_param_t ;
 
-/* Variables and functions */
- TYPE_1__* hb_filter_param_get_presets (int) ; 
- TYPE_1__* hb_filter_param_get_tunes (int) ; 
- int /*<<< orphan*/  strcasecmp (int /*<<< orphan*/ ,char const*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {char const* name; int short_name; } ;
+typedef TYPE_1__ hb_filter_param_t ;
+
+
+ TYPE_1__* hb_filter_param_get_presets (int) ;
+ TYPE_1__* hb_filter_param_get_tunes (int) ;
+ int strcasecmp (int ,char const*) ;
 
 const char*
 ghb_lookup_filter_name(int filter_id, const char *short_name, int preset)
@@ -25,9 +25,9 @@ ghb_lookup_filter_name(int filter_id, const char *short_name, int preset)
     hb_filter_param_t *map;
     int ii;
 
-    if (short_name == NULL)
+    if (short_name == ((void*)0))
     {
-        return NULL;
+        return ((void*)0);
     }
     if (preset)
     {
@@ -37,16 +37,16 @@ ghb_lookup_filter_name(int filter_id, const char *short_name, int preset)
     {
         map = hb_filter_param_get_tunes(filter_id);
     }
-    if (map == NULL)
+    if (map == ((void*)0))
     {
-        return NULL;
+        return ((void*)0);
     }
-    for (ii = 0; map[ii].name != NULL; ii++)
+    for (ii = 0; map[ii].name != ((void*)0); ii++)
     {
         if (!strcasecmp(map[ii].short_name, short_name))
         {
             return map[ii].name;
         }
     }
-    return NULL;
+    return ((void*)0);
 }

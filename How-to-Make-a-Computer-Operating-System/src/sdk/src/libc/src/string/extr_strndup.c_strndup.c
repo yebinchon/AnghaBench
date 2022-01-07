@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- size_t MIN (size_t,size_t) ; 
- scalar_t__ malloc (size_t) ; 
- int /*<<< orphan*/  memcpy (char*,char const*,size_t) ; 
- size_t strlen (char const*) ; 
+ size_t MIN (size_t,size_t) ;
+ scalar_t__ malloc (size_t) ;
+ int memcpy (char*,char const*,size_t) ;
+ size_t strlen (char const*) ;
 
 char* strndup( const char* s, size_t n ) {
     char* s2;
@@ -26,8 +18,8 @@ char* strndup( const char* s, size_t n ) {
 
     s2 = ( char* )malloc( len + 1 );
 
-    if ( s2 == NULL ) {
-        return NULL;
+    if ( s2 == ((void*)0) ) {
+        return ((void*)0);
     }
 
     memcpy( s2, s, len );

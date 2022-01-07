@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_5__ {TYPE_1__* PacketAdapter; } ;
 struct TYPE_4__ {scalar_t__ Param; } ;
-typedef  TYPE_2__ SESSION ;
-typedef  int /*<<< orphan*/  LINK ;
-typedef  int /*<<< orphan*/  CANCEL ;
+typedef TYPE_2__ SESSION ;
+typedef int LINK ;
+typedef int CANCEL ;
 
-/* Variables and functions */
+
 
 CANCEL *LinkPaGetCancel(SESSION *s)
 {
-	LINK *k;
-	// Validate arguments
-	if (s == NULL || (k = (LINK *)s->PacketAdapter->Param) == NULL)
-	{
-		return NULL;
-	}
+ LINK *k;
 
-	return NULL;
+ if (s == ((void*)0) || (k = (LINK *)s->PacketAdapter->Param) == ((void*)0))
+ {
+  return ((void*)0);
+ }
+
+ return ((void*)0);
 }

@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  dlm_join_handlers ; 
- int /*<<< orphan*/  o2net_unregister_handler_list (int /*<<< orphan*/ *) ; 
+ int dlm_join_handlers ;
+ int o2net_unregister_handler_list (int *) ;
 
 __attribute__((used)) static void dlm_unregister_net_handlers(void)
 {
-	o2net_unregister_handler_list(&dlm_join_handlers);
+ o2net_unregister_handler_list(&dlm_join_handlers);
 }

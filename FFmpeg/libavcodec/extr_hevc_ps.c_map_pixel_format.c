@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  log2_chroma_h; int /*<<< orphan*/  log2_chroma_w; } ;
-struct TYPE_5__ {int bit_depth; int chroma_format_idc; int pixel_shift; int /*<<< orphan*/ * vshift; int /*<<< orphan*/ * hshift; int /*<<< orphan*/  pix_fmt; } ;
-typedef  TYPE_1__ HEVCSPS ;
-typedef  TYPE_2__ AVPixFmtDescriptor ;
-typedef  int /*<<< orphan*/  AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_PIX_FMT_GRAY10 ; 
- int /*<<< orphan*/  AV_PIX_FMT_GRAY12 ; 
- int /*<<< orphan*/  AV_PIX_FMT_GRAY8 ; 
- int /*<<< orphan*/  AV_PIX_FMT_GRAY9 ; 
- int /*<<< orphan*/  AV_PIX_FMT_YUV420P ; 
- int /*<<< orphan*/  AV_PIX_FMT_YUV420P10 ; 
- int /*<<< orphan*/  AV_PIX_FMT_YUV420P12 ; 
- int /*<<< orphan*/  AV_PIX_FMT_YUV420P9 ; 
- int /*<<< orphan*/  AV_PIX_FMT_YUV422P ; 
- int /*<<< orphan*/  AV_PIX_FMT_YUV422P10 ; 
- int /*<<< orphan*/  AV_PIX_FMT_YUV422P12 ; 
- int /*<<< orphan*/  AV_PIX_FMT_YUV422P9 ; 
- int /*<<< orphan*/  AV_PIX_FMT_YUV444P ; 
- int /*<<< orphan*/  AV_PIX_FMT_YUV444P10 ; 
- int /*<<< orphan*/  AV_PIX_FMT_YUV444P12 ; 
- int /*<<< orphan*/  AV_PIX_FMT_YUV444P9 ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int,int) ; 
- TYPE_2__* av_pix_fmt_desc_get (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int log2_chroma_h; int log2_chroma_w; } ;
+struct TYPE_5__ {int bit_depth; int chroma_format_idc; int pixel_shift; int * vshift; int * hshift; int pix_fmt; } ;
+typedef TYPE_1__ HEVCSPS ;
+typedef TYPE_2__ AVPixFmtDescriptor ;
+typedef int AVCodecContext ;
+
+
+ int AVERROR (int ) ;
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ int AV_PIX_FMT_GRAY10 ;
+ int AV_PIX_FMT_GRAY12 ;
+ int AV_PIX_FMT_GRAY8 ;
+ int AV_PIX_FMT_GRAY9 ;
+ int AV_PIX_FMT_YUV420P ;
+ int AV_PIX_FMT_YUV420P10 ;
+ int AV_PIX_FMT_YUV420P12 ;
+ int AV_PIX_FMT_YUV420P9 ;
+ int AV_PIX_FMT_YUV422P ;
+ int AV_PIX_FMT_YUV422P10 ;
+ int AV_PIX_FMT_YUV422P12 ;
+ int AV_PIX_FMT_YUV422P9 ;
+ int AV_PIX_FMT_YUV444P ;
+ int AV_PIX_FMT_YUV444P10 ;
+ int AV_PIX_FMT_YUV444P12 ;
+ int AV_PIX_FMT_YUV444P9 ;
+ int EINVAL ;
+ int av_log (int *,int ,char*,int,int) ;
+ TYPE_2__* av_pix_fmt_desc_get (int ) ;
 
 __attribute__((used)) static int map_pixel_format(AVCodecContext *avctx, HEVCSPS *sps)
 {

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mask_t ;
-typedef  int /*<<< orphan*/  const gf ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ONE ; 
- int /*<<< orphan*/  gf_copy (int /*<<< orphan*/  const,int /*<<< orphan*/  const) ; 
- int /*<<< orphan*/  gf_eq (int /*<<< orphan*/  const,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gf_mul (int /*<<< orphan*/  const,int /*<<< orphan*/  const,int /*<<< orphan*/  const) ; 
- int /*<<< orphan*/  gf_sqr (int /*<<< orphan*/  const,int /*<<< orphan*/  const) ; 
- int /*<<< orphan*/  gf_sqrn (int /*<<< orphan*/  const,int /*<<< orphan*/  const,int) ; 
+
+
+
+typedef int mask_t ;
+typedef int const gf ;
+
+
+ int ONE ;
+ int gf_copy (int const,int const) ;
+ int gf_eq (int const,int ) ;
+ int gf_mul (int const,int const,int const) ;
+ int gf_sqr (int const,int const) ;
+ int gf_sqrn (int const,int const,int) ;
 
 mask_t gf_isr(gf a, const gf x)
 {

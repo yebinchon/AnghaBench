@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * HDC ;
-typedef  int /*<<< orphan*/ * HBITMAP ;
-typedef  scalar_t__ DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BITSPIXEL ; 
- int BitBlt (int /*<<< orphan*/ *,int,int,int,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ CLR_INVALID ; 
- int /*<<< orphan*/  CloseEnhMetaFile (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * CreateBitmap (int,int,int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * CreateCompatibleDC (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * CreateEnhMetaFileA (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ DT_RASDISPLAY ; 
- scalar_t__ DT_RASPRINTER ; 
- int /*<<< orphan*/  DeleteDC (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DeleteEnhMetaFile (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DeleteObject (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FALSE ; 
- int GetDeviceCaps (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ GetPixel (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SRCCOPY ; 
- int /*<<< orphan*/ * SelectObject (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TECHNOLOGY ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/ * create_printer_dc (int,int /*<<< orphan*/ ) ; 
- scalar_t__ is_postscript_printer (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  test_device_caps (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*,int) ; 
+
+
+
+typedef int * HDC ;
+typedef int * HBITMAP ;
+typedef scalar_t__ DWORD ;
+
+
+ int BITSPIXEL ;
+ int BitBlt (int *,int,int,int,int,int *,int ,int ,int ) ;
+ scalar_t__ CLR_INVALID ;
+ int CloseEnhMetaFile (int *) ;
+ int * CreateBitmap (int,int,int,int,int *) ;
+ int * CreateCompatibleDC (int *) ;
+ int * CreateEnhMetaFileA (int *,int *,int *,int *) ;
+ scalar_t__ DT_RASDISPLAY ;
+ scalar_t__ DT_RASPRINTER ;
+ int DeleteDC (int *) ;
+ int DeleteEnhMetaFile (int ) ;
+ int DeleteObject (int *) ;
+ int FALSE ;
+ int GetDeviceCaps (int *,int ) ;
+ scalar_t__ GetPixel (int *,int ,int ) ;
+ int SRCCOPY ;
+ int * SelectObject (int *,int *) ;
+ int TECHNOLOGY ;
+ int TRUE ;
+ int * create_printer_dc (int,int ) ;
+ scalar_t__ is_postscript_printer (int *) ;
+ int ok (int,char*,...) ;
+ int test_device_caps (int *,int *,char*,int) ;
 
 __attribute__((used)) static void test_printer_dc(void)
 {
@@ -61,8 +61,8 @@ __attribute__((used)) static void test_printer_dc(void)
     memdc = CreateCompatibleDC( hdc );
     display_memdc = CreateCompatibleDC( 0 );
 
-    ok( memdc != NULL, "CreateCompatibleDC failed for printer\n" );
-    ok( display_memdc != NULL, "CreateCompatibleDC failed for screen\n" );
+    ok( memdc != ((void*)0), "CreateCompatibleDC failed for printer\n" );
+    ok( display_memdc != ((void*)0), "CreateCompatibleDC failed for screen\n" );
 
     ret = GetDeviceCaps( hdc, TECHNOLOGY );
     ok( ret == DT_RASPRINTER, "wrong type %u\n", ret );
@@ -73,9 +73,9 @@ __attribute__((used)) static void test_printer_dc(void)
     ret = GetDeviceCaps( display_memdc, TECHNOLOGY );
     ok( ret == DT_RASDISPLAY, "wrong type %u\n", ret );
 
-    bmp = CreateBitmap( 100, 100, 1, GetDeviceCaps( hdc, BITSPIXEL ), NULL );
+    bmp = CreateBitmap( 100, 100, 1, GetDeviceCaps( hdc, BITSPIXEL ), ((void*)0) );
     orig = SelectObject( memdc, bmp );
-    ok( orig != NULL, "SelectObject failed\n" );
+    ok( orig != ((void*)0), "SelectObject failed\n" );
     ok( BitBlt( hdc, 10, 10, 20, 20, memdc, 0, 0, SRCCOPY ), "BitBlt failed\n" );
 
     test_device_caps( memdc, hdc, "printer dc", 1 );
@@ -84,9 +84,9 @@ __attribute__((used)) static void test_printer_dc(void)
     SelectObject( memdc, orig );
     DeleteObject( bmp );
 
-    bmp = CreateBitmap( 100, 100, 1, 1, NULL );
+    bmp = CreateBitmap( 100, 100, 1, 1, ((void*)0) );
     orig = SelectObject( display_memdc, bmp );
-    ok( orig != NULL, "SelectObject failed\n" );
+    ok( orig != ((void*)0), "SelectObject failed\n" );
     ok( !SelectObject( memdc, bmp ), "SelectObject succeeded\n" );
     ok( BitBlt( hdc, 10, 10, 20, 20, display_memdc, 0, 0, SRCCOPY ), "BitBlt failed\n" );
     ok( BitBlt( memdc, 10, 10, 20, 20, display_memdc, 0, 0, SRCCOPY ), "BitBlt failed\n" );
@@ -95,12 +95,12 @@ __attribute__((used)) static void test_printer_dc(void)
     ret = GetPixel( hdc, 0, 0 );
     ok( ret == CLR_INVALID, "wrong pixel value %x\n", ret );
 
-    enhmf_dc = CreateEnhMetaFileA( hdc, NULL, NULL, NULL );
+    enhmf_dc = CreateEnhMetaFileA( hdc, ((void*)0), ((void*)0), ((void*)0) );
     ok(enhmf_dc != 0, "CreateEnhMetaFileA failed\n");
     test_device_caps( enhmf_dc, hdc, "enhmetafile printer dc", 1 );
     DeleteEnhMetaFile( CloseEnhMetaFile( enhmf_dc ));
 
-    enhmf_dc = CreateEnhMetaFileA( hdc, NULL, NULL, NULL );
+    enhmf_dc = CreateEnhMetaFileA( hdc, ((void*)0), ((void*)0), ((void*)0) );
     ok(enhmf_dc != 0, "CreateEnhMetaFileA failed\n");
     test_device_caps( enhmf_dc, hdc, "enhmetafile printer dc", 1 );
     DeleteEnhMetaFile( CloseEnhMetaFile( enhmf_dc ));

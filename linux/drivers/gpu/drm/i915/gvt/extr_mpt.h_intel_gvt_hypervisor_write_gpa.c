@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct intel_vgpu {int /*<<< orphan*/  handle; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct intel_vgpu {int handle; } ;
 struct TYPE_4__ {TYPE_1__* mpt; } ;
-struct TYPE_3__ {int (* write_gpa ) (int /*<<< orphan*/ ,unsigned long,void*,unsigned long) ;} ;
+struct TYPE_3__ {int (* write_gpa ) (int ,unsigned long,void*,unsigned long) ;} ;
 
-/* Variables and functions */
- TYPE_2__ intel_gvt_host ; 
- int stub1 (int /*<<< orphan*/ ,unsigned long,void*,unsigned long) ; 
+
+ TYPE_2__ intel_gvt_host ;
+ int stub1 (int ,unsigned long,void*,unsigned long) ;
 
 __attribute__((used)) static inline int intel_gvt_hypervisor_write_gpa(struct intel_vgpu *vgpu,
-		unsigned long gpa, void *buf, unsigned long len)
+  unsigned long gpa, void *buf, unsigned long len)
 {
-	return intel_gvt_host.mpt->write_gpa(vgpu->handle, gpa, buf, len);
+ return intel_gvt_host.mpt->write_gpa(vgpu->handle, gpa, buf, len);
 }

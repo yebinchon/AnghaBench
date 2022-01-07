@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int ssize_t ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EnsureUTF8 (char*) ; 
- int /*<<< orphan*/  free (char*) ; 
- int getline (char**,size_t*,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int ssize_t ;
+typedef int FILE ;
+
+
+ int EnsureUTF8 (char*) ;
+ int free (char*) ;
+ int getline (char**,size_t*,int *) ;
 
 __attribute__((used)) static bool ReadLine( char **ppsz_line, size_t *pi_size, FILE *p_file )
 {
@@ -24,15 +24,15 @@ __attribute__((used)) static bool ReadLine( char **ppsz_line, size_t *pi_size, F
 
     if( read == -1 )
     {
-        /* automatically free buffer on eof */
+
         free( *ppsz_line );
-        *ppsz_line = NULL;
-        return false;
+        *ppsz_line = ((void*)0);
+        return 0;
     }
 
     if( read > 0 && (*ppsz_line)[ read - 1 ] == '\n' )
         (*ppsz_line)[ read - 1 ] = '\0';
     EnsureUTF8( *ppsz_line );
 
-    return true;
+    return 1;
 }

@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  netpath ;
-typedef  int /*<<< orphan*/  WCHAR ;
-struct TYPE_3__ {int /*<<< orphan*/ * lpUniversalName; } ;
-typedef  TYPE_1__ UNIVERSAL_NAME_INFOW ;
-typedef  int /*<<< orphan*/  INetFwAuthorizedApplication ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/ * BSTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAY_SIZE (int /*<<< orphan*/ *) ; 
- int CLSCTX_INPROC_HANDLER ; 
- int CLSCTX_INPROC_SERVER ; 
- int /*<<< orphan*/  CLSID_NetFwAuthorizedApplication ; 
- int /*<<< orphan*/  CoCreateInstance (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  ERROR_NOT_ENOUGH_MEMORY ; 
- int /*<<< orphan*/  ERROR_PATH_NOT_FOUND ; 
- int /*<<< orphan*/  E_INVALIDARG ; 
- int /*<<< orphan*/  E_POINTER ; 
- int /*<<< orphan*/  GetFullPathNameW (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GetLastError () ; 
- int /*<<< orphan*/  GetLongPathNameW (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetModuleFileNameW (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HRESULT_FROM_WIN32 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IID_INetFwAuthorizedApplication ; 
- int /*<<< orphan*/  INetFwAuthorizedApplication_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  INetFwAuthorizedApplication_get_ProcessImageFileName (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  INetFwAuthorizedApplication_put_ProcessImageFileName (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  NO_ERROR ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/ * SysAllocString (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SysFreeString (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  UNIVERSAL_NAME_INFO_LEVEL ; 
- int /*<<< orphan*/  WNetGetUniversalNameW (int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_1__*,int*) ; 
- int /*<<< orphan*/  lstrcmpW (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lstrcpyW (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ok (int,char*,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  wine_dbgstr_w (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int netpath ;
+typedef int WCHAR ;
+struct TYPE_3__ {int * lpUniversalName; } ;
+typedef TYPE_1__ UNIVERSAL_NAME_INFOW ;
+typedef int INetFwAuthorizedApplication ;
+typedef int HRESULT ;
+typedef int DWORD ;
+typedef int * BSTR ;
+
+
+ int ARRAY_SIZE (int *) ;
+ int CLSCTX_INPROC_HANDLER ;
+ int CLSCTX_INPROC_SERVER ;
+ int CLSID_NetFwAuthorizedApplication ;
+ int CoCreateInstance (int *,int *,int,int *,void**) ;
+ int ERROR_NOT_ENOUGH_MEMORY ;
+ int ERROR_PATH_NOT_FOUND ;
+ int E_INVALIDARG ;
+ int E_POINTER ;
+ int GetFullPathNameW (int *,int ,int *,int *) ;
+ int GetLastError () ;
+ int GetLongPathNameW (int *,int *,int ) ;
+ int GetModuleFileNameW (int *,int *,int ) ;
+ int HRESULT_FROM_WIN32 (int ) ;
+ int IID_INetFwAuthorizedApplication ;
+ int INetFwAuthorizedApplication_Release (int *) ;
+ int INetFwAuthorizedApplication_get_ProcessImageFileName (int *,int **) ;
+ int INetFwAuthorizedApplication_put_ProcessImageFileName (int *,int *) ;
+ int MAX_PATH ;
+ int NO_ERROR ;
+ int S_OK ;
+ int * SysAllocString (int *) ;
+ int SysFreeString (int *) ;
+ int UNIVERSAL_NAME_INFO_LEVEL ;
+ int WNetGetUniversalNameW (int *,int ,TYPE_1__*,int*) ;
+ int lstrcmpW (int *,int *) ;
+ int lstrcpyW (int *,int *) ;
+ int ok (int,char*,int ,...) ;
+ int wine_dbgstr_w (int *) ;
 
 __attribute__((used)) static void test_NetFwAuthorizedApplication(void)
 {
@@ -63,21 +63,21 @@ __attribute__((used)) static void test_NetFwAuthorizedApplication(void)
     BSTR bstr;
     DWORD sz;
 
-    hr = CoCreateInstance(&CLSID_NetFwAuthorizedApplication, NULL, CLSCTX_INPROC_SERVER|CLSCTX_INPROC_HANDLER,
+    hr = CoCreateInstance(&CLSID_NetFwAuthorizedApplication, ((void*)0), CLSCTX_INPROC_SERVER|CLSCTX_INPROC_HANDLER,
             &IID_INetFwAuthorizedApplication, (void**)&app);
     ok(hr == S_OK, "got: %08x\n", hr);
 
-    hr = GetModuleFileNameW(NULL, image, ARRAY_SIZE(image));
+    hr = GetModuleFileNameW(((void*)0), image, ARRAY_SIZE(image));
     ok(hr, "GetModuleFileName failed: %u\n", GetLastError());
 
-    hr = INetFwAuthorizedApplication_get_ProcessImageFileName(app, NULL);
+    hr = INetFwAuthorizedApplication_get_ProcessImageFileName(app, ((void*)0));
     ok(hr == E_POINTER, "got: %08x\n", hr);
 
     hr = INetFwAuthorizedApplication_get_ProcessImageFileName(app, &bstr);
     ok(hr == S_OK || hr == HRESULT_FROM_WIN32(ERROR_NOT_ENOUGH_MEMORY), "got: %08x\n", hr);
-    ok(!bstr, "got: %s\n",  wine_dbgstr_w(bstr));
+    ok(!bstr, "got: %s\n", wine_dbgstr_w(bstr));
 
-    hr = INetFwAuthorizedApplication_put_ProcessImageFileName(app, NULL);
+    hr = INetFwAuthorizedApplication_put_ProcessImageFileName(app, ((void*)0));
     ok(hr == E_INVALIDARG || hr == HRESULT_FROM_WIN32(ERROR_PATH_NOT_FOUND), "got: %08x\n", hr);
 
     hr = INetFwAuthorizedApplication_put_ProcessImageFileName(app, empty);
@@ -88,7 +88,7 @@ __attribute__((used)) static void test_NetFwAuthorizedApplication(void)
     ok(hr == S_OK, "got: %08x\n", hr);
     SysFreeString(bstr);
 
-    GetFullPathNameW(image, ARRAY_SIZE(fullpath), fullpath, NULL);
+    GetFullPathNameW(image, ARRAY_SIZE(fullpath), fullpath, ((void*)0));
     GetLongPathNameW(fullpath, fullpath, ARRAY_SIZE(fullpath));
 
     info = (UNIVERSAL_NAME_INFOW *)&netpath;

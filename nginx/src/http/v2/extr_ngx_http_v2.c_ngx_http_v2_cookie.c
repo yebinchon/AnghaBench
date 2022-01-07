@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_5__ ;
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_11__ {int /*<<< orphan*/  data; int /*<<< orphan*/  len; } ;
-typedef  TYPE_3__ ngx_str_t ;
-typedef  int /*<<< orphan*/  ngx_int_t ;
-struct TYPE_9__ {int /*<<< orphan*/  data; int /*<<< orphan*/  len; } ;
+
+
+typedef struct TYPE_13__ TYPE_5__ ;
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_11__ {int data; int len; } ;
+typedef TYPE_3__ ngx_str_t ;
+typedef int ngx_int_t ;
+struct TYPE_9__ {int data; int len; } ;
 struct TYPE_12__ {TYPE_1__ value; } ;
-typedef  TYPE_4__ ngx_http_v2_header_t ;
-struct TYPE_13__ {TYPE_2__* stream; int /*<<< orphan*/  pool; } ;
-typedef  TYPE_5__ ngx_http_request_t ;
-typedef  int /*<<< orphan*/  ngx_array_t ;
-struct TYPE_10__ {int /*<<< orphan*/ * cookies; } ;
+typedef TYPE_4__ ngx_http_v2_header_t ;
+struct TYPE_13__ {TYPE_2__* stream; int pool; } ;
+typedef TYPE_5__ ngx_http_request_t ;
+typedef int ngx_array_t ;
+struct TYPE_10__ {int * cookies; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NGX_ERROR ; 
- int /*<<< orphan*/  NGX_OK ; 
- int /*<<< orphan*/ * ngx_array_create (int /*<<< orphan*/ ,int,int) ; 
- TYPE_3__* ngx_array_push (int /*<<< orphan*/ *) ; 
+
+ int NGX_ERROR ;
+ int NGX_OK ;
+ int * ngx_array_create (int ,int,int) ;
+ TYPE_3__* ngx_array_push (int *) ;
 
 __attribute__((used)) static ngx_int_t
 ngx_http_v2_cookie(ngx_http_request_t *r, ngx_http_v2_header_t *header)
 {
-    ngx_str_t    *val;
-    ngx_array_t  *cookies;
+    ngx_str_t *val;
+    ngx_array_t *cookies;
 
     cookies = r->stream->cookies;
 
-    if (cookies == NULL) {
+    if (cookies == ((void*)0)) {
         cookies = ngx_array_create(r->pool, 2, sizeof(ngx_str_t));
-        if (cookies == NULL) {
+        if (cookies == ((void*)0)) {
             return NGX_ERROR;
         }
 
@@ -50,7 +50,7 @@ ngx_http_v2_cookie(ngx_http_request_t *r, ngx_http_v2_header_t *header)
     }
 
     val = ngx_array_push(cookies);
-    if (val == NULL) {
+    if (val == ((void*)0)) {
         return NGX_ERROR;
     }
 

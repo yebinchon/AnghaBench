@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * locale_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FIX_LOCALE (int /*<<< orphan*/ *) ; 
- int XLC_LAST ; 
- int /*<<< orphan*/  _once (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * alloc_locale () ; 
- int /*<<< orphan*/  copyflags (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  dupcomponent (int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  init_key ; 
- int /*<<< orphan*/  once_control ; 
+
+
+
+typedef int * locale_t ;
+
+
+ int FIX_LOCALE (int *) ;
+ int XLC_LAST ;
+ int _once (int *,int ) ;
+ int * alloc_locale () ;
+ int copyflags (int *,int *) ;
+ int dupcomponent (int,int *,int *) ;
+ int init_key ;
+ int once_control ;
 
 locale_t duplocale(locale_t base)
 {
-	locale_t new = alloc_locale();
-	int type;
+ locale_t new = alloc_locale();
+ int type;
 
-	_once(&once_control, init_key);
+ _once(&once_control, init_key);
 
-	if (NULL == new) {
-		return (NULL);
-	}
-	
-	FIX_LOCALE(base);
-	copyflags(new, base);
+ if (((void*)0) == new) {
+  return (((void*)0));
+ }
 
-	for (type=0 ; type<XLC_LAST ; type++) {
-		dupcomponent(type, base, new);
-	}
+ FIX_LOCALE(base);
+ copyflags(new, base);
 
-	return (new);
+ for (type=0 ; type<XLC_LAST ; type++) {
+  dupcomponent(type, base, new);
+ }
+
+ return (new);
 }

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct device {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EV_SND ; 
- int /*<<< orphan*/  SND_BELL ; 
- int /*<<< orphan*/  pcspkr_event (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int EV_SND ;
+ int SND_BELL ;
+ int pcspkr_event (int *,int ,int ,int ) ;
 
 __attribute__((used)) static int pcspkr_suspend(struct device *dev)
 {
-	pcspkr_event(NULL, EV_SND, SND_BELL, 0);
+ pcspkr_event(((void*)0), EV_SND, SND_BELL, 0);
 
-	return 0;
+ return 0;
 }

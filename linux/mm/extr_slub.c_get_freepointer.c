@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct kmem_cache {int offset; } ;
 
-/* Variables and functions */
- void* freelist_dereference (struct kmem_cache*,void*) ; 
+
+ void* freelist_dereference (struct kmem_cache*,void*) ;
 
 __attribute__((used)) static inline void *get_freepointer(struct kmem_cache *s, void *object)
 {
-	return freelist_dereference(s, object + s->offset);
+ return freelist_dereference(s, object + s->offset);
 }

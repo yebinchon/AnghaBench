@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uv_fs_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- int /*<<< orphan*/  check_mkdtemp_result (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mkdtemp_cb_count ; 
- int /*<<< orphan*/  mkdtemp_req1 ; 
+
+
+
+typedef int uv_fs_t ;
+
+
+ int ASSERT (int) ;
+ int check_mkdtemp_result (int *) ;
+ int mkdtemp_cb_count ;
+ int mkdtemp_req1 ;
 
 __attribute__((used)) static void mkdtemp_cb(uv_fs_t* req) {
   ASSERT(req == &mkdtemp_req1);

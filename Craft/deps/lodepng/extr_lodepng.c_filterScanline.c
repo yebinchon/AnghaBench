@@ -1,18 +1,10 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  paethPredictor (unsigned char const,unsigned char const,unsigned char const) ; 
+ int paethPredictor (unsigned char const,unsigned char const,unsigned char const) ;
 
 __attribute__((used)) static void filterScanline(unsigned char* out, const unsigned char* scanline, const unsigned char* prevline,
                            size_t length, size_t bytewidth, unsigned char filterType)
@@ -20,10 +12,10 @@ __attribute__((used)) static void filterScanline(unsigned char* out, const unsig
   size_t i;
   switch(filterType)
   {
-    case 0: /*None*/
+    case 0:
       for(i = 0; i < length; i++) out[i] = scanline[i];
       break;
-    case 1: /*Sub*/
+    case 1:
       if(prevline)
       {
         for(i = 0; i < bytewidth; i++) out[i] = scanline[i];
@@ -35,7 +27,7 @@ __attribute__((used)) static void filterScanline(unsigned char* out, const unsig
         for(i = bytewidth; i < length; i++) out[i] = scanline[i] - scanline[i - bytewidth];
       }
       break;
-    case 2: /*Up*/
+    case 2:
       if(prevline)
       {
         for(i = 0; i < length; i++) out[i] = scanline[i] - prevline[i];
@@ -45,7 +37,7 @@ __attribute__((used)) static void filterScanline(unsigned char* out, const unsig
         for(i = 0; i < length; i++) out[i] = scanline[i];
       }
       break;
-    case 3: /*Average*/
+    case 3:
       if(prevline)
       {
         for(i = 0; i < bytewidth; i++) out[i] = scanline[i] - prevline[i] / 2;
@@ -57,10 +49,10 @@ __attribute__((used)) static void filterScanline(unsigned char* out, const unsig
         for(i = bytewidth; i < length; i++) out[i] = scanline[i] - scanline[i - bytewidth] / 2;
       }
       break;
-    case 4: /*Paeth*/
+    case 4:
       if(prevline)
       {
-        /*paethPredictor(0, prevline[i], 0) is always prevline[i]*/
+
         for(i = 0; i < bytewidth; i++) out[i] = (scanline[i] - prevline[i]);
         for(i = bytewidth; i < length; i++)
         {
@@ -70,10 +62,10 @@ __attribute__((used)) static void filterScanline(unsigned char* out, const unsig
       else
       {
         for(i = 0; i < bytewidth; i++) out[i] = scanline[i];
-        /*paethPredictor(scanline[i - bytewidth], 0, 0) is always scanline[i - bytewidth]*/
+
         for(i = bytewidth; i < length; i++) out[i] = (scanline[i] - scanline[i - bytewidth]);
       }
       break;
-    default: return; /*unexisting filter type given*/
+    default: return;
   }
 }

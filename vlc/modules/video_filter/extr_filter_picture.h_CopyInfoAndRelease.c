@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  picture_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  picture_CopyProperties (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  picture_Release (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int picture_t ;
+
+
+ int picture_CopyProperties (int *,int *) ;
+ int picture_Release (int *) ;
 
 __attribute__((used)) static inline picture_t *CopyInfoAndRelease( picture_t *p_outpic, picture_t *p_inpic )
 {

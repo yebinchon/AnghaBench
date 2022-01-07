@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_5__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_14__ TYPE_5__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
 struct TYPE_12__ {int BytesPerCluster; } ;
 struct TYPE_14__ {TYPE_2__ FatInfo; } ;
 struct TYPE_11__ {int QuadPart; } ;
-struct TYPE_13__ {int /*<<< orphan*/  entry; TYPE_1__ IndexNumber; } ;
-typedef  TYPE_3__* PVFATFCB ;
-typedef  int* PULONG ;
-typedef  TYPE_3__* PFILE_INTERNAL_INFORMATION ;
-typedef  TYPE_5__* PDEVICE_EXTENSION ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
-typedef  int LONGLONG ;
-typedef  int /*<<< orphan*/  FILE_INTERNAL_INFORMATION ;
+struct TYPE_13__ {int entry; TYPE_1__ IndexNumber; } ;
+typedef TYPE_3__* PVFATFCB ;
+typedef int* PULONG ;
+typedef TYPE_3__* PFILE_INTERNAL_INFORMATION ;
+typedef TYPE_5__* PDEVICE_EXTENSION ;
+typedef int NTSTATUS ;
+typedef int LONGLONG ;
+typedef int FILE_INTERNAL_INFORMATION ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (TYPE_3__*) ; 
- int /*<<< orphan*/  STATUS_BUFFER_OVERFLOW ; 
- int /*<<< orphan*/  STATUS_SUCCESS ; 
- scalar_t__ vfatDirEntryGetFirstCluster (TYPE_5__*,int /*<<< orphan*/ *) ; 
+
+ int ASSERT (TYPE_3__*) ;
+ int STATUS_BUFFER_OVERFLOW ;
+ int STATUS_SUCCESS ;
+ scalar_t__ vfatDirEntryGetFirstCluster (TYPE_5__*,int *) ;
 
 __attribute__((used)) static
 NTSTATUS

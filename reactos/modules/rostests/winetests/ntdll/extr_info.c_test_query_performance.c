@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ULONGLONG ;
-typedef  scalar_t__ ULONG ;
-typedef  int /*<<< orphan*/  SYSTEM_PERFORMANCE_INFORMATION ;
-typedef  scalar_t__ NTSTATUS ;
-typedef  scalar_t__ DWORD ;
 
-/* Variables and functions */
- scalar_t__ STATUS_INFO_LENGTH_MISMATCH ; 
- scalar_t__ STATUS_SUCCESS ; 
- int /*<<< orphan*/  SystemPerformanceInformation ; 
- scalar_t__ is_wow64 ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
- scalar_t__ pNtQuerySystemInformation (int /*<<< orphan*/ ,int /*<<< orphan*/ *,scalar_t__,scalar_t__*) ; 
+
+
+
+typedef int ULONGLONG ;
+typedef scalar_t__ ULONG ;
+typedef int SYSTEM_PERFORMANCE_INFORMATION ;
+typedef scalar_t__ NTSTATUS ;
+typedef scalar_t__ DWORD ;
+
+
+ scalar_t__ STATUS_INFO_LENGTH_MISMATCH ;
+ scalar_t__ STATUS_SUCCESS ;
+ int SystemPerformanceInformation ;
+ scalar_t__ is_wow64 ;
+ int ok (int,char*,scalar_t__) ;
+ scalar_t__ pNtQuerySystemInformation (int ,int *,scalar_t__,scalar_t__*) ;
 
 __attribute__((used)) static void test_query_performance(void)
 {
@@ -37,7 +37,7 @@ __attribute__((used)) static void test_query_performance(void)
     status = pNtQuerySystemInformation(SystemPerformanceInformation, buffer, size, &ReturnLength);
     if (status == STATUS_INFO_LENGTH_MISMATCH && is_wow64)
     {
-        /* size is larger on wow64 under w2k8/win7 */
+
         size += 16;
         status = pNtQuerySystemInformation(SystemPerformanceInformation, buffer, size, &ReturnLength);
     }
@@ -49,5 +49,5 @@ __attribute__((used)) static void test_query_performance(void)
     ok( ReturnLength == size || ReturnLength == size + 2,
         "Inconsistent length %d\n", ReturnLength);
 
-    /* Not return values yet, as struct members are unknown */
+
 }

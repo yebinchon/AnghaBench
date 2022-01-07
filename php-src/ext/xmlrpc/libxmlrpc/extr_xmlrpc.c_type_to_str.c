@@ -1,60 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  XMLRPC_VECTOR_TYPE ;
-typedef  int XMLRPC_VALUE_TYPE ;
 
-/* Variables and functions */
-#define  xmlrpc_base64 140 
-#define  xmlrpc_boolean 139 
-#define  xmlrpc_datetime 138 
-#define  xmlrpc_double 137 
-#define  xmlrpc_empty 136 
-#define  xmlrpc_int 135 
-#define  xmlrpc_none 134 
-#define  xmlrpc_string 133 
-#define  xmlrpc_vector 132 
-#define  xmlrpc_vector_array 131 
-#define  xmlrpc_vector_mixed 130 
-#define  xmlrpc_vector_none 129 
-#define  xmlrpc_vector_struct 128 
 
+
+
+typedef int XMLRPC_VECTOR_TYPE ;
+typedef int XMLRPC_VALUE_TYPE ;
 const char* type_to_str(XMLRPC_VALUE_TYPE type, XMLRPC_VECTOR_TYPE vtype) {
     switch(type) {
-       case xmlrpc_none:
+       case 134:
           return "none";
-       case xmlrpc_empty:
+       case 136:
           return "empty";
-       case xmlrpc_base64:
+       case 140:
           return "base64";
-       case xmlrpc_boolean:
+       case 139:
           return "boolean";
-       case xmlrpc_datetime:
+       case 138:
           return "datetime";
-       case xmlrpc_double:
+       case 137:
           return "double";
-       case xmlrpc_int:
+       case 135:
           return "int";
-       case xmlrpc_string:
+       case 133:
           return "string";
-       case xmlrpc_vector:
+       case 132:
           switch(vtype) {
-             case xmlrpc_vector_none:
+             case 129:
                 return "none";
-             case xmlrpc_vector_array:
+             case 131:
                 return "array";
-             case xmlrpc_vector_mixed:
+             case 130:
                 return "mixed vector (struct)";
-             case xmlrpc_vector_struct:
+             case 128:
                 return "struct";
           }
     }

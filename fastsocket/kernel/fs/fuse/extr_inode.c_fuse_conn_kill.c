@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct fuse_conn {int /*<<< orphan*/  entry; int /*<<< orphan*/  reserved_req_waitq; int /*<<< orphan*/  blocked_waitq; int /*<<< orphan*/  waitq; int /*<<< orphan*/  fasync; int /*<<< orphan*/  lock; scalar_t__ blocked; scalar_t__ connected; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  POLL_IN ; 
- int /*<<< orphan*/  SIGIO ; 
- int /*<<< orphan*/  fuse_bdi_destroy (struct fuse_conn*) ; 
- int /*<<< orphan*/  fuse_ctl_remove_conn (struct fuse_conn*) ; 
- int /*<<< orphan*/  fuse_mutex ; 
- int /*<<< orphan*/  kill_fasync (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  list_del (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  wake_up_all (int /*<<< orphan*/ *) ; 
+
+
+
+struct fuse_conn {int entry; int reserved_req_waitq; int blocked_waitq; int waitq; int fasync; int lock; scalar_t__ blocked; scalar_t__ connected; } ;
+
+
+ int POLL_IN ;
+ int SIGIO ;
+ int fuse_bdi_destroy (struct fuse_conn*) ;
+ int fuse_ctl_remove_conn (struct fuse_conn*) ;
+ int fuse_mutex ;
+ int kill_fasync (int *,int ,int ) ;
+ int list_del (int *) ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
+ int spin_lock (int *) ;
+ int spin_unlock (int *) ;
+ int wake_up_all (int *) ;
 
 void fuse_conn_kill(struct fuse_conn *fc)
 {
-	spin_lock(&fc->lock);
-	fc->connected = 0;
-	fc->blocked = 0;
-	spin_unlock(&fc->lock);
-	/* Flush all readers on this fs */
-	kill_fasync(&fc->fasync, SIGIO, POLL_IN);
-	wake_up_all(&fc->waitq);
-	wake_up_all(&fc->blocked_waitq);
-	wake_up_all(&fc->reserved_req_waitq);
-	mutex_lock(&fuse_mutex);
-	list_del(&fc->entry);
-	fuse_ctl_remove_conn(fc);
-	mutex_unlock(&fuse_mutex);
-	fuse_bdi_destroy(fc);
+ spin_lock(&fc->lock);
+ fc->connected = 0;
+ fc->blocked = 0;
+ spin_unlock(&fc->lock);
+
+ kill_fasync(&fc->fasync, SIGIO, POLL_IN);
+ wake_up_all(&fc->waitq);
+ wake_up_all(&fc->blocked_waitq);
+ wake_up_all(&fc->reserved_req_waitq);
+ mutex_lock(&fuse_mutex);
+ list_del(&fc->entry);
+ fuse_ctl_remove_conn(fc);
+ mutex_unlock(&fuse_mutex);
+ fuse_bdi_destroy(fc);
 }

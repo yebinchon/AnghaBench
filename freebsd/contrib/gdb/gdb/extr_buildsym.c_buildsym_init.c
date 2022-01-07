@@ -1,29 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/ * file_symbols ; 
- int /*<<< orphan*/ * free_pendings ; 
- int /*<<< orphan*/ * global_symbols ; 
- int /*<<< orphan*/ * pending_blocks ; 
- int /*<<< orphan*/ * pending_macros ; 
+ int * file_symbols ;
+ int * free_pendings ;
+ int * global_symbols ;
+ int * pending_blocks ;
+ int * pending_macros ;
 
 void
 buildsym_init (void)
 {
-  free_pendings = NULL;
-  file_symbols = NULL;
-  global_symbols = NULL;
-  pending_blocks = NULL;
-  pending_macros = NULL;
+  free_pendings = ((void*)0);
+  file_symbols = ((void*)0);
+  global_symbols = ((void*)0);
+  pending_blocks = ((void*)0);
+  pending_macros = ((void*)0);
 }

@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  EVENT_TYPE_READ ; 
- int /*<<< orphan*/  eloop_unregister_sock (int,int /*<<< orphan*/ ) ; 
+ int EVENT_TYPE_READ ;
+ int eloop_unregister_sock (int,int ) ;
 
 void eloop_unregister_read_sock(int sock)
 {
-	eloop_unregister_sock(sock, EVENT_TYPE_READ);
+ eloop_unregister_sock(sock, EVENT_TYPE_READ);
 }

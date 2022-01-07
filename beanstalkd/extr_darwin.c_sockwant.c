@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct timespec {int /*<<< orphan*/  tv_nsec; int /*<<< orphan*/  tv_sec; } ;
-struct kevent {void* filter; TYPE_1__* udata; int /*<<< orphan*/  flags; int /*<<< orphan*/  data; int /*<<< orphan*/  fflags; int /*<<< orphan*/  ident; int /*<<< orphan*/  member_0; } ;
-struct TYPE_3__ {void* added; int /*<<< orphan*/  fd; } ;
-typedef  TYPE_1__ Socket ;
 
-/* Variables and functions */
- void* EVFILT_READ ; 
- void* EVFILT_WRITE ; 
- int /*<<< orphan*/  EV_ADD ; 
- int /*<<< orphan*/  EV_DELETE ; 
- int /*<<< orphan*/  Infinity ; 
- int /*<<< orphan*/  NOTE_LOWAT ; 
- int kevent (int /*<<< orphan*/ ,struct kevent*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ,struct timespec*) ; 
- int /*<<< orphan*/  kq ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct timespec {int tv_nsec; int tv_sec; } ;
+struct kevent {void* filter; TYPE_1__* udata; int flags; int data; int fflags; int ident; int member_0; } ;
+struct TYPE_3__ {void* added; int fd; } ;
+typedef TYPE_1__ Socket ;
+
+
+ void* EVFILT_READ ;
+ void* EVFILT_WRITE ;
+ int EV_ADD ;
+ int EV_DELETE ;
+ int Infinity ;
+ int NOTE_LOWAT ;
+ int kevent (int ,struct kevent*,int,int *,int ,struct timespec*) ;
+ int kq ;
 
 int
 sockwant(Socket *s, int rw)
@@ -52,7 +52,7 @@ sockwant(Socket *s, int rw)
             ev->filter = EVFILT_WRITE;
             break;
         default:
-            // check only for hangup
+
             ev->filter = EVFILT_READ;
             ev->fflags = NOTE_LOWAT;
             ev->data = Infinity;
@@ -64,5 +64,5 @@ sockwant(Socket *s, int rw)
         n++;
     }
 
-    return kevent(kq, evs, n, NULL, 0, &ts);
+    return kevent(kq, evs, n, ((void*)0), 0, &ts);
 }

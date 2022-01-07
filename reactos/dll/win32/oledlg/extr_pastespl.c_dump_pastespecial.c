@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_5__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WORD ;
-typedef  scalar_t__ ULONG_PTR ;
-typedef  size_t UINT ;
-struct TYPE_7__ {int /*<<< orphan*/  tymed; int /*<<< orphan*/  lindex; int /*<<< orphan*/  dwAspect; int /*<<< orphan*/  ptd; int /*<<< orphan*/  cfFormat; } ;
-struct TYPE_9__ {int /*<<< orphan*/  dwFlags; scalar_t__ lpstrResultText; scalar_t__ lpstrFormatName; TYPE_2__ fmtetc; } ;
-struct TYPE_6__ {int /*<<< orphan*/  cy; int /*<<< orphan*/  cx; } ;
-struct TYPE_8__ {size_t cPasteEntries; size_t cLinkTypes; size_t cClsidExclude; int /*<<< orphan*/ * lpClsidExclude; int /*<<< orphan*/ * arrLinkTypes; TYPE_5__* arrPasteEntries; TYPE_1__ sizel; int /*<<< orphan*/  hMetaPict; int /*<<< orphan*/  fLink; int /*<<< orphan*/  nSelectedIndex; int /*<<< orphan*/  lpSrcDataObj; int /*<<< orphan*/  hResource; scalar_t__ lpszTemplate; int /*<<< orphan*/  hInstance; int /*<<< orphan*/  lCustData; int /*<<< orphan*/  lpfnHook; scalar_t__ lpszCaption; int /*<<< orphan*/  hWndOwner; int /*<<< orphan*/  dwFlags; } ;
-typedef  TYPE_3__ OLEUIPASTESPECIALW ;
-typedef  size_t INT ;
 
-/* Variables and functions */
- scalar_t__ IS_INTRESOURCE (scalar_t__) ; 
- int /*<<< orphan*/  TRACE (char*,size_t,TYPE_5__*,...) ; 
- int /*<<< orphan*/  debugstr_guid (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  debugstr_w (scalar_t__) ; 
- int /*<<< orphan*/  dump_ps_flags (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_9__ TYPE_5__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int WORD ;
+typedef scalar_t__ ULONG_PTR ;
+typedef size_t UINT ;
+struct TYPE_7__ {int tymed; int lindex; int dwAspect; int ptd; int cfFormat; } ;
+struct TYPE_9__ {int dwFlags; scalar_t__ lpstrResultText; scalar_t__ lpstrFormatName; TYPE_2__ fmtetc; } ;
+struct TYPE_6__ {int cy; int cx; } ;
+struct TYPE_8__ {size_t cPasteEntries; size_t cLinkTypes; size_t cClsidExclude; int * lpClsidExclude; int * arrLinkTypes; TYPE_5__* arrPasteEntries; TYPE_1__ sizel; int hMetaPict; int fLink; int nSelectedIndex; int lpSrcDataObj; int hResource; scalar_t__ lpszTemplate; int hInstance; int lCustData; int lpfnHook; scalar_t__ lpszCaption; int hWndOwner; int dwFlags; } ;
+typedef TYPE_3__ OLEUIPASTESPECIALW ;
+typedef size_t INT ;
+
+
+ scalar_t__ IS_INTRESOURCE (scalar_t__) ;
+ int TRACE (char*,size_t,TYPE_5__*,...) ;
+ int debugstr_guid (int *) ;
+ int debugstr_w (scalar_t__) ;
+ int dump_ps_flags (int ) ;
 
 __attribute__((used)) static void dump_pastespecial(const OLEUIPASTESPECIALW *ps)
 {

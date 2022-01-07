@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_19__   TYPE_5__ ;
-typedef  struct TYPE_18__   TYPE_4__ ;
-typedef  struct TYPE_17__   TYPE_3__ ;
-typedef  struct TYPE_16__   TYPE_2__ ;
-typedef  struct TYPE_15__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * undo_lists_t ;
-struct TYPE_17__ {int index; int /*<<< orphan*/  name; } ;
+
+
+typedef struct TYPE_19__ TYPE_5__ ;
+typedef struct TYPE_18__ TYPE_4__ ;
+typedef struct TYPE_17__ TYPE_3__ ;
+typedef struct TYPE_16__ TYPE_2__ ;
+typedef struct TYPE_15__ TYPE_1__ ;
+
+
+typedef int * undo_lists_t ;
+struct TYPE_17__ {int index; int name; } ;
 struct TYPE_15__ {scalar_t__ type; } ;
-struct TYPE_18__ {TYPE_3__ iface; int /*<<< orphan*/  gateway; int /*<<< orphan*/  family; scalar_t__ prefix_len; int /*<<< orphan*/  prefix; int /*<<< orphan*/  metric; TYPE_1__ header; } ;
-typedef  TYPE_4__ route_message_t ;
-typedef  scalar_t__ UINT8 ;
+struct TYPE_18__ {TYPE_3__ iface; int gateway; int family; scalar_t__ prefix_len; int prefix; int metric; TYPE_1__ header; } ;
+typedef TYPE_4__ route_message_t ;
+typedef scalar_t__ UINT8 ;
 struct TYPE_16__ {scalar_t__ PrefixLength; void* Prefix; } ;
-struct TYPE_19__ {int ValidLifetime; int PreferredLifetime; int InterfaceIndex; int /*<<< orphan*/  InterfaceLuid; void* NextHop; TYPE_2__ DestinationPrefix; int /*<<< orphan*/  Metric; int /*<<< orphan*/  Protocol; } ;
-typedef  TYPE_5__* PMIB_IPFORWARD_ROW2 ;
-typedef  int /*<<< orphan*/  NET_LUID ;
-typedef  scalar_t__ DWORD ;
-typedef  int BOOL ;
+struct TYPE_19__ {int ValidLifetime; int PreferredLifetime; int InterfaceIndex; int InterfaceLuid; void* NextHop; TYPE_2__ DestinationPrefix; int Metric; int Protocol; } ;
+typedef TYPE_5__* PMIB_IPFORWARD_ROW2 ;
+typedef int NET_LUID ;
+typedef scalar_t__ DWORD ;
+typedef int BOOL ;
 
-/* Variables and functions */
- scalar_t__ AddListItem (int /*<<< orphan*/ *,TYPE_5__*) ; 
- int /*<<< orphan*/  CmpRoute ; 
- scalar_t__ CreateIpForwardEntry2 (TYPE_5__*) ; 
- scalar_t__ DeleteRoute (TYPE_5__*) ; 
- scalar_t__ ERROR_OUTOFMEMORY ; 
- scalar_t__ InterfaceLuid (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  MIB_IPPROTO_NETMGMT ; 
- TYPE_5__* RemoveListItem (int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_5__*) ; 
- int /*<<< orphan*/  ZeroMemory (TYPE_5__*,int) ; 
- int /*<<< orphan*/  free (TYPE_5__*) ; 
- TYPE_5__* malloc (int) ; 
- scalar_t__ msg_add_route ; 
- size_t route ; 
- void* sockaddr_inet (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ strlen (int /*<<< orphan*/ ) ; 
+
+ scalar_t__ AddListItem (int *,TYPE_5__*) ;
+ int CmpRoute ;
+ scalar_t__ CreateIpForwardEntry2 (TYPE_5__*) ;
+ scalar_t__ DeleteRoute (TYPE_5__*) ;
+ scalar_t__ ERROR_OUTOFMEMORY ;
+ scalar_t__ InterfaceLuid (int ,int *) ;
+ int MIB_IPPROTO_NETMGMT ;
+ TYPE_5__* RemoveListItem (int *,int ,TYPE_5__*) ;
+ int ZeroMemory (TYPE_5__*,int) ;
+ int free (TYPE_5__*) ;
+ TYPE_5__* malloc (int) ;
+ scalar_t__ msg_add_route ;
+ size_t route ;
+ void* sockaddr_inet (int ,int *) ;
+ scalar_t__ strlen (int ) ;
 
 __attribute__((used)) static DWORD
 HandleRouteMessage(route_message_t *msg, undo_lists_t *lists)
@@ -53,7 +53,7 @@ HandleRouteMessage(route_message_t *msg, undo_lists_t *lists)
     BOOL add = msg->header.type == msg_add_route;
 
     fwd_row = malloc(sizeof(*fwd_row));
-    if (fwd_row == NULL)
+    if (fwd_row == ((void*)0))
     {
         return ERROR_OUTOFMEMORY;
     }

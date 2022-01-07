@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_3__ ;
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_14__ {int /*<<< orphan*/  data; } ;
-typedef  TYPE_1__ svn_stringbuf_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct TYPE_15__ {char* local_abspath; scalar_t__ node_status; scalar_t__ repos_node_status; scalar_t__ prop_status; scalar_t__ repos_prop_status; int /*<<< orphan*/  repos_lock; int /*<<< orphan*/  lock; int /*<<< orphan*/  changed_date; int /*<<< orphan*/  changed_author; int /*<<< orphan*/  changed_rev; scalar_t__ moved_to_abspath; scalar_t__ moved_from_abspath; int /*<<< orphan*/  revision; scalar_t__ copied; scalar_t__ versioned; scalar_t__ file_external; scalar_t__ switched; scalar_t__ wc_is_locked; scalar_t__ conflicted; } ;
-typedef  TYPE_2__ svn_client_status_t ;
-struct TYPE_16__ {int /*<<< orphan*/  wc_ctx; } ;
-typedef  TYPE_3__ svn_client_ctx_t ;
-typedef  scalar_t__ svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
 
-/* Variables and functions */
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- scalar_t__ SVN_IS_VALID_REVNUM (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  SVN_VA_NULL ; 
- int /*<<< orphan*/ * apr_hash_make (int /*<<< orphan*/ *) ; 
- char const* apr_psprintf (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- scalar_t__ combined_repos_status (TYPE_2__ const*) ; 
- scalar_t__ combined_status (TYPE_2__ const*) ; 
- char const* generate_status_desc (scalar_t__) ; 
- char* make_relpath (char const*,char const*,scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stdout ; 
- int /*<<< orphan*/ * svn_cl__error_checked_fputs (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_cl__print_xml_commit (TYPE_1__**,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_cl__print_xml_lock (TYPE_1__**,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- char* svn_dirent_local_style (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_hash_sets (int /*<<< orphan*/ *,char*,char const*) ; 
- TYPE_1__* svn_stringbuf_create_empty (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_time_to_cstring (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc_conflicted_p3 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__*,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_wc_status_deleted ; 
- scalar_t__ svn_wc_status_none ; 
- int /*<<< orphan*/  svn_xml_make_close_tag (TYPE_1__**,int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  svn_xml_make_open_tag (TYPE_1__**,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,char*,char const*,char*,...) ; 
- int /*<<< orphan*/  svn_xml_make_open_tag_hash (TYPE_1__**,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_xml_normal ; 
+
+typedef struct TYPE_16__ TYPE_3__ ;
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
+struct TYPE_14__ {int data; } ;
+typedef TYPE_1__ svn_stringbuf_t ;
+typedef int svn_error_t ;
+struct TYPE_15__ {char* local_abspath; scalar_t__ node_status; scalar_t__ repos_node_status; scalar_t__ prop_status; scalar_t__ repos_prop_status; int repos_lock; int lock; int changed_date; int changed_author; int changed_rev; scalar_t__ moved_to_abspath; scalar_t__ moved_from_abspath; int revision; scalar_t__ copied; scalar_t__ versioned; scalar_t__ file_external; scalar_t__ switched; scalar_t__ wc_is_locked; scalar_t__ conflicted; } ;
+typedef TYPE_2__ svn_client_status_t ;
+struct TYPE_16__ {int wc_ctx; } ;
+typedef TYPE_3__ svn_client_ctx_t ;
+typedef scalar_t__ svn_boolean_t ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
+
+
+ scalar_t__ FALSE ;
+ int SVN_ERR (int ) ;
+ scalar_t__ SVN_IS_VALID_REVNUM (int ) ;
+ int * SVN_NO_ERROR ;
+ int SVN_VA_NULL ;
+ int * apr_hash_make (int *) ;
+ char const* apr_psprintf (int *,char*,int ) ;
+ scalar_t__ combined_repos_status (TYPE_2__ const*) ;
+ scalar_t__ combined_status (TYPE_2__ const*) ;
+ char const* generate_status_desc (scalar_t__) ;
+ char* make_relpath (char const*,char const*,scalar_t__,int *,int *) ;
+ int stdout ;
+ int * svn_cl__error_checked_fputs (int ,int ) ;
+ int svn_cl__print_xml_commit (TYPE_1__**,int ,int ,int ,int *) ;
+ int svn_cl__print_xml_lock (TYPE_1__**,int ,int *) ;
+ char* svn_dirent_local_style (char const*,int *) ;
+ int svn_hash_sets (int *,char*,char const*) ;
+ TYPE_1__* svn_stringbuf_create_empty (int *) ;
+ int svn_time_to_cstring (int ,int *) ;
+ int svn_wc_conflicted_p3 (int *,int *,scalar_t__*,int ,char const*,int *) ;
+ scalar_t__ svn_wc_status_deleted ;
+ scalar_t__ svn_wc_status_none ;
+ int svn_xml_make_close_tag (TYPE_1__**,int *,char*) ;
+ int svn_xml_make_open_tag (TYPE_1__**,int *,int ,char*,char*,char const*,char*,...) ;
+ int svn_xml_make_open_tag_hash (TYPE_1__**,int *,int ,char*,int *) ;
+ int svn_xml_normal ;
 
 svn_error_t *
 svn_cl__print_status_xml(const char *target_abspath,
@@ -70,7 +70,7 @@ svn_cl__print_status_xml(const char *target_abspath,
     return SVN_NO_ERROR;
 
   if (status->conflicted)
-    SVN_ERR(svn_wc_conflicted_p3(NULL, NULL, &tree_conflicted,
+    SVN_ERR(svn_wc_conflicted_p3(((void*)0), ((void*)0), &tree_conflicted,
                                  ctx->wc_ctx, local_abspath, pool));
 
   svn_xml_make_open_tag(&sb, pool, svn_xml_normal, "entry",

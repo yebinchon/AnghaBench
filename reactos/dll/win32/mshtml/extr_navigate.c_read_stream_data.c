@@ -1,63 +1,63 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_7__ ;
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  nsresult ;
-typedef  int /*<<< orphan*/  nsIRequest ;
+
+
+typedef struct TYPE_11__ TYPE_7__ ;
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int nsresult ;
+typedef int nsIRequest ;
 struct TYPE_10__ {int readed; int bom; scalar_t__ binding; } ;
-struct TYPE_9__ {TYPE_7__* nsstream; TYPE_4__ bsc; int /*<<< orphan*/  nscontext; TYPE_1__* nschannel; int /*<<< orphan*/  nslistener; scalar_t__ is_doc_channel; scalar_t__ response_processed; } ;
-typedef  TYPE_2__ nsChannelBSC ;
-typedef  int /*<<< orphan*/  buf ;
-typedef  int /*<<< orphan*/  WCHAR ;
-struct TYPE_11__ {int buf_size; int /*<<< orphan*/  nsIInputStream_iface; int /*<<< orphan*/ * buf; } ;
-struct TYPE_8__ {int /*<<< orphan*/  nsIHttpChannel_iface; int /*<<< orphan*/  content_type; void* charset; } ;
-typedef  int /*<<< orphan*/  IWinInetHttpInfo ;
-typedef  int /*<<< orphan*/  IStream ;
-typedef  scalar_t__ HRESULT ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  int /*<<< orphan*/  BYTE ;
-typedef  int BOOL ;
+struct TYPE_9__ {TYPE_7__* nsstream; TYPE_4__ bsc; int nscontext; TYPE_1__* nschannel; int nslistener; scalar_t__ is_doc_channel; scalar_t__ response_processed; } ;
+typedef TYPE_2__ nsChannelBSC ;
+typedef int buf ;
+typedef int WCHAR ;
+struct TYPE_11__ {int buf_size; int nsIInputStream_iface; int * buf; } ;
+struct TYPE_8__ {int nsIHttpChannel_iface; int content_type; void* charset; } ;
+typedef int IWinInetHttpInfo ;
+typedef int IStream ;
+typedef scalar_t__ HRESULT ;
+typedef int DWORD ;
+typedef int BYTE ;
+typedef int BOOL ;
 
-/* Variables and functions */
-#define  BOM_NONE 130 
-#define  BOM_UTF16 129 
-#define  BOM_UTF8 128 
- int /*<<< orphan*/  CoTaskMemFree (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ERR (char*,...) ; 
- scalar_t__ E_OUTOFMEMORY ; 
- scalar_t__ FAILED (scalar_t__) ; 
- scalar_t__ FindMimeFromData (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
- scalar_t__ IBinding_QueryInterface (scalar_t__,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IID_IWinInetHttpInfo ; 
- int /*<<< orphan*/  IWinInetHttpInfo_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ NS_FAILED (int /*<<< orphan*/ ) ; 
- scalar_t__ SUCCEEDED (scalar_t__) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ) ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  UTF16_STR ; 
- int /*<<< orphan*/  UTF8_STR ; 
- TYPE_7__* create_nsprotocol_stream () ; 
- int /*<<< orphan*/  debugstr_w (int /*<<< orphan*/ *) ; 
- void* heap_strdupA (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  heap_strdupWtoA (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsIStreamListener_OnDataAvailable (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int) ; 
- scalar_t__ on_start_nsrequest (TYPE_2__*) ; 
- int /*<<< orphan*/  query_http_info (TYPE_2__*,int /*<<< orphan*/ *) ; 
- scalar_t__ read_stream (TYPE_4__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * text_htmlW ; 
+
+
+
+
+ int CoTaskMemFree (int *) ;
+ int ERR (char*,...) ;
+ scalar_t__ E_OUTOFMEMORY ;
+ scalar_t__ FAILED (scalar_t__) ;
+ scalar_t__ FindMimeFromData (int *,int *,int *,int,int *,int ,int **,int ) ;
+ scalar_t__ IBinding_QueryInterface (scalar_t__,int *,void**) ;
+ int IID_IWinInetHttpInfo ;
+ int IWinInetHttpInfo_Release (int *) ;
+ scalar_t__ NS_FAILED (int ) ;
+ scalar_t__ SUCCEEDED (scalar_t__) ;
+ scalar_t__ S_OK ;
+ int TRACE (char*,int ) ;
+ scalar_t__ TRUE ;
+ int UTF16_STR ;
+ int UTF8_STR ;
+ TYPE_7__* create_nsprotocol_stream () ;
+ int debugstr_w (int *) ;
+ void* heap_strdupA (int ) ;
+ int heap_strdupWtoA (int *) ;
+ int nsIStreamListener_OnDataAvailable (int ,int *,int ,int *,int,int) ;
+ scalar_t__ on_start_nsrequest (TYPE_2__*) ;
+ int query_http_info (TYPE_2__*,int *) ;
+ scalar_t__ read_stream (TYPE_4__*,int *,int *,int,int *) ;
+ int * text_htmlW ;
 
 __attribute__((used)) static HRESULT read_stream_data(nsChannelBSC *This, IStream *stream)
 {
@@ -109,20 +109,20 @@ __attribute__((used)) static HRESULT read_stream_data(nsChannelBSC *This, IStrea
 
         if(first_read) {
             switch(This->bsc.bom) {
-            case BOM_UTF8:
+            case 128:
                 This->nschannel->charset = heap_strdupA(UTF8_STR);
                 break;
-            case BOM_UTF16:
+            case 129:
                 This->nschannel->charset = heap_strdupA(UTF16_STR);
-            case BOM_NONE:
-                /* FIXME: Get charset from HTTP headers */;
+            case 130:
+                                                          ;
             }
 
             if(!This->nschannel->content_type) {
                 WCHAR *mime;
 
-                hres = FindMimeFromData(NULL, NULL, This->nsstream->buf, This->nsstream->buf_size,
-                        This->is_doc_channel ? text_htmlW : NULL, 0, &mime, 0);
+                hres = FindMimeFromData(((void*)0), ((void*)0), This->nsstream->buf, This->nsstream->buf_size,
+                        This->is_doc_channel ? text_htmlW : ((void*)0), 0, &mime, 0);
                 if(FAILED(hres))
                     return hres;
 

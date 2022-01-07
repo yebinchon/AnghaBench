@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_int ;
-struct uart_class {int /*<<< orphan*/  uc_rshift; } ;
 
-/* Variables and functions */
+
+
+
+typedef int u_int ;
+struct uart_class {int uc_rshift; } ;
+
+
 
 u_int
 uart_getregshift(struct uart_class *uc)
 {
-	return ((uc != NULL) ? uc->uc_rshift : 0);
+ return ((uc != ((void*)0)) ? uc->uc_rshift : 0);
 }

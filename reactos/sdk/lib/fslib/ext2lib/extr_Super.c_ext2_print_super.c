@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {scalar_t__ s_magic; scalar_t__* s_volume_name; int /*<<< orphan*/ * s_uuid; int /*<<< orphan*/  s_def_resgid; int /*<<< orphan*/  s_def_resuid; int /*<<< orphan*/  s_rev_level; int /*<<< orphan*/  s_creator_os; int /*<<< orphan*/  s_checkinterval; int /*<<< orphan*/  s_minor_rev_level; int /*<<< orphan*/  s_errors; int /*<<< orphan*/  s_state; int /*<<< orphan*/  s_max_mnt_count; int /*<<< orphan*/  s_mnt_count; int /*<<< orphan*/  s_inodes_per_group; int /*<<< orphan*/  s_frags_per_group; int /*<<< orphan*/  s_blocks_per_group; int /*<<< orphan*/  s_log_frag_size; int /*<<< orphan*/  s_log_block_size; int /*<<< orphan*/  s_first_data_block; int /*<<< orphan*/  s_free_inodes_count; int /*<<< orphan*/  s_free_blocks_count; int /*<<< orphan*/  s_r_blocks_count; int /*<<< orphan*/  s_blocks_count; int /*<<< orphan*/  s_inodes_count; } ;
-typedef  TYPE_1__* PEXT2_SUPER_BLOCK ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPRINT (char*,...) ; 
- int /*<<< orphan*/  DbgPrint (char*,...) ; 
- scalar_t__ EXT2_SUPER_MAGIC ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {scalar_t__ s_magic; scalar_t__* s_volume_name; int * s_uuid; int s_def_resgid; int s_def_resuid; int s_rev_level; int s_creator_os; int s_checkinterval; int s_minor_rev_level; int s_errors; int s_state; int s_max_mnt_count; int s_mnt_count; int s_inodes_per_group; int s_frags_per_group; int s_blocks_per_group; int s_log_frag_size; int s_log_block_size; int s_first_data_block; int s_free_inodes_count; int s_free_blocks_count; int s_r_blocks_count; int s_blocks_count; int s_inodes_count; } ;
+typedef TYPE_1__* PEXT2_SUPER_BLOCK ;
+
+
+ int DPRINT (char*,...) ;
+ int DbgPrint (char*,...) ;
+ scalar_t__ EXT2_SUPER_MAGIC ;
 
 void ext2_print_super(PEXT2_SUPER_BLOCK pExt2Sb)
 {
@@ -35,8 +35,8 @@ void ext2_print_super(PEXT2_SUPER_BLOCK pExt2Sb)
     DPRINT("     Blocks per Group: %lu\n", pExt2Sb->s_blocks_per_group);
     DPRINT("     Fragments per Group: %lu\n", pExt2Sb->s_frags_per_group);
     DPRINT("     Inodes per Group: %lu\n", pExt2Sb->s_inodes_per_group);
-//    DPRINT("     Mount Time: %s", ctime((time_t *) & (pExt2Sb->s_mtime)));
-//    DPRINT("     Write Time: %s", ctime((time_t *) & (pExt2Sb->s_wtime)));
+
+
     DPRINT("     Mount Count: %u\n", pExt2Sb->s_mnt_count);
     DPRINT("     Max Mount Count: %d\n", pExt2Sb->s_max_mnt_count);
     DPRINT("     Magic Number: %X  (%s)\n", pExt2Sb->s_magic,
@@ -44,7 +44,7 @@ void ext2_print_super(PEXT2_SUPER_BLOCK pExt2Sb)
     DPRINT("     File System State: %X\n", pExt2Sb->s_state);
     DPRINT("     Error Behaviour: %X\n", pExt2Sb->s_errors);
     DPRINT("     Minor rev: %u\n", pExt2Sb->s_minor_rev_level);
-//    DPRINT("     Last Check: %s", ctime((time_t *) & (pExt2Sb->s_lastcheck)));
+
     DPRINT("     Check Interval: %lu\n", pExt2Sb->s_checkinterval);
     DPRINT("     Creator OS: %lu\n", pExt2Sb->s_creator_os);
     DPRINT("     Revision Level: %lu\n", pExt2Sb->s_rev_level);

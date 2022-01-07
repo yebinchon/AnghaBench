@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  GetLastError () ; 
- int /*<<< orphan*/  SetLastError (int) ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  ok (int,char*,int,scalar_t__,int /*<<< orphan*/ ,char const*) ; 
- scalar_t__ pCredIsMarshaledCredentialA (char const*) ; 
+
+
+
+typedef scalar_t__ BOOL ;
+
+
+ scalar_t__ FALSE ;
+ int GetLastError () ;
+ int SetLastError (int) ;
+ scalar_t__ TRUE ;
+ int ok (int,char*,int,scalar_t__,int ,char const*) ;
+ scalar_t__ pCredIsMarshaledCredentialA (char const*) ;
 
 __attribute__((used)) static void test_CredIsMarshaledCredentialA(void)
 {
@@ -27,17 +27,17 @@ __attribute__((used)) static void test_CredIsMarshaledCredentialA(void)
     BOOL expected = TRUE;
 
     const char * ptr[] = {
-        /* CertCredential */
-        "@@BXlmblBAAAAAAAAAAAAAAAAAAAAA",   /* hash for 'W','i','n','e' */
-        "@@BAAAAAAAAAAAAAAAAAAAAAAAAAAA",   /* hash for all 0 */
 
-        /* UsernameTargetCredential */
-        "@@CCAAAAA0BA",                     /* "t" */
-        "@@CIAAAAA0BQZAMHA0BA",             /* "test" */
+        "@@BXlmblBAAAAAAAAAAAAAAAAAAAAA",
+        "@@BAAAAAAAAAAAAAAAAAAAAAAAAAAA",
 
-        /* todo: BinaryBlobCredential */
 
-        /* not marshaled names return always FALSE */
+        "@@CCAAAAA0BA",
+        "@@CIAAAAA0BQZAMHA0BA",
+
+
+
+
         "winetest",
         "",
         "@@",
@@ -48,10 +48,10 @@ __attribute__((used)) static void test_CredIsMarshaledCredentialA(void)
         "@@BB",
         "@@BBB",
 
-        /* CertCredential */
-        "@@BAAAAAAAAAAAAAAAAAAAAAAAAAAAA",  /* to long */
-        "@@BAAAAAAAAAAAAAAAAAAAAAAAAAA",    /* to short */
-        "@@BAAAAAAAAAAAAAAAAAAAAAAAAAA+",   /* bad char */
+
+        "@@BAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "@@BAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "@@BAAAAAAAAAAAAAAAAAAAAAAAAAA+",
         "@@BAAAAAAAAAAAAAAAAAAAAAAAAAA:",
         "@@BAAAAAAAAAAAAAAAAAAAAAAAAAA>",
         "@@BAAAAAAAAAAAAAAAAAAAAAAAAAA<",
@@ -62,7 +62,7 @@ __attribute__((used)) static void test_CredIsMarshaledCredentialA(void)
         "@@D",
         "@@DD",
         "@@DDD",
-        NULL};
+        ((void*)0)};
 
     for (i = 0; ptr[i]; i++)
     {
@@ -75,7 +75,7 @@ __attribute__((used)) static void test_CredIsMarshaledCredentialA(void)
             ok(res != FALSE, "%d: got %d and %u for %s (expected TRUE)\n", i, res, GetLastError(), ptr[i]);
         else
         {
-            /* Windows returns ERROR_INVALID_PARAMETER here, but that's not documented */
+
             ok(!res, "%d: got %d and %u for %s (expected FALSE)\n", i, res, GetLastError(), ptr[i]);
         }
     }

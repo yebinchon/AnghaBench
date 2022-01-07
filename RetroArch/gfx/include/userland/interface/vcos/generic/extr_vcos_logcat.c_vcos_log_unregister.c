@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {scalar_t__ refcount; struct TYPE_5__* next; } ;
-typedef  TYPE_1__ VCOS_LOG_CAT_T ;
+typedef TYPE_1__ VCOS_LOG_CAT_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  lock ; 
- int /*<<< orphan*/  vcos_assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vcos_log_platform_unregister (TYPE_1__*) ; 
- TYPE_1__* vcos_logging_categories ; 
- int /*<<< orphan*/  vcos_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vcos_mutex_unlock (int /*<<< orphan*/ *) ; 
+
+ int lock ;
+ int vcos_assert (int ) ;
+ int vcos_log_platform_unregister (TYPE_1__*) ;
+ TYPE_1__* vcos_logging_categories ;
+ int vcos_mutex_lock (int *) ;
+ int vcos_mutex_unlock (int *) ;
 
 void vcos_log_unregister(VCOS_LOG_CAT_T *category)
 {
@@ -34,10 +34,10 @@ void vcos_log_unregister(VCOS_LOG_CAT_T *category)
       while (*pcat != category)
       {
          if (!*pcat)
-            break;   /* possibly deregistered twice? */
-         if ((*pcat)->next == NULL)
+            break;
+         if ((*pcat)->next == ((void*)0))
          {
-            vcos_assert(0); /* already removed! */
+            vcos_assert(0);
             vcos_mutex_unlock(&lock);
             return;
          }

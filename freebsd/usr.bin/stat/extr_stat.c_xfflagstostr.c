@@ -1,31 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  err (int,char*) ; 
- char* fflagstostr (unsigned long) ; 
- int /*<<< orphan*/  free (char*) ; 
+ int err (int,char*) ;
+ char* fflagstostr (unsigned long) ;
+ int free (char*) ;
 
 char *
 xfflagstostr(unsigned long fflags)
 {
-	static char *str = NULL;
+ static char *str = ((void*)0);
 
-	if (str != NULL)
-		free(str);
+ if (str != ((void*)0))
+  free(str);
 
-	str = fflagstostr(fflags);
-	if (str == NULL)
-		err(1, "fflagstostr");
-	return (str);
+ str = fflagstostr(fflags);
+ if (str == ((void*)0))
+  err(1, "fflagstostr");
+ return (str);
 }

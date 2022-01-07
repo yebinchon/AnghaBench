@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  IPSFactoryBuffer ;
-typedef  scalar_t__ HRESULT ;
-typedef  int /*<<< orphan*/  HANDLE ;
-typedef  scalar_t__ DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLSCTX_INPROC_SERVER ; 
- int /*<<< orphan*/  CLSCTX_LOCAL_SERVER ; 
- int /*<<< orphan*/  CLSID_test1 ; 
- int /*<<< orphan*/  CLSID_test_ps ; 
- int /*<<< orphan*/  CoInitialize (int /*<<< orphan*/ *) ; 
- scalar_t__ CoRegisterClassObject (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__*) ; 
- scalar_t__ CoRegisterPSClsid (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ CoRevokeClassObject (scalar_t__) ; 
- int /*<<< orphan*/  CoUninitialize () ; 
- scalar_t__ CoWaitForMultipleHandles (int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ *,scalar_t__*) ; 
- int /*<<< orphan*/  EVENT_ALL_ACCESS ; 
- int /*<<< orphan*/  ExitProcess (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  IID_IPSFactoryBuffer ; 
- int /*<<< orphan*/  IID_ITest1 ; 
- scalar_t__ NdrDllGetClassObject (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  OpenEventA (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  REGCLS_MULTIPLEUSE ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  SetEvent (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  aProxyFileList ; 
- int /*<<< orphan*/  gPFactory ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
- int /*<<< orphan*/  test_cf ; 
+
+
+
+typedef int IUnknown ;
+typedef int IPSFactoryBuffer ;
+typedef scalar_t__ HRESULT ;
+typedef int HANDLE ;
+typedef scalar_t__ DWORD ;
+
+
+ int CLSCTX_INPROC_SERVER ;
+ int CLSCTX_LOCAL_SERVER ;
+ int CLSID_test1 ;
+ int CLSID_test_ps ;
+ int CoInitialize (int *) ;
+ scalar_t__ CoRegisterClassObject (int *,int *,int ,int ,scalar_t__*) ;
+ scalar_t__ CoRegisterPSClsid (int *,int *) ;
+ scalar_t__ CoRevokeClassObject (scalar_t__) ;
+ int CoUninitialize () ;
+ scalar_t__ CoWaitForMultipleHandles (int ,int,int,int *,scalar_t__*) ;
+ int EVENT_ALL_ACCESS ;
+ int ExitProcess (int ) ;
+ int FALSE ;
+ int IID_IPSFactoryBuffer ;
+ int IID_ITest1 ;
+ scalar_t__ NdrDllGetClassObject (int *,int *,void**,int *,int *,int *) ;
+ int OpenEventA (int ,int ,char*) ;
+ int REGCLS_MULTIPLEUSE ;
+ scalar_t__ S_OK ;
+ int SetEvent (int ) ;
+ int aProxyFileList ;
+ int gPFactory ;
+ int ok (int,char*,scalar_t__) ;
+ int test_cf ;
 
 __attribute__((used)) static void local_server_proc(void)
 {
@@ -52,7 +52,7 @@ __attribute__((used)) static void local_server_proc(void)
     stop_event = OpenEventA(EVENT_ALL_ACCESS, FALSE, "wine_cstub_test_server_stop");
     ready_event = OpenEventA(EVENT_ALL_ACCESS, FALSE, "wine_cstub_test_server_ready");
 
-    CoInitialize(NULL);
+    CoInitialize(((void*)0));
 
     hr = CoRegisterClassObject(&CLSID_test1, (IUnknown *)&test_cf,
         CLSCTX_LOCAL_SERVER, REGCLS_MULTIPLEUSE, &obj_cookie);

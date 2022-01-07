@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint64_t ;
-typedef  int uint32_t ;
-typedef  scalar_t__ rtc_xtal_freq_t ;
-typedef  int /*<<< orphan*/  rtc_cal_sel_t ;
 
-/* Variables and functions */
- int RTC_CLK_CAL_FRACT ; 
- int UINT32_MAX ; 
- int rtc_clk_cal_internal (int /*<<< orphan*/ ,int) ; 
- scalar_t__ rtc_clk_xtal_freq_get () ; 
+
+
+
+typedef int uint64_t ;
+typedef int uint32_t ;
+typedef scalar_t__ rtc_xtal_freq_t ;
+typedef int rtc_cal_sel_t ;
+
+
+ int RTC_CLK_CAL_FRACT ;
+ int UINT32_MAX ;
+ int rtc_clk_cal_internal (int ,int) ;
+ scalar_t__ rtc_clk_xtal_freq_get () ;
 
 uint32_t rtc_clk_cal(rtc_cal_sel_t cal_clk, uint32_t slowclk_cycles)
 {

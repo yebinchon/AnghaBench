@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  (* LerpFloat ) (int /*<<< orphan*/ ,double*,double*,TYPE_2__*) ;} ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int (* LerpFloat ) (int ,double*,double*,TYPE_2__*) ;} ;
 struct TYPE_7__ {TYPE_1__ Interpolation; } ;
-typedef  TYPE_2__ cmsInterpParams ;
-typedef  int cmsInt32Number ;
-typedef  double cmsFloat32Number ;
+typedef TYPE_2__ cmsInterpParams ;
+typedef int cmsInt32Number ;
+typedef double cmsFloat32Number ;
 
-/* Variables and functions */
- int CMS_LERP_FLAGS_FLOAT ; 
- int CMS_LERP_FLAGS_TRILINEAR ; 
- int /*<<< orphan*/  DbgThread () ; 
- int /*<<< orphan*/  IsGoodFixed15_16 (char*,double,double) ; 
- double MaxErr ; 
- TYPE_2__* _cmsComputeInterpParams (int /*<<< orphan*/ ,int,int,int,double*,int) ; 
- int /*<<< orphan*/  _cmsFreeInterpParams (int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  printf (char*,double) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,double*,double*,TYPE_2__*) ; 
+
+ int CMS_LERP_FLAGS_FLOAT ;
+ int CMS_LERP_FLAGS_TRILINEAR ;
+ int DbgThread () ;
+ int IsGoodFixed15_16 (char*,double,double) ;
+ double MaxErr ;
+ TYPE_2__* _cmsComputeInterpParams (int ,int,int,int,double*,int) ;
+ int _cmsFreeInterpParams (int ,TYPE_2__*) ;
+ int printf (char*,double) ;
+ int stub1 (int ,double*,double*,TYPE_2__*) ;
 
 __attribute__((used)) static
 cmsInt32Number Check3DinterpolationFloatTrilinear(void)
@@ -35,19 +35,19 @@ cmsInt32Number Check3DinterpolationFloatTrilinear(void)
     cmsInterpParams* p;
     cmsInt32Number i;
     cmsFloat32Number In[3], Out[3];
-    cmsFloat32Number FloatTable[] = { //R     G    B
+    cmsFloat32Number FloatTable[] = {
 
-        0,    0,   0,     // B=0,G=0,R=0
-        0,    0,  .25,    // B=1,G=0,R=0
+        0, 0, 0,
+        0, 0, .25,
 
-        0,   .5,    0,    // B=0,G=1,R=0
-        0,   .5,  .25,    // B=1,G=1,R=0
+        0, .5, 0,
+        0, .5, .25,
 
-        1,    0,    0,    // B=0,G=0,R=1
-        1,    0,  .25,    // B=1,G=0,R=1
+        1, 0, 0,
+        1, 0, .25,
 
-        1,    .5,   0,    // B=0,G=1,R=1
-        1,    .5,  .25    // B=1,G=1,R=1
+        1, .5, 0,
+        1, .5, .25
 
     };
 

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  parser_ctx_t ;
-struct TYPE_4__ {int /*<<< orphan*/ * next; int /*<<< orphan*/  by_ref; int /*<<< orphan*/  const* name; } ;
-typedef  TYPE_1__ arg_decl_t ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- TYPE_1__* parser_alloc (int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int parser_ctx_t ;
+struct TYPE_4__ {int * next; int by_ref; int const* name; } ;
+typedef TYPE_1__ arg_decl_t ;
+typedef int WCHAR ;
+typedef int BOOL ;
+
+
+ TYPE_1__* parser_alloc (int *,int) ;
 
 __attribute__((used)) static arg_decl_t *new_argument_decl(parser_ctx_t *ctx, const WCHAR *name, BOOL by_ref)
 {
@@ -26,10 +26,10 @@ __attribute__((used)) static arg_decl_t *new_argument_decl(parser_ctx_t *ctx, co
 
     arg_decl = parser_alloc(ctx, sizeof(*arg_decl));
     if(!arg_decl)
-        return NULL;
+        return ((void*)0);
 
     arg_decl->name = name;
     arg_decl->by_ref = by_ref;
-    arg_decl->next = NULL;
+    arg_decl->next = ((void*)0);
     return arg_decl;
 }

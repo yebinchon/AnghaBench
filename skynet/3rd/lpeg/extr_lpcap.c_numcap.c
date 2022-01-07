@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  L; TYPE_1__* cap; } ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int L; TYPE_1__* cap; } ;
 struct TYPE_6__ {int idx; } ;
-typedef  TYPE_2__ CapState ;
+typedef TYPE_2__ CapState ;
 
-/* Variables and functions */
- int luaL_error (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  lua_pop (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  lua_pushvalue (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  lua_replace (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  nextcap (TYPE_2__*) ; 
- int pushnestedvalues (TYPE_2__*,int /*<<< orphan*/ ) ; 
+
+ int luaL_error (int ,char*,int) ;
+ int lua_pop (int ,int) ;
+ int lua_pushvalue (int ,int) ;
+ int lua_replace (int ,int) ;
+ int nextcap (TYPE_2__*) ;
+ int pushnestedvalues (TYPE_2__*,int ) ;
 
 __attribute__((used)) static int numcap (CapState *cs) {
-  int idx = cs->cap->idx;  /* value to select */
-  if (idx == 0) {  /* no values? */
-    nextcap(cs);  /* skip entire capture */
-    return 0;  /* no value produced */
+  int idx = cs->cap->idx;
+  if (idx == 0) {
+    nextcap(cs);
+    return 0;
   }
   else {
     int n = pushnestedvalues(cs, 0);
-    if (n < idx)  /* invalid index? */
+    if (n < idx)
       return luaL_error(cs->L, "no capture '%d'", idx);
     else {
-      lua_pushvalue(cs->L, -(n - idx + 1));  /* get selected capture */
-      lua_replace(cs->L, -(n + 1));  /* put it in place of 1st capture */
-      lua_pop(cs->L, n - 1);  /* remove other captures */
+      lua_pushvalue(cs->L, -(n - idx + 1));
+      lua_replace(cs->L, -(n + 1));
+      lua_pop(cs->L, n - 1);
       return 1;
     }
   }

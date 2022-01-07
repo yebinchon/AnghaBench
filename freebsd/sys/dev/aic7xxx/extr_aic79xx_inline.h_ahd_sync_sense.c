@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct scb {int /*<<< orphan*/  sense_busaddr; TYPE_2__* sense_map; } ;
-struct TYPE_3__ {int /*<<< orphan*/  sense_dmat; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct scb {int sense_busaddr; TYPE_2__* sense_map; } ;
+struct TYPE_3__ {int sense_dmat; } ;
 struct ahd_softc {TYPE_1__ scb_data; } ;
-struct TYPE_4__ {int /*<<< orphan*/  dmamap; } ;
+struct TYPE_4__ {int dmamap; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AHD_SENSE_BUFSIZE ; 
- int /*<<< orphan*/  aic_dmamap_sync (struct ahd_softc*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+ int AHD_SENSE_BUFSIZE ;
+ int aic_dmamap_sync (struct ahd_softc*,int ,int ,int ,int ,int) ;
 
 __attribute__((used)) static __inline void
 ahd_sync_sense(struct ahd_softc *ahd, struct scb *scb, int op)
 {
-	aic_dmamap_sync(ahd, ahd->scb_data.sense_dmat,
-			scb->sense_map->dmamap,
-			/*offset*/scb->sense_busaddr,
-			/*len*/AHD_SENSE_BUFSIZE, op);
+ aic_dmamap_sync(ahd, ahd->scb_data.sense_dmat,
+   scb->sense_map->dmamap,
+             scb->sense_busaddr,
+          AHD_SENSE_BUFSIZE, op);
 }

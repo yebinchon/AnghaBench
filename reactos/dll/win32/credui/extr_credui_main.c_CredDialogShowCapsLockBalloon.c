@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  toolinfo ;
-struct cred_dialog_params {scalar_t__ fBalloonTipActive; int /*<<< orphan*/  hwndBalloonTip; } ;
-typedef  int /*<<< orphan*/  WCHAR ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int toolinfo ;
+struct cred_dialog_params {scalar_t__ fBalloonTipActive; int hwndBalloonTip; } ;
+typedef int WCHAR ;
 struct TYPE_6__ {scalar_t__ bottom; scalar_t__ left; } ;
-struct TYPE_5__ {int cbSize; int /*<<< orphan*/  uId; int /*<<< orphan*/  hwnd; } ;
-typedef  TYPE_1__ TTTOOLINFOW ;
-typedef  TYPE_2__ RECT ;
-typedef  int /*<<< orphan*/  LPARAM ;
-typedef  scalar_t__ INT ;
-typedef  int /*<<< orphan*/  HWND ;
+struct TYPE_5__ {int cbSize; int uId; int hwnd; } ;
+typedef TYPE_1__ TTTOOLINFOW ;
+typedef TYPE_2__ RECT ;
+typedef int LPARAM ;
+typedef scalar_t__ INT ;
+typedef int HWND ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAY_SIZE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CredDialogCreateBalloonTip (int /*<<< orphan*/ ,struct cred_dialog_params*) ; 
- int /*<<< orphan*/  ERR (char*) ; 
- int /*<<< orphan*/  GetDlgItem (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetWindowRect (int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  IDC_PASSWORD ; 
- int /*<<< orphan*/  IDS_CAPSLOCKONTITLE ; 
- int /*<<< orphan*/  ID_CAPSLOCKPOP ; 
- int /*<<< orphan*/  LoadStringW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MAKELONG (scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  SendMessageW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetTimer (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TOOLID_CAPSLOCKON ; 
- scalar_t__ TRUE ; 
- scalar_t__ TTDT_AUTOPOP ; 
- scalar_t__ TTI_WARNING ; 
- int /*<<< orphan*/  TTM_GETDELAYTIME ; 
- int /*<<< orphan*/  TTM_SETTITLEW ; 
- int /*<<< orphan*/  TTM_TRACKACTIVATE ; 
- int /*<<< orphan*/  TTM_TRACKPOSITION ; 
- int /*<<< orphan*/  hinstCredUI ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
+
+ int ARRAY_SIZE (int *) ;
+ int CredDialogCreateBalloonTip (int ,struct cred_dialog_params*) ;
+ int ERR (char*) ;
+ int GetDlgItem (int ,int ) ;
+ int GetWindowRect (int ,TYPE_2__*) ;
+ int IDC_PASSWORD ;
+ int IDS_CAPSLOCKONTITLE ;
+ int ID_CAPSLOCKPOP ;
+ int LoadStringW (int ,int ,int *,int ) ;
+ int MAKELONG (scalar_t__,scalar_t__) ;
+ int SendMessageW (int ,int ,scalar_t__,int ) ;
+ int SetTimer (int ,int ,int ,int *) ;
+ int TOOLID_CAPSLOCKON ;
+ scalar_t__ TRUE ;
+ scalar_t__ TTDT_AUTOPOP ;
+ scalar_t__ TTI_WARNING ;
+ int TTM_GETDELAYTIME ;
+ int TTM_SETTITLEW ;
+ int TTM_TRACKACTIVATE ;
+ int TTM_TRACKPOSITION ;
+ int hinstCredUI ;
+ int memset (TYPE_1__*,int ,int) ;
 
 __attribute__((used)) static void CredDialogShowCapsLockBalloon(HWND hwndDlg, struct cred_dialog_params *params)
 {
@@ -55,7 +55,7 @@ __attribute__((used)) static void CredDialogShowCapsLockBalloon(HWND hwndDlg, st
     INT y;
     WCHAR wszTitle[256];
 
-    /* don't show two balloon tips at once */
+
     if (params->fBalloonTipActive)
         return;
 
@@ -75,7 +75,7 @@ __attribute__((used)) static void CredDialogShowCapsLockBalloon(HWND hwndDlg, st
     SendMessageW(params->hwndBalloonTip, TTM_SETTITLEW, TTI_WARNING, (LPARAM)wszTitle);
 
     GetWindowRect(GetDlgItem(hwndDlg, IDC_PASSWORD), &rcPassword);
-    /* just inside the left side of the password edit control */
+
     x = rcPassword.left + 12;
     y = rcPassword.bottom - 3;
     SendMessageW(params->hwndBalloonTip, TTM_TRACKPOSITION, 0, MAKELONG(x, y));
@@ -84,7 +84,7 @@ __attribute__((used)) static void CredDialogShowCapsLockBalloon(HWND hwndDlg, st
 
     SetTimer(hwndDlg, ID_CAPSLOCKPOP,
              SendMessageW(params->hwndBalloonTip, TTM_GETDELAYTIME, TTDT_AUTOPOP, 0),
-             NULL);
+             ((void*)0));
 
     params->fBalloonTipActive = TRUE;
 }

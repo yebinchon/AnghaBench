@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct memory_buffer {scalar_t__ size; scalar_t__ pos; void* buffer; } ;
-typedef  scalar_t__ INT ;
+typedef scalar_t__ INT ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static inline const void *buffer_read(struct memory_buffer *mbuf, INT size)
 {
@@ -23,5 +23,5 @@ __attribute__((used)) static inline const void *buffer_read(struct memory_buffer
         mbuf->pos += size;
         return data;
     }
-    return NULL;
+    return ((void*)0);
 }

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint16_t ;
-typedef  int ptrdiff_t ;
-typedef  scalar_t__ int16_t ;
 
-/* Variables and functions */
- int av_clip_uintp2 (scalar_t__,int) ; 
- int /*<<< orphan*/  idct_col (scalar_t__*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  idct_row (scalar_t__*) ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint16_t ;
+typedef int ptrdiff_t ;
+typedef scalar_t__ int16_t ;
+
+
+ int av_clip_uintp2 (scalar_t__,int) ;
+ int idct_col (scalar_t__*,int const*) ;
+ int idct_row (scalar_t__*) ;
 
 __attribute__((used)) static void hqx_idct_put(uint16_t *dst, ptrdiff_t stride,
                          int16_t *block, const uint8_t *quant)

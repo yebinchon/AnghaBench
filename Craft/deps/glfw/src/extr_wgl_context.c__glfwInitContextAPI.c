@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ WGLSHARELISTS_T ;
-typedef  scalar_t__ WGLMAKECURRENT_T ;
-typedef  scalar_t__ WGLGETPROCADDRESS_T ;
-typedef  scalar_t__ WGLDELETECONTEXT_T ;
-typedef  scalar_t__ WGLCREATECONTEXT_T ;
-struct TYPE_4__ {scalar_t__ ShareLists; scalar_t__ MakeCurrent; scalar_t__ GetProcAddress; scalar_t__ DeleteContext; scalar_t__ CreateContext; int /*<<< orphan*/  instance; } ;
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef scalar_t__ WGLSHARELISTS_T ;
+typedef scalar_t__ WGLMAKECURRENT_T ;
+typedef scalar_t__ WGLGETPROCADDRESS_T ;
+typedef scalar_t__ WGLDELETECONTEXT_T ;
+typedef scalar_t__ WGLCREATECONTEXT_T ;
+struct TYPE_4__ {scalar_t__ ShareLists; scalar_t__ MakeCurrent; scalar_t__ GetProcAddress; scalar_t__ DeleteContext; scalar_t__ CreateContext; int instance; } ;
 struct TYPE_5__ {TYPE_1__ opengl32; } ;
 struct TYPE_6__ {TYPE_2__ wgl; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GLFW_PLATFORM_ERROR ; 
- int GL_FALSE ; 
- int GL_TRUE ; 
- scalar_t__ GetProcAddress (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  LoadLibraryW (char*) ; 
- TYPE_3__ _glfw ; 
- int /*<<< orphan*/  _glfwCreateContextTLS () ; 
- int /*<<< orphan*/  _glfwInputError (int /*<<< orphan*/ ,char*) ; 
+
+ int GLFW_PLATFORM_ERROR ;
+ int GL_FALSE ;
+ int GL_TRUE ;
+ scalar_t__ GetProcAddress (int ,char*) ;
+ int LoadLibraryW (char*) ;
+ TYPE_3__ _glfw ;
+ int _glfwCreateContextTLS () ;
+ int _glfwInputError (int ,char*) ;
 
 int _glfwInitContextAPI(void)
 {

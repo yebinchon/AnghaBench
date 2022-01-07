@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_15__ {int /*<<< orphan*/  format; int /*<<< orphan*/  height; int /*<<< orphan*/  width; int /*<<< orphan*/  linesize; int /*<<< orphan*/  data; } ;
-struct TYPE_14__ {TYPE_2__* axis_frame; int /*<<< orphan*/  format; int /*<<< orphan*/  axis_h; int /*<<< orphan*/  width; int /*<<< orphan*/  ctx; int /*<<< orphan*/  font; int /*<<< orphan*/  fontfile; } ;
-typedef  TYPE_1__ ShowCQTContext ;
-typedef  TYPE_2__ AVFrame ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_PIX_FMT_RGBA ; 
- int /*<<< orphan*/  ENOMEM ; 
- TYPE_2__* alloc_frame_empty (int /*<<< orphan*/ ,int,int) ; 
- TYPE_2__* av_frame_alloc () ; 
- int /*<<< orphan*/  av_frame_free (TYPE_2__**) ; 
- int /*<<< orphan*/  convert_axis_pixel_format (int /*<<< orphan*/ ) ; 
- int ff_scale_image (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int init_axis_color (TYPE_1__*,TYPE_2__*,int) ; 
- int render_default_font (TYPE_2__*) ; 
- scalar_t__ render_fontconfig (TYPE_1__*,TYPE_2__*,int /*<<< orphan*/ ) ; 
- scalar_t__ render_freetype (TYPE_1__*,TYPE_2__*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
+struct TYPE_15__ {int format; int height; int width; int linesize; int data; } ;
+struct TYPE_14__ {TYPE_2__* axis_frame; int format; int axis_h; int width; int ctx; int font; int fontfile; } ;
+typedef TYPE_1__ ShowCQTContext ;
+typedef TYPE_2__ AVFrame ;
+
+
+ int AVERROR (int ) ;
+ int AV_PIX_FMT_RGBA ;
+ int ENOMEM ;
+ TYPE_2__* alloc_frame_empty (int ,int,int) ;
+ TYPE_2__* av_frame_alloc () ;
+ int av_frame_free (TYPE_2__**) ;
+ int convert_axis_pixel_format (int ) ;
+ int ff_scale_image (int ,int ,int ,int ,int ,int ,int ,int,int,int ,int ) ;
+ int init_axis_color (TYPE_1__*,TYPE_2__*,int) ;
+ int render_default_font (TYPE_2__*) ;
+ scalar_t__ render_fontconfig (TYPE_1__*,TYPE_2__*,int ) ;
+ scalar_t__ render_freetype (TYPE_1__*,TYPE_2__*,int ) ;
 
 __attribute__((used)) static int init_axis_from_font(ShowCQTContext *s)
 {
-    AVFrame *tmp = NULL;
+    AVFrame *tmp = ((void*)0);
     int ret = AVERROR(ENOMEM);
     int width = 1920, height = 32;
     int default_font = 0;

@@ -1,60 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_5__ ;
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_char ;
-typedef  int /*<<< orphan*/  ngx_int_t ;
-struct TYPE_11__ {TYPE_1__* connection; int /*<<< orphan*/  pool; } ;
-typedef  TYPE_2__ ngx_http_request_t ;
-struct TYPE_12__ {int length; int /*<<< orphan*/ * last; int /*<<< orphan*/ * image; } ;
-typedef  TYPE_3__ ngx_http_image_filter_ctx_t ;
+
+
+typedef struct TYPE_14__ TYPE_5__ ;
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int u_char ;
+typedef int ngx_int_t ;
+struct TYPE_11__ {TYPE_1__* connection; int pool; } ;
+typedef TYPE_2__ ngx_http_request_t ;
+struct TYPE_12__ {int length; int * last; int * image; } ;
+typedef TYPE_3__ ngx_http_image_filter_ctx_t ;
 struct TYPE_13__ {TYPE_5__* buf; struct TYPE_13__* next; } ;
-typedef  TYPE_4__ ngx_chain_t ;
+typedef TYPE_4__ ngx_chain_t ;
 struct TYPE_14__ {size_t last; size_t pos; scalar_t__ last_buf; } ;
-typedef  TYPE_5__ ngx_buf_t ;
-struct TYPE_10__ {int /*<<< orphan*/  buffered; int /*<<< orphan*/  log; } ;
+typedef TYPE_5__ ngx_buf_t ;
+struct TYPE_10__ {int buffered; int log; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NGX_AGAIN ; 
- int /*<<< orphan*/  NGX_ERROR ; 
- int /*<<< orphan*/  NGX_HTTP_IMAGE_BUFFERED ; 
- int /*<<< orphan*/  NGX_LOG_DEBUG_HTTP ; 
- int /*<<< orphan*/  NGX_LOG_ERR ; 
- int /*<<< orphan*/  NGX_OK ; 
- int /*<<< orphan*/ * ngx_cpymem (int /*<<< orphan*/ *,size_t,size_t) ; 
- TYPE_3__* ngx_http_get_module_ctx (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_http_image_filter_module ; 
- int /*<<< orphan*/  ngx_log_debug1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,size_t) ; 
- int /*<<< orphan*/  ngx_log_error (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/ * ngx_palloc (int /*<<< orphan*/ ,int) ; 
+
+ int NGX_AGAIN ;
+ int NGX_ERROR ;
+ int NGX_HTTP_IMAGE_BUFFERED ;
+ int NGX_LOG_DEBUG_HTTP ;
+ int NGX_LOG_ERR ;
+ int NGX_OK ;
+ int * ngx_cpymem (int *,size_t,size_t) ;
+ TYPE_3__* ngx_http_get_module_ctx (TYPE_2__*,int ) ;
+ int ngx_http_image_filter_module ;
+ int ngx_log_debug1 (int ,int ,int ,char*,size_t) ;
+ int ngx_log_error (int ,int ,int ,char*) ;
+ int * ngx_palloc (int ,int) ;
 
 __attribute__((used)) static ngx_int_t
 ngx_http_image_read(ngx_http_request_t *r, ngx_chain_t *in)
 {
-    u_char                       *p;
-    size_t                        size, rest;
-    ngx_buf_t                    *b;
-    ngx_chain_t                  *cl;
-    ngx_http_image_filter_ctx_t  *ctx;
+    u_char *p;
+    size_t size, rest;
+    ngx_buf_t *b;
+    ngx_chain_t *cl;
+    ngx_http_image_filter_ctx_t *ctx;
 
     ctx = ngx_http_get_module_ctx(r, ngx_http_image_filter_module);
 
-    if (ctx->image == NULL) {
+    if (ctx->image == ((void*)0)) {
         ctx->image = ngx_palloc(r->pool, ctx->length);
-        if (ctx->image == NULL) {
+        if (ctx->image == ((void*)0)) {
             return NGX_ERROR;
         }
 

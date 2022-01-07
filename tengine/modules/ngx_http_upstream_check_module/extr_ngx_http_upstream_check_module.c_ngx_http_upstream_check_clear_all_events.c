@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_5__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t ngx_uint_t ;
+
+
+typedef struct TYPE_10__ TYPE_5__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef size_t ngx_uint_t ;
 struct TYPE_7__ {size_t nelts; TYPE_3__* elts; } ;
 struct TYPE_8__ {TYPE_1__ peers; } ;
-typedef  TYPE_2__ ngx_http_upstream_check_peers_t ;
+typedef TYPE_2__ ngx_http_upstream_check_peers_t ;
 struct TYPE_9__ {scalar_t__ delete; } ;
-typedef  TYPE_3__ ngx_http_upstream_check_peer_t ;
-typedef  int ngx_flag_t ;
-struct TYPE_10__ {int /*<<< orphan*/  log; } ;
+typedef TYPE_3__ ngx_http_upstream_check_peer_t ;
+typedef int ngx_flag_t ;
+struct TYPE_10__ {int log; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NGX_LOG_NOTICE ; 
- TYPE_2__* check_peers_ctx ; 
- TYPE_5__* ngx_cycle ; 
- int /*<<< orphan*/  ngx_http_upstream_check_clear_peer (TYPE_3__*) ; 
- int /*<<< orphan*/  ngx_log_error (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_pid ; 
+
+ int NGX_LOG_NOTICE ;
+ TYPE_2__* check_peers_ctx ;
+ TYPE_5__* ngx_cycle ;
+ int ngx_http_upstream_check_clear_peer (TYPE_3__*) ;
+ int ngx_log_error (int ,int ,int ,char*,int ) ;
+ int ngx_pid ;
 
 __attribute__((used)) static void
 ngx_http_upstream_check_clear_all_events()
 {
-    ngx_uint_t                       i;
-    ngx_http_upstream_check_peer_t  *peer;
+    ngx_uint_t i;
+    ngx_http_upstream_check_peer_t *peer;
     ngx_http_upstream_check_peers_t *peers;
 
-    static ngx_flag_t                has_cleared = 0;
+    static ngx_flag_t has_cleared = 0;
 
-    if (has_cleared || check_peers_ctx == NULL) {
+    if (has_cleared || check_peers_ctx == ((void*)0)) {
         return;
     }
 

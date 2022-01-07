@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ IS_ERR (int /*<<< orphan*/ ) ; 
- int PTR_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dbfs_dir ; 
- int /*<<< orphan*/  debugfs_create_dir (char*,int /*<<< orphan*/ *) ; 
+ scalar_t__ IS_ERR (int ) ;
+ int PTR_ERR (int ) ;
+ int dbfs_dir ;
+ int debugfs_create_dir (char*,int *) ;
 
 int hypfs_dbfs_init(void)
 {
-	dbfs_dir = debugfs_create_dir("s390_hypfs", NULL);
-	if (IS_ERR(dbfs_dir))
-		return PTR_ERR(dbfs_dir);
-	return 0;
+ dbfs_dir = debugfs_create_dir("s390_hypfs", ((void*)0));
+ if (IS_ERR(dbfs_dir))
+  return PTR_ERR(dbfs_dir);
+ return 0;
 }

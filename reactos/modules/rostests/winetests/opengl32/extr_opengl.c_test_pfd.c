@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  PIXELFORMATDESCRIPTOR ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  int /*<<< orphan*/  HDC ;
 
-/* Variables and functions */
- int ChoosePixelFormat (int /*<<< orphan*/ ,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  CreateWindowA (char*,char*,int /*<<< orphan*/ ,int,int,int,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DescribePixelFormat (int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DestroyWindow (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetDC (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetLastError () ; 
- int /*<<< orphan*/  ReleaseDC (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WS_OVERLAPPEDWINDOW ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ok (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int PIXELFORMATDESCRIPTOR ;
+typedef int HWND ;
+typedef int HDC ;
+
+
+ int ChoosePixelFormat (int ,int const*) ;
+ int CreateWindowA (char*,char*,int ,int,int,int,int,int *,int *,int *,int *) ;
+ int DescribePixelFormat (int ,int,int,int *) ;
+ int DestroyWindow (int ) ;
+ int GetDC (int ) ;
+ int GetLastError () ;
+ int ReleaseDC (int ,int ) ;
+ int WS_OVERLAPPEDWINDOW ;
+ int memset (int *,int ,int) ;
+ int ok (int ,char*,int ) ;
 
 __attribute__((used)) static int test_pfd(const PIXELFORMATDESCRIPTOR *pfd, PIXELFORMATDESCRIPTOR *fmt)
 {
@@ -32,8 +32,8 @@ __attribute__((used)) static int test_pfd(const PIXELFORMATDESCRIPTOR *pfd, PIXE
     HDC hdc;
     HWND hwnd;
 
-    hwnd = CreateWindowA("static", "Title", WS_OVERLAPPEDWINDOW, 10, 10, 200, 200, NULL, NULL,
-            NULL, NULL);
+    hwnd = CreateWindowA("static", "Title", WS_OVERLAPPEDWINDOW, 10, 10, 200, 200, ((void*)0), ((void*)0),
+            ((void*)0), ((void*)0));
     if (!hwnd)
         return 0;
 

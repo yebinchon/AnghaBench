@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ CANNOT_FETCH_REGISTER (int) ; 
- int PC_REGNUM ; 
- int /*<<< orphan*/  current_gdbarch ; 
- int mips_regsize (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  supply_register (int,char*) ; 
+ scalar_t__ CANNOT_FETCH_REGISTER (int) ;
+ int PC_REGNUM ;
+ int current_gdbarch ;
+ int mips_regsize (int ) ;
+ int supply_register (int,char*) ;
 
 void
 mipsnbsd_supply_reg (char *regs, int regno)
@@ -26,10 +18,10 @@ mipsnbsd_supply_reg (char *regs, int regno)
   for (i = 0; i <= PC_REGNUM; i++)
     {
       if (regno == i || regno == -1)
-	{
-	  if (CANNOT_FETCH_REGISTER (i))
-	    supply_register (i, NULL);
-	  else
+ {
+   if (CANNOT_FETCH_REGISTER (i))
+     supply_register (i, ((void*)0));
+   else
             supply_register (i, regs + (i * mips_regsize (current_gdbarch)));
         }
     }

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct phy_device {int /*<<< orphan*/  lock; } ;
 
-/* Variables and functions */
- int BMCR_PDOWN ; 
- int /*<<< orphan*/  MII_BMCR ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
- int phy_read (struct phy_device*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  phy_write (struct phy_device*,int /*<<< orphan*/ ,int) ; 
+
+
+
+struct phy_device {int lock; } ;
+
+
+ int BMCR_PDOWN ;
+ int MII_BMCR ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
+ int phy_read (struct phy_device*,int ) ;
+ int phy_write (struct phy_device*,int ,int) ;
 
 int genphy_suspend(struct phy_device *phydev)
 {
-	int value;
+ int value;
 
-	mutex_lock(&phydev->lock);
+ mutex_lock(&phydev->lock);
 
-	value = phy_read(phydev, MII_BMCR);
-	phy_write(phydev, MII_BMCR, (value | BMCR_PDOWN));
+ value = phy_read(phydev, MII_BMCR);
+ phy_write(phydev, MII_BMCR, (value | BMCR_PDOWN));
 
-	mutex_unlock(&phydev->lock);
+ mutex_unlock(&phydev->lock);
 
-	return 0;
+ return 0;
 }

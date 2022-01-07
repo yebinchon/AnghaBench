@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  time_t ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int time_t ;
 struct tm {int dummy; } ;
-struct TYPE_4__ {int /*<<< orphan*/ * globals; int /*<<< orphan*/ * prefs; int /*<<< orphan*/ * settings; } ;
-typedef  TYPE_1__ signal_user_data_t ;
-typedef  int /*<<< orphan*/  const* const* const* const* const* gint ;
-typedef  int /*<<< orphan*/  const* const* const* const* gchar ;
-typedef  int /*<<< orphan*/  GhbValue ;
-typedef  int /*<<< orphan*/  GString ;
+struct TYPE_4__ {int * globals; int * prefs; int * settings; } ;
+typedef TYPE_1__ signal_user_data_t ;
+typedef int const* const* const* const* const* gint ;
+typedef int const* const* const* const* gchar ;
+typedef int GhbValue ;
+typedef int GString ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  G_FILE_TEST_IS_DIR ; 
- int /*<<< orphan*/  W_OK ; 
- scalar_t__ access (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  g_debug (char*) ; 
- scalar_t__ g_file_test (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  g_free (char*) ; 
- char* g_path_get_dirname (int /*<<< orphan*/  const* const* const* const* const*) ; 
- int /*<<< orphan*/  g_string_append_printf (int /*<<< orphan*/ *,char*,...) ; 
- int /*<<< orphan*/  const* const* const***** g_string_free (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * g_string_new (char*) ; 
- int /*<<< orphan*/  const* const* const***** get_creation_date (char*,int /*<<< orphan*/  const* const* const*****,int /*<<< orphan*/  const* const* const* const* const*) ; 
- int /*<<< orphan*/  const* const* const***** get_extension (TYPE_1__*,int /*<<< orphan*/ *) ; 
- scalar_t__ ghb_dict_get_bool (int /*<<< orphan*/ *,char*) ; 
- double ghb_dict_get_double (int /*<<< orphan*/ *,char*) ; 
- void* ghb_dict_get_int (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  const* const* const***** ghb_dict_get_string (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  ghb_dict_get_value (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  ghb_dict_set (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ghb_dict_set_string (int /*<<< orphan*/ *,char*,char*) ; 
- scalar_t__ ghb_settings_combo_int (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  const* const* const***** ghb_settings_video_encoder_codec (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  ghb_value_dup (int /*<<< orphan*/ ) ; 
- char* hb_video_quality_get_name (int /*<<< orphan*/  const* const* const* const* const*) ; 
- struct tm* localtime (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  make_unique_dest (int /*<<< orphan*/  const* const* const* const* const*,int /*<<< orphan*/ *,int /*<<< orphan*/  const* const* const* const* const*) ; 
- int /*<<< orphan*/  strftime (char*,int,char*,struct tm*) ; 
- int /*<<< orphan*/  strlen (char*) ; 
- int /*<<< orphan*/  strncasecmp (int /*<<< orphan*/  const* const* const* const* const*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  time (int /*<<< orphan*/ *) ; 
+
+ int FALSE ;
+ int G_FILE_TEST_IS_DIR ;
+ int W_OK ;
+ scalar_t__ access (char*,int ) ;
+ int g_debug (char*) ;
+ scalar_t__ g_file_test (char*,int ) ;
+ int g_free (char*) ;
+ char* g_path_get_dirname (int const* const* const* const* const*) ;
+ int g_string_append_printf (int *,char*,...) ;
+ int const* const* const***** g_string_free (int *,int ) ;
+ int * g_string_new (char*) ;
+ int const* const* const***** get_creation_date (char*,int const* const* const*****,int const* const* const* const* const*) ;
+ int const* const* const***** get_extension (TYPE_1__*,int *) ;
+ scalar_t__ ghb_dict_get_bool (int *,char*) ;
+ double ghb_dict_get_double (int *,char*) ;
+ void* ghb_dict_get_int (int *,char*) ;
+ int const* const* const***** ghb_dict_get_string (int *,char*) ;
+ int ghb_dict_get_value (int *,char*) ;
+ int ghb_dict_set (int *,char*,int ) ;
+ int ghb_dict_set_string (int *,char*,char*) ;
+ scalar_t__ ghb_settings_combo_int (int *,char*) ;
+ int const* const* const***** ghb_settings_video_encoder_codec (int *,char*) ;
+ int ghb_value_dup (int ) ;
+ char* hb_video_quality_get_name (int const* const* const* const* const*) ;
+ struct tm* localtime (int *) ;
+ int make_unique_dest (int const* const* const* const* const*,int *,int const* const* const* const* const*) ;
+ int strftime (char*,int,char*,struct tm*) ;
+ int strlen (char*) ;
+ int strncasecmp (int const* const* const* const* const*,char*,int ) ;
+ int time (int *) ;
 
 __attribute__((used)) static void
 set_destination_settings(signal_user_data_t *ud, GhbValue *settings)
@@ -62,10 +62,10 @@ set_destination_settings(signal_user_data_t *ud, GhbValue *settings)
 
     g_debug("set_destination_settings");
     dest_file = ghb_dict_get_string(ud->settings, "dest_file");
-    if (dest_file == NULL)
+    if (dest_file == ((void*)0))
     {
-        // Initialize destination filename if it has no value yet.
-        // If auto-naming is disabled, this will be the default filename.
+
+
         GString *str = g_string_new("");
         const gchar *vol_name;
         vol_name = ghb_dict_get_string(settings, "volume");
@@ -83,20 +83,20 @@ set_destination_settings(signal_user_data_t *ud, GhbValue *settings)
         const gchar *p;
 
         p = ghb_dict_get_string(ud->prefs, "auto_name_template");
-        // {source-path} is only allowed as the first element of the
-        // template since the path must come first in the filename
-        if (p != NULL &&
+
+
+        if (p != ((void*)0) &&
             (!strncasecmp(p, "{source-path}", strlen("{source-path}")) ||
              !strncasecmp(p, "{source_path}", strlen("{source_path}"))))
         {
             const gchar * source;
 
             source = ghb_dict_get_string(ud->globals, "scan_source");
-            if (source != NULL)
+            if (source != ((void*)0))
             {
                 char * dirname = g_path_get_dirname(source);
-                // if dirname is a directory and it is writable...
-                if (dirname != NULL &&
+
+                if (dirname != ((void*)0) &&
                     g_file_test(dirname, G_FILE_TEST_IS_DIR) &&
                     access(dirname, W_OK) == 0)
                 {
@@ -147,7 +147,7 @@ set_destination_settings(signal_user_data_t *ud, GhbValue *settings)
             {
                 char st[6];
                 struct tm *lt;
-                time_t t = time(NULL);
+                time_t t = time(((void*)0));
                 lt = localtime(&t);
                 st[0] = 0;
                 strftime(st, 6, "%H:%M", lt);
@@ -158,7 +158,7 @@ set_destination_settings(signal_user_data_t *ud, GhbValue *settings)
             {
                 char dt[11];
                 struct tm *lt;
-                time_t t = time(NULL);
+                time_t t = time(((void*)0));
                 lt = localtime(&t);
                 dt[0] = 0;
                 strftime(dt, 11, "%Y-%m-%d", lt);

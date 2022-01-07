@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uv_stream_t ;
-typedef  int /*<<< orphan*/  uv_pipe_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PIPENAME ; 
- int /*<<< orphan*/  SIGINT ; 
- int /*<<< orphan*/  UV_RUN_DEFAULT ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  loop ; 
- int /*<<< orphan*/  on_new_connection ; 
- int /*<<< orphan*/  remove_sock ; 
- int /*<<< orphan*/  signal (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  uv_default_loop () ; 
- char* uv_err_name (int) ; 
- int uv_listen (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int uv_pipe_bind (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  uv_pipe_init (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int uv_run (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uv_stream_t ;
+typedef int uv_pipe_t ;
+
+
+ int PIPENAME ;
+ int SIGINT ;
+ int UV_RUN_DEFAULT ;
+ int fprintf (int ,char*,char*) ;
+ int loop ;
+ int on_new_connection ;
+ int remove_sock ;
+ int signal (int ,int ) ;
+ int stderr ;
+ int uv_default_loop () ;
+ char* uv_err_name (int) ;
+ int uv_listen (int *,int,int ) ;
+ int uv_pipe_bind (int *,int ) ;
+ int uv_pipe_init (int ,int *,int ) ;
+ int uv_run (int ,int ) ;
 
 int main() {
     loop = uv_default_loop();

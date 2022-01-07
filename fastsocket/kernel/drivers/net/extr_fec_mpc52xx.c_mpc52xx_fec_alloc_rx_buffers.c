@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct sk_buff {int /*<<< orphan*/  data; } ;
-struct TYPE_2__ {int /*<<< orphan*/  parent; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct sk_buff {int data; } ;
+struct TYPE_2__ {int parent; } ;
 struct net_device {TYPE_1__ dev; } ;
 struct bcom_task {int dummy; } ;
-struct bcom_fec_bd {int /*<<< orphan*/  skb_pa; int /*<<< orphan*/  status; } ;
+struct bcom_fec_bd {int skb_pa; int status; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DMA_FROM_DEVICE ; 
- int EAGAIN ; 
- int /*<<< orphan*/  FEC_RX_BUFFER_SIZE ; 
- scalar_t__ bcom_prepare_next_buffer (struct bcom_task*) ; 
- int /*<<< orphan*/  bcom_queue_full (struct bcom_task*) ; 
- int /*<<< orphan*/  bcom_submit_next_buffer (struct bcom_task*,struct sk_buff*) ; 
- struct sk_buff* dev_alloc_skb (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dma_map_single (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int DMA_FROM_DEVICE ;
+ int EAGAIN ;
+ int FEC_RX_BUFFER_SIZE ;
+ scalar_t__ bcom_prepare_next_buffer (struct bcom_task*) ;
+ int bcom_queue_full (struct bcom_task*) ;
+ int bcom_submit_next_buffer (struct bcom_task*,struct sk_buff*) ;
+ struct sk_buff* dev_alloc_skb (int ) ;
+ int dma_map_single (int ,int ,int ,int ) ;
+ int memset (int ,int ,int ) ;
 
 __attribute__((used)) static int mpc52xx_fec_alloc_rx_buffers(struct net_device *dev, struct bcom_task *rxtsk)
 {
-	while (!bcom_queue_full(rxtsk)) {
-		struct sk_buff *skb;
-		struct bcom_fec_bd *bd;
+ while (!bcom_queue_full(rxtsk)) {
+  struct sk_buff *skb;
+  struct bcom_fec_bd *bd;
 
-		skb = dev_alloc_skb(FEC_RX_BUFFER_SIZE);
-		if (skb == NULL)
-			return -EAGAIN;
+  skb = dev_alloc_skb(FEC_RX_BUFFER_SIZE);
+  if (skb == ((void*)0))
+   return -EAGAIN;
 
-		/* zero out the initial receive buffers to aid debugging */
-		memset(skb->data, 0, FEC_RX_BUFFER_SIZE);
 
-		bd = (struct bcom_fec_bd *)bcom_prepare_next_buffer(rxtsk);
+  memset(skb->data, 0, FEC_RX_BUFFER_SIZE);
 
-		bd->status = FEC_RX_BUFFER_SIZE;
-		bd->skb_pa = dma_map_single(dev->dev.parent, skb->data,
-				FEC_RX_BUFFER_SIZE, DMA_FROM_DEVICE);
+  bd = (struct bcom_fec_bd *)bcom_prepare_next_buffer(rxtsk);
 
-		bcom_submit_next_buffer(rxtsk, skb);
-	}
+  bd->status = FEC_RX_BUFFER_SIZE;
+  bd->skb_pa = dma_map_single(dev->dev.parent, skb->data,
+    FEC_RX_BUFFER_SIZE, DMA_FROM_DEVICE);
 
-	return 0;
+  bcom_submit_next_buffer(rxtsk, skb);
+ }
+
+ return 0;
 }

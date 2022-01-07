@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vm_offset_t ;
-typedef  int /*<<< orphan*/  pmap_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  sfence_vma () ; 
+
+
+
+typedef int vm_offset_t ;
+typedef int pmap_t ;
+
+
+ int sfence_vma () ;
 
 __attribute__((used)) static __inline void
 pmap_invalidate_range(pmap_t pmap, vm_offset_t sva, vm_offset_t eva)
 {
 
-	/*
-	 * Might consider a loop of sfence_vma_page() for a small
-	 * number of pages in the future.
-	 */
-	sfence_vma();
+
+
+
+
+ sfence_vma();
 }

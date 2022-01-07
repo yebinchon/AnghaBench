@@ -1,87 +1,87 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_10__ {scalar_t__ count; } ;
-struct TYPE_9__ {scalar_t__ fFlags; int /*<<< orphan*/  ViewMode; } ;
+struct TYPE_9__ {scalar_t__ fFlags; int ViewMode; } ;
 struct TYPE_8__ {void* x; void* y; } ;
-typedef  int /*<<< orphan*/  RECT ;
-typedef  TYPE_1__ POINT ;
-typedef  void* PITEMID_CHILD ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  IShellView ;
-typedef  int /*<<< orphan*/  IShellFolder ;
-typedef  int /*<<< orphan*/  IShellBrowser ;
-typedef  scalar_t__ INT ;
-typedef  int /*<<< orphan*/  IFolderView2 ;
-typedef  int /*<<< orphan*/  IFolderView ;
-typedef  void* HWND ;
-typedef  void* HRESULT ;
-typedef  TYPE_2__ FOLDERSETTINGS ;
+typedef int RECT ;
+typedef TYPE_1__ POINT ;
+typedef void* PITEMID_CHILD ;
+typedef int IUnknown ;
+typedef int IShellView ;
+typedef int IShellFolder ;
+typedef int IShellBrowser ;
+typedef scalar_t__ INT ;
+typedef int IFolderView2 ;
+typedef int IFolderView ;
+typedef void* HWND ;
+typedef void* HRESULT ;
+typedef TYPE_2__ FOLDERSETTINGS ;
 
-/* Variables and functions */
- void* E_FAIL ; 
- void* E_INVALIDARG ; 
- void* E_POINTER ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  FVM_ICON ; 
- void* HIWORD (scalar_t__) ; 
- int /*<<< orphan*/  IFolderView2_Release (int /*<<< orphan*/ *) ; 
- void* IFolderView_GetFocusedItem (int /*<<< orphan*/ *,scalar_t__*) ; 
- void* IFolderView_GetFolder (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- void* IFolderView_GetSelectionMarkedItem (int /*<<< orphan*/ *,scalar_t__*) ; 
- void* IFolderView_GetSpacing (int /*<<< orphan*/ *,TYPE_1__*) ; 
- void* IFolderView_Item (int /*<<< orphan*/ *,int /*<<< orphan*/ ,void**) ; 
- int /*<<< orphan*/  IFolderView_ItemCount (int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__*) ; 
- void* IFolderView_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IFolderView_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IID_IFolderView ; 
- int /*<<< orphan*/  IID_IFolderView2 ; 
- int /*<<< orphan*/  IID_IShellFolder ; 
- int /*<<< orphan*/  IID_IShellView ; 
- int /*<<< orphan*/  IID_IUnknown ; 
- int /*<<< orphan*/ * IShellBrowserImpl_Construct () ; 
- int /*<<< orphan*/  IShellBrowser_Release (int /*<<< orphan*/ *) ; 
- void* IShellFolder_CreateViewObject (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IShellFolder_Release (int /*<<< orphan*/ *) ; 
- void* IShellView_CreateViewWindow (int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- void* IShellView_DestroyViewWindow (int /*<<< orphan*/ *) ; 
- void* IShellView_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IShellView_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IUnknown_Release (int /*<<< orphan*/ *) ; 
- int IsWindow (void*) ; 
- size_t LISTVIEW_SEQ_INDEX ; 
- void* LOWORD (scalar_t__) ; 
- int /*<<< orphan*/  LVM_GETITEMSPACING ; 
- int /*<<< orphan*/  NUM_MSG_SEQUENCES ; 
- void* SHGetDesktopFolder (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  SVGIO_ALLVIEW ; 
- void* S_FALSE ; 
- void* S_OK ; 
- scalar_t__ SendMessageA (void*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetRect (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int) ; 
- scalar_t__ broken (int) ; 
- int /*<<< orphan*/  empty_seq ; 
- int /*<<< orphan*/  flush_sequences (TYPE_3__**,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  folderview_getfocused_seq ; 
- int /*<<< orphan*/  folderview_getselectionmarked_seq ; 
- int /*<<< orphan*/  folderview_getspacing_seq ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  ok_sequence (TYPE_3__**,size_t,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- TYPE_3__** sequences ; 
- void* subclass_listview (void*) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
+
+ void* E_FAIL ;
+ void* E_INVALIDARG ;
+ void* E_POINTER ;
+ int FALSE ;
+ int FVM_ICON ;
+ void* HIWORD (scalar_t__) ;
+ int IFolderView2_Release (int *) ;
+ void* IFolderView_GetFocusedItem (int *,scalar_t__*) ;
+ void* IFolderView_GetFolder (int *,int *,void**) ;
+ void* IFolderView_GetSelectionMarkedItem (int *,scalar_t__*) ;
+ void* IFolderView_GetSpacing (int *,TYPE_1__*) ;
+ void* IFolderView_Item (int *,int ,void**) ;
+ int IFolderView_ItemCount (int *,int ,scalar_t__*) ;
+ void* IFolderView_QueryInterface (int *,int *,void**) ;
+ int IFolderView_Release (int *) ;
+ int IID_IFolderView ;
+ int IID_IFolderView2 ;
+ int IID_IShellFolder ;
+ int IID_IShellView ;
+ int IID_IUnknown ;
+ int * IShellBrowserImpl_Construct () ;
+ int IShellBrowser_Release (int *) ;
+ void* IShellFolder_CreateViewObject (int *,int *,int *,void**) ;
+ int IShellFolder_Release (int *) ;
+ void* IShellView_CreateViewWindow (int *,int *,TYPE_2__*,int *,int *,void**) ;
+ void* IShellView_DestroyViewWindow (int *) ;
+ void* IShellView_QueryInterface (int *,int *,void**) ;
+ int IShellView_Release (int *) ;
+ int IUnknown_Release (int *) ;
+ int IsWindow (void*) ;
+ size_t LISTVIEW_SEQ_INDEX ;
+ void* LOWORD (scalar_t__) ;
+ int LVM_GETITEMSPACING ;
+ int NUM_MSG_SEQUENCES ;
+ void* SHGetDesktopFolder (int **) ;
+ int SVGIO_ALLVIEW ;
+ void* S_FALSE ;
+ void* S_OK ;
+ scalar_t__ SendMessageA (void*,int ,int ,int ) ;
+ int SetRect (int *,int ,int ,int,int) ;
+ scalar_t__ broken (int) ;
+ int empty_seq ;
+ int flush_sequences (TYPE_3__**,int ) ;
+ int folderview_getfocused_seq ;
+ int folderview_getselectionmarked_seq ;
+ int folderview_getspacing_seq ;
+ int ok (int,char*,...) ;
+ int ok_sequence (TYPE_3__**,size_t,int ,char*,int ) ;
+ TYPE_3__** sequences ;
+ void* subclass_listview (void*) ;
+ int win_skip (char*) ;
 
 __attribute__((used)) static void test_IFolderView(void)
 {
@@ -102,7 +102,7 @@ __attribute__((used)) static void test_IFolderView(void)
     hr = SHGetDesktopFolder(&desktop);
     ok(hr == S_OK, "got (0x%08x)\n", hr);
 
-    hr = IShellFolder_CreateViewObject(desktop, NULL, &IID_IShellView, (void**)&view);
+    hr = IShellFolder_CreateViewObject(desktop, ((void*)0), &IID_IShellView, (void**)&view);
     ok(hr == S_OK, "got (0x%08x)\n", hr);
 
     hr = IShellView_QueryInterface(view, &IID_IFolderView, (void**)&fv);
@@ -114,26 +114,26 @@ __attribute__((used)) static void test_IFolderView(void)
         return;
     }
 
-    /* call methods before window creation */
-    hr = IFolderView_GetSpacing(fv, NULL);
-    ok(hr == S_FALSE || broken(hr == S_OK) /* win7 */, "got (0x%08x)\n", hr);
+
+    hr = IFolderView_GetSpacing(fv, ((void*)0));
+    ok(hr == S_FALSE || broken(hr == S_OK) , "got (0x%08x)\n", hr);
 
     pidl = (void*)0xdeadbeef;
     hr = IFolderView_Item(fv, 0, &pidl);
-    ok(hr == E_INVALIDARG || broken(hr == E_FAIL) /* < Vista */, "got (0x%08x)\n", hr);
-    ok(pidl == 0 || broken(pidl == (void*)0xdeadbeef) /* < Vista */, "got %p\n", pidl);
+    ok(hr == E_INVALIDARG || broken(hr == E_FAIL) , "got (0x%08x)\n", hr);
+    ok(pidl == 0 || broken(pidl == (void*)0xdeadbeef) , "got %p\n", pidl);
 
 if (0)
 {
-    /* crashes on Vista and Win2k8 - List not created yet case */
+
     IFolderView_GetSpacing(fv, &pt);
 
-    /* crashes on XP */
-    IFolderView_GetSelectionMarkedItem(fv, NULL);
-    IFolderView_GetFocusedItem(fv, NULL);
 
-    /* crashes on Vista+ */
-    IFolderView_Item(fv, 0, NULL);
+    IFolderView_GetSelectionMarkedItem(fv, ((void*)0));
+    IFolderView_GetFocusedItem(fv, ((void*)0));
+
+
+    IFolderView_Item(fv, 0, ((void*)0));
 }
 
     browser = IShellBrowserImpl_Construct();
@@ -142,7 +142,7 @@ if (0)
     settings.fFlags = 0;
     hwnd_view = (HWND)0xdeadbeef;
     SetRect(&r, 0, 0, 100, 100);
-    hr = IShellView_CreateViewWindow(view, NULL, &settings, browser, &r, &hwnd_view);
+    hr = IShellView_CreateViewWindow(view, ((void*)0), &settings, browser, &r, &hwnd_view);
     ok(hr == S_OK, "got (0x%08x)\n", hr);
     ok(IsWindow(hwnd_view), "got %p\n", hwnd_view);
 
@@ -157,16 +157,16 @@ if (0)
         return;
     }
 
-    /* IFolderView::GetSpacing */
+
     flush_sequences(sequences, NUM_MSG_SEQUENCES);
-    hr = IFolderView_GetSpacing(fv, NULL);
+    hr = IFolderView_GetSpacing(fv, ((void*)0));
     ok(hr == S_OK, "got (0x%08x)\n", hr);
     ok_sequence(sequences, LISTVIEW_SEQ_INDEX, empty_seq, "IFolderView::GetSpacing, empty", FALSE);
 
     flush_sequences(sequences, NUM_MSG_SEQUENCES);
     hr = IFolderView_GetSpacing(fv, &pt);
     ok(hr == S_OK, "got (0x%08x)\n", hr);
-    /* fails with empty sequence on win7 for unknown reason */
+
     if (sequences[LISTVIEW_SEQ_INDEX]->count)
     {
         ok_sequence(sequences, LISTVIEW_SEQ_INDEX, folderview_getspacing_seq, "IFolderView::GetSpacing", FALSE);
@@ -176,21 +176,21 @@ if (0)
         ok(pt.x == LOWORD(ret) && pt.y == HIWORD(ret), "got (%d, %d)\n", LOWORD(ret), HIWORD(ret));
     }
 
-    /* IFolderView::ItemCount */
+
 if (0)
 {
-    /* crashes on XP */
-    IFolderView_ItemCount(fv, SVGIO_ALLVIEW, NULL);
+
+    IFolderView_ItemCount(fv, SVGIO_ALLVIEW, ((void*)0));
 }
 
     flush_sequences(sequences, NUM_MSG_SEQUENCES);
     IFolderView_ItemCount(fv, SVGIO_ALLVIEW, &count);
 
-    /* IFolderView::GetSelectionMarkedItem */
+
 if (0)
 {
-    /* crashes on XP */
-    IFolderView_GetSelectionMarkedItem(fv, NULL);
+
+    IFolderView_GetSelectionMarkedItem(fv, ((void*)0));
 }
 
     flush_sequences(sequences, NUM_MSG_SEQUENCES);
@@ -202,7 +202,7 @@ if (0)
     ok_sequence(sequences, LISTVIEW_SEQ_INDEX, folderview_getselectionmarked_seq,
                 "IFolderView::GetSelectionMarkedItem", FALSE);
 
-    /* IFolderView::GetFocusedItem */
+
     flush_sequences(sequences, NUM_MSG_SEQUENCES);
     hr = IFolderView_GetFocusedItem(fv, &ret);
     if (count)
@@ -212,15 +212,15 @@ if (0)
     ok_sequence(sequences, LISTVIEW_SEQ_INDEX, folderview_getfocused_seq,
                 "IFolderView::GetFocusedItem", FALSE);
 
-    /* IFolderView::GetFolder, just return pointer */
+
 if (0)
 {
-    /* crashes on XP */
-    IFolderView_GetFolder(fv, NULL, (void**)&folder);
-    IFolderView_GetFolder(fv, NULL, NULL);
+
+    IFolderView_GetFolder(fv, ((void*)0), (void**)&folder);
+    IFolderView_GetFolder(fv, ((void*)0), ((void*)0));
 }
 
-    hr = IFolderView_GetFolder(fv, &IID_IShellFolder, NULL);
+    hr = IFolderView_GetFolder(fv, &IID_IShellFolder, ((void*)0));
     ok(hr == E_POINTER, "got (0x%08x)\n", hr);
 
     hr = IFolderView_GetFolder(fv, &IID_IShellFolder, (void**)&folder);

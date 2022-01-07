@@ -1,67 +1,67 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
 struct TYPE_11__ {char* data; } ;
-struct TYPE_10__ {char* errormsg; int /*<<< orphan*/  name; } ;
-typedef  TYPE_1__ Step ;
-typedef  TYPE_2__ PQExpBufferData ;
+struct TYPE_10__ {char* errormsg; int name; } ;
+typedef TYPE_1__ Step ;
+typedef TYPE_2__ PQExpBufferData ;
 
-/* Variables and functions */
- int /*<<< orphan*/  appendPQExpBuffer (TYPE_2__*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  appendPQExpBufferStr (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*,char*) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  initPQExpBuffer (TYPE_2__*) ; 
- int /*<<< orphan*/  report_error_message (TYPE_1__*) ; 
- int /*<<< orphan*/  stdout ; 
- int /*<<< orphan*/  termPQExpBuffer (TYPE_2__*) ; 
+
+ int appendPQExpBuffer (TYPE_2__*,char*,int ) ;
+ int appendPQExpBufferStr (TYPE_2__*,int ) ;
+ int fprintf (int ,char*,char*,char*) ;
+ int free (char*) ;
+ int initPQExpBuffer (TYPE_2__*) ;
+ int report_error_message (TYPE_1__*) ;
+ int stdout ;
+ int termPQExpBuffer (TYPE_2__*) ;
 
 __attribute__((used)) static void
 report_multiple_error_messages(Step *step, int nextra, Step **extrastep)
 {
-	PQExpBufferData buffer;
-	int			n;
+ PQExpBufferData buffer;
+ int n;
 
-	if (nextra == 0)
-	{
-		report_error_message(step);
-		return;
-	}
+ if (nextra == 0)
+ {
+  report_error_message(step);
+  return;
+ }
 
-	initPQExpBuffer(&buffer);
-	appendPQExpBufferStr(&buffer, step->name);
+ initPQExpBuffer(&buffer);
+ appendPQExpBufferStr(&buffer, step->name);
 
-	for (n = 0; n < nextra; ++n)
-		appendPQExpBuffer(&buffer, " %s", extrastep[n]->name);
+ for (n = 0; n < nextra; ++n)
+  appendPQExpBuffer(&buffer, " %s", extrastep[n]->name);
 
-	if (step->errormsg)
-	{
-		fprintf(stdout, "error in steps %s: %s\n", buffer.data,
-				step->errormsg);
-		free(step->errormsg);
-		step->errormsg = NULL;
-	}
+ if (step->errormsg)
+ {
+  fprintf(stdout, "error in steps %s: %s\n", buffer.data,
+    step->errormsg);
+  free(step->errormsg);
+  step->errormsg = ((void*)0);
+ }
 
-	for (n = 0; n < nextra; ++n)
-	{
-		if (extrastep[n]->errormsg == NULL)
-			continue;
-		fprintf(stdout, "error in steps %s: %s\n",
-				buffer.data, extrastep[n]->errormsg);
-		free(extrastep[n]->errormsg);
-		extrastep[n]->errormsg = NULL;
-	}
+ for (n = 0; n < nextra; ++n)
+ {
+  if (extrastep[n]->errormsg == ((void*)0))
+   continue;
+  fprintf(stdout, "error in steps %s: %s\n",
+    buffer.data, extrastep[n]->errormsg);
+  free(extrastep[n]->errormsg);
+  extrastep[n]->errormsg = ((void*)0);
+ }
 
-	termPQExpBuffer(&buffer);
+ termPQExpBuffer(&buffer);
 }

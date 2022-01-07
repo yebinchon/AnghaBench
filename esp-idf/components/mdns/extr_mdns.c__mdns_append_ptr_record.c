@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
-typedef  scalar_t__ uint16_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MDNS_ANSWER_PTR ; 
- int /*<<< orphan*/  MDNS_ANSWER_PTR_TTL ; 
- char* MDNS_DEFAULT_DOMAIN ; 
- scalar_t__ _mdns_append_fqdn (scalar_t__*,scalar_t__*,char const**,int) ; 
- scalar_t__ _mdns_append_type (scalar_t__*,scalar_t__*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  _mdns_set_u16 (scalar_t__*,scalar_t__,scalar_t__) ; 
+
+
+
+typedef scalar_t__ uint8_t ;
+typedef scalar_t__ uint16_t ;
+
+
+ int MDNS_ANSWER_PTR ;
+ int MDNS_ANSWER_PTR_TTL ;
+ char* MDNS_DEFAULT_DOMAIN ;
+ scalar_t__ _mdns_append_fqdn (scalar_t__*,scalar_t__*,char const**,int) ;
+ scalar_t__ _mdns_append_type (scalar_t__*,scalar_t__*,int ,int,int ) ;
+ int _mdns_set_u16 (scalar_t__*,scalar_t__,scalar_t__) ;
 
 __attribute__((used)) static uint16_t _mdns_append_ptr_record(uint8_t * packet, uint16_t * index, const char * instance, const char * service, const char * proto, bool flush, bool bye)
 {
@@ -27,7 +27,7 @@ __attribute__((used)) static uint16_t _mdns_append_ptr_record(uint8_t * packet, 
     uint16_t record_length = 0;
     uint8_t part_length;
 
-    if (service == NULL) {
+    if (service == ((void*)0)) {
         return 0;
     }
 
@@ -42,7 +42,7 @@ __attribute__((used)) static uint16_t _mdns_append_ptr_record(uint8_t * packet, 
     }
     record_length += part_length;
 
-    part_length = _mdns_append_type(packet, index, MDNS_ANSWER_PTR, false, bye?0:MDNS_ANSWER_PTR_TTL);
+    part_length = _mdns_append_type(packet, index, MDNS_ANSWER_PTR, 0, bye?0:MDNS_ANSWER_PTR_TTL);
     if (!part_length) {
         return 0;
     }

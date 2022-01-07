@@ -1,92 +1,92 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_8__ ;
-typedef  struct TYPE_14__   TYPE_7__ ;
-typedef  struct TYPE_13__   TYPE_5__ ;
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_15__ TYPE_8__ ;
+typedef struct TYPE_14__ TYPE_7__ ;
+typedef struct TYPE_13__ TYPE_5__ ;
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_13__ {scalar_t__ magic; } ;
-struct TYPE_11__ {int /*<<< orphan*/  s6_addr; } ;
+struct TYPE_11__ {int s6_addr; } ;
 struct TYPE_10__ {scalar_t__ s_addr; } ;
-struct TYPE_9__ {int /*<<< orphan*/  wakeup; } ;
+struct TYPE_9__ {int wakeup; } ;
 struct TYPE_14__ {scalar_t__ state; } ;
-struct sockaddr_in6 {int fd; int flags; int remote_port; struct sockaddr_in6* prev; struct sockaddr_in6* next; int /*<<< orphan*/  basic_type; TYPE_5__ out_p; TYPE_5__ in_u; TYPE_5__ out; TYPE_5__ in; TYPE_4__* type; int /*<<< orphan*/  remote_ipv6; void* our_port; int /*<<< orphan*/  our_ipv6; int /*<<< orphan*/  sin6_port; TYPE_3__ sin6_addr; void* remote_ip; int /*<<< orphan*/  sin_port; TYPE_2__ sin_addr; void* our_ip; struct conn_query* last_query; struct conn_query* first_query; int /*<<< orphan*/  status; int /*<<< orphan*/  extra; TYPE_1__ timer; int /*<<< orphan*/  out_buff; TYPE_7__ Out; int /*<<< orphan*/  in_buff; TYPE_7__ In; scalar_t__ generation; struct conn_target* target; int /*<<< orphan*/ * ev; } ;
-struct sockaddr_in {int fd; int flags; int remote_port; struct sockaddr_in* prev; struct sockaddr_in* next; int /*<<< orphan*/  basic_type; TYPE_5__ out_p; TYPE_5__ in_u; TYPE_5__ out; TYPE_5__ in; TYPE_4__* type; int /*<<< orphan*/  remote_ipv6; void* our_port; int /*<<< orphan*/  our_ipv6; int /*<<< orphan*/  sin6_port; TYPE_3__ sin6_addr; void* remote_ip; int /*<<< orphan*/  sin_port; TYPE_2__ sin_addr; void* our_ip; struct conn_query* last_query; struct conn_query* first_query; int /*<<< orphan*/  status; int /*<<< orphan*/  extra; TYPE_1__ timer; int /*<<< orphan*/  out_buff; TYPE_7__ Out; int /*<<< orphan*/  in_buff; TYPE_7__ In; scalar_t__ generation; struct conn_target* target; int /*<<< orphan*/ * ev; } ;
+struct sockaddr_in6 {int fd; int flags; int remote_port; struct sockaddr_in6* prev; struct sockaddr_in6* next; int basic_type; TYPE_5__ out_p; TYPE_5__ in_u; TYPE_5__ out; TYPE_5__ in; TYPE_4__* type; int remote_ipv6; void* our_port; int our_ipv6; int sin6_port; TYPE_3__ sin6_addr; void* remote_ip; int sin_port; TYPE_2__ sin_addr; void* our_ip; struct conn_query* last_query; struct conn_query* first_query; int status; int extra; TYPE_1__ timer; int out_buff; TYPE_7__ Out; int in_buff; TYPE_7__ In; scalar_t__ generation; struct conn_target* target; int * ev; } ;
+struct sockaddr_in {int fd; int flags; int remote_port; struct sockaddr_in* prev; struct sockaddr_in* next; int basic_type; TYPE_5__ out_p; TYPE_5__ in_u; TYPE_5__ out; TYPE_5__ in; TYPE_4__* type; int remote_ipv6; void* our_port; int our_ipv6; int sin6_port; TYPE_3__ sin6_addr; void* remote_ip; int sin_port; TYPE_2__ sin_addr; void* our_ip; struct conn_query* last_query; struct conn_query* first_query; int status; int extra; TYPE_1__ timer; int out_buff; TYPE_7__ Out; int in_buff; TYPE_7__ In; scalar_t__ generation; struct conn_target* target; int * ev; } ;
 struct sockaddr {int dummy; } ;
-struct connection {int fd; int flags; int remote_port; struct connection* prev; struct connection* next; int /*<<< orphan*/  basic_type; TYPE_5__ out_p; TYPE_5__ in_u; TYPE_5__ out; TYPE_5__ in; TYPE_4__* type; int /*<<< orphan*/  remote_ipv6; void* our_port; int /*<<< orphan*/  our_ipv6; int /*<<< orphan*/  sin6_port; TYPE_3__ sin6_addr; void* remote_ip; int /*<<< orphan*/  sin_port; TYPE_2__ sin_addr; void* our_ip; struct conn_query* last_query; struct conn_query* first_query; int /*<<< orphan*/  status; int /*<<< orphan*/  extra; TYPE_1__ timer; int /*<<< orphan*/  out_buff; TYPE_7__ Out; int /*<<< orphan*/  in_buff; TYPE_7__ In; scalar_t__ generation; struct conn_target* target; int /*<<< orphan*/ * ev; } ;
+struct connection {int fd; int flags; int remote_port; struct connection* prev; struct connection* next; int basic_type; TYPE_5__ out_p; TYPE_5__ in_u; TYPE_5__ out; TYPE_5__ in; TYPE_4__* type; int remote_ipv6; void* our_port; int our_ipv6; int sin6_port; TYPE_3__ sin6_addr; void* remote_ip; int sin_port; TYPE_2__ sin_addr; void* our_ip; struct conn_query* last_query; struct conn_query* first_query; int status; int extra; TYPE_1__ timer; int out_buff; TYPE_7__ Out; int in_buff; TYPE_7__ In; scalar_t__ generation; struct conn_target* target; int * ev; } ;
 struct TYPE_15__ {scalar_t__ s_addr; } ;
-struct conn_target {scalar_t__ refcnt; int ready_outbound_connections; int min_connections; int max_connections; scalar_t__ next_reconnect; int outbound_connections; int port; TYPE_8__ target; int /*<<< orphan*/  target_ipv6; int /*<<< orphan*/  extra; TYPE_4__* type; int /*<<< orphan*/  active_outbound_connections; struct sockaddr_in6* first_conn; } ;
+struct conn_target {scalar_t__ refcnt; int ready_outbound_connections; int min_connections; int max_connections; scalar_t__ next_reconnect; int outbound_connections; int port; TYPE_8__ target; int target_ipv6; int extra; TYPE_4__* type; int active_outbound_connections; struct sockaddr_in6* first_conn; } ;
 struct conn_query {int dummy; } ;
-typedef  int /*<<< orphan*/  self ;
-typedef  int /*<<< orphan*/  event_t ;
+typedef int self ;
+typedef int event_t ;
 struct TYPE_12__ {int (* check_ready ) (struct sockaddr_in6*) ;int flags; scalar_t__ (* init_outbound ) (struct sockaddr_in6*) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BUFF_SIZE ; 
- int C_IPV6 ; 
- int C_RAWMSG ; 
- int C_WANTRD ; 
- int C_WANTWR ; 
- struct sockaddr_in6* Connections ; 
- int EVT_READ ; 
- int EVT_SPEC ; 
- int EVT_WRITE ; 
- int /*<<< orphan*/ * Events ; 
- int MAX_CONNECTIONS ; 
- int MAX_EVENTS ; 
- int /*<<< orphan*/  SM_IPV6 ; 
- int /*<<< orphan*/  assert (int) ; 
- int client_socket (scalar_t__,int,int /*<<< orphan*/ ) ; 
- int client_socket_ipv6 (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  compute_next_reconnect (struct conn_target*) ; 
- int /*<<< orphan*/  conn_connecting ; 
- scalar_t__ conn_generation ; 
- int /*<<< orphan*/  conn_timer_wakeup_gateway ; 
-#define  cr_busy 132 
-#define  cr_failed 131 
-#define  cr_notyet 130 
-#define  cr_ok 129 
-#define  cr_stopped 128 
- int /*<<< orphan*/  ct_none ; 
- int /*<<< orphan*/  ct_outbound ; 
- int /*<<< orphan*/  epoll_insert (int,int) ; 
- int /*<<< orphan*/  epoll_sethandler (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct sockaddr_in6*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  getsockname (int,struct sockaddr*,unsigned int*) ; 
- char* inet_ntoa (TYPE_8__) ; 
- int /*<<< orphan*/  init_builtin_buffer (TYPE_7__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int max_connection ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  memset (struct sockaddr_in6*,int /*<<< orphan*/ ,unsigned int) ; 
- void* ntohl (scalar_t__) ; 
- void* ntohs (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  outbound_connections ; 
- int /*<<< orphan*/  outbound_connections_created ; 
- scalar_t__ precise_now ; 
- int /*<<< orphan*/  rwm_free (TYPE_5__*) ; 
- int /*<<< orphan*/  rwm_init (TYPE_5__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  server_read_write_gateway ; 
- char* show_ipv6 (int /*<<< orphan*/ ) ; 
- char* show_our_ip (struct sockaddr_in6*) ; 
- char* show_remote_ip (struct sockaddr_in6*) ; 
- int /*<<< orphan*/  stderr ; 
- int stub1 (struct sockaddr_in6*) ; 
- scalar_t__ stub2 (struct sockaddr_in6*) ; 
- scalar_t__ verbosity ; 
- int /*<<< orphan*/  vkprintf (int,char*,char*,void*,char*,int) ; 
+
+ int BUFF_SIZE ;
+ int C_IPV6 ;
+ int C_RAWMSG ;
+ int C_WANTRD ;
+ int C_WANTWR ;
+ struct sockaddr_in6* Connections ;
+ int EVT_READ ;
+ int EVT_SPEC ;
+ int EVT_WRITE ;
+ int * Events ;
+ int MAX_CONNECTIONS ;
+ int MAX_EVENTS ;
+ int SM_IPV6 ;
+ int assert (int) ;
+ int client_socket (scalar_t__,int,int ) ;
+ int client_socket_ipv6 (int ,int,int ) ;
+ int close (int) ;
+ int compute_next_reconnect (struct conn_target*) ;
+ int conn_connecting ;
+ scalar_t__ conn_generation ;
+ int conn_timer_wakeup_gateway ;
+
+
+
+
+
+ int ct_none ;
+ int ct_outbound ;
+ int epoll_insert (int,int) ;
+ int epoll_sethandler (int,int ,int ,struct sockaddr_in6*) ;
+ int fprintf (int ,char*,...) ;
+ int getsockname (int,struct sockaddr*,unsigned int*) ;
+ char* inet_ntoa (TYPE_8__) ;
+ int init_builtin_buffer (TYPE_7__*,int ,int ) ;
+ int max_connection ;
+ int memcpy (int ,int ,int) ;
+ int memset (struct sockaddr_in6*,int ,unsigned int) ;
+ void* ntohl (scalar_t__) ;
+ void* ntohs (int ) ;
+ int outbound_connections ;
+ int outbound_connections_created ;
+ scalar_t__ precise_now ;
+ int rwm_free (TYPE_5__*) ;
+ int rwm_init (TYPE_5__*,int ) ;
+ int server_read_write_gateway ;
+ char* show_ipv6 (int ) ;
+ char* show_our_ip (struct sockaddr_in6*) ;
+ char* show_remote_ip (struct sockaddr_in6*) ;
+ int stderr ;
+ int stub1 (struct sockaddr_in6*) ;
+ scalar_t__ stub2 (struct sockaddr_in6*) ;
+ scalar_t__ verbosity ;
+ int vkprintf (int,char*,char*,void*,char*,int) ;
 
 int create_new_connections (struct conn_target *S) {
   int count = 0, good_c = 0, bad_c = 0, stopped_c = 0, need_c;
@@ -96,18 +96,18 @@ int create_new_connections (struct conn_target *S) {
   assert (S->refcnt >= 0);
 
   for (c = S->first_conn; c != (struct connection *) S; c = c->next) {
-    int cr = c->type->check_ready (c); 
+    int cr = c->type->check_ready (c);
     switch (cr) {
-    case cr_notyet:
-    case cr_busy:
+    case 130:
+    case 132:
       break;
-    case cr_ok:
+    case 129:
       good_c++;
       break;
-    case cr_stopped:
+    case 128:
       stopped_c++;
       break;
-    case cr_failed:
+    case 131:
       bad_c++;
       break;
     default:
@@ -128,20 +128,20 @@ int create_new_connections (struct conn_target *S) {
   while (S->outbound_connections < need_c) {
     if (verbosity > 0) {
       if (S->target.s_addr) {
-	fprintf (stderr, "Creating NEW connection to %s:%d\n", inet_ntoa (S->target), S->port);
+ fprintf (stderr, "Creating NEW connection to %s:%d\n", inet_ntoa (S->target), S->port);
       } else {
-	fprintf (stderr, "Creating NEW ipv6 connection to [%s]:%d\n", show_ipv6 (S->target_ipv6), S->port);
+ fprintf (stderr, "Creating NEW ipv6 connection to [%s]:%d\n", show_ipv6 (S->target_ipv6), S->port);
       }
     }
     int cfd = S->target.s_addr ? client_socket (S->target.s_addr, S->port, 0) : client_socket_ipv6 (S->target_ipv6, S->port, SM_IPV6);
     if (cfd < 0 && verbosity > 0) {
       compute_next_reconnect (S);
       if (verbosity > 0) {
-	if (S->target.s_addr) {
-	  fprintf (stderr, "error connecting to %s:%d: %m", inet_ntoa (S->target), S->port);
-	} else {
-	  fprintf (stderr, "error connecting to [%s]:%d\n", show_ipv6 (S->target_ipv6), S->port);
-	}
+ if (S->target.s_addr) {
+   fprintf (stderr, "error connecting to %s:%d: %m", inet_ntoa (S->target), S->port);
+ } else {
+   fprintf (stderr, "error connecting to [%s]:%d\n", show_ipv6 (S->target_ipv6), S->port);
+ }
       }
       return count;
     }
@@ -149,15 +149,15 @@ int create_new_connections (struct conn_target *S) {
       close (cfd);
       compute_next_reconnect (S);
       if (verbosity > 0) {
-	if (S->target.s_addr) {
-	  fprintf (stderr, "out of sockets when connecting to %s:%d", inet_ntoa(S->target), S->port);
-	} else {
-	  fprintf (stderr, "out of sockets when connecting to [%s]:%d\n", show_ipv6 (S->target_ipv6), S->port);
-	}
+ if (S->target.s_addr) {
+   fprintf (stderr, "out of sockets when connecting to %s:%d", inet_ntoa(S->target), S->port);
+ } else {
+   fprintf (stderr, "out of sockets when connecting to [%s]:%d\n", show_ipv6 (S->target_ipv6), S->port);
+ }
       }
       return count;
     }
-    
+
     if (cfd > max_connection) {
       max_connection = cfd;
     }
@@ -173,10 +173,10 @@ int create_new_connections (struct conn_target *S) {
     if (S->type->flags & C_RAWMSG) {
       c->flags |= C_RAWMSG;
       c->In.state = c->Out.state = 0;
-      rwm_init (&c->in, 0); 
-      rwm_init (&c->out, 0); 
-      rwm_init (&c->in_u, 0); 
-      rwm_init (&c->out_p, 0); 
+      rwm_init (&c->in, 0);
+      rwm_init (&c->out, 0);
+      rwm_init (&c->in_u, 0);
+      rwm_init (&c->out_p, 0);
     } else {
       c->in.magic = c->out.magic = 0;
       init_builtin_buffer (&c->In, c->in_buff, BUFF_SIZE);
@@ -222,10 +222,10 @@ int create_new_connections (struct conn_target *S) {
       count++;
     } else {
       if (c->flags & C_RAWMSG) {
-	rwm_free (&c->in);
-	rwm_free (&c->out);
-	rwm_free (&c->in_u);
-	rwm_free (&c->out_p);
+ rwm_free (&c->in);
+ rwm_free (&c->out);
+ rwm_free (&c->in_u);
+ rwm_free (&c->out_p);
       }
       c->basic_type = ct_none;
       close (cfd);
@@ -241,9 +241,9 @@ int create_new_connections (struct conn_target *S) {
 
     if (verbosity > 0) {
       if (c->flags & C_IPV6) {
-	fprintf (stderr, "outbound ipv6 connection: handle %d to [%s]:%d\n", c->fd, show_ipv6 (S->target_ipv6), S->port);
+ fprintf (stderr, "outbound ipv6 connection: handle %d to [%s]:%d\n", c->fd, show_ipv6 (S->target_ipv6), S->port);
       } else {
-	fprintf (stderr, "outbound connection: handle %d to %s:%d\n", c->fd, inet_ntoa (S->target), S->port);
+ fprintf (stderr, "outbound connection: handle %d to %s:%d\n", c->fd, inet_ntoa (S->target), S->port);
       }
     }
   }

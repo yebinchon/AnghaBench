@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  SSL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_printf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  BIO_write (int /*<<< orphan*/ ,unsigned char const*,unsigned int) ; 
- int /*<<< orphan*/  OPENSSL_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SSL_get0_alpn_selected (int /*<<< orphan*/ *,unsigned char const**,unsigned int*) ; 
- scalar_t__ SSL_get_SSL_CTX (int /*<<< orphan*/ *) ; 
- unsigned char const* alpn_client ; 
- unsigned char const* alpn_expected ; 
- int /*<<< orphan*/ * alpn_selected ; 
- unsigned char const* alpn_server ; 
- unsigned char const* alpn_server2 ; 
- int /*<<< orphan*/  bio_stdout ; 
- scalar_t__ memcmp (unsigned char const*,unsigned char const*,unsigned int) ; 
- scalar_t__ s_ctx2 ; 
- unsigned int strlen (unsigned char const*) ; 
+
+
+
+typedef int SSL ;
+
+
+ int BIO_printf (int ,char*,...) ;
+ int BIO_write (int ,unsigned char const*,unsigned int) ;
+ int OPENSSL_free (int *) ;
+ int SSL_get0_alpn_selected (int *,unsigned char const**,unsigned int*) ;
+ scalar_t__ SSL_get_SSL_CTX (int *) ;
+ unsigned char const* alpn_client ;
+ unsigned char const* alpn_expected ;
+ int * alpn_selected ;
+ unsigned char const* alpn_server ;
+ unsigned char const* alpn_server2 ;
+ int bio_stdout ;
+ scalar_t__ memcmp (unsigned char const*,unsigned char const*,unsigned int) ;
+ scalar_t__ s_ctx2 ;
+ unsigned int strlen (unsigned char const*) ;
 
 __attribute__((used)) static int verify_alpn(SSL *client, SSL *server)
 {
@@ -36,25 +36,25 @@ __attribute__((used)) static int verify_alpn(SSL *client, SSL *server)
     SSL_get0_alpn_selected(server, &server_proto, &server_proto_len);
 
     OPENSSL_free(alpn_selected);
-    alpn_selected = NULL;
+    alpn_selected = ((void*)0);
 
     if (client_proto_len != server_proto_len) {
         BIO_printf(bio_stdout, "ALPN selected protocols differ!\n");
         goto err;
     }
 
-    if (client_proto != NULL &&
+    if (client_proto != ((void*)0) &&
         memcmp(client_proto, server_proto, client_proto_len) != 0) {
         BIO_printf(bio_stdout, "ALPN selected protocols differ!\n");
         goto err;
     }
 
-    if (client_proto_len > 0 && alpn_expected == NULL) {
+    if (client_proto_len > 0 && alpn_expected == ((void*)0)) {
         BIO_printf(bio_stdout, "ALPN unexpectedly negotiated\n");
         goto err;
     }
 
-    if (alpn_expected != NULL &&
+    if (alpn_expected != ((void*)0) &&
         (client_proto_len != strlen(alpn_expected) ||
          memcmp(client_proto, alpn_expected, client_proto_len) != 0)) {
         BIO_printf(bio_stdout,

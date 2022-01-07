@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sds ;
-typedef  int /*<<< orphan*/  linenoiseCompletions ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int sds ;
+typedef int linenoiseCompletions ;
 struct TYPE_2__ {int type; char* full; } ;
 
-/* Variables and functions */
- int CLI_HELP_COMMAND ; 
- int CLI_HELP_GROUP ; 
- TYPE_1__* helpEntries ; 
- int helpEntriesLen ; 
- scalar_t__ isspace (char const) ; 
- int /*<<< orphan*/  linenoiseAddCompletion (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sdscat (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  sdsfree (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sdsnewlen (char const*,size_t) ; 
- size_t strlen (char const*) ; 
- scalar_t__ strncasecmp (char const*,char*,size_t) ; 
+
+ int CLI_HELP_COMMAND ;
+ int CLI_HELP_GROUP ;
+ TYPE_1__* helpEntries ;
+ int helpEntriesLen ;
+ scalar_t__ isspace (char const) ;
+ int linenoiseAddCompletion (int *,int ) ;
+ int sdscat (int ,char*) ;
+ int sdsfree (int ) ;
+ int sdsnewlen (char const*,size_t) ;
+ size_t strlen (char const*) ;
+ scalar_t__ strncasecmp (char const*,char*,size_t) ;
 
 __attribute__((used)) static void completionCallback(const char *buf, linenoiseCompletions *lc) {
     size_t startpos = 0;

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int time_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int time_t ;
 struct TYPE_2__ {size_t bytes_written; } ;
 struct Output {TYPE_1__ rotate; } ;
-typedef  enum ApplicationProtocol { ____Placeholder_ApplicationProtocol } ApplicationProtocol ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef enum ApplicationProtocol { ____Placeholder_ApplicationProtocol } ApplicationProtocol ;
+typedef int FILE ;
 
-/* Variables and functions */
- unsigned char Out_Banner9 ; 
- int /*<<< orphan*/  UNUSEDPARM (struct Output*) ; 
- int /*<<< orphan*/  exit (int) ; 
- size_t fwrite (unsigned char**,int,unsigned int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memcpy (unsigned char*,unsigned char const*,unsigned int) ; 
- int /*<<< orphan*/  perror (char*) ; 
+
+ unsigned char Out_Banner9 ;
+ int UNUSEDPARM (struct Output*) ;
+ int exit (int) ;
+ size_t fwrite (unsigned char**,int,unsigned int,int *) ;
+ int memcpy (unsigned char*,unsigned char const*,unsigned int) ;
+ int perror (char*) ;
 
 __attribute__((used)) static void
 binary_out_banner(struct Output *out, FILE *fp, time_t timestamp,
@@ -38,10 +38,10 @@ binary_out_banner(struct Output *out, FILE *fp, time_t timestamp,
 
     UNUSEDPARM(out);
 
-    /* [TYPE] field */
-    foo[0] = Out_Banner9; /*banner*/
 
-    /* [LENGTH] field*/
+    foo[0] = Out_Banner9;
+
+
     if (length >= 128 * 128 - HeaderLength)
         return;
     if (length < 128 - HeaderLength) {
@@ -53,7 +53,7 @@ binary_out_banner(struct Output *out, FILE *fp, time_t timestamp,
         i = 3;
     }
 
-    /* [TIMESTAMP] field */
+
     foo[i+0] = (unsigned char)(timestamp>>24);
     foo[i+1] = (unsigned char)(timestamp>>16);
     foo[i+2] = (unsigned char)(timestamp>> 8);
@@ -74,7 +74,7 @@ binary_out_banner(struct Output *out, FILE *fp, time_t timestamp,
 
     foo[i+13] = (unsigned char)(ttl);
 
-    /* Banner */
+
     memcpy(foo+i+14, px, length);
 
 

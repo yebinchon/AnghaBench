@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ef4_nic {int port_enabled; int /*<<< orphan*/  mac_work; int /*<<< orphan*/  monitor_work; int /*<<< orphan*/  net_dev; int /*<<< orphan*/  mac_lock; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EF4_ASSERT_RESET_SERIALISED (struct ef4_nic*) ; 
- int /*<<< orphan*/  cancel_delayed_work_sync (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cancel_work_sync (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ef4_selftest_async_cancel (struct ef4_nic*) ; 
- int /*<<< orphan*/  ifdown ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  netif_addr_lock_bh (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  netif_addr_unlock_bh (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  netif_dbg (struct ef4_nic*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
+
+
+
+struct ef4_nic {int port_enabled; int mac_work; int monitor_work; int net_dev; int mac_lock; } ;
+
+
+ int EF4_ASSERT_RESET_SERIALISED (struct ef4_nic*) ;
+ int cancel_delayed_work_sync (int *) ;
+ int cancel_work_sync (int *) ;
+ int ef4_selftest_async_cancel (struct ef4_nic*) ;
+ int ifdown ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
+ int netif_addr_lock_bh (int ) ;
+ int netif_addr_unlock_bh (int ) ;
+ int netif_dbg (struct ef4_nic*,int ,int ,char*) ;
 
 __attribute__((used)) static void ef4_stop_port(struct ef4_nic *efx)
 {
-	netif_dbg(efx, ifdown, efx->net_dev, "stop port\n");
+ netif_dbg(efx, ifdown, efx->net_dev, "stop port\n");
 
-	EF4_ASSERT_RESET_SERIALISED(efx);
+ EF4_ASSERT_RESET_SERIALISED(efx);
 
-	mutex_lock(&efx->mac_lock);
-	efx->port_enabled = false;
-	mutex_unlock(&efx->mac_lock);
+ mutex_lock(&efx->mac_lock);
+ efx->port_enabled = 0;
+ mutex_unlock(&efx->mac_lock);
 
-	/* Serialise against ef4_set_multicast_list() */
-	netif_addr_lock_bh(efx->net_dev);
-	netif_addr_unlock_bh(efx->net_dev);
 
-	cancel_delayed_work_sync(&efx->monitor_work);
-	ef4_selftest_async_cancel(efx);
-	cancel_work_sync(&efx->mac_work);
+ netif_addr_lock_bh(efx->net_dev);
+ netif_addr_unlock_bh(efx->net_dev);
+
+ cancel_delayed_work_sync(&efx->monitor_work);
+ ef4_selftest_async_cancel(efx);
+ cancel_work_sync(&efx->mac_work);
 }

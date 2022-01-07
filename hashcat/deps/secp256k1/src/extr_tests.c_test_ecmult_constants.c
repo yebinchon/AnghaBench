@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  secp256k1_scalar ;
-typedef  int /*<<< orphan*/  secp256k1_gej ;
-typedef  int /*<<< orphan*/  secp256k1_ge ;
-struct TYPE_2__ {int /*<<< orphan*/  ecmult_gen_ctx; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHECK (int /*<<< orphan*/ ) ; 
- TYPE_1__* ctx ; 
- int /*<<< orphan*/  ge_equals_gej (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  secp256k1_ecmult_gen (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  secp256k1_ge_const_g ; 
- int /*<<< orphan*/  secp256k1_ge_neg (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  secp256k1_gej_add_ge (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  secp256k1_gej_is_infinity (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  secp256k1_scalar_negate (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  secp256k1_scalar_set_int (int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int secp256k1_scalar ;
+typedef int secp256k1_gej ;
+typedef int secp256k1_ge ;
+struct TYPE_2__ {int ecmult_gen_ctx; } ;
+
+
+ int CHECK (int ) ;
+ TYPE_1__* ctx ;
+ int ge_equals_gej (int *,int *) ;
+ int secp256k1_ecmult_gen (int *,int *,int *) ;
+ int secp256k1_ge_const_g ;
+ int secp256k1_ge_neg (int *,int *) ;
+ int secp256k1_gej_add_ge (int *,int *,int *) ;
+ int secp256k1_gej_is_infinity (int *) ;
+ int secp256k1_scalar_negate (int *,int *) ;
+ int secp256k1_scalar_set_int (int *,int) ;
 
 void test_ecmult_constants(void) {
-    /* Test ecmult_gen() for [0..36) and [order-36..0). */
+
     secp256k1_scalar x;
     secp256k1_gej r;
     secp256k1_ge ng;

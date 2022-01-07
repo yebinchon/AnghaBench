@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct inferior_status {int /*<<< orphan*/  registers; } ;
-typedef  int /*<<< orphan*/  LONGEST ;
 
-/* Variables and functions */
- int DEPRECATED_REGISTER_RAW_SIZE (int) ; 
- void* alloca (int) ; 
- int /*<<< orphan*/  regcache_raw_write (int /*<<< orphan*/ ,int,void*) ; 
- int /*<<< orphan*/  store_signed_integer (void*,int,int /*<<< orphan*/ ) ; 
+
+
+
+struct inferior_status {int registers; } ;
+typedef int LONGEST ;
+
+
+ int DEPRECATED_REGISTER_RAW_SIZE (int) ;
+ void* alloca (int) ;
+ int regcache_raw_write (int ,int,void*) ;
+ int store_signed_integer (void*,int,int ) ;
 
 void
 write_inferior_status_register (struct inferior_status *inf_status, int regno,
-				LONGEST val)
+    LONGEST val)
 {
   int size = DEPRECATED_REGISTER_RAW_SIZE (regno);
   void *buf = alloca (size);

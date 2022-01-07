@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ v8u16 ;
-typedef  scalar_t__ v8i16 ;
-typedef  int /*<<< orphan*/  v16u8 ;
-typedef  int /*<<< orphan*/  v16i8 ;
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int /*<<< orphan*/  int32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DOTP_UB2_UH (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  ILVR_D2_UB (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LD_SB (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LD_UB5 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MUL2 (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  ST_H4 (scalar_t__,int /*<<< orphan*/ ,int,int,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  VSHF_B2_UB (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  __msa_fill_b (int /*<<< orphan*/ ) ; 
- scalar_t__ __msa_fill_h (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  __msa_ilvr_b (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ __msa_pckev_b (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ __msa_sat_u_h (scalar_t__,int) ; 
- scalar_t__ __msa_srari_h (scalar_t__,int) ; 
- int /*<<< orphan*/ * chroma_mask_arr ; 
+
+
+
+typedef scalar_t__ v8u16 ;
+typedef scalar_t__ v8i16 ;
+typedef int v16u8 ;
+typedef int v16i8 ;
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef int int32_t ;
+
+
+ int DOTP_UB2_UH (int ,int ,int ,int ,scalar_t__,scalar_t__) ;
+ int ILVR_D2_UB (int ,int ,int ,int ,int ,int ) ;
+ int LD_SB (int *) ;
+ int LD_UB5 (int *,int ,int ,int ,int ,int ,int ) ;
+ int MUL2 (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ int ST_H4 (scalar_t__,int ,int,int,int,int *,int ) ;
+ int VSHF_B2_UB (int ,int ,int ,int ,int ,int ,int ,int ) ;
+ int __msa_fill_b (int ) ;
+ scalar_t__ __msa_fill_h (int ) ;
+ int __msa_ilvr_b (int ,int ) ;
+ scalar_t__ __msa_pckev_b (int ,int ) ;
+ scalar_t__ __msa_sat_u_h (scalar_t__,int) ;
+ scalar_t__ __msa_srari_h (scalar_t__,int) ;
+ int * chroma_mask_arr ;
 
 __attribute__((used)) static void avc_chroma_hv_2x4_msa(uint8_t *src, uint8_t *dst, int32_t stride,
                                   uint32_t coef_hor0, uint32_t coef_hor1,

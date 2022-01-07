@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * class; int /*<<< orphan*/ * parent; int /*<<< orphan*/ * type; } ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * class; int * parent; int * type; } ;
 struct iio_ring_buffer {TYPE_1__ dev; } ;
 struct iio_sw_ring_buffer {struct iio_ring_buffer buf; } ;
-struct iio_dev {int /*<<< orphan*/  dev; } ;
+struct iio_dev {int dev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  dev_set_drvdata (TYPE_1__*,void*) ; 
- int /*<<< orphan*/  device_initialize (TYPE_1__*) ; 
- int /*<<< orphan*/  iio_class ; 
- int /*<<< orphan*/  iio_ring_buffer_init (struct iio_ring_buffer*,struct iio_dev*) ; 
- int /*<<< orphan*/  iio_sw_ring_type ; 
- struct iio_sw_ring_buffer* kzalloc (int,int /*<<< orphan*/ ) ; 
+
+ int GFP_KERNEL ;
+ int dev_set_drvdata (TYPE_1__*,void*) ;
+ int device_initialize (TYPE_1__*) ;
+ int iio_class ;
+ int iio_ring_buffer_init (struct iio_ring_buffer*,struct iio_dev*) ;
+ int iio_sw_ring_type ;
+ struct iio_sw_ring_buffer* kzalloc (int,int ) ;
 
 struct iio_ring_buffer *iio_sw_rb_allocate(struct iio_dev *indio_dev)
 {
-	struct iio_ring_buffer *buf;
-	struct iio_sw_ring_buffer *ring;
+ struct iio_ring_buffer *buf;
+ struct iio_sw_ring_buffer *ring;
 
-	ring = kzalloc(sizeof *ring, GFP_KERNEL);
-	if (!ring)
-		return 0;
-	buf = &ring->buf;
+ ring = kzalloc(sizeof *ring, GFP_KERNEL);
+ if (!ring)
+  return 0;
+ buf = &ring->buf;
 
-	iio_ring_buffer_init(buf, indio_dev);
-	buf->dev.type = &iio_sw_ring_type;
-	device_initialize(&buf->dev);
-	buf->dev.parent = &indio_dev->dev;
-	buf->dev.class = &iio_class;
-	dev_set_drvdata(&buf->dev, (void *)buf);
+ iio_ring_buffer_init(buf, indio_dev);
+ buf->dev.type = &iio_sw_ring_type;
+ device_initialize(&buf->dev);
+ buf->dev.parent = &indio_dev->dev;
+ buf->dev.class = &iio_class;
+ dev_set_drvdata(&buf->dev, (void *)buf);
 
-	return buf;
+ return buf;
 }

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {scalar_t__ level; int enable; int /*<<< orphan*/  raw; } ;
 
-/* Variables and functions */
- TYPE_1__ backlight_config ; 
- int /*<<< orphan*/  backlight_set (scalar_t__) ; 
- int /*<<< orphan*/  dprintf (char*,scalar_t__) ; 
- int /*<<< orphan*/  eeconfig_update_backlight (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {scalar_t__ level; int enable; int raw; } ;
+
+
+ TYPE_1__ backlight_config ;
+ int backlight_set (scalar_t__) ;
+ int dprintf (char*,scalar_t__) ;
+ int eeconfig_update_backlight (int ) ;
 
 void backlight_decrease(void) {
     if (backlight_config.level > 0) {

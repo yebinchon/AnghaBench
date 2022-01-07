@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int ndimensions; int nentries; int* lens; int lookup; int* quantlist; int seq_p; int /*<<< orphan*/  delta; int /*<<< orphan*/  min; } ;
-typedef  TYPE_1__ vorbis_enc_codebook ;
-typedef  int /*<<< orphan*/  PutBitContext ;
 
-/* Variables and functions */
- int FFMAX (int,int) ; 
- int cb_lookup_vals (int,int,int) ; 
- int ilog (int) ; 
- int /*<<< orphan*/  put_bits (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  put_float (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int ndimensions; int nentries; int* lens; int lookup; int* quantlist; int seq_p; int delta; int min; } ;
+typedef TYPE_1__ vorbis_enc_codebook ;
+typedef int PutBitContext ;
+
+
+ int FFMAX (int,int) ;
+ int cb_lookup_vals (int,int,int) ;
+ int ilog (int) ;
+ int put_bits (int *,int,int) ;
+ int put_float (int *,int ) ;
 
 __attribute__((used)) static void put_codebook_header(PutBitContext *pb, vorbis_enc_codebook *cb)
 {
     int i;
     int ordered = 0;
 
-    put_bits(pb, 24, 0x564342); //magic
+    put_bits(pb, 24, 0x564342);
     put_bits(pb, 16, cb->ndimensions);
     put_bits(pb, 24, cb->nentries);
 
@@ -70,7 +70,7 @@ __attribute__((used)) static void put_codebook_header(PutBitContext *pb, vorbis_
 
     put_bits(pb, 4, cb->lookup);
     if (cb->lookup) {
-        int tmp  = cb_lookup_vals(cb->lookup, cb->ndimensions, cb->nentries);
+        int tmp = cb_lookup_vals(cb->lookup, cb->ndimensions, cb->nentries);
         int bits = ilog(cb->quantlist[0]);
 
         for (i = 1; i < tmp; i++)

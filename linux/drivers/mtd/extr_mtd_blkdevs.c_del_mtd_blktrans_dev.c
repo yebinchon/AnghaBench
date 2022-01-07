@@ -1,81 +1,81 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct mtd_blktrans_dev {int /*<<< orphan*/  lock; int /*<<< orphan*/ * mtd; TYPE_1__* tr; scalar_t__ open; TYPE_3__* rq; int /*<<< orphan*/  queue_lock; int /*<<< orphan*/  disk; scalar_t__ disk_attributes; } ;
-struct TYPE_9__ {int /*<<< orphan*/ * queuedata; } ;
-struct TYPE_8__ {int /*<<< orphan*/  kobj; } ;
-struct TYPE_7__ {int /*<<< orphan*/  (* release ) (struct mtd_blktrans_dev*) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BUG () ; 
- int /*<<< orphan*/  __put_mtd_device (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  blk_mq_freeze_queue (TYPE_3__*) ; 
- int /*<<< orphan*/  blk_mq_quiesce_queue (TYPE_3__*) ; 
- int /*<<< orphan*/  blk_mq_unfreeze_queue (TYPE_3__*) ; 
- int /*<<< orphan*/  blk_mq_unquiesce_queue (TYPE_3__*) ; 
- int /*<<< orphan*/  blktrans_dev_put (struct mtd_blktrans_dev*) ; 
- int /*<<< orphan*/  del_gendisk (int /*<<< orphan*/ ) ; 
- TYPE_2__* disk_to_dev (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mtd_table_mutex ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- scalar_t__ mutex_trylock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  stub1 (struct mtd_blktrans_dev*) ; 
- int /*<<< orphan*/  sysfs_remove_group (int /*<<< orphan*/ *,scalar_t__) ; 
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct mtd_blktrans_dev {int lock; int * mtd; TYPE_1__* tr; scalar_t__ open; TYPE_3__* rq; int queue_lock; int disk; scalar_t__ disk_attributes; } ;
+struct TYPE_9__ {int * queuedata; } ;
+struct TYPE_8__ {int kobj; } ;
+struct TYPE_7__ {int (* release ) (struct mtd_blktrans_dev*) ;} ;
+
+
+ int BUG () ;
+ int __put_mtd_device (int *) ;
+ int blk_mq_freeze_queue (TYPE_3__*) ;
+ int blk_mq_quiesce_queue (TYPE_3__*) ;
+ int blk_mq_unfreeze_queue (TYPE_3__*) ;
+ int blk_mq_unquiesce_queue (TYPE_3__*) ;
+ int blktrans_dev_put (struct mtd_blktrans_dev*) ;
+ int del_gendisk (int ) ;
+ TYPE_2__* disk_to_dev (int ) ;
+ int mtd_table_mutex ;
+ int mutex_lock (int *) ;
+ scalar_t__ mutex_trylock (int *) ;
+ int mutex_unlock (int *) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
+ int stub1 (struct mtd_blktrans_dev*) ;
+ int sysfs_remove_group (int *,scalar_t__) ;
 
 int del_mtd_blktrans_dev(struct mtd_blktrans_dev *old)
 {
-	unsigned long flags;
+ unsigned long flags;
 
-	if (mutex_trylock(&mtd_table_mutex)) {
-		mutex_unlock(&mtd_table_mutex);
-		BUG();
-	}
+ if (mutex_trylock(&mtd_table_mutex)) {
+  mutex_unlock(&mtd_table_mutex);
+  BUG();
+ }
 
-	if (old->disk_attributes)
-		sysfs_remove_group(&disk_to_dev(old->disk)->kobj,
-						old->disk_attributes);
+ if (old->disk_attributes)
+  sysfs_remove_group(&disk_to_dev(old->disk)->kobj,
+      old->disk_attributes);
 
-	/* Stop new requests to arrive */
-	del_gendisk(old->disk);
 
-	/* Kill current requests */
-	spin_lock_irqsave(&old->queue_lock, flags);
-	old->rq->queuedata = NULL;
-	spin_unlock_irqrestore(&old->queue_lock, flags);
+ del_gendisk(old->disk);
 
-	/* freeze+quiesce queue to ensure all requests are flushed */
-	blk_mq_freeze_queue(old->rq);
-	blk_mq_quiesce_queue(old->rq);
-	blk_mq_unquiesce_queue(old->rq);
-	blk_mq_unfreeze_queue(old->rq);
 
-	/* If the device is currently open, tell trans driver to close it,
-		then put mtd device, and don't touch it again */
-	mutex_lock(&old->lock);
-	if (old->open) {
-		if (old->tr->release)
-			old->tr->release(old);
-		__put_mtd_device(old->mtd);
-	}
+ spin_lock_irqsave(&old->queue_lock, flags);
+ old->rq->queuedata = ((void*)0);
+ spin_unlock_irqrestore(&old->queue_lock, flags);
 
-	old->mtd = NULL;
 
-	mutex_unlock(&old->lock);
-	blktrans_dev_put(old);
-	return 0;
+ blk_mq_freeze_queue(old->rq);
+ blk_mq_quiesce_queue(old->rq);
+ blk_mq_unquiesce_queue(old->rq);
+ blk_mq_unfreeze_queue(old->rq);
+
+
+
+ mutex_lock(&old->lock);
+ if (old->open) {
+  if (old->tr->release)
+   old->tr->release(old);
+  __put_mtd_device(old->mtd);
+ }
+
+ old->mtd = ((void*)0);
+
+ mutex_unlock(&old->lock);
+ blktrans_dev_put(old);
+ return 0;
 }

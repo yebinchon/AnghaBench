@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  enum AVPixelFormat { ____Placeholder_AVPixelFormat } AVPixelFormat ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef enum AVPixelFormat { ____Placeholder_AVPixelFormat } AVPixelFormat ;
 struct TYPE_4__ {scalar_t__ nb_components; } ;
-typedef  TYPE_1__ AVPixFmtDescriptor ;
+typedef TYPE_1__ AVPixFmtDescriptor ;
 
-/* Variables and functions */
- int FF_LOSS_ALPHA ; 
- scalar_t__ av_get_padded_bits_per_pixel (TYPE_1__ const*) ; 
- int av_get_pix_fmt_loss (int,int,int) ; 
- TYPE_1__* av_pix_fmt_desc_get (int) ; 
- int get_pix_fmt_score (int,int,int*,int) ; 
+
+ int FF_LOSS_ALPHA ;
+ scalar_t__ av_get_padded_bits_per_pixel (TYPE_1__ const*) ;
+ int av_get_pix_fmt_loss (int,int,int) ;
+ TYPE_1__* av_pix_fmt_desc_get (int) ;
+ int get_pix_fmt_score (int,int,int*,int) ;
 
 enum AVPixelFormat av_find_best_pix_fmt_of_2(enum AVPixelFormat dst_pix_fmt1, enum AVPixelFormat dst_pix_fmt2,
                                              enum AVPixelFormat src_pix_fmt, int has_alpha, int *loss_ptr)
@@ -36,7 +36,7 @@ enum AVPixelFormat av_find_best_pix_fmt_of_2(enum AVPixelFormat dst_pix_fmt1, en
     } else if (!desc2) {
         dst_pix_fmt = dst_pix_fmt1;
     } else {
-        loss_mask= loss_ptr?~*loss_ptr:~0; /* use loss mask if provided */
+        loss_mask= loss_ptr?~*loss_ptr:~0;
         if(!has_alpha)
             loss_mask &= ~FF_LOSS_ALPHA;
 

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct dma_pool {int /*<<< orphan*/  nfrees; int /*<<< orphan*/  npages_free; } ;
 
-/* Variables and functions */
+
+
+
+struct dma_pool {int nfrees; int npages_free; } ;
+
+
 
 __attribute__((used)) static void ttm_pool_update_free_locked(struct dma_pool *pool,
-					unsigned freed_pages)
+     unsigned freed_pages)
 {
-	pool->npages_free -= freed_pages;
-	pool->nfrees += freed_pages;
+ pool->npages_free -= freed_pages;
+ pool->nfrees += freed_pages;
 
 }

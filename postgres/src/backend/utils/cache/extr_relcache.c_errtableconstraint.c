@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Relation ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PG_DIAG_CONSTRAINT_NAME ; 
- int /*<<< orphan*/  err_generic_string (int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  errtable (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int Relation ;
+
+
+ int PG_DIAG_CONSTRAINT_NAME ;
+ int err_generic_string (int ,char const*) ;
+ int errtable (int ) ;
 
 int
 errtableconstraint(Relation rel, const char *conname)
 {
-	errtable(rel);
-	err_generic_string(PG_DIAG_CONSTRAINT_NAME, conname);
+ errtable(rel);
+ err_generic_string(PG_DIAG_CONSTRAINT_NAME, conname);
 
-	return 0;					/* return value does not matter */
+ return 0;
 }

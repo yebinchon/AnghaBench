@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  hdr ;
-typedef  int /*<<< orphan*/  buf ;
+
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int hdr ;
+typedef int buf ;
 struct TYPE_8__ {void* dwAddrMaskReps; void* dwAddrMasks; void* dwTimestampReps; void* dwTimestamps; void* dwEchoReps; void* dwRedirects; void* dwSrcQuenchs; void* dwParmProbs; void* dwTimeExcds; void* dwDestUnreachs; void* dwErrors; void* dwMsgs; } ;
 struct TYPE_7__ {void* dwAddrMaskReps; void* dwAddrMasks; void* dwTimestampReps; void* dwTimestamps; void* dwEchoReps; void* dwRedirects; void* dwSrcQuenchs; void* dwParmProbs; void* dwTimeExcds; void* dwDestUnreachs; void* dwErrors; void* dwMsgs; } ;
 struct TYPE_9__ {TYPE_2__ icmpOutStats; TYPE_1__ icmpInStats; } ;
 struct TYPE_10__ {TYPE_3__ stats; } ;
-typedef  TYPE_4__ MIB_ICMP ;
-typedef  int /*<<< orphan*/  FILE ;
-typedef  int /*<<< orphan*/  DWORD ;
+typedef TYPE_4__ MIB_ICMP ;
+typedef int FILE ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERROR_INVALID_PARAMETER ; 
- int /*<<< orphan*/  NO_ERROR ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- char* fgets (char*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  memset (TYPE_4__*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ strncasecmp (char*,char const*,int) ; 
- void* strtoul (char*,char**,int) ; 
+
+ int ERROR_INVALID_PARAMETER ;
+ int NO_ERROR ;
+ int fclose (int *) ;
+ char* fgets (char*,int,int *) ;
+ int * fopen (char*,char*) ;
+ int memset (TYPE_4__*,int ,int) ;
+ scalar_t__ strncasecmp (char*,char const*,int) ;
+ void* strtoul (char*,char**,int) ;
 
 DWORD getICMPStats(MIB_ICMP *stats)
 {
@@ -42,7 +42,7 @@ DWORD getICMPStats(MIB_ICMP *stats)
     return ERROR_INVALID_PARAMETER;
 
   memset(stats, 0, sizeof(MIB_ICMP));
-  /* get most of these stats from /proc/net/snmp, no error if can't */
+
   fp = fopen("/proc/net/snmp", "r");
   if (fp) {
     const char hdr[] = "Icmp:";
@@ -52,7 +52,7 @@ DWORD getICMPStats(MIB_ICMP *stats)
       ptr = fgets(buf, sizeof(buf), fp);
     } while (ptr && strncasecmp(buf, hdr, sizeof(hdr) - 1));
     if (ptr) {
-      /* last line was a header, get another */
+
       ptr = fgets(buf, sizeof(buf), fp);
       if (ptr && strncasecmp(buf, hdr, sizeof(hdr) - 1) == 0) {
         char *endPtr;

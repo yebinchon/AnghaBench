@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  id; int /*<<< orphan*/  bus_track; int /*<<< orphan*/  manager; scalar_t__ in_dbus_queue; int /*<<< orphan*/  sent_dbus_new_signal; } ;
-typedef  TYPE_1__ Unit ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int bus_foreach_bus (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  bus_unit_send_change_signal (TYPE_1__*) ; 
- int /*<<< orphan*/  log_unit_debug_errno (TYPE_1__*,int,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  send_removed_signal ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int id; int bus_track; int manager; scalar_t__ in_dbus_queue; int sent_dbus_new_signal; } ;
+typedef TYPE_1__ Unit ;
+
+
+ int assert (TYPE_1__*) ;
+ int bus_foreach_bus (int ,int ,int ,TYPE_1__*) ;
+ int bus_unit_send_change_signal (TYPE_1__*) ;
+ int log_unit_debug_errno (TYPE_1__*,int,char*,int ) ;
+ int send_removed_signal ;
 
 void bus_unit_send_removed_signal(Unit *u) {
         int r;

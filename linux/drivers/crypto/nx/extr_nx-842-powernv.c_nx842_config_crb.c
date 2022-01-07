@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u64 ;
+
+
+
+
+typedef int u64 ;
 struct coprocessor_status_block {int dummy; } ;
-struct coprocessor_request_block {int /*<<< orphan*/  csb_addr; int /*<<< orphan*/  target; int /*<<< orphan*/  source; struct coprocessor_status_block csb; } ;
-struct nx842_workmem {int /*<<< orphan*/  ddl_out; int /*<<< orphan*/  ddl_in; struct coprocessor_request_block crb; } ;
+struct coprocessor_request_block {int csb_addr; int target; int source; struct coprocessor_status_block csb; } ;
+struct nx842_workmem {int ddl_out; int ddl_in; struct coprocessor_request_block crb; } ;
 
-/* Variables and functions */
- int CRB_CSB_ADDRESS ; 
- int CRB_CSB_AT ; 
- int /*<<< orphan*/  cpu_to_be64 (int) ; 
- int /*<<< orphan*/  memset (struct coprocessor_request_block*,int /*<<< orphan*/ ,int) ; 
- int nx842_get_pa (struct coprocessor_status_block*) ; 
- int setup_ddl (int /*<<< orphan*/ *,int /*<<< orphan*/ ,unsigned char*,unsigned int,int) ; 
+
+ int CRB_CSB_ADDRESS ;
+ int CRB_CSB_AT ;
+ int cpu_to_be64 (int) ;
+ int memset (struct coprocessor_request_block*,int ,int) ;
+ int nx842_get_pa (struct coprocessor_status_block*) ;
+ int setup_ddl (int *,int ,unsigned char*,unsigned int,int) ;
 
 __attribute__((used)) static int nx842_config_crb(const unsigned char *in, unsigned int inlen,
-			unsigned char *out, unsigned int outlen,
-			struct nx842_workmem *wmem)
+   unsigned char *out, unsigned int outlen,
+   struct nx842_workmem *wmem)
 {
-	struct coprocessor_request_block *crb;
-	struct coprocessor_status_block *csb;
-	u64 csb_addr;
-	int ret;
+ struct coprocessor_request_block *crb;
+ struct coprocessor_status_block *csb;
+ u64 csb_addr;
+ int ret;
 
-	crb = &wmem->crb;
-	csb = &crb->csb;
+ crb = &wmem->crb;
+ csb = &crb->csb;
 
-	/* Clear any previous values */
-	memset(crb, 0, sizeof(*crb));
 
-	/* set up DDLs */
-	ret = setup_ddl(&crb->source, wmem->ddl_in,
-			(unsigned char *)in, inlen, true);
-	if (ret)
-		return ret;
+ memset(crb, 0, sizeof(*crb));
 
-	ret = setup_ddl(&crb->target, wmem->ddl_out,
-			out, outlen, false);
-	if (ret)
-		return ret;
 
-	/* set up CRB's CSB addr */
-	csb_addr = nx842_get_pa(csb) & CRB_CSB_ADDRESS;
-	csb_addr |= CRB_CSB_AT; /* Addrs are phys */
-	crb->csb_addr = cpu_to_be64(csb_addr);
+ ret = setup_ddl(&crb->source, wmem->ddl_in,
+   (unsigned char *)in, inlen, 1);
+ if (ret)
+  return ret;
 
-	return 0;
+ ret = setup_ddl(&crb->target, wmem->ddl_out,
+   out, outlen, 0);
+ if (ret)
+  return ret;
+
+
+ csb_addr = nx842_get_pa(csb) & CRB_CSB_ADDRESS;
+ csb_addr |= CRB_CSB_AT;
+ crb->csb_addr = cpu_to_be64(csb_addr);
+
+ return 0;
 }

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  devlinks; int /*<<< orphan*/  tags; int /*<<< orphan*/  sysattrs; int /*<<< orphan*/  sysattr_values; int /*<<< orphan*/  properties_db; int /*<<< orphan*/  properties; int /*<<< orphan*/  properties_nulstr; int /*<<< orphan*/  properties_strv; int /*<<< orphan*/  id_filename; int /*<<< orphan*/  driver; int /*<<< orphan*/  driver_subsystem; int /*<<< orphan*/  subsystem; int /*<<< orphan*/  devname; int /*<<< orphan*/  devtype; int /*<<< orphan*/  sysname; int /*<<< orphan*/  syspath; int /*<<< orphan*/  parent; } ;
-typedef  TYPE_1__ sd_device ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hashmap_free_free_free (int /*<<< orphan*/ ) ; 
- TYPE_1__* mfree (TYPE_1__*) ; 
- int /*<<< orphan*/  ordered_hashmap_free_free_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sd_device_unref (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_free_free (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int devlinks; int tags; int sysattrs; int sysattr_values; int properties_db; int properties; int properties_nulstr; int properties_strv; int id_filename; int driver; int driver_subsystem; int subsystem; int devname; int devtype; int sysname; int syspath; int parent; } ;
+typedef TYPE_1__ sd_device ;
+
+
+ int assert (TYPE_1__*) ;
+ int free (int ) ;
+ int hashmap_free_free_free (int ) ;
+ TYPE_1__* mfree (TYPE_1__*) ;
+ int ordered_hashmap_free_free_free (int ) ;
+ int sd_device_unref (int ) ;
+ int set_free_free (int ) ;
 
 __attribute__((used)) static sd_device *device_free(sd_device *device) {
         assert(device);

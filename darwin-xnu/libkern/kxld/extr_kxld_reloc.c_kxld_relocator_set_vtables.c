@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  const* vtables; } ;
-typedef  TYPE_1__ KXLDRelocator ;
-typedef  int /*<<< orphan*/  KXLDDict ;
 
-/* Variables and functions */
 
-void 
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int const* vtables; } ;
+typedef TYPE_1__ KXLDRelocator ;
+typedef int KXLDDict ;
+
+
+
+void
 kxld_relocator_set_vtables(KXLDRelocator *relocator, const KXLDDict *vtables)
 {
     relocator->vtables = vtables;

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct tpiu_drvdata {int /*<<< orphan*/  base; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CS_LOCK (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CS_UNLOCK (int /*<<< orphan*/ ) ; 
+
+
+
+struct tpiu_drvdata {int base; } ;
+
+
+ int CS_LOCK (int ) ;
+ int CS_UNLOCK (int ) ;
 
 __attribute__((used)) static void tpiu_enable_hw(struct tpiu_drvdata *drvdata)
 {
-	CS_UNLOCK(drvdata->base);
+ CS_UNLOCK(drvdata->base);
 
-	/* TODO: fill this up */
 
-	CS_LOCK(drvdata->base);
+
+ CS_LOCK(drvdata->base);
 }

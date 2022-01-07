@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  enum recorder_format { ____Placeholder_recorder_format } recorder_format ;
 
-/* Variables and functions */
- int RECORDER_FORMAT_MKV ; 
- int RECORDER_FORMAT_MP4 ; 
- int /*<<< orphan*/  strcmp (char const*,char*) ; 
- size_t strlen (char const*) ; 
+
+
+
+typedef enum recorder_format { ____Placeholder_recorder_format } recorder_format ;
+
+
+ int RECORDER_FORMAT_MKV ;
+ int RECORDER_FORMAT_MP4 ;
+ int strcmp (char const*,char*) ;
+ size_t strlen (char const*) ;
 
 __attribute__((used)) static enum recorder_format
 guess_record_format(const char *filename) {

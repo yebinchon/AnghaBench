@@ -1,71 +1,63 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct hlsl_ir_node {int type; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FIXME (char*,int /*<<< orphan*/ ) ; 
-#define  HLSL_IR_ASSIGNMENT 135 
-#define  HLSL_IR_CONSTANT 134 
-#define  HLSL_IR_CONSTRUCTOR 133 
-#define  HLSL_IR_DEREF 132 
-#define  HLSL_IR_EXPR 131 
-#define  HLSL_IR_IF 130 
-#define  HLSL_IR_JUMP 129 
-#define  HLSL_IR_SWIZZLE 128 
- int /*<<< orphan*/  assignment_from_node (struct hlsl_ir_node*) ; 
- int /*<<< orphan*/  constant_from_node (struct hlsl_ir_node*) ; 
- int /*<<< orphan*/  constructor_from_node (struct hlsl_ir_node*) ; 
- int /*<<< orphan*/  debug_node_type (int) ; 
- int /*<<< orphan*/  deref_from_node (struct hlsl_ir_node*) ; 
- int /*<<< orphan*/  expr_from_node (struct hlsl_ir_node*) ; 
- int /*<<< orphan*/  free_ir_assignment (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free_ir_constant (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free_ir_constructor (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free_ir_deref (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free_ir_expr (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free_ir_if (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free_ir_jump (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free_ir_swizzle (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  if_from_node (struct hlsl_ir_node*) ; 
- int /*<<< orphan*/  jump_from_node (struct hlsl_ir_node*) ; 
- int /*<<< orphan*/  swizzle_from_node (struct hlsl_ir_node*) ; 
+
+ int FIXME (char*,int ) ;
+ int assignment_from_node (struct hlsl_ir_node*) ;
+ int constant_from_node (struct hlsl_ir_node*) ;
+ int constructor_from_node (struct hlsl_ir_node*) ;
+ int debug_node_type (int) ;
+ int deref_from_node (struct hlsl_ir_node*) ;
+ int expr_from_node (struct hlsl_ir_node*) ;
+ int free_ir_assignment (int ) ;
+ int free_ir_constant (int ) ;
+ int free_ir_constructor (int ) ;
+ int free_ir_deref (int ) ;
+ int free_ir_expr (int ) ;
+ int free_ir_if (int ) ;
+ int free_ir_jump (int ) ;
+ int free_ir_swizzle (int ) ;
+ int if_from_node (struct hlsl_ir_node*) ;
+ int jump_from_node (struct hlsl_ir_node*) ;
+ int swizzle_from_node (struct hlsl_ir_node*) ;
 
 void free_instr(struct hlsl_ir_node *node)
 {
     switch (node->type)
     {
-        case HLSL_IR_CONSTANT:
+        case 134:
             free_ir_constant(constant_from_node(node));
             break;
-        case HLSL_IR_DEREF:
+        case 132:
             free_ir_deref(deref_from_node(node));
             break;
-        case HLSL_IR_SWIZZLE:
+        case 128:
             free_ir_swizzle(swizzle_from_node(node));
             break;
-        case HLSL_IR_CONSTRUCTOR:
+        case 133:
             free_ir_constructor(constructor_from_node(node));
             break;
-        case HLSL_IR_EXPR:
+        case 131:
             free_ir_expr(expr_from_node(node));
             break;
-        case HLSL_IR_ASSIGNMENT:
+        case 135:
             free_ir_assignment(assignment_from_node(node));
             break;
-        case HLSL_IR_IF:
+        case 130:
             free_ir_if(if_from_node(node));
             break;
-        case HLSL_IR_JUMP:
+        case 129:
             free_ir_jump(jump_from_node(node));
             break;
         default:

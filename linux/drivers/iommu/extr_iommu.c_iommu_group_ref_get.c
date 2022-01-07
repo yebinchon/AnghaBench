@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct iommu_group {int /*<<< orphan*/  devices_kobj; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  kobject_get (int /*<<< orphan*/ ) ; 
+
+
+
+struct iommu_group {int devices_kobj; } ;
+
+
+ int kobject_get (int ) ;
 
 struct iommu_group *iommu_group_ref_get(struct iommu_group *group)
 {
-	kobject_get(group->devices_kobj);
-	return group;
+ kobject_get(group->devices_kobj);
+ return group;
 }

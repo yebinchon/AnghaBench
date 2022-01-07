@@ -1,62 +1,62 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
 struct hc_status_block_sm {int dummy; } ;
 struct TYPE_5__ {void* lo; void* hi; } ;
-struct TYPE_4__ {int vf_id; void* vnic_id; int /*<<< orphan*/  vf_valid; void* pf_id; } ;
+struct TYPE_4__ {int vf_id; void* vnic_id; int vf_valid; void* pf_id; } ;
 struct TYPE_6__ {struct hc_status_block_sm* state_machine; TYPE_2__ host_sb_addr; void* same_igu_sb_1b; TYPE_1__ p_func; void* state; } ;
-struct hc_status_block_data_e2 {int /*<<< orphan*/  index_data; TYPE_3__ common; } ;
-struct hc_status_block_data_e1x {int /*<<< orphan*/  index_data; TYPE_3__ common; } ;
+struct hc_status_block_data_e2 {int index_data; TYPE_3__ common; } ;
+struct hc_status_block_data_e1x {int index_data; TYPE_3__ common; } ;
 struct bxe_softc {int dummy; } ;
-typedef  int /*<<< orphan*/  bus_addr_t ;
+typedef int bus_addr_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BLOGD (struct bxe_softc*,int /*<<< orphan*/ ,char*,int) ; 
- scalar_t__ CHIP_INT_MODE_IS_BC (struct bxe_softc*) ; 
- int /*<<< orphan*/  CHIP_IS_E1x (struct bxe_softc*) ; 
- int /*<<< orphan*/  DBG_LOAD ; 
- int /*<<< orphan*/  FALSE ; 
- int HC_SEG_ACCESS_NORM ; 
- int IGU_SEG_ACCESS_NORM ; 
- void* SB_ENABLED ; 
- void* SC_FUNC (struct bxe_softc*) ; 
- void* SC_VN (struct bxe_softc*) ; 
- size_t SM_RX_ID ; 
- size_t SM_TX_ID ; 
- void* TRUE ; 
- void* U64_HI (int /*<<< orphan*/ ) ; 
- void* U64_LO (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bxe_map_sb_state_machines (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bxe_setup_ndsb_state_machine (struct hc_status_block_sm*,int,int) ; 
- int /*<<< orphan*/  bxe_wr_fp_sb_data (struct bxe_softc*,int,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  bxe_zero_fp_sb (struct bxe_softc*,int) ; 
- int /*<<< orphan*/  memset (struct hc_status_block_data_e2*,int /*<<< orphan*/ ,int) ; 
+
+ int BLOGD (struct bxe_softc*,int ,char*,int) ;
+ scalar_t__ CHIP_INT_MODE_IS_BC (struct bxe_softc*) ;
+ int CHIP_IS_E1x (struct bxe_softc*) ;
+ int DBG_LOAD ;
+ int FALSE ;
+ int HC_SEG_ACCESS_NORM ;
+ int IGU_SEG_ACCESS_NORM ;
+ void* SB_ENABLED ;
+ void* SC_FUNC (struct bxe_softc*) ;
+ void* SC_VN (struct bxe_softc*) ;
+ size_t SM_RX_ID ;
+ size_t SM_TX_ID ;
+ void* TRUE ;
+ void* U64_HI (int ) ;
+ void* U64_LO (int ) ;
+ int bxe_map_sb_state_machines (int ) ;
+ int bxe_setup_ndsb_state_machine (struct hc_status_block_sm*,int,int) ;
+ int bxe_wr_fp_sb_data (struct bxe_softc*,int,int *,int) ;
+ int bxe_zero_fp_sb (struct bxe_softc*,int) ;
+ int memset (struct hc_status_block_data_e2*,int ,int) ;
 
 __attribute__((used)) static void
 bxe_init_sb(struct bxe_softc *sc,
-            bus_addr_t       busaddr,
-            int              vfid,
-            uint8_t          vf_valid,
-            int              fw_sb_id,
-            int              igu_sb_id)
+            bus_addr_t busaddr,
+            int vfid,
+            uint8_t vf_valid,
+            int fw_sb_id,
+            int igu_sb_id)
 {
-    struct hc_status_block_data_e2  sb_data_e2;
+    struct hc_status_block_data_e2 sb_data_e2;
     struct hc_status_block_data_e1x sb_data_e1x;
-    struct hc_status_block_sm       *hc_sm_p;
+    struct hc_status_block_sm *hc_sm_p;
     uint32_t *sb_data_p;
     int igu_seg_id;
     int data_size;
@@ -106,6 +106,6 @@ bxe_init_sb(struct bxe_softc *sc,
 
     BLOGD(sc, DBG_LOAD, "Init FW SB %d\n", fw_sb_id);
 
-    /* write indices to HW - PCI guarantees endianity of regpairs */
+
     bxe_wr_fp_sb_data(sc, fw_sb_id, sb_data_p, data_size);
 }

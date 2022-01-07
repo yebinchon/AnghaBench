@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint32_t ;
-struct TYPE_2__ {scalar_t__ hash; int /*<<< orphan*/  value; int /*<<< orphan*/ * collected9; scalar_t__ name; } ;
 
-/* Variables and functions */
- TYPE_1__* pairs ; 
- scalar_t__ simple_hash (scalar_t__) ; 
- int /*<<< orphan*/  str2ull (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strcmp (scalar_t__,scalar_t__) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint32_t ;
+struct TYPE_2__ {scalar_t__ hash; int value; int * collected9; scalar_t__ name; } ;
+
+
+ TYPE_1__* pairs ;
+ scalar_t__ simple_hash (scalar_t__) ;
+ int str2ull (int ) ;
+ int strcmp (scalar_t__,scalar_t__) ;
 
 void test9() {
     int i;

@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_6__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  void* int8_t ;
-struct TYPE_11__ {int /*<<< orphan*/  buffer; } ;
-struct TYPE_10__ {int /*<<< orphan*/  avctx; TYPE_6__ gb; int /*<<< orphan*/ * block; } ;
-typedef  TYPE_1__ TgqContext ;
-typedef  int /*<<< orphan*/  GetBitContext ;
-typedef  int /*<<< orphan*/  AVFrame ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  FFMIN (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  bytestream2_get_buffer (TYPE_6__*,void**,int) ; 
- void* bytestream2_get_byte (TYPE_6__*) ; 
- int /*<<< orphan*/  bytestream2_get_bytes_left (TYPE_6__*) ; 
- int /*<<< orphan*/  bytestream2_skip (TYPE_6__*,int) ; 
- int init_get_bits8 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (void**,void*,int) ; 
- int /*<<< orphan*/  tgq_decode_block (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tgq_idct_put_mb (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  tgq_idct_put_mb_dconly (TYPE_1__*,int /*<<< orphan*/ *,int,int,void**) ; 
+
+typedef struct TYPE_11__ TYPE_6__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef void* int8_t ;
+struct TYPE_11__ {int buffer; } ;
+struct TYPE_10__ {int avctx; TYPE_6__ gb; int * block; } ;
+typedef TYPE_1__ TgqContext ;
+typedef int GetBitContext ;
+typedef int AVFrame ;
+
+
+ int AV_LOG_ERROR ;
+ int FFMIN (int ,int) ;
+ int av_log (int ,int ,char*,int) ;
+ int bytestream2_get_buffer (TYPE_6__*,void**,int) ;
+ void* bytestream2_get_byte (TYPE_6__*) ;
+ int bytestream2_get_bytes_left (TYPE_6__*) ;
+ int bytestream2_skip (TYPE_6__*,int) ;
+ int init_get_bits8 (int *,int ,int ) ;
+ int memset (void**,void*,int) ;
+ int tgq_decode_block (TYPE_1__*,int ,int *) ;
+ int tgq_idct_put_mb (TYPE_1__*,int *,int *,int,int) ;
+ int tgq_idct_put_mb_dconly (TYPE_1__*,int *,int,int,void**) ;
 
 __attribute__((used)) static int tgq_decode_mb(TgqContext *s, AVFrame *frame, int mb_y, int mb_x)
 {

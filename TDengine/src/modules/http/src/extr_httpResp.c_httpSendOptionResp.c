@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {size_t httpVersion; size_t httpKeepAlive; } ;
-typedef  TYPE_1__ HttpContext ;
+typedef TYPE_1__ HttpContext ;
 
-/* Variables and functions */
- size_t HTTP_RESPONSE_JSON_OK ; 
- size_t HTTP_RESPONSE_OPTIONS ; 
- int /*<<< orphan*/  HTTP_SUCCESS ; 
- int /*<<< orphan*/  httpCloseContextByApp (TYPE_1__*) ; 
- int /*<<< orphan*/ * httpKeepAliveStr ; 
- char** httpRespTemplate ; 
- int /*<<< orphan*/ * httpVersionStr ; 
- int /*<<< orphan*/  httpWriteBuf (TYPE_1__*,char*,int) ; 
- int sprintf (char*,char*,int /*<<< orphan*/ ,char*,...) ; 
+
+ size_t HTTP_RESPONSE_JSON_OK ;
+ size_t HTTP_RESPONSE_OPTIONS ;
+ int HTTP_SUCCESS ;
+ int httpCloseContextByApp (TYPE_1__*) ;
+ int * httpKeepAliveStr ;
+ char** httpRespTemplate ;
+ int * httpVersionStr ;
+ int httpWriteBuf (TYPE_1__*,char*,int) ;
+ int sprintf (char*,char*,int ,char*,...) ;
 
 void httpSendOptionResp(HttpContext *pContext, char *desc) {
   char head[1024] = {0};

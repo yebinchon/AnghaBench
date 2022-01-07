@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {scalar_t__ inotify; scalar_t__ watch; int /*<<< orphan*/  regex; TYPE_1__* js; } ;
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_5__ {scalar_t__ inotify; scalar_t__ watch; int regex; TYPE_1__* js; } ;
 struct TYPE_6__ {TYPE_2__ linux_js; } ;
-struct TYPE_4__ {scalar_t__ fd; int /*<<< orphan*/  path; int /*<<< orphan*/  name; int /*<<< orphan*/  buttons; int /*<<< orphan*/  axes; scalar_t__ present; } ;
+struct TYPE_4__ {scalar_t__ fd; int path; int name; int buttons; int axes; scalar_t__ present; } ;
 
-/* Variables and functions */
- int GLFW_JOYSTICK_LAST ; 
- TYPE_3__ _glfw ; 
- int /*<<< orphan*/  close (scalar_t__) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  inotify_rm_watch (scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  regfree (int /*<<< orphan*/ *) ; 
+
+ int GLFW_JOYSTICK_LAST ;
+ TYPE_3__ _glfw ;
+ int close (scalar_t__) ;
+ int free (int ) ;
+ int inotify_rm_watch (scalar_t__,scalar_t__) ;
+ int regfree (int *) ;
 
 void _glfwTerminateJoysticks(void)
 {
-#if defined(__linux__)
+
     int i;
 
-    for (i = 0;  i <= GLFW_JOYSTICK_LAST;  i++)
+    for (i = 0; i <= GLFW_JOYSTICK_LAST; i++)
     {
         if (_glfw.linux_js.js[i].present)
         {
@@ -51,5 +51,5 @@ void _glfwTerminateJoysticks(void)
 
         close(_glfw.linux_js.inotify);
     }
-#endif // __linux__
+
 }

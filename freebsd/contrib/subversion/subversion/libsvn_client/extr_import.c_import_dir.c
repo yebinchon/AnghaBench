@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_4__ ;
-typedef  struct TYPE_16__   TYPE_3__ ;
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_14__ {int /*<<< orphan*/  lock_state; int /*<<< orphan*/  prop_state; int /*<<< orphan*/  content_state; int /*<<< orphan*/  kind; } ;
-typedef  TYPE_1__ svn_wc_notify_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_depth_t ;
-struct TYPE_15__ {int /*<<< orphan*/  (* close_directory ) (void*,int /*<<< orphan*/ *) ;int /*<<< orphan*/  (* add_directory ) (char const*,void*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**) ;} ;
-typedef  TYPE_2__ svn_delta_editor_t ;
-typedef  int /*<<< orphan*/  svn_client_import_filter_func_t ;
-struct TYPE_16__ {int /*<<< orphan*/  notify_baton2; int /*<<< orphan*/  (* notify_func2 ) (int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ *) ;} ;
-typedef  TYPE_3__ svn_client_ctx_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-struct TYPE_17__ {int /*<<< orphan*/  repos_changed; } ;
-typedef  TYPE_4__ import_ctx_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
-typedef  int /*<<< orphan*/  apr_array_header_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_INVALID_REVNUM ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  get_filtered_children (int /*<<< orphan*/ **,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,void*,TYPE_3__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  import_children (char const*,char const*,int /*<<< orphan*/ *,TYPE_2__ const*,void*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*,TYPE_4__*,TYPE_3__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub1 (char const*,void*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub3 (void*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_node_dir ; 
- int /*<<< orphan*/  svn_path_check_valid (char const*,int /*<<< orphan*/ *) ; 
- TYPE_1__* svn_wc_create_notify (char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc_notify_commit_added ; 
- int /*<<< orphan*/  svn_wc_notify_lock_state_inapplicable ; 
- int /*<<< orphan*/  svn_wc_notify_state_inapplicable ; 
+
+typedef struct TYPE_17__ TYPE_4__ ;
+typedef struct TYPE_16__ TYPE_3__ ;
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
+struct TYPE_14__ {int lock_state; int prop_state; int content_state; int kind; } ;
+typedef TYPE_1__ svn_wc_notify_t ;
+typedef int svn_error_t ;
+typedef int svn_depth_t ;
+struct TYPE_15__ {int (* close_directory ) (void*,int *) ;int (* add_directory ) (char const*,void*,int *,int ,int *,void**) ;} ;
+typedef TYPE_2__ svn_delta_editor_t ;
+typedef int svn_client_import_filter_func_t ;
+struct TYPE_16__ {int notify_baton2; int (* notify_func2 ) (int ,TYPE_1__*,int *) ;} ;
+typedef TYPE_3__ svn_client_ctx_t ;
+typedef int svn_boolean_t ;
+struct TYPE_17__ {int repos_changed; } ;
+typedef TYPE_4__ import_ctx_t ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
+typedef int apr_array_header_t ;
+
+
+ int SVN_ERR (int ) ;
+ int SVN_INVALID_REVNUM ;
+ int * SVN_NO_ERROR ;
+ int TRUE ;
+ int get_filtered_children (int **,char const*,int *,int *,int *,int ,void*,TYPE_3__*,int *,int *) ;
+ int import_children (char const*,char const*,int *,TYPE_2__ const*,void*,int ,int *,int *,int ,int ,int ,int ,void*,TYPE_4__*,TYPE_3__*,int *) ;
+ int stub1 (char const*,void*,int *,int ,int *,void**) ;
+ int stub2 (int ,TYPE_1__*,int *) ;
+ int stub3 (void*,int *) ;
+ int svn_node_dir ;
+ int svn_path_check_valid (char const*,int *) ;
+ TYPE_1__* svn_wc_create_notify (char const*,int ,int *) ;
+ int svn_wc_notify_commit_added ;
+ int svn_wc_notify_lock_state_inapplicable ;
+ int svn_wc_notify_state_inapplicable ;
 
 __attribute__((used)) static svn_error_t *
 import_dir(const svn_delta_editor_t *editor,
@@ -68,23 +68,23 @@ import_dir(const svn_delta_editor_t *editor,
   void *this_dir_baton;
 
   SVN_ERR(svn_path_check_valid(local_abspath, pool));
-  SVN_ERR(get_filtered_children(&dirents, local_abspath, excludes, NULL,
+  SVN_ERR(get_filtered_children(&dirents, local_abspath, excludes, ((void*)0),
                                 global_ignores, filter_callback,
                                 filter_baton, ctx, pool, pool));
 
-  /* Import this directory, but not yet its children. */
+
   {
-    /* Add the new subdirectory, getting a descent baton from the editor. */
-    SVN_ERR(editor->add_directory(edit_path, dir_baton, NULL,
+
+    SVN_ERR(editor->add_directory(edit_path, dir_baton, ((void*)0),
                                   SVN_INVALID_REVNUM, pool, &this_dir_baton));
 
-    /* Remember that the repository was modified */
+
     import_ctx->repos_changed = TRUE;
 
-    /* By notifying before the recursive call below, we display
-       a directory add before displaying adds underneath the
-       directory.  To do it the other way around, just move this
-       after the recursive call. */
+
+
+
+
     if (ctx->notify_func2)
       {
         svn_wc_notify_t *notify
@@ -98,14 +98,14 @@ import_dir(const svn_delta_editor_t *editor,
       }
   }
 
-  /* Now import the children recursively. */
+
   SVN_ERR(import_children(local_abspath, edit_path, dirents, editor,
                           this_dir_baton, depth, excludes, global_ignores,
                           no_ignore, no_autoprops, ignore_unknown_node_types,
                           filter_callback, filter_baton,
                           import_ctx, ctx, pool));
 
-  /* Finally, close the sub-directory. */
+
   SVN_ERR(editor->close_directory(this_dir_baton, pool));
 
   return SVN_NO_ERROR;

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  unsigned int int64_t ;
-typedef  int /*<<< orphan*/  header ;
-typedef  scalar_t__ VC_CONTAINER_STATUS_T ;
-typedef  int /*<<< orphan*/  VC_CONTAINER_BYTESTREAM_T ;
 
-/* Variables and functions */
- scalar_t__ VC_CONTAINER_ERROR_CORRUPTED ; 
- scalar_t__ VC_CONTAINER_SUCCESS ; 
- scalar_t__ bytestream_peek_at (int /*<<< orphan*/ *,size_t,int*,int) ; 
- unsigned int vc_container_maths_gcd (unsigned int,unsigned int) ; 
+
+
+
+typedef int uint8_t ;
+typedef unsigned int int64_t ;
+typedef int header ;
+typedef scalar_t__ VC_CONTAINER_STATUS_T ;
+typedef int VC_CONTAINER_BYTESTREAM_T ;
+
+
+ scalar_t__ VC_CONTAINER_ERROR_CORRUPTED ;
+ scalar_t__ VC_CONTAINER_SUCCESS ;
+ scalar_t__ bytestream_peek_at (int *,size_t,int*,int) ;
+ unsigned int vc_container_maths_gcd (unsigned int,unsigned int) ;
 
 __attribute__((used)) static VC_CONTAINER_STATUS_T mpgv_read_sequence_header(VC_CONTAINER_BYTESTREAM_T *stream,
    size_t offset, unsigned int *width, unsigned int *height,
@@ -30,9 +30,9 @@ __attribute__((used)) static VC_CONTAINER_STATUS_T mpgv_read_sequence_header(VC_
    static const int frame_rate[16][2] =
    { {0, 0}, {24000, 1001}, {24, 1}, {25, 1}, {30000, 1001}, {30, 1}, {50, 1},
      {60000, 1001}, {60, 1},
-     /* Unofficial values */
-     {15, 1001}, /* From Xing */
-     {5, 1001}, {10, 1001}, {12, 1001}, {15, 1001} /* From libmpeg3 */ };
+
+     {15, 1001},
+     {5, 1001}, {10, 1001}, {12, 1001}, {15, 1001} };
    static const int aspect_ratio[16][2] =
    { {0, 0}, {1, 1}, {4, 3}, {16, 9}, {221, 100} };
 

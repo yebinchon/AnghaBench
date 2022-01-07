@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  vnode; int /*<<< orphan*/  vid; } ;
-struct afs_vnode {int /*<<< orphan*/  permits_lock; struct afs_permits* permits; TYPE_1__ fid; } ;
-struct afs_permits {int /*<<< orphan*/  rcu; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  _enter (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  _leave (char*) ; 
- int /*<<< orphan*/  afs_zap_permits ; 
- int /*<<< orphan*/  call_rcu (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  rcu_assign_pointer (struct afs_permits*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int vnode; int vid; } ;
+struct afs_vnode {int permits_lock; struct afs_permits* permits; TYPE_1__ fid; } ;
+struct afs_permits {int rcu; } ;
+
+
+ int _enter (char*,int ,int ) ;
+ int _leave (char*) ;
+ int afs_zap_permits ;
+ int call_rcu (int *,int ) ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
+ int rcu_assign_pointer (struct afs_permits*,int *) ;
 
 void afs_clear_permits(struct afs_vnode *vnode)
 {
-	struct afs_permits *permits;
+ struct afs_permits *permits;
 
-	_enter("{%x:%u}", vnode->fid.vid, vnode->fid.vnode);
+ _enter("{%x:%u}", vnode->fid.vid, vnode->fid.vnode);
 
-	mutex_lock(&vnode->permits_lock);
-	permits = vnode->permits;
-	rcu_assign_pointer(vnode->permits, NULL);
-	mutex_unlock(&vnode->permits_lock);
+ mutex_lock(&vnode->permits_lock);
+ permits = vnode->permits;
+ rcu_assign_pointer(vnode->permits, ((void*)0));
+ mutex_unlock(&vnode->permits_lock);
 
-	if (permits)
-		call_rcu(&permits->rcu, afs_zap_permits);
-	_leave("");
+ if (permits)
+  call_rcu(&permits->rcu, afs_zap_permits);
+ _leave("");
 }

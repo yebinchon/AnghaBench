@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  double gdouble ;
-typedef  int /*<<< orphan*/  gchar ;
-typedef  int /*<<< orphan*/  GhbValue ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GHB_DOUBLE ; 
- int /*<<< orphan*/  ghb_value_free (int /*<<< orphan*/ **) ; 
- double ghb_value_get_double (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * lookup_combo_value (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef double gdouble ;
+typedef int gchar ;
+typedef int GhbValue ;
+
+
+ int GHB_DOUBLE ;
+ int ghb_value_free (int **) ;
+ double ghb_value_get_double (int *) ;
+ int * lookup_combo_value (int const*,int const*,int ) ;
 
 gdouble
 ghb_lookup_combo_double(const gchar *name, const GhbValue *gval)
 {
-    if (gval == NULL)
+    if (gval == ((void*)0))
         return 0;
     GhbValue *gresult = lookup_combo_value(name, gval, GHB_DOUBLE);
     double result = ghb_value_get_double(gresult);

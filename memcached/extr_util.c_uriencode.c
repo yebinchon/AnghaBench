@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  memcpy (char*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ ** uriencode_map ; 
+ int memcpy (char*,int *,int) ;
+ int ** uriencode_map ;
 
 bool uriencode(const char *src, char *dst, const size_t srclen, const size_t dstlen) {
     int x;
     size_t d = 0;
     for (x = 0; x < srclen; x++) {
         if (d + 4 > dstlen)
-            return false;
-        if (uriencode_map[(unsigned char) src[x]] != NULL) {
+            return 0;
+        if (uriencode_map[(unsigned char) src[x]] != ((void*)0)) {
             memcpy(&dst[d], uriencode_map[(unsigned char) src[x]], 3);
             d += 3;
         } else {
@@ -30,5 +22,5 @@ bool uriencode(const char *src, char *dst, const size_t srclen, const size_t dst
         }
     }
     dst[d] = '\0';
-    return true;
+    return 1;
 }

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tm ;
+
+
+
+
+typedef int tm ;
 struct timeval {int dummy; } ;
-typedef  int /*<<< orphan*/  fd_set ;
+typedef int fd_set ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FD_SET (unsigned int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FD_ZERO (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PostQuitMessage (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ZeroMemory (struct timeval*,int) ; 
- int g_block ; 
- scalar_t__ g_tcp_sck ; 
- int select (scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct timeval*) ; 
- scalar_t__ ui_read_wire () ; 
+
+ int FD_SET (unsigned int,int *) ;
+ int FD_ZERO (int *) ;
+ int PostQuitMessage (int ) ;
+ int ZeroMemory (struct timeval*,int) ;
+ int g_block ;
+ scalar_t__ g_tcp_sck ;
+ int select (scalar_t__,int *,int ,int ,struct timeval*) ;
+ scalar_t__ ui_read_wire () ;
 
 __attribute__((used)) static int
 check_sck(void)
@@ -36,7 +36,7 @@ check_sck(void)
   if (g_block == 0)
   {
     g_block = 1;
-    /* see if there really is data */
+
     FD_ZERO(&rfds);
     FD_SET((unsigned int)g_tcp_sck, &rfds);
     ZeroMemory(&tm, sizeof(tm));

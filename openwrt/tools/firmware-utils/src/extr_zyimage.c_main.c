@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct signature   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sign ;
-typedef  int /*<<< orphan*/  oldsign ;
+
+
+typedef struct signature TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int sign ;
+typedef int oldsign ;
 struct signature {char const* magic; unsigned int device_id; char* firmware_version; unsigned int crc32; } ;
 struct TYPE_5__ {char* member_0; } ;
 struct TYPE_4__ {char member_0; char member_1; char member_2; char member_3; } ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef int FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  R_OK ; 
- int /*<<< orphan*/  SEEK_END ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  W_OK ; 
- scalar_t__ access (char*,int /*<<< orphan*/ ) ; 
- unsigned int atoi (int /*<<< orphan*/ *) ; 
- int chksum_crc32 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  chksum_crc32gentab () ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  fread (struct signature*,int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fseek (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fwrite (TYPE_3__*,int,int,int /*<<< orphan*/ *) ; 
- int getopt (int,char**,char const*) ; 
- int /*<<< orphan*/ * optarg ; 
- size_t optind ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- scalar_t__ strncmp (char const*,char*,int) ; 
- int /*<<< orphan*/  strncpy (char*,int /*<<< orphan*/ *,int) ; 
- scalar_t__ strtol (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  usage (char*) ; 
+
+ int R_OK ;
+ int SEEK_END ;
+ int SEEK_SET ;
+ int W_OK ;
+ scalar_t__ access (char*,int ) ;
+ unsigned int atoi (int *) ;
+ int chksum_crc32 (int *) ;
+ int chksum_crc32gentab () ;
+ int exit (int) ;
+ int fclose (int *) ;
+ int * fopen (char*,char*) ;
+ int fread (struct signature*,int,int,int *) ;
+ int fseek (int *,int,int ) ;
+ int fwrite (TYPE_3__*,int,int,int *) ;
+ int getopt (int,char**,char const*) ;
+ int * optarg ;
+ size_t optind ;
+ int printf (char*,...) ;
+ scalar_t__ strncmp (char const*,char*,int) ;
+ int strncpy (char*,int *,int) ;
+ scalar_t__ strtol (int *,int *,int) ;
+ int usage (char*) ;
 
 int main(int argc, char *argv[]) {
   struct signature
@@ -73,16 +73,16 @@ int main(int argc, char *argv[]) {
   while( opt != -1 ) {
     switch( opt ) {
       case 'v':
-        if (optarg == NULL)
+        if (optarg == ((void*)0))
           usage(argv[0]);
         strncpy(sign.firmware_version, optarg, sizeof(sign.firmware_version)-1);
-       sign.firmware_version[sizeof(sign.firmware_version)-1]='\0'; /* Make sure that string is terminated correctly */
+       sign.firmware_version[sizeof(sign.firmware_version)-1]='\0';
         break;
 
       case 'd':
         sign.device_id = atoi(optarg);
         if (sign.device_id == 0)
-          sign.device_id = (int)strtol(optarg, NULL, 16);
+          sign.device_id = (int)strtol(optarg, ((void*)0), 16);
         break;
 
       case '?':
@@ -106,7 +106,7 @@ int main(int argc, char *argv[]) {
     exit(1);
   }
   f = fopen(argv[optind], "r+");
-  if (f != NULL)
+  if (f != ((void*)0))
   {
     fseek(f, sizeof(sign)*-1, SEEK_END);
     fread(&oldsign, sizeof(oldsign), 1, f);

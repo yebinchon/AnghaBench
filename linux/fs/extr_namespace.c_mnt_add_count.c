@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct mount {int mnt_count; TYPE_1__* mnt_pcp; } ;
-struct TYPE_2__ {int /*<<< orphan*/  mnt_count; } ;
+struct TYPE_2__ {int mnt_count; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  preempt_disable () ; 
- int /*<<< orphan*/  preempt_enable () ; 
- int /*<<< orphan*/  this_cpu_add (int /*<<< orphan*/ ,int) ; 
+
+ int preempt_disable () ;
+ int preempt_enable () ;
+ int this_cpu_add (int ,int) ;
 
 __attribute__((used)) static inline void mnt_add_count(struct mount *mnt, int n)
 {
-#ifdef CONFIG_SMP
-	this_cpu_add(mnt->mnt_pcp->mnt_count, n);
-#else
-	preempt_disable();
-	mnt->mnt_count += n;
-	preempt_enable();
-#endif
+
+
+
+ preempt_disable();
+ mnt->mnt_count += n;
+ preempt_enable();
+
 }

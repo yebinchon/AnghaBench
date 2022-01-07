@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct pg_tm {int dummy; } ;
-typedef  int /*<<< orphan*/  Timestamp ;
+typedef int Timestamp ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetEpochTime (struct pg_tm*) ; 
- int /*<<< orphan*/  tm2timestamp (struct pg_tm*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int GetEpochTime (struct pg_tm*) ;
+ int tm2timestamp (struct pg_tm*,int ,int *,int *) ;
 
 Timestamp
 SetEpochTimestamp(void)
 {
-	Timestamp	dt;
-	struct pg_tm tt,
-			   *tm = &tt;
+ Timestamp dt;
+ struct pg_tm tt,
+      *tm = &tt;
 
-	GetEpochTime(tm);
-	/* we don't bother to test for failure ... */
-	tm2timestamp(tm, 0, NULL, &dt);
+ GetEpochTime(tm);
 
-	return dt;
+ tm2timestamp(tm, 0, ((void*)0), &dt);
+
+ return dt;
 }

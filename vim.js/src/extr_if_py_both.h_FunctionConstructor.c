@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  char_u ;
-typedef  int /*<<< orphan*/  PyTypeObject ;
-typedef  int /*<<< orphan*/  PyObject ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * FunctionNew (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  N_ (char*) ; 
- int /*<<< orphan*/  PyArg_ParseTuple (int /*<<< orphan*/ *,char*,char*,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  PyErr_SET_STRING (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PyExc_TypeError ; 
- int /*<<< orphan*/  PyMem_Free (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int char_u ;
+typedef int PyTypeObject ;
+typedef int PyObject ;
+
+
+ int * FunctionNew (int *,int *) ;
+ int N_ (char*) ;
+ int PyArg_ParseTuple (int *,char*,char*,int **) ;
+ int PyErr_SET_STRING (int ,int ) ;
+ int PyExc_TypeError ;
+ int PyMem_Free (int *) ;
 
 __attribute__((used)) static PyObject *
 FunctionConstructor(PyTypeObject *subtype, PyObject *args, PyObject *kwargs)
 {
-    PyObject	*self;
-    char_u	*name;
+    PyObject *self;
+    char_u *name;
 
     if (kwargs)
     {
-	PyErr_SET_STRING(PyExc_TypeError,
-		N_("function constructor does not accept keyword arguments"));
-	return NULL;
+ PyErr_SET_STRING(PyExc_TypeError,
+  N_("function constructor does not accept keyword arguments"));
+ return ((void*)0);
     }
 
     if (!PyArg_ParseTuple(args, "et", "ascii", &name))
-	return NULL;
+ return ((void*)0);
 
     self = FunctionNew(subtype, name);
 

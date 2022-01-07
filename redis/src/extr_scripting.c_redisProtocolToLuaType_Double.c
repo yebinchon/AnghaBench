@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- int MAX_LONG_DOUBLE_CHARS ; 
- int /*<<< orphan*/  lua_newtable (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_pushnumber (int /*<<< orphan*/ *,double) ; 
- int /*<<< orphan*/  lua_pushstring (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  lua_settable (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  memcpy (char*,char*,size_t) ; 
- char* strchr (char*,char) ; 
- double strtod (char*,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int lua_State ;
+
+
+ int MAX_LONG_DOUBLE_CHARS ;
+ int lua_newtable (int *) ;
+ int lua_pushnumber (int *,double) ;
+ int lua_pushstring (int *,char*) ;
+ int lua_settable (int *,int) ;
+ int memcpy (char*,char*,size_t) ;
+ char* strchr (char*,char) ;
+ double strtod (char*,int *) ;
 
 char *redisProtocolToLuaType_Double(lua_State *lua, char *reply) {
     char *p = strchr(reply+1,'\r');
@@ -31,7 +31,7 @@ char *redisProtocolToLuaType_Double(lua_State *lua, char *reply) {
     if (len <= MAX_LONG_DOUBLE_CHARS) {
         memcpy(buf,reply+1,len);
         buf[len] = '\0';
-        d = strtod(buf,NULL); /* We expect a valid representation. */
+        d = strtod(buf,((void*)0));
     } else {
         d = 0;
     }

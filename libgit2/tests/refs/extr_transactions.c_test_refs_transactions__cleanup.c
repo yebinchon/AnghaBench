@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  cl_git_sandbox_cleanup () ; 
- int /*<<< orphan*/  g_tx ; 
- int /*<<< orphan*/  git_transaction_free (int /*<<< orphan*/ ) ; 
+ int cl_git_sandbox_cleanup () ;
+ int g_tx ;
+ int git_transaction_free (int ) ;
 
 void test_refs_transactions__cleanup(void)
 {
-	git_transaction_free(g_tx);
-	cl_git_sandbox_cleanup();
+ git_transaction_free(g_tx);
+ cl_git_sandbox_cleanup();
 }

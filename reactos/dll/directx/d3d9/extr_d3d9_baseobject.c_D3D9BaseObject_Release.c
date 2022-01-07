@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ ULONG ;
-struct TYPE_7__ {TYPE_2__* pUnknown; int /*<<< orphan*/  lRefCnt; } ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef scalar_t__ ULONG ;
+struct TYPE_7__ {TYPE_2__* pUnknown; int lRefCnt; } ;
 struct TYPE_6__ {TYPE_1__* lpVtbl; } ;
-struct TYPE_5__ {int /*<<< orphan*/  (* Release ) (int /*<<< orphan*/ *) ;} ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  TYPE_3__ D3D9BaseObject ;
+struct TYPE_5__ {int (* Release ) (int *) ;} ;
+typedef int IUnknown ;
+typedef TYPE_3__ D3D9BaseObject ;
 
-/* Variables and functions */
- scalar_t__ InterlockedDecrement (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ *) ; 
+
+ scalar_t__ InterlockedDecrement (int *) ;
+ int stub1 (int *) ;
 
 ULONG D3D9BaseObject_Release(D3D9BaseObject* pBaseObject)
 {

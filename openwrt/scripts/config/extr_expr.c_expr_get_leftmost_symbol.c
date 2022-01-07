@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {struct expr* expr; } ;
 struct expr {scalar_t__ type; TYPE_1__ left; } ;
 
-/* Variables and functions */
- scalar_t__ E_SYMBOL ; 
- struct expr* expr_copy (struct expr const*) ; 
+
+ scalar_t__ E_SYMBOL ;
+ struct expr* expr_copy (struct expr const*) ;
 
 __attribute__((used)) static inline struct expr *
 expr_get_leftmost_symbol(const struct expr *e)
 {
 
-	if (e == NULL)
-		return NULL;
+ if (e == ((void*)0))
+  return ((void*)0);
 
-	while (e->type != E_SYMBOL)
-		e = e->left.expr;
+ while (e->type != E_SYMBOL)
+  e = e->left.expr;
 
-	return expr_copy(e);
+ return expr_copy(e);
 }

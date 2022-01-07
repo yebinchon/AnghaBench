@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Reg ;
-typedef  int /*<<< orphan*/  IRIns ;
-typedef  int /*<<< orphan*/  ASMState ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RID_MRM ; 
- int /*<<< orphan*/  RSET_GPR ; 
- int /*<<< orphan*/  XO_LEA ; 
- int /*<<< orphan*/  asm_fusefref (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  emit_mrm (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ra_dest (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int Reg ;
+typedef int IRIns ;
+typedef int ASMState ;
+
+
+ int RID_MRM ;
+ int RSET_GPR ;
+ int XO_LEA ;
+ int asm_fusefref (int *,int *,int ) ;
+ int emit_mrm (int *,int ,int ,int ) ;
+ int ra_dest (int *,int *,int ) ;
 
 __attribute__((used)) static void asm_fref(ASMState *as, IRIns *ir)
 {

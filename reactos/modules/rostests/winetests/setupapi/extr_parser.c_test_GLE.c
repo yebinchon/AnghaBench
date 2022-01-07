@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT ;
-typedef  int LONG ;
-typedef  int /*<<< orphan*/  INFCONTEXT ;
-typedef  int /*<<< orphan*/ * HINF ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int ERROR_LINE_NOT_FOUND ; 
- int ERROR_SECTION_NOT_FOUND ; 
- int ERROR_SUCCESS ; 
- int GetLastError () ; 
- int MAX_INF_STRING_LENGTH ; 
- int /*<<< orphan*/  SetLastError (int) ; 
- int /*<<< orphan*/  SetupCloseInfFile (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SetupFindFirstLineA (int /*<<< orphan*/ *,char*,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SetupFindNextMatchLineA (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SetupGetLineByIndexA (int /*<<< orphan*/ *,char*,int,int /*<<< orphan*/ *) ; 
- int SetupGetLineCountA (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  SetupGetLineTextA (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*,char*,char*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/ * test_file_contents (char const*,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int UINT ;
+typedef int LONG ;
+typedef int INFCONTEXT ;
+typedef int * HINF ;
+typedef int DWORD ;
+typedef int BOOL ;
+
+
+ int ERROR_LINE_NOT_FOUND ;
+ int ERROR_SECTION_NOT_FOUND ;
+ int ERROR_SUCCESS ;
+ int GetLastError () ;
+ int MAX_INF_STRING_LENGTH ;
+ int SetLastError (int) ;
+ int SetupCloseInfFile (int *) ;
+ int SetupFindFirstLineA (int *,char*,char*,int *) ;
+ int SetupFindNextMatchLineA (int *,char*,int *) ;
+ int SetupGetLineByIndexA (int *,char*,int,int *) ;
+ int SetupGetLineCountA (int *,char*) ;
+ int SetupGetLineTextA (int *,int *,char*,char*,char*,int,int *) ;
+ int ok (int,char*,...) ;
+ int * test_file_contents (char const*,int *) ;
 
 __attribute__((used)) static void test_GLE(void)
 {
@@ -52,10 +52,10 @@ __attribute__((used)) static void test_GLE(void)
     DWORD retsize;
 
     hinf = test_file_contents( inf, &err );
-    ok( hinf != NULL, "Expected valid INF file\n" );
+    ok( hinf != ((void*)0), "Expected valid INF file\n" );
 
     SetLastError(0xdeadbeef);
-    retb = SetupFindFirstLineA( hinf, "ImNotThere", NULL, &context );
+    retb = SetupFindFirstLineA( hinf, "ImNotThere", ((void*)0), &context );
     ok(!retb, "Expected failure\n");
     ok(GetLastError() == ERROR_LINE_NOT_FOUND,
         "Expected ERROR_LINE_NOT_FOUND, got %08x\n", GetLastError());
@@ -67,7 +67,7 @@ __attribute__((used)) static void test_GLE(void)
         "Expected ERROR_LINE_NOT_FOUND, got %08x\n", GetLastError());
 
     SetLastError(0xdeadbeef);
-    retb = SetupFindFirstLineA( hinf, "Sectionname", NULL, &context );
+    retb = SetupFindFirstLineA( hinf, "Sectionname", ((void*)0), &context );
     ok(retb, "Expected success\n");
     ok(GetLastError() == ERROR_SUCCESS,
         "Expected ERROR_SUCCESS, got %08x\n", GetLastError());
@@ -109,19 +109,19 @@ __attribute__((used)) static void test_GLE(void)
         "Expected ERROR_SUCCESS, got %08x\n", GetLastError());
 
     SetLastError(0xdeadbeef);
-    retb = SetupGetLineTextA( NULL, hinf, "ImNotThere", "ImNotThere", buf, bufsize, &retsize);
+    retb = SetupGetLineTextA( ((void*)0), hinf, "ImNotThere", "ImNotThere", buf, bufsize, &retsize);
     ok(!retb, "Expected failure\n");
     ok(GetLastError() == ERROR_LINE_NOT_FOUND,
         "Expected ERROR_LINE_NOT_FOUND, got %08x\n", GetLastError());
 
     SetLastError(0xdeadbeef);
-    retb = SetupGetLineTextA( NULL, hinf, "Sectionname", "ImNotThere", buf, bufsize, &retsize);
+    retb = SetupGetLineTextA( ((void*)0), hinf, "Sectionname", "ImNotThere", buf, bufsize, &retsize);
     ok(!retb, "Expected failure\n");
     ok(GetLastError() == ERROR_LINE_NOT_FOUND,
         "Expected ERROR_LINE_NOT_FOUND, got %08x\n", GetLastError());
 
     SetLastError(0xdeadbeef);
-    retb = SetupGetLineTextA( NULL, hinf, "Sectionname", "Keyname1", buf, bufsize, &retsize);
+    retb = SetupGetLineTextA( ((void*)0), hinf, "Sectionname", "Keyname1", buf, bufsize, &retsize);
     ok(retb, "Expected success\n");
     ok(GetLastError() == ERROR_SUCCESS,
         "Expected ERROR_SUCCESS, got %08x\n", GetLastError());

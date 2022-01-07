@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  LPCSTR ;
-typedef  int /*<<< orphan*/  IStream ;
-typedef  int /*<<< orphan*/  IStorage ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CP_ACP ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  IStorage_CreateStream (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IStorage_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IStream_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IStream_Write (int /*<<< orphan*/ *,char*,int,int /*<<< orphan*/ *) ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  MultiByteToWideChar (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int) ; 
- int STGM_CREATE ; 
- int STGM_DIRECT ; 
- int STGM_READWRITE ; 
- int STGM_SHARE_EXCLUSIVE ; 
- int STGM_WRITE ; 
- scalar_t__ SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  StgCreateDocfile (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  TRUE ; 
+
+
+
+typedef int WCHAR ;
+typedef int LPCSTR ;
+typedef int IStream ;
+typedef int IStorage ;
+typedef int HRESULT ;
+typedef int DWORD ;
+typedef int BOOL ;
+
+
+ int CP_ACP ;
+ scalar_t__ FAILED (int ) ;
+ int FALSE ;
+ int IStorage_CreateStream (int *,int *,int,int ,int ,int **) ;
+ int IStorage_Release (int *) ;
+ int IStream_Release (int *) ;
+ int IStream_Write (int *,char*,int,int *) ;
+ int MAX_PATH ;
+ int MultiByteToWideChar (int ,int ,int ,int,int *,int) ;
+ int STGM_CREATE ;
+ int STGM_DIRECT ;
+ int STGM_READWRITE ;
+ int STGM_SHARE_EXCLUSIVE ;
+ int STGM_WRITE ;
+ scalar_t__ SUCCEEDED (int ) ;
+ int StgCreateDocfile (int *,int,int ,int **) ;
+ int TRUE ;
 
 __attribute__((used)) static BOOL create_storage(LPCSTR name)
 {

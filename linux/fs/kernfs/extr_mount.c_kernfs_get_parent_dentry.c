@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct kernfs_node {int /*<<< orphan*/  parent; } ;
-struct dentry {int /*<<< orphan*/  d_sb; } ;
 
-/* Variables and functions */
- struct dentry* d_obtain_alias (int /*<<< orphan*/ ) ; 
- struct kernfs_node* kernfs_dentry_node (struct dentry*) ; 
- int /*<<< orphan*/  kernfs_get_inode (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct kernfs_node {int parent; } ;
+struct dentry {int d_sb; } ;
+
+
+ struct dentry* d_obtain_alias (int ) ;
+ struct kernfs_node* kernfs_dentry_node (struct dentry*) ;
+ int kernfs_get_inode (int ,int ) ;
 
 __attribute__((used)) static struct dentry *kernfs_get_parent_dentry(struct dentry *child)
 {
-	struct kernfs_node *kn = kernfs_dentry_node(child);
+ struct kernfs_node *kn = kernfs_dentry_node(child);
 
-	return d_obtain_alias(kernfs_get_inode(child->d_sb, kn->parent));
+ return d_obtain_alias(kernfs_get_inode(child->d_sb, kn->parent));
 }

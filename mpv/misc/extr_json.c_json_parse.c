@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int flag; long long int64; double double_; } ;
 struct mpv_node {TYPE_1__ u; void* format; } ;
 
-/* Variables and functions */
- void* MPV_FORMAT_DOUBLE ; 
- void* MPV_FORMAT_FLAG ; 
- void* MPV_FORMAT_INT64 ; 
- void* MPV_FORMAT_NONE ; 
- int /*<<< orphan*/  eat_ws (char**) ; 
- scalar_t__ errno ; 
- scalar_t__ isfinite (double) ; 
- int read_str (void*,struct mpv_node*,char**) ; 
- int read_sub (void*,struct mpv_node*,char**,int) ; 
- scalar_t__ strncmp (char*,char*,int) ; 
- double strtod (char*,char**) ; 
- long long strtoll (char*,char**,int /*<<< orphan*/ ) ; 
+
+ void* MPV_FORMAT_DOUBLE ;
+ void* MPV_FORMAT_FLAG ;
+ void* MPV_FORMAT_INT64 ;
+ void* MPV_FORMAT_NONE ;
+ int eat_ws (char**) ;
+ scalar_t__ errno ;
+ scalar_t__ isfinite (double) ;
+ int read_str (void*,struct mpv_node*,char**) ;
+ int read_sub (void*,struct mpv_node*,char**,int) ;
+ scalar_t__ strncmp (char*,char*,int) ;
+ double strtod (char*,char**) ;
+ long long strtoll (char*,char**,int ) ;
 
 int json_parse(void *ta_parent, struct mpv_node *dst, char **src, int max_depth)
 {
@@ -38,7 +38,7 @@ int json_parse(void *ta_parent, struct mpv_node *dst, char **src, int max_depth)
 
     char c = **src;
     if (!c)
-        return -1; // early EOF
+        return -1;
     if (c == 'n' && strncmp(*src, "null", 4) == 0) {
         *src += 4;
         dst->format = MPV_FORMAT_NONE;
@@ -58,8 +58,8 @@ int json_parse(void *ta_parent, struct mpv_node *dst, char **src, int max_depth)
     } else if (c == '[' || c == '{') {
         return read_sub(ta_parent, dst, src, max_depth);
     } else if (c == '-' || (c >= '0' && c <= '9')) {
-        // The number could be either a float or an int. JSON doesn't make a
-        // difference, but the client API does.
+
+
         char *nsrci = *src, *nsrcf = *src;
         errno = 0;
         long long int numi = strtoll(*src, &nsrci, 0);
@@ -71,7 +71,7 @@ int json_parse(void *ta_parent, struct mpv_node *dst, char **src, int max_depth)
             nsrcf = *src;
         if (nsrci >= nsrcf) {
             *src = nsrci;
-            dst->format = MPV_FORMAT_INT64; // long long is usually 64 bits
+            dst->format = MPV_FORMAT_INT64;
             dst->u.int64 = numi;
             return 0;
         }
@@ -83,5 +83,5 @@ int json_parse(void *ta_parent, struct mpv_node *dst, char **src, int max_depth)
         }
         return -1;
     }
-    return -1; // character doesn't start a valid token
+    return -1;
 }

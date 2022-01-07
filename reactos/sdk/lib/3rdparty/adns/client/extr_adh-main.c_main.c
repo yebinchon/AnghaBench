@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct timeval {int dummy; } ;
-typedef  int /*<<< orphan*/  fd_set ;
-typedef  int /*<<< orphan*/  adns_query ;
-typedef  int /*<<< orphan*/  adns_answer ;
+typedef int fd_set ;
+typedef int adns_query ;
+typedef int adns_answer ;
 struct TYPE_4__ {TYPE_1__* head; } ;
-struct TYPE_3__ {int /*<<< orphan*/  qu; } ;
+struct TYPE_3__ {int qu; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ADNS_CAPTURE_ERRNO ; 
- int /*<<< orphan*/  ADNS_CLEAR_ERRNO ; 
- int EAGAIN ; 
- scalar_t__ EINTR ; 
- int ESRCH ; 
- int EWOULDBLOCK ; 
- scalar_t__ FD_ISSET (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FD_SET (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FD_ZERO (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  adns_afterselect (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  adns_beforeselect (int /*<<< orphan*/ ,int*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,struct timeval**,struct timeval*,int /*<<< orphan*/ ) ; 
- int adns_check (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ **,void**) ; 
- int /*<<< orphan*/  ads ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  ensure_adns_init () ; 
- scalar_t__ errno ; 
- scalar_t__ fclose (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  outerr () ; 
- TYPE_2__ outstanding ; 
- scalar_t__ ov_asynch ; 
- scalar_t__ ov_pipe ; 
- int /*<<< orphan*/  process_optarg (char const*,char const* const**,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  query_done (void*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  quitnow (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rcode ; 
- int /*<<< orphan*/  read_stdin () ; 
- int select (int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,struct timeval*) ; 
- int /*<<< orphan*/  stdout ; 
- int /*<<< orphan*/  sysfail (char*,scalar_t__) ; 
- int /*<<< orphan*/  usageerr (char*) ; 
+
+ int ADNS_CAPTURE_ERRNO ;
+ int ADNS_CLEAR_ERRNO ;
+ int EAGAIN ;
+ scalar_t__ EINTR ;
+ int ESRCH ;
+ int EWOULDBLOCK ;
+ scalar_t__ FD_ISSET (int ,int *) ;
+ int FD_SET (int ,int *) ;
+ int FD_ZERO (int *) ;
+ int adns_afterselect (int ,int,int *,int *,int *,int ) ;
+ int adns_beforeselect (int ,int*,int *,int *,int *,struct timeval**,struct timeval*,int ) ;
+ int adns_check (int ,int *,int **,void**) ;
+ int ads ;
+ int assert (int) ;
+ int ensure_adns_init () ;
+ scalar_t__ errno ;
+ scalar_t__ fclose (int ) ;
+ int outerr () ;
+ TYPE_2__ outstanding ;
+ scalar_t__ ov_asynch ;
+ scalar_t__ ov_pipe ;
+ int process_optarg (char const*,char const* const**,int ) ;
+ int query_done (void*,int *) ;
+ int quitnow (int ) ;
+ int rcode ;
+ int read_stdin () ;
+ int select (int,int *,int *,int *,struct timeval*) ;
+ int stdout ;
+ int sysfail (char*,scalar_t__) ;
+ int usageerr (char*) ;
 
 int main(int argc, const char *const *argv) {
   struct timeval *tv, tvbuf;
@@ -85,9 +85,9 @@ int main(int argc, const char *const *argv) {
     }
     tv= 0;
     adns_beforeselect(ads, &maxfd, &readfds,&writefds,&exceptfds, &tv,&tvbuf,0);
-	ADNS_CLEAR_ERRNO;
+ ADNS_CLEAR_ERRNO;
     r= select(maxfd, &readfds,&writefds,&exceptfds, tv);
-	ADNS_CAPTURE_ERRNO;
+ ADNS_CAPTURE_ERRNO;
     if (r == -1) {
       if (errno == EINTR) continue;
       sysfail("select",errno);

@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/ * kobj_topology; int /*<<< orphan*/ * kobj_nodes; int /*<<< orphan*/  attr_props; int /*<<< orphan*/  attr_genid; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  kfd_remove_sysfs_node_tree () ; 
- int /*<<< orphan*/  kobject_del (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  kobject_put (int /*<<< orphan*/ *) ; 
- TYPE_1__ sys_props ; 
- int /*<<< orphan*/  sysfs_remove_file (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int * kobj_topology; int * kobj_nodes; int attr_props; int attr_genid; } ;
+
+
+ int kfd_remove_sysfs_node_tree () ;
+ int kobject_del (int *) ;
+ int kobject_put (int *) ;
+ TYPE_1__ sys_props ;
+ int sysfs_remove_file (int *,int *) ;
 
 __attribute__((used)) static void kfd_topology_release_sysfs(void)
 {
-	kfd_remove_sysfs_node_tree();
-	if (sys_props.kobj_topology) {
-		sysfs_remove_file(sys_props.kobj_topology,
-				&sys_props.attr_genid);
-		sysfs_remove_file(sys_props.kobj_topology,
-				&sys_props.attr_props);
-		if (sys_props.kobj_nodes) {
-			kobject_del(sys_props.kobj_nodes);
-			kobject_put(sys_props.kobj_nodes);
-			sys_props.kobj_nodes = NULL;
-		}
-		kobject_del(sys_props.kobj_topology);
-		kobject_put(sys_props.kobj_topology);
-		sys_props.kobj_topology = NULL;
-	}
+ kfd_remove_sysfs_node_tree();
+ if (sys_props.kobj_topology) {
+  sysfs_remove_file(sys_props.kobj_topology,
+    &sys_props.attr_genid);
+  sysfs_remove_file(sys_props.kobj_topology,
+    &sys_props.attr_props);
+  if (sys_props.kobj_nodes) {
+   kobject_del(sys_props.kobj_nodes);
+   kobject_put(sys_props.kobj_nodes);
+   sys_props.kobj_nodes = ((void*)0);
+  }
+  kobject_del(sys_props.kobj_topology);
+  kobject_put(sys_props.kobj_topology);
+  sys_props.kobj_topology = ((void*)0);
+ }
 }

@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- float FFMAX (float,float) ; 
- float FFMIN (float,float) ; 
- float fabsf (float const) ; 
- scalar_t__ ff_fast_powf (float,float) ; 
- float sqrtf (float) ; 
+ float FFMAX (float,float) ;
+ float FFMIN (float,float) ;
+ float fabsf (float const) ;
+ scalar_t__ ff_fast_powf (float,float) ;
+ float sqrtf (float) ;
 
 __attribute__((used)) static inline float find_form_factor(int group_len, int swb_size, float thresh,
                                      const float *scaled, float nzslope) {
@@ -33,10 +25,10 @@ __attribute__((used)) static inline float find_form_factor(int group_len, int sw
             maxval = FFMAX(maxval, s);
             e += s;
             e2 += s *= s;
-            /* We really don't want a hard non-zero-line count, since
-             * even below-threshold lines do add up towards band spectral power.
-             * So, fall steeply towards zero, but smoothly
-             */
+
+
+
+
             if (s >= ethresh) {
                 nzl += 1.0f;
             } else {
@@ -50,7 +42,7 @@ __attribute__((used)) static inline float find_form_factor(int group_len, int sw
             float frm;
             e *= iswb_size;
 
-            /** compute variance */
+
             for (i = 0; i < swb_size; i++) {
                 float d = fabsf(scaled[w2*128+i]) - e;
                 var += d*d;

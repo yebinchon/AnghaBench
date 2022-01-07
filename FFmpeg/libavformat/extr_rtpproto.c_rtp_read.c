@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct sockaddr_storage {int dummy; } ;
 struct sockaddr {int dummy; } ;
-struct pollfd {int member_1; int revents; int /*<<< orphan*/  fd; int /*<<< orphan*/  member_2; int /*<<< orphan*/  member_0; } ;
-typedef  int socklen_t ;
-struct TYPE_4__ {int flags; int /*<<< orphan*/  interrupt_callback; TYPE_2__* priv_data; } ;
-typedef  TYPE_1__ URLContext ;
-struct TYPE_5__ {int last_rtp_source_len; int last_rtcp_source_len; int /*<<< orphan*/  filters; struct sockaddr_storage last_rtcp_source; struct sockaddr_storage last_rtp_source; int /*<<< orphan*/  rtcp_fd; int /*<<< orphan*/  rtp_fd; } ;
-typedef  TYPE_2__ RTPContext ;
+struct pollfd {int member_1; int revents; int fd; int member_2; int member_0; } ;
+typedef int socklen_t ;
+struct TYPE_4__ {int flags; int interrupt_callback; TYPE_2__* priv_data; } ;
+typedef TYPE_1__ URLContext ;
+struct TYPE_5__ {int last_rtp_source_len; int last_rtcp_source_len; int filters; struct sockaddr_storage last_rtcp_source; struct sockaddr_storage last_rtp_source; int rtcp_fd; int rtp_fd; } ;
+typedef TYPE_2__ RTPContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_EXIT ; 
- int AVIO_FLAG_NONBLOCK ; 
- int /*<<< orphan*/  EAGAIN ; 
- int /*<<< orphan*/  EINTR ; 
- int /*<<< orphan*/  EIO ; 
- int POLLIN ; 
- scalar_t__ ff_check_interrupt (int /*<<< orphan*/ *) ; 
- scalar_t__ ff_ip_check_source_lists (struct sockaddr_storage*,int /*<<< orphan*/ *) ; 
- scalar_t__ ff_neterrno () ; 
- int poll (struct pollfd*,int,int) ; 
- int recvfrom (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,struct sockaddr*,int*) ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_EXIT ;
+ int AVIO_FLAG_NONBLOCK ;
+ int EAGAIN ;
+ int EINTR ;
+ int EIO ;
+ int POLLIN ;
+ scalar_t__ ff_check_interrupt (int *) ;
+ scalar_t__ ff_ip_check_source_lists (struct sockaddr_storage*,int *) ;
+ scalar_t__ ff_neterrno () ;
+ int poll (struct pollfd*,int,int) ;
+ int recvfrom (int ,int *,int,int ,struct sockaddr*,int*) ;
 
 __attribute__((used)) static int rtp_read(URLContext *h, uint8_t *buf, int size)
 {
@@ -50,7 +50,7 @@ __attribute__((used)) static int rtp_read(URLContext *h, uint8_t *buf, int size)
             return AVERROR_EXIT;
         n = poll(p, 2, poll_delay);
         if (n > 0) {
-            /* first try RTCP, then RTP */
+
             for (i = 1; i >= 0; i--) {
                 if (!(p[i].revents & POLLIN))
                     continue;

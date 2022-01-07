@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct target {int target_fds_size; struct pid_on_target* root_pid; scalar_t__ uptime_max; scalar_t__ uptime_sum; scalar_t__ uptime_min; scalar_t__ collected_starttime; scalar_t__ openother; scalar_t__ openeventpolls; scalar_t__ opensignalfds; scalar_t__ opentimerfds; scalar_t__ openeventfds; scalar_t__ openinotifies; scalar_t__ opensockets; scalar_t__ openpipes; scalar_t__ openfiles; scalar_t__ target_fds; scalar_t__ io_storage_bytes_written; scalar_t__ io_storage_bytes_read; scalar_t__ io_logical_bytes_written; scalar_t__ io_logical_bytes_read; scalar_t__ status_vmswap; scalar_t__ status_rssshmem; scalar_t__ status_rssfile; scalar_t__ status_vmshared; scalar_t__ status_vmrss; scalar_t__ status_vmsize; scalar_t__ processes; scalar_t__ num_threads; scalar_t__ cgtime; scalar_t__ cstime; scalar_t__ cutime; scalar_t__ cmajflt; scalar_t__ cminflt; scalar_t__ gtime; scalar_t__ stime; scalar_t__ utime; scalar_t__ majflt; scalar_t__ minflt; struct target* next; } ;
 struct pid_on_target {struct pid_on_target* next; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (struct pid_on_target*) ; 
- int /*<<< orphan*/  memset (scalar_t__,int /*<<< orphan*/ ,int) ; 
- scalar_t__ unlikely (struct pid_on_target*) ; 
+
+ int free (struct pid_on_target*) ;
+ int memset (scalar_t__,int ,int) ;
+ scalar_t__ unlikely (struct pid_on_target*) ;
 
 __attribute__((used)) static size_t zero_all_targets(struct target *root) {
     struct target *w;
@@ -36,7 +36,7 @@ __attribute__((used)) static size_t zero_all_targets(struct target *root) {
         w->cstime = 0;
         w->cgtime = 0;
         w->num_threads = 0;
-        // w->rss = 0;
+
         w->processes = 0;
 
         w->status_vmsize = 0;
@@ -48,13 +48,13 @@ __attribute__((used)) static size_t zero_all_targets(struct target *root) {
 
         w->io_logical_bytes_read = 0;
         w->io_logical_bytes_written = 0;
-        // w->io_read_calls = 0;
-        // w->io_write_calls = 0;
+
+
         w->io_storage_bytes_read = 0;
         w->io_storage_bytes_written = 0;
-        // w->io_cancelled_write_bytes = 0;
 
-        // zero file counters
+
+
         if(w->target_fds) {
             memset(w->target_fds, 0, sizeof(int) * w->target_fds_size);
             w->openfiles = 0;
@@ -82,7 +82,7 @@ __attribute__((used)) static size_t zero_all_targets(struct target *root) {
                 free(pid_on_target_to_free);
             }
 
-            w->root_pid = NULL;
+            w->root_pid = ((void*)0);
         }
     }
 

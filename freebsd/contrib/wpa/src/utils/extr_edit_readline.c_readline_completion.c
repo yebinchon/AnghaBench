@@ -1,30 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  edit_cb_ctx ; 
- int /*<<< orphan*/  edit_completion_cb (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  pending_completions ; 
- int /*<<< orphan*/  readline_completion_func ; 
- int /*<<< orphan*/  readline_free_completions () ; 
- char** rl_completion_matches (char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rl_line_buffer ; 
+ int edit_cb_ctx ;
+ int edit_completion_cb (int ,int ,int) ;
+ int pending_completions ;
+ int readline_completion_func ;
+ int readline_free_completions () ;
+ char** rl_completion_matches (char const*,int ) ;
+ int rl_line_buffer ;
 
 __attribute__((used)) static char ** readline_completion(const char *text, int start, int end)
 {
-	readline_free_completions();
-	if (edit_completion_cb)
-		pending_completions = edit_completion_cb(edit_cb_ctx,
-							 rl_line_buffer, end);
-	return rl_completion_matches(text, readline_completion_func);
+ readline_free_completions();
+ if (edit_completion_cb)
+  pending_completions = edit_completion_cb(edit_cb_ctx,
+        rl_line_buffer, end);
+ return rl_completion_matches(text, readline_completion_func);
 }

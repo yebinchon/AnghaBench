@@ -1,19 +1,11 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char* b64encode ; 
- char* mymalloc (int) ; 
+ char* b64encode ;
+ char* mymalloc (int) ;
 
 char *
 CGI_encode_base64(const void *p, int len) {
@@ -27,21 +19,21 @@ CGI_encode_base64(const void *p, int len) {
     }
     out = mymalloc(4 + 4 * len / 3);
 
-    /* every three input bytes becomes 4 base64 output characters */
+
 
     for (i = 0; i < len; i++) {
-        save |= in[i] << (16 - nbits);                 /* 3 x 8 bits in */
+        save |= in[i] << (16 - nbits);
         if ((nbits += 8) == 24) {
-            out[k++] = b64encode[(save >> 18) & 077]; /* 4 x 6 bits out */
+            out[k++] = b64encode[(save >> 18) & 077];
             out[k++] = b64encode[(save >> 12) & 077];
-            out[k++] = b64encode[(save >>  6) & 077];
-            out[k++] = b64encode[ save        & 077];
+            out[k++] = b64encode[(save >> 6) & 077];
+            out[k++] = b64encode[ save & 077];
             nbits = 0;
-            save  = 0;
+            save = 0;
         }
     }
 
-    /* convert leftover bits */
+
 
     if (nbits > 0) {
         for (i = 18; i >= 0; i -= 6) {

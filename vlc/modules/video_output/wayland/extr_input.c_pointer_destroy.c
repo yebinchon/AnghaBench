@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct seat_data {scalar_t__ version; int /*<<< orphan*/ * pointer; } ;
 
-/* Variables and functions */
- scalar_t__ WL_POINTER_RELEASE_SINCE_VERSION ; 
- int /*<<< orphan*/  wl_pointer_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  wl_pointer_release (int /*<<< orphan*/ *) ; 
+
+
+
+struct seat_data {scalar_t__ version; int * pointer; } ;
+
+
+ scalar_t__ WL_POINTER_RELEASE_SINCE_VERSION ;
+ int wl_pointer_destroy (int *) ;
+ int wl_pointer_release (int *) ;
 
 __attribute__((used)) static void pointer_destroy(struct seat_data *sd)
 {
-    if (sd->pointer == NULL)
+    if (sd->pointer == ((void*)0))
         return;
 
     if (sd->version >= WL_POINTER_RELEASE_SINCE_VERSION)
@@ -27,5 +27,5 @@ __attribute__((used)) static void pointer_destroy(struct seat_data *sd)
     else
         wl_pointer_destroy(sd->pointer);
 
-    sd->pointer = NULL;
+    sd->pointer = ((void*)0);
 }

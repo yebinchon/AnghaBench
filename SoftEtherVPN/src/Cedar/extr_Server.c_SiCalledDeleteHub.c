@@ -1,64 +1,64 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  name ;
-struct TYPE_3__ {int /*<<< orphan*/  Cedar; } ;
-typedef  TYPE_1__ SERVER ;
-typedef  int /*<<< orphan*/  PACK ;
-typedef  int /*<<< orphan*/  HUB ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DelHubEx (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * GetHub (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  LockHubList (int /*<<< orphan*/ ) ; 
- int MAX_SIZE ; 
- int PackGetStr (int /*<<< orphan*/ *,char*,char*,int) ; 
- int /*<<< orphan*/  ReleaseHub (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SetHubOffline (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  UnlockHubList (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int name ;
+struct TYPE_3__ {int Cedar; } ;
+typedef TYPE_1__ SERVER ;
+typedef int PACK ;
+typedef int HUB ;
+
+
+ int DelHubEx (int ,int *,int) ;
+ int * GetHub (int ,char*) ;
+ int LockHubList (int ) ;
+ int MAX_SIZE ;
+ int PackGetStr (int *,char*,char*,int) ;
+ int ReleaseHub (int *) ;
+ int SetHubOffline (int *) ;
+ int UnlockHubList (int ) ;
 
 void SiCalledDeleteHub(SERVER *s, PACK *p)
 {
-	char name[MAX_SIZE];
-	HUB *h;
-	// Validate arguments
-	if (s == NULL || p == NULL)
-	{
-		return;
-	}
+ char name[MAX_SIZE];
+ HUB *h;
 
-	if (PackGetStr(p, "HubName", name, sizeof(name)) == false)
-	{
-		return;
-	}
+ if (s == ((void*)0) || p == ((void*)0))
+ {
+  return;
+ }
 
-	LockHubList(s->Cedar);
+ if (PackGetStr(p, "HubName", name, sizeof(name)) == 0)
+ {
+  return;
+ }
 
-	h = GetHub(s->Cedar, name);
-	if (h == NULL)
-	{
-		UnlockHubList(s->Cedar);
-		return;
-	}
-	UnlockHubList(s->Cedar);
+ LockHubList(s->Cedar);
 
-	SetHubOffline(h);
+ h = GetHub(s->Cedar, name);
+ if (h == ((void*)0))
+ {
+  UnlockHubList(s->Cedar);
+  return;
+ }
+ UnlockHubList(s->Cedar);
 
-	LockHubList(s->Cedar);
+ SetHubOffline(h);
 
-	DelHubEx(s->Cedar, h, true);
+ LockHubList(s->Cedar);
 
-	UnlockHubList(s->Cedar);
+ DelHubEx(s->Cedar, h, 1);
 
-	ReleaseHub(h);
+ UnlockHubList(s->Cedar);
+
+ ReleaseHub(h);
 }

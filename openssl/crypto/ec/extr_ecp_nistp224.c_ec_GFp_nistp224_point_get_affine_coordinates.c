@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  widefelem ;
-typedef  int /*<<< orphan*/  felem ;
-struct TYPE_4__ {int /*<<< orphan*/  Z; int /*<<< orphan*/  Y; int /*<<< orphan*/  X; } ;
-typedef  TYPE_1__ EC_POINT ;
-typedef  int /*<<< orphan*/  EC_GROUP ;
-typedef  int /*<<< orphan*/  BN_CTX ;
-typedef  int /*<<< orphan*/  BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BN_to_felem (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EC_F_EC_GFP_NISTP224_POINT_GET_AFFINE_COORDINATES ; 
- scalar_t__ EC_POINT_is_at_infinity (int /*<<< orphan*/  const*,TYPE_1__ const*) ; 
- int /*<<< orphan*/  EC_R_POINT_AT_INFINITY ; 
- int /*<<< orphan*/  ECerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ERR_R_BN_LIB ; 
- int /*<<< orphan*/  felem_contract (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  felem_inv (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  felem_mul (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  felem_reduce (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  felem_square (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  felem_to_BN (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int widefelem ;
+typedef int felem ;
+struct TYPE_4__ {int Z; int Y; int X; } ;
+typedef TYPE_1__ EC_POINT ;
+typedef int EC_GROUP ;
+typedef int BN_CTX ;
+typedef int BIGNUM ;
+
+
+ int BN_to_felem (int ,int ) ;
+ int EC_F_EC_GFP_NISTP224_POINT_GET_AFFINE_COORDINATES ;
+ scalar_t__ EC_POINT_is_at_infinity (int const*,TYPE_1__ const*) ;
+ int EC_R_POINT_AT_INFINITY ;
+ int ECerr (int ,int ) ;
+ int ERR_R_BN_LIB ;
+ int felem_contract (int ,int ) ;
+ int felem_inv (int ,int ) ;
+ int felem_mul (int ,int ,int ) ;
+ int felem_reduce (int ,int ) ;
+ int felem_square (int ,int ) ;
+ int felem_to_BN (int *,int ) ;
 
 int ec_GFp_nistp224_point_get_affine_coordinates(const EC_GROUP *group,
                                                  const EC_POINT *point,
@@ -55,7 +55,7 @@ int ec_GFp_nistp224_point_get_affine_coordinates(const EC_GROUP *group,
     felem_mul(tmp, x_in, z1);
     felem_reduce(x_in, tmp);
     felem_contract(x_out, x_in);
-    if (x != NULL) {
+    if (x != ((void*)0)) {
         if (!felem_to_BN(x, x_out)) {
             ECerr(EC_F_EC_GFP_NISTP224_POINT_GET_AFFINE_COORDINATES,
                   ERR_R_BN_LIB);
@@ -67,7 +67,7 @@ int ec_GFp_nistp224_point_get_affine_coordinates(const EC_GROUP *group,
     felem_mul(tmp, y_in, z1);
     felem_reduce(y_in, tmp);
     felem_contract(y_out, y_in);
-    if (y != NULL) {
+    if (y != ((void*)0)) {
         if (!felem_to_BN(y, y_out)) {
             ECerr(EC_F_EC_GFP_NISTP224_POINT_GET_AFFINE_COORDINATES,
                   ERR_R_BN_LIB);

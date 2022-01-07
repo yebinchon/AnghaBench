@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/ * Sock; } ;
-typedef  int /*<<< orphan*/  SOCK ;
-typedef  TYPE_1__ RPC ;
 
-/* Variables and functions */
- int RpcRecvNextCall (TYPE_1__*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int * Sock; } ;
+typedef int SOCK ;
+typedef TYPE_1__ RPC ;
+
+
+ int RpcRecvNextCall (TYPE_1__*) ;
 
 void RpcServer(RPC *r)
 {
-	SOCK *s;
-	// Validate arguments
-	if (r == NULL)
-	{
-		return;
-	}
+ SOCK *s;
 
-	s = r->Sock;
+ if (r == ((void*)0))
+ {
+  return;
+ }
 
-	while (true)
-	{
-		// Wait for the next RPC call
-		if (RpcRecvNextCall(r) == false)
-		{
-			// Communication error
-			break;
-		}
-	}
+ s = r->Sock;
+
+ while (1)
+ {
+
+  if (RpcRecvNextCall(r) == 0)
+  {
+
+   break;
+  }
+ }
 }

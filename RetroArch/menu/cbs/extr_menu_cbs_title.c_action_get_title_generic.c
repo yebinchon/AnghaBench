@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct string_list {scalar_t__ size; TYPE_1__* elems; } ;
-typedef  int /*<<< orphan*/  elem0_path ;
+typedef int elem0_path ;
 struct TYPE_2__ {char const* data; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MENU_ENUM_LABEL_VALUE_NOT_AVAILABLE ; 
- char const* msg_hash_to_str (int /*<<< orphan*/ ) ; 
- char* path_basename (char*) ; 
- int /*<<< orphan*/  string_is_empty (char const*) ; 
- int /*<<< orphan*/  string_list_free (struct string_list*) ; 
- struct string_list* string_split (char const*,char*) ; 
- int /*<<< orphan*/  strlcat (char*,char*,size_t) ; 
- int /*<<< orphan*/  strlcpy (char*,char const*,size_t) ; 
+
+ int MENU_ENUM_LABEL_VALUE_NOT_AVAILABLE ;
+ char const* msg_hash_to_str (int ) ;
+ char* path_basename (char*) ;
+ int string_is_empty (char const*) ;
+ int string_list_free (struct string_list*) ;
+ struct string_list* string_split (char const*,char*) ;
+ int strlcat (char*,char*,size_t) ;
+ int strlcpy (char*,char const*,size_t) ;
 
 __attribute__((used)) static int action_get_title_generic(char *s, size_t len, const char *path,
       const char *text)
 {
-   struct string_list *list_path    = NULL;
+   struct string_list *list_path = ((void*)0);
 
    if (!string_is_empty(path))
       list_path = string_split(path, "|");

@@ -1,162 +1,162 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_24__   TYPE_5__ ;
-typedef  struct TYPE_23__   TYPE_4__ ;
-typedef  struct TYPE_22__   TYPE_3__ ;
-typedef  struct TYPE_21__   TYPE_2__ ;
-typedef  struct TYPE_20__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char wchar_t ;
-typedef  int /*<<< orphan*/  tmp ;
-typedef  int /*<<< orphan*/  t ;
-typedef  int /*<<< orphan*/  args ;
+
+
+typedef struct TYPE_24__ TYPE_5__ ;
+typedef struct TYPE_23__ TYPE_4__ ;
+typedef struct TYPE_22__ TYPE_3__ ;
+typedef struct TYPE_21__ TYPE_2__ ;
+typedef struct TYPE_20__ TYPE_1__ ;
+
+
+typedef char wchar_t ;
+typedef int tmp ;
+typedef int t ;
+typedef int args ;
 struct TYPE_20__ {scalar_t__ NumTokens; char** Token; } ;
-typedef  TYPE_1__ UNI_TOKEN_LIST ;
-typedef  scalar_t__ UINT ;
-struct TYPE_24__ {int /*<<< orphan*/  (* Write ) (TYPE_5__*,char*) ;} ;
-struct TYPE_23__ {char* member_0; int /*<<< orphan*/ * member_4; int /*<<< orphan*/ * member_3; int /*<<< orphan*/ * member_2; int /*<<< orphan*/ * member_1; } ;
-struct TYPE_22__ {int /*<<< orphan*/  Rpc; } ;
-struct TYPE_21__ {scalar_t__ FileData; int /*<<< orphan*/  FileName; } ;
-typedef  TYPE_2__ RPC_CONFIG ;
-typedef  TYPE_3__ PS ;
-typedef  TYPE_4__ PARAM ;
-typedef  int /*<<< orphan*/  LIST ;
-typedef  int /*<<< orphan*/  IO ;
-typedef  TYPE_5__ CONSOLE ;
-typedef  int /*<<< orphan*/  BYTE ;
+typedef TYPE_1__ UNI_TOKEN_LIST ;
+typedef scalar_t__ UINT ;
+struct TYPE_24__ {int (* Write ) (TYPE_5__*,char*) ;} ;
+struct TYPE_23__ {char* member_0; int * member_4; int * member_3; int * member_2; int * member_1; } ;
+struct TYPE_22__ {int Rpc; } ;
+struct TYPE_21__ {scalar_t__ FileData; int FileName; } ;
+typedef TYPE_2__ RPC_CONFIG ;
+typedef TYPE_3__ PS ;
+typedef TYPE_4__ PARAM ;
+typedef int LIST ;
+typedef int IO ;
+typedef TYPE_5__ CONSOLE ;
+typedef int BYTE ;
 
-/* Variables and functions */
- scalar_t__ CalcUtf8ToUni (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CmdPrintError (TYPE_5__*,scalar_t__) ; 
- scalar_t__ ERR_INTERNAL_ERROR ; 
- scalar_t__ ERR_INVALID_PARAMETER ; 
- scalar_t__ ERR_NO_ERROR ; 
- int /*<<< orphan*/  FileClose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * FileCreateW (char*) ; 
- int /*<<< orphan*/  FileWrite (int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Free (char*) ; 
- int /*<<< orphan*/  FreeParamValueList (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FreeRpcConfig (TYPE_2__*) ; 
- char* GetParamUniStr (int /*<<< orphan*/ *,char*) ; 
- scalar_t__ IsEmptyUniStr (char*) ; 
- int MAX_SIZE ; 
- int /*<<< orphan*/ * ParseCommandList (TYPE_5__*,char*,char*,TYPE_4__*,int) ; 
- scalar_t__ ScGetConfig (int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  StrLen (scalar_t__) ; 
- int /*<<< orphan*/  UniFormat (char*,int,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  UniFreeToken (TYPE_1__*) ; 
- TYPE_1__* UniGetLines (char*) ; 
- int /*<<< orphan*/  Utf8ToUni (char*,scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Zero (TYPE_2__*,int) ; 
- char* ZeroMalloc (scalar_t__) ; 
- char* _UU (char*) ; 
- int /*<<< orphan*/  stub1 (TYPE_5__*,char*) ; 
- int /*<<< orphan*/  stub2 (TYPE_5__*,char*) ; 
- int /*<<< orphan*/  stub3 (TYPE_5__*,char*) ; 
- int /*<<< orphan*/  stub4 (TYPE_5__*,char*) ; 
- int /*<<< orphan*/  stub5 (TYPE_5__*,char*) ; 
+
+ scalar_t__ CalcUtf8ToUni (int *,int ) ;
+ int CmdPrintError (TYPE_5__*,scalar_t__) ;
+ scalar_t__ ERR_INTERNAL_ERROR ;
+ scalar_t__ ERR_INVALID_PARAMETER ;
+ scalar_t__ ERR_NO_ERROR ;
+ int FileClose (int *) ;
+ int * FileCreateW (char*) ;
+ int FileWrite (int *,scalar_t__,int ) ;
+ int Free (char*) ;
+ int FreeParamValueList (int *) ;
+ int FreeRpcConfig (TYPE_2__*) ;
+ char* GetParamUniStr (int *,char*) ;
+ scalar_t__ IsEmptyUniStr (char*) ;
+ int MAX_SIZE ;
+ int * ParseCommandList (TYPE_5__*,char*,char*,TYPE_4__*,int) ;
+ scalar_t__ ScGetConfig (int ,TYPE_2__*) ;
+ int StrLen (scalar_t__) ;
+ int UniFormat (char*,int,char*,int ,int ) ;
+ int UniFreeToken (TYPE_1__*) ;
+ TYPE_1__* UniGetLines (char*) ;
+ int Utf8ToUni (char*,scalar_t__,int *,int ) ;
+ int Zero (TYPE_2__*,int) ;
+ char* ZeroMalloc (scalar_t__) ;
+ char* _UU (char*) ;
+ int stub1 (TYPE_5__*,char*) ;
+ int stub2 (TYPE_5__*,char*) ;
+ int stub3 (TYPE_5__*,char*) ;
+ int stub4 (TYPE_5__*,char*) ;
+ int stub5 (TYPE_5__*,char*) ;
 
 UINT PsConfigGet(CONSOLE *c, char *cmd_name, wchar_t *str, void *param)
 {
-	LIST *o;
-	PS *ps = (PS *)param;
-	UINT ret = 0;
-	RPC_CONFIG t;
-	// Parameter list that can be specified
-	PARAM args[] =
-	{
-		// "name", prompt_proc, prompt_param, eval_proc, eval_param
-		{"[path]", NULL, NULL, NULL, NULL},
-	};
+ LIST *o;
+ PS *ps = (PS *)param;
+ UINT ret = 0;
+ RPC_CONFIG t;
 
-	o = ParseCommandList(c, cmd_name, str, args, sizeof(args) / sizeof(args[0]));
-	if (o == NULL)
-	{
-		return ERR_INVALID_PARAMETER;
-	}
+ PARAM args[] =
+ {
 
-	Zero(&t, sizeof(t));
+  {"[path]", ((void*)0), ((void*)0), ((void*)0), ((void*)0)},
+ };
 
-	// RPC call
-	ret = ScGetConfig(ps->Rpc, &t);
+ o = ParseCommandList(c, cmd_name, str, args, sizeof(args) / sizeof(args[0]));
+ if (o == ((void*)0))
+ {
+  return ERR_INVALID_PARAMETER;
+ }
 
-	if (ret != ERR_NO_ERROR)
-	{
-		// An error has occured
-		CmdPrintError(c, ret);
-		FreeParamValueList(o);
-		return ret;
-	}
-	else
-	{
-		wchar_t *filename = GetParamUniStr(o, "[path]");
+ Zero(&t, sizeof(t));
 
-		if (IsEmptyUniStr(filename))
-		{
-			// Display on the screen
-			wchar_t tmp[MAX_SIZE];
-			UINT buf_size;
-			wchar_t *buf;
-			UNI_TOKEN_LIST *lines;
 
-			UniFormat(tmp, sizeof(tmp), _UU("CMD_ConfigGet_FILENAME"), t.FileName,
-				StrLen(t.FileData));
-			c->Write(c, tmp);
-			c->Write(c, L"");
+ ret = ScGetConfig(ps->Rpc, &t);
 
-			buf_size = CalcUtf8ToUni((BYTE *)t.FileData, StrLen(t.FileData));
-			buf = ZeroMalloc(buf_size + 32);
+ if (ret != ERR_NO_ERROR)
+ {
 
-			Utf8ToUni(buf, buf_size, (BYTE *)t.FileData, StrLen(t.FileData));
+  CmdPrintError(c, ret);
+  FreeParamValueList(o);
+  return ret;
+ }
+ else
+ {
+  wchar_t *filename = GetParamUniStr(o, "[path]");
 
-			lines = UniGetLines(buf);
-			if (lines != NULL)
-			{
-				UINT i;
+  if (IsEmptyUniStr(filename))
+  {
 
-				for (i = 0;i < lines->NumTokens;i++)
-				{
-					c->Write(c, lines->Token[i]);
-				}
+   wchar_t tmp[MAX_SIZE];
+   UINT buf_size;
+   wchar_t *buf;
+   UNI_TOKEN_LIST *lines;
 
-				UniFreeToken(lines);
-			}
+   UniFormat(tmp, sizeof(tmp), _UU("CMD_ConfigGet_FILENAME"), t.FileName,
+    StrLen(t.FileData));
+   c->Write(c, tmp);
+   c->Write(c, L"");
 
-			c->Write(c, L"");
+   buf_size = CalcUtf8ToUni((BYTE *)t.FileData, StrLen(t.FileData));
+   buf = ZeroMalloc(buf_size + 32);
 
-			Free(buf);
-		}
-		else
-		{
-			// Save to the file
-			IO *io = FileCreateW(filename);
+   Utf8ToUni(buf, buf_size, (BYTE *)t.FileData, StrLen(t.FileData));
 
-			if (io == NULL)
-			{
-				c->Write(c, _UU("CMD_ConfigGet_FILE_SAVE_FAILED"));
+   lines = UniGetLines(buf);
+   if (lines != ((void*)0))
+   {
+    UINT i;
 
-				ret = ERR_INTERNAL_ERROR;
-			}
-			else
-			{
-				FileWrite(io, t.FileData, StrLen(t.FileData));
-				FileClose(io);
-			}
-		}
-	}
+    for (i = 0;i < lines->NumTokens;i++)
+    {
+     c->Write(c, lines->Token[i]);
+    }
 
-	FreeRpcConfig(&t);
+    UniFreeToken(lines);
+   }
 
-	FreeParamValueList(o);
+   c->Write(c, L"");
 
-	return ret;
+   Free(buf);
+  }
+  else
+  {
+
+   IO *io = FileCreateW(filename);
+
+   if (io == ((void*)0))
+   {
+    c->Write(c, _UU("CMD_ConfigGet_FILE_SAVE_FAILED"));
+
+    ret = ERR_INTERNAL_ERROR;
+   }
+   else
+   {
+    FileWrite(io, t.FileData, StrLen(t.FileData));
+    FileClose(io);
+   }
+  }
+ }
+
+ FreeRpcConfig(&t);
+
+ FreeParamValueList(o);
+
+ return ret;
 }

@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  X ;
-typedef  int /*<<< orphan*/  PACK ;
-typedef  int /*<<< orphan*/  BUF ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * BufToX (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  FreeBuf (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * PackGetBuf (int /*<<< orphan*/ *,char*) ; 
+
+
+
+typedef int X ;
+typedef int PACK ;
+typedef int BUF ;
+
+
+ int * BufToX (int *,int) ;
+ int FreeBuf (int *) ;
+ int * PackGetBuf (int *,char*) ;
 
 X *PackGetX(PACK *p, char *name)
 {
-	X *x;
-	BUF *b;
-	// Validate arguments
-	if (p == NULL || name == NULL)
-	{
-		return NULL;
-	}
+ X *x;
+ BUF *b;
 
-	b = PackGetBuf(p, name);
-	if (b == NULL)
-	{
-		return NULL;
-	}
+ if (p == ((void*)0) || name == ((void*)0))
+ {
+  return ((void*)0);
+ }
 
-	x = BufToX(b, false);
+ b = PackGetBuf(p, name);
+ if (b == ((void*)0))
+ {
+  return ((void*)0);
+ }
 
-	if (x == NULL)
-	{
-		x = BufToX(b, true);
-	}
+ x = BufToX(b, 0);
 
-	FreeBuf(b);
+ if (x == ((void*)0))
+ {
+  x = BufToX(b, 1);
+ }
 
-	return x;
+ FreeBuf(b);
+
+ return x;
 }

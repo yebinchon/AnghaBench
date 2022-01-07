@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  js_State ;
 
-/* Variables and functions */
- double INT_MAX ; 
- double INT_MIN ; 
- int /*<<< orphan*/  js_error (int /*<<< orphan*/ *,char*,int) ; 
- double js_tonumber (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int js_State ;
+
+
+ double INT_MAX ;
+ double INT_MIN ;
+ int js_error (int *,char*,int) ;
+ double js_tonumber (int *,int) ;
 
 __attribute__((used)) static int jsL_checkint(js_State *J, int idx)
 {

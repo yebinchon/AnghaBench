@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_stream_t ;
-typedef  int /*<<< orphan*/  svn_revnum_t ;
-typedef  scalar_t__ svn_node_kind_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_checksum_t ;
-struct ev2_edit_baton {int /*<<< orphan*/  editor; int /*<<< orphan*/  unlock_baton; int /*<<< orphan*/  (* do_unlock ) (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *) ;} ;
-struct change_node {scalar_t__ action; scalar_t__ kind; int /*<<< orphan*/  changing; int /*<<< orphan*/ * contents_abspath; int /*<<< orphan*/  copyfrom_rev; int /*<<< orphan*/ * copyfrom_path; int /*<<< orphan*/  deleting; int /*<<< orphan*/ * props; scalar_t__ contents_changed; scalar_t__ unlock; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
-typedef  int /*<<< orphan*/  apr_array_header_t ;
 
-/* Variables and functions */
- scalar_t__ RESTRUCTURE_ADD ; 
- scalar_t__ RESTRUCTURE_ADD_ABSENT ; 
- scalar_t__ RESTRUCTURE_DELETE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_ASSERT (int) ; 
- int SVN_IS_VALID_REVNUM (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/ * apr_hash_make (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * get_children (struct ev2_edit_baton*,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_checksum_empty_checksum (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_checksum_sha1 ; 
- int /*<<< orphan*/  svn_editor_add_absent (int /*<<< orphan*/ ,char const*,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_editor_add_directory (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_editor_add_file (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_editor_alter_directory (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_editor_alter_file (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_editor_copy (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_editor_delete (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_io_file_checksum2 (int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_node_dir ; 
- scalar_t__ svn_node_file ; 
- scalar_t__ svn_node_unknown ; 
- int /*<<< orphan*/ * svn_stream_empty (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_stream_open_readonly (int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int svn_stream_t ;
+typedef int svn_revnum_t ;
+typedef scalar_t__ svn_node_kind_t ;
+typedef int svn_error_t ;
+typedef int svn_checksum_t ;
+struct ev2_edit_baton {int editor; int unlock_baton; int (* do_unlock ) (int ,char const*,int *) ;} ;
+struct change_node {scalar_t__ action; scalar_t__ kind; int changing; int * contents_abspath; int copyfrom_rev; int * copyfrom_path; int deleting; int * props; scalar_t__ contents_changed; scalar_t__ unlock; } ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
+typedef int apr_array_header_t ;
+
+
+ scalar_t__ RESTRUCTURE_ADD ;
+ scalar_t__ RESTRUCTURE_ADD_ABSENT ;
+ scalar_t__ RESTRUCTURE_DELETE ;
+ int SVN_ERR (int ) ;
+ int SVN_ERR_ASSERT (int) ;
+ int SVN_IS_VALID_REVNUM (int ) ;
+ int * SVN_NO_ERROR ;
+ int * apr_hash_make (int *) ;
+ int * get_children (struct ev2_edit_baton*,char const*,int *) ;
+ int stub1 (int ,char const*,int *) ;
+ int * svn_checksum_empty_checksum (int ,int *) ;
+ int svn_checksum_sha1 ;
+ int svn_editor_add_absent (int ,char const*,scalar_t__,int ) ;
+ int svn_editor_add_directory (int ,char const*,int const*,int *,int ) ;
+ int svn_editor_add_file (int ,char const*,int *,int *,int *,int ) ;
+ int svn_editor_alter_directory (int ,char const*,int ,int *,int *) ;
+ int svn_editor_alter_file (int ,char const*,int ,int *,int *,int *) ;
+ int svn_editor_copy (int ,int *,int ,char const*,int ) ;
+ int svn_editor_delete (int ,char const*,int ) ;
+ int svn_io_file_checksum2 (int **,int *,int ,int *) ;
+ scalar_t__ svn_node_dir ;
+ scalar_t__ svn_node_file ;
+ scalar_t__ svn_node_unknown ;
+ int * svn_stream_empty (int *) ;
+ int svn_stream_open_readonly (int **,int *,int *,int *) ;
 
 __attribute__((used)) static svn_error_t *
 process_actions(struct ev2_edit_baton *eb,
@@ -54,24 +54,24 @@ process_actions(struct ev2_edit_baton *eb,
                 const struct change_node *change,
                 apr_pool_t *scratch_pool)
 {
-  apr_hash_t *props = NULL;
-  svn_stream_t *contents = NULL;
-  svn_checksum_t *checksum = NULL;
+  apr_hash_t *props = ((void*)0);
+  svn_stream_t *contents = ((void*)0);
+  svn_checksum_t *checksum = ((void*)0);
   svn_node_kind_t kind = svn_node_unknown;
 
-  SVN_ERR_ASSERT(change != NULL);
+  SVN_ERR_ASSERT(change != ((void*)0));
 
   if (change->unlock)
     SVN_ERR(eb->do_unlock(eb->unlock_baton, repos_relpath, scratch_pool));
 
   if (change->action == RESTRUCTURE_DELETE)
     {
-      /* If the action was left as RESTRUCTURE_DELETE, then a
-         replacement is not occurring. Just do the delete and bail.  */
+
+
       SVN_ERR(svn_editor_delete(eb->editor, repos_relpath,
                                 change->deleting));
 
-      /* No further work possible on this node.  */
+
       return SVN_NO_ERROR;
     }
   if (change->action == RESTRUCTURE_ADD_ABSENT)
@@ -79,19 +79,19 @@ process_actions(struct ev2_edit_baton *eb,
       SVN_ERR(svn_editor_add_absent(eb->editor, repos_relpath,
                                     change->kind, change->deleting));
 
-      /* No further work possible on this node.  */
+
       return SVN_NO_ERROR;
     }
 
   if (change->contents_changed)
     {
-      /* We can only set text on files. */
-      /* ### validate we aren't overwriting KIND?  */
+
+
       kind = svn_node_file;
 
       if (change->contents_abspath)
         {
-          /* ### the checksum might be in CHANGE->CHECKSUM  */
+
           SVN_ERR(svn_io_file_checksum2(&checksum, change->contents_abspath,
                                         svn_checksum_sha1, scratch_pool));
           SVN_ERR(svn_stream_open_readonly(&contents, change->contents_abspath,
@@ -105,31 +105,31 @@ process_actions(struct ev2_edit_baton *eb,
         }
     }
 
-  if (change->props != NULL)
+  if (change->props != ((void*)0))
     {
-      /* ### validate we aren't overwriting KIND?  */
+
       kind = change->kind;
       props = change->props;
     }
 
   if (change->action == RESTRUCTURE_ADD)
     {
-      /* An add might be a replace. Grab the revnum we're replacing.  */
+
       svn_revnum_t replaces_rev = change->deleting;
 
       kind = change->kind;
 
-      if (change->copyfrom_path != NULL)
+      if (change->copyfrom_path != ((void*)0))
         {
           SVN_ERR(svn_editor_copy(eb->editor, change->copyfrom_path,
                                   change->copyfrom_rev,
                                   repos_relpath, replaces_rev));
-          /* Fall through to possibly make changes post-copy.  */
+
         }
       else
         {
-          /* If no properties were defined, then use an empty set.  */
-          if (props == NULL)
+
+          if (props == ((void*)0))
             props = apr_hash_make(scratch_pool);
 
           if (kind == svn_node_dir)
@@ -143,10 +143,10 @@ process_actions(struct ev2_edit_baton *eb,
             }
           else
             {
-              /* If this file was added, but apply_txdelta() was not
-                 called (i.e., CONTENTS_CHANGED is FALSE), then we're adding
-                 an empty file.  */
-              if (change->contents_abspath == NULL)
+
+
+
+              if (change->contents_abspath == ((void*)0))
                 {
                   contents = svn_stream_empty(scratch_pool);
                   checksum = svn_checksum_empty_checksum(svn_checksum_sha1,
@@ -158,31 +158,21 @@ process_actions(struct ev2_edit_baton *eb,
                                           replaces_rev));
             }
 
-          /* No further work possible on this node.  */
+
           return SVN_NO_ERROR;
         }
     }
 
-#if 0
-  /* There *should* be work for this node. But it seems that isn't true
-     in some cases. Future investigation...  */
-  SVN_ERR_ASSERT(props || contents);
-#endif
+
+
+
+
+
   if (props || contents)
     {
-      /* Changes to properties or content should have indicated the revision
-         it was intending to change.
-
-         Oop. Not true. The node may be locally-added.  */
-#if 0
-      SVN_ERR_ASSERT(SVN_IS_VALID_REVNUM(change->changing));
-#endif
-
-      /* ### we need to gather up the target set of children  */
-
       if (kind == svn_node_dir)
         SVN_ERR(svn_editor_alter_directory(eb->editor, repos_relpath,
-                                           change->changing, NULL, props));
+                                           change->changing, ((void*)0), props));
       else
         SVN_ERR(svn_editor_alter_file(eb->editor, repos_relpath,
                                       change->changing,

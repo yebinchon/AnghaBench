@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_18__   TYPE_6__ ;
-typedef  struct TYPE_17__   TYPE_5__ ;
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ngx_int_t ;
-struct TYPE_14__ {int /*<<< orphan*/  pool; TYPE_1__* connection; } ;
-typedef  TYPE_2__ ngx_http_request_t ;
+
+
+typedef struct TYPE_18__ TYPE_6__ ;
+typedef struct TYPE_17__ TYPE_5__ ;
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+typedef int ngx_int_t ;
+struct TYPE_14__ {int pool; TYPE_1__* connection; } ;
+typedef TYPE_2__ ngx_http_request_t ;
 struct TYPE_15__ {scalar_t__ buffering; TYPE_5__* in; TYPE_2__* request; } ;
-typedef  TYPE_3__ ngx_http_gzip_ctx_t ;
+typedef TYPE_3__ ngx_http_gzip_ctx_t ;
 struct TYPE_16__ {size_t postpone_gzipping; } ;
-typedef  TYPE_4__ ngx_http_gzip_conf_t ;
+typedef TYPE_4__ ngx_http_gzip_conf_t ;
 struct TYPE_17__ {struct TYPE_17__* next; TYPE_6__* buf; } ;
-typedef  TYPE_5__ ngx_chain_t ;
-typedef  scalar_t__ ngx_buf_tag_t ;
+typedef TYPE_5__ ngx_chain_t ;
+typedef scalar_t__ ngx_buf_tag_t ;
 struct TYPE_18__ {size_t last; size_t pos; scalar_t__ tag; scalar_t__ last_buf; scalar_t__ flush; } ;
-typedef  TYPE_6__ ngx_buf_t ;
-struct TYPE_13__ {int /*<<< orphan*/  buffered; } ;
+typedef TYPE_6__ ngx_buf_t ;
+struct TYPE_13__ {int buffered; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NGX_DONE ; 
- int /*<<< orphan*/  NGX_ERROR ; 
- int /*<<< orphan*/  NGX_HTTP_GZIP_BUFFERED ; 
- int /*<<< orphan*/  NGX_OK ; 
- TYPE_5__* ngx_alloc_chain_link (int /*<<< orphan*/ ) ; 
- size_t ngx_cpymem (size_t,size_t,size_t) ; 
- TYPE_6__* ngx_create_temp_buf (int /*<<< orphan*/ ,size_t) ; 
- TYPE_4__* ngx_http_get_module_loc_conf (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_http_gzip_filter_module ; 
+
+ int NGX_DONE ;
+ int NGX_ERROR ;
+ int NGX_HTTP_GZIP_BUFFERED ;
+ int NGX_OK ;
+ TYPE_5__* ngx_alloc_chain_link (int ) ;
+ size_t ngx_cpymem (size_t,size_t,size_t) ;
+ TYPE_6__* ngx_create_temp_buf (int ,size_t) ;
+ TYPE_4__* ngx_http_get_module_loc_conf (TYPE_2__*,int ) ;
+ int ngx_http_gzip_filter_module ;
 
 __attribute__((used)) static ngx_int_t
 ngx_http_gzip_filter_buffer(ngx_http_gzip_ctx_t *ctx, ngx_chain_t *in)
 {
-    size_t                 size, buffered;
-    ngx_buf_t             *b, *buf;
-    ngx_chain_t           *cl, **ll;
-    ngx_http_request_t    *r;
-    ngx_http_gzip_conf_t  *conf;
+    size_t size, buffered;
+    ngx_buf_t *b, *buf;
+    ngx_chain_t *cl, **ll;
+    ngx_http_request_t *r;
+    ngx_http_gzip_conf_t *conf;
 
     r = ctx->request;
 
@@ -66,7 +66,7 @@ ngx_http_gzip_filter_buffer(ngx_http_gzip_ctx_t *ctx, ngx_chain_t *in)
 
     while (in) {
         cl = ngx_alloc_chain_link(r->pool);
-        if (cl == NULL) {
+        if (cl == ((void*)0)) {
             return NGX_ERROR;
         }
 
@@ -82,7 +82,7 @@ ngx_http_gzip_filter_buffer(ngx_http_gzip_ctx_t *ctx, ngx_chain_t *in)
         if (ctx->buffering && size) {
 
             buf = ngx_create_temp_buf(r->pool, size);
-            if (buf == NULL) {
+            if (buf == ((void*)0)) {
                 return NGX_ERROR;
             }
 
@@ -103,7 +103,7 @@ ngx_http_gzip_filter_buffer(ngx_http_gzip_ctx_t *ctx, ngx_chain_t *in)
         in = in->next;
     }
 
-    *ll = NULL;
+    *ll = ((void*)0);
 
     return ctx->buffering ? NGX_OK : NGX_DONE;
 }

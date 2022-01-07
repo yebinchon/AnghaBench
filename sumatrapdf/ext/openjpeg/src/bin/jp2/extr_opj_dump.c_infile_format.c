@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int J2K_CFMT ; 
- int /*<<< orphan*/  J2K_CODESTREAM_MAGIC ; 
- int JP2_CFMT ; 
- int /*<<< orphan*/  JP2_MAGIC ; 
- int /*<<< orphan*/  JP2_RFC3745_MAGIC ; 
- int JPT_CFMT ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char const*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char const*,char const*) ; 
- int /*<<< orphan*/  fputs (char*,int /*<<< orphan*/ ) ; 
- size_t fread (unsigned char*,int,int,int /*<<< orphan*/ *) ; 
- int get_file_format (char const*) ; 
- scalar_t__ memcmp (unsigned char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  memset (unsigned char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  stderr ; 
- int strlen (char const*) ; 
+
+
+
+typedef int FILE ;
+
+
+ int J2K_CFMT ;
+ int J2K_CODESTREAM_MAGIC ;
+ int JP2_CFMT ;
+ int JP2_MAGIC ;
+ int JP2_RFC3745_MAGIC ;
+ int JPT_CFMT ;
+ int fclose (int *) ;
+ int * fopen (char const*,char*) ;
+ int fprintf (int ,char*,char const*,char const*) ;
+ int fputs (char*,int ) ;
+ size_t fread (unsigned char*,int,int,int *) ;
+ int get_file_format (char const*) ;
+ scalar_t__ memcmp (unsigned char*,int ,int) ;
+ int memset (unsigned char*,int ,int) ;
+ int stderr ;
+ int strlen (char const*) ;
 
 __attribute__((used)) static int infile_format(const char *fname)
 {
@@ -40,7 +40,7 @@ __attribute__((used)) static int infile_format(const char *fname)
 
     reader = fopen(fname, "rb");
 
-    if (reader == NULL) {
+    if (reader == ((void*)0)) {
         return -1;
     }
 

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {size_t entropylen; scalar_t__ entropy; int /*<<< orphan*/  entropycnt; } ;
-typedef  TYPE_1__ TEST_CTX ;
-typedef  int /*<<< orphan*/  RAND_DRBG ;
 
-/* Variables and functions */
- scalar_t__ RAND_DRBG_get_ex_data (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  app_data_index ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {size_t entropylen; scalar_t__ entropy; int entropycnt; } ;
+typedef TYPE_1__ TEST_CTX ;
+typedef int RAND_DRBG ;
+
+
+ scalar_t__ RAND_DRBG_get_ex_data (int *,int ) ;
+ int app_data_index ;
 
 __attribute__((used)) static size_t kat_entropy(RAND_DRBG *drbg, unsigned char **pout,
                           int entropy, size_t min_len, size_t max_len,

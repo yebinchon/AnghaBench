@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct mp_log {int dummy; } ;
-struct drm_object {TYPE_2__* props; TYPE_1__** props_info; int /*<<< orphan*/  type; int /*<<< orphan*/  id; } ;
+struct drm_object {TYPE_2__* props; TYPE_1__** props_info; int type; int id; } ;
 struct TYPE_4__ {int count_props; scalar_t__* prop_values; } ;
-struct TYPE_3__ {int /*<<< orphan*/  name; } ;
+struct TYPE_3__ {int name; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mp_err (struct mp_log*,char*,int /*<<< orphan*/ ,long long,...) ; 
+
+ int mp_err (struct mp_log*,char*,int ,long long,...) ;
 
 void drm_object_print_info(struct mp_log *log, struct drm_object *object)
 {

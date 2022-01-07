@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int nb_channels; size_t coeff_per_sb_select; int*** quantized_coeffs; int*** tone_level_idx_base; scalar_t__ superblocktype_2_3; int*** tone_level_idx; int**** tone_level_idx_hi1; int*** tone_level_idx_mid; int** tone_level_idx_hi2; void**** tone_level; int /*<<< orphan*/  sub_sampling; } ;
-typedef  TYPE_1__ QDM2Context ;
 
-/* Variables and functions */
- int QDM2_SB_USED (int /*<<< orphan*/ ) ; 
- int** coeff_per_sb_for_dequant ; 
- int*** dequant_table ; 
- void*** fft_tone_level_table ; 
- int* last_coeff ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int nb_channels; size_t coeff_per_sb_select; int*** quantized_coeffs; int*** tone_level_idx_base; scalar_t__ superblocktype_2_3; int*** tone_level_idx; int**** tone_level_idx_hi1; int*** tone_level_idx_mid; int** tone_level_idx_hi2; void**** tone_level; int sub_sampling; } ;
+typedef TYPE_1__ QDM2Context ;
+
+
+ int QDM2_SB_USED (int ) ;
+ int** coeff_per_sb_for_dequant ;
+ int*** dequant_table ;
+ void*** fft_tone_level_table ;
+ int* last_coeff ;
 
 __attribute__((used)) static void fill_tone_level_array(QDM2Context *q, int flag)
 {

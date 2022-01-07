@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct tegra_mc_softc {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MC_INTMASK ; 
- int /*<<< orphan*/  MC_INTSTATUS ; 
- int /*<<< orphan*/  MC_INT_INT_MASK ; 
- int /*<<< orphan*/  WR4 (struct tegra_mc_softc*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int MC_INTMASK ;
+ int MC_INTSTATUS ;
+ int MC_INT_INT_MASK ;
+ int WR4 (struct tegra_mc_softc*,int ,int ) ;
 
 __attribute__((used)) static void
 tegra_mc_init_hw(struct tegra_mc_softc *sc)
 {
 
-	/* Disable and acknowledge all interrupts */
-	WR4(sc, MC_INTMASK, 0);
-	WR4(sc, MC_INTSTATUS, MC_INT_INT_MASK);
+
+ WR4(sc, MC_INTMASK, 0);
+ WR4(sc, MC_INTSTATUS, MC_INT_INT_MASK);
 }

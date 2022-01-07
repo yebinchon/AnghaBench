@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  IDispatch_iface; } ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  scalar_t__ HRESULT ;
-typedef  TYPE_1__ AutomationObject ;
 
-/* Variables and functions */
- scalar_t__ CLASS_E_NOAGGREGATION ; 
- scalar_t__ E_OUTOFMEMORY ; 
- int /*<<< orphan*/  Installer_tid ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ *,void**) ; 
- scalar_t__ init_automation_object (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_1__* msi_alloc (int) ; 
- int /*<<< orphan*/  msi_free (TYPE_1__*) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int IDispatch_iface; } ;
+typedef int IUnknown ;
+typedef scalar_t__ HRESULT ;
+typedef TYPE_1__ AutomationObject ;
+
+
+ scalar_t__ CLASS_E_NOAGGREGATION ;
+ scalar_t__ E_OUTOFMEMORY ;
+ int Installer_tid ;
+ scalar_t__ S_OK ;
+ int TRACE (char*,int *,void**) ;
+ scalar_t__ init_automation_object (TYPE_1__*,int ,int ) ;
+ TYPE_1__* msi_alloc (int) ;
+ int msi_free (TYPE_1__*) ;
 
 HRESULT create_msiserver(IUnknown *outer, void **ppObj)
 {

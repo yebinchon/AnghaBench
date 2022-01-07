@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint32_t ;
 
-/* Variables and functions */
- int ROTL32 (int,int) ; 
- int fmix32 (int) ; 
- int getblock32 (int const*,int) ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+
+
+ int ROTL32 (int,int) ;
+ int fmix32 (int) ;
+ int getblock32 (int const*,int) ;
 
 uint32_t MurmurHash3_x86_32 ( const void * key, size_t length)
 {
@@ -28,8 +28,8 @@ uint32_t MurmurHash3_x86_32 ( const void * key, size_t length)
   uint32_t c1 = 0xcc9e2d51;
   uint32_t c2 = 0x1b873593;
 
-  //----------
-  // body
+
+
 
   const uint32_t * blocks = (const uint32_t *)(data + nblocks*4);
 
@@ -46,8 +46,8 @@ uint32_t MurmurHash3_x86_32 ( const void * key, size_t length)
     h1 = h1*5+0xe6546b64;
   }
 
-  //----------
-  // tail
+
+
 
   const uint8_t * tail = (const uint8_t*)(data + nblocks*4);
 
@@ -61,13 +61,13 @@ uint32_t MurmurHash3_x86_32 ( const void * key, size_t length)
           k1 *= c1; k1 = ROTL32(k1,15); k1 *= c2; h1 ^= k1;
   };
 
-  //----------
-  // finalization
+
+
 
   h1 ^= length;
 
   h1 = fmix32(h1);
 
-  //*(uint32_t*)out = h1;
+
   return h1;
 }

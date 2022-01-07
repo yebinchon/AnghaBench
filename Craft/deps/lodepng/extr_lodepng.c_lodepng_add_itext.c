@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {char** itext_keys; int itext_num; char** itext_langtags; char** itext_transkeys; char** itext_strings; } ;
-typedef  TYPE_1__ LodePNGInfo ;
+typedef TYPE_1__ LodePNGInfo ;
 
-/* Variables and functions */
- int /*<<< orphan*/  lodepng_free (char**) ; 
- scalar_t__ lodepng_realloc (char**,int) ; 
- int /*<<< orphan*/  string_init (char**) ; 
- int /*<<< orphan*/  string_set (char**,char const*) ; 
+
+ int lodepng_free (char**) ;
+ scalar_t__ lodepng_realloc (char**,int) ;
+ int string_init (char**) ;
+ int string_set (char**,char const*) ;
 
 unsigned lodepng_add_itext(LodePNGInfo* info, const char* key, const char* langtag,
                            const char* transkey, const char* str)
@@ -33,7 +33,7 @@ unsigned lodepng_add_itext(LodePNGInfo* info, const char* key, const char* langt
     lodepng_free(new_langtags);
     lodepng_free(new_transkeys);
     lodepng_free(new_strings);
-    return 83; /*alloc fail*/
+    return 83;
   }
 
   info->itext_num++;

@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vbdisp_t ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  VARIANT ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/ * BSTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEFAULT_UNREACHABLE ; 
- int /*<<< orphan*/  E_FAIL ; 
- int /*<<< orphan*/  E_NOTIMPL ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FIXME (char*,int) ; 
- int SysStringLen (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TRACE (char*) ; 
- scalar_t__ VT_BSTR ; 
- scalar_t__ VT_NULL ; 
- int /*<<< orphan*/ * V_BSTR (int /*<<< orphan*/ *) ; 
- scalar_t__ V_VT (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  assert (int) ; 
- int debugstr_variant (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  return_int (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  return_null (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * strstrW (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  to_int (int /*<<< orphan*/ *,int*) ; 
+
+
+
+typedef int vbdisp_t ;
+typedef int WCHAR ;
+typedef int VARIANT ;
+typedef int HRESULT ;
+typedef int * BSTR ;
+
+
+ int DEFAULT_UNREACHABLE ;
+ int E_FAIL ;
+ int E_NOTIMPL ;
+ scalar_t__ FAILED (int ) ;
+ int FIXME (char*,int) ;
+ int SysStringLen (int *) ;
+ int TRACE (char*) ;
+ scalar_t__ VT_BSTR ;
+ scalar_t__ VT_NULL ;
+ int * V_BSTR (int *) ;
+ scalar_t__ V_VT (int *) ;
+ int assert (int) ;
+ int debugstr_variant (int *) ;
+ int return_int (int *,int) ;
+ int return_null (int *) ;
+ int * strstrW (int *,int *) ;
+ int to_int (int *,int*) ;
 
 __attribute__((used)) static HRESULT Global_InStr(vbdisp_t *This, VARIANT *args, unsigned args_cnt, VARIANT *res)
 {
@@ -48,7 +48,7 @@ __attribute__((used)) static HRESULT Global_InStr(vbdisp_t *This, VARIANT *args,
 
     switch(args_cnt) {
     case 2:
-        startv = NULL;
+        startv = ((void*)0);
         str1v = args;
         str2v = args+1;
         break;

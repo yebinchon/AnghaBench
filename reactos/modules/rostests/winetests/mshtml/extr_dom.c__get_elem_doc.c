@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  IHTMLElement ;
-typedef  int /*<<< orphan*/  IHTMLDocument2 ;
-typedef  int /*<<< orphan*/  IDispatch ;
-typedef  scalar_t__ HRESULT ;
 
-/* Variables and functions */
- scalar_t__ IDispatch_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IDispatch_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IHTMLElement_get_document (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IID_IHTMLDocument2 ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/ * _get_elem_iface (unsigned int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
+
+
+
+typedef int IUnknown ;
+typedef int IHTMLElement ;
+typedef int IHTMLDocument2 ;
+typedef int IDispatch ;
+typedef scalar_t__ HRESULT ;
+
+
+ scalar_t__ IDispatch_QueryInterface (int *,int *,void**) ;
+ int IDispatch_Release (int *) ;
+ scalar_t__ IHTMLElement_get_document (int *,int **) ;
+ int IID_IHTMLDocument2 ;
+ scalar_t__ S_OK ;
+ int * _get_elem_iface (unsigned int,int *) ;
+ int ok (int,char*,...) ;
 
 __attribute__((used)) static IHTMLDocument2 *_get_elem_doc(unsigned line, IUnknown *unk)
 {
@@ -32,10 +32,10 @@ __attribute__((used)) static IHTMLDocument2 *_get_elem_doc(unsigned line, IUnkno
     IDispatch *disp;
     HRESULT hres;
 
-    disp = NULL;
+    disp = ((void*)0);
     hres = IHTMLElement_get_document(elem, &disp);
     ok(hres == S_OK, "get_document failed: %08x\n", hres);
-    ok(disp != NULL, "disp == NULL\n");
+    ok(disp != ((void*)0), "disp == NULL\n");
 
     hres = IDispatch_QueryInterface(disp, &IID_IHTMLDocument2, (void**)&doc);
     IDispatch_Release(disp);

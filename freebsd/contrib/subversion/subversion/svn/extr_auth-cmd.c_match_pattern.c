@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int APR_FNM_CASE_BLIND ; 
- scalar_t__ APR_SUCCESS ; 
- scalar_t__ apr_fnmatch (char const*,char const*,int) ; 
- char* apr_psprintf (int /*<<< orphan*/ *,char*,char const*) ; 
+
+
+
+typedef int svn_boolean_t ;
+typedef int apr_pool_t ;
+
+
+ int APR_FNM_CASE_BLIND ;
+ scalar_t__ APR_SUCCESS ;
+ scalar_t__ apr_fnmatch (char const*,char const*,int) ;
+ char* apr_psprintf (int *,char*,char const*) ;
 
 __attribute__((used)) static svn_boolean_t
 match_pattern(const char *pattern, const char *value,

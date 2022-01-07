@@ -1,53 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ WELL_KNOWN_SID_TYPE ;
-typedef  int /*<<< orphan*/  PSID ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACE4_ANONYMOUS ; 
- int /*<<< orphan*/  ACE4_AUTHENTICATED ; 
- int /*<<< orphan*/  ACE4_BATCH ; 
- int /*<<< orphan*/  ACE4_DIALUP ; 
- int /*<<< orphan*/  ACE4_EVERYONE ; 
- int /*<<< orphan*/  ACE4_GROUP ; 
- int /*<<< orphan*/  ACE4_INTERACTIVE ; 
- int /*<<< orphan*/  ACE4_NETWORK ; 
- int /*<<< orphan*/  ACE4_NOBODY ; 
- int /*<<< orphan*/  ACE4_OWNER ; 
- int /*<<< orphan*/  ACE4_SERVICE ; 
- int /*<<< orphan*/  ACLLVL ; 
- int FALSE ; 
- int IsWellKnownSid (int /*<<< orphan*/ ,scalar_t__) ; 
- int TRUE ; 
-#define  WinAnonymousSid 141 
-#define  WinAuthenticatedUserSid 140 
-#define  WinBatchSid 139 
-#define  WinBuiltinUsersSid 138 
-#define  WinCreatorGroupSid 137 
-#define  WinCreatorOwnerSid 136 
-#define  WinDialupSid 135 
-#define  WinInteractiveSid 134 
-#define  WinLocalServiceSid 133 
-#define  WinNetworkServiceSid 132 
-#define  WinNetworkSid 131 
-#define  WinNullSid 130 
-#define  WinServiceSid 129 
-#define  WinWorldSid 128 
- int /*<<< orphan*/  dprintf (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  memcpy (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strlen (int /*<<< orphan*/ ) ; 
 
-__attribute__((used)) static int is_well_known_sid(PSID sid, char *who) 
+
+
+typedef scalar_t__ WELL_KNOWN_SID_TYPE ;
+typedef int PSID ;
+
+
+ int ACE4_ANONYMOUS ;
+ int ACE4_AUTHENTICATED ;
+ int ACE4_BATCH ;
+ int ACE4_DIALUP ;
+ int ACE4_EVERYONE ;
+ int ACE4_GROUP ;
+ int ACE4_INTERACTIVE ;
+ int ACE4_NETWORK ;
+ int ACE4_NOBODY ;
+ int ACE4_OWNER ;
+ int ACE4_SERVICE ;
+ int ACLLVL ;
+ int FALSE ;
+ int IsWellKnownSid (int ,scalar_t__) ;
+ int TRUE ;
+ int dprintf (int ,char*,int) ;
+ int memcpy (char*,int ,int ) ;
+ int strlen (int ) ;
+
+__attribute__((used)) static int is_well_known_sid(PSID sid, char *who)
 {
     int status, i;
     for (i = 0; i < 78; i++) {
@@ -56,41 +42,41 @@ __attribute__((used)) static int is_well_known_sid(PSID sid, char *who)
         else {
             dprintf(ACLLVL, "WELL_KNOWN_SID_TYPE %d\n", i);
             switch((WELL_KNOWN_SID_TYPE)i) {
-            case WinCreatorOwnerSid:
-                memcpy(who, ACE4_OWNER, strlen(ACE4_OWNER)+1); 
+            case 136:
+                memcpy(who, ACE4_OWNER, strlen(ACE4_OWNER)+1);
                 return TRUE;
-            case WinNullSid:
-                memcpy(who, ACE4_NOBODY, strlen(ACE4_NOBODY)+1); 
+            case 130:
+                memcpy(who, ACE4_NOBODY, strlen(ACE4_NOBODY)+1);
                 return TRUE;
-            case WinAnonymousSid:
-                memcpy(who, ACE4_ANONYMOUS, strlen(ACE4_ANONYMOUS)+1); 
+            case 141:
+                memcpy(who, ACE4_ANONYMOUS, strlen(ACE4_ANONYMOUS)+1);
                 return TRUE;
-            case WinWorldSid:
-                memcpy(who, ACE4_EVERYONE, strlen(ACE4_EVERYONE)+1); 
+            case 128:
+                memcpy(who, ACE4_EVERYONE, strlen(ACE4_EVERYONE)+1);
                 return TRUE;
-            case WinCreatorGroupSid:
-            case WinBuiltinUsersSid:
-                memcpy(who, ACE4_GROUP, strlen(ACE4_GROUP)+1); 
+            case 137:
+            case 138:
+                memcpy(who, ACE4_GROUP, strlen(ACE4_GROUP)+1);
                 return TRUE;
-            case WinAuthenticatedUserSid:
-                memcpy(who, ACE4_AUTHENTICATED, strlen(ACE4_AUTHENTICATED)+1); 
+            case 140:
+                memcpy(who, ACE4_AUTHENTICATED, strlen(ACE4_AUTHENTICATED)+1);
                 return TRUE;
-            case WinDialupSid:
-                memcpy(who, ACE4_DIALUP, strlen(ACE4_DIALUP)+1); 
+            case 135:
+                memcpy(who, ACE4_DIALUP, strlen(ACE4_DIALUP)+1);
                 return TRUE;
-            case WinNetworkSid:
-                memcpy(who, ACE4_NETWORK, strlen(ACE4_NETWORK)+1); 
+            case 131:
+                memcpy(who, ACE4_NETWORK, strlen(ACE4_NETWORK)+1);
                 return TRUE;
-            case WinBatchSid:
-                memcpy(who, ACE4_BATCH, strlen(ACE4_BATCH)+1); 
+            case 139:
+                memcpy(who, ACE4_BATCH, strlen(ACE4_BATCH)+1);
                 return TRUE;
-            case WinInteractiveSid:
-                memcpy(who, ACE4_INTERACTIVE, strlen(ACE4_INTERACTIVE)+1); 
+            case 134:
+                memcpy(who, ACE4_INTERACTIVE, strlen(ACE4_INTERACTIVE)+1);
                 return TRUE;
-            case WinNetworkServiceSid:
-            case WinLocalServiceSid:
-            case WinServiceSid:
-                memcpy(who, ACE4_SERVICE, strlen(ACE4_SERVICE)+1); 
+            case 132:
+            case 133:
+            case 129:
+                memcpy(who, ACE4_SERVICE, strlen(ACE4_SERVICE)+1);
                 return TRUE;
             default: return FALSE;
             }

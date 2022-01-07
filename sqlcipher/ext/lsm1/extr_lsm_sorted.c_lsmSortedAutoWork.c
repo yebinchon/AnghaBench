@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_13__ {scalar_t__ pWorker; scalar_t__ nTransOpen; scalar_t__ pClient; int /*<<< orphan*/  aSnapshot; int /*<<< orphan*/  pEnv; scalar_t__ pCsr; int /*<<< orphan*/  nMerge; } ;
-typedef  TYPE_1__ lsm_db ;
+
+
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+struct TYPE_13__ {scalar_t__ pWorker; scalar_t__ nTransOpen; scalar_t__ pClient; int aSnapshot; int pEnv; scalar_t__ pCsr; int nMerge; } ;
+typedef TYPE_1__ lsm_db ;
 struct TYPE_14__ {struct TYPE_14__* pNext; } ;
-typedef  TYPE_2__ Level ;
+typedef TYPE_2__ Level ;
 
-/* Variables and functions */
- int LSM_BUSY ; 
- int LSM_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- int doLsmWork (TYPE_1__*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int lsmCheckpointDeserialize (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__*) ; 
- int lsmCheckpointLoad (TYPE_1__*,int /*<<< orphan*/ ) ; 
- TYPE_2__* lsmDbSnapshotLevel (scalar_t__) ; 
- int /*<<< orphan*/  lsmFreeSnapshot (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  lsmLogMessage (TYPE_1__*,int,char*,int,int,int) ; 
- int /*<<< orphan*/  lsmMCursorFreeCache (TYPE_1__*) ; 
- int lsmRestoreCursors (TYPE_1__*) ; 
- int lsmSaveCursors (TYPE_1__*) ; 
- scalar_t__ lsmTreeHasOld (TYPE_1__*) ; 
+
+ int LSM_BUSY ;
+ int LSM_OK ;
+ int assert (int) ;
+ int doLsmWork (TYPE_1__*,int ,int,int ) ;
+ int lsmCheckpointDeserialize (TYPE_1__*,int ,int ,scalar_t__*) ;
+ int lsmCheckpointLoad (TYPE_1__*,int ) ;
+ TYPE_2__* lsmDbSnapshotLevel (scalar_t__) ;
+ int lsmFreeSnapshot (int ,scalar_t__) ;
+ int lsmLogMessage (TYPE_1__*,int,char*,int,int,int) ;
+ int lsmMCursorFreeCache (TYPE_1__*) ;
+ int lsmRestoreCursors (TYPE_1__*) ;
+ int lsmSaveCursors (TYPE_1__*) ;
+ scalar_t__ lsmTreeHasOld (TYPE_1__*) ;
 
 int lsmSortedAutoWork(
-  lsm_db *pDb,                    /* Database handle */
-  int nUnit                       /* Pages of data written to in-memory tree */
+  lsm_db *pDb,
+  int nUnit
 ){
-  int rc = LSM_OK;                /* Return code */
-  int nDepth = 0;                 /* Current height of tree (longest path) */
-  Level *pLevel;                  /* Used to iterate through levels */
+  int rc = LSM_OK;
+  int nDepth = 0;
+  Level *pLevel;
   int bRestore = 0;
 
   assert( pDb->pWorker==0 );
   assert( pDb->nTransOpen>0 );
 
-  /* Determine how many units of work to do before returning. One unit of
-  ** work is achieved by writing one page (~4KB) of merged data.  */
+
+
   for(pLevel=lsmDbSnapshotLevel(pDb->pClient); pLevel; pLevel=pLevel->pNext){
-    /* nDepth += LSM_MAX(1, pLevel->nRight); */
+
     nDepth += 1;
   }
   if( lsmTreeHasOld(pDb) ){
@@ -58,13 +58,13 @@ int lsmSortedAutoWork(
   }
 
   if( nDepth>0 ){
-    int nRemaining;               /* Units of work to do before returning */
+    int nRemaining;
 
     nRemaining = nUnit * nDepth;
-#ifdef LSM_LOG_WORK
-    lsmLogMessage(pDb, rc, "lsmSortedAutoWork(): %d*%d = %d pages", 
-        nUnit, nDepth, nRemaining);
-#endif
+
+
+
+
     assert( nRemaining>=0 );
     rc = doLsmWork(pDb, pDb->nMerge, nRemaining, 0);
     if( rc==LSM_BUSY ) rc = LSM_OK;

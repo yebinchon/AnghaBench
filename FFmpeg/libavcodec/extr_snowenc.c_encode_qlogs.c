@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int spatial_decomposition_count; TYPE_2__* plane; int /*<<< orphan*/  header_state; int /*<<< orphan*/  c; int /*<<< orphan*/  nb_planes; } ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int spatial_decomposition_count; TYPE_2__* plane; int header_state; int c; int nb_planes; } ;
 struct TYPE_6__ {TYPE_1__** band; } ;
-struct TYPE_5__ {int /*<<< orphan*/  qlog; } ;
-typedef  TYPE_3__ SnowContext ;
+struct TYPE_5__ {int qlog; } ;
+typedef TYPE_3__ SnowContext ;
 
-/* Variables and functions */
- int FFMIN (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  put_symbol (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+ int FFMIN (int ,int) ;
+ int put_symbol (int *,int ,int ,int) ;
 
 __attribute__((used)) static void encode_qlogs(SnowContext *s){
     int plane_index, level, orientation;

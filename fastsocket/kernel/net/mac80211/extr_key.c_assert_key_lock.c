@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ieee80211_local {int /*<<< orphan*/  key_mtx; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  lockdep_assert_held (int /*<<< orphan*/ *) ; 
+
+
+
+struct ieee80211_local {int key_mtx; } ;
+
+
+ int lockdep_assert_held (int *) ;
 
 __attribute__((used)) static void assert_key_lock(struct ieee80211_local *local)
 {
-	lockdep_assert_held(&local->key_mtx);
+ lockdep_assert_held(&local->key_mtx);
 }

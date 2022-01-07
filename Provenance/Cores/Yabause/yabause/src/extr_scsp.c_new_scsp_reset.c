@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct Scsp {TYPE_2__* slots; } ;
-struct TYPE_3__ {int attenuation; int num; int /*<<< orphan*/  envelope; } ;
+struct TYPE_3__ {int attenuation; int num; int envelope; } ;
 struct TYPE_4__ {TYPE_1__ state; } ;
-typedef  int /*<<< orphan*/  ScspDsp ;
+typedef int ScspDsp ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RELEASE ; 
- int /*<<< orphan*/  fill_alfo_tables () ; 
- int /*<<< orphan*/  fill_plfo_tables () ; 
- int /*<<< orphan*/  memset (struct Scsp*,int /*<<< orphan*/ ,int) ; 
- struct Scsp scsp_dsp ; 
+
+ int RELEASE ;
+ int fill_alfo_tables () ;
+ int fill_plfo_tables () ;
+ int memset (struct Scsp*,int ,int) ;
+ struct Scsp scsp_dsp ;
 
 void new_scsp_reset(struct Scsp* s)
 {

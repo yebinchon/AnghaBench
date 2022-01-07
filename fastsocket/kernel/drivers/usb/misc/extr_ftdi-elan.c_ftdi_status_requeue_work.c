@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct usb_ftdi {int /*<<< orphan*/  kref; int /*<<< orphan*/  status_work; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ftdi_elan_delete ; 
- int /*<<< orphan*/  kref_put (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  queue_delayed_work (int /*<<< orphan*/ ,int /*<<< orphan*/ *,unsigned int) ; 
- int /*<<< orphan*/  status_queue ; 
+
+
+
+struct usb_ftdi {int kref; int status_work; } ;
+
+
+ int ftdi_elan_delete ;
+ int kref_put (int *,int ) ;
+ int queue_delayed_work (int ,int *,unsigned int) ;
+ int status_queue ;
 
 __attribute__((used)) static void ftdi_status_requeue_work(struct usb_ftdi *ftdi, unsigned int delta)
 {
-	if (!queue_delayed_work(status_queue, &ftdi->status_work, delta))
-		kref_put(&ftdi->kref, ftdi_elan_delete);
+ if (!queue_delayed_work(status_queue, &ftdi->status_work, delta))
+  kref_put(&ftdi->kref, ftdi_elan_delete);
 }

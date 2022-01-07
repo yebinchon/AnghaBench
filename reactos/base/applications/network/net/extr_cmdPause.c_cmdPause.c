@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  SERVICE_STATUS ;
-typedef  int /*<<< orphan*/ * SC_HANDLE ;
-typedef  int INT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CloseServiceHandle (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ConPrintf (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ConPuts (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ControlService (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GetLastError () ; 
- int /*<<< orphan*/  MSG_PAUSE_HELP ; 
- int /*<<< orphan*/  MSG_PAUSE_SYNTAX ; 
- int /*<<< orphan*/ * OpenSCManager (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * OpenService (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PrintMessageString (int) ; 
- int /*<<< orphan*/  PrintNetMessage (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SC_MANAGER_ENUMERATE_SERVICE ; 
- int /*<<< orphan*/  SERVICES_ACTIVE_DATABASE ; 
- int /*<<< orphan*/  SERVICE_CONTROL_PAUSE ; 
- int /*<<< orphan*/  SERVICE_PAUSE_CONTINUE ; 
- int /*<<< orphan*/  StdErr ; 
- int /*<<< orphan*/  StdOut ; 
- scalar_t__ _wcsicmp (int /*<<< orphan*/ *,char*) ; 
+
+
+
+typedef int WCHAR ;
+typedef int SERVICE_STATUS ;
+typedef int * SC_HANDLE ;
+typedef int INT ;
+
+
+ int CloseServiceHandle (int *) ;
+ int ConPrintf (int ,char*,int ) ;
+ int ConPuts (int ,char*) ;
+ int ControlService (int *,int ,int *) ;
+ int GetLastError () ;
+ int MSG_PAUSE_HELP ;
+ int MSG_PAUSE_SYNTAX ;
+ int * OpenSCManager (int *,int ,int ) ;
+ int * OpenService (int *,int *,int ) ;
+ int PrintMessageString (int) ;
+ int PrintNetMessage (int ) ;
+ int SC_MANAGER_ENUMERATE_SERVICE ;
+ int SERVICES_ACTIVE_DATABASE ;
+ int SERVICE_CONTROL_PAUSE ;
+ int SERVICE_PAUSE_CONTINUE ;
+ int StdErr ;
+ int StdOut ;
+ scalar_t__ _wcsicmp (int *,char*) ;
 
 INT cmdPause(INT argc, WCHAR **argv)
 {
-    SC_HANDLE hManager = NULL;
-    SC_HANDLE hService = NULL;
+    SC_HANDLE hManager = ((void*)0);
+    SC_HANDLE hService = ((void*)0);
     SERVICE_STATUS status;
     INT nError = 0;
     INT i;
@@ -63,8 +63,8 @@ INT cmdPause(INT argc, WCHAR **argv)
         }
     }
 
-    hManager = OpenSCManager(NULL, SERVICES_ACTIVE_DATABASE, SC_MANAGER_ENUMERATE_SERVICE);
-    if (hManager == NULL)
+    hManager = OpenSCManager(((void*)0), SERVICES_ACTIVE_DATABASE, SC_MANAGER_ENUMERATE_SERVICE);
+    if (hManager == ((void*)0))
     {
         ConPrintf(StdErr, L"[OpenSCManager] Error: %ld\n", GetLastError());
         nError = 1;
@@ -72,7 +72,7 @@ INT cmdPause(INT argc, WCHAR **argv)
     }
 
     hService = OpenService(hManager, argv[2], SERVICE_PAUSE_CONTINUE);
-    if (hService == NULL)
+    if (hService == ((void*)0))
     {
         ConPrintf(StdErr, L"[OpenService] Error: %ld\n", GetLastError());
         nError = 1;
@@ -85,10 +85,10 @@ INT cmdPause(INT argc, WCHAR **argv)
     }
 
 done:
-    if (hService != NULL)
+    if (hService != ((void*)0))
         CloseServiceHandle(hService);
 
-    if (hManager != NULL)
+    if (hManager != ((void*)0))
         CloseServiceHandle(hManager);
 
     return nError;

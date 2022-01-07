@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct AsnDecodeSequenceItem {int size; int minSize; } ;
-typedef  int DWORD ;
-typedef  scalar_t__ BYTE ;
-typedef  int BOOL ;
+typedef int DWORD ;
+typedef scalar_t__ BYTE ;
+typedef int BOOL ;
 
-/* Variables and functions */
- scalar_t__ const ASN_SEQUENCE ; 
- int CRYPT_AsnDecodeSequenceItems (int,struct AsnDecodeSequenceItem*,int,scalar_t__ const*,int,int,void*,scalar_t__*,int*) ; 
- int /*<<< orphan*/  CRYPT_E_ASN1_BADTAG ; 
- int /*<<< orphan*/  CRYPT_E_ASN1_CORRUPT ; 
- int CRYPT_GetLen (scalar_t__ const*,int,int*) ; 
- int /*<<< orphan*/  ERROR_MORE_DATA ; 
- int FALSE ; 
- int GET_LEN_BYTES (scalar_t__ const) ; 
- int GetLastError () ; 
- int /*<<< orphan*/  SetLastError (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,...) ; 
- int /*<<< orphan*/  memset (void*,int /*<<< orphan*/ ,int) ; 
+
+ scalar_t__ const ASN_SEQUENCE ;
+ int CRYPT_AsnDecodeSequenceItems (int,struct AsnDecodeSequenceItem*,int,scalar_t__ const*,int,int,void*,scalar_t__*,int*) ;
+ int CRYPT_E_ASN1_BADTAG ;
+ int CRYPT_E_ASN1_CORRUPT ;
+ int CRYPT_GetLen (scalar_t__ const*,int,int*) ;
+ int ERROR_MORE_DATA ;
+ int FALSE ;
+ int GET_LEN_BYTES (scalar_t__ const) ;
+ int GetLastError () ;
+ int SetLastError (int ) ;
+ int TRACE (char*,...) ;
+ int memset (void*,int ,int) ;
 
 __attribute__((used)) static BOOL CRYPT_AsnDecodeSequence(DWORD dwCertEncodingType,
  struct AsnDecodeSequenceItem items[], DWORD cItem, const BYTE *pbEncoded,
@@ -58,7 +58,7 @@ __attribute__((used)) static BOOL CRYPT_AsnDecodeSequence(DWORD dwCertEncodingTy
             }
             else
                 ret = CRYPT_AsnDecodeSequenceItems(dwFlags, items, cItem, ptr,
-                 cbEncoded, dwFlags, NULL, NULL, &cbDecoded);
+                 cbEncoded, dwFlags, ((void*)0), ((void*)0), &cbDecoded);
             if (ret && cbDecoded != dataLen)
             {
                 TRACE("expected %d decoded, got %d, failing\n", dataLen,

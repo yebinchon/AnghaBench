@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  DWORD ;
 
-/* Variables and functions */
- short GetAsyncKeyState (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int DWORD ;
+
+
+ short GetAsyncKeyState (int ) ;
 
 __attribute__((used)) static bool vk_down(DWORD vk)
 {
-	short state = GetAsyncKeyState(vk);
-	bool down = (state & 0x8000) != 0;
+ short state = GetAsyncKeyState(vk);
+ bool down = (state & 0x8000) != 0;
 
-	return down;
+ return down;
 }

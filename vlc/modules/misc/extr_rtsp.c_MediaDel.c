@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_18__   TYPE_8__ ;
-typedef  struct TYPE_17__   TYPE_3__ ;
-typedef  struct TYPE_16__   TYPE_2__ ;
-typedef  struct TYPE_15__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_18__ TYPE_8__ ;
+typedef struct TYPE_17__ TYPE_3__ ;
+typedef struct TYPE_16__ TYPE_2__ ;
+typedef struct TYPE_15__ TYPE_1__ ;
+
+
 struct TYPE_15__ {TYPE_2__* p_sys; } ;
-typedef  TYPE_1__ vod_t ;
-struct TYPE_16__ {int /*<<< orphan*/  media; int /*<<< orphan*/  i_media; } ;
-typedef  TYPE_2__ vod_sys_t ;
-struct TYPE_17__ {scalar_t__ i_rtsp; scalar_t__ i_es; int /*<<< orphan*/  lock; TYPE_8__** es; struct TYPE_17__* psz_rtsp_control_v4; struct TYPE_17__* psz_rtsp_control_v6; struct TYPE_17__* psz_rtsp_path; TYPE_8__** rtsp; int /*<<< orphan*/  p_rtsp_url; } ;
-typedef  TYPE_3__ vod_media_t ;
-struct TYPE_18__ {int /*<<< orphan*/  fmt; } ;
+typedef TYPE_1__ vod_t ;
+struct TYPE_16__ {int media; int i_media; } ;
+typedef TYPE_2__ vod_sys_t ;
+struct TYPE_17__ {scalar_t__ i_rtsp; scalar_t__ i_es; int lock; TYPE_8__** es; struct TYPE_17__* psz_rtsp_control_v4; struct TYPE_17__* psz_rtsp_control_v6; struct TYPE_17__* psz_rtsp_path; TYPE_8__** rtsp; int p_rtsp_url; } ;
+typedef TYPE_3__ vod_media_t ;
+struct TYPE_18__ {int fmt; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MediaDelES (TYPE_1__*,TYPE_3__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RtspClientDel (TYPE_3__*,TYPE_8__*) ; 
- int /*<<< orphan*/  TAB_CLEAN (scalar_t__,TYPE_8__**) ; 
- int /*<<< orphan*/  TAB_REMOVE (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_3__*) ; 
- int /*<<< orphan*/  free (TYPE_3__*) ; 
- int /*<<< orphan*/  httpd_UrlDelete (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  msg_Dbg (TYPE_1__*,char*,TYPE_3__*) ; 
- int /*<<< orphan*/  vlc_mutex_destroy (int /*<<< orphan*/ *) ; 
+
+ int MediaDelES (TYPE_1__*,TYPE_3__*,int *) ;
+ int RtspClientDel (TYPE_3__*,TYPE_8__*) ;
+ int TAB_CLEAN (scalar_t__,TYPE_8__**) ;
+ int TAB_REMOVE (int ,int ,TYPE_3__*) ;
+ int free (TYPE_3__*) ;
+ int httpd_UrlDelete (int ) ;
+ int msg_Dbg (TYPE_1__*,char*,TYPE_3__*) ;
+ int vlc_mutex_destroy (int *) ;
 
 __attribute__((used)) static void MediaDel( vod_t *p_vod, vod_media_t *p_media )
 {

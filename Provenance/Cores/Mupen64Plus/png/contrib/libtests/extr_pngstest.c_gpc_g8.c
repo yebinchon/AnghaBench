@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {size_t r; size_t g; size_t b; int /*<<< orphan*/  a; } ;
-typedef  TYPE_1__ Pixel ;
-typedef  int /*<<< orphan*/  Background ;
 
-/* Variables and functions */
- int /*<<< orphan*/  YfromRGB (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- size_t sRGB (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * sRGB_to_d ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {size_t r; size_t g; size_t b; int a; } ;
+typedef TYPE_1__ Pixel ;
+typedef int Background ;
+
+
+ int YfromRGB (int ,int ,int ) ;
+ size_t sRGB (int ) ;
+ int * sRGB_to_d ;
 
 __attribute__((used)) static void
 gpc_g8(Pixel *out, const Pixel *in, const Background *back)

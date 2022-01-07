@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CP_UTF8 ; 
- int WideCharToMultiByte (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int,char*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- char* calloc (int,int) ; 
- int /*<<< orphan*/  free (char*) ; 
+
+
+
+typedef int WCHAR ;
+
+
+ int CP_UTF8 ;
+ int WideCharToMultiByte (int ,int ,int const*,int,char*,int,int *,int *) ;
+ char* calloc (int,int) ;
+ int free (char*) ;
 
 char* _glfwCreateUTF8FromWideString(const WCHAR* source)
 {
     char* target;
     int length;
 
-    length = WideCharToMultiByte(CP_UTF8, 0, source, -1, NULL, 0, NULL, NULL);
+    length = WideCharToMultiByte(CP_UTF8, 0, source, -1, ((void*)0), 0, ((void*)0), ((void*)0));
     if (!length)
-        return NULL;
+        return ((void*)0);
 
     target = calloc(length, sizeof(char));
 
-    if (!WideCharToMultiByte(CP_UTF8, 0, source, -1, target, length, NULL, NULL))
+    if (!WideCharToMultiByte(CP_UTF8, 0, source, -1, target, length, ((void*)0), ((void*)0)))
     {
         free(target);
-        return NULL;
+        return ((void*)0);
     }
 
     return target;

@@ -1,18 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
 
-/* Variables and functions */
+
+
+
+typedef scalar_t__ uint8_t ;
+
+
 
 __attribute__((used)) static int fill_pixels(uint8_t **y0, uint8_t **y1,
                        uint8_t **u, uint8_t **v,
@@ -43,8 +43,8 @@ __attribute__((used)) static int fill_pixels(uint8_t **y0, uint8_t **y1,
                 return 1;
             y0dst -= 2*ylinesize;
             y1dst -= 2*ylinesize;
-            udst  -=   ulinesize;
-            vdst  -=   vlinesize;
+            udst -= ulinesize;
+            vdst -= vlinesize;
         }
         y0dst[2*x+0] += fill[2];
         y0dst[2*x+1] += fill[3];
@@ -52,8 +52,8 @@ __attribute__((used)) static int fill_pixels(uint8_t **y0, uint8_t **y1,
     } else if (pos == 2) {
         y1dst[2*x+0] += fill[0];
         y1dst[2*x+1] += fill[1];
-        udst[x]      += fill[2];
-        vdst[x]      += fill[3];
+        udst[x] += fill[2];
+        vdst[x] += fill[3];
         x++;
         if (x >= w) {
             x = 0;
@@ -62,8 +62,8 @@ __attribute__((used)) static int fill_pixels(uint8_t **y0, uint8_t **y1,
                 return 1;
             y0dst -= 2*ylinesize;
             y1dst -= 2*ylinesize;
-            udst  -=   ulinesize;
-            vdst  -=   vlinesize;
+            udst -= ulinesize;
+            vdst -= vlinesize;
         }
         pos = 0;
     }

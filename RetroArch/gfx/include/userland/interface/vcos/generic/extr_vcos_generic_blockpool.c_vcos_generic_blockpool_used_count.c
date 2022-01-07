@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t VCOS_UNSIGNED ;
-struct TYPE_6__ {size_t num_subpools; int /*<<< orphan*/  mutex; TYPE_2__* subpools; } ;
-typedef  TYPE_1__ VCOS_BLOCKPOOL_T ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef size_t VCOS_UNSIGNED ;
+struct TYPE_6__ {size_t num_subpools; int mutex; TYPE_2__* subpools; } ;
+typedef TYPE_1__ VCOS_BLOCKPOOL_T ;
 struct TYPE_7__ {scalar_t__ available_blocks; scalar_t__ num_blocks; scalar_t__ start; } ;
-typedef  TYPE_2__ VCOS_BLOCKPOOL_SUBPOOL_T ;
+typedef TYPE_2__ VCOS_BLOCKPOOL_SUBPOOL_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT_POOL (TYPE_1__*) ; 
- int /*<<< orphan*/  ASSERT_SUBPOOL (TYPE_2__*) ; 
- int /*<<< orphan*/  vcos_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vcos_mutex_unlock (int /*<<< orphan*/ *) ; 
+
+ int ASSERT_POOL (TYPE_1__*) ;
+ int ASSERT_SUBPOOL (TYPE_2__*) ;
+ int vcos_mutex_lock (int *) ;
+ int vcos_mutex_unlock (int *) ;
 
 VCOS_UNSIGNED vcos_generic_blockpool_used_count(VCOS_BLOCKPOOL_T *pool)
 {

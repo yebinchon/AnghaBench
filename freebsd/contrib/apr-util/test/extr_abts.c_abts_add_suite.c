@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {int not_run; char const* name; struct TYPE_6__* next; scalar_t__ failed; scalar_t__ num_test; } ;
-typedef  TYPE_1__ sub_suite ;
+typedef TYPE_1__ sub_suite ;
 struct TYPE_7__ {TYPE_1__* tail; TYPE_1__* head; } ;
-typedef  TYPE_2__ abts_suite ;
+typedef TYPE_2__ abts_suite ;
 
-/* Variables and functions */
- int /*<<< orphan*/  calloc (int,int) ; 
- scalar_t__ curr_char ; 
- int /*<<< orphan*/  end_suite (TYPE_2__*) ; 
- int /*<<< orphan*/  fflush (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char const*) ; 
- scalar_t__ list_tests ; 
- void* malloc (int) ; 
- char const* memcpy (int /*<<< orphan*/ ,char const*,int) ; 
- int /*<<< orphan*/  reset_status () ; 
- int /*<<< orphan*/  should_test_run (char*) ; 
- int /*<<< orphan*/  stdout ; 
- void* strrchr (char const*,char) ; 
- int /*<<< orphan*/  update_status () ; 
+
+ int calloc (int,int) ;
+ scalar_t__ curr_char ;
+ int end_suite (TYPE_2__*) ;
+ int fflush (int ) ;
+ int fprintf (int ,char*,char const*) ;
+ scalar_t__ list_tests ;
+ void* malloc (int) ;
+ char const* memcpy (int ,char const*,int) ;
+ int reset_status () ;
+ int should_test_run (char*) ;
+ int stdout ;
+ void* strrchr (char const*,char) ;
+ int update_status () ;
 
 abts_suite *abts_add_suite(abts_suite *suite, const char *suite_name_full)
 {
@@ -38,8 +38,8 @@ abts_suite *abts_add_suite(abts_suite *suite, const char *suite_name_full)
     char *p;
     const char *suite_name;
     curr_char = 0;
-    
-    /* Only end the suite if we actually ran it */
+
+
     if (suite && suite->tail &&!suite->tail->not_run) {
         end_suite(suite);
     }
@@ -47,9 +47,9 @@ abts_suite *abts_add_suite(abts_suite *suite, const char *suite_name_full)
     subsuite = malloc(sizeof(*subsuite));
     subsuite->num_test = 0;
     subsuite->failed = 0;
-    subsuite->next = NULL;
-    /* suite_name_full may be an absolute path depending on __FILE__ 
-     * expansion */
+    subsuite->next = ((void*)0);
+
+
     suite_name = strrchr(suite_name_full, '/');
     if (!suite_name) {
         suite_name = strrchr(suite_name_full, '\\');
@@ -71,10 +71,10 @@ abts_suite *abts_add_suite(abts_suite *suite, const char *suite_name_full)
     if (list_tests) {
         fprintf(stdout, "%s\n", subsuite->name);
     }
-    
+
     subsuite->not_run = 0;
 
-    if (suite == NULL) {
+    if (suite == ((void*)0)) {
         suite = malloc(sizeof(*suite));
         suite->head = subsuite;
         suite->tail = subsuite;

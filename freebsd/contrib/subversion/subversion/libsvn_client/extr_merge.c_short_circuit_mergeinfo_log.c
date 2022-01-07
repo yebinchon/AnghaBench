@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_ra_session_t ;
-typedef  int /*<<< orphan*/  svn_opt_revision_t ;
-typedef  int /*<<< orphan*/  svn_mergeinfo_catalog_t ;
-typedef  int /*<<< orphan*/  svn_log_entry_receiver_t ;
+
+
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int svn_revnum_t ;
+typedef int svn_ra_session_t ;
+typedef int svn_opt_revision_t ;
+typedef int svn_mergeinfo_catalog_t ;
+typedef int svn_log_entry_receiver_t ;
 struct TYPE_10__ {scalar_t__ apr_err; } ;
-typedef  TYPE_1__ svn_error_t ;
-typedef  int /*<<< orphan*/  svn_client_ctx_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_array_header_t ;
+typedef TYPE_1__ svn_error_t ;
+typedef int svn_client_ctx_t ;
+typedef int svn_boolean_t ;
+typedef int apr_pool_t ;
+typedef int apr_array_header_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- scalar_t__ SVN_ERR_CEASE_INVOCATION ; 
- scalar_t__ SVN_IS_VALID_REVNUM (int /*<<< orphan*/ ) ; 
- TYPE_1__* SVN_NO_ERROR ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/ * apr_array_make (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- TYPE_1__* svn_client__mergeinfo_log (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_depth_infinity ; 
- int /*<<< orphan*/  svn_error_clear (TYPE_1__*) ; 
- TYPE_1__* svn_error_compose_create (TYPE_1__*,int /*<<< orphan*/ ) ; 
- TYPE_1__* svn_error_trace (TYPE_1__*) ; 
- int /*<<< orphan*/  svn_ra_get_session_url (int /*<<< orphan*/ *,char const**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_ra_reparent (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *) ; 
+
+ int SVN_ERR (int ) ;
+ scalar_t__ SVN_ERR_CEASE_INVOCATION ;
+ scalar_t__ SVN_IS_VALID_REVNUM (int ) ;
+ TYPE_1__* SVN_NO_ERROR ;
+ int TRUE ;
+ int * apr_array_make (int *,int ,int) ;
+ TYPE_1__* svn_client__mergeinfo_log (int ,char const*,int const*,int *,char const*,int const*,int const*,int const*,int ,int *,int ,int ,int *,int *,int *,int *,int *) ;
+ int svn_depth_infinity ;
+ int svn_error_clear (TYPE_1__*) ;
+ TYPE_1__* svn_error_compose_create (TYPE_1__*,int ) ;
+ TYPE_1__* svn_error_trace (TYPE_1__*) ;
+ int svn_ra_get_session_url (int *,char const**,int *) ;
+ int svn_ra_reparent (int *,char const*,int *) ;
 
 __attribute__((used)) static svn_error_t*
 short_circuit_mergeinfo_log(svn_mergeinfo_catalog_t *target_mergeinfo_cat,
@@ -80,15 +80,15 @@ short_circuit_mergeinfo_log(svn_mergeinfo_catalog_t *target_mergeinfo_cat,
 
   if (err)
     {
-      /* We expect RECEIVER to short-circuit the (potentially expensive) log
-         by raising an SVN_ERR_CEASE_INVOCATION -- see operative_rev_receiver.
-         So we can ignore that error, but only as long as we actually found a
-         valid revision. */
+
+
+
+
       if (SVN_IS_VALID_REVNUM(*revision)
           && err->apr_err == SVN_ERR_CEASE_INVOCATION)
         {
           svn_error_clear(err);
-          err = NULL;
+          err = ((void*)0);
         }
       else
         {

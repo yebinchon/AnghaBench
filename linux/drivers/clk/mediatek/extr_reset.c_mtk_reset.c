@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct reset_controller_dev {int dummy; } ;
 
-/* Variables and functions */
- int mtk_reset_assert (struct reset_controller_dev*,unsigned long) ; 
- int mtk_reset_deassert (struct reset_controller_dev*,unsigned long) ; 
+
+ int mtk_reset_assert (struct reset_controller_dev*,unsigned long) ;
+ int mtk_reset_deassert (struct reset_controller_dev*,unsigned long) ;
 
 __attribute__((used)) static int mtk_reset(struct reset_controller_dev *rcdev,
-			      unsigned long id)
+         unsigned long id)
 {
-	int ret;
+ int ret;
 
-	ret = mtk_reset_assert(rcdev, id);
-	if (ret)
-		return ret;
+ ret = mtk_reset_assert(rcdev, id);
+ if (ret)
+  return ret;
 
-	return mtk_reset_deassert(rcdev, id);
+ return mtk_reset_deassert(rcdev, id);
 }

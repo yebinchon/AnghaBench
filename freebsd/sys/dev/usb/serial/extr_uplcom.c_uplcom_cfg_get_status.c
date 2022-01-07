@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct uplcom_softc {int /*<<< orphan*/  sc_msr; int /*<<< orphan*/  sc_lsr; } ;
+
+
+
+
+typedef int uint8_t ;
+struct uplcom_softc {int sc_msr; int sc_lsr; } ;
 struct ucom_softc {struct uplcom_softc* sc_parent; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPRINTF (char*) ; 
+
+ int DPRINTF (char*) ;
 
 __attribute__((used)) static void
 uplcom_cfg_get_status(struct ucom_softc *ucom, uint8_t *lsr, uint8_t *msr)
 {
-	struct uplcom_softc *sc = ucom->sc_parent;
+ struct uplcom_softc *sc = ucom->sc_parent;
 
-	DPRINTF("\n");
+ DPRINTF("\n");
 
-	*lsr = sc->sc_lsr;
-	*msr = sc->sc_msr;
+ *lsr = sc->sc_lsr;
+ *msr = sc->sc_msr;
 }

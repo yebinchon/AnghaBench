@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* xsltTransformContextPtr ;
-typedef  TYPE_2__* xmlDocPtr ;
-struct TYPE_13__ {scalar_t__ psvi; scalar_t__ next; int /*<<< orphan*/ * prev; } ;
+
+
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+typedef TYPE_1__* xsltTransformContextPtr ;
+typedef TYPE_2__* xmlDocPtr ;
+struct TYPE_13__ {scalar_t__ psvi; scalar_t__ next; int * prev; } ;
 struct TYPE_12__ {TYPE_2__* localRVT; } ;
 
-/* Variables and functions */
- scalar_t__ XSLT_RVT_FUNC_RESULT ; 
- scalar_t__ XSLT_RVT_GLOBAL ; 
- scalar_t__ XSLT_RVT_LOCAL ; 
- int /*<<< orphan*/  xmlGenericError (int /*<<< orphan*/ ,char*,scalar_t__) ; 
- int /*<<< orphan*/  xmlGenericErrorContext ; 
- int /*<<< orphan*/  xsltRegisterLocalRVT (TYPE_1__*,TYPE_2__*) ; 
- int /*<<< orphan*/  xsltRegisterPersistRVT (TYPE_1__*,TYPE_2__*) ; 
- int /*<<< orphan*/  xsltReleaseRVT (TYPE_1__*,TYPE_2__*) ; 
- int /*<<< orphan*/  xsltTransformError (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*) ; 
+
+ scalar_t__ XSLT_RVT_FUNC_RESULT ;
+ scalar_t__ XSLT_RVT_GLOBAL ;
+ scalar_t__ XSLT_RVT_LOCAL ;
+ int xmlGenericError (int ,char*,scalar_t__) ;
+ int xmlGenericErrorContext ;
+ int xsltRegisterLocalRVT (TYPE_1__*,TYPE_2__*) ;
+ int xsltRegisterPersistRVT (TYPE_1__*,TYPE_2__*) ;
+ int xsltReleaseRVT (TYPE_1__*,TYPE_2__*) ;
+ int xsltTransformError (TYPE_1__*,int *,int *,char*) ;
 
 __attribute__((used)) static void
 xsltReleaseLocalRVTs(xsltTransformContextPtr ctxt, xmlDocPtr base)
@@ -35,13 +35,13 @@ xsltReleaseLocalRVTs(xsltTransformContextPtr ctxt, xmlDocPtr base)
 
     if (cur == base)
         return;
-    if (cur->prev != NULL)
-        xsltTransformError(ctxt, NULL, NULL, "localRVT not head of list\n");
+    if (cur->prev != ((void*)0))
+        xsltTransformError(ctxt, ((void*)0), ((void*)0), "localRVT not head of list\n");
 
-    /* Reset localRVT early because some RVTs might be registered again. */
+
     ctxt->localRVT = base;
-    if (base != NULL)
-        base->prev = NULL;
+    if (base != ((void*)0))
+        base->prev = ((void*)0);
 
     do {
         tmp = cur;
@@ -51,10 +51,10 @@ xsltReleaseLocalRVTs(xsltTransformContextPtr ctxt, xmlDocPtr base)
         } else if (tmp->psvi == XSLT_RVT_GLOBAL) {
             xsltRegisterPersistRVT(ctxt, tmp);
         } else if (tmp->psvi == XSLT_RVT_FUNC_RESULT) {
-            /*
-             * This will either register the RVT again or move it to the
-             * context variable.
-             */
+
+
+
+
             xsltRegisterLocalRVT(ctxt, tmp);
             tmp->psvi = XSLT_RVT_FUNC_RESULT;
         } else {

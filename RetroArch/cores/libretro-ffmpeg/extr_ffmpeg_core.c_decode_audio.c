@@ -1,63 +1,63 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int int64_t ;
-typedef  int /*<<< orphan*/  int16_t ;
+
+
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int int64_t ;
+typedef int int16_t ;
 struct TYPE_13__ {TYPE_1__** streams; } ;
 struct TYPE_12__ {int nb_samples; scalar_t__ data; } ;
 struct TYPE_11__ {int data; int size; } ;
-struct TYPE_10__ {int /*<<< orphan*/  time_base; } ;
-typedef  int /*<<< orphan*/  SwrContext ;
-typedef  TYPE_2__ AVPacket ;
-typedef  TYPE_3__ AVFrame ;
-typedef  int /*<<< orphan*/  AVCodecContext ;
+struct TYPE_10__ {int time_base; } ;
+typedef int SwrContext ;
+typedef TYPE_2__ AVPacket ;
+typedef TYPE_3__ AVFrame ;
+typedef int AVCodecContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RETRO_LOG_ERROR ; 
- int /*<<< orphan*/  audio_decode_fifo ; 
- size_t* audio_streams ; 
- size_t audio_streams_ptr ; 
- int av_frame_get_best_effort_timestamp (TYPE_3__*) ; 
- int av_q2d (int /*<<< orphan*/ ) ; 
- scalar_t__ av_realloc (int /*<<< orphan*/ *,size_t) ; 
- int avcodec_decode_audio4 (int /*<<< orphan*/ *,TYPE_3__*,int*,TYPE_2__*) ; 
- int decode_last_audio_time ; 
- int /*<<< orphan*/  decode_thread_dead ; 
- TYPE_4__* fctx ; 
- int /*<<< orphan*/  fifo_clear (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fifo_cond ; 
- int /*<<< orphan*/  fifo_decode_cond ; 
- int /*<<< orphan*/  fifo_lock ; 
- int /*<<< orphan*/  fifo_write (int /*<<< orphan*/ ,int /*<<< orphan*/ *,size_t) ; 
- size_t fifo_write_avail (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  log_cb (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  main_sleeping ; 
- int /*<<< orphan*/  scond_signal (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  scond_wait (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  slock_lock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  slock_unlock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  swr_convert (int /*<<< orphan*/ *,int /*<<< orphan*/ **,int,int /*<<< orphan*/  const**,int) ; 
+
+ int RETRO_LOG_ERROR ;
+ int audio_decode_fifo ;
+ size_t* audio_streams ;
+ size_t audio_streams_ptr ;
+ int av_frame_get_best_effort_timestamp (TYPE_3__*) ;
+ int av_q2d (int ) ;
+ scalar_t__ av_realloc (int *,size_t) ;
+ int avcodec_decode_audio4 (int *,TYPE_3__*,int*,TYPE_2__*) ;
+ int decode_last_audio_time ;
+ int decode_thread_dead ;
+ TYPE_4__* fctx ;
+ int fifo_clear (int ) ;
+ int fifo_cond ;
+ int fifo_decode_cond ;
+ int fifo_lock ;
+ int fifo_write (int ,int *,size_t) ;
+ size_t fifo_write_avail (int ) ;
+ int log_cb (int ,char*) ;
+ int main_sleeping ;
+ int scond_signal (int ) ;
+ int scond_wait (int ,int ) ;
+ int slock_lock (int ) ;
+ int slock_unlock (int ) ;
+ int swr_convert (int *,int **,int,int const**,int) ;
 
 __attribute__((used)) static int16_t *decode_audio(AVCodecContext *ctx, AVPacket *pkt,
       AVFrame *frame, int16_t *buffer, size_t *buffer_cap,
       SwrContext *swr)
 {
    AVPacket pkt_tmp = *pkt;
-   int got_ptr      = 0;
+   int got_ptr = 0;
 
    for (;;)
    {
@@ -77,7 +77,7 @@ __attribute__((used)) static int16_t *decode_audio(AVCodecContext *ctx, AVPacket
       required_buffer = frame->nb_samples * sizeof(int16_t) * 2;
       if (required_buffer > *buffer_cap)
       {
-         buffer      = (int16_t*)av_realloc(buffer, required_buffer);
+         buffer = (int16_t*)av_realloc(buffer, required_buffer);
          *buffer_cap = required_buffer;
       }
 

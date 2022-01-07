@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  strbuf_t ;
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- char** char2escape ; 
- char* lua_tolstring (int /*<<< orphan*/ *,int,size_t*) ; 
- int /*<<< orphan*/  strbuf_append_char_unsafe (int /*<<< orphan*/ *,char const) ; 
- int /*<<< orphan*/  strbuf_append_string (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  strbuf_ensure_empty_length (int /*<<< orphan*/ *,size_t) ; 
+
+
+
+typedef int strbuf_t ;
+typedef int lua_State ;
+
+
+ char** char2escape ;
+ char* lua_tolstring (int *,int,size_t*) ;
+ int strbuf_append_char_unsafe (int *,char const) ;
+ int strbuf_append_string (int *,char const*) ;
+ int strbuf_ensure_empty_length (int *,size_t) ;
 
 __attribute__((used)) static void json_append_string(lua_State *l, strbuf_t *json, int lindex)
 {
@@ -29,10 +29,10 @@ __attribute__((used)) static void json_append_string(lua_State *l, strbuf_t *jso
 
     str = lua_tolstring(l, lindex, &len);
 
-    /* Worst case is len * 6 (all unicode escapes).
-     * This buffer is reused constantly for small strings
-     * If there are any excess pages, they won't be hit anyway.
-     * This gains ~5% speedup. */
+
+
+
+
     strbuf_ensure_empty_length(json, len * 6 + 2);
 
     strbuf_append_char_unsafe(json, '\"');

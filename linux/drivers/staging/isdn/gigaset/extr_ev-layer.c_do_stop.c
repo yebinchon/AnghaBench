@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct cardstate {int /*<<< orphan*/  lock; scalar_t__ connected; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  do_shutdown (struct cardstate*) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
+
+
+
+struct cardstate {int lock; scalar_t__ connected; } ;
+
+
+ int do_shutdown (struct cardstate*) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
 
 __attribute__((used)) static void do_stop(struct cardstate *cs)
 {
-	unsigned long flags;
+ unsigned long flags;
 
-	spin_lock_irqsave(&cs->lock, flags);
-	cs->connected = 0;
-	spin_unlock_irqrestore(&cs->lock, flags);
+ spin_lock_irqsave(&cs->lock, flags);
+ cs->connected = 0;
+ spin_unlock_irqrestore(&cs->lock, flags);
 
-	do_shutdown(cs);
+ do_shutdown(cs);
 }

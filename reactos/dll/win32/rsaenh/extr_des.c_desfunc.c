@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int ulong64 ;
-typedef  int ulong32 ;
 
-/* Variables and functions */
- int ROR (int,int) ; 
- int* SP1 ; 
- int* SP2 ; 
- int* SP3 ; 
- int* SP4 ; 
- int* SP5 ; 
- int* SP6 ; 
- int* SP7 ; 
- int* SP8 ; 
- size_t byte (int,int) ; 
- int** des_fp ; 
- int** des_ip ; 
+
+
+
+typedef int ulong64 ;
+typedef int ulong32 ;
+
+
+ int ROR (int,int) ;
+ int* SP1 ;
+ int* SP2 ;
+ int* SP3 ;
+ int* SP4 ;
+ int* SP5 ;
+ int* SP6 ;
+ int* SP7 ;
+ int* SP8 ;
+ size_t byte (int,int) ;
+ int** des_fp ;
+ int** des_ip ;
 
 __attribute__((used)) static void desfunc(ulong32 *block, const ulong32 *keys)
 {
@@ -48,27 +48,27 @@ __attribute__((used)) static void desfunc(ulong32 *block, const ulong32 *keys)
     right = (ulong32)(tmp & 0xFFFFFFFFUL);
 
     for (cur_round = 0; cur_round < 8; cur_round++) {
-        work  = ROR(right, 4) ^ *keys++;
-        leftt ^= SP7[work        & 0x3fL]
-              ^ SP5[(work >>  8) & 0x3fL]
+        work = ROR(right, 4) ^ *keys++;
+        leftt ^= SP7[work & 0x3fL]
+              ^ SP5[(work >> 8) & 0x3fL]
               ^ SP3[(work >> 16) & 0x3fL]
               ^ SP1[(work >> 24) & 0x3fL];
-        work  = right ^ *keys++;
-        leftt ^= SP8[ work        & 0x3fL]
-              ^  SP6[(work >>  8) & 0x3fL]
-              ^  SP4[(work >> 16) & 0x3fL]
-              ^  SP2[(work >> 24) & 0x3fL];
+        work = right ^ *keys++;
+        leftt ^= SP8[ work & 0x3fL]
+              ^ SP6[(work >> 8) & 0x3fL]
+              ^ SP4[(work >> 16) & 0x3fL]
+              ^ SP2[(work >> 24) & 0x3fL];
 
         work = ROR(leftt, 4) ^ *keys++;
-        right ^= SP7[ work        & 0x3fL]
-              ^  SP5[(work >>  8) & 0x3fL]
-              ^  SP3[(work >> 16) & 0x3fL]
-              ^  SP1[(work >> 24) & 0x3fL];
-        work  = leftt ^ *keys++;
-        right ^= SP8[ work        & 0x3fL]
-              ^  SP6[(work >>  8) & 0x3fL]
-              ^  SP4[(work >> 16) & 0x3fL]
-              ^  SP2[(work >> 24) & 0x3fL];
+        right ^= SP7[ work & 0x3fL]
+              ^ SP5[(work >> 8) & 0x3fL]
+              ^ SP3[(work >> 16) & 0x3fL]
+              ^ SP1[(work >> 24) & 0x3fL];
+        work = leftt ^ *keys++;
+        right ^= SP8[ work & 0x3fL]
+              ^ SP6[(work >> 8) & 0x3fL]
+              ^ SP4[(work >> 16) & 0x3fL]
+              ^ SP2[(work >> 24) & 0x3fL];
     }
 
     tmp = des_fp[0][byte(leftt, 0)] ^
@@ -81,7 +81,7 @@ __attribute__((used)) static void desfunc(ulong32 *block, const ulong32 *keys)
           des_fp[7][byte(right, 3)];
     leftt = (ulong32)(tmp >> 32);
     right = (ulong32)(tmp & 0xFFFFFFFFUL);
-    
+
     block[0] = right;
     block[1] = leftt;
 }

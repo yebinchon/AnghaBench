@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_7__ {int /*<<< orphan*/  title_callback_userdata; int /*<<< orphan*/  m; int /*<<< orphan*/  (* title_callback ) (int /*<<< orphan*/ ,int,int,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;} ;
-struct TYPE_6__ {int /*<<< orphan*/  title_len; int /*<<< orphan*/  title; } ;
-typedef  TYPE_1__ Group_c ;
-typedef  TYPE_2__ Group_Chats ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MAX_NAME_LENGTH ; 
- TYPE_1__* get_group_c (TYPE_2__*,int) ; 
- int /*<<< orphan*/  memcmp (int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,int,int,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_7__ {int title_callback_userdata; int m; int (* title_callback ) (int ,int,int,int const*,int ,int ) ;} ;
+struct TYPE_6__ {int title_len; int title; } ;
+typedef TYPE_1__ Group_c ;
+typedef TYPE_2__ Group_Chats ;
+
+
+ int MAX_NAME_LENGTH ;
+ TYPE_1__* get_group_c (TYPE_2__*,int) ;
+ int memcmp (int ,int const*,int ) ;
+ int memcpy (int ,int const*,int ) ;
+ int stub1 (int ,int,int,int const*,int ,int ) ;
 
 __attribute__((used)) static int settitle(Group_Chats *g_c, int groupnumber, int peer_index, const uint8_t *title, uint8_t title_len)
 {
@@ -35,7 +35,7 @@ __attribute__((used)) static int settitle(Group_Chats *g_c, int groupnumber, int
     if (!g)
         return -1;
 
-    /* same as already set? */
+
     if (g->title_len == title_len && !memcmp(g->title, title, title_len))
         return 0;
 

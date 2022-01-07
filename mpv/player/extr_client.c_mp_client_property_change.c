@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct mpv_handle {int num_properties; scalar_t__ lowest_changed; int /*<<< orphan*/  lock; TYPE_1__** properties; } ;
-struct mp_client_api {int num_clients; int /*<<< orphan*/  lock; struct mpv_handle** clients; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct mpv_handle {int num_properties; scalar_t__ lowest_changed; int lock; TYPE_1__** properties; } ;
+struct mp_client_api {int num_clients; int lock; struct mpv_handle** clients; } ;
 struct MPContext {struct mp_client_api* clients; } ;
 struct TYPE_2__ {int id; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mark_property_changed (struct mpv_handle*,int) ; 
- int mp_get_property_id (struct MPContext*,char const*) ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  wakeup_client (struct mpv_handle*) ; 
+
+ int mark_property_changed (struct mpv_handle*,int) ;
+ int mp_get_property_id (struct MPContext*,char const*) ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
+ int wakeup_client (struct mpv_handle*) ;
 
 void mp_client_property_change(struct MPContext *mpctx, const char *name)
 {

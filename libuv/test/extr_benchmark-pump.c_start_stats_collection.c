@@ -1,34 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- int /*<<< orphan*/  STATS_COUNT ; 
- int /*<<< orphan*/  STATS_INTERVAL ; 
- int /*<<< orphan*/  loop ; 
- int /*<<< orphan*/  show_stats ; 
- int /*<<< orphan*/  start_time ; 
- int /*<<< orphan*/  stats_left ; 
- int /*<<< orphan*/  timer_handle ; 
- int /*<<< orphan*/  uv_now (int /*<<< orphan*/ ) ; 
- int uv_timer_init (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int uv_timer_start (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  uv_update_time (int /*<<< orphan*/ ) ; 
+ int ASSERT (int) ;
+ int STATS_COUNT ;
+ int STATS_INTERVAL ;
+ int loop ;
+ int show_stats ;
+ int start_time ;
+ int stats_left ;
+ int timer_handle ;
+ int uv_now (int ) ;
+ int uv_timer_init (int ,int *) ;
+ int uv_timer_start (int *,int ,int ,int ) ;
+ int uv_update_time (int ) ;
 
 __attribute__((used)) static void start_stats_collection(void) {
   int r;
 
-  /* Show-stats timer */
+
   stats_left = STATS_COUNT;
   r = uv_timer_init(loop, &timer_handle);
   ASSERT(r == 0);

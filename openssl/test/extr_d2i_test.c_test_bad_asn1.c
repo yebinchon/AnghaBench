@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buf ;
-typedef  int /*<<< orphan*/  BIO ;
-typedef  int /*<<< orphan*/  ASN1_VALUE ;
 
-/* Variables and functions */
- scalar_t__ ASN1_BIO ; 
- int /*<<< orphan*/  ASN1_COMPARE ; 
- int /*<<< orphan*/  ASN1_DECODE ; 
- int /*<<< orphan*/  ASN1_ENCODE ; 
- int /*<<< orphan*/  ASN1_OK ; 
- int /*<<< orphan*/ * ASN1_item_d2i (int /*<<< orphan*/ *,unsigned char const**,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ASN1_item_d2i_bio (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ASN1_item_free (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int ASN1_item_i2d (int /*<<< orphan*/ *,unsigned char**,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BIO_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BIO_new_file (int /*<<< orphan*/ ,char*) ; 
- int BIO_read (int /*<<< orphan*/ *,unsigned char*,int) ; 
- scalar_t__ ERR_GET_REASON (int /*<<< orphan*/ ) ; 
- scalar_t__ ERR_R_MALLOC_FAILURE ; 
- int /*<<< orphan*/  ERR_peek_error () ; 
- int /*<<< orphan*/  OPENSSL_free (unsigned char*) ; 
- int /*<<< orphan*/  TEST_false (int) ; 
- scalar_t__ TEST_int_eq (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_int_ge (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_ptr (int /*<<< orphan*/ *) ; 
- scalar_t__ TEST_ptr_null (int /*<<< orphan*/ ) ; 
- scalar_t__ expected_error ; 
- int /*<<< orphan*/  item_type ; 
- scalar_t__ memcmp (unsigned char*,unsigned char*,int) ; 
- int /*<<< orphan*/  test_file ; 
+
+
+
+typedef int buf ;
+typedef int BIO ;
+typedef int ASN1_VALUE ;
+
+
+ scalar_t__ ASN1_BIO ;
+ int ASN1_COMPARE ;
+ int ASN1_DECODE ;
+ int ASN1_ENCODE ;
+ int ASN1_OK ;
+ int * ASN1_item_d2i (int *,unsigned char const**,int,int ) ;
+ int ASN1_item_d2i_bio (int ,int *,int *) ;
+ int ASN1_item_free (int *,int ) ;
+ int ASN1_item_i2d (int *,unsigned char**,int ) ;
+ int BIO_free (int *) ;
+ int * BIO_new_file (int ,char*) ;
+ int BIO_read (int *,unsigned char*,int) ;
+ scalar_t__ ERR_GET_REASON (int ) ;
+ scalar_t__ ERR_R_MALLOC_FAILURE ;
+ int ERR_peek_error () ;
+ int OPENSSL_free (unsigned char*) ;
+ int TEST_false (int) ;
+ scalar_t__ TEST_int_eq (scalar_t__,int ) ;
+ int TEST_int_ge (int,int ) ;
+ int TEST_ptr (int *) ;
+ scalar_t__ TEST_ptr_null (int ) ;
+ scalar_t__ expected_error ;
+ int item_type ;
+ scalar_t__ memcmp (unsigned char*,unsigned char*,int) ;
+ int test_file ;
 
 __attribute__((used)) static int test_bad_asn1(void)
 {
-    BIO *bio = NULL;
-    ASN1_VALUE *value = NULL;
+    BIO *bio = ((void*)0);
+    ASN1_VALUE *value = ((void*)0);
     int ret = 0;
     unsigned char buf[2048];
     const unsigned char *buf_ptr = buf;
-    unsigned char *der = NULL;
+    unsigned char *der = ((void*)0);
     int derlen;
     int len;
 
@@ -57,22 +57,22 @@ __attribute__((used)) static int test_bad_asn1(void)
         return 0;
 
     if (expected_error == ASN1_BIO) {
-        if (TEST_ptr_null(ASN1_item_d2i_bio(item_type, bio, NULL)))
+        if (TEST_ptr_null(ASN1_item_d2i_bio(item_type, bio, ((void*)0))))
             ret = 1;
         goto err;
     }
 
-    /*
-     * Unless we are testing it we don't use ASN1_item_d2i_bio because it
-     * performs sanity checks on the input and can reject it before the
-     * decoder is called.
-     */
+
+
+
+
+
     len = BIO_read(bio, buf, sizeof(buf));
     if (!TEST_int_ge(len, 0))
         goto err;
 
-    value = ASN1_item_d2i(NULL, &buf_ptr, len, item_type);
-    if (value == NULL) {
+    value = ASN1_item_d2i(((void*)0), &buf_ptr, len, item_type);
+    if (value == ((void*)0)) {
         if (TEST_int_eq(expected_error, ASN1_DECODE))
             ret = 1;
         goto err;
@@ -80,7 +80,7 @@ __attribute__((used)) static int test_bad_asn1(void)
 
     derlen = ASN1_item_i2d(value, &der, item_type);
 
-    if (der == NULL || derlen < 0) {
+    if (der == ((void*)0) || derlen < 0) {
         if (TEST_int_eq(expected_error, ASN1_ENCODE))
             ret = 1;
         goto err;
@@ -96,7 +96,7 @@ __attribute__((used)) static int test_bad_asn1(void)
         ret = 1;
 
  err:
-    /* Don't indicate success for memory allocation errors */
+
     if (ret == 1
         && !TEST_false(ERR_GET_REASON(ERR_peek_error()) == ERR_R_MALLOC_FAILURE))
         ret = 0;

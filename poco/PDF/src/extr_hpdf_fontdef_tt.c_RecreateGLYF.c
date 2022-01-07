@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_5__ ;
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_13__ {int /*<<< orphan*/  attr; } ;
+
+
+typedef struct TYPE_13__ TYPE_5__ ;
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_13__ {int attr; } ;
 struct TYPE_12__ {int size; } ;
 struct TYPE_10__ {scalar_t__ index_to_loc_format; } ;
 struct TYPE_9__ {int* flgs; int* offsets; scalar_t__ base_offset; } ;
-struct TYPE_11__ {size_t num_glyphs; TYPE_2__ header; int /*<<< orphan*/  stream; TYPE_1__ glyph_tbl; } ;
-typedef  int HPDF_UINT32 ;
-typedef  int HPDF_UINT ;
-typedef  TYPE_3__* HPDF_TTFontDefAttr ;
-typedef  TYPE_4__* HPDF_Stream ;
-typedef  int /*<<< orphan*/  HPDF_STATUS ;
-typedef  size_t HPDF_INT ;
-typedef  TYPE_5__* HPDF_FontDef ;
-typedef  int /*<<< orphan*/  HPDF_BYTE ;
+struct TYPE_11__ {size_t num_glyphs; TYPE_2__ header; int stream; TYPE_1__ glyph_tbl; } ;
+typedef int HPDF_UINT32 ;
+typedef int HPDF_UINT ;
+typedef TYPE_3__* HPDF_TTFontDefAttr ;
+typedef TYPE_4__* HPDF_Stream ;
+typedef int HPDF_STATUS ;
+typedef size_t HPDF_INT ;
+typedef TYPE_5__* HPDF_FontDef ;
+typedef int HPDF_BYTE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HPDF_MemSet (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HPDF_OK ; 
- int /*<<< orphan*/  HPDF_PTRACE (char*) ; 
- int /*<<< orphan*/  HPDF_SEEK_SET ; 
- int HPDF_STREAM_BUF_SIZ ; 
- int /*<<< orphan*/  HPDF_Stream_Read (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  HPDF_Stream_Seek (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HPDF_Stream_Write (TYPE_4__*,int /*<<< orphan*/ *,int) ; 
+
+ int HPDF_MemSet (int *,int ,int) ;
+ int HPDF_OK ;
+ int HPDF_PTRACE (char*) ;
+ int HPDF_SEEK_SET ;
+ int HPDF_STREAM_BUF_SIZ ;
+ int HPDF_Stream_Read (int ,int *,int*) ;
+ int HPDF_Stream_Seek (int ,int,int ) ;
+ int HPDF_Stream_Write (TYPE_4__*,int *,int) ;
 
 __attribute__((used)) static HPDF_STATUS
-RecreateGLYF  (HPDF_FontDef   fontdef,
-               HPDF_UINT32   *new_offsets,
-               HPDF_Stream    stream)
+RecreateGLYF (HPDF_FontDef fontdef,
+               HPDF_UINT32 *new_offsets,
+               HPDF_Stream stream)
 {
     HPDF_UINT32 save_offset = 0;
     HPDF_UINT32 start_offset = stream->size;
@@ -105,11 +105,11 @@ RecreateGLYF  (HPDF_FontDef   fontdef,
 
     new_offsets[attr->num_glyphs] = save_offset;
 
-#ifdef DEBUG
-    for (i = 0; i <= attr->num_glyphs; i++) {
-        HPDF_PTRACE((" RecreateGLYF[%u] offset=%u\n", i, new_offsets[i]));
-    }
-#endif
+
+
+
+
+
 
     return HPDF_OK;
 }

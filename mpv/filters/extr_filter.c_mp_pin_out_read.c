@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct mp_frame {int dummy; } ;
 struct mp_pin {struct mp_frame data; } ;
 
-/* Variables and functions */
- struct mp_frame MP_NO_FRAME ; 
- int /*<<< orphan*/  mp_pin_out_request_data (struct mp_pin*) ; 
+
+ struct mp_frame MP_NO_FRAME ;
+ int mp_pin_out_request_data (struct mp_pin*) ;
 
 struct mp_frame mp_pin_out_read(struct mp_pin *p)
 {

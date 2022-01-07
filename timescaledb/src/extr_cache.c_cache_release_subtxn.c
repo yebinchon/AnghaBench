@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int refcount; } ;
-typedef  int /*<<< orphan*/  SubTransactionId ;
-typedef  TYPE_1__ Cache ;
+typedef int SubTransactionId ;
+typedef TYPE_1__ Cache ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Assert (int) ; 
- int /*<<< orphan*/  cache_destroy (TYPE_1__*) ; 
- int /*<<< orphan*/  remove_pin (TYPE_1__*,int /*<<< orphan*/ ) ; 
+
+ int Assert (int) ;
+ int cache_destroy (TYPE_1__*) ;
+ int remove_pin (TYPE_1__*,int ) ;
 
 __attribute__((used)) static int
 cache_release_subtxn(Cache *cache, SubTransactionId subtxnid)
 {
-	int refcount = cache->refcount - 1;
+ int refcount = cache->refcount - 1;
 
-	Assert(cache->refcount > 0);
-	cache->refcount--;
+ Assert(cache->refcount > 0);
+ cache->refcount--;
 
-	remove_pin(cache, subtxnid);
-	cache_destroy(cache);
+ remove_pin(cache, subtxnid);
+ cache_destroy(cache);
 
-	return refcount;
+ return refcount;
 }

@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_8__ ;
-typedef  struct TYPE_16__   TYPE_5__ ;
-typedef  struct TYPE_15__   TYPE_4__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int UInt32 ;
-struct TYPE_17__ {int /*<<< orphan*/  available; } ;
-struct TYPE_16__ {int /*<<< orphan*/  used_frame_queue; int /*<<< orphan*/  encoding_frame; TYPE_8__ frame_queue; scalar_t__ eof; } ;
-struct TYPE_15__ {int channels; int /*<<< orphan*/  sample_fmt; TYPE_5__* priv_data; } ;
-struct TYPE_14__ {int nb_samples; int /*<<< orphan*/ * data; } ;
+
+
+typedef struct TYPE_17__ TYPE_8__ ;
+typedef struct TYPE_16__ TYPE_5__ ;
+typedef struct TYPE_15__ TYPE_4__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+typedef int UInt32 ;
+struct TYPE_17__ {int available; } ;
+struct TYPE_16__ {int used_frame_queue; int encoding_frame; TYPE_8__ frame_queue; scalar_t__ eof; } ;
+struct TYPE_15__ {int channels; int sample_fmt; TYPE_5__* priv_data; } ;
+struct TYPE_14__ {int nb_samples; int * data; } ;
 struct TYPE_13__ {int mNumberBuffers; TYPE_1__* mBuffers; } ;
-struct TYPE_12__ {int mNumberChannels; int mDataByteSize; int /*<<< orphan*/  mData; } ;
-typedef  int OSStatus ;
-typedef  int /*<<< orphan*/  AudioStreamPacketDescription ;
-typedef  int /*<<< orphan*/  AudioConverterRef ;
-typedef  TYPE_2__ AudioBufferList ;
-typedef  TYPE_3__ AVFrame ;
-typedef  TYPE_4__ AVCodecContext ;
-typedef  TYPE_5__ ATDecodeContext ;
+struct TYPE_12__ {int mNumberChannels; int mDataByteSize; int mData; } ;
+typedef int OSStatus ;
+typedef int AudioStreamPacketDescription ;
+typedef int AudioConverterRef ;
+typedef TYPE_2__ AudioBufferList ;
+typedef TYPE_3__ AVFrame ;
+typedef TYPE_4__ AVCodecContext ;
+typedef TYPE_5__ ATDecodeContext ;
 
-/* Variables and functions */
- int av_frame_ref (int /*<<< orphan*/ ,TYPE_3__*) ; 
- int /*<<< orphan*/  av_frame_unref (int /*<<< orphan*/ ) ; 
- int av_get_bytes_per_sample (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ff_bufqueue_add (TYPE_4__*,int /*<<< orphan*/ *,TYPE_3__*) ; 
- TYPE_3__* ff_bufqueue_get (TYPE_8__*) ; 
+
+ int av_frame_ref (int ,TYPE_3__*) ;
+ int av_frame_unref (int ) ;
+ int av_get_bytes_per_sample (int ) ;
+ int ff_bufqueue_add (TYPE_4__*,int *,TYPE_3__*) ;
+ TYPE_3__* ff_bufqueue_get (TYPE_8__*) ;
 
 __attribute__((used)) static OSStatus ffat_encode_callback(AudioConverterRef converter, UInt32 *nb_packets,
                                      AudioBufferList *data,
@@ -60,12 +60,12 @@ __attribute__((used)) static OSStatus ffat_encode_callback(AudioConverterRef con
 
     frame = ff_bufqueue_get(&at->frame_queue);
 
-    data->mNumberBuffers              = 1;
+    data->mNumberBuffers = 1;
     data->mBuffers[0].mNumberChannels = avctx->channels;
-    data->mBuffers[0].mDataByteSize   = frame->nb_samples *
+    data->mBuffers[0].mDataByteSize = frame->nb_samples *
                                         av_get_bytes_per_sample(avctx->sample_fmt) *
                                         avctx->channels;
-    data->mBuffers[0].mData           = frame->data[0];
+    data->mBuffers[0].mData = frame->data[0];
     if (*nb_packets > frame->nb_samples)
         *nb_packets = frame->nb_samples;
 

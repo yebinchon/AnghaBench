@@ -1,30 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
-#define  G_MIRROR_DEVICE_STATE_RUNNING 129 
-#define  G_MIRROR_DEVICE_STATE_STARTING 128 
-
 __attribute__((used)) static const char *
 g_mirror_device_state2str(int state)
 {
 
-	switch (state) {
-	case G_MIRROR_DEVICE_STATE_STARTING:
-		return ("STARTING");
-	case G_MIRROR_DEVICE_STATE_RUNNING:
-		return ("RUNNING");
-	default:
-		return ("INVALID");
-	}
+ switch (state) {
+ case 128:
+  return ("STARTING");
+ case 129:
+  return ("RUNNING");
+ default:
+  return ("INVALID");
+ }
 }

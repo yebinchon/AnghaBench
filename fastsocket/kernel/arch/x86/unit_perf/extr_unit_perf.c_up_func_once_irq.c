@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  up_test_func ;
 
-/* Variables and functions */
- int /*<<< orphan*/  local_irq_disable () ; 
- int /*<<< orphan*/  local_irq_enable () ; 
- int /*<<< orphan*/  up_func_once (char const*,int /*<<< orphan*/ ,void*) ; 
+
+
+
+typedef int up_test_func ;
+
+
+ int local_irq_disable () ;
+ int local_irq_enable () ;
+ int up_func_once (char const*,int ,void*) ;
 
 void up_func_once_irq(const char *name, up_test_func cb, void *data)
 {
-	local_irq_disable();
-	up_func_once(name, cb, data);
-	local_irq_enable();
+ local_irq_disable();
+ up_func_once(name, cb, data);
+ local_irq_enable();
 }

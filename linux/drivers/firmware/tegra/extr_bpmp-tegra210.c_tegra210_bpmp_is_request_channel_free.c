@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct tegra_bpmp_channel {unsigned int index; int /*<<< orphan*/  bpmp; } ;
 
-/* Variables and functions */
- scalar_t__ MA_FREE (unsigned int) ; 
- scalar_t__ bpmp_channel_status (int /*<<< orphan*/ ,unsigned int) ; 
+
+
+
+struct tegra_bpmp_channel {unsigned int index; int bpmp; } ;
+
+
+ scalar_t__ MA_FREE (unsigned int) ;
+ scalar_t__ bpmp_channel_status (int ,unsigned int) ;
 
 __attribute__((used)) static bool
 tegra210_bpmp_is_request_channel_free(struct tegra_bpmp_channel *channel)
 {
-	unsigned int index = channel->index;
+ unsigned int index = channel->index;
 
-	return bpmp_channel_status(channel->bpmp, index) == MA_FREE(index);
+ return bpmp_channel_status(channel->bpmp, index) == MA_FREE(index);
 }

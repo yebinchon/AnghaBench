@@ -1,70 +1,70 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct nd_prefix {int /*<<< orphan*/  ndpr_advrtrs; } ;
+
+
+
+
+struct nd_prefix {int ndpr_advrtrs; } ;
 struct nd_pfxrouter {struct nd_defrouter* router; } ;
 struct nd_defrouter {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LIST_INSERT_HEAD (int /*<<< orphan*/ *,struct nd_pfxrouter*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  M_IP6NDP ; 
- int M_NOWAIT ; 
- int M_ZERO ; 
- int /*<<< orphan*/  ND6_RLOCK () ; 
- int /*<<< orphan*/  ND6_RUNLOCK () ; 
- int /*<<< orphan*/  ND6_UNLOCK_ASSERT () ; 
- int /*<<< orphan*/  ND6_WLOCK () ; 
- int /*<<< orphan*/  ND6_WUNLOCK () ; 
- int /*<<< orphan*/  defrouter_ref (struct nd_defrouter*) ; 
- int /*<<< orphan*/  defrouter_rele (struct nd_defrouter*) ; 
- int /*<<< orphan*/  free (struct nd_pfxrouter*,int /*<<< orphan*/ ) ; 
- struct nd_pfxrouter* malloc (int,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  pfr_entry ; 
- int /*<<< orphan*/  pfxlist_onlink_check () ; 
- int /*<<< orphan*/ * pfxrtr_lookup (struct nd_prefix*,struct nd_defrouter*) ; 
+
+ int LIST_INSERT_HEAD (int *,struct nd_pfxrouter*,int ) ;
+ int M_IP6NDP ;
+ int M_NOWAIT ;
+ int M_ZERO ;
+ int ND6_RLOCK () ;
+ int ND6_RUNLOCK () ;
+ int ND6_UNLOCK_ASSERT () ;
+ int ND6_WLOCK () ;
+ int ND6_WUNLOCK () ;
+ int defrouter_ref (struct nd_defrouter*) ;
+ int defrouter_rele (struct nd_defrouter*) ;
+ int free (struct nd_pfxrouter*,int ) ;
+ struct nd_pfxrouter* malloc (int,int ,int) ;
+ int pfr_entry ;
+ int pfxlist_onlink_check () ;
+ int * pfxrtr_lookup (struct nd_prefix*,struct nd_defrouter*) ;
 
 __attribute__((used)) static void
 pfxrtr_add(struct nd_prefix *pr, struct nd_defrouter *dr)
 {
-	struct nd_pfxrouter *new;
-	bool update;
+ struct nd_pfxrouter *new;
+ bool update;
 
-	ND6_UNLOCK_ASSERT();
+ ND6_UNLOCK_ASSERT();
 
-	ND6_RLOCK();
-	if (pfxrtr_lookup(pr, dr) != NULL) {
-		ND6_RUNLOCK();
-		return;
-	}
-	ND6_RUNLOCK();
+ ND6_RLOCK();
+ if (pfxrtr_lookup(pr, dr) != ((void*)0)) {
+  ND6_RUNLOCK();
+  return;
+ }
+ ND6_RUNLOCK();
 
-	new = malloc(sizeof(*new), M_IP6NDP, M_NOWAIT | M_ZERO);
-	if (new == NULL)
-		return;
-	defrouter_ref(dr);
-	new->router = dr;
+ new = malloc(sizeof(*new), M_IP6NDP, M_NOWAIT | M_ZERO);
+ if (new == ((void*)0))
+  return;
+ defrouter_ref(dr);
+ new->router = dr;
 
-	ND6_WLOCK();
-	if (pfxrtr_lookup(pr, dr) == NULL) {
-		LIST_INSERT_HEAD(&pr->ndpr_advrtrs, new, pfr_entry);
-		update = true;
-	} else {
-		/* We lost a race to add the reference. */
-		defrouter_rele(dr);
-		free(new, M_IP6NDP);
-		update = false;
-	}
-	ND6_WUNLOCK();
+ ND6_WLOCK();
+ if (pfxrtr_lookup(pr, dr) == ((void*)0)) {
+  LIST_INSERT_HEAD(&pr->ndpr_advrtrs, new, pfr_entry);
+  update = 1;
+ } else {
 
-	if (update)
-		pfxlist_onlink_check();
+  defrouter_rele(dr);
+  free(new, M_IP6NDP);
+  update = 0;
+ }
+ ND6_WUNLOCK();
+
+ if (update)
+  pfxlist_onlink_check();
 }

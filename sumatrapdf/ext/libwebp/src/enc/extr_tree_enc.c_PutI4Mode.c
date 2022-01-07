@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  VP8BitWriter ;
 
-/* Variables and functions */
- int B_DC_PRED ; 
- int B_HD_PRED ; 
- int B_HE_PRED ; 
- int B_LD_PRED ; 
- int B_RD_PRED ; 
- int B_TM_PRED ; 
- int B_VE_PRED ; 
- int B_VL_PRED ; 
- scalar_t__ VP8PutBit (int /*<<< orphan*/ * const,int,int /*<<< orphan*/  const) ; 
+
+
+
+typedef int uint8_t ;
+typedef int VP8BitWriter ;
+
+
+ int B_DC_PRED ;
+ int B_HD_PRED ;
+ int B_HE_PRED ;
+ int B_LD_PRED ;
+ int B_RD_PRED ;
+ int B_TM_PRED ;
+ int B_VE_PRED ;
+ int B_VL_PRED ;
+ scalar_t__ VP8PutBit (int * const,int,int const) ;
 
 __attribute__((used)) static int PutI4Mode(VP8BitWriter* const bw, int mode,
                      const uint8_t* const prob) {

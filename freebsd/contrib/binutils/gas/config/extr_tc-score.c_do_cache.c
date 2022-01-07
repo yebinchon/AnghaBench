@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int instruction; void* error; int /*<<< orphan*/  name; } ;
 
-/* Variables and functions */
- void* BAD_ARGS ; 
- scalar_t__ FAIL ; 
- int /*<<< orphan*/  REG_TYPE_SCORE ; 
- int /*<<< orphan*/  SET_INSN_ERROR (int /*<<< orphan*/ *) ; 
- void* _ (char*) ; 
- int /*<<< orphan*/  _IMM5 ; 
- int /*<<< orphan*/  _SIMM15 ; 
- int data_op2 (char**,int,int /*<<< orphan*/ ) ; 
- int end_of_line (char*) ; 
- int exp_ldst_offset (char**,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_1__ inst ; 
- int reg_required_here (char**,int,int /*<<< orphan*/ ) ; 
- int skip_past_comma (char**) ; 
- int /*<<< orphan*/  skip_whitespace (char*) ; 
- int /*<<< orphan*/  sprintf (int /*<<< orphan*/ ,char*,int) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int instruction; void* error; int name; } ;
+
+
+ void* BAD_ARGS ;
+ scalar_t__ FAIL ;
+ int REG_TYPE_SCORE ;
+ int SET_INSN_ERROR (int *) ;
+ void* _ (char*) ;
+ int _IMM5 ;
+ int _SIMM15 ;
+ int data_op2 (char**,int,int ) ;
+ int end_of_line (char*) ;
+ int exp_ldst_offset (char**,int ,int ) ;
+ TYPE_1__ inst ;
+ int reg_required_here (char**,int,int ) ;
+ int skip_past_comma (char**) ;
+ int skip_whitespace (char*) ;
+ int sprintf (int ,char*,int) ;
 
 __attribute__((used)) static void
 do_cache (char *str)
@@ -53,14 +53,14 @@ do_cache (char *str)
       skip_whitespace (str);
 
       if (reg_required_here (&str, 15, REG_TYPE_SCORE) == (int) FAIL)
-	return;
+ return;
 
       skip_whitespace (str);
 
-      /* cache op, [rA]  */
+
       if (skip_past_comma (&str) == (int) FAIL)
         {
-          SET_INSN_ERROR (NULL);
+          SET_INSN_ERROR (((void*)0));
           if (*str != ']')
             {
               inst.error = _("missing ]");
@@ -68,7 +68,7 @@ do_cache (char *str)
             }
           str++;
         }
-      /* cache op, [rA, simm15]  */
+
       else
         {
           if (exp_ldst_offset (&str, 0, _SIMM15) == (int) FAIL)
@@ -85,7 +85,7 @@ do_cache (char *str)
         }
 
       if (end_of_line (str) == (int) FAIL)
-	return;
+ return;
     }
   else
     {

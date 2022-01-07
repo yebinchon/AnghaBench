@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct clk {int /*<<< orphan*/  parent; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CCM_CSCR ; 
- unsigned int CCM_CSCR_USB_MASK ; 
- unsigned int CCM_CSCR_USB_OFFSET ; 
- int EINVAL ; 
- unsigned int __raw_readl (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  __raw_writel (unsigned int,int /*<<< orphan*/ ) ; 
- unsigned long clk_get_rate (int /*<<< orphan*/ ) ; 
+
+
+
+struct clk {int parent; } ;
+
+
+ int CCM_CSCR ;
+ unsigned int CCM_CSCR_USB_MASK ;
+ unsigned int CCM_CSCR_USB_OFFSET ;
+ int EINVAL ;
+ unsigned int __raw_readl (int ) ;
+ int __raw_writel (unsigned int,int ) ;
+ unsigned long clk_get_rate (int ) ;
 
 __attribute__((used)) static int clk48m_set_rate(struct clk *clk, unsigned long rate)
 {
-	unsigned int div;
-	unsigned int reg;
-	unsigned long parent_rate;
+ unsigned int div;
+ unsigned int reg;
+ unsigned long parent_rate;
 
-	parent_rate = clk_get_rate(clk->parent);
+ parent_rate = clk_get_rate(clk->parent);
 
-	div = parent_rate / rate;
+ div = parent_rate / rate;
 
-	if (div > 8 || div < 1 || ((parent_rate / div) != rate))
-		return -EINVAL;
+ if (div > 8 || div < 1 || ((parent_rate / div) != rate))
+  return -EINVAL;
 
-	div--;
+ div--;
 
-	reg = __raw_readl(CCM_CSCR);
-	reg &= ~CCM_CSCR_USB_MASK;
-	reg |= div << CCM_CSCR_USB_OFFSET;
-	__raw_writel(reg, CCM_CSCR);
+ reg = __raw_readl(CCM_CSCR);
+ reg &= ~CCM_CSCR_USB_MASK;
+ reg |= div << CCM_CSCR_USB_OFFSET;
+ __raw_writel(reg, CCM_CSCR);
 
-	return 0;
+ return 0;
 }

@@ -1,65 +1,65 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT64 ;
-typedef  size_t UINT ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int UINT64 ;
+typedef size_t UINT ;
 struct TYPE_4__ {size_t NumTokens; char** Token; } ;
-typedef  TYPE_1__ TOKEN_LIST ;
-typedef  int /*<<< orphan*/  PACK ;
-typedef  int /*<<< orphan*/  BUF ;
+typedef TYPE_1__ TOKEN_LIST ;
+typedef int PACK ;
+typedef int BUF ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * BufToPack (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FreePack (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FreeToken (TYPE_1__*) ; 
- TYPE_1__* GetPackElementNames (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PackGetInt64 (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  SeekBufToBegin (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SetDynListValue (char*,int /*<<< orphan*/ ) ; 
+
+ int * BufToPack (int *) ;
+ int FreePack (int *) ;
+ int FreeToken (TYPE_1__*) ;
+ TYPE_1__* GetPackElementNames (int *) ;
+ int PackGetInt64 (int *,char*) ;
+ int SeekBufToBegin (int *) ;
+ int SetDynListValue (char*,int ) ;
 
 void AddDynList(BUF *b)
 {
-	PACK *p;
-	TOKEN_LIST *t;
-	// Validate arguments
-	if (b == NULL)
-	{
-		return;
-	}
+ PACK *p;
+ TOKEN_LIST *t;
 
-	SeekBufToBegin(b);
+ if (b == ((void*)0))
+ {
+  return;
+ }
 
-	p = BufToPack(b);
-	if (p == NULL)
-	{
-		return;
-	}
+ SeekBufToBegin(b);
 
-	t = GetPackElementNames(p);
-	if (t != NULL)
-	{
-		UINT i;
+ p = BufToPack(b);
+ if (p == ((void*)0))
+ {
+  return;
+ }
 
-		for (i = 0;i < t->NumTokens;i++)
-		{
-			char *name = t->Token[i];
-			UINT64 v = PackGetInt64(p, name);
+ t = GetPackElementNames(p);
+ if (t != ((void*)0))
+ {
+  UINT i;
 
-			SetDynListValue(name, v);
-		}
+  for (i = 0;i < t->NumTokens;i++)
+  {
+   char *name = t->Token[i];
+   UINT64 v = PackGetInt64(p, name);
 
-		FreeToken(t);
-	}
+   SetDynListValue(name, v);
+  }
 
-	FreePack(p);
+  FreeToken(t);
+ }
+
+ FreePack(p);
 }

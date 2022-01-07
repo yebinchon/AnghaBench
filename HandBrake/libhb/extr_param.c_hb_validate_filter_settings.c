@@ -1,61 +1,61 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  hb_value_t ;
-struct TYPE_3__ {int /*<<< orphan*/  name; int /*<<< orphan*/ * settings_template; } ;
-typedef  TYPE_1__ hb_filter_object_t ;
-typedef  int /*<<< orphan*/  const hb_dict_t ;
-typedef  scalar_t__ hb_dict_iter_t ;
 
-/* Variables and functions */
- scalar_t__ HB_DICT_ITER_DONE ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/ * hb_dict_get (int /*<<< orphan*/  const*,char const*) ; 
- scalar_t__ hb_dict_iter_init (int /*<<< orphan*/  const*) ; 
- char* hb_dict_iter_key (scalar_t__) ; 
- scalar_t__ hb_dict_iter_next (int /*<<< orphan*/  const*,scalar_t__) ; 
- TYPE_1__* hb_filter_get (int) ; 
- int /*<<< orphan*/  hb_log (char*,...) ; 
- int /*<<< orphan*/  const* hb_parse_filter_settings (int /*<<< orphan*/ *) ; 
- scalar_t__ hb_validate_param_string (char const*,char*) ; 
- int /*<<< orphan*/  hb_value_free (int /*<<< orphan*/  const**) ; 
- char* hb_value_get_string (int /*<<< orphan*/ *) ; 
- char* hb_value_get_string_xform (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int hb_value_t ;
+struct TYPE_3__ {int name; int * settings_template; } ;
+typedef TYPE_1__ hb_filter_object_t ;
+typedef int const hb_dict_t ;
+typedef scalar_t__ hb_dict_iter_t ;
+
+
+ scalar_t__ HB_DICT_ITER_DONE ;
+ int free (char*) ;
+ int * hb_dict_get (int const*,char const*) ;
+ scalar_t__ hb_dict_iter_init (int const*) ;
+ char* hb_dict_iter_key (scalar_t__) ;
+ scalar_t__ hb_dict_iter_next (int const*,scalar_t__) ;
+ TYPE_1__* hb_filter_get (int) ;
+ int hb_log (char*,...) ;
+ int const* hb_parse_filter_settings (int *) ;
+ scalar_t__ hb_validate_param_string (char const*,char*) ;
+ int hb_value_free (int const**) ;
+ char* hb_value_get_string (int *) ;
+ char* hb_value_get_string_xform (int *) ;
 
 int hb_validate_filter_settings(int filter_id, const hb_dict_t * settings)
 {
     hb_filter_object_t * filter;
-    hb_dict_t          * settings_template;
-    hb_dict_iter_t       iter;
+    hb_dict_t * settings_template;
+    hb_dict_iter_t iter;
 
-    if (settings == NULL)
+    if (settings == ((void*)0))
         return 0;
 
-    // Verify that all keys in settings are in the filter settings template
+
     filter = hb_filter_get(filter_id);
-    if (filter == NULL)
+    if (filter == ((void*)0))
     {
         hb_log("hb_validate_filter_settings: Unrecognized filter (%d).\n",
                filter_id);
         return 1;
     }
-    if (filter->settings_template == NULL)
+    if (filter->settings_template == ((void*)0))
     {
-        // filter has no template to verify settings against
+
         return 0;
     }
     settings_template = hb_parse_filter_settings(filter->settings_template);
-    if (settings_template == NULL)
+    if (settings_template == ((void*)0))
     {
         hb_log("hb_validate_filter_settings: invalid template!");
         return 0;
@@ -70,20 +70,20 @@ int hb_validate_filter_settings(int filter_id, const hb_dict_t * settings)
 
         key = hb_dict_iter_key(iter);
 
-        // Check if key found in settings is also found in the template
+
         val = hb_dict_get(settings_template, key);
-        if (val == NULL)
+        if (val == ((void*)0))
         {
-            // Key is missing from template, indicate invalid settings
+
             hb_log("Invalid filter key (%s) for filter %s",
                     key, filter->name);
             return 1;
         }
 
-        // If a string value is found, and it is non-empty,
-        // it is a regex pattern for allowed values.
+
+
         const char * regex_pattern = hb_value_get_string(val);
-        if (regex_pattern != NULL && regex_pattern[0] != 0)
+        if (regex_pattern != ((void*)0) && regex_pattern[0] != 0)
         {
             char * param;
             param = hb_value_get_string_xform(hb_dict_get(settings, key));

@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct opts {int argc; char** argv; } ;
-typedef  int /*<<< orphan*/  git_repository ;
-typedef  int /*<<< orphan*/  git_remote ;
-struct TYPE_2__ {int /*<<< orphan*/  member_0; } ;
+typedef int git_repository ;
+typedef int git_remote ;
+struct TYPE_2__ {int member_0; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  check_lg2 (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  git_remote_create (int /*<<< orphan*/ **,int /*<<< orphan*/ *,char*,char*) ; 
- int /*<<< orphan*/  usage (char*,int /*<<< orphan*/ *) ; 
+
+ int check_lg2 (int ,char*,int *) ;
+ int git_remote_create (int **,int *,char*,char*) ;
+ int usage (char*,int *) ;
 
 __attribute__((used)) static int cmd_add(git_repository *repo, struct opts *o)
 {
-	char *name, *url;
-	git_remote *remote = {0};
+ char *name, *url;
+ git_remote *remote = {0};
 
-	if (o->argc != 2)
-		usage("you need to specify a name and URL", NULL);
+ if (o->argc != 2)
+  usage("you need to specify a name and URL", ((void*)0));
 
-	name = o->argv[0];
-	url = o->argv[1];
+ name = o->argv[0];
+ url = o->argv[1];
 
-	check_lg2(git_remote_create(&remote, repo, name, url),
-			"could not create remote", NULL);
+ check_lg2(git_remote_create(&remote, repo, name, url),
+   "could not create remote", ((void*)0));
 
-	return 0;
+ return 0;
 }

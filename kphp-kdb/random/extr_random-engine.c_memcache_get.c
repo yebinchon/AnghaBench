@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct connection {int dummy; } ;
 
-/* Variables and functions */
- int VALUE_BUFFSIZE ; 
- int get_at_prefix_length (char const*,int) ; 
- int /*<<< orphan*/  get_queries ; 
- int random_get_bytes (int /*<<< orphan*/ ,int) ; 
- int random_get_hex_bytes (int /*<<< orphan*/ ,int) ; 
- int random_prepare_stats (struct connection*) ; 
- int /*<<< orphan*/  return_one_key (struct connection*,char const*,int /*<<< orphan*/ ,int) ; 
- int sscanf (char const*,char*,int*) ; 
- int /*<<< orphan*/  stats_buff ; 
- int /*<<< orphan*/  strncmp (char const*,char*,int) ; 
- int /*<<< orphan*/  value_buff ; 
+
+ int VALUE_BUFFSIZE ;
+ int get_at_prefix_length (char const*,int) ;
+ int get_queries ;
+ int random_get_bytes (int ,int) ;
+ int random_get_hex_bytes (int ,int) ;
+ int random_prepare_stats (struct connection*) ;
+ int return_one_key (struct connection*,char const*,int ,int) ;
+ int sscanf (char const*,char*,int*) ;
+ int stats_buff ;
+ int strncmp (char const*,char*,int) ;
+ int value_buff ;
 
 int memcache_get (struct connection *c, const char *key, int key_len) {
   int n;

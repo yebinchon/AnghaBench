@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/ * LPCWSTR ;
-typedef  int /*<<< orphan*/  INT ;
-typedef  int /*<<< orphan*/  HDC ;
-typedef  int /*<<< orphan*/  DWORD ;
 
-/* Variables and functions */
- int LPK ; 
- int /*<<< orphan*/  LpkPSMTextOut (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  StringCchPrintfW (int /*<<< orphan*/ *,int,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TextOutW (int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ *,int) ; 
- int USERLPK ; 
- int /*<<< orphan*/  UserLpkPSMTextOut (int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int wcslen (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int WCHAR ;
+typedef int * LPCWSTR ;
+typedef int INT ;
+typedef int HDC ;
+typedef int DWORD ;
+
+
+ int LPK ;
+ int LpkPSMTextOut (int ,int ,int,int *,int,int ) ;
+ int StringCchPrintfW (int *,int,char*,int ) ;
+ int TextOutW (int ,int,int,int *,int) ;
+ int USERLPK ;
+ int UserLpkPSMTextOut (int ,int,int,int *,int,int ) ;
+ int wcslen (int *) ;
 
 __attribute__((used)) static void DrawTest(HDC hdc, int ypos, LPCWSTR str, DWORD dwFlags, int testtype)
 {

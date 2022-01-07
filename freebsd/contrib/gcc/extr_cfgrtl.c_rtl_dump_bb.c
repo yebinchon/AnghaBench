@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ rtx ;
-typedef  TYPE_3__* basic_block ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef scalar_t__ rtx ;
+typedef TYPE_3__* basic_block ;
 struct TYPE_8__ {TYPE_1__* rtl; } ;
 struct TYPE_9__ {TYPE_2__ il; } ;
-struct TYPE_7__ {int /*<<< orphan*/  global_live_at_end; int /*<<< orphan*/  global_live_at_start; } ;
-typedef  int /*<<< orphan*/  FILE ;
+struct TYPE_7__ {int global_live_at_end; int global_live_at_start; } ;
+typedef int FILE ;
 
-/* Variables and functions */
- scalar_t__ BB_END (TYPE_3__*) ; 
- scalar_t__ BB_HEAD (TYPE_3__*) ; 
- scalar_t__ NEXT_INSN (scalar_t__) ; 
- char* alloca (size_t) ; 
- int /*<<< orphan*/  dump_regset (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*,char*) ; 
- int /*<<< orphan*/  memset (char*,char,size_t) ; 
- int /*<<< orphan*/  print_rtl_single (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  putc (char,int /*<<< orphan*/ *) ; 
+
+ scalar_t__ BB_END (TYPE_3__*) ;
+ scalar_t__ BB_HEAD (TYPE_3__*) ;
+ scalar_t__ NEXT_INSN (scalar_t__) ;
+ char* alloca (size_t) ;
+ int dump_regset (int ,int *) ;
+ int fprintf (int *,char*,char*) ;
+ int memset (char*,char,size_t) ;
+ int print_rtl_single (int *,scalar_t__) ;
+ int putc (char,int *) ;
 
 __attribute__((used)) static void
 rtl_dump_bb (basic_block bb, FILE *outf, int indent)

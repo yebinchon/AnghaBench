@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {scalar_t__ type; int /*<<< orphan*/  id; int /*<<< orphan*/  hwnd; } ;
-typedef  TYPE_1__ customctrl ;
-typedef  int /*<<< orphan*/  WPARAM ;
-typedef  int /*<<< orphan*/  LRESULT ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  int /*<<< orphan*/  FileDialogImpl ;
-typedef  int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BM_GETCHECK ; 
- scalar_t__ BST_CHECKED ; 
- scalar_t__ IDLG_CCTRL_CHECKBUTTON ; 
- int /*<<< orphan*/  LOWORD (int /*<<< orphan*/ ) ; 
- scalar_t__ SendMessageW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  cctrl_event_OnButtonClicked (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cctrl_event_OnCheckButtonToggled (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- TYPE_1__* get_cctrl_from_dlgid (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {scalar_t__ type; int id; int hwnd; } ;
+typedef TYPE_1__ customctrl ;
+typedef int WPARAM ;
+typedef int LRESULT ;
+typedef int HWND ;
+typedef int FileDialogImpl ;
+typedef int BOOL ;
+
+
+ int BM_GETCHECK ;
+ scalar_t__ BST_CHECKED ;
+ scalar_t__ IDLG_CCTRL_CHECKBUTTON ;
+ int LOWORD (int ) ;
+ scalar_t__ SendMessageW (int ,int ,int ,int ) ;
+ int TRACE (char*,int *,int ) ;
+ int TRUE ;
+ int cctrl_event_OnButtonClicked (int *,int ) ;
+ int cctrl_event_OnCheckButtonToggled (int *,int ,int) ;
+ TYPE_1__* get_cctrl_from_dlgid (int *,int ) ;
 
 __attribute__((used)) static LRESULT notifysink_on_bn_clicked(FileDialogImpl *This, HWND hwnd, WPARAM wparam)
 {

@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  Status; } ;
-typedef  int /*<<< orphan*/  NEO_CTX ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NeoFreeStatus (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  NeoZero (TYPE_1__*,int) ; 
- TYPE_1__* ctx ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int Status; } ;
+typedef int NEO_CTX ;
+
+
+ int NeoFreeStatus (int *) ;
+ int NeoZero (TYPE_1__*,int) ;
+ TYPE_1__* ctx ;
 
 void NeoShutdown()
 {
-	if (ctx == NULL)
-	{
-		// Uninitialized
-		return;
-	}
+ if (ctx == ((void*)0))
+ {
 
-	// Release the status information
-	NeoFreeStatus(&ctx->Status);
+  return;
+ }
 
-	NeoZero(ctx, sizeof(NEO_CTX));
+
+ NeoFreeStatus(&ctx->Status);
+
+ NeoZero(ctx, sizeof(NEO_CTX));
 }

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  scalar_t__ UINT ;
-typedef  int /*<<< orphan*/  MSIHANDLE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DeleteFileW (int /*<<< orphan*/ ) ; 
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  MSIDBOPEN_CREATE ; 
- scalar_t__ MsiDatabaseCommit (int /*<<< orphan*/ ) ; 
- scalar_t__ MsiOpenDatabaseW (int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  create_directory_table (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  msifileW ; 
- int /*<<< orphan*/  ok (int,char*) ; 
- scalar_t__ set_summary_info (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int WCHAR ;
+typedef scalar_t__ UINT ;
+typedef int MSIHANDLE ;
+
+
+ int DeleteFileW (int ) ;
+ scalar_t__ ERROR_SUCCESS ;
+ int MSIDBOPEN_CREATE ;
+ scalar_t__ MsiDatabaseCommit (int ) ;
+ scalar_t__ MsiOpenDatabaseW (int const*,int ,int *) ;
+ int create_directory_table (int ) ;
+ int msifileW ;
+ int ok (int,char*) ;
+ scalar_t__ set_summary_info (int ) ;
 
 __attribute__((used)) static MSIHANDLE create_package_db(const WCHAR *filename)
 {
@@ -32,7 +32,7 @@ __attribute__((used)) static MSIHANDLE create_package_db(const WCHAR *filename)
 
     DeleteFileW(msifileW);
 
-    /* create an empty database */
+
     res = MsiOpenDatabaseW(filename, MSIDBOPEN_CREATE, &hdb );
     ok( res == ERROR_SUCCESS , "Failed to create database\n" );
     if( res != ERROR_SUCCESS )

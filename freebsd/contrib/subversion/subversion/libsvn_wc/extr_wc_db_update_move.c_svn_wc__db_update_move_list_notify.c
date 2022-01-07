@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {void* revision; void* old_revision; void* prop_state; void* content_state; int /*<<< orphan*/  kind; } ;
-typedef  TYPE_1__ svn_wc_notify_t ;
-typedef  int /*<<< orphan*/  (* svn_wc_notify_func2_t ) (void*,TYPE_1__*,int /*<<< orphan*/ *) ;
-typedef  void* svn_wc_notify_action_t ;
-struct TYPE_8__ {int /*<<< orphan*/  sdb; int /*<<< orphan*/  abspath; } ;
-typedef  TYPE_3__ svn_wc__db_wcroot_t ;
-typedef  int /*<<< orphan*/  svn_sqlite__stmt_t ;
-typedef  void* svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  scalar_t__ svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  STMT_FINALIZE_UPDATE_MOVE ; 
- int /*<<< orphan*/  STMT_SELECT_UPDATE_MOVE_LIST ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  kind_map_none ; 
- int /*<<< orphan*/  svn_dirent_join (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_pool_clear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_pool_create (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_pool_destroy (int /*<<< orphan*/ *) ; 
- void* svn_sqlite__column_int (int /*<<< orphan*/ *,int) ; 
- char* svn_sqlite__column_text (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_sqlite__column_token (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_sqlite__get_statement (int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_sqlite__reset (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_sqlite__step (scalar_t__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_sqlite__step_done (int /*<<< orphan*/ *) ; 
- TYPE_1__* svn_wc_create_notify (int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {void* revision; void* old_revision; void* prop_state; void* content_state; int kind; } ;
+typedef TYPE_1__ svn_wc_notify_t ;
+typedef int (* svn_wc_notify_func2_t ) (void*,TYPE_1__*,int *) ;
+typedef void* svn_wc_notify_action_t ;
+struct TYPE_8__ {int sdb; int abspath; } ;
+typedef TYPE_3__ svn_wc__db_wcroot_t ;
+typedef int svn_sqlite__stmt_t ;
+typedef void* svn_revnum_t ;
+typedef int svn_error_t ;
+typedef scalar_t__ svn_boolean_t ;
+typedef int apr_pool_t ;
+
+
+ int STMT_FINALIZE_UPDATE_MOVE ;
+ int STMT_SELECT_UPDATE_MOVE_LIST ;
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int kind_map_none ;
+ int svn_dirent_join (int ,char const*,int *) ;
+ int svn_pool_clear (int *) ;
+ int * svn_pool_create (int *) ;
+ int svn_pool_destroy (int *) ;
+ void* svn_sqlite__column_int (int *,int) ;
+ char* svn_sqlite__column_text (int *,int ,int *) ;
+ int svn_sqlite__column_token (int *,int,int ) ;
+ int svn_sqlite__get_statement (int **,int ,int ) ;
+ int svn_sqlite__reset (int *) ;
+ int svn_sqlite__step (scalar_t__*,int *) ;
+ int svn_sqlite__step_done (int *) ;
+ TYPE_1__* svn_wc_create_notify (int ,void*,int *) ;
 
 svn_error_t *
 svn_wc__db_update_move_list_notify(svn_wc__db_wcroot_t *wcroot,
@@ -71,7 +71,7 @@ svn_wc__db_update_move_list_notify(svn_wc__db_wcroot_t *wcroot,
 
           svn_pool_clear(iterpool);
 
-          local_relpath = svn_sqlite__column_text(stmt, 0, NULL);
+          local_relpath = svn_sqlite__column_text(stmt, 0, ((void*)0));
           action = svn_sqlite__column_int(stmt, 1);
           notify = svn_wc_create_notify(svn_dirent_join(wcroot->abspath,
                                                         local_relpath,

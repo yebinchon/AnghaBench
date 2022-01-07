@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  enum AVHWDeviceType { ____Placeholder_AVHWDeviceType } AVHWDeviceType ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef enum AVHWDeviceType { ____Placeholder_AVHWDeviceType } AVHWDeviceType ;
 struct TYPE_2__ {char* name; } ;
 
-/* Variables and functions */
- int AV_HWDEVICE_TYPE_NONE ; 
- char* av_hwdevice_get_type_name (int) ; 
- int av_hwdevice_iterate_types (int) ; 
- TYPE_1__* hwaccels ; 
- int /*<<< orphan*/  printf (char*,...) ; 
+
+ int AV_HWDEVICE_TYPE_NONE ;
+ char* av_hwdevice_get_type_name (int) ;
+ int av_hwdevice_iterate_types (int) ;
+ TYPE_1__* hwaccels ;
+ int printf (char*,...) ;
 
 __attribute__((used)) static int show_hwaccels(void *optctx, const char *opt, const char *arg)
 {

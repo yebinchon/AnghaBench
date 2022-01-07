@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  scalar_t__ fattributes_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  VC_FILESYS_SET_ATTR ; 
- int vc_filesys_single_string (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint32_t ;
+typedef scalar_t__ fattributes_t ;
+
+
+ int VC_FILESYS_SET_ATTR ;
+ int vc_filesys_single_string (int ,char const*,int ,int ) ;
 
 int vc_filesys_set_attr(const char *path, fattributes_t attr)
 {

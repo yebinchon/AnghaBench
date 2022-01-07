@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  void* yuv2planarX_fn ;
-typedef  void* yuv2planar1_fn ;
-typedef  scalar_t__ yuv2packedX_fn ;
-typedef  void* yuv2packed2_fn ;
-typedef  void* yuv2packed1_fn ;
-typedef  void* yuv2interleavedX_fn ;
-typedef  void* yuv2anyX_fn ;
-typedef  int /*<<< orphan*/  int16_t ;
-struct TYPE_6__ {int filter_size; int isMMX; void* pfn; scalar_t__ yuv2packedX; int /*<<< orphan*/  filter_pos; int /*<<< orphan*/ ** filter; } ;
-typedef  TYPE_2__ VScalerContext ;
-struct TYPE_7__ {int numDesc; int vChrFilterSize; int vLumFilterSize; scalar_t__ yuv2packed2; scalar_t__ yuv2packed1; int /*<<< orphan*/  vChrFilterPos; int /*<<< orphan*/ * vChrFilter; int /*<<< orphan*/  vLumFilterPos; int /*<<< orphan*/ * vLumFilter; TYPE_1__* desc; scalar_t__ alpMmxFilter; scalar_t__ lumMmxFilter; scalar_t__ chrMmxFilter; int /*<<< orphan*/  dstFormat; scalar_t__ is_internal_gamma; } ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef void* yuv2planarX_fn ;
+typedef void* yuv2planar1_fn ;
+typedef scalar_t__ yuv2packedX_fn ;
+typedef void* yuv2packed2_fn ;
+typedef void* yuv2packed1_fn ;
+typedef void* yuv2interleavedX_fn ;
+typedef void* yuv2anyX_fn ;
+typedef int int16_t ;
+struct TYPE_6__ {int filter_size; int isMMX; void* pfn; scalar_t__ yuv2packedX; int filter_pos; int ** filter; } ;
+typedef TYPE_2__ VScalerContext ;
+struct TYPE_7__ {int numDesc; int vChrFilterSize; int vLumFilterSize; scalar_t__ yuv2packed2; scalar_t__ yuv2packed1; int vChrFilterPos; int * vChrFilter; int vLumFilterPos; int * vLumFilter; TYPE_1__* desc; scalar_t__ alpMmxFilter; scalar_t__ lumMmxFilter; scalar_t__ chrMmxFilter; int dstFormat; scalar_t__ is_internal_gamma; } ;
 struct TYPE_5__ {TYPE_2__* instance; } ;
-typedef  TYPE_3__ SwsContext ;
+typedef TYPE_3__ SwsContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  isALPHA (int /*<<< orphan*/ ) ; 
- scalar_t__ isGray (int /*<<< orphan*/ ) ; 
- scalar_t__ isPlanarYUV (int /*<<< orphan*/ ) ; 
+
+ int isALPHA (int ) ;
+ scalar_t__ isGray (int ) ;
+ scalar_t__ isPlanarYUV (int ) ;
 
 void ff_init_vscale_pfn(SwsContext *c,
     yuv2planar1_fn yuv2plane1,
@@ -41,9 +41,9 @@ void ff_init_vscale_pfn(SwsContext *c,
     yuv2packedX_fn yuv2packedX,
     yuv2anyX_fn yuv2anyX, int use_mmx)
 {
-    VScalerContext *lumCtx = NULL;
-    VScalerContext *chrCtx = NULL;
-    int idx = c->numDesc - (c->is_internal_gamma ? 2 : 1); //FIXME avoid hardcoding indexes
+    VScalerContext *lumCtx = ((void*)0);
+    VScalerContext *chrCtx = ((void*)0);
+    int idx = c->numDesc - (c->is_internal_gamma ? 2 : 1);
 
     if (isPlanarYUV(c->dstFormat) || (isGray(c->dstFormat) && !isALPHA(c->dstFormat))) {
         if (!isGray(c->dstFormat)) {
@@ -55,9 +55,9 @@ void ff_init_vscale_pfn(SwsContext *c,
             chrCtx->isMMX = use_mmx;
 
             --idx;
-            if (yuv2nv12cX)               chrCtx->pfn = yuv2nv12cX;
+            if (yuv2nv12cX) chrCtx->pfn = yuv2nv12cX;
             else if (c->vChrFilterSize == 1) chrCtx->pfn = yuv2plane1;
-            else                             chrCtx->pfn = yuv2planeX;
+            else chrCtx->pfn = yuv2planeX;
         }
 
         lumCtx = c->desc[idx].instance;
@@ -69,7 +69,7 @@ void ff_init_vscale_pfn(SwsContext *c,
         lumCtx->isMMX = use_mmx;
 
         if (c->vLumFilterSize == 1) lumCtx->pfn = yuv2plane1;
-        else                        lumCtx->pfn = yuv2planeX;
+        else lumCtx->pfn = yuv2planeX;
 
     } else {
         lumCtx = c->desc[idx].instance;

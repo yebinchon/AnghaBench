@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int LPARAM ;
-typedef  int LONG ;
-typedef  int /*<<< orphan*/  ITextSelection ;
-typedef  int /*<<< orphan*/  ITextRange ;
-typedef  int /*<<< orphan*/  ITextDocument ;
-typedef  int /*<<< orphan*/  IRichEditOle ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  int HRESULT ;
-typedef  char CHAR ;
 
-/* Variables and functions */
- int CO_E_RELEASED ; 
- int /*<<< orphan*/  EM_SETSEL ; 
- int E_INVALIDARG ; 
- int ITextDocument_Range (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ **) ; 
- int ITextRange_GetStoryType (int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  ITextRange_Release (int /*<<< orphan*/ *) ; 
- int ITextSelection_GetStoryType (int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  ITextSelection_Release (int /*<<< orphan*/ *) ; 
- int S_OK ; 
- int /*<<< orphan*/  SendMessageA (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  WM_SETTEXT ; 
- int /*<<< orphan*/  create_interfaces (int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ **,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  ok (int,char*,int) ; 
- int /*<<< orphan*/  release_interfaces (int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
- int tomTextFrameStory ; 
- int tomUnknownStory ; 
+
+
+
+typedef int LPARAM ;
+typedef int LONG ;
+typedef int ITextSelection ;
+typedef int ITextRange ;
+typedef int ITextDocument ;
+typedef int IRichEditOle ;
+typedef int HWND ;
+typedef int HRESULT ;
+typedef char CHAR ;
+
+
+ int CO_E_RELEASED ;
+ int EM_SETSEL ;
+ int E_INVALIDARG ;
+ int ITextDocument_Range (int *,int ,int,int **) ;
+ int ITextRange_GetStoryType (int *,int*) ;
+ int ITextRange_Release (int *) ;
+ int ITextSelection_GetStoryType (int *,int*) ;
+ int ITextSelection_Release (int *) ;
+ int S_OK ;
+ int SendMessageA (int ,int ,int,int) ;
+ int WM_SETTEXT ;
+ int create_interfaces (int *,int **,int **,int **) ;
+ int ok (int,char*,int) ;
+ int release_interfaces (int *,int **,int **,int *) ;
+ int tomTextFrameStory ;
+ int tomUnknownStory ;
 
 __attribute__((used)) static void test_GetStoryType(void)
 {
   static const CHAR test_text1[] = "TestSomeText";
-  IRichEditOle *reOle = NULL;
-  ITextDocument *doc = NULL;
+  IRichEditOle *reOle = ((void*)0);
+  ITextDocument *doc = ((void*)0);
   ITextSelection *selection;
   ITextRange *range;
   LONG value;
@@ -56,7 +56,7 @@ __attribute__((used)) static void test_GetStoryType(void)
   hr = ITextDocument_Range(doc, 0, 4, &range);
   ok(hr == S_OK, "got 0x%08x\n", hr);
 
-  hr = ITextRange_GetStoryType(range, NULL);
+  hr = ITextRange_GetStoryType(range, ((void*)0));
   ok(hr == E_INVALIDARG, "got 0x%08x\n", hr);
 
   value = tomTextFrameStory;
@@ -64,7 +64,7 @@ __attribute__((used)) static void test_GetStoryType(void)
   ok(hr == S_OK, "got 0x%08x\n", hr);
   ok(value == tomUnknownStory, "got %d\n", value);
 
-  hr = ITextSelection_GetStoryType(selection, NULL);
+  hr = ITextSelection_GetStoryType(selection, ((void*)0));
   ok(hr == E_INVALIDARG, "got 0x%08x\n", hr);
 
   value = tomTextFrameStory;
@@ -72,9 +72,9 @@ __attribute__((used)) static void test_GetStoryType(void)
   ok(hr == S_OK, "got 0x%08x\n", hr);
   ok(value == tomUnknownStory, "got %d\n", value);
 
-  release_interfaces(&hwnd, &reOle, &doc, NULL);
+  release_interfaces(&hwnd, &reOle, &doc, ((void*)0));
 
-  hr = ITextRange_GetStoryType(range, NULL);
+  hr = ITextRange_GetStoryType(range, ((void*)0));
   ok(hr == CO_E_RELEASED, "got 0x%08x\n", hr);
 
   value = 123;
@@ -82,7 +82,7 @@ __attribute__((used)) static void test_GetStoryType(void)
   ok(hr == CO_E_RELEASED, "got 0x%08x\n", hr);
   ok(value == 123, "got %d\n", value);
 
-  hr = ITextSelection_GetStoryType(selection, NULL);
+  hr = ITextSelection_GetStoryType(selection, ((void*)0));
   ok(hr == CO_E_RELEASED, "got 0x%08x\n", hr);
 
   value = 123;

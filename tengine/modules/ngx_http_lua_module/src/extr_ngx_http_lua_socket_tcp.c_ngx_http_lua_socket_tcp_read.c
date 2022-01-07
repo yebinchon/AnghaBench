@@ -1,87 +1,87 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_37__   TYPE_9__ ;
-typedef  struct TYPE_36__   TYPE_8__ ;
-typedef  struct TYPE_35__   TYPE_7__ ;
-typedef  struct TYPE_34__   TYPE_6__ ;
-typedef  struct TYPE_33__   TYPE_5__ ;
-typedef  struct TYPE_32__   TYPE_4__ ;
-typedef  struct TYPE_31__   TYPE_3__ ;
-typedef  struct TYPE_30__   TYPE_2__ ;
-typedef  struct TYPE_29__   TYPE_1__ ;
-typedef  struct TYPE_28__   TYPE_10__ ;
 
-/* Type definitions */
-typedef  scalar_t__ ssize_t ;
-typedef  int off_t ;
-typedef  scalar_t__ ngx_int_t ;
-struct TYPE_33__ {size_t request_length; TYPE_4__* request_body; TYPE_3__* connection; int /*<<< orphan*/  args; int /*<<< orphan*/  uri; TYPE_1__* header_in; } ;
-typedef  TYPE_5__ ngx_http_request_t ;
+
+
+typedef struct TYPE_37__ TYPE_9__ ;
+typedef struct TYPE_36__ TYPE_8__ ;
+typedef struct TYPE_35__ TYPE_7__ ;
+typedef struct TYPE_34__ TYPE_6__ ;
+typedef struct TYPE_33__ TYPE_5__ ;
+typedef struct TYPE_32__ TYPE_4__ ;
+typedef struct TYPE_31__ TYPE_3__ ;
+typedef struct TYPE_30__ TYPE_2__ ;
+typedef struct TYPE_29__ TYPE_1__ ;
+typedef struct TYPE_28__ TYPE_10__ ;
+
+
+typedef scalar_t__ ssize_t ;
+typedef int off_t ;
+typedef scalar_t__ ngx_int_t ;
+struct TYPE_33__ {size_t request_length; TYPE_4__* request_body; TYPE_3__* connection; int args; int uri; TYPE_1__* header_in; } ;
+typedef TYPE_5__ ngx_http_request_t ;
 struct TYPE_28__ {size_t last; size_t pos; size_t end; } ;
 struct TYPE_30__ {TYPE_9__* connection; } ;
-struct TYPE_34__ {int eof; scalar_t__ (* input_filter ) (int /*<<< orphan*/ ,size_t) ;int /*<<< orphan*/  read_timeout; scalar_t__ body_downstream; int /*<<< orphan*/  socket_errno; scalar_t__ raw_downstream; TYPE_10__ buffer; scalar_t__ read_waiting; scalar_t__ ft_type; int /*<<< orphan*/  input_filter_ctx; TYPE_2__ peer; } ;
-typedef  TYPE_6__ ngx_http_lua_socket_tcp_upstream_t ;
+struct TYPE_34__ {int eof; scalar_t__ (* input_filter ) (int ,size_t) ;int read_timeout; scalar_t__ body_downstream; int socket_errno; scalar_t__ raw_downstream; TYPE_10__ buffer; scalar_t__ read_waiting; scalar_t__ ft_type; int input_filter_ctx; TYPE_2__ peer; } ;
+typedef TYPE_6__ ngx_http_lua_socket_tcp_upstream_t ;
 struct TYPE_35__ {scalar_t__ check_client_abort; } ;
-typedef  TYPE_7__ ngx_http_lua_loc_conf_t ;
+typedef TYPE_7__ ngx_http_lua_loc_conf_t ;
 struct TYPE_36__ {scalar_t__ timer_set; scalar_t__ active; scalar_t__ ready; } ;
-typedef  TYPE_8__ ngx_event_t ;
-struct TYPE_37__ {scalar_t__ (* recv ) (TYPE_9__*,size_t,size_t) ;TYPE_8__* read; int /*<<< orphan*/  log; } ;
-typedef  TYPE_9__ ngx_connection_t ;
-typedef  TYPE_10__ ngx_buf_t ;
+typedef TYPE_8__ ngx_event_t ;
+struct TYPE_37__ {scalar_t__ (* recv ) (TYPE_9__*,size_t,size_t) ;TYPE_8__* read; int log; } ;
+typedef TYPE_9__ ngx_connection_t ;
+typedef TYPE_10__ ngx_buf_t ;
 struct TYPE_32__ {size_t rest; } ;
-struct TYPE_31__ {int /*<<< orphan*/  log; } ;
+struct TYPE_31__ {int log; } ;
 struct TYPE_29__ {int last; int pos; } ;
 
-/* Variables and functions */
- scalar_t__ NGX_AGAIN ; 
- scalar_t__ NGX_ERROR ; 
- scalar_t__ NGX_HTTP_CLIENT_CLOSED_REQUEST ; 
- int /*<<< orphan*/  NGX_HTTP_LUA_SOCKET_FT_CLIENTABORT ; 
- int /*<<< orphan*/  NGX_HTTP_LUA_SOCKET_FT_ERROR ; 
- int /*<<< orphan*/  NGX_HTTP_LUA_SOCKET_FT_NOMEM ; 
- int /*<<< orphan*/  NGX_LOG_DEBUG_HTTP ; 
- scalar_t__ NGX_OK ; 
- int /*<<< orphan*/  dd (char*,...) ; 
- int /*<<< orphan*/  ngx_add_timer (TYPE_8__*,int /*<<< orphan*/ ) ; 
- void* ngx_copy (size_t,int,size_t) ; 
- int /*<<< orphan*/  ngx_del_timer (TYPE_8__*) ; 
- scalar_t__ ngx_handle_read_event (TYPE_8__*,int /*<<< orphan*/ ) ; 
- TYPE_7__* ngx_http_get_module_loc_conf (TYPE_5__*,int /*<<< orphan*/ ) ; 
- scalar_t__ ngx_http_lua_check_broken_connection (TYPE_5__*,TYPE_8__*) ; 
- int /*<<< orphan*/  ngx_http_lua_module ; 
- int /*<<< orphan*/  ngx_http_lua_probe_req_socket_consume_preread (TYPE_5__*,int,size_t) ; 
- scalar_t__ ngx_http_lua_socket_add_input_buffer (TYPE_5__*,TYPE_6__*) ; 
- int /*<<< orphan*/  ngx_http_lua_socket_handle_read_error (TYPE_5__*,TYPE_6__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_http_lua_socket_handle_read_success (TYPE_5__*,TYPE_6__*) ; 
- int /*<<< orphan*/  ngx_log_debug0 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ngx_log_debug1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  ngx_log_debug3 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ngx_log_debug4 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ngx_socket_errno ; 
- scalar_t__ stub1 (int /*<<< orphan*/ ,size_t) ; 
- scalar_t__ stub2 (TYPE_9__*,size_t,size_t) ; 
+
+ scalar_t__ NGX_AGAIN ;
+ scalar_t__ NGX_ERROR ;
+ scalar_t__ NGX_HTTP_CLIENT_CLOSED_REQUEST ;
+ int NGX_HTTP_LUA_SOCKET_FT_CLIENTABORT ;
+ int NGX_HTTP_LUA_SOCKET_FT_ERROR ;
+ int NGX_HTTP_LUA_SOCKET_FT_NOMEM ;
+ int NGX_LOG_DEBUG_HTTP ;
+ scalar_t__ NGX_OK ;
+ int dd (char*,...) ;
+ int ngx_add_timer (TYPE_8__*,int ) ;
+ void* ngx_copy (size_t,int,size_t) ;
+ int ngx_del_timer (TYPE_8__*) ;
+ scalar_t__ ngx_handle_read_event (TYPE_8__*,int ) ;
+ TYPE_7__* ngx_http_get_module_loc_conf (TYPE_5__*,int ) ;
+ scalar_t__ ngx_http_lua_check_broken_connection (TYPE_5__*,TYPE_8__*) ;
+ int ngx_http_lua_module ;
+ int ngx_http_lua_probe_req_socket_consume_preread (TYPE_5__*,int,size_t) ;
+ scalar_t__ ngx_http_lua_socket_add_input_buffer (TYPE_5__*,TYPE_6__*) ;
+ int ngx_http_lua_socket_handle_read_error (TYPE_5__*,TYPE_6__*,int ) ;
+ int ngx_http_lua_socket_handle_read_success (TYPE_5__*,TYPE_6__*) ;
+ int ngx_log_debug0 (int ,int ,int ,char*) ;
+ int ngx_log_debug1 (int ,int ,int ,char*,int) ;
+ int ngx_log_debug3 (int ,int ,int ,char*,int,int *,int *) ;
+ int ngx_log_debug4 (int ,int ,int ,char*,int,int,int *,int *) ;
+ int ngx_socket_errno ;
+ scalar_t__ stub1 (int ,size_t) ;
+ scalar_t__ stub2 (TYPE_9__*,size_t,size_t) ;
 
 __attribute__((used)) static ngx_int_t
 ngx_http_lua_socket_tcp_read(ngx_http_request_t *r,
     ngx_http_lua_socket_tcp_upstream_t *u)
 {
-    ngx_int_t                    rc;
-    ngx_connection_t            *c;
-    ngx_buf_t                   *b;
-    ngx_event_t                 *rev;
-    size_t                       size;
-    ssize_t                      n;
-    unsigned                     read;
-    off_t                        preread = 0;
-    ngx_http_lua_loc_conf_t     *llcf;
+    ngx_int_t rc;
+    ngx_connection_t *c;
+    ngx_buf_t *b;
+    ngx_event_t *rev;
+    size_t size;
+    ssize_t n;
+    unsigned read;
+    off_t preread = 0;
+    ngx_http_lua_loc_conf_t *llcf;
 
     c = u->peer.connection;
     rev = c->read;
@@ -135,13 +135,13 @@ ngx_http_lua_socket_tcp_read(ngx_http_request_t *r,
                     }
                 }
 
-#if 1
+
                 if (ngx_handle_read_event(rev, 0) != NGX_OK) {
                     ngx_http_lua_socket_handle_read_error(r, u,
                                      NGX_HTTP_LUA_SOCKET_FT_ERROR);
                     return NGX_ERROR;
                 }
-#endif
+
 
 success:
 
@@ -158,7 +158,7 @@ success:
                 return NGX_ERROR;
             }
 
-            /* rc == NGX_AGAIN */
+
 
             if (u->body_downstream && r->request_body->rest == 0) {
                 u->eof = 1;
@@ -219,13 +219,13 @@ success:
                 continue;
             }
 
-            /* try to process the preread body */
+
 
             preread = r->header_in->last - r->header_in->pos;
 
             if (preread) {
 
-                /* there is the pre-read part of the request body */
+
 
                 ngx_log_debug1(NGX_LOG_DEBUG_HTTP, r->connection->log, 0,
                                "http client request body preread %O", preread);
@@ -259,12 +259,12 @@ success:
             }
         }
 
-#if 1
+
         if (rev->active && !rev->ready) {
             rc = NGX_AGAIN;
             break;
         }
-#endif
+
 
         ngx_log_debug3(NGX_LOG_DEBUG_HTTP, r->connection->log, 0,
                        "lua tcp socket try to recv data %uz: \"%V?%V\"",
@@ -299,7 +299,7 @@ success:
                     return NGX_ERROR;
                 }
 
-                /* llcf->check_client_abort == 0 */
+
 
                 if (u->body_downstream && r->request_body->rest) {
                     ngx_http_lua_socket_handle_read_error(r, u,
@@ -331,13 +331,13 @@ success:
         }
     }
 
-#if 1
+
     if (ngx_handle_read_event(rev, 0) != NGX_OK) {
         ngx_http_lua_socket_handle_read_error(r, u,
                                               NGX_HTTP_LUA_SOCKET_FT_ERROR);
         return NGX_ERROR;
     }
-#endif
+
 
     if (rev->active) {
         ngx_add_timer(rev, u->read_timeout);

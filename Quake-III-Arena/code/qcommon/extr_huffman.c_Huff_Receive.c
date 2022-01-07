@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int symbol; struct TYPE_3__* left; struct TYPE_3__* right; } ;
-typedef  TYPE_1__ node_t ;
-typedef  int /*<<< orphan*/  byte ;
+typedef TYPE_1__ node_t ;
+typedef int byte ;
 
-/* Variables and functions */
- int INTERNAL_NODE ; 
- scalar_t__ get_bit (int /*<<< orphan*/ *) ; 
+
+ int INTERNAL_NODE ;
+ scalar_t__ get_bit (int *) ;
 
 int Huff_Receive (node_t *node, int *ch, byte *fin) {
-	while (node && node->symbol == INTERNAL_NODE) {
-		if (get_bit(fin)) {
-			node = node->right;
-		} else {
-			node = node->left;
-		}
-	}
-	if (!node) {
-		return 0;
-//		Com_Error(ERR_DROP, "Illegal tree!\n");
-	}
-	return (*ch = node->symbol);
+ while (node && node->symbol == INTERNAL_NODE) {
+  if (get_bit(fin)) {
+   node = node->right;
+  } else {
+   node = node->left;
+  }
+ }
+ if (!node) {
+  return 0;
+
+ }
+ return (*ch = node->symbol);
 }

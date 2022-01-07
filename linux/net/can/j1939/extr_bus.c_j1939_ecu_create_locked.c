@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct j1939_priv {int /*<<< orphan*/  ecus; int /*<<< orphan*/  lock; } ;
-struct TYPE_2__ {int /*<<< orphan*/  function; } ;
-struct j1939_ecu {int /*<<< orphan*/  list; struct j1939_priv* priv; TYPE_1__ ac_timer; int /*<<< orphan*/  name; int /*<<< orphan*/  addr; int /*<<< orphan*/  kref; } ;
-typedef  int /*<<< orphan*/  name_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLOCK_MONOTONIC ; 
- int /*<<< orphan*/  ENOMEM ; 
- struct j1939_ecu* ERR_PTR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HRTIMER_MODE_REL_SOFT ; 
- int /*<<< orphan*/  INIT_LIST_HEAD (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  J1939_IDLE_ADDR ; 
- int /*<<< orphan*/  gfp_any () ; 
- int /*<<< orphan*/  hrtimer_init (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  j1939_ecu_timer_handler ; 
- int /*<<< orphan*/  j1939_priv_get (struct j1939_priv*) ; 
- int /*<<< orphan*/  kref_init (int /*<<< orphan*/ *) ; 
- struct j1939_ecu* kzalloc (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  list_add_tail (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lockdep_assert_held (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct j1939_priv {int ecus; int lock; } ;
+struct TYPE_2__ {int function; } ;
+struct j1939_ecu {int list; struct j1939_priv* priv; TYPE_1__ ac_timer; int name; int addr; int kref; } ;
+typedef int name_t ;
+
+
+ int CLOCK_MONOTONIC ;
+ int ENOMEM ;
+ struct j1939_ecu* ERR_PTR (int ) ;
+ int HRTIMER_MODE_REL_SOFT ;
+ int INIT_LIST_HEAD (int *) ;
+ int J1939_IDLE_ADDR ;
+ int gfp_any () ;
+ int hrtimer_init (TYPE_1__*,int ,int ) ;
+ int j1939_ecu_timer_handler ;
+ int j1939_priv_get (struct j1939_priv*) ;
+ int kref_init (int *) ;
+ struct j1939_ecu* kzalloc (int,int ) ;
+ int list_add_tail (int *,int *) ;
+ int lockdep_assert_held (int *) ;
 
 struct j1939_ecu *j1939_ecu_create_locked(struct j1939_priv *priv, name_t name)
 {
-	struct j1939_ecu *ecu;
+ struct j1939_ecu *ecu;
 
-	lockdep_assert_held(&priv->lock);
+ lockdep_assert_held(&priv->lock);
 
-	ecu = kzalloc(sizeof(*ecu), gfp_any());
-	if (!ecu)
-		return ERR_PTR(-ENOMEM);
-	kref_init(&ecu->kref);
-	ecu->addr = J1939_IDLE_ADDR;
-	ecu->name = name;
+ ecu = kzalloc(sizeof(*ecu), gfp_any());
+ if (!ecu)
+  return ERR_PTR(-ENOMEM);
+ kref_init(&ecu->kref);
+ ecu->addr = J1939_IDLE_ADDR;
+ ecu->name = name;
 
-	hrtimer_init(&ecu->ac_timer, CLOCK_MONOTONIC, HRTIMER_MODE_REL_SOFT);
-	ecu->ac_timer.function = j1939_ecu_timer_handler;
-	INIT_LIST_HEAD(&ecu->list);
+ hrtimer_init(&ecu->ac_timer, CLOCK_MONOTONIC, HRTIMER_MODE_REL_SOFT);
+ ecu->ac_timer.function = j1939_ecu_timer_handler;
+ INIT_LIST_HEAD(&ecu->list);
 
-	j1939_priv_get(priv);
-	ecu->priv = priv;
-	list_add_tail(&ecu->list, &priv->ecus);
+ j1939_priv_get(priv);
+ ecu->priv = priv;
+ list_add_tail(&ecu->list, &priv->ecus);
 
-	return ecu;
+ return ecu;
 }

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-struct TYPE_7__ {scalar_t__ type; int /*<<< orphan*/  idx; } ;
-typedef  scalar_t__ GRawDataType ;
-typedef  TYPE_1__ GRawData ;
-typedef  int GModule ;
 
-/* Variables and functions */
- scalar_t__ INTEGER ; 
- int /*<<< orphan*/  MTRC_DATAMAP ; 
- int /*<<< orphan*/  MTRC_HITS ; 
- scalar_t__ STRING ; 
-#define  VISITORS 128 
- int /*<<< orphan*/  data_iter_generic ; 
- void* get_hash (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ht_get_size (void*) ; 
- TYPE_1__* init_new_raw_data (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sort_raw_num_data (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sort_raw_str_data (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tc_db_foreach (void*,int /*<<< orphan*/ ,TYPE_1__*) ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+struct TYPE_7__ {scalar_t__ type; int idx; } ;
+typedef scalar_t__ GRawDataType ;
+typedef TYPE_1__ GRawData ;
+typedef int GModule ;
+
+
+ scalar_t__ INTEGER ;
+ int MTRC_DATAMAP ;
+ int MTRC_HITS ;
+ scalar_t__ STRING ;
+
+ int data_iter_generic ;
+ void* get_hash (int,int ) ;
+ int ht_get_size (void*) ;
+ TYPE_1__* init_new_raw_data (int,int ) ;
+ int sort_raw_num_data (TYPE_1__*,int ) ;
+ int sort_raw_str_data (TYPE_1__*,int ) ;
+ int tc_db_foreach (void*,int ,TYPE_1__*) ;
 
 GRawData *
 parse_raw_data (GModule module)
@@ -37,10 +37,10 @@ parse_raw_data (GModule module)
   GRawData *raw_data;
   GRawDataType type;
   uint32_t ht_size = 0;
-  void *hash = NULL;
+  void *hash = ((void*)0);
 
   switch (module) {
-  case VISITORS:
+  case 128:
     hash = get_hash (module, MTRC_DATAMAP);
     type = STRING;
     break;
@@ -50,7 +50,7 @@ parse_raw_data (GModule module)
   }
 
   if (!hash)
-    return NULL;
+    return ((void*)0);
 
   ht_size = ht_get_size (hash);
   raw_data = init_new_raw_data (module, ht_size);

@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  size_t UINT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EnPrintableAsciiStr (char*,char) ; 
- size_t StrLen (char*) ; 
+
+
+
+typedef size_t UINT ;
+
+
+ int EnPrintableAsciiStr (char*,char) ;
+ size_t StrLen (char*) ;
 
 void MakeSafeLogStr(char *str)
 {
-	UINT i, len;
-	// Validate arguments
-	if (str == NULL)
-	{
-		return;
-	}
+ UINT i, len;
 
-	EnPrintableAsciiStr(str, '?');
+ if (str == ((void*)0))
+ {
+  return;
+ }
 
-	len = StrLen(str);
-	for (i = 0;i < len;i++)
-	{
-		if (str[i] == ',')
-		{
-			str[i] = '.';
-		}
-		else if (str[i] == ' ')
-		{
-			str[i] = '_';
-		}
-	}
+ EnPrintableAsciiStr(str, '?');
+
+ len = StrLen(str);
+ for (i = 0;i < len;i++)
+ {
+  if (str[i] == ',')
+  {
+   str[i] = '.';
+  }
+  else if (str[i] == ' ')
+  {
+   str[i] = '_';
+  }
+ }
 }

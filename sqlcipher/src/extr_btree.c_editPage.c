@@ -1,70 +1,70 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_4__ ;
-typedef  struct TYPE_16__   TYPE_3__ ;
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-struct TYPE_17__ {int /*<<< orphan*/  (* xCellSize ) (TYPE_4__*,int /*<<< orphan*/ *) ;} ;
-struct TYPE_16__ {int /*<<< orphan*/ ** apCell; TYPE_4__* pRef; } ;
-struct TYPE_15__ {int hdrOffset; int nCell; int nOverflow; int* aiOvfl; TYPE_1__* pBt; int /*<<< orphan*/ * aCellIdx; int /*<<< orphan*/ * aData; } ;
-struct TYPE_14__ {size_t usableSize; int /*<<< orphan*/  pPager; } ;
-typedef  TYPE_2__ MemPage ;
-typedef  TYPE_3__ CellArray ;
 
-/* Variables and functions */
- scalar_t__ CORRUPT_DB ; 
- int MIN (int,int) ; 
- int SQLITE_CORRUPT_BKPT ; 
- int SQLITE_OK ; 
- scalar_t__ SQLITE_WITHIN (int /*<<< orphan*/ *,int /*<<< orphan*/ * const,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  assert (int) ; 
- int get2byteAligned (int /*<<< orphan*/ *) ; 
- size_t get2byteNotZero (int /*<<< orphan*/ *) ; 
- scalar_t__ memcmp (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ * const,size_t) ; 
- int /*<<< orphan*/  memmove (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int pageFreeArray (TYPE_2__*,int,int,TYPE_3__*) ; 
- scalar_t__ pageInsertArray (TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ *,int,int,TYPE_3__*) ; 
- int /*<<< orphan*/  populateCellCache (TYPE_3__*,int,int) ; 
- int /*<<< orphan*/  put2byte (int /*<<< orphan*/ *,int) ; 
- int rebuildPage (TYPE_3__*,int,int,TYPE_2__*) ; 
- int /*<<< orphan*/ * sqlite3PagerTempSpace (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 (TYPE_4__*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_17__ TYPE_4__ ;
+typedef struct TYPE_16__ TYPE_3__ ;
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
+typedef int u8 ;
+struct TYPE_17__ {int (* xCellSize ) (TYPE_4__*,int *) ;} ;
+struct TYPE_16__ {int ** apCell; TYPE_4__* pRef; } ;
+struct TYPE_15__ {int hdrOffset; int nCell; int nOverflow; int* aiOvfl; TYPE_1__* pBt; int * aCellIdx; int * aData; } ;
+struct TYPE_14__ {size_t usableSize; int pPager; } ;
+typedef TYPE_2__ MemPage ;
+typedef TYPE_3__ CellArray ;
+
+
+ scalar_t__ CORRUPT_DB ;
+ int MIN (int,int) ;
+ int SQLITE_CORRUPT_BKPT ;
+ int SQLITE_OK ;
+ scalar_t__ SQLITE_WITHIN (int *,int * const,int *) ;
+ int assert (int) ;
+ int get2byteAligned (int *) ;
+ size_t get2byteNotZero (int *) ;
+ scalar_t__ memcmp (int *,int *,int ) ;
+ int memcpy (int *,int * const,size_t) ;
+ int memmove (int *,int *,int) ;
+ int pageFreeArray (TYPE_2__*,int,int,TYPE_3__*) ;
+ scalar_t__ pageInsertArray (TYPE_2__*,int *,int **,int *,int,int,TYPE_3__*) ;
+ int populateCellCache (TYPE_3__*,int,int) ;
+ int put2byte (int *,int) ;
+ int rebuildPage (TYPE_3__*,int,int,TYPE_2__*) ;
+ int * sqlite3PagerTempSpace (int ) ;
+ int stub1 (TYPE_4__*,int *) ;
 
 __attribute__((used)) static int editPage(
-  MemPage *pPg,                   /* Edit this page */
-  int iOld,                       /* Index of first cell currently on page */
-  int iNew,                       /* Index of new first cell on page */
-  int nNew,                       /* Final number of cells on page */
-  CellArray *pCArray              /* Array of cells and sizes */
+  MemPage *pPg,
+  int iOld,
+  int iNew,
+  int nNew,
+  CellArray *pCArray
 ){
   u8 * const aData = pPg->aData;
   const int hdr = pPg->hdrOffset;
   u8 *pBegin = &pPg->aCellIdx[nNew * 2];
-  int nCell = pPg->nCell;       /* Cells stored on pPg */
+  int nCell = pPg->nCell;
   u8 *pData;
   u8 *pCellptr;
   int i;
   int iOldEnd = iOld + pPg->nCell + pPg->nOverflow;
   int iNewEnd = iNew + nNew;
 
-#ifdef SQLITE_DEBUG
-  u8 *pTmp = sqlite3PagerTempSpace(pPg->pBt->pPager);
-  memcpy(pTmp, aData, pPg->pBt->usableSize);
-#endif
 
-  /* Remove cells from the start and end of the page */
+
+
+
+
+
   assert( nCell>=0 );
   if( iOld<iNew ){
     int nShift = pageFreeArray(pPg, iOld, iNew-iOld, pCArray);
@@ -81,7 +81,7 @@ __attribute__((used)) static int editPage(
   pData = &aData[get2byteNotZero(&aData[hdr+5])];
   if( pData<pBegin ) goto editpage_fail;
 
-  /* Add cells to the start of the page */
+
   if( iNew<iOld ){
     int nAdd = MIN(nNew,iOld-iNew);
     assert( (iOld-iNew)<nNew || nCell==0 || CORRUPT_DB );
@@ -95,7 +95,7 @@ __attribute__((used)) static int editPage(
     nCell += nAdd;
   }
 
-  /* Add any overflow cells */
+
   for(i=0; i<pPg->nOverflow; i++){
     int iCell = (iOld + pPg->aiOvfl[i]) - iNew;
     if( iCell>=0 && iCell<nNew ){
@@ -111,7 +111,7 @@ __attribute__((used)) static int editPage(
     }
   }
 
-  /* Append cells to the end of the page */
+
   assert( nCell>=0 );
   pCellptr = &pPg->aCellIdx[nCell*2];
   if( pageInsertArray(
@@ -124,22 +124,9 @@ __attribute__((used)) static int editPage(
 
   put2byte(&aData[hdr+3], pPg->nCell);
   put2byte(&aData[hdr+5], pData - aData);
-
-#ifdef SQLITE_DEBUG
-  for(i=0; i<nNew && !CORRUPT_DB; i++){
-    u8 *pCell = pCArray->apCell[i+iNew];
-    int iOff = get2byteAligned(&pPg->aCellIdx[i*2]);
-    if( SQLITE_WITHIN(pCell, aData, &aData[pPg->pBt->usableSize]) ){
-      pCell = &pTmp[pCell - aData];
-    }
-    assert( 0==memcmp(pCell, &aData[iOff],
-            pCArray->pRef->xCellSize(pCArray->pRef, pCArray->apCell[i+iNew])) );
-  }
-#endif
-
   return SQLITE_OK;
  editpage_fail:
-  /* Unable to edit this page. Rebuild it from scratch instead. */
+
   populateCellCache(pCArray, iNew, nNew);
   return rebuildPage(pCArray, iNew, nNew, pPg);
 }

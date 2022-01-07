@@ -1,78 +1,70 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint16_t ;
-struct TYPE_4__ {int /*<<< orphan*/  pressed; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint16_t ;
+struct TYPE_4__ {int pressed; } ;
 struct TYPE_5__ {TYPE_1__ event; } ;
-typedef  TYPE_2__ keyrecord_t ;
+typedef TYPE_2__ keyrecord_t ;
+ int KC_RSFT ;
 
-/* Variables and functions */
-#define  BACKLIT 136 
-#define  COLEMAK 135 
-#define  DP_OFF 134 
-#define  DP_ON 133 
-#define  DVORAK 132 
-#define  KC_CAPS 131 
- int /*<<< orphan*/  KC_RSFT ; 
-#define  LOWER 130 
- int /*<<< orphan*/  PLAY_SONG (int /*<<< orphan*/ ) ; 
- int PORTE ; 
-#define  QWERTY 129 
-#define  RAISE 128 
- int USB_LED_CAPS_LOCK ; 
- int /*<<< orphan*/  _ADJUST ; 
- int /*<<< orphan*/  _COLEMAK ; 
- int /*<<< orphan*/  _DPAD ; 
- int /*<<< orphan*/  _DVORAK ; 
- int /*<<< orphan*/  _FN1 ; 
- int /*<<< orphan*/  _LOWER ; 
- int /*<<< orphan*/  _QWERTY ; 
- int /*<<< orphan*/  _RAISE ; 
- int /*<<< orphan*/  backlight_step () ; 
- int /*<<< orphan*/  caps_song_off ; 
- int /*<<< orphan*/  caps_song_on ; 
- int /*<<< orphan*/  dpad_song_off ; 
- int /*<<< orphan*/  dpad_song_on ; 
- int host_keyboard_leds () ; 
- int /*<<< orphan*/  layer_off (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  layer_on (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  register_code (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_single_persistent_default_layer (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  unregister_code (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  update_tri_layer (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int PLAY_SONG (int ) ;
+ int PORTE ;
+
+
+ int USB_LED_CAPS_LOCK ;
+ int _ADJUST ;
+ int _COLEMAK ;
+ int _DPAD ;
+ int _DVORAK ;
+ int _FN1 ;
+ int _LOWER ;
+ int _QWERTY ;
+ int _RAISE ;
+ int backlight_step () ;
+ int caps_song_off ;
+ int caps_song_on ;
+ int dpad_song_off ;
+ int dpad_song_on ;
+ int host_keyboard_leds () ;
+ int layer_off (int ) ;
+ int layer_on (int ) ;
+ int register_code (int ) ;
+ int set_single_persistent_default_layer (int ) ;
+ int unregister_code (int ) ;
+ int update_tri_layer (int ,int ,int ) ;
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
-        case QWERTY:
+        case 129:
           if (record->event.pressed) {
             set_single_persistent_default_layer(_QWERTY);
           }
-          return false;
+          return 0;
           break;
-        case COLEMAK:
+        case 135:
           if (record->event.pressed) {
             set_single_persistent_default_layer(_COLEMAK);
           }
-          return false;
+          return 0;
           break;
-        case DVORAK:
+        case 132:
           if (record->event.pressed) {
             set_single_persistent_default_layer(_DVORAK);
           }
-          return false;
+          return 0;
           break;
-        case LOWER:
+        case 130:
           if (record->event.pressed) {
             layer_on(_LOWER);
             update_tri_layer(_LOWER, _RAISE, _ADJUST);
@@ -80,9 +72,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             layer_off(_LOWER);
             update_tri_layer(_LOWER, _RAISE, _ADJUST);
           }
-          return false;
+          return 0;
           break;
-        case RAISE:
+        case 128:
           if (record->event.pressed) {
             layer_on(_RAISE);
             update_tri_layer(_LOWER, _RAISE, _ADJUST);
@@ -90,63 +82,63 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             layer_off(_RAISE);
             update_tri_layer(_LOWER, _RAISE, _ADJUST);
           }
-          return false;
+          return 0;
           break;
-        case BACKLIT:
+        case 136:
           if (record->event.pressed) {
             register_code(KC_RSFT);
-            #ifdef BACKLIGHT_ENABLE
-              backlight_step();
-            #endif
+
+
+
             PORTE &= ~(1<<6);
           } else {
             unregister_code(KC_RSFT);
             PORTE |= (1<<6);
           }
-          return false;
+          return 0;
           break;
-		 
-		 
-		 
-		// Additional personal custom functions	  
 
-		case KC_CAPS:
-			if (record->event.pressed) {
-				#ifdef AUDIO_ENABLE
-				if (host_keyboard_leds() & (1<<USB_LED_CAPS_LOCK)) {
-					PLAY_SONG(caps_song_off);
-				} else {
-					PLAY_SONG(caps_song_on);
-				}
-				#endif
-			}
-			return true; // process the actual function of Caps Lock
-			//break;
-			
-		case DP_ON:
-			if (record->event.pressed) {
-				
-			} else {
-				// activated upon release
-				#ifdef AUDIO_ENABLE
-				PLAY_SONG(dpad_song_on);
-				#endif
-				
-				layer_off(_FN1);
-				layer_on(_DPAD);
-			}
-			
-		case DP_OFF:
-			if (record->event.pressed) {
-				// deactivated upon pressdown
-				#ifdef AUDIO_ENABLE	
-				PLAY_SONG(dpad_song_off);
-				#endif
-				
-				//layer_off(_FN1); // do not put in this line
-				layer_off(_DPAD);	
-			}
-		 
+
+
+
+
+  case 131:
+   if (record->event.pressed) {
+
+
+
+
+
+
+
+   }
+   return 1;
+
+
+  case 133:
+   if (record->event.pressed) {
+
+   } else {
+
+
+
+
+
+    layer_off(_FN1);
+    layer_on(_DPAD);
+   }
+
+  case 134:
+   if (record->event.pressed) {
+
+
+
+
+
+
+    layer_off(_DPAD);
+   }
+
       }
-    return true;
+    return 1;
 }

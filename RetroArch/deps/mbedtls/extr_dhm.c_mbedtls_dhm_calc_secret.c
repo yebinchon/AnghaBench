@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mbedtls_mpi ;
-struct TYPE_4__ {size_t len; int /*<<< orphan*/  K; int /*<<< orphan*/  P; int /*<<< orphan*/  Vf; int /*<<< orphan*/  RP; int /*<<< orphan*/  X; int /*<<< orphan*/  GY; int /*<<< orphan*/  Vi; } ;
-typedef  TYPE_1__ mbedtls_dhm_context ;
 
-/* Variables and functions */
- int MBEDTLS_ERR_DHM_BAD_INPUT_DATA ; 
- int MBEDTLS_ERR_DHM_CALC_SECRET_FAILED ; 
- int /*<<< orphan*/  MBEDTLS_MPI_CHK (int /*<<< orphan*/ ) ; 
- int dhm_check_range (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  dhm_update_blinding (TYPE_1__*,int (*) (void*,unsigned char*,size_t),void*) ; 
- int /*<<< orphan*/  mbedtls_mpi_copy (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mbedtls_mpi_exp_mod (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mbedtls_mpi_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mbedtls_mpi_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mbedtls_mpi_mod_mpi (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mbedtls_mpi_mul_mpi (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- size_t mbedtls_mpi_size (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mbedtls_mpi_write_binary (int /*<<< orphan*/ *,unsigned char*,size_t) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int mbedtls_mpi ;
+struct TYPE_4__ {size_t len; int K; int P; int Vf; int RP; int X; int GY; int Vi; } ;
+typedef TYPE_1__ mbedtls_dhm_context ;
+
+
+ int MBEDTLS_ERR_DHM_BAD_INPUT_DATA ;
+ int MBEDTLS_ERR_DHM_CALC_SECRET_FAILED ;
+ int MBEDTLS_MPI_CHK (int ) ;
+ int dhm_check_range (int *,int *) ;
+ int dhm_update_blinding (TYPE_1__*,int (*) (void*,unsigned char*,size_t),void*) ;
+ int mbedtls_mpi_copy (int *,int *) ;
+ int mbedtls_mpi_exp_mod (int *,int *,int *,int *,int *) ;
+ int mbedtls_mpi_free (int *) ;
+ int mbedtls_mpi_init (int *) ;
+ int mbedtls_mpi_mod_mpi (int *,int *,int *) ;
+ int mbedtls_mpi_mul_mpi (int *,int *,int *) ;
+ size_t mbedtls_mpi_size (int *) ;
+ int mbedtls_mpi_write_binary (int *,unsigned char*,size_t) ;
 
 int mbedtls_dhm_calc_secret( mbedtls_dhm_context *ctx,
                      unsigned char *output, size_t output_size, size_t *olen,
@@ -38,7 +38,7 @@ int mbedtls_dhm_calc_secret( mbedtls_dhm_context *ctx,
     int ret;
     mbedtls_mpi GYb;
 
-    if( ctx == NULL || output_size < ctx->len )
+    if( ctx == ((void*)0) || output_size < ctx->len )
         return( MBEDTLS_ERR_DHM_BAD_INPUT_DATA );
 
     if( ( ret = dhm_check_range( &ctx->GY, &ctx->P ) ) != 0 )
@@ -46,8 +46,8 @@ int mbedtls_dhm_calc_secret( mbedtls_dhm_context *ctx,
 
     mbedtls_mpi_init( &GYb );
 
-    /* Blind peer's value */
-    if( f_rng != NULL )
+
+    if( f_rng != ((void*)0) )
     {
         MBEDTLS_MPI_CHK( dhm_update_blinding( ctx, f_rng, p_rng ) );
         MBEDTLS_MPI_CHK( mbedtls_mpi_mul_mpi( &GYb, &ctx->GY, &ctx->Vi ) );
@@ -56,12 +56,12 @@ int mbedtls_dhm_calc_secret( mbedtls_dhm_context *ctx,
     else
         MBEDTLS_MPI_CHK( mbedtls_mpi_copy( &GYb, &ctx->GY ) );
 
-    /* Do modular exponentiation */
+
     MBEDTLS_MPI_CHK( mbedtls_mpi_exp_mod( &ctx->K, &GYb, &ctx->X,
                           &ctx->P, &ctx->RP ) );
 
-    /* Unblind secret value */
-    if( f_rng != NULL )
+
+    if( f_rng != ((void*)0) )
     {
         MBEDTLS_MPI_CHK( mbedtls_mpi_mul_mpi( &ctx->K, &ctx->K, &ctx->Vf ) );
         MBEDTLS_MPI_CHK( mbedtls_mpi_mod_mpi( &ctx->K, &ctx->K, &ctx->P ) );

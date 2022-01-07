@@ -1,29 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
-#define  GV_VOL_DOWN 129 
-#define  GV_VOL_UP 128 
-
 const char *
 gv_volstate(int state)
 {
-	switch (state) {
-	case GV_VOL_UP:
-		return "up";
-	case GV_VOL_DOWN:
-		return "down";
-	default:
-		return "??";
-	}
+ switch (state) {
+ case 128:
+  return "up";
+ case 129:
+  return "down";
+ default:
+  return "??";
+ }
 }

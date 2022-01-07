@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT ;
-typedef  int /*<<< orphan*/  SERVER ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetServerProductNameInternal (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  StrCat (char*,int /*<<< orphan*/ ,char*) ; 
+
+
+
+typedef int UINT ;
+typedef int SERVER ;
+
+
+ int GetServerProductNameInternal (int *,char*,int ) ;
+ int StrCat (char*,int ,char*) ;
 
 void GetServerProductName(SERVER *s, char *name, UINT size)
 {
-	char *cpu;
-	// Validate arguments
-	if (s == NULL || name == NULL)
-	{
-		return;
-	}
+ char *cpu;
 
-	GetServerProductNameInternal(s, name, size);
+ if (s == ((void*)0) || name == ((void*)0))
+ {
+  return;
+ }
 
-#ifdef	CPU_64
-	cpu = " (64 bit)";
-#else	// CPU_64
-	cpu = " (32 bit)";
-#endif	// CPU_64
+ GetServerProductNameInternal(s, name, size);
 
-	StrCat(name, size, cpu);
 
-	StrCat(name, size, " (Open Source)");
+
+
+ cpu = " (32 bit)";
+
+
+ StrCat(name, size, cpu);
+
+ StrCat(name, size, " (Open Source)");
 }

@@ -1,0 +1,231 @@
+; ModuleID = '/home/carl/AnghaBench/xLua/build/luajit-2.1.0b3/src/extr_lj_cconv.c_lj_cconv_tv_bf.c'
+source_filename = "/home/carl/AnghaBench/xLua/build/luajit-2.1.0b3/src/extr_lj_cconv.c_lj_cconv_tv_bf.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+%struct.TYPE_8__ = type { %struct.TYPE_6__*, i32 }
+%struct.TYPE_6__ = type { i32 }
+%struct.TYPE_7__ = type { i32 }
+
+@LJ_ERR_FFI_NYIPACKBIT = common dso_local global i32 0, align 4
+@CTF_BOOL = common dso_local global i32 0, align 4
+@CTF_UNSIGNED = common dso_local global i32 0, align 4
+@LJ_DUALNUM = common dso_local global i32 0, align 4
+
+; Function Attrs: noinline nounwind optnone uwtable
+define dso_local i32 @lj_cconv_tv_bf(%struct.TYPE_8__* %0, %struct.TYPE_7__* %1, i32* %2, i32* %3) #0 {
+  %5 = alloca %struct.TYPE_8__*, align 8
+  %6 = alloca %struct.TYPE_7__*, align 8
+  %7 = alloca i32*, align 8
+  %8 = alloca i32*, align 8
+  %9 = alloca i32, align 4
+  %10 = alloca i32, align 4
+  %11 = alloca i32, align 4
+  %12 = alloca i32, align 4
+  %13 = alloca i32, align 4
+  %14 = alloca i32, align 4
+  store %struct.TYPE_8__* %0, %struct.TYPE_8__** %5, align 8
+  store %struct.TYPE_7__* %1, %struct.TYPE_7__** %6, align 8
+  store i32* %2, i32** %7, align 8
+  store i32* %3, i32** %8, align 8
+  %15 = load %struct.TYPE_7__*, %struct.TYPE_7__** %6, align 8
+  %16 = getelementptr inbounds %struct.TYPE_7__, %struct.TYPE_7__* %15, i32 0, i32 0
+  %17 = load i32, i32* %16, align 4
+  store i32 %17, i32* %9, align 4
+  %18 = load i32, i32* %9, align 4
+  %19 = call i32 @ctype_isbitfield(i32 %18)
+  %20 = call i32 @lua_assert(i32 %19)
+  %21 = load i32, i32* %9, align 4
+  %22 = call i32 @ctype_bitcsz(i32 %21)
+  switch i32 %22, label %32 [
+    i32 4, label %23
+    i32 2, label %26
+    i32 1, label %29
+  ]
+
+23:                                               ; preds = %4
+  %24 = load i32*, i32** %8, align 8
+  %25 = load i32, i32* %24, align 4
+  store i32 %25, i32* %12, align 4
+  br label %34
+
+26:                                               ; preds = %4
+  %27 = load i32*, i32** %8, align 8
+  %28 = load i32, i32* %27, align 4
+  store i32 %28, i32* %12, align 4
+  br label %34
+
+29:                                               ; preds = %4
+  %30 = load i32*, i32** %8, align 8
+  %31 = load i32, i32* %30, align 4
+  store i32 %31, i32* %12, align 4
+  br label %34
+
+32:                                               ; preds = %4
+  %33 = call i32 @lua_assert(i32 0)
+  store i32 0, i32* %12, align 4
+  br label %34
+
+34:                                               ; preds = %32, %29, %26, %23
+  %35 = load i32, i32* %9, align 4
+  %36 = call i32 @ctype_bitpos(i32 %35)
+  store i32 %36, i32* %10, align 4
+  %37 = load i32, i32* %9, align 4
+  %38 = call i32 @ctype_bitbsz(i32 %37)
+  store i32 %38, i32* %11, align 4
+  %39 = load i32, i32* %10, align 4
+  %40 = load i32, i32* %9, align 4
+  %41 = call i32 @ctype_bitcsz(i32 %40)
+  %42 = mul nsw i32 8, %41
+  %43 = icmp slt i32 %39, %42
+  %44 = zext i1 %43 to i32
+  %45 = call i32 @lua_assert(i32 %44)
+  %46 = load i32, i32* %11, align 4
+  %47 = icmp sgt i32 %46, 0
+  br i1 %47, label %48, label %54
+
+48:                                               ; preds = %34
+  %49 = load i32, i32* %11, align 4
+  %50 = load i32, i32* %9, align 4
+  %51 = call i32 @ctype_bitcsz(i32 %50)
+  %52 = mul nsw i32 8, %51
+  %53 = icmp sle i32 %49, %52
+  br label %54
+
+54:                                               ; preds = %48, %34
+  %55 = phi i1 [ false, %34 ], [ %53, %48 ]
+  %56 = zext i1 %55 to i32
+  %57 = call i32 @lua_assert(i32 %56)
+  %58 = load i32, i32* %10, align 4
+  %59 = load i32, i32* %11, align 4
+  %60 = add nsw i32 %58, %59
+  %61 = load i32, i32* %9, align 4
+  %62 = call i32 @ctype_bitcsz(i32 %61)
+  %63 = mul nsw i32 8, %62
+  %64 = icmp sgt i32 %60, %63
+  br i1 %64, label %65, label %71
+
+65:                                               ; preds = %54
+  %66 = load %struct.TYPE_8__*, %struct.TYPE_8__** %5, align 8
+  %67 = getelementptr inbounds %struct.TYPE_8__, %struct.TYPE_8__* %66, i32 0, i32 1
+  %68 = load i32, i32* %67, align 8
+  %69 = load i32, i32* @LJ_ERR_FFI_NYIPACKBIT, align 4
+  %70 = call i32 @lj_err_caller(i32 %68, i32 %69)
+  br label %71
+
+71:                                               ; preds = %65, %54
+  %72 = load i32, i32* %9, align 4
+  %73 = load i32, i32* @CTF_BOOL, align 4
+  %74 = and i32 %72, %73
+  %75 = icmp ne i32 %74, 0
+  br i1 %75, label %116, label %76
+
+76:                                               ; preds = %71
+  %77 = load i32, i32* %11, align 4
+  %78 = sub nsw i32 32, %77
+  store i32 %78, i32* %13, align 4
+  %79 = load i32, i32* %9, align 4
+  %80 = load i32, i32* @CTF_UNSIGNED, align 4
+  %81 = and i32 %79, %80
+  %82 = icmp ne i32 %81, 0
+  br i1 %82, label %93, label %83
+
+83:                                               ; preds = %76
+  %84 = load i32*, i32** %7, align 8
+  %85 = load i32, i32* %12, align 4
+  %86 = load i32, i32* %13, align 4
+  %87 = load i32, i32* %10, align 4
+  %88 = sub nsw i32 %86, %87
+  %89 = shl i32 %85, %88
+  %90 = load i32, i32* %13, align 4
+  %91 = ashr i32 %89, %90
+  %92 = call i32 @setintV(i32* %84, i32 %91)
+  br label %115
+
+93:                                               ; preds = %76
+  %94 = load i32, i32* %12, align 4
+  %95 = load i32, i32* %13, align 4
+  %96 = load i32, i32* %10, align 4
+  %97 = sub nsw i32 %95, %96
+  %98 = shl i32 %94, %97
+  %99 = load i32, i32* %13, align 4
+  %100 = ashr i32 %98, %99
+  store i32 %100, i32* %12, align 4
+  %101 = load i32, i32* @LJ_DUALNUM, align 4
+  %102 = icmp ne i32 %101, 0
+  br i1 %102, label %103, label %106
+
+103:                                              ; preds = %93
+  %104 = load i32, i32* %12, align 4
+  %105 = icmp slt i32 %104, 0
+  br i1 %105, label %106, label %110
+
+106:                                              ; preds = %103, %93
+  %107 = load i32*, i32** %7, align 8
+  %108 = load i32, i32* %12, align 4
+  %109 = call i32 @setnumV(i32* %107, i32 %108)
+  br label %114
+
+110:                                              ; preds = %103
+  %111 = load i32*, i32** %7, align 8
+  %112 = load i32, i32* %12, align 4
+  %113 = call i32 @setintV(i32* %111, i32 %112)
+  br label %114
+
+114:                                              ; preds = %110, %106
+  br label %115
+
+115:                                              ; preds = %114, %83
+  br label %134
+
+116:                                              ; preds = %71
+  %117 = load i32, i32* %12, align 4
+  %118 = load i32, i32* %10, align 4
+  %119 = ashr i32 %117, %118
+  %120 = and i32 %119, 1
+  store i32 %120, i32* %14, align 4
+  %121 = load i32, i32* %11, align 4
+  %122 = icmp eq i32 %121, 1
+  %123 = zext i1 %122 to i32
+  %124 = call i32 @lua_assert(i32 %123)
+  %125 = load i32*, i32** %7, align 8
+  %126 = load i32, i32* %14, align 4
+  %127 = call i32 @setboolV(i32* %125, i32 %126)
+  %128 = load %struct.TYPE_8__*, %struct.TYPE_8__** %5, align 8
+  %129 = getelementptr inbounds %struct.TYPE_8__, %struct.TYPE_8__* %128, i32 0, i32 0
+  %130 = load %struct.TYPE_6__*, %struct.TYPE_6__** %129, align 8
+  %131 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %130, i32 0, i32 0
+  %132 = load i32, i32* %14, align 4
+  %133 = call i32 @setboolV(i32* %131, i32 %132)
+  br label %134
+
+134:                                              ; preds = %116, %115
+  ret i32 0
+}
+
+declare dso_local i32 @lua_assert(i32) #1
+
+declare dso_local i32 @ctype_isbitfield(i32) #1
+
+declare dso_local i32 @ctype_bitcsz(i32) #1
+
+declare dso_local i32 @ctype_bitpos(i32) #1
+
+declare dso_local i32 @ctype_bitbsz(i32) #1
+
+declare dso_local i32 @lj_err_caller(i32, i32) #1
+
+declare dso_local i32 @setintV(i32*, i32) #1
+
+declare dso_local i32 @setnumV(i32*, i32) #1
+
+declare dso_local i32 @setboolV(i32*, i32) #1
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

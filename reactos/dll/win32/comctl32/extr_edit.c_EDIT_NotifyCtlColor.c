@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WPARAM ;
-typedef  int /*<<< orphan*/  UINT ;
-struct TYPE_3__ {int style; scalar_t__ hwndSelf; int /*<<< orphan*/  bEnableState; } ;
-typedef  int /*<<< orphan*/  LPARAM ;
-typedef  scalar_t__ HDC ;
-typedef  scalar_t__ HBRUSH ;
-typedef  TYPE_1__ EDITSTATE ;
 
-/* Variables and functions */
- scalar_t__ DefWindowProcW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int ES_READONLY ; 
- int /*<<< orphan*/  GetParent (scalar_t__) ; 
- scalar_t__ SendMessageW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WM_CTLCOLOREDIT ; 
- int /*<<< orphan*/  WM_CTLCOLORSTATIC ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int WPARAM ;
+typedef int UINT ;
+struct TYPE_3__ {int style; scalar_t__ hwndSelf; int bEnableState; } ;
+typedef int LPARAM ;
+typedef scalar_t__ HDC ;
+typedef scalar_t__ HBRUSH ;
+typedef TYPE_1__ EDITSTATE ;
+
+
+ scalar_t__ DefWindowProcW (int ,int ,int ,int ) ;
+ int ES_READONLY ;
+ int GetParent (scalar_t__) ;
+ scalar_t__ SendMessageW (int ,int ,int ,int ) ;
+ int WM_CTLCOLOREDIT ;
+ int WM_CTLCOLORSTATIC ;
 
 __attribute__((used)) static HBRUSH EDIT_NotifyCtlColor(EDITSTATE *es, HDC hdc)
 {
@@ -37,7 +37,7 @@ __attribute__((used)) static HBRUSH EDIT_NotifyCtlColor(EDITSTATE *es, HDC hdc)
     else
         msg = WM_CTLCOLOREDIT;
 
-    /* Why do we notify to es->hwndParent, and we send this one to GetParent()? */
+
     hbrush = (HBRUSH)SendMessageW(GetParent(es->hwndSelf), msg, (WPARAM)hdc, (LPARAM)es->hwndSelf);
     if (!hbrush)
         hbrush = (HBRUSH)DefWindowProcW(GetParent(es->hwndSelf), msg, (WPARAM)hdc, (LPARAM)es->hwndSelf);

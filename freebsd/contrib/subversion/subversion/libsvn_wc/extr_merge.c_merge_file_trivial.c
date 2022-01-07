@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_wc__db_t ;
-typedef  int /*<<< orphan*/  svn_stream_t ;
-typedef  int /*<<< orphan*/  svn_skel_t ;
-typedef  scalar_t__ svn_node_kind_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_cancel_func_t ;
-typedef  scalar_t__ svn_boolean_t ;
-typedef  enum svn_wc_merge_outcome_t { ____Placeholder_svn_wc_merge_outcome_t } svn_wc_merge_outcome_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  svn_dirent_is_child (char const*,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_io_check_special_path (char const*,scalar_t__*,scalar_t__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_io_file_del_none ; 
- int /*<<< orphan*/  svn_io_files_contents_three_same_p (scalar_t__*,scalar_t__*,scalar_t__*,char const*,char const*,char const*,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_node_file ; 
- int /*<<< orphan*/  svn_stream_copy3 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_stream_open_readonly (int /*<<< orphan*/ **,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_stream_open_unique (int /*<<< orphan*/ **,char const**,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__db_get_wcroot (char const**,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__db_temp_wcroot_tempdir (char const**,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__wq_build_file_install (int /*<<< orphan*/ **,int /*<<< orphan*/ *,char const*,char const*,scalar_t__,scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__wq_build_file_remove (int /*<<< orphan*/ **,int /*<<< orphan*/ *,char const*,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_wc__wq_merge (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int svn_wc_merge_merged ; 
- int svn_wc_merge_no_merge ; 
- int svn_wc_merge_unchanged ; 
+
+
+
+typedef int svn_wc__db_t ;
+typedef int svn_stream_t ;
+typedef int svn_skel_t ;
+typedef scalar_t__ svn_node_kind_t ;
+typedef int svn_error_t ;
+typedef int svn_cancel_func_t ;
+typedef scalar_t__ svn_boolean_t ;
+typedef enum svn_wc_merge_outcome_t { ____Placeholder_svn_wc_merge_outcome_t } svn_wc_merge_outcome_t ;
+typedef int apr_pool_t ;
+
+
+ scalar_t__ FALSE ;
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ scalar_t__ TRUE ;
+ int svn_dirent_is_child (char const*,char const*,int *) ;
+ int svn_io_check_special_path (char const*,scalar_t__*,scalar_t__*,int *) ;
+ int svn_io_file_del_none ;
+ int svn_io_files_contents_three_same_p (scalar_t__*,scalar_t__*,scalar_t__*,char const*,char const*,char const*,int *) ;
+ scalar_t__ svn_node_file ;
+ int svn_stream_copy3 (int *,int *,int ,void*,int *) ;
+ int svn_stream_open_readonly (int **,char const*,int *,int *) ;
+ int svn_stream_open_unique (int **,char const**,char const*,int ,int *,int *) ;
+ int svn_wc__db_get_wcroot (char const**,int *,char const*,int *,int *) ;
+ int svn_wc__db_temp_wcroot_tempdir (char const**,int *,char const*,int *,int *) ;
+ int svn_wc__wq_build_file_install (int **,int *,char const*,char const*,scalar_t__,scalar_t__,int *,int *) ;
+ int svn_wc__wq_build_file_remove (int **,int *,char const*,char const*,int *,int *) ;
+ int * svn_wc__wq_merge (int *,int *,int *) ;
+ int svn_wc_merge_merged ;
+ int svn_wc_merge_no_merge ;
+ int svn_wc_merge_unchanged ;
 
 __attribute__((used)) static svn_error_t *
 merge_file_trivial(svn_skel_t **work_items,
@@ -63,7 +63,7 @@ merge_file_trivial(svn_skel_t **work_items,
   svn_node_kind_t kind;
   svn_boolean_t is_special;
 
-  /* If the target is not a normal file, do not attempt a trivial merge. */
+
   SVN_ERR(svn_io_check_special_path(target_abspath, &kind, &is_special,
                                     scratch_pool));
   if (kind != svn_node_file || is_special)
@@ -72,7 +72,7 @@ merge_file_trivial(svn_skel_t **work_items,
       return SVN_NO_ERROR;
     }
 
-  /* Check the files */
+
   SVN_ERR(svn_io_files_contents_three_same_p(&same_left_right,
                                              &same_right_target,
                                              &same_left_target,
@@ -81,12 +81,12 @@ merge_file_trivial(svn_skel_t **work_items,
                                              detranslated_target_abspath,
                                              scratch_pool));
 
-  /* If the LEFT side of the merge is equal to WORKING, then we can
-   * copy RIGHT directly. */
+
+
   if (same_left_target)
     {
-      /* If the left side equals the right side, there is no change to merge
-       * so we leave the target unchanged. */
+
+
       if (same_left_right)
         {
           *merge_outcome = svn_wc_merge_unchanged;
@@ -99,17 +99,17 @@ merge_file_trivial(svn_skel_t **work_items,
               const char *wcroot_abspath;
               svn_boolean_t delete_src = FALSE;
 
-              /* The right_abspath might be outside our working copy. In that
-                 case we should copy the file to a safe location before
-                 installing to avoid breaking the workqueue.
 
-                 This matches the behavior in preserve_pre_merge_files */
+
+
+
+
 
               SVN_ERR(svn_wc__db_get_wcroot(&wcroot_abspath,
                                             db, target_abspath,
                                             scratch_pool, scratch_pool));
 
-              if (!svn_dirent_is_child(wcroot_abspath, right_abspath, NULL))
+              if (!svn_dirent_is_child(wcroot_abspath, right_abspath, ((void*)0)))
                 {
                   svn_stream_t *tmp_src;
                   svn_stream_t *tmp_dst;
@@ -137,8 +137,8 @@ merge_file_trivial(svn_skel_t **work_items,
 
               SVN_ERR(svn_wc__wq_build_file_install(
                         &work_item, db, target_abspath, right_abspath,
-                        FALSE /* use_commit_times */,
-                        FALSE /* record_fileinfo */,
+                        FALSE ,
+                        FALSE ,
                         result_pool, scratch_pool));
               *work_items = svn_wc__wq_merge(*work_items, work_item,
                                              result_pool);
@@ -159,11 +159,11 @@ merge_file_trivial(svn_skel_t **work_items,
     }
   else
     {
-      /* If the locally existing, changed file equals the incoming 'right'
-       * file, there is no conflict.  For binary files, we historically
-       * conflicted them needlessly, while merge_text_file figured it out
-       * eventually and returned svn_wc_merge_unchanged for them, which
-       * is what we do here. */
+
+
+
+
+
       if (same_right_target)
         {
           *merge_outcome = svn_wc_merge_unchanged;

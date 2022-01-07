@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {unsigned char* next_out; unsigned int avail_out; unsigned char* next_in; unsigned int avail_in; void* opaque; int /*<<< orphan*/  zfree; int /*<<< orphan*/  zalloc; } ;
-typedef  TYPE_1__ z_stream ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHECK_ERR (int,char*) ; 
- int /*<<< orphan*/  Z_BEST_COMPRESSION ; 
- int /*<<< orphan*/  Z_DEFAULT_STRATEGY ; 
- int /*<<< orphan*/  Z_FILTERED ; 
- int /*<<< orphan*/  Z_FINISH ; 
- int /*<<< orphan*/  Z_NO_COMPRESSION ; 
- int /*<<< orphan*/  Z_NO_FLUSH ; 
- int Z_STREAM_END ; 
- int deflate (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int deflateEnd (TYPE_1__*) ; 
- int deflateInit (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  deflateParams (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- unsigned int diff ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  zalloc ; 
- int /*<<< orphan*/  zfree ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {unsigned char* next_out; unsigned int avail_out; unsigned char* next_in; unsigned int avail_in; void* opaque; int zfree; int zalloc; } ;
+typedef TYPE_1__ z_stream ;
+
+
+ int CHECK_ERR (int,char*) ;
+ int Z_BEST_COMPRESSION ;
+ int Z_DEFAULT_STRATEGY ;
+ int Z_FILTERED ;
+ int Z_FINISH ;
+ int Z_NO_COMPRESSION ;
+ int Z_NO_FLUSH ;
+ int Z_STREAM_END ;
+ int deflate (TYPE_1__*,int ) ;
+ int deflateEnd (TYPE_1__*) ;
+ int deflateInit (TYPE_1__*,int ) ;
+ int deflateParams (TYPE_1__*,int ,int ) ;
+ unsigned int diff ;
+ int exit (int) ;
+ int fprintf (int ,char*) ;
+ int stderr ;
+ int zalloc ;
+ int zfree ;
 
 void test_large_deflate(unsigned char *compr, size_t comprLen,
                         unsigned char *uncompr, size_t uncomprLen) {
-  z_stream c_stream; /* compression stream */
+  z_stream c_stream;
   int err;
 
   c_stream.zalloc = zalloc;
@@ -49,9 +49,9 @@ void test_large_deflate(unsigned char *compr, size_t comprLen,
   c_stream.next_out = compr;
   c_stream.avail_out = (unsigned int)comprLen;
 
-  /* At this point, uncompr is still mostly zeroes, so it should compress
-   * very well:
-   */
+
+
+
   c_stream.next_in = uncompr;
   c_stream.avail_in = (unsigned int)uncomprLen;
   err = deflate(&c_stream, Z_NO_FLUSH);
@@ -61,7 +61,7 @@ void test_large_deflate(unsigned char *compr, size_t comprLen,
     exit(1);
   }
 
-  /* Feed in already compressed data and switch to no compression: */
+
   deflateParams(&c_stream, Z_NO_COMPRESSION, Z_DEFAULT_STRATEGY);
   c_stream.next_in = compr;
   diff = (unsigned int)(c_stream.next_out - compr);
@@ -69,7 +69,7 @@ void test_large_deflate(unsigned char *compr, size_t comprLen,
   err = deflate(&c_stream, Z_NO_FLUSH);
   CHECK_ERR(err, "deflate large 2");
 
-  /* Switch back to compressing mode: */
+
   deflateParams(&c_stream, Z_BEST_COMPRESSION, Z_FILTERED);
   c_stream.next_in = uncompr;
   c_stream.avail_in = (unsigned int)uncomprLen;

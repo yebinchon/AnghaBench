@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_11__ {int /*<<< orphan*/  action; int /*<<< orphan*/  Feature; int /*<<< orphan*/  Mime; void* ProgIDText; int /*<<< orphan*/  ProgID; int /*<<< orphan*/  Component; void* Extension; int /*<<< orphan*/  entry; int /*<<< orphan*/  verbs; } ;
-struct TYPE_10__ {int /*<<< orphan*/  extensions; } ;
-typedef  int /*<<< orphan*/  MSIRECORD ;
-typedef  TYPE_1__ MSIPACKAGE ;
-typedef  TYPE_2__ MSIEXTENSION ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INSTALLSTATE_UNKNOWN ; 
- int /*<<< orphan*/  MSI_RecordGetString (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  debugstr_w (void*) ; 
- int /*<<< orphan*/  list_add_tail (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  list_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  load_given_mime (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  load_given_progid (TYPE_1__*,void*) ; 
- TYPE_2__* msi_alloc_zero (int) ; 
- void* msi_dup_record_field (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  msi_get_loaded_component (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  msi_get_loaded_feature (TYPE_1__*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+struct TYPE_11__ {int action; int Feature; int Mime; void* ProgIDText; int ProgID; int Component; void* Extension; int entry; int verbs; } ;
+struct TYPE_10__ {int extensions; } ;
+typedef int MSIRECORD ;
+typedef TYPE_1__ MSIPACKAGE ;
+typedef TYPE_2__ MSIEXTENSION ;
+typedef int LPCWSTR ;
+
+
+ int INSTALLSTATE_UNKNOWN ;
+ int MSI_RecordGetString (int *,int) ;
+ int TRACE (char*,int ) ;
+ int debugstr_w (void*) ;
+ int list_add_tail (int *,int *) ;
+ int list_init (int *) ;
+ int load_given_mime (TYPE_1__*,int ) ;
+ int load_given_progid (TYPE_1__*,void*) ;
+ TYPE_2__* msi_alloc_zero (int) ;
+ void* msi_dup_record_field (int *,int) ;
+ int msi_get_loaded_component (TYPE_1__*,int ) ;
+ int msi_get_loaded_feature (TYPE_1__*,int ) ;
 
 __attribute__((used)) static MSIEXTENSION *load_extension( MSIPACKAGE* package, MSIRECORD *row )
 {
     MSIEXTENSION *ext;
     LPCWSTR buffer;
 
-    /* fill in the data */
+
 
     ext = msi_alloc_zero( sizeof(MSIEXTENSION) );
     if (!ext)
-        return NULL;
+        return ((void*)0);
 
     list_init( &ext->verbs );
 

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct clk {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  gpio11_config_3m6 ; 
- int /*<<< orphan*/  pxa2xx_mfp_config (int /*<<< orphan*/ ,int) ; 
+
+ int gpio11_config_3m6 ;
+ int pxa2xx_mfp_config (int ,int) ;
 
 __attribute__((used)) static void clk_gpio11_enable(struct clk *clk)
 {
-	pxa2xx_mfp_config(gpio11_config_3m6, 1);
+ pxa2xx_mfp_config(gpio11_config_3m6, 1);
 }

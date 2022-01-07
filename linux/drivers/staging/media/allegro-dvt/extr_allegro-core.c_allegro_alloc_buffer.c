@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct allegro_dev {TYPE_1__* plat_dev; } ;
-struct allegro_buffer {size_t size; int /*<<< orphan*/  vaddr; int /*<<< orphan*/  paddr; } ;
-struct TYPE_2__ {int /*<<< orphan*/  dev; } ;
+struct allegro_buffer {size_t size; int vaddr; int paddr; } ;
+struct TYPE_2__ {int dev; } ;
 
-/* Variables and functions */
- int ENOMEM ; 
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  dma_alloc_coherent (int /*<<< orphan*/ *,size_t,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int ENOMEM ;
+ int GFP_KERNEL ;
+ int dma_alloc_coherent (int *,size_t,int *,int ) ;
 
 __attribute__((used)) static int allegro_alloc_buffer(struct allegro_dev *dev,
-				struct allegro_buffer *buffer, size_t size)
+    struct allegro_buffer *buffer, size_t size)
 {
-	buffer->vaddr = dma_alloc_coherent(&dev->plat_dev->dev, size,
-					   &buffer->paddr, GFP_KERNEL);
-	if (!buffer->vaddr)
-		return -ENOMEM;
-	buffer->size = size;
+ buffer->vaddr = dma_alloc_coherent(&dev->plat_dev->dev, size,
+        &buffer->paddr, GFP_KERNEL);
+ if (!buffer->vaddr)
+  return -ENOMEM;
+ buffer->size = size;
 
-	return 0;
+ return 0;
 }

@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
 struct TYPE_12__ {scalar_t__ len; } ;
-typedef  TYPE_1__ ngx_str_t ;
-typedef  scalar_t__ ngx_int_t ;
-typedef  int /*<<< orphan*/  ngx_hash_keys_arrays_t ;
-struct TYPE_13__ {int /*<<< orphan*/  pool; } ;
-typedef  TYPE_2__ ngx_conf_t ;
+typedef TYPE_1__ ngx_str_t ;
+typedef scalar_t__ ngx_int_t ;
+typedef int ngx_hash_keys_arrays_t ;
+struct TYPE_13__ {int pool; } ;
+typedef TYPE_2__ ngx_conf_t ;
 
-/* Variables and functions */
- scalar_t__ NGX_BUSY ; 
- scalar_t__ NGX_DECLINED ; 
- scalar_t__ NGX_ERROR ; 
- int /*<<< orphan*/  NGX_HASH_WILDCARD_KEY ; 
- TYPE_1__* NGX_HTTP_REFERER_NO_URI_PART ; 
- int /*<<< orphan*/  NGX_LOG_EMERG ; 
- scalar_t__ NGX_OK ; 
- int /*<<< orphan*/  ngx_conf_log_error (int /*<<< orphan*/ ,TYPE_2__*,int /*<<< orphan*/ ,char*,TYPE_1__*) ; 
- scalar_t__ ngx_hash_add_key (int /*<<< orphan*/ *,TYPE_1__*,TYPE_1__*,int /*<<< orphan*/ ) ; 
- TYPE_1__* ngx_palloc (int /*<<< orphan*/ ,int) ; 
+
+ scalar_t__ NGX_BUSY ;
+ scalar_t__ NGX_DECLINED ;
+ scalar_t__ NGX_ERROR ;
+ int NGX_HASH_WILDCARD_KEY ;
+ TYPE_1__* NGX_HTTP_REFERER_NO_URI_PART ;
+ int NGX_LOG_EMERG ;
+ scalar_t__ NGX_OK ;
+ int ngx_conf_log_error (int ,TYPE_2__*,int ,char*,TYPE_1__*) ;
+ scalar_t__ ngx_hash_add_key (int *,TYPE_1__*,TYPE_1__*,int ) ;
+ TYPE_1__* ngx_palloc (int ,int) ;
 
 __attribute__((used)) static ngx_int_t
 ngx_http_add_referer(ngx_conf_t *cf, ngx_hash_keys_arrays_t *keys,
     ngx_str_t *value, ngx_str_t *uri)
 {
-    ngx_int_t   rc;
-    ngx_str_t  *u;
+    ngx_int_t rc;
+    ngx_str_t *u;
 
-    if (uri == NULL || uri->len == 0) {
+    if (uri == ((void*)0) || uri->len == 0) {
         u = NGX_HTTP_REFERER_NO_URI_PART;
 
     } else {
         u = ngx_palloc(cf->pool, sizeof(ngx_str_t));
-        if (u == NULL) {
+        if (u == ((void*)0)) {
             return NGX_ERROR;
         }
 

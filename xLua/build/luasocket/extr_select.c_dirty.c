@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- int /*<<< orphan*/  lua_call (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  lua_gettable (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_isnil (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pop (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pushstring (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  lua_pushvalue (int /*<<< orphan*/ *,int) ; 
- int lua_toboolean (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int lua_State ;
+
+
+ int lua_call (int *,int,int) ;
+ int lua_gettable (int *,int) ;
+ int lua_isnil (int *,int) ;
+ int lua_pop (int *,int) ;
+ int lua_pushstring (int *,char*) ;
+ int lua_pushvalue (int *,int) ;
+ int lua_toboolean (int *,int) ;
 
 __attribute__((used)) static int dirty(lua_State *L) {
     int is = 0;
@@ -29,7 +29,7 @@ __attribute__((used)) static int dirty(lua_State *L) {
         lua_pushvalue(L, -2);
         lua_call(L, 1, 1);
         is = lua_toboolean(L, -1);
-    } 
+    }
     lua_pop(L, 1);
     return is;
 }

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct child_process {int /*<<< orphan*/  env_array; int /*<<< orphan*/  args; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  argv_array_clear (int /*<<< orphan*/ *) ; 
+
+
+
+struct child_process {int env_array; int args; } ;
+
+
+ int argv_array_clear (int *) ;
 
 void child_process_clear(struct child_process *child)
 {
-	argv_array_clear(&child->args);
-	argv_array_clear(&child->env_array);
+ argv_array_clear(&child->args);
+ argv_array_clear(&child->env_array);
 }

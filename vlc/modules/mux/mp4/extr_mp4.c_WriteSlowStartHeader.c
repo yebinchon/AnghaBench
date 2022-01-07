@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
 struct TYPE_11__ {TYPE_2__* p_sys; } ;
-typedef  TYPE_1__ sout_mux_t ;
-struct TYPE_12__ {int /*<<< orphan*/  i_pos; int /*<<< orphan*/  i_mdat_pos; int /*<<< orphan*/  muxh; } ;
-typedef  TYPE_2__ sout_mux_sys_t ;
+typedef TYPE_1__ sout_mux_t ;
+struct TYPE_12__ {int i_pos; int i_mdat_pos; int muxh; } ;
+typedef TYPE_2__ sout_mux_sys_t ;
 struct TYPE_13__ {scalar_t__ b; } ;
-typedef  TYPE_3__ bo_t ;
+typedef TYPE_3__ bo_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  QUICKTIME ; 
- int VLC_ENOMEM ; 
- int VLC_SUCCESS ; 
- int /*<<< orphan*/  bo_add_64be (TYPE_3__*,int /*<<< orphan*/ ) ; 
- scalar_t__ bo_size (TYPE_3__*) ; 
- TYPE_3__* box_new (char*) ; 
- int /*<<< orphan*/  box_send (TYPE_1__*,TYPE_3__*) ; 
- TYPE_3__* mp4mux_GetFtyp (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mp4mux_Is (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int QUICKTIME ;
+ int VLC_ENOMEM ;
+ int VLC_SUCCESS ;
+ int bo_add_64be (TYPE_3__*,int ) ;
+ scalar_t__ bo_size (TYPE_3__*) ;
+ TYPE_3__* box_new (char*) ;
+ int box_send (TYPE_1__*,TYPE_3__*) ;
+ TYPE_3__* mp4mux_GetFtyp (int ) ;
+ int mp4mux_Is (int ,int ) ;
 
 __attribute__((used)) static int WriteSlowStartHeader(sout_mux_t *p_mux)
 {
@@ -38,7 +38,7 @@ __attribute__((used)) static int WriteSlowStartHeader(sout_mux_t *p_mux)
 
     if (!mp4mux_Is(p_sys->muxh, QUICKTIME))
     {
-        /* Now add ftyp header */
+
         box = mp4mux_GetFtyp(p_sys->muxh);
         if(!box)
             return VLC_ENOMEM;
@@ -48,12 +48,12 @@ __attribute__((used)) static int WriteSlowStartHeader(sout_mux_t *p_mux)
         box_send(p_mux, box);
     }
 
-    /* Now add mdat header */
+
     box = box_new("mdat");
     if(!box)
         return VLC_ENOMEM;
 
-    bo_add_64be(box, 0); // enough to store an extended size
+    bo_add_64be(box, 0);
 
     if(box->b)
         p_sys->i_pos += bo_size(box);

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct fn_decl {char* fname; char* rtype; char* params; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ISALNUM (unsigned char) ; 
- scalar_t__ ISIDNUM (char) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*,...) ; 
- char* progname ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ strncmp (char*,char*,int) ; 
- scalar_t__ verbose ; 
+
+ int ISALNUM (unsigned char) ;
+ scalar_t__ ISIDNUM (char) ;
+ int fprintf (int ,char*,char*,...) ;
+ char* progname ;
+ int stderr ;
+ scalar_t__ strncmp (char*,char*,int) ;
+ scalar_t__ verbose ;
 
 __attribute__((used)) static int
 parse_fn_proto (char *start, char *end, struct fn_decl *fn)
@@ -46,9 +46,9 @@ parse_fn_proto (char *start, char *end, struct fn_decl *fn)
     {
       int c = *--ptr;
       if (c == '(' && --param_nesting == 0)
-	break;
+ break;
       else if (c == ')')
-	param_nesting++;
+ param_nesting++;
     }
   param_start = ptr+1;
 
@@ -58,8 +58,8 @@ parse_fn_proto (char *start, char *end, struct fn_decl *fn)
   if (!ISALNUM ((unsigned char)*ptr))
     {
       if (verbose)
-	fprintf (stderr, "%s: Can't handle this complex prototype: %s\n",
-		 progname, start);
+ fprintf (stderr, "%s: Can't handle this complex prototype: %s\n",
+   progname, start);
       return 0;
     }
   name_end = ptr+1;

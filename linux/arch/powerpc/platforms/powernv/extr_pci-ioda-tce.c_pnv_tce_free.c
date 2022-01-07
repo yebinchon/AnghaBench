@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct iommu_table {long it_offset; int it_level_size; } ;
-typedef  int /*<<< orphan*/  __be64 ;
+typedef int __be64 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cpu_to_be64 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * pnv_tce (struct iommu_table*,int,unsigned long,int) ; 
+
+ int cpu_to_be64 (int ) ;
+ int * pnv_tce (struct iommu_table*,int,unsigned long,int) ;
 
 void pnv_tce_free(struct iommu_table *tbl, long index, long npages)
 {
-	long i;
+ long i;
 
-	for (i = 0; i < npages; i++) {
-		unsigned long idx = index - tbl->it_offset + i;
-		__be64 *ptce = pnv_tce(tbl, false, idx,	false);
+ for (i = 0; i < npages; i++) {
+  unsigned long idx = index - tbl->it_offset + i;
+  __be64 *ptce = pnv_tce(tbl, 0, idx, 0);
 
-		if (ptce)
-			*ptce = cpu_to_be64(0);
-		else
-			/* Skip the rest of the level */
-			i |= tbl->it_level_size - 1;
-	}
+  if (ptce)
+   *ptce = cpu_to_be64(0);
+  else
+
+   i |= tbl->it_level_size - 1;
+ }
 }

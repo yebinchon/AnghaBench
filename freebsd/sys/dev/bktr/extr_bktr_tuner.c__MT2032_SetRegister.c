@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_char ;
-typedef  int /*<<< orphan*/  bktr_ptr_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MT2032_ADDR ; 
- int /*<<< orphan*/  i2cWrite (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
 
-__attribute__((used)) static void 
+
+
+typedef int u_char ;
+typedef int bktr_ptr_t ;
+
+
+ int MT2032_ADDR ;
+ int i2cWrite (int ,int ,int ,int ) ;
+
+__attribute__((used)) static void
 _MT2032_SetRegister(bktr_ptr_t bktr, u_char regNum, u_char data)
 {
-	i2cWrite(bktr, MT2032_ADDR, regNum, data);
+ i2cWrite(bktr, MT2032_ADDR, regNum, data);
 }

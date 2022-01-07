@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ int LINUX_SOL_SOCKET ;
 
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int LINUX_SOL_SOCKET ; 
-#define  SOL_SOCKET 128 
 
 __attribute__((used)) static int
 bsd_to_linux_sockopt_level(int level)
 {
 
-	switch (level) {
-	case SOL_SOCKET:
-		return (LINUX_SOL_SOCKET);
-	}
-	return (level);
+ switch (level) {
+ case 128:
+  return (LINUX_SOL_SOCKET);
+ }
+ return (level);
 }

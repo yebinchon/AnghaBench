@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int sqlite3_int64 ;
-typedef  int /*<<< orphan*/  sqlite3_context ;
-typedef  int /*<<< orphan*/  sqlite3 ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SEEK_END ; 
- int /*<<< orphan*/  SQLITE_IOERR ; 
- int /*<<< orphan*/  SQLITE_LIMIT_LENGTH ; 
- int /*<<< orphan*/  SQLITE_TOOBIG ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char const*,char*) ; 
- scalar_t__ fread (void*,int,size_t,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fseek (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int ftell (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  rewind (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * sqlite3_context_db_handle (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_free (void*) ; 
- int sqlite3_limit (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- void* sqlite3_malloc64 (int) ; 
- int /*<<< orphan*/  sqlite3_result_blob64 (int /*<<< orphan*/ *,void*,int,int /*<<< orphan*/  (*) (void*)) ; 
- int /*<<< orphan*/  sqlite3_result_error_code (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_result_error_nomem (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int sqlite3_int64 ;
+typedef int sqlite3_context ;
+typedef int sqlite3 ;
+typedef int FILE ;
+
+
+ int SEEK_END ;
+ int SQLITE_IOERR ;
+ int SQLITE_LIMIT_LENGTH ;
+ int SQLITE_TOOBIG ;
+ int fclose (int *) ;
+ int * fopen (char const*,char*) ;
+ scalar_t__ fread (void*,int,size_t,int *) ;
+ int fseek (int *,int ,int ) ;
+ int ftell (int *) ;
+ int rewind (int *) ;
+ int * sqlite3_context_db_handle (int *) ;
+ int sqlite3_free (void*) ;
+ int sqlite3_limit (int *,int ,int) ;
+ void* sqlite3_malloc64 (int) ;
+ int sqlite3_result_blob64 (int *,void*,int,int (*) (void*)) ;
+ int sqlite3_result_error_code (int *,int ) ;
+ int sqlite3_result_error_nomem (int *) ;
 
 __attribute__((used)) static void readFileContents(sqlite3_context *ctx, const char *zName){
   FILE *in;
@@ -43,7 +43,7 @@ __attribute__((used)) static void readFileContents(sqlite3_context *ctx, const c
 
   in = fopen(zName, "rb");
   if( in==0 ){
-    /* File does not exist or is unreadable. Leave the result set to NULL. */
+
     return;
   }
   fseek(in, 0, SEEK_END);

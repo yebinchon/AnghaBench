@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  backslashResult ;
-struct TYPE_2__ {int /*<<< orphan*/  quiet; int /*<<< orphan*/  popt; } ;
-typedef  int /*<<< orphan*/  PsqlScanState ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OT_NORMAL ; 
- int /*<<< orphan*/  PSQL_CMD_ERROR ; 
- int /*<<< orphan*/  PSQL_CMD_SKIP_LINE ; 
- int do_pset (char*,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  ignore_slash_options (int /*<<< orphan*/ ) ; 
- TYPE_1__ pset ; 
- char* psql_scan_slash_option (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int backslashResult ;
+struct TYPE_2__ {int quiet; int popt; } ;
+typedef int PsqlScanState ;
+
+
+ int OT_NORMAL ;
+ int PSQL_CMD_ERROR ;
+ int PSQL_CMD_SKIP_LINE ;
+ int do_pset (char*,char*,int *,int ) ;
+ int free (char*) ;
+ int ignore_slash_options (int ) ;
+ TYPE_1__ pset ;
+ char* psql_scan_slash_option (int ,int ,int *,int) ;
 
 __attribute__((used)) static backslashResult
 exec_command_x(PsqlScanState scan_state, bool active_branch)
 {
-	bool		success = true;
+ bool success = 1;
 
-	if (active_branch)
-	{
-		char	   *opt = psql_scan_slash_option(scan_state,
-												 OT_NORMAL, NULL, true);
+ if (active_branch)
+ {
+  char *opt = psql_scan_slash_option(scan_state,
+             OT_NORMAL, ((void*)0), 1);
 
-		success = do_pset("expanded", opt, &pset.popt, pset.quiet);
-		free(opt);
-	}
-	else
-		ignore_slash_options(scan_state);
+  success = do_pset("expanded", opt, &pset.popt, pset.quiet);
+  free(opt);
+ }
+ else
+  ignore_slash_options(scan_state);
 
-	return success ? PSQL_CMD_SKIP_LINE : PSQL_CMD_ERROR;
+ return success ? PSQL_CMD_SKIP_LINE : PSQL_CMD_ERROR;
 }

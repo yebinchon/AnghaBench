@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct kvno_options {int /*<<< orphan*/  enctype_string; int /*<<< orphan*/  cache_string; } ;
-struct kgetcred_options {int /*<<< orphan*/  enctype_string; int /*<<< orphan*/  cache_string; } ;
-typedef  int /*<<< orphan*/  k ;
 
-/* Variables and functions */
- int kgetcred (struct kgetcred_options*,int,char**) ; 
- int /*<<< orphan*/  memset (struct kgetcred_options*,int /*<<< orphan*/ ,int) ; 
+
+
+
+struct kvno_options {int enctype_string; int cache_string; } ;
+struct kgetcred_options {int enctype_string; int cache_string; } ;
+typedef int k ;
+
+
+ int kgetcred (struct kgetcred_options*,int,char**) ;
+ int memset (struct kgetcred_options*,int ,int) ;
 
 int
 kvno(struct kvno_options *opt, int argc, char **argv)

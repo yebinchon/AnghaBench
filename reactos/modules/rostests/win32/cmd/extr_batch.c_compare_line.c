@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tab_cmd ;
-typedef  int /*<<< orphan*/  space_cmd ;
-typedef  int /*<<< orphan*/  shortpath_cmd ;
-typedef  int /*<<< orphan*/  pwd_cmd ;
-typedef  int /*<<< orphan*/  path_cmd ;
-typedef  int /*<<< orphan*/  or_broken_cmd ;
-typedef  int /*<<< orphan*/  drive_cmd ;
 
-/* Variables and functions */
- scalar_t__ CSTR_EQUAL ; 
- scalar_t__ CompareStringA (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*,int,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  LOCALE_SYSTEM_DEFAULT ; 
- int /*<<< orphan*/  NORM_IGNORECASE ; 
- int /*<<< orphan*/  broken (int) ; 
- int /*<<< orphan*/  drive ; 
- int drive_len ; 
- scalar_t__ memcmp (char const*,char const*,int) ; 
- int /*<<< orphan*/  path ; 
- int path_len ; 
- int /*<<< orphan*/  shortpath ; 
- int shortpath_len ; 
- int /*<<< orphan*/  workdir ; 
- int workdir_len ; 
+
+
+
+typedef int tab_cmd ;
+typedef int space_cmd ;
+typedef int shortpath_cmd ;
+typedef int pwd_cmd ;
+typedef int path_cmd ;
+typedef int or_broken_cmd ;
+typedef int drive_cmd ;
+
+
+ scalar_t__ CSTR_EQUAL ;
+ scalar_t__ CompareStringA (int ,int ,char const*,int,int ,int) ;
+ int LOCALE_SYSTEM_DEFAULT ;
+ int NORM_IGNORECASE ;
+ int broken (int) ;
+ int drive ;
+ int drive_len ;
+ scalar_t__ memcmp (char const*,char const*,int) ;
+ int path ;
+ int path_len ;
+ int shortpath ;
+ int shortpath_len ;
+ int workdir ;
+ int workdir_len ;
 
 __attribute__((used)) static const char *compare_line(const char *out_line, const char *out_end, const char *exp_line,
         const char *exp_end)
 {
     const char *out_ptr = out_line, *exp_ptr = exp_line;
-    const char *err = NULL;
+    const char *err = ((void*)0);
 
     static const char pwd_cmd[] = {'@','p','w','d','@'};
     static const char drive_cmd[] = {'@','d','r','i','v','e','@'};
-    static const char path_cmd[]  = {'@','p','a','t','h','@'};
-    static const char shortpath_cmd[]  = {'@','s','h','o','r','t','p','a','t','h','@'};
+    static const char path_cmd[] = {'@','p','a','t','h','@'};
+    static const char shortpath_cmd[] = {'@','s','h','o','r','t','p','a','t','h','@'};
     static const char space_cmd[] = {'@','s','p','a','c','e','@'};
-    static const char tab_cmd[]   = {'@','t','a','b','@'};
+    static const char tab_cmd[] = {'@','t','a','b','@'};
     static const char or_broken_cmd[] = {'@','o','r','_','b','r','o','k','e','n','@'};
 
     while(exp_ptr < exp_end) {
@@ -115,7 +115,7 @@ __attribute__((used)) static const char *compare_line(const char *out_line, cons
             }else if(exp_ptr+sizeof(or_broken_cmd) <= exp_end
                      && !memcmp(exp_ptr, or_broken_cmd, sizeof(or_broken_cmd))) {
                 if(out_ptr == out_end)
-                    return NULL;
+                    return ((void*)0);
                 else
                     err = out_ptr;
             }else if(out_ptr == out_end || *out_ptr != *exp_ptr)
@@ -135,7 +135,7 @@ __attribute__((used)) static const char *compare_line(const char *out_line, cons
 
             exp_ptr += sizeof(or_broken_cmd);
             out_ptr = out_line;
-            err = NULL;
+            err = ((void*)0);
             continue;
         }
 
@@ -148,5 +148,5 @@ __attribute__((used)) static const char *compare_line(const char *out_line, cons
     else if(out_ptr != out_end)
         return exp_end;
 
-    return NULL;
+    return ((void*)0);
 }

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct seekpoint {double pts; double endpts; } ;
 struct sd_lavc_priv {scalar_t__ num_seekpoints; struct seekpoint* seekpoints; } ;
 struct sd {struct sd_lavc_priv* priv; } ;
 
-/* Variables and functions */
- double INFINITY ; 
- double MP_NOPTS_VALUE ; 
- int /*<<< orphan*/  compare_seekpoint ; 
- int /*<<< orphan*/  qsort (struct seekpoint*,scalar_t__,int,int /*<<< orphan*/ ) ; 
+
+ double INFINITY ;
+ double MP_NOPTS_VALUE ;
+ int compare_seekpoint ;
+ int qsort (struct seekpoint*,scalar_t__,int,int ) ;
 
 __attribute__((used)) static double step_sub(struct sd *sd, double now, int movement)
 {

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  protocomm_req_handler_t ;
-typedef  scalar_t__ esp_err_t ;
-struct TYPE_2__ {scalar_t__ prov_state; int /*<<< orphan*/  pc; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACQUIRE_LOCK (int /*<<< orphan*/ ) ; 
- scalar_t__ ESP_ERR_INVALID_STATE ; 
- scalar_t__ ESP_FAIL ; 
- int /*<<< orphan*/  ESP_LOGE (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ ESP_OK ; 
- int /*<<< orphan*/  RELEASE_LOCK (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TAG ; 
- scalar_t__ WIFI_PROV_STATE_STARTING ; 
- scalar_t__ WIFI_PROV_STATE_STOPPING ; 
- scalar_t__ protocomm_add_endpoint (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,void*) ; 
- TYPE_1__* prov_ctx ; 
- int /*<<< orphan*/  prov_ctx_lock ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int protocomm_req_handler_t ;
+typedef scalar_t__ esp_err_t ;
+struct TYPE_2__ {scalar_t__ prov_state; int pc; } ;
+
+
+ int ACQUIRE_LOCK (int ) ;
+ scalar_t__ ESP_ERR_INVALID_STATE ;
+ scalar_t__ ESP_FAIL ;
+ int ESP_LOGE (int ,char*) ;
+ scalar_t__ ESP_OK ;
+ int RELEASE_LOCK (int ) ;
+ int TAG ;
+ scalar_t__ WIFI_PROV_STATE_STARTING ;
+ scalar_t__ WIFI_PROV_STATE_STOPPING ;
+ scalar_t__ protocomm_add_endpoint (int ,char const*,int ,void*) ;
+ TYPE_1__* prov_ctx ;
+ int prov_ctx_lock ;
 
 esp_err_t wifi_prov_mgr_endpoint_register(const char *ep_name, protocomm_req_handler_t handler, void *user_ctx)
 {

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct option {scalar_t__ value; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BUG_ON_OPT_NEG (int) ; 
- int strtol (char const*,int /*<<< orphan*/ *,int) ; 
+
+ int BUG_ON_OPT_NEG (int) ;
+ int strtol (char const*,int *,int) ;
 
 __attribute__((used)) static int number_callback(const struct option *opt, const char *arg, int unset)
 {
-	BUG_ON_OPT_NEG(unset);
-	*(int *)opt->value = strtol(arg, NULL, 10);
-	return 0;
+ BUG_ON_OPT_NEG(unset);
+ *(int *)opt->value = strtol(arg, ((void*)0), 10);
+ return 0;
 }

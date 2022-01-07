@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  s_addr; } ;
-struct TYPE_5__ {TYPE_3__ sin_addr; int /*<<< orphan*/  sin_port; int /*<<< orphan*/  sin_family; } ;
-struct TYPE_4__ {int /*<<< orphan*/  sa; TYPE_2__ sa4; } ;
-typedef  TYPE_1__ srvr_sockaddr_union_t ;
-typedef  scalar_t__ curl_socket_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_INET ; 
- scalar_t__ CURL_SOCKET_BAD ; 
- int /*<<< orphan*/  Curl_inet_pton (int /*<<< orphan*/ ,char const*,TYPE_3__*) ; 
- int /*<<< orphan*/  INADDR_ANY ; 
- int SOCKERRNO ; 
- int /*<<< orphan*/  SOCK_STREAM ; 
- int connect (scalar_t__,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  htons (unsigned short) ; 
- int /*<<< orphan*/  logmsg (char*,char const*,unsigned short,...) ; 
- int /*<<< orphan*/  memset (TYPE_2__*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ socket (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strerror (int) ; 
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int s_addr; } ;
+struct TYPE_5__ {TYPE_3__ sin_addr; int sin_port; int sin_family; } ;
+struct TYPE_4__ {int sa; TYPE_2__ sa4; } ;
+typedef TYPE_1__ srvr_sockaddr_union_t ;
+typedef scalar_t__ curl_socket_t ;
+
+
+ int AF_INET ;
+ scalar_t__ CURL_SOCKET_BAD ;
+ int Curl_inet_pton (int ,char const*,TYPE_3__*) ;
+ int INADDR_ANY ;
+ int SOCKERRNO ;
+ int SOCK_STREAM ;
+ int connect (scalar_t__,int *,int) ;
+ int htons (unsigned short) ;
+ int logmsg (char*,char const*,unsigned short,...) ;
+ int memset (TYPE_2__*,int ,int) ;
+ scalar_t__ socket (int ,int ,int ) ;
+ int strerror (int) ;
 
 __attribute__((used)) static curl_socket_t socksconnect(unsigned short connectport,
                                   const char *connectaddr)

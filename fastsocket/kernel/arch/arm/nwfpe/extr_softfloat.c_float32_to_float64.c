@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int int16 ;
-typedef  int /*<<< orphan*/  float64 ;
-typedef  int /*<<< orphan*/  float32 ;
-typedef  int /*<<< orphan*/  flag ;
-typedef  int bits64 ;
-typedef  scalar_t__ bits32 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  commonNaNToFloat64 (int /*<<< orphan*/ ) ; 
- int extractFloat32Exp (int /*<<< orphan*/ ) ; 
- scalar_t__ extractFloat32Frac (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  extractFloat32Sign (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  float32ToCommonNaN (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  normalizeFloat32Subnormal (scalar_t__,int*,scalar_t__*) ; 
- int /*<<< orphan*/  packFloat64 (int /*<<< orphan*/ ,int,int) ; 
+
+
+
+typedef int int16 ;
+typedef int float64 ;
+typedef int float32 ;
+typedef int flag ;
+typedef int bits64 ;
+typedef scalar_t__ bits32 ;
+
+
+ int commonNaNToFloat64 (int ) ;
+ int extractFloat32Exp (int ) ;
+ scalar_t__ extractFloat32Frac (int ) ;
+ int extractFloat32Sign (int ) ;
+ int float32ToCommonNaN (int ) ;
+ int normalizeFloat32Subnormal (scalar_t__,int*,scalar_t__*) ;
+ int packFloat64 (int ,int,int) ;
 
 float64 float32_to_float64( float32 a )
 {

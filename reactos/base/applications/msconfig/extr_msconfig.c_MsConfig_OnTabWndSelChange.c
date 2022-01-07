@@ -1,34 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  BringWindowToTop (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SW_HIDE ; 
- int /*<<< orphan*/  SW_SHOW ; 
- int /*<<< orphan*/  ShowWindow (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int TabCtrl_GetCurSel (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hFreeLdrPage ; 
- int /*<<< orphan*/  hGeneralPage ; 
- int /*<<< orphan*/  hServicesPage ; 
- int /*<<< orphan*/  hStartupPage ; 
- int /*<<< orphan*/  hSystemPage ; 
- int /*<<< orphan*/  hTabWnd ; 
- int /*<<< orphan*/  hToolsPage ; 
+ int BringWindowToTop (int ) ;
+ int SW_HIDE ;
+ int SW_SHOW ;
+ int ShowWindow (int ,int ) ;
+ int TabCtrl_GetCurSel (int ) ;
+ int hFreeLdrPage ;
+ int hGeneralPage ;
+ int hServicesPage ;
+ int hStartupPage ;
+ int hSystemPage ;
+ int hTabWnd ;
+ int hToolsPage ;
 
 void MsConfig_OnTabWndSelChange(void)
 {
     switch (TabCtrl_GetCurSel(hTabWnd)) {
-    case 0: //General
+    case 0:
         ShowWindow(hGeneralPage, SW_SHOW);
         ShowWindow(hSystemPage, SW_HIDE);
         ShowWindow(hFreeLdrPage, SW_HIDE);
@@ -37,7 +29,7 @@ void MsConfig_OnTabWndSelChange(void)
         ShowWindow(hToolsPage, SW_HIDE);
         BringWindowToTop(hGeneralPage);
         break;
-    case 1: //SYSTEM.INI
+    case 1:
         ShowWindow(hGeneralPage, SW_HIDE);
         ShowWindow(hSystemPage, SW_SHOW);
         ShowWindow(hToolsPage, SW_HIDE);
@@ -46,7 +38,7 @@ void MsConfig_OnTabWndSelChange(void)
         ShowWindow(hServicesPage, SW_HIDE);
         BringWindowToTop(hSystemPage);
         break;
-    case 2: //Freeldr
+    case 2:
         ShowWindow(hGeneralPage, SW_HIDE);
         ShowWindow(hSystemPage, SW_HIDE);
         ShowWindow(hFreeLdrPage, SW_SHOW);
@@ -55,7 +47,7 @@ void MsConfig_OnTabWndSelChange(void)
         ShowWindow(hToolsPage, SW_HIDE);
         BringWindowToTop(hFreeLdrPage);
         break;
-    case 3: //Services
+    case 3:
         ShowWindow(hGeneralPage, SW_HIDE);
         ShowWindow(hSystemPage, SW_HIDE);
         ShowWindow(hFreeLdrPage, SW_HIDE);
@@ -64,7 +56,7 @@ void MsConfig_OnTabWndSelChange(void)
         ShowWindow(hToolsPage, SW_HIDE);
         BringWindowToTop(hServicesPage);
         break;
-    case 4: //startup
+    case 4:
         ShowWindow(hGeneralPage, SW_HIDE);
         ShowWindow(hSystemPage, SW_HIDE);
         ShowWindow(hFreeLdrPage, SW_HIDE);
@@ -73,7 +65,7 @@ void MsConfig_OnTabWndSelChange(void)
         ShowWindow(hToolsPage, SW_HIDE);
         BringWindowToTop(hStartupPage);
         break;
-    case 5: //Tools
+    case 5:
         ShowWindow(hGeneralPage, SW_HIDE);
         ShowWindow(hSystemPage, SW_HIDE);
         ShowWindow(hFreeLdrPage, SW_HIDE);

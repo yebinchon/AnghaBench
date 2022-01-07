@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {unsigned int n_ref; struct TYPE_5__* _name; } ;
-typedef  TYPE_1__ DnsResourceKey ;
+typedef TYPE_1__ DnsResourceKey ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  free (TYPE_1__*) ; 
+
+ int assert (int) ;
+ int free (TYPE_1__*) ;
 
 DnsResourceKey* dns_resource_key_unref(DnsResourceKey *k) {
         if (!k)
-                return NULL;
+                return ((void*)0);
 
         assert(k->n_ref != (unsigned) -1);
         assert(k->n_ref > 0);
@@ -31,5 +31,5 @@ DnsResourceKey* dns_resource_key_unref(DnsResourceKey *k) {
         } else
                 k->n_ref--;
 
-        return NULL;
+        return ((void*)0);
 }

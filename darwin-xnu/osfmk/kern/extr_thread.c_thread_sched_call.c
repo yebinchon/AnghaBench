@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* thread_t ;
-typedef  int /*<<< orphan*/  sched_call_t ;
-struct TYPE_3__ {int state; int /*<<< orphan*/  sched_call; } ;
 
-/* Variables and functions */
- int TH_WAIT_REPORT ; 
- int /*<<< orphan*/  assert (int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef TYPE_1__* thread_t ;
+typedef int sched_call_t ;
+struct TYPE_3__ {int state; int sched_call; } ;
+
+
+ int TH_WAIT_REPORT ;
+ int assert (int) ;
 
 void
 thread_sched_call(
-	thread_t		thread,
-	sched_call_t	call)
+ thread_t thread,
+ sched_call_t call)
 {
-	assert((thread->state & TH_WAIT_REPORT) == 0);
-	thread->sched_call = call;
+ assert((thread->state & TH_WAIT_REPORT) == 0);
+ thread->sched_call = call;
 }

@@ -1,61 +1,61 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_stmt ;
-typedef  int /*<<< orphan*/  sqlite3 ;
-struct TYPE_3__ {int /*<<< orphan*/ * db; } ;
-typedef  TYPE_1__ ShellState ;
 
-/* Variables and functions */
-#define  SQLITE_BLOB 132 
- int SQLITE_DONE ; 
-#define  SQLITE_FLOAT 131 
-#define  SQLITE_INTEGER 130 
-#define  SQLITE_NULL 129 
- int SQLITE_OK ; 
- int SQLITE_ROW ; 
- int /*<<< orphan*/  SQLITE_STATIC ; 
-#define  SQLITE_TEXT 128 
- int /*<<< orphan*/  fflush (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (char*,char*,int) ; 
- int /*<<< orphan*/  printf (char*,char) ; 
- int /*<<< orphan*/  shell_out_of_memory () ; 
- int /*<<< orphan*/  sqlite3_bind_blob (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_bind_double (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_bind_int64 (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_bind_null (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  sqlite3_bind_text (int /*<<< orphan*/ *,int,char const*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_column_blob (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  sqlite3_column_bytes (int /*<<< orphan*/ *,int) ; 
- int sqlite3_column_count (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_column_double (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  sqlite3_column_int64 (int /*<<< orphan*/ *,int) ; 
- scalar_t__ sqlite3_column_text (int /*<<< orphan*/ *,int) ; 
- int sqlite3_column_type (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  sqlite3_errmsg (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_extended_errcode (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_finalize (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_free (char*) ; 
- char* sqlite3_malloc64 (int) ; 
- char* sqlite3_mprintf (char*,char const*) ; 
- int sqlite3_prepare_v2 (int /*<<< orphan*/ *,char*,int,int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_reset (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_snprintf (int,char*,char*,char const*) ; 
- int sqlite3_step (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  stdout ; 
- int strlen30 (char const*) ; 
- int /*<<< orphan*/  utf8_printf (int /*<<< orphan*/ ,char*,char const*,...) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int sqlite3_stmt ;
+typedef int sqlite3 ;
+struct TYPE_3__ {int * db; } ;
+typedef TYPE_1__ ShellState ;
+
+
+
+ int SQLITE_DONE ;
+
+
+
+ int SQLITE_OK ;
+ int SQLITE_ROW ;
+ int SQLITE_STATIC ;
+
+ int fflush (int ) ;
+ int memcpy (char*,char*,int) ;
+ int printf (char*,char) ;
+ int shell_out_of_memory () ;
+ int sqlite3_bind_blob (int *,int,int ,int ,int ) ;
+ int sqlite3_bind_double (int *,int,int ) ;
+ int sqlite3_bind_int64 (int *,int,int ) ;
+ int sqlite3_bind_null (int *,int) ;
+ int sqlite3_bind_text (int *,int,char const*,int,int ) ;
+ int sqlite3_column_blob (int *,int) ;
+ int sqlite3_column_bytes (int *,int) ;
+ int sqlite3_column_count (int *) ;
+ int sqlite3_column_double (int *,int) ;
+ int sqlite3_column_int64 (int *,int) ;
+ scalar_t__ sqlite3_column_text (int *,int) ;
+ int sqlite3_column_type (int *,int) ;
+ int sqlite3_errmsg (int *) ;
+ int sqlite3_extended_errcode (int *) ;
+ int sqlite3_finalize (int *) ;
+ int sqlite3_free (char*) ;
+ char* sqlite3_malloc64 (int) ;
+ char* sqlite3_mprintf (char*,char const*) ;
+ int sqlite3_prepare_v2 (int *,char*,int,int **,int ) ;
+ int sqlite3_reset (int *) ;
+ int sqlite3_snprintf (int,char*,char*,char const*) ;
+ int sqlite3_step (int *) ;
+ int stderr ;
+ int stdout ;
+ int strlen30 (char const*) ;
+ int utf8_printf (int ,char*,char const*,...) ;
 
 __attribute__((used)) static void tryToCloneData(
   ShellState *p,
@@ -103,32 +103,32 @@ __attribute__((used)) static void tryToCloneData(
     while( (rc = sqlite3_step(pQuery))==SQLITE_ROW ){
       for(i=0; i<n; i++){
         switch( sqlite3_column_type(pQuery, i) ){
-          case SQLITE_NULL: {
+          case 129: {
             sqlite3_bind_null(pInsert, i+1);
             break;
           }
-          case SQLITE_INTEGER: {
+          case 130: {
             sqlite3_bind_int64(pInsert, i+1, sqlite3_column_int64(pQuery,i));
             break;
           }
-          case SQLITE_FLOAT: {
+          case 131: {
             sqlite3_bind_double(pInsert, i+1, sqlite3_column_double(pQuery,i));
             break;
           }
-          case SQLITE_TEXT: {
+          case 128: {
             sqlite3_bind_text(pInsert, i+1,
                              (const char*)sqlite3_column_text(pQuery,i),
                              -1, SQLITE_STATIC);
             break;
           }
-          case SQLITE_BLOB: {
+          case 132: {
             sqlite3_bind_blob(pInsert, i+1, sqlite3_column_blob(pQuery,i),
                                             sqlite3_column_bytes(pQuery,i),
                                             SQLITE_STATIC);
             break;
           }
         }
-      } /* End for */
+      }
       rc = sqlite3_step(pInsert);
       if( rc!=SQLITE_OK && rc!=SQLITE_ROW && rc!=SQLITE_DONE ){
         utf8_printf(stderr, "Error %d: %s\n", sqlite3_extended_errcode(newDb),
@@ -140,7 +140,7 @@ __attribute__((used)) static void tryToCloneData(
         printf("%c\b", "|/-\\"[(cnt/spinRate)%4]);
         fflush(stdout);
       }
-    } /* End while */
+    }
     if( rc==SQLITE_DONE ) break;
     sqlite3_finalize(pQuery);
     sqlite3_free(zQuery);
@@ -151,7 +151,7 @@ __attribute__((used)) static void tryToCloneData(
       utf8_printf(stderr, "Warning: cannot step \"%s\" backwards", zTable);
       break;
     }
-  } /* End for(k=0...) */
+  }
 
 end_data_xfer:
   sqlite3_finalize(pQuery);

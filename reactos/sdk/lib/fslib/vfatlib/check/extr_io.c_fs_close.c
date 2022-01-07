@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {struct TYPE_4__* data; struct TYPE_4__* next; } ;
-typedef  TYPE_1__ CHANGE ;
+typedef TYPE_1__ CHANGE ;
 
-/* Variables and functions */
- TYPE_1__* changes ; 
- scalar_t__ close (int /*<<< orphan*/ ) ; 
- scalar_t__ did_change ; 
- int /*<<< orphan*/  fd ; 
- int /*<<< orphan*/  free (TYPE_1__*) ; 
- int /*<<< orphan*/  fs_flush () ; 
- int /*<<< orphan*/  pdie (char*) ; 
+
+ TYPE_1__* changes ;
+ scalar_t__ close (int ) ;
+ scalar_t__ did_change ;
+ int fd ;
+ int free (TYPE_1__*) ;
+ int fs_flush () ;
+ int pdie (char*) ;
 
 int fs_close(int write)
 {
@@ -30,15 +30,15 @@ int fs_close(int write)
 
     changed = ! !changes;
     if (write)
-	fs_flush();
+ fs_flush();
     else
-	while (changes) {
-	    next = changes->next;
-	    free(changes->data);
-	    free(changes);
-	    changes = next;
-	}
+ while (changes) {
+     next = changes->next;
+     free(changes->data);
+     free(changes);
+     changes = next;
+ }
     if (close(fd) < 0)
-	pdie("closing filesystem");
+ pdie("closing filesystem");
     return changed || did_change;
 }

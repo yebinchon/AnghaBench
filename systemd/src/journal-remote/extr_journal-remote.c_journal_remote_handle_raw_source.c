@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_6__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int ssize_t ;
-typedef  int /*<<< orphan*/  sd_event_source ;
-struct TYPE_10__ {int fd; int /*<<< orphan*/  name; } ;
-struct TYPE_9__ {int /*<<< orphan*/  active; int /*<<< orphan*/  seal; int /*<<< orphan*/  compress; TYPE_1__** sources; scalar_t__ sources_size; } ;
+
+
+typedef struct TYPE_10__ TYPE_6__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+typedef int ssize_t ;
+typedef int sd_event_source ;
+struct TYPE_10__ {int fd; int name; } ;
+struct TYPE_9__ {int active; int seal; int compress; TYPE_1__** sources; scalar_t__ sources_size; } ;
 struct TYPE_8__ {TYPE_6__ importer; } ;
-typedef  TYPE_1__ RemoteSource ;
-typedef  TYPE_2__ RemoteServer ;
+typedef TYPE_1__ RemoteSource ;
+typedef TYPE_2__ RemoteServer ;
 
-/* Variables and functions */
- int E2BIG ; 
- int EAGAIN ; 
- int ENOBUFS ; 
- int /*<<< orphan*/  assert (int) ; 
- size_t journal_importer_bytes_remaining (TYPE_6__*) ; 
- scalar_t__ journal_importer_eof (TYPE_6__*) ; 
- int /*<<< orphan*/  log_debug (char*,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  log_debug_errno (int,char*) ; 
- int /*<<< orphan*/  log_notice (char*,...) ; 
- int process_source (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  remove_source (TYPE_2__*,int) ; 
+
+ int E2BIG ;
+ int EAGAIN ;
+ int ENOBUFS ;
+ int assert (int) ;
+ size_t journal_importer_bytes_remaining (TYPE_6__*) ;
+ scalar_t__ journal_importer_eof (TYPE_6__*) ;
+ int log_debug (char*,int ,...) ;
+ int log_debug_errno (int,char*) ;
+ int log_notice (char*,...) ;
+ int process_source (TYPE_1__*,int ,int ) ;
+ int remove_source (TYPE_2__*,int) ;
 
 int journal_remote_handle_raw_source(
                 sd_event_source *event,
@@ -44,9 +44,9 @@ int journal_remote_handle_raw_source(
         RemoteSource *source;
         int r;
 
-        /* Returns 1 if there might be more data pending,
-         * 0 if data is currently exhausted, negative on error.
-         */
+
+
+
 
         assert(fd >= 0 && fd < (ssize_t) s->sources_size);
         source = s->sources[fd];

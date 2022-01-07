@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct client_state {scalar_t__ scriptEnvsize; int /*<<< orphan*/ ** scriptEnv; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
+
+
+
+struct client_state {scalar_t__ scriptEnvsize; int ** scriptEnv; } ;
+
+
+ int free (int *) ;
 
 void
 script_flush_env(struct client_state *client)
 {
-	int i;
+ int i;
 
-	for (i = 0; client->scriptEnv[i]; i++) {
-		free(client->scriptEnv[i]);
-		client->scriptEnv[i] = NULL;
-	}
-	client->scriptEnvsize = 0;
+ for (i = 0; client->scriptEnv[i]; i++) {
+  free(client->scriptEnv[i]);
+  client->scriptEnv[i] = ((void*)0);
+ }
+ client->scriptEnvsize = 0;
 }

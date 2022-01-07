@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  int /*<<< orphan*/  THFile ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * THPipeFile_new (char const*,char const*,int) ; 
- char* luaL_checkstring (int /*<<< orphan*/ *,int) ; 
- char* luaL_optstring (int /*<<< orphan*/ *,int,char*) ; 
- int luaT_optboolean (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  luaT_pushudata (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*) ; 
+
+
+
+typedef int lua_State ;
+typedef int THFile ;
+
+
+ int * THPipeFile_new (char const*,char const*,int) ;
+ char* luaL_checkstring (int *,int) ;
+ char* luaL_optstring (int *,int,char*) ;
+ int luaT_optboolean (int *,int,int ) ;
+ int luaT_pushudata (int *,int *,char*) ;
 
 __attribute__((used)) static int torch_PipeFile_new(lua_State *L)
 {

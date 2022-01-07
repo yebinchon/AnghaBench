@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct timeval {long tv_sec; long tv_usec; } ;
-struct sigaction {int /*<<< orphan*/  sa_flags; int /*<<< orphan*/  sa_mask; int /*<<< orphan*/  sa_sigaction; } ;
-struct itimerval {struct timeval it_value; int /*<<< orphan*/  it_interval; } ;
-typedef  int MMAL_STATUS_T ;
+struct sigaction {int sa_flags; int sa_mask; int sa_sigaction; } ;
+struct itimerval {struct timeval it_value; int it_interval; } ;
+typedef int MMAL_STATUS_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ITIMER_REAL ; 
- int MMAL_SUCCESS ; 
- int /*<<< orphan*/  SA_SIGINFO ; 
- int /*<<< orphan*/  SIGALRM ; 
- int atoi (char const*) ; 
- int autosusp_signal ; 
- int /*<<< orphan*/  autosusp_timeout_handler ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  memset (struct sigaction*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  mmal_vc_release () ; 
- int mmal_vc_use () ; 
- int /*<<< orphan*/  perror (char*) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int setitimer (int /*<<< orphan*/ ,struct itimerval*,int /*<<< orphan*/ *) ; 
- scalar_t__ sigaction (int /*<<< orphan*/ ,struct sigaction*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sigemptyset (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  usleep (long) ; 
+
+ int ITIMER_REAL ;
+ int MMAL_SUCCESS ;
+ int SA_SIGINFO ;
+ int SIGALRM ;
+ int atoi (char const*) ;
+ int autosusp_signal ;
+ int autosusp_timeout_handler ;
+ int exit (int) ;
+ int fprintf (int ,char*,int) ;
+ int memset (struct sigaction*,int ,int) ;
+ int mmal_vc_release () ;
+ int mmal_vc_use () ;
+ int perror (char*) ;
+ int printf (char*,...) ;
+ int setitimer (int ,struct itimerval*,int *) ;
+ scalar_t__ sigaction (int ,struct sigaction*,int ) ;
+ int sigemptyset (int *) ;
+ int stderr ;
+ int usleep (long) ;
 
 __attribute__((used)) static int do_autosusptest(int argc, const char **argv)
 {
@@ -58,7 +58,7 @@ __attribute__((used)) static int do_autosusptest(int argc, const char **argv)
       exit(1);
    }
 
-   /* install a signal handler for the alarm */
+
    struct sigaction sa;
    memset(&sa, 0, sizeof(struct sigaction));
    sa.sa_sigaction = autosusp_timeout_handler;
@@ -70,7 +70,7 @@ __attribute__((used)) static int do_autosusptest(int argc, const char **argv)
       exit(1);
    }
 
-   /* when to expire */
+
    interval.tv_sec = timeout / 1000000;
    interval.tv_usec = timeout % 1000000;
 
@@ -79,7 +79,7 @@ __attribute__((used)) static int do_autosusptest(int argc, const char **argv)
      .it_value = interval
    };
 
-   int rc = setitimer(ITIMER_REAL, &alarm_spec, NULL);
+   int rc = setitimer(ITIMER_REAL, &alarm_spec, ((void*)0));
    if (rc < 0)
    {
       perror("setitimer failed");

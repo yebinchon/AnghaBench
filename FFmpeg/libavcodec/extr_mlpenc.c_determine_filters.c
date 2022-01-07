@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_6__ {TYPE_1__* cur_restart_header; } ;
 struct TYPE_5__ {int min_channel; int max_channel; } ;
-typedef  TYPE_1__ RestartHeader ;
-typedef  TYPE_2__ MLPEncodeContext ;
+typedef TYPE_1__ RestartHeader ;
+typedef TYPE_2__ MLPEncodeContext ;
 
-/* Variables and functions */
- int NUM_FILTERS ; 
- int /*<<< orphan*/  set_filter_params (TYPE_2__*,int,int,int /*<<< orphan*/ ) ; 
+
+ int NUM_FILTERS ;
+ int set_filter_params (TYPE_2__*,int,int,int ) ;
 
 __attribute__((used)) static void determine_filters(MLPEncodeContext *ctx)
 {

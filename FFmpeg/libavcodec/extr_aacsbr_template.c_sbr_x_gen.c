@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int* kx; int* m; TYPE_1__* data; } ;
 struct TYPE_4__ {int t_env_num_env_old; } ;
-typedef  TYPE_2__ SpectralBandReplication ;
-typedef  int /*<<< orphan*/  INTFLOAT ;
+typedef TYPE_2__ SpectralBandReplication ;
+typedef int INTFLOAT ;
 
-/* Variables and functions */
- int ENVELOPE_ADJUSTMENT_OFFSET ; 
- int FFMAX (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ ***,int /*<<< orphan*/ ,int) ; 
+
+ int ENVELOPE_ADJUSTMENT_OFFSET ;
+ int FFMAX (int,int ) ;
+ int memset (int ***,int ,int) ;
 
 __attribute__((used)) static int sbr_x_gen(SpectralBandReplication *sbr, INTFLOAT X[2][38][64],
                      const INTFLOAT Y0[38][64][2], const INTFLOAT Y1[38][64][2],

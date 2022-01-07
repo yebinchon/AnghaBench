@@ -1,64 +1,64 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_5__ ;
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_14__ {int /*<<< orphan*/  hash; } ;
+
+
+typedef struct TYPE_14__ TYPE_5__ ;
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+struct TYPE_14__ {int hash; } ;
 struct TYPE_13__ {int type; } ;
-struct TYPE_10__ {int /*<<< orphan*/  len; int /*<<< orphan*/  val; } ;
+struct TYPE_10__ {int len; int val; } ;
 struct TYPE_11__ {TYPE_1__ string; } ;
-struct TYPE_12__ {TYPE_2__ val; int /*<<< orphan*/  type; } ;
-typedef  TYPE_3__ JsonbValue ;
-typedef  TYPE_4__ JsonPathItem ;
-typedef  TYPE_5__ JsonPathGinPath ;
+struct TYPE_12__ {TYPE_2__ val; int type; } ;
+typedef TYPE_3__ JsonbValue ;
+typedef TYPE_4__ JsonPathItem ;
+typedef TYPE_5__ JsonPathGinPath ;
 
-/* Variables and functions */
- int /*<<< orphan*/  JsonbHashScalarValue (TYPE_3__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jbvString ; 
-#define  jpiAnyArray 131 
-#define  jpiIndexArray 130 
-#define  jpiKey 129 
-#define  jpiRoot 128 
- int /*<<< orphan*/  jspGetString (TYPE_4__*,int /*<<< orphan*/ *) ; 
+
+ int JsonbHashScalarValue (TYPE_3__*,int *) ;
+ int jbvString ;
+
+
+
+
+ int jspGetString (TYPE_4__*,int *) ;
 
 __attribute__((used)) static bool
 jsonb_path_ops__add_path_item(JsonPathGinPath *path, JsonPathItem *jsp)
 {
-	switch (jsp->type)
-	{
-		case jpiRoot:
-			path->hash = 0;		/* reset path hash */
-			return true;
+ switch (jsp->type)
+ {
+  case 128:
+   path->hash = 0;
+   return 1;
 
-		case jpiKey:
-			{
-				JsonbValue	jbv;
+  case 129:
+   {
+    JsonbValue jbv;
 
-				jbv.type = jbvString;
-				jbv.val.string.val = jspGetString(jsp, &jbv.val.string.len);
+    jbv.type = jbvString;
+    jbv.val.string.val = jspGetString(jsp, &jbv.val.string.len);
 
-				JsonbHashScalarValue(&jbv, &path->hash);
-				return true;
-			}
+    JsonbHashScalarValue(&jbv, &path->hash);
+    return 1;
+   }
 
-		case jpiIndexArray:
-		case jpiAnyArray:
-			return true;		/* path hash is unchanged */
+  case 130:
+  case 131:
+   return 1;
 
-		default:
-			/* other items (wildcard paths, item methods) are not supported */
-			return false;
-	}
+  default:
+
+   return 0;
+ }
 }

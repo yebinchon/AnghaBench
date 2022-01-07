@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ptp_clock_request {int type; int /*<<< orphan*/  perout; int /*<<< orphan*/  extts; } ;
+
+
+
+
+struct ptp_clock_request {int type; int perout; int extts; } ;
 struct ptp_clock_info {int dummy; } ;
 
-/* Variables and functions */
- int EOPNOTSUPP ; 
-#define  PTP_CLK_REQ_EXTTS 129 
-#define  PTP_CLK_REQ_PEROUT 128 
- int ravb_ptp_extts (struct ptp_clock_info*,int /*<<< orphan*/ *,int) ; 
- int ravb_ptp_perout (struct ptp_clock_info*,int /*<<< orphan*/ *,int) ; 
+
+ int EOPNOTSUPP ;
+
+
+ int ravb_ptp_extts (struct ptp_clock_info*,int *,int) ;
+ int ravb_ptp_perout (struct ptp_clock_info*,int *,int) ;
 
 __attribute__((used)) static int ravb_ptp_enable(struct ptp_clock_info *ptp,
-			   struct ptp_clock_request *req, int on)
+      struct ptp_clock_request *req, int on)
 {
-	switch (req->type) {
-	case PTP_CLK_REQ_EXTTS:
-		return ravb_ptp_extts(ptp, &req->extts, on);
-	case PTP_CLK_REQ_PEROUT:
-		return ravb_ptp_perout(ptp, &req->perout, on);
-	default:
-		return -EOPNOTSUPP;
-	}
+ switch (req->type) {
+ case 129:
+  return ravb_ptp_extts(ptp, &req->extts, on);
+ case 128:
+  return ravb_ptp_perout(ptp, &req->perout, on);
+ default:
+  return -EOPNOTSUPP;
+ }
 }

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-typedef  int /*<<< orphan*/  u32 ;
+
+
+
+
+typedef int u8 ;
+typedef int u32 ;
 struct crypto_shash {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CRYPTO_TFM_RES_BAD_KEY_LEN ; 
- int EINVAL ; 
- int /*<<< orphan*/ * crypto_shash_ctx (struct crypto_shash*) ; 
- int /*<<< orphan*/  crypto_shash_set_flags (struct crypto_shash*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  get_unaligned_le32 (int /*<<< orphan*/  const*) ; 
+
+ int CRYPTO_TFM_RES_BAD_KEY_LEN ;
+ int EINVAL ;
+ int * crypto_shash_ctx (struct crypto_shash*) ;
+ int crypto_shash_set_flags (struct crypto_shash*,int ) ;
+ int get_unaligned_le32 (int const*) ;
 
 __attribute__((used)) static int crc32_setkey(struct crypto_shash *hash, const u8 *key,
-			unsigned int keylen)
+   unsigned int keylen)
 {
-	u32 *mctx = crypto_shash_ctx(hash);
+ u32 *mctx = crypto_shash_ctx(hash);
 
-	if (keylen != sizeof(u32)) {
-		crypto_shash_set_flags(hash, CRYPTO_TFM_RES_BAD_KEY_LEN);
-		return -EINVAL;
-	}
-	*mctx = get_unaligned_le32(key);
-	return 0;
+ if (keylen != sizeof(u32)) {
+  crypto_shash_set_flags(hash, CRYPTO_TFM_RES_BAD_KEY_LEN);
+  return -EINVAL;
+ }
+ *mctx = get_unaligned_le32(key);
+ return 0;
 }

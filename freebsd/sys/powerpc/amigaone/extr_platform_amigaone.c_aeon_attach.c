@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  platform_t ;
 
-/* Variables and functions */
- int is_aeon ; 
- int mpc85xx_attach (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int platform_t ;
+
+
+ int is_aeon ;
+ int mpc85xx_attach (int ) ;
 
 __attribute__((used)) static int
 aeon_attach(platform_t plat)
 {
-	int error;
+ int error;
 
-	error = mpc85xx_attach(plat);
-	if (error)
-		return (error);
+ error = mpc85xx_attach(plat);
+ if (error)
+  return (error);
 
-	is_aeon = true;
+ is_aeon = 1;
 
-	return (0);
+ return (0);
 }

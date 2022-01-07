@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_5__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_11__ {int /*<<< orphan*/  CurrentActiveLinks; } ;
-struct TYPE_10__ {int Started; int /*<<< orphan*/  Auth; int /*<<< orphan*/  Option; TYPE_5__* Cedar; int /*<<< orphan*/  ClientSession; scalar_t__ Halting; } ;
+
+
+typedef struct TYPE_11__ TYPE_5__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_11__ {int CurrentActiveLinks; } ;
+struct TYPE_10__ {int Started; int Auth; int Option; TYPE_5__* Cedar; int ClientSession; scalar_t__ Halting; } ;
 struct TYPE_9__ {void* Param; } ;
-typedef  TYPE_1__ PACKET_ADAPTER ;
-typedef  TYPE_2__ LINK ;
+typedef TYPE_1__ PACKET_ADAPTER ;
+typedef TYPE_2__ LINK ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Inc (int /*<<< orphan*/ ) ; 
- TYPE_1__* LinkGetPacketAdapter () ; 
- int /*<<< orphan*/  LockLink (TYPE_2__*) ; 
- int /*<<< orphan*/  NewClientSession (TYPE_5__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  UnlockLink (TYPE_2__*) ; 
+
+ int Inc (int ) ;
+ TYPE_1__* LinkGetPacketAdapter () ;
+ int LockLink (TYPE_2__*) ;
+ int NewClientSession (TYPE_5__*,int ,int ,TYPE_1__*,int *) ;
+ int UnlockLink (TYPE_2__*) ;
 
 void StartLink(LINK *k)
 {
-	PACKET_ADAPTER *pa;
-	// Validate arguments
-	if (k == NULL)
-	{
-		return;
-	}
+ PACKET_ADAPTER *pa;
 
-	LockLink(k);
-	{
-		if (k->Started || k->Halting)
-		{
-			UnlockLink(k);
-			return;
-		}
-		k->Started = true;
+ if (k == ((void*)0))
+ {
+  return;
+ }
 
-		Inc(k->Cedar->CurrentActiveLinks);
-	}
-	UnlockLink(k);
+ LockLink(k);
+ {
+  if (k->Started || k->Halting)
+  {
+   UnlockLink(k);
+   return;
+  }
+  k->Started = 1;
 
-	// Connect the client session
-	pa = LinkGetPacketAdapter();
-	pa->Param = (void *)k;
-	LockLink(k);
-	{
-		k->ClientSession = NewClientSession(k->Cedar, k->Option, k->Auth, pa, NULL);
-	}
-	UnlockLink(k);
+  Inc(k->Cedar->CurrentActiveLinks);
+ }
+ UnlockLink(k);
+
+
+ pa = LinkGetPacketAdapter();
+ pa->Param = (void *)k;
+ LockLink(k);
+ {
+  k->ClientSession = NewClientSession(k->Cedar, k->Option, k->Auth, pa, ((void*)0));
+ }
+ UnlockLink(k);
 }

@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_5__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int order; int message_id; int /*<<< orphan*/  hash; } ;
-typedef  TYPE_2__ pair_t ;
-typedef  int /*<<< orphan*/  hash_t ;
-struct TYPE_8__ {int order; int message_id; int /*<<< orphan*/  hash; } ;
+
+
+typedef struct TYPE_8__ TYPE_5__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int order; int message_id; int hash; } ;
+typedef TYPE_2__ pair_t ;
+typedef int hash_t ;
+struct TYPE_8__ {int order; int message_id; int hash; } ;
 struct TYPE_6__ {int message_id; } ;
 
-/* Variables and functions */
- int* CurL ; 
- int* D ; 
- int Dc ; 
- int Dc0 ; 
- int MAX_DATA ; 
- size_t MAX_PAIRS ; 
- TYPE_5__* Q ; 
- size_t Qc ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  prune_list (int*,int*,int,int) ; 
+
+ int* CurL ;
+ int* D ;
+ int Dc ;
+ int Dc0 ;
+ int MAX_DATA ;
+ size_t MAX_PAIRS ;
+ TYPE_5__* Q ;
+ size_t Qc ;
+ int assert (int) ;
+ int prune_list (int*,int*,int,int) ;
 
 __attribute__((used)) static void merge_hash_lists (pair_t *old_list, pair_t *start, int cnt) {
   int pos_thr = 0x7fffffff, neg_thr = -0x7fffffff, i;
   hash_t h;
 
-  if (cnt) { 
-    h = start->hash; 
+  if (cnt) {
+    h = start->hash;
   } else if (old_list) {
     h = old_list->hash;
   } else {

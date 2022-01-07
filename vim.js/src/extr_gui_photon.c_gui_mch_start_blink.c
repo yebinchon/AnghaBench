@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {scalar_t__ in_focus; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BLINK_ON ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  PtSetResource (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Pt_ARG_TIMER_INITIAL ; 
- int /*<<< orphan*/  TRUE ; 
- scalar_t__ blink_offtime ; 
- scalar_t__ blink_ontime ; 
- int /*<<< orphan*/  blink_state ; 
- scalar_t__ blink_waittime ; 
- TYPE_1__ gui ; 
- int /*<<< orphan*/  gui_ph_timer_cursor ; 
- int /*<<< orphan*/  gui_update_cursor (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int BLINK_ON ;
+ int FALSE ;
+ int PtSetResource (int ,int ,scalar_t__,int ) ;
+ int Pt_ARG_TIMER_INITIAL ;
+ int TRUE ;
+ scalar_t__ blink_offtime ;
+ scalar_t__ blink_ontime ;
+ int blink_state ;
+ scalar_t__ blink_waittime ;
+ TYPE_1__ gui ;
+ int gui_ph_timer_cursor ;
+ int gui_update_cursor (int ,int ) ;
 
 void
 gui_mch_start_blink(void)
 {
-    /* Only turn on the timer on if none of the times are zero */
+
     if (blink_waittime && blink_ontime && blink_offtime && gui.in_focus)
     {
-	PtSetResource(gui_ph_timer_cursor, Pt_ARG_TIMER_INITIAL,
-		blink_waittime, 0);
-	blink_state = BLINK_ON;
-	gui_update_cursor(TRUE, FALSE);
+ PtSetResource(gui_ph_timer_cursor, Pt_ARG_TIMER_INITIAL,
+  blink_waittime, 0);
+ blink_state = BLINK_ON;
+ gui_update_cursor(TRUE, FALSE);
     }
 }

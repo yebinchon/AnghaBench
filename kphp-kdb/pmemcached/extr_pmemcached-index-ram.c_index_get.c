@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct index_entry {int* data; int key_len; } ;
 
-/* Variables and functions */
- struct index_entry empty_index_entry ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/ * index_binary_data ; 
- size_t* index_offset ; 
- int index_size ; 
- scalar_t__ mystrcmp (int*,int,char const*,int) ; 
- int /*<<< orphan*/  stderr ; 
- int verbosity ; 
- int /*<<< orphan*/  vkprintf (int,char*,...) ; 
+
+ struct index_entry empty_index_entry ;
+ int fprintf (int ,char*,...) ;
+ int * index_binary_data ;
+ size_t* index_offset ;
+ int index_size ;
+ scalar_t__ mystrcmp (int*,int,char const*,int) ;
+ int stderr ;
+ int verbosity ;
+ int vkprintf (int,char*,...) ;
 
 struct index_entry* index_get (const char *key, int key_len) {
   int l = -1;
@@ -51,7 +51,7 @@ struct index_entry* index_get (const char *key, int key_len) {
       fprintf (stderr, "\n");
     }
   }
-  if (l < index_size && !mystrcmp (entry->data, entry->key_len, key, key_len)) { 
+  if (l < index_size && !mystrcmp (entry->data, entry->key_len, key, key_len)) {
     vkprintf (4, "Item found in index.\n");
     return entry;
   }

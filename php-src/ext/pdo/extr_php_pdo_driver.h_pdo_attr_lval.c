@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  zval ;
-typedef  int /*<<< orphan*/  zend_long ;
-typedef  enum pdo_attribute_type { ____Placeholder_pdo_attribute_type } pdo_attribute_type ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Z_ARRVAL_P (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * zend_hash_index_find (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  zval_get_long (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int zval ;
+typedef int zend_long ;
+typedef enum pdo_attribute_type { ____Placeholder_pdo_attribute_type } pdo_attribute_type ;
+
+
+ int Z_ARRVAL_P (int *) ;
+ int * zend_hash_index_find (int ,int) ;
+ int zval_get_long (int *) ;
 
 __attribute__((used)) static inline zend_long pdo_attr_lval(zval *options, enum pdo_attribute_type option_name, zend_long defval)
 {
-	zval *v;
+ zval *v;
 
-	if (options && (v = zend_hash_index_find(Z_ARRVAL_P(options), option_name))) {
-		return zval_get_long(v);
-	}
-	return defval;
+ if (options && (v = zend_hash_index_find(Z_ARRVAL_P(options), option_name))) {
+  return zval_get_long(v);
+ }
+ return defval;
 }

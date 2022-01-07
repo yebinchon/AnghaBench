@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mbedtls_x509_time ;
 
-/* Variables and functions */
- unsigned char MBEDTLS_ASN1_GENERALIZED_TIME ; 
- unsigned char MBEDTLS_ASN1_UTC_TIME ; 
- int MBEDTLS_ERR_ASN1_OUT_OF_DATA ; 
- int MBEDTLS_ERR_ASN1_UNEXPECTED_TAG ; 
- int MBEDTLS_ERR_X509_INVALID_DATE ; 
- int mbedtls_asn1_get_len (unsigned char**,unsigned char const*,size_t*) ; 
- int x509_parse_time (unsigned char**,size_t,size_t,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int mbedtls_x509_time ;
+
+
+ unsigned char MBEDTLS_ASN1_GENERALIZED_TIME ;
+ unsigned char MBEDTLS_ASN1_UTC_TIME ;
+ int MBEDTLS_ERR_ASN1_OUT_OF_DATA ;
+ int MBEDTLS_ERR_ASN1_UNEXPECTED_TAG ;
+ int MBEDTLS_ERR_X509_INVALID_DATE ;
+ int mbedtls_asn1_get_len (unsigned char**,unsigned char const*,size_t*) ;
+ int x509_parse_time (unsigned char**,size_t,size_t,int *) ;
 
 int mbedtls_x509_get_time( unsigned char **p, const unsigned char *end,
                    mbedtls_x509_time *time )

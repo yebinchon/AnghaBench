@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-typedef  int /*<<< orphan*/  u32 ;
-typedef  int sqlite3_int64 ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int u8 ;
+typedef int u32 ;
+typedef int sqlite3_int64 ;
 struct TYPE_5__ {int* aMatchinfo; int nElem; char* zMatchinfo; int* aRef; } ;
-typedef  TYPE_1__ MatchinfoBuffer ;
+typedef TYPE_1__ MatchinfoBuffer ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memcpy (char*,char const*,int) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- TYPE_1__* sqlite3_malloc64 (int) ; 
- int strlen (char const*) ; 
+
+ int memcpy (char*,char const*,int) ;
+ int memset (TYPE_1__*,int ,int) ;
+ TYPE_1__* sqlite3_malloc64 (int) ;
+ int strlen (char const*) ;
 
 __attribute__((used)) static MatchinfoBuffer *fts3MIBufferNew(size_t nElem, const char *zMatchinfo){
   MatchinfoBuffer *pRet;

@@ -1,64 +1,64 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_7__ {int count; } ;
-typedef  TYPE_1__ SortItem ;
-typedef  int /*<<< orphan*/  MultiSortSupport ;
+typedef TYPE_1__ SortItem ;
+typedef int MultiSortSupport ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Assert (int) ; 
- int /*<<< orphan*/  compare_sort_item_count ; 
- int count_distinct_groups (int,TYPE_1__*,int /*<<< orphan*/ ) ; 
- scalar_t__ multi_sort_compare (TYPE_1__*,TYPE_1__*,int /*<<< orphan*/ ) ; 
- scalar_t__ palloc (int) ; 
- int /*<<< orphan*/  pg_qsort (void*,int,int,int /*<<< orphan*/ ) ; 
+
+ int Assert (int) ;
+ int compare_sort_item_count ;
+ int count_distinct_groups (int,TYPE_1__*,int ) ;
+ scalar_t__ multi_sort_compare (TYPE_1__*,TYPE_1__*,int ) ;
+ scalar_t__ palloc (int) ;
+ int pg_qsort (void*,int,int,int ) ;
 
 __attribute__((used)) static SortItem *
 build_distinct_groups(int numrows, SortItem *items, MultiSortSupport mss,
-					  int *ndistinct)
+       int *ndistinct)
 {
-	int			i,
-				j;
-	int			ngroups = count_distinct_groups(numrows, items, mss);
+ int i,
+    j;
+ int ngroups = count_distinct_groups(numrows, items, mss);
 
-	SortItem   *groups = (SortItem *) palloc(ngroups * sizeof(SortItem));
+ SortItem *groups = (SortItem *) palloc(ngroups * sizeof(SortItem));
 
-	j = 0;
-	groups[0] = items[0];
-	groups[0].count = 1;
+ j = 0;
+ groups[0] = items[0];
+ groups[0].count = 1;
 
-	for (i = 1; i < numrows; i++)
-	{
-		/* Assume sorted in ascending order. */
-		Assert(multi_sort_compare(&items[i], &items[i - 1], mss) >= 0);
+ for (i = 1; i < numrows; i++)
+ {
 
-		/* New distinct group detected. */
-		if (multi_sort_compare(&items[i], &items[i - 1], mss) != 0)
-		{
-			groups[++j] = items[i];
-			groups[j].count = 0;
-		}
+  Assert(multi_sort_compare(&items[i], &items[i - 1], mss) >= 0);
 
-		groups[j].count++;
-	}
 
-	/* ensure we filled the expected number of distinct groups */
-	Assert(j + 1 == ngroups);
+  if (multi_sort_compare(&items[i], &items[i - 1], mss) != 0)
+  {
+   groups[++j] = items[i];
+   groups[j].count = 0;
+  }
 
-	/* Sort the distinct groups by frequency (in descending order). */
-	pg_qsort((void *) groups, ngroups, sizeof(SortItem),
-			 compare_sort_item_count);
+  groups[j].count++;
+ }
 
-	*ndistinct = ngroups;
-	return groups;
+
+ Assert(j + 1 == ngroups);
+
+
+ pg_qsort((void *) groups, ngroups, sizeof(SortItem),
+    compare_sort_item_count);
+
+ *ndistinct = ngroups;
+ return groups;
 }

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  zval ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ZEND_COMPARE_OBJECTS_FALLBACK (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int zval ;
+
+
+ int ZEND_COMPARE_OBJECTS_FALLBACK (int *,int *) ;
 
 __attribute__((used)) static int saproxy_objects_compare(zval *object1, zval *object2)
 {
-	ZEND_COMPARE_OBJECTS_FALLBACK(object1, object2);
-	return -1;
+ ZEND_COMPARE_OBJECTS_FALLBACK(object1, object2);
+ return -1;
 }

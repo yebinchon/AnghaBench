@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int int16_t ;
-struct TYPE_4__ {int* q_intra_matrix; int /*<<< orphan*/  pb; } ;
-typedef  TYPE_1__ ASV1Context ;
 
-/* Variables and functions */
- int /*<<< orphan*/  asv2_put_bits (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  asv2_put_level (TYPE_1__*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  av_assert2 (int) ; 
- int /*<<< orphan*/ ** ff_asv_ac_ccp_tab ; 
- int /*<<< orphan*/ ** ff_asv_dc_ccp_tab ; 
- int* ff_asv_scantab ; 
- int /*<<< orphan*/  put_bits (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int int16_t ;
+struct TYPE_4__ {int* q_intra_matrix; int pb; } ;
+typedef TYPE_1__ ASV1Context ;
+
+
+ int asv2_put_bits (int *,int,int) ;
+ int asv2_put_level (TYPE_1__*,int *,int) ;
+ int av_assert2 (int) ;
+ int ** ff_asv_ac_ccp_tab ;
+ int ** ff_asv_dc_ccp_tab ;
+ int* ff_asv_scantab ;
+ int put_bits (int *,int ,int ) ;
 
 __attribute__((used)) static inline void asv2_encode_block(ASV1Context *a, int16_t block[64])
 {
@@ -43,7 +43,7 @@ __attribute__((used)) static inline void asv2_encode_block(ASV1Context *a, int16
 
     for (i = 0; i <= count; i++) {
         const int index = ff_asv_scantab[4 * i];
-        int ccp         = 0;
+        int ccp = 0;
 
         if ((block[index + 0] = (block[index + 0] *
                                  a->q_intra_matrix[index + 0] + (1 << 15)) >> 16))

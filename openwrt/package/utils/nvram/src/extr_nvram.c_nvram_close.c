@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  fd; int /*<<< orphan*/  length; int /*<<< orphan*/  mmap; } ;
-typedef  TYPE_1__ nvram_handle_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  _nvram_free (TYPE_1__*) ; 
- int /*<<< orphan*/  close (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (TYPE_1__*) ; 
- int /*<<< orphan*/  munmap (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int fd; int length; int mmap; } ;
+typedef TYPE_1__ nvram_handle_t ;
+
+
+ int _nvram_free (TYPE_1__*) ;
+ int close (int ) ;
+ int free (TYPE_1__*) ;
+ int munmap (int ,int ) ;
 
 int nvram_close(nvram_handle_t *h)
 {
-	_nvram_free(h);
-	munmap(h->mmap, h->length);
-	close(h->fd);
-	free(h);
+ _nvram_free(h);
+ munmap(h->mmap, h->length);
+ close(h->fd);
+ free(h);
 
-	return 0;
+ return 0;
 }

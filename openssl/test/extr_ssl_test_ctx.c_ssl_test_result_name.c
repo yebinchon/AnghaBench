@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ssl_test_result_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OSSL_NELEM (int /*<<< orphan*/ ) ; 
- char const* enum_name (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ssl_test_results ; 
+
+
+
+typedef int ssl_test_result_t ;
+
+
+ int OSSL_NELEM (int ) ;
+ char const* enum_name (int ,int ,int ) ;
+ int ssl_test_results ;
 
 const char *ssl_test_result_name(ssl_test_result_t result)
 {

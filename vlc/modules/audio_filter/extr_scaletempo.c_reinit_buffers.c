@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_5__ {TYPE_2__* p_sys; } ;
-typedef  TYPE_1__ filter_t ;
-struct TYPE_6__ {double ms_stride; double sample_rate; unsigned int bytes_stride; unsigned int bytes_per_frame; unsigned int percent_overlap; unsigned int bytes_overlap; int bytes_standing; int samples_standing; int bytes_per_sample; unsigned int samples_overlap; unsigned int samples_per_frame; float* table_blend; double frames_search; double ms_search; float* table_window; unsigned int bytes_queued; unsigned int bytes_to_slide; unsigned int bytes_queue_max; int bytes_stride_scaled; int scale; int frames_stride_scaled; void* buf_queue; int /*<<< orphan*/ * best_overlap_offset; void* buf_pre_corr; int /*<<< orphan*/ * output_overlap; void* buf_overlap; } ;
-typedef  TYPE_2__ filter_sys_t ;
+typedef TYPE_1__ filter_t ;
+struct TYPE_6__ {double ms_stride; double sample_rate; unsigned int bytes_stride; unsigned int bytes_per_frame; unsigned int percent_overlap; unsigned int bytes_overlap; int bytes_standing; int samples_standing; int bytes_per_sample; unsigned int samples_overlap; unsigned int samples_per_frame; float* table_blend; double frames_search; double ms_search; float* table_window; unsigned int bytes_queued; unsigned int bytes_to_slide; unsigned int bytes_queue_max; int bytes_stride_scaled; int scale; int frames_stride_scaled; void* buf_queue; int * best_overlap_offset; void* buf_pre_corr; int * output_overlap; void* buf_overlap; } ;
+typedef TYPE_2__ filter_sys_t ;
 
-/* Variables and functions */
- int VLC_ENOMEM ; 
- int /*<<< orphan*/  VLC_OBJECT (TYPE_1__*) ; 
- int VLC_SUCCESS ; 
- unsigned int __MIN (unsigned int,unsigned int) ; 
- int /*<<< orphan*/ * best_overlap_offset_float ; 
- void* malloc (unsigned int) ; 
- int /*<<< orphan*/  memmove (void*,void*,unsigned int) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,unsigned int) ; 
- int /*<<< orphan*/  msg_Dbg (int /*<<< orphan*/ ,char*,int,int,int,int,int,unsigned int,int,char*) ; 
- int /*<<< orphan*/ * output_overlap_float ; 
- void* vlc_alloc (int,unsigned int) ; 
+
+ int VLC_ENOMEM ;
+ int VLC_OBJECT (TYPE_1__*) ;
+ int VLC_SUCCESS ;
+ unsigned int __MIN (unsigned int,unsigned int) ;
+ int * best_overlap_offset_float ;
+ void* malloc (unsigned int) ;
+ int memmove (void*,void*,unsigned int) ;
+ int memset (int *,int ,unsigned int) ;
+ int msg_Dbg (int ,char*,int,int,int,int,int,unsigned int,int,char*) ;
+ int * output_overlap_float ;
+ void* vlc_alloc (int,unsigned int) ;
 
 __attribute__((used)) static int reinit_buffers( filter_t *p_filter )
 {
@@ -39,24 +39,24 @@ __attribute__((used)) static int reinit_buffers( filter_t *p_filter )
     unsigned frames_stride = p->ms_stride * p->sample_rate / 1000.0;
     p->bytes_stride = frames_stride * p->bytes_per_frame;
 
-    /* overlap */
+
     unsigned frames_overlap = frames_stride * p->percent_overlap;
     if( frames_overlap < 1 )
-    { /* if no overlap */
-        p->bytes_overlap    = 0;
-        p->bytes_standing   = p->bytes_stride;
+    {
+        p->bytes_overlap = 0;
+        p->bytes_standing = p->bytes_stride;
         p->samples_standing = p->bytes_standing / p->bytes_per_sample;
-        p->output_overlap   = NULL;
+        p->output_overlap = ((void*)0);
     }
     else
     {
-        unsigned prev_overlap   = p->bytes_overlap;
-        p->bytes_overlap    = frames_overlap * p->bytes_per_frame;
-        p->samples_overlap  = frames_overlap * p->samples_per_frame;
-        p->bytes_standing   = p->bytes_stride - p->bytes_overlap;
+        unsigned prev_overlap = p->bytes_overlap;
+        p->bytes_overlap = frames_overlap * p->bytes_per_frame;
+        p->samples_overlap = frames_overlap * p->samples_per_frame;
+        p->bytes_standing = p->bytes_stride - p->bytes_overlap;
         p->samples_standing = p->bytes_standing / p->bytes_per_sample;
-        p->buf_overlap      = vlc_alloc( 1, p->bytes_overlap );
-        p->table_blend      = vlc_alloc( 4, p->samples_overlap ); /* sizeof (int32|float) */
+        p->buf_overlap = vlc_alloc( 1, p->bytes_overlap );
+        p->table_blend = vlc_alloc( 4, p->samples_overlap );
         if( !p->buf_overlap || !p->table_blend )
             return VLC_ENOMEM;
         if( p->bytes_overlap > prev_overlap )
@@ -73,15 +73,15 @@ __attribute__((used)) static int reinit_buffers( filter_t *p_filter )
         p->output_overlap = output_overlap_float;
     }
 
-    /* best overlap */
+
     p->frames_search = ( frames_overlap <= 1 ) ? 0 : p->ms_search * p->sample_rate / 1000.0;
     if( p->frames_search < 1 )
-    { /* if no search */
-        p->best_overlap_offset = NULL;
+    {
+        p->best_overlap_offset = ((void*)0);
     }
     else
     {
-        unsigned bytes_pre_corr = ( p->samples_overlap - p->samples_per_frame ) * 4; /* sizeof (int32|float) */
+        unsigned bytes_pre_corr = ( p->samples_overlap - p->samples_per_frame ) * 4;
         p->buf_pre_corr = malloc( bytes_pre_corr );
         p->table_window = malloc( bytes_pre_corr );
         if( ! p->buf_pre_corr || ! p->table_window )
@@ -102,7 +102,7 @@ __attribute__((used)) static int reinit_buffers( filter_t *p_filter )
         if( p->bytes_to_slide > p->bytes_queued )
         {
           p->bytes_to_slide -= p->bytes_queued;
-          p->bytes_queued    = 0;
+          p->bytes_queued = 0;
         }
         else
         {
@@ -111,7 +111,7 @@ __attribute__((used)) static int reinit_buffers( filter_t *p_filter )
                      p->buf_queue + p->bytes_queued - new_queued,
                      new_queued );
             p->bytes_to_slide = 0;
-            p->bytes_queued   = new_queued;
+            p->bytes_queued = new_queued;
         }
     }
     p->bytes_queue_max = new_size;
@@ -119,7 +119,7 @@ __attribute__((used)) static int reinit_buffers( filter_t *p_filter )
     if( ! p->buf_queue )
         return VLC_ENOMEM;
 
-    p->bytes_stride_scaled  = p->bytes_stride * p->scale;
+    p->bytes_stride_scaled = p->bytes_stride * p->scale;
     p->frames_stride_scaled = p->bytes_stride_scaled / p->bytes_per_frame;
 
     msg_Dbg( VLC_OBJECT(p_filter),

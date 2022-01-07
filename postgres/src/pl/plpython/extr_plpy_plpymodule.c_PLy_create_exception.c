@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  PyObject ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERROR ; 
- int /*<<< orphan*/  PLy_elog (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * PyErr_NewException (char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyModule_AddObject (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Py_INCREF (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int PyObject ;
+
+
+ int ERROR ;
+ int PLy_elog (int ,int *) ;
+ int * PyErr_NewException (char*,int *,int *) ;
+ int PyModule_AddObject (int *,char const*,int *) ;
+ int Py_INCREF (int *) ;
 
 __attribute__((used)) static PyObject *
 PLy_create_exception(char *name, PyObject *base, PyObject *dict,
-					 const char *modname, PyObject *mod)
+      const char *modname, PyObject *mod)
 {
-	PyObject   *exc;
+ PyObject *exc;
 
-	exc = PyErr_NewException(name, base, dict);
-	if (exc == NULL)
-		PLy_elog(ERROR, NULL);
+ exc = PyErr_NewException(name, base, dict);
+ if (exc == ((void*)0))
+  PLy_elog(ERROR, ((void*)0));
 
-	/*
-	 * PyModule_AddObject does not add a refcount to the object, for some odd
-	 * reason; we must do that.
-	 */
-	Py_INCREF(exc);
-	PyModule_AddObject(mod, modname, exc);
 
-	/*
-	 * The caller will also store a pointer to the exception object in some
-	 * permanent variable, so add another ref to account for that.  This is
-	 * probably excessively paranoid, but let's be sure.
-	 */
-	Py_INCREF(exc);
-	return exc;
+
+
+
+ Py_INCREF(exc);
+ PyModule_AddObject(mod, modname, exc);
+
+
+
+
+
+
+ Py_INCREF(exc);
+ return exc;
 }

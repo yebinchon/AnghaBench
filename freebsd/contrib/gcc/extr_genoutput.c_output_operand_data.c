@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct operand_data {char* predicate; char* constraint; int strict_low; int eliminable; int /*<<< orphan*/  mode; struct operand_data* next; } ;
 
-/* Variables and functions */
- char* GET_MODE_NAME (int /*<<< orphan*/ ) ; 
- struct operand_data* odata ; 
- int /*<<< orphan*/  printf (char*,...) ; 
+
+
+
+struct operand_data {char* predicate; char* constraint; int strict_low; int eliminable; int mode; struct operand_data* next; } ;
+
+
+ char* GET_MODE_NAME (int ) ;
+ struct operand_data* odata ;
+ int printf (char*,...) ;
 
 __attribute__((used)) static void
 output_operand_data (void)
@@ -29,7 +29,7 @@ output_operand_data (void)
       printf ("  {\n");
 
       printf ("    %s,\n",
-	      d->predicate && d->predicate[0] ? d->predicate : "0");
+       d->predicate && d->predicate[0] ? d->predicate : "0");
 
       printf ("    \"%s\",\n", d->constraint ? d->constraint : "");
 

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Unit ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int Unit ;
 struct TYPE_5__ {scalar_t__ state; scalar_t__ on_timezone_change; } ;
-typedef  TYPE_1__ Timer ;
+typedef TYPE_1__ Timer ;
 
-/* Variables and functions */
- TYPE_1__* TIMER (int /*<<< orphan*/ *) ; 
- scalar_t__ TIMER_WAITING ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  log_unit_debug (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  timer_enter_running (TYPE_1__*) ; 
- int /*<<< orphan*/  timer_enter_waiting (TYPE_1__*,int) ; 
+
+ TYPE_1__* TIMER (int *) ;
+ scalar_t__ TIMER_WAITING ;
+ int assert (int *) ;
+ int log_unit_debug (int *,char*) ;
+ int timer_enter_running (TYPE_1__*) ;
+ int timer_enter_waiting (TYPE_1__*,int) ;
 
 __attribute__((used)) static void timer_timezone_change(Unit *u) {
         Timer *t = TIMER(u);
@@ -36,6 +36,6 @@ __attribute__((used)) static void timer_timezone_change(Unit *u) {
                 timer_enter_running(t);
         } else {
                 log_unit_debug(u, "Timezone change, recalculating next elapse.");
-                timer_enter_waiting(t, false);
+                timer_enter_waiting(t, 0);
         }
 }

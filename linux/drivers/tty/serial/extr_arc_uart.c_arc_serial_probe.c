@@ -1,97 +1,97 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  void* u32 ;
-struct uart_port {int line; scalar_t__ ignore_status_mask; int /*<<< orphan*/  fifosize; int /*<<< orphan*/ * ops; int /*<<< orphan*/  flags; int /*<<< orphan*/  iotype; TYPE_1__* dev; int /*<<< orphan*/  irq; int /*<<< orphan*/  membase; void* uartclk; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef void* u32 ;
+struct uart_port {int line; scalar_t__ ignore_status_mask; int fifosize; int * ops; int flags; int iotype; TYPE_1__* dev; int irq; int membase; void* uartclk; } ;
 struct TYPE_2__ {struct device_node* of_node; } ;
 struct platform_device {TYPE_1__ dev; } ;
 struct device_node {int dummy; } ;
 struct arc_uart_port {struct uart_port port; void* baud; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARC_UART_TX_FIFO_SIZE ; 
- int ARRAY_SIZE (struct arc_uart_port*) ; 
- int EINVAL ; 
- int ENODEV ; 
- int ENXIO ; 
- int /*<<< orphan*/  UPF_BOOT_AUTOCONF ; 
- int /*<<< orphan*/  UPIO_MEM ; 
- int /*<<< orphan*/  arc_serial_pops ; 
- int /*<<< orphan*/  arc_uart_driver ; 
- struct arc_uart_port* arc_uart_ports ; 
- int /*<<< orphan*/  dev_err (TYPE_1__*,char*,...) ; 
- int /*<<< orphan*/  irq_of_parse_and_map (struct device_node*,int /*<<< orphan*/ ) ; 
- int of_alias_get_id (struct device_node*,char*) ; 
- int /*<<< orphan*/  of_iomap (struct device_node*,int /*<<< orphan*/ ) ; 
- scalar_t__ of_property_read_u32 (struct device_node*,char*,void**) ; 
- int uart_add_one_port (int /*<<< orphan*/ *,struct uart_port*) ; 
+
+ int ARC_UART_TX_FIFO_SIZE ;
+ int ARRAY_SIZE (struct arc_uart_port*) ;
+ int EINVAL ;
+ int ENODEV ;
+ int ENXIO ;
+ int UPF_BOOT_AUTOCONF ;
+ int UPIO_MEM ;
+ int arc_serial_pops ;
+ int arc_uart_driver ;
+ struct arc_uart_port* arc_uart_ports ;
+ int dev_err (TYPE_1__*,char*,...) ;
+ int irq_of_parse_and_map (struct device_node*,int ) ;
+ int of_alias_get_id (struct device_node*,char*) ;
+ int of_iomap (struct device_node*,int ) ;
+ scalar_t__ of_property_read_u32 (struct device_node*,char*,void**) ;
+ int uart_add_one_port (int *,struct uart_port*) ;
 
 __attribute__((used)) static int arc_serial_probe(struct platform_device *pdev)
 {
-	struct device_node *np = pdev->dev.of_node;
-	struct arc_uart_port *uart;
-	struct uart_port *port;
-	int dev_id;
-	u32 val;
+ struct device_node *np = pdev->dev.of_node;
+ struct arc_uart_port *uart;
+ struct uart_port *port;
+ int dev_id;
+ u32 val;
 
-	/* no device tree device */
-	if (!np)
-		return -ENODEV;
 
-	dev_id = of_alias_get_id(np, "serial");
-	if (dev_id < 0)
-		dev_id = 0;
+ if (!np)
+  return -ENODEV;
 
-	if (dev_id >= ARRAY_SIZE(arc_uart_ports)) {
-		dev_err(&pdev->dev, "serial%d out of range\n", dev_id);
-		return -EINVAL;
-	}
+ dev_id = of_alias_get_id(np, "serial");
+ if (dev_id < 0)
+  dev_id = 0;
 
-	uart = &arc_uart_ports[dev_id];
-	port = &uart->port;
+ if (dev_id >= ARRAY_SIZE(arc_uart_ports)) {
+  dev_err(&pdev->dev, "serial%d out of range\n", dev_id);
+  return -EINVAL;
+ }
 
-	if (of_property_read_u32(np, "clock-frequency", &val)) {
-		dev_err(&pdev->dev, "clock-frequency property NOTset\n");
-		return -EINVAL;
-	}
-	port->uartclk = val;
+ uart = &arc_uart_ports[dev_id];
+ port = &uart->port;
 
-	if (of_property_read_u32(np, "current-speed", &val)) {
-		dev_err(&pdev->dev, "current-speed property NOT set\n");
-		return -EINVAL;
-	}
-	uart->baud = val;
+ if (of_property_read_u32(np, "clock-frequency", &val)) {
+  dev_err(&pdev->dev, "clock-frequency property NOTset\n");
+  return -EINVAL;
+ }
+ port->uartclk = val;
 
-	port->membase = of_iomap(np, 0);
-	if (!port->membase)
-		/* No point of dev_err since UART itself is hosed here */
-		return -ENXIO;
+ if (of_property_read_u32(np, "current-speed", &val)) {
+  dev_err(&pdev->dev, "current-speed property NOT set\n");
+  return -EINVAL;
+ }
+ uart->baud = val;
 
-	port->irq = irq_of_parse_and_map(np, 0);
+ port->membase = of_iomap(np, 0);
+ if (!port->membase)
 
-	port->dev = &pdev->dev;
-	port->iotype = UPIO_MEM;
-	port->flags = UPF_BOOT_AUTOCONF;
-	port->line = dev_id;
-	port->ops = &arc_serial_pops;
+  return -ENXIO;
 
-	port->fifosize = ARC_UART_TX_FIFO_SIZE;
+ port->irq = irq_of_parse_and_map(np, 0);
 
-	/*
-	 * uart_insert_char( ) uses it in decideding whether to ignore a
-	 * char or not. Explicitly setting it here, removes the subtelty
-	 */
-	port->ignore_status_mask = 0;
+ port->dev = &pdev->dev;
+ port->iotype = UPIO_MEM;
+ port->flags = UPF_BOOT_AUTOCONF;
+ port->line = dev_id;
+ port->ops = &arc_serial_pops;
 
-	return uart_add_one_port(&arc_uart_driver, &arc_uart_ports[dev_id].port);
+ port->fifosize = ARC_UART_TX_FIFO_SIZE;
+
+
+
+
+
+ port->ignore_status_mask = 0;
+
+ return uart_add_one_port(&arc_uart_driver, &arc_uart_ports[dev_id].port);
 }

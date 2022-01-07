@@ -1,88 +1,88 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct mlx4_ib_drain_cqe {int /*<<< orphan*/  done; } ;
-struct mlx4_ib_dev {int /*<<< orphan*/  reset_flow_resource_lock; struct mlx4_dev* dev; } ;
-struct TYPE_4__ {int reset_notify_added; int /*<<< orphan*/  (* comp ) (TYPE_2__*) ;} ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct mlx4_ib_drain_cqe {int done; } ;
+struct mlx4_ib_dev {int reset_flow_resource_lock; struct mlx4_dev* dev; } ;
+struct TYPE_4__ {int reset_notify_added; int (* comp ) (TYPE_2__*) ;} ;
 struct mlx4_ib_cq {TYPE_2__ mcq; } ;
 struct mlx4_dev {TYPE_1__* persist; } ;
-struct ib_cq {int poll_ctx; int /*<<< orphan*/  work; int /*<<< orphan*/  iop; } ;
+struct ib_cq {int poll_ctx; int work; int iop; } ;
 struct TYPE_3__ {scalar_t__ state; } ;
 
-/* Variables and functions */
- int HZ ; 
- int IB_POLL_DIRECT ; 
-#define  IB_POLL_SOFTIRQ 129 
-#define  IB_POLL_WORKQUEUE 128 
- scalar_t__ MLX4_DEVICE_STATE_INTERNAL_ERROR ; 
- int /*<<< orphan*/  WARN_ON_ONCE (int) ; 
- int /*<<< orphan*/  cancel_work_sync (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ib_process_cq_direct (struct ib_cq*,int) ; 
- int /*<<< orphan*/  irq_poll_disable (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  irq_poll_enable (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  stub1 (TYPE_2__*) ; 
- struct mlx4_ib_cq* to_mcq (struct ib_cq*) ; 
- int /*<<< orphan*/  wait_for_completion (int /*<<< orphan*/ *) ; 
- scalar_t__ wait_for_completion_timeout (int /*<<< orphan*/ *,int) ; 
+
+ int HZ ;
+ int IB_POLL_DIRECT ;
+
+
+ scalar_t__ MLX4_DEVICE_STATE_INTERNAL_ERROR ;
+ int WARN_ON_ONCE (int) ;
+ int cancel_work_sync (int *) ;
+ int ib_process_cq_direct (struct ib_cq*,int) ;
+ int irq_poll_disable (int *) ;
+ int irq_poll_enable (int *) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
+ int stub1 (TYPE_2__*) ;
+ struct mlx4_ib_cq* to_mcq (struct ib_cq*) ;
+ int wait_for_completion (int *) ;
+ scalar_t__ wait_for_completion_timeout (int *,int) ;
 
 __attribute__((used)) static void handle_drain_completion(struct ib_cq *cq,
-				    struct mlx4_ib_drain_cqe *sdrain,
-				    struct mlx4_ib_dev *dev)
+        struct mlx4_ib_drain_cqe *sdrain,
+        struct mlx4_ib_dev *dev)
 {
-	struct mlx4_dev *mdev = dev->dev;
+ struct mlx4_dev *mdev = dev->dev;
 
-	if (cq->poll_ctx == IB_POLL_DIRECT) {
-		while (wait_for_completion_timeout(&sdrain->done, HZ / 10) <= 0)
-			ib_process_cq_direct(cq, -1);
-		return;
-	}
+ if (cq->poll_ctx == IB_POLL_DIRECT) {
+  while (wait_for_completion_timeout(&sdrain->done, HZ / 10) <= 0)
+   ib_process_cq_direct(cq, -1);
+  return;
+ }
 
-	if (mdev->persist->state == MLX4_DEVICE_STATE_INTERNAL_ERROR) {
-		struct mlx4_ib_cq *mcq = to_mcq(cq);
-		bool triggered = false;
-		unsigned long flags;
+ if (mdev->persist->state == MLX4_DEVICE_STATE_INTERNAL_ERROR) {
+  struct mlx4_ib_cq *mcq = to_mcq(cq);
+  bool triggered = 0;
+  unsigned long flags;
 
-		spin_lock_irqsave(&dev->reset_flow_resource_lock, flags);
-		/* Make sure that the CQ handler won't run if wasn't run yet */
-		if (!mcq->mcq.reset_notify_added)
-			mcq->mcq.reset_notify_added = 1;
-		else
-			triggered = true;
-		spin_unlock_irqrestore(&dev->reset_flow_resource_lock, flags);
+  spin_lock_irqsave(&dev->reset_flow_resource_lock, flags);
 
-		if (triggered) {
-			/* Wait for any scheduled/running task to be ended */
-			switch (cq->poll_ctx) {
-			case IB_POLL_SOFTIRQ:
-				irq_poll_disable(&cq->iop);
-				irq_poll_enable(&cq->iop);
-				break;
-			case IB_POLL_WORKQUEUE:
-				cancel_work_sync(&cq->work);
-				break;
-			default:
-				WARN_ON_ONCE(1);
-			}
-		}
+  if (!mcq->mcq.reset_notify_added)
+   mcq->mcq.reset_notify_added = 1;
+  else
+   triggered = 1;
+  spin_unlock_irqrestore(&dev->reset_flow_resource_lock, flags);
 
-		/* Run the CQ handler - this makes sure that the drain WR will
-		 * be processed if wasn't processed yet.
-		 */
-		mcq->mcq.comp(&mcq->mcq);
-	}
+  if (triggered) {
 
-	wait_for_completion(&sdrain->done);
+   switch (cq->poll_ctx) {
+   case 129:
+    irq_poll_disable(&cq->iop);
+    irq_poll_enable(&cq->iop);
+    break;
+   case 128:
+    cancel_work_sync(&cq->work);
+    break;
+   default:
+    WARN_ON_ONCE(1);
+   }
+  }
+
+
+
+
+  mcq->mcq.comp(&mcq->mcq);
+ }
+
+ wait_for_completion(&sdrain->done);
 }

@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_7__ {scalar_t__ scheme_type; scalar_t__ host_len; char* host; } ;
-typedef  TYPE_1__ parse_data ;
-typedef  char WCHAR ;
-struct TYPE_8__ {int host_start; size_t host_len; char* canon_uri; size_t canon_len; int authority_start; int /*<<< orphan*/  domain_offset; int /*<<< orphan*/  host_type; } ;
-typedef  TYPE_2__ Uri ;
-typedef  int DWORD ;
-typedef  int BOOL ;
+typedef TYPE_1__ parse_data ;
+typedef char WCHAR ;
+struct TYPE_8__ {int host_start; size_t host_len; char* canon_uri; size_t canon_len; int authority_start; int domain_offset; int host_type; } ;
+typedef TYPE_2__ Uri ;
+typedef int DWORD ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  StrCmpNIW (char*,char const*,scalar_t__) ; 
- int /*<<< orphan*/  TRACE (char*,TYPE_1__ const*,TYPE_2__*,int,int,int /*<<< orphan*/ ,size_t) ; 
- int TRUE ; 
- scalar_t__ URL_SCHEME_FILE ; 
- scalar_t__ URL_SCHEME_UNKNOWN ; 
- int Uri_CREATE_FILE_USE_DOS_PATH ; 
- int Uri_CREATE_NO_CANONICALIZE ; 
- int Uri_CREATE_NO_ENCODE_FORBIDDEN_CHARACTERS ; 
- int /*<<< orphan*/  Uri_HOST_UNKNOWN ; 
- int /*<<< orphan*/  debugstr_wn (char*,size_t) ; 
- char decode_pct_val (char const*) ; 
- int /*<<< orphan*/  find_domain_name (char*,size_t,int /*<<< orphan*/ *) ; 
- scalar_t__ is_ascii (char const) ; 
- int /*<<< orphan*/  is_reserved (char const) ; 
- scalar_t__ is_unreserved (char const) ; 
- scalar_t__ isupperW (char) ; 
- scalar_t__ lstrlenW (char const*) ; 
- int /*<<< orphan*/  pct_encode_val (char const,char*) ; 
- void* tolowerW (char const) ; 
+
+ int StrCmpNIW (char*,char const*,scalar_t__) ;
+ int TRACE (char*,TYPE_1__ const*,TYPE_2__*,int,int,int ,size_t) ;
+ int TRUE ;
+ scalar_t__ URL_SCHEME_FILE ;
+ scalar_t__ URL_SCHEME_UNKNOWN ;
+ int Uri_CREATE_FILE_USE_DOS_PATH ;
+ int Uri_CREATE_NO_CANONICALIZE ;
+ int Uri_CREATE_NO_ENCODE_FORBIDDEN_CHARACTERS ;
+ int Uri_HOST_UNKNOWN ;
+ int debugstr_wn (char*,size_t) ;
+ char decode_pct_val (char const*) ;
+ int find_domain_name (char*,size_t,int *) ;
+ scalar_t__ is_ascii (char const) ;
+ int is_reserved (char const) ;
+ scalar_t__ is_unreserved (char const) ;
+ scalar_t__ isupperW (char) ;
+ scalar_t__ lstrlenW (char const*) ;
+ int pct_encode_val (char const,char*) ;
+ void* tolowerW (char const) ;
 
 __attribute__((used)) static BOOL canonicalize_reg_name(const parse_data *data, Uri *uri,
                                   DWORD flags, BOOL computeOnly) {
@@ -73,9 +73,9 @@ __attribute__((used)) static BOOL canonicalize_reg_name(const parse_data *data, 
         if(*ptr == '%' && known_scheme) {
             WCHAR val = decode_pct_val(ptr);
             if(is_unreserved(val)) {
-                /* If NO_CANONICALIZE is not set, then windows lower cases the
-                 * decoded value.
-                 */
+
+
+
                 if(!(flags & Uri_CREATE_NO_CANONICALIZE) && isupperW(val)) {
                     if(!computeOnly)
                         uri->canon_uri[uri->canon_len] = tolowerW(val);
@@ -85,17 +85,17 @@ __attribute__((used)) static BOOL canonicalize_reg_name(const parse_data *data, 
                 }
                 ++uri->canon_len;
 
-                /* Skip past the % encoded character. */
+
                 ptr += 2;
                 continue;
             } else {
-                /* Just copy the % over. */
+
                 if(!computeOnly)
                     uri->canon_uri[uri->canon_len] = *ptr;
                 ++uri->canon_len;
             }
         } else if(*ptr == '\\') {
-            /* Only unknown scheme types could have made it here with a '\\' in the host name. */
+
             if(!computeOnly)
                 uri->canon_uri[uri->canon_len] = *ptr;
             ++uri->canon_len;
@@ -104,7 +104,7 @@ __attribute__((used)) static BOOL canonicalize_reg_name(const parse_data *data, 
             if(!computeOnly) {
                 pct_encode_val(*ptr, uri->canon_uri+uri->canon_len);
 
-                /* The percent encoded value gets lower cased also. */
+
                 if(!(flags & Uri_CREATE_NO_CANONICALIZE)) {
                     uri->canon_uri[uri->canon_len+1] = tolowerW(uri->canon_uri[uri->canon_len+1]);
                     uri->canon_uri[uri->canon_len+2] = tolowerW(uri->canon_uri[uri->canon_len+2]);

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct marvel_agp_aperture {scalar_t__ pg_start; int /*<<< orphan*/  arena; } ;
-struct agp_memory {int /*<<< orphan*/  page_count; } ;
-typedef  scalar_t__ off_t ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct marvel_agp_aperture {scalar_t__ pg_start; int arena; } ;
+struct agp_memory {int page_count; } ;
+typedef scalar_t__ off_t ;
 struct TYPE_4__ {struct marvel_agp_aperture* sysdata; } ;
 struct TYPE_5__ {TYPE_1__ aperture; } ;
-typedef  TYPE_2__ alpha_agp_info ;
+typedef TYPE_2__ alpha_agp_info ;
 
-/* Variables and functions */
- int iommu_unbind (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ) ; 
 
-__attribute__((used)) static int 
+ int iommu_unbind (int ,scalar_t__,int ) ;
+
+__attribute__((used)) static int
 marvel_agp_unbind_memory(alpha_agp_info *agp, off_t pg_start, struct agp_memory *mem)
 {
-	struct marvel_agp_aperture *aper = agp->aperture.sysdata;
-	return iommu_unbind(aper->arena, aper->pg_start + pg_start,
-			    mem->page_count);
+ struct marvel_agp_aperture *aper = agp->aperture.sysdata;
+ return iommu_unbind(aper->arena, aper->pg_start + pg_start,
+       mem->page_count);
 }

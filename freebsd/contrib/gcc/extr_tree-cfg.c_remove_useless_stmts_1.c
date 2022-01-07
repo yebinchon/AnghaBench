@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree_stmt_iterator ;
-typedef  int /*<<< orphan*/  tree ;
-struct rus_data {int may_branch; int may_throw; int /*<<< orphan*/ * last_goto; } ;
 
-/* Variables and functions */
-#define  ASM_EXPR 138 
-#define  BIND_EXPR 137 
-#define  CALL_EXPR 136 
-#define  COND_EXPR 135 
-#define  GOTO_EXPR 134 
- int /*<<< orphan*/  IS_EMPTY_STMT (int /*<<< orphan*/ ) ; 
-#define  LABEL_EXPR 133 
-#define  MODIFY_EXPR 132 
-#define  RETURN_EXPR 131 
-#define  STATEMENT_LIST 130 
- int const TREE_CODE (int /*<<< orphan*/ ) ; 
-#define  TRY_CATCH_EXPR 129 
-#define  TRY_FINALLY_EXPR 128 
- int /*<<< orphan*/  TSI_SAME_STMT ; 
- int /*<<< orphan*/  fold_stmt (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  get_call_expr_in (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  notice_special_calls (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  remove_useless_stmts_bind (int /*<<< orphan*/ *,struct rus_data*) ; 
- int /*<<< orphan*/  remove_useless_stmts_cond (int /*<<< orphan*/ *,struct rus_data*) ; 
- int /*<<< orphan*/  remove_useless_stmts_goto (int /*<<< orphan*/ *,struct rus_data*) ; 
- int /*<<< orphan*/  remove_useless_stmts_label (int /*<<< orphan*/ *,struct rus_data*) ; 
- int /*<<< orphan*/  remove_useless_stmts_tc (int /*<<< orphan*/ *,struct rus_data*) ; 
- int /*<<< orphan*/  remove_useless_stmts_tf (int /*<<< orphan*/ *,struct rus_data*) ; 
- int /*<<< orphan*/  tree_could_throw_p (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tsi_delink (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tsi_end_p (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tsi_link_before (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tsi_next (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tsi_start (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tsi_stmt (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * tsi_stmt_ptr (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  update_call_expr_flags (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int tree_stmt_iterator ;
+typedef int tree ;
+struct rus_data {int may_branch; int may_throw; int * last_goto; } ;
+
+
+
+
+
+
+
+ int IS_EMPTY_STMT (int ) ;
+
+
+
+
+ int const TREE_CODE (int ) ;
+
+
+ int TSI_SAME_STMT ;
+ int fold_stmt (int *) ;
+ int get_call_expr_in (int ) ;
+ int notice_special_calls (int ) ;
+ int remove_useless_stmts_bind (int *,struct rus_data*) ;
+ int remove_useless_stmts_cond (int *,struct rus_data*) ;
+ int remove_useless_stmts_goto (int *,struct rus_data*) ;
+ int remove_useless_stmts_label (int *,struct rus_data*) ;
+ int remove_useless_stmts_tc (int *,struct rus_data*) ;
+ int remove_useless_stmts_tf (int *,struct rus_data*) ;
+ int tree_could_throw_p (int ) ;
+ int tsi_delink (int *) ;
+ int tsi_end_p (int ) ;
+ int tsi_link_before (int *,int ,int ) ;
+ int tsi_next (int *) ;
+ int tsi_start (int ) ;
+ int tsi_stmt (int ) ;
+ int * tsi_stmt_ptr (int ) ;
+ int update_call_expr_flags (int ) ;
 
 __attribute__((used)) static void
 remove_useless_stmts_1 (tree *tp, struct rus_data *data)
@@ -55,90 +55,90 @@ remove_useless_stmts_1 (tree *tp, struct rus_data *data)
 
   switch (TREE_CODE (t))
     {
-    case COND_EXPR:
+    case 135:
       remove_useless_stmts_cond (tp, data);
       break;
 
-    case TRY_FINALLY_EXPR:
+    case 128:
       remove_useless_stmts_tf (tp, data);
       break;
 
-    case TRY_CATCH_EXPR:
+    case 129:
       remove_useless_stmts_tc (tp, data);
       break;
 
-    case BIND_EXPR:
+    case 137:
       remove_useless_stmts_bind (tp, data);
       break;
 
-    case GOTO_EXPR:
+    case 134:
       remove_useless_stmts_goto (tp, data);
       break;
 
-    case LABEL_EXPR:
+    case 133:
       remove_useless_stmts_label (tp, data);
       break;
 
-    case RETURN_EXPR:
+    case 131:
       fold_stmt (tp);
-      data->last_goto = NULL;
-      data->may_branch = true;
+      data->last_goto = ((void*)0);
+      data->may_branch = 1;
       break;
 
-    case CALL_EXPR:
+    case 136:
       fold_stmt (tp);
-      data->last_goto = NULL;
+      data->last_goto = ((void*)0);
       notice_special_calls (t);
       update_call_expr_flags (t);
       if (tree_could_throw_p (t))
-	data->may_throw = true;
+ data->may_throw = 1;
       break;
 
-    case MODIFY_EXPR:
-      data->last_goto = NULL;
+    case 132:
+      data->last_goto = ((void*)0);
       fold_stmt (tp);
       op = get_call_expr_in (t);
       if (op)
-	{
-	  update_call_expr_flags (op);
-	  notice_special_calls (op);
-	}
+ {
+   update_call_expr_flags (op);
+   notice_special_calls (op);
+ }
       if (tree_could_throw_p (t))
-	data->may_throw = true;
+ data->may_throw = 1;
       break;
 
-    case STATEMENT_LIST:
+    case 130:
       {
-	tree_stmt_iterator i = tsi_start (t);
-	while (!tsi_end_p (i))
-	  {
-	    t = tsi_stmt (i);
-	    if (IS_EMPTY_STMT (t))
-	      {
-		tsi_delink (&i);
-		continue;
-	      }
+ tree_stmt_iterator i = tsi_start (t);
+ while (!tsi_end_p (i))
+   {
+     t = tsi_stmt (i);
+     if (IS_EMPTY_STMT (t))
+       {
+  tsi_delink (&i);
+  continue;
+       }
 
-	    remove_useless_stmts_1 (tsi_stmt_ptr (i), data);
+     remove_useless_stmts_1 (tsi_stmt_ptr (i), data);
 
-	    t = tsi_stmt (i);
-	    if (TREE_CODE (t) == STATEMENT_LIST)
-	      {
-		tsi_link_before (&i, t, TSI_SAME_STMT);
-		tsi_delink (&i);
-	      }
-	    else
-	      tsi_next (&i);
-	  }
+     t = tsi_stmt (i);
+     if (TREE_CODE (t) == 130)
+       {
+  tsi_link_before (&i, t, TSI_SAME_STMT);
+  tsi_delink (&i);
+       }
+     else
+       tsi_next (&i);
+   }
       }
       break;
-    case ASM_EXPR:
+    case 138:
       fold_stmt (tp);
-      data->last_goto = NULL;
+      data->last_goto = ((void*)0);
       break;
 
     default:
-      data->last_goto = NULL;
+      data->last_goto = ((void*)0);
       break;
     }
 }

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  doc_host; int /*<<< orphan*/  extern_ref; } ;
-typedef  scalar_t__ LONG ;
-typedef  TYPE_1__ InternetExplorer ;
-typedef  scalar_t__ DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- scalar_t__ InterlockedDecrement (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TRACE (char*,scalar_t__) ; 
- int /*<<< orphan*/  WARN (char*) ; 
- int /*<<< orphan*/  deactivate_document (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int doc_host; int extern_ref; } ;
+typedef scalar_t__ LONG ;
+typedef TYPE_1__ InternetExplorer ;
+typedef scalar_t__ DWORD ;
+typedef int BOOL ;
+
+
+ scalar_t__ InterlockedDecrement (int *) ;
+ int TRACE (char*,scalar_t__) ;
+ int WARN (char*) ;
+ int deactivate_document (int *) ;
 
 DWORD release_extern_ref(InternetExplorer *This, BOOL last_closes)
 {

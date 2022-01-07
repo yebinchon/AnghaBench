@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct clock_event_device {int /*<<< orphan*/  event_handler; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  tick_handle_periodic ; 
+
+
+
+struct clock_event_device {int event_handler; } ;
+
+
+ int tick_handle_periodic ;
 
 __attribute__((used)) static inline void tick_set_periodic_handler(struct clock_event_device *dev,
-					     int broadcast)
+          int broadcast)
 {
-	dev->event_handler = tick_handle_periodic;
+ dev->event_handler = tick_handle_periodic;
 }

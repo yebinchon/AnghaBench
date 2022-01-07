@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t u8 ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef size_t u8 ;
 struct fman {TYPE_1__* intr_mng; } ;
-typedef  int /*<<< orphan*/  irqreturn_t ;
-struct TYPE_2__ {int /*<<< orphan*/  src_handle; int /*<<< orphan*/  (* isr_cb ) (int /*<<< orphan*/ ) ;} ;
+typedef int irqreturn_t ;
+struct TYPE_2__ {int src_handle; int (* isr_cb ) (int ) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IRQ_HANDLED ; 
- int /*<<< orphan*/  IRQ_NONE ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ) ; 
+
+ int IRQ_HANDLED ;
+ int IRQ_NONE ;
+ int stub1 (int ) ;
 
 __attribute__((used)) static inline irqreturn_t call_mac_isr(struct fman *fman, u8 id)
 {
-	if (fman->intr_mng[id].isr_cb) {
-		fman->intr_mng[id].isr_cb(fman->intr_mng[id].src_handle);
+ if (fman->intr_mng[id].isr_cb) {
+  fman->intr_mng[id].isr_cb(fman->intr_mng[id].src_handle);
 
-		return IRQ_HANDLED;
-	}
+  return IRQ_HANDLED;
+ }
 
-	return IRQ_NONE;
+ return IRQ_NONE;
 }

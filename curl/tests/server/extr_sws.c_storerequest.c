@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int EINTR ; 
- char* REQUEST_DUMP ; 
- char* REQUEST_PROXY_DUMP ; 
- int errno ; 
- int fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char const*,char*) ; 
- size_t fwrite (char const*,int,size_t,int /*<<< orphan*/ *) ; 
- scalar_t__ got_exit_signal ; 
- scalar_t__ is_proxy ; 
- int /*<<< orphan*/  logmsg (char*,...) ; 
- int /*<<< orphan*/  strerror (int) ; 
+
+
+
+typedef int FILE ;
+
+
+ int EINTR ;
+ char* REQUEST_DUMP ;
+ char* REQUEST_PROXY_DUMP ;
+ int errno ;
+ int fclose (int *) ;
+ int * fopen (char const*,char*) ;
+ size_t fwrite (char const*,int,size_t,int *) ;
+ scalar_t__ got_exit_signal ;
+ scalar_t__ is_proxy ;
+ int logmsg (char*,...) ;
+ int strerror (int) ;
 
 __attribute__((used)) static void storerequest(const char *reqbuf, size_t totalsize)
 {
@@ -34,15 +34,15 @@ __attribute__((used)) static void storerequest(const char *reqbuf, size_t totals
   FILE *dump;
   const char *dumpfile = is_proxy?REQUEST_PROXY_DUMP:REQUEST_DUMP;
 
-  if(reqbuf == NULL)
+  if(reqbuf == ((void*)0))
     return;
   if(totalsize == 0)
     return;
 
   do {
     dump = fopen(dumpfile, "ab");
-  } while((dump == NULL) && ((error = errno) == EINTR));
-  if(dump == NULL) {
+  } while((dump == ((void*)0)) && ((error = errno) == EINTR));
+  if(dump == ((void*)0)) {
     logmsg("[2] Error opening file %s error: %d %s",
            dumpfile, error, strerror(error));
     logmsg("Failed to write request input ");

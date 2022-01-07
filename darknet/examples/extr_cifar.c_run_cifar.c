@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  eval_cifar_csv () ; 
- int /*<<< orphan*/  extract_cifar () ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*,char*) ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ strcmp (char*,char*) ; 
- int /*<<< orphan*/  test_cifar (char*,char*) ; 
- int /*<<< orphan*/  test_cifar_csv (char*,char*) ; 
- int /*<<< orphan*/  test_cifar_csvtrain (char*,char*) ; 
- int /*<<< orphan*/  test_cifar_multi (char*,char*) ; 
- int /*<<< orphan*/  train_cifar (char*,char*) ; 
- int /*<<< orphan*/  train_cifar_distill (char*,char*) ; 
+ int eval_cifar_csv () ;
+ int extract_cifar () ;
+ int fprintf (int ,char*,char*,char*) ;
+ int stderr ;
+ scalar_t__ strcmp (char*,char*) ;
+ int test_cifar (char*,char*) ;
+ int test_cifar_csv (char*,char*) ;
+ int test_cifar_csvtrain (char*,char*) ;
+ int test_cifar_multi (char*,char*) ;
+ int train_cifar (char*,char*) ;
+ int train_cifar_distill (char*,char*) ;
 
 void run_cifar(int argc, char **argv)
 {

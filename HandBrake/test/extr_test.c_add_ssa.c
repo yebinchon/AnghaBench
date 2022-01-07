@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {char* iso639_2; } ;
-typedef  TYPE_1__ iso639_lang_t ;
-typedef  int /*<<< orphan*/  int64_t ;
-typedef  int /*<<< orphan*/  hb_value_array_t ;
-typedef  int /*<<< orphan*/  hb_dict_t ;
+typedef TYPE_1__ iso639_lang_t ;
+typedef int int64_t ;
+typedef int hb_value_array_t ;
+typedef int hb_dict_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IMPORTSRT ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/ * hb_dict_init () ; 
- int /*<<< orphan*/  hb_dict_set (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *) ; 
- int hb_str_vlen (char**) ; 
- scalar_t__ hb_subtitle_can_burn (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hb_value_array_append (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * hb_value_bool (int) ; 
- int /*<<< orphan*/ * hb_value_int (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * hb_value_string (char*) ; 
- TYPE_1__* lang_lookup (char*) ; 
- int ssaburn ; 
- int ssadefault ; 
- char** ssafile ; 
- char** ssalang ; 
- char** ssaoffset ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  strtoll (char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int IMPORTSRT ;
+ int fprintf (int ,char*,char*) ;
+ int * hb_dict_init () ;
+ int hb_dict_set (int *,char*,int *) ;
+ int hb_str_vlen (char**) ;
+ scalar_t__ hb_subtitle_can_burn (int ) ;
+ int hb_value_array_append (int *,int *) ;
+ int * hb_value_bool (int) ;
+ int * hb_value_int (int ) ;
+ int * hb_value_string (char*) ;
+ TYPE_1__* lang_lookup (char*) ;
+ int ssaburn ;
+ int ssadefault ;
+ char** ssafile ;
+ char** ssalang ;
+ char** ssaoffset ;
+ int stderr ;
+ int strtoll (char*,int *,int ) ;
 
 __attribute__((used)) static int add_ssa(hb_value_array_t *list, int track, int *one_burned)
 {
@@ -44,14 +44,14 @@ __attribute__((used)) static int add_ssa(hb_value_array_t *list, int track, int 
     int burn = !*one_burned && ssaburn == track + 1 &&
                hb_subtitle_can_burn(IMPORTSRT);
     *one_burned |= burn;
-    int def  = ssadefault == track + 1;
+    int def = ssadefault == track + 1;
 
     if (ssaoffset && track < hb_str_vlen(ssaoffset) && ssaoffset[track])
-        offset = strtoll(ssaoffset[track], NULL, 0);
+        offset = strtoll(ssaoffset[track], ((void*)0), 0);
     if (ssalang && track < hb_str_vlen(ssalang) && ssalang[track])
     {
         const iso639_lang_t *lang = lang_lookup(ssalang[track]);
-        if (lang != NULL)
+        if (lang != ((void*)0))
         {
             iso639_2 = lang->iso639_2;
         }

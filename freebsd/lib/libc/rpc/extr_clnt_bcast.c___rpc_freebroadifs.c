@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct broadif {int dummy; } ;
-typedef  int /*<<< orphan*/  broadlist_t ;
+typedef int broadlist_t ;
 
-/* Variables and functions */
- struct broadif* TAILQ_FIRST (int /*<<< orphan*/ *) ; 
- struct broadif* TAILQ_NEXT (struct broadif*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (struct broadif*) ; 
- int /*<<< orphan*/  link ; 
+
+ struct broadif* TAILQ_FIRST (int *) ;
+ struct broadif* TAILQ_NEXT (struct broadif*,int ) ;
+ int free (struct broadif*) ;
+ int link ;
 
 void
 __rpc_freebroadifs(broadlist_t *list)
 {
-	struct broadif *bip, *next;
+ struct broadif *bip, *next;
 
-	bip = TAILQ_FIRST(list);
+ bip = TAILQ_FIRST(list);
 
-	while (bip != NULL) {
-		next = TAILQ_NEXT(bip, link);
-		free(bip);
-		bip = next;
-	}
+ while (bip != ((void*)0)) {
+  next = TAILQ_NEXT(bip, link);
+  free(bip);
+  bip = next;
+ }
 }

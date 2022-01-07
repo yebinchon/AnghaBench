@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {struct dc_pad* platform_data; } ;
 struct input_dev {TYPE_1__ dev; } ;
-struct dc_pad {int /*<<< orphan*/  mdev; } ;
+struct dc_pad {int mdev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MAPLE_FUNC_CONTROLLER ; 
- int /*<<< orphan*/  dc_pad_callback ; 
- int /*<<< orphan*/  maple_getcond_callback (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int MAPLE_FUNC_CONTROLLER ;
+ int dc_pad_callback ;
+ int maple_getcond_callback (int ,int ,int ,int ) ;
 
 __attribute__((used)) static void dc_pad_close(struct input_dev *dev)
 {
-	struct dc_pad *pad = dev->dev.platform_data;
+ struct dc_pad *pad = dev->dev.platform_data;
 
-	maple_getcond_callback(pad->mdev, dc_pad_callback, 0,
-		MAPLE_FUNC_CONTROLLER);
+ maple_getcond_callback(pad->mdev, dc_pad_callback, 0,
+  MAPLE_FUNC_CONTROLLER);
 }

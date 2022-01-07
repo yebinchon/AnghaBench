@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  close (int) ; 
- int random_fd ; 
- int urandom_fd ; 
+ int close (int) ;
+ int random_fd ;
+ int urandom_fd ;
 
 void
 random_fini(void)
 {
-	close(random_fd);
-	close(urandom_fd);
+ close(random_fd);
+ close(urandom_fd);
 
-	random_fd = -1;
-	urandom_fd = -1;
+ random_fd = -1;
+ urandom_fd = -1;
 }

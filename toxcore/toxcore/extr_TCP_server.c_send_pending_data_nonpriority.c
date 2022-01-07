@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint16_t ;
-struct TYPE_3__ {scalar_t__ last_packet_length; int last_packet_sent; int last_packet; int /*<<< orphan*/  sock; } ;
-typedef  TYPE_1__ TCP_Secure_Connection ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MSG_NOSIGNAL ; 
- int send (int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint16_t ;
+struct TYPE_3__ {scalar_t__ last_packet_length; int last_packet_sent; int last_packet; int sock; } ;
+typedef TYPE_1__ TCP_Secure_Connection ;
+
+
+ int MSG_NOSIGNAL ;
+ int send (int ,int,int,int ) ;
 
 __attribute__((used)) static int send_pending_data_nonpriority(TCP_Secure_Connection *con)
 {

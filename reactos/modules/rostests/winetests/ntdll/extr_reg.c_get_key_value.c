@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tmp ;
-typedef  int /*<<< orphan*/  attr ;
-typedef  int /*<<< orphan*/  UNICODE_STRING ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int tmp ;
+typedef int attr ;
+typedef int UNICODE_STRING ;
 struct TYPE_6__ {scalar_t__ Data; } ;
-struct TYPE_5__ {int Length; int /*<<< orphan*/ * SecurityQualityOfService; int /*<<< orphan*/ * SecurityDescriptor; int /*<<< orphan*/ * ObjectName; int /*<<< orphan*/  Attributes; int /*<<< orphan*/  RootDirectory; } ;
-typedef  TYPE_1__ OBJECT_ATTRIBUTES ;
-typedef  scalar_t__ NTSTATUS ;
-typedef  TYPE_2__ KEY_VALUE_PARTIAL_INFORMATION ;
-typedef  int /*<<< orphan*/  HANDLE ;
-typedef  int DWORD ;
+struct TYPE_5__ {int Length; int * SecurityQualityOfService; int * SecurityDescriptor; int * ObjectName; int Attributes; int RootDirectory; } ;
+typedef TYPE_1__ OBJECT_ATTRIBUTES ;
+typedef scalar_t__ NTSTATUS ;
+typedef TYPE_2__ KEY_VALUE_PARTIAL_INFORMATION ;
+typedef int HANDLE ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int KEY_ALL_ACCESS ; 
- int /*<<< orphan*/  KeyValuePartialInformation ; 
- int /*<<< orphan*/  OBJ_CASE_INSENSITIVE ; 
- scalar_t__ STATUS_OBJECT_NAME_NOT_FOUND ; 
- scalar_t__ STATUS_SUCCESS ; 
- int /*<<< orphan*/  ok (int,char*,int,scalar_t__) ; 
- int /*<<< orphan*/  pNtClose (int /*<<< orphan*/ ) ; 
- scalar_t__ pNtCreateKey (int /*<<< orphan*/ *,int,TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ pNtQueryValueKey (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_2__*,int,int*) ; 
- int /*<<< orphan*/  pRtlCreateUnicodeStringFromAsciiz (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  pRtlFreeUnicodeString (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  value_str ; 
+
+ int KEY_ALL_ACCESS ;
+ int KeyValuePartialInformation ;
+ int OBJ_CASE_INSENSITIVE ;
+ scalar_t__ STATUS_OBJECT_NAME_NOT_FOUND ;
+ scalar_t__ STATUS_SUCCESS ;
+ int ok (int,char*,int,scalar_t__) ;
+ int pNtClose (int ) ;
+ scalar_t__ pNtCreateKey (int *,int,TYPE_1__*,int ,int ,int ,int ) ;
+ scalar_t__ pNtQueryValueKey (int ,int *,int ,TYPE_2__*,int,int*) ;
+ int pRtlCreateUnicodeStringFromAsciiz (int *,char const*) ;
+ int pRtlFreeUnicodeString (int *) ;
+ int value_str ;
 
 __attribute__((used)) static DWORD get_key_value( HANDLE root, const char *name, DWORD flags )
 {
@@ -51,8 +51,8 @@ __attribute__((used)) static DWORD get_key_value( HANDLE root, const char *name,
     attr.RootDirectory = root;
     attr.Attributes = OBJ_CASE_INSENSITIVE;
     attr.ObjectName = &str;
-    attr.SecurityDescriptor = NULL;
-    attr.SecurityQualityOfService = NULL;
+    attr.SecurityDescriptor = ((void*)0);
+    attr.SecurityQualityOfService = ((void*)0);
     pRtlCreateUnicodeStringFromAsciiz( &str, name );
 
     status = pNtCreateKey( &key, flags | KEY_ALL_ACCESS, &attr, 0, 0, 0, 0 );

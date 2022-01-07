@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ftrace_event_call {int /*<<< orphan*/  flags; int /*<<< orphan*/ * filter; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TRACE_EVENT_FL_FILTERED ; 
- int /*<<< orphan*/  __free_preds (int /*<<< orphan*/ *) ; 
+
+
+
+struct ftrace_event_call {int flags; int * filter; } ;
+
+
+ int TRACE_EVENT_FL_FILTERED ;
+ int __free_preds (int *) ;
 
 void destroy_preds(struct ftrace_event_call *call)
 {
-	__free_preds(call->filter);
-	call->filter = NULL;
-	call->flags &= ~TRACE_EVENT_FL_FILTERED;
+ __free_preds(call->filter);
+ call->filter = ((void*)0);
+ call->flags &= ~TRACE_EVENT_FL_FILTERED;
 }

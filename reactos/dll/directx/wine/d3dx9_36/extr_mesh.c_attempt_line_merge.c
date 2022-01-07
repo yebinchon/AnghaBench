@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct point2d {scalar_t__ corner; int /*<<< orphan*/  const pos; } ;
+
+
+
+
+struct point2d {scalar_t__ corner; int const pos; } ;
 struct outline {int count; struct point2d* items; } ;
-struct cos_table {int /*<<< orphan*/  cos_half; } ;
-typedef  int /*<<< orphan*/  D3DXVECTOR2 ;
-typedef  scalar_t__ BOOL ;
+struct cos_table {int cos_half; } ;
+typedef int D3DXVECTOR2 ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- scalar_t__ FALSE ; 
- scalar_t__ POINTTYPE_CORNER ; 
- scalar_t__ POINTTYPE_CURVE_END ; 
- void* POINTTYPE_CURVE_MIDDLE ; 
- void* POINTTYPE_CURVE_START ; 
- scalar_t__ TRUE ; 
- scalar_t__ is_direction_similar (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  unit_vec2 (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*) ; 
+
+ scalar_t__ FALSE ;
+ scalar_t__ POINTTYPE_CORNER ;
+ scalar_t__ POINTTYPE_CURVE_END ;
+ void* POINTTYPE_CURVE_MIDDLE ;
+ void* POINTTYPE_CURVE_START ;
+ scalar_t__ TRUE ;
+ scalar_t__ is_direction_similar (int *,int *,int ) ;
+ int unit_vec2 (int *,int const*,int const*) ;
 
 __attribute__((used)) static BOOL attempt_line_merge(struct outline *outline,
                                int pt_index,
@@ -46,7 +46,7 @@ __attribute__((used)) static BOOL attempt_line_merge(struct outline *outline,
     if (outline->count < 2)
         return FALSE;
 
-    /* remove last point if the next line continues the last line */
+
     unit_vec2(&lastdir, &prevpt->pos, &pt->pos);
     unit_vec2(&curdir, &pt->pos, nextpt);
     if (is_direction_similar(&lastdir, &curdir, table->cos_half))

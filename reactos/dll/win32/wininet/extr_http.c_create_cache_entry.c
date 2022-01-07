@@ -1,65 +1,65 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_18__   TYPE_7__ ;
-typedef  struct TYPE_17__   TYPE_5__ ;
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  no_storeW ;
-typedef  int /*<<< orphan*/  no_cacheW ;
+
+
+typedef struct TYPE_18__ TYPE_7__ ;
+typedef struct TYPE_17__ TYPE_5__ ;
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+typedef int no_storeW ;
+typedef int no_cacheW ;
 struct TYPE_14__ {int dwFlags; } ;
-struct TYPE_16__ {unsigned int contentLength; TYPE_5__* data_stream; scalar_t__ read_size; scalar_t__ read_pos; scalar_t__ read_buf; int /*<<< orphan*/ * hCacheFile; TYPE_7__* req_file; TYPE_2__ hdr; int /*<<< orphan*/  headers_section; TYPE_1__* custHeaders; } ;
-typedef  TYPE_4__ http_request_t ;
-typedef  char WCHAR ;
+struct TYPE_16__ {unsigned int contentLength; TYPE_5__* data_stream; scalar_t__ read_size; scalar_t__ read_pos; scalar_t__ read_buf; int * hCacheFile; TYPE_7__* req_file; TYPE_2__ hdr; int headers_section; TYPE_1__* custHeaders; } ;
+typedef TYPE_4__ http_request_t ;
+typedef char WCHAR ;
 struct TYPE_18__ {char* url; } ;
 struct TYPE_17__ {TYPE_3__* vtbl; } ;
 struct TYPE_15__ {scalar_t__ (* end_of_data ) (TYPE_5__*,TYPE_4__*) ;} ;
 struct TYPE_13__ {char* lpszValue; } ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  scalar_t__ BOOL ;
+typedef int DWORD ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CREATE_ALWAYS ; 
- int /*<<< orphan*/  CloseHandle (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * CreateFileW (char*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ CreateUrlCacheEntryW (char*,unsigned int,int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EnterCriticalSection (int /*<<< orphan*/ *) ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  FILE_ATTRIBUTE_NORMAL ; 
- int FILE_SHARE_READ ; 
- int FILE_SHARE_WRITE ; 
- int /*<<< orphan*/  FIXME (char*,...) ; 
- int /*<<< orphan*/  GENERIC_WRITE ; 
- int /*<<< orphan*/  GetLastError () ; 
- int HTTP_GetCustomHeaderIndex (TYPE_4__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- int INTERNET_FLAG_NEED_FILE ; 
- int INTERNET_FLAG_NO_CACHE_WRITE ; 
- int /*<<< orphan*/ * INVALID_HANDLE_VALUE ; 
- int /*<<< orphan*/  LeaveCriticalSection (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  MAX_PATH ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  WARN (char*,...) ; 
- scalar_t__ WriteFile (int /*<<< orphan*/ *,scalar_t__,scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  commit_cache_entry (TYPE_4__*) ; 
- char* compose_request_url (TYPE_4__*) ; 
- int /*<<< orphan*/  create_req_file (char*,TYPE_7__**) ; 
- int /*<<< orphan*/  req_file_release (TYPE_7__*) ; 
- char* strchrW (char*,char) ; 
- int strlenW (char*) ; 
- int /*<<< orphan*/  strncmpiW (char*,char const*,int) ; 
- scalar_t__ stub1 (TYPE_5__*,TYPE_4__*) ; 
- int /*<<< orphan*/  szCache_Control ; 
+
+ int CREATE_ALWAYS ;
+ int CloseHandle (int *) ;
+ int * CreateFileW (char*,int ,int,int *,int ,int ,int *) ;
+ scalar_t__ CreateUrlCacheEntryW (char*,unsigned int,int *,char*,int ) ;
+ int EnterCriticalSection (int *) ;
+ scalar_t__ FALSE ;
+ int FILE_ATTRIBUTE_NORMAL ;
+ int FILE_SHARE_READ ;
+ int FILE_SHARE_WRITE ;
+ int FIXME (char*,...) ;
+ int GENERIC_WRITE ;
+ int GetLastError () ;
+ int HTTP_GetCustomHeaderIndex (TYPE_4__*,int ,int ,scalar_t__) ;
+ int INTERNET_FLAG_NEED_FILE ;
+ int INTERNET_FLAG_NO_CACHE_WRITE ;
+ int * INVALID_HANDLE_VALUE ;
+ int LeaveCriticalSection (int *) ;
+ int MAX_PATH ;
+ scalar_t__ TRUE ;
+ int WARN (char*,...) ;
+ scalar_t__ WriteFile (int *,scalar_t__,scalar_t__,int *,int *) ;
+ int commit_cache_entry (TYPE_4__*) ;
+ char* compose_request_url (TYPE_4__*) ;
+ int create_req_file (char*,TYPE_7__**) ;
+ int req_file_release (TYPE_7__*) ;
+ char* strchrW (char*,char) ;
+ int strlenW (char*) ;
+ int strncmpiW (char*,char const*,int) ;
+ scalar_t__ stub1 (TYPE_5__*,TYPE_4__*) ;
+ int szCache_Control ;
 
 __attribute__((used)) static void create_cache_entry(http_request_t *req)
 {
@@ -70,14 +70,14 @@ __attribute__((used)) static void create_cache_entry(http_request_t *req)
     WCHAR *url;
     BOOL b = TRUE;
 
-    /* FIXME: We should free previous cache file earlier */
+
     if(req->req_file) {
         req_file_release(req->req_file);
-        req->req_file = NULL;
+        req->req_file = ((void*)0);
     }
     if(req->hCacheFile) {
         CloseHandle(req->hCacheFile);
-        req->hCacheFile = NULL;
+        req->hCacheFile = ((void*)0);
     }
 
     if(req->hdr.dwFlags & INTERNET_FLAG_NO_CACHE_WRITE)
@@ -130,7 +130,7 @@ __attribute__((used)) static void create_cache_entry(http_request_t *req)
         return;
     }
 
-    b = CreateUrlCacheEntryW(url, req->contentLength == ~0u ? 0 : req->contentLength, NULL, file_name, 0);
+    b = CreateUrlCacheEntryW(url, req->contentLength == ~0u ? 0 : req->contentLength, ((void*)0), file_name, 0);
     if(!b) {
         WARN("Could not create cache entry: %08x\n", GetLastError());
         return;
@@ -140,17 +140,17 @@ __attribute__((used)) static void create_cache_entry(http_request_t *req)
     req->req_file->url = url;
 
     req->hCacheFile = CreateFileW(file_name, GENERIC_WRITE, FILE_SHARE_READ|FILE_SHARE_WRITE,
-              NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
+              ((void*)0), CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, ((void*)0));
     if(req->hCacheFile == INVALID_HANDLE_VALUE) {
         WARN("Could not create file: %u\n", GetLastError());
-        req->hCacheFile = NULL;
+        req->hCacheFile = ((void*)0);
         return;
     }
 
     if(req->read_size) {
         DWORD written;
 
-        b = WriteFile(req->hCacheFile, req->read_buf+req->read_pos, req->read_size, &written, NULL);
+        b = WriteFile(req->hCacheFile, req->read_buf+req->read_pos, req->read_size, &written, ((void*)0));
         if(!b)
             FIXME("WriteFile failed: %u\n", GetLastError());
 

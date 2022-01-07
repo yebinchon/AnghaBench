@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  name_src ;
-typedef  int /*<<< orphan*/  name_dst ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EOF ; 
- int /*<<< orphan*/  SEEK_END ; 
- int /*<<< orphan*/  TEST_ASSERT_EQUAL (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_ASSERT_NOT_EQUAL (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_ASSERT_NOT_NULL (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TEST_ASSERT_NULL (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  fputs (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fseek (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ftell (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  rename (char*,char*) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,char const*) ; 
- int /*<<< orphan*/  unlink (char*) ; 
+
+
+
+typedef int name_src ;
+typedef int name_dst ;
+typedef int FILE ;
+
+
+ int EOF ;
+ int SEEK_END ;
+ int TEST_ASSERT_EQUAL (int,int ) ;
+ int TEST_ASSERT_NOT_EQUAL (int ,int ) ;
+ int TEST_ASSERT_NOT_NULL (int *) ;
+ int TEST_ASSERT_NULL (int *) ;
+ int fclose (int *) ;
+ int * fopen (char*,char*) ;
+ int fputs (char const*,int *) ;
+ int fseek (int *,int ,int ) ;
+ int ftell (int *) ;
+ int rename (char*,char*) ;
+ int snprintf (char*,int,char*,char const*) ;
+ int unlink (char*) ;
 
 void test_spiffs_rename(const char* filename_prefix)
 {

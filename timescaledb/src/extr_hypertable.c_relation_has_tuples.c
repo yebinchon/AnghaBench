@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Relation ;
-typedef  int /*<<< orphan*/  HeapScanDesc ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ForwardScanDirection ; 
- int /*<<< orphan*/  GetActiveSnapshot () ; 
- int HeapTupleIsValid (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  heap_beginscan (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  heap_endscan (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  heap_getnext (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int Relation ;
+typedef int HeapScanDesc ;
+
+
+ int ForwardScanDirection ;
+ int GetActiveSnapshot () ;
+ int HeapTupleIsValid (int ) ;
+ int heap_beginscan (int ,int ,int ,int *) ;
+ int heap_endscan (int ) ;
+ int heap_getnext (int ,int ) ;
 
 __attribute__((used)) static bool
 relation_has_tuples(Relation rel)
 {
-	HeapScanDesc scandesc = heap_beginscan(rel, GetActiveSnapshot(), 0, NULL);
-	bool hastuples = HeapTupleIsValid(heap_getnext(scandesc, ForwardScanDirection));
+ HeapScanDesc scandesc = heap_beginscan(rel, GetActiveSnapshot(), 0, ((void*)0));
+ bool hastuples = HeapTupleIsValid(heap_getnext(scandesc, ForwardScanDirection));
 
-	heap_endscan(scandesc);
-	return hastuples;
+ heap_endscan(scandesc);
+ return hastuples;
 }

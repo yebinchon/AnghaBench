@@ -1,71 +1,71 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_6__ ;
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int tot_users; int /*<<< orphan*/  log_split_mod; int /*<<< orphan*/  log_split_max; int /*<<< orphan*/  log_split_min; int /*<<< orphan*/  log_pos1_crc32; int /*<<< orphan*/  log_timestamp; int /*<<< orphan*/  log_pos1; int /*<<< orphan*/  created_at; int /*<<< orphan*/  magic; } ;
-typedef  TYPE_1__ index_header ;
-typedef  int /*<<< orphan*/  header ;
-struct TYPE_9__ {int /*<<< orphan*/  pr_tree; int /*<<< orphan*/  req_time_tree; int /*<<< orphan*/  req_tree; int /*<<< orphan*/  fr_tree; TYPE_1__ req_cnt; TYPE_1__ user_id; } ;
-struct TYPE_8__ {int /*<<< orphan*/  replica_prefix; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FRIEND_INDEX_MAGIC ; 
- int MAX_USERS ; 
- int O_CREAT ; 
- int O_EXCL ; 
- int O_TRUNC ; 
- int O_WRONLY ; 
- int /*<<< orphan*/  REVERSE_FRIEND_INDEX_MAGIC ; 
- TYPE_6__** User ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ close (scalar_t__) ; 
- int /*<<< orphan*/  dump_privacy_tree (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dump_rev_friends (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dump_tree (int /*<<< orphan*/ ) ; 
- TYPE_4__* engine_snapshot_replica ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  flushout () ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- scalar_t__ fsync (scalar_t__) ; 
- char* get_new_snapshot_name (TYPE_4__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jump_log_pos ; 
- int /*<<< orphan*/  log_crc32_complement ; 
- int /*<<< orphan*/  log_cur_pos () ; 
- int /*<<< orphan*/  log_read_until ; 
- int /*<<< orphan*/  log_split_max ; 
- int /*<<< orphan*/  log_split_min ; 
- int /*<<< orphan*/  log_split_mod ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ newidx_fd ; 
- scalar_t__ open (char*,int,int) ; 
- int /*<<< orphan*/  print_snapshot_name (char*) ; 
- int /*<<< orphan*/  relax_log_crc32 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  relax_write_log_crc32 () ; 
- scalar_t__ rename_temporary_snapshot (char*) ; 
- int /*<<< orphan*/  rev_friends ; 
- scalar_t__ reverse_friends_mode ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  time (int /*<<< orphan*/ *) ; 
- int tot_users ; 
- int /*<<< orphan*/  unlink (char*) ; 
- int verbosity ; 
- int /*<<< orphan*/  write_seek (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  writeout (TYPE_1__*,int) ; 
- int /*<<< orphan*/  writeout_int (int) ; 
+
+typedef struct TYPE_9__ TYPE_6__ ;
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int tot_users; int log_split_mod; int log_split_max; int log_split_min; int log_pos1_crc32; int log_timestamp; int log_pos1; int created_at; int magic; } ;
+typedef TYPE_1__ index_header ;
+typedef int header ;
+struct TYPE_9__ {int pr_tree; int req_time_tree; int req_tree; int fr_tree; TYPE_1__ req_cnt; TYPE_1__ user_id; } ;
+struct TYPE_8__ {int replica_prefix; } ;
+
+
+ int FRIEND_INDEX_MAGIC ;
+ int MAX_USERS ;
+ int O_CREAT ;
+ int O_EXCL ;
+ int O_TRUNC ;
+ int O_WRONLY ;
+ int REVERSE_FRIEND_INDEX_MAGIC ;
+ TYPE_6__** User ;
+ int assert (int) ;
+ scalar_t__ close (scalar_t__) ;
+ int dump_privacy_tree (int ) ;
+ int dump_rev_friends (int ) ;
+ int dump_tree (int ) ;
+ TYPE_4__* engine_snapshot_replica ;
+ int exit (int) ;
+ int flushout () ;
+ int fprintf (int ,char*,...) ;
+ scalar_t__ fsync (scalar_t__) ;
+ char* get_new_snapshot_name (TYPE_4__*,int ,int ) ;
+ int jump_log_pos ;
+ int log_crc32_complement ;
+ int log_cur_pos () ;
+ int log_read_until ;
+ int log_split_max ;
+ int log_split_min ;
+ int log_split_mod ;
+ int memset (TYPE_1__*,int ,int) ;
+ scalar_t__ newidx_fd ;
+ scalar_t__ open (char*,int,int) ;
+ int print_snapshot_name (char*) ;
+ int relax_log_crc32 (int ) ;
+ int relax_write_log_crc32 () ;
+ scalar_t__ rename_temporary_snapshot (char*) ;
+ int rev_friends ;
+ scalar_t__ reverse_friends_mode ;
+ int stderr ;
+ int time (int *) ;
+ int tot_users ;
+ int unlink (char*) ;
+ int verbosity ;
+ int write_seek (int ) ;
+ int writeout (TYPE_1__*,int) ;
+ int writeout_int (int) ;
 
 int save_index (int writing_binlog) {
-  char *newidxname = NULL;
+  char *newidxname = ((void*)0);
 
   if (engine_snapshot_replica) {
     newidxname = get_new_snapshot_name (engine_snapshot_replica, log_cur_pos(), engine_snapshot_replica->replica_prefix);
@@ -80,7 +80,7 @@ int save_index (int writing_binlog) {
     fprintf (stderr, "skipping generation of new snapshot %s for position %lld: snapshot for this position already exists\n",
        newidxname, jump_log_pos);
     return 0;
-  } 
+  }
 
   if (verbosity > 0) {
     fprintf (stderr, "creating index %s at log position %lld\n", newidxname, log_cur_pos());
@@ -100,7 +100,7 @@ int save_index (int writing_binlog) {
   } else {
     header.magic = REVERSE_FRIEND_INDEX_MAGIC;
   }
-  header.created_at = time (NULL);
+  header.created_at = time (((void*)0));
   header.log_pos1 = log_cur_pos ();
   header.log_timestamp = log_read_until;
   if (writing_binlog) {

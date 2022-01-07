@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {char const* fname; } ;
-typedef  TYPE_1__ parser_state ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef TYPE_1__ parser_state ;
+typedef int FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char const*,char*) ; 
- int node_parse_input (TYPE_1__*,int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  perror (char*) ; 
+
+ int fclose (int *) ;
+ int * fopen (char const*,char*) ;
+ int node_parse_input (TYPE_1__*,int *,char const*) ;
+ int perror (char*) ;
 
 int
 node_parse_file(parser_state* p, const char* fname)
 {
   int r;
   FILE* fp = fopen(fname, "rb");
-  if (fp == NULL) {
+  if (fp == ((void*)0)) {
     perror("fopen");
     return 0;
   }

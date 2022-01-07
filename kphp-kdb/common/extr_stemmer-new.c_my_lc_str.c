@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int get_str_class (char const*,int) ; 
- int /*<<< orphan*/  lc_str (char*,char const*,int) ; 
- int stem_eng (char const*,int,char*) ; 
- int stem_rus_win1251 (char const*,int,char*,int) ; 
- int /*<<< orphan*/  use_stemmer ; 
+ int assert (int) ;
+ int get_str_class (char const*,int) ;
+ int lc_str (char*,char const*,int) ;
+ int stem_eng (char const*,int,char*) ;
+ int stem_rus_win1251 (char const*,int,char*,int) ;
+ int use_stemmer ;
 
 int my_lc_str (char *buff, const char *text, int len) {
   int x, c;

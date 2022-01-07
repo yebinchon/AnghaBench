@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
 struct TYPE_13__ {struct TYPE_13__* Flink; } ;
 struct TYPE_14__ {TYPE_2__ ListenRequest; } ;
-struct TYPE_12__ {int /*<<< orphan*/  Entry; TYPE_3__* AssociatedEndpoint; } ;
-typedef  TYPE_1__* PTDI_BUCKET ;
-typedef  TYPE_2__* PLIST_ENTRY ;
-typedef  TYPE_3__* PCONNECTION_ENDPOINT ;
-typedef  int /*<<< orphan*/  KIRQL ;
-typedef  int /*<<< orphan*/  BOOLEAN ;
+struct TYPE_12__ {int Entry; TYPE_3__* AssociatedEndpoint; } ;
+typedef TYPE_1__* PTDI_BUCKET ;
+typedef TYPE_2__* PLIST_ENTRY ;
+typedef TYPE_3__* PCONNECTION_ENDPOINT ;
+typedef int KIRQL ;
+typedef int BOOLEAN ;
 
-/* Variables and functions */
- TYPE_1__* CONTAINING_RECORD (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DereferenceObject (TYPE_3__*) ; 
- int /*<<< orphan*/  Entry ; 
- int /*<<< orphan*/  ExFreeToNPagedLookasideList (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  LockObject (TYPE_3__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RemoveEntryList (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TDI_BUCKET ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  TdiBucketLookasideList ; 
- int /*<<< orphan*/  UnlockObject (TYPE_3__*,int /*<<< orphan*/ ) ; 
+
+ TYPE_1__* CONTAINING_RECORD (TYPE_2__*,int ,int ) ;
+ int DereferenceObject (TYPE_3__*) ;
+ int Entry ;
+ int ExFreeToNPagedLookasideList (int *,TYPE_1__*) ;
+ int FALSE ;
+ int LockObject (TYPE_3__*,int *) ;
+ int RemoveEntryList (int *) ;
+ int TDI_BUCKET ;
+ int TRUE ;
+ int TdiBucketLookasideList ;
+ int UnlockObject (TYPE_3__*,int ) ;
 
 BOOLEAN TCPAbortListenForSocket
-(   PCONNECTION_ENDPOINT Listener,
+( PCONNECTION_ENDPOINT Listener,
     PCONNECTION_ENDPOINT Connection)
 {
     PLIST_ENTRY ListEntry;

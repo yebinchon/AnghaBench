@@ -1,49 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  freeargv (char**) ; 
- scalar_t__ malloc (int) ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
- int strlen (char*) ; 
+ int freeargv (char**) ;
+ scalar_t__ malloc (int) ;
+ int strcpy (char*,char*) ;
+ int strlen (char*) ;
 
 char **
 dupargv (char **argv)
 {
   int argc;
   char **copy;
-  
-  if (argv == NULL)
-    return NULL;
-  
-  /* the vector */
-  for (argc = 0; argv[argc] != NULL; argc++);
+
+  if (argv == ((void*)0))
+    return ((void*)0);
+
+
+  for (argc = 0; argv[argc] != ((void*)0); argc++);
   copy = (char **) malloc ((argc + 1) * sizeof (char *));
-  if (copy == NULL)
-    return NULL;
-  
-  /* the strings */
-  for (argc = 0; argv[argc] != NULL; argc++)
+  if (copy == ((void*)0))
+    return ((void*)0);
+
+
+  for (argc = 0; argv[argc] != ((void*)0); argc++)
     {
       int len = strlen (argv[argc]);
       copy[argc] = (char *) malloc (len + 1);
-      if (copy[argc] == NULL)
-	{
-	  freeargv (copy);
-	  return NULL;
-	}
+      if (copy[argc] == ((void*)0))
+ {
+   freeargv (copy);
+   return ((void*)0);
+ }
       strcpy (copy[argc], argv[argc]);
     }
-  copy[argc] = NULL;
+  copy[argc] = ((void*)0);
   return copy;
 }

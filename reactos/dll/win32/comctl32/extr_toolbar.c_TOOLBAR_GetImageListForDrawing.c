@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
 struct TYPE_13__ {scalar_t__ iBitmap; } ;
-struct TYPE_12__ {int /*<<< orphan*/  nNumBitmaps; } ;
-typedef  TYPE_1__ TOOLBAR_INFO ;
-typedef  TYPE_2__ TBUTTON_INFO ;
-typedef  scalar_t__ INT ;
-typedef  int IMAGE_LIST_TYPE ;
-typedef  int /*<<< orphan*/ * HIMAGELIST ;
+struct TYPE_12__ {int nNumBitmaps; } ;
+typedef TYPE_1__ TOOLBAR_INFO ;
+typedef TYPE_2__ TBUTTON_INFO ;
+typedef scalar_t__ INT ;
+typedef int IMAGE_LIST_TYPE ;
+typedef int * HIMAGELIST ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*,scalar_t__) ; 
- int /*<<< orphan*/  FIXME (char*) ; 
- int /*<<< orphan*/ * GETDEFIMAGELIST (TYPE_1__ const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * GETDISIMAGELIST (TYPE_1__ const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GETHIMLID (TYPE_1__ const*,scalar_t__) ; 
- int /*<<< orphan*/ * GETHOTIMAGELIST (TYPE_1__ const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HIWORD (scalar_t__) ; 
-#define  IMAGE_LIST_DEFAULT 130 
-#define  IMAGE_LIST_DISABLED 129 
-#define  IMAGE_LIST_HOT 128 
- scalar_t__ I_IMAGECALLBACK ; 
- scalar_t__ I_IMAGENONE ; 
- int /*<<< orphan*/  LOWORD (scalar_t__) ; 
- scalar_t__ TOOLBAR_GetBitmapIndex (TYPE_1__ const*,TYPE_2__*) ; 
- int /*<<< orphan*/  TOOLBAR_IsValidBitmapIndex (TYPE_1__ const*,scalar_t__) ; 
- int /*<<< orphan*/  TRACE (char*) ; 
- int /*<<< orphan*/  WARN (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int ERR (char*,scalar_t__) ;
+ int FIXME (char*) ;
+ int * GETDEFIMAGELIST (TYPE_1__ const*,int ) ;
+ int * GETDISIMAGELIST (TYPE_1__ const*,int ) ;
+ int GETHIMLID (TYPE_1__ const*,scalar_t__) ;
+ int * GETHOTIMAGELIST (TYPE_1__ const*,int ) ;
+ int HIWORD (scalar_t__) ;
+
+
+
+ scalar_t__ I_IMAGECALLBACK ;
+ scalar_t__ I_IMAGENONE ;
+ int LOWORD (scalar_t__) ;
+ scalar_t__ TOOLBAR_GetBitmapIndex (TYPE_1__ const*,TYPE_2__*) ;
+ int TOOLBAR_IsValidBitmapIndex (TYPE_1__ const*,scalar_t__) ;
+ int TRACE (char*) ;
+ int WARN (char*,int ,int ,int ) ;
 
 __attribute__((used)) static HIMAGELIST
 TOOLBAR_GetImageListForDrawing (const TOOLBAR_INFO *infoPtr, TBUTTON_INFO *btnPtr,
@@ -46,33 +46,33 @@ TOOLBAR_GetImageListForDrawing (const TOOLBAR_INFO *infoPtr, TBUTTON_INFO *btnPt
     HIMAGELIST himl;
 
     if (!TOOLBAR_IsValidBitmapIndex(infoPtr,btnPtr->iBitmap)) {
-	if (btnPtr->iBitmap == I_IMAGENONE) return NULL;
-	WARN("bitmap for ID %d, index %d is not valid, number of bitmaps in imagelist: %d\n",
-	    HIWORD(btnPtr->iBitmap), LOWORD(btnPtr->iBitmap), infoPtr->nNumBitmaps);
-	return NULL;
+ if (btnPtr->iBitmap == I_IMAGENONE) return ((void*)0);
+ WARN("bitmap for ID %d, index %d is not valid, number of bitmaps in imagelist: %d\n",
+     HIWORD(btnPtr->iBitmap), LOWORD(btnPtr->iBitmap), infoPtr->nNumBitmaps);
+ return ((void*)0);
     }
 
     if ((*index = TOOLBAR_GetBitmapIndex(infoPtr, btnPtr)) < 0) {
-	if ((*index == I_IMAGECALLBACK) ||
-	    (*index == I_IMAGENONE)) return NULL;
-	ERR("TBN_GETDISPINFO returned invalid index %d\n",
-	    *index);
-	return NULL;
+ if ((*index == I_IMAGECALLBACK) ||
+     (*index == I_IMAGENONE)) return ((void*)0);
+ ERR("TBN_GETDISPINFO returned invalid index %d\n",
+     *index);
+ return ((void*)0);
     }
 
     switch(imagelist)
     {
-    case IMAGE_LIST_DEFAULT:
+    case 130:
         himl = GETDEFIMAGELIST(infoPtr, GETHIMLID(infoPtr, btnPtr->iBitmap));
         break;
-    case IMAGE_LIST_HOT:
+    case 128:
         himl = GETHOTIMAGELIST(infoPtr, GETHIMLID(infoPtr, btnPtr->iBitmap));
         break;
-    case IMAGE_LIST_DISABLED:
+    case 129:
         himl = GETDISIMAGELIST(infoPtr, GETHIMLID(infoPtr, btnPtr->iBitmap));
         break;
     default:
-        himl = NULL;
+        himl = ((void*)0);
         FIXME("Shouldn't reach here\n");
     }
 

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int save_pos; } ;
 struct grub_ntfs_file {TYPE_2__ attr; } ;
 struct grub_ntfs_data {struct grub_ntfs_file cmft; } ;
-typedef  int /*<<< orphan*/  grub_ssize_t ;
-typedef  int /*<<< orphan*/  grub_size_t ;
-typedef  TYPE_1__* grub_file_t ;
-struct TYPE_4__ {int /*<<< orphan*/  flags; int /*<<< orphan*/  closure; int /*<<< orphan*/  read_hook; int /*<<< orphan*/  offset; scalar_t__ data; } ;
+typedef int grub_ssize_t ;
+typedef int grub_size_t ;
+typedef TYPE_1__* grub_file_t ;
+struct TYPE_4__ {int flags; int closure; int read_hook; int offset; scalar_t__ data; } ;
 
-/* Variables and functions */
- scalar_t__ grub_errno ; 
- int /*<<< orphan*/  read_attr (TYPE_2__*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ grub_errno ;
+ int read_attr (TYPE_2__*,char*,int ,int ,int,int ,int ,int ) ;
 
 __attribute__((used)) static grub_ssize_t
 grub_ntfs_read (grub_file_t file, char *buf, grub_size_t len)
@@ -34,6 +34,6 @@ grub_ntfs_read (grub_file_t file, char *buf, grub_size_t len)
     mft->attr.save_pos = 1;
 
   read_attr (&mft->attr, buf, file->offset, len, 1,
-	     file->read_hook, file->closure, file->flags);
+      file->read_hook, file->closure, file->flags);
   return (grub_errno) ? 0 : len;
 }

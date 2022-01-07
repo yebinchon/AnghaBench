@@ -1,61 +1,61 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_19__   TYPE_3__ ;
-typedef  struct TYPE_18__   TYPE_2__ ;
-typedef  struct TYPE_17__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  typeinfo ;
+
+
+typedef struct TYPE_19__ TYPE_3__ ;
+typedef struct TYPE_18__ TYPE_2__ ;
+typedef struct TYPE_17__ TYPE_1__ ;
+
+
+typedef int typeinfo ;
 struct timeval {int dummy; } ;
-typedef  int /*<<< orphan*/  byte ;
-typedef  int /*<<< orphan*/  adns_status ;
-typedef  TYPE_2__* adns_state ;
-typedef  int /*<<< orphan*/  adns_rrtype ;
-typedef  int adns_queryflags ;
-typedef  TYPE_3__* adns_query ;
-struct TYPE_17__ {int /*<<< orphan*/  info; scalar_t__ callback; void* ext; } ;
-struct TYPE_19__ {int flags; int search_doneabs; int search_origlen; int /*<<< orphan*/  search_vb; TYPE_1__ ctx; } ;
+typedef int byte ;
+typedef int adns_status ;
+typedef TYPE_2__* adns_state ;
+typedef int adns_rrtype ;
+typedef int adns_queryflags ;
+typedef TYPE_3__* adns_query ;
+struct TYPE_17__ {int info; scalar_t__ callback; void* ext; } ;
+struct TYPE_19__ {int flags; int search_doneabs; int search_origlen; int search_vb; TYPE_1__ ctx; } ;
 struct TYPE_18__ {int searchndots; } ;
 
-/* Variables and functions */
- int DNS_MAXDOMAIN ; 
- int ENOSYS ; 
- int /*<<< orphan*/  adns__autosys (TYPE_2__*,struct timeval) ; 
- int /*<<< orphan*/  adns__consistency (TYPE_2__*,TYPE_3__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * adns__findtype (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  adns__query_fail (TYPE_3__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  adns__search_next (TYPE_2__*,TYPE_3__*,struct timeval) ; 
- int adns__vbuf_append (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int adns_qf_owner ; 
- int adns_qf_search ; 
- int /*<<< orphan*/  adns_s_nomemory ; 
- int /*<<< orphan*/  adns_s_querydomaininvalid ; 
- int /*<<< orphan*/  adns_s_querydomaintoolong ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  cc_entex ; 
- int errno ; 
- int gettimeofday (struct timeval*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- TYPE_3__* query_alloc (TYPE_2__*,int /*<<< orphan*/  const*,int,struct timeval) ; 
- int /*<<< orphan*/  query_simple (TYPE_2__*,TYPE_3__*,char const*,int,int /*<<< orphan*/  const*,int,struct timeval) ; 
- int /*<<< orphan*/  save_owner (TYPE_3__*,char const*,int) ; 
- char* strchr (char const*,char) ; 
- int strlen (char const*) ; 
+
+ int DNS_MAXDOMAIN ;
+ int ENOSYS ;
+ int adns__autosys (TYPE_2__*,struct timeval) ;
+ int adns__consistency (TYPE_2__*,TYPE_3__*,int ) ;
+ int * adns__findtype (int ) ;
+ int adns__query_fail (TYPE_3__*,int ) ;
+ int adns__search_next (TYPE_2__*,TYPE_3__*,struct timeval) ;
+ int adns__vbuf_append (int *,int *,int) ;
+ int adns_qf_owner ;
+ int adns_qf_search ;
+ int adns_s_nomemory ;
+ int adns_s_querydomaininvalid ;
+ int adns_s_querydomaintoolong ;
+ int assert (int) ;
+ int cc_entex ;
+ int errno ;
+ int gettimeofday (struct timeval*,int ) ;
+ int memset (int *,int ,int) ;
+ TYPE_3__* query_alloc (TYPE_2__*,int const*,int,struct timeval) ;
+ int query_simple (TYPE_2__*,TYPE_3__*,char const*,int,int const*,int,struct timeval) ;
+ int save_owner (TYPE_3__*,char const*,int) ;
+ char* strchr (char const*,char) ;
+ int strlen (char const*) ;
 
 int adns_submit(adns_state ads,
-		const char *owner,
-		adns_rrtype type,
-		adns_queryflags flags,
-		void *context,
-		adns_query *query_r) {
+  const char *owner,
+  adns_rrtype type,
+  adns_queryflags flags,
+  void *context,
+  adns_query *query_r) {
   int r, ol, ndots;
   adns_status stat;
   const typeinfo *typei;

@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_6__ {scalar_t__ WriteOffset; scalar_t__ PlayOffset; } ;
-struct TYPE_5__ {int /*<<< orphan*/  Flags; int /*<<< orphan*/  Set; int /*<<< orphan*/  Id; } ;
-struct TYPE_4__ {int /*<<< orphan*/  hPin; } ;
-typedef  int /*<<< orphan*/  PVOID ;
-typedef  scalar_t__* LPDWORD ;
-typedef  int /*<<< orphan*/  LPDIRECTSOUNDBUFFER8 ;
-typedef  TYPE_1__* LPCDirectSoundBuffer ;
-typedef  TYPE_2__ KSPROPERTY ;
-typedef  TYPE_3__ KSAUDIO_POSITION ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  scalar_t__ DWORD ;
+struct TYPE_5__ {int Flags; int Set; int Id; } ;
+struct TYPE_4__ {int hPin; } ;
+typedef int PVOID ;
+typedef scalar_t__* LPDWORD ;
+typedef int LPDIRECTSOUNDBUFFER8 ;
+typedef TYPE_1__* LPCDirectSoundBuffer ;
+typedef TYPE_2__ KSPROPERTY ;
+typedef TYPE_3__ KSAUDIO_POSITION ;
+typedef int HRESULT ;
+typedef scalar_t__ DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CDirectSoundBuffer ; 
- int /*<<< orphan*/  CONTAINING_RECORD (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DPRINT (char*,...) ; 
- int /*<<< orphan*/  DSERR_UNSUPPORTED ; 
- int /*<<< orphan*/  DS_OK ; 
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  IOCTL_KS_PROPERTY ; 
- int /*<<< orphan*/  KSPROPERTY_AUDIO_POSITION ; 
- int /*<<< orphan*/  KSPROPERTY_TYPE_GET ; 
- int /*<<< orphan*/  KSPROPSETID_Audio ; 
- scalar_t__ SyncOverlappedDeviceIoControl (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lpVtbl ; 
+
+ int CDirectSoundBuffer ;
+ int CONTAINING_RECORD (int ,int ,int ) ;
+ int DPRINT (char*,...) ;
+ int DSERR_UNSUPPORTED ;
+ int DS_OK ;
+ scalar_t__ ERROR_SUCCESS ;
+ int IOCTL_KS_PROPERTY ;
+ int KSPROPERTY_AUDIO_POSITION ;
+ int KSPROPERTY_TYPE_GET ;
+ int KSPROPSETID_Audio ;
+ scalar_t__ SyncOverlappedDeviceIoControl (int ,int ,int ,int,int ,int,int *) ;
+ int lpVtbl ;
 
 HRESULT
 PrimaryDirectSoundBuffer_GetPosition(
@@ -50,7 +50,7 @@ PrimaryDirectSoundBuffer_GetPosition(
     DWORD Result;
     LPCDirectSoundBuffer This = (LPCDirectSoundBuffer)CONTAINING_RECORD(iface, CDirectSoundBuffer, lpVtbl);
 
-    //DPRINT("PrimaryDirectSoundBuffer_GetPosition\n");
+
 
     if (!This->hPin)
     {
@@ -64,13 +64,13 @@ PrimaryDirectSoundBuffer_GetPosition(
         return DS_OK;
     }
 
-    /* setup audio position property request */
+
     Request.Id = KSPROPERTY_AUDIO_POSITION;
     Request.Set = KSPROPSETID_Audio;
     Request.Flags = KSPROPERTY_TYPE_GET;
 
 
-    Result = SyncOverlappedDeviceIoControl(This->hPin, IOCTL_KS_PROPERTY, (PVOID)&Request, sizeof(KSPROPERTY), (PVOID)&Position, sizeof(KSAUDIO_POSITION), NULL);
+    Result = SyncOverlappedDeviceIoControl(This->hPin, IOCTL_KS_PROPERTY, (PVOID)&Request, sizeof(KSPROPERTY), (PVOID)&Position, sizeof(KSAUDIO_POSITION), ((void*)0));
 
     if (Result != ERROR_SUCCESS)
     {
@@ -78,7 +78,7 @@ PrimaryDirectSoundBuffer_GetPosition(
         return DSERR_UNSUPPORTED;
     }
 
-    //DPRINT("Play %I64u Write %I64u \n", Position.PlayOffset, Position.WriteOffset);
+
 
     if (pdwCurrentPlayCursor)
         *pdwCurrentPlayCursor = (DWORD)Position.PlayOffset;

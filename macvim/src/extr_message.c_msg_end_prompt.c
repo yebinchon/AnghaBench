@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- void* FALSE ; 
- int /*<<< orphan*/  cmdline_row ; 
- void* emsg_on_display ; 
- int lines_left ; 
- int /*<<< orphan*/  msg_clr_eos () ; 
- scalar_t__ msg_col ; 
- int /*<<< orphan*/  msg_row ; 
- void* need_wait_return ; 
+ void* FALSE ;
+ int cmdline_row ;
+ void* emsg_on_display ;
+ int lines_left ;
+ int msg_clr_eos () ;
+ scalar_t__ msg_col ;
+ int msg_row ;
+ void* need_wait_return ;
 
 void
 msg_end_prompt()

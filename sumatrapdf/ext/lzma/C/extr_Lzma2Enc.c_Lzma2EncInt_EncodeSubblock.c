@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int UInt32 ;
-struct TYPE_8__ {scalar_t__ srcPos; void* needInitState; void* needInitProp; scalar_t__ props; int /*<<< orphan*/  enc; } ;
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int UInt32 ;
+struct TYPE_8__ {scalar_t__ srcPos; void* needInitState; void* needInitProp; scalar_t__ props; int enc; } ;
 struct TYPE_7__ {size_t (* Write ) (TYPE_1__*,scalar_t__*,size_t) ;} ;
-typedef  scalar_t__ SRes ;
-typedef  TYPE_1__ ISeqOutStream ;
-typedef  TYPE_2__ CLzma2EncInt ;
-typedef  scalar_t__ Byte ;
-typedef  int Bool ;
+typedef scalar_t__ SRes ;
+typedef TYPE_1__ ISeqOutStream ;
+typedef TYPE_2__ CLzma2EncInt ;
+typedef scalar_t__ Byte ;
+typedef int Bool ;
 
-/* Variables and functions */
- void* False ; 
- scalar_t__ LZMA2_CONTROL_COPY_NO_RESET ; 
- scalar_t__ LZMA2_CONTROL_COPY_RESET_DIC ; 
- unsigned int LZMA2_CONTROL_LZMA ; 
- int LZMA2_COPY_CHUNK_SIZE ; 
- int /*<<< orphan*/  LZMA2_PACK_SIZE_MAX ; 
- int LZMA2_UNPACK_SIZE_MAX ; 
- scalar_t__ LzmaEnc_CodeOneMemBlock (int /*<<< orphan*/ ,void*,scalar_t__*,size_t*,int /*<<< orphan*/ ,int*) ; 
- scalar_t__ LzmaEnc_GetCurBuf (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LzmaEnc_RestoreState (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LzmaEnc_SaveState (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PRF (int /*<<< orphan*/ ) ; 
- scalar_t__ SZ_ERROR_OUTPUT_EOF ; 
- scalar_t__ SZ_ERROR_WRITE ; 
- scalar_t__ SZ_OK ; 
- int True ; 
- int /*<<< orphan*/  memcpy (scalar_t__*,scalar_t__,int) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- size_t stub1 (TYPE_1__*,scalar_t__*,size_t) ; 
- size_t stub2 (TYPE_1__*,scalar_t__*,size_t) ; 
+
+ void* False ;
+ scalar_t__ LZMA2_CONTROL_COPY_NO_RESET ;
+ scalar_t__ LZMA2_CONTROL_COPY_RESET_DIC ;
+ unsigned int LZMA2_CONTROL_LZMA ;
+ int LZMA2_COPY_CHUNK_SIZE ;
+ int LZMA2_PACK_SIZE_MAX ;
+ int LZMA2_UNPACK_SIZE_MAX ;
+ scalar_t__ LzmaEnc_CodeOneMemBlock (int ,void*,scalar_t__*,size_t*,int ,int*) ;
+ scalar_t__ LzmaEnc_GetCurBuf (int ) ;
+ int LzmaEnc_RestoreState (int ) ;
+ int LzmaEnc_SaveState (int ) ;
+ int PRF (int ) ;
+ scalar_t__ SZ_ERROR_OUTPUT_EOF ;
+ scalar_t__ SZ_ERROR_WRITE ;
+ scalar_t__ SZ_OK ;
+ int True ;
+ int memcpy (scalar_t__*,scalar_t__,int) ;
+ int printf (char*,...) ;
+ size_t stub1 (TYPE_1__*,scalar_t__*,size_t) ;
+ size_t stub2 (TYPE_1__*,scalar_t__*,size_t) ;
 
 __attribute__((used)) static SRes Lzma2EncInt_EncodeSubblock(CLzma2EncInt *p, Byte *outBuf,
     size_t *packSizeRes, ISeqOutStream *outStream)
@@ -57,11 +57,11 @@ __attribute__((used)) static SRes Lzma2EncInt_EncodeSubblock(CLzma2EncInt *p, By
   if (packSize < lzHeaderSize)
     return SZ_ERROR_OUTPUT_EOF;
   packSize -= lzHeaderSize;
-  
+
   LzmaEnc_SaveState(p->enc);
   res = LzmaEnc_CodeOneMemBlock(p->enc, p->needInitState,
       outBuf + lzHeaderSize, &packSize, LZMA2_PACK_SIZE_MAX, &unpackSize);
-  
+
   PRF(printf("\npackSize = %7d unpackSize = %7d  ", packSize, unpackSize));
 
   if (unpackSize == 0)
@@ -102,7 +102,7 @@ __attribute__((used)) static SRes Lzma2EncInt_EncodeSubblock(CLzma2EncInt *p, By
       }
       else
         *packSizeRes = destPos;
-      /* needInitState = True; */
+
     }
     LzmaEnc_RestoreState(p->enc);
     return SZ_OK;
@@ -120,10 +120,10 @@ __attribute__((used)) static SRes Lzma2EncInt_EncodeSubblock(CLzma2EncInt *p, By
     outBuf[destPos++] = (Byte)u;
     outBuf[destPos++] = (Byte)(pm >> 8);
     outBuf[destPos++] = (Byte)pm;
-    
+
     if (p->needInitProp)
       outBuf[destPos++] = p->props;
-    
+
     p->needInitProp = False;
     p->needInitState = False;
     destPos += packSize;

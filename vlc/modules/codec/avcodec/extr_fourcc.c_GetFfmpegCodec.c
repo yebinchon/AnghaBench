@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ vlc_fourcc_t ;
+
+
+
+
+typedef scalar_t__ vlc_fourcc_t ;
 struct vlc_avcodec_fourcc {scalar_t__ i_fourcc; unsigned int i_codec; } ;
-typedef  enum es_format_category_e { ____Placeholder_es_format_category_e } es_format_category_e ;
+typedef enum es_format_category_e { ____Placeholder_es_format_category_e } es_format_category_e ;
 
-/* Variables and functions */
- size_t ARRAY_SIZE (struct vlc_avcodec_fourcc*) ; 
-#define  AUDIO_ES 130 
-#define  SPU_ES 129 
-#define  VIDEO_ES 128 
- struct vlc_avcodec_fourcc* audio_codecs ; 
- struct vlc_avcodec_fourcc* spu_codecs ; 
- struct vlc_avcodec_fourcc* video_codecs ; 
- scalar_t__ vlc_fourcc_GetCodec (int,scalar_t__) ; 
- char* vlc_fourcc_GetDescription (int,scalar_t__) ; 
+
+ size_t ARRAY_SIZE (struct vlc_avcodec_fourcc*) ;
+
+
+
+ struct vlc_avcodec_fourcc* audio_codecs ;
+ struct vlc_avcodec_fourcc* spu_codecs ;
+ struct vlc_avcodec_fourcc* video_codecs ;
+ scalar_t__ vlc_fourcc_GetCodec (int,scalar_t__) ;
+ char* vlc_fourcc_GetDescription (int,scalar_t__) ;
 
 bool GetFfmpegCodec( enum es_format_category_e cat, vlc_fourcc_t i_fourcc,
                      unsigned *pi_ffmpeg_codec, const char **ppsz_name )
@@ -33,20 +33,20 @@ bool GetFfmpegCodec( enum es_format_category_e cat, vlc_fourcc_t i_fourcc,
 
     switch( cat )
     {
-        case VIDEO_ES:
+        case 128:
             base = video_codecs;
             count = ARRAY_SIZE(video_codecs);
             break;
-        case AUDIO_ES:
+        case 130:
             base = audio_codecs;
             count = ARRAY_SIZE(audio_codecs);
             break;
-        case SPU_ES:
+        case 129:
             base = spu_codecs;
             count = ARRAY_SIZE(spu_codecs);
             break;
         default:
-            base = NULL;
+            base = ((void*)0);
             count = 0;
     }
 
@@ -56,12 +56,12 @@ bool GetFfmpegCodec( enum es_format_category_e cat, vlc_fourcc_t i_fourcc,
     {
         if( base[i].i_fourcc == i_fourcc )
         {
-            if( pi_ffmpeg_codec != NULL )
+            if( pi_ffmpeg_codec != ((void*)0) )
                 *pi_ffmpeg_codec = base[i].i_codec;
             if( ppsz_name )
                 *ppsz_name = vlc_fourcc_GetDescription( cat, i_fourcc );
-            return true;
+            return 1;
         }
     }
-    return false;
+    return 0;
 }

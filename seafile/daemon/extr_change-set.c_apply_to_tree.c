@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  gboolean ;
-typedef  int /*<<< orphan*/  SeafStat ;
-typedef  int /*<<< orphan*/  ChangeSetDirent ;
-typedef  int /*<<< orphan*/  ChangeSet ;
 
-/* Variables and functions */
-#define  DIFF_STATUS_ADDED 131 
-#define  DIFF_STATUS_DIR_ADDED 130 
-#define  DIFF_STATUS_MODIFIED 129 
-#define  DIFF_STATUS_RENAMED 128 
- int /*<<< orphan*/  add_to_tree (int /*<<< orphan*/ *,unsigned char*,int /*<<< orphan*/ *,char const*,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  changeset_dirent_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * delete_from_tree (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int gboolean ;
+typedef int SeafStat ;
+typedef int ChangeSetDirent ;
+typedef int ChangeSet ;
+
+
+
+
+
+
+ int add_to_tree (int *,unsigned char*,int *,char const*,char const*,int *) ;
+ int changeset_dirent_free (int *) ;
+ int * delete_from_tree (int *,char const*,int *) ;
 
 __attribute__((used)) static void
 apply_to_tree (ChangeSet *changeset,
@@ -37,19 +37,19 @@ apply_to_tree (ChangeSet *changeset,
     gboolean dummy;
 
     switch (status) {
-    case DIFF_STATUS_ADDED:
-    case DIFF_STATUS_MODIFIED:
-    case DIFF_STATUS_DIR_ADDED:
-        add_to_tree (changeset, sha1, st, modifier, path, NULL);
+    case 131:
+    case 129:
+    case 130:
+        add_to_tree (changeset, sha1, st, modifier, path, ((void*)0));
         break;
-    case DIFF_STATUS_RENAMED:
+    case 128:
         dent = delete_from_tree (changeset, path, &dummy);
         if (!dent)
             break;
 
         dent_dst = delete_from_tree (changeset, new_path, &dummy);
         changeset_dirent_free (dent_dst);
-        add_to_tree (changeset, NULL, NULL, NULL, new_path, dent);
+        add_to_tree (changeset, ((void*)0), ((void*)0), ((void*)0), new_path, dent);
 
         break;
     }

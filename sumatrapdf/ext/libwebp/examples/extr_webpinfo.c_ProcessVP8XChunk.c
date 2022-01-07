@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint64_t ;
-typedef  int /*<<< orphan*/  WebPInfoStatus ;
-struct TYPE_5__ {int feature_flags_; int canvas_width_; int canvas_height_; int /*<<< orphan*/  quiet_; scalar_t__* chunk_counts_; } ;
-typedef  TYPE_1__ WebPInfo ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint64_t ;
+typedef int WebPInfoStatus ;
+struct TYPE_5__ {int feature_flags_; int canvas_width_; int canvas_height_; int quiet_; scalar_t__* chunk_counts_; } ;
+typedef TYPE_1__ WebPInfo ;
 struct TYPE_6__ {int* payload_; scalar_t__ size_; } ;
-typedef  TYPE_2__ ChunkData ;
+typedef TYPE_2__ ChunkData ;
 
-/* Variables and functions */
- int ALPHA_FLAG ; 
- int ANIMATION_FLAG ; 
- scalar_t__ CHUNK_HEADER_SIZE ; 
- size_t CHUNK_VP8 ; 
- size_t CHUNK_VP8L ; 
- size_t CHUNK_VP8X ; 
- int EXIF_FLAG ; 
- int ICCP_FLAG ; 
- int /*<<< orphan*/  LOG_ERROR (char*) ; 
- int /*<<< orphan*/  LOG_WARN (char*) ; 
- int MAX_CANVAS_SIZE ; 
- int MAX_IMAGE_AREA ; 
- void* ReadLE24 (int const**) ; 
- scalar_t__ VP8X_CHUNK_SIZE ; 
- int /*<<< orphan*/  WEBP_INFO_OK ; 
- int /*<<< orphan*/  WEBP_INFO_PARSE_ERROR ; 
- int XMP_FLAG ; 
- int /*<<< orphan*/  printf (char*,int,int,...) ; 
+
+ int ALPHA_FLAG ;
+ int ANIMATION_FLAG ;
+ scalar_t__ CHUNK_HEADER_SIZE ;
+ size_t CHUNK_VP8 ;
+ size_t CHUNK_VP8L ;
+ size_t CHUNK_VP8X ;
+ int EXIF_FLAG ;
+ int ICCP_FLAG ;
+ int LOG_ERROR (char*) ;
+ int LOG_WARN (char*) ;
+ int MAX_CANVAS_SIZE ;
+ int MAX_IMAGE_AREA ;
+ void* ReadLE24 (int const**) ;
+ scalar_t__ VP8X_CHUNK_SIZE ;
+ int WEBP_INFO_OK ;
+ int WEBP_INFO_PARSE_ERROR ;
+ int XMP_FLAG ;
+ int printf (char*,int,int,...) ;
 
 __attribute__((used)) static WebPInfoStatus ProcessVP8XChunk(const ChunkData* const chunk_data,
                                        WebPInfo* const webp_info) {

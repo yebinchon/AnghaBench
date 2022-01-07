@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  check_automaton_usage () ; 
- int /*<<< orphan*/  check_loops_in_regexps () ; 
- int /*<<< orphan*/  check_usage () ; 
- int /*<<< orphan*/  evaluate_max_reserv_cycles () ; 
- int /*<<< orphan*/  have_error ; 
- int /*<<< orphan*/  process_decls () ; 
- int /*<<< orphan*/  process_regexp_decls () ; 
+ int check_automaton_usage () ;
+ int check_loops_in_regexps () ;
+ int check_usage () ;
+ int evaluate_max_reserv_cycles () ;
+ int have_error ;
+ int process_decls () ;
+ int process_regexp_decls () ;
 
 __attribute__((used)) static void
 check_all_description (void)

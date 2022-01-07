@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
-struct TYPE_5__ {int /*<<< orphan*/ * h; } ;
-typedef  TYPE_1__ md5_ctx_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  md5_final (TYPE_1__*) ; 
- int /*<<< orphan*/  md5_init (TYPE_1__*) ; 
- int /*<<< orphan*/  md5_update (TYPE_1__*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int u32 ;
+struct TYPE_5__ {int * h; } ;
+typedef TYPE_1__ md5_ctx_t ;
+
+
+ int md5_final (TYPE_1__*) ;
+ int md5_init (TYPE_1__*) ;
+ int md5_update (TYPE_1__*,int const*,int const) ;
 
 __attribute__((used)) static void md5_complete_no_limit (u32 digest[4], const u32 *plain, const u32 plain_len)
 {
-  // plain = u32 tmp_md5_buf[64] so this is compatible
+
 
   md5_ctx_t md5_ctx;
 

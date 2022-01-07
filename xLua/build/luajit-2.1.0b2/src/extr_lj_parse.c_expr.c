@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  LexState ;
-typedef  int /*<<< orphan*/  ExpDesc ;
 
-/* Variables and functions */
- int /*<<< orphan*/  expr_binop (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int LexState ;
+typedef int ExpDesc ;
+
+
+ int expr_binop (int *,int *,int ) ;
 
 __attribute__((used)) static void expr(LexState *ls, ExpDesc *v)
 {
-  expr_binop(ls, v, 0);  /* Priority 0: parse whole expression. */
+  expr_binop(ls, v, 0);
 }

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {scalar_t__ bool_; } ;
 struct rmsgpack_dom_value {scalar_t__ type; TYPE_1__ val; } ;
 struct argument {int dummy; } ;
 
-/* Variables and functions */
- scalar_t__ RDT_BOOL ; 
+
+ scalar_t__ RDT_BOOL ;
 
 __attribute__((used)) static struct rmsgpack_dom_value query_func_is_true(
       struct rmsgpack_dom_value input,
@@ -24,7 +24,7 @@ __attribute__((used)) static struct rmsgpack_dom_value query_func_is_true(
 {
    struct rmsgpack_dom_value res;
 
-   res.type      = RDT_BOOL;
+   res.type = RDT_BOOL;
    res.val.bool_ = 0;
 
    if (argc > 0 || input.type != RDT_BOOL)

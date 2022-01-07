@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  unsigned char OPJ_UINT16 ;
-typedef  scalar_t__ OPJ_BOOL ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  fputs (char*,int /*<<< orphan*/ ) ; 
- int fwrite (unsigned char*,int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stderr ; 
- unsigned char swap16 (unsigned char) ; 
+
+
+
+typedef unsigned char OPJ_UINT16 ;
+typedef scalar_t__ OPJ_BOOL ;
+typedef int FILE ;
+
+
+ int fprintf (int ,char*) ;
+ int fputs (char*,int ) ;
+ int fwrite (unsigned char*,int,int,int *) ;
+ int stderr ;
+ unsigned char swap16 (unsigned char) ;
 
 __attribute__((used)) static int tga_writeheader(FILE *fp, int bits_per_pixel, int width, int height,
                            OPJ_BOOL flip_image)
@@ -43,61 +43,50 @@ __attribute__((used)) static int tga_writeheader(FILE *fp, int bits_per_pixel, i
     uc0 = 0;
 
     if (fwrite(&uc0, 1, 1, fp) != 1) {
-        goto fails;    /* id_length */
+        goto fails;
     }
     if (fwrite(&uc0, 1, 1, fp) != 1) {
-        goto fails;    /* colour_map_type */
+        goto fails;
     }
 
-    image_type = 2; /* Uncompressed. */
+    image_type = 2;
     if (fwrite(&image_type, 1, 1, fp) != 1) {
         goto fails;
     }
 
     us0 = 0;
     if (fwrite(&us0, 2, 1, fp) != 1) {
-        goto fails;    /* colour_map_index */
+        goto fails;
     }
     if (fwrite(&us0, 2, 1, fp) != 1) {
-        goto fails;    /* colour_map_length */
+        goto fails;
     }
     if (fwrite(&uc0, 1, 1, fp) != 1) {
-        goto fails;    /* colour_map_entry_size */
+        goto fails;
     }
 
     if (fwrite(&us0, 2, 1, fp) != 1) {
-        goto fails;    /* x_origin */
+        goto fails;
     }
     if (fwrite(&us0, 2, 1, fp) != 1) {
-        goto fails;    /* y_origin */
+        goto fails;
     }
 
     image_w = (unsigned short)width;
     image_h = (unsigned short) height;
 
-#ifndef OPJ_BIG_ENDIAN
-    if (fwrite(&image_w, 2, 1, fp) != 1) {
-        goto fails;
-    }
-    if (fwrite(&image_h, 2, 1, fp) != 1) {
-        goto fails;
-    }
-#else
-    image_w = swap16(image_w);
-    image_h = swap16(image_h);
-    if (fwrite(&image_w, 2, 1, fp) != 1) {
-        goto fails;
-    }
-    if (fwrite(&image_h, 2, 1, fp) != 1) {
-        goto fails;
-    }
-#endif
 
+    if (fwrite(&image_w, 2, 1, fp) != 1) {
+        goto fails;
+    }
+    if (fwrite(&image_h, 2, 1, fp) != 1) {
+        goto fails;
+    }
     if (fwrite(&pixel_depth, 1, 1, fp) != 1) {
         goto fails;
     }
 
-    image_desc = 8; /* 8 bits per component. */
+    image_desc = 8;
 
     if (flip_image) {
         image_desc |= 32;

@@ -1,24 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
-
 __attribute__((used)) static int __ConvertDate(const char *NTDate, char *buffer, int buf_size) {
-  /* This function will return an incomplete buffer if buffer is not long enough */
+
   const char *cur_char;
   char *cur_output, *end_output;
 
-  /* Correct time format. */
+
   cur_char = NTDate;
   cur_output = buffer;
   end_output = cur_output + buf_size;
@@ -137,7 +128,7 @@ __attribute__((used)) static int __ConvertDate(const char *NTDate, char *buffer,
     case '\'':
     {
       ++cur_char;
-      while (*cur_char != '\'' && *cur_char != 0 && (cur_output == NULL || cur_output != end_output)) {
+      while (*cur_char != '\'' && *cur_char != 0 && (cur_output == ((void*)0) || cur_output != end_output)) {
         if (cur_output) { *cur_output++ = *cur_char; }
         ++cur_char;
         buf_size += 1;
@@ -160,7 +151,7 @@ __attribute__((used)) static int __ConvertDate(const char *NTDate, char *buffer,
     buf_size += 1;
   }
   else {
-    /* We trunc result */
+
     *(--cur_output) = 0;
   }
 

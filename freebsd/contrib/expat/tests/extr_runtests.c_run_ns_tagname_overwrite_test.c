@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  XML_Char ;
-typedef  int /*<<< orphan*/  CharData ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CharData_CheckXMLChars (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  CharData_Init (int /*<<< orphan*/ *) ; 
- scalar_t__ XML_STATUS_ERROR ; 
- int /*<<< orphan*/  XML_SetElementHandler (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XML_SetUserData (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  XML_TRUE ; 
- scalar_t__ _XML_Parse_SINGLE_BYTES (int /*<<< orphan*/ ,char const*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  overwrite_end_checker ; 
- int /*<<< orphan*/  overwrite_start_checker ; 
- int /*<<< orphan*/  parser ; 
- scalar_t__ strlen (char const*) ; 
- int /*<<< orphan*/  xml_failure (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int XML_Char ;
+typedef int CharData ;
+
+
+ int CharData_CheckXMLChars (int *,int const*) ;
+ int CharData_Init (int *) ;
+ scalar_t__ XML_STATUS_ERROR ;
+ int XML_SetElementHandler (int ,int ,int ) ;
+ int XML_SetUserData (int ,int *) ;
+ int XML_TRUE ;
+ scalar_t__ _XML_Parse_SINGLE_BYTES (int ,char const*,int,int ) ;
+ int overwrite_end_checker ;
+ int overwrite_start_checker ;
+ int parser ;
+ scalar_t__ strlen (char const*) ;
+ int xml_failure (int ) ;
 
 __attribute__((used)) static void
 run_ns_tagname_overwrite_test(const char *text, const XML_Char *result)

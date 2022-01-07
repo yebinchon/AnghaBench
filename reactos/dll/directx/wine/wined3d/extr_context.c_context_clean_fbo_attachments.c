@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  (* glFramebufferTexture2D ) (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;} ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int (* glFramebufferTexture2D ) (int ,scalar_t__,int ,int ,int ) ;} ;
 struct TYPE_3__ {unsigned int buffers; } ;
 struct wined3d_gl_info {TYPE_2__ fbo_ops; TYPE_1__ limits; } ;
-typedef  int /*<<< orphan*/  GLenum ;
+typedef int GLenum ;
 
-/* Variables and functions */
- scalar_t__ GL_COLOR_ATTACHMENT0 ; 
- scalar_t__ GL_DEPTH_ATTACHMENT ; 
- scalar_t__ GL_STENCIL_ATTACHMENT ; 
- int /*<<< orphan*/  GL_TEXTURE_2D ; 
- int /*<<< orphan*/  checkGLcall (char*) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub3 (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ GL_COLOR_ATTACHMENT0 ;
+ scalar_t__ GL_DEPTH_ATTACHMENT ;
+ scalar_t__ GL_STENCIL_ATTACHMENT ;
+ int GL_TEXTURE_2D ;
+ int checkGLcall (char*) ;
+ int stub1 (int ,scalar_t__,int ,int ,int ) ;
+ int stub2 (int ,scalar_t__,int ,int ,int ) ;
+ int stub3 (int ,scalar_t__,int ,int ,int ) ;
 
 __attribute__((used)) static void context_clean_fbo_attachments(const struct wined3d_gl_info *gl_info, GLenum target)
 {

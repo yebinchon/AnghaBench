@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct lexer {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LEXEME_STRING ; 
- int /*<<< orphan*/  advance_n (struct lexer*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  backup (struct lexer*) ; 
- int /*<<< orphan*/  emit (struct lexer*,int /*<<< orphan*/ ) ; 
- void* lex_config ; 
- void* lex_error (struct lexer*,char*) ; 
- int next (struct lexer*) ; 
- int /*<<< orphan*/  strlen (char*) ; 
+
+ int LEXEME_STRING ;
+ int advance_n (struct lexer*,int ) ;
+ int backup (struct lexer*) ;
+ int emit (struct lexer*,int ) ;
+ void* lex_config ;
+ void* lex_error (struct lexer*,char*) ;
+ int next (struct lexer*) ;
+ int strlen (char*) ;
 
 __attribute__((used)) static void *lex_variable_default(struct lexer *lexer)
 {

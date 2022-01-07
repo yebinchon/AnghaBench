@@ -1,81 +1,69 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct per_user_data {int nr_evtchns; int ring_size; int /*<<< orphan*/  ring_cons_mutex; int /*<<< orphan*/  ring_prod_lock; int /*<<< orphan*/ * ring; } ;
-typedef  int /*<<< orphan*/  evtchn_port_t ;
 
-/* Variables and functions */
- int ENOMEM ; 
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  evtchn_free_ring (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * kvmalloc_array (unsigned int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_lock_irq (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock_irq (int /*<<< orphan*/ *) ; 
+
+
+
+struct per_user_data {int nr_evtchns; int ring_size; int ring_cons_mutex; int ring_prod_lock; int * ring; } ;
+typedef int evtchn_port_t ;
+
+
+ int ENOMEM ;
+ int GFP_KERNEL ;
+ int evtchn_free_ring (int *) ;
+ int * kvmalloc_array (unsigned int,int,int ) ;
+ int memcpy (int *,int *,int) ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
+ int spin_lock_irq (int *) ;
+ int spin_unlock_irq (int *) ;
 
 __attribute__((used)) static int evtchn_resize_ring(struct per_user_data *u)
 {
-	unsigned int new_size;
-	evtchn_port_t *new_ring, *old_ring;
+ unsigned int new_size;
+ evtchn_port_t *new_ring, *old_ring;
 
-	/*
-	 * Ensure the ring is large enough to capture all possible
-	 * events. i.e., one free slot for each bound event.
-	 */
-	if (u->nr_evtchns <= u->ring_size)
-		return 0;
 
-	if (u->ring_size == 0)
-		new_size = 64;
-	else
-		new_size = 2 * u->ring_size;
 
-	new_ring = kvmalloc_array(new_size, sizeof(*new_ring), GFP_KERNEL);
-	if (!new_ring)
-		return -ENOMEM;
 
-	old_ring = u->ring;
 
-	/*
-	 * Access to the ring contents is serialized by either the
-	 * prod /or/ cons lock so take both when resizing.
-	 */
-	mutex_lock(&u->ring_cons_mutex);
-	spin_lock_irq(&u->ring_prod_lock);
+ if (u->nr_evtchns <= u->ring_size)
+  return 0;
 
-	/*
-	 * Copy the old ring contents to the new ring.
-	 *
-	 * To take care of wrapping, a full ring, and the new index
-	 * pointing into the second half, simply copy the old contents
-	 * twice.
-	 *
-	 * +---------+    +------------------+
-	 * |34567  12| -> |34567  1234567  12|
-	 * +-----p-c-+    +-------c------p---+
-	 */
-	memcpy(new_ring, old_ring, u->ring_size * sizeof(*u->ring));
-	memcpy(new_ring + u->ring_size, old_ring,
-	       u->ring_size * sizeof(*u->ring));
+ if (u->ring_size == 0)
+  new_size = 64;
+ else
+  new_size = 2 * u->ring_size;
 
-	u->ring = new_ring;
-	u->ring_size = new_size;
+ new_ring = kvmalloc_array(new_size, sizeof(*new_ring), GFP_KERNEL);
+ if (!new_ring)
+  return -ENOMEM;
 
-	spin_unlock_irq(&u->ring_prod_lock);
-	mutex_unlock(&u->ring_cons_mutex);
+ old_ring = u->ring;
 
-	evtchn_free_ring(old_ring);
 
-	return 0;
+
+
+
+ mutex_lock(&u->ring_cons_mutex);
+ spin_lock_irq(&u->ring_prod_lock);
+ memcpy(new_ring, old_ring, u->ring_size * sizeof(*u->ring));
+ memcpy(new_ring + u->ring_size, old_ring,
+        u->ring_size * sizeof(*u->ring));
+
+ u->ring = new_ring;
+ u->ring_size = new_size;
+
+ spin_unlock_irq(&u->ring_prod_lock);
+ mutex_unlock(&u->ring_cons_mutex);
+
+ evtchn_free_ring(old_ring);
+
+ return 0;
 }

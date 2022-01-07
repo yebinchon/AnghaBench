@@ -1,111 +1,111 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ PFNGLSAMPLECOVERAGEPROC ;
-typedef  scalar_t__ PFNGLMULTTRANSPOSEMATRIXFPROC ;
-typedef  scalar_t__ PFNGLMULTTRANSPOSEMATRIXDPROC ;
-typedef  scalar_t__ PFNGLMULTITEXCOORD4SVPROC ;
-typedef  scalar_t__ PFNGLMULTITEXCOORD4SPROC ;
-typedef  scalar_t__ PFNGLMULTITEXCOORD4IVPROC ;
-typedef  scalar_t__ PFNGLMULTITEXCOORD4IPROC ;
-typedef  scalar_t__ PFNGLMULTITEXCOORD4FVPROC ;
-typedef  scalar_t__ PFNGLMULTITEXCOORD4FPROC ;
-typedef  scalar_t__ PFNGLMULTITEXCOORD4DVPROC ;
-typedef  scalar_t__ PFNGLMULTITEXCOORD4DPROC ;
-typedef  scalar_t__ PFNGLMULTITEXCOORD3SVPROC ;
-typedef  scalar_t__ PFNGLMULTITEXCOORD3SPROC ;
-typedef  scalar_t__ PFNGLMULTITEXCOORD3IVPROC ;
-typedef  scalar_t__ PFNGLMULTITEXCOORD3IPROC ;
-typedef  scalar_t__ PFNGLMULTITEXCOORD3FVPROC ;
-typedef  scalar_t__ PFNGLMULTITEXCOORD3FPROC ;
-typedef  scalar_t__ PFNGLMULTITEXCOORD3DVPROC ;
-typedef  scalar_t__ PFNGLMULTITEXCOORD3DPROC ;
-typedef  scalar_t__ PFNGLMULTITEXCOORD2SVPROC ;
-typedef  scalar_t__ PFNGLMULTITEXCOORD2SPROC ;
-typedef  scalar_t__ PFNGLMULTITEXCOORD2IVPROC ;
-typedef  scalar_t__ PFNGLMULTITEXCOORD2IPROC ;
-typedef  scalar_t__ PFNGLMULTITEXCOORD2FVPROC ;
-typedef  scalar_t__ PFNGLMULTITEXCOORD2FPROC ;
-typedef  scalar_t__ PFNGLMULTITEXCOORD2DVPROC ;
-typedef  scalar_t__ PFNGLMULTITEXCOORD2DPROC ;
-typedef  scalar_t__ PFNGLMULTITEXCOORD1SVPROC ;
-typedef  scalar_t__ PFNGLMULTITEXCOORD1SPROC ;
-typedef  scalar_t__ PFNGLMULTITEXCOORD1IVPROC ;
-typedef  scalar_t__ PFNGLMULTITEXCOORD1IPROC ;
-typedef  scalar_t__ PFNGLMULTITEXCOORD1FVPROC ;
-typedef  scalar_t__ PFNGLMULTITEXCOORD1FPROC ;
-typedef  scalar_t__ PFNGLMULTITEXCOORD1DVPROC ;
-typedef  scalar_t__ PFNGLMULTITEXCOORD1DPROC ;
-typedef  scalar_t__ PFNGLLOADTRANSPOSEMATRIXFPROC ;
-typedef  scalar_t__ PFNGLLOADTRANSPOSEMATRIXDPROC ;
-typedef  scalar_t__ PFNGLGETCOMPRESSEDTEXIMAGEPROC ;
-typedef  scalar_t__ PFNGLCOMPRESSEDTEXSUBIMAGE3DPROC ;
-typedef  scalar_t__ PFNGLCOMPRESSEDTEXSUBIMAGE2DPROC ;
-typedef  scalar_t__ PFNGLCOMPRESSEDTEXSUBIMAGE1DPROC ;
-typedef  scalar_t__ PFNGLCOMPRESSEDTEXIMAGE3DPROC ;
-typedef  scalar_t__ PFNGLCOMPRESSEDTEXIMAGE2DPROC ;
-typedef  scalar_t__ PFNGLCOMPRESSEDTEXIMAGE1DPROC ;
-typedef  scalar_t__ PFNGLCLIENTACTIVETEXTUREPROC ;
-typedef  scalar_t__ PFNGLACTIVETEXTUREPROC ;
-typedef  scalar_t__ (* GLADuserptrloadfunc ) (char*,void*) ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GLAD_GL_VERSION_1_3 ; 
- scalar_t__ glActiveTexture ; 
- scalar_t__ glClientActiveTexture ; 
- scalar_t__ glCompressedTexImage1D ; 
- scalar_t__ glCompressedTexImage2D ; 
- scalar_t__ glCompressedTexImage3D ; 
- scalar_t__ glCompressedTexSubImage1D ; 
- scalar_t__ glCompressedTexSubImage2D ; 
- scalar_t__ glCompressedTexSubImage3D ; 
- scalar_t__ glGetCompressedTexImage ; 
- scalar_t__ glLoadTransposeMatrixd ; 
- scalar_t__ glLoadTransposeMatrixf ; 
- scalar_t__ glMultTransposeMatrixd ; 
- scalar_t__ glMultTransposeMatrixf ; 
- scalar_t__ glMultiTexCoord1d ; 
- scalar_t__ glMultiTexCoord1dv ; 
- scalar_t__ glMultiTexCoord1f ; 
- scalar_t__ glMultiTexCoord1fv ; 
- scalar_t__ glMultiTexCoord1i ; 
- scalar_t__ glMultiTexCoord1iv ; 
- scalar_t__ glMultiTexCoord1s ; 
- scalar_t__ glMultiTexCoord1sv ; 
- scalar_t__ glMultiTexCoord2d ; 
- scalar_t__ glMultiTexCoord2dv ; 
- scalar_t__ glMultiTexCoord2f ; 
- scalar_t__ glMultiTexCoord2fv ; 
- scalar_t__ glMultiTexCoord2i ; 
- scalar_t__ glMultiTexCoord2iv ; 
- scalar_t__ glMultiTexCoord2s ; 
- scalar_t__ glMultiTexCoord2sv ; 
- scalar_t__ glMultiTexCoord3d ; 
- scalar_t__ glMultiTexCoord3dv ; 
- scalar_t__ glMultiTexCoord3f ; 
- scalar_t__ glMultiTexCoord3fv ; 
- scalar_t__ glMultiTexCoord3i ; 
- scalar_t__ glMultiTexCoord3iv ; 
- scalar_t__ glMultiTexCoord3s ; 
- scalar_t__ glMultiTexCoord3sv ; 
- scalar_t__ glMultiTexCoord4d ; 
- scalar_t__ glMultiTexCoord4dv ; 
- scalar_t__ glMultiTexCoord4f ; 
- scalar_t__ glMultiTexCoord4fv ; 
- scalar_t__ glMultiTexCoord4i ; 
- scalar_t__ glMultiTexCoord4iv ; 
- scalar_t__ glMultiTexCoord4s ; 
- scalar_t__ glMultiTexCoord4sv ; 
- scalar_t__ glSampleCoverage ; 
+
+
+
+typedef scalar_t__ PFNGLSAMPLECOVERAGEPROC ;
+typedef scalar_t__ PFNGLMULTTRANSPOSEMATRIXFPROC ;
+typedef scalar_t__ PFNGLMULTTRANSPOSEMATRIXDPROC ;
+typedef scalar_t__ PFNGLMULTITEXCOORD4SVPROC ;
+typedef scalar_t__ PFNGLMULTITEXCOORD4SPROC ;
+typedef scalar_t__ PFNGLMULTITEXCOORD4IVPROC ;
+typedef scalar_t__ PFNGLMULTITEXCOORD4IPROC ;
+typedef scalar_t__ PFNGLMULTITEXCOORD4FVPROC ;
+typedef scalar_t__ PFNGLMULTITEXCOORD4FPROC ;
+typedef scalar_t__ PFNGLMULTITEXCOORD4DVPROC ;
+typedef scalar_t__ PFNGLMULTITEXCOORD4DPROC ;
+typedef scalar_t__ PFNGLMULTITEXCOORD3SVPROC ;
+typedef scalar_t__ PFNGLMULTITEXCOORD3SPROC ;
+typedef scalar_t__ PFNGLMULTITEXCOORD3IVPROC ;
+typedef scalar_t__ PFNGLMULTITEXCOORD3IPROC ;
+typedef scalar_t__ PFNGLMULTITEXCOORD3FVPROC ;
+typedef scalar_t__ PFNGLMULTITEXCOORD3FPROC ;
+typedef scalar_t__ PFNGLMULTITEXCOORD3DVPROC ;
+typedef scalar_t__ PFNGLMULTITEXCOORD3DPROC ;
+typedef scalar_t__ PFNGLMULTITEXCOORD2SVPROC ;
+typedef scalar_t__ PFNGLMULTITEXCOORD2SPROC ;
+typedef scalar_t__ PFNGLMULTITEXCOORD2IVPROC ;
+typedef scalar_t__ PFNGLMULTITEXCOORD2IPROC ;
+typedef scalar_t__ PFNGLMULTITEXCOORD2FVPROC ;
+typedef scalar_t__ PFNGLMULTITEXCOORD2FPROC ;
+typedef scalar_t__ PFNGLMULTITEXCOORD2DVPROC ;
+typedef scalar_t__ PFNGLMULTITEXCOORD2DPROC ;
+typedef scalar_t__ PFNGLMULTITEXCOORD1SVPROC ;
+typedef scalar_t__ PFNGLMULTITEXCOORD1SPROC ;
+typedef scalar_t__ PFNGLMULTITEXCOORD1IVPROC ;
+typedef scalar_t__ PFNGLMULTITEXCOORD1IPROC ;
+typedef scalar_t__ PFNGLMULTITEXCOORD1FVPROC ;
+typedef scalar_t__ PFNGLMULTITEXCOORD1FPROC ;
+typedef scalar_t__ PFNGLMULTITEXCOORD1DVPROC ;
+typedef scalar_t__ PFNGLMULTITEXCOORD1DPROC ;
+typedef scalar_t__ PFNGLLOADTRANSPOSEMATRIXFPROC ;
+typedef scalar_t__ PFNGLLOADTRANSPOSEMATRIXDPROC ;
+typedef scalar_t__ PFNGLGETCOMPRESSEDTEXIMAGEPROC ;
+typedef scalar_t__ PFNGLCOMPRESSEDTEXSUBIMAGE3DPROC ;
+typedef scalar_t__ PFNGLCOMPRESSEDTEXSUBIMAGE2DPROC ;
+typedef scalar_t__ PFNGLCOMPRESSEDTEXSUBIMAGE1DPROC ;
+typedef scalar_t__ PFNGLCOMPRESSEDTEXIMAGE3DPROC ;
+typedef scalar_t__ PFNGLCOMPRESSEDTEXIMAGE2DPROC ;
+typedef scalar_t__ PFNGLCOMPRESSEDTEXIMAGE1DPROC ;
+typedef scalar_t__ PFNGLCLIENTACTIVETEXTUREPROC ;
+typedef scalar_t__ PFNGLACTIVETEXTUREPROC ;
+typedef scalar_t__ (* GLADuserptrloadfunc ) (char*,void*) ;
+
+
+ int GLAD_GL_VERSION_1_3 ;
+ scalar_t__ glActiveTexture ;
+ scalar_t__ glClientActiveTexture ;
+ scalar_t__ glCompressedTexImage1D ;
+ scalar_t__ glCompressedTexImage2D ;
+ scalar_t__ glCompressedTexImage3D ;
+ scalar_t__ glCompressedTexSubImage1D ;
+ scalar_t__ glCompressedTexSubImage2D ;
+ scalar_t__ glCompressedTexSubImage3D ;
+ scalar_t__ glGetCompressedTexImage ;
+ scalar_t__ glLoadTransposeMatrixd ;
+ scalar_t__ glLoadTransposeMatrixf ;
+ scalar_t__ glMultTransposeMatrixd ;
+ scalar_t__ glMultTransposeMatrixf ;
+ scalar_t__ glMultiTexCoord1d ;
+ scalar_t__ glMultiTexCoord1dv ;
+ scalar_t__ glMultiTexCoord1f ;
+ scalar_t__ glMultiTexCoord1fv ;
+ scalar_t__ glMultiTexCoord1i ;
+ scalar_t__ glMultiTexCoord1iv ;
+ scalar_t__ glMultiTexCoord1s ;
+ scalar_t__ glMultiTexCoord1sv ;
+ scalar_t__ glMultiTexCoord2d ;
+ scalar_t__ glMultiTexCoord2dv ;
+ scalar_t__ glMultiTexCoord2f ;
+ scalar_t__ glMultiTexCoord2fv ;
+ scalar_t__ glMultiTexCoord2i ;
+ scalar_t__ glMultiTexCoord2iv ;
+ scalar_t__ glMultiTexCoord2s ;
+ scalar_t__ glMultiTexCoord2sv ;
+ scalar_t__ glMultiTexCoord3d ;
+ scalar_t__ glMultiTexCoord3dv ;
+ scalar_t__ glMultiTexCoord3f ;
+ scalar_t__ glMultiTexCoord3fv ;
+ scalar_t__ glMultiTexCoord3i ;
+ scalar_t__ glMultiTexCoord3iv ;
+ scalar_t__ glMultiTexCoord3s ;
+ scalar_t__ glMultiTexCoord3sv ;
+ scalar_t__ glMultiTexCoord4d ;
+ scalar_t__ glMultiTexCoord4dv ;
+ scalar_t__ glMultiTexCoord4f ;
+ scalar_t__ glMultiTexCoord4fv ;
+ scalar_t__ glMultiTexCoord4i ;
+ scalar_t__ glMultiTexCoord4iv ;
+ scalar_t__ glMultiTexCoord4s ;
+ scalar_t__ glMultiTexCoord4sv ;
+ scalar_t__ glSampleCoverage ;
 
 __attribute__((used)) static void glad_gl_load_GL_VERSION_1_3( GLADuserptrloadfunc load, void* userptr) {
     if(!GLAD_GL_VERSION_1_3) return;

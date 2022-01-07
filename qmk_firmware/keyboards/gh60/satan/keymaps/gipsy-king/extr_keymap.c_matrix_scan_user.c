@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  animate_cursor (int) ; 
- scalar_t__ interval_time ; 
- int /*<<< orphan*/  last_timer ; 
- int /*<<< orphan*/  reset_chars () ; 
- scalar_t__ reset_time ; 
- int /*<<< orphan*/  reset_timer ; 
- scalar_t__ timer_elapsed (int /*<<< orphan*/ ) ; 
- int timer_pos ; 
- int /*<<< orphan*/  timer_read () ; 
+ int animate_cursor (int) ;
+ scalar_t__ interval_time ;
+ int last_timer ;
+ int reset_chars () ;
+ scalar_t__ reset_time ;
+ int reset_timer ;
+ scalar_t__ timer_elapsed (int ) ;
+ int timer_pos ;
+ int timer_read () ;
 
 void matrix_scan_user(void) {
   if (timer_elapsed(reset_timer) > reset_time) {

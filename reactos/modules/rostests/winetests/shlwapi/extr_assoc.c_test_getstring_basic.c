@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  scalar_t__ HRESULT ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSOCSTR_EXECUTABLE ; 
- int /*<<< orphan*/  ASSOCSTR_FRIENDLYAPPNAME ; 
- int /*<<< orphan*/  ERROR_FILE_NOT_FOUND ; 
- int /*<<< orphan*/  ERROR_NOT_FOUND ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HEAP_ZERO_MEMORY ; 
- scalar_t__ HRESULT_FROM_WIN32 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ S_FALSE ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  dotHtml ; 
- int /*<<< orphan*/  expect (int,int) ; 
- int /*<<< orphan*/  expect_hr (scalar_t__,scalar_t__) ; 
- int lstrlenW (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
- int /*<<< orphan*/  open ; 
- scalar_t__ pAssocQueryStringW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  skip (char*) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
+
+
+
+typedef int WCHAR ;
+typedef scalar_t__ HRESULT ;
+typedef int DWORD ;
+
+
+ int ASSOCSTR_EXECUTABLE ;
+ int ASSOCSTR_FRIENDLYAPPNAME ;
+ int ERROR_FILE_NOT_FOUND ;
+ int ERROR_NOT_FOUND ;
+ int GetProcessHeap () ;
+ int HEAP_ZERO_MEMORY ;
+ scalar_t__ HRESULT_FROM_WIN32 (int ) ;
+ int * HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,int *) ;
+ scalar_t__ S_FALSE ;
+ scalar_t__ S_OK ;
+ int dotHtml ;
+ int expect (int,int) ;
+ int expect_hr (scalar_t__,scalar_t__) ;
+ int lstrlenW (int *) ;
+ int ok (int,char*,scalar_t__) ;
+ int open ;
+ scalar_t__ pAssocQueryStringW (int ,int ,int ,int ,int *,int*) ;
+ int skip (char*) ;
+ int win_skip (char*) ;
 
 __attribute__((used)) static void test_getstring_basic(void)
 {
@@ -49,7 +49,7 @@ __attribute__((used)) static void test_getstring_basic(void)
         return;
     }
 
-    hr = pAssocQueryStringW(0, ASSOCSTR_EXECUTABLE, dotHtml, open, NULL, &len);
+    hr = pAssocQueryStringW(0, ASSOCSTR_EXECUTABLE, dotHtml, open, ((void*)0), &len);
     expect_hr(S_FALSE, hr);
     if (hr != S_FALSE)
     {
@@ -73,11 +73,11 @@ __attribute__((used)) static void test_getstring_basic(void)
     expect(len, len2);
     expect(len, slen);
 
-    hr = pAssocQueryStringW(0, ASSOCSTR_FRIENDLYAPPNAME, dotHtml, open, NULL,
+    hr = pAssocQueryStringW(0, ASSOCSTR_FRIENDLYAPPNAME, dotHtml, open, ((void*)0),
                            &len);
     ok(hr == S_FALSE ||
-       hr == HRESULT_FROM_WIN32(ERROR_FILE_NOT_FOUND) /* Win9x/NT4 */ ||
-       hr == HRESULT_FROM_WIN32(ERROR_NOT_FOUND), /* Win8 */
+       hr == HRESULT_FROM_WIN32(ERROR_FILE_NOT_FOUND) ||
+       hr == HRESULT_FROM_WIN32(ERROR_NOT_FOUND),
        "Unexpected result : %08x\n", hr);
     if (hr != S_FALSE)
     {

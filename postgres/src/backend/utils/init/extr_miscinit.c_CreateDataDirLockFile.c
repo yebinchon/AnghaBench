@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  CreateLockFile (int /*<<< orphan*/ ,int,char*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DIRECTORY_LOCK_FILE ; 
- int /*<<< orphan*/  DataDir ; 
+ int CreateLockFile (int ,int,char*,int,int ) ;
+ int DIRECTORY_LOCK_FILE ;
+ int DataDir ;
 
 void
 CreateDataDirLockFile(bool amPostmaster)
 {
-	CreateLockFile(DIRECTORY_LOCK_FILE, amPostmaster, "", true, DataDir);
+ CreateLockFile(DIRECTORY_LOCK_FILE, amPostmaster, "", 1, DataDir);
 }

@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ZSTD_dictLoadMethod_e ;
-typedef  int /*<<< orphan*/  ZSTD_dictContentType_e ;
-typedef  int /*<<< orphan*/  ZSTD_compressionParameters ;
-struct TYPE_3__ {scalar_t__ streamStage; int /*<<< orphan*/ * cdictLocal; int /*<<< orphan*/ * cdict; int /*<<< orphan*/  customMem; scalar_t__ pledgedSrcSizePlusOne; int /*<<< orphan*/  requestedParams; scalar_t__ staticSize; } ;
-typedef  TYPE_1__ ZSTD_CCtx ;
-typedef  int /*<<< orphan*/  U32 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEBUGLOG (int,char*,int /*<<< orphan*/ ) ; 
- size_t ERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * ZSTD_createCDict_advanced (void const*,size_t,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/  const,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ZSTD_freeCDict (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ZSTD_getCParamsFromCCtxParams (int /*<<< orphan*/ *,scalar_t__,size_t) ; 
- int /*<<< orphan*/  memory_allocation ; 
- int /*<<< orphan*/  stage_wrong ; 
- scalar_t__ zcss_init ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int ZSTD_dictLoadMethod_e ;
+typedef int ZSTD_dictContentType_e ;
+typedef int ZSTD_compressionParameters ;
+struct TYPE_3__ {scalar_t__ streamStage; int * cdictLocal; int * cdict; int customMem; scalar_t__ pledgedSrcSizePlusOne; int requestedParams; scalar_t__ staticSize; } ;
+typedef TYPE_1__ ZSTD_CCtx ;
+typedef int U32 ;
+
+
+ int DEBUGLOG (int,char*,int ) ;
+ size_t ERROR (int ) ;
+ int * ZSTD_createCDict_advanced (void const*,size_t,int ,int ,int const,int ) ;
+ int ZSTD_freeCDict (int *) ;
+ int ZSTD_getCParamsFromCCtxParams (int *,scalar_t__,size_t) ;
+ int memory_allocation ;
+ int stage_wrong ;
+ scalar_t__ zcss_init ;
 
 size_t ZSTD_CCtx_loadDictionary_advanced(
         ZSTD_CCtx* cctx, const void* dict, size_t dictSize,
         ZSTD_dictLoadMethod_e dictLoadMethod, ZSTD_dictContentType_e dictContentType)
 {
     if (cctx->streamStage != zcss_init) return ERROR(stage_wrong);
-    if (cctx->staticSize) return ERROR(memory_allocation);  /* no malloc for static CCtx */
+    if (cctx->staticSize) return ERROR(memory_allocation);
     DEBUGLOG(4, "ZSTD_CCtx_loadDictionary_advanced (size: %u)", (U32)dictSize);
-    ZSTD_freeCDict(cctx->cdictLocal);  /* in case one already exists */
-    if (dict==NULL || dictSize==0) {   /* no dictionary mode */
-        cctx->cdictLocal = NULL;
-        cctx->cdict = NULL;
+    ZSTD_freeCDict(cctx->cdictLocal);
+    if (dict==((void*)0) || dictSize==0) {
+        cctx->cdictLocal = ((void*)0);
+        cctx->cdict = ((void*)0);
     } else {
         ZSTD_compressionParameters const cParams =
                 ZSTD_getCParamsFromCCtxParams(&cctx->requestedParams, cctx->pledgedSrcSizePlusOne-1, dictSize);
@@ -47,7 +47,7 @@ size_t ZSTD_CCtx_loadDictionary_advanced(
                                 dictLoadMethod, dictContentType,
                                 cParams, cctx->customMem);
         cctx->cdict = cctx->cdictLocal;
-        if (cctx->cdictLocal == NULL)
+        if (cctx->cdictLocal == ((void*)0))
             return ERROR(memory_allocation);
     }
     return 0;

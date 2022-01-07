@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int int64_t ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int int64_t ;
 struct TYPE_7__ {int strict_std_compliance; } ;
-struct TYPE_6__ {int channel_count; int height; int width; int compression; TYPE_2__* avctx; int /*<<< orphan*/  gb; int /*<<< orphan*/ * palette; int /*<<< orphan*/  color_mode; void* channel_depth; } ;
-typedef  TYPE_1__ PSDContext ;
+struct TYPE_6__ {int channel_count; int height; int width; int compression; TYPE_2__* avctx; int gb; int * palette; int color_mode; void* channel_depth; } ;
+typedef TYPE_1__ PSDContext ;
 
-/* Variables and functions */
- int AVERROR_EXPERIMENTAL ; 
- int AVERROR_INVALIDDATA ; 
- int AVERROR_PATCHWELCOME ; 
- int /*<<< orphan*/  AVPALETTE_SIZE ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int FFMIN (int,int) ; 
- int FF_COMPLIANCE_EXPERIMENTAL ; 
- int HAVE_BIGENDIAN ; 
- int MKTAG (char,char,char,char) ; 
- int /*<<< orphan*/  PSD_BITMAP ; 
- int /*<<< orphan*/  PSD_CMYK ; 
- int /*<<< orphan*/  PSD_DUOTONE ; 
- int /*<<< orphan*/  PSD_GRAYSCALE ; 
- int /*<<< orphan*/  PSD_INDEXED ; 
- int /*<<< orphan*/  PSD_LAB ; 
- int /*<<< orphan*/  PSD_MULTICHANNEL ; 
- int /*<<< orphan*/  PSD_RGB ; 
- int /*<<< orphan*/  av_log (TYPE_2__*,int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  avpriv_request_sample (TYPE_2__*,char*) ; 
- void* bytestream2_get_be16 (int /*<<< orphan*/ *) ; 
- void* bytestream2_get_be32 (int /*<<< orphan*/ *) ; 
- int bytestream2_get_bytes_left (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bytestream2_get_byteu (int /*<<< orphan*/ *) ; 
- int bytestream2_get_le32 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bytestream2_skip (int /*<<< orphan*/ *,int) ; 
- int ff_set_dimensions (TYPE_2__*,int,int) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
+
+ int AVERROR_EXPERIMENTAL ;
+ int AVERROR_INVALIDDATA ;
+ int AVERROR_PATCHWELCOME ;
+ int AVPALETTE_SIZE ;
+ int AV_LOG_ERROR ;
+ int FFMIN (int,int) ;
+ int FF_COMPLIANCE_EXPERIMENTAL ;
+ int HAVE_BIGENDIAN ;
+ int MKTAG (char,char,char,char) ;
+ int PSD_BITMAP ;
+ int PSD_CMYK ;
+ int PSD_DUOTONE ;
+ int PSD_GRAYSCALE ;
+ int PSD_INDEXED ;
+ int PSD_LAB ;
+ int PSD_MULTICHANNEL ;
+ int PSD_RGB ;
+ int av_log (TYPE_2__*,int ,char*,...) ;
+ int avpriv_request_sample (TYPE_2__*,char*) ;
+ void* bytestream2_get_be16 (int *) ;
+ void* bytestream2_get_be32 (int *) ;
+ int bytestream2_get_bytes_left (int *) ;
+ int bytestream2_get_byteu (int *) ;
+ int bytestream2_get_le32 (int *) ;
+ int bytestream2_skip (int *,int) ;
+ int ff_set_dimensions (TYPE_2__*,int,int) ;
+ int memset (int *,int,int ) ;
 
 __attribute__((used)) static int decode_header(PSDContext * s)
 {
@@ -52,7 +52,7 @@ __attribute__((used)) static int decode_header(PSDContext * s)
     int64_t len_section;
     int ret = 0;
 
-    if (bytestream2_get_bytes_left(&s->gb) < 30) {/* File header section + color map data section length */
+    if (bytestream2_get_bytes_left(&s->gb) < 30) {
         av_log(s->avctx, AV_LOG_ERROR, "Header too short to parse.\n");
         return AVERROR_INVALIDDATA;
     }
@@ -69,7 +69,7 @@ __attribute__((used)) static int decode_header(PSDContext * s)
         return AVERROR_INVALIDDATA;
     }
 
-    bytestream2_skip(&s->gb, 6);/* reserved */
+    bytestream2_skip(&s->gb, 6);
 
     s->channel_count = bytestream2_get_be16(&s->gb);
     if ((s->channel_count < 1) || (s->channel_count > 56)) {
@@ -132,14 +132,14 @@ __attribute__((used)) static int decode_header(PSDContext * s)
         return AVERROR_INVALIDDATA;
     }
 
-    /* color map data */
+
     len_section = bytestream2_get_be32(&s->gb);
     if (len_section < 0) {
         av_log(s->avctx, AV_LOG_ERROR, "Negative size for color map data section.\n");
         return AVERROR_INVALIDDATA;
     }
 
-    if (bytestream2_get_bytes_left(&s->gb) < (len_section + 4)) { /* section and len next section */
+    if (bytestream2_get_bytes_left(&s->gb) < (len_section + 4)) {
         av_log(s->avctx, AV_LOG_ERROR, "Incomplete file.\n");
         return AVERROR_INVALIDDATA;
     }
@@ -153,20 +153,20 @@ __attribute__((used)) static int decode_header(PSDContext * s)
     }
     bytestream2_skip(&s->gb, len_section);
 
-    /* image ressources */
+
     len_section = bytestream2_get_be32(&s->gb);
     if (len_section < 0) {
         av_log(s->avctx, AV_LOG_ERROR, "Negative size for image ressources section.\n");
         return AVERROR_INVALIDDATA;
     }
 
-    if (bytestream2_get_bytes_left(&s->gb) < (len_section + 4)) { /* section and len next section */
+    if (bytestream2_get_bytes_left(&s->gb) < (len_section + 4)) {
         av_log(s->avctx, AV_LOG_ERROR, "Incomplete file.\n");
         return AVERROR_INVALIDDATA;
     }
     bytestream2_skip(&s->gb, len_section);
 
-    /* layers and masks */
+
     len_section = bytestream2_get_be32(&s->gb);
     if (len_section < 0) {
         av_log(s->avctx, AV_LOG_ERROR, "Negative size for layers and masks data section.\n");
@@ -179,7 +179,7 @@ __attribute__((used)) static int decode_header(PSDContext * s)
     }
     bytestream2_skip(&s->gb, len_section);
 
-    /* image section */
+
     if (bytestream2_get_bytes_left(&s->gb) < 2) {
         av_log(s->avctx, AV_LOG_ERROR, "File without image data section.\n");
         return AVERROR_INVALIDDATA;

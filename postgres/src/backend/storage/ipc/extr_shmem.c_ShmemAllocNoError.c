@@ -1,67 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {scalar_t__ freeoffset; scalar_t__ totalsize; } ;
-typedef  scalar_t__ Size ;
+typedef scalar_t__ Size ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Assert (int) ; 
- scalar_t__ CACHELINEALIGN (void*) ; 
- scalar_t__ ShmemBase ; 
- int /*<<< orphan*/  ShmemLock ; 
- TYPE_1__* ShmemSegHdr ; 
- int /*<<< orphan*/  SpinLockAcquire (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SpinLockRelease (int /*<<< orphan*/ ) ; 
+
+ int Assert (int) ;
+ scalar_t__ CACHELINEALIGN (void*) ;
+ scalar_t__ ShmemBase ;
+ int ShmemLock ;
+ TYPE_1__* ShmemSegHdr ;
+ int SpinLockAcquire (int ) ;
+ int SpinLockRelease (int ) ;
 
 void *
 ShmemAllocNoError(Size size)
 {
-	Size		newStart;
-	Size		newFree;
-	void	   *newSpace;
+ Size newStart;
+ Size newFree;
+ void *newSpace;
+ size = CACHELINEALIGN(size);
 
-	/*
-	 * Ensure all space is adequately aligned.  We used to only MAXALIGN this
-	 * space but experience has proved that on modern systems that is not good
-	 * enough.  Many parts of the system are very sensitive to critical data
-	 * structures getting split across cache line boundaries.  To avoid that,
-	 * attempt to align the beginning of the allocation to a cache line
-	 * boundary.  The calling code will still need to be careful about how it
-	 * uses the allocated space - e.g. by padding each element in an array of
-	 * structures out to a power-of-two size - but without this, even that
-	 * won't be sufficient.
-	 */
-	size = CACHELINEALIGN(size);
+ Assert(ShmemSegHdr != ((void*)0));
 
-	Assert(ShmemSegHdr != NULL);
+ SpinLockAcquire(ShmemLock);
 
-	SpinLockAcquire(ShmemLock);
+ newStart = ShmemSegHdr->freeoffset;
 
-	newStart = ShmemSegHdr->freeoffset;
+ newFree = newStart + size;
+ if (newFree <= ShmemSegHdr->totalsize)
+ {
+  newSpace = (void *) ((char *) ShmemBase + newStart);
+  ShmemSegHdr->freeoffset = newFree;
+ }
+ else
+  newSpace = ((void*)0);
 
-	newFree = newStart + size;
-	if (newFree <= ShmemSegHdr->totalsize)
-	{
-		newSpace = (void *) ((char *) ShmemBase + newStart);
-		ShmemSegHdr->freeoffset = newFree;
-	}
-	else
-		newSpace = NULL;
+ SpinLockRelease(ShmemLock);
 
-	SpinLockRelease(ShmemLock);
 
-	/* note this assert is okay with newSpace == NULL */
-	Assert(newSpace == (void *) CACHELINEALIGN(newSpace));
+ Assert(newSpace == (void *) CACHELINEALIGN(newSpace));
 
-	return newSpace;
+ return newSpace;
 }

@@ -1,63 +1,63 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int nReshowTime; int nAutoPopTime; int nInitialTime; } ;
-typedef  TYPE_1__ TOOLTIPS_INFO ;
-typedef  int /*<<< orphan*/  LRESULT ;
-typedef  int INT ;
-typedef  int DWORD ;
+typedef TYPE_1__ TOOLTIPS_INFO ;
+typedef int LRESULT ;
+typedef int INT ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int GetDoubleClickTime () ; 
-#define  TTDT_AUTOMATIC 131 
-#define  TTDT_AUTOPOP 130 
-#define  TTDT_INITIAL 129 
-#define  TTDT_RESHOW 128 
- int /*<<< orphan*/  WARN (char*,int) ; 
+
+ int GetDoubleClickTime () ;
+
+
+
+
+ int WARN (char*,int) ;
 
 __attribute__((used)) static LRESULT
 TOOLTIPS_SetDelayTime (TOOLTIPS_INFO *infoPtr, DWORD duration, INT nTime)
 {
     switch (duration) {
-    case TTDT_AUTOMATIC:
+    case 131:
         if (nTime <= 0)
-	    nTime = GetDoubleClickTime();
-	infoPtr->nReshowTime    = nTime / 5;
-	infoPtr->nAutoPopTime   = nTime * 10;
-	infoPtr->nInitialTime   = nTime;
-	break;
+     nTime = GetDoubleClickTime();
+ infoPtr->nReshowTime = nTime / 5;
+ infoPtr->nAutoPopTime = nTime * 10;
+ infoPtr->nInitialTime = nTime;
+ break;
 
-    case TTDT_RESHOW:
+    case 128:
         if(nTime < 0)
-	    nTime = GetDoubleClickTime() / 5;
-	infoPtr->nReshowTime = nTime;
-	break;
+     nTime = GetDoubleClickTime() / 5;
+ infoPtr->nReshowTime = nTime;
+ break;
 
-    case TTDT_AUTOPOP:
+    case 130:
         if(nTime < 0)
-	    nTime = GetDoubleClickTime() * 10;
-	infoPtr->nAutoPopTime = nTime;
-	break;
+     nTime = GetDoubleClickTime() * 10;
+ infoPtr->nAutoPopTime = nTime;
+ break;
 
-    case TTDT_INITIAL:
+    case 129:
         if(nTime < 0)
-	    nTime = GetDoubleClickTime();
-	infoPtr->nInitialTime = nTime;
-	    break;
+     nTime = GetDoubleClickTime();
+ infoPtr->nInitialTime = nTime;
+     break;
 
     default:
         WARN("Invalid duration flag %x\n", duration);
-	break;
+ break;
     }
 
     return 0;

@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct stat {scalar_t__ st_dev; scalar_t__ st_ino; } ;
 struct dirent {char* d_name; scalar_t__ d_ino; } ;
-typedef  scalar_t__ ino_t ;
-typedef  int /*<<< orphan*/  dots ;
-typedef  scalar_t__ dev_t ;
-typedef  int /*<<< orphan*/  DIR ;
+typedef scalar_t__ ino_t ;
+typedef int dots ;
+typedef scalar_t__ dev_t ;
+typedef int DIR ;
 
-/* Variables and functions */
- int MAX (size_t,size_t) ; 
- int PATH_MAX ; 
- int /*<<< orphan*/  _D_ALLOC_NAMLEN (struct dirent*) ; 
- size_t _D_EXACT_NAMLEN (struct dirent*) ; 
- int /*<<< orphan*/  closedir (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (char*) ; 
- char* malloc (size_t) ; 
- char* memcpy (char*,char const*,size_t) ; 
- int /*<<< orphan*/  memmove (char*,char*,int) ; 
- void* mempcpy (char*,char const*,int) ; 
- int /*<<< orphan*/ * opendir (char const*) ; 
- struct dirent* readdir (int /*<<< orphan*/ *) ; 
- char* realloc (char*,size_t) ; 
- scalar_t__ stat (char const*,struct stat*) ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
+
+ int MAX (size_t,size_t) ;
+ int PATH_MAX ;
+ int _D_ALLOC_NAMLEN (struct dirent*) ;
+ size_t _D_EXACT_NAMLEN (struct dirent*) ;
+ int closedir (int *) ;
+ int free (char*) ;
+ char* malloc (size_t) ;
+ char* memcpy (char*,char const*,size_t) ;
+ int memmove (char*,char*,int) ;
+ void* mempcpy (char*,char const*,int) ;
+ int * opendir (char const*) ;
+ struct dirent* readdir (int *) ;
+ char* realloc (char*,size_t) ;
+ scalar_t__ stat (char const*,struct stat*) ;
+ int strcpy (char*,char*) ;
 
 char* getcwd( char* buf, size_t size ) {
-    static const char dots[] = "../../../../../../../../../../../../../../../../../../../../../../../\
-        ../../../../../../../../../../../../../../../../../../../../../../../../../../\
-        ../../../../../../../../../../../../../../../../../../../../../../../../../..";
+    static const char dots[] = "../../../../../../../../../../../../../../../../../../../../../../../        ../../../../../../../../../../../../../../../../../../../../../../../../../../        ../../../../../../../../../../../../../../../../../../../../../../../../../..";
+
+
     const char* dotp = &dots[ sizeof( dots ) ];
     const char* dotlist = dots;
     size_t dotsize = sizeof( dots ) - 1;
@@ -49,20 +49,20 @@ char* getcwd( char* buf, size_t size ) {
     size_t allocated = size;
 
     if ( size == 0 ) {
-        if ( buf != NULL ) {
-            return NULL;
+        if ( buf != ((void*)0) ) {
+            return ((void*)0);
         }
 
         allocated = PATH_MAX + 1;
     }
 
-    if ( buf != NULL ) {
+    if ( buf != ((void*)0) ) {
         path = buf;
     } else {
         path = malloc( allocated );
 
-        if ( path == NULL ) {
-            return NULL;
+        if ( path == ((void*)0) ) {
+            return ((void*)0);
         }
     }
 
@@ -90,49 +90,49 @@ char* getcwd( char* buf, size_t size ) {
         ino_t dotino;
         char mount_point;
 
-        /* Look at the parent directory.  */
+
 
         if ( dotp == dotlist ) {
-            /* My, what a deep directory tree you have, Grandma.  */
+
 
             char* new;
 
             if ( dotlist == dots ) {
                 new = malloc( dotsize * 2 + 1 );
 
-                if ( new == NULL ) {
+                if ( new == ((void*)0) ) {
                     goto lose;
                 }
 
-#ifdef HAVE_MEMPCPY
-                dotp = mempcpy( new, dots, dotsize );
-#else
+
+
+
                 memcpy( new, dots, dotsize );
                 dotp = &new[ dotsize ];
-#endif
+
             } else {
                 new = realloc( ( void* )dotlist, dotsize * 2 + 1 );
 
-                if ( new == NULL ) {
+                if ( new == ((void*)0) ) {
                     goto lose;
                 }
 
                 dotp = &new[ dotsize ];
             }
-#ifdef HAVE_MEMPCPY
-            *( ( char* )mempcpy( ( char* )dotp, new, dotsize ) ) = '\0';
-            dotsize *= 2;
-#else
+
+
+
+
             memcpy( ( char* )dotp, new, dotsize );
             dotsize *= 2;
             new[ dotsize ] = '\0';
-#endif
+
             dotlist = new;
         }
 
         dotp -= 3;
 
-        /* Figure out if this directory is a mount point. */
+
 
         if ( stat( dotp, &st ) < 0 ) {
             goto lose;
@@ -142,15 +142,15 @@ char* getcwd( char* buf, size_t size ) {
         dotino = st.st_ino;
         mount_point = dotdev != thisdev;
 
-        /* Search for the last directory. */
+
 
         dirstream = opendir( dotp );
 
-        if ( dirstream == NULL ) {
+        if ( dirstream == ((void*)0) ) {
             goto lose;
         }
 
-        while ( ( d = readdir( dirstream ) ) != NULL ) {
+        while ( ( d = readdir( dirstream ) ) != ((void*)0) ) {
             if ( d->d_name[ 0 ] == '.' &&
                  ( d->d_name[ 1 ] == '\0' || (d->d_name[ 1 ] == '.' && d->d_name[ 2 ] == '\0' ) ) ) {
                 continue;
@@ -159,22 +159,14 @@ char* getcwd( char* buf, size_t size ) {
             if ( mount_point || ( ino_t )d->d_ino == thisino ) {
                 char name[ dotlist + dotsize - dotp + 1 + _D_ALLOC_NAMLEN( d ) ];
 
-#ifdef HAVE_MEMPCPY
-                char *tmp = mempcpy( name, dotp, dotlist + dotsize - dotp );
-                *tmp++ = '/';
-                strcpy( tmp, d->d_name );
-#else
+
+
+
+
+
                 memcpy( name, dotp, dotlist + dotsize - dotp );
                 name[ dotlist + dotsize - dotp ] = '/';
                 strcpy( &name[ dotlist + dotsize - dotp + 1 ], d->d_name );
-#endif
-
-                /* We don't fail here if we cannot stat() a directory entry.
-                   This can happen when (network) filesystems fail.  If this
-                   entry is in fact the one we are looking for we will find
-                   out soon as we reach the end of the directory without
-                   having found anything.  */
-
                 if ( stat( name, &st ) >= 0 &&
                      st.st_dev == thisdev && st.st_ino == thisino ) {
                     break;
@@ -182,7 +174,7 @@ char* getcwd( char* buf, size_t size ) {
             }
         }
 
-        if ( d == NULL ) {
+        if ( d == ((void*)0) ) {
             ( void )closedir( dirstream );
 
             goto lose;
@@ -200,13 +192,13 @@ char* getcwd( char* buf, size_t size ) {
                     allocated = 2 * MAX( allocated, namlen );
                     tmp = realloc( path, allocated );
 
-                    if ( tmp == NULL ) {
+                    if ( tmp == ((void*)0) ) {
                         ( void )closedir( dirstream );
                         goto lose;
                     }
 
-                    /* Move current contents up to the end of the buffer.
-                       This is guaranteed to be non-overlapping.  */
+
+
 
                     pathp = memcpy(
                         tmp + allocated - ( path + oldsize - pathp ),
@@ -246,9 +238,9 @@ lose:
     }
 
 lose2:
-    if ( buf == NULL ) {
+    if ( buf == ((void*)0) ) {
         free( path );
     }
 
-    return NULL;
+    return ((void*)0);
 }

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int chunk_count; TYPE_1__* chunks; } ;
-struct TYPE_4__ {int /*<<< orphan*/  map; } ;
-typedef  TYPE_1__ Chunk ;
+struct TYPE_4__ {int map; } ;
+typedef TYPE_1__ Chunk ;
 
-/* Variables and functions */
- int _hit_test (int /*<<< orphan*/ *,int,int,float,float,float,float,float,float,int*,int*,int*) ; 
- int chunk_distance (TYPE_1__*,int,int) ; 
- int chunked (float) ; 
- TYPE_2__* g ; 
- int /*<<< orphan*/  get_sight_vector (float,float,float*,float*,float*) ; 
- scalar_t__ powf (int,int) ; 
- float sqrtf (scalar_t__) ; 
+
+ int _hit_test (int *,int,int,float,float,float,float,float,float,int*,int*,int*) ;
+ int chunk_distance (TYPE_1__*,int,int) ;
+ int chunked (float) ;
+ TYPE_2__* g ;
+ int get_sight_vector (float,float,float*,float*,float*) ;
+ scalar_t__ powf (int,int) ;
+ float sqrtf (scalar_t__) ;
 
 int hit_test(
     int previous, float x, float y, float z, float rx, float ry,

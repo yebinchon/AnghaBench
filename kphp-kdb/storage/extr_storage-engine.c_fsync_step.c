@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_5__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_5__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_8__ {scalar_t__ fd_wronly; } ;
-typedef  TYPE_2__ storage_binlog_file_t ;
-struct TYPE_7__ {int /*<<< orphan*/  sigev_notify; } ;
+typedef TYPE_2__ storage_binlog_file_t ;
+struct TYPE_7__ {int sigev_notify; } ;
 struct TYPE_9__ {scalar_t__ aio_fildes; TYPE_1__ aio_sigevent; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  O_SYNC ; 
- int /*<<< orphan*/  SIGEV_NONE ; 
- int /*<<< orphan*/  aio_fsync (int /*<<< orphan*/ ,TYPE_5__*) ; 
- TYPE_5__ aio_fsync_cbp ; 
- scalar_t__ binlog_disabled ; 
- TYPE_2__* dirty_binlog_queue_pop () ; 
- scalar_t__ fsync_step_delay ; 
- scalar_t__ get_aio_inprogress () ; 
- TYPE_2__* last_fsync_binlog_file ; 
- scalar_t__ last_fsync_step_time ; 
- scalar_t__ now ; 
- int /*<<< orphan*/  tot_aio_fsync_queries ; 
+
+ int O_SYNC ;
+ int SIGEV_NONE ;
+ int aio_fsync (int ,TYPE_5__*) ;
+ TYPE_5__ aio_fsync_cbp ;
+ scalar_t__ binlog_disabled ;
+ TYPE_2__* dirty_binlog_queue_pop () ;
+ scalar_t__ fsync_step_delay ;
+ scalar_t__ get_aio_inprogress () ;
+ TYPE_2__* last_fsync_binlog_file ;
+ scalar_t__ last_fsync_step_time ;
+ scalar_t__ now ;
+ int tot_aio_fsync_queries ;
 
 __attribute__((used)) static void fsync_step (void) {
   if (binlog_disabled || get_aio_inprogress ()) {
@@ -43,7 +43,7 @@ __attribute__((used)) static void fsync_step (void) {
   storage_binlog_file_t *B;
   while (1) {
     B = dirty_binlog_queue_pop ();
-    if (B == NULL) {
+    if (B == ((void*)0)) {
       return;
     }
     if (B->fd_wronly >= 0) {

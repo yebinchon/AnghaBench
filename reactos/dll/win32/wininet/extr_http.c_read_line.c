@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int read_pos; int read_size; int /*<<< orphan*/  read_section; int /*<<< orphan*/ * read_buf; } ;
-typedef  TYPE_1__ http_request_t ;
-typedef  char* LPSTR ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  BYTE ;
 
-/* Variables and functions */
- int ERROR_SUCCESS ; 
- int /*<<< orphan*/  EnterCriticalSection (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LeaveCriticalSection (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TRACE (char*,...) ; 
- int /*<<< orphan*/  WARN (char*,int) ; 
- int /*<<< orphan*/  debugstr_a (char*) ; 
- int /*<<< orphan*/ * memchr (int /*<<< orphan*/ *,char,int) ; 
- int /*<<< orphan*/  memcpy (char*,int /*<<< orphan*/ *,int) ; 
- int min (int,int) ; 
- int read_more_data (TYPE_1__*,int) ; 
- int /*<<< orphan*/  remove_data (TYPE_1__*,int) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int read_pos; int read_size; int read_section; int * read_buf; } ;
+typedef TYPE_1__ http_request_t ;
+typedef char* LPSTR ;
+typedef int DWORD ;
+typedef int BYTE ;
+
+
+ int ERROR_SUCCESS ;
+ int EnterCriticalSection (int *) ;
+ int LeaveCriticalSection (int *) ;
+ int TRACE (char*,...) ;
+ int WARN (char*,int) ;
+ int debugstr_a (char*) ;
+ int * memchr (int *,char,int) ;
+ int memcpy (char*,int *,int) ;
+ int min (int,int) ;
+ int read_more_data (TYPE_1__*,int) ;
+ int remove_data (TYPE_1__*,int) ;
 
 __attribute__((used)) static DWORD read_line( http_request_t *req, LPSTR buffer, DWORD *len )
 {

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct kvm_ioapic_state {int /*<<< orphan*/  irr; } ;
-struct kvm_ioapic {int /*<<< orphan*/  lock; int /*<<< orphan*/  irr_delivered; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct kvm_ioapic_state {int irr; } ;
+struct kvm_ioapic {int lock; int irr_delivered; } ;
 struct TYPE_2__ {struct kvm_ioapic* vioapic; } ;
 struct kvm {TYPE_1__ arch; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memcpy (struct kvm_ioapic_state*,struct kvm_ioapic*,int) ; 
- int /*<<< orphan*/  spin_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock (int /*<<< orphan*/ *) ; 
+
+ int memcpy (struct kvm_ioapic_state*,struct kvm_ioapic*,int) ;
+ int spin_lock (int *) ;
+ int spin_unlock (int *) ;
 
 void kvm_get_ioapic(struct kvm *kvm, struct kvm_ioapic_state *state)
 {
-	struct kvm_ioapic *ioapic = kvm->arch.vioapic;
+ struct kvm_ioapic *ioapic = kvm->arch.vioapic;
 
-	spin_lock(&ioapic->lock);
-	memcpy(state, ioapic, sizeof(struct kvm_ioapic_state));
-	state->irr &= ~ioapic->irr_delivered;
-	spin_unlock(&ioapic->lock);
+ spin_lock(&ioapic->lock);
+ memcpy(state, ioapic, sizeof(struct kvm_ioapic_state));
+ state->irr &= ~ioapic->irr_delivered;
+ spin_unlock(&ioapic->lock);
 }

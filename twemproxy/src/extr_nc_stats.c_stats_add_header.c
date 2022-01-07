@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct stats_buffer {char* data; int len; } ;
-struct stats {int /*<<< orphan*/  ncurr_conn_str; int /*<<< orphan*/  ntotal_conn_str; int /*<<< orphan*/  timestamp_str; int /*<<< orphan*/  uptime_str; int /*<<< orphan*/  version; int /*<<< orphan*/  version_str; int /*<<< orphan*/  source; int /*<<< orphan*/  source_str; int /*<<< orphan*/  service; int /*<<< orphan*/  service_str; scalar_t__ start_ts; struct stats_buffer buf; } ;
-typedef  scalar_t__ rstatus_t ;
-typedef  scalar_t__ int64_t ;
+struct stats {int ncurr_conn_str; int ntotal_conn_str; int timestamp_str; int uptime_str; int version; int version_str; int source; int source_str; int service; int service_str; scalar_t__ start_ts; struct stats_buffer buf; } ;
+typedef scalar_t__ rstatus_t ;
+typedef scalar_t__ int64_t ;
 
-/* Variables and functions */
- scalar_t__ NC_OK ; 
- scalar_t__ conn_ncurr_conn () ; 
- scalar_t__ conn_ntotal_conn () ; 
- scalar_t__ stats_add_num (struct stats*,int /*<<< orphan*/ *,scalar_t__) ; 
- scalar_t__ stats_add_string (struct stats*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ time (int /*<<< orphan*/ *) ; 
+
+ scalar_t__ NC_OK ;
+ scalar_t__ conn_ncurr_conn () ;
+ scalar_t__ conn_ntotal_conn () ;
+ scalar_t__ stats_add_num (struct stats*,int *,scalar_t__) ;
+ scalar_t__ stats_add_string (struct stats*,int *,int *) ;
+ scalar_t__ time (int *) ;
 
 __attribute__((used)) static rstatus_t
 stats_add_header(struct stats *st)
@@ -34,7 +34,7 @@ stats_add_header(struct stats *st)
     buf->data[0] = '{';
     buf->len = 1;
 
-    cur_ts = (int64_t)time(NULL);
+    cur_ts = (int64_t)time(((void*)0));
     uptime = cur_ts - st->start_ts;
 
     status = stats_add_string(st, &st->service_str, &st->service);

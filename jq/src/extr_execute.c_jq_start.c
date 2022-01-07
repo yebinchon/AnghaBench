@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct frame {scalar_t__ retaddr; scalar_t__ retdata; } ;
 struct closure {int member_1; TYPE_1__* member_0; } ;
-typedef  int /*<<< orphan*/  jv ;
-struct TYPE_10__ {int debug_trace_enabled; int initial_execution; TYPE_1__* bc; int /*<<< orphan*/  nomem_handler_data; int /*<<< orphan*/  nomem_handler; } ;
-typedef  TYPE_2__ jq_state ;
-struct TYPE_9__ {int /*<<< orphan*/  code; } ;
+typedef int jv ;
+struct TYPE_10__ {int debug_trace_enabled; int initial_execution; TYPE_1__* bc; int nomem_handler_data; int nomem_handler; } ;
+typedef TYPE_2__ jq_state ;
+struct TYPE_9__ {int code; } ;
 
-/* Variables and functions */
- int JQ_DEBUG_TRACE_ALL ; 
- struct frame* frame_push (TYPE_2__*,struct closure,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jq_reset (TYPE_2__*) ; 
- int /*<<< orphan*/  jv_nomem_handler (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stack_get_pos (TYPE_2__*) ; 
- int /*<<< orphan*/  stack_push (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stack_save (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int JQ_DEBUG_TRACE_ALL ;
+ struct frame* frame_push (TYPE_2__*,struct closure,int ,int ) ;
+ int jq_reset (TYPE_2__*) ;
+ int jv_nomem_handler (int ,int ) ;
+ int stack_get_pos (TYPE_2__*) ;
+ int stack_push (TYPE_2__*,int ) ;
+ int stack_save (TYPE_2__*,int ,int ) ;
 
 void jq_start(jq_state *jq, jv input, int flags) {
   jv_nomem_handler(jq->nomem_handler, jq->nomem_handler_data);

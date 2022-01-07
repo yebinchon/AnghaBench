@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct passwd {int pw_uid; int pw_gid; } ;
 struct TYPE_2__ {int m_iMaxChildren; int m_iExtraChildren; } ;
 
-/* Variables and functions */
- int atoi (char const*) ; 
- TYPE_1__* g_prefork_server ; 
- char* getenv (char*) ; 
- struct passwd* getpwnam (char*) ; 
- int readSecret (char const*) ; 
- int s_defaultGid ; 
- int s_defaultUid ; 
- scalar_t__ s_uid ; 
+
+ int atoi (char const*) ;
+ TYPE_1__* g_prefork_server ;
+ char* getenv (char*) ;
+ struct passwd* getpwnam (char*) ;
+ int readSecret (char const*) ;
+ int s_defaultGid ;
+ int s_defaultUid ;
+ scalar_t__ s_uid ;
 
 __attribute__((used)) static int lsapi_initSuEXEC(void)
 {

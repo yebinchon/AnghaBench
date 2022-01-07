@@ -1,67 +1,67 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct kvm {int dummy; } ;
-typedef  int /*<<< orphan*/  pud_t ;
-typedef  int /*<<< orphan*/  pte_t ;
-typedef  int /*<<< orphan*/  pmd_t ;
-typedef  int /*<<< orphan*/  phys_addr_t ;
+typedef int pud_t ;
+typedef int pte_t ;
+typedef int pmd_t ;
+typedef int phys_addr_t ;
 
-/* Variables and functions */
- scalar_t__ pmd_none (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pmd_present (int /*<<< orphan*/ ) ; 
- scalar_t__ pmd_thp_or_huge (int /*<<< orphan*/ ) ; 
- scalar_t__ pte_none (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * pte_offset_kernel (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pte_present (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * stage2_get_pud (struct kvm*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * stage2_pmd_offset (struct kvm*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ stage2_pud_huge (struct kvm*,int /*<<< orphan*/ ) ; 
- scalar_t__ stage2_pud_none (struct kvm*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stage2_pud_present (struct kvm*,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ pmd_none (int ) ;
+ int pmd_present (int ) ;
+ scalar_t__ pmd_thp_or_huge (int ) ;
+ scalar_t__ pte_none (int ) ;
+ int * pte_offset_kernel (int *,int ) ;
+ int pte_present (int ) ;
+ int * stage2_get_pud (struct kvm*,int *,int ) ;
+ int * stage2_pmd_offset (struct kvm*,int *,int ) ;
+ scalar_t__ stage2_pud_huge (struct kvm*,int ) ;
+ scalar_t__ stage2_pud_none (struct kvm*,int ) ;
+ int stage2_pud_present (struct kvm*,int ) ;
 
 __attribute__((used)) static bool stage2_get_leaf_entry(struct kvm *kvm, phys_addr_t addr,
-				  pud_t **pudpp, pmd_t **pmdpp, pte_t **ptepp)
+      pud_t **pudpp, pmd_t **pmdpp, pte_t **ptepp)
 {
-	pud_t *pudp;
-	pmd_t *pmdp;
-	pte_t *ptep;
+ pud_t *pudp;
+ pmd_t *pmdp;
+ pte_t *ptep;
 
-	*pudpp = NULL;
-	*pmdpp = NULL;
-	*ptepp = NULL;
+ *pudpp = ((void*)0);
+ *pmdpp = ((void*)0);
+ *ptepp = ((void*)0);
 
-	pudp = stage2_get_pud(kvm, NULL, addr);
-	if (!pudp || stage2_pud_none(kvm, *pudp) || !stage2_pud_present(kvm, *pudp))
-		return false;
+ pudp = stage2_get_pud(kvm, ((void*)0), addr);
+ if (!pudp || stage2_pud_none(kvm, *pudp) || !stage2_pud_present(kvm, *pudp))
+  return 0;
 
-	if (stage2_pud_huge(kvm, *pudp)) {
-		*pudpp = pudp;
-		return true;
-	}
+ if (stage2_pud_huge(kvm, *pudp)) {
+  *pudpp = pudp;
+  return 1;
+ }
 
-	pmdp = stage2_pmd_offset(kvm, pudp, addr);
-	if (!pmdp || pmd_none(*pmdp) || !pmd_present(*pmdp))
-		return false;
+ pmdp = stage2_pmd_offset(kvm, pudp, addr);
+ if (!pmdp || pmd_none(*pmdp) || !pmd_present(*pmdp))
+  return 0;
 
-	if (pmd_thp_or_huge(*pmdp)) {
-		*pmdpp = pmdp;
-		return true;
-	}
+ if (pmd_thp_or_huge(*pmdp)) {
+  *pmdpp = pmdp;
+  return 1;
+ }
 
-	ptep = pte_offset_kernel(pmdp, addr);
-	if (!ptep || pte_none(*ptep) || !pte_present(*ptep))
-		return false;
+ ptep = pte_offset_kernel(pmdp, addr);
+ if (!ptep || pte_none(*ptep) || !pte_present(*ptep))
+  return 0;
 
-	*ptepp = ptep;
-	return true;
+ *ptepp = ptep;
+ return 1;
 }

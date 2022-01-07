@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct alarm_base {int /*<<< orphan*/  timerqueue; } ;
-struct alarm {int state; int /*<<< orphan*/  node; } ;
 
-/* Variables and functions */
- int ALARMTIMER_STATE_ENQUEUED ; 
- int /*<<< orphan*/  timerqueue_del (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+struct alarm_base {int timerqueue; } ;
+struct alarm {int state; int node; } ;
+
+
+ int ALARMTIMER_STATE_ENQUEUED ;
+ int timerqueue_del (int *,int *) ;
 
 __attribute__((used)) static void alarmtimer_dequeue(struct alarm_base *base, struct alarm *alarm)
 {
-	if (!(alarm->state & ALARMTIMER_STATE_ENQUEUED))
-		return;
+ if (!(alarm->state & ALARMTIMER_STATE_ENQUEUED))
+  return;
 
-	timerqueue_del(&base->timerqueue, &alarm->node);
-	alarm->state &= ~ALARMTIMER_STATE_ENQUEUED;
+ timerqueue_del(&base->timerqueue, &alarm->node);
+ alarm->state &= ~ALARMTIMER_STATE_ENQUEUED;
 }

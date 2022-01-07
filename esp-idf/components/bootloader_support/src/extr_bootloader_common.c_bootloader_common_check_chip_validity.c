@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  scalar_t__ esp_image_type ;
-struct TYPE_3__ {int /*<<< orphan*/  min_chip_rev; int /*<<< orphan*/  chip_id; } ;
-typedef  TYPE_1__ esp_image_header_t ;
-typedef  int /*<<< orphan*/  esp_err_t ;
-typedef  int /*<<< orphan*/  esp_chip_id_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CONFIG_IDF_FIRMWARE_CHIP_ID ; 
- int /*<<< orphan*/  ESP_FAIL ; 
- scalar_t__ ESP_IMAGE_BOOTLOADER ; 
- int /*<<< orphan*/  ESP_LOGE (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ESP_LOGI (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ESP_OK ; 
- int /*<<< orphan*/  TAG ; 
- int /*<<< orphan*/  bootloader_common_get_chip_revision () ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef scalar_t__ esp_image_type ;
+struct TYPE_3__ {int min_chip_rev; int chip_id; } ;
+typedef TYPE_1__ esp_image_header_t ;
+typedef int esp_err_t ;
+typedef int esp_chip_id_t ;
+
+
+ int CONFIG_IDF_FIRMWARE_CHIP_ID ;
+ int ESP_FAIL ;
+ scalar_t__ ESP_IMAGE_BOOTLOADER ;
+ int ESP_LOGE (int ,char*,int ,int ) ;
+ int ESP_LOGI (int ,char*,int ,char*,int ) ;
+ int ESP_OK ;
+ int TAG ;
+ int bootloader_common_get_chip_revision () ;
 
 esp_err_t bootloader_common_check_chip_validity(const esp_image_header_t* img_hdr, esp_image_type type)
 {

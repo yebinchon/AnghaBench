@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
 
-/* Variables and functions */
- long crc_octets (int*,int) ; 
- size_t strcspn (char const*,char*) ; 
- int /*<<< orphan*/  strncmp (char const*,char*,int) ; 
- int vlc_b64_decode_binary_to_buffer (int*,int,char const*) ; 
+
+
+
+typedef int uint8_t ;
+
+
+ long crc_octets (int*,int) ;
+ size_t strcspn (char const*,char*) ;
+ int strncmp (char const*,char*,int) ;
+ int vlc_b64_decode_binary_to_buffer (int*,int,char const*) ;
 
 __attribute__((used)) static int pgp_unarmor( const char *p_ibuf, size_t i_ibuf_len,
                         uint8_t *p_obuf, size_t i_obuf_len )
@@ -58,12 +58,12 @@ __attribute__((used)) static int pgp_unarmor( const char *p_ibuf, size_t i_ibuf_
             i_end = 1;
         }
 
-        p_opos += vlc_b64_decode_binary_to_buffer(  p_opos,
+        p_opos += vlc_b64_decode_binary_to_buffer( p_opos,
                         p_obuf - p_opos + i_obuf_len, p_ipos );
         p_ipos += i_line_len + 1;
     }
 
-    /* XXX: the CRC is OPTIONAL, really require it ? */
+
     if( p_ipos + 5 > p_ibuf + i_ibuf_len || *p_ipos++ != '=' )
         return 0;
 

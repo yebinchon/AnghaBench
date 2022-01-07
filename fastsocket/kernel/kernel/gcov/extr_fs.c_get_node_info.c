@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct gcov_node {struct gcov_info* ghost; struct gcov_info* info; } ;
 struct gcov_info {int dummy; } ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static struct gcov_info *get_node_info(struct gcov_node *node)
 {
-	if (node->info)
-		return node->info;
+ if (node->info)
+  return node->info;
 
-	return node->ghost;
+ return node->ghost;
 }

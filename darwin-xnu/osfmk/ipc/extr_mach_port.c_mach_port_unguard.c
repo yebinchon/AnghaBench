@@ -1,62 +1,62 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64_t ;
-typedef  int /*<<< orphan*/  mach_port_name_t ;
-typedef  scalar_t__ kern_return_t ;
-typedef  scalar_t__ ipc_space_t ;
-typedef  int /*<<< orphan*/  ipc_port_t ;
 
-/* Variables and functions */
- scalar_t__ IS_NULL ; 
- scalar_t__ KERN_INVALID_NAME ; 
- scalar_t__ KERN_INVALID_TASK ; 
- scalar_t__ KERN_SUCCESS ; 
- int /*<<< orphan*/  MACH_PORT_VALID (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ip_unlock (int /*<<< orphan*/ ) ; 
- scalar_t__ ipc_port_translate_receive (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  kGUARD_EXC_INVALID_NAME ; 
- int /*<<< orphan*/  kGUARD_EXC_INVALID_RIGHT ; 
- int /*<<< orphan*/  mach_port_guard_exception (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ mach_port_unguard_locked (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint64_t ;
+typedef int mach_port_name_t ;
+typedef scalar_t__ kern_return_t ;
+typedef scalar_t__ ipc_space_t ;
+typedef int ipc_port_t ;
+
+
+ scalar_t__ IS_NULL ;
+ scalar_t__ KERN_INVALID_NAME ;
+ scalar_t__ KERN_INVALID_TASK ;
+ scalar_t__ KERN_SUCCESS ;
+ int MACH_PORT_VALID (int ) ;
+ int ip_unlock (int ) ;
+ scalar_t__ ipc_port_translate_receive (scalar_t__,int ,int *) ;
+ int kGUARD_EXC_INVALID_NAME ;
+ int kGUARD_EXC_INVALID_RIGHT ;
+ int mach_port_guard_exception (int ,int ,int ,int ) ;
+ scalar_t__ mach_port_unguard_locked (int ,int ,int ) ;
 
 kern_return_t
 mach_port_unguard(
-	ipc_space_t		space,
-	mach_port_name_t	name,
-	uint64_t		guard)
+ ipc_space_t space,
+ mach_port_name_t name,
+ uint64_t guard)
 {
-	
-	kern_return_t		kr;
-	ipc_port_t		port;
 
-	if (space == IS_NULL)
-		return KERN_INVALID_TASK;
+ kern_return_t kr;
+ ipc_port_t port;
 
-	if (!MACH_PORT_VALID(name))
-		return KERN_INVALID_NAME;
+ if (space == IS_NULL)
+  return KERN_INVALID_TASK;
 
-	kr = ipc_port_translate_receive(space, name, &port);
-	if (kr != KERN_SUCCESS) {
-		mach_port_guard_exception(name, 0, 0,
-		                          ((KERN_INVALID_NAME == kr) ?
-		                           kGUARD_EXC_INVALID_NAME :
-		                           kGUARD_EXC_INVALID_RIGHT));
-		return kr;
-	}
+ if (!MACH_PORT_VALID(name))
+  return KERN_INVALID_NAME;
 
-	/* Port locked and active */
-	kr = mach_port_unguard_locked(port, name, guard);
-	ip_unlock(port);
+ kr = ipc_port_translate_receive(space, name, &port);
+ if (kr != KERN_SUCCESS) {
+  mach_port_guard_exception(name, 0, 0,
+                            ((KERN_INVALID_NAME == kr) ?
+                             kGUARD_EXC_INVALID_NAME :
+                             kGUARD_EXC_INVALID_RIGHT));
+  return kr;
+ }
 
-	return kr;
+
+ kr = mach_port_unguard_locked(port, name, guard);
+ ip_unlock(port);
+
+ return kr;
 }

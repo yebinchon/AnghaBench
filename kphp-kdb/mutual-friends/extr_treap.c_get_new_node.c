@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* trp_node_ptr ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef TYPE_1__* trp_node_ptr ;
 struct TYPE_5__ {struct TYPE_5__* l; } ;
-typedef  TYPE_1__ trp_node ;
+typedef TYPE_1__ trp_node ;
 
-/* Variables and functions */
- int allocated_nodes_cnt ; 
- int /*<<< orphan*/  assert (int) ; 
- TYPE_1__* free_nodes ; 
- scalar_t__ free_nodes_cnt ; 
- int /*<<< orphan*/  trp_init_mem (int) ; 
+
+ int allocated_nodes_cnt ;
+ int assert (int) ;
+ TYPE_1__* free_nodes ;
+ scalar_t__ free_nodes_cnt ;
+ int trp_init_mem (int) ;
 
 trp_node *get_new_node (void) {
   if (free_nodes_cnt == 0) {
@@ -40,7 +40,7 @@ trp_node *get_new_node (void) {
 
   trp_node_ptr res = free_nodes;
   free_nodes = free_nodes->l;
-  res->l = NULL;
+  res->l = ((void*)0);
 
   return res;
 }

@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  script_ctx_t ;
-typedef  int /*<<< orphan*/  property_desc_t ;
-typedef  int /*<<< orphan*/  jsval_t ;
-struct TYPE_9__ {int /*<<< orphan*/  IDispatchEx_iface; } ;
-typedef  TYPE_1__ jsdisp_t ;
-typedef  int /*<<< orphan*/  IDispatch ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  DISPID ;
-typedef  int /*<<< orphan*/  BSTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DISPID_STARTENUM ; 
- int /*<<< orphan*/  E_NOTIMPL ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FIXME (char*) ; 
- int /*<<< orphan*/  IDispatchEx_GetMemberName (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IDispatch_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/ * get_object (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  is_object_instance (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jsdisp_define_property (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jsdisp_next_prop (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jsdisp_propget (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jsdisp_release (TYPE_1__*) ; 
- int /*<<< orphan*/  jsval_release (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  release_property_descriptor (int /*<<< orphan*/ *) ; 
- TYPE_1__* to_jsdisp (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  to_object (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  to_property_descriptor (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int script_ctx_t ;
+typedef int property_desc_t ;
+typedef int jsval_t ;
+struct TYPE_9__ {int IDispatchEx_iface; } ;
+typedef TYPE_1__ jsdisp_t ;
+typedef int IDispatch ;
+typedef int HRESULT ;
+typedef int DISPID ;
+typedef int BSTR ;
+
+
+ int DISPID_STARTENUM ;
+ int E_NOTIMPL ;
+ scalar_t__ FAILED (int ) ;
+ int FIXME (char*) ;
+ int IDispatchEx_GetMemberName (int *,int ,int *) ;
+ int IDispatch_Release (int *) ;
+ scalar_t__ SUCCEEDED (int ) ;
+ int S_OK ;
+ int TRUE ;
+ int * get_object (int ) ;
+ int is_object_instance (int ) ;
+ int jsdisp_define_property (TYPE_1__*,int ,int *) ;
+ int jsdisp_next_prop (TYPE_1__*,int ,int ,int *) ;
+ int jsdisp_propget (TYPE_1__*,int ,int *) ;
+ int jsdisp_release (TYPE_1__*) ;
+ int jsval_release (int ) ;
+ int release_property_descriptor (int *) ;
+ TYPE_1__* to_jsdisp (int *) ;
+ int to_object (int *,int ,int **) ;
+ int to_property_descriptor (int *,TYPE_1__*,int *) ;
 
 __attribute__((used)) static HRESULT jsdisp_define_properties(script_ctx_t *ctx, jsdisp_t *obj, jsval_t list_val)
 {

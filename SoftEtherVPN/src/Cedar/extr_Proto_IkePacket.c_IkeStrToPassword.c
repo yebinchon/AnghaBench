@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  BUF ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * NewBuf () ; 
- int StartWith (char*,char*) ; 
- int /*<<< orphan*/  StrLen (char*) ; 
- int /*<<< orphan*/ * StrToBin (char*) ; 
- int /*<<< orphan*/  WriteBuf (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int BUF ;
+
+
+ int * NewBuf () ;
+ int StartWith (char*,char*) ;
+ int StrLen (char*) ;
+ int * StrToBin (char*) ;
+ int WriteBuf (int *,char*,int ) ;
 
 BUF *IkeStrToPassword(char *str)
 {
-	BUF *b;
-	// Validate arguments
-	if (str == NULL)
-	{
-		return NewBuf();
-	}
+ BUF *b;
 
-	if (StartWith(str, "0x") == false)
-	{
-		// Accept the string as is
-		b = NewBuf();
-		WriteBuf(b, str, StrLen(str));
-	}
-	else
-	{
-		// Interpret as a hexadecimal value
-		b = StrToBin(str + 2);
-	}
+ if (str == ((void*)0))
+ {
+  return NewBuf();
+ }
 
-	return b;
+ if (StartWith(str, "0x") == 0)
+ {
+
+  b = NewBuf();
+  WriteBuf(b, str, StrLen(str));
+ }
+ else
+ {
+
+  b = StrToBin(str + 2);
+ }
+
+ return b;
 }

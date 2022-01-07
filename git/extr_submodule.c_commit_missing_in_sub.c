@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct repository {int dummy; } ;
 struct object_id {int dummy; } ;
-typedef  enum object_type { ____Placeholder_object_type } object_type ;
+typedef enum object_type { ____Placeholder_object_type } object_type ;
 
-/* Variables and functions */
- int OBJ_COMMIT ; 
- int oid_object_info (struct repository*,struct object_id const*,int /*<<< orphan*/ *) ; 
+
+ int OBJ_COMMIT ;
+ int oid_object_info (struct repository*,struct object_id const*,int *) ;
 
 __attribute__((used)) static int commit_missing_in_sub(const struct object_id *oid, void *data)
 {
-	struct repository *subrepo = data;
+ struct repository *subrepo = data;
 
-	enum object_type type = oid_object_info(subrepo, oid, NULL);
+ enum object_type type = oid_object_info(subrepo, oid, ((void*)0));
 
-	return type != OBJ_COMMIT;
+ return type != OBJ_COMMIT;
 }

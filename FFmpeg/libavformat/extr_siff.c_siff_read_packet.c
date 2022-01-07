@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_11__ {int /*<<< orphan*/  pb; TYPE_1__* priv_data; } ;
-struct TYPE_10__ {int data; int stream_index; int duration; int size; int /*<<< orphan*/  flags; } ;
+
+
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_11__ {int pb; TYPE_1__* priv_data; } ;
+struct TYPE_10__ {int data; int stream_index; int duration; int size; int flags; } ;
 struct TYPE_9__ {scalar_t__ cur_frame; scalar_t__ frames; int curstrm; unsigned int pktsize; int flags; int gmcsize; int gmc; int sndsize; int block_align; scalar_t__ has_video; } ;
-typedef  TYPE_1__ SIFFContext ;
-typedef  TYPE_2__ AVPacket ;
-typedef  TYPE_3__ AVFormatContext ;
+typedef TYPE_1__ SIFFContext ;
+typedef TYPE_2__ AVPacket ;
+typedef TYPE_3__ AVFormatContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_EOF ; 
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_PKT_FLAG_KEY ; 
- int /*<<< orphan*/  AV_WL16 (int,int) ; 
- int /*<<< orphan*/  EIO ; 
- int /*<<< orphan*/  ENOMEM ; 
- int VB_HAS_AUDIO ; 
- int VB_HAS_GMC ; 
- int av_get_packet (int /*<<< orphan*/ ,TYPE_2__*,int) ; 
- scalar_t__ av_new_packet (TYPE_2__*,int) ; 
- int /*<<< orphan*/  av_packet_unref (TYPE_2__*) ; 
- unsigned int avio_read (int /*<<< orphan*/ ,int,unsigned int) ; 
- int avio_rl16 (int /*<<< orphan*/ ) ; 
- void* avio_rl32 (int /*<<< orphan*/ ) ; 
- unsigned int ffio_limit (int /*<<< orphan*/ ,unsigned int) ; 
- int /*<<< orphan*/  memcpy (int,int,int) ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_EOF ;
+ int AVERROR_INVALIDDATA ;
+ int AV_PKT_FLAG_KEY ;
+ int AV_WL16 (int,int) ;
+ int EIO ;
+ int ENOMEM ;
+ int VB_HAS_AUDIO ;
+ int VB_HAS_GMC ;
+ int av_get_packet (int ,TYPE_2__*,int) ;
+ scalar_t__ av_new_packet (TYPE_2__*,int) ;
+ int av_packet_unref (TYPE_2__*) ;
+ unsigned int avio_read (int ,int,unsigned int) ;
+ int avio_rl16 (int ) ;
+ void* avio_rl32 (int ) ;
+ unsigned int ffio_limit (int ,unsigned int) ;
+ int memcpy (int,int,int) ;
 
 __attribute__((used)) static int siff_read_packet(AVFormatContext *s, AVPacket *pkt)
 {
@@ -49,7 +49,7 @@ __attribute__((used)) static int siff_read_packet(AVFormatContext *s, AVPacket *
             return AVERROR_EOF;
         if (c->curstrm == -1) {
             c->pktsize = avio_rl32(s->pb) - 4;
-            c->flags   = avio_rl16(s->pb);
+            c->flags = avio_rl16(s->pb);
             c->gmcsize = (c->flags & VB_HAS_GMC) ? 4 : 0;
             if (c->gmcsize)
                 avio_read(s->pb, c->gmc, c->gmcsize);
@@ -73,14 +73,14 @@ __attribute__((used)) static int siff_read_packet(AVFormatContext *s, AVPacket *
                 return AVERROR_INVALIDDATA;
             }
             pkt->stream_index = 0;
-            c->curstrm        = -1;
+            c->curstrm = -1;
         } else {
             int pktsize = av_get_packet(s->pb, pkt, c->sndsize - 4);
             if (pktsize < 0)
                 return AVERROR(EIO);
             pkt->stream_index = 1;
-            pkt->duration     = pktsize;
-            c->curstrm        = 0;
+            pkt->duration = pktsize;
+            c->curstrm = 0;
         }
         if (!c->cur_frame || c->curstrm)
             pkt->flags |= AV_PKT_FLAG_KEY;

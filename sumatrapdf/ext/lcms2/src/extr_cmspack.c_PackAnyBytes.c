@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  cmsUInt8Number ;
-typedef  scalar_t__ cmsUInt32Number ;
-typedef  int /*<<< orphan*/  cmsUInt16Number ;
-typedef  int /*<<< orphan*/  cmsContext ;
-struct TYPE_3__ {int /*<<< orphan*/  OutputFormat; } ;
-typedef  TYPE_1__ _cmsTRANSFORM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FROM_16_TO_8 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  REVERSE_FLAVOR_8 (int /*<<< orphan*/ ) ; 
- scalar_t__ T_CHANNELS (int /*<<< orphan*/ ) ; 
- scalar_t__ T_DOSWAP (int /*<<< orphan*/ ) ; 
- scalar_t__ T_EXTRA (int /*<<< orphan*/ ) ; 
- scalar_t__ T_FLAVOR (int /*<<< orphan*/ ) ; 
- scalar_t__ T_SWAPFIRST (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cmsUNUSED_PARAMETER (scalar_t__) ; 
- int /*<<< orphan*/  memmove (int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int cmsUInt8Number ;
+typedef scalar_t__ cmsUInt32Number ;
+typedef int cmsUInt16Number ;
+typedef int cmsContext ;
+struct TYPE_3__ {int OutputFormat; } ;
+typedef TYPE_1__ _cmsTRANSFORM ;
+
+
+ int FROM_16_TO_8 (int ) ;
+ int REVERSE_FLAVOR_8 (int ) ;
+ scalar_t__ T_CHANNELS (int ) ;
+ scalar_t__ T_DOSWAP (int ) ;
+ scalar_t__ T_EXTRA (int ) ;
+ scalar_t__ T_FLAVOR (int ) ;
+ scalar_t__ T_SWAPFIRST (int ) ;
+ int cmsUNUSED_PARAMETER (scalar_t__) ;
+ int memmove (int *,int *,scalar_t__) ;
 
 __attribute__((used)) static
 cmsUInt8Number* PackAnyBytes(cmsContext ContextID, register _cmsTRANSFORM* info,
@@ -35,11 +35,11 @@ cmsUInt8Number* PackAnyBytes(cmsContext ContextID, register _cmsTRANSFORM* info,
                              register cmsUInt8Number* output,
                              register cmsUInt32Number Stride)
 {
-    cmsUInt32Number nChan  = T_CHANNELS(info -> OutputFormat);
-    cmsUInt32Number DoSwap   = T_DOSWAP(info ->OutputFormat);
-    cmsUInt32Number Reverse    = T_FLAVOR(info ->OutputFormat);
-    cmsUInt32Number Extra   = T_EXTRA(info -> OutputFormat);
-    cmsUInt32Number SwapFirst  = T_SWAPFIRST(info -> OutputFormat);
+    cmsUInt32Number nChan = T_CHANNELS(info -> OutputFormat);
+    cmsUInt32Number DoSwap = T_DOSWAP(info ->OutputFormat);
+    cmsUInt32Number Reverse = T_FLAVOR(info ->OutputFormat);
+    cmsUInt32Number Extra = T_EXTRA(info -> OutputFormat);
+    cmsUInt32Number SwapFirst = T_SWAPFIRST(info -> OutputFormat);
     cmsUInt32Number ExtraFirst = DoSwap ^ SwapFirst;
     cmsUInt8Number* swap1;
     cmsUInt8Number v = 0;

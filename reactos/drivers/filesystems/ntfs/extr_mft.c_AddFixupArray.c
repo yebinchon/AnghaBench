@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  USHORT ;
-typedef  size_t ULONG ;
-typedef  int /*<<< orphan*/  UCHAR ;
+
+
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int USHORT ;
+typedef size_t ULONG ;
+typedef int UCHAR ;
 struct TYPE_8__ {size_t BytesPerSector; } ;
 struct TYPE_11__ {TYPE_1__ NtfsInfo; } ;
-struct TYPE_10__ {int /*<<< orphan*/  USN; int /*<<< orphan*/ * Array; } ;
+struct TYPE_10__ {int USN; int * Array; } ;
 struct TYPE_9__ {size_t UsaCount; int UsaOffset; } ;
-typedef  TYPE_2__* PNTFS_RECORD_HEADER ;
-typedef  TYPE_3__* PFIXUP_ARRAY ;
-typedef  TYPE_4__* PDEVICE_EXTENSION ;
-typedef  int PCHAR ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
+typedef TYPE_2__* PNTFS_RECORD_HEADER ;
+typedef TYPE_3__* PFIXUP_ARRAY ;
+typedef TYPE_4__* PDEVICE_EXTENSION ;
+typedef int PCHAR ;
+typedef int NTSTATUS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPRINT (char*,TYPE_4__*,...) ; 
- int /*<<< orphan*/  STATUS_SUCCESS ; 
+
+ int DPRINT (char*,TYPE_4__*,...) ;
+ int STATUS_SUCCESS ;
 
 NTSTATUS
 AddFixupArray(PDEVICE_EXTENSION Vcb,

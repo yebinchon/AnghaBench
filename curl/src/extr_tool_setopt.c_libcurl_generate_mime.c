@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ subparts; } ;
-typedef  TYPE_1__ tool_mime ;
+typedef TYPE_1__ tool_mime ;
 struct GlobalConfig {int dummy; } ;
-typedef  int /*<<< orphan*/  CURLcode ;
-typedef  int /*<<< orphan*/  CURL ;
+typedef int CURLcode ;
+typedef int CURL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLEAN1 (char*,int) ; 
- int /*<<< orphan*/  CODE1 (char*,int) ; 
- int /*<<< orphan*/  CURLE_OK ; 
- int /*<<< orphan*/  DATA1 (char*,int) ; 
- int /*<<< orphan*/  DECL1 (char*,int) ; 
- int easysrc_mime_count ; 
- int /*<<< orphan*/  libcurl_generate_mime_part (int /*<<< orphan*/ *,struct GlobalConfig*,scalar_t__,int) ; 
+
+ int CLEAN1 (char*,int) ;
+ int CODE1 (char*,int) ;
+ int CURLE_OK ;
+ int DATA1 (char*,int) ;
+ int DECL1 (char*,int) ;
+ int easysrc_mime_count ;
+ int libcurl_generate_mime_part (int *,struct GlobalConfig*,scalar_t__,int) ;
 
 __attribute__((used)) static CURLcode libcurl_generate_mime(CURL *curl,
                                       struct GlobalConfig *config,
@@ -33,7 +33,7 @@ __attribute__((used)) static CURLcode libcurl_generate_mime(CURL *curl,
 {
   CURLcode ret = CURLE_OK;
 
-  /* May need several mime variables, so invent name. */
+
   *mimeno = ++easysrc_mime_count;
   DECL1("curl_mime *mime%d;", *mimeno);
   DATA1("mime%d = NULL;", *mimeno);

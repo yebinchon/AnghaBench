@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  itf; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int itf; } ;
 struct sockaddr_atmpvc {TYPE_1__ sap_addr; } ;
-struct atm_dev {int /*<<< orphan*/  number; } ;
+struct atm_dev {int number; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  as_itf_notify ; 
- int /*<<< orphan*/  sigd_enq (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,struct sockaddr_atmpvc*,int /*<<< orphan*/ *) ; 
+
+ int as_itf_notify ;
+ int sigd_enq (int *,int ,int *,struct sockaddr_atmpvc*,int *) ;
 
 __attribute__((used)) static void notify_sigd(const struct atm_dev *dev)
 {
-	struct sockaddr_atmpvc pvc;
+ struct sockaddr_atmpvc pvc;
 
-	pvc.sap_addr.itf = dev->number;
-	sigd_enq(NULL, as_itf_notify, NULL, &pvc, NULL);
+ pvc.sap_addr.itf = dev->number;
+ sigd_enq(((void*)0), as_itf_notify, ((void*)0), &pvc, ((void*)0));
 }

@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_2__ ;
-typedef  struct TYPE_15__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int sqlite3_int64 ;
+
+
+typedef struct TYPE_16__ TYPE_2__ ;
+typedef struct TYPE_15__ TYPE_1__ ;
+
+
+typedef int sqlite3_int64 ;
 struct TYPE_16__ {int iDepth; } ;
 struct TYPE_15__ {int iRowid; } ;
-typedef  int /*<<< orphan*/  RtreeNode ;
-typedef  scalar_t__ RtreeDValue ;
-typedef  TYPE_1__ RtreeCell ;
-typedef  TYPE_2__ Rtree ;
+typedef int RtreeNode ;
+typedef scalar_t__ RtreeDValue ;
+typedef TYPE_1__ RtreeCell ;
+typedef TYPE_2__ Rtree ;
 
-/* Variables and functions */
- int NCELL (int /*<<< orphan*/ *) ; 
- scalar_t__ RTREE_ZERO ; 
- int SQLITE_OK ; 
- scalar_t__ cellArea (TYPE_2__*,TYPE_1__*) ; 
- scalar_t__ cellGrowth (TYPE_2__*,TYPE_1__*,TYPE_1__*) ; 
- int nodeAcquire (TYPE_2__*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  nodeGetCell (TYPE_2__*,int /*<<< orphan*/ *,int,TYPE_1__*) ; 
- int /*<<< orphan*/  nodeRelease (TYPE_2__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_free (TYPE_1__*) ; 
+
+ int NCELL (int *) ;
+ scalar_t__ RTREE_ZERO ;
+ int SQLITE_OK ;
+ scalar_t__ cellArea (TYPE_2__*,TYPE_1__*) ;
+ scalar_t__ cellGrowth (TYPE_2__*,TYPE_1__*,TYPE_1__*) ;
+ int nodeAcquire (TYPE_2__*,int,int *,int **) ;
+ int nodeGetCell (TYPE_2__*,int *,int,TYPE_1__*) ;
+ int nodeRelease (TYPE_2__*,int *) ;
+ int sqlite3_free (TYPE_1__*) ;
 
 __attribute__((used)) static int ChooseLeaf(
-  Rtree *pRtree,               /* Rtree table */
-  RtreeCell *pCell,            /* Cell to insert into rtree */
-  int iHeight,                 /* Height of sub-tree rooted at pCell */
-  RtreeNode **ppLeaf           /* OUT: Selected leaf page */
+  Rtree *pRtree,
+  RtreeCell *pCell,
+  int iHeight,
+  RtreeNode **ppLeaf
 ){
   int rc;
   int ii;
@@ -55,10 +55,10 @@ __attribute__((used)) static int ChooseLeaf(
 
     RtreeCell *aCell = 0;
 
-    /* Select the child node which will be enlarged the least if pCell
-    ** is inserted into it. Resolve ties by choosing the entry with
-    ** the smallest area.
-    */
+
+
+
+
     for(iCell=0; iCell<nCell; iCell++){
       int bBest = 0;
       RtreeDValue growth;

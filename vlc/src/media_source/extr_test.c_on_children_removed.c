@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_media_tree_t ;
-struct children_removed_report {size_t count; int /*<<< orphan*/  first_media; TYPE_1__* node; } ;
-struct callback_ctx {int /*<<< orphan*/  vec_children_removed; } ;
-struct TYPE_4__ {int /*<<< orphan*/  p_item; } ;
-typedef  TYPE_1__ input_item_node_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  VLC_UNUSED (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  input_item_Hold (int /*<<< orphan*/ ) ; 
- int vlc_vector_push (int /*<<< orphan*/ *,struct children_removed_report) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int vlc_media_tree_t ;
+struct children_removed_report {size_t count; int first_media; TYPE_1__* node; } ;
+struct callback_ctx {int vec_children_removed; } ;
+struct TYPE_4__ {int p_item; } ;
+typedef TYPE_1__ input_item_node_t ;
+
+
+ int VLC_UNUSED (int *) ;
+ int assert (int) ;
+ int input_item_Hold (int ) ;
+ int vlc_vector_push (int *,struct children_removed_report) ;
 
 __attribute__((used)) static void
 on_children_removed(vlc_media_tree_t *tree, input_item_node_t *node,

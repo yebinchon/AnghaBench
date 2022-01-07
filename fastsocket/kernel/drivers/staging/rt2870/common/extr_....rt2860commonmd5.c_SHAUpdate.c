@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int UINT32 ;
-typedef  int UCHAR ;
-struct TYPE_3__ {int* LenInBitCount; int* Input; int /*<<< orphan*/  Buf; } ;
-typedef  TYPE_1__ SHA_CTX ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NdisMoveMemory (int*,int*,int) ; 
- int /*<<< orphan*/  NdisZeroMemory (int*,int) ; 
- int /*<<< orphan*/  SHATransform (int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  byteReverse (int*,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int UINT32 ;
+typedef int UCHAR ;
+struct TYPE_3__ {int* LenInBitCount; int* Input; int Buf; } ;
+typedef TYPE_1__ SHA_CTX ;
+
+
+ int NdisMoveMemory (int*,int*,int) ;
+ int NdisZeroMemory (int*,int) ;
+ int SHATransform (int ,int*) ;
+ int byteReverse (int*,int) ;
 
 UCHAR SHAUpdate(SHA_CTX *pCtx, UCHAR *pData, UINT32 LenInBytes)
 {
     UINT32 TfTimes;
     UINT32 temp1,temp2;
-	unsigned int i;
-	UCHAR err=1;
+ unsigned int i;
+ UCHAR err=1;
 
     temp1 = pCtx->LenInBitCount[0];
     temp2 = pCtx->LenInBitCount[1];
 
     pCtx->LenInBitCount[0] = (UINT32) (pCtx->LenInBitCount[0] + (LenInBytes << 3));
     if (pCtx->LenInBitCount[0] < temp1)
-        pCtx->LenInBitCount[1]++;   //carry in
+        pCtx->LenInBitCount[1]++;
 
 
     pCtx->LenInBitCount[1] = (UINT32) (pCtx->LenInBitCount[1] +(LenInBytes >> 29));
     if (pCtx->LenInBitCount[1] < temp2)
-        return (err);   //check total length of original data
+        return (err);
 
 
-    // mod 64 bytes
+
     temp1 = (temp1 >> 3) & 0x3f;
 
-    // process lacks of 64-byte data
+
     if (temp1)
     {
         UCHAR *pAds = (UCHAR *) pCtx->Input + temp1;
@@ -64,7 +64,7 @@ UCHAR SHAUpdate(SHA_CTX *pCtx, UCHAR *pData, UINT32 LenInBytes)
 
         pData += 64-temp1;
         LenInBytes -= 64-temp1;
-    } // end of if (temp1)
+    }
 
 
     TfTimes = (LenInBytes >> 6);
@@ -78,12 +78,12 @@ UCHAR SHAUpdate(SHA_CTX *pCtx, UCHAR *pData, UINT32 LenInBytes)
         SHATransform(pCtx->Buf, (UINT32 *)pCtx->Input);
         pData += 64;
         LenInBytes -= 64;
-    } // end of for
+    }
 
-    // buffering lacks of 64-byte data
+
     if(LenInBytes)
         NdisMoveMemory(pCtx->Input, (UCHAR *)pData, LenInBytes);
 
-	return (0);
+ return (0);
 
 }

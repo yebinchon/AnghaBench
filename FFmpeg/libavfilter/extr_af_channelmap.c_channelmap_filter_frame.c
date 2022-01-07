@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_5__ ;
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  source_planes ;
+
+
+typedef struct TYPE_15__ TYPE_5__ ;
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int source_planes ;
 struct TYPE_15__ {TYPE_2__* priv; TYPE_4__** outputs; } ;
-struct TYPE_14__ {int channels; int /*<<< orphan*/  channel_layout; TYPE_5__* dst; } ;
-struct TYPE_13__ {int channels; int /*<<< orphan*/  channel_layout; int /*<<< orphan*/ ** data; int /*<<< orphan*/ ** extended_data; } ;
+struct TYPE_14__ {int channels; int channel_layout; TYPE_5__* dst; } ;
+struct TYPE_13__ {int channels; int channel_layout; int ** data; int ** extended_data; } ;
 struct TYPE_12__ {int nch; TYPE_1__* map; } ;
 struct TYPE_11__ {size_t out_channel_idx; size_t in_channel_idx; } ;
-typedef  TYPE_2__ ChannelMapContext ;
-typedef  TYPE_3__ AVFrame ;
-typedef  TYPE_4__ AVFilterLink ;
-typedef  TYPE_5__ AVFilterContext ;
+typedef TYPE_2__ ChannelMapContext ;
+typedef TYPE_3__ AVFrame ;
+typedef TYPE_4__ AVFilterLink ;
+typedef TYPE_5__ AVFilterContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ENOMEM ; 
- int FFMIN (int const,int const) ; 
- int const FF_ARRAY_ELEMS (int /*<<< orphan*/ **) ; 
- int MAX_CH ; 
- int /*<<< orphan*/  av_frame_free (TYPE_3__**) ; 
- int /*<<< orphan*/  av_free (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/ ** av_mallocz_array (int const,int) ; 
- int ff_filter_frame (TYPE_4__*,TYPE_3__*) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ **,int /*<<< orphan*/ **,int const) ; 
+
+ int AVERROR (int ) ;
+ int ENOMEM ;
+ int FFMIN (int const,int const) ;
+ int const FF_ARRAY_ELEMS (int **) ;
+ int MAX_CH ;
+ int av_frame_free (TYPE_3__**) ;
+ int av_free (int **) ;
+ int ** av_mallocz_array (int const,int) ;
+ int ff_filter_frame (TYPE_4__*,TYPE_3__*) ;
+ int memcpy (int **,int **,int const) ;
 
 __attribute__((used)) static int channelmap_filter_frame(AVFilterLink *inlink, AVFrame *buf)
 {
-    AVFilterContext  *ctx = inlink->dst;
+    AVFilterContext *ctx = inlink->dst;
     AVFilterLink *outlink = ctx->outputs[0];
     const ChannelMapContext *s = ctx->priv;
     const int nch_in = inlink->channels;
@@ -82,7 +82,7 @@ __attribute__((used)) static int channelmap_filter_frame(AVFilterLink *inlink, A
            FFMIN(FF_ARRAY_ELEMS(buf->data), nch_out) * sizeof(buf->data[0]));
 
     buf->channel_layout = outlink->channel_layout;
-    buf->channels       = outlink->channels;
+    buf->channels = outlink->channels;
 
     return ff_filter_frame(outlink, buf);
 }

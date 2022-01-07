@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct test {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  KENV_UNSET ; 
- int /*<<< orphan*/  KENV_VAR_NAME ; 
- int /*<<< orphan*/  kenv (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int KENV_UNSET ;
+ int KENV_VAR_NAME ;
+ int kenv (int ,int ,int *,int ) ;
 
 void
 priv_kenv_unset_cleanup(int asroot, int injail, struct test *test)
 {
 
-	(void)kenv(KENV_UNSET, KENV_VAR_NAME, NULL, 0);
+ (void)kenv(KENV_UNSET, KENV_VAR_NAME, ((void*)0), 0);
 }

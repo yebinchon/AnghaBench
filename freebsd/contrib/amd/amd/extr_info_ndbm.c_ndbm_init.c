@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  time_t ;
-struct stat {int /*<<< orphan*/  st_mtime; } ;
-typedef  int /*<<< orphan*/  mnt_map ;
-typedef  int /*<<< orphan*/  dbfilename ;
-typedef  int /*<<< orphan*/  DBM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DBM_SUFFIX ; 
- int /*<<< orphan*/  O_RDONLY ; 
- int /*<<< orphan*/  clocktime (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  dbm_close (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * dbm_open (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dbm_pagfno (int /*<<< orphan*/ *) ; 
- int errno ; 
- int fstat (int /*<<< orphan*/ ,struct stat*) ; 
- int stat (char*,struct stat*) ; 
- int /*<<< orphan*/  xstrlcat (char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  xstrlcpy (char*,char*,int) ; 
+
+
+
+typedef int time_t ;
+struct stat {int st_mtime; } ;
+typedef int mnt_map ;
+typedef int dbfilename ;
+typedef int DBM ;
+
+
+ int DBM_SUFFIX ;
+ int O_RDONLY ;
+ int clocktime (int *) ;
+ int dbm_close (int *) ;
+ int * dbm_open (char*,int ,int ) ;
+ int dbm_pagfno (int *) ;
+ int errno ;
+ int fstat (int ,struct stat*) ;
+ int stat (char*,struct stat*) ;
+ int xstrlcat (char*,int ,int) ;
+ int xstrlcpy (char*,char*,int) ;
 
 int
 ndbm_init(mnt_map *m, char *map, time_t *tp)
@@ -38,17 +38,17 @@ ndbm_init(mnt_map *m, char *map, time_t *tp)
   if (db) {
     struct stat stb;
     int error;
-#ifdef DBM_SUFFIX
-    char dbfilename[256];
 
-    xstrlcpy(dbfilename, map, sizeof(dbfilename));
-    xstrlcat(dbfilename, DBM_SUFFIX, sizeof(dbfilename));
-    error = stat(dbfilename, &stb);
-#else /* not DBM_SUFFIX */
+
+
+
+
+
+
     error = fstat(dbm_pagfno(db), &stb);
-#endif /* not DBM_SUFFIX */
+
     if (error < 0)
-      *tp = clocktime(NULL);
+      *tp = clocktime(((void*)0));
     else
       *tp = stb.st_mtime;
     dbm_close(db);

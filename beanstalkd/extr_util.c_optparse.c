@@ -1,64 +1,64 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int int64 ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int int64 ;
 struct TYPE_4__ {int syncrate; int wantsync; int use; void* dir; void* filesize; } ;
 struct TYPE_5__ {TYPE_1__ wal; void* user; void* addr; void* port; } ;
-typedef  TYPE_2__ Server ;
+typedef TYPE_2__ Server ;
 
-/* Variables and functions */
- void* EARGF (int /*<<< orphan*/ ) ; 
- char* JOB_DATA_SIZE_LIMIT_MAX ; 
- int /*<<< orphan*/  exit (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  flagusage (char*) ; 
- char* job_data_size_limit ; 
- void* parse_size_t (void*) ; 
- int /*<<< orphan*/  printf (char*,char*) ; 
- int /*<<< orphan*/  usage (int) ; 
- int /*<<< orphan*/  verbose ; 
- char* version ; 
- int /*<<< orphan*/  warn_systemd_ignored_option (char*,void*) ; 
- int /*<<< orphan*/  warnx (char*,...) ; 
+
+ void* EARGF (int ) ;
+ char* JOB_DATA_SIZE_LIMIT_MAX ;
+ int exit (int ) ;
+ int flagusage (char*) ;
+ char* job_data_size_limit ;
+ void* parse_size_t (void*) ;
+ int printf (char*,char*) ;
+ int usage (int) ;
+ int verbose ;
+ char* version ;
+ int warn_systemd_ignored_option (char*,void*) ;
+ int warnx (char*,...) ;
 
 void
 optparse(Server *s, char **argv)
 {
     int64 ms;
     char *arg, *tmp;
-#   define EARGF(x) (*arg ? (tmp=arg,arg="",tmp) : *argv ? *argv++ : (x))
+
 
     while ((arg = *argv++) && *arg++ == '-' && *arg) {
         char c;
         while ((c = *arg++)) {
             switch (c) {
                 case 'p':
-                    s->port = EARGF(flagusage("-p"));
+                    s->port = (*arg ? (tmp=arg,arg="",tmp) : *argv ? *argv++ : (flagusage("-p")));
                     warn_systemd_ignored_option("-p", s->port);
                     break;
                 case 'l':
-                    s->addr = EARGF(flagusage("-l"));
+                    s->addr = (*arg ? (tmp=arg,arg="",tmp) : *argv ? *argv++ : (flagusage("-l")));
                     warn_systemd_ignored_option("-l", s->addr);
                     break;
                 case 'z':
-                    job_data_size_limit = parse_size_t(EARGF(flagusage("-z")));
+                    job_data_size_limit = parse_size_t((*arg ? (tmp=arg,arg="",tmp) : *argv ? *argv++ : (flagusage("-z"))));
                     if (job_data_size_limit > JOB_DATA_SIZE_LIMIT_MAX) {
                         warnx("maximum job size was set to %d", JOB_DATA_SIZE_LIMIT_MAX);
                         job_data_size_limit = JOB_DATA_SIZE_LIMIT_MAX;
                     }
                     break;
                 case 's':
-                    s->wal.filesize = parse_size_t(EARGF(flagusage("-s")));
+                    s->wal.filesize = parse_size_t((*arg ? (tmp=arg,arg="",tmp) : *argv ? *argv++ : (flagusage("-s"))));
                     break;
                 case 'c':
                     warnx("-c flag was removed. binlog is always compacted.");
@@ -67,7 +67,7 @@ optparse(Server *s, char **argv)
                     warnx("-n flag was removed. binlog is always compacted.");
                     break;
                 case 'f':
-                    ms = (int64)parse_size_t(EARGF(flagusage("-f")));
+                    ms = (int64)parse_size_t((*arg ? (tmp=arg,arg="",tmp) : *argv ? *argv++ : (flagusage("-f"))));
                     s->wal.syncrate = ms * 1000000;
                     s->wal.wantsync = 1;
                     break;
@@ -75,10 +75,10 @@ optparse(Server *s, char **argv)
                     s->wal.wantsync = 0;
                     break;
                 case 'u':
-                    s->user = EARGF(flagusage("-u"));
+                    s->user = (*arg ? (tmp=arg,arg="",tmp) : *argv ? *argv++ : (flagusage("-u")));
                     break;
                 case 'b':
-                    s->wal.dir = EARGF(flagusage("-b"));
+                    s->wal.dir = (*arg ? (tmp=arg,arg="",tmp) : *argv ? *argv++ : (flagusage("-b")));
                     s->wal.use = 1;
                     break;
                 case 'h':

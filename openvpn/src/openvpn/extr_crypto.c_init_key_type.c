@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct key_type {int cipher_length; scalar_t__ hmac_length; int /*<<< orphan*/  digest; int /*<<< orphan*/  cipher; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (char const*) ; 
- int /*<<< orphan*/  CLEAR (struct key_type) ; 
- int MAX_CIPHER_KEY_LENGTH ; 
- int /*<<< orphan*/  M_FATAL ; 
- int /*<<< orphan*/  M_WARN ; 
- scalar_t__ OPENVPN_MAX_CIPHER_BLOCK_SIZE ; 
- scalar_t__ OPENVPN_MAX_HMAC_SIZE ; 
- scalar_t__ cipher_kt_block_size (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cipher_kt_get (int /*<<< orphan*/ ) ; 
- int cipher_kt_key_size (int /*<<< orphan*/ ) ; 
- int cipher_kt_mode_aead (int /*<<< orphan*/ ) ; 
- scalar_t__ cipher_kt_mode_cbc (int /*<<< orphan*/ ) ; 
- scalar_t__ cipher_kt_mode_ofb_cfb (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  md_kt_get (char const*) ; 
- scalar_t__ md_kt_size (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  msg (int /*<<< orphan*/ ,char*,...) ; 
- scalar_t__ strcmp (char const*,char*) ; 
- int /*<<< orphan*/  translate_cipher_name_from_openvpn (char const*) ; 
+
+
+
+struct key_type {int cipher_length; scalar_t__ hmac_length; int digest; int cipher; } ;
+
+
+ int ASSERT (char const*) ;
+ int CLEAR (struct key_type) ;
+ int MAX_CIPHER_KEY_LENGTH ;
+ int M_FATAL ;
+ int M_WARN ;
+ scalar_t__ OPENVPN_MAX_CIPHER_BLOCK_SIZE ;
+ scalar_t__ OPENVPN_MAX_HMAC_SIZE ;
+ scalar_t__ cipher_kt_block_size (int ) ;
+ int cipher_kt_get (int ) ;
+ int cipher_kt_key_size (int ) ;
+ int cipher_kt_mode_aead (int ) ;
+ scalar_t__ cipher_kt_mode_cbc (int ) ;
+ scalar_t__ cipher_kt_mode_ofb_cfb (int ) ;
+ int md_kt_get (char const*) ;
+ scalar_t__ md_kt_size (int ) ;
+ int msg (int ,char*,...) ;
+ scalar_t__ strcmp (char const*,char*) ;
+ int translate_cipher_name_from_openvpn (char const*) ;
 
 void
 init_key_type(struct key_type *kt, const char *ciphername,
               const char *authname, int keysize, bool tls_mode, bool warn)
 {
-    bool aead_cipher = false;
+    bool aead_cipher = 0;
 
     ASSERT(ciphername);
     ASSERT(authname);
@@ -56,13 +56,13 @@ init_key_type(struct key_type *kt, const char *ciphername,
             kt->cipher_length = keysize;
         }
 
-        /* check legal cipher mode */
+
         aead_cipher = cipher_kt_mode_aead(kt->cipher);
         if (!(cipher_kt_mode_cbc(kt->cipher)
               || (tls_mode && aead_cipher)
-#ifdef ENABLE_OFB_CFB_MODE
-              || (tls_mode && cipher_kt_mode_ofb_cfb(kt->cipher))
-#endif
+
+
+
               ))
         {
             msg(M_FATAL, "Cipher '%s' mode not supported", ciphername);
@@ -85,7 +85,7 @@ init_key_type(struct key_type *kt, const char *ciphername,
     }
     if (strcmp(authname, "none") != 0)
     {
-        if (!aead_cipher) /* Ignore auth for AEAD ciphers */
+        if (!aead_cipher)
         {
             kt->digest = md_kt_get(authname);
             kt->hmac_length = md_kt_size(kt->digest);

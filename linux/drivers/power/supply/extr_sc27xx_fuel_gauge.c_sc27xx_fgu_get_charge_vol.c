@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct sc27xx_fgu_data {int /*<<< orphan*/  charge_chan; } ;
 
-/* Variables and functions */
- int iio_read_channel_processed (int /*<<< orphan*/ ,int*) ; 
+
+
+
+struct sc27xx_fgu_data {int charge_chan; } ;
+
+
+ int iio_read_channel_processed (int ,int*) ;
 
 __attribute__((used)) static int sc27xx_fgu_get_charge_vol(struct sc27xx_fgu_data *data, int *val)
 {
-	int ret, vol;
+ int ret, vol;
 
-	ret = iio_read_channel_processed(data->charge_chan, &vol);
-	if (ret < 0)
-		return ret;
+ ret = iio_read_channel_processed(data->charge_chan, &vol);
+ if (ret < 0)
+  return ret;
 
-	*val = vol * 1000;
-	return 0;
+ *val = vol * 1000;
+ return 0;
 }

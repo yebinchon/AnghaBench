@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-struct TYPE_6__ {int /*<<< orphan*/  value; } ;
-struct TYPE_5__ {int /*<<< orphan*/  metadata; } ;
-typedef  int /*<<< orphan*/  AVIOContext ;
-typedef  TYPE_1__ AVFormatContext ;
-typedef  TYPE_2__ AVDictionaryEntry ;
 
-/* Variables and functions */
- int atoi (int /*<<< orphan*/ ) ; 
- TYPE_2__* av_dict_get (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  avio_w8 (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  avio_wb32 (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  ffio_wfourcc (int /*<<< orphan*/ *,char const*) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_6__ {int value; } ;
+struct TYPE_5__ {int metadata; } ;
+typedef int AVIOContext ;
+typedef TYPE_1__ AVFormatContext ;
+typedef TYPE_2__ AVDictionaryEntry ;
+
+
+ int atoi (int ) ;
+ TYPE_2__* av_dict_get (int ,char const*,int *,int ) ;
+ int avio_w8 (int *,int) ;
+ int avio_wb32 (int *,int) ;
+ int ffio_wfourcc (int *,char const*) ;
 
 __attribute__((used)) static int mov_write_int8_metadata(AVFormatContext *s, AVIOContext *pb,
                                    const char *name, const char *tag,
                                    int len)
 {
-    AVDictionaryEntry *t = NULL;
+    AVDictionaryEntry *t = ((void*)0);
     uint8_t num;
     int size = 24 + len;
 
     if (len != 1 && len != 4)
         return -1;
 
-    if (!(t = av_dict_get(s->metadata, tag, NULL, 0)))
+    if (!(t = av_dict_get(s->metadata, tag, ((void*)0), 0)))
         return 0;
     num = atoi(t->value);
 
@@ -48,7 +48,7 @@ __attribute__((used)) static int mov_write_int8_metadata(AVFormatContext *s, AVI
     avio_wb32(pb, 0x15);
     avio_wb32(pb, 0);
     if (len==4) avio_wb32(pb, num);
-    else        avio_w8 (pb, num);
+    else avio_w8 (pb, num);
 
     return size;
 }

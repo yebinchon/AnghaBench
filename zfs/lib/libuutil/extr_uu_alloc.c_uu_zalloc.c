@@ -1,33 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  UU_ERROR_SYSTEM ; 
- void* malloc (size_t) ; 
- int /*<<< orphan*/  memset (void*,int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/  uu_set_error (int /*<<< orphan*/ ) ; 
+ int UU_ERROR_SYSTEM ;
+ void* malloc (size_t) ;
+ int memset (void*,int ,size_t) ;
+ int uu_set_error (int ) ;
 
 void *
 uu_zalloc(size_t n)
 {
-	void *p = malloc(n);
+ void *p = malloc(n);
 
-	if (p == NULL) {
-		uu_set_error(UU_ERROR_SYSTEM);
-		return (NULL);
-	}
+ if (p == ((void*)0)) {
+  uu_set_error(UU_ERROR_SYSTEM);
+  return (((void*)0));
+ }
 
-	(void) memset(p, 0, n);
+ (void) memset(p, 0, n);
 
-	return (p);
+ return (p);
 }

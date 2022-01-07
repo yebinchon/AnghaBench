@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  clone_drain_lock ; 
- int /*<<< orphan*/  sx_xlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sx_xunlock (int /*<<< orphan*/ *) ; 
+ int clone_drain_lock ;
+ int sx_xlock (int *) ;
+ int sx_xunlock (int *) ;
 
 void
 drain_dev_clone_events(void)
 {
 
-	sx_xlock(&clone_drain_lock);
-	sx_xunlock(&clone_drain_lock);
+ sx_xlock(&clone_drain_lock);
+ sx_xunlock(&clone_drain_lock);
 }

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  CK_RV ;
-typedef  int /*<<< orphan*/ ** CK_FUNCTION_LIST_PTR_PTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CKR_OK ; 
- int /*<<< orphan*/  INIT_CONTEXT () ; 
- int /*<<< orphan*/  funcs ; 
+
+
+
+typedef int CK_RV ;
+typedef int ** CK_FUNCTION_LIST_PTR_PTR ;
+
+
+ int CKR_OK ;
+ int INIT_CONTEXT () ;
+ int funcs ;
 
 CK_RV
 C_GetFunctionList(CK_FUNCTION_LIST_PTR_PTR ppFunctionList)

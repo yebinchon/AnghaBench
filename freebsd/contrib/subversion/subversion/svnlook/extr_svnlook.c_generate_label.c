@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {scalar_t__ data; } ;
-typedef  TYPE_1__ svn_string_t ;
-typedef  char const* svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_fs_txn_t ;
-typedef  int /*<<< orphan*/  svn_fs_t ;
-typedef  int /*<<< orphan*/  svn_fs_root_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+typedef TYPE_1__ svn_string_t ;
+typedef char const* svn_revnum_t ;
+typedef int svn_fs_txn_t ;
+typedef int svn_fs_t ;
+typedef int svn_fs_root_t ;
+typedef int svn_error_t ;
+typedef int apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- char* SVN_INVALID_REVNUM ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  SVN_PROP_REVISION_DATE ; 
- int /*<<< orphan*/  TRUE ; 
- char* apr_psprintf (int /*<<< orphan*/ *,char*,char const*,char const*,...) ; 
- scalar_t__ svn_fs_is_revision_root (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_fs_open_txn (int /*<<< orphan*/ **,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_fs_revision_prop2 (TYPE_1__**,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- char* svn_fs_revision_root_revision (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_fs_root_fs (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_fs_txn_prop (TYPE_1__**,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- char* svn_fs_txn_root_name (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int SVN_ERR (int ) ;
+ char* SVN_INVALID_REVNUM ;
+ int * SVN_NO_ERROR ;
+ int SVN_PROP_REVISION_DATE ;
+ int TRUE ;
+ char* apr_psprintf (int *,char*,char const*,char const*,...) ;
+ scalar_t__ svn_fs_is_revision_root (int *) ;
+ int svn_fs_open_txn (int **,int *,char const*,int *) ;
+ int svn_fs_revision_prop2 (TYPE_1__**,int *,char const*,int ,int ,int *,int *) ;
+ char* svn_fs_revision_root_revision (int *) ;
+ int * svn_fs_root_fs (int *) ;
+ int svn_fs_txn_prop (TYPE_1__**,int *,int ,int *) ;
+ char* svn_fs_txn_root_name (int *,int *) ;
 
 __attribute__((used)) static svn_error_t *
 generate_label(const char **label,
@@ -43,7 +43,7 @@ generate_label(const char **label,
 {
   svn_string_t *date;
   const char *datestr;
-  const char *name = NULL;
+  const char *name = ((void*)0);
   svn_revnum_t rev = SVN_INVALID_REVNUM;
 
   if (root)
@@ -67,7 +67,7 @@ generate_label(const char **label,
   else
     {
       rev = 0;
-      date = NULL;
+      date = ((void*)0);
     }
 
   if (date)

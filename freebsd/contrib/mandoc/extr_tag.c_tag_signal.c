@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct sigaction {int /*<<< orphan*/  sa_handler; int /*<<< orphan*/  sa_mask; } ;
-typedef  int /*<<< orphan*/  sa ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SIG_DFL ; 
- int /*<<< orphan*/  _exit (int) ; 
- int /*<<< orphan*/  getpid () ; 
- int /*<<< orphan*/  kill (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  memset (struct sigaction*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  sigaction (int,struct sigaction*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sigemptyset (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tag_unlink () ; 
+
+
+
+struct sigaction {int sa_handler; int sa_mask; } ;
+typedef int sa ;
+
+
+ int SIG_DFL ;
+ int _exit (int) ;
+ int getpid () ;
+ int kill (int ,int) ;
+ int memset (struct sigaction*,int ,int) ;
+ int sigaction (int,struct sigaction*,int *) ;
+ int sigemptyset (int *) ;
+ int tag_unlink () ;
 
 __attribute__((used)) static void
 tag_signal(int signum)
 {
-	struct sigaction	 sa;
+ struct sigaction sa;
 
-	tag_unlink();
-	memset(&sa, 0, sizeof(sa));
-	sigemptyset(&sa.sa_mask);
-	sa.sa_handler = SIG_DFL;
-	sigaction(signum, &sa, NULL);
-	kill(getpid(), signum);
-	/* NOTREACHED */
-	_exit(1);
+ tag_unlink();
+ memset(&sa, 0, sizeof(sa));
+ sigemptyset(&sa.sa_mask);
+ sa.sa_handler = SIG_DFL;
+ sigaction(signum, &sa, ((void*)0));
+ kill(getpid(), signum);
+
+ _exit(1);
 }

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct RClass {int /*<<< orphan*/  super; } ;
-typedef  int /*<<< orphan*/  mrb_sym ;
-typedef  int /*<<< orphan*/  mrb_state ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_TYPE_ERROR ; 
- int /*<<< orphan*/  MRB_CLASS_ORIGIN (struct RClass*) ; 
- struct RClass* class_from_sym (int /*<<< orphan*/ *,struct RClass*,int /*<<< orphan*/ ) ; 
- struct RClass* mrb_class_new (int /*<<< orphan*/ *,struct RClass*) ; 
- struct RClass* mrb_class_real (int /*<<< orphan*/ ) ; 
- scalar_t__ mrb_const_defined_at (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_obj_value (struct RClass*) ; 
- int /*<<< orphan*/  mrb_raisef (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct RClass*) ; 
- int /*<<< orphan*/  setup_class (int /*<<< orphan*/ *,struct RClass*,struct RClass*,int /*<<< orphan*/ ) ; 
+
+
+
+struct RClass {int super; } ;
+typedef int mrb_sym ;
+typedef int mrb_state ;
+
+
+ int E_TYPE_ERROR ;
+ int MRB_CLASS_ORIGIN (struct RClass*) ;
+ struct RClass* class_from_sym (int *,struct RClass*,int ) ;
+ struct RClass* mrb_class_new (int *,struct RClass*) ;
+ struct RClass* mrb_class_real (int ) ;
+ scalar_t__ mrb_const_defined_at (int *,int ,int ) ;
+ int mrb_obj_value (struct RClass*) ;
+ int mrb_raisef (int *,int ,char*,int ,int ,struct RClass*) ;
+ int setup_class (int *,struct RClass*,struct RClass*,int ) ;
 
 __attribute__((used)) static struct RClass*
 define_class(mrb_state *mrb, mrb_sym name, struct RClass *super, struct RClass *outer)

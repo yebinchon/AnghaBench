@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct urlpieces {int /*<<< orphan*/  query; int /*<<< orphan*/  path; int /*<<< orphan*/  options; int /*<<< orphan*/  password; int /*<<< orphan*/  user; int /*<<< orphan*/  port; int /*<<< orphan*/  hostname; int /*<<< orphan*/  scheme; } ;
-struct TYPE_2__ {int /*<<< orphan*/ * uh; struct urlpieces up; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct urlpieces {int query; int path; int options; int password; int user; int port; int hostname; int scheme; } ;
+struct TYPE_2__ {int * uh; struct urlpieces up; } ;
 struct Curl_easy {TYPE_1__ state; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Curl_safefree (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  curl_url_cleanup (int /*<<< orphan*/ *) ; 
+
+ int Curl_safefree (int ) ;
+ int curl_url_cleanup (int *) ;
 
 __attribute__((used)) static void up_free(struct Curl_easy *data)
 {
@@ -31,5 +31,5 @@ __attribute__((used)) static void up_free(struct Curl_easy *data)
   Curl_safefree(up->path);
   Curl_safefree(up->query);
   curl_url_cleanup(data->state.uh);
-  data->state.uh = NULL;
+  data->state.uh = ((void*)0);
 }

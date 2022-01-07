@@ -1,83 +1,83 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  enum mimestrategy { ____Placeholder_mimestrategy } mimestrategy ;
+
+
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef enum mimestrategy { ____Placeholder_mimestrategy } mimestrategy ;
 struct TYPE_9__ {scalar_t__ state; } ;
-struct TYPE_7__ {char* mimetype; int kind; struct TYPE_7__* nextpart; int /*<<< orphan*/ * curlheaders; TYPE_4__ state; TYPE_1__* encoder; int /*<<< orphan*/  userheaders; scalar_t__ filename; scalar_t__ name; scalar_t__ arg; scalar_t__ data; } ;
-typedef  TYPE_2__ curl_mimepart ;
+struct TYPE_7__ {char* mimetype; int kind; struct TYPE_7__* nextpart; int * curlheaders; TYPE_4__ state; TYPE_1__* encoder; int userheaders; scalar_t__ filename; scalar_t__ name; scalar_t__ arg; scalar_t__ data; } ;
+typedef TYPE_2__ curl_mimepart ;
 struct TYPE_8__ {char* boundary; TYPE_2__* firstpart; } ;
-typedef  TYPE_3__ curl_mime ;
+typedef TYPE_3__ curl_mime ;
 struct TYPE_6__ {char* name; } ;
-typedef  scalar_t__ CURLcode ;
+typedef scalar_t__ CURLcode ;
 
-/* Variables and functions */
- scalar_t__ CURLE_OK ; 
- scalar_t__ CURLE_OUT_OF_MEMORY ; 
- scalar_t__ Curl_mime_add_header (int /*<<< orphan*/ **,char*,char const*,...) ; 
- char* Curl_mime_contenttype (scalar_t__) ; 
- int /*<<< orphan*/  Curl_safefree (char*) ; 
- char* DISPOSITION_DEFAULT ; 
- char* FILE_CONTENTTYPE_DEFAULT ; 
-#define  MIMEKIND_FILE 129 
-#define  MIMEKIND_MULTIPART 128 
- scalar_t__ MIMESTATE_CURLHEADERS ; 
- int MIMESTRATEGY_MAIL ; 
- char* MULTIPART_CONTENTTYPE_DEFAULT ; 
- scalar_t__ add_content_type (int /*<<< orphan*/ **,char const*,char const*) ; 
- int /*<<< orphan*/  curl_slist_free_all (int /*<<< orphan*/ *) ; 
- scalar_t__ curl_strequal (char const*,char*) ; 
- char* escape_string (scalar_t__) ; 
- int /*<<< orphan*/  mimesetstate (TYPE_4__*,scalar_t__,int /*<<< orphan*/ *) ; 
- char* search_header (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ strcasecompare (char const*,char*) ; 
- int /*<<< orphan*/  strncasecompare (char const*,char*,int) ; 
+
+ scalar_t__ CURLE_OK ;
+ scalar_t__ CURLE_OUT_OF_MEMORY ;
+ scalar_t__ Curl_mime_add_header (int **,char*,char const*,...) ;
+ char* Curl_mime_contenttype (scalar_t__) ;
+ int Curl_safefree (char*) ;
+ char* DISPOSITION_DEFAULT ;
+ char* FILE_CONTENTTYPE_DEFAULT ;
+
+
+ scalar_t__ MIMESTATE_CURLHEADERS ;
+ int MIMESTRATEGY_MAIL ;
+ char* MULTIPART_CONTENTTYPE_DEFAULT ;
+ scalar_t__ add_content_type (int **,char const*,char const*) ;
+ int curl_slist_free_all (int *) ;
+ scalar_t__ curl_strequal (char const*,char*) ;
+ char* escape_string (scalar_t__) ;
+ int mimesetstate (TYPE_4__*,scalar_t__,int *) ;
+ char* search_header (int ,char*) ;
+ scalar_t__ strcasecompare (char const*,char*) ;
+ int strncasecompare (char const*,char*,int) ;
 
 CURLcode Curl_mime_prepare_headers(curl_mimepart *part,
                                    const char *contenttype,
                                    const char *disposition,
                                    enum mimestrategy strategy)
 {
-  curl_mime *mime = NULL;
-  const char *boundary = NULL;
+  curl_mime *mime = ((void*)0);
+  const char *boundary = ((void*)0);
   char *customct;
-  const char *cte = NULL;
+  const char *cte = ((void*)0);
   CURLcode ret = CURLE_OK;
 
-  /* Get rid of previously prepared headers. */
+
   curl_slist_free_all(part->curlheaders);
-  part->curlheaders = NULL;
+  part->curlheaders = ((void*)0);
 
-  /* Be sure we won't access old headers later. */
+
   if(part->state.state == MIMESTATE_CURLHEADERS)
-    mimesetstate(&part->state, MIMESTATE_CURLHEADERS, NULL);
+    mimesetstate(&part->state, MIMESTATE_CURLHEADERS, ((void*)0));
 
-  /* Check if content type is specified. */
+
   customct = part->mimetype;
   if(!customct)
     customct = search_header(part->userheaders, "Content-Type");
   if(customct)
     contenttype = customct;
 
-  /* If content type is not specified, try to determine it. */
+
   if(!contenttype) {
     switch(part->kind) {
-    case MIMEKIND_MULTIPART:
+    case 128:
       contenttype = MULTIPART_CONTENTTYPE_DEFAULT;
       break;
-    case MIMEKIND_FILE:
+    case 129:
       contenttype = Curl_mime_contenttype(part->filename);
       if(!contenttype)
         contenttype = Curl_mime_contenttype(part->data);
@@ -90,7 +90,7 @@ CURLcode Curl_mime_prepare_headers(curl_mimepart *part,
     }
   }
 
-  if(part->kind == MIMEKIND_MULTIPART) {
+  if(part->kind == 128) {
     mime = (curl_mime *) part->arg;
     if(mime)
       boundary = mime->boundary;
@@ -98,9 +98,9 @@ CURLcode Curl_mime_prepare_headers(curl_mimepart *part,
   else if(contenttype && !customct &&
           strcasecompare(contenttype, "text/plain"))
     if(strategy == MIMESTRATEGY_MAIL || !part->filename)
-      contenttype = NULL;
+      contenttype = ((void*)0);
 
-  /* Issue content-disposition header only if not already set by caller. */
+
   if(!search_header(part->userheaders, "Content-Disposition")) {
     if(!disposition)
       if(part->filename || part->name ||
@@ -108,10 +108,10 @@ CURLcode Curl_mime_prepare_headers(curl_mimepart *part,
           disposition = DISPOSITION_DEFAULT;
     if(disposition && curl_strequal(disposition, "attachment") &&
      !part->name && !part->filename)
-      disposition = NULL;
+      disposition = ((void*)0);
     if(disposition) {
-      char *name = NULL;
-      char *filename = NULL;
+      char *name = ((void*)0);
+      char *filename = ((void*)0);
 
       if(part->name) {
         name = escape_string(part->name);
@@ -140,19 +140,19 @@ CURLcode Curl_mime_prepare_headers(curl_mimepart *part,
       }
     }
 
-  /* Issue Content-Type header. */
+
   if(contenttype) {
     ret = add_content_type(&part->curlheaders, contenttype, boundary);
     if(ret)
       return ret;
   }
 
-  /* Content-Transfer-Encoding header. */
+
   if(!search_header(part->userheaders, "Content-Transfer-Encoding")) {
     if(part->encoder)
       cte = part->encoder->name;
     else if(contenttype && strategy == MIMESTRATEGY_MAIL &&
-     part->kind != MIMEKIND_MULTIPART)
+     part->kind != 128)
       cte = "8bit";
     if(cte) {
       ret = Curl_mime_add_header(&part->curlheaders,
@@ -162,20 +162,20 @@ CURLcode Curl_mime_prepare_headers(curl_mimepart *part,
     }
   }
 
-  /* If we were reading curl-generated headers, restart with new ones (this
-     should not occur). */
+
+
   if(part->state.state == MIMESTATE_CURLHEADERS)
     mimesetstate(&part->state, MIMESTATE_CURLHEADERS, part->curlheaders);
 
-  /* Process subparts. */
-  if(part->kind == MIMEKIND_MULTIPART && mime) {
+
+  if(part->kind == 128 && mime) {
     curl_mimepart *subpart;
 
-    disposition = NULL;
+    disposition = ((void*)0);
     if(strcasecompare(contenttype, "multipart/form-data"))
       disposition = "form-data";
     for(subpart = mime->firstpart; subpart; subpart = subpart->nextpart) {
-      ret = Curl_mime_prepare_headers(subpart, NULL, disposition, strategy);
+      ret = Curl_mime_prepare_headers(subpart, ((void*)0), disposition, strategy);
       if(ret)
         return ret;
     }

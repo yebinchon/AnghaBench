@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct tl_ds_reply_markup {int dummy; } ;
-struct in_ev {int /*<<< orphan*/  refcnt; } ;
+struct in_ev {int refcnt; } ;
 struct command {int dummy; } ;
-struct arg {int /*<<< orphan*/  peer_id; } ;
+struct arg {int peer_id; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARG2STR (int) ; 
- int /*<<< orphan*/  ENOSYS ; 
- int TGL_SEND_MSG_FLAG_REPLY (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TLS ; 
- int /*<<< orphan*/  TYPE_TO_PARAM (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  clear_packet () ; 
- int disable_msg_preview ; 
- int do_html ; 
- int /*<<< orphan*/  fail_interface (int /*<<< orphan*/ ,struct in_ev*,int /*<<< orphan*/ ,char*) ; 
- struct tl_ds_reply_markup* fetch_ds_type_reply_markup (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free_ds_type_reply_markup (struct tl_ds_reply_markup*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  in_end ; 
- int /*<<< orphan*/  in_ptr ; 
- int /*<<< orphan*/  packet_buffer ; 
- int /*<<< orphan*/  packet_ptr ; 
- int /*<<< orphan*/  print_msg_success_gw ; 
- int /*<<< orphan*/  reply_id ; 
- int /*<<< orphan*/  reply_markup ; 
- int /*<<< orphan*/  tgl_do_send_message (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,struct tl_ds_reply_markup*,int /*<<< orphan*/ ,struct in_ev*) ; 
- scalar_t__ tglf_store_type (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int ARG2STR (int) ;
+ int ENOSYS ;
+ int TGL_SEND_MSG_FLAG_REPLY (int ) ;
+ int TLS ;
+ int TYPE_TO_PARAM (int ) ;
+ int assert (int) ;
+ int clear_packet () ;
+ int disable_msg_preview ;
+ int do_html ;
+ int fail_interface (int ,struct in_ev*,int ,char*) ;
+ struct tl_ds_reply_markup* fetch_ds_type_reply_markup (int ) ;
+ int free_ds_type_reply_markup (struct tl_ds_reply_markup*,int ) ;
+ int in_end ;
+ int in_ptr ;
+ int packet_buffer ;
+ int packet_ptr ;
+ int print_msg_success_gw ;
+ int reply_id ;
+ int reply_markup ;
+ int tgl_do_send_message (int ,int ,int ,int,struct tl_ds_reply_markup*,int ,struct in_ev*) ;
+ scalar_t__ tglf_store_type (int ,int ,int ) ;
 
 void do_msg_kbd (struct command *command, int arg_num, struct arg args[], struct in_ev *ev) {
   assert (arg_num == 3);
   if (ev) { ev->refcnt ++; }
 
-  clear_packet ();  
+  clear_packet ();
   if (tglf_store_type (TLS, ARG2STR(1), TYPE_TO_PARAM (reply_markup)) < 0) {
-    fail_interface (TLS, ev, ENOSYS, "can not parse reply markup");    
+    fail_interface (TLS, ev, ENOSYS, "can not parse reply markup");
     return;
   }
   in_ptr = packet_buffer;

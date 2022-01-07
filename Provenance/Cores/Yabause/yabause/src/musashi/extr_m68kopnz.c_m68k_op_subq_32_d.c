@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CFLAG_SUB_32 (int,int,int) ; 
- int DY ; 
- int /*<<< orphan*/  FLAG_C ; 
- int /*<<< orphan*/  FLAG_N ; 
- int /*<<< orphan*/  FLAG_V ; 
- int /*<<< orphan*/  FLAG_X ; 
- int FLAG_Z ; 
- int MASK_OUT_ABOVE_32 (int) ; 
- int /*<<< orphan*/  NFLAG_32 (int) ; 
- int REG_IR ; 
- int /*<<< orphan*/  VFLAG_SUB_32 (int,int,int) ; 
+
+
+
+typedef int uint ;
+
+
+ int CFLAG_SUB_32 (int,int,int) ;
+ int DY ;
+ int FLAG_C ;
+ int FLAG_N ;
+ int FLAG_V ;
+ int FLAG_X ;
+ int FLAG_Z ;
+ int MASK_OUT_ABOVE_32 (int) ;
+ int NFLAG_32 (int) ;
+ int REG_IR ;
+ int VFLAG_SUB_32 (int,int,int) ;
 
 void m68k_op_subq_32_d(void)
 {
-	uint* r_dst = &DY;
-	uint src = (((REG_IR >> 9) - 1) & 7) + 1;
-	uint dst = *r_dst;
-	uint res = dst - src;
+ uint* r_dst = &DY;
+ uint src = (((REG_IR >> 9) - 1) & 7) + 1;
+ uint dst = *r_dst;
+ uint res = dst - src;
 
-	FLAG_N = NFLAG_32(res);
-	FLAG_Z = MASK_OUT_ABOVE_32(res);
-	FLAG_X = FLAG_C = CFLAG_SUB_32(src, dst, res);
-	FLAG_V = VFLAG_SUB_32(src, dst, res);
+ FLAG_N = NFLAG_32(res);
+ FLAG_Z = MASK_OUT_ABOVE_32(res);
+ FLAG_X = FLAG_C = CFLAG_SUB_32(src, dst, res);
+ FLAG_V = VFLAG_SUB_32(src, dst, res);
 
-	*r_dst = FLAG_Z;
+ *r_dst = FLAG_Z;
 }

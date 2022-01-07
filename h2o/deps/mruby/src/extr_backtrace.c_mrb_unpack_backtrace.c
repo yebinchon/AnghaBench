@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct backtrace_location {scalar_t__ method_id; int /*<<< orphan*/  lineno; int /*<<< orphan*/ * filename; } ;
-typedef  int /*<<< orphan*/  mrb_value ;
-typedef  int /*<<< orphan*/  mrb_state ;
-typedef  size_t mrb_int ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct backtrace_location {scalar_t__ method_id; int lineno; int * filename; } ;
+typedef int mrb_value ;
+typedef int mrb_state ;
+typedef size_t mrb_int ;
 struct TYPE_2__ {scalar_t__ flags; } ;
 
-/* Variables and functions */
- TYPE_1__* RDATA (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bt_type ; 
- scalar_t__ mrb_array_p (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_ary_new_capa (int /*<<< orphan*/ *,size_t) ; 
- int /*<<< orphan*/  mrb_ary_push (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ mrb_data_check_get_ptr (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mrb_fixnum_value (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_format (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_gc_arena_restore (int /*<<< orphan*/ *,int) ; 
- int mrb_gc_arena_save (int /*<<< orphan*/ *) ; 
- scalar_t__ mrb_nil_p (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_str_cat_cstr (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_str_cat_lit (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  mrb_str_new_cstr (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mrb_sym2name (int /*<<< orphan*/ *,scalar_t__) ; 
+
+ TYPE_1__* RDATA (int ) ;
+ int bt_type ;
+ scalar_t__ mrb_array_p (int ) ;
+ int mrb_ary_new_capa (int *,size_t) ;
+ int mrb_ary_push (int *,int ,int ) ;
+ scalar_t__ mrb_data_check_get_ptr (int *,int ,int *) ;
+ int mrb_fixnum_value (int ) ;
+ int mrb_format (int *,char*,int ,int ) ;
+ int mrb_gc_arena_restore (int *,int) ;
+ int mrb_gc_arena_save (int *) ;
+ scalar_t__ mrb_nil_p (int ) ;
+ int mrb_str_cat_cstr (int *,int ,int ) ;
+ int mrb_str_cat_lit (int *,int ,char*) ;
+ int mrb_str_new_cstr (int *,int *) ;
+ int mrb_sym2name (int *,scalar_t__) ;
 
 mrb_value
 mrb_unpack_backtrace(mrb_state *mrb, mrb_value backtrace)
@@ -47,7 +47,7 @@ mrb_unpack_backtrace(mrb_state *mrb, mrb_value backtrace)
   }
   if (mrb_array_p(backtrace)) return backtrace;
   bt = (struct backtrace_location*)mrb_data_check_get_ptr(mrb, backtrace, &bt_type);
-  if (bt == NULL) goto empty_backtrace;
+  if (bt == ((void*)0)) goto empty_backtrace;
   n = (mrb_int)RDATA(backtrace)->flags;
   backtrace = mrb_ary_new_capa(mrb, n);
   ai = mrb_gc_arena_save(mrb);
@@ -55,7 +55,7 @@ mrb_unpack_backtrace(mrb_state *mrb, mrb_value backtrace)
     struct backtrace_location *entry = &bt[i];
     mrb_value btline;
 
-    if (entry->filename == NULL) continue;
+    if (entry->filename == ((void*)0)) continue;
     btline = mrb_format(mrb, "%S:%S",
                               mrb_str_new_cstr(mrb, entry->filename),
                               mrb_fixnum_value(entry->lineno));

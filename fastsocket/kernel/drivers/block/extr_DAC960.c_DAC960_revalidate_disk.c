@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct gendisk {scalar_t__ private_data; TYPE_1__* queue; } ;
-struct TYPE_2__ {int /*<<< orphan*/ * queuedata; } ;
-typedef  int /*<<< orphan*/  DAC960_Controller_T ;
+struct TYPE_2__ {int * queuedata; } ;
+typedef int DAC960_Controller_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  disk_size (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  set_capacity (struct gendisk*,int /*<<< orphan*/ ) ; 
+
+ int disk_size (int *,int) ;
+ int set_capacity (struct gendisk*,int ) ;
 
 __attribute__((used)) static int DAC960_revalidate_disk(struct gendisk *disk)
 {
-	DAC960_Controller_T *p = disk->queue->queuedata;
-	int unit = (long)disk->private_data;
+ DAC960_Controller_T *p = disk->queue->queuedata;
+ int unit = (long)disk->private_data;
 
-	set_capacity(disk, disk_size(p, unit));
-	return 0;
+ set_capacity(disk, disk_size(p, unit));
+ return 0;
 }

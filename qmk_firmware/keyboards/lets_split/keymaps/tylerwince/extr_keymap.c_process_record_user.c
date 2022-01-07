@@ -1,116 +1,116 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint16_t ;
-struct TYPE_4__ {int /*<<< orphan*/  pressed; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint16_t ;
+struct TYPE_4__ {int pressed; } ;
 struct TYPE_5__ {TYPE_1__ event; } ;
-typedef  TYPE_2__ keyrecord_t ;
+typedef TYPE_2__ keyrecord_t ;
 
-/* Variables and functions */
-#define  ADJUST 133 
-#define  COLEMAK 132 
-#define  DVORAK 131 
-#define  LOWER 130 
- int /*<<< orphan*/  PLAY_SONG (int /*<<< orphan*/ ) ; 
-#define  QWERTY 129 
-#define  RAISE 128 
- int /*<<< orphan*/  _ADJUST ; 
- int /*<<< orphan*/  _COLEMAK ; 
- int /*<<< orphan*/  _DVORAK ; 
- int /*<<< orphan*/  _LOWER ; 
- int /*<<< orphan*/  _QWERTY ; 
- int /*<<< orphan*/  _RAISE ; 
- int /*<<< orphan*/  layer_off (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  layer_on (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_adjust () ; 
- int /*<<< orphan*/  set_lower () ; 
- int /*<<< orphan*/  set_qwerty () ; 
- int /*<<< orphan*/  set_raise () ; 
- int /*<<< orphan*/  set_single_persistent_default_layer (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tone_colemak ; 
- int /*<<< orphan*/  tone_dvorak ; 
- int /*<<< orphan*/  update_tri_layer (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+
+
+ int PLAY_SONG (int ) ;
+
+
+ int _ADJUST ;
+ int _COLEMAK ;
+ int _DVORAK ;
+ int _LOWER ;
+ int _QWERTY ;
+ int _RAISE ;
+ int layer_off (int ) ;
+ int layer_on (int ) ;
+ int set_adjust () ;
+ int set_lower () ;
+ int set_qwerty () ;
+ int set_raise () ;
+ int set_single_persistent_default_layer (int ) ;
+ int tone_colemak ;
+ int tone_dvorak ;
+ int update_tri_layer (int ,int ,int ) ;
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
-    case QWERTY:
+    case 129:
       if (record->event.pressed) {
-        #ifdef RGBLIGHT_ENABLE
-          set_qwerty();
-        #endif
+
+
+
         set_single_persistent_default_layer(_QWERTY);
       }
-      return false;
-    case COLEMAK:
+      return 0;
+    case 132:
       if (record->event.pressed) {
-        #ifdef AUDIO_ENABLE
-          PLAY_SONG(tone_colemak);
-        #endif
+
+
+
         set_single_persistent_default_layer(_COLEMAK);
       }
-      return false;
-    case DVORAK:
+      return 0;
+    case 131:
       if (record->event.pressed) {
-        #ifdef AUDIO_ENABLE
-          PLAY_SONG(tone_dvorak);
-        #endif
+
+
+
         set_single_persistent_default_layer(_DVORAK);
       }
-      return false;
-    case LOWER:
+      return 0;
+    case 130:
       if (record->event.pressed) {
-        #ifdef RGBLIGHT_ENABLE
-          set_lower();
-        #endif
+
+
+
         layer_on(_LOWER);
         update_tri_layer(_LOWER, _RAISE, _ADJUST);
       } else {
-        #ifdef RGBLIGHT_ENABLE
-          set_qwerty();
-        #endif
+
+
+
         layer_off(_LOWER);
         update_tri_layer(_LOWER, _RAISE, _ADJUST);
       }
-      return false;
-    case RAISE:
+      return 0;
+    case 128:
       if (record->event.pressed) {
-        #ifdef RGBLIGHT_ENABLE
-          set_raise();
-        #endif
+
+
+
         layer_on(_RAISE);
         update_tri_layer(_LOWER, _RAISE, _ADJUST);
       } else {
-        #ifdef RGBLIGHT_ENABLE
-          set_qwerty();
-        #endif
+
+
+
         layer_off(_RAISE);
         update_tri_layer(_LOWER, _RAISE, _ADJUST);
       }
-      return false;
-    case ADJUST:
+      return 0;
+    case 133:
       if (record->event.pressed) {
-        #ifdef RGBLIGHT_ENABLE
-          set_adjust();
-        #endif
+
+
+
         layer_on(_ADJUST);
       } else {
-        #ifdef RGBLIGHT_ENABLE
-          set_qwerty();
-        #endif
+
+
+
         layer_off(_ADJUST);
       }
-      return false;
+      return 0;
   }
-  return true;
+  return 1;
 }

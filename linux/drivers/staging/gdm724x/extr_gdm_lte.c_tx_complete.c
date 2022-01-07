@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct nic {int /*<<< orphan*/  netdev; } ;
 
-/* Variables and functions */
- scalar_t__ netif_queue_stopped (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  netif_wake_queue (int /*<<< orphan*/ ) ; 
+
+
+
+struct nic {int netdev; } ;
+
+
+ scalar_t__ netif_queue_stopped (int ) ;
+ int netif_wake_queue (int ) ;
 
 __attribute__((used)) static void tx_complete(void *arg)
 {
-	struct nic *nic = arg;
+ struct nic *nic = arg;
 
-	if (netif_queue_stopped(nic->netdev))
-		netif_wake_queue(nic->netdev);
+ if (netif_queue_stopped(nic->netdev))
+  netif_wake_queue(nic->netdev);
 }

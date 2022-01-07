@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Expr ;
 
-/* Variables and functions */
- char SQLITE_AFF_BLOB ; 
- char sqlite3CompareAffinity (int /*<<< orphan*/ *,char) ; 
- scalar_t__ sqlite3ExprNeedsNoAffinityChange (int /*<<< orphan*/ *,char) ; 
- int /*<<< orphan*/ * sqlite3VectorFieldSubexpr (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int Expr ;
+
+
+ char SQLITE_AFF_BLOB ;
+ char sqlite3CompareAffinity (int *,char) ;
+ scalar_t__ sqlite3ExprNeedsNoAffinityChange (int *,char) ;
+ int * sqlite3VectorFieldSubexpr (int *,int) ;
 
 __attribute__((used)) static void updateRangeAffinityStr(
-  Expr *pRight,                   /* RHS of comparison */
-  int n,                          /* Number of vector elements in comparison */
-  char *zAff                      /* Affinity string to modify */
+  Expr *pRight,
+  int n,
+  char *zAff
 ){
   int i;
   for(i=0; i<n; i++){

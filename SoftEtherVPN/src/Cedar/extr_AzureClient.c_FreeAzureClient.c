@@ -1,73 +1,73 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int Halt; int /*<<< orphan*/  Lock; int /*<<< orphan*/  Event; int /*<<< orphan*/  MainThread; TYPE_1__* CurrentSock; } ;
-struct TYPE_7__ {int /*<<< orphan*/  ref; } ;
-typedef  TYPE_1__ SOCK ;
-typedef  TYPE_2__ AZURE_CLIENT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AddRef (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DeleteLock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Disconnect (TYPE_1__*) ; 
- int /*<<< orphan*/  Free (TYPE_2__*) ; 
- int /*<<< orphan*/  INFINITE ; 
- int /*<<< orphan*/  Lock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReleaseEvent (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReleaseSock (TYPE_1__*) ; 
- int /*<<< orphan*/  ReleaseThread (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Set (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Unlock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WaitThread (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int Halt; int Lock; int Event; int MainThread; TYPE_1__* CurrentSock; } ;
+struct TYPE_7__ {int ref; } ;
+typedef TYPE_1__ SOCK ;
+typedef TYPE_2__ AZURE_CLIENT ;
+
+
+ int AddRef (int ) ;
+ int DeleteLock (int ) ;
+ int Disconnect (TYPE_1__*) ;
+ int Free (TYPE_2__*) ;
+ int INFINITE ;
+ int Lock (int ) ;
+ int ReleaseEvent (int ) ;
+ int ReleaseSock (TYPE_1__*) ;
+ int ReleaseThread (int ) ;
+ int Set (int ) ;
+ int Unlock (int ) ;
+ int WaitThread (int ,int ) ;
 
 void FreeAzureClient(AZURE_CLIENT *ac)
 {
-	SOCK *disconnect_sock = NULL;
-	// Validate arguments
-	if (ac == NULL)
-	{
-		return;
-	}
+ SOCK *disconnect_sock = ((void*)0);
 
-	ac->Halt = true;
+ if (ac == ((void*)0))
+ {
+  return;
+ }
 
-	Lock(ac->Lock);
-	{
-		if (ac->CurrentSock != NULL)
-		{
-			disconnect_sock = ac->CurrentSock;
+ ac->Halt = 1;
 
-			AddRef(disconnect_sock->ref);
-		}
-	}
-	Unlock(ac->Lock);
+ Lock(ac->Lock);
+ {
+  if (ac->CurrentSock != ((void*)0))
+  {
+   disconnect_sock = ac->CurrentSock;
 
-	if (disconnect_sock != NULL)
-	{
-		Disconnect(disconnect_sock);
-		ReleaseSock(disconnect_sock);
-	}
+   AddRef(disconnect_sock->ref);
+  }
+ }
+ Unlock(ac->Lock);
 
-	Set(ac->Event);
+ if (disconnect_sock != ((void*)0))
+ {
+  Disconnect(disconnect_sock);
+  ReleaseSock(disconnect_sock);
+ }
 
-	// Stop main thread
-	WaitThread(ac->MainThread, INFINITE);
-	ReleaseThread(ac->MainThread);
+ Set(ac->Event);
 
-	ReleaseEvent(ac->Event);
 
-	DeleteLock(ac->Lock);
+ WaitThread(ac->MainThread, INFINITE);
+ ReleaseThread(ac->MainThread);
 
-	Free(ac);
+ ReleaseEvent(ac->Event);
+
+ DeleteLock(ac->Lock);
+
+ Free(ac);
 }

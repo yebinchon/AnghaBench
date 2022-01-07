@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint64_t ;
-typedef  int int64_t ;
 
-/* Variables and functions */
- int INT64_MAX ; 
- int INT64_MIN ; 
- int UINT64_MAX ; 
+
+
+
+typedef int uint64_t ;
+typedef int int64_t ;
+
+
+ int INT64_MAX ;
+ int INT64_MIN ;
+ int UINT64_MAX ;
 
 int lpStringToInt64(const char *s, unsigned long slen, int64_t *value) {
     const char *p = s;
@@ -27,9 +27,9 @@ int lpStringToInt64(const char *s, unsigned long slen, int64_t *value) {
     if (plen == slen)
         return 0;
 
-    /* Special case: first and only digit is 0. */
+
     if (slen == 1 && p[0] == '0') {
-        if (value != NULL) *value = 0;
+        if (value != ((void*)0)) *value = 0;
         return 1;
     }
 
@@ -37,12 +37,12 @@ int lpStringToInt64(const char *s, unsigned long slen, int64_t *value) {
         negative = 1;
         p++; plen++;
 
-        /* Abort on only a negative sign. */
+
         if (plen == slen)
             return 0;
     }
 
-    /* First digit should be 1-9, otherwise the string should just be 0. */
+
     if (p[0] >= '1' && p[0] <= '9') {
         v = p[0]-'0';
         p++; plen++;
@@ -54,29 +54,29 @@ int lpStringToInt64(const char *s, unsigned long slen, int64_t *value) {
     }
 
     while (plen < slen && p[0] >= '0' && p[0] <= '9') {
-        if (v > (UINT64_MAX / 10)) /* Overflow. */
+        if (v > (UINT64_MAX / 10))
             return 0;
         v *= 10;
 
-        if (v > (UINT64_MAX - (p[0]-'0'))) /* Overflow. */
+        if (v > (UINT64_MAX - (p[0]-'0')))
             return 0;
         v += p[0]-'0';
 
         p++; plen++;
     }
 
-    /* Return if not all bytes were used. */
+
     if (plen < slen)
         return 0;
 
     if (negative) {
-        if (v > ((uint64_t)(-(INT64_MIN+1))+1)) /* Overflow. */
+        if (v > ((uint64_t)(-(INT64_MIN+1))+1))
             return 0;
-        if (value != NULL) *value = -v;
+        if (value != ((void*)0)) *value = -v;
     } else {
-        if (v > INT64_MAX) /* Overflow. */
+        if (v > INT64_MAX)
             return 0;
-        if (value != NULL) *value = v;
+        if (value != ((void*)0)) *value = v;
     }
     return 1;
 }

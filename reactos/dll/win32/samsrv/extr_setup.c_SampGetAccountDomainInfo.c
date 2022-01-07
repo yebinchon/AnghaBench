@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int Length; } ;
-typedef  int /*<<< orphan*/  PVOID ;
-typedef  int /*<<< orphan*/  PPOLICY_ACCOUNT_DOMAIN_INFO ;
-typedef  scalar_t__ NTSTATUS ;
-typedef  TYPE_1__ LSA_OBJECT_ATTRIBUTES ;
-typedef  int /*<<< orphan*/  LSA_HANDLE ;
+typedef int PVOID ;
+typedef int PPOLICY_ACCOUNT_DOMAIN_INFO ;
+typedef scalar_t__ NTSTATUS ;
+typedef TYPE_1__ LSA_OBJECT_ATTRIBUTES ;
+typedef int LSA_HANDLE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*,scalar_t__) ; 
- int /*<<< orphan*/  LsaClose (int /*<<< orphan*/ ) ; 
- scalar_t__ LsaOpenPolicy (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ LsaQueryInformationPolicy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  POLICY_VIEW_LOCAL_INFORMATION ; 
- int /*<<< orphan*/  PolicyAccountDomainInformation ; 
- scalar_t__ STATUS_SUCCESS ; 
- int /*<<< orphan*/  TRACE (char*) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
+
+ int ERR (char*,scalar_t__) ;
+ int LsaClose (int ) ;
+ scalar_t__ LsaOpenPolicy (int *,TYPE_1__*,int ,int *) ;
+ scalar_t__ LsaQueryInformationPolicy (int ,int ,int *) ;
+ int POLICY_VIEW_LOCAL_INFORMATION ;
+ int PolicyAccountDomainInformation ;
+ scalar_t__ STATUS_SUCCESS ;
+ int TRACE (char*) ;
+ int memset (TYPE_1__*,int ,int) ;
 
 NTSTATUS
 SampGetAccountDomainInfo(PPOLICY_ACCOUNT_DOMAIN_INFO *AccountDomainInfo)
@@ -41,7 +41,7 @@ SampGetAccountDomainInfo(PPOLICY_ACCOUNT_DOMAIN_INFO *AccountDomainInfo)
     memset(&ObjectAttributes, 0, sizeof(LSA_OBJECT_ATTRIBUTES));
     ObjectAttributes.Length = sizeof(LSA_OBJECT_ATTRIBUTES);
 
-    Status = LsaOpenPolicy(NULL,
+    Status = LsaOpenPolicy(((void*)0),
                            &ObjectAttributes,
                            POLICY_VIEW_LOCAL_INFORMATION,
                            &PolicyHandle);

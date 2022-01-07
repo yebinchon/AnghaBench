@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct addrinfo {int /*<<< orphan*/  ai_socktype; int /*<<< orphan*/  ai_family; } ;
-typedef  int /*<<< orphan*/  hints ;
-typedef  int /*<<< orphan*/  esp_err_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_UNSPEC ; 
- int /*<<< orphan*/  ESP_ERR_ESP_TLS_CANNOT_RESOLVE_HOSTNAME ; 
- int /*<<< orphan*/  ESP_ERR_NO_MEM ; 
- int /*<<< orphan*/  ESP_LOGD (int /*<<< orphan*/ ,char*,char*,unsigned long) ; 
- int /*<<< orphan*/  ESP_LOGE (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  ESP_OK ; 
- int /*<<< orphan*/  SOCK_STREAM ; 
- int /*<<< orphan*/  TAG ; 
- int /*<<< orphan*/  free (char*) ; 
- scalar_t__ getaddrinfo (char*,int /*<<< orphan*/ *,struct addrinfo*,struct addrinfo**) ; 
- int /*<<< orphan*/  memset (struct addrinfo*,int /*<<< orphan*/ ,int) ; 
- char* strndup (char const*,size_t) ; 
+
+
+
+struct addrinfo {int ai_socktype; int ai_family; } ;
+typedef int hints ;
+typedef int esp_err_t ;
+
+
+ int AF_UNSPEC ;
+ int ESP_ERR_ESP_TLS_CANNOT_RESOLVE_HOSTNAME ;
+ int ESP_ERR_NO_MEM ;
+ int ESP_LOGD (int ,char*,char*,unsigned long) ;
+ int ESP_LOGE (int ,char*,char*) ;
+ int ESP_OK ;
+ int SOCK_STREAM ;
+ int TAG ;
+ int free (char*) ;
+ scalar_t__ getaddrinfo (char*,int *,struct addrinfo*,struct addrinfo**) ;
+ int memset (struct addrinfo*,int ,int) ;
+ char* strndup (char const*,size_t) ;
 
 __attribute__((used)) static esp_err_t resolve_host_name(const char *host, size_t hostlen, struct addrinfo **address_info)
 {
@@ -41,7 +41,7 @@ __attribute__((used)) static esp_err_t resolve_host_name(const char *host, size_
     }
 
     ESP_LOGD(TAG, "host:%s: strlen %lu", use_host, (unsigned long)hostlen);
-    if (getaddrinfo(use_host, NULL, &hints, address_info)) {
+    if (getaddrinfo(use_host, ((void*)0), &hints, address_info)) {
         ESP_LOGE(TAG, "couldn't get hostname for :%s:", use_host);
         free(use_host);
         return ESP_ERR_ESP_TLS_CANNOT_RESOLVE_HOSTNAME;

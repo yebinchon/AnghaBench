@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int line_length; int /*<<< orphan*/  accel; int /*<<< orphan*/  visual; int /*<<< orphan*/  type; int /*<<< orphan*/  id; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int line_length; int accel; int visual; int type; int id; } ;
 struct fb_info {TYPE_1__ fix; } ;
-struct device_node {int /*<<< orphan*/  name; } ;
+struct device_node {int name; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FB_ACCEL_SUN_LEO ; 
- int /*<<< orphan*/  FB_TYPE_PACKED_PIXELS ; 
- int /*<<< orphan*/  FB_VISUAL_TRUECOLOR ; 
- int /*<<< orphan*/  strlcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+ int FB_ACCEL_SUN_LEO ;
+ int FB_TYPE_PACKED_PIXELS ;
+ int FB_VISUAL_TRUECOLOR ;
+ int strlcpy (int ,int ,int) ;
 
 __attribute__((used)) static void
 leo_init_fix(struct fb_info *info, struct device_node *dp)
 {
-	strlcpy(info->fix.id, dp->name, sizeof(info->fix.id));
+ strlcpy(info->fix.id, dp->name, sizeof(info->fix.id));
 
-	info->fix.type = FB_TYPE_PACKED_PIXELS;
-	info->fix.visual = FB_VISUAL_TRUECOLOR;
+ info->fix.type = FB_TYPE_PACKED_PIXELS;
+ info->fix.visual = FB_VISUAL_TRUECOLOR;
 
-	info->fix.line_length = 8192;
+ info->fix.line_length = 8192;
 
-	info->fix.accel = FB_ACCEL_SUN_LEO;
+ info->fix.accel = FB_ACCEL_SUN_LEO;
 }

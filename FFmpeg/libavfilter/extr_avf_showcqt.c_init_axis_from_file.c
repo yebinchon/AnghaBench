@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  enum AVPixelFormat { ____Placeholder_AVPixelFormat } AVPixelFormat ;
-struct TYPE_6__ {int /*<<< orphan*/  format; int /*<<< orphan*/  height; int /*<<< orphan*/  width; int /*<<< orphan*/  linesize; int /*<<< orphan*/  data; } ;
-struct TYPE_5__ {TYPE_3__* axis_frame; int /*<<< orphan*/  format; int /*<<< orphan*/  axis_h; int /*<<< orphan*/  width; int /*<<< orphan*/  ctx; int /*<<< orphan*/  axisfile; } ;
-typedef  TYPE_1__ ShowCQTContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ENOMEM ; 
- TYPE_3__* av_frame_alloc () ; 
- int /*<<< orphan*/  av_frame_free (TYPE_3__**) ; 
- int /*<<< orphan*/  av_freep (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  convert_axis_pixel_format (int /*<<< orphan*/ ) ; 
- int ff_load_image (int /*<<< orphan*/ **,int*,int*,int*,int*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int ff_scale_image (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **,int*,int,int,int,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef enum AVPixelFormat { ____Placeholder_AVPixelFormat } AVPixelFormat ;
+struct TYPE_6__ {int format; int height; int width; int linesize; int data; } ;
+struct TYPE_5__ {TYPE_3__* axis_frame; int format; int axis_h; int width; int ctx; int axisfile; } ;
+typedef TYPE_1__ ShowCQTContext ;
+
+
+ int AVERROR (int ) ;
+ int ENOMEM ;
+ TYPE_3__* av_frame_alloc () ;
+ int av_frame_free (TYPE_3__**) ;
+ int av_freep (int **) ;
+ int convert_axis_pixel_format (int ) ;
+ int ff_load_image (int **,int*,int*,int*,int*,int ,int ) ;
+ int ff_scale_image (int ,int ,int ,int ,int ,int **,int*,int,int,int,int ) ;
 
 __attribute__((used)) static int init_axis_from_file(ShowCQTContext *s)
 {
-    uint8_t *tmp_data[4] = { NULL };
+    uint8_t *tmp_data[4] = { ((void*)0) };
     int tmp_linesize[4];
     enum AVPixelFormat tmp_format;
     int tmp_w, tmp_h, ret;

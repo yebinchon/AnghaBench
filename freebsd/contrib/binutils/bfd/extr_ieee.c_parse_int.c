@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  common_header_type ;
-typedef  int bfd_vma ;
-typedef  int /*<<< orphan*/  bfd_boolean ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  next_byte (int /*<<< orphan*/ *) ; 
- int this_byte (int /*<<< orphan*/ *) ; 
- int this_byte_and_next (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int common_header_type ;
+typedef int bfd_vma ;
+typedef int bfd_boolean ;
+
+
+ int FALSE ;
+ int TRUE ;
+ int next_byte (int *) ;
+ int this_byte (int *) ;
+ int this_byte_and_next (int *) ;
 
 __attribute__((used)) static bfd_boolean
 parse_int (common_header_type *ieee, bfd_vma *value_ptr)
@@ -40,10 +40,10 @@ parse_int (common_header_type *ieee, bfd_vma *value_ptr)
       result = 0;
       next_byte (ieee);
       while (count)
-	{
-	  result = (result << 8) | this_byte_and_next (ieee);
-	  count--;
-	}
+ {
+   result = (result << 8) | this_byte_and_next (ieee);
+   count--;
+ }
       *value_ptr = result;
       return TRUE;
     }

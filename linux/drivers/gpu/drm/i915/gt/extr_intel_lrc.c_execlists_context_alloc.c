@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct intel_context {int /*<<< orphan*/  engine; } ;
 
-/* Variables and functions */
- int __execlists_context_alloc (struct intel_context*,int /*<<< orphan*/ ) ; 
+
+
+
+struct intel_context {int engine; } ;
+
+
+ int __execlists_context_alloc (struct intel_context*,int ) ;
 
 __attribute__((used)) static int execlists_context_alloc(struct intel_context *ce)
 {
-	return __execlists_context_alloc(ce, ce->engine);
+ return __execlists_context_alloc(ce, ce->engine);
 }

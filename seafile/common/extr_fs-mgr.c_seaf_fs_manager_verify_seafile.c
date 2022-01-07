@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  gboolean ;
-struct TYPE_3__ {int /*<<< orphan*/  obj_store; } ;
-typedef  TYPE_1__ SeafFSManager ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EMPTY_SHA1 ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  g_free (void*) ; 
- scalar_t__ memcmp (char const*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ seaf_obj_store_read_obj (int /*<<< orphan*/ ,char const*,int,char const*,void**,int*) ; 
- int /*<<< orphan*/  seaf_warning (char*,char const*,char const*) ; 
- int /*<<< orphan*/  verify_seafile (char const*,void*,int,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int gboolean ;
+struct TYPE_3__ {int obj_store; } ;
+typedef TYPE_1__ SeafFSManager ;
+
+
+ int EMPTY_SHA1 ;
+ int FALSE ;
+ int TRUE ;
+ int g_free (void*) ;
+ scalar_t__ memcmp (char const*,int ,int) ;
+ scalar_t__ seaf_obj_store_read_obj (int ,char const*,int,char const*,void**,int*) ;
+ int seaf_warning (char*,char const*,char const*) ;
+ int verify_seafile (char const*,void*,int,int ,int) ;
 
 gboolean
 seaf_fs_manager_verify_seafile (SeafFSManager *mgr,

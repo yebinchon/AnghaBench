@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  valueA ;
-typedef  int /*<<< orphan*/  keyA ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  scalar_t__ DWORD ;
-typedef  int /*<<< orphan*/  CLSID ;
-typedef  char const CHAR ;
 
-/* Variables and functions */
- int ARRAY_SIZE (struct compat_value*) ; 
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  HKEY_LOCAL_MACHINE ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- scalar_t__ RegEnumKeyA (int /*<<< orphan*/ ,int,char const*,int) ; 
- scalar_t__ RegEnumValueA (int /*<<< orphan*/ ,int,char const*,scalar_t__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ RegOpenKeyA (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *) ; 
- scalar_t__ lstrcmpA (char const*,char const*) ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__,...) ; 
- int /*<<< orphan*/  pGUIDFromStringA (char const*,int /*<<< orphan*/ *) ; 
- scalar_t__ pSHGetObjectCompatFlags (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  skip (char*) ; 
+
+
+
+typedef int valueA ;
+typedef int keyA ;
+typedef int HKEY ;
+typedef scalar_t__ DWORD ;
+typedef int CLSID ;
+typedef char const CHAR ;
+
+
+ int ARRAY_SIZE (struct compat_value*) ;
+ scalar_t__ ERROR_SUCCESS ;
+ int HKEY_LOCAL_MACHINE ;
+ int RegCloseKey (int ) ;
+ scalar_t__ RegEnumKeyA (int ,int,char const*,int) ;
+ scalar_t__ RegEnumValueA (int ,int,char const*,scalar_t__*,int *,int *,int *,int *) ;
+ scalar_t__ RegOpenKeyA (int ,char const*,int *) ;
+ scalar_t__ lstrcmpA (char const*,char const*) ;
+ int ok (int,char*,scalar_t__,...) ;
+ int pGUIDFromStringA (char const*,int *) ;
+ scalar_t__ pSHGetObjectCompatFlags (int *,int *) ;
+ int skip (char*) ;
 
 __attribute__((used)) static void test_SHGetObjectCompatFlags(void)
 {
@@ -55,13 +55,13 @@ __attribute__((used)) static void test_SHGetObjectCompatFlags(void)
     };
 
     static const char compat_path[] = "Software\\Microsoft\\Windows\\CurrentVersion\\ShellCompatibility\\Objects";
-    CHAR keyA[39]; /* {CLSID} */
+    CHAR keyA[39];
     HKEY root;
     DWORD ret;
     int i;
 
-    /* null args */
-    ret = pSHGetObjectCompatFlags(NULL, NULL);
+
+    ret = pSHGetObjectCompatFlags(((void*)0), ((void*)0));
     ok(ret == 0, "got %d\n", ret);
 
     ret = RegOpenKeyA(HKEY_LOCAL_MACHINE, compat_path, &root);
@@ -82,7 +82,7 @@ __attribute__((used)) static void test_SHGetObjectCompatFlags(void)
             CLSID clsid;
             int v;
 
-            for (v = 0; RegEnumValueA(clsid_key, v, valueA, &length, NULL, NULL, NULL, NULL) == ERROR_SUCCESS; v++)
+            for (v = 0; RegEnumValueA(clsid_key, v, valueA, &length, ((void*)0), ((void*)0), ((void*)0), ((void*)0)) == ERROR_SUCCESS; v++)
             {
                 int j;
 
@@ -97,7 +97,7 @@ __attribute__((used)) static void test_SHGetObjectCompatFlags(void)
             }
 
             pGUIDFromStringA(keyA, &clsid);
-            got = pSHGetObjectCompatFlags(NULL, &clsid);
+            got = pSHGetObjectCompatFlags(((void*)0), &clsid);
             ok(got == expected, "got 0x%08x, expected 0x%08x. Key %s\n", got, expected, keyA);
 
             RegCloseKey(clsid_key);

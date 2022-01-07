@@ -1,91 +1,91 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_25__   TYPE_8__ ;
-typedef  struct TYPE_24__   TYPE_6__ ;
-typedef  struct TYPE_23__   TYPE_5__ ;
-typedef  struct TYPE_22__   TYPE_4__ ;
-typedef  struct TYPE_21__   TYPE_3__ ;
-typedef  struct TYPE_20__   TYPE_2__ ;
-typedef  struct TYPE_19__   TYPE_1__ ;
-typedef  struct TYPE_18__   TYPE_12__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  resp ;
-typedef  int /*<<< orphan*/  gresp ;
-typedef  int /*<<< orphan*/  exe ;
-typedef  int /*<<< orphan*/  dresp ;
-typedef  int /*<<< orphan*/  dexe ;
-struct TYPE_20__ {int /*<<< orphan*/  dir; int /*<<< orphan*/  port; } ;
-typedef  TYPE_2__ VC_PRIVATE_PORT_T ;
-struct TYPE_21__ {int numPorts; struct TYPE_21__* next; TYPE_2__* port; int /*<<< orphan*/  reference; TYPE_5__* comp; } ;
-typedef  TYPE_3__ VC_PRIVATE_COMPONENT_T ;
-struct TYPE_25__ {int /*<<< orphan*/  param; int /*<<< orphan*/  index; int /*<<< orphan*/  reference; TYPE_5__* mark; int /*<<< orphan*/  name; } ;
-struct TYPE_24__ {scalar_t__ err; int numPorts; int portDir; int /*<<< orphan*/ * portIndex; int /*<<< orphan*/  param; int /*<<< orphan*/  reference; } ;
-struct TYPE_23__ {int /*<<< orphan*/  ComponentRoleEnum; int /*<<< orphan*/  UseEGLImage; int /*<<< orphan*/  GetExtensionIndex; int /*<<< orphan*/  ComponentTunnelRequest; int /*<<< orphan*/  FillThisBuffer; int /*<<< orphan*/  EmptyThisBuffer; int /*<<< orphan*/  FreeBuffer; int /*<<< orphan*/  AllocateBuffer; int /*<<< orphan*/  UseBuffer; int /*<<< orphan*/  SendCommand; int /*<<< orphan*/  SetConfig; int /*<<< orphan*/  GetConfig; int /*<<< orphan*/  SetParameter; int /*<<< orphan*/  GetParameter; int /*<<< orphan*/  GetState; int /*<<< orphan*/  SetCallbacks; int /*<<< orphan*/  ComponentDeInit; int /*<<< orphan*/  GetComponentVersion; TYPE_12__* pApplicationPrivate; TYPE_3__* pComponentPrivate; } ;
-struct TYPE_19__ {int /*<<< orphan*/  nVersion; } ;
-struct TYPE_22__ {int nSize; int reqSet; int portDir; int /*<<< orphan*/  portIndex; TYPE_1__ nVersion; } ;
-struct TYPE_18__ {int /*<<< orphan*/  component_lock; TYPE_3__* component_list; int /*<<< orphan*/  ilcs; } ;
-typedef  int OMX_U32 ;
-typedef  int /*<<< orphan*/  OMX_STRING ;
-typedef  TYPE_4__ OMX_PARAM_PORTSUMMARYTYPE ;
-typedef  scalar_t__ OMX_HANDLETYPE ;
-typedef  scalar_t__ OMX_ERRORTYPE ;
-typedef  TYPE_5__ OMX_COMPONENTTYPE ;
-typedef  TYPE_6__ IL_RESPONSE_HEADER_T ;
-typedef  TYPE_6__ IL_GET_RESPONSE_T ;
-typedef  TYPE_8__ IL_GET_EXECUTE_T ;
-typedef  TYPE_8__ IL_EXECUTE_HEADER_T ;
-typedef  TYPE_6__ IL_CREATE_COMPONENT_RESPONSE_T ;
-typedef  TYPE_8__ IL_CREATE_COMPONENT_EXECUTE_T ;
-typedef  TYPE_12__ ILCS_COMMON_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IL_COMPONENT_DEINIT ; 
- int /*<<< orphan*/  IL_CREATE_COMPONENT ; 
- int IL_GET_EXECUTE_HEADER_SIZE ; 
- int /*<<< orphan*/  IL_GET_PARAMETER ; 
- int /*<<< orphan*/  OMX_DirInput ; 
- int /*<<< orphan*/  OMX_DirOutput ; 
- scalar_t__ OMX_ErrorHardware ; 
- scalar_t__ OMX_ErrorInsufficientResources ; 
- scalar_t__ OMX_ErrorInvalidComponent ; 
- scalar_t__ OMX_ErrorNone ; 
- int /*<<< orphan*/  OMX_IndexParamPortSummary ; 
- int /*<<< orphan*/  OMX_VERSION ; 
- scalar_t__ ilcs_execute_function (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_8__*,int,TYPE_6__*,int*) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  memset (TYPE_3__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  strcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int strlen (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vcil_out_AllocateBuffer ; 
- int /*<<< orphan*/  vcil_out_ComponentDeInit ; 
- int /*<<< orphan*/  vcil_out_ComponentRoleEnum ; 
- int /*<<< orphan*/  vcil_out_ComponentTunnelRequest ; 
- int /*<<< orphan*/  vcil_out_EmptyThisBuffer ; 
- int /*<<< orphan*/  vcil_out_FillThisBuffer ; 
- int /*<<< orphan*/  vcil_out_FreeBuffer ; 
- int /*<<< orphan*/  vcil_out_GetComponentVersion ; 
- int /*<<< orphan*/  vcil_out_GetConfig ; 
- int /*<<< orphan*/  vcil_out_GetExtensionIndex ; 
- int /*<<< orphan*/  vcil_out_GetParameter ; 
- int /*<<< orphan*/  vcil_out_GetState ; 
- int /*<<< orphan*/  vcil_out_SendCommand ; 
- int /*<<< orphan*/  vcil_out_SetCallbacks ; 
- int /*<<< orphan*/  vcil_out_SetConfig ; 
- int /*<<< orphan*/  vcil_out_SetParameter ; 
- int /*<<< orphan*/  vcil_out_UseBuffer ; 
- int /*<<< orphan*/  vcil_out_UseEGLImage ; 
- TYPE_3__* vcos_malloc (int,char*) ; 
- int /*<<< orphan*/  vcos_semaphore_post (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vcos_semaphore_wait (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_25__ TYPE_8__ ;
+typedef struct TYPE_24__ TYPE_6__ ;
+typedef struct TYPE_23__ TYPE_5__ ;
+typedef struct TYPE_22__ TYPE_4__ ;
+typedef struct TYPE_21__ TYPE_3__ ;
+typedef struct TYPE_20__ TYPE_2__ ;
+typedef struct TYPE_19__ TYPE_1__ ;
+typedef struct TYPE_18__ TYPE_12__ ;
+
+
+typedef int resp ;
+typedef int gresp ;
+typedef int exe ;
+typedef int dresp ;
+typedef int dexe ;
+struct TYPE_20__ {int dir; int port; } ;
+typedef TYPE_2__ VC_PRIVATE_PORT_T ;
+struct TYPE_21__ {int numPorts; struct TYPE_21__* next; TYPE_2__* port; int reference; TYPE_5__* comp; } ;
+typedef TYPE_3__ VC_PRIVATE_COMPONENT_T ;
+struct TYPE_25__ {int param; int index; int reference; TYPE_5__* mark; int name; } ;
+struct TYPE_24__ {scalar_t__ err; int numPorts; int portDir; int * portIndex; int param; int reference; } ;
+struct TYPE_23__ {int ComponentRoleEnum; int UseEGLImage; int GetExtensionIndex; int ComponentTunnelRequest; int FillThisBuffer; int EmptyThisBuffer; int FreeBuffer; int AllocateBuffer; int UseBuffer; int SendCommand; int SetConfig; int GetConfig; int SetParameter; int GetParameter; int GetState; int SetCallbacks; int ComponentDeInit; int GetComponentVersion; TYPE_12__* pApplicationPrivate; TYPE_3__* pComponentPrivate; } ;
+struct TYPE_19__ {int nVersion; } ;
+struct TYPE_22__ {int nSize; int reqSet; int portDir; int portIndex; TYPE_1__ nVersion; } ;
+struct TYPE_18__ {int component_lock; TYPE_3__* component_list; int ilcs; } ;
+typedef int OMX_U32 ;
+typedef int OMX_STRING ;
+typedef TYPE_4__ OMX_PARAM_PORTSUMMARYTYPE ;
+typedef scalar_t__ OMX_HANDLETYPE ;
+typedef scalar_t__ OMX_ERRORTYPE ;
+typedef TYPE_5__ OMX_COMPONENTTYPE ;
+typedef TYPE_6__ IL_RESPONSE_HEADER_T ;
+typedef TYPE_6__ IL_GET_RESPONSE_T ;
+typedef TYPE_8__ IL_GET_EXECUTE_T ;
+typedef TYPE_8__ IL_EXECUTE_HEADER_T ;
+typedef TYPE_6__ IL_CREATE_COMPONENT_RESPONSE_T ;
+typedef TYPE_8__ IL_CREATE_COMPONENT_EXECUTE_T ;
+typedef TYPE_12__ ILCS_COMMON_T ;
+
+
+ int IL_COMPONENT_DEINIT ;
+ int IL_CREATE_COMPONENT ;
+ int IL_GET_EXECUTE_HEADER_SIZE ;
+ int IL_GET_PARAMETER ;
+ int OMX_DirInput ;
+ int OMX_DirOutput ;
+ scalar_t__ OMX_ErrorHardware ;
+ scalar_t__ OMX_ErrorInsufficientResources ;
+ scalar_t__ OMX_ErrorInvalidComponent ;
+ scalar_t__ OMX_ErrorNone ;
+ int OMX_IndexParamPortSummary ;
+ int OMX_VERSION ;
+ scalar_t__ ilcs_execute_function (int ,int ,TYPE_8__*,int,TYPE_6__*,int*) ;
+ int memcpy (int *,int ,int) ;
+ int memset (TYPE_3__*,int ,int) ;
+ int strcpy (int ,int ) ;
+ int strlen (int ) ;
+ int vcil_out_AllocateBuffer ;
+ int vcil_out_ComponentDeInit ;
+ int vcil_out_ComponentRoleEnum ;
+ int vcil_out_ComponentTunnelRequest ;
+ int vcil_out_EmptyThisBuffer ;
+ int vcil_out_FillThisBuffer ;
+ int vcil_out_FreeBuffer ;
+ int vcil_out_GetComponentVersion ;
+ int vcil_out_GetConfig ;
+ int vcil_out_GetExtensionIndex ;
+ int vcil_out_GetParameter ;
+ int vcil_out_GetState ;
+ int vcil_out_SendCommand ;
+ int vcil_out_SetCallbacks ;
+ int vcil_out_SetConfig ;
+ int vcil_out_SetParameter ;
+ int vcil_out_UseBuffer ;
+ int vcil_out_UseEGLImage ;
+ TYPE_3__* vcos_malloc (int,char*) ;
+ int vcos_semaphore_post (int *) ;
+ int vcos_semaphore_wait (int *) ;
 
 OMX_ERRORTYPE vcil_out_create_component(ILCS_COMMON_T *st, OMX_HANDLETYPE hComponent, OMX_STRING component_name)
 {
@@ -159,7 +159,7 @@ OMX_ERRORTYPE vcil_out_create_component(ILCS_COMMON_T *st, OMX_HANDLETYPE hCompo
    }
 
    vcos_semaphore_wait(&st->component_lock);
-   // insert into head of list
+
    comp->next = st->component_list;
    st->component_list = comp;
    vcos_semaphore_post(&st->component_lock);

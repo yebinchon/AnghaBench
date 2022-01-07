@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  scalar_t__ LONG ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  int DWORD ;
-typedef  char BYTE ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- scalar_t__ ERROR_MORE_DATA ; 
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  KEY_READ ; 
- int MAX_SUBKEY_LEN ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- scalar_t__ RegEnumKeyExW (int /*<<< orphan*/ ,int,char*,int*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ RegEnumValueW (int /*<<< orphan*/ ,int,char*,int*,int /*<<< orphan*/ *,int*,char*,int*) ; 
- int /*<<< orphan*/  RegOpenKeyExW (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- char* build_subkey_path (char*,int,char*,int) ; 
- int /*<<< orphan*/  heap_free (char*) ; 
- char* heap_xalloc (int) ; 
- char* heap_xrealloc (char*,int) ; 
- int /*<<< orphan*/  newlineW ; 
- int /*<<< orphan*/  output_string (char*,...) ; 
- int /*<<< orphan*/  output_value (char*,int,char*,int) ; 
- int strlenW (char*) ; 
+
+
+
+typedef char WCHAR ;
+typedef scalar_t__ LONG ;
+typedef int HKEY ;
+typedef int DWORD ;
+typedef char BYTE ;
+typedef scalar_t__ BOOL ;
+
+
+ scalar_t__ ERROR_MORE_DATA ;
+ scalar_t__ ERROR_SUCCESS ;
+ int KEY_READ ;
+ int MAX_SUBKEY_LEN ;
+ int RegCloseKey (int ) ;
+ scalar_t__ RegEnumKeyExW (int ,int,char*,int*,int *,int *,int *,int *) ;
+ scalar_t__ RegEnumValueW (int ,int,char*,int*,int *,int*,char*,int*) ;
+ int RegOpenKeyExW (int ,char*,int ,int ,int *) ;
+ char* build_subkey_path (char*,int,char*,int) ;
+ int heap_free (char*) ;
+ char* heap_xalloc (int) ;
+ char* heap_xrealloc (char*,int) ;
+ int newlineW ;
+ int output_string (char*,...) ;
+ int output_value (char*,int,char*,int) ;
+ int strlenW (char*) ;
 
 __attribute__((used)) static int query_all(HKEY key, WCHAR *path, BOOL recurse)
 {
@@ -58,7 +58,7 @@ __attribute__((used)) static int query_all(HKEY key, WCHAR *path, BOOL recurse)
     {
         value_len = max_value_len;
         data_size = max_data_bytes;
-        rc = RegEnumValueW(key, i, value_name, &value_len, NULL, &type, data, &data_size);
+        rc = RegEnumValueW(key, i, value_name, &value_len, ((void*)0), &type, data, &data_size);
         if (rc == ERROR_SUCCESS)
         {
             output_value(value_name, type, data, data_size);
@@ -94,7 +94,7 @@ __attribute__((used)) static int query_all(HKEY key, WCHAR *path, BOOL recurse)
     for (;;)
     {
         subkey_len = MAX_SUBKEY_LEN;
-        rc = RegEnumKeyExW(key, i, subkey_name, &subkey_len, NULL, NULL, NULL, NULL);
+        rc = RegEnumKeyExW(key, i, subkey_name, &subkey_len, ((void*)0), ((void*)0), ((void*)0), ((void*)0));
         if (rc == ERROR_SUCCESS)
         {
             if (recurse)

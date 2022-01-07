@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int f_code; int /*<<< orphan*/  pb; } ;
-typedef  TYPE_1__ MpegEncContext ;
 
-/* Variables and functions */
- int** ff_mvtab ; 
- int /*<<< orphan*/  put_bits (int /*<<< orphan*/ *,int,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int f_code; int pb; } ;
+typedef TYPE_1__ MpegEncContext ;
+
+
+ int** ff_mvtab ;
+ int put_bits (int *,int,int) ;
 
 __attribute__((used)) static void msmpeg4v2_encode_motion(MpegEncContext * s, int val)
 {
     int range, bit_size, sign, code, bits;
 
     if (val == 0) {
-        /* zero vector */
+
         code = 0;
         put_bits(&s->pb, ff_mvtab[code][1], ff_mvtab[code][0]);
     } else {

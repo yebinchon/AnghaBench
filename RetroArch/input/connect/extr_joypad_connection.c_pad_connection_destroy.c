@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  joypad_connection_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  joypad_is_end_of_list (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pad_connection_pad_deinit (int /*<<< orphan*/ *,unsigned int) ; 
+
+
+
+typedef int joypad_connection_t ;
+
+
+ int free (int *) ;
+ int joypad_is_end_of_list (int *) ;
+ int pad_connection_pad_deinit (int *,unsigned int) ;
 
 void pad_connection_destroy(joypad_connection_t *joyconn)
 {

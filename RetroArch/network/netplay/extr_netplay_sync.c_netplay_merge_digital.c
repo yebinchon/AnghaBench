@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  size_t uint32_t ;
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef size_t uint32_t ;
 struct vote_count {size_t* votes; } ;
 struct delta_frame {TYPE_2__** real_input; } ;
 struct TYPE_7__ {int* device_share_modes; } ;
-typedef  TYPE_1__ netplay_t ;
-typedef  TYPE_2__* netplay_input_state_t ;
-struct TYPE_8__ {size_t size; int client_num; int* data; int /*<<< orphan*/  used; struct TYPE_8__* next; } ;
+typedef TYPE_1__ netplay_t ;
+typedef TYPE_2__* netplay_input_state_t ;
+struct TYPE_8__ {size_t size; int client_num; int* data; int used; struct TYPE_8__* next; } ;
 
-/* Variables and functions */
- size_t MAX_CLIENTS ; 
- int NETPLAY_SHARE_DIGITAL_BITS ; 
- int NETPLAY_SHARE_DIGITAL_VOTE ; 
-#define  NETPLAY_SHARE_DIGITAL_XOR 128 
- TYPE_2__* netplay_device_client_state (TYPE_1__*,struct delta_frame*,size_t,size_t) ; 
+
+ size_t MAX_CLIENTS ;
+ int NETPLAY_SHARE_DIGITAL_BITS ;
+ int NETPLAY_SHARE_DIGITAL_VOTE ;
+
+ TYPE_2__* netplay_device_client_state (TYPE_1__*,struct delta_frame*,size_t,size_t) ;
 
 __attribute__((used)) static void netplay_merge_digital(netplay_t *netplay,
       netplay_input_state_t resstate, struct delta_frame *simframe,
@@ -37,7 +37,7 @@ __attribute__((used)) static void netplay_merge_digital(netplay_t *netplay,
    uint8_t share_mode = netplay->device_share_modes[device]
       & NETPLAY_SHARE_DIGITAL_BITS;
 
-   /* Make sure all real clients are accounted for */
+
    for (simstate = simframe->real_input[device];
          simstate; simstate = simstate->next)
    {
@@ -49,11 +49,11 @@ __attribute__((used)) static void netplay_merge_digital(netplay_t *netplay,
    if (share_mode == NETPLAY_SHARE_DIGITAL_VOTE)
    {
       unsigned i, j;
-      /* This just assumes we have no more than
-       * three words, will need to be adjusted for new devices */
+
+
       struct vote_count votes[3];
-      /* Vote mode requires counting all the bits */
-      uint32_t client_count      = 0;
+
+      uint32_t client_count = 0;
 
       for (i = 0; i < 3; i++)
          for (j = 0; j < 32; j++)
@@ -85,7 +85,7 @@ __attribute__((used)) static void netplay_merge_digital(netplay_t *netplay,
          }
       }
 
-      /* Now count all the bits */
+
       client_count /= 2;
       for (word = 0; word < resstate->size; word++)
       {
@@ -96,7 +96,7 @@ __attribute__((used)) static void netplay_merge_digital(netplay_t *netplay,
          }
       }
    }
-   else /* !VOTE */
+   else
    {
       for (client = 0; client < MAX_CLIENTS; client++)
       {
@@ -116,10 +116,10 @@ __attribute__((used)) static void netplay_merge_digital(netplay_t *netplay,
 
             if (digital[word] == (uint32_t) -1)
             {
-               /* Combine the whole word */
+
                switch (share_mode)
                {
-                  case NETPLAY_SHARE_DIGITAL_XOR:
+                  case 128:
                      resstate->data[word] ^= part;
                      break;
                   default:
@@ -127,7 +127,7 @@ __attribute__((used)) static void netplay_merge_digital(netplay_t *netplay,
                }
 
             }
-            else /* !whole word */
+            else
             {
                for (bit = 0; bit < 32; bit++)
                {
@@ -135,7 +135,7 @@ __attribute__((used)) static void netplay_merge_digital(netplay_t *netplay,
                      continue;
                   switch (share_mode)
                   {
-                     case NETPLAY_SHARE_DIGITAL_XOR:
+                     case 128:
                         resstate->data[word] ^= part & (1<<bit);
                         break;
                      default:

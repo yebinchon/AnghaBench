@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LIBPREFIX ; 
- int /*<<< orphan*/  LUA_REGISTRYINDEX ; 
- int /*<<< orphan*/  luaL_getmetatable (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  lua_gettable (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_isnil (int /*<<< orphan*/ *,int) ; 
- scalar_t__ lua_newuserdata (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pop (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pushfstring (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  lua_pushvalue (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_setmetatable (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_settable (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ lua_touserdata (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int lua_State ;
+
+
+ int LIBPREFIX ;
+ int LUA_REGISTRYINDEX ;
+ int luaL_getmetatable (int *,char*) ;
+ int lua_gettable (int *,int ) ;
+ int lua_isnil (int *,int) ;
+ scalar_t__ lua_newuserdata (int *,int) ;
+ int lua_pop (int *,int) ;
+ int lua_pushfstring (int *,char*,int ,char const*) ;
+ int lua_pushvalue (int *,int) ;
+ int lua_setmetatable (int *,int) ;
+ int lua_settable (int *,int ) ;
+ scalar_t__ lua_touserdata (int *,int) ;
 
 __attribute__((used)) static void ** ll_register (lua_State *L, const char *path) {
   void **plib;
   lua_pushfstring(L, "%s%s", LIBPREFIX, path);
-  lua_gettable(L, LUA_REGISTRYINDEX);  /* check library in registry? */
-  if (!lua_isnil(L, -1))  /* is there an entry? */
+  lua_gettable(L, LUA_REGISTRYINDEX);
+  if (!lua_isnil(L, -1))
     plib = (void **)lua_touserdata(L, -1);
-  else {  /* no entry yet; create one */
+  else {
     lua_pop(L, 1);
     plib = (void **)lua_newuserdata(L, sizeof(const void *));
-    *plib = NULL;
+    *plib = ((void*)0);
     luaL_getmetatable(L, "_LOADLIB");
     lua_setmetatable(L, -2);
     lua_pushfstring(L, "%s%s", LIBPREFIX, path);

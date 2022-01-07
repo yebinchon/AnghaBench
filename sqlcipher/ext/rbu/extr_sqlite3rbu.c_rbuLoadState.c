@@ -1,50 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  void* u32 ;
-struct TYPE_6__ {int rc; int /*<<< orphan*/  zStateDb; int /*<<< orphan*/  zErrmsg; int /*<<< orphan*/  dbRbu; } ;
-typedef  TYPE_1__ sqlite3rbu ;
-typedef  int /*<<< orphan*/  sqlite3_stmt ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef void* u32 ;
+struct TYPE_6__ {int rc; int zStateDb; int zErrmsg; int dbRbu; } ;
+typedef TYPE_1__ sqlite3rbu ;
+typedef int sqlite3_stmt ;
 struct TYPE_7__ {int eStage; int nRow; void* zDataTbl; void* nPhaseOneStep; void* iOalSz; void* iCookie; void* iWalCksum; void* nProgress; void* zIdx; void* zTbl; } ;
-typedef  TYPE_2__ RbuState ;
+typedef TYPE_2__ RbuState ;
 
-/* Variables and functions */
- int RBU_STAGE_CKPT ; 
- int RBU_STAGE_MOVE ; 
- int RBU_STAGE_OAL ; 
-#define  RBU_STATE_CKPT 137 
-#define  RBU_STATE_COOKIE 136 
-#define  RBU_STATE_DATATBL 135 
-#define  RBU_STATE_IDX 134 
-#define  RBU_STATE_OALSZ 133 
-#define  RBU_STATE_PHASEONESTEP 132 
-#define  RBU_STATE_PROGRESS 131 
-#define  RBU_STATE_ROW 130 
-#define  RBU_STATE_STAGE 129 
-#define  RBU_STATE_TBL 128 
- void* SQLITE_CORRUPT ; 
- int SQLITE_OK ; 
- scalar_t__ SQLITE_ROW ; 
- int prepareFreeAndCollectError (int /*<<< orphan*/ ,int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ rbuMalloc (TYPE_1__*,int) ; 
- void* rbuStrndup (char*,int*) ; 
- int sqlite3_column_int (int /*<<< orphan*/ *,int) ; 
- void* sqlite3_column_int64 (int /*<<< orphan*/ *,int) ; 
- scalar_t__ sqlite3_column_text (int /*<<< orphan*/ *,int) ; 
- int sqlite3_finalize (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_mprintf (char*,int /*<<< orphan*/ ) ; 
- scalar_t__ sqlite3_step (int /*<<< orphan*/ *) ; 
+
+ int RBU_STAGE_CKPT ;
+ int RBU_STAGE_MOVE ;
+ int RBU_STAGE_OAL ;
+ void* SQLITE_CORRUPT ;
+ int SQLITE_OK ;
+ scalar_t__ SQLITE_ROW ;
+ int prepareFreeAndCollectError (int ,int **,int *,int ) ;
+ scalar_t__ rbuMalloc (TYPE_1__*,int) ;
+ void* rbuStrndup (char*,int*) ;
+ int sqlite3_column_int (int *,int) ;
+ void* sqlite3_column_int64 (int *,int) ;
+ scalar_t__ sqlite3_column_text (int *,int) ;
+ int sqlite3_finalize (int *) ;
+ int sqlite3_mprintf (char*,int ) ;
+ scalar_t__ sqlite3_step (int *) ;
 
 __attribute__((used)) static RbuState *rbuLoadState(sqlite3rbu *p){
   RbuState *pRet = 0;
@@ -55,12 +45,12 @@ __attribute__((used)) static RbuState *rbuLoadState(sqlite3rbu *p){
   pRet = (RbuState*)rbuMalloc(p, sizeof(RbuState));
   if( pRet==0 ) return 0;
 
-  rc = prepareFreeAndCollectError(p->dbRbu, &pStmt, &p->zErrmsg, 
+  rc = prepareFreeAndCollectError(p->dbRbu, &pStmt, &p->zErrmsg,
       sqlite3_mprintf("SELECT k, v FROM %s.rbu_state", p->zStateDb)
   );
   while( rc==SQLITE_OK && SQLITE_ROW==sqlite3_step(pStmt) ){
     switch( sqlite3_column_int(pStmt, 0) ){
-      case RBU_STATE_STAGE:
+      case 129:
         pRet->eStage = sqlite3_column_int(pStmt, 1);
         if( pRet->eStage!=RBU_STAGE_OAL
          && pRet->eStage!=RBU_STAGE_MOVE
@@ -70,39 +60,39 @@ __attribute__((used)) static RbuState *rbuLoadState(sqlite3rbu *p){
         }
         break;
 
-      case RBU_STATE_TBL:
+      case 128:
         pRet->zTbl = rbuStrndup((char*)sqlite3_column_text(pStmt, 1), &rc);
         break;
 
-      case RBU_STATE_IDX:
+      case 134:
         pRet->zIdx = rbuStrndup((char*)sqlite3_column_text(pStmt, 1), &rc);
         break;
 
-      case RBU_STATE_ROW:
+      case 130:
         pRet->nRow = sqlite3_column_int(pStmt, 1);
         break;
 
-      case RBU_STATE_PROGRESS:
+      case 131:
         pRet->nProgress = sqlite3_column_int64(pStmt, 1);
         break;
 
-      case RBU_STATE_CKPT:
+      case 137:
         pRet->iWalCksum = sqlite3_column_int64(pStmt, 1);
         break;
 
-      case RBU_STATE_COOKIE:
+      case 136:
         pRet->iCookie = (u32)sqlite3_column_int64(pStmt, 1);
         break;
 
-      case RBU_STATE_OALSZ:
+      case 133:
         pRet->iOalSz = (u32)sqlite3_column_int64(pStmt, 1);
         break;
 
-      case RBU_STATE_PHASEONESTEP:
+      case 132:
         pRet->nPhaseOneStep = sqlite3_column_int64(pStmt, 1);
         break;
 
-      case RBU_STATE_DATATBL:
+      case 135:
         pRet->zDataTbl = rbuStrndup((char*)sqlite3_column_text(pStmt, 1), &rc);
         break;
 

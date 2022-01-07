@@ -1,96 +1,96 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  whoami ;
-typedef  char uint8_t ;
-typedef  size_t uint16_t ;
-typedef  scalar_t__ time_t ;
-typedef  int /*<<< orphan*/  Tox ;
 
-/* Variables and functions */
- int ERR ; 
- int /*<<< orphan*/  LC_ALL ; 
- int /*<<< orphan*/  TOX_MAX_NAME_LENGTH ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  appender (char*,char) ; 
- size_t atoi (char*) ; 
- int cmdline_parsefor_ipv46 (int,char**,char*) ; 
- char* data_file_name ; 
- int /*<<< orphan*/  do_refresh () ; 
- int /*<<< orphan*/  endwin () ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  file_print_control ; 
- int /*<<< orphan*/  file_request_accept ; 
- int /*<<< orphan*/  fputs (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (unsigned char*) ; 
- int /*<<< orphan*/  get_id (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  getmaxyx (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- unsigned char* hex_string_to_bin (char*) ; 
- int /*<<< orphan*/  initscr () ; 
- char* input_line ; 
- scalar_t__ isalnum (int) ; 
- scalar_t__ ispunct (int) ; 
- int /*<<< orphan*/  line_eval (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/ * load_data () ; 
- int /*<<< orphan*/  new_lines (char*) ; 
- int /*<<< orphan*/  nodelay (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  noecho () ; 
- int /*<<< orphan*/  print_groupmessage ; 
- int /*<<< orphan*/  print_groupnamelistchange ; 
- int /*<<< orphan*/  print_help (char*) ; 
- int /*<<< orphan*/  print_invite ; 
- int /*<<< orphan*/  print_message ; 
- int /*<<< orphan*/  print_nickchange ; 
- int /*<<< orphan*/  print_online ; 
- int /*<<< orphan*/  print_request ; 
- int /*<<< orphan*/  print_statuschange ; 
- int /*<<< orphan*/  printf (char*,char*,...) ; 
- int /*<<< orphan*/  raw () ; 
- int /*<<< orphan*/  save_data_file (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  setlocale (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,char*) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  stdscr ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
- int strlen (char*) ; 
- scalar_t__ time (int /*<<< orphan*/ *) ; 
- int timeout_getch (int /*<<< orphan*/ *) ; 
- int tox_bootstrap (int /*<<< orphan*/ *,char*,size_t,unsigned char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tox_callback_file_chunk_request (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tox_callback_file_recv (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tox_callback_file_recv_chunk (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tox_callback_file_recv_control (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tox_callback_friend_connection_status (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tox_callback_friend_message (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tox_callback_friend_name (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tox_callback_friend_request (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tox_callback_friend_status_message (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tox_callback_group_invite (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tox_callback_group_message (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tox_callback_group_namelist_change (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tox_file_chunk_request ; 
- int /*<<< orphan*/  tox_iterate (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tox_kill (int /*<<< orphan*/ *) ; 
- scalar_t__ tox_self_get_connection_status (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tox_self_get_name (int /*<<< orphan*/ *,char*) ; 
- size_t tox_self_get_name_size (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  write_file ; 
- int /*<<< orphan*/  x ; 
- int /*<<< orphan*/  y ; 
+
+
+
+typedef int whoami ;
+typedef char uint8_t ;
+typedef size_t uint16_t ;
+typedef scalar_t__ time_t ;
+typedef int Tox ;
+
+
+ int ERR ;
+ int LC_ALL ;
+ int TOX_MAX_NAME_LENGTH ;
+ int TRUE ;
+ int appender (char*,char) ;
+ size_t atoi (char*) ;
+ int cmdline_parsefor_ipv46 (int,char**,char*) ;
+ char* data_file_name ;
+ int do_refresh () ;
+ int endwin () ;
+ int exit (int) ;
+ int file_print_control ;
+ int file_request_accept ;
+ int fputs (char*,int ) ;
+ int free (unsigned char*) ;
+ int get_id (int *,char*) ;
+ int getmaxyx (int ,int ,int ) ;
+ unsigned char* hex_string_to_bin (char*) ;
+ int initscr () ;
+ char* input_line ;
+ scalar_t__ isalnum (int) ;
+ scalar_t__ ispunct (int) ;
+ int line_eval (int *,char*) ;
+ int * load_data () ;
+ int new_lines (char*) ;
+ int nodelay (int ,int ) ;
+ int noecho () ;
+ int print_groupmessage ;
+ int print_groupnamelistchange ;
+ int print_help (char*) ;
+ int print_invite ;
+ int print_message ;
+ int print_nickchange ;
+ int print_online ;
+ int print_request ;
+ int print_statuschange ;
+ int printf (char*,char*,...) ;
+ int raw () ;
+ int save_data_file (int *,char*) ;
+ int setlocale (int ,char*) ;
+ int snprintf (char*,int,char*,char*) ;
+ int stderr ;
+ int stdscr ;
+ int strcmp (char*,char*) ;
+ int strcpy (char*,char*) ;
+ int strlen (char*) ;
+ scalar_t__ time (int *) ;
+ int timeout_getch (int *) ;
+ int tox_bootstrap (int *,char*,size_t,unsigned char*,int *) ;
+ int tox_callback_file_chunk_request (int *,int ,int *) ;
+ int tox_callback_file_recv (int *,int ,int *) ;
+ int tox_callback_file_recv_chunk (int *,int ,int *) ;
+ int tox_callback_file_recv_control (int *,int ,int *) ;
+ int tox_callback_friend_connection_status (int *,int ,int *) ;
+ int tox_callback_friend_message (int *,int ,int *) ;
+ int tox_callback_friend_name (int *,int ,int *) ;
+ int tox_callback_friend_request (int *,int ,int *) ;
+ int tox_callback_friend_status_message (int *,int ,int *) ;
+ int tox_callback_group_invite (int *,int ,int *) ;
+ int tox_callback_group_message (int *,int ,int *) ;
+ int tox_callback_group_namelist_change (int *,int ,int *) ;
+ int tox_file_chunk_request ;
+ int tox_iterate (int *) ;
+ int tox_kill (int *) ;
+ scalar_t__ tox_self_get_connection_status (int *) ;
+ int tox_self_get_name (int *,char*) ;
+ size_t tox_self_get_name_size (int *) ;
+ int write_file ;
+ int x ;
+ int y ;
 
 int main(int argc, char *argv[])
 {
-    /* minimalistic locale support (i.e. when printing dates) */
+
     setlocale(LC_ALL, "");
 
     if (argc < 4) {
@@ -103,8 +103,8 @@ int main(int argc, char *argv[])
         exit(0);
     }
 
-    /* let user override default by cmdline */
-    uint8_t ipv6enabled = 1; /* x */
+
+    uint8_t ipv6enabled = 1;
     int argvoffset = cmdline_parsefor_ipv46(argc, argv, &ipv6enabled);
 
     if (argvoffset < 0)
@@ -115,8 +115,8 @@ int main(int argc, char *argv[])
     char idstring[200] = {0};
     Tox *m;
 
-    /* [-f keyfile] MUST be last two arguments, no point in walking over the list
-     * especially not a good idea to accept it anywhere in the middle */
+
+
     if (argc > argvoffset + 3)
         if (!strcmp(argv[argc - 2], "-f"))
             filename = argv[argc - 1];
@@ -131,18 +131,18 @@ int main(int argc, char *argv[])
 
     save_data_file(m, filename);
 
-    tox_callback_friend_request(m, print_request, NULL);
-    tox_callback_friend_message(m, print_message, NULL);
-    tox_callback_friend_name(m, print_nickchange, NULL);
-    tox_callback_friend_status_message(m, print_statuschange, NULL);
-    tox_callback_group_invite(m, print_invite, NULL);
-    tox_callback_group_message(m, print_groupmessage, NULL);
-    tox_callback_file_recv_chunk(m, write_file, NULL);
-    tox_callback_file_recv_control(m, file_print_control, NULL);
-    tox_callback_file_recv(m, file_request_accept, NULL);
-    tox_callback_file_chunk_request(m, tox_file_chunk_request, NULL);
-    tox_callback_group_namelist_change(m, print_groupnamelistchange, NULL);
-    tox_callback_friend_connection_status(m, print_online, NULL);
+    tox_callback_friend_request(m, print_request, ((void*)0));
+    tox_callback_friend_message(m, print_message, ((void*)0));
+    tox_callback_friend_name(m, print_nickchange, ((void*)0));
+    tox_callback_friend_status_message(m, print_statuschange, ((void*)0));
+    tox_callback_group_invite(m, print_invite, ((void*)0));
+    tox_callback_group_message(m, print_groupmessage, ((void*)0));
+    tox_callback_file_recv_chunk(m, write_file, ((void*)0));
+    tox_callback_file_recv_control(m, file_print_control, ((void*)0));
+    tox_callback_file_recv(m, file_request_accept, ((void*)0));
+    tox_callback_file_chunk_request(m, tox_file_chunk_request, ((void*)0));
+    tox_callback_group_namelist_change(m, print_groupnamelistchange, ((void*)0));
+    tox_callback_friend_connection_status(m, print_online, ((void*)0));
 
     initscr();
     noecho();
@@ -156,7 +156,7 @@ int main(int argc, char *argv[])
 
     uint16_t port = atoi(argv[argvoffset + 2]);
     unsigned char *binary_string = hex_string_to_bin(argv[argvoffset + 3]);
-    int res = tox_bootstrap(m, argv[argvoffset + 1], port, binary_string, NULL);
+    int res = tox_bootstrap(m, argv[argvoffset + 1], port, binary_string, ((void*)0));
 
     if (!res) {
         printf("Failed to convert \"%s\" into an IP address. Exiting...\n", argv[argvoffset + 1]);
@@ -178,7 +178,7 @@ int main(int argc, char *argv[])
         new_lines(whoami);
     }
 
-    time_t timestamp0 = time(NULL);
+    time_t timestamp0 = time(((void*)0));
 
     while (1) {
         if (on == 0) {
@@ -186,11 +186,11 @@ int main(int argc, char *argv[])
                 new_lines("[i] connected to DHT");
                 on = 1;
             } else {
-                time_t timestamp1 = time(NULL);
+                time_t timestamp1 = time(((void*)0));
 
                 if (timestamp0 + 10 < timestamp1) {
                     timestamp0 = timestamp1;
-                    tox_bootstrap(m, argv[argvoffset + 1], port, binary_string, NULL);
+                    tox_bootstrap(m, argv[argvoffset + 1], port, binary_string, ((void*)0));
                 }
             }
         }

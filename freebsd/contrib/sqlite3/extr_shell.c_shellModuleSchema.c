@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_value ;
-typedef  int /*<<< orphan*/  sqlite3_context ;
 
-/* Variables and functions */
- int /*<<< orphan*/  UNUSED_PARAMETER (int) ; 
- int /*<<< orphan*/  free (char*) ; 
- char* shellFakeSchema (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  sqlite3_context_db_handle (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_free ; 
- int /*<<< orphan*/  sqlite3_mprintf (char*,char*) ; 
- int /*<<< orphan*/  sqlite3_result_text (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- scalar_t__ sqlite3_value_text (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int sqlite3_value ;
+typedef int sqlite3_context ;
+
+
+ int UNUSED_PARAMETER (int) ;
+ int free (char*) ;
+ char* shellFakeSchema (int ,int ,char const*) ;
+ int sqlite3_context_db_handle (int *) ;
+ int sqlite3_free ;
+ int sqlite3_mprintf (char*,char*) ;
+ int sqlite3_result_text (int *,int ,int,int ) ;
+ scalar_t__ sqlite3_value_text (int *) ;
 
 __attribute__((used)) static void shellModuleSchema(
   sqlite3_context *pCtx,

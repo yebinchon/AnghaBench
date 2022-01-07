@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  ASL_DEBUG_OUTPUT ; 
- int /*<<< orphan*/  AslGbl_DebugFlag ; 
- int /*<<< orphan*/  AslGbl_RootTable ; 
- int /*<<< orphan*/  DbgPrint (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  DtDumpSubtableInfo ; 
- int /*<<< orphan*/  DtDumpSubtableTree ; 
- int /*<<< orphan*/  DtWalkTableTree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+ int ASL_DEBUG_OUTPUT ;
+ int AslGbl_DebugFlag ;
+ int AslGbl_RootTable ;
+ int DbgPrint (int ,char*) ;
+ int DtDumpSubtableInfo ;
+ int DtDumpSubtableTree ;
+ int DtWalkTableTree (int ,int ,int *,int *) ;
 
 void
 DtDumpSubtableList (
@@ -34,11 +26,11 @@ DtDumpSubtableList (
         "Subtable Info:\n"
         "Depth                      Name Length   TotalLen LenSize  Flags    "
         "This     Parent   Child    Peer\n\n");
-    DtWalkTableTree (AslGbl_RootTable, DtDumpSubtableInfo, NULL, NULL);
+    DtWalkTableTree (AslGbl_RootTable, DtDumpSubtableInfo, ((void*)0), ((void*)0));
 
     DbgPrint (ASL_DEBUG_OUTPUT,
         "\nSubtable Tree: (Depth, Name, Subtable, Length, TotalLength)\n\n");
-    DtWalkTableTree (AslGbl_RootTable, DtDumpSubtableTree, NULL, NULL);
+    DtWalkTableTree (AslGbl_RootTable, DtDumpSubtableTree, ((void*)0), ((void*)0));
 
     DbgPrint (ASL_DEBUG_OUTPUT, "\n");
 }

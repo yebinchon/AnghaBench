@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct playlist_entry {scalar_t__ runtime_status; scalar_t__ runtime_hours; scalar_t__ runtime_minutes; scalar_t__ runtime_seconds; scalar_t__ last_played_year; scalar_t__ last_played_month; scalar_t__ last_played_day; scalar_t__ last_played_hour; scalar_t__ last_played_minute; scalar_t__ last_played_second; int /*<<< orphan*/ * last_played_str; int /*<<< orphan*/ * runtime_str; int /*<<< orphan*/ * core_path; int /*<<< orphan*/ * path; } ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct playlist_entry {scalar_t__ runtime_status; scalar_t__ runtime_hours; scalar_t__ runtime_minutes; scalar_t__ runtime_seconds; scalar_t__ last_played_year; scalar_t__ last_played_month; scalar_t__ last_played_day; scalar_t__ last_played_hour; scalar_t__ last_played_minute; scalar_t__ last_played_second; int * last_played_str; int * runtime_str; int * core_path; int * path; } ;
 struct TYPE_3__ {size_t size; int modified; struct playlist_entry* entries; } ;
-typedef  TYPE_1__ playlist_t ;
+typedef TYPE_1__ playlist_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
- void* strdup (int /*<<< orphan*/ *) ; 
+
+ int free (int *) ;
+ void* strdup (int *) ;
 
 void playlist_update_runtime(playlist_t *playlist, size_t idx,
       const struct playlist_entry *update_entry,
       bool register_update)
 {
-   struct playlist_entry *entry = NULL;
+   struct playlist_entry *entry = ((void*)0);
 
    if (!playlist || idx > playlist->size)
       return;
 
-   entry            = &playlist->entries[idx];
+   entry = &playlist->entries[idx];
 
    if (update_entry->path && (update_entry->path != entry->path))
    {
-      if (entry->path != NULL)
+      if (entry->path != ((void*)0))
          free(entry->path);
-      entry->path        = NULL;
-      entry->path        = strdup(update_entry->path);
+      entry->path = ((void*)0);
+      entry->path = strdup(update_entry->path);
       playlist->modified = playlist->modified || register_update;
    }
 
    if (update_entry->core_path && (update_entry->core_path != entry->core_path))
    {
-      if (entry->core_path != NULL)
+      if (entry->core_path != ((void*)0))
          free(entry->core_path);
-      entry->core_path   = NULL;
-      entry->core_path   = strdup(update_entry->core_path);
+      entry->core_path = ((void*)0);
+      entry->core_path = strdup(update_entry->core_path);
       playlist->modified = playlist->modified || register_update;
    }
 
@@ -110,18 +110,18 @@ void playlist_update_runtime(playlist_t *playlist, size_t idx,
 
    if (update_entry->runtime_str && (update_entry->runtime_str != entry->runtime_str))
    {
-      if (entry->runtime_str != NULL)
+      if (entry->runtime_str != ((void*)0))
          free(entry->runtime_str);
-      entry->runtime_str = NULL;
+      entry->runtime_str = ((void*)0);
       entry->runtime_str = strdup(update_entry->runtime_str);
       playlist->modified = playlist->modified || register_update;
    }
 
    if (update_entry->last_played_str && (update_entry->last_played_str != entry->last_played_str))
    {
-      if (entry->last_played_str != NULL)
+      if (entry->last_played_str != ((void*)0))
          free(entry->last_played_str);
-      entry->last_played_str = NULL;
+      entry->last_played_str = ((void*)0);
       entry->last_played_str = strdup(update_entry->last_played_str);
       playlist->modified = playlist->modified || register_update;
    }

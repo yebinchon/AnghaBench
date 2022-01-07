@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int old_size; int patch_size; int mode; int actime; int modtime; int old_crc32; int patch_crc32; int new_crc32; scalar_t__ parts; scalar_t__ filename_size; scalar_t__ gid; scalar_t__ uid; } ;
 struct TYPE_4__ {int name; int chunk; int chunks; int M; TYPE_1__ E; } ;
 
-/* Variables and functions */
- TYPE_2__ curfile ; 
- int /*<<< orphan*/  vkprintf (int,char*,int) ; 
+
+ TYPE_2__ curfile ;
+ int vkprintf (int,char*,int) ;
 
 __attribute__((used)) static void curfile_dump (int level) {
   vkprintf (level, "curfile.name: %s\n", curfile.name);

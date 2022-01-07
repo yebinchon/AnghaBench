@@ -1,29 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  LOG_ERR ; 
- int MS_BIND ; 
- int MS_RDONLY ; 
- int MS_REMOUNT ; 
- int MS_SLAVE ; 
- int /*<<< orphan*/  arg_machine ; 
- int log_error_errno (int,char*) ; 
- int /*<<< orphan*/  mkdir_p (char const*,int) ; 
- int mount_verbose (int /*<<< orphan*/ ,char const*,char const*,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- char* prefix_roota (char const*,char*) ; 
- char* strjoina (char*,int /*<<< orphan*/ ) ; 
- int userns_mkdir (char const*,char*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int LOG_ERR ;
+ int MS_BIND ;
+ int MS_RDONLY ;
+ int MS_REMOUNT ;
+ int MS_SLAVE ;
+ int arg_machine ;
+ int log_error_errno (int,char*) ;
+ int mkdir_p (char const*,int) ;
+ int mount_verbose (int ,char const*,char const*,int *,int,int *) ;
+ char* prefix_roota (char const*,char*) ;
+ char* strjoina (char*,int ) ;
+ int userns_mkdir (char const*,char*,int,int ,int ) ;
 
 __attribute__((used)) static int setup_propagate(const char *root) {
         const char *p, *q;
@@ -47,15 +39,15 @@ __attribute__((used)) static int setup_propagate(const char *root) {
                 return log_error_errno(r, "Failed to create /run/systemd/nspawn/incoming: %m");
 
         q = prefix_roota(root, "/run/systemd/nspawn/incoming");
-        r = mount_verbose(LOG_ERR, p, q, NULL, MS_BIND, NULL);
+        r = mount_verbose(LOG_ERR, p, q, ((void*)0), MS_BIND, ((void*)0));
         if (r < 0)
                 return r;
 
-        r = mount_verbose(LOG_ERR, NULL, q, NULL, MS_BIND|MS_REMOUNT|MS_RDONLY, NULL);
+        r = mount_verbose(LOG_ERR, ((void*)0), q, ((void*)0), MS_BIND|MS_REMOUNT|MS_RDONLY, ((void*)0));
         if (r < 0)
                 return r;
 
-        /* machined will MS_MOVE into that directory, and that's only
-         * supported for non-shared mounts. */
-        return mount_verbose(LOG_ERR, NULL, q, NULL, MS_SLAVE, NULL);
+
+
+        return mount_verbose(LOG_ERR, ((void*)0), q, ((void*)0), MS_SLAVE, ((void*)0));
 }

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct dtoa_context {int dummy; } ;
-typedef  int /*<<< orphan*/  jv ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef int jv ;
+typedef int FILE ;
 
-/* Variables and functions */
- int JVP_DTOA_FMT_MAX_LEN ; 
- int /*<<< orphan*/  jvp_dtoa_fmt (struct dtoa_context*,char*,int) ; 
- int /*<<< orphan*/  put_char (char,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  put_str (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
+
+ int JVP_DTOA_FMT_MAX_LEN ;
+ int jvp_dtoa_fmt (struct dtoa_context*,char*,int) ;
+ int put_char (char,int *,int *,int) ;
+ int put_str (int ,int *,int *,int) ;
 
 __attribute__((used)) static void put_refcnt(struct dtoa_context* C, int refcnt, FILE *F, jv* S, int T){
   char buf[JVP_DTOA_FMT_MAX_LEN];

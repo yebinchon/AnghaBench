@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VOID ;
-typedef  scalar_t__ ULONG_PTR ;
-typedef  scalar_t__ ULONGLONG ;
-typedef  int ULONG ;
-typedef  int /*<<< orphan*/  UCHAR ;
-struct TYPE_3__ {int SectorSize; scalar_t__ SectorOffset; scalar_t__ SectorNumber; int /*<<< orphan*/  DriveNumber; } ;
-typedef  TYPE_1__ DISKCONTEXT ;
-typedef  int /*<<< orphan*/  BOOLEAN ;
-typedef  int /*<<< orphan*/  ARC_STATUS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- int /*<<< orphan*/  DiskReadBuffer ; 
- int DiskReadBufferSize ; 
- int /*<<< orphan*/  EIO ; 
- int /*<<< orphan*/  ESUCCESS ; 
- TYPE_1__* FsGetDeviceSpecific (int) ; 
- int /*<<< orphan*/  MachDiskReadLogicalSectors (int /*<<< orphan*/ ,scalar_t__,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RtlCopyMemory (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  TRUE ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int VOID ;
+typedef scalar_t__ ULONG_PTR ;
+typedef scalar_t__ ULONGLONG ;
+typedef int ULONG ;
+typedef int UCHAR ;
+struct TYPE_3__ {int SectorSize; scalar_t__ SectorOffset; scalar_t__ SectorNumber; int DriveNumber; } ;
+typedef TYPE_1__ DISKCONTEXT ;
+typedef int BOOLEAN ;
+typedef int ARC_STATUS ;
+
+
+ int ASSERT (int) ;
+ int DiskReadBuffer ;
+ int DiskReadBufferSize ;
+ int EIO ;
+ int ESUCCESS ;
+ TYPE_1__* FsGetDeviceSpecific (int) ;
+ int MachDiskReadLogicalSectors (int ,scalar_t__,int,int ) ;
+ int RtlCopyMemory (int *,int ,int) ;
+ int TRUE ;
 
 __attribute__((used)) static ARC_STATUS
 DiskRead(ULONG FileId, VOID* Buffer, ULONG N, ULONG* Count)
@@ -44,11 +44,11 @@ DiskRead(ULONG FileId, VOID* Buffer, ULONG N, ULONG* Count)
     ASSERT(DiskReadBufferSize > 0);
 
     TotalSectors = (N + Context->SectorSize - 1) / Context->SectorSize;
-    MaxSectors   = DiskReadBufferSize / Context->SectorSize;
+    MaxSectors = DiskReadBufferSize / Context->SectorSize;
     SectorOffset = Context->SectorOffset + Context->SectorNumber;
 
-    // If MaxSectors is 0, this will lead to infinite loop.
-    // In release builds assertions are disabled, however we also have sanity checks in DiskOpen()
+
+
     ASSERT(MaxSectors > 0);
 
     ret = TRUE;

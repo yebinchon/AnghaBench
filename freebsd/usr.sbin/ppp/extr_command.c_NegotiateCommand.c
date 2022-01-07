@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct cmdargs {int argc; int argn; char** argv; scalar_t__ prompt; int /*<<< orphan*/  cx; int /*<<< orphan*/  bundle; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FindExec (int /*<<< orphan*/ ,scalar_t__,int,int,char const**,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LogWARN ; 
- unsigned int NEG_HISMASK ; 
- scalar_t__ NEG_OPT_MAX ; 
- scalar_t__ NegotiateCommands ; 
- char* ident_cmd (char*,unsigned int*,unsigned int*) ; 
- int /*<<< orphan*/  log_Printf (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  prompt_Printf (scalar_t__,char*,char*) ; 
+
+
+
+struct cmdargs {int argc; int argn; char** argv; scalar_t__ prompt; int cx; int bundle; } ;
+
+
+ int FindExec (int ,scalar_t__,int,int,char const**,scalar_t__,int ) ;
+ int LogWARN ;
+ unsigned int NEG_HISMASK ;
+ scalar_t__ NEG_OPT_MAX ;
+ scalar_t__ NegotiateCommands ;
+ char* ident_cmd (char*,unsigned int*,unsigned int*) ;
+ int log_Printf (int ,char*,char*) ;
+ int prompt_Printf (scalar_t__,char*,char*) ;
 
 __attribute__((used)) static int
 NegotiateCommand(struct cmdargs const *arg)
@@ -30,9 +30,9 @@ NegotiateCommand(struct cmdargs const *arg)
     unsigned keep, add;
     int n;
 
-    if ((argv[0] = ident_cmd(arg->argv[arg->argn-1], &keep, &add)) == NULL)
+    if ((argv[0] = ident_cmd(arg->argv[arg->argn-1], &keep, &add)) == ((void*)0))
       return -1;
-    argv[2] = NULL;
+    argv[2] = ((void*)0);
 
     for (n = arg->argn; n < arg->argc; n++) {
       argv[1] = arg->argv[n];
@@ -41,7 +41,7 @@ NegotiateCommand(struct cmdargs const *arg)
     }
   } else if (arg->prompt)
     prompt_Printf(arg->prompt, "Use `%s ?' to get a list.\n",
-	    arg->argv[arg->argn-1]);
+     arg->argv[arg->argn-1]);
   else
     log_Printf(LogWARN, "%s command must have arguments\n",
               arg->argv[arg->argn] );

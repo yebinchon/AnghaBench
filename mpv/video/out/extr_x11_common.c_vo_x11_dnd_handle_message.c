@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_5__ ;
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct vo_x11_state {int window; int dnd_requested_action; int dnd_src_window; scalar_t__ dnd_requested_format; int /*<<< orphan*/  display; } ;
+
+
+typedef struct TYPE_12__ TYPE_5__ ;
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct vo_x11_state {int window; int dnd_requested_action; int dnd_src_window; scalar_t__ dnd_requested_format; int display; } ;
 struct vo {struct vo_x11_state* x11; } ;
 struct TYPE_8__ {int* l; } ;
-struct TYPE_9__ {int window; int format; TYPE_1__ data; void* message_type; int /*<<< orphan*/  send_event; scalar_t__ serial; int /*<<< orphan*/  type; } ;
+struct TYPE_9__ {int window; int format; TYPE_1__ data; void* message_type; int send_event; scalar_t__ serial; int type; } ;
 struct TYPE_11__ {TYPE_2__ xclient; } ;
-typedef  TYPE_4__ XEvent ;
+typedef TYPE_4__ XEvent ;
 struct TYPE_10__ {int* l; } ;
 struct TYPE_12__ {void* message_type; TYPE_3__ data; } ;
-typedef  TYPE_5__ XClientMessageEvent ;
-typedef  int Window ;
-typedef  int Atom ;
+typedef TYPE_5__ XClientMessageEvent ;
+typedef int Window ;
+typedef int Atom ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ClientMessage ; 
- int /*<<< orphan*/  DND_PROPERTY ; 
- int /*<<< orphan*/  False ; 
- int /*<<< orphan*/  True ; 
- void* XA (struct vo_x11_state*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XA_ATOM ; 
- int /*<<< orphan*/  XAs (struct vo_x11_state*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XConvertSelection (int /*<<< orphan*/ ,void*,scalar_t__,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  XFree (int*) ; 
- int /*<<< orphan*/  XSendEvent (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_4__*) ; 
- int /*<<< orphan*/  XdndActionCopy ; 
- int /*<<< orphan*/  XdndDrop ; 
- int /*<<< orphan*/  XdndEnter ; 
- int /*<<< orphan*/  XdndLeave ; 
- int /*<<< orphan*/  XdndPosition ; 
- int /*<<< orphan*/  XdndSelection ; 
- int /*<<< orphan*/  XdndStatus ; 
- int /*<<< orphan*/  XdndTypeList ; 
- int /*<<< orphan*/  dnd_reset (struct vo*) ; 
- int /*<<< orphan*/  dnd_select_format (struct vo_x11_state*,int*,int) ; 
- int* x11_get_property (struct vo_x11_state*,int,void*,int /*<<< orphan*/ ,int,int*) ; 
+
+ int ClientMessage ;
+ int DND_PROPERTY ;
+ int False ;
+ int True ;
+ void* XA (struct vo_x11_state*,int ) ;
+ int XA_ATOM ;
+ int XAs (struct vo_x11_state*,int ) ;
+ int XConvertSelection (int ,void*,scalar_t__,int ,int,int) ;
+ int XFree (int*) ;
+ int XSendEvent (int ,int,int ,int ,TYPE_4__*) ;
+ int XdndActionCopy ;
+ int XdndDrop ;
+ int XdndEnter ;
+ int XdndLeave ;
+ int XdndPosition ;
+ int XdndSelection ;
+ int XdndStatus ;
+ int XdndTypeList ;
+ int dnd_reset (struct vo*) ;
+ int dnd_select_format (struct vo_x11_state*,int*,int) ;
+ int* x11_get_property (struct vo_x11_state*,int,void*,int ,int,int*) ;
 
 __attribute__((used)) static void vo_x11_dnd_handle_message(struct vo *vo, XClientMessageEvent *ce)
 {

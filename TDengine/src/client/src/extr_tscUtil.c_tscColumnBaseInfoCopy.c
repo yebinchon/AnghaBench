@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t int32_t ;
-typedef  scalar_t__ int16_t ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef size_t int32_t ;
+typedef scalar_t__ int16_t ;
 struct TYPE_8__ {int numOfAlloc; size_t numOfCols; TYPE_2__* pColList; } ;
 struct TYPE_6__ {scalar_t__ tableIndex; } ;
-struct TYPE_7__ {int numOfFilters; int /*<<< orphan*/ * filterInfo; TYPE_1__ colIndex; } ;
-typedef  int /*<<< orphan*/  SColumnFilterInfo ;
-typedef  TYPE_3__ SColumnBaseInfo ;
-typedef  int /*<<< orphan*/  SColumnBase ;
+struct TYPE_7__ {int numOfFilters; int * filterInfo; TYPE_1__ colIndex; } ;
+typedef int SColumnFilterInfo ;
+typedef TYPE_3__ SColumnBaseInfo ;
+typedef int SColumnBase ;
 
-/* Variables and functions */
- void* calloc (int,int) ; 
- int /*<<< orphan*/  tscColumnFilterInfoCopy (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ void* calloc (int,int) ;
+ int tscColumnFilterInfoCopy (int *,int *) ;
 
 void tscColumnBaseInfoCopy(SColumnBaseInfo* dst, const SColumnBaseInfo* src, int16_t tableIndex) {
-  if (src == NULL) {
+  if (src == ((void*)0)) {
     return;
   }
 

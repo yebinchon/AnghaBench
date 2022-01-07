@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {int /*<<< orphan*/  priv_key; int /*<<< orphan*/  pub_key; int /*<<< orphan*/  counter; struct TYPE_9__* seed; int /*<<< orphan*/  j; int /*<<< orphan*/  q; int /*<<< orphan*/  g; int /*<<< orphan*/  p; int /*<<< orphan*/  lock; int /*<<< orphan*/  ex_data; int /*<<< orphan*/  engine; TYPE_1__* meth; int /*<<< orphan*/  references; } ;
-struct TYPE_8__ {int /*<<< orphan*/  (* finish ) (TYPE_2__*) ;} ;
-typedef  TYPE_2__ DH ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BN_clear_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CRYPTO_DOWN_REF (int /*<<< orphan*/ *,int*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CRYPTO_EX_INDEX_DH ; 
- int /*<<< orphan*/  CRYPTO_THREAD_lock_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CRYPTO_free_ex_data (int /*<<< orphan*/ ,TYPE_2__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ENGINE_finish (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OPENSSL_free (TYPE_2__*) ; 
- int /*<<< orphan*/  REF_ASSERT_ISNT (int) ; 
- int /*<<< orphan*/  REF_PRINT_COUNT (char*,TYPE_2__*) ; 
- int /*<<< orphan*/  stub1 (TYPE_2__*) ; 
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_9__ {int priv_key; int pub_key; int counter; struct TYPE_9__* seed; int j; int q; int g; int p; int lock; int ex_data; int engine; TYPE_1__* meth; int references; } ;
+struct TYPE_8__ {int (* finish ) (TYPE_2__*) ;} ;
+typedef TYPE_2__ DH ;
+
+
+ int BN_clear_free (int ) ;
+ int CRYPTO_DOWN_REF (int *,int*,int ) ;
+ int CRYPTO_EX_INDEX_DH ;
+ int CRYPTO_THREAD_lock_free (int ) ;
+ int CRYPTO_free_ex_data (int ,TYPE_2__*,int *) ;
+ int ENGINE_finish (int ) ;
+ int OPENSSL_free (TYPE_2__*) ;
+ int REF_ASSERT_ISNT (int) ;
+ int REF_PRINT_COUNT (char*,TYPE_2__*) ;
+ int stub1 (TYPE_2__*) ;
 
 void DH_free(DH *r)
 {
     int i;
 
-    if (r == NULL)
+    if (r == ((void*)0))
         return;
 
     CRYPTO_DOWN_REF(&r->references, &i, r->lock);
@@ -41,11 +41,11 @@ void DH_free(DH *r)
         return;
     REF_ASSERT_ISNT(i < 0);
 
-    if (r->meth != NULL && r->meth->finish != NULL)
+    if (r->meth != ((void*)0) && r->meth->finish != ((void*)0))
         r->meth->finish(r);
-#ifndef OPENSSL_NO_ENGINE
+
     ENGINE_finish(r->engine);
-#endif
+
 
     CRYPTO_free_ex_data(CRYPTO_EX_INDEX_DH, r, &r->ex_data);
 

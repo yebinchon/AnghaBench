@@ -1,80 +1,72 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int EINVAL ; 
- int /*<<< orphan*/  printf (char*,long long,long long) ; 
- int read_reg (long,int,long long*) ; 
- char* str_to_number (char const*,long*,long long*) ; 
- int /*<<< orphan*/  warnx (char*,...) ; 
- int write_reg (long,int,long long) ; 
+ int EINVAL ;
+ int printf (char*,long long,long long) ;
+ int read_reg (long,int,long long*) ;
+ char* str_to_number (char const*,long*,long long*) ;
+ int warnx (char*,...) ;
+ int write_reg (long,int,long long) ;
 
 __attribute__((used)) static int
 register_io(int argc, const char *argv[], int size)
 {
-	char *p, *v;
-	long addr;
-	long long val;
-	int w = 0, rc;
+ char *p, *v;
+ long addr;
+ long long val;
+ int w = 0, rc;
 
-	if (argc == 1) {
-		/* <reg> OR <reg>=<value> */
+ if (argc == 1) {
 
-		p = str_to_number(argv[0], &addr, NULL);
-		if (*p) {
-			if (*p != '=') {
-				warnx("invalid register \"%s\"", argv[0]);
-				return (EINVAL);
-			}
 
-			w = 1;
-			v = p + 1;
-			p = str_to_number(v, NULL, &val);
+  p = str_to_number(argv[0], &addr, ((void*)0));
+  if (*p) {
+   if (*p != '=') {
+    warnx("invalid register \"%s\"", argv[0]);
+    return (EINVAL);
+   }
 
-			if (*p) {
-				warnx("invalid value \"%s\"", v);
-				return (EINVAL);
-			}
-		}
+   w = 1;
+   v = p + 1;
+   p = str_to_number(v, ((void*)0), &val);
 
-	} else if (argc == 2) {
-		/* <reg> <value> */
+   if (*p) {
+    warnx("invalid value \"%s\"", v);
+    return (EINVAL);
+   }
+  }
 
-		w = 1;
+ } else if (argc == 2) {
 
-		p = str_to_number(argv[0], &addr, NULL);
-		if (*p) {
-			warnx("invalid register \"%s\"", argv[0]);
-			return (EINVAL);
-		}
 
-		p = str_to_number(argv[1], NULL, &val);
-		if (*p) {
-			warnx("invalid value \"%s\"", argv[1]);
-			return (EINVAL);
-		}
-	} else {
-		warnx("reg: invalid number of arguments (%d)", argc);
-		return (EINVAL);
-	}
+  w = 1;
 
-	if (w)
-		rc = write_reg(addr, size, val);
-	else {
-		rc = read_reg(addr, size, &val);
-		if (rc == 0)
-			printf("0x%llx [%llu]\n", val, val);
-	}
+  p = str_to_number(argv[0], &addr, ((void*)0));
+  if (*p) {
+   warnx("invalid register \"%s\"", argv[0]);
+   return (EINVAL);
+  }
 
-	return (rc);
+  p = str_to_number(argv[1], ((void*)0), &val);
+  if (*p) {
+   warnx("invalid value \"%s\"", argv[1]);
+   return (EINVAL);
+  }
+ } else {
+  warnx("reg: invalid number of arguments (%d)", argc);
+  return (EINVAL);
+ }
+
+ if (w)
+  rc = write_reg(addr, size, val);
+ else {
+  rc = read_reg(addr, size, &val);
+  if (rc == 0)
+   printf("0x%llx [%llu]\n", val, val);
+ }
+
+ return (rc);
 }

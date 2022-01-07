@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ ut8 ;
-typedef  scalar_t__ ut16 ;
-typedef  scalar_t__ st16 ;
 
-/* Variables and functions */
- scalar_t__ INT8_MAX ; 
- scalar_t__ INT8_MIN ; 
+
+
+
+typedef scalar_t__ ut8 ;
+typedef scalar_t__ ut16 ;
+typedef scalar_t__ st16 ;
+
+
+ scalar_t__ INT8_MAX ;
+ scalar_t__ INT8_MIN ;
 
 __attribute__((used)) static bool relative_address(ut16 pc, ut16 address, ut8 *out)
 {
-	st16 diff = address - (pc + 2);
-	if (diff < INT8_MIN || INT8_MAX < diff) {
-		return false;
-	}
-	else {
-		*out = diff;
-		return true;
-	}
+ st16 diff = address - (pc + 2);
+ if (diff < INT8_MIN || INT8_MAX < diff) {
+  return 0;
+ }
+ else {
+  *out = diff;
+  return 1;
+ }
 }

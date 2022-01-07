@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_14__ {size_t size; int iscompr; scalar_t__ iskey; int /*<<< orphan*/  data; int /*<<< orphan*/  isnull; } ;
-typedef  TYPE_1__ raxNode ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  debugf (char*,int,unsigned char*) ; 
- int /*<<< orphan*/  memcpy (TYPE_1__**,...) ; 
- void* raxGetData (TYPE_1__*) ; 
- TYPE_1__* raxNewNode (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_1__** raxNodeLastChildPtr (TYPE_1__*) ; 
- int raxPadding (size_t) ; 
- int /*<<< orphan*/  raxSetData (TYPE_1__*,void*) ; 
- int /*<<< orphan*/  rax_free (TYPE_1__*) ; 
- TYPE_1__* rax_realloc (TYPE_1__*,size_t) ; 
+
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
+struct TYPE_14__ {size_t size; int iscompr; scalar_t__ iskey; int data; int isnull; } ;
+typedef TYPE_1__ raxNode ;
+
+
+ int assert (int) ;
+ int debugf (char*,int,unsigned char*) ;
+ int memcpy (TYPE_1__**,...) ;
+ void* raxGetData (TYPE_1__*) ;
+ TYPE_1__* raxNewNode (int ,int ) ;
+ TYPE_1__** raxNodeLastChildPtr (TYPE_1__*) ;
+ int raxPadding (size_t) ;
+ int raxSetData (TYPE_1__*,void*) ;
+ int rax_free (TYPE_1__*) ;
+ TYPE_1__* rax_realloc (TYPE_1__*,size_t) ;
 
 raxNode *raxCompressNode(raxNode *n, unsigned char *s, size_t len, raxNode **child) {
     assert(n->size == 0 && n->iscompr == 0);
-    void *data = NULL; /* Initialized only to avoid warnings. */
+    void *data = ((void*)0);
     size_t newsize;
 
     debugf("Compress node: %.*s\n", (int)len,s);
 
-    /* Allocate the child to link to this node. */
-    *child = raxNewNode(0,0);
-    if (*child == NULL) return NULL;
 
-    /* Make space in the parent node. */
+    *child = raxNewNode(0,0);
+    if (*child == ((void*)0)) return ((void*)0);
+
+
     newsize = sizeof(raxNode)+len+raxPadding(len)+sizeof(raxNode*);
     if (n->iskey) {
-        data = raxGetData(n); /* To restore it later. */
+        data = raxGetData(n);
         if (!n->isnull) newsize += sizeof(void*);
     }
     raxNode *newn = rax_realloc(n,newsize);
-    if (newn == NULL) {
+    if (newn == ((void*)0)) {
         rax_free(*child);
-        return NULL;
+        return ((void*)0);
     }
     n = newn;
 

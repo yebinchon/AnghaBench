@@ -1,71 +1,71 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct mlist {int dummy; } ;
-struct magic_set {int /*<<< orphan*/ ** mlist; } ;
+struct magic_set {int ** mlist; } ;
 struct magic_map {int dummy; } ;
 struct magic {int dummy; } ;
 
-/* Variables and functions */
- size_t MAGIC_SETS ; 
- int add_mlist (int /*<<< orphan*/ *,struct magic_map*,size_t) ; 
- struct magic_map* apprentice_buf (struct magic_set*,struct magic*,size_t) ; 
- int /*<<< orphan*/  file_oomem (struct magic_set*,int) ; 
- int /*<<< orphan*/  file_reset (struct magic_set*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  init_file_tables () ; 
- int /*<<< orphan*/ * mlist_alloc () ; 
- int /*<<< orphan*/  mlist_free (int /*<<< orphan*/ *) ; 
+
+ size_t MAGIC_SETS ;
+ int add_mlist (int *,struct magic_map*,size_t) ;
+ struct magic_map* apprentice_buf (struct magic_set*,struct magic*,size_t) ;
+ int file_oomem (struct magic_set*,int) ;
+ int file_reset (struct magic_set*,int ) ;
+ int init_file_tables () ;
+ int * mlist_alloc () ;
+ int mlist_free (int *) ;
 
 int
 buffer_apprentice(struct magic_set *ms, struct magic **bufs,
     size_t *sizes, size_t nbufs)
 {
-	size_t i, j;
-	struct mlist *ml;
-	struct magic_map *map;
+ size_t i, j;
+ struct mlist *ml;
+ struct magic_map *map;
 
-	if (nbufs == 0)
-		return -1;
+ if (nbufs == 0)
+  return -1;
 
-	(void)file_reset(ms, 0);
+ (void)file_reset(ms, 0);
 
-	init_file_tables();
+ init_file_tables();
 
-	for (i = 0; i < MAGIC_SETS; i++) {
-		mlist_free(ms->mlist[i]);
-		if ((ms->mlist[i] = mlist_alloc()) == NULL) {
-			file_oomem(ms, sizeof(*ms->mlist[i]));
-			goto fail;
-		}
-	}
+ for (i = 0; i < MAGIC_SETS; i++) {
+  mlist_free(ms->mlist[i]);
+  if ((ms->mlist[i] = mlist_alloc()) == ((void*)0)) {
+   file_oomem(ms, sizeof(*ms->mlist[i]));
+   goto fail;
+  }
+ }
 
-	for (i = 0; i < nbufs; i++) {
-		map = apprentice_buf(ms, bufs[i], sizes[i]);
-		if (map == NULL)
-			goto fail;
+ for (i = 0; i < nbufs; i++) {
+  map = apprentice_buf(ms, bufs[i], sizes[i]);
+  if (map == ((void*)0))
+   goto fail;
 
-		for (j = 0; j < MAGIC_SETS; j++) {
-			if (add_mlist(ms->mlist[j], map, j) == -1) {
-				file_oomem(ms, sizeof(*ml));
-				goto fail;
-			}
-		}
-	}
+  for (j = 0; j < MAGIC_SETS; j++) {
+   if (add_mlist(ms->mlist[j], map, j) == -1) {
+    file_oomem(ms, sizeof(*ml));
+    goto fail;
+   }
+  }
+ }
 
-	return 0;
+ return 0;
 fail:
-	for (i = 0; i < MAGIC_SETS; i++) {
-		mlist_free(ms->mlist[i]);
-		ms->mlist[i] = NULL;
-	}
-	return -1;
+ for (i = 0; i < MAGIC_SETS; i++) {
+  mlist_free(ms->mlist[i]);
+  ms->mlist[i] = ((void*)0);
+ }
+ return -1;
 }

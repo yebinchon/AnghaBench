@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  notes; } ;
-typedef  int /*<<< orphan*/  Notes ;
-typedef  TYPE_1__ Decl ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fatal_error_here (char*,int /*<<< orphan*/ ) ; 
- TYPE_1__* parse_decl_opt () ; 
- int /*<<< orphan*/  parse_notes () ; 
- int /*<<< orphan*/  token_info () ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int notes; } ;
+typedef int Notes ;
+typedef TYPE_1__ Decl ;
+
+
+ int fatal_error_here (char*,int ) ;
+ TYPE_1__* parse_decl_opt () ;
+ int parse_notes () ;
+ int token_info () ;
 
 Decl *parse_decl(void) {
     Notes notes = parse_notes();

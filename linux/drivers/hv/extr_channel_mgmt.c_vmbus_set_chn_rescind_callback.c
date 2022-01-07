@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct vmbus_channel {void (* chn_rescind_callback ) (struct vmbus_channel*) ;} ;
 
-/* Variables and functions */
+
 
 void vmbus_set_chn_rescind_callback(struct vmbus_channel *channel,
-		void (*chn_rescind_cb)(struct vmbus_channel *))
+  void (*chn_rescind_cb)(struct vmbus_channel *))
 {
-	channel->chn_rescind_callback = chn_rescind_cb;
+ channel->chn_rescind_callback = chn_rescind_cb;
 }

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  sugg; } ;
-typedef  TYPE_1__ user ;
 
-/* Variables and functions */
- TYPE_1__* conv_uid (int) ; 
- int rand () ; 
- int /*<<< orphan*/  trp_incr (int /*<<< orphan*/ *,int,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int sugg; } ;
+typedef TYPE_1__ user ;
+
+
+ TYPE_1__* conv_uid (int) ;
+ int rand () ;
+ int trp_incr (int *,int,int) ;
 
 int add_common_friends (int uid, int add, int *a, int an) {
   user *u = conv_uid (uid);
 
-  if (u == NULL) {
+  if (u == ((void*)0)) {
     return 0;
   }
 

@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  hb_value_array_t ;
-typedef  int /*<<< orphan*/  hb_dict_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Indent (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char const*) ; 
- int /*<<< orphan*/ * hb_dict_get (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/ * hb_presets_get () ; 
- int /*<<< orphan*/  hb_str_vfree (char**) ; 
- int /*<<< orphan*/ * hb_value_array_get (int /*<<< orphan*/ *,int) ; 
- int hb_value_array_len (int /*<<< orphan*/ *) ; 
- scalar_t__ hb_value_get_bool (int /*<<< orphan*/ *) ; 
- char* hb_value_get_string (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stderr ; 
- char** str_width_split (char const*,int) ; 
+
+
+
+typedef int hb_value_array_t ;
+typedef int hb_dict_t ;
+
+
+ int Indent (int ,char*,int) ;
+ int fprintf (int ,char*,char const*) ;
+ int * hb_dict_get (int *,char*) ;
+ int * hb_presets_get () ;
+ int hb_str_vfree (char**) ;
+ int * hb_value_array_get (int *,int) ;
+ int hb_value_array_len (int *) ;
+ scalar_t__ hb_value_get_bool (int *) ;
+ char* hb_value_get_string (int *) ;
+ int stderr ;
+ char** str_width_split (char const*,int) ;
 
 __attribute__((used)) static void ShowPresets(hb_value_array_t *presets, int indent, int descriptions)
 {
-    if (presets == NULL)
+    if (presets == ((void*)0))
         presets = hb_presets_get();
 
     int count = hb_value_array_len(presets);
@@ -45,7 +45,7 @@ __attribute__((used)) static void ShowPresets(hb_value_array_t *presets, int ind
             fprintf(stderr, "%s/\n", name);
             hb_value_array_t *children;
             children = hb_dict_get(preset_dict, "ChildrenArray");
-            if (children == NULL)
+            if (children == ((void*)0))
                 continue;
             ShowPresets(children, indent, descriptions);
             indent--;
@@ -58,11 +58,11 @@ __attribute__((used)) static void ShowPresets(hb_value_array_t *presets, int ind
                 const char *desc;
                 desc = hb_value_get_string(hb_dict_get(preset_dict,
                                                        "PresetDescription"));
-                if (desc != NULL && desc[0] != 0)
+                if (desc != ((void*)0) && desc[0] != 0)
                 {
                     int ii;
                     char **split = str_width_split(desc, 60);
-                    for (ii = 0; split[ii] != NULL; ii++)
+                    for (ii = 0; split[ii] != ((void*)0); ii++)
                     {
                         Indent(stderr, "    ", indent+1);
                         fprintf(stderr, "%s\n", split[ii]);

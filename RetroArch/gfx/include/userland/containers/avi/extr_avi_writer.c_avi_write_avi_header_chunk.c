@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_22__   TYPE_9__ ;
-typedef  struct TYPE_21__   TYPE_8__ ;
-typedef  struct TYPE_20__   TYPE_7__ ;
-typedef  struct TYPE_19__   TYPE_6__ ;
-typedef  struct TYPE_18__   TYPE_5__ ;
-typedef  struct TYPE_17__   TYPE_4__ ;
-typedef  struct TYPE_16__   TYPE_3__ ;
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
+
+
+typedef struct TYPE_22__ TYPE_9__ ;
+typedef struct TYPE_21__ TYPE_8__ ;
+typedef struct TYPE_20__ TYPE_7__ ;
+typedef struct TYPE_19__ TYPE_6__ ;
+typedef struct TYPE_18__ TYPE_5__ ;
+typedef struct TYPE_17__ TYPE_4__ ;
+typedef struct TYPE_16__ TYPE_3__ ;
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
 struct TYPE_19__ {TYPE_5__* format; TYPE_2__* priv; } ;
-typedef  TYPE_6__ VC_CONTAINER_TRACK_T ;
+typedef TYPE_6__ VC_CONTAINER_TRACK_T ;
 struct TYPE_20__ {int chunk_index; int max_chunk_size; } ;
-typedef  TYPE_7__ VC_CONTAINER_TRACK_MODULE_T ;
+typedef TYPE_7__ VC_CONTAINER_TRACK_MODULE_T ;
 struct TYPE_21__ {int tracks_num; TYPE_6__** tracks; TYPE_1__* priv; } ;
-typedef  TYPE_8__ VC_CONTAINER_T ;
-typedef  int /*<<< orphan*/  VC_CONTAINER_STATUS_T ;
+typedef TYPE_8__ VC_CONTAINER_T ;
+typedef int VC_CONTAINER_STATUS_T ;
 struct TYPE_22__ {scalar_t__ index_status; scalar_t__ index_offset; } ;
-typedef  TYPE_9__ VC_CONTAINER_MODULE_T ;
+typedef TYPE_9__ VC_CONTAINER_MODULE_T ;
 struct TYPE_18__ {scalar_t__ es_type; TYPE_4__* type; } ;
 struct TYPE_16__ {int width; int height; int frame_rate_num; int frame_rate_den; } ;
 struct TYPE_17__ {TYPE_3__ video; } ;
 struct TYPE_15__ {TYPE_7__* module; } ;
 struct TYPE_14__ {TYPE_9__* module; } ;
 
-/* Variables and functions */
- int AVIF_HASINDEX ; 
- int AVIF_TRUSTCKTYPE ; 
- int /*<<< orphan*/  STREAM_STATUS (TYPE_8__*) ; 
- int UINT64_C (int) ; 
- scalar_t__ VC_CONTAINER_ES_TYPE_VIDEO ; 
- scalar_t__ VC_CONTAINER_SUCCESS ; 
- int /*<<< orphan*/  VC_FOURCC (char,char,char,char) ; 
- int /*<<< orphan*/  WRITE_FOURCC (TYPE_8__*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  WRITE_U32 (TYPE_8__*,int,char*) ; 
+
+ int AVIF_HASINDEX ;
+ int AVIF_TRUSTCKTYPE ;
+ int STREAM_STATUS (TYPE_8__*) ;
+ int UINT64_C (int) ;
+ scalar_t__ VC_CONTAINER_ES_TYPE_VIDEO ;
+ scalar_t__ VC_CONTAINER_SUCCESS ;
+ int VC_FOURCC (char,char,char,char) ;
+ int WRITE_FOURCC (TYPE_8__*,int ,char*) ;
+ int WRITE_U32 (TYPE_8__*,int,char*) ;
 
 __attribute__((used)) static VC_CONTAINER_STATUS_T avi_write_avi_header_chunk(VC_CONTAINER_T *p_ctx)
 {

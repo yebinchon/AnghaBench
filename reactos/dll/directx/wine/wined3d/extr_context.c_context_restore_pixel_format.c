@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct wined3d_gl_info {scalar_t__* supported; } ;
-struct wined3d_context {int /*<<< orphan*/ * restore_pf_win; scalar_t__ restore_pf; struct wined3d_gl_info* gl_info; } ;
-typedef  scalar_t__ HDC ;
-typedef  int /*<<< orphan*/  BOOL ;
+struct wined3d_context {int * restore_pf_win; scalar_t__ restore_pf; struct wined3d_gl_info* gl_info; } ;
+typedef scalar_t__ HDC ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int DCX_CACHE ; 
- int DCX_USESTYLE ; 
- int /*<<< orphan*/  ERR (char*,scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GL_EXTCALL (int /*<<< orphan*/ ) ; 
- scalar_t__ GetDCEx (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- scalar_t__ IsWindow (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ReleaseDC (int /*<<< orphan*/ *,scalar_t__) ; 
- size_t WGL_WINE_PIXEL_FORMAT_PASSTHROUGH ; 
- int /*<<< orphan*/  wglSetPixelFormatWINE (scalar_t__,scalar_t__) ; 
+
+ int DCX_CACHE ;
+ int DCX_USESTYLE ;
+ int ERR (char*,scalar_t__,int *) ;
+ int FALSE ;
+ int GL_EXTCALL (int ) ;
+ scalar_t__ GetDCEx (int *,int ,int) ;
+ scalar_t__ IsWindow (int *) ;
+ int ReleaseDC (int *,scalar_t__) ;
+ size_t WGL_WINE_PIXEL_FORMAT_PASSTHROUGH ;
+ int wglSetPixelFormatWINE (scalar_t__,scalar_t__) ;
 
 __attribute__((used)) static BOOL context_restore_pixel_format(struct wined3d_context *ctx)
 {
@@ -54,6 +54,6 @@ __attribute__((used)) static BOOL context_restore_pixel_format(struct wined3d_co
     }
 
     ctx->restore_pf = 0;
-    ctx->restore_pf_win = NULL;
+    ctx->restore_pf_win = ((void*)0);
     return ret;
 }

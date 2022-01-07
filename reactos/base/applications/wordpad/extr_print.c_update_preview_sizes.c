@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_6__ ;
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {int cx; int /*<<< orphan*/  cy; } ;
+
+
+typedef struct TYPE_12__ TYPE_6__ ;
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_10__ {int cx; int cy; } ;
 struct TYPE_9__ {int cx; int cy; } ;
 struct TYPE_8__ {int cy; float cx; } ;
 struct TYPE_12__ {int zoomlevel; int pages_shown; float zoomratio; TYPE_3__ spacing; TYPE_2__ bmScaledSize; TYPE_1__ bmSize; } ;
 struct TYPE_11__ {int bottom; int right; } ;
-typedef  TYPE_4__ RECT ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  scalar_t__ BOOL ;
+typedef TYPE_4__ RECT ;
+typedef int HWND ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetClientRect (int /*<<< orphan*/ ,TYPE_4__*) ; 
- int /*<<< orphan*/  max (int,int) ; 
- int min_spacing ; 
- TYPE_6__ preview ; 
- int /*<<< orphan*/  update_preview_scrollbars (int /*<<< orphan*/ ,TYPE_4__*) ; 
+
+ int GetClientRect (int ,TYPE_4__*) ;
+ int max (int,int) ;
+ int min_spacing ;
+ TYPE_6__ preview ;
+ int update_preview_scrollbars (int ,TYPE_4__*) ;
 
 __attribute__((used)) static void update_preview_sizes(HWND hwndPreview, BOOL zoomLevelUpdated)
 {
@@ -37,7 +37,7 @@ __attribute__((used)) static void update_preview_sizes(HWND hwndPreview, BOOL zo
 
     GetClientRect(hwndPreview, &window);
 
-    /* The zoom ratio isn't updated for partial zoom because of resizing the window. */
+
     if (zoomLevelUpdated || preview.zoomlevel != 1)
     {
         float ratio, ratioHeight, ratioWidth;

@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint64_t ;
-typedef  void* uint32_t ;
-struct TYPE_4__ {int /*<<< orphan*/  listentry; void* uid; TYPE_2__* sid; } ;
-typedef  TYPE_1__ uid_map ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint64_t ;
+typedef void* uint32_t ;
+struct TYPE_4__ {int listentry; void* uid; TYPE_2__* sid; } ;
+typedef TYPE_1__ uid_map ;
 struct TYPE_5__ {int revision; int elements; int* auth; void** nums; } ;
-typedef  TYPE_2__ sid_header ;
-typedef  char WCHAR ;
-typedef  int ULONG ;
+typedef TYPE_2__ sid_header ;
+typedef char WCHAR ;
+typedef int ULONG ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ALLOC_TAG ; 
- int /*<<< orphan*/  ERR (char*) ; 
- void* ExAllocatePoolWithTag (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ExFreePool (TYPE_2__*) ; 
- int /*<<< orphan*/  InsertTailList (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PagedPool ; 
- int /*<<< orphan*/  TRACE (char*,void*,unsigned int,int) ; 
- int /*<<< orphan*/  uid_map_list ; 
+
+ int ALLOC_TAG ;
+ int ERR (char*) ;
+ void* ExAllocatePoolWithTag (int ,int,int ) ;
+ int ExFreePool (TYPE_2__*) ;
+ int InsertTailList (int *,int *) ;
+ int PagedPool ;
+ int TRACE (char*,void*,unsigned int,int) ;
+ int uid_map_list ;
 
 void add_user_mapping(WCHAR* sidstring, ULONG sidstringlength, uint32_t uid) {
     unsigned int i, np;

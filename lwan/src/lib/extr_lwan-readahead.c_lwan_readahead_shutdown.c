@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct lwan_readahead_cmd {int /*<<< orphan*/  cmd; } ;
-typedef  int /*<<< orphan*/  cmd ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SHUTDOWN ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  lwan_status_debug (char*) ; 
- int /*<<< orphan*/  pthread_join (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int* readahead_pipe_fd ; 
- int /*<<< orphan*/  readahead_self ; 
- int /*<<< orphan*/  write (int,struct lwan_readahead_cmd*,int) ; 
+
+
+
+struct lwan_readahead_cmd {int cmd; } ;
+typedef int cmd ;
+
+
+ int SHUTDOWN ;
+ int close (int) ;
+ int lwan_status_debug (char*) ;
+ int pthread_join (int ,int *) ;
+ int* readahead_pipe_fd ;
+ int readahead_self ;
+ int write (int,struct lwan_readahead_cmd*,int) ;
 
 void lwan_readahead_shutdown(void)
 {
@@ -35,7 +35,7 @@ void lwan_readahead_shutdown(void)
     lwan_status_debug("Shutting down readahead thread");
 
     write(readahead_pipe_fd[1], &cmd, sizeof(cmd));
-    pthread_join(readahead_self, NULL);
+    pthread_join(readahead_self, ((void*)0));
 
     close(readahead_pipe_fd[0]);
     close(readahead_pipe_fd[1]);

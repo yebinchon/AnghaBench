@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  zval ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ADD_CNT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  END_TIMER (int /*<<< orphan*/ ) ; 
- scalar_t__ IS_ARRAY ; 
- int /*<<< orphan*/  MAKE_STD_ZVAL (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  START_TIMER (int /*<<< orphan*/ ) ; 
- scalar_t__ Z_TYPE_PP (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  add_assoc_string (int /*<<< orphan*/ *,char*,char*,int) ; 
- int /*<<< orphan*/  add_index_string (int /*<<< orphan*/ *,int,char*,int) ; 
- int /*<<< orphan*/  array_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  assert (char*) ; 
- int /*<<< orphan*/  set_field ; 
- scalar_t__ strlen (char const*) ; 
+
+
+
+typedef int zval ;
+
+
+ int ADD_CNT (int ) ;
+ int END_TIMER (int ) ;
+ scalar_t__ IS_ARRAY ;
+ int MAKE_STD_ZVAL (int *) ;
+ int START_TIMER (int ) ;
+ scalar_t__ Z_TYPE_PP (int **) ;
+ int add_assoc_string (int *,char*,char*,int) ;
+ int add_index_string (int *,int,char*,int) ;
+ int array_init (int *) ;
+ int assert (char*) ;
+ int set_field ;
+ scalar_t__ strlen (char const*) ;
 
 void set_field_string (zval **arr, char *val, const char *id, int num) {
   ADD_CNT (set_field);

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_6__ {int packetsize; int /*<<< orphan*/  hb_stream_type; int /*<<< orphan*/  file_handle; } ;
-typedef  TYPE_1__ hb_stream_t ;
-typedef  int /*<<< orphan*/  buf ;
 
-/* Variables and functions */
- int fread (int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hb_log (char*,...) ; 
- int /*<<< orphan*/  hb_ps_stream_init (TYPE_1__*) ; 
- scalar_t__ hb_stream_check_for_ps (TYPE_1__*) ; 
- int hb_stream_check_for_ts (int /*<<< orphan*/ *) ; 
- scalar_t__ hb_ts_stream_init (TYPE_1__*) ; 
- int /*<<< orphan*/  program ; 
- int /*<<< orphan*/  transport ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_6__ {int packetsize; int hb_stream_type; int file_handle; } ;
+typedef TYPE_1__ hb_stream_t ;
+typedef int buf ;
+
+
+ int fread (int *,int,int,int ) ;
+ int hb_log (char*,...) ;
+ int hb_ps_stream_init (TYPE_1__*) ;
+ scalar_t__ hb_stream_check_for_ps (TYPE_1__*) ;
+ int hb_stream_check_for_ts (int *) ;
+ scalar_t__ hb_ts_stream_init (TYPE_1__*) ;
+ int program ;
+ int transport ;
 
 __attribute__((used)) static int hb_stream_get_type(hb_stream_t *stream)
 {
@@ -49,8 +49,8 @@ __attribute__((used)) static int hb_stream_get_type(hb_stream_t *stream)
             hb_log("file is MPEG Program Stream");
             stream->hb_stream_type = program;
             hb_ps_stream_init(stream);
-            // We default to mpeg codec for ps streams if no
-            // video found in program stream map
+
+
             return 1;
         }
     }

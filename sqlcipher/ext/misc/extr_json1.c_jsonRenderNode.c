@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t u32 ;
-typedef  int /*<<< orphan*/  sqlite3_value ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef size_t u32 ;
+typedef int sqlite3_value ;
 struct TYPE_5__ {size_t iReplace; char* zJContent; size_t iAppend; TYPE_2__* pPatch; } ;
 struct TYPE_6__ {int jnFlags; int eType; int n; TYPE_1__ u; } ;
-typedef  int /*<<< orphan*/  JsonString ;
-typedef  TYPE_2__ JsonNode ;
+typedef int JsonString ;
+typedef TYPE_2__ JsonNode ;
 
-/* Variables and functions */
- int JNODE_APPEND ; 
- int JNODE_PATCH ; 
- int JNODE_RAW ; 
- int JNODE_REMOVE ; 
- int JNODE_REPLACE ; 
-#define  JSON_ARRAY 134 
-#define  JSON_FALSE 133 
-#define  JSON_INT 132 
- int JSON_NULL ; 
-#define  JSON_OBJECT 131 
-#define  JSON_REAL 130 
-#define  JSON_STRING 129 
-#define  JSON_TRUE 128 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  jsonAppendChar (int /*<<< orphan*/ *,char) ; 
- int /*<<< orphan*/  jsonAppendRaw (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  jsonAppendSeparator (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jsonAppendString (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  jsonAppendValue (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- size_t jsonNodeSize (TYPE_2__*) ; 
+
+ int JNODE_APPEND ;
+ int JNODE_PATCH ;
+ int JNODE_RAW ;
+ int JNODE_REMOVE ;
+ int JNODE_REPLACE ;
+
+
+
+ int JSON_NULL ;
+
+
+
+
+ int assert (int) ;
+ int jsonAppendChar (int *,char) ;
+ int jsonAppendRaw (int *,char*,int) ;
+ int jsonAppendSeparator (int *) ;
+ int jsonAppendString (int *,char*,int) ;
+ int jsonAppendValue (int *,int *) ;
+ size_t jsonNodeSize (TYPE_2__*) ;
 
 __attribute__((used)) static void jsonRenderNode(
-  JsonNode *pNode,               /* The node to render */
-  JsonString *pOut,              /* Write JSON here */
-  sqlite3_value **aReplace       /* Replacement values */
+  JsonNode *pNode,
+  JsonString *pOut,
+  sqlite3_value **aReplace
 ){
   if( pNode->jnFlags & (JNODE_REPLACE|JNODE_PATCH) ){
     if( pNode->jnFlags & JNODE_REPLACE ){
@@ -59,27 +59,27 @@ __attribute__((used)) static void jsonRenderNode(
       jsonAppendRaw(pOut, "null", 4);
       break;
     }
-    case JSON_TRUE: {
+    case 128: {
       jsonAppendRaw(pOut, "true", 4);
       break;
     }
-    case JSON_FALSE: {
+    case 133: {
       jsonAppendRaw(pOut, "false", 5);
       break;
     }
-    case JSON_STRING: {
+    case 129: {
       if( pNode->jnFlags & JNODE_RAW ){
         jsonAppendString(pOut, pNode->u.zJContent, pNode->n);
         break;
       }
-      /* Fall through into the next case */
+
     }
-    case JSON_REAL:
-    case JSON_INT: {
+    case 130:
+    case 132: {
       jsonAppendRaw(pOut, pNode->u.zJContent, pNode->n);
       break;
     }
-    case JSON_ARRAY: {
+    case 134: {
       u32 j = 1;
       jsonAppendChar(pOut, '[');
       for(;;){
@@ -97,7 +97,7 @@ __attribute__((used)) static void jsonRenderNode(
       jsonAppendChar(pOut, ']');
       break;
     }
-    case JSON_OBJECT: {
+    case 131: {
       u32 j = 1;
       jsonAppendChar(pOut, '{');
       for(;;){

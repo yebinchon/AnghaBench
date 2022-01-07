@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct key_type {int cipher_length; int hmac_length; scalar_t__ digest; scalar_t__ cipher; } ;
-struct key_ctx {int /*<<< orphan*/  hmac; int /*<<< orphan*/  cipher; } ;
-struct key {int /*<<< orphan*/  hmac; int /*<<< orphan*/  cipher; } ;
+struct key_ctx {int hmac; int cipher; } ;
+struct key {int hmac; int cipher; } ;
 struct gc_arena {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLEAR (struct key_ctx) ; 
- int /*<<< orphan*/  D_CRYPTO_DEBUG ; 
- int /*<<< orphan*/  D_HANDSHAKE ; 
- int /*<<< orphan*/  D_SHOW_KEYS ; 
- int /*<<< orphan*/  M_WARN ; 
- int /*<<< orphan*/  cipher_ctx_init (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,scalar_t__,int) ; 
- int /*<<< orphan*/  cipher_ctx_new () ; 
- int cipher_kt_block_size (scalar_t__) ; 
- scalar_t__ cipher_kt_insecure (scalar_t__) ; 
- int /*<<< orphan*/  cipher_kt_iv_size (scalar_t__) ; 
- int /*<<< orphan*/  cipher_kt_name (scalar_t__) ; 
- int /*<<< orphan*/  dmsg (int /*<<< orphan*/ ,char*,char const*,int,...) ; 
- int /*<<< orphan*/  format_hex (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,struct gc_arena*) ; 
- int /*<<< orphan*/  gc_free (struct gc_arena*) ; 
- struct gc_arena gc_new () ; 
- int /*<<< orphan*/  hmac_ctx_init (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,scalar_t__) ; 
- int /*<<< orphan*/  hmac_ctx_new () ; 
- int /*<<< orphan*/  hmac_ctx_size (int /*<<< orphan*/ ) ; 
- int md_kt_name (scalar_t__) ; 
- int md_kt_size (scalar_t__) ; 
- int /*<<< orphan*/  msg (int /*<<< orphan*/ ,char*,...) ; 
- int translate_cipher_name_to_openvpn (int /*<<< orphan*/ ) ; 
+
+ int CLEAR (struct key_ctx) ;
+ int D_CRYPTO_DEBUG ;
+ int D_HANDSHAKE ;
+ int D_SHOW_KEYS ;
+ int M_WARN ;
+ int cipher_ctx_init (int ,int ,int,scalar_t__,int) ;
+ int cipher_ctx_new () ;
+ int cipher_kt_block_size (scalar_t__) ;
+ scalar_t__ cipher_kt_insecure (scalar_t__) ;
+ int cipher_kt_iv_size (scalar_t__) ;
+ int cipher_kt_name (scalar_t__) ;
+ int dmsg (int ,char*,char const*,int,...) ;
+ int format_hex (int ,int,int ,struct gc_arena*) ;
+ int gc_free (struct gc_arena*) ;
+ struct gc_arena gc_new () ;
+ int hmac_ctx_init (int ,int ,int,scalar_t__) ;
+ int hmac_ctx_new () ;
+ int hmac_ctx_size (int ) ;
+ int md_kt_name (scalar_t__) ;
+ int md_kt_size (scalar_t__) ;
+ int msg (int ,char*,...) ;
+ int translate_cipher_name_to_openvpn (int ) ;
 
 void
 init_key_ctx(struct key_ctx *ctx, const struct key *key,

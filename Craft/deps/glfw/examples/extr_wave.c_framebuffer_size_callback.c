@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ mat4x4 ;
-typedef  int /*<<< orphan*/  GLfloat ;
-typedef  int /*<<< orphan*/  GLFWwindow ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GL_PROJECTION ; 
- scalar_t__ M_PI ; 
- int /*<<< orphan*/  glLoadMatrixf (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  glMatrixMode (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glViewport (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  mat4x4_perspective (scalar_t__,float,float,float,float) ; 
+
+
+
+typedef scalar_t__ mat4x4 ;
+typedef int GLfloat ;
+typedef int GLFWwindow ;
+
+
+ int GL_PROJECTION ;
+ scalar_t__ M_PI ;
+ int glLoadMatrixf (int const*) ;
+ int glMatrixMode (int ) ;
+ int glViewport (int ,int ,int,int) ;
+ int mat4x4_perspective (scalar_t__,float,float,float,float) ;
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 {
@@ -30,10 +30,10 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height)
     if (height > 0)
         ratio = (float) width / (float) height;
 
-    // Setup viewport
+
     glViewport(0, 0, width, height);
 
-    // Change to the projection matrix and set our viewing volume
+
     glMatrixMode(GL_PROJECTION);
     mat4x4_perspective(projection,
                        60.f * (float) M_PI / 180.f,

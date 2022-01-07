@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct usb_interface {int dummy; } ;
-struct rtsx_ucr {int /*<<< orphan*/  dev_mutex; } ;
+struct rtsx_ucr {int dev_mutex; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
- scalar_t__ usb_get_intfdata (struct usb_interface*) ; 
+
+ int mutex_unlock (int *) ;
+ scalar_t__ usb_get_intfdata (struct usb_interface*) ;
 
 __attribute__((used)) static int rtsx_usb_post_reset(struct usb_interface *intf)
 {
-	struct rtsx_ucr *ucr = (struct rtsx_ucr *)usb_get_intfdata(intf);
+ struct rtsx_ucr *ucr = (struct rtsx_ucr *)usb_get_intfdata(intf);
 
-	mutex_unlock(&ucr->dev_mutex);
-	return 0;
+ mutex_unlock(&ucr->dev_mutex);
+ return 0;
 }

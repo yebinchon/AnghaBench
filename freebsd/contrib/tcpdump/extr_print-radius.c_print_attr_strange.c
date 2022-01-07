@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u_short ;
-typedef  int u_int ;
-typedef  int /*<<< orphan*/  u_char ;
-typedef  int /*<<< orphan*/  netdissect_options ;
 
-/* Variables and functions */
-#define  ARAP_CHALLENGE_RESP 130 
-#define  ARAP_FEATURES 129 
-#define  ARAP_PASS 128 
- int /*<<< orphan*/  ND_PRINT (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ND_TCHECK2 (int /*<<< orphan*/  const,int) ; 
- int /*<<< orphan*/  PRINT_HEX (int,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  tstr ; 
+
+
+
+typedef int u_short ;
+typedef int u_int ;
+typedef int u_char ;
+typedef int netdissect_options ;
+
+
+
+
+
+ int ND_PRINT (int *) ;
+ int ND_TCHECK2 (int const,int) ;
+ int PRINT_HEX (int,int const*) ;
+ int tstr ;
 
 __attribute__((used)) static void
 print_attr_strange(netdissect_options *ndo,
@@ -32,7 +32,7 @@ print_attr_strange(netdissect_options *ndo,
 
    switch(attr_code)
    {
-      case ARAP_PASS:
+      case 128:
            if (length != 16)
            {
                ND_PRINT((ndo, "ERROR: length %u != 16", length));
@@ -49,7 +49,7 @@ print_attr_strange(netdissect_options *ndo,
            ND_PRINT((ndo, ")"));
         break;
 
-      case ARAP_FEATURES:
+      case 129:
            if (length != 14)
            {
                ND_PRINT((ndo, "ERROR: length %u != 14", length));
@@ -78,7 +78,7 @@ print_attr_strange(netdissect_options *ndo,
            PRINT_HEX(len_data, data);
         break;
 
-      case ARAP_CHALLENGE_RESP:
+      case 130:
            if (length < 8)
            {
                ND_PRINT((ndo, "ERROR: length %u != 8", length));

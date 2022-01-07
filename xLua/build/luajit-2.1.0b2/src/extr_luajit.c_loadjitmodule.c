@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- int /*<<< orphan*/  l_message (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  lua_concat (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_getfield (int /*<<< orphan*/ *,int,char*) ; 
- int /*<<< orphan*/  lua_getglobal (int /*<<< orphan*/ *,char*) ; 
- scalar_t__ lua_isnil (int /*<<< orphan*/ *,int) ; 
- scalar_t__ lua_pcall (int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_pushliteral (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  lua_pushvalue (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_remove (int /*<<< orphan*/ *,int) ; 
- char* lua_tostring (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  progname ; 
- int report (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  strncmp (char const*,char*,int) ; 
+
+
+
+typedef int lua_State ;
+
+
+ int l_message (int ,char*) ;
+ int lua_concat (int *,int) ;
+ int lua_getfield (int *,int,char*) ;
+ int lua_getglobal (int *,char*) ;
+ scalar_t__ lua_isnil (int *,int) ;
+ scalar_t__ lua_pcall (int *,int,int,int ) ;
+ int lua_pushliteral (int *,char*) ;
+ int lua_pushvalue (int *,int) ;
+ int lua_remove (int *,int) ;
+ char* lua_tostring (int *,int) ;
+ int progname ;
+ int report (int *,int) ;
+ int strncmp (char const*,char*,int) ;
 
 __attribute__((used)) static int loadjitmodule(lua_State *L)
 {
@@ -43,9 +43,9 @@ __attribute__((used)) static int loadjitmodule(lua_State *L)
   if (lua_isnil(L, -1)) {
   nomodule:
     l_message(progname,
-	      "unknown luaJIT command or jit.* modules not installed");
+       "unknown luaJIT command or jit.* modules not installed");
     return 1;
   }
-  lua_remove(L, -2);  /* Drop module table. */
+  lua_remove(L, -2);
   return 0;
 }

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_config_t ;
-struct TYPE_3__ {char const* cert_file; int /*<<< orphan*/  may_save; } ;
-typedef  TYPE_1__ svn_auth_cred_ssl_client_cert_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  SVN_AUTH_PARAM_CONFIG_CATEGORY_SERVERS ; 
- int /*<<< orphan*/  SVN_AUTH_PARAM_SERVER_GROUP ; 
- int /*<<< orphan*/  SVN_CONFIG_OPTION_SSL_CLIENT_CERT_FILE ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- TYPE_1__* apr_palloc (int /*<<< orphan*/ *,int) ; 
- char* svn_config_get_server_setting (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- void* svn_hash_gets (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int svn_error_t ;
+typedef int svn_config_t ;
+struct TYPE_3__ {char const* cert_file; int may_save; } ;
+typedef TYPE_1__ svn_auth_cred_ssl_client_cert_t ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
+
+
+ int FALSE ;
+ int SVN_AUTH_PARAM_CONFIG_CATEGORY_SERVERS ;
+ int SVN_AUTH_PARAM_SERVER_GROUP ;
+ int SVN_CONFIG_OPTION_SSL_CLIENT_CERT_FILE ;
+ int * SVN_NO_ERROR ;
+ TYPE_1__* apr_palloc (int *,int) ;
+ char* svn_config_get_server_setting (int *,char const*,int ,int *) ;
+ void* svn_hash_gets (int *,int ) ;
 
 __attribute__((used)) static svn_error_t *
 ssl_client_cert_file_first_credentials(void **credentials_p,
@@ -45,9 +45,9 @@ ssl_client_cert_file_first_credentials(void **credentials_p,
   cert_file =
     svn_config_get_server_setting(cfg, server_group,
                                   SVN_CONFIG_OPTION_SSL_CLIENT_CERT_FILE,
-                                  NULL);
+                                  ((void*)0));
 
-  if (cert_file != NULL)
+  if (cert_file != ((void*)0))
     {
       svn_auth_cred_ssl_client_cert_t *cred =
         apr_palloc(pool, sizeof(*cred));
@@ -58,9 +58,9 @@ ssl_client_cert_file_first_credentials(void **credentials_p,
     }
   else
     {
-      *credentials_p = NULL;
+      *credentials_p = ((void*)0);
     }
 
-  *iter_baton = NULL;
+  *iter_baton = ((void*)0);
   return SVN_NO_ERROR;
 }

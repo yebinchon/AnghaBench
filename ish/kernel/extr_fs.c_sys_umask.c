@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct fs_info {int umask; int /*<<< orphan*/  lock; } ;
-typedef  int mode_t_ ;
-typedef  int dword_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct fs_info {int umask; int lock; } ;
+typedef int mode_t_ ;
+typedef int dword_t ;
 struct TYPE_2__ {struct fs_info* fs; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  STRACE (char*,int) ; 
- TYPE_1__* current ; 
- int /*<<< orphan*/  lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  unlock (int /*<<< orphan*/ *) ; 
+
+ int STRACE (char*,int) ;
+ TYPE_1__* current ;
+ int lock (int *) ;
+ int unlock (int *) ;
 
 dword_t sys_umask(dword_t mask) {
     STRACE("umask(0%o)", mask);

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct gather {int dummy; } ;
 
-/* Variables and functions */
- int* Q ; 
- int /*<<< orphan*/  QBefore ; 
- int /*<<< orphan*/  QBeforeSize ; 
- int* QN ; 
- int /*<<< orphan*/  Q_userlist ; 
- int* Qf ; 
- int* Qs ; 
- int /*<<< orphan*/  assert (int) ; 
- int default_gather_on_send (struct gather*,int) ; 
- int /*<<< orphan*/  tl_copy_through (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tl_fetch_unread () ; 
- int /*<<< orphan*/  tl_store_int (int) ; 
- int /*<<< orphan*/  tl_store_raw_data (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int* Q ;
+ int QBefore ;
+ int QBeforeSize ;
+ int* QN ;
+ int Q_userlist ;
+ int* Qf ;
+ int* Qs ;
+ int assert (int) ;
+ int default_gather_on_send (struct gather*,int) ;
+ int tl_copy_through (int ,int ) ;
+ int tl_fetch_unread () ;
+ int tl_store_int (int) ;
+ int tl_store_raw_data (int ,int ) ;
 
 int userlist_on_send (struct gather *G, int n) {
   if (!Q_userlist) {

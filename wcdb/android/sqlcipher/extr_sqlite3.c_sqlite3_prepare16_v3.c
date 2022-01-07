@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_stmt ;
-typedef  int /*<<< orphan*/  sqlite3 ;
 
-/* Variables and functions */
- int SQLITE_OK ; 
- unsigned int SQLITE_PREPARE_MASK ; 
- unsigned int SQLITE_PREPARE_SAVESQL ; 
- int /*<<< orphan*/  assert (int) ; 
- int sqlite3Prepare16 (int /*<<< orphan*/ *,void const*,int,unsigned int,int /*<<< orphan*/ **,void const**) ; 
+
+
+
+typedef int sqlite3_stmt ;
+typedef int sqlite3 ;
+
+
+ int SQLITE_OK ;
+ unsigned int SQLITE_PREPARE_MASK ;
+ unsigned int SQLITE_PREPARE_SAVESQL ;
+ int assert (int) ;
+ int sqlite3Prepare16 (int *,void const*,int,unsigned int,int **,void const**) ;
 
 int sqlite3_prepare16_v3(
-  sqlite3 *db,              /* Database handle. */ 
-  const void *zSql,         /* UTF-16 encoded SQL statement. */
-  int nBytes,               /* Length of zSql in bytes. */
-  unsigned int prepFlags,   /* Zero or more SQLITE_PREPARE_* flags */
-  sqlite3_stmt **ppStmt,    /* OUT: A pointer to the prepared statement */
-  const void **pzTail       /* OUT: End of parsed string */
+  sqlite3 *db,
+  const void *zSql,
+  int nBytes,
+  unsigned int prepFlags,
+  sqlite3_stmt **ppStmt,
+  const void **pzTail
 ){
   int rc;
   rc = sqlite3Prepare16(db,zSql,nBytes,
          SQLITE_PREPARE_SAVESQL|(prepFlags&SQLITE_PREPARE_MASK),
          ppStmt,pzTail);
-  assert( rc==SQLITE_OK || ppStmt==0 || *ppStmt==0 );  /* VERIFY: F13021 */
+  assert( rc==SQLITE_OK || ppStmt==0 || *ppStmt==0 );
   return rc;
 }

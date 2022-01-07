@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ lua_Number ;
-typedef  int /*<<< orphan*/  cTValue ;
-typedef  int /*<<< orphan*/  LoopEvent ;
-typedef  int /*<<< orphan*/  IROp ;
 
-/* Variables and functions */
- size_t FORL_IDX ; 
- size_t FORL_STEP ; 
- size_t FORL_STOP ; 
- int /*<<< orphan*/  IR_GE ; 
- int /*<<< orphan*/  IR_GT ; 
- int /*<<< orphan*/  IR_LE ; 
- int /*<<< orphan*/  IR_LT ; 
- int /*<<< orphan*/  LOOPEV_ENTER ; 
- int /*<<< orphan*/  LOOPEV_ENTERLO ; 
- int /*<<< orphan*/  LOOPEV_LEAVE ; 
- scalar_t__ numberVnum (int /*<<< orphan*/ *) ; 
- scalar_t__ rec_for_direction (int /*<<< orphan*/ *) ; 
+
+
+
+typedef scalar_t__ lua_Number ;
+typedef int cTValue ;
+typedef int LoopEvent ;
+typedef int IROp ;
+
+
+ size_t FORL_IDX ;
+ size_t FORL_STEP ;
+ size_t FORL_STOP ;
+ int IR_GE ;
+ int IR_GT ;
+ int IR_LE ;
+ int IR_LT ;
+ int LOOPEV_ENTER ;
+ int LOOPEV_ENTERLO ;
+ int LOOPEV_LEAVE ;
+ scalar_t__ numberVnum (int *) ;
+ scalar_t__ rec_for_direction (int *) ;
 
 __attribute__((used)) static LoopEvent rec_for_iter(IROp *op, cTValue *o, int isforl)
 {

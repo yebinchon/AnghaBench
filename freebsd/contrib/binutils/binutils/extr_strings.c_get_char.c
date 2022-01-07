@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  file_off ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- long EOF ; 
- int encoding ; 
- int encoding_bytes ; 
- int getc (int /*<<< orphan*/ *) ; 
- int getc_unlocked (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int file_off ;
+typedef int FILE ;
+
+
+ long EOF ;
+ int encoding ;
+ int encoding_bytes ;
+ int getc (int *) ;
+ int getc_unlocked (int *) ;
 
 __attribute__((used)) static long
 get_char (FILE *stream, file_off *address, int *magiccount, char **magic)
@@ -30,27 +30,19 @@ get_char (FILE *stream, file_off *address, int *magiccount, char **magic)
   for (i = 0; i < encoding_bytes; i++)
     {
       if (*magiccount)
-	{
-	  (*magiccount)--;
-	  c = *(*magic)++;
-	}
+ {
+   (*magiccount)--;
+   c = *(*magic)++;
+ }
       else
-	{
-	  if (stream == NULL)
-	    return EOF;
+ {
+   if (stream == ((void*)0))
+     return EOF;
+   c = getc (stream);
 
-	  /* Only use getc_unlocked if we found a declaration for it.
-	     Otherwise, libc is not thread safe by default, and we
-	     should not use it.  */
-
-#if defined(HAVE_GETC_UNLOCKED) && HAVE_DECL_GETC_UNLOCKED
-	  c = getc_unlocked (stream);
-#else
-	  c = getc (stream);
-#endif
-	  if (c == EOF)
-	    return EOF;
-	}
+   if (c == EOF)
+     return EOF;
+ }
 
       (*address)++;
       buf[i] = c;
@@ -70,11 +62,11 @@ get_char (FILE *stream, file_off *address, int *magiccount, char **magic)
       break;
     case 'B':
       r = ((long) buf[0] << 24) | ((long) buf[1] << 16) |
-	((long) buf[2] << 8) | buf[3];
+ ((long) buf[2] << 8) | buf[3];
       break;
     case 'L':
       r = buf[0] | ((long) buf[1] << 8) | ((long) buf[2] << 16) |
-	((long) buf[3] << 24);
+ ((long) buf[3] << 24);
       break;
     }
 

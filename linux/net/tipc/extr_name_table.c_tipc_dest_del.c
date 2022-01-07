@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
-struct tipc_dest {int /*<<< orphan*/  list; } ;
+
+
+
+
+typedef int u32 ;
+struct tipc_dest {int list; } ;
 struct list_head {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  kfree (struct tipc_dest*) ; 
- int /*<<< orphan*/  list_del (int /*<<< orphan*/ *) ; 
- struct tipc_dest* tipc_dest_find (struct list_head*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int kfree (struct tipc_dest*) ;
+ int list_del (int *) ;
+ struct tipc_dest* tipc_dest_find (struct list_head*,int ,int ) ;
 
 bool tipc_dest_del(struct list_head *l, u32 node, u32 port)
 {
-	struct tipc_dest *dst;
+ struct tipc_dest *dst;
 
-	dst = tipc_dest_find(l, node, port);
-	if (!dst)
-		return false;
-	list_del(&dst->list);
-	kfree(dst);
-	return true;
+ dst = tipc_dest_find(l, node, port);
+ if (!dst)
+  return 0;
+ list_del(&dst->list);
+ kfree(dst);
+ return 1;
 }

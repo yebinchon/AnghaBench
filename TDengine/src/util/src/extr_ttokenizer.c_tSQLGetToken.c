@@ -1,60 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  size_t uint32_t ;
-typedef  int int32_t ;
 
-/* Variables and functions */
- size_t TK_BIN ; 
- size_t TK_BITAND ; 
- size_t TK_BITNOT ; 
- size_t TK_BITOR ; 
- size_t TK_BOOL ; 
- size_t TK_COLON ; 
- size_t TK_COMMA ; 
- size_t TK_COMMENT ; 
- size_t TK_CONCAT ; 
- size_t TK_DOT ; 
- size_t TK_EQ ; 
- size_t TK_FLOAT ; 
- size_t TK_GE ; 
- size_t TK_GT ; 
- size_t TK_HEX ; 
- size_t TK_ID ; 
- size_t TK_ILLEGAL ; 
- size_t TK_INTEGER ; 
- size_t TK_IP ; 
- size_t TK_LE ; 
- size_t TK_LP ; 
- size_t TK_LSHIFT ; 
- size_t TK_LT ; 
- size_t TK_MINUS ; 
- size_t TK_NE ; 
- size_t TK_PLUS ; 
- size_t TK_QUESTION ; 
- size_t TK_REM ; 
- size_t TK_RP ; 
- size_t TK_RSHIFT ; 
- size_t TK_SEMI ; 
- size_t TK_SLASH ; 
- size_t TK_SPACE ; 
- size_t TK_STAR ; 
- size_t TK_STRING ; 
- size_t TK_VARIABLE ; 
- int /*<<< orphan*/ * isIdChar ; 
- int /*<<< orphan*/  isdigit (char) ; 
- int /*<<< orphan*/  isspace (char) ; 
- int /*<<< orphan*/  strncasecmp (char*,char*,int) ; 
- size_t tSQLKeywordCode (char*,size_t) ; 
+
+
+
+typedef size_t uint32_t ;
+typedef int int32_t ;
+
+
+ size_t TK_BIN ;
+ size_t TK_BITAND ;
+ size_t TK_BITNOT ;
+ size_t TK_BITOR ;
+ size_t TK_BOOL ;
+ size_t TK_COLON ;
+ size_t TK_COMMA ;
+ size_t TK_COMMENT ;
+ size_t TK_CONCAT ;
+ size_t TK_DOT ;
+ size_t TK_EQ ;
+ size_t TK_FLOAT ;
+ size_t TK_GE ;
+ size_t TK_GT ;
+ size_t TK_HEX ;
+ size_t TK_ID ;
+ size_t TK_ILLEGAL ;
+ size_t TK_INTEGER ;
+ size_t TK_IP ;
+ size_t TK_LE ;
+ size_t TK_LP ;
+ size_t TK_LSHIFT ;
+ size_t TK_LT ;
+ size_t TK_MINUS ;
+ size_t TK_NE ;
+ size_t TK_PLUS ;
+ size_t TK_QUESTION ;
+ size_t TK_REM ;
+ size_t TK_RP ;
+ size_t TK_RSHIFT ;
+ size_t TK_SEMI ;
+ size_t TK_SLASH ;
+ size_t TK_SPACE ;
+ size_t TK_STAR ;
+ size_t TK_STRING ;
+ size_t TK_VARIABLE ;
+ int * isIdChar ;
+ int isdigit (char) ;
+ int isspace (char) ;
+ int strncasecmp (char*,char*,int) ;
+ size_t tSQLKeywordCode (char*,size_t) ;
 
 uint32_t tSQLGetToken(char* z, uint32_t* tokenType) {
   uint32_t i;
@@ -185,14 +185,14 @@ uint32_t tSQLGetToken(char* z, uint32_t* tokenType) {
     }
     case '\'':
     case '"': {
-      int  delim = z[0];
-      bool strEnd = false;
+      int delim = z[0];
+      bool strEnd = 0;
       for (i = 1; z[i]; i++) {
         if (z[i] == delim) {
           if (z[i + 1] == delim) {
             i++;
           } else {
-            strEnd = true;
+            strEnd = 1;
             break;
           }
         }
@@ -207,11 +207,11 @@ uint32_t tSQLGetToken(char* z, uint32_t* tokenType) {
       break;
     }
     case '.': {
-      /*
-       * handle the the float number with out integer part
-       * .123
-       * .123e4
-       */
+
+
+
+
+
       if (isdigit(z[1])) {
         for (i = 2; isdigit(z[i]); i++) {
         }
@@ -235,7 +235,7 @@ uint32_t tSQLGetToken(char* z, uint32_t* tokenType) {
     case '0': {
       char next = z[1];
 
-      if (next == 'b') { // bin number
+      if (next == 'b') {
         *tokenType = TK_BIN;
         for (i = 2; (z[i] == '0' || z[i] == '1'); ++i) {
         }
@@ -245,7 +245,7 @@ uint32_t tSQLGetToken(char* z, uint32_t* tokenType) {
         }
 
         return i;
-      } else if (next == 'x') {  //hex number
+      } else if (next == 'x') {
         *tokenType = TK_HEX;
         for (i = 2; isdigit(z[i]) || (z[i] >= 'a' && z[i] <= 'f') || (z[i] >= 'A' && z[i] <= 'F'); ++i) {
         }
@@ -270,7 +270,7 @@ uint32_t tSQLGetToken(char* z, uint32_t* tokenType) {
       for (i = 1; isdigit(z[i]); i++) {
       }
 
-      /* here is the 1a/2s/3m/9y */
+
       if ((z[i] == 'a' || z[i] == 's' || z[i] == 'm' || z[i] == 'h' || z[i] == 'd' || z[i] == 'n' || z[i] == 'y' ||
           z[i] == 'w' || z[i] == 'A' || z[i] == 'S' || z[i] == 'M' || z[i] == 'H' || z[i] == 'D' || z[i] == 'N' ||
           z[i] == 'Y' || z[i] == 'W') &&
@@ -290,7 +290,7 @@ uint32_t tSQLGetToken(char* z, uint32_t* tokenType) {
         seg++;
       }
 
-      if (seg == 4) {  // ip address
+      if (seg == 4) {
         *tokenType = TK_IP;
         return i;
       }

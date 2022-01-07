@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_13__ {int /*<<< orphan*/  i; } ;
+
+
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+struct TYPE_13__ {int i; } ;
 struct TYPE_12__ {unsigned int (* xNextChar ) (TYPE_2__*) ;int nState; int* aArg; TYPE_2__ sIn; } ;
-typedef  TYPE_1__ ReCompiled ;
+typedef TYPE_1__ ReCompiled ;
 
-/* Variables and functions */
- int RE_OP_ANY ; 
- int RE_OP_ANYSTAR ; 
- int RE_OP_BOUNDARY ; 
- int RE_OP_CC_EXC ; 
- int RE_OP_CC_INC ; 
- int RE_OP_CC_RANGE ; 
- int RE_OP_CC_VALUE ; 
- int RE_OP_DIGIT ; 
- int RE_OP_FORK ; 
- int RE_OP_GOTO ; 
- int RE_OP_MATCH ; 
- int RE_OP_NOTDIGIT ; 
- int RE_OP_NOTSPACE ; 
- int RE_OP_NOTWORD ; 
- int RE_OP_SPACE ; 
- int RE_OP_WORD ; 
- char rePeek (TYPE_1__*) ; 
- int /*<<< orphan*/  re_append (TYPE_1__*,int,unsigned int) ; 
- int /*<<< orphan*/  re_copy (TYPE_1__*,int,int) ; 
- unsigned int re_esc_char (TYPE_1__*) ; 
- int /*<<< orphan*/  re_insert (TYPE_1__*,int,int,int) ; 
- char* re_subcompile_re (TYPE_1__*) ; 
- unsigned int stub1 (TYPE_2__*) ; 
- unsigned int stub2 (TYPE_2__*) ; 
- unsigned int stub3 (TYPE_2__*) ; 
+
+ int RE_OP_ANY ;
+ int RE_OP_ANYSTAR ;
+ int RE_OP_BOUNDARY ;
+ int RE_OP_CC_EXC ;
+ int RE_OP_CC_INC ;
+ int RE_OP_CC_RANGE ;
+ int RE_OP_CC_VALUE ;
+ int RE_OP_DIGIT ;
+ int RE_OP_FORK ;
+ int RE_OP_GOTO ;
+ int RE_OP_MATCH ;
+ int RE_OP_NOTDIGIT ;
+ int RE_OP_NOTSPACE ;
+ int RE_OP_NOTWORD ;
+ int RE_OP_SPACE ;
+ int RE_OP_WORD ;
+ char rePeek (TYPE_1__*) ;
+ int re_append (TYPE_1__*,int,unsigned int) ;
+ int re_copy (TYPE_1__*,int,int) ;
+ unsigned int re_esc_char (TYPE_1__*) ;
+ int re_insert (TYPE_1__*,int,int,int) ;
+ char* re_subcompile_re (TYPE_1__*) ;
+ unsigned int stub1 (TYPE_2__*) ;
+ unsigned int stub2 (TYPE_2__*) ;
+ unsigned int stub3 (TYPE_2__*) ;
 
 __attribute__((used)) static const char *re_subcompile_string(ReCompiled *p){
   int iPrev = -1;
@@ -52,7 +52,7 @@ __attribute__((used)) static const char *re_subcompile_string(ReCompiled *p){
     iStart = p->nState;
     switch( c ){
       case '|':
-      case '$': 
+      case '$':
       case ')': {
         p->sIn.i--;
         return 0;
@@ -68,7 +68,7 @@ __attribute__((used)) static const char *re_subcompile_string(ReCompiled *p){
         if( rePeek(p)=='*' ){
           re_append(p, RE_OP_ANYSTAR, 0);
           p->sIn.i++;
-        }else{ 
+        }else{
           re_append(p, RE_OP_ANY, 0);
         }
         break;
@@ -151,13 +151,13 @@ __attribute__((used)) static const char *re_subcompile_string(ReCompiled *p){
       case '\\': {
         int specialOp = 0;
         switch( rePeek(p) ){
-          case 'b': specialOp = RE_OP_BOUNDARY;   break;
-          case 'd': specialOp = RE_OP_DIGIT;      break;
-          case 'D': specialOp = RE_OP_NOTDIGIT;   break;
-          case 's': specialOp = RE_OP_SPACE;      break;
-          case 'S': specialOp = RE_OP_NOTSPACE;   break;
-          case 'w': specialOp = RE_OP_WORD;       break;
-          case 'W': specialOp = RE_OP_NOTWORD;    break;
+          case 'b': specialOp = RE_OP_BOUNDARY; break;
+          case 'd': specialOp = RE_OP_DIGIT; break;
+          case 'D': specialOp = RE_OP_NOTDIGIT; break;
+          case 's': specialOp = RE_OP_SPACE; break;
+          case 'S': specialOp = RE_OP_NOTSPACE; break;
+          case 'w': specialOp = RE_OP_WORD; break;
+          case 'W': specialOp = RE_OP_NOTWORD; break;
         }
         if( specialOp ){
           p->sIn.i++;

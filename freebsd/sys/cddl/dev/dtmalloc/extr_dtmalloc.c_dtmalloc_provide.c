@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  dtrace_probedesc_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dtmalloc_type_cb ; 
- int /*<<< orphan*/  malloc_type_list (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int dtrace_probedesc_t ;
+
+
+ int dtmalloc_type_cb ;
+ int malloc_type_list (int ,int *) ;
 
 __attribute__((used)) static void
 dtmalloc_provide(void *arg, dtrace_probedesc_t *desc)
 {
-	if (desc != NULL)
-		return;
+ if (desc != ((void*)0))
+  return;
 
-	malloc_type_list(dtmalloc_type_cb, desc);
+ malloc_type_list(dtmalloc_type_cb, desc);
 }

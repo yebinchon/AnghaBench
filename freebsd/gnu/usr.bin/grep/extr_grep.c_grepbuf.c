@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int after_last_match ; 
- char const* buflim ; 
- int bufoffset ; 
- scalar_t__ done_on_match ; 
- size_t execute (char const*,int,size_t*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  exit (int /*<<< orphan*/ ) ; 
- scalar_t__ exit_on_match ; 
- scalar_t__ out_invert ; 
- scalar_t__ outleft ; 
- int /*<<< orphan*/  prtext (char const*,char const*,int*) ; 
- size_t stub1 (char const*,int,size_t*,int /*<<< orphan*/ ) ; 
+ int after_last_match ;
+ char const* buflim ;
+ int bufoffset ;
+ scalar_t__ done_on_match ;
+ size_t execute (char const*,int,size_t*,int ) ;
+ int exit (int ) ;
+ scalar_t__ exit_on_match ;
+ scalar_t__ out_invert ;
+ scalar_t__ outleft ;
+ int prtext (char const*,char const*,int*) ;
+ size_t stub1 (char const*,int,size_t*,int ) ;
 
 __attribute__((used)) static int
 grepbuf (char const *beg, char const *lim)
@@ -38,30 +30,30 @@ grepbuf (char const *beg, char const *lim)
     {
       char const *b = p + match_offset;
       char const *endp = b + match_size;
-      /* Avoid matching the empty line at the end of the buffer. */
+
       if (b == lim)
-	break;
+ break;
       if (!out_invert)
-	{
-	  prtext (b, endp, (int *) 0);
-	  nlines++;
+ {
+   prtext (b, endp, (int *) 0);
+   nlines++;
           outleft--;
-	  if (!outleft || done_on_match)
-	    {
-	      if (exit_on_match)
-		exit (0);
-	      after_last_match = bufoffset - (buflim - endp);
-	      return nlines;
-	    }
-	}
+   if (!outleft || done_on_match)
+     {
+       if (exit_on_match)
+  exit (0);
+       after_last_match = bufoffset - (buflim - endp);
+       return nlines;
+     }
+ }
       else if (p < b)
-	{
-	  prtext (p, b, &n);
-	  nlines += n;
+ {
+   prtext (p, b, &n);
+   nlines += n;
           outleft -= n;
-	  if (!outleft)
-	    return nlines;
-	}
+   if (!outleft)
+     return nlines;
+ }
       p = endp;
     }
   if (out_invert && p < lim)

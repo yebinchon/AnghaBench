@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  void* u8 ;
+
+
+
+
+typedef void* u8 ;
 struct be_mcc_wrb {int dummy; } ;
-struct be_cmd_req_enable_disable_beacon {void* status_duration; void* beacon_duration; void* beacon_state; void* port_num; int /*<<< orphan*/  hdr; } ;
-struct be_adapter {int /*<<< orphan*/  mcc_lock; } ;
+struct be_cmd_req_enable_disable_beacon {void* status_duration; void* beacon_duration; void* beacon_state; void* port_num; int hdr; } ;
+struct be_adapter {int mcc_lock; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CMD_SUBSYSTEM_COMMON ; 
- int EBUSY ; 
- int /*<<< orphan*/  OPCODE_COMMON_ENABLE_DISABLE_BEACON ; 
- int be_mcc_notify_wait (struct be_adapter*) ; 
- int /*<<< orphan*/  be_wrb_cmd_hdr_prepare (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,struct be_mcc_wrb*,int /*<<< orphan*/ *) ; 
- struct be_cmd_req_enable_disable_beacon* embedded_payload (struct be_mcc_wrb*) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
- struct be_mcc_wrb* wrb_from_mccq (struct be_adapter*) ; 
+
+ int CMD_SUBSYSTEM_COMMON ;
+ int EBUSY ;
+ int OPCODE_COMMON_ENABLE_DISABLE_BEACON ;
+ int be_mcc_notify_wait (struct be_adapter*) ;
+ int be_wrb_cmd_hdr_prepare (int *,int ,int ,int,struct be_mcc_wrb*,int *) ;
+ struct be_cmd_req_enable_disable_beacon* embedded_payload (struct be_mcc_wrb*) ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
+ struct be_mcc_wrb* wrb_from_mccq (struct be_adapter*) ;
 
 int be_cmd_set_beacon_state(struct be_adapter *adapter, u8 port_num,
-			    u8 bcn, u8 sts, u8 state)
+       u8 bcn, u8 sts, u8 state)
 {
-	struct be_mcc_wrb *wrb;
-	struct be_cmd_req_enable_disable_beacon *req;
-	int status;
+ struct be_mcc_wrb *wrb;
+ struct be_cmd_req_enable_disable_beacon *req;
+ int status;
 
-	mutex_lock(&adapter->mcc_lock);
+ mutex_lock(&adapter->mcc_lock);
 
-	wrb = wrb_from_mccq(adapter);
-	if (!wrb) {
-		status = -EBUSY;
-		goto err;
-	}
-	req = embedded_payload(wrb);
+ wrb = wrb_from_mccq(adapter);
+ if (!wrb) {
+  status = -EBUSY;
+  goto err;
+ }
+ req = embedded_payload(wrb);
 
-	be_wrb_cmd_hdr_prepare(&req->hdr, CMD_SUBSYSTEM_COMMON,
-			       OPCODE_COMMON_ENABLE_DISABLE_BEACON,
-			       sizeof(*req), wrb, NULL);
+ be_wrb_cmd_hdr_prepare(&req->hdr, CMD_SUBSYSTEM_COMMON,
+          OPCODE_COMMON_ENABLE_DISABLE_BEACON,
+          sizeof(*req), wrb, ((void*)0));
 
-	req->port_num = port_num;
-	req->beacon_state = state;
-	req->beacon_duration = bcn;
-	req->status_duration = sts;
+ req->port_num = port_num;
+ req->beacon_state = state;
+ req->beacon_duration = bcn;
+ req->status_duration = sts;
 
-	status = be_mcc_notify_wait(adapter);
+ status = be_mcc_notify_wait(adapter);
 
 err:
-	mutex_unlock(&adapter->mcc_lock);
-	return status;
+ mutex_unlock(&adapter->mcc_lock);
+ return status;
 }

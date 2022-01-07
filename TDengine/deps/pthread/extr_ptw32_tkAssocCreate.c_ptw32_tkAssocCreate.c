@@ -1,74 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {void* keys; } ;
-typedef  TYPE_1__ ptw32_thread_t ;
-typedef  TYPE_2__* pthread_key_t ;
+typedef TYPE_1__ ptw32_thread_t ;
+typedef TYPE_2__* pthread_key_t ;
 struct TYPE_8__ {struct TYPE_8__* prevKey; struct TYPE_8__* nextKey; struct TYPE_8__* prevThread; struct TYPE_8__* nextThread; TYPE_2__* key; TYPE_1__* thread; } ;
-typedef  TYPE_3__ ThreadKeyAssoc ;
+typedef TYPE_3__ ThreadKeyAssoc ;
 struct TYPE_7__ {void* threads; } ;
 
-/* Variables and functions */
- int ENOMEM ; 
- scalar_t__ calloc (int,int) ; 
+
+ int ENOMEM ;
+ scalar_t__ calloc (int,int) ;
 
 int
 ptw32_tkAssocCreate (ptw32_thread_t * sp, pthread_key_t key)
-     /*
-      * -------------------------------------------------------------------
-      * This routine creates an association that
-      * is unique for the given (thread,key) combination.The association 
-      * is referenced by both the thread and the key.
-      * This association allows us to determine what keys the
-      * current thread references and what threads a given key
-      * references.
-      * See the detailed description
-      * at the beginning of this file for further details.
-      *
-      * Notes:
-      *      1)      New associations are pushed to the beginning of the
-      *              chain so that the internal ptw32_selfThreadKey association
-      *              is always last, thus allowing selfThreadExit to
-      *              be implicitly called last by pthread_exit.
-      *      2)      
-      *
-      * Parameters:
-      *              thread
-      *                      current running thread.
-      *              key
-      *                      key on which to create an association.
-      * Returns:
-      *       0              - if successful,
-      *       ENOMEM         - not enough memory to create assoc or other object
-      *       EINVAL         - an internal error occurred
-      *       ENOSYS         - an internal error occurred
-      * -------------------------------------------------------------------
-      */
 {
   ThreadKeyAssoc *assoc;
-
-  /*
-   * Have to create an association and add it
-   * to both the key and the thread.
-   *
-   * Both key->keyLock and thread->threadLock are locked before
-   * entry to this routine.
-   */
   assoc = (ThreadKeyAssoc *) calloc (1, sizeof (*assoc));
 
-  if (assoc == NULL)
+  if (assoc == ((void*)0))
     {
       return ENOMEM;
     }
@@ -76,23 +38,23 @@ ptw32_tkAssocCreate (ptw32_thread_t * sp, pthread_key_t key)
   assoc->thread = sp;
   assoc->key = key;
 
-  /*
-   * Register assoc with key
-   */
-  assoc->prevThread = NULL;
+
+
+
+  assoc->prevThread = ((void*)0);
   assoc->nextThread = (ThreadKeyAssoc *) key->threads;
-  if (assoc->nextThread != NULL)
+  if (assoc->nextThread != ((void*)0))
     {
       assoc->nextThread->prevThread = assoc;
     }
   key->threads = (void *) assoc;
 
-  /*
-   * Register assoc with thread
-   */
-  assoc->prevKey = NULL;
+
+
+
+  assoc->prevKey = ((void*)0);
   assoc->nextKey = (ThreadKeyAssoc *) sp->keys;
-  if (assoc->nextKey != NULL)
+  if (assoc->nextKey != ((void*)0))
     {
       assoc->nextKey->prevKey = assoc;
     }

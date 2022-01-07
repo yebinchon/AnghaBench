@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  gcry_mpi_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  gcry_mpi_mod (int /*<<< orphan*/ ,int /*<<< orphan*/  const,int /*<<< orphan*/  const) ; 
- int /*<<< orphan*/  gcry_mpi_new (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int gcry_mpi_t ;
+
+
+ int gcry_mpi_mod (int ,int const,int const) ;
+ int gcry_mpi_new (int ) ;
 
 __attribute__((used)) static void CRT_decompose(gcry_mpi_t *xp, gcry_mpi_t *xq, const gcry_mpi_t x, const gcry_mpi_t p, const gcry_mpi_t q) {
         *xp = gcry_mpi_new(0);

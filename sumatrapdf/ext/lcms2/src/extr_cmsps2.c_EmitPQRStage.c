@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  cmsIOHANDLER ;
-typedef  int /*<<< orphan*/  cmsHPROFILE ;
-typedef  int /*<<< orphan*/  cmsContext ;
-struct TYPE_3__ {int /*<<< orphan*/  Z; int /*<<< orphan*/  Y; int /*<<< orphan*/  X; } ;
-typedef  TYPE_1__ cmsCIEXYZ ;
 
-/* Variables and functions */
- int /*<<< orphan*/  _cmsIOPrintf (int /*<<< orphan*/ ,int /*<<< orphan*/ *,char*,...) ; 
- int /*<<< orphan*/  _cmsReadMediaWhitePoint (int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int cmsIOHANDLER ;
+typedef int cmsHPROFILE ;
+typedef int cmsContext ;
+struct TYPE_3__ {int Z; int Y; int X; } ;
+typedef TYPE_1__ cmsCIEXYZ ;
+
+
+ int _cmsIOPrintf (int ,int *,char*,...) ;
+ int _cmsReadMediaWhitePoint (int ,TYPE_1__*,int ) ;
 
 __attribute__((used)) static
 void EmitPQRStage(cmsContext ContextID, cmsIOHANDLER* m, cmsHPROFILE hProfile, int DoBPC, int lIsAbsolute)
@@ -28,10 +28,10 @@ void EmitPQRStage(cmsContext ContextID, cmsIOHANDLER* m, cmsHPROFILE hProfile, i
 
         if (lIsAbsolute) {
 
-            // For absolute colorimetric intent, encode back to relative
-            // and generate a relative Pipeline
 
-            // Relative encoding is obtained across XYZpcs*(D50/WhitePoint)
+
+
+
 
             cmsCIEXYZ White;
 
@@ -56,7 +56,7 @@ void EmitPQRStage(cmsContext ContextID, cmsIOHANDLER* m, cmsHPROFILE hProfile, i
         _cmsIOPrintf(ContextID, m, "/RangePQR [ -0.5 2 -0.5 2 -0.5 2 ]\n");
 
 
-        // No BPC
+
 
         if (!DoBPC) {
 
@@ -67,7 +67,7 @@ void EmitPQRStage(cmsContext ContextID, cmsIOHANDLER* m, cmsHPROFILE hProfile, i
                       "{exch pop exch 5 get mul exch pop exch 5 get div} bind\n]\n");
         } else {
 
-            // BPC
+
 
             _cmsIOPrintf(ContextID, m, "%% VonKries-like transform in Bradford Cone Space plus BPC\n"
                       "/TransformPQR [\n");

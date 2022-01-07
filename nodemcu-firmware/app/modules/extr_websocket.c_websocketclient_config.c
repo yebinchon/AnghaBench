@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {TYPE_2__* extraHeaders; scalar_t__ reservedData; } ;
-typedef  TYPE_1__ ws_info ;
-typedef  int /*<<< orphan*/  ws_data ;
-typedef  int /*<<< orphan*/  lua_State ;
-struct TYPE_6__ {int /*<<< orphan*/ * value; void* key; } ;
-typedef  TYPE_2__ header_t ;
+typedef TYPE_1__ ws_info ;
+typedef int ws_data ;
+typedef int lua_State ;
+struct TYPE_6__ {int * value; void* key; } ;
+typedef TYPE_2__ header_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LUA_TTABLE ; 
- int /*<<< orphan*/  METATABLE_WSCLIENT ; 
- int /*<<< orphan*/  NODE_DBG (char*) ; 
- int /*<<< orphan*/  luaL_checktype (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- scalar_t__ luaL_checkudata (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_getfield (int /*<<< orphan*/ *,int,char*) ; 
- scalar_t__ lua_istable (int /*<<< orphan*/ *,int) ; 
- scalar_t__ lua_next (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pop (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pushnil (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_tostring (int /*<<< orphan*/ *,int) ; 
- TYPE_2__* realloc_headers (TYPE_2__*,int) ; 
- void* strdup (int /*<<< orphan*/ ) ; 
+
+ int LUA_TTABLE ;
+ int METATABLE_WSCLIENT ;
+ int NODE_DBG (char*) ;
+ int luaL_checktype (int *,int,int ) ;
+ scalar_t__ luaL_checkudata (int *,int,int ) ;
+ int lua_getfield (int *,int,char*) ;
+ scalar_t__ lua_istable (int *,int) ;
+ scalar_t__ lua_next (int *,int) ;
+ int lua_pop (int *,int) ;
+ int lua_pushnil (int *) ;
+ int lua_tostring (int *,int) ;
+ TYPE_2__* realloc_headers (TYPE_2__*,int) ;
+ void* strdup (int ) ;
 
 __attribute__((used)) static int websocketclient_config(lua_State *L) {
   NODE_DBG("websocketclient_config is called.\n");
@@ -64,10 +64,10 @@ __attribute__((used)) static int websocketclient_config(lua_State *L) {
         lua_pop(L, 1);
       }
 
-      header->key = header->value = NULL;
+      header->key = header->value = ((void*)0);
     }
   }
-  lua_pop(L, 1); // pop headers
+  lua_pop(L, 1);
 
   return 0;
 }

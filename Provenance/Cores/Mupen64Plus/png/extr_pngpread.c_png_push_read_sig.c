@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* png_structrp ;
-typedef  int png_size_t ;
-typedef  TYPE_2__* png_inforp ;
-typedef  int png_byte ;
-struct TYPE_8__ {int /*<<< orphan*/ * signature; } ;
-struct TYPE_7__ {int sig_bytes; int buffer_size; int /*<<< orphan*/  process_mode; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PNG_READ_CHUNK_MODE ; 
- int /*<<< orphan*/  png_error (TYPE_1__*,char*) ; 
- int /*<<< orphan*/  png_push_fill_buffer (TYPE_1__*,int /*<<< orphan*/ *,int) ; 
- scalar_t__ png_sig_cmp (int /*<<< orphan*/ *,int,int) ; 
 
-void /* PRIVATE */
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef TYPE_1__* png_structrp ;
+typedef int png_size_t ;
+typedef TYPE_2__* png_inforp ;
+typedef int png_byte ;
+struct TYPE_8__ {int * signature; } ;
+struct TYPE_7__ {int sig_bytes; int buffer_size; int process_mode; } ;
+
+
+ int PNG_READ_CHUNK_MODE ;
+ int png_error (TYPE_1__*,char*) ;
+ int png_push_fill_buffer (TYPE_1__*,int *,int) ;
+ scalar_t__ png_sig_cmp (int *,int,int) ;
+
+void
 png_push_read_sig(png_structrp png_ptr, png_inforp info_ptr)
 {
-   png_size_t num_checked = png_ptr->sig_bytes, /* SAFE, does not exceed 8 */
+   png_size_t num_checked = png_ptr->sig_bytes,
        num_to_check = 8 - num_checked;
 
    if (png_ptr->buffer_size < num_to_check)

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lsm_env ;
-struct TYPE_4__ {int iPg; struct TYPE_4__* aPg; int /*<<< orphan*/  blob; int /*<<< orphan*/  pPage; int /*<<< orphan*/  pFS; } ;
-typedef  TYPE_1__ BtreeCursor ;
 
-/* Variables and functions */
- int /*<<< orphan*/  lsmFree (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/ * lsmFsEnv (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lsmFsPageRelease (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sortedBlobFree (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int lsm_env ;
+struct TYPE_4__ {int iPg; struct TYPE_4__* aPg; int blob; int pPage; int pFS; } ;
+typedef TYPE_1__ BtreeCursor ;
+
+
+ int lsmFree (int *,TYPE_1__*) ;
+ int * lsmFsEnv (int ) ;
+ int lsmFsPageRelease (int ) ;
+ int sortedBlobFree (int *) ;
 
 __attribute__((used)) static void btreeCursorFree(BtreeCursor *pCsr){
   if( pCsr ){

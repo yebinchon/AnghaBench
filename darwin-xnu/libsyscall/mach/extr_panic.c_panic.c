@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buffer ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RB_DEBUGGER ; 
- int /*<<< orphan*/  __STDERR_FILENO ; 
- int _mach_snprintf (char*,int,char*,char const*) ; 
- int /*<<< orphan*/  abort () ; 
- int /*<<< orphan*/  host_reboot (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  master_host_port ; 
- int /*<<< orphan*/  write (int /*<<< orphan*/ ,char*,int) ; 
+
+
+
+typedef int buffer ;
+
+
+ int RB_DEBUGGER ;
+ int __STDERR_FILENO ;
+ int _mach_snprintf (char*,int,char*,char const*) ;
+ int abort () ;
+ int host_reboot (int ,int ) ;
+ int master_host_port ;
+ int write (int ,char*,int) ;
 
 void
 panic(const char *s, ...)
 {
-	char buffer[1024];
-	int len = _mach_snprintf(buffer, sizeof(buffer), "panic: %s\n", s);
-	write(__STDERR_FILENO, buffer, len);
-	
-#define RB_DEBUGGER	0x1000	/* enter debugger NOW */
-	(void) host_reboot(master_host_port, RB_DEBUGGER);
+ char buffer[1024];
+ int len = _mach_snprintf(buffer, sizeof(buffer), "panic: %s\n", s);
+ write(__STDERR_FILENO, buffer, len);
 
-	/* 4279008 - don't return */
-	abort();
+
+ (void) host_reboot(master_host_port, 0x1000);
+
+
+ abort();
 }

@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int CC_ALNUM ; 
- int CC_DASH ; 
- int CC_DOT ; 
- scalar_t__ string_class (char const*,int,int /*<<< orphan*/ ) ; 
- size_t strlen (char const*) ; 
+ int CC_ALNUM ;
+ int CC_DASH ;
+ int CC_DOT ;
+ scalar_t__ string_class (char const*,int,int ) ;
+ size_t strlen (char const*) ;
 
 __attribute__((used)) static bool
 dns_addr_safe(const char *addr)
@@ -28,6 +20,6 @@ dns_addr_safe(const char *addr)
     }
     else
     {
-        return false;
+        return 0;
     }
 }

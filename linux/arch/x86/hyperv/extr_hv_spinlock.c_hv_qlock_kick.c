@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  (* send_IPI ) (int,int /*<<< orphan*/ ) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  X86_PLATFORM_IPI_VECTOR ; 
- TYPE_1__* apic ; 
- int /*<<< orphan*/  stub1 (int,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int (* send_IPI ) (int,int ) ;} ;
+
+
+ int X86_PLATFORM_IPI_VECTOR ;
+ TYPE_1__* apic ;
+ int stub1 (int,int ) ;
 
 __attribute__((used)) static void hv_qlock_kick(int cpu)
 {
-	apic->send_IPI(cpu, X86_PLATFORM_IPI_VECTOR);
+ apic->send_IPI(cpu, X86_PLATFORM_IPI_VECTOR);
 }

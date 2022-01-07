@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  target_unregister_template (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tcmusb_func ; 
- int /*<<< orphan*/  usb_function_unregister (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  usbg_ops ; 
+ int target_unregister_template (int *) ;
+ int tcmusb_func ;
+ int usb_function_unregister (int *) ;
+ int usbg_ops ;
 
 __attribute__((used)) static void tcm_exit(void)
 {
-	target_unregister_template(&usbg_ops);
-	usb_function_unregister(&tcmusb_func);
+ target_unregister_template(&usbg_ops);
+ usb_function_unregister(&tcmusb_func);
 }

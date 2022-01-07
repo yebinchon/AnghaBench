@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tv ;
+
+
+
+
+typedef int tv ;
 struct timeval {int tv_usec; } ;
-struct sockaddr {int /*<<< orphan*/  sa_family; } ;
-typedef  int /*<<< orphan*/  socklen_t ;
+struct sockaddr {int sa_family; } ;
+typedef int socklen_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SOCK_DGRAM ; 
- int /*<<< orphan*/  SOL_SOCKET ; 
- int /*<<< orphan*/  SO_RCVTIMEO ; 
- scalar_t__ bind (int,struct sockaddr*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  error (int,int /*<<< orphan*/ ,char*) ; 
- scalar_t__ setsockopt (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct timeval*,int) ; 
- int socket (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int SOCK_DGRAM ;
+ int SOL_SOCKET ;
+ int SO_RCVTIMEO ;
+ scalar_t__ bind (int,struct sockaddr*,int ) ;
+ int errno ;
+ int error (int,int ,char*) ;
+ scalar_t__ setsockopt (int,int ,int ,struct timeval*,int) ;
+ int socket (int ,int ,int ) ;
 
 __attribute__((used)) static int setup_rx(struct sockaddr *addr, socklen_t alen)
 {
-	struct timeval tv = { .tv_usec = 100 * 1000 };
-	int fd;
+ struct timeval tv = { .tv_usec = 100 * 1000 };
+ int fd;
 
-	fd = socket(addr->sa_family, SOCK_DGRAM, 0);
-	if (fd == -1)
-		error(1, errno, "socket r");
+ fd = socket(addr->sa_family, SOCK_DGRAM, 0);
+ if (fd == -1)
+  error(1, errno, "socket r");
 
-	if (bind(fd, addr, alen))
-		error(1, errno, "bind");
+ if (bind(fd, addr, alen))
+  error(1, errno, "bind");
 
-	if (setsockopt(fd, SOL_SOCKET, SO_RCVTIMEO, &tv, sizeof(tv)))
-		error(1, errno, "setsockopt rcv timeout");
+ if (setsockopt(fd, SOL_SOCKET, SO_RCVTIMEO, &tv, sizeof(tv)))
+  error(1, errno, "setsockopt rcv timeout");
 
-	return fd;
+ return fd;
 }

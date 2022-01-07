@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  writer_addr ;
-struct socket_data {int /*<<< orphan*/  sock; } ;
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int writer_addr ;
+struct socket_data {int sock; } ;
 struct sockaddr_in {int dummy; } ;
 struct sockaddr {int dummy; } ;
-typedef  int /*<<< orphan*/  strm_value ;
+typedef int strm_value ;
 struct TYPE_6__ {struct socket_data* data; } ;
-typedef  TYPE_1__ strm_stream ;
-typedef  int socklen_t ;
+typedef TYPE_1__ strm_stream ;
+typedef int socklen_t ;
 
-/* Variables and functions */
- int STRM_IO_FLUSH ; 
- int STRM_IO_READ ; 
- int STRM_IO_WRITE ; 
- int STRM_NG ; 
- int STRM_OK ; 
- int accept (int /*<<< orphan*/ ,struct sockaddr*,int*) ; 
- int /*<<< orphan*/  closesocket (int) ; 
- int /*<<< orphan*/  memset (struct sockaddr_in*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  strm_io_emit (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int (*) (TYPE_1__*,int /*<<< orphan*/ )) ; 
- int /*<<< orphan*/  strm_io_new (int,int) ; 
- int /*<<< orphan*/  strm_raise (TYPE_1__*,char*) ; 
+
+ int STRM_IO_FLUSH ;
+ int STRM_IO_READ ;
+ int STRM_IO_WRITE ;
+ int STRM_NG ;
+ int STRM_OK ;
+ int accept (int ,struct sockaddr*,int*) ;
+ int closesocket (int) ;
+ int memset (struct sockaddr_in*,int ,int) ;
+ int strm_io_emit (TYPE_1__*,int ,int ,int (*) (TYPE_1__*,int )) ;
+ int strm_io_new (int,int) ;
+ int strm_raise (TYPE_1__*,char*) ;
 
 __attribute__((used)) static int
 accept_cb(strm_stream* task, strm_value data)

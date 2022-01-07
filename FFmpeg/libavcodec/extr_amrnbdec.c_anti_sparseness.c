@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {double* pitch_gain; double prev_sparse_fixed_gain; int ir_filter_onset; int prev_ir_filter_nr; scalar_t__ cur_frame_mode; } ;
-typedef  int /*<<< orphan*/  AMRFixed ;
-typedef  TYPE_1__ AMRContext ;
+typedef int AMRFixed ;
+typedef TYPE_1__ AMRContext ;
 
-/* Variables and functions */
- scalar_t__ MODE_10k2 ; 
- scalar_t__ MODE_7k4 ; 
- scalar_t__ MODE_7k95 ; 
- int /*<<< orphan*/  apply_ir_filter (float*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * ir_filters_lookup ; 
- int /*<<< orphan*/ * ir_filters_lookup_MODE_7k95 ; 
+
+ scalar_t__ MODE_10k2 ;
+ scalar_t__ MODE_7k4 ;
+ scalar_t__ MODE_7k95 ;
+ int apply_ir_filter (float*,int *,int ) ;
+ int * ir_filters_lookup ;
+ int * ir_filters_lookup_MODE_7k95 ;
 
 __attribute__((used)) static const float *anti_sparseness(AMRContext *p, AMRFixed *fixed_sparse,
                                     const float *fixed_vector,
@@ -30,13 +30,13 @@ __attribute__((used)) static const float *anti_sparseness(AMRContext *p, AMRFixe
     int ir_filter_nr;
 
     if (p->pitch_gain[4] < 0.6) {
-        ir_filter_nr = 0;      // strong filtering
+        ir_filter_nr = 0;
     } else if (p->pitch_gain[4] < 0.9) {
-        ir_filter_nr = 1;      // medium filtering
+        ir_filter_nr = 1;
     } else
-        ir_filter_nr = 2;      // no filtering
+        ir_filter_nr = 2;
 
-    // detect 'onset'
+
     if (fixed_gain > 2.0 * p->prev_sparse_fixed_gain) {
         p->ir_filter_onset = 2;
     } else if (p->ir_filter_onset)
@@ -56,9 +56,9 @@ __attribute__((used)) static const float *anti_sparseness(AMRContext *p, AMRFixe
     } else if (ir_filter_nr < 2)
         ir_filter_nr++;
 
-    // Disable filtering for very low level of fixed_gain.
-    // Note this step is not specified in the technical description but is in
-    // the reference source in the function Ph_disp.
+
+
+
     if (fixed_gain < 5.0)
         ir_filter_nr = 2;
 
@@ -71,9 +71,9 @@ __attribute__((used)) static const float *anti_sparseness(AMRContext *p, AMRFixe
         fixed_vector = out;
     }
 
-    // update ir filter strength history
-    p->prev_ir_filter_nr       = ir_filter_nr;
-    p->prev_sparse_fixed_gain  = fixed_gain;
+
+    p->prev_ir_filter_nr = ir_filter_nr;
+    p->prev_sparse_fixed_gain = fixed_gain;
 
     return fixed_vector;
 }

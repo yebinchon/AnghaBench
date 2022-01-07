@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct bucketindex {int dummy; } ;
 
-/* Variables and functions */
 
-__attribute__((used)) static void array_bucketindex_swap(void *p, void *q) /* {{{ */
+
+__attribute__((used)) static void array_bucketindex_swap(void *p, void *q)
 {
-	struct bucketindex *f = (struct bucketindex *)p;
-	struct bucketindex *g = (struct bucketindex *)q;
-	struct bucketindex t;
-	t = *f;
-	*f = *g;
-	*g = t;
+ struct bucketindex *f = (struct bucketindex *)p;
+ struct bucketindex *g = (struct bucketindex *)q;
+ struct bucketindex t;
+ t = *f;
+ *f = *g;
+ *g = t;
 }

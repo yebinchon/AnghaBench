@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  prop ;
-typedef  scalar_t__ UINT ;
-typedef  int MSIHANDLE ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  CHAR ;
-typedef  int /*<<< orphan*/  BYTE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DeleteFileA (int /*<<< orphan*/ ) ; 
- scalar_t__ ERROR_INSTALL_PACKAGE_REJECTED ; 
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  HKEY_CURRENT_USER ; 
- int /*<<< orphan*/  INSTALLUILEVEL_NONE ; 
- int /*<<< orphan*/  KEY_ALL_ACCESS ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  MsiCloseHandle (int) ; 
- scalar_t__ MsiDoActionA (int,char*) ; 
- scalar_t__ MsiGetPropertyA (int,char*,int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  MsiSetInternalUI (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  REG_EXPAND_SZ ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- scalar_t__ RegCreateKeyExA (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RegDeleteKeyA (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ RegSetValueExA (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,scalar_t__) ; 
- int /*<<< orphan*/  add_appsearch_entry (int,char*) ; 
- int /*<<< orphan*/  add_drlocator_entry (int,char*) ; 
- int /*<<< orphan*/  add_reglocator_entry (int,char*,int,char*,char*,int) ; 
- int /*<<< orphan*/  add_signature_entry (int,char*) ; 
- int /*<<< orphan*/  create_appsearch_table (int) ; 
- int /*<<< orphan*/  create_drlocator_table (int) ; 
- int create_package_db () ; 
- int /*<<< orphan*/  create_reglocator_table (int) ; 
- int /*<<< orphan*/  create_signature_table (int) ; 
- scalar_t__ lstrlenA (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  msifile ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- scalar_t__ package_from_db (int,int*) ; 
- int /*<<< orphan*/  skip (char*) ; 
- scalar_t__ strlen (char const*) ; 
+
+
+
+typedef int prop ;
+typedef scalar_t__ UINT ;
+typedef int MSIHANDLE ;
+typedef int HKEY ;
+typedef int DWORD ;
+typedef int CHAR ;
+typedef int BYTE ;
+
+
+ int DeleteFileA (int ) ;
+ scalar_t__ ERROR_INSTALL_PACKAGE_REJECTED ;
+ scalar_t__ ERROR_SUCCESS ;
+ int HKEY_CURRENT_USER ;
+ int INSTALLUILEVEL_NONE ;
+ int KEY_ALL_ACCESS ;
+ int MAX_PATH ;
+ int MsiCloseHandle (int) ;
+ scalar_t__ MsiDoActionA (int,char*) ;
+ scalar_t__ MsiGetPropertyA (int,char*,int *,int*) ;
+ int MsiSetInternalUI (int ,int *) ;
+ int REG_EXPAND_SZ ;
+ int RegCloseKey (int ) ;
+ scalar_t__ RegCreateKeyExA (int ,char*,int ,int *,int ,int ,int *,int *,int *) ;
+ int RegDeleteKeyA (int ,char*) ;
+ scalar_t__ RegSetValueExA (int ,int *,int ,int ,int const*,scalar_t__) ;
+ int add_appsearch_entry (int,char*) ;
+ int add_drlocator_entry (int,char*) ;
+ int add_reglocator_entry (int,char*,int,char*,char*,int) ;
+ int add_signature_entry (int,char*) ;
+ int create_appsearch_table (int) ;
+ int create_drlocator_table (int) ;
+ int create_package_db () ;
+ int create_reglocator_table (int) ;
+ int create_signature_table (int) ;
+ scalar_t__ lstrlenA (int *) ;
+ int msifile ;
+ int ok (int,char*,...) ;
+ scalar_t__ package_from_db (int,int*) ;
+ int skip (char*) ;
+ scalar_t__ strlen (char const*) ;
 
 __attribute__((used)) static void test_appsearch(void)
 {
@@ -72,9 +72,9 @@ __attribute__((used)) static void test_appsearch(void)
     create_reglocator_table( hdb );
     add_reglocator_entry( hdb, "NewSignature1", 0, "htmlfile\\shell\\open\\command", "", 1 );
 
-    r = RegCreateKeyExA(HKEY_CURRENT_USER, "Software\\Winetest_msi", 0, NULL, 0, KEY_ALL_ACCESS, NULL, &hkey, NULL);
+    r = RegCreateKeyExA(HKEY_CURRENT_USER, "Software\\Winetest_msi", 0, ((void*)0), 0, KEY_ALL_ACCESS, ((void*)0), &hkey, ((void*)0));
     ok( r == ERROR_SUCCESS, "Could not create key: %d.\n", r );
-    r = RegSetValueExA(hkey, NULL, 0, REG_EXPAND_SZ, (const BYTE*)reg_expand_value, strlen(reg_expand_value) + 1);
+    r = RegSetValueExA(hkey, ((void*)0), 0, REG_EXPAND_SZ, (const BYTE*)reg_expand_value, strlen(reg_expand_value) + 1);
     ok( r == ERROR_SUCCESS, "Could not set key value: %d.\n", r);
     RegCloseKey(hkey);
     add_reglocator_entry( hdb, "NewSignature3", 1, "Software\\Winetest_msi", "", 1 );
@@ -99,7 +99,7 @@ __attribute__((used)) static void test_appsearch(void)
     if (r != ERROR_SUCCESS)
         goto done;
 
-    MsiSetInternalUI(INSTALLUILEVEL_NONE, NULL);
+    MsiSetInternalUI(INSTALLUILEVEL_NONE, ((void*)0));
 
     r = MsiDoActionA( hpkg, "AppSearch" );
     ok( r == ERROR_SUCCESS, "AppSearch failed: %d\n", r);

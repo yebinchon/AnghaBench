@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {void* kind; } ;
-typedef  TYPE_1__ svn_opt_revision_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+typedef TYPE_1__ svn_opt_revision_t ;
+typedef int svn_error_t ;
+typedef int apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- char* apr_pstrdup (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  string_to_opt_revision (TYPE_1__*,char const**,int /*<<< orphan*/ *) ; 
- void* svn_opt_revision_unspecified ; 
+
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ char* apr_pstrdup (int *,char const*) ;
+ int string_to_opt_revision (TYPE_1__*,char const**,int *) ;
+ void* svn_opt_revision_unspecified ;
 
 svn_error_t *
 svn_wc__unserialize_file_external(const char **path_result,
@@ -45,7 +45,7 @@ svn_wc__unserialize_file_external(const char **path_result,
     }
   else
     {
-      *path_result = NULL;
+      *path_result = ((void*)0);
       peg_rev_result->kind = svn_opt_revision_unspecified;
       rev_result->kind = svn_opt_revision_unspecified;
     }

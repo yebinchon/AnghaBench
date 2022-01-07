@@ -1,63 +1,63 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_7__ ;
-typedef  struct TYPE_15__   TYPE_6__ ;
-typedef  struct TYPE_14__   TYPE_5__ ;
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  u_char ;
-typedef  int ngx_uint_t ;
-struct TYPE_13__ {int /*<<< orphan*/  id; int /*<<< orphan*/  samples; int /*<<< orphan*/  chunk; } ;
-typedef  TYPE_4__ ngx_mp4_stsc_entry_t ;
-typedef  int /*<<< orphan*/  ngx_int_t ;
-struct TYPE_16__ {int temporary; int /*<<< orphan*/ * last; int /*<<< orphan*/ * pos; } ;
+
+
+typedef struct TYPE_16__ TYPE_7__ ;
+typedef struct TYPE_15__ TYPE_6__ ;
+typedef struct TYPE_14__ TYPE_5__ ;
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+typedef int u_char ;
+typedef int ngx_uint_t ;
+struct TYPE_13__ {int id; int samples; int chunk; } ;
+typedef TYPE_4__ ngx_mp4_stsc_entry_t ;
+typedef int ngx_int_t ;
+struct TYPE_16__ {int temporary; int * last; int * pos; } ;
 struct TYPE_14__ {int sample_to_chunk_entries; int chunks; int start_chunk; int start_chunk_samples; int end_chunk_samples; int end_chunk; TYPE_1__* out; TYPE_7__ stsc_end_chunk_buf; TYPE_4__ stsc_end_chunk_entry; TYPE_7__ stsc_start_chunk_buf; TYPE_4__ stsc_start_chunk_entry; scalar_t__ start_sample; scalar_t__ end_sample; } ;
-typedef  TYPE_5__ ngx_http_mp4_trak_t ;
-struct TYPE_12__ {int /*<<< orphan*/  data; } ;
-struct TYPE_11__ {int /*<<< orphan*/  log; TYPE_3__ name; } ;
+typedef TYPE_5__ ngx_http_mp4_trak_t ;
+struct TYPE_12__ {int data; } ;
+struct TYPE_11__ {int log; TYPE_3__ name; } ;
 struct TYPE_15__ {TYPE_2__ file; scalar_t__ length; } ;
-typedef  TYPE_6__ ngx_http_mp4_file_t ;
-typedef  TYPE_7__ ngx_buf_t ;
+typedef TYPE_6__ ngx_http_mp4_file_t ;
+typedef TYPE_7__ ngx_buf_t ;
 struct TYPE_10__ {TYPE_7__* buf; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NGX_ERROR ; 
- size_t NGX_HTTP_MP4_STSC_DATA ; 
- size_t NGX_HTTP_MP4_STSC_END ; 
- size_t NGX_HTTP_MP4_STSC_START ; 
- int /*<<< orphan*/  NGX_LOG_DEBUG_HTTP ; 
- int /*<<< orphan*/  NGX_LOG_ERR ; 
- int /*<<< orphan*/  NGX_OK ; 
- int /*<<< orphan*/  ngx_log_debug1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  ngx_log_debug2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int,int) ; 
- int /*<<< orphan*/  ngx_log_debug4 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int,int,int,int) ; 
- int /*<<< orphan*/  ngx_log_debug5 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int,int,int,int,int) ; 
- int /*<<< orphan*/  ngx_log_error (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,char*,...) ; 
- int ngx_mp4_get_32value (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_mp4_set_32value (int /*<<< orphan*/ ,int) ; 
+
+ int NGX_ERROR ;
+ size_t NGX_HTTP_MP4_STSC_DATA ;
+ size_t NGX_HTTP_MP4_STSC_END ;
+ size_t NGX_HTTP_MP4_STSC_START ;
+ int NGX_LOG_DEBUG_HTTP ;
+ int NGX_LOG_ERR ;
+ int NGX_OK ;
+ int ngx_log_debug1 (int ,int ,int ,char*,int) ;
+ int ngx_log_debug2 (int ,int ,int ,char*,int,int) ;
+ int ngx_log_debug4 (int ,int ,int ,char*,int,int,int,int) ;
+ int ngx_log_debug5 (int ,int ,int ,char*,int,int,int,int,int) ;
+ int ngx_log_error (int ,int ,int ,char*,char*,...) ;
+ int ngx_mp4_get_32value (int ) ;
+ int ngx_mp4_set_32value (int ,int) ;
 
 __attribute__((used)) static ngx_int_t
 ngx_http_mp4_crop_stsc_data(ngx_http_mp4_file_t *mp4,
     ngx_http_mp4_trak_t *trak, ngx_uint_t start)
 {
-    uint32_t               start_sample, chunk, samples, id, next_chunk, n,
+    uint32_t start_sample, chunk, samples, id, next_chunk, n,
                            prev_samples;
-    ngx_buf_t             *data, *buf;
-    ngx_uint_t             entries, target_chunk, chunk_samples;
-    ngx_mp4_stsc_entry_t  *entry, *end, *first;
+    ngx_buf_t *data, *buf;
+    ngx_uint_t entries, target_chunk, chunk_samples;
+    ngx_mp4_stsc_entry_t *entry, *end, *first;
 
     entries = trak->sample_to_chunk_entries - 1;
 

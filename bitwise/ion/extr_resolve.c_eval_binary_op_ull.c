@@ -1,69 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int TokenKind ;
 
-/* Variables and functions */
-#define  TOKEN_ADD 143 
-#define  TOKEN_AND 142 
-#define  TOKEN_DIV 141 
-#define  TOKEN_EQ 140 
-#define  TOKEN_GT 139 
-#define  TOKEN_GTEQ 138 
-#define  TOKEN_LSHIFT 137 
-#define  TOKEN_LT 136 
-#define  TOKEN_LTEQ 135 
-#define  TOKEN_MOD 134 
-#define  TOKEN_MUL 133 
-#define  TOKEN_NOTEQ 132 
-#define  TOKEN_OR 131 
-#define  TOKEN_RSHIFT 130 
-#define  TOKEN_SUB 129 
-#define  TOKEN_XOR 128 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int TokenKind ;
+ int assert (int ) ;
 
 unsigned long long eval_binary_op_ull(TokenKind op, unsigned long long left, unsigned long long right) {
     switch (op) {
-    case TOKEN_MUL:
+    case 133:
         return left * right;
-    case TOKEN_DIV:
+    case 141:
         return right != 0 ? left / right : 0;
-    case TOKEN_MOD:
+    case 134:
         return right != 0 ? left % right : 0;
-    case TOKEN_AND:
+    case 142:
         return left & right;
-    case TOKEN_LSHIFT:
+    case 137:
         return left << right;
-    case TOKEN_RSHIFT:
+    case 130:
         return left >> right;
-    case TOKEN_ADD:
+    case 143:
         return left + right;
-    case TOKEN_SUB:
+    case 129:
         return left - right;
-    case TOKEN_OR:
+    case 131:
         return left | right;
-    case TOKEN_XOR:
+    case 128:
         return left ^ right;
-    case TOKEN_EQ:
+    case 140:
         return left == right;
-    case TOKEN_NOTEQ:
+    case 132:
         return left != right;
-    case TOKEN_LT:
+    case 136:
         return left < right;
-    case TOKEN_LTEQ:
+    case 135:
         return left <= right;
-    case TOKEN_GT:
+    case 139:
         return left > right;
-    case TOKEN_GTEQ:
+    case 138:
         return left >= right;
     default:
         assert(0);

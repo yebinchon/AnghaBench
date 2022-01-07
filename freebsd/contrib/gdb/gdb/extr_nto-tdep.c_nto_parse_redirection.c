@@ -1,18 +1,10 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char** xcalloc (int,int) ; 
+ char** xcalloc (int,int) ;
 
 char **
 nto_parse_redirection (char *pargv[], char **pin, char **pout, char **perr)
@@ -23,7 +15,7 @@ nto_parse_redirection (char *pargv[], char **pin, char **pout, char **perr)
 
   for (n = 0; pargv[n]; n++);
   if (n == 0)
-    return NULL;
+    return ((void*)0);
   in = "";
   out = "";
   err = "";
@@ -34,32 +26,32 @@ nto_parse_redirection (char *pargv[], char **pin, char **pout, char **perr)
     {
       p = pargv[n];
       if (*p == '>')
-	{
-	  p++;
-	  if (*p)
-	    out = p;
-	  else
-	    out = pargv[++n];
-	}
+ {
+   p++;
+   if (*p)
+     out = p;
+   else
+     out = pargv[++n];
+ }
       else if (*p == '<')
-	{
-	  p++;
-	  if (*p)
-	    in = p;
-	  else
-	    in = pargv[++n];
-	}
+ {
+   p++;
+   if (*p)
+     in = p;
+   else
+     in = pargv[++n];
+ }
       else if (*p++ == '2' && *p++ == '>')
-	{
-	  if (*p == '&' && *(p + 1) == '1')
-	    err = out;
-	  else if (*p)
-	    err = p;
-	  else
-	    err = pargv[++n];
-	}
+ {
+   if (*p == '&' && *(p + 1) == '1')
+     err = out;
+   else if (*p)
+     err = p;
+   else
+     err = pargv[++n];
+ }
       else
-	argv[i++] = pargv[n];
+ argv[i++] = pargv[n];
     }
   *pin = in;
   *pout = out;

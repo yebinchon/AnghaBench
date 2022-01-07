@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct gs_init_data {int dummy; } ;
-typedef  int /*<<< orphan*/  PIXELFORMATDESCRIPTOR ;
-typedef  int /*<<< orphan*/  HDC ;
+typedef int PIXELFORMATDESCRIPTOR ;
+typedef int HDC ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DescribePixelFormat (int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GetLastError () ; 
- int /*<<< orphan*/  LOG_ERROR ; 
- int /*<<< orphan*/  blog (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int gl_choose_pixel_format (int /*<<< orphan*/ ,struct gs_init_data const*) ; 
+
+ int DescribePixelFormat (int ,int,int,int *) ;
+ int GetLastError () ;
+ int LOG_ERROR ;
+ int blog (int ,char*,int ) ;
+ int gl_choose_pixel_format (int ,struct gs_init_data const*) ;
 
 __attribute__((used)) static inline bool gl_getpixelformat(HDC hdc, const struct gs_init_data *info,
-				     int *format, PIXELFORMATDESCRIPTOR *pfd)
+         int *format, PIXELFORMATDESCRIPTOR *pfd)
 {
-	if (!format)
-		return false;
+ if (!format)
+  return 0;
 
-	*format = gl_choose_pixel_format(hdc, info);
+ *format = gl_choose_pixel_format(hdc, info);
 
-	if (!DescribePixelFormat(hdc, *format, sizeof(*pfd), pfd)) {
-		blog(LOG_ERROR, "DescribePixelFormat failed, %lu",
-		     GetLastError());
-		return false;
-	}
+ if (!DescribePixelFormat(hdc, *format, sizeof(*pfd), pfd)) {
+  blog(LOG_ERROR, "DescribePixelFormat failed, %lu",
+       GetLastError());
+  return 0;
+ }
 
-	return true;
+ return 1;
 }

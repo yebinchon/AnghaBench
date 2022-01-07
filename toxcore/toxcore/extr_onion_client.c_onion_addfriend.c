@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_5__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  unsigned int uint32_t ;
-struct TYPE_7__ {int status; int /*<<< orphan*/  temp_secret_key; int /*<<< orphan*/  temp_public_key; int /*<<< orphan*/  real_public_key; } ;
+
+
+typedef struct TYPE_7__ TYPE_5__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef unsigned int uint32_t ;
+struct TYPE_7__ {int status; int temp_secret_key; int temp_public_key; int real_public_key; } ;
 struct TYPE_6__ {unsigned int num_friends; TYPE_5__* friends_list; } ;
-typedef  int /*<<< orphan*/  Onion_Friend ;
-typedef  TYPE_1__ Onion_Client ;
+typedef int Onion_Friend ;
+typedef TYPE_1__ Onion_Client ;
 
-/* Variables and functions */
- int /*<<< orphan*/  crypto_box_PUBLICKEYBYTES ; 
- int /*<<< orphan*/  crypto_box_keypair (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (TYPE_5__*,int /*<<< orphan*/ ,int) ; 
- int onion_friend_num (TYPE_1__*,int /*<<< orphan*/  const*) ; 
- int realloc_onion_friends (TYPE_1__*,int) ; 
+
+ int crypto_box_PUBLICKEYBYTES ;
+ int crypto_box_keypair (int ,int ) ;
+ int memcpy (int ,int const*,int ) ;
+ int memset (TYPE_5__*,int ,int) ;
+ int onion_friend_num (TYPE_1__*,int const*) ;
+ int realloc_onion_friends (TYPE_1__*,int) ;
 
 int onion_addfriend(Onion_Client *onion_c, const uint8_t *public_key)
 {

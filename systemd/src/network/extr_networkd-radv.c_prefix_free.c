@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  radv_prefix; scalar_t__ section; TYPE_1__* network; } ;
-struct TYPE_6__ {scalar_t__ n_static_prefixes; int /*<<< orphan*/  prefixes_by_section; int /*<<< orphan*/  static_prefixes; } ;
-typedef  TYPE_2__ Prefix ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LIST_REMOVE (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  free (TYPE_2__*) ; 
- int /*<<< orphan*/  hashmap_remove (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  network_config_section_free (scalar_t__) ; 
- int /*<<< orphan*/  prefixes ; 
- int /*<<< orphan*/  sd_radv_prefix_unref (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int radv_prefix; scalar_t__ section; TYPE_1__* network; } ;
+struct TYPE_6__ {scalar_t__ n_static_prefixes; int prefixes_by_section; int static_prefixes; } ;
+typedef TYPE_2__ Prefix ;
+
+
+ int LIST_REMOVE (int ,int ,TYPE_2__*) ;
+ int assert (int) ;
+ int free (TYPE_2__*) ;
+ int hashmap_remove (int ,scalar_t__) ;
+ int network_config_section_free (scalar_t__) ;
+ int prefixes ;
+ int sd_radv_prefix_unref (int ) ;
 
 void prefix_free(Prefix *prefix) {
         if (!prefix)

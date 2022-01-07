@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  wait_for_charger; } ;
 
-/* Variables and functions */
- scalar_t__ jiffies ; 
- int /*<<< orphan*/  mod_timer (int /*<<< orphan*/ *,scalar_t__) ; 
- scalar_t__ msecs_to_jiffies (int /*<<< orphan*/ ) ; 
- TYPE_1__* pdata ; 
- int /*<<< orphan*/  supply_timer ; 
- int /*<<< orphan*/  update_charger () ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int wait_for_charger; } ;
+
+
+ scalar_t__ jiffies ;
+ int mod_timer (int *,scalar_t__) ;
+ scalar_t__ msecs_to_jiffies (int ) ;
+ TYPE_1__* pdata ;
+ int supply_timer ;
+ int update_charger () ;
 
 __attribute__((used)) static void psy_changed(void)
 {
-	update_charger();
+ update_charger();
 
-	/*
-	 * Okay, charger set. Now wait a bit before notifying supplicants,
-	 * charge power should stabilize.
-	 */
-	mod_timer(&supply_timer,
-		  jiffies + msecs_to_jiffies(pdata->wait_for_charger));
+
+
+
+
+ mod_timer(&supply_timer,
+    jiffies + msecs_to_jiffies(pdata->wait_for_charger));
 }

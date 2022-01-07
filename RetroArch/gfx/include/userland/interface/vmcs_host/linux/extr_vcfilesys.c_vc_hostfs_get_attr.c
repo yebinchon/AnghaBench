@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct stat {int st_mode; } ;
-typedef  int /*<<< orphan*/  fattributes_t ;
+typedef int fattributes_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ATTR_DIRENT ; 
- int /*<<< orphan*/  ATTR_RDONLY ; 
- int /*<<< orphan*/  DEBUG_MINOR (char*,char const*) ; 
- scalar_t__ S_ISDIR (int) ; 
- int S_IWUSR ; 
- scalar_t__ stat (char const*,struct stat*) ; 
+
+ int ATTR_DIRENT ;
+ int ATTR_RDONLY ;
+ int DEBUG_MINOR (char*,char const*) ;
+ scalar_t__ S_ISDIR (int) ;
+ int S_IWUSR ;
+ scalar_t__ stat (char const*,struct stat*) ;
 
 int vc_hostfs_get_attr(const char *path, fattributes_t *attr)
 {
@@ -36,7 +36,7 @@ int vc_hostfs_get_attr(const char *path, fattributes_t *attr)
             *attr |= ATTR_DIRENT;
         }
 
-        if (( sb.st_mode & S_IWUSR  ) == 0 )
+        if (( sb.st_mode & S_IWUSR ) == 0 )
         {
             *attr |= ATTR_RDONLY;
         }

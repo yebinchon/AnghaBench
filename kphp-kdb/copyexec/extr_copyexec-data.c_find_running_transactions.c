@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
 struct TYPE_13__ {scalar_t__ status; struct TYPE_13__* next; struct TYPE_13__* hnext; } ;
-typedef  TYPE_1__ transaction_t ;
-typedef  TYPE_1__ tlist_t ;
-typedef  int /*<<< orphan*/  A ;
+typedef TYPE_1__ transaction_t ;
+typedef TYPE_1__ tlist_t ;
+typedef int A ;
 
-/* Variables and functions */
- TYPE_1__** H ; 
- int HASH_MASK ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- TYPE_1__ auto_running_list ; 
- TYPE_1__** calloc (int,int) ; 
- scalar_t__ check_is_running (TYPE_1__*) ; 
- int /*<<< orphan*/  cmp_transaction ; 
- int /*<<< orphan*/  free (TYPE_1__**) ; 
- int /*<<< orphan*/  qsort (TYPE_1__**,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tlist_clear (TYPE_1__*) ; 
- int /*<<< orphan*/  tlist_insert (TYPE_1__*,TYPE_1__*) ; 
- int /*<<< orphan*/  transaction_finish_execution (TYPE_1__*,int /*<<< orphan*/ ) ; 
- scalar_t__ ts_running ; 
- int /*<<< orphan*/  vkprintf (int,char*,...) ; 
+
+ TYPE_1__** H ;
+ int HASH_MASK ;
+ int assert (int ) ;
+ TYPE_1__ auto_running_list ;
+ TYPE_1__** calloc (int,int) ;
+ scalar_t__ check_is_running (TYPE_1__*) ;
+ int cmp_transaction ;
+ int free (TYPE_1__**) ;
+ int qsort (TYPE_1__**,int,int,int ) ;
+ int tlist_clear (TYPE_1__*) ;
+ int tlist_insert (TYPE_1__*,TYPE_1__*) ;
+ int transaction_finish_execution (TYPE_1__*,int ) ;
+ scalar_t__ ts_running ;
+ int vkprintf (int,char*,...) ;
 
 int find_running_transactions (void) {
   int i, r = 0, t = 0;
@@ -38,7 +38,7 @@ int find_running_transactions (void) {
   tlist_clear (&terminated_list);
   transaction_t *P;
   for (i = 0; i <= HASH_MASK; i++) {
-    for (P = H[i]; P != NULL; P = P->hnext) {
+    for (P = H[i]; P != ((void*)0); P = P->hnext) {
       if (P->status == ts_running) {
         if (check_is_running (P)) {
           vkprintf (4, "tlist_insert (&auto_running_list, %p)\n", P);
@@ -55,7 +55,7 @@ int find_running_transactions (void) {
 
   if (t > 0) {
     transaction_t **A = calloc (t, sizeof (A[0]));
-    assert (A != NULL);
+    assert (A != ((void*)0));
     for (P = terminated_list.next, i = 0; P != &terminated_list; P = P->next) {
       A[i++] = P;
     }

@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct sdhci_host {TYPE_1__* mmc; int /*<<< orphan*/  lock; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct sdhci_host {TYPE_1__* mmc; int lock; } ;
 struct mmc_host {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/  parent; } ;
+struct TYPE_2__ {int parent; } ;
 
-/* Variables and functions */
- struct sdhci_host* mmc_priv (struct mmc_host*) ; 
- int /*<<< orphan*/  pm_runtime_get_noresume (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pm_runtime_put_noidle (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sdhci_enable_sdio_irq_nolock (struct sdhci_host*,int) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
+
+ struct sdhci_host* mmc_priv (struct mmc_host*) ;
+ int pm_runtime_get_noresume (int ) ;
+ int pm_runtime_put_noidle (int ) ;
+ int sdhci_enable_sdio_irq_nolock (struct sdhci_host*,int) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
 
 void sdhci_enable_sdio_irq(struct mmc_host *mmc, int enable)
 {
-	struct sdhci_host *host = mmc_priv(mmc);
-	unsigned long flags;
+ struct sdhci_host *host = mmc_priv(mmc);
+ unsigned long flags;
 
-	if (enable)
-		pm_runtime_get_noresume(host->mmc->parent);
+ if (enable)
+  pm_runtime_get_noresume(host->mmc->parent);
 
-	spin_lock_irqsave(&host->lock, flags);
-	sdhci_enable_sdio_irq_nolock(host, enable);
-	spin_unlock_irqrestore(&host->lock, flags);
+ spin_lock_irqsave(&host->lock, flags);
+ sdhci_enable_sdio_irq_nolock(host, enable);
+ spin_unlock_irqrestore(&host->lock, flags);
 
-	if (!enable)
-		pm_runtime_put_noidle(host->mmc->parent);
+ if (!enable)
+  pm_runtime_put_noidle(host->mmc->parent);
 }

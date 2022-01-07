@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct dmx_region_t {TYPE_2__* picture; int /*<<< orphan*/  resource; int /*<<< orphan*/  element; int /*<<< orphan*/  bmp_rect; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct dmx_region_t {TYPE_2__* picture; int resource; int element; int bmp_rect; } ;
 struct TYPE_5__ {TYPE_1__* p; } ;
-typedef  TYPE_2__ picture_t ;
-struct TYPE_4__ {int /*<<< orphan*/  p_pixels; int /*<<< orphan*/  i_pitch; } ;
-typedef  int /*<<< orphan*/  DISPMANX_UPDATE_HANDLE_T ;
+typedef TYPE_2__ picture_t ;
+struct TYPE_4__ {int p_pixels; int i_pitch; } ;
+typedef int DISPMANX_UPDATE_HANDLE_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  VC_IMAGE_RGBA32 ; 
- int /*<<< orphan*/  vc_dispmanx_element_change_source (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vc_dispmanx_resource_write_data (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int VC_IMAGE_RGBA32 ;
+ int vc_dispmanx_element_change_source (int ,int ,int ) ;
+ int vc_dispmanx_resource_write_data (int ,int ,int ,int ,int *) ;
 
 __attribute__((used)) static void dmx_region_update(struct dmx_region_t *dmx_region,
                 DISPMANX_UPDATE_HANDLE_T update, picture_t *picture)

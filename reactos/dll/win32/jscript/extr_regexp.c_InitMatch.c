@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_7__ {size_t classCount; TYPE_4__* classList; } ;
-typedef  TYPE_1__ regexp_t ;
-typedef  int /*<<< orphan*/  heap_pool_t ;
-typedef  size_t UINT ;
-struct TYPE_9__ {int /*<<< orphan*/  converted; } ;
-struct TYPE_8__ {int backTrackStackSize; int stateStackLimit; int /*<<< orphan*/  ok; TYPE_1__* regexp; int /*<<< orphan*/ * pool; void* cx; scalar_t__ stateStackTop; void* stateStack; scalar_t__ backTrackLimit; scalar_t__ backTrackCount; scalar_t__ cursz; void* backTrackStack; void* backTrackSP; } ;
-typedef  int /*<<< orphan*/  REProgState ;
-typedef  TYPE_2__ REGlobalData ;
-typedef  int /*<<< orphan*/  HRESULT ;
+typedef TYPE_1__ regexp_t ;
+typedef int heap_pool_t ;
+typedef size_t UINT ;
+struct TYPE_9__ {int converted; } ;
+struct TYPE_8__ {int backTrackStackSize; int stateStackLimit; int ok; TYPE_1__* regexp; int * pool; void* cx; scalar_t__ stateStackTop; void* stateStack; scalar_t__ backTrackLimit; scalar_t__ backTrackCount; scalar_t__ cursz; void* backTrackStack; void* backTrackSP; } ;
+typedef int REProgState ;
+typedef TYPE_2__ REGlobalData ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_FAIL ; 
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- int /*<<< orphan*/  FALSE ; 
- int INITIAL_BACKTRACK ; 
- int INITIAL_STATESTACK ; 
- int /*<<< orphan*/  ProcessCharSet (TYPE_2__*,TYPE_4__*) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TRUE ; 
- void* heap_pool_alloc (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  js_ReportOutOfScriptQuota (void*) ; 
+
+ int E_FAIL ;
+ int E_OUTOFMEMORY ;
+ int FALSE ;
+ int INITIAL_BACKTRACK ;
+ int INITIAL_STATESTACK ;
+ int ProcessCharSet (TYPE_2__*,TYPE_4__*) ;
+ int S_OK ;
+ int TRUE ;
+ void* heap_pool_alloc (int *,int) ;
+ int js_ReportOutOfScriptQuota (void*) ;
 
 __attribute__((used)) static HRESULT InitMatch(regexp_t *re, void *cx, heap_pool_t *pool, REGlobalData *gData)
 {

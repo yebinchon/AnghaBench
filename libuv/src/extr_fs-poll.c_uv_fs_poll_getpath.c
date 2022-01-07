@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uv_handle_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uv_handle_t ;
 struct TYPE_3__ {struct poll_ctx* poll_ctx; } ;
-typedef  TYPE_1__ uv_fs_poll_t ;
-struct poll_ctx {int /*<<< orphan*/  path; } ;
+typedef TYPE_1__ uv_fs_poll_t ;
+struct poll_ctx {int path; } ;
 
-/* Variables and functions */
- int UV_EINVAL ; 
- int UV_ENOBUFS ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (char*,int /*<<< orphan*/ ,size_t) ; 
- size_t strlen (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  uv_is_active (int /*<<< orphan*/ *) ; 
+
+ int UV_EINVAL ;
+ int UV_ENOBUFS ;
+ int assert (int ) ;
+ int memcpy (char*,int ,size_t) ;
+ size_t strlen (int ) ;
+ int uv_is_active (int *) ;
 
 int uv_fs_poll_getpath(uv_fs_poll_t* handle, char* buffer, size_t* size) {
   struct poll_ctx* ctx;
@@ -34,7 +34,7 @@ int uv_fs_poll_getpath(uv_fs_poll_t* handle, char* buffer, size_t* size) {
   }
 
   ctx = handle->poll_ctx;
-  assert(ctx != NULL);
+  assert(ctx != ((void*)0));
 
   required_len = strlen(ctx->path);
   if (required_len >= *size) {

@@ -1,67 +1,67 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_30__   TYPE_9__ ;
-typedef  struct TYPE_29__   TYPE_8__ ;
-typedef  struct TYPE_28__   TYPE_7__ ;
-typedef  struct TYPE_27__   TYPE_6__ ;
-typedef  struct TYPE_26__   TYPE_5__ ;
-typedef  struct TYPE_25__   TYPE_4__ ;
-typedef  struct TYPE_24__   TYPE_3__ ;
-typedef  struct TYPE_23__   TYPE_2__ ;
-typedef  struct TYPE_22__   TYPE_1__ ;
-typedef  struct TYPE_21__   TYPE_17__ ;
-typedef  struct TYPE_20__   TYPE_10__ ;
 
-/* Type definitions */
-typedef  size_t ngx_uint_t ;
-struct TYPE_27__ {int /*<<< orphan*/  name; scalar_t__ regex; } ;
-typedef  TYPE_6__ ngx_http_server_name_t ;
-struct TYPE_25__ {int /*<<< orphan*/ * wc_tail; int /*<<< orphan*/ * wc_head; int /*<<< orphan*/  hash; } ;
-struct TYPE_28__ {int no_referer; int blocked_referer; int server_names; TYPE_17__* keys; int /*<<< orphan*/  server_name_regex; int /*<<< orphan*/  regex; TYPE_4__ hash; int /*<<< orphan*/  referer_hash_bucket_size; int /*<<< orphan*/  referer_hash_max_size; } ;
-typedef  TYPE_7__ ngx_http_referer_conf_t ;
+
+
+typedef struct TYPE_30__ TYPE_9__ ;
+typedef struct TYPE_29__ TYPE_8__ ;
+typedef struct TYPE_28__ TYPE_7__ ;
+typedef struct TYPE_27__ TYPE_6__ ;
+typedef struct TYPE_26__ TYPE_5__ ;
+typedef struct TYPE_25__ TYPE_4__ ;
+typedef struct TYPE_24__ TYPE_3__ ;
+typedef struct TYPE_23__ TYPE_2__ ;
+typedef struct TYPE_22__ TYPE_1__ ;
+typedef struct TYPE_21__ TYPE_17__ ;
+typedef struct TYPE_20__ TYPE_10__ ;
+
+
+typedef size_t ngx_uint_t ;
+struct TYPE_27__ {int name; scalar_t__ regex; } ;
+typedef TYPE_6__ ngx_http_server_name_t ;
+struct TYPE_25__ {int * wc_tail; int * wc_head; int hash; } ;
+struct TYPE_28__ {int no_referer; int blocked_referer; int server_names; TYPE_17__* keys; int server_name_regex; int regex; TYPE_4__ hash; int referer_hash_bucket_size; int referer_hash_max_size; } ;
+typedef TYPE_7__ ngx_http_referer_conf_t ;
 struct TYPE_22__ {size_t nelts; TYPE_6__* elts; } ;
 struct TYPE_29__ {TYPE_1__ server_names; } ;
-typedef  TYPE_8__ ngx_http_core_srv_conf_t ;
-typedef  int /*<<< orphan*/  ngx_hash_wildcard_t ;
-typedef  int /*<<< orphan*/  ngx_hash_key_t ;
-struct TYPE_30__ {char* name; int /*<<< orphan*/ * hash; int /*<<< orphan*/ * temp_pool; int /*<<< orphan*/  pool; int /*<<< orphan*/  bucket_size; int /*<<< orphan*/  max_size; int /*<<< orphan*/  key; } ;
-typedef  TYPE_9__ ngx_hash_init_t ;
-struct TYPE_20__ {int /*<<< orphan*/ * temp_pool; int /*<<< orphan*/  pool; int /*<<< orphan*/  log; } ;
-typedef  TYPE_10__ ngx_conf_t ;
-struct TYPE_26__ {scalar_t__ nelts; int /*<<< orphan*/  elts; } ;
-struct TYPE_24__ {scalar_t__ nelts; int /*<<< orphan*/  elts; } ;
-struct TYPE_23__ {scalar_t__ nelts; int /*<<< orphan*/  elts; } ;
+typedef TYPE_8__ ngx_http_core_srv_conf_t ;
+typedef int ngx_hash_wildcard_t ;
+typedef int ngx_hash_key_t ;
+struct TYPE_30__ {char* name; int * hash; int * temp_pool; int pool; int bucket_size; int max_size; int key; } ;
+typedef TYPE_9__ ngx_hash_init_t ;
+struct TYPE_20__ {int * temp_pool; int pool; int log; } ;
+typedef TYPE_10__ ngx_conf_t ;
+struct TYPE_26__ {scalar_t__ nelts; int elts; } ;
+struct TYPE_24__ {scalar_t__ nelts; int elts; } ;
+struct TYPE_23__ {scalar_t__ nelts; int elts; } ;
 struct TYPE_21__ {TYPE_5__ dns_wc_tail; TYPE_3__ dns_wc_head; TYPE_2__ keys; } ;
 
-/* Variables and functions */
- char* NGX_CONF_ERROR ; 
- char* NGX_CONF_OK ; 
- int NGX_CONF_UNSET ; 
- int /*<<< orphan*/  NGX_LOG_EMERG ; 
- scalar_t__ NGX_OK ; 
- int /*<<< orphan*/  ngx_align (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_cacheline_size ; 
- int /*<<< orphan*/  ngx_conf_merge_ptr_value (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ngx_conf_merge_uint_value (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ngx_conf_merge_value (int,int,int /*<<< orphan*/ ) ; 
- scalar_t__ ngx_hash_init (TYPE_9__*,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  ngx_hash_key_lc ; 
- scalar_t__ ngx_hash_wildcard_init (TYPE_9__*,int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__ ngx_http_add_referer (TYPE_10__*,TYPE_17__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ ngx_http_add_regex_server_name (TYPE_10__*,TYPE_7__*,scalar_t__) ; 
- int /*<<< orphan*/  ngx_http_cmp_referer_wildcards ; 
- TYPE_8__* ngx_http_conf_get_module_srv_conf (TYPE_10__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_http_core_module ; 
- int /*<<< orphan*/  ngx_log_error (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ngx_qsort (int /*<<< orphan*/ ,size_t,int,int /*<<< orphan*/ ) ; 
+
+ char* NGX_CONF_ERROR ;
+ char* NGX_CONF_OK ;
+ int NGX_CONF_UNSET ;
+ int NGX_LOG_EMERG ;
+ scalar_t__ NGX_OK ;
+ int ngx_align (int ,int ) ;
+ int ngx_cacheline_size ;
+ int ngx_conf_merge_ptr_value (int ,int ,int *) ;
+ int ngx_conf_merge_uint_value (int ,int ,int) ;
+ int ngx_conf_merge_value (int,int,int ) ;
+ scalar_t__ ngx_hash_init (TYPE_9__*,int ,scalar_t__) ;
+ int ngx_hash_key_lc ;
+ scalar_t__ ngx_hash_wildcard_init (TYPE_9__*,int ,scalar_t__) ;
+ scalar_t__ ngx_http_add_referer (TYPE_10__*,TYPE_17__*,int *,int *) ;
+ scalar_t__ ngx_http_add_regex_server_name (TYPE_10__*,TYPE_7__*,scalar_t__) ;
+ int ngx_http_cmp_referer_wildcards ;
+ TYPE_8__* ngx_http_conf_get_module_srv_conf (TYPE_10__*,int ) ;
+ int ngx_http_core_module ;
+ int ngx_log_error (int ,int ,int ,char*) ;
+ int ngx_qsort (int ,size_t,int,int ) ;
 
 __attribute__((used)) static char *
 ngx_http_referer_merge_conf(ngx_conf_t *cf, void *parent, void *child)
@@ -69,19 +69,19 @@ ngx_http_referer_merge_conf(ngx_conf_t *cf, void *parent, void *child)
     ngx_http_referer_conf_t *prev = parent;
     ngx_http_referer_conf_t *conf = child;
 
-    ngx_uint_t                 n;
-    ngx_hash_init_t            hash;
-    ngx_http_server_name_t    *sn;
-    ngx_http_core_srv_conf_t  *cscf;
+    ngx_uint_t n;
+    ngx_hash_init_t hash;
+    ngx_http_server_name_t *sn;
+    ngx_http_core_srv_conf_t *cscf;
 
-    if (conf->keys == NULL) {
+    if (conf->keys == ((void*)0)) {
         conf->hash = prev->hash;
 
-#if (NGX_PCRE)
-        ngx_conf_merge_ptr_value(conf->regex, prev->regex, NULL);
-        ngx_conf_merge_ptr_value(conf->server_name_regex,
-                                 prev->server_name_regex, NULL);
-#endif
+
+
+
+
+
         ngx_conf_merge_value(conf->no_referer, prev->no_referer, 0);
         ngx_conf_merge_value(conf->blocked_referer, prev->blocked_referer, 0);
         ngx_conf_merge_uint_value(conf->referer_hash_max_size,
@@ -97,21 +97,7 @@ ngx_http_referer_merge_conf(ngx_conf_t *cf, void *parent, void *child)
 
         sn = cscf->server_names.elts;
         for (n = 0; n < cscf->server_names.nelts; n++) {
-
-#if (NGX_PCRE)
-            if (sn[n].regex) {
-
-                if (ngx_http_add_regex_server_name(cf, conf, sn[n].regex)
-                    != NGX_OK)
-                {
-                    return NGX_CONF_ERROR;
-                }
-
-                continue;
-            }
-#endif
-
-            if (ngx_http_add_referer(cf, conf->keys, &sn[n].name, NULL)
+            if (ngx_http_add_referer(cf, conf->keys, &sn[n].name, ((void*)0))
                 != NGX_OK)
             {
                 return NGX_CONF_ERROR;
@@ -146,7 +132,7 @@ ngx_http_referer_merge_conf(ngx_conf_t *cf, void *parent, void *child)
 
     if (conf->keys->keys.nelts) {
         hash.hash = &conf->hash.hash;
-        hash.temp_pool = NULL;
+        hash.temp_pool = ((void*)0);
 
         if (ngx_hash_init(&hash, conf->keys->keys.elts, conf->keys->keys.nelts)
             != NGX_OK)
@@ -162,7 +148,7 @@ ngx_http_referer_merge_conf(ngx_conf_t *cf, void *parent, void *child)
                   sizeof(ngx_hash_key_t),
                   ngx_http_cmp_referer_wildcards);
 
-        hash.hash = NULL;
+        hash.hash = ((void*)0);
         hash.temp_pool = cf->temp_pool;
 
         if (ngx_hash_wildcard_init(&hash, conf->keys->dns_wc_head.elts,
@@ -182,7 +168,7 @@ ngx_http_referer_merge_conf(ngx_conf_t *cf, void *parent, void *child)
                   sizeof(ngx_hash_key_t),
                   ngx_http_cmp_referer_wildcards);
 
-        hash.hash = NULL;
+        hash.hash = ((void*)0);
         hash.temp_pool = cf->temp_pool;
 
         if (ngx_hash_wildcard_init(&hash, conf->keys->dns_wc_tail.elts,
@@ -195,11 +181,11 @@ ngx_http_referer_merge_conf(ngx_conf_t *cf, void *parent, void *child)
         conf->hash.wc_tail = (ngx_hash_wildcard_t *) hash.hash;
     }
 
-#if (NGX_PCRE)
-    ngx_conf_merge_ptr_value(conf->regex, prev->regex, NULL);
-    ngx_conf_merge_ptr_value(conf->server_name_regex, prev->server_name_regex,
-                             NULL);
-#endif
+
+
+
+
+
 
     if (conf->no_referer == NGX_CONF_UNSET) {
         conf->no_referer = 0;
@@ -209,7 +195,7 @@ ngx_http_referer_merge_conf(ngx_conf_t *cf, void *parent, void *child)
         conf->blocked_referer = 0;
     }
 
-    conf->keys = NULL;
+    conf->keys = ((void*)0);
 
     return NGX_CONF_OK;
 }

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int num_faces; } ;
-typedef  int /*<<< orphan*/  FT_Library ;
-typedef  TYPE_1__* FT_Face ;
+typedef int FT_Library ;
+typedef TYPE_1__* FT_Face ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FT_Done_Face (TYPE_1__*) ; 
- int /*<<< orphan*/  FT_Done_FreeType (int /*<<< orphan*/ ) ; 
- scalar_t__ FT_Init_FreeType (int /*<<< orphan*/ *) ; 
- scalar_t__ FT_New_Face (int /*<<< orphan*/ ,char*,long,TYPE_1__**) ; 
- int /*<<< orphan*/  TestFace (TYPE_1__*) ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  stderr ; 
+
+ int FT_Done_Face (TYPE_1__*) ;
+ int FT_Done_FreeType (int ) ;
+ scalar_t__ FT_Init_FreeType (int *) ;
+ scalar_t__ FT_New_Face (int ,char*,long,TYPE_1__**) ;
+ int TestFace (TYPE_1__*) ;
+ int exit (int) ;
+ int fprintf (int ,char*) ;
+ int stderr ;
 
 __attribute__((used)) static void
-  ExecuteTest( char*  testfont )
+  ExecuteTest( char* testfont )
   {
-    FT_Library  context;
-    FT_Face     face;
+    FT_Library context;
+    FT_Face face;
 
 
     if ( FT_Init_FreeType( &context ) )
@@ -40,7 +40,7 @@ __attribute__((used)) static void
 
     if ( FT_New_Face( context, testfont, 0, &face ) )
     {
-      /* The font is erroneous, so if this fails that's ok. */
+
       exit( 0 );
     }
 
@@ -48,7 +48,7 @@ __attribute__((used)) static void
       TestFace( face );
     else
     {
-      long  i, num;
+      long i, num;
 
 
       num = face->num_faces;

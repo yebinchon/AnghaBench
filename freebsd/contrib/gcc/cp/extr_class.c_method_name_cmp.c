@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ tree ;
 
-/* Variables and functions */
- scalar_t__ DECL_NAME (int /*<<< orphan*/ ) ; 
- scalar_t__ const NULL_TREE ; 
- int /*<<< orphan*/  OVL_CURRENT (scalar_t__ const) ; 
+
+
+
+typedef scalar_t__ tree ;
+
+
+ scalar_t__ DECL_NAME (int ) ;
+ scalar_t__ const NULL_TREE ;
+ int OVL_CURRENT (scalar_t__ const) ;
 
 __attribute__((used)) static int
 method_name_cmp (const void* m1_p, const void* m2_p)

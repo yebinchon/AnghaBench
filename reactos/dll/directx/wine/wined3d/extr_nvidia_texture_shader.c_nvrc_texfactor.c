@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct wined3d_state {int /*<<< orphan*/ * render_states; } ;
+
+
+
+
+struct wined3d_state {int * render_states; } ;
 struct wined3d_gl_info {int dummy; } ;
 struct wined3d_context {struct wined3d_gl_info* gl_info; } ;
-struct wined3d_color {int /*<<< orphan*/  r; } ;
-typedef  int /*<<< orphan*/  DWORD ;
+struct wined3d_color {int r; } ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GL_CONSTANT_COLOR0_NV ; 
- int /*<<< orphan*/  GL_EXTCALL (int /*<<< orphan*/ ) ; 
- size_t WINED3D_RS_TEXTUREFACTOR ; 
- int /*<<< orphan*/  glCombinerParameterfvNV (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  wined3d_color_from_d3dcolor (struct wined3d_color*,int /*<<< orphan*/ ) ; 
+
+ int GL_CONSTANT_COLOR0_NV ;
+ int GL_EXTCALL (int ) ;
+ size_t WINED3D_RS_TEXTUREFACTOR ;
+ int glCombinerParameterfvNV (int ,int *) ;
+ int wined3d_color_from_d3dcolor (struct wined3d_color*,int ) ;
 
 __attribute__((used)) static void nvrc_texfactor(struct wined3d_context *context, const struct wined3d_state *state, DWORD state_id)
 {

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  size_t uint32_t ;
-struct TYPE_3__ {int /*<<< orphan*/  public_key; } ;
-typedef  TYPE_1__ Client_data ;
 
-/* Variables and functions */
- int id_closest (int const*,int const*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef size_t uint32_t ;
+struct TYPE_3__ {int public_key; } ;
+typedef TYPE_1__ Client_data ;
+
+
+ int id_closest (int const*,int const*,int ) ;
 
 uint8_t is_furthest(const uint8_t *comp_client_id, Client_data *list, uint32_t length, const uint8_t *public_key)
 {

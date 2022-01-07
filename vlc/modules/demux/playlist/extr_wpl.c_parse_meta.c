@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  xml_reader_t ;
-struct TYPE_4__ {int /*<<< orphan*/ * p_sys; } ;
-typedef  TYPE_1__ stream_t ;
-typedef  int /*<<< orphan*/  input_item_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  atoll (char*) ; 
- int /*<<< orphan*/  consume_tag (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  input_item_AddInfo (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  input_item_SetGenre (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  input_item_SetPublisher (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  input_item_SetRating (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  msg_Warn (TYPE_1__*,char*,char*) ; 
- int /*<<< orphan*/  strcasecmp (char const*,char*) ; 
- char* strdup (char const*) ; 
- int xml_ReaderIsEmptyElement (int /*<<< orphan*/ *) ; 
- char* xml_ReaderNextAttr (int /*<<< orphan*/ *,char const**) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int xml_reader_t ;
+struct TYPE_4__ {int * p_sys; } ;
+typedef TYPE_1__ stream_t ;
+typedef int input_item_t ;
+
+
+ int _ (char*) ;
+ int atoll (char*) ;
+ int consume_tag (int *,char*) ;
+ int free (char*) ;
+ int input_item_AddInfo (int *,int ,int ,char*,int ) ;
+ int input_item_SetGenre (int *,char*) ;
+ int input_item_SetPublisher (int *,char*) ;
+ int input_item_SetRating (int *,char*) ;
+ int msg_Warn (TYPE_1__*,char*,char*) ;
+ int strcasecmp (char const*,char*) ;
+ char* strdup (char const*) ;
+ int xml_ReaderIsEmptyElement (int *) ;
+ char* xml_ReaderNextAttr (int *,char const**) ;
 
 __attribute__((used)) static void parse_meta( stream_t* p_demux, input_item_t* p_input )
 {
     xml_reader_t *p_reader = p_demux->p_sys;
     bool const b_empty = xml_ReaderIsEmptyElement( p_reader ) == 1;
 
-    char *psz_meta_name = NULL, *psz_meta_content = NULL;
+    char *psz_meta_name = ((void*)0), *psz_meta_content = ((void*)0);
     char const *psz_attr, *psz_value;
     while( ( psz_attr = xml_ReaderNextAttr( p_reader, &psz_value ) ) )
     {
-        if( psz_value == NULL )
+        if( psz_value == ((void*)0) )
             continue;
 
         if( !strcasecmp( psz_attr, "name" ) && !psz_meta_name )
@@ -53,7 +53,7 @@ __attribute__((used)) static void parse_meta( stream_t* p_demux, input_item_t* p
             break;
     }
 
-    if( b_empty == false )
+    if( b_empty == 0 )
         consume_tag( p_reader, "meta" );
 
     if( !psz_meta_name || !psz_meta_content )

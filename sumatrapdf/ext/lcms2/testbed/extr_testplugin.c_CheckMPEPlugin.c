@@ -1,67 +1,67 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int cmsUInt32Number ;
-typedef  int /*<<< orphan*/  cmsPipeline ;
-typedef  int cmsInt32Number ;
-typedef  int /*<<< orphan*/ * cmsHPROFILE ;
-typedef  double cmsFloat32Number ;
-typedef  int /*<<< orphan*/ * cmsContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * DupContext (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Fail (char*) ; 
- scalar_t__ IsGoodVal (char*,double,double,double) ; 
- int /*<<< orphan*/  MPEPluginSample ; 
- int /*<<< orphan*/  ResetFatalError (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  StageAllocNegate (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * WatchDogContext (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cmsAT_BEGIN ; 
- int /*<<< orphan*/  cmsCloseProfile (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * cmsCreateProfilePlaceholder (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cmsDeleteContext (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * cmsOpenProfileFromMem (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/ * cmsPipelineAlloc (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  cmsPipelineEvalFloat (int /*<<< orphan*/ *,double*,double*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cmsPipelineFree (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cmsPipelineInsertStage (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cmsPlugin (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ cmsReadTag (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int cmsSaveProfileToMem (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*,int*) ; 
- int /*<<< orphan*/  cmsSetLogErrorHandler (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cmsSigDToB3Tag ; 
- int /*<<< orphan*/  cmsWriteTag (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (char*) ; 
- scalar_t__ malloc (int) ; 
+
+
+
+typedef int cmsUInt32Number ;
+typedef int cmsPipeline ;
+typedef int cmsInt32Number ;
+typedef int * cmsHPROFILE ;
+typedef double cmsFloat32Number ;
+typedef int * cmsContext ;
+
+
+ int * DupContext (int *,int *) ;
+ int Fail (char*) ;
+ scalar_t__ IsGoodVal (char*,double,double,double) ;
+ int MPEPluginSample ;
+ int ResetFatalError (int *) ;
+ int StageAllocNegate (int *) ;
+ int * WatchDogContext (int *) ;
+ int cmsAT_BEGIN ;
+ int cmsCloseProfile (int *,int *) ;
+ int * cmsCreateProfilePlaceholder (int *) ;
+ int cmsDeleteContext (int *) ;
+ int * cmsOpenProfileFromMem (int *,char*,int) ;
+ int * cmsPipelineAlloc (int *,int,int) ;
+ int cmsPipelineEvalFloat (int *,double*,double*,int *) ;
+ int cmsPipelineFree (int *,int *) ;
+ int cmsPipelineInsertStage (int *,int *,int ,int ) ;
+ int cmsPlugin (int *,int *) ;
+ scalar_t__ cmsReadTag (int *,int *,int ) ;
+ int cmsSaveProfileToMem (int *,int *,char*,int*) ;
+ int cmsSetLogErrorHandler (int *,int *) ;
+ int cmsSigDToB3Tag ;
+ int cmsWriteTag (int *,int *,int ,int *) ;
+ int free (char*) ;
+ scalar_t__ malloc (int) ;
 
 cmsInt32Number CheckMPEPlugin(void)
 {
-    cmsContext ctx = NULL;
-    cmsContext cpy = NULL;
-    cmsHPROFILE h = NULL;
+    cmsContext ctx = ((void*)0);
+    cmsContext cpy = ((void*)0);
+    cmsHPROFILE h = ((void*)0);
     cmsUInt32Number myTag = 1234;
     cmsUInt32Number rc = 0;
-    char* data = NULL;
+    char* data = ((void*)0);
     cmsUInt32Number clen = 0;
     cmsFloat32Number In[3], Out[3];
     cmsPipeline* pipe;
 
-    ctx = WatchDogContext(NULL);
+    ctx = WatchDogContext(((void*)0));
     cmsPlugin(ctx, &MPEPluginSample);
 
-    cpy =  DupContext(ctx, NULL);
+    cpy = DupContext(ctx, ((void*)0));
 
     h = cmsCreateProfilePlaceholder(cpy);
-    if (h == NULL) {
+    if (h == ((void*)0)) {
         Fail("Create placeholder failed");
         goto Error;
     }
@@ -87,10 +87,10 @@ cmsInt32Number CheckMPEPlugin(void)
         goto Error;
     }
 
-    // This cleans the stage as well
+
     cmsPipelineFree(cpy, pipe);
 
-    rc = cmsSaveProfileToMem(cpy, h, NULL, &clen);
+    rc = cmsSaveProfileToMem(cpy, h, ((void*)0), &clen);
     if (!rc) {
         Fail("Fetch mem size failed");
         goto Error;
@@ -98,7 +98,7 @@ cmsInt32Number CheckMPEPlugin(void)
 
 
     data = (char*) malloc(clen);
-    if (data == NULL) {
+    if (data == ((void*)0)) {
         Fail("malloc failed ?!?");
         goto Error;
     }
@@ -112,17 +112,17 @@ cmsInt32Number CheckMPEPlugin(void)
 
     cmsCloseProfile(cpy, h);
 
-    cmsSetLogErrorHandler(cpy, NULL);
+    cmsSetLogErrorHandler(cpy, ((void*)0));
     h = cmsOpenProfileFromMem(cpy, data, clen);
-    if (h == NULL) {
+    if (h == ((void*)0)) {
         Fail("Open profile failed");
         goto Error;
     }
 
     pipe = (cmsPipeline*) cmsReadTag(cpy, h, cmsSigDToB3Tag);
-    if (pipe != NULL) {
+    if (pipe != ((void*)0)) {
 
-        // Unsupported stage, should fail
+
         Fail("read tag/context switching failed");
         goto Error;
     }
@@ -132,21 +132,21 @@ cmsInt32Number CheckMPEPlugin(void)
     ResetFatalError(cpy);
 
     h = cmsOpenProfileFromMem(cpy, data, clen);
-    if (h == NULL) {
+    if (h == ((void*)0)) {
         Fail("Open profile from mem failed");
         goto Error;
     }
 
-    // Get rid of data
-    free(data); data = NULL;
+
+    free(data); data = ((void*)0);
 
     pipe = (cmsPipeline*) cmsReadTag(cpy, h, cmsSigDToB3Tag);
-    if (pipe == NULL) {
+    if (pipe == ((void*)0)) {
         Fail("Read tag/conext switching failed (2)");
         return 0;
     }
 
-    // Evaluate for negation
+
     In[0] = 0.3f; In[1] = 0.2f; In[2] = 0.9f;
     cmsPipelineEvalFloat(cpy, In, Out, pipe);
 
@@ -161,9 +161,9 @@ cmsInt32Number CheckMPEPlugin(void)
 
 Error:
 
-    if (h != NULL) cmsCloseProfile(ctx, h);
-    if (ctx != NULL) cmsDeleteContext(ctx);
-    if (cpy != NULL) cmsDeleteContext(cpy);
+    if (h != ((void*)0)) cmsCloseProfile(ctx, h);
+    if (ctx != ((void*)0)) cmsDeleteContext(ctx);
+    if (cpy != ((void*)0)) cmsDeleteContext(cpy);
     if (data) free(data);
 
     return 0;

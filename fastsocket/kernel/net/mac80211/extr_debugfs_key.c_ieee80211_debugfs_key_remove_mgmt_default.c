@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/ * default_mgmt_key; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int * default_mgmt_key; } ;
 struct ieee80211_sub_if_data {TYPE_1__ debugfs; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  debugfs_remove (int /*<<< orphan*/ *) ; 
+
+ int debugfs_remove (int *) ;
 
 void ieee80211_debugfs_key_remove_mgmt_default(struct ieee80211_sub_if_data *sdata)
 {
-	if (!sdata)
-		return;
+ if (!sdata)
+  return;
 
-	debugfs_remove(sdata->debugfs.default_mgmt_key);
-	sdata->debugfs.default_mgmt_key = NULL;
+ debugfs_remove(sdata->debugfs.default_mgmt_key);
+ sdata->debugfs.default_mgmt_key = ((void*)0);
 }

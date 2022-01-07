@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct hostent {int /*<<< orphan*/  h_name; } ;
-typedef  int /*<<< orphan*/  str ;
-typedef  int /*<<< orphan*/  bdaddr_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_BLUETOOTH ; 
- int /*<<< orphan*/  NG_HCI_BDADDR_ANY ; 
- struct hostent* bt_gethostbyaddr (char*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bt_ntoa (int /*<<< orphan*/  const*,char*) ; 
- scalar_t__ memcmp (int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  strlcpy (char*,int /*<<< orphan*/ ,int) ; 
+
+
+
+struct hostent {int h_name; } ;
+typedef int str ;
+typedef int bdaddr_t ;
+
+
+ int AF_BLUETOOTH ;
+ int NG_HCI_BDADDR_ANY ;
+ struct hostent* bt_gethostbyaddr (char*,int,int ) ;
+ int bt_ntoa (int const*,char*) ;
+ scalar_t__ memcmp (int const*,int ,int) ;
+ int strlcpy (char*,int ,int) ;
 
 __attribute__((used)) static char *
 bdaddrpr(bdaddr_t const *ba)
 {
-	extern int	 numeric_bdaddr;
-	static char	 str[24];
-	struct hostent	*he = NULL;
+ extern int numeric_bdaddr;
+ static char str[24];
+ struct hostent *he = ((void*)0);
 
-	if (memcmp(ba, NG_HCI_BDADDR_ANY, sizeof(*ba)) == 0) {
-		str[0] = '*';
-		str[1] = 0;
+ if (memcmp(ba, NG_HCI_BDADDR_ANY, sizeof(*ba)) == 0) {
+  str[0] = '*';
+  str[1] = 0;
 
-		return (str);
-	}
+  return (str);
+ }
 
-	if (!numeric_bdaddr &&
-	    (he = bt_gethostbyaddr((char *)ba, sizeof(*ba), AF_BLUETOOTH)) != NULL) {
-		strlcpy(str, he->h_name, sizeof(str));
+ if (!numeric_bdaddr &&
+     (he = bt_gethostbyaddr((char *)ba, sizeof(*ba), AF_BLUETOOTH)) != ((void*)0)) {
+  strlcpy(str, he->h_name, sizeof(str));
 
-		return (str);
-	}
+  return (str);
+ }
 
-	bt_ntoa(ba, str);
+ bt_ntoa(ba, str);
 
-	return (str);
+ return (str);
 }

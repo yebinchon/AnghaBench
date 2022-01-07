@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  QueryDesc ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ExecutorEnd_hook (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  standard_ExecutorEnd (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int QueryDesc ;
+
+
+ int ExecutorEnd_hook (int *) ;
+ int standard_ExecutorEnd (int *) ;
+ int stub1 (int *) ;
 
 void
 ExecutorEnd(QueryDesc *queryDesc)
 {
-	if (ExecutorEnd_hook)
-		(*ExecutorEnd_hook) (queryDesc);
-	else
-		standard_ExecutorEnd(queryDesc);
+ if (ExecutorEnd_hook)
+  (*ExecutorEnd_hook) (queryDesc);
+ else
+  standard_ExecutorEnd(queryDesc);
 }

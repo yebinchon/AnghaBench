@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct pid_namespace {int /*<<< orphan*/  idr; } ;
+
+
+
+
+struct pid_namespace {int idr; } ;
 struct pid {int dummy; } ;
 
-/* Variables and functions */
- struct pid* idr_find (int /*<<< orphan*/ *,int) ; 
+
+ struct pid* idr_find (int *,int) ;
 
 struct pid *find_pid_ns(int nr, struct pid_namespace *ns)
 {
-	return idr_find(&ns->idr, nr);
+ return idr_find(&ns->idr, nr);
 }

@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct db_stmt_mysql {int must_execute_again; TYPE_2__* param_bind; int /*<<< orphan*/  stmt; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct db_stmt_mysql {int must_execute_again; TYPE_2__* param_bind; int stmt; } ;
 struct db_stmt {int dummy; } ;
-struct TYPE_5__ {int /*<<< orphan*/  i; int /*<<< orphan*/ * s; } ;
+struct TYPE_5__ {int i; int * s; } ;
 struct db_row {char kind; TYPE_1__ u; } ;
-struct TYPE_6__ {int is_null; scalar_t__ length; int /*<<< orphan*/ * buffer; int /*<<< orphan*/  buffer_type; } ;
-typedef  TYPE_2__ MYSQL_BIND ;
+struct TYPE_6__ {int is_null; scalar_t__ length; int * buffer; int buffer_type; } ;
+typedef TYPE_2__ MYSQL_BIND ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MYSQL_TYPE_LONG ; 
- int /*<<< orphan*/  MYSQL_TYPE_STRING ; 
- TYPE_2__* calloc (size_t,int) ; 
- int /*<<< orphan*/  mysql_stmt_bind_param (int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  mysql_stmt_reset (int /*<<< orphan*/ ) ; 
+
+ int MYSQL_TYPE_LONG ;
+ int MYSQL_TYPE_STRING ;
+ TYPE_2__* calloc (size_t,int) ;
+ int mysql_stmt_bind_param (int ,TYPE_2__*) ;
+ int mysql_stmt_reset (int ) ;
 
 __attribute__((used)) static bool db_stmt_bind_mysql(const struct db_stmt *stmt,
         struct db_row *rows, size_t n_rows)
 {
     struct db_stmt_mysql *stmt_mysql = (struct db_stmt_mysql *)stmt;
 
-    stmt_mysql->must_execute_again = true;
+    stmt_mysql->must_execute_again = 1;
 
     if (!stmt_mysql->param_bind) {
         stmt_mysql->param_bind = calloc(n_rows, sizeof(*stmt_mysql->param_bind));
         if (!stmt_mysql->param_bind)
-            return false;
+            return 0;
     } else {
         mysql_stmt_reset(stmt_mysql->stmt);
     }
@@ -52,7 +52,7 @@ __attribute__((used)) static bool db_stmt_bind_mysql(const struct db_stmt *stmt,
             param->buffer_type = MYSQL_TYPE_LONG;
             param->buffer = &rows[row].u.i;
         }
-        param->is_null = false;
+        param->is_null = 0;
         param->length = 0;
     }
 

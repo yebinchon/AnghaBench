@@ -1,30 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  EXIT_SUCCESS ; 
- int /*<<< orphan*/  O_RDWR ; 
- int STDERR_FILENO ; 
- int STDIN_FILENO ; 
- int STDOUT_FILENO ; 
- int /*<<< orphan*/  _exit (int /*<<< orphan*/ ) ; 
- scalar_t__ chdir (char*) ; 
- scalar_t__ close (int) ; 
- scalar_t__ dup2 (int,int) ; 
- int fork () ; 
- int open (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  perror (char*) ; 
- int setsid () ; 
+ int EXIT_SUCCESS ;
+ int O_RDWR ;
+ int STDERR_FILENO ;
+ int STDIN_FILENO ;
+ int STDOUT_FILENO ;
+ int _exit (int ) ;
+ scalar_t__ chdir (char*) ;
+ scalar_t__ close (int) ;
+ scalar_t__ dup2 (int,int) ;
+ int fork () ;
+ int open (char*,int ,int ) ;
+ int perror (char*) ;
+ int setsid () ;
 
 int daemonize(int nochdir, int noclose)
 {

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct qxl_bo {int dummy; } ;
 
-/* Variables and functions */
- int __qxl_bo_pin (struct qxl_bo*) ; 
- int qxl_bo_reserve (struct qxl_bo*,int) ; 
- int /*<<< orphan*/  qxl_bo_unreserve (struct qxl_bo*) ; 
+
+ int __qxl_bo_pin (struct qxl_bo*) ;
+ int qxl_bo_reserve (struct qxl_bo*,int) ;
+ int qxl_bo_unreserve (struct qxl_bo*) ;
 
 int qxl_bo_pin(struct qxl_bo *bo)
 {
-	int r;
+ int r;
 
-	r = qxl_bo_reserve(bo, false);
-	if (r)
-		return r;
+ r = qxl_bo_reserve(bo, 0);
+ if (r)
+  return r;
 
-	r = __qxl_bo_pin(bo);
-	qxl_bo_unreserve(bo);
-	return r;
+ r = __qxl_bo_pin(bo);
+ qxl_bo_unreserve(bo);
+ return r;
 }

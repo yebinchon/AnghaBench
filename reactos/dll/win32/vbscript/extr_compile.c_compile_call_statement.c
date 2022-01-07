@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_6__ ;
-typedef  struct TYPE_14__   TYPE_5__ ;
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_15__ TYPE_6__ ;
+typedef struct TYPE_14__ TYPE_5__ ;
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
 struct TYPE_12__ {TYPE_1__* subexpr; } ;
-typedef  TYPE_3__ unary_expression_t ;
+typedef TYPE_3__ unary_expression_t ;
 struct TYPE_13__ {TYPE_1__* args; } ;
-typedef  TYPE_4__ member_expression_t ;
-typedef  int /*<<< orphan*/  compile_ctx_t ;
-struct TYPE_14__ {TYPE_4__* expr; int /*<<< orphan*/  is_strict; } ;
-typedef  TYPE_5__ call_statement_t ;
-struct TYPE_15__ {int /*<<< orphan*/  right; TYPE_2__* left; } ;
-typedef  TYPE_6__ binary_expression_t ;
+typedef TYPE_4__ member_expression_t ;
+typedef int compile_ctx_t ;
+struct TYPE_14__ {TYPE_4__* expr; int is_strict; } ;
+typedef TYPE_5__ call_statement_t ;
+struct TYPE_15__ {int right; TYPE_2__* left; } ;
+typedef TYPE_6__ binary_expression_t ;
 struct TYPE_11__ {scalar_t__ type; } ;
-struct TYPE_10__ {scalar_t__ type; int /*<<< orphan*/  next; } ;
-typedef  int /*<<< orphan*/  HRESULT ;
+struct TYPE_10__ {scalar_t__ type; int next; } ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- scalar_t__ EXPR_BRACKETS ; 
- scalar_t__ EXPR_EQUAL ; 
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  WARN (char*) ; 
- int /*<<< orphan*/  compile_assignment (int /*<<< orphan*/ *,TYPE_4__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  compile_member_expression (int /*<<< orphan*/ *,TYPE_4__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  emit_catch (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ EXPR_BRACKETS ;
+ scalar_t__ EXPR_EQUAL ;
+ int E_OUTOFMEMORY ;
+ scalar_t__ FAILED (int ) ;
+ int FALSE ;
+ int S_OK ;
+ int WARN (char*) ;
+ int compile_assignment (int *,TYPE_4__*,int ,int ) ;
+ int compile_member_expression (int *,TYPE_4__*,int ) ;
+ int emit_catch (int *,int ) ;
 
 __attribute__((used)) static HRESULT compile_call_statement(compile_ctx_t *ctx, call_statement_t *stat)
 {
     HRESULT hres;
 
-    /* It's challenging for parser to distinguish parameterized assignment with one argument from call
-     * with equality expression argument, so we do it in compiler. */
+
+
     if(!stat->is_strict && stat->expr->args && !stat->expr->args->next && stat->expr->args->type == EXPR_EQUAL) {
         binary_expression_t *eqexpr = (binary_expression_t*)stat->expr->args;
 

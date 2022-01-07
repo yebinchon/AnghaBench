@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  scalar_t__ uint64_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef scalar_t__ uint64_t ;
 struct TYPE_3__ {scalar_t__ largest_acknowledged; scalar_t__ ack_delay; scalar_t__ smallest_acknowledged; scalar_t__ num_gaps; scalar_t__* ack_block_lengths; scalar_t__* gaps; } ;
-typedef  TYPE_1__ quicly_ack_frame_t ;
+typedef TYPE_1__ quicly_ack_frame_t ;
 
-/* Variables and functions */
- scalar_t__ QUICLY_ACK_MAX_GAPS ; 
- int QUICLY_TRANSPORT_ERROR_FRAME_ENCODING ; 
- scalar_t__ UINT64_MAX ; 
- scalar_t__ quicly_decodev (int /*<<< orphan*/  const**,int /*<<< orphan*/  const*) ; 
+
+ scalar_t__ QUICLY_ACK_MAX_GAPS ;
+ int QUICLY_TRANSPORT_ERROR_FRAME_ENCODING ;
+ scalar_t__ UINT64_MAX ;
+ scalar_t__ quicly_decodev (int const**,int const*) ;
 
 int quicly_decode_ack_frame(const uint8_t **src, const uint8_t *end, quicly_ack_frame_t *frame, int is_ack_ecn)
 {
@@ -57,7 +57,7 @@ int quicly_decode_ack_frame(const uint8_t **src, const uint8_t *end, quicly_ack_
     }
 
     if (is_ack_ecn) {
-        /* just skip ECT(0), ECT(1), ECT-CE counters for the time being */
+
         for (i = 0; i != 3; ++i)
             if (quicly_decodev(src, end) == UINT64_MAX)
                 goto Error;

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int npy_uint32 ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int npy_uint32 ;
 struct TYPE_3__ {int* blocks; int length; } ;
-typedef  TYPE_1__ BigInt ;
+typedef TYPE_1__ BigInt ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEBUG_ASSERT (int) ; 
- int c_BigInt_MaxBlocks ; 
+
+ int DEBUG_ASSERT (int) ;
+ int c_BigInt_MaxBlocks ;
 
 __attribute__((used)) static inline void
 BigInt_Pow2(BigInt *result, npy_uint32 exponent)

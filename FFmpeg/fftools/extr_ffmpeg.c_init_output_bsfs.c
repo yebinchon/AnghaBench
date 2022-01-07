@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {int /*<<< orphan*/  time_base_out; int /*<<< orphan*/  par_out; TYPE_1__* filter; int /*<<< orphan*/  time_base_in; int /*<<< orphan*/  par_in; } ;
+
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_10__ {int time_base_out; int par_out; TYPE_1__* filter; int time_base_in; int par_in; } ;
 struct TYPE_9__ {int nb_bitstream_filters; TYPE_2__* st; TYPE_4__** bsf_ctx; } ;
-struct TYPE_8__ {int /*<<< orphan*/  time_base; int /*<<< orphan*/  codecpar; } ;
-struct TYPE_7__ {int /*<<< orphan*/  name; } ;
-typedef  TYPE_3__ OutputStream ;
-typedef  TYPE_4__ AVBSFContext ;
+struct TYPE_8__ {int time_base; int codecpar; } ;
+struct TYPE_7__ {int name; } ;
+typedef TYPE_3__ OutputStream ;
+typedef TYPE_4__ AVBSFContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int av_bsf_init (TYPE_4__*) ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int avcodec_parameters_copy (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int AV_LOG_ERROR ;
+ int av_bsf_init (TYPE_4__*) ;
+ int av_log (int *,int ,char*,int ) ;
+ int avcodec_parameters_copy (int ,int ) ;
 
 __attribute__((used)) static int init_output_bsfs(OutputStream *ost)
 {
@@ -47,7 +47,7 @@ __attribute__((used)) static int init_output_bsfs(OutputStream *ost)
 
         ret = av_bsf_init(ctx);
         if (ret < 0) {
-            av_log(NULL, AV_LOG_ERROR, "Error initializing bitstream filter: %s\n",
+            av_log(((void*)0), AV_LOG_ERROR, "Error initializing bitstream filter: %s\n",
                    ost->bsf_ctx[i]->filter->name);
             return ret;
         }

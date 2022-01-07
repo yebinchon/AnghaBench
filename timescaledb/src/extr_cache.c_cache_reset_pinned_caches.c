@@ -1,33 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  ALLOCSET_DEFAULT_SIZES ; 
- int /*<<< orphan*/ * AllocSetContextCreate (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CacheMemoryContext ; 
- int /*<<< orphan*/  MemoryContextDelete (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  NIL ; 
- int /*<<< orphan*/  pinned_caches ; 
- int /*<<< orphan*/ * pinned_caches_mctx ; 
+ int ALLOCSET_DEFAULT_SIZES ;
+ int * AllocSetContextCreate (int ,char*,int ) ;
+ int CacheMemoryContext ;
+ int MemoryContextDelete (int *) ;
+ int NIL ;
+ int pinned_caches ;
+ int * pinned_caches_mctx ;
 
 __attribute__((used)) static void
 cache_reset_pinned_caches(void)
 {
-	if (NULL != pinned_caches_mctx)
-		MemoryContextDelete(pinned_caches_mctx);
+ if (((void*)0) != pinned_caches_mctx)
+  MemoryContextDelete(pinned_caches_mctx);
 
-	pinned_caches_mctx =
-		AllocSetContextCreate(CacheMemoryContext, "Cache pins", ALLOCSET_DEFAULT_SIZES);
+ pinned_caches_mctx =
+  AllocSetContextCreate(CacheMemoryContext, "Cache pins", ALLOCSET_DEFAULT_SIZES);
 
-	pinned_caches = NIL;
+ pinned_caches = NIL;
 }

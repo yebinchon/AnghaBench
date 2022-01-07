@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  complaint (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  symfile_complaints ; 
+ int complaint (int *,char*,int) ;
+ int symfile_complaints ;
 
 __attribute__((used)) static void
 lbrac_mismatch_complaint (int arg1)
 {
   complaint (&symfile_complaints,
-	     "N_LBRAC/N_RBRAC symbol mismatch at symtab pos %d", arg1);
+      "N_LBRAC/N_RBRAC symbol mismatch at symtab pos %d", arg1);
 }

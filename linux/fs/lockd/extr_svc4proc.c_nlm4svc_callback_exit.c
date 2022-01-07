@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct rpc_task {int /*<<< orphan*/  tk_status; int /*<<< orphan*/  tk_pid; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dprintk (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct rpc_task {int tk_status; int tk_pid; } ;
+
+
+ int dprintk (char*,int ,int ) ;
 
 __attribute__((used)) static void nlm4svc_callback_exit(struct rpc_task *task, void *data)
 {
-	dprintk("lockd: %5u callback returned %d\n", task->tk_pid,
-			-task->tk_status);
+ dprintk("lockd: %5u callback returned %d\n", task->tk_pid,
+   -task->tk_status);
 }

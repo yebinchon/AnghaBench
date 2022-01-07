@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct pid {int dummy; } ;
-typedef  int /*<<< orphan*/  pid_t ;
+typedef int pid_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  find_vpid (int /*<<< orphan*/ ) ; 
- struct pid* get_pid (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rcu_read_lock () ; 
- int /*<<< orphan*/  rcu_read_unlock () ; 
+
+ int find_vpid (int ) ;
+ struct pid* get_pid (int ) ;
+ int rcu_read_lock () ;
+ int rcu_read_unlock () ;
 
 struct pid *find_get_pid(pid_t nr)
 {
-	struct pid *pid;
+ struct pid *pid;
 
-	rcu_read_lock();
-	pid = get_pid(find_vpid(nr));
-	rcu_read_unlock();
+ rcu_read_lock();
+ pid = get_pid(find_vpid(nr));
+ rcu_read_unlock();
 
-	return pid;
+ return pid;
 }

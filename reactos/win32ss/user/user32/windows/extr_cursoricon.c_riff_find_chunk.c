@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {unsigned char* data; int data_size; } ;
-typedef  TYPE_1__ riff_chunk_t ;
-typedef  scalar_t__ DWORD ;
+typedef TYPE_1__ riff_chunk_t ;
+typedef scalar_t__ DWORD ;
 
-/* Variables and functions */
- scalar_t__ ANI_LIST_ID ; 
- scalar_t__ ANI_RIFF_ID ; 
+
+ scalar_t__ ANI_LIST_ID ;
+ scalar_t__ ANI_RIFF_ID ;
 
 __attribute__((used)) static void riff_find_chunk( DWORD chunk_id, DWORD chunk_type, const riff_chunk_t *parent_chunk, riff_chunk_t *chunk )
 {

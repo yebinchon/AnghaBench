@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct si2165_state {int dummy; } ;
-struct i2c_client {int /*<<< orphan*/  dev; } ;
+struct i2c_client {int dev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dev_dbg (int /*<<< orphan*/ *,char*) ; 
- struct si2165_state* i2c_get_clientdata (struct i2c_client*) ; 
- int /*<<< orphan*/  kfree (struct si2165_state*) ; 
+
+ int dev_dbg (int *,char*) ;
+ struct si2165_state* i2c_get_clientdata (struct i2c_client*) ;
+ int kfree (struct si2165_state*) ;
 
 __attribute__((used)) static int si2165_remove(struct i2c_client *client)
 {
-	struct si2165_state *state = i2c_get_clientdata(client);
+ struct si2165_state *state = i2c_get_clientdata(client);
 
-	dev_dbg(&client->dev, "\n");
+ dev_dbg(&client->dev, "\n");
 
-	kfree(state);
-	return 0;
+ kfree(state);
+ return 0;
 }

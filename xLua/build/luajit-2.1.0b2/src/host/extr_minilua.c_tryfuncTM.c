@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ptrdiff_t ;
+
+
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int ptrdiff_t ;
 struct TYPE_9__ {scalar_t__ top; } ;
-typedef  TYPE_1__ lua_State ;
-typedef  int /*<<< orphan*/  TValue ;
-typedef  scalar_t__ StkId ;
+typedef TYPE_1__ lua_State ;
+typedef int TValue ;
+typedef scalar_t__ StkId ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TM_CALL ; 
- int /*<<< orphan*/  incr_top (TYPE_1__*) ; 
- int /*<<< orphan*/  luaG_typeerror (TYPE_1__*,scalar_t__,char*) ; 
- int /*<<< orphan*/ * luaT_gettmbyobj (TYPE_1__*,scalar_t__,int /*<<< orphan*/ ) ; 
- scalar_t__ restorestack (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  savestack (TYPE_1__*,scalar_t__) ; 
- int /*<<< orphan*/  setobj (TYPE_1__*,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  ttisfunction (int /*<<< orphan*/  const*) ; 
+
+ int TM_CALL ;
+ int incr_top (TYPE_1__*) ;
+ int luaG_typeerror (TYPE_1__*,scalar_t__,char*) ;
+ int * luaT_gettmbyobj (TYPE_1__*,scalar_t__,int ) ;
+ scalar_t__ restorestack (TYPE_1__*,int ) ;
+ int savestack (TYPE_1__*,scalar_t__) ;
+ int setobj (TYPE_1__*,scalar_t__,scalar_t__) ;
+ int ttisfunction (int const*) ;
 
 __attribute__((used)) static StkId tryfuncTM(lua_State*L,StkId func){
 const TValue*tm=luaT_gettmbyobj(L,func,TM_CALL);

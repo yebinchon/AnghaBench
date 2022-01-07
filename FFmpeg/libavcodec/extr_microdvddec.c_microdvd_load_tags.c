@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct microdvd_tag {int data1; char key; char* data_string; int data_string_len; int data2; void* persistent; int /*<<< orphan*/  member_0; } ;
 
-/* Variables and functions */
- void* MICRODVD_PERSISTENT_ON ; 
- char* MICRODVD_STYLES ; 
- char* check_for_italic_slash_marker (struct microdvd_tag*,char*) ; 
- int indexof (char*,char) ; 
- int /*<<< orphan*/  microdvd_set_tag (struct microdvd_tag*,struct microdvd_tag) ; 
- int strtol (char*,char**,int) ; 
+
+
+
+struct microdvd_tag {int data1; char key; char* data_string; int data_string_len; int data2; void* persistent; int member_0; } ;
+
+
+ void* MICRODVD_PERSISTENT_ON ;
+ char* MICRODVD_STYLES ;
+ char* check_for_italic_slash_marker (struct microdvd_tag*,char*) ;
+ int indexof (char*,char) ;
+ int microdvd_set_tag (struct microdvd_tag*,struct microdvd_tag) ;
+ int strtol (char*,char**,int) ;
 
 __attribute__((used)) static char *microdvd_load_tags(struct microdvd_tag *tags, char *s)
 {
@@ -35,7 +35,7 @@ __attribute__((used)) static char *microdvd_load_tags(struct microdvd_tag *tags,
 
         switch (tag_char) {
 
-        /* Style */
+
         case 'Y':
             tag.persistent = MICRODVD_PERSISTENT_ON;
         case 'y':
@@ -48,12 +48,12 @@ __attribute__((used)) static char *microdvd_load_tags(struct microdvd_tag *tags,
             }
             if (*s != '}')
                 break;
-            /* We must distinguish persistent and non-persistent styles
-             * to handle this kind of style tags: {y:ib}{Y:us} */
+
+
             tag.key = tag_char;
             break;
 
-        /* Color */
+
         case 'C':
             tag.persistent = MICRODVD_PERSISTENT_ON;
         case 'c':
@@ -65,7 +65,7 @@ __attribute__((used)) static char *microdvd_load_tags(struct microdvd_tag *tags,
             tag.key = 'c';
             break;
 
-        /* Font name */
+
         case 'F':
             tag.persistent = MICRODVD_PERSISTENT_ON;
         case 'f': {
@@ -79,7 +79,7 @@ __attribute__((used)) static char *microdvd_load_tags(struct microdvd_tag *tags,
             break;
         }
 
-        /* Font size */
+
         case 'S':
             tag.persistent = MICRODVD_PERSISTENT_ON;
         case 's':
@@ -89,9 +89,9 @@ __attribute__((used)) static char *microdvd_load_tags(struct microdvd_tag *tags,
             tag.key = 's';
             break;
 
-        /* Charset */
+
         case 'H': {
-            //TODO: not yet handled, just parsed.
+
             int len = indexof(s, '}');
             if (len < 0)
                 break;
@@ -102,7 +102,7 @@ __attribute__((used)) static char *microdvd_load_tags(struct microdvd_tag *tags,
             break;
         }
 
-        /* Position */
+
         case 'P':
             if (!*s)
                 break;
@@ -113,7 +113,7 @@ __attribute__((used)) static char *microdvd_load_tags(struct microdvd_tag *tags,
             tag.key = 'p';
             break;
 
-        /* Coordinates */
+
         case 'o':
             tag.persistent = MICRODVD_PERSISTENT_ON;
             tag.data1 = strtol(s, &s, 10);
@@ -126,7 +126,7 @@ __attribute__((used)) static char *microdvd_load_tags(struct microdvd_tag *tags,
             tag.key = 'o';
             break;
 
-        default:    /* Unknown tag, we consider it's text */
+        default:
             break;
         }
 

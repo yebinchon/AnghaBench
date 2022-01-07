@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  zs ;
-struct TYPE_8__ {unsigned int avail_out; unsigned int avail_in; void* next_in; void* next_out; int /*<<< orphan*/  zfree; int /*<<< orphan*/  zalloc; } ;
-typedef  TYPE_1__ z_stream ;
+
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int zs ;
+struct TYPE_8__ {unsigned int avail_out; unsigned int avail_in; void* next_in; void* next_out; int zfree; int zalloc; } ;
+typedef TYPE_1__ z_stream ;
 struct TYPE_9__ {scalar_t__ len; scalar_t__ raw; } ;
-typedef  TYPE_2__ h2o_sendvec_t ;
-typedef  int /*<<< orphan*/  decbuf ;
+typedef TYPE_2__ h2o_sendvec_t ;
+typedef int decbuf ;
 
-/* Variables and functions */
- int /*<<< orphan*/  WINDOW_BITS ; 
- int /*<<< orphan*/  Z_NO_FLUSH ; 
- int Z_STREAM_END ; 
- int /*<<< orphan*/  alloc_cb ; 
- int /*<<< orphan*/  free_cb ; 
- int inflate (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  inflateEnd (TYPE_1__*) ; 
- int /*<<< orphan*/  inflateInit2 (TYPE_1__*,int /*<<< orphan*/ ) ; 
- scalar_t__ memcmp (char*,char const*,size_t) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ok (int) ; 
+
+ int WINDOW_BITS ;
+ int Z_NO_FLUSH ;
+ int Z_STREAM_END ;
+ int alloc_cb ;
+ int free_cb ;
+ int inflate (TYPE_1__*,int ) ;
+ int inflateEnd (TYPE_1__*) ;
+ int inflateInit2 (TYPE_1__*,int ) ;
+ scalar_t__ memcmp (char*,char const*,size_t) ;
+ int memset (TYPE_1__*,int ,int) ;
+ int ok (int) ;
 
 __attribute__((used)) static void check_result(h2o_sendvec_t *vecs, size_t num_vecs, const char *expected, size_t expectedlen)
 {

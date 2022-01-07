@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {scalar_t__ type; } ;
-struct wined3d_light_info {int glIndex; unsigned int OriginalIndex; int /*<<< orphan*/  cutoff; int /*<<< orphan*/  exponent; int /*<<< orphan*/  direction; int /*<<< orphan*/  position; TYPE_1__ OriginalParms; int /*<<< orphan*/  entry; } ;
-struct TYPE_5__ {unsigned int OriginalIndex; int /*<<< orphan*/  cutoff; int /*<<< orphan*/  exponent; int /*<<< orphan*/  direction; int /*<<< orphan*/  position; TYPE_1__ OriginalParms; } ;
+struct wined3d_light_info {int glIndex; unsigned int OriginalIndex; int cutoff; int exponent; int direction; int position; TYPE_1__ OriginalParms; int entry; } ;
+struct TYPE_5__ {unsigned int OriginalIndex; int cutoff; int exponent; int direction; int position; TYPE_1__ OriginalParms; } ;
 struct wined3d_cs_set_light {TYPE_2__ light; } ;
-struct TYPE_6__ {int /*<<< orphan*/ * light_map; } ;
-struct wined3d_cs {int /*<<< orphan*/  device; TYPE_3__ state; } ;
+struct TYPE_6__ {int * light_map; } ;
+struct wined3d_cs {int device; TYPE_3__ state; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*) ; 
- unsigned int LIGHTMAP_HASHFUNC (unsigned int) ; 
- int /*<<< orphan*/  STATE_ACTIVELIGHT (int) ; 
- int /*<<< orphan*/  STATE_LIGHT_TYPE ; 
- int /*<<< orphan*/  TRACE (char*) ; 
- int /*<<< orphan*/  device_invalidate_state (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- struct wined3d_light_info* heap_alloc_zero (int) ; 
- int /*<<< orphan*/  list_add_head (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- struct wined3d_light_info* wined3d_state_get_light (TYPE_3__*,unsigned int) ; 
+
+ int ERR (char*) ;
+ unsigned int LIGHTMAP_HASHFUNC (unsigned int) ;
+ int STATE_ACTIVELIGHT (int) ;
+ int STATE_LIGHT_TYPE ;
+ int TRACE (char*) ;
+ int device_invalidate_state (int ,int ) ;
+ struct wined3d_light_info* heap_alloc_zero (int) ;
+ int list_add_head (int *,int *) ;
+ struct wined3d_light_info* wined3d_state_get_light (TYPE_3__*,unsigned int) ;
 
 __attribute__((used)) static void wined3d_cs_exec_set_light(struct wined3d_cs *cs, const void *data)
 {

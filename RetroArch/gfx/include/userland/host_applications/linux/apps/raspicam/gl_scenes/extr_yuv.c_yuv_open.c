@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  update_v_texture; int /*<<< orphan*/  update_u_texture; int /*<<< orphan*/  update_y_texture; int /*<<< orphan*/  update_texture; int /*<<< orphan*/  redraw; int /*<<< orphan*/  gl_init; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int update_v_texture; int update_u_texture; int update_y_texture; int update_texture; int redraw; int gl_init; } ;
 struct TYPE_5__ {TYPE_1__ ops; } ;
-typedef  TYPE_2__ RASPITEX_STATE ;
+typedef TYPE_2__ RASPITEX_STATE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  raspitexutil_update_texture ; 
- int /*<<< orphan*/  raspitexutil_update_u_texture ; 
- int /*<<< orphan*/  raspitexutil_update_v_texture ; 
- int /*<<< orphan*/  raspitexutil_update_y_texture ; 
- int /*<<< orphan*/  yuv_init ; 
- int /*<<< orphan*/  yuv_redraw ; 
+
+ int raspitexutil_update_texture ;
+ int raspitexutil_update_u_texture ;
+ int raspitexutil_update_v_texture ;
+ int raspitexutil_update_y_texture ;
+ int yuv_init ;
+ int yuv_redraw ;
 
 int yuv_open(RASPITEX_STATE *state)
 {

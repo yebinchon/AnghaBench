@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t ULONG ;
-struct TYPE_6__ {size_t wRPCID; int /*<<< orphan*/  Name; } ;
-typedef  TYPE_1__ SecPkgInfoW ;
-typedef  scalar_t__ SECURITY_STATUS ;
-typedef  int /*<<< orphan*/  RPC_STATUS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*,scalar_t__) ; 
- scalar_t__ EnumerateSecurityPackagesW (size_t*,TYPE_1__**) ; 
- int /*<<< orphan*/  FreeContextBuffer (TYPE_1__*) ; 
- int /*<<< orphan*/  RPC_S_OK ; 
- int /*<<< orphan*/  RPC_S_SEC_PKG_ERROR ; 
- int /*<<< orphan*/  RPC_S_UNKNOWN_AUTHN_SERVICE ; 
- scalar_t__ SEC_E_OK ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/  WARN (char*,size_t) ; 
- int /*<<< orphan*/  debugstr_w (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef size_t ULONG ;
+struct TYPE_6__ {size_t wRPCID; int Name; } ;
+typedef TYPE_1__ SecPkgInfoW ;
+typedef scalar_t__ SECURITY_STATUS ;
+typedef int RPC_STATUS ;
+
+
+ int ERR (char*,scalar_t__) ;
+ scalar_t__ EnumerateSecurityPackagesW (size_t*,TYPE_1__**) ;
+ int FreeContextBuffer (TYPE_1__*) ;
+ int RPC_S_OK ;
+ int RPC_S_SEC_PKG_ERROR ;
+ int RPC_S_UNKNOWN_AUTHN_SERVICE ;
+ scalar_t__ SEC_E_OK ;
+ int TRACE (char*,int ,size_t) ;
+ int WARN (char*,size_t) ;
+ int debugstr_w (int ) ;
 
 __attribute__((used)) static RPC_STATUS find_security_package(ULONG auth_type, SecPkgInfoW **packages_buf, SecPkgInfoW **ret)
 {

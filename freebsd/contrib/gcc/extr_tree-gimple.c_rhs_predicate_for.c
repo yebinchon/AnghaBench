@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
-typedef  int /*<<< orphan*/  gimple_predicate ;
 
-/* Variables and functions */
- int /*<<< orphan*/  is_gimple_formal_tmp_rhs ; 
- scalar_t__ is_gimple_formal_tmp_var (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  is_gimple_mem_rhs ; 
- scalar_t__ is_gimple_reg (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  is_gimple_reg_rhs ; 
+
+
+
+typedef int tree ;
+typedef int gimple_predicate ;
+
+
+ int is_gimple_formal_tmp_rhs ;
+ scalar_t__ is_gimple_formal_tmp_var (int ) ;
+ int is_gimple_mem_rhs ;
+ scalar_t__ is_gimple_reg (int ) ;
+ int is_gimple_reg_rhs ;
 
 gimple_predicate
 rhs_predicate_for (tree lhs)

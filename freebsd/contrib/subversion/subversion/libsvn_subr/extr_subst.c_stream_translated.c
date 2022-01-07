@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_stream_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-struct translated_stream_baton {void* buf; void* iterpool; scalar_t__ readbuf_off; int /*<<< orphan*/  readbuf; int /*<<< orphan*/  written; void* out_baton; void* in_baton; int /*<<< orphan*/ * stream; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
-typedef  int /*<<< orphan*/  apr_hash_index_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int SVN__TRANSLATION_BUF_SIZE ; 
- scalar_t__ apr_hash_count (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * apr_hash_first (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * apr_hash_make (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * apr_hash_next (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  apr_hash_this (int /*<<< orphan*/ *,void const**,int /*<<< orphan*/ *,void**) ; 
- void* apr_palloc (int /*<<< orphan*/ *,int) ; 
- char* apr_pstrdup (int /*<<< orphan*/ *,void const*) ; 
- void* create_translation_baton (char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_hash_sets (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- void* svn_pool_create (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_pool_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_stream_create (struct translated_stream_baton*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_stream_set_close (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_stream_set_mark (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_stream_set_read2 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_stream_set_seek (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_stream_set_write (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ svn_stream_supports_mark (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_string_dup (void*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_stringbuf_create_empty (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  translated_stream_close ; 
- int /*<<< orphan*/  translated_stream_mark ; 
- int /*<<< orphan*/  translated_stream_read ; 
- int /*<<< orphan*/  translated_stream_seek ; 
- int /*<<< orphan*/  translated_stream_write ; 
+
+
+
+typedef int svn_stream_t ;
+typedef int svn_boolean_t ;
+struct translated_stream_baton {void* buf; void* iterpool; scalar_t__ readbuf_off; int readbuf; int written; void* out_baton; void* in_baton; int * stream; } ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
+typedef int apr_hash_index_t ;
+
+
+ int FALSE ;
+ int SVN__TRANSLATION_BUF_SIZE ;
+ scalar_t__ apr_hash_count (int *) ;
+ int * apr_hash_first (int *,int *) ;
+ int * apr_hash_make (int *) ;
+ int * apr_hash_next (int *) ;
+ int apr_hash_this (int *,void const**,int *,void**) ;
+ void* apr_palloc (int *,int) ;
+ char* apr_pstrdup (int *,void const*) ;
+ void* create_translation_baton (char const*,int *,int ,int *,int ,int *) ;
+ int svn_hash_sets (int *,char*,int ) ;
+ void* svn_pool_create (int *) ;
+ int svn_pool_destroy (int *) ;
+ int * svn_stream_create (struct translated_stream_baton*,int *) ;
+ int svn_stream_set_close (int *,int ) ;
+ int svn_stream_set_mark (int *,int ) ;
+ int svn_stream_set_read2 (int *,int *,int ) ;
+ int svn_stream_set_seek (int *,int ) ;
+ int svn_stream_set_write (int *,int ) ;
+ scalar_t__ svn_stream_supports_mark (int *) ;
+ int svn_string_dup (void*,int *) ;
+ int svn_stringbuf_create_empty (int *) ;
+ int translated_stream_close ;
+ int translated_stream_mark ;
+ int translated_stream_read ;
+ int translated_stream_seek ;
+ int translated_stream_write ;
 
 __attribute__((used)) static svn_stream_t *
 stream_translated(svn_stream_t *stream,
@@ -59,17 +59,17 @@ stream_translated(svn_stream_t *stream,
     = apr_palloc(result_pool, sizeof(*baton));
   svn_stream_t *s = svn_stream_create(baton, result_pool);
 
-  /* Make sure EOL_STR and KEYWORDS are allocated in RESULT_POOL
-     so they have the same lifetime as the stream. */
+
+
   if (eol_str)
     eol_str = apr_pstrdup(result_pool, eol_str);
   if (keywords)
     {
       if (apr_hash_count(keywords) == 0)
-        keywords = NULL;
+        keywords = ((void*)0);
       else
         {
-          /* deep copy the hash to make sure it's allocated in RESULT_POOL */
+
           apr_hash_t *copy = apr_hash_make(result_pool);
           apr_hash_index_t *hi;
           apr_pool_t *subpool;
@@ -81,7 +81,7 @@ stream_translated(svn_stream_t *stream,
               const void *key;
               void *val;
 
-              apr_hash_this(hi, &key, NULL, &val);
+              apr_hash_this(hi, &key, ((void*)0), &val);
               svn_hash_sets(copy, apr_pstrdup(result_pool, key),
                             svn_string_dup(val, result_pool));
             }
@@ -91,7 +91,7 @@ stream_translated(svn_stream_t *stream,
         }
     }
 
-  /* Setup the baton fields */
+
   baton->stream = stream;
   baton->in_baton
     = create_translation_baton(eol_str, translated_eol, repair, keywords,
@@ -105,8 +105,8 @@ stream_translated(svn_stream_t *stream,
   baton->iterpool = svn_pool_create(result_pool);
   baton->buf = apr_palloc(result_pool, SVN__TRANSLATION_BUF_SIZE);
 
-  /* Setup the stream methods */
-  svn_stream_set_read2(s, NULL /* only full read support */,
+
+  svn_stream_set_read2(s, ((void*)0) ,
                        translated_stream_read);
   svn_stream_set_write(s, translated_stream_write);
   svn_stream_set_close(s, translated_stream_close);

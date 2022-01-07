@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct kernfs_root {int /*<<< orphan*/  kn; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  kernfs_remove (int /*<<< orphan*/ ) ; 
+
+
+
+struct kernfs_root {int kn; } ;
+
+
+ int kernfs_remove (int ) ;
 
 void kernfs_destroy_root(struct kernfs_root *root)
 {
-	kernfs_remove(root->kn);	/* will also free @root */
+ kernfs_remove(root->kn);
 }

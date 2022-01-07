@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  xmlstr_t ;
-typedef  int /*<<< orphan*/  xmlbuf_t ;
-typedef  int /*<<< orphan*/  UNICODE_STRING ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPRINT1 (char*,int /*<<< orphan*/ *,...) ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  asmv1W ; 
- int /*<<< orphan*/  bindingRedirectW ; 
- int /*<<< orphan*/  newVersionW ; 
- scalar_t__ next_xml_attr (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__*,scalar_t__*) ; 
- int /*<<< orphan*/  oldVersionW ; 
- scalar_t__ parse_expect_end_elem (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xmlstr2unicode (int /*<<< orphan*/ *) ; 
- scalar_t__ xmlstr_cmp (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int xmlstr_t ;
+typedef int xmlbuf_t ;
+typedef int UNICODE_STRING ;
+typedef scalar_t__ BOOL ;
+
+
+ int DPRINT1 (char*,int *,...) ;
+ scalar_t__ FALSE ;
+ int asmv1W ;
+ int bindingRedirectW ;
+ int newVersionW ;
+ scalar_t__ next_xml_attr (int *,int *,int *,scalar_t__*,scalar_t__*) ;
+ int oldVersionW ;
+ scalar_t__ parse_expect_end_elem (int *,int ,int ) ;
+ int xmlstr2unicode (int *) ;
+ scalar_t__ xmlstr_cmp (int *,int ) ;
 
 __attribute__((used)) static BOOL parse_binding_redirect_elem(xmlbuf_t* xmlbuf)
 {
-    xmlstr_t    attr_name, attr_value;
-    UNICODE_STRING  attr_valueU, attr_nameU;
-    BOOL        end = FALSE, error;
+    xmlstr_t attr_name, attr_value;
+    UNICODE_STRING attr_valueU, attr_nameU;
+    BOOL end = FALSE, error;
 
     while (next_xml_attr(xmlbuf, &attr_name, &attr_value, &error, &end))
     {

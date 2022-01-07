@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  SSL ;
-typedef  int /*<<< orphan*/  BIO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_flush (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BIO_printf (int /*<<< orphan*/ *,char*,...) ; 
- int DTLS1_BAD_VER ; 
- int DTLS1_VERSION ; 
- int SSL3_VERSION ; 
- int TLS1_1_VERSION ; 
- int TLS1_2_VERSION ; 
- int TLS1_3_VERSION ; 
- int TLS1_VERSION ; 
- int /*<<< orphan*/  alert_types ; 
- int /*<<< orphan*/  handshakes ; 
- char* lookup (int,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ssl_versions ; 
+
+
+
+typedef int SSL ;
+typedef int BIO ;
+
+
+ int BIO_flush (int *) ;
+ int BIO_printf (int *,char*,...) ;
+ int DTLS1_BAD_VER ;
+ int DTLS1_VERSION ;
+ int SSL3_VERSION ;
+ int TLS1_1_VERSION ;
+ int TLS1_2_VERSION ;
+ int TLS1_3_VERSION ;
+ int TLS1_VERSION ;
+ int alert_types ;
+ int handshakes ;
+ char* lookup (int,int ,char*) ;
+ int ssl_versions ;
 
 void msg_cb(int write_p, int version, int content_type, const void *buf,
             size_t len, SSL *ssl, void *arg)
@@ -71,7 +71,7 @@ void msg_cb(int write_p, int version, int content_type, const void *buf,
         case 23:
             str_content_type = ", ApplicationData";
             break;
-#ifndef OPENSSL_NO_HEARTBEATS
+
         case 24:
             str_details1 = ", Heartbeat";
 
@@ -86,7 +86,7 @@ void msg_cb(int write_p, int version, int content_type, const void *buf,
                 }
             }
             break;
-#endif
+
         }
     }
 

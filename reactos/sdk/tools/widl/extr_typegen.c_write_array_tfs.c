@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  type_t ;
-typedef  int /*<<< orphan*/  expr_t ;
-typedef  int /*<<< orphan*/  attr_list_t ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ATTR_POINTERTYPE ; 
- int /*<<< orphan*/  FALSE ; 
- unsigned char FC_BOGUS_ARRAY ; 
- int /*<<< orphan*/  FC_END ; 
- unsigned char FC_LGFARRAY ; 
- unsigned char FC_LGVARRAY ; 
- int /*<<< orphan*/  FC_PAD ; 
- int /*<<< orphan*/  FC_PP ; 
- int FC_RP ; 
- unsigned char FC_SMVARRAY ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/ * current_structure ; 
- unsigned char get_array_fc (int /*<<< orphan*/ *) ; 
- int get_attrv (int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- scalar_t__ is_conformant_array (int /*<<< orphan*/ *) ; 
- scalar_t__ is_string_type (int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  print_file (int /*<<< orphan*/ *,int,char*,unsigned short,...) ; 
- int /*<<< orphan*/  print_start_tfs_comment (int /*<<< orphan*/ *,int /*<<< orphan*/ *,unsigned int) ; 
- unsigned int string_of_type (unsigned char) ; 
- int /*<<< orphan*/ * type_array_get_conformance (int /*<<< orphan*/ *) ; 
- unsigned int type_array_get_dim (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * type_array_get_element (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * type_array_get_variance (int /*<<< orphan*/ *) ; 
- scalar_t__ type_array_is_decl_as_ptr (int /*<<< orphan*/ *) ; 
- unsigned int type_buffer_alignment (int /*<<< orphan*/ *) ; 
- scalar_t__ type_has_pointers (int /*<<< orphan*/ *) ; 
- unsigned int type_memsize (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  update_tfsoff (int /*<<< orphan*/ *,unsigned int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  write_array_element_type (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,unsigned int*) ; 
- scalar_t__ write_conf_or_var_desc (int /*<<< orphan*/ *,int /*<<< orphan*/ *,unsigned int,int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  write_embedded_types (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,unsigned int*) ; 
- int /*<<< orphan*/  write_end (int /*<<< orphan*/ *,unsigned int*) ; 
- int /*<<< orphan*/  write_pointer_description (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,unsigned int*) ; 
+
+
+
+typedef int type_t ;
+typedef int expr_t ;
+typedef int attr_list_t ;
+typedef int FILE ;
+
+
+ int ATTR_POINTERTYPE ;
+ int FALSE ;
+ unsigned char FC_BOGUS_ARRAY ;
+ int FC_END ;
+ unsigned char FC_LGFARRAY ;
+ unsigned char FC_LGVARRAY ;
+ int FC_PAD ;
+ int FC_PP ;
+ int FC_RP ;
+ unsigned char FC_SMVARRAY ;
+ int TRUE ;
+ int * current_structure ;
+ unsigned char get_array_fc (int *) ;
+ int get_attrv (int const*,int ) ;
+ scalar_t__ is_conformant_array (int *) ;
+ scalar_t__ is_string_type (int const*,int *) ;
+ int print_file (int *,int,char*,unsigned short,...) ;
+ int print_start_tfs_comment (int *,int *,unsigned int) ;
+ unsigned int string_of_type (unsigned char) ;
+ int * type_array_get_conformance (int *) ;
+ unsigned int type_array_get_dim (int *) ;
+ int * type_array_get_element (int *) ;
+ int * type_array_get_variance (int *) ;
+ scalar_t__ type_array_is_decl_as_ptr (int *) ;
+ unsigned int type_buffer_alignment (int *) ;
+ scalar_t__ type_has_pointers (int *) ;
+ unsigned int type_memsize (int *) ;
+ int update_tfsoff (int *,unsigned int,int *) ;
+ int write_array_element_type (int *,int const*,int *,int ,unsigned int*) ;
+ scalar_t__ write_conf_or_var_desc (int *,int *,unsigned int,int *,int const*) ;
+ int write_embedded_types (int *,int const*,int *,char const*,int ,unsigned int*) ;
+ int write_end (int *,unsigned int*) ;
+ int write_pointer_description (int *,int const*,int *,unsigned int*) ;
 
 __attribute__((used)) static unsigned int write_array_tfs(FILE *file, const attr_list_t *attrs, type_t *type,
                                     const char *name, unsigned int *typestring_offset)
@@ -132,12 +132,12 @@ __attribute__((used)) static unsigned int write_array_tfs(FILE *file, const attr
             print_file(file, 2, "0x%x,\t/* FC_PP */\n", FC_PP);
             print_file(file, 2, "0x%x,\t/* FC_PAD */\n", FC_PAD);
             *typestring_offset += 2;
-            write_pointer_description(file, is_string_type(attrs, type) ? attrs : NULL, type, typestring_offset);
+            write_pointer_description(file, is_string_type(attrs, type) ? attrs : ((void*)0), type, typestring_offset);
             print_file(file, 2, "0x%x,\t/* FC_END */\n", FC_END);
             *typestring_offset += 1;
         }
 
-        write_array_element_type(file, is_string_type(attrs, type) ? attrs : NULL, type, FALSE, typestring_offset);
+        write_array_element_type(file, is_string_type(attrs, type) ? attrs : ((void*)0), type, FALSE, typestring_offset);
         write_end(file, typestring_offset);
     }
     else
@@ -152,7 +152,7 @@ __attribute__((used)) static unsigned int write_array_tfs(FILE *file, const attr
             += write_conf_or_var_desc(file, current_structure, baseoff,
                                       type, length_is);
 
-        write_array_element_type(file, is_string_type(attrs, type) ? attrs : NULL, type, TRUE, typestring_offset);
+        write_array_element_type(file, is_string_type(attrs, type) ? attrs : ((void*)0), type, TRUE, typestring_offset);
         write_end(file, typestring_offset);
     }
 

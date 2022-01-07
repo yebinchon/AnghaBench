@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/ * d3dcontext; } ;
-typedef  TYPE_1__ d3d11_device_t ;
-struct TYPE_6__ {int /*<<< orphan*/ * d3dcontext; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D3D11_ReleaseDevice (TYPE_1__*) ; 
- int /*<<< orphan*/  assert (int) ; 
- TYPE_2__ device ; 
- int /*<<< orphan*/  inst_lock ; 
- scalar_t__ instances ; 
- int /*<<< orphan*/  vlc_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_mutex_unlock (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int * d3dcontext; } ;
+typedef TYPE_1__ d3d11_device_t ;
+struct TYPE_6__ {int * d3dcontext; } ;
+
+
+ int D3D11_ReleaseDevice (TYPE_1__*) ;
+ int assert (int) ;
+ TYPE_2__ device ;
+ int inst_lock ;
+ scalar_t__ instances ;
+ int vlc_mutex_lock (int *) ;
+ int vlc_mutex_unlock (int *) ;
 
 void D3D11_FilterReleaseInstance(d3d11_device_t *d3d_dev)
 {
@@ -32,7 +32,7 @@ void D3D11_FilterReleaseInstance(d3d11_device_t *d3d_dev)
     {
         assert(instances != 0);
         if (--instances == 0)
-            device.d3dcontext = NULL;
+            device.d3dcontext = ((void*)0);
     }
     D3D11_ReleaseDevice(d3d_dev);
     vlc_mutex_unlock(&inst_lock);

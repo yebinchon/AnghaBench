@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct zone {int dummy; } ;
 
-/* Variables and functions */
- scalar_t__ NUMA_BUILD ; 
- int /*<<< orphan*/  printk (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  zone_to_nid (struct zone*) ; 
+
+ scalar_t__ NUMA_BUILD ;
+ int printk (char*,int ) ;
+ int zone_to_nid (struct zone*) ;
 
 __attribute__((used)) static inline void show_node(struct zone *zone)
 {
-	if (NUMA_BUILD)
-		printk("Node %d ", zone_to_nid(zone));
+ if (NUMA_BUILD)
+  printk("Node %d ", zone_to_nid(zone));
 }

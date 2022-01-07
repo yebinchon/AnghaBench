@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_8__ {int num_rects; TYPE_1__** rects; } ;
-struct TYPE_7__ {char* ass; int /*<<< orphan*/  type; } ;
-typedef  TYPE_1__ AVSubtitleRect ;
-typedef  TYPE_2__ AVSubtitle ;
+struct TYPE_7__ {char* ass; int type; } ;
+typedef TYPE_1__ AVSubtitleRect ;
+typedef TYPE_2__ AVSubtitle ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  SUBTITLE_ASS ; 
- TYPE_1__* av_mallocz (int) ; 
- TYPE_1__** av_realloc_array (TYPE_1__**,int,int) ; 
- char* ff_ass_get_dialog (int,int,char const*,char const*,char const*) ; 
+
+ int AVERROR (int ) ;
+ int ENOMEM ;
+ int SUBTITLE_ASS ;
+ TYPE_1__* av_mallocz (int) ;
+ TYPE_1__** av_realloc_array (TYPE_1__**,int,int) ;
+ char* ff_ass_get_dialog (int,int,char const*,char const*,char const*) ;
 
 int ff_ass_add_rect(AVSubtitle *sub, const char *dialog,
                     int readorder, int layer, const char *style,
@@ -36,7 +36,7 @@ int ff_ass_add_rect(AVSubtitle *sub, const char *dialog,
     if (!rects)
         return AVERROR(ENOMEM);
     sub->rects = rects;
-    rects[sub->num_rects]       = av_mallocz(sizeof(*rects[0]));
+    rects[sub->num_rects] = av_mallocz(sizeof(*rects[0]));
     if (!rects[sub->num_rects])
         return AVERROR(ENOMEM);
     rects[sub->num_rects]->type = SUBTITLE_ASS;

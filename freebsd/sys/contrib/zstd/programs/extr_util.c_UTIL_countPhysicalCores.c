@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int BUF_SIZE ; 
- int /*<<< orphan*/  _SC_NPROCESSORS_ONLN ; 
- int atoi (char const* const) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ * const) ; 
- int /*<<< orphan*/  feof (int /*<<< orphan*/ * const) ; 
- scalar_t__ ferror (int /*<<< orphan*/ * const) ; 
- int /*<<< orphan*/ * fgets (char*,int,int /*<<< orphan*/ * const) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- char* strchr (char*,char) ; 
- scalar_t__ strncmp (char*,char*,int) ; 
- scalar_t__ sysconf (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int FILE ;
+
+
+ int BUF_SIZE ;
+ int _SC_NPROCESSORS_ONLN ;
+ int atoi (char const* const) ;
+ int fclose (int * const) ;
+ int feof (int * const) ;
+ scalar_t__ ferror (int * const) ;
+ int * fgets (char*,int,int * const) ;
+ int * fopen (char*,char*) ;
+ char* strchr (char*,char) ;
+ scalar_t__ strncmp (char*,char*,int) ;
+ scalar_t__ sysconf (int ) ;
 
 int UTIL_countPhysicalCores(void)
 {
@@ -33,32 +33,32 @@ int UTIL_countPhysicalCores(void)
 
     numPhysicalCores = (int)sysconf(_SC_NPROCESSORS_ONLN);
     if (numPhysicalCores == -1) {
-        /* value not queryable, fall back on 1 */
+
         return numPhysicalCores = 1;
     }
 
-    /* try to determine if there's hyperthreading */
-    {   FILE* const cpuinfo = fopen("/proc/cpuinfo", "r");
-#define BUF_SIZE 80
-        char buff[BUF_SIZE];
+
+    { FILE* const cpuinfo = fopen("/proc/cpuinfo", "r");
+
+        char buff[80];
 
         int siblings = 0;
         int cpu_cores = 0;
         int ratio = 1;
 
-        if (cpuinfo == NULL) {
-            /* fall back on the sysconf value */
+        if (cpuinfo == ((void*)0)) {
+
             return numPhysicalCores;
         }
 
-        /* assume the cpu cores/siblings values will be constant across all
-         * present processors */
+
+
         while (!feof(cpuinfo)) {
-            if (fgets(buff, BUF_SIZE, cpuinfo) != NULL) {
+            if (fgets(buff, 80, cpuinfo) != ((void*)0)) {
                 if (strncmp(buff, "siblings", 8) == 0) {
                     const char* const sep = strchr(buff, ':');
-                    if (sep == NULL || *sep == '\0') {
-                        /* formatting was broken? */
+                    if (sep == ((void*)0) || *sep == '\0') {
+
                         goto failed;
                     }
 
@@ -66,15 +66,15 @@ int UTIL_countPhysicalCores(void)
                 }
                 if (strncmp(buff, "cpu cores", 9) == 0) {
                     const char* const sep = strchr(buff, ':');
-                    if (sep == NULL || *sep == '\0') {
-                        /* formatting was broken? */
+                    if (sep == ((void*)0) || *sep == '\0') {
+
                         goto failed;
                     }
 
                     cpu_cores = atoi(sep + 1);
                 }
             } else if (ferror(cpuinfo)) {
-                /* fall back on the sysconf value */
+
                 goto failed;
             }
         }

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct apply_state {int /*<<< orphan*/  prefix; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (char*) ; 
- char* prefix_filename (int /*<<< orphan*/ ,char*) ; 
+
+
+
+struct apply_state {int prefix; } ;
+
+
+ int free (char*) ;
+ char* prefix_filename (int ,char*) ;
 
 __attribute__((used)) static void prefix_one(struct apply_state *state, char **name)
 {
-	char *old_name = *name;
-	if (!old_name)
-		return;
-	*name = prefix_filename(state->prefix, *name);
-	free(old_name);
+ char *old_name = *name;
+ if (!old_name)
+  return;
+ *name = prefix_filename(state->prefix, *name);
+ free(old_name);
 }

@@ -1,92 +1,92 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_24__   TYPE_8__ ;
-typedef  struct TYPE_23__   TYPE_7__ ;
-typedef  struct TYPE_22__   TYPE_6__ ;
-typedef  struct TYPE_21__   TYPE_5__ ;
-typedef  struct TYPE_20__   TYPE_4__ ;
-typedef  struct TYPE_19__   TYPE_3__ ;
-typedef  struct TYPE_18__   TYPE_2__ ;
-typedef  struct TYPE_17__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_17__ {int /*<<< orphan*/  rule_buf_l; int /*<<< orphan*/  encoding_from; int /*<<< orphan*/  encoding_to; } ;
-typedef  TYPE_1__ user_options_t ;
+
+
+typedef struct TYPE_24__ TYPE_8__ ;
+typedef struct TYPE_23__ TYPE_7__ ;
+typedef struct TYPE_22__ TYPE_6__ ;
+typedef struct TYPE_21__ TYPE_5__ ;
+typedef struct TYPE_20__ TYPE_4__ ;
+typedef struct TYPE_19__ TYPE_3__ ;
+typedef struct TYPE_18__ TYPE_2__ ;
+typedef struct TYPE_17__ TYPE_1__ ;
+
+
+struct TYPE_17__ {int rule_buf_l; int encoding_from; int encoding_to; } ;
+typedef TYPE_1__ user_options_t ;
 struct TYPE_18__ {scalar_t__ attack_kern; scalar_t__ rule_len_l; } ;
-typedef  TYPE_2__ user_options_extra_t ;
-typedef  int /*<<< orphan*/  u8 ;
-typedef  int u64 ;
-typedef  scalar_t__ u32 ;
+typedef TYPE_2__ user_options_extra_t ;
+typedef int u8 ;
+typedef int u64 ;
+typedef scalar_t__ u32 ;
 struct TYPE_19__ {int kernel_rules_cnt; } ;
-typedef  TYPE_3__ straight_ctx_t ;
-struct TYPE_20__ {int run_thread_level1; int* words_progress_rejected; int /*<<< orphan*/  mux_counter; int /*<<< orphan*/  mux_dispatcher; scalar_t__ stdin_read_timeout_cnt; } ;
-typedef  TYPE_4__ status_ctx_t ;
-typedef  int /*<<< orphan*/  rule_buf_out ;
-typedef  scalar_t__ iconv_t ;
+typedef TYPE_3__ straight_ctx_t ;
+struct TYPE_20__ {int run_thread_level1; int* words_progress_rejected; int mux_counter; int mux_dispatcher; scalar_t__ stdin_read_timeout_cnt; } ;
+typedef TYPE_4__ status_ctx_t ;
+typedef int rule_buf_out ;
+typedef scalar_t__ iconv_t ;
 struct TYPE_21__ {char* pws_comp; int size_pws_comp; char* pws_idx; int size_pws_idx; scalar_t__ pws_cnt; scalar_t__ kernel_power; int speed_only_finish; scalar_t__ kernel_loops; scalar_t__ kernel_accel; scalar_t__ kernel_loops_prev; scalar_t__ kernel_accel_prev; } ;
-typedef  TYPE_5__ hc_device_param_t ;
+typedef TYPE_5__ hc_device_param_t ;
 struct TYPE_22__ {scalar_t__ salts_cnt; } ;
-typedef  TYPE_6__ hashes_t ;
+typedef TYPE_6__ hashes_t ;
 struct TYPE_23__ {size_t pw_min; size_t pw_max; } ;
-typedef  TYPE_7__ hashconfig_t ;
+typedef TYPE_7__ hashconfig_t ;
 struct TYPE_24__ {TYPE_4__* status_ctx; TYPE_3__* straight_ctx; TYPE_6__* hashes; TYPE_7__* hashconfig; TYPE_2__* user_options_extra; TYPE_1__* user_options; } ;
-typedef  TYPE_8__ hashcat_ctx_t ;
+typedef TYPE_8__ hashcat_ctx_t ;
 
-/* Variables and functions */
- scalar_t__ const ATTACK_KERN_STRAIGHT ; 
- int HCBUFSIZ_LARGE ; 
- size_t HCBUFSIZ_TINY ; 
- size_t PW_MAX ; 
- int RP_PASSWORD_SIZE ; 
- int _old_apply_rule (int /*<<< orphan*/ ,int,char*,int,char*) ; 
- size_t convert_from_hex (TYPE_8__*,char*,scalar_t__) ; 
- scalar_t__ feof (int /*<<< orphan*/ ) ; 
- char* fgets (char*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hc_thread_mutex_lock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hc_thread_mutex_unlock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hcfree (char*) ; 
- scalar_t__ hcmalloc (size_t) ; 
- size_t iconv (scalar_t__,char**,size_t*,char**,size_t*) ; 
- int /*<<< orphan*/  iconv_close (scalar_t__) ; 
- scalar_t__ iconv_open (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- size_t in_superchop (char*) ; 
- int /*<<< orphan*/  memset (char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  pw_add (TYPE_5__*,int /*<<< orphan*/  const*,int const) ; 
- int run_copy (TYPE_8__*,TYPE_5__*,scalar_t__) ; 
- int run_cracker (TYPE_8__*,TYPE_5__*,scalar_t__) ; 
- scalar_t__ run_rule_engine (int,int /*<<< orphan*/ ) ; 
- int select_read_timeout_console (int) ; 
- int /*<<< orphan*/  stdin ; 
- scalar_t__ strcmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ const ATTACK_KERN_STRAIGHT ;
+ int HCBUFSIZ_LARGE ;
+ size_t HCBUFSIZ_TINY ;
+ size_t PW_MAX ;
+ int RP_PASSWORD_SIZE ;
+ int _old_apply_rule (int ,int,char*,int,char*) ;
+ size_t convert_from_hex (TYPE_8__*,char*,scalar_t__) ;
+ scalar_t__ feof (int ) ;
+ char* fgets (char*,int,int ) ;
+ int hc_thread_mutex_lock (int ) ;
+ int hc_thread_mutex_unlock (int ) ;
+ int hcfree (char*) ;
+ scalar_t__ hcmalloc (size_t) ;
+ size_t iconv (scalar_t__,char**,size_t*,char**,size_t*) ;
+ int iconv_close (scalar_t__) ;
+ scalar_t__ iconv_open (int ,int ) ;
+ size_t in_superchop (char*) ;
+ int memset (char*,int ,int) ;
+ int pw_add (TYPE_5__*,int const*,int const) ;
+ int run_copy (TYPE_8__*,TYPE_5__*,scalar_t__) ;
+ int run_cracker (TYPE_8__*,TYPE_5__*,scalar_t__) ;
+ scalar_t__ run_rule_engine (int,int ) ;
+ int select_read_timeout_console (int) ;
+ int stdin ;
+ scalar_t__ strcmp (int ,int ) ;
 
 __attribute__((used)) static int calc_stdin (hashcat_ctx_t *hashcat_ctx, hc_device_param_t *device_param)
 {
-  user_options_t       *user_options       = hashcat_ctx->user_options;
+  user_options_t *user_options = hashcat_ctx->user_options;
   user_options_extra_t *user_options_extra = hashcat_ctx->user_options_extra;
-  hashconfig_t         *hashconfig         = hashcat_ctx->hashconfig;
-  hashes_t             *hashes             = hashcat_ctx->hashes;
-  straight_ctx_t       *straight_ctx       = hashcat_ctx->straight_ctx;
-  status_ctx_t         *status_ctx         = hashcat_ctx->status_ctx;
+  hashconfig_t *hashconfig = hashcat_ctx->hashconfig;
+  hashes_t *hashes = hashcat_ctx->hashes;
+  straight_ctx_t *straight_ctx = hashcat_ctx->straight_ctx;
+  status_ctx_t *status_ctx = hashcat_ctx->status_ctx;
 
   char *buf = (char *) hcmalloc (HCBUFSIZ_LARGE);
 
-  bool iconv_enabled = false;
+  bool iconv_enabled = 0;
 
-  iconv_t iconv_ctx = NULL;
+  iconv_t iconv_ctx = ((void*)0);
 
-  char *iconv_tmp = NULL;
+  char *iconv_tmp = ((void*)0);
 
   if (strcmp (user_options->encoding_from, user_options->encoding_to) != 0)
   {
-    iconv_enabled = true;
+    iconv_enabled = 1;
 
     iconv_ctx = iconv_open (user_options->encoding_to, user_options->encoding_from);
 
@@ -100,7 +100,7 @@ __attribute__((used)) static int calc_stdin (hashcat_ctx_t *hashcat_ctx, hc_devi
     iconv_tmp = (char *) hcmalloc (HCBUFSIZ_TINY);
   }
 
-  while (status_ctx->run_thread_level1 == true)
+  while (status_ctx->run_thread_level1 == 1)
   {
     hc_thread_mutex_lock (status_ctx->mux_dispatcher);
 
@@ -114,7 +114,7 @@ __attribute__((used)) static int calc_stdin (hashcat_ctx_t *hashcat_ctx, hc_devi
     u64 words_extra_total = 0;
 
     memset (device_param->pws_comp, 0, device_param->size_pws_comp);
-    memset (device_param->pws_idx,  0, device_param->size_pws_idx);
+    memset (device_param->pws_idx, 0, device_param->size_pws_idx);
 
     while (device_param->pws_cnt < device_param->kernel_power)
     {
@@ -124,7 +124,7 @@ __attribute__((used)) static int calc_stdin (hashcat_ctx_t *hashcat_ctx, hc_devi
 
       if (rc_select == 0)
       {
-        if (status_ctx->run_thread_level1 == false) break;
+        if (status_ctx->run_thread_level1 == 0) break;
 
         status_ctx->stdin_read_timeout_cnt++;
 
@@ -135,18 +135,18 @@ __attribute__((used)) static int calc_stdin (hashcat_ctx_t *hashcat_ctx, hc_devi
 
       char *line_buf = fgets (buf, HCBUFSIZ_LARGE - 1, stdin);
 
-      if (line_buf == NULL) break;
+      if (line_buf == ((void*)0)) break;
 
       size_t line_len = in_superchop (line_buf);
 
       line_len = convert_from_hex (hashcat_ctx, line_buf, (u32) line_len);
 
-      // do the on-the-fly encoding
 
-      if (iconv_enabled == true)
+
+      if (iconv_enabled == 1)
       {
-        char  *iconv_ptr = iconv_tmp;
-        size_t iconv_sz  = HCBUFSIZ_TINY;
+        char *iconv_ptr = iconv_tmp;
+        size_t iconv_sz = HCBUFSIZ_TINY;
 
         if (iconv (iconv_ctx, &line_buf, &line_len, &iconv_ptr, &iconv_sz) == (size_t) -1) continue;
 
@@ -154,7 +154,7 @@ __attribute__((used)) static int calc_stdin (hashcat_ctx_t *hashcat_ctx, hc_devi
         line_len = HCBUFSIZ_TINY - iconv_sz;
       }
 
-      // post-process rule engine
+
 
       char rule_buf_out[RP_PASSWORD_SIZE];
 
@@ -174,7 +174,7 @@ __attribute__((used)) static int calc_stdin (hashcat_ctx_t *hashcat_ctx, hc_devi
 
       if (line_len > PW_MAX) continue;
 
-      // hmm that's always the case, or?
+
 
       const u32 attack_kern = user_options_extra->attack_kern;
 
@@ -190,7 +190,7 @@ __attribute__((used)) static int calc_stdin (hashcat_ctx_t *hashcat_ctx, hc_devi
 
       pw_add (device_param, (const u8 *) line_buf, (const int) line_len);
 
-      if (status_ctx->run_thread_level1 == false) break;
+      if (status_ctx->run_thread_level1 == 0) break;
     }
 
     hc_thread_mutex_unlock (status_ctx->mux_dispatcher);
@@ -207,11 +207,11 @@ __attribute__((used)) static int calc_stdin (hashcat_ctx_t *hashcat_ctx, hc_devi
       hc_thread_mutex_unlock (status_ctx->mux_counter);
     }
 
-    if (status_ctx->run_thread_level1 == false) break;
+    if (status_ctx->run_thread_level1 == 0) break;
 
     if (device_param->pws_cnt == 0) break;
 
-    // flush
+
 
     if (run_copy (hashcat_ctx, device_param, device_param->pws_cnt) == -1)
     {
@@ -229,9 +229,9 @@ __attribute__((used)) static int calc_stdin (hashcat_ctx_t *hashcat_ctx, hc_devi
 
     device_param->pws_cnt = 0;
 
-    if (status_ctx->run_thread_level1 == false) break;
+    if (status_ctx->run_thread_level1 == 0) break;
 
-    if (device_param->speed_only_finish == true) break;
+    if (device_param->speed_only_finish == 1) break;
   }
 
   device_param->kernel_accel_prev = device_param->kernel_accel;
@@ -240,7 +240,7 @@ __attribute__((used)) static int calc_stdin (hashcat_ctx_t *hashcat_ctx, hc_devi
   device_param->kernel_accel = 0;
   device_param->kernel_loops = 0;
 
-  if (iconv_enabled == true)
+  if (iconv_enabled == 1)
   {
     iconv_close (iconv_ctx);
 

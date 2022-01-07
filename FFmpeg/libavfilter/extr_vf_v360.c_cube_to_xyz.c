@@ -1,29 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int* out_cubemap_direction_order; int /*<<< orphan*/ * out_cubemap_face_rotation; } ;
-typedef  TYPE_1__ V360Context ;
 
-/* Variables and functions */
-#define  BACK 133 
-#define  DOWN 132 
-#define  FRONT 131 
-#define  LEFT 130 
-#define  RIGHT 129 
-#define  UP 128 
- int /*<<< orphan*/  av_assert0 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  normalize_vector (float*) ; 
- int /*<<< orphan*/  rotate_cube_face_inverse (float*,float*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int* out_cubemap_direction_order; int * out_cubemap_face_rotation; } ;
+typedef TYPE_1__ V360Context ;
+ int av_assert0 (int ) ;
+ int normalize_vector (float*) ;
+ int rotate_cube_face_inverse (float*,float*,int ) ;
 
 __attribute__((used)) static void cube_to_xyz(const V360Context *s,
                         float uf, float vf, int face,
@@ -38,35 +30,35 @@ __attribute__((used)) static void cube_to_xyz(const V360Context *s,
     rotate_cube_face_inverse(&uf, &vf, s->out_cubemap_face_rotation[face]);
 
     switch (direction) {
-    case RIGHT:
-        l_x =  1.f;
+    case 129:
+        l_x = 1.f;
         l_y = -vf;
-        l_z =  uf;
+        l_z = uf;
         break;
-    case LEFT:
+    case 130:
         l_x = -1.f;
         l_y = -vf;
         l_z = -uf;
         break;
-    case UP:
-        l_x =  uf;
-        l_y =  1.f;
+    case 128:
+        l_x = uf;
+        l_y = 1.f;
         l_z = -vf;
         break;
-    case DOWN:
-        l_x =  uf;
+    case 132:
+        l_x = uf;
         l_y = -1.f;
-        l_z =  vf;
+        l_z = vf;
         break;
-    case FRONT:
-        l_x =  uf;
+    case 131:
+        l_x = uf;
         l_y = -vf;
         l_z = -1.f;
         break;
-    case BACK:
+    case 133:
         l_x = -uf;
         l_y = -vf;
-        l_z =  1.f;
+        l_z = 1.f;
         break;
     default:
         av_assert0(0);

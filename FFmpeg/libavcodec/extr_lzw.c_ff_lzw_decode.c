@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct LZWState {int end_code; int oc; int fc; int clear_code; size_t cursize; size_t codesize; int slot; int newcodes; int top_slot; int* suffix; int* prefix; size_t extra_slot; int /*<<< orphan*/ * sp; void* curmask; int /*<<< orphan*/ * stack; } ;
-typedef  int /*<<< orphan*/  LZWState ;
 
-/* Variables and functions */
- int LZW_MAXBITS ; 
- int lzw_get_code (struct LZWState*) ; 
- void** mask ; 
+
+
+
+typedef int uint8_t ;
+struct LZWState {int end_code; int oc; int fc; int clear_code; size_t cursize; size_t codesize; int slot; int newcodes; int top_slot; int* suffix; int* prefix; size_t extra_slot; int * sp; void* curmask; int * stack; } ;
+typedef int LZWState ;
+
+
+ int LZW_MAXBITS ;
+ int lzw_get_code (struct LZWState*) ;
+ void** mask ;
 
 int ff_lzw_decode(LZWState *p, uint8_t *buf, int len){
     int l, c, code, oc, fc;

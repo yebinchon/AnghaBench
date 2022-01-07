@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {scalar_t__ h; int filled; } ;
 
-/* Variables and functions */
- int MAX_RES ; 
- scalar_t__ Q_limit ; 
- scalar_t__ R_cnt ; 
- int R_tot_groups ; 
- int R_tot_undef_hash ; 
- int /*<<< orphan*/  add_items_into_hashset () ; 
- int /*<<< orphan*/  hashmap_ll_int_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  hashset_init (scalar_t__) ; 
- int /*<<< orphan*/  heap_sort_res () ; 
- int /*<<< orphan*/  hm ; 
- TYPE_1__ hs ; 
+
+ int MAX_RES ;
+ scalar_t__ Q_limit ;
+ scalar_t__ R_cnt ;
+ int R_tot_groups ;
+ int R_tot_undef_hash ;
+ int add_items_into_hashset () ;
+ int hashmap_ll_int_free (int *) ;
+ int hashset_init (scalar_t__) ;
+ int heap_sort_res () ;
+ int hm ;
+ TYPE_1__ hs ;
 
 void postprocess_res_group_mode (void) {
   if (Q_limit <= 0) {

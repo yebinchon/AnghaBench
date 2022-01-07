@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT ;
-typedef  int /*<<< orphan*/  MSIHANDLE ;
-typedef  int /*<<< orphan*/  LPVOID ;
-typedef  int /*<<< orphan*/  IWineMsiRemotePackage ;
-typedef  int /*<<< orphan*/  IWineMsiRemoteCustomAction ;
-typedef  int /*<<< orphan*/  INT ;
-typedef  int /*<<< orphan*/  IClassFactory ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  GUID ;
-typedef  int /*<<< orphan*/  BSTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLSID_WineMsiRemoteCustomAction ; 
- int /*<<< orphan*/  DllGetClassObject (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ERR (char*) ; 
- int /*<<< orphan*/  ERROR_FUNCTION_FAILED ; 
- int /*<<< orphan*/  ERROR_SUCCESS ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IClassFactory_CreateInstance (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IID_IClassFactory ; 
- int /*<<< orphan*/  IID_IWineMsiRemoteCustomAction ; 
- int /*<<< orphan*/  IWineMsiRemoteCustomAction_GetActionInfo (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IWineMsiRemoteCustomAction_Release (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int UINT ;
+typedef int MSIHANDLE ;
+typedef int LPVOID ;
+typedef int IWineMsiRemotePackage ;
+typedef int IWineMsiRemoteCustomAction ;
+typedef int INT ;
+typedef int IClassFactory ;
+typedef int HRESULT ;
+typedef int GUID ;
+typedef int BSTR ;
+
+
+ int CLSID_WineMsiRemoteCustomAction ;
+ int DllGetClassObject (int *,int *,int *) ;
+ int ERR (char*) ;
+ int ERROR_FUNCTION_FAILED ;
+ int ERROR_SUCCESS ;
+ scalar_t__ FAILED (int ) ;
+ int IClassFactory_CreateInstance (int *,int *,int *,int *) ;
+ int IID_IClassFactory ;
+ int IID_IWineMsiRemoteCustomAction ;
+ int IWineMsiRemoteCustomAction_GetActionInfo (int *,int const*,int *,int *,int *,int *,int **) ;
+ int IWineMsiRemoteCustomAction_Release (int *) ;
 
 __attribute__((used)) static UINT get_action_info( const GUID *guid, INT *type, MSIHANDLE *handle,
                              BSTR *dll, BSTR *funcname,
                              IWineMsiRemotePackage **package )
 {
-    IClassFactory *cf = NULL;
-    IWineMsiRemoteCustomAction *rca = NULL;
+    IClassFactory *cf = ((void*)0);
+    IWineMsiRemoteCustomAction *rca = ((void*)0);
     HRESULT r;
 
     r = DllGetClassObject( &CLSID_WineMsiRemoteCustomAction,
@@ -50,7 +50,7 @@ __attribute__((used)) static UINT get_action_info( const GUID *guid, INT *type, 
         return ERROR_FUNCTION_FAILED;
     }
 
-    r = IClassFactory_CreateInstance( cf, NULL, &IID_IWineMsiRemoteCustomAction, (LPVOID *)&rca );
+    r = IClassFactory_CreateInstance( cf, ((void*)0), &IID_IWineMsiRemoteCustomAction, (LPVOID *)&rca );
     if (FAILED(r))
     {
         ERR("failed to get IWineMsiRemoteCustomAction interface\n");

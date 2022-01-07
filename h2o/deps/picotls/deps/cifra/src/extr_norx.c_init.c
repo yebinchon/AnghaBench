@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_4__ {int* s; } ;
-typedef  TYPE_1__ norx32_ctx ;
+typedef TYPE_1__ norx32_ctx ;
 
-/* Variables and functions */
- int DEGREE ; 
- int ROUNDS ; 
- int TAG_BITS ; 
- int WORD_BITS ; 
- int /*<<< orphan*/  permute (TYPE_1__*) ; 
- void* read32_le (int /*<<< orphan*/  const*) ; 
+
+ int DEGREE ;
+ int ROUNDS ;
+ int TAG_BITS ;
+ int WORD_BITS ;
+ int permute (TYPE_1__*) ;
+ void* read32_le (int const*) ;
 
 __attribute__((used)) static void init(norx32_ctx *ctx,
                  const uint8_t key[16],
                  const uint8_t nonce[8])
 {
-  /* 1. Basic setup */
+
   ctx->s[0] = read32_le(nonce + 0);
   ctx->s[1] = read32_le(nonce + 4);
   ctx->s[2] = 0xb707322f;
@@ -48,12 +48,12 @@ __attribute__((used)) static void init(norx32_ctx *ctx,
   ctx->s[14] = 0xbe0bf5c9;
   ctx->s[15] = 0xd7c49104;
 
-  /* 2. Parameter integration
-   * w = 32
-   * l = 4
-   * p = 1
-   * t = 128
-   */
+
+
+
+
+
+
   ctx->s[12] ^= WORD_BITS;
   ctx->s[13] ^= ROUNDS;
   ctx->s[14] ^= DEGREE;

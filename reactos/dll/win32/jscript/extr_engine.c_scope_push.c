@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int ref; int /*<<< orphan*/ * next; int /*<<< orphan*/ * frame; int /*<<< orphan*/ * obj; int /*<<< orphan*/ * jsobj; } ;
-typedef  TYPE_1__ scope_chain_t ;
-typedef  int /*<<< orphan*/  jsdisp_t ;
-typedef  int /*<<< orphan*/  IDispatch ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- int /*<<< orphan*/  IDispatch_AddRef (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  S_OK ; 
- TYPE_1__* heap_alloc (int) ; 
- int /*<<< orphan*/ * scope_addref (TYPE_1__*) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int ref; int * next; int * frame; int * obj; int * jsobj; } ;
+typedef TYPE_1__ scope_chain_t ;
+typedef int jsdisp_t ;
+typedef int IDispatch ;
+typedef int HRESULT ;
+
+
+ int E_OUTOFMEMORY ;
+ int IDispatch_AddRef (int *) ;
+ int S_OK ;
+ TYPE_1__* heap_alloc (int) ;
+ int * scope_addref (TYPE_1__*) ;
 
 __attribute__((used)) static HRESULT scope_push(scope_chain_t *scope, jsdisp_t *jsobj, IDispatch *obj, scope_chain_t **ret)
 {
@@ -37,8 +37,8 @@ __attribute__((used)) static HRESULT scope_push(scope_chain_t *scope, jsdisp_t *
     IDispatch_AddRef(obj);
     new_scope->jsobj = jsobj;
     new_scope->obj = obj;
-    new_scope->frame = NULL;
-    new_scope->next = scope ? scope_addref(scope) : NULL;
+    new_scope->frame = ((void*)0);
+    new_scope->next = scope ? scope_addref(scope) : ((void*)0);
 
     *ret = new_scope;
     return S_OK;

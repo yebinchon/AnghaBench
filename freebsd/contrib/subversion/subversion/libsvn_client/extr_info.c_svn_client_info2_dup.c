@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {scalar_t__ wc_info; scalar_t__ lock; void* last_changed_author; void* repos_UUID; void* repos_root_URL; void* URL; } ;
-typedef  TYPE_1__ svn_client_info2_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+typedef TYPE_1__ svn_client_info2_t ;
+typedef int apr_pool_t ;
 
-/* Variables and functions */
- TYPE_1__* apr_pmemdup (int /*<<< orphan*/ *,TYPE_1__ const*,int) ; 
- void* apr_pstrdup (int /*<<< orphan*/ *,void*) ; 
- scalar_t__ svn_lock_dup (scalar_t__,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_wc_info_dup (scalar_t__,int /*<<< orphan*/ *) ; 
+
+ TYPE_1__* apr_pmemdup (int *,TYPE_1__ const*,int) ;
+ void* apr_pstrdup (int *,void*) ;
+ scalar_t__ svn_lock_dup (scalar_t__,int *) ;
+ scalar_t__ svn_wc_info_dup (scalar_t__,int *) ;
 
 svn_client_info2_t *
 svn_client_info2_dup(const svn_client_info2_t *info,

@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  scalar_t__ UINT ;
-struct TYPE_15__ {int /*<<< orphan*/  tabledata; TYPE_1__* curview; TYPE_2__* curtable; int /*<<< orphan*/  merge; int /*<<< orphan*/  db; } ;
-struct TYPE_14__ {int /*<<< orphan*/  entry; } ;
-struct TYPE_13__ {int /*<<< orphan*/  hdr; } ;
-typedef  int /*<<< orphan*/  MSIRECORD ;
-typedef  TYPE_1__ MSIQUERY ;
-typedef  TYPE_2__ MERGETABLE ;
-typedef  TYPE_3__ MERGEDATA ;
-typedef  TYPE_3__* LPVOID ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
 
-/* Variables and functions */
- scalar_t__ ERROR_SUCCESS ; 
- scalar_t__ MSI_IterateRecords (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_3__*) ; 
- scalar_t__ MSI_OpenQuery (int /*<<< orphan*/ ,TYPE_1__**,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MSI_RecordGetString (int /*<<< orphan*/ *,int) ; 
- scalar_t__ TABLE_Exists (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free_merge_table (TYPE_2__*) ; 
- int /*<<< orphan*/  list_add_tail (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  merge_diff_row ; 
- scalar_t__ merge_verify_colnames (TYPE_1__*,TYPE_1__*) ; 
- scalar_t__ merge_verify_primary_keys (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ msi_get_merge_table (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_2__**) ; 
- int /*<<< orphan*/  msiobj_release (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+typedef char WCHAR ;
+typedef scalar_t__ UINT ;
+struct TYPE_15__ {int tabledata; TYPE_1__* curview; TYPE_2__* curtable; int merge; int db; } ;
+struct TYPE_14__ {int entry; } ;
+struct TYPE_13__ {int hdr; } ;
+typedef int MSIRECORD ;
+typedef TYPE_1__ MSIQUERY ;
+typedef TYPE_2__ MERGETABLE ;
+typedef TYPE_3__ MERGEDATA ;
+typedef TYPE_3__* LPVOID ;
+typedef int LPCWSTR ;
+
+
+ scalar_t__ ERROR_SUCCESS ;
+ scalar_t__ MSI_IterateRecords (TYPE_1__*,int *,int ,TYPE_3__*) ;
+ scalar_t__ MSI_OpenQuery (int ,TYPE_1__**,char const*,int ) ;
+ int MSI_RecordGetString (int *,int) ;
+ scalar_t__ TABLE_Exists (int ,int ) ;
+ int free_merge_table (TYPE_2__*) ;
+ int list_add_tail (int ,int *) ;
+ int merge_diff_row ;
+ scalar_t__ merge_verify_colnames (TYPE_1__*,TYPE_1__*) ;
+ scalar_t__ merge_verify_primary_keys (int ,int ,int ) ;
+ scalar_t__ msi_get_merge_table (int ,int ,TYPE_2__**) ;
+ int msiobj_release (int *) ;
 
 __attribute__((used)) static UINT merge_diff_tables(MSIRECORD *rec, LPVOID param)
 {
     MERGEDATA *data = param;
     MERGETABLE *table;
-    MSIQUERY *dbview = NULL;
-    MSIQUERY *mergeview = NULL;
+    MSIQUERY *dbview = ((void*)0);
+    MSIQUERY *mergeview = ((void*)0);
     LPCWSTR name;
     UINT r;
 
@@ -78,7 +78,7 @@ __attribute__((used)) static UINT merge_diff_tables(MSIRECORD *rec, LPVOID param
 
     data->curtable = table;
     data->curview = mergeview;
-    r = MSI_IterateRecords(mergeview, NULL, merge_diff_row, data);
+    r = MSI_IterateRecords(mergeview, ((void*)0), merge_diff_row, data);
     if (r != ERROR_SUCCESS)
     {
         free_merge_table(table);

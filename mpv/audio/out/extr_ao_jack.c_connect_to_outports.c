@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct priv {int num_ports; int /*<<< orphan*/ * ports; int /*<<< orphan*/  client; TYPE_1__* opts; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct priv {int num_ports; int * ports; int client; TYPE_1__* opts; } ;
 struct ao {struct priv* priv; } ;
 struct TYPE_2__ {char* port; } ;
 
-/* Variables and functions */
- char* JACK_DEFAULT_AUDIO_TYPE ; 
- int JackPortIsInput ; 
- int JackPortIsPhysical ; 
- int /*<<< orphan*/  MP_FATAL (struct ao*,char*) ; 
- int /*<<< orphan*/  free (char const**) ; 
- scalar_t__ jack_connect (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*) ; 
- char** jack_get_ports (int /*<<< orphan*/ ,char*,char const*,int) ; 
- int /*<<< orphan*/  jack_port_name (int /*<<< orphan*/ ) ; 
+
+ char* JACK_DEFAULT_AUDIO_TYPE ;
+ int JackPortIsInput ;
+ int JackPortIsPhysical ;
+ int MP_FATAL (struct ao*,char*) ;
+ int free (char const**) ;
+ scalar_t__ jack_connect (int ,int ,char const*) ;
+ char** jack_get_ports (int ,char*,char const*,int) ;
+ int jack_port_name (int ) ;
 
 __attribute__((used)) static int
 connect_to_outports(struct ao *ao)
 {
     struct priv *p = ao->priv;
 
-    char *port_name = (p->opts->port && p->opts->port[0]) ? p->opts->port : NULL;
-    const char **matching_ports = NULL;
+    char *port_name = (p->opts->port && p->opts->port[0]) ? p->opts->port : ((void*)0);
+    const char **matching_ports = ((void*)0);
     int port_flags = JackPortIsInput;
     int i;
 
     if (!port_name)
         port_flags |= JackPortIsPhysical;
 
-    const char *port_type = JACK_DEFAULT_AUDIO_TYPE; // exclude MIDI ports
+    const char *port_type = JACK_DEFAULT_AUDIO_TYPE;
     matching_ports = jack_get_ports(p->client, port_name, port_type, port_flags);
 
     if (!matching_ports || !matching_ports[0]) {

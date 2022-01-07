@@ -1,68 +1,68 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wchar_t ;
-typedef  int /*<<< orphan*/  tmp3 ;
-typedef  int /*<<< orphan*/  tmp2 ;
-typedef  int /*<<< orphan*/  tmp1 ;
-typedef  int /*<<< orphan*/  tmp ;
-struct TYPE_6__ {TYPE_1__* serial; int /*<<< orphan*/  subject_name; } ;
-typedef  TYPE_2__ X ;
-typedef  int /*<<< orphan*/  UINT ;
-typedef  int /*<<< orphan*/  UCHAR ;
-struct TYPE_5__ {int size; int /*<<< orphan*/ * data; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BinToStr (char*,int,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  GetAllNameFromName (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetXDigest (TYPE_2__*,int /*<<< orphan*/ *,int) ; 
- int MD5_SIZE ; 
- int SHA1_SIZE ; 
- int /*<<< orphan*/  UniFormat (int /*<<< orphan*/ *,int,char*,char*,...) ; 
- int /*<<< orphan*/  UniStrCat (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int wchar_t ;
+typedef int tmp3 ;
+typedef int tmp2 ;
+typedef int tmp1 ;
+typedef int tmp ;
+struct TYPE_6__ {TYPE_1__* serial; int subject_name; } ;
+typedef TYPE_2__ X ;
+typedef int UINT ;
+typedef int UCHAR ;
+struct TYPE_5__ {int size; int * data; } ;
+
+
+ int BinToStr (char*,int,int *,int) ;
+ int GetAllNameFromName (int *,int ,int ) ;
+ int GetXDigest (TYPE_2__*,int *,int) ;
+ int MD5_SIZE ;
+ int SHA1_SIZE ;
+ int UniFormat (int *,int,char*,char*,...) ;
+ int UniStrCat (int *,int ,int *) ;
 
 void GetAllNameFromX(wchar_t *str, UINT size, X *x)
 {
-	UCHAR md5[MD5_SIZE], sha1[SHA1_SIZE];
-	char tmp1[MD5_SIZE * 3 + 8], tmp2[SHA1_SIZE * 3 + 8];
-	wchar_t tmp3[sizeof(tmp1) + sizeof(tmp2) + 64];
-	// Validate arguments
-	if (str == NULL || x == NULL)
-	{
-		return;
-	}
+ UCHAR md5[MD5_SIZE], sha1[SHA1_SIZE];
+ char tmp1[MD5_SIZE * 3 + 8], tmp2[SHA1_SIZE * 3 + 8];
+ wchar_t tmp3[sizeof(tmp1) + sizeof(tmp2) + 64];
 
-	GetAllNameFromName(str, size, x->subject_name);
+ if (str == ((void*)0) || x == ((void*)0))
+ {
+  return;
+ }
 
-	if (x->serial != NULL && x->serial->size >= 1)
-	{
-		char tmp[128];
-		wchar_t tmp2[128];
+ GetAllNameFromName(str, size, x->subject_name);
 
-		BinToStr(tmp, sizeof(tmp), x->serial->data, x->serial->size);
-		UniFormat(tmp2, sizeof(tmp2), L", SERIAL=\"%S\"", tmp);
+ if (x->serial != ((void*)0) && x->serial->size >= 1)
+ {
+  char tmp[128];
+  wchar_t tmp2[128];
 
-		UniStrCat(str, size, tmp2);
-	}
+  BinToStr(tmp, sizeof(tmp), x->serial->data, x->serial->size);
+  UniFormat(tmp2, sizeof(tmp2), L", SERIAL=\"%S\"", tmp);
 
-	// Digest value
-	GetXDigest(x, md5, false);
-	GetXDigest(x, sha1, true);
+  UniStrCat(str, size, tmp2);
+ }
 
-	BinToStr(tmp1, sizeof(tmp1), md5, MD5_SIZE);
-	BinToStr(tmp2, sizeof(tmp2), sha1, SHA1_SIZE);
 
-	UniFormat(tmp3, sizeof(tmp3), L" (Digest: MD5=\"%S\", SHA1=\"%S\")", tmp1, tmp2);
-	UniStrCat(str, size, tmp3);
+ GetXDigest(x, md5, 0);
+ GetXDigest(x, sha1, 1);
+
+ BinToStr(tmp1, sizeof(tmp1), md5, MD5_SIZE);
+ BinToStr(tmp2, sizeof(tmp2), sha1, SHA1_SIZE);
+
+ UniFormat(tmp3, sizeof(tmp3), L" (Digest: MD5=\"%S\", SHA1=\"%S\")", tmp1, tmp2);
+ UniStrCat(str, size, tmp3);
 }

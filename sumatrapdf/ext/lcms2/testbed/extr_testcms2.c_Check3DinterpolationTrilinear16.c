@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int cmsUInt16Number ;
-struct TYPE_6__ {int /*<<< orphan*/  (* Lerp16 ) (int /*<<< orphan*/ ,int*,int*,TYPE_2__*) ;} ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int cmsUInt16Number ;
+struct TYPE_6__ {int (* Lerp16 ) (int ,int*,int*,TYPE_2__*) ;} ;
 struct TYPE_7__ {TYPE_1__ Interpolation; } ;
-typedef  TYPE_2__ cmsInterpParams ;
-typedef  int cmsInt32Number ;
+typedef TYPE_2__ cmsInterpParams ;
+typedef int cmsInt32Number ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CMS_LERP_FLAGS_TRILINEAR ; 
- int /*<<< orphan*/  DbgThread () ; 
- int /*<<< orphan*/  IsGoodWord (char*,int,int) ; 
- double MaxErr ; 
- TYPE_2__* _cmsComputeInterpParams (int /*<<< orphan*/ ,int,int,int,int*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  _cmsFreeInterpParams (int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  printf (char*,double) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,int*,int*,TYPE_2__*) ; 
+
+ int CMS_LERP_FLAGS_TRILINEAR ;
+ int DbgThread () ;
+ int IsGoodWord (char*,int,int) ;
+ double MaxErr ;
+ TYPE_2__* _cmsComputeInterpParams (int ,int,int,int,int*,int ) ;
+ int _cmsFreeInterpParams (int ,TYPE_2__*) ;
+ int printf (char*,double) ;
+ int stub1 (int ,int*,int*,TYPE_2__*) ;
 
 __attribute__((used)) static
 cmsInt32Number Check3DinterpolationTrilinear16(void)
@@ -36,17 +36,17 @@ cmsInt32Number Check3DinterpolationTrilinear16(void)
     cmsUInt16Number In[3], Out[3];
     cmsUInt16Number Table[] = {
 
-        0,    0,   0,
-        0,    0,   0xffff,
+        0, 0, 0,
+        0, 0, 0xffff,
 
-        0,    0xffff,    0,
-        0,    0xffff,    0xffff,
+        0, 0xffff, 0,
+        0, 0xffff, 0xffff,
 
-        0xffff,    0,    0,
-        0xffff,    0,    0xffff,
+        0xffff, 0, 0,
+        0xffff, 0, 0xffff,
 
-        0xffff,    0xffff,   0,
-        0xffff,    0xffff,   0xffff
+        0xffff, 0xffff, 0,
+        0xffff, 0xffff, 0xffff
     };
 
     p = _cmsComputeInterpParams(DbgThread(), 2, 3, 3, Table, CMS_LERP_FLAGS_TRILINEAR);

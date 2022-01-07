@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ ULONG ;
-struct TYPE_3__ {int /*<<< orphan*/  path; } ;
-typedef  int /*<<< orphan*/  LPWSTR ;
-typedef  TYPE_1__ IAssemblyNameImpl ;
-typedef  int /*<<< orphan*/  IAssemblyName ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_NOT_SUFFICIENT_BUFFER ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  lstrcpyW (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ lstrlenW (int /*<<< orphan*/ ) ; 
- TYPE_1__* unsafe_impl_from_IAssemblyName (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ ULONG ;
+struct TYPE_3__ {int path; } ;
+typedef int LPWSTR ;
+typedef TYPE_1__ IAssemblyNameImpl ;
+typedef int IAssemblyName ;
+typedef int HRESULT ;
+
+
+ int E_NOT_SUFFICIENT_BUFFER ;
+ int S_OK ;
+ int lstrcpyW (int ,int ) ;
+ scalar_t__ lstrlenW (int ) ;
+ TYPE_1__* unsafe_impl_from_IAssemblyName (int *) ;
 
 HRESULT IAssemblyName_GetPath(IAssemblyName *iface, LPWSTR buf, ULONG *len)
 {

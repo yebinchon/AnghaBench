@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_19__   TYPE_4__ ;
-typedef  struct TYPE_18__   TYPE_3__ ;
-typedef  struct TYPE_17__   TYPE_2__ ;
-typedef  struct TYPE_16__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_16__ {int /*<<< orphan*/  adapterName; scalar_t__ modesPruned; } ;
+
+
+typedef struct TYPE_19__ TYPE_4__ ;
+typedef struct TYPE_18__ TYPE_3__ ;
+typedef struct TYPE_17__ TYPE_2__ ;
+typedef struct TYPE_16__ TYPE_1__ ;
+
+
+struct TYPE_16__ {int adapterName; scalar_t__ modesPruned; } ;
 struct TYPE_17__ {TYPE_1__ win32; } ;
-typedef  TYPE_2__ _GLFWmonitor ;
-struct TYPE_19__ {int dmSize; int dmBitsPerPel; int /*<<< orphan*/  dmDisplayFrequency; int /*<<< orphan*/  dmPelsHeight; int /*<<< orphan*/  dmPelsWidth; } ;
-struct TYPE_18__ {int /*<<< orphan*/  blueBits; int /*<<< orphan*/  greenBits; int /*<<< orphan*/  redBits; int /*<<< orphan*/  refreshRate; int /*<<< orphan*/  height; int /*<<< orphan*/  width; } ;
-typedef  TYPE_3__ GLFWvidmode ;
-typedef  TYPE_4__ DEVMODEW ;
+typedef TYPE_2__ _GLFWmonitor ;
+struct TYPE_19__ {int dmSize; int dmBitsPerPel; int dmDisplayFrequency; int dmPelsHeight; int dmPelsWidth; } ;
+struct TYPE_18__ {int blueBits; int greenBits; int redBits; int refreshRate; int height; int width; } ;
+typedef TYPE_3__ GLFWvidmode ;
+typedef TYPE_4__ DEVMODEW ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CDS_TEST ; 
- scalar_t__ ChangeDisplaySettingsExW (int /*<<< orphan*/ ,TYPE_4__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ DISP_CHANGE_SUCCESSFUL ; 
- int /*<<< orphan*/  EnumDisplaySettingsW (int /*<<< orphan*/ ,int,TYPE_4__*) ; 
- int /*<<< orphan*/  ZeroMemory (TYPE_4__*,int) ; 
- scalar_t__ _glfwCompareVideoModes (TYPE_3__*,TYPE_3__*) ; 
- int /*<<< orphan*/  _glfwPlatformGetVideoMode (TYPE_2__*,TYPE_3__*) ; 
- int /*<<< orphan*/  _glfwSplitBPP (int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- TYPE_3__* calloc (int,int) ; 
- scalar_t__ realloc (TYPE_3__*,int) ; 
+
+ int CDS_TEST ;
+ scalar_t__ ChangeDisplaySettingsExW (int ,TYPE_4__*,int *,int ,int *) ;
+ scalar_t__ DISP_CHANGE_SUCCESSFUL ;
+ int EnumDisplaySettingsW (int ,int,TYPE_4__*) ;
+ int ZeroMemory (TYPE_4__*,int) ;
+ scalar_t__ _glfwCompareVideoModes (TYPE_3__*,TYPE_3__*) ;
+ int _glfwPlatformGetVideoMode (TYPE_2__*,TYPE_3__*) ;
+ int _glfwSplitBPP (int,int *,int *,int *) ;
+ TYPE_3__* calloc (int,int) ;
+ scalar_t__ realloc (TYPE_3__*,int) ;
 
 GLFWvidmode* _glfwPlatformGetVideoModes(_GLFWmonitor* monitor, int* count)
 {
     int modeIndex = 0, size = 0;
-    GLFWvidmode* result = NULL;
+    GLFWvidmode* result = ((void*)0);
 
     *count = 0;
 
@@ -55,11 +55,11 @@ GLFWvidmode* _glfwPlatformGetVideoModes(_GLFWmonitor* monitor, int* count)
 
         modeIndex++;
 
-        // Skip modes with less than 15 BPP
+
         if (dm.dmBitsPerPel < 15)
             continue;
 
-        mode.width  = dm.dmPelsWidth;
+        mode.width = dm.dmPelsWidth;
         mode.height = dm.dmPelsHeight;
         mode.refreshRate = dm.dmDisplayFrequency;
         _glfwSplitBPP(dm.dmBitsPerPel,
@@ -67,24 +67,24 @@ GLFWvidmode* _glfwPlatformGetVideoModes(_GLFWmonitor* monitor, int* count)
                       &mode.greenBits,
                       &mode.blueBits);
 
-        for (i = 0;  i < *count;  i++)
+        for (i = 0; i < *count; i++)
         {
             if (_glfwCompareVideoModes(result + i, &mode) == 0)
                 break;
         }
 
-        // Skip duplicate modes
+
         if (i < *count)
             continue;
 
         if (monitor->win32.modesPruned)
         {
-            // Skip modes not supported by the connected displays
+
             if (ChangeDisplaySettingsExW(monitor->win32.adapterName,
                                          &dm,
-                                         NULL,
+                                         ((void*)0),
                                          CDS_TEST,
-                                         NULL) != DISP_CHANGE_SUCCESSFUL)
+                                         ((void*)0)) != DISP_CHANGE_SUCCESSFUL)
             {
                 continue;
             }
@@ -102,7 +102,7 @@ GLFWvidmode* _glfwPlatformGetVideoModes(_GLFWmonitor* monitor, int* count)
 
     if (!*count)
     {
-        // HACK: Report the current mode if no valid modes were found
+
         result = calloc(1, sizeof(GLFWvidmode));
         _glfwPlatformGetVideoMode(monitor, result);
         *count = 1;

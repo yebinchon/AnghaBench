@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct brcmf_sdio {int /*<<< orphan*/  ctrl_wait; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  wake_up_interruptible (int /*<<< orphan*/ *) ; 
+
+
+
+struct brcmf_sdio {int ctrl_wait; } ;
+
+
+ int wake_up_interruptible (int *) ;
 
 __attribute__((used)) static void
 brcmf_sdio_wait_event_wakeup(struct brcmf_sdio *bus)
 {
-	wake_up_interruptible(&bus->ctrl_wait);
-	return;
+ wake_up_interruptible(&bus->ctrl_wait);
+ return;
 }

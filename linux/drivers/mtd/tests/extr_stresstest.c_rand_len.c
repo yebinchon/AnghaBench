@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int bufsize ; 
- unsigned int prandom_u32 () ; 
+ int bufsize ;
+ unsigned int prandom_u32 () ;
 
 __attribute__((used)) static int rand_len(int offs)
 {
-	unsigned int len;
+ unsigned int len;
 
-	len = prandom_u32();
-	len %= (bufsize - offs);
-	return len;
+ len = prandom_u32();
+ len %= (bufsize - offs);
+ return len;
 }

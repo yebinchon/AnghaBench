@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int apr_off_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR_BAD_VERSION_FILE_FORMAT ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  svn_ctype_isdigit (char const) ; 
- int /*<<< orphan*/  svn_dirent_local_style (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_error_createf (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,char const,char const*) ; 
+
+
+
+typedef int svn_error_t ;
+typedef int apr_pool_t ;
+typedef int apr_off_t ;
+
+
+ int SVN_ERR_BAD_VERSION_FILE_FORMAT ;
+ int * SVN_NO_ERROR ;
+ int _ (char*) ;
+ int svn_ctype_isdigit (char const) ;
+ int svn_dirent_local_style (char const*,int *) ;
+ int * svn_error_createf (int ,int *,int ,char const*,int ,char const,char const*) ;
 
 svn_error_t *
 svn_fs_x__check_file_buffer_numeric(const char *buf,
@@ -33,7 +33,7 @@ svn_fs_x__check_file_buffer_numeric(const char *buf,
 
   for (p = buf + offset; *p; p++)
     if (!svn_ctype_isdigit(*p))
-      return svn_error_createf(SVN_ERR_BAD_VERSION_FILE_FORMAT, NULL,
+      return svn_error_createf(SVN_ERR_BAD_VERSION_FILE_FORMAT, ((void*)0),
         _("%s file '%s' contains unexpected non-digit '%c' within '%s'"),
         title, svn_dirent_local_style(path, scratch_pool), *p, buf);
 

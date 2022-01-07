@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char* skip_quoted_chars (char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+ char* skip_quoted_chars (char*,int *,int *) ;
 
 char *
 skip_quoted (char *str)
 {
-  return skip_quoted_chars (str, NULL, NULL);
+  return skip_quoted_chars (str, ((void*)0), ((void*)0));
 }

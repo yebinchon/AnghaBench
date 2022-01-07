@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int n; int /*<<< orphan*/  new_v; int /*<<< orphan*/ * x; } ;
-typedef  TYPE_1__ lookup ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  dl_free (int*,size_t) ; 
- int* dl_malloc (size_t) ; 
- int /*<<< orphan*/ * map_int_int_get (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int map_int_int_pairs (int /*<<< orphan*/ *,int*,int*,int) ; 
- int map_int_int_used (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int n; int new_v; int * x; } ;
+typedef TYPE_1__ lookup ;
+
+
+ int assert (int) ;
+ int dl_free (int*,size_t) ;
+ int* dl_malloc (size_t) ;
+ int * map_int_int_get (int *,int ) ;
+ int map_int_int_pairs (int *,int*,int*,int) ;
+ int map_int_int_used (int *) ;
 
 int lookup_get_ids (lookup *l, int *v, int mx) {
   int *st = v;
   int i;
   for (i = 0; i < l->n; i++) {
-    if (map_int_int_get (&l->new_v, l->x[i]) == NULL) {
+    if (map_int_int_get (&l->new_v, l->x[i]) == ((void*)0)) {
       if (mx > 0) {
         *v++ = l->x[i];
         mx--;

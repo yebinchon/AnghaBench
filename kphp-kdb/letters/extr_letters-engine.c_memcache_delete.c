@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct connection {int /*<<< orphan*/  Out; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INIT ; 
- int /*<<< orphan*/  RETURN (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  delete ; 
- scalar_t__ delete_letter (long long) ; 
- scalar_t__ delete_letters_by_task_id (long long) ; 
- int /*<<< orphan*/  eat_at (char const*,int,char**,int*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char const*) ; 
- int sscanf (char*,char*,long long*) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  strncmp (char*,char*,int) ; 
- int verbosity ; 
- int /*<<< orphan*/  write_out (int /*<<< orphan*/ *,char*,int) ; 
+
+
+
+struct connection {int Out; } ;
+
+
+ int INIT ;
+ int RETURN (int ,int ) ;
+ int delete ;
+ scalar_t__ delete_letter (long long) ;
+ scalar_t__ delete_letters_by_task_id (long long) ;
+ int eat_at (char const*,int,char**,int*) ;
+ int fprintf (int ,char*,char const*) ;
+ int sscanf (char*,char*,long long*) ;
+ int stderr ;
+ int strncmp (char*,char*,int) ;
+ int verbosity ;
+ int write_out (int *,char*,int) ;
 
 int memcache_delete (struct connection *c, const char *old_key, int old_key_len) {
   INIT;

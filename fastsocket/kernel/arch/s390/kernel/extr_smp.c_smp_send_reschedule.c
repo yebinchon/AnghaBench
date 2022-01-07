@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  ec_schedule ; 
- int /*<<< orphan*/  smp_ext_bitcall (int,int /*<<< orphan*/ ) ; 
+ int ec_schedule ;
+ int smp_ext_bitcall (int,int ) ;
 
 void smp_send_reschedule(int cpu)
 {
-	smp_ext_bitcall(cpu, ec_schedule);
+ smp_ext_bitcall(cpu, ec_schedule);
 }

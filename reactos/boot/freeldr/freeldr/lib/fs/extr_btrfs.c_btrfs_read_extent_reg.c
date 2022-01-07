@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ u64 ;
-typedef  int u32 ;
+
+
+
+
+typedef scalar_t__ u64 ;
+typedef int u32 ;
 struct btrfs_path {int dummy; } ;
 struct btrfs_file_extent_item {scalar_t__ num_bytes; scalar_t__ disk_bytenr; scalar_t__ disk_num_bytes; scalar_t__ compression; scalar_t__ offset; } ;
 
-/* Variables and functions */
- scalar_t__ ALIGN_DOWN_BY (scalar_t__,int) ; 
- scalar_t__ BTRFS_COMPRESS_NONE ; 
- int /*<<< orphan*/  ERR (char*,...) ; 
- char* FrLdrTempAlloc (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FrLdrTempFree (char*,int /*<<< orphan*/ ) ; 
- scalar_t__ INVALID_ADDRESS ; 
- scalar_t__ READ_ERROR ; 
- int /*<<< orphan*/  RtlZeroMemory (char*,scalar_t__) ; 
- int SECTOR_SIZE ; 
- int /*<<< orphan*/  TAG_BTRFS_FILE ; 
- int /*<<< orphan*/  disk_read (scalar_t__,char*,scalar_t__) ; 
- scalar_t__ logical_physical (scalar_t__) ; 
- int /*<<< orphan*/  memcpy (char*,char*,int) ; 
+
+ scalar_t__ ALIGN_DOWN_BY (scalar_t__,int) ;
+ scalar_t__ BTRFS_COMPRESS_NONE ;
+ int ERR (char*,...) ;
+ char* FrLdrTempAlloc (int,int ) ;
+ int FrLdrTempFree (char*,int ) ;
+ scalar_t__ INVALID_ADDRESS ;
+ scalar_t__ READ_ERROR ;
+ int RtlZeroMemory (char*,scalar_t__) ;
+ int SECTOR_SIZE ;
+ int TAG_BTRFS_FILE ;
+ int disk_read (scalar_t__,char*,scalar_t__) ;
+ scalar_t__ logical_physical (scalar_t__) ;
+ int memcpy (char*,char*,int) ;
 
 __attribute__((used)) static u64 btrfs_read_extent_reg(struct btrfs_path *path, struct btrfs_file_extent_item *extent,
                                  u64 offset, u64 size, char *out)
@@ -46,7 +46,7 @@ __attribute__((used)) static u64 btrfs_read_extent_reg(struct btrfs_path *path, 
     if (size > dlen - offset)
         size = dlen - offset;
 
-    /* Handle sparse extent */
+
     if (extent->disk_bytenr == 0 && extent->disk_num_bytes == 0)
     {
         RtlZeroMemory(out, size);
@@ -64,7 +64,7 @@ __attribute__((used)) static u64 btrfs_read_extent_reg(struct btrfs_path *path, 
     {
         physical += extent->offset + offset;
 
-        /* If somebody tried to do unaligned access */
+
         if (physical & (SECTOR_SIZE - 1))
         {
             u32 shift;

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_9__ {scalar_t__ LengthField; scalar_t__ TotalLength; scalar_t__ Child; } ;
-typedef  TYPE_1__ DT_SUBTABLE ;
+typedef TYPE_1__ DT_SUBTABLE ;
 
-/* Variables and functions */
- TYPE_1__* AslGbl_RootTable ; 
- TYPE_1__* DtGetNextSubtable (TYPE_1__*,TYPE_1__*) ; 
- TYPE_1__* DtGetParentSubtable (TYPE_1__*) ; 
- int /*<<< orphan*/  DtSetSubtableLength (TYPE_1__*) ; 
+
+ TYPE_1__* AslGbl_RootTable ;
+ TYPE_1__* DtGetNextSubtable (TYPE_1__*,TYPE_1__*) ;
+ TYPE_1__* DtGetParentSubtable (TYPE_1__*) ;
+ int DtSetSubtableLength (TYPE_1__*) ;
 
 void
 DtSetTableLength (
     void)
 {
-    DT_SUBTABLE             *ParentTable;
-    DT_SUBTABLE             *ChildTable;
+    DT_SUBTABLE *ParentTable;
+    DT_SUBTABLE *ChildTable;
 
 
     ParentTable = AslGbl_RootTable;
-    ChildTable = NULL;
+    ChildTable = ((void*)0);
 
     if (!ParentTable)
     {
@@ -51,7 +51,7 @@ DtSetTableLength (
             if (ChildTable->Child)
             {
                 ParentTable = ChildTable;
-                ChildTable = NULL;
+                ChildTable = ((void*)0);
             }
             else
             {

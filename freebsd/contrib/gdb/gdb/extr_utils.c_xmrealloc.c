@@ -1,36 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- void* mmalloc (void*,size_t) ; 
- void* mrealloc (void*,void*,size_t) ; 
- int /*<<< orphan*/  nomem (size_t) ; 
+ void* mmalloc (void*,size_t) ;
+ void* mrealloc (void*,void*,size_t) ;
+ int nomem (size_t) ;
 
 void *
 xmrealloc (void *md, void *ptr, size_t size)
 {
   void *val;
 
-  /* See libiberty/xmalloc.c.  This function need's to match that's
-     semantics.  It never returns NULL.  */
+
+
   if (size == 0)
     size = 1;
 
-  if (ptr != NULL)
+  if (ptr != ((void*)0))
     val = mrealloc (md, ptr, size);
   else
     val = mmalloc (md, size);
-  if (val == NULL)
+  if (val == ((void*)0))
     nomem (size);
 
   return (val);

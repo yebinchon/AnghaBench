@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  int16_t ;
-typedef  int /*<<< orphan*/  VLC ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef int int16_t ;
+typedef int VLC ;
 struct TYPE_3__ {int count; int sym; int n0; int l; int r; } ;
-typedef  TYPE_1__ Node ;
-typedef  int /*<<< orphan*/  AVCodecContext ;
+typedef TYPE_1__ Node ;
+typedef int AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- unsigned int UINT32_MAX ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ff_free_vlc (int /*<<< orphan*/ *) ; 
- int ff_init_vlc_sparse (int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ *,int,int,int*,int,int,int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  get_tree_codes (int*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_1__*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*) ; 
+
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ unsigned int UINT32_MAX ;
+ int av_log (int *,int ,char*) ;
+ int ff_free_vlc (int *) ;
+ int ff_init_vlc_sparse (int *,int,int,int *,int,int,int*,int,int,int *,int,int,int ) ;
+ int get_tree_codes (int*,int *,int *,TYPE_1__*,int,int ,int ,int*) ;
 
 __attribute__((used)) static int build_vlc(AVCodecContext *avctx, VLC *vlc, const uint32_t *table)
 {
@@ -40,10 +40,10 @@ __attribute__((used)) static int build_vlc(AVCodecContext *avctx, VLC *vlc, cons
 
     for (i = 0; i < 256; i++) {
         nodes[i].count = table[i];
-        nodes[i].sym   = i;
-        nodes[i].n0    = -2;
-        nodes[i].l     = i;
-        nodes[i].r     = i;
+        nodes[i].sym = i;
+        nodes[i].n0 = -2;
+        nodes[i].l = i;
+        nodes[i].r = i;
     }
 
     cur_node = 256;
@@ -76,7 +76,7 @@ __attribute__((used)) static int build_vlc(AVCodecContext *avctx, VLC *vlc, cons
             nd = nodes[second_node].count;
             st = nodes[first_node].count;
             nodes[second_node].count = 0;
-            nodes[first_node].count  = 0;
+            nodes[first_node].count = 0;
             if (nd >= UINT32_MAX - st) {
                 av_log(avctx, AV_LOG_ERROR, "count overflow\n");
                 return AVERROR_INVALIDDATA;

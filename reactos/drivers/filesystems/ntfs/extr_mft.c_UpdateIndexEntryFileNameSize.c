@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_28__   TYPE_9__ ;
-typedef  struct TYPE_27__   TYPE_8__ ;
-typedef  struct TYPE_26__   TYPE_7__ ;
-typedef  struct TYPE_25__   TYPE_6__ ;
-typedef  struct TYPE_24__   TYPE_5__ ;
-typedef  struct TYPE_23__   TYPE_4__ ;
-typedef  struct TYPE_22__   TYPE_3__ ;
-typedef  struct TYPE_21__   TYPE_2__ ;
-typedef  struct TYPE_20__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ ULONG_PTR ;
-typedef  scalar_t__ ULONGLONG ;
-typedef  scalar_t__ ULONG ;
-struct TYPE_28__ {int /*<<< orphan*/  Ntfs; } ;
+
+
+typedef struct TYPE_28__ TYPE_9__ ;
+typedef struct TYPE_27__ TYPE_8__ ;
+typedef struct TYPE_26__ TYPE_7__ ;
+typedef struct TYPE_25__ TYPE_6__ ;
+typedef struct TYPE_24__ TYPE_5__ ;
+typedef struct TYPE_23__ TYPE_4__ ;
+typedef struct TYPE_22__ TYPE_3__ ;
+typedef struct TYPE_21__ TYPE_2__ ;
+typedef struct TYPE_20__ TYPE_1__ ;
+
+
+typedef scalar_t__ ULONG_PTR ;
+typedef scalar_t__ ULONGLONG ;
+typedef scalar_t__ ULONG ;
+struct TYPE_28__ {int Ntfs; } ;
 struct TYPE_24__ {scalar_t__ AllocatedSize; scalar_t__ FirstEntryOffset; scalar_t__ TotalSizeOfEntries; } ;
 struct TYPE_23__ {scalar_t__ Type; } ;
 struct TYPE_27__ {TYPE_5__ Header; TYPE_4__ Ntfs; } ;
@@ -30,46 +30,46 @@ struct TYPE_22__ {scalar_t__ NameType; scalar_t__ AllocatedSize; scalar_t__ Data
 struct TYPE_20__ {int IndexedFile; } ;
 struct TYPE_21__ {TYPE_1__ Directory; } ;
 struct TYPE_26__ {int Flags; int Length; TYPE_3__ FileName; TYPE_2__ Data; } ;
-struct TYPE_25__ {int /*<<< orphan*/  pRecord; } ;
-typedef  int /*<<< orphan*/  PUNICODE_STRING ;
-typedef  scalar_t__* PULONG ;
-typedef  int /*<<< orphan*/  PUCHAR ;
-typedef  TYPE_6__* PNTFS_ATTR_CONTEXT ;
-typedef  TYPE_7__* PINDEX_ENTRY_ATTRIBUTE ;
-typedef  TYPE_8__* PINDEX_BUFFER ;
-typedef  TYPE_9__* PFILE_RECORD_HEADER ;
-typedef  int /*<<< orphan*/ * PDEVICE_EXTENSION ;
-typedef  int /*<<< orphan*/ * PCHAR ;
-typedef  scalar_t__ NTSTATUS ;
-typedef  int /*<<< orphan*/  INDEX_ENTRY_ATTRIBUTE ;
-typedef  int /*<<< orphan*/  BOOLEAN ;
+struct TYPE_25__ {int pRecord; } ;
+typedef int PUNICODE_STRING ;
+typedef scalar_t__* PULONG ;
+typedef int PUCHAR ;
+typedef TYPE_6__* PNTFS_ATTR_CONTEXT ;
+typedef TYPE_7__* PINDEX_ENTRY_ATTRIBUTE ;
+typedef TYPE_8__* PINDEX_BUFFER ;
+typedef TYPE_9__* PFILE_RECORD_HEADER ;
+typedef int * PDEVICE_EXTENSION ;
+typedef int * PCHAR ;
+typedef scalar_t__ NTSTATUS ;
+typedef int INDEX_ENTRY_ATTRIBUTE ;
+typedef int BOOLEAN ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- scalar_t__ AddFixupArray (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ AttributeDataLength (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AttributeIndexAllocation ; 
- scalar_t__ CompareFileName (int /*<<< orphan*/ ,TYPE_7__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DPRINT (char*,...) ; 
- int /*<<< orphan*/  DPRINT1 (char*) ; 
- scalar_t__ FIELD_OFFSET (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ FindAttribute (int /*<<< orphan*/ *,TYPE_9__*,int /*<<< orphan*/ ,char*,int,TYPE_6__**,int /*<<< orphan*/ *) ; 
- scalar_t__ FixupUpdateSequenceArray (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Header ; 
- int /*<<< orphan*/  INDEX_BUFFER ; 
- scalar_t__ NRH_INDX_TYPE ; 
- int NTFS_FILE_FIRST_USER_FILE ; 
- scalar_t__ NTFS_FILE_NAME_DOS ; 
- int NTFS_INDEX_ENTRY_END ; 
- int NTFS_INDEX_ENTRY_NODE ; 
- int NTFS_MFT_MASK ; 
- scalar_t__ NT_SUCCESS (scalar_t__) ; 
- int /*<<< orphan*/  ReadAttribute (int /*<<< orphan*/ *,TYPE_6__*,scalar_t__,int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  ReleaseAttributeContext (TYPE_6__*) ; 
- scalar_t__ STATUS_OBJECT_PATH_NOT_FOUND ; 
- scalar_t__ STATUS_PENDING ; 
- scalar_t__ STATUS_SUCCESS ; 
- scalar_t__ WriteAttribute (int /*<<< orphan*/ *,TYPE_6__*,scalar_t__,int /*<<< orphan*/  const,scalar_t__,scalar_t__*,TYPE_9__*) ; 
+
+ int ASSERT (int) ;
+ scalar_t__ AddFixupArray (int *,int *) ;
+ scalar_t__ AttributeDataLength (int ) ;
+ int AttributeIndexAllocation ;
+ scalar_t__ CompareFileName (int ,TYPE_7__*,int ,int ) ;
+ int DPRINT (char*,...) ;
+ int DPRINT1 (char*) ;
+ scalar_t__ FIELD_OFFSET (int ,int ) ;
+ scalar_t__ FindAttribute (int *,TYPE_9__*,int ,char*,int,TYPE_6__**,int *) ;
+ scalar_t__ FixupUpdateSequenceArray (int *,int *) ;
+ int Header ;
+ int INDEX_BUFFER ;
+ scalar_t__ NRH_INDX_TYPE ;
+ int NTFS_FILE_FIRST_USER_FILE ;
+ scalar_t__ NTFS_FILE_NAME_DOS ;
+ int NTFS_INDEX_ENTRY_END ;
+ int NTFS_INDEX_ENTRY_NODE ;
+ int NTFS_MFT_MASK ;
+ scalar_t__ NT_SUCCESS (scalar_t__) ;
+ int ReadAttribute (int *,TYPE_6__*,scalar_t__,int *,scalar_t__) ;
+ int ReleaseAttributeContext (TYPE_6__*) ;
+ scalar_t__ STATUS_OBJECT_PATH_NOT_FOUND ;
+ scalar_t__ STATUS_PENDING ;
+ scalar_t__ STATUS_SUCCESS ;
+ scalar_t__ WriteAttribute (int *,TYPE_6__*,scalar_t__,int const,scalar_t__,scalar_t__*,TYPE_9__*) ;
 
 NTSTATUS
 UpdateIndexEntryFileNameSize(PDEVICE_EXTENSION Vcb,
@@ -108,7 +108,7 @@ UpdateIndexEntryFileNameSize(PDEVICE_EXTENSION Vcb,
            NewAllocatedSize,
            CaseSensitive ? "TRUE" : "FALSE");
 
-    // find the index entry responsible for the file we're trying to update
+
     IndexEntry = FirstEntry;
     while (IndexEntry < LastEntry &&
            !(IndexEntry->Flags & NTFS_INDEX_ENTRY_END))
@@ -121,7 +121,7 @@ UpdateIndexEntryFileNameSize(PDEVICE_EXTENSION Vcb,
             *StartEntry = *CurrentEntry;
             IndexEntry->FileName.DataSize = NewDataSize;
             IndexEntry->FileName.AllocatedSize = NewAllocatedSize;
-            // indicate that the caller will still need to write the structure to the disk
+
             return STATUS_PENDING;
         }
 
@@ -130,19 +130,19 @@ UpdateIndexEntryFileNameSize(PDEVICE_EXTENSION Vcb,
         IndexEntry = (PINDEX_ENTRY_ATTRIBUTE)((PCHAR)IndexEntry + IndexEntry->Length);
     }
 
-    /* If we're already browsing a subnode */
-    if (IndexRecord == NULL)
+
+    if (IndexRecord == ((void*)0))
     {
         return STATUS_OBJECT_PATH_NOT_FOUND;
     }
 
-    /* If there's no subnode */
+
     if (!(IndexEntry->Flags & NTFS_INDEX_ENTRY_NODE))
     {
         return STATUS_OBJECT_PATH_NOT_FOUND;
     }
 
-    Status = FindAttribute(Vcb, MftRecord, AttributeIndexAllocation, L"$I30", 4, &IndexAllocationCtx, NULL);
+    Status = FindAttribute(Vcb, MftRecord, AttributeIndexAllocation, L"$I30", 4, &IndexAllocationCtx, ((void*)0));
     if (!NT_SUCCESS(Status))
     {
         DPRINT("Corrupted filesystem!\n");
@@ -167,9 +167,9 @@ UpdateIndexEntryFileNameSize(PDEVICE_EXTENSION Vcb,
         LastEntry = (PINDEX_ENTRY_ATTRIBUTE)((ULONG_PTR)&IndexBuffer->Header + IndexBuffer->Header.TotalSizeOfEntries);
         ASSERT(LastEntry <= (PINDEX_ENTRY_ATTRIBUTE)((ULONG_PTR)IndexBuffer + IndexBlockSize));
 
-        Status = UpdateIndexEntryFileNameSize(NULL,
-                                              NULL,
-                                              NULL,
+        Status = UpdateIndexEntryFileNameSize(((void*)0),
+                                              ((void*)0),
+                                              ((void*)0),
                                               0,
                                               FirstEntry,
                                               LastEntry,
@@ -182,10 +182,10 @@ UpdateIndexEntryFileNameSize(PDEVICE_EXTENSION Vcb,
                                               CaseSensitive);
         if (Status == STATUS_PENDING)
         {
-            // write the index record back to disk
+
             ULONG Written;
 
-            // first we need to update the fixup values for the index block
+
             Status = AddFixupArray(Vcb, &((PFILE_RECORD_HEADER)IndexRecord)->Ntfs);
             if (!NT_SUCCESS(Status))
             {

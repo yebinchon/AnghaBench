@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct sltg_typelib {int dummy; } ;
-typedef  int /*<<< orphan*/  dummy ;
+typedef int dummy ;
 
-/* Variables and functions */
- int /*<<< orphan*/  chat (char*) ; 
- int /*<<< orphan*/  put_data (char const*,int) ; 
+
+ int chat (char*) ;
+ int put_data (char const*,int) ;
 
 __attribute__((used)) static void sltg_write_helpstrings(struct sltg_typelib *typelib)
 {

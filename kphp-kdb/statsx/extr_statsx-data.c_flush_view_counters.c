@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct lev_stats_views_ext64 {int views; int cnt_id; } ;
 struct lev_stats_views_ext {int views; } ;
 struct counter {int views_uncommitted; int counter_id; struct counter* commit_next; } ;
 
-/* Variables and functions */
- scalar_t__ LEV_STATS_VIEWS ; 
- scalar_t__ LEV_STATS_VIEWS_64 ; 
- scalar_t__ LEV_STATS_VIEWS_EXT ; 
- scalar_t__ LEV_STATS_VIEWS_EXT_64 ; 
- void* alloc_log_event (scalar_t__,int,int) ; 
- int /*<<< orphan*/  assert (int) ; 
- struct counter* counters_commit_head ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  stderr ; 
- int verbosity ; 
+
+ scalar_t__ LEV_STATS_VIEWS ;
+ scalar_t__ LEV_STATS_VIEWS_64 ;
+ scalar_t__ LEV_STATS_VIEWS_EXT ;
+ scalar_t__ LEV_STATS_VIEWS_EXT_64 ;
+ void* alloc_log_event (scalar_t__,int,int) ;
+ int assert (int) ;
+ struct counter* counters_commit_head ;
+ int fprintf (int ,char*) ;
+ int stderr ;
+ int verbosity ;
 
 int flush_view_counters (void) {
   struct counter *C = counters_commit_head, *D;

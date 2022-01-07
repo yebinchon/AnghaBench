@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_7__ ;
-typedef  struct TYPE_16__   TYPE_5__ ;
-typedef  struct TYPE_15__   TYPE_4__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t int32_t ;
+
+
+typedef struct TYPE_17__ TYPE_7__ ;
+typedef struct TYPE_16__ TYPE_5__ ;
+typedef struct TYPE_15__ TYPE_4__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+typedef size_t int32_t ;
 struct TYPE_17__ {int vnodeIndex; } ;
-struct TYPE_16__ {TYPE_7__ cur; int /*<<< orphan*/  tag; } ;
-struct TYPE_14__ {int /*<<< orphan*/ * pTSBuf; TYPE_2__* pCtx; } ;
-struct TYPE_15__ {TYPE_3__ runtimeEnv; int /*<<< orphan*/ * pMeterSidExtInfo; int /*<<< orphan*/  pSidSet; } ;
-struct TYPE_12__ {int /*<<< orphan*/  i64Key; } ;
+struct TYPE_16__ {TYPE_7__ cur; int tag; } ;
+struct TYPE_14__ {int * pTSBuf; TYPE_2__* pCtx; } ;
+struct TYPE_15__ {TYPE_3__ runtimeEnv; int * pMeterSidExtInfo; int pSidSet; } ;
+struct TYPE_12__ {int i64Key; } ;
 struct TYPE_13__ {TYPE_1__ tag; } ;
-typedef  TYPE_3__ SQueryRuntimeEnv ;
-typedef  int /*<<< orphan*/  SOutputRes ;
-typedef  TYPE_4__ SMeterQuerySupportObj ;
-typedef  TYPE_5__ SMeterQueryInfo ;
+typedef TYPE_3__ SQueryRuntimeEnv ;
+typedef int SOutputRes ;
+typedef TYPE_4__ SMeterQuerySupportObj ;
+typedef TYPE_5__ SMeterQueryInfo ;
 
-/* Variables and functions */
- int /*<<< orphan*/  initCtxOutputBuf (TYPE_3__*) ; 
- int /*<<< orphan*/  setGroupOutputBuffer (TYPE_3__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tsBufGetElemStartPos (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tsBufSetCursor (int /*<<< orphan*/ *,TYPE_7__*) ; 
- int /*<<< orphan*/  vnodeSetTagValueInParam (int /*<<< orphan*/ ,TYPE_3__*,int /*<<< orphan*/ ) ; 
+
+ int initCtxOutputBuf (TYPE_3__*) ;
+ int setGroupOutputBuffer (TYPE_3__*,int *) ;
+ int tsBufGetElemStartPos (int *,int ,int ) ;
+ int tsBufSetCursor (int *,TYPE_7__*) ;
+ int vnodeSetTagValueInParam (int ,TYPE_3__*,int ) ;
 
 void setExecutionContext(SMeterQuerySupportObj *pSupporter, SOutputRes *outputRes, int32_t meterIdx, int32_t groupIdx,
                          SMeterQueryInfo *pMeterQueryInfo) {
@@ -44,8 +44,8 @@ void setExecutionContext(SMeterQuerySupportObj *pSupporter, SOutputRes *outputRe
 
   vnodeSetTagValueInParam(pSupporter->pSidSet, pRuntimeEnv, pSupporter->pMeterSidExtInfo[meterIdx]);
 
-  // set the right cursor position for ts buffer
-  if (pSupporter->runtimeEnv.pTSBuf != NULL) {
+
+  if (pSupporter->runtimeEnv.pTSBuf != ((void*)0)) {
     if (pMeterQueryInfo->cur.vnodeIndex == -1) {
       pMeterQueryInfo->tag = pRuntimeEnv->pCtx[0].tag.i64Key;
 

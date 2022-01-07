@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u8 ;
-typedef  scalar_t__ i64 ;
-struct TYPE_7__ {int /*<<< orphan*/  zErrMsg; } ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int u8 ;
+typedef scalar_t__ i64 ;
+struct TYPE_7__ {int zErrMsg; } ;
 struct TYPE_8__ {int* aBuffer; TYPE_1__ base; } ;
-typedef  TYPE_2__ ZipfileTab ;
+typedef TYPE_2__ ZipfileTab ;
 struct TYPE_9__ {void* iOffset; void* nSize; void* nEntryTotal; void* nEntry; void* iFirstDisk; void* iDisk; } ;
-typedef  TYPE_3__ ZipfileEOCD ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef TYPE_3__ ZipfileEOCD ;
+typedef int FILE ;
 
-/* Variables and functions */
- scalar_t__ MIN (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SEEK_END ; 
- int SQLITE_ERROR ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  ZIPFILE_BUFFER_SIZE ; 
- int /*<<< orphan*/  fseek (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ ftell (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memset (TYPE_3__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  sqlite3_mprintf (char*) ; 
- void* zipfileRead16 (int*) ; 
- void* zipfileRead32 (int*) ; 
- int zipfileReadData (int /*<<< orphan*/ *,int*,int,scalar_t__,int /*<<< orphan*/ *) ; 
+
+ scalar_t__ MIN (int,int ) ;
+ int SEEK_END ;
+ int SQLITE_ERROR ;
+ int SQLITE_OK ;
+ int ZIPFILE_BUFFER_SIZE ;
+ int fseek (int *,int ,int ) ;
+ scalar_t__ ftell (int *) ;
+ int memset (TYPE_3__*,int ,int) ;
+ int sqlite3_mprintf (char*) ;
+ void* zipfileRead16 (int*) ;
+ void* zipfileRead32 (int*) ;
+ int zipfileReadData (int *,int*,int,scalar_t__,int *) ;
 
 __attribute__((used)) static int zipfileReadEOCD(
-  ZipfileTab *pTab,               /* Return errors here */
-  const u8 *aBlob,                /* Pointer to in-memory file image */
-  int nBlob,                      /* Size of aBlob[] in bytes */
-  FILE *pFile,                    /* Read from this file if aBlob==0 */
-  ZipfileEOCD *pEOCD              /* Object to populate */
+  ZipfileTab *pTab,
+  const u8 *aBlob,
+  int nBlob,
+  FILE *pFile,
+  ZipfileEOCD *pEOCD
 ){
-  u8 *aRead = pTab->aBuffer;      /* Temporary buffer */
-  int nRead;                      /* Bytes to read from file */
+  u8 *aRead = pTab->aBuffer;
+  int nRead;
   int rc = SQLITE_OK;
 
   if( aBlob==0 ){
-    i64 iOff;                     /* Offset to read from */
-    i64 szFile;                   /* Total size of file in bytes */
+    i64 iOff;
+    i64 szFile;
     fseek(pFile, 0, SEEK_END);
     szFile = (i64)ftell(pFile);
     if( szFile==0 ){
@@ -67,10 +67,10 @@ __attribute__((used)) static int zipfileReadEOCD(
   if( rc==SQLITE_OK ){
     int i;
 
-    /* Scan backwards looking for the signature bytes */
+
     for(i=nRead-20; i>=0; i--){
-      if( aRead[i]==0x50 && aRead[i+1]==0x4b 
-       && aRead[i+2]==0x05 && aRead[i+3]==0x06 
+      if( aRead[i]==0x50 && aRead[i+1]==0x4b
+       && aRead[i+2]==0x05 && aRead[i+3]==0x06
       ){
         break;
       }

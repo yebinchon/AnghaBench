@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint64_t ;
-typedef  scalar_t__ uint32_t ;
-typedef  int /*<<< orphan*/  SRes ;
-typedef  int /*<<< orphan*/  CSzData ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RINOK (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SZ_ERROR_UNSUPPORTED ; 
- int /*<<< orphan*/  SZ_OK ; 
- int /*<<< orphan*/  SzReadNumber (int /*<<< orphan*/ *,int*) ; 
+
+
+
+typedef int uint64_t ;
+typedef scalar_t__ uint32_t ;
+typedef int SRes ;
+typedef int CSzData ;
+
+
+ int RINOK (int ) ;
+ int SZ_ERROR_UNSUPPORTED ;
+ int SZ_OK ;
+ int SzReadNumber (int *,int*) ;
 
 __attribute__((used)) static SRes SzReadNumber32(CSzData *sd, uint32_t *value)
 {

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_6__ {int selFlags; scalar_t__ op; int nSelectRow; struct TYPE_6__* pNext; scalar_t__ pLimit; struct TYPE_6__* pPrior; TYPE_1__* pEList; } ;
 struct TYPE_5__ {scalar_t__ nExpr; } ;
-typedef  int /*<<< orphan*/  SelectDest ;
-typedef  TYPE_2__ Select ;
-typedef  int /*<<< orphan*/  Parse ;
+typedef int SelectDest ;
+typedef TYPE_2__ Select ;
+typedef int Parse ;
 
-/* Variables and functions */
- int SF_MultiValue ; 
- int SF_Values ; 
- scalar_t__ TK_ALL ; 
- scalar_t__ TK_SELECT ; 
- int /*<<< orphan*/  assert (int) ; 
- int sqlite3Select (int /*<<< orphan*/ *,TYPE_2__*,int /*<<< orphan*/ *) ; 
+
+ int SF_MultiValue ;
+ int SF_Values ;
+ scalar_t__ TK_ALL ;
+ scalar_t__ TK_SELECT ;
+ int assert (int) ;
+ int sqlite3Select (int *,TYPE_2__*,int *) ;
 
 __attribute__((used)) static int multiSelectValues(
-  Parse *pParse,        /* Parsing context */
-  Select *p,            /* The right-most of SELECTs to be coded */
-  SelectDest *pDest     /* What to do with query results */
+  Parse *pParse,
+  Select *p,
+  SelectDest *pDest
 ){
   Select *pPrior;
   Select *pRightmost = p;

@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int NLE_FAILURE ; 
- int NLE_MAX ; 
- int abs (int) ; 
- char const** errmsg ; 
+ int NLE_FAILURE ;
+ int NLE_MAX ;
+ int abs (int) ;
+ char const** errmsg ;
 
 const char *nl_geterror(int error)
 {
-	error = abs(error);
+ error = abs(error);
 
-	if (error > NLE_MAX)
-		error = NLE_FAILURE;
+ if (error > NLE_MAX)
+  error = NLE_FAILURE;
 
-	return errmsg[error];
+ return errmsg[error];
 }

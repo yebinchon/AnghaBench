@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct knote {size_t kn_filtid; } ;
 struct filterops {int dummy; } ;
 
-/* Variables and functions */
- struct filterops const** sysfilt_ops ; 
+
+ struct filterops const** sysfilt_ops ;
 
 const struct filterops *
 knote_fops(struct knote *kn)
 {
-	return sysfilt_ops[kn->kn_filtid];
+ return sysfilt_ops[kn->kn_filtid];
 }

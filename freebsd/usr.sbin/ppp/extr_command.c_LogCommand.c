@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct cmdargs {int argn; int argc; int /*<<< orphan*/  bundle; int /*<<< orphan*/  argv; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Concatinate (char*,int,int,char const* const*) ; 
- int LINE_LEN ; 
- int /*<<< orphan*/  LogLOG ; 
- int /*<<< orphan*/  LogWARN ; 
- int MAXARGS ; 
- int /*<<< orphan*/  command_Expand (char**,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  command_Free (int,char**) ; 
- int /*<<< orphan*/  getpid () ; 
- int /*<<< orphan*/  log_Printf (int /*<<< orphan*/ ,char*,...) ; 
+
+
+
+struct cmdargs {int argn; int argc; int bundle; int argv; } ;
+
+
+ int Concatinate (char*,int,int,char const* const*) ;
+ int LINE_LEN ;
+ int LogLOG ;
+ int LogWARN ;
+ int MAXARGS ;
+ int command_Expand (char**,int,int ,int ,int,int ) ;
+ int command_Free (int,char**) ;
+ int getpid () ;
+ int log_Printf (int ,char*,...) ;
 
 __attribute__((used)) static int
 LogCommand(struct cmdargs const *arg)

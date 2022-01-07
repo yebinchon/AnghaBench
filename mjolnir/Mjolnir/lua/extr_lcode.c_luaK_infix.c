@@ -1,63 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  expdesc ;
-typedef  int /*<<< orphan*/  FuncState ;
-typedef  int BinOpr ;
 
-/* Variables and functions */
-#define  OPR_ADD 142 
-#define  OPR_AND 141 
-#define  OPR_BAND 140 
-#define  OPR_BOR 139 
-#define  OPR_BXOR 138 
-#define  OPR_CONCAT 137 
-#define  OPR_DIV 136 
-#define  OPR_IDIV 135 
-#define  OPR_MOD 134 
-#define  OPR_MUL 133 
-#define  OPR_OR 132 
-#define  OPR_POW 131 
-#define  OPR_SHL 130 
-#define  OPR_SHR 129 
-#define  OPR_SUB 128 
- int /*<<< orphan*/  luaK_exp2RK (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  luaK_exp2nextreg (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  luaK_goiffalse (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  luaK_goiftrue (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tonumeral (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int expdesc ;
+typedef int FuncState ;
+typedef int BinOpr ;
+ int luaK_exp2RK (int *,int *) ;
+ int luaK_exp2nextreg (int *,int *) ;
+ int luaK_goiffalse (int *,int *) ;
+ int luaK_goiftrue (int *,int *) ;
+ int tonumeral (int *,int *) ;
 
 void luaK_infix (FuncState *fs, BinOpr op, expdesc *v) {
   switch (op) {
-    case OPR_AND: {
-      luaK_goiftrue(fs, v);  /* go ahead only if 'v' is true */
+    case 141: {
+      luaK_goiftrue(fs, v);
       break;
     }
-    case OPR_OR: {
-      luaK_goiffalse(fs, v);  /* go ahead only if 'v' is false */
+    case 132: {
+      luaK_goiffalse(fs, v);
       break;
     }
-    case OPR_CONCAT: {
-      luaK_exp2nextreg(fs, v);  /* operand must be on the 'stack' */
+    case 137: {
+      luaK_exp2nextreg(fs, v);
       break;
     }
-    case OPR_ADD: case OPR_SUB:
-    case OPR_MUL: case OPR_DIV: case OPR_IDIV:
-    case OPR_MOD: case OPR_POW:
-    case OPR_BAND: case OPR_BOR: case OPR_BXOR:
-    case OPR_SHL: case OPR_SHR: {
-      if (!tonumeral(v, NULL))
+    case 142: case 128:
+    case 133: case 136: case 135:
+    case 134: case 131:
+    case 140: case 139: case 138:
+    case 130: case 129: {
+      if (!tonumeral(v, ((void*)0)))
         luaK_exp2RK(fs, v);
-      /* else keep numeral, which may be folded with 2nd operand */
+
       break;
     }
     default: {

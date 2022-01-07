@@ -1,80 +1,80 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  user ;
-typedef  int /*<<< orphan*/  rating ;
-typedef  int /*<<< orphan*/  kfs_file_handle_t ;
-struct TYPE_8__ {int user_cnt; TYPE_1__* user_index; int /*<<< orphan*/  log_pos1_crc32; int /*<<< orphan*/  log_pos1; int /*<<< orphan*/  log_timestamp; int /*<<< orphan*/  created_at; } ;
-struct TYPE_7__ {struct TYPE_7__* prev_used; struct TYPE_7__* next_used; int /*<<< orphan*/  flags; } ;
-struct TYPE_6__ {int /*<<< orphan*/  flags; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GET_USER_INFO (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GET_USER_RATING_STATE (int /*<<< orphan*/ ) ; 
- TYPE_2__* LRU_head ; 
- int MAX_CNT ; 
- int MAX_K ; 
- int MAX_RATING_NUM ; 
- int MAX_USR_SIZE ; 
- int /*<<< orphan*/  SET_USER_INFO (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SET_USER_RATING_STATE (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert (int) ; 
- void* buff ; 
- void* buffer ; 
- int /*<<< orphan*/  chg_list_init (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- void* d ; 
- void* dl_malloc (int) ; 
- int /*<<< orphan*/  dl_malloc0 (int) ; 
- void** dp ; 
- int estimate_users ; 
- int /*<<< orphan*/  exc ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,long) ; 
- int /*<<< orphan*/  global_changes_en ; 
- int /*<<< orphan*/  global_changes_st ; 
- void* h_buff ; 
- TYPE_4__ header ; 
- void* heap ; 
- void* i_buff ; 
- scalar_t__ index_mode ; 
- int index_users ; 
- void* intersect_buff ; 
- int /*<<< orphan*/  jump_log_crc32 ; 
- int /*<<< orphan*/  jump_log_pos ; 
- int /*<<< orphan*/  jump_log_ts ; 
- int load_header (int /*<<< orphan*/ ) ; 
- int log_ts_exact_interval ; 
- int /*<<< orphan*/  ltbl_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ltbl_set_size (int /*<<< orphan*/ *,int) ; 
- void* new_h ; 
- void* new_obj ; 
- void* object_buf ; 
- void* object_indexes ; 
- void* object_ratings ; 
- void* object_ratings_to_sort ; 
- void* objects_to_sort ; 
- void* objects_typeids_to_sort ; 
- int /*<<< orphan*/  ratingT ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  try_init_local_user_id () ; 
- void* type_ids ; 
- int /*<<< orphan*/  user_init (TYPE_2__*) ; 
- int /*<<< orphan*/  user_table ; 
- TYPE_2__* users ; 
- int verbosity ; 
- void* weight ; 
- scalar_t__ write_only ; 
+
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int user ;
+typedef int rating ;
+typedef int kfs_file_handle_t ;
+struct TYPE_8__ {int user_cnt; TYPE_1__* user_index; int log_pos1_crc32; int log_pos1; int log_timestamp; int created_at; } ;
+struct TYPE_7__ {struct TYPE_7__* prev_used; struct TYPE_7__* next_used; int flags; } ;
+struct TYPE_6__ {int flags; } ;
+
+
+ int GET_USER_INFO (int ) ;
+ int GET_USER_RATING_STATE (int ) ;
+ TYPE_2__* LRU_head ;
+ int MAX_CNT ;
+ int MAX_K ;
+ int MAX_RATING_NUM ;
+ int MAX_USR_SIZE ;
+ int SET_USER_INFO (int ,int ) ;
+ int SET_USER_RATING_STATE (int ,int ) ;
+ int assert (int) ;
+ void* buff ;
+ void* buffer ;
+ int chg_list_init (int *,int *) ;
+ void* d ;
+ void* dl_malloc (int) ;
+ int dl_malloc0 (int) ;
+ void** dp ;
+ int estimate_users ;
+ int exc ;
+ int fprintf (int ,char*,long) ;
+ int global_changes_en ;
+ int global_changes_st ;
+ void* h_buff ;
+ TYPE_4__ header ;
+ void* heap ;
+ void* i_buff ;
+ scalar_t__ index_mode ;
+ int index_users ;
+ void* intersect_buff ;
+ int jump_log_crc32 ;
+ int jump_log_pos ;
+ int jump_log_ts ;
+ int load_header (int ) ;
+ int log_ts_exact_interval ;
+ int ltbl_init (int *) ;
+ int ltbl_set_size (int *,int) ;
+ void* new_h ;
+ void* new_obj ;
+ void* object_buf ;
+ void* object_indexes ;
+ void* object_ratings ;
+ void* object_ratings_to_sort ;
+ void* objects_to_sort ;
+ void* objects_typeids_to_sort ;
+ int ratingT ;
+ int stderr ;
+ int try_init_local_user_id () ;
+ void* type_ids ;
+ int user_init (TYPE_2__*) ;
+ int user_table ;
+ TYPE_2__* users ;
+ int verbosity ;
+ void* weight ;
+ scalar_t__ write_only ;
 
 int init_all (kfs_file_handle_t Index) {
   int i;
@@ -101,12 +101,12 @@ int init_all (kfs_file_handle_t Index) {
     object_ratings_to_sort = dl_malloc ((MAX_CNT + 1) * sizeof (rating));
     h_buff = dl_malloc (MAX_USR_SIZE);
 
-#ifdef HINTS
-    i_buff = dl_malloc (MAX_USR_SIZE);
-    new_h = dl_malloc (MAX_USR_SIZE);
-    object_indexes = dl_malloc ((MAX_CNT + 1) * sizeof (int));
-    object_buf = dl_malloc (MAX_USR_SIZE);
-#endif
+
+
+
+
+
+
   } else {
     int i;
     for (i = 0; i <= MAX_K; i++) {
@@ -119,11 +119,11 @@ int init_all (kfs_file_handle_t Index) {
     objects_typeids_to_sort = dl_malloc (MAX_CNT * sizeof (long long));
     objects_to_sort = dl_malloc (MAX_CNT * sizeof (int));
 
-#ifdef HINTS
-    intersect_buff = dl_malloc ((MAX_CNT + 1) * sizeof (int));
-#else
+
+
+
     exc = dl_malloc0 ((MAX_CNT + 1) * sizeof (int));
-#endif
+
   }
 
   chg_list_init (&global_changes_st, &global_changes_en);
@@ -162,7 +162,7 @@ int init_all (kfs_file_handle_t Index) {
   }
 
   for (i = 1; i <= header.user_cnt; i++) {
-    users[i].flags = SET_USER_INFO         (users[i].flags, GET_USER_INFO         (header.user_index[i].flags));
+    users[i].flags = SET_USER_INFO (users[i].flags, GET_USER_INFO (header.user_index[i].flags));
     users[i].flags = SET_USER_RATING_STATE (users[i].flags, GET_USER_RATING_STATE (header.user_index[i].flags));
   }
 

@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  spin_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ssp_chip_select (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ssp_lock ; 
+ int spin_unlock (int *) ;
+ int ssp_chip_select (int ) ;
+ int ssp_lock ;
 
 __attribute__((used)) static void ssp_release (void)
 {
-	ssp_chip_select (0);	/* just in case */
-	spin_unlock (&ssp_lock);
+ ssp_chip_select (0);
+ spin_unlock (&ssp_lock);
 }

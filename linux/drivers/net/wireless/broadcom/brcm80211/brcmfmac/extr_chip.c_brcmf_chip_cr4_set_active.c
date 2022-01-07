@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u32 ;
 struct brcmf_core {int dummy; } ;
-struct brcmf_chip_priv {int /*<<< orphan*/  pub; int /*<<< orphan*/  ctx; TYPE_1__* ops; } ;
-struct TYPE_2__ {int /*<<< orphan*/  (* activate ) (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ;} ;
+struct brcmf_chip_priv {int pub; int ctx; TYPE_1__* ops; } ;
+struct TYPE_2__ {int (* activate ) (int ,int *,int ) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARMCR4_BCMA_IOCTL_CPUHALT ; 
- int /*<<< orphan*/  BCMA_CORE_ARM_CR4 ; 
- struct brcmf_core* brcmf_chip_get_core (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  brcmf_chip_resetcore (struct brcmf_core*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int ARMCR4_BCMA_IOCTL_CPUHALT ;
+ int BCMA_CORE_ARM_CR4 ;
+ struct brcmf_core* brcmf_chip_get_core (int *,int ) ;
+ int brcmf_chip_resetcore (struct brcmf_core*,int ,int ,int ) ;
+ int stub1 (int ,int *,int ) ;
 
 __attribute__((used)) static bool brcmf_chip_cr4_set_active(struct brcmf_chip_priv *chip, u32 rstvec)
 {
-	struct brcmf_core *core;
+ struct brcmf_core *core;
 
-	chip->ops->activate(chip->ctx, &chip->pub, rstvec);
+ chip->ops->activate(chip->ctx, &chip->pub, rstvec);
 
-	/* restore ARM */
-	core = brcmf_chip_get_core(&chip->pub, BCMA_CORE_ARM_CR4);
-	brcmf_chip_resetcore(core, ARMCR4_BCMA_IOCTL_CPUHALT, 0, 0);
 
-	return true;
+ core = brcmf_chip_get_core(&chip->pub, BCMA_CORE_ARM_CR4);
+ brcmf_chip_resetcore(core, ARMCR4_BCMA_IOCTL_CPUHALT, 0, 0);
+
+ return 1;
 }

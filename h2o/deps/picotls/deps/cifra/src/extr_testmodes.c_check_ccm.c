@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int /*<<< orphan*/  cf_aes_context ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TEST_CHECK (int) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  cf_aes ; 
- int /*<<< orphan*/  cf_aes_init (int /*<<< orphan*/ *,void const*,size_t) ; 
- int cf_ccm_decrypt (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void const*,size_t,int,void const*,size_t,void const*,size_t,int*,size_t,int*) ; 
- int /*<<< orphan*/  cf_ccm_encrypt (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void const*,size_t,int,void const*,size_t,void const*,size_t,int*,int*,size_t) ; 
- scalar_t__ memcmp (int*,void const*,size_t) ; 
+
+
+
+typedef int uint8_t ;
+typedef int cf_aes_context ;
+
+
+ int TEST_CHECK (int) ;
+ int assert (int) ;
+ int cf_aes ;
+ int cf_aes_init (int *,void const*,size_t) ;
+ int cf_ccm_decrypt (int *,int *,void const*,size_t,int,void const*,size_t,void const*,size_t,int*,size_t,int*) ;
+ int cf_ccm_encrypt (int *,int *,void const*,size_t,int,void const*,size_t,void const*,size_t,int*,int*,size_t) ;
+ scalar_t__ memcmp (int*,void const*,size_t) ;
 
 __attribute__((used)) static void check_ccm(const void *key, size_t nkey,
                       const void *header, size_t nheader,
@@ -57,7 +57,7 @@ __attribute__((used)) static void check_ccm(const void *key, size_t nkey,
   TEST_CHECK(memcmp(decrypted, plain, nplain) == 0);
 
   tag[0] ^= 0xff;
-  
+
   err = cf_ccm_decrypt(&cf_aes, &ctx,
                        expect_cipher, ncipher, 15 - nnonce,
                        header, nheader,

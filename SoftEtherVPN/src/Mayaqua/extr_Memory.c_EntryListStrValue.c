@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  LIST ;
 
-/* Variables and functions */
- char* IniStrValue (int /*<<< orphan*/ *,char*) ; 
+
+
+
+typedef int LIST ;
+
+
+ char* IniStrValue (int *,char*) ;
 
 char *EntryListStrValue(LIST *o, char *key)
 {
-	return IniStrValue(o, key);
+ return IniStrValue(o, key);
 }

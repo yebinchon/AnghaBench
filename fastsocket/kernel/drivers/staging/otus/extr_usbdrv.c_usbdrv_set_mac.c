@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct usbdrv_private {int /*<<< orphan*/  isolate_lock; scalar_t__ driver_isolated; } ;
+
+
+
+
+struct usbdrv_private {int isolate_lock; scalar_t__ driver_isolated; } ;
 struct net_device {struct usbdrv_private* ml_priv; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  read_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  read_unlock (int /*<<< orphan*/ *) ; 
+
+ int read_lock (int *) ;
+ int read_unlock (int *) ;
 
 int usbdrv_set_mac(struct net_device *dev, void *addr)
 {

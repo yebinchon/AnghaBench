@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int remaining; int /*<<< orphan*/ * baton; int /*<<< orphan*/  freefunc; void* original; void* current; } ;
-typedef  TYPE_1__ simple_context_t ;
-typedef  int /*<<< orphan*/  serf_bucket_t ;
-typedef  int /*<<< orphan*/  serf_bucket_alloc_t ;
-typedef  int apr_size_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free_copied_data ; 
- int /*<<< orphan*/  memcpy (char*,char const*,int) ; 
- int /*<<< orphan*/ * serf_bucket_create (int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_1__*) ; 
- void* serf_bucket_mem_alloc (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  serf_bucket_type_simple ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int remaining; int * baton; int freefunc; void* original; void* current; } ;
+typedef TYPE_1__ simple_context_t ;
+typedef int serf_bucket_t ;
+typedef int serf_bucket_alloc_t ;
+typedef int apr_size_t ;
+
+
+ int free_copied_data ;
+ int memcpy (char*,char const*,int) ;
+ int * serf_bucket_create (int *,int *,TYPE_1__*) ;
+ void* serf_bucket_mem_alloc (int *,int) ;
+ int serf_bucket_type_simple ;
 
 serf_bucket_t *serf_bucket_simple_copy_create(
     const char *data, apr_size_t len,

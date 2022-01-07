@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  device_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BUS_PROBE_DEFAULT ; 
- int ENXIO ; 
- int mii_phy_dev_probe (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rlswitches ; 
+
+
+
+typedef int device_t ;
+
+
+ int BUS_PROBE_DEFAULT ;
+ int ENXIO ;
+ int mii_phy_dev_probe (int ,int ,int ) ;
+ int rlswitches ;
 
 __attribute__((used)) static int
 rlswitch_probe(device_t dev)
 {
-	int rv;
+ int rv;
 
-	rv = mii_phy_dev_probe(dev, rlswitches, BUS_PROBE_DEFAULT);
-	if (rv <= 0)
-		return (rv);
+ rv = mii_phy_dev_probe(dev, rlswitches, BUS_PROBE_DEFAULT);
+ if (rv <= 0)
+  return (rv);
 
-	return (ENXIO);
+ return (ENXIO);
 }

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  data; } ;
-typedef  TYPE_1__ svn_stringbuf_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct svnlook_opt_state {int /*<<< orphan*/  verbose; int /*<<< orphan*/  quiet; int /*<<< orphan*/  version; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_getopt_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- char* _ (char*) ; 
- int /*<<< orphan*/  cmd_table ; 
- int /*<<< orphan*/  options_table ; 
- int /*<<< orphan*/  svn_fs_print_modules (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_opt_print_help4 (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- TYPE_1__* svn_stringbuf_create (char const*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int data; } ;
+typedef TYPE_1__ svn_stringbuf_t ;
+typedef int svn_error_t ;
+struct svnlook_opt_state {int verbose; int quiet; int version; } ;
+typedef int apr_pool_t ;
+typedef int apr_getopt_t ;
+
+
+ int FALSE ;
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ char* _ (char*) ;
+ int cmd_table ;
+ int options_table ;
+ int svn_fs_print_modules (TYPE_1__*,int *) ;
+ int svn_opt_print_help4 (int *,char*,int ,int ,int ,int ,char const*,int ,int ,int *,int *,int *) ;
+ TYPE_1__* svn_stringbuf_create (char const*,int *) ;
 
 __attribute__((used)) static svn_error_t *
 subcommand_help(apr_getopt_t *os, void *baton, apr_pool_t *pool)
@@ -57,8 +57,8 @@ subcommand_help(apr_getopt_t *os, void *baton, apr_pool_t *pool)
                               opt_state ? opt_state->quiet : FALSE,
                               opt_state ? opt_state->verbose : FALSE,
                               version_footer->data,
-                              header, cmd_table, options_table, NULL,
-                              NULL, pool));
+                              header, cmd_table, options_table, ((void*)0),
+                              ((void*)0), pool));
 
   return SVN_NO_ERROR;
 }

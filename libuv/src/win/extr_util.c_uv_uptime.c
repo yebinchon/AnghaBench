@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_5__ ;
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint64_t ;
-typedef  int /*<<< orphan*/  stack_buffer ;
+
+
+typedef struct TYPE_10__ TYPE_5__ ;
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint64_t ;
+typedef int stack_buffer ;
 struct TYPE_10__ {int CounterNameTitleIndex; int CounterSize; int CounterOffset; int CounterType; int ByteLength; } ;
-struct TYPE_9__ {int HeaderLength; int /*<<< orphan*/  Signature; } ;
+struct TYPE_9__ {int HeaderLength; int Signature; } ;
 struct TYPE_7__ {scalar_t__ QuadPart; } ;
 struct TYPE_6__ {scalar_t__ QuadPart; } ;
 struct TYPE_8__ {scalar_t__ NumInstances; int HeaderLength; int NumCounters; int DefinitionLength; TYPE_2__ PerfFreq; TYPE_1__ PerfTime; } ;
-typedef  TYPE_3__ PERF_OBJECT_TYPE ;
-typedef  TYPE_4__ PERF_DATA_BLOCK ;
-typedef  TYPE_5__ PERF_COUNTER_DEFINITION ;
-typedef  scalar_t__ LONG ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  BYTE ;
+typedef TYPE_3__ PERF_OBJECT_TYPE ;
+typedef TYPE_4__ PERF_DATA_BLOCK ;
+typedef TYPE_5__ PERF_COUNTER_DEFINITION ;
+typedef scalar_t__ LONG ;
+typedef int DWORD ;
+typedef int BYTE ;
 
-/* Variables and functions */
- scalar_t__ ERROR_MORE_DATA ; 
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  HKEY_PERFORMANCE_DATA ; 
- scalar_t__ PERF_NO_INSTANCES ; 
- int PERF_OBJECT_TIMER ; 
- scalar_t__ RegQueryValueExW (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*) ; 
- int UV_EIO ; 
- int UV_ENOMEM ; 
- int UV_ENOSYS ; 
- double floor (double) ; 
- int /*<<< orphan*/  uv__free (int /*<<< orphan*/ *) ; 
- scalar_t__ uv__malloc (size_t) ; 
- int uv_translate_sys_error (scalar_t__) ; 
- scalar_t__ wmemcmp (int /*<<< orphan*/ ,char*,int) ; 
+
+ scalar_t__ ERROR_MORE_DATA ;
+ scalar_t__ ERROR_SUCCESS ;
+ int HKEY_PERFORMANCE_DATA ;
+ scalar_t__ PERF_NO_INSTANCES ;
+ int PERF_OBJECT_TIMER ;
+ scalar_t__ RegQueryValueExW (int ,char*,int *,int *,int *,int*) ;
+ int UV_EIO ;
+ int UV_ENOMEM ;
+ int UV_ENOSYS ;
+ double floor (double) ;
+ int uv__free (int *) ;
+ scalar_t__ uv__malloc (size_t) ;
+ int uv_translate_sys_error (scalar_t__) ;
+ scalar_t__ wmemcmp (int ,char*,int) ;
 
 int uv_uptime(double* uptime) {
   BYTE stack_buffer[4096];
-  BYTE* malloced_buffer = NULL;
+  BYTE* malloced_buffer = ((void*)0);
   BYTE* buffer = (BYTE*) stack_buffer;
   size_t buffer_size = sizeof(stack_buffer);
   DWORD data_size;
@@ -64,8 +64,8 @@ int uv_uptime(double* uptime) {
     data_size = (DWORD) buffer_size;
     result = RegQueryValueExW(HKEY_PERFORMANCE_DATA,
                               L"2",
-                              NULL,
-                              NULL,
+                              ((void*)0),
+                              ((void*)0),
                               buffer,
                               &data_size);
     if (result == ERROR_SUCCESS) {
@@ -76,7 +76,7 @@ int uv_uptime(double* uptime) {
     }
 
     buffer_size *= 2;
-    /* Don't let the buffer grow infinitely. */
+
     if (buffer_size > 1 << 20) {
       goto internalError;
     }
@@ -84,7 +84,7 @@ int uv_uptime(double* uptime) {
     uv__free(malloced_buffer);
 
     buffer = malloced_buffer = (BYTE*) uv__malloc(buffer_size);
-    if (malloced_buffer == NULL) {
+    if (malloced_buffer == ((void*)0)) {
       *uptime = 0;
       return UV_ENOMEM;
     }
@@ -134,7 +134,7 @@ int uv_uptime(double* uptime) {
         ((BYTE*) counter_definition + counter_definition->ByteLength);
   }
 
-  /* If we get here, the uptime value was not found. */
+
   uv__free(malloced_buffer);
   *uptime = 0;
   return UV_ENOSYS;

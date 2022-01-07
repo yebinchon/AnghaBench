@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int installed; } ;
-struct radeon_device {int /*<<< orphan*/  hotplug_work; int /*<<< orphan*/  pdev; scalar_t__ msi_enabled; TYPE_1__ irq; int /*<<< orphan*/  ddev; } ;
+struct radeon_device {int hotplug_work; int pdev; scalar_t__ msi_enabled; TYPE_1__ irq; int ddev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  drm_irq_uninstall (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  flush_delayed_work (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pci_disable_msi (int /*<<< orphan*/ ) ; 
+
+ int drm_irq_uninstall (int ) ;
+ int flush_delayed_work (int *) ;
+ int pci_disable_msi (int ) ;
 
 void radeon_irq_kms_fini(struct radeon_device *rdev)
 {
-	if (rdev->irq.installed) {
-		drm_irq_uninstall(rdev->ddev);
-		rdev->irq.installed = false;
-		if (rdev->msi_enabled)
-			pci_disable_msi(rdev->pdev);
-		flush_delayed_work(&rdev->hotplug_work);
-	}
+ if (rdev->irq.installed) {
+  drm_irq_uninstall(rdev->ddev);
+  rdev->irq.installed = 0;
+  if (rdev->msi_enabled)
+   pci_disable_msi(rdev->pdev);
+  flush_delayed_work(&rdev->hotplug_work);
+ }
 }

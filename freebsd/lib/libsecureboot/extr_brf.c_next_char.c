@@ -1,37 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  is_ign (int) ; 
+ int is_ign (int) ;
 
 __attribute__((used)) static int
 next_char(const char **ps, const char *limit)
 {
-	for (;;) {
-		int c;
+ for (;;) {
+  int c;
 
-		if (*ps == limit) {
-			return (0);
-		}
-		c = *(*ps) ++;
-		if (c == 0) {
-			return (0);
-		}
-		if (c >= 'A' && c <= 'Z') {
-			c += 'a' - 'A';
-		}
-		if (!is_ign(c)) {
-			return (c);
-		}
-	}
+  if (*ps == limit) {
+   return (0);
+  }
+  c = *(*ps) ++;
+  if (c == 0) {
+   return (0);
+  }
+  if (c >= 'A' && c <= 'Z') {
+   c += 'a' - 'A';
+  }
+  if (!is_ign(c)) {
+   return (c);
+  }
+ }
 }

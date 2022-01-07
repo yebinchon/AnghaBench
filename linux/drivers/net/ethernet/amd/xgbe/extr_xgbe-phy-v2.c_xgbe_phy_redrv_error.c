@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct xgbe_phy_data {scalar_t__ redrv_if; int redrv_model; int redrv_lane; int /*<<< orphan*/  redrv; } ;
 
-/* Variables and functions */
- scalar_t__ XGBE_PHY_REDRV_IF_MAX ; 
-#define  XGBE_PHY_REDRV_MODEL_4223 129 
-#define  XGBE_PHY_REDRV_MODEL_4227 128 
+
+
+
+struct xgbe_phy_data {scalar_t__ redrv_if; int redrv_model; int redrv_lane; int redrv; } ;
+
+
+ scalar_t__ XGBE_PHY_REDRV_IF_MAX ;
+
+
 
 __attribute__((used)) static bool xgbe_phy_redrv_error(struct xgbe_phy_data *phy_data)
 {
-	if (!phy_data->redrv)
-		return false;
+ if (!phy_data->redrv)
+  return 0;
 
-	if (phy_data->redrv_if >= XGBE_PHY_REDRV_IF_MAX)
-		return true;
+ if (phy_data->redrv_if >= XGBE_PHY_REDRV_IF_MAX)
+  return 1;
 
-	switch (phy_data->redrv_model) {
-	case XGBE_PHY_REDRV_MODEL_4223:
-		if (phy_data->redrv_lane > 3)
-			return true;
-		break;
-	case XGBE_PHY_REDRV_MODEL_4227:
-		if (phy_data->redrv_lane > 1)
-			return true;
-		break;
-	default:
-		return true;
-	}
+ switch (phy_data->redrv_model) {
+ case 129:
+  if (phy_data->redrv_lane > 3)
+   return 1;
+  break;
+ case 128:
+  if (phy_data->redrv_lane > 1)
+   return 1;
+  break;
+ default:
+  return 1;
+ }
 
-	return false;
+ return 0;
 }

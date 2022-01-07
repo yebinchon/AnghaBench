@@ -1,63 +1,63 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  szBuffer ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  VOID ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int szBuffer ;
+typedef int WCHAR ;
+typedef int VOID ;
 struct TYPE_7__ {TYPE_2__* pServiceFailure; } ;
-struct TYPE_6__ {int dwResetPeriod; int* lpCommand; TYPE_1__* lpsaActions; int /*<<< orphan*/  cActions; } ;
+struct TYPE_6__ {int dwResetPeriod; int* lpCommand; TYPE_1__* lpsaActions; int cActions; } ;
 struct TYPE_5__ {int Type; int Delay; } ;
-typedef  int* PWSTR ;
-typedef  TYPE_3__* PRECOVERYDATA ;
-typedef  int /*<<< orphan*/  LPARAM ;
-typedef  scalar_t__ LONG_PTR ;
-typedef  int INT ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  size_t DWORD ;
+typedef int* PWSTR ;
+typedef TYPE_3__* PRECOVERYDATA ;
+typedef int LPARAM ;
+typedef scalar_t__ LONG_PTR ;
+typedef int INT ;
+typedef int HWND ;
+typedef size_t DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BM_SETCHECK ; 
- int BST_CHECKED ; 
- int /*<<< orphan*/  CB_SETCURSEL ; 
- int /*<<< orphan*/  CopyMemory (int /*<<< orphan*/ *,int*,int) ; 
- int /*<<< orphan*/  EnableWindow (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetDlgItem (int /*<<< orphan*/ ,int) ; 
- int IDC_ADD_FAILCOUNT ; 
- int IDC_FIRST_FAILURE ; 
- int IDC_PARAMETERS ; 
- int IDC_PROGRAM ; 
- int IDC_RESET_TIME ; 
- int IDC_RESTART_OPTIONS ; 
- int IDC_RESTART_TEXT1 ; 
- int IDC_RESTART_TEXT2 ; 
- int IDC_RESTART_TIME ; 
- int IDC_RUN_GROUPBOX ; 
-#define  SC_ACTION_NONE 131 
-#define  SC_ACTION_REBOOT 130 
-#define  SC_ACTION_RESTART 129 
-#define  SC_ACTION_RUN_COMMAND 128 
- int /*<<< orphan*/  SendDlgItemMessageW (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  WM_SETTEXT ; 
- int /*<<< orphan*/  ZeroMemory (int /*<<< orphan*/ *,int) ; 
- scalar_t__ iswspace (int) ; 
- size_t min (int /*<<< orphan*/ ,int) ; 
- int* wcschr (int*,int) ; 
- int /*<<< orphan*/  wcscpy (int /*<<< orphan*/ *,int*) ; 
- int* wcsstr (int*,char*) ; 
- int /*<<< orphan*/  wsprintf (int /*<<< orphan*/ *,char*,int) ; 
+
+ int BM_SETCHECK ;
+ int BST_CHECKED ;
+ int CB_SETCURSEL ;
+ int CopyMemory (int *,int*,int) ;
+ int EnableWindow (int ,int ) ;
+ int GetDlgItem (int ,int) ;
+ int IDC_ADD_FAILCOUNT ;
+ int IDC_FIRST_FAILURE ;
+ int IDC_PARAMETERS ;
+ int IDC_PROGRAM ;
+ int IDC_RESET_TIME ;
+ int IDC_RESTART_OPTIONS ;
+ int IDC_RESTART_TEXT1 ;
+ int IDC_RESTART_TEXT2 ;
+ int IDC_RESTART_TIME ;
+ int IDC_RUN_GROUPBOX ;
+
+
+
+
+ int SendDlgItemMessageW (int ,int,int ,int,int ) ;
+ int TRUE ;
+ int WM_SETTEXT ;
+ int ZeroMemory (int *,int) ;
+ scalar_t__ iswspace (int) ;
+ size_t min (int ,int) ;
+ int* wcschr (int*,int) ;
+ int wcscpy (int *,int*) ;
+ int* wcsstr (int*,char*) ;
+ int wsprintf (int *,char*,int) ;
 
 __attribute__((used)) static
 VOID
@@ -76,11 +76,11 @@ ShowFailureActions(
 
         switch (pRecoveryData->pServiceFailure->lpsaActions[i].Type)
         {
-            case SC_ACTION_NONE:
+            case 131:
                 index = 0;
                 break;
 
-            case SC_ACTION_RESTART:
+            case 129:
                 index = 1;
 
                 wsprintf(szBuffer, L"%lu", pRecoveryData->pServiceFailure->lpsaActions[i].Delay / 60000);
@@ -94,13 +94,13 @@ ShowFailureActions(
                      EnableWindow(GetDlgItem(hwndDlg, id), TRUE);
                 break;
 
-            case SC_ACTION_REBOOT:
+            case 130:
                 index = 3;
 
                 EnableWindow(GetDlgItem(hwndDlg, IDC_RESTART_OPTIONS), TRUE);
                 break;
 
-            case SC_ACTION_RUN_COMMAND:
+            case 128:
                 index = 2;
 
                 for (id = IDC_RUN_GROUPBOX; id <= IDC_ADD_FAILCOUNT; id++)
@@ -125,7 +125,7 @@ ShowFailureActions(
                         0,
                         (LPARAM)szBuffer);
 
-    if (pRecoveryData->pServiceFailure->lpCommand != NULL)
+    if (pRecoveryData->pServiceFailure->lpCommand != ((void*)0))
     {
         ZeroMemory(szBuffer, sizeof(szBuffer));
 
@@ -134,7 +134,7 @@ ShowFailureActions(
             startPtr++;
 
         endPtr = wcschr(startPtr, L'\"');
-        if (endPtr != NULL)
+        if (endPtr != ((void*)0))
         {
             length = (INT)((LONG_PTR)endPtr - (LONG_PTR)startPtr);
             CopyMemory(szBuffer, startPtr, length);
@@ -152,14 +152,14 @@ ShowFailureActions(
 
         ZeroMemory(szBuffer, sizeof(szBuffer));
 
-        if (endPtr != NULL)
+        if (endPtr != ((void*)0))
         {
             startPtr = endPtr + 1;
             while (iswspace(*startPtr))
                 startPtr++;
 
             endPtr = wcsstr(pRecoveryData->pServiceFailure->lpCommand, L"/fail=%1%");
-            if (endPtr != NULL)
+            if (endPtr != ((void*)0))
             {
                 while (iswspace(*(endPtr - 1)))
                     endPtr--;
@@ -179,7 +179,7 @@ ShowFailureActions(
                                 (LPARAM)szBuffer);
 
             endPtr = wcsstr(pRecoveryData->pServiceFailure->lpCommand, L"/fail=%1%");
-            if (endPtr != NULL)
+            if (endPtr != ((void*)0))
             {
                 SendDlgItemMessageW(hwndDlg,
                                     IDC_ADD_FAILCOUNT,

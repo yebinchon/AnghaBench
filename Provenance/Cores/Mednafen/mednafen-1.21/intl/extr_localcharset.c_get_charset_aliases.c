@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- char DIRECTORY_SEPARATOR ; 
- int EOF ; 
- scalar_t__ HAVE_WORKING_O_NOFOLLOW ; 
- int /*<<< orphan*/  ISSLASH (char const) ; 
- int /*<<< orphan*/  LIBDIR ; 
- int O_NOFOLLOW ; 
- int O_RDONLY ; 
- char const* charset_aliases ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fdopen (int,char*) ; 
- int /*<<< orphan*/  free (char*) ; 
- int fscanf (int /*<<< orphan*/ *,char*,char*,char*) ; 
- int getc (int /*<<< orphan*/ *) ; 
- char* getenv (char*) ; 
- scalar_t__ malloc (size_t) ; 
- int /*<<< orphan*/  memcpy (char*,char const*,size_t) ; 
- int open (char*,int) ; 
- scalar_t__ realloc (char*,size_t) ; 
- char* relocate (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
- size_t strlen (char const*) ; 
- int /*<<< orphan*/  ungetc (int,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int FILE ;
+
+
+ char DIRECTORY_SEPARATOR ;
+ int EOF ;
+ scalar_t__ HAVE_WORKING_O_NOFOLLOW ;
+ int ISSLASH (char const) ;
+ int LIBDIR ;
+ int O_NOFOLLOW ;
+ int O_RDONLY ;
+ char const* charset_aliases ;
+ int close (int) ;
+ int fclose (int *) ;
+ int * fdopen (int,char*) ;
+ int free (char*) ;
+ int fscanf (int *,char*,char*,char*) ;
+ int getc (int *) ;
+ char* getenv (char*) ;
+ scalar_t__ malloc (size_t) ;
+ int memcpy (char*,char const*,size_t) ;
+ int open (char*,int) ;
+ scalar_t__ realloc (char*,size_t) ;
+ char* relocate (int ) ;
+ int strcpy (char*,char*) ;
+ size_t strlen (char const*) ;
+ int ungetc (int,int *) ;
 
 __attribute__((used)) static const char *
 get_charset_aliases (void)
@@ -43,26 +43,26 @@ get_charset_aliases (void)
   const char *cp;
 
   cp = charset_aliases;
-  if (cp == NULL)
+  if (cp == ((void*)0))
     {
-#if !(defined DARWIN7 || defined VMS || defined WIN32_NATIVE || defined __CYGWIN__)
+
       const char *dir;
       const char *base = "charset.alias";
       char *file_name;
 
-      /* Make it possible to override the charset.alias location.  This is
-         necessary for running the testsuite before "make install".  */
+
+
       dir = getenv ("CHARSETALIASDIR");
-      if (dir == NULL || dir[0] == '\0')
+      if (dir == ((void*)0) || dir[0] == '\0')
         dir = relocate (LIBDIR);
 
-      /* Concatenate dir and base into freshly allocated file_name.  */
+
       {
         size_t dir_len = strlen (dir);
         size_t base_len = strlen (base);
         int add_slash = (dir_len > 0 && !ISSLASH (dir[dir_len - 1]));
         file_name = (char *) malloc (dir_len + add_slash + base_len + 1);
-        if (file_name != NULL)
+        if (file_name != ((void*)0))
           {
             memcpy (file_name, dir, dir_len);
             if (add_slash)
@@ -71,40 +71,32 @@ get_charset_aliases (void)
           }
       }
 
-      if (file_name == NULL)
-        /* Out of memory.  Treat the file as empty.  */
+      if (file_name == ((void*)0))
+
         cp = "";
       else
         {
           int fd;
-
-          /* Open the file.  Reject symbolic links on platforms that support
-             O_NOFOLLOW.  This is a security feature.  Without it, an attacker
-             could retrieve parts of the contents (namely, the tail of the
-             first line that starts with "* ") of an arbitrary file by placing
-             a symbolic link to that file under the name "charset.alias" in
-             some writable directory and defining the environment variable
-             CHARSETALIASDIR to point to that directory.  */
           fd = open (file_name,
                      O_RDONLY | (HAVE_WORKING_O_NOFOLLOW ? O_NOFOLLOW : 0));
           if (fd < 0)
-            /* File not found.  Treat it as empty.  */
+
             cp = "";
           else
             {
               FILE *fp;
 
               fp = fdopen (fd, "r");
-              if (fp == NULL)
+              if (fp == ((void*)0))
                 {
-                  /* Out of memory.  Treat the file as empty.  */
+
                   close (fd);
                   cp = "";
                 }
               else
                 {
-                  /* Parse the file's contents.  */
-                  char *res_ptr = NULL;
+
+                  char *res_ptr = ((void*)0);
                   size_t res_size = 0;
 
                   for (;;)
@@ -122,7 +114,7 @@ get_charset_aliases (void)
                         continue;
                       if (c == '#')
                         {
-                          /* Skip comment, to end of line.  */
+
                           do
                             c = getc (fp);
                           while (!(c == EOF || c == '\n'));
@@ -146,11 +138,11 @@ get_charset_aliases (void)
                           res_size += l1 + 1 + l2 + 1;
                           res_ptr = (char *) realloc (res_ptr, res_size + 1);
                         }
-                      if (res_ptr == NULL)
+                      if (res_ptr == ((void*)0))
                         {
-                          /* Out of memory. */
+
                           res_size = 0;
-                          if (old_res_ptr != NULL)
+                          if (old_res_ptr != ((void*)0))
                             free (old_res_ptr);
                           break;
                         }
@@ -170,98 +162,6 @@ get_charset_aliases (void)
 
           free (file_name);
         }
-
-#else
-
-# if defined DARWIN7
-      /* To avoid the trouble of installing a file that is shared by many
-         GNU packages -- many packaging systems have problems with this --,
-         simply inline the aliases here.  */
-      cp = "ISO8859-1" "\0" "ISO-8859-1" "\0"
-           "ISO8859-2" "\0" "ISO-8859-2" "\0"
-           "ISO8859-4" "\0" "ISO-8859-4" "\0"
-           "ISO8859-5" "\0" "ISO-8859-5" "\0"
-           "ISO8859-7" "\0" "ISO-8859-7" "\0"
-           "ISO8859-9" "\0" "ISO-8859-9" "\0"
-           "ISO8859-13" "\0" "ISO-8859-13" "\0"
-           "ISO8859-15" "\0" "ISO-8859-15" "\0"
-           "KOI8-R" "\0" "KOI8-R" "\0"
-           "KOI8-U" "\0" "KOI8-U" "\0"
-           "CP866" "\0" "CP866" "\0"
-           "CP949" "\0" "CP949" "\0"
-           "CP1131" "\0" "CP1131" "\0"
-           "CP1251" "\0" "CP1251" "\0"
-           "eucCN" "\0" "GB2312" "\0"
-           "GB2312" "\0" "GB2312" "\0"
-           "eucJP" "\0" "EUC-JP" "\0"
-           "eucKR" "\0" "EUC-KR" "\0"
-           "Big5" "\0" "BIG5" "\0"
-           "Big5HKSCS" "\0" "BIG5-HKSCS" "\0"
-           "GBK" "\0" "GBK" "\0"
-           "GB18030" "\0" "GB18030" "\0"
-           "SJIS" "\0" "SHIFT_JIS" "\0"
-           "ARMSCII-8" "\0" "ARMSCII-8" "\0"
-           "PT154" "\0" "PT154" "\0"
-         /*"ISCII-DEV" "\0" "?" "\0"*/
-           "*" "\0" "UTF-8" "\0";
-# endif
-
-# if defined VMS
-      /* To avoid the troubles of an extra file charset.alias_vms in the
-         sources of many GNU packages, simply inline the aliases here.  */
-      /* The list of encodings is taken from the OpenVMS 7.3-1 documentation
-         "Compaq C Run-Time Library Reference Manual for OpenVMS systems"
-         section 10.7 "Handling Different Character Sets".  */
-      cp = "ISO8859-1" "\0" "ISO-8859-1" "\0"
-           "ISO8859-2" "\0" "ISO-8859-2" "\0"
-           "ISO8859-5" "\0" "ISO-8859-5" "\0"
-           "ISO8859-7" "\0" "ISO-8859-7" "\0"
-           "ISO8859-8" "\0" "ISO-8859-8" "\0"
-           "ISO8859-9" "\0" "ISO-8859-9" "\0"
-           /* Japanese */
-           "eucJP" "\0" "EUC-JP" "\0"
-           "SJIS" "\0" "SHIFT_JIS" "\0"
-           "DECKANJI" "\0" "DEC-KANJI" "\0"
-           "SDECKANJI" "\0" "EUC-JP" "\0"
-           /* Chinese */
-           "eucTW" "\0" "EUC-TW" "\0"
-           "DECHANYU" "\0" "DEC-HANYU" "\0"
-           "DECHANZI" "\0" "GB2312" "\0"
-           /* Korean */
-           "DECKOREAN" "\0" "EUC-KR" "\0";
-# endif
-
-# if defined WIN32_NATIVE || defined __CYGWIN__
-      /* To avoid the troubles of installing a separate file in the same
-         directory as the DLL and of retrieving the DLL's directory at
-         runtime, simply inline the aliases here.  */
-
-      cp = "CP936" "\0" "GBK" "\0"
-           "CP1361" "\0" "JOHAB" "\0"
-           "CP20127" "\0" "ASCII" "\0"
-           "CP20866" "\0" "KOI8-R" "\0"
-           "CP20936" "\0" "GB2312" "\0"
-           "CP21866" "\0" "KOI8-RU" "\0"
-           "CP28591" "\0" "ISO-8859-1" "\0"
-           "CP28592" "\0" "ISO-8859-2" "\0"
-           "CP28593" "\0" "ISO-8859-3" "\0"
-           "CP28594" "\0" "ISO-8859-4" "\0"
-           "CP28595" "\0" "ISO-8859-5" "\0"
-           "CP28596" "\0" "ISO-8859-6" "\0"
-           "CP28597" "\0" "ISO-8859-7" "\0"
-           "CP28598" "\0" "ISO-8859-8" "\0"
-           "CP28599" "\0" "ISO-8859-9" "\0"
-           "CP28605" "\0" "ISO-8859-15" "\0"
-           "CP38598" "\0" "ISO-8859-8" "\0"
-           "CP51932" "\0" "EUC-JP" "\0"
-           "CP51936" "\0" "GB2312" "\0"
-           "CP51949" "\0" "EUC-KR" "\0"
-           "CP51950" "\0" "EUC-TW" "\0"
-           "CP54936" "\0" "GB18030" "\0"
-           "CP65001" "\0" "UTF-8" "\0";
-# endif
-#endif
-
       charset_aliases = cp;
     }
 

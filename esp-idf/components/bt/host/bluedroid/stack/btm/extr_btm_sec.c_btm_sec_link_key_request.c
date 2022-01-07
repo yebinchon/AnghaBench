@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_4__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int sec_flags; int /*<<< orphan*/  link_key; } ;
-typedef  TYPE_2__ tBTM_SEC_DEV_REC ;
-typedef  int /*<<< orphan*/  UINT8 ;
+
+
+typedef struct TYPE_7__ TYPE_4__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int sec_flags; int link_key; } ;
+typedef TYPE_2__ tBTM_SEC_DEV_REC ;
+typedef int UINT8 ;
 struct TYPE_7__ {scalar_t__ pairing_state; scalar_t__ collision_start_time; TYPE_1__* p_collided_dev_rec; } ;
-struct TYPE_5__ {int /*<<< orphan*/  bd_addr; } ;
+struct TYPE_5__ {int bd_addr; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BD_ADDR_LEN ; 
- scalar_t__ BTM_PAIR_STATE_WAIT_PIN_REQ ; 
- int BTM_SEC_LINK_KEY_KNOWN ; 
- int /*<<< orphan*/  BTM_TRACE_EVENT (char*,scalar_t__,scalar_t__,...) ; 
- TYPE_4__ btm_cb ; 
- TYPE_2__* btm_find_or_alloc_dev (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  btsnd_hcic_link_key_neg_reply (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  btsnd_hcic_link_key_req_reply (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  l2c_pin_code_request (int /*<<< orphan*/ *) ; 
- scalar_t__ memcmp (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int BD_ADDR_LEN ;
+ scalar_t__ BTM_PAIR_STATE_WAIT_PIN_REQ ;
+ int BTM_SEC_LINK_KEY_KNOWN ;
+ int BTM_TRACE_EVENT (char*,scalar_t__,scalar_t__,...) ;
+ TYPE_4__ btm_cb ;
+ TYPE_2__* btm_find_or_alloc_dev (int *) ;
+ int btsnd_hcic_link_key_neg_reply (int *) ;
+ int btsnd_hcic_link_key_req_reply (int *,int ) ;
+ int l2c_pin_code_request (int *) ;
+ scalar_t__ memcmp (int ,int *,int ) ;
 
 void btm_sec_link_key_request (UINT8 *p_bda)
 {
@@ -52,9 +52,9 @@ void btm_sec_link_key_request (UINT8 *p_bda)
         return;
     }
 
-    /* Notify L2CAP to increase timeout */
+
     l2c_pin_code_request (p_bda);
 
-    /* The link key is not in the database and it is not known to the manager */
+
     btsnd_hcic_link_key_neg_reply (p_bda);
 }

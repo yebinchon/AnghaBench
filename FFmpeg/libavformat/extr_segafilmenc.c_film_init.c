@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_10__ {int nb_streams; TYPE_3__** streams; TYPE_2__* priv_data; } ;
 struct TYPE_9__ {TYPE_1__* codecpar; } ;
-struct TYPE_8__ {int audio_index; int video_index; int /*<<< orphan*/ * last; int /*<<< orphan*/ * start; scalar_t__ packet_count; scalar_t__ stab_pos; } ;
-struct TYPE_7__ {scalar_t__ codec_type; int /*<<< orphan*/  codec_id; } ;
-typedef  TYPE_2__ FILMOutputContext ;
-typedef  TYPE_3__ AVStream ;
-typedef  TYPE_4__ AVFormatContext ;
+struct TYPE_8__ {int audio_index; int video_index; int * last; int * start; scalar_t__ packet_count; scalar_t__ stab_pos; } ;
+struct TYPE_7__ {scalar_t__ codec_type; int codec_id; } ;
+typedef TYPE_2__ FILMOutputContext ;
+typedef TYPE_3__ AVStream ;
+typedef TYPE_4__ AVFormatContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- scalar_t__ AVMEDIA_TYPE_AUDIO ; 
- scalar_t__ AVMEDIA_TYPE_VIDEO ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  av_log (TYPE_4__*,int /*<<< orphan*/ ,char*) ; 
- scalar_t__ get_audio_codec_id (int /*<<< orphan*/ ) ; 
+
+ int AVERROR (int ) ;
+ scalar_t__ AVMEDIA_TYPE_AUDIO ;
+ scalar_t__ AVMEDIA_TYPE_VIDEO ;
+ int AV_LOG_ERROR ;
+ int EINVAL ;
+ int av_log (TYPE_4__*,int ,char*) ;
+ scalar_t__ get_audio_codec_id (int ) ;
 
 __attribute__((used)) static int film_init(AVFormatContext *format_context)
 {
-    AVStream *audio = NULL;
+    AVStream *audio = ((void*)0);
     FILMOutputContext *film = format_context->priv_data;
     film->audio_index = -1;
     film->video_index = -1;
     film->stab_pos = 0;
     film->packet_count = 0;
-    film->start = NULL;
-    film->last = NULL;
+    film->start = ((void*)0);
+    film->last = ((void*)0);
 
     for (int i = 0; i < format_context->nb_streams; i++) {
         AVStream *st = format_context->streams[i];
@@ -67,7 +67,7 @@ __attribute__((used)) static int film_init(AVFormatContext *format_context)
         }
     }
 
-    if (audio != NULL && get_audio_codec_id(audio->codecpar->codec_id) < 0) {
+    if (audio != ((void*)0) && get_audio_codec_id(audio->codecpar->codec_id) < 0) {
         av_log(format_context, AV_LOG_ERROR, "Incompatible audio stream format.\n");
         return AVERROR(EINVAL);
     }

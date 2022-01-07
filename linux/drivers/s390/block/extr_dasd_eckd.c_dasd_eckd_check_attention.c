@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct dasd_device {int dummy; } ;
-struct check_attention_work_data {int /*<<< orphan*/  worker; int /*<<< orphan*/  lpum; struct dasd_device* device; } ;
-typedef  int /*<<< orphan*/  __u8 ;
+struct check_attention_work_data {int worker; int lpum; struct dasd_device* device; } ;
+typedef int __u8 ;
 
-/* Variables and functions */
- int ENOMEM ; 
- int /*<<< orphan*/  GFP_ATOMIC ; 
- int /*<<< orphan*/  INIT_WORK (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dasd_eckd_check_attention_work ; 
- int /*<<< orphan*/  dasd_get_device (struct dasd_device*) ; 
- struct check_attention_work_data* kzalloc (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  schedule_work (int /*<<< orphan*/ *) ; 
+
+ int ENOMEM ;
+ int GFP_ATOMIC ;
+ int INIT_WORK (int *,int ) ;
+ int dasd_eckd_check_attention_work ;
+ int dasd_get_device (struct dasd_device*) ;
+ struct check_attention_work_data* kzalloc (int,int ) ;
+ int schedule_work (int *) ;
 
 __attribute__((used)) static int dasd_eckd_check_attention(struct dasd_device *device, __u8 lpum)
 {
-	struct check_attention_work_data *data;
+ struct check_attention_work_data *data;
 
-	data = kzalloc(sizeof(*data), GFP_ATOMIC);
-	if (!data)
-		return -ENOMEM;
-	INIT_WORK(&data->worker, dasd_eckd_check_attention_work);
-	dasd_get_device(device);
-	data->device = device;
-	data->lpum = lpum;
-	schedule_work(&data->worker);
-	return 0;
+ data = kzalloc(sizeof(*data), GFP_ATOMIC);
+ if (!data)
+  return -ENOMEM;
+ INIT_WORK(&data->worker, dasd_eckd_check_attention_work);
+ dasd_get_device(device);
+ data->device = device;
+ data->lpum = lpum;
+ schedule_work(&data->worker);
+ return 0;
 }

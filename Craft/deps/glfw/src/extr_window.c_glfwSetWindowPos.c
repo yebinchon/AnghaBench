@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ monitor; } ;
-typedef  TYPE_1__ _GLFWwindow ;
-typedef  int /*<<< orphan*/  GLFWwindow ;
+typedef TYPE_1__ _GLFWwindow ;
+typedef int GLFWwindow ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GLFW_INVALID_VALUE ; 
- int /*<<< orphan*/  _GLFW_REQUIRE_INIT () ; 
- int /*<<< orphan*/  _glfwInputError (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  _glfwPlatformSetWindowPos (TYPE_1__*,int,int) ; 
+
+ int GLFW_INVALID_VALUE ;
+ int _GLFW_REQUIRE_INIT () ;
+ int _glfwInputError (int ,char*) ;
+ int _glfwPlatformSetWindowPos (TYPE_1__*,int,int) ;
 
 void glfwSetWindowPos(GLFWwindow* handle, int xpos, int ypos)
 {

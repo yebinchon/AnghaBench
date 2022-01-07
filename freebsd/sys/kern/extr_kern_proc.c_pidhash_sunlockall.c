@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  size_t u_long ;
 
-/* Variables and functions */
- size_t pidhashlock ; 
- int /*<<< orphan*/ * pidhashtbl_lock ; 
- int /*<<< orphan*/  sx_sunlock (int /*<<< orphan*/ *) ; 
+
+
+
+typedef size_t u_long ;
+
+
+ size_t pidhashlock ;
+ int * pidhashtbl_lock ;
+ int sx_sunlock (int *) ;
 
 void
 pidhash_sunlockall(void)
 {
-	u_long i;
+ u_long i;
 
-	for (i = 0; i < pidhashlock + 1; i++)
-		sx_sunlock(&pidhashtbl_lock[i]);
+ for (i = 0; i < pidhashlock + 1; i++)
+  sx_sunlock(&pidhashtbl_lock[i]);
 }

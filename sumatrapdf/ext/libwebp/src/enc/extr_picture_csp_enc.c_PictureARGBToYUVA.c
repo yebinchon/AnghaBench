@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_5__ {int colorspace; int argb_stride; int /*<<< orphan*/ * argb; } ;
-typedef  TYPE_1__ WebPPicture ;
-typedef  int WebPEncCSP ;
 
-/* Variables and functions */
- int CHANNEL_OFFSET (int) ; 
- int ImportYUVAFromRGBA (int /*<<< orphan*/  const* const,int /*<<< orphan*/  const* const,int /*<<< orphan*/  const* const,int /*<<< orphan*/  const* const,int,int,float,int,TYPE_1__*) ; 
- int /*<<< orphan*/  VP8_ENC_ERROR_INVALID_CONFIGURATION ; 
- int /*<<< orphan*/  VP8_ENC_ERROR_NULL_PARAMETER ; 
- int WEBP_CSP_UV_MASK ; 
- int WEBP_YUV420 ; 
- int WebPEncodingSetError (TYPE_1__*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_5__ {int colorspace; int argb_stride; int * argb; } ;
+typedef TYPE_1__ WebPPicture ;
+typedef int WebPEncCSP ;
+
+
+ int CHANNEL_OFFSET (int) ;
+ int ImportYUVAFromRGBA (int const* const,int const* const,int const* const,int const* const,int,int,float,int,TYPE_1__*) ;
+ int VP8_ENC_ERROR_INVALID_CONFIGURATION ;
+ int VP8_ENC_ERROR_NULL_PARAMETER ;
+ int WEBP_CSP_UV_MASK ;
+ int WEBP_YUV420 ;
+ int WebPEncodingSetError (TYPE_1__*,int ) ;
 
 __attribute__((used)) static int PictureARGBToYUVA(WebPPicture* picture, WebPEncCSP colorspace,
                              float dithering, int use_iterative_conversion) {
-  if (picture == NULL) return 0;
-  if (picture->argb == NULL) {
+  if (picture == ((void*)0)) return 0;
+  if (picture->argb == ((void*)0)) {
     return WebPEncodingSetError(picture, VP8_ENC_ERROR_NULL_PARAMETER);
   } else if ((colorspace & WEBP_CSP_UV_MASK) != WEBP_YUV420) {
     return WebPEncodingSetError(picture, VP8_ENC_ERROR_INVALID_CONFIGURATION);

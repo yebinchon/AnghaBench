@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ magic; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ADD_CNT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  END_TIMER (int /*<<< orphan*/ ) ; 
- scalar_t__ RPC_BUFFER_MAGIC ; 
- int /*<<< orphan*/  START_TIMER (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  buffer_write_double (TYPE_1__*,double) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,double) ; 
- TYPE_1__* outbuf ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  store ; 
 
-__attribute__((used)) static void do_rpc_store_double (double value) { /* {{{ */
+ int ADD_CNT (int ) ;
+ int END_TIMER (int ) ;
+ scalar_t__ RPC_BUFFER_MAGIC ;
+ int START_TIMER (int ) ;
+ int assert (int ) ;
+ int buffer_write_double (TYPE_1__*,double) ;
+ int fprintf (int ,char*,double) ;
+ TYPE_1__* outbuf ;
+ int stderr ;
+ int store ;
+
+__attribute__((used)) static void do_rpc_store_double (double value) {
   ADD_CNT (store);
   START_TIMER (store);
   assert (outbuf && outbuf->magic == RPC_BUFFER_MAGIC);
   buffer_write_double (outbuf, value);
-#ifdef STORE_DEBUG
-  fprintf (stderr, "%lf\n", value);
-#endif
+
+
+
   END_TIMER (store);
 }

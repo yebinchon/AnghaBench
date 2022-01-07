@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {char* to_shortname; char* to_longname; char* to_doc; int /*<<< orphan*/  to_magic; int /*<<< orphan*/  to_xfer_partial; int /*<<< orphan*/  to_make_corefile_notes; int /*<<< orphan*/  to_find_memory_regions; int /*<<< orphan*/  to_stratum; int /*<<< orphan*/  to_pid_to_str; int /*<<< orphan*/  to_create_inferior; int /*<<< orphan*/  to_attach; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OPS_MAGIC ; 
- int /*<<< orphan*/  default_xfer_partial ; 
- int /*<<< orphan*/  dummy_find_memory_regions ; 
- int /*<<< orphan*/  dummy_make_corefile_notes ; 
- int /*<<< orphan*/  dummy_stratum ; 
- TYPE_1__ dummy_target ; 
- int /*<<< orphan*/  find_default_attach ; 
- int /*<<< orphan*/  find_default_create_inferior ; 
- int /*<<< orphan*/  normal_pid_to_str ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {char* to_shortname; char* to_longname; char* to_doc; int to_magic; int to_xfer_partial; int to_make_corefile_notes; int to_find_memory_regions; int to_stratum; int to_pid_to_str; int to_create_inferior; int to_attach; } ;
+
+
+ int OPS_MAGIC ;
+ int default_xfer_partial ;
+ int dummy_find_memory_regions ;
+ int dummy_make_corefile_notes ;
+ int dummy_stratum ;
+ TYPE_1__ dummy_target ;
+ int find_default_attach ;
+ int find_default_create_inferior ;
+ int normal_pid_to_str ;
 
 __attribute__((used)) static void
 init_dummy_target (void)

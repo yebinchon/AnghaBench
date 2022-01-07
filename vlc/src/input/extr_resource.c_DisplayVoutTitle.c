@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vout_thread_t ;
-struct TYPE_3__ {int /*<<< orphan*/ * p_input; } ;
-typedef  TYPE_1__ input_resource_t ;
-typedef  int /*<<< orphan*/  input_item_t ;
 
-/* Variables and functions */
- int asprintf (char**,char*,char*,char*) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/ * input_GetItem (int /*<<< orphan*/ *) ; 
- char* input_item_GetArtist (int /*<<< orphan*/ *) ; 
- char* input_item_GetName (int /*<<< orphan*/ *) ; 
- char* input_item_GetNowPlayingFb (int /*<<< orphan*/ *) ; 
- char* input_item_GetTitle (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vout_DisplayTitle (int /*<<< orphan*/ *,char*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int vout_thread_t ;
+struct TYPE_3__ {int * p_input; } ;
+typedef TYPE_1__ input_resource_t ;
+typedef int input_item_t ;
+
+
+ int asprintf (char**,char*,char*,char*) ;
+ int free (char*) ;
+ int * input_GetItem (int *) ;
+ char* input_item_GetArtist (int *) ;
+ char* input_item_GetName (int *) ;
+ char* input_item_GetNowPlayingFb (int *) ;
+ char* input_item_GetTitle (int *) ;
+ int vout_DisplayTitle (int *,char*) ;
 
 __attribute__((used)) static void DisplayVoutTitle( input_resource_t *p_resource,
                               vout_thread_t *p_vout )
 {
-    if( p_resource->p_input == NULL )
+    if( p_resource->p_input == ((void*)0) )
         return;
 
-    /* TODO display the title only one time for the same input ? */
+
 
     input_item_t *p_item = input_GetItem( p_resource->p_input );
 

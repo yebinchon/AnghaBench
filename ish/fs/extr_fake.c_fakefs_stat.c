@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct statbuf {int /*<<< orphan*/  rdev; int /*<<< orphan*/  gid; int /*<<< orphan*/  uid; int /*<<< orphan*/  mode; int /*<<< orphan*/  inode; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct statbuf {int rdev; int gid; int uid; int mode; int inode; } ;
 struct mount {int dummy; } ;
-struct ish_stat {int /*<<< orphan*/  rdev; int /*<<< orphan*/  gid; int /*<<< orphan*/  uid; int /*<<< orphan*/  mode; } ;
-typedef  int /*<<< orphan*/  ino_t ;
+struct ish_stat {int rdev; int gid; int uid; int mode; } ;
+typedef int ino_t ;
 struct TYPE_2__ {int (* stat ) (struct mount*,char const*,struct statbuf*,int) ;} ;
 
-/* Variables and functions */
- int _ENOENT ; 
- int /*<<< orphan*/  db_begin (struct mount*) ; 
- int /*<<< orphan*/  db_commit (struct mount*) ; 
- int /*<<< orphan*/  db_rollback (struct mount*) ; 
- int /*<<< orphan*/  path_read_stat (struct mount*,char const*,struct ish_stat*,int /*<<< orphan*/ *) ; 
- TYPE_1__ realfs ; 
- int stub1 (struct mount*,char const*,struct statbuf*,int) ; 
+
+ int _ENOENT ;
+ int db_begin (struct mount*) ;
+ int db_commit (struct mount*) ;
+ int db_rollback (struct mount*) ;
+ int path_read_stat (struct mount*,char const*,struct ish_stat*,int *) ;
+ TYPE_1__ realfs ;
+ int stub1 (struct mount*,char const*,struct statbuf*,int) ;
 
 __attribute__((used)) static int fakefs_stat(struct mount *mount, const char *path, struct statbuf *fake_stat, bool follow_links) {
     db_begin(mount);

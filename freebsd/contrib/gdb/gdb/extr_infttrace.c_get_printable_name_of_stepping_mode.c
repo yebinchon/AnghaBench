@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int stepping_mode_t ;
 
-/* Variables and functions */
-#define  DO_CONTINUE 130 
-#define  DO_DEFAULT 129 
-#define  DO_STEP 128 
+
+
+
+typedef int stepping_mode_t ;
+
+
+
+
+
 
 __attribute__((used)) static char *
 get_printable_name_of_stepping_mode (stepping_mode_t mode)
 {
   switch (mode)
     {
-    case DO_DEFAULT:
+    case 129:
       return "DO_DEFAULT";
-    case DO_STEP:
+    case 128:
       return "DO_STEP";
-    case DO_CONTINUE:
+    case 130:
       return "DO_CONTINUE";
     default:
       return "?unknown mode?";

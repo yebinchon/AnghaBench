@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ceph_inode_info {int /*<<< orphan*/  vfs_inode; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  inode_init_once (int /*<<< orphan*/ *) ; 
+
+
+
+struct ceph_inode_info {int vfs_inode; } ;
+
+
+ int inode_init_once (int *) ;
 
 __attribute__((used)) static void ceph_inode_init_once(void *foo)
 {
-	struct ceph_inode_info *ci = foo;
-	inode_init_once(&ci->vfs_inode);
+ struct ceph_inode_info *ci = foo;
+ inode_init_once(&ci->vfs_inode);
 }

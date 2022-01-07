@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
+
+
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint8_t ;
 struct TYPE_12__ {scalar_t__ huff_lsbs; } ;
-struct TYPE_11__ {unsigned int num_substreams; int restart_intervals; int sequence_size; int* seq_offset; unsigned int* seq_size; unsigned int number_of_frames; scalar_t__* max_output_bits; int major_filter_state_subblock; scalar_t__ major_cur_subblock_index; int /*<<< orphan*/  number_of_subblocks; int /*<<< orphan*/  major_number_of_subblocks; int /*<<< orphan*/ * cur_channel_params; int /*<<< orphan*/ * prev_channel_params; int /*<<< orphan*/ * cur_decoding_params; int /*<<< orphan*/ * prev_decoding_params; int /*<<< orphan*/ ** major_params_changed; int /*<<< orphan*/ ** major_channel_params; int /*<<< orphan*/ ** major_decoding_params; TYPE_2__* restart_header; TYPE_2__* cur_restart_header; TYPE_1__* avctx; scalar_t__ channel_params; scalar_t__ decoding_params; } ;
+struct TYPE_11__ {unsigned int num_substreams; int restart_intervals; int sequence_size; int* seq_offset; unsigned int* seq_size; unsigned int number_of_frames; scalar_t__* max_output_bits; int major_filter_state_subblock; scalar_t__ major_cur_subblock_index; int number_of_subblocks; int major_number_of_subblocks; int * cur_channel_params; int * prev_channel_params; int * cur_decoding_params; int * prev_decoding_params; int ** major_params_changed; int ** major_channel_params; int ** major_decoding_params; TYPE_2__* restart_header; TYPE_2__* cur_restart_header; TYPE_1__* avctx; scalar_t__ channel_params; scalar_t__ decoding_params; } ;
 struct TYPE_10__ {scalar_t__ max_output_bits; scalar_t__ max_huff_lsbs; } ;
 struct TYPE_9__ {int channels; } ;
-typedef  TYPE_2__ RestartHeader ;
-typedef  TYPE_3__ MLPEncodeContext ;
-typedef  TYPE_4__ DecodingParams ;
-typedef  TYPE_4__ ChannelParams ;
+typedef TYPE_2__ RestartHeader ;
+typedef TYPE_3__ MLPEncodeContext ;
+typedef TYPE_4__ DecodingParams ;
+typedef TYPE_4__ ChannelParams ;
 
-/* Variables and functions */
- int MAJOR_HEADER_INTERVAL ; 
- int /*<<< orphan*/  compare_decoding_params (TYPE_3__*) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,TYPE_4__*,int) ; 
- int /*<<< orphan*/ * restart_channel_params ; 
- int /*<<< orphan*/ * restart_decoding_params ; 
+
+ int MAJOR_HEADER_INTERVAL ;
+ int compare_decoding_params (TYPE_3__*) ;
+ int memcpy (int *,TYPE_4__*,int) ;
+ int * restart_channel_params ;
+ int * restart_decoding_params ;
 
 __attribute__((used)) static void set_major_params(MLPEncodeContext *ctx)
 {

@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ tree ;
+
+
+
+
+typedef scalar_t__ tree ;
 struct obstack {int dummy; } ;
 
-/* Variables and functions */
- scalar_t__ CLASS_TYPE_P (scalar_t__) ; 
- scalar_t__ DECL_CONTEXT (scalar_t__) ; 
- int /*<<< orphan*/  DECL_NAME (scalar_t__) ; 
- char* IDENTIFIER_POINTER (int /*<<< orphan*/ ) ; 
- scalar_t__ INNERMOST_TEMPLATE_ARGS (scalar_t__) ; 
- scalar_t__ NAMESPACE_DECL ; 
- scalar_t__ PARM_DECL ; 
- scalar_t__ TEMPLATE_DECL ; 
- int /*<<< orphan*/  TFF_CHASE_TYPEDEF ; 
- int /*<<< orphan*/  TFF_PLAIN_IDENTIFIER ; 
- scalar_t__ TREE_CODE (scalar_t__) ; 
- scalar_t__ TREE_VALUE (scalar_t__) ; 
- scalar_t__ TREE_VEC_ELT (scalar_t__,int) ; 
- int TREE_VEC_LENGTH (scalar_t__) ; 
- scalar_t__ TYPE_DECL ; 
- int /*<<< orphan*/  cat (char const*) ; 
- int /*<<< orphan*/  ccat (char) ; 
- char* decl_as_string (scalar_t__,int /*<<< orphan*/ ) ; 
- scalar_t__ error_mark_node ; 
- char* expr_as_string (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gcc_assert (int) ; 
- int /*<<< orphan*/  gcc_obstack_init (struct obstack*) ; 
- scalar_t__ obstack_alloc (struct obstack*,int) ; 
- scalar_t__ obstack_base (struct obstack*) ; 
- int /*<<< orphan*/  obstack_blank_fast (struct obstack*,int) ; 
- int /*<<< orphan*/  obstack_free (struct obstack*,char*) ; 
- char* obstack_next_free (struct obstack*) ; 
- char* type_as_string (scalar_t__,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ CLASS_TYPE_P (scalar_t__) ;
+ scalar_t__ DECL_CONTEXT (scalar_t__) ;
+ int DECL_NAME (scalar_t__) ;
+ char* IDENTIFIER_POINTER (int ) ;
+ scalar_t__ INNERMOST_TEMPLATE_ARGS (scalar_t__) ;
+ scalar_t__ NAMESPACE_DECL ;
+ scalar_t__ PARM_DECL ;
+ scalar_t__ TEMPLATE_DECL ;
+ int TFF_CHASE_TYPEDEF ;
+ int TFF_PLAIN_IDENTIFIER ;
+ scalar_t__ TREE_CODE (scalar_t__) ;
+ scalar_t__ TREE_VALUE (scalar_t__) ;
+ scalar_t__ TREE_VEC_ELT (scalar_t__,int) ;
+ int TREE_VEC_LENGTH (scalar_t__) ;
+ scalar_t__ TYPE_DECL ;
+ int cat (char const*) ;
+ int ccat (char) ;
+ char* decl_as_string (scalar_t__,int ) ;
+ scalar_t__ error_mark_node ;
+ char* expr_as_string (scalar_t__,int ) ;
+ int gcc_assert (int) ;
+ int gcc_obstack_init (struct obstack*) ;
+ scalar_t__ obstack_alloc (struct obstack*,int) ;
+ scalar_t__ obstack_base (struct obstack*) ;
+ int obstack_blank_fast (struct obstack*,int) ;
+ int obstack_free (struct obstack*,char*) ;
+ char* obstack_next_free (struct obstack*) ;
+ char* type_as_string (scalar_t__,int ) ;
 
 __attribute__((used)) static char *
 mangle_class_name_for_template (const char* name, tree parms, tree arglist)
@@ -56,11 +56,11 @@ mangle_class_name_for_template (const char* name, tree parms, tree arglist)
     obstack_free (&scratch_obstack, scratch_firstobj);
   scratch_firstobj = (char *) obstack_alloc (&scratch_obstack, 1);
 
-#define ccat(C)	obstack_1grow (&scratch_obstack, (C));
-#define cat(S)	obstack_grow (&scratch_obstack, (S), strlen (S))
 
-  cat (name);
-  ccat ('<');
+
+
+  obstack_grow (&scratch_obstack, (name), strlen (name));
+  obstack_1grow (&scratch_obstack, ('<'));;
   nparms = TREE_VEC_LENGTH (parms);
   arglist = INNERMOST_TEMPLATE_ARGS (arglist);
   gcc_assert (nparms == TREE_VEC_LENGTH (arglist));
@@ -73,46 +73,46 @@ mangle_class_name_for_template (const char* name, tree parms, tree arglist)
       arg = TREE_VEC_ELT (arglist, i);
 
       if (parm == error_mark_node)
-	continue;
+ continue;
 
       if (i)
-	ccat (',');
+ obstack_1grow (&scratch_obstack, (','));;
 
       if (TREE_CODE (parm) == TYPE_DECL)
-	{
-	  cat (type_as_string (arg, TFF_CHASE_TYPEDEF));
-	  continue;
-	}
+ {
+   obstack_grow (&scratch_obstack, (type_as_string (arg, TFF_CHASE_TYPEDEF)), strlen (type_as_string (arg, TFF_CHASE_TYPEDEF)));
+   continue;
+ }
       else if (TREE_CODE (parm) == TEMPLATE_DECL)
-	{
-	  if (TREE_CODE (arg) == TEMPLATE_DECL)
-	    {
-	      /* Already substituted with real template.  Just output
-		 the template name here */
-	      tree context = DECL_CONTEXT (arg);
-	      if (context)
-		{
-		  /* The template may be defined in a namespace, or
-		     may be a member template.  */
-		  gcc_assert (TREE_CODE (context) == NAMESPACE_DECL
-			      || CLASS_TYPE_P (context));
-		  cat (decl_as_string (DECL_CONTEXT (arg),
-				      TFF_PLAIN_IDENTIFIER));
-		  cat ("::");
-		}
-	      cat (IDENTIFIER_POINTER (DECL_NAME (arg)));
-	    }
-	  else
-	    /* Output the parameter declaration.  */
-	    cat (type_as_string (arg, TFF_CHASE_TYPEDEF));
-	  continue;
-	}
-      else
-	gcc_assert (TREE_CODE (parm) == PARM_DECL);
+ {
+   if (TREE_CODE (arg) == TEMPLATE_DECL)
+     {
 
-      /* No need to check arglist against parmlist here; we did that
-	 in coerce_template_parms, called from lookup_template_class.  */
-      cat (expr_as_string (arg, TFF_PLAIN_IDENTIFIER));
+
+       tree context = DECL_CONTEXT (arg);
+       if (context)
+  {
+
+
+    gcc_assert (TREE_CODE (context) == NAMESPACE_DECL
+         || CLASS_TYPE_P (context));
+    obstack_grow (&scratch_obstack, (decl_as_string (DECL_CONTEXT (arg), TFF_PLAIN_IDENTIFIER)), strlen (decl_as_string (DECL_CONTEXT (arg), TFF_PLAIN_IDENTIFIER)));
+
+    obstack_grow (&scratch_obstack, ("::"), strlen ("::"));
+  }
+       obstack_grow (&scratch_obstack, (IDENTIFIER_POINTER (DECL_NAME (arg))), strlen (IDENTIFIER_POINTER (DECL_NAME (arg))));
+     }
+   else
+
+     obstack_grow (&scratch_obstack, (type_as_string (arg, TFF_CHASE_TYPEDEF)), strlen (type_as_string (arg, TFF_CHASE_TYPEDEF)));
+   continue;
+ }
+      else
+ gcc_assert (TREE_CODE (parm) == PARM_DECL);
+
+
+
+      obstack_grow (&scratch_obstack, (expr_as_string (arg, TFF_PLAIN_IDENTIFIER)), strlen (expr_as_string (arg, TFF_PLAIN_IDENTIFIER)));
     }
   {
     char *bufp = obstack_next_free (&scratch_obstack);
@@ -121,11 +121,11 @@ mangle_class_name_for_template (const char* name, tree parms, tree arglist)
       offset--;
     obstack_blank_fast (&scratch_obstack, offset);
 
-    /* B<C<char> >, not B<C<char>> */
+
     if (bufp[offset - 1] == '>')
-      ccat (' ');
+      obstack_1grow (&scratch_obstack, (' '));;
   }
-  ccat ('>');
-  ccat ('\0');
+  obstack_1grow (&scratch_obstack, ('>'));;
+  obstack_1grow (&scratch_obstack, ('\0'));;
   return (char *) obstack_base (&scratch_obstack);
 }

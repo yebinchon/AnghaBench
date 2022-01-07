@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  SetupWorkerPtrType ;
-typedef  int /*<<< orphan*/  ArchiveMode ;
-typedef  int /*<<< orphan*/  ArchiveHandle ;
-typedef  int /*<<< orphan*/  ArchiveFormat ;
-typedef  int /*<<< orphan*/  Archive ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * _allocAH (char const*,int /*<<< orphan*/  const,int const,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int SetupWorkerPtrType ;
+typedef int ArchiveMode ;
+typedef int ArchiveHandle ;
+typedef int ArchiveFormat ;
+typedef int Archive ;
+
+
+ int * _allocAH (char const*,int const,int const,int,int ,int ) ;
 
 Archive *
 CreateArchive(const char *FileSpec, const ArchiveFormat fmt,
-			  const int compression, bool dosync, ArchiveMode mode,
-			  SetupWorkerPtrType setupDumpWorker)
+     const int compression, bool dosync, ArchiveMode mode,
+     SetupWorkerPtrType setupDumpWorker)
 
 {
-	ArchiveHandle *AH = _allocAH(FileSpec, fmt, compression, dosync,
-								 mode, setupDumpWorker);
+ ArchiveHandle *AH = _allocAH(FileSpec, fmt, compression, dosync,
+         mode, setupDumpWorker);
 
-	return (Archive *) AH;
+ return (Archive *) AH;
 }

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {char* prefix; int /*<<< orphan*/  prefixlen; } ;
-typedef  TYPE_1__ SSL_CONF_CTX ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OPENSSL_free (char*) ; 
- char* OPENSSL_strdup (char const*) ; 
- int /*<<< orphan*/  strlen (char*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {char* prefix; int prefixlen; } ;
+typedef TYPE_1__ SSL_CONF_CTX ;
+
+
+ int OPENSSL_free (char*) ;
+ char* OPENSSL_strdup (char const*) ;
+ int strlen (char*) ;
 
 int SSL_CONF_CTX_set1_prefix(SSL_CONF_CTX *cctx, const char *pre)
 {
-    char *tmp = NULL;
+    char *tmp = ((void*)0);
     if (pre) {
         tmp = OPENSSL_strdup(pre);
-        if (tmp == NULL)
+        if (tmp == ((void*)0))
             return 0;
     }
     OPENSSL_free(cctx->prefix);

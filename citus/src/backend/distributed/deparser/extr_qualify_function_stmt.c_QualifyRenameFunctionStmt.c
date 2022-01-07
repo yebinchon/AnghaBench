@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  renameType; int /*<<< orphan*/  object; } ;
-typedef  TYPE_1__ RenameStmt ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AssertObjectTypeIsFunctional (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ObjectWithArgs ; 
- int /*<<< orphan*/  QualifyFunction (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  castNode (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int renameType; int object; } ;
+typedef TYPE_1__ RenameStmt ;
+
+
+ int AssertObjectTypeIsFunctional (int ) ;
+ int ObjectWithArgs ;
+ int QualifyFunction (int ,int ) ;
+ int castNode (int ,int ) ;
 
 void
 QualifyRenameFunctionStmt(RenameStmt *stmt)
 {
-	AssertObjectTypeIsFunctional(stmt->renameType);
+ AssertObjectTypeIsFunctional(stmt->renameType);
 
-	QualifyFunction(castNode(ObjectWithArgs, stmt->object), stmt->renameType);
+ QualifyFunction(castNode(ObjectWithArgs, stmt->object), stmt->renameType);
 }

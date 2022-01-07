@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct sock {int dummy; } ;
-struct hash_ctx {int /*<<< orphan*/ * result; int /*<<< orphan*/  req; } ;
+struct hash_ctx {int * result; int req; } ;
 
-/* Variables and functions */
- unsigned int crypto_ahash_digestsize (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  crypto_ahash_reqtfm (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sock_kzfree_s (struct sock*,int /*<<< orphan*/ *,unsigned int) ; 
+
+ unsigned int crypto_ahash_digestsize (int ) ;
+ int crypto_ahash_reqtfm (int *) ;
+ int sock_kzfree_s (struct sock*,int *,unsigned int) ;
 
 __attribute__((used)) static void hash_free_result(struct sock *sk, struct hash_ctx *ctx)
 {
-	unsigned ds;
+ unsigned ds;
 
-	if (!ctx->result)
-		return;
+ if (!ctx->result)
+  return;
 
-	ds = crypto_ahash_digestsize(crypto_ahash_reqtfm(&ctx->req));
+ ds = crypto_ahash_digestsize(crypto_ahash_reqtfm(&ctx->req));
 
-	sock_kzfree_s(sk, ctx->result, ds);
-	ctx->result = NULL;
+ sock_kzfree_s(sk, ctx->result, ds);
+ ctx->result = ((void*)0);
 }

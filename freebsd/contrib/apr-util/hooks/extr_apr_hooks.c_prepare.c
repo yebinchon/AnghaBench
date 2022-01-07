@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  apr_pool_t ;
-struct TYPE_9__ {int nPredecessors; struct TYPE_9__** ppPredecessors; TYPE_1__* pData; int /*<<< orphan*/ * pNext; } ;
-struct TYPE_8__ {scalar_t__* aszSuccessors; int /*<<< orphan*/  szName; scalar_t__* aszPredecessors; } ;
-typedef  TYPE_1__ TSortData ;
-typedef  TYPE_2__ TSort ;
 
-/* Variables and functions */
- TYPE_2__* apr_palloc (int /*<<< orphan*/ *,int) ; 
- TYPE_2__** apr_pcalloc (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  crude_order ; 
- int /*<<< orphan*/  qsort (TYPE_1__*,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strcmp (int /*<<< orphan*/ ,scalar_t__) ; 
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int apr_pool_t ;
+struct TYPE_9__ {int nPredecessors; struct TYPE_9__** ppPredecessors; TYPE_1__* pData; int * pNext; } ;
+struct TYPE_8__ {scalar_t__* aszSuccessors; int szName; scalar_t__* aszPredecessors; } ;
+typedef TYPE_1__ TSortData ;
+typedef TYPE_2__ TSort ;
+
+
+ TYPE_2__* apr_palloc (int *,int) ;
+ TYPE_2__** apr_pcalloc (int *,int) ;
+ int crude_order ;
+ int qsort (TYPE_1__*,int,int,int ) ;
+ int strcmp (int ,scalar_t__) ;
 
 __attribute__((used)) static TSort *prepare(apr_pool_t *p,TSortData *pItems,int nItems)
 {
@@ -34,7 +34,7 @@ __attribute__((used)) static TSort *prepare(apr_pool_t *p,TSortData *pItems,int 
     for(n=0 ; n < nItems ; ++n) {
         pData[n].nPredecessors=0;
         pData[n].ppPredecessors=apr_pcalloc(p,nItems*sizeof *pData[n].ppPredecessors);
-        pData[n].pNext=NULL;
+        pData[n].pNext=((void*)0);
         pData[n].pData=&pItems[n];
     }
 

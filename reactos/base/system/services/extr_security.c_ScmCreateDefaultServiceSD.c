@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * PSECURITY_DESCRIPTOR ;
-typedef  scalar_t__ NTSTATUS ;
-typedef  scalar_t__ DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPRINT (char*,scalar_t__) ; 
- scalar_t__ ERROR_OUTOFMEMORY ; 
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  HEAP_ZERO_MEMORY ; 
- int /*<<< orphan*/  NT_SUCCESS (scalar_t__) ; 
- scalar_t__ RtlAbsoluteToSelfRelativeSD (int /*<<< orphan*/ ,int /*<<< orphan*/ *,scalar_t__*) ; 
- int /*<<< orphan*/ * RtlAllocateHeap (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  RtlFreeHeap (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RtlGetProcessHeap () ; 
- scalar_t__ RtlNtStatusToDosError (scalar_t__) ; 
- scalar_t__ STATUS_BUFFER_TOO_SMALL ; 
- int /*<<< orphan*/  pDefaultSD ; 
+
+
+
+typedef int * PSECURITY_DESCRIPTOR ;
+typedef scalar_t__ NTSTATUS ;
+typedef scalar_t__ DWORD ;
+
+
+ int DPRINT (char*,scalar_t__) ;
+ scalar_t__ ERROR_OUTOFMEMORY ;
+ scalar_t__ ERROR_SUCCESS ;
+ int HEAP_ZERO_MEMORY ;
+ int NT_SUCCESS (scalar_t__) ;
+ scalar_t__ RtlAbsoluteToSelfRelativeSD (int ,int *,scalar_t__*) ;
+ int * RtlAllocateHeap (int ,int ,scalar_t__) ;
+ int RtlFreeHeap (int ,int ,int *) ;
+ int RtlGetProcessHeap () ;
+ scalar_t__ RtlNtStatusToDosError (scalar_t__) ;
+ scalar_t__ STATUS_BUFFER_TOO_SMALL ;
+ int pDefaultSD ;
 
 DWORD
 ScmCreateDefaultServiceSD(
     PSECURITY_DESCRIPTOR *ppSecurityDescriptor)
 {
-    PSECURITY_DESCRIPTOR pRelativeSD = NULL;
+    PSECURITY_DESCRIPTOR pRelativeSD = ((void*)0);
     DWORD dwBufferLength = 0;
     NTSTATUS Status;
     DWORD dwError = ERROR_SUCCESS;
 
-    /* Convert the absolute SD to a self-relative SD */
+
     Status = RtlAbsoluteToSelfRelativeSD(pDefaultSD,
-                                         NULL,
+                                         ((void*)0),
                                          &dwBufferLength);
     if (Status != STATUS_BUFFER_TOO_SMALL)
     {
@@ -52,7 +52,7 @@ ScmCreateDefaultServiceSD(
     pRelativeSD = RtlAllocateHeap(RtlGetProcessHeap(),
                                   HEAP_ZERO_MEMORY,
                                   dwBufferLength);
-    if (pRelativeSD == NULL)
+    if (pRelativeSD == ((void*)0))
     {
         dwError = ERROR_OUTOFMEMORY;
         goto done;
@@ -73,7 +73,7 @@ ScmCreateDefaultServiceSD(
 done:
     if (dwError != ERROR_SUCCESS)
     {
-        if (pRelativeSD != NULL)
+        if (pRelativeSD != ((void*)0))
             RtlFreeHeap(RtlGetProcessHeap(), 0, pRelativeSD);
     }
 

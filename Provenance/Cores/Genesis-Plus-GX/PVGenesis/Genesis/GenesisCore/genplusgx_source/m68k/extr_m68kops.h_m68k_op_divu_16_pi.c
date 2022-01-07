@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CFLAG_CLEAR ; 
- int DX ; 
- int /*<<< orphan*/  EXCEPTION_ZERO_DIVIDE ; 
- int /*<<< orphan*/  FLAG_C ; 
- int /*<<< orphan*/  FLAG_N ; 
- int /*<<< orphan*/  FLAG_V ; 
- int FLAG_Z ; 
- int MASK_OUT_ABOVE_16 (int) ; 
- int MASK_OUT_ABOVE_32 (int) ; 
- int /*<<< orphan*/  NFLAG_16 (int) ; 
- int /*<<< orphan*/  NFLAG_SET ; 
- int OPER_AY_PI_16 () ; 
- int /*<<< orphan*/  USE_CYCLES (int) ; 
- int /*<<< orphan*/  UseDivuCycles (int,int) ; 
- int /*<<< orphan*/  VFLAG_CLEAR ; 
- int /*<<< orphan*/  VFLAG_SET ; 
- int /*<<< orphan*/  m68ki_exception_trap (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint ;
+
+
+ int CFLAG_CLEAR ;
+ int DX ;
+ int EXCEPTION_ZERO_DIVIDE ;
+ int FLAG_C ;
+ int FLAG_N ;
+ int FLAG_V ;
+ int FLAG_Z ;
+ int MASK_OUT_ABOVE_16 (int) ;
+ int MASK_OUT_ABOVE_32 (int) ;
+ int NFLAG_16 (int) ;
+ int NFLAG_SET ;
+ int OPER_AY_PI_16 () ;
+ int USE_CYCLES (int) ;
+ int UseDivuCycles (int,int) ;
+ int VFLAG_CLEAR ;
+ int VFLAG_SET ;
+ int m68ki_exception_trap (int ) ;
 
 __attribute__((used)) static void m68k_op_divu_16_pi(void)
 {
@@ -53,7 +53,7 @@ __attribute__((used)) static void m68k_op_divu_16_pi(void)
     }
     USE_CYCLES(7 *10);
     FLAG_V = VFLAG_SET;
-    FLAG_N = NFLAG_SET; /* undocumented behavior (fixes Blood Shot on Genesis) */
+    FLAG_N = NFLAG_SET;
     FLAG_C = CFLAG_CLEAR;
     return;
   }

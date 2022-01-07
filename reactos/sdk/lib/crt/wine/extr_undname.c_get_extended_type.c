@@ -1,22 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
-
 __attribute__((used)) static const char* get_extended_type(char c)
 {
     const char* type_string;
-    
+
     switch (c)
     {
     case 'D': type_string = "__int8"; break;
@@ -31,7 +22,7 @@ __attribute__((used)) static const char* get_extended_type(char c)
     case 'M': type_string = "unsigned __int128"; break;
     case 'N': type_string = "bool"; break;
     case 'W': type_string = "wchar_t"; break;
-    default:  type_string = NULL; break;
+    default: type_string = ((void*)0); break;
     }
     return type_string;
 }

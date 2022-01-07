@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_4__ ;
-typedef  struct TYPE_16__   TYPE_3__ ;
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
-typedef  struct TYPE_13__   TYPE_11__ ;
 
-/* Type definitions */
-typedef  int uint64_t ;
-typedef  int /*<<< orphan*/  VP8RDLevel ;
+
+
+typedef struct TYPE_17__ TYPE_4__ ;
+typedef struct TYPE_16__ TYPE_3__ ;
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+typedef struct TYPE_13__ TYPE_11__ ;
+
+
+typedef int uint64_t ;
+typedef int VP8RDLevel ;
 struct TYPE_15__ {scalar_t__ D; scalar_t__ H; scalar_t__ R; } ;
-typedef  TYPE_2__ VP8ModeScore ;
-struct TYPE_13__ {int /*<<< orphan*/  nb_skip_; } ;
+typedef TYPE_2__ VP8ModeScore ;
+struct TYPE_13__ {int nb_skip_; } ;
 struct TYPE_14__ {scalar_t__ size_; } ;
 struct TYPE_16__ {TYPE_11__ proba_; TYPE_1__ segment_hdr_; } ;
-typedef  TYPE_3__ VP8Encoder ;
-typedef  int /*<<< orphan*/  VP8EncIterator ;
-struct TYPE_17__ {double value; scalar_t__ do_size_search; int /*<<< orphan*/  q; } ;
-typedef  TYPE_4__ PassStats ;
+typedef TYPE_3__ VP8Encoder ;
+typedef int VP8EncIterator ;
+struct TYPE_17__ {double value; scalar_t__ do_size_search; int q; } ;
+typedef TYPE_4__ PassStats ;
 
-/* Variables and functions */
- scalar_t__ FinalizeSkipProba (TYPE_3__* const) ; 
- scalar_t__ FinalizeTokenProbas (TYPE_11__*) ; 
- double GetPSNR (int,int const) ; 
- int HEADER_SIZE_ESTIMATE ; 
- int /*<<< orphan*/  RecordResiduals (int /*<<< orphan*/ *,TYPE_2__*) ; 
- int /*<<< orphan*/  SetLoopParams (TYPE_3__* const,int /*<<< orphan*/ ) ; 
- scalar_t__ VP8Decimate (int /*<<< orphan*/ *,TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  VP8IteratorImport (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  VP8IteratorInit (TYPE_3__* const,int /*<<< orphan*/ *) ; 
- scalar_t__ VP8IteratorNext (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  VP8IteratorProgress (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  VP8IteratorSaveBoundary (int /*<<< orphan*/ *) ; 
+
+ scalar_t__ FinalizeSkipProba (TYPE_3__* const) ;
+ scalar_t__ FinalizeTokenProbas (TYPE_11__*) ;
+ double GetPSNR (int,int const) ;
+ int HEADER_SIZE_ESTIMATE ;
+ int RecordResiduals (int *,TYPE_2__*) ;
+ int SetLoopParams (TYPE_3__* const,int ) ;
+ scalar_t__ VP8Decimate (int *,TYPE_2__*,int ) ;
+ int VP8IteratorImport (int *,int *) ;
+ int VP8IteratorInit (TYPE_3__* const,int *) ;
+ scalar_t__ VP8IteratorNext (int *) ;
+ int VP8IteratorProgress (int *,int) ;
+ int VP8IteratorSaveBoundary (int *) ;
 
 __attribute__((used)) static uint64_t OneStatPass(VP8Encoder* const enc, VP8RDLevel rd_opt,
                             int nb_mbs, int percent_delta,
@@ -54,9 +54,9 @@ __attribute__((used)) static uint64_t OneStatPass(VP8Encoder* const enc, VP8RDLe
   SetLoopParams(enc, s->q);
   do {
     VP8ModeScore info;
-    VP8IteratorImport(&it, NULL);
+    VP8IteratorImport(&it, ((void*)0));
     if (VP8Decimate(&it, &info, rd_opt)) {
-      // Just record the number of skips and act like skip_proba is not used.
+
       ++enc->proba_.nb_skip_;
     }
     RecordResiduals(&it, &info);

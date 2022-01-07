@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VOID ;
-typedef  int /*<<< orphan*/  ULONG ;
-struct TYPE_4__ {unsigned char ptype; int call_id; scalar_t__ flags; scalar_t__ auth_len; void** drep; int /*<<< orphan*/  rpc_ver_minor; int /*<<< orphan*/  rpc_ver; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int VOID ;
+typedef int ULONG ;
+struct TYPE_4__ {unsigned char ptype; int call_id; scalar_t__ flags; scalar_t__ auth_len; void** drep; int rpc_ver_minor; int rpc_ver; } ;
 struct TYPE_5__ {TYPE_1__ common; } ;
-typedef  TYPE_2__ RpcPktHdr ;
+typedef TYPE_2__ RpcPktHdr ;
 
-/* Variables and functions */
- void* HIBYTE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HIWORD (int /*<<< orphan*/ ) ; 
- void* LOBYTE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LOWORD (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RPC_VER_MAJOR ; 
- int /*<<< orphan*/  RPC_VER_MINOR ; 
+
+ void* HIBYTE (int ) ;
+ int HIWORD (int ) ;
+ void* LOBYTE (int ) ;
+ int LOWORD (int ) ;
+ int RPC_VER_MAJOR ;
+ int RPC_VER_MINOR ;
 
 __attribute__((used)) static VOID RPCRT4_BuildCommonHeader(RpcPktHdr *Header, unsigned char PacketType,
                                      ULONG DataRepresentation)
@@ -39,5 +39,5 @@ __attribute__((used)) static VOID RPCRT4_BuildCommonHeader(RpcPktHdr *Header, un
   Header->common.auth_len = 0;
   Header->common.call_id = 1;
   Header->common.flags = 0;
-  /* Flags and fragment length are computed in RPCRT4_Send. */
+
 }

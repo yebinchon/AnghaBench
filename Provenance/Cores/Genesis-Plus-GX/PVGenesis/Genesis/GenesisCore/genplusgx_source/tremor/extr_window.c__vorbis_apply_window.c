@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ ogg_int32_t ;
-typedef  int /*<<< orphan*/  LOOKUP_T ;
 
-/* Variables and functions */
- scalar_t__ MULT31 (scalar_t__,int /*<<< orphan*/ ) ; 
+
+
+
+typedef scalar_t__ ogg_int32_t ;
+typedef int LOOKUP_T ;
+
+
+ scalar_t__ MULT31 (scalar_t__,int ) ;
 
 void _vorbis_apply_window(ogg_int32_t *d,const void *window_p[2],
-			  long *blocksizes,
-			  int lW,int W,int nW){
-  
+     long *blocksizes,
+     int lW,int W,int nW){
+
   LOOKUP_T *window[2];
   long n=blocksizes[W];
   long ln=blocksizes[lW];
@@ -30,7 +30,7 @@ void _vorbis_apply_window(ogg_int32_t *d,const void *window_p[2],
 
   long rightbegin=n/2+n/4-rn/4;
   long rightend=rightbegin+rn/2;
-  
+
   int i,p;
 
   window[0]=window_p[0];

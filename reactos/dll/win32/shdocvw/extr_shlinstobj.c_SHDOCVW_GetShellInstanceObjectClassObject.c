@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wszCLSIDInstance ;
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  REFIID ;
-typedef  int /*<<< orphan*/  REFCLSID ;
-typedef  int /*<<< orphan*/  LPVOID ;
-typedef  int /*<<< orphan*/  LPBYTE ;
-typedef  scalar_t__ LONG ;
-typedef  int /*<<< orphan*/  IPropertyBag ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  CLSID ;
 
-/* Variables and functions */
- int CHARS_IN_GUID ; 
- int /*<<< orphan*/  CLASS_E_CLASSNOTAVAILABLE ; 
- int /*<<< orphan*/  CLSIDFromString (char*,int /*<<< orphan*/ *) ; 
- scalar_t__ ERROR_SUCCESS ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FIXME (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HKEY_CLASSES_ROOT ; 
- int /*<<< orphan*/  IID_IPropertyBag ; 
- int /*<<< orphan*/  IPropertyBag_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  InstanceObjectFactory_Constructor (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  KEY_READ ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- scalar_t__ RegOpenKeyExW (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ RegQueryValueExW (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *,int*,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  RegistryPropertyBag_Constructor (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  StringFromGUID2 (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  TRACE (char*,...) ; 
- int /*<<< orphan*/  debugstr_guid (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  debugstr_w (char*) ; 
 
-HRESULT SHDOCVW_GetShellInstanceObjectClassObject(REFCLSID rclsid, REFIID riid, 
+
+
+typedef int wszCLSIDInstance ;
+typedef char WCHAR ;
+typedef int REFIID ;
+typedef int REFCLSID ;
+typedef int LPVOID ;
+typedef int LPBYTE ;
+typedef scalar_t__ LONG ;
+typedef int IPropertyBag ;
+typedef int HRESULT ;
+typedef int HKEY ;
+typedef int DWORD ;
+typedef int CLSID ;
+
+
+ int CHARS_IN_GUID ;
+ int CLASS_E_CLASSNOTAVAILABLE ;
+ int CLSIDFromString (char*,int *) ;
+ scalar_t__ ERROR_SUCCESS ;
+ scalar_t__ FAILED (int ) ;
+ int FIXME (char*,int ) ;
+ int HKEY_CLASSES_ROOT ;
+ int IID_IPropertyBag ;
+ int IPropertyBag_Release (int *) ;
+ int InstanceObjectFactory_Constructor (int *,int *,int ,int *) ;
+ int KEY_READ ;
+ int RegCloseKey (int ) ;
+ scalar_t__ RegOpenKeyExW (int ,char const*,int ,int ,int *) ;
+ scalar_t__ RegQueryValueExW (int ,char const*,int *,int*,int ,int*) ;
+ int RegistryPropertyBag_Constructor (int ,int *,int *) ;
+ int StringFromGUID2 (int ,char*,int) ;
+ int TRACE (char*,...) ;
+ int debugstr_guid (int ) ;
+ int debugstr_w (char*) ;
+
+HRESULT SHDOCVW_GetShellInstanceObjectClassObject(REFCLSID rclsid, REFIID riid,
     LPVOID *ppvClassObj)
 {
     WCHAR wszInstanceKey[] = { 'C','L','S','I','D','\\','{','0','0','0','0','0','0','0','0','-',
@@ -60,39 +60,39 @@ HRESULT SHDOCVW_GetShellInstanceObjectClassObject(REFCLSID rclsid, REFIID riid,
     IPropertyBag *pInitPropertyBag;
     HRESULT hr;
     LONG res;
-        
-    TRACE("(rclsid=%s, riid=%s, ppvClassObject=%p)\n", debugstr_guid(rclsid), debugstr_guid(riid), 
+
+    TRACE("(rclsid=%s, riid=%s, ppvClassObject=%p)\n", debugstr_guid(rclsid), debugstr_guid(riid),
           ppvClassObj);
 
-    /* Figure if there is an 'Instance' subkey for the given CLSID and acquire a handle. */
+
     if (!StringFromGUID2(rclsid, wszInstanceKey + 6, CHARS_IN_GUID))
         return CLASS_E_CLASSNOTAVAILABLE;
-    wszInstanceKey[5+CHARS_IN_GUID] = '\\'; /* Repair the null-termination. */
+    wszInstanceKey[5+CHARS_IN_GUID] = '\\';
     if (ERROR_SUCCESS != RegOpenKeyExW(HKEY_CLASSES_ROOT, wszInstanceKey, 0, KEY_READ, &hInstanceKey))
-        /* If there is no 'Instance' subkey, then it's not a Shell Instance Object. */
+
         return CLASS_E_CLASSNOTAVAILABLE;
 
-    if (ERROR_SUCCESS != RegQueryValueExW(hInstanceKey, wszCLSID, NULL, &dwType, (LPBYTE)wszCLSIDInstance, &cbBytes) ||
+    if (ERROR_SUCCESS != RegQueryValueExW(hInstanceKey, wszCLSID, ((void*)0), &dwType, (LPBYTE)wszCLSIDInstance, &cbBytes) ||
         FAILED(CLSIDFromString(wszCLSIDInstance, &clsidInstance)))
     {
-        /* 'Instance' should have a 'CLSID' value with a well-formed clsid-string. */
+
         FIXME("Failed to infer instance CLSID! %s\n", debugstr_w(wszCLSIDInstance));
         RegCloseKey(hInstanceKey);
         return CLASS_E_CLASSNOTAVAILABLE;
     }
 
-    /* Try to open the 'InitPropertyBag' subkey. */
+
     res = RegOpenKeyExW(hInstanceKey, wszInitPropertyBag, 0, KEY_READ, &hInitPropertyBagKey);
     RegCloseKey(hInstanceKey);
     if (res != ERROR_SUCCESS) {
-        /* Besides 'InitPropertyBag's, shell instance objects might be initialized by streams.
-         * So this case might not be an error. */
+
+
         TRACE("No InitPropertyBag key found!\n");
         return CLASS_E_CLASSNOTAVAILABLE;
     }
 
-    /* If the construction succeeds, the new RegistryPropertyBag is responsible for closing
-     * hInitPropertyBagKey. */
+
+
     hr = RegistryPropertyBag_Constructor(hInitPropertyBagKey, &IID_IPropertyBag,
                                          (LPVOID*)&pInitPropertyBag);
     if (FAILED(hr)) {
@@ -100,10 +100,10 @@ HRESULT SHDOCVW_GetShellInstanceObjectClassObject(REFCLSID rclsid, REFIID riid,
         return hr;
     }
 
-    /* Construct an Instance Object Factory, which creates objects of class 'clsidInstance'
-     * and asks them to initialize themselves with the help of the 'pInitiPropertyBag' */
+
+
     hr = InstanceObjectFactory_Constructor(&clsidInstance, pInitPropertyBag, riid, ppvClassObj);
-    IPropertyBag_Release(pInitPropertyBag); /* The factory will hold a reference the bag. */
-        
+    IPropertyBag_Release(pInitPropertyBag);
+
     return hr;
 }

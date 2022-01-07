@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct base {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NUMBER1 ; 
- int /*<<< orphan*/  NUMBER10 ; 
- int /*<<< orphan*/  NUMBER11 ; 
- int /*<<< orphan*/  NUMBER2 ; 
- int /*<<< orphan*/  NUMBER3 ; 
- int /*<<< orphan*/  NUMBER4 ; 
- int /*<<< orphan*/  NUMBER5 ; 
- int /*<<< orphan*/  NUMBER6 ; 
- int /*<<< orphan*/  NUMBER7 ; 
- int /*<<< orphan*/  NUMBER8 ; 
- int /*<<< orphan*/  NUMBER9 ; 
- int /*<<< orphan*/  begin (struct base*) ; 
- int /*<<< orphan*/  callback_system_strtoull ; 
- scalar_t__ check (struct base*,scalar_t__) ; 
- struct base* entry (struct base*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__* strings ; 
- scalar_t__ unlikely (int) ; 
- int /*<<< orphan*/ * values6 ; 
+
+ int NUMBER1 ;
+ int NUMBER10 ;
+ int NUMBER11 ;
+ int NUMBER2 ;
+ int NUMBER3 ;
+ int NUMBER4 ;
+ int NUMBER5 ;
+ int NUMBER6 ;
+ int NUMBER7 ;
+ int NUMBER8 ;
+ int NUMBER9 ;
+ int begin (struct base*) ;
+ int callback_system_strtoull ;
+ scalar_t__ check (struct base*,scalar_t__) ;
+ struct base* entry (struct base*,char*,int ,int *,int ) ;
+ scalar_t__* strings ;
+ scalar_t__ unlikely (int) ;
+ int * values6 ;
 
 void test6() {
 
-  static struct base *base = NULL;
+  static struct base *base = ((void*)0);
 
   if(unlikely(!base)) {
     base = entry(base, "cache", NUMBER1, &values6[0], callback_system_strtoull);

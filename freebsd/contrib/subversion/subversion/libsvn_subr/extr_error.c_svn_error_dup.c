@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {void* file; void* message; int /*<<< orphan*/ * pool; struct TYPE_6__* child; } ;
-typedef  TYPE_1__ svn_error_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- TYPE_1__* SVN_NO_ERROR ; 
- int /*<<< orphan*/  abort () ; 
- void* apr_palloc (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  apr_pool_cleanup_null ; 
- int /*<<< orphan*/  apr_pool_cleanup_register (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- void* apr_pstrdup (int /*<<< orphan*/ *,void*) ; 
- int /*<<< orphan*/  err_abort ; 
- int /*<<< orphan*/ * svn_pool_create (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {void* file; void* message; int * pool; struct TYPE_6__* child; } ;
+typedef TYPE_1__ svn_error_t ;
+typedef int apr_pool_t ;
+
+
+ TYPE_1__* SVN_NO_ERROR ;
+ int abort () ;
+ void* apr_palloc (int *,int) ;
+ int apr_pool_cleanup_null ;
+ int apr_pool_cleanup_register (int *,TYPE_1__*,int ,int ) ;
+ void* apr_pstrdup (int *,void*) ;
+ int err_abort ;
+ int * svn_pool_create (int *) ;
 
 svn_error_t *
 svn_error_dup(const svn_error_t *err)
 {
   apr_pool_t *pool;
-  svn_error_t *new_err = NULL, *tmp_err = NULL;
+  svn_error_t *new_err = ((void*)0), *tmp_err = ((void*)0);
 
   if (!err)
     return SVN_NO_ERROR;
 
-  pool = svn_pool_create(NULL);
+  pool = svn_pool_create(((void*)0));
   if (!pool)
     abort();
 
@@ -58,11 +58,11 @@ svn_error_dup(const svn_error_t *err)
         tmp_err->file = apr_pstrdup(pool, tmp_err->file);
     }
 
-#if defined(SVN_DEBUG)
-  apr_pool_cleanup_register(pool, tmp_err,
-                            err_abort,
-                            apr_pool_cleanup_null);
-#endif
+
+
+
+
+
 
   return new_err;
 }

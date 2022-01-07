@@ -1,0 +1,162 @@
+; ModuleID = '/home/carl/AnghaBench/linux/drivers/iommu/extr_intel-pasid.c_intel_pasid_setup_pass_through.c'
+source_filename = "/home/carl/AnghaBench/linux/drivers/iommu/extr_intel-pasid.c_intel_pasid_setup_pass_through.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+%struct.intel_iommu = type { i32, i32, i32 }
+%struct.dmar_domain = type { i32 }
+%struct.device = type { i32 }
+%struct.pasid_entry = type { i32 }
+
+@FLPT_DEFAULT_DID = common dso_local global i32 0, align 4
+@.str = private unnamed_addr constant [39 x i8] c"Failed to get pasid entry of PASID %d\0A\00", align 1
+@ENODEV = common dso_local global i32 0, align 4
+
+; Function Attrs: noinline nounwind optnone uwtable
+define dso_local i32 @intel_pasid_setup_pass_through(%struct.intel_iommu* %0, %struct.dmar_domain* %1, %struct.device* %2, i32 %3) #0 {
+  %5 = alloca i32, align 4
+  %6 = alloca %struct.intel_iommu*, align 8
+  %7 = alloca %struct.dmar_domain*, align 8
+  %8 = alloca %struct.device*, align 8
+  %9 = alloca i32, align 4
+  %10 = alloca i32, align 4
+  %11 = alloca %struct.pasid_entry*, align 8
+  store %struct.intel_iommu* %0, %struct.intel_iommu** %6, align 8
+  store %struct.dmar_domain* %1, %struct.dmar_domain** %7, align 8
+  store %struct.device* %2, %struct.device** %8, align 8
+  store i32 %3, i32* %9, align 4
+  %12 = load i32, i32* @FLPT_DEFAULT_DID, align 4
+  store i32 %12, i32* %10, align 4
+  %13 = load %struct.device*, %struct.device** %8, align 8
+  %14 = load i32, i32* %9, align 4
+  %15 = call %struct.pasid_entry* @intel_pasid_get_entry(%struct.device* %13, i32 %14)
+  store %struct.pasid_entry* %15, %struct.pasid_entry** %11, align 8
+  %16 = load %struct.pasid_entry*, %struct.pasid_entry** %11, align 8
+  %17 = icmp ne %struct.pasid_entry* %16, null
+  br i1 %17, label %24, label %18
+
+18:                                               ; preds = %4
+  %19 = load %struct.device*, %struct.device** %8, align 8
+  %20 = load i32, i32* %9, align 4
+  %21 = call i32 @dev_err(%struct.device* %19, i8* getelementptr inbounds ([39 x i8], [39 x i8]* @.str, i64 0, i64 0), i32 %20)
+  %22 = load i32, i32* @ENODEV, align 4
+  %23 = sub nsw i32 0, %22
+  store i32 %23, i32* %5, align 4
+  br label %80
+
+24:                                               ; preds = %4
+  %25 = load %struct.pasid_entry*, %struct.pasid_entry** %11, align 8
+  %26 = call i32 @pasid_clear_entry(%struct.pasid_entry* %25)
+  %27 = load %struct.pasid_entry*, %struct.pasid_entry** %11, align 8
+  %28 = load i32, i32* %10, align 4
+  %29 = call i32 @pasid_set_domain_id(%struct.pasid_entry* %27, i32 %28)
+  %30 = load %struct.pasid_entry*, %struct.pasid_entry** %11, align 8
+  %31 = load %struct.intel_iommu*, %struct.intel_iommu** %6, align 8
+  %32 = getelementptr inbounds %struct.intel_iommu, %struct.intel_iommu* %31, i32 0, i32 2
+  %33 = load i32, i32* %32, align 4
+  %34 = call i32 @pasid_set_address_width(%struct.pasid_entry* %30, i32 %33)
+  %35 = load %struct.pasid_entry*, %struct.pasid_entry** %11, align 8
+  %36 = call i32 @pasid_set_translation_type(%struct.pasid_entry* %35, i32 4)
+  %37 = load %struct.pasid_entry*, %struct.pasid_entry** %11, align 8
+  %38 = call i32 @pasid_set_fault_enable(%struct.pasid_entry* %37)
+  %39 = load %struct.pasid_entry*, %struct.pasid_entry** %11, align 8
+  %40 = load %struct.intel_iommu*, %struct.intel_iommu** %6, align 8
+  %41 = getelementptr inbounds %struct.intel_iommu, %struct.intel_iommu* %40, i32 0, i32 1
+  %42 = load i32, i32* %41, align 4
+  %43 = call i32 @ecap_smpwc(i32 %42)
+  %44 = icmp ne i32 %43, 0
+  %45 = xor i1 %44, true
+  %46 = xor i1 %45, true
+  %47 = zext i1 %46 to i32
+  %48 = call i32 @pasid_set_page_snoop(%struct.pasid_entry* %39, i32 %47)
+  %49 = load %struct.pasid_entry*, %struct.pasid_entry** %11, align 8
+  %50 = call i32 @pasid_set_sre(%struct.pasid_entry* %49)
+  %51 = load %struct.pasid_entry*, %struct.pasid_entry** %11, align 8
+  %52 = call i32 @pasid_set_present(%struct.pasid_entry* %51)
+  %53 = load %struct.intel_iommu*, %struct.intel_iommu** %6, align 8
+  %54 = getelementptr inbounds %struct.intel_iommu, %struct.intel_iommu* %53, i32 0, i32 1
+  %55 = load i32, i32* %54, align 4
+  %56 = call i32 @ecap_coherent(i32 %55)
+  %57 = icmp ne i32 %56, 0
+  br i1 %57, label %61, label %58
+
+58:                                               ; preds = %24
+  %59 = load %struct.pasid_entry*, %struct.pasid_entry** %11, align 8
+  %60 = call i32 @clflush_cache_range(%struct.pasid_entry* %59, i32 4)
+  br label %61
+
+61:                                               ; preds = %58, %24
+  %62 = load %struct.intel_iommu*, %struct.intel_iommu** %6, align 8
+  %63 = getelementptr inbounds %struct.intel_iommu, %struct.intel_iommu* %62, i32 0, i32 0
+  %64 = load i32, i32* %63, align 4
+  %65 = call i64 @cap_caching_mode(i32 %64)
+  %66 = icmp ne i64 %65, 0
+  br i1 %66, label %67, label %76
+
+67:                                               ; preds = %61
+  %68 = load %struct.intel_iommu*, %struct.intel_iommu** %6, align 8
+  %69 = load i32, i32* %10, align 4
+  %70 = load i32, i32* %9, align 4
+  %71 = call i32 @pasid_cache_invalidation_with_pasid(%struct.intel_iommu* %68, i32 %69, i32 %70)
+  %72 = load %struct.intel_iommu*, %struct.intel_iommu** %6, align 8
+  %73 = load i32, i32* %10, align 4
+  %74 = load i32, i32* %9, align 4
+  %75 = call i32 @iotlb_invalidation_with_pasid(%struct.intel_iommu* %72, i32 %73, i32 %74)
+  br label %79
+
+76:                                               ; preds = %61
+  %77 = load %struct.intel_iommu*, %struct.intel_iommu** %6, align 8
+  %78 = call i32 @iommu_flush_write_buffer(%struct.intel_iommu* %77)
+  br label %79
+
+79:                                               ; preds = %76, %67
+  store i32 0, i32* %5, align 4
+  br label %80
+
+80:                                               ; preds = %79, %18
+  %81 = load i32, i32* %5, align 4
+  ret i32 %81
+}
+
+declare dso_local %struct.pasid_entry* @intel_pasid_get_entry(%struct.device*, i32) #1
+
+declare dso_local i32 @dev_err(%struct.device*, i8*, i32) #1
+
+declare dso_local i32 @pasid_clear_entry(%struct.pasid_entry*) #1
+
+declare dso_local i32 @pasid_set_domain_id(%struct.pasid_entry*, i32) #1
+
+declare dso_local i32 @pasid_set_address_width(%struct.pasid_entry*, i32) #1
+
+declare dso_local i32 @pasid_set_translation_type(%struct.pasid_entry*, i32) #1
+
+declare dso_local i32 @pasid_set_fault_enable(%struct.pasid_entry*) #1
+
+declare dso_local i32 @pasid_set_page_snoop(%struct.pasid_entry*, i32) #1
+
+declare dso_local i32 @ecap_smpwc(i32) #1
+
+declare dso_local i32 @pasid_set_sre(%struct.pasid_entry*) #1
+
+declare dso_local i32 @pasid_set_present(%struct.pasid_entry*) #1
+
+declare dso_local i32 @ecap_coherent(i32) #1
+
+declare dso_local i32 @clflush_cache_range(%struct.pasid_entry*, i32) #1
+
+declare dso_local i64 @cap_caching_mode(i32) #1
+
+declare dso_local i32 @pasid_cache_invalidation_with_pasid(%struct.intel_iommu*, i32, i32) #1
+
+declare dso_local i32 @iotlb_invalidation_with_pasid(%struct.intel_iommu*, i32, i32) #1
+
+declare dso_local i32 @iommu_flush_write_buffer(%struct.intel_iommu*) #1
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

@@ -1,18 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  nk_short ;
-typedef  int nk_byte ;
 
-/* Variables and functions */
 
-__attribute__((used)) static nk_short nk_ttSHORT(const nk_byte *p)   { return (nk_short)(p[0]*256 + p[1]); }
+
+
+typedef int nk_short ;
+typedef int nk_byte ;
+
+
+
+__attribute__((used)) static nk_short nk_ttSHORT(const nk_byte *p) { return (nk_short)(p[0]*256 + p[1]); }

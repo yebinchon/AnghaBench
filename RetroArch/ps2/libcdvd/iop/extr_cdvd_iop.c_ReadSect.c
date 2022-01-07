@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u32 ;
-typedef  int /*<<< orphan*/  sceCdRMode ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u32 ;
+typedef int sceCdRMode ;
 struct TYPE_2__ {int trycount; int spindlctrl; } ;
 
-/* Variables and functions */
- int FALSE ; 
- scalar_t__ TRUE ; 
- TYPE_1__ cdReadMode ; 
- int /*<<< orphan*/  isValidDisc () ; 
- int /*<<< orphan*/  memset (void*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  sceCdDiskReady (int /*<<< orphan*/ ) ; 
- int sceCdGetError () ; 
- scalar_t__ sceCdRead (int,int,void*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sceCdSync (int /*<<< orphan*/ ) ; 
+
+ int FALSE ;
+ scalar_t__ TRUE ;
+ TYPE_1__ cdReadMode ;
+ int isValidDisc () ;
+ int memset (void*,int ,int) ;
+ int sceCdDiskReady (int ) ;
+ int sceCdGetError () ;
+ scalar_t__ sceCdRead (int,int,void*,int *) ;
+ int sceCdSync (int ) ;
 
 int ReadSect(u32 lsn, u32 sectors, void *buf, sceCdRMode *mode)
 {
@@ -32,12 +32,12 @@ int ReadSect(u32 lsn, u32 sectors, void *buf, sceCdRMode *mode)
     int result = 0;
     cdReadMode.trycount = 32;
 
-    for (retry = 0; retry < 32; retry++)  // 32 retries
+    for (retry = 0; retry < 32; retry++)
     {
         if (retry <= 8)
-            cdReadMode.spindlctrl = 1;  // Try fast reads for first 8 tries
+            cdReadMode.spindlctrl = 1;
         else
-            cdReadMode.spindlctrl = 0;  // Then try slow reads
+            cdReadMode.spindlctrl = 0;
 
         if (!isValidDisc())
             return FALSE;
@@ -45,15 +45,15 @@ int ReadSect(u32 lsn, u32 sectors, void *buf, sceCdRMode *mode)
         sceCdDiskReady(0);
 
         if (sceCdRead(lsn, sectors, buf, mode) != TRUE) {
-            // Failed to read
+
             if (retry == 31) {
-                // Still failed after last retry
+
                 memset(buf, 0, (sectors << 11));
-                // printf("Couldn't Read from file for some reason\n");
-                return FALSE;  // error
+
+                return FALSE;
             }
         } else {
-            // Read okay
+
             sceCdSync(0);
             break;
         }
@@ -71,5 +71,5 @@ int ReadSect(u32 lsn, u32 sectors, void *buf, sceCdRMode *mode)
 
     memset(buf, 0, (sectors << 11));
 
-    return FALSE;  // error
+    return FALSE;
 }

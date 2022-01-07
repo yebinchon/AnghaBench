@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u32 ;
 struct xfrm_dst {struct dst_entry* route; } ;
 struct dst_entry {TYPE_1__* ops; } ;
-struct TYPE_2__ {int /*<<< orphan*/  (* update_pmtu ) (struct dst_entry*,int /*<<< orphan*/ ) ;} ;
+struct TYPE_2__ {int (* update_pmtu ) (struct dst_entry*,int ) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  stub1 (struct dst_entry*,int /*<<< orphan*/ ) ; 
+
+ int stub1 (struct dst_entry*,int ) ;
 
 __attribute__((used)) static void xfrm4_update_pmtu(struct dst_entry *dst, u32 mtu)
 {
-	struct xfrm_dst *xdst = (struct xfrm_dst *)dst;
-	struct dst_entry *path = xdst->route;
+ struct xfrm_dst *xdst = (struct xfrm_dst *)dst;
+ struct dst_entry *path = xdst->route;
 
-	path->ops->update_pmtu(path, mtu);
+ path->ops->update_pmtu(path, mtu);
 }

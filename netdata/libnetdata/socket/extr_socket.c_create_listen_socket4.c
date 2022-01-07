@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char* uint16_t ;
-struct TYPE_2__ {int /*<<< orphan*/  s_addr; } ;
-struct sockaddr_in {TYPE_1__ sin_addr; int /*<<< orphan*/  sin_port; int /*<<< orphan*/  sin_family; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef char* uint16_t ;
+struct TYPE_2__ {int s_addr; } ;
+struct sockaddr_in {TYPE_1__ sin_addr; int sin_port; int sin_family; } ;
 struct sockaddr {int dummy; } ;
-typedef  int /*<<< orphan*/  name ;
+typedef int name ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_INET ; 
- int /*<<< orphan*/  D_LISTENER ; 
- int SOCK_STREAM ; 
- scalar_t__ bind (int,struct sockaddr*,int) ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  debug (int /*<<< orphan*/ ,char*,char const*,char*,int) ; 
- int /*<<< orphan*/  error (char*,char const*,...) ; 
- int /*<<< orphan*/  htons (char*) ; 
- int inet_pton (int /*<<< orphan*/ ,char const*,void*) ; 
- scalar_t__ listen (int,int) ; 
- int /*<<< orphan*/  memset (struct sockaddr_in*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  sock_enlarge_in (int) ; 
- int /*<<< orphan*/  sock_setnonblock (int) ; 
- int /*<<< orphan*/  sock_setreuse (int,int) ; 
- int /*<<< orphan*/  sock_setreuse_port (int,int) ; 
- int socket (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
+
+ int AF_INET ;
+ int D_LISTENER ;
+ int SOCK_STREAM ;
+ scalar_t__ bind (int,struct sockaddr*,int) ;
+ int close (int) ;
+ int debug (int ,char*,char const*,char*,int) ;
+ int error (char*,char const*,...) ;
+ int htons (char*) ;
+ int inet_pton (int ,char const*,void*) ;
+ scalar_t__ listen (int,int) ;
+ int memset (struct sockaddr_in*,int ,int) ;
+ int sock_enlarge_in (int) ;
+ int sock_setnonblock (int) ;
+ int sock_setreuse (int,int) ;
+ int sock_setreuse_port (int,int) ;
+ int socket (int ,int,int ) ;
 
 int create_listen_socket4(int socktype, const char *ip, uint16_t port, int listen_backlog) {
     int sock;

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
-typedef  void* s32 ;
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MOD_CHECK_ID (int /*<<< orphan*/ ,unsigned int) ; 
- void* luaL_checkinteger (int /*<<< orphan*/ *,int) ; 
- int luaL_error (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  lua_pushinteger (int /*<<< orphan*/ *,void*) ; 
- void* platform_pwm_set_clock (unsigned int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pwm ; 
+
+
+
+typedef int u32 ;
+typedef void* s32 ;
+typedef int lua_State ;
+
+
+ int MOD_CHECK_ID (int ,unsigned int) ;
+ void* luaL_checkinteger (int *,int) ;
+ int luaL_error (int *,char*) ;
+ int lua_pushinteger (int *,void*) ;
+ void* platform_pwm_set_clock (unsigned int,int ) ;
+ int pwm ;
 
 __attribute__((used)) static int lpwm_setclock( lua_State* L )
 {
   unsigned id;
-  s32 clk;	// signed to error-check for negative values
+  s32 clk;
 
   id = luaL_checkinteger( L, 1 );
   MOD_CHECK_ID( pwm, id );

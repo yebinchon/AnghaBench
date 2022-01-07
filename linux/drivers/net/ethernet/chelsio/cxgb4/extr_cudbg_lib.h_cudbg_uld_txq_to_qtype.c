@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u32 ;
 
-/* Variables and functions */
- int CUDBG_QTYPE_CRYPTO_TXQ ; 
- int CUDBG_QTYPE_OFLD_TXQ ; 
- int CUDBG_QTYPE_UNKNOWN ; 
-#define  CXGB4_TX_CRYPTO 129 
-#define  CXGB4_TX_OFLD 128 
+
+
+
+typedef int u32 ;
+
+
+ int CUDBG_QTYPE_CRYPTO_TXQ ;
+ int CUDBG_QTYPE_OFLD_TXQ ;
+ int CUDBG_QTYPE_UNKNOWN ;
+
+
 
 __attribute__((used)) static inline u32 cudbg_uld_txq_to_qtype(u32 uld)
 {
-	switch (uld) {
-	case CXGB4_TX_OFLD:
-		return CUDBG_QTYPE_OFLD_TXQ;
-	case CXGB4_TX_CRYPTO:
-		return CUDBG_QTYPE_CRYPTO_TXQ;
-	}
+ switch (uld) {
+ case 128:
+  return CUDBG_QTYPE_OFLD_TXQ;
+ case 129:
+  return CUDBG_QTYPE_CRYPTO_TXQ;
+ }
 
-	return CUDBG_QTYPE_UNKNOWN;
+ return CUDBG_QTYPE_UNKNOWN;
 }

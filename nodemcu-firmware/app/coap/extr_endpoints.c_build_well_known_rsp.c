@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint16_t ;
+
+
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint16_t ;
 struct TYPE_8__ {char* name; struct TYPE_8__* next; } ;
-typedef  TYPE_3__ coap_luser_entry ;
-struct TYPE_9__ {char* core_attr; TYPE_2__* path; TYPE_1__* user_entry; int /*<<< orphan*/ * handler; } ;
-typedef  TYPE_4__ coap_endpoint_t ;
+typedef TYPE_3__ coap_luser_entry ;
+struct TYPE_9__ {char* core_attr; TYPE_2__* path; TYPE_1__* user_entry; int * handler; } ;
+typedef TYPE_4__ coap_endpoint_t ;
 struct TYPE_7__ {int count; char** elems; } ;
 struct TYPE_6__ {TYPE_3__* next; } ;
 
-/* Variables and functions */
- TYPE_4__* endpoints ; 
- int /*<<< orphan*/  memset (char*,int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__ strlen (char*) ; 
- int /*<<< orphan*/  strncat (char*,char*,scalar_t__) ; 
+
+ TYPE_4__* endpoints ;
+ int memset (char*,int ,scalar_t__) ;
+ scalar_t__ strlen (char*) ;
+ int strncat (char*,char*,scalar_t__) ;
 
 void build_well_known_rsp(char *rsp, uint16_t rsplen)
 {
@@ -36,15 +36,15 @@ void build_well_known_rsp(char *rsp, uint16_t rsplen)
 
     memset(rsp, 0, len);
 
-    len--; // Null-terminated string
+    len--;
 
-    while(NULL != ep->handler)
+    while(((void*)0) != ep->handler)
     {
-        if (NULL == ep->core_attr) {
+        if (((void*)0) == ep->core_attr) {
             ep++;
             continue;
         }
-        if (NULL == ep->user_entry){
+        if (((void*)0) == ep->user_entry){
             if (0 < strlen(rsp)) {
                 strncat(rsp, ",", len);
                 len--;
@@ -67,8 +67,8 @@ void build_well_known_rsp(char *rsp, uint16_t rsplen)
             strncat(rsp, ep->core_attr, len);
             len -= strlen(ep->core_attr);
         } else {
-            coap_luser_entry *h = ep->user_entry->next;     // ->next: skip the first entry(head)
-            while(NULL != h){
+            coap_luser_entry *h = ep->user_entry->next;
+            while(((void*)0) != h){
                 if (0 < strlen(rsp)) {
                     strncat(rsp, ",", len);
                     len--;

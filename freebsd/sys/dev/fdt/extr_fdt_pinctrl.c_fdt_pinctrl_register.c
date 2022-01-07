@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  phandle_t ;
-typedef  int /*<<< orphan*/  device_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OF_device_register_xref (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OF_xref_from_node (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TSENTER () ; 
- int /*<<< orphan*/  TSEXIT () ; 
- int /*<<< orphan*/  ofw_bus_get_node (int /*<<< orphan*/ ) ; 
- int pinctrl_register_children (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*) ; 
+
+
+
+typedef int phandle_t ;
+typedef int device_t ;
+
+
+ int OF_device_register_xref (int ,int ) ;
+ int OF_xref_from_node (int ) ;
+ int TSENTER () ;
+ int TSEXIT () ;
+ int ofw_bus_get_node (int ) ;
+ int pinctrl_register_children (int ,int ,char const*) ;
 
 int
 fdt_pinctrl_register(device_t pinctrl, const char *pinprop)
 {
-	phandle_t node;
-	int ret;
+ phandle_t node;
+ int ret;
 
-	TSENTER();
-	node = ofw_bus_get_node(pinctrl);
-	OF_device_register_xref(OF_xref_from_node(node), pinctrl);
-	ret = pinctrl_register_children(pinctrl, node, pinprop);
-	TSEXIT();
+ TSENTER();
+ node = ofw_bus_get_node(pinctrl);
+ OF_device_register_xref(OF_xref_from_node(node), pinctrl);
+ ret = pinctrl_register_children(pinctrl, node, pinprop);
+ TSEXIT();
 
-	return (ret);
+ return (ret);
 }

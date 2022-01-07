@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int content_length; scalar_t__ transfer; int buffer_end; int buffer_start; char* buffer; size_t chunked_offset; int /*<<< orphan*/  protocol; int /*<<< orphan*/  on_error; int /*<<< orphan*/  on_body; int /*<<< orphan*/  request; int /*<<< orphan*/  chunked_decoder; } ;
-typedef  int /*<<< orphan*/  PyObject ;
-typedef  TYPE_1__ Parser ;
 
-/* Variables and functions */
- int CONTENT_LENGTH_UNSET ; 
- scalar_t__ PARSER_CHUNKED ; 
- scalar_t__ PARSER_TRANSFER_UNSET ; 
- int /*<<< orphan*/  Protocol_on_body (int /*<<< orphan*/ ,char*,size_t,int) ; 
- int /*<<< orphan*/  Protocol_on_error (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyBUF_READ ; 
- int /*<<< orphan*/ * PyMemoryView_FromMemory (char*,size_t,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * PyObject_CallFunctionObjArgs (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyObject_Print (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int PyObject_SetAttrString (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  Py_DECREF (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Py_INCREF (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * Py_None ; 
- int /*<<< orphan*/  Py_XDECREF (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  _reset_state (TYPE_1__*,int) ; 
- int /*<<< orphan*/ * malformed_body ; 
- int phr_decode_chunked (int /*<<< orphan*/ *,char*,int*) ; 
- int /*<<< orphan*/  printf (char*) ; 
- int /*<<< orphan*/  stdout ; 
- scalar_t__ zero_body ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int content_length; scalar_t__ transfer; int buffer_end; int buffer_start; char* buffer; size_t chunked_offset; int protocol; int on_error; int on_body; int request; int chunked_decoder; } ;
+typedef int PyObject ;
+typedef TYPE_1__ Parser ;
+
+
+ int CONTENT_LENGTH_UNSET ;
+ scalar_t__ PARSER_CHUNKED ;
+ scalar_t__ PARSER_TRANSFER_UNSET ;
+ int Protocol_on_body (int ,char*,size_t,int) ;
+ int Protocol_on_error (int ,int *) ;
+ int PyBUF_READ ;
+ int * PyMemoryView_FromMemory (char*,size_t,int ) ;
+ int * PyObject_CallFunctionObjArgs (int ,int *,int *) ;
+ int PyObject_Print (char*,int ,int ) ;
+ int PyObject_SetAttrString (int ,char*,char*) ;
+ int Py_DECREF (int *) ;
+ int Py_INCREF (int *) ;
+ int * Py_None ;
+ int Py_XDECREF (int *) ;
+ int _reset_state (TYPE_1__*,int) ;
+ int * malformed_body ;
+ int phr_decode_chunked (int *,char*,int*) ;
+ int printf (char*) ;
+ int stdout ;
+ scalar_t__ zero_body ;
 
 __attribute__((used)) static int _parse_body(Parser* self) {
-#ifdef PARSER_STANDALONE
-  PyObject* body_view = NULL;
-#endif
 
-  char* body = NULL;
+
+
+
+  char* body = ((void*)0);
   size_t body_len = 0;
   int result = -2;
   if(self->content_length == CONTENT_LENGTH_UNSET
@@ -68,7 +68,7 @@ __attribute__((used)) static int _parse_body(Parser* self) {
 
     self->buffer_start += self->content_length;
 
-    // TODO result = self->content_length (long)
+
     result = 1;
 
     goto on_body;
@@ -105,59 +105,20 @@ __attribute__((used)) static int _parse_body(Parser* self) {
   on_body:
 
   if(body) {
-#if 0
-    if(PyObject_SetAttrString(self->request, "body", body) == -1) {
-      result = -3;
-      goto finally;
-    }
-#else
-    /*((Request*)(self->request))->body = body;
-    Py_INCREF(body);*/
-#endif
-
-#ifdef DEBUG_PRINT
-    printf("body: "); PyObject_Print(body, stdout, 0); printf("\n");
-#endif
   }
-
-#ifdef PARSER_STANDALONE
-  if(body) {
-    body_view = PyMemoryView_FromMemory(body, body_len, PyBUF_READ);
-    if(!body_view)
-      goto error;
-  } else {
-    body_view = Py_None;
-    Py_INCREF(body_view);
-  }
-  PyObject* on_body_result = PyObject_CallFunctionObjArgs(
-    self->on_body, body_view, NULL);
-  if(!on_body_result)
-    goto error;
-  Py_DECREF(on_body_result);
-#else
   if(!Protocol_on_body(self->protocol, body, body_len, self->buffer_end - self->buffer_start))
     goto error;
-#endif
 
-  _reset_state(self, false);
+
+  _reset_state(self, 0);
 
   goto finally;
-
-#ifdef PARSER_STANDALONE
-  PyObject* on_error_result;
-  on_error:
-  on_error_result = PyObject_CallFunctionObjArgs(
-    self->on_error, malformed_body, NULL);
-  if(!on_error_result)
-    goto error;
-  Py_DECREF(on_error_result);
-#else
   on_error:
   if(!Protocol_on_error(self->protocol, malformed_body))
     goto error;
-#endif
 
-  _reset_state(self, true);
+
+  _reset_state(self, 1);
 
   result = -1;
 
@@ -167,8 +128,8 @@ __attribute__((used)) static int _parse_body(Parser* self) {
   result = -3;
 
   finally:
-#ifdef PARSER_STANDALONE
-  Py_XDECREF(body_view);
-#endif
+
+
+
   return result;
 }

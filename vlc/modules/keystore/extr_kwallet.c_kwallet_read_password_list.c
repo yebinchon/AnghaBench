@@ -1,70 +1,70 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_7__ {char* i_handle; char* psz_app_id; } ;
-typedef  TYPE_1__ vlc_keystore_sys ;
-typedef  int /*<<< orphan*/  vlc_keystore_entry ;
+typedef TYPE_1__ vlc_keystore_sys ;
+typedef int vlc_keystore_entry ;
 struct TYPE_8__ {TYPE_1__* p_sys; } ;
-typedef  TYPE_2__ vlc_keystore ;
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  DBusMessageIter ;
-typedef  int /*<<< orphan*/  DBusMessage ;
+typedef TYPE_2__ vlc_keystore ;
+typedef int uint8_t ;
+typedef int DBusMessageIter ;
+typedef int DBusMessage ;
 
-/* Variables and functions */
- scalar_t__ DBUS_TYPE_ARRAY ; 
- scalar_t__ DBUS_TYPE_DICT_ENTRY ; 
- scalar_t__ DBUS_TYPE_INT32 ; 
- scalar_t__ DBUS_TYPE_STRING ; 
- scalar_t__ DBUS_TYPE_VARIANT ; 
- int /*<<< orphan*/ * calloc (unsigned int,int) ; 
- int /*<<< orphan*/  dbus_message_iter_append_basic (int /*<<< orphan*/ *,scalar_t__,char**) ; 
- scalar_t__ dbus_message_iter_get_arg_type (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  dbus_message_iter_get_basic (int /*<<< orphan*/ *,char**) ; 
- int /*<<< orphan*/  dbus_message_iter_init (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  dbus_message_iter_init_append (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ dbus_message_iter_next (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  dbus_message_iter_recurse (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  dbus_message_unref (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
- scalar_t__ key2values (char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  msg_Err (TYPE_2__*,char*) ; 
- char* psz_folder ; 
- size_t vlc_b64_decode_binary (int /*<<< orphan*/ **,char*) ; 
- int /*<<< orphan*/ * vlc_dbus_new_method (TYPE_2__*,char*) ; 
- int /*<<< orphan*/ * vlc_dbus_send_message (TYPE_2__*,int /*<<< orphan*/ *) ; 
- scalar_t__ vlc_keystore_entry_set_secret (int /*<<< orphan*/ *,int /*<<< orphan*/ *,size_t) ; 
- int /*<<< orphan*/  vlc_keystore_release_entries (int /*<<< orphan*/ *,int) ; 
+
+ scalar_t__ DBUS_TYPE_ARRAY ;
+ scalar_t__ DBUS_TYPE_DICT_ENTRY ;
+ scalar_t__ DBUS_TYPE_INT32 ;
+ scalar_t__ DBUS_TYPE_STRING ;
+ scalar_t__ DBUS_TYPE_VARIANT ;
+ int * calloc (unsigned int,int) ;
+ int dbus_message_iter_append_basic (int *,scalar_t__,char**) ;
+ scalar_t__ dbus_message_iter_get_arg_type (int *) ;
+ int dbus_message_iter_get_basic (int *,char**) ;
+ int dbus_message_iter_init (int *,int *) ;
+ int dbus_message_iter_init_append (int *,int *) ;
+ scalar_t__ dbus_message_iter_next (int *) ;
+ int dbus_message_iter_recurse (int *,int *) ;
+ int dbus_message_unref (int *) ;
+ int free (int *) ;
+ scalar_t__ key2values (char*,int *) ;
+ int msg_Err (TYPE_2__*,char*) ;
+ char* psz_folder ;
+ size_t vlc_b64_decode_binary (int **,char*) ;
+ int * vlc_dbus_new_method (TYPE_2__*,char*) ;
+ int * vlc_dbus_send_message (TYPE_2__*,int *) ;
+ scalar_t__ vlc_keystore_entry_set_secret (int *,int *,size_t) ;
+ int vlc_keystore_release_entries (int *,int) ;
 
 __attribute__((used)) static vlc_keystore_entry*
 kwallet_read_password_list( vlc_keystore* p_keystore, char* psz_entry_name,
                             unsigned int* pi_count )
 {
     vlc_keystore_sys* p_sys = p_keystore->p_sys;
-    DBusMessage* msg = NULL;
-    DBusMessage* repmsg = NULL;
+    DBusMessage* msg = ((void*)0);
+    DBusMessage* repmsg = ((void*)0);
     DBusMessageIter args;
     DBusMessageIter sub_iter;
     DBusMessageIter dict_iter;
     DBusMessageIter var_iter;
-    vlc_keystore_entry* p_entries = NULL;
+    vlc_keystore_entry* p_entries = ((void*)0);
     size_t i_size;
-    uint8_t* p_secret_decoded = NULL;
+    uint8_t* p_secret_decoded = ((void*)0);
     char* p_reply;
     char* p_secret;
     int i = 0;
 
-    /* init */
+
     *pi_count = 0;
     if ( !( msg = vlc_dbus_new_method( p_keystore, "readPasswordList" ) ) )
     {
@@ -72,7 +72,7 @@ kwallet_read_password_list( vlc_keystore* p_keystore, char* psz_entry_name,
         goto error;
     }
 
-    /* argument init */
+
     dbus_message_iter_init_append( msg, &args );
     if ( !dbus_message_iter_append_basic( &args, DBUS_TYPE_INT32, &p_sys->i_handle ) ||
          !dbus_message_iter_append_basic( &args, DBUS_TYPE_STRING, &psz_folder ) ||
@@ -80,14 +80,14 @@ kwallet_read_password_list( vlc_keystore* p_keystore, char* psz_entry_name,
          !dbus_message_iter_append_basic( &args, DBUS_TYPE_STRING, &p_sys->psz_app_id ) )
         goto error;
 
-    /* sending message */
+
     if ( !( repmsg = vlc_dbus_send_message( p_keystore, msg ) ) )
     {
         msg_Err( p_keystore, "kwallet_read_password_list : vlc_dbus_send_message failed" );
         goto error;
     }
 
-    /* handling reply */
+
     if ( !dbus_message_iter_init( repmsg, &args ) )
     {
         msg_Err( p_keystore, "kwallet_read_password_list : Message has no arguments" );
@@ -100,7 +100,7 @@ kwallet_read_password_list( vlc_keystore* p_keystore, char* psz_entry_name,
     }
     else
     {
-        /* calculating p_entries's size */
+
         dbus_message_iter_recurse( &args, &sub_iter );
         do
         {
@@ -121,7 +121,7 @@ kwallet_read_password_list( vlc_keystore* p_keystore, char* psz_entry_name,
             goto error;
 
         dbus_message_iter_init( repmsg, &args );
-        /* recurse into the reply array */
+
         dbus_message_iter_recurse( &args, &sub_iter );
         do
         {
@@ -130,7 +130,7 @@ kwallet_read_password_list( vlc_keystore* p_keystore, char* psz_entry_name,
                 msg_Err( p_keystore, "Wrong type not DBUS_TYPE_DICT_ENTRY" );
                 continue;
             }
-            /* recurse into the dict-entry in the array */
+
             dbus_message_iter_recurse( &sub_iter, &dict_iter );
             if ( dbus_message_iter_get_arg_type( &dict_iter ) != DBUS_TYPE_STRING )
             {
@@ -144,7 +144,7 @@ kwallet_read_password_list( vlc_keystore* p_keystore, char* psz_entry_name,
                 msg_Err( p_keystore, "Second type of Dict-Entry is not a variant" );
                 continue;
             }
-            /* recurse into the variant in the dict-entry */
+
             dbus_message_iter_recurse( &dict_iter, &var_iter );
             dbus_message_iter_get_basic( &var_iter, &p_secret );
 
@@ -175,5 +175,5 @@ error:
         dbus_message_unref( msg );
     if ( repmsg )
         dbus_message_unref( repmsg );
-    return NULL;
+    return ((void*)0);
 }

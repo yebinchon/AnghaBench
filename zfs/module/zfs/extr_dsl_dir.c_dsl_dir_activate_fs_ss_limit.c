@@ -1,34 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int EALREADY ; 
- int /*<<< orphan*/  ZFS_SPACE_CHECK_RESERVED ; 
- int /*<<< orphan*/  dsl_dir_actv_fs_ss_limit_check ; 
- int /*<<< orphan*/  dsl_dir_actv_fs_ss_limit_sync ; 
- int dsl_sync_task (char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int EALREADY ;
+ int ZFS_SPACE_CHECK_RESERVED ;
+ int dsl_dir_actv_fs_ss_limit_check ;
+ int dsl_dir_actv_fs_ss_limit_sync ;
+ int dsl_sync_task (char const*,int ,int ,void*,int ,int ) ;
 
 int
 dsl_dir_activate_fs_ss_limit(const char *ddname)
 {
-	int error;
+ int error;
 
-	error = dsl_sync_task(ddname, dsl_dir_actv_fs_ss_limit_check,
-	    dsl_dir_actv_fs_ss_limit_sync, (void *)ddname, 0,
-	    ZFS_SPACE_CHECK_RESERVED);
+ error = dsl_sync_task(ddname, dsl_dir_actv_fs_ss_limit_check,
+     dsl_dir_actv_fs_ss_limit_sync, (void *)ddname, 0,
+     ZFS_SPACE_CHECK_RESERVED);
 
-	if (error == EALREADY)
-		error = 0;
+ if (error == EALREADY)
+  error = 0;
 
-	return (error);
+ return (error);
 }

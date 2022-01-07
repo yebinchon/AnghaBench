@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_vtab ;
-typedef  int /*<<< orphan*/  sqlite3 ;
-struct TYPE_4__ {char* zDbName; scalar_t__ zTableName; scalar_t__ zCostTable; int /*<<< orphan*/  base; int /*<<< orphan*/ * db; } ;
-typedef  TYPE_1__ spellfix1_vtab ;
 
-/* Variables and functions */
- int SQLITE_ERROR ; 
- int SQLITE_NOMEM ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  memcpy (char*,char const*,int) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  spellfix1DbExec (int*,int /*<<< orphan*/ *,char*,char const*,char const*,...) ; 
- scalar_t__ spellfix1Dequote (char const*) ; 
- int /*<<< orphan*/  spellfix1Uninit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int sqlite3_declare_vtab (int /*<<< orphan*/ *,char*) ; 
- TYPE_1__* sqlite3_malloc64 (int) ; 
- void* sqlite3_mprintf (char*,char const* const) ; 
- scalar_t__ strlen (char const*) ; 
- scalar_t__ strncmp (char const* const,char*,int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int sqlite3_vtab ;
+typedef int sqlite3 ;
+struct TYPE_4__ {char* zDbName; scalar_t__ zTableName; scalar_t__ zCostTable; int base; int * db; } ;
+typedef TYPE_1__ spellfix1_vtab ;
+
+
+ int SQLITE_ERROR ;
+ int SQLITE_NOMEM ;
+ int SQLITE_OK ;
+ int memcpy (char*,char const*,int) ;
+ int memset (TYPE_1__*,int ,int) ;
+ int spellfix1DbExec (int*,int *,char*,char const*,char const*,...) ;
+ scalar_t__ spellfix1Dequote (char const*) ;
+ int spellfix1Uninit (int ,int *) ;
+ int sqlite3_declare_vtab (int *,char*) ;
+ TYPE_1__* sqlite3_malloc64 (int) ;
+ void* sqlite3_mprintf (char*,char const* const) ;
+ scalar_t__ strlen (char const*) ;
+ scalar_t__ strncmp (char const* const,char*,int) ;
 
 __attribute__((used)) static int spellfix1Init(
   int isCreate,
@@ -40,7 +40,7 @@ __attribute__((used)) static int spellfix1Init(
   char **pzErr
 ){
   spellfix1_vtab *pNew = 0;
-  /* const char *zModule = argv[0]; // not used */
+
   const char *zDbName = argv[1];
   const char *zTableName = argv[2];
   int nDbName;
@@ -60,24 +60,12 @@ __attribute__((used)) static int spellfix1Init(
     if( pNew->zTableName==0 ){
       rc = SQLITE_NOMEM;
     }else{
-      rc = sqlite3_declare_vtab(db, 
+      rc = sqlite3_declare_vtab(db,
            "CREATE TABLE x(word,rank,distance,langid, "
            "score, matchlen, phonehash HIDDEN, "
            "top HIDDEN, scope HIDDEN, srchcnt HIDDEN, "
            "soundslike HIDDEN, command HIDDEN)"
       );
-#define SPELLFIX_COL_WORD            0
-#define SPELLFIX_COL_RANK            1
-#define SPELLFIX_COL_DISTANCE        2
-#define SPELLFIX_COL_LANGID          3
-#define SPELLFIX_COL_SCORE           4
-#define SPELLFIX_COL_MATCHLEN        5
-#define SPELLFIX_COL_PHONEHASH       6
-#define SPELLFIX_COL_TOP             7
-#define SPELLFIX_COL_SCOPE           8
-#define SPELLFIX_COL_SRCHCNT         9
-#define SPELLFIX_COL_SOUNDSLIKE     10
-#define SPELLFIX_COL_COMMAND        11
     }
     if( rc==SQLITE_OK && isCreate ){
       spellfix1DbExec(&rc, db,
@@ -104,7 +92,7 @@ __attribute__((used)) static int spellfix1Init(
         continue;
       }
       *pzErr = sqlite3_mprintf("bad argument to spellfix1(): \"%s\"", argv[i]);
-      rc = SQLITE_ERROR; 
+      rc = SQLITE_ERROR;
     }
   }
 

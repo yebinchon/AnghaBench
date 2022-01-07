@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct unbind_data {int store; int /*<<< orphan*/  app_idx; } ;
-struct bt_mesh_app_key {int /*<<< orphan*/  keys; int /*<<< orphan*/  net_idx; int /*<<< orphan*/  app_idx; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BLE_MESH_KEY_UNUSED ; 
- int /*<<< orphan*/  BT_DBG (char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  CONFIG_BLE_MESH_SETTINGS ; 
- scalar_t__ IS_ENABLED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  _mod_unbind ; 
- int /*<<< orphan*/  bt_mesh_clear_app_key (struct bt_mesh_app_key*) ; 
- int /*<<< orphan*/  bt_mesh_model_foreach (int /*<<< orphan*/ ,struct unbind_data*) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+
+
+struct unbind_data {int store; int app_idx; } ;
+struct bt_mesh_app_key {int keys; int net_idx; int app_idx; } ;
+
+
+ int BLE_MESH_KEY_UNUSED ;
+ int BT_DBG (char*,int ,int) ;
+ int CONFIG_BLE_MESH_SETTINGS ;
+ scalar_t__ IS_ENABLED (int ) ;
+ int _mod_unbind ;
+ int bt_mesh_clear_app_key (struct bt_mesh_app_key*) ;
+ int bt_mesh_model_foreach (int ,struct unbind_data*) ;
+ int memset (int ,int ,int) ;
 
 void bt_mesh_app_key_del(struct bt_mesh_app_key *key, bool store)
 {

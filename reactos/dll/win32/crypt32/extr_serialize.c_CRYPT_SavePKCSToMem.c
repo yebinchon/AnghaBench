@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_5__ ;
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_15__ {int /*<<< orphan*/  pbData; int /*<<< orphan*/  cbData; } ;
-struct TYPE_14__ {size_t cbData; int /*<<< orphan*/ * pbData; } ;
-struct TYPE_13__ {int cCertEncoded; int cCrlEncoded; TYPE_5__* rgCrlEncoded; TYPE_5__* rgCertEncoded; int /*<<< orphan*/  member_0; } ;
-struct TYPE_12__ {int /*<<< orphan*/  pbCertEncoded; int /*<<< orphan*/  cbCertEncoded; } ;
-struct TYPE_11__ {int /*<<< orphan*/  pbCrlEncoded; int /*<<< orphan*/  cbCrlEncoded; } ;
-typedef  TYPE_1__* PCCRL_CONTEXT ;
-typedef  TYPE_2__* PCCERT_CONTEXT ;
-typedef  int /*<<< orphan*/  HCERTSTORE ;
-typedef  size_t DWORD ;
-typedef  TYPE_3__ CRYPT_SIGNED_INFO ;
-typedef  TYPE_4__ CERT_BLOB ;
-typedef  int BOOL ;
 
-/* Variables and functions */
- int CRYPT_AsnEncodeCMSSignedInfo (TYPE_3__*,int /*<<< orphan*/ *,size_t*) ; 
- TYPE_1__* CertEnumCRLsInStore (int /*<<< orphan*/ ,TYPE_1__*) ; 
- TYPE_2__* CertEnumCertificatesInStore (int /*<<< orphan*/ ,TYPE_2__*) ; 
- void* CryptMemAlloc (int) ; 
- int /*<<< orphan*/  CryptMemFree (TYPE_5__*) ; 
- int /*<<< orphan*/  ERROR_MORE_DATA ; 
- int /*<<< orphan*/  ERROR_OUTOFMEMORY ; 
- int FALSE ; 
- int /*<<< orphan*/  SetLastError (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,int,...) ; 
- int TRUE ; 
+
+typedef struct TYPE_15__ TYPE_5__ ;
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+struct TYPE_15__ {int pbData; int cbData; } ;
+struct TYPE_14__ {size_t cbData; int * pbData; } ;
+struct TYPE_13__ {int cCertEncoded; int cCrlEncoded; TYPE_5__* rgCrlEncoded; TYPE_5__* rgCertEncoded; int member_0; } ;
+struct TYPE_12__ {int pbCertEncoded; int cbCertEncoded; } ;
+struct TYPE_11__ {int pbCrlEncoded; int cbCrlEncoded; } ;
+typedef TYPE_1__* PCCRL_CONTEXT ;
+typedef TYPE_2__* PCCERT_CONTEXT ;
+typedef int HCERTSTORE ;
+typedef size_t DWORD ;
+typedef TYPE_3__ CRYPT_SIGNED_INFO ;
+typedef TYPE_4__ CERT_BLOB ;
+typedef int BOOL ;
+
+
+ int CRYPT_AsnEncodeCMSSignedInfo (TYPE_3__*,int *,size_t*) ;
+ TYPE_1__* CertEnumCRLsInStore (int ,TYPE_1__*) ;
+ TYPE_2__* CertEnumCertificatesInStore (int ,TYPE_2__*) ;
+ void* CryptMemAlloc (int) ;
+ int CryptMemFree (TYPE_5__*) ;
+ int ERROR_MORE_DATA ;
+ int ERROR_OUTOFMEMORY ;
+ int FALSE ;
+ int SetLastError (int ) ;
+ int TRACE (char*,int,...) ;
+ int TRUE ;
 
 __attribute__((used)) static BOOL CRYPT_SavePKCSToMem(HCERTSTORE store,
  DWORD dwMsgAndCertEncodingType, void *handle)
 {
     CERT_BLOB *blob = handle;
     CRYPT_SIGNED_INFO signedInfo = { 0 };
-    PCCERT_CONTEXT cert = NULL;
-    PCCRL_CONTEXT crl = NULL;
+    PCCERT_CONTEXT cert = ((void*)0);
+    PCCRL_CONTEXT crl = ((void*)0);
     DWORD size;
     BOOL ret = TRUE;
 
@@ -114,7 +114,7 @@ __attribute__((used)) static BOOL CRYPT_SavePKCSToMem(HCERTSTORE store,
     }
     if (ret)
     {
-        ret = CRYPT_AsnEncodeCMSSignedInfo(&signedInfo, NULL, &size);
+        ret = CRYPT_AsnEncodeCMSSignedInfo(&signedInfo, ((void*)0), &size);
         if (ret)
         {
             if (!blob->pbData)

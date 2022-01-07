@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint64_t ;
+
+
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int uint64_t ;
 struct TYPE_11__ {int mb_size; int search_param; int (* get_cost ) (TYPE_3__*,int,int,int,int) ;int pred_x; int pred_y; } ;
 struct TYPE_10__ {int** mvs; int sb; struct TYPE_10__* subs; } ;
 struct TYPE_9__ {TYPE_3__ me_ctx; } ;
-typedef  TYPE_1__ MIContext ;
-typedef  TYPE_2__ Block ;
-typedef  TYPE_3__ AVMotionEstContext ;
+typedef TYPE_1__ MIContext ;
+typedef TYPE_2__ Block ;
+typedef TYPE_3__ AVMotionEstContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ENOMEM ; 
- TYPE_2__* av_mallocz_array (int,int) ; 
- int ff_me_search_ds (TYPE_3__*,int,int,int*) ; 
- int stub1 (TYPE_3__*,int,int,int,int) ; 
+
+ int AVERROR (int ) ;
+ int ENOMEM ;
+ TYPE_2__* av_mallocz_array (int,int) ;
+ int ff_me_search_ds (TYPE_3__*,int,int,int*) ;
+ int stub1 (TYPE_3__*,int,int,int,int) ;
 
 __attribute__((used)) static int var_size_bme(MIContext *mi_ctx, Block *block, int x_mb, int y_mb, int n)
 {

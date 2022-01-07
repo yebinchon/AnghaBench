@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  type_t ;
-typedef  int /*<<< orphan*/  statement_list_t ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  add_output_to_resources (char*,int /*<<< orphan*/ ) ; 
- scalar_t__ do_everything ; 
- int /*<<< orphan*/  do_regscript ; 
- int /*<<< orphan*/  error (char*,int /*<<< orphan*/ ) ; 
- scalar_t__ fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * find_ps_factory (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  flush_output_resources (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * fopen (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ fwrite (int /*<<< orphan*/ ,int,scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  indent ; 
- int /*<<< orphan*/  init_output_buffer () ; 
- int /*<<< orphan*/  need_proxy_file (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  output_buffer ; 
- scalar_t__ output_buffer_pos ; 
- int /*<<< orphan*/  put_str (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  regscript_name ; 
- int /*<<< orphan*/  regscript_token ; 
- scalar_t__ strendswith (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  write_coclasses (int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  write_interfaces (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  write_progids (int /*<<< orphan*/  const*) ; 
+
+
+
+typedef int type_t ;
+typedef int statement_list_t ;
+typedef int FILE ;
+
+
+ int add_output_to_resources (char*,int ) ;
+ scalar_t__ do_everything ;
+ int do_regscript ;
+ int error (char*,int ) ;
+ scalar_t__ fclose (int *) ;
+ int * find_ps_factory (int const*) ;
+ int flush_output_resources (int ) ;
+ int * fopen (int ,char*) ;
+ scalar_t__ fwrite (int ,int,scalar_t__,int *) ;
+ int indent ;
+ int init_output_buffer () ;
+ int need_proxy_file (int const*) ;
+ int output_buffer ;
+ scalar_t__ output_buffer_pos ;
+ int put_str (int ,char*) ;
+ int regscript_name ;
+ int regscript_token ;
+ scalar_t__ strendswith (int ,char*) ;
+ int write_coclasses (int const*,int *) ;
+ int write_interfaces (int const*,int const*) ;
+ int write_progids (int const*) ;
 
 void write_regscript( const statement_list_t *stmts )
 {
@@ -57,13 +57,13 @@ void write_regscript( const statement_list_t *stmts )
 
     put_str( indent, "NoRemove CLSID\n" );
     put_str( indent++, "{\n" );
-    write_coclasses( stmts, NULL );
+    write_coclasses( stmts, ((void*)0) );
     put_str( --indent, "}\n" );
 
     write_progids( stmts );
     put_str( --indent, "}\n" );
 
-    if (strendswith( regscript_name, ".res" ))  /* create a binary resource file */
+    if (strendswith( regscript_name, ".res" ))
     {
         add_output_to_resources( "WINE_REGISTRY", regscript_token );
         flush_output_resources( regscript_name );

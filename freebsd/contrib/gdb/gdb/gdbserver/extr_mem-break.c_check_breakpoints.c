@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct breakpoint {int /*<<< orphan*/  pc; int /*<<< orphan*/  (* handler ) (int /*<<< orphan*/ ) ;scalar_t__ reinserting; } ;
-typedef  int /*<<< orphan*/  CORE_ADDR ;
 
-/* Variables and functions */
- struct breakpoint* find_breakpoint_at (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  warning (char*) ; 
+
+
+
+struct breakpoint {int pc; int (* handler ) (int ) ;scalar_t__ reinserting; } ;
+typedef int CORE_ADDR ;
+
+
+ struct breakpoint* find_breakpoint_at (int ) ;
+ int stub1 (int ) ;
+ int warning (char*) ;
 
 int
 check_breakpoints (CORE_ADDR stop_pc)
@@ -24,7 +24,7 @@ check_breakpoints (CORE_ADDR stop_pc)
   struct breakpoint *bp;
 
   bp = find_breakpoint_at (stop_pc);
-  if (bp == NULL)
+  if (bp == ((void*)0))
     return 0;
   if (bp->reinserting)
     {

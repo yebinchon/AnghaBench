@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int v8i16 ;
-typedef  int /*<<< orphan*/  v2i64 ;
-typedef  scalar_t__ v16i8 ;
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint64_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int /*<<< orphan*/  int8_t ;
-typedef  int /*<<< orphan*/  int32_t ;
-typedef  int /*<<< orphan*/  const int16_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLIP_SH_0_255 (int) ; 
- int /*<<< orphan*/  DPADD_SB4_SH (scalar_t__,scalar_t__,scalar_t__,scalar_t__,int,int,int,int,int,int,int,int) ; 
- int /*<<< orphan*/  HEVC_BI_RND_CLIP2 (int,int,int,int,int,int,int) ; 
- scalar_t__ LD_SB (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LD_SB2 (int /*<<< orphan*/ *,int,scalar_t__,scalar_t__) ; 
- int LD_SH (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  LD_SH2 (int /*<<< orphan*/  const*,int,int,int) ; 
- int /*<<< orphan*/  PCKEV_B2_SB (int,int,int,int,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  SD (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SPLATI_H4_SH (int,int /*<<< orphan*/ ,int,int,int,int,int,int,int) ; 
- int /*<<< orphan*/  ST_SB (scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  VSHF_B2_SB (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  XORI_B2_128_SB (scalar_t__,scalar_t__) ; 
- int __msa_adds_s_h (int,int) ; 
- int /*<<< orphan*/  __msa_copy_u_d (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int __msa_ldi_h (int) ; 
- int __msa_srari_h (int,int) ; 
- int /*<<< orphan*/ * ff_hevc_mask_arr ; 
+
+
+
+typedef int v8i16 ;
+typedef int v2i64 ;
+typedef scalar_t__ v16i8 ;
+typedef int uint8_t ;
+typedef int uint64_t ;
+typedef int uint32_t ;
+typedef int int8_t ;
+typedef int int32_t ;
+typedef int const int16_t ;
+
+
+ int CLIP_SH_0_255 (int) ;
+ int DPADD_SB4_SH (scalar_t__,scalar_t__,scalar_t__,scalar_t__,int,int,int,int,int,int,int,int) ;
+ int HEVC_BI_RND_CLIP2 (int,int,int,int,int,int,int) ;
+ scalar_t__ LD_SB (int *) ;
+ int LD_SB2 (int *,int,scalar_t__,scalar_t__) ;
+ int LD_SH (int const*) ;
+ int LD_SH2 (int const*,int,int,int) ;
+ int PCKEV_B2_SB (int,int,int,int,scalar_t__,scalar_t__) ;
+ int SD (int ,int *) ;
+ int SPLATI_H4_SH (int,int ,int,int,int,int,int,int,int) ;
+ int ST_SB (scalar_t__,int *) ;
+ int VSHF_B2_SB (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ int XORI_B2_128_SB (scalar_t__,scalar_t__) ;
+ int __msa_adds_s_h (int,int) ;
+ int __msa_copy_u_d (int ,int ) ;
+ int __msa_ldi_h (int) ;
+ int __msa_srari_h (int,int) ;
+ int * ff_hevc_mask_arr ;
 
 __attribute__((used)) static void hevc_hz_bi_8t_24w_msa(uint8_t *src0_ptr,
                                   int32_t src_stride,

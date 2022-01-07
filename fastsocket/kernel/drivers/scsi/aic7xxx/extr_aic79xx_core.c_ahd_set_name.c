@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct ahd_softc {char* name; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  M_DEVBUF ; 
- int /*<<< orphan*/  free (char*,int /*<<< orphan*/ ) ; 
+
+ int M_DEVBUF ;
+ int free (char*,int ) ;
 
 void
 ahd_set_name(struct ahd_softc *ahd, char *name)
 {
-	if (ahd->name != NULL)
-		free(ahd->name, M_DEVBUF);
-	ahd->name = name;
+ if (ahd->name != ((void*)0))
+  free(ahd->name, M_DEVBUF);
+ ahd->name = name;
 }

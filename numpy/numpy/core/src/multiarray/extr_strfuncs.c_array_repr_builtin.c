@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  type; int /*<<< orphan*/  elsize; } ;
-typedef  int Py_ssize_t ;
-typedef  int /*<<< orphan*/  PyObject ;
-typedef  int /*<<< orphan*/  PyArrayObject ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PyArray_DATA (int /*<<< orphan*/ *) ; 
- TYPE_1__* PyArray_DESCR (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyArray_DIMS (int /*<<< orphan*/ *) ; 
- scalar_t__ PyArray_ISEXTENDED (int /*<<< orphan*/ *) ; 
- int PyArray_NBYTES (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyArray_NDIM (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyArray_STRIDES (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyArray_free (char*) ; 
- char* PyArray_malloc (int) ; 
- int /*<<< orphan*/ * PyErr_NoMemory () ; 
- int /*<<< orphan*/ * PyUString_FromFormat (char*,char*,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/ * PyUString_FromStringAndSize (char*,int) ; 
- scalar_t__ dump_data (char**,int*,int*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int type; int elsize; } ;
+typedef int Py_ssize_t ;
+typedef int PyObject ;
+typedef int PyArrayObject ;
+
+
+ int PyArray_DATA (int *) ;
+ TYPE_1__* PyArray_DESCR (int *) ;
+ int PyArray_DIMS (int *) ;
+ scalar_t__ PyArray_ISEXTENDED (int *) ;
+ int PyArray_NBYTES (int *) ;
+ int PyArray_NDIM (int *) ;
+ int PyArray_STRIDES (int *) ;
+ int PyArray_free (char*) ;
+ char* PyArray_malloc (int) ;
+ int * PyErr_NoMemory () ;
+ int * PyUString_FromFormat (char*,char*,int ,...) ;
+ int * PyUString_FromStringAndSize (char*,int) ;
+ scalar_t__ dump_data (char**,int*,int*,int ,int ,int ,int ,int *) ;
 
 __attribute__((used)) static PyObject *
 array_repr_builtin(PyArrayObject *self, int repr)
 {
     PyObject *ret;
     char *string;
-    /* max_n initial value is arbitrary, dump_data will extend it */
+
     Py_ssize_t n = 0, max_n = PyArray_NBYTES(self) * 4 + 7;
 
-    if ((string = PyArray_malloc(max_n)) == NULL) {
+    if ((string = PyArray_malloc(max_n)) == ((void*)0)) {
         return PyErr_NoMemory();
     }
 
@@ -47,7 +47,7 @@ array_repr_builtin(PyArrayObject *self, int repr)
                   PyArray_NDIM(self), PyArray_DIMS(self),
                   PyArray_STRIDES(self), self) < 0) {
         PyArray_free(string);
-        return NULL;
+        return ((void*)0);
     }
 
     if (repr) {

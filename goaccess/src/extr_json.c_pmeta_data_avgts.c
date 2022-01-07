@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint64_t ;
-struct TYPE_2__ {scalar_t__ json_pretty_print; int /*<<< orphan*/  serve_usecs; } ;
-typedef  int /*<<< orphan*/  GModule ;
-typedef  int /*<<< orphan*/  GJSON ;
 
-/* Variables and functions */
- TYPE_1__ conf ; 
- int ht_get_meta_data (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  pclose_obj (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  popen_obj_attr (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  pskeyu64val (int /*<<< orphan*/ *,char*,int,int,int) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int uint64_t ;
+struct TYPE_2__ {scalar_t__ json_pretty_print; int serve_usecs; } ;
+typedef int GModule ;
+typedef int GJSON ;
+
+
+ TYPE_1__ conf ;
+ int ht_get_meta_data (int ,char*) ;
+ int pclose_obj (int *,int,int ) ;
+ int popen_obj_attr (int *,char*,int) ;
+ int pskeyu64val (int *,char*,int,int,int) ;
 
 __attribute__((used)) static void
 pmeta_data_avgts (GJSON * json, GModule module, int sp)
@@ -32,7 +32,7 @@ pmeta_data_avgts (GJSON * json, GModule module, int sp)
   if (!conf.serve_usecs)
     return;
 
-  /* use tabs to prettify output */
+
   if (conf.json_pretty_print)
     isp = sp + 1;
 

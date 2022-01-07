@@ -1,92 +1,83 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_int32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPFPRINTF (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  PF_DEBUG_MISC ; 
- int /*<<< orphan*/  PF_RULESET_BINAT ; 
- int /*<<< orphan*/  PF_RULESET_FILTER ; 
- int /*<<< orphan*/  PF_RULESET_NAT ; 
- int /*<<< orphan*/  PF_RULESET_RDR ; 
- int /*<<< orphan*/  PF_RULESET_SCRUB ; 
- int pf_begin_altq (int /*<<< orphan*/ *) ; 
- int pf_begin_rules (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  pf_clear_srcnodes (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pf_clear_states () ; 
- int pf_clear_tables () ; 
- int /*<<< orphan*/  pf_commit_altq (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pf_commit_rules (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
+
+
+
+typedef int u_int32_t ;
+
+
+ int DPFPRINTF (int ,char*) ;
+ int PF_DEBUG_MISC ;
+ int PF_RULESET_BINAT ;
+ int PF_RULESET_FILTER ;
+ int PF_RULESET_NAT ;
+ int PF_RULESET_RDR ;
+ int PF_RULESET_SCRUB ;
+ int pf_begin_altq (int *) ;
+ int pf_begin_rules (int *,int ,char*) ;
+ int pf_clear_srcnodes (int *) ;
+ int pf_clear_states () ;
+ int pf_clear_tables () ;
+ int pf_commit_altq (int ) ;
+ int pf_commit_rules (int ,int ,char*) ;
 
 __attribute__((used)) static int
 shutdown_pf(void)
 {
-	int error = 0;
-	u_int32_t t[5];
-	char nn = '\0';
+ int error = 0;
+ u_int32_t t[5];
+ char nn = '\0';
 
-	do {
-		if ((error = pf_begin_rules(&t[0], PF_RULESET_SCRUB, &nn))
-		    != 0) {
-			DPFPRINTF(PF_DEBUG_MISC, ("shutdown_pf: SCRUB\n"));
-			break;
-		}
-		if ((error = pf_begin_rules(&t[1], PF_RULESET_FILTER, &nn))
-		    != 0) {
-			DPFPRINTF(PF_DEBUG_MISC, ("shutdown_pf: FILTER\n"));
-			break;		/* XXX: rollback? */
-		}
-		if ((error = pf_begin_rules(&t[2], PF_RULESET_NAT, &nn))
-		    != 0) {
-			DPFPRINTF(PF_DEBUG_MISC, ("shutdown_pf: NAT\n"));
-			break;		/* XXX: rollback? */
-		}
-		if ((error = pf_begin_rules(&t[3], PF_RULESET_BINAT, &nn))
-		    != 0) {
-			DPFPRINTF(PF_DEBUG_MISC, ("shutdown_pf: BINAT\n"));
-			break;		/* XXX: rollback? */
-		}
-		if ((error = pf_begin_rules(&t[4], PF_RULESET_RDR, &nn))
-		    != 0) {
-			DPFPRINTF(PF_DEBUG_MISC, ("shutdown_pf: RDR\n"));
-			break;		/* XXX: rollback? */
-		}
+ do {
+  if ((error = pf_begin_rules(&t[0], PF_RULESET_SCRUB, &nn))
+      != 0) {
+   DPFPRINTF(PF_DEBUG_MISC, ("shutdown_pf: SCRUB\n"));
+   break;
+  }
+  if ((error = pf_begin_rules(&t[1], PF_RULESET_FILTER, &nn))
+      != 0) {
+   DPFPRINTF(PF_DEBUG_MISC, ("shutdown_pf: FILTER\n"));
+   break;
+  }
+  if ((error = pf_begin_rules(&t[2], PF_RULESET_NAT, &nn))
+      != 0) {
+   DPFPRINTF(PF_DEBUG_MISC, ("shutdown_pf: NAT\n"));
+   break;
+  }
+  if ((error = pf_begin_rules(&t[3], PF_RULESET_BINAT, &nn))
+      != 0) {
+   DPFPRINTF(PF_DEBUG_MISC, ("shutdown_pf: BINAT\n"));
+   break;
+  }
+  if ((error = pf_begin_rules(&t[4], PF_RULESET_RDR, &nn))
+      != 0) {
+   DPFPRINTF(PF_DEBUG_MISC, ("shutdown_pf: RDR\n"));
+   break;
+  }
 
-		/* XXX: these should always succeed here */
-		pf_commit_rules(t[0], PF_RULESET_SCRUB, &nn);
-		pf_commit_rules(t[1], PF_RULESET_FILTER, &nn);
-		pf_commit_rules(t[2], PF_RULESET_NAT, &nn);
-		pf_commit_rules(t[3], PF_RULESET_BINAT, &nn);
-		pf_commit_rules(t[4], PF_RULESET_RDR, &nn);
 
-		if ((error = pf_clear_tables()) != 0)
-			break;
+  pf_commit_rules(t[0], PF_RULESET_SCRUB, &nn);
+  pf_commit_rules(t[1], PF_RULESET_FILTER, &nn);
+  pf_commit_rules(t[2], PF_RULESET_NAT, &nn);
+  pf_commit_rules(t[3], PF_RULESET_BINAT, &nn);
+  pf_commit_rules(t[4], PF_RULESET_RDR, &nn);
 
-#ifdef ALTQ
-		if ((error = pf_begin_altq(&t[0])) != 0) {
-			DPFPRINTF(PF_DEBUG_MISC, ("shutdown_pf: ALTQ\n"));
-			break;
-		}
-		pf_commit_altq(t[0]);
-#endif
+  if ((error = pf_clear_tables()) != 0)
+   break;
+  pf_clear_states();
 
-		pf_clear_states();
+  pf_clear_srcnodes(((void*)0));
 
-		pf_clear_srcnodes(NULL);
 
-		/* status does not use malloced mem so no need to cleanup */
-		/* fingerprints and interfaces have their own cleanup code */
-	} while(0);
 
-	return (error);
+ } while(0);
+
+ return (error);
 }

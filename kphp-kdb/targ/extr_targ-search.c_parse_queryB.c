@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct query_keyword_descr {int flags; int minv; int maxv; scalar_t__ q_type; int /*<<< orphan*/ * str; } ;
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct query_keyword_descr {int flags; int minv; int maxv; scalar_t__ q_type; int * str; } ;
 struct TYPE_6__ {int flags; int complexity; scalar_t__ type; int value2; int value; struct TYPE_6__* left; } ;
-typedef  TYPE_1__ query_t ;
+typedef TYPE_1__ query_t ;
 
-/* Variables and functions */
- int MAXINT ; 
- int MININT ; 
- char* Qs ; 
- struct query_keyword_descr* QueryKW ; 
- TYPE_1__* new_qnode (scalar_t__,int) ; 
- TYPE_1__* parse_query (int) ; 
- TYPE_1__* parse_wordlist (int /*<<< orphan*/ ,scalar_t__,int) ; 
- int /*<<< orphan*/  q_and ; 
- scalar_t__ q_birthday_soon ; 
- scalar_t__ q_false ; 
- scalar_t__ q_true ; 
- char skip_spc () ; 
- int /*<<< orphan*/  strncmp (int /*<<< orphan*/ *,char*,int) ; 
- int strtol (char*,char**,int) ; 
+
+ int MAXINT ;
+ int MININT ;
+ char* Qs ;
+ struct query_keyword_descr* QueryKW ;
+ TYPE_1__* new_qnode (scalar_t__,int) ;
+ TYPE_1__* parse_query (int) ;
+ TYPE_1__* parse_wordlist (int ,scalar_t__,int) ;
+ int q_and ;
+ scalar_t__ q_birthday_soon ;
+ scalar_t__ q_false ;
+ scalar_t__ q_true ;
+ char skip_spc () ;
+ int strncmp (int *,char*,int) ;
+ int strtol (char*,char**,int) ;
 
 query_t *parse_queryB (int mode) {
   query_t *A, *B;
@@ -110,19 +110,19 @@ query_t *parse_queryB (int mode) {
     Qs++;
   }
 
-  if (*Qs != '=') { 
-    return 0; 
+  if (*Qs != '=') {
+    return 0;
   }
   Qs++;
   skip_spc();
 
   char *Qs1;
   value = strtol (Qs, &Qs1, 10);
-  if (Qs1 == Qs) { 
-    return 0; 
+  if (Qs1 == Qs) {
+    return 0;
   }
-  if ((KW->minv != -1 && value < KW->minv) || (KW->maxv != -1 && value > KW->maxv)) { 
-    return 0; 
+  if ((KW->minv != -1 && value < KW->minv) || (KW->maxv != -1 && value > KW->maxv)) {
+    return 0;
   }
   Qs = Qs1;
   A = new_qnode (KW->q_type, value);
@@ -130,11 +130,11 @@ query_t *parse_queryB (int mode) {
   if ((KW->flags & 7) == 1) {
     A->flags |= 16;
     A->value2 = value;
-    if (c == '<' && (value != KW->minv || value == -1)) { 
-      A->value = /* KW->minv */ (KW->minv > 0 ? KW->minv : MININT); 
+    if (c == '<' && (value != KW->minv || value == -1)) {
+      A->value = (KW->minv > 0 ? KW->minv : MININT);
     }
-    if (c == '>' && (value != KW->maxv || value == -1)) { 
-      A->value2 = /* KW->maxv */ MAXINT; 
+    if (c == '>' && (value != KW->maxv || value == -1)) {
+      A->value2 = MAXINT;
     }
     A->complexity = (A->value == MININT || A->value2 == MAXINT || A->value == A->value2 ? 1 : 2);
   } else {

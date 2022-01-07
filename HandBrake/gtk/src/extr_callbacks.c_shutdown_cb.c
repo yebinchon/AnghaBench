@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_3__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  gchar ;
-typedef  int /*<<< orphan*/  gboolean ;
-struct TYPE_4__ {scalar_t__ timeout; int /*<<< orphan*/  dlg; int /*<<< orphan*/  action; int /*<<< orphan*/  msg; TYPE_3__* ud; } ;
-typedef  TYPE_1__ countdown_t ;
-struct TYPE_5__ {int /*<<< orphan*/  app; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  G_APPLICATION (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  g_application_quit (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  g_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * g_strdup_printf (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  ghb_hb_cleanup (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ghb_shutdown_gsm () ; 
- int /*<<< orphan*/  gtk_message_dialog_set_markup (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  prune_logs (TYPE_3__*) ; 
+
+typedef struct TYPE_5__ TYPE_3__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int gchar ;
+typedef int gboolean ;
+struct TYPE_4__ {scalar_t__ timeout; int dlg; int action; int msg; TYPE_3__* ud; } ;
+typedef TYPE_1__ countdown_t ;
+struct TYPE_5__ {int app; } ;
+
+
+ int FALSE ;
+ int G_APPLICATION (int ) ;
+ int TRUE ;
+ int _ (char*) ;
+ int g_application_quit (int ) ;
+ int g_free (int *) ;
+ int * g_strdup_printf (int ,int ,int ,scalar_t__) ;
+ int ghb_hb_cleanup (int ) ;
+ int ghb_shutdown_gsm () ;
+ int gtk_message_dialog_set_markup (int ,int *) ;
+ int prune_logs (TYPE_3__*) ;
 
 __attribute__((used)) static gboolean
 shutdown_cb(countdown_t *cd)

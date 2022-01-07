@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct rbd_spec {int /*<<< orphan*/  kref; int /*<<< orphan*/  snap_id; int /*<<< orphan*/  pool_id; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CEPH_NOPOOL ; 
- int /*<<< orphan*/  CEPH_NOSNAP ; 
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  kref_init (int /*<<< orphan*/ *) ; 
- struct rbd_spec* kzalloc (int,int /*<<< orphan*/ ) ; 
+
+
+
+struct rbd_spec {int kref; int snap_id; int pool_id; } ;
+
+
+ int CEPH_NOPOOL ;
+ int CEPH_NOSNAP ;
+ int GFP_KERNEL ;
+ int kref_init (int *) ;
+ struct rbd_spec* kzalloc (int,int ) ;
 
 __attribute__((used)) static struct rbd_spec *rbd_spec_alloc(void)
 {
-	struct rbd_spec *spec;
+ struct rbd_spec *spec;
 
-	spec = kzalloc(sizeof (*spec), GFP_KERNEL);
-	if (!spec)
-		return NULL;
+ spec = kzalloc(sizeof (*spec), GFP_KERNEL);
+ if (!spec)
+  return ((void*)0);
 
-	spec->pool_id = CEPH_NOPOOL;
-	spec->snap_id = CEPH_NOSNAP;
-	kref_init(&spec->kref);
+ spec->pool_id = CEPH_NOPOOL;
+ spec->snap_id = CEPH_NOSNAP;
+ kref_init(&spec->kref);
 
-	return spec;
+ return spec;
 }

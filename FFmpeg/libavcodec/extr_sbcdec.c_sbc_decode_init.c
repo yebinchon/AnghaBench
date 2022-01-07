@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_9__ {TYPE_3__* priv_data; } ;
-struct TYPE_7__ {int** offset; int /*<<< orphan*/  V; } ;
-struct TYPE_6__ {int /*<<< orphan*/  crc_ctx; } ;
+struct TYPE_7__ {int** offset; int V; } ;
+struct TYPE_6__ {int crc_ctx; } ;
 struct TYPE_8__ {TYPE_2__ dsp; TYPE_1__ frame; } ;
-typedef  TYPE_3__ SBCDecContext ;
-typedef  TYPE_4__ AVCodecContext ;
+typedef TYPE_3__ SBCDecContext ;
+typedef TYPE_4__ AVCodecContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_CRC_8_EBU ; 
- int FF_ARRAY_ELEMS (int*) ; 
- int /*<<< orphan*/  av_crc_get_table (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+ int AV_CRC_8_EBU ;
+ int FF_ARRAY_ELEMS (int*) ;
+ int av_crc_get_table (int ) ;
+ int memset (int ,int ,int) ;
 
 __attribute__((used)) static int sbc_decode_init(AVCodecContext *avctx)
 {

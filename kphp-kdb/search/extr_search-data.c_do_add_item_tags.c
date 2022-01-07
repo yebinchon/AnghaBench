@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct lev_search_item_add_tags {long long obj_id; char* text; } ;
 
-/* Variables and functions */
- scalar_t__ LEV_SEARCH_ITEM_ADD_TAGS ; 
- int add_item_tags (char*,int,long long) ; 
- struct lev_search_item_add_tags* alloc_log_event (scalar_t__,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  fits (long long) ; 
+
+ scalar_t__ LEV_SEARCH_ITEM_ADD_TAGS ;
+ int add_item_tags (char*,int,long long) ;
+ struct lev_search_item_add_tags* alloc_log_event (scalar_t__,int,int ) ;
+ int assert (int) ;
+ int fits (long long) ;
 
 int do_add_item_tags (const char *const text, int len, long long item_id) {
   char *q;

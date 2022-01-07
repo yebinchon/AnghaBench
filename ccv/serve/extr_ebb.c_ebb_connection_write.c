@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {char const* to_write; size_t to_write_len; int /*<<< orphan*/  write_watcher; TYPE_1__* server; int /*<<< orphan*/  after_write_cb; scalar_t__ written; } ;
-typedef  TYPE_2__ ebb_connection ;
-typedef  int /*<<< orphan*/  ebb_after_write_cb ;
-struct TYPE_4__ {int /*<<< orphan*/  loop; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CONNECTION_HAS_SOMETHING_TO_WRITE ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  ev_io_start (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ ev_is_active (int /*<<< orphan*/ *) ; 
 
-int 
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_5__ {char const* to_write; size_t to_write_len; int write_watcher; TYPE_1__* server; int after_write_cb; scalar_t__ written; } ;
+typedef TYPE_2__ ebb_connection ;
+typedef int ebb_after_write_cb ;
+struct TYPE_4__ {int loop; } ;
+
+
+ int CONNECTION_HAS_SOMETHING_TO_WRITE ;
+ int assert (int) ;
+ int ev_io_start (int ,int *) ;
+ scalar_t__ ev_is_active (int *) ;
+
+int
 ebb_connection_write(ebb_connection *connection, const char *buf, size_t len, ebb_after_write_cb cb)
 {
   if(ev_is_active(&connection->write_watcher))

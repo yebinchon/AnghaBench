@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ UINT ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Anime_GetFrameDelay (scalar_t__) ; 
- int /*<<< orphan*/  Anime_SetFrameIndex (scalar_t__) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  INFINITE ; 
- int /*<<< orphan*/  TRUE ; 
- scalar_t__ m_nFrameCount ; 
- scalar_t__ m_nFrameIndex ; 
- scalar_t__ m_nLoopCount ; 
- scalar_t__ m_nLoopIndex ; 
+
+
+
+typedef scalar_t__ UINT ;
+typedef int DWORD ;
+typedef int BOOL ;
+
+
+ int Anime_GetFrameDelay (scalar_t__) ;
+ int Anime_SetFrameIndex (scalar_t__) ;
+ int FALSE ;
+ int INFINITE ;
+ int TRUE ;
+ scalar_t__ m_nFrameCount ;
+ scalar_t__ m_nFrameIndex ;
+ scalar_t__ m_nLoopCount ;
+ scalar_t__ m_nLoopIndex ;
 
 BOOL Anime_Step(DWORD *pdwDelay)
 {

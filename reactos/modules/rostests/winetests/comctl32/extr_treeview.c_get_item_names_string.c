@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  name ;
-struct TYPE_2__ {char* pszText; int cchTextMax; int /*<<< orphan*/ * hItem; int /*<<< orphan*/  mask; int /*<<< orphan*/  member_0; } ;
-typedef  TYPE_1__ TVITEMA ;
-typedef  int /*<<< orphan*/  LPARAM ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  int /*<<< orphan*/ * HTREEITEM ;
 
-/* Variables and functions */
- scalar_t__ SendMessageA (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TVGN_CHILD ; 
- int /*<<< orphan*/  TVGN_NEXT ; 
- int /*<<< orphan*/  TVGN_ROOT ; 
- int /*<<< orphan*/  TVIF_TEXT ; 
- int /*<<< orphan*/  TVM_GETITEMA ; 
- int /*<<< orphan*/  TVM_GETNEXTITEM ; 
- int /*<<< orphan*/  strcat (char*,char*) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int name ;
+struct TYPE_2__ {char* pszText; int cchTextMax; int * hItem; int mask; int member_0; } ;
+typedef TYPE_1__ TVITEMA ;
+typedef int LPARAM ;
+typedef int HWND ;
+typedef int * HTREEITEM ;
+
+
+ scalar_t__ SendMessageA (int ,int ,int ,int ) ;
+ int TVGN_CHILD ;
+ int TVGN_NEXT ;
+ int TVGN_ROOT ;
+ int TVIF_TEXT ;
+ int TVM_GETITEMA ;
+ int TVM_GETNEXTITEM ;
+ int strcat (char*,char*) ;
 
 __attribute__((used)) static void get_item_names_string(HWND hwnd, HTREEITEM item, char *str)
 {
@@ -49,7 +49,7 @@ __attribute__((used)) static void get_item_names_string(HWND hwnd, HTREEITEM ite
     SendMessageA(hwnd, TVM_GETITEMA, 0, (LPARAM)&tvitem);
     strcat(str, tvitem.pszText);
 
-    while (child != NULL)
+    while (child != ((void*)0))
     {
         get_item_names_string(hwnd, child, str);
         child = (HTREEITEM)SendMessageA(hwnd, TVM_GETNEXTITEM, TVGN_NEXT, (LPARAM)child);

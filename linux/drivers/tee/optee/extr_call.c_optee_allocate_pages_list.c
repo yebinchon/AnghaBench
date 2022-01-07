@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u64 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/ * alloc_pages_exact (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  get_pages_list_size (size_t) ; 
+
+
+
+typedef int u64 ;
+
+
+ int GFP_KERNEL ;
+ int * alloc_pages_exact (int ,int ) ;
+ int get_pages_list_size (size_t) ;
 
 u64 *optee_allocate_pages_list(size_t num_entries)
 {
-	return alloc_pages_exact(get_pages_list_size(num_entries), GFP_KERNEL);
+ return alloc_pages_exact(get_pages_list_size(num_entries), GFP_KERNEL);
 }

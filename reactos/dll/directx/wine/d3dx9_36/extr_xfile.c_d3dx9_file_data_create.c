@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_7__ {TYPE_3__* lpVtbl; } ;
-struct d3dx9_file_data {int ref; unsigned int nb_children; TYPE_1__ ID3DXFileData_iface; TYPE_1__** children; int /*<<< orphan*/  dxfile_data; int /*<<< orphan*/  reference; } ;
-struct TYPE_8__ {int /*<<< orphan*/  (* Release ) (TYPE_1__*) ;} ;
-typedef  int /*<<< orphan*/  IDirectXFileObject ;
-typedef  int /*<<< orphan*/  IDirectXFileDataReference ;
-typedef  TYPE_1__ ID3DXFileData ;
-typedef  scalar_t__ HRESULT ;
+struct d3dx9_file_data {int ref; unsigned int nb_children; TYPE_1__ ID3DXFileData_iface; TYPE_1__** children; int dxfile_data; int reference; } ;
+struct TYPE_8__ {int (* Release ) (TYPE_1__*) ;} ;
+typedef int IDirectXFileObject ;
+typedef int IDirectXFileDataReference ;
+typedef TYPE_1__ ID3DXFileData ;
+typedef scalar_t__ HRESULT ;
 
-/* Variables and functions */
- scalar_t__ DXFILEERR_NOMOREOBJECTS ; 
- scalar_t__ E_FAIL ; 
- scalar_t__ E_OUTOFMEMORY ; 
- scalar_t__ FAILED (scalar_t__) ; 
- int /*<<< orphan*/  FIXME (char*) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HEAP_ZERO_MEMORY ; 
- void* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct d3dx9_file_data*) ; 
- TYPE_1__** HeapReAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__**,int) ; 
- scalar_t__ IDirectXFileDataReference_Resolve (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ IDirectXFileData_GetNextObject (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- scalar_t__ IDirectXFileObject_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IID_IDirectXFileData ; 
- int /*<<< orphan*/  IID_IDirectXFileDataReference ; 
- int /*<<< orphan*/  IUnknown_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ SUCCEEDED (scalar_t__) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  TRACE (char*,int,...) ; 
- int /*<<< orphan*/  TRUE ; 
- TYPE_3__ d3dx9_file_data_vtbl ; 
- int /*<<< orphan*/  stub1 (TYPE_1__*) ; 
+
+ scalar_t__ DXFILEERR_NOMOREOBJECTS ;
+ scalar_t__ E_FAIL ;
+ scalar_t__ E_OUTOFMEMORY ;
+ scalar_t__ FAILED (scalar_t__) ;
+ int FIXME (char*) ;
+ int GetProcessHeap () ;
+ int HEAP_ZERO_MEMORY ;
+ void* HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,struct d3dx9_file_data*) ;
+ TYPE_1__** HeapReAlloc (int ,int ,TYPE_1__**,int) ;
+ scalar_t__ IDirectXFileDataReference_Resolve (int *,int *) ;
+ scalar_t__ IDirectXFileData_GetNextObject (int ,int **) ;
+ scalar_t__ IDirectXFileObject_QueryInterface (int *,int *,void**) ;
+ int IID_IDirectXFileData ;
+ int IID_IDirectXFileDataReference ;
+ int IUnknown_Release (int *) ;
+ scalar_t__ SUCCEEDED (scalar_t__) ;
+ scalar_t__ S_OK ;
+ int TRACE (char*,int,...) ;
+ int TRUE ;
+ TYPE_3__ d3dx9_file_data_vtbl ;
+ int stub1 (TYPE_1__*) ;
 
 __attribute__((used)) static HRESULT d3dx9_file_data_create(IDirectXFileObject *dxfile_object, ID3DXFileData **ret_iface)
 {
@@ -53,7 +53,7 @@ __attribute__((used)) static HRESULT d3dx9_file_data_create(IDirectXFileObject *
 
     TRACE("dxfile_object %p, ret_iface %p.\n", dxfile_object, ret_iface);
 
-    *ret_iface = NULL;
+    *ret_iface = ((void*)0);
 
     object = HeapAlloc(GetProcessHeap(), HEAP_ZERO_MEMORY, sizeof(*object));
     if (!object)

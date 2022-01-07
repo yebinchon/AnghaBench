@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {size_t size_used; char* buffer; int size_max; } ;
-typedef  TYPE_1__ Curl_send_buffer ;
-typedef  int /*<<< orphan*/  CURLcode ;
+typedef TYPE_1__ Curl_send_buffer ;
+typedef int CURLcode ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CURLE_OK ; 
- int /*<<< orphan*/  CURLE_OUT_OF_MEMORY ; 
- int /*<<< orphan*/  Curl_safefree (char*) ; 
- char* Curl_saferealloc (char*,size_t) ; 
- int /*<<< orphan*/  free (TYPE_1__*) ; 
- char* malloc (size_t) ; 
- int /*<<< orphan*/  memcpy (char*,void const*,size_t) ; 
+
+ int CURLE_OK ;
+ int CURLE_OUT_OF_MEMORY ;
+ int Curl_safefree (char*) ;
+ char* Curl_saferealloc (char*,size_t) ;
+ int free (TYPE_1__*) ;
+ char* malloc (size_t) ;
+ int memcpy (char*,void const*,size_t) ;
 
 CURLcode Curl_add_buffer(Curl_send_buffer **inp, const void *inptr,
                          size_t size)
@@ -31,20 +31,20 @@ CURLcode Curl_add_buffer(Curl_send_buffer **inp, const void *inptr,
   Curl_send_buffer *in = *inp;
 
   if(~size < in->size_used) {
-    /* If resulting used size of send buffer would wrap size_t, cleanup
-       the whole buffer and return error. Otherwise the required buffer
-       size will fit into a single allocatable memory chunk */
+
+
+
     Curl_safefree(in->buffer);
     free(in);
-    *inp = NULL;
+    *inp = ((void*)0);
     return CURLE_OUT_OF_MEMORY;
   }
 
   if(!in->buffer ||
      ((in->size_used + size) > (in->size_max - 1))) {
-    /* If current buffer size isn't enough to hold the result, use a
-       buffer size that doubles the required size. If this new size
-       would wrap size_t, then just use the largest possible one */
+
+
+
     size_t new_size;
 
     if((size > (size_t)-1 / 2) || (in->size_used > (size_t)-1 / 2) ||
@@ -54,16 +54,16 @@ CURLcode Curl_add_buffer(Curl_send_buffer **inp, const void *inptr,
       new_size = (in->size_used + size) * 2;
 
     if(in->buffer)
-      /* we have a buffer, enlarge the existing one */
+
       new_rb = Curl_saferealloc(in->buffer, new_size);
     else
-      /* create a new buffer */
+
       new_rb = malloc(new_size);
 
     if(!new_rb) {
-      /* If we failed, we cleanup the whole buffer and return error */
+
       free(in);
-      *inp = NULL;
+      *inp = ((void*)0);
       return CURLE_OUT_OF_MEMORY;
     }
 

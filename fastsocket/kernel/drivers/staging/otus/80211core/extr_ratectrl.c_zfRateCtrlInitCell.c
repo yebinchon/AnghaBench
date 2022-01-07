@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  zdev_t ;
-typedef  int u8_t ;
-struct zsRcCell {int* operationRateSet; int operationRateCount; int currentRateIndex; int currentRate; int /*<<< orphan*/  probingTime; int /*<<< orphan*/  lastTime; scalar_t__ lasttxCount; scalar_t__ failCount; scalar_t__ txCount; scalar_t__ flag; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int zdev_t ;
+typedef int u8_t ;
+struct zsRcCell {int* operationRateSet; int operationRateCount; int currentRateIndex; int currentRate; int probingTime; int lastTime; scalar_t__ lasttxCount; scalar_t__ failCount; scalar_t__ txCount; scalar_t__ flag; } ;
 struct TYPE_3__ {scalar_t__ htCtrlBandwidth; } ;
-struct TYPE_4__ {scalar_t__ wlanMode; scalar_t__ probeInterval; scalar_t__ probeCount; scalar_t__* txFail; scalar_t__* txMPDU; scalar_t__* PER; int /*<<< orphan*/  tick; TYPE_1__ sta; } ;
+struct TYPE_4__ {scalar_t__ wlanMode; scalar_t__ probeInterval; scalar_t__ probeCount; scalar_t__* txFail; scalar_t__* txMPDU; scalar_t__* PER; int tick; TYPE_1__ sta; } ;
 
-/* Variables and functions */
- scalar_t__* BAFail ; 
- scalar_t__* BAPER ; 
- scalar_t__* TxMPDU ; 
- scalar_t__ ZM_BANDWIDTH_40MHZ ; 
- scalar_t__ ZM_MODE_AP ; 
- int ZM_RATE_TABLE_SIZE ; 
- TYPE_2__* wd ; 
- void*** zcHtOneTxStreamRateTable ; 
- void*** zcHtRateTable ; 
- int /*<<< orphan*/  zmw_get_wlan_dev (int /*<<< orphan*/ *) ; 
+
+ scalar_t__* BAFail ;
+ scalar_t__* BAPER ;
+ scalar_t__* TxMPDU ;
+ scalar_t__ ZM_BANDWIDTH_40MHZ ;
+ scalar_t__ ZM_MODE_AP ;
+ int ZM_RATE_TABLE_SIZE ;
+ TYPE_2__* wd ;
+ void*** zcHtOneTxStreamRateTable ;
+ void*** zcHtRateTable ;
+ int zmw_get_wlan_dev (int *) ;
 
 void zfRateCtrlInitCell(zdev_t* dev, struct zsRcCell* rcCell, u8_t type,
         u8_t gBand, u8_t SG40)
@@ -41,22 +41,22 @@ void zfRateCtrlInitCell(zdev_t* dev, struct zsRcCell* rcCell, u8_t type,
 
     if (gBand != 0)
     {
-        if (type == 1) //11g
+        if (type == 1)
         {
-            for (i=0; i<4; i++) //1M 2M 5M 11M
+            for (i=0; i<4; i++)
             {
                 rcCell->operationRateSet[i] = (u8_t)i;
             }
-            for (i=4; i<10; i++) //12M 18M 24M 36M 48M 54M
+            for (i=4; i<10; i++)
             {
                 rcCell->operationRateSet[i] = 2+i;
             }
             rcCell->operationRateCount = 10;
-            rcCell->currentRateIndex = 5; //18M
+            rcCell->currentRateIndex = 5;
         }
-        else if (type == 2) //11ng
+        else if (type == 2)
         {
-            if (wd->wlanMode == ZM_MODE_AP) //AP 11ng 40M
+            if (wd->wlanMode == ZM_MODE_AP)
             {
                 for (i=0; i<15; i++)
                 {
@@ -66,9 +66,9 @@ void zfRateCtrlInitCell(zdev_t* dev, struct zsRcCell* rcCell, u8_t type,
                 rcCell->operationRateCount = 14+SG40;
                 rcCell->currentRateIndex = 10;
             }
-            else //STA
+            else
             {
-                if (wd->sta.htCtrlBandwidth == ZM_BANDWIDTH_40MHZ) //11ng 40M
+                if (wd->sta.htCtrlBandwidth == ZM_BANDWIDTH_40MHZ)
                 {
                     for (i=0; i<15; i++)
                     {
@@ -78,7 +78,7 @@ void zfRateCtrlInitCell(zdev_t* dev, struct zsRcCell* rcCell, u8_t type,
                     rcCell->operationRateCount = 14+SG40;
                     rcCell->currentRateIndex = 10;
                 }
-                else    //11ng 20M
+                else
                 {
                     for (i=0; i<13; i++)
                     {
@@ -89,9 +89,9 @@ void zfRateCtrlInitCell(zdev_t* dev, struct zsRcCell* rcCell, u8_t type,
                 }
             }
         }
-        else if (type == 3) //11ng one Tx stream
+        else if (type == 3)
         {
-                if (wd->sta.htCtrlBandwidth == ZM_BANDWIDTH_40MHZ) //11ng 40M one Tx stream
+                if (wd->sta.htCtrlBandwidth == ZM_BANDWIDTH_40MHZ)
                 {
                     if(SG40 != 0)
                     {
@@ -108,7 +108,7 @@ void zfRateCtrlInitCell(zdev_t* dev, struct zsRcCell* rcCell, u8_t type,
                     rcCell->operationRateCount = i;
                     rcCell->currentRateIndex = ((i+1)*3)/4;
                 }
-                else    //11ng 20M
+                else
                 {
                     for (i=0; i<11; i++)
                     {
@@ -118,7 +118,7 @@ void zfRateCtrlInitCell(zdev_t* dev, struct zsRcCell* rcCell, u8_t type,
                     rcCell->currentRateIndex = ((i+1)*3)/4;
                 }
         }
-        else //if (type == 0) //11b
+        else
         {
             for (i=0; i<4; i++)
             {
@@ -130,9 +130,9 @@ void zfRateCtrlInitCell(zdev_t* dev, struct zsRcCell* rcCell, u8_t type,
     }
     else
     {
-        if (type == 2) //11na
+        if (type == 2)
         {
-            if (wd->wlanMode == ZM_MODE_AP) //AP 11na 40M
+            if (wd->wlanMode == ZM_MODE_AP)
             {
                 for (i=0; i<(12+SG40); i++)
                 {
@@ -141,9 +141,9 @@ void zfRateCtrlInitCell(zdev_t* dev, struct zsRcCell* rcCell, u8_t type,
                 rcCell->operationRateCount = 12+SG40;
                 rcCell->currentRateIndex = 8;
             }
-            else //STA
+            else
             {
-                if (wd->sta.htCtrlBandwidth == ZM_BANDWIDTH_40MHZ) //11na 40M
+                if (wd->sta.htCtrlBandwidth == ZM_BANDWIDTH_40MHZ)
                 {
                     for (i=0; i<(12+SG40); i++)
                     {
@@ -152,7 +152,7 @@ void zfRateCtrlInitCell(zdev_t* dev, struct zsRcCell* rcCell, u8_t type,
                     rcCell->operationRateCount = 12+SG40;
                     rcCell->currentRateIndex = 8;
                 }
-                else    //11na 20M
+                else
                 {
                     for (i=0; i<11; i++)
                     {
@@ -163,9 +163,9 @@ void zfRateCtrlInitCell(zdev_t* dev, struct zsRcCell* rcCell, u8_t type,
                 }
             }
         }
-        else if (type == 3) //11na one Tx stream
+        else if (type == 3)
         {
-                if (wd->sta.htCtrlBandwidth == ZM_BANDWIDTH_40MHZ) //11na 40M one Tx stream
+                if (wd->sta.htCtrlBandwidth == ZM_BANDWIDTH_40MHZ)
                 {
                     if(SG40 != 0)
                     {
@@ -182,7 +182,7 @@ void zfRateCtrlInitCell(zdev_t* dev, struct zsRcCell* rcCell, u8_t type,
                     rcCell->operationRateCount = i;
                     rcCell->currentRateIndex = ((i+1)*3)/4;
                 }
-                else    //11ng 20M
+                else
                 {
                     for (i=0; i<9; i++)
                     {
@@ -192,14 +192,14 @@ void zfRateCtrlInitCell(zdev_t* dev, struct zsRcCell* rcCell, u8_t type,
                     rcCell->currentRateIndex = ((i+1)*3)/4;
                 }
         }
-        else //if (type == 1) //11a
+        else
         {
-            for (i=0; i<8; i++) //6M 9M 12M 18M 24M 36M 48M 54M
+            for (i=0; i<8; i++)
             {
                 rcCell->operationRateSet[i] = i+4;
             }
             rcCell->operationRateCount = 8;
-            rcCell->currentRateIndex = 4;  //24M
+            rcCell->currentRateIndex = 4;
         }
     }
 
@@ -208,7 +208,7 @@ void zfRateCtrlInitCell(zdev_t* dev, struct zsRcCell* rcCell, u8_t type,
     rcCell->failCount = 0;
     rcCell->currentRate = rcCell->operationRateSet[rcCell->currentRateIndex];
     rcCell->lasttxCount = 0;
-    rcCell->lastTime    = wd->tick;
+    rcCell->lastTime = wd->tick;
     rcCell->probingTime = wd->tick;
     for (i=0; i<ZM_RATE_TABLE_SIZE; i++) {
         wd->PER[i] = 0;
@@ -216,12 +216,12 @@ void zfRateCtrlInitCell(zdev_t* dev, struct zsRcCell* rcCell, u8_t type,
     }
     wd->probeCount = 0;
     wd->probeInterval = 0;
-#ifdef ZM_ENABLE_BA_RATECTRL
-    for (i=0; i<29; i++) {
-        TxMPDU[i]=0;
-        BAFail[i]=0;
-        BAPER[i]=0;
-    }
-#endif
+
+
+
+
+
+
+
     return;
 }

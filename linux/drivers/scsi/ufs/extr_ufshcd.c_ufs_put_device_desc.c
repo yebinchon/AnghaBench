@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ufs_dev_desc {int /*<<< orphan*/ * model; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  kfree (int /*<<< orphan*/ *) ; 
+
+
+
+struct ufs_dev_desc {int * model; } ;
+
+
+ int kfree (int *) ;
 
 __attribute__((used)) static void ufs_put_device_desc(struct ufs_dev_desc *dev_desc)
 {
-	kfree(dev_desc->model);
-	dev_desc->model = NULL;
+ kfree(dev_desc->model);
+ dev_desc->model = ((void*)0);
 }

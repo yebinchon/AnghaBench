@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  libvlc_media_t ;
-typedef  int /*<<< orphan*/  libvlc_media_player_t ;
-typedef  int /*<<< orphan*/  libvlc_instance_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * libvlc_media_new_path (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/ * libvlc_media_player_new (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  libvlc_media_player_release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  libvlc_media_player_set_media (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  libvlc_media_player_stop_async (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  libvlc_media_release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * libvlc_new (int,char const**) ; 
- int /*<<< orphan*/  libvlc_release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  play_and_wait (int /*<<< orphan*/ *) ; 
- char* test_default_sample ; 
- int /*<<< orphan*/  test_log (char*) ; 
+
+
+
+typedef int libvlc_media_t ;
+typedef int libvlc_media_player_t ;
+typedef int libvlc_instance_t ;
+
+
+ int assert (int ) ;
+ int * libvlc_media_new_path (int *,char const*) ;
+ int * libvlc_media_player_new (int *) ;
+ int libvlc_media_player_release (int *) ;
+ int libvlc_media_player_set_media (int *,int *) ;
+ int libvlc_media_player_stop_async (int *) ;
+ int libvlc_media_release (int *) ;
+ int * libvlc_new (int,char const**) ;
+ int libvlc_release (int *) ;
+ int play_and_wait (int *) ;
+ char* test_default_sample ;
+ int test_log (char*) ;
 
 __attribute__((used)) static void test_media_player_set_media(const char** argv, int argc)
 {
@@ -35,13 +35,13 @@ __attribute__((used)) static void test_media_player_set_media(const char** argv,
     test_log ("Testing set_media\n");
 
     libvlc_instance_t *vlc = libvlc_new (argc, argv);
-    assert (vlc != NULL);
+    assert (vlc != ((void*)0));
 
     libvlc_media_t *md = libvlc_media_new_path (vlc, file);
-    assert (md != NULL);
+    assert (md != ((void*)0));
 
     libvlc_media_player_t *mp = libvlc_media_player_new (vlc);
-    assert (mp != NULL);
+    assert (mp != ((void*)0));
 
     libvlc_media_player_set_media (mp, md);
 

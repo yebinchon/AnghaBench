@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct stat {scalar_t__ st_size; int /*<<< orphan*/  st_mode; } ;
-typedef  scalar_t__ off_t ;
-typedef  int /*<<< orphan*/  gzFile ;
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct stat {scalar_t__ st_size; int st_mode; } ;
+typedef scalar_t__ off_t ;
+typedef int gzFile ;
 struct TYPE_6__ {char const* const filename; struct stat st; struct TYPE_6__* next; } ;
-typedef  TYPE_1__ file_t ;
-typedef  int /*<<< orphan*/  dyn_mark_t ;
+typedef TYPE_1__ file_t ;
+typedef int dyn_mark_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  O_RDONLY ; 
- int PATH_MAX ; 
- scalar_t__ S_ISDIR (int /*<<< orphan*/ ) ; 
- scalar_t__ S_ISLNK (int /*<<< orphan*/ ) ; 
- int TAR_PACK_ERR_FILL_HEADER ; 
- int TAR_PACK_ERR_GZWRITE ; 
- int TAR_PACK_ERR_OPEN ; 
- int TAR_PACK_ERR_PATH_TOO_LONG ; 
- int TAR_PACK_ERR_WRITE_HEADER ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  dyn_mark (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dyn_release (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free_filelist (TYPE_1__*) ; 
- int getdir (char*,TYPE_1__**,int,int) ; 
- int gzwrite (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  memcpy (char*,char*,int) ; 
- int /*<<< orphan*/  memset (char*,int /*<<< orphan*/ ,int) ; 
- int open (char*,int /*<<< orphan*/ ) ; 
- int read (int,char*,int) ; 
- int readlink (char*,char*,int) ; 
- TYPE_1__* remove_file_from_list (TYPE_1__*,char*) ; 
- int snprintf (char*,int,char*,char const* const,...) ; 
- scalar_t__ tar_fill_header (int /*<<< orphan*/ ,char*,struct stat*,char const* const) ; 
- int /*<<< orphan*/  tar_fill_longlink_header (char*,int,char) ; 
- scalar_t__ tar_write_header (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  vkprintf (int,char*,char const* const) ; 
- char* zmalloc (int) ; 
+
+ int O_RDONLY ;
+ int PATH_MAX ;
+ scalar_t__ S_ISDIR (int ) ;
+ scalar_t__ S_ISLNK (int ) ;
+ int TAR_PACK_ERR_FILL_HEADER ;
+ int TAR_PACK_ERR_GZWRITE ;
+ int TAR_PACK_ERR_OPEN ;
+ int TAR_PACK_ERR_PATH_TOO_LONG ;
+ int TAR_PACK_ERR_WRITE_HEADER ;
+ int assert (int) ;
+ int close (int) ;
+ int dyn_mark (int ) ;
+ int dyn_release (int ) ;
+ int free_filelist (TYPE_1__*) ;
+ int getdir (char*,TYPE_1__**,int,int) ;
+ int gzwrite (int ,char*,int) ;
+ int memcpy (char*,char*,int) ;
+ int memset (char*,int ,int) ;
+ int open (char*,int ) ;
+ int read (int,char*,int) ;
+ int readlink (char*,char*,int) ;
+ TYPE_1__* remove_file_from_list (TYPE_1__*,char*) ;
+ int snprintf (char*,int,char*,char const* const,...) ;
+ scalar_t__ tar_fill_header (int ,char*,struct stat*,char const* const) ;
+ int tar_fill_longlink_header (char*,int,char) ;
+ scalar_t__ tar_write_header (int ,char*) ;
+ int vkprintf (int,char*,char const* const) ;
+ char* zmalloc (int) ;
 
 __attribute__((used)) static int rec_tar_pack (gzFile f, const char *const src_path, const char *const path, struct stat *S) {
   vkprintf (3, "rec_tar_pack (path = %s)\n", path);
@@ -82,7 +82,7 @@ __attribute__((used)) static int rec_tar_pack (gzFile f, const char *const src_p
     if (tar_fill_header (f, header, S, path) < 0) {
       return TAR_PACK_ERR_FILL_HEADER;
     }
-    memcpy (header + 157, b,  link_length);
+    memcpy (header + 157, b, link_length);
     if (tar_write_header (f, header) < 0) {
       return TAR_PACK_ERR_WRITE_HEADER;
     }
@@ -110,7 +110,7 @@ __attribute__((used)) static int rec_tar_pack (gzFile f, const char *const src_p
       px = remove_file_from_list (px, ".filesys-xfs-engine.pid");
     }
 
-    for (p = px; p != NULL; p = p->next) {
+    for (p = px; p != ((void*)0); p = p->next) {
       if (path[0]) {
         if (snprintf (a, PATH_MAX, "%s/%s", path, p->filename) >= PATH_MAX) {
           return TAR_PACK_ERR_PATH_TOO_LONG;

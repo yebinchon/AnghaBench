@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_38__   TYPE_9__ ;
-typedef  struct TYPE_37__   TYPE_8__ ;
-typedef  struct TYPE_36__   TYPE_7__ ;
-typedef  struct TYPE_35__   TYPE_6__ ;
-typedef  struct TYPE_34__   TYPE_5__ ;
-typedef  struct TYPE_33__   TYPE_4__ ;
-typedef  struct TYPE_32__   TYPE_3__ ;
-typedef  struct TYPE_31__   TYPE_2__ ;
-typedef  struct TYPE_30__   TYPE_21__ ;
-typedef  struct TYPE_29__   TYPE_1__ ;
-typedef  struct TYPE_28__   TYPE_14__ ;
-typedef  struct TYPE_27__   TYPE_13__ ;
-typedef  struct TYPE_26__   TYPE_12__ ;
-typedef  struct TYPE_25__   TYPE_11__ ;
-typedef  struct TYPE_24__   TYPE_10__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_38__ TYPE_9__ ;
+typedef struct TYPE_37__ TYPE_8__ ;
+typedef struct TYPE_36__ TYPE_7__ ;
+typedef struct TYPE_35__ TYPE_6__ ;
+typedef struct TYPE_34__ TYPE_5__ ;
+typedef struct TYPE_33__ TYPE_4__ ;
+typedef struct TYPE_32__ TYPE_3__ ;
+typedef struct TYPE_31__ TYPE_2__ ;
+typedef struct TYPE_30__ TYPE_21__ ;
+typedef struct TYPE_29__ TYPE_1__ ;
+typedef struct TYPE_28__ TYPE_14__ ;
+typedef struct TYPE_27__ TYPE_13__ ;
+typedef struct TYPE_26__ TYPE_12__ ;
+typedef struct TYPE_25__ TYPE_11__ ;
+typedef struct TYPE_24__ TYPE_10__ ;
+
+
 struct TYPE_38__ {int nPos; } ;
 struct TYPE_37__ {int cx; int cy; } ;
 struct TYPE_34__ {int y; } ;
@@ -36,25 +36,25 @@ struct TYPE_31__ {int x; } ;
 struct TYPE_26__ {TYPE_2__ pt; } ;
 struct TYPE_29__ {TYPE_12__ run; } ;
 struct TYPE_30__ {TYPE_1__ member; } ;
-struct TYPE_28__ {int /*<<< orphan*/  nOffset; TYPE_13__* pPara; TYPE_21__* pRun; } ;
+struct TYPE_28__ {int nOffset; TYPE_13__* pPara; TYPE_21__* pRun; } ;
 struct TYPE_27__ {TYPE_7__ member; } ;
 struct TYPE_24__ {int nPos; } ;
 struct TYPE_25__ {int styleFlags; TYPE_10__ vert_si; TYPE_9__ horz_si; TYPE_8__ sizeWindow; } ;
-typedef  TYPE_11__ ME_TextEditor ;
-typedef  TYPE_12__ ME_Run ;
-typedef  TYPE_13__ ME_DisplayItem ;
-typedef  TYPE_14__ ME_Cursor ;
+typedef TYPE_11__ ME_TextEditor ;
+typedef TYPE_12__ ME_Run ;
+typedef TYPE_13__ ME_DisplayItem ;
+typedef TYPE_14__ ME_Cursor ;
 
-/* Variables and functions */
- int ES_AUTOHSCROLL ; 
- int ES_AUTOVSCROLL ; 
- TYPE_13__* ME_FindItemBack (TYPE_21__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ME_HScrollAbs (TYPE_11__*,int) ; 
- int ME_PointFromChar (TYPE_11__*,TYPE_12__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ME_ScrollAbs (TYPE_11__*,int,int) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  assert (TYPE_13__*) ; 
- int /*<<< orphan*/  diStartRow ; 
+
+ int ES_AUTOHSCROLL ;
+ int ES_AUTOVSCROLL ;
+ TYPE_13__* ME_FindItemBack (TYPE_21__*,int ) ;
+ int ME_HScrollAbs (TYPE_11__*,int) ;
+ int ME_PointFromChar (TYPE_11__*,TYPE_12__*,int ,int ) ;
+ int ME_ScrollAbs (TYPE_11__*,int,int) ;
+ int TRUE ;
+ int assert (TYPE_13__*) ;
+ int diStartRow ;
 
 void ME_EnsureVisible(ME_TextEditor *editor, ME_Cursor *pCursor)
 {

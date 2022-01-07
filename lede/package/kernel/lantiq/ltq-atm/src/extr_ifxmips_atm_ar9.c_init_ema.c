@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  EMA_CFG ; 
- int /*<<< orphan*/  EMA_CMDCFG ; 
- int EMA_CMD_BASE_ADDR ; 
- int EMA_CMD_BUF_LEN ; 
- int /*<<< orphan*/  EMA_DATACFG ; 
- int EMA_DATA_BASE_ADDR ; 
- int EMA_DATA_BUF_LEN ; 
- int /*<<< orphan*/  EMA_IER ; 
- int EMA_READ_BURST ; 
- int EMA_WRITE_BURST ; 
- int /*<<< orphan*/  IFX_REG_W32 (int,int /*<<< orphan*/ ) ; 
+ int EMA_CFG ;
+ int EMA_CMDCFG ;
+ int EMA_CMD_BASE_ADDR ;
+ int EMA_CMD_BUF_LEN ;
+ int EMA_DATACFG ;
+ int EMA_DATA_BASE_ADDR ;
+ int EMA_DATA_BUF_LEN ;
+ int EMA_IER ;
+ int EMA_READ_BURST ;
+ int EMA_WRITE_BURST ;
+ int IFX_REG_W32 (int,int ) ;
 
 __attribute__((used)) static inline void init_ema(void)
 {

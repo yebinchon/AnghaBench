@@ -1,39 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  TEP_EVENT_ITEM ; 
- int /*<<< orphan*/  TEP_EVENT_OP ; 
- int /*<<< orphan*/  free_token (char*) ; 
- scalar_t__ read_expect_type (int /*<<< orphan*/ ,char**) ; 
- scalar_t__ read_expected (int /*<<< orphan*/ ,char*) ; 
+ int TEP_EVENT_ITEM ;
+ int TEP_EVENT_OP ;
+ int free_token (char*) ;
+ scalar_t__ read_expect_type (int ,char**) ;
+ scalar_t__ read_expected (int ,char*) ;
 
 __attribute__((used)) static char *event_read_name(void)
 {
-	char *token;
+ char *token;
 
-	if (read_expected(TEP_EVENT_ITEM, "name") < 0)
-		return NULL;
+ if (read_expected(TEP_EVENT_ITEM, "name") < 0)
+  return ((void*)0);
 
-	if (read_expected(TEP_EVENT_OP, ":") < 0)
-		return NULL;
+ if (read_expected(TEP_EVENT_OP, ":") < 0)
+  return ((void*)0);
 
-	if (read_expect_type(TEP_EVENT_ITEM, &token) < 0)
-		goto fail;
+ if (read_expect_type(TEP_EVENT_ITEM, &token) < 0)
+  goto fail;
 
-	return token;
+ return token;
 
  fail:
-	free_token(token);
-	return NULL;
+ free_token(token);
+ return ((void*)0);
 }

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buf ;
-typedef  int /*<<< orphan*/  FTPContext ;
-typedef  int /*<<< orphan*/  AVBPrint ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_BPRINT_SIZE_AUTOMATIC ; 
- int /*<<< orphan*/  AV_LOG_DEBUG ; 
- int CONTROL_BUFFER_SIZE ; 
- int /*<<< orphan*/  av_bprint_finalize (int /*<<< orphan*/ *,char**) ; 
- int /*<<< orphan*/  av_bprint_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_bprintf (int /*<<< orphan*/ *,char*,char*) ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,char*) ; 
- int ftp_get_line (int /*<<< orphan*/ *,char*,int) ; 
- int strlen (char*) ; 
+
+
+
+typedef int buf ;
+typedef int FTPContext ;
+typedef int AVBPrint ;
+
+
+ int AV_BPRINT_SIZE_AUTOMATIC ;
+ int AV_LOG_DEBUG ;
+ int CONTROL_BUFFER_SIZE ;
+ int av_bprint_finalize (int *,char**) ;
+ int av_bprint_init (int *,int ,int ) ;
+ int av_bprintf (int *,char*,char*) ;
+ int av_log (int *,int ,char*,char*) ;
+ int ftp_get_line (int *,char*,int) ;
+ int strlen (char*) ;
 
 __attribute__((used)) static int ftp_status(FTPContext *s, char **line, const int response_codes[])
 {
@@ -37,7 +37,7 @@ __attribute__((used)) static int ftp_status(FTPContext *s, char **line, const in
     while (!code_found || dash) {
         if ((err = ftp_get_line(s, buf, sizeof(buf))) < 0) {
             if (line)
-                av_bprint_finalize(&line_buffer, NULL);
+                av_bprint_finalize(&line_buffer, ((void*)0));
             return err;
         }
 

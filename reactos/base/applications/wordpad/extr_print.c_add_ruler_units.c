@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char WCHAR ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef char WCHAR ;
 struct TYPE_4__ {int right; scalar_t__ bottom; scalar_t__ top; } ;
-typedef  TYPE_1__ RECT ;
-typedef  int LONG ;
-typedef  int /*<<< orphan*/  HFONT ;
-typedef  scalar_t__ HDC ;
-typedef  int /*<<< orphan*/  HBITMAP ;
-typedef  scalar_t__ BOOL ;
+typedef TYPE_1__ RECT ;
+typedef int LONG ;
+typedef int HFONT ;
+typedef scalar_t__ HDC ;
+typedef int HBITMAP ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BitBlt (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,scalar_t__,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CreateCompatibleBitmap (scalar_t__,int,scalar_t__) ; 
- scalar_t__ CreateCompatibleDC (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CreateFontW (int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  DeleteDC (scalar_t__) ; 
- int /*<<< orphan*/  DeleteObject (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FillRect (scalar_t__,TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetDeviceCaps (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetStockObject (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LOGPIXELSX ; 
- int /*<<< orphan*/  LineTo (scalar_t__,int,int) ; 
- int /*<<< orphan*/  MoveToEx (scalar_t__,int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SRCAND ; 
- int /*<<< orphan*/  SelectObject (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetBkMode (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetTextAlign (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TA_CENTER ; 
- int /*<<< orphan*/  TRANSPARENT ; 
- int /*<<< orphan*/  TextOutW (scalar_t__,int,int,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WHITE_BRUSH ; 
- int /*<<< orphan*/  centmm_to_twips (int) ; 
- int /*<<< orphan*/  lstrlenW (char*) ; 
- int twips_to_pixels (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wsprintfW (char*,char*,int) ; 
+
+ int BitBlt (scalar_t__,int ,int ,int,scalar_t__,scalar_t__,int ,int ,int ) ;
+ int CreateCompatibleBitmap (scalar_t__,int,scalar_t__) ;
+ scalar_t__ CreateCompatibleDC (int ) ;
+ int CreateFontW (int,int,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,char*) ;
+ int DeleteDC (scalar_t__) ;
+ int DeleteObject (int ) ;
+ int FillRect (scalar_t__,TYPE_1__*,int ) ;
+ int GetDeviceCaps (scalar_t__,int ) ;
+ int GetStockObject (int ) ;
+ int LOGPIXELSX ;
+ int LineTo (scalar_t__,int,int) ;
+ int MoveToEx (scalar_t__,int,int,int *) ;
+ int SRCAND ;
+ int SelectObject (scalar_t__,int ) ;
+ int SetBkMode (scalar_t__,int ) ;
+ int SetTextAlign (scalar_t__,int ) ;
+ int TA_CENTER ;
+ int TRANSPARENT ;
+ int TextOutW (scalar_t__,int,int,char*,int ) ;
+ int WHITE_BRUSH ;
+ int centmm_to_twips (int) ;
+ int lstrlenW (char*) ;
+ int twips_to_pixels (int ,int ) ;
+ int wsprintfW (char*,char*,int) ;
 
 __attribute__((used)) static void add_ruler_units(HDC hdcRuler, RECT* drawRect, BOOL NewMetrics, LONG EditLeftmost)
 {
@@ -91,21 +91,21 @@ __attribute__((used)) static void add_ruler_units(HDC hdcRuler, RECT* drawRect, 
             if(x2 > RulerTextEnd)
                 break;
 
-            MoveToEx(hdc, x2, y, NULL);
+            MoveToEx(hdc, x2, y, ((void*)0));
             LineTo(hdc, x2, y+2);
 
             x2 += QuarterCmPixels;
             if(x2 > RulerTextEnd)
                 break;
 
-            MoveToEx(hdc, x2, y - 3, NULL);
+            MoveToEx(hdc, x2, y - 3, ((void*)0));
             LineTo(hdc, x2, y + 3);
 
             x2 += QuarterCmPixels;
             if(x2 > RulerTextEnd)
                 break;
 
-            MoveToEx(hdc, x2, y, NULL);
+            MoveToEx(hdc, x2, y, ((void*)0));
             LineTo(hdc, x2, y+2);
 
             x += CmPixels;

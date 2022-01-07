@@ -1,66 +1,66 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_playlist_t ;
-typedef  int /*<<< orphan*/  vlc_player_t ;
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int vlc_playlist_t ;
+typedef int vlc_player_t ;
 struct TYPE_7__ {TYPE_2__* p_sys; } ;
-typedef  TYPE_1__ intf_thread_t ;
-struct TYPE_8__ {int plidx_follow; char* open_chain; int /*<<< orphan*/ * playlist; } ;
-typedef  TYPE_2__ intf_sys_t ;
+typedef TYPE_1__ intf_thread_t ;
+struct TYPE_8__ {int plidx_follow; char* open_chain; int * playlist; } ;
+typedef TYPE_2__ intf_sys_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AUDIO_ES ; 
- int /*<<< orphan*/  BOX_BROWSE ; 
- int /*<<< orphan*/  BOX_HELP ; 
- int /*<<< orphan*/  BOX_INFO ; 
- int /*<<< orphan*/  BOX_LOG ; 
- int /*<<< orphan*/  BOX_META ; 
- int /*<<< orphan*/  BOX_OPEN ; 
- int /*<<< orphan*/  BOX_PLAYLIST ; 
- int /*<<< orphan*/  BOX_SEARCH ; 
- int /*<<< orphan*/  BOX_STATS ; 
- int /*<<< orphan*/  BoxSwitch (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ChangePosition (int /*<<< orphan*/ *,double) ; 
- int /*<<< orphan*/  ERR ; 
- int /*<<< orphan*/  Eject (TYPE_1__*,int /*<<< orphan*/ *) ; 
-#define  KEY_CLEAR 131 
-#define  KEY_EXIT 130 
-#define  KEY_LEFT 129 
-#define  KEY_RIGHT 128 
- int /*<<< orphan*/  SPU_ES ; 
- int /*<<< orphan*/  VIDEO_ES ; 
- int /*<<< orphan*/  clear () ; 
- int /*<<< orphan*/  getch () ; 
- int /*<<< orphan*/  libvlc_Quit (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vlc_object_instance (TYPE_1__*) ; 
- int /*<<< orphan*/  vlc_player_Lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_player_SelectNextChapter (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_player_SelectNextTitle (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_player_SelectNextTrack (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vlc_player_SelectPrevChapter (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_player_SelectPrevTitle (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_player_Stop (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_player_TogglePause (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_player_Unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_player_aout_DecrementVolume (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_player_aout_IncrementVolume (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_player_aout_ToggleMute (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_player_vout_ToggleFullscreen (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_playlist_Lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_playlist_Next (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_playlist_Prev (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_playlist_Unlock (int /*<<< orphan*/ *) ; 
+
+ int AUDIO_ES ;
+ int BOX_BROWSE ;
+ int BOX_HELP ;
+ int BOX_INFO ;
+ int BOX_LOG ;
+ int BOX_META ;
+ int BOX_OPEN ;
+ int BOX_PLAYLIST ;
+ int BOX_SEARCH ;
+ int BOX_STATS ;
+ int BoxSwitch (TYPE_2__*,int ) ;
+ int ChangePosition (int *,double) ;
+ int ERR ;
+ int Eject (TYPE_1__*,int *) ;
+
+
+
+
+ int SPU_ES ;
+ int VIDEO_ES ;
+ int clear () ;
+ int getch () ;
+ int libvlc_Quit (int ) ;
+ int vlc_object_instance (TYPE_1__*) ;
+ int vlc_player_Lock (int *) ;
+ int vlc_player_SelectNextChapter (int *) ;
+ int vlc_player_SelectNextTitle (int *) ;
+ int vlc_player_SelectNextTrack (int *,int ) ;
+ int vlc_player_SelectPrevChapter (int *) ;
+ int vlc_player_SelectPrevTitle (int *) ;
+ int vlc_player_Stop (int *) ;
+ int vlc_player_TogglePause (int *) ;
+ int vlc_player_Unlock (int *) ;
+ int vlc_player_aout_DecrementVolume (int *,int,int *) ;
+ int vlc_player_aout_IncrementVolume (int *,int,int *) ;
+ int vlc_player_aout_ToggleMute (int *) ;
+ int vlc_player_vout_ToggleFullscreen (int *) ;
+ int vlc_playlist_Lock (int *) ;
+ int vlc_playlist_Next (int *) ;
+ int vlc_playlist_Prev (int *) ;
+ int vlc_playlist_Unlock (int *) ;
 
 __attribute__((used)) static void HandleCommonKey(intf_thread_t *intf, vlc_player_t *player, int key)
 {
@@ -69,42 +69,42 @@ __attribute__((used)) static void HandleCommonKey(intf_thread_t *intf, vlc_playe
 
     switch(key)
     {
-    case 0x1b:  /* ESC */
-        /* See comment in HandleEditBoxKey() */
+    case 0x1b:
+
         if (getch() != ERR)
             return;
-        /* Fall-through */
+
 
     case 'q':
     case 'Q':
-    case KEY_EXIT:
+    case 130:
         libvlc_Quit(vlc_object_instance(intf));
         return;
 
     case 'h':
-    case 'H': BoxSwitch(sys, BOX_HELP);       return;
-    case 'i': BoxSwitch(sys, BOX_INFO);       return;
-    case 'M': BoxSwitch(sys, BOX_META);       return;
-    case 'L': BoxSwitch(sys, BOX_LOG);        return;
-    case 'P': BoxSwitch(sys, BOX_PLAYLIST);   return;
-    case 'B': BoxSwitch(sys, BOX_BROWSE);     return;
-    case 'S': BoxSwitch(sys, BOX_STATS);      return;
+    case 'H': BoxSwitch(sys, BOX_HELP); return;
+    case 'i': BoxSwitch(sys, BOX_INFO); return;
+    case 'M': BoxSwitch(sys, BOX_META); return;
+    case 'L': BoxSwitch(sys, BOX_LOG); return;
+    case 'P': BoxSwitch(sys, BOX_PLAYLIST); return;
+    case 'B': BoxSwitch(sys, BOX_BROWSE); return;
+    case 'S': BoxSwitch(sys, BOX_STATS); return;
 
-    case '/': /* Search */
-        sys->plidx_follow = false;
+    case '/':
+        sys->plidx_follow = 0;
         BoxSwitch(sys, BOX_SEARCH);
         return;
 
-    case 'A': /* Open */
+    case 'A':
         sys->open_chain[0] = '\0';
         BoxSwitch(sys, BOX_OPEN);
         return;
 
-    /* Navigation */
-    case KEY_RIGHT: ChangePosition(player, +0.01); return;
-    case KEY_LEFT:  ChangePosition(player, -0.01); return;
 
-    /* Common control */
+    case 128: ChangePosition(player, +0.01); return;
+    case 129: ChangePosition(player, -0.01); return;
+
+
     case 'f':
         vlc_player_vout_ToggleFullscreen(player);
         return;
@@ -120,7 +120,7 @@ __attribute__((used)) static void HandleCommonKey(intf_thread_t *intf, vlc_playe
         vlc_player_Unlock(player);
         return;
 
-    case 'e': Eject(intf, player);           return;
+    case 'e': Eject(intf, player); return;
 
     case '[':
         vlc_player_Lock(player);
@@ -156,12 +156,12 @@ __attribute__((used)) static void HandleCommonKey(intf_thread_t *intf, vlc_playe
 
     case 'a':
         vlc_player_Lock(player);
-        vlc_player_aout_IncrementVolume(player, 1, NULL);
+        vlc_player_aout_IncrementVolume(player, 1, ((void*)0));
         vlc_player_Unlock(player);
         break;
     case 'z':
         vlc_player_Lock(player);
-        vlc_player_aout_DecrementVolume(player, 1, NULL);
+        vlc_player_aout_DecrementVolume(player, 1, ((void*)0));
         vlc_player_Unlock(player);
         break;
     case 'm':
@@ -186,8 +186,8 @@ __attribute__((used)) static void HandleCommonKey(intf_thread_t *intf, vlc_playe
         vlc_player_Unlock(player);
         break;
 
-    case 0x0c:  /* ^l */
-    case KEY_CLEAR:
+    case 0x0c:
+    case 131:
         break;
 
     default:

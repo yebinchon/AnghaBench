@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {float member_0; float member_1; float member_2; } ;
-typedef  TYPE_1__ vec3 ;
-typedef  scalar_t__ mat4x4 ;
-typedef  int /*<<< orphan*/  GLsizei ;
-typedef  int /*<<< orphan*/  GLfloat ;
-typedef  int /*<<< orphan*/  GLFWwindow ;
+typedef TYPE_1__ vec3 ;
+typedef scalar_t__ mat4x4 ;
+typedef int GLsizei ;
+typedef int GLfloat ;
+typedef int GLFWwindow ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GL_MODELVIEW ; 
- int /*<<< orphan*/  GL_PROJECTION ; 
- int /*<<< orphan*/  RADIUS ; 
- float VIEW_SCENE_DIST ; 
- scalar_t__ atan2 (int /*<<< orphan*/ ,float) ; 
- int /*<<< orphan*/  glLoadMatrixf (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  glMatrixMode (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glViewport (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mat4x4_look_at (scalar_t__,TYPE_1__,TYPE_1__,TYPE_1__) ; 
- int /*<<< orphan*/  mat4x4_perspective (scalar_t__,float,float,float,float) ; 
+
+ int GL_MODELVIEW ;
+ int GL_PROJECTION ;
+ int RADIUS ;
+ float VIEW_SCENE_DIST ;
+ scalar_t__ atan2 (int ,float) ;
+ int glLoadMatrixf (int const*) ;
+ int glMatrixMode (int ) ;
+ int glViewport (int ,int ,int ,int ) ;
+ int mat4x4_look_at (scalar_t__,TYPE_1__,TYPE_1__,TYPE_1__) ;
+ int mat4x4_perspective (scalar_t__,float,float,float,float) ;
 
 void reshape( GLFWwindow* window, int w, int h )
 {

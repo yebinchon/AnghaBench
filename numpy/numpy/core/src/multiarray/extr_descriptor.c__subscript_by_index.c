@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  names; } ;
-typedef  int /*<<< orphan*/  Py_ssize_t ;
-typedef  int /*<<< orphan*/  PyObject ;
-typedef  TYPE_1__ PyArray_Descr ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PyErr_Format (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PyExc_IndexError ; 
- int /*<<< orphan*/ * PySequence_GetItem (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Py_DECREF (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * _subscript_by_name (TYPE_1__*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int names; } ;
+typedef int Py_ssize_t ;
+typedef int PyObject ;
+typedef TYPE_1__ PyArray_Descr ;
+
+
+ int PyErr_Format (int ,char*,int ) ;
+ int PyExc_IndexError ;
+ int * PySequence_GetItem (int ,int ) ;
+ int Py_DECREF (int *) ;
+ int * _subscript_by_name (TYPE_1__*,int *) ;
 
 __attribute__((used)) static PyObject *
 _subscript_by_index(PyArray_Descr *self, Py_ssize_t i)
 {
     PyObject *name = PySequence_GetItem(self->names, i);
     PyObject *ret;
-    if (name == NULL) {
+    if (name == ((void*)0)) {
         PyErr_Format(PyExc_IndexError,
                      "Field index %zd out of range.", i);
-        return NULL;
+        return ((void*)0);
     }
     ret = _subscript_by_name(self, name);
     Py_DECREF(name);

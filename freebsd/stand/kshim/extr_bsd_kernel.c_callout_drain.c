@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct callout {int /*<<< orphan*/ * mtx; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  callout_stop (struct callout*) ; 
- int /*<<< orphan*/  mtx_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mtx_unlock (int /*<<< orphan*/ *) ; 
+
+
+
+struct callout {int * mtx; } ;
+
+
+ int callout_stop (struct callout*) ;
+ int mtx_lock (int *) ;
+ int mtx_unlock (int *) ;
 
 void
 callout_drain(struct callout *c)
 {
-	if (c->mtx == NULL)
-		return;			/* not initialised */
+ if (c->mtx == ((void*)0))
+  return;
 
-	mtx_lock(c->mtx);
-	callout_stop(c);
-	mtx_unlock(c->mtx);
+ mtx_lock(c->mtx);
+ callout_stop(c);
+ mtx_unlock(c->mtx);
 }

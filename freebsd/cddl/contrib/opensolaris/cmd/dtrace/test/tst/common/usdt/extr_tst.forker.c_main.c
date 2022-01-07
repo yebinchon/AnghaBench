@@ -1,34 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  FORKER_FIRE () ; 
- int /*<<< orphan*/  exit (int /*<<< orphan*/ ) ; 
- scalar_t__ fork () ; 
- int /*<<< orphan*/  wait (int /*<<< orphan*/ *) ; 
+ int FORKER_FIRE () ;
+ int exit (int ) ;
+ scalar_t__ fork () ;
+ int wait (int *) ;
 
 int
 main(int argc, char **argv)
 {
-	int i;
+ int i;
 
-	for (i = 0; i < 10000; i++) {
-		FORKER_FIRE();
-		if (fork() == 0)
-			exit(0);
+ for (i = 0; i < 10000; i++) {
+  FORKER_FIRE();
+  if (fork() == 0)
+   exit(0);
 
-		(void) wait(NULL);
-	}
+  (void) wait(((void*)0));
+ }
 
-	return (0);
+ return (0);
 }

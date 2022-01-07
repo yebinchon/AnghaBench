@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int const sigma; float amount; TYPE_1__* planes; } ;
 struct TYPE_4__ {int b; int nox; int noy; int buffer_linesize; float** buffer; } ;
-typedef  TYPE_1__ PlaneContext ;
-typedef  TYPE_2__ FFTdnoizContext ;
+typedef TYPE_1__ PlaneContext ;
+typedef TYPE_2__ FFTdnoizContext ;
 
-/* Variables and functions */
- size_t CURRENT ; 
- float FFMAX (float const,float) ; 
+
+ size_t CURRENT ;
+ float FFMAX (float const,float) ;
 
 __attribute__((used)) static void filter_plane2d(FFTdnoizContext *s, int plane)
 {
@@ -41,11 +41,11 @@ __attribute__((used)) static void filter_plane2d(FFTdnoizContext *s, int plane)
                 for (j = 0; j < block; j++) {
                     float factor, power, re, im;
 
-                    re = buff[j * 2    ];
+                    re = buff[j * 2 ];
                     im = buff[j * 2 + 1];
                     power = re * re + im * im + 1e-15f;
                     factor = FFMAX(limit, (power - sigma) / power);
-                    buff[j * 2    ] *= factor;
+                    buff[j * 2 ] *= factor;
                     buff[j * 2 + 1] *= factor;
                 }
 

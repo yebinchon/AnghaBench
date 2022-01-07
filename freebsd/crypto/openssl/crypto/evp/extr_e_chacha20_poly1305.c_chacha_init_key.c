@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {void** d; } ;
 struct TYPE_5__ {scalar_t__ partial_len; void** counter; TYPE_1__ key; } ;
-typedef  int /*<<< orphan*/  EVP_CIPHER_CTX ;
-typedef  TYPE_2__ EVP_CHACHA_KEY ;
+typedef int EVP_CIPHER_CTX ;
+typedef TYPE_2__ EVP_CHACHA_KEY ;
 
-/* Variables and functions */
- unsigned int CHACHA_CTR_SIZE ; 
- unsigned int CHACHA_KEY_SIZE ; 
- void* CHACHA_U8TOU32 (unsigned char const*) ; 
- TYPE_2__* data (int /*<<< orphan*/ *) ; 
+
+ unsigned int CHACHA_CTR_SIZE ;
+ unsigned int CHACHA_KEY_SIZE ;
+ void* CHACHA_U8TOU32 (unsigned char const*) ;
+ TYPE_2__* data (int *) ;
 
 __attribute__((used)) static int chacha_init_key(EVP_CIPHER_CTX *ctx,
                            const unsigned char user_key[CHACHA_KEY_SIZE],

@@ -1,30 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- size_t SIZE_MAX ; 
- int /*<<< orphan*/  strcat (char*,char const*) ; 
- char* strdup (char const*) ; 
- size_t strlen (char const*) ; 
- int /*<<< orphan*/  strncat (char*,char const*,int) ; 
- char* strstr (char const*,char const*) ; 
+ size_t SIZE_MAX ;
+ int strcat (char*,char const*) ;
+ char* strdup (char const*) ;
+ size_t strlen (char const*) ;
+ int strncat (char*,char const*,int) ;
+ char* strstr (char const*,char const*) ;
 
 char *
 searchandreplace(const char *tosearch, const char *searchfor, const char *replacewith)
 {
     if (!tosearch || !searchfor || !replacewith)
     {
-        return NULL;
+        return ((void*)0);
     }
 
     size_t tosearchlen = strlen(tosearch);
@@ -33,17 +25,17 @@ searchandreplace(const char *tosearch, const char *searchfor, const char *replac
 
     if (tosearchlen == 0 || strlen(searchfor) == 0 || replacewithlen == 0)
     {
-        return NULL;
+        return ((void*)0);
     }
 
-    bool is_potential_integer_overflow =  (templen == SIZE_MAX) || (templen / tosearchlen != replacewithlen);
+    bool is_potential_integer_overflow = (templen == SIZE_MAX) || (templen / tosearchlen != replacewithlen);
 
     if (is_potential_integer_overflow)
     {
-        return NULL;
+        return ((void*)0);
     }
 
-    /* state: all parameters are valid */
+
 
     const char *searching = tosearch;
     char *scratch;

@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int stbi__uint32 ;
-typedef  int /*<<< orphan*/  stbi__context ;
 
-/* Variables and functions */
- int stbi__get16le (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int stbi__uint32 ;
+typedef int stbi__context ;
+
+
+ int stbi__get16le (int *) ;
 
 __attribute__((used)) static stbi__uint32 stbi__get32le(stbi__context *s)
 {

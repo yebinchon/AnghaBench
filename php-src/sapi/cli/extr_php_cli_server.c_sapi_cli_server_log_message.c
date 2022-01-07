@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ int PHP_CLI_SERVER_LOG_MESSAGE ;
+ int sapi_cli_server_log_write (int ,char*) ;
 
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  PHP_CLI_SERVER_LOG_MESSAGE ; 
- int /*<<< orphan*/  sapi_cli_server_log_write (int /*<<< orphan*/ ,char*) ; 
-
-__attribute__((used)) static void sapi_cli_server_log_message(char *msg, int syslog_type_int) /* {{{ */
+__attribute__((used)) static void sapi_cli_server_log_message(char *msg, int syslog_type_int)
 {
-	sapi_cli_server_log_write(PHP_CLI_SERVER_LOG_MESSAGE, msg);
+ sapi_cli_server_log_write(PHP_CLI_SERVER_LOG_MESSAGE, msg);
 }

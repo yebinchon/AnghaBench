@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {TYPE_2__* sys; } ;
-typedef  TYPE_1__ audio_output_t ;
-struct TYPE_7__ {int /*<<< orphan*/ * client; } ;
-typedef  TYPE_2__ aout_sys_t ;
-typedef  int /*<<< orphan*/  ISimpleAudioVolume ;
-typedef  int /*<<< orphan*/  HRESULT ;
+typedef TYPE_1__ audio_output_t ;
+struct TYPE_7__ {int * client; } ;
+typedef TYPE_2__ aout_sys_t ;
+typedef int ISimpleAudioVolume ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IAudioClient_GetService (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IID_ISimpleAudioVolume ; 
- int /*<<< orphan*/  ISimpleAudioVolume_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ISimpleAudioVolume_SetMasterVolume (int /*<<< orphan*/ *,float,int /*<<< orphan*/ *) ; 
- scalar_t__ SUCCEEDED (int /*<<< orphan*/ ) ; 
- int VLC_EGENERIC ; 
- int /*<<< orphan*/  aout_GainRequest (TYPE_1__*,float) ; 
- int /*<<< orphan*/  msg_Err (TYPE_1__*,char*,int /*<<< orphan*/ ) ; 
- scalar_t__ unlikely (int /*<<< orphan*/ ) ; 
+
+ scalar_t__ FAILED (int ) ;
+ int IAudioClient_GetService (int *,int *,int **) ;
+ int IID_ISimpleAudioVolume ;
+ int ISimpleAudioVolume_Release (int *) ;
+ int ISimpleAudioVolume_SetMasterVolume (int *,float,int *) ;
+ scalar_t__ SUCCEEDED (int ) ;
+ int VLC_EGENERIC ;
+ int aout_GainRequest (TYPE_1__*,float) ;
+ int msg_Err (TYPE_1__*,char*,int ) ;
+ scalar_t__ unlikely (int ) ;
 
 __attribute__((used)) static int VolumeSet(audio_output_t *aout, float vol)
 {
     aout_sys_t *sys = aout->sys;
-    if( unlikely( sys->client == NULL ) )
+    if( unlikely( sys->client == ((void*)0) ) )
         return VLC_EGENERIC;
     HRESULT hr;
-    ISimpleAudioVolume *pc_AudioVolume = NULL;
+    ISimpleAudioVolume *pc_AudioVolume = ((void*)0);
     float gain = 1.f;
 
-    vol = vol * vol * vol; /* ISimpleAudioVolume is tapered linearly. */
+    vol = vol * vol * vol;
 
     if (vol > 1.f)
     {
@@ -57,7 +57,7 @@ __attribute__((used)) static int VolumeSet(audio_output_t *aout, float vol)
         goto done;
     }
 
-    hr = ISimpleAudioVolume_SetMasterVolume(pc_AudioVolume, vol, NULL);
+    hr = ISimpleAudioVolume_SetMasterVolume(pc_AudioVolume, vol, ((void*)0));
     if (FAILED(hr))
     {
         msg_Err(aout, "cannot set volume (error 0x%lX)", hr);

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct lev_rotate_to {int dummy; } ;
 struct lev_rotate_from {int dummy; } ;
 struct TYPE_9__ {int orig_file_size; TYPE_2__* F; } ;
-typedef  TYPE_3__ stream_t ;
+typedef TYPE_3__ stream_t ;
 struct TYPE_8__ {TYPE_1__* info; } ;
-struct TYPE_7__ {int /*<<< orphan*/  filename; } ;
+struct TYPE_7__ {int filename; } ;
 
-/* Variables and functions */
- scalar_t__ io_buff ; 
- int /*<<< orphan*/  kprintf (char*,char const*) ; 
- int /*<<< orphan*/  log_fatal (char*,...) ; 
- scalar_t__ match_rotate_logevents (struct lev_rotate_to*,struct lev_rotate_from*) ; 
- scalar_t__ stream_open (TYPE_3__*,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ) ; 
- scalar_t__ stream_read_lev_rotate_to (TYPE_3__*,struct lev_rotate_to*) ; 
- int stream_read_limited (TYPE_3__*,scalar_t__,int) ; 
+
+ scalar_t__ io_buff ;
+ int kprintf (char*,char const*) ;
+ int log_fatal (char*,...) ;
+ scalar_t__ match_rotate_logevents (struct lev_rotate_to*,struct lev_rotate_from*) ;
+ scalar_t__ stream_open (TYPE_3__*,int ,char const*,int ) ;
+ scalar_t__ stream_read_lev_rotate_to (TYPE_3__*,struct lev_rotate_to*) ;
+ int stream_read_limited (TYPE_3__*,scalar_t__,int) ;
 
 int check_rotation_match (const char *src1, const char *src2) {
   stream_t A, B;

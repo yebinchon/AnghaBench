@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * ClientAuth; int /*<<< orphan*/ * ClientOption; } ;
-typedef  TYPE_1__ NAT ;
-typedef  int /*<<< orphan*/  FOLDER ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CfgCreateFolder (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  CiWriteClientAuth (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CiWriteClientOption (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * ClientAuth; int * ClientOption; } ;
+typedef TYPE_1__ NAT ;
+typedef int FOLDER ;
+
+
+ int CfgCreateFolder (int *,char*) ;
+ int CiWriteClientAuth (int ,int *) ;
+ int CiWriteClientOption (int ,int *) ;
 
 void NiWriteClientData(NAT *n, FOLDER *root)
 {
-	// Validate arguments
-	if (n == NULL || root == NULL || n->ClientOption == NULL || n->ClientAuth == NULL)
-	{
-		return;
-	}
 
-	CiWriteClientOption(CfgCreateFolder(root, "VpnClientOption"), n->ClientOption);
-	CiWriteClientAuth(CfgCreateFolder(root, "VpnClientAuth"), n->ClientAuth);
+ if (n == ((void*)0) || root == ((void*)0) || n->ClientOption == ((void*)0) || n->ClientAuth == ((void*)0))
+ {
+  return;
+ }
+
+ CiWriteClientOption(CfgCreateFolder(root, "VpnClientOption"), n->ClientOption);
+ CiWriteClientAuth(CfgCreateFolder(root, "VpnClientAuth"), n->ClientAuth);
 }

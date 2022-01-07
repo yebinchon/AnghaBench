@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ nsresult ;
-typedef  int /*<<< orphan*/  nsIDOMNodeList ;
-typedef  int /*<<< orphan*/  nsIDOMNode ;
-typedef  int /*<<< orphan*/  nsIDOMElement ;
-typedef  int /*<<< orphan*/  nsAString ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int UINT16 ;
-struct TYPE_4__ {int /*<<< orphan*/  nsdoc; } ;
-typedef  int /*<<< orphan*/  HTMLElement ;
-typedef  TYPE_1__ HTMLDocumentNode ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int DOCUMENT_POSITION_CONTAINS ; 
- int DOCUMENT_POSITION_PRECEDING ; 
- int /*<<< orphan*/  ERR (char*,scalar_t__) ; 
- int /*<<< orphan*/  E_FAIL ; 
- int /*<<< orphan*/  E_UNEXPECTED ; 
- scalar_t__ FAILED (scalar_t__) ; 
- int /*<<< orphan*/  FIXME (char*,scalar_t__) ; 
- int /*<<< orphan*/  IID_nsIDOMElement ; 
- scalar_t__ NS_FAILED (scalar_t__) ; 
- scalar_t__ NS_OK ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TRACE (char*,int) ; 
- int /*<<< orphan*/  WARN (char*) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  get_elem (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  nsAString_Finish (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsAString_InitDepend (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  nsIDOMElement_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ nsIDOMHTMLDocument_GetElementById (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- scalar_t__ nsIDOMHTMLDocument_GetElementsByName (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- scalar_t__ nsIDOMNodeList_Item (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  nsIDOMNodeList_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ nsIDOMNode_CompareDocumentPosition (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*) ; 
- scalar_t__ nsIDOMNode_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  nsIDOMNode_Release (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef scalar_t__ nsresult ;
+typedef int nsIDOMNodeList ;
+typedef int nsIDOMNode ;
+typedef int nsIDOMElement ;
+typedef int nsAString ;
+typedef int WCHAR ;
+typedef int UINT16 ;
+struct TYPE_4__ {int nsdoc; } ;
+typedef int HTMLElement ;
+typedef TYPE_1__ HTMLDocumentNode ;
+typedef int HRESULT ;
+
+
+ int DOCUMENT_POSITION_CONTAINS ;
+ int DOCUMENT_POSITION_PRECEDING ;
+ int ERR (char*,scalar_t__) ;
+ int E_FAIL ;
+ int E_UNEXPECTED ;
+ scalar_t__ FAILED (scalar_t__) ;
+ int FIXME (char*,scalar_t__) ;
+ int IID_nsIDOMElement ;
+ scalar_t__ NS_FAILED (scalar_t__) ;
+ scalar_t__ NS_OK ;
+ int S_OK ;
+ int TRACE (char*,int) ;
+ int WARN (char*) ;
+ int assert (int) ;
+ int get_elem (TYPE_1__*,int *,int **) ;
+ int nsAString_Finish (int *) ;
+ int nsAString_InitDepend (int *,int const*) ;
+ int nsIDOMElement_Release (int *) ;
+ scalar_t__ nsIDOMHTMLDocument_GetElementById (int ,int *,int **) ;
+ scalar_t__ nsIDOMHTMLDocument_GetElementsByName (int ,int *,int **) ;
+ scalar_t__ nsIDOMNodeList_Item (int *,int ,int **) ;
+ int nsIDOMNodeList_Release (int *) ;
+ scalar_t__ nsIDOMNode_CompareDocumentPosition (int *,int *,int*) ;
+ scalar_t__ nsIDOMNode_QueryInterface (int *,int *,void**) ;
+ int nsIDOMNode_Release (int *) ;
 
 HRESULT get_doc_elem_by_id(HTMLDocumentNode *doc, const WCHAR *id, HTMLElement **ret)
 {
@@ -65,7 +65,7 @@ HRESULT get_doc_elem_by_id(HTMLDocumentNode *doc, const WCHAR *id, HTMLElement *
     }
 
     nsAString_InitDepend(&id_str, id);
-    /* get element by id attribute */
+
     nsres = nsIDOMHTMLDocument_GetElementById(doc->nsdoc, &id_str, &nselem);
     if(FAILED(nsres)) {
         ERR("GetElementById failed: %08x\n", nsres);
@@ -73,7 +73,7 @@ HRESULT get_doc_elem_by_id(HTMLDocumentNode *doc, const WCHAR *id, HTMLElement *
         return E_FAIL;
     }
 
-    /* get first element by name attribute */
+
     nsres = nsIDOMHTMLDocument_GetElementsByName(doc->nsdoc, &id_str, &nsnode_list);
     nsAString_Finish(&id_str);
     if(FAILED(nsres)) {
@@ -101,7 +101,7 @@ HRESULT get_doc_elem_by_id(HTMLDocumentNode *doc, const WCHAR *id, HTMLElement *
         TRACE("CompareDocumentPosition gave: 0x%x\n", pos);
         if(!(pos & (DOCUMENT_POSITION_PRECEDING | DOCUMENT_POSITION_CONTAINS))) {
             nsIDOMElement_Release(nselem);
-            nselem = NULL;
+            nselem = ((void*)0);
         }
     }
 
@@ -114,7 +114,7 @@ HRESULT get_doc_elem_by_id(HTMLDocumentNode *doc, const WCHAR *id, HTMLElement *
     }
 
     if(!nselem) {
-        *ret = NULL;
+        *ret = ((void*)0);
         return S_OK;
     }
 

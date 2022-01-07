@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int biSize; int biWidth; int biHeight; int biPlanes; int biBitCount; int biSizeImage; int /*<<< orphan*/  biCompression; } ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int biSize; int biWidth; int biHeight; int biPlanes; int biBitCount; int biSizeImage; int biCompression; } ;
 struct TYPE_9__ {TYPE_1__ bmiHeader; } ;
 struct TYPE_8__ {int bmWidth; int bmHeight; } ;
-typedef  int /*<<< orphan*/  HDC ;
-typedef  scalar_t__ HBITMAP ;
-typedef  int COLORREF ;
-typedef  int /*<<< orphan*/  BOOL ;
-typedef  int /*<<< orphan*/  BITMAPINFO ;
-typedef  TYPE_2__ BITMAP ;
+typedef int HDC ;
+typedef scalar_t__ HBITMAP ;
+typedef int COLORREF ;
+typedef int BOOL ;
+typedef int BITMAPINFO ;
+typedef TYPE_2__ BITMAP ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BI_RGB ; 
- int /*<<< orphan*/  BitBlt (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CreateCompatibleDC (int /*<<< orphan*/ *) ; 
- scalar_t__ CreateDIBSection (int /*<<< orphan*/ ,TYPE_3__*,int /*<<< orphan*/ ,int**,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DIB_RGB_COLORS ; 
- int /*<<< orphan*/  DeleteDC (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DeleteObject (scalar_t__) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GetPixel (int /*<<< orphan*/ ,int,int) ; 
- scalar_t__ GetRValue (int /*<<< orphan*/ ) ; 
- scalar_t__ H32BppBitmap ; 
- int /*<<< orphan*/  HInst ; 
- int /*<<< orphan*/  HMemDC ; 
- int /*<<< orphan*/  IMAGE_BITMAP ; 
- scalar_t__ LoadImage (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MAKEINTRESOURCE (int) ; 
- int /*<<< orphan*/  SRCCOPY ; 
- int /*<<< orphan*/  SelectObject (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  ZeroMemory (TYPE_3__*,int) ; 
- TYPE_3__ bmpi ; 
- int* pBmpBits ; 
+
+ int BI_RGB ;
+ int BitBlt (int ,int ,int ,int,int,int ,int ,int ,int ) ;
+ int CreateCompatibleDC (int *) ;
+ scalar_t__ CreateDIBSection (int ,TYPE_3__*,int ,int**,int ,int ) ;
+ int DIB_RGB_COLORS ;
+ int DeleteDC (int ) ;
+ int DeleteObject (scalar_t__) ;
+ int FALSE ;
+ int GetPixel (int ,int,int) ;
+ scalar_t__ GetRValue (int ) ;
+ scalar_t__ H32BppBitmap ;
+ int HInst ;
+ int HMemDC ;
+ int IMAGE_BITMAP ;
+ scalar_t__ LoadImage (int ,int ,int ,int ,int ,int ) ;
+ int MAKEINTRESOURCE (int) ;
+ int SRCCOPY ;
+ int SelectObject (int ,scalar_t__) ;
+ int TRUE ;
+ int ZeroMemory (TYPE_3__*,int) ;
+ TYPE_3__ bmpi ;
+ int* pBmpBits ;
 
 BOOL ConvertBitmapTo32Bpp(HDC hDC, BITMAP *bmp)
 {
@@ -64,14 +64,14 @@ BOOL ConvertBitmapTo32Bpp(HDC hDC, BITMAP *bmp)
     SelectObject(hDC, H32BppBitmap);
     BitBlt(hDC, 0, 0, bmp->bmWidth, bmp->bmHeight, HMemDC, 0, 0, SRCCOPY);
 
-    /* load and apply alpha channel */
+
     bmpalpha = LoadImage(HInst, MAKEINTRESOURCE(2000), IMAGE_BITMAP,
                             0, 0, 0);
     if(bmpalpha)
     {
       COLORREF *col = pBmpBits;
       int x, y;
-      HDC hdcTemp = CreateCompatibleDC(NULL);
+      HDC hdcTemp = CreateCompatibleDC(((void*)0));
       if(!hdcTemp)
       {
         DeleteObject(bmpalpha);

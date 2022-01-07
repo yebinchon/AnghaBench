@@ -1,46 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ scalar_t__ YY_CURRENT_BUFFER ;
+ int * YY_CURRENT_BUFFER_LVALUE ;
+ int parser__delete_buffer (scalar_t__) ;
+ int parser_free (int *) ;
+ int parser_pop_buffer_state () ;
+ int * yy_buffer_stack ;
+ int yy_init_globals () ;
+ int * yy_start_stack ;
 
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ YY_CURRENT_BUFFER ; 
- int /*<<< orphan*/ * YY_CURRENT_BUFFER_LVALUE ; 
- int /*<<< orphan*/  parser__delete_buffer (scalar_t__) ; 
- int /*<<< orphan*/  parser_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  parser_pop_buffer_state () ; 
- int /*<<< orphan*/ * yy_buffer_stack ; 
- int /*<<< orphan*/  yy_init_globals () ; 
- int /*<<< orphan*/ * yy_start_stack ; 
-
-int parser_lex_destroy  (void)
+int parser_lex_destroy (void)
 {
-    
-    /* Pop the buffer stack, destroying each element. */
-	while(YY_CURRENT_BUFFER){
-		parser__delete_buffer(YY_CURRENT_BUFFER  );
-		YY_CURRENT_BUFFER_LVALUE = NULL;
-		parser_pop_buffer_state();
-	}
 
-	/* Destroy the stack itself. */
-	parser_free((yy_buffer_stack) );
-	(yy_buffer_stack) = NULL;
 
-    /* Destroy the start condition stack. */
-        parser_free((yy_start_stack)  );
-        (yy_start_stack) = NULL;
+ while(YY_CURRENT_BUFFER){
+  parser__delete_buffer(YY_CURRENT_BUFFER );
+  YY_CURRENT_BUFFER_LVALUE = ((void*)0);
+  parser_pop_buffer_state();
+ }
 
-    /* Reset the globals. This is important in a non-reentrant scanner so the next time
-     * parser_lex() is called, initialization will occur. */
+
+ parser_free((yy_buffer_stack) );
+ (yy_buffer_stack) = ((void*)0);
+
+
+        parser_free((yy_start_stack) );
+        (yy_start_stack) = ((void*)0);
+
+
+
     yy_init_globals( );
 
     return 0;

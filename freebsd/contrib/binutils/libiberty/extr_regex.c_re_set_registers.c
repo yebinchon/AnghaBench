@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct re_registers {unsigned int num_regs; int /*<<< orphan*/ * end; int /*<<< orphan*/ * start; } ;
-struct re_pattern_buffer {int /*<<< orphan*/  regs_allocated; } ;
-typedef  int /*<<< orphan*/  regoff_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  REGS_REALLOCATE ; 
- int /*<<< orphan*/  REGS_UNALLOCATED ; 
+
+
+
+struct re_registers {unsigned int num_regs; int * end; int * start; } ;
+struct re_pattern_buffer {int regs_allocated; } ;
+typedef int regoff_t ;
+
+
+ int REGS_REALLOCATE ;
+ int REGS_UNALLOCATED ;
 
 void
 re_set_registers (struct re_pattern_buffer *bufp,

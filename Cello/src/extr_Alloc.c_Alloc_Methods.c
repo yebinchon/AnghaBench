@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct Method {char* member_0; char* member_1; char* member_2; } ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static struct Method* Alloc_Methods(void) {
-  
+
   static struct Method methods[] = {
     {
       "$",
@@ -30,7 +30,7 @@ __attribute__((used)) static struct Method* Alloc_Methods(void) {
       "for native types:\n\n* `$I -> Int` `$F -> Float` `$S -> String`\n*"
       " `$R -> Ref` `$B -> Box`\n\n"
     }, {
-      "alloc", 
+      "alloc",
       "#define alloc_stack(T)\n"
       "var alloc(var type);\n"
       "var alloc_raw(var type);\n"
@@ -47,9 +47,9 @@ __attribute__((used)) static struct Method* Alloc_Methods(void) {
       "void dealloc_root(var self);",
       "Deallocate memory for object `self` manually. If registered with the "
       "Garbage Collector then entry will be removed. If the `raw` variation is "
-      "used memory will be deallocated without going via the Garbage Collector." 
-    }, {NULL, NULL, NULL}
+      "used memory will be deallocated without going via the Garbage Collector."
+    }, {((void*)0), ((void*)0), ((void*)0)}
   };
-  
+
   return methods;
 }

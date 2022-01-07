@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct _reent {int _errno; } ;
-struct TYPE_4__ {TYPE_1__* dev; int /*<<< orphan*/  fd; } ;
-typedef  TYPE_2__ sd_fat_file_state_t ;
-struct TYPE_3__ {int /*<<< orphan*/  pMutex; int /*<<< orphan*/  pCmd; int /*<<< orphan*/  pClient; } ;
+struct TYPE_4__ {TYPE_1__* dev; int fd; } ;
+typedef TYPE_2__ sd_fat_file_state_t ;
+struct TYPE_3__ {int pMutex; int pCmd; int pClient; } ;
 
-/* Variables and functions */
- int ENODEV ; 
- int FSFlushFile (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  OSLockMutex (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OSUnlockMutex (int /*<<< orphan*/ ) ; 
+
+ int ENODEV ;
+ int FSFlushFile (int ,int ,int ,int) ;
+ int OSLockMutex (int ) ;
+ int OSUnlockMutex (int ) ;
 
 __attribute__((used)) static int sd_fat_fsync_r (struct _reent *r, void* fd)
 {

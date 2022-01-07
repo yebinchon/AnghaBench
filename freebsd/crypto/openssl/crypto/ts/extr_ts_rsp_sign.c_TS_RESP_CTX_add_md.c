@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * mds; } ;
-typedef  TYPE_1__ TS_RESP_CTX ;
-typedef  int /*<<< orphan*/  EVP_MD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR_R_MALLOC_FAILURE ; 
- int /*<<< orphan*/  TS_F_TS_RESP_CTX_ADD_MD ; 
- int /*<<< orphan*/  TSerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * sk_EVP_MD_new_null () ; 
- int /*<<< orphan*/  sk_EVP_MD_push (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * mds; } ;
+typedef TYPE_1__ TS_RESP_CTX ;
+typedef int EVP_MD ;
+
+
+ int ERR_R_MALLOC_FAILURE ;
+ int TS_F_TS_RESP_CTX_ADD_MD ;
+ int TSerr (int ,int ) ;
+ int * sk_EVP_MD_new_null () ;
+ int sk_EVP_MD_push (int *,int const*) ;
 
 int TS_RESP_CTX_add_md(TS_RESP_CTX *ctx, const EVP_MD *md)
 {
-    if (ctx->mds == NULL
-        && (ctx->mds = sk_EVP_MD_new_null()) == NULL)
+    if (ctx->mds == ((void*)0)
+        && (ctx->mds = sk_EVP_MD_new_null()) == ((void*)0))
         goto err;
     if (!sk_EVP_MD_push(ctx->mds, md))
         goto err;

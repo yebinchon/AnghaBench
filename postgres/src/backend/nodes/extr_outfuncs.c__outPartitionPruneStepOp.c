@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  step_id; } ;
-typedef  int /*<<< orphan*/  StringInfo ;
-typedef  int /*<<< orphan*/  PartitionPruneStepOp ;
 
-/* Variables and functions */
- int /*<<< orphan*/  WRITE_BITMAPSET_FIELD (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WRITE_INT_FIELD (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WRITE_NODE_FIELD (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WRITE_NODE_TYPE (char*) ; 
- int /*<<< orphan*/  cmpfns ; 
- int /*<<< orphan*/  exprs ; 
- int /*<<< orphan*/  nullkeys ; 
- int /*<<< orphan*/  opstrategy ; 
- TYPE_1__ step ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int step_id; } ;
+typedef int StringInfo ;
+typedef int PartitionPruneStepOp ;
+
+
+ int WRITE_BITMAPSET_FIELD (int ) ;
+ int WRITE_INT_FIELD (int ) ;
+ int WRITE_NODE_FIELD (int ) ;
+ int WRITE_NODE_TYPE (char*) ;
+ int cmpfns ;
+ int exprs ;
+ int nullkeys ;
+ int opstrategy ;
+ TYPE_1__ step ;
 
 __attribute__((used)) static void
 _outPartitionPruneStepOp(StringInfo str, const PartitionPruneStepOp *node)
 {
-	WRITE_NODE_TYPE("PARTITIONPRUNESTEPOP");
+ WRITE_NODE_TYPE("PARTITIONPRUNESTEPOP");
 
-	WRITE_INT_FIELD(step.step_id);
-	WRITE_INT_FIELD(opstrategy);
-	WRITE_NODE_FIELD(exprs);
-	WRITE_NODE_FIELD(cmpfns);
-	WRITE_BITMAPSET_FIELD(nullkeys);
+ WRITE_INT_FIELD(step.step_id);
+ WRITE_INT_FIELD(opstrategy);
+ WRITE_NODE_FIELD(exprs);
+ WRITE_NODE_FIELD(cmpfns);
+ WRITE_BITMAPSET_FIELD(nullkeys);
 }

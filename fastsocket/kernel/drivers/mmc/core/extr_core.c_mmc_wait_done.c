@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct mmc_request {int /*<<< orphan*/  done_data; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  complete (int /*<<< orphan*/ ) ; 
+
+
+
+struct mmc_request {int done_data; } ;
+
+
+ int complete (int ) ;
 
 __attribute__((used)) static void mmc_wait_done(struct mmc_request *mrq)
 {
-	complete(mrq->done_data);
+ complete(mrq->done_data);
 }

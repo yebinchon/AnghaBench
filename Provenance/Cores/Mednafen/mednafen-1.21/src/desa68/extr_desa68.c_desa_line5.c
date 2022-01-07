@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int w; int opsz; } ;
 
-/* Variables and functions */
- TYPE_1__ d ; 
- int /*<<< orphan*/  desa_Dcc () ; 
- int /*<<< orphan*/  desa_Scc () ; 
- int /*<<< orphan*/  desa_addq_subq () ; 
+
+ TYPE_1__ d ;
+ int desa_Dcc () ;
+ int desa_Scc () ;
+ int desa_addq_subq () ;
 
 __attribute__((used)) static void desa_line5(void)
 {

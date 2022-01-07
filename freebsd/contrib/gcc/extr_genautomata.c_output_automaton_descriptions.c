@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_5__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* automaton_t ;
+
+
+typedef struct TYPE_7__ TYPE_5__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef TYPE_1__* automaton_t ;
 struct TYPE_7__ {TYPE_1__* first_automaton; } ;
 struct TYPE_6__ {struct TYPE_6__* next_automaton; } ;
 
-/* Variables and functions */
- TYPE_5__* description ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  output_automaton_name (int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  output_automaton_units (TYPE_1__*) ; 
- int /*<<< orphan*/  output_description_file ; 
- int /*<<< orphan*/  output_state ; 
- int /*<<< orphan*/  pass_states (TYPE_1__*,int /*<<< orphan*/ ) ; 
+
+ TYPE_5__* description ;
+ int fprintf (int ,char*) ;
+ int output_automaton_name (int ,TYPE_1__*) ;
+ int output_automaton_units (TYPE_1__*) ;
+ int output_description_file ;
+ int output_state ;
+ int pass_states (TYPE_1__*,int ) ;
 
 __attribute__((used)) static void
 output_automaton_descriptions (void)
@@ -31,7 +31,7 @@ output_automaton_descriptions (void)
   automaton_t automaton;
 
   for (automaton = description->first_automaton;
-       automaton != NULL;
+       automaton != ((void*)0);
        automaton = automaton->next_automaton)
     {
       fprintf (output_description_file, "\nAutomaton ");

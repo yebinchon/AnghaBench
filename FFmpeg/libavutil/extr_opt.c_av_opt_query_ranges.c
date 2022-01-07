@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_7__ {int version; int (* query_ranges ) (TYPE_1__**,void*,char const*,int) ;} ;
-struct TYPE_6__ {int /*<<< orphan*/  nb_components; } ;
-typedef  TYPE_1__ AVOptionRanges ;
-typedef  TYPE_3__ AVClass ;
+struct TYPE_6__ {int nb_components; } ;
+typedef TYPE_1__ AVOptionRanges ;
+typedef TYPE_3__ AVClass ;
 
-/* Variables and functions */
- int AV_OPT_MULTI_COMPONENT_RANGE ; 
- int av_opt_query_ranges_default (TYPE_1__**,void*,char const*,int) ; 
+
+ int AV_OPT_MULTI_COMPONENT_RANGE ;
+ int av_opt_query_ranges_default (TYPE_1__**,void*,char const*,int) ;
 
 int av_opt_query_ranges(AVOptionRanges **ranges_arg, void *obj, const char *key, int flags)
 {
     int ret;
     const AVClass *c = *(AVClass**)obj;
-    int (*callback)(AVOptionRanges **, void *obj, const char *key, int flags) = NULL;
+    int (*callback)(AVOptionRanges **, void *obj, const char *key, int flags) = ((void*)0);
 
     if (c->version > (52 << 16 | 11 << 8))
         callback = c->query_ranges;

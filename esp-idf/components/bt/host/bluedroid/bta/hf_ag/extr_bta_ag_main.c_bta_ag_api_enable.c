@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int /*<<< orphan*/  parse_mode; int /*<<< orphan*/  (* p_cback ) (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ;} ;
+
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int parse_mode; int (* p_cback ) (int ,int *) ;} ;
 struct TYPE_9__ {TYPE_2__ api_enable; } ;
-typedef  TYPE_3__ tBTA_AG_DATA ;
-typedef  int /*<<< orphan*/  tBTA_AG_CB ;
-struct TYPE_10__ {int /*<<< orphan*/  (* p_cback ) (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ;TYPE_1__* scb; int /*<<< orphan*/  msbc_enabled; int /*<<< orphan*/  parse_mode; } ;
-struct TYPE_7__ {int /*<<< orphan*/  negotiated_codec; } ;
+typedef TYPE_3__ tBTA_AG_DATA ;
+typedef int tBTA_AG_CB ;
+struct TYPE_10__ {int (* p_cback ) (int ,int *) ;TYPE_1__* scb; int msbc_enabled; int parse_mode; } ;
+struct TYPE_7__ {int negotiated_codec; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AG_VOICE_SETTINGS ; 
- int /*<<< orphan*/  BTA_AG_ENABLE_EVT ; 
- int /*<<< orphan*/  BTA_ID_AG ; 
- int /*<<< orphan*/  BTM_SCO_CODEC_CVSD ; 
- int /*<<< orphan*/  BTM_SCO_CODEC_MSBC ; 
- int /*<<< orphan*/  BTM_WriteVoiceSettings (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
- TYPE_4__ bta_ag_cb ; 
- int /*<<< orphan*/  bta_ag_collision_cback ; 
- int /*<<< orphan*/  bta_ag_version ; 
- int /*<<< orphan*/  bta_sys_collision_register (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (TYPE_4__*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ strcmp (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int AG_VOICE_SETTINGS ;
+ int BTA_AG_ENABLE_EVT ;
+ int BTA_ID_AG ;
+ int BTM_SCO_CODEC_CVSD ;
+ int BTM_SCO_CODEC_MSBC ;
+ int BTM_WriteVoiceSettings (int ) ;
+ int FALSE ;
+ int TRUE ;
+ TYPE_4__ bta_ag_cb ;
+ int bta_ag_collision_cback ;
+ int bta_ag_version ;
+ int bta_sys_collision_register (int ,int ) ;
+ int memset (TYPE_4__*,int ,int) ;
+ scalar_t__ strcmp (int ,char*) ;
+ int stub1 (int ,int *) ;
 
 __attribute__((used)) static void bta_ag_api_enable(tBTA_AG_DATA *p_data)
 {
-    /* initialize control block */
+
     memset(&bta_ag_cb, 0, sizeof(tBTA_AG_CB));
-    /* store callback function */
+
     bta_ag_cb.p_cback = p_data->api_enable.p_cback;
     bta_ag_cb.parse_mode = p_data->api_enable.parse_mode;
-    /* check if mSBC support enabled */
+
     if (strcmp(bta_ag_version, "1.6") == 0) {
         bta_ag_cb.msbc_enabled = TRUE;
         bta_ag_cb.scb->negotiated_codec = BTM_SCO_CODEC_MSBC;
@@ -54,9 +54,9 @@ __attribute__((used)) static void bta_ag_api_enable(tBTA_AG_DATA *p_data)
         bta_ag_cb.scb->negotiated_codec = BTM_SCO_CODEC_CVSD;
     }
 
-    /* set deault setting for eSCO/SCO */
+
     BTM_WriteVoiceSettings(AG_VOICE_SETTINGS);
     bta_sys_collision_register (BTA_ID_AG, bta_ag_collision_cback);
-    /* call callback with enable event */
-    (*bta_ag_cb.p_cback)(BTA_AG_ENABLE_EVT, NULL);
+
+    (*bta_ag_cb.p_cback)(BTA_AG_ENABLE_EVT, ((void*)0));
 }

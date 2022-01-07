@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct left_subtree_bits_array {size_t idx; size_t n; int* a; } ;
 struct bitwriter {int dummy; } ;
-typedef  int /*<<< orphan*/  pair_t ;
+typedef int pair_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  bwrite_coordinates_list (struct bitwriter*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  bwrite_gamma_code (struct bitwriter*,int) ; 
- int bwrite_get_bits_written (struct bitwriter*) ; 
- int /*<<< orphan*/  bwrite_interpolative_encode_value (struct bitwriter*,int const,int const) ; 
- int const get_doc_id (int /*<<< orphan*/ *,int*,int const) ; 
+
+ int assert (int) ;
+ int bwrite_coordinates_list (struct bitwriter*,int *,int) ;
+ int bwrite_gamma_code (struct bitwriter*,int) ;
+ int bwrite_get_bits_written (struct bitwriter*) ;
+ int bwrite_interpolative_encode_value (struct bitwriter*,int const,int const) ;
+ int const get_doc_id (int *,int*,int const) ;
 
 __attribute__((used)) static void bwrite_ylist_sublist_first_pass (struct bitwriter *bw, pair_t *P, int *O, int u, int v, int left_subtree_size_threshold, struct left_subtree_bits_array *p) {
   const int sz = v - u;
   if (sz <= 1) { return; }
-  const int  m = (u + v) >> 1,
+  const int m = (u + v) >> 1,
             hi = get_doc_id (P, O, v) - (v - m),
             lo = get_doc_id (P, O, u) + (m - u),
              a = get_doc_id (P, O, m) - lo,

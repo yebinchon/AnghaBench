@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  hnd; } ;
-typedef  TYPE_1__ winraw_mouse_t ;
-typedef  int /*<<< orphan*/  name ;
-typedef  scalar_t__ UINT ;
 
-/* Variables and functions */
- scalar_t__ GetRawInputDeviceInfoA (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,scalar_t__*) ; 
- int /*<<< orphan*/  RARCH_LOG (char*,unsigned int,char*) ; 
- int /*<<< orphan*/  RIDI_DEVICENAME ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int hnd; } ;
+typedef TYPE_1__ winraw_mouse_t ;
+typedef int name ;
+typedef scalar_t__ UINT ;
+
+
+ scalar_t__ GetRawInputDeviceInfoA (int ,int ,char*,scalar_t__*) ;
+ int RARCH_LOG (char*,unsigned int,char*) ;
+ int RIDI_DEVICENAME ;
 
 __attribute__((used)) static void winraw_log_mice_info(winraw_mouse_t *mice, unsigned mouse_cnt)
 {

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct vmbus_channel {int /*<<< orphan*/  sig_events; } ;
-typedef  int /*<<< orphan*/  ssize_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  sprintf (char*,char*,int /*<<< orphan*/ ) ; 
+
+
+
+struct vmbus_channel {int sig_events; } ;
+typedef int ssize_t ;
+
+
+ int sprintf (char*,char*,int ) ;
 
 __attribute__((used)) static ssize_t channel_events_show(struct vmbus_channel *channel, char *buf)
 {
-	return sprintf(buf, "%llu\n", channel->sig_events);
+ return sprintf(buf, "%llu\n", channel->sig_events);
 }

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/ * next_line; } ;
 
-/* Variables and functions */
- TYPE_1__* curr_line ; 
- int /*<<< orphan*/  find_pos () ; 
- int /*<<< orphan*/  nextline () ; 
 
-void 
-down()					/* move down one line		*/
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int * next_line; } ;
+
+
+ TYPE_1__* curr_line ;
+ int find_pos () ;
+ int nextline () ;
+
+void
+down()
 {
-	if (curr_line->next_line != NULL)
-	{
-		nextline();
-		find_pos();
-	}
+ if (curr_line->next_line != ((void*)0))
+ {
+  nextline();
+  find_pos();
+ }
 }

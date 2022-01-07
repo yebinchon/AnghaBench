@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * pe_dd; } ;
-typedef  int /*<<< orphan*/  PE_DataDir ;
-typedef  TYPE_1__ PE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ENOENT ; 
- int /*<<< orphan*/  errno ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * pe_dd; } ;
+typedef int PE_DataDir ;
+typedef TYPE_1__ PE ;
+
+
+ int ENOENT ;
+ int errno ;
 
 PE_DataDir *
 pe_data_dir(PE *pe)
 {
 
-	if (pe->pe_dd == NULL) {
-		errno = ENOENT;
-		return (NULL);
-	}
+ if (pe->pe_dd == ((void*)0)) {
+  errno = ENOENT;
+  return (((void*)0));
+ }
 
-	return (pe->pe_dd);
+ return (pe->pe_dd);
 }

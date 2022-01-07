@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ time_t ;
-struct timeout {scalar_t__ when; struct timeout* next; int /*<<< orphan*/  what; int /*<<< orphan*/  (* func ) (int /*<<< orphan*/ ) ;} ;
-struct protocol {int /*<<< orphan*/  (* handler ) (struct protocol*) ;struct interface_info* local; struct protocol* next; } ;
-struct interface_info {int /*<<< orphan*/  dead; } ;
-typedef  scalar_t__ HANDLE ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * AdapterStateChangedEvent ; 
- int /*<<< orphan*/  ApiLock () ; 
- int /*<<< orphan*/  ApiUnlock () ; 
- int /*<<< orphan*/  CloseHandle (scalar_t__) ; 
- int /*<<< orphan*/  DH_DbgPrint (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ DhcpSocket ; 
- int /*<<< orphan*/  FALSE ; 
- int FD_CLOSE ; 
- int FD_READ ; 
- int INFINITE ; 
- int INT_MAX ; 
- scalar_t__ INVALID_SOCKET ; 
- int /*<<< orphan*/  MID_TRACE ; 
- int NO_ERROR ; 
- scalar_t__ StartAdapterDiscovery () ; 
- int WAIT_OBJECT_0 ; 
- int /*<<< orphan*/  WSACloseEvent (scalar_t__) ; 
- scalar_t__ WSACreateEvent () ; 
- int WSAEventSelect (scalar_t__,scalar_t__,int) ; 
- int /*<<< orphan*/  WSAResetEvent (scalar_t__) ; 
- scalar_t__ WSA_INVALID_EVENT ; 
- int WaitForMultipleObjects (int,scalar_t__*,int /*<<< orphan*/ ,int) ; 
- struct timeout* free_timeouts ; 
- int /*<<< orphan*/  got_one (struct protocol*) ; 
- struct protocol* protocols ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub2 (struct protocol*) ; 
- int /*<<< orphan*/  time (scalar_t__*) ; 
- struct timeout* timeouts ; 
+
+
+
+typedef scalar_t__ time_t ;
+struct timeout {scalar_t__ when; struct timeout* next; int what; int (* func ) (int ) ;} ;
+struct protocol {int (* handler ) (struct protocol*) ;struct interface_info* local; struct protocol* next; } ;
+struct interface_info {int dead; } ;
+typedef scalar_t__ HANDLE ;
+
+
+ int * AdapterStateChangedEvent ;
+ int ApiLock () ;
+ int ApiUnlock () ;
+ int CloseHandle (scalar_t__) ;
+ int DH_DbgPrint (int ,char*) ;
+ scalar_t__ DhcpSocket ;
+ int FALSE ;
+ int FD_CLOSE ;
+ int FD_READ ;
+ int INFINITE ;
+ int INT_MAX ;
+ scalar_t__ INVALID_SOCKET ;
+ int MID_TRACE ;
+ int NO_ERROR ;
+ scalar_t__ StartAdapterDiscovery () ;
+ int WAIT_OBJECT_0 ;
+ int WSACloseEvent (scalar_t__) ;
+ scalar_t__ WSACreateEvent () ;
+ int WSAEventSelect (scalar_t__,scalar_t__,int) ;
+ int WSAResetEvent (scalar_t__) ;
+ scalar_t__ WSA_INVALID_EVENT ;
+ int WaitForMultipleObjects (int,scalar_t__*,int ,int) ;
+ struct timeout* free_timeouts ;
+ int got_one (struct protocol*) ;
+ struct protocol* protocols ;
+ int stub1 (int ) ;
+ int stub2 (struct protocol*) ;
+ int time (scalar_t__*) ;
+ struct timeout* timeouts ;
 
 void
 dispatch(HANDLE hStopEvent)
@@ -68,10 +68,10 @@ dispatch(HANDLE hStopEvent)
     ApiLock();
 
     do {
-        /*
-         * Call any expired timeouts, and then if there's still
-         * a timeout registered, time out the select call then.
-         */
+
+
+
+
         time(&cur_time);
 
         if (timeouts)
@@ -87,12 +87,12 @@ dispatch(HANDLE hStopEvent)
                 continue;
             }
 
-            /*
-             * Figure timeout in milliseconds, and check for
-             * potential overflow, so we can cram into an
-             * int for poll, while not polling with a
-             * negative timeout and blocking indefinitely.
-             */
+
+
+
+
+
+
             howlong = timeouts->when - cur_time;
             if (howlong > INT_MAX / 1000)
                 howlong = INT_MAX / 1000;
@@ -136,24 +136,24 @@ dispatch(HANDLE hStopEvent)
         ApiLock();
         if (count == WAIT_OBJECT_0)
         {
-            /* Adapter state change */
+
             continue;
         }
         else if (count == WAIT_OBJECT_0 + 1)
         {
-            /* Stop event signalled */
+
             break;
         }
         else if (count == WAIT_OBJECT_0 + 2)
         {
-            /* Packet received */
 
-            /* WSA events are manual reset events */
+
+
             WSAResetEvent(Events[2]);
         }
         else
         {
-            /* Timeout */
+
             continue;
         }
 
@@ -168,7 +168,7 @@ dispatch(HANDLE hStopEvent)
         }
     } while (1);
 
-    AdapterStateChangedEvent = NULL;
+    AdapterStateChangedEvent = ((void*)0);
     CloseHandle(Events[0]);
     CloseHandle(Events[1]);
     WSACloseEvent(Events[2]);

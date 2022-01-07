@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-struct TYPE_2__ {int* buf_ptr; int /*<<< orphan*/  line_num; } ;
 
-/* Variables and functions */
- int CH_EOF ; 
- int /*<<< orphan*/  PEEKC_EOB (int,int*) ; 
- TYPE_1__* file ; 
- int handle_eob () ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_2__ {int* buf_ptr; int line_num; } ;
+
+
+ int CH_EOF ;
+ int PEEKC_EOB (int,int*) ;
+ TYPE_1__* file ;
+ int handle_eob () ;
 
 __attribute__((used)) static uint8_t *parse_line_comment(uint8_t *p)
 {
-	int c;
+ int c;
 
-	p++;
-	for (;;) {
-		c = *p;
+ p++;
+ for (;;) {
+  c = *p;
 redo:
-		if (c == '\n' || c == CH_EOF) {
-			break;
-		} else if (c == '\\') {
-			file->buf_ptr = p;
-			c = handle_eob ();
-			p = file->buf_ptr;
-			if (c == '\\') {
-				PEEKC_EOB (c, p);
-				if (c == '\n') {
-					file->line_num++;
-					PEEKC_EOB (c, p);
-				} else if (c == '\r') {
-					PEEKC_EOB (c, p);
-					if (c == '\n') {
-						file->line_num++;
-						PEEKC_EOB (c, p);
-					}
-				}
-			} else {
-				goto redo;
-			}
-		} else {
-			p++;
-		}
-	}
-	return p;
+  if (c == '\n' || c == CH_EOF) {
+   break;
+  } else if (c == '\\') {
+   file->buf_ptr = p;
+   c = handle_eob ();
+   p = file->buf_ptr;
+   if (c == '\\') {
+    PEEKC_EOB (c, p);
+    if (c == '\n') {
+     file->line_num++;
+     PEEKC_EOB (c, p);
+    } else if (c == '\r') {
+     PEEKC_EOB (c, p);
+     if (c == '\n') {
+      file->line_num++;
+      PEEKC_EOB (c, p);
+     }
+    }
+   } else {
+    goto redo;
+   }
+  } else {
+   p++;
+  }
+ }
+ return p;
 }

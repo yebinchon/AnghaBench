@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ppc_elf_link_hash_table {int is_vxworks; int /*<<< orphan*/  plt_initial_entry_size; void* plt_slot_size; void* plt_entry_size; int /*<<< orphan*/  plt_type; } ;
+
+
+
+
+struct ppc_elf_link_hash_table {int is_vxworks; int plt_initial_entry_size; void* plt_slot_size; void* plt_entry_size; int plt_type; } ;
 struct bfd_link_hash_table {int dummy; } ;
-typedef  int /*<<< orphan*/  bfd ;
+typedef int bfd ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PLT_VXWORKS ; 
- void* VXWORKS_PLT_ENTRY_SIZE ; 
- int /*<<< orphan*/  VXWORKS_PLT_INITIAL_ENTRY_SIZE ; 
- struct bfd_link_hash_table* ppc_elf_link_hash_table_create (int /*<<< orphan*/ *) ; 
+
+ int PLT_VXWORKS ;
+ void* VXWORKS_PLT_ENTRY_SIZE ;
+ int VXWORKS_PLT_INITIAL_ENTRY_SIZE ;
+ struct bfd_link_hash_table* ppc_elf_link_hash_table_create (int *) ;
 
 __attribute__((used)) static struct bfd_link_hash_table *
 ppc_elf_vxworks_link_hash_table_create (bfd *abfd)

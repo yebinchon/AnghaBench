@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct connection {int /*<<< orphan*/  Out; } ;
-struct TYPE_2__ {int /*<<< orphan*/  out_packet_num; } ;
 
-/* Variables and functions */
- unsigned int MAX_PACKET_PAYLOAD ; 
- TYPE_1__* RPCC_DATA (struct connection*) ; 
- int /*<<< orphan*/  assert (int) ; 
- int compute_crc32 (int*,int) ; 
- int /*<<< orphan*/  flush_later (struct connection*) ; 
- int /*<<< orphan*/  memset (char*,int /*<<< orphan*/ ,int) ; 
- int* send_packet ; 
- int write_out (int /*<<< orphan*/ *,int*,int) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct connection {int Out; } ;
+struct TYPE_2__ {int out_packet_num; } ;
+
+
+ unsigned int MAX_PACKET_PAYLOAD ;
+ TYPE_1__* RPCC_DATA (struct connection*) ;
+ int assert (int) ;
+ int compute_crc32 (int*,int) ;
+ int flush_later (struct connection*) ;
+ int memset (char*,int ,int) ;
+ int* send_packet ;
+ int write_out (int *,int*,int) ;
 
 void push_packet (struct connection *c, int packet_bytes) {
   assert ((unsigned) packet_bytes <= MAX_PACKET_PAYLOAD);
@@ -35,5 +35,5 @@ void push_packet (struct connection *c, int packet_bytes) {
   send_packet[plen - 1] = compute_crc32 (send_packet, plen * 4 - 4);
   assert (write_out (&c->Out, send_packet, plen * 4) == plen * 4);
   flush_later (c);
-  // RPCC_FUNC(c)->flush_packet(c);
+
 }

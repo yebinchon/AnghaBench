@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  sval; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int sval; } ;
 struct TYPE_6__ {scalar_t__ k; TYPE_1__ u; } ;
-typedef  int /*<<< orphan*/  FuncState ;
-typedef  TYPE_2__ ExpDesc ;
-typedef  int /*<<< orphan*/  BCReg ;
+typedef int FuncState ;
+typedef TYPE_2__ ExpDesc ;
+typedef int BCReg ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LJ_TSTR ; 
- scalar_t__ VGLOBAL ; 
- int /*<<< orphan*/  const_gc (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ expr_isstrk (TYPE_2__*) ; 
- int /*<<< orphan*/  lua_assert (int) ; 
- int /*<<< orphan*/  obj2gco (int /*<<< orphan*/ ) ; 
+
+ int LJ_TSTR ;
+ scalar_t__ VGLOBAL ;
+ int const_gc (int *,int ,int ) ;
+ scalar_t__ expr_isstrk (TYPE_2__*) ;
+ int lua_assert (int) ;
+ int obj2gco (int ) ;
 
 __attribute__((used)) static BCReg const_str(FuncState *fs, ExpDesc *e)
 {

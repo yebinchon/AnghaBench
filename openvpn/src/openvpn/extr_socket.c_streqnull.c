@@ -1,29 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int streq (char const*,char const*) ; 
+ int streq (char const*,char const*) ;
 
 __attribute__((used)) static inline bool
 streqnull(const char *a, const char *b)
 {
-    if (a == NULL && b == NULL)
+    if (a == ((void*)0) && b == ((void*)0))
     {
-        return true;
+        return 1;
     }
-    else if (a == NULL || b == NULL)
+    else if (a == ((void*)0) || b == ((void*)0))
     {
-        return false;
+        return 0;
     }
     else
     {

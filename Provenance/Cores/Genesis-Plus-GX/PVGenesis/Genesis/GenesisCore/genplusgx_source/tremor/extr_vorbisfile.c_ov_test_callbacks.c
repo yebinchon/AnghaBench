@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ov_callbacks ;
-typedef  int /*<<< orphan*/  OggVorbis_File ;
 
-/* Variables and functions */
- int _ov_open1 (void*,int /*<<< orphan*/ *,char*,long,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int ov_callbacks ;
+typedef int OggVorbis_File ;
+
+
+ int _ov_open1 (void*,int *,char*,long,int ) ;
 
 int ov_test_callbacks(void *f,OggVorbis_File *vf,char *initial,long ibytes,
     ov_callbacks callbacks)

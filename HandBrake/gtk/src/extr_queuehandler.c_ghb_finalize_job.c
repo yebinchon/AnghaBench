@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  hb_dict_t ;
-typedef  int /*<<< orphan*/  GhbValue ;
 
-/* Variables and functions */
- int HB_FILTER_CROP_SCALE ; 
- int /*<<< orphan*/ * ghb_dict_get (int /*<<< orphan*/ *,char*) ; 
- int ghb_dict_get_int (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/ * ghb_dict_new () ; 
- int /*<<< orphan*/  ghb_dict_set (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ghb_dict_set_int (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/ * ghb_get_job_filter_list (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * ghb_settings_to_preset (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ghb_value_free (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  hb_add_filter2 (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  hb_preset_apply_filters (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  hb_preset_apply_mux (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  hb_preset_apply_video (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int hb_dict_t ;
+typedef int GhbValue ;
+
+
+ int HB_FILTER_CROP_SCALE ;
+ int * ghb_dict_get (int *,char*) ;
+ int ghb_dict_get_int (int *,char*) ;
+ int * ghb_dict_new () ;
+ int ghb_dict_set (int *,char*,int *) ;
+ int ghb_dict_set_int (int *,char*,int) ;
+ int * ghb_get_job_filter_list (int *) ;
+ int * ghb_settings_to_preset (int *) ;
+ int ghb_value_free (int **) ;
+ int hb_add_filter2 (int *,int *) ;
+ int hb_preset_apply_filters (int *,int *) ;
+ int hb_preset_apply_mux (int *,int *) ;
+ int hb_preset_apply_video (int *,int *) ;
 
 void ghb_finalize_job(GhbValue *settings)
 {
     GhbValue *preset, *job;
 
     preset = ghb_settings_to_preset(settings);
-    job    = ghb_dict_get(settings, "Job");
+    job = ghb_dict_get(settings, "Job");
 
-    // Apply selected preset settings
+
     hb_preset_apply_mux(preset, job);
     hb_preset_apply_video(preset, job);
     hb_preset_apply_filters(preset, job);
 
-    // Add scale filter since the above does not
+
     GhbValue *filter_list, *filter_dict;
     int width, height, crop[4];
 

@@ -1,80 +1,80 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct usb_ether {int /*<<< orphan*/  ue_tq; int /*<<< orphan*/  ue_unit; int /*<<< orphan*/  ue_rxq; int /*<<< orphan*/  ue_sysctl_ctx; int /*<<< orphan*/ * ue_miibus; int /*<<< orphan*/  ue_dev; int /*<<< orphan*/  ue_watchdog; struct ifnet* ue_ifp; } ;
-struct ifnet {int /*<<< orphan*/  if_drv_flags; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Giant ; 
- int /*<<< orphan*/  IFF_DRV_RUNNING ; 
- int /*<<< orphan*/  UE_LOCK (struct usb_ether*) ; 
- int /*<<< orphan*/  UE_UNLOCK (struct usb_ether*) ; 
- int /*<<< orphan*/  device_delete_child (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ether_ifdetach (struct ifnet*) ; 
- int /*<<< orphan*/  free_unr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  if_free (struct ifnet*) ; 
- int /*<<< orphan*/  mbufq_drain (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mtx_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mtx_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sysctl_ctx_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ueunit ; 
- int /*<<< orphan*/  usb_callout_drain (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  usb_proc_drain (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  usb_proc_free (int /*<<< orphan*/ *) ; 
+
+
+
+struct usb_ether {int ue_tq; int ue_unit; int ue_rxq; int ue_sysctl_ctx; int * ue_miibus; int ue_dev; int ue_watchdog; struct ifnet* ue_ifp; } ;
+struct ifnet {int if_drv_flags; } ;
+
+
+ int Giant ;
+ int IFF_DRV_RUNNING ;
+ int UE_LOCK (struct usb_ether*) ;
+ int UE_UNLOCK (struct usb_ether*) ;
+ int device_delete_child (int ,int *) ;
+ int ether_ifdetach (struct ifnet*) ;
+ int free_unr (int ,int ) ;
+ int if_free (struct ifnet*) ;
+ int mbufq_drain (int *) ;
+ int mtx_lock (int *) ;
+ int mtx_unlock (int *) ;
+ int sysctl_ctx_free (int *) ;
+ int ueunit ;
+ int usb_callout_drain (int *) ;
+ int usb_proc_drain (int *) ;
+ int usb_proc_free (int *) ;
 
 void
 uether_ifdetach(struct usb_ether *ue)
 {
-	struct ifnet *ifp;
+ struct ifnet *ifp;
 
-	/* wait for any post attach or other command to complete */
-	usb_proc_drain(&ue->ue_tq);
 
-	/* read "ifnet" pointer after taskqueue drain */
-	ifp = ue->ue_ifp;
+ usb_proc_drain(&ue->ue_tq);
 
-	if (ifp != NULL) {
 
-		/* we are not running any more */
-		UE_LOCK(ue);
-		ifp->if_drv_flags &= ~IFF_DRV_RUNNING;
-		UE_UNLOCK(ue);
+ ifp = ue->ue_ifp;
 
-		/* drain any callouts */
-		usb_callout_drain(&ue->ue_watchdog);
+ if (ifp != ((void*)0)) {
 
-		/* detach miibus */
-		if (ue->ue_miibus != NULL) {
-			mtx_lock(&Giant);	/* device_xxx() depends on this */
-			device_delete_child(ue->ue_dev, ue->ue_miibus);
-			mtx_unlock(&Giant);
-		}
 
-		/* detach ethernet */
-		ether_ifdetach(ifp);
+  UE_LOCK(ue);
+  ifp->if_drv_flags &= ~IFF_DRV_RUNNING;
+  UE_UNLOCK(ue);
 
-		/* free interface instance */
-		if_free(ifp);
 
-		/* free sysctl */
-		sysctl_ctx_free(&ue->ue_sysctl_ctx);
+  usb_callout_drain(&ue->ue_watchdog);
 
-		/* drain mbuf queue */
-		mbufq_drain(&ue->ue_rxq);
 
-		/* free unit */
-		free_unr(ueunit, ue->ue_unit);
-	}
+  if (ue->ue_miibus != ((void*)0)) {
+   mtx_lock(&Giant);
+   device_delete_child(ue->ue_dev, ue->ue_miibus);
+   mtx_unlock(&Giant);
+  }
 
-	/* free taskqueue, if any */
-	usb_proc_free(&ue->ue_tq);
+
+  ether_ifdetach(ifp);
+
+
+  if_free(ifp);
+
+
+  sysctl_ctx_free(&ue->ue_sysctl_ctx);
+
+
+  mbufq_drain(&ue->ue_rxq);
+
+
+  free_unr(ueunit, ue->ue_unit);
+ }
+
+
+ usb_proc_free(&ue->ue_tq);
 }

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int stb_uint16 ;
-typedef  int stb_uint ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int stb_uint16 ;
+typedef int stb_uint ;
 struct TYPE_3__ {int multiplicand; int b_mask; int table_mask; } ;
-typedef  TYPE_1__ stb_perfect ;
+typedef TYPE_1__ stb_perfect ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static void stb__perfect_prehash(stb_perfect *p, stb_uint x, stb_uint16 *a, stb_uint16 *b)
 {

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VOID ;
-typedef  int /*<<< orphan*/  PFAT_BOOTSECTOR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BootSectorMagic ; 
- int /*<<< orphan*/  BytesPerSector ; 
- int /*<<< orphan*/  HiddenSectors ; 
- int /*<<< orphan*/  NumberOfHeads ; 
- int /*<<< orphan*/  ReservedSectors ; 
- int /*<<< orphan*/  RootDirEntries ; 
- int /*<<< orphan*/  SD (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SW (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SectorsPerFat ; 
- int /*<<< orphan*/  SectorsPerTrack ; 
- int /*<<< orphan*/  TotalSectors ; 
- int /*<<< orphan*/  TotalSectorsBig ; 
- int /*<<< orphan*/  VolumeSerialNumber ; 
+
+
+
+typedef int VOID ;
+typedef int PFAT_BOOTSECTOR ;
+
+
+ int BootSectorMagic ;
+ int BytesPerSector ;
+ int HiddenSectors ;
+ int NumberOfHeads ;
+ int ReservedSectors ;
+ int RootDirEntries ;
+ int SD (int ,int ) ;
+ int SW (int ,int ) ;
+ int SectorsPerFat ;
+ int SectorsPerTrack ;
+ int TotalSectors ;
+ int TotalSectorsBig ;
+ int VolumeSerialNumber ;
 
 VOID FatSwapFatBootSector(PFAT_BOOTSECTOR Obj)
 {

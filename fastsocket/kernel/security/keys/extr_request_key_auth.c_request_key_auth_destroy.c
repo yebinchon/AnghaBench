@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct request_key_auth {struct request_key_auth* callout_info; int /*<<< orphan*/  dest_keyring; int /*<<< orphan*/  target_key; int /*<<< orphan*/ * cred; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct request_key_auth {struct request_key_auth* callout_info; int dest_keyring; int target_key; int * cred; } ;
 struct TYPE_2__ {struct request_key_auth* data; } ;
-struct key {int /*<<< orphan*/  serial; TYPE_1__ payload; } ;
+struct key {int serial; TYPE_1__ payload; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  kenter (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  key_put (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kfree (struct request_key_auth*) ; 
- int /*<<< orphan*/  put_cred (int /*<<< orphan*/ *) ; 
+
+ int kenter (char*,int ) ;
+ int key_put (int ) ;
+ int kfree (struct request_key_auth*) ;
+ int put_cred (int *) ;
 
 __attribute__((used)) static void request_key_auth_destroy(struct key *key)
 {
-	struct request_key_auth *rka = key->payload.data;
+ struct request_key_auth *rka = key->payload.data;
 
-	kenter("{%d}", key->serial);
+ kenter("{%d}", key->serial);
 
-	if (rka->cred) {
-		put_cred(rka->cred);
-		rka->cred = NULL;
-	}
+ if (rka->cred) {
+  put_cred(rka->cred);
+  rka->cred = ((void*)0);
+ }
 
-	key_put(rka->target_key);
-	key_put(rka->dest_keyring);
-	kfree(rka->callout_info);
-	kfree(rka);
+ key_put(rka->target_key);
+ key_put(rka->dest_keyring);
+ kfree(rka->callout_info);
+ kfree(rka);
 }

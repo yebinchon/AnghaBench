@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  RC5_32_KEY ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RC5_32_decrypt (unsigned long*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RC5_32_encrypt (unsigned long*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  c2l (unsigned char const*,unsigned long) ; 
- int /*<<< orphan*/  c2ln (unsigned char const*,unsigned long,unsigned long,long) ; 
- int /*<<< orphan*/  l2c (unsigned long,unsigned char*) ; 
- int /*<<< orphan*/  l2cn (unsigned long,unsigned long,unsigned char*,long) ; 
+
+
+
+typedef int RC5_32_KEY ;
+
+
+ int RC5_32_decrypt (unsigned long*,int *) ;
+ int RC5_32_encrypt (unsigned long*,int *) ;
+ int c2l (unsigned char const*,unsigned long) ;
+ int c2ln (unsigned char const*,unsigned long,unsigned long,long) ;
+ int l2c (unsigned long,unsigned char*) ;
+ int l2cn (unsigned long,unsigned long,unsigned char*,long) ;
 
 void RC5_32_cbc_encrypt(const unsigned char *in, unsigned char *out,
                         long length, RC5_32_KEY *ks, unsigned char *iv,

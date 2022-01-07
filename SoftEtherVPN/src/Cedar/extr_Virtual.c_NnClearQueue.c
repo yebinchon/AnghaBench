@@ -1,65 +1,65 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  RecvQueue; int /*<<< orphan*/  SendQueue; } ;
-typedef  int /*<<< orphan*/  PKT ;
-typedef  TYPE_1__ NATIVE_NAT ;
-typedef  int /*<<< orphan*/  BLOCK ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FreeBlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FreePacketWithData (int /*<<< orphan*/ *) ; 
- void* GetNext (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LockQueue (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  UnlockQueue (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int RecvQueue; int SendQueue; } ;
+typedef int PKT ;
+typedef TYPE_1__ NATIVE_NAT ;
+typedef int BLOCK ;
+
+
+ int FreeBlock (int *) ;
+ int FreePacketWithData (int *) ;
+ void* GetNext (int ) ;
+ int LockQueue (int ) ;
+ int UnlockQueue (int ) ;
 
 void NnClearQueue(NATIVE_NAT *t)
 {
-	// Validate arguments
-	if (t == NULL)
-	{
-		return;
-	}
 
-	LockQueue(t->SendQueue);
-	{
-		while (true)
-		{
-			BLOCK *b = GetNext(t->SendQueue);
+ if (t == ((void*)0))
+ {
+  return;
+ }
 
-			if (b == NULL)
-			{
-				break;
-			}
+ LockQueue(t->SendQueue);
+ {
+  while (1)
+  {
+   BLOCK *b = GetNext(t->SendQueue);
 
-			FreeBlock(b);
-		}
-	}
-	UnlockQueue(t->SendQueue);
+   if (b == ((void*)0))
+   {
+    break;
+   }
 
-	LockQueue(t->RecvQueue);
-	{
-		while (true)
-		{
-			PKT *p = GetNext(t->RecvQueue);
+   FreeBlock(b);
+  }
+ }
+ UnlockQueue(t->SendQueue);
 
-			if (p == NULL)
-			{
-				break;
-			}
+ LockQueue(t->RecvQueue);
+ {
+  while (1)
+  {
+   PKT *p = GetNext(t->RecvQueue);
 
-			FreePacketWithData(p);
-		}
-	}
-	UnlockQueue(t->RecvQueue);
+   if (p == ((void*)0))
+   {
+    break;
+   }
+
+   FreePacketWithData(p);
+  }
+ }
+ UnlockQueue(t->RecvQueue);
 }

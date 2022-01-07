@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  unsigned char* uint8_t ;
-struct tlsa_field {unsigned char** member_0; char* member_1; scalar_t__ (* parser ) (char const*,scalar_t__) ;int /*<<< orphan*/  name; scalar_t__ var; int /*<<< orphan*/  const member_2; } ;
-typedef  scalar_t__ ossl_ssize_t ;
-typedef  int /*<<< orphan*/  SSL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OPENSSL_free (unsigned char* const) ; 
- int SSL_dane_tlsa_add (int /*<<< orphan*/ *,unsigned char* const,unsigned char* const,unsigned char* const,unsigned char* const,scalar_t__) ; 
- int /*<<< orphan*/  TEST_info (char*,char const*,...) ; 
-#define  checked_uint8 129 
-#define  hexdecode 128 
- scalar_t__ stub1 (char const*,scalar_t__) ; 
+
+
+
+typedef unsigned char* uint8_t ;
+struct tlsa_field {unsigned char** member_0; char* member_1; scalar_t__ (* parser ) (char const*,scalar_t__) ;int name; scalar_t__ var; int const member_2; } ;
+typedef scalar_t__ ossl_ssize_t ;
+typedef int SSL ;
+
+
+ int OPENSSL_free (unsigned char* const) ;
+ int SSL_dane_tlsa_add (int *,unsigned char* const,unsigned char* const,unsigned char* const,unsigned char* const,scalar_t__) ;
+ int TEST_info (char*,char const*,...) ;
+
+
+ scalar_t__ stub1 (char const*,scalar_t__) ;
 
 __attribute__((used)) static int tlsa_import_rr(SSL *ssl, const char *rrdata)
 {
     static uint8_t usage;
     static uint8_t selector;
     static uint8_t mtype;
-    static unsigned char *data = NULL;
+    static unsigned char *data = ((void*)0);
     static struct tlsa_field tlsa_fields[] = {
-        { &usage, "usage", checked_uint8 },
-        { &selector, "selector", checked_uint8 },
-        { &mtype, "mtype", checked_uint8 },
-        { &data, "data", hexdecode },
-        { NULL, }
+        { &usage, "usage", 129 },
+        { &selector, "selector", 129 },
+        { &mtype, "mtype", 129 },
+        { &data, "data", 128 },
+        { ((void*)0), }
     };
     int ret;
     struct tlsa_field *f;

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct in_ev {scalar_t__ bev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  bufferevent_write (scalar_t__,char*,int) ; 
- char* socket_answer ; 
- int socket_answer_pos ; 
- int /*<<< orphan*/  sprintf (char*,char*,int) ; 
- int strlen (char*) ; 
+
+ int bufferevent_write (scalar_t__,char*,int) ;
+ char* socket_answer ;
+ int socket_answer_pos ;
+ int sprintf (char*,char*,int) ;
+ int strlen (char*) ;
 
 void socket_answer_end (struct in_ev *ev) {
   if (ev->bev) {

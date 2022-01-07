@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct timeval {int tv_sec; scalar_t__ tv_usec; } ;
-typedef  int /*<<< orphan*/  fd_set ;
+typedef int fd_set ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FD_SET (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FD_ZERO (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fileno (int /*<<< orphan*/ ) ; 
- int getchar () ; 
- int select (int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,struct timeval*) ; 
- int /*<<< orphan*/  stdin ; 
+
+ int FD_SET (int ,int *) ;
+ int FD_ZERO (int *) ;
+ int fileno (int ) ;
+ int getchar () ;
+ int select (int,int *,int *,int *,struct timeval*) ;
+ int stdin ;
 
 int tty_getchar()
 {
@@ -31,12 +31,12 @@ int tty_getchar()
 
   struct timeval tv;
 
-  tv.tv_sec  = 1;
+  tv.tv_sec = 1;
   tv.tv_usec = 0;
 
-  int retval = select (1, &rfds, NULL, NULL, &tv);
+  int retval = select (1, &rfds, ((void*)0), ((void*)0), &tv);
 
-  if (retval ==  0) return  0;
+  if (retval == 0) return 0;
   if (retval == -1) return -1;
 
   return getchar();

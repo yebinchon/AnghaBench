@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  raw_cparameters_t ;
-typedef  int /*<<< orphan*/  opj_image_t ;
-typedef  int /*<<< orphan*/  opj_cparameters_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OPJ_TRUE ; 
- int /*<<< orphan*/ * rawtoimage_common (char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int raw_cparameters_t ;
+typedef int opj_image_t ;
+typedef int opj_cparameters_t ;
+
+
+ int OPJ_TRUE ;
+ int * rawtoimage_common (char const*,int *,int *,int ) ;
 
 opj_image_t* rawtoimage(const char *filename, opj_cparameters_t *parameters,
                         raw_cparameters_t *raw_cp)

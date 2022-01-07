@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_client_ctx_t ;
-typedef  int /*<<< orphan*/  svn_client__pathrev_t ;
-struct TYPE_3__ {int /*<<< orphan*/  target_ra_session; int /*<<< orphan*/  source; int /*<<< orphan*/  target_branch; int /*<<< orphan*/  yca; } ;
-typedef  TYPE_1__ source_and_target_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  find_last_merged_location (int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int svn_error_t ;
+typedef int svn_client_ctx_t ;
+typedef int svn_client__pathrev_t ;
+struct TYPE_3__ {int target_ra_session; int source; int target_branch; int yca; } ;
+typedef TYPE_1__ source_and_target_t ;
+typedef int apr_pool_t ;
+
+
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int find_last_merged_location (int **,int ,int *,int ,int *,int ,int *,int *) ;
 
 __attribute__((used)) static svn_error_t *
 find_base_on_target(svn_client__pathrev_t **base_p,

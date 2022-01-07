@@ -1,36 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- unsigned int VARIANT_NO_PADDING_MASK ; 
- unsigned int VARIANT_URLSAFE_MASK ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ b64_byte_to_char (unsigned int) ; 
- scalar_t__ b64_byte_to_urlsafe_char (unsigned int) ; 
- int /*<<< orphan*/  sodium_base64_check_variant (int const) ; 
- int /*<<< orphan*/  sodium_misuse () ; 
+ unsigned int VARIANT_NO_PADDING_MASK ;
+ unsigned int VARIANT_URLSAFE_MASK ;
+ int assert (int) ;
+ scalar_t__ b64_byte_to_char (unsigned int) ;
+ scalar_t__ b64_byte_to_urlsafe_char (unsigned int) ;
+ int sodium_base64_check_variant (int const) ;
+ int sodium_misuse () ;
 
 char *
 sodium_bin2base64(char * const b64, const size_t b64_maxlen,
                   const unsigned char * const bin, const size_t bin_len,
                   const int variant)
 {
-    size_t       acc_len = (size_t) 0;
-    size_t       b64_len;
-    size_t       b64_pos = (size_t) 0;
-    size_t       bin_pos = (size_t) 0;
-    size_t       nibbles;
-    size_t       remainder;
+    size_t acc_len = (size_t) 0;
+    size_t b64_len;
+    size_t b64_pos = (size_t) 0;
+    size_t bin_pos = (size_t) 0;
+    size_t nibbles;
+    size_t remainder;
     unsigned int acc = 0U;
 
     sodium_base64_check_variant(variant);

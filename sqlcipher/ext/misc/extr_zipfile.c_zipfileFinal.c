@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-typedef  void* u16 ;
-typedef  scalar_t__ sqlite3_int64 ;
-typedef  int /*<<< orphan*/  sqlite3_context ;
-typedef  int /*<<< orphan*/  eocd ;
+
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int u8 ;
+typedef void* u16 ;
+typedef scalar_t__ sqlite3_int64 ;
+typedef int sqlite3_context ;
+typedef int eocd ;
 struct TYPE_9__ {size_t nSize; size_t iOffset; void* nEntryTotal; void* nEntry; } ;
-typedef  TYPE_3__ ZipfileEOCD ;
-struct TYPE_8__ {size_t n; int /*<<< orphan*/  a; } ;
-struct TYPE_7__ {size_t n; int /*<<< orphan*/  a; } ;
+typedef TYPE_3__ ZipfileEOCD ;
+struct TYPE_8__ {size_t n; int a; } ;
+struct TYPE_7__ {size_t n; int a; } ;
 struct TYPE_10__ {scalar_t__ nEntry; TYPE_2__ cds; TYPE_1__ body; } ;
-typedef  TYPE_4__ ZipfileCtx ;
+typedef TYPE_4__ ZipfileCtx ;
 
-/* Variables and functions */
- scalar_t__ ZIPFILE_EOCD_FIXED_SZ ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/  memset (TYPE_3__*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ sqlite3_aggregate_context (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  sqlite3_free (int /*<<< orphan*/ ) ; 
- scalar_t__ sqlite3_malloc64 (scalar_t__) ; 
- int /*<<< orphan*/  sqlite3_result_blob (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_result_error_nomem (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  zipfileFree ; 
- int /*<<< orphan*/  zipfileSerializeEOCD (TYPE_3__*,int /*<<< orphan*/ *) ; 
+
+ scalar_t__ ZIPFILE_EOCD_FIXED_SZ ;
+ int memcpy (int *,int ,size_t) ;
+ int memset (TYPE_3__*,int ,int) ;
+ scalar_t__ sqlite3_aggregate_context (int *,int) ;
+ int sqlite3_free (int ) ;
+ scalar_t__ sqlite3_malloc64 (scalar_t__) ;
+ int sqlite3_result_blob (int *,int *,int,int ) ;
+ int sqlite3_result_error_nomem (int *) ;
+ int zipfileFree ;
+ int zipfileSerializeEOCD (TYPE_3__*,int *) ;
 
 void zipfileFinal(sqlite3_context *pCtx){
   ZipfileCtx *p;

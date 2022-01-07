@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  SHA_CTX ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SHA1_Final (char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SHA1_Init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SHA1_Update (int /*<<< orphan*/ *,char*,int) ; 
- int SHA_DIGEST_LENGTH ; 
- int /*<<< orphan*/  memcpy (char*,char*,int) ; 
+
+
+
+typedef int SHA_CTX ;
+
+
+ int SHA1_Final (char*,int *) ;
+ int SHA1_Init (int *) ;
+ int SHA1_Update (int *,char*,int) ;
+ int SHA_DIGEST_LENGTH ;
+ int memcpy (char*,char*,int) ;
 
 void
 GetMasterKey(char *PasswordHashHash, char *NTResponse, char *MasterKey)

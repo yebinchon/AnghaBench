@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  int BOOL ;
 
-/* Variables and functions */
- int FALSE ; 
- scalar_t__ GetFileVersionInfoA (char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  GetFileVersionInfoSizeA (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- char* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  LANG_ENGLISH ; 
- int MAKELANGID (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SUBLANG_ENGLISH_US ; 
- scalar_t__ VerQueryValueA (char*,char*,void**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lstrcmpiA (char*,char*) ; 
- int /*<<< orphan*/  sprintf (char*,char*,int,int) ; 
+
+
+
+typedef int DWORD ;
+typedef int BOOL ;
+
+
+ int FALSE ;
+ scalar_t__ GetFileVersionInfoA (char const*,int ,int ,char*) ;
+ int GetFileVersionInfoSizeA (char const*,int *) ;
+ int GetProcessHeap () ;
+ char* HeapAlloc (int ,int ,int ) ;
+ int HeapFree (int ,int ,char*) ;
+ int LANG_ENGLISH ;
+ int MAKELANGID (int ,int ) ;
+ int SUBLANG_ENGLISH_US ;
+ scalar_t__ VerQueryValueA (char*,char*,void**,int *) ;
+ int lstrcmpiA (char*,char*) ;
+ int sprintf (char*,char*,int,int) ;
 
 __attribute__((used)) static BOOL is_stub_dll(const char *filename)
 {

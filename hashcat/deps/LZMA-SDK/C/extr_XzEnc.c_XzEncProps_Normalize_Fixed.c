@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  unsigned int UInt64 ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef unsigned int UInt64 ;
 struct TYPE_6__ {unsigned int reduceSize; } ;
 struct TYPE_8__ {int numTotalThreads; TYPE_1__ lzmaProps; } ;
 struct TYPE_7__ {int numTotalThreads; int numBlockThreads_Max; unsigned int reduceSize; unsigned int blockSize; int numBlockThreads_Reduced; TYPE_3__ lzma2Props; } ;
-typedef  scalar_t__ Int64 ;
-typedef  TYPE_2__ CXzProps ;
-typedef  TYPE_3__ CLzma2EncProps ;
+typedef scalar_t__ Int64 ;
+typedef TYPE_2__ CXzProps ;
+typedef TYPE_3__ CLzma2EncProps ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Lzma2EncProps_Normalize (TYPE_3__*) ; 
- int MTCODER__THREADS_MAX ; 
+
+ int Lzma2EncProps_Normalize (TYPE_3__*) ;
+ int MTCODER__THREADS_MAX ;
 
 __attribute__((used)) static void XzEncProps_Normalize_Fixed(CXzProps *p)
 {
@@ -98,7 +98,7 @@ __attribute__((used)) static void XzEncProps_Normalize_Fixed(CXzProps *p)
       }
     }
   }
-  
+
   p->numBlockThreads_Max = t2;
   p->numBlockThreads_Reduced = t2r;
   p->numTotalThreads = t3;

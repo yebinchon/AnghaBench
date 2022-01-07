@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct dlm_user_proc {int /*<<< orphan*/  lockspace; } ;
+
+
+
+
+struct dlm_user_proc {int lockspace; } ;
 struct dlm_ls {int dummy; } ;
-struct dlm_lock_params {int /*<<< orphan*/  lkid; int /*<<< orphan*/  flags; } ;
+struct dlm_lock_params {int lkid; int flags; } ;
 
-/* Variables and functions */
- int ENOENT ; 
- struct dlm_ls* dlm_find_lockspace_local (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dlm_put_lockspace (struct dlm_ls*) ; 
- int dlm_user_deadlock (struct dlm_ls*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int ENOENT ;
+ struct dlm_ls* dlm_find_lockspace_local (int ) ;
+ int dlm_put_lockspace (struct dlm_ls*) ;
+ int dlm_user_deadlock (struct dlm_ls*,int ,int ) ;
 
 __attribute__((used)) static int device_user_deadlock(struct dlm_user_proc *proc,
-				struct dlm_lock_params *params)
+    struct dlm_lock_params *params)
 {
-	struct dlm_ls *ls;
-	int error;
+ struct dlm_ls *ls;
+ int error;
 
-	ls = dlm_find_lockspace_local(proc->lockspace);
-	if (!ls)
-		return -ENOENT;
+ ls = dlm_find_lockspace_local(proc->lockspace);
+ if (!ls)
+  return -ENOENT;
 
-	error = dlm_user_deadlock(ls, params->flags, params->lkid);
+ error = dlm_user_deadlock(ls, params->flags, params->lkid);
 
-	dlm_put_lockspace(ls);
-	return error;
+ dlm_put_lockspace(ls);
+ return error;
 }

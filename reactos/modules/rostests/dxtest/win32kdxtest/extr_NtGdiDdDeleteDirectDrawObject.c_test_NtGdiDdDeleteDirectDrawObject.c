@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * HANDLE ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  OsThunkDdDeleteDirectDrawObject (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  printf (char*) ; 
- int /*<<< orphan*/  show_status (int,char*) ; 
- int /*<<< orphan*/  testing_eq (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,char*) ; 
+
+
+
+typedef int * HANDLE ;
+typedef int BOOL ;
+
+
+ int FALSE ;
+ int OsThunkDdDeleteDirectDrawObject (int *) ;
+ int TRUE ;
+ int printf (char*) ;
+ int show_status (int,char*) ;
+ int testing_eq (int ,int ,int,char*) ;
 
 void
 test_NtGdiDdDeleteDirectDrawObject(HANDLE hDirectDrawLocal)
@@ -31,7 +31,7 @@ test_NtGdiDdDeleteDirectDrawObject(HANDLE hDirectDrawLocal)
     retValue = OsThunkDdDeleteDirectDrawObject(hDirectDrawLocal);
     testing_eq(retValue,FALSE,fails,"NtGdiDdDeleteDirectDrawObject(hDirectDrawLocal);\0");
 
-    retValue = OsThunkDdDeleteDirectDrawObject(NULL);
+    retValue = OsThunkDdDeleteDirectDrawObject(((void*)0));
     testing_eq(retValue,TRUE,fails,"NtGdiDdDeleteDirectDrawObject(NULL);\0");
 
     show_status(fails, "NtGdiDdDeleteDirectDrawObject\0");

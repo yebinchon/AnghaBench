@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  PROPSHEETHEADER ;
-typedef  int /*<<< orphan*/ * (* PCreateNetIDPropertyPage ) () ;
-typedef  int /*<<< orphan*/  LPARAM ;
-typedef  int /*<<< orphan*/ * HPROPSHEETPAGE ;
-typedef  int /*<<< orphan*/ * HMODULE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DestroyPropertySheetPage (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FreeLibrary (int /*<<< orphan*/ *) ; 
- scalar_t__ GetProcAddress (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/ * LoadLibrary (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PropSheetAddPage (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEXT (char*) ; 
+
+
+
+typedef int PROPSHEETHEADER ;
+typedef int * (* PCreateNetIDPropertyPage ) () ;
+typedef int LPARAM ;
+typedef int * HPROPSHEETPAGE ;
+typedef int * HMODULE ;
+
+
+ int DestroyPropertySheetPage (int *) ;
+ int FreeLibrary (int *) ;
+ scalar_t__ GetProcAddress (int *,char*) ;
+ int * LoadLibrary (int ) ;
+ int PropSheetAddPage (int *,int ) ;
+ int TEXT (char*) ;
 
 __attribute__((used)) static HMODULE
 AddNetIdPage(PROPSHEETHEADER *ppsh)
@@ -32,14 +32,14 @@ AddNetIdPage(PROPSHEETHEADER *ppsh)
     PCreateNetIDPropertyPage pCreateNetIdPage;
 
     hMod = LoadLibrary(TEXT("netid.dll"));
-    if (hMod != NULL)
+    if (hMod != ((void*)0))
     {
         pCreateNetIdPage = (PCreateNetIDPropertyPage)GetProcAddress(hMod,
                                                                     "CreateNetIDPropertyPage");
-        if (pCreateNetIdPage != NULL)
+        if (pCreateNetIdPage != ((void*)0))
         {
             hPage = pCreateNetIdPage();
-            if (hPage == NULL)
+            if (hPage == ((void*)0))
                 goto Fail;
 
             if (!PropSheetAddPage(hPage, (LPARAM)ppsh))
@@ -52,7 +52,7 @@ AddNetIdPage(PROPSHEETHEADER *ppsh)
         {
 Fail:
             FreeLibrary(hMod);
-            hMod = NULL;
+            hMod = ((void*)0);
         }
     }
 

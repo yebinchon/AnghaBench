@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  stream_t ;
-typedef  scalar_t__ ssize_t ;
-typedef  int /*<<< orphan*/  libarchive_t ;
-struct TYPE_2__ {int /*<<< orphan*/ * p_source; } ;
-typedef  TYPE_1__ libarchive_callback_t ;
-typedef  scalar_t__ la_int64_t ;
 
-/* Variables and functions */
- scalar_t__ ARCHIVE_FATAL ; 
-#define  SEEK_CUR 130 
-#define  SEEK_END 129 
-#define  SEEK_SET 128 
- int /*<<< orphan*/  VLC_UNUSED (int /*<<< orphan*/ *) ; 
- scalar_t__ stream_Size (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_assert_unreachable () ; 
- scalar_t__ vlc_stream_Seek (int /*<<< orphan*/ *,scalar_t__) ; 
- scalar_t__ vlc_stream_Tell (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int stream_t ;
+typedef scalar_t__ ssize_t ;
+typedef int libarchive_t ;
+struct TYPE_2__ {int * p_source; } ;
+typedef TYPE_1__ libarchive_callback_t ;
+typedef scalar_t__ la_int64_t ;
+
+
+ scalar_t__ ARCHIVE_FATAL ;
+
+
+
+ int VLC_UNUSED (int *) ;
+ scalar_t__ stream_Size (int *) ;
+ int vlc_assert_unreachable () ;
+ scalar_t__ vlc_stream_Seek (int *,scalar_t__) ;
+ scalar_t__ vlc_stream_Tell (int *) ;
 
 __attribute__((used)) static la_int64_t libarchive_seek_cb( libarchive_t* p_arc, void* p_obj,
   la_int64_t offset, int whence )
@@ -41,9 +41,9 @@ __attribute__((used)) static la_int64_t libarchive_seek_cb( libarchive_t* p_arc,
 
     switch( whence )
     {
-        case SEEK_SET: whence_pos = 0;                           break;
-        case SEEK_CUR: whence_pos = vlc_stream_Tell( p_source ); break;
-        case SEEK_END: whence_pos = stream_Size( p_source ); break;
+        case 128: whence_pos = 0; break;
+        case 130: whence_pos = vlc_stream_Tell( p_source ); break;
+        case 129: whence_pos = stream_Size( p_source ); break;
               default: vlc_assert_unreachable();
 
     }

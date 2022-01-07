@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_4__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t uint8_t ;
-struct TYPE_12__ {int shift; int /*<<< orphan*/  gb; } ;
-typedef  TYPE_1__ WNV1Context ;
+
+
+typedef struct TYPE_15__ TYPE_4__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+typedef size_t uint8_t ;
+struct TYPE_12__ {int shift; int gb; } ;
+typedef TYPE_1__ WNV1Context ;
 struct TYPE_15__ {int height; int width; TYPE_1__* priv_data; } ;
-struct TYPE_14__ {int key_frame; unsigned char** data; int /*<<< orphan*/ * linesize; } ;
+struct TYPE_14__ {int key_frame; unsigned char** data; int * linesize; } ;
 struct TYPE_13__ {size_t* data; int size; } ;
-typedef  TYPE_2__ AVPacket ;
-typedef  TYPE_3__ AVFrame ;
-typedef  TYPE_4__ AVCodecContext ;
+typedef TYPE_2__ AVPacket ;
+typedef TYPE_3__ AVFrame ;
+typedef TYPE_4__ AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_INVALIDDATA ; 
- scalar_t__ AV_INPUT_BUFFER_PADDING_SIZE ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  av_free (size_t*) ; 
- int /*<<< orphan*/  av_log (TYPE_4__*,int /*<<< orphan*/ ,char*,...) ; 
- size_t* av_malloc (scalar_t__) ; 
- int /*<<< orphan*/  avpriv_request_sample (TYPE_4__*,char*,size_t const) ; 
- int ff_get_buffer (TYPE_4__*,TYPE_3__* const,int /*<<< orphan*/ ) ; 
- size_t* ff_reverse ; 
- int init_get_bits8 (int /*<<< orphan*/ *,size_t*,int) ; 
- int /*<<< orphan*/  memset (size_t*,int /*<<< orphan*/ ,scalar_t__) ; 
- unsigned char wnv1_get_code (TYPE_1__* const,int) ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_INVALIDDATA ;
+ scalar_t__ AV_INPUT_BUFFER_PADDING_SIZE ;
+ int AV_LOG_ERROR ;
+ int ENOMEM ;
+ int av_free (size_t*) ;
+ int av_log (TYPE_4__*,int ,char*,...) ;
+ size_t* av_malloc (scalar_t__) ;
+ int avpriv_request_sample (TYPE_4__*,char*,size_t const) ;
+ int ff_get_buffer (TYPE_4__*,TYPE_3__* const,int ) ;
+ size_t* ff_reverse ;
+ int init_get_bits8 (int *,size_t*,int) ;
+ int memset (size_t*,int ,scalar_t__) ;
+ unsigned char wnv1_get_code (TYPE_1__* const,int) ;
 
 __attribute__((used)) static int decode_frame(AVCodecContext *avctx,
                         void *data, int *got_frame,
                         AVPacket *avpkt)
 {
     WNV1Context * const l = avctx->priv_data;
-    const uint8_t *buf    = avpkt->data;
-    int buf_size          = avpkt->size;
-    AVFrame * const p     = data;
+    const uint8_t *buf = avpkt->data;
+    int buf_size = avpkt->size;
+    AVFrame * const p = data;
     unsigned char *Y,*U,*V;
     int i, j, ret;
     int prev_y = 0, prev_u = 0, prev_v = 0;
@@ -111,7 +111,7 @@ __attribute__((used)) static int decode_frame(AVCodecContext *avctx,
     }
 
 
-    *got_frame      = 1;
+    *got_frame = 1;
     av_free(rbuf);
 
     return buf_size;

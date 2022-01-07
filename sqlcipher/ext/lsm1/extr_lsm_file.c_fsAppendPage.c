@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {int /*<<< orphan*/  pDb; } ;
-struct TYPE_9__ {scalar_t__ iLastPg; scalar_t__ pRedirect; int /*<<< orphan*/  nSize; } ;
-typedef  TYPE_1__ Segment ;
-typedef  scalar_t__ LsmPgno ;
-typedef  TYPE_2__ FileSystem ;
 
-/* Variables and functions */
- int LSM_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- int fsBlockNext (TYPE_2__*,int /*<<< orphan*/ ,int,int*) ; 
- scalar_t__ fsFirstPageOnBlock (TYPE_2__*,int) ; 
- scalar_t__ fsIsLast (TYPE_2__*,scalar_t__) ; 
- int fsPageToBlock (TYPE_2__*,scalar_t__) ; 
- int lsmBlockAllocate (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*) ; 
+
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_10__ {int pDb; } ;
+struct TYPE_9__ {scalar_t__ iLastPg; scalar_t__ pRedirect; int nSize; } ;
+typedef TYPE_1__ Segment ;
+typedef scalar_t__ LsmPgno ;
+typedef TYPE_2__ FileSystem ;
+
+
+ int LSM_OK ;
+ int assert (int) ;
+ int fsBlockNext (TYPE_2__*,int ,int,int*) ;
+ scalar_t__ fsFirstPageOnBlock (TYPE_2__*,int) ;
+ scalar_t__ fsIsLast (TYPE_2__*,scalar_t__) ;
+ int fsPageToBlock (TYPE_2__*,scalar_t__) ;
+ int lsmBlockAllocate (int ,int ,int*) ;
 
 __attribute__((used)) static int fsAppendPage(
-  FileSystem *pFS, 
+  FileSystem *pFS,
   Segment *pSeg,
   LsmPgno *piNew,
   int *piPrev,
@@ -42,10 +42,10 @@ __attribute__((used)) static int fsAppendPage(
   *piNext = 0;
 
   if( fsIsLast(pFS, iPrev) ){
-    /* Grab the first page on the next block (which has already be
-    ** allocated). In this case set *piPrev to tell the caller to set
-    ** the "previous block" pointer in the first 4 bytes of the page.
-    */
+
+
+
+
     int iNext;
     int iBlk = fsPageToBlock(pFS, iPrev);
     assert( pSeg->pRedirect==0 );
@@ -56,7 +56,7 @@ __attribute__((used)) static int fsAppendPage(
   }else{
     *piNew = iPrev+1;
     if( fsIsLast(pFS, *piNew) ){
-      /* Allocate the next block here. */
+
       int iBlk;
       rc = lsmBlockAllocate(pFS->pDb, 0, &iBlk);
       if( rc!=LSM_OK ) return rc;

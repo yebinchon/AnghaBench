@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  eMBErrorCode ;
-typedef  int /*<<< orphan*/  USHORT ;
-typedef  int /*<<< orphan*/  UCHAR ;
-struct TYPE_2__ {int /*<<< orphan*/  (* master_reg_cb_input ) (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ESP_ERR_INVALID_STATE ; 
- int /*<<< orphan*/  MB_ENOERR ; 
- int /*<<< orphan*/  MB_MASTER_CHECK (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- TYPE_1__* master_interface_ptr ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int eMBErrorCode ;
+typedef int USHORT ;
+typedef int UCHAR ;
+struct TYPE_2__ {int (* master_reg_cb_input ) (int *,int ,int ) ;} ;
+
+
+ int ESP_ERR_INVALID_STATE ;
+ int MB_ENOERR ;
+ int MB_MASTER_CHECK (int ,int ,char*) ;
+ TYPE_1__* master_interface_ptr ;
+ int stub1 (int *,int ,int ) ;
 
 eMBErrorCode eMBMasterRegInputCB(UCHAR * pucRegBuffer, USHORT usAddress,
                                 USHORT usNRegs)
 {
     eMBErrorCode error = MB_ENOERR;
-    MB_MASTER_CHECK((master_interface_ptr != NULL),
+    MB_MASTER_CHECK((master_interface_ptr != ((void*)0)),
                     ESP_ERR_INVALID_STATE,
                     "Master interface is not correctly initialized.");
-    MB_MASTER_CHECK((master_interface_ptr->master_reg_cb_input != NULL),
+    MB_MASTER_CHECK((master_interface_ptr->master_reg_cb_input != ((void*)0)),
                     ESP_ERR_INVALID_STATE,
                     "Master interface is not correctly initialized.");
     error = master_interface_ptr->master_reg_cb_input(pucRegBuffer, usAddress, usNRegs);

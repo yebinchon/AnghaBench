@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_6__ ;
-typedef  struct TYPE_15__   TYPE_5__ ;
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  nsAString ;
+
+
+typedef struct TYPE_16__ TYPE_6__ ;
+typedef struct TYPE_15__ TYPE_5__ ;
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef int nsAString ;
 struct TYPE_14__ {TYPE_3__* doc; } ;
 struct TYPE_16__ {TYPE_4__ node; } ;
-struct TYPE_11__ {int /*<<< orphan*/  IHTMLWindow2_iface; } ;
-struct TYPE_15__ {TYPE_1__ base; int /*<<< orphan*/  uri_nofrag; } ;
-struct TYPE_12__ {int /*<<< orphan*/  window; } ;
+struct TYPE_11__ {int IHTMLWindow2_iface; } ;
+struct TYPE_15__ {TYPE_1__ base; int uri_nofrag; } ;
+struct TYPE_12__ {int window; } ;
 struct TYPE_13__ {TYPE_2__ basedoc; } ;
-typedef  scalar_t__ PRUnichar ;
-typedef  TYPE_5__ HTMLOuterWindow ;
-typedef  TYPE_6__ HTMLElement ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  scalar_t__ BOOL ;
+typedef scalar_t__ PRUnichar ;
+typedef TYPE_5__ HTMLOuterWindow ;
+typedef TYPE_6__ HTMLElement ;
+typedef int HRESULT ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BINDING_NAVIGATED ; 
- int /*<<< orphan*/  IHTMLWindow2_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TRACE (char*) ; 
- TYPE_5__* get_target_window (int /*<<< orphan*/ ,int /*<<< orphan*/ *,scalar_t__*) ; 
- int /*<<< orphan*/  navigate_href_new_window (TYPE_6__*,int /*<<< orphan*/ *,scalar_t__ const*) ; 
- int /*<<< orphan*/  navigate_url (TYPE_5__*,scalar_t__ const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nsAString_GetData (int /*<<< orphan*/ *,scalar_t__ const**) ; 
+
+ int BINDING_NAVIGATED ;
+ int IHTMLWindow2_Release (int *) ;
+ int S_OK ;
+ int TRACE (char*) ;
+ TYPE_5__* get_target_window (int ,int *,scalar_t__*) ;
+ int navigate_href_new_window (TYPE_6__*,int *,scalar_t__ const*) ;
+ int navigate_url (TYPE_5__*,scalar_t__ const*,int ,int ) ;
+ int nsAString_GetData (int *,scalar_t__ const**) ;
 
 __attribute__((used)) static HRESULT navigate_href(HTMLElement *element, nsAString *href_str, nsAString *target_str)
 {

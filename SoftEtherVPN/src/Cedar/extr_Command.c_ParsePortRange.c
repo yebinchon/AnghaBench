@@ -1,77 +1,77 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int UINT ;
-struct TYPE_4__ {int NumTokens; int /*<<< orphan*/ * Token; } ;
-typedef  TYPE_1__ TOKEN_LIST ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FreeToken (TYPE_1__*) ; 
- int IsEmptyStr (char*) ; 
- TYPE_1__* ParseToken (char*,char*) ; 
- int ToInt (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int UINT ;
+struct TYPE_4__ {int NumTokens; int * Token; } ;
+typedef TYPE_1__ TOKEN_LIST ;
+
+
+ int FreeToken (TYPE_1__*) ;
+ int IsEmptyStr (char*) ;
+ TYPE_1__* ParseToken (char*,char*) ;
+ int ToInt (int ) ;
 
 bool ParsePortRange(char *str, UINT *start, UINT *end)
 {
-	UINT a = 0, b = 0;
-	TOKEN_LIST *t;
-	// Validate arguments
-	if (str == NULL)
-	{
-		return false;
-	}
+ UINT a = 0, b = 0;
+ TOKEN_LIST *t;
 
-	if (IsEmptyStr(str) == false)
-	{
+ if (str == ((void*)0))
+ {
+  return 0;
+ }
 
-		t = ParseToken(str, "\t -");
+ if (IsEmptyStr(str) == 0)
+ {
 
-		if (t->NumTokens == 1)
-		{
-			a = b = ToInt(t->Token[0]);
-		}
-		else if (t->NumTokens == 2)
-		{
-			a = ToInt(t->Token[0]);
-			b = ToInt(t->Token[1]);
-		}
+  t = ParseToken(str, "\t -");
 
-		FreeToken(t);
+  if (t->NumTokens == 1)
+  {
+   a = b = ToInt(t->Token[0]);
+  }
+  else if (t->NumTokens == 2)
+  {
+   a = ToInt(t->Token[0]);
+   b = ToInt(t->Token[1]);
+  }
 
-		if (a > b)
-		{
-			return false;
-		}
+  FreeToken(t);
 
-		if (a >= 65536 || b >= 65536)
-		{
-			return false;
-		}
+  if (a > b)
+  {
+   return 0;
+  }
 
-		if (a == 0 && b != 0)
-		{
-			return false;
-		}
-	}
+  if (a >= 65536 || b >= 65536)
+  {
+   return 0;
+  }
 
-	if (start != NULL)
-	{
-		*start = a;
-	}
-	if (end != NULL)
-	{
-		*end = b;
-	}
+  if (a == 0 && b != 0)
+  {
+   return 0;
+  }
+ }
 
-	return true;
+ if (start != ((void*)0))
+ {
+  *start = a;
+ }
+ if (end != ((void*)0))
+ {
+  *end = b;
+ }
+
+ return 1;
 }

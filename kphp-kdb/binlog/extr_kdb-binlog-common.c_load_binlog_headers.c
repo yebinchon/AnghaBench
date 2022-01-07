@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_5__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_13__ TYPE_5__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
 struct lev_start {int type; scalar_t__ schema_id; scalar_t__ split_min; scalar_t__ split_max; scalar_t__ split_mod; } ;
 struct lev_rotate_from {int cur_log_pos; int cur_log_hash; int prev_log_hash; int crc32; int timestamp; } ;
 struct kfs_file_header {int dummy; } ;
 struct TYPE_11__ {scalar_t__ first36_bytes; } ;
-typedef  TYPE_1__ kfs_binlog_zip_header_t ;
+typedef TYPE_1__ kfs_binlog_zip_header_t ;
 struct TYPE_13__ {int fd; } ;
 struct TYPE_12__ {scalar_t__ magic; scalar_t__ kfs_file_type; scalar_t__ header_seq_num; scalar_t__ data_size; scalar_t__ raw_size; int log_pos; int finished; scalar_t__ schema_id; scalar_t__ split_min; scalar_t__ split_max; scalar_t__ split_mod; int prev_log_hash; int file_id_hash; int log_pos_crc32; int prev_log_time; int replica_id_hash; scalar_t__ data_crc32; } ;
 
-/* Variables and functions */
- TYPE_5__* Binlog ; 
- struct lev_rotate_from* CONT ; 
-#define  KFS_BINLOG_ZIP_MAGIC 130 
- scalar_t__ KFS_MAGIC ; 
- TYPE_2__* KHDR ; 
-#define  LEV_ROTATE_FROM 129 
-#define  LEV_START 128 
- int /*<<< orphan*/  SEEK_SET ; 
- struct lev_start* ST ; 
- int /*<<< orphan*/  assert (int) ; 
- int binlog_existed ; 
- int binlog_headers ; 
- int /*<<< orphan*/  binlog_zipped ; 
- scalar_t__ check_kfs_header_basic (TYPE_2__*) ; 
- int cur_binlog_file_hash ; 
- int cur_replica_hash ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- TYPE_2__* kfs_Hdr ; 
- scalar_t__ kfs_binlog ; 
- int /*<<< orphan*/  kfs_buffer_crypt (TYPE_5__*,TYPE_2__*,int,long long) ; 
- int log_headers_size ; 
- int log_start_pos ; 
- int lseek (int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcmp (TYPE_2__*,TYPE_2__*,int) ; 
- int read (int,TYPE_2__*,int) ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ tot_crc32 ; 
- scalar_t__ tot_crc32_pos ; 
+
+ TYPE_5__* Binlog ;
+ struct lev_rotate_from* CONT ;
+
+ scalar_t__ KFS_MAGIC ;
+ TYPE_2__* KHDR ;
+
+
+ int SEEK_SET ;
+ struct lev_start* ST ;
+ int assert (int) ;
+ int binlog_existed ;
+ int binlog_headers ;
+ int binlog_zipped ;
+ scalar_t__ check_kfs_header_basic (TYPE_2__*) ;
+ int cur_binlog_file_hash ;
+ int cur_replica_hash ;
+ int fprintf (int ,char*,...) ;
+ TYPE_2__* kfs_Hdr ;
+ scalar_t__ kfs_binlog ;
+ int kfs_buffer_crypt (TYPE_5__*,TYPE_2__*,int,long long) ;
+ int log_headers_size ;
+ int log_start_pos ;
+ int lseek (int,int,int ) ;
+ int memcmp (TYPE_2__*,TYPE_2__*,int) ;
+ int read (int,TYPE_2__*,int) ;
+ int stderr ;
+ scalar_t__ tot_crc32 ;
+ scalar_t__ tot_crc32_pos ;
 
 __attribute__((used)) static int load_binlog_headers (int fd) {
   int r;
@@ -106,21 +106,21 @@ __attribute__((used)) static int load_binlog_headers (int fd) {
 
   loop:
   switch (E->type) {
-  case LEV_START:
+  case 128:
     assert (r >= sizeof (struct lev_start) - 4);
     ST = E;
     log_start_pos = 0;
     break;
-  case LEV_ROTATE_FROM:
+  case 129:
     assert (r >= sizeof (struct lev_rotate_from));
     CONT = (struct lev_rotate_from *) E;
     log_start_pos = CONT->cur_log_pos;
     cur_binlog_file_hash = CONT->cur_log_hash;
     break;
-  case KFS_BINLOG_ZIP_MAGIC:
+  case 130:
     assert (!binlog_headers && binlog_zipped);
     assert (r >= sizeof (kfs_binlog_zip_header_t));
-    /* infinite loop guard */
+
     assert (E == (struct lev_start *) (kfs_Hdr + binlog_headers));
     E = (struct lev_start *) ((kfs_binlog_zip_header_t *) E)->first36_bytes;
     r = 36;
@@ -144,7 +144,7 @@ __attribute__((used)) static int load_binlog_headers (int fd) {
   }
 
   assert (KHDR->data_size + binlog_headers * 4096 == KHDR->raw_size);
-//  assert (lseek (fd, 0, SEEK_END) == KHDR->raw_size);
+
 
   tot_crc32 = KHDR->data_crc32;
   tot_crc32_pos = KHDR->log_pos + KHDR->data_size;

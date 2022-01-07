@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct ws_intervals {int dummy; } ;
 struct sbg_script {int sample_rate; } ;
-typedef  int int64_t ;
-typedef  int int32_t ;
+typedef int int64_t ;
+typedef int int32_t ;
 
-/* Variables and functions */
- int FFMIN (int,int) ; 
- int FF_ARRAY_ELEMS (int**) ; 
- int /*<<< orphan*/  WS_SINE ; 
- int add_interval (struct ws_intervals*,int /*<<< orphan*/ ,int,int,int,int,int,int,int,int) ; 
+
+ int FFMIN (int,int) ;
+ int FF_ARRAY_ELEMS (int**) ;
+ int WS_SINE ;
+ int add_interval (struct ws_intervals*,int ,int,int,int,int,int,int,int,int) ;
 
 __attribute__((used)) static int add_bell(struct ws_intervals *inter, struct sbg_script *s,
                     int64_t ts1, int64_t ts2, int32_t f, int32_t a)
 {
-    /* SBaGen uses an exponential decrease every 50ms.
-       We approximate it with piecewise affine segments. */
+
+
     int32_t cpoints[][2] = {
-        {  2, a },
-        {  4, a - a / 4 },
-        {  8, a / 2 },
+        { 2, a },
+        { 4, a - a / 4 },
+        { 8, a / 2 },
         { 16, a / 4 },
         { 25, a / 10 },
         { 50, a / 80 },

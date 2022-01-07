@@ -1,41 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int td_err_e ;
-typedef  int /*<<< orphan*/  buf ;
 
-/* Variables and functions */
-#define  TD_BADKEY 148 
-#define  TD_BADPH 147 
-#define  TD_BADSH 146 
-#define  TD_BADTA 145 
-#define  TD_BADTH 144 
-#define  TD_DBERR 143 
-#define  TD_ERR 142 
-#define  TD_MALLOC 141 
-#define  TD_NOAPLIC 140 
-#define  TD_NOCAPAB 139 
-#define  TD_NOEVENT 138 
-#define  TD_NOFPREGS 137 
-#define  TD_NOLIBTHREAD 136 
-#define  TD_NOLWP 135 
-#define  TD_NOMSG 134 
-#define  TD_NOSV 133 
-#define  TD_NOTHR 132 
-#define  TD_NOTSD 131 
-#define  TD_NOXREGS 130 
-#define  TD_OK 129 
-#define  TD_PARTIALREG 128 
- int /*<<< orphan*/  snprintf (char*,int,char*,int) ; 
+
+
+
+typedef int td_err_e ;
+typedef int buf ;
+ int snprintf (char*,int,char*,int) ;
 
 __attribute__((used)) static char *
 thread_db_err_str (td_err_e err)
@@ -44,47 +21,47 @@ thread_db_err_str (td_err_e err)
 
   switch (err)
     {
-    case TD_OK:
+    case 129:
       return "generic 'call succeeded'";
-    case TD_ERR:
+    case 142:
       return "generic error";
-    case TD_NOTHR:
+    case 132:
       return "no thread to satisfy query";
-    case TD_NOSV:
+    case 133:
       return "no sync handle to satisfy query";
-    case TD_NOLWP:
+    case 135:
       return "no LWP to satisfy query";
-    case TD_BADPH:
+    case 147:
       return "invalid process handle";
-    case TD_BADTH:
+    case 144:
       return "invalid thread handle";
-    case TD_BADSH:
+    case 146:
       return "invalid synchronization handle";
-    case TD_BADTA:
+    case 145:
       return "invalid thread agent";
-    case TD_BADKEY:
+    case 148:
       return "invalid key";
-    case TD_NOMSG:
+    case 134:
       return "no event message for getmsg";
-    case TD_NOFPREGS:
+    case 137:
       return "FPU register set not available";
-    case TD_NOLIBTHREAD:
+    case 136:
       return "application not linked with libthread";
-    case TD_NOEVENT:
+    case 138:
       return "requested event is not supported";
-    case TD_NOCAPAB:
+    case 139:
       return "capability not available";
-    case TD_DBERR:
+    case 143:
       return "debugger service failed";
-    case TD_NOAPLIC:
+    case 140:
       return "operation not applicable to";
-    case TD_NOTSD:
+    case 131:
       return "no thread-specific data for this thread";
-    case TD_MALLOC:
+    case 141:
       return "malloc failed";
-    case TD_PARTIALREG:
+    case 128:
       return "only part of register set was written/read";
-    case TD_NOXREGS:
+    case 130:
       return "X register set not available for this thread";
     default:
       snprintf (buf, sizeof (buf), "unknown thread_db error '%d'", err);

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64_ ;
-typedef  scalar_t__ _TCHAR ;
 
-/* Variables and functions */
- scalar_t__ GetTickCount () ; 
- scalar_t__ _T (char) ; 
- scalar_t__* _fgetts (scalar_t__*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  _puttc (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  feof (int /*<<< orphan*/ ) ; 
- int parse_print (scalar_t__*) ; 
- int /*<<< orphan*/  print_uptime (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stdin ; 
- int /*<<< orphan*/  stdout ; 
+
+
+
+typedef int uint64_ ;
+typedef scalar_t__ _TCHAR ;
+
+
+ scalar_t__ GetTickCount () ;
+ scalar_t__ _T (char) ;
+ scalar_t__* _fgetts (scalar_t__*,int,int ) ;
+ int _puttc (scalar_t__,int ) ;
+ int feof (int ) ;
+ int parse_print (scalar_t__*) ;
+ int print_uptime (int ,int ,int *,int ) ;
+ int stdin ;
+ int stdout ;
 
 int _tmain(int argc, _TCHAR * argv[])
 {
@@ -30,7 +30,7 @@ int _tmain(int argc, _TCHAR * argv[])
 
  if(argc <= 1)
  {
-  print_uptime((uint64_)GetTickCount(), 0, NULL, 0);
+  print_uptime((uint64_)GetTickCount(), 0, ((void*)0), 0);
   _puttc(_T('\n'), stdout);
  }
  else if(argc == 2 && argv[1][0] == _T('-') && argv[1][1] == 0)
@@ -42,7 +42,7 @@ int _tmain(int argc, _TCHAR * argv[])
 
    str = _fgetts(buf, 22, stdin);
 
-   if(str == NULL)
+   if(str == ((void*)0))
     return 0;
 
    if((r = parse_print(str)) != 0)

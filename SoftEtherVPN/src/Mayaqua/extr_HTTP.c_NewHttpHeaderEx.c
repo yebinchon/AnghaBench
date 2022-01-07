@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  ValueList; void* Version; void* Target; void* Method; } ;
-typedef  TYPE_1__ HTTP_HEADER ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * CompareHttpValue ; 
- void* CopyStr (char*) ; 
- int /*<<< orphan*/  NewListFast (int /*<<< orphan*/ *) ; 
- TYPE_1__* ZeroMalloc (int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int ValueList; void* Version; void* Target; void* Method; } ;
+typedef TYPE_1__ HTTP_HEADER ;
+
+
+ int * CompareHttpValue ;
+ void* CopyStr (char*) ;
+ int NewListFast (int *) ;
+ TYPE_1__* ZeroMalloc (int) ;
 
 HTTP_HEADER *NewHttpHeaderEx(char *method, char *target, char *version, bool no_sort)
 {
-	HTTP_HEADER *header;
-	// Validate arguments
-	if (method == NULL || target == NULL || version == NULL)
-	{
-		return NULL;
-	}
+ HTTP_HEADER *header;
 
-	header = ZeroMalloc(sizeof(HTTP_HEADER));
+ if (method == ((void*)0) || target == ((void*)0) || version == ((void*)0))
+ {
+  return ((void*)0);
+ }
 
-	header->Method = CopyStr(method);
-	header->Target = CopyStr(target);
-	header->Version = CopyStr(version);
-	header->ValueList = NewListFast(no_sort ? NULL : CompareHttpValue);
+ header = ZeroMalloc(sizeof(HTTP_HEADER));
 
-	return header;
+ header->Method = CopyStr(method);
+ header->Target = CopyStr(target);
+ header->Version = CopyStr(version);
+ header->ValueList = NewListFast(no_sort ? ((void*)0) : CompareHttpValue);
+
+ return header;
 }

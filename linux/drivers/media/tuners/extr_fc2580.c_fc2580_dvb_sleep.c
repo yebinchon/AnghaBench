@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct dvb_frontend {int /*<<< orphan*/  tuner_priv; } ;
 
-/* Variables and functions */
- int fc2580_sleep (int /*<<< orphan*/ ) ; 
+
+
+
+struct dvb_frontend {int tuner_priv; } ;
+
+
+ int fc2580_sleep (int ) ;
 
 __attribute__((used)) static int fc2580_dvb_sleep(struct dvb_frontend *fe)
 {
-	return fc2580_sleep(fe->tuner_priv);
+ return fc2580_sleep(fe->tuner_priv);
 }

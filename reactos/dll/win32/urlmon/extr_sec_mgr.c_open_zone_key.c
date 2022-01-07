@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  scalar_t__ DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAY_SIZE (int /*<<< orphan*/ ) ; 
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  E_INVALIDARG ; 
- scalar_t__ RegOpenKeyW (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  WARN (char*) ; 
- int /*<<< orphan*/  wsprintfW (char*,char const*,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  wszZonesKey ; 
+
+
+
+typedef char WCHAR ;
+typedef int HRESULT ;
+typedef int HKEY ;
+typedef scalar_t__ DWORD ;
+
+
+ int ARRAY_SIZE (int ) ;
+ scalar_t__ ERROR_SUCCESS ;
+ int E_INVALIDARG ;
+ scalar_t__ RegOpenKeyW (int ,char*,int *) ;
+ int S_OK ;
+ int WARN (char*) ;
+ int wsprintfW (char*,char const*,int ,scalar_t__) ;
+ int wszZonesKey ;
 
 __attribute__((used)) static HRESULT open_zone_key(HKEY parent_key, DWORD zone, HKEY *hkey)
 {

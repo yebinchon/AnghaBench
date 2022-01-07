@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  parFmt ;
-typedef  int /*<<< orphan*/  charFmt ;
-typedef  char WCHAR ;
-struct TYPE_6__ {int cbSize; scalar_t__ dwEffects; int /*<<< orphan*/  dwMask; } ;
-struct TYPE_5__ {int cbSize; int dxStartIndent; int /*<<< orphan*/  dwMask; } ;
-typedef  int /*<<< orphan*/  PCCERT_CONTEXT ;
-typedef  TYPE_1__ PARAFORMAT2 ;
-typedef  int /*<<< orphan*/  LPARAM ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  TYPE_2__ CHARFORMATW ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CERT_NAME_SIMPLE_DISPLAY_TYPE ; 
- scalar_t__ CFE_BOLD ; 
- int /*<<< orphan*/  CFM_BOLD ; 
- int /*<<< orphan*/  EM_SETCHARFORMAT ; 
- int /*<<< orphan*/  GetDlgItem (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IDC_CERTIFICATE_NAMES ; 
- int MY_INDENT ; 
- int /*<<< orphan*/  PFM_STARTINDENT ; 
- int /*<<< orphan*/  SCF_SELECTION ; 
- int /*<<< orphan*/  SendMessageW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  add_cert_string_to_control (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  add_string_resource_with_paraformat_to_control (int /*<<< orphan*/ ,int,TYPE_1__*) ; 
- int /*<<< orphan*/  add_unformatted_text_to_control (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  memset (TYPE_2__*,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int parFmt ;
+typedef int charFmt ;
+typedef char WCHAR ;
+struct TYPE_6__ {int cbSize; scalar_t__ dwEffects; int dwMask; } ;
+struct TYPE_5__ {int cbSize; int dxStartIndent; int dwMask; } ;
+typedef int PCCERT_CONTEXT ;
+typedef TYPE_1__ PARAFORMAT2 ;
+typedef int LPARAM ;
+typedef int HWND ;
+typedef int DWORD ;
+typedef TYPE_2__ CHARFORMATW ;
+
+
+ int CERT_NAME_SIMPLE_DISPLAY_TYPE ;
+ scalar_t__ CFE_BOLD ;
+ int CFM_BOLD ;
+ int EM_SETCHARFORMAT ;
+ int GetDlgItem (int ,int ) ;
+ int IDC_CERTIFICATE_NAMES ;
+ int MY_INDENT ;
+ int PFM_STARTINDENT ;
+ int SCF_SELECTION ;
+ int SendMessageW (int ,int ,int ,int ) ;
+ int add_cert_string_to_control (int ,int ,int ,int ) ;
+ int add_string_resource_with_paraformat_to_control (int ,int,TYPE_1__*) ;
+ int add_unformatted_text_to_control (int ,char*,int) ;
+ int memset (TYPE_2__*,int ,int) ;
 
 __attribute__((used)) static void set_cert_name_string(HWND hwnd, PCCERT_CONTEXT cert,
  DWORD nameFlags, int heading)

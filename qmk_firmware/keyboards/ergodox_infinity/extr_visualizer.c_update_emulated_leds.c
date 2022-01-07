@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  visualizer_user_data_t ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int visualizer_user_data_t ;
 struct TYPE_6__ {scalar_t__ user_data; } ;
 struct TYPE_7__ {void* target_lcd_color; TYPE_1__ status; } ;
-typedef  TYPE_2__ visualizer_state_t ;
+typedef TYPE_2__ visualizer_state_t ;
 struct TYPE_8__ {scalar_t__ user_data; } ;
-typedef  TYPE_3__ visualizer_keyboard_status_t ;
-typedef  scalar_t__ uint8_t ;
+typedef TYPE_3__ visualizer_keyboard_status_t ;
+typedef scalar_t__ uint8_t ;
 
-/* Variables and functions */
- scalar_t__ LCD_STATE_INITIAL ; 
- void* change_lcd_color_intensity (int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__ get_brightness (int /*<<< orphan*/ *,scalar_t__) ; 
- scalar_t__ get_led_index_master (int /*<<< orphan*/ *) ; 
- scalar_t__ get_led_index_slave (int /*<<< orphan*/ *) ; 
- scalar_t__ get_secondary_led_index (int /*<<< orphan*/ *) ; 
- scalar_t__ is_serial_link_master () ; 
- scalar_t__ lcd_state ; 
- int /*<<< orphan*/ * led_emulation_colors ; 
- void* next_led_target_color ; 
- int /*<<< orphan*/  one_led_color ; 
- int /*<<< orphan*/  start_keyframe_animation (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stop_keyframe_animation (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  two_led_colors ; 
+
+ scalar_t__ LCD_STATE_INITIAL ;
+ void* change_lcd_color_intensity (int ,scalar_t__) ;
+ scalar_t__ get_brightness (int *,scalar_t__) ;
+ scalar_t__ get_led_index_master (int *) ;
+ scalar_t__ get_led_index_slave (int *) ;
+ scalar_t__ get_secondary_led_index (int *) ;
+ scalar_t__ is_serial_link_master () ;
+ scalar_t__ lcd_state ;
+ int * led_emulation_colors ;
+ void* next_led_target_color ;
+ int one_led_color ;
+ int start_keyframe_animation (int *) ;
+ int stop_keyframe_animation (int *) ;
+ int two_led_colors ;
 
 __attribute__((used)) static void update_emulated_leds(visualizer_state_t* state, visualizer_keyboard_status_t* prev_status) {
     visualizer_user_data_t* user_data_new = (visualizer_user_data_t*)state->status.user_data;

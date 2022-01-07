@@ -1,31 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
-
 bool CfgCheckCharForName(char c)
 {
-	if (c >= 0 && c <= 31)
-	{
-		return false;
-	}
-	if (c == ' ' || c == '\t')
-	{
-		return false;
-	}
-	if (c == '$')
-	{
-		return false;
-	}
-	return true;
+ if (c >= 0 && c <= 31)
+ {
+  return 0;
+ }
+ if (c == ' ' || c == '\t')
+ {
+  return 0;
+ }
+ if (c == '$')
+ {
+  return 0;
+ }
+ return 1;
 }

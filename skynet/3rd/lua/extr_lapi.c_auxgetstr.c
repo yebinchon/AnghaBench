@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
 struct TYPE_10__ {scalar_t__ top; } ;
-typedef  TYPE_1__ lua_State ;
-typedef  int /*<<< orphan*/  TValue ;
-typedef  int /*<<< orphan*/  TString ;
+typedef TYPE_1__ lua_State ;
+typedef int TValue ;
+typedef int TString ;
 
-/* Variables and functions */
- int /*<<< orphan*/  api_incr_top (TYPE_1__*) ; 
- int /*<<< orphan*/  luaH_getstr ; 
- int /*<<< orphan*/ * luaS_new (TYPE_1__*,char const*) ; 
- scalar_t__ luaV_fastget (TYPE_1__*,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  luaV_finishget (TYPE_1__*,int /*<<< orphan*/  const*,scalar_t__,scalar_t__,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  lua_unlock (TYPE_1__*) ; 
- int /*<<< orphan*/  setobj2s (TYPE_1__*,scalar_t__,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  setsvalue2s (TYPE_1__*,scalar_t__,int /*<<< orphan*/ *) ; 
- int ttnov (scalar_t__) ; 
+
+ int api_incr_top (TYPE_1__*) ;
+ int luaH_getstr ;
+ int * luaS_new (TYPE_1__*,char const*) ;
+ scalar_t__ luaV_fastget (TYPE_1__*,int const*,int *,int const*,int ) ;
+ int luaV_finishget (TYPE_1__*,int const*,scalar_t__,scalar_t__,int const*) ;
+ int lua_unlock (TYPE_1__*) ;
+ int setobj2s (TYPE_1__*,scalar_t__,int const*) ;
+ int setsvalue2s (TYPE_1__*,scalar_t__,int *) ;
+ int ttnov (scalar_t__) ;
 
 __attribute__((used)) static int auxgetstr (lua_State *L, const TValue *t, const char *k) {
   const TValue *slot;

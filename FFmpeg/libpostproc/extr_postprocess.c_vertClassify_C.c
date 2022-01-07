@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_4__ {int /*<<< orphan*/  QP; } ;
-typedef  TYPE_1__ PPContext ;
 
-/* Variables and functions */
- scalar_t__ isVertDC_C (int /*<<< orphan*/  const*,int,TYPE_1__ const*) ; 
- int isVertMinMaxOk_C (int /*<<< orphan*/  const*,int,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_4__ {int QP; } ;
+typedef TYPE_1__ PPContext ;
+
+
+ scalar_t__ isVertDC_C (int const*,int,TYPE_1__ const*) ;
+ int isVertMinMaxOk_C (int const*,int,int ) ;
 
 __attribute__((used)) static inline int vertClassify_C(const uint8_t src[], int stride, const PPContext *c)
 {

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  work; } ;
-struct tps65010 {TYPE_1__ work; int /*<<< orphan*/  flags; } ;
-typedef  int /*<<< orphan*/  irqreturn_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FLAG_IRQ_ENABLE ; 
- int /*<<< orphan*/  IRQ_HANDLED ; 
- int /*<<< orphan*/  disable_irq_nosync (int) ; 
- int /*<<< orphan*/  schedule_work (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  set_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int work; } ;
+struct tps65010 {TYPE_1__ work; int flags; } ;
+typedef int irqreturn_t ;
+
+
+ int FLAG_IRQ_ENABLE ;
+ int IRQ_HANDLED ;
+ int disable_irq_nosync (int) ;
+ int schedule_work (int *) ;
+ int set_bit (int ,int *) ;
 
 __attribute__((used)) static irqreturn_t tps65010_irq(int irq, void *_tps)
 {
-	struct tps65010		*tps = _tps;
+ struct tps65010 *tps = _tps;
 
-	disable_irq_nosync(irq);
-	set_bit(FLAG_IRQ_ENABLE, &tps->flags);
-	(void) schedule_work(&tps->work.work);
-	return IRQ_HANDLED;
+ disable_irq_nosync(irq);
+ set_bit(FLAG_IRQ_ENABLE, &tps->flags);
+ (void) schedule_work(&tps->work.work);
+ return IRQ_HANDLED;
 }

@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Vector ;
-typedef  int /*<<< orphan*/  Type ;
-typedef  int /*<<< orphan*/  Token ;
 
-/* Variables and functions */
- char KELLIPSIS ; 
- char KVOID ; 
- int /*<<< orphan*/  errort (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/ * get () ; 
- scalar_t__ is_keyword (int /*<<< orphan*/ *,char) ; 
- scalar_t__ is_type (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * make_func_type (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/ * make_vector () ; 
- scalar_t__ next_token (char) ; 
- int /*<<< orphan*/ * peek () ; 
- int /*<<< orphan*/  read_declarator_params (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  read_declarator_params_oldstyle (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  type_int ; 
- int /*<<< orphan*/  unget_token (int /*<<< orphan*/ *) ; 
- int vec_len (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vec_push (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int Vector ;
+typedef int Type ;
+typedef int Token ;
+
+
+ char KELLIPSIS ;
+ char KVOID ;
+ int errort (int *,char*) ;
+ int * get () ;
+ scalar_t__ is_keyword (int *,char) ;
+ scalar_t__ is_type (int *) ;
+ int * make_func_type (int *,int *,int,int) ;
+ int * make_vector () ;
+ scalar_t__ next_token (char) ;
+ int * peek () ;
+ int read_declarator_params (int *,int *,int*) ;
+ int read_declarator_params_oldstyle (int *) ;
+ int type_int ;
+ int unget_token (int *) ;
+ int vec_len (int *) ;
+ int vec_push (int *,int ) ;
 
 __attribute__((used)) static Type *read_func_param_list(Vector *paramvars, Type *rettype) {
-    // C11 6.7.6.3p10: A parameter list with just "void" specifies that
-    // the function has no parameters.
+
+
     Token *tok = get();
     if (is_keyword(tok, KVOID) && next_token(')'))
-        return make_func_type(rettype, make_vector(), false, false);
+        return make_func_type(rettype, make_vector(), 0, 0);
 
-    // C11 6.7.6.3p14: K&R-style un-prototyped declaration or
-    // function definition having no parameters.
-    // We return a type representing K&R-style declaration here.
-    // If this is actually part of a declartion, the type will be fixed later.
+
+
+
+
     if (is_keyword(tok, ')'))
-        return make_func_type(rettype, make_vector(), true, true);
+        return make_func_type(rettype, make_vector(), 1, 1);
     unget_token(tok);
 
     Token *tok2 = peek();
@@ -54,7 +54,7 @@ __attribute__((used)) static Type *read_func_param_list(Vector *paramvars, Type 
         bool ellipsis;
         Vector *paramtypes = make_vector();
         read_declarator_params(paramtypes, paramvars, &ellipsis);
-        return make_func_type(rettype, paramtypes, ellipsis, false);
+        return make_func_type(rettype, paramtypes, ellipsis, 0);
     }
     if (!paramvars)
         errort(tok, "invalid function definition");
@@ -62,5 +62,5 @@ __attribute__((used)) static Type *read_func_param_list(Vector *paramvars, Type 
     Vector *paramtypes = make_vector();
     for (int i = 0; i < vec_len(paramvars); i++)
         vec_push(paramtypes, type_int);
-    return make_func_type(rettype, paramtypes, false, true);
+    return make_func_type(rettype, paramtypes, 0, 1);
 }

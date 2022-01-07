@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_6__ {scalar_t__ lower; scalar_t__ upper; } ;
 struct TYPE_7__ {int nItem; scalar_t__ index; int nSpecial; TYPE_2__ range; TYPE_1__* ranges; } ;
-struct TYPE_5__ {int /*<<< orphan*/  hdpa; } ;
-typedef  TYPE_2__ RANGE ;
-typedef  TYPE_3__ ITERATOR ;
-typedef  int BOOL ;
+struct TYPE_5__ {int hdpa; } ;
+typedef TYPE_2__ RANGE ;
+typedef TYPE_3__ ITERATOR ;
+typedef int BOOL ;
 
-/* Variables and functions */
- scalar_t__ DPA_GetPtr (int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__ DPA_GetPtrCount (int /*<<< orphan*/ ) ; 
- int FALSE ; 
- int TRUE ; 
+
+ scalar_t__ DPA_GetPtr (int ,scalar_t__) ;
+ scalar_t__ DPA_GetPtrCount (int ) ;
+ int FALSE ;
+ int TRUE ;
 
 __attribute__((used)) static inline BOOL iterator_prev(ITERATOR* i)
 {
@@ -32,14 +32,14 @@ __attribute__((used)) static inline BOOL iterator_prev(ITERATOR* i)
 
     if (i->nItem == -1)
     {
-	start = TRUE;
-	if (i->ranges) i->index = DPA_GetPtrCount(i->ranges->hdpa);
-	goto pickarange;
+ start = TRUE;
+ if (i->ranges) i->index = DPA_GetPtrCount(i->ranges->hdpa);
+ goto pickarange;
     }
     if (i->nItem == i->nSpecial)
     {
-	i->nItem = -1;
-	return FALSE;
+ i->nItem = -1;
+ return FALSE;
     }
 
 testitem:
@@ -50,9 +50,9 @@ testitem:
 pickarange:
     if (i->ranges)
     {
-	if (i->index > 0)
-	    i->range = *(RANGE*)DPA_GetPtr(i->ranges->hdpa, --i->index);
-	else goto end;
+ if (i->index > 0)
+     i->range = *(RANGE*)DPA_GetPtr(i->ranges->hdpa, --i->index);
+ else goto end;
     }
     else if (!start && i->nItem < i->range.lower) goto end;
 

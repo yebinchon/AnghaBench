@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct d3dx_parameter {int rows; int columns; int /*<<< orphan*/  type; scalar_t__ data; } ;
-typedef  int UINT ;
-struct TYPE_4__ {int /*<<< orphan*/ ** m; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct d3dx_parameter {int rows; int columns; int type; scalar_t__ data; } ;
+typedef int UINT ;
+struct TYPE_4__ {int ** m; } ;
 struct TYPE_5__ {TYPE_1__ u; } ;
-typedef  float FLOAT ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  TYPE_2__ D3DXMATRIX ;
-typedef  scalar_t__ BOOL ;
+typedef float FLOAT ;
+typedef int DWORD ;
+typedef TYPE_2__ D3DXMATRIX ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D3DXPT_FLOAT ; 
- int /*<<< orphan*/  set_number (float*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int D3DXPT_FLOAT ;
+ int set_number (float*,int ,int *,int ) ;
 
 __attribute__((used)) static void get_matrix(struct d3dx_parameter *param, D3DXMATRIX *matrix, BOOL transpose)
 {

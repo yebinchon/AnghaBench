@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ cfgStatus; } ;
-typedef  TYPE_1__ SGlobalConfig ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef TYPE_1__ SGlobalConfig ;
+typedef int FILE ;
 
-/* Variables and functions */
- scalar_t__ TSDB_CFG_CSTATUS_FILE ; 
- char* configDir ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  feof (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  getline (char**,size_t*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pError (char*) ; 
- int /*<<< orphan*/  paGetToken (char*,char**,int*) ; 
- int /*<<< orphan*/  sprintf (char*,char*,char*) ; 
- int /*<<< orphan*/  strcpy (scalar_t__*,scalar_t__*) ; 
- scalar_t__ strlen (scalar_t__*) ; 
- int /*<<< orphan*/  taosGetPrivateIp (scalar_t__*) ; 
- int /*<<< orphan*/  taosGetSystemInfo () ; 
- int /*<<< orphan*/  tfree (char*) ; 
- TYPE_1__* tsGetConfigOption (char*) ; 
- int /*<<< orphan*/  tsInitGlobalConfig () ; 
- scalar_t__* tsInternalIp ; 
- scalar_t__* tsLocalIp ; 
- scalar_t__* tsMasterIp ; 
- int tsNumOfCores ; 
- scalar_t__* tsPrivateIp ; 
- scalar_t__* tsPublicIp ; 
- int /*<<< orphan*/  tsReadConfigOption (char*,char*) ; 
- int /*<<< orphan*/  tsReadGlobalConfigSpec () ; 
- scalar_t__* tsSecondIp ; 
- int /*<<< orphan*/  tsSetLocale () ; 
- int /*<<< orphan*/  tsSetTimeZone () ; 
- int tsVersion ; 
- scalar_t__ tscEmbedded ; 
- char* version ; 
+
+ scalar_t__ TSDB_CFG_CSTATUS_FILE ;
+ char* configDir ;
+ int fclose (int *) ;
+ int feof (int *) ;
+ int * fopen (char*,char*) ;
+ int getline (char**,size_t*,int *) ;
+ int pError (char*) ;
+ int paGetToken (char*,char**,int*) ;
+ int sprintf (char*,char*,char*) ;
+ int strcpy (scalar_t__*,scalar_t__*) ;
+ scalar_t__ strlen (scalar_t__*) ;
+ int taosGetPrivateIp (scalar_t__*) ;
+ int taosGetSystemInfo () ;
+ int tfree (char*) ;
+ TYPE_1__* tsGetConfigOption (char*) ;
+ int tsInitGlobalConfig () ;
+ scalar_t__* tsInternalIp ;
+ scalar_t__* tsLocalIp ;
+ scalar_t__* tsMasterIp ;
+ int tsNumOfCores ;
+ scalar_t__* tsPrivateIp ;
+ scalar_t__* tsPublicIp ;
+ int tsReadConfigOption (char*,char*) ;
+ int tsReadGlobalConfigSpec () ;
+ scalar_t__* tsSecondIp ;
+ int tsSetLocale () ;
+ int tsSetTimeZone () ;
+ int tsVersion ;
+ scalar_t__ tscEmbedded ;
+ char* version ;
 
 bool tsReadGlobalConfig() {
   tsInitGlobalConfig();
@@ -53,21 +53,21 @@ bool tsReadGlobalConfig() {
   FILE * fp;
   char * line, *option, *value, *value1;
   size_t len;
-  int    olen, vlen, vlen1;
-  char   fileName[128];
+  int olen, vlen, vlen1;
+  char fileName[128];
 
   sprintf(fileName, "%s/taos.cfg", configDir);
   fp = fopen(fileName, "r");
-  if (fp == NULL) {
+  if (fp == ((void*)0)) {
   } else {
-    line = NULL;
+    line = ((void*)0);
     while (!feof(fp)) {
       tfree(line);
-      line = option = value = NULL;
+      line = option = value = ((void*)0);
       len = olen = vlen = 0;
 
       getline(&line, &len, fp);
-      if (line == NULL) break;
+      if (line == ((void*)0)) break;
 
       paGetToken(line, &option, &olen);
       if (olen == 0) continue;
@@ -77,8 +77,8 @@ bool tsReadGlobalConfig() {
       if (vlen == 0) continue;
       value[vlen] = 0;
 
-      // For dataDir, the format is:
-      // dataDir    /mnt/disk1    0
+
+
       paGetToken(value + vlen + 1, &value1, &vlen1);
 
       tsReadConfigOption(option, value);
@@ -129,7 +129,7 @@ bool tsReadGlobalConfig() {
 
   if (strlen(tsPrivateIp) == 0) {
     pError("privateIp is null");
-    return false;
+    return 0;
   }
 
   if (tscEmbedded) {
@@ -146,5 +146,5 @@ bool tsReadGlobalConfig() {
   }
   tsVersion = 10 * tsVersion;
 
-  return true;
+  return 1;
 }

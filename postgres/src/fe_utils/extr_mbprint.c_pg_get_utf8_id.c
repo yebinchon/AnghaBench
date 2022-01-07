@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int pg_char_to_encoding (char*) ; 
+ int pg_char_to_encoding (char*) ;
 
 __attribute__((used)) static int
 pg_get_utf8_id(void)
 {
-	static int	utf8_id = -1;
+ static int utf8_id = -1;
 
-	if (utf8_id < 0)
-		utf8_id = pg_char_to_encoding("utf8");
-	return utf8_id;
+ if (utf8_id < 0)
+  utf8_id = pg_char_to_encoding("utf8");
+ return utf8_id;
 }

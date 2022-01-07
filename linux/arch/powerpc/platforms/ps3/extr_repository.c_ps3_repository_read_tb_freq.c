@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u64 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PS3_LPAR_ID_PME ; 
- int /*<<< orphan*/  make_field (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  make_first_field (char*,int /*<<< orphan*/ ) ; 
- int read_node (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int u64 ;
+
+
+ int PS3_LPAR_ID_PME ;
+ int make_field (char*,int ) ;
+ int make_first_field (char*,int ) ;
+ int read_node (int ,int ,int ,int ,int ,int *,int *) ;
 
 int ps3_repository_read_tb_freq(u64 node_id, u64 *tb_freq)
 {
-	return read_node(PS3_LPAR_ID_PME,
-		make_first_field("be", 0),
-		node_id,
-		make_field("clock", 0),
-		0,
-		tb_freq, NULL);
+ return read_node(PS3_LPAR_ID_PME,
+  make_first_field("be", 0),
+  node_id,
+  make_field("clock", 0),
+  0,
+  tb_freq, ((void*)0));
 }

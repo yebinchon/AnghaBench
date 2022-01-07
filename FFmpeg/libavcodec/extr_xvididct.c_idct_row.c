@@ -1,18 +1,10 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int const ROW_SHIFT ; 
+ int const ROW_SHIFT ;
 
 __attribute__((used)) static int idct_row(short *in, const int *const tab, int rnd)
 {
@@ -25,7 +17,7 @@ __attribute__((used)) static int idct_row(short *in, const int *const tab, int r
     const int c7 = tab[6];
 
     const int right = in[5] | in[6] | in[7];
-    const int left  = in[1] | in[2] | in[3];
+    const int left = in[1] | in[2] | in[3];
     if (!(right | in[4])) {
         const int k = c4 * in[0] + rnd;
         if (left) {
@@ -74,7 +66,7 @@ __attribute__((used)) static int idct_row(short *in, const int *const tab, int r
         in[5] = a1;
         in[6] = a1;
     } else {
-        const int k  = c4 * in[0] + rnd;
+        const int k = c4 * in[0] + rnd;
         const int a0 = k + c2 * in[2] + c4 * in[4] + c6 * in[6];
         const int a1 = k + c6 * in[2] - c4 * in[4] - c2 * in[6];
         const int a2 = k - c6 * in[2] - c4 * in[4] + c2 * in[6];

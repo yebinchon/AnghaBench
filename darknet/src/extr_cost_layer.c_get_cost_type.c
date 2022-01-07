@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  COST_TYPE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  L1 ; 
- int /*<<< orphan*/  MASKED ; 
- int /*<<< orphan*/  SEG ; 
- int /*<<< orphan*/  SMOOTH ; 
- int /*<<< orphan*/  SSE ; 
- int /*<<< orphan*/  WGAN ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ strcmp (char*,char*) ; 
+
+
+
+typedef int COST_TYPE ;
+
+
+ int L1 ;
+ int MASKED ;
+ int SEG ;
+ int SMOOTH ;
+ int SSE ;
+ int WGAN ;
+ int fprintf (int ,char*,char*) ;
+ int stderr ;
+ scalar_t__ strcmp (char*,char*) ;
 
 COST_TYPE get_cost_type(char *s)
 {

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * PCCRL_CONTEXT ;
-typedef  int /*<<< orphan*/  HCERTSTORE ;
-typedef  scalar_t__ DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * CertEnumCRLsInStore (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int * PCCRL_CONTEXT ;
+typedef int HCERTSTORE ;
+typedef scalar_t__ DWORD ;
+
+
+ int * CertEnumCRLsInStore (int ,int *) ;
 
 __attribute__((used)) static DWORD countCRLsInStore(HCERTSTORE store)
 {
-    PCCRL_CONTEXT crl = NULL;
+    PCCRL_CONTEXT crl = ((void*)0);
     DWORD crls = 0;
 
     do {

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  length ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+typedef int length ;
 struct TYPE_4__ {void* status; TYPE_2__* module; } ;
-typedef  TYPE_1__ VC_CONTAINER_IO_T ;
-struct TYPE_5__ {int /*<<< orphan*/  stream; int /*<<< orphan*/  is_native_order; } ;
-typedef  TYPE_2__ VC_CONTAINER_IO_MODULE_T ;
+typedef TYPE_1__ VC_CONTAINER_IO_T ;
+struct TYPE_5__ {int stream; int is_native_order; } ;
+typedef TYPE_2__ VC_CONTAINER_IO_MODULE_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SEEK_CUR ; 
- void* VC_CONTAINER_ERROR_EOS ; 
- void* VC_CONTAINER_ERROR_FAILED ; 
- scalar_t__ feof (int /*<<< orphan*/ ) ; 
- size_t fread (void*,int,size_t,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fseek (int /*<<< orphan*/ ,long,int /*<<< orphan*/ ) ; 
- int swap_byte_order (int) ; 
- int /*<<< orphan*/  vc_container_assert (int) ; 
+
+ int SEEK_CUR ;
+ void* VC_CONTAINER_ERROR_EOS ;
+ void* VC_CONTAINER_ERROR_FAILED ;
+ scalar_t__ feof (int ) ;
+ size_t fread (void*,int,size_t,int ) ;
+ int fseek (int ,long,int ) ;
+ int swap_byte_order (int) ;
+ int vc_container_assert (int) ;
 
 __attribute__((used)) static size_t io_pktfile_read(VC_CONTAINER_IO_T *p_ctx, void *buffer, size_t size)
 {
@@ -62,7 +62,7 @@ __attribute__((used)) static size_t io_pktfile_read(VC_CONTAINER_IO_T *p_ctx, vo
    }
    else if (length > size)
    {
-      /* Not enough space to read all the packet, so skip to the next one. */
+
       length -= size;
       vc_container_assert((long)length > 0);
       fseek(module->stream, (long)length, SEEK_CUR);

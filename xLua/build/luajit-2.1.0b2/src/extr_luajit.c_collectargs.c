@@ -1,63 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int FLAGS_EXEC ; 
- int FLAGS_INTERACTIVE ; 
- int FLAGS_NOENV ; 
- int FLAGS_OPTION ; 
- int FLAGS_VERSION ; 
- int /*<<< orphan*/  notail (char*) ; 
+ int FLAGS_EXEC ;
+ int FLAGS_INTERACTIVE ;
+ int FLAGS_NOENV ;
+ int FLAGS_OPTION ;
+ int FLAGS_VERSION ;
+ int notail (char*) ;
 
 __attribute__((used)) static int collectargs(char **argv, int *flags)
 {
   int i;
-  for (i = 1; argv[i] != NULL; i++) {
-    if (argv[i][0] != '-')  /* Not an option? */
+  for (i = 1; argv[i] != ((void*)0); i++) {
+    if (argv[i][0] != '-')
       return i;
-    switch (argv[i][1]) {  /* Check option. */
+    switch (argv[i][1]) {
     case '-':
       notail(argv[i]);
-      return (argv[i+1] != NULL ? i+1 : 0);
+      return (argv[i+1] != ((void*)0) ? i+1 : 0);
     case '\0':
       return i;
     case 'i':
       notail(argv[i]);
       *flags |= FLAGS_INTERACTIVE;
-      /* fallthrough */
+
     case 'v':
       notail(argv[i]);
       *flags |= FLAGS_VERSION;
       break;
     case 'e':
       *flags |= FLAGS_EXEC;
-    case 'j':  /* LuaJIT extension */
+    case 'j':
     case 'l':
       *flags |= FLAGS_OPTION;
       if (argv[i][2] == '\0') {
-	i++;
-	if (argv[i] == NULL) return -1;
+ i++;
+ if (argv[i] == ((void*)0)) return -1;
       }
       break;
-    case 'O': break;  /* LuaJIT extension */
-    case 'b':  /* LuaJIT extension */
+    case 'O': break;
+    case 'b':
       if (*flags) return -1;
       *flags |= FLAGS_EXEC;
       return 0;
     case 'E':
       *flags |= FLAGS_NOENV;
       break;
-    default: return -1;  /* invalid option */
+    default: return -1;
     }
   }
   return 0;

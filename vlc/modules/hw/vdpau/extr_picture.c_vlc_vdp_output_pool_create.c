@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  video_format_t ;
-typedef  int /*<<< orphan*/  vdp_t ;
-typedef  int /*<<< orphan*/  picture_t ;
-typedef  int /*<<< orphan*/  picture_pool_t ;
-typedef  int /*<<< orphan*/  VdpRGBAFormat ;
 
-/* Variables and functions */
- int /*<<< orphan*/  picture_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * picture_pool_New (unsigned int,int /*<<< orphan*/ **) ; 
- scalar_t__ unlikely (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * vlc_vdp_output_surface_create (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const*) ; 
+
+
+
+typedef int video_format_t ;
+typedef int vdp_t ;
+typedef int picture_t ;
+typedef int picture_pool_t ;
+typedef int VdpRGBAFormat ;
+
+
+ int picture_Release (int *) ;
+ int * picture_pool_New (unsigned int,int **) ;
+ scalar_t__ unlikely (int ) ;
+ int * vlc_vdp_output_surface_create (int *,int ,int const*) ;
 
 picture_pool_t *vlc_vdp_output_pool_create(vdp_t *vdp, VdpRGBAFormat rgb_fmt,
                                            const video_format_t *restrict fmt,
@@ -32,16 +32,16 @@ picture_pool_t *vlc_vdp_output_pool_create(vdp_t *vdp, VdpRGBAFormat rgb_fmt,
     while (count < requested_count)
     {
         pics[count] = vlc_vdp_output_surface_create(vdp, rgb_fmt, fmt);
-        if (pics[count] == NULL)
+        if (pics[count] == ((void*)0))
             break;
         count++;
     }
 
     if (count == 0)
-        return NULL;
+        return ((void*)0);
 
     picture_pool_t *pool = picture_pool_New(count, pics);
-    if (unlikely(pool == NULL))
+    if (unlikely(pool == ((void*)0)))
         while (count > 0)
             picture_Release(pics[--count]);
     return pool;

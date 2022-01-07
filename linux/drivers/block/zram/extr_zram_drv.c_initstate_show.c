@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
-struct zram {int /*<<< orphan*/  init_lock; } ;
+
+
+
+
+typedef int u32 ;
+struct zram {int init_lock; } ;
 struct device_attribute {int dummy; } ;
 struct device {int dummy; } ;
-typedef  int /*<<< orphan*/  ssize_t ;
+typedef int ssize_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PAGE_SIZE ; 
- struct zram* dev_to_zram (struct device*) ; 
- int /*<<< orphan*/  down_read (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  init_done (struct zram*) ; 
- int /*<<< orphan*/  scnprintf (char*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  up_read (int /*<<< orphan*/ *) ; 
+
+ int PAGE_SIZE ;
+ struct zram* dev_to_zram (struct device*) ;
+ int down_read (int *) ;
+ int init_done (struct zram*) ;
+ int scnprintf (char*,int ,char*,int ) ;
+ int up_read (int *) ;
 
 __attribute__((used)) static ssize_t initstate_show(struct device *dev,
-		struct device_attribute *attr, char *buf)
+  struct device_attribute *attr, char *buf)
 {
-	u32 val;
-	struct zram *zram = dev_to_zram(dev);
+ u32 val;
+ struct zram *zram = dev_to_zram(dev);
 
-	down_read(&zram->init_lock);
-	val = init_done(zram);
-	up_read(&zram->init_lock);
+ down_read(&zram->init_lock);
+ val = init_done(zram);
+ up_read(&zram->init_lock);
 
-	return scnprintf(buf, PAGE_SIZE, "%u\n", val);
+ return scnprintf(buf, PAGE_SIZE, "%u\n", val);
 }

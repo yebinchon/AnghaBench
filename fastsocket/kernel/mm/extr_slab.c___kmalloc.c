@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  gfp_t ;
 
-/* Variables and functions */
- void* __do_kmalloc (size_t,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int gfp_t ;
+
+
+ void* __do_kmalloc (size_t,int ,int *) ;
 
 void *__kmalloc(size_t size, gfp_t flags)
 {
-	return __do_kmalloc(size, flags, NULL);
+ return __do_kmalloc(size, flags, ((void*)0));
 }

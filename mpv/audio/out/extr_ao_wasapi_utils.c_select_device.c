@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wchar_t ;
+
+
+
+
+typedef int wchar_t ;
 struct mp_log {int dummy; } ;
-struct device_desc {int /*<<< orphan*/  deviceID; int /*<<< orphan*/  name; int /*<<< orphan*/  id; } ;
-typedef  int /*<<< orphan*/ * LPWSTR ;
+struct device_desc {int deviceID; int name; int id; } ;
+typedef int * LPWSTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mp_verbose (struct mp_log*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * talloc_memdup (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int wcslen (int /*<<< orphan*/ ) ; 
+
+ int mp_verbose (struct mp_log*,char*,int ,int ) ;
+ int * talloc_memdup (int *,int ,int) ;
+ int wcslen (int ) ;
 
 __attribute__((used)) static LPWSTR select_device(struct mp_log *l, struct device_desc *d)
 {
     if (!d)
-        return NULL;
+        return ((void*)0);
     mp_verbose(l, "Selecting device \'%s\' (%s)\n", d->id, d->name);
-    return talloc_memdup(NULL, d->deviceID,
+    return talloc_memdup(((void*)0), d->deviceID,
                          (wcslen(d->deviceID) + 1) * sizeof(wchar_t));
 }

@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int displayLevel; } ;
-struct TYPE_4__ {int sparseFileSupport; int /*<<< orphan*/  overwrite; scalar_t__ testMode; } ;
-typedef  TYPE_1__ FIO_prefs_t ;
-typedef  int /*<<< orphan*/  FILE ;
+struct TYPE_4__ {int sparseFileSupport; int overwrite; scalar_t__ testMode; } ;
+typedef TYPE_1__ FIO_prefs_t ;
+typedef int FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DISPLAY (char*,...) ; 
- int /*<<< orphan*/  DISPLAYLEVEL (int,char*,...) ; 
- int EOF ; 
- int /*<<< orphan*/  EXM_THROW (int,char*,char const*) ; 
- int /*<<< orphan*/  FIO_remove (char const*) ; 
- int /*<<< orphan*/  SET_BINARY_MODE (int /*<<< orphan*/ *) ; 
- scalar_t__ UTIL_isRegularFile (char const*) ; 
- scalar_t__ UTIL_isSameFile (char const*,char const*) ; 
- int ZSTD_SPARSE_DEFAULT ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  chmod (char const*,int) ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ * const) ; 
- int /*<<< orphan*/ * fopen (char const*,char*) ; 
- TYPE_2__ g_display_prefs ; 
- int getchar () ; 
- int /*<<< orphan*/  nulmark ; 
- int /*<<< orphan*/  stdinmark ; 
- int /*<<< orphan*/ * stdout ; 
- int /*<<< orphan*/  stdoutmark ; 
- scalar_t__ strcmp (char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strerror (int /*<<< orphan*/ ) ; 
+
+ int DISPLAY (char*,...) ;
+ int DISPLAYLEVEL (int,char*,...) ;
+ int EOF ;
+ int EXM_THROW (int,char*,char const*) ;
+ int FIO_remove (char const*) ;
+ int SET_BINARY_MODE (int *) ;
+ scalar_t__ UTIL_isRegularFile (char const*) ;
+ scalar_t__ UTIL_isSameFile (char const*,char const*) ;
+ int ZSTD_SPARSE_DEFAULT ;
+ int assert (int ) ;
+ int chmod (char const*,int) ;
+ int errno ;
+ int fclose (int * const) ;
+ int * fopen (char const*,char*) ;
+ TYPE_2__ g_display_prefs ;
+ int getchar () ;
+ int nulmark ;
+ int stdinmark ;
+ int * stdout ;
+ int stdoutmark ;
+ scalar_t__ strcmp (char const*,int ) ;
+ int strerror (int ) ;
 
 __attribute__((used)) static FILE*
 FIO_openDstFile(FIO_prefs_t* const prefs,
           const char* srcFileName, const char* dstFileName)
 {
-    if (prefs->testMode) return NULL;  /* do not open file in test mode */
+    if (prefs->testMode) return ((void*)0);
 
-    assert(dstFileName != NULL);
+    assert(dstFileName != ((void*)0));
     if (!strcmp (dstFileName, stdoutmark)) {
         DISPLAYLEVEL(4,"Using stdout for output \n");
         SET_BINARY_MODE(stdout);
@@ -58,10 +58,10 @@ FIO_openDstFile(FIO_prefs_t* const prefs,
         return stdout;
     }
 
-    /* ensure dst is not the same as src */
-    if (srcFileName != NULL && UTIL_isSameFile(srcFileName, dstFileName)) {
+
+    if (srcFileName != ((void*)0) && UTIL_isSameFile(srcFileName, dstFileName)) {
         DISPLAYLEVEL(1, "zstd: Refusing to open an output file which will overwrite the input file \n");
-        return NULL;
+        return ((void*)0);
     }
 
     if (prefs->sparseFileSupport == 1) {
@@ -69,43 +69,43 @@ FIO_openDstFile(FIO_prefs_t* const prefs,
     }
 
     if (UTIL_isRegularFile(dstFileName)) {
-        /* Check if destination file already exists */
+
         FILE* const fCheck = fopen( dstFileName, "rb" );
-#if !defined(_WIN32)
-        /* this test does not work on Windows :
-         * `NUL` and `nul` are detected as regular files */
+
+
+
         if (!strcmp(dstFileName, nulmark)) {
             EXM_THROW(40, "%s is unexpectedly categorized as a regular file",
                         dstFileName);
         }
-#endif
-        if (fCheck != NULL) {  /* dst file exists, authorization prompt */
+
+        if (fCheck != ((void*)0)) {
             fclose(fCheck);
             if (!prefs->overwrite) {
                 if (g_display_prefs.displayLevel <= 1) {
-                    /* No interaction possible */
+
                     DISPLAY("zstd: %s already exists; not overwritten  \n",
                             dstFileName);
-                    return NULL;
+                    return ((void*)0);
                 }
                 DISPLAY("zstd: %s already exists; overwrite (y/N) ? ",
                         dstFileName);
-                {   int ch = getchar();
+                { int ch = getchar();
                     if ((ch!='Y') && (ch!='y')) {
                         DISPLAY("    not overwritten  \n");
-                        return NULL;
+                        return ((void*)0);
                     }
-                    /* flush rest of input line */
-                    while ((ch!=EOF) && (ch!='\n')) ch = getchar();
-            }   }
-            /* need to unlink */
-            FIO_remove(dstFileName);
-    }   }
 
-    {   FILE* const f = fopen( dstFileName, "wb" );
-        if (f == NULL) {
+                    while ((ch!=EOF) && (ch!='\n')) ch = getchar();
+            } }
+
+            FIO_remove(dstFileName);
+    } }
+
+    { FILE* const f = fopen( dstFileName, "wb" );
+        if (f == ((void*)0)) {
             DISPLAYLEVEL(1, "zstd: %s: %s\n", dstFileName, strerror(errno));
-        } else if(srcFileName != NULL && strcmp (srcFileName, stdinmark)) {
+        } else if(srcFileName != ((void*)0) && strcmp (srcFileName, stdinmark)) {
             chmod(dstFileName, 00600);
         }
         return f;

@@ -1,0 +1,208 @@
+; ModuleID = '/home/carl/AnghaBench/linux/drivers/net/ethernet/aurora/extr_nb8800.c_nb8800_irq.c'
+source_filename = "/home/carl/AnghaBench/linux/drivers/net/ethernet/aurora/extr_nb8800.c_nb8800_irq.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+%struct.net_device = type { i32 }
+%struct.nb8800_priv = type { i32, i32 }
+
+@IRQ_NONE = common dso_local global i32 0, align 4
+@NB8800_TXC_SR = common dso_local global i32 0, align 4
+@TSR_DI = common dso_local global i32 0, align 4
+@TSR_TI = common dso_local global i32 0, align 4
+@TSR_DE = common dso_local global i32 0, align 4
+@.str = private unnamed_addr constant [14 x i8] c"TX DMA error\0A\00", align 1
+@TSR_TO = common dso_local global i32 0, align 4
+@.str.1 = private unnamed_addr constant [25 x i8] c"TX Status FIFO overflow\0A\00", align 1
+@IRQ_HANDLED = common dso_local global i32 0, align 4
+@NB8800_RXC_SR = common dso_local global i32 0, align 4
+@RSR_RI = common dso_local global i32 0, align 4
+@RSR_DI = common dso_local global i32 0, align 4
+@NB8800_RX_ITR = common dso_local global i32 0, align 4
+@RSR_DE = common dso_local global i32 0, align 4
+@.str.2 = private unnamed_addr constant [14 x i8] c"RX DMA error\0A\00", align 1
+@RSR_RO = common dso_local global i32 0, align 4
+@.str.3 = private unnamed_addr constant [25 x i8] c"RX Status FIFO overflow\0A\00", align 1
+@llvm.used = appending global [1 x i8*] [i8* bitcast (i32 (i32, i8*)* @nb8800_irq to i8*)], section "llvm.metadata"
+
+; Function Attrs: noinline nounwind optnone uwtable
+define internal i32 @nb8800_irq(i32 %0, i8* %1) #0 {
+  %3 = alloca i32, align 4
+  %4 = alloca i8*, align 8
+  %5 = alloca %struct.net_device*, align 8
+  %6 = alloca %struct.nb8800_priv*, align 8
+  %7 = alloca i32, align 4
+  %8 = alloca i32, align 4
+  store i32 %0, i32* %3, align 4
+  store i8* %1, i8** %4, align 8
+  %9 = load i8*, i8** %4, align 8
+  %10 = bitcast i8* %9 to %struct.net_device*
+  store %struct.net_device* %10, %struct.net_device** %5, align 8
+  %11 = load %struct.net_device*, %struct.net_device** %5, align 8
+  %12 = call %struct.nb8800_priv* @netdev_priv(%struct.net_device* %11)
+  store %struct.nb8800_priv* %12, %struct.nb8800_priv** %6, align 8
+  %13 = load i32, i32* @IRQ_NONE, align 4
+  store i32 %13, i32* %7, align 4
+  %14 = load %struct.nb8800_priv*, %struct.nb8800_priv** %6, align 8
+  %15 = load i32, i32* @NB8800_TXC_SR, align 4
+  %16 = call i32 @nb8800_readl(%struct.nb8800_priv* %14, i32 %15)
+  store i32 %16, i32* %8, align 4
+  %17 = load i32, i32* %8, align 4
+  %18 = icmp ne i32 %17, 0
+  br i1 %18, label %19, label %60
+
+19:                                               ; preds = %2
+  %20 = load %struct.nb8800_priv*, %struct.nb8800_priv** %6, align 8
+  %21 = load i32, i32* @NB8800_TXC_SR, align 4
+  %22 = load i32, i32* %8, align 4
+  %23 = call i32 @nb8800_writel(%struct.nb8800_priv* %20, i32 %21, i32 %22)
+  %24 = load i32, i32* %8, align 4
+  %25 = load i32, i32* @TSR_DI, align 4
+  %26 = and i32 %24, %25
+  %27 = icmp ne i32 %26, 0
+  br i1 %27, label %28, label %31
+
+28:                                               ; preds = %19
+  %29 = load %struct.net_device*, %struct.net_device** %5, align 8
+  %30 = call i32 @nb8800_tx_dma_start_irq(%struct.net_device* %29)
+  br label %31
+
+31:                                               ; preds = %28, %19
+  %32 = load i32, i32* %8, align 4
+  %33 = load i32, i32* @TSR_TI, align 4
+  %34 = and i32 %32, %33
+  %35 = icmp ne i32 %34, 0
+  br i1 %35, label %36, label %40
+
+36:                                               ; preds = %31
+  %37 = load %struct.nb8800_priv*, %struct.nb8800_priv** %6, align 8
+  %38 = getelementptr inbounds %struct.nb8800_priv, %struct.nb8800_priv* %37, i32 0, i32 1
+  %39 = call i32 @napi_schedule_irqoff(i32* %38)
+  br label %40
+
+40:                                               ; preds = %36, %31
+  %41 = load i32, i32* %8, align 4
+  %42 = load i32, i32* @TSR_DE, align 4
+  %43 = and i32 %41, %42
+  %44 = call i64 @unlikely(i32 %43)
+  %45 = icmp ne i64 %44, 0
+  br i1 %45, label %46, label %49
+
+46:                                               ; preds = %40
+  %47 = load %struct.net_device*, %struct.net_device** %5, align 8
+  %48 = call i32 @netdev_err(%struct.net_device* %47, i8* getelementptr inbounds ([14 x i8], [14 x i8]* @.str, i64 0, i64 0))
+  br label %49
+
+49:                                               ; preds = %46, %40
+  %50 = load i32, i32* %8, align 4
+  %51 = load i32, i32* @TSR_TO, align 4
+  %52 = and i32 %50, %51
+  %53 = call i64 @unlikely(i32 %52)
+  %54 = icmp ne i64 %53, 0
+  br i1 %54, label %55, label %58
+
+55:                                               ; preds = %49
+  %56 = load %struct.net_device*, %struct.net_device** %5, align 8
+  %57 = call i32 @netdev_err(%struct.net_device* %56, i8* getelementptr inbounds ([25 x i8], [25 x i8]* @.str.1, i64 0, i64 0))
+  br label %58
+
+58:                                               ; preds = %55, %49
+  %59 = load i32, i32* @IRQ_HANDLED, align 4
+  store i32 %59, i32* %7, align 4
+  br label %60
+
+60:                                               ; preds = %58, %2
+  %61 = load %struct.nb8800_priv*, %struct.nb8800_priv** %6, align 8
+  %62 = load i32, i32* @NB8800_RXC_SR, align 4
+  %63 = call i32 @nb8800_readl(%struct.nb8800_priv* %61, i32 %62)
+  store i32 %63, i32* %8, align 4
+  %64 = load i32, i32* %8, align 4
+  %65 = icmp ne i32 %64, 0
+  br i1 %65, label %66, label %108
+
+66:                                               ; preds = %60
+  %67 = load %struct.nb8800_priv*, %struct.nb8800_priv** %6, align 8
+  %68 = load i32, i32* @NB8800_RXC_SR, align 4
+  %69 = load i32, i32* %8, align 4
+  %70 = call i32 @nb8800_writel(%struct.nb8800_priv* %67, i32 %68, i32 %69)
+  %71 = load i32, i32* %8, align 4
+  %72 = load i32, i32* @RSR_RI, align 4
+  %73 = load i32, i32* @RSR_DI, align 4
+  %74 = or i32 %72, %73
+  %75 = and i32 %71, %74
+  %76 = call i64 @likely(i32 %75)
+  %77 = icmp ne i64 %76, 0
+  br i1 %77, label %78, label %88
+
+78:                                               ; preds = %66
+  %79 = load %struct.nb8800_priv*, %struct.nb8800_priv** %6, align 8
+  %80 = load i32, i32* @NB8800_RX_ITR, align 4
+  %81 = load %struct.nb8800_priv*, %struct.nb8800_priv** %6, align 8
+  %82 = getelementptr inbounds %struct.nb8800_priv, %struct.nb8800_priv* %81, i32 0, i32 0
+  %83 = load i32, i32* %82, align 4
+  %84 = call i32 @nb8800_writel(%struct.nb8800_priv* %79, i32 %80, i32 %83)
+  %85 = load %struct.nb8800_priv*, %struct.nb8800_priv** %6, align 8
+  %86 = getelementptr inbounds %struct.nb8800_priv, %struct.nb8800_priv* %85, i32 0, i32 1
+  %87 = call i32 @napi_schedule_irqoff(i32* %86)
+  br label %88
+
+88:                                               ; preds = %78, %66
+  %89 = load i32, i32* %8, align 4
+  %90 = load i32, i32* @RSR_DE, align 4
+  %91 = and i32 %89, %90
+  %92 = call i64 @unlikely(i32 %91)
+  %93 = icmp ne i64 %92, 0
+  br i1 %93, label %94, label %97
+
+94:                                               ; preds = %88
+  %95 = load %struct.net_device*, %struct.net_device** %5, align 8
+  %96 = call i32 @netdev_err(%struct.net_device* %95, i8* getelementptr inbounds ([14 x i8], [14 x i8]* @.str.2, i64 0, i64 0))
+  br label %97
+
+97:                                               ; preds = %94, %88
+  %98 = load i32, i32* %8, align 4
+  %99 = load i32, i32* @RSR_RO, align 4
+  %100 = and i32 %98, %99
+  %101 = call i64 @unlikely(i32 %100)
+  %102 = icmp ne i64 %101, 0
+  br i1 %102, label %103, label %106
+
+103:                                              ; preds = %97
+  %104 = load %struct.net_device*, %struct.net_device** %5, align 8
+  %105 = call i32 @netdev_err(%struct.net_device* %104, i8* getelementptr inbounds ([25 x i8], [25 x i8]* @.str.3, i64 0, i64 0))
+  br label %106
+
+106:                                              ; preds = %103, %97
+  %107 = load i32, i32* @IRQ_HANDLED, align 4
+  store i32 %107, i32* %7, align 4
+  br label %108
+
+108:                                              ; preds = %106, %60
+  %109 = load i32, i32* %7, align 4
+  ret i32 %109
+}
+
+declare dso_local %struct.nb8800_priv* @netdev_priv(%struct.net_device*) #1
+
+declare dso_local i32 @nb8800_readl(%struct.nb8800_priv*, i32) #1
+
+declare dso_local i32 @nb8800_writel(%struct.nb8800_priv*, i32, i32) #1
+
+declare dso_local i32 @nb8800_tx_dma_start_irq(%struct.net_device*) #1
+
+declare dso_local i32 @napi_schedule_irqoff(i32*) #1
+
+declare dso_local i64 @unlikely(i32) #1
+
+declare dso_local i32 @netdev_err(%struct.net_device*, i8*) #1
+
+declare dso_local i64 @likely(i32) #1
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

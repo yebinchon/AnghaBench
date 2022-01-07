@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  zMsg ;
-typedef  void* sqlite3_int64 ;
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int zMsg ;
+typedef void* sqlite3_int64 ;
 struct TYPE_6__ {int szPg; int iCol; } ;
-typedef  TYPE_1__ GState ;
+typedef TYPE_1__ GState ;
 
-/* Variables and functions */
- int ofst2byte (TYPE_1__*,int) ; 
- int /*<<< orphan*/  ofstInFile (TYPE_1__*,int) ; 
- int ofstSerialSize (int) ; 
- void* ofstVarint (TYPE_1__*,int*) ; 
- int /*<<< orphan*/  printf (char*,char*) ; 
- int /*<<< orphan*/  sqlite3_snprintf (int,char*,char*,void*,...) ; 
+
+ int ofst2byte (TYPE_1__*,int) ;
+ int ofstInFile (TYPE_1__*,int) ;
+ int ofstSerialSize (int) ;
+ void* ofstVarint (TYPE_1__*,int*) ;
+ int printf (char*,char*) ;
+ int sqlite3_snprintf (int,char*,char*,void*,...) ;
 
 __attribute__((used)) static void ofstWalkLeafPage(GState *p){
   int nCell;

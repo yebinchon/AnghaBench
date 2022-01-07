@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  cairo_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int cairo_t ;
 struct TYPE_3__ {scalar_t__ style; } ;
-typedef  TYPE_1__ RofiDistance ;
+typedef TYPE_1__ RofiDistance ;
 
-/* Variables and functions */
- scalar_t__ ROFI_HL_DASH ; 
- int /*<<< orphan*/  cairo_set_dash (int /*<<< orphan*/ *,double const*,int,double) ; 
+
+ scalar_t__ ROFI_HL_DASH ;
+ int cairo_set_dash (int *,double const*,int,double) ;
 
 void distance_get_linestyle ( RofiDistance d, cairo_t *draw )
 {
@@ -26,6 +26,6 @@ void distance_get_linestyle ( RofiDistance d, cairo_t *draw )
         cairo_set_dash ( draw, dashes, 1, 0.0 );
     }
     else {
-        cairo_set_dash ( draw, NULL, 0, 0.0 );
+        cairo_set_dash ( draw, ((void*)0), 0, 0.0 );
     }
 }

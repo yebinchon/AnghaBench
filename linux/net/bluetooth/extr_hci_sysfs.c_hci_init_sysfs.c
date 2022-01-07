@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct device {int /*<<< orphan*/  class; int /*<<< orphan*/ * type; } ;
+
+
+
+
+struct device {int class; int * type; } ;
 struct hci_dev {struct device dev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  THIS_MODULE ; 
- int /*<<< orphan*/  __module_get (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bt_class ; 
- int /*<<< orphan*/  bt_host ; 
- int /*<<< orphan*/  device_initialize (struct device*) ; 
+
+ int THIS_MODULE ;
+ int __module_get (int ) ;
+ int bt_class ;
+ int bt_host ;
+ int device_initialize (struct device*) ;
 
 void hci_init_sysfs(struct hci_dev *hdev)
 {
-	struct device *dev = &hdev->dev;
+ struct device *dev = &hdev->dev;
 
-	dev->type = &bt_host;
-	dev->class = bt_class;
+ dev->type = &bt_host;
+ dev->class = bt_class;
 
-	__module_get(THIS_MODULE);
-	device_initialize(dev);
+ __module_get(THIS_MODULE);
+ device_initialize(dev);
 }

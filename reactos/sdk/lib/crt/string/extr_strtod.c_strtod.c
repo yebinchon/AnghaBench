@@ -1,25 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
-
 double
 strtod(const char *s, char **sret)
 {
-  long double r;		/* result */
-  int e;			/* exponent */
-  long double d;		/* scale */
-  int sign;			/* +- 1.0 */
+  long double r;
+  int e;
+  long double d;
+  int sign;
   int esign;
   int i;
   int flags=0;
@@ -29,7 +20,7 @@ strtod(const char *s, char **sret)
   e = 0;
   esign = 1;
 
-  if (s == NULL)
+  if (s == ((void*)0))
      return r;
 
 
@@ -85,7 +76,7 @@ strtod(const char *s, char **sret)
     if ((*s < '0') || (*s > '9'))
     {
       if (sret)
-	*sret = (char *)s;
+ *sret = (char *)s;
       return r;
     }
 

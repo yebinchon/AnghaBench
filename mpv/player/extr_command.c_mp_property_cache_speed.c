@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int uint64_t ;
 struct m_property {int dummy; } ;
-struct demux_reader_state {int /*<<< orphan*/  bytes_per_second; } ;
-struct TYPE_2__ {int /*<<< orphan*/  demuxer; } ;
-typedef  TYPE_1__ MPContext ;
+struct demux_reader_state {int bytes_per_second; } ;
+struct TYPE_2__ {int demuxer; } ;
+typedef TYPE_1__ MPContext ;
 
-/* Variables and functions */
- int M_PROPERTY_OK ; 
- int M_PROPERTY_PRINT ; 
- int M_PROPERTY_UNAVAILABLE ; 
- int /*<<< orphan*/  demux_get_reader_state (int /*<<< orphan*/ ,struct demux_reader_state*) ; 
- int /*<<< orphan*/  format_file_size (int /*<<< orphan*/ ) ; 
- int m_property_int64_ro (int,void*,int /*<<< orphan*/ ) ; 
- char* talloc_strdup_append (int /*<<< orphan*/ ,char*) ; 
+
+ int M_PROPERTY_OK ;
+ int M_PROPERTY_PRINT ;
+ int M_PROPERTY_UNAVAILABLE ;
+ int demux_get_reader_state (int ,struct demux_reader_state*) ;
+ int format_file_size (int ) ;
+ int m_property_int64_ro (int,void*,int ) ;
+ char* talloc_strdup_append (int ,char*) ;
 
 __attribute__((used)) static int mp_property_cache_speed(void *ctx, struct m_property *prop,
                                    int action, void *arg)

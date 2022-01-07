@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int UWORD ;
-typedef  int /*<<< orphan*/  UINT64 ;
-typedef  int UINT32 ;
 
-/* Variables and functions */
- int LOAD_UINT32_LITTLE (int const*) ; 
- scalar_t__ MUL64 (int,int) ; 
+
+
+
+typedef int UWORD ;
+typedef int UINT64 ;
+typedef int UINT32 ;
+
+
+ int LOAD_UINT32_LITTLE (int const*) ;
+ scalar_t__ MUL64 (int,int) ;
 
 __attribute__((used)) static void nh_aux(void *kp, const void *dp, void *hp, UINT32 dlen)
-/* Same as previous nh_aux, but two streams are handled in one pass,
- * reading and writing 16 bytes of hash-state per call.
- */
+
+
+
 {
   UINT64 h1,h2;
   UWORD c = dlen / 32;

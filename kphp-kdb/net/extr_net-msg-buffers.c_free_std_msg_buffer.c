@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct msg_buffers_chunk {scalar_t__ magic; int two_power; scalar_t__* free_cnt; int tot_buffers; TYPE_1__* ch_head; scalar_t__ buffer_size; } ;
 struct msg_buffer {int refcnt; scalar_t__ magic; struct msg_buffers_chunk* chunk; } ;
 struct TYPE_2__ {int free_buffers; } ;
 
-/* Variables and functions */
- scalar_t__ MSG_BUFFER_FREE_MAGIC ; 
- scalar_t__ MSG_BUFFER_USED_MAGIC ; 
- scalar_t__ MSG_CHUNK_USED_MAGIC ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  free_msg_buffers_chunk (struct msg_buffers_chunk*) ; 
- int get_buffer_no (struct msg_buffers_chunk*,struct msg_buffer*) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  total_used_buffers ; 
- int /*<<< orphan*/  total_used_buffers_size ; 
- int verbosity ; 
+
+ scalar_t__ MSG_BUFFER_FREE_MAGIC ;
+ scalar_t__ MSG_BUFFER_USED_MAGIC ;
+ scalar_t__ MSG_CHUNK_USED_MAGIC ;
+ int assert (int) ;
+ int fprintf (int ,char*,int) ;
+ int free_msg_buffers_chunk (struct msg_buffers_chunk*) ;
+ int get_buffer_no (struct msg_buffers_chunk*,struct msg_buffer*) ;
+ int stderr ;
+ int total_used_buffers ;
+ int total_used_buffers_size ;
+ int verbosity ;
 
 int free_std_msg_buffer (struct msg_buffers_chunk *C, struct msg_buffer *X) {
   assert (!X->refcnt && X->magic == MSG_BUFFER_USED_MAGIC && C->magic == MSG_CHUNK_USED_MAGIC && X->chunk == C);
@@ -44,7 +44,7 @@ int free_std_msg_buffer (struct msg_buffers_chunk *C, struct msg_buffer *X) {
   X->magic = MSG_BUFFER_FREE_MAGIC;
   X->refcnt = -0x40000000;
   ++ C->ch_head->free_buffers;
-  
+
   total_used_buffers_size -= C->buffer_size;
   total_used_buffers --;
 

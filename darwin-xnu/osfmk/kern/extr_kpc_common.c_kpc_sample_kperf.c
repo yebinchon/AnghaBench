@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int /*<<< orphan*/  thread_t ;
-typedef  int /*<<< orphan*/  task_t ;
+
+
+
+
+typedef int uint32_t ;
+typedef int thread_t ;
+typedef int task_t ;
 struct kperf_sample {int dummy; } ;
-struct kperf_context {int /*<<< orphan*/  trigger_id; int /*<<< orphan*/  trigger_type; int /*<<< orphan*/  cur_pid; int /*<<< orphan*/  cur_task; int /*<<< orphan*/  cur_thread; } ;
+struct kperf_context {int trigger_id; int trigger_type; int cur_pid; int cur_task; int cur_thread; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BUF_DATA (int) ; 
- int /*<<< orphan*/  BUF_INFO (int,int) ; 
- int DBG_FUNC_END ; 
- int DBG_FUNC_START ; 
- int PERF_KPC_HNDLR ; 
- int /*<<< orphan*/  SAMPLE_FLAG_PEND_USER ; 
- int /*<<< orphan*/  TRIGGER_TYPE_PMI ; 
- int /*<<< orphan*/  current_thread () ; 
- int /*<<< orphan*/  get_threadtask (int /*<<< orphan*/ ) ; 
- int kperf_sample (struct kperf_sample*,struct kperf_context*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  task_pid (int /*<<< orphan*/ ) ; 
+
+ int BUF_DATA (int) ;
+ int BUF_INFO (int,int) ;
+ int DBG_FUNC_END ;
+ int DBG_FUNC_START ;
+ int PERF_KPC_HNDLR ;
+ int SAMPLE_FLAG_PEND_USER ;
+ int TRIGGER_TYPE_PMI ;
+ int current_thread () ;
+ int get_threadtask (int ) ;
+ int kperf_sample (struct kperf_sample*,struct kperf_context*,int ,int ) ;
+ int task_pid (int ) ;
 
 void
 kpc_sample_kperf(uint32_t actionid)
 {
-	struct kperf_sample sbuf;
+ struct kperf_sample sbuf;
 
-	BUF_DATA(PERF_KPC_HNDLR | DBG_FUNC_START);
+ BUF_DATA(PERF_KPC_HNDLR | DBG_FUNC_START);
 
-	thread_t thread = current_thread();
-	task_t task = get_threadtask(thread);
+ thread_t thread = current_thread();
+ task_t task = get_threadtask(thread);
 
-	struct kperf_context ctx = {
-		.cur_thread = thread,
-		.cur_task = task,
-		.cur_pid = task_pid(task),
-		.trigger_type = TRIGGER_TYPE_PMI,
-		.trigger_id = 0,
-	};
+ struct kperf_context ctx = {
+  .cur_thread = thread,
+  .cur_task = task,
+  .cur_pid = task_pid(task),
+  .trigger_type = TRIGGER_TYPE_PMI,
+  .trigger_id = 0,
+ };
 
-	int r = kperf_sample(&sbuf, &ctx, actionid, SAMPLE_FLAG_PEND_USER);
+ int r = kperf_sample(&sbuf, &ctx, actionid, SAMPLE_FLAG_PEND_USER);
 
-	BUF_INFO(PERF_KPC_HNDLR | DBG_FUNC_END, r);
+ BUF_INFO(PERF_KPC_HNDLR | DBG_FUNC_END, r);
 }

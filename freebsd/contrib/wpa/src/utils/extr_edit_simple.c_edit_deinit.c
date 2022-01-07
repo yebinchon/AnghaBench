@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  STDIN_FILENO ; 
- int /*<<< orphan*/  eloop_unregister_read_sock (int /*<<< orphan*/ ) ; 
+ int STDIN_FILENO ;
+ int eloop_unregister_read_sock (int ) ;
 
 void edit_deinit(const char *history_file,
-		 int (*filter_cb)(void *ctx, const char *cmd))
+   int (*filter_cb)(void *ctx, const char *cmd))
 {
-	eloop_unregister_read_sock(STDIN_FILENO);
+ eloop_unregister_read_sock(STDIN_FILENO);
 }

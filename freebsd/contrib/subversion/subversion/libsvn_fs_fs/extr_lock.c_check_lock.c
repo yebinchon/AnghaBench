@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ svn_revnum_t ;
-typedef  scalar_t__ svn_node_kind_t ;
-typedef  int /*<<< orphan*/  svn_lock_t ;
-typedef  int /*<<< orphan*/  svn_fs_root_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ svn_revnum_t ;
+typedef scalar_t__ svn_node_kind_t ;
+typedef int svn_lock_t ;
+typedef int svn_fs_root_t ;
 struct TYPE_3__ {scalar_t__ current_rev; } ;
-typedef  TYPE_1__ svn_fs_lock_target_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct lock_baton {int /*<<< orphan*/  fs; int /*<<< orphan*/  steal_lock; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+typedef TYPE_1__ svn_fs_lock_target_t ;
+typedef int svn_error_t ;
+struct lock_baton {int fs; int steal_lock; } ;
+typedef int apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_FS_NOT_FOUND ; 
- int /*<<< orphan*/  SVN_ERR_FS_NO_SUCH_REVISION ; 
- int /*<<< orphan*/  SVN_ERR_FS_OUT_OF_DATE ; 
- int /*<<< orphan*/ * SVN_FS__ERR_NOT_FILE (int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/ * SVN_FS__ERR_PATH_ALREADY_LOCKED (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ SVN_IS_VALID_REVNUM (scalar_t__) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  get_lock_helper (int /*<<< orphan*/ ,int /*<<< orphan*/ **,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_error_createf (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  svn_fs_fs__check_path (scalar_t__*,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_fs_fs__node_created_rev (scalar_t__*,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_node_dir ; 
- scalar_t__ svn_node_none ; 
+
+ int SVN_ERR (int ) ;
+ int SVN_ERR_FS_NOT_FOUND ;
+ int SVN_ERR_FS_NO_SUCH_REVISION ;
+ int SVN_ERR_FS_OUT_OF_DATE ;
+ int * SVN_FS__ERR_NOT_FILE (int ,char const*) ;
+ int * SVN_FS__ERR_PATH_ALREADY_LOCKED (int ,int *) ;
+ scalar_t__ SVN_IS_VALID_REVNUM (scalar_t__) ;
+ int * SVN_NO_ERROR ;
+ int TRUE ;
+ int _ (char*) ;
+ int get_lock_helper (int ,int **,char const*,int ,int *) ;
+ int * svn_error_createf (int ,int *,int ,char const*) ;
+ int svn_fs_fs__check_path (scalar_t__*,int *,char const*,int *) ;
+ int svn_fs_fs__node_created_rev (scalar_t__*,int *,char const*,int *) ;
+ scalar_t__ svn_node_dir ;
+ scalar_t__ svn_node_none ;
 
 __attribute__((used)) static svn_error_t *
 check_lock(svn_error_t **fs_err,
@@ -60,32 +60,32 @@ check_lock(svn_error_t **fs_err,
       return SVN_NO_ERROR;
     }
 
-  /* While our locking implementation easily supports the locking of
-     nonexistent paths, we deliberately choose not to allow such madness. */
+
+
   if (kind == svn_node_none)
     {
       if (SVN_IS_VALID_REVNUM(target->current_rev))
         *fs_err = svn_error_createf(
-          SVN_ERR_FS_OUT_OF_DATE, NULL,
+          SVN_ERR_FS_OUT_OF_DATE, ((void*)0),
           _("Path '%s' doesn't exist in HEAD revision"),
           path);
       else
         *fs_err = svn_error_createf(
-          SVN_ERR_FS_NOT_FOUND, NULL,
+          SVN_ERR_FS_NOT_FOUND, ((void*)0),
           _("Path '%s' doesn't exist in HEAD revision"),
           path);
 
       return SVN_NO_ERROR;
     }
 
-  /* Is the caller attempting to lock an out-of-date working file? */
+
   if (SVN_IS_VALID_REVNUM(target->current_rev))
     {
       svn_revnum_t created_rev;
 
       if (target->current_rev > youngest_rev)
         {
-          *fs_err = svn_error_createf(SVN_ERR_FS_NO_SUCH_REVISION, NULL,
+          *fs_err = svn_error_createf(SVN_ERR_FS_NO_SUCH_REVISION, ((void*)0),
                                       _("No such revision %ld"),
                                       target->current_rev);
           return SVN_NO_ERROR;
@@ -94,14 +94,14 @@ check_lock(svn_error_t **fs_err,
       SVN_ERR(svn_fs_fs__node_created_rev(&created_rev, root, path,
                                           pool));
 
-      /* SVN_INVALID_REVNUM means the path doesn't exist.  So
-         apparently somebody is trying to lock something in their
-         working copy, but somebody else has deleted the thing
-         from HEAD.  That counts as being 'out of date'. */
+
+
+
+
       if (! SVN_IS_VALID_REVNUM(created_rev))
         {
           *fs_err = svn_error_createf
-            (SVN_ERR_FS_OUT_OF_DATE, NULL,
+            (SVN_ERR_FS_OUT_OF_DATE, ((void*)0),
              _("Path '%s' doesn't exist in HEAD revision"), path);
 
           return SVN_NO_ERROR;
@@ -110,35 +110,18 @@ check_lock(svn_error_t **fs_err,
       if (target->current_rev < created_rev)
         {
           *fs_err = svn_error_createf
-            (SVN_ERR_FS_OUT_OF_DATE, NULL,
+            (SVN_ERR_FS_OUT_OF_DATE, ((void*)0),
              _("Lock failed: newer version of '%s' exists"), path);
 
           return SVN_NO_ERROR;
         }
     }
-
-  /* If the caller provided a TOKEN, we *really* need to see
-     if a lock already exists with that token, and if so, verify that
-     the lock's path matches PATH.  Otherwise we run the risk of
-     breaking the 1-to-1 mapping of lock tokens to locked paths. */
-  /* ### TODO:  actually do this check.  This is tough, because the
-     schema doesn't supply a lookup-by-token mechanism. */
-
-  /* Is the path already locked?
-
-     Note that this next function call will automatically ignore any
-     errors about {the path not existing as a key, the path's token
-     not existing as a key, the lock just having been expired}.  And
-     that's totally fine.  Any of these three errors are perfectly
-     acceptable to ignore; it means that the path is now free and
-     clear for locking, because the fsfs funcs just cleared out both
-     of the tables for us.   */
   SVN_ERR(get_lock_helper(lb->fs, &existing_lock, path, TRUE, pool));
   if (existing_lock)
     {
       if (! lb->steal_lock)
         {
-          /* Sorry, the path is already locked. */
+
           *fs_err = SVN_FS__ERR_PATH_ALREADY_LOCKED(lb->fs, existing_lock);
           return SVN_NO_ERROR;
         }

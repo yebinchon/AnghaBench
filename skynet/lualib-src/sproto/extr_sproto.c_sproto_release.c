@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct sproto {int /*<<< orphan*/  memory; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  pool_release (int /*<<< orphan*/ *) ; 
+
+
+
+struct sproto {int memory; } ;
+
+
+ int pool_release (int *) ;
 
 void
 sproto_release(struct sproto * s) {
-	if (s == NULL)
-		return;
-	pool_release(&s->memory);
+ if (s == ((void*)0))
+  return;
+ pool_release(&s->memory);
 }

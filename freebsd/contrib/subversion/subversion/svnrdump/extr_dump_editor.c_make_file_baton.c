@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct file_baton {int /*<<< orphan*/  action; int /*<<< orphan*/  copyfrom_rev; int /*<<< orphan*/ * copyfrom_path; int /*<<< orphan*/  is_copy; void* deleted_props; void* props; int /*<<< orphan*/  repos_relpath; int /*<<< orphan*/ * pool; int /*<<< orphan*/  eb; } ;
-struct dir_baton {int /*<<< orphan*/  eb; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  SVN_INVALID_REVNUM ; 
- void* apr_hash_make (int /*<<< orphan*/ *) ; 
- struct file_baton* apr_pcalloc (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  svn_node_action_change ; 
- int /*<<< orphan*/  svn_relpath_canonicalize (char const*,int /*<<< orphan*/ *) ; 
+
+
+
+struct file_baton {int action; int copyfrom_rev; int * copyfrom_path; int is_copy; void* deleted_props; void* props; int repos_relpath; int * pool; int eb; } ;
+struct dir_baton {int eb; } ;
+typedef int apr_pool_t ;
+
+
+ int FALSE ;
+ int SVN_INVALID_REVNUM ;
+ void* apr_hash_make (int *) ;
+ struct file_baton* apr_pcalloc (int *,int) ;
+ int svn_node_action_change ;
+ int svn_relpath_canonicalize (char const*,int *) ;
 
 __attribute__((used)) static struct file_baton *
 make_file_baton(const char *path,
@@ -35,7 +35,7 @@ make_file_baton(const char *path,
   new_fb->props = apr_hash_make(pool);
   new_fb->deleted_props = apr_hash_make(pool);
   new_fb->is_copy = FALSE;
-  new_fb->copyfrom_path = NULL;
+  new_fb->copyfrom_path = ((void*)0);
   new_fb->copyfrom_rev = SVN_INVALID_REVNUM;
   new_fb->action = svn_node_action_change;
 

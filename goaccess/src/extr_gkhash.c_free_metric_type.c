@@ -1,59 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int type; int /*<<< orphan*/  su64; int /*<<< orphan*/  igsl; int /*<<< orphan*/  ss32; int /*<<< orphan*/  si32; int /*<<< orphan*/  iu64; int /*<<< orphan*/  is32; int /*<<< orphan*/  ii32; } ;
-typedef  TYPE_1__ GKHashMetric ;
 
-/* Variables and functions */
-#define  MTRC_TYPE_IGSL 134 
-#define  MTRC_TYPE_II32 133 
-#define  MTRC_TYPE_IS32 132 
-#define  MTRC_TYPE_IU64 131 
-#define  MTRC_TYPE_SI32 130 
-#define  MTRC_TYPE_SS32 129 
-#define  MTRC_TYPE_SU64 128 
- int /*<<< orphan*/  des_igsl_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  des_ii32 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  des_is32_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  des_iu64 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  des_si32_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  des_ss32_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  des_su64_free (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int type; int su64; int igsl; int ss32; int si32; int iu64; int is32; int ii32; } ;
+typedef TYPE_1__ GKHashMetric ;
+ int des_igsl_free (int ) ;
+ int des_ii32 (int ) ;
+ int des_is32_free (int ) ;
+ int des_iu64 (int ) ;
+ int des_si32_free (int ) ;
+ int des_ss32_free (int ) ;
+ int des_su64_free (int ) ;
 
 __attribute__((used)) static void
 free_metric_type (GKHashMetric mtrc)
 {
-  /* Determine the hash structure type */
+
   switch (mtrc.type) {
-  case MTRC_TYPE_II32:
+  case 133:
     des_ii32 (mtrc.ii32);
     break;
-  case MTRC_TYPE_IS32:
+  case 132:
     des_is32_free (mtrc.is32);
     break;
-  case MTRC_TYPE_IU64:
+  case 131:
     des_iu64 (mtrc.iu64);
     break;
-  case MTRC_TYPE_SI32:
+  case 130:
     des_si32_free (mtrc.si32);
     break;
-  case MTRC_TYPE_SS32:
+  case 129:
     des_ss32_free (mtrc.ss32);
     break;
-  case MTRC_TYPE_IGSL:
+  case 134:
     des_igsl_free (mtrc.igsl);
     break;
-  case MTRC_TYPE_SU64:
+  case 128:
     des_su64_free (mtrc.su64);
     break;
   }

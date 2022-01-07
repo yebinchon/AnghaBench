@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct async_state {int /*<<< orphan*/  irq_flags; int /*<<< orphan*/  enet_flash_pin; int /*<<< orphan*/  save_ambctl1; int /*<<< orphan*/  save_ambctl0; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SSYNC () ; 
- int /*<<< orphan*/  bfin_write_EBIU_AMBCTL0 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bfin_write_EBIU_AMBCTL1 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gpio_set_value (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  local_irq_restore (int /*<<< orphan*/ ) ; 
+
+
+
+struct async_state {int irq_flags; int enet_flash_pin; int save_ambctl1; int save_ambctl0; } ;
+
+
+ int SSYNC () ;
+ int bfin_write_EBIU_AMBCTL0 (int ) ;
+ int bfin_write_EBIU_AMBCTL1 (int ) ;
+ int gpio_set_value (int ,int) ;
+ int local_irq_restore (int ) ;
 
 __attribute__((used)) static void switch_back(struct async_state *state)
 {
-	bfin_write_EBIU_AMBCTL0(state->save_ambctl0);
-	bfin_write_EBIU_AMBCTL1(state->save_ambctl1);
-	SSYNC();
+ bfin_write_EBIU_AMBCTL0(state->save_ambctl0);
+ bfin_write_EBIU_AMBCTL1(state->save_ambctl1);
+ SSYNC();
 
-	gpio_set_value(state->enet_flash_pin, 1);
+ gpio_set_value(state->enet_flash_pin, 1);
 
-	local_irq_restore(state->irq_flags);
+ local_irq_restore(state->irq_flags);
 }

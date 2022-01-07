@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct nn_msghdr {int msg_iovlen; struct nn_iovec* msg_iov; } ;
 struct nn_iovec {char* iov_base; int iov_len; } ;
-typedef  int /*<<< orphan*/  hdr ;
+typedef int hdr ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_SP ; 
- int /*<<< orphan*/  NN_PAIR ; 
- int /*<<< orphan*/  SOCKET_ADDRESS ; 
- int /*<<< orphan*/  errno_assert (int) ; 
- scalar_t__ memcmp (char*,char*,int) ; 
- int /*<<< orphan*/  memset (struct nn_msghdr*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  nn_assert (int) ; 
- int nn_recvmsg (int,struct nn_msghdr*,int /*<<< orphan*/ ) ; 
- int nn_sendmsg (int,struct nn_msghdr*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_bind (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_close (int) ; 
- int /*<<< orphan*/  test_connect (int,int /*<<< orphan*/ ) ; 
- int test_socket (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int AF_SP ;
+ int NN_PAIR ;
+ int SOCKET_ADDRESS ;
+ int errno_assert (int) ;
+ scalar_t__ memcmp (char*,char*,int) ;
+ int memset (struct nn_msghdr*,int ,int) ;
+ int nn_assert (int) ;
+ int nn_recvmsg (int,struct nn_msghdr*,int ) ;
+ int nn_sendmsg (int,struct nn_msghdr*,int ) ;
+ int test_bind (int,int ) ;
+ int test_close (int) ;
+ int test_connect (int,int ) ;
+ int test_socket (int ,int ) ;
 
 int main ()
 {

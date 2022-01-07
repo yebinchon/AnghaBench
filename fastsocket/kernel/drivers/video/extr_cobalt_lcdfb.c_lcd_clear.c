@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct fb_info {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LCD_CLEAR ; 
- int /*<<< orphan*/  LCD_PRERESET ; 
- int /*<<< orphan*/  LCD_RESET ; 
- int /*<<< orphan*/  lcd_write_control (struct fb_info*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  udelay (int) ; 
+
+ int LCD_CLEAR ;
+ int LCD_PRERESET ;
+ int LCD_RESET ;
+ int lcd_write_control (struct fb_info*,int ) ;
+ int udelay (int) ;
 
 __attribute__((used)) static void lcd_clear(struct fb_info *info)
 {
-	int i;
+ int i;
 
-	for (i = 0; i < 4; i++) {
-		udelay(150);
+ for (i = 0; i < 4; i++) {
+  udelay(150);
 
-		lcd_write_control(info, LCD_PRERESET);
-	}
+  lcd_write_control(info, LCD_PRERESET);
+ }
 
-	udelay(150);
+ udelay(150);
 
-	lcd_write_control(info, LCD_CLEAR);
+ lcd_write_control(info, LCD_CLEAR);
 
-	udelay(150);
+ udelay(150);
 
-	lcd_write_control(info, LCD_RESET);
+ lcd_write_control(info, LCD_RESET);
 }

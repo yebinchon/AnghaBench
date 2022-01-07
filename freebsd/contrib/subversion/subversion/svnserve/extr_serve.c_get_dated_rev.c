@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_ra_svn_conn_t ;
-typedef  int /*<<< orphan*/  svn_ra_svn__list_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int svn_revnum_t ;
+typedef int svn_ra_svn_conn_t ;
+typedef int svn_ra_svn__list_t ;
+typedef int svn_error_t ;
 struct TYPE_6__ {TYPE_1__* repository; } ;
-typedef  TYPE_2__ server_baton_t ;
-typedef  int /*<<< orphan*/  apr_time_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-struct TYPE_5__ {int /*<<< orphan*/  repos; } ;
+typedef TYPE_2__ server_baton_t ;
+typedef int apr_time_t ;
+typedef int apr_pool_t ;
+struct TYPE_5__ {int repos; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_CMD_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  log_command (TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*,char const*) ; 
- int /*<<< orphan*/  svn_ra_svn__parse_tuple (int /*<<< orphan*/ *,char*,char const**) ; 
- int /*<<< orphan*/  svn_ra_svn__write_cmd_response (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_repos_dated_revision (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_time_from_cstring (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  trivial_auth_request (int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_2__*) ; 
+
+ int SVN_CMD_ERR (int ) ;
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int log_command (TYPE_2__*,int *,int *,char*,char const*) ;
+ int svn_ra_svn__parse_tuple (int *,char*,char const**) ;
+ int svn_ra_svn__write_cmd_response (int *,int *,char*,int ) ;
+ int svn_repos_dated_revision (int *,int ,int ,int *) ;
+ int svn_time_from_cstring (int *,char const*,int *) ;
+ int trivial_auth_request (int *,int *,TYPE_2__*) ;
 
 __attribute__((used)) static svn_error_t *
 get_dated_rev(svn_ra_svn_conn_t *conn,

@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Str ;
 
-/* Variables and functions */
- int /*<<< orphan*/  strPrintf (int /*<<< orphan*/ *,char*,...) ; 
- int /*<<< orphan*/  strPrintfArray (int /*<<< orphan*/ *,char*,char*,char**,int) ; 
+
+
+
+typedef int Str ;
+
+
+ int strPrintf (int *,char*,...) ;
+ int strPrintfArray (int *,char*,char*,char**,int) ;
 
 __attribute__((used)) static void getRbudiffQuery(
   const char *zTab,
@@ -25,10 +25,10 @@ __attribute__((used)) static void getRbudiffQuery(
 ){
   int i;
 
-  /* First the newly inserted rows: **/ 
+
   strPrintf(pSql, "SELECT ");
   strPrintfArray(pSql, ", ", "%s", azCol, -1);
-  strPrintf(pSql, ", 0, ");       /* Set ota_control to 0 for an insert */
+  strPrintf(pSql, ", 0, ");
   strPrintfArray(pSql, ", ", "NULL", azCol, -1);
   strPrintf(pSql, " FROM aux.%Q AS n WHERE NOT EXISTS (\n", zTab);
   strPrintf(pSql, "    SELECT 1 FROM ", zTab);
@@ -37,14 +37,14 @@ __attribute__((used)) static void getRbudiffQuery(
   strPrintf(pSql, "\n) AND ");
   strPrintfArray(pSql, " AND ", "(n.%Q IS NOT NULL)", azCol, nPK);
 
-  /* Deleted rows: */
+
   strPrintf(pSql, "\nUNION ALL\nSELECT ");
   strPrintfArray(pSql, ", ", "%s", azCol, nPK);
   if( azCol[nPK] ){
     strPrintf(pSql, ", ");
     strPrintfArray(pSql, ", ", "NULL", &azCol[nPK], -1);
   }
-  strPrintf(pSql, ", 1, ");       /* Set ota_control to 1 for a delete */
+  strPrintf(pSql, ", 1, ");
   strPrintfArray(pSql, ", ", "NULL", azCol, -1);
   strPrintf(pSql, " FROM main.%Q AS n WHERE NOT EXISTS (\n", zTab);
   strPrintf(pSql, "    SELECT 1 FROM ", zTab);
@@ -53,14 +53,14 @@ __attribute__((used)) static void getRbudiffQuery(
   strPrintf(pSql, "\n) AND ");
   strPrintfArray(pSql, " AND ", "(n.%Q IS NOT NULL)", azCol, nPK);
 
-  /* Updated rows. If all table columns are part of the primary key, there 
-  ** can be no updates. In this case this part of the compound SELECT can
-  ** be omitted altogether. */
+
+
+
   if( azCol[nPK] ){
     strPrintf(pSql, "\nUNION ALL\nSELECT ");
     strPrintfArray(pSql, ", ", "n.%s", azCol, nPK);
     strPrintf(pSql, ",\n");
-    strPrintfArray(pSql, " ,\n", 
+    strPrintfArray(pSql, " ,\n",
         "    CASE WHEN n.%s IS o.%s THEN NULL ELSE n.%s END", &azCol[nPK], -1
     );
 
@@ -71,13 +71,13 @@ __attribute__((used)) static void getRbudiffQuery(
     }else{
       strPrintf(pSql, ",\n");
     }
-    strPrintfArray(pSql, " ||\n", 
+    strPrintfArray(pSql, " ||\n",
         "    CASE WHEN n.%s IS o.%s THEN '.' ELSE 'x' END", &azCol[nPK], -1
     );
     strPrintf(pSql, "\nAS ota_control, ");
     strPrintfArray(pSql, ", ", "NULL", azCol, nPK);
     strPrintf(pSql, ",\n");
-    strPrintfArray(pSql, " ,\n", 
+    strPrintfArray(pSql, " ,\n",
         "    CASE WHEN n.%s IS o.%s THEN NULL ELSE o.%s END", &azCol[nPK], -1
     );
 
@@ -86,7 +86,7 @@ __attribute__((used)) static void getRbudiffQuery(
     strPrintf(pSql, " AND ota_control LIKE '%%x%%'");
   }
 
-  /* Now add an ORDER BY clause to sort everything by PK. */
+
   strPrintf(pSql, "\nORDER BY ");
   for(i=1; i<=nPK; i++) strPrintf(pSql, "%s%d", ((i>1)?", ":""), i);
 }

@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct keypoint {int x; int y; struct keypoint* next; } ;
-typedef  int /*<<< orphan*/  AVFilterContext ;
+typedef int AVFilterContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_LOG_WARNING ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int const,int,...) ; 
- void* av_strtod (char*,char**) ; 
- struct keypoint* make_point (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int AVERROR (int ) ;
+ int AV_LOG_ERROR ;
+ int AV_LOG_WARNING ;
+ int EINVAL ;
+ int ENOMEM ;
+ int av_log (int *,int ,char*,int const,int,...) ;
+ void* av_strtod (char*,char**) ;
+ struct keypoint* make_point (int ,int ,int *) ;
 
 __attribute__((used)) static int parse_points_str(AVFilterContext *ctx, struct keypoint **points, const char *s,
                             int lut_size)
 {
-    char *p = (char *)s; // strtod won't alter the string
-    struct keypoint *last = NULL;
+    char *p = (char *)s;
+    struct keypoint *last = ((void*)0);
     const int scale = lut_size - 1;
 
-    /* construct a linked list based on the key points string */
+
     while (p && *p) {
-        struct keypoint *point = make_point(0, 0, NULL);
+        struct keypoint *point = make_point(0, 0, ((void*)0));
         if (!point)
             return AVERROR(ENOMEM);
         point->x = av_strtod(p, &p); if (p && *p) p++;

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
 struct TYPE_11__ {scalar_t__ username; scalar_t__ password; scalar_t__ is_relative; } ;
-typedef  TYPE_1__ parse_data ;
+typedef TYPE_1__ parse_data ;
 struct TYPE_12__ {int authority_start; int canon_len; int authority_len; int host_start; } ;
-typedef  TYPE_2__ Uri ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef TYPE_2__ Uri ;
+typedef int DWORD ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  canonicalize_host (TYPE_1__ const*,TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  canonicalize_port (TYPE_1__ const*,TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  canonicalize_userinfo (TYPE_1__ const*,TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int FALSE ;
+ int TRUE ;
+ int canonicalize_host (TYPE_1__ const*,TYPE_2__*,int ,int ) ;
+ int canonicalize_port (TYPE_1__ const*,TYPE_2__*,int ,int ) ;
+ int canonicalize_userinfo (TYPE_1__ const*,TYPE_2__*,int ,int ) ;
 
 __attribute__((used)) static BOOL canonicalize_authority(const parse_data *data, Uri *uri, DWORD flags, BOOL computeOnly) {
     uri->authority_start = uri->canon_len;

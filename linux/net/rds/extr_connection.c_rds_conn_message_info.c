@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct socket {int dummy; } ;
 struct rds_info_lengths {int dummy; } ;
 struct rds_info_iterator {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  rds_conn_message_info_cmn (struct socket*,unsigned int,struct rds_info_iterator*,struct rds_info_lengths*,int,int) ; 
+
+ int rds_conn_message_info_cmn (struct socket*,unsigned int,struct rds_info_iterator*,struct rds_info_lengths*,int,int) ;
 
 __attribute__((used)) static void rds_conn_message_info(struct socket *sock, unsigned int len,
-				  struct rds_info_iterator *iter,
-				  struct rds_info_lengths *lens,
-				  int want_send)
+      struct rds_info_iterator *iter,
+      struct rds_info_lengths *lens,
+      int want_send)
 {
-	rds_conn_message_info_cmn(sock, len, iter, lens, want_send, false);
+ rds_conn_message_info_cmn(sock, len, iter, lens, want_send, 0);
 }

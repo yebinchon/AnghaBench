@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct net_device {int dummy; } ;
-struct neigh_table {int /*<<< orphan*/  lock; } ;
+struct neigh_table {int lock; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  neigh_flush_dev (struct neigh_table*,struct net_device*) ; 
- int /*<<< orphan*/  write_lock_bh (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  write_unlock_bh (int /*<<< orphan*/ *) ; 
+
+ int neigh_flush_dev (struct neigh_table*,struct net_device*) ;
+ int write_lock_bh (int *) ;
+ int write_unlock_bh (int *) ;
 
 void neigh_changeaddr(struct neigh_table *tbl, struct net_device *dev)
 {
-	write_lock_bh(&tbl->lock);
-	neigh_flush_dev(tbl, dev);
-	write_unlock_bh(&tbl->lock);
+ write_lock_bh(&tbl->lock);
+ neigh_flush_dev(tbl, dev);
+ write_unlock_bh(&tbl->lock);
 }

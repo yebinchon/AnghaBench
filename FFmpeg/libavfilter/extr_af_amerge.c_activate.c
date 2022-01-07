@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  int64_t ;
-struct TYPE_5__ {int nb_inputs; int /*<<< orphan*/ * inputs; int /*<<< orphan*/ * outputs; } ;
-typedef  TYPE_1__ AVFilterContext ;
 
-/* Variables and functions */
- int FFMIN (int,int) ; 
- int /*<<< orphan*/  FF_FILTER_FORWARD_STATUS_BACK_ALL (int /*<<< orphan*/ ,TYPE_1__*) ; 
- scalar_t__ ff_inlink_acknowledge_status (int /*<<< orphan*/ ,int*,int /*<<< orphan*/ *) ; 
- int ff_inlink_queued_samples (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ff_inlink_request_frame (int /*<<< orphan*/ ) ; 
- scalar_t__ ff_outlink_frame_wanted (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ff_outlink_set_status (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int try_push_frame (TYPE_1__*,int) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int int64_t ;
+struct TYPE_5__ {int nb_inputs; int * inputs; int * outputs; } ;
+typedef TYPE_1__ AVFilterContext ;
+
+
+ int FFMIN (int,int) ;
+ int FF_FILTER_FORWARD_STATUS_BACK_ALL (int ,TYPE_1__*) ;
+ scalar_t__ ff_inlink_acknowledge_status (int ,int*,int *) ;
+ int ff_inlink_queued_samples (int ) ;
+ int ff_inlink_request_frame (int ) ;
+ scalar_t__ ff_outlink_frame_wanted (int ) ;
+ int ff_outlink_set_status (int ,int,int ) ;
+ int try_push_frame (TYPE_1__*,int) ;
 
 __attribute__((used)) static int activate(AVFilterContext *ctx)
 {

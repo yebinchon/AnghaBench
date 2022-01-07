@@ -1,19 +1,11 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  assert (void const*) ; 
- scalar_t__ startswith (void const*,char*) ; 
+ int assert (void const*) ;
+ scalar_t__ startswith (void const*,char*) ;
 
 __attribute__((used)) static int match_is_valid(const void *data, size_t size) {
         const char *b, *p;
@@ -21,10 +13,10 @@ __attribute__((used)) static int match_is_valid(const void *data, size_t size) {
         assert(data);
 
         if (size < 2)
-                return false;
+                return 0;
 
         if (startswith(data, "__"))
-                return false;
+                return 0;
 
         b = data;
         for (p = b; p < b + size; p++) {
@@ -41,8 +33,8 @@ __attribute__((used)) static int match_is_valid(const void *data, size_t size) {
                 if (*p >= '0' && *p <= '9')
                         continue;
 
-                return false;
+                return 0;
         }
 
-        return false;
+        return 0;
 }

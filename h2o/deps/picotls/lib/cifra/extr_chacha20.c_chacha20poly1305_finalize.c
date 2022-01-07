@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct chacha20poly1305_context_t {int /*<<< orphan*/  poly; int /*<<< orphan*/  textlen; int /*<<< orphan*/  aadlen; } ;
-typedef  int /*<<< orphan*/  lenbuf ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cf_poly1305_finish (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cf_poly1305_update (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  chacha20poly1305_encrypt_pad (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  write64_le (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int uint8_t ;
+struct chacha20poly1305_context_t {int poly; int textlen; int aadlen; } ;
+typedef int lenbuf ;
+
+
+ int cf_poly1305_finish (int *,int *) ;
+ int cf_poly1305_update (int *,int *,int) ;
+ int chacha20poly1305_encrypt_pad (int *,int ) ;
+ int write64_le (int ,int *) ;
 
 __attribute__((used)) static void chacha20poly1305_finalize(struct chacha20poly1305_context_t *ctx, uint8_t *tag)
 {

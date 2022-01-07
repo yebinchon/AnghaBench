@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  void* u8_t ;
-typedef  scalar_t__ u16_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef void* u8_t ;
+typedef scalar_t__ u16_t ;
 struct bt_mesh_model {TYPE_1__* pub; } ;
-typedef  scalar_t__ s32_t ;
-struct TYPE_2__ {scalar_t__ addr; unsigned int key; unsigned int cred; unsigned int ttl; unsigned int period; unsigned int retransmit; unsigned int count; int /*<<< orphan*/  timer; scalar_t__ update; } ;
+typedef scalar_t__ s32_t ;
+struct TYPE_2__ {scalar_t__ addr; unsigned int key; unsigned int cred; unsigned int ttl; unsigned int period; unsigned int retransmit; unsigned int count; int timer; scalar_t__ update; } ;
 
-/* Variables and functions */
- scalar_t__ BLE_MESH_ADDR_UNASSIGNED ; 
- int /*<<< orphan*/  BT_DBG (char*,scalar_t__) ; 
- int /*<<< orphan*/  CONFIG_BLE_MESH_LOW_POWER ; 
- int /*<<< orphan*/  CONFIG_BLE_MESH_SETTINGS ; 
- scalar_t__ IS_ENABLED (int /*<<< orphan*/ ) ; 
- void* STATUS_FEAT_NOT_SUPP ; 
- void* STATUS_INVALID_APPKEY ; 
- void* STATUS_NVAL_PUB_PARAM ; 
- void* STATUS_SUCCESS ; 
- int /*<<< orphan*/  bt_mesh_app_key_find (scalar_t__) ; 
- scalar_t__ bt_mesh_model_pub_period_get (struct bt_mesh_model*) ; 
- int /*<<< orphan*/  bt_mesh_store_mod_pub (struct bt_mesh_model*) ; 
- int /*<<< orphan*/  k_delayed_work_cancel (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  k_delayed_work_submit (int /*<<< orphan*/ *,scalar_t__) ; 
+
+ scalar_t__ BLE_MESH_ADDR_UNASSIGNED ;
+ int BT_DBG (char*,scalar_t__) ;
+ int CONFIG_BLE_MESH_LOW_POWER ;
+ int CONFIG_BLE_MESH_SETTINGS ;
+ scalar_t__ IS_ENABLED (int ) ;
+ void* STATUS_FEAT_NOT_SUPP ;
+ void* STATUS_INVALID_APPKEY ;
+ void* STATUS_NVAL_PUB_PARAM ;
+ void* STATUS_SUCCESS ;
+ int bt_mesh_app_key_find (scalar_t__) ;
+ scalar_t__ bt_mesh_model_pub_period_get (struct bt_mesh_model*) ;
+ int bt_mesh_store_mod_pub (struct bt_mesh_model*) ;
+ int k_delayed_work_cancel (int *) ;
+ int k_delayed_work_submit (int *,scalar_t__) ;
 
 __attribute__((used)) static u8_t _mod_pub_set(struct bt_mesh_model *model, u16_t pub_addr,
                          u16_t app_idx, u8_t cred_flag, u8_t ttl, u8_t period,

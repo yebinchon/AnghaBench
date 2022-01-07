@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct backlight_device {int /*<<< orphan*/  dev; } ;
 
-/* Variables and functions */
- int BL_MAX_BRIGHT ; 
- int ETIMEDOUT ; 
- int GETBRIGHTNESS ; 
- int PPC_LDD1 ; 
- int PPSR ; 
- int TXDUMMY ; 
- int /*<<< orphan*/  dev_err (int /*<<< orphan*/ *,char*) ; 
- int jornada_ssp_byte (int) ; 
- int /*<<< orphan*/  jornada_ssp_end () ; 
- int /*<<< orphan*/  jornada_ssp_start () ; 
+
+
+
+struct backlight_device {int dev; } ;
+
+
+ int BL_MAX_BRIGHT ;
+ int ETIMEDOUT ;
+ int GETBRIGHTNESS ;
+ int PPC_LDD1 ;
+ int PPSR ;
+ int TXDUMMY ;
+ int dev_err (int *,char*) ;
+ int jornada_ssp_byte (int) ;
+ int jornada_ssp_end () ;
+ int jornada_ssp_start () ;
 
 __attribute__((used)) static int jornada_bl_get_brightness(struct backlight_device *bd)
 {
-	int ret;
+ int ret;
 
-	/* check if backlight is on */
-	if (!(PPSR & PPC_LDD1))
-		return 0;
 
-	jornada_ssp_start();
+ if (!(PPSR & PPC_LDD1))
+  return 0;
 
-	/* cmd should return txdummy */
-	ret = jornada_ssp_byte(GETBRIGHTNESS);
+ jornada_ssp_start();
 
-	if (jornada_ssp_byte(GETBRIGHTNESS) != TXDUMMY) {
-		dev_err(&bd->dev, "get brightness timeout\n");
-		jornada_ssp_end();
-		return -ETIMEDOUT;
-	}
 
-	/* exchange txdummy for value */
-	ret = jornada_ssp_byte(TXDUMMY);
+ ret = jornada_ssp_byte(GETBRIGHTNESS);
 
-	jornada_ssp_end();
+ if (jornada_ssp_byte(GETBRIGHTNESS) != TXDUMMY) {
+  dev_err(&bd->dev, "get brightness timeout\n");
+  jornada_ssp_end();
+  return -ETIMEDOUT;
+ }
 
-	return BL_MAX_BRIGHT - ret;
+
+ ret = jornada_ssp_byte(TXDUMMY);
+
+ jornada_ssp_end();
+
+ return BL_MAX_BRIGHT - ret;
 }

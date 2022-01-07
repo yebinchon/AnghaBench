@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ei ;
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  VARIANT ;
-struct TYPE_3__ {int /*<<< orphan*/  parse; } ;
-typedef  TYPE_1__ ScriptHost ;
-typedef  int /*<<< orphan*/  HTMLInnerWindow ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  GUID ;
-typedef  int /*<<< orphan*/  EXCEPINFO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CO_E_CLASSSTRING ; 
- int /*<<< orphan*/  E_FAIL ; 
- int /*<<< orphan*/  FIXME (char*) ; 
- int /*<<< orphan*/  IActiveScriptParse_ParseScriptText (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SCRIPTTEXT_ISVISIBLE ; 
- scalar_t__ SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*) ; 
- int /*<<< orphan*/  WARN (char*,...) ; 
- int /*<<< orphan*/  get_guid_from_language (char const*,int /*<<< orphan*/ *) ; 
- TYPE_1__* get_script_host (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int ei ;
+typedef char WCHAR ;
+typedef int VARIANT ;
+struct TYPE_3__ {int parse; } ;
+typedef TYPE_1__ ScriptHost ;
+typedef int HTMLInnerWindow ;
+typedef int HRESULT ;
+typedef int GUID ;
+typedef int EXCEPINFO ;
+
+
+ int CO_E_CLASSSTRING ;
+ int E_FAIL ;
+ int FIXME (char*) ;
+ int IActiveScriptParse_ParseScriptText (int ,char const*,int *,int *,char const*,int ,int ,int ,int *,int *) ;
+ int SCRIPTTEXT_ISVISIBLE ;
+ scalar_t__ SUCCEEDED (int ) ;
+ int TRACE (char*) ;
+ int WARN (char*,...) ;
+ int get_guid_from_language (char const*,int *) ;
+ TYPE_1__* get_script_host (int *,int *) ;
+ int memset (int *,int ,int) ;
 
 HRESULT exec_script(HTMLInnerWindow *window, const WCHAR *code, const WCHAR *lang, VARIANT *ret)
 {
@@ -61,7 +61,7 @@ HRESULT exec_script(HTMLInnerWindow *window, const WCHAR *code, const WCHAR *lan
 
     memset(&ei, 0, sizeof(ei));
     TRACE(">>>\n");
-    hres = IActiveScriptParse_ParseScriptText(script_host->parse, code, NULL, NULL, delimW, 0, 0, SCRIPTTEXT_ISVISIBLE, ret, &ei);
+    hres = IActiveScriptParse_ParseScriptText(script_host->parse, code, ((void*)0), ((void*)0), delimW, 0, 0, SCRIPTTEXT_ISVISIBLE, ret, &ei);
     if(SUCCEEDED(hres))
         TRACE("<<<\n");
     else

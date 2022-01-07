@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  HINTERNET ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHECK_NOTIFIED2 (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  GetLastError () ; 
- int /*<<< orphan*/  INFINITE ; 
- int /*<<< orphan*/  INTERNET_STATUS_HANDLE_CLOSING ; 
- int /*<<< orphan*/  InternetCloseHandle (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SET_EXPECT2 (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  WaitForSingleObject (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int close_handle_cnt ; 
- int /*<<< orphan*/  complete_event ; 
- int /*<<< orphan*/  ok (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int HINTERNET ;
+typedef int BOOL ;
+
+
+ int CHECK_NOTIFIED2 (int ,int) ;
+ int GetLastError () ;
+ int INFINITE ;
+ int INTERNET_STATUS_HANDLE_CLOSING ;
+ int InternetCloseHandle (int ) ;
+ int SET_EXPECT2 (int ,int) ;
+ int WaitForSingleObject (int ,int ) ;
+ int close_handle_cnt ;
+ int complete_event ;
+ int ok (int ,char*,int ) ;
 
 __attribute__((used)) static void close_async_handle(HINTERNET handle, int handle_cnt)
 {

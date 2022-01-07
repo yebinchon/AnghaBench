@@ -1,201 +1,201 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
+
+
+
+
+typedef int u8 ;
 struct tveeprom {int model; } ;
-struct cx23885_dev {int /*<<< orphan*/  name; } ;
+struct cx23885_dev {int name; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  pr_info (char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  pr_warn (char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  tveeprom_hauppauge_analog (struct tveeprom*,int /*<<< orphan*/ *) ; 
+
+ int pr_info (char*,int ,int) ;
+ int pr_warn (char*,int ,int) ;
+ int tveeprom_hauppauge_analog (struct tveeprom*,int *) ;
 
 __attribute__((used)) static void hauppauge_eeprom(struct cx23885_dev *dev, u8 *eeprom_data)
 {
-	struct tveeprom tv;
+ struct tveeprom tv;
 
-	tveeprom_hauppauge_analog(&tv, eeprom_data);
+ tveeprom_hauppauge_analog(&tv, eeprom_data);
 
-	/* Make sure we support the board model */
-	switch (tv.model) {
-	case 22001:
-		/* WinTV-HVR1270 (PCIe, Retail, half height)
-		 * ATSC/QAM and basic analog, IR Blast */
-	case 22009:
-		/* WinTV-HVR1210 (PCIe, Retail, half height)
-		 * DVB-T and basic analog, IR Blast */
-	case 22011:
-		/* WinTV-HVR1270 (PCIe, Retail, half height)
-		 * ATSC/QAM and basic analog, IR Recv */
-	case 22019:
-		/* WinTV-HVR1210 (PCIe, Retail, half height)
-		 * DVB-T and basic analog, IR Recv */
-	case 22021:
-		/* WinTV-HVR1275 (PCIe, Retail, half height)
-		 * ATSC/QAM and basic analog, IR Recv */
-	case 22029:
-		/* WinTV-HVR1210 (PCIe, Retail, half height)
-		 * DVB-T and basic analog, IR Recv */
-	case 22101:
-		/* WinTV-HVR1270 (PCIe, Retail, full height)
-		 * ATSC/QAM and basic analog, IR Blast */
-	case 22109:
-		/* WinTV-HVR1210 (PCIe, Retail, full height)
-		 * DVB-T and basic analog, IR Blast */
-	case 22111:
-		/* WinTV-HVR1270 (PCIe, Retail, full height)
-		 * ATSC/QAM and basic analog, IR Recv */
-	case 22119:
-		/* WinTV-HVR1210 (PCIe, Retail, full height)
-		 * DVB-T and basic analog, IR Recv */
-	case 22121:
-		/* WinTV-HVR1275 (PCIe, Retail, full height)
-		 * ATSC/QAM and basic analog, IR Recv */
-	case 22129:
-		/* WinTV-HVR1210 (PCIe, Retail, full height)
-		 * DVB-T and basic analog, IR Recv */
-	case 71009:
-		/* WinTV-HVR1200 (PCIe, Retail, full height)
-		 * DVB-T and basic analog */
-	case 71100:
-		/* WinTV-ImpactVCB-e (PCIe, Retail, half height)
-		 * Basic analog */
-	case 71359:
-		/* WinTV-HVR1200 (PCIe, OEM, half height)
-		 * DVB-T and basic analog */
-	case 71439:
-		/* WinTV-HVR1200 (PCIe, OEM, half height)
-		 * DVB-T and basic analog */
-	case 71449:
-		/* WinTV-HVR1200 (PCIe, OEM, full height)
-		 * DVB-T and basic analog */
-	case 71939:
-		/* WinTV-HVR1200 (PCIe, OEM, half height)
-		 * DVB-T and basic analog */
-	case 71949:
-		/* WinTV-HVR1200 (PCIe, OEM, full height)
-		 * DVB-T and basic analog */
-	case 71959:
-		/* WinTV-HVR1200 (PCIe, OEM, full height)
-		 * DVB-T and basic analog */
-	case 71979:
-		/* WinTV-HVR1200 (PCIe, OEM, half height)
-		 * DVB-T and basic analog */
-	case 71999:
-		/* WinTV-HVR1200 (PCIe, OEM, full height)
-		 * DVB-T and basic analog */
-	case 76601:
-		/* WinTV-HVR1800lp (PCIe, Retail, No IR, Dual
-			channel ATSC and MPEG2 HW Encoder */
-	case 77001:
-		/* WinTV-HVR1500 (Express Card, OEM, No IR, ATSC
-			and Basic analog */
-	case 77011:
-		/* WinTV-HVR1500 (Express Card, Retail, No IR, ATSC
-			and Basic analog */
-	case 77041:
-		/* WinTV-HVR1500Q (Express Card, OEM, No IR, ATSC/QAM
-			and Basic analog */
-	case 77051:
-		/* WinTV-HVR1500Q (Express Card, Retail, No IR, ATSC/QAM
-			and Basic analog */
-	case 78011:
-		/* WinTV-HVR1800 (PCIe, Retail, 3.5mm in, IR, No FM,
-			Dual channel ATSC and MPEG2 HW Encoder */
-	case 78501:
-		/* WinTV-HVR1800 (PCIe, OEM, RCA in, No IR, FM,
-			Dual channel ATSC and MPEG2 HW Encoder */
-	case 78521:
-		/* WinTV-HVR1800 (PCIe, OEM, RCA in, No IR, FM,
-			Dual channel ATSC and MPEG2 HW Encoder */
-	case 78531:
-		/* WinTV-HVR1800 (PCIe, OEM, RCA in, No IR, No FM,
-			Dual channel ATSC and MPEG2 HW Encoder */
-	case 78631:
-		/* WinTV-HVR1800 (PCIe, OEM, No IR, No FM,
-			Dual channel ATSC and MPEG2 HW Encoder */
-	case 79001:
-		/* WinTV-HVR1250 (PCIe, Retail, IR, full height,
-			ATSC and Basic analog */
-	case 79101:
-		/* WinTV-HVR1250 (PCIe, Retail, IR, half height,
-			ATSC and Basic analog */
-	case 79501:
-		/* WinTV-HVR1250 (PCIe, No IR, half height,
-			ATSC [at least] and Basic analog) */
-	case 79561:
-		/* WinTV-HVR1250 (PCIe, OEM, No IR, half height,
-			ATSC and Basic analog */
-	case 79571:
-		/* WinTV-HVR1250 (PCIe, OEM, No IR, full height,
-		 ATSC and Basic analog */
-	case 79671:
-		/* WinTV-HVR1250 (PCIe, OEM, No IR, half height,
-			ATSC and Basic analog */
-	case 80019:
-		/* WinTV-HVR1400 (Express Card, Retail, IR,
-		 * DVB-T and Basic analog */
-	case 81509:
-		/* WinTV-HVR1700 (PCIe, OEM, No IR, half height)
-		 * DVB-T and MPEG2 HW Encoder */
-	case 81519:
-		/* WinTV-HVR1700 (PCIe, OEM, No IR, full height)
-		 * DVB-T and MPEG2 HW Encoder */
-		break;
-	case 85021:
-		/* WinTV-HVR1850 (PCIe, Retail, 3.5mm in, IR, FM,
-			Dual channel ATSC and MPEG2 HW Encoder */
-		break;
-	case 85721:
-		/* WinTV-HVR1290 (PCIe, OEM, RCA in, IR,
-			Dual channel ATSC and Basic analog */
-	case 121019:
-		/* WinTV-HVR4400 (PCIe, DVB-S2, DVB-C/T) */
-		break;
-	case 121029:
-		/* WinTV-HVR5500 (PCIe, DVB-S2, DVB-C/T) */
-		break;
-	case 150329:
-		/* WinTV-HVR5525 (PCIe, DVB-S/S2, DVB-T/T2/C) */
-		break;
-	case 161111:
-		/* WinTV-HVR-1265 K4 (PCIe, Analog/ATSC/QAM-B) */
-		break;
-	case 166100: /* 888 version, hybrid */
-	case 166200: /* 885 version, DVB only */
-		/* WinTV-QuadHD (DVB) Tuner Pair 1 (PCIe, IR, half height,
-		   DVB-T/T2/C, DVB-T/T2/C */
-		break;
-	case 166101: /* 888 version, hybrid */
-	case 166201: /* 885 version, DVB only */
-		/* WinTV-QuadHD (DVB) Tuner Pair 2 (PCIe, IR, half height,
-		   DVB-T/T2/C, DVB-T/T2/C */
-		break;
-	case 165100: /* 888 version, hybrid */
-	case 165200: /* 885 version, digital only */
-		/* WinTV-QuadHD (ATSC) Tuner Pair 1 (PCIe, IR, half height,
-		 * ATSC/QAM-B, ATSC/QAM-B */
-		break;
-	case 165101: /* 888 version, hybrid */
-	case 165201: /* 885 version, digital only */
-		/* WinTV-QuadHD (ATSC) Tuner Pair 2 (PCIe, IR, half height,
-		 * ATSC/QAM-B, ATSC/QAM-B */
-		break;
-	default:
-		pr_warn("%s: warning: unknown hauppauge model #%d\n",
-			dev->name, tv.model);
-		break;
-	}
 
-	pr_info("%s: hauppauge eeprom: model=%d\n",
-		dev->name, tv.model);
+ switch (tv.model) {
+ case 22001:
+
+
+ case 22009:
+
+
+ case 22011:
+
+
+ case 22019:
+
+
+ case 22021:
+
+
+ case 22029:
+
+
+ case 22101:
+
+
+ case 22109:
+
+
+ case 22111:
+
+
+ case 22119:
+
+
+ case 22121:
+
+
+ case 22129:
+
+
+ case 71009:
+
+
+ case 71100:
+
+
+ case 71359:
+
+
+ case 71439:
+
+
+ case 71449:
+
+
+ case 71939:
+
+
+ case 71949:
+
+
+ case 71959:
+
+
+ case 71979:
+
+
+ case 71999:
+
+
+ case 76601:
+
+
+ case 77001:
+
+
+ case 77011:
+
+
+ case 77041:
+
+
+ case 77051:
+
+
+ case 78011:
+
+
+ case 78501:
+
+
+ case 78521:
+
+
+ case 78531:
+
+
+ case 78631:
+
+
+ case 79001:
+
+
+ case 79101:
+
+
+ case 79501:
+
+
+ case 79561:
+
+
+ case 79571:
+
+
+ case 79671:
+
+
+ case 80019:
+
+
+ case 81509:
+
+
+ case 81519:
+
+
+  break;
+ case 85021:
+
+
+  break;
+ case 85721:
+
+
+ case 121019:
+
+  break;
+ case 121029:
+
+  break;
+ case 150329:
+
+  break;
+ case 161111:
+
+  break;
+ case 166100:
+ case 166200:
+
+
+  break;
+ case 166101:
+ case 166201:
+
+
+  break;
+ case 165100:
+ case 165200:
+
+
+  break;
+ case 165101:
+ case 165201:
+
+
+  break;
+ default:
+  pr_warn("%s: warning: unknown hauppauge model #%d\n",
+   dev->name, tv.model);
+  break;
+ }
+
+ pr_info("%s: hauppauge eeprom: model=%d\n",
+  dev->name, tv.model);
 }

@@ -1,35 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
-#define  AF_INET 129 
-#define  AF_INET6 128 
- int /*<<< orphan*/  EAFNOSUPPORT ; 
- int /*<<< orphan*/  SET_ERRNO (int /*<<< orphan*/ ) ; 
- char* inet_ntop4 (unsigned char const*,char*,size_t) ; 
- char* inet_ntop6 (unsigned char const*,char*,size_t) ; 
+ int EAFNOSUPPORT ;
+ int SET_ERRNO (int ) ;
+ char* inet_ntop4 (unsigned char const*,char*,size_t) ;
+ char* inet_ntop6 (unsigned char const*,char*,size_t) ;
 
 char *inet_ntop(int af, const void *src, char *buf, size_t size)
 {
   switch (af) {
-  case AF_INET:
+  case 129:
     return inet_ntop4((const unsigned char*)src, buf, size);
-#ifdef ENABLE_IPV6
-  case AF_INET6:
-    return inet_ntop6((const unsigned char*)src, buf, size);
-#endif
+
+
+
+
   default:
     SET_ERRNO(EAFNOSUPPORT);
-    return NULL;
+    return ((void*)0);
   }
 }

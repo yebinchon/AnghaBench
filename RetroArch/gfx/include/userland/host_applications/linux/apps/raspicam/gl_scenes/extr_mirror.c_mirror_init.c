@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  RASPITEX_STATE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mirror_shader ; 
- int raspitexutil_build_shader_program (int /*<<< orphan*/ *) ; 
- int raspitexutil_gl_init_2_0 (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int RASPITEX_STATE ;
+
+
+ int mirror_shader ;
+ int raspitexutil_build_shader_program (int *) ;
+ int raspitexutil_gl_init_2_0 (int *) ;
 
 __attribute__((used)) static int mirror_init(RASPITEX_STATE *state)
 {

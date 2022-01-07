@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int* dev; } ;
 
-/* Variables and functions */
-#define  DEVICE_LIGHTGUN 129 
-#define  DEVICE_PAD6B 128 
- int MAX_DEVICES ; 
- int /*<<< orphan*/  gamepad_refresh (int) ; 
- TYPE_1__ input ; 
- int /*<<< orphan*/  lightgun_refresh (int) ; 
+
+
+
+ int MAX_DEVICES ;
+ int gamepad_refresh (int) ;
+ TYPE_1__ input ;
+ int lightgun_refresh (int) ;
 
 void input_refresh(void)
 {
@@ -28,13 +28,13 @@ void input_refresh(void)
   {
     switch (input.dev[i])
     {
-      case DEVICE_PAD6B:
+      case 128:
       {
         gamepad_refresh(i);
         break;
       }
 
-      case DEVICE_LIGHTGUN:
+      case 129:
       {
         lightgun_refresh(i);
         break;

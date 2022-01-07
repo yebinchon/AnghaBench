@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct msg_buffers_chunk {scalar_t__ magic; scalar_t__* free_cnt; int two_power; int free_buffers; int tot_buffers; int buffer_size; scalar_t__ first_buffer; struct msg_buffers_chunk* ch_next; struct msg_buffers_chunk* ch_prev; } ;
-struct msg_buffer {int refcnt; int /*<<< orphan*/  magic; struct msg_buffers_chunk* chunk; } ;
+struct msg_buffer {int refcnt; int magic; struct msg_buffers_chunk* chunk; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MSG_BUFFER_USED_MAGIC ; 
- scalar_t__ MSG_CHUNK_HEAD_MAGIC ; 
- struct msg_buffers_chunk* alloc_new_msg_buffers_chunk (struct msg_buffers_chunk*) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,...) ; 
- int get_buffer_no (struct msg_buffers_chunk*,struct msg_buffer*) ; 
- scalar_t__ lrand48 () ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  total_used_buffers ; 
- int total_used_buffers_size ; 
- int verbosity ; 
+
+ int MSG_BUFFER_USED_MAGIC ;
+ scalar_t__ MSG_CHUNK_HEAD_MAGIC ;
+ struct msg_buffers_chunk* alloc_new_msg_buffers_chunk (struct msg_buffers_chunk*) ;
+ int assert (int) ;
+ int fprintf (int ,char*,int,...) ;
+ int get_buffer_no (struct msg_buffers_chunk*,struct msg_buffer*) ;
+ scalar_t__ lrand48 () ;
+ int stderr ;
+ int total_used_buffers ;
+ int total_used_buffers_size ;
+ int verbosity ;
 
 struct msg_buffer *alloc_msg_buffer_internal (struct msg_buffer *neighbor, struct msg_buffers_chunk *CH) {
   assert (CH->magic == MSG_CHUNK_HEAD_MAGIC);
@@ -46,7 +46,7 @@ struct msg_buffer *alloc_msg_buffer_internal (struct msg_buffer *neighbor, struc
     if (C == CF) {
       C = alloc_new_msg_buffers_chunk (CH);
       if (!C) {
-	return 0;
+ return 0;
       }
       assert (C == CH->ch_next && C != CH && C->free_cnt[1]);
       break;
@@ -65,28 +65,28 @@ struct msg_buffer *alloc_msg_buffer_internal (struct msg_buffer *neighbor, struc
       i <<= 1;
       int m = (l + r) >> 1;
       if (x < m) {
-	if (C->free_cnt[i] > 0) {
-	  r = m;
-	  if (C->free_cnt[i+1] > 0) {
-	    j = i + 1;
-	  }
-	} else {
-	  l = m;
-	  i++;
-	}
+ if (C->free_cnt[i] > 0) {
+   r = m;
+   if (C->free_cnt[i+1] > 0) {
+     j = i + 1;
+   }
+ } else {
+   l = m;
+   i++;
+ }
       } else if (C->free_cnt[i+1] > 0) {
-	l = m;
-	i++;
+ l = m;
+ i++;
       } else {
-	k = i = j;
-	while (i < two_power) {
-	  i <<= 1;
-	  if (!C->free_cnt[i]) {
-	    i++;
-	  }
-	  assert (-- C->free_cnt[i] >= 0);
-	}
-	break;
+ k = i = j;
+ while (i < two_power) {
+   i <<= 1;
+   if (!C->free_cnt[i]) {
+     i++;
+   }
+   assert (-- C->free_cnt[i] >= 0);
+ }
+ break;
       }
     }
     if (!k) {
@@ -104,8 +104,8 @@ struct msg_buffer *alloc_msg_buffer_internal (struct msg_buffer *neighbor, struc
       assert (-- C->free_cnt[i] >= 0);
       i <<= 1;
       if (C->free_cnt[i] <= j) {
-	j -= C->free_cnt[i];
-	i++;
+ j -= C->free_cnt[i];
+ i++;
       }
     }
     assert (-- C->free_cnt[i] == 0);
@@ -127,7 +127,7 @@ struct msg_buffer *alloc_msg_buffer_internal (struct msg_buffer *neighbor, struc
 
   total_used_buffers_size += C->buffer_size;
   total_used_buffers ++;
-  // assert (get_buffer_no (C, X) == i);
+
 
   return X;
 }

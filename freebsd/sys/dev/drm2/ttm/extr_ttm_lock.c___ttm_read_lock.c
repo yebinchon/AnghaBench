@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ttm_lock {scalar_t__ rw; scalar_t__ flags; int /*<<< orphan*/  signal; int /*<<< orphan*/  kill_takers; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ttm_lock_send_sig (int /*<<< orphan*/ ) ; 
- scalar_t__ unlikely (int /*<<< orphan*/ ) ; 
+
+
+
+struct ttm_lock {scalar_t__ rw; scalar_t__ flags; int signal; int kill_takers; } ;
+
+
+ int ttm_lock_send_sig (int ) ;
+ scalar_t__ unlikely (int ) ;
 
 __attribute__((used)) static bool __ttm_read_lock(struct ttm_lock *lock)
 {
-	bool locked = false;
+ bool locked = 0;
 
-	if (unlikely(lock->kill_takers)) {
-		ttm_lock_send_sig(lock->signal);
-		return false;
-	}
-	if (lock->rw >= 0 && lock->flags == 0) {
-		++lock->rw;
-		locked = true;
-	}
-	return locked;
+ if (unlikely(lock->kill_takers)) {
+  ttm_lock_send_sig(lock->signal);
+  return 0;
+ }
+ if (lock->rw >= 0 && lock->flags == 0) {
+  ++lock->rw;
+  locked = 1;
+ }
+ return locked;
 }

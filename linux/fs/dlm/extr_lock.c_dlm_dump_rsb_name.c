@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
 struct dlm_rsb {int dummy; } ;
 struct dlm_ls {int ls_rsbtbl_size; TYPE_1__* ls_rsbtbl; } ;
-struct TYPE_2__ {int /*<<< orphan*/  lock; int /*<<< orphan*/  toss; int /*<<< orphan*/  keep; } ;
+struct TYPE_2__ {int lock; int toss; int keep; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dlm_dump_rsb (struct dlm_rsb*) ; 
- int dlm_search_rsb_tree (int /*<<< orphan*/ *,char*,int,struct dlm_rsb**) ; 
- int jhash (char*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  spin_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock (int /*<<< orphan*/ *) ; 
+
+ int dlm_dump_rsb (struct dlm_rsb*) ;
+ int dlm_search_rsb_tree (int *,char*,int,struct dlm_rsb**) ;
+ int jhash (char*,int,int ) ;
+ int spin_lock (int *) ;
+ int spin_unlock (int *) ;
 
 void dlm_dump_rsb_name(struct dlm_ls *ls, char *name, int len)
 {
-	struct dlm_rsb *r = NULL;
-	uint32_t hash, b;
-	int error;
+ struct dlm_rsb *r = ((void*)0);
+ uint32_t hash, b;
+ int error;
 
-	hash = jhash(name, len, 0);
-	b = hash & (ls->ls_rsbtbl_size - 1);
+ hash = jhash(name, len, 0);
+ b = hash & (ls->ls_rsbtbl_size - 1);
 
-	spin_lock(&ls->ls_rsbtbl[b].lock);
-	error = dlm_search_rsb_tree(&ls->ls_rsbtbl[b].keep, name, len, &r);
-	if (!error)
-		goto out_dump;
+ spin_lock(&ls->ls_rsbtbl[b].lock);
+ error = dlm_search_rsb_tree(&ls->ls_rsbtbl[b].keep, name, len, &r);
+ if (!error)
+  goto out_dump;
 
-	error = dlm_search_rsb_tree(&ls->ls_rsbtbl[b].toss, name, len, &r);
-	if (error)
-		goto out;
+ error = dlm_search_rsb_tree(&ls->ls_rsbtbl[b].toss, name, len, &r);
+ if (error)
+  goto out;
  out_dump:
-	dlm_dump_rsb(r);
+ dlm_dump_rsb(r);
  out:
-	spin_unlock(&ls->ls_rsbtbl[b].lock);
+ spin_unlock(&ls->ls_rsbtbl[b].lock);
 }

@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ngx_log_t ;
-struct TYPE_3__ {scalar_t__ key; int /*<<< orphan*/ * lua_vm; } ;
-typedef  TYPE_1__ ngx_http_lua_socket_pool_t ;
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LUA_REGISTRYINDEX ; 
- int /*<<< orphan*/  NGX_LOG_DEBUG_HTTP ; 
- int /*<<< orphan*/  lua_pop (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pushlightuserdata (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_pushnil (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_pushstring (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  lua_rawget (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_rawset (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  ngx_http_lua_lightudata_mask (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_log_debug1 (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,scalar_t__) ; 
- int /*<<< orphan*/  socket_pool_key ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int ngx_log_t ;
+struct TYPE_3__ {scalar_t__ key; int * lua_vm; } ;
+typedef TYPE_1__ ngx_http_lua_socket_pool_t ;
+typedef int lua_State ;
+
+
+ int LUA_REGISTRYINDEX ;
+ int NGX_LOG_DEBUG_HTTP ;
+ int lua_pop (int *,int) ;
+ int lua_pushlightuserdata (int *,int ) ;
+ int lua_pushnil (int *) ;
+ int lua_pushstring (int *,char*) ;
+ int lua_rawget (int *,int ) ;
+ int lua_rawset (int *,int) ;
+ int ngx_http_lua_lightudata_mask (int ) ;
+ int ngx_log_debug1 (int ,int *,int ,char*,scalar_t__) ;
+ int socket_pool_key ;
 
 __attribute__((used)) static void
 ngx_http_lua_socket_free_pool(ngx_log_t *log, ngx_http_lua_socket_pool_t *spool)
 {
-    lua_State                           *L;
+    lua_State *L;
 
     ngx_log_debug1(NGX_LOG_DEBUG_HTTP, log, 0,
                    "lua tcp socket keepalive: free connection pool for \"%s\"",

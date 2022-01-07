@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {scalar_t__ shift; int /*<<< orphan*/  num_bits; int /*<<< orphan*/  Nr; int /*<<< orphan*/  N; } ;
-typedef  TYPE_1__ BN_RECP_CTX ;
-typedef  int /*<<< orphan*/  BN_CTX ;
-typedef  int /*<<< orphan*/  BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BN_copy (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  BN_num_bits (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  BN_zero (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {scalar_t__ shift; int num_bits; int Nr; int N; } ;
+typedef TYPE_1__ BN_RECP_CTX ;
+typedef int BN_CTX ;
+typedef int BIGNUM ;
+
+
+ int BN_copy (int *,int const*) ;
+ int BN_num_bits (int const*) ;
+ int BN_zero (int *) ;
 
 int BN_RECP_CTX_set(BN_RECP_CTX *recp, const BIGNUM *d, BN_CTX *ctx)
 {

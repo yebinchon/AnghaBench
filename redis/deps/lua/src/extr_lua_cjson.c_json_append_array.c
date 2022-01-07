@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  strbuf_t ;
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  int /*<<< orphan*/  json_config_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  json_append_data (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_pop (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_rawgeti (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  strbuf_append_char (int /*<<< orphan*/ *,char) ; 
+
+
+
+typedef int strbuf_t ;
+typedef int lua_State ;
+typedef int json_config_t ;
+
+
+ int json_append_data (int *,int *,int,int *) ;
+ int lua_pop (int *,int) ;
+ int lua_rawgeti (int *,int,int) ;
+ int strbuf_append_char (int *,char) ;
 
 __attribute__((used)) static void json_append_array(lua_State *l, json_config_t *cfg, int current_depth,
                               strbuf_t *json, int array_length)

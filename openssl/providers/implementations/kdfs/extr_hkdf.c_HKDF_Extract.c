@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  EVP_MD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR_LIB_PROV ; 
- int /*<<< orphan*/  ERR_raise (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int EVP_MD_size (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/ * HMAC (int /*<<< orphan*/  const*,unsigned char const*,size_t,unsigned char const*,size_t,unsigned char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PROV_R_WRONG_OUTPUT_BUFFER_SIZE ; 
+
+
+
+typedef int EVP_MD ;
+
+
+ int ERR_LIB_PROV ;
+ int ERR_raise (int ,int ) ;
+ int EVP_MD_size (int const*) ;
+ int * HMAC (int const*,unsigned char const*,size_t,unsigned char const*,size_t,unsigned char*,int *) ;
+ int PROV_R_WRONG_OUTPUT_BUFFER_SIZE ;
 
 __attribute__((used)) static int HKDF_Extract(const EVP_MD *evp_md,
                         const unsigned char *salt, size_t salt_len,
@@ -32,6 +32,6 @@ __attribute__((used)) static int HKDF_Extract(const EVP_MD *evp_md,
         ERR_raise(ERR_LIB_PROV, PROV_R_WRONG_OUTPUT_BUFFER_SIZE);
         return 0;
     }
-    /* calc: PRK = HMAC-Hash(salt, IKM) */
-    return HMAC(evp_md, salt, salt_len, ikm, ikm_len, prk, NULL) != NULL;
+
+    return HMAC(evp_md, salt, salt_len, ikm, ikm_len, prk, ((void*)0)) != ((void*)0);
 }

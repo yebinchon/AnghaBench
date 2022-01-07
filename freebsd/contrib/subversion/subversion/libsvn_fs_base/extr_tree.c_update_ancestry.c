@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  trail_t ;
-typedef  int /*<<< orphan*/  svn_fs_t ;
-typedef  int /*<<< orphan*/  svn_fs_id_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct TYPE_4__ {int predecessor_count; int /*<<< orphan*/  const* predecessor_id; } ;
-typedef  TYPE_1__ node_revision_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_FS_NOT_MUTABLE ; 
- int /*<<< orphan*/  _ (char*) ; 
- scalar_t__ strcmp (int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/ * svn_error_createf (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  svn_fs_base__id_txn_id (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  svn_fs_bdb__get_node_revision (TYPE_1__**,int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_fs_bdb__put_node_revision (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int trail_t ;
+typedef int svn_fs_t ;
+typedef int svn_fs_id_t ;
+typedef int svn_error_t ;
+struct TYPE_4__ {int predecessor_count; int const* predecessor_id; } ;
+typedef TYPE_1__ node_revision_t ;
+typedef int apr_pool_t ;
+
+
+ int SVN_ERR (int ) ;
+ int SVN_ERR_FS_NOT_MUTABLE ;
+ int _ (char*) ;
+ scalar_t__ strcmp (int ,char const*) ;
+ int * svn_error_createf (int ,int *,int ,char const*) ;
+ int svn_fs_base__id_txn_id (int const*) ;
+ int svn_fs_bdb__get_node_revision (TYPE_1__**,int *,int const*,int *,int *) ;
+ int * svn_fs_bdb__put_node_revision (int *,int const*,TYPE_1__*,int *,int *) ;
 
 __attribute__((used)) static svn_error_t *
 update_ancestry(svn_fs_t *fs,
@@ -41,10 +41,10 @@ update_ancestry(svn_fs_t *fs,
 {
   node_revision_t *noderev;
 
-  /* Set target's predecessor-id to source_id.  */
+
   if (strcmp(svn_fs_base__id_txn_id(target_id), txn_id))
     return svn_error_createf
-      (SVN_ERR_FS_NOT_MUTABLE, NULL,
+      (SVN_ERR_FS_NOT_MUTABLE, ((void*)0),
        _("Unexpected immutable node at '%s'"), target_path);
   SVN_ERR(svn_fs_bdb__get_node_revision(&noderev, fs, target_id,
                                         trail, pool));

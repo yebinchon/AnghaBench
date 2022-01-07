@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  int16_t ;
-struct TYPE_6__ {scalar_t__ huffman; scalar_t__ chroma_format; int mb_x; int width; int /*<<< orphan*/  i_tex_bits; } ;
-typedef  TYPE_1__ MpegEncContext ;
 
-/* Variables and functions */
- scalar_t__ CHROMA_420 ; 
- scalar_t__ CHROMA_444 ; 
- scalar_t__ HUFFMAN_TABLE_OPTIMAL ; 
- int /*<<< orphan*/  encode_block (TYPE_1__*,int /*<<< orphan*/ *,int) ; 
- scalar_t__ get_bits_diff (TYPE_1__*) ; 
- int /*<<< orphan*/  record_block (TYPE_1__*,int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int int16_t ;
+struct TYPE_6__ {scalar_t__ huffman; scalar_t__ chroma_format; int mb_x; int width; int i_tex_bits; } ;
+typedef TYPE_1__ MpegEncContext ;
+
+
+ scalar_t__ CHROMA_420 ;
+ scalar_t__ CHROMA_444 ;
+ scalar_t__ HUFFMAN_TABLE_OPTIMAL ;
+ int encode_block (TYPE_1__*,int *,int) ;
+ scalar_t__ get_bits_diff (TYPE_1__*) ;
+ int record_block (TYPE_1__*,int *,int) ;
 
 void ff_mjpeg_encode_mb(MpegEncContext *s, int16_t block[12][64])
 {

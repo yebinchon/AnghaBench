@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int log2_max_poc_lsb; } ;
-typedef  TYPE_1__ HEVCSPS ;
+typedef TYPE_1__ HEVCSPS ;
 
-/* Variables and functions */
- int HEVC_NAL_BLA_N_LP ; 
- int HEVC_NAL_BLA_W_LP ; 
- int HEVC_NAL_BLA_W_RADL ; 
+
+ int HEVC_NAL_BLA_N_LP ;
+ int HEVC_NAL_BLA_W_LP ;
+ int HEVC_NAL_BLA_W_RADL ;
 
 int ff_hevc_compute_poc(const HEVCSPS *sps, int pocTid0, int poc_lsb, int nal_unit_type)
 {
-    int max_poc_lsb  = 1 << sps->log2_max_poc_lsb;
+    int max_poc_lsb = 1 << sps->log2_max_poc_lsb;
     int prev_poc_lsb = pocTid0 % max_poc_lsb;
     int prev_poc_msb = pocTid0 - prev_poc_lsb;
     int poc_msb;
@@ -33,8 +33,8 @@ int ff_hevc_compute_poc(const HEVCSPS *sps, int pocTid0, int poc_lsb, int nal_un
     else
         poc_msb = prev_poc_msb;
 
-    // For BLA picture types, POCmsb is set to 0.
-    if (nal_unit_type == HEVC_NAL_BLA_W_LP   ||
+
+    if (nal_unit_type == HEVC_NAL_BLA_W_LP ||
         nal_unit_type == HEVC_NAL_BLA_W_RADL ||
         nal_unit_type == HEVC_NAL_BLA_N_LP)
         poc_msb = 0;

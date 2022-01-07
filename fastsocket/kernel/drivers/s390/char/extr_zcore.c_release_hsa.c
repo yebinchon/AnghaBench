@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  DIAG308_REL_HSA ; 
- int /*<<< orphan*/  diag308 (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ hsa_available ; 
+ int DIAG308_REL_HSA ;
+ int diag308 (int ,int *) ;
+ scalar_t__ hsa_available ;
 
 __attribute__((used)) static void release_hsa(void)
 {
-	diag308(DIAG308_REL_HSA, NULL);
-	hsa_available = 0;
+ diag308(DIAG308_REL_HSA, ((void*)0));
+ hsa_available = 0;
 }

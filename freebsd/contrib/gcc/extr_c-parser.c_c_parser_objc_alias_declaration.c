@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
-typedef  int /*<<< orphan*/  c_parser ;
-struct TYPE_2__ {int /*<<< orphan*/  value; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CPP_NAME ; 
- int /*<<< orphan*/  CPP_SEMICOLON ; 
- int /*<<< orphan*/  RID_AT_ALIAS ; 
- int /*<<< orphan*/  c_parser_consume_token (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  c_parser_error (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  c_parser_next_token_is_keyword (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ c_parser_next_token_is_not (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- TYPE_1__* c_parser_peek_token (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  c_parser_skip_until_found (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  gcc_assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  objc_declare_alias (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int tree ;
+typedef int c_parser ;
+struct TYPE_2__ {int value; } ;
+
+
+ int CPP_NAME ;
+ int CPP_SEMICOLON ;
+ int RID_AT_ALIAS ;
+ int c_parser_consume_token (int *) ;
+ int c_parser_error (int *,char*) ;
+ int c_parser_next_token_is_keyword (int *,int ) ;
+ scalar_t__ c_parser_next_token_is_not (int *,int ) ;
+ TYPE_1__* c_parser_peek_token (int *) ;
+ int c_parser_skip_until_found (int *,int ,char*) ;
+ int gcc_assert (int ) ;
+ int objc_declare_alias (int ,int ) ;
 
 __attribute__((used)) static void
 c_parser_objc_alias_declaration (c_parser *parser)
@@ -37,7 +37,7 @@ c_parser_objc_alias_declaration (c_parser *parser)
   if (c_parser_next_token_is_not (parser, CPP_NAME))
     {
       c_parser_error (parser, "expected identifier");
-      c_parser_skip_until_found (parser, CPP_SEMICOLON, NULL);
+      c_parser_skip_until_found (parser, CPP_SEMICOLON, ((void*)0));
       return;
     }
   id1 = c_parser_peek_token (parser)->value;
@@ -45,7 +45,7 @@ c_parser_objc_alias_declaration (c_parser *parser)
   if (c_parser_next_token_is_not (parser, CPP_NAME))
     {
       c_parser_error (parser, "expected identifier");
-      c_parser_skip_until_found (parser, CPP_SEMICOLON, NULL);
+      c_parser_skip_until_found (parser, CPP_SEMICOLON, ((void*)0));
       return;
     }
   id2 = c_parser_peek_token (parser)->value;

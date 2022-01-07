@@ -1,160 +1,160 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tmp ;
-typedef  int /*<<< orphan*/  ss ;
-typedef  scalar_t__ UINT ;
-typedef  void* UCHAR ;
+
+
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int tmp ;
+typedef int ss ;
+typedef scalar_t__ UINT ;
+typedef void* UCHAR ;
 struct TYPE_10__ {scalar_t__ ipv6_scope_id; void** ipv6_addr; } ;
 struct TYPE_9__ {int NumTokens; char** Token; } ;
-typedef  TYPE_1__ TOKEN_LIST ;
-typedef  TYPE_2__ IP ;
+typedef TYPE_1__ TOKEN_LIST ;
+typedef TYPE_2__ IP ;
 
-/* Variables and functions */
- int CheckIPItemStr6 (char*) ; 
- int /*<<< orphan*/  Copy (TYPE_2__*,TYPE_2__*,int) ; 
- scalar_t__ EndWith (char*,char*) ; 
- int /*<<< orphan*/  FreeToken (TYPE_1__*) ; 
- scalar_t__ INFINITE ; 
- int /*<<< orphan*/  IPItemStrToChars6 (void**,char*) ; 
- int MAX_PATH ; 
- TYPE_1__* ParseTokenWithNullStr (char*,char*) ; 
- scalar_t__ SearchStrEx (char*,char*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ StartWith (char*,char*) ; 
- int /*<<< orphan*/  StrCpy (char*,int,char*) ; 
- int /*<<< orphan*/  StrCpyAllowOverlap (char*,int,char*) ; 
- scalar_t__ StrLen (char*) ; 
- scalar_t__ ToInt (char*) ; 
- int /*<<< orphan*/  Trim (char*) ; 
- int /*<<< orphan*/  ZeroIP6 (TYPE_2__*) ; 
+
+ int CheckIPItemStr6 (char*) ;
+ int Copy (TYPE_2__*,TYPE_2__*,int) ;
+ scalar_t__ EndWith (char*,char*) ;
+ int FreeToken (TYPE_1__*) ;
+ scalar_t__ INFINITE ;
+ int IPItemStrToChars6 (void**,char*) ;
+ int MAX_PATH ;
+ TYPE_1__* ParseTokenWithNullStr (char*,char*) ;
+ scalar_t__ SearchStrEx (char*,char*,int ,int) ;
+ scalar_t__ StartWith (char*,char*) ;
+ int StrCpy (char*,int,char*) ;
+ int StrCpyAllowOverlap (char*,int,char*) ;
+ scalar_t__ StrLen (char*) ;
+ scalar_t__ ToInt (char*) ;
+ int Trim (char*) ;
+ int ZeroIP6 (TYPE_2__*) ;
 
 bool StrToIP6(IP *ip, char *str)
 {
-	TOKEN_LIST *t;
-	char tmp[MAX_PATH];
-	IP a;
-	UINT i;
-	UINT scope_id = 0;
-	// Validate arguments
-	if (str == NULL || ip == NULL)
-	{
-		return false;
-	}
+ TOKEN_LIST *t;
+ char tmp[MAX_PATH];
+ IP a;
+ UINT i;
+ UINT scope_id = 0;
 
-	ZeroIP6(&a);
+ if (str == ((void*)0) || ip == ((void*)0))
+ {
+  return 0;
+ }
 
-	StrCpy(tmp, sizeof(tmp), str);
-	Trim(tmp);
+ ZeroIP6(&a);
 
-	if (StartWith(tmp, "[") && EndWith(tmp, "]"))
-	{
-		// If the string is enclosed in square brackets, remove brackets
-		StrCpyAllowOverlap(tmp, sizeof(tmp), &tmp[1]);
+ StrCpy(tmp, sizeof(tmp), str);
+ Trim(tmp);
 
-		if (StrLen(tmp) >= 1)
-		{
-			tmp[StrLen(tmp) - 1] = 0;
-		}
-	}
+ if (StartWith(tmp, "[") && EndWith(tmp, "]"))
+ {
 
-	// Remove the scope ID by analyzing if there is it
-	i = SearchStrEx(tmp, "%", 0, false);
-	if (i != INFINITE)
-	{
-		char ss[MAX_PATH];
+  StrCpyAllowOverlap(tmp, sizeof(tmp), &tmp[1]);
 
-		StrCpy(ss, sizeof(ss), &tmp[i + 1]);
+  if (StrLen(tmp) >= 1)
+  {
+   tmp[StrLen(tmp) - 1] = 0;
+  }
+ }
 
-		tmp[i] = 0;
 
-		Trim(tmp);
+ i = SearchStrEx(tmp, "%", 0, 0);
+ if (i != INFINITE)
+ {
+  char ss[MAX_PATH];
 
-		Trim(ss);
+  StrCpy(ss, sizeof(ss), &tmp[i + 1]);
 
-		scope_id = ToInt(ss);
-	}
+  tmp[i] = 0;
 
-	// Tokenize
-	t = ParseTokenWithNullStr(tmp, ":");
-	if (t->NumTokens >= 3 && t->NumTokens <= 8)
-	{
-		UINT i, n;
-		bool b = true;
-		UINT k = 0;
+  Trim(tmp);
 
-		n = 0;
+  Trim(ss);
 
-		for (i = 0;i < t->NumTokens;i++)
-		{
-			char *str = t->Token[i];
+  scope_id = ToInt(ss);
+ }
 
-			if (i != 0 && i != (t->NumTokens - 1) && StrLen(str) == 0)
-			{
-				n++;
-				if (n == 1)
-				{
-					k += 2 * (8 - t->NumTokens + 1);
-				}
-				else
-				{
-					b = false;
-					break;
-				}
-			}
-			else
-			{
-				UCHAR chars[2];
 
-				if (CheckIPItemStr6(str) == false)
-				{
-					b = false;
-					break;
-				}
+ t = ParseTokenWithNullStr(tmp, ":");
+ if (t->NumTokens >= 3 && t->NumTokens <= 8)
+ {
+  UINT i, n;
+  bool b = 1;
+  UINT k = 0;
 
-				IPItemStrToChars6(chars, str);
+  n = 0;
 
-				a.ipv6_addr[k++] = chars[0];
-				a.ipv6_addr[k++] = chars[1];
-			}
-		}
+  for (i = 0;i < t->NumTokens;i++)
+  {
+   char *str = t->Token[i];
 
-		if (n != 0 && n != 1)
-		{
-			b = false;
-		}
-		else if (n == 0 && t->NumTokens != 8)
-		{
-			b = false;
-		}
+   if (i != 0 && i != (t->NumTokens - 1) && StrLen(str) == 0)
+   {
+    n++;
+    if (n == 1)
+    {
+     k += 2 * (8 - t->NumTokens + 1);
+    }
+    else
+    {
+     b = 0;
+     break;
+    }
+   }
+   else
+   {
+    UCHAR chars[2];
 
-		if (b == false)
-		{
-			FreeToken(t);
-			return false;
-		}
-	}
-	else
-	{
-		FreeToken(t);
-		return false;
-	}
+    if (CheckIPItemStr6(str) == 0)
+    {
+     b = 0;
+     break;
+    }
 
-	FreeToken(t);
+    IPItemStrToChars6(chars, str);
 
-	Copy(ip, &a, sizeof(IP));
+    a.ipv6_addr[k++] = chars[0];
+    a.ipv6_addr[k++] = chars[1];
+   }
+  }
 
-	ip->ipv6_scope_id = scope_id;
+  if (n != 0 && n != 1)
+  {
+   b = 0;
+  }
+  else if (n == 0 && t->NumTokens != 8)
+  {
+   b = 0;
+  }
 
-	return true;
+  if (b == 0)
+  {
+   FreeToken(t);
+   return 0;
+  }
+ }
+ else
+ {
+  FreeToken(t);
+  return 0;
+ }
+
+ FreeToken(t);
+
+ Copy(ip, &a, sizeof(IP));
+
+ ip->ipv6_scope_id = scope_id;
+
+ return 1;
 }

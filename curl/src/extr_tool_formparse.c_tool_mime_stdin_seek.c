@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {scalar_t__ curpos; scalar_t__ origin; int /*<<< orphan*/  data; int /*<<< orphan*/  size; } ;
-typedef  TYPE_1__ tool_mime ;
-typedef  scalar_t__ curl_off_t ;
 
-/* Variables and functions */
- int CURL_SEEKFUNC_CANTSEEK ; 
- int CURL_SEEKFUNC_OK ; 
-#define  SEEK_CUR 129 
-#define  SEEK_END 128 
- int /*<<< orphan*/  SEEK_SET ; 
- scalar_t__ fseek (int /*<<< orphan*/ ,long,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stdin ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {scalar_t__ curpos; scalar_t__ origin; int data; int size; } ;
+typedef TYPE_1__ tool_mime ;
+typedef scalar_t__ curl_off_t ;
+
+
+ int CURL_SEEKFUNC_CANTSEEK ;
+ int CURL_SEEKFUNC_OK ;
+
+
+ int SEEK_SET ;
+ scalar_t__ fseek (int ,long,int ) ;
+ int stdin ;
 
 int tool_mime_stdin_seek(void *instream, curl_off_t offset, int whence)
 {
   tool_mime *sip = (tool_mime *) instream;
 
   switch(whence) {
-  case SEEK_CUR:
+  case 129:
     offset += sip->curpos;
     break;
-  case SEEK_END:
+  case 128:
     offset += sip->size;
     break;
   }

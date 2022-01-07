@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ LONGEST ;
 
-/* Variables and functions */
- int DEPRECATED_REGISTER_RAW_SIZE (int) ; 
- void* alloca (int) ; 
- int /*<<< orphan*/  deprecated_write_register_gen (int,void*) ; 
- int /*<<< orphan*/  store_signed_integer (void*,int,scalar_t__) ; 
+
+
+
+typedef scalar_t__ LONGEST ;
+
+
+ int DEPRECATED_REGISTER_RAW_SIZE (int) ;
+ void* alloca (int) ;
+ int deprecated_write_register_gen (int,void*) ;
+ int store_signed_integer (void*,int,scalar_t__) ;
 
 void
 write_register (int regnum, LONGEST val)

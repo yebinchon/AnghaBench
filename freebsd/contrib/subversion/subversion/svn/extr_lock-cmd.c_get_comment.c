@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_9__ {char* data; } ;
-typedef  TYPE_2__ svn_string_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_client_ctx_t ;
-struct TYPE_10__ {int /*<<< orphan*/  encoding; scalar_t__ message; TYPE_1__* filedata; } ;
-typedef  TYPE_3__ svn_cl__opt_state_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+typedef TYPE_2__ svn_string_t ;
+typedef int svn_error_t ;
+typedef int svn_client_ctx_t ;
+struct TYPE_10__ {int encoding; scalar_t__ message; TYPE_1__* filedata; } ;
+typedef TYPE_3__ svn_cl__opt_state_t ;
+typedef int apr_pool_t ;
 struct TYPE_8__ {scalar_t__ len; scalar_t__ data; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_CL_BAD_LOG_MESSAGE ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  _ (char*) ; 
- scalar_t__ strlen (scalar_t__) ; 
- int /*<<< orphan*/ * svn_error_create (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- TYPE_2__* svn_string_create (scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_subst_translate_string2 (TYPE_2__**,int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int FALSE ;
+ int SVN_ERR (int ) ;
+ int SVN_ERR_CL_BAD_LOG_MESSAGE ;
+ int * SVN_NO_ERROR ;
+ int _ (char*) ;
+ scalar_t__ strlen (scalar_t__) ;
+ int * svn_error_create (int ,int *,int ) ;
+ TYPE_2__* svn_string_create (scalar_t__,int *) ;
+ int svn_subst_translate_string2 (TYPE_2__**,int *,int *,TYPE_2__*,int ,int ,int *,int *) ;
 
 __attribute__((used)) static svn_error_t *
 get_comment(const char **comment, svn_client_ctx_t *ctx,
@@ -41,12 +41,12 @@ get_comment(const char **comment, svn_client_ctx_t *ctx,
 
   if (opt_state->filedata)
     {
-      /* Get it from the -F argument. */
+
       if (strlen(opt_state->filedata->data) < opt_state->filedata->len)
         {
-          /* A message containing a zero byte can't be represented as a C
-             string. */
-          return svn_error_create(SVN_ERR_CL_BAD_LOG_MESSAGE, NULL,
+
+
+          return svn_error_create(SVN_ERR_CL_BAD_LOG_MESSAGE, ((void*)0),
                                   _("Lock comment contains a zero byte"));
         }
       comment_string = svn_string_create(opt_state->filedata->data, pool);
@@ -54,17 +54,17 @@ get_comment(const char **comment, svn_client_ctx_t *ctx,
     }
   else if (opt_state->message)
     {
-      /* Get if from the -m option. */
+
       comment_string = svn_string_create(opt_state->message, pool);
     }
   else
     {
-      *comment = NULL;
+      *comment = ((void*)0);
       return SVN_NO_ERROR;
     }
 
-  /* Translate to UTF8/LF. */
-  SVN_ERR(svn_subst_translate_string2(&comment_string, NULL, NULL,
+
+  SVN_ERR(svn_subst_translate_string2(&comment_string, ((void*)0), ((void*)0),
                                       comment_string, opt_state->encoding,
                                       FALSE, pool, pool));
   *comment = comment_string->data;

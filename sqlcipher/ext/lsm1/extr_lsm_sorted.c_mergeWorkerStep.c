@@ -1,73 +1,73 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_19__   TYPE_6__ ;
-typedef  struct TYPE_18__   TYPE_5__ ;
-typedef  struct TYPE_17__   TYPE_4__ ;
-typedef  struct TYPE_16__   TYPE_3__ ;
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_14__ {int (* xCmp ) (scalar_t__,int /*<<< orphan*/ ,void*,int) ;int /*<<< orphan*/  pEnv; } ;
-typedef  TYPE_1__ lsm_db ;
+
+
+typedef struct TYPE_19__ TYPE_6__ ;
+typedef struct TYPE_18__ TYPE_5__ ;
+typedef struct TYPE_17__ TYPE_4__ ;
+typedef struct TYPE_16__ TYPE_3__ ;
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
+struct TYPE_14__ {int (* xCmp ) (scalar_t__,int ,void*,int) ;int pEnv; } ;
+typedef TYPE_1__ lsm_db ;
 struct TYPE_19__ {void* pData; } ;
-struct TYPE_18__ {int eType; scalar_t__ iPtr; int /*<<< orphan*/  nKey; scalar_t__ pKey; } ;
-struct TYPE_17__ {TYPE_3__* pCsr; int /*<<< orphan*/ * aGobble; TYPE_1__* pDb; } ;
+struct TYPE_18__ {int eType; scalar_t__ iPtr; int nKey; scalar_t__ pKey; } ;
+struct TYPE_17__ {TYPE_3__* pCsr; int * aGobble; TYPE_1__* pDb; } ;
 struct TYPE_16__ {int eType; int nPtr; int* aTree; TYPE_6__ val; TYPE_2__* aPtr; TYPE_5__* pBtCsr; scalar_t__* pPrevMergePtr; } ;
-struct TYPE_15__ {int flags; scalar_t__ pPg; scalar_t__ iPgPtr; scalar_t__ iPtr; int /*<<< orphan*/  nKey; scalar_t__ pKey; } ;
-typedef  TYPE_2__ SegmentPtr ;
-typedef  TYPE_3__ MultiCursor ;
-typedef  TYPE_4__ MergeWorker ;
-typedef  scalar_t__ LsmPgno ;
-typedef  TYPE_5__ BtreeCursor ;
+struct TYPE_15__ {int flags; scalar_t__ pPg; scalar_t__ iPgPtr; scalar_t__ iPtr; int nKey; scalar_t__ pKey; } ;
+typedef TYPE_2__ SegmentPtr ;
+typedef TYPE_3__ MultiCursor ;
+typedef TYPE_4__ MergeWorker ;
+typedef scalar_t__ LsmPgno ;
+typedef TYPE_5__ BtreeCursor ;
 
-/* Variables and functions */
- int CURSOR_DATA_SEGMENT ; 
- int LSM_OK ; 
- int PGFTR_SKIP_THIS_FLAG ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  lsmFsPageNumber (scalar_t__) ; 
- int /*<<< orphan*/  lsmMCursorKey (TYPE_3__*,void**,int*) ; 
- int lsmMCursorNext (TYPE_3__*) ; 
- int lsmMCursorValid (TYPE_3__*) ; 
- int /*<<< orphan*/  mergeRangeDeletes (TYPE_3__*,int*,int*) ; 
- int mergeWorkerWrite (TYPE_4__*,int,void*,int,void*,int,int) ; 
- int multiCursorGetVal (TYPE_3__*,int,void**,int*) ; 
- scalar_t__ rtIsSeparator (int) ; 
- int rtTopic (int) ; 
- int sortedBlobSet (int /*<<< orphan*/ ,TYPE_6__*,void*,int) ; 
- int stub1 (scalar_t__,int /*<<< orphan*/ ,void*,int) ; 
- scalar_t__ stub2 (scalar_t__,int /*<<< orphan*/ ,void*,int) ; 
+
+ int CURSOR_DATA_SEGMENT ;
+ int LSM_OK ;
+ int PGFTR_SKIP_THIS_FLAG ;
+ int assert (int) ;
+ int lsmFsPageNumber (scalar_t__) ;
+ int lsmMCursorKey (TYPE_3__*,void**,int*) ;
+ int lsmMCursorNext (TYPE_3__*) ;
+ int lsmMCursorValid (TYPE_3__*) ;
+ int mergeRangeDeletes (TYPE_3__*,int*,int*) ;
+ int mergeWorkerWrite (TYPE_4__*,int,void*,int,void*,int,int) ;
+ int multiCursorGetVal (TYPE_3__*,int,void**,int*) ;
+ scalar_t__ rtIsSeparator (int) ;
+ int rtTopic (int) ;
+ int sortedBlobSet (int ,TYPE_6__*,void*,int) ;
+ int stub1 (scalar_t__,int ,void*,int) ;
+ scalar_t__ stub2 (scalar_t__,int ,void*,int) ;
 
 __attribute__((used)) static int mergeWorkerStep(MergeWorker *pMW){
-  lsm_db *pDb = pMW->pDb;       /* Database handle */
-  MultiCursor *pCsr;            /* Cursor to read input data from */
-  int rc = LSM_OK;              /* Return code */
-  int eType;                    /* SORTED_SEPARATOR, WRITE or DELETE */
-  void *pKey; int nKey;         /* Key */
+  lsm_db *pDb = pMW->pDb;
+  MultiCursor *pCsr;
+  int rc = LSM_OK;
+  int eType;
+  void *pKey; int nKey;
   LsmPgno iPtr;
   int iVal;
 
   pCsr = pMW->pCsr;
 
-  /* Pull the next record out of the source cursor. */
+
   lsmMCursorKey(pCsr, &pKey, &nKey);
   eType = pCsr->eType;
 
-  /* Figure out if the output record may have a different pointer value
-  ** than the previous. This is the case if the current key is identical to
-  ** a key that appears in the lowest level run being merged. If so, set 
-  ** iPtr to the absolute pointer value. If not, leave iPtr set to zero, 
-  ** indicating that the output pointer value should be a copy of the pointer 
-  ** value written with the previous key.  */
+
+
+
+
+
+
   iPtr = (pCsr->pPrevMergePtr ? *pCsr->pPrevMergePtr : 0);
   if( pCsr->pBtCsr ){
     BtreeCursor *pBtCsr = pCsr->pBtCsr;
@@ -100,11 +100,11 @@ __attribute__((used)) static int mergeWorkerStep(MergeWorker *pMW){
       }
     }
 
-    /* If this is a separator key and we know that the output pointer has not
-    ** changed, there is no point in writing an output record. Otherwise,
-    ** proceed. */
+
+
+
     if( rc==LSM_OK && (rtIsSeparator(eType)==0 || iPtr!=0) ){
-      /* Write the record into the main run. */
+
       void *pVal; int nVal;
       rc = multiCursorGetVal(pCsr, iVal, &pVal, &nVal);
       if( pVal && rc==LSM_OK ){
@@ -118,7 +118,7 @@ __attribute__((used)) static int mergeWorkerStep(MergeWorker *pMW){
     }
   }
 
-  /* Advance the cursor to the next input record (assuming one exists). */
+
   assert( lsmMCursorValid(pMW->pCsr) );
   if( rc==LSM_OK ) rc = lsmMCursorNext(pMW->pCsr);
 

@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct varlist {char* name; char* value; } ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef int FILE ;
 
-/* Variables and functions */
- size_t MAXLIST ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*,...) ; 
+
+ size_t MAXLIST ;
+ int fprintf (int *,char*,...) ;
 
 __attribute__((used)) static void
 doprintvlist(
-	struct varlist *vlist,
-	FILE *fp
-	)
+ struct varlist *vlist,
+ FILE *fp
+ )
 {
-	size_t n;
+ size_t n;
 
-	if (NULL == vlist->name) {
-		fprintf(fp, "No variables on list\n");
-		return;
-	}
-	for (n = 0; n < MAXLIST && vlist[n].name != NULL; n++) {
-		if (NULL == vlist[n].value)
-			fprintf(fp, "%s\n", vlist[n].name);
-		else
-			fprintf(fp, "%s=%s\n", vlist[n].name,
-				vlist[n].value);
-	}
+ if (((void*)0) == vlist->name) {
+  fprintf(fp, "No variables on list\n");
+  return;
+ }
+ for (n = 0; n < MAXLIST && vlist[n].name != ((void*)0); n++) {
+  if (((void*)0) == vlist[n].value)
+   fprintf(fp, "%s\n", vlist[n].name);
+  else
+   fprintf(fp, "%s=%s\n", vlist[n].name,
+    vlist[n].value);
+ }
 }

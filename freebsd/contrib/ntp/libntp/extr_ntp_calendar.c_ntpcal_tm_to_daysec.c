@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct tm {int /*<<< orphan*/  tm_sec; int /*<<< orphan*/  tm_min; int /*<<< orphan*/  tm_hour; } ;
-typedef  int /*<<< orphan*/  int32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ntpcal_etime_to_seconds (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct tm {int tm_sec; int tm_min; int tm_hour; } ;
+typedef int int32_t ;
+
+
+ int ntpcal_etime_to_seconds (int ,int ,int ) ;
 
 int32_t
 ntpcal_tm_to_daysec(
-	const struct tm *utm
-	)
+ const struct tm *utm
+ )
 {
-	return ntpcal_etime_to_seconds(utm->tm_hour, utm->tm_min,
-				       utm->tm_sec);
+ return ntpcal_etime_to_seconds(utm->tm_hour, utm->tm_min,
+           utm->tm_sec);
 }

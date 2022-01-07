@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  (* block128_f ) (unsigned char*,unsigned char*,void const*) ;
 
-/* Variables and functions */
- scalar_t__ STRICT_ALIGNMENT ; 
- int /*<<< orphan*/  memcpy (unsigned char*,unsigned char const*,int) ; 
- int /*<<< orphan*/  stub1 (unsigned char*,unsigned char*,void const*) ; 
- int /*<<< orphan*/  stub2 (unsigned char*,unsigned char*,void const*) ; 
- int /*<<< orphan*/  stub3 (unsigned char*,unsigned char*,void const*) ; 
+
+
+
+typedef int (* block128_f ) (unsigned char*,unsigned char*,void const*) ;
+
+
+ scalar_t__ STRICT_ALIGNMENT ;
+ int memcpy (unsigned char*,unsigned char const*,int) ;
+ int stub1 (unsigned char*,unsigned char*,void const*) ;
+ int stub2 (unsigned char*,unsigned char*,void const*) ;
+ int stub3 (unsigned char*,unsigned char*,void const*) ;
 
 void CRYPTO_cbc128_encrypt(const unsigned char *in, unsigned char *out,
                            size_t len, const void *key,
@@ -29,7 +29,7 @@ void CRYPTO_cbc128_encrypt(const unsigned char *in, unsigned char *out,
     if (len == 0)
         return;
 
-#if !defined(OPENSSL_SMALL_FOOTPRINT)
+
     if (STRICT_ALIGNMENT &&
         ((size_t)in | (size_t)out | (size_t)ivec) % sizeof(size_t) != 0) {
         while (len >= 16) {
@@ -53,7 +53,7 @@ void CRYPTO_cbc128_encrypt(const unsigned char *in, unsigned char *out,
             out += 16;
         }
     }
-#endif
+
     while (len) {
         for (n = 0; n < 16 && n < len; ++n)
             out[n] = in[n] ^ iv[n];

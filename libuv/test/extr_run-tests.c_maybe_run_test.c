@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uv_uid_t ;
-typedef  scalar_t__ uv_gid_t ;
-typedef  int ssize_t ;
-typedef  int /*<<< orphan*/  out ;
-typedef  int /*<<< orphan*/  fd ;
-typedef  int /*<<< orphan*/  buffer ;
-typedef  int /*<<< orphan*/  HANDLE ;
-typedef  int /*<<< orphan*/  DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- scalar_t__ EINTR ; 
- int /*<<< orphan*/  WriteFile (int /*<<< orphan*/ ,char const*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ _get_osfhandle (int) ; 
- scalar_t__ atoi (char*) ; 
- scalar_t__ errno ; 
- char* fgets (char*,int,int /*<<< orphan*/ ) ; 
- int fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  fputs (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fsync (int) ; 
- char* getenv (char*) ; 
- scalar_t__ getgid () ; 
- scalar_t__ getuid () ; 
- int ipc_helper (int) ; 
- int ipc_helper_bind_twice () ; 
- int ipc_helper_closed_handle () ; 
- int ipc_helper_heavy_traffic_deadlock_bug () ; 
- int ipc_helper_send_zero () ; 
- int ipc_helper_tcp_connection () ; 
- int ipc_send_recv_helper () ; 
- int /*<<< orphan*/  notify_parent_process () ; 
- int /*<<< orphan*/  print_tests (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printf (char*) ; 
- int read (int /*<<< orphan*/ ,int*,int) ; 
- int run_test (char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  spawn_stdin_stdout () ; 
- int spawn_tcp_server_helper () ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  stdin ; 
- int stdio_over_pipes_helper () ; 
- int /*<<< orphan*/  stdout ; 
- scalar_t__ strcmp (char*,char*) ; 
- int /*<<< orphan*/  uv_sleep (int) ; 
- int write (int,char const*,int) ; 
+
+
+
+typedef scalar_t__ uv_uid_t ;
+typedef scalar_t__ uv_gid_t ;
+typedef int ssize_t ;
+typedef int out ;
+typedef int fd ;
+typedef int buffer ;
+typedef int HANDLE ;
+typedef int DWORD ;
+
+
+ int ASSERT (int) ;
+ scalar_t__ EINTR ;
+ int WriteFile (int ,char const*,int,int *,int *) ;
+ scalar_t__ _get_osfhandle (int) ;
+ scalar_t__ atoi (char*) ;
+ scalar_t__ errno ;
+ char* fgets (char*,int,int ) ;
+ int fprintf (int ,char*,...) ;
+ int fputs (char*,int ) ;
+ int fsync (int) ;
+ char* getenv (char*) ;
+ scalar_t__ getgid () ;
+ scalar_t__ getuid () ;
+ int ipc_helper (int) ;
+ int ipc_helper_bind_twice () ;
+ int ipc_helper_closed_handle () ;
+ int ipc_helper_heavy_traffic_deadlock_bug () ;
+ int ipc_helper_send_zero () ;
+ int ipc_helper_tcp_connection () ;
+ int ipc_send_recv_helper () ;
+ int notify_parent_process () ;
+ int print_tests (int ) ;
+ int printf (char*) ;
+ int read (int ,int*,int) ;
+ int run_test (char*,int ,int) ;
+ int spawn_stdin_stdout () ;
+ int spawn_tcp_server_helper () ;
+ int stderr ;
+ int stdin ;
+ int stdio_over_pipes_helper () ;
+ int stdout ;
+ scalar_t__ strcmp (char*,char*) ;
+ int uv_sleep (int) ;
+ int write (int,char const*,int) ;
 
 __attribute__((used)) static int maybe_run_test(int argc, char **argv) {
   if (strcmp(argv[1], "--list") == 0) {
@@ -124,7 +124,7 @@ __attribute__((used)) static int maybe_run_test(int argc, char **argv) {
 
   if (strcmp(argv[1], "spawn_helper4") == 0) {
     notify_parent_process();
-    /* Never surrender, never return! */
+
     while (1) uv_sleep(10000);
   }
 
@@ -132,10 +132,10 @@ __attribute__((used)) static int maybe_run_test(int argc, char **argv) {
     const char out[] = "fourth stdio!\n";
     notify_parent_process();
     {
-#ifdef _WIN32
-      DWORD bytes;
-      WriteFile((HANDLE) _get_osfhandle(3), out, sizeof(out) - 1, &bytes, NULL);
-#else
+
+
+
+
       ssize_t r;
 
       do
@@ -143,7 +143,7 @@ __attribute__((used)) static int maybe_run_test(int argc, char **argv) {
       while (r == -1 && errno == EINTR);
 
       fsync(3);
-#endif
+
     }
     return 1;
   }
@@ -168,9 +168,9 @@ __attribute__((used)) static int maybe_run_test(int argc, char **argv) {
 
     notify_parent_process();
 
-    /* Test if the test value from the parent is still set */
+
     test = getenv("ENV_TEST");
-    ASSERT(test != NULL);
+    ASSERT(test != ((void*)0));
 
     r = fprintf(stdout, "%s", test);
     ASSERT(r > 0);
@@ -178,7 +178,7 @@ __attribute__((used)) static int maybe_run_test(int argc, char **argv) {
     return 1;
   }
 
-#ifndef _WIN32
+
   if (strcmp(argv[1], "spawn_helper8") == 0) {
     int fd;
 
@@ -189,7 +189,7 @@ __attribute__((used)) static int maybe_run_test(int argc, char **argv) {
 
     return 1;
   }
-#endif  /* !_WIN32 */
+
 
   if (strcmp(argv[1], "spawn_helper9") == 0) {
     notify_parent_process();
@@ -197,7 +197,7 @@ __attribute__((used)) static int maybe_run_test(int argc, char **argv) {
     return 1;
   }
 
-#ifndef _WIN32
+
   if (strcmp(argv[1], "spawn_helper_setuid_setgid") == 0) {
     uv_uid_t uid = atoi(argv[2]);
     uv_gid_t gid = atoi(argv[3]);
@@ -208,7 +208,7 @@ __attribute__((used)) static int maybe_run_test(int argc, char **argv) {
 
     return 1;
   }
-#endif  /* !_WIN32 */
+
 
   return run_test(argv[1], 0, 1);
 }

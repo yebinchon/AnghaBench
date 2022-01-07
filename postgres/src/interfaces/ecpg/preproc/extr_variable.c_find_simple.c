@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct variable {int /*<<< orphan*/  name; struct variable* next; } ;
 
-/* Variables and functions */
- struct variable* allvariables ; 
- scalar_t__ strcmp (int /*<<< orphan*/ ,char*) ; 
+
+
+
+struct variable {int name; struct variable* next; } ;
+
+
+ struct variable* allvariables ;
+ scalar_t__ strcmp (int ,char*) ;
 
 __attribute__((used)) static struct variable *
 find_simple(char *name)
 {
-	struct variable *p;
+ struct variable *p;
 
-	for (p = allvariables; p; p = p->next)
-	{
-		if (strcmp(p->name, name) == 0)
-			return p;
-	}
+ for (p = allvariables; p; p = p->next)
+ {
+  if (strcmp(p->name, name) == 0)
+   return p;
+ }
 
-	return NULL;
+ return ((void*)0);
 }

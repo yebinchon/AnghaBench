@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int user_id; int last_visited; scalar_t__ online_prev; scalar_t__ online_next; } ;
-typedef  TYPE_1__ user_t ;
-typedef  int /*<<< orphan*/  olist_t ;
+typedef TYPE_1__ user_t ;
+typedef int olist_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * OHead ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,...) ; 
- scalar_t__ is_valid_online_stamp (int) ; 
- int now ; 
- int /*<<< orphan*/  online_advance_now () ; 
- int online_convert_time (int) ; 
- int /*<<< orphan*/  online_increment (int,int) ; 
- int /*<<< orphan*/  online_list_add_after (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  online_list_remove (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  user_to_olist (TYPE_1__*) ; 
- int verbosity ; 
+
+ int * OHead ;
+ int fprintf (int ,char*,int,...) ;
+ scalar_t__ is_valid_online_stamp (int) ;
+ int now ;
+ int online_advance_now () ;
+ int online_convert_time (int) ;
+ int online_increment (int,int) ;
+ int online_list_add_after (int *,int ) ;
+ int online_list_remove (int ) ;
+ int stderr ;
+ int user_to_olist (TYPE_1__*) ;
+ int verbosity ;
 
 int account_user_online (user_t *U) {
   if (!U) {

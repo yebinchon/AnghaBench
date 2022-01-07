@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int OPTION_CHOICE_DEFAULT ;
 
-/* Variables and functions */
- int OPT_EOF ; 
-#define  OPT_ERR 134 
-#define  OPT_TEST_HELP 133 
-#define  OPT_TEST_INDENT 132 
-#define  OPT_TEST_ITERATION 131 
-#define  OPT_TEST_LIST 130 
-#define  OPT_TEST_SEED 129 
-#define  OPT_TEST_SINGLE 128 
- int /*<<< orphan*/  check_single_test_params (char*,char*,char*) ; 
- int level ; 
- char* opt_arg () ; 
- int /*<<< orphan*/  opt_begin () ; 
- char* opt_flag () ; 
- int /*<<< orphan*/  opt_help (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  opt_int (char*,int*) ; 
- int opt_next () ; 
- int /*<<< orphan*/  set_seed (int) ; 
- int show_list ; 
- int single_iter ; 
- int /*<<< orphan*/  test_get_options () ; 
+
+
+
+typedef int OPTION_CHOICE_DEFAULT ;
+
+
+ int OPT_EOF ;
+
+
+
+
+
+
+
+ int check_single_test_params (char*,char*,char*) ;
+ int level ;
+ char* opt_arg () ;
+ int opt_begin () ;
+ char* opt_flag () ;
+ int opt_help (int ) ;
+ int opt_int (char*,int*) ;
+ int opt_next () ;
+ int set_seed (int) ;
+ int show_list ;
+ int single_iter ;
+ int test_get_options () ;
 
 __attribute__((used)) static int process_shared_options(void)
 {
@@ -41,37 +41,37 @@ __attribute__((used)) static int process_shared_options(void)
     int ret = -1;
     char *flag_test = "";
     char *flag_iter = "";
-    char *testname = NULL;
+    char *testname = ((void*)0);
 
     opt_begin();
     while ((o = opt_next()) != OPT_EOF) {
         switch (o) {
-        /* Ignore any test options at this level */
+
         default:
             break;
-        case OPT_ERR:
+        case 134:
             return ret;
-        case OPT_TEST_HELP:
+        case 133:
             opt_help(test_get_options());
             return 0;
-        case OPT_TEST_LIST:
+        case 130:
             show_list = 1;
             break;
-        case OPT_TEST_SINGLE:
+        case 128:
             flag_test = opt_flag();
             testname = opt_arg();
             break;
-        case OPT_TEST_ITERATION:
+        case 131:
             flag_iter = opt_flag();
             if (!opt_int(opt_arg(), &single_iter))
                 goto end;
             break;
-        case OPT_TEST_INDENT:
+        case 132:
             if (!opt_int(opt_arg(), &value))
                 goto end;
             level = 4 * value;
             break;
-        case OPT_TEST_SEED:
+        case 129:
             if (!opt_int(opt_arg(), &value))
                 goto end;
             set_seed(value);

@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {scalar_t__ cpiWindows; scalar_t__ cpiInternet; scalar_t__ hCharset; int /*<<< orphan*/  szName; } ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {scalar_t__ cpiWindows; scalar_t__ cpiInternet; scalar_t__ hCharset; int szName; } ;
 struct TYPE_6__ {scalar_t__ uiCodePage; scalar_t__ uiInternetEncoding; } ;
-typedef  TYPE_1__ MIMECSETINFO ;
-typedef  TYPE_2__ INETCSETINFO ;
-typedef  int /*<<< orphan*/  IMimeInternational ;
-typedef  scalar_t__ HRESULT ;
-typedef  scalar_t__ HCHARSET ;
+typedef TYPE_1__ MIMECSETINFO ;
+typedef TYPE_2__ INETCSETINFO ;
+typedef int IMimeInternational ;
+typedef scalar_t__ HRESULT ;
+typedef scalar_t__ HCHARSET ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHARSET_BODY ; 
- scalar_t__ IMimeInternational_FindCharset (int /*<<< orphan*/ *,char*,scalar_t__*) ; 
- scalar_t__ IMimeInternational_GetCharsetInfo (int /*<<< orphan*/ *,scalar_t__,TYPE_2__*) ; 
- scalar_t__ IMimeInternational_GetCodePageCharset (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,scalar_t__*) ; 
- int /*<<< orphan*/  IMimeInternational_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ MIME_E_NOT_FOUND ; 
- scalar_t__ MimeOleGetInternat (int /*<<< orphan*/ **) ; 
- scalar_t__ S_OK ; 
- scalar_t__ mlang_getcsetinfo (char*,TYPE_1__*) ; 
- scalar_t__ mlang_getcsetinfo_from_cp (int,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  strcmp (int /*<<< orphan*/ ,char*) ; 
+
+ int CHARSET_BODY ;
+ scalar_t__ IMimeInternational_FindCharset (int *,char*,scalar_t__*) ;
+ scalar_t__ IMimeInternational_GetCharsetInfo (int *,scalar_t__,TYPE_2__*) ;
+ scalar_t__ IMimeInternational_GetCodePageCharset (int *,int,int ,scalar_t__*) ;
+ int IMimeInternational_Release (int *) ;
+ scalar_t__ MIME_E_NOT_FOUND ;
+ scalar_t__ MimeOleGetInternat (int **) ;
+ scalar_t__ S_OK ;
+ scalar_t__ mlang_getcsetinfo (char*,TYPE_1__*) ;
+ scalar_t__ mlang_getcsetinfo_from_cp (int,int ,TYPE_1__*) ;
+ int ok (int,char*,...) ;
+ int strcmp (int ,char*) ;
 
 __attribute__((used)) static void test_charset(void)
 {

@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint64_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  printf (char*,double,double,double,double,...) ; 
- double ssd_to_psnr (int,int) ; 
- double ssim_db (double,int) ; 
+
+
+
+typedef int uint64_t ;
+
+
+ int printf (char*,double,double,double,double,...) ;
+ double ssd_to_psnr (int,int) ;
+ double ssim_db (double,int) ;
 
 __attribute__((used)) static void print_results(uint64_t ssd[3], double ssim[3], int frames, int w, int h)
 {

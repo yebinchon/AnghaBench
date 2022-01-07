@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64_t ;
-struct TYPE_5__ {int /*<<< orphan*/  rt_root; } ;
-typedef  TYPE_1__ range_tree_t ;
-struct TYPE_6__ {int /*<<< orphan*/  rs_end; } ;
-typedef  TYPE_2__ range_seg_t ;
 
-/* Variables and functions */
- TYPE_2__* avl_last (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint64_t ;
+struct TYPE_5__ {int rt_root; } ;
+typedef TYPE_1__ range_tree_t ;
+struct TYPE_6__ {int rs_end; } ;
+typedef TYPE_2__ range_seg_t ;
+
+
+ TYPE_2__* avl_last (int *) ;
 
 uint64_t
 range_tree_max(range_tree_t *rt)
 {
-	range_seg_t *rs = avl_last(&rt->rt_root);
-	return (rs != NULL ? rs->rs_end : 0);
+ range_seg_t *rs = avl_last(&rt->rt_root);
+ return (rs != ((void*)0) ? rs->rs_end : 0);
 }

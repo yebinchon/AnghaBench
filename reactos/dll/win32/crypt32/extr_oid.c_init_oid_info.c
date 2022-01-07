@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_5__ ;
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int /*<<< orphan*/  pbData; int /*<<< orphan*/  cbData; } ;
-struct TYPE_7__ {int /*<<< orphan*/  Algid; } ;
-struct TYPE_10__ {int cbSize; int /*<<< orphan*/  pwszCNGExtraAlgid; int /*<<< orphan*/  pwszCNGAlgid; TYPE_2__ ExtraInfo; TYPE_1__ u; int /*<<< orphan*/  dwGroupId; scalar_t__* pwszName; int /*<<< orphan*/  pszOID; } ;
-struct OIDInfo {int /*<<< orphan*/  entry; TYPE_4__ info; } ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  UINT_PTR ;
-struct TYPE_11__ {int /*<<< orphan*/  pwszCNGExtraAlgid; int /*<<< orphan*/  pwszCNGAlgid; TYPE_3__* blob; int /*<<< orphan*/  Algid; int /*<<< orphan*/  dwGroupId; int /*<<< orphan*/  pszOID; scalar_t__* pwszName; } ;
-struct TYPE_9__ {int /*<<< orphan*/  pbData; int /*<<< orphan*/  cbData; } ;
-typedef  scalar_t__* LPWSTR ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
-typedef  size_t DWORD ;
-typedef  int /*<<< orphan*/  CRYPT_OID_INFO ;
 
-/* Variables and functions */
- size_t ARRAY_SIZE (TYPE_5__*) ; 
- struct OIDInfo* CryptMemAlloc (int) ; 
- int /*<<< orphan*/  IS_INTRESOURCE (scalar_t__*) ; 
- int LoadStringW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hInstance ; 
- int /*<<< orphan*/  list_add_tail (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memcpy (struct OIDInfo*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  memset (struct OIDInfo*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  oidInfo ; 
- TYPE_5__* oidInfoConstructors ; 
- int /*<<< orphan*/  oid_init_localizednames () ; 
+
+typedef struct TYPE_11__ TYPE_5__ ;
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int pbData; int cbData; } ;
+struct TYPE_7__ {int Algid; } ;
+struct TYPE_10__ {int cbSize; int pwszCNGExtraAlgid; int pwszCNGAlgid; TYPE_2__ ExtraInfo; TYPE_1__ u; int dwGroupId; scalar_t__* pwszName; int pszOID; } ;
+struct OIDInfo {int entry; TYPE_4__ info; } ;
+typedef int WCHAR ;
+typedef int UINT_PTR ;
+struct TYPE_11__ {int pwszCNGExtraAlgid; int pwszCNGAlgid; TYPE_3__* blob; int Algid; int dwGroupId; int pszOID; scalar_t__* pwszName; } ;
+struct TYPE_9__ {int pbData; int cbData; } ;
+typedef scalar_t__* LPWSTR ;
+typedef int LPCWSTR ;
+typedef size_t DWORD ;
+typedef int CRYPT_OID_INFO ;
+
+
+ size_t ARRAY_SIZE (TYPE_5__*) ;
+ struct OIDInfo* CryptMemAlloc (int) ;
+ int IS_INTRESOURCE (scalar_t__*) ;
+ int LoadStringW (int ,int ,scalar_t__*,int ) ;
+ int hInstance ;
+ int list_add_tail (int *,int *) ;
+ int memcpy (struct OIDInfo*,int ,int) ;
+ int memset (struct OIDInfo*,int ,int) ;
+ int oidInfo ;
+ TYPE_5__* oidInfoConstructors ;
+ int oid_init_localizednames () ;
 
 __attribute__((used)) static void init_oid_info(void)
 {
@@ -52,7 +52,7 @@ __attribute__((used)) static void init_oid_info(void)
         {
             struct OIDInfo *info;
 
-            /* The name is a static string, so just use the same pointer */
+
             info = CryptMemAlloc(sizeof(struct OIDInfo));
             if (info)
             {

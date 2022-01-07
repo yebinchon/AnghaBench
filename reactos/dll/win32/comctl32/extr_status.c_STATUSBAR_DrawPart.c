@@ -1,63 +1,63 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_4__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ ULONG_PTR ;
-typedef  scalar_t__ UINT ;
+
+
+typedef struct TYPE_15__ TYPE_4__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+typedef scalar_t__ ULONG_PTR ;
+typedef scalar_t__ UINT ;
 struct TYPE_14__ {int bottom; int top; int right; scalar_t__ left; } ;
-struct TYPE_15__ {int itemID; int /*<<< orphan*/  CtlID; scalar_t__ itemData; TYPE_3__ rcItem; int /*<<< orphan*/  hDC; int /*<<< orphan*/  hwndItem; } ;
-struct TYPE_13__ {int style; scalar_t__ text; int /*<<< orphan*/  hIcon; TYPE_3__ bound; } ;
-struct TYPE_12__ {int numParts; int /*<<< orphan*/  Notify; int /*<<< orphan*/  Self; scalar_t__ simple; } ;
-typedef  TYPE_1__ STATUS_INFO ;
-typedef  TYPE_2__ STATUSWINDOWPART ;
-typedef  TYPE_3__ RECT ;
-typedef  int /*<<< orphan*/  LPARAM ;
-typedef  int INT ;
-typedef  scalar_t__ HTHEME ;
-typedef  int /*<<< orphan*/  HDC ;
-typedef  TYPE_4__ DRAWITEMSTRUCT ;
+struct TYPE_15__ {int itemID; int CtlID; scalar_t__ itemData; TYPE_3__ rcItem; int hDC; int hwndItem; } ;
+struct TYPE_13__ {int style; scalar_t__ text; int hIcon; TYPE_3__ bound; } ;
+struct TYPE_12__ {int numParts; int Notify; int Self; scalar_t__ simple; } ;
+typedef TYPE_1__ STATUS_INFO ;
+typedef TYPE_2__ STATUSWINDOWPART ;
+typedef TYPE_3__ RECT ;
+typedef int LPARAM ;
+typedef int INT ;
+typedef scalar_t__ HTHEME ;
+typedef int HDC ;
+typedef TYPE_4__ DRAWITEMSTRUCT ;
 
-/* Variables and functions */
- scalar_t__ BDR_RAISEDOUTER ; 
- scalar_t__ BDR_SUNKENOUTER ; 
- int BF_ADJUST ; 
- int BF_RECT ; 
- int /*<<< orphan*/  DI_NORMAL ; 
- int DT_NOPREFIX ; 
- int DT_SINGLELINE ; 
- int DT_VCENTER ; 
- int /*<<< orphan*/  DrawEdge (int /*<<< orphan*/ ,TYPE_3__*,scalar_t__,int) ; 
- int /*<<< orphan*/  DrawIconEx (int /*<<< orphan*/ ,scalar_t__,int,int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DrawStatusTextW (int /*<<< orphan*/ ,TYPE_3__*,scalar_t__,int) ; 
- int /*<<< orphan*/  DrawThemeBackground (scalar_t__,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,TYPE_3__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DrawThemeText (scalar_t__,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,scalar_t__,int,int,int /*<<< orphan*/ ,TYPE_3__*) ; 
- int /*<<< orphan*/  GWLP_ID ; 
- int /*<<< orphan*/  GWL_STYLE ; 
- int /*<<< orphan*/  GetWindowLongPtrW (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int GetWindowLongW (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ GetWindowTheme (int /*<<< orphan*/ ) ; 
- int SBARS_SIZEGRIP ; 
- int SBT_NOBORDERS ; 
- int SBT_OWNERDRAW ; 
- int SBT_POPOUT ; 
- int SP_GRIPPERPANE ; 
- int SP_PANE ; 
- int /*<<< orphan*/  SendMessageW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WM_DRAWITEM ; 
- int /*<<< orphan*/  wine_dbgstr_rect (TYPE_3__*) ; 
+
+ scalar_t__ BDR_RAISEDOUTER ;
+ scalar_t__ BDR_SUNKENOUTER ;
+ int BF_ADJUST ;
+ int BF_RECT ;
+ int DI_NORMAL ;
+ int DT_NOPREFIX ;
+ int DT_SINGLELINE ;
+ int DT_VCENTER ;
+ int DrawEdge (int ,TYPE_3__*,scalar_t__,int) ;
+ int DrawIconEx (int ,scalar_t__,int,int ,int,int,int ,int ,int ) ;
+ int DrawStatusTextW (int ,TYPE_3__*,scalar_t__,int) ;
+ int DrawThemeBackground (scalar_t__,int ,int,int ,TYPE_3__*,int *) ;
+ int DrawThemeText (scalar_t__,int ,int,int ,scalar_t__,int,int,int ,TYPE_3__*) ;
+ int GWLP_ID ;
+ int GWL_STYLE ;
+ int GetWindowLongPtrW (int ,int ) ;
+ int GetWindowLongW (int ,int ) ;
+ scalar_t__ GetWindowTheme (int ) ;
+ int SBARS_SIZEGRIP ;
+ int SBT_NOBORDERS ;
+ int SBT_OWNERDRAW ;
+ int SBT_POPOUT ;
+ int SP_GRIPPERPANE ;
+ int SP_PANE ;
+ int SendMessageW (int ,int ,int ,int ) ;
+ int TRACE (char*,int ) ;
+ int WM_DRAWITEM ;
+ int wine_dbgstr_rect (TYPE_3__*) ;
 
 __attribute__((used)) static void
 STATUSBAR_DrawPart (const STATUS_INFO *infoPtr, HDC hdc, const STATUSWINDOWPART *part, int itemID)
@@ -79,7 +79,7 @@ STATUSBAR_DrawPart (const STATUS_INFO *infoPtr, HDC hdc, const STATUSWINDOWPART 
         if ((GetWindowLongW (infoPtr->Self, GWL_STYLE) & SBARS_SIZEGRIP)
             && (infoPtr->simple || (itemID == (infoPtr->numParts-1))))
             themePart = SP_GRIPPERPANE;
-        DrawThemeBackground(theme, hdc, themePart, 0, &r, NULL);
+        DrawThemeBackground(theme, hdc, themePart, 0, &r, ((void*)0));
     }
     else
         DrawEdge(hdc, &r, border, BF_RECT|BF_ADJUST);
@@ -91,31 +91,18 @@ STATUSBAR_DrawPart (const STATUS_INFO *infoPtr, HDC hdc, const STATUSWINDOWPART 
     }
 
     if (part->style & SBT_OWNERDRAW) {
-	DRAWITEMSTRUCT dis;
+ DRAWITEMSTRUCT dis;
 
-	dis.CtlID = GetWindowLongPtrW (infoPtr->Self, GWLP_ID);
-	dis.itemID = itemID;
-	dis.hwndItem = infoPtr->Self;
-	dis.hDC = hdc;
-	dis.rcItem = r;
-	dis.itemData = (ULONG_PTR)part->text;
+ dis.CtlID = GetWindowLongPtrW (infoPtr->Self, GWLP_ID);
+ dis.itemID = itemID;
+ dis.hwndItem = infoPtr->Self;
+ dis.hDC = hdc;
+ dis.rcItem = r;
+ dis.itemData = (ULONG_PTR)part->text;
         SendMessageW (infoPtr->Notify, WM_DRAWITEM, dis.CtlID, (LPARAM)&dis);
     } else {
         r.left += x;
-#ifdef __REACTOS__
-        if (!theme)
-        {
-            r.left -= 2;
-            DrawStatusTextW (hdc, &r, part->text, SBT_NOBORDERS);
-        }
-        else
-        {
-            r.left += 2;
-            r.right -= 2;
-            DrawThemeText(theme, hdc, SP_PANE, 0, part->text, -1, DT_VCENTER|DT_SINGLELINE|DT_NOPREFIX, 0, &r);
-        }
-#else
         DrawStatusTextW (hdc, &r, part->text, SBT_NOBORDERS);
-#endif
+
     }
 }

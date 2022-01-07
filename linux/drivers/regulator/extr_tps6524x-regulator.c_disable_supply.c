@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct tps6524x {int dummy; } ;
-struct supply_info {int /*<<< orphan*/  enable; } ;
+struct supply_info {int enable; } ;
 struct regulator_dev {int dummy; } ;
 
-/* Variables and functions */
- struct tps6524x* rdev_get_drvdata (struct regulator_dev*) ; 
- size_t rdev_get_id (struct regulator_dev*) ; 
- struct supply_info* supply_info ; 
- int write_field (struct tps6524x*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ struct tps6524x* rdev_get_drvdata (struct regulator_dev*) ;
+ size_t rdev_get_id (struct regulator_dev*) ;
+ struct supply_info* supply_info ;
+ int write_field (struct tps6524x*,int *,int ) ;
 
 __attribute__((used)) static int disable_supply(struct regulator_dev *rdev)
 {
-	const struct supply_info *info;
-	struct tps6524x *hw;
+ const struct supply_info *info;
+ struct tps6524x *hw;
 
-	hw	= rdev_get_drvdata(rdev);
-	info	= &supply_info[rdev_get_id(rdev)];
+ hw = rdev_get_drvdata(rdev);
+ info = &supply_info[rdev_get_id(rdev)];
 
-	return write_field(hw, &info->enable, 0);
+ return write_field(hw, &info->enable, 0);
 }

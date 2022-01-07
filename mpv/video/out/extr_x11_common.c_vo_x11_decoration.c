@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct vo_x11_state {int /*<<< orphan*/  window; int /*<<< orphan*/  display; scalar_t__ parent; } ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct vo_x11_state {int window; int display; scalar_t__ parent; } ;
 struct vo {struct vo_x11_state* x11; } ;
-typedef  int /*<<< orphan*/  mhints ;
-struct TYPE_3__ {int functions; int /*<<< orphan*/  decorations; int /*<<< orphan*/  flags; int /*<<< orphan*/  member_0; } ;
-typedef  TYPE_1__ MotifWmHints ;
-typedef  int /*<<< orphan*/  Atom ;
+typedef int mhints ;
+struct TYPE_3__ {int functions; int decorations; int flags; int member_0; } ;
+typedef TYPE_1__ MotifWmHints ;
+typedef int Atom ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MWM_DECOR_ALL ; 
- int MWM_FUNC_CLOSE ; 
- int MWM_FUNC_MAXIMIZE ; 
- int MWM_FUNC_MINIMIZE ; 
- int MWM_FUNC_MOVE ; 
- int MWM_FUNC_RESIZE ; 
- int /*<<< orphan*/  MWM_HINTS_DECORATIONS ; 
- int /*<<< orphan*/  MWM_HINTS_FUNCTIONS ; 
- int /*<<< orphan*/  PropModeReplace ; 
- int /*<<< orphan*/  XA (struct vo_x11_state*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XChangeProperty (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,unsigned char*,int) ; 
- int /*<<< orphan*/  _MOTIF_WM_HINTS ; 
- int x11_get_property_copy (struct vo_x11_state*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,TYPE_1__*,int) ; 
+
+ int MWM_DECOR_ALL ;
+ int MWM_FUNC_CLOSE ;
+ int MWM_FUNC_MAXIMIZE ;
+ int MWM_FUNC_MINIMIZE ;
+ int MWM_FUNC_MOVE ;
+ int MWM_FUNC_RESIZE ;
+ int MWM_HINTS_DECORATIONS ;
+ int MWM_HINTS_FUNCTIONS ;
+ int PropModeReplace ;
+ int XA (struct vo_x11_state*,int ) ;
+ int XChangeProperty (int ,int ,int ,int ,int,int ,unsigned char*,int) ;
+ int _MOTIF_WM_HINTS ;
+ int x11_get_property_copy (struct vo_x11_state*,int ,int ,int ,int,TYPE_1__*,int) ;
 
 __attribute__((used)) static void vo_x11_decoration(struct vo *vo, bool d)
 {
@@ -44,7 +44,7 @@ __attribute__((used)) static void vo_x11_decoration(struct vo *vo, bool d)
     MotifWmHints mhints = {0};
     bool got = x11_get_property_copy(x11, x11->window, motif_hints,
                                      motif_hints, 32, &mhints, sizeof(mhints));
-    // hints weren't set, and decorations requested -> assume WM displays them
+
     if (!got && d)
         return;
     if (!got) {

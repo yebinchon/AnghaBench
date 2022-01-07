@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int MAX_RULES ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  feof (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fgets (char*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/ * network ; 
- scalar_t__ read_rule (char*,int /*<<< orphan*/ *) ; 
- int rules_num ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ verbosity ; 
+
+
+
+typedef int FILE ;
+
+
+ int MAX_RULES ;
+ int fclose (int *) ;
+ int feof (int *) ;
+ int fgets (char*,int,int *) ;
+ int * fopen (char*,char*) ;
+ int fprintf (int ,char*,...) ;
+ int * network ;
+ scalar_t__ read_rule (char*,int *) ;
+ int rules_num ;
+ int stderr ;
+ scalar_t__ verbosity ;
 
 int read_network_file (char *filename) {
   FILE *f = fopen (filename, "rt");

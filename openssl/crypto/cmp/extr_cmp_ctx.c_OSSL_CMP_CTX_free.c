@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_4__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  length; int /*<<< orphan*/  data; } ;
-struct TYPE_5__ {int /*<<< orphan*/  extraCertsIn; int /*<<< orphan*/  caPubs; int /*<<< orphan*/  newCert; int /*<<< orphan*/  statusString; int /*<<< orphan*/  genm_ITAVs; int /*<<< orphan*/  p10CSR; int /*<<< orphan*/  oldCert; int /*<<< orphan*/  policies; int /*<<< orphan*/  reqExtensions; int /*<<< orphan*/  subjectAltNames; int /*<<< orphan*/  subjectName; int /*<<< orphan*/  issuer; int /*<<< orphan*/  newPkey; int /*<<< orphan*/  extraCertsOut; int /*<<< orphan*/  geninfo_ITAVs; TYPE_4__* recipNonce; TYPE_4__* senderNonce; TYPE_4__* transactionID; int /*<<< orphan*/  recipient; TYPE_4__* secretValue; TYPE_4__* referenceValue; int /*<<< orphan*/  pkey; int /*<<< orphan*/  clCert; int /*<<< orphan*/  untrusted_certs; int /*<<< orphan*/  trusted; int /*<<< orphan*/  expected_sender; int /*<<< orphan*/  validatedSrvCert; int /*<<< orphan*/  srvCert; struct TYPE_5__* proxyName; struct TYPE_5__* serverName; struct TYPE_5__* serverPath; } ;
-typedef  TYPE_1__ OSSL_CMP_CTX ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASN1_OCTET_STRING_free (TYPE_4__*) ; 
- int /*<<< orphan*/  ASN1_UTF8STRING_free ; 
- int /*<<< orphan*/  EVP_PKEY_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GENERAL_NAME_free ; 
- int /*<<< orphan*/  OPENSSL_cleanse (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OPENSSL_free (TYPE_1__*) ; 
- int /*<<< orphan*/  OSSL_CMP_ITAV_free ; 
- int /*<<< orphan*/  POLICYINFO_free ; 
- int /*<<< orphan*/  X509_EXTENSION_free ; 
- int /*<<< orphan*/  X509_NAME_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  X509_REQ_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  X509_STORE_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  X509_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sk_ASN1_UTF8STRING_pop_free (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sk_GENERAL_NAME_pop_free (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sk_OSSL_CMP_ITAV_pop_free (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sk_POLICYINFO_pop_free (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sk_X509_EXTENSION_pop_free (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sk_X509_pop_free (int /*<<< orphan*/ ,int /*<<< orphan*/  (*) (int /*<<< orphan*/ )) ; 
+
+typedef struct TYPE_6__ TYPE_4__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int length; int data; } ;
+struct TYPE_5__ {int extraCertsIn; int caPubs; int newCert; int statusString; int genm_ITAVs; int p10CSR; int oldCert; int policies; int reqExtensions; int subjectAltNames; int subjectName; int issuer; int newPkey; int extraCertsOut; int geninfo_ITAVs; TYPE_4__* recipNonce; TYPE_4__* senderNonce; TYPE_4__* transactionID; int recipient; TYPE_4__* secretValue; TYPE_4__* referenceValue; int pkey; int clCert; int untrusted_certs; int trusted; int expected_sender; int validatedSrvCert; int srvCert; struct TYPE_5__* proxyName; struct TYPE_5__* serverName; struct TYPE_5__* serverPath; } ;
+typedef TYPE_1__ OSSL_CMP_CTX ;
+
+
+ int ASN1_OCTET_STRING_free (TYPE_4__*) ;
+ int ASN1_UTF8STRING_free ;
+ int EVP_PKEY_free (int ) ;
+ int GENERAL_NAME_free ;
+ int OPENSSL_cleanse (int ,int ) ;
+ int OPENSSL_free (TYPE_1__*) ;
+ int OSSL_CMP_ITAV_free ;
+ int POLICYINFO_free ;
+ int X509_EXTENSION_free ;
+ int X509_NAME_free (int ) ;
+ int X509_REQ_free (int ) ;
+ int X509_STORE_free (int ) ;
+ int X509_free (int ) ;
+ int sk_ASN1_UTF8STRING_pop_free (int ,int ) ;
+ int sk_GENERAL_NAME_pop_free (int ,int ) ;
+ int sk_OSSL_CMP_ITAV_pop_free (int ,int ) ;
+ int sk_POLICYINFO_pop_free (int ,int ) ;
+ int sk_X509_EXTENSION_pop_free (int ,int ) ;
+ int sk_X509_pop_free (int ,int (*) (int )) ;
 
 void OSSL_CMP_CTX_free(OSSL_CMP_CTX *ctx)
 {
-    if (ctx == NULL)
+    if (ctx == ((void*)0))
         return;
 
     OPENSSL_free(ctx->serverPath);
@@ -55,7 +55,7 @@ void OSSL_CMP_CTX_free(OSSL_CMP_CTX *ctx)
     X509_free(ctx->clCert);
     EVP_PKEY_free(ctx->pkey);
     ASN1_OCTET_STRING_free(ctx->referenceValue);
-    if (ctx->secretValue != NULL)
+    if (ctx->secretValue != ((void*)0))
         OPENSSL_cleanse(ctx->secretValue->data, ctx->secretValue->length);
     ASN1_OCTET_STRING_free(ctx->secretValue);
 

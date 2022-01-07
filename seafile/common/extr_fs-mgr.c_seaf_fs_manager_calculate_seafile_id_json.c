@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  json_t ;
-typedef  int /*<<< orphan*/  guint8 ;
-struct TYPE_3__ {int block_nr; int /*<<< orphan*/ * blk_sha1s; int /*<<< orphan*/  file_size; } ;
-typedef  TYPE_1__ CDCFileDescriptor ;
 
-/* Variables and functions */
- int /*<<< orphan*/  JSON_SORT_KEYS ; 
- int /*<<< orphan*/  SEAF_METADATA_TYPE_FILE ; 
- int /*<<< orphan*/  calculate_sha1 (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/ * json_array () ; 
- int /*<<< orphan*/  json_array_append_new (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  json_decref (int /*<<< orphan*/ *) ; 
- char* json_dumps (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * json_object () ; 
- int /*<<< orphan*/  json_object_set_int_member (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  json_object_set_new (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  json_string (char*) ; 
- int /*<<< orphan*/  rawdata_to_hex (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  seafile_version_from_repo_version (int) ; 
- int strlen (char*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int json_t ;
+typedef int guint8 ;
+struct TYPE_3__ {int block_nr; int * blk_sha1s; int file_size; } ;
+typedef TYPE_1__ CDCFileDescriptor ;
+
+
+ int JSON_SORT_KEYS ;
+ int SEAF_METADATA_TYPE_FILE ;
+ int calculate_sha1 (int *,char*,int) ;
+ int free (char*) ;
+ int * json_array () ;
+ int json_array_append_new (int *,int ) ;
+ int json_decref (int *) ;
+ char* json_dumps (int *,int ) ;
+ int * json_object () ;
+ int json_object_set_int_member (int *,char*,int ) ;
+ int json_object_set_new (int *,char*,int *) ;
+ int json_string (char*) ;
+ int rawdata_to_hex (int *,char*,int) ;
+ int seafile_version_from_repo_version (int) ;
+ int strlen (char*) ;
 
 void
 seaf_fs_manager_calculate_seafile_id_json (int repo_version,
@@ -63,7 +63,7 @@ seaf_fs_manager_calculate_seafile_id_json (int repo_version,
     char *data = json_dumps (object, JSON_SORT_KEYS);
     int ondisk_size = strlen(data);
 
-    /* The seafile object id is sha1 hash of the json object. */
+
     calculate_sha1 (file_id_sha1, data, ondisk_size);
 
     json_decref (object);

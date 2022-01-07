@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct demux_internal {TYPE_1__* d_user; } ;
 struct demux_free_async_state {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/  cancel; } ;
+struct TYPE_2__ {int cancel; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mp_cancel_trigger (int /*<<< orphan*/ ) ; 
+
+ int mp_cancel_trigger (int ) ;
 
 void demux_free_async_force(struct demux_free_async_state *state)
 {
-    struct demux_internal *in = (struct demux_internal *)state; // reverse lies
+    struct demux_internal *in = (struct demux_internal *)state;
 
     mp_cancel_trigger(in->d_user->cancel);
 }

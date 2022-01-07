@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int int32_t ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int int32_t ;
 struct TYPE_6__ {int bps; } ;
-struct TYPE_7__ {int** decoded; scalar_t__ ch_mode; int blocksize; int /*<<< orphan*/  avctx; int /*<<< orphan*/  gb; TYPE_1__ flac_stream_info; } ;
-typedef  TYPE_2__ FLACContext ;
+struct TYPE_7__ {int** decoded; scalar_t__ ch_mode; int blocksize; int avctx; int gb; TYPE_1__ flac_stream_info; } ;
+typedef TYPE_2__ FLACContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int AVERROR_PATCHWELCOME ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- scalar_t__ FLAC_CHMODE_LEFT_SIDE ; 
- scalar_t__ FLAC_CHMODE_MID_SIDE ; 
- scalar_t__ FLAC_CHMODE_RIGHT_SIDE ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  avpriv_report_missing_feature (int /*<<< orphan*/ ,char*) ; 
- int decode_subframe_fixed (TYPE_2__*,int*,int,int) ; 
- int decode_subframe_lpc (TYPE_2__*,int*,int,int) ; 
- int get_bits (int /*<<< orphan*/ *,int) ; 
- scalar_t__ get_bits1 (int /*<<< orphan*/ *) ; 
- int get_bits_left (int /*<<< orphan*/ *) ; 
- void* get_sbits_long (int /*<<< orphan*/ *,int) ; 
- int get_unary (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  show_bits_long (int /*<<< orphan*/ *,int) ; 
+
+ int AVERROR_INVALIDDATA ;
+ int AVERROR_PATCHWELCOME ;
+ int AV_LOG_ERROR ;
+ scalar_t__ FLAC_CHMODE_LEFT_SIDE ;
+ scalar_t__ FLAC_CHMODE_MID_SIDE ;
+ scalar_t__ FLAC_CHMODE_RIGHT_SIDE ;
+ int av_log (int ,int ,char*,...) ;
+ int avpriv_report_missing_feature (int ,char*) ;
+ int decode_subframe_fixed (TYPE_2__*,int*,int,int) ;
+ int decode_subframe_lpc (TYPE_2__*,int*,int,int) ;
+ int get_bits (int *,int) ;
+ scalar_t__ get_bits1 (int *) ;
+ int get_bits_left (int *) ;
+ void* get_sbits_long (int *,int) ;
+ int get_unary (int *,int,int) ;
+ int show_bits_long (int *,int) ;
 
 __attribute__((used)) static inline int decode_subframe(FLACContext *s, int channel)
 {
@@ -74,7 +74,7 @@ __attribute__((used)) static inline int decode_subframe(FLACContext *s, int chan
         return AVERROR_PATCHWELCOME;
     }
 
-//FIXME use av_log2 for types
+
     if (type == 0) {
         tmp = get_sbits_long(&s->gb, bps);
         for (i = 0; i < s->blocksize; i++)

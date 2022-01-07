@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-typedef  int u64 ;
-typedef  int /*<<< orphan*/  u16 ;
+
+
+
+
+typedef int u8 ;
+typedef int u64 ;
+typedef int u16 ;
 struct hpsb_host {int dummy; } ;
-typedef  int /*<<< orphan*/  quadlet_t ;
+typedef int quadlet_t ;
 
-/* Variables and functions */
-#define  CSR_FCP_COMMAND 129 
-#define  CSR_FCP_RESPONSE 128 
- int CSR_REGISTER_BASE ; 
- int RCODE_COMPLETE ; 
- int RCODE_TYPE_ERROR ; 
- int /*<<< orphan*/  highlevel_fcp_request (struct hpsb_host*,int,int,int /*<<< orphan*/ *,size_t) ; 
+
+
+
+ int CSR_REGISTER_BASE ;
+ int RCODE_COMPLETE ;
+ int RCODE_TYPE_ERROR ;
+ int highlevel_fcp_request (struct hpsb_host*,int,int,int *,size_t) ;
 
 __attribute__((used)) static int write_fcp(struct hpsb_host *host, int nodeid, int dest,
-		     quadlet_t *data, u64 addr, size_t length, u16 flags)
+       quadlet_t *data, u64 addr, size_t length, u16 flags)
 {
         int csraddr = addr - CSR_REGISTER_BASE;
 
@@ -33,10 +33,10 @@ __attribute__((used)) static int write_fcp(struct hpsb_host *host, int nodeid, i
                 return RCODE_TYPE_ERROR;
 
         switch (csraddr) {
-        case CSR_FCP_COMMAND:
+        case 129:
                 highlevel_fcp_request(host, nodeid, 0, (u8 *)data, length);
                 break;
-        case CSR_FCP_RESPONSE:
+        case 128:
                 highlevel_fcp_request(host, nodeid, 1, (u8 *)data, length);
                 break;
         default:

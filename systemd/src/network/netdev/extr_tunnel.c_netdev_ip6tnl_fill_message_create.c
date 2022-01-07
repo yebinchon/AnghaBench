@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_20__   TYPE_6__ ;
-typedef  struct TYPE_19__   TYPE_3__ ;
-typedef  struct TYPE_18__   TYPE_2__ ;
-typedef  struct TYPE_17__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
-struct TYPE_18__ {int /*<<< orphan*/  in6; } ;
-struct TYPE_17__ {int /*<<< orphan*/  in6; } ;
+
+
+typedef struct TYPE_20__ TYPE_6__ ;
+typedef struct TYPE_19__ TYPE_3__ ;
+typedef struct TYPE_18__ TYPE_2__ ;
+typedef struct TYPE_17__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint8_t ;
+struct TYPE_18__ {int in6; } ;
+struct TYPE_17__ {int in6; } ;
 struct TYPE_19__ {scalar_t__ ttl; scalar_t__ ipv6_flowlabel; scalar_t__ flags; scalar_t__ allow_localremote; scalar_t__ encap_limit; int ip6tnl_mode; scalar_t__ copy_dscp; TYPE_2__ remote; TYPE_1__ local; scalar_t__ assign_to_loopback; } ;
-typedef  TYPE_3__ sd_netlink_message ;
-typedef  TYPE_3__ Tunnel ;
+typedef TYPE_3__ sd_netlink_message ;
+typedef TYPE_3__ Tunnel ;
 struct TYPE_20__ {scalar_t__ ifindex; } ;
-typedef  TYPE_3__ NetDev ;
-typedef  TYPE_6__ Link ;
+typedef TYPE_3__ NetDev ;
+typedef TYPE_6__ Link ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IFLA_IPTUN_ENCAP_LIMIT ; 
- int /*<<< orphan*/  IFLA_IPTUN_FLAGS ; 
- int /*<<< orphan*/  IFLA_IPTUN_FLOWINFO ; 
- int /*<<< orphan*/  IFLA_IPTUN_LINK ; 
- int /*<<< orphan*/  IFLA_IPTUN_LOCAL ; 
- int /*<<< orphan*/  IFLA_IPTUN_PROTO ; 
- int /*<<< orphan*/  IFLA_IPTUN_REMOTE ; 
- int /*<<< orphan*/  IFLA_IPTUN_TTL ; 
- TYPE_3__* IP6TNL (TYPE_3__*) ; 
- int /*<<< orphan*/  IP6_TNL_F_ALLOW_LOCAL_REMOTE ; 
- scalar_t__ IP6_TNL_F_RCV_DSCP_COPY ; 
- scalar_t__ IPPROTO_IPIP ; 
- scalar_t__ IPPROTO_IPV6 ; 
- scalar_t__ IPV6_DEFAULT_TNL_ENCAP_LIMIT ; 
- scalar_t__ LOOPBACK_IFINDEX ; 
-#define  NETDEV_IP6_TNL_MODE_ANYIP6 130 
-#define  NETDEV_IP6_TNL_MODE_IP6IP6 129 
-#define  NETDEV_IP6_TNL_MODE_IPIP6 128 
- int /*<<< orphan*/  SET_FLAG (scalar_t__,int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__ _NETDEV_IPV6_FLOWLABEL_INVALID ; 
- int /*<<< orphan*/  assert (TYPE_3__*) ; 
- int log_netdev_error_errno (TYPE_3__*,int,char*) ; 
- int sd_netlink_message_append_in6_addr (TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int sd_netlink_message_append_u32 (TYPE_3__*,int /*<<< orphan*/ ,scalar_t__) ; 
- int sd_netlink_message_append_u8 (TYPE_3__*,int /*<<< orphan*/ ,scalar_t__) ; 
+
+ int IFLA_IPTUN_ENCAP_LIMIT ;
+ int IFLA_IPTUN_FLAGS ;
+ int IFLA_IPTUN_FLOWINFO ;
+ int IFLA_IPTUN_LINK ;
+ int IFLA_IPTUN_LOCAL ;
+ int IFLA_IPTUN_PROTO ;
+ int IFLA_IPTUN_REMOTE ;
+ int IFLA_IPTUN_TTL ;
+ TYPE_3__* IP6TNL (TYPE_3__*) ;
+ int IP6_TNL_F_ALLOW_LOCAL_REMOTE ;
+ scalar_t__ IP6_TNL_F_RCV_DSCP_COPY ;
+ scalar_t__ IPPROTO_IPIP ;
+ scalar_t__ IPPROTO_IPV6 ;
+ scalar_t__ IPV6_DEFAULT_TNL_ENCAP_LIMIT ;
+ scalar_t__ LOOPBACK_IFINDEX ;
+
+
+
+ int SET_FLAG (scalar_t__,int ,scalar_t__) ;
+ scalar_t__ _NETDEV_IPV6_FLOWLABEL_INVALID ;
+ int assert (TYPE_3__*) ;
+ int log_netdev_error_errno (TYPE_3__*,int,char*) ;
+ int sd_netlink_message_append_in6_addr (TYPE_3__*,int ,int *) ;
+ int sd_netlink_message_append_u32 (TYPE_3__*,int ,scalar_t__) ;
+ int sd_netlink_message_append_u8 (TYPE_3__*,int ,scalar_t__) ;
 
 __attribute__((used)) static int netdev_ip6tnl_fill_message_create(NetDev *netdev, Link *link, sd_netlink_message *m) {
         Tunnel *t = IP6TNL(netdev);
@@ -101,13 +101,13 @@ __attribute__((used)) static int netdev_ip6tnl_fill_message_create(NetDev *netde
                 return log_netdev_error_errno(netdev, r, "Could not append IFLA_IPTUN_FLAGS attribute: %m");
 
         switch (t->ip6tnl_mode) {
-        case NETDEV_IP6_TNL_MODE_IP6IP6:
+        case 129:
                 proto = IPPROTO_IPV6;
                 break;
-        case NETDEV_IP6_TNL_MODE_IPIP6:
+        case 128:
                 proto = IPPROTO_IPIP;
                 break;
-        case NETDEV_IP6_TNL_MODE_ANYIP6:
+        case 130:
         default:
                 proto = 0;
                 break;

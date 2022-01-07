@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int const FIX (double) ; 
- int MUL (int,int const) ; 
- double M_SQRT2 ; 
- size_t* bitinv32 ; 
- int* costab32 ; 
+ int const FIX (double) ;
+ int MUL (int,int const) ;
+ double M_SQRT2 ;
+ size_t* bitinv32 ;
+ int* costab32 ;
 
 __attribute__((used)) static void idct32(int *out, int *tab)
 {
@@ -104,7 +96,7 @@ __attribute__((used)) static void idct32(int *out, int *tab)
     for (i = 0; i < 4; i++) {
         xr = MUL(tab[30-i*4],xp[0]);
         tab[30-i*4] = (tab[i*4] - xr);
-        tab[   i*4] = (tab[i*4] + xr);
+        tab[ i*4] = (tab[i*4] + xr);
 
         xr = MUL(tab[ 2+i*4],xp[1]);
         tab[ 2+i*4] = (tab[28-i*4] - xr);

@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_5__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int resource_count; scalar_t__ wait_count; int /*<<< orphan*/  wait_queue; } ;
-typedef  TYPE_1__ ngx_http_lua_sema_t ;
-struct TYPE_7__ {int /*<<< orphan*/  log; } ;
 
-/* Variables and functions */
- int NGX_ERROR ; 
- int /*<<< orphan*/  NGX_LOG_DEBUG_HTTP ; 
- int NGX_OK ; 
- TYPE_5__* ngx_cycle ; 
- TYPE_1__* ngx_http_lua_alloc_sema () ; 
- int /*<<< orphan*/  ngx_log_debug2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,TYPE_1__*,int) ; 
- int /*<<< orphan*/  ngx_queue_init (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_7__ TYPE_5__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int resource_count; scalar_t__ wait_count; int wait_queue; } ;
+typedef TYPE_1__ ngx_http_lua_sema_t ;
+struct TYPE_7__ {int log; } ;
+
+
+ int NGX_ERROR ;
+ int NGX_LOG_DEBUG_HTTP ;
+ int NGX_OK ;
+ TYPE_5__* ngx_cycle ;
+ TYPE_1__* ngx_http_lua_alloc_sema () ;
+ int ngx_log_debug2 (int ,int ,int ,char*,TYPE_1__*,int) ;
+ int ngx_queue_init (int *) ;
 
 int
 ngx_http_lua_ffi_sema_new(ngx_http_lua_sema_t **psem,
     int n, char **errmsg)
 {
-    ngx_http_lua_sema_t    *sem;
+    ngx_http_lua_sema_t *sem;
 
     sem = ngx_http_lua_alloc_sema();
-    if (sem == NULL) {
+    if (sem == ((void*)0)) {
         *errmsg = "no memory";
         return NGX_ERROR;
     }

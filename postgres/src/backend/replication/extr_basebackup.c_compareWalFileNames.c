@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ListCell ;
 
-/* Variables and functions */
- scalar_t__ lfirst (int /*<<< orphan*/  const*) ; 
- int strcmp (char*,char*) ; 
+
+
+
+typedef int ListCell ;
+
+
+ scalar_t__ lfirst (int const*) ;
+ int strcmp (char*,char*) ;
 
 __attribute__((used)) static int
 compareWalFileNames(const ListCell *a, const ListCell *b)
 {
-	char	   *fna = (char *) lfirst(a);
-	char	   *fnb = (char *) lfirst(b);
+ char *fna = (char *) lfirst(a);
+ char *fnb = (char *) lfirst(b);
 
-	return strcmp(fna + 8, fnb + 8);
+ return strcmp(fna + 8, fnb + 8);
 }

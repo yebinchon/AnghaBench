@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  GpStatus ;
-typedef  int /*<<< orphan*/  GpImage ;
-typedef  int /*<<< orphan*/  GpBitmap ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GdipCreateBitmapFromScan0 (int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GdipDisposeImage (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  InvalidParameter ; 
- int /*<<< orphan*/  ObjectBusy ; 
- int /*<<< orphan*/  Ok ; 
- int /*<<< orphan*/  PixelFormat32bppARGB ; 
- int /*<<< orphan*/  expect (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (char*,int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int GpStatus ;
+typedef int GpImage ;
+typedef int GpBitmap ;
+
+
+ int GdipCreateBitmapFromScan0 (int,int,int ,int ,int *,int **) ;
+ int GdipDisposeImage (int *) ;
+ int InvalidParameter ;
+ int ObjectBusy ;
+ int Ok ;
+ int PixelFormat32bppARGB ;
+ int expect (int ,int ) ;
+ int memset (char*,int ,int) ;
 
 __attribute__((used)) static void test_dispose(void)
 {
@@ -30,10 +30,10 @@ __attribute__((used)) static void test_dispose(void)
     GpImage *image;
     char invalid_image[256];
 
-    stat = GdipDisposeImage(NULL);
+    stat = GdipDisposeImage(((void*)0));
     expect(InvalidParameter, stat);
 
-    stat = GdipCreateBitmapFromScan0(2, 2, 0, PixelFormat32bppARGB, NULL, (GpBitmap**)&image);
+    stat = GdipCreateBitmapFromScan0(2, 2, 0, PixelFormat32bppARGB, ((void*)0), (GpBitmap**)&image);
     expect(Ok, stat);
 
     stat = GdipDisposeImage(image);

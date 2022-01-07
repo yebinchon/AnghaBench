@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint64_t ;
-typedef  scalar_t__ int64_t ;
 
-/* Variables and functions */
- int BFOVERFLOW_SAT ; 
- int BFOVERFLOW_WRAP ; 
- int UINT64_MAX ; 
+
+
+
+typedef int uint64_t ;
+typedef scalar_t__ int64_t ;
+
+
+ int BFOVERFLOW_SAT ;
+ int BFOVERFLOW_WRAP ;
+ int UINT64_MAX ;
 
 int checkUnsignedBitfieldOverflow(uint64_t value, int64_t incr, uint64_t bits, int owtype, uint64_t *limit) {
     uint64_t max = (bits == 64) ? UINT64_MAX : (((uint64_t)1<<bits)-1);

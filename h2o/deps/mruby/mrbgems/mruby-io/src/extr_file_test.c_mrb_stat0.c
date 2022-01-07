@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct stat {int dummy; } ;
 struct mrb_io {scalar_t__ fd; } ;
-typedef  int /*<<< orphan*/  mrb_value ;
-typedef  int /*<<< orphan*/  mrb_state ;
+typedef int mrb_value ;
+typedef int mrb_state ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_IO_ERROR ; 
- int LSTAT (char*,struct stat*) ; 
- int fstat (scalar_t__,struct stat*) ; 
- int /*<<< orphan*/  mrb_class_get (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  mrb_funcall (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int,int /*<<< orphan*/ ) ; 
- scalar_t__ mrb_get_datatype (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mrb_io_type ; 
- int /*<<< orphan*/  mrb_locale_free (char*) ; 
- char* mrb_locale_from_utf8 (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  mrb_obj_value (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_raise (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  mrb_str_to_cstr (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ mrb_test (int /*<<< orphan*/ ) ; 
- int stat (char*,struct stat*) ; 
+
+ int E_IO_ERROR ;
+ int LSTAT (char*,struct stat*) ;
+ int fstat (scalar_t__,struct stat*) ;
+ int mrb_class_get (int *,char*) ;
+ int mrb_funcall (int *,int ,char*,int,int ) ;
+ scalar_t__ mrb_get_datatype (int *,int ,int *) ;
+ int mrb_io_type ;
+ int mrb_locale_free (char*) ;
+ char* mrb_locale_from_utf8 (int ,int) ;
+ int mrb_obj_value (int ) ;
+ int mrb_raise (int *,int ,char*) ;
+ int mrb_str_to_cstr (int *,int ) ;
+ scalar_t__ mrb_test (int ) ;
+ int stat (char*,struct stat*) ;
 
 __attribute__((used)) static int
 mrb_stat0(mrb_state *mrb, mrb_value obj, struct stat *st, int do_lstat)
@@ -37,7 +37,7 @@ mrb_stat0(mrb_state *mrb, mrb_value obj, struct stat *st, int do_lstat)
   mrb_value tmp;
   mrb_value io_klass, str_klass;
 
-  io_klass  = mrb_obj_value(mrb_class_get(mrb, "IO"));
+  io_klass = mrb_obj_value(mrb_class_get(mrb, "IO"));
   str_klass = mrb_obj_value(mrb_class_get(mrb, "String"));
 
   tmp = mrb_funcall(mrb, obj, "is_a?", 1, io_klass);

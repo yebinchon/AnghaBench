@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  test_string ;
-typedef  char WCHAR ;
-typedef  int ULONG ;
-struct TYPE_11__ {int cbSize; int /*<<< orphan*/ * pBlobData; } ;
+
+
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int test_string ;
+typedef char WCHAR ;
+typedef int ULONG ;
+struct TYPE_11__ {int cbSize; int * pBlobData; } ;
 struct TYPE_9__ {char* pwszVal; char* pszVal; } ;
 struct TYPE_10__ {void* vt; TYPE_1__ u; } ;
-typedef  TYPE_2__ PROPVARIANT ;
-typedef  int /*<<< orphan*/  IMimeInternational ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  BYTE ;
-typedef  TYPE_3__ BLOB ;
+typedef TYPE_2__ PROPVARIANT ;
+typedef int IMimeInternational ;
+typedef int HRESULT ;
+typedef int BYTE ;
+typedef TYPE_3__ BLOB ;
 
-/* Variables and functions */
- int CP_UNICODE ; 
- int /*<<< orphan*/  CoTaskMemFree (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IMimeInternational_ConvertBuffer (int /*<<< orphan*/ *,int,int,TYPE_3__*,TYPE_3__*,int*) ; 
- int /*<<< orphan*/  IMimeInternational_ConvertString (int /*<<< orphan*/ *,int,int,TYPE_2__*,TYPE_2__*) ; 
- int /*<<< orphan*/  IMimeInternational_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  MimeOleGetInternat (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  PropVariantClear (TYPE_2__*) ; 
- int /*<<< orphan*/  S_OK ; 
- void* VT_LPSTR ; 
- void* VT_LPWSTR ; 
- int /*<<< orphan*/  lstrcmpW (char*,char*) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
+
+ int CP_UNICODE ;
+ int CoTaskMemFree (int *) ;
+ int IMimeInternational_ConvertBuffer (int *,int,int,TYPE_3__*,TYPE_3__*,int*) ;
+ int IMimeInternational_ConvertString (int *,int,int,TYPE_2__*,TYPE_2__*) ;
+ int IMimeInternational_Release (int *) ;
+ int MimeOleGetInternat (int **) ;
+ int PropVariantClear (TYPE_2__*) ;
+ int S_OK ;
+ void* VT_LPSTR ;
+ void* VT_LPWSTR ;
+ int lstrcmpW (char*,char*) ;
+ int ok (int,char*,...) ;
+ int strcmp (char*,char*) ;
 
 __attribute__((used)) static void test_convert(void)
 {
@@ -76,7 +76,7 @@ __attribute__((used)) static void test_convert(void)
     ok(!strcmp(prop_out.u.pszVal, test_string), "got %s\n", prop_out.u.pszVal);
     PropVariantClear(&prop_out);
 
-    /* If in.vt is VT_LPWSTR, ignore cpiSrc */
+
     prop_in.vt = VT_LPWSTR;
     prop_in.u.pwszVal = test_stringW;
     hr = IMimeInternational_ConvertString(internat, 28591, 1252, &prop_in, &prop_out);
@@ -93,7 +93,7 @@ __attribute__((used)) static void test_convert(void)
     ok(!lstrcmpW(prop_out.u.pwszVal, test_stringW), "mismatched strings\n");
     PropVariantClear(&prop_out);
 
-    /* If in.vt is VT_LPSTR and cpiSrc is CP_UNICODE, use another multibyte codepage (probably GetACP()) */
+
     prop_in.vt = VT_LPSTR;
     prop_in.u.pszVal = test_string;
     hr = IMimeInternational_ConvertString(internat, CP_UNICODE, CP_UNICODE, &prop_in, &prop_out);

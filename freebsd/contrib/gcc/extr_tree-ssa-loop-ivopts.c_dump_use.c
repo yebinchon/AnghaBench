@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct iv_use {int id; int type; scalar_t__ related_cands; int /*<<< orphan*/  iv; int /*<<< orphan*/ * op_p; int /*<<< orphan*/  stmt; } ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TDF_SLIM ; 
-#define  USE_ADDRESS 130 
-#define  USE_COMPARE 129 
-#define  USE_NONLINEAR_EXPR 128 
- int /*<<< orphan*/  dump_bitmap (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  dump_iv (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*,...) ; 
- int /*<<< orphan*/  gcc_unreachable () ; 
- int /*<<< orphan*/  print_generic_expr (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct iv_use {int id; int type; scalar_t__ related_cands; int iv; int * op_p; int stmt; } ;
+typedef int FILE ;
+
+
+ int TDF_SLIM ;
+
+
+
+ int dump_bitmap (int *,scalar_t__) ;
+ int dump_iv (int *,int ) ;
+ int fprintf (int *,char*,...) ;
+ int gcc_unreachable () ;
+ int print_generic_expr (int *,int ,int ) ;
 
 void
 dump_use (FILE *file, struct iv_use *use)
@@ -31,15 +31,15 @@ dump_use (FILE *file, struct iv_use *use)
 
   switch (use->type)
     {
-    case USE_NONLINEAR_EXPR:
+    case 128:
       fprintf (file, "  generic\n");
       break;
 
-    case USE_ADDRESS:
+    case 130:
       fprintf (file, "  address\n");
       break;
 
-    case USE_COMPARE:
+    case 129:
       fprintf (file, "  compare\n");
       break;
 

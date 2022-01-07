@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct mg_mgr {int dummy; } ;
 struct mg_connection {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EXIT_FAILURE ; 
- int /*<<< orphan*/  exit (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char const*) ; 
- int /*<<< orphan*/  http_handler ; 
- struct mg_connection* mg_bind (struct mg_mgr*,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mg_set_protocol_http_websocket (struct mg_connection*) ; 
- int /*<<< orphan*/  printf (char*,char const*) ; 
- int /*<<< orphan*/  stderr ; 
+
+ int EXIT_FAILURE ;
+ int exit (int ) ;
+ int fprintf (int ,char*,char const*) ;
+ int http_handler ;
+ struct mg_connection* mg_bind (struct mg_mgr*,char const*,int ) ;
+ int mg_set_protocol_http_websocket (struct mg_connection*) ;
+ int printf (char*,char const*) ;
+ int stderr ;
 
 __attribute__((used)) static void start_http_server(struct mg_mgr *mgr, const char *addr) {
   struct mg_connection *c;
-  if ((c = mg_bind(mgr, addr, http_handler)) == NULL) {
+  if ((c = mg_bind(mgr, addr, http_handler)) == ((void*)0)) {
     fprintf(stderr, "Cannot start HTTP server on port [%s]\n", addr);
     exit(EXIT_FAILURE);
   }

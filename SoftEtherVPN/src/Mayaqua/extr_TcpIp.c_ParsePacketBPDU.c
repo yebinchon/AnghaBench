@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int UINT ;
-typedef  int /*<<< orphan*/  UCHAR ;
-struct TYPE_4__ {int /*<<< orphan*/ * BpduHeader; } ;
-struct TYPE_5__ {int /*<<< orphan*/  TypeL3; TYPE_1__ L3; } ;
-typedef  TYPE_2__ PKT ;
-typedef  int /*<<< orphan*/  BPDU_HEADER ;
 
-/* Variables and functions */
- int /*<<< orphan*/  L3_BPDU ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int UINT ;
+typedef int UCHAR ;
+struct TYPE_4__ {int * BpduHeader; } ;
+struct TYPE_5__ {int TypeL3; TYPE_1__ L3; } ;
+typedef TYPE_2__ PKT ;
+typedef int BPDU_HEADER ;
+
+
+ int L3_BPDU ;
 
 bool ParsePacketBPDU(PKT *p, UCHAR *buf, UINT size)
 {
-	// Validate arguments
-	if (p == NULL || buf == NULL)
-	{
-		return false;
-	}
 
-	// Check the size
-	if (size < sizeof(BPDU_HEADER))
-	{
-		return true;
-	}
+ if (p == ((void*)0) || buf == ((void*)0))
+ {
+  return 0;
+ }
 
-	// BPDU header
-	p->L3.BpduHeader = (BPDU_HEADER *)buf;
-	p->TypeL3 = L3_BPDU;
 
-	buf += sizeof(BPDU_HEADER);
-	size -= sizeof(BPDU_HEADER);
+ if (size < sizeof(BPDU_HEADER))
+ {
+  return 1;
+ }
 
-	return true;
+
+ p->L3.BpduHeader = (BPDU_HEADER *)buf;
+ p->TypeL3 = L3_BPDU;
+
+ buf += sizeof(BPDU_HEADER);
+ size -= sizeof(BPDU_HEADER);
+
+ return 1;
 }

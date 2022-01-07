@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uid_t ;
-struct krb5_kafs_data {int /*<<< orphan*/ * context; int /*<<< orphan*/ * id; int /*<<< orphan*/  realm; } ;
-struct kafs_data {char* name; struct krb5_kafs_data* data; int /*<<< orphan*/  free_error; int /*<<< orphan*/  get_error; int /*<<< orphan*/  get_realm; int /*<<< orphan*/  get_cred; scalar_t__ (* afslog_uid ) (struct kafs_data*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*) ;} ;
-typedef  scalar_t__ krb5_error_code ;
-typedef  int /*<<< orphan*/ * krb5_context ;
-typedef  int /*<<< orphan*/  krb5_const_realm ;
-typedef  int /*<<< orphan*/ * krb5_ccache ;
 
-/* Variables and functions */
- scalar_t__ afslog_uid_int (struct kafs_data*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  free_error ; 
- int /*<<< orphan*/  get_cred ; 
- int /*<<< orphan*/  get_error ; 
- int /*<<< orphan*/  get_realm ; 
- int /*<<< orphan*/  krb5_cc_close (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ krb5_cc_default (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  krb5_free_context (int /*<<< orphan*/ *) ; 
- scalar_t__ krb5_init_context (int /*<<< orphan*/ **) ; 
+
+
+
+typedef int uid_t ;
+struct krb5_kafs_data {int * context; int * id; int realm; } ;
+struct kafs_data {char* name; struct krb5_kafs_data* data; int free_error; int get_error; int get_realm; int get_cred; scalar_t__ (* afslog_uid ) (struct kafs_data*,char const*,int ,int ,char const*) ;} ;
+typedef scalar_t__ krb5_error_code ;
+typedef int * krb5_context ;
+typedef int krb5_const_realm ;
+typedef int * krb5_ccache ;
+
+
+ scalar_t__ afslog_uid_int (struct kafs_data*,char const*,int ,int ,char const*) ;
+ int free_error ;
+ int get_cred ;
+ int get_error ;
+ int get_realm ;
+ int krb5_cc_close (int *,int *) ;
+ scalar_t__ krb5_cc_default (int *,int **) ;
+ int krb5_free_context (int *) ;
+ scalar_t__ krb5_init_context (int **) ;
 
 krb5_error_code
 krb5_afslog_uid_home(krb5_context context,
-		     krb5_ccache id,
-		     const char *cell,
-		     krb5_const_realm realm,
-		     uid_t uid,
-		     const char *homedir)
+       krb5_ccache id,
+       const char *cell,
+       krb5_const_realm realm,
+       uid_t uid,
+       const char *homedir)
 {
     struct kafs_data kd;
     struct krb5_kafs_data d;
@@ -48,24 +48,24 @@ krb5_afslog_uid_home(krb5_context context,
     kd.get_error = get_error;
     kd.free_error = free_error;
     kd.data = &d;
-    if (context == NULL) {
-	ret = krb5_init_context(&d.context);
-	if (ret)
-	    return ret;
+    if (context == ((void*)0)) {
+ ret = krb5_init_context(&d.context);
+ if (ret)
+     return ret;
     } else
-	d.context = context;
-    if (id == NULL) {
-	ret = krb5_cc_default(d.context, &d.id);
-	if (ret)
-	    goto out;
+ d.context = context;
+    if (id == ((void*)0)) {
+ ret = krb5_cc_default(d.context, &d.id);
+ if (ret)
+     goto out;
     } else
-	d.id = id;
+ d.id = id;
     d.realm = realm;
     ret = afslog_uid_int(&kd, cell, 0, uid, homedir);
-    if (id == NULL)
-	krb5_cc_close(context, d.id);
+    if (id == ((void*)0))
+ krb5_cc_close(context, d.id);
  out:
-    if (context == NULL)
-	krb5_free_context(d.context);
+    if (context == ((void*)0))
+ krb5_free_context(d.context);
     return ret;
 }

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {char* in; scalar_t__ ucode; int /*<<< orphan*/  getflags; int /*<<< orphan*/  out; int /*<<< orphan*/  urlflags; } ;
-typedef  scalar_t__ CURLUcode ;
-typedef  int /*<<< orphan*/  CURLU ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CURLUPART_URL ; 
- scalar_t__ checkparts (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * curl_url () ; 
- int /*<<< orphan*/  curl_url_cleanup (int /*<<< orphan*/ *) ; 
- scalar_t__ curl_url_set (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*,int,scalar_t__) ; 
- TYPE_1__* get_parts_list ; 
- int /*<<< orphan*/  stderr ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {char* in; scalar_t__ ucode; int getflags; int out; int urlflags; } ;
+typedef scalar_t__ CURLUcode ;
+typedef int CURLU ;
+
+
+ int CURLUPART_URL ;
+ scalar_t__ checkparts (int *,char*,int ,int ) ;
+ int * curl_url () ;
+ int curl_url_cleanup (int *) ;
+ scalar_t__ curl_url_set (int *,int ,char*,int ) ;
+ int fprintf (int ,char*,char*,int,scalar_t__) ;
+ TYPE_1__* get_parts_list ;
+ int stderr ;
 
 __attribute__((used)) static int get_parts(void)
 {
@@ -45,7 +45,7 @@ __attribute__((used)) static int get_parts(void)
       error++;
     }
     else if(get_parts_list[i].ucode) {
-      /* the expected error happened */
+
     }
     else if(checkparts(urlp, get_parts_list[i].in, get_parts_list[i].out,
                        get_parts_list[i].getflags))

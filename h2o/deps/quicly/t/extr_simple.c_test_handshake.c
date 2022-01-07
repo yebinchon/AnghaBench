@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_5__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  quicly_decoded_packet_t ;
+
+
+typedef struct TYPE_9__ TYPE_5__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int quicly_decoded_packet_t ;
 struct TYPE_7__ {int len; } ;
 struct TYPE_8__ {TYPE_1__ data; } ;
-typedef  TYPE_2__ quicly_datagram_t ;
-typedef  int /*<<< orphan*/  packets ;
-struct TYPE_9__ {int /*<<< orphan*/  sa; } ;
+typedef TYPE_2__ quicly_datagram_t ;
+typedef int packets ;
+struct TYPE_9__ {int sa; } ;
 
-/* Variables and functions */
- scalar_t__ QUICLY_STATE_CONNECTED ; 
- int /*<<< orphan*/  client ; 
- size_t decode_packets (int /*<<< orphan*/ *,TYPE_2__**,size_t) ; 
- TYPE_5__ fake_address ; 
- int /*<<< orphan*/  free_packets (TYPE_2__**,size_t) ; 
- int /*<<< orphan*/  new_master_id () ; 
- int /*<<< orphan*/  ok (int) ; 
- int /*<<< orphan*/  ptls_iovec_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  quic_ctx ; 
- int quicly_accept (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int quicly_connect (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int quicly_connection_is_ready (int /*<<< orphan*/ ) ; 
- scalar_t__ quicly_get_state (int /*<<< orphan*/ ) ; 
- int quicly_receive (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int quicly_send (int /*<<< orphan*/ ,TYPE_2__**,size_t*) ; 
- int /*<<< orphan*/  server ; 
+
+ scalar_t__ QUICLY_STATE_CONNECTED ;
+ int client ;
+ size_t decode_packets (int *,TYPE_2__**,size_t) ;
+ TYPE_5__ fake_address ;
+ int free_packets (TYPE_2__**,size_t) ;
+ int new_master_id () ;
+ int ok (int) ;
+ int ptls_iovec_init (int *,int ) ;
+ int quic_ctx ;
+ int quicly_accept (int *,int *,int *,int *,int *,int *,int ,int *) ;
+ int quicly_connect (int *,int *,char*,int *,int *,int ,int ,int *,int *) ;
+ int quicly_connection_is_ready (int ) ;
+ scalar_t__ quicly_get_state (int ) ;
+ int quicly_receive (int ,int *,int *,int *) ;
+ int quicly_send (int ,TYPE_2__**,size_t*) ;
+ int server ;
 
 __attribute__((used)) static void test_handshake(void)
 {
@@ -45,9 +45,9 @@ __attribute__((used)) static void test_handshake(void)
     quicly_decoded_packet_t decoded[32];
     int ret, i;
 
-    /* send CH */
-    ret = quicly_connect(&client, &quic_ctx, "example.com", &fake_address.sa, NULL, new_master_id(), ptls_iovec_init(NULL, 0), NULL,
-                         NULL);
+
+    ret = quicly_connect(&client, &quic_ctx, "example.com", &fake_address.sa, ((void*)0), new_master_id(), ptls_iovec_init(((void*)0), 0), ((void*)0),
+                         ((void*)0));
     ok(ret == 0);
     num_packets = sizeof(packets) / sizeof(packets[0]);
     ret = quicly_send(client, packets, &num_packets);
@@ -55,10 +55,10 @@ __attribute__((used)) static void test_handshake(void)
     ok(num_packets == 1);
     ok(packets[0]->data.len == 1280);
 
-    /* receive CH, send handshake upto ServerFinished */
+
     num_decoded = decode_packets(decoded, packets, num_packets);
     ok(num_decoded == 1);
-    ret = quicly_accept(&server, &quic_ctx, NULL, &fake_address.sa, decoded, NULL, new_master_id(), NULL);
+    ret = quicly_accept(&server, &quic_ctx, ((void*)0), &fake_address.sa, decoded, ((void*)0), new_master_id(), ((void*)0));
     ok(ret == 0);
     free_packets(packets, num_packets);
     ok(quicly_get_state(server) == QUICLY_STATE_CONNECTED);
@@ -68,10 +68,10 @@ __attribute__((used)) static void test_handshake(void)
     ok(ret == 0);
     ok(num_packets != 0);
 
-    /* receive ServerFinished */
+
     num_decoded = decode_packets(decoded, packets, num_packets);
     for (i = 0; i != num_decoded; ++i) {
-        ret = quicly_receive(client, NULL, &fake_address.sa, decoded + i);
+        ret = quicly_receive(client, ((void*)0), &fake_address.sa, decoded + i);
         ok(ret == 0);
     }
     free_packets(packets, num_packets);

@@ -1,44 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ BITMAP_H ; 
- scalar_t__ BITMAP_W ; 
- int /*<<< orphan*/  GL_BLEND ; 
- int /*<<< orphan*/  GL_MODELVIEW ; 
- int /*<<< orphan*/  GL_ONE_MINUS_SRC_ALPHA ; 
- int /*<<< orphan*/  GL_QUADS ; 
- int /*<<< orphan*/  GL_SRC_ALPHA ; 
- scalar_t__ black_on_white ; 
- int /*<<< orphan*/  drawBoxTC (int,int,scalar_t__,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int) ; 
- scalar_t__ fmod (int,int) ; 
- size_t font ; 
- int /*<<< orphan*/  glBegin (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glBlendFunc (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glColor3f (int,int,int) ; 
- int /*<<< orphan*/  glEnable (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glEnd () ; 
- int /*<<< orphan*/  glMatrixMode (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glRotatef (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  glTranslatef (int,int,int /*<<< orphan*/ ) ; 
- scalar_t__ integer_align ; 
- int /*<<< orphan*/  print (float,int,size_t,char*) ; 
- int rotate_t ; 
- scalar_t__ rotating ; 
- int* sf ; 
- scalar_t__ show_tex ; 
- int translate_t ; 
- scalar_t__ translating ; 
+ scalar_t__ BITMAP_H ;
+ scalar_t__ BITMAP_W ;
+ int GL_BLEND ;
+ int GL_MODELVIEW ;
+ int GL_ONE_MINUS_SRC_ALPHA ;
+ int GL_QUADS ;
+ int GL_SRC_ALPHA ;
+ scalar_t__ black_on_white ;
+ int drawBoxTC (int,int,scalar_t__,scalar_t__,int ,int ,int,int) ;
+ scalar_t__ fmod (int,int) ;
+ size_t font ;
+ int glBegin (int ) ;
+ int glBlendFunc (int ,int ) ;
+ int glColor3f (int,int,int) ;
+ int glEnable (int ) ;
+ int glEnd () ;
+ int glMatrixMode (int ) ;
+ int glRotatef (int,int ,int ,int) ;
+ int glTranslatef (int,int,int ) ;
+ scalar_t__ integer_align ;
+ int print (float,int,size_t,char*) ;
+ int rotate_t ;
+ scalar_t__ rotating ;
+ int* sf ;
+ scalar_t__ show_tex ;
+ int translate_t ;
+ scalar_t__ translating ;
 
 void draw_world(void)
 {

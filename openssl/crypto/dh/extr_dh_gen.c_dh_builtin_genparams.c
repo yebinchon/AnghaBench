@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  dirty_cnt; int /*<<< orphan*/ * g; int /*<<< orphan*/ * p; } ;
-typedef  TYPE_1__ DH ;
-typedef  int /*<<< orphan*/  BN_GENCB ;
-typedef  int /*<<< orphan*/  BN_CTX ;
-typedef  int /*<<< orphan*/  BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BN_CTX_end (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_CTX_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BN_CTX_get (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BN_CTX_new () ; 
- int /*<<< orphan*/  BN_CTX_start (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_GENCB_call (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BN_generate_prime_ex (int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- void* BN_new () ; 
- int /*<<< orphan*/  BN_set_word (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  DH_F_DH_BUILTIN_GENPARAMS ; 
- int DH_GENERATOR_2 ; 
- int DH_GENERATOR_5 ; 
- int DH_MIN_MODULUS_BITS ; 
- int /*<<< orphan*/  DH_R_BAD_GENERATOR ; 
- int /*<<< orphan*/  DH_R_MODULUS_TOO_LARGE ; 
- int /*<<< orphan*/  DH_R_MODULUS_TOO_SMALL ; 
- int /*<<< orphan*/  DHerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ERR_R_BN_LIB ; 
- int OPENSSL_DH_MAX_MODULUS_BITS ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int dirty_cnt; int * g; int * p; } ;
+typedef TYPE_1__ DH ;
+typedef int BN_GENCB ;
+typedef int BN_CTX ;
+typedef int BIGNUM ;
+
+
+ int BN_CTX_end (int *) ;
+ int BN_CTX_free (int *) ;
+ int * BN_CTX_get (int *) ;
+ int * BN_CTX_new () ;
+ int BN_CTX_start (int *) ;
+ int BN_GENCB_call (int *,int,int ) ;
+ int BN_generate_prime_ex (int *,int,int,int *,int *,int *) ;
+ void* BN_new () ;
+ int BN_set_word (int *,int) ;
+ int DH_F_DH_BUILTIN_GENPARAMS ;
+ int DH_GENERATOR_2 ;
+ int DH_GENERATOR_5 ;
+ int DH_MIN_MODULUS_BITS ;
+ int DH_R_BAD_GENERATOR ;
+ int DH_R_MODULUS_TOO_LARGE ;
+ int DH_R_MODULUS_TOO_SMALL ;
+ int DHerr (int ,int ) ;
+ int ERR_R_BN_LIB ;
+ int OPENSSL_DH_MAX_MODULUS_BITS ;
 
 __attribute__((used)) static int dh_builtin_genparams(DH *ret, int prime_len, int generator,
                                 BN_GENCB *cb)
 {
     BIGNUM *t1, *t2;
     int g, ok = -1;
-    BN_CTX *ctx = NULL;
+    BN_CTX *ctx = ((void*)0);
 
     if (prime_len > OPENSSL_DH_MAX_MODULUS_BITS) {
         DHerr(DH_F_DH_BUILTIN_GENPARAMS, DH_R_MODULUS_TOO_LARGE);
@@ -56,18 +56,18 @@ __attribute__((used)) static int dh_builtin_genparams(DH *ret, int prime_len, in
     }
 
     ctx = BN_CTX_new();
-    if (ctx == NULL)
+    if (ctx == ((void*)0))
         goto err;
     BN_CTX_start(ctx);
     t1 = BN_CTX_get(ctx);
     t2 = BN_CTX_get(ctx);
-    if (t2 == NULL)
+    if (t2 == ((void*)0))
         goto err;
 
-    /* Make sure 'ret' has the necessary elements */
-    if (!ret->p && ((ret->p = BN_new()) == NULL))
+
+    if (!ret->p && ((ret->p = BN_new()) == ((void*)0)))
         goto err;
-    if (!ret->g && ((ret->g = BN_new()) == NULL))
+    if (!ret->g && ((ret->g = BN_new()) == ((void*)0)))
         goto err;
 
     if (generator <= 1) {
@@ -87,11 +87,11 @@ __attribute__((used)) static int dh_builtin_genparams(DH *ret, int prime_len, in
             goto err;
         g = 5;
     } else {
-        /*
-         * in the general case, don't worry if 'generator' is a generator or
-         * not: since we are using safe primes, it will generate either an
-         * order-q or an order-2q group, which both is OK
-         */
+
+
+
+
+
         if (!BN_set_word(t1, 12))
             goto err;
         if (!BN_set_word(t2, 11))

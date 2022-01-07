@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3 ;
-struct TYPE_8__ {int /*<<< orphan*/  repo_id; int /*<<< orphan*/  name; } ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int sqlite3 ;
+struct TYPE_8__ {int repo_id; int name; } ;
 struct TYPE_7__ {TYPE_1__* priv; } ;
-struct TYPE_6__ {int /*<<< orphan*/  db_lock; int /*<<< orphan*/ * db; } ;
-typedef  TYPE_2__ SeafRepoManager ;
-typedef  TYPE_3__ SeafBranch ;
+struct TYPE_6__ {int db_lock; int * db; } ;
+typedef TYPE_2__ SeafRepoManager ;
+typedef TYPE_3__ SeafBranch ;
 
-/* Variables and functions */
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  seaf_warning (char*) ; 
- int /*<<< orphan*/  sqlite3_free (char*) ; 
- char* sqlite3_mprintf (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ sqlite_query_exec (int /*<<< orphan*/ *,char*) ; 
+
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
+ int seaf_warning (char*) ;
+ int sqlite3_free (char*) ;
+ char* sqlite3_mprintf (char*,int ,int ) ;
+ scalar_t__ sqlite_query_exec (int *,char*) ;
 
 int
 seaf_repo_manager_branch_repo_unmap (SeafRepoManager *manager, SeafBranch *branch)

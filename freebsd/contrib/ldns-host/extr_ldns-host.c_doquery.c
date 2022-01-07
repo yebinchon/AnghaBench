@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ldns_resolver ;
-typedef  int /*<<< orphan*/  ldns_rdf ;
-typedef  int /*<<< orphan*/  ldns_pkt ;
 
-/* Variables and functions */
- int query (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **,int) ; 
- int /*<<< orphan*/  report (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int ldns_resolver ;
+typedef int ldns_rdf ;
+typedef int ldns_pkt ;
+
+
+ int query (int *,int *,int **,int) ;
+ int report (int *,int *,int *) ;
 
 __attribute__((used)) static bool
 doquery(ldns_resolver *res, ldns_rdf *domain) {
     ldns_pkt *pkt;
     bool q;
 
-    q = query(res, domain, &pkt, true);
+    q = query(res, domain, &pkt, 1);
     report(res, domain, pkt);
     return q;
 }

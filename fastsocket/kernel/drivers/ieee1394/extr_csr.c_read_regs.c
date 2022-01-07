@@ -1,52 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u64 ;
-typedef  int /*<<< orphan*/  u16 ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int u64 ;
+typedef int u16 ;
 struct TYPE_4__ {int state; int node_ids; int split_timeout_hi; int split_timeout_lo; int cycle_time; int bus_time; int bus_manager_id; int bandwidth_available; int channels_available_hi; int channels_available_lo; int broadcast_channel; } ;
 struct hpsb_host {TYPE_2__ csr; TYPE_1__* driver; } ;
-typedef  int quadlet_t ;
-struct TYPE_3__ {int (* devctl ) (struct hpsb_host*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;int (* hw_csr_reg ) (struct hpsb_host*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;} ;
+typedef int quadlet_t ;
+struct TYPE_3__ {int (* devctl ) (struct hpsb_host*,int ,int ) ;int (* hw_csr_reg ) (struct hpsb_host*,int,int ,int ) ;} ;
+ int CSR_REGISTER_BASE ;
 
-/* Variables and functions */
-#define  CSR_BANDWIDTH_AVAILABLE 141 
-#define  CSR_BROADCAST_CHANNEL 140 
-#define  CSR_BUSY_TIMEOUT 139 
-#define  CSR_BUS_MANAGER_ID 138 
-#define  CSR_BUS_TIME 137 
-#define  CSR_CHANNELS_AVAILABLE_HI 136 
-#define  CSR_CHANNELS_AVAILABLE_LO 135 
-#define  CSR_CYCLE_TIME 134 
-#define  CSR_NODE_IDS 133 
- int CSR_REGISTER_BASE ; 
-#define  CSR_RESET_START 132 
-#define  CSR_SPLIT_TIMEOUT_HI 131 
-#define  CSR_SPLIT_TIMEOUT_LO 130 
-#define  CSR_STATE_CLEAR 129 
-#define  CSR_STATE_SET 128 
- int /*<<< orphan*/  GET_CYCLE_COUNTER ; 
- int RCODE_ADDRESS_ERROR ; 
- int RCODE_COMPLETE ; 
- int RCODE_TYPE_ERROR ; 
- void* cpu_to_be32 (int) ; 
- int /*<<< orphan*/  out ; 
- int stub1 (struct hpsb_host*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int stub2 (struct hpsb_host*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int stub3 (struct hpsb_host*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int stub4 (struct hpsb_host*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int stub5 (struct hpsb_host*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int stub6 (struct hpsb_host*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+
+ int GET_CYCLE_COUNTER ;
+ int RCODE_ADDRESS_ERROR ;
+ int RCODE_COMPLETE ;
+ int RCODE_TYPE_ERROR ;
+ void* cpu_to_be32 (int) ;
+ int out ;
+ int stub1 (struct hpsb_host*,int ,int ) ;
+ int stub2 (struct hpsb_host*,int ,int ) ;
+ int stub3 (struct hpsb_host*,int,int ,int ) ;
+ int stub4 (struct hpsb_host*,int,int ,int ) ;
+ int stub5 (struct hpsb_host*,int,int ,int ) ;
+ int stub6 (struct hpsb_host*,int,int ,int ) ;
 
 __attribute__((used)) static int read_regs(struct hpsb_host *host, int nodeid, quadlet_t *buf,
                      u64 addr, size_t length, u16 flags)
@@ -61,63 +50,63 @@ __attribute__((used)) static int read_regs(struct hpsb_host *host, int nodeid, q
         length /= 4;
 
         switch (csraddr) {
-        case CSR_STATE_CLEAR:
+        case 129:
                 *(buf++) = cpu_to_be32(host->csr.state);
                 out;
-        case CSR_STATE_SET:
+        case 128:
                 *(buf++) = cpu_to_be32(host->csr.state);
                 out;
-        case CSR_NODE_IDS:
+        case 133:
                 *(buf++) = cpu_to_be32(host->csr.node_ids);
                 out;
 
-        case CSR_RESET_START:
+        case 132:
                 return RCODE_TYPE_ERROR;
 
-                /* address gap - handled by default below */
 
-        case CSR_SPLIT_TIMEOUT_HI:
+
+        case 131:
                 *(buf++) = cpu_to_be32(host->csr.split_timeout_hi);
                 out;
-        case CSR_SPLIT_TIMEOUT_LO:
+        case 130:
                 *(buf++) = cpu_to_be32(host->csr.split_timeout_lo);
                 out;
 
-                /* address gap */
+
                 return RCODE_ADDRESS_ERROR;
 
-        case CSR_CYCLE_TIME:
+        case 134:
                 oldcycle = host->csr.cycle_time;
                 host->csr.cycle_time =
                         host->driver->devctl(host, GET_CYCLE_COUNTER, 0);
 
                 if (oldcycle > host->csr.cycle_time) {
-                        /* cycle time wrapped around */
+
                         host->csr.bus_time += 1 << 7;
                 }
                 *(buf++) = cpu_to_be32(host->csr.cycle_time);
                 out;
-        case CSR_BUS_TIME:
+        case 137:
                 oldcycle = host->csr.cycle_time;
                 host->csr.cycle_time =
                         host->driver->devctl(host, GET_CYCLE_COUNTER, 0);
 
                 if (oldcycle > host->csr.cycle_time) {
-                        /* cycle time wrapped around */
+
                         host->csr.bus_time += (1 << 7);
                 }
                 *(buf++) = cpu_to_be32(host->csr.bus_time
                                        | (host->csr.cycle_time >> 25));
                 out;
 
-                /* address gap */
+
                 return RCODE_ADDRESS_ERROR;
 
-        case CSR_BUSY_TIMEOUT:
-                /* not yet implemented */
+        case 139:
+
                 return RCODE_ADDRESS_ERROR;
 
-        case CSR_BUS_MANAGER_ID:
+        case 138:
                 if (host->driver->hw_csr_reg)
                         ret = host->driver->hw_csr_reg(host, 0, 0, 0);
                 else
@@ -125,7 +114,7 @@ __attribute__((used)) static int read_regs(struct hpsb_host *host, int nodeid, q
 
                 *(buf++) = cpu_to_be32(ret);
                 out;
-        case CSR_BANDWIDTH_AVAILABLE:
+        case 141:
                 if (host->driver->hw_csr_reg)
                         ret = host->driver->hw_csr_reg(host, 1, 0, 0);
                 else
@@ -133,7 +122,7 @@ __attribute__((used)) static int read_regs(struct hpsb_host *host, int nodeid, q
 
                 *(buf++) = cpu_to_be32(ret);
                 out;
-        case CSR_CHANNELS_AVAILABLE_HI:
+        case 136:
                 if (host->driver->hw_csr_reg)
                         ret = host->driver->hw_csr_reg(host, 2, 0, 0);
                 else
@@ -141,7 +130,7 @@ __attribute__((used)) static int read_regs(struct hpsb_host *host, int nodeid, q
 
                 *(buf++) = cpu_to_be32(ret);
                 out;
-        case CSR_CHANNELS_AVAILABLE_LO:
+        case 135:
                 if (host->driver->hw_csr_reg)
                         ret = host->driver->hw_csr_reg(host, 3, 0, 0);
                 else
@@ -150,11 +139,11 @@ __attribute__((used)) static int read_regs(struct hpsb_host *host, int nodeid, q
                 *(buf++) = cpu_to_be32(ret);
                 out;
 
-	case CSR_BROADCAST_CHANNEL:
-		*(buf++) = cpu_to_be32(host->csr.broadcast_channel);
-		out;
+ case 140:
+  *(buf++) = cpu_to_be32(host->csr.broadcast_channel);
+  out;
 
-                /* address gap to end - fall through to default */
+
         default:
                 return RCODE_ADDRESS_ERROR;
         }

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_11__ {scalar_t__ length; int /*<<< orphan*/ * data; } ;
-struct TYPE_10__ {int /*<<< orphan*/  name; scalar_t__ userdata; } ;
-struct TYPE_9__ {int /*<<< orphan*/  sema; int /*<<< orphan*/  queue; int /*<<< orphan*/  wd_timer; } ;
-typedef  TYPE_1__ SVP_T ;
-typedef  TYPE_2__ MMAL_PORT_T ;
-typedef  TYPE_3__ MMAL_BUFFER_HEADER_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOG_ERROR (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LOG_TRACE (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVP_STOP_EOS ; 
- int /*<<< orphan*/  SVP_WATCHDOG_TIMEOUT_MS ; 
- int /*<<< orphan*/  mmal_buffer_header_release (TYPE_3__*) ; 
- int /*<<< orphan*/  mmal_queue_put (int /*<<< orphan*/ ,TYPE_3__*) ; 
- int /*<<< orphan*/  svp_set_stop (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vcos_semaphore_post (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vcos_timer_set (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_11__ {scalar_t__ length; int * data; } ;
+struct TYPE_10__ {int name; scalar_t__ userdata; } ;
+struct TYPE_9__ {int sema; int queue; int wd_timer; } ;
+typedef TYPE_1__ SVP_T ;
+typedef TYPE_2__ MMAL_PORT_T ;
+typedef TYPE_3__ MMAL_BUFFER_HEADER_T ;
+
+
+ int LOG_ERROR (char*,int ) ;
+ int LOG_TRACE (char*,int ) ;
+ int SVP_STOP_EOS ;
+ int SVP_WATCHDOG_TIMEOUT_MS ;
+ int mmal_buffer_header_release (TYPE_3__*) ;
+ int mmal_queue_put (int ,TYPE_3__*) ;
+ int svp_set_stop (TYPE_1__*,int ) ;
+ int vcos_semaphore_post (int *) ;
+ int vcos_timer_set (int *,int ) ;
 
 __attribute__((used)) static void svp_bh_output_cb(MMAL_PORT_T *port, MMAL_BUFFER_HEADER_T *buf)
 {
@@ -38,23 +38,23 @@ __attribute__((used)) static void svp_bh_output_cb(MMAL_PORT_T *port, MMAL_BUFFE
    if (buf->length == 0)
    {
       LOG_TRACE("%s: zero-length buffer => EOS", port->name);
-      svp_set_stop(svp, SVP_STOP_EOS); // This shouldn't be necessary, but it is ...
+      svp_set_stop(svp, SVP_STOP_EOS);
       mmal_buffer_header_release(buf);
    }
-   else if (buf->data == NULL)
+   else if (buf->data == ((void*)0))
    {
       LOG_ERROR("%s: zero buffer handle", port->name);
       mmal_buffer_header_release(buf);
    }
    else
    {
-      /* Reset watchdog timer */
+
       vcos_timer_set(&svp->wd_timer, SVP_WATCHDOG_TIMEOUT_MS);
 
-      /* Enqueue the decoded frame so we can return quickly to MMAL core */
+
       mmal_queue_put(svp->queue, buf);
    }
 
-   /* Notify worker */
+
    vcos_semaphore_post(&svp->sema);
 }

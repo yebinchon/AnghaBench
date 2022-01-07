@@ -1,108 +1,100 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ isspace (unsigned char) ; 
- int /*<<< orphan*/  memmove (char*,char*,int) ; 
- scalar_t__ pg_malloc (int) ; 
- char* strchr (char*,char) ; 
- int strlen (char*) ; 
+ scalar_t__ isspace (unsigned char) ;
+ int memmove (char*,char*,int) ;
+ scalar_t__ pg_malloc (int) ;
+ char* strchr (char*,char) ;
+ int strlen (char*) ;
 
 bool
 SplitGUCList(char *rawstring, char separator,
-			 char ***namelist)
+    char ***namelist)
 {
-	char	   *nextp = rawstring;
-	bool		done = false;
-	char	  **nextptr;
+ char *nextp = rawstring;
+ bool done = 0;
+ char **nextptr;
 
-	/*
-	 * Since we disallow empty identifiers, this is a conservative
-	 * overestimate of the number of pointers we could need.  Allow one for
-	 * list terminator.
-	 */
-	*namelist = nextptr = (char **)
-		pg_malloc((strlen(rawstring) / 2 + 2) * sizeof(char *));
-	*nextptr = NULL;
 
-	while (isspace((unsigned char) *nextp))
-		nextp++;				/* skip leading whitespace */
 
-	if (*nextp == '\0')
-		return true;			/* allow empty string */
 
-	/* At the top of the loop, we are at start of a new identifier. */
-	do
-	{
-		char	   *curname;
-		char	   *endp;
 
-		if (*nextp == '"')
-		{
-			/* Quoted name --- collapse quote-quote pairs */
-			curname = nextp + 1;
-			for (;;)
-			{
-				endp = strchr(nextp + 1, '"');
-				if (endp == NULL)
-					return false;	/* mismatched quotes */
-				if (endp[1] != '"')
-					break;		/* found end of quoted name */
-				/* Collapse adjacent quotes into one quote, and look again */
-				memmove(endp, endp + 1, strlen(endp));
-				nextp = endp;
-			}
-			/* endp now points at the terminating quote */
-			nextp = endp + 1;
-		}
-		else
-		{
-			/* Unquoted name --- extends to separator or whitespace */
-			curname = nextp;
-			while (*nextp && *nextp != separator &&
-				   !isspace((unsigned char) *nextp))
-				nextp++;
-			endp = nextp;
-			if (curname == nextp)
-				return false;	/* empty unquoted name not allowed */
-		}
 
-		while (isspace((unsigned char) *nextp))
-			nextp++;			/* skip trailing whitespace */
+ *namelist = nextptr = (char **)
+  pg_malloc((strlen(rawstring) / 2 + 2) * sizeof(char *));
+ *nextptr = ((void*)0);
 
-		if (*nextp == separator)
-		{
-			nextp++;
-			while (isspace((unsigned char) *nextp))
-				nextp++;		/* skip leading whitespace for next */
-			/* we expect another name, so done remains false */
-		}
-		else if (*nextp == '\0')
-			done = true;
-		else
-			return false;		/* invalid syntax */
+ while (isspace((unsigned char) *nextp))
+  nextp++;
 
-		/* Now safe to overwrite separator with a null */
-		*endp = '\0';
+ if (*nextp == '\0')
+  return 1;
 
-		/*
-		 * Finished isolating current name --- add it to output array
-		 */
-		*nextptr++ = curname;
 
-		/* Loop back if we didn't reach end of string */
-	} while (!done);
+ do
+ {
+  char *curname;
+  char *endp;
 
-	*nextptr = NULL;
-	return true;
+  if (*nextp == '"')
+  {
+
+   curname = nextp + 1;
+   for (;;)
+   {
+    endp = strchr(nextp + 1, '"');
+    if (endp == ((void*)0))
+     return 0;
+    if (endp[1] != '"')
+     break;
+
+    memmove(endp, endp + 1, strlen(endp));
+    nextp = endp;
+   }
+
+   nextp = endp + 1;
+  }
+  else
+  {
+
+   curname = nextp;
+   while (*nextp && *nextp != separator &&
+       !isspace((unsigned char) *nextp))
+    nextp++;
+   endp = nextp;
+   if (curname == nextp)
+    return 0;
+  }
+
+  while (isspace((unsigned char) *nextp))
+   nextp++;
+
+  if (*nextp == separator)
+  {
+   nextp++;
+   while (isspace((unsigned char) *nextp))
+    nextp++;
+
+  }
+  else if (*nextp == '\0')
+   done = 1;
+  else
+   return 0;
+
+
+  *endp = '\0';
+
+
+
+
+  *nextptr++ = curname;
+
+
+ } while (!done);
+
+ *nextptr = ((void*)0);
+ return 1;
 }

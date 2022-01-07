@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UnitFileScope ;
-typedef  int /*<<< orphan*/  UnitFileInstallInfo ;
-typedef  int /*<<< orphan*/  UnitFileChange ;
-typedef  int /*<<< orphan*/  SearchFlags ;
-typedef  char LookupPaths ;
-typedef  char const InstallContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (char const*) ; 
- int install_info_add_auto (char const*,char const*,char const*,int /*<<< orphan*/ **) ; 
- int install_info_traverse (int /*<<< orphan*/ ,char const*,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  unit_file_changes_add (int /*<<< orphan*/ **,size_t*,int,char const*,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int UnitFileScope ;
+typedef int UnitFileInstallInfo ;
+typedef int UnitFileChange ;
+typedef int SearchFlags ;
+typedef char LookupPaths ;
+typedef char const InstallContext ;
+
+
+ int assert (char const*) ;
+ int install_info_add_auto (char const*,char const*,char const*,int **) ;
+ int install_info_traverse (int ,char const*,char const*,int *,int ,int **) ;
+ int unit_file_changes_add (int **,size_t*,int,char const*,int *) ;
 
 __attribute__((used)) static int install_info_discover(
                 UnitFileScope scope,
@@ -45,6 +45,6 @@ __attribute__((used)) static int install_info_discover(
                 r = install_info_traverse(scope, c, paths, i, flags, ret);
 
         if (r < 0)
-                unit_file_changes_add(changes, n_changes, r, name, NULL);
+                unit_file_changes_add(changes, n_changes, r, name, ((void*)0));
         return r;
 }

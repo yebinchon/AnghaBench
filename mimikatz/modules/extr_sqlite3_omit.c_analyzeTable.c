@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_13__ {int /*<<< orphan*/  zName; int /*<<< orphan*/  pSchema; } ;
-typedef  TYPE_1__ Table ;
-struct TYPE_15__ {int /*<<< orphan*/  zName; } ;
-struct TYPE_14__ {int nTab; scalar_t__ nMem; int /*<<< orphan*/  db; } ;
-typedef  TYPE_2__ Parse ;
-typedef  TYPE_3__ Index ;
 
-/* Variables and functions */
- int /*<<< orphan*/  analyzeOneTable (TYPE_2__*,TYPE_1__*,TYPE_3__*,int,scalar_t__,int) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  loadAnalysis (TYPE_2__*,int) ; 
- int /*<<< orphan*/  openStatTable (TYPE_2__*,int,int,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  sqlite3BeginWriteOperation (TYPE_2__*,int /*<<< orphan*/ ,int) ; 
- int sqlite3BtreeHoldsAllMutexes (int /*<<< orphan*/ ) ; 
- int sqlite3SchemaToIndex (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+struct TYPE_13__ {int zName; int pSchema; } ;
+typedef TYPE_1__ Table ;
+struct TYPE_15__ {int zName; } ;
+struct TYPE_14__ {int nTab; scalar_t__ nMem; int db; } ;
+typedef TYPE_2__ Parse ;
+typedef TYPE_3__ Index ;
+
+
+ int analyzeOneTable (TYPE_2__*,TYPE_1__*,TYPE_3__*,int,scalar_t__,int) ;
+ int assert (int) ;
+ int loadAnalysis (TYPE_2__*,int) ;
+ int openStatTable (TYPE_2__*,int,int,int ,char*) ;
+ int sqlite3BeginWriteOperation (TYPE_2__*,int ,int) ;
+ int sqlite3BtreeHoldsAllMutexes (int ) ;
+ int sqlite3SchemaToIndex (int ,int ) ;
 
 __attribute__((used)) static void analyzeTable(Parse *pParse, Table *pTab, Index *pOnlyIdx){
   int iDb;

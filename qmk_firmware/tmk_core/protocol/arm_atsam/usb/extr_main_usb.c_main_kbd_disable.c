@@ -1,17 +1,9 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ int main_b_kbd_enable ;
 
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int main_b_kbd_enable ; 
-
-void main_kbd_disable(void) { main_b_kbd_enable = false; }
+void main_kbd_disable(void) { main_b_kbd_enable = 0; }

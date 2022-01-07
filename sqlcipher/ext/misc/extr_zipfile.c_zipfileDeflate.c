@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int avail_in; scalar_t__ total_out; int /*<<< orphan*/  avail_out; int /*<<< orphan*/ * next_out; int /*<<< orphan*/ * next_in; } ;
-typedef  TYPE_1__ z_stream ;
-typedef  int /*<<< orphan*/  u8 ;
-typedef  int /*<<< orphan*/  str ;
-typedef  int /*<<< orphan*/  sqlite3_int64 ;
-typedef  int /*<<< orphan*/  Bytef ;
 
-/* Variables and functions */
- int SQLITE_ERROR ; 
- int SQLITE_NOMEM ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  Z_DEFAULT_STRATEGY ; 
- int /*<<< orphan*/  Z_DEFLATED ; 
- int /*<<< orphan*/  Z_FINISH ; 
- int Z_STREAM_END ; 
- int /*<<< orphan*/  compressBound (int) ; 
- int deflate (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  deflateEnd (TYPE_1__*) ; 
- int /*<<< orphan*/  deflateInit2 (TYPE_1__*,int,int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  sqlite3_free (int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3_malloc64 (int /*<<< orphan*/ ) ; 
- char* sqlite3_mprintf (char*) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int avail_in; scalar_t__ total_out; int avail_out; int * next_out; int * next_in; } ;
+typedef TYPE_1__ z_stream ;
+typedef int u8 ;
+typedef int str ;
+typedef int sqlite3_int64 ;
+typedef int Bytef ;
+
+
+ int SQLITE_ERROR ;
+ int SQLITE_NOMEM ;
+ int SQLITE_OK ;
+ int Z_DEFAULT_STRATEGY ;
+ int Z_DEFLATED ;
+ int Z_FINISH ;
+ int Z_STREAM_END ;
+ int compressBound (int) ;
+ int deflate (TYPE_1__*,int ) ;
+ int deflateEnd (TYPE_1__*) ;
+ int deflateInit2 (TYPE_1__*,int,int ,int,int,int ) ;
+ int memset (TYPE_1__*,int ,int) ;
+ int sqlite3_free (int *) ;
+ scalar_t__ sqlite3_malloc64 (int ) ;
+ char* sqlite3_mprintf (char*) ;
 
 __attribute__((used)) static int zipfileDeflate(
-  const u8 *aIn, int nIn,         /* Input */
-  u8 **ppOut, int *pnOut,         /* Output */
-  char **pzErr                    /* OUT: Error message */
+  const u8 *aIn, int nIn,
+  u8 **ppOut, int *pnOut,
+  char **pzErr
 ){
   sqlite3_int64 nAlloc = compressBound(nIn);
   u8 *aOut;

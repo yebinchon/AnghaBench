@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  AVPixFmtDescriptor ;
-typedef  int /*<<< orphan*/  AVFilterFormats ;
-typedef  int /*<<< orphan*/  AVFilterContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * av_pix_fmt_desc_get (int) ; 
- int ff_add_format (int /*<<< orphan*/ **,int) ; 
- int ff_set_common_formats (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ is_planar_yuv (int /*<<< orphan*/  const*) ; 
+
+
+
+typedef int AVPixFmtDescriptor ;
+typedef int AVFilterFormats ;
+typedef int AVFilterContext ;
+
+
+ int * av_pix_fmt_desc_get (int) ;
+ int ff_add_format (int **,int) ;
+ int ff_set_common_formats (int *,int *) ;
+ scalar_t__ is_planar_yuv (int const*) ;
 
 __attribute__((used)) static int query_formats(AVFilterContext *ctx)
 {
-    AVFilterFormats *formats = NULL;
+    AVFilterFormats *formats = ((void*)0);
     int fmt, ret;
 
     for (fmt = 0; av_pix_fmt_desc_get(fmt); fmt++) {

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int UINT8 ;
-typedef  size_t UINT32 ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int UINT8 ;
+typedef size_t UINT32 ;
 struct TYPE_2__ {int** inst_tab; int rhythm; int* instvol_r; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  set_ar_dr (size_t,int) ; 
- int /*<<< orphan*/  set_ksl_tl (size_t,int) ; 
- int /*<<< orphan*/  set_ksl_wave_fb (size_t,int) ; 
- int /*<<< orphan*/  set_mul (size_t,int) ; 
- int /*<<< orphan*/  set_sl_rr (size_t,int) ; 
- TYPE_1__ ym2413 ; 
+
+ int set_ar_dr (size_t,int) ;
+ int set_ksl_tl (size_t,int) ;
+ int set_ksl_wave_fb (size_t,int) ;
+ int set_mul (size_t,int) ;
+ int set_sl_rr (size_t,int) ;
+ TYPE_1__ ym2413 ;
 
 __attribute__((used)) static void update_instrument_zero(UINT8 r)
 {
-  UINT8* inst = &ym2413.inst_tab[0][0]; /* point to user instrument */
+  UINT8* inst = &ym2413.inst_tab[0][0];
   UINT32 chan;
 
   UINT32 chan_max = 9;

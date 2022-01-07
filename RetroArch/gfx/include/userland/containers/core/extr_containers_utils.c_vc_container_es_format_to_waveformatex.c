@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint16_t ;
-struct TYPE_7__ {scalar_t__ es_type; int extradata_size; int bitrate; int /*<<< orphan*/  extradata; TYPE_2__* type; int /*<<< orphan*/  codec; } ;
-typedef  TYPE_3__ VC_CONTAINER_ES_FORMAT_T ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint16_t ;
+struct TYPE_7__ {scalar_t__ es_type; int extradata_size; int bitrate; int extradata; TYPE_2__* type; int codec; } ;
+typedef TYPE_3__ VC_CONTAINER_ES_FORMAT_T ;
 struct TYPE_5__ {int channels; int sample_rate; int block_align; int bits_per_sample; } ;
 struct TYPE_6__ {TYPE_1__ audio; } ;
 
-/* Variables and functions */
- scalar_t__ VC_CONTAINER_ES_TYPE_AUDIO ; 
- int WAVE_FORMAT_UNKNOWN ; 
- int codec_to_waveformat (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (int*,int /*<<< orphan*/ ,int) ; 
+
+ scalar_t__ VC_CONTAINER_ES_TYPE_AUDIO ;
+ int WAVE_FORMAT_UNKNOWN ;
+ int codec_to_waveformat (int ) ;
+ int memcpy (int*,int ,int) ;
 
 unsigned int vc_container_es_format_to_waveformatex(VC_CONTAINER_ES_FORMAT_T *format,
                                                     uint8_t *buffer, unsigned int buffer_size)
@@ -38,7 +38,7 @@ unsigned int vc_container_es_format_to_waveformatex(VC_CONTAINER_ES_FORMAT_T *fo
 
    if(buffer_size < format->extradata_size + 18) return 0;
 
-   /* Build a waveformatex header */
+
    buffer[0] = waveformat;
    buffer[1] = waveformat >> 8;
    buffer[2] = format->type->audio.channels;

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int eepromVersion; } ;
 struct TYPE_4__ {TYPE_1__ ar9300_eep; } ;
 struct ath_hw {TYPE_2__ eeprom; } ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static int ath9k_hw_ar9300_get_eeprom_ver(struct ath_hw *ah)
 {
-	return ah->eeprom.ar9300_eep.eepromVersion;
+ return ah->eeprom.ar9300_eep.eepromVersion;
 }

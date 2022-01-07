@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EnumProcesses (int*,int,int*) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*) ; 
- int* HeapReAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*,int) ; 
+
+
+
+typedef int DWORD ;
+
+
+ int EnumProcesses (int*,int,int*) ;
+ int GetProcessHeap () ;
+ int* HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,int*) ;
+ int* HeapReAlloc (int ,int ,int*,int) ;
 
 __attribute__((used)) static DWORD *enumerate_processes(DWORD *list_count)
 {
@@ -25,7 +25,7 @@ __attribute__((used)) static DWORD *enumerate_processes(DWORD *list_count)
 
     pid_list = HeapAlloc(GetProcessHeap(), 0, alloc_bytes);
     if (!pid_list)
-        return NULL;
+        return ((void*)0);
 
     for (;;)
     {
@@ -34,14 +34,14 @@ __attribute__((used)) static DWORD *enumerate_processes(DWORD *list_count)
         if (!EnumProcesses(pid_list, alloc_bytes, &needed_bytes))
         {
             HeapFree(GetProcessHeap(), 0, pid_list);
-            return NULL;
+            return ((void*)0);
         }
 
-        /* EnumProcesses can't signal an insufficient buffer condition, so the
-         * only way to possibly determine whether a larger buffer is required
-         * is to see whether the written number of bytes is the same as the
-         * buffer size. If so, the buffer will be reallocated to twice the
-         * size. */
+
+
+
+
+
         if (alloc_bytes != needed_bytes)
             break;
 
@@ -50,7 +50,7 @@ __attribute__((used)) static DWORD *enumerate_processes(DWORD *list_count)
         if (!realloc_list)
         {
             HeapFree(GetProcessHeap(), 0, pid_list);
-            return NULL;
+            return ((void*)0);
         }
         pid_list = realloc_list;
     }

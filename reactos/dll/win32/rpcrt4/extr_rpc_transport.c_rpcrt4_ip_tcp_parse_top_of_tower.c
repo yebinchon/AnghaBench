@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int count_lhs; unsigned char protid; int count_rhs; int /*<<< orphan*/  port; } ;
-typedef  TYPE_1__ twr_tcp_floor_t ;
-struct TYPE_4__ {int count_lhs; scalar_t__ protid; int count_rhs; int /*<<< orphan*/  ipv4addr; } ;
-typedef  TYPE_2__ twr_ipv4_floor_t ;
-struct in_addr {int /*<<< orphan*/  s_addr; } ;
-typedef  int /*<<< orphan*/  RPC_STATUS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_INET ; 
- scalar_t__ EPM_PROTOCOL_IP ; 
- int /*<<< orphan*/  EPT_S_NOT_REGISTERED ; 
- int /*<<< orphan*/  ERR (char*,int /*<<< orphan*/ ) ; 
- int INET_ADDRSTRLEN ; 
- char* I_RpcAllocate (int) ; 
- int /*<<< orphan*/  I_RpcFree (char*) ; 
- int /*<<< orphan*/  RPC_S_OK ; 
- int /*<<< orphan*/  RPC_S_OUT_OF_RESOURCES ; 
- int /*<<< orphan*/  TRACE (char*,unsigned char const*,int,char**,char**) ; 
- int /*<<< orphan*/  WSAGetLastError () ; 
- int /*<<< orphan*/  inet_ntop (int /*<<< orphan*/ ,struct in_addr*,char*,int) ; 
- int ntohs (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sprintf (char*,char*,int) ; 
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int count_lhs; unsigned char protid; int count_rhs; int port; } ;
+typedef TYPE_1__ twr_tcp_floor_t ;
+struct TYPE_4__ {int count_lhs; scalar_t__ protid; int count_rhs; int ipv4addr; } ;
+typedef TYPE_2__ twr_ipv4_floor_t ;
+struct in_addr {int s_addr; } ;
+typedef int RPC_STATUS ;
+
+
+ int AF_INET ;
+ scalar_t__ EPM_PROTOCOL_IP ;
+ int EPT_S_NOT_REGISTERED ;
+ int ERR (char*,int ) ;
+ int INET_ADDRSTRLEN ;
+ char* I_RpcAllocate (int) ;
+ int I_RpcFree (char*) ;
+ int RPC_S_OK ;
+ int RPC_S_OUT_OF_RESOURCES ;
+ int TRACE (char*,unsigned char const*,int,char**,char**) ;
+ int WSAGetLastError () ;
+ int inet_ntop (int ,struct in_addr*,char*,int) ;
+ int ntohs (int ) ;
+ int sprintf (char*,char*,int) ;
 
 __attribute__((used)) static RPC_STATUS rpcrt4_ip_tcp_parse_top_of_tower(const unsigned char *tower_data,
                                                    size_t tower_size,
@@ -68,7 +68,7 @@ __attribute__((used)) static RPC_STATUS rpcrt4_ip_tcp_parse_top_of_tower(const u
 
     if (endpoint)
     {
-        *endpoint = I_RpcAllocate(6 /* sizeof("65535") + 1 */);
+        *endpoint = I_RpcAllocate(6 );
         if (!*endpoint)
             return RPC_S_OUT_OF_RESOURCES;
         sprintf(*endpoint, "%u", ntohs(tcp_floor->port));
@@ -82,7 +82,7 @@ __attribute__((used)) static RPC_STATUS rpcrt4_ip_tcp_parse_top_of_tower(const u
             if (endpoint)
             {
                 I_RpcFree(*endpoint);
-                *endpoint = NULL;
+                *endpoint = ((void*)0);
             }
             return RPC_S_OUT_OF_RESOURCES;
         }
@@ -91,11 +91,11 @@ __attribute__((used)) static RPC_STATUS rpcrt4_ip_tcp_parse_top_of_tower(const u
         {
             ERR("inet_ntop: %u\n", WSAGetLastError());
             I_RpcFree(*networkaddr);
-            *networkaddr = NULL;
+            *networkaddr = ((void*)0);
             if (endpoint)
             {
                 I_RpcFree(*endpoint);
-                *endpoint = NULL;
+                *endpoint = ((void*)0);
             }
             return EPT_S_NOT_REGISTERED;
         }

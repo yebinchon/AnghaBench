@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  Q68State ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INSN_GET_REG ; 
- int /*<<< orphan*/  INSN_GET_REG0 ; 
- int /*<<< orphan*/  JIT_EMIT_ADD_CYCLES (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  JIT_EMIT_EXG (int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  current_entry ; 
- int op_ill (int /*<<< orphan*/ *,int) ; 
- int reg ; 
- int reg0 ; 
+
+
+
+typedef int uint32_t ;
+typedef int Q68State ;
+
+
+ int INSN_GET_REG ;
+ int INSN_GET_REG0 ;
+ int JIT_EMIT_ADD_CYCLES (int ,int) ;
+ int JIT_EMIT_EXG (int ,int,int) ;
+ int current_entry ;
+ int op_ill (int *,int) ;
+ int reg ;
+ int reg0 ;
 
 __attribute__((used)) static int op_EXG(Q68State *state, uint32_t opcode)
 {

@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  del_gendisk (void*) ; 
- int /*<<< orphan*/  put_disk (void*) ; 
+ int del_gendisk (void*) ;
+ int put_disk (void*) ;
 
 __attribute__((used)) static void nd_blk_release_disk(void *disk)
 {
-	del_gendisk(disk);
-	put_disk(disk);
+ del_gendisk(disk);
+ put_disk(disk);
 }

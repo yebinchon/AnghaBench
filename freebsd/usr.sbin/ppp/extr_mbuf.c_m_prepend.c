@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  size_t u_short ;
-struct mbuf {size_t m_offset; size_t m_len; struct mbuf* m_next; int /*<<< orphan*/  m_type; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MBUF_CTOP (struct mbuf*) ; 
- int /*<<< orphan*/  MB_UNKNOWN ; 
- struct mbuf* m_get (size_t,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (struct mbuf*,void const*,size_t) ; 
+
+
+
+typedef size_t u_short ;
+struct mbuf {size_t m_offset; size_t m_len; struct mbuf* m_next; int m_type; } ;
+
+
+ int MBUF_CTOP (struct mbuf*) ;
+ int MB_UNKNOWN ;
+ struct mbuf* m_get (size_t,int ) ;
+ int memcpy (struct mbuf*,void const*,size_t) ;
 
 struct mbuf *
 m_prepend(struct mbuf *bp, const void *ptr, size_t len, u_short extra)

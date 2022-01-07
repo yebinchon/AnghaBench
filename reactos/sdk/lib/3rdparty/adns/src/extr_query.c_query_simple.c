@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vbuf ;
-typedef  int /*<<< orphan*/  typeinfo ;
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int vbuf ;
+typedef int typeinfo ;
 struct timeval {int dummy; } ;
-typedef  scalar_t__ adns_status ;
-typedef  int /*<<< orphan*/  adns_state ;
-typedef  int adns_queryflags ;
-typedef  TYPE_1__* adns_query ;
-struct TYPE_6__ {int /*<<< orphan*/  vb; } ;
+typedef scalar_t__ adns_status ;
+typedef int adns_state ;
+typedef int adns_queryflags ;
+typedef TYPE_1__* adns_query ;
+struct TYPE_6__ {int vb; } ;
 
-/* Variables and functions */
- scalar_t__ adns__mkquery (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int*,char const*,int,int /*<<< orphan*/  const*,int) ; 
- int /*<<< orphan*/  adns__query_fail (TYPE_1__*,scalar_t__) ; 
- int /*<<< orphan*/  adns__search_next (int /*<<< orphan*/ ,TYPE_1__*,struct timeval) ; 
- int /*<<< orphan*/  adns__vbuf_init (int /*<<< orphan*/ *) ; 
- int adns_qf_search ; 
- scalar_t__ adns_s_querydomaintoolong ; 
- int /*<<< orphan*/  query_submit (int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int,int,struct timeval) ; 
+
+ scalar_t__ adns__mkquery (int ,int *,int*,char const*,int,int const*,int) ;
+ int adns__query_fail (TYPE_1__*,scalar_t__) ;
+ int adns__search_next (int ,TYPE_1__*,struct timeval) ;
+ int adns__vbuf_init (int *) ;
+ int adns_qf_search ;
+ scalar_t__ adns_s_querydomaintoolong ;
+ int query_submit (int ,TYPE_1__*,int const*,int *,int,int,struct timeval) ;
 
 __attribute__((used)) static void query_simple(adns_state ads, adns_query qu,
-			 const char *owner, int ol,
-			 const typeinfo *typei, adns_queryflags flags,
-			 struct timeval now) {
+    const char *owner, int ol,
+    const typeinfo *typei, adns_queryflags flags,
+    struct timeval now) {
   vbuf vb_new;
   int id;
   adns_status stat;

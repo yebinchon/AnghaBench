@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct SiS_Private {int SiS_RVBHCMAX; int SiS_RVBHCFACT; unsigned short SiS_VGAHT; unsigned short SiS_HT; unsigned short SiS_VGAVT; unsigned short SiS_VT; TYPE_4__* SiS_CRT1Table; int /*<<< orphan*/  SiS_UseWideCRT2; TYPE_3__* SiS_EModeIDTable; TYPE_2__* SiS_StandTable; TYPE_1__* SiS_SModeIDTable; } ;
+
+
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct SiS_Private {int SiS_RVBHCMAX; int SiS_RVBHCFACT; unsigned short SiS_VGAHT; unsigned short SiS_HT; unsigned short SiS_VGAVT; unsigned short SiS_VT; TYPE_4__* SiS_CRT1Table; int SiS_UseWideCRT2; TYPE_3__* SiS_EModeIDTable; TYPE_2__* SiS_StandTable; TYPE_1__* SiS_SModeIDTable; } ;
 struct TYPE_8__ {unsigned short* CR; } ;
 struct TYPE_7__ {unsigned short Ext_ModeFlag; } ;
 struct TYPE_6__ {unsigned short* CRTC; } ;
 struct TYPE_5__ {unsigned short St_ModeFlag; } ;
 
-/* Variables and functions */
- unsigned short Charx8Dot ; 
- unsigned short HalfDCLK ; 
- unsigned short SiS_GetModePtr (struct SiS_Private*,unsigned short,unsigned short) ; 
- unsigned short SiS_GetRefCRT1CRTC (struct SiS_Private*,unsigned short,int /*<<< orphan*/ ) ; 
+
+ unsigned short Charx8Dot ;
+ unsigned short HalfDCLK ;
+ unsigned short SiS_GetModePtr (struct SiS_Private*,unsigned short,unsigned short) ;
+ unsigned short SiS_GetRefCRT1CRTC (struct SiS_Private*,unsigned short,int ) ;
 
 __attribute__((used)) static void
 SiS_GetRAMDAC2DATA(struct SiS_Private *SiS_Pr, unsigned short ModeNo, unsigned short ModeIdIndex,
-		unsigned short RefreshRateTableIndex)
+  unsigned short RefreshRateTableIndex)
 {
   unsigned short tempax=0, tempbx=0, index, dotclock;
   unsigned short temp1=0, modeflag=0, tempcx=0;
 
-  SiS_Pr->SiS_RVBHCMAX  = 1;
+  SiS_Pr->SiS_RVBHCMAX = 1;
   SiS_Pr->SiS_RVBHCFACT = 1;
 
   if(ModeNo <= 0x13) {
@@ -60,7 +60,7 @@ SiS_GetRAMDAC2DATA(struct SiS_Private *SiS_Pr, unsigned short ModeNo, unsigned s
      tempcx &= 0x0100;
      tempcx <<= 2;
      tempbx |= tempcx;
-     temp1  = SiS_Pr->SiS_CRT1Table[index].CR[7];
+     temp1 = SiS_Pr->SiS_CRT1Table[index].CR[7];
 
      dotclock = 8;
 

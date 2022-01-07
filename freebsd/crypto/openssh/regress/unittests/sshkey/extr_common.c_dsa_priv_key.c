@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct sshkey {struct sshkey* dsa; } ;
-typedef  int /*<<< orphan*/  BIGNUM ;
+typedef int BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT_PTR_NE (struct sshkey*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DSA_get0_key (struct sshkey*,int /*<<< orphan*/ *,int /*<<< orphan*/  const**) ; 
+
+ int ASSERT_PTR_NE (struct sshkey*,int *) ;
+ int DSA_get0_key (struct sshkey*,int *,int const**) ;
 
 const BIGNUM *
 dsa_priv_key(struct sshkey *k)
 {
-	const BIGNUM *priv_key = NULL;
+ const BIGNUM *priv_key = ((void*)0);
 
-	ASSERT_PTR_NE(k, NULL);
-	ASSERT_PTR_NE(k->dsa, NULL);
-	DSA_get0_key(k->dsa, NULL, &priv_key);
-	return priv_key;
+ ASSERT_PTR_NE(k, ((void*)0));
+ ASSERT_PTR_NE(k->dsa, ((void*)0));
+ DSA_get0_key(k->dsa, ((void*)0), &priv_key);
+ return priv_key;
 }

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mbedtls_ccm_context ;
-typedef  scalar_t__ add_len ;
 
-/* Variables and functions */
- int CCM_DECRYPT ; 
- int CCM_ENCRYPT ; 
- int /*<<< orphan*/  CTR_CRYPT (unsigned char*,unsigned char const*,int) ; 
- int MBEDTLS_ERR_CCM_BAD_INPUT ; 
- int /*<<< orphan*/  UPDATE_CBC_MAC ; 
- int /*<<< orphan*/  memcpy (unsigned char*,unsigned char const*,size_t) ; 
- int /*<<< orphan*/  memset (unsigned char*,int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int mbedtls_ccm_context ;
+typedef scalar_t__ add_len ;
+
+
+ int CCM_DECRYPT ;
+ int CCM_ENCRYPT ;
+ int CTR_CRYPT (unsigned char*,unsigned char const*,int) ;
+ int MBEDTLS_ERR_CCM_BAD_INPUT ;
+ int UPDATE_CBC_MAC ;
+ int memcpy (unsigned char*,unsigned char const*,size_t) ;
+ int memset (unsigned char*,int ,int) ;
 
 __attribute__((used)) static int ccm_auth_crypt( mbedtls_ccm_context *ctx, int mode, size_t length,
                            const unsigned char *iv, size_t iv_len,
@@ -38,15 +38,15 @@ __attribute__((used)) static int ccm_auth_crypt( mbedtls_ccm_context *ctx, int m
     const unsigned char *src;
     unsigned char *dst;
 
-    /*
-     * Check length requirements: SP800-38C A.1
-     * Additional requirement: a < 2^16 - 2^8 to simplify the code.
-     * 'length' checked later (when writing it to the first block)
-     */
+
+
+
+
+
     if( tag_len < 4 || tag_len > 16 || tag_len % 2 != 0 )
         return( MBEDTLS_ERR_CCM_BAD_INPUT );
 
-    /* Also implies q is within bounds */
+
     if( iv_len < 7 || iv_len > 13 )
         return( MBEDTLS_ERR_CCM_BAD_INPUT );
 
@@ -54,19 +54,6 @@ __attribute__((used)) static int ccm_auth_crypt( mbedtls_ccm_context *ctx, int m
         return( MBEDTLS_ERR_CCM_BAD_INPUT );
 
     q = 16 - 1 - (unsigned char) iv_len;
-
-    /*
-     * First block B_0:
-     * 0        .. 0        flags
-     * 1        .. iv_len   nonce (aka iv)
-     * iv_len+1 .. 15       length
-     *
-     * With flags as (bits):
-     * 7        0
-     * 6        add present?
-     * 5 .. 3   (t - 2) / 2
-     * 2 .. 0   q - 1
-     */
     b[0] = 0;
     b[0] |= ( add_len > 0 ) << 6;
     b[0] |= ( ( tag_len - 2 ) / 2 ) << 3;
@@ -81,14 +68,14 @@ __attribute__((used)) static int ccm_auth_crypt( mbedtls_ccm_context *ctx, int m
         return( MBEDTLS_ERR_CCM_BAD_INPUT );
 
 
-    /* Start CBC-MAC with first block */
+
     memset( y, 0, 16 );
     UPDATE_CBC_MAC;
 
-    /*
-     * If there is additional data, update CBC-MAC with
-     * add_len, add, 0 (padding to a block boundary)
-     */
+
+
+
+
     if( add_len > 0 )
     {
         size_t use_len;
@@ -97,7 +84,7 @@ __attribute__((used)) static int ccm_auth_crypt( mbedtls_ccm_context *ctx, int m
 
         memset( b, 0, 16 );
         b[0] = (unsigned char)( ( add_len >> 8 ) & 0xFF );
-        b[1] = (unsigned char)( ( add_len      ) & 0xFF );
+        b[1] = (unsigned char)( ( add_len ) & 0xFF );
 
         use_len = len_left < 16 - 2 ? len_left : 16 - 2;
         memcpy( b + 2, src, use_len );
@@ -118,28 +105,17 @@ __attribute__((used)) static int ccm_auth_crypt( mbedtls_ccm_context *ctx, int m
             src += use_len;
         }
     }
-
-    /*
-     * Prepare counter block for encryption:
-     * 0        .. 0        flags
-     * 1        .. iv_len   nonce (aka iv)
-     * iv_len+1 .. 15       counter (initially 1)
-     *
-     * With flags as (bits):
-     * 7 .. 3   0
-     * 2 .. 0   q - 1
-     */
     ctr[0] = q - 1;
     memcpy( ctr + 1, iv, iv_len );
     memset( ctr + 1 + iv_len, 0, q );
     ctr[15] = 1;
 
-    /*
-     * Authenticate and {en,de}crypt the message.
-     *
-     * The only difference between encryption and decryption is
-     * the respective order of authentication and {en,de}cryption.
-     */
+
+
+
+
+
+
     len_left = length;
     src = input;
     dst = output;
@@ -168,18 +144,18 @@ __attribute__((used)) static int ccm_auth_crypt( mbedtls_ccm_context *ctx, int m
         src += use_len;
         len_left -= use_len;
 
-        /*
-         * Increment counter.
-         * No need to check for overflow thanks to the length check above.
-         */
+
+
+
+
         for( i = 0; i < q; i++ )
             if( ++ctr[15-i] != 0 )
                 break;
     }
 
-    /*
-     * Authentication: reset counter and crypt/mask internal tag
-     */
+
+
+
     for( i = 0; i < q; i++ )
         ctr[15-i] = 0;
 

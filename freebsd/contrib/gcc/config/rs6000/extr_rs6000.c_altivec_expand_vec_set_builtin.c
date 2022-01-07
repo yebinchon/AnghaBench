@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
-typedef  int /*<<< orphan*/  rtx ;
-typedef  enum machine_mode { ____Placeholder_machine_mode } machine_mode ;
 
-/* Variables and functions */
- scalar_t__ GET_MODE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NULL_RTX ; 
- int /*<<< orphan*/  TREE_CHAIN (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TREE_TYPE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TREE_VALUE (int /*<<< orphan*/ ) ; 
- int TYPE_MODE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  VECTOR_MODE_P (int) ; 
- scalar_t__ VOIDmode ; 
- int /*<<< orphan*/  convert_modes (int,scalar_t__,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  expand_expr (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  force_reg (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gcc_assert (int /*<<< orphan*/ ) ; 
- int get_element_number (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rs6000_expand_vector_set (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int tree ;
+typedef int rtx ;
+typedef enum machine_mode { ____Placeholder_machine_mode } machine_mode ;
+
+
+ scalar_t__ GET_MODE (int ) ;
+ int NULL_RTX ;
+ int TREE_CHAIN (int ) ;
+ int TREE_TYPE (int ) ;
+ int TREE_VALUE (int ) ;
+ int TYPE_MODE (int ) ;
+ int VECTOR_MODE_P (int) ;
+ scalar_t__ VOIDmode ;
+ int convert_modes (int,scalar_t__,int ,int) ;
+ int expand_expr (int ,int ,int,int ) ;
+ int force_reg (int,int ) ;
+ int gcc_assert (int ) ;
+ int get_element_number (int ,int ) ;
+ int rs6000_expand_vector_set (int ,int ,int) ;
 
 __attribute__((used)) static rtx
 altivec_expand_vec_set_builtin (tree arglist)
@@ -51,7 +51,7 @@ altivec_expand_vec_set_builtin (tree arglist)
   elt = get_element_number (TREE_TYPE (arg0), arg2);
 
   if (GET_MODE (op1) != mode1 && GET_MODE (op1) != VOIDmode)
-    op1 = convert_modes (mode1, GET_MODE (op1), op1, true);
+    op1 = convert_modes (mode1, GET_MODE (op1), op1, 1);
 
   op0 = force_reg (tmode, op0);
   op1 = force_reg (mode1, op1);

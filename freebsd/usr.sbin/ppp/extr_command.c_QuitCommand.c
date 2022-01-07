@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct cmdargs {size_t argc; size_t argn; TYPE_1__* prompt; int /*<<< orphan*/ * argv; } ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct cmdargs {size_t argc; size_t argn; TYPE_1__* prompt; int * argv; } ;
 struct TYPE_3__ {int auth; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Cleanup () ; 
- int LOCAL_AUTH ; 
- int /*<<< orphan*/  prompt_Destroy (TYPE_1__*,int) ; 
- scalar_t__ prompt_IsController (TYPE_1__*) ; 
- int /*<<< orphan*/  strcasecmp (int /*<<< orphan*/ ,char*) ; 
+
+ int Cleanup () ;
+ int LOCAL_AUTH ;
+ int prompt_Destroy (TYPE_1__*,int) ;
+ scalar_t__ prompt_IsController (TYPE_1__*) ;
+ int strcasecmp (int ,char*) ;
 
 __attribute__((used)) static int
 QuitCommand(struct cmdargs const *arg)

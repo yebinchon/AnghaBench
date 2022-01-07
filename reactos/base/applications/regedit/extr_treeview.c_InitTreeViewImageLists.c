@@ -1,63 +1,63 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  HWND ;
-typedef  int /*<<< orphan*/ * HIMAGELIST ;
-typedef  scalar_t__ HICON ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DestroyIcon (scalar_t__) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GetSystemMetrics (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IDI_CLOSED_FILE ; 
- int /*<<< orphan*/  IDI_OPEN_FILE ; 
- int /*<<< orphan*/  IDI_ROOT ; 
- int ILC_COLOR32 ; 
- int ILC_MASK ; 
- int /*<<< orphan*/  IMAGE_ICON ; 
- void* ImageList_AddIcon (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/ * ImageList_Create (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  ImageList_Destroy (int /*<<< orphan*/ *) ; 
- scalar_t__ ImageList_GetImageCount (int /*<<< orphan*/ *) ; 
- void* Image_Closed ; 
- void* Image_Open ; 
- void* Image_Root ; 
- scalar_t__ LoadImageW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MAKEINTRESOURCEW (int /*<<< orphan*/ ) ; 
- scalar_t__ NUM_ICONS ; 
- int /*<<< orphan*/  SM_CXSMICON ; 
- int /*<<< orphan*/  SM_CYSMICON ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  TVSIL_NORMAL ; 
- int /*<<< orphan*/  TreeView_SetImageList (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hInst ; 
+
+
+
+typedef int HWND ;
+typedef int * HIMAGELIST ;
+typedef scalar_t__ HICON ;
+typedef int BOOL ;
+
+
+ int DestroyIcon (scalar_t__) ;
+ int FALSE ;
+ int GetSystemMetrics (int ) ;
+ int IDI_CLOSED_FILE ;
+ int IDI_OPEN_FILE ;
+ int IDI_ROOT ;
+ int ILC_COLOR32 ;
+ int ILC_MASK ;
+ int IMAGE_ICON ;
+ void* ImageList_AddIcon (int *,scalar_t__) ;
+ int * ImageList_Create (int ,int ,int,int ,scalar_t__) ;
+ int ImageList_Destroy (int *) ;
+ scalar_t__ ImageList_GetImageCount (int *) ;
+ void* Image_Closed ;
+ void* Image_Open ;
+ void* Image_Root ;
+ scalar_t__ LoadImageW (int ,int ,int ,int ,int ,int ) ;
+ int MAKEINTRESOURCEW (int ) ;
+ scalar_t__ NUM_ICONS ;
+ int SM_CXSMICON ;
+ int SM_CYSMICON ;
+ int TRUE ;
+ int TVSIL_NORMAL ;
+ int TreeView_SetImageList (int ,int *,int ) ;
+ int hInst ;
 
 __attribute__((used)) static BOOL InitTreeViewImageLists(HWND hwndTV)
 {
-    HIMAGELIST himl;  /* handle to image list  */
-    HICON hico;       /* handle to icon  */
+    HIMAGELIST himl;
+    HICON hico;
 
-    /* Create the image list.  */
+
     if ((himl = ImageList_Create(GetSystemMetrics(SM_CXSMICON),
                                  GetSystemMetrics(SM_CYSMICON),
                                  ILC_MASK | ILC_COLOR32,
                                  0,
-                                 NUM_ICONS)) == NULL)
+                                 NUM_ICONS)) == ((void*)0))
     {
         return FALSE;
     }
 
-    /* Add the open file, closed file, and document bitmaps.  */
+
     hico = LoadImageW(hInst,
                       MAKEINTRESOURCEW(IDI_OPEN_FILE),
                       IMAGE_ICON,
@@ -94,14 +94,14 @@ __attribute__((used)) static BOOL InitTreeViewImageLists(HWND hwndTV)
         DestroyIcon(hico);
     }
 
-    /* Fail if not all of the images were added.  */
+
     if (ImageList_GetImageCount(himl) < NUM_ICONS)
     {
         ImageList_Destroy(himl);
         return FALSE;
     }
 
-    /* Associate the image list with the tree view control.  */
+
     (void)TreeView_SetImageList(hwndTV, himl, TVSIL_NORMAL);
 
     return TRUE;

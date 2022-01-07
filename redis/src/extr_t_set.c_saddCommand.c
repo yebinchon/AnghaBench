@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_24__   TYPE_8__ ;
-typedef  struct TYPE_23__   TYPE_5__ ;
-typedef  struct TYPE_22__   TYPE_4__ ;
-typedef  struct TYPE_21__   TYPE_3__ ;
-typedef  struct TYPE_20__   TYPE_2__ ;
-typedef  struct TYPE_19__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_24__ TYPE_8__ ;
+typedef struct TYPE_23__ TYPE_5__ ;
+typedef struct TYPE_22__ TYPE_4__ ;
+typedef struct TYPE_21__ TYPE_3__ ;
+typedef struct TYPE_20__ TYPE_2__ ;
+typedef struct TYPE_19__ TYPE_1__ ;
+
+
 struct TYPE_19__ {scalar_t__ type; } ;
-typedef  TYPE_1__ robj ;
+typedef TYPE_1__ robj ;
 struct TYPE_20__ {int argc; TYPE_3__* db; TYPE_4__** argv; } ;
-typedef  TYPE_2__ client ;
+typedef TYPE_2__ client ;
 struct TYPE_24__ {int dirty; } ;
-struct TYPE_23__ {int /*<<< orphan*/  wrongtypeerr; } ;
-struct TYPE_22__ {int /*<<< orphan*/  ptr; } ;
-struct TYPE_21__ {int /*<<< orphan*/  id; } ;
+struct TYPE_23__ {int wrongtypeerr; } ;
+struct TYPE_22__ {int ptr; } ;
+struct TYPE_21__ {int id; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NOTIFY_SET ; 
- scalar_t__ OBJ_SET ; 
- int /*<<< orphan*/  addReply (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  addReplyLongLong (TYPE_2__*,int) ; 
- int /*<<< orphan*/  dbAdd (TYPE_3__*,TYPE_4__*,TYPE_1__*) ; 
- TYPE_1__* lookupKeyWrite (TYPE_3__*,TYPE_4__*) ; 
- int /*<<< orphan*/  notifyKeyspaceEvent (int /*<<< orphan*/ ,char*,TYPE_4__*,int /*<<< orphan*/ ) ; 
- TYPE_8__ server ; 
- scalar_t__ setTypeAdd (TYPE_1__*,int /*<<< orphan*/ ) ; 
- TYPE_1__* setTypeCreate (int /*<<< orphan*/ ) ; 
- TYPE_5__ shared ; 
- int /*<<< orphan*/  signalModifiedKey (TYPE_3__*,TYPE_4__*) ; 
+
+ int NOTIFY_SET ;
+ scalar_t__ OBJ_SET ;
+ int addReply (TYPE_2__*,int ) ;
+ int addReplyLongLong (TYPE_2__*,int) ;
+ int dbAdd (TYPE_3__*,TYPE_4__*,TYPE_1__*) ;
+ TYPE_1__* lookupKeyWrite (TYPE_3__*,TYPE_4__*) ;
+ int notifyKeyspaceEvent (int ,char*,TYPE_4__*,int ) ;
+ TYPE_8__ server ;
+ scalar_t__ setTypeAdd (TYPE_1__*,int ) ;
+ TYPE_1__* setTypeCreate (int ) ;
+ TYPE_5__ shared ;
+ int signalModifiedKey (TYPE_3__*,TYPE_4__*) ;
 
 void saddCommand(client *c) {
     robj *set;
     int j, added = 0;
 
     set = lookupKeyWrite(c->db,c->argv[1]);
-    if (set == NULL) {
+    if (set == ((void*)0)) {
         set = setTypeCreate(c->argv[2]->ptr);
         dbAdd(c->db,c->argv[1],set);
     } else {

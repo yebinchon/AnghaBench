@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {struct debug_indirect_type* kindirect; } ;
 struct debug_type {TYPE_1__ u; } ;
 struct debug_indirect_type {char const* tag; struct debug_type** slot; } ;
 struct debug_handle {int dummy; } ;
-typedef  struct debug_type* debug_type ;
+typedef struct debug_type* debug_type ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEBUG_KIND_INDIRECT ; 
- struct debug_type* DEBUG_TYPE_NULL ; 
- struct debug_type* debug_make_type (struct debug_handle*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (struct debug_indirect_type*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ xmalloc (int) ; 
+
+ int DEBUG_KIND_INDIRECT ;
+ struct debug_type* DEBUG_TYPE_NULL ;
+ struct debug_type* debug_make_type (struct debug_handle*,int ,int ) ;
+ int memset (struct debug_indirect_type*,int ,int) ;
+ scalar_t__ xmalloc (int) ;
 
 debug_type
 debug_make_indirect_type (void *handle, debug_type *slot, const char *tag)
@@ -32,7 +32,7 @@ debug_make_indirect_type (void *handle, debug_type *slot, const char *tag)
   struct debug_indirect_type *i;
 
   t = debug_make_type (info, DEBUG_KIND_INDIRECT, 0);
-  if (t == NULL)
+  if (t == ((void*)0))
     return DEBUG_TYPE_NULL;
 
   i = (struct debug_indirect_type *) xmalloc (sizeof *i);

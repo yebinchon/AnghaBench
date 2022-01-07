@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uint64_t ;
+
+
+
+
+typedef scalar_t__ uint64_t ;
 struct SNMP {scalar_t__ version; scalar_t__ community_length; unsigned char const* community; int pdu_tag; void* error_index; void* error_status; void* request_id; } ;
 struct BannerOutput {int dummy; } ;
 
-/* Variables and functions */
- void* asn1_integer (unsigned char const*,scalar_t__,scalar_t__*) ; 
- scalar_t__ asn1_length (unsigned char const*,scalar_t__,scalar_t__*) ; 
- int asn1_tag (unsigned char const*,scalar_t__,scalar_t__*) ; 
- int /*<<< orphan*/  memset (struct SNMP**,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  snmp_banner (unsigned char const*,size_t,scalar_t__,unsigned char const*,size_t,struct BannerOutput*) ; 
+
+ void* asn1_integer (unsigned char const*,scalar_t__,scalar_t__*) ;
+ scalar_t__ asn1_length (unsigned char const*,scalar_t__,scalar_t__*) ;
+ int asn1_tag (unsigned char const*,scalar_t__,scalar_t__*) ;
+ int memset (struct SNMP**,int ,int) ;
+ int snmp_banner (unsigned char const*,size_t,scalar_t__,unsigned char const*,size_t,struct BannerOutput*) ;
 
 __attribute__((used)) static void
 snmp_parse(const unsigned char *px, uint64_t length,
@@ -32,28 +32,28 @@ snmp_parse(const unsigned char *px, uint64_t length,
 
     memset(&snmp, 0, sizeof(*snmp));
 
-    /* tag */
+
     if (asn1_tag(px, length, &offset) != 0x30)
         return;
 
-    /* length */
+
     outer_length = asn1_length(px, length, &offset);
     if (length > outer_length + offset)
         length = outer_length + offset;
 
-    /* Version */
+
     snmp->version = asn1_integer(px, length, &offset);
     if (snmp->version != 0)
         return;
 
-    /* Community */
+
     if (asn1_tag(px, length, &offset) != 0x04)
         return;
     snmp->community_length = asn1_length(px, length, &offset);
     snmp->community = px+offset;
     offset += snmp->community_length;
 
-    /* PDU */
+
     snmp->pdu_tag = asn1_tag(px, length, &offset);
     if (snmp->pdu_tag < 0xA0 || 0xA5 < snmp->pdu_tag)
         return;
@@ -61,13 +61,13 @@ snmp_parse(const unsigned char *px, uint64_t length,
     if (length > outer_length + offset)
         length = outer_length + offset;
 
-    /* Request ID */
+
     snmp->request_id = asn1_integer(px, length, &offset);
     *request_id = (unsigned)snmp->request_id;
     snmp->error_status = asn1_integer(px, length, &offset);
     snmp->error_index = asn1_integer(px, length, &offset);
 
-    /* Varbind List */
+
     if (asn1_tag(px, length, &offset) != 0x30)
         return;
     outer_length = asn1_length(px, length, &offset);
@@ -75,7 +75,7 @@ snmp_parse(const unsigned char *px, uint64_t length,
         length = outer_length + offset;
 
 
-    /* Var-bind list */
+
     while (offset < length) {
         uint64_t varbind_length;
         uint64_t varbind_end;
@@ -90,7 +90,7 @@ snmp_parse(const unsigned char *px, uint64_t length,
             return;
         }
 
-        /* OID */
+
         if (asn1_tag(px,length,&offset) != 6)
             return;
         else {
@@ -113,7 +113,7 @@ snmp_parse(const unsigned char *px, uint64_t length,
                 return;
 
             if (var_tag == 5)
-                continue; /* null */
+                continue;
 
             snmp_banner(oid, (size_t)oid_length, var_tag, var, (size_t)var_length, banout);
         }

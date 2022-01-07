@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  szValue ;
-typedef  int /*<<< orphan*/  szOptions ;
-typedef  int /*<<< orphan*/  szName ;
-typedef  int /*<<< orphan*/  WPARAM ;
-typedef  int /*<<< orphan*/  WCHAR ;
-struct TYPE_3__ {int /*<<< orphan*/ * szOptions; int /*<<< orphan*/ * szSectionName; int /*<<< orphan*/ * szBootPath; scalar_t__ BootType; } ;
-typedef  TYPE_1__* PBOOTRECORD ;
-typedef  scalar_t__ LRESULT ;
-typedef  int /*<<< orphan*/  LPARAM ;
-typedef  int /*<<< orphan*/  INT ;
-typedef  int /*<<< orphan*/  INFCONTEXT ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  int /*<<< orphan*/  HINF ;
-typedef  scalar_t__ DWORD ;
-typedef  int /*<<< orphan*/  BOOTRECORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BM_SETCHECK ; 
- scalar_t__ BST_CHECKED ; 
- int /*<<< orphan*/  CB_ADDSTRING ; 
- scalar_t__ CB_ERR ; 
- int /*<<< orphan*/  CB_FINDSTRING ; 
- int /*<<< orphan*/  CB_SETCURSEL ; 
- int /*<<< orphan*/  CB_SETITEMDATA ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HEAP_ZERO_MEMORY ; 
- scalar_t__ HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  IDC_STRECLIST ; 
- int /*<<< orphan*/  IDC_STRECOSCOMBO ; 
- int MAX_PATH ; 
- scalar_t__ SendDlgItemMessageW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetTimeout (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  SetupFindFirstLineW (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ SetupFindNextLine (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SetupGetStringFieldW (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int,scalar_t__*) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  _wcsnicmp (int /*<<< orphan*/ *,char*,int) ; 
- scalar_t__ _wtoi (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  wcscmp (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  wcscpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int szValue ;
+typedef int szOptions ;
+typedef int szName ;
+typedef int WPARAM ;
+typedef int WCHAR ;
+struct TYPE_3__ {int * szOptions; int * szSectionName; int * szBootPath; scalar_t__ BootType; } ;
+typedef TYPE_1__* PBOOTRECORD ;
+typedef scalar_t__ LRESULT ;
+typedef int LPARAM ;
+typedef int INT ;
+typedef int INFCONTEXT ;
+typedef int HWND ;
+typedef int HINF ;
+typedef scalar_t__ DWORD ;
+typedef int BOOTRECORD ;
+
+
+ int BM_SETCHECK ;
+ scalar_t__ BST_CHECKED ;
+ int CB_ADDSTRING ;
+ scalar_t__ CB_ERR ;
+ int CB_FINDSTRING ;
+ int CB_SETCURSEL ;
+ int CB_SETITEMDATA ;
+ int FALSE ;
+ int GetProcessHeap () ;
+ int HEAP_ZERO_MEMORY ;
+ scalar_t__ HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,TYPE_1__*) ;
+ int IDC_STRECLIST ;
+ int IDC_STRECOSCOMBO ;
+ int MAX_PATH ;
+ scalar_t__ SendDlgItemMessageW (int ,int ,int ,int ,int ) ;
+ int SetTimeout (int ,scalar_t__) ;
+ int SetupFindFirstLineW (int ,char*,int *,int *) ;
+ scalar_t__ SetupFindNextLine (int *,int *) ;
+ int SetupGetStringFieldW (int *,int,int *,int,scalar_t__*) ;
+ int TRUE ;
+ int _wcsnicmp (int *,char*,int) ;
+ scalar_t__ _wtoi (int *) ;
+ int wcscmp (int *,int *) ;
+ int wcscpy (int *,int *) ;
 
 __attribute__((used)) static INT
 LoadBootSettings(HINF hInf, HWND hwndDlg)
@@ -69,7 +69,7 @@ LoadBootSettings(HINF hInf, HWND hwndDlg)
 
     if(!SetupFindFirstLineW(hInf,
                            L"boot loader",
-                           NULL,
+                           ((void*)0),
                            &InfContext))
     {
         return FALSE;
@@ -110,10 +110,10 @@ LoadBootSettings(HINF hInf, HWND hwndDlg)
 
     if (!SetupFindFirstLineW(hInf,
                             L"operating systems",
-                            NULL,
+                            ((void*)0),
                             &InfContext))
     {
-        /* Failed to find operating systems section */
+
         return FALSE;
     }
 
@@ -153,7 +153,7 @@ LoadBootSettings(HINF hInf, HWND hwndDlg)
 
             if (!wcscmp(szName, szDefaultOS))
             {
-                /* ms boot ini stores the path not the friendly name */
+
                 wcscpy(szDefaultOS, szValue);
             }
 
@@ -171,11 +171,11 @@ LoadBootSettings(HINF hInf, HWND hwndDlg)
     }
     while (SetupFindNextLine(&InfContext, &InfContext));
 
-    /* Find default os in list */
+
     lResult = SendDlgItemMessageW(hwndDlg, IDC_STRECOSCOMBO, CB_FINDSTRING, (WPARAM)0, (LPARAM)szDefaultOS);
     if (lResult != CB_ERR)
     {
-       /* Set cur sel */
+
        SendDlgItemMessageW(hwndDlg, IDC_STRECOSCOMBO, CB_SETCURSEL, (WPARAM)lResult, (LPARAM)0);
     }
 

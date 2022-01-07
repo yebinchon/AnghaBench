@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  zLine ;
-typedef  int /*<<< orphan*/  SHA3Context ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DigestToBase16 (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  SHA3Final (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SHA3Init (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  SHA3Update (int /*<<< orphan*/ *,unsigned char*,unsigned int) ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- scalar_t__ fgets (char*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char const*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char const*) ; 
- int /*<<< orphan*/  memcpy (char*,char*,int) ; 
- char* nextToken (char*) ; 
- int /*<<< orphan*/  printf (char*,char*,...) ; 
- int sha1sum_file (char*,char*) ; 
- int sha3sum_file (char*,int,char*) ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ strcmp (char const*,char*) ; 
- int strlen (char*) ; 
- scalar_t__ strncmp (char*,char*,int) ; 
- int /*<<< orphan*/  usage (char*) ; 
+
+
+
+typedef int zLine ;
+typedef int SHA3Context ;
+typedef int FILE ;
+
+
+ int DigestToBase16 (int ,char*,int) ;
+ int SHA3Final (int *) ;
+ int SHA3Init (int *,int) ;
+ int SHA3Update (int *,unsigned char*,unsigned int) ;
+ int exit (int) ;
+ int fclose (int *) ;
+ scalar_t__ fgets (char*,int,int *) ;
+ int * fopen (char const*,char*) ;
+ int fprintf (int ,char*,char const*) ;
+ int memcpy (char*,char*,int) ;
+ char* nextToken (char*) ;
+ int printf (char*,char*,...) ;
+ int sha1sum_file (char*,char*) ;
+ int sha3sum_file (char*,int,char*) ;
+ int stderr ;
+ scalar_t__ strcmp (char const*,char*) ;
+ int strlen (char*) ;
+ scalar_t__ strncmp (char*,char*,int) ;
+ int usage (char*) ;
 
 int main(int argc, char **argv){
   const char *zManifest = 0;

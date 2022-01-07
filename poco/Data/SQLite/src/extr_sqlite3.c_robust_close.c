@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  zPath; } ;
-typedef  TYPE_1__ unixFile ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SQLITE_IOERR_CLOSE ; 
- scalar_t__ osClose (int) ; 
- int /*<<< orphan*/  unixLogErrorAtLine (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int zPath; } ;
+typedef TYPE_1__ unixFile ;
+
+
+ int SQLITE_IOERR_CLOSE ;
+ scalar_t__ osClose (int) ;
+ int unixLogErrorAtLine (int ,char*,int ,int) ;
 
 __attribute__((used)) static void robust_close(unixFile *pFile, int h, int lineno){
   if( osClose(h) ){

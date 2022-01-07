@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  (* context_reset ) (int /*<<< orphan*/ ,int) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CMD_EVENT_CORE_INFO_INIT ; 
- int /*<<< orphan*/  CMD_EVENT_LOAD_CORE_PERSIST ; 
- int /*<<< orphan*/  command_event (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- TYPE_1__* menu_driver_ctx ; 
- scalar_t__ menu_driver_data ; 
- scalar_t__ menu_driver_init_internal (int) ; 
- int /*<<< orphan*/  menu_userdata ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int (* context_reset ) (int ,int) ;} ;
+
+
+ int CMD_EVENT_CORE_INFO_INIT ;
+ int CMD_EVENT_LOAD_CORE_PERSIST ;
+ int command_event (int ,int *) ;
+ TYPE_1__* menu_driver_ctx ;
+ scalar_t__ menu_driver_data ;
+ scalar_t__ menu_driver_init_internal (int) ;
+ int menu_userdata ;
+ int stub1 (int ,int) ;
 
 bool menu_driver_init(bool video_is_threaded)
 {
-   command_event(CMD_EVENT_CORE_INFO_INIT, NULL);
-   command_event(CMD_EVENT_LOAD_CORE_PERSIST, NULL);
+   command_event(CMD_EVENT_CORE_INFO_INIT, ((void*)0));
+   command_event(CMD_EVENT_LOAD_CORE_PERSIST, ((void*)0));
 
-   if (  menu_driver_data || 
+   if ( menu_driver_data ||
          menu_driver_init_internal(video_is_threaded))
    {
       if (menu_driver_ctx && menu_driver_ctx->context_reset)
       {
          menu_driver_ctx->context_reset(menu_userdata, video_is_threaded);
-         return true;
+         return 1;
       }
    }
 
-   return false;
+   return 0;
 }

@@ -1,53 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int svn_wc_conflict_choice_t ;
-typedef  int /*<<< orphan*/  svn_wc__db_t ;
-typedef  int /*<<< orphan*/  svn_skel_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_diff_conflict_display_style_t ;
-typedef  int /*<<< orphan*/  svn_cancel_func_t ;
-typedef  scalar_t__ svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_array_header_t ;
 
-/* Variables and functions */
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_ASSERT (int) ; 
- int /*<<< orphan*/  SVN_ERR_WC_CONFLICT_RESOLVER_FAILURE ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  merge_showing_conflicts (char const**,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,char const*,char const*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  remove_artifact_file_if_exists (int /*<<< orphan*/ **,scalar_t__*,int /*<<< orphan*/ *,char const*,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  save_merge_result (int /*<<< orphan*/ **,int /*<<< orphan*/ *,char const*,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_diff_conflict_display_latest ; 
- int /*<<< orphan*/  svn_diff_conflict_display_modified ; 
- int /*<<< orphan*/  svn_dirent_local_style (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_error_createf (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_io_file_del_none ; 
- int /*<<< orphan*/  svn_wc__conflict_read_text_conflict (char const**,char const**,char const**,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__wq_build_file_install (int /*<<< orphan*/ **,int /*<<< orphan*/ *,char const*,char const*,scalar_t__,scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__wq_build_file_remove (int /*<<< orphan*/ **,int /*<<< orphan*/ *,char const*,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_wc__wq_merge (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
-#define  svn_wc_conflict_choose_base 134 
-#define  svn_wc_conflict_choose_merged 133 
-#define  svn_wc_conflict_choose_mine_conflict 132 
-#define  svn_wc_conflict_choose_mine_full 131 
-#define  svn_wc_conflict_choose_postpone 130 
-#define  svn_wc_conflict_choose_theirs_conflict 129 
-#define  svn_wc_conflict_choose_theirs_full 128 
 
+
+
+typedef int svn_wc_conflict_choice_t ;
+typedef int svn_wc__db_t ;
+typedef int svn_skel_t ;
+typedef int svn_error_t ;
+typedef int svn_diff_conflict_display_style_t ;
+typedef int svn_cancel_func_t ;
+typedef scalar_t__ svn_boolean_t ;
+typedef int apr_pool_t ;
+typedef int apr_array_header_t ;
+
+
+ scalar_t__ FALSE ;
+ int SVN_ERR (int ) ;
+ int SVN_ERR_ASSERT (int) ;
+ int SVN_ERR_WC_CONFLICT_RESOLVER_FAILURE ;
+ int * SVN_NO_ERROR ;
+ scalar_t__ TRUE ;
+ int _ (char*) ;
+ int merge_showing_conflicts (char const**,int *,char const*,int ,int const*,char const*,char const*,char const*,int ,int ,void*,int *,int *) ;
+ int remove_artifact_file_if_exists (int **,scalar_t__*,int *,char const*,char const*,int *,int *) ;
+ int save_merge_result (int **,int *,char const*,char const*,int *,int *) ;
+ int svn_diff_conflict_display_latest ;
+ int svn_diff_conflict_display_modified ;
+ int svn_dirent_local_style (char const*,int *) ;
+ int * svn_error_createf (int ,int *,int ,int ) ;
+ int svn_io_file_del_none ;
+ int svn_wc__conflict_read_text_conflict (char const**,char const**,char const**,int *,char const*,int const*,int *,int *) ;
+ int svn_wc__wq_build_file_install (int **,int *,char const*,char const*,scalar_t__,scalar_t__,int *,int *) ;
+ int svn_wc__wq_build_file_remove (int **,int *,char const*,char const*,int *,int *) ;
+ int * svn_wc__wq_merge (int *,int *,int *) ;
 __attribute__((used)) static svn_error_t *
 build_text_conflict_resolve_items(svn_skel_t **work_items,
                                   svn_boolean_t *found_artifact,
@@ -67,10 +59,10 @@ build_text_conflict_resolve_items(svn_skel_t **work_items,
   const char *their_old_abspath;
   const char *their_abspath;
   svn_skel_t *work_item;
-  const char *install_from_abspath = NULL;
+  const char *install_from_abspath = ((void*)0);
   svn_boolean_t remove_source = FALSE;
 
-  *work_items = NULL;
+  *work_items = ((void*)0);
 
   if (found_artifact)
     *found_artifact = FALSE;
@@ -90,45 +82,45 @@ build_text_conflict_resolve_items(svn_skel_t **work_items,
                                 : local_abspath,
                               result_pool, scratch_pool));
 
-  if (choice == svn_wc_conflict_choose_postpone)
+  if (choice == 130)
     return SVN_NO_ERROR;
 
   switch (choice)
     {
-      /* If the callback wants to use one of the fulltexts
-         to resolve the conflict, so be it.*/
-      case svn_wc_conflict_choose_base:
+
+
+      case 134:
         {
           install_from_abspath = their_old_abspath;
           break;
         }
-      case svn_wc_conflict_choose_theirs_full:
+      case 128:
         {
           install_from_abspath = their_abspath;
           break;
         }
-      case svn_wc_conflict_choose_mine_full:
+      case 131:
         {
-          /* In case of selecting to resolve the conflict choosing the full
-             own file, allow the text conflict resolution to just take the
-             existing local file if no merged file was present (case: binary
-             file conflicts do not generate a locally merge file).
-          */
+
+
+
+
+
           install_from_abspath = mine_abspath
                                    ? mine_abspath
                                    : local_abspath;
           break;
         }
-      case svn_wc_conflict_choose_theirs_conflict:
-      case svn_wc_conflict_choose_mine_conflict:
+      case 129:
+      case 132:
         {
           svn_diff_conflict_display_style_t style
-            = choice == svn_wc_conflict_choose_theirs_conflict
+            = choice == 129
                 ? svn_diff_conflict_display_latest
                 : svn_diff_conflict_display_modified;
 
-          if (mine_abspath == NULL)
-            return svn_error_createf(SVN_ERR_WC_CONFLICT_RESOLVER_FAILURE, NULL,
+          if (mine_abspath == ((void*)0))
+            return svn_error_createf(SVN_ERR_WC_CONFLICT_RESOLVER_FAILURE, ((void*)0),
                                      _("Conflict on '%s' cannot be resolved to "
                                        "'theirs-conflict' or 'mine-conflict' "
                                        "because a merged version of the file "
@@ -142,7 +134,7 @@ build_text_conflict_resolve_items(svn_skel_t **work_items,
                                           their_old_abspath,
                                           mine_abspath,
                                           their_abspath,
-                                          /* ### why not same as other caller? */
+
                                           svn_io_file_del_none,
                                           cancel_func, cancel_baton,
                                           scratch_pool, scratch_pool));
@@ -150,43 +142,43 @@ build_text_conflict_resolve_items(svn_skel_t **work_items,
           break;
         }
 
-        /* For the case of 3-way file merging, we don't
-           really distinguish between these return values;
-           if the callback claims to have "generally
-           resolved" the situation, we still interpret
-           that as "OK, we'll assume the merged version is
-           good to use". */
-      case svn_wc_conflict_choose_merged:
+
+
+
+
+
+
+      case 133:
         {
           install_from_abspath = merged_file
                                   ? merged_file
                                   : local_abspath;
           break;
         }
-      case svn_wc_conflict_choose_postpone:
+      case 130:
         {
-          /* Assume conflict remains. */
+
           return SVN_NO_ERROR;
         }
       default:
-        SVN_ERR_ASSERT(choice == svn_wc_conflict_choose_postpone);
+        SVN_ERR_ASSERT(choice == 130);
     }
 
-  if (install_from_abspath == NULL)
-    return svn_error_createf(SVN_ERR_WC_CONFLICT_RESOLVER_FAILURE, NULL,
+  if (install_from_abspath == ((void*)0))
+    return svn_error_createf(SVN_ERR_WC_CONFLICT_RESOLVER_FAILURE, ((void*)0),
                              _("Conflict on '%s' could not be resolved "
                                "because the chosen version of the file "
                                "is not available."),
                              svn_dirent_local_style(local_abspath,
                                                     scratch_pool));
 
-  /* ### It would be nice if we could somehow pass RECORD_FILEINFO
-         as true in some easy cases. */
+
+
   SVN_ERR(svn_wc__wq_build_file_install(&work_item,
                                         db, local_abspath,
                                         install_from_abspath,
-                                        FALSE /* use_commit_times */,
-                                        FALSE /* record_fileinfo */,
+                                        FALSE ,
+                                        FALSE ,
                                         result_pool, scratch_pool));
   *work_items = svn_wc__wq_merge(*work_items, work_item, result_pool);
 

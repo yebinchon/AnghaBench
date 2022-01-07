@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  int32_t ;
-struct TYPE_9__ {int /*<<< orphan*/ ** coeff; TYPE_2__* filter_params; } ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int int32_t ;
+struct TYPE_9__ {int ** coeff; TYPE_2__* filter_params; } ;
 struct TYPE_8__ {int order; int shift; } ;
-struct TYPE_7__ {int substream_info; unsigned int number_of_samples; int /*<<< orphan*/ * lpc_sample_buffer; int /*<<< orphan*/  lpc_ctx; int /*<<< orphan*/  num_channels; TYPE_3__* cur_channel_params; int /*<<< orphan*/ * sample_buffer; } ;
-typedef  TYPE_1__ MLPEncodeContext ;
-typedef  TYPE_2__ FilterParams ;
-typedef  TYPE_3__ ChannelParams ;
+struct TYPE_7__ {int substream_info; unsigned int number_of_samples; int * lpc_sample_buffer; int lpc_ctx; int num_channels; TYPE_3__* cur_channel_params; int * sample_buffer; } ;
+typedef TYPE_1__ MLPEncodeContext ;
+typedef TYPE_2__ FilterParams ;
+typedef TYPE_3__ ChannelParams ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FF_LPC_TYPE_LEVINSON ; 
- unsigned int FIR ; 
- unsigned int IIR ; 
- int MAX_LPC_ORDER ; 
- int MLP_MAX_LPC_ORDER ; 
- int /*<<< orphan*/  MLP_MAX_LPC_SHIFT ; 
- int /*<<< orphan*/  MLP_MIN_LPC_ORDER ; 
- int /*<<< orphan*/  MLP_MIN_LPC_SHIFT ; 
- int /*<<< orphan*/  ORDER_METHOD_EST ; 
- int SUBSTREAM_INFO_HIGH_RATE ; 
- int /*<<< orphan*/  code_filter_coeffs (TYPE_1__*,TYPE_2__*,int /*<<< orphan*/ *) ; 
- int ff_lpc_calc_coefs (int /*<<< orphan*/ *,int /*<<< orphan*/ *,unsigned int,int /*<<< orphan*/ ,int const,int,int /*<<< orphan*/ **,int*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int FF_LPC_TYPE_LEVINSON ;
+ unsigned int FIR ;
+ unsigned int IIR ;
+ int MAX_LPC_ORDER ;
+ int MLP_MAX_LPC_ORDER ;
+ int MLP_MAX_LPC_SHIFT ;
+ int MLP_MIN_LPC_ORDER ;
+ int MLP_MIN_LPC_SHIFT ;
+ int ORDER_METHOD_EST ;
+ int SUBSTREAM_INFO_HIGH_RATE ;
+ int code_filter_coeffs (TYPE_1__*,TYPE_2__*,int *) ;
+ int ff_lpc_calc_coefs (int *,int *,unsigned int,int ,int const,int,int **,int*,int ,int ,int ,int ,int ,int ) ;
 
 __attribute__((used)) static void set_filter_params(MLPEncodeContext *ctx,
                               unsigned int channel, unsigned int filter,

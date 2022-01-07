@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_14__ {int pkistatus; int pkifailure; int /*<<< orphan*/  text; int /*<<< orphan*/  str; } ;
+
+
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+struct TYPE_14__ {int pkistatus; int pkifailure; int text; int str; } ;
 struct TYPE_13__ {scalar_t__ data; } ;
-typedef  TYPE_1__ OSSL_CMP_PKISI ;
-typedef  TYPE_2__ CMP_STATUS_TEST_FIXTURE ;
-typedef  TYPE_1__ ASN1_UTF8STRING ;
+typedef TYPE_1__ OSSL_CMP_PKISI ;
+typedef TYPE_2__ CMP_STATUS_TEST_FIXTURE ;
+typedef TYPE_1__ ASN1_UTF8STRING ;
 
-/* Variables and functions */
- int OSSL_CMP_PKIFAILUREINFO_MAX ; 
- int /*<<< orphan*/  OSSL_CMP_PKISI_free (TYPE_1__*) ; 
- int /*<<< orphan*/  TEST_int_eq (int,int) ; 
- int /*<<< orphan*/  TEST_ptr (TYPE_1__*) ; 
- int /*<<< orphan*/  TEST_str_eq (int /*<<< orphan*/ ,char*) ; 
- char* ossl_cmp_PKIStatus_to_string (int) ; 
- int /*<<< orphan*/  ossl_cmp_pkisi_get0_statusstring (TYPE_1__*) ; 
- int ossl_cmp_pkisi_get_pkifailureinfo (TYPE_1__*) ; 
- int ossl_cmp_pkisi_get_pkistatus (TYPE_1__*) ; 
- int ossl_cmp_pkisi_pkifailureinfo_check (TYPE_1__*,int) ; 
- TYPE_1__* ossl_cmp_statusinfo_new (int,int,int /*<<< orphan*/ ) ; 
- TYPE_1__* sk_ASN1_UTF8STRING_value (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int OSSL_CMP_PKIFAILUREINFO_MAX ;
+ int OSSL_CMP_PKISI_free (TYPE_1__*) ;
+ int TEST_int_eq (int,int) ;
+ int TEST_ptr (TYPE_1__*) ;
+ int TEST_str_eq (int ,char*) ;
+ char* ossl_cmp_PKIStatus_to_string (int) ;
+ int ossl_cmp_pkisi_get0_statusstring (TYPE_1__*) ;
+ int ossl_cmp_pkisi_get_pkifailureinfo (TYPE_1__*) ;
+ int ossl_cmp_pkisi_get_pkistatus (TYPE_1__*) ;
+ int ossl_cmp_pkisi_pkifailureinfo_check (TYPE_1__*,int) ;
+ TYPE_1__* ossl_cmp_statusinfo_new (int,int,int ) ;
+ TYPE_1__* sk_ASN1_UTF8STRING_value (int ,int ) ;
 
 __attribute__((used)) static int execute_PKISI_test(CMP_STATUS_TEST_FIXTURE *fixture)
 {
-    OSSL_CMP_PKISI *si = NULL;
+    OSSL_CMP_PKISI *si = ((void*)0);
     int status;
-    ASN1_UTF8STRING *statusString = NULL;
+    ASN1_UTF8STRING *statusString = ((void*)0);
     int res = 0, i;
 
     if (!TEST_ptr(si = ossl_cmp_statusinfo_new(fixture->pkistatus,

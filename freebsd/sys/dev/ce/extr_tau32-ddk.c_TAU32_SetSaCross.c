@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int SP4ZU; unsigned char HtJEJ; int /*<<< orphan*/  h2LrH3; TYPE_1__* fV7o35; } ;
-typedef  TYPE_2__ kWMzp1 ;
-struct TYPE_9__ {unsigned int CCKdO2; unsigned int HZ1wC3; int /*<<< orphan*/  XmIKi3; } ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int SP4ZU; unsigned char HtJEJ; int h2LrH3; TYPE_1__* fV7o35; } ;
+typedef TYPE_2__ kWMzp1 ;
+struct TYPE_9__ {unsigned int CCKdO2; unsigned int HZ1wC3; int XmIKi3; } ;
 struct TYPE_7__ {unsigned long UyRVB4; } ;
-typedef  TYPE_3__ Drk7M4 ;
+typedef TYPE_3__ Drk7M4 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AUUSL3 (unsigned long volatile*,int,unsigned char) ; 
- int /*<<< orphan*/  GLE_s4 (TYPE_2__*,int) ; 
- int /*<<< orphan*/  h2LrH3 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  uYS5N2 (int /*<<< orphan*/ *) ; 
+
+ int AUUSL3 (unsigned long volatile*,int,unsigned char) ;
+ int GLE_s4 (TYPE_2__*,int) ;
+ int h2LrH3 (int *) ;
+ int uYS5N2 (int *) ;
 
 int __attribute__((
 cdecl))TAU32_SetSaCross(kWMzp1*J7Iki4,Drk7M4 Uwhrn4){unsigned char

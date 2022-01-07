@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int clSize; scalar_t__ rpcReserved; int vt; int wReserved1; int wReserved2; int wReserved3; int switch_is; } ;
-typedef  TYPE_1__ variant_wire_t ;
-typedef  int /*<<< orphan*/  VARIANT ;
-typedef  int ULONG ;
+typedef TYPE_1__ variant_wire_t ;
+typedef int VARIANT ;
+typedef int ULONG ;
 struct TYPE_4__ {int wReserved1; int wReserved2; int wReserved3; } ;
-typedef  int DWORD ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int VT_ARRAY ; 
- int VT_TYPEMASK ; 
- TYPE_2__ V_U2 (int /*<<< orphan*/ *) ; 
- int V_VT (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ok (int,char*,int,...) ; 
+
+ int VT_ARRAY ;
+ int VT_TYPEMASK ;
+ TYPE_2__ V_U2 (int *) ;
+ int V_VT (int *) ;
+ int ok (int,char*,int,...) ;
 
 __attribute__((used)) static DWORD *check_variant_header(DWORD *wirev, VARIANT *v, ULONG size)
 {

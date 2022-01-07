@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Fts5Index ;
-typedef  int /*<<< orphan*/  Fts5DlidxIter ;
 
-/* Variables and functions */
- int fts5DlidxIterPrevR (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int Fts5Index ;
+typedef int Fts5DlidxIter ;
+
+
+ int fts5DlidxIterPrevR (int *,int *,int ) ;
 
 __attribute__((used)) static int fts5DlidxIterPrev(Fts5Index *p, Fts5DlidxIter *pIter){
   return fts5DlidxIterPrevR(p, pIter, 0);

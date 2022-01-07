@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_stream_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int apr_uint64_t ;
-typedef  int apr_size_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_CORRUPT_PACKED_DATA ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/ * svn_error_create (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_stream_read_full (int /*<<< orphan*/ *,char*,int*) ; 
+
+
+
+typedef int svn_stream_t ;
+typedef int svn_error_t ;
+typedef int apr_uint64_t ;
+typedef int apr_size_t ;
+
+
+ int SVN_ERR (int ) ;
+ int SVN_ERR_CORRUPT_PACKED_DATA ;
+ int * SVN_NO_ERROR ;
+ int _ (char*) ;
+ int * svn_error_create (int ,int *,int ) ;
+ int svn_stream_read_full (int *,char*,int*) ;
 
 __attribute__((used)) static svn_error_t *
 read_stream_uint(svn_stream_t *stream, apr_uint64_t *result)
@@ -35,13 +35,13 @@ read_stream_uint(svn_stream_t *stream, apr_uint64_t *result)
       apr_size_t len = 1;
       SVN_ERR(svn_stream_read_full(stream, (char *)&c, &len));
       if (len != 1)
-        return svn_error_create(SVN_ERR_CORRUPT_PACKED_DATA, NULL,
+        return svn_error_create(SVN_ERR_CORRUPT_PACKED_DATA, ((void*)0),
                                 _("Unexpected end of stream"));
 
       value += (apr_uint64_t)(c & 0x7f) << shift;
       shift += 7;
       if (shift > 64)
-        return svn_error_create(SVN_ERR_CORRUPT_PACKED_DATA, NULL,
+        return svn_error_create(SVN_ERR_CORRUPT_PACKED_DATA, ((void*)0),
                                 _("Integer representation too long"));
     }
   while (c >= 0x80);

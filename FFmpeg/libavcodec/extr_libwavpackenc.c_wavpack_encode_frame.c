@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  int32_t ;
+
+
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int int32_t ;
 struct TYPE_13__ {scalar_t__ frame_size; TYPE_1__* priv_data; } ;
 struct TYPE_12__ {scalar_t__ nb_samples; scalar_t__* data; } ;
-struct TYPE_11__ {int /*<<< orphan*/  duration; int /*<<< orphan*/  pts; int /*<<< orphan*/  size; } ;
-struct TYPE_10__ {int /*<<< orphan*/  afq; scalar_t__ got_output; int /*<<< orphan*/  wv; int /*<<< orphan*/  user_size; TYPE_2__* pkt; } ;
-typedef  TYPE_1__ LibWavpackContext ;
-typedef  TYPE_2__ AVPacket ;
-typedef  TYPE_3__ AVFrame ;
-typedef  TYPE_4__ AVCodecContext ;
+struct TYPE_11__ {int duration; int pts; int size; } ;
+struct TYPE_10__ {int afq; scalar_t__ got_output; int wv; int user_size; TYPE_2__* pkt; } ;
+typedef TYPE_1__ LibWavpackContext ;
+typedef TYPE_2__ AVPacket ;
+typedef TYPE_3__ AVFrame ;
+typedef TYPE_4__ AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR_UNKNOWN ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int WavpackFlushSamples (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WavpackGetErrorMessage (int /*<<< orphan*/ ) ; 
- int WavpackPackSamples (int /*<<< orphan*/ ,int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  av_log (TYPE_4__*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int ff_af_queue_add (int /*<<< orphan*/ *,TYPE_3__ const*) ; 
- int /*<<< orphan*/  ff_af_queue_remove (int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int AVERROR_UNKNOWN ;
+ int AV_LOG_ERROR ;
+ int WavpackFlushSamples (int ) ;
+ int WavpackGetErrorMessage (int ) ;
+ int WavpackPackSamples (int ,int *,scalar_t__) ;
+ int av_log (TYPE_4__*,int ,char*,int ) ;
+ int ff_af_queue_add (int *,TYPE_3__ const*) ;
+ int ff_af_queue_remove (int *,scalar_t__,int *,int *) ;
 
 __attribute__((used)) static int wavpack_encode_frame(AVCodecContext *avctx, AVPacket *pkt,
                                 const AVFrame *frame, int *got_output)
@@ -41,8 +41,8 @@ __attribute__((used)) static int wavpack_encode_frame(AVCodecContext *avctx, AVP
     int ret;
 
     s->got_output = 0;
-    s->pkt        = pkt;
-    s->user_size  = pkt->size;
+    s->pkt = pkt;
+    s->user_size = pkt->size;
 
     if (frame) {
         ret = ff_af_queue_add(&s->afq, frame);

@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  MAX_PATHNAME ; 
- int /*<<< orphan*/  OSTRACE (char*) ; 
- int O_BINARY ; 
- int O_RDONLY ; 
- int /*<<< orphan*/  SQLITE_CANTOPEN_BKPT ; 
- int SQLITE_OK ; 
- int robust_open (char*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_snprintf (int /*<<< orphan*/ ,char*,char*,char const*) ; 
- scalar_t__ strlen (char*) ; 
- int unixLogError (int /*<<< orphan*/ ,char*,char*) ; 
+ int MAX_PATHNAME ;
+ int OSTRACE (char*) ;
+ int O_BINARY ;
+ int O_RDONLY ;
+ int SQLITE_CANTOPEN_BKPT ;
+ int SQLITE_OK ;
+ int robust_open (char*,int,int ) ;
+ int sqlite3_snprintf (int ,char*,char*,char const*) ;
+ scalar_t__ strlen (char*) ;
+ int unixLogError (int ,char*,char*) ;
 
 __attribute__((used)) static int openDirectory(const char *zFilename, int *pFd){
   int ii;

@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct msg {int run_length; int /*<<< orphan*/ * run_data; scalar_t__ run_set; int /*<<< orphan*/  attack_data; scalar_t__ attack_set; int /*<<< orphan*/  to_name_set; int /*<<< orphan*/  from_name_set; } ;
 
-/* Variables and functions */
- int kill_complete (int /*<<< orphan*/ ) ; 
- int run_complete (int /*<<< orphan*/ ) ; 
+
+
+
+struct msg {int run_length; int * run_data; scalar_t__ run_set; int attack_data; scalar_t__ attack_set; int to_name_set; int from_name_set; } ;
+
+
+ int kill_complete (int ) ;
+ int run_complete (int ) ;
 
 int
 msg_complete(struct msg *msg)

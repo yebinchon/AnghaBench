@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  X509_EXTENSION ;
-typedef  int /*<<< orphan*/  BIO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BIO_get_mem_data (int /*<<< orphan*/ *,char**) ; 
- int /*<<< orphan*/ * BIO_new (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BIO_s_mem () ; 
- int /*<<< orphan*/  BIO_write (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  TEST_ptr (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TEST_str_eq (char*,char const*) ; 
- int /*<<< orphan*/  TEST_true (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  X509V3_EXT_DEFAULT ; 
- int /*<<< orphan*/  X509V3_EXT_print (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int X509_EXTENSION ;
+typedef int BIO ;
+
+
+ int BIO_free (int *) ;
+ int BIO_get_mem_data (int *,char**) ;
+ int * BIO_new (int ) ;
+ int BIO_s_mem () ;
+ int BIO_write (int *,char*,int) ;
+ int TEST_ptr (int *) ;
+ int TEST_str_eq (char*,char const*) ;
+ int TEST_true (int ) ;
+ int X509V3_EXT_DEFAULT ;
+ int X509V3_EXT_print (int *,int *,int ,int ) ;
 
 __attribute__((used)) static int compare_extension_printout(X509_EXTENSION *extension,
                                       const char *expected_output)
 {
-    BIO *text_buffer = NULL;
-    char *actual_output = NULL;
+    BIO *text_buffer = ((void*)0);
+    char *actual_output = ((void*)0);
     int result = 0;
 
     if (!TEST_ptr(text_buffer = BIO_new(BIO_s_mem()))
@@ -37,7 +37,7 @@ __attribute__((used)) static int compare_extension_printout(X509_EXTENSION *exte
                                            X509V3_EXT_DEFAULT, 0)))
         goto end;
 
-    /* Append \0 because we're about to use the buffer contents as a string. */
+
     if (!TEST_true(BIO_write(text_buffer, "\0", 1)))
         goto end;
 

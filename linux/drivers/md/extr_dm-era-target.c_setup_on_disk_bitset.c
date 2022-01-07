@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct dm_disk_bitset {int dummy; } ;
-typedef  int /*<<< orphan*/  dm_block_t ;
+typedef int dm_block_t ;
 
-/* Variables and functions */
- int dm_bitset_empty (struct dm_disk_bitset*,int /*<<< orphan*/ *) ; 
- int dm_bitset_resize (struct dm_disk_bitset*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned int,int,int /*<<< orphan*/ *) ; 
+
+ int dm_bitset_empty (struct dm_disk_bitset*,int *) ;
+ int dm_bitset_resize (struct dm_disk_bitset*,int ,int ,unsigned int,int,int *) ;
 
 __attribute__((used)) static int setup_on_disk_bitset(struct dm_disk_bitset *info,
-				unsigned nr_bits, dm_block_t *root)
+    unsigned nr_bits, dm_block_t *root)
 {
-	int r;
+ int r;
 
-	r = dm_bitset_empty(info, root);
-	if (r)
-		return r;
+ r = dm_bitset_empty(info, root);
+ if (r)
+  return r;
 
-	return dm_bitset_resize(info, *root, 0, nr_bits, false, root);
+ return dm_bitset_resize(info, *root, 0, nr_bits, 0, root);
 }

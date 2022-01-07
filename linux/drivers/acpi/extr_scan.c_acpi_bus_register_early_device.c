@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int match_driver; } ;
-struct acpi_device {int /*<<< orphan*/  dev; TYPE_1__ flags; } ;
+struct acpi_device {int dev; TYPE_1__ flags; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACPI_STA_DEFAULT ; 
- int acpi_add_single_object (struct acpi_device**,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int device_attach (int /*<<< orphan*/ *) ; 
+
+ int ACPI_STA_DEFAULT ;
+ int acpi_add_single_object (struct acpi_device**,int *,int,int ) ;
+ int device_attach (int *) ;
 
 int acpi_bus_register_early_device(int type)
 {
-	struct acpi_device *device = NULL;
-	int result;
+ struct acpi_device *device = ((void*)0);
+ int result;
 
-	result = acpi_add_single_object(&device, NULL,
-					type, ACPI_STA_DEFAULT);
-	if (result)
-		return result;
+ result = acpi_add_single_object(&device, ((void*)0),
+     type, ACPI_STA_DEFAULT);
+ if (result)
+  return result;
 
-	device->flags.match_driver = true;
-	return device_attach(&device->dev);
+ device->flags.match_driver = 1;
+ return device_attach(&device->dev);
 }

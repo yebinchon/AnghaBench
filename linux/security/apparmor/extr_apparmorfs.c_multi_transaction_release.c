@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct inode {int dummy; } ;
-struct file {int /*<<< orphan*/  private_data; } ;
+struct file {int private_data; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  put_multi_transaction (int /*<<< orphan*/ ) ; 
+
+ int put_multi_transaction (int ) ;
 
 __attribute__((used)) static int multi_transaction_release(struct inode *inode, struct file *file)
 {
-	put_multi_transaction(file->private_data);
+ put_multi_transaction(file->private_data);
 
-	return 0;
+ return 0;
 }

@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct sk_buff {int dummy; } ;
-struct hci_dev {int /*<<< orphan*/  rx_work; int /*<<< orphan*/  workqueue; int /*<<< orphan*/  rx_q; int /*<<< orphan*/  flags; } ;
+struct hci_dev {int rx_work; int workqueue; int rx_q; int flags; } ;
 struct TYPE_2__ {int incoming; } ;
 
-/* Variables and functions */
- int EINVAL ; 
- int ENXIO ; 
- scalar_t__ HCI_ACLDATA_PKT ; 
- scalar_t__ HCI_EVENT_PKT ; 
- int /*<<< orphan*/  HCI_INIT ; 
- scalar_t__ HCI_SCODATA_PKT ; 
- int /*<<< orphan*/  HCI_UP ; 
- int /*<<< orphan*/  __net_timestamp (struct sk_buff*) ; 
- TYPE_1__* bt_cb (struct sk_buff*) ; 
- scalar_t__ hci_skb_pkt_type (struct sk_buff*) ; 
- int /*<<< orphan*/  kfree_skb (struct sk_buff*) ; 
- int /*<<< orphan*/  queue_work (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  skb_queue_tail (int /*<<< orphan*/ *,struct sk_buff*) ; 
- int /*<<< orphan*/  test_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int EINVAL ;
+ int ENXIO ;
+ scalar_t__ HCI_ACLDATA_PKT ;
+ scalar_t__ HCI_EVENT_PKT ;
+ int HCI_INIT ;
+ scalar_t__ HCI_SCODATA_PKT ;
+ int HCI_UP ;
+ int __net_timestamp (struct sk_buff*) ;
+ TYPE_1__* bt_cb (struct sk_buff*) ;
+ scalar_t__ hci_skb_pkt_type (struct sk_buff*) ;
+ int kfree_skb (struct sk_buff*) ;
+ int queue_work (int ,int *) ;
+ int skb_queue_tail (int *,struct sk_buff*) ;
+ int test_bit (int ,int *) ;
 
 int hci_recv_frame(struct hci_dev *hdev, struct sk_buff *skb)
 {
-	if (!hdev || (!test_bit(HCI_UP, &hdev->flags)
-		      && !test_bit(HCI_INIT, &hdev->flags))) {
-		kfree_skb(skb);
-		return -ENXIO;
-	}
+ if (!hdev || (!test_bit(HCI_UP, &hdev->flags)
+        && !test_bit(HCI_INIT, &hdev->flags))) {
+  kfree_skb(skb);
+  return -ENXIO;
+ }
 
-	if (hci_skb_pkt_type(skb) != HCI_EVENT_PKT &&
-	    hci_skb_pkt_type(skb) != HCI_ACLDATA_PKT &&
-	    hci_skb_pkt_type(skb) != HCI_SCODATA_PKT) {
-		kfree_skb(skb);
-		return -EINVAL;
-	}
+ if (hci_skb_pkt_type(skb) != HCI_EVENT_PKT &&
+     hci_skb_pkt_type(skb) != HCI_ACLDATA_PKT &&
+     hci_skb_pkt_type(skb) != HCI_SCODATA_PKT) {
+  kfree_skb(skb);
+  return -EINVAL;
+ }
 
-	/* Incoming skb */
-	bt_cb(skb)->incoming = 1;
 
-	/* Time stamp */
-	__net_timestamp(skb);
+ bt_cb(skb)->incoming = 1;
 
-	skb_queue_tail(&hdev->rx_q, skb);
-	queue_work(hdev->workqueue, &hdev->rx_work);
 
-	return 0;
+ __net_timestamp(skb);
+
+ skb_queue_tail(&hdev->rx_q, skb);
+ queue_work(hdev->workqueue, &hdev->rx_work);
+
+ return 0;
 }

@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int STBTT_MAX_OVERSAMPLE ; 
- int STBTT__OVER_MASK ; 
- int /*<<< orphan*/  memset (unsigned char*,int /*<<< orphan*/ ,unsigned int) ; 
- int /*<<< orphan*/  retro_assert (int) ; 
+ int STBTT_MAX_OVERSAMPLE ;
+ int STBTT__OVER_MASK ;
+ int memset (unsigned char*,int ,unsigned int) ;
+ int retro_assert (int) ;
 
 __attribute__((used)) static void stbtt__h_prefilter(unsigned char *pixels, int w, int h,
       int stride_in_bytes, unsigned int kernel_width)
@@ -32,8 +24,8 @@ __attribute__((used)) static void stbtt__h_prefilter(unsigned char *pixels, int 
 
       total = 0;
 
-      /* make kernel_width a constant in common cases
-       * so compiler can optimize out the divide */
+
+
       switch (kernel_width) {
          case 2:
             for (i=0; i <= safe_w; ++i) {

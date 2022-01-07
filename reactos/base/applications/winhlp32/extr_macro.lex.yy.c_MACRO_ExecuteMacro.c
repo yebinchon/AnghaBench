@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct lex_data {int cache_used; int /*<<< orphan*/ * cache_string; int /*<<< orphan*/  window; int /*<<< orphan*/  macroptr; } ;
-typedef  int /*<<< orphan*/  WINHELP_WINDOW ;
-struct TYPE_2__ {int /*<<< orphan*/  proto; int /*<<< orphan*/  function; } ;
-typedef  int /*<<< orphan*/  LPCSTR ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
-#define  BOOL_FUNCTION 130 
-#define  EMPTY 129 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MACRO_CallVoidFunc (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
-#define  VOID_FUNCTION 128 
- int /*<<< orphan*/  WINE_TRACE (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WINE_WARN (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WINHELP_GrabWindow (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  WINHELP_ReleaseWindow (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  YY_FLUSH_BUFFER ; 
- int /*<<< orphan*/  debugstr_a (int /*<<< orphan*/ ) ; 
- struct lex_data* lex_data ; 
- int /*<<< orphan*/  memset (struct lex_data*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ts (int) ; 
- int yylex () ; 
- TYPE_1__ yylval ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct lex_data {int cache_used; int * cache_string; int window; int macroptr; } ;
+typedef int WINHELP_WINDOW ;
+struct TYPE_2__ {int proto; int function; } ;
+typedef int LPCSTR ;
+typedef int BOOL ;
+
+
+
+
+ int FALSE ;
+ int GetProcessHeap () ;
+ int HeapFree (int ,int ,int ) ;
+ int MACRO_CallVoidFunc (int ,int ) ;
+ int TRUE ;
+
+ int WINE_TRACE (char*,int ) ;
+ int WINE_WARN (char*,int ) ;
+ int WINHELP_GrabWindow (int *) ;
+ int WINHELP_ReleaseWindow (int *) ;
+ int YY_FLUSH_BUFFER ;
+ int debugstr_a (int ) ;
+ struct lex_data* lex_data ;
+ int memset (struct lex_data*,int ,int) ;
+ int ts (int) ;
+ int yylex () ;
+ TYPE_1__ yylval ;
 
 BOOL MACRO_ExecuteMacro(WINHELP_WINDOW* window, LPCSTR macro)
 {
-    struct lex_data     curr_lex_data, *prev_lex_data;
+    struct lex_data curr_lex_data, *prev_lex_data;
     BOOL ret = TRUE;
     int t;
 
@@ -53,15 +53,15 @@ BOOL MACRO_ExecuteMacro(WINHELP_WINDOW* window, LPCSTR macro)
     lex_data->macroptr = macro;
     lex_data->window = WINHELP_GrabWindow(window);
 
-    while ((t = yylex()) != EMPTY)
+    while ((t = yylex()) != 129)
     {
         switch (t)
         {
-        case VOID_FUNCTION:
+        case 128:
             WINE_TRACE("got type void func(%s)\n", debugstr_a(yylval.proto));
             MACRO_CallVoidFunc(yylval.function, yylval.proto);
             break;
-        case BOOL_FUNCTION:
+        case 130:
             WINE_WARN("got type bool func(%s)\n", debugstr_a(yylval.proto));
             break;
         default:
@@ -72,9 +72,9 @@ BOOL MACRO_ExecuteMacro(WINHELP_WINDOW* window, LPCSTR macro)
         }
         switch (t = yylex())
         {
-        case EMPTY:     goto done;
-        case ';':       break;
-        default:        ret = FALSE; YY_FLUSH_BUFFER; goto done;
+        case 129: goto done;
+        case ';': break;
+        default: ret = FALSE; YY_FLUSH_BUFFER; goto done;
         }
     }
 

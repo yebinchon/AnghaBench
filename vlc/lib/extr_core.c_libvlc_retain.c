@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {scalar_t__ ref_count; int /*<<< orphan*/  instance_lock; } ;
-typedef  TYPE_1__ libvlc_instance_t ;
 
-/* Variables and functions */
- scalar_t__ UINT_MAX ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  vlc_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_mutex_unlock (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {scalar_t__ ref_count; int instance_lock; } ;
+typedef TYPE_1__ libvlc_instance_t ;
+
+
+ scalar_t__ UINT_MAX ;
+ int assert (int) ;
+ int vlc_mutex_lock (int *) ;
+ int vlc_mutex_unlock (int *) ;
 
 void libvlc_retain( libvlc_instance_t *p_instance )
 {
-    assert( p_instance != NULL );
+    assert( p_instance != ((void*)0) );
     assert( p_instance->ref_count < UINT_MAX );
 
     vlc_mutex_lock( &p_instance->instance_lock );

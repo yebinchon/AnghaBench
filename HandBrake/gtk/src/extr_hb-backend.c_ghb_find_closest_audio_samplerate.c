@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  gint ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HB_ACODEC_INVALID ; 
- int /*<<< orphan*/  hb_audio_samplerate_find_closest (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int gint ;
+
+
+ int HB_ACODEC_INVALID ;
+ int hb_audio_samplerate_find_closest (int ,int ) ;
 
 gint
 ghb_find_closest_audio_samplerate(gint irate)

@@ -1,50 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
-#define  AV_PIX_FMT_YUV420P 136 
-#define  AV_PIX_FMT_YUV420P10 135 
-#define  AV_PIX_FMT_YUV420P12 134 
-#define  AV_PIX_FMT_YUV422P 133 
-#define  AV_PIX_FMT_YUV422P10 132 
-#define  AV_PIX_FMT_YUV422P12 131 
-#define  AV_PIX_FMT_YUV444P 130 
-#define  AV_PIX_FMT_YUV444P10 129 
-#define  AV_PIX_FMT_YUV444P12 128 
-
 const char * hb_get_format_name(int format)
 {
     switch (format)
     {
-        case AV_PIX_FMT_YUV420P:
+        case 136:
             return "yuv420p";
-        case AV_PIX_FMT_YUV420P10:
+        case 135:
             return "yuv420p10";
-        case AV_PIX_FMT_YUV420P12:
+        case 134:
             return "yuv420p12";
-        case AV_PIX_FMT_YUV422P:
+        case 133:
             return "yuv422p";
-        case AV_PIX_FMT_YUV422P10:
+        case 132:
             return "yuv422p10";
-        case AV_PIX_FMT_YUV422P12:
+        case 131:
             return "yuv422p12";
-        case AV_PIX_FMT_YUV444P:
+        case 130:
             return "yuv444p";
-        case AV_PIX_FMT_YUV444P10:
+        case 129:
             return "yuv444p10";
-        case AV_PIX_FMT_YUV444P12:
+        case 128:
             return "yuv444p12";
         default:
-            return NULL;
+            return ((void*)0);
     }
 }

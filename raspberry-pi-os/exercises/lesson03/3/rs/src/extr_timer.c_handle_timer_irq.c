@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  TIMER_C1 ; 
- int /*<<< orphan*/  TIMER_CS ; 
- int /*<<< orphan*/  TIMER_CS_M1 ; 
- int /*<<< orphan*/  curVal ; 
- scalar_t__ interval ; 
- int /*<<< orphan*/  printf (char*) ; 
- int /*<<< orphan*/  put32 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int TIMER_C1 ;
+ int TIMER_CS ;
+ int TIMER_CS_M1 ;
+ int curVal ;
+ scalar_t__ interval ;
+ int printf (char*) ;
+ int put32 (int ,int ) ;
 
 void handle_timer_irq(void) {
   curVal += interval;

@@ -1,0 +1,143 @@
+; ModuleID = '/home/carl/AnghaBench/RetroArch/deps/miniupnpc/extr_portlistingparse.c_startelt.c'
+source_filename = "/home/carl/AnghaBench/RetroArch/deps/miniupnpc/extr_portlistingparse.c_startelt.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+%struct.TYPE_2__ = type { i64, i64 }
+%struct.PortMappingParserData = type { i64, %struct.PortMapping* }
+%struct.PortMapping = type { %struct.PortMapping* }
+
+@PortMappingEltNone = common dso_local global i64 0, align 8
+@elements = common dso_local global %struct.TYPE_2__* null, align 8
+@PortMappingEntry = common dso_local global i64 0, align 8
+@stderr = common dso_local global i32 0, align 4
+@llvm.used = appending global [1 x i8*] [i8* bitcast (void (i8*, i8*, i32)* @startelt to i8*)], section "llvm.metadata"
+
+; Function Attrs: noinline nounwind optnone uwtable
+define internal void @startelt(i8* %0, i8* %1, i32 %2) #0 {
+  %4 = alloca i8*, align 8
+  %5 = alloca i8*, align 8
+  %6 = alloca i32, align 4
+  %7 = alloca i32, align 4
+  %8 = alloca %struct.PortMappingParserData*, align 8
+  %9 = alloca %struct.PortMapping*, align 8
+  store i8* %0, i8** %4, align 8
+  store i8* %1, i8** %5, align 8
+  store i32 %2, i32* %6, align 4
+  %10 = load i8*, i8** %4, align 8
+  %11 = bitcast i8* %10 to %struct.PortMappingParserData*
+  store %struct.PortMappingParserData* %11, %struct.PortMappingParserData** %8, align 8
+  %12 = load i64, i64* @PortMappingEltNone, align 8
+  %13 = load %struct.PortMappingParserData*, %struct.PortMappingParserData** %8, align 8
+  %14 = getelementptr inbounds %struct.PortMappingParserData, %struct.PortMappingParserData* %13, i32 0, i32 0
+  store i64 %12, i64* %14, align 8
+  store i32 0, i32* %7, align 4
+  br label %15
+
+15:                                               ; preds = %55, %3
+  %16 = load %struct.TYPE_2__*, %struct.TYPE_2__** @elements, align 8
+  %17 = load i32, i32* %7, align 4
+  %18 = sext i32 %17 to i64
+  %19 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %16, i64 %18
+  %20 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %19, i32 0, i32 1
+  %21 = load i64, i64* %20, align 8
+  %22 = icmp ne i64 %21, 0
+  br i1 %22, label %23, label %58
+
+23:                                               ; preds = %15
+  %24 = load %struct.TYPE_2__*, %struct.TYPE_2__** @elements, align 8
+  %25 = load i32, i32* %7, align 4
+  %26 = sext i32 %25 to i64
+  %27 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %24, i64 %26
+  %28 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %27, i32 0, i32 1
+  %29 = load i64, i64* %28, align 8
+  %30 = call i64 @strlen(i64 %29)
+  %31 = load i32, i32* %6, align 4
+  %32 = sext i32 %31 to i64
+  %33 = icmp eq i64 %30, %32
+  br i1 %33, label %34, label %54
+
+34:                                               ; preds = %23
+  %35 = load i8*, i8** %5, align 8
+  %36 = load %struct.TYPE_2__*, %struct.TYPE_2__** @elements, align 8
+  %37 = load i32, i32* %7, align 4
+  %38 = sext i32 %37 to i64
+  %39 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %36, i64 %38
+  %40 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %39, i32 0, i32 1
+  %41 = load i64, i64* %40, align 8
+  %42 = load i32, i32* %6, align 4
+  %43 = call i64 @memcmp(i8* %35, i64 %41, i32 %42)
+  %44 = icmp eq i64 %43, 0
+  br i1 %44, label %45, label %54
+
+45:                                               ; preds = %34
+  %46 = load %struct.TYPE_2__*, %struct.TYPE_2__** @elements, align 8
+  %47 = load i32, i32* %7, align 4
+  %48 = sext i32 %47 to i64
+  %49 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %46, i64 %48
+  %50 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %49, i32 0, i32 0
+  %51 = load i64, i64* %50, align 8
+  %52 = load %struct.PortMappingParserData*, %struct.PortMappingParserData** %8, align 8
+  %53 = getelementptr inbounds %struct.PortMappingParserData, %struct.PortMappingParserData* %52, i32 0, i32 0
+  store i64 %51, i64* %53, align 8
+  br label %58
+
+54:                                               ; preds = %34, %23
+  br label %55
+
+55:                                               ; preds = %54
+  %56 = load i32, i32* %7, align 4
+  %57 = add nsw i32 %56, 1
+  store i32 %57, i32* %7, align 4
+  br label %15
+
+58:                                               ; preds = %45, %15
+  %59 = load %struct.PortMappingParserData*, %struct.PortMappingParserData** %8, align 8
+  %60 = getelementptr inbounds %struct.PortMappingParserData, %struct.PortMappingParserData* %59, i32 0, i32 0
+  %61 = load i64, i64* %60, align 8
+  %62 = load i64, i64* @PortMappingEntry, align 8
+  %63 = icmp eq i64 %61, %62
+  br i1 %63, label %64, label %79
+
+64:                                               ; preds = %58
+  %65 = call i64 @calloc(i32 1, i32 8)
+  %66 = inttoptr i64 %65 to %struct.PortMapping*
+  store %struct.PortMapping* %66, %struct.PortMapping** %9, align 8
+  %67 = load %struct.PortMapping*, %struct.PortMapping** %9, align 8
+  %68 = icmp eq %struct.PortMapping* %67, null
+  br i1 %68, label %69, label %70
+
+69:                                               ; preds = %64
+  br label %79
+
+70:                                               ; preds = %64
+  %71 = load %struct.PortMappingParserData*, %struct.PortMappingParserData** %8, align 8
+  %72 = getelementptr inbounds %struct.PortMappingParserData, %struct.PortMappingParserData* %71, i32 0, i32 1
+  %73 = load %struct.PortMapping*, %struct.PortMapping** %72, align 8
+  %74 = load %struct.PortMapping*, %struct.PortMapping** %9, align 8
+  %75 = getelementptr inbounds %struct.PortMapping, %struct.PortMapping* %74, i32 0, i32 0
+  store %struct.PortMapping* %73, %struct.PortMapping** %75, align 8
+  %76 = load %struct.PortMapping*, %struct.PortMapping** %9, align 8
+  %77 = load %struct.PortMappingParserData*, %struct.PortMappingParserData** %8, align 8
+  %78 = getelementptr inbounds %struct.PortMappingParserData, %struct.PortMappingParserData* %77, i32 0, i32 1
+  store %struct.PortMapping* %76, %struct.PortMapping** %78, align 8
+  br label %79
+
+79:                                               ; preds = %69, %70, %58
+  ret void
+}
+
+declare dso_local i64 @strlen(i64) #1
+
+declare dso_local i64 @memcmp(i8*, i64, i32) #1
+
+declare dso_local i64 @calloc(i32, i32) #1
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

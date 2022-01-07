@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
 struct TYPE_13__ {char* data; } ;
-typedef  TYPE_1__ svn_stringbuf_t ;
-struct TYPE_14__ {char* data; int /*<<< orphan*/  len; } ;
-typedef  TYPE_2__ svn_string_t ;
-typedef  scalar_t__ svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+typedef TYPE_1__ svn_stringbuf_t ;
+struct TYPE_14__ {char* data; int len; } ;
+typedef TYPE_2__ svn_string_t ;
+typedef scalar_t__ svn_boolean_t ;
+typedef int apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_VA_NULL ; 
- int /*<<< orphan*/  TRUE ; 
- TYPE_2__* svn_base64_encode_string2 (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_stringbuf_appendcstr (TYPE_1__*,char const*) ; 
- TYPE_1__* svn_stringbuf_create_empty (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_xml_escape_cdata_string (TYPE_1__**,TYPE_2__*,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_xml_is_xml_safe (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_xml_make_close_tag (TYPE_1__**,int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  svn_xml_make_open_tag (TYPE_1__**,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,char*,char const*,char*,...) ; 
- int /*<<< orphan*/  svn_xml_protect_pcdata ; 
+
+ int SVN_VA_NULL ;
+ int TRUE ;
+ TYPE_2__* svn_base64_encode_string2 (TYPE_2__*,int ,int *) ;
+ int svn_stringbuf_appendcstr (TYPE_1__*,char const*) ;
+ TYPE_1__* svn_stringbuf_create_empty (int *) ;
+ int svn_xml_escape_cdata_string (TYPE_1__**,TYPE_2__*,int *) ;
+ scalar_t__ svn_xml_is_xml_safe (char*,int ) ;
+ int svn_xml_make_close_tag (TYPE_1__**,int *,char*) ;
+ int svn_xml_make_open_tag (TYPE_1__**,int *,int ,char*,char*,char const*,char*,...) ;
+ int svn_xml_protect_pcdata ;
 
 void
 svn_cmdline__print_xml_prop(svn_stringbuf_t **outstr,
@@ -39,14 +39,14 @@ svn_cmdline__print_xml_prop(svn_stringbuf_t **outstr,
                             apr_pool_t *pool)
 {
   const char *xml_safe;
-  const char *encoding = NULL;
+  const char *encoding = ((void*)0);
 
-  if (*outstr == NULL)
+  if (*outstr == ((void*)0))
     *outstr = svn_stringbuf_create_empty(pool);
 
   if (svn_xml_is_xml_safe(propval->data, propval->len))
     {
-      svn_stringbuf_t *xml_esc = NULL;
+      svn_stringbuf_t *xml_esc = ((void*)0);
       svn_xml_escape_cdata_string(&xml_esc, propval, pool);
       xml_safe = xml_esc->data;
     }

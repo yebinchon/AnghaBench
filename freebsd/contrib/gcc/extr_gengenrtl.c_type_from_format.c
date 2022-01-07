@@ -1,18 +1,10 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  gcc_unreachable () ; 
+ int gcc_unreachable () ;
 
 __attribute__((used)) static const char *
 type_from_format (int c)
@@ -28,17 +20,17 @@ type_from_format (int c)
     case 's':
       return "const char *";
 
-    case 'e':  case 'u':
+    case 'e': case 'u':
       return "rtx ";
 
     case 'E':
       return "rtvec ";
     case 'b':
-      return "struct bitmap_head_def *";  /* bitmap - typedef not available */
+      return "struct bitmap_head_def *";
     case 't':
-      return "union tree_node *";  /* tree - typedef not available */
+      return "union tree_node *";
     case 'B':
-      return "struct basic_block_def *";  /* basic block - typedef not available */
+      return "struct basic_block_def *";
     default:
       gcc_unreachable ();
     }

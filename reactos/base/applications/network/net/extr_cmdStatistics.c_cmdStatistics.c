@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  size_t INT ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ConPuts (int /*<<< orphan*/ ,char*) ; 
- size_t DisplayServerStatistics () ; 
- size_t DisplayWorkstationStatistics () ; 
- int /*<<< orphan*/  ERROR_SUCCESS ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  MSG_STATISTICS_HELP ; 
- int /*<<< orphan*/  MSG_STATISTICS_SYNTAX ; 
- int /*<<< orphan*/  PrintErrorMessage (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PrintMessageString (int) ; 
- int /*<<< orphan*/  PrintNetMessage (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  StdOut ; 
- scalar_t__ TRUE ; 
- scalar_t__ _wcsicmp (int /*<<< orphan*/ *,char*) ; 
+
+
+
+typedef int WCHAR ;
+typedef size_t INT ;
+typedef scalar_t__ BOOL ;
+
+
+ int ConPuts (int ,char*) ;
+ size_t DisplayServerStatistics () ;
+ size_t DisplayWorkstationStatistics () ;
+ int ERROR_SUCCESS ;
+ scalar_t__ FALSE ;
+ int MSG_STATISTICS_HELP ;
+ int MSG_STATISTICS_SYNTAX ;
+ int PrintErrorMessage (int ) ;
+ int PrintMessageString (int) ;
+ int PrintNetMessage (int ) ;
+ int StdOut ;
+ scalar_t__ TRUE ;
+ scalar_t__ _wcsicmp (int *,char*) ;
 
 INT
 cmdStatistics(
@@ -56,7 +56,7 @@ cmdStatistics(
 
         if (_wcsicmp(argv[i], L"help") == 0)
         {
-            /* Print short syntax help */
+
             PrintMessageString(4381);
             ConPuts(StdOut, L"\n");
             PrintNetMessage(MSG_STATISTICS_SYNTAX);
@@ -65,7 +65,7 @@ cmdStatistics(
 
         if (_wcsicmp(argv[i], L"/help") == 0)
         {
-            /* Print full help text*/
+
             PrintMessageString(4381);
             ConPuts(StdOut, L"\n");
             PrintNetMessage(MSG_STATISTICS_SYNTAX);

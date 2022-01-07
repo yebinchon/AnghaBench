@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct s_options {int dummy; } ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef int FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OptPrint () ; 
- char** argv ; 
- int /*<<< orphan*/ * errstream ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*,char*) ; 
- scalar_t__ handleflags (int,int /*<<< orphan*/ *) ; 
- scalar_t__ handleswitch (int,int /*<<< orphan*/ *) ; 
- struct s_options* op ; 
- scalar_t__ strchr (char*,char) ; 
+
+ int OptPrint () ;
+ char** argv ;
+ int * errstream ;
+ int exit (int) ;
+ int fprintf (int *,char*,char*) ;
+ scalar_t__ handleflags (int,int *) ;
+ scalar_t__ handleswitch (int,int *) ;
+ struct s_options* op ;
+ scalar_t__ strchr (char*,char) ;
 
 int OptInit(char **a, struct s_options *o, FILE *err)
 {

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UInt64 ;
-struct TYPE_3__ {int /*<<< orphan*/  alloc; int /*<<< orphan*/ * ids; int /*<<< orphan*/ * coders; } ;
-typedef  int /*<<< orphan*/  SRes ;
-typedef  int /*<<< orphan*/  IStateCoder ;
-typedef  TYPE_1__ CMixCoder ;
-typedef  int /*<<< orphan*/  Byte ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BraState_SetFromMethod (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Lzma2State_SetFromMethod (int /*<<< orphan*/ *,int /*<<< orphan*/ *,size_t,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SZ_ERROR_UNSUPPORTED ; 
- int /*<<< orphan*/  SbState_SetFromMethod (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
-#define  XZ_ID_LZMA2 129 
-#define  XZ_ID_Subblock 128 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int UInt64 ;
+struct TYPE_3__ {int alloc; int * ids; int * coders; } ;
+typedef int SRes ;
+typedef int IStateCoder ;
+typedef TYPE_1__ CMixCoder ;
+typedef int Byte ;
+
+
+ int BraState_SetFromMethod (int *,int ,int ,int ) ;
+ int Lzma2State_SetFromMethod (int *,int *,size_t,int ) ;
+ int SZ_ERROR_UNSUPPORTED ;
+ int SbState_SetFromMethod (int *,int ) ;
+
+
 
 __attribute__((used)) static SRes MixCoder_SetFromMethod(CMixCoder *p, unsigned coderIndex, UInt64 methodId, Byte *outBuf, size_t outBufSize)
 {
@@ -32,10 +32,10 @@ __attribute__((used)) static SRes MixCoder_SetFromMethod(CMixCoder *p, unsigned 
   p->ids[coderIndex] = methodId;
   switch (methodId)
   {
-    case XZ_ID_LZMA2: return Lzma2State_SetFromMethod(sc, outBuf, outBufSize, p->alloc);
-    #ifdef USE_SUBBLOCK
-    case XZ_ID_Subblock: return SbState_SetFromMethod(sc, p->alloc);
-    #endif
+    case 129: return Lzma2State_SetFromMethod(sc, outBuf, outBufSize, p->alloc);
+
+
+
   }
   if (coderIndex == 0)
     return SZ_ERROR_UNSUPPORTED;

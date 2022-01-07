@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  jsdisp_t ;
-typedef  int /*<<< orphan*/  IDispatch ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  JSCLASS_ARRAY ; 
- int /*<<< orphan*/  array_from_jsdisp (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  concat_array (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * iface_to_jsdisp (int /*<<< orphan*/ *) ; 
- scalar_t__ is_class (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jsdisp_propput_idx (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jsdisp_release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jsval_disp (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int jsdisp_t ;
+typedef int IDispatch ;
+typedef int HRESULT ;
+typedef int DWORD ;
+
+
+ int JSCLASS_ARRAY ;
+ int array_from_jsdisp (int *) ;
+ int concat_array (int *,int ,int *) ;
+ int * iface_to_jsdisp (int *) ;
+ scalar_t__ is_class (int *,int ) ;
+ int jsdisp_propput_idx (int *,int ,int ) ;
+ int jsdisp_release (int *) ;
+ int jsval_disp (int *) ;
 
 __attribute__((used)) static HRESULT concat_obj(jsdisp_t *array, IDispatch *obj, DWORD *len)
 {

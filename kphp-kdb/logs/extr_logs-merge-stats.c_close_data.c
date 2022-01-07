@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int MAX_FN ; 
- int /*<<< orphan*/ ** f ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
+ int MAX_FN ;
+ int ** f ;
+ int fclose (int *) ;
 
 void close_data (void) {
   int i;
   for (i = 0; i < MAX_FN; i++) {
-    if (f[i] != NULL) {
+    if (f[i] != ((void*)0)) {
       fclose (f[i]);
     }
   }

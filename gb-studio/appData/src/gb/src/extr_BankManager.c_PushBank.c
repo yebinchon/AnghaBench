@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT8 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SWITCH_ROM (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  StackPush (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bank_stack ; 
+
+
+
+typedef int UINT8 ;
+
+
+ int SWITCH_ROM (int ) ;
+ int StackPush (int ,int ) ;
+ int bank_stack ;
 
 void PushBank(UINT8 b)
 {

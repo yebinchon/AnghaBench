@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  val ;
-typedef  int /*<<< orphan*/  LPBYTE ;
-typedef  scalar_t__ LONG ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  HKEY_CURRENT_USER ; 
- int /*<<< orphan*/  KEY_READ ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- scalar_t__ RegOpenKeyEx (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ RegQueryValueEx (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  SetDefaults () ; 
- int /*<<< orphan*/  _T (char*) ; 
- int dRotate ; 
- int /*<<< orphan*/  registryPath ; 
+
+
+
+typedef int val ;
+typedef int LPBYTE ;
+typedef scalar_t__ LONG ;
+typedef int HKEY ;
+typedef int DWORD ;
+
+
+ scalar_t__ ERROR_SUCCESS ;
+ int HKEY_CURRENT_USER ;
+ int KEY_READ ;
+ int RegCloseKey (int ) ;
+ scalar_t__ RegOpenKeyEx (int ,int ,int ,int ,int *) ;
+ scalar_t__ RegQueryValueEx (int ,int ,int ,int*,int ,int*) ;
+ int SetDefaults () ;
+ int _T (char*) ;
+ int dRotate ;
+ int registryPath ;
 
 void ReadRegistry(){
-	LONG result;
-	HKEY skey;
-	DWORD valtype, valsize, val;
+ LONG result;
+ HKEY skey;
+ DWORD valtype, valsize, val;
 
-	SetDefaults();
+ SetDefaults();
 
-	result = RegOpenKeyEx(HKEY_CURRENT_USER, registryPath, 0, KEY_READ, &skey);
-	if(result != ERROR_SUCCESS)
-		return;
+ result = RegOpenKeyEx(HKEY_CURRENT_USER, registryPath, 0, KEY_READ, &skey);
+ if(result != ERROR_SUCCESS)
+  return;
 
-	valsize=sizeof(val);
+ valsize=sizeof(val);
 
-	result = RegQueryValueEx(skey, _T("Rotate"), 0, &valtype, (LPBYTE)&val, &valsize);
-	if(result == ERROR_SUCCESS)
-		dRotate = val;
-	RegCloseKey(skey);
+ result = RegQueryValueEx(skey, _T("Rotate"), 0, &valtype, (LPBYTE)&val, &valsize);
+ if(result == ERROR_SUCCESS)
+  dRotate = val;
+ RegCloseKey(skey);
 }

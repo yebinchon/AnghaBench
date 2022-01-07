@@ -1,62 +1,62 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int major; int minor; void* ARB_context_flush_control; void* ARB_create_context_no_error; void* EXT_create_context_es2_profile; void* ARB_create_context_profile; void* ARB_create_context_robustness; void* ARB_create_context; scalar_t__ CreateContextAttribsARB; void* EXT_framebuffer_sRGB; void* ARB_framebuffer_sRGB; void* ARB_multisample; void* MESA_swap_control; scalar_t__ SwapIntervalMESA; void* SGI_swap_control; scalar_t__ SwapIntervalSGI; void* EXT_swap_control; scalar_t__ SwapIntervalEXT; int /*<<< orphan*/  eventBase; int /*<<< orphan*/  errorBase; void* GetVisualFromFBConfig; void* GetProcAddressARB; void* GetProcAddress; void* DestroyWindow; void* CreateWindow; void* CreateNewContext; void* QueryExtensionsString; void* SwapBuffers; void* MakeCurrent; void* DestroyContext; void* QueryVersion; void* QueryExtension; void* GetClientString; void* GetFBConfigAttrib; void* GetFBConfigs; scalar_t__ handle; } ;
-struct TYPE_4__ {int /*<<< orphan*/  display; } ;
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int major; int minor; void* ARB_context_flush_control; void* ARB_create_context_no_error; void* EXT_create_context_es2_profile; void* ARB_create_context_profile; void* ARB_create_context_robustness; void* ARB_create_context; scalar_t__ CreateContextAttribsARB; void* EXT_framebuffer_sRGB; void* ARB_framebuffer_sRGB; void* ARB_multisample; void* MESA_swap_control; scalar_t__ SwapIntervalMESA; void* SGI_swap_control; scalar_t__ SwapIntervalSGI; void* EXT_swap_control; scalar_t__ SwapIntervalEXT; int eventBase; int errorBase; void* GetVisualFromFBConfig; void* GetProcAddressARB; void* GetProcAddress; void* DestroyWindow; void* CreateWindow; void* CreateNewContext; void* QueryExtensionsString; void* SwapBuffers; void* MakeCurrent; void* DestroyContext; void* QueryVersion; void* QueryExtension; void* GetClientString; void* GetFBConfigAttrib; void* GetFBConfigs; scalar_t__ handle; } ;
+struct TYPE_4__ {int display; } ;
 struct TYPE_6__ {TYPE_2__ glx; TYPE_1__ x11; } ;
-typedef  scalar_t__ PFNGLXSWAPINTERVALSGIPROC ;
-typedef  scalar_t__ PFNGLXSWAPINTERVALMESAPROC ;
-typedef  scalar_t__ PFNGLXSWAPINTERVALEXTPROC ;
-typedef  scalar_t__ PFNGLXCREATECONTEXTATTRIBSARBPROC ;
-typedef  void* GLFWbool ;
+typedef scalar_t__ PFNGLXSWAPINTERVALSGIPROC ;
+typedef scalar_t__ PFNGLXSWAPINTERVALMESAPROC ;
+typedef scalar_t__ PFNGLXSWAPINTERVALEXTPROC ;
+typedef scalar_t__ PFNGLXCREATECONTEXTATTRIBSARBPROC ;
+typedef void* GLFWbool ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GLFW_API_UNAVAILABLE ; 
- void* GLFW_FALSE ; 
- int /*<<< orphan*/  GLFW_PLATFORM_ERROR ; 
- void* GLFW_TRUE ; 
- char* _GLFW_GLX_LIBRARY ; 
- TYPE_3__ _glfw ; 
- int /*<<< orphan*/  _glfwInputError (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ _glfw_dlopen (char const*) ; 
- void* _glfw_dlsym (scalar_t__,char*) ; 
- scalar_t__ extensionSupportedGLX (char*) ; 
- scalar_t__ getProcAddressGLX (char*) ; 
- int /*<<< orphan*/  glXQueryExtension (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  glXQueryVersion (int /*<<< orphan*/ ,int*,int*) ; 
+
+ int GLFW_API_UNAVAILABLE ;
+ void* GLFW_FALSE ;
+ int GLFW_PLATFORM_ERROR ;
+ void* GLFW_TRUE ;
+ char* _GLFW_GLX_LIBRARY ;
+ TYPE_3__ _glfw ;
+ int _glfwInputError (int ,char*) ;
+ scalar_t__ _glfw_dlopen (char const*) ;
+ void* _glfw_dlsym (scalar_t__,char*) ;
+ scalar_t__ extensionSupportedGLX (char*) ;
+ scalar_t__ getProcAddressGLX (char*) ;
+ int glXQueryExtension (int ,int *,int *) ;
+ int glXQueryVersion (int ,int*,int*) ;
 
 GLFWbool _glfwInitGLX(void)
 {
     int i;
     const char* sonames[] =
     {
-#if defined(_GLFW_GLX_LIBRARY)
-        _GLFW_GLX_LIBRARY,
-#elif defined(__CYGWIN__)
-        "libGL-1.so",
-#else
+
+
+
+
+
         "libGL.so.1",
         "libGL.so",
-#endif
-        NULL
+
+        ((void*)0)
     };
 
     if (_glfw.glx.handle)
         return GLFW_TRUE;
 
-    for (i = 0;  sonames[i];  i++)
+    for (i = 0; sonames[i]; i++)
     {
         _glfw.glx.handle = _glfw_dlopen(sonames[i]);
         if (_glfw.glx.handle)

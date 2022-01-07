@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_int32_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u_int32_t ;
 struct ath_hal {int dummy; } ;
 struct TYPE_2__ {int ah_phyrestart_disabled; } ;
 
-/* Variables and functions */
- TYPE_1__* AH9300 (struct ath_hal*) ; 
- int /*<<< orphan*/  AR_PHY_RESTART ; 
- int /*<<< orphan*/  AR_PHY_RESTART_ENA ; 
- int /*<<< orphan*/  OS_REG_READ (struct ath_hal*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OS_REG_WRITE (struct ath_hal*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ TYPE_1__* AH9300 (struct ath_hal*) ;
+ int AR_PHY_RESTART ;
+ int AR_PHY_RESTART_ENA ;
+ int OS_REG_READ (struct ath_hal*,int ) ;
+ int OS_REG_WRITE (struct ath_hal*,int ,int ) ;
 
 void ar9300_disable_phy_restart(struct ath_hal *ah, int disable_phy_restart)
 {

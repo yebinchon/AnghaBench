@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  chip_id ;
 
-/* Variables and functions */
- int READ_PERI_REG (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SPI_CMD_REG (int /*<<< orphan*/ ) ; 
- int SPI_FLASH_RDID ; 
- int /*<<< orphan*/  SPI_W0_REG (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WRITE_PERI_REG (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  send_packet (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef int chip_id ;
+
+
+ int READ_PERI_REG (int ) ;
+ int SPI_CMD_REG (int ) ;
+ int SPI_FLASH_RDID ;
+ int SPI_W0_REG (int ) ;
+ int WRITE_PERI_REG (int ,int) ;
+ int send_packet (int *,int) ;
 
 int do_flash_read_chip_id(void) {
   uint32_t chip_id = 0;

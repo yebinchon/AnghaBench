@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char WCHAR ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef char WCHAR ;
 struct TYPE_9__ {TYPE_1__* tables; } ;
-struct TYPE_8__ {char* MajorVersion; int /*<<< orphan*/  RevisionNumber; int /*<<< orphan*/  BuildNumber; int /*<<< orphan*/  MinorVersion; } ;
+struct TYPE_8__ {char* MajorVersion; int RevisionNumber; int BuildNumber; int MinorVersion; } ;
 struct TYPE_7__ {int offset; } ;
-typedef  int /*<<< orphan*/ * LPWSTR ;
-typedef  int LONG ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  TYPE_2__ ASSEMBLYTABLE ;
-typedef  TYPE_3__ ASSEMBLY ;
+typedef int * LPWSTR ;
+typedef int LONG ;
+typedef int HRESULT ;
+typedef TYPE_2__ ASSEMBLYTABLE ;
+typedef TYPE_3__ ASSEMBLY ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_FAIL ; 
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- int /*<<< orphan*/  S_OK ; 
- size_t TableFromToken (int /*<<< orphan*/ ) ; 
- TYPE_2__* assembly_data_offset (TYPE_3__*,int) ; 
- int /*<<< orphan*/ * heap_alloc (int) ; 
- int /*<<< orphan*/  mdtAssembly ; 
- int /*<<< orphan*/  swprintf (int /*<<< orphan*/ *,char const*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int E_FAIL ;
+ int E_OUTOFMEMORY ;
+ int S_OK ;
+ size_t TableFromToken (int ) ;
+ TYPE_2__* assembly_data_offset (TYPE_3__*,int) ;
+ int * heap_alloc (int) ;
+ int mdtAssembly ;
+ int swprintf (int *,char const*,char*,int ,int ,int ) ;
 
 HRESULT assembly_get_version(ASSEMBLY *assembly, LPWSTR *version)
 {
@@ -40,7 +40,7 @@ HRESULT assembly_get_version(ASSEMBLY *assembly, LPWSTR *version)
     ASSEMBLYTABLE *asmtbl;
     LONG offset;
 
-    *version = NULL;
+    *version = ((void*)0);
 
     offset = assembly->tables[TableFromToken(mdtAssembly)].offset;
     if (offset == -1)

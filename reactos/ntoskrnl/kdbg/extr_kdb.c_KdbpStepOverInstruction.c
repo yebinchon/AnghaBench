@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ ULONG_PTR ;
-typedef  int LONG ;
-typedef  int /*<<< orphan*/  BOOLEAN ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  KdbBreakPointTemporary ; 
- int KdbpGetInstLength (scalar_t__) ; 
- int /*<<< orphan*/  KdbpInsertBreakPoint (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  KdbpShouldStepOverInstruction (scalar_t__) ; 
- int /*<<< orphan*/  NT_SUCCESS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
+
+
+
+typedef scalar_t__ ULONG_PTR ;
+typedef int LONG ;
+typedef int BOOLEAN ;
+
+
+ int FALSE ;
+ int KdbBreakPointTemporary ;
+ int KdbpGetInstLength (scalar_t__) ;
+ int KdbpInsertBreakPoint (scalar_t__,int ,int ,int ,int *,int ,int *) ;
+ int KdbpShouldStepOverInstruction (scalar_t__) ;
+ int NT_SUCCESS (int ) ;
+ int TRUE ;
 
 BOOLEAN
 KdbpStepOverInstruction(
@@ -36,7 +36,7 @@ KdbpStepOverInstruction(
     if (InstLen < 1)
         return FALSE;
 
-    if (!NT_SUCCESS(KdbpInsertBreakPoint(Eip + InstLen, KdbBreakPointTemporary, 0, 0, NULL, FALSE, NULL)))
+    if (!NT_SUCCESS(KdbpInsertBreakPoint(Eip + InstLen, KdbBreakPointTemporary, 0, 0, ((void*)0), FALSE, ((void*)0))))
         return FALSE;
 
     return TRUE;

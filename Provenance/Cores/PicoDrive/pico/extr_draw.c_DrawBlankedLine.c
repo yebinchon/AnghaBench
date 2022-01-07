@@ -1,37 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  BackFill (int,int) ; 
- char* DrawLineDest ; 
- int DrawLineDestIncrement ; 
- int /*<<< orphan*/  FinalizeLine (int,int) ; 
- int /*<<< orphan*/  HighCol ; 
- scalar_t__ HighColIncrement ; 
- int /*<<< orphan*/  PicoScanBegin (int) ; 
- int /*<<< orphan*/  PicoScanEnd (int) ; 
+ int BackFill (int,int) ;
+ char* DrawLineDest ;
+ int DrawLineDestIncrement ;
+ int FinalizeLine (int,int) ;
+ int HighCol ;
+ scalar_t__ HighColIncrement ;
+ int PicoScanBegin (int) ;
+ int PicoScanEnd (int) ;
 
 __attribute__((used)) static void DrawBlankedLine(int line, int offs, int sh, int bgc)
 {
-  if (PicoScanBegin != NULL)
+  if (PicoScanBegin != ((void*)0))
     PicoScanBegin(line + offs);
 
   BackFill(bgc, sh);
 
-  if (FinalizeLine != NULL)
+  if (FinalizeLine != ((void*)0))
     FinalizeLine(sh, line);
 
-  if (PicoScanEnd != NULL)
+  if (PicoScanEnd != ((void*)0))
     PicoScanEnd(line + offs);
 
   HighCol += HighColIncrement;

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  biton32 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  c_lyr ; 
- int /*<<< orphan*/  layer_state ; 
- int /*<<< orphan*/  matrix_scan_keymap () ; 
- int rainbow_loop (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rgblight_set () ; 
- int set_layer_led (int /*<<< orphan*/ ) ; 
- int shifted_layer () ; 
+
+
+
+typedef int uint8_t ;
+
+
+ int biton32 (int ) ;
+ int c_lyr ;
+ int layer_state ;
+ int matrix_scan_keymap () ;
+ int rainbow_loop (int ) ;
+ int rgblight_set () ;
+ int set_layer_led (int ) ;
+ int shifted_layer () ;
 
 void matrix_scan_user(void) {
   static uint8_t is_leds_changes = 1;

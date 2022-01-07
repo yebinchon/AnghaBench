@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
-typedef  int /*<<< orphan*/  apr_hash_index_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * apr_hash_first (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * apr_hash_next (int /*<<< orphan*/ *) ; 
- char* apr_hash_this_key (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_hash_sets (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_prop_regular_kind ; 
- scalar_t__ svn_property_kind2 (char const*) ; 
+
+
+
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
+typedef int apr_hash_index_t ;
+
+
+ int * apr_hash_first (int *,int *) ;
+ int * apr_hash_next (int *) ;
+ char* apr_hash_this_key (int *) ;
+ int svn_hash_sets (int *,char const*,int *) ;
+ scalar_t__ svn_prop_regular_kind ;
+ scalar_t__ svn_property_kind2 (char const*) ;
 
 void
 svn_ra_serf__keep_only_regular_props(apr_hash_t *props,
@@ -33,6 +33,6 @@ svn_ra_serf__keep_only_regular_props(apr_hash_t *props,
       const char *propname = apr_hash_this_key(hi);
 
       if (svn_property_kind2(propname) != svn_prop_regular_kind)
-        svn_hash_sets(props, propname, NULL);
+        svn_hash_sets(props, propname, ((void*)0));
     }
 }

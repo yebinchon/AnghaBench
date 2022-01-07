@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct acpi_table_header {int revision; } ;
-struct acpi_pptt_processor {int flags; int /*<<< orphan*/  parent; } ;
+struct acpi_pptt_processor {int flags; int parent; } ;
 
-/* Variables and functions */
- int ACPI_PPTT_ACPI_IDENTICAL ; 
- struct acpi_pptt_processor* fetch_pptt_node (struct acpi_table_header*,int /*<<< orphan*/ ) ; 
+
+ int ACPI_PPTT_ACPI_IDENTICAL ;
+ struct acpi_pptt_processor* fetch_pptt_node (struct acpi_table_header*,int ) ;
 
 __attribute__((used)) static bool flag_identical(struct acpi_table_header *table_hdr,
-			   struct acpi_pptt_processor *cpu)
+      struct acpi_pptt_processor *cpu)
 {
-	struct acpi_pptt_processor *next;
+ struct acpi_pptt_processor *next;
 
-	/* heterogeneous machines must use PPTT revision > 1 */
-	if (table_hdr->revision < 2)
-		return false;
 
-	/* Locate the last node in the tree with IDENTICAL set */
-	if (cpu->flags & ACPI_PPTT_ACPI_IDENTICAL) {
-		next = fetch_pptt_node(table_hdr, cpu->parent);
-		if (!(next && next->flags & ACPI_PPTT_ACPI_IDENTICAL))
-			return true;
-	}
+ if (table_hdr->revision < 2)
+  return 0;
 
-	return false;
+
+ if (cpu->flags & ACPI_PPTT_ACPI_IDENTICAL) {
+  next = fetch_pptt_node(table_hdr, cpu->parent);
+  if (!(next && next->flags & ACPI_PPTT_ACPI_IDENTICAL))
+   return 1;
+ }
+
+ return 0;
 }

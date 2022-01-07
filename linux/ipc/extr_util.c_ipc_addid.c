@@ -1,86 +1,86 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct kern_ipc_perm {int deleted; scalar_t__ key; int /*<<< orphan*/  lock; int /*<<< orphan*/  khtnode; int /*<<< orphan*/  cgid; int /*<<< orphan*/  gid; int /*<<< orphan*/  uid; int /*<<< orphan*/  cuid; int /*<<< orphan*/  refcount; } ;
-struct ipc_ids {int in_use; int max_idx; int /*<<< orphan*/  ipcs_idr; int /*<<< orphan*/  key_ht; } ;
-typedef  int /*<<< orphan*/  kuid_t ;
-typedef  int /*<<< orphan*/  kgid_t ;
 
-/* Variables and functions */
- int ENOSPC ; 
- int /*<<< orphan*/  GFP_KERNEL ; 
- scalar_t__ IPC_PRIVATE ; 
- int /*<<< orphan*/  current_euid_egid (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  idr_preload (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  idr_preload_end () ; 
- int /*<<< orphan*/  idr_remove (int /*<<< orphan*/ *,int) ; 
- int ipc_idr_alloc (struct ipc_ids*,struct kern_ipc_perm*) ; 
- int /*<<< orphan*/  ipc_kht_params ; 
- int ipc_mni ; 
- int /*<<< orphan*/  rcu_read_lock () ; 
- int /*<<< orphan*/  rcu_read_unlock () ; 
- int /*<<< orphan*/  refcount_set (int /*<<< orphan*/ *,int) ; 
- int rhashtable_insert_fast (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  spin_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_lock_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock (int /*<<< orphan*/ *) ; 
+
+
+
+struct kern_ipc_perm {int deleted; scalar_t__ key; int lock; int khtnode; int cgid; int gid; int uid; int cuid; int refcount; } ;
+struct ipc_ids {int in_use; int max_idx; int ipcs_idr; int key_ht; } ;
+typedef int kuid_t ;
+typedef int kgid_t ;
+
+
+ int ENOSPC ;
+ int GFP_KERNEL ;
+ scalar_t__ IPC_PRIVATE ;
+ int current_euid_egid (int *,int *) ;
+ int idr_preload (int ) ;
+ int idr_preload_end () ;
+ int idr_remove (int *,int) ;
+ int ipc_idr_alloc (struct ipc_ids*,struct kern_ipc_perm*) ;
+ int ipc_kht_params ;
+ int ipc_mni ;
+ int rcu_read_lock () ;
+ int rcu_read_unlock () ;
+ int refcount_set (int *,int) ;
+ int rhashtable_insert_fast (int *,int *,int ) ;
+ int spin_lock (int *) ;
+ int spin_lock_init (int *) ;
+ int spin_unlock (int *) ;
 
 int ipc_addid(struct ipc_ids *ids, struct kern_ipc_perm *new, int limit)
 {
-	kuid_t euid;
-	kgid_t egid;
-	int idx, err;
+ kuid_t euid;
+ kgid_t egid;
+ int idx, err;
 
-	/* 1) Initialize the refcount so that ipc_rcu_putref works */
-	refcount_set(&new->refcount, 1);
 
-	if (limit > ipc_mni)
-		limit = ipc_mni;
+ refcount_set(&new->refcount, 1);
 
-	if (ids->in_use >= limit)
-		return -ENOSPC;
+ if (limit > ipc_mni)
+  limit = ipc_mni;
 
-	idr_preload(GFP_KERNEL);
+ if (ids->in_use >= limit)
+  return -ENOSPC;
 
-	spin_lock_init(&new->lock);
-	rcu_read_lock();
-	spin_lock(&new->lock);
+ idr_preload(GFP_KERNEL);
 
-	current_euid_egid(&euid, &egid);
-	new->cuid = new->uid = euid;
-	new->gid = new->cgid = egid;
+ spin_lock_init(&new->lock);
+ rcu_read_lock();
+ spin_lock(&new->lock);
 
-	new->deleted = false;
+ current_euid_egid(&euid, &egid);
+ new->cuid = new->uid = euid;
+ new->gid = new->cgid = egid;
 
-	idx = ipc_idr_alloc(ids, new);
-	idr_preload_end();
+ new->deleted = 0;
 
-	if (idx >= 0 && new->key != IPC_PRIVATE) {
-		err = rhashtable_insert_fast(&ids->key_ht, &new->khtnode,
-					     ipc_kht_params);
-		if (err < 0) {
-			idr_remove(&ids->ipcs_idr, idx);
-			idx = err;
-		}
-	}
-	if (idx < 0) {
-		new->deleted = true;
-		spin_unlock(&new->lock);
-		rcu_read_unlock();
-		return idx;
-	}
+ idx = ipc_idr_alloc(ids, new);
+ idr_preload_end();
 
-	ids->in_use++;
-	if (idx > ids->max_idx)
-		ids->max_idx = idx;
-	return idx;
+ if (idx >= 0 && new->key != IPC_PRIVATE) {
+  err = rhashtable_insert_fast(&ids->key_ht, &new->khtnode,
+          ipc_kht_params);
+  if (err < 0) {
+   idr_remove(&ids->ipcs_idr, idx);
+   idx = err;
+  }
+ }
+ if (idx < 0) {
+  new->deleted = 1;
+  spin_unlock(&new->lock);
+  rcu_read_unlock();
+  return idx;
+ }
+
+ ids->in_use++;
+ if (idx > ids->max_idx)
+  ids->max_idx = idx;
+ return idx;
 }

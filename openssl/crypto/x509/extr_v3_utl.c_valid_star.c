@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int LABEL_HYPHEN ; 
- int LABEL_IDNA ; 
- int LABEL_START ; 
- unsigned int X509_CHECK_FLAG_NO_PARTIAL_WILDCARDS ; 
- scalar_t__ strncasecmp (char*,char*,int) ; 
+ int LABEL_HYPHEN ;
+ int LABEL_IDNA ;
+ int LABEL_START ;
+ unsigned int X509_CHECK_FLAG_NO_PARTIAL_WILDCARDS ;
+ scalar_t__ strncasecmp (char*,char*,int) ;
 
 __attribute__((used)) static const unsigned char *valid_star(const unsigned char *p, size_t len,
                                        unsigned int flags)
@@ -26,27 +18,27 @@ __attribute__((used)) static const unsigned char *valid_star(const unsigned char
     int state = LABEL_START;
     int dots = 0;
     for (i = 0; i < len; ++i) {
-        /*
-         * Locate first and only legal wildcard, either at the start
-         * or end of a non-IDNA first and not final label.
-         */
+
+
+
+
         if (p[i] == '*') {
             int atstart = (state & LABEL_START);
             int atend = (i == len - 1 || p[i + 1] == '.');
-            /*-
-             * At most one wildcard per pattern.
-             * No wildcards in IDNA labels.
-             * No wildcards after the first label.
-             */
-            if (star != NULL || (state & LABEL_IDNA) != 0 || dots)
-                return NULL;
-            /* Only full-label '*.example.com' wildcards? */
+
+
+
+
+
+            if (star != ((void*)0) || (state & LABEL_IDNA) != 0 || dots)
+                return ((void*)0);
+
             if ((flags & X509_CHECK_FLAG_NO_PARTIAL_WILDCARDS)
                 && (!atstart || !atend))
-                return NULL;
-            /* No 'foo*bar' wildcards */
+                return ((void*)0);
+
             if (!atstart && !atend)
-                return NULL;
+                return ((void*)0);
             star = &p[i];
             state &= ~LABEL_START;
         } else if (('a' <= p[i] && p[i] <= 'z')
@@ -58,23 +50,23 @@ __attribute__((used)) static const unsigned char *valid_star(const unsigned char
             state &= ~(LABEL_HYPHEN | LABEL_START);
         } else if (p[i] == '.') {
             if ((state & (LABEL_HYPHEN | LABEL_START)) != 0)
-                return NULL;
+                return ((void*)0);
             state = LABEL_START;
             ++dots;
         } else if (p[i] == '-') {
-            /* no domain/subdomain starts with '-' */
+
             if ((state & LABEL_START) != 0)
-                return NULL;
+                return ((void*)0);
             state |= LABEL_HYPHEN;
         } else
-            return NULL;
+            return ((void*)0);
     }
 
-    /*
-     * The final label must not end in a hyphen or ".", and
-     * there must be at least two dots after the star.
-     */
+
+
+
+
     if ((state & (LABEL_START | LABEL_HYPHEN)) != 0 || dots < 2)
-        return NULL;
+        return ((void*)0);
     return star;
 }

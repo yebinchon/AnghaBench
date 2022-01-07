@@ -1,144 +1,144 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_6__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_16__ {int /*<<< orphan*/  AccountName; } ;
-struct TYPE_15__ {int /*<<< orphan*/  lock; TYPE_6__* ClientOption; int /*<<< orphan*/ * ClientSession; } ;
-struct TYPE_14__ {int /*<<< orphan*/  AccountList; } ;
-struct TYPE_13__ {int /*<<< orphan*/  NewName; int /*<<< orphan*/  OldName; } ;
-typedef  TYPE_1__ RPC_RENAME_ACCOUNT ;
-typedef  int /*<<< orphan*/  CLIENT_OPTION ;
-typedef  TYPE_2__ CLIENT ;
-typedef  TYPE_3__ ACCOUNT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLog (TYPE_2__*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CiNotify (TYPE_2__*) ; 
- int /*<<< orphan*/  CiSaveConfigurationFile (TYPE_2__*) ; 
- int /*<<< orphan*/  CiSetError (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ERR_ACCOUNT_ACTIVE ; 
- int /*<<< orphan*/  ERR_ACCOUNT_ALREADY_EXISTS ; 
- int /*<<< orphan*/  ERR_ACCOUNT_NOT_FOUND ; 
- int /*<<< orphan*/  ERR_INVALID_VALUE ; 
- int /*<<< orphan*/  Free (TYPE_6__*) ; 
- int /*<<< orphan*/  Lock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LockList (int /*<<< orphan*/ ) ; 
- TYPE_3__* Search (int /*<<< orphan*/ ,TYPE_3__*) ; 
- int /*<<< orphan*/  Sort (int /*<<< orphan*/ ) ; 
- scalar_t__ UniStrCmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  UniStrCpy (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- scalar_t__ UniStrLen (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Unlock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  UnlockList (int /*<<< orphan*/ ) ; 
- void* ZeroMalloc (int) ; 
+
+typedef struct TYPE_16__ TYPE_6__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+struct TYPE_16__ {int AccountName; } ;
+struct TYPE_15__ {int lock; TYPE_6__* ClientOption; int * ClientSession; } ;
+struct TYPE_14__ {int AccountList; } ;
+struct TYPE_13__ {int NewName; int OldName; } ;
+typedef TYPE_1__ RPC_RENAME_ACCOUNT ;
+typedef int CLIENT_OPTION ;
+typedef TYPE_2__ CLIENT ;
+typedef TYPE_3__ ACCOUNT ;
+
+
+ int CLog (TYPE_2__*,char*,int ,int ) ;
+ int CiNotify (TYPE_2__*) ;
+ int CiSaveConfigurationFile (TYPE_2__*) ;
+ int CiSetError (TYPE_2__*,int ) ;
+ int ERR_ACCOUNT_ACTIVE ;
+ int ERR_ACCOUNT_ALREADY_EXISTS ;
+ int ERR_ACCOUNT_NOT_FOUND ;
+ int ERR_INVALID_VALUE ;
+ int Free (TYPE_6__*) ;
+ int Lock (int ) ;
+ int LockList (int ) ;
+ TYPE_3__* Search (int ,TYPE_3__*) ;
+ int Sort (int ) ;
+ scalar_t__ UniStrCmp (int ,int ) ;
+ int UniStrCpy (int ,int,int ) ;
+ scalar_t__ UniStrLen (int ) ;
+ int Unlock (int ) ;
+ int UnlockList (int ) ;
+ void* ZeroMalloc (int) ;
 
 bool CtRenameAccount(CLIENT *c, RPC_RENAME_ACCOUNT *rename, bool inner)
 {
-	bool ret;
-	// Validate arguments
-	if (c == NULL || rename == NULL)
-	{
-		return false;
-	}
+ bool ret;
+
+ if (c == ((void*)0) || rename == ((void*)0))
+ {
+  return 0;
+ }
 
 
-	ret = false;
+ ret = 0;
 
-	if (UniStrCmp(rename->NewName, rename->OldName) == 0)
-	{
-		// The name has not been changed
-		return true;
-	}
+ if (UniStrCmp(rename->NewName, rename->OldName) == 0)
+ {
 
-	LockList(c->AccountList);
-	{
-		ACCOUNT t, *r, *r2;
+  return 1;
+ }
 
-		if (UniStrLen(rename->NewName) == 0)
-		{
-			// Name is invalid
-			CiSetError(c, ERR_INVALID_VALUE);
-			UnlockList(c->AccountList);
-			return false;
-		}
+ LockList(c->AccountList);
+ {
+  ACCOUNT t, *r, *r2;
 
-		// Search for old account name
-		t.ClientOption = ZeroMalloc(sizeof(CLIENT_OPTION));
-		UniStrCpy(t.ClientOption->AccountName, sizeof(t.ClientOption->AccountName), rename->OldName);
+  if (UniStrLen(rename->NewName) == 0)
+  {
 
-		r = Search(c->AccountList, &t);
-		if (r == NULL)
-		{
-			// Specified account can not be found
-			UnlockList(c->AccountList);
+   CiSetError(c, ERR_INVALID_VALUE);
+   UnlockList(c->AccountList);
+   return 0;
+  }
 
-			Free(t.ClientOption);
-			CiSetError(c, ERR_ACCOUNT_NOT_FOUND);
-			return false;
-		}
 
-		Free(t.ClientOption);
+  t.ClientOption = ZeroMalloc(sizeof(CLIENT_OPTION));
+  UniStrCpy(t.ClientOption->AccountName, sizeof(t.ClientOption->AccountName), rename->OldName);
 
-		// Search for a new account name
-		t.ClientOption = ZeroMalloc(sizeof(CLIENT_OPTION));
-		UniStrCpy(t.ClientOption->AccountName, sizeof(t.ClientOption->AccountName), rename->NewName);
+  r = Search(c->AccountList, &t);
+  if (r == ((void*)0))
+  {
 
-		r2 = Search(c->AccountList, &t);
-		if (r2 != NULL)
-		{
-			// Account with the specified name already exists
-			UnlockList(c->AccountList);
+   UnlockList(c->AccountList);
 
-			Free(t.ClientOption);
-			CiSetError(c, ERR_ACCOUNT_ALREADY_EXISTS);
-			return false;
-		}
+   Free(t.ClientOption);
+   CiSetError(c, ERR_ACCOUNT_NOT_FOUND);
+   return 0;
+  }
 
-		Free(t.ClientOption);
+  Free(t.ClientOption);
 
-		Lock(r->lock);
-		{
-			// Check the operating state of the account
-			if (r->ClientSession != NULL)
-			{
-				// The Account is working
-				Unlock(r->lock);
-				UnlockList(c->AccountList);
-				CiSetError(c, ERR_ACCOUNT_ACTIVE);
 
-				return false;
-			}
+  t.ClientOption = ZeroMalloc(sizeof(CLIENT_OPTION));
+  UniStrCpy(t.ClientOption->AccountName, sizeof(t.ClientOption->AccountName), rename->NewName);
 
-			// Update the account name
-			UniStrCpy(r->ClientOption->AccountName, sizeof(r->ClientOption->AccountName),
-				rename->NewName);
+  r2 = Search(c->AccountList, &t);
+  if (r2 != ((void*)0))
+  {
 
-			CLog(c, "LC_RENAME_ACCOUNT", rename->OldName, rename->NewName);
+   UnlockList(c->AccountList);
 
-			ret = true;
-		}
-		Unlock(r->lock);
+   Free(t.ClientOption);
+   CiSetError(c, ERR_ACCOUNT_ALREADY_EXISTS);
+   return 0;
+  }
 
-		Sort(c->AccountList);
+  Free(t.ClientOption);
 
-	}
-	UnlockList(c->AccountList);
+  Lock(r->lock);
+  {
 
-	CiSaveConfigurationFile(c);
+   if (r->ClientSession != ((void*)0))
+   {
 
-	CiNotify(c);
+    Unlock(r->lock);
+    UnlockList(c->AccountList);
+    CiSetError(c, ERR_ACCOUNT_ACTIVE);
 
-	return ret;
+    return 0;
+   }
+
+
+   UniStrCpy(r->ClientOption->AccountName, sizeof(r->ClientOption->AccountName),
+    rename->NewName);
+
+   CLog(c, "LC_RENAME_ACCOUNT", rename->OldName, rename->NewName);
+
+   ret = 1;
+  }
+  Unlock(r->lock);
+
+  Sort(c->AccountList);
+
+ }
+ UnlockList(c->AccountList);
+
+ CiSaveConfigurationFile(c);
+
+ CiNotify(c);
+
+ return ret;
 }

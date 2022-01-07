@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct bxe_softc {int /*<<< orphan*/  sp_state; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BLOGE (struct bxe_softc*,char*,unsigned long,unsigned long) ; 
- int /*<<< orphan*/  DELAY (int) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
- unsigned long atomic_load_acq_long (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mb () ; 
+
+
+
+typedef int uint8_t ;
+struct bxe_softc {int sp_state; } ;
+
+
+ int BLOGE (struct bxe_softc*,char*,unsigned long,unsigned long) ;
+ int DELAY (int) ;
+ int FALSE ;
+ int TRUE ;
+ unsigned long atomic_load_acq_long (int *) ;
+ int mb () ;
 
 __attribute__((used)) static inline uint8_t
 bxe_wait_sp_comp(struct bxe_softc *sc,
-                 unsigned long    mask)
+                 unsigned long mask)
 {
     unsigned long tmp;
-    int tout = 5000; /* wait for 5 secs tops */
+    int tout = 5000;
 
     while (tout--) {
         mb();

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  resv; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int resv; } ;
 struct drm_i915_gem_object {TYPE_1__ base; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dma_resv_lock (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int dma_resv_lock (int ,int *) ;
 
 __attribute__((used)) static inline void i915_gem_object_lock(struct drm_i915_gem_object *obj)
 {
-	dma_resv_lock(obj->base.resv, NULL);
+ dma_resv_lock(obj->base.resv, ((void*)0));
 }

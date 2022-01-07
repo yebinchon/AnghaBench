@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  BIGNUM ;
 
-/* Variables and functions */
- int BN_BITS2 ; 
- int /*<<< orphan*/  BN_FLG_CONSTTIME ; 
- int /*<<< orphan*/  BN_bntest_rand (int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BN_consttime_swap (int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * BN_copy (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_get_flags (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * BN_new () ; 
- int BN_num_bits (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_set_flags (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BN_swap (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TEST_false (int /*<<< orphan*/ ) ; 
- scalar_t__ TEST_ptr (int /*<<< orphan*/ *) ; 
- scalar_t__ TEST_true (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  equalBN (char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int BIGNUM ;
+
+
+ int BN_BITS2 ;
+ int BN_FLG_CONSTTIME ;
+ int BN_bntest_rand (int *,int,int,int ) ;
+ int BN_consttime_swap (int,int *,int *,int) ;
+ int * BN_copy (int *,int *) ;
+ int BN_free (int *) ;
+ int BN_get_flags (int *,int ) ;
+ int * BN_new () ;
+ int BN_num_bits (int *) ;
+ int BN_set_flags (int *,int ) ;
+ int BN_swap (int *,int *) ;
+ int TEST_false (int ) ;
+ scalar_t__ TEST_ptr (int *) ;
+ scalar_t__ TEST_true (int ) ;
+ int equalBN (char*,int *,int *) ;
 
 __attribute__((used)) static int test_swap(void)
 {
-    BIGNUM *a = NULL, *b = NULL, *c = NULL, *d = NULL;
+    BIGNUM *a = ((void*)0), *b = ((void*)0), *c = ((void*)0), *d = ((void*)0);
     int top, cond, st = 0;
 
     if (!TEST_ptr(a = BN_new())
@@ -47,27 +47,27 @@ __attribute__((used)) static int test_swap(void)
         goto err;
     top = BN_num_bits(a) / BN_BITS2;
 
-    /* regular swap */
+
     BN_swap(a, b);
     if (!equalBN("swap", a, d)
             || !equalBN("swap", b, c))
         goto err;
 
-    /* conditional swap: true */
+
     cond = 1;
     BN_consttime_swap(cond, a, b, top);
     if (!equalBN("cswap true", a, c)
             || !equalBN("cswap true", b, d))
         goto err;
 
-    /* conditional swap: false */
+
     cond = 0;
     BN_consttime_swap(cond, a, b, top);
     if (!equalBN("cswap false", a, c)
             || !equalBN("cswap false", b, d))
         goto err;
 
-    /* same tests but checking flag swap */
+
     BN_set_flags(a, BN_FLG_CONSTTIME);
 
     BN_swap(a, b);

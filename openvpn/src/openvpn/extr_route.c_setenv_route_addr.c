@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct gc_arena {int dummy; } ;
 struct env_set {int dummy; } ;
 struct buffer {int dummy; } ;
-typedef  int /*<<< orphan*/  in_addr_t ;
+typedef int in_addr_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BSTR (struct buffer*) ; 
- struct buffer alloc_buf_gc (int,struct gc_arena*) ; 
- int /*<<< orphan*/  buf_printf (struct buffer*,char*,char const*,...) ; 
- int /*<<< orphan*/  gc_free (struct gc_arena*) ; 
- struct gc_arena gc_new () ; 
- int /*<<< orphan*/  print_in_addr_t (int /*<<< orphan*/  const,int /*<<< orphan*/ ,struct gc_arena*) ; 
- int /*<<< orphan*/  setenv_str (struct env_set*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int BSTR (struct buffer*) ;
+ struct buffer alloc_buf_gc (int,struct gc_arena*) ;
+ int buf_printf (struct buffer*,char*,char const*,...) ;
+ int gc_free (struct gc_arena*) ;
+ struct gc_arena gc_new () ;
+ int print_in_addr_t (int const,int ,struct gc_arena*) ;
+ int setenv_str (struct env_set*,int ,int ) ;
 
 __attribute__((used)) static void
 setenv_route_addr(struct env_set *es, const char *key, const in_addr_t addr, int i)

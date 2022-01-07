@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  IUnknown_inner; void* bAggregatable; int /*<<< orphan*/ * outer_unk; void* bUnkOuterValid; } ;
-typedef  int /*<<< orphan*/  REFIID ;
-typedef  TYPE_1__ PassThruImpl ;
-typedef  int /*<<< orphan*/ * LPVOID ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_NOINTERFACE ; 
- int /*<<< orphan*/  IID_IUnknown ; 
- int /*<<< orphan*/  IUnknown_AddRef (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IUnknown_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IUnknown_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IsEqualIID (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- void* TRUE ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int IUnknown_inner; void* bAggregatable; int * outer_unk; void* bUnkOuterValid; } ;
+typedef int REFIID ;
+typedef TYPE_1__ PassThruImpl ;
+typedef int * LPVOID ;
+typedef int HRESULT ;
+
+
+ int E_NOINTERFACE ;
+ int IID_IUnknown ;
+ int IUnknown_AddRef (int *) ;
+ int IUnknown_QueryInterface (int *,int ,int **) ;
+ int IUnknown_Release (int *) ;
+ scalar_t__ IsEqualIID (int ,int *) ;
+ void* TRUE ;
 
 __attribute__((used)) static HRESULT SeekOuter_QueryInterface(PassThruImpl *This, REFIID riid, LPVOID *ppv)
 {
@@ -47,7 +47,7 @@ __attribute__((used)) static HRESULT SeekOuter_QueryInterface(PassThruImpl *This
             return hr;
         }
 
-        *ppv = NULL;
+        *ppv = ((void*)0);
         return E_NOINTERFACE;
     }
 

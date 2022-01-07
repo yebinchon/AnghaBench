@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ULONGLONG ;
-typedef  int /*<<< orphan*/  ULONG ;
-typedef  scalar_t__ UINT32 ;
-struct TYPE_9__ {scalar_t__ HighPart; scalar_t__ LowPart; int /*<<< orphan*/  QuadPart; } ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int ULONGLONG ;
+typedef int ULONG ;
+typedef scalar_t__ UINT32 ;
+struct TYPE_9__ {scalar_t__ HighPart; scalar_t__ LowPart; int QuadPart; } ;
 struct TYPE_8__ {scalar_t__ FilePointer; scalar_t__ FileSize; scalar_t__ CurrentCluster; scalar_t__ StartCluster; TYPE_1__* Volume; } ;
 struct TYPE_7__ {scalar_t__ SectorsPerCluster; scalar_t__ BytesPerSector; } ;
-typedef  int /*<<< orphan*/  SEEKMODE ;
-typedef  TYPE_1__* PFAT_VOLUME_INFO ;
-typedef  TYPE_2__* PFAT_FILE_INFO ;
-typedef  TYPE_3__ LARGE_INTEGER ;
-typedef  int /*<<< orphan*/  ARC_STATUS ;
+typedef int SEEKMODE ;
+typedef TYPE_1__* PFAT_VOLUME_INFO ;
+typedef TYPE_2__* PFAT_FILE_INFO ;
+typedef TYPE_3__ LARGE_INTEGER ;
+typedef int ARC_STATUS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  EIO ; 
- int /*<<< orphan*/  ESUCCESS ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  FatGetFatEntry (TYPE_1__*,scalar_t__,scalar_t__*) ; 
- TYPE_2__* FsGetDeviceSpecific (int /*<<< orphan*/ ) ; 
-#define  SeekAbsolute 129 
-#define  SeekRelative 128 
- int /*<<< orphan*/  TRACE (char*,scalar_t__,scalar_t__,...) ; 
+
+ int ASSERT (int ) ;
+ int EINVAL ;
+ int EIO ;
+ int ESUCCESS ;
+ int FALSE ;
+ int FatGetFatEntry (TYPE_1__*,scalar_t__,scalar_t__*) ;
+ TYPE_2__* FsGetDeviceSpecific (int ) ;
+
+
+ int TRACE (char*,scalar_t__,scalar_t__,...) ;
 
 ARC_STATUS FatSeek(ULONG FileId, LARGE_INTEGER* Position, SEEKMODE SeekMode)
 {
@@ -45,9 +45,9 @@ ARC_STATUS FatSeek(ULONG FileId, LARGE_INTEGER* Position, SEEKMODE SeekMode)
 
     switch (SeekMode)
     {
-        case SeekAbsolute:
+        case 129:
             break;
-        case SeekRelative:
+        case 128:
             NewPosition.QuadPart += (ULONGLONG)FileHandle->FilePointer;
             break;
         default:

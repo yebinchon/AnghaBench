@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
-typedef  int /*<<< orphan*/  uint16_t ;
-struct TYPE_10__ {int /*<<< orphan*/  mutex; void* direct_lastrecv_timev6; void* direct_lastrecv_timev4; } ;
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint8_t ;
+typedef int uint16_t ;
+struct TYPE_10__ {int mutex; void* direct_lastrecv_timev6; void* direct_lastrecv_timev4; } ;
 struct TYPE_8__ {scalar_t__ family; } ;
 struct TYPE_9__ {TYPE_1__ ip; } ;
-typedef  int /*<<< orphan*/  Net_Crypto ;
-typedef  TYPE_2__ IP_Port ;
-typedef  TYPE_3__ Crypto_Connection ;
+typedef int Net_Crypto ;
+typedef TYPE_2__ IP_Port ;
+typedef TYPE_3__ Crypto_Connection ;
 
-/* Variables and functions */
- scalar_t__ AF_INET ; 
- int /*<<< orphan*/  CRYPTO_MIN_PACKET_SIZE ; 
- int /*<<< orphan*/  MAX_CRYPTO_PACKET_SIZE ; 
- scalar_t__ const NET_PACKET_CRYPTO_HS ; 
- int crypto_id_ip_port (int /*<<< orphan*/ *,TYPE_2__) ; 
- TYPE_3__* get_crypto_connection (int /*<<< orphan*/ *,int) ; 
- scalar_t__ handle_new_connection_handshake (int /*<<< orphan*/ *,TYPE_2__,scalar_t__ const*,int /*<<< orphan*/ ) ; 
- scalar_t__ handle_packet_connection (int /*<<< orphan*/ *,int,scalar_t__ const*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
- void* unix_time () ; 
+
+ scalar_t__ AF_INET ;
+ int CRYPTO_MIN_PACKET_SIZE ;
+ int MAX_CRYPTO_PACKET_SIZE ;
+ scalar_t__ const NET_PACKET_CRYPTO_HS ;
+ int crypto_id_ip_port (int *,TYPE_2__) ;
+ TYPE_3__* get_crypto_connection (int *,int) ;
+ scalar_t__ handle_new_connection_handshake (int *,TYPE_2__,scalar_t__ const*,int ) ;
+ scalar_t__ handle_packet_connection (int *,int,scalar_t__ const*,int ,int) ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
+ void* unix_time () ;
 
 __attribute__((used)) static int udp_handle_packet(void *object, IP_Port source, const uint8_t *packet, uint16_t length)
 {

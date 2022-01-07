@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* z_streamp ;
-struct TYPE_6__ {int /*<<< orphan*/  blocks; struct TYPE_6__* state; scalar_t__ nowrap; int /*<<< orphan*/  mode; struct TYPE_6__* msg; scalar_t__ total_out; scalar_t__ total_in; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Tracev (char*) ; 
- TYPE_1__* Z_NULL ; 
- int Z_OK ; 
- int Z_STREAM_ERROR ; 
- int /*<<< orphan*/  imBLOCKS ; 
- int /*<<< orphan*/  imMETHOD ; 
- int /*<<< orphan*/  inflate_blocks_reset (int /*<<< orphan*/ ,TYPE_1__*,TYPE_1__*) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef TYPE_1__* z_streamp ;
+struct TYPE_6__ {int blocks; struct TYPE_6__* state; scalar_t__ nowrap; int mode; struct TYPE_6__* msg; scalar_t__ total_out; scalar_t__ total_in; } ;
+
+
+ int Tracev (char*) ;
+ TYPE_1__* Z_NULL ;
+ int Z_OK ;
+ int Z_STREAM_ERROR ;
+ int imBLOCKS ;
+ int imMETHOD ;
+ int inflate_blocks_reset (int ,TYPE_1__*,TYPE_1__*) ;
 
 int inflateReset(z_streamp z)
 {

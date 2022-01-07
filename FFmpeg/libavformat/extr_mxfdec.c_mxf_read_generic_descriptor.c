@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int /*<<< orphan*/  int64_t ;
-typedef  int /*<<< orphan*/  UID ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+typedef int int64_t ;
+typedef int UID ;
 struct TYPE_6__ {void* den; void* num; } ;
 struct TYPE_5__ {void* den; void* num; } ;
-struct TYPE_7__ {int extradata_size; int /*<<< orphan*/  pix_fmt; int /*<<< orphan*/  extradata; void* bits_per_sample; void* channels; int /*<<< orphan*/  essence_codec_ul; TYPE_2__ sample_rate; void* vert_subsampling; void* horiz_subsampling; void* component_depth; void* field_dominance; TYPE_1__ aspect_ratio; void** video_line_map; void* frame_layout; void* height; void* width; void* linked_track_id; int /*<<< orphan*/  codec_ul; int /*<<< orphan*/  essence_container_ul; int /*<<< orphan*/  duration; int /*<<< orphan*/  sub_descriptors_count; int /*<<< orphan*/  sub_descriptors_refs; } ;
-typedef  TYPE_3__ MXFDescriptor ;
-typedef  int /*<<< orphan*/  AVIOContext ;
+struct TYPE_7__ {int extradata_size; int pix_fmt; int extradata; void* bits_per_sample; void* channels; int essence_codec_ul; TYPE_2__ sample_rate; void* vert_subsampling; void* horiz_subsampling; void* component_depth; void* field_dominance; TYPE_1__ aspect_ratio; void** video_line_map; void* frame_layout; void* height; void* width; void* linked_track_id; int codec_ul; int essence_container_ul; int duration; int sub_descriptors_count; int sub_descriptors_refs; } ;
+typedef TYPE_3__ MXFDescriptor ;
+typedef int AVIOContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_LOG_WARNING ; 
- int /*<<< orphan*/  AV_PIX_FMT_XYZ12 ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  FF_PROFILE_JPEG2000_DCINEMA_2K ; 
- int /*<<< orphan*/  FF_PROFILE_JPEG2000_DCINEMA_4K ; 
- int /*<<< orphan*/  IS_KLV_KEY (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  av_malloc (int) ; 
- void* avio_r8 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  avio_rb16 (int /*<<< orphan*/ *) ; 
- void* avio_rb32 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  avio_rb64 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  avio_read (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  mxf_jp2k_rsiz ; 
- int /*<<< orphan*/  mxf_read_pixel_layout (int /*<<< orphan*/ *,TYPE_3__*) ; 
- int mxf_read_strong_ref_array (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mxf_sony_mpeg4_extradata ; 
+
+ int AVERROR (int ) ;
+ int AV_LOG_WARNING ;
+ int AV_PIX_FMT_XYZ12 ;
+ int ENOMEM ;
+ int FF_PROFILE_JPEG2000_DCINEMA_2K ;
+ int FF_PROFILE_JPEG2000_DCINEMA_4K ;
+ int IS_KLV_KEY (int ,int ) ;
+ int av_free (int ) ;
+ int av_log (int *,int ,char*,...) ;
+ int av_malloc (int) ;
+ void* avio_r8 (int *) ;
+ int avio_rb16 (int *) ;
+ void* avio_rb32 (int *) ;
+ int avio_rb64 (int *) ;
+ int avio_read (int *,int ,int) ;
+ int mxf_jp2k_rsiz ;
+ int mxf_read_pixel_layout (int *,TYPE_3__*) ;
+ int mxf_read_strong_ref_array (int *,int *,int *) ;
+ int mxf_sony_mpeg4_extradata ;
 
 __attribute__((used)) static int mxf_read_generic_descriptor(void *arg, AVIOContext *pb, int tag, int size, UID uid, int64_t klv_offset)
 {
@@ -52,7 +52,7 @@ __attribute__((used)) static int mxf_read_generic_descriptor(void *arg, AVIOCont
     case 0x3F01:
         return mxf_read_strong_ref_array(pb, &descriptor->sub_descriptors_refs,
                                              &descriptor->sub_descriptors_count);
-    case 0x3002: /* ContainerDuration */
+    case 0x3002:
         descriptor->duration = avio_rb64(pb);
         break;
     case 0x3004:
@@ -64,7 +64,7 @@ __attribute__((used)) static int mxf_read_generic_descriptor(void *arg, AVIOCont
     case 0x3006:
         descriptor->linked_track_id = avio_rb32(pb);
         break;
-    case 0x3201: /* PictureEssenceCoding */
+    case 0x3201:
         avio_read(pb, descriptor->essence_codec_ul, 16);
         break;
     case 0x3203:
@@ -89,7 +89,7 @@ __attribute__((used)) static int mxf_read_generic_descriptor(void *arg, AVIOCont
             else
                 descriptor->video_line_map[1] = 0;
         } else
-            av_log(NULL, AV_LOG_WARNING, "VideoLineMap element size %d currently not supported\n", entry_size);
+            av_log(((void*)0), AV_LOG_WARNING, "VideoLineMap element size %d currently not supported\n", entry_size);
         break;
     case 0x320E:
         descriptor->aspect_ratio.num = avio_rb32(pb);
@@ -111,7 +111,7 @@ __attribute__((used)) static int mxf_read_generic_descriptor(void *arg, AVIOCont
         descriptor->sample_rate.num = avio_rb32(pb);
         descriptor->sample_rate.den = avio_rb32(pb);
         break;
-    case 0x3D06: /* SoundEssenceCompression */
+    case 0x3D06:
         avio_read(pb, descriptor->essence_codec_ul, 16);
         break;
     case 0x3D07:
@@ -124,10 +124,10 @@ __attribute__((used)) static int mxf_read_generic_descriptor(void *arg, AVIOCont
         mxf_read_pixel_layout(pb, descriptor);
         break;
     default:
-        /* Private uid used by SONY C0023S01.mxf */
+
         if (IS_KLV_KEY(uid, mxf_sony_mpeg4_extradata)) {
             if (descriptor->extradata)
-                av_log(NULL, AV_LOG_WARNING, "Duplicate sony_mpeg4_extradata\n");
+                av_log(((void*)0), AV_LOG_WARNING, "Duplicate sony_mpeg4_extradata\n");
             av_free(descriptor->extradata);
             descriptor->extradata_size = 0;
             descriptor->extradata = av_malloc(size);

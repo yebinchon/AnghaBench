@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct parser {scalar_t__ data_type; int data_size; scalar_t__* data; scalar_t__ is_unicode; } ;
-typedef  scalar_t__ WCHAR ;
-typedef  int DWORD ;
-typedef  scalar_t__ BYTE ;
+typedef scalar_t__ WCHAR ;
+typedef int DWORD ;
+typedef scalar_t__ BYTE ;
 
-/* Variables and functions */
- scalar_t__* GetWideStringN (scalar_t__*,size_t,size_t*) ; 
- scalar_t__ REG_EXPAND_SZ ; 
- scalar_t__ REG_MULTI_SZ ; 
- scalar_t__ REG_SZ ; 
- int /*<<< orphan*/  heap_free (scalar_t__*) ; 
+
+ scalar_t__* GetWideStringN (scalar_t__*,size_t,size_t*) ;
+ scalar_t__ REG_EXPAND_SZ ;
+ scalar_t__ REG_MULTI_SZ ;
+ scalar_t__ REG_SZ ;
+ int heap_free (scalar_t__*) ;
 
 __attribute__((used)) static void prepare_hex_string_data(struct parser *parser)
 {

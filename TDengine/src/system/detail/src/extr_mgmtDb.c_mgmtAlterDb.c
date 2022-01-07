@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_12__ {int daysToKeep; int replications; int maxSessions; int /*<<< orphan*/  db; } ;
+
+
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+struct TYPE_12__ {int daysToKeep; int replications; int maxSessions; int db; } ;
 struct TYPE_10__ {int replications; int daysToKeep; int maxSessions; } ;
-struct TYPE_11__ {struct TYPE_11__* next; int /*<<< orphan*/  vgId; TYPE_1__ cfg; struct TYPE_11__* pHead; int /*<<< orphan*/  name; } ;
-typedef  TYPE_2__ SVgObj ;
-typedef  TYPE_2__ SDbObj ;
-typedef  TYPE_4__ SAlterDbMsg ;
-typedef  int /*<<< orphan*/  SAcctObj ;
+struct TYPE_11__ {struct TYPE_11__* next; int vgId; TYPE_1__ cfg; struct TYPE_11__* pHead; int name; } ;
+typedef TYPE_2__ SVgObj ;
+typedef TYPE_2__ SDbObj ;
+typedef TYPE_4__ SAlterDbMsg ;
+typedef int SAcctObj ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LB_VGROUP_STATE_UPDATE ; 
- int TSDB_CODE_INVALID_DB ; 
- int TSDB_CODE_INVALID_OPTION ; 
- int TSDB_CODE_NO_ENOUGH_DNODES ; 
- int TSDB_CODE_SDB_ERROR ; 
- int TSDB_CODE_SUCCESS ; 
- int TSDB_MAX_TABLES_PER_VNODE ; 
- int TSDB_MIN_TABLES_PER_VNODE ; 
- int TSDB_REPLICA_MAX_NUM ; 
- int TSDB_REPLICA_MIN_NUM ; 
- int /*<<< orphan*/  dbSdb ; 
- int /*<<< orphan*/  mError (char*,int,int,...) ; 
- int /*<<< orphan*/  mTrace (char*,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  mWarn (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mgmtAddVnode (TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mgmtSendVPeersMsg (TYPE_2__*) ; 
- int /*<<< orphan*/  mgmtStartBalanceTimer (int) ; 
- int /*<<< orphan*/  mgmtUpdateVgroupState (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ sdbGetRow (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ sdbUpdateRow (int /*<<< orphan*/ ,TYPE_2__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  tsDbUpdateSize ; 
- int /*<<< orphan*/  tsVgUpdateSize ; 
- int /*<<< orphan*/  vgSdb ; 
+
+ int LB_VGROUP_STATE_UPDATE ;
+ int TSDB_CODE_INVALID_DB ;
+ int TSDB_CODE_INVALID_OPTION ;
+ int TSDB_CODE_NO_ENOUGH_DNODES ;
+ int TSDB_CODE_SDB_ERROR ;
+ int TSDB_CODE_SUCCESS ;
+ int TSDB_MAX_TABLES_PER_VNODE ;
+ int TSDB_MIN_TABLES_PER_VNODE ;
+ int TSDB_REPLICA_MAX_NUM ;
+ int TSDB_REPLICA_MIN_NUM ;
+ int dbSdb ;
+ int mError (char*,int,int,...) ;
+ int mTrace (char*,int ,...) ;
+ int mWarn (char*,int ,int ) ;
+ int mgmtAddVnode (TYPE_2__*,int *,int *) ;
+ int mgmtSendVPeersMsg (TYPE_2__*) ;
+ int mgmtStartBalanceTimer (int) ;
+ int mgmtUpdateVgroupState (TYPE_2__*,int ,int ) ;
+ scalar_t__ sdbGetRow (int ,int ) ;
+ scalar_t__ sdbUpdateRow (int ,TYPE_2__*,int ,int) ;
+ int tsDbUpdateSize ;
+ int tsVgUpdateSize ;
+ int vgSdb ;
 
 int mgmtAlterDb(SAcctObj *pAcct, SAlterDbMsg *pAlter) {
   SDbObj *pDb;
-  int     code = TSDB_CODE_SUCCESS;
+  int code = TSDB_CODE_SUCCESS;
 
   pDb = (SDbObj *)sdbGetRow(dbSdb, pAlter->db);
-  if (pDb == NULL) {
+  if (pDb == ((void*)0)) {
     mTrace("db:%s is not exist", pAlter->db);
     return TSDB_CODE_INVALID_DB;
   }
@@ -78,8 +78,8 @@ int mgmtAlterDb(SAcctObj *pAcct, SAlterDbMsg *pAlter) {
       return TSDB_CODE_INVALID_OPTION;
     }
     return TSDB_CODE_INVALID_OPTION;
-    //The modification of tables needs to rewrite the head file, so disable this option
-    //pDb->cfg.maxSessions = pAlter->maxSessions;
+
+
   } else {
     mError("db:%s alter msg, replica:%d, keep:%d, tables:%d, origin replica:%d keep:%d", pDb->name,
             pAlter->replications, pAlter->maxSessions, pAlter->daysToKeep,
@@ -92,16 +92,16 @@ int mgmtAlterDb(SAcctObj *pAcct, SAlterDbMsg *pAlter) {
   }
 
   SVgObj *pVgroup = pDb->pHead;
-  while (pVgroup != NULL) {
+  while (pVgroup != ((void*)0)) {
     mgmtUpdateVgroupState(pVgroup, LB_VGROUP_STATE_UPDATE, 0);
     if (oldReplicaNum < pDb->cfg.replications) {
-      if (!mgmtAddVnode(pVgroup, NULL, NULL)) {
+      if (!mgmtAddVnode(pVgroup, ((void*)0), ((void*)0))) {
         mWarn("db:%s vgroup:%d not enough dnode to add vnode", pAlter->db, pVgroup->vgId);
         code = TSDB_CODE_NO_ENOUGH_DNODES;
       }
     }
     if (pAlter->maxSessions > 0) {
-      //rebuild meterList in mgmtVgroup.c
+
       sdbUpdateRow(vgSdb, pVgroup, tsVgUpdateSize, 0);
     }
     mgmtSendVPeersMsg(pVgroup);

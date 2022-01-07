@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uv_prepare_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- int ITERATIONS ; 
- int /*<<< orphan*/  fflush (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- int loop_iteration ; 
- int /*<<< orphan*/  prepare_1_cb_called ; 
- int /*<<< orphan*/  prepare_1_handle ; 
- int /*<<< orphan*/  prepare_2_cb ; 
- int /*<<< orphan*/  prepare_2_handle ; 
- int /*<<< orphan*/  printf (char*,int,int) ; 
- int /*<<< orphan*/  stderr ; 
- int uv_prepare_start (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uv_prepare_t ;
+
+
+ int ASSERT (int) ;
+ int ITERATIONS ;
+ int fflush (int ) ;
+ int fprintf (int ,char*,char*) ;
+ int loop_iteration ;
+ int prepare_1_cb_called ;
+ int prepare_1_handle ;
+ int prepare_2_cb ;
+ int prepare_2_handle ;
+ int printf (char*,int,int) ;
+ int stderr ;
+ int uv_prepare_start (int *,int ) ;
 
 __attribute__((used)) static void prepare_1_cb(uv_prepare_t* handle) {
   int r;

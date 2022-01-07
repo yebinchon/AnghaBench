@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  rtx ;
 
-/* Variables and functions */
- scalar_t__ NDFA_OPTION ; 
- scalar_t__ NO_MINIMIZATION_OPTION ; 
- scalar_t__ PROGRESS_OPTION ; 
- scalar_t__ TIME_OPTION ; 
- scalar_t__ V_OPTION ; 
- scalar_t__ W_OPTION ; 
- int /*<<< orphan*/  XSTR (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fatal (char*,int /*<<< orphan*/ ) ; 
- int ndfa_flag ; 
- int no_minimization_flag ; 
- int progress_flag ; 
- scalar_t__ strcmp (int /*<<< orphan*/ ,scalar_t__) ; 
- int time_flag ; 
- int v_flag ; 
- int w_flag ; 
+
+
+
+typedef int rtx ;
+
+
+ scalar_t__ NDFA_OPTION ;
+ scalar_t__ NO_MINIMIZATION_OPTION ;
+ scalar_t__ PROGRESS_OPTION ;
+ scalar_t__ TIME_OPTION ;
+ scalar_t__ V_OPTION ;
+ scalar_t__ W_OPTION ;
+ int XSTR (int ,int ) ;
+ int fatal (char*,int ) ;
+ int ndfa_flag ;
+ int no_minimization_flag ;
+ int progress_flag ;
+ scalar_t__ strcmp (int ,scalar_t__) ;
+ int time_flag ;
+ int v_flag ;
+ int w_flag ;
 
 __attribute__((used)) static void
 gen_automata_option (rtx def)

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  kstat_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int /*<<< orphan*/ ) ; 
- int EACCES ; 
- int KSTAT_WRITE ; 
+
+
+
+typedef int kstat_t ;
+
+
+ int ASSERT (int ) ;
+ int EACCES ;
+ int KSTAT_WRITE ;
 
 __attribute__((used)) static int
 kstat_default_update(kstat_t *ksp, int rw)
 {
-	ASSERT(ksp != NULL);
+ ASSERT(ksp != ((void*)0));
 
-	if (rw == KSTAT_WRITE)
-		return (EACCES);
+ if (rw == KSTAT_WRITE)
+  return (EACCES);
 
-	return (0);
+ return (0);
 }

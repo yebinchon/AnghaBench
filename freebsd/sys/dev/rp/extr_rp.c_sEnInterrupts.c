@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int Word_t ;
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int Word_t ;
 struct TYPE_6__ {int* RxControl; int* TxControl; size_t ChanNum; } ;
-typedef  TYPE_1__ CHANNEL_T ;
-typedef  int Byte_t ;
+typedef TYPE_1__ CHANNEL_T ;
+typedef int Byte_t ;
 
-/* Variables and functions */
- int CHANINT_EN ; 
- int MCINT_EN ; 
- int RXINT_EN ; 
- int SRCINT_EN ; 
- int TXINT_EN ; 
- int /*<<< orphan*/  _INDX_ADDR ; 
- int /*<<< orphan*/  _INT_MASK ; 
- int /*<<< orphan*/  le32dec (int*) ; 
- int rp_readch1 (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int* rp_sBitMapSetTbl ; 
- int /*<<< orphan*/  rp_writech1 (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  rp_writech4 (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int CHANINT_EN ;
+ int MCINT_EN ;
+ int RXINT_EN ;
+ int SRCINT_EN ;
+ int TXINT_EN ;
+ int _INDX_ADDR ;
+ int _INT_MASK ;
+ int le32dec (int*) ;
+ int rp_readch1 (TYPE_1__*,int ) ;
+ int* rp_sBitMapSetTbl ;
+ int rp_writech1 (TYPE_1__*,int ,int) ;
+ int rp_writech4 (TYPE_1__*,int ,int ) ;
 
 void sEnInterrupts(CHANNEL_T *ChP,Word_t Flags)
 {
-   Byte_t Mask; 		/* Interrupt Mask Register */
+   Byte_t Mask;
 
    ChP->RxControl[2] |=
       ((Byte_t)Flags & (RXINT_EN | SRCINT_EN | MCINT_EN));

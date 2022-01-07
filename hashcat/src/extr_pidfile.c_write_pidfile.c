@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  pidfile_data_t ;
-struct TYPE_5__ {char* filename; int /*<<< orphan*/ * pd; } ;
-typedef  TYPE_1__ pidfile_ctx_t ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int pidfile_data_t ;
+struct TYPE_5__ {char* filename; int * pd; } ;
+typedef TYPE_1__ pidfile_ctx_t ;
 struct TYPE_6__ {TYPE_1__* pidfile_ctx; } ;
-typedef  TYPE_2__ hashcat_ctx_t ;
-typedef  int /*<<< orphan*/  HCFILE ;
+typedef TYPE_2__ hashcat_ctx_t ;
+typedef int HCFILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  event_log_error (TYPE_2__*,char*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hc_fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  hc_fflush (int /*<<< orphan*/ *) ; 
- int hc_fopen (int /*<<< orphan*/ *,char*,char*) ; 
- int /*<<< orphan*/  hc_fwrite (int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strerror (int /*<<< orphan*/ ) ; 
+
+ int errno ;
+ int event_log_error (TYPE_2__*,char*,char*,int ) ;
+ int hc_fclose (int *) ;
+ int hc_fflush (int *) ;
+ int hc_fopen (int *,char*,char*) ;
+ int hc_fwrite (int *,int,int,int *) ;
+ int strerror (int ) ;
 
 __attribute__((used)) static int write_pidfile (hashcat_ctx_t *hashcat_ctx)
 {
@@ -38,7 +38,7 @@ __attribute__((used)) static int write_pidfile (hashcat_ctx_t *hashcat_ctx)
 
   HCFILE fp;
 
-  if (hc_fopen (&fp, pidfile_filename, "wb") == false)
+  if (hc_fopen (&fp, pidfile_filename, "wb") == 0)
   {
     event_log_error (hashcat_ctx, "%s: %s", pidfile_filename, strerror (errno));
 

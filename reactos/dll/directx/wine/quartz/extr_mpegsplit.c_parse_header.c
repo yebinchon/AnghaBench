@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int ULONGLONG ;
-typedef  int LONGLONG ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int BYTE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*,int) ; 
- int /*<<< orphan*/  E_INVALIDARG ; 
- int /*<<< orphan*/  FIXME (char*,int,int,int,int) ; 
- scalar_t__ MPEGSplitter_head_check (int*) ; 
- scalar_t__ MPEG_AUDIO_HEADER ; 
- int /*<<< orphan*/  S_OK ; 
- int* freqs ; 
- int*** tabsel_123 ; 
+
+
+
+typedef int ULONGLONG ;
+typedef int LONGLONG ;
+typedef int HRESULT ;
+typedef int BYTE ;
+
+
+ int ERR (char*,int) ;
+ int E_INVALIDARG ;
+ int FIXME (char*,int,int,int,int) ;
+ scalar_t__ MPEGSplitter_head_check (int*) ;
+ scalar_t__ MPEG_AUDIO_HEADER ;
+ int S_OK ;
+ int* freqs ;
+ int*** tabsel_123 ;
 
 __attribute__((used)) static HRESULT parse_header(BYTE *header, LONGLONG *plen, LONGLONG *pduration)
 {

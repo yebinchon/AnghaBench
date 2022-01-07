@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  picoParser_t ;
 
-/* Variables and functions */
- char* _pico_parse (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ atof (char*) ; 
+
+
+
+typedef int picoParser_t ;
+
+
+ char* _pico_parse (int *,int ) ;
+ scalar_t__ atof (char*) ;
 
 int _pico_parse_float( picoParser_t *p, float *out ){
-	char *token;
+ char *token;
 
-	/* sanity checks */
-	if ( p == NULL || out == NULL ) {
-		return 0;
-	}
 
-	/* get token and turn it into a float */
-	*out = 0.0f;
-	token = _pico_parse( p,0 );
-	if ( token == NULL ) {
-		return 0;
-	}
-	*out = (float) atof( token );
+ if ( p == ((void*)0) || out == ((void*)0) ) {
+  return 0;
+ }
 
-	/* success */
-	return 1;
+
+ *out = 0.0f;
+ token = _pico_parse( p,0 );
+ if ( token == ((void*)0) ) {
+  return 0;
+ }
+ *out = (float) atof( token );
+
+
+ return 1;
 }

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct inode {int dummy; } ;
 struct file {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  netstat_seq_show ; 
- int single_open_net (struct inode*,struct file*,int /*<<< orphan*/ ) ; 
+
+ int netstat_seq_show ;
+ int single_open_net (struct inode*,struct file*,int ) ;
 
 __attribute__((used)) static int netstat_seq_open(struct inode *inode, struct file *file)
 {
-	return single_open_net(inode, file, netstat_seq_show);
+ return single_open_net(inode, file, netstat_seq_show);
 }

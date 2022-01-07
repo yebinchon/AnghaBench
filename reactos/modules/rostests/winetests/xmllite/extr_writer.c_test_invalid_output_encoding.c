@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  IXmlWriter ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  scalar_t__ HRESULT ;
 
-/* Variables and functions */
- scalar_t__ IXmlWriter_Flush (int /*<<< orphan*/ *) ; 
- scalar_t__ IXmlWriter_SetOutput (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ IXmlWriter_WriteAttributeString (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ IXmlWriter_WriteCData (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ IXmlWriter_WriteCharEntity (int /*<<< orphan*/ *,int) ; 
- scalar_t__ IXmlWriter_WriteChars (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- scalar_t__ IXmlWriter_WriteComment (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ IXmlWriter_WriteElementString (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ IXmlWriter_WriteEndDocument (int /*<<< orphan*/ *) ; 
- scalar_t__ IXmlWriter_WriteEndElement (int /*<<< orphan*/ *) ; 
- scalar_t__ IXmlWriter_WriteEntityRef (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ IXmlWriter_WriteFullEndElement (int /*<<< orphan*/ *) ; 
- scalar_t__ IXmlWriter_WriteName (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ IXmlWriter_WriteNmToken (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ IXmlWriter_WriteProcessingInstruction (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ IXmlWriter_WriteQualifiedName (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ IXmlWriter_WriteRaw (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ IXmlWriter_WriteRawChars (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- scalar_t__ IXmlWriter_WriteStartDocument (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ IXmlWriter_WriteStartElement (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ IXmlWriter_WriteString (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ MX_E_ENCODING ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  XmlStandalone_Yes ; 
- int /*<<< orphan*/  aW ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
+
+
+
+typedef int IXmlWriter ;
+typedef int IUnknown ;
+typedef scalar_t__ HRESULT ;
+
+
+ scalar_t__ IXmlWriter_Flush (int *) ;
+ scalar_t__ IXmlWriter_SetOutput (int *,int *) ;
+ scalar_t__ IXmlWriter_WriteAttributeString (int *,int *,int ,int *,int ) ;
+ scalar_t__ IXmlWriter_WriteCData (int *,int ) ;
+ scalar_t__ IXmlWriter_WriteCharEntity (int *,int) ;
+ scalar_t__ IXmlWriter_WriteChars (int *,int ,int) ;
+ scalar_t__ IXmlWriter_WriteComment (int *,int ) ;
+ scalar_t__ IXmlWriter_WriteElementString (int *,int *,int ,int *,int *) ;
+ scalar_t__ IXmlWriter_WriteEndDocument (int *) ;
+ scalar_t__ IXmlWriter_WriteEndElement (int *) ;
+ scalar_t__ IXmlWriter_WriteEntityRef (int *,int ) ;
+ scalar_t__ IXmlWriter_WriteFullEndElement (int *) ;
+ scalar_t__ IXmlWriter_WriteName (int *,int ) ;
+ scalar_t__ IXmlWriter_WriteNmToken (int *,int ) ;
+ scalar_t__ IXmlWriter_WriteProcessingInstruction (int *,int ,int ) ;
+ scalar_t__ IXmlWriter_WriteQualifiedName (int *,int ,int *) ;
+ scalar_t__ IXmlWriter_WriteRaw (int *,int ) ;
+ scalar_t__ IXmlWriter_WriteRawChars (int *,int ,int) ;
+ scalar_t__ IXmlWriter_WriteStartDocument (int *,int ) ;
+ scalar_t__ IXmlWriter_WriteStartElement (int *,int *,int ,int *) ;
+ scalar_t__ IXmlWriter_WriteString (int *,int ) ;
+ scalar_t__ MX_E_ENCODING ;
+ scalar_t__ S_OK ;
+ int XmlStandalone_Yes ;
+ int aW ;
+ int ok (int,char*,scalar_t__) ;
 
 __attribute__((used)) static void test_invalid_output_encoding(IXmlWriter *writer, IUnknown *output)
 {
@@ -49,9 +49,9 @@ __attribute__((used)) static void test_invalid_output_encoding(IXmlWriter *write
     hr = IXmlWriter_SetOutput(writer, output);
     ok(hr == S_OK, "Failed to set output, hr %#x.\n", hr);
 
-    /* TODO: WriteAttributes */
 
-    hr = IXmlWriter_WriteAttributeString(writer, NULL, aW, NULL, aW);
+
+    hr = IXmlWriter_WriteAttributeString(writer, ((void*)0), aW, ((void*)0), aW);
     ok(hr == MX_E_ENCODING, "Unexpected hr %#x.\n", hr);
 
     hr = IXmlWriter_WriteCData(writer, aW);
@@ -66,9 +66,9 @@ __attribute__((used)) static void test_invalid_output_encoding(IXmlWriter *write
     hr = IXmlWriter_WriteComment(writer, aW);
     ok(hr == MX_E_ENCODING, "Unexpected hr %#x.\n", hr);
 
-    /* TODO: WriteDocType */
 
-    hr = IXmlWriter_WriteElementString(writer, NULL, aW, NULL, NULL);
+
+    hr = IXmlWriter_WriteElementString(writer, ((void*)0), aW, ((void*)0), ((void*)0));
     ok(hr == MX_E_ENCODING, "Unexpected hr %#x.\n", hr);
 
     hr = IXmlWriter_WriteEndDocument(writer);
@@ -89,13 +89,13 @@ __attribute__((used)) static void test_invalid_output_encoding(IXmlWriter *write
     hr = IXmlWriter_WriteNmToken(writer, aW);
     ok(hr == MX_E_ENCODING, "Unexpected hr %#x.\n", hr);
 
-    /* TODO: WriteNode */
-    /* TODO: WriteNodeShallow */
+
+
 
     hr = IXmlWriter_WriteProcessingInstruction(writer, aW, aW);
     ok(hr == MX_E_ENCODING, "Unexpected hr %#x.\n", hr);
 
-    hr = IXmlWriter_WriteQualifiedName(writer, aW, NULL);
+    hr = IXmlWriter_WriteQualifiedName(writer, aW, ((void*)0));
     ok(hr == MX_E_ENCODING, "Unexpected hr %#x.\n", hr);
 
     hr = IXmlWriter_WriteRaw(writer, aW);
@@ -107,14 +107,14 @@ __attribute__((used)) static void test_invalid_output_encoding(IXmlWriter *write
     hr = IXmlWriter_WriteStartDocument(writer, XmlStandalone_Yes);
     ok(hr == MX_E_ENCODING, "Unexpected hr %#x.\n", hr);
 
-    hr = IXmlWriter_WriteStartElement(writer, NULL, aW, NULL);
+    hr = IXmlWriter_WriteStartElement(writer, ((void*)0), aW, ((void*)0));
     ok(hr == MX_E_ENCODING, "Unexpected hr %#x.\n", hr);
 
     hr = IXmlWriter_WriteString(writer, aW);
     ok(hr == MX_E_ENCODING, "Unexpected hr %#x.\n", hr);
 
-    /* TODO: WriteSurrogateCharEntity */
-    /* ًُُTODO: WriteWhitespace */
+
+
 
     hr = IXmlWriter_Flush(writer);
     ok(hr == S_OK, "Failed to flush, hr %#x.\n", hr);

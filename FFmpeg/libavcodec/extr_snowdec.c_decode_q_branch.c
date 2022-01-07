@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
 struct TYPE_11__ {int level; int* color; int mx; int my; unsigned int ref; int type; } ;
-struct TYPE_10__ {int b_width; int block_max_depth; int nb_planes; int ref_frames; int /*<<< orphan*/ * block_state; int /*<<< orphan*/  c; int /*<<< orphan*/  avctx; scalar_t__ keyframe; TYPE_2__ const* block; } ;
-typedef  TYPE_1__ SnowContext ;
-typedef  TYPE_2__ const BlockNode ;
+struct TYPE_10__ {int b_width; int block_max_depth; int nb_planes; int ref_frames; int * block_state; int c; int avctx; scalar_t__ keyframe; TYPE_2__ const* block; } ;
+typedef TYPE_1__ SnowContext ;
+typedef TYPE_2__ const BlockNode ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int BLOCK_INTRA ; 
- int FFABS (int) ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int av_log2 (int) ; 
- scalar_t__ get_rac (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- void* get_symbol (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- TYPE_2__ const null_block ; 
- int /*<<< orphan*/  pred_mv (TYPE_1__*,int*,int*,unsigned int,TYPE_2__ const*,TYPE_2__ const*,TYPE_2__ const*) ; 
- int /*<<< orphan*/  set_blocks (TYPE_1__*,int,int,int,int,int,int,int,int,unsigned int,int) ; 
+
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ int BLOCK_INTRA ;
+ int FFABS (int) ;
+ int av_log (int ,int ,char*) ;
+ int av_log2 (int) ;
+ scalar_t__ get_rac (int *,int *) ;
+ void* get_symbol (int *,int *,int) ;
+ TYPE_2__ const null_block ;
+ int pred_mv (TYPE_1__*,int*,int*,unsigned int,TYPE_2__ const*,TYPE_2__ const*,TYPE_2__ const*) ;
+ int set_blocks (TYPE_1__*,int,int,int,int,int,int,int,int,unsigned int,int) ;
 
 __attribute__((used)) static int decode_q_branch(SnowContext *s, int level, int x, int y){
     const int w= s->b_width << s->block_max_depth;
     const int rem_depth= s->block_max_depth - level;
     const int index= (x + y*w) << rem_depth;
     int trx= (x+1)<<rem_depth;
-    const BlockNode *left  = x ? &s->block[index-1] : &null_block;
-    const BlockNode *top   = y ? &s->block[index-w] : &null_block;
-    const BlockNode *tl    = y && x ? &s->block[index-w-1] : left;
-    const BlockNode *tr    = y && trx<w && ((x&1)==0 || level==0) ? &s->block[index-w+(1<<rem_depth)] : tl; //FIXME use lt
+    const BlockNode *left = x ? &s->block[index-1] : &null_block;
+    const BlockNode *top = y ? &s->block[index-w] : &null_block;
+    const BlockNode *tl = y && x ? &s->block[index-w-1] : left;
+    const BlockNode *tr = y && trx<w && ((x&1)==0 || level==0) ? &s->block[index-w+(1<<rem_depth)] : tl;
     int s_context= 2*left->level + 2*top->level + tl->level + tr->level;
     int res;
 

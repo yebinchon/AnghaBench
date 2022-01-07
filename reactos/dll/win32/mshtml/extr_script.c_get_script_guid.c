@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ nsresult ;
-typedef  int /*<<< orphan*/  nsIDOMHTMLScriptElement ;
-typedef  int /*<<< orphan*/  nsIDOMHTMLElement ;
-typedef  int /*<<< orphan*/  nsAString ;
-typedef  char PRUnichar ;
-typedef  int /*<<< orphan*/  HTMLInnerWindow ;
-typedef  int /*<<< orphan*/  GUID ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*,scalar_t__) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  IID_nsIDOMHTMLElement ; 
- scalar_t__ NS_OK ; 
- scalar_t__ NS_SUCCEEDED (scalar_t__) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  get_default_script_guid (int /*<<< orphan*/ *) ; 
- scalar_t__ get_elem_attr_value (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,char const**) ; 
- int /*<<< orphan*/  get_guid_from_language (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  get_guid_from_type (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsAString_Finish (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsAString_GetData (int /*<<< orphan*/ *,char const**) ; 
- int /*<<< orphan*/  nsAString_Init (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsIDOMHTMLElement_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ nsIDOMHTMLScriptElement_GetType (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ nsIDOMHTMLScriptElement_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
+
+
+
+typedef scalar_t__ nsresult ;
+typedef int nsIDOMHTMLScriptElement ;
+typedef int nsIDOMHTMLElement ;
+typedef int nsAString ;
+typedef char PRUnichar ;
+typedef int HTMLInnerWindow ;
+typedef int GUID ;
+typedef int BOOL ;
+
+
+ int ERR (char*,scalar_t__) ;
+ int FALSE ;
+ int IID_nsIDOMHTMLElement ;
+ scalar_t__ NS_OK ;
+ scalar_t__ NS_SUCCEEDED (scalar_t__) ;
+ int TRUE ;
+ int assert (int) ;
+ int get_default_script_guid (int *) ;
+ scalar_t__ get_elem_attr_value (int *,char const*,int *,char const**) ;
+ int get_guid_from_language (char const*,int *) ;
+ int get_guid_from_type (char const*,int *) ;
+ int nsAString_Finish (int *) ;
+ int nsAString_GetData (int *,char const**) ;
+ int nsAString_Init (int *,int *) ;
+ int nsIDOMHTMLElement_Release (int *) ;
+ scalar_t__ nsIDOMHTMLScriptElement_GetType (int *,int *) ;
+ scalar_t__ nsIDOMHTMLScriptElement_QueryInterface (int *,int *,void**) ;
 
 __attribute__((used)) static BOOL get_script_guid(HTMLInnerWindow *window, nsIDOMHTMLScriptElement *nsscript, GUID *guid)
 {
@@ -48,7 +48,7 @@ __attribute__((used)) static BOOL get_script_guid(HTMLInnerWindow *window, nsIDO
 
     static const PRUnichar languageW[] = {'l','a','n','g','u','a','g','e',0};
 
-    nsAString_Init(&val_str, NULL);
+    nsAString_Init(&val_str, ((void*)0));
 
     nsres = nsIDOMHTMLScriptElement_GetType(nsscript, &val_str);
     if(NS_SUCCEEDED(nsres)) {

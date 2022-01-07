@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_object_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CONFIGURE_LINE ; 
- int /*<<< orphan*/  COPYRIGHT_MESSAGE ; 
- int /*<<< orphan*/  VERSION_MESSAGE ; 
- int /*<<< orphan*/  msg_Dbg (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  psz_vlc_changeset ; 
+
+
+
+typedef int vlc_object_t ;
+
+
+ int CONFIGURE_LINE ;
+ int COPYRIGHT_MESSAGE ;
+ int VERSION_MESSAGE ;
+ int msg_Dbg (int *,char*,int ) ;
+ int psz_vlc_changeset ;
 
 __attribute__((used)) static void vlc_LogSpam(vlc_object_t *obj)
 {
-    /* Announce who we are */
+
     msg_Dbg(obj, "VLC media player - %s", VERSION_MESSAGE);
     msg_Dbg(obj, "%s", COPYRIGHT_MESSAGE);
     msg_Dbg(obj, "revision %s", psz_vlc_changeset);

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint16_t ;
 
-/* Variables and functions */
- int IN_SET (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RTM_DELADDRLABEL ; 
- int /*<<< orphan*/  RTM_GETADDRLABEL ; 
- int /*<<< orphan*/  RTM_NEWADDRLABEL ; 
+
+
+
+typedef int uint16_t ;
+
+
+ int IN_SET (int ,int ,int ,int ) ;
+ int RTM_DELADDRLABEL ;
+ int RTM_GETADDRLABEL ;
+ int RTM_NEWADDRLABEL ;
 
 __attribute__((used)) static inline bool rtnl_message_type_is_addrlabel(uint16_t type) {
         return IN_SET(type, RTM_NEWADDRLABEL, RTM_DELADDRLABEL, RTM_GETADDRLABEL);

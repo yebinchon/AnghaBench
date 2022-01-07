@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  unsigned long png_uint_32 ;
 
-/* Variables and functions */
- unsigned long FORMAT_COUNT ; 
- int /*<<< orphan*/ * format_names ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char const*) ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ strcmp (int /*<<< orphan*/ ,char const*) ; 
- unsigned long strtoul (char const*,char**,int /*<<< orphan*/ ) ; 
+
+
+
+typedef unsigned long png_uint_32 ;
+
+
+ unsigned long FORMAT_COUNT ;
+ int * format_names ;
+ int fprintf (int ,char*,char const*) ;
+ int stderr ;
+ scalar_t__ strcmp (int ,char const*) ;
+ unsigned long strtoul (char const*,char**,int ) ;
 
 __attribute__((used)) static png_uint_32
 formatof(const char *arg)

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct vo {int /*<<< orphan*/  log; int /*<<< orphan*/  encode_lavc_ctx; struct priv* priv; } ;
-struct priv {int /*<<< orphan*/  enc; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  STREAM_VIDEO ; 
- int /*<<< orphan*/  encoder_context_alloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  talloc_steal (struct priv*,int /*<<< orphan*/ ) ; 
+
+
+
+struct vo {int log; int encode_lavc_ctx; struct priv* priv; } ;
+struct priv {int enc; } ;
+
+
+ int STREAM_VIDEO ;
+ int encoder_context_alloc (int ,int ,int ) ;
+ int talloc_steal (struct priv*,int ) ;
 
 __attribute__((used)) static int preinit(struct vo *vo)
 {

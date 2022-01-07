@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ldns_status ;
-typedef  int /*<<< orphan*/  ldns_resolver ;
-typedef  int /*<<< orphan*/  ldns_rdf ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LDNS_STATUS_OK ; 
- int /*<<< orphan*/  ldns_rdf_deep_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ldns_resolver_push_nameserver (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ldns_str2rdf_a (int /*<<< orphan*/ **,char*) ; 
- int /*<<< orphan*/  ldns_str2rdf_aaaa (int /*<<< orphan*/ **,char*) ; 
+
+
+
+typedef int ldns_status ;
+typedef int ldns_resolver ;
+typedef int ldns_rdf ;
+
+
+ int LDNS_STATUS_OK ;
+ int ldns_rdf_deep_free (int *) ;
+ int ldns_resolver_push_nameserver (int *,int *) ;
+ int ldns_str2rdf_a (int **,char*) ;
+ int ldns_str2rdf_aaaa (int **,char*) ;
 
 __attribute__((used)) static ldns_status
 ldns_resolver_push_default_servers(ldns_resolver *res) {

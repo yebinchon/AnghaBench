@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int flags; int ref_cnt; int /*<<< orphan*/ * methods; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int flags; int ref_cnt; int * methods; } ;
 struct tl_tree_var_num {int var_num; TYPE_1__ self; void* dif; } ;
-typedef  void tl_tree ;
+typedef void tl_tree ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ADD_PMALLOC (int) ; 
- int FLAG_NOVAR ; 
- int /*<<< orphan*/  persistent_tree_nodes ; 
- int schema_version ; 
- scalar_t__ tl_parse_error () ; 
- void* tl_parse_int () ; 
- void* tl_parse_long () ; 
- int /*<<< orphan*/  tl_pvar_num_methods ; 
- int /*<<< orphan*/  total_ref_cnt ; 
- int /*<<< orphan*/  total_tree_nodes_existed ; 
- struct tl_tree_var_num* zzmalloc (int) ; 
+
+ int ADD_PMALLOC (int) ;
+ int FLAG_NOVAR ;
+ int persistent_tree_nodes ;
+ int schema_version ;
+ scalar_t__ tl_parse_error () ;
+ void* tl_parse_int () ;
+ void* tl_parse_long () ;
+ int tl_pvar_num_methods ;
+ int total_ref_cnt ;
+ int total_tree_nodes_existed ;
+ struct tl_tree_var_num* zzmalloc (int) ;
 
 struct tl_tree *read_num_var (int *var_num) {
   struct tl_tree_var_num *T = zzmalloc (sizeof (*T));
@@ -36,7 +36,7 @@ struct tl_tree *read_num_var (int *var_num) {
   total_ref_cnt ++;
   persistent_tree_nodes ++;
   total_tree_nodes_existed ++;
-  T->self.methods = &tl_pvar_num_methods;;  
+  T->self.methods = &tl_pvar_num_methods;;
   if (schema_version >= 2) {
     T->dif = tl_parse_int ();
   } else {

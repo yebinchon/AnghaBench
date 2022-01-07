@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  refcnt; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INSIST (int) ; 
- scalar_t__ VALID_HASH (TYPE_1__*) ; 
- int /*<<< orphan*/  destroy (TYPE_1__**) ; 
- TYPE_1__* hash ; 
- int /*<<< orphan*/  isc_refcount_decrement (int /*<<< orphan*/ *,unsigned int*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int refcnt; } ;
+
+
+ int INSIST (int) ;
+ scalar_t__ VALID_HASH (TYPE_1__*) ;
+ int destroy (TYPE_1__**) ;
+ TYPE_1__* hash ;
+ int isc_refcount_decrement (int *,unsigned int*) ;
 
 void
 isc_hash_destroy() {
-	unsigned int refs;
+ unsigned int refs;
 
-	INSIST(hash != NULL && VALID_HASH(hash));
+ INSIST(hash != ((void*)0) && VALID_HASH(hash));
 
-	isc_refcount_decrement(&hash->refcnt, &refs);
-	INSIST(refs == 0);
+ isc_refcount_decrement(&hash->refcnt, &refs);
+ INSIST(refs == 0);
 
-	destroy(&hash);
+ destroy(&hash);
 }

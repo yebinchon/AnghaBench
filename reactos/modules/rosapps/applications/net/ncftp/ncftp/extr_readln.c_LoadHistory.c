@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  pathName ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OurDirectoryPath (char*,int,int /*<<< orphan*/ ) ; 
- char* gOurDirectoryPath ; 
- int /*<<< orphan*/  gl_histloadfile (char*) ; 
- int /*<<< orphan*/  kHistoryFileName ; 
+
+
+
+typedef int pathName ;
+
+
+ int OurDirectoryPath (char*,int,int ) ;
+ char* gOurDirectoryPath ;
+ int gl_histloadfile (char*) ;
+ int kHistoryFileName ;
 
 void
 LoadHistory(void)
 {
-	char pathName[256];
+ char pathName[256];
 
-	if (gOurDirectoryPath[0] == '\0')
-		return;
-	(void) OurDirectoryPath(pathName, sizeof(pathName), kHistoryFileName);
+ if (gOurDirectoryPath[0] == '\0')
+  return;
+ (void) OurDirectoryPath(pathName, sizeof(pathName), kHistoryFileName);
 
-	gl_histloadfile(pathName);
+ gl_histloadfile(pathName);
 }

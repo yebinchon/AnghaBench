@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ time_t ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef scalar_t__ time_t ;
 struct _utimbuf {scalar_t__ actime; scalar_t__ modtime; } ;
 struct TYPE_4__ {scalar_t__ handle; } ;
-typedef  TYPE_1__ ioinfo ;
-typedef  int /*<<< orphan*/  ULONG ;
-typedef  int /*<<< orphan*/  LARGE_INTEGER ;
-typedef  scalar_t__ FILETIME ;
+typedef TYPE_1__ ioinfo ;
+typedef int ULONG ;
+typedef int LARGE_INTEGER ;
+typedef scalar_t__ FILETIME ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetLastError () ; 
- scalar_t__ INVALID_HANDLE_VALUE ; 
- int /*<<< orphan*/  RtlSecondsSince1970ToTime (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SetFileTime (scalar_t__,int /*<<< orphan*/ *,scalar_t__*,scalar_t__*) ; 
- int /*<<< orphan*/  _dosmaperr (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  _time (scalar_t__*) ; 
- TYPE_1__* get_ioinfo (int) ; 
- int /*<<< orphan*/  release_ioinfo (TYPE_1__*) ; 
+
+ int GetLastError () ;
+ scalar_t__ INVALID_HANDLE_VALUE ;
+ int RtlSecondsSince1970ToTime (int ,int *) ;
+ int SetFileTime (scalar_t__,int *,scalar_t__*,scalar_t__*) ;
+ int _dosmaperr (int ) ;
+ int _time (scalar_t__*) ;
+ TYPE_1__* get_ioinfo (int) ;
+ int release_ioinfo (TYPE_1__*) ;
 
 int
 _futime(int fd, struct _utimbuf *filetime)
@@ -64,7 +64,7 @@ _futime(int fd, struct _utimbuf *filetime)
         }
     }
 
-    if (!SetFileTime(info->handle, NULL, &at, &wt))
+    if (!SetFileTime(info->handle, ((void*)0), &at, &wt))
     {
         release_ioinfo(info);
         _dosmaperr(GetLastError());

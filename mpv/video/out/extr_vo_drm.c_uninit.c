@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct vo {struct priv* priv; } ;
-struct priv {scalar_t__ fb_queue_len; unsigned int buf_count; int /*<<< orphan*/  cur_frame_cropped; int /*<<< orphan*/  cur_frame; int /*<<< orphan*/  last_input; int /*<<< orphan*/  vt_switcher; scalar_t__ vt_switcher_active; TYPE_1__* kms; int /*<<< orphan*/ * bufs; } ;
-struct TYPE_2__ {int /*<<< orphan*/  fd; } ;
+struct priv {scalar_t__ fb_queue_len; unsigned int buf_count; int cur_frame_cropped; int cur_frame; int last_input; int vt_switcher; scalar_t__ vt_switcher_active; TYPE_1__* kms; int * bufs; } ;
+struct TYPE_2__ {int fd; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  crtc_release (struct vo*) ; 
- int /*<<< orphan*/  fb_destroy (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  kms_destroy (TYPE_1__*) ; 
- int /*<<< orphan*/  swapchain_step (struct vo*) ; 
- int /*<<< orphan*/  talloc_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vt_switcher_destroy (int /*<<< orphan*/ *) ; 
+
+ int crtc_release (struct vo*) ;
+ int fb_destroy (int ,int *) ;
+ int kms_destroy (TYPE_1__*) ;
+ int swapchain_step (struct vo*) ;
+ int talloc_free (int ) ;
+ int vt_switcher_destroy (int *) ;
 
 __attribute__((used)) static void uninit(struct vo *vo)
 {
@@ -37,7 +37,7 @@ __attribute__((used)) static void uninit(struct vo *vo)
         for (unsigned int i = 0; i < p->buf_count; i++)
             fb_destroy(p->kms->fd, &p->bufs[i]);
         kms_destroy(p->kms);
-        p->kms = NULL;
+        p->kms = ((void*)0);
     }
 
     if (p->vt_switcher_active)

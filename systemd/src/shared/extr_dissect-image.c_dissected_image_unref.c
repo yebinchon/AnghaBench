@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int /*<<< orphan*/  os_release; int /*<<< orphan*/  machine_info; int /*<<< orphan*/  hostname; TYPE_1__* partitions; } ;
-struct TYPE_7__ {int /*<<< orphan*/  decrypted_node; int /*<<< orphan*/  decrypted_fstype; int /*<<< orphan*/  node; int /*<<< orphan*/  fstype; } ;
-typedef  TYPE_2__ DissectedImage ;
 
-/* Variables and functions */
- unsigned int _PARTITION_DESIGNATOR_MAX ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ ) ; 
- TYPE_2__* mfree (TYPE_2__*) ; 
- int /*<<< orphan*/  strv_free (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int os_release; int machine_info; int hostname; TYPE_1__* partitions; } ;
+struct TYPE_7__ {int decrypted_node; int decrypted_fstype; int node; int fstype; } ;
+typedef TYPE_2__ DissectedImage ;
+
+
+ unsigned int _PARTITION_DESIGNATOR_MAX ;
+ int free (int ) ;
+ TYPE_2__* mfree (TYPE_2__*) ;
+ int strv_free (int ) ;
 
 DissectedImage* dissected_image_unref(DissectedImage *m) {
         unsigned i;
 
         if (!m)
-                return NULL;
+                return ((void*)0);
 
         for (i = 0; i < _PARTITION_DESIGNATOR_MAX; i++) {
                 free(m->partitions[i].fstype);

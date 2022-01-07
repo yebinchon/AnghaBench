@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct lwan_fd_watch {int dummy; } ;
-struct lwan {int main_socket; int /*<<< orphan*/  epfd; } ;
-struct TYPE_2__ {int /*<<< orphan*/  ptr; } ;
+struct lwan {int main_socket; int epfd; } ;
+struct TYPE_2__ {int ptr; } ;
 struct epoll_event {scalar_t__ events; TYPE_1__ data; } ;
 
-/* Variables and functions */
- scalar_t__ EAGAIN ; 
- scalar_t__ EINTR ; 
- int EPOLLHUP ; 
- int EPOLLIN ; 
- int EPOLLRDHUP ; 
- int /*<<< orphan*/  N_ELEMENTS (struct epoll_event*) ; 
- int /*<<< orphan*/  SIGINT ; 
- scalar_t__ SIG_ERR ; 
- scalar_t__ UNLIKELY (int) ; 
- int /*<<< orphan*/  accept_connection_coro ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  coro_resume_value (int /*<<< orphan*/ ,int) ; 
- int epoll_wait (int /*<<< orphan*/ ,struct epoll_event*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ errno ; 
- int /*<<< orphan*/  lwan_status_critical (char*) ; 
- int /*<<< orphan*/  lwan_status_info (char*) ; 
- int /*<<< orphan*/  lwan_status_perror (char*) ; 
- int /*<<< orphan*/  lwan_unwatch_fd (struct lwan*,struct lwan_fd_watch*) ; 
- struct lwan_fd_watch* lwan_watch_fd (struct lwan*,int,int,int /*<<< orphan*/ ,struct lwan*) ; 
- int main_socket ; 
- int /*<<< orphan*/  sigint_handler ; 
- scalar_t__ signal (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ EAGAIN ;
+ scalar_t__ EINTR ;
+ int EPOLLHUP ;
+ int EPOLLIN ;
+ int EPOLLRDHUP ;
+ int N_ELEMENTS (struct epoll_event*) ;
+ int SIGINT ;
+ scalar_t__ SIG_ERR ;
+ scalar_t__ UNLIKELY (int) ;
+ int accept_connection_coro ;
+ int assert (int) ;
+ int coro_resume_value (int ,int) ;
+ int epoll_wait (int ,struct epoll_event*,int ,int) ;
+ scalar_t__ errno ;
+ int lwan_status_critical (char*) ;
+ int lwan_status_info (char*) ;
+ int lwan_status_perror (char*) ;
+ int lwan_unwatch_fd (struct lwan*,struct lwan_fd_watch*) ;
+ struct lwan_fd_watch* lwan_watch_fd (struct lwan*,int,int,int ,struct lwan*) ;
+ int main_socket ;
+ int sigint_handler ;
+ scalar_t__ signal (int ,int ) ;
 
 void lwan_main_loop(struct lwan *l)
 {
@@ -58,7 +58,7 @@ void lwan_main_loop(struct lwan *l)
 
     lwan_status_info("Ready to serve");
 
-    while (true) {
+    while (1) {
         int n_evs = epoll_wait(l->epfd, evs, N_ELEMENTS(evs), -1);
 
         if (UNLIKELY(n_evs < 0)) {

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAYCOUNT (int const*) ; 
- int /*<<< orphan*/  test_expand (int const*,int,int const*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+
+
+ int ARRAYCOUNT (int const*) ;
+ int test_expand (int const*,int,int const*,int ) ;
 
 __attribute__((used)) static void test_expand_128(void)
 {
-  /* This is FIPS-197 appendix A.1. */
+
   const uint8_t key[] = {
     0x2b, 0x7e, 0x15, 0x16, 0x28, 0xae, 0xd2, 0xa6,
     0xab, 0xf7, 0x15, 0x88, 0x09, 0xcf, 0x4f, 0x3c
@@ -35,6 +35,6 @@ __attribute__((used)) static void test_expand_128(void)
     0xac7766f3, 0x19fadc21, 0x28d12941, 0x575c006e, 0xd014f9a8, 0xc9ee2589,
     0xe13f0cc8, 0xb6630ca6
   };
-  
+
   test_expand(key, sizeof key, answer, ARRAYCOUNT(answer));
 }

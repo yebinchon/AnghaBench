@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  unsigned long u_int32_t ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- unsigned long* crc_tab ; 
- int /*<<< orphan*/  feof (int /*<<< orphan*/ *) ; 
- unsigned long fread (char*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (char*) ; 
- char* malloc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  szbuf ; 
+
+
+
+typedef unsigned long u_int32_t ;
+typedef int FILE ;
+
+
+ unsigned long* crc_tab ;
+ int feof (int *) ;
+ unsigned long fread (char*,int,int ,int *) ;
+ int free (char*) ;
+ char* malloc (int ) ;
+ int szbuf ;
 
 u_int32_t chksum_crc32 (FILE *f)
 {

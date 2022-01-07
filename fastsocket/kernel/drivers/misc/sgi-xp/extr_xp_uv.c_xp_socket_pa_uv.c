@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- unsigned long uv_gpa_to_soc_phys_ram (unsigned long) ; 
+ unsigned long uv_gpa_to_soc_phys_ram (unsigned long) ;
 
 __attribute__((used)) static unsigned long
 xp_socket_pa_uv(unsigned long gpa)
 {
-	return uv_gpa_to_soc_phys_ram(gpa);
+ return uv_gpa_to_soc_phys_ram(gpa);
 }

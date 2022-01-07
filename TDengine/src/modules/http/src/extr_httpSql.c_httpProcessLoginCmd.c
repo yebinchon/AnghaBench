@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  user; int /*<<< orphan*/  ipstr; int /*<<< orphan*/  fd; } ;
-typedef  TYPE_1__ HttpContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HTTP_GEN_TAOSD_TOKEN_ERR ; 
- int /*<<< orphan*/  httpGenTaosdAuthToken (TYPE_1__*,char*,int) ; 
- int /*<<< orphan*/  httpSendErrorResp (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  httpSendSuccResp (TYPE_1__*,char*) ; 
- int /*<<< orphan*/  httpTrace (char*,TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int user; int ipstr; int fd; } ;
+typedef TYPE_1__ HttpContext ;
+
+
+ int HTTP_GEN_TAOSD_TOKEN_ERR ;
+ int httpGenTaosdAuthToken (TYPE_1__*,char*,int) ;
+ int httpSendErrorResp (TYPE_1__*,int ) ;
+ int httpSendSuccResp (TYPE_1__*,char*) ;
+ int httpTrace (char*,TYPE_1__*,int ,int ,int ,char*) ;
 
 void httpProcessLoginCmd(HttpContext *pContext) {
   char token[128] = {0};

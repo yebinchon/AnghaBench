@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct buffer_head {void* b_private; int /*<<< orphan*/ * b_end_io; } ;
-typedef  int /*<<< orphan*/  bh_end_io_t ;
 
-/* Variables and functions */
+
+
+
+struct buffer_head {void* b_private; int * b_end_io; } ;
+typedef int bh_end_io_t ;
+
+
 
 inline void
 init_buffer(struct buffer_head *bh, bh_end_io_t *handler, void *private)
 {
-	bh->b_end_io = handler;
-	bh->b_private = private;
+ bh->b_end_io = handler;
+ bh->b_private = private;
 }

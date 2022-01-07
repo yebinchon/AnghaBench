@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_object_t ;
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  int /*<<< orphan*/  input_item_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * luaL_newstate () ; 
- int /*<<< orphan*/  luaL_openlibs (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  luaL_register_namespace (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_close (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  luaopen_input_item (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  luaopen_msg (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  luaopen_object (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  luaopen_stream (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  luaopen_strings (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  luaopen_variables (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  luaopen_xml (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  msg_Err (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  msg_Warn (int /*<<< orphan*/ *,char*,char const*) ; 
- int /*<<< orphan*/  p_reg ; 
- scalar_t__ vlclua_add_modules_path (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  vlclua_set_this (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int vlc_object_t ;
+typedef int lua_State ;
+typedef int input_item_t ;
+
+
+ int * luaL_newstate () ;
+ int luaL_openlibs (int *) ;
+ int luaL_register_namespace (int *,char*,int ) ;
+ int lua_close (int *) ;
+ int luaopen_input_item (int *,int *) ;
+ int luaopen_msg (int *) ;
+ int luaopen_object (int *) ;
+ int luaopen_stream (int *) ;
+ int luaopen_strings (int *) ;
+ int luaopen_variables (int *) ;
+ int luaopen_xml (int *) ;
+ int msg_Err (int *,char*) ;
+ int msg_Warn (int *,char*,char const*) ;
+ int p_reg ;
+ scalar_t__ vlclua_add_modules_path (int *,char const*) ;
+ int vlclua_set_this (int *,int *) ;
 
 __attribute__((used)) static lua_State * init( vlc_object_t *p_this, input_item_t * p_item, const char *psz_filename )
 {
@@ -38,13 +38,13 @@ __attribute__((used)) static lua_State * init( vlc_object_t *p_this, input_item_
     if( !L )
     {
         msg_Err( p_this, "Could not create new Lua State" );
-        return NULL;
+        return ((void*)0);
     }
 
     vlclua_set_this( L, p_this );
 
-    /* Load Lua libraries */
-    luaL_openlibs( L ); /* XXX: Don't open all the libs? */
+
+    luaL_openlibs( L );
 
     luaL_register_namespace( L, "vlc", p_reg );
 
@@ -61,7 +61,7 @@ __attribute__((used)) static lua_State * init( vlc_object_t *p_this, input_item_
         msg_Warn( p_this, "Error while setting the module search path for %s",
                   psz_filename );
         lua_close( L );
-        return NULL;
+        return ((void*)0);
     }
 
     return L;

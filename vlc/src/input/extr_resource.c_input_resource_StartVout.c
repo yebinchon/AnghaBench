@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_12__ {TYPE_1__* fmt; int /*<<< orphan*/  vout; } ;
-typedef  TYPE_2__ vout_configuration_t ;
-typedef  int /*<<< orphan*/  vlc_video_context ;
-struct TYPE_13__ {int /*<<< orphan*/  lock; int /*<<< orphan*/ * p_input; } ;
-typedef  TYPE_3__ input_resource_t ;
-struct TYPE_14__ {int /*<<< orphan*/  viewpoint; } ;
-typedef  TYPE_4__ input_control_param_t ;
-struct TYPE_11__ {int /*<<< orphan*/  pose; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DisplayVoutTitle (TYPE_3__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  INPUT_CONTROL_SET_INITIAL_VIEWPOINT ; 
- int /*<<< orphan*/  input_ControlPush (int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_4__*) ; 
- int /*<<< orphan*/  input_resource_PutVoutLocked (TYPE_3__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vlc_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_mutex_unlock (int /*<<< orphan*/ *) ; 
- scalar_t__ vout_Request (TYPE_2__ const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+struct TYPE_12__ {TYPE_1__* fmt; int vout; } ;
+typedef TYPE_2__ vout_configuration_t ;
+typedef int vlc_video_context ;
+struct TYPE_13__ {int lock; int * p_input; } ;
+typedef TYPE_3__ input_resource_t ;
+struct TYPE_14__ {int viewpoint; } ;
+typedef TYPE_4__ input_control_param_t ;
+struct TYPE_11__ {int pose; } ;
+
+
+ int DisplayVoutTitle (TYPE_3__*,int ) ;
+ int INPUT_CONTROL_SET_INITIAL_VIEWPOINT ;
+ int input_ControlPush (int *,int ,TYPE_4__*) ;
+ int input_resource_PutVoutLocked (TYPE_3__*,int ) ;
+ int vlc_mutex_lock (int *) ;
+ int vlc_mutex_unlock (int *) ;
+ scalar_t__ vout_Request (TYPE_2__ const*,int *,int *) ;
 
 int input_resource_StartVout(input_resource_t *p_resource,
                               vlc_video_context *vctx,
@@ -45,8 +45,8 @@ int input_resource_StartVout(input_resource_t *p_resource,
 
     DisplayVoutTitle(p_resource, cfg->vout);
 
-    /* Send original viewpoint to the input in order to update other ESes */
-    if (p_resource->p_input != NULL)
+
+    if (p_resource->p_input != ((void*)0))
     {
         input_control_param_t param = { .viewpoint = cfg->fmt->pose };
         input_ControlPush(p_resource->p_input, INPUT_CONTROL_SET_INITIAL_VIEWPOINT,

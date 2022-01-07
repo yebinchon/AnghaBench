@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct RowSetChunk {struct RowSetChunk* pNextChunk; } ;
-struct TYPE_2__ {int /*<<< orphan*/  rsFlags; scalar_t__ pForest; scalar_t__ pLast; scalar_t__ pEntry; scalar_t__ nFresh; struct RowSetChunk* pChunk; int /*<<< orphan*/  db; } ;
-typedef  TYPE_1__ RowSet ;
+struct TYPE_2__ {int rsFlags; scalar_t__ pForest; scalar_t__ pLast; scalar_t__ pEntry; scalar_t__ nFresh; struct RowSetChunk* pChunk; int db; } ;
+typedef TYPE_1__ RowSet ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ROWSET_SORTED ; 
- int /*<<< orphan*/  sqlite3DbFree (int /*<<< orphan*/ ,struct RowSetChunk*) ; 
+
+ int ROWSET_SORTED ;
+ int sqlite3DbFree (int ,struct RowSetChunk*) ;
 
 void sqlite3RowSetClear(void *pArg){
   RowSet *p = (RowSet*)pArg;

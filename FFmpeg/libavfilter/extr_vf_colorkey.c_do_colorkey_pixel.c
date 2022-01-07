@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  double uint8_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef double uint8_t ;
 struct TYPE_3__ {int* colorkey_rgba; double blend; double similarity; } ;
-typedef  TYPE_1__ ColorkeyContext ;
+typedef TYPE_1__ ColorkeyContext ;
 
-/* Variables and functions */
- double av_clipd (double,double,double) ; 
- double sqrt (int) ; 
+
+ double av_clipd (double,double,double) ;
+ double sqrt (int) ;
 
 __attribute__((used)) static uint8_t do_colorkey_pixel(ColorkeyContext *ctx, uint8_t r, uint8_t g, uint8_t b)
 {

@@ -1,62 +1,62 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WINECRYPT_CERTSTORE ;
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  REGSAM ;
-typedef  scalar_t__ LPWSTR ;
-typedef  void const* LPCWSTR ;
-typedef  int /*<<< orphan*/  LONG ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  int /*<<< orphan*/  HCRYPTPROV ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- void* CERT_GROUP_POLICY_SYSTEM_STORE_REGPATH ; 
- void* CERT_LOCAL_MACHINE_SYSTEM_STORE_REGPATH ; 
- int CERT_STORE_CREATE_NEW_FLAG ; 
- int CERT_STORE_OPEN_EXISTING_FLAG ; 
- int CERT_STORE_READONLY_FLAG ; 
-#define  CERT_SYSTEM_STORE_CURRENT_SERVICE 135 
-#define  CERT_SYSTEM_STORE_CURRENT_USER 134 
-#define  CERT_SYSTEM_STORE_CURRENT_USER_GROUP_POLICY 133 
-#define  CERT_SYSTEM_STORE_LOCAL_MACHINE 132 
-#define  CERT_SYSTEM_STORE_LOCAL_MACHINE_ENTERPRISE 131 
-#define  CERT_SYSTEM_STORE_LOCAL_MACHINE_GROUP_POLICY 130 
- int CERT_SYSTEM_STORE_LOCATION_MASK ; 
-#define  CERT_SYSTEM_STORE_SERVICES 129 
-#define  CERT_SYSTEM_STORE_USERS 128 
- int /*<<< orphan*/  CRYPT_ImportSystemRootCertsToReg () ; 
- int /*<<< orphan*/ * CRYPT_RegOpenStore (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- scalar_t__ CryptMemAlloc (int) ; 
- int /*<<< orphan*/  CryptMemFree (scalar_t__) ; 
- int /*<<< orphan*/  ERROR_FILE_EXISTS ; 
- int /*<<< orphan*/  E_INVALIDARG ; 
- int /*<<< orphan*/  FIXME (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HKEY_CURRENT_USER ; 
- int /*<<< orphan*/  HKEY_LOCAL_MACHINE ; 
- int /*<<< orphan*/  KEY_ALL_ACCESS ; 
- int /*<<< orphan*/  KEY_READ ; 
- int REG_OPENED_EXISTING_KEY ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RegCreateKeyExW (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  RegOpenKeyExW (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SetLastError (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  debugstr_w (void const*) ; 
- int /*<<< orphan*/  lstrcmpiW (void const*,int /*<<< orphan*/ ) ; 
- int lstrlenW (void const*) ; 
- int /*<<< orphan*/  rootW ; 
- int /*<<< orphan*/  wsprintfW (scalar_t__,char const*,void const*,void const*) ; 
+
+
+
+typedef int WINECRYPT_CERTSTORE ;
+typedef char WCHAR ;
+typedef int REGSAM ;
+typedef scalar_t__ LPWSTR ;
+typedef void const* LPCWSTR ;
+typedef int LONG ;
+typedef int HKEY ;
+typedef int HCRYPTPROV ;
+typedef int DWORD ;
+
+
+ void* CERT_GROUP_POLICY_SYSTEM_STORE_REGPATH ;
+ void* CERT_LOCAL_MACHINE_SYSTEM_STORE_REGPATH ;
+ int CERT_STORE_CREATE_NEW_FLAG ;
+ int CERT_STORE_OPEN_EXISTING_FLAG ;
+ int CERT_STORE_READONLY_FLAG ;
+
+
+
+
+
+
+ int CERT_SYSTEM_STORE_LOCATION_MASK ;
+
+
+ int CRYPT_ImportSystemRootCertsToReg () ;
+ int * CRYPT_RegOpenStore (int ,int,int ) ;
+ scalar_t__ CryptMemAlloc (int) ;
+ int CryptMemFree (scalar_t__) ;
+ int ERROR_FILE_EXISTS ;
+ int E_INVALIDARG ;
+ int FIXME (char*,int ) ;
+ int HKEY_CURRENT_USER ;
+ int HKEY_LOCAL_MACHINE ;
+ int KEY_ALL_ACCESS ;
+ int KEY_READ ;
+ int REG_OPENED_EXISTING_KEY ;
+ int RegCloseKey (int ) ;
+ int RegCreateKeyExW (int ,scalar_t__,int ,int *,int ,int ,int *,int *,int*) ;
+ int RegOpenKeyExW (int ,scalar_t__,int ,int ,int *) ;
+ int SetLastError (int ) ;
+ int TRACE (char*,int ,int,int ) ;
+ int debugstr_w (void const*) ;
+ int lstrcmpiW (void const*,int ) ;
+ int lstrlenW (void const*) ;
+ int rootW ;
+ int wsprintfW (scalar_t__,char const*,void const*,void const*) ;
 
 __attribute__((used)) static WINECRYPT_CERTSTORE *CRYPT_SysRegOpenStoreW(HCRYPTPROV hCryptProv,
  DWORD dwFlags, const void *pvPara)
@@ -64,7 +64,7 @@ __attribute__((used)) static WINECRYPT_CERTSTORE *CRYPT_SysRegOpenStoreW(HCRYPTP
     static const WCHAR fmt[] = { '%','s','\\','%','s',0 };
     LPCWSTR storeName = pvPara;
     LPWSTR storePath;
-    WINECRYPT_CERTSTORE *store = NULL;
+    WINECRYPT_CERTSTORE *store = ((void*)0);
     HKEY root;
     LPCWSTR base;
 
@@ -74,57 +74,57 @@ __attribute__((used)) static WINECRYPT_CERTSTORE *CRYPT_SysRegOpenStoreW(HCRYPTP
     if (!pvPara)
     {
         SetLastError(E_INVALIDARG);
-        return NULL;
+        return ((void*)0);
     }
 
     switch (dwFlags & CERT_SYSTEM_STORE_LOCATION_MASK)
     {
-    case CERT_SYSTEM_STORE_LOCAL_MACHINE:
+    case 132:
         root = HKEY_LOCAL_MACHINE;
         base = CERT_LOCAL_MACHINE_SYSTEM_STORE_REGPATH;
-        /* If the HKLM\Root certs are requested, expressing system certs into the registry */
+
         if (!lstrcmpiW(storeName, rootW))
             CRYPT_ImportSystemRootCertsToReg();
         break;
-    case CERT_SYSTEM_STORE_CURRENT_USER:
+    case 134:
         root = HKEY_CURRENT_USER;
         base = CERT_LOCAL_MACHINE_SYSTEM_STORE_REGPATH;
         break;
-    case CERT_SYSTEM_STORE_CURRENT_SERVICE:
-        /* hklm\Software\Microsoft\Cryptography\Services\servicename\
-         * SystemCertificates
-         */
+    case 135:
+
+
+
         FIXME("CERT_SYSTEM_STORE_CURRENT_SERVICE, %s: stub\n",
          debugstr_w(storeName));
-        return NULL;
-    case CERT_SYSTEM_STORE_SERVICES:
-        /* hklm\Software\Microsoft\Cryptography\Services\servicename\
-         * SystemCertificates
-         */
+        return ((void*)0);
+    case 129:
+
+
+
         FIXME("CERT_SYSTEM_STORE_SERVICES, %s: stub\n",
          debugstr_w(storeName));
-        return NULL;
-    case CERT_SYSTEM_STORE_USERS:
-        /* hku\user sid\Software\Microsoft\SystemCertificates */
+        return ((void*)0);
+    case 128:
+
         FIXME("CERT_SYSTEM_STORE_USERS, %s: stub\n",
          debugstr_w(storeName));
-        return NULL;
-    case CERT_SYSTEM_STORE_CURRENT_USER_GROUP_POLICY:
+        return ((void*)0);
+    case 133:
         root = HKEY_CURRENT_USER;
         base = CERT_GROUP_POLICY_SYSTEM_STORE_REGPATH;
         break;
-    case CERT_SYSTEM_STORE_LOCAL_MACHINE_GROUP_POLICY:
+    case 130:
         root = HKEY_LOCAL_MACHINE;
         base = CERT_GROUP_POLICY_SYSTEM_STORE_REGPATH;
         break;
-    case CERT_SYSTEM_STORE_LOCAL_MACHINE_ENTERPRISE:
-        /* hklm\Software\Microsoft\EnterpriseCertificates */
+    case 131:
+
         FIXME("CERT_SYSTEM_STORE_LOCAL_MACHINE_ENTERPRISE, %s: stub\n",
          debugstr_w(storeName));
-        return NULL;
+        return ((void*)0);
     default:
         SetLastError(E_INVALIDARG);
-        return NULL;
+        return ((void*)0);
     }
 
     storePath = CryptMemAlloc((lstrlenW(base) + lstrlenW(storeName) + 2) *
@@ -143,7 +143,7 @@ __attribute__((used)) static WINECRYPT_CERTSTORE *CRYPT_SysRegOpenStoreW(HCRYPTP
         {
             DWORD disp;
 
-            rc = RegCreateKeyExW(root, storePath, 0, NULL, 0, sam, NULL,
+            rc = RegCreateKeyExW(root, storePath, 0, ((void*)0), 0, sam, ((void*)0),
                                  &key, &disp);
             if (!rc && dwFlags & CERT_STORE_CREATE_NEW_FLAG &&
                 disp == REG_OPENED_EXISTING_KEY)

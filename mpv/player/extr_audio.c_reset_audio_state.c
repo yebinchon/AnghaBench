@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct track {TYPE_1__* dec; } ;
-struct MPContext {scalar_t__ audio_stat_start; scalar_t__ audio_drop_throttle; scalar_t__ delay; TYPE_2__* ao_chain; int /*<<< orphan*/  audio_status; int /*<<< orphan*/  play_dir; } ;
+struct MPContext {scalar_t__ audio_stat_start; scalar_t__ audio_drop_throttle; scalar_t__ delay; TYPE_2__* ao_chain; int audio_status; int play_dir; } ;
 struct TYPE_4__ {struct track* track; } ;
-struct TYPE_3__ {int /*<<< orphan*/  play_dir; } ;
+struct TYPE_3__ {int play_dir; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  STATUS_EOF ; 
- int /*<<< orphan*/  STATUS_SYNCING ; 
- int /*<<< orphan*/  ao_chain_reset_state (TYPE_2__*) ; 
+
+ int STATUS_EOF ;
+ int STATUS_SYNCING ;
+ int ao_chain_reset_state (TYPE_2__*) ;
 
 void reset_audio_state(struct MPContext *mpctx)
 {

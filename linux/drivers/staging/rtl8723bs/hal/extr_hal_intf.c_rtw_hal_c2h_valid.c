@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
+
+
+
+
+typedef int u8 ;
 struct c2h_evt_hdr_88xx {int dummy; } ;
 struct adapter {int dummy; } ;
 
-/* Variables and functions */
- int c2h_evt_valid (struct c2h_evt_hdr_88xx*) ; 
+
+ int c2h_evt_valid (struct c2h_evt_hdr_88xx*) ;
 
 bool rtw_hal_c2h_valid(struct adapter *adapter, u8 *buf)
 {
-	return c2h_evt_valid((struct c2h_evt_hdr_88xx *)buf);
+ return c2h_evt_valid((struct c2h_evt_hdr_88xx *)buf);
 }

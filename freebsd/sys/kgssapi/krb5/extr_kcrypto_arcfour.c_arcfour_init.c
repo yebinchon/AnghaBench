@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct timeval {int dummy; } ;
-struct krb5_key_state {int /*<<< orphan*/ * ks_priv; } ;
+struct krb5_key_state {int * ks_priv; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  gone_in (int,char*) ; 
- int /*<<< orphan*/  krb5_warn_interval ; 
- scalar_t__ ratecheck (struct timeval*,int /*<<< orphan*/ *) ; 
+
+ int gone_in (int,char*) ;
+ int krb5_warn_interval ;
+ scalar_t__ ratecheck (struct timeval*,int *) ;
 
 __attribute__((used)) static void
 arcfour_init(struct krb5_key_state *ks)
 {
-	static struct timeval lastwarn;
+ static struct timeval lastwarn;
 
-	ks->ks_priv = NULL;
-	if (ratecheck(&lastwarn, &krb5_warn_interval))
-		gone_in(13, "RC4 cipher for Kerberos GSS");
+ ks->ks_priv = ((void*)0);
+ if (ratecheck(&lastwarn, &krb5_warn_interval))
+  gone_in(13, "RC4 cipher for Kerberos GSS");
 }

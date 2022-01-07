@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-typedef  int u32 ;
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int u8 ;
+typedef int u32 ;
 struct TYPE_8__ {int iWrite; } ;
 struct TYPE_9__ {TYPE_1__ treehdr; } ;
-typedef  TYPE_2__ lsm_db ;
+typedef TYPE_2__ lsm_db ;
 struct TYPE_10__ {int nKey; int nValue; scalar_t__ flags; } ;
-typedef  TYPE_3__ TreeKey ;
+typedef TYPE_3__ TreeKey ;
 
-/* Variables and functions */
- scalar_t__ LSM_CONTIGUOUS ; 
- int LSM_MAX (int,int) ; 
- int LSM_MIN (int,int) ; 
- int LSM_SHM_CHUNK_HDR ; 
- int LSM_SHM_CHUNK_SIZE ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  printf (char*,int,char*) ; 
- int treeShmalloc (TYPE_2__*,int,int,int*) ; 
- void* treeShmptr (TYPE_2__*,int) ; 
+
+ scalar_t__ LSM_CONTIGUOUS ;
+ int LSM_MAX (int,int) ;
+ int LSM_MIN (int,int) ;
+ int LSM_SHM_CHUNK_HDR ;
+ int LSM_SHM_CHUNK_SIZE ;
+ int memcpy (int *,int *,int) ;
+ int printf (char*,int,char*) ;
+ int treeShmalloc (TYPE_2__*,int,int,int*) ;
+ void* treeShmptr (TYPE_2__*,int) ;
 
 __attribute__((used)) static TreeKey *newTreeKey(
-  lsm_db *pDb, 
-  u32 *piPtr, 
-  void *pKey, int nKey,           /* Key data */
-  void *pVal, int nVal,           /* Value data (or nVal<0 for delete) */
+  lsm_db *pDb,
+  u32 *piPtr,
+  void *pKey, int nKey,
+  void *pVal, int nVal,
   int *pRc
 ){
   TreeKey *p;
@@ -46,14 +46,14 @@ __attribute__((used)) static TreeKey *newTreeKey(
   u8 *a;
   int n;
 
-  /* Allocate space for the TreeKey structure itself */
+
   *piPtr = iPtr = treeShmalloc(pDb, 1, sizeof(TreeKey), pRc);
   p = treeShmptr(pDb, iPtr);
   if( *pRc ) return 0;
   p->nKey = nKey;
   p->nValue = nVal;
 
-  /* Allocate and populate the space required for the key and value. */
+
   n = nRem = nKey;
   a = (u8 *)pKey;
   while( a ){
@@ -84,8 +84,8 @@ __attribute__((used)) static TreeKey *newTreeKey(
   }
 
   if( *pRc ) return 0;
-#if 0
-  printf("store: %d %s\n", (int)iPtr, (char *)pKey);
-#endif
+
+
+
   return p;
 }

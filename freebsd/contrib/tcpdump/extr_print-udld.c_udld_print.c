@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u_int ;
-typedef  int /*<<< orphan*/  u_char ;
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int u_int ;
+typedef int u_char ;
 struct TYPE_6__ {int ndo_vflag; } ;
-typedef  TYPE_1__ netdissect_options ;
+typedef TYPE_1__ netdissect_options ;
 
-/* Variables and functions */
- int EXTRACT_16BITS (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  EXTRACT_32BITS (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  ND_PRINT (TYPE_1__*) ; 
- int /*<<< orphan*/  ND_TCHECK2 (int /*<<< orphan*/  const,int) ; 
-#define  UDLD_DEVICE_ID_TLV 134 
-#define  UDLD_DEVICE_NAME_TLV 133 
-#define  UDLD_ECHO_TLV 132 
- int UDLD_EXTRACT_OPCODE (int /*<<< orphan*/  const) ; 
- int /*<<< orphan*/  UDLD_EXTRACT_VERSION (int /*<<< orphan*/  const) ; 
- int UDLD_HEADER_LEN ; 
-#define  UDLD_MESSAGE_INTERVAL_TLV 131 
-#define  UDLD_PORT_ID_TLV 130 
-#define  UDLD_SEQ_NUMBER_TLV 129 
-#define  UDLD_TIMEOUT_INTERVAL_TLV 128 
- int /*<<< orphan*/  bittok2str (int /*<<< orphan*/ ,char*,int /*<<< orphan*/  const) ; 
- int /*<<< orphan*/  fn_printn (TYPE_1__*,int /*<<< orphan*/  const*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fn_printzp (TYPE_1__*,int /*<<< orphan*/  const*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  istr ; 
- int /*<<< orphan*/  tok2str (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  tstr ; 
- int /*<<< orphan*/  udld_code_values ; 
- int /*<<< orphan*/  udld_flags_values ; 
- int /*<<< orphan*/  udld_tlv_values ; 
+
+ int EXTRACT_16BITS (int const*) ;
+ int EXTRACT_32BITS (int const*) ;
+ int ND_PRINT (TYPE_1__*) ;
+ int ND_TCHECK2 (int const,int) ;
+
+
+
+ int UDLD_EXTRACT_OPCODE (int const) ;
+ int UDLD_EXTRACT_VERSION (int const) ;
+ int UDLD_HEADER_LEN ;
+
+
+
+
+ int bittok2str (int ,char*,int const) ;
+ int fn_printn (TYPE_1__*,int const*,int,int *) ;
+ int fn_printzp (TYPE_1__*,int const*,int,int *) ;
+ int istr ;
+ int tok2str (int ,char*,int) ;
+ int tstr ;
+ int udld_code_values ;
+ int udld_flags_values ;
+ int udld_tlv_values ;
 
 void
 udld_print (netdissect_options *ndo, const u_char *pptr, u_int length)
@@ -64,11 +64,11 @@ udld_print (netdissect_options *ndo, const u_char *pptr, u_int length)
            *(tptr+1),
            length));
 
-    /*
-     * In non-verbose mode, just print version and opcode type
-     */
+
+
+
     if (ndo->ndo_vflag < 1) {
-	return;
+ return;
     }
 
     ND_PRINT((ndo, "\n\tChecksum 0x%04x (unverified)", EXTRACT_16BITS(tptr+2)));
@@ -78,8 +78,8 @@ udld_print (netdissect_options *ndo, const u_char *pptr, u_int length)
     while (tptr < (pptr+length)) {
 
         ND_TCHECK2(*tptr, 4);
-	type = EXTRACT_16BITS(tptr);
-        len  = EXTRACT_16BITS(tptr+2);
+ type = EXTRACT_16BITS(tptr);
+        len = EXTRACT_16BITS(tptr+2);
 
         ND_PRINT((ndo, "\n\t%s (0x%04x) TLV, length %u",
                tok2str(udld_tlv_values, "Unknown", type),
@@ -88,7 +88,7 @@ udld_print (netdissect_options *ndo, const u_char *pptr, u_int length)
         if (type == 0)
             goto invalid;
 
-        /* infinite loop check */
+
         if (len <= 4)
             goto invalid;
 
@@ -98,26 +98,26 @@ udld_print (netdissect_options *ndo, const u_char *pptr, u_int length)
         ND_TCHECK2(*tptr, len);
 
         switch (type) {
-        case UDLD_DEVICE_ID_TLV:
-        case UDLD_PORT_ID_TLV:
-        case UDLD_DEVICE_NAME_TLV:
+        case 134:
+        case 130:
+        case 133:
             ND_PRINT((ndo, ", "));
-            fn_printzp(ndo, tptr, len, NULL);
+            fn_printzp(ndo, tptr, len, ((void*)0));
             break;
 
-        case UDLD_ECHO_TLV:
+        case 132:
             ND_PRINT((ndo, ", "));
-            (void)fn_printn(ndo, tptr, len, NULL);
+            (void)fn_printn(ndo, tptr, len, ((void*)0));
             break;
 
-        case UDLD_MESSAGE_INTERVAL_TLV:
-        case UDLD_TIMEOUT_INTERVAL_TLV:
+        case 131:
+        case 128:
             if (len != 1)
                 goto invalid;
             ND_PRINT((ndo, ", %us", (*tptr)));
             break;
 
-        case UDLD_SEQ_NUMBER_TLV:
+        case 129:
             if (len != 4)
                 goto invalid;
             ND_PRINT((ndo, ", %u", EXTRACT_32BITS(tptr)));

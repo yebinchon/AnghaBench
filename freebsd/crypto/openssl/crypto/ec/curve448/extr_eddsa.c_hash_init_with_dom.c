@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
-typedef  int /*<<< orphan*/  dom ;
-typedef  int /*<<< orphan*/  c448_error_t ;
-typedef  int /*<<< orphan*/  EVP_MD_CTX ;
 
-/* Variables and functions */
- int /*<<< orphan*/  C448_FAILURE ; 
- int /*<<< orphan*/  C448_SUCCESS ; 
- int /*<<< orphan*/  EVP_DigestInit_ex (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EVP_DigestUpdate (int /*<<< orphan*/ *,...) ; 
- int /*<<< orphan*/  EVP_shake256 () ; 
- size_t UINT8_MAX ; 
- size_t strlen (char const*) ; 
+
+
+
+typedef scalar_t__ uint8_t ;
+typedef int dom ;
+typedef int c448_error_t ;
+typedef int EVP_MD_CTX ;
+
+
+ int C448_FAILURE ;
+ int C448_SUCCESS ;
+ int EVP_DigestInit_ex (int *,int ,int *) ;
+ int EVP_DigestUpdate (int *,...) ;
+ int EVP_shake256 () ;
+ size_t UINT8_MAX ;
+ size_t strlen (char const*) ;
 
 __attribute__((used)) static c448_error_t hash_init_with_dom(EVP_MD_CTX *hashctx, uint8_t prehashed,
                                        uint8_t for_prehash,
@@ -39,7 +39,7 @@ __attribute__((used)) static c448_error_t hash_init_with_dom(EVP_MD_CTX *hashctx
                        - (for_prehash == 0 ? 1 : 0));
     dom[1] = (uint8_t)context_len;
 
-    if (!EVP_DigestInit_ex(hashctx, EVP_shake256(), NULL)
+    if (!EVP_DigestInit_ex(hashctx, EVP_shake256(), ((void*)0))
             || !EVP_DigestUpdate(hashctx, dom_s, strlen(dom_s))
             || !EVP_DigestUpdate(hashctx, dom, sizeof(dom))
             || !EVP_DigestUpdate(hashctx, context, context_len))

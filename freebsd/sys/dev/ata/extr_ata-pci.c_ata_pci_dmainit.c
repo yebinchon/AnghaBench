@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  reset; int /*<<< orphan*/  stop; int /*<<< orphan*/  start; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int reset; int stop; int start; } ;
 struct ata_channel {TYPE_1__ dma; } ;
-typedef  int /*<<< orphan*/  device_t ;
+typedef int device_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ata_dmainit (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ata_pci_dmareset ; 
- int /*<<< orphan*/  ata_pci_dmastart ; 
- int /*<<< orphan*/  ata_pci_dmastop ; 
- struct ata_channel* device_get_softc (int /*<<< orphan*/ ) ; 
+
+ int ata_dmainit (int ) ;
+ int ata_pci_dmareset ;
+ int ata_pci_dmastart ;
+ int ata_pci_dmastop ;
+ struct ata_channel* device_get_softc (int ) ;
 
 void
 ata_pci_dmainit(device_t dev)

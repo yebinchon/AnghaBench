@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct tl_expression {int /*<<< orphan*/  text; } ;
+
+
+
+
+struct tl_expression {int text; } ;
 struct tl_compiler {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cstr_remove_extra_spaces (char*) ; 
- int tl_failf (struct tl_compiler*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vkprintf (int,char*,char*) ; 
+
+ int cstr_remove_extra_spaces (char*) ;
+ int tl_failf (struct tl_compiler*,char*,int ) ;
+ int vkprintf (int,char*,char*) ;
 
 int tl_expression_remove_sugar (struct tl_compiler *C, struct tl_expression *E, char *buf) {
   vkprintf (4, "tl_expression_remove_sugar (\"%s\")\n", buf);

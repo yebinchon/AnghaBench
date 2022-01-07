@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  const uint8_t ;
-typedef  int /*<<< orphan*/  PutByteContext ;
-typedef  int /*<<< orphan*/  H264ParamSets ;
-typedef  int /*<<< orphan*/  GetByteContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AV_EF_EXPLODE ; 
- int AV_INPUT_BUFFER_PADDING_SIZE ; 
- int /*<<< orphan*/  AV_LOG_WARNING ; 
- int /*<<< orphan*/  AV_WB16 (int /*<<< orphan*/  const*,int) ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  ERANGE ; 
- int INT16_MAX ; 
- int /*<<< orphan*/  av_freep (int /*<<< orphan*/  const**) ; 
- int /*<<< orphan*/  av_log (void*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  const* av_mallocz (int) ; 
- int /*<<< orphan*/  bytestream2_get_byte (int /*<<< orphan*/ *) ; 
- int bytestream2_get_bytes_left (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bytestream2_init (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int) ; 
- int /*<<< orphan*/  bytestream2_init_writer (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int) ; 
- int bytestream2_peek_be24 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bytestream2_put_be24 (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  bytestream2_put_byte (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bytestream2_skip (int /*<<< orphan*/ *,int) ; 
- int bytestream2_tell_p (int /*<<< orphan*/ *) ; 
- int decode_extradata_ps (int /*<<< orphan*/  const*,int,int /*<<< orphan*/ *,int,void*) ; 
+
+
+
+typedef int const uint8_t ;
+typedef int PutByteContext ;
+typedef int H264ParamSets ;
+typedef int GetByteContext ;
+
+
+ int AVERROR (int ) ;
+ int AV_EF_EXPLODE ;
+ int AV_INPUT_BUFFER_PADDING_SIZE ;
+ int AV_LOG_WARNING ;
+ int AV_WB16 (int const*,int) ;
+ int ENOMEM ;
+ int ERANGE ;
+ int INT16_MAX ;
+ int av_freep (int const**) ;
+ int av_log (void*,int ,char*) ;
+ int const* av_mallocz (int) ;
+ int bytestream2_get_byte (int *) ;
+ int bytestream2_get_bytes_left (int *) ;
+ int bytestream2_init (int *,int const*,int) ;
+ int bytestream2_init_writer (int *,int const*,int) ;
+ int bytestream2_peek_be24 (int *) ;
+ int bytestream2_put_be24 (int *,int) ;
+ int bytestream2_put_byte (int *,int ) ;
+ int bytestream2_skip (int *,int) ;
+ int bytestream2_tell_p (int *) ;
+ int decode_extradata_ps (int const*,int,int *,int,void*) ;
 
 __attribute__((used)) static int decode_extradata_ps_mp4(const uint8_t *buf, int buf_size, H264ParamSets *ps,
                                    int err_recognition, void *logctx)
@@ -76,7 +76,7 @@ __attribute__((used)) static int decode_extradata_ps_mp4(const uint8_t *buf, int
         AV_WB16(escaped_buf, escaped_buf_size - 2);
 
         (void)decode_extradata_ps(escaped_buf, escaped_buf_size, ps, 1, logctx);
-        // lorex.mp4 decodes ok even with extradata decoding failing
+
         av_freep(&escaped_buf);
     }
 

@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct vhost_dev {int /*<<< orphan*/  work_list; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  llist_empty (int /*<<< orphan*/ *) ; 
+
+
+
+struct vhost_dev {int work_list; } ;
+
+
+ int llist_empty (int *) ;
 
 bool vhost_has_work(struct vhost_dev *dev)
 {
-	return !llist_empty(&dev->work_list);
+ return !llist_empty(&dev->work_list);
 }

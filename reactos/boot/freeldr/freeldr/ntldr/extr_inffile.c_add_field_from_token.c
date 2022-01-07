@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct parser {int /*<<< orphan*/  error; scalar_t__ token_len; int /*<<< orphan*/  token; int /*<<< orphan*/ * line; int /*<<< orphan*/ * cur_section; } ;
+
+
+
+
+struct parser {int error; scalar_t__ token_len; int token; int * line; int * cur_section; } ;
 struct field {int dummy; } ;
-typedef  struct field* PVOID ;
+typedef struct field* PVOID ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- struct field* InfpAddFieldToLine (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- struct field* InfpAddKeyToLine (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * InfpCacheAddLine (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  STATUS_WRONG_INF_STYLE ; 
+
+ int FALSE ;
+ struct field* InfpAddFieldToLine (int *,int ) ;
+ struct field* InfpAddKeyToLine (int *,int ) ;
+ int * InfpCacheAddLine (int *) ;
+ int STATUS_WRONG_INF_STYLE ;
 
 __attribute__((used)) static
 struct field*
@@ -29,21 +29,21 @@ add_field_from_token(
 {
     PVOID field;
 
-    if (!parser->line)  /* need to start a new line */
+    if (!parser->line)
     {
-        if (parser->cur_section == NULL)  /* got a line before the first section */
+        if (parser->cur_section == ((void*)0))
         {
             parser->error = STATUS_WRONG_INF_STYLE;
-            return NULL;
+            return ((void*)0);
         }
 
         parser->line = InfpCacheAddLine(parser->cur_section);
-        if (parser->line == NULL)
+        if (parser->line == ((void*)0))
             goto error;
     }
     else
     {
-//      assert(!is_key);
+
     }
 
     if (is_key)
@@ -55,7 +55,7 @@ add_field_from_token(
         field = InfpAddFieldToLine(parser->line, parser->token);
     }
 
-    if (field != NULL)
+    if (field != ((void*)0))
     {
         parser->token_len = 0;
         return field;
@@ -63,5 +63,5 @@ add_field_from_token(
 
 error:
     parser->error = FALSE;
-    return NULL;
+    return ((void*)0);
 }

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_6__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  usec_t ;
+
+
+typedef struct TYPE_10__ TYPE_6__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int usec_t ;
 struct TYPE_10__ {TYPE_1__* manager; } ;
 struct TYPE_9__ {scalar_t__ timer_event_source; } ;
-struct TYPE_8__ {int /*<<< orphan*/  event; } ;
-typedef  TYPE_2__ Mount ;
+struct TYPE_8__ {int event; } ;
+typedef TYPE_2__ Mount ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLOCK_MONOTONIC ; 
- int /*<<< orphan*/  SD_EVENT_ONESHOT ; 
- TYPE_6__* UNIT (TYPE_2__*) ; 
- int /*<<< orphan*/  USEC_INFINITY ; 
- int /*<<< orphan*/  assert (TYPE_2__*) ; 
- int /*<<< orphan*/  mount_dispatch_timer ; 
- int sd_event_add_time (int /*<<< orphan*/ ,scalar_t__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  sd_event_source_set_description (scalar_t__,char*) ; 
- int sd_event_source_set_enabled (scalar_t__,int /*<<< orphan*/ ) ; 
- int sd_event_source_set_time (scalar_t__,int /*<<< orphan*/ ) ; 
+
+ int CLOCK_MONOTONIC ;
+ int SD_EVENT_ONESHOT ;
+ TYPE_6__* UNIT (TYPE_2__*) ;
+ int USEC_INFINITY ;
+ int assert (TYPE_2__*) ;
+ int mount_dispatch_timer ;
+ int sd_event_add_time (int ,scalar_t__*,int ,int ,int ,int ,TYPE_2__*) ;
+ int sd_event_source_set_description (scalar_t__,char*) ;
+ int sd_event_source_set_enabled (scalar_t__,int ) ;
+ int sd_event_source_set_time (scalar_t__,int ) ;
 
 __attribute__((used)) static int mount_arm_timer(Mount *m, usec_t usec) {
         int r;

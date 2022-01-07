@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint64_t ;
-typedef  size_t uint32_t ;
-typedef  int /*<<< orphan*/  uint16_t ;
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint64_t ;
+typedef size_t uint32_t ;
+typedef int uint16_t ;
 struct TYPE_10__ {size_t num_friends; TYPE_2__* friends_list; } ;
-struct TYPE_8__ {scalar_t__ NATping_timestamp; int hole_punching; scalar_t__ punching_timestamp; scalar_t__ recvNATping_timestamp; int /*<<< orphan*/  NATping_id; } ;
-struct TYPE_9__ {TYPE_1__ nat; int /*<<< orphan*/  public_key; } ;
-typedef  int /*<<< orphan*/  IP_Port ;
-typedef  int /*<<< orphan*/  IP ;
-typedef  TYPE_3__ DHT ;
+struct TYPE_8__ {scalar_t__ NATping_timestamp; int hole_punching; scalar_t__ punching_timestamp; scalar_t__ recvNATping_timestamp; int NATping_id; } ;
+struct TYPE_9__ {TYPE_1__ nat; int public_key; } ;
+typedef int IP_Port ;
+typedef int IP ;
+typedef TYPE_3__ DHT ;
 
-/* Variables and functions */
- int MAX_FRIEND_CLIENTS ; 
- int /*<<< orphan*/  NAT_PING_REQUEST ; 
- int /*<<< orphan*/  NAT_commonip (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  NAT_getports (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int PUNCH_INTERVAL ; 
- int friend_iplist (TYPE_3__*,int /*<<< orphan*/ *,size_t) ; 
- int /*<<< orphan*/  ip_isset (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  punch_holes (TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/  send_NATping (TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ unix_time () ; 
+
+ int MAX_FRIEND_CLIENTS ;
+ int NAT_PING_REQUEST ;
+ int NAT_commonip (int *,int,int) ;
+ int NAT_getports (int *,int *,int,int ) ;
+ int PUNCH_INTERVAL ;
+ int friend_iplist (TYPE_3__*,int *,size_t) ;
+ int ip_isset (int *) ;
+ int punch_holes (TYPE_3__*,int ,int *,int ,size_t) ;
+ int send_NATping (TYPE_3__*,int ,int ,int ) ;
+ scalar_t__ unix_time () ;
 
 __attribute__((used)) static void do_NAT(DHT *dht)
 {
@@ -44,7 +44,7 @@ __attribute__((used)) static void do_NAT(DHT *dht)
         IP_Port ip_list[MAX_FRIEND_CLIENTS];
         int num = friend_iplist(dht, ip_list, i);
 
-        /* If already connected or friend is not online don't try to hole punch. */
+
         if (num < MAX_FRIEND_CLIENTS / 2)
             continue;
 

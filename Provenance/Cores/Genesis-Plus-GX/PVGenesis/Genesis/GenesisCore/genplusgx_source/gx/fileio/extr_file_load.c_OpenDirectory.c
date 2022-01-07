@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int /*<<< orphan*/ ** lastdir; } ;
+
+
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int ** lastdir; } ;
 struct TYPE_7__ {char* filename; scalar_t__ flags; } ;
 struct TYPE_6__ {TYPE_1__* entries; } ;
-struct TYPE_5__ {scalar_t__* filepath; int /*<<< orphan*/  filename; } ;
-typedef  int /*<<< orphan*/  DIR ;
+struct TYPE_5__ {scalar_t__* filepath; int filename; } ;
+typedef int DIR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ClearSelector (int) ; 
- int /*<<< orphan*/  GUI_WaitPrompt (char*,char*) ; 
- int MAXJOLIET ; 
- int /*<<< orphan*/  MountDVD () ; 
- int NUM_HISTORY_ENTRIES ; 
- int ParseDirectory () ; 
- int TYPE_DVD ; 
- int TYPE_RECENT ; 
- int /*<<< orphan*/  closedir (int /*<<< orphan*/ *) ; 
- TYPE_4__ config ; 
- int deviceType ; 
- int /*<<< orphan*/  fileDir ; 
- int fileType ; 
- TYPE_3__* filelist ; 
- TYPE_2__ history ; 
- int /*<<< orphan*/ * opendir (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * rootdir ; 
- int /*<<< orphan*/  strcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strncpy (char*,int /*<<< orphan*/ ,int) ; 
+
+ int ClearSelector (int) ;
+ int GUI_WaitPrompt (char*,char*) ;
+ int MAXJOLIET ;
+ int MountDVD () ;
+ int NUM_HISTORY_ENTRIES ;
+ int ParseDirectory () ;
+ int TYPE_DVD ;
+ int TYPE_RECENT ;
+ int closedir (int *) ;
+ TYPE_4__ config ;
+ int deviceType ;
+ int fileDir ;
+ int fileType ;
+ TYPE_3__* filelist ;
+ TYPE_2__ history ;
+ int * opendir (int ) ;
+ int * rootdir ;
+ int strcpy (int ,int ) ;
+ int strncpy (char*,int ,int) ;
 
 int OpenDirectory(int device, int type)
 {
@@ -47,7 +47,7 @@ int OpenDirectory(int device, int type)
 
   if (device == TYPE_RECENT)
   {
-    /* fetch history list */
+
     int i;
     for(i=0; i < NUM_HISTORY_ENTRIES; i++)
     {
@@ -60,21 +60,21 @@ int OpenDirectory(int device, int type)
       }
       else
       {
-        /* Found the end of the list. */
+
         break;
       }
     }
   }
   else
   {
-    /* only DVD hot swap is supported */
+
     if (device == TYPE_DVD)
     {
-      /* try to access root directory */
+
       DIR *dir = opendir(rootdir[TYPE_DVD]);
-      if (dir == NULL)
+      if (dir == ((void*)0))
       {
-        /* mount DVD */
+
         if (!MountDVD()) return 0;
         deviceType = -1;
       }
@@ -84,12 +84,12 @@ int OpenDirectory(int device, int type)
       }
     }
 
-    /* parse last directory */
+
     fileDir = config.lastdir[type][device];
     max = ParseDirectory();
     if (max <= 0)
     {
-      /* parse root directory */
+
       strcpy(fileDir, rootdir[device]);
       max = ParseDirectory();
       if (max < 0)
@@ -107,14 +107,14 @@ int OpenDirectory(int device, int type)
     return 0;
   }
 
-  /* check if device or file type has changed */
+
   if ((device != deviceType) || (type != fileType))
   {
-    /* reset current types */
+
     deviceType = device;
     fileType = type;
 
-    /* reset File selector */
+
     ClearSelector(max);
   }
 

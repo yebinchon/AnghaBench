@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct prompt {int dummy; } ;
 struct TYPE_4__ {char* OctetsPerSecond; scalar_t__* SampleOctets; } ;
 struct TYPE_3__ {char* OctetsPerSecond; scalar_t__* SampleOctets; } ;
-struct pppThroughput {int SamplePeriod; int OctetsIn; int OctetsOut; int PacketsIn; int PacketsOut; char* BestOctetsPerSecond; int /*<<< orphan*/  BestOctetsPerSecondTime; TYPE_2__ out; TYPE_1__ in; int /*<<< orphan*/  uptime; scalar_t__ downtime; scalar_t__ nSample; } ;
+struct pppThroughput {int SamplePeriod; int OctetsIn; int OctetsOut; int PacketsIn; int PacketsOut; char* BestOctetsPerSecond; int BestOctetsPerSecondTime; TYPE_2__ out; TYPE_1__ in; int uptime; scalar_t__ downtime; scalar_t__ nSample; } ;
 
-/* Variables and functions */
- int THROUGHPUT_CURRENT ; 
- int THROUGHPUT_OVERALL ; 
- int THROUGHPUT_PEAK ; 
- char* ctime (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  prompt_Printf (struct prompt*,char*,...) ; 
- int strlen (char*) ; 
- int throughput_uptime (struct pppThroughput*) ; 
- int /*<<< orphan*/  time (int /*<<< orphan*/ *) ; 
+
+ int THROUGHPUT_CURRENT ;
+ int THROUGHPUT_OVERALL ;
+ int THROUGHPUT_PEAK ;
+ char* ctime (int *) ;
+ int prompt_Printf (struct prompt*,char*,...) ;
+ int strlen (char*) ;
+ int throughput_uptime (struct pppThroughput*) ;
+ int time (int *) ;
 
 void
 throughput_clear(struct pppThroughput *t, int clear_type, struct prompt *prompt)

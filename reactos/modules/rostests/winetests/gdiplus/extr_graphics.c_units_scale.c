@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  REAL ;
-typedef  int /*<<< orphan*/  GpUnit ;
 
-/* Variables and functions */
- int /*<<< orphan*/  pixels_to_units (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  units_to_pixels (double,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int REAL ;
+typedef int GpUnit ;
+
+
+ int pixels_to_units (int ,int ,int ) ;
+ int units_to_pixels (double,int ,int ) ;
 
 __attribute__((used)) static REAL units_scale(GpUnit from, GpUnit to, REAL dpi)
 {

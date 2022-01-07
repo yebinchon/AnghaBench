@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int tree ;
 struct loop {int dummy; } ;
 struct iv_cand {TYPE_1__* iv; } ;
-struct TYPE_2__ {int /*<<< orphan*/  step; int /*<<< orphan*/  base; } ;
+struct TYPE_2__ {int step; int base; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PLUS_EXPR ; 
- int /*<<< orphan*/  TREE_TYPE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fold_build2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  iv_value (TYPE_1__*,int /*<<< orphan*/ ) ; 
- scalar_t__ stmt_after_increment (struct loop*,struct iv_cand*,int /*<<< orphan*/ ) ; 
+
+ int PLUS_EXPR ;
+ int TREE_TYPE (int ) ;
+ int fold_build2 (int ,int ,int ,int ) ;
+ int iv_value (TYPE_1__*,int ) ;
+ scalar_t__ stmt_after_increment (struct loop*,struct iv_cand*,int ) ;
 
 __attribute__((used)) static tree
 cand_value_at (struct loop *loop, struct iv_cand *cand, tree at, tree niter)

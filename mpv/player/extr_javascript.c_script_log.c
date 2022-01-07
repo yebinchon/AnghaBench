@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct mp_log {int dummy; } ;
-typedef  int /*<<< orphan*/  js_State ;
+typedef int js_State ;
 struct TYPE_2__ {struct mp_log* log; } ;
 
-/* Variables and functions */
- TYPE_1__* jctx (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  js_error (int /*<<< orphan*/ *,char*,char const*) ; 
- int js_gettop (int /*<<< orphan*/ *) ; 
- char* js_tostring (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  mp_msg (struct mp_log*,int,char*,...) ; 
- int mp_msg_find_level (char const*) ; 
- int /*<<< orphan*/  push_success (int /*<<< orphan*/ *) ; 
+
+ TYPE_1__* jctx (int *) ;
+ int js_error (int *,char*,char const*) ;
+ int js_gettop (int *) ;
+ char* js_tostring (int *,int) ;
+ int mp_msg (struct mp_log*,int,char*,...) ;
+ int mp_msg_find_level (char const*) ;
+ int push_success (int *) ;
 
 __attribute__((used)) static void script_log(js_State *J)
 {

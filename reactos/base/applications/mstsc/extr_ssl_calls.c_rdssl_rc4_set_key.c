@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct rc4_state {scalar_t__ hKey; int /*<<< orphan*/  hCryptProv; } ;
-struct TYPE_2__ {scalar_t__ reserved; int /*<<< orphan*/  bVersion; int /*<<< orphan*/  bType; int /*<<< orphan*/  aiKeyAlg; } ;
-typedef  TYPE_1__ PUBLICKEYSTRUC ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  BYTE ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CALG_RC4 ; 
- int /*<<< orphan*/  CRYPT_EXPORTABLE ; 
- int /*<<< orphan*/  CUR_BLOB_VERSION ; 
- int /*<<< orphan*/  CryptDestroyKey (scalar_t__) ; 
- int /*<<< orphan*/  CryptImportKey (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__*) ; 
- int GetLastError () ; 
- int /*<<< orphan*/  PLAINTEXTKEYBLOB ; 
- int /*<<< orphan*/  error (char*,...) ; 
- int /*<<< orphan*/  g_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * g_malloc (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,char*,int) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct rc4_state {scalar_t__ hKey; int hCryptProv; } ;
+struct TYPE_2__ {scalar_t__ reserved; int bVersion; int bType; int aiKeyAlg; } ;
+typedef TYPE_1__ PUBLICKEYSTRUC ;
+typedef int DWORD ;
+typedef int BYTE ;
+typedef int BOOL ;
+
+
+ int CALG_RC4 ;
+ int CRYPT_EXPORTABLE ;
+ int CUR_BLOB_VERSION ;
+ int CryptDestroyKey (scalar_t__) ;
+ int CryptImportKey (int ,int *,int,int ,int ,scalar_t__*) ;
+ int GetLastError () ;
+ int PLAINTEXTKEYBLOB ;
+ int error (char*,...) ;
+ int g_free (int *) ;
+ int * g_malloc (int,int ) ;
+ int memcpy (int *,char*,int) ;
 
 void
 rdssl_rc4_set_key(void* rc4_info, char* key, int len)

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct blockvector {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BLOCKVECTOR_BLOCK (struct blockvector*,int) ; 
- int BLOCKVECTOR_NBLOCKS (struct blockvector*) ; 
- int /*<<< orphan*/  debug_print_block (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  stderr ; 
+
+ int BLOCKVECTOR_BLOCK (struct blockvector*,int) ;
+ int BLOCKVECTOR_NBLOCKS (struct blockvector*) ;
+ int debug_print_block (int ) ;
+ int fprintf (int ,char*,int) ;
+ int stderr ;
 
 __attribute__((used)) static void
 debug_print_blocks (struct blockvector *bv)
 {
   int i;
 
-  if (bv == NULL)
+  if (bv == ((void*)0))
     return;
   for (i = 0; i < BLOCKVECTOR_NBLOCKS (bv); i += 1)
     {

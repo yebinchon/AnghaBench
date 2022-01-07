@@ -1,81 +1,81 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_11__ {int Active; int /*<<< orphan*/  Logger; int /*<<< orphan*/  Cancel; int /*<<< orphan*/ * SendQueue; } ;
-typedef  TYPE_1__ VH ;
-typedef  int /*<<< orphan*/  BLOCK ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FreeArpTable (TYPE_1__*) ; 
- int /*<<< orphan*/  FreeArpWaitTable (TYPE_1__*) ; 
- int /*<<< orphan*/  FreeBlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FreeDhcpServer (TYPE_1__*) ; 
- int /*<<< orphan*/  FreeIpCombineList (TYPE_1__*) ; 
- int /*<<< orphan*/  FreeIpWaitTable (TYPE_1__*) ; 
- int /*<<< orphan*/  FreeLog (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FreeNat (TYPE_1__*) ; 
- int /*<<< orphan*/ * GetNext (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LockQueue (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LockVirtual (TYPE_1__*) ; 
- int /*<<< orphan*/  ReleaseCancel (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReleaseQueue (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  UnlockQueue (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  UnlockVirtual (TYPE_1__*) ; 
+
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+struct TYPE_11__ {int Active; int Logger; int Cancel; int * SendQueue; } ;
+typedef TYPE_1__ VH ;
+typedef int BLOCK ;
+
+
+ int FreeArpTable (TYPE_1__*) ;
+ int FreeArpWaitTable (TYPE_1__*) ;
+ int FreeBlock (int *) ;
+ int FreeDhcpServer (TYPE_1__*) ;
+ int FreeIpCombineList (TYPE_1__*) ;
+ int FreeIpWaitTable (TYPE_1__*) ;
+ int FreeLog (int ) ;
+ int FreeNat (TYPE_1__*) ;
+ int * GetNext (int *) ;
+ int LockQueue (int *) ;
+ int LockVirtual (TYPE_1__*) ;
+ int ReleaseCancel (int ) ;
+ int ReleaseQueue (int *) ;
+ int UnlockQueue (int *) ;
+ int UnlockVirtual (TYPE_1__*) ;
 
 void Virtual_Free(VH *v)
 {
-	// Release the DHCP server
-	FreeDhcpServer(v);
 
-	// NAT release
-	FreeNat(v);
+ FreeDhcpServer(v);
 
-	LockVirtual(v);
-	{
-		// Release the IP combining list
-		FreeIpCombineList(v);
 
-		// Release the IP waiting table
-		FreeIpWaitTable(v);
+ FreeNat(v);
 
-		// Release the ARP waiting table
-		FreeArpWaitTable(v);
+ LockVirtual(v);
+ {
 
-		// Release the ARP table
-		FreeArpTable(v);
+  FreeIpCombineList(v);
 
-		// Release the transmission queue
-		LockQueue(v->SendQueue);
-		{
-			BLOCK *block;
 
-			// Release all queues
-			while (block = GetNext(v->SendQueue))
-			{
-				FreeBlock(block);
-			}
-		}
-		UnlockQueue(v->SendQueue);
-		ReleaseQueue(v->SendQueue);
-		v->SendQueue = NULL;
+  FreeIpWaitTable(v);
 
-		// Release the cancel object
-		ReleaseCancel(v->Cancel);
 
-		v->Active = false;
-	}
-	UnlockVirtual(v);
+  FreeArpWaitTable(v);
 
-	// Release the logger
-	FreeLog(v->Logger);
+
+  FreeArpTable(v);
+
+
+  LockQueue(v->SendQueue);
+  {
+   BLOCK *block;
+
+
+   while (block = GetNext(v->SendQueue))
+   {
+    FreeBlock(block);
+   }
+  }
+  UnlockQueue(v->SendQueue);
+  ReleaseQueue(v->SendQueue);
+  v->SendQueue = ((void*)0);
+
+
+  ReleaseCancel(v->Cancel);
+
+  v->Active = 0;
+ }
+ UnlockVirtual(v);
+
+
+ FreeLog(v->Logger);
 }

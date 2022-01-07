@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct ocfs2_dx_entry {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BUG_ON (int) ; 
- int /*<<< orphan*/  swap (struct ocfs2_dx_entry,struct ocfs2_dx_entry) ; 
+
+ int BUG_ON (int) ;
+ int swap (struct ocfs2_dx_entry,struct ocfs2_dx_entry) ;
 
 __attribute__((used)) static void dx_leaf_sort_swap(void *a, void *b, int size)
 {
-	struct ocfs2_dx_entry *entry1 = a;
-	struct ocfs2_dx_entry *entry2 = b;
+ struct ocfs2_dx_entry *entry1 = a;
+ struct ocfs2_dx_entry *entry2 = b;
 
-	BUG_ON(size != sizeof(*entry1));
+ BUG_ON(size != sizeof(*entry1));
 
-	swap(*entry1, *entry2);
+ swap(*entry1, *entry2);
 }

@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  STARTSTACKSTR (char*) ; 
- int /*<<< orphan*/  STPUTC (char,char*) ; 
- int /*<<< orphan*/  STPUTS (char*,char*) ; 
- int /*<<< orphan*/  builtin_flags ; 
- int /*<<< orphan*/  evalstring (char*,int /*<<< orphan*/ ) ; 
- int exitstatus ; 
- char* grabstackstr (char*) ; 
+ int STARTSTACKSTR (char*) ;
+ int STPUTC (char,char*) ;
+ int STPUTS (char*,char*) ;
+ int builtin_flags ;
+ int evalstring (char*,int ) ;
+ int exitstatus ;
+ char* grabstackstr (char*) ;
 
 int
 evalcmd(int argc, char **argv)
@@ -34,7 +26,7 @@ evalcmd(int argc, char **argv)
                         ap = argv + 2;
                         for (;;) {
                                 STPUTS(p, concat);
-                                if ((p = *ap++) == NULL)
+                                if ((p = *ap++) == ((void*)0))
                                         break;
                                 STPUTC(' ', concat);
                         }

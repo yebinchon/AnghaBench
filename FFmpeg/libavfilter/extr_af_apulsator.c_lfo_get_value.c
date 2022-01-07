@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {double phase; int mode; double amount; scalar_t__ offset; int /*<<< orphan*/  pwidth; } ;
-typedef  TYPE_1__ SimpleLFO ;
 
-/* Variables and functions */
- scalar_t__ FFMAX (double,int /*<<< orphan*/ ) ; 
- double FFMIN (int,scalar_t__) ; 
- double M_PI ; 
-#define  SAWDOWN 132 
-#define  SAWUP 131 
-#define  SINE 130 
-#define  SQUARE 129 
-#define  TRIANGLE 128 
- int /*<<< orphan*/  av_assert0 (int /*<<< orphan*/ ) ; 
- double fmod (double,int) ; 
- double sin (double) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {double phase; int mode; double amount; scalar_t__ offset; int pwidth; } ;
+typedef TYPE_1__ SimpleLFO ;
+
+
+ scalar_t__ FFMAX (double,int ) ;
+ double FFMIN (int,scalar_t__) ;
+ double M_PI ;
+
+
+
+
+
+ int av_assert0 (int ) ;
+ double fmod (double,int) ;
+ double sin (double) ;
 
 __attribute__((used)) static double lfo_get_value(SimpleLFO *lfo)
 {
@@ -36,10 +36,10 @@ __attribute__((used)) static double lfo_get_value(SimpleLFO *lfo)
         phs = fmod(phs, 1.);
 
     switch (lfo->mode) {
-    case SINE:
+    case 130:
         val = sin(phs * 2 * M_PI);
         break;
-    case TRIANGLE:
+    case 128:
         if (phs > 0.75)
             val = (phs - 0.75) * 4 - 1;
         else if (phs > 0.25)
@@ -47,13 +47,13 @@ __attribute__((used)) static double lfo_get_value(SimpleLFO *lfo)
         else
             val = phs * 4;
         break;
-    case SQUARE:
+    case 129:
         val = phs < 0.5 ? -1 : +1;
         break;
-    case SAWUP:
+    case 131:
         val = phs * 2 - 1;
         break;
-    case SAWDOWN:
+    case 132:
         val = 1 - phs * 2;
         break;
     default: av_assert0(0);

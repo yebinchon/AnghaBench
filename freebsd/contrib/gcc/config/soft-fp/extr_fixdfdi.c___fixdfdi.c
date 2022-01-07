@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UDItype ;
-typedef  int /*<<< orphan*/  DItype ;
-typedef  int /*<<< orphan*/  DFtype ;
 
-/* Variables and functions */
- int /*<<< orphan*/  A ; 
- int /*<<< orphan*/  DI_BITS ; 
- int /*<<< orphan*/  FP_DECL_D (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FP_DECL_EX ; 
- int /*<<< orphan*/  FP_HANDLE_EXCEPTIONS ; 
- int /*<<< orphan*/  FP_TO_INT_D (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  FP_UNPACK_RAW_D (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int UDItype ;
+typedef int DItype ;
+typedef int DFtype ;
+
+
+ int A ;
+ int DI_BITS ;
+ int FP_DECL_D (int ) ;
+ int FP_DECL_EX ;
+ int FP_HANDLE_EXCEPTIONS ;
+ int FP_TO_INT_D (int ,int ,int ,int) ;
+ int FP_UNPACK_RAW_D (int ,int ) ;
 
 DItype __fixdfdi(DFtype a)
 {

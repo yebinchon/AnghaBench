@@ -1,69 +1,69 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct autofs_sb_info {int dummy; } ;
-struct autofs_info {int /*<<< orphan*/  (* free ) (struct autofs_info*) ;int /*<<< orphan*/  u; struct autofs_sb_info* sbi; int /*<<< orphan*/  last_used; int /*<<< orphan*/  mode; scalar_t__ gid; scalar_t__ uid; int /*<<< orphan*/  count; int /*<<< orphan*/  expiring; scalar_t__ active_count; int /*<<< orphan*/  active; scalar_t__ size; int /*<<< orphan*/ * dentry; scalar_t__ flags; } ;
-typedef  int /*<<< orphan*/  mode_t ;
+struct autofs_info {int (* free ) (struct autofs_info*) ;int u; struct autofs_sb_info* sbi; int last_used; int mode; scalar_t__ gid; scalar_t__ uid; int count; int expiring; scalar_t__ active_count; int active; scalar_t__ size; int * dentry; scalar_t__ flags; } ;
+typedef int mode_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  INIT_LIST_HEAD (int /*<<< orphan*/ *) ; 
- scalar_t__ S_ISLNK (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  atomic_set (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ino_lnkfree (struct autofs_info*) ; 
- int /*<<< orphan*/  jiffies ; 
- struct autofs_info* kmalloc (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  stub1 (struct autofs_info*) ; 
+
+ int GFP_KERNEL ;
+ int INIT_LIST_HEAD (int *) ;
+ scalar_t__ S_ISLNK (int ) ;
+ int atomic_set (int *,int ) ;
+ int ino_lnkfree (struct autofs_info*) ;
+ int jiffies ;
+ struct autofs_info* kmalloc (int,int ) ;
+ int memset (int *,int ,int) ;
+ int stub1 (struct autofs_info*) ;
 
 struct autofs_info *autofs4_init_ino(struct autofs_info *ino,
-				     struct autofs_sb_info *sbi, mode_t mode)
+         struct autofs_sb_info *sbi, mode_t mode)
 {
-	int reinit = 1;
+ int reinit = 1;
 
-	if (ino == NULL) {
-		reinit = 0;
-		ino = kmalloc(sizeof(*ino), GFP_KERNEL);
-	}
+ if (ino == ((void*)0)) {
+  reinit = 0;
+  ino = kmalloc(sizeof(*ino), GFP_KERNEL);
+ }
 
-	if (ino == NULL)
-		return NULL;
+ if (ino == ((void*)0))
+  return ((void*)0);
 
-	if (!reinit) {
-		ino->flags = 0;
-		ino->dentry = NULL;
-		ino->size = 0;
-		INIT_LIST_HEAD(&ino->active);
-		ino->active_count = 0;
-		INIT_LIST_HEAD(&ino->expiring);
-		atomic_set(&ino->count, 0);
-	}
+ if (!reinit) {
+  ino->flags = 0;
+  ino->dentry = ((void*)0);
+  ino->size = 0;
+  INIT_LIST_HEAD(&ino->active);
+  ino->active_count = 0;
+  INIT_LIST_HEAD(&ino->expiring);
+  atomic_set(&ino->count, 0);
+ }
 
-	ino->uid = 0;
-	ino->gid = 0;
-	ino->mode = mode;
-	ino->last_used = jiffies;
+ ino->uid = 0;
+ ino->gid = 0;
+ ino->mode = mode;
+ ino->last_used = jiffies;
 
-	ino->sbi = sbi;
+ ino->sbi = sbi;
 
-	if (reinit && ino->free)
-		(ino->free)(ino);
+ if (reinit && ino->free)
+  (ino->free)(ino);
 
-	memset(&ino->u, 0, sizeof(ino->u));
+ memset(&ino->u, 0, sizeof(ino->u));
 
-	ino->free = NULL;
+ ino->free = ((void*)0);
 
-	if (S_ISLNK(mode))
-		ino->free = ino_lnkfree;
+ if (S_ISLNK(mode))
+  ino->free = ino_lnkfree;
 
-	return ino;
+ return ino;
 }

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  restore_info; int /*<<< orphan*/  dyn_snapshots; int /*<<< orphan*/  prm; int /*<<< orphan*/  hidden_state; int /*<<< orphan*/  id_to_local_id; } ;
-typedef  TYPE_1__ data ;
-struct TYPE_6__ {int /*<<< orphan*/  free_dyn; } ;
 
-/* Variables and functions */
- TYPE_3__* DATA_FUNC (TYPE_1__*) ; 
- int /*<<< orphan*/  PERM (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free ; 
- int /*<<< orphan*/  free_restore_list ; 
- int /*<<< orphan*/  lookup_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  map_int_vptr_foreach (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  map_int_vptr_free (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int restore_info; int dyn_snapshots; int prm; int hidden_state; int id_to_local_id; } ;
+typedef TYPE_1__ data ;
+struct TYPE_6__ {int free_dyn; } ;
+
+
+ TYPE_3__* DATA_FUNC (TYPE_1__*) ;
+ int PERM (int ,int *) ;
+ int free ;
+ int free_restore_list ;
+ int lookup_free (int *) ;
+ int map_int_vptr_foreach (int *,int ) ;
+ int map_int_vptr_free (int *) ;
 
 void data_free (data *d) {
   lookup_free (&d->id_to_local_id);

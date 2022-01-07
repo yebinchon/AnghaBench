@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {unsigned int range; unsigned int iterations; double critical; } ;
-typedef  size_t BIGNUM ;
+typedef size_t BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BN_free (size_t*) ; 
- scalar_t__ BN_get_word (size_t*) ; 
- size_t* BN_new () ; 
- int /*<<< orphan*/  BN_rand_range (size_t*,size_t*) ; 
- int /*<<< orphan*/  BN_set_word (size_t*,unsigned int const) ; 
- int /*<<< orphan*/  OPENSSL_free (size_t*) ; 
- size_t* OPENSSL_zalloc (int) ; 
- int /*<<< orphan*/  TEST_info (char*,double,double const) ; 
- int /*<<< orphan*/  TEST_note (char*,size_t,unsigned int const,unsigned int const) ; 
- int /*<<< orphan*/  TEST_ptr (size_t*) ; 
- int /*<<< orphan*/  TEST_true (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_uint_lt (unsigned int,unsigned int const) ; 
- TYPE_1__* rand_range_cases ; 
+
+ int BN_free (size_t*) ;
+ scalar_t__ BN_get_word (size_t*) ;
+ size_t* BN_new () ;
+ int BN_rand_range (size_t*,size_t*) ;
+ int BN_set_word (size_t*,unsigned int const) ;
+ int OPENSSL_free (size_t*) ;
+ size_t* OPENSSL_zalloc (int) ;
+ int TEST_info (char*,double,double const) ;
+ int TEST_note (char*,size_t,unsigned int const,unsigned int const) ;
+ int TEST_ptr (size_t*) ;
+ int TEST_true (int ) ;
+ int TEST_uint_lt (unsigned int,unsigned int const) ;
+ TYPE_1__* rand_range_cases ;
 
 __attribute__((used)) static int test_rand_range_single(size_t n)
 {
@@ -36,7 +36,7 @@ __attribute__((used)) static int test_rand_range_single(size_t n)
     const double critical = rand_range_cases[n].critical;
     const double expected = iterations / (double)range;
     double sum = 0;
-    BIGNUM *rng = NULL, *val = NULL;
+    BIGNUM *rng = ((void*)0), *val = ((void*)0);
     size_t *counts;
     unsigned int i, v;
     int res = 0;

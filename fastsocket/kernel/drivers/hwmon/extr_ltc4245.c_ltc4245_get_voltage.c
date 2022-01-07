@@ -1,68 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u8 ;
-typedef  int u32 ;
+
+
+
+
+typedef int u8 ;
+typedef int u32 ;
 struct ltc4245_data {int* vregs; } ;
 struct device {int dummy; } ;
-
-/* Variables and functions */
-#define  LTC4245_12VIN 138 
-#define  LTC4245_12VOUT 137 
-#define  LTC4245_3VIN 136 
-#define  LTC4245_3VOUT 135 
-#define  LTC4245_5VIN 134 
-#define  LTC4245_5VOUT 133 
-#define  LTC4245_GPIOADC1 132 
-#define  LTC4245_GPIOADC2 131 
-#define  LTC4245_GPIOADC3 130 
-#define  LTC4245_VEEIN 129 
-#define  LTC4245_VEEOUT 128 
- int /*<<< orphan*/  WARN_ON_ONCE (int) ; 
- struct ltc4245_data* ltc4245_update_device (struct device*) ; 
+ int WARN_ON_ONCE (int) ;
+ struct ltc4245_data* ltc4245_update_device (struct device*) ;
 
 __attribute__((used)) static int ltc4245_get_voltage(struct device *dev, u8 reg)
 {
-	struct ltc4245_data *data = ltc4245_update_device(dev);
-	const u8 regval = data->vregs[reg - 0x10];
-	u32 voltage = 0;
+ struct ltc4245_data *data = ltc4245_update_device(dev);
+ const u8 regval = data->vregs[reg - 0x10];
+ u32 voltage = 0;
 
-	switch (reg) {
-	case LTC4245_12VIN:
-	case LTC4245_12VOUT:
-		voltage = regval * 55;
-		break;
-	case LTC4245_5VIN:
-	case LTC4245_5VOUT:
-		voltage = regval * 22;
-		break;
-	case LTC4245_3VIN:
-	case LTC4245_3VOUT:
-		voltage = regval * 15;
-		break;
-	case LTC4245_VEEIN:
-	case LTC4245_VEEOUT:
-		voltage = regval * -55;
-		break;
-	case LTC4245_GPIOADC1:
-	case LTC4245_GPIOADC2:
-	case LTC4245_GPIOADC3:
-		voltage = regval * 10;
-		break;
-	default:
-		/* If we get here, the developer messed up */
-		WARN_ON_ONCE(1);
-		break;
-	}
+ switch (reg) {
+ case 138:
+ case 137:
+  voltage = regval * 55;
+  break;
+ case 134:
+ case 133:
+  voltage = regval * 22;
+  break;
+ case 136:
+ case 135:
+  voltage = regval * 15;
+  break;
+ case 129:
+ case 128:
+  voltage = regval * -55;
+  break;
+ case 132:
+ case 131:
+ case 130:
+  voltage = regval * 10;
+  break;
+ default:
 
-	return voltage;
+  WARN_ON_ONCE(1);
+  break;
+ }
+
+ return voltage;
 }

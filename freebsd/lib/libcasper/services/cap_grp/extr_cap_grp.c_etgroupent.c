@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  nvlist_t ;
-typedef  int /*<<< orphan*/  cap_channel_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * cap_xfer_nvlist (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ errno ; 
- int /*<<< orphan*/  nvlist_add_bool (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  nvlist_add_string (int /*<<< orphan*/ *,char*,char*) ; 
- int /*<<< orphan*/ * nvlist_create (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nvlist_destroy (int /*<<< orphan*/ *) ; 
- scalar_t__ nvlist_get_number (int /*<<< orphan*/ *,char*) ; 
+
+
+
+typedef int nvlist_t ;
+typedef int cap_channel_t ;
+
+
+ int * cap_xfer_nvlist (int *,int *) ;
+ scalar_t__ errno ;
+ int nvlist_add_bool (int *,char*,int) ;
+ int nvlist_add_string (int *,char*,char*) ;
+ int * nvlist_create (int ) ;
+ int nvlist_destroy (int *) ;
+ scalar_t__ nvlist_get_number (int *,char*) ;
 
 int
 cap_setgroupent(cap_channel_t *chan, int stayopen)
 {
-	nvlist_t *nvl;
+ nvlist_t *nvl;
 
-	nvl = nvlist_create(0);
-	nvlist_add_string(nvl, "cmd", "setgroupent");
-	nvlist_add_bool(nvl, "stayopen", stayopen != 0);
-	nvl = cap_xfer_nvlist(chan, nvl);
-	if (nvl == NULL)
-		return (0);
-	if (nvlist_get_number(nvl, "error") != 0) {
-		errno = nvlist_get_number(nvl, "error");
-		nvlist_destroy(nvl);
-		return (0);
-	}
-	nvlist_destroy(nvl);
+ nvl = nvlist_create(0);
+ nvlist_add_string(nvl, "cmd", "setgroupent");
+ nvlist_add_bool(nvl, "stayopen", stayopen != 0);
+ nvl = cap_xfer_nvlist(chan, nvl);
+ if (nvl == ((void*)0))
+  return (0);
+ if (nvlist_get_number(nvl, "error") != 0) {
+  errno = nvlist_get_number(nvl, "error");
+  nvlist_destroy(nvl);
+  return (0);
+ }
+ nvlist_destroy(nvl);
 
-	return (1);
+ return (1);
 }

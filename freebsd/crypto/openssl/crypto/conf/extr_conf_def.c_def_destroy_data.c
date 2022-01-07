@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  CONF ;
 
-/* Variables and functions */
- int /*<<< orphan*/  _CONF_free_data (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int CONF ;
+
+
+ int _CONF_free_data (int *) ;
 
 __attribute__((used)) static int def_destroy_data(CONF *conf)
 {
-    if (conf == NULL)
+    if (conf == ((void*)0))
         return 0;
     _CONF_free_data(conf);
     return 1;

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int user_id; struct user_langs* langs; } ;
-typedef  TYPE_1__ user_t ;
+typedef TYPE_1__ user_t ;
 struct user_langs {int cur_langs; int tot_langs; int* L; } ;
 
-/* Variables and functions */
- int MAX_USER_LANGS ; 
- int MIN_USER_LANGS ; 
- int /*<<< orphan*/  add_user_lang (TYPE_1__*,int) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  memcpy (struct user_langs*,struct user_langs*,int) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  zfree (struct user_langs*,int) ; 
- struct user_langs* zmalloc (int) ; 
+
+ int MAX_USER_LANGS ;
+ int MIN_USER_LANGS ;
+ int add_user_lang (TYPE_1__*,int) ;
+ int assert (int) ;
+ int fprintf (int ,char*,...) ;
+ int memcpy (struct user_langs*,struct user_langs*,int) ;
+ int stderr ;
+ int zfree (struct user_langs*,int) ;
+ struct user_langs* zmalloc (int) ;
 
 __attribute__((used)) static int add_langs (user_t *U, int List[], int len) {
   struct user_langs *L = U->langs;
@@ -56,7 +56,7 @@ __attribute__((used)) static int add_langs (user_t *U, int List[], int len) {
     while (i < len && j < L->cur_langs) {
       if (List[i] < L->L[j]) { i++; }
       else if (List[i] > L->L[j]) { j++; }
-      else { c++;  i++;  j++; }
+      else { c++; i++; j++; }
     }
     int t = L->cur_langs + len - c, tt = L->tot_langs;
     if (t > tt) {
@@ -99,11 +99,11 @@ __attribute__((used)) static int add_langs (user_t *U, int List[], int len) {
 
   int tt = MIN_USER_LANGS;
   while (tt < len) { tt <<= 1; }
-  
+
   U->langs = L = zmalloc (sizeof (struct user_langs) + 2 * tt);
   L->cur_langs = len;
   L->tot_langs = tt;
-  
+
   for (i = 0; i < len; i++) {
     L->L[i] = List[i];
     add_user_lang (U, List[i]);

@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int width; int /*<<< orphan*/  is_threaded; scalar_t__ font_enable; scalar_t__ rgb32; int /*<<< orphan*/  height; } ;
-typedef  TYPE_1__ video_info_t ;
-typedef  void vga_t ;
-typedef  int /*<<< orphan*/  input_driver_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FONT_DRIVER_RENDER_VGA ; 
- int VGA_HEIGHT ; 
- int VGA_WIDTH ; 
- scalar_t__ calloc (int,int) ; 
- int /*<<< orphan*/  font_driver_init_osd (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ malloc (int) ; 
- unsigned char* vga_frame ; 
- int /*<<< orphan*/  vga_gfx_create () ; 
- scalar_t__ vga_rgb32 ; 
- int vga_video_bits ; 
- int /*<<< orphan*/  vga_video_height ; 
- int vga_video_pitch ; 
- int vga_video_width ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int width; int is_threaded; scalar_t__ font_enable; scalar_t__ rgb32; int height; } ;
+typedef TYPE_1__ video_info_t ;
+typedef void vga_t ;
+typedef int input_driver_t ;
+
+
+ int FONT_DRIVER_RENDER_VGA ;
+ int VGA_HEIGHT ;
+ int VGA_WIDTH ;
+ scalar_t__ calloc (int,int) ;
+ int font_driver_init_osd (int *,int,int ,int ) ;
+ scalar_t__ malloc (int) ;
+ unsigned char* vga_frame ;
+ int vga_gfx_create () ;
+ scalar_t__ vga_rgb32 ;
+ int vga_video_bits ;
+ int vga_video_height ;
+ int vga_video_pitch ;
+ int vga_video_width ;
 
 __attribute__((used)) static void *vga_gfx_init(const video_info_t *video,
       input_driver_t **input, void **input_data)
 {
-   vga_t *vga        = (vga_t*)calloc(1, sizeof(*vga));
+   vga_t *vga = (vga_t*)calloc(1, sizeof(*vga));
 
-   *input              = NULL;
-   *input_data         = NULL;
+   *input = ((void*)0);
+   *input_data = ((void*)0);
 
-   vga_video_width    = video->width;
-   vga_video_height   = video->height;
-   vga_rgb32          = video->rgb32;
+   vga_video_width = video->width;
+   vga_video_height = video->height;
+   vga_rgb32 = video->rgb32;
 
    if (video->rgb32)
    {
@@ -59,7 +59,7 @@ __attribute__((used)) static void *vga_gfx_init(const video_info_t *video,
    vga_gfx_create();
 
    if (video->font_enable)
-      font_driver_init_osd(NULL, false,
+      font_driver_init_osd(((void*)0), 0,
             video->is_threaded, FONT_DRIVER_RENDER_VGA);
 
    return vga;

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct cert_type_opt {int dummy; } ;
-typedef  int /*<<< orphan*/  hx509_context ;
-typedef  int /*<<< orphan*/  hx509_ca_tbs ;
+typedef int hx509_context ;
+typedef int hx509_ca_tbs ;
 
-/* Variables and functions */
- int /*<<< orphan*/  asn1_oid_id_pkix_kp_emailProtection ; 
- int hx509_ca_tbs_add_eku (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int asn1_oid_id_pkix_kp_emailProtection ;
+ int hx509_ca_tbs_add_eku (int ,int ,int *) ;
 
 __attribute__((used)) static int
 email_client(hx509_context contextp, hx509_ca_tbs tbs, struct cert_type_opt *opt)

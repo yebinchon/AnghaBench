@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct videobuf_buffer {int /*<<< orphan*/  done; int /*<<< orphan*/  ts; int /*<<< orphan*/  field_count; int /*<<< orphan*/  state; } ;
+
+
+
+
+struct videobuf_buffer {int done; int ts; int field_count; int state; } ;
 struct front_face {struct videobuf_buffer* curr_frame; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  VIDEOBUF_DONE ; 
- int /*<<< orphan*/  do_gettimeofday (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  wake_up (int /*<<< orphan*/ *) ; 
+
+ int VIDEOBUF_DONE ;
+ int do_gettimeofday (int *) ;
+ int wake_up (int *) ;
 
 __attribute__((used)) static void submit_frame(struct front_face *front)
 {
-	struct videobuf_buffer *vb = front->curr_frame;
+ struct videobuf_buffer *vb = front->curr_frame;
 
-	if (vb == NULL)
-		return;
+ if (vb == ((void*)0))
+  return;
 
-	front->curr_frame	= NULL;
-	vb->state		= VIDEOBUF_DONE;
-	vb->field_count++;
-	do_gettimeofday(&vb->ts);
+ front->curr_frame = ((void*)0);
+ vb->state = VIDEOBUF_DONE;
+ vb->field_count++;
+ do_gettimeofday(&vb->ts);
 
-	wake_up(&vb->done);
+ wake_up(&vb->done);
 }

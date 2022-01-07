@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct inode {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/  i_state; } ;
+struct TYPE_2__ {int i_state; } ;
 
-/* Variables and functions */
- TYPE_1__* NILFS_I (struct inode*) ; 
- int /*<<< orphan*/  NILFS_I_DIRTY ; 
- int /*<<< orphan*/  set_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  test_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ TYPE_1__* NILFS_I (struct inode*) ;
+ int NILFS_I_DIRTY ;
+ int set_bit (int ,int *) ;
+ int test_bit (int ,int *) ;
 
 __attribute__((used)) static inline void nilfs_mdt_mark_dirty(struct inode *inode)
 {
-	if (!test_bit(NILFS_I_DIRTY, &NILFS_I(inode)->i_state))
-		set_bit(NILFS_I_DIRTY, &NILFS_I(inode)->i_state);
+ if (!test_bit(NILFS_I_DIRTY, &NILFS_I(inode)->i_state))
+  set_bit(NILFS_I_DIRTY, &NILFS_I(inode)->i_state);
 }

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct pr_handle {int dummy; } ;
-typedef  enum debug_visibility { ____Placeholder_debug_visibility } debug_visibility ;
-typedef  int /*<<< orphan*/  bfd_boolean ;
+typedef enum debug_visibility { ____Placeholder_debug_visibility } debug_visibility ;
+typedef int bfd_boolean ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  append_type (struct pr_handle*,char const*) ; 
- int /*<<< orphan*/  indent_type (struct pr_handle*) ; 
- char* pop_type (struct pr_handle*) ; 
- int /*<<< orphan*/  pr_fix_visibility (struct pr_handle*,int) ; 
- int /*<<< orphan*/  prepend_type (struct pr_handle*,char*) ; 
- int /*<<< orphan*/  substitute_type (struct pr_handle*,char const*) ; 
+
+ int FALSE ;
+ int append_type (struct pr_handle*,char const*) ;
+ int indent_type (struct pr_handle*) ;
+ char* pop_type (struct pr_handle*) ;
+ int pr_fix_visibility (struct pr_handle*,int) ;
+ int prepend_type (struct pr_handle*,char*) ;
+ int substitute_type (struct pr_handle*,char const*) ;
 
 __attribute__((used)) static bfd_boolean
 pr_class_static_member (void *p, const char *name, const char *physname,
-			enum debug_visibility visibility)
+   enum debug_visibility visibility)
 {
   struct pr_handle *info = (struct pr_handle *) p;
   char *t;
@@ -41,7 +41,7 @@ pr_class_static_member (void *p, const char *name, const char *physname,
     return FALSE;
 
   t = pop_type (info);
-  if (t == NULL)
+  if (t == ((void*)0))
     return FALSE;
 
   if (! pr_fix_visibility (info, visibility))

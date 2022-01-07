@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {scalar_t__ HaltDeadLockThread; int /*<<< orphan*/  DeadLockWaitEvent; } ;
-typedef  int /*<<< orphan*/  THREAD ;
-typedef  TYPE_1__ SERVER ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SERVER_DEADLOCK_CHECK_SPAN ; 
- int /*<<< orphan*/  SERVER_DEADLOCK_CHECK_TIMEOUT ; 
- int /*<<< orphan*/  SiCheckDeadLockMain (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Wait (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {scalar_t__ HaltDeadLockThread; int DeadLockWaitEvent; } ;
+typedef int THREAD ;
+typedef TYPE_1__ SERVER ;
+
+
+ int SERVER_DEADLOCK_CHECK_SPAN ;
+ int SERVER_DEADLOCK_CHECK_TIMEOUT ;
+ int SiCheckDeadLockMain (TYPE_1__*,int ) ;
+ int Wait (int ,int ) ;
 
 void SiDeadLockCheckThread(THREAD *t, void *param)
 {
-	SERVER *s = (SERVER *)param;
-	// Validate arguments
-	if (s == NULL || t == NULL)
-	{
-		return;
-	}
+ SERVER *s = (SERVER *)param;
 
-	while (true)
-	{
-		Wait(s->DeadLockWaitEvent, SERVER_DEADLOCK_CHECK_SPAN);
+ if (s == ((void*)0) || t == ((void*)0))
+ {
+  return;
+ }
 
-		if (s->HaltDeadLockThread)
-		{
-			break;
-		}
+ while (1)
+ {
+  Wait(s->DeadLockWaitEvent, SERVER_DEADLOCK_CHECK_SPAN);
 
-		SiCheckDeadLockMain(s, SERVER_DEADLOCK_CHECK_TIMEOUT);
-	}
+  if (s->HaltDeadLockThread)
+  {
+   break;
+  }
+
+  SiCheckDeadLockMain(s, SERVER_DEADLOCK_CHECK_TIMEOUT);
+ }
 }

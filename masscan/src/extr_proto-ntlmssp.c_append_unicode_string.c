@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct BannerOutput {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AUTO_LEN ; 
- int /*<<< orphan*/  PROTO_SMB ; 
- int /*<<< orphan*/  banout_append (struct BannerOutput*,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  banout_append_char (struct BannerOutput*,unsigned int,char) ; 
- int /*<<< orphan*/  banout_append_unicode (struct BannerOutput*,int /*<<< orphan*/ ,unsigned int) ; 
+
+ int AUTO_LEN ;
+ int PROTO_SMB ;
+ int banout_append (struct BannerOutput*,int ,char const*,int ) ;
+ int banout_append_char (struct BannerOutput*,unsigned int,char) ;
+ int banout_append_unicode (struct BannerOutput*,int ,unsigned int) ;
 
 __attribute__((used)) static void
 append_unicode_string(struct BannerOutput *banout, unsigned proto, const char *name, const unsigned char *value, size_t value_length)

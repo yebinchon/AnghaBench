@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct pp_hwmgr {int dummy; } ;
-struct SMU75_Discrete_DpmTable {int /*<<< orphan*/  Ulv; } ;
+struct SMU75_Discrete_DpmTable {int Ulv; } ;
 
-/* Variables and functions */
- int vegam_populate_ulv_level (struct pp_hwmgr*,int /*<<< orphan*/ *) ; 
+
+ int vegam_populate_ulv_level (struct pp_hwmgr*,int *) ;
 
 __attribute__((used)) static int vegam_populate_ulv_state(struct pp_hwmgr *hwmgr,
-		struct SMU75_Discrete_DpmTable *table)
+  struct SMU75_Discrete_DpmTable *table)
 {
-	return vegam_populate_ulv_level(hwmgr, &table->Ulv);
+ return vegam_populate_ulv_level(hwmgr, &table->Ulv);
 }

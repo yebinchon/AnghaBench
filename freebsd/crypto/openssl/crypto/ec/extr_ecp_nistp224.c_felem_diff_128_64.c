@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int widelimb ;
-typedef  int /*<<< orphan*/ * widefelem ;
-typedef  scalar_t__* felem ;
 
-/* Variables and functions */
+
+
+
+typedef int widelimb ;
+typedef int * widefelem ;
+typedef scalar_t__* felem ;
+
+
 
 __attribute__((used)) static void felem_diff_128_64(widefelem out, const felem in)
 {
@@ -25,7 +25,7 @@ __attribute__((used)) static void felem_diff_128_64(widefelem out, const felem i
     static const widelimb two64m48m8 = (((widelimb) 1) << 64) -
         (((widelimb) 1) << 48) - (((widelimb) 1) << 8);
 
-    /* Add 0 mod 2^224-2^96+1 to ensure out > in */
+
     out[0] += two64p8;
     out[1] += two64m48m8;
     out[2] += two64m8;

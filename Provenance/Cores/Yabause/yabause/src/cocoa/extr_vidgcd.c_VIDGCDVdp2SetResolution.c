@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u16 ;
 
-/* Variables and functions */
- int resxratio ; 
- int resyratio ; 
- int vdp2height ; 
- int vdp2width ; 
+
+
+
+typedef int u16 ;
+
+
+ int resxratio ;
+ int resyratio ;
+ int vdp2height ;
+ int vdp2width ;
 
 void VIDGCDVdp2SetResolution(u16 TVMD)
 {
-   // This needs some work
 
-   // Horizontal Resolution
+
+
    switch (TVMD & 0x7)
    {
       case 0:
@@ -33,11 +33,11 @@ void VIDGCDVdp2SetResolution(u16 TVMD)
          vdp2width = 352;
          resxratio=1;
          break;
-      case 2: // 640
+      case 2:
          vdp2width = 320;
          resxratio=2;
          break;
-      case 3: // 704
+      case 3:
          vdp2width = 352;
          resxratio=2;
          break;
@@ -49,17 +49,17 @@ void VIDGCDVdp2SetResolution(u16 TVMD)
          vdp2width = 352;
          resxratio=1;
          break;
-      case 6: // 640
+      case 6:
          vdp2width = 320;
          resxratio=2;
          break;
-      case 7: // 704
+      case 7:
          vdp2width = 352;
          resxratio=2;
          break;
    }
 
-   // Vertical Resolution
+
    switch ((TVMD >> 4) & 0x3)
    {
       case 0:
@@ -75,15 +75,15 @@ void VIDGCDVdp2SetResolution(u16 TVMD)
    }
    resyratio=1;
 
-   // Check for interlace
+
    switch ((TVMD >> 6) & 0x3)
    {
-      case 3: // Double-density Interlace
-//         vdp2height *= 2;
+      case 3:
+
          resyratio=2;
          break;
-      case 2: // Single-density Interlace
-      case 0: // Non-interlace
+      case 2:
+      case 0:
       default: break;
    }
 }

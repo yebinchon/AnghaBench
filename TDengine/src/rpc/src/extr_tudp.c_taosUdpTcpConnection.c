@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-struct TYPE_6__ {int /*<<< orphan*/  s_addr; } ;
-struct sockaddr_in {int /*<<< orphan*/  sin_port; TYPE_1__ sin_addr; } ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+struct TYPE_6__ {int s_addr; } ;
+struct sockaddr_in {int sin_port; TYPE_1__ sin_addr; } ;
 struct sockaddr {int dummy; } ;
-typedef  int socklen_t ;
-typedef  int /*<<< orphan*/  pthread_t ;
-typedef  int /*<<< orphan*/  pthread_attr_t ;
-typedef  int /*<<< orphan*/  clientAddr ;
-struct TYPE_8__ {int fd; TYPE_2__* pSet; int /*<<< orphan*/  port; int /*<<< orphan*/  ip; } ;
-struct TYPE_7__ {scalar_t__ tcpFd; int /*<<< orphan*/  label; int /*<<< orphan*/  port; int /*<<< orphan*/  ip; } ;
-typedef  TYPE_2__ SUdpConnSet ;
-typedef  TYPE_3__ STransfer ;
+typedef int socklen_t ;
+typedef int pthread_t ;
+typedef int pthread_attr_t ;
+typedef int clientAddr ;
+struct TYPE_8__ {int fd; TYPE_2__* pSet; int port; int ip; } ;
+struct TYPE_7__ {scalar_t__ tcpFd; int label; int port; int ip; } ;
+typedef TYPE_2__ SUdpConnSet ;
+typedef TYPE_3__ STransfer ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PTHREAD_CREATE_DETACHED ; 
- int accept (scalar_t__,struct sockaddr*,int*) ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  free (TYPE_3__*) ; 
- int /*<<< orphan*/  htons (int /*<<< orphan*/ ) ; 
- TYPE_3__* malloc (int) ; 
- int /*<<< orphan*/  pthread_attr_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_attr_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_attr_setdetachstate (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ pthread_create (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,void*) ; 
- int /*<<< orphan*/  strerror (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tError (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tPrint (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tTrace (char*,int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  taosCloseSocket (int) ; 
- int /*<<< orphan*/  taosKillSystem () ; 
- scalar_t__ taosOpenTcpServerSocket (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  taosTransferDataViaTcp ; 
- int /*<<< orphan*/  tinet_ntoa (char*,int /*<<< orphan*/ ) ; 
+
+ int PTHREAD_CREATE_DETACHED ;
+ int accept (scalar_t__,struct sockaddr*,int*) ;
+ int errno ;
+ int free (TYPE_3__*) ;
+ int htons (int ) ;
+ TYPE_3__* malloc (int) ;
+ int pthread_attr_destroy (int *) ;
+ int pthread_attr_init (int *) ;
+ int pthread_attr_setdetachstate (int *,int ) ;
+ scalar_t__ pthread_create (int *,int *,int ,void*) ;
+ int strerror (int ) ;
+ int tError (char*,int ,int ) ;
+ int tPrint (char*,int ,int ,int ,int ) ;
+ int tTrace (char*,int ,char*,...) ;
+ int taosCloseSocket (int) ;
+ int taosKillSystem () ;
+ scalar_t__ taosOpenTcpServerSocket (int ,int ) ;
+ int taosTransferDataViaTcp ;
+ int tinet_ntoa (char*,int ) ;
 
 void *taosUdpTcpConnection(void *argv) {
-  int                connFd = -1;
+  int connFd = -1;
   struct sockaddr_in clientAddr;
-  pthread_attr_t     thattr;
-  pthread_t          thread;
-  uint32_t           sourceIp;
-  char               ipstr[20];
+  pthread_attr_t thattr;
+  pthread_t thread;
+  uint32_t sourceIp;
+  char ipstr[20];
 
   SUdpConnSet *pSet = (SUdpConnSet *)argv;
 
@@ -62,7 +62,7 @@ void *taosUdpTcpConnection(void *argv) {
     tPrint("%s failed to create TCP socket %s:%d for UDP server, reason:%s", pSet->label, pSet->ip, pSet->port,
            strerror(errno));
     taosKillSystem();
-    return NULL;
+    return ((void*)0);
   }
 
   tTrace("%s UDP server is created, ip:%s:%d", pSet->label, pSet->ip, pSet->port);
@@ -98,5 +98,5 @@ void *taosUdpTcpConnection(void *argv) {
   }
 
   pthread_attr_destroy(&thattr);
-  return NULL;
+  return ((void*)0);
 }

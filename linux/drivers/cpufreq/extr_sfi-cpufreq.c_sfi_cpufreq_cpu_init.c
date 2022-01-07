@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int transition_latency; } ;
-struct cpufreq_policy {int /*<<< orphan*/  freq_table; TYPE_1__ cpuinfo; int /*<<< orphan*/  shared_type; } ;
+struct cpufreq_policy {int freq_table; TYPE_1__ cpuinfo; int shared_type; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CPUFREQ_SHARED_TYPE_HW ; 
- int /*<<< orphan*/  freq_table ; 
+
+ int CPUFREQ_SHARED_TYPE_HW ;
+ int freq_table ;
 
 __attribute__((used)) static int sfi_cpufreq_cpu_init(struct cpufreq_policy *policy)
 {
-	policy->shared_type = CPUFREQ_SHARED_TYPE_HW;
-	policy->cpuinfo.transition_latency = 100000;	/* 100us */
-	policy->freq_table = freq_table;
+ policy->shared_type = CPUFREQ_SHARED_TYPE_HW;
+ policy->cpuinfo.transition_latency = 100000;
+ policy->freq_table = freq_table;
 
-	return 0;
+ return 0;
 }

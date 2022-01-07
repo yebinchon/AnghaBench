@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  hvc_beat_useit ; 
- int /*<<< orphan*/  simple_strtoul (char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+ int hvc_beat_useit ;
+ int simple_strtoul (char*,int *,int ) ;
 
 __attribute__((used)) static int hvc_beat_config(char *p)
 {
-	hvc_beat_useit = simple_strtoul(p, NULL, 0);
-	return 0;
+ hvc_beat_useit = simple_strtoul(p, ((void*)0), 0);
+ return 0;
 }

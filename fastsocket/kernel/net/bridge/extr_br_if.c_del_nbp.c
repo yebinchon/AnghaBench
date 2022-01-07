@@ -1,71 +1,71 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct net_device {int /*<<< orphan*/  priv_flags; int /*<<< orphan*/  br_port; int /*<<< orphan*/  name; } ;
-struct net_bridge_port {int /*<<< orphan*/  rcu; int /*<<< orphan*/  kobj; int /*<<< orphan*/  list; struct net_device* dev; struct net_bridge* br; } ;
-struct net_bridge {int /*<<< orphan*/  lock; int /*<<< orphan*/  ifobj; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IFF_BRIDGE_PORT ; 
- int /*<<< orphan*/  KOBJ_REMOVE ; 
- int /*<<< orphan*/  RTM_DELLINK ; 
- int /*<<< orphan*/  br_del_vlans_from_port (struct net_bridge*,struct net_bridge_port*) ; 
- int /*<<< orphan*/  br_fdb_delete_by_port (struct net_bridge*,struct net_bridge_port*,int) ; 
- int /*<<< orphan*/  br_ifinfo_notify (int /*<<< orphan*/ ,struct net_bridge_port*) ; 
- int /*<<< orphan*/  br_multicast_del_port (struct net_bridge_port*) ; 
- int /*<<< orphan*/  br_netpoll_disable (struct net_bridge_port*) ; 
- int /*<<< orphan*/  br_stp_disable_port (struct net_bridge_port*) ; 
- int /*<<< orphan*/  call_rcu (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  destroy_nbp_rcu ; 
- int /*<<< orphan*/  dev_set_promiscuity (struct net_device*,int) ; 
- int /*<<< orphan*/  kobject_del (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  kobject_uevent (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  list_del_rcu (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  rcu_assign_pointer (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_lock_bh (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock_bh (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sysfs_remove_link (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct net_device {int priv_flags; int br_port; int name; } ;
+struct net_bridge_port {int rcu; int kobj; int list; struct net_device* dev; struct net_bridge* br; } ;
+struct net_bridge {int lock; int ifobj; } ;
+
+
+ int IFF_BRIDGE_PORT ;
+ int KOBJ_REMOVE ;
+ int RTM_DELLINK ;
+ int br_del_vlans_from_port (struct net_bridge*,struct net_bridge_port*) ;
+ int br_fdb_delete_by_port (struct net_bridge*,struct net_bridge_port*,int) ;
+ int br_ifinfo_notify (int ,struct net_bridge_port*) ;
+ int br_multicast_del_port (struct net_bridge_port*) ;
+ int br_netpoll_disable (struct net_bridge_port*) ;
+ int br_stp_disable_port (struct net_bridge_port*) ;
+ int call_rcu (int *,int ) ;
+ int destroy_nbp_rcu ;
+ int dev_set_promiscuity (struct net_device*,int) ;
+ int kobject_del (int *) ;
+ int kobject_uevent (int *,int ) ;
+ int list_del_rcu (int *) ;
+ int rcu_assign_pointer (int ,int *) ;
+ int spin_lock_bh (int *) ;
+ int spin_unlock_bh (int *) ;
+ int sysfs_remove_link (int ,int ) ;
 
 __attribute__((used)) static void del_nbp(struct net_bridge_port *p)
 {
-	struct net_bridge *br = p->br;
-	struct net_device *dev = p->dev;
+ struct net_bridge *br = p->br;
+ struct net_device *dev = p->dev;
 
-	sysfs_remove_link(br->ifobj, dev->name);
+ sysfs_remove_link(br->ifobj, dev->name);
 
-	dev_set_promiscuity(dev, -1);
+ dev_set_promiscuity(dev, -1);
 
-	br_del_vlans_from_port(br, p);
+ br_del_vlans_from_port(br, p);
 
-	spin_lock_bh(&br->lock);
-	br_stp_disable_port(p);
-	spin_unlock_bh(&br->lock);
+ spin_lock_bh(&br->lock);
+ br_stp_disable_port(p);
+ spin_unlock_bh(&br->lock);
 
-	br_ifinfo_notify(RTM_DELLINK, p);
+ br_ifinfo_notify(RTM_DELLINK, p);
 
-	br_fdb_delete_by_port(br, p, 1);
+ br_fdb_delete_by_port(br, p, 1);
 
-	list_del_rcu(&p->list);
+ list_del_rcu(&p->list);
 
-	rcu_assign_pointer(dev->br_port, NULL);
+ rcu_assign_pointer(dev->br_port, ((void*)0));
 
-	dev->priv_flags &= ~IFF_BRIDGE_PORT;
+ dev->priv_flags &= ~IFF_BRIDGE_PORT;
 
-	br_multicast_del_port(p);
+ br_multicast_del_port(p);
 
-	kobject_uevent(&p->kobj, KOBJ_REMOVE);
-	kobject_del(&p->kobj);
+ kobject_uevent(&p->kobj, KOBJ_REMOVE);
+ kobject_del(&p->kobj);
 
-	br_netpoll_disable(p);
+ br_netpoll_disable(p);
 
-	call_rcu(&p->rcu, destroy_nbp_rcu);
+ call_rcu(&p->rcu, destroy_nbp_rcu);
 }

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uint64_t ;
 
-/* Variables and functions */
- scalar_t__ CAP_ALL ; 
- int /*<<< orphan*/  LOG_ERR ; 
- int /*<<< orphan*/  assert (void*) ; 
- int capability_set_from_string (char const*,scalar_t__*) ; 
- int /*<<< orphan*/  log_syntax (char const*,int /*<<< orphan*/ ,char const*,unsigned int,int,char*,char const*,char const*) ; 
- scalar_t__ streq (char const*,char*) ; 
+
+
+
+typedef scalar_t__ uint64_t ;
+
+
+ scalar_t__ CAP_ALL ;
+ int LOG_ERR ;
+ int assert (void*) ;
+ int capability_set_from_string (char const*,scalar_t__*) ;
+ int log_syntax (char const*,int ,char const*,unsigned int,int,char*,char const*,char const*) ;
+ scalar_t__ streq (char const*,char*) ;
 
 int config_parse_capability_set(
                 const char *unit,
@@ -34,7 +34,7 @@ int config_parse_capability_set(
 
         uint64_t *capability_set = data;
         uint64_t sum = 0, initial = 0;
-        bool invert = false;
+        bool invert = 0;
         int r;
 
         assert(filename);
@@ -43,13 +43,13 @@ int config_parse_capability_set(
         assert(data);
 
         if (rvalue[0] == '~') {
-                invert = true;
+                invert = 1;
                 rvalue++;
         }
 
         if (streq(lvalue, "CapabilityBoundingSet"))
-                initial = CAP_ALL; /* initialized to all bits on */
-        /* else "AmbientCapabilities" initialized to all bits off */
+                initial = CAP_ALL;
+
 
         r = capability_set_from_string(rvalue, &sum);
         if (r < 0) {
@@ -58,10 +58,10 @@ int config_parse_capability_set(
         }
 
         if (sum == 0 || *capability_set == initial)
-                /* "", "~" or uninitialized data -> replace */
+
                 *capability_set = invert ? ~sum : sum;
         else {
-                /* previous data -> merge */
+
                 if (invert)
                         *capability_set &= ~sum;
                 else

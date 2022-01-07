@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  git_repository ;
-typedef  int /*<<< orphan*/  git_clone_options ;
 
-/* Variables and functions */
- int git__clone (int /*<<< orphan*/ **,char const*,char const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int git_repository ;
+typedef int git_clone_options ;
+
+
+ int git__clone (int **,char const*,char const*,int const*,int ) ;
 
 int git_clone(
-	git_repository **out,
-	const char *url,
-	const char *local_path,
-	const git_clone_options *_options)
+ git_repository **out,
+ const char *url,
+ const char *local_path,
+ const git_clone_options *_options)
 {
-	return git__clone(out, url, local_path, _options, 0);
+ return git__clone(out, url, local_path, _options, 0);
 }

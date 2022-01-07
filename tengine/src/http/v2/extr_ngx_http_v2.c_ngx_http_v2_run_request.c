@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_4__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_15__ TYPE_4__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
 struct TYPE_13__ {int content_length_n; int chunked; } ;
-struct TYPE_14__ {TYPE_2__ headers_in; TYPE_1__* stream; TYPE_4__* connection; int /*<<< orphan*/  http_state; } ;
-typedef  TYPE_3__ ngx_http_request_t ;
-struct TYPE_15__ {int /*<<< orphan*/  log; } ;
-typedef  TYPE_4__ ngx_connection_t ;
+struct TYPE_14__ {TYPE_2__ headers_in; TYPE_1__* stream; TYPE_4__* connection; int http_state; } ;
+typedef TYPE_3__ ngx_http_request_t ;
+struct TYPE_15__ {int log; } ;
+typedef TYPE_4__ ngx_connection_t ;
 struct TYPE_12__ {int skip_data; scalar_t__ in_closed; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NGX_HTTP_BAD_REQUEST ; 
- int /*<<< orphan*/  NGX_HTTP_PROCESS_REQUEST_STATE ; 
- int /*<<< orphan*/  NGX_LOG_INFO ; 
- scalar_t__ NGX_OK ; 
- int /*<<< orphan*/  ngx_http_finalize_request (TYPE_3__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_http_process_request (TYPE_3__*) ; 
- scalar_t__ ngx_http_process_request_header (TYPE_3__*) ; 
- int /*<<< orphan*/  ngx_http_run_posted_requests (TYPE_4__*) ; 
- scalar_t__ ngx_http_v2_construct_cookie_header (TYPE_3__*) ; 
- scalar_t__ ngx_http_v2_construct_request_line (TYPE_3__*) ; 
- int /*<<< orphan*/  ngx_log_error (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
+
+ int NGX_HTTP_BAD_REQUEST ;
+ int NGX_HTTP_PROCESS_REQUEST_STATE ;
+ int NGX_LOG_INFO ;
+ scalar_t__ NGX_OK ;
+ int ngx_http_finalize_request (TYPE_3__*,int ) ;
+ int ngx_http_process_request (TYPE_3__*) ;
+ scalar_t__ ngx_http_process_request_header (TYPE_3__*) ;
+ int ngx_http_run_posted_requests (TYPE_4__*) ;
+ scalar_t__ ngx_http_v2_construct_cookie_header (TYPE_3__*) ;
+ scalar_t__ ngx_http_v2_construct_request_line (TYPE_3__*) ;
+ int ngx_log_error (int ,int ,int ,char*) ;
 
 __attribute__((used)) static void
 ngx_http_v2_run_request(ngx_http_request_t *r)
 {
-    ngx_connection_t  *fc;
+    ngx_connection_t *fc;
 
     fc = r->connection;
 

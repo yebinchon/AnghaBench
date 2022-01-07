@@ -1,66 +1,66 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_18__   TYPE_7__ ;
-typedef  struct TYPE_17__   TYPE_6__ ;
-typedef  struct TYPE_16__   TYPE_5__ ;
-typedef  struct TYPE_15__   TYPE_4__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  stateid_arg ;
-struct TYPE_14__ {int query; int /*<<< orphan*/  ctime; int /*<<< orphan*/  sec_desc; } ;
-typedef  TYPE_3__ setacl_upcall_args ;
-struct TYPE_15__ {int /*<<< orphan*/  aces; int /*<<< orphan*/  member_0; } ;
-typedef  TYPE_4__ nfsacl41 ;
+
+
+typedef struct TYPE_18__ TYPE_7__ ;
+typedef struct TYPE_17__ TYPE_6__ ;
+typedef struct TYPE_16__ TYPE_5__ ;
+typedef struct TYPE_15__ TYPE_4__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+typedef int stateid_arg ;
+struct TYPE_14__ {int query; int ctime; int sec_desc; } ;
+typedef TYPE_3__ setacl_upcall_args ;
+struct TYPE_15__ {int aces; int member_0; } ;
+typedef TYPE_4__ nfsacl41 ;
 struct TYPE_12__ {TYPE_3__ setacl; } ;
 struct TYPE_16__ {TYPE_6__* state_ref; TYPE_1__ args; } ;
-typedef  TYPE_5__ nfs41_upcall ;
-struct TYPE_17__ {int /*<<< orphan*/  file; int /*<<< orphan*/  session; int /*<<< orphan*/  type; } ;
-typedef  TYPE_6__ nfs41_open_state ;
-struct TYPE_13__ {int count; int /*<<< orphan*/ * arr; } ;
-struct TYPE_18__ {char* owner; char* owner_group; int /*<<< orphan*/  change; TYPE_2__ attrmask; TYPE_4__* acl; int /*<<< orphan*/  member_0; } ;
-typedef  TYPE_7__ nfs41_file_info ;
-typedef  int /*<<< orphan*/ * PSID ;
-typedef  int /*<<< orphan*/  PACL ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef TYPE_5__ nfs41_upcall ;
+struct TYPE_17__ {int file; int session; int type; } ;
+typedef TYPE_6__ nfs41_open_state ;
+struct TYPE_13__ {int count; int * arr; } ;
+struct TYPE_18__ {char* owner; char* owner_group; int change; TYPE_2__ attrmask; TYPE_4__* acl; int member_0; } ;
+typedef TYPE_7__ nfs41_file_info ;
+typedef int * PSID ;
+typedef int PACL ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACLLVL ; 
- int DACL_SECURITY_INFORMATION ; 
- int ERROR_NOT_SUPPORTED ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  FATTR4_WORD0_ACL ; 
- int /*<<< orphan*/  FATTR4_WORD1_OWNER ; 
- int /*<<< orphan*/  FATTR4_WORD1_OWNER_GROUP ; 
- int GROUP_SECURITY_INFORMATION ; 
- int GetLastError () ; 
- int GetSecurityDescriptorDacl (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int GetSecurityDescriptorGroup (int /*<<< orphan*/ ,int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
- int GetSecurityDescriptorOwner (int /*<<< orphan*/ ,int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
- int NFS4_OPAQUE_LIMIT ; 
- int /*<<< orphan*/  OPEN_DELEGATE_WRITE ; 
- int OWNER_SECURITY_INFORMATION ; 
- int /*<<< orphan*/  dprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  eprintf (char*,int) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  localdomain_name ; 
- int map_dacl_2_nfs4acl (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_4__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int map_nfs4ace_who (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nfs41_delegation_return (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nfs41_open_stateid_arg (TYPE_6__*,int /*<<< orphan*/ *) ; 
- int nfs41_setattr (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_7__*) ; 
- int /*<<< orphan*/  nfs_error_string (int) ; 
- int nfs_to_windows_error (int,int) ; 
+
+ int ACLLVL ;
+ int DACL_SECURITY_INFORMATION ;
+ int ERROR_NOT_SUPPORTED ;
+ int FALSE ;
+ int FATTR4_WORD0_ACL ;
+ int FATTR4_WORD1_OWNER ;
+ int FATTR4_WORD1_OWNER_GROUP ;
+ int GROUP_SECURITY_INFORMATION ;
+ int GetLastError () ;
+ int GetSecurityDescriptorDacl (int ,int *,int *,int *) ;
+ int GetSecurityDescriptorGroup (int ,int **,int *) ;
+ int GetSecurityDescriptorOwner (int ,int **,int *) ;
+ int NFS4_OPAQUE_LIMIT ;
+ int OPEN_DELEGATE_WRITE ;
+ int OWNER_SECURITY_INFORMATION ;
+ int dprintf (int ,char*,...) ;
+ int eprintf (char*,int) ;
+ int free (int ) ;
+ int localdomain_name ;
+ int map_dacl_2_nfs4acl (int ,int *,int *,TYPE_4__*,int ,int ) ;
+ int map_nfs4ace_who (int *,int *,int *,char*,int ) ;
+ int nfs41_delegation_return (int ,int *,int ,int ) ;
+ int nfs41_open_stateid_arg (TYPE_6__*,int *) ;
+ int nfs41_setattr (int ,int *,int *,TYPE_7__*) ;
+ int nfs_error_string (int) ;
+ int nfs_to_windows_error (int,int) ;
 
 __attribute__((used)) static int handle_setacl(nfs41_upcall *upcall)
 {
@@ -70,7 +70,7 @@ __attribute__((used)) static int handle_setacl(nfs41_upcall *upcall)
     nfs41_file_info info = { 0 };
     stateid_arg stateid;
     nfsacl41 nfs4_acl = { 0 };
-    PSID sid = NULL, gsid = NULL;
+    PSID sid = ((void*)0), gsid = ((void*)0);
     BOOL sid_default, gsid_default;
 
     if (args->query & OWNER_SECURITY_INFORMATION) {
@@ -83,7 +83,7 @@ __attribute__((used)) static int handle_setacl(nfs41_upcall *upcall)
             goto out;
         }
         info.owner = owner;
-        status = map_nfs4ace_who(sid, NULL, NULL, info.owner, localdomain_name);
+        status = map_nfs4ace_who(sid, ((void*)0), ((void*)0), info.owner, localdomain_name);
         if (status)
             goto out;
         else {
@@ -101,7 +101,7 @@ __attribute__((used)) static int handle_setacl(nfs41_upcall *upcall)
             goto out;
         }
         info.owner_group = group;
-        status = map_nfs4ace_who(sid, NULL, NULL, info.owner_group, 
+        status = map_nfs4ace_who(sid, ((void*)0), ((void*)0), info.owner_group,
                                  localdomain_name);
         if (status)
             goto out;
@@ -133,7 +133,7 @@ __attribute__((used)) static int handle_setacl(nfs41_upcall *upcall)
             eprintf("GetSecurityDescriptorOwner failed with %d\n", status);
             goto out;
         }
-        status = map_dacl_2_nfs4acl(acl, sid, gsid, &nfs4_acl, state->type, 
+        status = map_dacl_2_nfs4acl(acl, sid, gsid, &nfs4_acl, state->type,
                                     localdomain_name);
         if (status)
             goto out;
@@ -145,7 +145,7 @@ __attribute__((used)) static int handle_setacl(nfs41_upcall *upcall)
         }
     }
 
-    /* break read delegations before SETATTR */
+
     nfs41_delegation_return(state->session, &state->file,
         OPEN_DELEGATE_WRITE, FALSE);
 

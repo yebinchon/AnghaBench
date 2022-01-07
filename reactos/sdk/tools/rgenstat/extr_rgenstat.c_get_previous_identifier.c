@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char* file_buffer ; 
- scalar_t__ is_end_of_name (char) ; 
- scalar_t__ is_eol_char (char) ; 
- scalar_t__ is_whitespace (char) ; 
- int /*<<< orphan*/  strncpy (char*,char*,int) ; 
+ char* file_buffer ;
+ scalar_t__ is_end_of_name (char) ;
+ scalar_t__ is_eol_char (char) ;
+ scalar_t__ is_whitespace (char) ;
+ int strncpy (char*,char*,int) ;
 
 __attribute__((used)) static int
 get_previous_identifier(unsigned int end, char *name)
@@ -32,7 +24,7 @@ get_previous_identifier(unsigned int end, char *name)
       my_file_pointer--;
     }
 
-  /* Skip any comments between function name and it's parameters */
+
   if ((my_file_pointer > 0) && (file_buffer[my_file_pointer] == '/'))
     {
       if ((my_file_pointer > 0) && (file_buffer[my_file_pointer - 1] == '*'))
@@ -47,7 +39,7 @@ get_previous_identifier(unsigned int end, char *name)
         }
     }
 
-  /* Skip any remaining whitespace */
+
   while ((my_file_pointer > 0) && (is_whitespace(file_buffer[my_file_pointer])))
     {
       my_file_pointer--;

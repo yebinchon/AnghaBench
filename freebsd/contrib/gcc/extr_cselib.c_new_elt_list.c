@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct elt_list {int /*<<< orphan*/ * elt; struct elt_list* next; } ;
-typedef  int /*<<< orphan*/  cselib_val ;
 
-/* Variables and functions */
- int /*<<< orphan*/  elt_list_pool ; 
- struct elt_list* pool_alloc (int /*<<< orphan*/ ) ; 
+
+
+
+struct elt_list {int * elt; struct elt_list* next; } ;
+typedef int cselib_val ;
+
+
+ int elt_list_pool ;
+ struct elt_list* pool_alloc (int ) ;
 
 __attribute__((used)) static inline struct elt_list *
 new_elt_list (struct elt_list *next, cselib_val *elt)

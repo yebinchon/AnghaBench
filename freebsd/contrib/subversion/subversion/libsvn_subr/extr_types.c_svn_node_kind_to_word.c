@@ -1,38 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int svn_node_kind_t ;
 
-/* Variables and functions */
-#define  svn_node_dir 132 
-#define  svn_node_file 131 
-#define  svn_node_none 130 
-#define  svn_node_symlink 129 
-#define  svn_node_unknown 128 
 
+
+
+typedef int svn_node_kind_t ;
 const char *
 svn_node_kind_to_word(svn_node_kind_t kind)
 {
   switch (kind)
     {
-    case svn_node_none:
+    case 130:
       return "none";
-    case svn_node_file:
+    case 131:
       return "file";
-    case svn_node_dir:
+    case 132:
       return "dir";
-    case svn_node_symlink:
+    case 129:
       return "symlink";
-    case svn_node_unknown:
+    case 128:
     default:
       return "unknown";
     }

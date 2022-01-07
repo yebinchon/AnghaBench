@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct thread {int dummy; } ;
-struct aio_error_args {int /*<<< orphan*/  aiocbp; } ;
+struct aio_error_args {int aiocbp; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  aiocb_ops ; 
- int kern_aio_error (struct thread*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int aiocb_ops ;
+ int kern_aio_error (struct thread*,int ,int *) ;
 
 int
 sys_aio_error(struct thread *td, struct aio_error_args *uap)
 {
 
-	return (kern_aio_error(td, uap->aiocbp, &aiocb_ops));
+ return (kern_aio_error(td, uap->aiocbp, &aiocb_ops));
 }

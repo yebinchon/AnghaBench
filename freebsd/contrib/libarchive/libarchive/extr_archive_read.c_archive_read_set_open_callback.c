@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/ * opener; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int * opener; } ;
 struct archive_read {TYPE_1__ client; } ;
 struct archive {int dummy; } ;
-typedef  int /*<<< orphan*/  archive_open_callback ;
+typedef int archive_open_callback ;
 
-/* Variables and functions */
- int ARCHIVE_OK ; 
- int /*<<< orphan*/  ARCHIVE_READ_MAGIC ; 
- int /*<<< orphan*/  ARCHIVE_STATE_NEW ; 
- int /*<<< orphan*/  archive_check_magic (struct archive*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
+
+ int ARCHIVE_OK ;
+ int ARCHIVE_READ_MAGIC ;
+ int ARCHIVE_STATE_NEW ;
+ int archive_check_magic (struct archive*,int ,int ,char*) ;
 
 int
 archive_read_set_open_callback(struct archive *_a,
     archive_open_callback *client_opener)
 {
-	struct archive_read *a = (struct archive_read *)_a;
-	archive_check_magic(_a, ARCHIVE_READ_MAGIC, ARCHIVE_STATE_NEW,
-	    "archive_read_set_open_callback");
-	a->client.opener = client_opener;
-	return ARCHIVE_OK;
+ struct archive_read *a = (struct archive_read *)_a;
+ archive_check_magic(_a, ARCHIVE_READ_MAGIC, ARCHIVE_STATE_NEW,
+     "archive_read_set_open_callback");
+ a->client.opener = client_opener;
+ return ARCHIVE_OK;
 }

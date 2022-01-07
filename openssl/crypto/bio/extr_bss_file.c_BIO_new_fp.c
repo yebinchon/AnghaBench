@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
-typedef  int /*<<< orphan*/  BIO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_FLAGS_UPLINK_INTERNAL ; 
- int /*<<< orphan*/ * BIO_new (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BIO_s_file () ; 
- int /*<<< orphan*/  BIO_set_flags (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BIO_set_fp (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int FILE ;
+typedef int BIO ;
+
+
+ int BIO_FLAGS_UPLINK_INTERNAL ;
+ int * BIO_new (int ) ;
+ int BIO_s_file () ;
+ int BIO_set_flags (int *,int ) ;
+ int BIO_set_fp (int *,int *,int) ;
 
 BIO *BIO_new_fp(FILE *stream, int close_flag)
 {
     BIO *ret;
 
-    if ((ret = BIO_new(BIO_s_file())) == NULL)
-        return NULL;
+    if ((ret = BIO_new(BIO_s_file())) == ((void*)0))
+        return ((void*)0);
 
-    /* redundant flag, left for documentation purposes */
+
     BIO_set_flags(ret, BIO_FLAGS_UPLINK_INTERNAL);
     BIO_set_fp(ret, stream, close_flag);
     return ret;

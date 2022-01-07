@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  b; } ;
-struct TYPE_4__ {TYPE_1__ v32; int /*<<< orphan*/  v64; } ;
-typedef  TYPE_2__ vconv64_t ;
-typedef  int /*<<< orphan*/  u64 ;
-typedef  int /*<<< orphan*/  u32 ;
 
-/* Variables and functions */
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int b; } ;
+struct TYPE_4__ {TYPE_1__ v32; int v64; } ;
+typedef TYPE_2__ vconv64_t ;
+typedef int u64 ;
+typedef int u32 ;
+
+
 
 u32 v32b_from_v64 (const u64 v64)
 {

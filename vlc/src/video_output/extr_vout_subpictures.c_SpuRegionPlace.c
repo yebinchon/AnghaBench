@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_7__ {int i_original_picture_height; int i_original_picture_width; scalar_t__ b_absolute; } ;
-typedef  TYPE_2__ subpicture_t ;
+typedef TYPE_2__ subpicture_t ;
 struct TYPE_6__ {int i_visible_height; int i_visible_width; } ;
 struct TYPE_8__ {int i_x; int i_y; TYPE_1__ fmt; } ;
-typedef  TYPE_3__ subpicture_region_t ;
+typedef TYPE_3__ subpicture_region_t ;
 
-/* Variables and functions */
- int INT_MAX ; 
- int SUBPICTURE_ALIGN_BOTTOM ; 
- int SUBPICTURE_ALIGN_LEFT ; 
- int SUBPICTURE_ALIGN_RIGHT ; 
- int SUBPICTURE_ALIGN_TOP ; 
- int /*<<< orphan*/  assert (int) ; 
+
+ int INT_MAX ;
+ int SUBPICTURE_ALIGN_BOTTOM ;
+ int SUBPICTURE_ALIGN_LEFT ;
+ int SUBPICTURE_ALIGN_RIGHT ;
+ int SUBPICTURE_ALIGN_TOP ;
+ int assert (int) ;
 
 __attribute__((used)) static void SpuRegionPlace(int *x, int *y,
                            const subpicture_t *subpic,

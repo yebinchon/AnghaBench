@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  failmsg ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ATF_REQUIRE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  atf_tc_fail (char*,char*) ; 
- int /*<<< orphan*/  build_check_c_o (char*) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*,char const*) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,char const*) ; 
+
+
+
+typedef int failmsg ;
+typedef int FILE ;
+
+
+ int ATF_REQUIRE (int ) ;
+ int atf_tc_fail (char*,char*) ;
+ int build_check_c_o (char*) ;
+ int fclose (int *) ;
+ int * fopen (char*,char*) ;
+ int fprintf (int *,char*,char const*) ;
+ int snprintf (char*,int,char*,char const*) ;
 
 void
 header_check(const char *hdrname)
@@ -29,7 +29,7 @@ header_check(const char *hdrname)
     char failmsg[128];
 
     srcfile = fopen("test.c", "w");
-    ATF_REQUIRE(srcfile != NULL);
+    ATF_REQUIRE(srcfile != ((void*)0));
     fprintf(srcfile, "#include <%s>\n", hdrname);
     fclose(srcfile);
 

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct hts_data {int extra_int; int extra_int2; int extra_int3; int query_flags; int /*<<< orphan*/ * extra; } ;
+
+
+
+
+struct hts_data {int extra_int; int extra_int2; int extra_int3; int query_flags; int * extra; } ;
 struct connection {scalar_t__ status; int parse_state; } ;
-typedef  int /*<<< orphan*/  metafile_t ;
+typedef int metafile_t ;
 
-/* Variables and functions */
- struct hts_data* HTS_DATA (struct connection*) ; 
- int QF_KEEPALIVE ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  clear_connection_timeout (struct connection*) ; 
- scalar_t__ conn_expect_query ; 
- scalar_t__ conn_wait_aio ; 
- scalar_t__ conn_write_close ; 
- int http_return_file (struct connection*,int /*<<< orphan*/ *,long long,int) ; 
- int /*<<< orphan*/  memcpy (long long*,int*,int) ; 
- int /*<<< orphan*/  vkprintf (int,char*,struct connection*,scalar_t__) ; 
- int /*<<< orphan*/  write_http_error (struct connection*,int) ; 
+
+ struct hts_data* HTS_DATA (struct connection*) ;
+ int QF_KEEPALIVE ;
+ int assert (int) ;
+ int clear_connection_timeout (struct connection*) ;
+ scalar_t__ conn_expect_query ;
+ scalar_t__ conn_wait_aio ;
+ scalar_t__ conn_write_close ;
+ int http_return_file (struct connection*,int *,long long,int) ;
+ int memcpy (long long*,int*,int) ;
+ int vkprintf (int,char*,struct connection*,scalar_t__) ;
+ int write_http_error (struct connection*,int) ;
 
 int hts_wakeup (struct connection *c) {
   vkprintf (3, "hts_wakeup (%p, c->status = %d)\n", c, c->status);

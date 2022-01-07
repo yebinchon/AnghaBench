@@ -1,66 +1,66 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_18__   TYPE_7__ ;
-typedef  struct TYPE_17__   TYPE_6__ ;
-typedef  struct TYPE_16__   TYPE_5__ ;
-typedef  struct TYPE_15__   TYPE_4__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u_short ;
-typedef  int /*<<< orphan*/  u_char ;
-typedef  size_t ngx_uint_t ;
-struct TYPE_14__ {int len; int /*<<< orphan*/ * data; } ;
-typedef  TYPE_3__ ngx_str_t ;
-typedef  int /*<<< orphan*/  ngx_int_t ;
-typedef  int /*<<< orphan*/  ngx_hash_wildcard_t ;
-struct TYPE_12__ {scalar_t__ len; int /*<<< orphan*/ * data; } ;
-struct TYPE_15__ {size_t key_hash; TYPE_1__ key; int /*<<< orphan*/ * value; } ;
-typedef  TYPE_4__ ngx_hash_key_t ;
-struct TYPE_16__ {int max_size; int bucket_size; size_t (* key ) (int /*<<< orphan*/ *,int) ;TYPE_7__* pool; TYPE_2__* hash; int /*<<< orphan*/  name; } ;
-typedef  TYPE_5__ ngx_hash_init_t ;
-struct TYPE_17__ {int len; int /*<<< orphan*/ * name; int /*<<< orphan*/ * value; } ;
-typedef  TYPE_6__ ngx_hash_elt_t ;
-struct TYPE_18__ {int /*<<< orphan*/  log; } ;
+
+
+typedef struct TYPE_18__ TYPE_7__ ;
+typedef struct TYPE_17__ TYPE_6__ ;
+typedef struct TYPE_16__ TYPE_5__ ;
+typedef struct TYPE_15__ TYPE_4__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+typedef int u_short ;
+typedef int u_char ;
+typedef size_t ngx_uint_t ;
+struct TYPE_14__ {int len; int * data; } ;
+typedef TYPE_3__ ngx_str_t ;
+typedef int ngx_int_t ;
+typedef int ngx_hash_wildcard_t ;
+struct TYPE_12__ {scalar_t__ len; int * data; } ;
+struct TYPE_15__ {size_t key_hash; TYPE_1__ key; int * value; } ;
+typedef TYPE_4__ ngx_hash_key_t ;
+struct TYPE_16__ {int max_size; int bucket_size; size_t (* key ) (int *,int) ;TYPE_7__* pool; TYPE_2__* hash; int name; } ;
+typedef TYPE_5__ ngx_hash_init_t ;
+struct TYPE_17__ {int len; int * name; int * value; } ;
+typedef TYPE_6__ ngx_hash_elt_t ;
+struct TYPE_18__ {int log; } ;
 struct TYPE_13__ {size_t size; TYPE_6__** buckets; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NGX_ERROR ; 
- int NGX_HASH_ELT_SIZE (TYPE_4__*) ; 
- int /*<<< orphan*/  NGX_LOG_ALERT ; 
- int /*<<< orphan*/  NGX_LOG_EMERG ; 
- int /*<<< orphan*/  NGX_LOG_WARN ; 
- int /*<<< orphan*/  NGX_OK ; 
- scalar_t__ ngx_align (int,int) ; 
- int /*<<< orphan*/ * ngx_align_ptr (int /*<<< orphan*/ *,int) ; 
- int* ngx_alloc (int,int /*<<< orphan*/ ) ; 
- int ngx_cacheline_size ; 
- int /*<<< orphan*/  ngx_free (int*) ; 
- int /*<<< orphan*/  ngx_log_error (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,size_t,...) ; 
- int /*<<< orphan*/  ngx_memzero (int*,size_t) ; 
- int /*<<< orphan*/ * ngx_palloc (TYPE_7__*,size_t) ; 
- void* ngx_pcalloc (TYPE_7__*,size_t) ; 
- int /*<<< orphan*/  ngx_strlow (int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__) ; 
- size_t stub1 (int /*<<< orphan*/ *,int) ; 
+
+ int NGX_ERROR ;
+ int NGX_HASH_ELT_SIZE (TYPE_4__*) ;
+ int NGX_LOG_ALERT ;
+ int NGX_LOG_EMERG ;
+ int NGX_LOG_WARN ;
+ int NGX_OK ;
+ scalar_t__ ngx_align (int,int) ;
+ int * ngx_align_ptr (int *,int) ;
+ int* ngx_alloc (int,int ) ;
+ int ngx_cacheline_size ;
+ int ngx_free (int*) ;
+ int ngx_log_error (int ,int ,int ,char*,size_t,...) ;
+ int ngx_memzero (int*,size_t) ;
+ int * ngx_palloc (TYPE_7__*,size_t) ;
+ void* ngx_pcalloc (TYPE_7__*,size_t) ;
+ int ngx_strlow (int *,int *,scalar_t__) ;
+ size_t stub1 (int *,int) ;
 
 ngx_int_t
 ngx_hash_init(ngx_hash_init_t *hinit, ngx_hash_key_t *names, ngx_uint_t nelts)
 {
-    u_char          *elts;
-    size_t           len;
-    u_short         *test;
-    ngx_uint_t       i, n, key, size, start, bucket_size;
-    ngx_hash_elt_t  *elt, **buckets;
+    u_char *elts;
+    size_t len;
+    u_short *test;
+    ngx_uint_t i, n, key, size, start, bucket_size;
+    ngx_hash_elt_t *elt, **buckets;
 
     if (hinit->max_size == 0) {
         ngx_log_error(NGX_LOG_EMERG, hinit->pool->log, 0,
@@ -90,7 +90,7 @@ ngx_hash_init(ngx_hash_init_t *hinit, ngx_hash_key_t *names, ngx_uint_t nelts)
     }
 
     test = ngx_alloc(hinit->max_size * sizeof(u_short), hinit->pool->log);
-    if (test == NULL) {
+    if (test == ((void*)0)) {
         return NGX_ERROR;
     }
 
@@ -108,18 +108,18 @@ ngx_hash_init(ngx_hash_init_t *hinit, ngx_hash_key_t *names, ngx_uint_t nelts)
         ngx_memzero(test, size * sizeof(u_short));
 
         for (n = 0; n < nelts; n++) {
-            if (names[n].key.data == NULL) {
+            if (names[n].key.data == ((void*)0)) {
                 continue;
             }
 
             key = names[n].key_hash % size;
             len = test[key] + NGX_HASH_ELT_SIZE(&names[n]);
 
-#if 0
-            ngx_log_error(NGX_LOG_ALERT, hinit->pool->log, 0,
-                          "%ui: %ui %uz \"%V\"",
-                          size, key, len, &names[n].key);
-#endif
+
+
+
+
+
 
             if (len > bucket_size) {
                 goto next;
@@ -151,7 +151,7 @@ found:
     }
 
     for (n = 0; n < nelts; n++) {
-        if (names[n].key.data == NULL) {
+        if (names[n].key.data == ((void*)0)) {
             continue;
         }
 
@@ -182,10 +182,10 @@ found:
         len += test[i];
     }
 
-    if (hinit->hash == NULL) {
+    if (hinit->hash == ((void*)0)) {
         hinit->hash = ngx_pcalloc(hinit->pool, sizeof(ngx_hash_wildcard_t)
                                              + size * sizeof(ngx_hash_elt_t *));
-        if (hinit->hash == NULL) {
+        if (hinit->hash == ((void*)0)) {
             ngx_free(test);
             return NGX_ERROR;
         }
@@ -195,14 +195,14 @@ found:
 
     } else {
         buckets = ngx_pcalloc(hinit->pool, size * sizeof(ngx_hash_elt_t *));
-        if (buckets == NULL) {
+        if (buckets == ((void*)0)) {
             ngx_free(test);
             return NGX_ERROR;
         }
     }
 
     elts = ngx_palloc(hinit->pool, len + ngx_cacheline_size);
-    if (elts == NULL) {
+    if (elts == ((void*)0)) {
         ngx_free(test);
         return NGX_ERROR;
     }
@@ -223,7 +223,7 @@ found:
     }
 
     for (n = 0; n < nelts; n++) {
-        if (names[n].key.data == NULL) {
+        if (names[n].key.data == ((void*)0)) {
             continue;
         }
 
@@ -239,49 +239,18 @@ found:
     }
 
     for (i = 0; i < size; i++) {
-        if (buckets[i] == NULL) {
+        if (buckets[i] == ((void*)0)) {
             continue;
         }
 
         elt = (ngx_hash_elt_t *) ((u_char *) buckets[i] + test[i]);
 
-        elt->value = NULL;
+        elt->value = ((void*)0);
     }
 
     ngx_free(test);
 
     hinit->hash->buckets = buckets;
     hinit->hash->size = size;
-
-#if 0
-
-    for (i = 0; i < size; i++) {
-        ngx_str_t   val;
-        ngx_uint_t  key;
-
-        elt = buckets[i];
-
-        if (elt == NULL) {
-            ngx_log_error(NGX_LOG_ALERT, hinit->pool->log, 0,
-                          "%ui: NULL", i);
-            continue;
-        }
-
-        while (elt->value) {
-            val.len = elt->len;
-            val.data = &elt->name[0];
-
-            key = hinit->key(val.data, val.len);
-
-            ngx_log_error(NGX_LOG_ALERT, hinit->pool->log, 0,
-                          "%ui: %p \"%V\" %ui", i, elt, &val, key);
-
-            elt = (ngx_hash_elt_t *) ngx_align_ptr(&elt->name[0] + elt->len,
-                                                   sizeof(void *));
-        }
-    }
-
-#endif
-
     return NGX_OK;
 }

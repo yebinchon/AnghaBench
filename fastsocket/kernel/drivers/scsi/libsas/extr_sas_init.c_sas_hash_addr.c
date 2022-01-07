@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u8 ;
-typedef  int u32 ;
 
-/* Variables and functions */
+
+
+
+typedef int u8 ;
+typedef int u32 ;
+
+
 
 void sas_hash_addr(u8 *hashed, const u8 *sas_addr)
 {
         const u32 poly = 0x00DB2777;
-        u32     r = 0;
-        int     i;
+        u32 r = 0;
+        int i;
 
         for (i = 0; i < 8; i++) {
                 int b;

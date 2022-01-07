@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Oid ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AMOPOPID ; 
- int /*<<< orphan*/  AMOP_SEARCH ; 
- int /*<<< orphan*/  CharGetDatum (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ObjectIdGetDatum (int /*<<< orphan*/ ) ; 
- int SearchSysCacheExists3 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int Oid ;
+
+
+ int AMOPOPID ;
+ int AMOP_SEARCH ;
+ int CharGetDatum (int ) ;
+ int ObjectIdGetDatum (int ) ;
+ int SearchSysCacheExists3 (int ,int ,int ,int ) ;
 
 bool
 op_in_opfamily(Oid opno, Oid opfamily)
 {
-	return SearchSysCacheExists3(AMOPOPID,
-								 ObjectIdGetDatum(opno),
-								 CharGetDatum(AMOP_SEARCH),
-								 ObjectIdGetDatum(opfamily));
+ return SearchSysCacheExists3(AMOPOPID,
+         ObjectIdGetDatum(opno),
+         CharGetDatum(AMOP_SEARCH),
+         ObjectIdGetDatum(opfamily));
 }

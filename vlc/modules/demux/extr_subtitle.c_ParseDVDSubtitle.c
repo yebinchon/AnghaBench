@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_object_t ;
-typedef  int /*<<< orphan*/  text_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int vlc_object_t ;
+typedef int text_t ;
 struct TYPE_3__ {int i_stop; char* psz_text; scalar_t__ i_start; } ;
-typedef  TYPE_1__ subtitle_t ;
-typedef  int /*<<< orphan*/  subs_properties_t ;
+typedef TYPE_1__ subtitle_t ;
+typedef int subs_properties_t ;
 
-/* Variables and functions */
- char* TextGetLine (int /*<<< orphan*/ *) ; 
- int VLC_EGENERIC ; 
- int VLC_ENOMEM ; 
- int VLC_SUCCESS ; 
- scalar_t__ VLC_TICK_FROM_MS (int) ; 
- int /*<<< orphan*/  VLC_UNUSED (size_t) ; 
- int /*<<< orphan*/  free (char*) ; 
- char* realloc_or_free (char*,int) ; 
- int sscanf (char const*,char*,int*,int*,int*,int*) ; 
- int /*<<< orphan*/  strcat (char*,char const*) ; 
- char* strdup (char*) ; 
- int strlen (char const*) ; 
- scalar_t__ vlc_tick_from_sec (int) ; 
+
+ char* TextGetLine (int *) ;
+ int VLC_EGENERIC ;
+ int VLC_ENOMEM ;
+ int VLC_SUCCESS ;
+ scalar_t__ VLC_TICK_FROM_MS (int) ;
+ int VLC_UNUSED (size_t) ;
+ int free (char*) ;
+ char* realloc_or_free (char*,int) ;
+ int sscanf (char const*,char*,int*,int*,int*,int*) ;
+ int strcat (char*,char const*) ;
+ char* strdup (char*) ;
+ int strlen (char const*) ;
+ scalar_t__ vlc_tick_from_sec (int) ;
 
 __attribute__((used)) static int ParseDVDSubtitle(vlc_object_t *p_obj, subs_properties_t *p_props,
                             text_t *txt, subtitle_t *p_subtitle, size_t i_idx )
@@ -59,7 +59,7 @@ __attribute__((used)) static int ParseDVDSubtitle(vlc_object_t *p_obj, subs_prop
         }
     }
 
-    /* Now read text until a line containing "}" */
+
     psz_text = strdup("");
     if( !psz_text )
         return VLC_ENOMEM;

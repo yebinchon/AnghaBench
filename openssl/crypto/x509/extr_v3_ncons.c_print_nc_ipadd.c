@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {unsigned char* data; int length; } ;
-typedef  int /*<<< orphan*/  BIO ;
-typedef  TYPE_1__ ASN1_OCTET_STRING ;
+typedef int BIO ;
+typedef TYPE_1__ ASN1_OCTET_STRING ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_printf (int /*<<< orphan*/ *,char*,...) ; 
- int /*<<< orphan*/  BIO_puts (int /*<<< orphan*/ *,char*) ; 
+
+ int BIO_printf (int *,char*,...) ;
+ int BIO_puts (int *,char*) ;
 
 __attribute__((used)) static int print_nc_ipadd(BIO *bp, ASN1_OCTET_STRING *ip)
 {

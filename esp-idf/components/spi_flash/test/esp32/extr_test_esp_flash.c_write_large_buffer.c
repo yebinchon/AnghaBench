@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_3__ {scalar_t__ address; } ;
-typedef  TYPE_1__ esp_partition_t ;
-typedef  int /*<<< orphan*/  esp_flash_t ;
+typedef TYPE_1__ esp_partition_t ;
+typedef int esp_flash_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ESP_ERROR_CHECK (int /*<<< orphan*/ ) ; 
- size_t SPI_FLASH_SEC_SIZE ; 
- int /*<<< orphan*/  esp_flash_erase_region (int /*<<< orphan*/ *,scalar_t__,size_t) ; 
- int /*<<< orphan*/  esp_flash_write (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,scalar_t__,size_t) ; 
- int /*<<< orphan*/  printf (char*,int /*<<< orphan*/ *,size_t,int /*<<< orphan*/  const*) ; 
+
+ int ESP_ERROR_CHECK (int ) ;
+ size_t SPI_FLASH_SEC_SIZE ;
+ int esp_flash_erase_region (int *,scalar_t__,size_t) ;
+ int esp_flash_write (int *,int const*,scalar_t__,size_t) ;
+ int printf (char*,int *,size_t,int const*) ;
 
 __attribute__((used)) static void write_large_buffer(esp_flash_t *chip, const esp_partition_t *part, const uint8_t *source, size_t length)
 {
@@ -29,6 +29,6 @@ __attribute__((used)) static void write_large_buffer(esp_flash_t *chip, const es
 
     ESP_ERROR_CHECK( esp_flash_erase_region(chip, part->address, (length + SPI_FLASH_SEC_SIZE) & ~(SPI_FLASH_SEC_SIZE - 1)) );
 
-    // note writing to unaligned address
+
     ESP_ERROR_CHECK( esp_flash_write(chip, source, part->address + 1, length) );
 }

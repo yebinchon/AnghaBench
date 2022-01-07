@@ -1,32 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ npy_datetime ;
-typedef  scalar_t__ npy_bool ;
-typedef  int NPY_BUSDAY_ROLL ;
 
-/* Variables and functions */
-#define  NPY_BUSDAY_FOLLOWING 133 
-#define  NPY_BUSDAY_MODIFIEDFOLLOWING 132 
-#define  NPY_BUSDAY_MODIFIEDPRECEDING 131 
-#define  NPY_BUSDAY_NAT 130 
-#define  NPY_BUSDAY_PRECEDING 129 
-#define  NPY_BUSDAY_RAISE 128 
- scalar_t__ NPY_DATETIME_NAT ; 
- int /*<<< orphan*/  PyErr_SetString (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  PyExc_ValueError ; 
- int /*<<< orphan*/  days_to_month_number (scalar_t__) ; 
- int get_day_of_week (scalar_t__) ; 
- scalar_t__ is_holiday (scalar_t__,scalar_t__*,scalar_t__*) ; 
+
+
+
+typedef scalar_t__ npy_datetime ;
+typedef scalar_t__ npy_bool ;
+typedef int NPY_BUSDAY_ROLL ;
+ scalar_t__ NPY_DATETIME_NAT ;
+ int PyErr_SetString (int ,char*) ;
+ int PyExc_ValueError ;
+ int days_to_month_number (scalar_t__) ;
+ int get_day_of_week (scalar_t__) ;
+ scalar_t__ is_holiday (scalar_t__,scalar_t__*,scalar_t__*) ;
 
 __attribute__((used)) static int
 apply_business_day_roll(npy_datetime date, npy_datetime *out,
@@ -37,10 +29,10 @@ apply_business_day_roll(npy_datetime date, npy_datetime *out,
 {
     int day_of_week;
 
-    /* Deal with NaT input */
+
     if (date == NPY_DATETIME_NAT) {
         *out = NPY_DATETIME_NAT;
-        if (roll == NPY_BUSDAY_RAISE) {
+        if (roll == 128) {
             PyErr_SetString(PyExc_ValueError,
                     "NaT input in busday_offset");
             return -1;
@@ -50,18 +42,18 @@ apply_business_day_roll(npy_datetime date, npy_datetime *out,
         }
     }
 
-    /* Get the day of the week for 'date' */
+
     day_of_week = get_day_of_week(date);
 
-    /* Apply the 'roll' if it's not a business day */
+
     if (weekmask[day_of_week] == 0 ||
                         is_holiday(date, holidays_begin, holidays_end)) {
         npy_datetime start_date = date;
         int start_day_of_week = day_of_week;
 
         switch (roll) {
-            case NPY_BUSDAY_FOLLOWING:
-            case NPY_BUSDAY_MODIFIEDFOLLOWING: {
+            case 133:
+            case 132: {
                 do {
                     ++date;
                     if (++day_of_week == 7) {
@@ -70,8 +62,8 @@ apply_business_day_roll(npy_datetime date, npy_datetime *out,
                 } while (weekmask[day_of_week] == 0 ||
                             is_holiday(date, holidays_begin, holidays_end));
 
-                if (roll == NPY_BUSDAY_MODIFIEDFOLLOWING) {
-                    /* If we crossed a month boundary, do preceding instead */
+                if (roll == 132) {
+
                     if (days_to_month_number(start_date) !=
                                 days_to_month_number(date)) {
                         date = start_date;
@@ -88,8 +80,8 @@ apply_business_day_roll(npy_datetime date, npy_datetime *out,
                 }
                 break;
             }
-            case NPY_BUSDAY_PRECEDING:
-            case NPY_BUSDAY_MODIFIEDPRECEDING: {
+            case 129:
+            case 131: {
                 do {
                     --date;
                     if (--day_of_week == -1) {
@@ -98,8 +90,8 @@ apply_business_day_roll(npy_datetime date, npy_datetime *out,
                 } while (weekmask[day_of_week] == 0 ||
                             is_holiday(date, holidays_begin, holidays_end));
 
-                if (roll == NPY_BUSDAY_MODIFIEDPRECEDING) {
-                    /* If we crossed a month boundary, do following instead */
+                if (roll == 131) {
+
                     if (days_to_month_number(start_date) !=
                                 days_to_month_number(date)) {
                         date = start_date;
@@ -116,11 +108,11 @@ apply_business_day_roll(npy_datetime date, npy_datetime *out,
                 }
                 break;
             }
-            case NPY_BUSDAY_NAT: {
+            case 130: {
                 date = NPY_DATETIME_NAT;
                 break;
             }
-            case NPY_BUSDAY_RAISE: {
+            case 128: {
                 *out = NPY_DATETIME_NAT;
                 PyErr_SetString(PyExc_ValueError,
                         "Non-business day date in busday_offset");

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
-struct TYPE_2__ {int /*<<< orphan*/  rdk; } ;
-typedef  TYPE_1__ AES_KEY ;
 
-/* Variables and functions */
- int /*<<< orphan*/  aes128_decrypt (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  aes128_set_decrypt_key (int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ td0 ; 
- scalar_t__ td1 ; 
- scalar_t__ td2 ; 
- scalar_t__ td3 ; 
- scalar_t__ td4 ; 
- scalar_t__ te0 ; 
- scalar_t__ te1 ; 
- scalar_t__ te2 ; 
- scalar_t__ te3 ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u32 ;
+struct TYPE_2__ {int rdk; } ;
+typedef TYPE_1__ AES_KEY ;
+
+
+ int aes128_decrypt (int ,int *,int *,int *,int *,int *,int *,int *) ;
+ int aes128_set_decrypt_key (int ,int const*,int *,int *,int *,int *,int *,int *,int *,int *) ;
+ scalar_t__ td0 ;
+ scalar_t__ td1 ;
+ scalar_t__ td2 ;
+ scalar_t__ td3 ;
+ scalar_t__ td4 ;
+ scalar_t__ te0 ;
+ scalar_t__ te1 ;
+ scalar_t__ te2 ;
+ scalar_t__ te3 ;
 
 __attribute__((used)) static void AES128_decrypt_cbc (const u32 key[4], const u32 iv[4], const u32 in[16], u32 out[16])
 {

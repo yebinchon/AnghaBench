@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  EINVAL ; 
- int EOF ; 
- char SW ; 
- int /*<<< orphan*/  errno ; 
- char* letP ; 
- int /*<<< orphan*/  perror (char*) ; 
- char* strchr (char*,unsigned char) ; 
- char* xoptarg ; 
- scalar_t__ xopterr ; 
- int xoptind ; 
+ int EINVAL ;
+ int EOF ;
+ char SW ;
+ int errno ;
+ char* letP ;
+ int perror (char*) ;
+ char* strchr (char*,unsigned char) ;
+ char* xoptarg ;
+ scalar_t__ xopterr ;
+ int xoptind ;
 
 int xgetopt(int argc, char *argv[], char *optionS)
 {
@@ -33,42 +25,42 @@ int xgetopt(int argc, char *argv[], char *optionS)
     }
 
     if (argc > xoptind) {
-        if (letP == NULL) {
-            if ((letP = argv[xoptind]) == NULL ||
-                *(letP++) != SW)  goto gopEOF;
+        if (letP == ((void*)0)) {
+            if ((letP = argv[xoptind]) == ((void*)0) ||
+                *(letP++) != SW) goto gopEOF;
             if (*letP == SW) {
-                xoptind++;  goto gopEOF;
+                xoptind++; goto gopEOF;
             }
         }
         if (0 == (ch = *(letP++))) {
-            xoptind++;  goto gopEOF;
+            xoptind++; goto gopEOF;
         }
-        if (':' == ch  ||  (optP = strchr(optionS, ch)) == NULL)
+        if (':' == ch || (optP = strchr(optionS, ch)) == ((void*)0))
             goto gopError;
         if (':' == *(++optP)) {
             xoptind++;
             if (0 == *letP) {
-                if (argc <= xoptind)  goto  gopError;
+                if (argc <= xoptind) goto gopError;
                 letP = argv[xoptind++];
             }
             xoptarg = letP;
-            letP = NULL;
+            letP = ((void*)0);
         } else {
             if (0 == *letP) {
                 xoptind++;
-                letP = NULL;
+                letP = ((void*)0);
             }
-            xoptarg = NULL;
+            xoptarg = ((void*)0);
         }
         return ch;
     }
 gopEOF:
-    xoptarg = letP = NULL;
+    xoptarg = letP = ((void*)0);
     return EOF;
 
 gopError:
-    xoptarg = NULL;
-    errno  = EINVAL;
+    xoptarg = ((void*)0);
+    errno = EINVAL;
     if (xopterr)
         perror ("get command line option");
     return ('?');

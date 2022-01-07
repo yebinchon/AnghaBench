@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int int16_t ;
 
-/* Variables and functions */
- int av_clip (int,int,int) ; 
+
+
+
+typedef int int16_t ;
+
+
+ int av_clip (int,int,int) ;
 
 __attribute__((used)) static void filter_mafq12(int16_t *in_ptr, int16_t *out_ptr,
                           int16_t *B, int16_t B_length,

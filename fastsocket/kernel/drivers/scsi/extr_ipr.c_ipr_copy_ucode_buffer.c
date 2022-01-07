@@ -1,66 +1,66 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-typedef  int u32 ;
+
+
+
+
+typedef int u8 ;
+typedef int u32 ;
 struct scatterlist {int length; } ;
 struct page {int dummy; } ;
 struct ipr_sglist {int order; int buffer_len; struct scatterlist* scatterlist; } ;
 
-/* Variables and functions */
- int PAGE_SIZE ; 
- int /*<<< orphan*/  ipr_trace ; 
- void* kmap (struct page*) ; 
- int /*<<< orphan*/  kunmap (struct page*) ; 
- int /*<<< orphan*/  memcpy (void*,int /*<<< orphan*/ *,int) ; 
- struct page* sg_page (struct scatterlist*) ; 
+
+ int PAGE_SIZE ;
+ int ipr_trace ;
+ void* kmap (struct page*) ;
+ int kunmap (struct page*) ;
+ int memcpy (void*,int *,int) ;
+ struct page* sg_page (struct scatterlist*) ;
 
 __attribute__((used)) static int ipr_copy_ucode_buffer(struct ipr_sglist *sglist,
-				 u8 *buffer, u32 len)
+     u8 *buffer, u32 len)
 {
-	int bsize_elem, i, result = 0;
-	struct scatterlist *scatterlist;
-	void *kaddr;
+ int bsize_elem, i, result = 0;
+ struct scatterlist *scatterlist;
+ void *kaddr;
 
-	/* Determine the actual number of bytes per element */
-	bsize_elem = PAGE_SIZE * (1 << sglist->order);
 
-	scatterlist = sglist->scatterlist;
+ bsize_elem = PAGE_SIZE * (1 << sglist->order);
 
-	for (i = 0; i < (len / bsize_elem); i++, buffer += bsize_elem) {
-		struct page *page = sg_page(&scatterlist[i]);
+ scatterlist = sglist->scatterlist;
 
-		kaddr = kmap(page);
-		memcpy(kaddr, buffer, bsize_elem);
-		kunmap(page);
+ for (i = 0; i < (len / bsize_elem); i++, buffer += bsize_elem) {
+  struct page *page = sg_page(&scatterlist[i]);
 
-		scatterlist[i].length = bsize_elem;
+  kaddr = kmap(page);
+  memcpy(kaddr, buffer, bsize_elem);
+  kunmap(page);
 
-		if (result != 0) {
-			ipr_trace;
-			return result;
-		}
-	}
+  scatterlist[i].length = bsize_elem;
 
-	if (len % bsize_elem) {
-		struct page *page = sg_page(&scatterlist[i]);
+  if (result != 0) {
+   ipr_trace;
+   return result;
+  }
+ }
 
-		kaddr = kmap(page);
-		memcpy(kaddr, buffer, len % bsize_elem);
-		kunmap(page);
+ if (len % bsize_elem) {
+  struct page *page = sg_page(&scatterlist[i]);
 
-		scatterlist[i].length = len % bsize_elem;
-	}
+  kaddr = kmap(page);
+  memcpy(kaddr, buffer, len % bsize_elem);
+  kunmap(page);
 
-	sglist->buffer_len = len;
-	return result;
+  scatterlist[i].length = len % bsize_elem;
+ }
+
+ sglist->buffer_len = len;
+ return result;
 }

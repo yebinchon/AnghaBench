@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  top; } ;
-typedef  TYPE_1__ lua_State ;
-struct TYPE_9__ {int /*<<< orphan*/  metatable; } ;
-struct TYPE_8__ {int /*<<< orphan*/  metatable; } ;
-typedef  int /*<<< orphan*/  TValue ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TM_EQ ; 
- int /*<<< orphan*/  bvalue (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  callTMres (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  gcvalue (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/ * get_compTM (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_4__* hvalue (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  l_isfalse (int /*<<< orphan*/ ) ; 
- int luai_numeq (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nvalue (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  pvalue (int /*<<< orphan*/  const*) ; 
- int ttype (int /*<<< orphan*/  const*) ; 
- TYPE_2__* uvalue (int /*<<< orphan*/  const*) ; 
+
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int top; } ;
+typedef TYPE_1__ lua_State ;
+struct TYPE_9__ {int metatable; } ;
+struct TYPE_8__ {int metatable; } ;
+typedef int TValue ;
+
+
+ int TM_EQ ;
+ int bvalue (int const*) ;
+ int callTMres (TYPE_1__*,int ,int const*,int const*,int const*) ;
+ int gcvalue (int const*) ;
+ int * get_compTM (TYPE_1__*,int ,int ,int ) ;
+ TYPE_4__* hvalue (int const*) ;
+ int l_isfalse (int ) ;
+ int luai_numeq (int ,int ) ;
+ int nvalue (int const*) ;
+ int pvalue (int const*) ;
+ int ttype (int const*) ;
+ TYPE_2__* uvalue (int const*) ;
 
 __attribute__((used)) static int luaV_equalval(lua_State*L,const TValue*t1,const TValue*t2){
 const TValue*tm;
@@ -53,7 +53,7 @@ break;
 }
 default:return gcvalue(t1)==gcvalue(t2);
 }
-if(tm==NULL)return 0;
+if(tm==((void*)0))return 0;
 callTMres(L,L->top,tm,t1,t2);
 return!l_isfalse(L->top);
 }

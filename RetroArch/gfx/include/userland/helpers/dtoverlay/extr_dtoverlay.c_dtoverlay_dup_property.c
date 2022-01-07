@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  fdt; } ;
-typedef  TYPE_1__ DTBLOB_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dtoverlay_debug (char*,char const*,char const*,char const*) ; 
- TYPE_1__* fdt_getprop (int /*<<< orphan*/ ,int,char const*,int*) ; 
- int fdt_path_offset (int /*<<< orphan*/ ,char const*) ; 
- int fdt_setprop (int /*<<< orphan*/ ,int,char const*,void*,int) ; 
- int fdt_setprop_inplace (int /*<<< orphan*/ ,int,char const*,TYPE_1__ const*,int) ; 
- int /*<<< orphan*/  free (void*) ; 
- void* malloc (int) ; 
- int /*<<< orphan*/  memcpy (void*,TYPE_1__ const*,int) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int fdt; } ;
+typedef TYPE_1__ DTBLOB_T ;
+
+
+ int dtoverlay_debug (char*,char const*,char const*,char const*) ;
+ TYPE_1__* fdt_getprop (int ,int,char const*,int*) ;
+ int fdt_path_offset (int ,char const*) ;
+ int fdt_setprop (int ,int,char const*,void*,int) ;
+ int fdt_setprop_inplace (int ,int,char const*,TYPE_1__ const*,int) ;
+ int free (void*) ;
+ void* malloc (int) ;
+ int memcpy (void*,TYPE_1__ const*,int) ;
 
 int dtoverlay_dup_property(DTBLOB_T *dtb, const char *node_name,
                            const char *dst, const char *src)
 {
-   /* Find the node and src property */
+
    const DTBLOB_T *src_prop;
    int node_off;
    int prop_len = 0;
@@ -45,7 +45,7 @@ int dtoverlay_dup_property(DTBLOB_T *dtb, const char *node_name,
    if (err != 0)
    {
       void *prop_data;
-      /* Copy the src property, just in case things move */
+
       prop_data = malloc(prop_len);
       memcpy(prop_data, src_prop, prop_len);
 

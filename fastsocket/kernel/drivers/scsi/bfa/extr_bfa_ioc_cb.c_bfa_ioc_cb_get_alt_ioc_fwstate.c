@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  alt_ioc_fwstate; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int alt_ioc_fwstate; } ;
 struct bfa_ioc_s {TYPE_1__ ioc_regs; } ;
-typedef  enum bfi_ioc_state { ____Placeholder_bfi_ioc_state } bfi_ioc_state ;
+typedef enum bfi_ioc_state { ____Placeholder_bfi_ioc_state } bfi_ioc_state ;
 
-/* Variables and functions */
- int BFA_IOC_CB_FWSTATE_MASK ; 
- int readl (int /*<<< orphan*/ ) ; 
+
+ int BFA_IOC_CB_FWSTATE_MASK ;
+ int readl (int ) ;
 
 __attribute__((used)) static enum bfi_ioc_state
 bfa_ioc_cb_get_alt_ioc_fwstate(struct bfa_ioc_s *ioc)
 {
-	return (enum bfi_ioc_state)(readl(ioc->ioc_regs.alt_ioc_fwstate) &
-			BFA_IOC_CB_FWSTATE_MASK);
+ return (enum bfi_ioc_state)(readl(ioc->ioc_regs.alt_ioc_fwstate) &
+   BFA_IOC_CB_FWSTATE_MASK);
 }

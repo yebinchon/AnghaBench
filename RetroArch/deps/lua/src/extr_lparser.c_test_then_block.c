@@ -1,77 +1,77 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_3__ ;
-typedef  struct TYPE_16__   TYPE_2__ ;
-typedef  struct TYPE_15__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_16__ {int f; int /*<<< orphan*/  t; } ;
-typedef  TYPE_2__ expdesc ;
+
+
+typedef struct TYPE_17__ TYPE_3__ ;
+typedef struct TYPE_16__ TYPE_2__ ;
+typedef struct TYPE_15__ TYPE_1__ ;
+
+
+struct TYPE_16__ {int f; int t; } ;
+typedef TYPE_2__ expdesc ;
 struct TYPE_15__ {scalar_t__ token; } ;
-struct TYPE_17__ {TYPE_1__ t; int /*<<< orphan*/ * fs; } ;
-typedef  TYPE_3__ LexState ;
-typedef  int /*<<< orphan*/  FuncState ;
-typedef  int /*<<< orphan*/  BlockCnt ;
+struct TYPE_17__ {TYPE_1__ t; int * fs; } ;
+typedef TYPE_3__ LexState ;
+typedef int FuncState ;
+typedef int BlockCnt ;
 
-/* Variables and functions */
- scalar_t__ TK_BREAK ; 
- scalar_t__ TK_ELSE ; 
- scalar_t__ TK_ELSEIF ; 
- scalar_t__ TK_GOTO ; 
- int /*<<< orphan*/  TK_THEN ; 
- scalar_t__ block_follow (TYPE_3__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  checknext (TYPE_3__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  enterblock (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  expr (TYPE_3__*,TYPE_2__*) ; 
- int /*<<< orphan*/  gotostat (TYPE_3__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  leaveblock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  luaK_concat (int /*<<< orphan*/ *,int*,int) ; 
- int /*<<< orphan*/  luaK_goiffalse (int /*<<< orphan*/ *,TYPE_2__*) ; 
- int /*<<< orphan*/  luaK_goiftrue (int /*<<< orphan*/ *,TYPE_2__*) ; 
- int luaK_jump (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  luaK_patchtohere (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  luaX_next (TYPE_3__*) ; 
- int /*<<< orphan*/  statlist (TYPE_3__*) ; 
- scalar_t__ testnext (TYPE_3__*,char) ; 
+
+ scalar_t__ TK_BREAK ;
+ scalar_t__ TK_ELSE ;
+ scalar_t__ TK_ELSEIF ;
+ scalar_t__ TK_GOTO ;
+ int TK_THEN ;
+ scalar_t__ block_follow (TYPE_3__*,int ) ;
+ int checknext (TYPE_3__*,int ) ;
+ int enterblock (int *,int *,int ) ;
+ int expr (TYPE_3__*,TYPE_2__*) ;
+ int gotostat (TYPE_3__*,int ) ;
+ int leaveblock (int *) ;
+ int luaK_concat (int *,int*,int) ;
+ int luaK_goiffalse (int *,TYPE_2__*) ;
+ int luaK_goiftrue (int *,TYPE_2__*) ;
+ int luaK_jump (int *) ;
+ int luaK_patchtohere (int *,int) ;
+ int luaX_next (TYPE_3__*) ;
+ int statlist (TYPE_3__*) ;
+ scalar_t__ testnext (TYPE_3__*,char) ;
 
 __attribute__((used)) static void test_then_block (LexState *ls, int *escapelist) {
-  /* test_then_block -> [IF | ELSEIF] cond THEN block */
+
   BlockCnt bl;
   FuncState *fs = ls->fs;
   expdesc v;
-  int jf;  /* instruction to skip 'then' code (if condition is false) */
-  luaX_next(ls);  /* skip IF or ELSEIF */
-  expr(ls, &v);  /* read condition */
+  int jf;
+  luaX_next(ls);
+  expr(ls, &v);
   checknext(ls, TK_THEN);
   if (ls->t.token == TK_GOTO || ls->t.token == TK_BREAK) {
-    luaK_goiffalse(ls->fs, &v);  /* will jump to label if condition is true */
-    enterblock(fs, &bl, 0);  /* must enter block before 'goto' */
-    gotostat(ls, v.t);  /* handle goto/break */
-    while (testnext(ls, ';')) {}  /* skip colons */
-    if (block_follow(ls, 0)) {  /* 'goto' is the entire block? */
+    luaK_goiffalse(ls->fs, &v);
+    enterblock(fs, &bl, 0);
+    gotostat(ls, v.t);
+    while (testnext(ls, ';')) {}
+    if (block_follow(ls, 0)) {
       leaveblock(fs);
-      return;  /* and that is it */
+      return;
     }
-    else  /* must skip over 'then' part if condition is false */
+    else
       jf = luaK_jump(fs);
   }
-  else {  /* regular case (not goto/break) */
-    luaK_goiftrue(ls->fs, &v);  /* skip over block if condition is false */
+  else {
+    luaK_goiftrue(ls->fs, &v);
     enterblock(fs, &bl, 0);
     jf = v.f;
   }
-  statlist(ls);  /* 'then' part */
+  statlist(ls);
   leaveblock(fs);
   if (ls->t.token == TK_ELSE ||
-      ls->t.token == TK_ELSEIF)  /* followed by 'else'/'elseif'? */
-    luaK_concat(fs, escapelist, luaK_jump(fs));  /* must jump over it */
+      ls->t.token == TK_ELSEIF)
+    luaK_concat(fs, escapelist, luaK_jump(fs));
   luaK_patchtohere(fs, jf);
 }

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct taskdialog_info {int /*<<< orphan*/  hwnd; } ;
-typedef  int /*<<< orphan*/  WORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EndDialog (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  TDN_BUTTON_CLICKED ; 
- scalar_t__ taskdialog_notify (struct taskdialog_info*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct taskdialog_info {int hwnd; } ;
+typedef int WORD ;
+
+
+ int EndDialog (int ,int ) ;
+ scalar_t__ S_OK ;
+ int TDN_BUTTON_CLICKED ;
+ scalar_t__ taskdialog_notify (struct taskdialog_info*,int ,int ,int ) ;
 
 __attribute__((used)) static void taskdialog_on_button_click(struct taskdialog_info *dialog_info, WORD command_id)
 {

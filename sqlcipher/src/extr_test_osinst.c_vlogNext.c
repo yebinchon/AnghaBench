@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_6__ ;
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_13__ TYPE_6__ ;
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_10__ {scalar_t__ pVtab; } ;
-typedef  TYPE_2__ sqlite3_vtab_cursor ;
+typedef TYPE_2__ sqlite3_vtab_cursor ;
 struct TYPE_11__ {scalar_t__ nByte; TYPE_6__* pFd; } ;
-typedef  TYPE_3__ VfslogVtab ;
+typedef TYPE_3__ VfslogVtab ;
 struct TYPE_12__ {char* zTransient; scalar_t__ iOffset; unsigned char* aBuf; int nFile; char** azFile; int iRowid; } ;
-typedef  TYPE_4__ VfslogCsr ;
+typedef TYPE_4__ VfslogCsr ;
 struct TYPE_13__ {TYPE_1__* pMethods; } ;
 struct TYPE_9__ {int (* xRead ) (TYPE_6__*,unsigned char*,int,scalar_t__) ;} ;
 
-/* Variables and functions */
- int OS_ACCESS ; 
- int OS_DELETE ; 
- int OS_OPEN ; 
- int SQLITE_OK ; 
- int get32bits (unsigned char*) ; 
- int /*<<< orphan*/  memset (char**,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  sqlite3_free (char*) ; 
- char* sqlite3_malloc (int) ; 
- scalar_t__ sqlite3_realloc (char**,int) ; 
- int stub1 (TYPE_6__*,unsigned char*,int,scalar_t__) ; 
- int stub2 (TYPE_6__*,char*,int,scalar_t__) ; 
- int stub3 (TYPE_6__*,char*,int,scalar_t__) ; 
+
+ int OS_ACCESS ;
+ int OS_DELETE ;
+ int OS_OPEN ;
+ int SQLITE_OK ;
+ int get32bits (unsigned char*) ;
+ int memset (char**,int ,int) ;
+ int sqlite3_free (char*) ;
+ char* sqlite3_malloc (int) ;
+ scalar_t__ sqlite3_realloc (char**,int) ;
+ int stub1 (TYPE_6__*,unsigned char*,int,scalar_t__) ;
+ int stub2 (TYPE_6__*,char*,int,scalar_t__) ;
+ int stub3 (TYPE_6__*,char*,int,scalar_t__) ;
 
 __attribute__((used)) static int vlogNext(sqlite3_vtab_cursor *pCursor){
   VfslogCsr *pCsr = (VfslogCsr *)pCursor;
@@ -54,7 +54,7 @@ __attribute__((used)) static int vlogNext(sqlite3_vtab_cursor *pCursor){
 
     eEvent = get32bits(pCsr->aBuf);
     if( (rc==SQLITE_OK)
-     && (eEvent==OS_OPEN || eEvent==OS_DELETE || eEvent==OS_ACCESS) 
+     && (eEvent==OS_OPEN || eEvent==OS_DELETE || eEvent==OS_ACCESS)
     ){
       char buf[4];
       rc = p->pFd->pMethods->xRead(p->pFd, buf, 4, pCsr->iOffset+nRead);

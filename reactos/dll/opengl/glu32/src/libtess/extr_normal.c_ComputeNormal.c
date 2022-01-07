@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_7__ {TYPE_1__* mesh; } ;
 struct TYPE_6__ {scalar_t__* coords; struct TYPE_6__* next; } ;
 struct TYPE_5__ {TYPE_2__ vHead; } ;
-typedef  scalar_t__ GLdouble ;
-typedef  TYPE_2__ GLUvertex ;
-typedef  TYPE_3__ GLUtesselator ;
+typedef scalar_t__ GLdouble ;
+typedef TYPE_2__ GLUvertex ;
+typedef TYPE_3__ GLUtesselator ;
 
-/* Variables and functions */
- int GLU_TESS_MAX_COORD ; 
- size_t LongAxis (scalar_t__*) ; 
+
+ int GLU_TESS_MAX_COORD ;
+ size_t LongAxis (scalar_t__*) ;
 
 __attribute__((used)) static void ComputeNormal( GLUtesselator *tess, GLdouble norm[3] )
 {
@@ -44,21 +44,21 @@ __attribute__((used)) static void ComputeNormal( GLUtesselator *tess, GLdouble n
     }
   }
 
-  /* Find two vertices separated by at least 1/sqrt(3) of the maximum
-   * distance between any two vertices
-   */
+
+
+
   i = 0;
   if( maxVal[1] - minVal[1] > maxVal[0] - minVal[0] ) { i = 1; }
   if( maxVal[2] - minVal[2] > maxVal[i] - minVal[i] ) { i = 2; }
   if( minVal[i] >= maxVal[i] ) {
-    /* All vertices are the same -- normal doesn't matter */
+
     norm[0] = 0; norm[1] = 0; norm[2] = 1;
     return;
   }
 
-  /* Look for a third vertex which forms the triangle with maximum area
-   * (Length of normal == twice the triangle area)
-   */
+
+
+
   maxLen2 = 0;
   v1 = minVert[i];
   v2 = maxVert[i];
@@ -82,7 +82,7 @@ __attribute__((used)) static void ComputeNormal( GLUtesselator *tess, GLdouble n
   }
 
   if( maxLen2 <= 0 ) {
-    /* All points lie on a single line -- any decent normal will do */
+
     norm[0] = norm[1] = norm[2] = 0;
     norm[LongAxis(d1)] = 1;
   }

@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_5__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_5__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct vertex_buffer {int* MaterialMask; TYPE_2__** Material; } ;
-struct TYPE_9__ {int /*<<< orphan*/  SpecularIndex; int /*<<< orphan*/  DiffuseIndex; int /*<<< orphan*/  AmbientIndex; int /*<<< orphan*/  Shininess; int /*<<< orphan*/  Emission; int /*<<< orphan*/  Specular; int /*<<< orphan*/  Diffuse; int /*<<< orphan*/  Ambient; } ;
+struct TYPE_9__ {int SpecularIndex; int DiffuseIndex; int AmbientIndex; int Shininess; int Emission; int Specular; int Diffuse; int Ambient; } ;
 struct TYPE_6__ {TYPE_5__* Material; } ;
 struct TYPE_8__ {TYPE_1__ Light; struct vertex_buffer* VB; } ;
-struct TYPE_7__ {int /*<<< orphan*/  SpecularIndex; int /*<<< orphan*/  DiffuseIndex; int /*<<< orphan*/  AmbientIndex; int /*<<< orphan*/  Shininess; int /*<<< orphan*/  Emission; int /*<<< orphan*/  Specular; int /*<<< orphan*/  Diffuse; int /*<<< orphan*/  Ambient; } ;
-typedef  size_t GLuint ;
-typedef  TYPE_3__ GLcontext ;
+struct TYPE_7__ {int SpecularIndex; int DiffuseIndex; int AmbientIndex; int Shininess; int Emission; int Specular; int Diffuse; int Ambient; } ;
+typedef size_t GLuint ;
+typedef TYPE_3__ GLcontext ;
 
-/* Variables and functions */
- int BACK_AMBIENT_BIT ; 
- int BACK_DIFFUSE_BIT ; 
- int BACK_EMISSION_BIT ; 
- int BACK_INDEXES_BIT ; 
- int BACK_SHININESS_BIT ; 
- int BACK_SPECULAR_BIT ; 
- int /*<<< orphan*/  COPY_4V (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int FRONT_AMBIENT_BIT ; 
- int FRONT_DIFFUSE_BIT ; 
- int FRONT_EMISSION_BIT ; 
- int FRONT_INDEXES_BIT ; 
- int FRONT_SHININESS_BIT ; 
- int FRONT_SPECULAR_BIT ; 
- int /*<<< orphan*/  gl_compute_material_shine_table (TYPE_5__*) ; 
+
+ int BACK_AMBIENT_BIT ;
+ int BACK_DIFFUSE_BIT ;
+ int BACK_EMISSION_BIT ;
+ int BACK_INDEXES_BIT ;
+ int BACK_SHININESS_BIT ;
+ int BACK_SPECULAR_BIT ;
+ int COPY_4V (int ,int ) ;
+ int FRONT_AMBIENT_BIT ;
+ int FRONT_DIFFUSE_BIT ;
+ int FRONT_EMISSION_BIT ;
+ int FRONT_INDEXES_BIT ;
+ int FRONT_SHININESS_BIT ;
+ int FRONT_SPECULAR_BIT ;
+ int gl_compute_material_shine_table (TYPE_5__*) ;
 
 __attribute__((used)) static void update_material( GLcontext *ctx, GLuint i )
 {
@@ -85,6 +85,6 @@ __attribute__((used)) static void update_material( GLcontext *ctx, GLuint i )
          ctx->Light.Material[1].DiffuseIndex = VB->Material[i][1].DiffuseIndex;
          ctx->Light.Material[1].SpecularIndex = VB->Material[i][1].SpecularIndex;
       }
-      VB->MaterialMask[i] = 0;  /* reset now */
+      VB->MaterialMask[i] = 0;
    }
 }

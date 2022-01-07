@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- int /*<<< orphan*/  copyfromdata (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_rawget (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int lua_State ;
+
+
+ int copyfromdata (int *) ;
+ int lua_rawget (int *,int) ;
 
 __attribute__((used)) static int
 lindex(lua_State *L) {
-	copyfromdata(L);
-	lua_rawget(L, 1);
-	return 1;
+ copyfromdata(L);
+ lua_rawget(L, 1);
+ return 1;
 }

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int is_compressible; scalar_t__ priority; } ;
-typedef  TYPE_1__ h2o_mime_attributes_t ;
+typedef TYPE_1__ h2o_mime_attributes_t ;
 
-/* Variables and functions */
- scalar_t__ H2O_MIME_ATTRIBUTE_PRIORITY_HIGHEST ; 
- scalar_t__ H2O_MIME_ATTRIBUTE_PRIORITY_NORMAL ; 
- int /*<<< orphan*/  h2o_mimemap_get_default_attributes (char*,TYPE_1__*) ; 
- int /*<<< orphan*/  ok (int) ; 
+
+ scalar_t__ H2O_MIME_ATTRIBUTE_PRIORITY_HIGHEST ;
+ scalar_t__ H2O_MIME_ATTRIBUTE_PRIORITY_NORMAL ;
+ int h2o_mimemap_get_default_attributes (char*,TYPE_1__*) ;
+ int ok (int) ;
 
 __attribute__((used)) static void test_default_attributes(void)
 {

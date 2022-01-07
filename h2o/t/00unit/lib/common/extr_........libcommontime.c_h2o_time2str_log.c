@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  time_t ;
+
+
+
+
+typedef int time_t ;
 struct tm {int tm_mday; int tm_mon; int tm_year; int tm_hour; int tm_min; int tm_sec; } ;
 
-/* Variables and functions */
- int H2O_TIMESTR_LOG_LEN ; 
- int /*<<< orphan*/  assert (int) ; 
- int calc_gmt_offset (int /*<<< orphan*/ ,struct tm*) ; 
- int /*<<< orphan*/  localtime_r (int /*<<< orphan*/ *,struct tm*) ; 
- int sprintf (char*,char*,int,char*,int,int,int,int,int,int,int) ; 
+
+ int H2O_TIMESTR_LOG_LEN ;
+ int assert (int) ;
+ int calc_gmt_offset (int ,struct tm*) ;
+ int localtime_r (int *,struct tm*) ;
+ int sprintf (char*,char*,int,char*,int,int,int,int,int,int,int) ;
 
 void h2o_time2str_log(char *buf, time_t time)
 {

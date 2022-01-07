@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_28__   TYPE_9__ ;
-typedef  struct TYPE_27__   TYPE_8__ ;
-typedef  struct TYPE_26__   TYPE_7__ ;
-typedef  struct TYPE_25__   TYPE_6__ ;
-typedef  struct TYPE_24__   TYPE_5__ ;
-typedef  struct TYPE_23__   TYPE_4__ ;
-typedef  struct TYPE_22__   TYPE_3__ ;
-typedef  struct TYPE_21__   TYPE_2__ ;
-typedef  struct TYPE_20__   TYPE_1__ ;
-typedef  struct TYPE_19__   TYPE_13__ ;
-typedef  struct TYPE_18__   TYPE_12__ ;
-typedef  struct TYPE_17__   TYPE_11__ ;
-typedef  struct TYPE_16__   TYPE_10__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_28__ TYPE_9__ ;
+typedef struct TYPE_27__ TYPE_8__ ;
+typedef struct TYPE_26__ TYPE_7__ ;
+typedef struct TYPE_25__ TYPE_6__ ;
+typedef struct TYPE_24__ TYPE_5__ ;
+typedef struct TYPE_23__ TYPE_4__ ;
+typedef struct TYPE_22__ TYPE_3__ ;
+typedef struct TYPE_21__ TYPE_2__ ;
+typedef struct TYPE_20__ TYPE_1__ ;
+typedef struct TYPE_19__ TYPE_13__ ;
+typedef struct TYPE_18__ TYPE_12__ ;
+typedef struct TYPE_17__ TYPE_11__ ;
+typedef struct TYPE_16__ TYPE_10__ ;
+
+
 struct TYPE_28__ {scalar_t__* extended_data; } ;
-struct TYPE_27__ {int /*<<< orphan*/  (* vector_fmul_scalar ) (float*,float*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;} ;
+struct TYPE_27__ {int (* vector_fmul_scalar ) (float*,float*,int ,int ) ;} ;
 struct TYPE_26__ {scalar_t__* extended_data; } ;
 struct TYPE_25__ {scalar_t__* extended_data; } ;
 struct TYPE_24__ {scalar_t__* extended_data; } ;
 struct TYPE_23__ {scalar_t__* extended_data; } ;
 struct TYPE_22__ {scalar_t__* extended_data; } ;
-struct TYPE_21__ {int /*<<< orphan*/  (* fcmul_add ) (float*,float const*,float const*,int) ;} ;
+struct TYPE_21__ {int (* fcmul_add ) (float*,float const*,float const*,int) ;} ;
 struct TYPE_20__ {scalar_t__* extended_data; } ;
 struct TYPE_19__ {TYPE_11__* priv; } ;
 struct TYPE_18__ {int nb_samples; scalar_t__* extended_data; } ;
-struct TYPE_17__ {int min_part_size; int nb_segments; int /*<<< orphan*/  wet_gain; TYPE_8__* fdsp; TYPE_2__ afirdsp; int /*<<< orphan*/  one2many; int /*<<< orphan*/  dry_gain; TYPE_10__* seg; TYPE_4__** in; } ;
-struct TYPE_16__ {int input_offset; int* output_offset; int part_size; int input_size; int fft_length; int* part_index; int block_size; int nb_partitions; int coeff_size; TYPE_3__* buffer; int /*<<< orphan*/ * irdft; TYPE_1__* coeff; TYPE_9__* block; int /*<<< orphan*/ * rdft; TYPE_7__* sum; TYPE_6__* output; TYPE_5__* input; } ;
-typedef  int /*<<< orphan*/  FFTComplex ;
-typedef  TYPE_10__ AudioFIRSegment ;
-typedef  TYPE_11__ AudioFIRContext ;
-typedef  TYPE_12__ AVFrame ;
-typedef  TYPE_13__ AVFilterContext ;
+struct TYPE_17__ {int min_part_size; int nb_segments; int wet_gain; TYPE_8__* fdsp; TYPE_2__ afirdsp; int one2many; int dry_gain; TYPE_10__* seg; TYPE_4__** in; } ;
+struct TYPE_16__ {int input_offset; int* output_offset; int part_size; int input_size; int fft_length; int* part_index; int block_size; int nb_partitions; int coeff_size; TYPE_3__* buffer; int * irdft; TYPE_1__* coeff; TYPE_9__* block; int * rdft; TYPE_7__* sum; TYPE_6__* output; TYPE_5__* input; } ;
+typedef int FFTComplex ;
+typedef TYPE_10__ AudioFIRSegment ;
+typedef TYPE_11__ AudioFIRContext ;
+typedef TYPE_12__ AVFrame ;
+typedef TYPE_13__ AVFilterContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FFALIGN (int const,int) ; 
- int FFMIN (int,int) ; 
- int /*<<< orphan*/  av_rdft_calc (int /*<<< orphan*/ ,float*) ; 
- int /*<<< orphan*/  emms_c () ; 
- int /*<<< orphan*/  memcpy (float*,float*,int) ; 
- int /*<<< orphan*/  memmove (float*,float*,int) ; 
- int /*<<< orphan*/  memset (float*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  stub1 (float*,float const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub2 (float*,float const*,float const*,int) ; 
- int /*<<< orphan*/  stub3 (float*,float*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int FFALIGN (int const,int) ;
+ int FFMIN (int,int) ;
+ int av_rdft_calc (int ,float*) ;
+ int emms_c () ;
+ int memcpy (float*,float*,int) ;
+ int memmove (float*,float*,int) ;
+ int memset (float*,int ,int) ;
+ int stub1 (float*,float const*,int ,int ) ;
+ int stub2 (float*,float const*,float const*,int) ;
+ int stub3 (float*,float*,int ,int ) ;
 
 __attribute__((used)) static int fir_quantum(AVFilterContext *ctx, AVFrame *out, int ch, int offset)
 {

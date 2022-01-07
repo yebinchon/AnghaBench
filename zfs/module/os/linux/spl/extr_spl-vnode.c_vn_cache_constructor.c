@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct vnode {int /*<<< orphan*/  v_lock; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MUTEX_DEFAULT ; 
- int /*<<< orphan*/  mutex_init (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+struct vnode {int v_lock; } ;
+
+
+ int MUTEX_DEFAULT ;
+ int mutex_init (int *,int *,int ,int *) ;
 
 __attribute__((used)) static int
 vn_cache_constructor(void *buf, void *cdrarg, int kmflags)
 {
-	struct vnode *vp = buf;
+ struct vnode *vp = buf;
 
-	mutex_init(&vp->v_lock, NULL, MUTEX_DEFAULT, NULL);
+ mutex_init(&vp->v_lock, ((void*)0), MUTEX_DEFAULT, ((void*)0));
 
-	return (0);
+ return (0);
 }

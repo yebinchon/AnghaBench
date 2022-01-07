@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ra_ctx {int /*<<< orphan*/  vo; struct priv* priv; } ;
-struct priv {int /*<<< orphan*/  hdc; scalar_t__ context; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DwmEnableMMCSS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  destroy_gl ; 
- int /*<<< orphan*/  ra_gl_ctx_uninit (struct ra_ctx*) ; 
- int /*<<< orphan*/  vo_w32_run_on_thread (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct ra_ctx*) ; 
- int /*<<< orphan*/  vo_w32_uninit (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wglMakeCurrent (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct ra_ctx {int vo; struct priv* priv; } ;
+struct priv {int hdc; scalar_t__ context; } ;
+
+
+ int DwmEnableMMCSS (int ) ;
+ int FALSE ;
+ int destroy_gl ;
+ int ra_gl_ctx_uninit (struct ra_ctx*) ;
+ int vo_w32_run_on_thread (int ,int ,struct ra_ctx*) ;
+ int vo_w32_uninit (int ) ;
+ int wglMakeCurrent (int ,int ) ;
 
 __attribute__((used)) static void wgl_uninit(struct ra_ctx *ctx)
 {

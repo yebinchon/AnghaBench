@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint64_t ;
-typedef  int /*<<< orphan*/  msg ;
-typedef  int /*<<< orphan*/  mrb_value ;
-typedef  int /*<<< orphan*/  mrb_state ;
-typedef  int mrb_int ;
-typedef  int int64_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_RANGE_ERROR ; 
- int /*<<< orphan*/  FIXABLE (int) ; 
- unsigned int PACK_FLAG_LITTLEENDIAN ; 
- unsigned int PACK_FLAG_SIGNED ; 
- int /*<<< orphan*/  POSFIXABLE (int) ; 
- int /*<<< orphan*/  mrb_ary_push (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_fixnum_value (int) ; 
- int /*<<< orphan*/  mrb_raise (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,unsigned long long) ; 
+
+
+
+typedef int uint64_t ;
+typedef int msg ;
+typedef int mrb_value ;
+typedef int mrb_state ;
+typedef int mrb_int ;
+typedef int int64_t ;
+
+
+ int E_RANGE_ERROR ;
+ int FIXABLE (int) ;
+ unsigned int PACK_FLAG_LITTLEENDIAN ;
+ unsigned int PACK_FLAG_SIGNED ;
+ int POSFIXABLE (int) ;
+ int mrb_ary_push (int *,int ,int ) ;
+ int mrb_fixnum_value (int) ;
+ int mrb_raise (int *,int ,char*) ;
+ int snprintf (char*,int,char*,unsigned long long) ;
 
 __attribute__((used)) static int
 unpack_q(mrb_state *mrb, const unsigned char *src, int srclen, mrb_value ary, unsigned int flags)
@@ -37,10 +37,10 @@ unpack_q(mrb_state *mrb, const unsigned char *src, int srclen, mrb_value ary, un
   mrb_int n;
 
   if (flags & PACK_FLAG_LITTLEENDIAN) {
-    pos  = 7;
+    pos = 7;
     step = -1;
   } else {
-    pos  = 0;
+    pos = 0;
     step = 1;
   }
   ull = 0;

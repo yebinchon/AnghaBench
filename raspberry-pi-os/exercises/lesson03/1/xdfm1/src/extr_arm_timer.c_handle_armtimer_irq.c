@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ int ARMTIMER_CLR ;
+ int printf (char*) ;
+ int put32 (int ,int) ;
 
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  ARMTIMER_CLR ; 
- int /*<<< orphan*/  printf (char*) ; 
- int /*<<< orphan*/  put32 (int /*<<< orphan*/ ,int) ; 
-
-void handle_armtimer_irq( void ) 
+void handle_armtimer_irq( void )
 {
-	put32(ARMTIMER_CLR, 1);
-	printf("Timer iterrupt received\n\r");
+ put32(ARMTIMER_CLR, 1);
+ printf("Timer iterrupt received\n\r");
 }

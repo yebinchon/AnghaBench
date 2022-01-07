@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  cmsVEC3 ;
-typedef  int /*<<< orphan*/  cmsMAT3 ;
-typedef  double cmsFloat64Number ;
-typedef  int /*<<< orphan*/  cmsContext ;
-typedef  int cmsBool ;
 
-/* Variables and functions */
- int FALSE ; 
- int TRUE ; 
- int /*<<< orphan*/  _cmsMAT3identity (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ fabs (double) ; 
+
+
+
+typedef int cmsVEC3 ;
+typedef int cmsMAT3 ;
+typedef double cmsFloat64Number ;
+typedef int cmsContext ;
+typedef int cmsBool ;
+
+
+ int FALSE ;
+ int TRUE ;
+ int _cmsMAT3identity (int ,int *) ;
+ scalar_t__ fabs (double) ;
 
 __attribute__((used)) static
 cmsBool IsEmptyLayer(cmsContext ContextID, cmsMAT3* m, cmsVEC3* off)
@@ -29,8 +29,8 @@ cmsBool IsEmptyLayer(cmsContext ContextID, cmsMAT3* m, cmsVEC3* off)
     cmsMAT3 Ident;
     int i;
 
-    if (m == NULL && off == NULL) return TRUE;  // NULL is allowed as an empty layer
-    if (m == NULL && off != NULL) return FALSE; // This is an internal error
+    if (m == ((void*)0) && off == ((void*)0)) return TRUE;
+    if (m == ((void*)0) && off != ((void*)0)) return FALSE;
 
     _cmsMAT3identity(ContextID, &Ident);
 

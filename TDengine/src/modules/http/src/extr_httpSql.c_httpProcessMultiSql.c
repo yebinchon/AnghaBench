@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_5__ ;
-typedef  struct TYPE_15__   TYPE_4__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_16__ {TYPE_1__* session; int /*<<< orphan*/  user; int /*<<< orphan*/  ipstr; int /*<<< orphan*/  fd; TYPE_4__* encodeMethod; TYPE_2__* multiCmds; } ;
-struct TYPE_15__ {int /*<<< orphan*/  (* cleanJsonFp ) (TYPE_5__*) ;} ;
-struct TYPE_14__ {int /*<<< orphan*/  sql; } ;
+
+
+typedef struct TYPE_16__ TYPE_5__ ;
+typedef struct TYPE_15__ TYPE_4__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+struct TYPE_16__ {TYPE_1__* session; int user; int ipstr; int fd; TYPE_4__* encodeMethod; TYPE_2__* multiCmds; } ;
+struct TYPE_15__ {int (* cleanJsonFp ) (TYPE_5__*) ;} ;
+struct TYPE_14__ {int sql; } ;
 struct TYPE_13__ {scalar_t__ pos; scalar_t__ size; TYPE_3__* cmds; } ;
-struct TYPE_12__ {int /*<<< orphan*/  taos; } ;
-typedef  TYPE_2__ HttpSqlCmds ;
-typedef  TYPE_3__ HttpSqlCmd ;
-typedef  TYPE_4__ HttpEncodeMethod ;
-typedef  TYPE_5__ HttpContext ;
+struct TYPE_12__ {int taos; } ;
+typedef TYPE_2__ HttpSqlCmds ;
+typedef TYPE_3__ HttpSqlCmd ;
+typedef TYPE_4__ HttpEncodeMethod ;
+typedef TYPE_5__ HttpContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  httpCloseContextByApp (TYPE_5__*) ; 
- int /*<<< orphan*/  httpDump (char*,TYPE_5__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,char*) ; 
- char* httpGetCmdsString (TYPE_5__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  httpProcessMultiSqlCallBack ; 
- int /*<<< orphan*/  httpTrace (char*,TYPE_5__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  stub1 (TYPE_5__*) ; 
- int /*<<< orphan*/  taosNotePrint (char*) ; 
- int /*<<< orphan*/  taos_query_a (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,void*) ; 
+
+ int httpCloseContextByApp (TYPE_5__*) ;
+ int httpDump (char*,TYPE_5__*,int ,int ,int ,int,char*) ;
+ char* httpGetCmdsString (TYPE_5__*,int ) ;
+ int httpProcessMultiSqlCallBack ;
+ int httpTrace (char*,TYPE_5__*,int ,int ,int ,scalar_t__,scalar_t__) ;
+ int stub1 (TYPE_5__*) ;
+ int taosNotePrint (char*) ;
+ int taos_query_a (int ,char*,int ,void*) ;
 
 void httpProcessMultiSql(HttpContext *pContext) {
-  HttpSqlCmds *     multiCmds = pContext->multiCmds;
+  HttpSqlCmds * multiCmds = pContext->multiCmds;
   HttpEncodeMethod *encode = pContext->encodeMethod;
 
   if (multiCmds->pos >= multiCmds->size) {

@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FUNCTION_ARROWS ; 
- int /*<<< orphan*/  FUNCTION_MOUSE ; 
- int LED_FN ; 
- int LED_NAS ; 
- int LED_NORMAL ; 
- int LED_TENKEY ; 
- int /*<<< orphan*/  NAS ; 
- int /*<<< orphan*/  NAS_NUMLOCK ; 
- int /*<<< orphan*/  NAS_TENKEY ; 
- int /*<<< orphan*/  NAS_TENKEY_NUMLOCK ; 
- int /*<<< orphan*/  NORMAL ; 
- int /*<<< orphan*/  layer_off (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  layer_on (int /*<<< orphan*/ ) ; 
- scalar_t__ layer_state_is (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mode_led_set (int) ; 
- scalar_t__ tenkey_enabled ; 
+
+
+
+typedef int uint8_t ;
+
+
+ int FUNCTION_ARROWS ;
+ int FUNCTION_MOUSE ;
+ int LED_FN ;
+ int LED_NAS ;
+ int LED_NORMAL ;
+ int LED_TENKEY ;
+ int NAS ;
+ int NAS_NUMLOCK ;
+ int NAS_TENKEY ;
+ int NAS_TENKEY_NUMLOCK ;
+ int NORMAL ;
+ int layer_off (int ) ;
+ int layer_on (int ) ;
+ scalar_t__ layer_state_is (int ) ;
+ int mode_led_set (int) ;
+ scalar_t__ tenkey_enabled ;
 
 __attribute__((used)) static void layer_set(bool on, uint8_t layer) {
   if (on) {

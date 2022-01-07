@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct wasapi_state {scalar_t__ share_mode; int /*<<< orphan*/  pAudioVolume; int /*<<< orphan*/  pEndpointVolume; scalar_t__ vol_hw_support; int /*<<< orphan*/  pAudioClient; int /*<<< orphan*/  pDevice; } ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- scalar_t__ AUDCLNT_SHAREMODE_EXCLUSIVE ; 
- int /*<<< orphan*/  CLSCTX_ALL ; 
- int /*<<< orphan*/  EXIT_ON_ERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IAudioClient_GetService (int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IAudioEndpointVolume_QueryHardwareSupport (int /*<<< orphan*/ ,scalar_t__*) ; 
- int /*<<< orphan*/  IID_IAudioEndpointVolume ; 
- int /*<<< orphan*/  IID_ISimpleAudioVolume ; 
- int /*<<< orphan*/  IMMDeviceActivator_Activate (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  MP_DBG (struct wasapi_state*,char*) ; 
- int /*<<< orphan*/  MP_WARN (struct wasapi_state*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SAFE_RELEASE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mp_HRESULT_to_str (int /*<<< orphan*/ ) ; 
+
+
+
+struct wasapi_state {scalar_t__ share_mode; int pAudioVolume; int pEndpointVolume; scalar_t__ vol_hw_support; int pAudioClient; int pDevice; } ;
+typedef int HRESULT ;
+
+
+ scalar_t__ AUDCLNT_SHAREMODE_EXCLUSIVE ;
+ int CLSCTX_ALL ;
+ int EXIT_ON_ERROR (int ) ;
+ int IAudioClient_GetService (int ,int *,void**) ;
+ int IAudioEndpointVolume_QueryHardwareSupport (int ,scalar_t__*) ;
+ int IID_IAudioEndpointVolume ;
+ int IID_ISimpleAudioVolume ;
+ int IMMDeviceActivator_Activate (int ,int *,int ,int *,void**) ;
+ int MP_DBG (struct wasapi_state*,char*) ;
+ int MP_WARN (struct wasapi_state*,char*,int ) ;
+ int SAFE_RELEASE (int ) ;
+ int mp_HRESULT_to_str (int ) ;
 
 __attribute__((used)) static void init_volume_control(struct wasapi_state *state)
 {
@@ -34,7 +34,7 @@ __attribute__((used)) static void init_volume_control(struct wasapi_state *state
         MP_DBG(state, "Activating pEndpointVolume interface\n");
         hr = IMMDeviceActivator_Activate(state->pDevice,
                                          &IID_IAudioEndpointVolume,
-                                         CLSCTX_ALL, NULL,
+                                         CLSCTX_ALL, ((void*)0),
                                          (void **)&state->pEndpointVolume);
         EXIT_ON_ERROR(hr);
 

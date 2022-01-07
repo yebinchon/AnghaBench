@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WFC_STREAM_T ;
-typedef  scalar_t__ VCOS_STATUS_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  VCOS_BLOCKPOOL_ALIGN_DEFAULT ; 
- int /*<<< orphan*/  VCOS_BLOCKPOOL_FLAG_NONE ; 
- int /*<<< orphan*/  VCOS_FUNCTION ; 
- scalar_t__ VCOS_SUCCESS ; 
- int /*<<< orphan*/  WFC_LOG_LEVEL ; 
- int /*<<< orphan*/  WFC_STREAM_BLOCK_SIZE ; 
- int /*<<< orphan*/  WFC_STREAM_MAX_EXTENSIONS ; 
- int /*<<< orphan*/  log_cat ; 
- int /*<<< orphan*/  vcos_assert (int) ; 
- scalar_t__ vcos_blockpool_create_on_heap (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- scalar_t__ vcos_blockpool_extend (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vcos_log_register (char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vcos_log_set_level (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vcos_log_trace (char*,int /*<<< orphan*/ ) ; 
- scalar_t__ vcos_mutex_create (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  wfc_stream_blockpool ; 
- int /*<<< orphan*/  wfc_stream_global_lock ; 
+
+
+
+typedef int WFC_STREAM_T ;
+typedef scalar_t__ VCOS_STATUS_T ;
+
+
+ int VCOS_BLOCKPOOL_ALIGN_DEFAULT ;
+ int VCOS_BLOCKPOOL_FLAG_NONE ;
+ int VCOS_FUNCTION ;
+ scalar_t__ VCOS_SUCCESS ;
+ int WFC_LOG_LEVEL ;
+ int WFC_STREAM_BLOCK_SIZE ;
+ int WFC_STREAM_MAX_EXTENSIONS ;
+ int log_cat ;
+ int vcos_assert (int) ;
+ scalar_t__ vcos_blockpool_create_on_heap (int *,int ,int,int ,int ,char*) ;
+ scalar_t__ vcos_blockpool_extend (int *,int ,int ) ;
+ int vcos_log_register (char*,int *) ;
+ int vcos_log_set_level (int *,int ) ;
+ int vcos_log_trace (char*,int ) ;
+ scalar_t__ vcos_mutex_create (int *,char*) ;
+ int wfc_stream_blockpool ;
+ int wfc_stream_global_lock ;
 
 __attribute__((used)) static void wfc_stream_initialise(void)
 {

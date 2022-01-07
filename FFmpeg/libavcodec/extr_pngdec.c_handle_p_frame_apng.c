@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_8__ ;
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t uint8_t ;
+
+
+typedef struct TYPE_15__ TYPE_8__ ;
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef size_t uint8_t ;
 struct TYPE_15__ {TYPE_1__* f; } ;
 struct TYPE_14__ {int pix_fmt; } ;
 struct TYPE_13__ {size_t** data; } ;
 struct TYPE_12__ {scalar_t__ blend_op; int image_linesize; int height; scalar_t__ last_dispose_op; size_t last_y_offset; size_t last_h; int bpp; int last_x_offset; int last_w; size_t y_offset; size_t cur_h; size_t x_offset; int cur_w; int* palette; TYPE_8__ previous_picture; TYPE_8__ last_picture; } ;
 struct TYPE_11__ {size_t** data; } ;
-typedef  TYPE_2__ PNGDecContext ;
-typedef  TYPE_3__ AVFrame ;
-typedef  TYPE_4__ AVCodecContext ;
+typedef TYPE_2__ PNGDecContext ;
+typedef TYPE_3__ AVFrame ;
+typedef TYPE_4__ AVCodecContext ;
 
-/* Variables and functions */
- scalar_t__ APNG_BLEND_OP_OVER ; 
- scalar_t__ APNG_BLEND_OP_SOURCE ; 
- scalar_t__ APNG_DISPOSE_OP_BACKGROUND ; 
- scalar_t__ APNG_DISPOSE_OP_PREVIOUS ; 
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_PATCHWELCOME ; 
-#define  AV_PIX_FMT_GRAY8A 130 
-#define  AV_PIX_FMT_PAL8 129 
-#define  AV_PIX_FMT_RGBA 128 
- int /*<<< orphan*/  ENOMEM ; 
- size_t FAST_DIV255 (size_t) ; 
- int /*<<< orphan*/  INT_MAX ; 
- int /*<<< orphan*/  av_assert0 (int) ; 
- int /*<<< orphan*/  av_free (size_t*) ; 
- int /*<<< orphan*/  av_get_pix_fmt_name (int) ; 
- size_t* av_malloc_array (int,int) ; 
- int /*<<< orphan*/  avpriv_request_sample (TYPE_4__*,char*,...) ; 
- int /*<<< orphan*/  ff_thread_await_progress (TYPE_8__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ff_thread_report_progress (TYPE_8__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (size_t*,size_t*,int) ; 
- int /*<<< orphan*/  memset (size_t*,int /*<<< orphan*/ ,int) ; 
+
+ scalar_t__ APNG_BLEND_OP_OVER ;
+ scalar_t__ APNG_BLEND_OP_SOURCE ;
+ scalar_t__ APNG_DISPOSE_OP_BACKGROUND ;
+ scalar_t__ APNG_DISPOSE_OP_PREVIOUS ;
+ int AVERROR (int ) ;
+ int AVERROR_PATCHWELCOME ;
+
+
+
+ int ENOMEM ;
+ size_t FAST_DIV255 (size_t) ;
+ int INT_MAX ;
+ int av_assert0 (int) ;
+ int av_free (size_t*) ;
+ int av_get_pix_fmt_name (int) ;
+ size_t* av_malloc_array (int,int) ;
+ int avpriv_request_sample (TYPE_4__*,char*,...) ;
+ int ff_thread_await_progress (TYPE_8__*,int ,int ) ;
+ int ff_thread_report_progress (TYPE_8__*,int ,int ) ;
+ int memcpy (size_t*,size_t*,int) ;
+ int memset (size_t*,int ,int) ;
 
 __attribute__((used)) static int handle_p_frame_apng(AVCodecContext *avctx, PNGDecContext *s,
                                AVFrame *p)
@@ -55,9 +55,9 @@ __attribute__((used)) static int handle_p_frame_apng(AVCodecContext *avctx, PNGD
     uint8_t *buffer;
 
     if (s->blend_op == APNG_BLEND_OP_OVER &&
-        avctx->pix_fmt != AV_PIX_FMT_RGBA &&
-        avctx->pix_fmt != AV_PIX_FMT_GRAY8A &&
-        avctx->pix_fmt != AV_PIX_FMT_PAL8) {
+        avctx->pix_fmt != 128 &&
+        avctx->pix_fmt != 130 &&
+        avctx->pix_fmt != 129) {
         avpriv_request_sample(avctx, "Blending with pixel format %s",
                               av_get_pix_fmt_name(avctx->pix_fmt));
         return AVERROR_PATCHWELCOME;
@@ -68,7 +68,7 @@ __attribute__((used)) static int handle_p_frame_apng(AVCodecContext *avctx, PNGD
         return AVERROR(ENOMEM);
 
 
-    // Do the disposal operation specified by the last frame on the frame
+
     if (s->last_dispose_op != APNG_DISPOSE_OP_PREVIOUS) {
         ff_thread_await_progress(&s->last_picture, INT_MAX, 0);
         memcpy(buffer, s->last_picture.f->data[0], s->image_linesize * s->height);
@@ -84,13 +84,13 @@ __attribute__((used)) static int handle_p_frame_apng(AVCodecContext *avctx, PNGD
         memcpy(buffer, s->previous_picture.f->data[0], s->image_linesize * s->height);
     }
 
-    // Perform blending
+
     if (s->blend_op == APNG_BLEND_OP_SOURCE) {
         for (y = s->y_offset; y < s->y_offset + s->cur_h; ++y) {
             size_t row_start = s->image_linesize * y + s->bpp * s->x_offset;
             memcpy(buffer + row_start, p->data[0] + row_start, s->bpp * s->cur_w);
         }
-    } else { // APNG_BLEND_OP_OVER
+    } else {
         for (y = s->y_offset; y < s->y_offset + s->cur_h; ++y) {
             uint8_t *foreground = p->data[0] + s->image_linesize * y + s->bpp * s->x_offset;
             uint8_t *background = buffer + s->image_linesize * y + s->bpp * s->x_offset;
@@ -99,22 +99,22 @@ __attribute__((used)) static int handle_p_frame_apng(AVCodecContext *avctx, PNGD
                 uint8_t foreground_alpha, background_alpha, output_alpha;
                 uint8_t output[10];
 
-                // Since we might be blending alpha onto alpha, we use the following equations:
-                // output_alpha = foreground_alpha + (1 - foreground_alpha) * background_alpha
-                // output = (foreground_alpha * foreground + (1 - foreground_alpha) * background_alpha * background) / output_alpha
+
+
+
 
                 switch (avctx->pix_fmt) {
-                case AV_PIX_FMT_RGBA:
+                case 128:
                     foreground_alpha = foreground[3];
                     background_alpha = background[3];
                     break;
 
-                case AV_PIX_FMT_GRAY8A:
+                case 130:
                     foreground_alpha = foreground[1];
                     background_alpha = background[1];
                     break;
 
-                case AV_PIX_FMT_PAL8:
+                case 129:
                     foreground_alpha = s->palette[foreground[0]] >> 24;
                     background_alpha = s->palette[background[0]] >> 24;
                     break;
@@ -128,8 +128,8 @@ __attribute__((used)) static int handle_p_frame_apng(AVCodecContext *avctx, PNGD
                     continue;
                 }
 
-                if (avctx->pix_fmt == AV_PIX_FMT_PAL8) {
-                    // TODO: Alpha blending with PAL8 will likely need the entire image converted over to RGBA first
+                if (avctx->pix_fmt == 129) {
+
                     avpriv_request_sample(avctx, "Alpha blending palette samples");
                     background[0] = foreground[0];
                     continue;
@@ -154,7 +154,7 @@ __attribute__((used)) static int handle_p_frame_apng(AVCodecContext *avctx, PNGD
         }
     }
 
-    // Copy blended buffer into the frame and free
+
     memcpy(p->data[0], buffer, s->image_linesize * s->height);
     av_free(buffer);
 

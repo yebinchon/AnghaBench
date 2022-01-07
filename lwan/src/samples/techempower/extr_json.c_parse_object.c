@@ -1,78 +1,78 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  JsonNode ;
 
-/* Variables and functions */
- int /*<<< orphan*/  append_member (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  json_delete (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * json_mkobject () ; 
- int /*<<< orphan*/  parse_string (char const**,char**) ; 
- int /*<<< orphan*/  parse_value (char const**,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  skip_space (char const**) ; 
+
+
+
+typedef int JsonNode ;
+
+
+ int append_member (int *,char*,int *) ;
+ int free (char*) ;
+ int json_delete (int *) ;
+ int * json_mkobject () ;
+ int parse_string (char const**,char**) ;
+ int parse_value (char const**,int **) ;
+ int skip_space (char const**) ;
 
 __attribute__((used)) static bool parse_object(const char **sp, JsonNode **out)
 {
-	const char *s = *sp;
-	JsonNode *ret = out ? json_mkobject() : NULL;
-	char *key;
-	JsonNode *value;
-	
-	if (*s++ != '{')
-		goto failure;
-	skip_space(&s);
-	
-	if (*s == '}') {
-		s++;
-		goto success;
-	}
-	
-	for (;;) {
-		if (!parse_string(&s, out ? &key : NULL))
-			goto failure;
-		skip_space(&s);
-		
-		if (*s++ != ':')
-			goto failure_free_key;
-		skip_space(&s);
-		
-		if (!parse_value(&s, out ? &value : NULL))
-			goto failure_free_key;
-		skip_space(&s);
-		
-		if (out)
-			append_member(ret, key, value);
-		
-		if (*s == '}') {
-			s++;
-			goto success;
-		}
-		
-		if (*s++ != ',')
-			goto failure;
-		skip_space(&s);
-	}
-	
+ const char *s = *sp;
+ JsonNode *ret = out ? json_mkobject() : ((void*)0);
+ char *key;
+ JsonNode *value;
+
+ if (*s++ != '{')
+  goto failure;
+ skip_space(&s);
+
+ if (*s == '}') {
+  s++;
+  goto success;
+ }
+
+ for (;;) {
+  if (!parse_string(&s, out ? &key : ((void*)0)))
+   goto failure;
+  skip_space(&s);
+
+  if (*s++ != ':')
+   goto failure_free_key;
+  skip_space(&s);
+
+  if (!parse_value(&s, out ? &value : ((void*)0)))
+   goto failure_free_key;
+  skip_space(&s);
+
+  if (out)
+   append_member(ret, key, value);
+
+  if (*s == '}') {
+   s++;
+   goto success;
+  }
+
+  if (*s++ != ',')
+   goto failure;
+  skip_space(&s);
+ }
+
 success:
-	*sp = s;
-	if (out)
-		*out = ret;
-	return true;
+ *sp = s;
+ if (out)
+  *out = ret;
+ return 1;
 
 failure_free_key:
-	if (out)
-		free(key);
+ if (out)
+  free(key);
 failure:
-	json_delete(ret);
-	return false;
+ json_delete(ret);
+ return 0;
 }

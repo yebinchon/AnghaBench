@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct proc {int dummy; } ;
-typedef  int /*<<< orphan*/  caddr_t ;
+typedef int caddr_t ;
 
-/* Variables and functions */
- int ENXIO ; 
+
+ int ENXIO ;
 
 int
 rtioctl(unsigned long req, caddr_t data, struct proc *p)
 {
 #pragma unused(p, req, data)
-	return (ENXIO);
+ return (ENXIO);
 }

@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ra_renderpass_input {int /*<<< orphan*/  name; } ;
-typedef  int /*<<< orphan*/  inputs ;
 
-/* Variables and functions */
- struct ra_renderpass_input* talloc_memdup (void*,void*,int) ; 
- int /*<<< orphan*/  talloc_strdup (struct ra_renderpass_input*,int /*<<< orphan*/ ) ; 
+
+
+
+struct ra_renderpass_input {int name; } ;
+typedef int inputs ;
+
+
+ struct ra_renderpass_input* talloc_memdup (void*,void*,int) ;
+ int talloc_strdup (struct ra_renderpass_input*,int ) ;
 
 __attribute__((used)) static struct ra_renderpass_input *dup_inputs(void *ta_parent,
             const struct ra_renderpass_input *inputs, int num_inputs)

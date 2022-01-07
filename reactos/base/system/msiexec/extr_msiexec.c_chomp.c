@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  enum chomp_state { ____Placeholder_chomp_state } chomp_state ;
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
-#define  CS_QUOTE 130 
-#define  CS_TOKEN 129 
-#define  CS_WHITESPACE 128 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
+
+
+
+typedef enum chomp_state { ____Placeholder_chomp_state } chomp_state ;
+typedef char WCHAR ;
+typedef int BOOL ;
+
+
+
+
+
+ int FALSE ;
+ int TRUE ;
 
 __attribute__((used)) static int chomp( const WCHAR *in, WCHAR *out )
 {
-    enum chomp_state state = CS_TOKEN;
+    enum chomp_state state = 129;
     const WCHAR *p;
     int count = 1;
     BOOL ignore;
@@ -33,30 +33,30 @@ __attribute__((used)) static int chomp( const WCHAR *in, WCHAR *out )
         ignore = TRUE;
         switch (state)
         {
-        case CS_WHITESPACE:
+        case 128:
             switch (*p)
             {
             case ' ':
                 break;
             case '"':
-                state = CS_QUOTE;
+                state = 130;
                 count++;
                 break;
             default:
                 count++;
                 ignore = FALSE;
-                state = CS_TOKEN;
+                state = 129;
             }
             break;
 
-        case CS_TOKEN:
+        case 129:
             switch (*p)
             {
             case '"':
-                state = CS_QUOTE;
+                state = 130;
                 break;
             case ' ':
-                state = CS_WHITESPACE;
+                state = 128;
                 if (out) *out++ = 0;
                 break;
             default:
@@ -69,11 +69,11 @@ __attribute__((used)) static int chomp( const WCHAR *in, WCHAR *out )
             }
             break;
 
-        case CS_QUOTE:
+        case 130:
             switch (*p)
             {
             case '"':
-                state = CS_TOKEN;
+                state = 129;
                 break;
             default:
                 ignore = FALSE;

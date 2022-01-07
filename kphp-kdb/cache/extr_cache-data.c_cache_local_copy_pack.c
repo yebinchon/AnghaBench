@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct cache_local_copy {int flags; int packed_location; int cached_at; int cached_counter_value; int yellow_light_start; int* location; } ;
 
-/* Variables and functions */
- int CACHE_LOCAL_COPY_FLAG_INT ; 
- int CACHE_LOCAL_COPY_FLAG_LAST ; 
- int CACHE_LOCAL_COPY_FLAG_MONTHLY_COUNTER ; 
- int CACHE_LOCAL_COPY_FLAG_YELLOW_LIGHT_MASK ; 
- int amortization_counter_types ; 
- int /*<<< orphan*/  memcpy (char*,int*,int) ; 
- int strlen (int*) ; 
+
+ int CACHE_LOCAL_COPY_FLAG_INT ;
+ int CACHE_LOCAL_COPY_FLAG_LAST ;
+ int CACHE_LOCAL_COPY_FLAG_MONTHLY_COUNTER ;
+ int CACHE_LOCAL_COPY_FLAG_YELLOW_LIGHT_MASK ;
+ int amortization_counter_types ;
+ int memcpy (char*,int*,int) ;
+ int strlen (int*) ;
 
 int cache_local_copy_pack (struct cache_local_copy *L, int ilen, char *output, int olen) {
   int i, o = 0;
@@ -46,17 +46,6 @@ int cache_local_copy_pack (struct cache_local_copy *L, int ilen, char *output, i
     }
     memcpy (output + o, &L[i].cached_at, 4);
     o += 4;
-
-#ifdef CACHE_FEATURE_MONTHLY_COUNTER_PERF_STATS
-    if (L[i].flags & CACHE_LOCAL_COPY_FLAG_MONTHLY_COUNTER) {
-      if (o + 4 * amortization_counter_types > olen) {
-        return -1;
-      }
-      memcpy (output + o, &L[i].cached_counter_value, 4 * amortization_counter_types);
-      o += 4 * amortization_counter_types;
-    }
-#endif
-
     if (L[i].flags & CACHE_LOCAL_COPY_FLAG_YELLOW_LIGHT_MASK) {
       if (o + 4 > olen) {
         return -1;

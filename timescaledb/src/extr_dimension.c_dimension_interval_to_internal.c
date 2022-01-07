@@ -1,99 +1,99 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int int64 ;
-typedef  int Oid ;
-typedef  int /*<<< orphan*/  Datum ;
 
-/* Variables and functions */
- int DATEOID ; 
- int /*<<< orphan*/  DEFAULT_CHUNK_TIME_INTERVAL ; 
- int /*<<< orphan*/  DEFAULT_CHUNK_TIME_INTERVAL_ADAPTIVE ; 
- int /*<<< orphan*/  DatumGetInt16 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DatumGetInt32 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DatumGetInt64 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DatumGetIntervalP (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ERRCODE_INVALID_PARAMETER_VALUE ; 
- int /*<<< orphan*/  ERRCODE_WRONG_OBJECT_TYPE ; 
- int /*<<< orphan*/  ERROR ; 
-#define  INT2OID 131 
-#define  INT4OID 130 
-#define  INT8OID 129 
-#define  INTERVALOID 128 
- scalar_t__ IS_INTEGER_TYPE (int) ; 
- int /*<<< orphan*/  IS_VALID_OPEN_DIM_TYPE (int) ; 
- int /*<<< orphan*/  Int64GetDatum (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OidIsValid (int) ; 
- int USECS_PER_DAY ; 
- int /*<<< orphan*/  ereport (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errcode (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errmsg (char*,...) ; 
- int get_validated_integer_interval (int,int /*<<< orphan*/ ) ; 
- int interval_to_usec (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int int64 ;
+typedef int Oid ;
+typedef int Datum ;
+
+
+ int DATEOID ;
+ int DEFAULT_CHUNK_TIME_INTERVAL ;
+ int DEFAULT_CHUNK_TIME_INTERVAL_ADAPTIVE ;
+ int DatumGetInt16 (int ) ;
+ int DatumGetInt32 (int ) ;
+ int DatumGetInt64 (int ) ;
+ int DatumGetIntervalP (int ) ;
+ int ERRCODE_INVALID_PARAMETER_VALUE ;
+ int ERRCODE_WRONG_OBJECT_TYPE ;
+ int ERROR ;
+
+
+
+
+ scalar_t__ IS_INTEGER_TYPE (int) ;
+ int IS_VALID_OPEN_DIM_TYPE (int) ;
+ int Int64GetDatum (int ) ;
+ int OidIsValid (int) ;
+ int USECS_PER_DAY ;
+ int ereport (int ,int ) ;
+ int errcode (int ) ;
+ int errmsg (char*,...) ;
+ int get_validated_integer_interval (int,int ) ;
+ int interval_to_usec (int ) ;
 
 __attribute__((used)) static int64
 dimension_interval_to_internal(const char *colname, Oid dimtype, Oid valuetype, Datum value,
-							   bool adaptive_chunking)
+          bool adaptive_chunking)
 {
-	int64 interval;
+ int64 interval;
 
-	if (!IS_VALID_OPEN_DIM_TYPE(dimtype))
-		ereport(ERROR,
-				(errcode(ERRCODE_WRONG_OBJECT_TYPE),
-				 errmsg("invalid dimension type: \"%s\" must be an integer, date or timestamp",
-						colname)));
+ if (!IS_VALID_OPEN_DIM_TYPE(dimtype))
+  ereport(ERROR,
+    (errcode(ERRCODE_WRONG_OBJECT_TYPE),
+     errmsg("invalid dimension type: \"%s\" must be an integer, date or timestamp",
+      colname)));
 
-	if (!OidIsValid(valuetype))
-	{
-		if (IS_INTEGER_TYPE(dimtype))
-			ereport(ERROR,
-					(errcode(ERRCODE_INVALID_PARAMETER_VALUE),
-					 errmsg("integer dimensions require an explicit interval")));
+ if (!OidIsValid(valuetype))
+ {
+  if (IS_INTEGER_TYPE(dimtype))
+   ereport(ERROR,
+     (errcode(ERRCODE_INVALID_PARAMETER_VALUE),
+      errmsg("integer dimensions require an explicit interval")));
 
-		value = Int64GetDatum(adaptive_chunking ? DEFAULT_CHUNK_TIME_INTERVAL_ADAPTIVE :
-												  DEFAULT_CHUNK_TIME_INTERVAL);
-		valuetype = INT8OID;
-	}
+  value = Int64GetDatum(adaptive_chunking ? DEFAULT_CHUNK_TIME_INTERVAL_ADAPTIVE :
+              DEFAULT_CHUNK_TIME_INTERVAL);
+  valuetype = 129;
+ }
 
-	switch (valuetype)
-	{
-		case INT2OID:
-			interval = get_validated_integer_interval(dimtype, DatumGetInt16(value));
-			break;
-		case INT4OID:
-			interval = get_validated_integer_interval(dimtype, DatumGetInt32(value));
-			break;
-		case INT8OID:
-			interval = get_validated_integer_interval(dimtype, DatumGetInt64(value));
-			break;
-		case INTERVALOID:
-			if (IS_INTEGER_TYPE(dimtype))
-				ereport(ERROR,
-						(errcode(ERRCODE_INVALID_PARAMETER_VALUE),
-						 errmsg(
-							 "invalid interval: must be an integer type for integer dimensions")));
+ switch (valuetype)
+ {
+  case 131:
+   interval = get_validated_integer_interval(dimtype, DatumGetInt16(value));
+   break;
+  case 130:
+   interval = get_validated_integer_interval(dimtype, DatumGetInt32(value));
+   break;
+  case 129:
+   interval = get_validated_integer_interval(dimtype, DatumGetInt64(value));
+   break;
+  case 128:
+   if (IS_INTEGER_TYPE(dimtype))
+    ereport(ERROR,
+      (errcode(ERRCODE_INVALID_PARAMETER_VALUE),
+       errmsg(
+        "invalid interval: must be an integer type for integer dimensions")));
 
-			interval = interval_to_usec(DatumGetIntervalP(value));
-			break;
-		default:
-			ereport(ERROR,
-					(errcode(ERRCODE_INVALID_PARAMETER_VALUE),
-					 errmsg("invalid interval: must be an interval or integer type")));
-	}
+   interval = interval_to_usec(DatumGetIntervalP(value));
+   break;
+  default:
+   ereport(ERROR,
+     (errcode(ERRCODE_INVALID_PARAMETER_VALUE),
+      errmsg("invalid interval: must be an interval or integer type")));
+ }
 
-	if (dimtype == DATEOID && (interval <= 0 || interval % USECS_PER_DAY != 0))
-		ereport(ERROR,
-				(errcode(ERRCODE_INVALID_PARAMETER_VALUE),
-				 errmsg("invalid interval: must be multiples of one day")));
+ if (dimtype == DATEOID && (interval <= 0 || interval % USECS_PER_DAY != 0))
+  ereport(ERROR,
+    (errcode(ERRCODE_INVALID_PARAMETER_VALUE),
+     errmsg("invalid interval: must be multiples of one day")));
 
-	return interval;
+ return interval;
 }

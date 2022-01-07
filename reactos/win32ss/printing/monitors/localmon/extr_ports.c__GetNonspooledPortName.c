@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/ * PWSTR ;
-typedef  int /*<<< orphan*/  PCWSTR ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CopyMemory (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/ * DllAllocSplMem (int) ; 
- int /*<<< orphan*/  ERR (char*,int /*<<< orphan*/ ) ; 
- int ERROR_NOT_ENOUGH_MEMORY ; 
- int ERROR_SUCCESS ; 
- int /*<<< orphan*/  GetLastError () ; 
- int cchNonspooledPrefix ; 
- int wcslen (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wszNonspooledPrefix ; 
+
+
+
+typedef int WCHAR ;
+typedef int * PWSTR ;
+typedef int PCWSTR ;
+typedef int DWORD ;
+
+
+ int CopyMemory (int *,int ,int) ;
+ int * DllAllocSplMem (int) ;
+ int ERR (char*,int ) ;
+ int ERROR_NOT_ENOUGH_MEMORY ;
+ int ERROR_SUCCESS ;
+ int GetLastError () ;
+ int cchNonspooledPrefix ;
+ int wcslen (int ) ;
+ int wszNonspooledPrefix ;
 
 __attribute__((used)) static __inline DWORD
 _GetNonspooledPortName(PCWSTR pwszPortNameWithoutColon, PWSTR* ppwszNonspooledPortName)

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  m64p_dynlib_handle ;
 
-/* Variables and functions */
- void* dlsym (int /*<<< orphan*/ ,char const*) ; 
+
+
+
+typedef int m64p_dynlib_handle ;
+
+
+ void* dlsym (int ,char const*) ;
 
 void * osal_dynlib_getproc(m64p_dynlib_handle LibHandle, const char *pccProcedureName)
 {
-    if (pccProcedureName == NULL)
-        return NULL;
+    if (pccProcedureName == ((void*)0))
+        return ((void*)0);
 
     return dlsym(LibHandle, pccProcedureName);
 }

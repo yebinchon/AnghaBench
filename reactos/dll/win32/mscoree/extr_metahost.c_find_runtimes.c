@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char WCHAR ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef char WCHAR ;
 struct TYPE_2__ {int mono_abi_version; char const* mono_libdir; char* mono_path; char* mscorlib_path; } ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EnterCriticalSection (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FALSE ; 
- scalar_t__ GetFileAttributesW (char*) ; 
- scalar_t__ INVALID_FILE_ATTRIBUTES ; 
- int /*<<< orphan*/  LeaveCriticalSection (int /*<<< orphan*/ *) ; 
- int MAX_PATH ; 
- int NUM_ABI_VERSIONS ; 
- int NUM_RUNTIMES ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  get_mono_path (char*,int) ; 
- int /*<<< orphan*/  runtime_list_cs ; 
- TYPE_1__* runtimes ; 
- int runtimes_initialized ; 
- int /*<<< orphan*/  strcatW (char*,char const*) ; 
- int /*<<< orphan*/  strcpyW (char*,char*) ; 
+
+ int EnterCriticalSection (int *) ;
+ int FALSE ;
+ scalar_t__ GetFileAttributesW (char*) ;
+ scalar_t__ INVALID_FILE_ATTRIBUTES ;
+ int LeaveCriticalSection (int *) ;
+ int MAX_PATH ;
+ int NUM_ABI_VERSIONS ;
+ int NUM_RUNTIMES ;
+ int TRUE ;
+ int get_mono_path (char*,int) ;
+ int runtime_list_cs ;
+ TYPE_1__* runtimes ;
+ int runtimes_initialized ;
+ int strcatW (char*,char const*) ;
+ int strcpyW (char*,char*) ;
 
 __attribute__((used)) static void find_runtimes(void)
 {
@@ -75,8 +75,8 @@ __attribute__((used)) static void find_runtimes(void)
 
     if (!any_runtimes_found)
     {
-        /* Report all runtimes are available if Mono isn't installed.
-         * FIXME: Remove this when Mono is properly packaged. */
+
+
         for (i=0; i<NUM_RUNTIMES; i++)
             runtimes[i].mono_abi_version = -1;
     }

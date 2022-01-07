@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct workqueue_struct {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  destroy_workqueue (struct workqueue_struct*) ; 
- int /*<<< orphan*/  dprintk (char*) ; 
- struct workqueue_struct* rpciod_workqueue ; 
- struct workqueue_struct* xprtiod_workqueue ; 
+
+ int destroy_workqueue (struct workqueue_struct*) ;
+ int dprintk (char*) ;
+ struct workqueue_struct* rpciod_workqueue ;
+ struct workqueue_struct* xprtiod_workqueue ;
 
 __attribute__((used)) static void rpciod_stop(void)
 {
-	struct workqueue_struct *wq = NULL;
+ struct workqueue_struct *wq = ((void*)0);
 
-	if (rpciod_workqueue == NULL)
-		return;
-	dprintk("RPC:       destroying workqueue rpciod\n");
+ if (rpciod_workqueue == ((void*)0))
+  return;
+ dprintk("RPC:       destroying workqueue rpciod\n");
 
-	wq = rpciod_workqueue;
-	rpciod_workqueue = NULL;
-	destroy_workqueue(wq);
-	wq = xprtiod_workqueue;
-	xprtiod_workqueue = NULL;
-	destroy_workqueue(wq);
+ wq = rpciod_workqueue;
+ rpciod_workqueue = ((void*)0);
+ destroy_workqueue(wq);
+ wq = xprtiod_workqueue;
+ xprtiod_workqueue = ((void*)0);
+ destroy_workqueue(wq);
 }

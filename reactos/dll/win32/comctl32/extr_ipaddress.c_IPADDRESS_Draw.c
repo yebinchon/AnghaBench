@@ -1,71 +1,71 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_4__ ;
-typedef  struct TYPE_16__   TYPE_3__ ;
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char WCHAR ;
+
+
+typedef struct TYPE_17__ TYPE_4__ ;
+typedef struct TYPE_16__ TYPE_3__ ;
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
+typedef char WCHAR ;
 struct TYPE_17__ {scalar_t__ clrGrayText; scalar_t__ clr3dFace; scalar_t__ clrWindowText; scalar_t__ clrWindow; } ;
 struct TYPE_16__ {scalar_t__ Self; TYPE_1__* Part; scalar_t__ Enabled; } ;
-struct TYPE_15__ {int /*<<< orphan*/  left; int /*<<< orphan*/  right; } ;
-struct TYPE_14__ {int /*<<< orphan*/  EditHwnd; } ;
-typedef  TYPE_2__ RECT ;
-typedef  int /*<<< orphan*/  POINT ;
-typedef  int /*<<< orphan*/  LRESULT ;
-typedef  TYPE_3__ IPADDRESS_INFO ;
-typedef  scalar_t__ HTHEME ;
-typedef  int /*<<< orphan*/  HDC ;
-typedef  int /*<<< orphan*/  HBRUSH ;
-typedef  scalar_t__ DWORD_PTR ;
-typedef  int DWORD ;
-typedef  scalar_t__ COLORREF ;
+struct TYPE_15__ {int left; int right; } ;
+struct TYPE_14__ {int EditHwnd; } ;
+typedef TYPE_2__ RECT ;
+typedef int POINT ;
+typedef int LRESULT ;
+typedef TYPE_3__ IPADDRESS_INFO ;
+typedef scalar_t__ HTHEME ;
+typedef int HDC ;
+typedef int HBRUSH ;
+typedef scalar_t__ DWORD_PTR ;
+typedef int DWORD ;
+typedef scalar_t__ COLORREF ;
 
-/* Variables and functions */
- int BF_ADJUST ; 
- int BF_RECT ; 
- int /*<<< orphan*/  CloseThemeData (scalar_t__) ; 
- int DT_BOTTOM ; 
- int DT_CENTER ; 
- int DT_SINGLELINE ; 
- int /*<<< orphan*/  DrawEdge (int /*<<< orphan*/ ,TYPE_2__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  DrawTextW (int /*<<< orphan*/ ,char const*,int,TYPE_2__*,int) ; 
- int /*<<< orphan*/  DrawThemeBackground (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DrawThemeParentBackground (scalar_t__,int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  DrawThemeText (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,char const*,int,int,int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  EDGE_SUNKEN ; 
- int /*<<< orphan*/  EP_EDITTEXT ; 
- int ES_READONLY ; 
- int ETS_DISABLED ; 
- int ETS_FOCUSED ; 
- int ETS_NORMAL ; 
- int ETS_READONLY ; 
- int /*<<< orphan*/  FillRect (int /*<<< orphan*/ ,TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GWL_STYLE ; 
- int /*<<< orphan*/  GetClientRect (scalar_t__,TYPE_2__*) ; 
- scalar_t__ GetFocus () ; 
- int /*<<< orphan*/  GetThemeColor (scalar_t__,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,scalar_t__*) ; 
- int GetWindowLongW (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetWindowRect (int /*<<< orphan*/ ,TYPE_2__*) ; 
- scalar_t__ IsThemeBackgroundPartiallyTransparent (scalar_t__,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  MapWindowPoints (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ *,int) ; 
- scalar_t__ OpenThemeData (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetBkColor (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  SetTextColor (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  TMT_FILLCOLOR ; 
- int /*<<< orphan*/  TMT_TEXTCOLOR ; 
- int /*<<< orphan*/  TRACE (char*) ; 
- int /*<<< orphan*/  WC_EDITW ; 
- TYPE_4__ comctl32_color ; 
+
+ int BF_ADJUST ;
+ int BF_RECT ;
+ int CloseThemeData (scalar_t__) ;
+ int DT_BOTTOM ;
+ int DT_CENTER ;
+ int DT_SINGLELINE ;
+ int DrawEdge (int ,TYPE_2__*,int ,int) ;
+ int DrawTextW (int ,char const*,int,TYPE_2__*,int) ;
+ int DrawThemeBackground (scalar_t__,int ,int ,int,TYPE_2__*,int ) ;
+ int DrawThemeParentBackground (scalar_t__,int ,TYPE_2__*) ;
+ int DrawThemeText (scalar_t__,int ,int ,int,char const*,int,int,int ,TYPE_2__*) ;
+ int EDGE_SUNKEN ;
+ int EP_EDITTEXT ;
+ int ES_READONLY ;
+ int ETS_DISABLED ;
+ int ETS_FOCUSED ;
+ int ETS_NORMAL ;
+ int ETS_READONLY ;
+ int FillRect (int ,TYPE_2__*,int ) ;
+ int GWL_STYLE ;
+ int GetClientRect (scalar_t__,TYPE_2__*) ;
+ scalar_t__ GetFocus () ;
+ int GetThemeColor (scalar_t__,int ,int,int ,scalar_t__*) ;
+ int GetWindowLongW (scalar_t__,int ) ;
+ int GetWindowRect (int ,TYPE_2__*) ;
+ scalar_t__ IsThemeBackgroundPartiallyTransparent (scalar_t__,int ,int) ;
+ int MapWindowPoints (int ,scalar_t__,int *,int) ;
+ scalar_t__ OpenThemeData (scalar_t__,int ) ;
+ int SetBkColor (int ,scalar_t__) ;
+ int SetTextColor (int ,scalar_t__) ;
+ int TMT_FILLCOLOR ;
+ int TMT_TEXTCOLOR ;
+ int TRACE (char*) ;
+ int WC_EDITW ;
+ TYPE_4__ comctl32_color ;
 
 __attribute__((used)) static LRESULT IPADDRESS_Draw (const IPADDRESS_INFO *infoPtr, HDC hdc)
 {
@@ -109,8 +109,8 @@ __attribute__((used)) static LRESULT IPADDRESS_Draw (const IPADDRESS_INFO *infoP
         FillRect (hdc, &rect, (HBRUSH)(DWORD_PTR)(bgCol+1));
         DrawEdge (hdc, &rect, EDGE_SUNKEN, BF_RECT | BF_ADJUST);
     }
-    
-    SetBkColor  (hdc, bgCol);
+
+    SetBkColor (hdc, bgCol);
     SetTextColor(hdc, fgCol);
 
     for (i = 0; i < 3; i++) {

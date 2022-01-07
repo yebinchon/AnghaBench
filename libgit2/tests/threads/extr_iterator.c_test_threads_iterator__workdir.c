@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  _repo ; 
- int /*<<< orphan*/  cl_git_sandbox_init (char*) ; 
- int /*<<< orphan*/  run_in_parallel (int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  run_workdir_iterator ; 
+ int _repo ;
+ int cl_git_sandbox_init (char*) ;
+ int run_in_parallel (int,int,int ,int *,int *) ;
+ int run_workdir_iterator ;
 
 void test_threads_iterator__workdir(void)
 {
-	_repo = cl_git_sandbox_init("status");
+ _repo = cl_git_sandbox_init("status");
 
-	run_in_parallel(
-		1, 20, run_workdir_iterator, NULL, NULL);
+ run_in_parallel(
+  1, 20, run_workdir_iterator, ((void*)0), ((void*)0));
 }

@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buf ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Curl_safefree (char*) ; 
- int /*<<< orphan*/ * fgets (char*,int,int /*<<< orphan*/ *) ; 
- char* realloc (char*,size_t) ; 
- char* strchr (char*,char) ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
- char* strdup (char*) ; 
- size_t strlen (char*) ; 
+
+
+
+typedef int buf ;
+typedef int FILE ;
+
+
+ int Curl_safefree (char*) ;
+ int * fgets (char*,int,int *) ;
+ char* realloc (char*,size_t) ;
+ char* strchr (char*,char) ;
+ int strcpy (char*,char*) ;
+ char* strdup (char*) ;
+ size_t strlen (char*) ;
 
 __attribute__((used)) static char *my_get_line(FILE *fp)
 {
   char buf[4096];
-  char *nl = NULL;
-  char *line = NULL;
+  char *nl = ((void*)0);
+  char *line = ((void*)0);
 
   do {
-    if(NULL == fgets(buf, sizeof(buf), fp))
+    if(((void*)0) == fgets(buf, sizeof(buf), fp))
       break;
     if(!line) {
       line = strdup(buf);
       if(!line)
-        return NULL;
+        return ((void*)0);
     }
     else {
       char *ptr;
@@ -42,7 +42,7 @@ __attribute__((used)) static char *my_get_line(FILE *fp)
       ptr = realloc(line, linelen + strlen(buf) + 1);
       if(!ptr) {
         Curl_safefree(line);
-        return NULL;
+        return ((void*)0);
       }
       line = ptr;
       strcpy(&line[linelen], buf);

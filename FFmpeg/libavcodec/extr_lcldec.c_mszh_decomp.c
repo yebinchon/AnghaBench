@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- unsigned int FFMIN (unsigned int,int) ; 
- int /*<<< orphan*/  av_memcpy_backptr (unsigned char*,unsigned int,unsigned int) ; 
- unsigned int bytestream_get_le16 (unsigned char const**) ; 
- int /*<<< orphan*/  memcpy (unsigned char*,unsigned char const*,int) ; 
- int /*<<< orphan*/  memset (unsigned char*,int /*<<< orphan*/ ,unsigned int) ; 
+ unsigned int FFMIN (unsigned int,int) ;
+ int av_memcpy_backptr (unsigned char*,unsigned int,unsigned int) ;
+ unsigned int bytestream_get_le16 (unsigned char const**) ;
+ int memcpy (unsigned char*,unsigned char const*,int) ;
+ int memset (unsigned char*,int ,unsigned int) ;
 
 __attribute__((used)) static unsigned int mszh_decomp(const unsigned char * srcptr, int srclen, unsigned char * destptr, unsigned int destsize)
 {
@@ -41,8 +33,8 @@ __attribute__((used)) static unsigned int mszh_decomp(const unsigned char * srcp
             if (ofs) {
                 av_memcpy_backptr(destptr, ofs, cnt);
             } else {
-                // Not known what the correct behaviour is, but
-                // this at least avoids uninitialized data.
+
+
                 memset(destptr, 0, cnt);
             }
             destptr += cnt;

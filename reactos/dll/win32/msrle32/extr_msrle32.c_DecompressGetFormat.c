@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_12__ {int biSizeImage; int biHeight; int /*<<< orphan*/  biCompression; } ;
+
+
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+struct TYPE_12__ {int biSizeImage; int biHeight; int biCompression; } ;
 struct TYPE_11__ {int biSize; int biBitCount; int biClrUsed; } ;
-typedef  int /*<<< orphan*/  RGBQUAD ;
-typedef  scalar_t__ LRESULT ;
-typedef  TYPE_1__* LPCBITMAPINFOHEADER ;
-typedef  TYPE_2__* LPBITMAPINFOHEADER ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  CodecInfo ;
+typedef int RGBQUAD ;
+typedef scalar_t__ LRESULT ;
+typedef TYPE_1__* LPCBITMAPINFOHEADER ;
+typedef TYPE_2__* LPBITMAPINFOHEADER ;
+typedef int DWORD ;
+typedef int CodecInfo ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BI_RGB ; 
- int DIBWIDTHBYTES (TYPE_2__) ; 
- scalar_t__ DecompressQuery (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ *) ; 
- scalar_t__ ICERR_BADFORMAT ; 
- scalar_t__ ICERR_BADPARAM ; 
- scalar_t__ ICERR_OK ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ *,TYPE_1__*,TYPE_2__*) ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (TYPE_2__*,TYPE_1__*,int) ; 
+
+ int BI_RGB ;
+ int DIBWIDTHBYTES (TYPE_2__) ;
+ scalar_t__ DecompressQuery (int *,TYPE_1__*,int *) ;
+ scalar_t__ ICERR_BADFORMAT ;
+ scalar_t__ ICERR_BADPARAM ;
+ scalar_t__ ICERR_OK ;
+ int TRACE (char*,int *,TYPE_1__*,TYPE_2__*) ;
+ int assert (int ) ;
+ int memcpy (TYPE_2__*,TYPE_1__*,int) ;
 
 __attribute__((used)) static LRESULT DecompressGetFormat(CodecInfo *pi, LPCBITMAPINFOHEADER lpbiIn,
-				   LPBITMAPINFOHEADER lpbiOut)
+       LPBITMAPINFOHEADER lpbiOut)
 {
   DWORD size;
 
   TRACE("(%p,%p,%p)\n",pi,lpbiIn,lpbiOut);
 
-  /* pre-condition */
-  assert(pi != NULL);
 
-  if (lpbiIn == NULL)
-    return (lpbiOut != NULL ? ICERR_BADPARAM : 0);
+  assert(pi != ((void*)0));
 
-  if (DecompressQuery(pi, lpbiIn, NULL) != ICERR_OK)
-    return (lpbiOut != NULL ? ICERR_BADFORMAT : 0);
+  if (lpbiIn == ((void*)0))
+    return (lpbiOut != ((void*)0) ? ICERR_BADPARAM : 0);
+
+  if (DecompressQuery(pi, lpbiIn, ((void*)0)) != ICERR_OK)
+    return (lpbiOut != ((void*)0) ? ICERR_BADFORMAT : 0);
 
   size = lpbiIn->biSize;
 
@@ -61,10 +61,10 @@ __attribute__((used)) static LRESULT DecompressGetFormat(CodecInfo *pi, LPCBITMA
     size += colors * sizeof(RGBQUAD);
   }
 
-  if (lpbiOut != NULL) {
+  if (lpbiOut != ((void*)0)) {
     memcpy(lpbiOut, lpbiIn, size);
-    lpbiOut->biCompression  = BI_RGB;
-    lpbiOut->biSizeImage    = DIBWIDTHBYTES(*lpbiOut) * lpbiOut->biHeight;
+    lpbiOut->biCompression = BI_RGB;
+    lpbiOut->biSizeImage = DIBWIDTHBYTES(*lpbiOut) * lpbiOut->biHeight;
 
     return ICERR_OK;
   } else

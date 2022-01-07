@@ -1,64 +1,64 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct hrowpic_softc {int /*<<< orphan*/ * sc_rres; int /*<<< orphan*/  sc_bh; int /*<<< orphan*/  sc_bt; scalar_t__ sc_rrid; int /*<<< orphan*/  sc_dev; } ;
-typedef  int /*<<< orphan*/  device_t ;
 
-/* Variables and functions */
- int ENXIO ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  HPIC_CLEAR ; 
- int /*<<< orphan*/  HPIC_ENABLE ; 
- int /*<<< orphan*/  HPIC_PRIMARY ; 
- int /*<<< orphan*/  HPIC_SECONDARY ; 
- int /*<<< orphan*/  RF_ACTIVE ; 
- int /*<<< orphan*/  SYS_RES_MEMORY ; 
- int /*<<< orphan*/ * bus_alloc_resource_any (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__*,int /*<<< orphan*/ ) ; 
- struct hrowpic_softc* device_get_softc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  device_printf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  hrowpic_write_reg (struct hrowpic_softc*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ofw_bus_get_node (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  powerpc_register_pic (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rman_get_bushandle (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  rman_get_bustag (int /*<<< orphan*/ *) ; 
+
+
+
+struct hrowpic_softc {int * sc_rres; int sc_bh; int sc_bt; scalar_t__ sc_rrid; int sc_dev; } ;
+typedef int device_t ;
+
+
+ int ENXIO ;
+ int FALSE ;
+ int HPIC_CLEAR ;
+ int HPIC_ENABLE ;
+ int HPIC_PRIMARY ;
+ int HPIC_SECONDARY ;
+ int RF_ACTIVE ;
+ int SYS_RES_MEMORY ;
+ int * bus_alloc_resource_any (int ,int ,scalar_t__*,int ) ;
+ struct hrowpic_softc* device_get_softc (int ) ;
+ int device_printf (int ,char*) ;
+ int hrowpic_write_reg (struct hrowpic_softc*,int ,int ,int) ;
+ int ofw_bus_get_node (int ) ;
+ int powerpc_register_pic (int ,int ,int,int ,int ) ;
+ int rman_get_bushandle (int *) ;
+ int rman_get_bustag (int *) ;
 
 __attribute__((used)) static int
 hrowpic_attach(device_t dev)
 {
-	struct hrowpic_softc *sc;
+ struct hrowpic_softc *sc;
 
-	sc = device_get_softc(dev);
-	sc->sc_dev = dev;
+ sc = device_get_softc(dev);
+ sc->sc_dev = dev;
 
-	sc->sc_rrid = 0;
-	sc->sc_rres = bus_alloc_resource_any(dev, SYS_RES_MEMORY, &sc->sc_rrid,
-	    RF_ACTIVE);
+ sc->sc_rrid = 0;
+ sc->sc_rres = bus_alloc_resource_any(dev, SYS_RES_MEMORY, &sc->sc_rrid,
+     RF_ACTIVE);
 
-	if (sc->sc_rres == NULL) {
-		device_printf(dev, "Could not alloc mem resource!\n");
-		return (ENXIO);
-	}
+ if (sc->sc_rres == ((void*)0)) {
+  device_printf(dev, "Could not alloc mem resource!\n");
+  return (ENXIO);
+ }
 
-	sc->sc_bt = rman_get_bustag(sc->sc_rres);
-	sc->sc_bh = rman_get_bushandle(sc->sc_rres);
+ sc->sc_bt = rman_get_bustag(sc->sc_rres);
+ sc->sc_bh = rman_get_bushandle(sc->sc_rres);
 
-	/*
-	 * Disable all interrupt sources and clear outstanding interrupts
-	 */
-	hrowpic_write_reg(sc, HPIC_ENABLE, HPIC_PRIMARY, 0);
-	hrowpic_write_reg(sc, HPIC_CLEAR,  HPIC_PRIMARY, 0xffffffff);
-	hrowpic_write_reg(sc, HPIC_ENABLE, HPIC_SECONDARY, 0);
-	hrowpic_write_reg(sc, HPIC_CLEAR,  HPIC_SECONDARY, 0xffffffff);
 
-	powerpc_register_pic(dev, ofw_bus_get_node(dev), 64, 0, FALSE);
-	return (0);
+
+
+ hrowpic_write_reg(sc, HPIC_ENABLE, HPIC_PRIMARY, 0);
+ hrowpic_write_reg(sc, HPIC_CLEAR, HPIC_PRIMARY, 0xffffffff);
+ hrowpic_write_reg(sc, HPIC_ENABLE, HPIC_SECONDARY, 0);
+ hrowpic_write_reg(sc, HPIC_CLEAR, HPIC_SECONDARY, 0xffffffff);
+
+ powerpc_register_pic(dev, ofw_bus_get_node(dev), 64, 0, FALSE);
+ return (0);
 }

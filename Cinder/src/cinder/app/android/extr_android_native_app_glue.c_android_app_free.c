@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct android_app {int /*<<< orphan*/  mutex; int /*<<< orphan*/  cond; int /*<<< orphan*/  msgwrite; int /*<<< orphan*/  msgread; int /*<<< orphan*/  destroyed; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  APP_CMD_DESTROY ; 
- int /*<<< orphan*/  android_app_write_cmd (struct android_app*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  close (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (struct android_app*) ; 
- int /*<<< orphan*/  pthread_cond_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_cond_wait (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
+
+
+
+struct android_app {int mutex; int cond; int msgwrite; int msgread; int destroyed; } ;
+
+
+ int APP_CMD_DESTROY ;
+ int android_app_write_cmd (struct android_app*,int ) ;
+ int close (int ) ;
+ int free (struct android_app*) ;
+ int pthread_cond_destroy (int *) ;
+ int pthread_cond_wait (int *,int *) ;
+ int pthread_mutex_destroy (int *) ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
 
 __attribute__((used)) static void android_app_free(struct android_app* android_app) {
     pthread_mutex_lock(&android_app->mutex);

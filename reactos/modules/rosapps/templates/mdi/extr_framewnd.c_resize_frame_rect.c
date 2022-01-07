@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_6__ {scalar_t__ bottom; scalar_t__ right; scalar_t__ top; scalar_t__ left; } ;
 struct TYPE_5__ {scalar_t__ bottom; } ;
-typedef  TYPE_1__ RECT ;
-typedef  TYPE_2__* PRECT ;
-typedef  int /*<<< orphan*/  LPARAM ;
-typedef  int /*<<< orphan*/  HWND ;
+typedef TYPE_1__ RECT ;
+typedef TYPE_2__* PRECT ;
+typedef int LPARAM ;
+typedef int HWND ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetClientRect (int /*<<< orphan*/ ,TYPE_1__*) ; 
- scalar_t__ IsWindowVisible (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MoveWindow (int /*<<< orphan*/ ,scalar_t__,scalar_t__,scalar_t__,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SB_SETPARTS ; 
- int /*<<< orphan*/  SendMessage (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  WM_SIZE ; 
- int /*<<< orphan*/  hMDIClient ; 
- int /*<<< orphan*/  hStatusBar ; 
- int /*<<< orphan*/  hToolBar ; 
+
+ int GetClientRect (int ,TYPE_1__*) ;
+ scalar_t__ IsWindowVisible (int ) ;
+ int MoveWindow (int ,scalar_t__,scalar_t__,scalar_t__,scalar_t__,int ) ;
+ int SB_SETPARTS ;
+ int SendMessage (int ,int ,int,int ) ;
+ int TRUE ;
+ int WM_SIZE ;
+ int hMDIClient ;
+ int hStatusBar ;
+ int hToolBar ;
 
 __attribute__((used)) static void resize_frame_rect(HWND hWnd, PRECT prect)
 {

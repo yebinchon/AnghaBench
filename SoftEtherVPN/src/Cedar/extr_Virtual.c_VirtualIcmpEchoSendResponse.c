@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VH ;
-typedef  int /*<<< orphan*/  USHORT ;
-typedef  scalar_t__ UINT ;
-typedef  int /*<<< orphan*/  UCHAR ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int VH ;
+typedef int USHORT ;
+typedef scalar_t__ UINT ;
+typedef int UCHAR ;
 struct TYPE_5__ {void* SeqNo; void* Identifier; } ;
-typedef  TYPE_1__ ICMP_ECHO ;
+typedef TYPE_1__ ICMP_ECHO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Copy (int /*<<< orphan*/ *,void*,scalar_t__) ; 
- void* Endian16 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Free (TYPE_1__*) ; 
- int /*<<< orphan*/  VirtualIcmpSend (int /*<<< orphan*/ *,scalar_t__,scalar_t__,TYPE_1__*,scalar_t__) ; 
- TYPE_1__* ZeroMalloc (scalar_t__) ; 
+
+ int Copy (int *,void*,scalar_t__) ;
+ void* Endian16 (int ) ;
+ int Free (TYPE_1__*) ;
+ int VirtualIcmpSend (int *,scalar_t__,scalar_t__,TYPE_1__*,scalar_t__) ;
+ TYPE_1__* ZeroMalloc (scalar_t__) ;
 
 void VirtualIcmpEchoSendResponse(VH *v, UINT src_ip, UINT dst_ip, USHORT id, USHORT seq_no, void *data, UINT size)
 {
-	ICMP_ECHO *e;
-	// Validate arguments
-	if (v == NULL || data == NULL)
-	{
-		return;
-	}
+ ICMP_ECHO *e;
 
-	// Build the header
-	e = ZeroMalloc(sizeof(ICMP_ECHO) + size);
-	e->Identifier = Endian16(id);
-	e->SeqNo = Endian16(seq_no);
+ if (v == ((void*)0) || data == ((void*)0))
+ {
+  return;
+ }
 
-	// Data copy
-	Copy(((UCHAR *)e) + sizeof(ICMP_ECHO), data, size);
 
-	// Send an ICMP
-	VirtualIcmpSend(v, src_ip, dst_ip, e, sizeof(ICMP_ECHO) + size);
+ e = ZeroMalloc(sizeof(ICMP_ECHO) + size);
+ e->Identifier = Endian16(id);
+ e->SeqNo = Endian16(seq_no);
 
-	// Release the memory
-	Free(e);
+
+ Copy(((UCHAR *)e) + sizeof(ICMP_ECHO), data, size);
+
+
+ VirtualIcmpSend(v, src_ip, dst_ip, e, sizeof(ICMP_ECHO) + size);
+
+
+ Free(e);
 }

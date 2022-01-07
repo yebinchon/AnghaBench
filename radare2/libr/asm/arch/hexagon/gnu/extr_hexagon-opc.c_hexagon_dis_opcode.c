@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  temp ;
-struct TYPE_6__ {int flags; char enc_letter; int /*<<< orphan*/  fmt; } ;
-typedef  TYPE_1__ hexagon_operand ;
-struct TYPE_7__ {char* syntax; int attributes; int /*<<< orphan*/  enc; } ;
-typedef  TYPE_2__ hexagon_opcode ;
-typedef  int hexagon_insn ;
-typedef  int /*<<< orphan*/  bfd_vma ;
 
-/* Variables and functions */
- int A_IT_EXTENDER ; 
- int EXTENDABLE_LOWER_CASE_IMMEDIATE ; 
- int EXTENDABLE_UPPER_CASE_IMMEDIATE ; 
- int FALSE ; 
-#define  HEXAGON_END_LOOP 131 
-#define  HEXAGON_END_NOT 130 
-#define  HEXAGON_END_PACKET 129 
- int HEXAGON_END_PACKET_GET (int) ; 
-#define  HEXAGON_END_PAIR 128 
- int HEXAGON_OPERAND_IS_IMMEDIATE ; 
- int HEXAGON_OPERAND_IS_KXED ; 
- int HEXAGON_OPERAND_IS_KXER ; 
- int /*<<< orphan*/  ISBLANK (char) ; 
- scalar_t__ ISLOWER (char) ; 
- scalar_t__ ISUPPER (char) ; 
- int PACKET_BEGIN ; 
- int PACKET_END ; 
- char* PACKET_END_INNER ; 
- char* PACKET_END_OUTER ; 
- char TOUPPER (char) ; 
- int TRUE ; 
- char* hexagon_dis_operand (TYPE_1__*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,char**) ; 
- size_t hexagon_operand_count ; 
- TYPE_1__* hexagon_operands ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,...) ; 
- int /*<<< orphan*/  sprintf (char*,char*,...) ; 
- size_t strlen (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strncmp (char*,int /*<<< orphan*/ ,size_t) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int temp ;
+struct TYPE_6__ {int flags; char enc_letter; int fmt; } ;
+typedef TYPE_1__ hexagon_operand ;
+struct TYPE_7__ {char* syntax; int attributes; int enc; } ;
+typedef TYPE_2__ hexagon_opcode ;
+typedef int hexagon_insn ;
+typedef int bfd_vma ;
+
+
+ int A_IT_EXTENDER ;
+ int EXTENDABLE_LOWER_CASE_IMMEDIATE ;
+ int EXTENDABLE_UPPER_CASE_IMMEDIATE ;
+ int FALSE ;
+
+
+
+ int HEXAGON_END_PACKET_GET (int) ;
+
+ int HEXAGON_OPERAND_IS_IMMEDIATE ;
+ int HEXAGON_OPERAND_IS_KXED ;
+ int HEXAGON_OPERAND_IS_KXER ;
+ int ISBLANK (char) ;
+ scalar_t__ ISLOWER (char) ;
+ scalar_t__ ISUPPER (char) ;
+ int PACKET_BEGIN ;
+ int PACKET_END ;
+ char* PACKET_END_INNER ;
+ char* PACKET_END_OUTER ;
+ char TOUPPER (char) ;
+ int TRUE ;
+ char* hexagon_dis_operand (TYPE_1__*,int,int ,int ,int ,char*,char**) ;
+ size_t hexagon_operand_count ;
+ TYPE_1__* hexagon_operands ;
+ int snprintf (char*,int,char*,...) ;
+ int sprintf (char*,char*,...) ;
+ size_t strlen (int ) ;
+ int strncmp (char*,int ,size_t) ;
 
 int
 hexagon_dis_opcode
@@ -67,8 +67,8 @@ hexagon_dis_opcode
 
   switch (packet_bits)
     {
-      case HEXAGON_END_PACKET:
-      case HEXAGON_END_PAIR:
+      case 129:
+      case 128:
         if (in_packet)
           dst += sprintf (dst, "  ");
         else
@@ -76,8 +76,8 @@ hexagon_dis_opcode
         end_packet = TRUE;
         break;
 
-      case HEXAGON_END_LOOP:
-      case HEXAGON_END_NOT:
+      case 131:
+      case 130:
         if (!in_packet)
           {
             dst += sprintf (dst, "%c ", PACKET_BEGIN);
@@ -88,7 +88,7 @@ hexagon_dis_opcode
 
         ++in_packet;
 
-        if (packet_bits == HEXAGON_END_LOOP)
+        if (packet_bits == 131)
           {
             if (in_packet == 1) end_inner = TRUE;
             if (in_packet == 2) end_outer = TRUE;
@@ -107,10 +107,10 @@ hexagon_dis_opcode
 
   while (*src)
     {
-      /* EJP: ignore +I */
+
       if ((ISUPPER(*src) && (TOUPPER(*src) != 'I')) || *src == '#')
         {
-          /* We have an operand */
+
           int found = FALSE;
           size_t i;
 
@@ -133,18 +133,18 @@ hexagon_dis_opcode
                                 && (ISLOWER (operand.enc_letter)))
                                || ((opcode->attributes & EXTENDABLE_UPPER_CASE_IMMEDIATE)
                                    && (ISUPPER (operand.enc_letter)))))
-                    /* Not necessarily extended, but maybe so. */
+
                     operand.flags |= HEXAGON_OPERAND_IS_KXED;
                   dst = hexagon_dis_operand (&operand, insn, address, packet_addr,
                                            opcode->enc, dst, errmsg);
                   if (!dst)
                     {
-                      /* Some kind of error! */
+
                       sprintf (buf, "<unknown insn 0x%08x>", insn);
                       return FALSE;
                     }
 
-                  /* Move past the opcode specifier */
+
                   src += len;
                   break;
                 }
@@ -164,10 +164,10 @@ hexagon_dis_opcode
         }
       else
         {
-          /* Beautify disassembly. */
+
           switch (*src)
             {
-              /* Skip space after. */
+
               case '(':
               case '!':
                 *dst++ = *src++;
@@ -176,7 +176,7 @@ hexagon_dis_opcode
                   src++;
                 break;
 
-              /* Delete space before. */
+
               case ')':
               case '.':
               case ',':
@@ -187,7 +187,7 @@ hexagon_dis_opcode
                 *dst++ = *src++;
                 break;
 
-              /* Nothing, just copy. */
+
               default:
                 *dst++ = *src++;
                 break;

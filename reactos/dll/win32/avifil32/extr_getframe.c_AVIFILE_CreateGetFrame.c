@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/ * lpVtbl; } ;
-struct TYPE_6__ {int ref; int lCurrentFrame; TYPE_1__ IGetFrame_iface; int /*<<< orphan*/ * pStream; } ;
-typedef  TYPE_1__* PGETFRAME ;
-typedef  int /*<<< orphan*/ * PAVISTREAM ;
-typedef  TYPE_2__ IGetFrameImpl ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HEAP_ZERO_MEMORY ; 
- TYPE_2__* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  IAVIStream_AddRef (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  igetframeVtbl ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int * lpVtbl; } ;
+struct TYPE_6__ {int ref; int lCurrentFrame; TYPE_1__ IGetFrame_iface; int * pStream; } ;
+typedef TYPE_1__* PGETFRAME ;
+typedef int * PAVISTREAM ;
+typedef TYPE_2__ IGetFrameImpl ;
+
+
+ int GetProcessHeap () ;
+ int HEAP_ZERO_MEMORY ;
+ TYPE_2__* HeapAlloc (int ,int ,int) ;
+ int IAVIStream_AddRef (int *) ;
+ int igetframeVtbl ;
 
 PGETFRAME AVIFILE_CreateGetFrame(PAVISTREAM pStream)
 {
   IGetFrameImpl *pg;
 
-  /* check parameter */
-  if (pStream == NULL)
-    return NULL;
+
+  if (pStream == ((void*)0))
+    return ((void*)0);
 
   pg = HeapAlloc(GetProcessHeap(), HEAP_ZERO_MEMORY, sizeof(IGetFrameImpl));
-  if (pg != NULL) {
+  if (pg != ((void*)0)) {
     pg->IGetFrame_iface.lpVtbl = &igetframeVtbl;
-    pg->ref           = 1;
+    pg->ref = 1;
     pg->lCurrentFrame = -1;
-    pg->pStream       = pStream;
+    pg->pStream = pStream;
     IAVIStream_AddRef(pStream);
   }
 

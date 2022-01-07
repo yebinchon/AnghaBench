@@ -1,63 +1,63 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  desc ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int desc ;
 struct TYPE_8__ {scalar_t__ QuadPart; } ;
 struct TYPE_6__ {scalar_t__ hbitmap; scalar_t__ hpal; } ;
 struct TYPE_7__ {int cbSizeofstruct; short picType; TYPE_1__ bmp; } ;
-typedef  TYPE_2__ PICTDESC ;
-typedef  int OLE_HANDLE ;
-typedef  int LONG ;
-typedef  TYPE_3__ LARGE_INTEGER ;
-typedef  int /*<<< orphan*/  IStream ;
-typedef  int /*<<< orphan*/  IPicture ;
-typedef  int /*<<< orphan*/  IPersistStream ;
-typedef  int HRESULT ;
-typedef  int /*<<< orphan*/  HGLOBAL ;
-typedef  int DWORD ;
+typedef TYPE_2__ PICTDESC ;
+typedef int OLE_HANDLE ;
+typedef int LONG ;
+typedef TYPE_3__ LARGE_INTEGER ;
+typedef int IStream ;
+typedef int IPicture ;
+typedef int IPersistStream ;
+typedef int HRESULT ;
+typedef int HGLOBAL ;
+typedef int DWORD ;
 
-/* Variables and functions */
- scalar_t__ CreateBitmap (int,int,int,int,int /*<<< orphan*/ *) ; 
- int CreateStreamOnHGlobal (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  DeleteObject (scalar_t__) ; 
- int E_FAIL ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GMEM_ZEROINIT ; 
- int /*<<< orphan*/  GlobalAlloc (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  GlobalFree (int /*<<< orphan*/ ) ; 
- int* GlobalLock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GlobalUnlock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IID_IPersistStream ; 
- int /*<<< orphan*/  IID_IPicture ; 
- int /*<<< orphan*/  IPersistStream_Release (int /*<<< orphan*/ *) ; 
- int IPersistStream_Save (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int IPicture_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IPicture_Release (int /*<<< orphan*/ *) ; 
- int IPicture_SaveAsFile (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int*) ; 
- int IPicture_get_Handle (int /*<<< orphan*/ *,int*) ; 
- int IPicture_get_Type (int /*<<< orphan*/ *,short*) ; 
- int /*<<< orphan*/  IStream_Release (int /*<<< orphan*/ *) ; 
- int IStream_Seek (int /*<<< orphan*/ *,TYPE_3__,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ IntToPtr (int) ; 
- int OleCreatePictureIndirect (TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,void**) ; 
- short PICTYPE_BITMAP ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int S_OK ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  memcmp (int*,char*,int) ; 
- int /*<<< orphan*/  ok (int,char*,int) ; 
+
+ scalar_t__ CreateBitmap (int,int,int,int,int *) ;
+ int CreateStreamOnHGlobal (int ,int ,int **) ;
+ int DeleteObject (scalar_t__) ;
+ int E_FAIL ;
+ int FALSE ;
+ int GMEM_ZEROINIT ;
+ int GlobalAlloc (int ,int) ;
+ int GlobalFree (int ) ;
+ int* GlobalLock (int ) ;
+ int GlobalUnlock (int ) ;
+ int IID_IPersistStream ;
+ int IID_IPicture ;
+ int IPersistStream_Release (int *) ;
+ int IPersistStream_Save (int *,int *,int ) ;
+ int IPicture_QueryInterface (int *,int *,void**) ;
+ int IPicture_Release (int *) ;
+ int IPicture_SaveAsFile (int *,int *,int ,int*) ;
+ int IPicture_get_Handle (int *,int*) ;
+ int IPicture_get_Type (int *,short*) ;
+ int IStream_Release (int *) ;
+ int IStream_Seek (int *,TYPE_3__,int ,int *) ;
+ scalar_t__ IntToPtr (int) ;
+ int OleCreatePictureIndirect (TYPE_2__*,int *,int ,void**) ;
+ short PICTYPE_BITMAP ;
+ int SEEK_SET ;
+ int S_OK ;
+ int TRUE ;
+ int memcmp (int*,char*,int) ;
+ int ok (int,char*,int) ;
 
 __attribute__((used)) static void test_load_save_bmp(void)
 {
@@ -76,7 +76,7 @@ __attribute__((used)) static void test_load_save_bmp(void)
     desc.cbSizeofstruct = sizeof(desc);
     desc.picType = PICTYPE_BITMAP;
     desc.bmp.hpal = 0;
-    desc.bmp.hbitmap = CreateBitmap(1, 1, 1, 1, NULL);
+    desc.bmp.hbitmap = CreateBitmap(1, 1, 1, 1, ((void*)0));
     hr = OleCreatePictureIndirect(&desc, &IID_IPicture, FALSE, (void**)&pic);
     ok(hr == S_OK, "OleCreatePictureIndirect error %#x\n", hr);
 
@@ -107,7 +107,7 @@ __attribute__((used)) static void test_load_save_bmp(void)
     ok(size == -1, "expected -1, got %d\n", size);
 
     offset.QuadPart = 0;
-    hr = IStream_Seek(dst_stream, offset, SEEK_SET, NULL);
+    hr = IStream_Seek(dst_stream, offset, SEEK_SET, ((void*)0));
     ok(hr == S_OK, "IStream_Seek %#x\n", hr);
 
     hr = IPicture_QueryInterface(pic, &IID_IPersistStream, (void **)&src_stream);

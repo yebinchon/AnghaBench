@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
+
+
+
+
+typedef int uint8_t ;
 struct string {int dummy; } ;
-struct conf {int /*<<< orphan*/  arg; } ;
+struct conf {int arg; } ;
 struct command {int offset; } ;
 
-/* Variables and functions */
- char* CONF_OK ; 
- int CONF_UNSET_NUM ; 
- struct string* array_top (int /*<<< orphan*/ *) ; 
- scalar_t__ string_compare (struct string*,struct string*) ; 
- int /*<<< orphan*/  string_set_text (struct string*,char*) ; 
+
+ char* CONF_OK ;
+ int CONF_UNSET_NUM ;
+ struct string* array_top (int *) ;
+ scalar_t__ string_compare (struct string*,struct string*) ;
+ int string_set_text (struct string*,char*) ;
 
 char *
 conf_set_bool(struct conf *cf, struct command *cmd, void *conf)

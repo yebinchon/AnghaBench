@@ -1,104 +1,82 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_3__ ;
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ sqlite_int64 ;
-typedef  int /*<<< orphan*/  sqlite3_vtab ;
-typedef  int /*<<< orphan*/  sqlite3_value ;
-typedef  int /*<<< orphan*/  sqlite3_stmt ;
-struct TYPE_16__ {int nDim2; scalar_t__ eCoordType; int iReinsertHeight; int nAux; int /*<<< orphan*/ * pWriteAux; int /*<<< orphan*/  db; int /*<<< orphan*/ * pReadRowid; scalar_t__ nNodeRef; } ;
+
+
+typedef struct TYPE_16__ TYPE_3__ ;
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
+typedef scalar_t__ sqlite_int64 ;
+typedef int sqlite3_vtab ;
+typedef int sqlite3_value ;
+typedef int sqlite3_stmt ;
+struct TYPE_16__ {int nDim2; scalar_t__ eCoordType; int iReinsertHeight; int nAux; int * pWriteAux; int db; int * pReadRowid; scalar_t__ nNodeRef; } ;
 struct TYPE_15__ {scalar_t__ iRowid; TYPE_1__* aCoord; } ;
 struct TYPE_14__ {scalar_t__ f; scalar_t__ i; } ;
-typedef  int /*<<< orphan*/  RtreeNode ;
-typedef  TYPE_2__ RtreeCell ;
-typedef  TYPE_3__ Rtree ;
+typedef int RtreeNode ;
+typedef TYPE_2__ RtreeCell ;
+typedef TYPE_3__ Rtree ;
 
-/* Variables and functions */
- int ChooseLeaf (TYPE_3__*,TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- scalar_t__ RTREE_COORD_REAL32 ; 
- int SQLITE_LOCKED_VTAB ; 
- scalar_t__ SQLITE_NULL ; 
- int SQLITE_OK ; 
- scalar_t__ SQLITE_REPLACE ; 
- int SQLITE_ROW ; 
- int /*<<< orphan*/  assert (int) ; 
- int nodeRelease (TYPE_3__*,int /*<<< orphan*/ *) ; 
- int rtreeConstraintError (TYPE_3__*,int) ; 
- int rtreeDeleteRowid (TYPE_3__*,scalar_t__) ; 
- int rtreeInsertCell (TYPE_3__*,int /*<<< orphan*/ *,TYPE_2__*,int /*<<< orphan*/ ) ; 
- int rtreeNewRowid (TYPE_3__*,scalar_t__*) ; 
- int /*<<< orphan*/  rtreeReference (TYPE_3__*) ; 
- int /*<<< orphan*/  rtreeRelease (TYPE_3__*) ; 
- scalar_t__ rtreeValueDown (int /*<<< orphan*/ *) ; 
- scalar_t__ rtreeValueUp (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_bind_int64 (int /*<<< orphan*/ *,int,scalar_t__) ; 
- int /*<<< orphan*/  sqlite3_bind_value (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- int sqlite3_reset (int /*<<< orphan*/ *) ; 
- int sqlite3_step (int /*<<< orphan*/ *) ; 
- void* sqlite3_value_int (int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3_value_int64 (int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3_value_type (int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3_vtab_on_conflict (int /*<<< orphan*/ ) ; 
+
+ int ChooseLeaf (TYPE_3__*,TYPE_2__*,int ,int **) ;
+ scalar_t__ RTREE_COORD_REAL32 ;
+ int SQLITE_LOCKED_VTAB ;
+ scalar_t__ SQLITE_NULL ;
+ int SQLITE_OK ;
+ scalar_t__ SQLITE_REPLACE ;
+ int SQLITE_ROW ;
+ int assert (int) ;
+ int nodeRelease (TYPE_3__*,int *) ;
+ int rtreeConstraintError (TYPE_3__*,int) ;
+ int rtreeDeleteRowid (TYPE_3__*,scalar_t__) ;
+ int rtreeInsertCell (TYPE_3__*,int *,TYPE_2__*,int ) ;
+ int rtreeNewRowid (TYPE_3__*,scalar_t__*) ;
+ int rtreeReference (TYPE_3__*) ;
+ int rtreeRelease (TYPE_3__*) ;
+ scalar_t__ rtreeValueDown (int *) ;
+ scalar_t__ rtreeValueUp (int *) ;
+ int sqlite3_bind_int64 (int *,int,scalar_t__) ;
+ int sqlite3_bind_value (int *,int,int *) ;
+ int sqlite3_reset (int *) ;
+ int sqlite3_step (int *) ;
+ void* sqlite3_value_int (int *) ;
+ scalar_t__ sqlite3_value_int64 (int *) ;
+ scalar_t__ sqlite3_value_type (int *) ;
+ scalar_t__ sqlite3_vtab_on_conflict (int ) ;
 
 __attribute__((used)) static int rtreeUpdate(
-  sqlite3_vtab *pVtab, 
-  int nData, 
-  sqlite3_value **aData, 
+  sqlite3_vtab *pVtab,
+  int nData,
+  sqlite3_value **aData,
   sqlite_int64 *pRowid
 ){
   Rtree *pRtree = (Rtree *)pVtab;
   int rc = SQLITE_OK;
-  RtreeCell cell;                 /* New cell to insert if nData>1 */
-  int bHaveRowid = 0;             /* Set to 1 after new rowid is determined */
+  RtreeCell cell;
+  int bHaveRowid = 0;
 
   if( pRtree->nNodeRef ){
-    /* Unable to write to the btree while another cursor is reading from it,
-    ** since the write might do a rebalance which would disrupt the read
-    ** cursor. */
+
+
+
     return SQLITE_LOCKED_VTAB;
   }
   rtreeReference(pRtree);
   assert(nData>=1);
 
-  cell.iRowid = 0;  /* Used only to suppress a compiler warning */
-
-  /* Constraint handling. A write operation on an r-tree table may return
-  ** SQLITE_CONSTRAINT for two reasons:
-  **
-  **   1. A duplicate rowid value, or
-  **   2. The supplied data violates the "x2>=x1" constraint.
-  **
-  ** In the first case, if the conflict-handling mode is REPLACE, then
-  ** the conflicting row can be removed before proceeding. In the second
-  ** case, SQLITE_CONSTRAINT must be returned regardless of the
-  ** conflict-handling mode specified by the user.
-  */
+  cell.iRowid = 0;
   if( nData>1 ){
     int ii;
     int nn = nData - 4;
 
     if( nn > pRtree->nDim2 ) nn = pRtree->nDim2;
-    /* Populate the cell.aCoord[] array. The first coordinate is aData[3].
-    **
-    ** NB: nData can only be less than nDim*2+3 if the rtree is mis-declared
-    ** with "column" that are interpreted as table constraints.
-    ** Example:  CREATE VIRTUAL TABLE bad USING rtree(x,y,CHECK(y>5));
-    ** This problem was discovered after years of use, so we silently ignore
-    ** these kinds of misdeclared tables to avoid breaking any legacy.
-    */
-
-#ifndef SQLITE_RTREE_INT_ONLY
     if( pRtree->eCoordType==RTREE_COORD_REAL32 ){
       for(ii=0; ii<nn; ii+=2){
         cell.aCoord[ii].f = rtreeValueDown(aData[ii+3]);
@@ -109,7 +87,7 @@ __attribute__((used)) static int rtreeUpdate(
         }
       }
     }else
-#endif
+
     {
       for(ii=0; ii<nn; ii+=2){
         cell.aCoord[ii].i = sqlite3_value_int(aData[ii+3]);
@@ -121,8 +99,8 @@ __attribute__((used)) static int rtreeUpdate(
       }
     }
 
-    /* If a rowid value was supplied, check if it is already present in 
-    ** the table. If so, the constraint has failed. */
+
+
     if( sqlite3_value_type(aData[2])!=SQLITE_NULL ){
       cell.iRowid = sqlite3_value_int64(aData[2]);
       if( sqlite3_value_type(aData[0])==SQLITE_NULL
@@ -145,23 +123,23 @@ __attribute__((used)) static int rtreeUpdate(
     }
   }
 
-  /* If aData[0] is not an SQL NULL value, it is the rowid of a
-  ** record to delete from the r-tree table. The following block does
-  ** just that.
-  */
+
+
+
+
   if( sqlite3_value_type(aData[0])!=SQLITE_NULL ){
     rc = rtreeDeleteRowid(pRtree, sqlite3_value_int64(aData[0]));
   }
 
-  /* If the aData[] array contains more than one element, elements
-  ** (aData[2]..aData[argc-1]) contain a new record to insert into
-  ** the r-tree structure.
-  */
+
+
+
+
   if( rc==SQLITE_OK && nData>1 ){
-    /* Insert the new record into the r-tree */
+
     RtreeNode *pLeaf = 0;
 
-    /* Figure out the rowid of the new row. */
+
     if( bHaveRowid==0 ){
       rc = rtreeNewRowid(pRtree, &cell.iRowid);
     }

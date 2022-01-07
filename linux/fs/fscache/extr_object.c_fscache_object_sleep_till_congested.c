@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wait_queue_head_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEFINE_WAIT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  add_wait_queue_exclusive (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  finish_wait (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fscache_object_cong_wait ; 
- int fscache_object_congested () ; 
- long schedule_timeout (long) ; 
- int /*<<< orphan*/ * this_cpu_ptr (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  wait ; 
+
+
+
+typedef int wait_queue_head_t ;
+
+
+ int DEFINE_WAIT (int ) ;
+ int add_wait_queue_exclusive (int *,int *) ;
+ int finish_wait (int *,int *) ;
+ int fscache_object_cong_wait ;
+ int fscache_object_congested () ;
+ long schedule_timeout (long) ;
+ int * this_cpu_ptr (int *) ;
+ int wait ;
 
 bool fscache_object_sleep_till_congested(signed long *timeoutp)
 {
-	wait_queue_head_t *cong_wq = this_cpu_ptr(&fscache_object_cong_wait);
-	DEFINE_WAIT(wait);
+ wait_queue_head_t *cong_wq = this_cpu_ptr(&fscache_object_cong_wait);
+ DEFINE_WAIT(wait);
 
-	if (fscache_object_congested())
-		return true;
+ if (fscache_object_congested())
+  return 1;
 
-	add_wait_queue_exclusive(cong_wq, &wait);
-	if (!fscache_object_congested())
-		*timeoutp = schedule_timeout(*timeoutp);
-	finish_wait(cong_wq, &wait);
+ add_wait_queue_exclusive(cong_wq, &wait);
+ if (!fscache_object_congested())
+  *timeoutp = schedule_timeout(*timeoutp);
+ finish_wait(cong_wq, &wait);
 
-	return fscache_object_congested();
+ return fscache_object_congested();
 }

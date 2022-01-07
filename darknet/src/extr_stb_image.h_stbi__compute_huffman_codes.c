@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int stbi_uc ;
-typedef  int /*<<< orphan*/  stbi__zhuffman ;
-struct TYPE_5__ {int /*<<< orphan*/  z_distance; int /*<<< orphan*/  z_length; } ;
-typedef  TYPE_1__ stbi__zbuf ;
-typedef  int /*<<< orphan*/  codelength_sizes ;
 
-/* Variables and functions */
- int /*<<< orphan*/  STBI_ASSERT (int) ; 
- int /*<<< orphan*/  memset (int*,int,int) ; 
- int stbi__err (char*,char*) ; 
- int /*<<< orphan*/  stbi__zbuild_huffman (int /*<<< orphan*/ *,int*,int) ; 
- int stbi__zhuffman_decode (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int stbi__zreceive (TYPE_1__*,int) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int stbi_uc ;
+typedef int stbi__zhuffman ;
+struct TYPE_5__ {int z_distance; int z_length; } ;
+typedef TYPE_1__ stbi__zbuf ;
+typedef int codelength_sizes ;
+
+
+ int STBI_ASSERT (int) ;
+ int memset (int*,int,int) ;
+ int stbi__err (char*,char*) ;
+ int stbi__zbuild_huffman (int *,int*,int) ;
+ int stbi__zhuffman_decode (TYPE_1__*,int *) ;
+ int stbi__zreceive (TYPE_1__*,int) ;
 
 __attribute__((used)) static int stbi__compute_huffman_codes(stbi__zbuf *a)
 {
    static const stbi_uc length_dezigzag[19] = { 16,17,18,0,8,7,9,6,10,5,11,4,12,3,13,2,14,1,15 };
    stbi__zhuffman z_codelength;
-   stbi_uc lencodes[286+32+137];//padding for maximum single op
+   stbi_uc lencodes[286+32+137];
    stbi_uc codelength_sizes[19];
    int i,n;
 
-   int hlit  = stbi__zreceive(a,5) + 257;
+   int hlit = stbi__zreceive(a,5) + 257;
    int hdist = stbi__zreceive(a,5) + 1;
    int hclen = stbi__zreceive(a,4) + 4;
-   int ntot  = hlit + hdist;
+   int ntot = hlit + hdist;
 
    memset(codelength_sizes, 0, sizeof(codelength_sizes));
    for (i=0; i < hclen; ++i) {

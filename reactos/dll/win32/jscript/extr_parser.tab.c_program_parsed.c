@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  source_elements_t ;
-struct TYPE_3__ {int /*<<< orphan*/  hres; int /*<<< orphan*/  lexer_error; int /*<<< orphan*/ * source; } ;
-typedef  TYPE_1__ parser_ctx_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  S_OK ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int source_elements_t ;
+struct TYPE_3__ {int hres; int lexer_error; int * source; } ;
+typedef TYPE_1__ parser_ctx_t ;
+
+
+ int S_OK ;
 
 __attribute__((used)) static void program_parsed(parser_ctx_t *ctx, source_elements_t *source)
 {

@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  quant ;
+
+
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int quant ;
 struct TYPE_9__ {int* quantization_index; scalar_t__* quantization_index_delta; } ;
-typedef  TYPE_1__ VAQMatrixBufferVP8 ;
+typedef TYPE_1__ VAQMatrixBufferVP8 ;
 struct TYPE_10__ {int q_index_p; int q_index_i; } ;
-typedef  TYPE_2__ VAAPIEncodeVP8Context ;
+typedef TYPE_2__ VAAPIEncodeVP8Context ;
 struct TYPE_11__ {scalar_t__ type; } ;
-typedef  TYPE_3__ VAAPIEncodePicture ;
+typedef TYPE_3__ VAAPIEncodePicture ;
 struct TYPE_12__ {TYPE_2__* priv_data; } ;
-typedef  TYPE_4__ AVCodecContext ;
+typedef TYPE_4__ AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_EOF ; 
- int /*<<< orphan*/  EINVAL ; 
- scalar_t__ PICTURE_TYPE_P ; 
- int VAQMatrixBufferType ; 
- int /*<<< orphan*/  memcpy (char*,TYPE_1__*,int) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_EOF ;
+ int EINVAL ;
+ scalar_t__ PICTURE_TYPE_P ;
+ int VAQMatrixBufferType ;
+ int memcpy (char*,TYPE_1__*,int) ;
+ int memset (TYPE_1__*,int ,int) ;
 
 __attribute__((used)) static int vaapi_encode_vp8_write_quant_table(AVCodecContext *avctx,
                                               VAAPIEncodePicture *pic,
@@ -47,7 +47,7 @@ __attribute__((used)) static int vaapi_encode_vp8_write_quant_table(AVCodecConte
 
     if (*data_len < sizeof(quant))
         return AVERROR(EINVAL);
-    *type     = VAQMatrixBufferType;
+    *type = VAQMatrixBufferType;
     *data_len = sizeof(quant);
 
     memset(&quant, 0, sizeof(quant));

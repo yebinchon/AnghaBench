@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  scalar_t__ uint64_t ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef scalar_t__ uint64_t ;
 struct timespec {int dummy; } ;
-struct TYPE_4__ {scalar_t__ state; int etag_exists; scalar_t__ style; scalar_t__ content_length; scalar_t__ written_compressed; scalar_t__ disk_fd; scalar_t__ mtime; scalar_t__ url; scalar_t__ etag; int /*<<< orphan*/  written_uncompressed; scalar_t__ allow_sparse; int /*<<< orphan*/  checksum; scalar_t__ checksum_context; int /*<<< orphan*/ * curl; } ;
-typedef  TYPE_1__ PullJob ;
-typedef  int /*<<< orphan*/  CurlGlue ;
-typedef  scalar_t__ CURLcode ;
-typedef  int /*<<< orphan*/  CURL ;
+struct TYPE_4__ {scalar_t__ state; int etag_exists; scalar_t__ style; scalar_t__ content_length; scalar_t__ written_compressed; scalar_t__ disk_fd; scalar_t__ mtime; scalar_t__ url; scalar_t__ etag; int written_uncompressed; scalar_t__ allow_sparse; int checksum; scalar_t__ checksum_context; int * curl; } ;
+typedef TYPE_1__ PullJob ;
+typedef int CurlGlue ;
+typedef scalar_t__ CURLcode ;
+typedef int CURL ;
 
-/* Variables and functions */
- scalar_t__ CURLE_OK ; 
- int /*<<< orphan*/  CURLINFO_PRIVATE ; 
- int /*<<< orphan*/  CURLINFO_RESPONSE_CODE ; 
- int EIO ; 
- int /*<<< orphan*/  GCRY_MD_SHA256 ; 
- scalar_t__ IN_SET (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PULL_JOB_DONE ; 
- int /*<<< orphan*/  PULL_JOB_FAILED ; 
- scalar_t__ PULL_JOB_RUNNING ; 
- scalar_t__ VERIFICATION_PER_DIRECTORY ; 
- scalar_t__ VERIFICATION_PER_FILE ; 
- scalar_t__ curl_easy_getinfo (int /*<<< orphan*/ *,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  curl_easy_strerror (scalar_t__) ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  fd_setcrtime (scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  fsetxattr (scalar_t__,char*,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ ftruncate (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  futimens (scalar_t__,struct timespec*) ; 
- int /*<<< orphan*/  gcry_md_get_algo_dlen (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * gcry_md_read (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hexmem (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  log_debug (char*,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  log_error (char*,...) ; 
- int log_error_errno (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  log_info (char*) ; 
- int log_oom () ; 
- int /*<<< orphan*/  pull_job_finish (TYPE_1__*,int) ; 
- int pull_job_restart (TYPE_1__*) ; 
- int /*<<< orphan*/  strlen (scalar_t__) ; 
- int /*<<< orphan*/  timespec_store (struct timespec*,scalar_t__) ; 
+
+ scalar_t__ CURLE_OK ;
+ int CURLINFO_PRIVATE ;
+ int CURLINFO_RESPONSE_CODE ;
+ int EIO ;
+ int GCRY_MD_SHA256 ;
+ scalar_t__ IN_SET (scalar_t__,int ,int ) ;
+ int PULL_JOB_DONE ;
+ int PULL_JOB_FAILED ;
+ scalar_t__ PULL_JOB_RUNNING ;
+ scalar_t__ VERIFICATION_PER_DIRECTORY ;
+ scalar_t__ VERIFICATION_PER_FILE ;
+ scalar_t__ curl_easy_getinfo (int *,int ,...) ;
+ int curl_easy_strerror (scalar_t__) ;
+ int errno ;
+ int fd_setcrtime (scalar_t__,scalar_t__) ;
+ int fsetxattr (scalar_t__,char*,scalar_t__,int ,int ) ;
+ scalar_t__ ftruncate (scalar_t__,int ) ;
+ int futimens (scalar_t__,struct timespec*) ;
+ int gcry_md_get_algo_dlen (int ) ;
+ int * gcry_md_read (scalar_t__,int ) ;
+ int hexmem (int *,int ) ;
+ int log_debug (char*,scalar_t__,int ) ;
+ int log_error (char*,...) ;
+ int log_error_errno (int ,char*) ;
+ int log_info (char*) ;
+ int log_oom () ;
+ int pull_job_finish (TYPE_1__*,int) ;
+ int pull_job_restart (TYPE_1__*) ;
+ int strlen (scalar_t__) ;
+ int timespec_store (struct timespec*,scalar_t__) ;
 
 void pull_job_curl_on_finished(CurlGlue *g, CURL *curl, CURLcode result) {
-        PullJob *j = NULL;
+        PullJob *j = ((void*)0);
         CURLcode code;
         long status;
         int r;
@@ -77,13 +77,13 @@ void pull_job_curl_on_finished(CurlGlue *g, CURL *curl, CURLcode result) {
                 goto finish;
         } else if (status == 304) {
                 log_info("Image already downloaded. Skipping download.");
-                j->etag_exists = true;
+                j->etag_exists = 1;
                 r = 0;
                 goto finish;
         } else if (status >= 300) {
                 if (status == 404 && j->style == VERIFICATION_PER_FILE) {
 
-                        /* retry pull job with SHA256SUMS file */
+
                         r = pull_job_restart(j);
                         if (r < 0)
                                 goto finish;
@@ -143,8 +143,8 @@ void pull_job_curl_on_finished(CurlGlue *g, CURL *curl, CURLcode result) {
         }
 
         if (j->disk_fd >= 0 && j->allow_sparse) {
-                /* Make sure the file size is right, in case the file was
-                 * sparse and we just seeked for the last part */
+
+
 
                 if (ftruncate(j->disk_fd, j->written_uncompressed) < 0) {
                         r = log_error_errno(errno, "Failed to truncate file: %m");

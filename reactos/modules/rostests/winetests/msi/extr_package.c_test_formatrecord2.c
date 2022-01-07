@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT ;
-typedef  int MSIHANDLE ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DeleteFileA (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ERROR_INSTALL_PACKAGE_REJECTED ; 
- int /*<<< orphan*/  ERROR_SUCCESS ; 
- int /*<<< orphan*/  MsiCloseHandle (int) ; 
- int MsiCreateRecord (int) ; 
- int /*<<< orphan*/  MsiFormatRecordA (int,int,char*,int*) ; 
- int /*<<< orphan*/  MsiRecordSetStringA (int,int,char*) ; 
- int /*<<< orphan*/  MsiSetPropertyA (int,char*,char*) ; 
- int /*<<< orphan*/  SetEnvironmentVariableA (char*,char*) ; 
- int /*<<< orphan*/  create_package_db () ; 
- int /*<<< orphan*/  msifile ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  package_from_db (int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  skip (char*) ; 
- scalar_t__ strcmp (char*,char*) ; 
+
+
+
+typedef int UINT ;
+typedef int MSIHANDLE ;
+typedef int DWORD ;
+
+
+ int DeleteFileA (int ) ;
+ int ERROR_INSTALL_PACKAGE_REJECTED ;
+ int ERROR_SUCCESS ;
+ int MsiCloseHandle (int) ;
+ int MsiCreateRecord (int) ;
+ int MsiFormatRecordA (int,int,char*,int*) ;
+ int MsiRecordSetStringA (int,int,char*) ;
+ int MsiSetPropertyA (int,char*,char*) ;
+ int SetEnvironmentVariableA (char*,char*) ;
+ int create_package_db () ;
+ int msifile ;
+ int ok (int,char*,...) ;
+ int package_from_db (int ,int*) ;
+ int skip (char*) ;
+ scalar_t__ strcmp (char*,char*) ;
 
 __attribute__((used)) static void test_formatrecord2(void)
 {

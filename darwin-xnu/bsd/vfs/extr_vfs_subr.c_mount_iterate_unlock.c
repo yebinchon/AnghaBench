@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* mount_t ;
-struct TYPE_3__ {int /*<<< orphan*/  mnt_iter_lock; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  lck_mtx_unlock (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef TYPE_1__* mount_t ;
+struct TYPE_3__ {int mnt_iter_lock; } ;
+
+
+ int lck_mtx_unlock (int *) ;
 
 void
 mount_iterate_unlock(mount_t mp)
 {
-	lck_mtx_unlock(&mp->mnt_iter_lock);
+ lck_mtx_unlock(&mp->mnt_iter_lock);
 }

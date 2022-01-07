@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  URLContext ;
-struct TYPE_3__ {int swfhash_len; int /*<<< orphan*/  swfhash; int /*<<< orphan*/  swfsize; int /*<<< orphan*/ * swfverification; } ;
-typedef  TYPE_1__ RTMPContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  bytestream_put_be32 (int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bytestream_put_byte (int /*<<< orphan*/ **,int) ; 
- int ff_rtmp_calc_digest (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int URLContext ;
+struct TYPE_3__ {int swfhash_len; int swfhash; int swfsize; int * swfverification; } ;
+typedef TYPE_1__ RTMPContext ;
+
+
+ int AVERROR (int ) ;
+ int AV_LOG_ERROR ;
+ int EINVAL ;
+ int av_log (int *,int ,char*) ;
+ int bytestream_put_be32 (int **,int ) ;
+ int bytestream_put_byte (int **,int) ;
+ int ff_rtmp_calc_digest (int ,int,int ,int *,int,int *) ;
 
 __attribute__((used)) static int rtmp_calc_swf_verification(URLContext *s, RTMPContext *rt,
                                       uint8_t *buf)

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct android_app {int sensor_state_mask; int /*<<< orphan*/  sensorEventQueue; scalar_t__ accelerometerSensor; } ;
-struct TYPE_7__ {int /*<<< orphan*/  z; int /*<<< orphan*/  y; int /*<<< orphan*/  x; } ;
+
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct android_app {int sensor_state_mask; int sensorEventQueue; scalar_t__ accelerometerSensor; } ;
+struct TYPE_7__ {int z; int y; int x; } ;
 struct TYPE_9__ {TYPE_1__ accelerometer_state; } ;
-typedef  TYPE_3__ android_input_t ;
-struct TYPE_8__ {int /*<<< orphan*/  z; int /*<<< orphan*/  y; int /*<<< orphan*/  x; } ;
+typedef TYPE_3__ android_input_t ;
+struct TYPE_8__ {int z; int y; int x; } ;
 struct TYPE_10__ {TYPE_2__ acceleration; } ;
-typedef  TYPE_4__ ASensorEvent ;
+typedef TYPE_4__ ASensorEvent ;
 
-/* Variables and functions */
- scalar_t__ ASensorEventQueue_getEvents (int /*<<< orphan*/ ,TYPE_4__*,int) ; 
- int RETRO_SENSOR_ACCELEROMETER_ENABLE ; 
- int UINT64_C (int) ; 
- scalar_t__ g_android ; 
+
+ scalar_t__ ASensorEventQueue_getEvents (int ,TYPE_4__*,int) ;
+ int RETRO_SENSOR_ACCELEROMETER_ENABLE ;
+ int UINT64_C (int) ;
+ scalar_t__ g_android ;
 
 __attribute__((used)) static void android_input_poll_user(android_input_t *android)
 {

@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WINDOW ;
-struct TYPE_9__ {int /*<<< orphan*/ * items; TYPE_1__* list; } ;
-struct TYPE_8__ {int /*<<< orphan*/  top_index; int /*<<< orphan*/ * win; } ;
-typedef  TYPE_1__ MY_DATA ;
-typedef  int /*<<< orphan*/  DIALOG_LISTITEM ;
-typedef  TYPE_2__ ALL_DATA ;
 
-/* Variables and functions */
- scalar_t__ ERR ; 
- int /*<<< orphan*/  TRACE (char*) ; 
- int getmaxy (int /*<<< orphan*/ *) ; 
- int index2row (TYPE_2__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/ * myItem (TYPE_1__*,int) ; 
- int /*<<< orphan*/  mySide (int) ; 
- scalar_t__ okIndex (TYPE_2__*,int) ; 
- int /*<<< orphan*/  print_item (TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int) ; 
- scalar_t__ waddch (int /*<<< orphan*/ *,char) ; 
- scalar_t__ wmove (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wnoutrefresh (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int WINDOW ;
+struct TYPE_9__ {int * items; TYPE_1__* list; } ;
+struct TYPE_8__ {int top_index; int * win; } ;
+typedef TYPE_1__ MY_DATA ;
+typedef int DIALOG_LISTITEM ;
+typedef TYPE_2__ ALL_DATA ;
+
+
+ scalar_t__ ERR ;
+ int TRACE (char*) ;
+ int getmaxy (int *) ;
+ int index2row (TYPE_2__*,int ,int) ;
+ int * myItem (TYPE_1__*,int) ;
+ int mySide (int) ;
+ scalar_t__ okIndex (TYPE_2__*,int) ;
+ int print_item (TYPE_2__*,int *,int *,int,int) ;
+ scalar_t__ waddch (int *,char) ;
+ scalar_t__ wmove (int *,int,int ) ;
+ int wnoutrefresh (int *) ;
 
 __attribute__((used)) static void
 print_1_list(ALL_DATA * all,
-	     int choice,
-	     int selected)
+      int choice,
+      int selected)
 {
     MY_DATA *data = all->list + selected;
     DIALOG_LISTITEM *target = (okIndex(all, choice)
-			       ? all->items + choice
-			       : 0);
+          ? all->items + choice
+          : 0);
     WINDOW *win = data->win;
     int i, j;
     int last = 0;
@@ -49,23 +49,23 @@ print_1_list(ALL_DATA * all,
 
     TRACE(("! print_1_list %d %s, top %d\n", choice, mySide(selected), top_row));
     for (i = j = 0; j < max_rows; i++) {
-	int ii = i + top_row;
-	if (ii < 0) {
-	    continue;
-	} else if (myItem(data, ii)) {
-	    print_item(all,
-		       win,
-		       myItem(data, ii),
-		       j, myItem(data, ii) == target);
-	    last = ++j;
-	} else {
-	    break;
-	}
+ int ii = i + top_row;
+ if (ii < 0) {
+     continue;
+ } else if (myItem(data, ii)) {
+     print_item(all,
+         win,
+         myItem(data, ii),
+         j, myItem(data, ii) == target);
+     last = ++j;
+ } else {
+     break;
+ }
     }
     if (wmove(win, last, 0) != ERR) {
-	while (waddch(win, ' ') != ERR) {
-	    ;
-	}
+ while (waddch(win, ' ') != ERR) {
+     ;
+ }
     }
     (void) wnoutrefresh(win);
 }

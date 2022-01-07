@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ ylength ;
-struct TYPE_2__ {int num_events; int /*<<< orphan*/ * events; } ;
-typedef  TYPE_1__ ipc_client ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DLOG (char*,...) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,unsigned char const*,scalar_t__) ; 
- int /*<<< orphan*/  scalloc (scalar_t__,int) ; 
- int /*<<< orphan*/ * srealloc (int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef scalar_t__ ylength ;
+struct TYPE_2__ {int num_events; int * events; } ;
+typedef TYPE_1__ ipc_client ;
+
+
+ int DLOG (char*,...) ;
+ int memcpy (int ,unsigned char const*,scalar_t__) ;
+ int scalloc (scalar_t__,int) ;
+ int * srealloc (int *,int) ;
 
 __attribute__((used)) static int add_subscription(void *extra, const unsigned char *s,
                             ylength len) {
@@ -30,8 +30,8 @@ __attribute__((used)) static int add_subscription(void *extra, const unsigned ch
 
     client->num_events++;
     client->events = srealloc(client->events, client->num_events * sizeof(char *));
-    /* We copy the string because it is not null-terminated and strndup()
-     * is missing on some BSD systems */
+
+
     client->events[event] = scalloc(len + 1, 1);
     memcpy(client->events[event], s, len);
 

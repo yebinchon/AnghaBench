@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {scalar_t__ length; } ;
-struct private_key {int /*<<< orphan*/  private_key; TYPE_1__ localKeyId; } ;
-struct TYPE_6__ {TYPE_1__* local_key_id; int /*<<< orphan*/  match; } ;
-typedef  TYPE_2__ hx509_query ;
-typedef  int /*<<< orphan*/  hx509_context ;
-typedef  int /*<<< orphan*/  hx509_certs ;
-typedef  int /*<<< orphan*/  hx509_cert ;
+struct private_key {int private_key; TYPE_1__ localKeyId; } ;
+struct TYPE_6__ {TYPE_1__* local_key_id; int match; } ;
+typedef TYPE_2__ hx509_query ;
+typedef int hx509_context ;
+typedef int hx509_certs ;
+typedef int hx509_cert ;
 
-/* Variables and functions */
- int HX509_LOCAL_ATTRIBUTE_MISSING ; 
- int /*<<< orphan*/  HX509_QUERY_MATCH_LOCAL_KEY_ID ; 
- int /*<<< orphan*/  _hx509_cert_assign_key (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  _hx509_query_clear (TYPE_2__*) ; 
- int /*<<< orphan*/  hx509_cert_free (int /*<<< orphan*/ ) ; 
- int hx509_certs_find (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_2__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  hx509_set_error_string (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,char*) ; 
+
+ int HX509_LOCAL_ATTRIBUTE_MISSING ;
+ int HX509_QUERY_MATCH_LOCAL_KEY_ID ;
+ int _hx509_cert_assign_key (int ,int ) ;
+ int _hx509_query_clear (TYPE_2__*) ;
+ int hx509_cert_free (int ) ;
+ int hx509_certs_find (int ,int ,TYPE_2__*,int *) ;
+ int hx509_set_error_string (int ,int ,int,char*) ;
 
 __attribute__((used)) static int
 match_localkeyid(hx509_context context,
-		 struct private_key *value,
-		 hx509_certs certs)
+   struct private_key *value,
+   hx509_certs certs)
 {
     hx509_cert cert;
     hx509_query q;
     int ret;
 
     if (value->localKeyId.length == 0) {
-	hx509_set_error_string(context, 0, HX509_LOCAL_ATTRIBUTE_MISSING,
-			       "No local key attribute on private key");
-	return HX509_LOCAL_ATTRIBUTE_MISSING;
+ hx509_set_error_string(context, 0, HX509_LOCAL_ATTRIBUTE_MISSING,
+          "No local key attribute on private key");
+ return HX509_LOCAL_ATTRIBUTE_MISSING;
     }
 
     _hx509_query_clear(&q);
@@ -52,9 +52,9 @@ match_localkeyid(hx509_context context,
     ret = hx509_certs_find(context, certs, &q, &cert);
     if (ret == 0) {
 
-	if (value->private_key)
-	    _hx509_cert_assign_key(cert, value->private_key);
-	hx509_cert_free(cert);
+ if (value->private_key)
+     _hx509_cert_assign_key(cert, value->private_key);
+ hx509_cert_free(cert);
     }
     return ret;
 }

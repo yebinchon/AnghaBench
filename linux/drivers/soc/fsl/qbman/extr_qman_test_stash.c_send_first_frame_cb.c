@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  WARN_ON (int) ; 
- scalar_t__ send_first_frame (int /*<<< orphan*/ *) ; 
+ int WARN_ON (int) ;
+ scalar_t__ send_first_frame (int *) ;
 
 __attribute__((used)) static void send_first_frame_cb(void *ignore)
 {
-	if (send_first_frame(NULL))
-		WARN_ON(1);
+ if (send_first_frame(((void*)0)))
+  WARN_ON(1);
 }

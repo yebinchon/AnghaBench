@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ocfs2_super {int /*<<< orphan*/  dc_task_lock; int /*<<< orphan*/  blocked_lock_count; int /*<<< orphan*/  blocked_lock_list; } ;
-struct ocfs2_lock_res {int l_flags; int /*<<< orphan*/  l_blocked_list; int /*<<< orphan*/  l_name; int /*<<< orphan*/  l_lock; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ML_BASTS ; 
- int OCFS2_LOCK_FREEING ; 
- int /*<<< orphan*/  OCFS2_LOCK_QUEUED ; 
- int /*<<< orphan*/  assert_spin_locked (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  list_add_tail (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ list_empty (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lockres_or_flags (struct ocfs2_lock_res*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mlog (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
+
+
+
+struct ocfs2_super {int dc_task_lock; int blocked_lock_count; int blocked_lock_list; } ;
+struct ocfs2_lock_res {int l_flags; int l_blocked_list; int l_name; int l_lock; } ;
+
+
+ int ML_BASTS ;
+ int OCFS2_LOCK_FREEING ;
+ int OCFS2_LOCK_QUEUED ;
+ int assert_spin_locked (int *) ;
+ int list_add_tail (int *,int *) ;
+ scalar_t__ list_empty (int *) ;
+ int lockres_or_flags (struct ocfs2_lock_res*,int ) ;
+ int mlog (int ,char*,int ,int) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
 
 __attribute__((used)) static void ocfs2_schedule_blocked_lock(struct ocfs2_super *osb,
-					struct ocfs2_lock_res *lockres)
+     struct ocfs2_lock_res *lockres)
 {
-	unsigned long flags;
+ unsigned long flags;
 
-	assert_spin_locked(&lockres->l_lock);
+ assert_spin_locked(&lockres->l_lock);
 
-	if (lockres->l_flags & OCFS2_LOCK_FREEING) {
-		/* Do not schedule a lock for downconvert when it's on
-		 * the way to destruction - any nodes wanting access
-		 * to the resource will get it soon. */
-		mlog(ML_BASTS, "lockres %s won't be scheduled: flags 0x%lx\n",
-		     lockres->l_name, lockres->l_flags);
-		return;
-	}
+ if (lockres->l_flags & OCFS2_LOCK_FREEING) {
 
-	lockres_or_flags(lockres, OCFS2_LOCK_QUEUED);
 
-	spin_lock_irqsave(&osb->dc_task_lock, flags);
-	if (list_empty(&lockres->l_blocked_list)) {
-		list_add_tail(&lockres->l_blocked_list,
-			      &osb->blocked_lock_list);
-		osb->blocked_lock_count++;
-	}
-	spin_unlock_irqrestore(&osb->dc_task_lock, flags);
+
+  mlog(ML_BASTS, "lockres %s won't be scheduled: flags 0x%lx\n",
+       lockres->l_name, lockres->l_flags);
+  return;
+ }
+
+ lockres_or_flags(lockres, OCFS2_LOCK_QUEUED);
+
+ spin_lock_irqsave(&osb->dc_task_lock, flags);
+ if (list_empty(&lockres->l_blocked_list)) {
+  list_add_tail(&lockres->l_blocked_list,
+         &osb->blocked_lock_list);
+  osb->blocked_lock_count++;
+ }
+ spin_unlock_irqrestore(&osb->dc_task_lock, flags);
 }

@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_19__   TYPE_4__ ;
-typedef  struct TYPE_18__   TYPE_2__ ;
-typedef  struct TYPE_17__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  TYPE_1__* t_Handle ;
-typedef  int /*<<< orphan*/  t_FmPcdStatsParams ;
-struct TYPE_18__ {int /*<<< orphan*/  type; } ;
-typedef  TYPE_2__ t_FmPcdManipParams ;
-struct TYPE_17__ {scalar_t__ opcode; struct TYPE_17__* h_FmPcd; struct TYPE_17__* h_Ad; scalar_t__ muramAllocate; int /*<<< orphan*/  manipParams; int /*<<< orphan*/  type; } ;
-typedef  TYPE_1__ t_FmPcdManip ;
-struct TYPE_19__ {int /*<<< orphan*/  h_FmMuram; } ;
-typedef  TYPE_4__ t_FmPcd ;
-typedef  scalar_t__ t_Error ;
 
-/* Variables and functions */
- scalar_t__ CheckManipParamsAndSetType (TYPE_1__*,TYPE_2__*) ; 
- scalar_t__ CheckStatsParamsAndSetType (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  E_INVALID_VALUE ; 
- int /*<<< orphan*/  E_NOT_SUPPORTED ; 
- int /*<<< orphan*/  E_NO_MEMORY ; 
- scalar_t__ FM_MURAM_AllocMem (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int FM_PCD_CC_AD_ENTRY_SIZE ; 
- int /*<<< orphan*/  FM_PCD_CC_AD_TABLE_ALIGN ; 
- scalar_t__ HMAN_OC_CAPWAP_REASSEMBLY ; 
- scalar_t__ HMAN_OC_IP_REASSEMBLY ; 
- int /*<<< orphan*/  MAJOR ; 
- int /*<<< orphan*/  MemSet8 (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  REPORT_ERROR (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ReleaseManipHandler (TYPE_1__*,TYPE_4__*) ; 
- int /*<<< orphan*/  XX_Free (TYPE_1__*) ; 
- scalar_t__ XX_Malloc (int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,TYPE_1__**,int) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_19__ TYPE_4__ ;
+typedef struct TYPE_18__ TYPE_2__ ;
+typedef struct TYPE_17__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef TYPE_1__* t_Handle ;
+typedef int t_FmPcdStatsParams ;
+struct TYPE_18__ {int type; } ;
+typedef TYPE_2__ t_FmPcdManipParams ;
+struct TYPE_17__ {scalar_t__ opcode; struct TYPE_17__* h_FmPcd; struct TYPE_17__* h_Ad; scalar_t__ muramAllocate; int manipParams; int type; } ;
+typedef TYPE_1__ t_FmPcdManip ;
+struct TYPE_19__ {int h_FmMuram; } ;
+typedef TYPE_4__ t_FmPcd ;
+typedef scalar_t__ t_Error ;
+
+
+ scalar_t__ CheckManipParamsAndSetType (TYPE_1__*,TYPE_2__*) ;
+ scalar_t__ CheckStatsParamsAndSetType (TYPE_1__*,int *) ;
+ int E_INVALID_VALUE ;
+ int E_NOT_SUPPORTED ;
+ int E_NO_MEMORY ;
+ scalar_t__ FM_MURAM_AllocMem (int ,int,int ) ;
+ int FM_PCD_CC_AD_ENTRY_SIZE ;
+ int FM_PCD_CC_AD_TABLE_ALIGN ;
+ scalar_t__ HMAN_OC_CAPWAP_REASSEMBLY ;
+ scalar_t__ HMAN_OC_IP_REASSEMBLY ;
+ int MAJOR ;
+ int MemSet8 (TYPE_1__*,int ,int) ;
+ int REPORT_ERROR (int ,int ,char*) ;
+ int ReleaseManipHandler (TYPE_1__*,TYPE_4__*) ;
+ int XX_Free (TYPE_1__*) ;
+ scalar_t__ XX_Malloc (int) ;
+ int memcpy (int *,TYPE_1__**,int) ;
+ int memset (TYPE_1__*,int ,int) ;
 
 __attribute__((used)) static t_Handle ManipOrStatsSetNode(t_Handle h_FmPcd, t_Handle *p_Params,
                                     bool stats)
@@ -55,7 +55,7 @@ __attribute__((used)) static t_Handle ManipOrStatsSetNode(t_Handle h_FmPcd, t_Ha
     if (!p_Manip)
     {
         REPORT_ERROR(MAJOR, E_NO_MEMORY, ("No memory"));
-        return NULL;
+        return ((void*)0);
     }
     memset(p_Manip, 0, sizeof(t_FmPcdManip));
 
@@ -66,28 +66,28 @@ __attribute__((used)) static t_Handle ManipOrStatsSetNode(t_Handle h_FmPcd, t_Ha
     if (!stats)
         err = CheckManipParamsAndSetType(p_Manip,
                                          (t_FmPcdManipParams *)p_Params);
-#if (defined(FM_CAPWAP_SUPPORT) && (DPAA_VERSION == 10))
-    else
-        err = CheckStatsParamsAndSetType(p_Manip, (t_FmPcdStatsParams *)p_Params);
-#else /* not (defined(FM_CAPWAP_SUPPORT) && (DPAA_VERSION == 10)) */
+
+
+
+
     else
     {
         REPORT_ERROR(MAJOR, E_NOT_SUPPORTED, ("Statistics node!"));
         XX_Free(p_Manip);
-        return NULL;
+        return ((void*)0);
     }
-#endif /* (defined(FM_CAPWAP_SUPPORT) && (DPAA_VERSION == 10)) */
+
     if (err)
     {
         REPORT_ERROR(MAJOR, E_INVALID_VALUE, ("Invalid header manipulation type"));
         XX_Free(p_Manip);
-        return NULL;
+        return ((void*)0);
     }
 
     if ((p_Manip->opcode != HMAN_OC_IP_REASSEMBLY) && (p_Manip->opcode != HMAN_OC_CAPWAP_REASSEMBLY))
     {
-        /* In Case of reassembly manipulation the reassembly action descriptor will
-         be defines later on */
+
+
         if (p_Manip->muramAllocate)
         {
             p_Manip->h_Ad = (t_Handle)FM_MURAM_AllocMem(
@@ -98,7 +98,7 @@ __attribute__((used)) static t_Handle ManipOrStatsSetNode(t_Handle h_FmPcd, t_Ha
                 REPORT_ERROR(MAJOR, E_NO_MEMORY, ("MURAM alloc for Manipulation action descriptor"));
                 ReleaseManipHandler(p_Manip, p_FmPcd);
                 XX_Free(p_Manip);
-                return NULL;
+                return ((void*)0);
             }
 
             MemSet8(p_Manip->h_Ad, 0, FM_PCD_CC_AD_ENTRY_SIZE);
@@ -112,7 +112,7 @@ __attribute__((used)) static t_Handle ManipOrStatsSetNode(t_Handle h_FmPcd, t_Ha
                 REPORT_ERROR(MAJOR, E_NO_MEMORY, ("Allocation of Manipulation action descriptor"));
                 ReleaseManipHandler(p_Manip, p_FmPcd);
                 XX_Free(p_Manip);
-                return NULL;
+                return ((void*)0);
             }
 
             memset(p_Manip->h_Ad, 0, FM_PCD_CC_AD_ENTRY_SIZE * sizeof(uint8_t));

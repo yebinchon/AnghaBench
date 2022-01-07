@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  hx509_private_key ;
-typedef  int /*<<< orphan*/  hx509_context ;
-typedef  int /*<<< orphan*/  hx509_cert ;
-typedef  int /*<<< orphan*/  hx509_ca_tbs ;
 
-/* Variables and functions */
- int ca_sign (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int hx509_private_key ;
+typedef int hx509_context ;
+typedef int hx509_cert ;
+typedef int hx509_ca_tbs ;
+
+
+ int ca_sign (int ,int ,int ,int *,int *,int *) ;
 
 int
 hx509_ca_sign_self(hx509_context context,
-		   hx509_ca_tbs tbs,
-		   hx509_private_key signer,
-		   hx509_cert *certificate)
+     hx509_ca_tbs tbs,
+     hx509_private_key signer,
+     hx509_cert *certificate)
 {
     return ca_sign(context,
-		   tbs,
-		   signer,
-		   NULL,
-		   NULL,
-		   certificate);
+     tbs,
+     signer,
+     ((void*)0),
+     ((void*)0),
+     certificate);
 }

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sql ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int sql ;
 struct TYPE_6__ {char* repo_id; TYPE_1__* manager; } ;
-struct TYPE_5__ {int /*<<< orphan*/  db; } ;
-typedef  TYPE_2__ CloneTask ;
+struct TYPE_5__ {int db; } ;
+typedef TYPE_2__ CloneTask ;
 
-/* Variables and functions */
- int /*<<< orphan*/  load_more_info_cb ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,char*) ; 
- int /*<<< orphan*/  sqlite_foreach_selected_row (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,TYPE_2__*) ; 
+
+ int load_more_info_cb ;
+ int snprintf (char*,int,char*,char*) ;
+ int sqlite_foreach_selected_row (int ,char*,int ,TYPE_2__*) ;
 
 __attribute__((used)) static void
 load_clone_more_info (CloneTask *task)

@@ -1,61 +1,61 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vertex_data ;
-struct TYPE_3__ {void* attr_vertex2; void* attr_vertex; int /*<<< orphan*/  buf; int /*<<< orphan*/  screen_height; int /*<<< orphan*/  screen_width; int /*<<< orphan*/  tex; int /*<<< orphan*/  tex_fb; void* program2; void* unif_centre2; void* unif_offset2; void* unif_scale2; scalar_t__ verbose; void* mshader; void* vshader; void* program; void* unif_centre; void* unif_tex; void* unif_offset; void* unif_scale; void* unif_color; void* fshader; } ;
-typedef  double GLfloat ;
-typedef  char GLchar ;
-typedef  TYPE_1__ CUBE_STATE_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GL_ARRAY_BUFFER ; 
- int /*<<< orphan*/  GL_COLOR_ATTACHMENT0 ; 
- int /*<<< orphan*/  GL_FLOAT ; 
- int /*<<< orphan*/  GL_FRAGMENT_SHADER ; 
- int /*<<< orphan*/  GL_FRAMEBUFFER ; 
- int /*<<< orphan*/  GL_NEAREST ; 
- int /*<<< orphan*/  GL_RGB ; 
- int /*<<< orphan*/  GL_STATIC_DRAW ; 
- int /*<<< orphan*/  GL_TEXTURE_2D ; 
- int /*<<< orphan*/  GL_TEXTURE_MAG_FILTER ; 
- int /*<<< orphan*/  GL_TEXTURE_MIN_FILTER ; 
- int /*<<< orphan*/  GL_UNSIGNED_SHORT_5_6_5 ; 
- int /*<<< orphan*/  GL_VERTEX_SHADER ; 
- int /*<<< orphan*/  check () ; 
- int /*<<< orphan*/  glAttachShader (void*,void*) ; 
- int /*<<< orphan*/  glBindBuffer (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glBindFramebuffer (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glBindTexture (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glBufferData (int /*<<< orphan*/ ,int,double const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glClearColor (double,double,double,double) ; 
- int /*<<< orphan*/  glCompileShader (void*) ; 
- void* glCreateProgram () ; 
- void* glCreateShader (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glEnableVertexAttribArray (void*) ; 
- int /*<<< orphan*/  glFramebufferTexture2D (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glGenBuffers (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  glGenFramebuffers (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  glGenTextures (int,int /*<<< orphan*/ *) ; 
- void* glGetAttribLocation (void*,char*) ; 
- void* glGetUniformLocation (void*,char*) ; 
- int /*<<< orphan*/  glLinkProgram (void*) ; 
- int /*<<< orphan*/  glShaderSource (void*,int,char const**,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glTexImage2D (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glTexParameterf (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glVertexAttribPointer (void*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glViewport (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  showlog (void*) ; 
- int /*<<< orphan*/  showprogramlog (void*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int vertex_data ;
+struct TYPE_3__ {void* attr_vertex2; void* attr_vertex; int buf; int screen_height; int screen_width; int tex; int tex_fb; void* program2; void* unif_centre2; void* unif_offset2; void* unif_scale2; scalar_t__ verbose; void* mshader; void* vshader; void* program; void* unif_centre; void* unif_tex; void* unif_offset; void* unif_scale; void* unif_color; void* fshader; } ;
+typedef double GLfloat ;
+typedef char GLchar ;
+typedef TYPE_1__ CUBE_STATE_T ;
+
+
+ int GL_ARRAY_BUFFER ;
+ int GL_COLOR_ATTACHMENT0 ;
+ int GL_FLOAT ;
+ int GL_FRAGMENT_SHADER ;
+ int GL_FRAMEBUFFER ;
+ int GL_NEAREST ;
+ int GL_RGB ;
+ int GL_STATIC_DRAW ;
+ int GL_TEXTURE_2D ;
+ int GL_TEXTURE_MAG_FILTER ;
+ int GL_TEXTURE_MIN_FILTER ;
+ int GL_UNSIGNED_SHORT_5_6_5 ;
+ int GL_VERTEX_SHADER ;
+ int check () ;
+ int glAttachShader (void*,void*) ;
+ int glBindBuffer (int ,int ) ;
+ int glBindFramebuffer (int ,int ) ;
+ int glBindTexture (int ,int ) ;
+ int glBufferData (int ,int,double const*,int ) ;
+ int glClearColor (double,double,double,double) ;
+ int glCompileShader (void*) ;
+ void* glCreateProgram () ;
+ void* glCreateShader (int ) ;
+ int glEnableVertexAttribArray (void*) ;
+ int glFramebufferTexture2D (int ,int ,int ,int ,int ) ;
+ int glGenBuffers (int,int *) ;
+ int glGenFramebuffers (int,int *) ;
+ int glGenTextures (int,int *) ;
+ void* glGetAttribLocation (void*,char*) ;
+ void* glGetUniformLocation (void*,char*) ;
+ int glLinkProgram (void*) ;
+ int glShaderSource (void*,int,char const**,int ) ;
+ int glTexImage2D (int ,int ,int ,int ,int ,int ,int ,int ,int ) ;
+ int glTexParameterf (int ,int ,int ) ;
+ int glVertexAttribPointer (void*,int,int ,int ,int,int ) ;
+ int glViewport (int ,int ,int ,int ) ;
+ int showlog (void*) ;
+ int showprogramlog (void*) ;
 
 __attribute__((used)) static void init_shaders(CUBE_STATE_T *state)
 {
@@ -74,7 +74,7 @@ __attribute__((used)) static void init_shaders(CUBE_STATE_T *state)
               " tcoord = vertex.xy*0.5+0.5;"
               "}";
 
-   //Mandelbrot
+
    const GLchar *mandelbrot_fshader_source =
 "uniform vec4 color;"
 "uniform vec2 scale;"
@@ -108,7 +108,7 @@ __attribute__((used)) static void init_shaders(CUBE_STATE_T *state)
 "  gl_FragColor = color2;"
 "}";
 
-   // Julia
+
    const GLchar *julia_fshader_source =
 "uniform vec4 color;"
 "uniform vec2 scale;"
@@ -172,7 +172,7 @@ __attribute__((used)) static void init_shaders(CUBE_STATE_T *state)
         if (state->verbose)
             showlog(state->mshader);
 
-        // julia
+
         state->program = glCreateProgram();
         glAttachShader(state->program, state->vshader);
         glAttachShader(state->program, state->fshader);
@@ -183,13 +183,13 @@ __attribute__((used)) static void init_shaders(CUBE_STATE_T *state)
             showprogramlog(state->program);
 
         state->attr_vertex = glGetAttribLocation(state->program, "vertex");
-        state->unif_color  = glGetUniformLocation(state->program, "color");
-        state->unif_scale  = glGetUniformLocation(state->program, "scale");
+        state->unif_color = glGetUniformLocation(state->program, "color");
+        state->unif_scale = glGetUniformLocation(state->program, "scale");
         state->unif_offset = glGetUniformLocation(state->program, "offset");
-        state->unif_tex    = glGetUniformLocation(state->program, "tex");
+        state->unif_tex = glGetUniformLocation(state->program, "tex");
         state->unif_centre = glGetUniformLocation(state->program, "centre");
 
-        // mandelbrot
+
         state->program2 = glCreateProgram();
         glAttachShader(state->program2, state->vshader);
         glAttachShader(state->program2, state->mshader);
@@ -200,7 +200,7 @@ __attribute__((used)) static void init_shaders(CUBE_STATE_T *state)
             showprogramlog(state->program2);
 
         state->attr_vertex2 = glGetAttribLocation(state->program2, "vertex");
-        state->unif_scale2  = glGetUniformLocation(state->program2, "scale");
+        state->unif_scale2 = glGetUniformLocation(state->program2, "scale");
         state->unif_offset2 = glGetUniformLocation(state->program2, "offset");
         state->unif_centre2 = glGetUniformLocation(state->program2, "centre");
         check();
@@ -211,18 +211,18 @@ __attribute__((used)) static void init_shaders(CUBE_STATE_T *state)
 
         check();
 
-        // Prepare a texture image
+
         glGenTextures(1, &state->tex);
         check();
         glBindTexture(GL_TEXTURE_2D,state->tex);
         check();
-        // glActiveTexture(0)
+
         glTexImage2D(GL_TEXTURE_2D,0,GL_RGB,state->screen_width,state->screen_height,0,GL_RGB,GL_UNSIGNED_SHORT_5_6_5,0);
         check();
         glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
         glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
         check();
-        // Prepare a framebuffer for rendering
+
         glGenFramebuffers(1,&state->tex_fb);
         check();
         glBindFramebuffer(GL_FRAMEBUFFER,state->tex_fb);
@@ -231,11 +231,11 @@ __attribute__((used)) static void init_shaders(CUBE_STATE_T *state)
         check();
         glBindFramebuffer(GL_FRAMEBUFFER,0);
         check();
-        // Prepare viewport
+
         glViewport ( 0, 0, state->screen_width, state->screen_height );
         check();
 
-        // Upload vertex data to a buffer
+
         glBindBuffer(GL_ARRAY_BUFFER, state->buf);
         glBufferData(GL_ARRAY_BUFFER, sizeof(vertex_data),
                              vertex_data, GL_STATIC_DRAW);

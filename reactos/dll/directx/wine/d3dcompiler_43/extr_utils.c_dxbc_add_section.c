@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct dxbc_section {int tag; int data_size; char const* data; } ;
 struct dxbc {size_t count; size_t size; struct dxbc_section* sections; } ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int DWORD ;
+typedef int HRESULT ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*) ; 
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- struct dxbc_section* HeapReAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct dxbc_section*,int) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TRACE (char*,struct dxbc*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  debugstr_an (char const*,int) ; 
+
+ int ERR (char*) ;
+ int E_OUTOFMEMORY ;
+ int GetProcessHeap () ;
+ struct dxbc_section* HeapReAlloc (int ,int ,struct dxbc_section*,int) ;
+ int S_OK ;
+ int TRACE (char*,struct dxbc*,int ,int) ;
+ int debugstr_an (char const*,int) ;
 
 HRESULT dxbc_add_section(struct dxbc *dxbc, DWORD tag, const char *data, DWORD data_size)
 {

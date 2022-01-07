@@ -1,20 +1,12 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int WEXITSTATUS (int) ; 
- scalar_t__ WIFEXITED (int) ; 
- scalar_t__ WIFSIGNALED (int) ; 
+ int WEXITSTATUS (int) ;
+ scalar_t__ WIFEXITED (int) ;
+ scalar_t__ WIFSIGNALED (int) ;
 
 int
 child_has_exited (int pid, int wait_status, int *exit_status)
@@ -27,12 +19,12 @@ child_has_exited (int pid, int wait_status, int *exit_status)
 
   if (WIFSIGNALED (wait_status))
     {
-      *exit_status = 0;		/* ?? Don't know what else to say here. */
+      *exit_status = 0;
       return 1;
     }
 
-  /* ?? Do we really need to consult the event state, too?  Assume the
-     wait_state alone suffices.
-   */
+
+
+
   return 0;
 }

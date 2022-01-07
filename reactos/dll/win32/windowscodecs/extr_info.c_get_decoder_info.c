@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  REFCLSID ;
-typedef  int /*<<< orphan*/  IWICComponentInfo ;
-typedef  int /*<<< orphan*/  IWICBitmapDecoderInfo ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CreateComponentInfo (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IID_IWICBitmapDecoderInfo ; 
- int /*<<< orphan*/  IWICComponentInfo_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IWICComponentInfo_Release (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int REFCLSID ;
+typedef int IWICComponentInfo ;
+typedef int IWICBitmapDecoderInfo ;
+typedef int HRESULT ;
+
+
+ int CreateComponentInfo (int ,int **) ;
+ scalar_t__ FAILED (int ) ;
+ int IID_IWICBitmapDecoderInfo ;
+ int IWICComponentInfo_QueryInterface (int *,int *,void**) ;
+ int IWICComponentInfo_Release (int *) ;
 
 HRESULT get_decoder_info(REFCLSID clsid, IWICBitmapDecoderInfo **info)
 {

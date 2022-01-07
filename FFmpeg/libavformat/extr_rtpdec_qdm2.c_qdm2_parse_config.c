@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_5__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char uint8_t ;
-struct TYPE_8__ {int /*<<< orphan*/  extradata; } ;
+
+
+typedef struct TYPE_8__ TYPE_5__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef char uint8_t ;
+struct TYPE_8__ {int extradata; } ;
 struct TYPE_7__ {TYPE_5__* codecpar; } ;
-struct TYPE_6__ {char subpkts_per_block; int /*<<< orphan*/  block_size; int /*<<< orphan*/  block_type; } ;
-typedef  TYPE_1__ PayloadContext ;
-typedef  TYPE_2__ AVStream ;
+struct TYPE_6__ {char subpkts_per_block; int block_size; int block_type; } ;
+typedef TYPE_1__ PayloadContext ;
+typedef TYPE_2__ AVStream ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_RB16 (char const*) ; 
- int /*<<< orphan*/  AV_RB32 (char const*) ; 
- int /*<<< orphan*/  AV_WB32 (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  EAGAIN ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  av_freep (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ff_alloc_extradata (TYPE_5__*,int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,char const*,unsigned int) ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_INVALIDDATA ;
+ int AV_RB16 (char const*) ;
+ int AV_RB32 (char const*) ;
+ int AV_WB32 (int ,int) ;
+ int EAGAIN ;
+ int ENOMEM ;
+ int av_freep (int *) ;
+ int ff_alloc_extradata (TYPE_5__*,int) ;
+ int memcpy (int ,char const*,unsigned int) ;
 
 __attribute__((used)) static int qdm2_parse_config(PayloadContext *qdm, AVStream *st,
                              const uint8_t *buf, const uint8_t *end)
@@ -44,22 +44,22 @@ __attribute__((used)) static int qdm2_parse_config(PayloadContext *qdm, AVStream
             return AVERROR_INVALIDDATA;
 
         switch (config_item) {
-            case 0: /* end of config block */
+            case 0:
                 return p - buf + item_len;
-            case 1: /* stream without extradata */
-                /* FIXME: set default qdm->block_size */
+            case 1:
+
                 break;
-            case 2: /**< subpackets per block */
+            case 2:
                 if (item_len < 3)
                     return AVERROR_INVALIDDATA;
                 qdm->subpkts_per_block = p[2];
                 break;
-            case 3: /* superblock type */
+            case 3:
                 if (item_len < 4)
                     return AVERROR_INVALIDDATA;
                 qdm->block_type = AV_RB16(p + 2);
                 break;
-            case 4: /* stream with extradata */
+            case 4:
                 if (item_len < 30)
                     return AVERROR_INVALIDDATA;
                 av_freep(&st->codecpar->extradata);
@@ -82,5 +82,5 @@ __attribute__((used)) static int qdm2_parse_config(PayloadContext *qdm, AVStream
         p += item_len;
     }
 
-    return AVERROR(EAGAIN); /* not enough data */
+    return AVERROR(EAGAIN);
 }

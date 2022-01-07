@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  K ;
-typedef  int /*<<< orphan*/  BUF ;
-typedef  int /*<<< orphan*/  BIO ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * BioToK (int /*<<< orphan*/ *,int,int,char*) ; 
- int /*<<< orphan*/ * BufToBio (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FreeBio (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int K ;
+typedef int BUF ;
+typedef int BIO ;
+
+
+ int * BioToK (int *,int,int,char*) ;
+ int * BufToBio (int *) ;
+ int FreeBio (int *) ;
 
 K *BufToK(BUF *b, bool private_key, bool text, char *password)
 {
-	BIO *bio;
-	K *k;
-	// Validate arguments
-	if (b == NULL)
-	{
-		return NULL;
-	}
+ BIO *bio;
+ K *k;
 
-	bio = BufToBio(b);
-	k = BioToK(bio, private_key, text, password);
-	FreeBio(bio);
+ if (b == ((void*)0))
+ {
+  return ((void*)0);
+ }
 
-	return k;
+ bio = BufToBio(b);
+ k = BioToK(bio, private_key, text, password);
+ FreeBio(bio);
+
+ return k;
 }

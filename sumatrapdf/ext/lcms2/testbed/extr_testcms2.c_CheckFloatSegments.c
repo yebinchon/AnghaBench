@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  cmsToneCurve ;
-typedef  int cmsInt32Number ;
-typedef  int cmsFloat32Number ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int cmsToneCurve ;
+typedef int cmsInt32Number ;
+typedef int cmsFloat32Number ;
 struct TYPE_3__ {float x0; float x1; int Type; float* Params; int nGridPoints; int* SampledPoints; } ;
-typedef  TYPE_1__ cmsCurveSegment ;
+typedef TYPE_1__ cmsCurveSegment ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DbgThread () ; 
- int StraightLine (int) ; 
- int TestCurve (char*,int /*<<< orphan*/ *,int (*) (int)) ; 
- int /*<<< orphan*/ * cmsBuildSegmentedToneCurve (int /*<<< orphan*/ ,int,TYPE_1__*) ; 
- int /*<<< orphan*/  cmsFreeToneCurve (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int kNumPoints ; 
+
+ int DbgThread () ;
+ int StraightLine (int) ;
+ int TestCurve (char*,int *,int (*) (int)) ;
+ int * cmsBuildSegmentedToneCurve (int ,int,TYPE_1__*) ;
+ int cmsFreeToneCurve (int ,int *) ;
+ int kNumPoints ;
 
 __attribute__((used)) static
 cmsInt32Number CheckFloatSegments(void)
@@ -34,20 +34,20 @@ cmsInt32Number CheckFloatSegments(void)
 
     cmsFloat32Number y[ kNumPoints];
 
-    // build a segmented curve with a sampled section...
+
     cmsCurveSegment Seg[3];
 
-    // Initialize segmented curve part up to 0.1
-    Seg[0].x0 = -1e22f;      // -infinity
+
+    Seg[0].x0 = -1e22f;
     Seg[0].x1 = 0.1f;
-    Seg[0].Type = 6;             // Y = (a * X + b) ^ Gamma + c
-    Seg[0].Params[0] = 1.0f;     // gamma
-    Seg[0].Params[1] = 0.9f;     // a
-    Seg[0].Params[2] = 0.0f;        // b
-    Seg[0].Params[3] = 0.1f;     // c
+    Seg[0].Type = 6;
+    Seg[0].Params[0] = 1.0f;
+    Seg[0].Params[1] = 0.9f;
+    Seg[0].Params[2] = 0.0f;
+    Seg[0].Params[3] = 0.1f;
     Seg[0].Params[4] = 0.0f;
 
-    // From zero to 1
+
     Seg[1].x0 = 0.1f;
     Seg[1].x1 = 0.9f;
     Seg[1].Type = 0;
@@ -60,9 +60,9 @@ cmsInt32Number CheckFloatSegments(void)
         y[i] = StraightLine(x);
     }
 
-    // from 1 to +infinity
+
     Seg[2].x0 = 0.9f;
-    Seg[2].x1 = 1e22f;   // +infinity
+    Seg[2].x1 = 1e22f;
     Seg[2].Type = 6;
 
     Seg[2].Params[0] = 1.0f;

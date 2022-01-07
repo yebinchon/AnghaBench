@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct labpc_private {int cmd5; int /*<<< orphan*/  (* write_byte ) (struct comedi_device*,int,int /*<<< orphan*/ ) ;} ;
+
+
+
+
+struct labpc_private {int cmd5; int (* write_byte ) (struct comedi_device*,int,int ) ;} ;
 struct comedi_device {struct labpc_private* private; } ;
 
-/* Variables and functions */
- int CMD5_EEPROMCS ; 
- int /*<<< orphan*/  CMD5_REG ; 
- int CMD5_WRTPRT ; 
- unsigned int labpc_serial_in (struct comedi_device*) ; 
- int /*<<< orphan*/  labpc_serial_out (struct comedi_device*,int const,int const) ; 
- int /*<<< orphan*/  stub1 (struct comedi_device*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub2 (struct comedi_device*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub3 (struct comedi_device*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  udelay (int) ; 
+
+ int CMD5_EEPROMCS ;
+ int CMD5_REG ;
+ int CMD5_WRTPRT ;
+ unsigned int labpc_serial_in (struct comedi_device*) ;
+ int labpc_serial_out (struct comedi_device*,int const,int const) ;
+ int stub1 (struct comedi_device*,int,int ) ;
+ int stub2 (struct comedi_device*,int,int ) ;
+ int stub3 (struct comedi_device*,int,int ) ;
+ int udelay (int) ;
 
 __attribute__((used)) static unsigned int labpc_eeprom_read(struct comedi_device *dev,
-				      unsigned int address)
+          unsigned int address)
 {
-	struct labpc_private *devpriv = dev->private;
-	unsigned int value;
-	/*  bits to tell eeprom to expect a read */
-	const int read_instruction = 0x3;
-	/*  8 bit write lengths to eeprom */
-	const int write_length = 8;
+ struct labpc_private *devpriv = dev->private;
+ unsigned int value;
 
-	/*  enable read/write to eeprom */
-	devpriv->cmd5 &= ~CMD5_EEPROMCS;
-	udelay(1);
-	devpriv->write_byte(dev, devpriv->cmd5, CMD5_REG);
-	devpriv->cmd5 |= (CMD5_EEPROMCS | CMD5_WRTPRT);
-	udelay(1);
-	devpriv->write_byte(dev, devpriv->cmd5, CMD5_REG);
+ const int read_instruction = 0x3;
 
-	/*  send read instruction */
-	labpc_serial_out(dev, read_instruction, write_length);
-	/*  send 8 bit address to read from */
-	labpc_serial_out(dev, address, write_length);
-	/*  read result */
-	value = labpc_serial_in(dev);
+ const int write_length = 8;
 
-	/*  disable read/write to eeprom */
-	devpriv->cmd5 &= ~(CMD5_EEPROMCS | CMD5_WRTPRT);
-	udelay(1);
-	devpriv->write_byte(dev, devpriv->cmd5, CMD5_REG);
 
-	return value;
+ devpriv->cmd5 &= ~CMD5_EEPROMCS;
+ udelay(1);
+ devpriv->write_byte(dev, devpriv->cmd5, CMD5_REG);
+ devpriv->cmd5 |= (CMD5_EEPROMCS | CMD5_WRTPRT);
+ udelay(1);
+ devpriv->write_byte(dev, devpriv->cmd5, CMD5_REG);
+
+
+ labpc_serial_out(dev, read_instruction, write_length);
+
+ labpc_serial_out(dev, address, write_length);
+
+ value = labpc_serial_in(dev);
+
+
+ devpriv->cmd5 &= ~(CMD5_EEPROMCS | CMD5_WRTPRT);
+ udelay(1);
+ devpriv->write_byte(dev, devpriv->cmd5, CMD5_REG);
+
+ return value;
 }

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct platform_device {int dummy; } ;
-struct isp1704_charger {int /*<<< orphan*/  psy; int /*<<< orphan*/  nb; int /*<<< orphan*/  phy; } ;
+struct isp1704_charger {int psy; int nb; int phy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  isp1704_charger_set_power (struct isp1704_charger*,int /*<<< orphan*/ ) ; 
- struct isp1704_charger* platform_get_drvdata (struct platform_device*) ; 
- int /*<<< orphan*/  power_supply_unregister (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  usb_unregister_notifier (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int isp1704_charger_set_power (struct isp1704_charger*,int ) ;
+ struct isp1704_charger* platform_get_drvdata (struct platform_device*) ;
+ int power_supply_unregister (int ) ;
+ int usb_unregister_notifier (int ,int *) ;
 
 __attribute__((used)) static int isp1704_charger_remove(struct platform_device *pdev)
 {
-	struct isp1704_charger *isp = platform_get_drvdata(pdev);
+ struct isp1704_charger *isp = platform_get_drvdata(pdev);
 
-	usb_unregister_notifier(isp->phy, &isp->nb);
-	power_supply_unregister(isp->psy);
-	isp1704_charger_set_power(isp, 0);
+ usb_unregister_notifier(isp->phy, &isp->nb);
+ power_supply_unregister(isp->psy);
+ isp1704_charger_set_power(isp, 0);
 
-	return 0;
+ return 0;
 }

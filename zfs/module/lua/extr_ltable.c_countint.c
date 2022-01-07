@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  TValue ;
 
-/* Variables and functions */
- int MAXASIZE ; 
- int arrayindex (int /*<<< orphan*/  const*) ; 
- size_t luaO_ceillog2 (int) ; 
+
+
+
+typedef int TValue ;
+
+
+ int MAXASIZE ;
+ int arrayindex (int const*) ;
+ size_t luaO_ceillog2 (int) ;
 
 __attribute__((used)) static int countint (const TValue *key, int *nums) {
   int k = arrayindex(key);
-  if (0 < k && k <= MAXASIZE) {  /* is `key' an appropriate array index? */
-    nums[luaO_ceillog2(k)]++;  /* count as such */
+  if (0 < k && k <= MAXASIZE) {
+    nums[luaO_ceillog2(k)]++;
     return 1;
   }
   else

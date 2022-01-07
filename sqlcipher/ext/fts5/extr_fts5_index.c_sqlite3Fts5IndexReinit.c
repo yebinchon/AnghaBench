@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-typedef  int /*<<< orphan*/  Fts5Structure ;
-typedef  int /*<<< orphan*/  Fts5Index ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FTS5_AVERAGES_ROWID ; 
- int /*<<< orphan*/  fts5DataWrite (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- int fts5IndexReturn (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fts5StructureInvalidate (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fts5StructureWrite (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int u8 ;
+typedef int Fts5Structure ;
+typedef int Fts5Index ;
+
+
+ int FTS5_AVERAGES_ROWID ;
+ int fts5DataWrite (int *,int ,int const*,int ) ;
+ int fts5IndexReturn (int *) ;
+ int fts5StructureInvalidate (int *) ;
+ int fts5StructureWrite (int *,int *) ;
+ int memset (int *,int ,int) ;
 
 int sqlite3Fts5IndexReinit(Fts5Index *p){
   Fts5Structure s;

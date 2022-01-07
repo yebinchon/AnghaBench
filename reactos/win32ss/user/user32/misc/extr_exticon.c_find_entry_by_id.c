@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ WORD ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef scalar_t__ WORD ;
 struct TYPE_6__ {int NumberOfNamedEntries; int NumberOfIdEntries; } ;
 struct TYPE_5__ {scalar_t__ Id; int OffsetToDirectory; } ;
-typedef  TYPE_1__ IMAGE_RESOURCE_DIRECTORY_ENTRY ;
-typedef  TYPE_2__ IMAGE_RESOURCE_DIRECTORY ;
+typedef TYPE_1__ IMAGE_RESOURCE_DIRECTORY_ENTRY ;
+typedef TYPE_2__ IMAGE_RESOURCE_DIRECTORY ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static const IMAGE_RESOURCE_DIRECTORY *find_entry_by_id( const IMAGE_RESOURCE_DIRECTORY *dir,
                                                          WORD id, const void *root )
@@ -37,5 +37,5 @@ __attribute__((used)) static const IMAGE_RESOURCE_DIRECTORY *find_entry_by_id( c
         if (entry[pos].Id > id) max = pos - 1;
         else min = pos + 1;
     }
-    return NULL;
+    return ((void*)0);
 }

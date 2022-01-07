@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t int32_t ;
-struct TYPE_2__ {int /*<<< orphan*/  message_available_event; int /*<<< orphan*/  lock; scalar_t__ initialised; int /*<<< orphan*/ * open_handle; scalar_t__ num_connections; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- TYPE_1__ gencmd_client ; 
- scalar_t__ lock_obtain () ; 
- int /*<<< orphan*/  lock_release () ; 
- int /*<<< orphan*/  use_gencmd_service () ; 
- size_t vchi_service_close (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vcos_event_delete (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vcos_mutex_delete (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef size_t int32_t ;
+struct TYPE_2__ {int message_available_event; int lock; scalar_t__ initialised; int * open_handle; scalar_t__ num_connections; } ;
+
+
+ int assert (int) ;
+ TYPE_1__ gencmd_client ;
+ scalar_t__ lock_obtain () ;
+ int lock_release () ;
+ int use_gencmd_service () ;
+ size_t vchi_service_close (int ) ;
+ int vcos_event_delete (int *) ;
+ int vcos_mutex_delete (int *) ;
 
 void vc_gencmd_stop () {
-   // Assume a "power down" gencmd has been sent and the lock is held. There will
-   // be no response so this should be called instead.
+
+
    int32_t success,i;
 
    if (!gencmd_client.initialised)

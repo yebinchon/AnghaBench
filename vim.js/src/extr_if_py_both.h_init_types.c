@@ -1,33 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  BufMapType ; 
- int /*<<< orphan*/  BufferType ; 
- int /*<<< orphan*/  CurrentType ; 
- int /*<<< orphan*/  DictionaryType ; 
- int /*<<< orphan*/  FunctionType ; 
- int /*<<< orphan*/  IterType ; 
- int /*<<< orphan*/  ListType ; 
- int /*<<< orphan*/  LoaderType ; 
- int /*<<< orphan*/  OptionsType ; 
- int /*<<< orphan*/  OutputType ; 
- int /*<<< orphan*/  PYTYPE_READY (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RangeType ; 
- int /*<<< orphan*/  TabListType ; 
- int /*<<< orphan*/  TabPageType ; 
- int /*<<< orphan*/  WinListType ; 
- int /*<<< orphan*/  WindowType ; 
+ int BufMapType ;
+ int BufferType ;
+ int CurrentType ;
+ int DictionaryType ;
+ int FunctionType ;
+ int IterType ;
+ int ListType ;
+ int LoaderType ;
+ int OptionsType ;
+ int OutputType ;
+ int PYTYPE_READY (int ) ;
+ int RangeType ;
+ int TabListType ;
+ int TabPageType ;
+ int WinListType ;
+ int WindowType ;
 
 __attribute__((used)) static int
 init_types(void)

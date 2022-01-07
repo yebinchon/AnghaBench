@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_char ;
+
+
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef int u_char ;
 struct TYPE_11__ {size_t field_rest; size_t length; int flags; } ;
 struct TYPE_13__ {TYPE_2__* connection; TYPE_1__ state; } ;
-typedef  TYPE_3__ ngx_http_v2_connection_t ;
-struct TYPE_12__ {int /*<<< orphan*/  log; } ;
+typedef TYPE_3__ ngx_http_v2_connection_t ;
+struct TYPE_12__ {int log; } ;
 
-/* Variables and functions */
- int NGX_HTTP_V2_END_HEADERS_FLAG ; 
- int /*<<< orphan*/  NGX_HTTP_V2_SIZE_ERROR ; 
- int /*<<< orphan*/  NGX_LOG_INFO ; 
- int /*<<< orphan*/ * ngx_http_v2_connection_error (TYPE_3__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * ngx_http_v2_handle_continuation (TYPE_3__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ * (*) (TYPE_3__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *)) ; 
- int /*<<< orphan*/ * ngx_http_v2_state_process_header (TYPE_3__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * ngx_http_v2_state_save (TYPE_3__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ * (*) (TYPE_3__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *)) ; 
- int /*<<< orphan*/  ngx_log_error (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
+
+ int NGX_HTTP_V2_END_HEADERS_FLAG ;
+ int NGX_HTTP_V2_SIZE_ERROR ;
+ int NGX_LOG_INFO ;
+ int * ngx_http_v2_connection_error (TYPE_3__*,int ) ;
+ int * ngx_http_v2_handle_continuation (TYPE_3__*,int *,int *,int * (*) (TYPE_3__*,int *,int *)) ;
+ int * ngx_http_v2_state_process_header (TYPE_3__*,int *,int *) ;
+ int * ngx_http_v2_state_save (TYPE_3__*,int *,int *,int * (*) (TYPE_3__*,int *,int *)) ;
+ int ngx_log_error (int ,int ,int ,char*) ;
 
 __attribute__((used)) static u_char *
 ngx_http_v2_state_field_skip(ngx_http_v2_connection_t *h2c, u_char *pos,
     u_char *end)
 {
-    size_t  size;
+    size_t size;
 
     size = end - pos;
 

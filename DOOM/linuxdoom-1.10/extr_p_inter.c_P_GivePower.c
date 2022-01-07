@@ -1,75 +1,75 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_6__ {int* powers; TYPE_1__* mo; } ;
-typedef  TYPE_2__ player_t ;
-typedef  int boolean ;
-struct TYPE_5__ {int /*<<< orphan*/  flags; } ;
+typedef TYPE_2__ player_t ;
+typedef int boolean ;
+struct TYPE_5__ {int flags; } ;
 
-/* Variables and functions */
- int INFRATICS ; 
- int INVISTICS ; 
- int INVULNTICS ; 
- int IRONTICS ; 
- int /*<<< orphan*/  MF_SHADOW ; 
- int /*<<< orphan*/  P_GiveBody (TYPE_2__*,int) ; 
- int pw_infrared ; 
- int pw_invisibility ; 
- int pw_invulnerability ; 
- int pw_ironfeet ; 
- int pw_strength ; 
+
+ int INFRATICS ;
+ int INVISTICS ;
+ int INVULNTICS ;
+ int IRONTICS ;
+ int MF_SHADOW ;
+ int P_GiveBody (TYPE_2__*,int) ;
+ int pw_infrared ;
+ int pw_invisibility ;
+ int pw_invulnerability ;
+ int pw_ironfeet ;
+ int pw_strength ;
 
 boolean
 P_GivePower
-( player_t*	player,
-  int /*powertype_t*/	power )
+( player_t* player,
+  int power )
 {
     if (power == pw_invulnerability)
     {
-	player->powers[power] = INVULNTICS;
-	return true;
+ player->powers[power] = INVULNTICS;
+ return 1;
     }
-    
+
     if (power == pw_invisibility)
     {
-	player->powers[power] = INVISTICS;
-	player->mo->flags |= MF_SHADOW;
-	return true;
+ player->powers[power] = INVISTICS;
+ player->mo->flags |= MF_SHADOW;
+ return 1;
     }
-    
+
     if (power == pw_infrared)
     {
-	player->powers[power] = INFRATICS;
-	return true;
+ player->powers[power] = INFRATICS;
+ return 1;
     }
-    
+
     if (power == pw_ironfeet)
     {
-	player->powers[power] = IRONTICS;
-	return true;
+ player->powers[power] = IRONTICS;
+ return 1;
     }
-    
+
     if (power == pw_strength)
     {
-	P_GiveBody (player, 100);
-	player->powers[power] = 1;
-	return true;
+ P_GiveBody (player, 100);
+ player->powers[power] = 1;
+ return 1;
     }
-	
+
     if (player->powers[power])
-	return false;	// already got it
-		
+ return 0;
+
     player->powers[power] = 1;
-    return true;
+    return 1;
 }

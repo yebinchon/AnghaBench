@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct mlx5e_priv {int /*<<< orphan*/  events_nb; int /*<<< orphan*/  mdev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mlx5_notifier_unregister (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+struct mlx5e_priv {int events_nb; int mdev; } ;
+
+
+ int mlx5_notifier_unregister (int ,int *) ;
 
 __attribute__((used)) static void mlx5e_disable_async_events(struct mlx5e_priv *priv)
 {
-	mlx5_notifier_unregister(priv->mdev, &priv->events_nb);
+ mlx5_notifier_unregister(priv->mdev, &priv->events_nb);
 }

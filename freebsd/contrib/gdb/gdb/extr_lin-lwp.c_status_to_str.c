@@ -5,10 +5,10 @@ status_to_str (int status)
 
   if (WIFSTOPPED (status))
     snprintf (buf, sizeof (buf), "%s (stopped)",
-	      strsignal (WSTOPSIG (status)));
+       strsignal (WSTOPSIG (status)));
   else if (WIFSIGNALED (status))
     snprintf (buf, sizeof (buf), "%s (terminated)",
-	      strsignal (WSTOPSIG (status)));
+       strsignal (WSTOPSIG (status)));
   else
     snprintf (buf, sizeof (buf), "%d (exited)", WEXITSTATUS (status));
 

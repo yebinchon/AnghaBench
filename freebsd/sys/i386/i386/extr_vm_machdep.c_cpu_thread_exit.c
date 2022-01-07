@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct thread {TYPE_1__* td_pcb; } ;
 struct TYPE_2__ {int pcb_flags; } ;
 
-/* Variables and functions */
- int PCB_DBREGS ; 
- struct thread* PCPU_GET (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  critical_enter () ; 
- int /*<<< orphan*/  critical_exit () ; 
- int /*<<< orphan*/  fpcurthread ; 
- int /*<<< orphan*/  npxdrop () ; 
- int /*<<< orphan*/  reset_dbregs () ; 
+
+ int PCB_DBREGS ;
+ struct thread* PCPU_GET (int ) ;
+ int critical_enter () ;
+ int critical_exit () ;
+ int fpcurthread ;
+ int npxdrop () ;
+ int reset_dbregs () ;
 
 void
 cpu_thread_exit(struct thread *td)
 {
 
-	critical_enter();
-	if (td == PCPU_GET(fpcurthread))
-		npxdrop();
-	critical_exit();
+ critical_enter();
+ if (td == PCPU_GET(fpcurthread))
+  npxdrop();
+ critical_exit();
 
-	/* Disable any hardware breakpoints. */
-	if (td->td_pcb->pcb_flags & PCB_DBREGS) {
-		reset_dbregs();
-		td->td_pcb->pcb_flags &= ~PCB_DBREGS;
-	}
+
+ if (td->td_pcb->pcb_flags & PCB_DBREGS) {
+  reset_dbregs();
+  td->td_pcb->pcb_flags &= ~PCB_DBREGS;
+ }
 }

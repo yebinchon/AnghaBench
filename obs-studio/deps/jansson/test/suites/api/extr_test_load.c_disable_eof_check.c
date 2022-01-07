@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  json_t ;
-typedef  int /*<<< orphan*/  json_error_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  JSON_DISABLE_EOF_CHECK ; 
- int /*<<< orphan*/  check_error (char*,char*,int,int,int) ; 
- int /*<<< orphan*/  fail (char*) ; 
- int /*<<< orphan*/  json_decref (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * json_loads (char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int json_t ;
+typedef int json_error_t ;
+
+
+ int JSON_DISABLE_EOF_CHECK ;
+ int check_error (char*,char*,int,int,int) ;
+ int fail (char*) ;
+ int json_decref (int *) ;
+ int * json_loads (char const*,int ,int *) ;
 
 __attribute__((used)) static void disable_eof_check()
 {

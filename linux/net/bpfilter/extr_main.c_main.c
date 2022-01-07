@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  close (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  debug_fd ; 
- int /*<<< orphan*/  dprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  loop () ; 
- int /*<<< orphan*/  open (char*,int) ; 
+ int close (int ) ;
+ int debug_fd ;
+ int dprintf (int ,char*) ;
+ int loop () ;
+ int open (char*,int) ;
 
 int main(void)
 {
-	debug_fd = open("/dev/kmsg", 00000002);
-	dprintf(debug_fd, "Started bpfilter\n");
-	loop();
-	close(debug_fd);
-	return 0;
+ debug_fd = open("/dev/kmsg", 00000002);
+ dprintf(debug_fd, "Started bpfilter\n");
+ loop();
+ close(debug_fd);
+ return 0;
 }

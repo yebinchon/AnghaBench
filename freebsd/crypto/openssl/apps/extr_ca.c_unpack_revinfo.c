@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ASN1_TIME ;
-typedef  int /*<<< orphan*/  ASN1_OBJECT ;
-typedef  int /*<<< orphan*/  ASN1_GENERALIZEDTIME ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASN1_GENERALIZEDTIME_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * ASN1_GENERALIZEDTIME_new () ; 
- int /*<<< orphan*/  ASN1_GENERALIZEDTIME_set_string (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  ASN1_OBJECT_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * ASN1_UTCTIME_new () ; 
- int /*<<< orphan*/  ASN1_UTCTIME_set_string (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  BIO_printf (int /*<<< orphan*/ ,char*,...) ; 
- unsigned int NUM_REASONS ; 
- int /*<<< orphan*/ * OBJ_txt2obj (char*,int /*<<< orphan*/ ) ; 
- int OCSP_REVOKED_STATUS_CACOMPROMISE ; 
- int OCSP_REVOKED_STATUS_CERTIFICATEHOLD ; 
- int OCSP_REVOKED_STATUS_KEYCOMPROMISE ; 
- int OCSP_REVOKED_STATUS_NOSTATUS ; 
- int OCSP_REVOKED_STATUS_REMOVEFROMCRL ; 
- int /*<<< orphan*/  OPENSSL_free (char*) ; 
- char* OPENSSL_strdup (char const*) ; 
- int /*<<< orphan*/  bio_err ; 
- int /*<<< orphan*/ * crl_reasons ; 
- scalar_t__ strcasecmp (char*,int /*<<< orphan*/ ) ; 
- char* strchr (char*,char) ; 
+
+
+
+typedef int ASN1_TIME ;
+typedef int ASN1_OBJECT ;
+typedef int ASN1_GENERALIZEDTIME ;
+
+
+ int ASN1_GENERALIZEDTIME_free (int *) ;
+ int * ASN1_GENERALIZEDTIME_new () ;
+ int ASN1_GENERALIZEDTIME_set_string (int *,char*) ;
+ int ASN1_OBJECT_free (int *) ;
+ int * ASN1_UTCTIME_new () ;
+ int ASN1_UTCTIME_set_string (int *,char*) ;
+ int BIO_printf (int ,char*,...) ;
+ unsigned int NUM_REASONS ;
+ int * OBJ_txt2obj (char*,int ) ;
+ int OCSP_REVOKED_STATUS_CACOMPROMISE ;
+ int OCSP_REVOKED_STATUS_CERTIFICATEHOLD ;
+ int OCSP_REVOKED_STATUS_KEYCOMPROMISE ;
+ int OCSP_REVOKED_STATUS_NOSTATUS ;
+ int OCSP_REVOKED_STATUS_REMOVEFROMCRL ;
+ int OPENSSL_free (char*) ;
+ char* OPENSSL_strdup (char const*) ;
+ int bio_err ;
+ int * crl_reasons ;
+ scalar_t__ strcasecmp (char*,int ) ;
+ char* strchr (char*,char) ;
 
 int unpack_revinfo(ASN1_TIME **prevtm, int *preason, ASN1_OBJECT **phold,
                    ASN1_GENERALIZEDTIME **pinvtm, const char *str)
 {
     char *tmp;
-    char *rtime_str, *reason_str = NULL, *arg_str = NULL, *p;
+    char *rtime_str, *reason_str = ((void*)0), *arg_str = ((void*)0), *p;
     int reason_code = -1;
     int ret = 0;
     unsigned int i;
-    ASN1_OBJECT *hold = NULL;
-    ASN1_GENERALIZEDTIME *comp_time = NULL;
+    ASN1_OBJECT *hold = ((void*)0);
+    ASN1_GENERALIZEDTIME *comp_time = ((void*)0);
 
     tmp = OPENSSL_strdup(str);
     if (!tmp) {
@@ -70,7 +70,7 @@ int unpack_revinfo(ASN1_TIME **prevtm, int *preason, ASN1_OBJECT **phold,
 
     if (prevtm) {
         *prevtm = ASN1_UTCTIME_new();
-        if (*prevtm == NULL) {
+        if (*prevtm == ((void*)0)) {
             BIO_printf(bio_err, "memory allocation failure\n");
             goto end;
         }
@@ -93,7 +93,7 @@ int unpack_revinfo(ASN1_TIME **prevtm, int *preason, ASN1_OBJECT **phold,
 
         if (reason_code == 7) {
             reason_code = OCSP_REVOKED_STATUS_REMOVEFROMCRL;
-        } else if (reason_code == 8) { /* Hold instruction */
+        } else if (reason_code == 8) {
             if (!arg_str) {
                 BIO_printf(bio_err, "missing hold instruction\n");
                 goto end;
@@ -115,7 +115,7 @@ int unpack_revinfo(ASN1_TIME **prevtm, int *preason, ASN1_OBJECT **phold,
                 goto end;
             }
             comp_time = ASN1_GENERALIZEDTIME_new();
-            if (comp_time == NULL) {
+            if (comp_time == ((void*)0)) {
                 BIO_printf(bio_err, "memory allocation failure\n");
                 goto end;
             }
@@ -134,7 +134,7 @@ int unpack_revinfo(ASN1_TIME **prevtm, int *preason, ASN1_OBJECT **phold,
         *preason = reason_code;
     if (pinvtm) {
         *pinvtm = comp_time;
-        comp_time = NULL;
+        comp_time = ((void*)0);
     }
 
     ret = 1;

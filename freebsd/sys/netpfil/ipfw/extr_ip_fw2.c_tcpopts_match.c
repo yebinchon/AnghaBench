@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct tcphdr {int dummy; } ;
-typedef  int /*<<< orphan*/  ipfw_insn ;
+typedef int ipfw_insn ;
 
-/* Variables and functions */
- int flags_match (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tcpopts_parse (struct tcphdr*,int /*<<< orphan*/ *) ; 
+
+ int flags_match (int *,int ) ;
+ int tcpopts_parse (struct tcphdr*,int *) ;
 
 __attribute__((used)) static int
 tcpopts_match(struct tcphdr *tcp, ipfw_insn *cmd)
 {
 
-	return (flags_match(cmd, tcpopts_parse(tcp, NULL)));
+ return (flags_match(cmd, tcpopts_parse(tcp, ((void*)0))));
 }

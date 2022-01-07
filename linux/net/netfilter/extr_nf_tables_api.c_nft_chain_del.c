@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct nft_table {int /*<<< orphan*/  chains_ht; } ;
-struct nft_chain {int /*<<< orphan*/  list; int /*<<< orphan*/  rhlhead; struct nft_table* table; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  WARN_ON_ONCE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  list_del_rcu (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nft_chain_ht_params ; 
- int /*<<< orphan*/  rhltable_remove (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+struct nft_table {int chains_ht; } ;
+struct nft_chain {int list; int rhlhead; struct nft_table* table; } ;
+
+
+ int WARN_ON_ONCE (int ) ;
+ int list_del_rcu (int *) ;
+ int nft_chain_ht_params ;
+ int rhltable_remove (int *,int *,int ) ;
 
 __attribute__((used)) static void nft_chain_del(struct nft_chain *chain)
 {
-	struct nft_table *table = chain->table;
+ struct nft_table *table = chain->table;
 
-	WARN_ON_ONCE(rhltable_remove(&table->chains_ht, &chain->rhlhead,
-				     nft_chain_ht_params));
-	list_del_rcu(&chain->list);
+ WARN_ON_ONCE(rhltable_remove(&table->chains_ht, &chain->rhlhead,
+         nft_chain_ht_params));
+ list_del_rcu(&chain->list);
 }

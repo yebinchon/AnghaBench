@@ -1,131 +1,131 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_4__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_14__ {int /*<<< orphan*/  allocator; } ;
-typedef  TYPE_3__ serf_bucket_t ;
-struct TYPE_13__ {int /*<<< orphan*/  used; int /*<<< orphan*/  state; } ;
+
+
+typedef struct TYPE_15__ TYPE_4__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+struct TYPE_14__ {int allocator; } ;
+typedef TYPE_3__ serf_bucket_t ;
+struct TYPE_13__ {int used; int state; } ;
 struct TYPE_12__ {int code; } ;
-struct TYPE_15__ {int state; int chunked; TYPE_2__ linebuf; void* body; int /*<<< orphan*/  headers; int /*<<< orphan*/  stream; TYPE_1__ sl; } ;
-typedef  TYPE_4__ response_context_t ;
-typedef  int /*<<< orphan*/  apr_uint64_t ;
-typedef  int /*<<< orphan*/  apr_status_t ;
+struct TYPE_15__ {int state; int chunked; TYPE_2__ linebuf; void* body; int headers; int stream; TYPE_1__ sl; } ;
+typedef TYPE_4__ response_context_t ;
+typedef int apr_uint64_t ;
+typedef int apr_status_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  APR_EGENERAL ; 
- int /*<<< orphan*/  APR_EOF ; 
- int /*<<< orphan*/  APR_FROM_OS_ERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  APR_STATUS_IS_EOF (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  APR_SUCCESS ; 
- int /*<<< orphan*/  ERANGE ; 
- int /*<<< orphan*/  SERF_BUCKET_READ_ERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SERF_DEFLATE_DEFLATE ; 
- int /*<<< orphan*/  SERF_DEFLATE_GZIP ; 
- int /*<<< orphan*/  SERF_ERROR_REQUEST_LOST ; 
- int /*<<< orphan*/  SERF_LINEBUF_READY ; 
- int /*<<< orphan*/  SERF_NEWLINE_ANY ; 
-#define  STATE_BODY 132 
-#define  STATE_DONE 131 
-#define  STATE_HEADERS 130 
-#define  STATE_STATUS_LINE 129 
-#define  STATE_TRAILERS 128 
- int /*<<< orphan*/  apr_strtoi64 (void const*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  expect_body (TYPE_4__*) ; 
- int /*<<< orphan*/  fetch_headers (TYPE_3__*,TYPE_4__*) ; 
- int /*<<< orphan*/  fetch_line (TYPE_4__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  parse_status_line (TYPE_4__*,int /*<<< orphan*/ ) ; 
- void* serf_bucket_barrier_create (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- void* serf_bucket_dechunk_create (void*,int /*<<< orphan*/ ) ; 
- void* serf_bucket_deflate_create (void*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- void* serf_bucket_headers_get (int /*<<< orphan*/ ,char*) ; 
- void* serf_bucket_response_body_create (void*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- void* serf_bucket_simple_create (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strcasecmp (char*,void const*) ; 
+
+ int APR_EGENERAL ;
+ int APR_EOF ;
+ int APR_FROM_OS_ERROR (int ) ;
+ int APR_STATUS_IS_EOF (int ) ;
+ int APR_SUCCESS ;
+ int ERANGE ;
+ int SERF_BUCKET_READ_ERROR (int ) ;
+ int SERF_DEFLATE_DEFLATE ;
+ int SERF_DEFLATE_GZIP ;
+ int SERF_ERROR_REQUEST_LOST ;
+ int SERF_LINEBUF_READY ;
+ int SERF_NEWLINE_ANY ;
+
+
+
+
+
+ int apr_strtoi64 (void const*,int *,int) ;
+ int errno ;
+ int expect_body (TYPE_4__*) ;
+ int fetch_headers (TYPE_3__*,TYPE_4__*) ;
+ int fetch_line (TYPE_4__*,int ) ;
+ int parse_status_line (TYPE_4__*,int ) ;
+ void* serf_bucket_barrier_create (int ,int ) ;
+ void* serf_bucket_dechunk_create (void*,int ) ;
+ void* serf_bucket_deflate_create (void*,int ,int ) ;
+ void* serf_bucket_headers_get (int ,char*) ;
+ void* serf_bucket_response_body_create (void*,int ,int ) ;
+ void* serf_bucket_simple_create (int *,int ,int *,int *,int ) ;
+ int strcasecmp (char*,void const*) ;
 
 __attribute__((used)) static apr_status_t run_machine(serf_bucket_t *bkt, response_context_t *ctx)
 {
-    apr_status_t status = APR_SUCCESS; /* initialize to avoid gcc warnings */
+    apr_status_t status = APR_SUCCESS;
 
     switch (ctx->state) {
-    case STATE_STATUS_LINE:
-        /* RFC 2616 says that CRLF is the only line ending, but we can easily
-         * accept any kind of line ending.
-         */
+    case 129:
+
+
+
         status = fetch_line(ctx, SERF_NEWLINE_ANY);
         if (SERF_BUCKET_READ_ERROR(status))
             return status;
 
         if (ctx->linebuf.state == SERF_LINEBUF_READY) {
-            /* The Status-Line is in the line buffer. Process it. */
+
             status = parse_status_line(ctx, bkt->allocator);
             if (status)
                 return status;
 
-            /* Good times ahead: we're switching protocols! */
+
             if (ctx->sl.code == 101) {
                 ctx->body =
                     serf_bucket_barrier_create(ctx->stream, bkt->allocator);
-                ctx->state = STATE_DONE;
+                ctx->state = 131;
                 break;
             }
 
-            /* Okay... move on to reading the headers. */
-            ctx->state = STATE_HEADERS;
+
+            ctx->state = 130;
         }
         else {
-            /* The connection closed before we could get the next
-             * response.  Treat the request as lost so that our upper
-             * end knows the server never tried to give us a response.
-             */
+
+
+
+
             if (APR_STATUS_IS_EOF(status)) {
                 return SERF_ERROR_REQUEST_LOST;
             }
         }
         break;
-    case STATE_HEADERS:
+    case 130:
         status = fetch_headers(bkt, ctx);
         if (SERF_BUCKET_READ_ERROR(status))
             return status;
 
-        /* If an empty line was read, then we hit the end of the headers.
-         * Move on to the body.
-         */
+
+
+
         if (ctx->linebuf.state == SERF_LINEBUF_READY && !ctx->linebuf.used) {
             const void *v;
 
-            /* Advance the state. */
-            ctx->state = STATE_BODY;
 
-            /* If this is a response to a HEAD request, or code == 1xx,204 or304
-               then we don't receive a real body. */
+            ctx->state = 132;
+
+
+
             if (!expect_body(ctx)) {
-                ctx->body = serf_bucket_simple_create(NULL, 0, NULL, NULL,
+                ctx->body = serf_bucket_simple_create(((void*)0), 0, ((void*)0), ((void*)0),
                                                       bkt->allocator);
-                ctx->state = STATE_BODY;
+                ctx->state = 132;
                 break;
             }
 
             ctx->body =
                 serf_bucket_barrier_create(ctx->stream, bkt->allocator);
 
-            /* Are we C-L, chunked, or conn close? */
+
             v = serf_bucket_headers_get(ctx->headers, "Content-Length");
             if (v) {
                 apr_uint64_t length;
-                length = apr_strtoi64(v, NULL, 10);
+                length = apr_strtoi64(v, ((void*)0), 10);
                 if (errno == ERANGE) {
                     return APR_FROM_OS_ERROR(ERANGE);
                 }
@@ -135,7 +135,7 @@ __attribute__((used)) static apr_status_t run_machine(serf_bucket_t *bkt, respon
             else {
                 v = serf_bucket_headers_get(ctx->headers, "Transfer-Encoding");
 
-                /* Need to handle multiple transfer-encoding. */
+
                 if (v && strcasecmp("chunked", v) == 0) {
                     ctx->chunked = 1;
                     ctx->body = serf_bucket_dechunk_create(ctx->body,
@@ -144,7 +144,7 @@ __attribute__((used)) static apr_status_t run_machine(serf_bucket_t *bkt, respon
             }
             v = serf_bucket_headers_get(ctx->headers, "Content-Encoding");
             if (v) {
-                /* Need to handle multiple content-encoding. */
+
                 if (v && strcasecmp("gzip", v) == 0) {
                     ctx->body =
                         serf_bucket_deflate_create(ctx->body, bkt->allocator,
@@ -158,24 +158,24 @@ __attribute__((used)) static apr_status_t run_machine(serf_bucket_t *bkt, respon
             }
         }
         break;
-    case STATE_BODY:
-        /* Don't do anything. */
+    case 132:
+
         break;
-    case STATE_TRAILERS:
+    case 128:
         status = fetch_headers(bkt, ctx);
         if (SERF_BUCKET_READ_ERROR(status))
             return status;
 
-        /* If an empty line was read, then we're done. */
+
         if (ctx->linebuf.state == SERF_LINEBUF_READY && !ctx->linebuf.used) {
-            ctx->state = STATE_DONE;
+            ctx->state = 131;
             return APR_EOF;
         }
         break;
-    case STATE_DONE:
+    case 131:
         return APR_EOF;
     default:
-        /* Not reachable */
+
         return APR_EGENERAL;
     }
 

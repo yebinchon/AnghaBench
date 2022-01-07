@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int WPARAM ;
-typedef  int WORD ;
-typedef  int UINT ;
-typedef  int /*<<< orphan*/  LPARAM ;
-typedef  size_t KEV ;
 
-/* Variables and functions */
- int* AsyncKeyStateTable ; 
- int* GETFLAGS ; 
- int /*<<< orphan*/ * GETSCAN ; 
- int* GETVKEY ; 
- int* InputKeyStateTable ; 
- int KEYEVENTF_EXTENDEDKEY ; 
- int KEYEVENTF_KEYUP ; 
- int KF_ALTDOWN ; 
- int KF_EXTENDED ; 
- int KF_REPEAT ; 
- int KF_UP ; 
- int LOBYTE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MAKELPARAM (int,int) ; 
- size_t TrackSysKey ; 
- int VK_CONTROL ; 
- size_t VK_MENU ; 
- int WM_KEYDOWN ; 
- int WM_KEYUP ; 
- int WM_SYSKEYDOWN ; 
- int WM_SYSKEYUP ; 
+
+
+
+typedef int WPARAM ;
+typedef int WORD ;
+typedef int UINT ;
+typedef int LPARAM ;
+typedef size_t KEV ;
+
+
+ int* AsyncKeyStateTable ;
+ int* GETFLAGS ;
+ int * GETSCAN ;
+ int* GETVKEY ;
+ int* InputKeyStateTable ;
+ int KEYEVENTF_EXTENDEDKEY ;
+ int KEYEVENTF_KEYUP ;
+ int KF_ALTDOWN ;
+ int KF_EXTENDED ;
+ int KF_REPEAT ;
+ int KF_UP ;
+ int LOBYTE (int ) ;
+ int MAKELPARAM (int,int) ;
+ size_t TrackSysKey ;
+ int VK_CONTROL ;
+ size_t VK_MENU ;
+ int WM_KEYDOWN ;
+ int WM_KEYUP ;
+ int WM_SYSKEYDOWN ;
+ int WM_SYSKEYUP ;
 
 __attribute__((used)) static int KbdMessage( KEV kev, WPARAM *pwParam, LPARAM *plParam )
 {
@@ -53,8 +53,8 @@ __attribute__((used)) static int KbdMessage( KEV kev, WPARAM *pwParam, LPARAM *p
         if( (InputKeyStateTable[VK_MENU] & 0x80) && (
                 (VKey == VK_MENU) || (VKey == VK_CONTROL) ||
                  !(InputKeyStateTable[VK_CONTROL] & 0x80))) {
-            if(  TrackSysKey == VK_MENU || /* <ALT>-down/<ALT>-up sequence */
-                    (VKey != VK_MENU)) /* <ALT>-down...<something else>-up */
+            if( TrackSysKey == VK_MENU ||
+                    (VKey != VK_MENU))
                 message = WM_SYSKEYUP;
             TrackSysKey = 0;
         }

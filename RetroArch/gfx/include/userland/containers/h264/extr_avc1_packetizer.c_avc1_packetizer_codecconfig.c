@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_5__ ;
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
+
+
+typedef struct TYPE_11__ TYPE_5__ ;
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_9__ {TYPE_5__* out; TYPE_2__* in; TYPE_1__* priv; } ;
-typedef  TYPE_3__ VC_PACKETIZER_T ;
+typedef TYPE_3__ VC_PACKETIZER_T ;
 struct TYPE_10__ {int length_size; } ;
-typedef  TYPE_4__ VC_PACKETIZER_MODULE_T ;
-typedef  scalar_t__ VC_CONTAINER_STATUS_T ;
+typedef TYPE_4__ VC_PACKETIZER_MODULE_T ;
+typedef scalar_t__ VC_CONTAINER_STATUS_T ;
 struct TYPE_11__ {int* extradata; unsigned int extradata_size; } ;
 struct TYPE_8__ {int* extradata; int extradata_size; } ;
 struct TYPE_7__ {TYPE_4__* module; } ;
 
-/* Variables and functions */
- scalar_t__ VC_CONTAINER_ERROR_FORMAT_INVALID ; 
- scalar_t__ VC_CONTAINER_SUCCESS ; 
- int /*<<< orphan*/  memcpy (int*,int*,unsigned int) ; 
- scalar_t__ vc_container_format_extradata_alloc (TYPE_5__*,int) ; 
+
+ scalar_t__ VC_CONTAINER_ERROR_FORMAT_INVALID ;
+ scalar_t__ VC_CONTAINER_SUCCESS ;
+ int memcpy (int*,int*,unsigned int) ;
+ scalar_t__ vc_container_format_extradata_alloc (TYPE_5__*,int) ;
 
 __attribute__((used)) static VC_CONTAINER_STATUS_T avc1_packetizer_codecconfig( VC_PACKETIZER_T *p_ctx )
 {
@@ -40,7 +40,7 @@ __attribute__((used)) static VC_CONTAINER_STATUS_T avc1_packetizer_codecconfig( 
    unsigned int i, j, nal_size, out_size = 0;
 
    if (p_ctx->in->extradata_size <= 5 ||
-       p_ctx->in->extradata[0] != 1 /* configurationVersion */)
+       p_ctx->in->extradata[0] != 1 )
       return VC_CONTAINER_ERROR_FORMAT_INVALID;
 
    status = vc_container_format_extradata_alloc(p_ctx->out, p_ctx->in->extradata_size);

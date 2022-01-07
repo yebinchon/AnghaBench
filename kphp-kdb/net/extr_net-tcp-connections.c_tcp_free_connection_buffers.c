@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct connection {int /*<<< orphan*/  out_p; int /*<<< orphan*/  out; int /*<<< orphan*/  in_u; int /*<<< orphan*/  in; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  rwm_free (int /*<<< orphan*/ *) ; 
+
+
+
+struct connection {int out_p; int out; int in_u; int in; } ;
+
+
+ int rwm_free (int *) ;
 
 int tcp_free_connection_buffers (struct connection *c) {
   rwm_free (&c->in);

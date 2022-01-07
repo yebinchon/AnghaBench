@@ -1,67 +1,67 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_34__   TYPE_5__ ;
-typedef  struct TYPE_33__   TYPE_4__ ;
-typedef  struct TYPE_32__   TYPE_3__ ;
-typedef  struct TYPE_31__   TYPE_2__ ;
-typedef  struct TYPE_30__   TYPE_24__ ;
-typedef  struct TYPE_29__   TYPE_23__ ;
-typedef  struct TYPE_28__   TYPE_22__ ;
-typedef  struct TYPE_27__   TYPE_21__ ;
-typedef  struct TYPE_26__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int int64_t ;
-struct TYPE_34__ {scalar_t__ pts; scalar_t__ dts; int duration; scalar_t__ size; int /*<<< orphan*/ * data; } ;
-struct TYPE_30__ {int /*<<< orphan*/  num; } ;
-struct TYPE_33__ {int saw_first_ts; int dts; void* pts; scalar_t__ next_dts; scalar_t__ next_pts; int got_output; TYPE_2__* dec_ctx; TYPE_22__* st; TYPE_24__ framerate; scalar_t__ decoding_needed; int /*<<< orphan*/  file_index; } ;
+
+
+typedef struct TYPE_34__ TYPE_5__ ;
+typedef struct TYPE_33__ TYPE_4__ ;
+typedef struct TYPE_32__ TYPE_3__ ;
+typedef struct TYPE_31__ TYPE_2__ ;
+typedef struct TYPE_30__ TYPE_24__ ;
+typedef struct TYPE_29__ TYPE_23__ ;
+typedef struct TYPE_28__ TYPE_22__ ;
+typedef struct TYPE_27__ TYPE_21__ ;
+typedef struct TYPE_26__ TYPE_1__ ;
+
+
+typedef int int64_t ;
+struct TYPE_34__ {scalar_t__ pts; scalar_t__ dts; int duration; scalar_t__ size; int * data; } ;
+struct TYPE_30__ {int num; } ;
+struct TYPE_33__ {int saw_first_ts; int dts; void* pts; scalar_t__ next_dts; scalar_t__ next_pts; int got_output; TYPE_2__* dec_ctx; TYPE_22__* st; TYPE_24__ framerate; scalar_t__ decoding_needed; int file_index; } ;
 struct TYPE_32__ {scalar_t__ encoding_needed; } ;
 struct TYPE_26__ {int num; int den; } ;
 struct TYPE_31__ {int has_b_frames; int codec_type; int ticks_per_frame; int sample_rate; int frame_size; TYPE_1__ framerate; } ;
 struct TYPE_29__ {scalar_t__ num; } ;
-struct TYPE_28__ {int /*<<< orphan*/  time_base; int /*<<< orphan*/  index; TYPE_23__ avg_frame_rate; } ;
-struct TYPE_27__ {int /*<<< orphan*/  repeat_pict; } ;
-typedef  TYPE_3__ OutputStream ;
-typedef  TYPE_4__ InputStream ;
-typedef  int /*<<< orphan*/  AVRational ;
-typedef  TYPE_5__ AVPacket ;
+struct TYPE_28__ {int time_base; int index; TYPE_23__ avg_frame_rate; } ;
+struct TYPE_27__ {int repeat_pict; } ;
+typedef TYPE_3__ OutputStream ;
+typedef TYPE_4__ InputStream ;
+typedef int AVRational ;
+typedef TYPE_5__ AVPacket ;
 
-/* Variables and functions */
- int AVERROR_EOF ; 
-#define  AVMEDIA_TYPE_AUDIO 130 
-#define  AVMEDIA_TYPE_SUBTITLE 129 
-#define  AVMEDIA_TYPE_VIDEO 128 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_LOG_FATAL ; 
- scalar_t__ AV_NOPTS_VALUE ; 
- int AV_TIME_BASE ; 
- int /*<<< orphan*/  AV_TIME_BASE_Q ; 
- int /*<<< orphan*/  av_assert1 (int) ; 
- int /*<<< orphan*/  av_err2str (int) ; 
- int /*<<< orphan*/  av_init_packet (TYPE_5__*) ; 
- int /*<<< orphan*/  av_inv_q (TYPE_24__) ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,...) ; 
- int av_q2d (TYPE_23__) ; 
- void* av_rescale_q (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_21__* av_stream_get_parser (TYPE_22__*) ; 
- int /*<<< orphan*/  check_output_constraints (TYPE_4__*,TYPE_3__*) ; 
- int decode_audio (TYPE_4__*,TYPE_5__*,int*,int*) ; 
- int decode_video (TYPE_4__*,TYPE_5__*,int*,int*,int,int*) ; 
- int /*<<< orphan*/  do_streamcopy (TYPE_4__*,TYPE_3__*,TYPE_5__ const*) ; 
- scalar_t__ exit_on_error ; 
- int /*<<< orphan*/  exit_program (int) ; 
- int nb_output_streams ; 
- TYPE_3__** output_streams ; 
- int send_filter_eof (TYPE_4__*) ; 
- int transcode_subtitles (TYPE_4__*,TYPE_5__*,int*,int*) ; 
+
+ int AVERROR_EOF ;
+
+
+
+ int AV_LOG_ERROR ;
+ int AV_LOG_FATAL ;
+ scalar_t__ AV_NOPTS_VALUE ;
+ int AV_TIME_BASE ;
+ int AV_TIME_BASE_Q ;
+ int av_assert1 (int) ;
+ int av_err2str (int) ;
+ int av_init_packet (TYPE_5__*) ;
+ int av_inv_q (TYPE_24__) ;
+ int av_log (int *,int ,char*,...) ;
+ int av_q2d (TYPE_23__) ;
+ void* av_rescale_q (int,int ,int ) ;
+ TYPE_21__* av_stream_get_parser (TYPE_22__*) ;
+ int check_output_constraints (TYPE_4__*,TYPE_3__*) ;
+ int decode_audio (TYPE_4__*,TYPE_5__*,int*,int*) ;
+ int decode_video (TYPE_4__*,TYPE_5__*,int*,int*,int,int*) ;
+ int do_streamcopy (TYPE_4__*,TYPE_3__*,TYPE_5__ const*) ;
+ scalar_t__ exit_on_error ;
+ int exit_program (int) ;
+ int nb_output_streams ;
+ TYPE_3__** output_streams ;
+ int send_filter_eof (TYPE_4__*) ;
+ int transcode_subtitles (TYPE_4__*,TYPE_5__*,int*,int*) ;
 
 __attribute__((used)) static int process_input_packet(InputStream *ist, const AVPacket *pkt, int no_eof)
 {
@@ -75,7 +75,7 @@ __attribute__((used)) static int process_input_packet(InputStream *ist, const AV
         ist->pts = 0;
         if (pkt && pkt->pts != AV_NOPTS_VALUE && !ist->decoding_needed) {
             ist->dts += av_rescale_q(pkt->pts, ist->st->time_base, AV_TIME_BASE_Q);
-            ist->pts = ist->dts; //unused but better to set it to a value thats not totally wrong
+            ist->pts = ist->dts;
         }
         ist->saw_first_ts = 1;
     }
@@ -86,9 +86,9 @@ __attribute__((used)) static int process_input_packet(InputStream *ist, const AV
         ist->next_pts = ist->pts;
 
     if (!pkt) {
-        /* EOF handling */
+
         av_init_packet(&avpkt);
-        avpkt.data = NULL;
+        avpkt.data = ((void*)0);
         avpkt.size = 0;
     } else {
         avpkt = *pkt;
@@ -96,11 +96,11 @@ __attribute__((used)) static int process_input_packet(InputStream *ist, const AV
 
     if (pkt && pkt->dts != AV_NOPTS_VALUE) {
         ist->next_dts = ist->dts = av_rescale_q(pkt->dts, ist->st->time_base, AV_TIME_BASE_Q);
-        if (ist->dec_ctx->codec_type != AVMEDIA_TYPE_VIDEO || !ist->decoding_needed)
+        if (ist->dec_ctx->codec_type != 128 || !ist->decoding_needed)
             ist->next_pts = ist->pts = ist->dts;
     }
 
-    // while we have more to decode or while the decoder did output something on EOF
+
     while (ist->decoding_needed) {
         int64_t duration_dts = 0;
         int64_t duration_pts = 0;
@@ -111,12 +111,12 @@ __attribute__((used)) static int process_input_packet(InputStream *ist, const AV
         ist->dts = ist->next_dts;
 
         switch (ist->dec_ctx->codec_type) {
-        case AVMEDIA_TYPE_AUDIO:
-            ret = decode_audio    (ist, repeating ? NULL : &avpkt, &got_output,
+        case 130:
+            ret = decode_audio (ist, repeating ? ((void*)0) : &avpkt, &got_output,
                                    &decode_failed);
             break;
-        case AVMEDIA_TYPE_VIDEO:
-            ret = decode_video    (ist, repeating ? NULL : &avpkt, &got_output, &duration_pts, !pkt,
+        case 128:
+            ret = decode_video (ist, repeating ? ((void*)0) : &avpkt, &got_output, &duration_pts, !pkt,
                                    &decode_failed);
             if (!repeating || !pkt || got_output) {
                 if (pkt && pkt->duration) {
@@ -142,7 +142,7 @@ __attribute__((used)) static int process_input_packet(InputStream *ist, const AV
                 }
             }
             break;
-        case AVMEDIA_TYPE_SUBTITLE:
+        case 129:
             if (repeating)
                 break;
             ret = transcode_subtitles(ist, &avpkt, &got_output, &decode_failed);
@@ -160,10 +160,10 @@ __attribute__((used)) static int process_input_packet(InputStream *ist, const AV
 
         if (ret < 0) {
             if (decode_failed) {
-                av_log(NULL, AV_LOG_ERROR, "Error while decoding stream #%d:%d: %s\n",
+                av_log(((void*)0), AV_LOG_ERROR, "Error while decoding stream #%d:%d: %s\n",
                        ist->file_index, ist->st->index, av_err2str(ret));
             } else {
-                av_log(NULL, AV_LOG_FATAL, "Error while processing the decoded "
+                av_log(((void*)0), AV_LOG_FATAL, "Error while processing the decoded "
                        "data for stream #%d:%d\n", ist->file_index, ist->st->index);
             }
             if (!decode_failed || exit_on_error)
@@ -176,36 +176,27 @@ __attribute__((used)) static int process_input_packet(InputStream *ist, const AV
 
         if (!got_output)
             break;
-
-        // During draining, we might get multiple output frames in this loop.
-        // ffmpeg.c does not drain the filter chain on configuration changes,
-        // which means if we send multiple frames at once to the filters, and
-        // one of those frames changes configuration, the buffered frames will
-        // be lost. This can upset certain FATE tests.
-        // Decode only 1 frame per call on EOF to appease these FATE tests.
-        // The ideal solution would be to rewrite decoding to use the new
-        // decoding API in a better way.
         if (!pkt)
             break;
 
         repeating = 1;
     }
 
-    /* after flushing, send an EOF on all the filter inputs attached to the stream */
-    /* except when looping we need to flush but not to send an EOF */
+
+
     if (!pkt && ist->decoding_needed && eof_reached && !no_eof) {
         int ret = send_filter_eof(ist);
         if (ret < 0) {
-            av_log(NULL, AV_LOG_FATAL, "Error marking filters as finished\n");
+            av_log(((void*)0), AV_LOG_FATAL, "Error marking filters as finished\n");
             exit_program(1);
         }
     }
 
-    /* handle stream copy */
+
     if (!ist->decoding_needed && pkt) {
         ist->dts = ist->next_dts;
         switch (ist->dec_ctx->codec_type) {
-        case AVMEDIA_TYPE_AUDIO:
+        case 130:
             av_assert1(pkt->duration >= 0);
             if (ist->dec_ctx->sample_rate) {
                 ist->next_dts += ((int64_t)AV_TIME_BASE * ist->dec_ctx->frame_size) /
@@ -214,9 +205,9 @@ __attribute__((used)) static int process_input_packet(InputStream *ist, const AV
                 ist->next_dts += av_rescale_q(pkt->duration, ist->st->time_base, AV_TIME_BASE_Q);
             }
             break;
-        case AVMEDIA_TYPE_VIDEO:
+        case 128:
             if (ist->framerate.num) {
-                // TODO: Remove work-around for c99-to-c89 issue 7
+
                 AVRational time_base_q = AV_TIME_BASE_Q;
                 int64_t next_dts = av_rescale_q(ist->next_dts, time_base_q, av_inv_q(ist->framerate));
                 ist->next_dts = av_rescale_q(next_dts + 1, av_inv_q(ist->framerate), time_base_q);

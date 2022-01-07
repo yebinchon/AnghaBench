@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_4__ {unsigned int i_substreams; } ;
-typedef  TYPE_1__ mlp_header_t ;
+typedef TYPE_1__ mlp_header_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MlpParse (TYPE_1__*,int const*) ; 
- int /*<<< orphan*/  memcmp (int const*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  pu_start_code ; 
+
+ int MlpParse (TYPE_1__*,int const*) ;
+ int memcmp (int const*,int ,int) ;
+ int pu_start_code ;
 
 __attribute__((used)) static int SyncInfo( const uint8_t *p_hdr, bool *pb_mlp, mlp_header_t *p_mlp )
 {
-    /* Check major sync presence */
+
     const bool b_has_sync = !memcmp( &p_hdr[4], pu_start_code, 3 );
 
-    /* Wait for a major sync */
+
     if( !b_has_sync && !*pb_mlp )
         return 0;
 
-    /* Parse major sync if present */
+
     if( b_has_sync )
     {
         *pb_mlp = !MlpParse( p_mlp, &p_hdr[4] );
@@ -59,7 +59,7 @@ __attribute__((used)) static int SyncInfo( const uint8_t *p_hdr, bool *pb_mlp, m
             return 0;
     }
 
-    /* */
+
     const int i_word = ( ( p_hdr[0] << 8 ) | p_hdr[1] ) & 0xfff;
     return i_word * 2;
 }

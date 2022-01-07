@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct testcase {char* testno; int writedelay; } ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef int FILE ;
 
-/* Variables and functions */
- int errno ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  free (char*) ; 
- int getpart (char**,size_t*,char*,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  logmsg (char*,...) ; 
- int sscanf (char*,char*,int*) ; 
- char* strchr (char*,char) ; 
- int /*<<< orphan*/  strerror (int) ; 
- char* test2file (char*) ; 
+
+ int errno ;
+ int fclose (int *) ;
+ int * fopen (char*,char*) ;
+ int free (char*) ;
+ int getpart (char**,size_t*,char*,char*,int *) ;
+ int logmsg (char*,...) ;
+ int sscanf (char*,char*,int*) ;
+ char* strchr (char*,char) ;
+ int strerror (int) ;
+ char* test2file (char*) ;
 
 __attribute__((used)) static int parse_servercmd(struct testcase *req)
 {
@@ -39,20 +39,20 @@ __attribute__((used)) static int parse_servercmd(struct testcase *req)
     logmsg("fopen() failed with error: %d %s", error, strerror(error));
     logmsg("  [1] Error opening file: %s", filename);
     logmsg("  Couldn't open test file %ld", req->testno);
-    return 1; /* done */
+    return 1;
   }
   else {
-    char *orgcmd = NULL;
-    char *cmd = NULL;
+    char *orgcmd = ((void*)0);
+    char *cmd = ((void*)0);
     size_t cmdsize = 0;
     int num = 0;
 
-    /* get the custom server control "commands" */
+
     error = getpart(&orgcmd, &cmdsize, "reply", "servercmd", stream);
     fclose(stream);
     if(error) {
       logmsg("getpart() failed with error: %d", error);
-      return 1; /* done */
+      return 1;
     }
 
     cmd = orgcmd;
@@ -65,18 +65,18 @@ __attribute__((used)) static int parse_servercmd(struct testcase *req)
       else {
         logmsg("Unknown <servercmd> instruction found: %s", cmd);
       }
-      /* try to deal with CRLF or just LF */
+
       check = strchr(cmd, '\r');
       if(!check)
         check = strchr(cmd, '\n');
 
       if(check) {
-        /* get to the letter following the newline */
+
         while((*check == '\r') || (*check == '\n'))
           check++;
 
         if(!*check)
-          /* if we reached a zero, get out */
+
           break;
         cmd = check;
       }
@@ -86,5 +86,5 @@ __attribute__((used)) static int parse_servercmd(struct testcase *req)
     free(orgcmd);
   }
 
-  return 0; /* OK! */
+  return 0;
 }

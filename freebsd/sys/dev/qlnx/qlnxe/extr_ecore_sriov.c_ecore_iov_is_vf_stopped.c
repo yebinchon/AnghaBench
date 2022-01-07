@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u16 ;
+
+
+
+
+typedef int u16 ;
 struct ecore_vf_info {scalar_t__ state; } ;
 struct ecore_hwfn {int dummy; } ;
 
-/* Variables and functions */
- scalar_t__ VF_STOPPED ; 
- struct ecore_vf_info* ecore_iov_get_vf_info (struct ecore_hwfn*,int /*<<< orphan*/ ,int) ; 
+
+ scalar_t__ VF_STOPPED ;
+ struct ecore_vf_info* ecore_iov_get_vf_info (struct ecore_hwfn*,int ,int) ;
 
 bool ecore_iov_is_vf_stopped(struct ecore_hwfn *p_hwfn, int vfid)
 {
-	struct ecore_vf_info *p_vf_info;
+ struct ecore_vf_info *p_vf_info;
 
-	p_vf_info = ecore_iov_get_vf_info(p_hwfn, (u16)vfid, true);
-	if (!p_vf_info)
-		return true;
+ p_vf_info = ecore_iov_get_vf_info(p_hwfn, (u16)vfid, 1);
+ if (!p_vf_info)
+  return 1;
 
-	return p_vf_info->state == VF_STOPPED;
+ return p_vf_info->state == VF_STOPPED;
 }

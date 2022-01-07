@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct scsi_qla_host {TYPE_1__* iobase; } ;
-struct TYPE_2__ {int /*<<< orphan*/  ictrl; } ;
+struct TYPE_2__ {int ictrl; } ;
 
-/* Variables and functions */
- int ISP_EN_INT ; 
- int ISP_EN_RISC ; 
- int /*<<< orphan*/  RD_REG_WORD (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  WRT_REG_WORD (int /*<<< orphan*/ *,int) ; 
+
+ int ISP_EN_INT ;
+ int ISP_EN_RISC ;
+ int RD_REG_WORD (int *) ;
+ int WRT_REG_WORD (int *,int) ;
 
 __attribute__((used)) static inline void
 qla1280_enable_intrs(struct scsi_qla_host *ha)
 {
-	WRT_REG_WORD(&ha->iobase->ictrl, (ISP_EN_INT | ISP_EN_RISC));
-	RD_REG_WORD(&ha->iobase->ictrl);	/* PCI Posted Write flush */
+ WRT_REG_WORD(&ha->iobase->ictrl, (ISP_EN_INT | ISP_EN_RISC));
+ RD_REG_WORD(&ha->iobase->ictrl);
 }

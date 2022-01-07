@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct mp_autoconvert {struct mp_filter* f; } ;
-struct TYPE_2__ {int /*<<< orphan*/  out; int /*<<< orphan*/  in; } ;
-struct priv {double audio_speed; struct mp_autoconvert public; TYPE_1__ sub; int /*<<< orphan*/  log; } ;
-struct mp_filter {int /*<<< orphan*/ * ppins; int /*<<< orphan*/  log; struct priv* priv; } ;
+struct TYPE_2__ {int out; int in; } ;
+struct priv {double audio_speed; struct mp_autoconvert public; TYPE_1__ sub; int log; } ;
+struct mp_filter {int * ppins; int log; struct priv* priv; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MP_PIN_IN ; 
- int /*<<< orphan*/  MP_PIN_OUT ; 
- int /*<<< orphan*/  autoconvert_filter ; 
- int /*<<< orphan*/  mp_filter_add_pin (struct mp_filter*,int /*<<< orphan*/ ,char*) ; 
- struct mp_filter* mp_filter_create (struct mp_filter*,int /*<<< orphan*/ *) ; 
+
+ int MP_PIN_IN ;
+ int MP_PIN_OUT ;
+ int autoconvert_filter ;
+ int mp_filter_add_pin (struct mp_filter*,int ,char*) ;
+ struct mp_filter* mp_filter_create (struct mp_filter*,int *) ;
 
 struct mp_autoconvert *mp_autoconvert_create(struct mp_filter *parent)
 {
     struct mp_filter *f = mp_filter_create(parent, &autoconvert_filter);
     if (!f)
-        return NULL;
+        return ((void*)0);
 
     mp_filter_add_pin(f, MP_PIN_IN, "in");
     mp_filter_add_pin(f, MP_PIN_OUT, "out");

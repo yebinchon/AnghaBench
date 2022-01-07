@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
-typedef  enum tree_code { ____Placeholder_tree_code } tree_code ;
 
-/* Variables and functions */
- scalar_t__ BIT_AND_EXPR ; 
- scalar_t__ BIT_IOR_EXPR ; 
- int TREE_CODE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TREE_OPERAND (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  fold_build2 (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ operand_equal_p (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int tree ;
+typedef enum tree_code { ____Placeholder_tree_code } tree_code ;
+
+
+ scalar_t__ BIT_AND_EXPR ;
+ scalar_t__ BIT_IOR_EXPR ;
+ int TREE_CODE (int ) ;
+ int TREE_OPERAND (int ,int) ;
+ int fold_build2 (int,int ,int ,int ) ;
+ scalar_t__ operand_equal_p (int ,int ,int ) ;
 
 __attribute__((used)) static tree
 distribute_bit_expr (enum tree_code code, tree type, tree arg0, tree arg1)
@@ -30,7 +30,7 @@ distribute_bit_expr (enum tree_code code, tree type, tree arg0, tree arg1)
   if (TREE_CODE (arg0) != TREE_CODE (arg1)
       || TREE_CODE (arg0) == code
       || (TREE_CODE (arg0) != BIT_AND_EXPR
-	  && TREE_CODE (arg0) != BIT_IOR_EXPR))
+   && TREE_CODE (arg0) != BIT_IOR_EXPR))
     return 0;
 
   if (operand_equal_p (TREE_OPERAND (arg0, 0), TREE_OPERAND (arg1, 0), 0))
@@ -61,5 +61,5 @@ distribute_bit_expr (enum tree_code code, tree type, tree arg0, tree arg1)
     return 0;
 
   return fold_build2 (TREE_CODE (arg0), type, common,
-		      fold_build2 (code, type, left, right));
+        fold_build2 (code, type, left, right));
 }

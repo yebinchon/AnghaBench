@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct d3dx_parameter {int /*<<< orphan*/  bytes; int /*<<< orphan*/  flags; int /*<<< orphan*/  member_count; int /*<<< orphan*/  element_count; int /*<<< orphan*/  columns; int /*<<< orphan*/  rows; int /*<<< orphan*/  type; int /*<<< orphan*/  class; int /*<<< orphan*/  semantic; int /*<<< orphan*/  name; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct d3dx_parameter {int bytes; int flags; int member_count; int element_count; int columns; int rows; int type; int class; int semantic; int name; } ;
 struct d3dx9_base_effect {int dummy; } ;
-struct TYPE_5__ {int /*<<< orphan*/  annotation_count; } ;
-struct TYPE_4__ {int /*<<< orphan*/  Bytes; int /*<<< orphan*/  Flags; int /*<<< orphan*/  StructMembers; int /*<<< orphan*/  Annotations; int /*<<< orphan*/  Elements; int /*<<< orphan*/  Columns; int /*<<< orphan*/  Rows; int /*<<< orphan*/  Type; int /*<<< orphan*/  Class; int /*<<< orphan*/  Semantic; int /*<<< orphan*/  Name; } ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  TYPE_1__ D3DXPARAMETER_DESC ;
-typedef  int /*<<< orphan*/  D3DXHANDLE ;
+struct TYPE_5__ {int annotation_count; } ;
+struct TYPE_4__ {int Bytes; int Flags; int StructMembers; int Annotations; int Elements; int Columns; int Rows; int Type; int Class; int Semantic; int Name; } ;
+typedef int HRESULT ;
+typedef TYPE_1__ D3DXPARAMETER_DESC ;
+typedef int D3DXHANDLE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D3DERR_INVALIDCALL ; 
- int /*<<< orphan*/  D3D_OK ; 
- int /*<<< orphan*/  WARN (char*) ; 
- struct d3dx_parameter* get_valid_parameter (struct d3dx9_base_effect*,int /*<<< orphan*/ ) ; 
- scalar_t__ is_top_level_parameter (struct d3dx_parameter*) ; 
- TYPE_2__* top_level_parameter_from_parameter (struct d3dx_parameter*) ; 
+
+ int D3DERR_INVALIDCALL ;
+ int D3D_OK ;
+ int WARN (char*) ;
+ struct d3dx_parameter* get_valid_parameter (struct d3dx9_base_effect*,int ) ;
+ scalar_t__ is_top_level_parameter (struct d3dx_parameter*) ;
+ TYPE_2__* top_level_parameter_from_parameter (struct d3dx_parameter*) ;
 
 __attribute__((used)) static HRESULT d3dx9_base_effect_get_parameter_desc(struct d3dx9_base_effect *base,
         D3DXHANDLE parameter, D3DXPARAMETER_DESC *desc)

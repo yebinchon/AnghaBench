@@ -1,88 +1,88 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  event ;
-typedef  int /*<<< orphan*/  bufdesc ;
+
+
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef int event ;
+typedef int bufdesc ;
 struct TYPE_11__ {int nAvgBytesPerSec; } ;
-typedef  TYPE_1__ WAVEFORMATEX ;
+typedef TYPE_1__ WAVEFORMATEX ;
 struct TYPE_13__ {void* hEventNotify; void* dwOffset; } ;
 struct TYPE_12__ {int dwSize; int dwFlags; int dwBufferBytes; TYPE_1__* lpwfxFormat; } ;
-typedef  TYPE_2__* LPVOID ;
-typedef  int /*<<< orphan*/  LPGUID ;
-typedef  int /*<<< orphan*/ * LPDIRECTSOUNDNOTIFY ;
-typedef  int /*<<< orphan*/ * LPDIRECTSOUNDBUFFER ;
-typedef  int /*<<< orphan*/ * LPDIRECTSOUND ;
-typedef  scalar_t__ HRESULT ;
-typedef  void* HANDLE ;
-typedef  int DWORD ;
-typedef  TYPE_2__ DSBUFFERDESC ;
-typedef  TYPE_4__ DSBPOSITIONNOTIFY ;
+typedef TYPE_2__* LPVOID ;
+typedef int LPGUID ;
+typedef int * LPDIRECTSOUNDNOTIFY ;
+typedef int * LPDIRECTSOUNDBUFFER ;
+typedef int * LPDIRECTSOUND ;
+typedef scalar_t__ HRESULT ;
+typedef void* HANDLE ;
+typedef int DWORD ;
+typedef TYPE_2__ DSBUFFERDESC ;
+typedef TYPE_4__ DSBPOSITIONNOTIFY ;
 
-/* Variables and functions */
- void* CreateEvent (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int DSBCAPS_CTRLPOSITIONNOTIFY ; 
- int DSBCAPS_GETCURRENTPOSITION2 ; 
- int DSBCAPS_PRIMARYBUFFER ; 
- int /*<<< orphan*/  DSBLOCK_ENTIREBUFFER ; 
- void* DSBPN_OFFSETSTOP ; 
- scalar_t__ DSERR_ALLOCATED ; 
- scalar_t__ DSERR_GENERIC ; 
- scalar_t__ DSERR_NODRIVER ; 
- int /*<<< orphan*/  DSSCL_NORMAL ; 
- int /*<<< orphan*/  DSSCL_PRIORITY ; 
- scalar_t__ DS_OK ; 
- int /*<<< orphan*/  FALSE ; 
- scalar_t__ IDirectSoundBuffer_Lock (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_2__**,int*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ IDirectSoundBuffer_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int IDirectSoundBuffer_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IDirectSoundBuffer_Unlock (int /*<<< orphan*/ *,TYPE_2__*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int IDirectSoundNotify_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IDirectSoundNotify_SetNotificationPositions (int /*<<< orphan*/ *,int,TYPE_4__*) ; 
- scalar_t__ IDirectSound_CreateSoundBuffer (int /*<<< orphan*/ *,TYPE_2__*,int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
- scalar_t__ IDirectSound_DuplicateSoundBuffer (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int IDirectSound_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IDirectSound_SetCooperativeLevel (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IID_IDirectSoundNotify ; 
- scalar_t__ WAIT_OBJECT_0 ; 
- scalar_t__ WAIT_TIMEOUT ; 
- int /*<<< orphan*/  WAVE_FORMAT_PCM ; 
- int /*<<< orphan*/  ZeroMemory (TYPE_2__*,int) ; 
- int /*<<< orphan*/  get_hwnd () ; 
- int /*<<< orphan*/  init_format (TYPE_1__*,int /*<<< orphan*/ ,int,int,int) ; 
- int /*<<< orphan*/  ok (int,char*,int) ; 
- scalar_t__ pDirectSoundCreate (int /*<<< orphan*/ ,int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  test_notify (int /*<<< orphan*/ *,int,void**,scalar_t__) ; 
- int /*<<< orphan*/  trace (char*) ; 
+
+ void* CreateEvent (int *,int ,int ,int *) ;
+ int DSBCAPS_CTRLPOSITIONNOTIFY ;
+ int DSBCAPS_GETCURRENTPOSITION2 ;
+ int DSBCAPS_PRIMARYBUFFER ;
+ int DSBLOCK_ENTIREBUFFER ;
+ void* DSBPN_OFFSETSTOP ;
+ scalar_t__ DSERR_ALLOCATED ;
+ scalar_t__ DSERR_GENERIC ;
+ scalar_t__ DSERR_NODRIVER ;
+ int DSSCL_NORMAL ;
+ int DSSCL_PRIORITY ;
+ scalar_t__ DS_OK ;
+ int FALSE ;
+ scalar_t__ IDirectSoundBuffer_Lock (int *,int ,int ,TYPE_2__**,int*,int *,int *,int ) ;
+ scalar_t__ IDirectSoundBuffer_QueryInterface (int *,int *,void**) ;
+ int IDirectSoundBuffer_Release (int *) ;
+ scalar_t__ IDirectSoundBuffer_Unlock (int *,TYPE_2__*,int,int *,int ) ;
+ int IDirectSoundNotify_Release (int *) ;
+ scalar_t__ IDirectSoundNotify_SetNotificationPositions (int *,int,TYPE_4__*) ;
+ scalar_t__ IDirectSound_CreateSoundBuffer (int *,TYPE_2__*,int **,int *) ;
+ scalar_t__ IDirectSound_DuplicateSoundBuffer (int *,int *,int **) ;
+ int IDirectSound_Release (int *) ;
+ scalar_t__ IDirectSound_SetCooperativeLevel (int *,int ,int ) ;
+ int IID_IDirectSoundNotify ;
+ scalar_t__ WAIT_OBJECT_0 ;
+ scalar_t__ WAIT_TIMEOUT ;
+ int WAVE_FORMAT_PCM ;
+ int ZeroMemory (TYPE_2__*,int) ;
+ int get_hwnd () ;
+ int init_format (TYPE_1__*,int ,int,int,int) ;
+ int ok (int,char*,int) ;
+ scalar_t__ pDirectSoundCreate (int ,int **,int *) ;
+ int test_notify (int *,int,void**,scalar_t__) ;
+ int trace (char*) ;
 
 __attribute__((used)) static HRESULT test_duplicate(LPGUID lpGuid)
 {
     HRESULT rc;
-    LPDIRECTSOUND dso=NULL;
-    LPDIRECTSOUNDBUFFER primary=NULL;
+    LPDIRECTSOUND dso=((void*)0);
+    LPDIRECTSOUNDBUFFER primary=((void*)0);
     DSBUFFERDESC bufdesc;
     int ref;
 
-    /* Create the DirectSound object */
-    rc=pDirectSoundCreate(lpGuid,&dso,NULL);
+
+    rc=pDirectSoundCreate(lpGuid,&dso,((void*)0));
     ok(rc==DS_OK||rc==DSERR_NODRIVER||rc==DSERR_ALLOCATED,
        "DirectSoundCreate() failed: %08x\n",rc);
     if (rc!=DS_OK)
         return rc;
 
-    /* We must call SetCooperativeLevel before creating primary buffer */
-    /* DSOUND: Setting DirectSound cooperative level to DSSCL_PRIORITY */
+
+
     rc=IDirectSound_SetCooperativeLevel(dso,get_hwnd(),DSSCL_PRIORITY);
     ok(rc==DS_OK,"IDirectSound_SetCooperativeLevel() failed: %08x\n", rc);
     if (rc!=DS_OK)
@@ -91,46 +91,46 @@ __attribute__((used)) static HRESULT test_duplicate(LPGUID lpGuid)
     ZeroMemory(&bufdesc, sizeof(bufdesc));
     bufdesc.dwSize=sizeof(bufdesc);
     bufdesc.dwFlags=DSBCAPS_PRIMARYBUFFER;
-    rc=IDirectSound_CreateSoundBuffer(dso,&bufdesc,&primary,NULL);
-    ok(rc==DS_OK && primary!=NULL,"IDirectSound_CreateSoundBuffer() failed "
+    rc=IDirectSound_CreateSoundBuffer(dso,&bufdesc,&primary,((void*)0));
+    ok(rc==DS_OK && primary!=((void*)0),"IDirectSound_CreateSoundBuffer() failed "
        "to create a primary buffer %08x\n",rc);
 
-    if (rc==DS_OK && primary!=NULL) {
-        LPDIRECTSOUNDBUFFER original=NULL;
+    if (rc==DS_OK && primary!=((void*)0)) {
+        LPDIRECTSOUNDBUFFER original=((void*)0);
         WAVEFORMATEX wfx;
 
         init_format(&wfx,WAVE_FORMAT_PCM,22050,16,1);
         ZeroMemory(&bufdesc, sizeof(bufdesc));
         bufdesc.dwSize=sizeof(bufdesc);
         bufdesc.dwFlags=DSBCAPS_GETCURRENTPOSITION2|DSBCAPS_CTRLPOSITIONNOTIFY;
-        bufdesc.dwBufferBytes=wfx.nAvgBytesPerSec/100; /* very short buffer */
+        bufdesc.dwBufferBytes=wfx.nAvgBytesPerSec/100;
         bufdesc.lpwfxFormat=&wfx;
-        rc=IDirectSound_CreateSoundBuffer(dso,&bufdesc,&original,NULL);
-        ok(rc==DS_OK && original!=NULL,
+        rc=IDirectSound_CreateSoundBuffer(dso,&bufdesc,&original,((void*)0));
+        ok(rc==DS_OK && original!=((void*)0),
            "IDirectSound_CreateSoundBuffer() failed to create a original "
            "buffer %08x\n",rc);
-        if (rc==DS_OK && original!=NULL) {
-            LPDIRECTSOUNDBUFFER duplicated=NULL;
-            LPDIRECTSOUNDNOTIFY notify=NULL;
+        if (rc==DS_OK && original!=((void*)0)) {
+            LPDIRECTSOUNDBUFFER duplicated=((void*)0);
+            LPDIRECTSOUNDNOTIFY notify=((void*)0);
             HANDLE event[2];
-            LPVOID buf=NULL;
+            LPVOID buf=((void*)0);
             DWORD bufsize;
             int i;
 
-            /* Prepare notify events */
+
             for (i=0;i<sizeof(event)/sizeof(event[0]);i++) {
-                event[i] = CreateEvent(NULL,FALSE,FALSE,NULL);
+                event[i] = CreateEvent(((void*)0),FALSE,FALSE,((void*)0));
             }
 
-            /* Make silent buffer */
+
             rc=IDirectSoundBuffer_Lock(original,0,0,&buf,&bufsize,
-                                       NULL,NULL,DSBLOCK_ENTIREBUFFER);
-            ok(rc==DS_OK && buf!=NULL,
+                                       ((void*)0),((void*)0),DSBLOCK_ENTIREBUFFER);
+            ok(rc==DS_OK && buf!=((void*)0),
                "IDirectSoundBuffer_Lock failed to lock the buffer %08x\n",rc);
-            if (rc==DS_OK && buf!=NULL) {
+            if (rc==DS_OK && buf!=((void*)0)) {
                 ZeroMemory(buf,bufsize);
                 rc=IDirectSoundBuffer_Unlock(original,buf,bufsize,
-                                             NULL,0);
+                                             ((void*)0),0);
                 ok(rc==DS_OK,"IDirectSoundBuffer_Unlock failed to unlock "
                    "%08x\n",rc);
             }
@@ -138,12 +138,12 @@ __attribute__((used)) static HRESULT test_duplicate(LPGUID lpGuid)
             rc=IDirectSoundBuffer_QueryInterface(original,
                                                  &IID_IDirectSoundNotify,
                                                  (void**)&notify);
-            ok(rc==DS_OK && notify!=NULL,
+            ok(rc==DS_OK && notify!=((void*)0),
                "IDirectSoundBuffer_QueryInterface() failed to create a "
                "notification %08x\n",rc);
-            if (rc==DS_OK && notify!=NULL) {
+            if (rc==DS_OK && notify!=((void*)0)) {
                 DSBPOSITIONNOTIFY dsbpn;
-                LPDIRECTSOUNDNOTIFY dup_notify=NULL;
+                LPDIRECTSOUNDNOTIFY dup_notify=((void*)0);
 
                 dsbpn.dwOffset=DSBPN_OFFSETSTOP;
                 dsbpn.hEventNotify=event[0];
@@ -153,7 +153,7 @@ __attribute__((used)) static HRESULT test_duplicate(LPGUID lpGuid)
                    "failed %08x\n",rc);
 
                 rc=IDirectSound_DuplicateSoundBuffer(dso,original,&duplicated);
-                ok(rc==DS_OK && duplicated!=NULL,
+                ok(rc==DS_OK && duplicated!=((void*)0),
                    "IDirectSound_DuplicateSoundBuffer failed %08x\n",rc);
 
                 trace("testing duplicated buffer without notifications.\n");
@@ -163,10 +163,10 @@ __attribute__((used)) static HRESULT test_duplicate(LPGUID lpGuid)
                 rc=IDirectSoundBuffer_QueryInterface(duplicated,
                                                      &IID_IDirectSoundNotify,
                                                      (void**)&dup_notify);
-                ok(rc==DS_OK&&dup_notify!=NULL,
+                ok(rc==DS_OK&&dup_notify!=((void*)0),
                    "IDirectSoundBuffer_QueryInterface() failed to create a "
                    "notification %08x\n",rc);
-                if(rc==DS_OK&&dup_notify!=NULL) {
+                if(rc==DS_OK&&dup_notify!=((void*)0)) {
                     dsbpn.dwOffset=DSBPN_OFFSETSTOP;
                     dsbpn.hEventNotify=event[1];
                     rc=IDirectSoundNotify_SetNotificationPositions(dup_notify,
@@ -203,8 +203,8 @@ __attribute__((used)) static HRESULT test_duplicate(LPGUID lpGuid)
            "should have 0\n",ref);
     }
 
-    /* Set the CooperativeLevel back to normal */
-    /* DSOUND: Setting DirectSound cooperative level to DSSCL_NORMAL */
+
+
     rc=IDirectSound_SetCooperativeLevel(dso,get_hwnd(),DSSCL_NORMAL);
     ok(rc==DS_OK,"IDirectSound_SetCooperativeLevel() failed: %08x\n", rc);
 

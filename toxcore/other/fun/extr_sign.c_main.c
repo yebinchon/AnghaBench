@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  crypto_sign_ed25519 (char*,unsigned long long*,char*,int,unsigned char*) ; 
- int crypto_sign_ed25519_BYTES ; 
- int crypto_sign_ed25519_PUBLICKEYBYTES ; 
- int crypto_sign_ed25519_SECRETKEYBYTES ; 
- int /*<<< orphan*/  crypto_sign_ed25519_keypair (unsigned char*,unsigned char*) ; 
- int crypto_sign_ed25519_open (char*,unsigned long long*,char*,int,unsigned char*) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  free (unsigned char*) ; 
- unsigned long long fwrite (char*,int,unsigned long long,int /*<<< orphan*/ *) ; 
- unsigned char* hex_string_to_bin (char*) ; 
- int load_file (char*,char**) ; 
- char* malloc (int) ; 
- int /*<<< orphan*/  memcpy (char*,char*,int) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
+
+
+
+typedef int FILE ;
+
+
+ int crypto_sign_ed25519 (char*,unsigned long long*,char*,int,unsigned char*) ;
+ int crypto_sign_ed25519_BYTES ;
+ int crypto_sign_ed25519_PUBLICKEYBYTES ;
+ int crypto_sign_ed25519_SECRETKEYBYTES ;
+ int crypto_sign_ed25519_keypair (unsigned char*,unsigned char*) ;
+ int crypto_sign_ed25519_open (char*,unsigned long long*,char*,int,unsigned char*) ;
+ int fclose (int *) ;
+ int * fopen (char*,char*) ;
+ int free (unsigned char*) ;
+ unsigned long long fwrite (char*,int,unsigned long long,int *) ;
+ unsigned char* hex_string_to_bin (char*) ;
+ int load_file (char*,char**) ;
+ char* malloc (int) ;
+ int memcpy (char*,char*,int) ;
+ int printf (char*,...) ;
 
 int main(int argc, char *argv[])
 {
@@ -70,10 +70,10 @@ int main(int argc, char *argv[])
 
         FILE *f = fopen(argv[4], "wb");
 
-        if (f == NULL)
+        if (f == ((void*)0))
             goto fail;
 
-        memcpy(sm + smlen, sm, crypto_sign_ed25519_BYTES); // Move signature from beginning to end of file.
+        memcpy(sm + smlen, sm, crypto_sign_ed25519_BYTES);
 
         if (fwrite(sm + (smlen - size), 1, smlen, f) != smlen)
             goto fail;
@@ -92,7 +92,7 @@ int main(int argc, char *argv[])
 
         char *signe = malloc(size + crypto_sign_ed25519_BYTES);
         memcpy(signe, data + size - crypto_sign_ed25519_BYTES,
-               crypto_sign_ed25519_BYTES); // Move signature from end to beginning of file.
+               crypto_sign_ed25519_BYTES);
         memcpy(signe + crypto_sign_ed25519_BYTES, data, size - crypto_sign_ed25519_BYTES);
         unsigned long long smlen;
         char *m = malloc(size);

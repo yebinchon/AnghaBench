@@ -1,37 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  AOE_MAJOR ; 
- int /*<<< orphan*/  DEVICE_NAME ; 
- int /*<<< orphan*/  TKILL ; 
- int /*<<< orphan*/  aoeblk_exit () ; 
- int /*<<< orphan*/  aoechr_exit () ; 
- int /*<<< orphan*/  aoecmd_exit () ; 
- int /*<<< orphan*/  aoedev_exit () ; 
- int /*<<< orphan*/  aoenet_exit () ; 
- int /*<<< orphan*/  discover_timer (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  unregister_blkdev (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int AOE_MAJOR ;
+ int DEVICE_NAME ;
+ int TKILL ;
+ int aoeblk_exit () ;
+ int aoechr_exit () ;
+ int aoecmd_exit () ;
+ int aoedev_exit () ;
+ int aoenet_exit () ;
+ int discover_timer (int ) ;
+ int unregister_blkdev (int ,int ) ;
 
 __attribute__((used)) static void
 aoe_exit(void)
 {
-	discover_timer(TKILL);
+ discover_timer(TKILL);
 
-	aoenet_exit();
-	unregister_blkdev(AOE_MAJOR, DEVICE_NAME);
-	aoecmd_exit();
-	aoechr_exit();
-	aoedev_exit();
-	aoeblk_exit();		/* free cache after de-allocating bufs */
+ aoenet_exit();
+ unregister_blkdev(AOE_MAJOR, DEVICE_NAME);
+ aoecmd_exit();
+ aoechr_exit();
+ aoedev_exit();
+ aoeblk_exit();
 }

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct assoc_array_ops {int dummy; } ;
-struct assoc_array {int /*<<< orphan*/ * root; } ;
+struct assoc_array {int * root; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assoc_array_destroy_subtree (int /*<<< orphan*/ *,struct assoc_array_ops const*) ; 
+
+ int assoc_array_destroy_subtree (int *,struct assoc_array_ops const*) ;
 
 void assoc_array_destroy(struct assoc_array *array,
-			 const struct assoc_array_ops *ops)
+    const struct assoc_array_ops *ops)
 {
-	assoc_array_destroy_subtree(array->root, ops);
-	array->root = NULL;
+ assoc_array_destroy_subtree(array->root, ops);
+ array->root = ((void*)0);
 }

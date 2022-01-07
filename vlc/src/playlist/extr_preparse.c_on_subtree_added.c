@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_playlist_t ;
-typedef  int /*<<< orphan*/  input_item_t ;
-typedef  int /*<<< orphan*/  input_item_node_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  VLC_UNUSED (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_playlist_ExpandItemFromNode (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_playlist_Lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_playlist_Unlock (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int vlc_playlist_t ;
+typedef int input_item_t ;
+typedef int input_item_node_t ;
+
+
+ int VLC_UNUSED (int *) ;
+ int vlc_playlist_ExpandItemFromNode (int *,int *) ;
+ int vlc_playlist_Lock (int *) ;
+ int vlc_playlist_Unlock (int *) ;
 
 __attribute__((used)) static void
 on_subtree_added(input_item_t *media, input_item_node_t *subtree,
                  void *userdata)
 {
-    VLC_UNUSED(media); /* retrieved by subtree->p_item */
+    VLC_UNUSED(media);
     vlc_playlist_t *playlist = userdata;
 
     vlc_playlist_Lock(playlist);

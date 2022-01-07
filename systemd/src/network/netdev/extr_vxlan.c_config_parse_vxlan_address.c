@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  union in_addr_union {int dummy; } in_addr_union ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef union in_addr_union {int dummy; } in_addr_union ;
 struct TYPE_2__ {int group_family; int remote_family; int local_family; } ;
-typedef  TYPE_1__ VxLan ;
+typedef TYPE_1__ VxLan ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOG_ERR ; 
- int /*<<< orphan*/  assert (void*) ; 
- int in_addr_from_string_auto (char const*,int*,union in_addr_union*) ; 
- int in_addr_is_multicast (int,union in_addr_union*) ; 
- int /*<<< orphan*/  log_syntax (char const*,int /*<<< orphan*/ ,char const*,unsigned int,int,char*,char const*,char const*) ; 
- scalar_t__ streq (char const*,char*) ; 
+
+ int LOG_ERR ;
+ int assert (void*) ;
+ int in_addr_from_string_auto (char const*,int*,union in_addr_union*) ;
+ int in_addr_is_multicast (int,union in_addr_union*) ;
+ int log_syntax (char const*,int ,char const*,unsigned int,int,char*,char const*,char const*) ;
+ scalar_t__ streq (char const*,char*) ;
 
 int config_parse_vxlan_address(const char *unit,
                                const char *filename,

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  serf_request_t ;
-typedef  int /*<<< orphan*/  serf_bucket_t ;
-typedef  int /*<<< orphan*/  serf_bucket_alloc_t ;
-typedef  int /*<<< orphan*/  req_ctx_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * serf_bucket_barrier_create (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * serf_bucket_response_create (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * serf_request_get_alloc (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int serf_request_t ;
+typedef int serf_bucket_t ;
+typedef int serf_bucket_alloc_t ;
+typedef int req_ctx_t ;
+typedef int apr_pool_t ;
+
+
+ int * serf_bucket_barrier_create (int *,int *) ;
+ int * serf_bucket_response_create (int *,int *) ;
+ int * serf_request_get_alloc (int *) ;
 
 __attribute__((used)) static serf_bucket_t* accept_response(serf_request_t *request,
                                       serf_bucket_t *stream,
@@ -28,14 +28,14 @@ __attribute__((used)) static serf_bucket_t* accept_response(serf_request_t *requ
 {
     serf_bucket_t *c;
     serf_bucket_alloc_t *bkt_alloc;
-#if 0
-    req_ctx_t *ctx = acceptor_baton;
-#endif
 
-    /* get the per-request bucket allocator */
+
+
+
+
     bkt_alloc = serf_request_get_alloc(request);
 
-    /* Create a barrier so the response doesn't eat us! */
+
     c = serf_bucket_barrier_create(stream, bkt_alloc);
 
     return serf_bucket_response_create(c, bkt_alloc);

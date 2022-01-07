@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct lzx_bits {int bb; int bl; int* ip; } ;
-typedef  int /*<<< orphan*/  fdi_decomp_state ;
-typedef  int /*<<< orphan*/  cab_UWORD ;
-typedef  int cab_ULONG ;
-typedef  int cab_UBYTE ;
+typedef int fdi_decomp_state ;
+typedef int cab_UWORD ;
+typedef int cab_ULONG ;
+typedef int cab_UBYTE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BUILD_TABLE (int /*<<< orphan*/ ) ; 
- int* LENTABLE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PRETREE ; 
- int /*<<< orphan*/  READ_BITS (int,int) ; 
- int /*<<< orphan*/  READ_HUFFSYM (int /*<<< orphan*/ ,int) ; 
+
+ int BUILD_TABLE (int ) ;
+ int* LENTABLE (int ) ;
+ int PRETREE ;
+ int READ_BITS (int,int) ;
+ int READ_HUFFSYM (int ,int) ;
 
 __attribute__((used)) static int fdi_lzx_read_lens(cab_UBYTE *lens, cab_ULONG first, cab_ULONG last, struct lzx_bits *lb,
                   fdi_decomp_state *decomp_state) {
@@ -32,7 +32,7 @@ __attribute__((used)) static int fdi_lzx_read_lens(cab_UBYTE *lens, cab_ULONG fi
   register int bitsleft = lb->bl;
   cab_UBYTE *inpos = lb->ip;
   cab_UWORD *hufftbl;
-  
+
   for (x = 0; x < 20; x++) {
     READ_BITS(y, 4);
     LENTABLE(PRETREE)[x] = y;

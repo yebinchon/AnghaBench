@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_value ;
-typedef  int /*<<< orphan*/  sqlite3_context ;
-typedef  int /*<<< orphan*/  SHA3Context ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SHA3Final (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SHA3Init (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  SHA3Update (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int SQLITE_BLOB ; 
- int SQLITE_NULL ; 
- int /*<<< orphan*/  SQLITE_TRANSIENT ; 
- int /*<<< orphan*/  sqlite3_result_blob (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_result_error (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  sqlite3_value_blob (int /*<<< orphan*/ *) ; 
- int sqlite3_value_bytes (int /*<<< orphan*/ *) ; 
- int sqlite3_value_int (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_value_text (int /*<<< orphan*/ *) ; 
- int sqlite3_value_type (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int sqlite3_value ;
+typedef int sqlite3_context ;
+typedef int SHA3Context ;
+
+
+ int SHA3Final (int *) ;
+ int SHA3Init (int *,int) ;
+ int SHA3Update (int *,int ,int) ;
+ int SQLITE_BLOB ;
+ int SQLITE_NULL ;
+ int SQLITE_TRANSIENT ;
+ int sqlite3_result_blob (int *,int ,int,int ) ;
+ int sqlite3_result_error (int *,char*,int) ;
+ int sqlite3_value_blob (int *) ;
+ int sqlite3_value_bytes (int *) ;
+ int sqlite3_value_int (int *) ;
+ int sqlite3_value_text (int *) ;
+ int sqlite3_value_type (int *) ;
 
 __attribute__((used)) static void sha3Func(
   sqlite3_context *context,

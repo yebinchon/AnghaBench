@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  number ;
+
+
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int number ;
 struct TYPE_12__ {TYPE_1__* priv; TYPE_3__** outputs; } ;
 struct TYPE_11__ {TYPE_4__* dst; } ;
-struct TYPE_10__ {int /*<<< orphan*/  height; int /*<<< orphan*/  width; int /*<<< orphan*/ * linesize; int /*<<< orphan*/ * data; int /*<<< orphan*/ * metadata; } ;
-struct TYPE_9__ {int /*<<< orphan*/  tess; } ;
-typedef  TYPE_1__ OCRContext ;
-typedef  TYPE_2__ AVFrame ;
-typedef  TYPE_3__ AVFilterLink ;
-typedef  TYPE_4__ AVFilterContext ;
-typedef  int /*<<< orphan*/  AVDictionary ;
+struct TYPE_10__ {int height; int width; int * linesize; int * data; int * metadata; } ;
+struct TYPE_9__ {int tess; } ;
+typedef TYPE_1__ OCRContext ;
+typedef TYPE_2__ AVFrame ;
+typedef TYPE_3__ AVFilterLink ;
+typedef TYPE_4__ AVFilterContext ;
+typedef int AVDictionary ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_DICT_APPEND ; 
- int* TessBaseAPIAllWordConfidences (int /*<<< orphan*/ ) ; 
- char* TessBaseAPIRect (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TessDeleteIntArray (int*) ; 
- int /*<<< orphan*/  TessDeleteText (char*) ; 
- int /*<<< orphan*/  av_dict_set (int /*<<< orphan*/ **,char*,char*,int /*<<< orphan*/ ) ; 
- int ff_filter_frame (TYPE_3__*,TYPE_2__*) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,int) ; 
+
+ int AV_DICT_APPEND ;
+ int* TessBaseAPIAllWordConfidences (int ) ;
+ char* TessBaseAPIRect (int ,int ,int,int ,int ,int ,int ,int ) ;
+ int TessDeleteIntArray (int*) ;
+ int TessDeleteText (char*) ;
+ int av_dict_set (int **,char*,char*,int ) ;
+ int ff_filter_frame (TYPE_3__*,TYPE_2__*) ;
+ int snprintf (char*,int,char*,int) ;
 
 __attribute__((used)) static int filter_frame(AVFilterLink *inlink, AVFrame *in)
 {

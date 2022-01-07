@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {scalar_t__ changed_paths2; scalar_t__ changed_paths; scalar_t__ revprops; } ;
-typedef  TYPE_1__ svn_log_entry_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_index_t ;
+typedef TYPE_1__ svn_log_entry_t ;
+typedef int apr_pool_t ;
+typedef int apr_hash_index_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * apr_hash_first (int /*<<< orphan*/ *,scalar_t__) ; 
- scalar_t__ apr_hash_make (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * apr_hash_next (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  apr_hash_this (int /*<<< orphan*/ *,void const**,int /*<<< orphan*/ *,void**) ; 
- TYPE_1__* apr_palloc (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  apr_pstrdup (int /*<<< orphan*/ *,void const*) ; 
- int /*<<< orphan*/  svn_hash_sets (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_log_changed_path2_dup (void*,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_prop_hash_dup (scalar_t__,int /*<<< orphan*/ *) ; 
+
+ int * apr_hash_first (int *,scalar_t__) ;
+ scalar_t__ apr_hash_make (int *) ;
+ int * apr_hash_next (int *) ;
+ int apr_hash_this (int *,void const**,int *,void**) ;
+ TYPE_1__* apr_palloc (int *,int) ;
+ int apr_pstrdup (int *,void const*) ;
+ int svn_hash_sets (scalar_t__,int ,int ) ;
+ int svn_log_changed_path2_dup (void*,int *) ;
+ scalar_t__ svn_prop_hash_dup (scalar_t__,int *) ;
 
 svn_log_entry_t *
 svn_log_entry_dup(const svn_log_entry_t *log_entry, apr_pool_t *pool)
@@ -48,16 +48,16 @@ svn_log_entry_dup(const svn_log_entry_t *log_entry, apr_pool_t *pool)
           const void *key;
           void *change;
 
-          apr_hash_this(hi, &key, NULL, &change);
+          apr_hash_this(hi, &key, ((void*)0), &change);
 
           svn_hash_sets(new_entry->changed_paths2, apr_pstrdup(pool, key),
                         svn_log_changed_path2_dup(change, pool));
         }
     }
 
-  /* We can't copy changed_paths by itself without using deprecated code,
-     but we don't have to, as this function was new after the introduction
-     of the changed_paths2 field. */
+
+
+
   new_entry->changed_paths = new_entry->changed_paths2;
 
   return new_entry;

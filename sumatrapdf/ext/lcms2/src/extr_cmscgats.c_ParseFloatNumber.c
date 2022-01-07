@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  double cmsInt32Number ;
-typedef  double cmsFloat64Number ;
 
-/* Variables and functions */
- scalar_t__ isdigit (int) ; 
- char toupper (char const) ; 
- double xpow10 (int) ; 
+
+
+
+typedef double cmsInt32Number ;
+typedef double cmsFloat64Number ;
+
+
+ scalar_t__ isdigit (int) ;
+ char toupper (char const) ;
+ double xpow10 (int) ;
 
 __attribute__((used)) static
 cmsFloat64Number ParseFloatNumber(const char *Buffer)
@@ -24,8 +24,8 @@ cmsFloat64Number ParseFloatNumber(const char *Buffer)
     cmsFloat64Number dnum = 0.0;
     int sign = 1;
 
-    // keep safe
-    if (Buffer == NULL) return 0.0;
+
+    if (Buffer == ((void*)0)) return 0.0;
 
     if (*Buffer == '-' || *Buffer == '+') {
 
@@ -42,8 +42,8 @@ cmsFloat64Number ParseFloatNumber(const char *Buffer)
 
     if (*Buffer == '.') {
 
-        cmsFloat64Number frac = 0.0;      // fraction
-        int prec = 0;                     // precision
+        cmsFloat64Number frac = 0.0;
+        int prec = 0;
 
         if (*Buffer) Buffer++;
 
@@ -57,7 +57,7 @@ cmsFloat64Number ParseFloatNumber(const char *Buffer)
         dnum = dnum + (frac / xpow10(prec));
     }
 
-    // Exponent, example 34.00E+20
+
     if (*Buffer && toupper(*Buffer) == 'E') {
 
         int e;

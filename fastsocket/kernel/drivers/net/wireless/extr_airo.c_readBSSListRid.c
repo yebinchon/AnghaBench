@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct airo_info {int flags; int /*<<< orphan*/  bssListRidLen; int /*<<< orphan*/  bssListNext; int /*<<< orphan*/  bssListFirst; int /*<<< orphan*/ * list_bss_task; int /*<<< orphan*/  sem; } ;
-typedef  int /*<<< orphan*/  cmd ;
-struct TYPE_4__ {int /*<<< orphan*/  cmd; } ;
-typedef  int /*<<< orphan*/  Resp ;
-typedef  TYPE_1__ Cmd ;
-typedef  int /*<<< orphan*/  BSSListRid ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CMD_LISTBSS ; 
- int ENETDOWN ; 
- int ERESTARTSYS ; 
- int FLAG_RADIO_MASK ; 
- int HZ ; 
- int PC4500_readrid (struct airo_info*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/ * current ; 
- scalar_t__ down_interruptible (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  issuecommand (struct airo_info*,TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  schedule_timeout_uninterruptible (int) ; 
- int /*<<< orphan*/  up (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct airo_info {int flags; int bssListRidLen; int bssListNext; int bssListFirst; int * list_bss_task; int sem; } ;
+typedef int cmd ;
+struct TYPE_4__ {int cmd; } ;
+typedef int Resp ;
+typedef TYPE_1__ Cmd ;
+typedef int BSSListRid ;
+
+
+ int CMD_LISTBSS ;
+ int ENETDOWN ;
+ int ERESTARTSYS ;
+ int FLAG_RADIO_MASK ;
+ int HZ ;
+ int PC4500_readrid (struct airo_info*,int ,int *,int ,int) ;
+ int * current ;
+ scalar_t__ down_interruptible (int *) ;
+ int issuecommand (struct airo_info*,TYPE_1__*,int *) ;
+ int memset (TYPE_1__*,int ,int) ;
+ int schedule_timeout_uninterruptible (int) ;
+ int up (int *) ;
 
 __attribute__((used)) static int readBSSListRid(struct airo_info *ai, int first,
-		      BSSListRid *list)
+        BSSListRid *list)
 {
-	Cmd cmd;
-	Resp rsp;
+ Cmd cmd;
+ Resp rsp;
 
-	if (first == 1) {
-		if (ai->flags & FLAG_RADIO_MASK) return -ENETDOWN;
-		memset(&cmd, 0, sizeof(cmd));
-		cmd.cmd=CMD_LISTBSS;
-		if (down_interruptible(&ai->sem))
-			return -ERESTARTSYS;
-		ai->list_bss_task = current;
-		issuecommand(ai, &cmd, &rsp);
-		up(&ai->sem);
-		/* Let the command take effect */
-		schedule_timeout_uninterruptible(3 * HZ);
-		ai->list_bss_task = NULL;
-	}
-	return PC4500_readrid(ai, first ? ai->bssListFirst : ai->bssListNext,
-			    list, ai->bssListRidLen, 1);
+ if (first == 1) {
+  if (ai->flags & FLAG_RADIO_MASK) return -ENETDOWN;
+  memset(&cmd, 0, sizeof(cmd));
+  cmd.cmd=CMD_LISTBSS;
+  if (down_interruptible(&ai->sem))
+   return -ERESTARTSYS;
+  ai->list_bss_task = current;
+  issuecommand(ai, &cmd, &rsp);
+  up(&ai->sem);
+
+  schedule_timeout_uninterruptible(3 * HZ);
+  ai->list_bss_task = ((void*)0);
+ }
+ return PC4500_readrid(ai, first ? ai->bssListFirst : ai->bssListNext,
+       list, ai->bssListRidLen, 1);
 }

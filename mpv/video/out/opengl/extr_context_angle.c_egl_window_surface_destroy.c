@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct ra_ctx {struct priv* priv; } ;
-struct priv {int /*<<< orphan*/  egl_display; scalar_t__ egl_window; } ;
+struct priv {int egl_display; scalar_t__ egl_window; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EGL_NO_CONTEXT ; 
- int /*<<< orphan*/  EGL_NO_SURFACE ; 
- int /*<<< orphan*/  eglMakeCurrent (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int EGL_NO_CONTEXT ;
+ int EGL_NO_SURFACE ;
+ int eglMakeCurrent (int ,int ,int ,int ) ;
 
 __attribute__((used)) static void egl_window_surface_destroy(struct ra_ctx *ctx)
 {

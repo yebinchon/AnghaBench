@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  bases ;
-typedef  size_t ULONG ;
-typedef  int SIZE_T ;
-typedef  int /*<<< orphan*/ * PVOID ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CheckBufferReadWrite (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- size_t MEM_COMMIT ; 
- int /*<<< orphan*/  MEM_RELEASE ; 
- scalar_t__ NT_SUCCESS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NtCurrentProcess () ; 
- int /*<<< orphan*/  PAGE_READWRITE ; 
- size_t RTL_NUMBER_OF (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  RtlZeroMemory (int /*<<< orphan*/ **,int) ; 
- int /*<<< orphan*/  STATUS_ACCESS_VIOLATION ; 
- int /*<<< orphan*/  STATUS_SUCCESS ; 
- int /*<<< orphan*/  TestString ; 
- int /*<<< orphan*/  TestStringSize ; 
- int /*<<< orphan*/  ZwAllocateVirtualMemory (int /*<<< orphan*/ ,int /*<<< orphan*/ **,int /*<<< orphan*/ ,int*,size_t,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ZwFreeVirtualMemory (int /*<<< orphan*/ ,int /*<<< orphan*/ **,int*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  trace (char*,int /*<<< orphan*/ ,size_t) ; 
+
+
+
+typedef int bases ;
+typedef size_t ULONG ;
+typedef int SIZE_T ;
+typedef int * PVOID ;
+typedef int NTSTATUS ;
+
+
+ int CheckBufferReadWrite (int *,int ,int ,int ) ;
+ size_t MEM_COMMIT ;
+ int MEM_RELEASE ;
+ scalar_t__ NT_SUCCESS (int ) ;
+ int NtCurrentProcess () ;
+ int PAGE_READWRITE ;
+ size_t RTL_NUMBER_OF (int **) ;
+ int RtlZeroMemory (int **,int) ;
+ int STATUS_ACCESS_VIOLATION ;
+ int STATUS_SUCCESS ;
+ int TestString ;
+ int TestStringSize ;
+ int ZwAllocateVirtualMemory (int ,int **,int ,int*,size_t,int ) ;
+ int ZwFreeVirtualMemory (int ,int **,int*,int ) ;
+ int trace (char*,int ,size_t) ;
 
 __attribute__((used)) static
 NTSTATUS
@@ -39,10 +39,10 @@ StressTesting(ULONG AllocationType)
 {
     NTSTATUS Status = STATUS_SUCCESS;
     NTSTATUS ReturnStatus = STATUS_SUCCESS;
-    static PVOID bases[1024]; //assume we are going to allocate only 5 gigs. static here means the arrays is not allocated on the stack but in the BSS segment of the driver
+    static PVOID bases[1024];
     ULONG Index = 0;
-    PVOID Base = NULL;
-    SIZE_T RegionSize = 5 * 1024 * 1024; // 5 megabytes;
+    PVOID Base = ((void*)0);
+    SIZE_T RegionSize = 5 * 1024 * 1024;
 
     RtlZeroMemory(bases, sizeof(bases));
 
@@ -63,21 +63,21 @@ StressTesting(ULONG AllocationType)
             }
         }
 
-        Base = NULL;
+        Base = ((void*)0);
     }
 
     trace("Finished reserving. Error code %x. Chunks allocated: %d\n", Status, Index );
 
     ReturnStatus = Status;
 
-    //free the allocated memory so that we can continue with the tests
+
     Status = STATUS_SUCCESS;
     Index = 0;
     while (NT_SUCCESS(Status) && Index < RTL_NUMBER_OF(bases))
     {
         RegionSize = 0;
         Status = ZwFreeVirtualMemory(NtCurrentProcess(), &bases[Index], &RegionSize, MEM_RELEASE);
-        bases[Index++] = NULL;
+        bases[Index++] = ((void*)0);
     }
 
     return ReturnStatus;

@@ -1,64 +1,64 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  s_addr; } ;
 
-/* Variables and functions */
- void* BACKLOG ; 
- scalar_t__ MAX_CONNECTIONS ; 
- int /*<<< orphan*/  aes_load_pwd_file (int /*<<< orphan*/ ) ; 
- void* atoi (void*) ; 
- void* backlog ; 
- char* config_filename ; 
- char* conv_addr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int daemonize ; 
- int do_reload_config (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int getopt (int,char**,char*) ; 
- int /*<<< orphan*/  init_dyn_data () ; 
- void* logname ; 
- scalar_t__ maxconn ; 
- int memcache_port ; 
- scalar_t__ memcache_sfd ; 
- int /*<<< orphan*/  nice (void*) ; 
- void* optarg ; 
- int optind ; 
- int /*<<< orphan*/  perror (char*) ; 
- int port ; 
- char* progname ; 
- scalar_t__ raise_file_rlimit (scalar_t__) ; 
- int /*<<< orphan*/  replicator_mode ; 
- int /*<<< orphan*/  round_robin ; 
- scalar_t__ server_socket (int,TYPE_1__,void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_debug_handlers () ; 
- TYPE_1__ settings_addr ; 
- scalar_t__ sfd ; 
- int /*<<< orphan*/  sql_database ; 
- int /*<<< orphan*/  sql_database_r ; 
- int /*<<< orphan*/  sql_password ; 
- int /*<<< orphan*/  sql_password_r ; 
- int /*<<< orphan*/  sql_username ; 
- int /*<<< orphan*/  sql_username_r ; 
- int /*<<< orphan*/  start_server () ; 
- int /*<<< orphan*/  start_time ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  test_mode ; 
- int /*<<< orphan*/  time (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  usage () ; 
- void* username ; 
- scalar_t__ verbosity ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int s_addr; } ;
+
+
+ void* BACKLOG ;
+ scalar_t__ MAX_CONNECTIONS ;
+ int aes_load_pwd_file (int ) ;
+ void* atoi (void*) ;
+ void* backlog ;
+ char* config_filename ;
+ char* conv_addr (int ,int ) ;
+ int daemonize ;
+ int do_reload_config (int ) ;
+ int errno ;
+ int exit (int) ;
+ int fprintf (int ,char*,...) ;
+ int getopt (int,char**,char*) ;
+ int init_dyn_data () ;
+ void* logname ;
+ scalar_t__ maxconn ;
+ int memcache_port ;
+ scalar_t__ memcache_sfd ;
+ int nice (void*) ;
+ void* optarg ;
+ int optind ;
+ int perror (char*) ;
+ int port ;
+ char* progname ;
+ scalar_t__ raise_file_rlimit (scalar_t__) ;
+ int replicator_mode ;
+ int round_robin ;
+ scalar_t__ server_socket (int,TYPE_1__,void*,int ) ;
+ int set_debug_handlers () ;
+ TYPE_1__ settings_addr ;
+ scalar_t__ sfd ;
+ int sql_database ;
+ int sql_database_r ;
+ int sql_password ;
+ int sql_password_r ;
+ int sql_username ;
+ int sql_username_r ;
+ int start_server () ;
+ int start_time ;
+ int stderr ;
+ int test_mode ;
+ int time (int ) ;
+ int usage () ;
+ void* username ;
+ scalar_t__ verbosity ;
 
 int main (int argc, char *argv[]) {
   int i, syntax_check = 0;
@@ -83,7 +83,7 @@ int main (int argc, char *argv[]) {
     case 'c':
       maxconn = atoi(optarg);
       if (maxconn <= 0 || maxconn > MAX_CONNECTIONS) {
-	maxconn = MAX_CONNECTIONS;
+ maxconn = MAX_CONNECTIONS;
       }
       break;
     case 'p':
@@ -163,7 +163,7 @@ int main (int argc, char *argv[]) {
   if (verbosity) {
     fprintf (stderr, "created listening socket at %s:%d, fd=%d\n", conv_addr(settings_addr.s_addr, 0), port, sfd);
   }
-  
+
   if (memcache_port) {
     memcache_sfd = server_socket (memcache_port, settings_addr, backlog, 0);
     if (memcache_sfd < 0) {

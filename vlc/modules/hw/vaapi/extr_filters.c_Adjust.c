@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  picture_t ;
-typedef  int /*<<< orphan*/  filter_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Adjust_UpdateVAFilterParams ; 
- int /*<<< orphan*/ * Filter (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  picture_Release (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int picture_t ;
+typedef int filter_t ;
+
+
+ int Adjust_UpdateVAFilterParams ;
+ int * Filter (int *,int *,int ,int *,int *) ;
+ int picture_Release (int *) ;
 
 __attribute__((used)) static picture_t *
 Adjust(filter_t * filter, picture_t * src)
 {
-    picture_t *const    dest =
-        Filter(filter, src, Adjust_UpdateVAFilterParams, NULL, NULL);
+    picture_t *const dest =
+        Filter(filter, src, Adjust_UpdateVAFilterParams, ((void*)0), ((void*)0));
     picture_Release(src);
     return dest;
 }

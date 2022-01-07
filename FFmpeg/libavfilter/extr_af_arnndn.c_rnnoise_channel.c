@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
 struct TYPE_12__ {float re; float im; } ;
-struct TYPE_11__ {float* lastg; int /*<<< orphan*/  rnn; int /*<<< orphan*/  mem_hp_x; } ;
-typedef  TYPE_1__ DenoiseState ;
-typedef  int /*<<< orphan*/  AudioRNNContext ;
-typedef  TYPE_2__ AVComplexFloat ;
+struct TYPE_11__ {float* lastg; int rnn; int mem_hp_x; } ;
+typedef TYPE_1__ DenoiseState ;
+typedef int AudioRNNContext ;
+typedef TYPE_2__ AVComplexFloat ;
 
-/* Variables and functions */
- float FFMAX (float,float) ; 
- int FRAME_SIZE ; 
- int FREQ_SIZE ; 
- int NB_BANDS ; 
- int NB_FEATURES ; 
- int WINDOW_SIZE ; 
- int /*<<< orphan*/  biquad (float*,int /*<<< orphan*/ ,float const*,float const*,float const*,int) ; 
- int compute_frame_features (int /*<<< orphan*/ *,TYPE_1__*,TYPE_2__*,TYPE_2__*,float*,float*,float*,float*,float*) ; 
- int /*<<< orphan*/  compute_rnn (int /*<<< orphan*/ *,int /*<<< orphan*/ *,float*,float*,float*) ; 
- int /*<<< orphan*/  frame_synthesis (int /*<<< orphan*/ *,TYPE_1__*,float*,TYPE_2__*) ; 
- int /*<<< orphan*/  interp_band_gain (float*,float*) ; 
- int /*<<< orphan*/  pitch_filter (TYPE_2__*,TYPE_2__*,float*,float*,float*,float*) ; 
+
+ float FFMAX (float,float) ;
+ int FRAME_SIZE ;
+ int FREQ_SIZE ;
+ int NB_BANDS ;
+ int NB_FEATURES ;
+ int WINDOW_SIZE ;
+ int biquad (float*,int ,float const*,float const*,float const*,int) ;
+ int compute_frame_features (int *,TYPE_1__*,TYPE_2__*,TYPE_2__*,float*,float*,float*,float*,float*) ;
+ int compute_rnn (int *,int *,float*,float*,float*) ;
+ int frame_synthesis (int *,TYPE_1__*,float*,TYPE_2__*) ;
+ int interp_band_gain (float*,float*) ;
+ int pitch_filter (TYPE_2__*,TYPE_2__*,float*,float*,float*,float*) ;
 
 __attribute__((used)) static float rnnoise_channel(AudioRNNContext *s, DenoiseState *st, float *out, const float *in)
 {

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  UDD_STATE_IDLE ; 
- int /*<<< orphan*/  udd_sleep_mode (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  udd_wait_clock_ready () ; 
- int /*<<< orphan*/  usb_device ; 
- int /*<<< orphan*/  usb_device_send_remote_wake_up (int /*<<< orphan*/ *) ; 
- int usb_get_state_machine_status (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int uint32_t ;
+
+
+ int UDD_STATE_IDLE ;
+ int udd_sleep_mode (int ) ;
+ int udd_wait_clock_ready () ;
+ int usb_device ;
+ int usb_device_send_remote_wake_up (int *) ;
+ int usb_get_state_machine_status (int *) ;
 
 void udd_send_remotewakeup(void) {
     uint32_t try

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
 
-/* Variables and functions */
- int PB1 ; 
- int PB2 ; 
- int PB4 ; 
- int PB5 ; 
- int PC6 ; 
- int PC7 ; 
- int PINB ; 
- int PINC ; 
+
+
+
+typedef int uint8_t ;
+
+
+ int PB1 ;
+ int PB2 ;
+ int PB4 ;
+ int PB5 ;
+ int PC6 ;
+ int PC7 ;
+ int PINB ;
+ int PINC ;
 
 __attribute__((used)) static uint8_t read_rows(void) {
   return (PINC&(1<<PC7) ? 0 : (1<<0)) |

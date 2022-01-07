@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct object_id {int dummy; } ;
-struct cache_entry {int ce_namelen; int /*<<< orphan*/  ce_mode; int /*<<< orphan*/  ce_flags; int /*<<< orphan*/  name; int /*<<< orphan*/  oid; } ;
+struct cache_entry {int ce_namelen; int ce_mode; int ce_flags; int name; int oid; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  create_ce_flags (int) ; 
- int /*<<< orphan*/  create_ce_mode (unsigned int) ; 
- int /*<<< orphan*/  error (int /*<<< orphan*/ ,char const*) ; 
- struct cache_entry* make_empty_transient_cache_entry (int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,char const*,int) ; 
- int /*<<< orphan*/  oidcpy (int /*<<< orphan*/ *,struct object_id const*) ; 
- int strlen (char const*) ; 
- int /*<<< orphan*/  verify_path (char const*,unsigned int) ; 
+
+ int _ (char*) ;
+ int create_ce_flags (int) ;
+ int create_ce_mode (unsigned int) ;
+ int error (int ,char const*) ;
+ struct cache_entry* make_empty_transient_cache_entry (int) ;
+ int memcpy (int ,char const*,int) ;
+ int oidcpy (int *,struct object_id const*) ;
+ int strlen (char const*) ;
+ int verify_path (char const*,unsigned int) ;
 
 struct cache_entry *make_transient_cache_entry(unsigned int mode, const struct object_id *oid,
-					       const char *path, int stage)
+            const char *path, int stage)
 {
-	struct cache_entry *ce;
-	int len;
+ struct cache_entry *ce;
+ int len;
 
-	if (!verify_path(path, mode)) {
-		error(_("invalid path '%s'"), path);
-		return NULL;
-	}
+ if (!verify_path(path, mode)) {
+  error(_("invalid path '%s'"), path);
+  return ((void*)0);
+ }
 
-	len = strlen(path);
-	ce = make_empty_transient_cache_entry(len);
+ len = strlen(path);
+ ce = make_empty_transient_cache_entry(len);
 
-	oidcpy(&ce->oid, oid);
-	memcpy(ce->name, path, len);
-	ce->ce_flags = create_ce_flags(stage);
-	ce->ce_namelen = len;
-	ce->ce_mode = create_ce_mode(mode);
+ oidcpy(&ce->oid, oid);
+ memcpy(ce->name, path, len);
+ ce->ce_flags = create_ce_flags(stage);
+ ce->ce_namelen = len;
+ ce->ce_mode = create_ce_mode(mode);
 
-	return ce;
+ return ce;
 }

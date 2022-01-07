@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char* strchr (char const*,char) ; 
+ char* strchr (char const*,char) ;
 
 __attribute__((used)) static int displaytext_get_tag_len(const char *tagstr)
 {
     char *colon = strchr(tagstr, ':');
 
-    return (colon == NULL) ? -1 : colon - tagstr;
+    return (colon == ((void*)0)) ? -1 : colon - tagstr;
 }

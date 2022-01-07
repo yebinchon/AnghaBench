@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int /*<<< orphan*/ * rep; int /*<<< orphan*/  hufTable; int /*<<< orphan*/  OFTable; int /*<<< orphan*/  MLTable; int /*<<< orphan*/  LLTable; } ;
-struct TYPE_9__ {int dictSize; TYPE_2__ entropy; scalar_t__ entropyPresent; scalar_t__ dictContent; int /*<<< orphan*/  dictID; } ;
-typedef  TYPE_3__ ZSTD_DDict ;
-struct TYPE_7__ {int /*<<< orphan*/ * rep; } ;
-struct TYPE_10__ {int litEntropy; int fseEntropy; TYPE_1__ entropy; int /*<<< orphan*/  HUFptr; int /*<<< orphan*/  OFTptr; int /*<<< orphan*/  MLTptr; int /*<<< orphan*/  LLTptr; int /*<<< orphan*/  const* dictEnd; int /*<<< orphan*/  const* previousDstEnd; scalar_t__ virtualStart; scalar_t__ prefixStart; int /*<<< orphan*/  dictID; } ;
-typedef  TYPE_4__ ZSTD_DCtx ;
-typedef  int /*<<< orphan*/  BYTE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEBUGLOG (int,char*) ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int * rep; int hufTable; int OFTable; int MLTable; int LLTable; } ;
+struct TYPE_9__ {int dictSize; TYPE_2__ entropy; scalar_t__ entropyPresent; scalar_t__ dictContent; int dictID; } ;
+typedef TYPE_3__ ZSTD_DDict ;
+struct TYPE_7__ {int * rep; } ;
+struct TYPE_10__ {int litEntropy; int fseEntropy; TYPE_1__ entropy; int HUFptr; int OFTptr; int MLTptr; int LLTptr; int const* dictEnd; int const* previousDstEnd; scalar_t__ virtualStart; scalar_t__ prefixStart; int dictID; } ;
+typedef TYPE_4__ ZSTD_DCtx ;
+typedef int BYTE ;
+
+
+ int DEBUGLOG (int,char*) ;
+ int assert (int ) ;
 
 void ZSTD_copyDDictParameters(ZSTD_DCtx* dctx, const ZSTD_DDict* ddict)
 {
     DEBUGLOG(4, "ZSTD_copyDDictParameters");
-    assert(dctx != NULL);
-    assert(ddict != NULL);
+    assert(dctx != ((void*)0));
+    assert(ddict != ((void*)0));
     dctx->dictID = ddict->dictID;
     dctx->prefixStart = ddict->dictContent;
     dctx->virtualStart = ddict->dictContent;

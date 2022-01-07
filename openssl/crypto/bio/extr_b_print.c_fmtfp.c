@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  iconvert ;
-typedef  int /*<<< orphan*/  fconvert ;
-typedef  int /*<<< orphan*/  econvert ;
-typedef  double LDOUBLE ;
 
-/* Variables and functions */
- int DP_F_MINUS ; 
- int DP_F_NUM ; 
- int DP_F_PLUS ; 
- int DP_F_SPACE ; 
- int DP_F_UP ; 
- int DP_F_ZERO ; 
- int E_FORMAT ; 
- int F_FORMAT ; 
- int G_FORMAT ; 
- double ULONG_MAX ; 
- double abs_val (double) ; 
- int /*<<< orphan*/  doapr_outch (char**,char**,size_t*,size_t*,char) ; 
- double pow_10 (int) ; 
- unsigned long roundv (double) ; 
+
+
+
+typedef int iconvert ;
+typedef int fconvert ;
+typedef int econvert ;
+typedef double LDOUBLE ;
+
+
+ int DP_F_MINUS ;
+ int DP_F_NUM ;
+ int DP_F_PLUS ;
+ int DP_F_SPACE ;
+ int DP_F_UP ;
+ int DP_F_ZERO ;
+ int E_FORMAT ;
+ int F_FORMAT ;
+ int G_FORMAT ;
+ double ULONG_MAX ;
+ double abs_val (double) ;
+ int doapr_outch (char**,char**,size_t*,size_t*,char) ;
+ double pow_10 (int) ;
+ unsigned long roundv (double) ;
 
 __attribute__((used)) static int
 fmtfp(char **sbuffer,
@@ -64,11 +64,11 @@ fmtfp(char **sbuffer,
     else if (flags & DP_F_SPACE)
         signvalue = ' ';
 
-    /*
-     * G_FORMAT sometimes prints like E_FORMAT and sometimes like F_FORMAT
-     * depending on the number to be printed. Work out which one it is and use
-     * that from here on.
-     */
+
+
+
+
+
     if (style == G_FORMAT) {
         if (fvalue == 0.0) {
             realstyle = F_FORMAT;
@@ -86,7 +86,7 @@ fmtfp(char **sbuffer,
 
     if (style != F_FORMAT) {
         tmpvalue = fvalue;
-        /* Calculate the exponent */
+
         if (fvalue != 0.0) {
             while (tmpvalue < 1) {
                 tmpvalue *= 10;
@@ -98,27 +98,27 @@ fmtfp(char **sbuffer,
             }
         }
         if (style == G_FORMAT) {
-            /*
-             * In G_FORMAT the "precision" represents significant digits. We
-             * always have at least 1 significant digit.
-             */
+
+
+
+
             if (max == 0)
                 max = 1;
-            /* Now convert significant digits to decimal places */
+
             if (realstyle == F_FORMAT) {
                 max -= (exp + 1);
                 if (max < 0) {
-                    /*
-                     * Should not happen. If we're in F_FORMAT then exp < max?
-                     */
+
+
+
                     return 0;
                 }
             } else {
-                /*
-                 * In E_FORMAT there is always one significant digit in front
-                 * of the decimal point, so:
-                 * significant digits == 1 + decimal places
-                 */
+
+
+
+
+
                 max--;
             }
         }
@@ -127,22 +127,22 @@ fmtfp(char **sbuffer,
     }
     ufvalue = abs_val(fvalue);
     if (ufvalue > ULONG_MAX) {
-        /* Number too big */
+
         return 0;
     }
     intpart = (unsigned long)ufvalue;
 
-    /*
-     * sorry, we only support 9 digits past the decimal because of our
-     * conversion method
-     */
+
+
+
+
     if (max > 9)
         max = 9;
 
-    /*
-     * we "cheat" by converting the fractional part to integer by multiplying
-     * by a factor of 10
-     */
+
+
+
+
     max10 = roundv(pow_10(max));
     fracpart = roundv(pow_10(max) * (ufvalue - intpart));
 
@@ -151,7 +151,7 @@ fmtfp(char **sbuffer,
         fracpart -= max10;
     }
 
-    /* convert integer part */
+
     do {
         iconvert[iplace++] = "0123456789"[intpart % 10];
         intpart = (intpart / 10);
@@ -160,10 +160,10 @@ fmtfp(char **sbuffer,
         iplace--;
     iconvert[iplace] = 0;
 
-    /* convert fractional part */
+
     while (fplace < max) {
         if (style == G_FORMAT && fplace == 0 && (fracpart % 10) == 0) {
-            /* We strip trailing zeros in G_FORMAT */
+
             max--;
             fracpart = fracpart / 10;
             if (fplace < max)
@@ -178,7 +178,7 @@ fmtfp(char **sbuffer,
         fplace--;
     fconvert[fplace] = 0;
 
-    /* convert exponent part */
+
     if (realstyle == E_FORMAT) {
         int tmpexp;
         if (exp < 0)
@@ -190,20 +190,20 @@ fmtfp(char **sbuffer,
             econvert[eplace++] = "0123456789"[tmpexp % 10];
             tmpexp = (tmpexp / 10);
         } while (tmpexp > 0 && eplace < (int)sizeof(econvert));
-        /* Exponent is huge!! Too big to print */
+
         if (tmpexp > 0)
             return 0;
-        /* Add a leading 0 for single digit exponents */
+
         if (eplace == 1)
             econvert[eplace++] = '0';
     }
 
-    /*
-     * -1 for decimal point (if we have one, i.e. max > 0),
-     * another -1 if we are printing a sign
-     */
+
+
+
+
     padlen = min - iplace - max - (max > 0 ? 1 : 0) - ((signvalue) ? 1 : 0);
-    /* Take some off for exponent prefix "+e" and exponent */
+
     if (realstyle == E_FORMAT)
         padlen -= 2 + eplace;
     zpadlen = max - fplace;
@@ -240,10 +240,10 @@ fmtfp(char **sbuffer,
             return 0;
     }
 
-    /*
-     * Decimal point. This should probably use locale to find the correct
-     * char to print out.
-     */
+
+
+
+
     if (max > 0 || (flags & DP_F_NUM)) {
         if (!doapr_outch(sbuffer, buffer, currlen, maxlen, '.'))
             return 0;

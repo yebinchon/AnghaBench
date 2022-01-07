@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  bfd ;
 
-/* Variables and functions */
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  bfd_get_filename (int /*<<< orphan*/ *) ; 
- scalar_t__ export_all_symbols ; 
- int /*<<< orphan*/  inform (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  scan_all_symbols (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  scan_drectve_symbols (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int bfd ;
+
+
+ int _ (char*) ;
+ int bfd_get_filename (int *) ;
+ scalar_t__ export_all_symbols ;
+ int inform (int ,int ) ;
+ int scan_all_symbols (int *) ;
+ int scan_drectve_symbols (int *) ;
 
 __attribute__((used)) static void
 scan_open_obj_file (bfd *abfd)
@@ -28,8 +28,8 @@ scan_open_obj_file (bfd *abfd)
   else
     scan_drectve_symbols (abfd);
 
-  /* FIXME: we ought to read in and block out the base relocations.  */
 
-  /* xgettext:c-format */
+
+
   inform (_("Done reading %s"), bfd_get_filename (abfd));
 }

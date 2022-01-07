@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  union ieee754sp {int dummy; } ieee754sp ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MADDF_NEGATE_PRODUCT ; 
- union ieee754sp _sp_maddf (union ieee754sp,union ieee754sp,union ieee754sp,int /*<<< orphan*/ ) ; 
+
+
+
+typedef union ieee754sp {int dummy; } ieee754sp ;
+
+
+ int MADDF_NEGATE_PRODUCT ;
+ union ieee754sp _sp_maddf (union ieee754sp,union ieee754sp,union ieee754sp,int ) ;
 
 union ieee754sp ieee754sp_msubf(union ieee754sp z, union ieee754sp x,
-				union ieee754sp y)
+    union ieee754sp y)
 {
-	return _sp_maddf(z, x, y, MADDF_NEGATE_PRODUCT);
+ return _sp_maddf(z, x, y, MADDF_NEGATE_PRODUCT);
 }

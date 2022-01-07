@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ULONG ;
-typedef  int /*<<< orphan*/  SIZE_T ;
-typedef  int /*<<< orphan*/  PVOID ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
-typedef  int /*<<< orphan*/  IO_STATUS_BLOCK ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * KsecDeviceHandle ; 
- int /*<<< orphan*/  KsecOpenDevice () ; 
- int /*<<< orphan*/  NT_SUCCESS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NtDeviceIoControlFile (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int ULONG ;
+typedef int SIZE_T ;
+typedef int PVOID ;
+typedef int NTSTATUS ;
+typedef int IO_STATUS_BLOCK ;
+
+
+ int * KsecDeviceHandle ;
+ int KsecOpenDevice () ;
+ int NT_SUCCESS (int ) ;
+ int NtDeviceIoControlFile (int *,int *,int *,int *,int *,int ,int ,int ,int ,int ) ;
 
 __attribute__((used)) static
 NTSTATUS
@@ -34,23 +34,23 @@ KsecDeviceIoControl(
     IO_STATUS_BLOCK IoStatusBlock;
     NTSTATUS Status;
 
-    /* Check if we already have a handle */
-    if (KsecDeviceHandle == NULL)
+
+    if (KsecDeviceHandle == ((void*)0))
     {
-        /* Try to open the device */
+
         Status = KsecOpenDevice();
         if (!NT_SUCCESS(Status))
         {
-            //ERR("Failed to open handle to KsecDd driver!\n");
+
             return Status;
         }
     }
 
-    /* Call the driver */
+
     Status = NtDeviceIoControlFile(KsecDeviceHandle,
-                                   NULL,
-                                   NULL,
-                                   NULL,
+                                   ((void*)0),
+                                   ((void*)0),
+                                   ((void*)0),
                                    &IoStatusBlock,
                                    IoControlCode,
                                    InputBuffer,

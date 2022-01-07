@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct priv {int broken_seek; scalar_t__ entry_size; TYPE_3__* mpa; } ;
-struct TYPE_9__ {scalar_t__ pos; int /*<<< orphan*/  cancel; struct priv* priv; } ;
-typedef  TYPE_1__ stream_t ;
-typedef  int /*<<< orphan*/  locale_t ;
-typedef  scalar_t__ int64_t ;
-typedef  int /*<<< orphan*/  buffer ;
-struct TYPE_10__ {int /*<<< orphan*/  arch; int /*<<< orphan*/  locale; } ;
+struct TYPE_9__ {scalar_t__ pos; int cancel; struct priv* priv; } ;
+typedef TYPE_1__ stream_t ;
+typedef int locale_t ;
+typedef scalar_t__ int64_t ;
+typedef int buffer ;
+struct TYPE_10__ {int arch; int locale; } ;
 
-/* Variables and functions */
- int MPMIN (scalar_t__,int) ; 
- int /*<<< orphan*/  MP_ERR (TYPE_1__*,char*,...) ; 
- int /*<<< orphan*/  MP_VERBOSE (TYPE_1__*,char*) ; 
- int /*<<< orphan*/  MP_WARN (TYPE_1__*,char*) ; 
- int /*<<< orphan*/  SEEK_SET ; 
- scalar_t__ STREAM_OK ; 
- int /*<<< orphan*/  archive_error_string (int /*<<< orphan*/ ) ; 
- int archive_read_data (int /*<<< orphan*/ ,char*,int) ; 
- int archive_seek_data (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ) ; 
- scalar_t__ mp_archive_check_fatal (TYPE_3__*,int) ; 
- int /*<<< orphan*/  mp_archive_free (TYPE_3__*) ; 
- scalar_t__ mp_cancel_test (int /*<<< orphan*/ ) ; 
- scalar_t__ reopen_archive (TYPE_1__*) ; 
- int /*<<< orphan*/  uselocale (int /*<<< orphan*/ ) ; 
+
+ int MPMIN (scalar_t__,int) ;
+ int MP_ERR (TYPE_1__*,char*,...) ;
+ int MP_VERBOSE (TYPE_1__*,char*) ;
+ int MP_WARN (TYPE_1__*,char*) ;
+ int SEEK_SET ;
+ scalar_t__ STREAM_OK ;
+ int archive_error_string (int ) ;
+ int archive_read_data (int ,char*,int) ;
+ int archive_seek_data (int ,scalar_t__,int ) ;
+ scalar_t__ mp_archive_check_fatal (TYPE_3__*,int) ;
+ int mp_archive_free (TYPE_3__*) ;
+ scalar_t__ mp_cancel_test (int ) ;
+ scalar_t__ reopen_archive (TYPE_1__*) ;
+ int uselocale (int ) ;
 
 __attribute__((used)) static int archive_entry_seek(stream_t *s, int64_t newpos)
 {
@@ -46,14 +46,14 @@ __attribute__((used)) static int archive_entry_seek(stream_t *s, int64_t newpos)
         if (r >= 0)
             return 1;
         MP_WARN(s, "possibly unsupported seeking - switching to reopening\n");
-        p->broken_seek = true;
+        p->broken_seek = 1;
         if (reopen_archive(s) < STREAM_OK)
             return -1;
     }
-    // libarchive can't seek in most formats.
+
     if (newpos < s->pos) {
-        // Hack seeking backwards into working by reopening the archive and
-        // starting over.
+
+
         MP_VERBOSE(s, "trying to reopen archive for performing seek\n");
         if (reopen_archive(s) < STREAM_OK)
             return -1;
@@ -61,8 +61,8 @@ __attribute__((used)) static int archive_entry_seek(stream_t *s, int64_t newpos)
     if (newpos > s->pos) {
         if (!p->mpa && reopen_archive(s) < STREAM_OK)
             return -1;
-        // For seeking forwards, just keep reading data (there's no libarchive
-        // skip function either).
+
+
         char buffer[4096];
         while (newpos > s->pos) {
             if (mp_cancel_test(s->cancel))
@@ -83,7 +83,7 @@ __attribute__((used)) static int archive_entry_seek(stream_t *s, int64_t newpos)
                 uselocale(oldlocale);
                 if (mp_archive_check_fatal(p->mpa, r)) {
                     mp_archive_free(p->mpa);
-                    p->mpa = NULL;
+                    p->mpa = ((void*)0);
                 }
                 return -1;
             }

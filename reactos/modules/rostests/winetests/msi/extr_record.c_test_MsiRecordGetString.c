@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int UINT ;
-typedef  scalar_t__ MSIHANDLE ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  CHAR ;
 
-/* Variables and functions */
- int ERROR_SUCCESS ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  MsiCloseHandle (scalar_t__) ; 
- scalar_t__ MsiCreateRecord (int) ; 
- int MsiRecordGetStringA (scalar_t__,int,int /*<<< orphan*/ *,int*) ; 
- int MsiRecordSetInteger (scalar_t__,int,int) ; 
- int /*<<< orphan*/  lstrcmpA (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  lstrcpyA (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
+
+
+
+typedef int UINT ;
+typedef scalar_t__ MSIHANDLE ;
+typedef int DWORD ;
+typedef int CHAR ;
+
+
+ int ERROR_SUCCESS ;
+ int MAX_PATH ;
+ int MsiCloseHandle (scalar_t__) ;
+ scalar_t__ MsiCreateRecord (int) ;
+ int MsiRecordGetStringA (scalar_t__,int,int *,int*) ;
+ int MsiRecordSetInteger (scalar_t__,int,int) ;
+ int lstrcmpA (int *,char*) ;
+ int lstrcpyA (int *,char*) ;
+ int ok (int,char*,...) ;
 
 __attribute__((used)) static void test_MsiRecordGetString(void)
 {
@@ -37,7 +37,7 @@ __attribute__((used)) static void test_MsiRecordGetString(void)
     ok(rec != 0, "Expected a valid handle\n");
 
     sz = MAX_PATH;
-    r = MsiRecordGetStringA(rec, 1, NULL, &sz);
+    r = MsiRecordGetStringA(rec, 1, ((void*)0), &sz);
     ok(r == ERROR_SUCCESS, "Expected ERROR_SUCCESS, got %d\n",r);
     ok(sz == 0, "Expected 0, got %d\n",sz);
 
@@ -64,7 +64,7 @@ __attribute__((used)) static void test_MsiRecordGetString(void)
     ok(r == ERROR_SUCCESS, "Expected ERROR_SUCCESS, got %d\n", r);
 
     sz = MAX_PATH;
-    r = MsiRecordGetStringA(rec, 1, NULL, &sz);
+    r = MsiRecordGetStringA(rec, 1, ((void*)0), &sz);
     ok(r == ERROR_SUCCESS, "Expected ERROR_SUCCESS, got %d\n",r);
     ok(sz == 1, "Expected 1, got %d\n",sz);
 

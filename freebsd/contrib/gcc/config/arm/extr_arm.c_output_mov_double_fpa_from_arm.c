@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  rtx ;
 
-/* Variables and functions */
- int IP_REGNUM ; 
- int REGNO (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SImode ; 
- int /*<<< orphan*/  gcc_assert (int) ; 
- int /*<<< orphan*/  gen_rtx_REG (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  output_asm_insn (char*,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int rtx ;
+
+
+ int IP_REGNUM ;
+ int REGNO (int ) ;
+ int SImode ;
+ int gcc_assert (int) ;
+ int gen_rtx_REG (int ,int) ;
+ int output_asm_insn (char*,int *) ;
 
 const char *
 output_mov_double_fpa_from_arm (rtx *operands)

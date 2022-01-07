@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int UInt32 ;
-struct TYPE_6__ {int dictSize; int distTableSize; scalar_t__ nowPos64; int /*<<< orphan*/  result; int /*<<< orphan*/  finished; } ;
-typedef  int /*<<< orphan*/  SRes ;
-typedef  int /*<<< orphan*/  ISzAlloc ;
-typedef  TYPE_1__ CLzmaEnc ;
 
-/* Variables and functions */
- int /*<<< orphan*/  False ; 
- int /*<<< orphan*/  LzmaEnc_Alloc (TYPE_1__*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LzmaEnc_Init (TYPE_1__*) ; 
- int /*<<< orphan*/  LzmaEnc_InitPrices (TYPE_1__*) ; 
- int /*<<< orphan*/  RINOK (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SZ_OK ; 
- scalar_t__ kDicLogSizeMaxCompress ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int UInt32 ;
+struct TYPE_6__ {int dictSize; int distTableSize; scalar_t__ nowPos64; int result; int finished; } ;
+typedef int SRes ;
+typedef int ISzAlloc ;
+typedef TYPE_1__ CLzmaEnc ;
+
+
+ int False ;
+ int LzmaEnc_Alloc (TYPE_1__*,int,int *,int *) ;
+ int LzmaEnc_Init (TYPE_1__*) ;
+ int LzmaEnc_InitPrices (TYPE_1__*) ;
+ int RINOK (int ) ;
+ int SZ_OK ;
+ scalar_t__ kDicLogSizeMaxCompress ;
 
 __attribute__((used)) static SRes LzmaEnc_AllocAndInit(CLzmaEnc *p, UInt32 keepWindowSize, ISzAlloc *alloc, ISzAlloc *allocBig)
 {

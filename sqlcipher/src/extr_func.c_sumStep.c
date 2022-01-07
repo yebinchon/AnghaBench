@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_value ;
-typedef  int /*<<< orphan*/  sqlite3_context ;
-typedef  scalar_t__ i64 ;
-struct TYPE_3__ {int approx; int overflow; int /*<<< orphan*/  rSum; int /*<<< orphan*/  iSum; int /*<<< orphan*/  cnt; } ;
-typedef  TYPE_1__ SumCtx ;
 
-/* Variables and functions */
- int SQLITE_INTEGER ; 
- int SQLITE_NULL ; 
- int /*<<< orphan*/  UNUSED_PARAMETER (int) ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ sqlite3AddInt64 (int /*<<< orphan*/ *,scalar_t__) ; 
- TYPE_1__* sqlite3_aggregate_context (int /*<<< orphan*/ *,int) ; 
- scalar_t__ sqlite3_value_double (int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3_value_int64 (int /*<<< orphan*/ *) ; 
- int sqlite3_value_numeric_type (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int sqlite3_value ;
+typedef int sqlite3_context ;
+typedef scalar_t__ i64 ;
+struct TYPE_3__ {int approx; int overflow; int rSum; int iSum; int cnt; } ;
+typedef TYPE_1__ SumCtx ;
+
+
+ int SQLITE_INTEGER ;
+ int SQLITE_NULL ;
+ int UNUSED_PARAMETER (int) ;
+ int assert (int) ;
+ scalar_t__ sqlite3AddInt64 (int *,scalar_t__) ;
+ TYPE_1__* sqlite3_aggregate_context (int *,int) ;
+ scalar_t__ sqlite3_value_double (int *) ;
+ scalar_t__ sqlite3_value_int64 (int *) ;
+ int sqlite3_value_numeric_type (int *) ;
 
 __attribute__((used)) static void sumStep(sqlite3_context *context, int argc, sqlite3_value **argv){
   SumCtx *p;

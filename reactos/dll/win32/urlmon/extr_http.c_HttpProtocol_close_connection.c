@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * full_header; int /*<<< orphan*/ * http_negotiate; } ;
-typedef  int /*<<< orphan*/  Protocol ;
-typedef  TYPE_1__ HttpProtocol ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IHttpNegotiate_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  heap_free (int /*<<< orphan*/ *) ; 
- TYPE_1__* impl_from_Protocol (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * full_header; int * http_negotiate; } ;
+typedef int Protocol ;
+typedef TYPE_1__ HttpProtocol ;
+
+
+ int IHttpNegotiate_Release (int *) ;
+ int heap_free (int *) ;
+ TYPE_1__* impl_from_Protocol (int *) ;
 
 __attribute__((used)) static void HttpProtocol_close_connection(Protocol *prot)
 {
@@ -26,9 +26,9 @@ __attribute__((used)) static void HttpProtocol_close_connection(Protocol *prot)
 
     if(This->http_negotiate) {
         IHttpNegotiate_Release(This->http_negotiate);
-        This->http_negotiate = NULL;
+        This->http_negotiate = ((void*)0);
     }
 
     heap_free(This->full_header);
-    This->full_header = NULL;
+    This->full_header = ((void*)0);
 }

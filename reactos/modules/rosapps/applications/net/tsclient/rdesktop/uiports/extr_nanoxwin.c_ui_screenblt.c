@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GR_MODE_COPY ; 
- int /*<<< orphan*/  GrCopyArea (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,int,int,int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  g_gc_clean ; 
- int /*<<< orphan*/  g_wnd ; 
- int /*<<< orphan*/  unimpl (char*,int) ; 
- scalar_t__ warp_coords (int*,int*,int*,int*,int*,int*) ; 
+
+
+
+typedef int uint8 ;
+
+
+ int GR_MODE_COPY ;
+ int GrCopyArea (int ,int ,int,int,int,int,int ,int,int,int ) ;
+ int g_gc_clean ;
+ int g_wnd ;
+ int unimpl (char*,int) ;
+ scalar_t__ warp_coords (int*,int*,int*,int*,int*,int*) ;
 
 void ui_screenblt(uint8 opcode, int x, int y, int cx, int cy,
                   int srcx, int srcy)

@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct vstack {int dummy; } ;
 struct varobj_child {struct varobj* child; struct varobj_child* next; } ;
-struct varobj {int error; struct value* value; scalar_t__ updated; int /*<<< orphan*/  index; int /*<<< orphan*/  parent; struct varobj_child* children; TYPE_1__* root; } ;
+struct varobj {int error; struct value* value; scalar_t__ updated; int index; int parent; struct varobj_child* children; TYPE_1__* root; } ;
 struct value {int dummy; } ;
 struct frame_info {int dummy; } ;
 struct frame_id {int dummy; } ;
 struct TYPE_2__ {struct varobj* rootvar; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  deprecated_selected_frame ; 
- struct frame_info* frame_find_by_id (struct frame_id) ; 
- struct frame_id get_frame_id (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  my_value_equal (struct value*,struct value*,int*) ; 
- int /*<<< orphan*/  select_frame (struct frame_info*) ; 
- scalar_t__ type_changeable (struct varobj*) ; 
- int /*<<< orphan*/  value_free (struct value*) ; 
- struct value* value_of_child (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- struct value* value_of_root (struct varobj**,int*) ; 
- struct varobj* vpop (struct vstack**) ; 
- int /*<<< orphan*/  vpush (struct vstack**,struct varobj*) ; 
- int /*<<< orphan*/  warning (char*) ; 
- struct varobj** xmalloc (int) ; 
+
+ int deprecated_selected_frame ;
+ struct frame_info* frame_find_by_id (struct frame_id) ;
+ struct frame_id get_frame_id (int ) ;
+ int my_value_equal (struct value*,struct value*,int*) ;
+ int select_frame (struct frame_info*) ;
+ scalar_t__ type_changeable (struct varobj*) ;
+ int value_free (struct value*) ;
+ struct value* value_of_child (int ,int ) ;
+ struct value* value_of_root (struct varobj**,int*) ;
+ struct varobj* vpop (struct vstack**) ;
+ int vpush (struct vstack**,struct varobj*) ;
+ int warning (char*) ;
+ struct varobj** xmalloc (int) ;
 
 int
 varobj_update (struct varobj **varp, struct varobj ***changelist)
@@ -44,117 +44,117 @@ varobj_update (struct varobj **varp, struct varobj ***changelist)
   int error2;
   struct varobj *v;
   struct varobj **cv;
-  struct varobj **templist = NULL;
+  struct varobj **templist = ((void*)0);
   struct value *new;
-  struct vstack *stack = NULL;
-  struct vstack *result = NULL;
+  struct vstack *stack = ((void*)0);
+  struct vstack *result = ((void*)0);
   struct frame_id old_fid;
   struct frame_info *fi;
 
-  /* sanity check: have we been passed a pointer? */
-  if (changelist == NULL)
+
+  if (changelist == ((void*)0))
     return -1;
 
-  /*  Only root variables can be updated... */
+
   if ((*varp)->root->rootvar != *varp)
-    /* Not a root var */
+
     return -1;
 
-  /* Save the selected stack frame, since we will need to change it
-     in order to evaluate expressions. */
+
+
   old_fid = get_frame_id (deprecated_selected_frame);
 
-  /* Update the root variable. value_of_root can return NULL
-     if the variable is no longer around, i.e. we stepped out of
-     the frame in which a local existed. We are letting the 
-     value_of_root variable dispose of the varobj if the type
-     has changed. */
+
+
+
+
+
   type_changed = 1;
   new = value_of_root (varp, &type_changed);
-  if (new == NULL)
+  if (new == ((void*)0))
     {
       (*varp)->error = 1;
       return -1;
     }
 
-  /* Initialize a stack for temporary results */
-  vpush (&result, NULL);
 
-  /* If this is a "use_selected_frame" varobj, and its type has changed,
-     them note that it's changed. */
+  vpush (&result, ((void*)0));
+
+
+
   if (type_changed)
     {
       vpush (&result, *varp);
       changed++;
     }
-  /* If values are not equal, note that it's changed.
-     There a couple of exceptions here, though.
-     We don't want some types to be reported as "changed". */
+
+
+
   else if (type_changeable (*varp) &&
-	   ((*varp)->updated || !my_value_equal ((*varp)->value, new, &error2)))
+    ((*varp)->updated || !my_value_equal ((*varp)->value, new, &error2)))
     {
       vpush (&result, *varp);
       (*varp)->updated = 0;
       changed++;
-      /* error2 replaces var->error since this new value
-         WILL replace the old one. */
+
+
       (*varp)->error = error2;
     }
 
-  /* We must always keep around the new value for this root
-     variable expression, or we lose the updated children! */
+
+
   value_free ((*varp)->value);
   (*varp)->value = new;
 
-  /* Initialize a stack */
-  vpush (&stack, NULL);
 
-  /* Push the root's children */
-  if ((*varp)->children != NULL)
+  vpush (&stack, ((void*)0));
+
+
+  if ((*varp)->children != ((void*)0))
     {
       struct varobj_child *c;
-      for (c = (*varp)->children; c != NULL; c = c->next)
-	vpush (&stack, c->child);
+      for (c = (*varp)->children; c != ((void*)0); c = c->next)
+ vpush (&stack, c->child);
     }
 
-  /* Walk through the children, reconstructing them all. */
-  v = vpop (&stack);
-  while (v != NULL)
-    {
-      /* Push any children */
-      if (v->children != NULL)
-	{
-	  struct varobj_child *c;
-	  for (c = v->children; c != NULL; c = c->next)
-	    vpush (&stack, c->child);
-	}
 
-      /* Update this variable */
+  v = vpop (&stack);
+  while (v != ((void*)0))
+    {
+
+      if (v->children != ((void*)0))
+ {
+   struct varobj_child *c;
+   for (c = v->children; c != ((void*)0); c = c->next)
+     vpush (&stack, c->child);
+ }
+
+
       new = value_of_child (v->parent, v->index);
-      if (type_changeable (v) && 
+      if (type_changeable (v) &&
           (v->updated || !my_value_equal (v->value, new, &error2)))
-	{
-	  /* Note that it's changed */
-	  vpush (&result, v);
-	  v->updated = 0;
-	  changed++;
-	}
-      /* error2 replaces v->error since this new value
-         WILL replace the old one. */
+ {
+
+   vpush (&result, v);
+   v->updated = 0;
+   changed++;
+ }
+
+
       v->error = error2;
 
-      /* We must always keep new values, since children depend on it. */
-      if (v->value != NULL)
-	value_free (v->value);
+
+      if (v->value != ((void*)0))
+ value_free (v->value);
       v->value = new;
 
-      /* Get next child */
+
       v = vpop (&stack);
     }
 
-  /* Alloc (changed + 1) list entries */
-  /* FIXME: add a cleanup for the allocated list(s)
-     because one day the select_frame called below can longjump */
+
+
+
   *changelist = xmalloc ((changed + 1) * sizeof (struct varobj *));
   if (changed > 1)
     {
@@ -164,10 +164,10 @@ varobj_update (struct varobj **varp, struct varobj ***changelist)
   else
     cv = *changelist;
 
-  /* Copy from result stack to list */
+
   vleft = changed;
   *cv = vpop (&result);
-  while ((*cv != NULL) && (vleft > 0))
+  while ((*cv != ((void*)0)) && (vleft > 0))
     {
       vleft--;
       cv++;
@@ -178,13 +178,13 @@ varobj_update (struct varobj **varp, struct varobj ***changelist)
 
   if (changed > 1)
     {
-      /* Now we revert the order. */
+
       for (i = 0; i < changed; i++)
-	*(*changelist + i) = *(templist + changed - 1 - i);
-      *(*changelist + changed) = NULL;
+ *(*changelist + i) = *(templist + changed - 1 - i);
+      *(*changelist + changed) = ((void*)0);
     }
 
-  /* Restore selected frame */
+
   fi = frame_find_by_id (old_fid);
   if (fi)
     select_frame (fi);

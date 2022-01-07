@@ -1,242 +1,242 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_20__   TYPE_6__ ;
-typedef  struct TYPE_19__   TYPE_3__ ;
-typedef  struct TYPE_18__   TYPE_2__ ;
-typedef  struct TYPE_17__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int UINT ;
+
+
+typedef struct TYPE_20__ TYPE_6__ ;
+typedef struct TYPE_19__ TYPE_3__ ;
+typedef struct TYPE_18__ TYPE_2__ ;
+typedef struct TYPE_17__ TYPE_1__ ;
+
+
+typedef int UINT ;
 struct TYPE_20__ {TYPE_1__* Server; } ;
-struct TYPE_19__ {scalar_t__ Protocol; int ShadowIPv6; scalar_t__ Halt; int /*<<< orphan*/  lock; TYPE_2__* Sock; void* Status; int /*<<< orphan*/  Event; int /*<<< orphan*/  Port; TYPE_6__* Cedar; int /*<<< orphan*/  RandPortId; int /*<<< orphan*/ * NatTGlobalUdpPort; int /*<<< orphan*/  LocalOnly; int /*<<< orphan*/  EnableConditionalAccept; } ;
-struct TYPE_18__ {int /*<<< orphan*/  ref; } ;
-struct TYPE_17__ {int /*<<< orphan*/  ListenIP; } ;
-typedef  TYPE_2__ SOCK ;
-typedef  TYPE_3__ LISTENER ;
+struct TYPE_19__ {scalar_t__ Protocol; int ShadowIPv6; scalar_t__ Halt; int lock; TYPE_2__* Sock; void* Status; int Event; int Port; TYPE_6__* Cedar; int RandPortId; int * NatTGlobalUdpPort; int LocalOnly; int EnableConditionalAccept; } ;
+struct TYPE_18__ {int ref; } ;
+struct TYPE_17__ {int ListenIP; } ;
+typedef TYPE_2__ SOCK ;
+typedef TYPE_3__ LISTENER ;
 
-/* Variables and functions */
- TYPE_2__* Accept (TYPE_2__*) ; 
- int /*<<< orphan*/  AddRef (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Debug (char*) ; 
- int /*<<< orphan*/  Disconnect (TYPE_2__*) ; 
- int /*<<< orphan*/  IP_PROTO_ICMPV4 ; 
- int IsIPv6Supported () ; 
- scalar_t__ LISTENER_DNS ; 
- scalar_t__ LISTENER_ICMP ; 
- scalar_t__ LISTENER_INPROC ; 
- scalar_t__ LISTENER_REVERSE ; 
- scalar_t__ LISTENER_RUDP ; 
- void* LISTENER_STATUS_LISTENING ; 
- void* LISTENER_STATUS_TRYING ; 
- scalar_t__ LISTENER_TCP ; 
- int LISTEN_RETRY_TIME ; 
- int LISTEN_RETRY_TIME_NOIPV6 ; 
- TYPE_2__* ListenEx2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- TYPE_2__* ListenEx6 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_2__* ListenInProc () ; 
- TYPE_2__* ListenRUDPEx (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- TYPE_2__* ListenReverse () ; 
- int /*<<< orphan*/  ListenerRUDPRpcRecvProc ; 
- int /*<<< orphan*/  Lock (int /*<<< orphan*/ ) ; 
- int MAKE_SPECIAL_PORT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReleaseSock (TYPE_2__*) ; 
- int /*<<< orphan*/  SLog (TYPE_6__*,char*,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  TCPAccepted (TYPE_3__*,TYPE_2__*) ; 
- int /*<<< orphan*/  Unlock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  VPN_RUDP_SVC_NAME ; 
- int /*<<< orphan*/  Wait (int /*<<< orphan*/ ,int) ; 
+
+ TYPE_2__* Accept (TYPE_2__*) ;
+ int AddRef (int ) ;
+ int Debug (char*) ;
+ int Disconnect (TYPE_2__*) ;
+ int IP_PROTO_ICMPV4 ;
+ int IsIPv6Supported () ;
+ scalar_t__ LISTENER_DNS ;
+ scalar_t__ LISTENER_ICMP ;
+ scalar_t__ LISTENER_INPROC ;
+ scalar_t__ LISTENER_REVERSE ;
+ scalar_t__ LISTENER_RUDP ;
+ void* LISTENER_STATUS_LISTENING ;
+ void* LISTENER_STATUS_TRYING ;
+ scalar_t__ LISTENER_TCP ;
+ int LISTEN_RETRY_TIME ;
+ int LISTEN_RETRY_TIME_NOIPV6 ;
+ TYPE_2__* ListenEx2 (int ,int ,int ,int *) ;
+ TYPE_2__* ListenEx6 (int ,int ) ;
+ TYPE_2__* ListenInProc () ;
+ TYPE_2__* ListenRUDPEx (int ,int *,int ,int *,int,int,int,int *,int ,int *) ;
+ TYPE_2__* ListenReverse () ;
+ int ListenerRUDPRpcRecvProc ;
+ int Lock (int ) ;
+ int MAKE_SPECIAL_PORT (int ) ;
+ int ReleaseSock (TYPE_2__*) ;
+ int SLog (TYPE_6__*,char*,int ,...) ;
+ int TCPAccepted (TYPE_3__*,TYPE_2__*) ;
+ int Unlock (int ) ;
+ int VPN_RUDP_SVC_NAME ;
+ int Wait (int ,int) ;
 
 void ListenerTCPMainLoop(LISTENER *r)
 {
-	SOCK *new_sock;
-	SOCK *s;
-	// Validate arguments
-	if (r == NULL)
-	{
-		return;
-	}
+ SOCK *new_sock;
+ SOCK *s;
 
-	Debug("ListenerTCPMainLoop Starts.\n");
-	r->Status = LISTENER_STATUS_TRYING;
+ if (r == ((void*)0))
+ {
+  return;
+ }
 
-	while (true)
-	{
-		bool first_failed = true;
-		Debug("Status = LISTENER_STATUS_TRYING\n");
-		r->Status = LISTENER_STATUS_TRYING;
+ Debug("ListenerTCPMainLoop Starts.\n");
+ r->Status = LISTENER_STATUS_TRYING;
 
-		// Try to Listen
-		while (true)
-		{
-			UINT interval;
-			// Stop flag inspection
-			if (r->Halt)
-			{
-				// Stop
-				return;
-			}
+ while (1)
+ {
+  bool first_failed = 1;
+  Debug("Status = LISTENER_STATUS_TRYING\n");
+  r->Status = LISTENER_STATUS_TRYING;
 
-			s = NULL;
 
-			if (r->Protocol == LISTENER_TCP)
-			{
-				if (r->ShadowIPv6 == false)
-				{
-					if (r->Cedar->Server == NULL)
-					{
-						s = ListenEx2(r->Port, r->LocalOnly, r->EnableConditionalAccept, NULL);
-					}
-					else
-					{
-						s = ListenEx2(r->Port, r->LocalOnly, r->EnableConditionalAccept, &r->Cedar->Server->ListenIP);
-					}
-				}
-				else
-				{
-					s = ListenEx6(r->Port, r->LocalOnly);
-				}
-			}
-			else if (r->Protocol == LISTENER_INPROC)
-			{
-				s = ListenInProc();
-			}
-			else if (r->Protocol == LISTENER_RUDP)
-			{
-				s = ListenRUDPEx(VPN_RUDP_SVC_NAME, NULL, ListenerRUDPRpcRecvProc, NULL, 0, false, false, r->NatTGlobalUdpPort, r->RandPortId, &r->Cedar->Server->ListenIP);
-			}
-			else if (r->Protocol == LISTENER_ICMP)
-			{
-				s = ListenRUDPEx(VPN_RUDP_SVC_NAME, NULL, ListenerRUDPRpcRecvProc, NULL, MAKE_SPECIAL_PORT(IP_PROTO_ICMPV4),
-					true, false, NULL, 0, &r->Cedar->Server->ListenIP);
-			}
-			else if (r->Protocol == LISTENER_DNS)
-			{
-				s = ListenRUDPEx(VPN_RUDP_SVC_NAME, NULL, ListenerRUDPRpcRecvProc, NULL, 53, true, true, NULL, 0, &r->Cedar->Server->ListenIP);
-			}
-			else if (r->Protocol == LISTENER_REVERSE)
-			{
-				s = ListenReverse();
-			}
+  while (1)
+  {
+   UINT interval;
 
-			if (s != NULL)
-			{
-				// Listen success
-				AddRef(s->ref);
+   if (r->Halt)
+   {
 
-				Lock(r->lock);
-				{
-					r->Sock = s;
-				}
-				Unlock(r->lock);
+    return;
+   }
 
-				if (r->ShadowIPv6 == false && r->Protocol == LISTENER_TCP)
-				{
-					SLog(r->Cedar, "LS_LISTENER_START_2", r->Port);
-				}
-				break;
-			}
+   s = ((void*)0);
 
-			// Listen failure
-			if (first_failed)
-			{
-				first_failed = false;
-				if (r->ShadowIPv6 == false && r->Protocol == LISTENER_TCP)
-				{
-					SLog(r->Cedar, "LS_LISTENER_START_3", r->Port, LISTEN_RETRY_TIME / 1000);
-				}
-			}
+   if (r->Protocol == LISTENER_TCP)
+   {
+    if (r->ShadowIPv6 == 0)
+    {
+     if (r->Cedar->Server == ((void*)0))
+     {
+      s = ListenEx2(r->Port, r->LocalOnly, r->EnableConditionalAccept, ((void*)0));
+     }
+     else
+     {
+      s = ListenEx2(r->Port, r->LocalOnly, r->EnableConditionalAccept, &r->Cedar->Server->ListenIP);
+     }
+    }
+    else
+    {
+     s = ListenEx6(r->Port, r->LocalOnly);
+    }
+   }
+   else if (r->Protocol == LISTENER_INPROC)
+   {
+    s = ListenInProc();
+   }
+   else if (r->Protocol == LISTENER_RUDP)
+   {
+    s = ListenRUDPEx(VPN_RUDP_SVC_NAME, ((void*)0), ListenerRUDPRpcRecvProc, ((void*)0), 0, 0, 0, r->NatTGlobalUdpPort, r->RandPortId, &r->Cedar->Server->ListenIP);
+   }
+   else if (r->Protocol == LISTENER_ICMP)
+   {
+    s = ListenRUDPEx(VPN_RUDP_SVC_NAME, ((void*)0), ListenerRUDPRpcRecvProc, ((void*)0), MAKE_SPECIAL_PORT(IP_PROTO_ICMPV4),
+     1, 0, ((void*)0), 0, &r->Cedar->Server->ListenIP);
+   }
+   else if (r->Protocol == LISTENER_DNS)
+   {
+    s = ListenRUDPEx(VPN_RUDP_SVC_NAME, ((void*)0), ListenerRUDPRpcRecvProc, ((void*)0), 53, 1, 1, ((void*)0), 0, &r->Cedar->Server->ListenIP);
+   }
+   else if (r->Protocol == LISTENER_REVERSE)
+   {
+    s = ListenReverse();
+   }
 
-			interval = LISTEN_RETRY_TIME;
+   if (s != ((void*)0))
+   {
 
-			if (r->ShadowIPv6)
-			{
-				if (IsIPv6Supported() == false)
-				{
-					interval = LISTEN_RETRY_TIME_NOIPV6;
+    AddRef(s->ref);
 
-					Debug("IPv6 is not supported.\n");
-				}
-			}
+    Lock(r->lock);
+    {
+     r->Sock = s;
+    }
+    Unlock(r->lock);
 
-			Wait(r->Event, interval);
+    if (r->ShadowIPv6 == 0 && r->Protocol == LISTENER_TCP)
+    {
+     SLog(r->Cedar, "LS_LISTENER_START_2", r->Port);
+    }
+    break;
+   }
 
-			// Stop flag inspection
-			if (r->Halt)
-			{
-				// Stop
-				Debug("Listener Halt.\n");
-				return;
-			}
-		}
 
-		r->Status = LISTENER_STATUS_LISTENING;
-		Debug("Status = LISTENER_STATUS_LISTENING\n");
+   if (first_failed)
+   {
+    first_failed = 0;
+    if (r->ShadowIPv6 == 0 && r->Protocol == LISTENER_TCP)
+    {
+     SLog(r->Cedar, "LS_LISTENER_START_3", r->Port, LISTEN_RETRY_TIME / 1000);
+    }
+   }
 
-		// Stop flag inspection
-		if (r->Halt)
-		{
-			// Stop
-			goto STOP;
-		}
+   interval = LISTEN_RETRY_TIME;
 
-		// Accept loop
-		while (true)
-		{
-			// Accept
-			Debug("Accept()\n");
-			new_sock = Accept(s);
-			if (new_sock != NULL)
-			{
-				// Accept success
-				Debug("Accepted.\n");
-				TCPAccepted(r, new_sock);
-				ReleaseSock(new_sock);
-			}
-			else
-			{
+   if (r->ShadowIPv6)
+   {
+    if (IsIPv6Supported() == 0)
+    {
+     interval = LISTEN_RETRY_TIME_NOIPV6;
+
+     Debug("IPv6 is not supported.\n");
+    }
+   }
+
+   Wait(r->Event, interval);
+
+
+   if (r->Halt)
+   {
+
+    Debug("Listener Halt.\n");
+    return;
+   }
+  }
+
+  r->Status = LISTENER_STATUS_LISTENING;
+  Debug("Status = LISTENER_STATUS_LISTENING\n");
+
+
+  if (r->Halt)
+  {
+
+   goto STOP;
+  }
+
+
+  while (1)
+  {
+
+   Debug("Accept()\n");
+   new_sock = Accept(s);
+   if (new_sock != ((void*)0))
+   {
+
+    Debug("Accepted.\n");
+    TCPAccepted(r, new_sock);
+    ReleaseSock(new_sock);
+   }
+   else
+   {
 STOP:
-				Debug("Accept Canceled.\n");
-				// Failed to accept (socket is destroyed)
-				// Close the listening socket
-				Disconnect(s);
-				ReleaseSock(s);
-				s = NULL;
+    Debug("Accept Canceled.\n");
 
-				Lock(r->lock);
-				{
-					if (r->Sock != NULL)
-					{
-						s = r->Sock;
-						r->Sock = NULL;
-					}
-				}
-				Unlock(r->lock);
 
-				if (s != NULL)
-				{
-					ReleaseSock(s);
-				}
+    Disconnect(s);
+    ReleaseSock(s);
+    s = ((void*)0);
 
-				s = NULL;
+    Lock(r->lock);
+    {
+     if (r->Sock != ((void*)0))
+     {
+      s = r->Sock;
+      r->Sock = ((void*)0);
+     }
+    }
+    Unlock(r->lock);
 
-				break;
-			}
-		}
+    if (s != ((void*)0))
+    {
+     ReleaseSock(s);
+    }
 
-		// Stop flag inspection
-		if (r->Halt)
-		{
-			// Stop
-			Debug("Listener Halt.\n");
-			return;
-		}
-	}
+    s = ((void*)0);
+
+    break;
+   }
+  }
+
+
+  if (r->Halt)
+  {
+
+   Debug("Listener Halt.\n");
+   return;
+  }
+ }
 }

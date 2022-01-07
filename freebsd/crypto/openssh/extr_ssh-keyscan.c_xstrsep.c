@@ -1,33 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int strcspn (char*,char const*) ; 
+ int strcspn (char*,char const*) ;
 
 __attribute__((used)) static char *
 xstrsep(char **str, const char *delim)
 {
-	char *s, *e;
+ char *s, *e;
 
-	if (!**str)
-		return (NULL);
+ if (!**str)
+  return (((void*)0));
 
-	s = *str;
-	e = s + strcspn(s, delim);
+ s = *str;
+ e = s + strcspn(s, delim);
 
-	if (*e != '\0')
-		*e++ = '\0';
-	*str = e;
+ if (*e != '\0')
+  *e++ = '\0';
+ *str = e;
 
-	return (s);
+ return (s);
 }

@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  git_tree ;
+
+
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int git_tree ;
 struct TYPE_9__ {int time; int offset; } ;
-struct TYPE_10__ {TYPE_1__ when; int /*<<< orphan*/  email; int /*<<< orphan*/  name; } ;
-typedef  TYPE_2__ git_signature ;
-typedef  int /*<<< orphan*/  git_oid ;
-typedef  int /*<<< orphan*/  git_object ;
-typedef  int /*<<< orphan*/  git_commit ;
+struct TYPE_10__ {TYPE_1__ when; int email; int name; } ;
+typedef TYPE_2__ git_signature ;
+typedef int git_oid ;
+typedef int git_object ;
+typedef int git_commit ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cl_assert (int) ; 
- int /*<<< orphan*/  cl_assert_equal_s (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cl_git_pass (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * commit ; 
- int /*<<< orphan*/  commit_message ; 
- int /*<<< orphan*/  committer_email ; 
- int /*<<< orphan*/  committer_name ; 
- int /*<<< orphan*/  g_repo ; 
- TYPE_2__* git_commit_author (int /*<<< orphan*/ *) ; 
- TYPE_2__* git_commit_committer (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  git_commit_create_v (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,TYPE_2__*,TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  git_commit_lookup (int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  git_commit_message (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  git_object_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  git_oid_fromstr (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  git_signature_free (TYPE_2__*) ; 
- int /*<<< orphan*/  git_signature_new (TYPE_2__**,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  git_tree_lookup (int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  parent_id_str ; 
- int /*<<< orphan*/  tree_id_str ; 
+
+ int cl_assert (int) ;
+ int cl_assert_equal_s (int ,int ) ;
+ int cl_git_pass (int ) ;
+ int * commit ;
+ int commit_message ;
+ int committer_email ;
+ int committer_name ;
+ int g_repo ;
+ TYPE_2__* git_commit_author (int *) ;
+ TYPE_2__* git_commit_committer (int *) ;
+ int git_commit_create_v (int *,int ,int *,TYPE_2__*,TYPE_2__*,int *,int ,int *,int,int *) ;
+ int git_commit_lookup (int **,int ,int *) ;
+ int git_commit_message (int *) ;
+ int git_object_free (int *) ;
+ int git_oid_fromstr (int *,int ) ;
+ int git_signature_free (TYPE_2__*) ;
+ int git_signature_new (TYPE_2__**,int ,int ,int,int) ;
+ int git_tree_lookup (int **,int ,int *) ;
+ int parent_id_str ;
+ int tree_id_str ;
 
 void test_commit_write__from_memory(void)
 {
@@ -56,17 +56,17 @@ void test_commit_write__from_memory(void)
    git_oid_fromstr(&parent_id, parent_id_str);
    cl_git_pass(git_commit_lookup(&parent, g_repo, &parent_id));
 
-   /* create signatures */
+
    cl_git_pass(git_signature_new(&committer, committer_name, committer_email, 123456789, 60));
    cl_git_pass(git_signature_new(&author, committer_name, committer_email, 987654321, 90));
 
    cl_git_pass(git_commit_create_v(
-      &commit_id, /* out id */
+      &commit_id,
       g_repo,
-      NULL, /* do not update the HEAD */
+      ((void*)0),
       author,
       committer,
-      NULL,
+      ((void*)0),
       commit_message,
       tree,
       1, parent));
@@ -79,16 +79,16 @@ void test_commit_write__from_memory(void)
 
    cl_git_pass(git_commit_lookup(&commit, g_repo, &commit_id));
 
-   /* Check attributes were set correctly */
+
    author1 = git_commit_author(commit);
-   cl_assert(author1 != NULL);
+   cl_assert(author1 != ((void*)0));
    cl_assert_equal_s(committer_name, author1->name);
    cl_assert_equal_s(committer_email, author1->email);
    cl_assert(author1->when.time == 987654321);
    cl_assert(author1->when.offset == 90);
 
    committer1 = git_commit_committer(commit);
-   cl_assert(committer1 != NULL);
+   cl_assert(committer1 != ((void*)0));
    cl_assert_equal_s(committer_name, committer1->name);
    cl_assert_equal_s(committer_email, committer1->email);
    cl_assert(committer1->when.time == 123456789);

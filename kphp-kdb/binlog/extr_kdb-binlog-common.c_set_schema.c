@@ -1,52 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int) ; 
- int init_antispam_data (int) ; 
- int init_bayes_data (int) ; 
- int init_cache_data (int) ; 
- int init_copyexec_aux_data (int) ; 
- int init_copyexec_main_data (int) ; 
- int init_copyexec_result_data (int) ; 
- int init_dns_data (int) ; 
- int init_filesys_data (int) ; 
- int init_friends_data (int) ; 
- int init_gms_data (int) ; 
- int init_gms_money_data (int) ; 
- int init_hints_data (int) ; 
- int init_isearch_data (int) ; 
- int init_lists_data (int) ; 
- int init_logs_data (int) ; 
- int init_magus_data (int) ; 
- int init_mf_data (int) ; 
- int init_money_data (int) ; 
- int init_news_data (int) ; 
- int init_password_data (int) ; 
- int init_photo_data (int) ; 
- int init_pmemcached_data (int) ; 
- int init_rpc_proxy_data (int) ; 
- int init_search_data (int) ; 
- int init_seqmap_data (int) ; 
- int init_sql_data (int) ; 
- int init_stats_data (int) ; 
- int init_storage_data (int) ; 
- int init_support_data (int) ; 
- int init_targ_data (int) ; 
- int init_text_data (int) ; 
- int init_weights_data (int) ; 
- int log_schema ; 
- int /*<<< orphan*/  stderr ; 
+ int fprintf (int ,char*,int) ;
+ int init_antispam_data (int) ;
+ int init_bayes_data (int) ;
+ int init_cache_data (int) ;
+ int init_copyexec_aux_data (int) ;
+ int init_copyexec_main_data (int) ;
+ int init_copyexec_result_data (int) ;
+ int init_dns_data (int) ;
+ int init_filesys_data (int) ;
+ int init_friends_data (int) ;
+ int init_gms_data (int) ;
+ int init_gms_money_data (int) ;
+ int init_hints_data (int) ;
+ int init_isearch_data (int) ;
+ int init_lists_data (int) ;
+ int init_logs_data (int) ;
+ int init_magus_data (int) ;
+ int init_mf_data (int) ;
+ int init_money_data (int) ;
+ int init_news_data (int) ;
+ int init_password_data (int) ;
+ int init_photo_data (int) ;
+ int init_pmemcached_data (int) ;
+ int init_rpc_proxy_data (int) ;
+ int init_search_data (int) ;
+ int init_seqmap_data (int) ;
+ int init_sql_data (int) ;
+ int init_stats_data (int) ;
+ int init_storage_data (int) ;
+ int init_support_data (int) ;
+ int init_targ_data (int) ;
+ int init_text_data (int) ;
+ int init_weights_data (int) ;
+ int log_schema ;
+ int stderr ;
 
 int set_schema (int schema) {
   int res = -1;
@@ -59,7 +51,7 @@ int set_schema (int schema) {
     break;
   case 0xbeef0000:
     res = init_search_data (schema);
-    break;  
+    break;
   case 0x2bec0000:
     res = init_friends_data (schema);
     break;

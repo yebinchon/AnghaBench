@@ -1,41 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int atoi (scalar_t__) ; 
- int /*<<< orphan*/  buff ; 
- int /*<<< orphan*/  dump (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  fgets (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  freopen (scalar_t__,char*,int /*<<< orphan*/ ) ; 
- int getopt (int,char**,char*) ; 
- int /*<<< orphan*/  help () ; 
- int /*<<< orphan*/  init () ; 
- scalar_t__ input_file ; 
- int mode ; 
- scalar_t__ optarg ; 
- int optind ; 
- scalar_t__ output_file ; 
- int /*<<< orphan*/  printf (char*,int) ; 
- int /*<<< orphan*/  root ; 
- int /*<<< orphan*/  run () ; 
- int /*<<< orphan*/  set_debug_handlers () ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  stdin ; 
- int /*<<< orphan*/  stdout ; 
- int total_out ; 
- scalar_t__ verbosity ; 
+ int assert (int ) ;
+ int atoi (scalar_t__) ;
+ int buff ;
+ int dump (int *,int) ;
+ int fgets (int ,int,int ) ;
+ int fprintf (int ,char*,int) ;
+ int freopen (scalar_t__,char*,int ) ;
+ int getopt (int,char**,char*) ;
+ int help () ;
+ int init () ;
+ scalar_t__ input_file ;
+ int mode ;
+ scalar_t__ optarg ;
+ int optind ;
+ scalar_t__ output_file ;
+ int printf (char*,int) ;
+ int root ;
+ int run () ;
+ int set_debug_handlers () ;
+ int stderr ;
+ int stdin ;
+ int stdout ;
+ int total_out ;
+ scalar_t__ verbosity ;
 
 int main (int argc, char **argv) {
   int i;
@@ -82,7 +74,7 @@ int main (int argc, char **argv) {
   for (i = 0; i < skip_lines; i++) {
     assert (fgets (buff, 1000000, stdin));
   }
-  
+
   init ();
   run ();
   dump (&root, -1);

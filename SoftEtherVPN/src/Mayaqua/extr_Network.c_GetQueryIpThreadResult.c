@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  Lock; int /*<<< orphan*/  Ip; } ;
-typedef  TYPE_1__ QUERYIPTHREAD ;
-typedef  int /*<<< orphan*/  IP ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Copy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- scalar_t__ IsZero (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  Lock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Unlock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Zero (int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int Lock; int Ip; } ;
+typedef TYPE_1__ QUERYIPTHREAD ;
+typedef int IP ;
+
+
+ int Copy (int *,int *,int) ;
+ scalar_t__ IsZero (int *,int) ;
+ int Lock (int ) ;
+ int Unlock (int ) ;
+ int Zero (int *,int) ;
 
 bool GetQueryIpThreadResult(QUERYIPTHREAD *t, IP *ip)
 {
-	bool ret = false;
-	Zero(ip, sizeof(IP));
-	// Validate arguments
-	if (t == NULL || ip == NULL)
-	{
-		return false;
-	}
+ bool ret = 0;
+ Zero(ip, sizeof(IP));
 
-	Lock(t->Lock);
+ if (t == ((void*)0) || ip == ((void*)0))
+ {
+  return 0;
+ }
 
-	if (IsZero(&t->Ip, sizeof(IP)))
-	{
-		ret = false;
-	}
-	else
-	{
-		Copy(ip, &t->Ip, sizeof(IP));
-	}
+ Lock(t->Lock);
 
-	Unlock(t->Lock);
+ if (IsZero(&t->Ip, sizeof(IP)))
+ {
+  ret = 0;
+ }
+ else
+ {
+  Copy(ip, &t->Ip, sizeof(IP));
+ }
 
-	return ret;
+ Unlock(t->Lock);
+
+ return ret;
 }

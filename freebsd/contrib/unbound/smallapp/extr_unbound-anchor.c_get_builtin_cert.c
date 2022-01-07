@@ -1,23 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
-
 __attribute__((used)) static const char*
 get_builtin_cert(void)
 {
-	return
-/* The ICANN CA fetched at 24 Sep 2010.  Valid to 2028 */
+ return
+
 "-----BEGIN CERTIFICATE-----\n"
 "MIIDdzCCAl+gAwIBAgIBATANBgkqhkiG9w0BAQsFADBdMQ4wDAYDVQQKEwVJQ0FO\n"
 "TjEmMCQGA1UECxMdSUNBTk4gQ2VydGlmaWNhdGlvbiBBdXRob3JpdHkxFjAUBgNV\n"
@@ -39,5 +30,5 @@ get_builtin_cert(void)
 "0/wsHNeP22qNyVO+XVBzrM8fk8BSUFuiT/6tZTYXRtEt5aKQZgXbKU5dUF3jT9qg\n"
 "j/Br5BZw3X/zd325TvnswzMC1+ljLzHnQGGk\n"
 "-----END CERTIFICATE-----\n"
-		;
+  ;
 }

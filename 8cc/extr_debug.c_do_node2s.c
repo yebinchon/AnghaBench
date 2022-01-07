@@ -1,88 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_5__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_11__ {int /*<<< orphan*/  kind; } ;
-struct TYPE_10__ {int kind; char ival; char* fname; struct TYPE_10__* right; struct TYPE_10__* left; int /*<<< orphan*/  label; struct TYPE_10__* operand; TYPE_5__* ty; int /*<<< orphan*/  field; struct TYPE_10__* struc; int /*<<< orphan*/  stmts; struct TYPE_10__* retval; struct TYPE_10__* els; struct TYPE_10__* then; struct TYPE_10__* cond; TYPE_5__* totype; int /*<<< orphan*/  initoff; struct TYPE_10__* initval; int /*<<< orphan*/  declinit; TYPE_1__* declvar; struct TYPE_10__* body; int /*<<< orphan*/  params; int /*<<< orphan*/  args; int /*<<< orphan*/  varname; int /*<<< orphan*/  lvarinit; int /*<<< orphan*/  sval; int /*<<< orphan*/  fval; } ;
+
+
+typedef struct TYPE_11__ TYPE_5__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_11__ {int kind; } ;
+struct TYPE_10__ {int kind; char ival; char* fname; struct TYPE_10__* right; struct TYPE_10__* left; int label; struct TYPE_10__* operand; TYPE_5__* ty; int field; struct TYPE_10__* struc; int stmts; struct TYPE_10__* retval; struct TYPE_10__* els; struct TYPE_10__* then; struct TYPE_10__* cond; TYPE_5__* totype; int initoff; struct TYPE_10__* initval; int declinit; TYPE_1__* declvar; struct TYPE_10__* body; int params; int args; int varname; int lvarinit; int sval; int fval; } ;
 struct TYPE_9__ {char* varname; TYPE_5__* ty; } ;
-typedef  TYPE_2__ Node ;
-typedef  int /*<<< orphan*/  Buffer ;
-
-/* Variables and functions */
-#define  AST_ADDR 179 
-#define  AST_COMPOUND_STMT 178 
-#define  AST_CONV 177 
-#define  AST_DECL 176 
-#define  AST_DEREF 175 
-#define  AST_FUNC 174 
-#define  AST_FUNCALL 173 
-#define  AST_FUNCDESG 172 
-#define  AST_FUNCPTR_CALL 171 
-#define  AST_GOTO 170 
-#define  AST_GVAR 169 
-#define  AST_IF 168 
-#define  AST_INIT 167 
-#define  AST_LABEL 166 
-#define  AST_LITERAL 165 
-#define  AST_LVAR 164 
-#define  AST_RETURN 163 
-#define  AST_STRUCT_REF 162 
-#define  AST_TERNARY 161 
-#define  KIND_ARRAY 160 
-#define  KIND_CHAR 159 
-#define  KIND_DOUBLE 158 
-#define  KIND_FLOAT 157 
-#define  KIND_INT 156 
-#define  KIND_LDOUBLE 155 
-#define  KIND_LLONG 154 
-#define  KIND_LONG 153 
-#define  OP_A_ADD 152 
-#define  OP_A_AND 151 
-#define  OP_A_DIV 150 
-#define  OP_A_MOD 149 
-#define  OP_A_MUL 148 
-#define  OP_A_OR 147 
-#define  OP_A_SAL 146 
-#define  OP_A_SAR 145 
-#define  OP_A_SHR 144 
-#define  OP_A_SUB 143 
-#define  OP_A_XOR 142 
-#define  OP_CAST 141 
- int const OP_EQ ; 
-#define  OP_GE 140 
-#define  OP_LABEL_ADDR 139 
-#define  OP_LE 138 
-#define  OP_LOGAND 137 
-#define  OP_LOGOR 136 
-#define  OP_NE 135 
-#define  OP_POST_DEC 134 
-#define  OP_POST_INC 133 
-#define  OP_PRE_DEC 132 
-#define  OP_PRE_INC 131 
-#define  OP_SAL 130 
-#define  OP_SAR 129 
-#define  OP_SHR 128 
- int /*<<< orphan*/  a2s_declinit (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  binop_to_string (int /*<<< orphan*/ *,char*,TYPE_2__*) ; 
- int /*<<< orphan*/  buf_printf (int /*<<< orphan*/ *,char*,...) ; 
- int /*<<< orphan*/  error (char*) ; 
- char* node2s (TYPE_2__*) ; 
- int /*<<< orphan*/  quote_cstring (int /*<<< orphan*/ ) ; 
- char* ty2s (TYPE_5__*) ; 
- int /*<<< orphan*/  uop_to_string (int /*<<< orphan*/ *,char*,TYPE_2__*) ; 
- TYPE_2__* vec_get (int /*<<< orphan*/ ,int) ; 
- int vec_len (int /*<<< orphan*/ ) ; 
+typedef TYPE_2__ Node ;
+typedef int Buffer ;
+ int const OP_EQ ;
+ int a2s_declinit (int *,int ) ;
+ int binop_to_string (int *,char*,TYPE_2__*) ;
+ int buf_printf (int *,char*,...) ;
+ int error (char*) ;
+ char* node2s (TYPE_2__*) ;
+ int quote_cstring (int ) ;
+ char* ty2s (TYPE_5__*) ;
+ int uop_to_string (int *,char*,TYPE_2__*) ;
+ TYPE_2__* vec_get (int ,int) ;
+ int vec_len (int ) ;
 
 __attribute__((used)) static void do_node2s(Buffer *b, Node *node) {
     if (!node) {
@@ -90,39 +36,39 @@ __attribute__((used)) static void do_node2s(Buffer *b, Node *node) {
         return;
     }
     switch (node->kind) {
-    case AST_LITERAL:
+    case 165:
         switch (node->ty->kind) {
-        case KIND_CHAR:
-            if (node->ival == '\n')      buf_printf(b, "'\n'");
+        case 159:
+            if (node->ival == '\n') buf_printf(b, "'\n'");
             else if (node->ival == '\\') buf_printf(b, "'\\\\'");
             else if (node->ival == '\0') buf_printf(b, "'\\0'");
             else buf_printf(b, "'%c'", node->ival);
             break;
-        case KIND_INT:
+        case 156:
             buf_printf(b, "%d", node->ival);
             break;
-        case KIND_LONG:
+        case 153:
             buf_printf(b, "%ldL", node->ival);
             break;
-        case KIND_LLONG:
+        case 154:
             buf_printf(b, "%lldL", node->ival);
             break;
-        case KIND_FLOAT:
-        case KIND_DOUBLE:
-        case KIND_LDOUBLE:
+        case 157:
+        case 158:
+        case 155:
             buf_printf(b, "%f", node->fval);
             break;
-        case KIND_ARRAY:
+        case 160:
             buf_printf(b, "\"%s\"", quote_cstring(node->sval));
             break;
         default:
             error("internal error");
         }
         break;
-    case AST_LABEL:
+    case 166:
         buf_printf(b, "%s:", node->label);
         break;
-    case AST_LVAR:
+    case 164:
         buf_printf(b, "lv=%s", node->varname);
         if (node->lvarinit) {
             buf_printf(b, "(");
@@ -130,13 +76,13 @@ __attribute__((used)) static void do_node2s(Buffer *b, Node *node) {
             buf_printf(b, ")");
         }
         break;
-    case AST_GVAR:
+    case 169:
         buf_printf(b, "gv=%s", node->varname);
         break;
-    case AST_FUNCALL:
-    case AST_FUNCPTR_CALL: {
+    case 173:
+    case 171: {
         buf_printf(b, "(%s)%s(", ty2s(node->ty),
-                   node->kind == AST_FUNCALL ? node->fname : node2s(node));
+                   node->kind == 173 ? node->fname : node2s(node));
         for (int i = 0; i < vec_len(node->args); i++) {
             if (i > 0)
                 buf_printf(b, ",");
@@ -145,11 +91,11 @@ __attribute__((used)) static void do_node2s(Buffer *b, Node *node) {
         buf_printf(b, ")");
         break;
     }
-    case AST_FUNCDESG: {
+    case 172: {
         buf_printf(b, "(funcdesg %s)", node->fname);
         break;
     }
-    case AST_FUNC: {
+    case 174: {
         buf_printf(b, "(%s)%s(", ty2s(node->ty), node->fname);
         for (int i = 0; i < vec_len(node->params); i++) {
             if (i > 0)
@@ -161,10 +107,10 @@ __attribute__((used)) static void do_node2s(Buffer *b, Node *node) {
         do_node2s(b, node->body);
         break;
     }
-    case AST_GOTO:
+    case 170:
         buf_printf(b, "goto(%s)", node->label);
         break;
-    case AST_DECL:
+    case 176:
         buf_printf(b, "(decl %s %s",
                    ty2s(node->declvar->ty),
                    node->declvar->varname);
@@ -174,13 +120,13 @@ __attribute__((used)) static void do_node2s(Buffer *b, Node *node) {
         }
         buf_printf(b, ")");
         break;
-    case AST_INIT:
+    case 167:
         buf_printf(b, "%s@%d", node2s(node->initval), node->initoff, ty2s(node->totype));
         break;
-    case AST_CONV:
+    case 177:
         buf_printf(b, "(conv %s=>%s)", node2s(node->operand), ty2s(node->ty));
         break;
-    case AST_IF:
+    case 168:
         buf_printf(b, "(if %s %s",
                    node2s(node->cond),
                    node2s(node->then));
@@ -188,16 +134,16 @@ __attribute__((used)) static void do_node2s(Buffer *b, Node *node) {
             buf_printf(b, " %s", node2s(node->els));
         buf_printf(b, ")");
         break;
-    case AST_TERNARY:
+    case 161:
         buf_printf(b, "(? %s %s %s)",
                    node2s(node->cond),
                    node2s(node->then),
                    node2s(node->els));
         break;
-    case AST_RETURN:
+    case 163:
         buf_printf(b, "(return %s)", node2s(node->retval));
         break;
-    case AST_COMPOUND_STMT: {
+    case 178: {
         buf_printf(b, "{");
         for (int i = 0; i < vec_len(node->stmts); i++) {
             do_node2s(b, vec_get(node->stmts, i));
@@ -206,47 +152,47 @@ __attribute__((used)) static void do_node2s(Buffer *b, Node *node) {
         buf_printf(b, "}");
         break;
     }
-    case AST_STRUCT_REF:
+    case 162:
         do_node2s(b, node->struc);
         buf_printf(b, ".");
         buf_printf(b, node->field);
         break;
-    case AST_ADDR:  uop_to_string(b, "addr", node); break;
-    case AST_DEREF: uop_to_string(b, "deref", node); break;
-    case OP_SAL:  binop_to_string(b, "<<", node); break;
-    case OP_SAR:
-    case OP_SHR:  binop_to_string(b, ">>", node); break;
-    case OP_GE:  binop_to_string(b, ">=", node); break;
-    case OP_LE:  binop_to_string(b, "<=", node); break;
-    case OP_NE:  binop_to_string(b, "!=", node); break;
-    case OP_PRE_INC: uop_to_string(b, "pre++", node); break;
-    case OP_PRE_DEC: uop_to_string(b, "pre--", node); break;
-    case OP_POST_INC: uop_to_string(b, "post++", node); break;
-    case OP_POST_DEC: uop_to_string(b, "post--", node); break;
-    case OP_LOGAND: binop_to_string(b, "and", node); break;
-    case OP_LOGOR:  binop_to_string(b, "or", node); break;
-    case OP_A_ADD:  binop_to_string(b, "+=", node); break;
-    case OP_A_SUB:  binop_to_string(b, "-=", node); break;
-    case OP_A_MUL:  binop_to_string(b, "*=", node); break;
-    case OP_A_DIV:  binop_to_string(b, "/=", node); break;
-    case OP_A_MOD:  binop_to_string(b, "%=", node); break;
-    case OP_A_AND:  binop_to_string(b, "&=", node); break;
-    case OP_A_OR:   binop_to_string(b, "|=", node); break;
-    case OP_A_XOR:  binop_to_string(b, "^=", node); break;
-    case OP_A_SAL:  binop_to_string(b, "<<=", node); break;
-    case OP_A_SAR:
-    case OP_A_SHR:  binop_to_string(b, ">>=", node); break;
+    case 179: uop_to_string(b, "addr", node); break;
+    case 175: uop_to_string(b, "deref", node); break;
+    case 130: binop_to_string(b, "<<", node); break;
+    case 129:
+    case 128: binop_to_string(b, ">>", node); break;
+    case 140: binop_to_string(b, ">=", node); break;
+    case 138: binop_to_string(b, "<=", node); break;
+    case 135: binop_to_string(b, "!=", node); break;
+    case 131: uop_to_string(b, "pre++", node); break;
+    case 132: uop_to_string(b, "pre--", node); break;
+    case 133: uop_to_string(b, "post++", node); break;
+    case 134: uop_to_string(b, "post--", node); break;
+    case 137: binop_to_string(b, "and", node); break;
+    case 136: binop_to_string(b, "or", node); break;
+    case 152: binop_to_string(b, "+=", node); break;
+    case 143: binop_to_string(b, "-=", node); break;
+    case 148: binop_to_string(b, "*=", node); break;
+    case 150: binop_to_string(b, "/=", node); break;
+    case 149: binop_to_string(b, "%=", node); break;
+    case 151: binop_to_string(b, "&=", node); break;
+    case 147: binop_to_string(b, "|=", node); break;
+    case 142: binop_to_string(b, "^=", node); break;
+    case 146: binop_to_string(b, "<<=", node); break;
+    case 145:
+    case 144: binop_to_string(b, ">>=", node); break;
     case '!': uop_to_string(b, "!", node); break;
     case '&': binop_to_string(b, "&", node); break;
     case '|': binop_to_string(b, "|", node); break;
-    case OP_CAST: {
+    case 141: {
         buf_printf(b, "((%s)=>(%s) %s)",
                    ty2s(node->operand->ty),
                    ty2s(node->ty),
                    node2s(node->operand));
         break;
     }
-    case OP_LABEL_ADDR:
+    case 139:
         buf_printf(b, "&&%s", node->label);
         break;
     default: {

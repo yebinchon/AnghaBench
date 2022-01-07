@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  fpregset_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  current_regcache ; 
- int /*<<< orphan*/  i387_supply_fsave (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int fpregset_t ;
+
+
+ int current_regcache ;
+ int i387_supply_fsave (int ,int,int *) ;
 
 void
 supply_fpregset (fpregset_t *fpregsetp)

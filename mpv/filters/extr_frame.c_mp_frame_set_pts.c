@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct mp_frame {size_t type; int /*<<< orphan*/  data; } ;
-struct TYPE_2__ {int /*<<< orphan*/  (* set_pts ) (int /*<<< orphan*/ ,double) ;scalar_t__ get_pts; } ;
 
-/* Variables and functions */
- TYPE_1__* frame_handlers ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,double) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct mp_frame {size_t type; int data; } ;
+struct TYPE_2__ {int (* set_pts ) (int ,double) ;scalar_t__ get_pts; } ;
+
+
+ TYPE_1__* frame_handlers ;
+ int stub1 (int ,double) ;
 
 void mp_frame_set_pts(struct mp_frame frame, double pts)
 {

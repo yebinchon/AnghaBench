@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct target_ops {int dummy; } ;
-struct sigaction {scalar_t__ sa_flags; int /*<<< orphan*/  sa_mask; int /*<<< orphan*/  sa_handler; } ;
+struct sigaction {scalar_t__ sa_flags; int sa_mask; int sa_handler; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SIGCHLD ; 
- int /*<<< orphan*/  SIG_SETMASK ; 
- int /*<<< orphan*/  add_set_cmd (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  add_show_from_set (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  add_target (struct target_ops*) ; 
- int /*<<< orphan*/  blocked_mask ; 
- int /*<<< orphan*/  debug_lin_lwp ; 
- int /*<<< orphan*/  init_lin_lwp_ops () ; 
- struct target_ops lin_lwp_ops ; 
- int /*<<< orphan*/  no_class ; 
- int /*<<< orphan*/  normal_mask ; 
- int /*<<< orphan*/  setdebuglist ; 
- int /*<<< orphan*/  showdebuglist ; 
- int /*<<< orphan*/  sigaction (int /*<<< orphan*/ ,struct sigaction*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sigchld_handler ; 
- int /*<<< orphan*/  sigdelset (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sigemptyset (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sigprocmask (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  suspend_mask ; 
- int /*<<< orphan*/  var_zinteger ; 
+
+ int SIGCHLD ;
+ int SIG_SETMASK ;
+ int add_set_cmd (char*,int ,int ,char*,char*,int *) ;
+ int add_show_from_set (int ,int *) ;
+ int add_target (struct target_ops*) ;
+ int blocked_mask ;
+ int debug_lin_lwp ;
+ int init_lin_lwp_ops () ;
+ struct target_ops lin_lwp_ops ;
+ int no_class ;
+ int normal_mask ;
+ int setdebuglist ;
+ int showdebuglist ;
+ int sigaction (int ,struct sigaction*,int *) ;
+ int sigchld_handler ;
+ int sigdelset (int *,int ) ;
+ int sigemptyset (int *) ;
+ int sigprocmask (int ,int *,int *) ;
+ int suspend_mask ;
+ int var_zinteger ;
 
 void
 _initialize_lin_lwp (void)
@@ -46,22 +46,22 @@ _initialize_lin_lwp (void)
   add_target (&lin_lwp_ops);
   thread_db_init (&lin_lwp_ops);
 
-  /* Save the original signal mask.  */
-  sigprocmask (SIG_SETMASK, NULL, &normal_mask);
+
+  sigprocmask (SIG_SETMASK, ((void*)0), &normal_mask);
 
   action.sa_handler = sigchld_handler;
   sigemptyset (&action.sa_mask);
   action.sa_flags = 0;
-  sigaction (SIGCHLD, &action, NULL);
+  sigaction (SIGCHLD, &action, ((void*)0));
 
-  /* Make sure we don't block SIGCHLD during a sigsuspend.  */
-  sigprocmask (SIG_SETMASK, NULL, &suspend_mask);
+
+  sigprocmask (SIG_SETMASK, ((void*)0), &suspend_mask);
   sigdelset (&suspend_mask, SIGCHLD);
 
   sigemptyset (&blocked_mask);
 
   add_show_from_set (add_set_cmd ("lin-lwp", no_class, var_zinteger,
-				  (char *) &debug_lin_lwp,
-				  "Set debugging of GNU/Linux lwp module.\n\
-Enables printf debugging output.\n", &setdebuglist), &showdebuglist);
+      (char *) &debug_lin_lwp,
+      "Set debugging of GNU/Linux lwp module.\nEnables printf debugging output.\n", &setdebuglist), &showdebuglist);
+
 }

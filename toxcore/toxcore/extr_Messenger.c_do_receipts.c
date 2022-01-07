@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct Receipts {int /*<<< orphan*/  msg_id; int /*<<< orphan*/  packet_num; struct Receipts* next; } ;
-typedef  size_t int32_t ;
-struct TYPE_8__ {TYPE_1__* friendlist; int /*<<< orphan*/  read_receipt_userdata; int /*<<< orphan*/  (* read_receipt ) (TYPE_2__*,size_t,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;} ;
-struct TYPE_7__ {int /*<<< orphan*/ * receipts_end; struct Receipts* receipts_start; } ;
-typedef  TYPE_2__ Messenger ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (struct Receipts*) ; 
- scalar_t__ friend_not_valid (TYPE_2__*,size_t) ; 
- int friend_received_packet (TYPE_2__*,size_t,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 (TYPE_2__*,size_t,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct Receipts {int msg_id; int packet_num; struct Receipts* next; } ;
+typedef size_t int32_t ;
+struct TYPE_8__ {TYPE_1__* friendlist; int read_receipt_userdata; int (* read_receipt ) (TYPE_2__*,size_t,int ,int ) ;} ;
+struct TYPE_7__ {int * receipts_end; struct Receipts* receipts_start; } ;
+typedef TYPE_2__ Messenger ;
+
+
+ int free (struct Receipts*) ;
+ scalar_t__ friend_not_valid (TYPE_2__*,size_t) ;
+ int friend_received_packet (TYPE_2__*,size_t,int ) ;
+ int stub1 (TYPE_2__*,size_t,int ,int ) ;
 
 __attribute__((used)) static int do_receipts(Messenger *m, int32_t friendnumber)
 {
@@ -46,7 +46,7 @@ __attribute__((used)) static int do_receipts(Messenger *m, int32_t friendnumber)
     }
 
     if (!m->friendlist[friendnumber].receipts_start)
-        m->friendlist[friendnumber].receipts_end = NULL;
+        m->friendlist[friendnumber].receipts_end = ((void*)0);
 
     return 0;
 }

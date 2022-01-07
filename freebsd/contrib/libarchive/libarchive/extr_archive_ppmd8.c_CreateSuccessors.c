@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_23__   TYPE_3__ ;
-typedef  struct TYPE_22__   TYPE_2__ ;
-typedef  struct TYPE_21__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int UInt32 ;
+
+
+typedef struct TYPE_23__ TYPE_3__ ;
+typedef struct TYPE_22__ TYPE_2__ ;
+typedef struct TYPE_21__ TYPE_1__ ;
+
+
+typedef int UInt32 ;
 struct TYPE_23__ {scalar_t__ HiUnit; scalar_t__ LoUnit; scalar_t__* FreeList; TYPE_2__* FoundState; } ;
 struct TYPE_22__ {void* Symbol; int Freq; } ;
 struct TYPE_21__ {scalar_t__ NumStats; int SummFreq; scalar_t__ Suffix; void* Flags; } ;
-typedef  TYPE_1__* CTX_PTR ;
-typedef  scalar_t__ CPpmd_Void_Ref ;
-typedef  TYPE_2__ CPpmd_State ;
-typedef  scalar_t__ CPpmd_Byte_Ref ;
-typedef  TYPE_3__ CPpmd8 ;
-typedef  void* Byte ;
-typedef  int /*<<< orphan*/  Bool ;
+typedef TYPE_1__* CTX_PTR ;
+typedef scalar_t__ CPpmd_Void_Ref ;
+typedef TYPE_2__ CPpmd_State ;
+typedef scalar_t__ CPpmd_Byte_Ref ;
+typedef TYPE_3__ CPpmd8 ;
+typedef void* Byte ;
+typedef int Bool ;
 
-/* Variables and functions */
- scalar_t__ AllocUnitsRare (TYPE_3__*,int /*<<< orphan*/ ) ; 
- TYPE_1__* CTX (scalar_t__) ; 
- int MAX_FREQ ; 
- TYPE_2__* ONE_STATE (TYPE_1__*) ; 
- int /*<<< orphan*/  PPMD8_MAX_ORDER ; 
- scalar_t__ Ppmd8_GetPtr (TYPE_3__*,scalar_t__) ; 
- scalar_t__ REF (TYPE_1__*) ; 
- scalar_t__ RemoveNode (TYPE_3__*,int /*<<< orphan*/ ) ; 
- TYPE_2__* STATS (TYPE_1__*) ; 
- scalar_t__ SUCCESSOR (TYPE_2__*) ; 
- TYPE_1__* SUFFIX (TYPE_1__*) ; 
- int /*<<< orphan*/  SetSuccessor (TYPE_2__*,scalar_t__) ; 
- scalar_t__ UNIT_SIZE ; 
+
+ scalar_t__ AllocUnitsRare (TYPE_3__*,int ) ;
+ TYPE_1__* CTX (scalar_t__) ;
+ int MAX_FREQ ;
+ TYPE_2__* ONE_STATE (TYPE_1__*) ;
+ int PPMD8_MAX_ORDER ;
+ scalar_t__ Ppmd8_GetPtr (TYPE_3__*,scalar_t__) ;
+ scalar_t__ REF (TYPE_1__*) ;
+ scalar_t__ RemoveNode (TYPE_3__*,int ) ;
+ TYPE_2__* STATS (TYPE_1__*) ;
+ scalar_t__ SUCCESSOR (TYPE_2__*) ;
+ TYPE_1__* SUFFIX (TYPE_1__*) ;
+ int SetSuccessor (TYPE_2__*,scalar_t__) ;
+ scalar_t__ UNIT_SIZE ;
 
 __attribute__((used)) static CTX_PTR CreateSuccessors(CPpmd8 *p, Bool skip, CPpmd_State *s1, CTX_PTR c)
 {
   CPpmd_State upState;
   Byte flags;
   CPpmd_Byte_Ref upBranch = (CPpmd_Byte_Ref)SUCCESSOR(p->FoundState);
-  /* fixed over Shkarin's code. Maybe it could work without + 1 too. */
+
   CPpmd_State *ps[PPMD8_MAX_ORDER + 1];
   unsigned numPs = 0;
-  
+
   if (!skip)
     ps[numPs++] = p->FoundState;
-  
+
   while (c->Suffix)
   {
     CPpmd_Void_Ref successor;
@@ -60,7 +60,7 @@ __attribute__((used)) static CTX_PTR CreateSuccessors(CPpmd8 *p, Bool skip, CPpm
     if (s1)
     {
       s = s1;
-      s1 = NULL;
+      s1 = ((void*)0);
     }
     else if (c->NumStats != 0)
     {
@@ -86,7 +86,7 @@ __attribute__((used)) static CTX_PTR CreateSuccessors(CPpmd8 *p, Bool skip, CPpm
     }
     ps[numPs++] = s;
   }
-  
+
   upState.Symbol = *(const Byte *)Ppmd8_GetPtr(p, upBranch);
   SetSuccessor(&upState, upBranch + 1);
   flags = (Byte)(0x10 * (p->FoundState->Symbol >= 0x40) + 0x08 * (upState.Symbol >= 0x40));
@@ -105,8 +105,8 @@ __attribute__((used)) static CTX_PTR CreateSuccessors(CPpmd8 *p, Bool skip, CPpm
 
   do
   {
-    /* Create Child */
-    CTX_PTR c1; /* = AllocContext(p); */
+
+    CTX_PTR c1;
     if (p->HiUnit != p->LoUnit)
       c1 = (CTX_PTR)(p->HiUnit -= UNIT_SIZE);
     else if (p->FreeList[0] != 0)
@@ -115,7 +115,7 @@ __attribute__((used)) static CTX_PTR CreateSuccessors(CPpmd8 *p, Bool skip, CPpm
     {
       c1 = (CTX_PTR)AllocUnitsRare(p, 0);
       if (!c1)
-        return NULL;
+        return ((void*)0);
     }
     c1->NumStats = 0;
     c1->Flags = flags;
@@ -125,6 +125,6 @@ __attribute__((used)) static CTX_PTR CreateSuccessors(CPpmd8 *p, Bool skip, CPpm
     c = c1;
   }
   while (numPs != 0);
-  
+
   return c;
 }

@@ -1,20 +1,12 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ logical_input_line ; 
- int /*<<< orphan*/  physical_input_line ; 
- scalar_t__ sb_index ; 
+ scalar_t__ logical_input_line ;
+ int physical_input_line ;
+ scalar_t__ sb_index ;
 
 void
 bump_line_counters (void)
@@ -23,6 +15,6 @@ bump_line_counters (void)
     {
       ++physical_input_line;
       if (logical_input_line >= 0)
-	++logical_input_line;
+ ++logical_input_line;
     }
 }

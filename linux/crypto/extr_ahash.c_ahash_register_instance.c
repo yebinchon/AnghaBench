@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct crypto_template {int dummy; } ;
-struct ahash_instance {int /*<<< orphan*/  alg; } ;
+struct ahash_instance {int alg; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ahash_crypto_instance (struct ahash_instance*) ; 
- int ahash_prepare_alg (int /*<<< orphan*/ *) ; 
- int crypto_register_instance (struct crypto_template*,int /*<<< orphan*/ ) ; 
+
+ int ahash_crypto_instance (struct ahash_instance*) ;
+ int ahash_prepare_alg (int *) ;
+ int crypto_register_instance (struct crypto_template*,int ) ;
 
 int ahash_register_instance(struct crypto_template *tmpl,
-			    struct ahash_instance *inst)
+       struct ahash_instance *inst)
 {
-	int err;
+ int err;
 
-	err = ahash_prepare_alg(&inst->alg);
-	if (err)
-		return err;
+ err = ahash_prepare_alg(&inst->alg);
+ if (err)
+  return err;
 
-	return crypto_register_instance(tmpl, ahash_crypto_instance(inst));
+ return crypto_register_instance(tmpl, ahash_crypto_instance(inst));
 }

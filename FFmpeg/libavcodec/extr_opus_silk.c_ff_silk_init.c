@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int output_channels; int /*<<< orphan*/ * avctx; } ;
-typedef  TYPE_1__ SilkContext ;
-typedef  int /*<<< orphan*/  AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int) ; 
- TYPE_1__* av_mallocz (int) ; 
- int /*<<< orphan*/  ff_silk_flush (TYPE_1__*) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int output_channels; int * avctx; } ;
+typedef TYPE_1__ SilkContext ;
+typedef int AVCodecContext ;
+
+
+ int AVERROR (int ) ;
+ int AV_LOG_ERROR ;
+ int EINVAL ;
+ int ENOMEM ;
+ int av_log (int *,int ,char*,int) ;
+ TYPE_1__* av_mallocz (int) ;
+ int ff_silk_flush (TYPE_1__*) ;
 
 int ff_silk_init(AVCodecContext *avctx, SilkContext **ps, int output_channels)
 {
@@ -38,7 +38,7 @@ int ff_silk_init(AVCodecContext *avctx, SilkContext **ps, int output_channels)
     if (!s)
         return AVERROR(ENOMEM);
 
-    s->avctx           = avctx;
+    s->avctx = avctx;
     s->output_channels = output_channels;
 
     ff_silk_flush(s);

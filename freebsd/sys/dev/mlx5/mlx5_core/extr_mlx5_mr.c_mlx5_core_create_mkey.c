@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
+
+
+
+
+typedef int u32 ;
 struct mlx5_core_mr {int dummy; } ;
 struct mlx5_core_dev {int dummy; } ;
 
-/* Variables and functions */
- int mlx5_core_create_mkey_cb (struct mlx5_core_dev*,struct mlx5_core_mr*,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int mlx5_core_create_mkey_cb (struct mlx5_core_dev*,struct mlx5_core_mr*,int *,int,int *,int ,int *,int *) ;
 
 int mlx5_core_create_mkey(struct mlx5_core_dev *dev,
-			  struct mlx5_core_mr *mkey,
-			  u32 *in, int inlen)
+     struct mlx5_core_mr *mkey,
+     u32 *in, int inlen)
 {
-	return mlx5_core_create_mkey_cb(dev, mkey, in, inlen,
-					NULL, 0, NULL, NULL);
+ return mlx5_core_create_mkey_cb(dev, mkey, in, inlen,
+     ((void*)0), 0, ((void*)0), ((void*)0));
 }

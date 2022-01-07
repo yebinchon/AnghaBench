@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {char* psz_name; int /*<<< orphan*/  lock; scalar_t__ p_meta; } ;
-typedef  TYPE_1__ input_item_t ;
 
-/* Variables and functions */
- char* ArtCacheGetDirPath (char const*,char const*,char const*,char const*,char const*) ; 
- scalar_t__ EMPTY_STR (char const*) ; 
- int /*<<< orphan*/  vlc_meta_Album ; 
- int /*<<< orphan*/  vlc_meta_Artist ; 
- int /*<<< orphan*/  vlc_meta_ArtworkURL ; 
- int /*<<< orphan*/  vlc_meta_Date ; 
- char* vlc_meta_Get (scalar_t__,int /*<<< orphan*/ ) ; 
- scalar_t__ vlc_meta_New () ; 
- int /*<<< orphan*/  vlc_meta_Title ; 
- int /*<<< orphan*/  vlc_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_mutex_unlock (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {char* psz_name; int lock; scalar_t__ p_meta; } ;
+typedef TYPE_1__ input_item_t ;
+
+
+ char* ArtCacheGetDirPath (char const*,char const*,char const*,char const*,char const*) ;
+ scalar_t__ EMPTY_STR (char const*) ;
+ int vlc_meta_Album ;
+ int vlc_meta_Artist ;
+ int vlc_meta_ArtworkURL ;
+ int vlc_meta_Date ;
+ char* vlc_meta_Get (scalar_t__,int ) ;
+ scalar_t__ vlc_meta_New () ;
+ int vlc_meta_Title ;
+ int vlc_mutex_lock (int *) ;
+ int vlc_mutex_unlock (int *) ;
 
 __attribute__((used)) static char *ArtCachePath( input_item_t *p_item )
 {
-    char* psz_path = NULL;
+    char* psz_path = ((void*)0);
     const char *psz_artist;
     const char *psz_album;
     const char *psz_arturl;

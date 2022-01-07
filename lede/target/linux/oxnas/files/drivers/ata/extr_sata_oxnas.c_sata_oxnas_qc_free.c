@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ata_queued_cmd {int /*<<< orphan*/  ap; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPRINTK (char*) ; 
- int /*<<< orphan*/  sata_oxnas_release_hw (int /*<<< orphan*/ ) ; 
+
+
+
+struct ata_queued_cmd {int ap; } ;
+
+
+ int DPRINTK (char*) ;
+ int sata_oxnas_release_hw (int ) ;
 
 __attribute__((used)) static void sata_oxnas_qc_free(struct ata_queued_cmd *qc)
 {
-	DPRINTK("\n");
-	sata_oxnas_release_hw(qc->ap);
+ DPRINTK("\n");
+ sata_oxnas_release_hw(qc->ap);
 }

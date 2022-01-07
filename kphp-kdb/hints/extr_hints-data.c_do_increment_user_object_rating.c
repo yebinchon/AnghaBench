@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct lev_hints_increment_user_object_rating_char {int user_id; long long object_id; } ;
 struct lev_hints_increment_user_object_rating {int user_id; long long object_id; int cnt; } ;
 
-/* Variables and functions */
- scalar_t__ LEV_HINTS_INCREMENT_USER_OBJECT_RATING ; 
- scalar_t__ LEV_HINTS_INCREMENT_USER_OBJECT_RATING_CHAR ; 
- void* alloc_log_event (scalar_t__,int,int) ; 
- int /*<<< orphan*/  check_object_id (long long) ; 
- int /*<<< orphan*/  check_rating (int) ; 
- int /*<<< orphan*/  check_rating_num (int) ; 
- int /*<<< orphan*/  check_type (int) ; 
- int /*<<< orphan*/  fading ; 
- int increment_user_object_rating (struct lev_hints_increment_user_object_rating*) ; 
- int increment_user_object_rating_char (struct lev_hints_increment_user_object_rating_char*) ; 
+
+ scalar_t__ LEV_HINTS_INCREMENT_USER_OBJECT_RATING ;
+ scalar_t__ LEV_HINTS_INCREMENT_USER_OBJECT_RATING_CHAR ;
+ void* alloc_log_event (scalar_t__,int,int) ;
+ int check_object_id (long long) ;
+ int check_rating (int) ;
+ int check_rating_num (int) ;
+ int check_type (int) ;
+ int fading ;
+ int increment_user_object_rating (struct lev_hints_increment_user_object_rating*) ;
+ int increment_user_object_rating_char (struct lev_hints_increment_user_object_rating_char*) ;
 
 int do_increment_user_object_rating (int user_id, int object_type, long long object_id, int cnt, int num) {
   if (!fading) {

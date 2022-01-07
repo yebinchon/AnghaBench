@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct sysctl_oid_list {int dummy; } ;
 struct sysctl_oid {int dummy; } ;
 struct sysctl_ctx_list {int dummy; } ;
-struct TYPE_5__ {int /*<<< orphan*/  eswitched_err_free_bytes; int /*<<< orphan*/  eswitched_err_free_frames; int /*<<< orphan*/  eswitched_ucast_frames; int /*<<< orphan*/  eswitched_bcast_frames; int /*<<< orphan*/  eswitched_mcast_frames; int /*<<< orphan*/  eswitched_bytes; int /*<<< orphan*/  eswitched_frames; int /*<<< orphan*/  align_error; int /*<<< orphan*/  fcs_error; int /*<<< orphan*/  rcv_dropped; int /*<<< orphan*/  rcv_jabber; int /*<<< orphan*/  rcv_len_large; int /*<<< orphan*/  rcv_len_small; int /*<<< orphan*/  rcv_len_error; int /*<<< orphan*/  rcv_pkt_gt_1518bytes; int /*<<< orphan*/  rcv_pkt_lt_1518bytes; int /*<<< orphan*/  rcv_pkt_lt_1023bytes; int /*<<< orphan*/  rcv_pkt_lt_511bytes; int /*<<< orphan*/  rcv_pkt_lt_255bytes; int /*<<< orphan*/  rcv_pkt_lt_127bytes; int /*<<< orphan*/  rcv_pkt_lt_64bytes; int /*<<< orphan*/  rcv_cntrl_pkts; int /*<<< orphan*/  rcv_pause_frames; int /*<<< orphan*/  rcv_bcast_pkts; int /*<<< orphan*/  rcv_mcast_pkts; int /*<<< orphan*/  rcv_bytes; int /*<<< orphan*/  rcv_frames; int /*<<< orphan*/  xmt_pkt_gt_1518bytes; int /*<<< orphan*/  xmt_pkt_lt_1518bytes; int /*<<< orphan*/  xmt_pkt_lt_1023bytes; int /*<<< orphan*/  xmt_pkt_lt_511bytes; int /*<<< orphan*/  xmt_pkt_lt_255bytes; int /*<<< orphan*/  xmt_pkt_lt_127bytes; int /*<<< orphan*/  xmt_pkt_lt_64bytes; int /*<<< orphan*/  xmt_cntrl_pkts; int /*<<< orphan*/  xmt_pause_frames; int /*<<< orphan*/  xmt_bcast_pkts; int /*<<< orphan*/  xmt_mcast_pkts; int /*<<< orphan*/  xmt_bytes; int /*<<< orphan*/  xmt_frames; } ;
+struct TYPE_5__ {int eswitched_err_free_bytes; int eswitched_err_free_frames; int eswitched_ucast_frames; int eswitched_bcast_frames; int eswitched_mcast_frames; int eswitched_bytes; int eswitched_frames; int align_error; int fcs_error; int rcv_dropped; int rcv_jabber; int rcv_len_large; int rcv_len_small; int rcv_len_error; int rcv_pkt_gt_1518bytes; int rcv_pkt_lt_1518bytes; int rcv_pkt_lt_1023bytes; int rcv_pkt_lt_511bytes; int rcv_pkt_lt_255bytes; int rcv_pkt_lt_127bytes; int rcv_pkt_lt_64bytes; int rcv_cntrl_pkts; int rcv_pause_frames; int rcv_bcast_pkts; int rcv_mcast_pkts; int rcv_bytes; int rcv_frames; int xmt_pkt_gt_1518bytes; int xmt_pkt_lt_1518bytes; int xmt_pkt_lt_1023bytes; int xmt_pkt_lt_511bytes; int xmt_pkt_lt_255bytes; int xmt_pkt_lt_127bytes; int xmt_pkt_lt_64bytes; int xmt_cntrl_pkts; int xmt_pause_frames; int xmt_bcast_pkts; int xmt_mcast_pkts; int xmt_bytes; int xmt_frames; } ;
 struct TYPE_6__ {TYPE_1__ mac; } ;
-struct TYPE_7__ {TYPE_2__ hw; int /*<<< orphan*/  pci_dev; } ;
-typedef  TYPE_3__ qla_host_t ;
+struct TYPE_7__ {TYPE_2__ hw; int pci_dev; } ;
+typedef TYPE_3__ qla_host_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CTLFLAG_RD ; 
- int /*<<< orphan*/  OID_AUTO ; 
- struct sysctl_oid* SYSCTL_ADD_NODE (struct sysctl_ctx_list*,struct sysctl_oid_list*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  SYSCTL_ADD_QUAD (struct sysctl_ctx_list*,struct sysctl_oid_list*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,char*) ; 
- struct sysctl_oid_list* SYSCTL_CHILDREN (struct sysctl_oid*) ; 
- struct sysctl_ctx_list* device_get_sysctl_ctx (int /*<<< orphan*/ ) ; 
- struct sysctl_oid* device_get_sysctl_tree (int /*<<< orphan*/ ) ; 
+
+ int CTLFLAG_RD ;
+ int OID_AUTO ;
+ struct sysctl_oid* SYSCTL_ADD_NODE (struct sysctl_ctx_list*,struct sysctl_oid_list*,int ,char*,int ,int *,char*) ;
+ int SYSCTL_ADD_QUAD (struct sysctl_ctx_list*,struct sysctl_oid_list*,int ,char*,int ,int *,char*) ;
+ struct sysctl_oid_list* SYSCTL_CHILDREN (struct sysctl_oid*) ;
+ struct sysctl_ctx_list* device_get_sysctl_ctx (int ) ;
+ struct sysctl_oid* device_get_sysctl_tree (int ) ;
 
 __attribute__((used)) static void
 qlnx_add_hw_mac_stats_sysctls(qla_host_t *ha)
 {
-        struct sysctl_ctx_list  *ctx;
-        struct sysctl_oid_list  *children;
-        struct sysctl_oid       *ctx_oid;
+        struct sysctl_ctx_list *ctx;
+        struct sysctl_oid_list *children;
+        struct sysctl_oid *ctx_oid;
 
         ctx = device_get_sysctl_ctx(ha->pci_dev);
         children = SYSCTL_CHILDREN(device_get_sysctl_tree(ha->pci_dev));
 
         ctx_oid = SYSCTL_ADD_NODE(ctx, children, OID_AUTO, "stats_hw_mac",
-                        CTLFLAG_RD, NULL, "stats_hw_mac");
+                        CTLFLAG_RD, ((void*)0), "stats_hw_mac");
         children = SYSCTL_CHILDREN(ctx_oid);
 
         SYSCTL_ADD_QUAD(ctx, children,
@@ -244,5 +244,5 @@ qlnx_add_hw_mac_stats_sysctls(qla_host_t *ha)
                 CTLFLAG_RD, &ha->hw.mac.eswitched_err_free_bytes,
                 "eswitched_err_free_bytes");
 
-	return;
+ return;
 }

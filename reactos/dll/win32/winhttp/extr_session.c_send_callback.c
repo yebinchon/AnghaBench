@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int notify_mask; int /*<<< orphan*/  context; int /*<<< orphan*/  handle; int /*<<< orphan*/  (* callback ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int) ;} ;
-typedef  TYPE_1__ object_header_t ;
-typedef  int /*<<< orphan*/  LPVOID ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TRACE (char*,...) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int notify_mask; int context; int handle; int (* callback ) (int ,int ,int,int ,int) ;} ;
+typedef TYPE_1__ object_header_t ;
+typedef int LPVOID ;
+typedef int DWORD ;
+
+
+ int TRACE (char*,...) ;
+ int stub1 (int ,int ,int,int ,int) ;
 
 void send_callback( object_header_t *hdr, DWORD status, LPVOID info, DWORD buflen )
 {

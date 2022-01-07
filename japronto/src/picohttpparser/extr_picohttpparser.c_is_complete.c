@@ -1,19 +1,11 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  CHECK_EOF () ; 
- int /*<<< orphan*/  EXPECT_CHAR (char) ; 
+ int CHECK_EOF () ;
+ int EXPECT_CHAR (char) ;
 
 __attribute__((used)) static const char *is_complete(const char *buf, const char *buf_end, size_t last_len, int *ret)
 {
@@ -40,5 +32,5 @@ __attribute__((used)) static const char *is_complete(const char *buf, const char
     }
 
     *ret = -2;
-    return NULL;
+    return ((void*)0);
 }

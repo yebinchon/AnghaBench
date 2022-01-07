@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t uint8_t ;
-typedef  size_t uint32_t ;
-typedef  int uint16_t ;
-struct TYPE_3__ {scalar_t__ buffer_start; scalar_t__ buffer_end; int /*<<< orphan*/ * buffer; } ;
-typedef  TYPE_1__ Packets_Array ;
 
-/* Variables and functions */
- size_t CRYPTO_PACKET_BUFFER_SIZE ; 
- size_t PACKET_ID_REQUEST ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef size_t uint8_t ;
+typedef size_t uint32_t ;
+typedef int uint16_t ;
+struct TYPE_3__ {scalar_t__ buffer_start; scalar_t__ buffer_end; int * buffer; } ;
+typedef TYPE_1__ Packets_Array ;
+
+
+ size_t CRYPTO_PACKET_BUFFER_SIZE ;
+ size_t PACKET_ID_REQUEST ;
 
 __attribute__((used)) static int generate_request_packet(uint8_t *data, uint16_t length, const Packets_Array *recv_array)
 {

@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int IO_BUFFSIZE ; 
- size_t bytes_written ; 
- int /*<<< orphan*/  crc32_partial (void const*,size_t,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  flushout () ; 
- int /*<<< orphan*/  idx_crc32_complement ; 
- int io_buff ; 
- int /*<<< orphan*/  memcpy (int,char const*,int) ; 
- int wptr ; 
+ int IO_BUFFSIZE ;
+ size_t bytes_written ;
+ int crc32_partial (void const*,size_t,int ) ;
+ int flushout () ;
+ int idx_crc32_complement ;
+ int io_buff ;
+ int memcpy (int,char const*,int) ;
+ int wptr ;
 
 __attribute__((used)) static int writeout (const void *D, size_t len) {
   bytes_written += len;

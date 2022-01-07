@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct ylist_decoder_stack_entry {int left_value; int right_idx; int right_value; scalar_t__ left_idx; scalar_t__ num; } ;
-struct ylist_decoder {int size; int capacity; int N; int K; int left_subtree_size_threshold; scalar_t__ k; struct ylist_decoder_stack_entry* stack; scalar_t__ p; void* positions; TYPE_1__* H; int /*<<< orphan*/  br; } ;
+struct ylist_decoder {int size; int capacity; int N; int K; int left_subtree_size_threshold; scalar_t__ k; struct ylist_decoder_stack_entry* stack; scalar_t__ p; void* positions; TYPE_1__* H; int br; } ;
 struct TYPE_3__ {void* positions1; } ;
-typedef  TYPE_1__ iheap_en_t ;
+typedef TYPE_1__ iheap_en_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  bread_init (int /*<<< orphan*/ *,unsigned char const*,int) ; 
- int bsr (int) ; 
- int decoder_positions_max_capacity ; 
- int /*<<< orphan*/  ylist_decode_node (struct ylist_decoder*,struct ylist_decoder_stack_entry*) ; 
- void* zmalloc (int) ; 
+
+ int assert (int) ;
+ int bread_init (int *,unsigned char const*,int) ;
+ int bsr (int) ;
+ int decoder_positions_max_capacity ;
+ int ylist_decode_node (struct ylist_decoder*,struct ylist_decoder_stack_entry*) ;
+ void* zmalloc (int) ;
 
 struct ylist_decoder *zmalloc_ylist_decoder (iheap_en_t *H, int N, int K, const unsigned char *start_ptr, int prefix_bit_offset, int left_subtree_size_threshold) {
   assert (K >= 0);

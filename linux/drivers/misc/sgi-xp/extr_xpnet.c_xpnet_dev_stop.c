@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct net_device {int /*<<< orphan*/  name; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  XPC_NET_CHANNEL ; 
- int /*<<< orphan*/  dev_dbg (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xpc_disconnect (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xpnet ; 
+
+
+
+struct net_device {int name; } ;
+
+
+ int XPC_NET_CHANNEL ;
+ int dev_dbg (int ,char*,int ) ;
+ int xpc_disconnect (int ) ;
+ int xpnet ;
 
 __attribute__((used)) static int
 xpnet_dev_stop(struct net_device *dev)
 {
-	xpc_disconnect(XPC_NET_CHANNEL);
+ xpc_disconnect(XPC_NET_CHANNEL);
 
-	dev_dbg(xpnet, "ifconfig down of %s; XPC disconnected\n", dev->name);
+ dev_dbg(xpnet, "ifconfig down of %s; XPC disconnected\n", dev->name);
 
-	return 0;
+ return 0;
 }

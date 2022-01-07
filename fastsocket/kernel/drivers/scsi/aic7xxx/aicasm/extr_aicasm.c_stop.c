@@ -1,76 +1,68 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char* appname ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char const*,...) ; 
- int /*<<< orphan*/ * listfile ; 
- char* listfilename ; 
- int /*<<< orphan*/ * ofile ; 
- char* ofilename ; 
- int /*<<< orphan*/  patch_functions ; 
- int /*<<< orphan*/ * regfile ; 
- char* regfilename ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  symlist_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  symtable_close () ; 
- int /*<<< orphan*/  unlink (char*) ; 
- char* yyfilename ; 
- int yylineno ; 
+ char* appname ;
+ int exit (int) ;
+ int fclose (int *) ;
+ int fprintf (int ,char*,char const*,...) ;
+ int * listfile ;
+ char* listfilename ;
+ int * ofile ;
+ char* ofilename ;
+ int patch_functions ;
+ int * regfile ;
+ char* regfilename ;
+ int stderr ;
+ int symlist_free (int *) ;
+ int symtable_close () ;
+ int unlink (char*) ;
+ char* yyfilename ;
+ int yylineno ;
 
 void
 stop(const char *string, int err_code)
 {
-	if (string != NULL) {
-		fprintf(stderr, "%s: ", appname);
-		if (yyfilename != NULL) {
-			fprintf(stderr, "Stopped at file %s, line %d - ",
-				yyfilename, yylineno);
-		}
-		fprintf(stderr, "%s\n", string);
-	}
+ if (string != ((void*)0)) {
+  fprintf(stderr, "%s: ", appname);
+  if (yyfilename != ((void*)0)) {
+   fprintf(stderr, "Stopped at file %s, line %d - ",
+    yyfilename, yylineno);
+  }
+  fprintf(stderr, "%s\n", string);
+ }
 
-	if (ofile != NULL) {
-		fclose(ofile);
-		if (err_code != 0) {
-			fprintf(stderr, "%s: Removing %s due to error\n",
-				appname, ofilename);
-			unlink(ofilename);
-		}
-	}
+ if (ofile != ((void*)0)) {
+  fclose(ofile);
+  if (err_code != 0) {
+   fprintf(stderr, "%s: Removing %s due to error\n",
+    appname, ofilename);
+   unlink(ofilename);
+  }
+ }
 
-	if (regfile != NULL) {
-		fclose(regfile);
-		if (err_code != 0) {
-			fprintf(stderr, "%s: Removing %s due to error\n",
-				appname, regfilename);
-			unlink(regfilename);
-		}
-	}
+ if (regfile != ((void*)0)) {
+  fclose(regfile);
+  if (err_code != 0) {
+   fprintf(stderr, "%s: Removing %s due to error\n",
+    appname, regfilename);
+   unlink(regfilename);
+  }
+ }
 
-	if (listfile != NULL) {
-		fclose(listfile);
-		if (err_code != 0) {
-			fprintf(stderr, "%s: Removing %s due to error\n",
-				appname, listfilename);
-			unlink(listfilename);
-		}
-	}
+ if (listfile != ((void*)0)) {
+  fclose(listfile);
+  if (err_code != 0) {
+   fprintf(stderr, "%s: Removing %s due to error\n",
+    appname, listfilename);
+   unlink(listfilename);
+  }
+ }
 
-	symlist_free(&patch_functions);
-	symtable_close();
+ symlist_free(&patch_functions);
+ symtable_close();
 
-	exit(err_code);
+ exit(err_code);
 }

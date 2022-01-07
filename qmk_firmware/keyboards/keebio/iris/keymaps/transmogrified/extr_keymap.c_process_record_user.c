@@ -1,91 +1,91 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint16_t ;
-struct TYPE_4__ {int /*<<< orphan*/  pressed; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint16_t ;
+struct TYPE_4__ {int pressed; } ;
 struct TYPE_5__ {TYPE_1__ event; } ;
-typedef  TYPE_2__ keyrecord_t ;
+typedef TYPE_2__ keyrecord_t ;
 
-/* Variables and functions */
- int BACKLIGHT_LEVELS ; 
-#define  COLEMAK 136 
-#define  CONFIG 135 
- int /*<<< orphan*/  KC_LGUI ; 
-#define  LEDDOWN 134 
-#define  LEDUP 133 
-#define  LLAYER 132 
-#define  LLOCK 131 
-#define  QWERTY 130 
-#define  RLAYER 129 
-#define  RLOCK 128 
- int /*<<< orphan*/  _COLEMAK ; 
- int /*<<< orphan*/  _CONFIG ; 
- int /*<<< orphan*/  _DUAL ; 
- int /*<<< orphan*/  _LLAYER ; 
- int /*<<< orphan*/  _QWERTY ; 
- int /*<<< orphan*/  _RLAYER ; 
- int /*<<< orphan*/  backlight_decrease () ; 
- int /*<<< orphan*/  backlight_increase () ; 
- int /*<<< orphan*/  backlight_toggle () ; 
- int blSteps ; 
- int configOn ; 
- void* get_backlight_level () ; 
- int layerBLStep ; 
- int /*<<< orphan*/  layer_off (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  layer_on (int /*<<< orphan*/ ) ; 
- int llocked ; 
- void* lockedBLLevel ; 
- void* momentaryLBLLevel ; 
- void* momentaryRBLLevel ; 
- int rlocked ; 
- int /*<<< orphan*/  set_single_persistent_default_layer (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  unregister_code (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  update_tri_layer (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int BACKLIGHT_LEVELS ;
+
+
+ int KC_LGUI ;
+
+
+
+
+
+
+
+ int _COLEMAK ;
+ int _CONFIG ;
+ int _DUAL ;
+ int _LLAYER ;
+ int _QWERTY ;
+ int _RLAYER ;
+ int backlight_decrease () ;
+ int backlight_increase () ;
+ int backlight_toggle () ;
+ int blSteps ;
+ int configOn ;
+ void* get_backlight_level () ;
+ int layerBLStep ;
+ int layer_off (int ) ;
+ int layer_on (int ) ;
+ int llocked ;
+ void* lockedBLLevel ;
+ void* momentaryLBLLevel ;
+ void* momentaryRBLLevel ;
+ int rlocked ;
+ int set_single_persistent_default_layer (int ) ;
+ int unregister_code (int ) ;
+ int update_tri_layer (int ,int ,int ) ;
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
-    case QWERTY:
+    case 130:
       if (record->event.pressed) {
         set_single_persistent_default_layer(_QWERTY);
-        configOn = false;
+        configOn = 0;
         if (momentaryRBLLevel != 0 || momentaryLBLLevel != 0){
           backlight_toggle();
         }
       }
-      return false;
+      return 0;
       break;
-    case COLEMAK:
+    case 136:
       if (record->event.pressed) {
         set_single_persistent_default_layer(_COLEMAK);
-        configOn = false;
+        configOn = 0;
         if (momentaryRBLLevel != 0 || momentaryLBLLevel != 0){
           backlight_toggle();
         }
       }
-      return false;
+      return 0;
       break;
-    case CONFIG:
+    case 135:
       if (record->event.pressed) {
         set_single_persistent_default_layer(_CONFIG);
-        configOn = true;
+        configOn = 1;
         if (momentaryRBLLevel != 0 || momentaryLBLLevel != 0){
           backlight_toggle();
         }
       }
-      return false;
+      return 0;
       break;
-    case RLAYER:
+    case 129:
       if (record->event.pressed) {
         layer_on(_RLAYER);
         update_tri_layer(_RLAYER, _LLAYER, _DUAL);
@@ -99,17 +99,17 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         unregister_code(KC_LGUI);
         layer_off(_RLAYER);
         update_tri_layer(_RLAYER, _LLAYER, _DUAL);
-        if ( llocked == false && configOn == false ) {
+        if ( llocked == 0 && configOn == 0 ) {
           for (int i = 0; i < layerBLStep ; i++){
             backlight_decrease();
           }
         } else {
         }
-        rlocked = false;
+        rlocked = 0;
       }
-      return false;
+      return 0;
       break;
-    case LLAYER:
+    case 132:
       if (record->event.pressed) {
         layer_on(_LLAYER);
         update_tri_layer(_RLAYER, _LLAYER, _DUAL);
@@ -122,58 +122,58 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       } else {
         layer_off(_LLAYER);
         update_tri_layer(_RLAYER, _LLAYER, _DUAL);
-        if ( rlocked == false && configOn == false ) {
+        if ( rlocked == 0 && configOn == 0 ) {
           for (int i = 0; i < layerBLStep ; i++){
             backlight_decrease();
           }
         } else {
         }
-        llocked = false;
+        llocked = 0;
       }
-      return false;
+      return 0;
       break;
-    case RLOCK:
+    case 128:
       if (record->event.pressed) {
         layer_on(_RLAYER);
-        /* add logic to toggle backlight change when on a layer */
-        if (rlocked == false && llocked == false){
+
+        if (rlocked == 0 && llocked == 0){
           lockedBLLevel = get_backlight_level();
         }
-        rlocked = true;
+        rlocked = 1;
       } else {
       }
-      return false;
+      return 0;
       break;
-    case LLOCK:
+    case 131:
       if (record->event.pressed) {
         layer_on(_LLAYER);
-        /* add logic to toggle backlight change when on a layer */
-        if (rlocked == false && llocked == false){
+
+        if (rlocked == 0 && llocked == 0){
           lockedBLLevel = get_backlight_level();
         }
-        llocked = true;
+        llocked = 1;
       } else {
       }
-      return false;
+      return 0;
       break;
-    case LEDUP:
+    case 133:
       if (record->event.pressed) {
         for (int i = 0; i < (BACKLIGHT_LEVELS / blSteps ) ; i++ ){
           backlight_increase();
         }
       } else {
       }
-      return false;
+      return 0;
       break;
-    case LEDDOWN:
+    case 134:
       if (record->event.pressed) {
         for (int i = 0; i < (BACKLIGHT_LEVELS / blSteps ) ; i++ ){
           backlight_decrease();
         }
       } else {
       }
-      return false;
+      return 0;
       break;
   }
-  return true;
+  return 1;
 }

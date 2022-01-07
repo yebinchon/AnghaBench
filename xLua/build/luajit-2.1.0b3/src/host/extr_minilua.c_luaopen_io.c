@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- int /*<<< orphan*/  createmeta (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  createstdfile (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,char*) ; 
- int /*<<< orphan*/  io_fclose ; 
- int /*<<< orphan*/  io_noclose ; 
- int /*<<< orphan*/  io_pclose ; 
- int /*<<< orphan*/  iolib ; 
- int /*<<< orphan*/  luaL_register (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_getfield (int /*<<< orphan*/ *,int,char*) ; 
- int /*<<< orphan*/  lua_pop (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_replace (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_setfenv (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  newfenv (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  stdin ; 
- int /*<<< orphan*/  stdout ; 
+
+
+
+typedef int lua_State ;
+
+
+ int createmeta (int *) ;
+ int createstdfile (int *,int ,int,char*) ;
+ int io_fclose ;
+ int io_noclose ;
+ int io_pclose ;
+ int iolib ;
+ int luaL_register (int *,char*,int ) ;
+ int lua_getfield (int *,int,char*) ;
+ int lua_pop (int *,int) ;
+ int lua_replace (int *,int) ;
+ int lua_setfenv (int *,int) ;
+ int newfenv (int *,int ) ;
+ int stderr ;
+ int stdin ;
+ int stdout ;
 
 __attribute__((used)) static int luaopen_io(lua_State*L){
 createmeta(L);

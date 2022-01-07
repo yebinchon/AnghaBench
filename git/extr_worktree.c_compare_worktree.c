@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct worktree {int /*<<< orphan*/  path; } ;
 
-/* Variables and functions */
- int fspathcmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct worktree {int path; } ;
+
+
+ int fspathcmp (int ,int ) ;
 
 __attribute__((used)) static int compare_worktree(const void *a_, const void *b_)
 {
-	const struct worktree *const *a = a_;
-	const struct worktree *const *b = b_;
-	return fspathcmp((*a)->path, (*b)->path);
+ const struct worktree *const *a = a_;
+ const struct worktree *const *b = b_;
+ return fspathcmp((*a)->path, (*b)->path);
 }

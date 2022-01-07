@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct socket {int /*<<< orphan*/  state; int /*<<< orphan*/ * sk; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SS_FREE ; 
- int /*<<< orphan*/  __vsock_release (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+struct socket {int state; int * sk; } ;
+
+
+ int SS_FREE ;
+ int __vsock_release (int *,int ) ;
 
 __attribute__((used)) static int vsock_release(struct socket *sock)
 {
-	__vsock_release(sock->sk, 0);
-	sock->sk = NULL;
-	sock->state = SS_FREE;
+ __vsock_release(sock->sk, 0);
+ sock->sk = ((void*)0);
+ sock->state = SS_FREE;
 
-	return 0;
+ return 0;
 }

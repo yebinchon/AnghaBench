@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  union iwreq_data {int dummy; } iwreq_data ;
-struct r8192_priv {int /*<<< orphan*/  rtllib; } ;
+
+
+
+
+typedef union iwreq_data {int dummy; } iwreq_data ;
+struct r8192_priv {int rtllib; } ;
 struct net_device {int dummy; } ;
 struct iw_request_info {int dummy; } ;
 
-/* Variables and functions */
- struct r8192_priv* rtllib_priv (struct net_device*) ; 
- int rtllib_wx_get_rate (int /*<<< orphan*/ ,struct iw_request_info*,union iwreq_data*,char*) ; 
+
+ struct r8192_priv* rtllib_priv (struct net_device*) ;
+ int rtllib_wx_get_rate (int ,struct iw_request_info*,union iwreq_data*,char*) ;
 
 __attribute__((used)) static int _rtl92e_wx_get_rate(struct net_device *dev,
-			       struct iw_request_info *info,
-			       union iwreq_data *wrqu, char *extra)
+          struct iw_request_info *info,
+          union iwreq_data *wrqu, char *extra)
 {
-	struct r8192_priv *priv = rtllib_priv(dev);
+ struct r8192_priv *priv = rtllib_priv(dev);
 
-	return rtllib_wx_get_rate(priv->rtllib, info, wrqu, extra);
+ return rtllib_wx_get_rate(priv->rtllib, info, wrqu, extra);
 }

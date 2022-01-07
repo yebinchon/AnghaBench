@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct vm_area_struct {scalar_t__ vm_private_data; } ;
-struct TYPE_2__ {int /*<<< orphan*/ * map_count; } ;
+struct TYPE_2__ {int * map_count; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  atomic_dec (int /*<<< orphan*/ *) ; 
- TYPE_1__ dispc ; 
+
+ int atomic_dec (int *) ;
+ TYPE_1__ dispc ;
 
 __attribute__((used)) static void mmap_user_close(struct vm_area_struct *vma)
 {
-	int plane = (int)vma->vm_private_data;
+ int plane = (int)vma->vm_private_data;
 
-	atomic_dec(&dispc.map_count[plane]);
+ atomic_dec(&dispc.map_count[plane]);
 }

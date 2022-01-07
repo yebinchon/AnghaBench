@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/ * files; } ;
-typedef  TYPE_1__ vfs_fat_ctx_t ;
-struct stat {int st_mode; scalar_t__ st_ctime; scalar_t__ st_atime; scalar_t__ st_mtime; int /*<<< orphan*/  st_size; } ;
-typedef  int /*<<< orphan*/  FIL ;
 
-/* Variables and functions */
- int S_IFREG ; 
- int S_IRWXG ; 
- int S_IRWXO ; 
- int S_IRWXU ; 
- int /*<<< orphan*/  f_size (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int * files; } ;
+typedef TYPE_1__ vfs_fat_ctx_t ;
+struct stat {int st_mode; scalar_t__ st_ctime; scalar_t__ st_atime; scalar_t__ st_mtime; int st_size; } ;
+typedef int FIL ;
+
+
+ int S_IFREG ;
+ int S_IRWXG ;
+ int S_IRWXO ;
+ int S_IRWXU ;
+ int f_size (int *) ;
 
 __attribute__((used)) static int vfs_fat_fstat(void* ctx, int fd, struct stat * st)
 {

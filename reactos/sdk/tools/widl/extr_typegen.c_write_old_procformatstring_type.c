@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_5__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_13__ {unsigned short typestring_offset; TYPE_5__* type; int /*<<< orphan*/  attrs; } ;
-typedef  TYPE_3__ var_t ;
+
+
+typedef struct TYPE_14__ TYPE_5__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+struct TYPE_13__ {unsigned short typestring_offset; TYPE_5__* type; int attrs; } ;
+typedef TYPE_3__ var_t ;
 struct TYPE_11__ {scalar_t__ ptr_tfsoff; } ;
 struct TYPE_12__ {TYPE_1__ array; } ;
 struct TYPE_14__ {unsigned short typestring_offset; TYPE_2__ details; } ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef int FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ATTR_IN ; 
- int /*<<< orphan*/  ATTR_OUT ; 
- unsigned char FC_BIND_PRIMITIVE ; 
- unsigned char FC_IGNORE ; 
- int TRUE ; 
- scalar_t__ TYPE_BASIC ; 
- scalar_t__ TYPE_ENUM ; 
- unsigned char get_basic_fc_signed (TYPE_5__*) ; 
- unsigned char get_enum_fc (TYPE_5__*) ; 
- unsigned int get_stack_size (TYPE_3__ const*,int /*<<< orphan*/ *) ; 
- scalar_t__ is_array (TYPE_5__*) ; 
- int is_attr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- unsigned int pointer_size ; 
- int /*<<< orphan*/  print_file (int /*<<< orphan*/ *,int,char*,...) ; 
- unsigned short string_of_type (unsigned char) ; 
- scalar_t__ type_array_is_decl_as_ptr (TYPE_5__*) ; 
- scalar_t__ type_get_type (TYPE_5__*) ; 
+
+ int ATTR_IN ;
+ int ATTR_OUT ;
+ unsigned char FC_BIND_PRIMITIVE ;
+ unsigned char FC_IGNORE ;
+ int TRUE ;
+ scalar_t__ TYPE_BASIC ;
+ scalar_t__ TYPE_ENUM ;
+ unsigned char get_basic_fc_signed (TYPE_5__*) ;
+ unsigned char get_enum_fc (TYPE_5__*) ;
+ unsigned int get_stack_size (TYPE_3__ const*,int *) ;
+ scalar_t__ is_array (TYPE_5__*) ;
+ int is_attr (int ,int ) ;
+ unsigned int pointer_size ;
+ int print_file (int *,int,char*,...) ;
+ unsigned short string_of_type (unsigned char) ;
+ scalar_t__ type_array_is_decl_as_ptr (TYPE_5__*) ;
+ scalar_t__ type_get_type (TYPE_5__*) ;
 
 __attribute__((used)) static unsigned int write_old_procformatstring_type(FILE *file, int indent, const var_t *var,
                                                     int is_return, int is_interpreted)
@@ -74,7 +74,7 @@ __attribute__((used)) static unsigned int write_old_procformatstring_type(FILE *
 
         print_file(file, indent, "0x%02x,    /* %s */\n",
                    fc, string_of_type(fc));
-        size = 2; /* includes param type prefix */
+        size = 2;
     }
     else
     {
@@ -94,10 +94,10 @@ __attribute__((used)) static unsigned int write_old_procformatstring_type(FILE *
         else
             print_file(file, indent, "0x4d,    /* FC_IN_PARAM */\n");
 
-        size = get_stack_size( var, NULL );
+        size = get_stack_size( var, ((void*)0) );
         print_file(file, indent, "0x%02x,\n", size / pointer_size );
         print_file(file, indent, "NdrFcShort(0x%x),	/* type offset = %u */\n", offset, offset);
-        size = 4; /* includes param type prefix */
+        size = 4;
     }
     return size;
 }

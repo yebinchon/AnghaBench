@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wchar_t ;
-typedef  int /*<<< orphan*/  WSADATA ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ConInitStdStreams () ; 
- int /*<<< orphan*/  ConResPrintf (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ DisplayOutput () ; 
- int EXIT_FAILURE ; 
- int EXIT_SUCCESS ; 
- int /*<<< orphan*/  IDS_ERROR_WSA_START ; 
- int Interval ; 
- int /*<<< orphan*/  MAKEWORD (int,int) ; 
- int /*<<< orphan*/  ParseCmdline (int,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  Sleep (int) ; 
- int /*<<< orphan*/  StdErr ; 
- int /*<<< orphan*/  WSACleanup () ; 
- int /*<<< orphan*/  WSAGetLastError () ; 
- scalar_t__ WSAStartup (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ bLoopOutput ; 
+
+
+
+typedef int wchar_t ;
+typedef int WSADATA ;
+typedef scalar_t__ BOOL ;
+
+
+ int ConInitStdStreams () ;
+ int ConResPrintf (int ,int ,int ) ;
+ scalar_t__ DisplayOutput () ;
+ int EXIT_FAILURE ;
+ int EXIT_SUCCESS ;
+ int IDS_ERROR_WSA_START ;
+ int Interval ;
+ int MAKEWORD (int,int) ;
+ int ParseCmdline (int,int **) ;
+ int Sleep (int) ;
+ int StdErr ;
+ int WSACleanup () ;
+ int WSAGetLastError () ;
+ scalar_t__ WSAStartup (int ,int *) ;
+ scalar_t__ bLoopOutput ;
 
 int wmain(int argc, wchar_t *argv[])
 {
     BOOL Success;
     WSADATA wsaData;
 
-    /* Initialize the Console Standard Streams */
+
     ConInitStdStreams();
 
     if (!ParseCmdline(argc, argv))

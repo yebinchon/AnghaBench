@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * smudge; } ;
-typedef  int /*<<< orphan*/  FICL_WORD ;
-typedef  int /*<<< orphan*/  FICL_VM ;
-typedef  TYPE_1__ FICL_DICT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LVALUEtoCELL (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ *) ; 
- TYPE_1__* vmGetDict (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vmPush (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * smudge; } ;
+typedef int FICL_WORD ;
+typedef int FICL_VM ;
+typedef TYPE_1__ FICL_DICT ;
+
+
+ int LVALUEtoCELL (int *) ;
+ int assert (int *) ;
+ TYPE_1__* vmGetDict (int *) ;
+ int vmPush (int *,int ) ;
 
 __attribute__((used)) static void getLastWord(FICL_VM *pVM)
 {

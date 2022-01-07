@@ -1,19 +1,11 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ isalpha (char) ; 
- scalar_t__ isdigit (char) ; 
+ scalar_t__ isalpha (char) ;
+ scalar_t__ isdigit (char) ;
 
 __attribute__((used)) static char *next_valid_constant_name(char **string)
 {
@@ -23,7 +15,7 @@ __attribute__((used)) static char *next_valid_constant_name(char **string)
     while (*ret && !isalpha(*ret) && *ret != '_')
         ++ret;
     if (!*ret)
-        return NULL;
+        return ((void*)0);
 
     next = ret + 1;
     while (isalpha(*next) || isdigit(*next) || *next == '_')

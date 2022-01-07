@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int /*<<< orphan*/  ptls_cipher_context_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memcpy (int*,int*,int) ; 
- int /*<<< orphan*/  ptls_cipher_encrypt (int /*<<< orphan*/ *,int*,int const*,int) ; 
- int /*<<< orphan*/  ptls_cipher_init (int /*<<< orphan*/ *,int*) ; 
+
+
+
+typedef int uint8_t ;
+typedef int ptls_cipher_context_t ;
+
+
+ int memcpy (int*,int*,int) ;
+ int ptls_cipher_encrypt (int *,int*,int const*,int) ;
+ int ptls_cipher_init (int *,int*) ;
 
 __attribute__((used)) static void ptls_ffx_one_pass(ptls_cipher_context_t *enc_ctx, uint8_t *source, size_t source_size, uint8_t *target,
                               size_t target_size, uint8_t mask_last_byte, uint8_t *confusion, uint8_t *iv, uint8_t *tweaks,

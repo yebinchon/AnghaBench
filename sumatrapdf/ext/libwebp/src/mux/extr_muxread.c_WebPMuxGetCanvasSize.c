@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WebPMuxError ;
-typedef  int /*<<< orphan*/  WebPMux ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MuxGetCanvasInfo (int /*<<< orphan*/  const*,int*,int*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  WEBP_MUX_INVALID_ARGUMENT ; 
+
+
+
+typedef int WebPMuxError ;
+typedef int WebPMux ;
+
+
+ int MuxGetCanvasInfo (int const*,int*,int*,int *) ;
+ int WEBP_MUX_INVALID_ARGUMENT ;
 
 WebPMuxError WebPMuxGetCanvasSize(const WebPMux* mux, int* width, int* height) {
-  if (mux == NULL || width == NULL || height == NULL) {
+  if (mux == ((void*)0) || width == ((void*)0) || height == ((void*)0)) {
     return WEBP_MUX_INVALID_ARGUMENT;
   }
-  return MuxGetCanvasInfo(mux, width, height, NULL);
+  return MuxGetCanvasInfo(mux, width, height, ((void*)0));
 }

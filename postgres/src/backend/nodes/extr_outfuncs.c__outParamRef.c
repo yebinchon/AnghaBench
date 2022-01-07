@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  StringInfo ;
-typedef  int /*<<< orphan*/  ParamRef ;
 
-/* Variables and functions */
- int /*<<< orphan*/  WRITE_INT_FIELD (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WRITE_LOCATION_FIELD (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WRITE_NODE_TYPE (char*) ; 
- int /*<<< orphan*/  location ; 
- int /*<<< orphan*/  number ; 
+
+
+
+typedef int StringInfo ;
+typedef int ParamRef ;
+
+
+ int WRITE_INT_FIELD (int ) ;
+ int WRITE_LOCATION_FIELD (int ) ;
+ int WRITE_NODE_TYPE (char*) ;
+ int location ;
+ int number ;
 
 __attribute__((used)) static void
 _outParamRef(StringInfo str, const ParamRef *node)
 {
-	WRITE_NODE_TYPE("PARAMREF");
+ WRITE_NODE_TYPE("PARAMREF");
 
-	WRITE_INT_FIELD(number);
-	WRITE_LOCATION_FIELD(location);
+ WRITE_INT_FIELD(number);
+ WRITE_LOCATION_FIELD(location);
 }

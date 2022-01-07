@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char WCHAR ;
-struct TYPE_8__ {int style; int selected_item; scalar_t__ nb_items; int /*<<< orphan*/  focus_item; scalar_t__ self; int /*<<< orphan*/  owner; } ;
-typedef  int /*<<< orphan*/  LRESULT ;
-typedef  int /*<<< orphan*/  LPARAM ;
-typedef  TYPE_1__ LB_DESCR ;
-typedef  int INT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  IS_MULTISELECT (TYPE_1__*) ; 
- int /*<<< orphan*/  LBN_SELCHANGE ; 
- int LBS_NOTIFY ; 
- int LBS_WANTKEYBOARDINPUT ; 
- int LISTBOX_FindString (TYPE_1__*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LISTBOX_MoveCaret (TYPE_1__*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LISTBOX_SetSelection (TYPE_1__*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MAKEWPARAM (char,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SEND_NOTIFICATION (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int SendMessageW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  WM_CHARTOITEM ; 
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef char WCHAR ;
+struct TYPE_8__ {int style; int selected_item; scalar_t__ nb_items; int focus_item; scalar_t__ self; int owner; } ;
+typedef int LRESULT ;
+typedef int LPARAM ;
+typedef TYPE_1__ LB_DESCR ;
+typedef int INT ;
+
+
+ int FALSE ;
+ int IS_MULTISELECT (TYPE_1__*) ;
+ int LBN_SELCHANGE ;
+ int LBS_NOTIFY ;
+ int LBS_WANTKEYBOARDINPUT ;
+ int LISTBOX_FindString (TYPE_1__*,int ,char*,int ) ;
+ int LISTBOX_MoveCaret (TYPE_1__*,int,int ) ;
+ int LISTBOX_SetSelection (TYPE_1__*,int,int ,int ) ;
+ int MAKEWPARAM (char,int ) ;
+ int SEND_NOTIFICATION (TYPE_1__*,int ) ;
+ int SendMessageW (int ,int ,int ,int ) ;
+ int TRUE ;
+ int WM_CHARTOITEM ;
 
 __attribute__((used)) static LRESULT LISTBOX_HandleChar( LB_DESCR *descr, WCHAR charW )
 {

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct pci_dev {int /*<<< orphan*/  dev; } ;
-struct gpu_i2c_dev {int /*<<< orphan*/  adapter; int /*<<< orphan*/  dev; } ;
 
-/* Variables and functions */
- struct gpu_i2c_dev* dev_get_drvdata (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  i2c_del_adapter (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pci_free_irq_vectors (struct pci_dev*) ; 
- int /*<<< orphan*/  pm_runtime_get_noresume (int /*<<< orphan*/ ) ; 
+
+
+
+struct pci_dev {int dev; } ;
+struct gpu_i2c_dev {int adapter; int dev; } ;
+
+
+ struct gpu_i2c_dev* dev_get_drvdata (int *) ;
+ int i2c_del_adapter (int *) ;
+ int pci_free_irq_vectors (struct pci_dev*) ;
+ int pm_runtime_get_noresume (int ) ;
 
 __attribute__((used)) static void gpu_i2c_remove(struct pci_dev *pdev)
 {
-	struct gpu_i2c_dev *i2cd = dev_get_drvdata(&pdev->dev);
+ struct gpu_i2c_dev *i2cd = dev_get_drvdata(&pdev->dev);
 
-	pm_runtime_get_noresume(i2cd->dev);
-	i2c_del_adapter(&i2cd->adapter);
-	pci_free_irq_vectors(pdev);
+ pm_runtime_get_noresume(i2cd->dev);
+ i2c_del_adapter(&i2cd->adapter);
+ pci_free_irq_vectors(pdev);
 }

@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sc25519 ;
-typedef  unsigned char crypto_uint32 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  barrett_reduce (int /*<<< orphan*/ *,unsigned char*) ; 
+
+
+
+typedef int sc25519 ;
+typedef unsigned char crypto_uint32 ;
+
+
+ int barrett_reduce (int *,unsigned char*) ;
 
 void sc25519_from32bytes(sc25519 *r, const unsigned char x[32])
 {

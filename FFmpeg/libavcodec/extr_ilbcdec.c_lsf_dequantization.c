@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int int16_t ;
 
-/* Variables and functions */
- int LPC_FILTERORDER ; 
- int LSF_NSPLIT ; 
- int* lsf_codebook ; 
- int* lsf_dim_codebook ; 
- int* lsf_size_codebook ; 
+
+
+
+typedef int int16_t ;
+
+
+ int LPC_FILTERORDER ;
+ int LSF_NSPLIT ;
+ int* lsf_codebook ;
+ int* lsf_dim_codebook ;
+ int* lsf_size_codebook ;
 
 __attribute__((used)) static void lsf_dequantization(int16_t *lsfdeq, int16_t *index, int16_t lpc_n)
 {
@@ -28,7 +28,7 @@ __attribute__((used)) static void lsf_dequantization(int16_t *lsfdeq, int16_t *i
             lsfdeq[pos + j] = lsf_codebook[cb_pos + index[i] * lsf_dim_codebook[i] + j];
         }
 
-        pos    += lsf_dim_codebook[i];
+        pos += lsf_dim_codebook[i];
         cb_pos += lsf_size_codebook[i] * lsf_dim_codebook[i];
     }
 
@@ -41,7 +41,7 @@ __attribute__((used)) static void lsf_dequantization(int16_t *lsfdeq, int16_t *i
                     index[LSF_NSPLIT + i] * lsf_dim_codebook[i] + j];
             }
 
-            pos    += lsf_dim_codebook[i];
+            pos += lsf_dim_codebook[i];
             cb_pos += lsf_size_codebook[i] * lsf_dim_codebook[i];
         }
     }

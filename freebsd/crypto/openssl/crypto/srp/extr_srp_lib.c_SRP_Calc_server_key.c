@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  BN_CTX ;
-typedef  int /*<<< orphan*/  const BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BN_CTX_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BN_CTX_new () ; 
- int /*<<< orphan*/  BN_clear_free (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  BN_free (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  BN_mod_exp (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_mod_mul (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  const* BN_new () ; 
+
+
+
+typedef int BN_CTX ;
+typedef int const BIGNUM ;
+
+
+ int BN_CTX_free (int *) ;
+ int * BN_CTX_new () ;
+ int BN_clear_free (int const*) ;
+ int BN_free (int const*) ;
+ int BN_mod_exp (int const*,int const*,int const*,int const*,int *) ;
+ int BN_mod_mul (int const*,int const*,int const*,int const*,int *) ;
+ int const* BN_new () ;
 
 BIGNUM *SRP_Calc_server_key(const BIGNUM *A, const BIGNUM *v, const BIGNUM *u,
                             const BIGNUM *b, const BIGNUM *N)
 {
-    BIGNUM *tmp = NULL, *S = NULL;
+    BIGNUM *tmp = ((void*)0), *S = ((void*)0);
     BN_CTX *bn_ctx;
 
-    if (u == NULL || A == NULL || v == NULL || b == NULL || N == NULL)
-        return NULL;
+    if (u == ((void*)0) || A == ((void*)0) || v == ((void*)0) || b == ((void*)0) || N == ((void*)0))
+        return ((void*)0);
 
-    if ((bn_ctx = BN_CTX_new()) == NULL || (tmp = BN_new()) == NULL)
+    if ((bn_ctx = BN_CTX_new()) == ((void*)0) || (tmp = BN_new()) == ((void*)0))
         goto err;
 
-    /* S = (A*v**u) ** b */
+
 
     if (!BN_mod_exp(tmp, v, u, N, bn_ctx))
         goto err;
@@ -42,9 +42,9 @@ BIGNUM *SRP_Calc_server_key(const BIGNUM *A, const BIGNUM *v, const BIGNUM *u,
         goto err;
 
     S = BN_new();
-    if (S != NULL && !BN_mod_exp(S, tmp, b, N, bn_ctx)) {
+    if (S != ((void*)0) && !BN_mod_exp(S, tmp, b, N, bn_ctx)) {
         BN_free(S);
-        S = NULL;
+        S = ((void*)0);
     }
  err:
     BN_CTX_free(bn_ctx);

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int ulong32 ;
 
-/* Variables and functions */
- short DE1 ; 
- int* bigbyte ; 
- unsigned char const* bytebit ; 
- int /*<<< orphan*/  cookey (int*,int*) ; 
- scalar_t__* pc1 ; 
- scalar_t__* pc2 ; 
- scalar_t__* totrot ; 
+
+
+
+typedef int ulong32 ;
+
+
+ short DE1 ;
+ int* bigbyte ;
+ unsigned char const* bytebit ;
+ int cookey (int*,int*) ;
+ scalar_t__* pc1 ;
+ scalar_t__* pc2 ;
+ scalar_t__* totrot ;
 
 __attribute__((used)) static void deskey(const unsigned char *key, short edf, ulong32 *keyout)
 {
@@ -48,7 +48,7 @@ __attribute__((used)) static void deskey(const unsigned char *key, short edf, ul
                pcr[j] = pc1m[l - 28];
             }
         }
-        for (/*j = 28*/; j < 56; j++) {
+        for ( ; j < 56; j++) {
             l = j + (ulong32)totrot[i];
             if (l < 56) {
                pcr[j] = pc1m[l];
@@ -56,7 +56,7 @@ __attribute__((used)) static void deskey(const unsigned char *key, short edf, ul
                pcr[j] = pc1m[l - 28];
             }
         }
-        for (j=0; j < 24; j++)  {
+        for (j=0; j < 24; j++) {
             if ((int)pcr[(int)pc2[j]] != 0) {
                kn[m] |= bigbyte[j];
             }

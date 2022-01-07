@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {float* fogTable; } ;
 
-/* Variables and functions */
- int FOG_TABLE_SIZE ; 
- TYPE_1__ tr ; 
 
-float	R_FogFactor( float s, float t ) {
-	float	d;
+ int FOG_TABLE_SIZE ;
+ TYPE_1__ tr ;
 
-	s -= 1.0/512;
-	if ( s < 0 ) {
-		return 0;
-	}
-	if ( t < 1.0/32 ) {
-		return 0;
-	}
-	if ( t < 31.0/32 ) {
-		s *= (t - 1.0f/32.0f) / (30.0f/32.0f);
-	}
+float R_FogFactor( float s, float t ) {
+ float d;
 
-	// we need to leave a lot of clamp range
-	s *= 8;
+ s -= 1.0/512;
+ if ( s < 0 ) {
+  return 0;
+ }
+ if ( t < 1.0/32 ) {
+  return 0;
+ }
+ if ( t < 31.0/32 ) {
+  s *= (t - 1.0f/32.0f) / (30.0f/32.0f);
+ }
 
-	if ( s > 1.0 ) {
-		s = 1.0;
-	}
 
-	d = tr.fogTable[ (int)(s * (FOG_TABLE_SIZE-1)) ];
+ s *= 8;
 
-	return d;
+ if ( s > 1.0 ) {
+  s = 1.0;
+ }
+
+ d = tr.fogTable[ (int)(s * (FOG_TABLE_SIZE-1)) ];
+
+ return d;
 }

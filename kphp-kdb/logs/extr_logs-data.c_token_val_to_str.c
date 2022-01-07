@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int dtype; } ;
-typedef  TYPE_1__ token ;
+typedef TYPE_1__ token ;
 
-/* Variables and functions */
- int /*<<< orphan*/  F (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- char* token_buff ; 
- int /*<<< orphan*/  v_cstring ; 
- int /*<<< orphan*/  v_double ; 
- int /*<<< orphan*/  v_int ; 
- int /*<<< orphan*/  v_long ; 
- int /*<<< orphan*/  v_string ; 
+
+ int F (char*,int ) ;
+ int assert (int ) ;
+ char* token_buff ;
+ int v_cstring ;
+ int v_double ;
+ int v_int ;
+ int v_long ;
+ int v_string ;
 
 char *token_val_to_str (token *tok) {
   char *s = token_buff;
@@ -36,6 +36,6 @@ char *token_val_to_str (token *tok) {
     default:
       assert (0);
   }
-#undef F
+
   return token_buff;
 }

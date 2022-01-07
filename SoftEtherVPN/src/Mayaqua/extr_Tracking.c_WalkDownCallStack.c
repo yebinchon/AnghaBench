@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ UINT ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef scalar_t__ UINT ;
 struct TYPE_5__ {struct TYPE_5__* name; struct TYPE_5__* next; } ;
-typedef  TYPE_1__ CALLSTACK_DATA ;
+typedef TYPE_1__ CALLSTACK_DATA ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OSMemoryFree (TYPE_1__*) ; 
+
+ int OSMemoryFree (TYPE_1__*) ;
 
 CALLSTACK_DATA *WalkDownCallStack(CALLSTACK_DATA *s, UINT num)
 {
-	CALLSTACK_DATA *cs, *tmp;
-	UINT i;
-	// Validate arguments
-	if (s == NULL)
-	{
-		return NULL;
-	}
+ CALLSTACK_DATA *cs, *tmp;
+ UINT i;
 
-	cs = s;
-	i = 0;
+ if (s == ((void*)0))
+ {
+  return ((void*)0);
+ }
 
-	while (true)
-	{
-		if (i >= num)
-		{
-			return cs;
-		}
-		i++;
-		tmp = cs;
-		cs = tmp->next;
-		OSMemoryFree(tmp->name);
-		OSMemoryFree(tmp);
+ cs = s;
+ i = 0;
 
-		if (cs == NULL)
-		{
-			return NULL;
-		}
-	}
+ while (1)
+ {
+  if (i >= num)
+  {
+   return cs;
+  }
+  i++;
+  tmp = cs;
+  cs = tmp->next;
+  OSMemoryFree(tmp->name);
+  OSMemoryFree(tmp);
+
+  if (cs == ((void*)0))
+  {
+   return ((void*)0);
+  }
+ }
 }

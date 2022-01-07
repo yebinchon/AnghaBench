@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ time_t ;
-typedef  int /*<<< orphan*/  cch_t ;
 
-/* Variables and functions */
- scalar_t__ BAD_TIME ; 
- int /*<<< orphan*/  EINVAL ; 
- int SEC_PER_HR ; 
- int SEC_PER_MIN ; 
- int /*<<< orphan*/  errno ; 
- scalar_t__ parse_scaled_value (scalar_t__,int /*<<< orphan*/ **,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * strchr (int /*<<< orphan*/ *,char) ; 
- int strlen (int /*<<< orphan*/ *) ; 
+
+
+
+typedef scalar_t__ time_t ;
+typedef int cch_t ;
+
+
+ scalar_t__ BAD_TIME ;
+ int EINVAL ;
+ int SEC_PER_HR ;
+ int SEC_PER_MIN ;
+ int errno ;
+ scalar_t__ parse_scaled_value (scalar_t__,int **,int *,int) ;
+ int * strchr (int *,char) ;
+ int strlen (int *) ;
 
 __attribute__((used)) static time_t
 parse_hour_minute_second (cch_t * pz, cch_t * ps)
@@ -32,7 +32,7 @@ parse_hour_minute_second (cch_t * pz, cch_t * ps)
 
   pz++;
   ps = strchr (pz, ':');
-  if (ps == NULL)
+  if (ps == ((void*)0))
     {
       errno = EINVAL;
       return BAD_TIME;

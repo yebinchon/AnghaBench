@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct temp_slot {int level; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cut_slot_from_list (struct temp_slot*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  insert_slot_to_list (struct temp_slot*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  temp_slots_at_level (int) ; 
+
+ int cut_slot_from_list (struct temp_slot*,int ) ;
+ int insert_slot_to_list (struct temp_slot*,int ) ;
+ int temp_slots_at_level (int) ;
 
 __attribute__((used)) static void
 move_slot_to_level (struct temp_slot *temp, int level)

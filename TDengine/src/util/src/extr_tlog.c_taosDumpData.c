@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  fd; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fflush (int /*<<< orphan*/ ) ; 
- char* logDir ; 
- TYPE_1__* logHandle ; 
- int /*<<< orphan*/  printf (char*,char*,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  sprintf (char*,char*,unsigned char) ; 
- int /*<<< orphan*/  stdout ; 
- scalar_t__ tsAvailLogDirGB ; 
- scalar_t__ tsMinimalLogDirGB ; 
- scalar_t__ tsTotalLogDirGB ; 
- int /*<<< orphan*/  twrite (int /*<<< orphan*/ ,char*,unsigned int) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int fd; } ;
+
+
+ int fflush (int ) ;
+ char* logDir ;
+ TYPE_1__* logHandle ;
+ int printf (char*,char*,scalar_t__,scalar_t__) ;
+ int sprintf (char*,char*,unsigned char) ;
+ int stdout ;
+ scalar_t__ tsAvailLogDirGB ;
+ scalar_t__ tsMinimalLogDirGB ;
+ scalar_t__ tsTotalLogDirGB ;
+ int twrite (int ,char*,unsigned int) ;
 
 void taosDumpData(unsigned char *msg, int len) {
   if (tsTotalLogDirGB != 0 && tsAvailLogDirGB < tsMinimalLogDirGB) {
@@ -33,7 +33,7 @@ void taosDumpData(unsigned char *msg, int len) {
   }
 
   char temp[256];
-  int  i, pos = 0, c = 0;
+  int i, pos = 0, c = 0;
 
   for (i = 0; i < len; ++i) {
     sprintf(temp + pos, "%02x ", msg[i]);

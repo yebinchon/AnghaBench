@@ -1,33 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  TEST_B1_FILE_SIZE ; 
- int /*<<< orphan*/  TEST_B2_FILE_SIZE ; 
- int /*<<< orphan*/  TEST_B3_FILE_SIZE ; 
- int /*<<< orphan*/  TEST_B4_FILE_SIZE ; 
- int /*<<< orphan*/  _T (char*) ; 
- int /*<<< orphan*/  _tprintf (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dos_data ; 
- int /*<<< orphan*/  nix_data ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int test_binary_fileio (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int test_console_getchar () ; 
- int test_console_io () ; 
- int test_console_putch () ; 
- scalar_t__ test_file_truncate (int /*<<< orphan*/ ) ; 
- int test_text_fileio (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int test_unlink_files () ; 
+ int TEST_B1_FILE_SIZE ;
+ int TEST_B2_FILE_SIZE ;
+ int TEST_B3_FILE_SIZE ;
+ int TEST_B4_FILE_SIZE ;
+ int _T (char*) ;
+ int _tprintf (int ) ;
+ int dos_data ;
+ int nix_data ;
+ int printf (char*,...) ;
+ int test_binary_fileio (int ,int ,int ,int) ;
+ int test_console_getchar () ;
+ int test_console_io () ;
+ int test_console_putch () ;
+ scalar_t__ test_file_truncate (int ) ;
+ int test_text_fileio (int ,int ,int,int ) ;
+ int test_unlink_files () ;
 
 __attribute__((used)) static int test_files(int test_num, char* type)
 {

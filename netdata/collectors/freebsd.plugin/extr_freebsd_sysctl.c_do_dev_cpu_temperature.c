@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  usec_t ;
-typedef  int /*<<< orphan*/  collected_number ;
-typedef  int /*<<< orphan*/  RRDSET ;
-typedef  int /*<<< orphan*/  RRDDIM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MAX_INT_DIGITS ; 
- int /*<<< orphan*/  NETDATA_CHART_PRIO_CPU_TEMPERATURE ; 
- int /*<<< orphan*/  RRDSET_TYPE_LINE ; 
- int /*<<< orphan*/  RRD_ALGORITHM_ABSOLUTE ; 
- int /*<<< orphan*/  error (char*) ; 
- int getsysctl_simple (char*,int*,int,int*,int) ; 
- int /*<<< orphan*/  memset (int*,int /*<<< orphan*/ ,int) ; 
- int number_of_cpus ; 
- void* reallocz (int*,int) ; 
- int /*<<< orphan*/ * rrddim_add (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rrddim_set_by_pointer (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * rrdset_create_localhost (char*,char*,int /*<<< orphan*/ *,char*,char*,char*,char*,char*,char*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rrdset_done (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  rrdset_next (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sprintf (char*,char*,int) ; 
- scalar_t__ unlikely (int) ; 
+
+
+
+typedef int usec_t ;
+typedef int collected_number ;
+typedef int RRDSET ;
+typedef int RRDDIM ;
+
+
+ int MAX_INT_DIGITS ;
+ int NETDATA_CHART_PRIO_CPU_TEMPERATURE ;
+ int RRDSET_TYPE_LINE ;
+ int RRD_ALGORITHM_ABSOLUTE ;
+ int error (char*) ;
+ int getsysctl_simple (char*,int*,int,int*,int) ;
+ int memset (int*,int ,int) ;
+ int number_of_cpus ;
+ void* reallocz (int*,int) ;
+ int * rrddim_add (int *,char*,int *,int,int,int ) ;
+ int rrddim_set_by_pointer (int *,int *,int ) ;
+ int * rrdset_create_localhost (char*,char*,int *,char*,char*,char*,char*,char*,char*,int ,int,int ) ;
+ int rrdset_done (int *) ;
+ int rrdset_next (int *) ;
+ int sprintf (char*,char*,int) ;
+ scalar_t__ unlikely (int) ;
 
 int do_dev_cpu_temperature(int update_every, usec_t dt) {
     (void)dt;
 
     int i;
-    static int *mib = NULL;
-    static int *pcpu_temperature = NULL;
+    static int *mib = ((void*)0);
+    static int *pcpu_temperature = ((void*)0);
     static int old_number_of_cpus = 0;
     char char_mib[MAX_INT_DIGITS + 21];
     char char_rd[MAX_INT_DIGITS + 9];
@@ -59,7 +59,7 @@ int do_dev_cpu_temperature(int update_every, usec_t dt) {
         }
     }
 
-    // --------------------------------------------------------------------
+
 
     static RRDSET *st;
     static RRDDIM **rd_pcpu_temperature;
@@ -74,7 +74,7 @@ int do_dev_cpu_temperature(int update_every, usec_t dt) {
         st = rrdset_create_localhost(
                 "cpu",
                 "temperature",
-                NULL,
+                ((void*)0),
                 "temperature",
                 "cpu.temperatute",
                 "Core temperature",
@@ -91,7 +91,7 @@ int do_dev_cpu_temperature(int update_every, usec_t dt) {
     for (i = 0; i < number_of_cpus; i++) {
         if (unlikely(!rd_pcpu_temperature[i])) {
             sprintf(char_rd, "cpu%d.temp", i);
-            rd_pcpu_temperature[i] = rrddim_add(st, char_rd, NULL, 1, 1, RRD_ALGORITHM_ABSOLUTE);
+            rd_pcpu_temperature[i] = rrddim_add(st, char_rd, ((void*)0), 1, 1, RRD_ALGORITHM_ABSOLUTE);
         }
 
         rrddim_set_by_pointer(st, rd_pcpu_temperature[i], (collected_number) ((double)pcpu_temperature[i] / 10 - 273.15));

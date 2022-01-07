@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/ * value; } ;
-typedef  TYPE_1__ listNode ;
-typedef  int /*<<< orphan*/  listIter ;
-typedef  int /*<<< orphan*/  list ;
-typedef  int /*<<< orphan*/  clusterManagerNode ;
 
-/* Variables and functions */
- int /*<<< orphan*/  listDelNode (int /*<<< orphan*/ *,TYPE_1__*) ; 
- TYPE_1__* listNext (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  listRewind (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int * value; } ;
+typedef TYPE_1__ listNode ;
+typedef int listIter ;
+typedef int list ;
+typedef int clusterManagerNode ;
+
+
+ int listDelNode (int *,TYPE_1__*) ;
+ TYPE_1__* listNext (int *) ;
+ int listRewind (int *,int *) ;
 
 __attribute__((used)) static void clusterManagerRemoveNodeFromList(list *nodelist,
                                              clusterManagerNode *node) {
     listIter li;
     listNode *ln;
     listRewind(nodelist, &li);
-    while ((ln = listNext(&li)) != NULL) {
+    while ((ln = listNext(&li)) != ((void*)0)) {
         if (node == ln->value) {
             listDelNode(nodelist, ln);
             break;

@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UI ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR_R_MALLOC_FAILURE ; 
- char* OPENSSL_strdup (char const*) ; 
- int /*<<< orphan*/  UIT_ERROR ; 
- int /*<<< orphan*/  UI_F_UI_DUP_ERROR_STRING ; 
- int /*<<< orphan*/  UIerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int general_allocate_string (int /*<<< orphan*/ *,char*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int UI ;
+
+
+ int ERR_R_MALLOC_FAILURE ;
+ char* OPENSSL_strdup (char const*) ;
+ int UIT_ERROR ;
+ int UI_F_UI_DUP_ERROR_STRING ;
+ int UIerr (int ,int ) ;
+ int general_allocate_string (int *,char*,int,int ,int ,int *,int ,int ,int *) ;
 
 int UI_dup_error_string(UI *ui, const char *text)
 {
-    char *text_copy = NULL;
+    char *text_copy = ((void*)0);
 
-    if (text != NULL) {
+    if (text != ((void*)0)) {
         text_copy = OPENSSL_strdup(text);
-        if (text_copy == NULL) {
+        if (text_copy == ((void*)0)) {
             UIerr(UI_F_UI_DUP_ERROR_STRING, ERR_R_MALLOC_FAILURE);
             return -1;
         }
     }
-    return general_allocate_string(ui, text_copy, 1, UIT_ERROR, 0, NULL,
-                                   0, 0, NULL);
+    return general_allocate_string(ui, text_copy, 1, UIT_ERROR, 0, ((void*)0),
+                                   0, 0, ((void*)0));
 }

@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u32 ;
 struct TYPE_2__ {int size; } ;
-struct crush_bucket_straw2 {int /*<<< orphan*/ * item_weights; TYPE_1__ h; } ;
+struct crush_bucket_straw2 {int * item_weights; TYPE_1__ h; } ;
 
-/* Variables and functions */
- int EINVAL ; 
- int ENOMEM ; 
- int /*<<< orphan*/  GFP_NOFS ; 
- int /*<<< orphan*/  bad ; 
- int /*<<< orphan*/  ceph_decode_32 (void**) ; 
- int /*<<< orphan*/  ceph_decode_need (void**,void*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dout (char*,void*,void*) ; 
- int /*<<< orphan*/ * kcalloc (int,int,int /*<<< orphan*/ ) ; 
+
+ int EINVAL ;
+ int ENOMEM ;
+ int GFP_NOFS ;
+ int bad ;
+ int ceph_decode_32 (void**) ;
+ int ceph_decode_need (void**,void*,int,int ) ;
+ int dout (char*,void*,void*) ;
+ int * kcalloc (int,int,int ) ;
 
 __attribute__((used)) static int crush_decode_straw2_bucket(void **p, void *end,
-				      struct crush_bucket_straw2 *b)
+          struct crush_bucket_straw2 *b)
 {
-	int j;
-	dout("crush_decode_straw2_bucket %p to %p\n", *p, end);
-	b->item_weights = kcalloc(b->h.size, sizeof(u32), GFP_NOFS);
-	if (b->item_weights == NULL)
-		return -ENOMEM;
-	ceph_decode_need(p, end, b->h.size * sizeof(u32), bad);
-	for (j = 0; j < b->h.size; j++)
-		b->item_weights[j] = ceph_decode_32(p);
-	return 0;
+ int j;
+ dout("crush_decode_straw2_bucket %p to %p\n", *p, end);
+ b->item_weights = kcalloc(b->h.size, sizeof(u32), GFP_NOFS);
+ if (b->item_weights == ((void*)0))
+  return -ENOMEM;
+ ceph_decode_need(p, end, b->h.size * sizeof(u32), bad);
+ for (j = 0; j < b->h.size; j++)
+  b->item_weights[j] = ceph_decode_32(p);
+ return 0;
 bad:
-	return -EINVAL;
+ return -EINVAL;
 }

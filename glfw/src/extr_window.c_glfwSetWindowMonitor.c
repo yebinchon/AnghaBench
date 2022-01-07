@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int width; int height; int refreshRate; } ;
 struct TYPE_5__ {TYPE_1__ videoMode; } ;
-typedef  TYPE_2__ _GLFWwindow ;
-typedef  int /*<<< orphan*/  _GLFWmonitor ;
-typedef  int /*<<< orphan*/  GLFWwindow ;
-typedef  int /*<<< orphan*/  GLFWmonitor ;
+typedef TYPE_2__ _GLFWwindow ;
+typedef int _GLFWmonitor ;
+typedef int GLFWwindow ;
+typedef int GLFWmonitor ;
 
-/* Variables and functions */
- int GLFW_DONT_CARE ; 
- int /*<<< orphan*/  GLFW_INVALID_VALUE ; 
- int /*<<< orphan*/  _GLFW_REQUIRE_INIT () ; 
- int /*<<< orphan*/  _glfwInputError (int /*<<< orphan*/ ,char*,int,...) ; 
- int /*<<< orphan*/  _glfwPlatformSetWindowMonitor (TYPE_2__*,int /*<<< orphan*/ *,int,int,int,int,int) ; 
- int /*<<< orphan*/  assert (int) ; 
+
+ int GLFW_DONT_CARE ;
+ int GLFW_INVALID_VALUE ;
+ int _GLFW_REQUIRE_INIT () ;
+ int _glfwInputError (int ,char*,int,...) ;
+ int _glfwPlatformSetWindowMonitor (TYPE_2__*,int *,int,int,int,int,int) ;
+ int assert (int) ;
 
 void glfwSetWindowMonitor(GLFWwindow* wh,
                                   GLFWmonitor* mh,
@@ -35,7 +35,7 @@ void glfwSetWindowMonitor(GLFWwindow* wh,
 {
     _GLFWwindow* window = (_GLFWwindow*) wh;
     _GLFWmonitor* monitor = (_GLFWmonitor*) mh;
-    assert(window != NULL);
+    assert(window != ((void*)0));
     assert(width >= 0);
     assert(height >= 0);
 
@@ -57,8 +57,8 @@ void glfwSetWindowMonitor(GLFWwindow* wh,
         return;
     }
 
-    window->videoMode.width       = width;
-    window->videoMode.height      = height;
+    window->videoMode.width = width;
+    window->videoMode.height = height;
     window->videoMode.refreshRate = refreshRate;
 
     _glfwPlatformSetWindowMonitor(window, monitor,

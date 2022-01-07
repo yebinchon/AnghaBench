@@ -1,95 +1,95 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_6__ ;
-typedef  struct TYPE_12__   TYPE_5__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_13__ {int /*<<< orphan*/  host_lock; } ;
-struct TYPE_12__ {int result; int /*<<< orphan*/  (* scsi_done ) (TYPE_5__*) ;} ;
-struct TYPE_11__ {scalar_t__* state; int* free_queue; TYPE_6__* host; int /*<<< orphan*/  chrdev_request_id; int /*<<< orphan*/  flags; scalar_t__ posted_request_count; void* free_tail; void* free_head; TYPE_5__** srb; } ;
-typedef  TYPE_1__ TW_Device_Extension ;
 
-/* Variables and functions */
- int DID_RESET ; 
- int /*<<< orphan*/  TWL_CLEAR_DB_INTERRUPT (TYPE_1__*) ; 
- int /*<<< orphan*/  TWL_MASK_INTERRUPTS (TYPE_1__*) ; 
- int /*<<< orphan*/  TWL_UNMASK_INTERRUPTS (TYPE_1__*) ; 
- int /*<<< orphan*/  TW_IN_RESET ; 
- int /*<<< orphan*/  TW_IOCTL_CHRDEV_FREE ; 
- int TW_Q_LENGTH ; 
- void* TW_Q_START ; 
- scalar_t__ TW_S_COMPLETED ; 
- scalar_t__ TW_S_FINISHED ; 
- scalar_t__ TW_S_INITIAL ; 
- int /*<<< orphan*/  clear_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  scsi_block_requests (TYPE_6__*) ; 
- int /*<<< orphan*/  scsi_unblock_requests (TYPE_6__*) ; 
- int /*<<< orphan*/  set_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ ,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ ,unsigned long) ; 
- int /*<<< orphan*/  stub1 (TYPE_5__*) ; 
- scalar_t__ twl_reset_sequence (TYPE_1__*,int) ; 
- int /*<<< orphan*/  twl_unmap_scsi_data (TYPE_1__*,int) ; 
+
+typedef struct TYPE_13__ TYPE_6__ ;
+typedef struct TYPE_12__ TYPE_5__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+struct TYPE_13__ {int host_lock; } ;
+struct TYPE_12__ {int result; int (* scsi_done ) (TYPE_5__*) ;} ;
+struct TYPE_11__ {scalar_t__* state; int* free_queue; TYPE_6__* host; int chrdev_request_id; int flags; scalar_t__ posted_request_count; void* free_tail; void* free_head; TYPE_5__** srb; } ;
+typedef TYPE_1__ TW_Device_Extension ;
+
+
+ int DID_RESET ;
+ int TWL_CLEAR_DB_INTERRUPT (TYPE_1__*) ;
+ int TWL_MASK_INTERRUPTS (TYPE_1__*) ;
+ int TWL_UNMASK_INTERRUPTS (TYPE_1__*) ;
+ int TW_IN_RESET ;
+ int TW_IOCTL_CHRDEV_FREE ;
+ int TW_Q_LENGTH ;
+ void* TW_Q_START ;
+ scalar_t__ TW_S_COMPLETED ;
+ scalar_t__ TW_S_FINISHED ;
+ scalar_t__ TW_S_INITIAL ;
+ int clear_bit (int ,int *) ;
+ int scsi_block_requests (TYPE_6__*) ;
+ int scsi_unblock_requests (TYPE_6__*) ;
+ int set_bit (int ,int *) ;
+ int spin_lock_irqsave (int ,unsigned long) ;
+ int spin_unlock_irqrestore (int ,unsigned long) ;
+ int stub1 (TYPE_5__*) ;
+ scalar_t__ twl_reset_sequence (TYPE_1__*,int) ;
+ int twl_unmap_scsi_data (TYPE_1__*,int) ;
 
 __attribute__((used)) static int twl_reset_device_extension(TW_Device_Extension *tw_dev, int ioctl_reset)
 {
-	int i = 0, retval = 1;
-	unsigned long flags = 0;
+ int i = 0, retval = 1;
+ unsigned long flags = 0;
 
-	/* Block SCSI requests while we are resetting */
-	if (ioctl_reset)
-		scsi_block_requests(tw_dev->host);
 
-	set_bit(TW_IN_RESET, &tw_dev->flags);
-	TWL_MASK_INTERRUPTS(tw_dev);
-	TWL_CLEAR_DB_INTERRUPT(tw_dev);
+ if (ioctl_reset)
+  scsi_block_requests(tw_dev->host);
 
-	spin_lock_irqsave(tw_dev->host->host_lock, flags);
+ set_bit(TW_IN_RESET, &tw_dev->flags);
+ TWL_MASK_INTERRUPTS(tw_dev);
+ TWL_CLEAR_DB_INTERRUPT(tw_dev);
 
-	/* Abort all requests that are in progress */
-	for (i = 0; i < TW_Q_LENGTH; i++) {
-		if ((tw_dev->state[i] != TW_S_FINISHED) &&
-		    (tw_dev->state[i] != TW_S_INITIAL) &&
-		    (tw_dev->state[i] != TW_S_COMPLETED)) {
-			if (tw_dev->srb[i]) {
-				tw_dev->srb[i]->result = (DID_RESET << 16);
-				tw_dev->srb[i]->scsi_done(tw_dev->srb[i]);
-				twl_unmap_scsi_data(tw_dev, i);
-			}
-		}
-	}
+ spin_lock_irqsave(tw_dev->host->host_lock, flags);
 
-	/* Reset queues and counts */
-	for (i = 0; i < TW_Q_LENGTH; i++) {
-		tw_dev->free_queue[i] = i;
-		tw_dev->state[i] = TW_S_INITIAL;
-	}
-	tw_dev->free_head = TW_Q_START;
-	tw_dev->free_tail = TW_Q_START;
-	tw_dev->posted_request_count = 0;
 
-	spin_unlock_irqrestore(tw_dev->host->host_lock, flags);
+ for (i = 0; i < TW_Q_LENGTH; i++) {
+  if ((tw_dev->state[i] != TW_S_FINISHED) &&
+      (tw_dev->state[i] != TW_S_INITIAL) &&
+      (tw_dev->state[i] != TW_S_COMPLETED)) {
+   if (tw_dev->srb[i]) {
+    tw_dev->srb[i]->result = (DID_RESET << 16);
+    tw_dev->srb[i]->scsi_done(tw_dev->srb[i]);
+    twl_unmap_scsi_data(tw_dev, i);
+   }
+  }
+ }
 
-	if (twl_reset_sequence(tw_dev, 1))
-		goto out;
 
-	TWL_UNMASK_INTERRUPTS(tw_dev);
+ for (i = 0; i < TW_Q_LENGTH; i++) {
+  tw_dev->free_queue[i] = i;
+  tw_dev->state[i] = TW_S_INITIAL;
+ }
+ tw_dev->free_head = TW_Q_START;
+ tw_dev->free_tail = TW_Q_START;
+ tw_dev->posted_request_count = 0;
 
-	clear_bit(TW_IN_RESET, &tw_dev->flags);
-	tw_dev->chrdev_request_id = TW_IOCTL_CHRDEV_FREE;
+ spin_unlock_irqrestore(tw_dev->host->host_lock, flags);
 
-	retval = 0;
+ if (twl_reset_sequence(tw_dev, 1))
+  goto out;
+
+ TWL_UNMASK_INTERRUPTS(tw_dev);
+
+ clear_bit(TW_IN_RESET, &tw_dev->flags);
+ tw_dev->chrdev_request_id = TW_IOCTL_CHRDEV_FREE;
+
+ retval = 0;
 out:
-	if (ioctl_reset)
-		scsi_unblock_requests(tw_dev->host);
-	return retval;
+ if (ioctl_reset)
+  scsi_unblock_requests(tw_dev->host);
+ return retval;
 }

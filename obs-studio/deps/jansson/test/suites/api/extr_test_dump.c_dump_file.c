@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  json_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fail (char*) ; 
- int /*<<< orphan*/  json_decref (int /*<<< orphan*/ *) ; 
- int json_dump_file (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * json_object () ; 
- int /*<<< orphan*/  remove (char*) ; 
+
+
+
+typedef int json_t ;
+
+
+ int fail (char*) ;
+ int json_decref (int *) ;
+ int json_dump_file (int *,char*,int ) ;
+ int * json_object () ;
+ int remove (char*) ;
 
 __attribute__((used)) static void dump_file()
 {
     json_t *json;
     int result;
 
-    result = json_dump_file(NULL, "", 0);
+    result = json_dump_file(((void*)0), "", 0);
     if (result != -1)
         fail("json_dump_file succeeded with invalid args");
 

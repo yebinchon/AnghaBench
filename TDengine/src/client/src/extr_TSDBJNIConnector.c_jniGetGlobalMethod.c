@@ -1,82 +1,82 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_32__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  jclass ;
-struct TYPE_32__ {int /*<<< orphan*/  (* DeleteLocalRef ) (TYPE_1__**,int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* GetMethodID ) (TYPE_1__**,int /*<<< orphan*/ ,char*,char*) ;int /*<<< orphan*/  (* NewGlobalRef ) (TYPE_1__**,int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* FindClass ) (TYPE_1__**,char*) ;int /*<<< orphan*/  (* GetFieldID ) (TYPE_1__**,int /*<<< orphan*/ ,char*,char*) ;int /*<<< orphan*/  (* GetJavaVM ) (TYPE_1__**,int /*<<< orphan*/ **) ;} ;
-typedef  TYPE_1__* JNIEnv ;
 
-/* Variables and functions */
- int /*<<< orphan*/  __init ; 
- int atomic_load_32 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  atomic_store_32 (int /*<<< orphan*/ *,int) ; 
- int atomic_val_compare_exchange_32 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  g_arrayListAddFp ; 
- int /*<<< orphan*/  g_arrayListClass ; 
- int /*<<< orphan*/  g_arrayListConstructFp ; 
- int /*<<< orphan*/  g_metadataClass ; 
- int /*<<< orphan*/  g_metadataColindexField ; 
- int /*<<< orphan*/  g_metadataColnameField ; 
- int /*<<< orphan*/  g_metadataColsizeField ; 
- int /*<<< orphan*/  g_metadataColtypeField ; 
- int /*<<< orphan*/  g_metadataConstructFp ; 
- int /*<<< orphan*/  g_rowdataClass ; 
- int /*<<< orphan*/  g_rowdataClearFp ; 
- int /*<<< orphan*/  g_rowdataConstructor ; 
- int /*<<< orphan*/  g_rowdataSetBooleanFp ; 
- int /*<<< orphan*/  g_rowdataSetByteArrayFp ; 
- int /*<<< orphan*/  g_rowdataSetByteFp ; 
- int /*<<< orphan*/  g_rowdataSetDoubleFp ; 
- int /*<<< orphan*/  g_rowdataSetFloatFp ; 
- int /*<<< orphan*/  g_rowdataSetIntFp ; 
- int /*<<< orphan*/  g_rowdataSetLongFp ; 
- int /*<<< orphan*/  g_rowdataSetShortFp ; 
- int /*<<< orphan*/  g_rowdataSetStringFp ; 
- int /*<<< orphan*/  g_rowdataSetTimestampFp ; 
- int /*<<< orphan*/ * g_vm ; 
- int /*<<< orphan*/  jniTrace (char*) ; 
- int /*<<< orphan*/  stub1 (TYPE_1__**,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  stub10 (TYPE_1__**,int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  stub11 (TYPE_1__**,int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  stub12 (TYPE_1__**,int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  stub13 (TYPE_1__**,int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  stub14 (TYPE_1__**,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub15 (TYPE_1__**,char*) ; 
- int /*<<< orphan*/  stub16 (TYPE_1__**,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub17 (TYPE_1__**,int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  stub18 (TYPE_1__**,int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  stub19 (TYPE_1__**,int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  stub2 (TYPE_1__**,char*) ; 
- int /*<<< orphan*/  stub20 (TYPE_1__**,int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  stub21 (TYPE_1__**,int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  stub22 (TYPE_1__**,int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  stub23 (TYPE_1__**,int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  stub24 (TYPE_1__**,int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  stub25 (TYPE_1__**,int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  stub26 (TYPE_1__**,int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  stub27 (TYPE_1__**,int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  stub28 (TYPE_1__**,int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  stub29 (TYPE_1__**,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub3 (TYPE_1__**,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub4 (TYPE_1__**,int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  stub5 (TYPE_1__**,int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  stub6 (TYPE_1__**,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub7 (TYPE_1__**,char*) ; 
- int /*<<< orphan*/  stub8 (TYPE_1__**,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub9 (TYPE_1__**,int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  taosMsleep (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_32__ TYPE_1__ ;
+
+
+typedef int jclass ;
+struct TYPE_32__ {int (* DeleteLocalRef ) (TYPE_1__**,int ) ;int (* GetMethodID ) (TYPE_1__**,int ,char*,char*) ;int (* NewGlobalRef ) (TYPE_1__**,int ) ;int (* FindClass ) (TYPE_1__**,char*) ;int (* GetFieldID ) (TYPE_1__**,int ,char*,char*) ;int (* GetJavaVM ) (TYPE_1__**,int **) ;} ;
+typedef TYPE_1__* JNIEnv ;
+
+
+ int __init ;
+ int atomic_load_32 (int *) ;
+ int atomic_store_32 (int *,int) ;
+ int atomic_val_compare_exchange_32 (int *,int ,int) ;
+ int g_arrayListAddFp ;
+ int g_arrayListClass ;
+ int g_arrayListConstructFp ;
+ int g_metadataClass ;
+ int g_metadataColindexField ;
+ int g_metadataColnameField ;
+ int g_metadataColsizeField ;
+ int g_metadataColtypeField ;
+ int g_metadataConstructFp ;
+ int g_rowdataClass ;
+ int g_rowdataClearFp ;
+ int g_rowdataConstructor ;
+ int g_rowdataSetBooleanFp ;
+ int g_rowdataSetByteArrayFp ;
+ int g_rowdataSetByteFp ;
+ int g_rowdataSetDoubleFp ;
+ int g_rowdataSetFloatFp ;
+ int g_rowdataSetIntFp ;
+ int g_rowdataSetLongFp ;
+ int g_rowdataSetShortFp ;
+ int g_rowdataSetStringFp ;
+ int g_rowdataSetTimestampFp ;
+ int * g_vm ;
+ int jniTrace (char*) ;
+ int stub1 (TYPE_1__**,int **) ;
+ int stub10 (TYPE_1__**,int ,char*,char*) ;
+ int stub11 (TYPE_1__**,int ,char*,char*) ;
+ int stub12 (TYPE_1__**,int ,char*,char*) ;
+ int stub13 (TYPE_1__**,int ,char*,char*) ;
+ int stub14 (TYPE_1__**,int ) ;
+ int stub15 (TYPE_1__**,char*) ;
+ int stub16 (TYPE_1__**,int ) ;
+ int stub17 (TYPE_1__**,int ,char*,char*) ;
+ int stub18 (TYPE_1__**,int ,char*,char*) ;
+ int stub19 (TYPE_1__**,int ,char*,char*) ;
+ int stub2 (TYPE_1__**,char*) ;
+ int stub20 (TYPE_1__**,int ,char*,char*) ;
+ int stub21 (TYPE_1__**,int ,char*,char*) ;
+ int stub22 (TYPE_1__**,int ,char*,char*) ;
+ int stub23 (TYPE_1__**,int ,char*,char*) ;
+ int stub24 (TYPE_1__**,int ,char*,char*) ;
+ int stub25 (TYPE_1__**,int ,char*,char*) ;
+ int stub26 (TYPE_1__**,int ,char*,char*) ;
+ int stub27 (TYPE_1__**,int ,char*,char*) ;
+ int stub28 (TYPE_1__**,int ,char*,char*) ;
+ int stub29 (TYPE_1__**,int ) ;
+ int stub3 (TYPE_1__**,int ) ;
+ int stub4 (TYPE_1__**,int ,char*,char*) ;
+ int stub5 (TYPE_1__**,int ,char*,char*) ;
+ int stub6 (TYPE_1__**,int ) ;
+ int stub7 (TYPE_1__**,char*) ;
+ int stub8 (TYPE_1__**,int ) ;
+ int stub9 (TYPE_1__**,int ,char*,char*) ;
+ int taosMsleep (int ) ;
 
 void jniGetGlobalMethod(JNIEnv *env) {
-  // make sure init function executed once
+
   switch (atomic_val_compare_exchange_32(&__init, 0, 1)) {
     case 0:
       break;
@@ -88,7 +88,7 @@ void jniGetGlobalMethod(JNIEnv *env) {
       return;
   }
 
-  if (g_vm == NULL) {
+  if (g_vm == ((void*)0)) {
     (*env)->GetJavaVM(env, &g_vm);
   }
 

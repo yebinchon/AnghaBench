@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct wdm_device {int /*<<< orphan*/  plock; } ;
+
+
+
+
+struct wdm_device {int plock; } ;
 struct usb_interface {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- struct wdm_device* usb_get_intfdata (struct usb_interface*) ; 
+
+ int mutex_lock (int *) ;
+ struct wdm_device* usb_get_intfdata (struct usb_interface*) ;
 
 __attribute__((used)) static int wdm_pre_reset(struct usb_interface *intf)
 {
-	struct wdm_device *desc = usb_get_intfdata(intf);
+ struct wdm_device *desc = usb_get_intfdata(intf);
 
-	mutex_lock(&desc->plock);
-	return 0;
+ mutex_lock(&desc->plock);
+ return 0;
 }

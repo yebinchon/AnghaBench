@@ -1,77 +1,77 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_51__   TYPE_4__ ;
-typedef  struct TYPE_50__   TYPE_3__ ;
-typedef  struct TYPE_49__   TYPE_2__ ;
-typedef  struct TYPE_48__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  of ;
-struct TYPE_48__ {int /*<<< orphan*/ * context; int /*<<< orphan*/  source; } ;
-typedef  TYPE_1__ gdSource ;
-struct TYPE_49__ {int /*<<< orphan*/ * context; int /*<<< orphan*/  sink; } ;
-typedef  TYPE_2__ gdSink ;
-typedef  TYPE_3__* gdImagePtr ;
-typedef  TYPE_4__* gdIOCtxPtr ;
-struct TYPE_51__ {int /*<<< orphan*/  (* gd_free ) (TYPE_4__*) ;} ;
+
+
+typedef struct TYPE_51__ TYPE_4__ ;
+typedef struct TYPE_50__ TYPE_3__ ;
+typedef struct TYPE_49__ TYPE_2__ ;
+typedef struct TYPE_48__ TYPE_1__ ;
+
+
+typedef int of ;
+struct TYPE_48__ {int * context; int source; } ;
+typedef TYPE_1__ gdSource ;
+struct TYPE_49__ {int * context; int sink; } ;
+typedef TYPE_2__ gdSink ;
+typedef TYPE_3__* gdImagePtr ;
+typedef TYPE_4__* gdIOCtxPtr ;
+struct TYPE_51__ {int (* gd_free ) (TYPE_4__*) ;} ;
 struct TYPE_50__ {int colorsTotal; } ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef int FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CompareImages (char*,TYPE_3__*,TYPE_3__*) ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  freadWrapper ; 
- int /*<<< orphan*/  fwriteWrapper ; 
- int /*<<< orphan*/  gdImageBlue (TYPE_3__*,int) ; 
- int gdImageColorAllocate (TYPE_3__*,int,int /*<<< orphan*/ ,int) ; 
- int gdImageColorClosest (TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int gdImageColorsTotal (TYPE_3__*) ; 
- int /*<<< orphan*/  gdImageCopyMerge (TYPE_3__*,TYPE_3__*,int,int,int,int,int,int,int) ; 
- int /*<<< orphan*/  gdImageCopyMergeGray (TYPE_3__*,TYPE_3__*,int,int,int,int,int,int,int) ; 
- TYPE_3__* gdImageCreate (int,int) ; 
- TYPE_3__* gdImageCreateFromGd (int /*<<< orphan*/ *) ; 
- TYPE_3__* gdImageCreateFromGd2 (int /*<<< orphan*/ *) ; 
- TYPE_3__* gdImageCreateFromGd2Ctx (TYPE_4__*) ; 
- TYPE_3__* gdImageCreateFromGd2Part (int /*<<< orphan*/ *,int,int,int,int) ; 
- TYPE_3__* gdImageCreateFromGdCtx (TYPE_4__*) ; 
- TYPE_3__* gdImageCreateFromJpeg (int /*<<< orphan*/ *) ; 
- TYPE_3__* gdImageCreateFromPng (int /*<<< orphan*/ *) ; 
- TYPE_3__* gdImageCreateFromPngCtx (TYPE_4__*) ; 
- TYPE_3__* gdImageCreateFromPngSource (TYPE_1__*) ; 
- TYPE_3__* gdImageCreateFromWBMP (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  gdImageDestroy (TYPE_3__*) ; 
- int /*<<< orphan*/  gdImageFilledRectangle (TYPE_3__*,int,int,int,int,int) ; 
- int /*<<< orphan*/  gdImageGd (TYPE_3__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  gdImageGd2 (TYPE_3__*,int /*<<< orphan*/ *,int,int) ; 
- void* gdImageGd2Ptr (TYPE_3__*,int,int,int*) ; 
- void* gdImageGdPtr (TYPE_3__*,int*) ; 
- int gdImageGreen (TYPE_3__*,int) ; 
- int /*<<< orphan*/  gdImageJpeg (TYPE_3__*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  gdImagePng (TYPE_3__*,int /*<<< orphan*/ *) ; 
- void* gdImagePngPtr (TYPE_3__*,int*) ; 
- int /*<<< orphan*/  gdImagePngToSink (TYPE_3__*,TYPE_2__*) ; 
- int gdImageRed (TYPE_3__*,int) ; 
- int /*<<< orphan*/  gdImageWBMP (TYPE_3__*,int,int /*<<< orphan*/ *) ; 
- TYPE_4__* gdNewDynamicCtx (int,void*) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  rewind (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,char*) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  stub1 (TYPE_4__*) ; 
- int /*<<< orphan*/  stub2 (TYPE_4__*) ; 
- int /*<<< orphan*/  stub3 (TYPE_4__*) ; 
- int /*<<< orphan*/  unlink (char*) ; 
+
+ int CompareImages (char*,TYPE_3__*,TYPE_3__*) ;
+ int exit (int) ;
+ int fclose (int *) ;
+ int * fopen (char*,char*) ;
+ int fprintf (int ,char*,...) ;
+ int freadWrapper ;
+ int fwriteWrapper ;
+ int gdImageBlue (TYPE_3__*,int) ;
+ int gdImageColorAllocate (TYPE_3__*,int,int ,int) ;
+ int gdImageColorClosest (TYPE_3__*,int ,int ,int ) ;
+ int gdImageColorsTotal (TYPE_3__*) ;
+ int gdImageCopyMerge (TYPE_3__*,TYPE_3__*,int,int,int,int,int,int,int) ;
+ int gdImageCopyMergeGray (TYPE_3__*,TYPE_3__*,int,int,int,int,int,int,int) ;
+ TYPE_3__* gdImageCreate (int,int) ;
+ TYPE_3__* gdImageCreateFromGd (int *) ;
+ TYPE_3__* gdImageCreateFromGd2 (int *) ;
+ TYPE_3__* gdImageCreateFromGd2Ctx (TYPE_4__*) ;
+ TYPE_3__* gdImageCreateFromGd2Part (int *,int,int,int,int) ;
+ TYPE_3__* gdImageCreateFromGdCtx (TYPE_4__*) ;
+ TYPE_3__* gdImageCreateFromJpeg (int *) ;
+ TYPE_3__* gdImageCreateFromPng (int *) ;
+ TYPE_3__* gdImageCreateFromPngCtx (TYPE_4__*) ;
+ TYPE_3__* gdImageCreateFromPngSource (TYPE_1__*) ;
+ TYPE_3__* gdImageCreateFromWBMP (int *) ;
+ int gdImageDestroy (TYPE_3__*) ;
+ int gdImageFilledRectangle (TYPE_3__*,int,int,int,int,int) ;
+ int gdImageGd (TYPE_3__*,int *) ;
+ int gdImageGd2 (TYPE_3__*,int *,int,int) ;
+ void* gdImageGd2Ptr (TYPE_3__*,int,int,int*) ;
+ void* gdImageGdPtr (TYPE_3__*,int*) ;
+ int gdImageGreen (TYPE_3__*,int) ;
+ int gdImageJpeg (TYPE_3__*,int *,int) ;
+ int gdImagePng (TYPE_3__*,int *) ;
+ void* gdImagePngPtr (TYPE_3__*,int*) ;
+ int gdImagePngToSink (TYPE_3__*,TYPE_2__*) ;
+ int gdImageRed (TYPE_3__*,int) ;
+ int gdImageWBMP (TYPE_3__*,int,int *) ;
+ TYPE_4__* gdNewDynamicCtx (int,void*) ;
+ int printf (char*,...) ;
+ int rewind (int *) ;
+ int snprintf (char*,int,char*,char*) ;
+ int stderr ;
+ int stub1 (TYPE_4__*) ;
+ int stub2 (TYPE_4__*) ;
+ int stub3 (TYPE_4__*) ;
+ int unlink (char*) ;
 
 int
 main (int argc, char **argv)
@@ -110,9 +110,9 @@ main (int argc, char **argv)
   CompareImages ("Initial Versions", ref, im);
 
 
-  /* */
-  /* Send to PNG File then Ptr */
-  /* */
+
+
+
   snprintf (of, sizeof(of), "%s.png", argv[1]);
   out = fopen (of, "wb");
   gdImagePng (im, out);
@@ -142,9 +142,9 @@ main (int argc, char **argv)
   ctx->gd_free (ctx);
 
 
-  /* */
-  /* Send to GD2 File then Ptr */
-  /* */
+
+
+
   snprintf (of, sizeof(of), "%s.gd2", argv[1]);
   out = fopen (of, "wb");
   gdImageGd2 (im, out, 128, 2);
@@ -165,11 +165,11 @@ main (int argc, char **argv)
   gdImageDestroy (im2);
 
   iptr = gdImageGd2Ptr (im, 128, 2, &sz);
-  /*printf("Got ptr %d (size %d)\n",iptr, sz); */
+
   ctx = gdNewDynamicCtx (sz, iptr);
-  /*printf("Got ctx %d\n",ctx); */
+
   im2 = gdImageCreateFromGd2Ctx (ctx);
-  /*printf("Got img2 %d\n",im2); */
+
 
   CompareImages ("GD->GD2 ptr->GD", ref, im2);
 
@@ -177,9 +177,9 @@ main (int argc, char **argv)
   ctx->gd_free (ctx);
 
 
-  /* */
-  /* Send to GD File then Ptr */
-  /* */
+
+
+
   snprintf (of, sizeof(of), "%s.gd", argv[1]);
   out = fopen (of, "wb");
   gdImageGd (im, out);
@@ -200,20 +200,20 @@ main (int argc, char **argv)
   gdImageDestroy (im2);
 
   iptr = gdImageGdPtr (im, &sz);
-  /*printf("Got ptr %d (size %d)\n",iptr, sz); */
+
   ctx = gdNewDynamicCtx (sz, iptr);
-  /*printf("Got ctx %d\n",ctx); */
+
   im2 = gdImageCreateFromGdCtx (ctx);
-  /*printf("Got img2 %d\n",im2); */
+
 
   CompareImages ("GD->GD ptr->GD", ref, im2);
 
   gdImageDestroy (im2);
   ctx->gd_free (ctx);
 
-  /*
-     ** Test gdImageCreateFromPngSource'
-     * */
+
+
+
 
   in = fopen (argv[1], "rb");
 
@@ -222,7 +222,7 @@ main (int argc, char **argv)
   im2 = gdImageCreateFromPngSource (&imgsrc);
   fclose (in);
 
-  if (im2 == NULL)
+  if (im2 == ((void*)0))
     {
       printf ("GD Source: ERROR Null returned by gdImageCreateFromPngSource\n");
     }
@@ -233,9 +233,9 @@ main (int argc, char **argv)
     };
 
 
-  /*
-     ** Test gdImagePngToSink'
-     * */
+
+
+
 
   snprintf (of, sizeof(of), "%s.snk", argv[1]);
   out = fopen (of, "wb");
@@ -259,9 +259,9 @@ main (int argc, char **argv)
 
   unlink (of);
 
-  /* */
-  /*  Test Extraction */
-  /* */
+
+
+
   in = fopen ("test/gdtest_200_300_150_100.png", "rb");
   if (!in)
     {
@@ -286,9 +286,9 @@ main (int argc, char **argv)
   gdImageDestroy (im2);
   gdImageDestroy (im3);
 
-  /* */
-  /*  Copy Blend */
-  /* */
+
+
+
   in = fopen ("test/gdtest.png", "rb");
   if (!in)
     {
@@ -326,38 +326,8 @@ main (int argc, char **argv)
 
   gdImageDestroy (im2);
   gdImageDestroy (im3);
-
-#ifdef HAVE_JPEG
-  out = fopen ("test/gdtest.jpg", "wb");
-  if (!out)
-    {
-      fprintf (stderr, "Can't create file test/gdtest.jpg.\n");
-      exit (1);
-    }
-  gdImageJpeg (im, out, -1);
-  fclose (out);
-  in = fopen ("test/gdtest.jpg", "rb");
-  if (!in)
-    {
-      fprintf (stderr, "Can't open file test/gdtest.jpg.\n");
-      exit (1);
-    }
-  im2 = gdImageCreateFromJpeg (in);
-  fclose (in);
-  if (!im2)
-    {
-      fprintf (stderr, "gdImageCreateFromJpeg failed.\n");
-      exit (1);
-    }
-  gdImageDestroy (im2);
-  printf ("Created test/gdtest.jpg successfully. Compare this image\n"
-	  "to the input image manually. Some difference must be\n"
-	  "expected as JPEG is a lossy file format.\n");
-#endif /* HAVE_JPEG */
-  /* Assume the color closest to black is the foreground
-     color for the B&W wbmp image. */
   fprintf (stderr, "NOTE: the WBMP output image will NOT match the original unless the original\n"
-	   "is also black and white. This is OK!\n");
+    "is also black and white. This is OK!\n");
   foreground = gdImageColorClosest (im, 0, 0, 0);
   fprintf (stderr, "Foreground index is %d\n", foreground);
   if (foreground == -1)
@@ -368,41 +338,41 @@ main (int argc, char **argv)
     {
       out = fopen ("test/gdtest.wbmp", "wb");
       if (!out)
-	{
-	  fprintf (stderr, "Can't create file test/gdtest.wbmp.\n");
-	  exit (1);
-	}
+ {
+   fprintf (stderr, "Can't create file test/gdtest.wbmp.\n");
+   exit (1);
+ }
       gdImageWBMP (im, foreground, out);
       fclose (out);
       in = fopen ("test/gdtest.wbmp", "rb");
       if (!in)
-	{
-	  fprintf (stderr, "Can't open file test/gdtest.wbmp.\n");
-	  exit (1);
-	}
+ {
+   fprintf (stderr, "Can't open file test/gdtest.wbmp.\n");
+   exit (1);
+ }
       im2 = gdImageCreateFromWBMP (in);
       fprintf (stderr, "WBMP has %d colors\n", gdImageColorsTotal (im2));
       fprintf (stderr, "WBMP colors are:\n");
       for (i = 0; (i < gdImageColorsTotal (im2)); i++)
-	{
-	  fprintf (stderr, "%02X%02X%02X\n",
-		   gdImageRed (im2, i),
-		   gdImageGreen (im2, i),
-		   gdImageBlue (im2, i));
-	}
+ {
+   fprintf (stderr, "%02X%02X%02X\n",
+     gdImageRed (im2, i),
+     gdImageGreen (im2, i),
+     gdImageBlue (im2, i));
+ }
       fclose (in);
       if (!im2)
-	{
-	  fprintf (stderr, "gdImageCreateFromWBMP failed.\n");
-	  exit (1);
-	}
+ {
+   fprintf (stderr, "gdImageCreateFromWBMP failed.\n");
+   exit (1);
+ }
       CompareImages ("WBMP test (gdtest.png, gdtest.wbmp)", ref, im2);
       out = fopen ("test/gdtest_wbmp_to_png.png", "wb");
       if (!out)
-	{
-	  fprintf (stderr, "Can't create file test/gdtest_wbmp_to_png.png.\n");
-	  exit (1);
-	}
+ {
+   fprintf (stderr, "Can't create file test/gdtest_wbmp_to_png.png.\n");
+   exit (1);
+ }
       gdImagePng (im2, out);
       fclose (out);
       gdImageDestroy (im2);

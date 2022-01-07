@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int cFrom; unsigned char cTo0; char cTo1; char cTo2; char cTo3; char cTo4; } ;
-typedef  TYPE_1__ Transliteration ;
+typedef TYPE_1__ Transliteration ;
 
-/* Variables and functions */
- TYPE_1__* spellfixFindTranslit (int,int*) ; 
- unsigned char* sqlite3_malloc64 (int) ; 
- int utf8Read (unsigned char const*,int,int*) ; 
+
+ TYPE_1__* spellfixFindTranslit (int,int*) ;
+ unsigned char* sqlite3_malloc64 (int) ;
+ int utf8Read (unsigned char const*,int,int*) ;
 
 __attribute__((used)) static unsigned char *transliterate(const unsigned char *zIn, int nIn){
-#ifdef SQLITE_SPELLFIX_5BYTE_MAPPINGS
-  unsigned char *zOut = sqlite3_malloc64( nIn*5 + 1 );
-#else
+
+
+
   unsigned char *zOut = sqlite3_malloc64( nIn*4 + 1 );
-#endif
+
   int c, sz, nOut;
   if( zOut==0 ) return 0;
   nOut = 0;
@@ -48,11 +48,11 @@ __attribute__((used)) static unsigned char *transliterate(const unsigned char *z
               zOut[nOut++] = tbl[x].cTo2;
               if( tbl[x].cTo3 ){
                 zOut[nOut++] = tbl[x].cTo3;
-#ifdef SQLITE_SPELLFIX_5BYTE_MAPPINGS
-                if( tbl[x].cTo4 ){
-                  zOut[nOut++] = tbl[x].cTo4;
-                }
-#endif /* SQLITE_SPELLFIX_5BYTE_MAPPINGS */
+
+
+
+
+
               }
             }
           }

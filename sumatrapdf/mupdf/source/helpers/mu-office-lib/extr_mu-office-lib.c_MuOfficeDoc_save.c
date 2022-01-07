@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  MuOfficeSaveResultFn ;
-typedef  int /*<<< orphan*/  MuOfficeDoc ;
-typedef  int /*<<< orphan*/  MuError ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MuError_NotImplemented ; 
 
-MuError MuOfficeDoc_save(	MuOfficeDoc          *doc,
-				const char              *path,
-				MuOfficeSaveResultFn *resultFn,
-				void                    *cookie)
+
+
+typedef int MuOfficeSaveResultFn ;
+typedef int MuOfficeDoc ;
+typedef int MuError ;
+
+
+ int MuError_NotImplemented ;
+
+MuError MuOfficeDoc_save( MuOfficeDoc *doc,
+    const char *path,
+    MuOfficeSaveResultFn *resultFn,
+    void *cookie)
 {
-	return MuError_NotImplemented; /* FIXME */
+ return MuError_NotImplemented;
 }

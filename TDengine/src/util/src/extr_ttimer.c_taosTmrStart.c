@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tmr_obj_t ;
-typedef  int /*<<< orphan*/ * tmr_h ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int tmr_obj_t ;
+typedef int * tmr_h ;
 struct TYPE_3__ {scalar_t__* label; } ;
-typedef  TYPE_1__ tmr_ctrl_t ;
-typedef  int /*<<< orphan*/  TAOS_TMR_CALLBACK ;
+typedef TYPE_1__ tmr_ctrl_t ;
+typedef int TAOS_TMR_CALLBACK ;
 
-/* Variables and functions */
- scalar_t__ calloc (int,int) ; 
- int /*<<< orphan*/  doStartTimer (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,void*,TYPE_1__*) ; 
- int /*<<< orphan*/  tmrError (char*,scalar_t__*) ; 
+
+ scalar_t__ calloc (int,int) ;
+ int doStartTimer (int *,int ,int,void*,TYPE_1__*) ;
+ int tmrError (char*,scalar_t__*) ;
 
 tmr_h taosTmrStart(TAOS_TMR_CALLBACK fp, int mseconds, void* param, void* handle) {
   tmr_ctrl_t* ctrl = (tmr_ctrl_t*)handle;
-  if (ctrl == NULL || ctrl->label[0] == 0) {
-    return NULL;
+  if (ctrl == ((void*)0) || ctrl->label[0] == 0) {
+    return ((void*)0);
   }
 
   tmr_obj_t* timer = (tmr_obj_t*)calloc(1, sizeof(tmr_obj_t));
-  if (timer == NULL) {
+  if (timer == ((void*)0)) {
     tmrError("%s failed to allocated memory for new timer object.", ctrl->label);
-    return NULL;
+    return ((void*)0);
   }
 
   return (tmr_h)doStartTimer(timer, fp, mseconds, param, ctrl);

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t u32 ;
-struct r8192_priv {int /*<<< orphan*/  ieee80211; TYPE_1__* tx_ring; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef size_t u32 ;
+struct r8192_priv {int ieee80211; TYPE_1__* tx_ring; } ;
 struct net_device {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/  dma; } ;
+struct TYPE_2__ {int dma; } ;
 
-/* Variables and functions */
- size_t MAX_TX_QUEUE_COUNT ; 
- int /*<<< orphan*/ * TX_DESC_BASE ; 
- scalar_t__ ieee80211_priv (struct net_device*) ; 
- int /*<<< orphan*/  ieee80211_reset_queue (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  write_nic_dword (struct net_device*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ size_t MAX_TX_QUEUE_COUNT ;
+ int * TX_DESC_BASE ;
+ scalar_t__ ieee80211_priv (struct net_device*) ;
+ int ieee80211_reset_queue (int ) ;
+ int write_nic_dword (struct net_device*,int ,int ) ;
 
 void rtl8192_tx_enable(struct net_device *dev)
 {

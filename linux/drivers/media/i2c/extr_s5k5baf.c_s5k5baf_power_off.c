@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct s5k5baf {int /*<<< orphan*/  sd; int /*<<< orphan*/  supplies; int /*<<< orphan*/  clock; scalar_t__ apply_crop; scalar_t__ apply_cfg; scalar_t__ streaming; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IS_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RST ; 
- int /*<<< orphan*/  S5K5BAF_NUM_SUPPLIES ; 
- int /*<<< orphan*/  STBY ; 
- int /*<<< orphan*/  clk_disable_unprepare (int /*<<< orphan*/ ) ; 
- int regulator_bulk_disable (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  s5k5baf_gpio_assert (struct s5k5baf*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  v4l2_err (int /*<<< orphan*/ *,char*) ; 
+
+
+
+struct s5k5baf {int sd; int supplies; int clock; scalar_t__ apply_crop; scalar_t__ apply_cfg; scalar_t__ streaming; } ;
+
+
+ int IS_ERR (int ) ;
+ int RST ;
+ int S5K5BAF_NUM_SUPPLIES ;
+ int STBY ;
+ int clk_disable_unprepare (int ) ;
+ int regulator_bulk_disable (int ,int ) ;
+ int s5k5baf_gpio_assert (struct s5k5baf*,int ) ;
+ int v4l2_err (int *,char*) ;
 
 __attribute__((used)) static int s5k5baf_power_off(struct s5k5baf *state)
 {
-	int ret;
+ int ret;
 
-	state->streaming = 0;
-	state->apply_cfg = 0;
-	state->apply_crop = 0;
+ state->streaming = 0;
+ state->apply_cfg = 0;
+ state->apply_crop = 0;
 
-	s5k5baf_gpio_assert(state, RST);
-	s5k5baf_gpio_assert(state, STBY);
+ s5k5baf_gpio_assert(state, RST);
+ s5k5baf_gpio_assert(state, STBY);
 
-	if (!IS_ERR(state->clock))
-		clk_disable_unprepare(state->clock);
+ if (!IS_ERR(state->clock))
+  clk_disable_unprepare(state->clock);
 
-	ret = regulator_bulk_disable(S5K5BAF_NUM_SUPPLIES,
-					state->supplies);
-	if (ret < 0)
-		v4l2_err(&state->sd, "failed to disable regulators\n");
+ ret = regulator_bulk_disable(S5K5BAF_NUM_SUPPLIES,
+     state->supplies);
+ if (ret < 0)
+  v4l2_err(&state->sd, "failed to disable regulators\n");
 
-	return 0;
+ return 0;
 }

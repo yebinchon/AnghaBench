@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct net_device {int dummy; } ;
 struct mlx4_en_priv {TYPE_3__* prof; scalar_t__ port_up; TYPE_2__** tx_ring; TYPE_1__** rx_ring; struct mlx4_en_dev* mdev; } ;
-struct mlx4_en_dev {int /*<<< orphan*/  state_lock; } ;
+struct mlx4_en_dev {int state_lock; } ;
 struct TYPE_6__ {int tx_ring_size; int rx_ring_size; } ;
 struct TYPE_5__ {int size; } ;
 struct TYPE_4__ {int actual_size; int size; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MLX4_EN_MAX_RX_SIZE ; 
- int /*<<< orphan*/  MLX4_EN_MAX_TX_SIZE ; 
- int /*<<< orphan*/  MLX4_EN_MIN_RX_SIZE ; 
- int /*<<< orphan*/  MLX4_EN_MIN_TX_SIZE ; 
- int /*<<< orphan*/  en_err (struct mlx4_en_priv*,char*) ; 
- int max_t (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int min_t (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int mlx4_en_alloc_resources (struct mlx4_en_priv*) ; 
- int /*<<< orphan*/  mlx4_en_free_resources (struct mlx4_en_priv*) ; 
- int mlx4_en_start_port (struct net_device*) ; 
- int /*<<< orphan*/  mlx4_en_stop_port (struct net_device*) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
- struct mlx4_en_priv* netdev_priv (struct net_device*) ; 
- int roundup_pow_of_two (int) ; 
- int /*<<< orphan*/  u32 ; 
+
+ int MLX4_EN_MAX_RX_SIZE ;
+ int MLX4_EN_MAX_TX_SIZE ;
+ int MLX4_EN_MIN_RX_SIZE ;
+ int MLX4_EN_MIN_TX_SIZE ;
+ int en_err (struct mlx4_en_priv*,char*) ;
+ int max_t (int ,int,int ) ;
+ int min_t (int ,int,int ) ;
+ int mlx4_en_alloc_resources (struct mlx4_en_priv*) ;
+ int mlx4_en_free_resources (struct mlx4_en_priv*) ;
+ int mlx4_en_start_port (struct net_device*) ;
+ int mlx4_en_stop_port (struct net_device*) ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
+ struct mlx4_en_priv* netdev_priv (struct net_device*) ;
+ int roundup_pow_of_two (int) ;
+ int u32 ;
 
 __attribute__((used)) static int mlx4_en_set_ring_size(struct net_device *dev,
     int rx_size, int tx_size)

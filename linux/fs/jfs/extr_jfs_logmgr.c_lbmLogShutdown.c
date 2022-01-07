@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct lbuf {int /*<<< orphan*/  l_page; struct lbuf* l_freelist; } ;
+
+
+
+
+struct lbuf {int l_page; struct lbuf* l_freelist; } ;
 struct jfs_log {struct lbuf* lbuf_free; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  __free_page (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jfs_info (char*,struct jfs_log*) ; 
- int /*<<< orphan*/  kfree (struct lbuf*) ; 
+
+ int __free_page (int ) ;
+ int jfs_info (char*,struct jfs_log*) ;
+ int kfree (struct lbuf*) ;
 
 __attribute__((used)) static void lbmLogShutdown(struct jfs_log * log)
 {
-	struct lbuf *lbuf;
+ struct lbuf *lbuf;
 
-	jfs_info("lbmLogShutdown: log:0x%p", log);
+ jfs_info("lbmLogShutdown: log:0x%p", log);
 
-	lbuf = log->lbuf_free;
-	while (lbuf) {
-		struct lbuf *next = lbuf->l_freelist;
-		__free_page(lbuf->l_page);
-		kfree(lbuf);
-		lbuf = next;
-	}
+ lbuf = log->lbuf_free;
+ while (lbuf) {
+  struct lbuf *next = lbuf->l_freelist;
+  __free_page(lbuf->l_page);
+  kfree(lbuf);
+  lbuf = next;
+ }
 }

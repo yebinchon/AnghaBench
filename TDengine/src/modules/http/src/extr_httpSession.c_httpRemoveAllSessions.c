@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * pSessionHash; } ;
-typedef  TYPE_1__ HttpServer ;
 
-/* Variables and functions */
- int /*<<< orphan*/  httpResetSession ; 
- int /*<<< orphan*/  taosCleanUpStrHashWithFp (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * pSessionHash; } ;
+typedef TYPE_1__ HttpServer ;
+
+
+ int httpResetSession ;
+ int taosCleanUpStrHashWithFp (int *,int ) ;
 
 void httpRemoveAllSessions(HttpServer *pServer) {
-  if (pServer->pSessionHash != NULL) {
+  if (pServer->pSessionHash != ((void*)0)) {
     taosCleanUpStrHashWithFp(pServer->pSessionHash, httpResetSession);
-    pServer->pSessionHash = NULL;
+    pServer->pSessionHash = ((void*)0);
   }
 }

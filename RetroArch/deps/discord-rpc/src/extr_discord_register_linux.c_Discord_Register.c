@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  xdgMimeCommand ;
-typedef  size_t ssize_t ;
-typedef  int /*<<< orphan*/  exePath ;
-typedef  int /*<<< orphan*/  desktopFilename ;
-typedef  int /*<<< orphan*/  desktopFilePath ;
-typedef  int /*<<< orphan*/  desktopFile ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Mkdir (char*) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  fwrite (char*,int,int,int /*<<< orphan*/ *) ; 
- char* getenv (char*) ; 
- size_t readlink (char*,char*,int) ; 
- int snprintf (char*,int,char const*,char const*,...) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  strcat (char*,char*) ; 
- scalar_t__ system (char*) ; 
+
+
+
+typedef int xdgMimeCommand ;
+typedef size_t ssize_t ;
+typedef int exePath ;
+typedef int desktopFilename ;
+typedef int desktopFilePath ;
+typedef int desktopFile ;
+typedef int FILE ;
+
+
+ int Mkdir (char*) ;
+ int fclose (int *) ;
+ int * fopen (char*,char*) ;
+ int fprintf (int ,char*) ;
+ int fwrite (char*,int,int,int *) ;
+ char* getenv (char*) ;
+ size_t readlink (char*,char*,int) ;
+ int snprintf (char*,int,char const*,char const*,...) ;
+ int stderr ;
+ int strcat (char*,char*) ;
+ scalar_t__ system (char*) ;
 
 void Discord_Register(const char* applicationId, const char* command)
 {
@@ -39,8 +39,8 @@ void Discord_Register(const char* applicationId, const char* command)
    char desktopFilename[256];
    char desktopFilePath[1024];
    char desktopFile[2048];
-   /* Add a desktop file and update some MIME handlers 
-    * so that xdg-open does the right thing. */
+
+
    char exePath[1024];
    const char* home = getenv("HOME");
    if (!home)
@@ -58,7 +58,7 @@ void Discord_Register(const char* applicationId, const char* command)
    {
       const char* desktopFileFormat = "[Desktop Entry]\n"
          "Name=Game %s\n"
-         "Exec=%s\n" /* note: it really wants that %u in there */
+         "Exec=%s\n"
          "Type=Application\n"
          "NoDisplay=true\n"
          "Categories=Discord;Games;\n"

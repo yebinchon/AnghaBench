@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct wined3d_texture_sub_resource {int dummy; } ;
 struct wined3d_surface {TYPE_1__* container; } ;
 struct TYPE_2__ {struct wined3d_texture_sub_resource* sub_resources; } ;
 
-/* Variables and functions */
- size_t surface_get_sub_resource_idx (struct wined3d_surface*) ; 
+
+ size_t surface_get_sub_resource_idx (struct wined3d_surface*) ;
 
 __attribute__((used)) static inline struct wined3d_texture_sub_resource *surface_get_sub_resource(struct wined3d_surface *surface)
 {

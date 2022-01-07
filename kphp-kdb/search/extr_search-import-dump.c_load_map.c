@@ -1,30 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  MAP_SIZE ; 
- int /*<<< orphan*/  Map ; 
- int /*<<< orphan*/  O_RDONLY ; 
- int /*<<< orphan*/  close (scalar_t__) ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- char* groups_fname ; 
- scalar_t__ map_fd ; 
- scalar_t__ map_size ; 
- scalar_t__ open (char*,int /*<<< orphan*/ ) ; 
- scalar_t__ read (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ verbosity ; 
+ int MAP_SIZE ;
+ int Map ;
+ int O_RDONLY ;
+ int close (scalar_t__) ;
+ int exit (int) ;
+ int fprintf (int ,char*,...) ;
+ char* groups_fname ;
+ scalar_t__ map_fd ;
+ scalar_t__ map_size ;
+ scalar_t__ open (char*,int ) ;
+ scalar_t__ read (scalar_t__,int ,int ) ;
+ int stderr ;
+ scalar_t__ verbosity ;
 
 void load_map (int force) {
   if (!groups_fname) {

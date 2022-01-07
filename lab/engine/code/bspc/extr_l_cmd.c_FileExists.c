@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int qboolean ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
 
-qboolean	FileExists (char *filename)
+
+
+typedef int qboolean ;
+typedef int FILE ;
+
+
+ int fclose (int *) ;
+ int * fopen (char*,char*) ;
+
+qboolean FileExists (char *filename)
 {
-	FILE	*f;
+ FILE *f;
 
-	f = fopen (filename, "r");
-	if (!f)
-		return false;
-	fclose (f);
-	return true;
+ f = fopen (filename, "r");
+ if (!f)
+  return 0;
+ fclose (f);
+ return 1;
 }

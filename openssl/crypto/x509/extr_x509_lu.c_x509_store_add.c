@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_13__ {int /*<<< orphan*/  objs; } ;
-typedef  TYPE_2__ X509_STORE ;
-struct TYPE_12__ {int /*<<< orphan*/ * x509; int /*<<< orphan*/ * crl; } ;
-struct TYPE_14__ {int /*<<< orphan*/  type; TYPE_1__ data; } ;
-typedef  TYPE_3__ X509_OBJECT ;
-typedef  int /*<<< orphan*/  X509_CRL ;
-typedef  int /*<<< orphan*/  X509 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  X509_LU_CRL ; 
- int /*<<< orphan*/  X509_LU_NONE ; 
- int /*<<< orphan*/  X509_LU_X509 ; 
- int /*<<< orphan*/  X509_OBJECT_free (TYPE_3__*) ; 
- TYPE_3__* X509_OBJECT_new () ; 
- scalar_t__ X509_OBJECT_retrieve_match (int /*<<< orphan*/ ,TYPE_3__*) ; 
- int /*<<< orphan*/  X509_OBJECT_up_ref_count (TYPE_3__*) ; 
- int /*<<< orphan*/  X509_STORE_lock (TYPE_2__*) ; 
- int /*<<< orphan*/  X509_STORE_unlock (TYPE_2__*) ; 
- int sk_X509_OBJECT_push (int /*<<< orphan*/ ,TYPE_3__*) ; 
+
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+struct TYPE_13__ {int objs; } ;
+typedef TYPE_2__ X509_STORE ;
+struct TYPE_12__ {int * x509; int * crl; } ;
+struct TYPE_14__ {int type; TYPE_1__ data; } ;
+typedef TYPE_3__ X509_OBJECT ;
+typedef int X509_CRL ;
+typedef int X509 ;
+
+
+ int X509_LU_CRL ;
+ int X509_LU_NONE ;
+ int X509_LU_X509 ;
+ int X509_OBJECT_free (TYPE_3__*) ;
+ TYPE_3__* X509_OBJECT_new () ;
+ scalar_t__ X509_OBJECT_retrieve_match (int ,TYPE_3__*) ;
+ int X509_OBJECT_up_ref_count (TYPE_3__*) ;
+ int X509_STORE_lock (TYPE_2__*) ;
+ int X509_STORE_unlock (TYPE_2__*) ;
+ int sk_X509_OBJECT_push (int ,TYPE_3__*) ;
 
 __attribute__((used)) static int x509_store_add(X509_STORE *store, void *x, int crl) {
     X509_OBJECT *obj;
     int ret = 0, added = 0;
 
-    if (x == NULL)
+    if (x == ((void*)0))
         return 0;
     obj = X509_OBJECT_new();
-    if (obj == NULL)
+    if (obj == ((void*)0))
         return 0;
 
     if (crl) {
@@ -65,7 +65,7 @@ __attribute__((used)) static int x509_store_add(X509_STORE *store, void *x, int 
     }
     X509_STORE_unlock(store);
 
-    if (added == 0)             /* obj not pushed */
+    if (added == 0)
         X509_OBJECT_free(obj);
 
     return ret;

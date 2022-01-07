@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int int64_t ;
 
-/* Variables and functions */
+
+
+
+typedef int uint8_t ;
+typedef int int64_t ;
+
+
 
 int
 _dwarf_write_sleb128(uint8_t *data, uint8_t *end, int64_t val)
 {
-	uint8_t *p;
+ uint8_t *p;
 
-	p = data;
+ p = data;
 
-	for (;;) {
-		if (p >= end)
-			return (-1);
-		*p = val & 0x7f;
-		val >>= 7;
-		if ((val == 0 && (*p & 0x40) == 0) ||
-		    (val == -1 && (*p & 0x40) != 0)) {
-			p++;
-			break;
-		}
-		*p++ |= 0x80;
-	}
+ for (;;) {
+  if (p >= end)
+   return (-1);
+  *p = val & 0x7f;
+  val >>= 7;
+  if ((val == 0 && (*p & 0x40) == 0) ||
+      (val == -1 && (*p & 0x40) != 0)) {
+   p++;
+   break;
+  }
+  *p++ |= 0x80;
+ }
 
-	return (p - data);
+ return (p - data);
 }

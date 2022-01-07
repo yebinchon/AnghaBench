@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char const dev_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (char const*) ; 
- int block_get_originating (char const,char const*) ; 
- int get_block_device (char const*,char const*) ; 
- int /*<<< orphan*/  log_debug_errno (int,char*,char const*) ; 
+
+
+
+typedef char const dev_t ;
+
+
+ int assert (char const*) ;
+ int block_get_originating (char const,char const*) ;
+ int get_block_device (char const*,char const*) ;
+ int log_debug_errno (int,char*,char const*) ;
 
 int get_block_device_harder(const char *path, dev_t *ret) {
         int r;
@@ -24,8 +24,8 @@ int get_block_device_harder(const char *path, dev_t *ret) {
         assert(path);
         assert(ret);
 
-        /* Gets the backing block device for a file system, and handles LUKS encrypted file systems, looking for its
-         * immediate parent, if there is one. */
+
+
 
         r = get_block_device(path, ret);
         if (r <= 0)

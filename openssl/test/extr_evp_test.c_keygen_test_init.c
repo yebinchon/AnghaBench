@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
 struct TYPE_11__ {int skip; char* err; TYPE_1__* data; } ;
-struct TYPE_10__ {int /*<<< orphan*/ * keyname; struct TYPE_10__* genctx; } ;
-typedef  TYPE_1__ KEYGEN_TEST_DATA ;
-typedef  TYPE_2__ EVP_TEST ;
-typedef  TYPE_1__ EVP_PKEY_CTX ;
+struct TYPE_10__ {int * keyname; struct TYPE_10__* genctx; } ;
+typedef TYPE_1__ KEYGEN_TEST_DATA ;
+typedef TYPE_2__ EVP_TEST ;
+typedef TYPE_1__ EVP_PKEY_CTX ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EVP_PKEY_CTX_free (TYPE_1__*) ; 
- TYPE_1__* EVP_PKEY_CTX_new_id (int,int /*<<< orphan*/ *) ; 
- scalar_t__ EVP_PKEY_keygen_init (TYPE_1__*) ; 
- int NID_undef ; 
- int OBJ_ln2nid (char const*) ; 
- int OBJ_sn2nid (char const*) ; 
- TYPE_1__* OPENSSL_malloc (int) ; 
- int /*<<< orphan*/  TEST_ptr (TYPE_1__*) ; 
+
+ int EVP_PKEY_CTX_free (TYPE_1__*) ;
+ TYPE_1__* EVP_PKEY_CTX_new_id (int,int *) ;
+ scalar_t__ EVP_PKEY_keygen_init (TYPE_1__*) ;
+ int NID_undef ;
+ int OBJ_ln2nid (char const*) ;
+ int OBJ_sn2nid (char const*) ;
+ TYPE_1__* OPENSSL_malloc (int) ;
+ int TEST_ptr (TYPE_1__*) ;
 
 __attribute__((used)) static int keygen_test_init(EVP_TEST *t, const char *alg)
 {
@@ -40,8 +40,8 @@ __attribute__((used)) static int keygen_test_init(EVP_TEST *t, const char *alg)
             return 0;
     }
 
-    if (!TEST_ptr(genctx = EVP_PKEY_CTX_new_id(nid, NULL))) {
-        /* assume algorithm disabled */
+    if (!TEST_ptr(genctx = EVP_PKEY_CTX_new_id(nid, ((void*)0)))) {
+
         t->skip = 1;
         return 1;
     }
@@ -54,9 +54,9 @@ __attribute__((used)) static int keygen_test_init(EVP_TEST *t, const char *alg)
     if (!TEST_ptr(data = OPENSSL_malloc(sizeof(*data))))
         goto err;
     data->genctx = genctx;
-    data->keyname = NULL;
+    data->keyname = ((void*)0);
     t->data = data;
-    t->err = NULL;
+    t->err = ((void*)0);
     return 1;
 
 err:

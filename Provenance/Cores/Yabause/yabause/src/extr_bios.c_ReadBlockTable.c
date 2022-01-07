@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u32 ;
-typedef  int u16 ;
 
-/* Variables and functions */
- int CalcSaveSize (int,int) ; 
- int MappedMemoryReadByte (int) ; 
- scalar_t__ malloc (int) ; 
+
+
+
+typedef int u32 ;
+typedef int u16 ;
+
+
+ int CalcSaveSize (int,int) ;
+ int MappedMemoryReadByte (int) ;
+ scalar_t__ malloc (int) ;
 
 __attribute__((used)) static u16 *ReadBlockTable(u32 addr, u32 *tableaddr, int block, int blocksize, int *numblocks, int *blocksread)
 {
@@ -26,14 +26,14 @@ __attribute__((used)) static u16 *ReadBlockTable(u32 addr, u32 *tableaddr, int b
    tableaddr[0] = addr + (block * blocksize * 2) + 0x45;
    blocksread[0]=0;
 
-   // First of all figure out how large of buffer we need
+
    numblocks[0] = CalcSaveSize(tableaddr[0], blocksize);
 
-   // Allocate buffer
-   if ((blocktbl = (u16 *)malloc(sizeof(u16) * numblocks[0])) == NULL)
-      return NULL;
 
-   // Now read in the table
+   if ((blocktbl = (u16 *)malloc(sizeof(u16) * numblocks[0])) == ((void*)0))
+      return ((void*)0);
+
+
    for(i = 0; i < numblocks[0]; i++)
    {
        u16 block;

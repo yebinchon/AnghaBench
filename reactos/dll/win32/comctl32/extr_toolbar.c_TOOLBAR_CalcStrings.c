@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
 struct TYPE_14__ {scalar_t__ cx; scalar_t__ cy; } ;
 struct TYPE_13__ {scalar_t__ cx; scalar_t__ cy; } ;
 struct TYPE_12__ {scalar_t__ tmHeight; } ;
-struct TYPE_11__ {scalar_t__ nMaxTextRows; scalar_t__ nNumButtons; scalar_t__ nNumStrings; int /*<<< orphan*/  hwndSelf; int /*<<< orphan*/ * buttons; int /*<<< orphan*/  hFont; } ;
-typedef  TYPE_1__ TOOLBAR_INFO ;
-typedef  TYPE_2__ TEXTMETRICW ;
-typedef  int /*<<< orphan*/  TBUTTON_INFO ;
-typedef  TYPE_3__ SIZE ;
-typedef  TYPE_4__* LPSIZE ;
-typedef  scalar_t__ INT ;
-typedef  int /*<<< orphan*/  HFONT ;
-typedef  int /*<<< orphan*/  HDC ;
+struct TYPE_11__ {scalar_t__ nMaxTextRows; scalar_t__ nNumButtons; scalar_t__ nNumStrings; int hwndSelf; int * buttons; int hFont; } ;
+typedef TYPE_1__ TOOLBAR_INFO ;
+typedef TYPE_2__ TEXTMETRICW ;
+typedef int TBUTTON_INFO ;
+typedef TYPE_3__ SIZE ;
+typedef TYPE_4__* LPSIZE ;
+typedef scalar_t__ INT ;
+typedef int HFONT ;
+typedef int HDC ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetDC (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetTextMetricsW (int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  ReleaseDC (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SelectObject (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ TOOLBAR_GetText (TYPE_1__ const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TOOLBAR_MeasureString (TYPE_1__ const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_3__*) ; 
- int /*<<< orphan*/  TRACE (char*,scalar_t__,scalar_t__) ; 
+
+ int GetDC (int ) ;
+ int GetTextMetricsW (int ,TYPE_2__*) ;
+ int ReleaseDC (int ,int ) ;
+ int SelectObject (int ,int ) ;
+ scalar_t__ TOOLBAR_GetText (TYPE_1__ const*,int *) ;
+ int TOOLBAR_MeasureString (TYPE_1__ const*,int *,int ,TYPE_3__*) ;
+ int TRACE (char*,scalar_t__,scalar_t__) ;
 
 __attribute__((used)) static void
 TOOLBAR_CalcStrings (const TOOLBAR_INFO *infoPtr, LPSIZE lpSize)

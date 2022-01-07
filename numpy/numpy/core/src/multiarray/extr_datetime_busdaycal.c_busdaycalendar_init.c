@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/ * end; int /*<<< orphan*/ * begin; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int * end; int * begin; } ;
 struct TYPE_5__ {int busdays_in_weekmask; int* weekmask; TYPE_2__ holidays; } ;
-typedef  int /*<<< orphan*/  PyObject ;
-typedef  TYPE_1__ NpyBusDayCalendar ;
+typedef int PyObject ;
+typedef TYPE_1__ NpyBusDayCalendar ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PyArg_ParseTupleAndKeywords (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*,char**,int /*<<< orphan*/ *,int*,int /*<<< orphan*/ *,TYPE_2__*) ; 
- int /*<<< orphan*/  PyArray_HolidaysConverter ; 
- int /*<<< orphan*/  PyArray_WeekMaskConverter ; 
- int /*<<< orphan*/  PyArray_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyErr_SetString (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  PyExc_ValueError ; 
- int /*<<< orphan*/  normalize_holidays_list (TYPE_2__*,int*) ; 
+
+ int PyArg_ParseTupleAndKeywords (int *,int *,char*,char**,int *,int*,int *,TYPE_2__*) ;
+ int PyArray_HolidaysConverter ;
+ int PyArray_WeekMaskConverter ;
+ int PyArray_free (int *) ;
+ int PyErr_SetString (int ,char*) ;
+ int PyExc_ValueError ;
+ int normalize_holidays_list (TYPE_2__*,int*) ;
 
 __attribute__((used)) static int
 busdaycalendar_init(NpyBusDayCalendar *self, PyObject *args, PyObject *kwds)
 {
-    static char *kwlist[] = {"weekmask", "holidays", NULL};
+    static char *kwlist[] = {"weekmask", "holidays", ((void*)0)};
     int i, busdays_in_weekmask;
 
-    /* Clear the holidays if necessary */
-    if (self->holidays.begin != NULL) {
+
+    if (self->holidays.begin != ((void*)0)) {
         PyArray_free(self->holidays.begin);
-        self->holidays.begin = NULL;
-        self->holidays.end = NULL;
+        self->holidays.begin = ((void*)0);
+        self->holidays.end = ((void*)0);
     }
 
-    /* Reset the weekmask to the default */
+
     self->busdays_in_weekmask = 5;
     self->weekmask[0] = 1;
     self->weekmask[1] = 1;
@@ -49,7 +49,7 @@ busdaycalendar_init(NpyBusDayCalendar *self, PyObject *args, PyObject *kwds)
     self->weekmask[5] = 0;
     self->weekmask[6] = 0;
 
-    /* Parse the parameters */
+
     if (!PyArg_ParseTupleAndKeywords(args, kwds,
                         "|O&O&:busdaycal", kwlist,
                         &PyArray_WeekMaskConverter, &self->weekmask[0],
@@ -57,14 +57,14 @@ busdaycalendar_init(NpyBusDayCalendar *self, PyObject *args, PyObject *kwds)
         return -1;
     }
 
-    /* Count the number of business days in a week */
+
     busdays_in_weekmask = 0;
     for (i = 0; i < 7; ++i) {
         busdays_in_weekmask += self->weekmask[i];
     }
     self->busdays_in_weekmask = busdays_in_weekmask;
 
-    /* Normalize the holidays list */
+
     normalize_holidays_list(&self->holidays, self->weekmask);
 
     if (self->busdays_in_weekmask == 0) {

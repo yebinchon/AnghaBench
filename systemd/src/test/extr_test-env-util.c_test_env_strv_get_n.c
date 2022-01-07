@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  REPLACE_ENV_USE_ENVIRONMENT ; 
- int /*<<< orphan*/  assert_se (int) ; 
- int /*<<< orphan*/  getenv (char*) ; 
- int streq (int /*<<< orphan*/ ,char*) ; 
- int streq_ptr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strv_env_get_n (char**,char*,int,int /*<<< orphan*/ ) ; 
+ int REPLACE_ENV_USE_ENVIRONMENT ;
+ int assert_se (int) ;
+ int getenv (char*) ;
+ int streq (int ,char*) ;
+ int streq_ptr (int ,int ) ;
+ int strv_env_get_n (char**,char*,int,int ) ;
 
 __attribute__((used)) static void test_env_strv_get_n(void) {
         const char *_env[] = {
@@ -25,7 +17,7 @@ __attribute__((used)) static void test_env_strv_get_n(void) {
                 "FOO=BAR BAR",
                 "BAR=waldo",
                 "PATH=unset",
-                NULL
+                ((void*)0)
         };
         char **env = (char**) _env;
 
@@ -39,7 +31,7 @@ __attribute__((used)) static void test_env_strv_get_n(void) {
         assert_se(streq(strv_env_get_n(env, "PATH__", 4, REPLACE_ENV_USE_ENVIRONMENT), "unset"));
         assert_se(streq(strv_env_get_n(env, "PATH", 4, REPLACE_ENV_USE_ENVIRONMENT), "unset"));
 
-        env[3] = NULL; /* kill our $PATH */
+        env[3] = ((void*)0);
 
         assert_se(!strv_env_get_n(env, "PATH__", 4, 0));
         assert_se(!strv_env_get_n(env, "PATH", 4, 0));

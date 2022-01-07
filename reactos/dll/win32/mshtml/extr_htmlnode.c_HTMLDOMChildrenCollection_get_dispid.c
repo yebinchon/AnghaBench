@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int WCHAR ;
-typedef  int UINT32 ;
-struct TYPE_3__ {int /*<<< orphan*/  nslist; } ;
-typedef  TYPE_1__ HTMLDOMChildrenCollection ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  DispatchEx ;
-typedef  int DWORD ;
-typedef  scalar_t__ DISPID ;
-typedef  int* BSTR ;
 
-/* Variables and functions */
- scalar_t__ DISPID_CHILDCOL_0 ; 
- int /*<<< orphan*/  DISP_E_UNKNOWNNAME ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TRACE (char*,scalar_t__) ; 
- TYPE_1__* impl_from_DispatchEx (int /*<<< orphan*/ *) ; 
- scalar_t__ isdigitW (int) ; 
- int /*<<< orphan*/  nsIDOMNodeList_GetLength (int /*<<< orphan*/ ,int*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
+typedef int UINT32 ;
+struct TYPE_3__ {int nslist; } ;
+typedef TYPE_1__ HTMLDOMChildrenCollection ;
+typedef int HRESULT ;
+typedef int DispatchEx ;
+typedef int DWORD ;
+typedef scalar_t__ DISPID ;
+typedef int* BSTR ;
+
+
+ scalar_t__ DISPID_CHILDCOL_0 ;
+ int DISP_E_UNKNOWNNAME ;
+ int S_OK ;
+ int TRACE (char*,scalar_t__) ;
+ TYPE_1__* impl_from_DispatchEx (int *) ;
+ scalar_t__ isdigitW (int) ;
+ int nsIDOMNodeList_GetLength (int ,int*) ;
 
 __attribute__((used)) static HRESULT HTMLDOMChildrenCollection_get_dispid(DispatchEx *dispex, BSTR name, DWORD flags, DISPID *dispid)
 {

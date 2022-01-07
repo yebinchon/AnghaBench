@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-typedef  int /*<<< orphan*/  u32 ;
-struct TYPE_2__ {int /*<<< orphan*/  type; int /*<<< orphan*/  bdaddr; } ;
-struct mgmt_ev_user_confirm_request {int /*<<< orphan*/  value; int /*<<< orphan*/  confirm_hint; TYPE_1__ addr; } ;
-struct hci_dev {int /*<<< orphan*/  name; } ;
-typedef  int /*<<< orphan*/  ev ;
-typedef  int /*<<< orphan*/  bdaddr_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BT_DBG (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MGMT_EV_USER_CONFIRM_REQUEST ; 
- int /*<<< orphan*/  bacpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cpu_to_le32 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  link_to_bdaddr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int mgmt_event (int /*<<< orphan*/ ,struct hci_dev*,struct mgmt_ev_user_confirm_request*,int,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u8 ;
+typedef int u32 ;
+struct TYPE_2__ {int type; int bdaddr; } ;
+struct mgmt_ev_user_confirm_request {int value; int confirm_hint; TYPE_1__ addr; } ;
+struct hci_dev {int name; } ;
+typedef int ev ;
+typedef int bdaddr_t ;
+
+
+ int BT_DBG (char*,int ) ;
+ int MGMT_EV_USER_CONFIRM_REQUEST ;
+ int bacpy (int *,int *) ;
+ int cpu_to_le32 (int ) ;
+ int link_to_bdaddr (int ,int ) ;
+ int mgmt_event (int ,struct hci_dev*,struct mgmt_ev_user_confirm_request*,int,int *) ;
 
 int mgmt_user_confirm_request(struct hci_dev *hdev, bdaddr_t *bdaddr,
-			      u8 link_type, u8 addr_type, u32 value,
-			      u8 confirm_hint)
+         u8 link_type, u8 addr_type, u32 value,
+         u8 confirm_hint)
 {
-	struct mgmt_ev_user_confirm_request ev;
+ struct mgmt_ev_user_confirm_request ev;
 
-	BT_DBG("%s", hdev->name);
+ BT_DBG("%s", hdev->name);
 
-	bacpy(&ev.addr.bdaddr, bdaddr);
-	ev.addr.type = link_to_bdaddr(link_type, addr_type);
-	ev.confirm_hint = confirm_hint;
-	ev.value = cpu_to_le32(value);
+ bacpy(&ev.addr.bdaddr, bdaddr);
+ ev.addr.type = link_to_bdaddr(link_type, addr_type);
+ ev.confirm_hint = confirm_hint;
+ ev.value = cpu_to_le32(value);
 
-	return mgmt_event(MGMT_EV_USER_CONFIRM_REQUEST, hdev, &ev, sizeof(ev),
-			  NULL);
+ return mgmt_event(MGMT_EV_USER_CONFIRM_REQUEST, hdev, &ev, sizeof(ev),
+     ((void*)0));
 }

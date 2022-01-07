@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ hash_t ;
 
-/* Variables and functions */
- int MAX_QUERY_WORDS ; 
- int MaxQw ; 
- scalar_t__* Q ; 
- int Qw ; 
- int* is_letter ; 
- int /*<<< orphan*/  md5 (unsigned char*,int,unsigned char*) ; 
+
+
+
+typedef scalar_t__ hash_t ;
+
+
+ int MAX_QUERY_WORDS ;
+ int MaxQw ;
+ scalar_t__* Q ;
+ int Qw ;
+ int* is_letter ;
+ int md5 (unsigned char*,int,unsigned char*) ;
 
 int process_text (char *text) {
-  //fprintf (stderr, "%d %d %s\n", msg_id, order, text);
+
 
   Qw = 0;
 
@@ -43,9 +43,9 @@ int process_text (char *text) {
 
     if (MaxQw <= MAX_QUERY_WORDS) {
       for (i = 0; i < Qw; i++) {
-	if (Q[i] == md5_h.hash) {
-	  break;
-	}
+ if (Q[i] == md5_h.hash) {
+   break;
+ }
       }
       if (i < Qw) continue;
     }
@@ -55,7 +55,7 @@ int process_text (char *text) {
     }
     Q[Qw++] = md5_h.hash;
 
-    //fprintf (stderr, "%llu\n", md5_h.hash);
+
 
   }
 

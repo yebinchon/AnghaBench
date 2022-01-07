@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct bgx {int lmac_count; } ;
 
-/* Variables and functions */
- struct bgx* get_bgx (int,int) ; 
+
+ struct bgx* get_bgx (int,int) ;
 
 int bgx_get_lmac_count(int node, int bgx_idx)
 {
-	struct bgx *bgx;
+ struct bgx *bgx;
 
-	bgx = get_bgx(node, bgx_idx);
-	if (bgx)
-		return bgx->lmac_count;
+ bgx = get_bgx(node, bgx_idx);
+ if (bgx)
+  return bgx->lmac_count;
 
-	return 0;
+ return 0;
 }

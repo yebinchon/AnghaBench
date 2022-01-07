@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t uint32_t ;
-struct TYPE_3__ {size_t state; int /*<<< orphan*/  posAlignEncoder; int /*<<< orphan*/  rc; int /*<<< orphan*/ * posSlotEncoder; int /*<<< orphan*/  ProbPrices; int /*<<< orphan*/  fastMode; int /*<<< orphan*/  lenEnc; int /*<<< orphan*/ * isRep; int /*<<< orphan*/ ** isMatch; } ;
-typedef  TYPE_1__ CLzmaEnc ;
 
-/* Variables and functions */
- size_t GetLenToPosState (size_t) ; 
- size_t LZMA_MATCH_LEN_MIN ; 
- int /*<<< orphan*/  LenEnc_Encode2 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,size_t,size_t,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RangeEnc_EncodeBit (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  RangeEnc_EncodeDirectBits (int /*<<< orphan*/ *,size_t,int) ; 
- int /*<<< orphan*/  RcTree_Encode (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  RcTree_ReverseEncode (int /*<<< orphan*/ *,int /*<<< orphan*/ ,size_t,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kAlignMask ; 
- size_t* kMatchNextStates ; 
- size_t kNumAlignBits ; 
- int kNumPosSlotBits ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef size_t uint32_t ;
+struct TYPE_3__ {size_t state; int posAlignEncoder; int rc; int * posSlotEncoder; int ProbPrices; int fastMode; int lenEnc; int * isRep; int ** isMatch; } ;
+typedef TYPE_1__ CLzmaEnc ;
+
+
+ size_t GetLenToPosState (size_t) ;
+ size_t LZMA_MATCH_LEN_MIN ;
+ int LenEnc_Encode2 (int *,int *,size_t,size_t,int,int ) ;
+ int RangeEnc_EncodeBit (int *,int *,int) ;
+ int RangeEnc_EncodeDirectBits (int *,size_t,int) ;
+ int RcTree_Encode (int *,int ,int,int) ;
+ int RcTree_ReverseEncode (int *,int ,size_t,int ) ;
+ int kAlignMask ;
+ size_t* kMatchNextStates ;
+ size_t kNumAlignBits ;
+ int kNumPosSlotBits ;
 
 __attribute__((used)) static void WriteEndMarker(CLzmaEnc *p, uint32_t posState)
 {

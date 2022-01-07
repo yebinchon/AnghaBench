@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ ULONG ;
-struct TYPE_3__ {scalar_t__ vt; scalar_t__ dwType; int /*<<< orphan*/  pstrName; } ;
-typedef  TYPE_1__ PROPBAG2 ;
-typedef  int /*<<< orphan*/  IPropertyBag2 ;
-typedef  scalar_t__ HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CoTaskMemFree (int /*<<< orphan*/ ) ; 
- scalar_t__ FAILED (scalar_t__) ; 
- scalar_t__ IPropertyBag2_GetPropertyInfo (int /*<<< orphan*/ *,scalar_t__,scalar_t__,TYPE_1__*,scalar_t__*) ; 
- scalar_t__ PROPBAG2_TYPE_DATA ; 
- scalar_t__ S_OK ; 
- scalar_t__ VT_R4 ; 
- scalar_t__ VT_UI1 ; 
- scalar_t__ WINCODEC_ERR_VALUEOUTOFRANGE ; 
- scalar_t__ lstrcmpW (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__,...) ; 
- scalar_t__ wine_dbgstr_w (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wszTestProperty1 ; 
- int /*<<< orphan*/  wszTestProperty2 ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ ULONG ;
+struct TYPE_3__ {scalar_t__ vt; scalar_t__ dwType; int pstrName; } ;
+typedef TYPE_1__ PROPBAG2 ;
+typedef int IPropertyBag2 ;
+typedef scalar_t__ HRESULT ;
+
+
+ int CoTaskMemFree (int ) ;
+ scalar_t__ FAILED (scalar_t__) ;
+ scalar_t__ IPropertyBag2_GetPropertyInfo (int *,scalar_t__,scalar_t__,TYPE_1__*,scalar_t__*) ;
+ scalar_t__ PROPBAG2_TYPE_DATA ;
+ scalar_t__ S_OK ;
+ scalar_t__ VT_R4 ;
+ scalar_t__ VT_UI1 ;
+ scalar_t__ WINCODEC_ERR_VALUEOUTOFRANGE ;
+ scalar_t__ lstrcmpW (int ,int ) ;
+ int ok (int,char*,scalar_t__,...) ;
+ scalar_t__ wine_dbgstr_w (int ) ;
+ int wszTestProperty1 ;
+ int wszTestProperty2 ;
 
 __attribute__((used)) static void test_propertybag_getpropertyinfo(IPropertyBag2 *property, ULONG expected_count)
 {
@@ -38,17 +38,17 @@ __attribute__((used)) static void test_propertybag_getpropertyinfo(IPropertyBag2
     PROPBAG2 pb[2];
     ULONG out_count;
 
-    /* iProperty: Out of bounce */
+
     hr = IPropertyBag2_GetPropertyInfo(property, expected_count, 1, pb, &out_count);
     ok(hr == WINCODEC_ERR_VALUEOUTOFRANGE,
        "GetPropertyInfo handled iProperty out of bounce wrong, hr=%x\n", hr);
 
-    /* cProperty: Out of bounce */
+
     hr = IPropertyBag2_GetPropertyInfo(property, 0, expected_count+1, pb, &out_count);
     ok(hr == WINCODEC_ERR_VALUEOUTOFRANGE,
        "GetPropertyInfo handled cProperty out of bounce wrong, hr=%x\n", hr);
 
-    /* GetPropertyInfo can be called for zero items on Windows 8 but not on Windows 7 (wine behaves like Win8) */
+
     if (expected_count == 0)
         return;
 

@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wchar_t ;
-typedef  int /*<<< orphan*/  P12 ;
-typedef  int /*<<< orphan*/  BUF ;
 
-/* Variables and functions */
- int DumpBufW (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FreeBuf (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * P12ToBuf (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int wchar_t ;
+typedef int P12 ;
+typedef int BUF ;
+
+
+ int DumpBufW (int *,int *) ;
+ int FreeBuf (int *) ;
+ int * P12ToBuf (int *) ;
 
 bool P12ToFileW(P12 *p12, wchar_t *filename)
 {
-	BUF *b;
-	// Validate arguments
-	if (p12 == NULL || filename == NULL)
-	{
-		return false;
-	}
+ BUF *b;
 
-	b = P12ToBuf(p12);
-	if (b == NULL)
-	{
-		return false;
-	}
+ if (p12 == ((void*)0) || filename == ((void*)0))
+ {
+  return 0;
+ }
 
-	if (DumpBufW(b, filename) == false)
-	{
-		FreeBuf(b);
-		return false;
-	}
+ b = P12ToBuf(p12);
+ if (b == ((void*)0))
+ {
+  return 0;
+ }
 
-	FreeBuf(b);
+ if (DumpBufW(b, filename) == 0)
+ {
+  FreeBuf(b);
+  return 0;
+ }
 
-	return true;
+ FreeBuf(b);
+
+ return 1;
 }

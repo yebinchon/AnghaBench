@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct MPContext {int num_tracks; int /*<<< orphan*/ * tracks; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  uninit_sub (struct MPContext*,int /*<<< orphan*/ ) ; 
+
+
+
+struct MPContext {int num_tracks; int * tracks; } ;
+
+
+ int uninit_sub (struct MPContext*,int ) ;
 
 void uninit_sub_all(struct MPContext *mpctx)
 {

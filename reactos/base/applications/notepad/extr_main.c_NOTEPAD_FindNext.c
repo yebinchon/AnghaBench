@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_4__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ WPARAM ;
-struct TYPE_6__ {int /*<<< orphan*/  hFindReplaceDlg; int /*<<< orphan*/  hInstance; int /*<<< orphan*/  hEdit; } ;
+
+
+typedef struct TYPE_6__ TYPE_4__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef scalar_t__ WPARAM ;
+struct TYPE_6__ {int hFindReplaceDlg; int hInstance; int hEdit; } ;
 struct TYPE_5__ {int Flags; scalar_t__ lpstrFindWhat; scalar_t__ lpstrReplaceWith; } ;
-typedef  int /*<<< orphan*/  TCHAR ;
-typedef  int /*<<< orphan*/ * LPTSTR ;
-typedef  scalar_t__ LPARAM ;
-typedef  TYPE_1__ FINDREPLACE ;
-typedef  scalar_t__ DWORD ;
-typedef  scalar_t__ BOOL ;
+typedef int TCHAR ;
+typedef int * LPTSTR ;
+typedef scalar_t__ LPARAM ;
+typedef TYPE_1__ FINDREPLACE ;
+typedef scalar_t__ DWORD ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAY_SIZE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EM_GETSEL ; 
- int /*<<< orphan*/  EM_REPLACESEL ; 
- int /*<<< orphan*/  EM_SCROLLCARET ; 
- int /*<<< orphan*/  EM_SETSEL ; 
- scalar_t__ FALSE ; 
- int FR_DOWN ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  GetWindowText (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int GetWindowTextLength (int /*<<< orphan*/ ) ; 
- TYPE_4__ Globals ; 
- scalar_t__ HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LoadString (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MB_OK ; 
- int /*<<< orphan*/  MessageBox (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ NOTEPAD_FindTextAt (TYPE_1__*,int /*<<< orphan*/ *,int,scalar_t__) ; 
- int /*<<< orphan*/  STRING_CANNOTFIND ; 
- int /*<<< orphan*/  STRING_NOTEPAD ; 
- int /*<<< orphan*/  SendMessage (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,scalar_t__) ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  _sntprintf (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,scalar_t__) ; 
- scalar_t__ _tcslen (scalar_t__) ; 
+
+ int ARRAY_SIZE (int *) ;
+ int EM_GETSEL ;
+ int EM_REPLACESEL ;
+ int EM_SCROLLCARET ;
+ int EM_SETSEL ;
+ scalar_t__ FALSE ;
+ int FR_DOWN ;
+ int GetProcessHeap () ;
+ int GetWindowText (int ,int *,int) ;
+ int GetWindowTextLength (int ) ;
+ TYPE_4__ Globals ;
+ scalar_t__ HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,int *) ;
+ int LoadString (int ,int ,int *,int ) ;
+ int MB_OK ;
+ int MessageBox (int ,int *,int *,int ) ;
+ scalar_t__ NOTEPAD_FindTextAt (TYPE_1__*,int *,int,scalar_t__) ;
+ int STRING_CANNOTFIND ;
+ int STRING_NOTEPAD ;
+ int SendMessage (int ,int ,scalar_t__,scalar_t__) ;
+ scalar_t__ TRUE ;
+ int _sntprintf (int *,int ,int *,scalar_t__) ;
+ scalar_t__ _tcslen (scalar_t__) ;
 
 BOOL NOTEPAD_FindNext(FINDREPLACE *pFindReplace, BOOL bReplace, BOOL bShowAlert)
 {
     int iTextLength, iTargetLength;
     size_t iAdjustment = 0;
-    LPTSTR pszText = NULL;
+    LPTSTR pszText = ((void*)0);
     DWORD dwPosition, dwBegin, dwEnd;
     BOOL bMatches = FALSE;
     TCHAR szResource[128], szText[128];
@@ -59,7 +59,7 @@ BOOL NOTEPAD_FindNext(FINDREPLACE *pFindReplace, BOOL bReplace, BOOL bShowAlert)
 
     iTargetLength = (int) _tcslen(pFindReplace->lpstrFindWhat);
 
-    /* Retrieve the window text */
+
     iTextLength = GetWindowTextLength(Globals.hEdit);
     if (iTextLength > 0)
     {
@@ -82,7 +82,7 @@ BOOL NOTEPAD_FindNext(FINDREPLACE *pFindReplace, BOOL bReplace, BOOL bShowAlert)
 
     if (pFindReplace->Flags & FR_DOWN)
     {
-        /* Find Down */
+
         dwPosition = dwEnd;
         while(dwPosition < (DWORD) iTextLength)
         {
@@ -94,7 +94,7 @@ BOOL NOTEPAD_FindNext(FINDREPLACE *pFindReplace, BOOL bReplace, BOOL bShowAlert)
     }
     else
     {
-        /* Find Up */
+
         dwPosition = dwBegin;
         while(dwPosition > 0)
         {
@@ -107,7 +107,7 @@ BOOL NOTEPAD_FindNext(FINDREPLACE *pFindReplace, BOOL bReplace, BOOL bShowAlert)
 
     if (bMatches)
     {
-        /* Found target */
+
         if (dwPosition > dwBegin)
             dwPosition += (DWORD) iAdjustment;
         SendMessage(Globals.hEdit, EM_SETSEL, dwPosition, dwPosition + iTargetLength);
@@ -116,7 +116,7 @@ BOOL NOTEPAD_FindNext(FINDREPLACE *pFindReplace, BOOL bReplace, BOOL bShowAlert)
     }
     else
     {
-        /* Can't find target */
+
         if (bShowAlert)
         {
             LoadString(Globals.hInstance, STRING_CANNOTFIND, szResource, ARRAY_SIZE(szResource));

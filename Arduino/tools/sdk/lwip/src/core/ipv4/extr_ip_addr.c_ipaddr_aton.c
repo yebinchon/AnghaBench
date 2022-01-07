@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  unsigned long u8_t ;
-typedef  unsigned long u32_t ;
-typedef  int /*<<< orphan*/  ip_addr_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LWIP_ASSERT (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  htonl (unsigned long) ; 
- int /*<<< orphan*/  ip4_addr_set_u32 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ isdigit (char) ; 
- scalar_t__ islower (char) ; 
- int /*<<< orphan*/  isspace (char) ; 
- scalar_t__ isxdigit (char) ; 
+
+
+
+typedef unsigned long u8_t ;
+typedef unsigned long u32_t ;
+typedef int ip_addr_t ;
+
+
+ int LWIP_ASSERT (char*,int ) ;
+ int htonl (unsigned long) ;
+ int ip4_addr_set_u32 (int *,int ) ;
+ scalar_t__ isdigit (char) ;
+ scalar_t__ islower (char) ;
+ int isspace (char) ;
+ scalar_t__ isxdigit (char) ;
 
 int
 ipaddr_aton(const char *cp, ip_addr_t *addr)
@@ -37,11 +37,11 @@ ipaddr_aton(const char *cp, ip_addr_t *addr)
 
   c = *cp;
   for (;;) {
-    /*
-     * Collect number up to ``.''.
-     * Values are specified as for C:
-     * 0x=hex, 0=octal, 1-9=decimal.
-     */
+
+
+
+
+
     if (!isdigit(c))
       return (0);
     val = 0;
@@ -60,31 +60,31 @@ ipaddr_aton(const char *cp, ip_addr_t *addr)
 
     for (;;) {
       if (isdigit(c)) {
-    	ch = (int)(c - '0');
+     ch = (int)(c - '0');
 
-    	if (val > cutoff || (val == cutoff && ch > cutlim))
-    		return (0);
+     if (val > cutoff || (val == cutoff && ch > cutlim))
+      return (0);
 
         val = (val * base) + (int)(c - '0');
         c = *++cp;
       } else if (base == 16 && isxdigit(c)) {
-    	ch = (int)(c + 10 - (islower(c) ? 'a' : 'A'));
+     ch = (int)(c + 10 - (islower(c) ? 'a' : 'A'));
 
-    	if (val > cutoff || (val == cutoff && ch > cutlim))
-    		return (0);
+     if (val > cutoff || (val == cutoff && ch > cutlim))
+      return (0);
 
-    	val = (val << 4) | (int)(c + 10 - (islower(c) ? 'a' : 'A'));
+     val = (val << 4) | (int)(c + 10 - (islower(c) ? 'a' : 'A'));
         c = *++cp;
       } else
         break;
     }
     if (c == '.') {
-      /*
-       * Internet format:
-       *  a.b.c.d
-       *  a.b.c   (with c treated as 16 bits)
-       *  a.b (with b treated as 24 bits)
-       */
+
+
+
+
+
+
       if (pp >= parts + 3) {
         return (0);
       }
@@ -93,39 +93,39 @@ ipaddr_aton(const char *cp, ip_addr_t *addr)
     } else
       break;
   }
-  /*
-   * Check for trailing characters.
-   */
+
+
+
   if (c != '\0' && !isspace(c)) {
     return (0);
   }
-  /*
-   * Concoct the address according to
-   * the number of parts specified.
-   */
+
+
+
+
   switch (pp - parts + 1) {
 
   case 0:
-    return (0);       /* initial nondigit */
+    return (0);
 
-  case 1:             /* a -- 32 bits */
+  case 1:
     break;
 
-  case 2:             /* a.b -- 8.24 bits */
+  case 2:
     if ((val > 0xffffffUL) || (parts[0] > 0xff)) {
       return (0);
     }
     val |= parts[0] << 24;
     break;
 
-  case 3:             /* a.b.c -- 8.8.16 bits */
+  case 3:
     if ((val > 0xffff) || (parts[0] > 0xff) || (parts[1] > 0xff)) {
       return (0);
     }
     val |= (parts[0] << 24) | (parts[1] << 16);
     break;
 
-  case 4:             /* a.b.c.d -- 8.8.8.8 bits */
+  case 4:
     if ((val > 0xff) || (parts[0] > 0xff) || (parts[1] > 0xff) || (parts[2] > 0xff)) {
       return (0);
     }

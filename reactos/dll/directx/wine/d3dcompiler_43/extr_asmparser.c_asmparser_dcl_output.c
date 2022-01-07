@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  writemask; } ;
-struct shader_reg {TYPE_1__ u; int /*<<< orphan*/  regnum; } ;
-struct asm_parser {int /*<<< orphan*/  status; TYPE_2__* shader; int /*<<< orphan*/  line_no; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int writemask; } ;
+struct shader_reg {TYPE_1__ u; int regnum; } ;
+struct asm_parser {int status; TYPE_2__* shader; int line_no; } ;
 struct TYPE_4__ {scalar_t__ type; } ;
-typedef  int /*<<< orphan*/  DWORD ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  PARSE_ERR ; 
- scalar_t__ ST_PIXEL ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  asmparser_message (struct asm_parser*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  record_declaration (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_parse_status (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int ERR (char*) ;
+ int FALSE ;
+ int PARSE_ERR ;
+ scalar_t__ ST_PIXEL ;
+ int TRUE ;
+ int asmparser_message (struct asm_parser*,char*,int ) ;
+ int record_declaration (TYPE_2__*,int ,int ,int ,int ,int ,int ,int ) ;
+ int set_parse_status (int *,int ) ;
 
 __attribute__((used)) static void asmparser_dcl_output(struct asm_parser *This, DWORD usage, DWORD num,
                                  const struct shader_reg *reg) {

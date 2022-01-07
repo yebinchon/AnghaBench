@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  time_t ;
-typedef  int /*<<< orphan*/  t ;
-typedef  int U32 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DISPLAY (char*) ; 
- int FUZ_COMPRESSIBILITY_DEFAULT ; 
- int FUZ_test (int,unsigned int,unsigned int,double,int) ; 
- int /*<<< orphan*/  FUZ_unitTests (int /*<<< orphan*/ ) ; 
- int FUZ_usage (char const*) ; 
- int /*<<< orphan*/  LZ4HC_CLEVEL_DEFAULT ; 
- int /*<<< orphan*/  LZ4HC_CLEVEL_OPT_MIN ; 
- char* LZ4_versionString () ; 
- unsigned int NB_ATTEMPTS ; 
- int XXH32 (int /*<<< orphan*/  const*,int,int) ; 
- int g_displayLevel ; 
- int /*<<< orphan*/  getchar () ; 
- int /*<<< orphan*/  printf (char*,int,...) ; 
- int /*<<< orphan*/  strcmp (char const*,char*) ; 
- int /*<<< orphan*/  time (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int time_t ;
+typedef int t ;
+typedef int U32 ;
+
+
+ int DISPLAY (char*) ;
+ int FUZ_COMPRESSIBILITY_DEFAULT ;
+ int FUZ_test (int,unsigned int,unsigned int,double,int) ;
+ int FUZ_unitTests (int ) ;
+ int FUZ_usage (char const*) ;
+ int LZ4HC_CLEVEL_DEFAULT ;
+ int LZ4HC_CLEVEL_OPT_MIN ;
+ char* LZ4_versionString () ;
+ unsigned int NB_ATTEMPTS ;
+ int XXH32 (int const*,int,int) ;
+ int g_displayLevel ;
+ int getchar () ;
+ int printf (char*,int,...) ;
+ int strcmp (char const*,char*) ;
+ int time (int *) ;
 
 int main(int argc, const char** argv)
 {
@@ -43,13 +43,13 @@ int main(int argc, const char** argv)
     const char* programName = argv[0];
     U32 duration = 0;
 
-    /* Check command line */
+
     for(argNb=1; argNb<argc; argNb++) {
         const char* argument = argv[argNb];
 
-        if(!argument) continue;   // Protection if argument empty
+        if(!argument) continue;
 
-        // Decode command (note : aggregated commands are allowed)
+
         if (argument[0]=='-') {
             if (!strcmp(argument, "--no-prompt")) { use_pause=0; seedset=1; g_displayLevel=1; continue; }
             argument++;
@@ -57,15 +57,15 @@ int main(int argc, const char** argv)
             while (*argument!=0) {
                 switch(*argument)
                 {
-                case 'h':   /* display help */
+                case 'h':
                     return FUZ_usage(programName);
 
-                case 'v':   /* verbose mode */
+                case 'v':
                     g_displayLevel++;
                     argument++;
                     break;
 
-                case 'p':   /* pause at the end */
+                case 'p':
                     use_pause=1;
                     argument++;
                     break;
@@ -114,7 +114,7 @@ int main(int argc, const char** argv)
                     }
                     break;
 
-                case 't':   /* select starting test nb */
+                case 't':
                     argument++;
                     testNb=0;
                     while ((*argument>='0') && (*argument<='9')) {
@@ -124,7 +124,7 @@ int main(int argc, const char** argv)
                     }
                     break;
 
-                case 'P':  /* change probability */
+                case 'P':
                     argument++;
                     proba=0;
                     while ((*argument>='0') && (*argument<='9')) {
@@ -144,7 +144,7 @@ int main(int argc, const char** argv)
     printf("Starting LZ4 fuzzer (%i-bits, v%s)\n", (int)(sizeof(size_t)*8), LZ4_versionString());
 
     if (!seedset) {
-        time_t const t = time(NULL);
+        time_t const t = time(((void*)0));
         U32 const h = XXH32(&t, sizeof(t), 1);
         seed = h % 10000;
     }
@@ -154,9 +154,9 @@ int main(int argc, const char** argv)
 
     if ((seedset==0) && (testNb==0)) { FUZ_unitTests(LZ4HC_CLEVEL_DEFAULT); FUZ_unitTests(LZ4HC_CLEVEL_OPT_MIN); }
 
-    nbTests += (nbTests==0);  /* avoid zero */
+    nbTests += (nbTests==0);
 
-    {   int const result = FUZ_test(seed, nbTests, testNb, ((double)proba) / 100, duration);
+    { int const result = FUZ_test(seed, nbTests, testNb, ((double)proba) / 100, duration);
         if (use_pause) {
             DISPLAY("press enter ... \n");
             (void)getchar();

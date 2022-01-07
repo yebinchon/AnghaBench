@@ -1,63 +1,63 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64_t ;
-struct TYPE_8__ {int /*<<< orphan*/  desave; int /*<<< orphan*/  depc; int /*<<< orphan*/ * perfctrl; int /*<<< orphan*/ * perfval; int /*<<< orphan*/  multicoredebug; int /*<<< orphan*/  debug; int /*<<< orphan*/  cause; int /*<<< orphan*/  status; int /*<<< orphan*/  pagemask; int /*<<< orphan*/  entryhi; int /*<<< orphan*/ * entrylo; int /*<<< orphan*/  index; } ;
-struct TYPE_7__ {int /*<<< orphan*/ * control; int /*<<< orphan*/ * asid; int /*<<< orphan*/ * address_mask; int /*<<< orphan*/ * address; int /*<<< orphan*/  status; } ;
-struct TYPE_6__ {int /*<<< orphan*/ * control; int /*<<< orphan*/ * asid; int /*<<< orphan*/ * address_mask; int /*<<< orphan*/ * address; int /*<<< orphan*/  status; } ;
-struct TYPE_9__ {int /*<<< orphan*/  hi; int /*<<< orphan*/  lo; TYPE_3__ cop0; TYPE_2__ hw_ibp; TYPE_1__ hw_dbp; scalar_t__ regs; } ;
-typedef  TYPE_4__ cvmx_debug_core_context_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  COP0_CAUSE ; 
- int /*<<< orphan*/  COP0_DEBUG ; 
- int /*<<< orphan*/  COP0_DEPC ; 
- int /*<<< orphan*/  COP0_DESAVE ; 
- int /*<<< orphan*/  COP0_ENTRYHI ; 
- int /*<<< orphan*/  COP0_ENTRYLO0 ; 
- int /*<<< orphan*/  COP0_ENTRYLO1 ; 
- int /*<<< orphan*/  COP0_INDEX ; 
- int /*<<< orphan*/  COP0_MULTICOREDEBUG ; 
- int /*<<< orphan*/  COP0_PAGEMASK ; 
- int /*<<< orphan*/  COP0_PERFCONTROL0 ; 
- int /*<<< orphan*/  COP0_PERFCONTROL1 ; 
- int /*<<< orphan*/  COP0_PERFVALUE0 ; 
- int /*<<< orphan*/  COP0_PERFVALUE1 ; 
- int /*<<< orphan*/  COP0_STATUS ; 
- int /*<<< orphan*/  CVMX_DEBUG_HW_DATA_BREAKPOINT_ADDRESS (int) ; 
- int /*<<< orphan*/  CVMX_DEBUG_HW_DATA_BREAKPOINT_ADDRESS_MASK (int) ; 
- int /*<<< orphan*/  CVMX_DEBUG_HW_DATA_BREAKPOINT_ASID (int) ; 
- int /*<<< orphan*/  CVMX_DEBUG_HW_DATA_BREAKPOINT_CONTROL (int) ; 
- int /*<<< orphan*/  CVMX_DEBUG_HW_DATA_BREAKPOINT_STATUS ; 
- int /*<<< orphan*/  CVMX_DEBUG_HW_INSTRUCTION_BREAKPOINT_ADDRESS (int) ; 
- int /*<<< orphan*/  CVMX_DEBUG_HW_INSTRUCTION_BREAKPOINT_ADDRESS_MASK (int) ; 
- int /*<<< orphan*/  CVMX_DEBUG_HW_INSTRUCTION_BREAKPOINT_ASID (int) ; 
- int /*<<< orphan*/  CVMX_DEBUG_HW_INSTRUCTION_BREAKPOINT_CONTROL (int) ; 
- int /*<<< orphan*/  CVMX_DEBUG_HW_INSTRUCTION_BREAKPOINT_STATUS ; 
- int /*<<< orphan*/  CVMX_MT_COP0 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  __cvmx_debug_save_regs_area ; 
- int /*<<< orphan*/  cvmx_debug_memcpy_align (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  cvmx_write_csr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint64_t ;
+struct TYPE_8__ {int desave; int depc; int * perfctrl; int * perfval; int multicoredebug; int debug; int cause; int status; int pagemask; int entryhi; int * entrylo; int index; } ;
+struct TYPE_7__ {int * control; int * asid; int * address_mask; int * address; int status; } ;
+struct TYPE_6__ {int * control; int * asid; int * address_mask; int * address; int status; } ;
+struct TYPE_9__ {int hi; int lo; TYPE_3__ cop0; TYPE_2__ hw_ibp; TYPE_1__ hw_dbp; scalar_t__ regs; } ;
+typedef TYPE_4__ cvmx_debug_core_context_t ;
+
+
+ int COP0_CAUSE ;
+ int COP0_DEBUG ;
+ int COP0_DEPC ;
+ int COP0_DESAVE ;
+ int COP0_ENTRYHI ;
+ int COP0_ENTRYLO0 ;
+ int COP0_ENTRYLO1 ;
+ int COP0_INDEX ;
+ int COP0_MULTICOREDEBUG ;
+ int COP0_PAGEMASK ;
+ int COP0_PERFCONTROL0 ;
+ int COP0_PERFCONTROL1 ;
+ int COP0_PERFVALUE0 ;
+ int COP0_PERFVALUE1 ;
+ int COP0_STATUS ;
+ int CVMX_DEBUG_HW_DATA_BREAKPOINT_ADDRESS (int) ;
+ int CVMX_DEBUG_HW_DATA_BREAKPOINT_ADDRESS_MASK (int) ;
+ int CVMX_DEBUG_HW_DATA_BREAKPOINT_ASID (int) ;
+ int CVMX_DEBUG_HW_DATA_BREAKPOINT_CONTROL (int) ;
+ int CVMX_DEBUG_HW_DATA_BREAKPOINT_STATUS ;
+ int CVMX_DEBUG_HW_INSTRUCTION_BREAKPOINT_ADDRESS (int) ;
+ int CVMX_DEBUG_HW_INSTRUCTION_BREAKPOINT_ADDRESS_MASK (int) ;
+ int CVMX_DEBUG_HW_INSTRUCTION_BREAKPOINT_ASID (int) ;
+ int CVMX_DEBUG_HW_INSTRUCTION_BREAKPOINT_CONTROL (int) ;
+ int CVMX_DEBUG_HW_INSTRUCTION_BREAKPOINT_STATUS ;
+ int CVMX_MT_COP0 (int ,int ) ;
+ int __cvmx_debug_save_regs_area ;
+ int cvmx_debug_memcpy_align (int ,char*,int) ;
+ int cvmx_write_csr (int ,int ) ;
 
 __attribute__((used)) static void cvmx_debug_restore_core_context(volatile cvmx_debug_core_context_t *context)
 {
     uint64_t hi, lo;
     int i;
     cvmx_debug_memcpy_align (__cvmx_debug_save_regs_area, (char *) context->regs, sizeof(context->regs));
-    /* We don't change the TLB so no need to restore it.  */
+
     cvmx_write_csr(CVMX_DEBUG_HW_DATA_BREAKPOINT_STATUS, context->hw_dbp.status);
     for (i = 0; i < 4; i++)
     {

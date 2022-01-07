@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  device_t ;
-struct TYPE_2__ {int /*<<< orphan*/  ocd_data; } ;
 
-/* Variables and functions */
- int ENXIO ; 
- int /*<<< orphan*/  compat_data ; 
- int /*<<< orphan*/  device_set_desc (int /*<<< orphan*/ ,char*) ; 
- TYPE_1__* ofw_bus_search_compatible (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int device_t ;
+struct TYPE_2__ {int ocd_data; } ;
+
+
+ int ENXIO ;
+ int compat_data ;
+ int device_set_desc (int ,char*) ;
+ TYPE_1__* ofw_bus_search_compatible (int ,int ) ;
 
 __attribute__((used)) static int
 dme_probe(device_t dev)
 {
-	if (!ofw_bus_search_compatible(dev, compat_data)->ocd_data)
-		return (ENXIO);
-	device_set_desc(dev, "Davicom DM9000");
-	return (0);
+ if (!ofw_bus_search_compatible(dev, compat_data)->ocd_data)
+  return (ENXIO);
+ device_set_desc(dev, "Davicom DM9000");
+ return (0);
 }

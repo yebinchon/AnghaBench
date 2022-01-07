@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* edge ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef TYPE_1__* edge ;
 struct TYPE_3__ {scalar_t__ aux; } ;
-typedef  scalar_t__ PTR ;
+typedef scalar_t__ PTR ;
 
-/* Variables and functions */
- scalar_t__ leader_match ; 
 
-__attribute__((used)) static bool 
+ scalar_t__ leader_match ;
+
+__attribute__((used)) static bool
 same_stmt_list_p (edge e)
 {
-  return (e->aux == (PTR) leader_match) ? true : false;
+  return (e->aux == (PTR) leader_match) ? 1 : 0;
 }

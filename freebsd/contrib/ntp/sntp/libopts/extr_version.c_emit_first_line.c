@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NL ; 
- int /*<<< orphan*/  fputc (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fputs (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fwrite (char const*,int,int,int /*<<< orphan*/ *) ; 
- char* strchr (char const*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int FILE ;
+
+
+ int NL ;
+ int fputc (int ,int *) ;
+ int fputs (char const*,int *) ;
+ int fwrite (char const*,int,int,int *) ;
+ char* strchr (char const*,int ) ;
 
 __attribute__((used)) static void
 emit_first_line(
     FILE * fp, char const * alt1, char const * alt2, char const * alt3)
 {
-    char const * p = (alt1 != NULL) ? alt1 : ((alt2 != NULL) ? alt2 : alt3);
+    char const * p = (alt1 != ((void*)0)) ? alt1 : ((alt2 != ((void*)0)) ? alt2 : alt3);
     char const * e;
-    if (p == NULL)
+    if (p == ((void*)0))
         return;
     e = strchr(p, NL);
-    if (e == NULL)
+    if (e == ((void*)0))
         fputs(p, fp);
     else
         fwrite(p, 1, (e - p), fp);

@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int WCHAR ;
-typedef  int ULONG ;
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
+typedef int ULONG ;
 struct TYPE_6__ {int* grpi0_name; } ;
 struct TYPE_5__ {int* grpi1_name; int* grpi1_comment; } ;
 struct TYPE_4__ {int* grpi1002_comment; } ;
-typedef  int* PWSTR ;
-typedef  int /*<<< orphan*/  PGROUP_USERS_INFO_0 ;
-typedef  scalar_t__ NET_API_STATUS ;
-typedef  int /*<<< orphan*/  LPBYTE ;
-typedef  int INT ;
-typedef  TYPE_1__ GROUP_INFO_1002 ;
-typedef  TYPE_2__ GROUP_INFO_1 ;
-typedef  TYPE_3__ GROUP_INFO_0 ;
-typedef  scalar_t__ BOOL ;
+typedef int* PWSTR ;
+typedef int PGROUP_USERS_INFO_0 ;
+typedef scalar_t__ NET_API_STATUS ;
+typedef int LPBYTE ;
+typedef int INT ;
+typedef TYPE_1__ GROUP_INFO_1002 ;
+typedef TYPE_2__ GROUP_INFO_1 ;
+typedef TYPE_3__ GROUP_INFO_0 ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ConPrintf (int /*<<< orphan*/ ,char*,scalar_t__) ; 
- int /*<<< orphan*/  ConPuts (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ DisplayGroup (int*) ; 
- scalar_t__ EnumerateGroups () ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  HEAP_ZERO_MEMORY ; 
- int /*<<< orphan*/  MSG_GROUP_HELP ; 
- int /*<<< orphan*/  MSG_GROUP_SYNTAX ; 
- scalar_t__ NERR_Success ; 
- scalar_t__ NetGroupAdd (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ NetGroupAddUser (int /*<<< orphan*/ *,int*,int*) ; 
- scalar_t__ NetGroupDel (int /*<<< orphan*/ *,int*) ; 
- scalar_t__ NetGroupDelUser (int /*<<< orphan*/ *,int*,int*) ; 
- scalar_t__ NetGroupSetInfo (int /*<<< orphan*/ *,int*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PrintErrorMessage (int) ; 
- int /*<<< orphan*/  PrintMessageString (int) ; 
- int /*<<< orphan*/  PrintNetMessage (int /*<<< orphan*/ ) ; 
- int** RtlAllocateHeap (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  RtlFreeHeap (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int**) ; 
- int /*<<< orphan*/  RtlGetProcessHeap () ; 
- int /*<<< orphan*/  StdErr ; 
- int /*<<< orphan*/  StdOut ; 
- scalar_t__ TRUE ; 
- scalar_t__ _wcsicmp (int*,char*) ; 
- scalar_t__ _wcsnicmp (int*,char*,int) ; 
+
+ int ConPrintf (int ,char*,scalar_t__) ;
+ int ConPuts (int ,char*) ;
+ scalar_t__ DisplayGroup (int*) ;
+ scalar_t__ EnumerateGroups () ;
+ scalar_t__ FALSE ;
+ int HEAP_ZERO_MEMORY ;
+ int MSG_GROUP_HELP ;
+ int MSG_GROUP_SYNTAX ;
+ scalar_t__ NERR_Success ;
+ scalar_t__ NetGroupAdd (int *,int,int ,int *) ;
+ scalar_t__ NetGroupAddUser (int *,int*,int*) ;
+ scalar_t__ NetGroupDel (int *,int*) ;
+ scalar_t__ NetGroupDelUser (int *,int*,int*) ;
+ scalar_t__ NetGroupSetInfo (int *,int*,int,int ,int *) ;
+ int PrintErrorMessage (int) ;
+ int PrintMessageString (int) ;
+ int PrintNetMessage (int ) ;
+ int** RtlAllocateHeap (int ,int ,int) ;
+ int RtlFreeHeap (int ,int ,int**) ;
+ int RtlGetProcessHeap () ;
+ int StdErr ;
+ int StdOut ;
+ scalar_t__ TRUE ;
+ scalar_t__ _wcsicmp (int*,char*) ;
+ scalar_t__ _wcsnicmp (int*,char*,int) ;
 
 INT
 cmdGroup(
@@ -65,12 +65,12 @@ cmdGroup(
     ULONG dwUserCount = 0;
     BOOL bAdd = FALSE;
     BOOL bDelete = FALSE;
-#if 0
-    BOOL bDomain = FALSE;
-#endif
-    PWSTR pGroupName = NULL;
-    PWSTR pComment = NULL;
-    PWSTR *pUsers = NULL;
+
+
+
+    PWSTR pGroupName = ((void*)0);
+    PWSTR pComment = ((void*)0);
+    PWSTR *pUsers = ((void*)0);
     GROUP_INFO_0 Info0;
     GROUP_INFO_1 Info1;
     GROUP_INFO_1002 Info1002;
@@ -109,7 +109,7 @@ cmdGroup(
         pUsers = RtlAllocateHeap(RtlGetProcessHeap(),
                                  HEAP_ZERO_MEMORY,
                                  dwUserCount * sizeof(PGROUP_USERS_INFO_0));
-        if (pUsers == NULL)
+        if (pUsers == ((void*)0))
             return 0;
     }
 
@@ -148,19 +148,19 @@ cmdGroup(
         else if (_wcsicmp(argv[i], L"/domain") == 0)
         {
             ConPuts(StdErr, L"The /DOMAIN option is not supported yet.\n");
-#if 0
-            bDomain = TRUE;
-#endif
+
+
+
         }
         else
         {
-            PrintErrorMessage(3506/*, argv[i]*/);
+            PrintErrorMessage(3506 );
             result = 1;
             goto done;
         }
     }
 
-    if (pGroupName == NULL)
+    if (pGroupName == ((void*)0))
     {
         result = 1;
         goto done;
@@ -172,23 +172,23 @@ cmdGroup(
         goto done;
     }
 
-    if (pUsers == NULL)
+    if (pUsers == ((void*)0))
     {
-        if (!bAdd && !bDelete && pComment != NULL)
+        if (!bAdd && !bDelete && pComment != ((void*)0))
         {
-            /* Set group comment */
+
             Info1002.grpi1002_comment = pComment;
-            Status = NetGroupSetInfo(NULL,
+            Status = NetGroupSetInfo(((void*)0),
                                      pGroupName,
                                      1002,
                                      (LPBYTE)&Info1002,
-                                     NULL);
+                                     ((void*)0));
             ConPrintf(StdOut, L"Status: %lu\n", Status);
         }
         else if (bAdd && !bDelete)
         {
-            /* Add the group */
-            if (pComment == NULL)
+
+            if (pComment == ((void*)0))
             {
                 Info0.grpi0_name = pGroupName;
             }
@@ -198,16 +198,16 @@ cmdGroup(
                 Info1.grpi1_comment = pComment;
             }
 
-            Status = NetGroupAdd(NULL,
-                                 (pComment == NULL) ? 0 : 1,
-                                 (pComment == NULL) ? (LPBYTE)&Info0 : (LPBYTE)&Info1,
-                                 NULL);
+            Status = NetGroupAdd(((void*)0),
+                                 (pComment == ((void*)0)) ? 0 : 1,
+                                 (pComment == ((void*)0)) ? (LPBYTE)&Info0 : (LPBYTE)&Info1,
+                                 ((void*)0));
             ConPrintf(StdOut, L"Status: %lu\n", Status);
         }
-        else if (!bAdd && bDelete && pComment == NULL)
+        else if (!bAdd && bDelete && pComment == ((void*)0))
         {
-            /* Delete the group */
-            Status = NetGroupDel(NULL,
+
+            Status = NetGroupDel(((void*)0),
                                  pGroupName);
             ConPrintf(StdOut, L"Status: %lu\n", Status);
         }
@@ -218,12 +218,12 @@ cmdGroup(
     }
     else
     {
-        if (bAdd && !bDelete && pComment == NULL)
+        if (bAdd && !bDelete && pComment == ((void*)0))
         {
-            /* Add group user */
+
             for (i = 0; i < dwUserCount; i++)
             {
-                Status = NetGroupAddUser(NULL,
+                Status = NetGroupAddUser(((void*)0),
                                          pGroupName,
                                          pUsers[i]);
                 if (Status != NERR_Success)
@@ -231,12 +231,12 @@ cmdGroup(
             }
             ConPrintf(StdOut, L"Status: %lu\n", Status);
         }
-        else if (!bAdd && bDelete && pComment == NULL)
+        else if (!bAdd && bDelete && pComment == ((void*)0))
         {
-            /* Delete group members */
+
             for (i = 0; i < dwUserCount; i++)
             {
-                Status = NetGroupDelUser(NULL,
+                Status = NetGroupDelUser(((void*)0),
                                          pGroupName,
                                          pUsers[i]);
                 if (Status != NERR_Success)
@@ -251,7 +251,7 @@ cmdGroup(
     }
 
 done:
-    if (pUsers != NULL)
+    if (pUsers != ((void*)0))
         RtlFreeHeap(RtlGetProcessHeap(), 0, pUsers);
 
     if (result != 0)

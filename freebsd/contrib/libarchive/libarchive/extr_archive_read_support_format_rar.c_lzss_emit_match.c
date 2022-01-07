@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {unsigned char* window; int position; } ;
 struct rar {TYPE_1__ lzss; } ;
 
-/* Variables and functions */
- int lzss_current_offset (TYPE_1__*) ; 
- int lzss_mask (TYPE_1__*) ; 
- int lzss_size (TYPE_1__*) ; 
- int /*<<< orphan*/  memcpy (unsigned char*,unsigned char*,int) ; 
+
+ int lzss_current_offset (TYPE_1__*) ;
+ int lzss_mask (TYPE_1__*) ;
+ int lzss_size (TYPE_1__*) ;
+ int memcpy (unsigned char*,unsigned char*,int) ;
 
 __attribute__((used)) static inline void
 lzss_emit_match(struct rar *rar, int offset, int length)

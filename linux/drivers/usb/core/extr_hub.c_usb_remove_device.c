@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct usb_interface {int dummy; } ;
-struct usb_hub {int /*<<< orphan*/  removed_bits; int /*<<< orphan*/  intfdev; } ;
-struct usb_device {int /*<<< orphan*/  portnum; int /*<<< orphan*/  parent; } ;
+struct usb_hub {int removed_bits; int intfdev; } ;
+struct usb_device {int portnum; int parent; } ;
 
-/* Variables and functions */
- int EINVAL ; 
- int /*<<< orphan*/  hub_port_logical_disconnect (struct usb_hub*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- struct usb_interface* to_usb_interface (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  usb_autopm_get_interface (struct usb_interface*) ; 
- int /*<<< orphan*/  usb_autopm_put_interface (struct usb_interface*) ; 
- struct usb_hub* usb_hub_to_struct_hub (int /*<<< orphan*/ ) ; 
+
+ int EINVAL ;
+ int hub_port_logical_disconnect (struct usb_hub*,int ) ;
+ int set_bit (int ,int ) ;
+ struct usb_interface* to_usb_interface (int ) ;
+ int usb_autopm_get_interface (struct usb_interface*) ;
+ int usb_autopm_put_interface (struct usb_interface*) ;
+ struct usb_hub* usb_hub_to_struct_hub (int ) ;
 
 int usb_remove_device(struct usb_device *udev)
 {
-	struct usb_hub *hub;
-	struct usb_interface *intf;
+ struct usb_hub *hub;
+ struct usb_interface *intf;
 
-	if (!udev->parent)	/* Can't remove a root hub */
-		return -EINVAL;
-	hub = usb_hub_to_struct_hub(udev->parent);
-	intf = to_usb_interface(hub->intfdev);
+ if (!udev->parent)
+  return -EINVAL;
+ hub = usb_hub_to_struct_hub(udev->parent);
+ intf = to_usb_interface(hub->intfdev);
 
-	usb_autopm_get_interface(intf);
-	set_bit(udev->portnum, hub->removed_bits);
-	hub_port_logical_disconnect(hub, udev->portnum);
-	usb_autopm_put_interface(intf);
-	return 0;
+ usb_autopm_get_interface(intf);
+ set_bit(udev->portnum, hub->removed_bits);
+ hub_port_logical_disconnect(hub, udev->portnum);
+ usb_autopm_put_interface(intf);
+ return 0;
 }

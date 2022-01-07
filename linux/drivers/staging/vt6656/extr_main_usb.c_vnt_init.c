@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct vnt_private {int mac_hw; int /*<<< orphan*/  hw; int /*<<< orphan*/  permanent_net_addr; } ;
 
-/* Variables and functions */
- int EAGAIN ; 
- int ENODEV ; 
- int /*<<< orphan*/  SET_IEEE80211_PERM_ADDR (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ ieee80211_register_hw (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vnt_init_bands (struct vnt_private*) ; 
- int /*<<< orphan*/  vnt_init_registers (struct vnt_private*) ; 
- int /*<<< orphan*/  vnt_radio_power_off (struct vnt_private*) ; 
+
+
+
+struct vnt_private {int mac_hw; int hw; int permanent_net_addr; } ;
+
+
+ int EAGAIN ;
+ int ENODEV ;
+ int SET_IEEE80211_PERM_ADDR (int ,int ) ;
+ scalar_t__ ieee80211_register_hw (int ) ;
+ int vnt_init_bands (struct vnt_private*) ;
+ int vnt_init_registers (struct vnt_private*) ;
+ int vnt_radio_power_off (struct vnt_private*) ;
 
 int vnt_init(struct vnt_private *priv)
 {
-	if (!(vnt_init_registers(priv)))
-		return -EAGAIN;
+ if (!(vnt_init_registers(priv)))
+  return -EAGAIN;
 
-	SET_IEEE80211_PERM_ADDR(priv->hw, priv->permanent_net_addr);
+ SET_IEEE80211_PERM_ADDR(priv->hw, priv->permanent_net_addr);
 
-	vnt_init_bands(priv);
+ vnt_init_bands(priv);
 
-	if (ieee80211_register_hw(priv->hw))
-		return -ENODEV;
+ if (ieee80211_register_hw(priv->hw))
+  return -ENODEV;
 
-	priv->mac_hw = true;
+ priv->mac_hw = 1;
 
-	vnt_radio_power_off(priv);
+ vnt_radio_power_off(priv);
 
-	return 0;
+ return 0;
 }

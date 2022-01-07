@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int Halt; int /*<<< orphan*/  Lock; int /*<<< orphan*/  Cedar; int /*<<< orphan*/  Event; int /*<<< orphan*/  Thread; } ;
-typedef  TYPE_1__ DDNS_CLIENT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DeleteLock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Free (TYPE_1__*) ; 
- int /*<<< orphan*/  INFINITE ; 
- int /*<<< orphan*/  ReleaseCedar (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReleaseEvent (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReleaseThread (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Set (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WaitThread (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int Halt; int Lock; int Cedar; int Event; int Thread; } ;
+typedef TYPE_1__ DDNS_CLIENT ;
+
+
+ int DeleteLock (int ) ;
+ int Free (TYPE_1__*) ;
+ int INFINITE ;
+ int ReleaseCedar (int ) ;
+ int ReleaseEvent (int ) ;
+ int ReleaseThread (int ) ;
+ int Set (int ) ;
+ int WaitThread (int ,int ) ;
 
 void FreeDDNSClient(DDNS_CLIENT *c)
 {
-	// Validate arguments
-	if (c == NULL)
-	{
-		return;
-	}
 
-	// Stop the thread 
-	c->Halt = true;
-	Set(c->Event);
+ if (c == ((void*)0))
+ {
+  return;
+ }
 
-	WaitThread(c->Thread, INFINITE);
-	ReleaseThread(c->Thread);
 
-	ReleaseEvent(c->Event);
+ c->Halt = 1;
+ Set(c->Event);
 
-	ReleaseCedar(c->Cedar);
-	DeleteLock(c->Lock);
+ WaitThread(c->Thread, INFINITE);
+ ReleaseThread(c->Thread);
 
-	Free(c);
+ ReleaseEvent(c->Event);
+
+ ReleaseCedar(c->Cedar);
+ DeleteLock(c->Lock);
+
+ Free(c);
 }

@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_5__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_5__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct sqls_data {int packet_state; unsigned int packet_len; unsigned int output_packet_seq; unsigned int packet_seq; int block_size; int packet_padding; scalar_t__ auth_state; int crypto_flags; int auth_user; } ;
 struct TYPE_7__ {int total_bytes; scalar_t__ pptr; } ;
-struct connection {int fd; int flags; int status; int error; int /*<<< orphan*/  Q; TYPE_2__ In; TYPE_1__* type; scalar_t__ crypto; } ;
+struct connection {int fd; int flags; int status; int error; int Q; TYPE_2__ In; TYPE_1__* type; scalar_t__ crypto; } ;
 struct TYPE_8__ {int (* sql_start_crypto ) (struct connection*,char*,int) ;int (* execute ) (struct connection*,int) ;} ;
-struct TYPE_6__ {int /*<<< orphan*/  (* crypto_decrypt_input ) (struct connection*) ;} ;
+struct TYPE_6__ {int (* crypto_decrypt_input ) (struct connection*) ;} ;
 
-/* Variables and functions */
- int C_FAILED ; 
- int C_STOPREAD ; 
- int SKIP_ALL_BYTES ; 
- struct sqls_data* SQLS_DATA (struct connection*) ; 
- TYPE_5__* SQLS_FUNC (struct connection*) ; 
- int /*<<< orphan*/  advance_skip_read_ptr (TYPE_2__*,int) ; 
- int /*<<< orphan*/  assert (int) ; 
- void* conn_error ; 
- scalar_t__ conn_expect_query ; 
- int conn_reading_query ; 
- int conn_running ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- scalar_t__ nbit_get_ptr (int /*<<< orphan*/ *) ; 
- int nbit_read_in (int /*<<< orphan*/ *,unsigned int*,int) ; 
- int /*<<< orphan*/  nbit_set (int /*<<< orphan*/ *,TYPE_2__*) ; 
- int nbit_total_ready_bytes (int /*<<< orphan*/ *) ; 
- int read_in (TYPE_2__*,char*,int) ; 
- int /*<<< orphan*/  send_error_packet (struct connection*,int,int,char*,int,int) ; 
- int /*<<< orphan*/  send_ok_packet (struct connection*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,char*,int,int) ; 
- scalar_t__ sql_auth_ok ; 
- scalar_t__ sql_auth_sent ; 
- int sqls_inner_authorise (struct connection*) ; 
- int /*<<< orphan*/  stderr ; 
- int stub1 (struct connection*,char*,int) ; 
- int /*<<< orphan*/  stub2 (struct connection*) ; 
- int stub3 (struct connection*,int) ; 
- int verbosity ; 
+
+ int C_FAILED ;
+ int C_STOPREAD ;
+ int SKIP_ALL_BYTES ;
+ struct sqls_data* SQLS_DATA (struct connection*) ;
+ TYPE_5__* SQLS_FUNC (struct connection*) ;
+ int advance_skip_read_ptr (TYPE_2__*,int) ;
+ int assert (int) ;
+ void* conn_error ;
+ scalar_t__ conn_expect_query ;
+ int conn_reading_query ;
+ int conn_running ;
+ int fprintf (int ,char*,...) ;
+ scalar_t__ nbit_get_ptr (int *) ;
+ int nbit_read_in (int *,unsigned int*,int) ;
+ int nbit_set (int *,TYPE_2__*) ;
+ int nbit_total_ready_bytes (int *) ;
+ int read_in (TYPE_2__*,char*,int) ;
+ int send_error_packet (struct connection*,int,int,char*,int,int) ;
+ int send_ok_packet (struct connection*,int ,int ,int,int ,char*,int,int) ;
+ scalar_t__ sql_auth_ok ;
+ scalar_t__ sql_auth_sent ;
+ int sqls_inner_authorise (struct connection*) ;
+ int stderr ;
+ int stub1 (struct connection*,char*,int) ;
+ int stub2 (struct connection*) ;
+ int stub3 (struct connection*,int) ;
+ int verbosity ;
 
 int sqls_parse_execute (struct connection *c) {
   struct sqls_data *D = SQLS_DATA(c);
@@ -78,7 +78,7 @@ int sqls_parse_execute (struct connection *c) {
     if (len < D->packet_len + D->packet_padding) {
       return D->packet_len + D->packet_padding - len;
     }
-    /* complete packet ready */
+
     if (verbosity > 1) {
       fprintf (stderr, "client packet ready: len=%d, padding=%d, seq_num=%d\n", D->packet_len, D->packet_padding, D->packet_seq);
     }
@@ -117,7 +117,7 @@ int sqls_parse_execute (struct connection *c) {
         return 0;
       }
       if (res) {
-        /* send ok packet */
+
         send_ok_packet (c, 0, 0, 2, 0, "Success", 7, 2);
         if (verbosity > 1) {
           fprintf (stderr, "authorized ok\n");
@@ -129,7 +129,7 @@ int sqls_parse_execute (struct connection *c) {
           fprintf (stderr, "authorization error\n");
         }
         send_error_packet (c, 1045, 28000, "Failed", 6, 2);
-        /* send error packet */
+
       }
       advance_skip_read_ptr (&c->In, D->packet_len + D->packet_padding + 4);
     } else {
@@ -143,17 +143,17 @@ int sqls_parse_execute (struct connection *c) {
 
       int keep_total_bytes = c->In.total_bytes;
 
-      /* execute */
+
       c->status = conn_running;
       int res = SQLS_FUNC(c)->execute (c, op);
 
-      //dump_connection_buffers (c);
+
 
       if (res == SKIP_ALL_BYTES) {
-//      assert (keep_total_bytes == c->In.total_bytes);  // this assert FAILS!
+
         if (keep_total_bytes != c->In.total_bytes) {
-          fprintf (stderr, "error: in SKIP_ALL_BYTES for connection %d: keep_total=%d != total_bytes=%d, packet_len=%d, packet_padding=%d, packet_state=%d, packet_seq=%d, op=%d, status=%d\n", 
-          		    c->fd, keep_total_bytes, c->In.total_bytes, D->packet_len, D->packet_padding, D->packet_state, D->packet_seq, op, c->status);
+          fprintf (stderr, "error: in SKIP_ALL_BYTES for connection %d: keep_total=%d != total_bytes=%d, packet_len=%d, packet_padding=%d, packet_state=%d, packet_seq=%d, op=%d, status=%d\n",
+                c->fd, keep_total_bytes, c->In.total_bytes, D->packet_len, D->packet_padding, D->packet_state, D->packet_seq, op, c->status);
         }
         advance_skip_read_ptr (&c->In, D->packet_len + D->packet_padding + 4);
       } else if (keep_total_bytes != c->In.total_bytes) {

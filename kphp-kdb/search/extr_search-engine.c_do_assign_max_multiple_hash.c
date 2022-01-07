@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct hashset_ll {int filled; } ;
-struct connection {int /*<<< orphan*/  In; } ;
+struct connection {int In; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int do_assign_max_rate_using_hashset (struct hashset_ll*,int,int) ; 
- int /*<<< orphan*/  hashset_ll_free (struct hashset_ll*) ; 
- int /*<<< orphan*/  hashset_ll_init (struct hashset_ll*,int) ; 
- int /*<<< orphan*/  hashset_ll_insert (struct hashset_ll*,long long) ; 
- int read_in (int /*<<< orphan*/ *,char*,int) ; 
- int sscanf (char*,char*,long long*) ; 
- char* strchr (char*,char) ; 
- char* value_buff ; 
- int /*<<< orphan*/  vkprintf (int,char*,long long) ; 
+
+ int assert (int) ;
+ int do_assign_max_rate_using_hashset (struct hashset_ll*,int,int) ;
+ int hashset_ll_free (struct hashset_ll*) ;
+ int hashset_ll_init (struct hashset_ll*,int) ;
+ int hashset_ll_insert (struct hashset_ll*,long long) ;
+ int read_in (int *,char*,int) ;
+ int sscanf (char*,char*,long long*) ;
+ char* strchr (char*,char) ;
+ char* value_buff ;
+ int vkprintf (int,char*,long long) ;
 
 int do_assign_max_multiple_hash (struct connection *c, int size, int rate_id, int value) {
   char *a = value_buff;
@@ -45,7 +45,7 @@ int do_assign_max_multiple_hash (struct connection *c, int size, int rate_id, in
   char *p = a;
   while (*p) {
     char *q = strchr (p, ',');
-    if (q != NULL) {
+    if (q != ((void*)0)) {
       *q = 0;
     }
     long long u;
@@ -57,7 +57,7 @@ int do_assign_max_multiple_hash (struct connection *c, int size, int rate_id, in
     if (u) {
       hashset_ll_insert (&H, u);
     }
-    if (q == NULL) {
+    if (q == ((void*)0)) {
       break;
     }
     p = q + 1;

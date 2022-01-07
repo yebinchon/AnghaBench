@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-typedef  int /*<<< orphan*/  TestDb ;
-struct TYPE_2__ {int nAlloc; int /*<<< orphan*/  pFetch; int /*<<< orphan*/ * aAlloc; } ;
-typedef  TYPE_1__ SqlDb ;
 
-/* Variables and functions */
- int LSM_OK ; 
- int SQLITE_ROW ; 
- int /*<<< orphan*/  SQLITE_STATIC ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
- scalar_t__ malloc (int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  sqlite3_bind_blob (int /*<<< orphan*/ ,int,void*,int,int /*<<< orphan*/ ) ; 
- scalar_t__ sqlite3_column_blob (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int sqlite3_column_bytes (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int sqlite3_reset (int /*<<< orphan*/ ) ; 
- int sqlite3_step (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u8 ;
+typedef int TestDb ;
+struct TYPE_2__ {int nAlloc; int pFetch; int * aAlloc; } ;
+typedef TYPE_1__ SqlDb ;
+
+
+ int LSM_OK ;
+ int SQLITE_ROW ;
+ int SQLITE_STATIC ;
+ int assert (int) ;
+ int free (int *) ;
+ scalar_t__ malloc (int) ;
+ int memcpy (int *,int *,int) ;
+ int sqlite3_bind_blob (int ,int,void*,int,int ) ;
+ scalar_t__ sqlite3_column_blob (int ,int ) ;
+ int sqlite3_column_bytes (int ,int ) ;
+ int sqlite3_reset (int ) ;
+ int sqlite3_step (int ) ;
 
 __attribute__((used)) static int sql_fetch(
-  TestDb *pTestDb, 
-  void *pKey, 
-  int nKey, 
-  void **ppVal, 
+  TestDb *pTestDb,
+  void *pKey,
+  int nKey,
+  void **ppVal,
   int *pnVal
 ){
   SqlDb *pDb = (SqlDb *)pTestDb;

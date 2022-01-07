@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct track {scalar_t__ type; int /*<<< orphan*/  selected; int /*<<< orphan*/  stream; int /*<<< orphan*/  demuxer; } ;
+
+
+
+
+struct track {scalar_t__ type; int selected; int stream; int demuxer; } ;
 struct MPContext {struct track* seek_slave; } ;
 
-/* Variables and functions */
- double MP_NOPTS_VALUE ; 
- scalar_t__ STREAM_SUB ; 
- int /*<<< orphan*/  demuxer_select_track (int /*<<< orphan*/ ,int /*<<< orphan*/ ,double,int /*<<< orphan*/ ) ; 
- double get_current_time (struct MPContext*) ; 
- scalar_t__ get_track_seek_offset (struct MPContext*,struct track*) ; 
+
+ double MP_NOPTS_VALUE ;
+ scalar_t__ STREAM_SUB ;
+ int demuxer_select_track (int ,int ,double,int ) ;
+ double get_current_time (struct MPContext*) ;
+ scalar_t__ get_track_seek_offset (struct MPContext*,struct track*) ;
 
 void reselect_demux_stream(struct MPContext *mpctx, struct track *track)
 {
@@ -32,5 +32,5 @@ void reselect_demux_stream(struct MPContext *mpctx, struct track *track)
     }
     demuxer_select_track(track->demuxer, track->stream, pts, track->selected);
     if (track == mpctx->seek_slave)
-        mpctx->seek_slave = NULL;
+        mpctx->seek_slave = ((void*)0);
 }

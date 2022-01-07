@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_9__ {int numcomps; TYPE_1__* comps; } ;
-typedef  TYPE_2__ opj_image_t ;
-struct TYPE_10__ {int cp_cinema; int numresolution; int tcp_numlayers; float* tcp_rates; int cp_disto_alloc; int /*<<< orphan*/  max_comp_size; int /*<<< orphan*/  POC; int /*<<< orphan*/  numpocs; void* cp_rsiz; } ;
-typedef  TYPE_3__ opj_cparameters_t ;
+typedef TYPE_2__ opj_image_t ;
+struct TYPE_10__ {int cp_cinema; int numresolution; int tcp_numlayers; float* tcp_rates; int cp_disto_alloc; int max_comp_size; int POC; int numpocs; void* cp_rsiz; } ;
+typedef TYPE_3__ opj_cparameters_t ;
 struct TYPE_11__ {int* rates; } ;
-typedef  TYPE_4__ img_fol_t ;
+typedef TYPE_4__ img_fol_t ;
 struct TYPE_8__ {int w; int h; int prec; int dx; int dy; } ;
 
-/* Variables and functions */
-#define  CINEMA2K_24 130 
-#define  CINEMA2K_48 129 
-#define  CINEMA4K_24 128 
- int CINEMA_24_CS ; 
- int CINEMA_48_CS ; 
- int /*<<< orphan*/  COMP_24_CS ; 
- int /*<<< orphan*/  COMP_48_CS ; 
- void* STD_RSIZ ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,int) ; 
- int /*<<< orphan*/  initialise_4K_poc (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  stdout ; 
+
+
+
+
+ int CINEMA_24_CS ;
+ int CINEMA_48_CS ;
+ int COMP_24_CS ;
+ int COMP_48_CS ;
+ void* STD_RSIZ ;
+ int fprintf (int ,char*,int,int) ;
+ int initialise_4K_poc (int ,int) ;
+ int stdout ;
 
 __attribute__((used)) static void cinema_setup_encoder(opj_cparameters_t *parameters,
                                  opj_image_t *image, img_fol_t *img_fol)
@@ -42,8 +42,8 @@ __attribute__((used)) static void cinema_setup_encoder(opj_cparameters_t *parame
     float temp_rate;
 
     switch (parameters->cp_cinema) {
-    case CINEMA2K_24:
-    case CINEMA2K_48:
+    case 130:
+    case 129:
         if (parameters->numresolution > 6) {
             parameters->numresolution = 6;
         }
@@ -56,7 +56,7 @@ __attribute__((used)) static void cinema_setup_encoder(opj_cparameters_t *parame
         }
         break;
 
-    case CINEMA4K_24:
+    case 128:
         if (parameters->numresolution < 1) {
             parameters->numresolution = 1;
         } else if (parameters->numresolution > 7) {
@@ -77,8 +77,8 @@ __attribute__((used)) static void cinema_setup_encoder(opj_cparameters_t *parame
     }
 
     switch (parameters->cp_cinema) {
-    case CINEMA2K_24:
-    case CINEMA4K_24:
+    case 130:
+    case 128:
         for (i = 0 ; i < parameters->tcp_numlayers ; i++) {
             temp_rate = 0 ;
             if (img_fol->rates[i] == 0) {
@@ -101,7 +101,7 @@ __attribute__((used)) static void cinema_setup_encoder(opj_cparameters_t *parame
         parameters->max_comp_size = COMP_24_CS;
         break;
 
-    case CINEMA2K_48:
+    case 129:
         for (i = 0 ; i < parameters->tcp_numlayers ; i++) {
             temp_rate = 0 ;
             if (img_fol->rates[i] == 0) {

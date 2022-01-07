@@ -1,65 +1,65 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_11__ {int AmlOpcode; int /*<<< orphan*/  DisasmFlags; int /*<<< orphan*/  DisasmOpcode; } ;
-struct TYPE_10__ {int /*<<< orphan*/  Name; } ;
+
+
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+struct TYPE_11__ {int AmlOpcode; int DisasmFlags; int DisasmOpcode; } ;
+struct TYPE_10__ {int Name; } ;
 struct TYPE_13__ {TYPE_2__ Common; TYPE_1__ Named; } ;
 struct TYPE_12__ {struct TYPE_12__* Next; TYPE_4__* Op; } ;
-typedef  int /*<<< orphan*/  BOOLEAN ;
-typedef  int /*<<< orphan*/  ACPI_STATUS ;
-typedef  TYPE_3__ ACPI_PARSE_OBJECT_LIST ;
-typedef  TYPE_4__ ACPI_PARSE_OBJECT ;
+typedef int BOOLEAN ;
+typedef int ACPI_STATUS ;
+typedef TYPE_3__ ACPI_PARSE_OBJECT_LIST ;
+typedef TYPE_4__ ACPI_PARSE_OBJECT ;
 
-/* Variables and functions */
- TYPE_3__* ACPI_ALLOCATE_ZEROED (int) ; 
- int /*<<< orphan*/  ACPI_DASM_SWITCH ; 
- int /*<<< orphan*/  ACPI_FREE (TYPE_3__*) ; 
- int /*<<< orphan*/  ACPI_PARSEOP_IGNORE ; 
- int /*<<< orphan*/  AE_NO_MEMORY ; 
- int /*<<< orphan*/  AE_OK ; 
-#define  AML_NAME_OP 129 
-#define  AML_WHILE_OP 128 
- int /*<<< orphan*/  AcpiDmIsSwitchBlock (TYPE_4__*,char**) ; 
- TYPE_3__* AcpiGbl_TempListHead ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  strncmp (char*,char*,int) ; 
+
+ TYPE_3__* ACPI_ALLOCATE_ZEROED (int) ;
+ int ACPI_DASM_SWITCH ;
+ int ACPI_FREE (TYPE_3__*) ;
+ int ACPI_PARSEOP_IGNORE ;
+ int AE_NO_MEMORY ;
+ int AE_OK ;
+
+
+ int AcpiDmIsSwitchBlock (TYPE_4__*,char**) ;
+ TYPE_3__* AcpiGbl_TempListHead ;
+ int FALSE ;
+ int TRUE ;
+ int fprintf (int ,char*,char*) ;
+ int stderr ;
+ int strncmp (char*,char*,int) ;
 
 ACPI_STATUS
 AcpiDmProcessSwitch (
-    ACPI_PARSE_OBJECT       *Op)
+    ACPI_PARSE_OBJECT *Op)
 {
-    char                    *Temp = NULL;
-    ACPI_PARSE_OBJECT_LIST  *NewTemp;
-    ACPI_PARSE_OBJECT_LIST  *Current;
-    ACPI_PARSE_OBJECT_LIST  *Previous;
-    BOOLEAN                 FoundTemp = FALSE;
+    char *Temp = ((void*)0);
+    ACPI_PARSE_OBJECT_LIST *NewTemp;
+    ACPI_PARSE_OBJECT_LIST *Current;
+    ACPI_PARSE_OBJECT_LIST *Previous;
+    BOOLEAN FoundTemp = FALSE;
 
 
     switch (Op->Common.AmlOpcode)
     {
-    case AML_NAME_OP:
+    case 129:
 
         Temp = (char *) (&Op->Named.Name);
 
         if (!strncmp(Temp, "_T_", 3))
         {
-            /* Allocate and init a new Temp List node */
+
 
             NewTemp = ACPI_ALLOCATE_ZEROED (sizeof (ACPI_PARSE_OBJECT_LIST));
             if (!NewTemp)
@@ -78,34 +78,34 @@ AcpiDmProcessSwitch (
             {
                 AcpiGbl_TempListHead = NewTemp;
                 AcpiGbl_TempListHead->Op = Op;
-                AcpiGbl_TempListHead->Next = NULL;
+                AcpiGbl_TempListHead->Next = ((void*)0);
             }
         }
         break;
 
-    case AML_WHILE_OP:
+    case 128:
 
         if (!AcpiDmIsSwitchBlock (Op, &Temp))
         {
             break;
         }
 
-        /* Found a Switch */
+
 
         Op->Common.DisasmOpcode = ACPI_DASM_SWITCH;
 
         Previous = Current = AcpiGbl_TempListHead;
         while (Current)
         {
-            /* Note, if we get here Temp is not NULL */
+
 
             if (!strncmp(Temp, (char *) (&Current->Op->Named.Name), 4))
             {
-                /* Match found. Ignore disassembly */
+
 
                 Current->Op->Common.DisasmFlags |= ACPI_PARSEOP_IGNORE;
 
-                /* Remove from list */
+
 
                 if (Current == AcpiGbl_TempListHead)
                 {
@@ -116,8 +116,8 @@ AcpiDmProcessSwitch (
                     Previous->Next = Current->Next;
                 }
 
-                Current->Op = NULL;
-                Current->Next = NULL;
+                Current->Op = ((void*)0);
+                Current->Next = ((void*)0);
                 ACPI_FREE (Current);
                 FoundTemp = TRUE;
                 break;

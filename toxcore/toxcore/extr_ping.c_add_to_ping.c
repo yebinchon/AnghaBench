@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_20__   TYPE_7__ ;
-typedef  struct TYPE_19__   TYPE_5__ ;
-typedef  struct TYPE_18__   TYPE_2__ ;
-typedef  struct TYPE_17__   TYPE_1__ ;
-typedef  struct TYPE_16__   TYPE_12__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_20__ {int /*<<< orphan*/  ip; } ;
-struct TYPE_19__ {int /*<<< orphan*/  self_public_key; int /*<<< orphan*/  close_clientlist; } ;
-struct TYPE_18__ {int /*<<< orphan*/  ip; } ;
+
+
+typedef struct TYPE_20__ TYPE_7__ ;
+typedef struct TYPE_19__ TYPE_5__ ;
+typedef struct TYPE_18__ TYPE_2__ ;
+typedef struct TYPE_17__ TYPE_1__ ;
+typedef struct TYPE_16__ TYPE_12__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_20__ {int ip; } ;
+struct TYPE_19__ {int self_public_key; int close_clientlist; } ;
+struct TYPE_18__ {int ip; } ;
 struct TYPE_17__ {TYPE_5__* dht; TYPE_12__* to_ping; } ;
-struct TYPE_16__ {int /*<<< orphan*/  public_key; TYPE_7__ ip_port; } ;
-typedef  TYPE_1__ PING ;
-typedef  TYPE_2__ IP_Port ;
+struct TYPE_16__ {int public_key; TYPE_7__ ip_port; } ;
+typedef TYPE_1__ PING ;
+typedef TYPE_2__ IP_Port ;
 
-/* Variables and functions */
- scalar_t__ DHT_getfriendip (TYPE_5__*,int /*<<< orphan*/  const*,TYPE_2__*) ; 
- int /*<<< orphan*/  LCLIENT_LIST ; 
- unsigned int MAX_TO_PING ; 
- scalar_t__ add_to_list (TYPE_12__*,unsigned int,int /*<<< orphan*/  const*,TYPE_2__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  crypto_box_PUBLICKEYBYTES ; 
- scalar_t__ in_list (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,TYPE_2__) ; 
- int /*<<< orphan*/  ip_isset (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ipport_copy (TYPE_7__*,TYPE_2__*) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  node_addable_to_close_list (TYPE_5__*,int /*<<< orphan*/  const*,TYPE_2__) ; 
- scalar_t__ public_key_cmp (int /*<<< orphan*/ ,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  send_ping_request (TYPE_1__*,TYPE_2__,int /*<<< orphan*/  const*) ; 
+
+ scalar_t__ DHT_getfriendip (TYPE_5__*,int const*,TYPE_2__*) ;
+ int LCLIENT_LIST ;
+ unsigned int MAX_TO_PING ;
+ scalar_t__ add_to_list (TYPE_12__*,unsigned int,int const*,TYPE_2__,int ) ;
+ int crypto_box_PUBLICKEYBYTES ;
+ scalar_t__ in_list (int ,int ,int const*,TYPE_2__) ;
+ int ip_isset (int *) ;
+ int ipport_copy (TYPE_7__*,TYPE_2__*) ;
+ int memcpy (int ,int const*,int ) ;
+ int node_addable_to_close_list (TYPE_5__*,int const*,TYPE_2__) ;
+ scalar_t__ public_key_cmp (int ,int const*) ;
+ int send_ping_request (TYPE_1__*,TYPE_2__,int const*) ;
 
 int add_to_ping(PING *ping, const uint8_t *public_key, IP_Port ip_port)
 {

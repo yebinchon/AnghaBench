@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct internal_extra_pe_aouthdr {int BaseOfData; int AddressOfEntryPoint; int BaseOfCode; int NumberOfRvaAndSizes; TYPE_1__* DataDirectory; scalar_t__ ImageBase; void* LoaderFlags; int /*<<< orphan*/  SizeOfHeapCommit; int /*<<< orphan*/  SizeOfHeapReserve; int /*<<< orphan*/  SizeOfStackCommit; int /*<<< orphan*/  SizeOfStackReserve; void* DllCharacteristics; void* Subsystem; void* CheckSum; void* SizeOfHeaders; void* SizeOfImage; void* Reserved1; void* MinorSubsystemVersion; void* MajorSubsystemVersion; void* MinorImageVersion; void* MajorImageVersion; void* MinorOperatingSystemVersion; void* MajorOperatingSystemVersion; void* FileAlignment; void* SectionAlignment; int /*<<< orphan*/  SizeOfUninitializedData; scalar_t__ SizeOfInitializedData; scalar_t__ SizeOfCode; void* MinorLinkerVersion; void* MajorLinkerVersion; void* Magic; } ;
-struct internal_aouthdr {int entry; int text_start; int data_start; scalar_t__ dsize; scalar_t__ tsize; int /*<<< orphan*/  bsize; void* magic; void* vstamp; struct internal_extra_pe_aouthdr pe; } ;
-typedef  int /*<<< orphan*/  bfd ;
-struct TYPE_6__ {scalar_t__ vstamp; int /*<<< orphan*/  data_start; int /*<<< orphan*/  text_start; int /*<<< orphan*/  entry; int /*<<< orphan*/  bsize; int /*<<< orphan*/  dsize; int /*<<< orphan*/  tsize; scalar_t__ magic; } ;
-struct TYPE_5__ {int /*<<< orphan*/ ** DataDirectory; int /*<<< orphan*/  NumberOfRvaAndSizes; int /*<<< orphan*/  LoaderFlags; int /*<<< orphan*/  SizeOfHeapCommit; int /*<<< orphan*/  SizeOfHeapReserve; int /*<<< orphan*/  SizeOfStackCommit; int /*<<< orphan*/  SizeOfStackReserve; scalar_t__ DllCharacteristics; scalar_t__ Subsystem; int /*<<< orphan*/  CheckSum; int /*<<< orphan*/  SizeOfHeaders; int /*<<< orphan*/  SizeOfImage; int /*<<< orphan*/  Reserved1; scalar_t__ MinorSubsystemVersion; scalar_t__ MajorSubsystemVersion; scalar_t__ MinorImageVersion; scalar_t__ MajorImageVersion; scalar_t__ MinorOperatingSystemVersion; scalar_t__ MajorOperatingSystemVersion; int /*<<< orphan*/  FileAlignment; int /*<<< orphan*/  SectionAlignment; int /*<<< orphan*/  ImageBase; } ;
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct internal_extra_pe_aouthdr {int BaseOfData; int AddressOfEntryPoint; int BaseOfCode; int NumberOfRvaAndSizes; TYPE_1__* DataDirectory; scalar_t__ ImageBase; void* LoaderFlags; int SizeOfHeapCommit; int SizeOfHeapReserve; int SizeOfStackCommit; int SizeOfStackReserve; void* DllCharacteristics; void* Subsystem; void* CheckSum; void* SizeOfHeaders; void* SizeOfImage; void* Reserved1; void* MinorSubsystemVersion; void* MajorSubsystemVersion; void* MinorImageVersion; void* MajorImageVersion; void* MinorOperatingSystemVersion; void* MajorOperatingSystemVersion; void* FileAlignment; void* SectionAlignment; int SizeOfUninitializedData; scalar_t__ SizeOfInitializedData; scalar_t__ SizeOfCode; void* MinorLinkerVersion; void* MajorLinkerVersion; void* Magic; } ;
+struct internal_aouthdr {int entry; int text_start; int data_start; scalar_t__ dsize; scalar_t__ tsize; int bsize; void* magic; void* vstamp; struct internal_extra_pe_aouthdr pe; } ;
+typedef int bfd ;
+struct TYPE_6__ {scalar_t__ vstamp; int data_start; int text_start; int entry; int bsize; int dsize; int tsize; scalar_t__ magic; } ;
+struct TYPE_5__ {int ** DataDirectory; int NumberOfRvaAndSizes; int LoaderFlags; int SizeOfHeapCommit; int SizeOfHeapReserve; int SizeOfStackCommit; int SizeOfStackReserve; scalar_t__ DllCharacteristics; scalar_t__ Subsystem; int CheckSum; int SizeOfHeaders; int SizeOfImage; int Reserved1; scalar_t__ MinorSubsystemVersion; scalar_t__ MajorSubsystemVersion; scalar_t__ MinorImageVersion; scalar_t__ MajorImageVersion; scalar_t__ MinorOperatingSystemVersion; scalar_t__ MajorOperatingSystemVersion; int FileAlignment; int SectionAlignment; int ImageBase; } ;
 struct TYPE_4__ {int Size; void* VirtualAddress; } ;
-typedef  TYPE_2__ PEAOUTHDR ;
-typedef  TYPE_3__ AOUTHDR ;
+typedef TYPE_2__ PEAOUTHDR ;
+typedef TYPE_3__ AOUTHDR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GET_AOUTHDR_BSIZE (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int GET_AOUTHDR_DATA_START (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ GET_AOUTHDR_DSIZE (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int GET_AOUTHDR_ENTRY (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int GET_AOUTHDR_TEXT_START (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ GET_AOUTHDR_TSIZE (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ GET_OPTHDR_IMAGE_BASE (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GET_OPTHDR_SIZE_OF_HEAP_COMMIT (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GET_OPTHDR_SIZE_OF_HEAP_RESERVE (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GET_OPTHDR_SIZE_OF_STACK_COMMIT (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GET_OPTHDR_SIZE_OF_STACK_RESERVE (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- void* H_GET_16 (int /*<<< orphan*/ *,scalar_t__) ; 
- void* H_GET_32 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- void* H_GET_8 (int /*<<< orphan*/ *,scalar_t__) ; 
- size_t PE_IMPORT_ADDRESS_TABLE ; 
- size_t PE_IMPORT_TABLE ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  _bfd_error_handler (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- void* first_thunk_address ; 
- int import_table_size ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int thunk_size ; 
+
+ int GET_AOUTHDR_BSIZE (int *,int ) ;
+ int GET_AOUTHDR_DATA_START (int *,int ) ;
+ scalar_t__ GET_AOUTHDR_DSIZE (int *,int ) ;
+ int GET_AOUTHDR_ENTRY (int *,int ) ;
+ int GET_AOUTHDR_TEXT_START (int *,int ) ;
+ scalar_t__ GET_AOUTHDR_TSIZE (int *,int ) ;
+ scalar_t__ GET_OPTHDR_IMAGE_BASE (int *,int ) ;
+ int GET_OPTHDR_SIZE_OF_HEAP_COMMIT (int *,int ) ;
+ int GET_OPTHDR_SIZE_OF_HEAP_RESERVE (int *,int ) ;
+ int GET_OPTHDR_SIZE_OF_STACK_COMMIT (int *,int ) ;
+ int GET_OPTHDR_SIZE_OF_STACK_RESERVE (int *,int ) ;
+ void* H_GET_16 (int *,scalar_t__) ;
+ void* H_GET_32 (int *,int ) ;
+ void* H_GET_8 (int *,scalar_t__) ;
+ size_t PE_IMPORT_ADDRESS_TABLE ;
+ size_t PE_IMPORT_TABLE ;
+ int _ (char*) ;
+ int _bfd_error_handler (int ,int *,int) ;
+ void* first_thunk_address ;
+ int import_table_size ;
+ int stub1 (int ,int *,int) ;
+ int thunk_size ;
 
 void
 _bfd_XXi_swap_aouthdr_in (bfd * abfd,
-			  void * aouthdr_ext1,
-			  void * aouthdr_int1)
+     void * aouthdr_ext1,
+     void * aouthdr_int1)
 {
   PEAOUTHDR * src = (PEAOUTHDR *) aouthdr_ext1;
   AOUTHDR * aouthdr_ext = (AOUTHDR *) aouthdr_ext1;
@@ -65,12 +65,12 @@ _bfd_XXi_swap_aouthdr_in (bfd * abfd,
   aouthdr_int->entry = GET_AOUTHDR_ENTRY (abfd, aouthdr_ext->entry);
   aouthdr_int->text_start =
     GET_AOUTHDR_TEXT_START (abfd, aouthdr_ext->text_start);
-#if !defined(COFF_WITH_pep) && !defined(COFF_WITH_pex64)
-  /* PE32+ does not have data_start member!  */
+
+
   aouthdr_int->data_start =
     GET_AOUTHDR_DATA_START (abfd, aouthdr_ext->data_start);
   a->BaseOfData = aouthdr_int->data_start;
-#endif
+
 
   a->Magic = aouthdr_int->magic;
   a->MajorLinkerVersion = H_GET_8 (abfd, aouthdr_ext->vstamp);
@@ -111,64 +111,54 @@ _bfd_XXi_swap_aouthdr_in (bfd * abfd,
   {
     int idx;
 
-    /* PR 17512: Corrupt PE binaries can cause seg-faults.  */
+
     if (a->NumberOfRvaAndSizes > 16)
       {
        (*_bfd_error_handler)
-	  (_("%B: aout header specifies an invalid number of data-directory entries: %d"),
-	   abfd, a->NumberOfRvaAndSizes);
-	/* Paranoia: If the number is corrupt, then assume that the
-	   actual entries themselves might be corrupt as well.  */
-	a->NumberOfRvaAndSizes = 0;
+   (_("%B: aout header specifies an invalid number of data-directory entries: %d"),
+    abfd, a->NumberOfRvaAndSizes);
+
+
+ a->NumberOfRvaAndSizes = 0;
       }
 
     for (idx = 0; idx < 16; idx++)
       {
-        /* If data directory is empty, rva also should be 0.  */
-	int size =
-	  H_GET_32 (abfd, src->DataDirectory[idx][1]);
 
-	a->DataDirectory[idx].Size = size;
+ int size =
+   H_GET_32 (abfd, src->DataDirectory[idx][1]);
 
-	if (size)
-	  a->DataDirectory[idx].VirtualAddress =
-	    H_GET_32 (abfd, src->DataDirectory[idx][0]);
-	else
-	  a->DataDirectory[idx].VirtualAddress = 0;
+ a->DataDirectory[idx].Size = size;
+
+ if (size)
+   a->DataDirectory[idx].VirtualAddress =
+     H_GET_32 (abfd, src->DataDirectory[idx][0]);
+ else
+   a->DataDirectory[idx].VirtualAddress = 0;
       }
   }
 
   if (aouthdr_int->entry)
     {
       aouthdr_int->entry += a->ImageBase;
-#if !defined(COFF_WITH_pep) && !defined(COFF_WITH_pex64)
+
       aouthdr_int->entry &= 0xffffffff;
-#endif
+
     }
 
   if (aouthdr_int->tsize)
     {
       aouthdr_int->text_start += a->ImageBase;
-#if !defined(COFF_WITH_pep) && !defined(COFF_WITH_pex64)
+
       aouthdr_int->text_start &= 0xffffffff;
-#endif
+
     }
 
-#if !defined(COFF_WITH_pep) && !defined(COFF_WITH_pex64)
-  /* PE32+ does not have data_start member!  */
+
+
   if (aouthdr_int->dsize)
     {
       aouthdr_int->data_start += a->ImageBase;
       aouthdr_int->data_start &= 0xffffffff;
     }
-#endif
-
-#ifdef POWERPC_LE_PE
-  /* These three fields are normally set up by ppc_relocate_section.
-     In the case of reading a file in, we can pick them up from the
-     DataDirectory.  */
-  first_thunk_address = a->DataDirectory[PE_IMPORT_ADDRESS_TABLE].VirtualAddress;
-  thunk_size = a->DataDirectory[PE_IMPORT_ADDRESS_TABLE].Size;
-  import_table_size = a->DataDirectory[PE_IMPORT_TABLE].Size;
-#endif
 }

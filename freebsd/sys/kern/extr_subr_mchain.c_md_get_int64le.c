@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct mdchain {int dummy; } ;
-typedef  int /*<<< orphan*/  int64_t ;
+typedef int int64_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  le64toh (int /*<<< orphan*/ ) ; 
- int md_get_int64 (struct mdchain*,int /*<<< orphan*/ *) ; 
+
+ int le64toh (int ) ;
+ int md_get_int64 (struct mdchain*,int *) ;
 
 int
 md_get_int64le(struct mdchain *mdp, int64_t *x)
 {
-	int64_t v;
-	int error;
+ int64_t v;
+ int error;
 
-	error = md_get_int64(mdp, &v);
-	if (x != NULL)
-		*x = le64toh(v);
-	return (error);
+ error = md_get_int64(mdp, &v);
+ if (x != ((void*)0))
+  *x = le64toh(v);
+ return (error);
 }

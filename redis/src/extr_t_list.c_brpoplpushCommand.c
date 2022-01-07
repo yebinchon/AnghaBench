@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_3__ ;
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_16__ TYPE_3__ ;
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
 struct TYPE_14__ {scalar_t__ type; } ;
-typedef  TYPE_1__ robj ;
-typedef  int /*<<< orphan*/  mstime_t ;
-struct TYPE_15__ {int flags; int /*<<< orphan*/ * argv; int /*<<< orphan*/  db; } ;
-typedef  TYPE_2__ client ;
-struct TYPE_16__ {int /*<<< orphan*/  wrongtypeerr; } ;
+typedef TYPE_1__ robj ;
+typedef int mstime_t ;
+struct TYPE_15__ {int flags; int * argv; int db; } ;
+typedef TYPE_2__ client ;
+struct TYPE_16__ {int wrongtypeerr; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BLOCKED_LIST ; 
- int CLIENT_MULTI ; 
- scalar_t__ C_OK ; 
- scalar_t__ OBJ_LIST ; 
- int /*<<< orphan*/  UNIT_SECONDS ; 
- int /*<<< orphan*/  addReply (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  addReplyNull (TYPE_2__*) ; 
- int /*<<< orphan*/  blockForKeys (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ getTimeoutFromObjectOrReply (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ listTypeLength (TYPE_1__*) ; 
- TYPE_1__* lookupKeyWrite (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rpoplpushCommand (TYPE_2__*) ; 
- int /*<<< orphan*/  serverAssertWithInfo (TYPE_2__*,TYPE_1__*,int) ; 
- TYPE_3__ shared ; 
+
+ int BLOCKED_LIST ;
+ int CLIENT_MULTI ;
+ scalar_t__ C_OK ;
+ scalar_t__ OBJ_LIST ;
+ int UNIT_SECONDS ;
+ int addReply (TYPE_2__*,int ) ;
+ int addReplyNull (TYPE_2__*) ;
+ int blockForKeys (TYPE_2__*,int ,int *,int,int ,int ,int *) ;
+ scalar_t__ getTimeoutFromObjectOrReply (TYPE_2__*,int ,int *,int ) ;
+ scalar_t__ listTypeLength (TYPE_1__*) ;
+ TYPE_1__* lookupKeyWrite (int ,int ) ;
+ int rpoplpushCommand (TYPE_2__*) ;
+ int serverAssertWithInfo (TYPE_2__*,TYPE_1__*,int) ;
+ TYPE_3__ shared ;
 
 void brpoplpushCommand(client *c) {
     mstime_t timeout;
@@ -44,21 +44,21 @@ void brpoplpushCommand(client *c) {
 
     robj *key = lookupKeyWrite(c->db, c->argv[1]);
 
-    if (key == NULL) {
+    if (key == ((void*)0)) {
         if (c->flags & CLIENT_MULTI) {
-            /* Blocking against an empty list in a multi state
-             * returns immediately. */
+
+
             addReplyNull(c);
         } else {
-            /* The list is empty and the client blocks. */
-            blockForKeys(c,BLOCKED_LIST,c->argv + 1,1,timeout,c->argv[2],NULL);
+
+            blockForKeys(c,BLOCKED_LIST,c->argv + 1,1,timeout,c->argv[2],((void*)0));
         }
     } else {
         if (key->type != OBJ_LIST) {
             addReply(c, shared.wrongtypeerr);
         } else {
-            /* The list exists and has elements, so
-             * the regular rpoplpushCommand is executed. */
+
+
             serverAssertWithInfo(c,key,listTypeLength(key) > 0);
             rpoplpushCommand(c);
         }

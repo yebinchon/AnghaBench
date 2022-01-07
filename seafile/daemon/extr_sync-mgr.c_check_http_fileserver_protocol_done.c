@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  version; int /*<<< orphan*/  not_supported; scalar_t__ check_success; } ;
-struct TYPE_4__ {int /*<<< orphan*/  http_version; int /*<<< orphan*/  effective_host; int /*<<< orphan*/  use_fileserver_port; int /*<<< orphan*/  testing_host; int /*<<< orphan*/  checking; } ;
-typedef  TYPE_1__ HttpServerState ;
-typedef  TYPE_2__ HttpProtocolVersion ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CURRENT_SYNC_PROTO_VERSION ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  MIN (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  http_fileserver_url (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  seaf_message (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int version; int not_supported; scalar_t__ check_success; } ;
+struct TYPE_4__ {int http_version; int effective_host; int use_fileserver_port; int testing_host; int checking; } ;
+typedef TYPE_1__ HttpServerState ;
+typedef TYPE_2__ HttpProtocolVersion ;
+
+
+ int CURRENT_SYNC_PROTO_VERSION ;
+ int FALSE ;
+ int MIN (int ,int ) ;
+ int TRUE ;
+ int http_fileserver_url (int ) ;
+ int seaf_message (char*,int ,int ,int ,int ) ;
 
 __attribute__((used)) static void
 check_http_fileserver_protocol_done (HttpProtocolVersion *result, void *user_data)

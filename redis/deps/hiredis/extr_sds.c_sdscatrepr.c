@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sds ;
 
-/* Variables and functions */
- int /*<<< orphan*/  isprint (char const) ; 
- int /*<<< orphan*/  sdscatlen (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  sdscatprintf (int /*<<< orphan*/ ,char*,char const) ; 
+
+
+
+typedef int sds ;
+
+
+ int isprint (char const) ;
+ int sdscatlen (int ,char*,int) ;
+ int sdscatprintf (int ,char*,char const) ;
 
 sds sdscatrepr(sds s, const char *p, size_t len) {
     s = sdscatlen(s,"\"",1);

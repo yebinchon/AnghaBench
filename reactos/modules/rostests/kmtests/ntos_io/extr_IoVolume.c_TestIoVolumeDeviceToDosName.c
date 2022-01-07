@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_20__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  VolumeDeviceNameBuffer ;
+
+
+typedef struct TYPE_20__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
+typedef int VolumeDeviceNameBuffer ;
 struct TYPE_20__ {int Length; int* Buffer; } ;
-typedef  TYPE_1__ UNICODE_STRING ;
-typedef  int ULONG ;
-typedef  int /*<<< orphan*/  PFILE_OBJECT ;
-typedef  int /*<<< orphan*/  PDEVICE_OBJECT ;
-typedef  TYPE_1__* NTSTATUS ;
+typedef TYPE_1__ UNICODE_STRING ;
+typedef int ULONG ;
+typedef int PFILE_OBJECT ;
+typedef int PDEVICE_OBJECT ;
+typedef TYPE_1__* NTSTATUS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- TYPE_1__* GetNextVolumeDevice (TYPE_1__*,int*,TYPE_1__*) ; 
- TYPE_1__* IoGetDeviceObjectPointer (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- TYPE_1__* IoVolumeDeviceToDosName (int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  NT_SUCCESS (TYPE_1__*) ; 
- int /*<<< orphan*/  ObDereferenceObject (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  READ_CONTROL ; 
- TYPE_1__ RTL_CONSTANT_STRING (char*) ; 
- int /*<<< orphan*/  RtlFreeUnicodeString (TYPE_1__*) ; 
- int /*<<< orphan*/  RtlInitEmptyUnicodeString (TYPE_1__*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  RtlInitUnicodeString (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RtlPrefixUnicodeString (TYPE_1__*,TYPE_1__*,int /*<<< orphan*/ ) ; 
- TYPE_1__* STATUS_SUCCESS ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  ok_eq_hex (TYPE_1__*,TYPE_1__*) ; 
- int /*<<< orphan*/  skip (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  trace (char*,...) ; 
+
+ int FALSE ;
+ TYPE_1__* GetNextVolumeDevice (TYPE_1__*,int*,TYPE_1__*) ;
+ TYPE_1__* IoGetDeviceObjectPointer (TYPE_1__*,int ,int *,int *) ;
+ TYPE_1__* IoVolumeDeviceToDosName (int ,TYPE_1__*) ;
+ int NT_SUCCESS (TYPE_1__*) ;
+ int ObDereferenceObject (int ) ;
+ int READ_CONTROL ;
+ TYPE_1__ RTL_CONSTANT_STRING (char*) ;
+ int RtlFreeUnicodeString (TYPE_1__*) ;
+ int RtlInitEmptyUnicodeString (TYPE_1__*,int *,int) ;
+ int RtlInitUnicodeString (TYPE_1__*,int *) ;
+ int RtlPrefixUnicodeString (TYPE_1__*,TYPE_1__*,int ) ;
+ TYPE_1__* STATUS_SUCCESS ;
+ int ok (int,char*,...) ;
+ int ok_eq_hex (TYPE_1__*,TYPE_1__*) ;
+ int skip (int ,char*) ;
+ int trace (char*,...) ;
 
 __attribute__((used)) static
 void

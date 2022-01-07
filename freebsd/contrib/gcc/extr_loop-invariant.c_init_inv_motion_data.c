@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  VEC_alloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int actual_stamp ; 
- int /*<<< orphan*/  heap ; 
- int /*<<< orphan*/  invariant_p ; 
- int /*<<< orphan*/  invariants ; 
+ int VEC_alloc (int ,int ,int) ;
+ int actual_stamp ;
+ int heap ;
+ int invariant_p ;
+ int invariants ;
 
 __attribute__((used)) static void
 init_inv_motion_data (void)

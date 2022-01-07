@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uint32_t ;
-typedef  int /*<<< orphan*/  u_char ;
 
-/* Variables and functions */
- int ngx_cacheline_size ; 
- int /*<<< orphan*/  ngx_cpuid (int,scalar_t__*) ; 
- scalar_t__ ngx_strcmp (int /*<<< orphan*/ *,char*) ; 
+
+
+
+typedef scalar_t__ uint32_t ;
+typedef int u_char ;
+
+
+ int ngx_cacheline_size ;
+ int ngx_cpuid (int,scalar_t__*) ;
+ scalar_t__ ngx_strcmp (int *,char*) ;
 
 void
 ngx_cpuinfo(void)
 {
-    u_char    *vendor;
-    uint32_t   vbuf[5], cpu[4], model;
+    u_char *vendor;
+    uint32_t vbuf[5], cpu[4], model;
 
     vbuf[0] = 0;
     vbuf[1] = 0;
@@ -44,28 +44,28 @@ ngx_cpuinfo(void)
 
         switch ((cpu[0] & 0xf00) >> 8) {
 
-        /* Pentium */
+
         case 5:
             ngx_cacheline_size = 32;
             break;
 
-        /* Pentium Pro, II, III */
+
         case 6:
             ngx_cacheline_size = 32;
 
             model = ((cpu[0] & 0xf0000) >> 8) | (cpu[0] & 0xf0);
 
             if (model >= 0xd0) {
-                /* Intel Core, Core 2, Atom */
+
                 ngx_cacheline_size = 64;
             }
 
             break;
 
-        /*
-         * Pentium 4, although its cache line size is 64 bytes,
-         * it prefetches up to two cache lines during memory read
-         */
+
+
+
+
         case 15:
             ngx_cacheline_size = 128;
             break;

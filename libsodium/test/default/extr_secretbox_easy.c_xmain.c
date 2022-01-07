@@ -1,42 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int crypto_secretbox_MACBYTES ; 
- int /*<<< orphan*/  crypto_secretbox_detached (unsigned char*,unsigned char*,unsigned char*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ crypto_secretbox_easy (unsigned char*,unsigned char*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int crypto_secretbox_open_easy (unsigned char*,unsigned char*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  firstkey ; 
- unsigned char* m ; 
- int /*<<< orphan*/  memcpy (unsigned char*,unsigned char*,int) ; 
- int /*<<< orphan*/  memset (unsigned char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  nonce ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- size_t randombytes_uniform (int) ; 
- int /*<<< orphan*/  sodium_free (unsigned char*) ; 
- scalar_t__ sodium_malloc (int) ; 
+ int assert (int) ;
+ int crypto_secretbox_MACBYTES ;
+ int crypto_secretbox_detached (unsigned char*,unsigned char*,unsigned char*,int,int ,int ) ;
+ scalar_t__ crypto_secretbox_easy (unsigned char*,unsigned char*,int,int ,int ) ;
+ int crypto_secretbox_open_easy (unsigned char*,unsigned char*,int,int ,int ) ;
+ int firstkey ;
+ unsigned char* m ;
+ int memcpy (unsigned char*,unsigned char*,int) ;
+ int memset (unsigned char*,int ,int) ;
+ int nonce ;
+ int printf (char*,...) ;
+ size_t randombytes_uniform (int) ;
+ int sodium_free (unsigned char*) ;
+ scalar_t__ sodium_malloc (int) ;
 
 int
 main(void)
 {
     unsigned char *c;
     unsigned char *mac;
-    size_t         i;
+    size_t i;
 
-    c   = (unsigned char *) sodium_malloc(131 + crypto_secretbox_MACBYTES + 1);
+    c = (unsigned char *) sodium_malloc(131 + crypto_secretbox_MACBYTES + 1);
     mac = (unsigned char *) sodium_malloc(crypto_secretbox_MACBYTES);
-    assert(c != NULL && mac != NULL);
+    assert(c != ((void*)0) && mac != ((void*)0));
 
     crypto_secretbox_easy(c, m, 131, nonce, firstkey);
     for (i = 0; i < 131 + crypto_secretbox_MACBYTES; ++i) {
@@ -53,7 +45,7 @@ main(void)
     }
     printf("\n");
 
-    /* Same test, with c and m overlapping */
+
 
     memcpy(c + 1, m, 131);
     crypto_secretbox_easy(c, c + 1, 131, nonce, firstkey);
@@ -78,7 +70,7 @@ main(void)
 
     assert(crypto_secretbox_easy(c, m, 0, nonce, firstkey) == 0);
 
-    /* Null message */
+
 
     crypto_secretbox_easy(c, c, 0, nonce, firstkey);
     for (i = 0; i < crypto_secretbox_MACBYTES + 1; ++i) {
@@ -99,7 +91,7 @@ main(void)
         printf("Null tampered crypto_secretbox_open_easy() failed\n");
     }
 
-    /* No overlap, but buffers are next to each other */
+
 
     memset(c, 0, 131 + crypto_secretbox_MACBYTES + 1);
     memcpy(c, m, 20);

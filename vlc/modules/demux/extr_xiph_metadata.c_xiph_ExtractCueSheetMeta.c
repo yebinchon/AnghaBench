@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char* malloc (int) ; 
- char* strdup (char const*) ; 
- int strlen (char const*) ; 
- int /*<<< orphan*/  strncasecmp (char const*,char const*,int) ; 
+ char* malloc (int) ;
+ char* strdup (char const*) ;
+ int strlen (char const*) ;
+ int strncasecmp (char const*,char const*,int) ;
 
 __attribute__((used)) static char * xiph_ExtractCueSheetMeta( const char *psz_line,
                                         const char *psz_tag, int i_tag,
@@ -26,13 +18,13 @@ __attribute__((used)) static char * xiph_ExtractCueSheetMeta( const char *psz_li
         if( !b_quoted )
             return strdup( &psz_line[i_tag] );
 
-        /* Unquote string value */
+
         char *psz_value = malloc( strlen( psz_line ) - i_tag + 1 );
         if( psz_value )
         {
             char *psz_out = psz_value;
             psz_line += i_tag;
-            bool b_escaped = false;
+            bool b_escaped = 0;
             while( *psz_line )
             {
                 switch( *psz_line )
@@ -40,18 +32,18 @@ __attribute__((used)) static char * xiph_ExtractCueSheetMeta( const char *psz_li
                     case '\\':
                         if( b_escaped )
                         {
-                            b_escaped = false;
+                            b_escaped = 0;
                             *(psz_out++) = *psz_line;
                         }
                         else
                         {
-                            b_escaped = true;
+                            b_escaped = 1;
                         }
                         break;
                     case '"':
                         if( b_escaped )
                         {
-                            b_escaped = false;
+                            b_escaped = 0;
                             *(psz_out++) = *psz_line;
                         }
                         break;
@@ -65,5 +57,5 @@ __attribute__((used)) static char * xiph_ExtractCueSheetMeta( const char *psz_li
             return psz_value;
         }
     }
-    return NULL;
+    return ((void*)0);
 }

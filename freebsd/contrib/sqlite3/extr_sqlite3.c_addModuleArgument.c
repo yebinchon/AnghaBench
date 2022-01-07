@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int sqlite3_int64 ;
+
+
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int sqlite3_int64 ;
 struct TYPE_9__ {int* aLimit; } ;
-typedef  TYPE_1__ sqlite3 ;
-struct TYPE_10__ {int nModuleArg; char** azModuleArg; int /*<<< orphan*/  zName; } ;
-typedef  TYPE_2__ Table ;
+typedef TYPE_1__ sqlite3 ;
+struct TYPE_10__ {int nModuleArg; char** azModuleArg; int zName; } ;
+typedef TYPE_2__ Table ;
 struct TYPE_11__ {TYPE_1__* db; } ;
-typedef  TYPE_3__ Parse ;
+typedef TYPE_3__ Parse ;
 
-/* Variables and functions */
- size_t SQLITE_LIMIT_COLUMN ; 
- int /*<<< orphan*/  sqlite3DbFree (TYPE_1__*,char*) ; 
- char** sqlite3DbRealloc (TYPE_1__*,char**,int) ; 
- int /*<<< orphan*/  sqlite3ErrorMsg (TYPE_3__*,char*,int /*<<< orphan*/ ) ; 
+
+ size_t SQLITE_LIMIT_COLUMN ;
+ int sqlite3DbFree (TYPE_1__*,char*) ;
+ char** sqlite3DbRealloc (TYPE_1__*,char**,int) ;
+ int sqlite3ErrorMsg (TYPE_3__*,char*,int ) ;
 
 __attribute__((used)) static void addModuleArgument(Parse *pParse, Table *pTable, char *zArg){
   sqlite3_int64 nBytes = sizeof(char *)*(2+pTable->nModuleArg);

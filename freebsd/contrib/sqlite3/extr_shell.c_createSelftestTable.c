@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  db; } ;
-typedef  TYPE_1__ ShellState ;
 
-/* Variables and functions */
- int /*<<< orphan*/  sqlite3_exec (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char**) ; 
- int /*<<< orphan*/  sqlite3_free (char*) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  utf8_printf (int /*<<< orphan*/ ,char*,char*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int db; } ;
+typedef TYPE_1__ ShellState ;
+
+
+ int sqlite3_exec (int ,char*,int ,int ,char**) ;
+ int sqlite3_free (char*) ;
+ int stderr ;
+ int utf8_printf (int ,char*,char*) ;
 
 __attribute__((used)) static void createSelftestTable(ShellState *p){
   char *zErrMsg = 0;
   sqlite3_exec(p->db,
     "SAVEPOINT selftest_init;\n"
     "CREATE TABLE IF NOT EXISTS selftest(\n"
-    "  tno INTEGER PRIMARY KEY,\n"   /* Test number */
-    "  op TEXT,\n"                   /* Operator:  memo run */
-    "  cmd TEXT,\n"                  /* Command text */
-    "  ans TEXT\n"                   /* Desired answer */
+    "  tno INTEGER PRIMARY KEY,\n"
+    "  op TEXT,\n"
+    "  cmd TEXT,\n"
+    "  ans TEXT\n"
     ");"
     "CREATE TEMP TABLE [_shell$self](op,cmd,ans);\n"
     "INSERT INTO [_shell$self](rowid,op,cmd)\n"

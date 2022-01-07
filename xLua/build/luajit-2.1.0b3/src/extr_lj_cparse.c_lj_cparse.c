@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  cts; int /*<<< orphan*/  L; } ;
-typedef  TYPE_1__ CPState ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LJ_CTYPE_RESTORE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LJ_CTYPE_SAVE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cp_cleanup (TYPE_1__*) ; 
- int /*<<< orphan*/  cpcparser ; 
- int lj_vm_cpcall (int /*<<< orphan*/ ,int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int cts; int L; } ;
+typedef TYPE_1__ CPState ;
+
+
+ int LJ_CTYPE_RESTORE (int ) ;
+ int LJ_CTYPE_SAVE (int ) ;
+ int cp_cleanup (TYPE_1__*) ;
+ int cpcparser ;
+ int lj_vm_cpcall (int ,int *,TYPE_1__*,int ) ;
 
 int lj_cparse(CPState *cp)
 {
   LJ_CTYPE_SAVE(cp->cts);
-  int errcode = lj_vm_cpcall(cp->L, NULL, cp, cpcparser);
+  int errcode = lj_vm_cpcall(cp->L, ((void*)0), cp, cpcparser);
   if (errcode)
     LJ_CTYPE_RESTORE(cp->cts);
   cp_cleanup(cp);

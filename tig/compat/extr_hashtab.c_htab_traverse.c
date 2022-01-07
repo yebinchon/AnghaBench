@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  htab_trav ;
-typedef  int /*<<< orphan*/  htab_t ;
-typedef  int /*<<< orphan*/  PTR ;
 
-/* Variables and functions */
- int htab_elements (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  htab_expand (int /*<<< orphan*/ ) ; 
- size_t htab_size (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  htab_traverse_noresize (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int htab_trav ;
+typedef int htab_t ;
+typedef int PTR ;
+
+
+ int htab_elements (int ) ;
+ int htab_expand (int ) ;
+ size_t htab_size (int ) ;
+ int htab_traverse_noresize (int ,int ,int ) ;
 
 void
 htab_traverse (htab_t htab, htab_trav callback, PTR info)

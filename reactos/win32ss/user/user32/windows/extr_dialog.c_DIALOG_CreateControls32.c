@@ -1,68 +1,68 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WPARAM ;
-typedef  int /*<<< orphan*/  WORD ;
-typedef  scalar_t__ ULONG_PTR ;
-struct TYPE_9__ {int /*<<< orphan*/  idResult; scalar_t__ hUserFont; int /*<<< orphan*/  yBaseUnit; int /*<<< orphan*/  xBaseUnit; } ;
-struct TYPE_8__ {int style; int exStyle; scalar_t__ windowName; scalar_t__ className; scalar_t__ windowNameFree; scalar_t__ data; scalar_t__ id; int /*<<< orphan*/  cy; int /*<<< orphan*/  cx; int /*<<< orphan*/  y; int /*<<< orphan*/  x; } ;
-struct TYPE_7__ {int style; int /*<<< orphan*/  dialogEx; int /*<<< orphan*/  nbItems; } ;
-typedef  int /*<<< orphan*/ * LPVOID ;
-typedef  int /*<<< orphan*/ * LPSTR ;
-typedef  scalar_t__ LPCSTR ;
-typedef  int /*<<< orphan*/  INT ;
-typedef  int /*<<< orphan*/ * HWND ;
-typedef  int /*<<< orphan*/  HMENU ;
-typedef  int /*<<< orphan*/  HINSTANCE ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  TYPE_1__ DLG_TEMPLATE ;
-typedef  TYPE_2__ DLG_CONTROL_INFO ;
-typedef  TYPE_3__ DIALOGINFO ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BM_SETSTYLE ; 
- int /*<<< orphan*/  BS_PUSHBUTTON ; 
- int /*<<< orphan*/  CP_ACP ; 
- int /*<<< orphan*/ * CreateWindowExA (int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * CreateWindowExW (int,scalar_t__,scalar_t__,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ DIALOG_GetControl32 (int /*<<< orphan*/  const*,TYPE_2__*,int /*<<< orphan*/ ) ; 
- int DLGC_DEFPUSHBUTTON ; 
- int DS_NOFAILCREATE ; 
- scalar_t__ FALSE ; 
- TYPE_3__* GETDLGINFO (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GWLP_ID ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  GetWindowLongPtrA (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IS_INTRESOURCE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  MulDiv (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int SendMessageW (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  TRACE (char*) ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  WARN (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WM_GETDLGCODE ; 
- int /*<<< orphan*/  WM_SETFONT ; 
- int WS_BORDER ; 
- int WS_CHILD ; 
- int WS_EX_CLIENTEDGE ; 
- int WS_EX_NOPARENTNOTIFY ; 
- int WS_POPUP ; 
- int /*<<< orphan*/  WideCharToMultiByte (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  debugstr_w (scalar_t__) ; 
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int WPARAM ;
+typedef int WORD ;
+typedef scalar_t__ ULONG_PTR ;
+struct TYPE_9__ {int idResult; scalar_t__ hUserFont; int yBaseUnit; int xBaseUnit; } ;
+struct TYPE_8__ {int style; int exStyle; scalar_t__ windowName; scalar_t__ className; scalar_t__ windowNameFree; scalar_t__ data; scalar_t__ id; int cy; int cx; int y; int x; } ;
+struct TYPE_7__ {int style; int dialogEx; int nbItems; } ;
+typedef int * LPVOID ;
+typedef int * LPSTR ;
+typedef scalar_t__ LPCSTR ;
+typedef int INT ;
+typedef int * HWND ;
+typedef int HMENU ;
+typedef int HINSTANCE ;
+typedef int DWORD ;
+typedef TYPE_1__ DLG_TEMPLATE ;
+typedef TYPE_2__ DLG_CONTROL_INFO ;
+typedef TYPE_3__ DIALOGINFO ;
+typedef scalar_t__ BOOL ;
+
+
+ int BM_SETSTYLE ;
+ int BS_PUSHBUTTON ;
+ int CP_ACP ;
+ int * CreateWindowExA (int,int *,int *,int,int ,int ,int ,int ,int *,int ,int ,int *) ;
+ int * CreateWindowExW (int,scalar_t__,scalar_t__,int,int ,int ,int ,int ,int *,int ,int ,int *) ;
+ scalar_t__ DIALOG_GetControl32 (int const*,TYPE_2__*,int ) ;
+ int DLGC_DEFPUSHBUTTON ;
+ int DS_NOFAILCREATE ;
+ scalar_t__ FALSE ;
+ TYPE_3__* GETDLGINFO (int *) ;
+ int GWLP_ID ;
+ int GetProcessHeap () ;
+ int GetWindowLongPtrA (int *,int ) ;
+ int * HeapAlloc (int ,int ,int ) ;
+ int HeapFree (int ,int ,int *) ;
+ int IS_INTRESOURCE (int *) ;
+ int MulDiv (int ,int ,int) ;
+ int SendMessageW (int *,int ,int ,scalar_t__) ;
+ int TRACE (char*) ;
+ scalar_t__ TRUE ;
+ int WARN (char*,int ,int ) ;
+ int WM_GETDLGCODE ;
+ int WM_SETFONT ;
+ int WS_BORDER ;
+ int WS_CHILD ;
+ int WS_EX_CLIENTEDGE ;
+ int WS_EX_NOPARENTNOTIFY ;
+ int WS_POPUP ;
+ int WideCharToMultiByte (int ,int ,scalar_t__,int,int *,int ,int *,int *) ;
+ int debugstr_w (scalar_t__) ;
 
 __attribute__((used)) static BOOL DIALOG_CreateControls32( HWND hwnd, LPCSTR template, const DLG_TEMPLATE *dlgTemplate,
                                      HINSTANCE hInst, BOOL unicode )
@@ -107,20 +107,20 @@ __attribute__((used)) static BOOL DIALOG_CreateControls32( HWND hwnd, LPCSTR tem
 
             if (!IS_INTRESOURCE(class))
             {
-                DWORD len = WideCharToMultiByte( CP_ACP, 0, info.className, -1, NULL, 0, NULL, NULL );
+                DWORD len = WideCharToMultiByte( CP_ACP, 0, info.className, -1, ((void*)0), 0, ((void*)0), ((void*)0) );
                 class = HeapAlloc( GetProcessHeap(), 0, len );
-                if (class != NULL)
-                    WideCharToMultiByte( CP_ACP, 0, info.className, -1, class, len, NULL, NULL );
+                if (class != ((void*)0))
+                    WideCharToMultiByte( CP_ACP, 0, info.className, -1, class, len, ((void*)0), ((void*)0) );
             }
             if (!IS_INTRESOURCE(caption))
             {
-                DWORD len = WideCharToMultiByte( CP_ACP, 0, info.windowName, -1, NULL, 0, NULL, NULL );
+                DWORD len = WideCharToMultiByte( CP_ACP, 0, info.windowName, -1, ((void*)0), 0, ((void*)0), ((void*)0) );
                 caption = HeapAlloc( GetProcessHeap(), 0, len );
-                if (caption != NULL)
-                    WideCharToMultiByte( CP_ACP, 0, info.windowName, -1, caption, len, NULL, NULL );
+                if (caption != ((void*)0))
+                    WideCharToMultiByte( CP_ACP, 0, info.windowName, -1, caption, len, ((void*)0), ((void*)0) );
             }
 
-            if (class != NULL && caption != NULL)
+            if (class != ((void*)0) && caption != ((void*)0))
             {
                 hwndCtrl = CreateWindowExA( info.exStyle | WS_EX_NOPARENTNOTIFY,
                                             class, caption, info.style | WS_CHILD,
@@ -132,7 +132,7 @@ __attribute__((used)) static BOOL DIALOG_CreateControls32( HWND hwnd, LPCSTR tem
                                             hInst, (LPVOID)info.data );
             }
             else
-                hwndCtrl = NULL;
+                hwndCtrl = ((void*)0);
             if (!IS_INTRESOURCE(class)) HeapFree( GetProcessHeap(), 0, class );
             if (!IS_INTRESOURCE(caption)) HeapFree( GetProcessHeap(), 0, caption );
         }
@@ -150,13 +150,13 @@ __attribute__((used)) static BOOL DIALOG_CreateControls32( HWND hwnd, LPCSTR tem
             return FALSE;
         }
 
-        /* Send initialisation messages to the control */
+
         if (dlgInfo->hUserFont) SendMessageW( hwndCtrl, WM_SETFONT,
                                              (WPARAM)dlgInfo->hUserFont, 0 );
         if (SendMessageW(hwndCtrl, WM_GETDLGCODE, 0, 0) & DLGC_DEFPUSHBUTTON)
         {
-            /* If there's already a default push-button, set it back */
-            /* to normal and use this one instead. */
+
+
             if (hwndDefButton)
                 SendMessageW( hwndDefButton, BM_SETSTYLE, BS_PUSHBUTTON, FALSE );
             hwndDefButton = hwndCtrl;

@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {int /*<<< orphan*/  handle; } ;
+
+
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+struct TYPE_10__ {int handle; } ;
 struct TYPE_11__ {TYPE_1__ win32; } ;
-typedef  TYPE_2__ _GLFWwindow ;
+typedef TYPE_2__ _GLFWwindow ;
 struct TYPE_12__ {scalar_t__ top; scalar_t__ bottom; scalar_t__ left; scalar_t__ right; } ;
-typedef  TYPE_3__ RECT ;
-typedef  int /*<<< orphan*/  POINT ;
-typedef  int DWORD ;
+typedef TYPE_3__ RECT ;
+typedef int POINT ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AdjustWindowRectEx (TYPE_3__*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AdjustWindowRectExForDpi (TYPE_3__*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ClientToScreen (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GWL_STYLE ; 
- int /*<<< orphan*/  GetClientRect (int /*<<< orphan*/ ,TYPE_3__*) ; 
- int /*<<< orphan*/  GetDpiForWindow (int /*<<< orphan*/ ) ; 
- int GetWindowLongW (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HWND_TOP ; 
- int SWP_FRAMECHANGED ; 
- int SWP_NOACTIVATE ; 
- int SWP_NOZORDER ; 
- int /*<<< orphan*/  SetWindowLongW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  SetWindowPos (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,scalar_t__,scalar_t__,scalar_t__,int) ; 
- int WS_OVERLAPPEDWINDOW ; 
- int WS_POPUP ; 
- scalar_t__ _glfwIsWindows10AnniversaryUpdateOrGreaterWin32 () ; 
- int /*<<< orphan*/  getWindowExStyle (TYPE_2__ const*) ; 
- int getWindowStyle (TYPE_2__ const*) ; 
+
+ int AdjustWindowRectEx (TYPE_3__*,int,int ,int ) ;
+ int AdjustWindowRectExForDpi (TYPE_3__*,int,int ,int ,int ) ;
+ int ClientToScreen (int ,int *) ;
+ int FALSE ;
+ int GWL_STYLE ;
+ int GetClientRect (int ,TYPE_3__*) ;
+ int GetDpiForWindow (int ) ;
+ int GetWindowLongW (int ,int ) ;
+ int HWND_TOP ;
+ int SWP_FRAMECHANGED ;
+ int SWP_NOACTIVATE ;
+ int SWP_NOZORDER ;
+ int SetWindowLongW (int ,int ,int) ;
+ int SetWindowPos (int ,int ,scalar_t__,scalar_t__,scalar_t__,scalar_t__,int) ;
+ int WS_OVERLAPPEDWINDOW ;
+ int WS_POPUP ;
+ scalar_t__ _glfwIsWindows10AnniversaryUpdateOrGreaterWin32 () ;
+ int getWindowExStyle (TYPE_2__ const*) ;
+ int getWindowStyle (TYPE_2__ const*) ;
 
 __attribute__((used)) static void updateWindowStyles(const _GLFWwindow* window)
 {

@@ -1,103 +1,103 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  int lu_mem ;
-struct TYPE_7__ {int size; int /*<<< orphan*/ * hash; } ;
-struct TYPE_8__ {int gcstate; int GCmemtrav; int GCestimate; int sweepstrgc; int /*<<< orphan*/  mainthread; int /*<<< orphan*/ ** sweepgc; int /*<<< orphan*/ ** sweepfin; TYPE_1__ strt; int /*<<< orphan*/  gray; } ;
-typedef  TYPE_2__ global_State ;
-typedef  int /*<<< orphan*/  GCObject ;
 
-/* Variables and functions */
- TYPE_2__* G (int /*<<< orphan*/ *) ; 
- int GCSWEEPCOST ; 
- int GCSWEEPMAX ; 
- int GCSatomic ; 
-#define  GCSpause 132 
-#define  GCSpropagate 131 
-#define  GCSsweep 130 
-#define  GCSsweepstring 129 
-#define  GCSsweepudata 128 
- int atomic (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  checkSizes (int /*<<< orphan*/ *) ; 
- int entersweep (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  isgenerational (TYPE_2__*) ; 
- int /*<<< orphan*/  lua_assert (int) ; 
- int /*<<< orphan*/ * obj2gco (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  propagatemark (TYPE_2__*) ; 
- int /*<<< orphan*/  restartcollection (TYPE_2__*) ; 
- void* sweeplist (int /*<<< orphan*/ *,int /*<<< orphan*/ **,int) ; 
- int /*<<< orphan*/  sweepwholelist (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int lua_State ;
+typedef int lu_mem ;
+struct TYPE_7__ {int size; int * hash; } ;
+struct TYPE_8__ {int gcstate; int GCmemtrav; int GCestimate; int sweepstrgc; int mainthread; int ** sweepgc; int ** sweepfin; TYPE_1__ strt; int gray; } ;
+typedef TYPE_2__ global_State ;
+typedef int GCObject ;
+
+
+ TYPE_2__* G (int *) ;
+ int GCSWEEPCOST ;
+ int GCSWEEPMAX ;
+ int GCSatomic ;
+
+
+
+
+
+ int atomic (int *) ;
+ int checkSizes (int *) ;
+ int entersweep (int *) ;
+ int isgenerational (TYPE_2__*) ;
+ int lua_assert (int) ;
+ int * obj2gco (int ) ;
+ int propagatemark (TYPE_2__*) ;
+ int restartcollection (TYPE_2__*) ;
+ void* sweeplist (int *,int **,int) ;
+ int sweepwholelist (int *,int *) ;
 
 __attribute__((used)) static lu_mem singlestep (lua_State *L) {
   global_State *g = G(L);
   switch (g->gcstate) {
-    case GCSpause: {
-      /* start to count memory traversed */
+    case 132: {
+
       g->GCmemtrav = g->strt.size * sizeof(GCObject*);
       lua_assert(!isgenerational(g));
       restartcollection(g);
-      g->gcstate = GCSpropagate;
+      g->gcstate = 131;
       return g->GCmemtrav;
     }
-    case GCSpropagate: {
+    case 131: {
       if (g->gray) {
         lu_mem oldtrav = g->GCmemtrav;
         propagatemark(g);
-        return g->GCmemtrav - oldtrav;  /* memory traversed in this step */
+        return g->GCmemtrav - oldtrav;
       }
-      else {  /* no more `gray' objects */
+      else {
         lu_mem work;
         int sw;
-        g->gcstate = GCSatomic;  /* finish mark phase */
-        g->GCestimate = g->GCmemtrav;  /* save what was counted */;
-        work = atomic(L);  /* add what was traversed by 'atomic' */
-        g->GCestimate += work;  /* estimate of total memory traversed */
+        g->gcstate = GCSatomic;
+        g->GCestimate = g->GCmemtrav; ;
+        work = atomic(L);
+        g->GCestimate += work;
         sw = entersweep(L);
         return work + sw * GCSWEEPCOST;
       }
     }
-    case GCSsweepstring: {
+    case 129: {
       int i;
       for (i = 0; i < GCSWEEPMAX && g->sweepstrgc + i < g->strt.size; i++)
         sweepwholelist(L, &g->strt.hash[g->sweepstrgc + i]);
       g->sweepstrgc += i;
-      if (g->sweepstrgc >= g->strt.size)  /* no more strings to sweep? */
-        g->gcstate = GCSsweepudata;
+      if (g->sweepstrgc >= g->strt.size)
+        g->gcstate = 128;
       return i * GCSWEEPCOST;
     }
-    case GCSsweepudata: {
+    case 128: {
       if (g->sweepfin) {
         g->sweepfin = sweeplist(L, g->sweepfin, GCSWEEPMAX);
         return GCSWEEPMAX*GCSWEEPCOST;
       }
       else {
-        g->gcstate = GCSsweep;
+        g->gcstate = 130;
         return 0;
       }
     }
-    case GCSsweep: {
+    case 130: {
       if (g->sweepgc) {
         g->sweepgc = sweeplist(L, g->sweepgc, GCSWEEPMAX);
         return GCSWEEPMAX*GCSWEEPCOST;
       }
       else {
-        /* sweep main thread */
+
         GCObject *mt = obj2gco(g->mainthread);
         sweeplist(L, &mt, 1);
         checkSizes(L);
-        g->gcstate = GCSpause;  /* finish collection */
+        g->gcstate = 132;
         return GCSWEEPCOST;
       }
     }

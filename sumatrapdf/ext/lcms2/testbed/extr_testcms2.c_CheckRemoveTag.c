@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  cmsMLU ;
-typedef  int cmsInt32Number ;
-typedef  int /*<<< orphan*/  cmsHPROFILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DbgThread () ; 
- int /*<<< orphan*/  cmsCloseProfile (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cmsCreate_sRGBProfile (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * cmsMLUalloc (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  cmsMLUfree (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int cmsMLUsetASCII (int /*<<< orphan*/ ,int /*<<< orphan*/ *,char*,char*,char*) ; 
- int /*<<< orphan*/  cmsSigDeviceMfgDescTag ; 
- int cmsWriteTag (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int cmsMLU ;
+typedef int cmsInt32Number ;
+typedef int cmsHPROFILE ;
+
+
+ int DbgThread () ;
+ int cmsCloseProfile (int ,int ) ;
+ int cmsCreate_sRGBProfile (int *) ;
+ int * cmsMLUalloc (int *,int) ;
+ int cmsMLUfree (int ,int *) ;
+ int cmsMLUsetASCII (int ,int *,char*,char*,char*) ;
+ int cmsSigDeviceMfgDescTag ;
+ int cmsWriteTag (int ,int ,int ,int *) ;
 
 __attribute__((used)) static
 cmsInt32Number CheckRemoveTag(void)
@@ -31,10 +31,10 @@ cmsInt32Number CheckRemoveTag(void)
     cmsMLU *mlu;
     int ret;
 
-    p = cmsCreate_sRGBProfile(NULL);
+    p = cmsCreate_sRGBProfile(((void*)0));
 
-    /* set value */
-    mlu = cmsMLUalloc (NULL, 1);
+
+    mlu = cmsMLUalloc (((void*)0), 1);
     ret = cmsMLUsetASCII(DbgThread(), mlu, "en", "US", "bar");
     if (!ret) return 0;
 
@@ -43,11 +43,11 @@ cmsInt32Number CheckRemoveTag(void)
 
     cmsMLUfree(DbgThread(), mlu);
 
-    /* remove the tag  */
-    ret = cmsWriteTag(DbgThread(), p, cmsSigDeviceMfgDescTag, NULL);
+
+    ret = cmsWriteTag(DbgThread(), p, cmsSigDeviceMfgDescTag, ((void*)0));
     if (!ret) return 0;
 
-    /* THIS EXPLODES */
+
     cmsCloseProfile(DbgThread(), p);
     return 1;
 }

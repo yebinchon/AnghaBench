@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lzma_allocator ;
-struct TYPE_3__ {int /*<<< orphan*/ * root; } ;
-typedef  TYPE_1__ index_tree ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  index_tree_node_end (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,void (*) (void*,int /*<<< orphan*/  const*)) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int lzma_allocator ;
+struct TYPE_3__ {int * root; } ;
+typedef TYPE_1__ index_tree ;
+
+
+ int assert (int ) ;
+ int index_tree_node_end (int *,int const*,void (*) (void*,int const*)) ;
 
 __attribute__((used)) static void
 index_tree_end(index_tree *tree, const lzma_allocator *allocator,
-		void (*free_func)(void *node, const lzma_allocator *allocator))
+  void (*free_func)(void *node, const lzma_allocator *allocator))
 {
-	assert(free_func != NULL);
+ assert(free_func != ((void*)0));
 
-	if (tree->root != NULL)
-		index_tree_node_end(tree->root, allocator, free_func);
+ if (tree->root != ((void*)0))
+  index_tree_node_end(tree->root, allocator, free_func);
 
-	return;
+ return;
 }

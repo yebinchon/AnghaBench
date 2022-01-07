@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Char ;
 
-/* Variables and functions */
- unsigned int NLSStringWidth (int /*<<< orphan*/ *) ; 
- int SHOUT ; 
- int /*<<< orphan*/ * STRNULL ; 
- int /*<<< orphan*/  STRlistflags ; 
- int /*<<< orphan*/ * Strchr (int /*<<< orphan*/ *,char) ; 
- size_t Strlen (int /*<<< orphan*/ *) ; 
- unsigned int TermH ; 
- scalar_t__ Tty_raw_mode ; 
- scalar_t__ didfds ; 
- int /*<<< orphan*/  filetype (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  flush () ; 
- int /*<<< orphan*/  isatty (int) ; 
- int lbuffed ; 
- unsigned int max (unsigned int,unsigned int) ; 
- int /*<<< orphan*/  print_with_color (int /*<<< orphan*/ *,size_t,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * varval (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xprintf (char*,int /*<<< orphan*/ *,...) ; 
- int /*<<< orphan*/  xputchar (char) ; 
+
+
+
+typedef int Char ;
+
+
+ unsigned int NLSStringWidth (int *) ;
+ int SHOUT ;
+ int * STRNULL ;
+ int STRlistflags ;
+ int * Strchr (int *,char) ;
+ size_t Strlen (int *) ;
+ unsigned int TermH ;
+ scalar_t__ Tty_raw_mode ;
+ scalar_t__ didfds ;
+ int filetype (int *,int *) ;
+ int flush () ;
+ int isatty (int) ;
+ int lbuffed ;
+ unsigned int max (unsigned int,unsigned int) ;
+ int print_with_color (int *,size_t,int ) ;
+ int * varval (int ) ;
+ int xprintf (char*,int *,...) ;
+ int xputchar (char) ;
 
 void
 print_by_column(Char *dir, Char *items[], int count, int no_file_suffix)
@@ -41,70 +41,55 @@ print_by_column(Char *dir, Char *items[], int count, int no_file_suffix)
     Char *val;
     int across;
 
-    lbuffed = 0;		/* turn off line buffering */
+    lbuffed = 0;
 
-    
-    across = ((val = varval(STRlistflags)) != STRNULL) && 
-	     (Strchr(val, 'x') != NULL);
 
-    for (i = 0; i < count; i++)	{ /* find widest string */
-	maxwidth = max(maxwidth, (unsigned int) NLSStringWidth(items[i]));
+    across = ((val = varval(STRlistflags)) != STRNULL) &&
+      (Strchr(val, 'x') != ((void*)0));
+
+    for (i = 0; i < count; i++) {
+ maxwidth = max(maxwidth, (unsigned int) NLSStringWidth(items[i]));
     }
 
-    maxwidth += no_file_suffix ? 1 : 2;	/* for the file tag and space */
-    columns = TermH / maxwidth;		/* PWP: terminal size change */
+    maxwidth += no_file_suffix ? 1 : 2;
+    columns = TermH / maxwidth;
     if (!columns || !isatty(didfds ? 1 : SHOUT))
-	columns = 1;
+ columns = 1;
     rows = (count + (columns - 1)) / columns;
 
     i = -1;
     for (r = 0; r < rows; r++) {
-	for (c = 0; c < columns; c++) {
-	    i = across ? (i + 1) : (c * rows + r);
+ for (c = 0; c < columns; c++) {
+     i = across ? (i + 1) : (c * rows + r);
 
-	    if (i < count) {
-		wx = 0;
-		w = Strlen(items[i]);
+     if (i < count) {
+  wx = 0;
+  w = Strlen(items[i]);
+  if (no_file_suffix) {
 
-#ifdef COLOR_LS_F
-		if (no_file_suffix) {
-		    /* Print the command name */
-		    Char f = items[i][w - 1];
-		    items[i][w - 1] = 0;
-		    print_with_color(items[i], w - 1, f);
-		    items[i][w - 1] = f;
-		}
-		else {
-		    /* Print filename followed by '/' or '*' or ' ' */
-		    print_with_color(items[i], w, filetype(dir, items[i]));
-		    wx++;
-		}
-#else /* ifndef COLOR_LS_F */
-		if (no_file_suffix) {
-		    /* Print the command name */
-		    xprintf("%S", items[i]);
-		}
-		else {
-		    /* Print filename followed by '/' or '*' or ' ' */
-		    xprintf("%-S%c", items[i], filetype(dir, items[i]));
-		    wx++;
-		}
-#endif /* COLOR_LS_F */
+      xprintf("%S", items[i]);
+  }
+  else {
 
-		if (c < (columns - 1)) {	/* Not last column? */
-		    w = NLSStringWidth(items[i]) + wx;
-		    for (; w < maxwidth; w++)
-			xputchar(' ');
-		}
-	    }
-	    else if (across)
-		break;
-	}
-	if (Tty_raw_mode)
-	    xputchar('\r');
-	xputchar('\n');
+      xprintf("%-S%c", items[i], filetype(dir, items[i]));
+      wx++;
+  }
+
+
+  if (c < (columns - 1)) {
+      w = NLSStringWidth(items[i]) + wx;
+      for (; w < maxwidth; w++)
+   xputchar(' ');
+  }
+     }
+     else if (across)
+  break;
+ }
+ if (Tty_raw_mode)
+     xputchar('\r');
+ xputchar('\n');
     }
 
-    lbuffed = 1;		/* turn back on line buffering */
+    lbuffed = 1;
     flush();
 }

@@ -1,40 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  cmd_usage () ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char const*) ; 
- int help ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  strcmp (char const*,char*) ; 
+ int cmd_usage () ;
+ int fprintf (int ,char*,char const*) ;
+ int help ;
+ int stderr ;
+ int strcmp (char const*,char*) ;
 
 __attribute__((used)) static void handle_options(int *argc, const char ***argv)
 {
-	while (*argc > 0) {
-		const char *cmd = (*argv)[0];
+ while (*argc > 0) {
+  const char *cmd = (*argv)[0];
 
-		if (cmd[0] != '-')
-			break;
+  if (cmd[0] != '-')
+   break;
 
-		if (!strcmp(cmd, "--help") || !strcmp(cmd, "-h")) {
-			help = true;
-			break;
-		} else {
-			fprintf(stderr, "Unknown option: %s\n", cmd);
-			cmd_usage();
-		}
+  if (!strcmp(cmd, "--help") || !strcmp(cmd, "-h")) {
+   help = 1;
+   break;
+  } else {
+   fprintf(stderr, "Unknown option: %s\n", cmd);
+   cmd_usage();
+  }
 
-		(*argv)++;
-		(*argc)--;
-	}
+  (*argv)++;
+  (*argc)--;
+ }
 }

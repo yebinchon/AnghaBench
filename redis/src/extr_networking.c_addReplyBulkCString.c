@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  client ;
 
-/* Variables and functions */
- int /*<<< orphan*/  addReplyBulkCBuffer (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  addReplyNull (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strlen (char const*) ; 
+
+
+
+typedef int client ;
+
+
+ int addReplyBulkCBuffer (int *,char const*,int ) ;
+ int addReplyNull (int *) ;
+ int strlen (char const*) ;
 
 void addReplyBulkCString(client *c, const char *s) {
-    if (s == NULL) {
+    if (s == ((void*)0)) {
         addReplyNull(c);
     } else {
         addReplyBulkCBuffer(c,s,strlen(s));

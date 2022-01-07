@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct encode_priv {double t0; double frames; double audioseconds; TYPE_1__* muxer; scalar_t__ failed; } ;
-struct encode_lavc_context {int /*<<< orphan*/  lock; struct encode_priv* priv; } ;
+struct encode_lavc_context {int lock; struct encode_priv* priv; } ;
 struct TYPE_2__ {scalar_t__ pb; } ;
 
-/* Variables and functions */
- float MPMAX (double,float) ; 
- double avio_size (scalar_t__) ; 
- double mp_time_sec () ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,...) ; 
+
+ float MPMAX (double,float) ;
+ double avio_size (scalar_t__) ;
+ double mp_time_sec () ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
+ int snprintf (char*,int,char*,...) ;
 
 int encode_lavc_getstatus(struct encode_lavc_context *ctx,
                           char *buf, int bufsize,

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int fd; } ;
-typedef  TYPE_1__ ev_io ;
+typedef TYPE_1__ ev_io ;
 
-/* Variables and functions */
- scalar_t__ EAGAIN ; 
- int /*<<< orphan*/  ELOG (char*,...) ; 
- int /*<<< orphan*/  EXIT_FAILURE ; 
- int /*<<< orphan*/  FREE (unsigned char*) ; 
- int STDIN_CHUNK_SIZE ; 
- scalar_t__ errno ; 
- int /*<<< orphan*/  exit (int /*<<< orphan*/ ) ; 
- int read (int,unsigned char*,int) ; 
- unsigned char* smalloc (int) ; 
- unsigned char* srealloc (unsigned char*,int) ; 
- int /*<<< orphan*/  strerror (scalar_t__) ; 
+
+ scalar_t__ EAGAIN ;
+ int ELOG (char*,...) ;
+ int EXIT_FAILURE ;
+ int FREE (unsigned char*) ;
+ int STDIN_CHUNK_SIZE ;
+ scalar_t__ errno ;
+ int exit (int ) ;
+ int read (int,unsigned char*,int) ;
+ unsigned char* smalloc (int) ;
+ unsigned char* srealloc (unsigned char*,int) ;
+ int strerror (scalar_t__) ;
 
 __attribute__((used)) static unsigned char *get_buffer(ev_io *watcher, int *ret_buffer_len) {
     int fd = watcher->fd;
@@ -38,7 +38,7 @@ __attribute__((used)) static unsigned char *get_buffer(ev_io *watcher, int *ret_
         n = read(fd, buffer + rec, buffer_len - rec);
         if (n == -1) {
             if (errno == EAGAIN) {
-                /* finish up */
+
                 break;
             }
             ELOG("read() failed!: %s\n", strerror(errno));
@@ -49,7 +49,7 @@ __attribute__((used)) static unsigned char *get_buffer(ev_io *watcher, int *ret_
             ELOG("stdin: received EOF\n");
             FREE(buffer);
             *ret_buffer_len = -1;
-            return NULL;
+            return ((void*)0);
         }
         rec += n;
 

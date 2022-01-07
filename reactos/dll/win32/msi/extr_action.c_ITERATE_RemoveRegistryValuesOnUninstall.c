@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int UINT ;
+
+
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
+typedef int UINT ;
 struct TYPE_15__ {scalar_t__ Action; } ;
-struct TYPE_14__ {int /*<<< orphan*/  hdr; } ;
-typedef  TYPE_1__ MSIRECORD ;
-typedef  int /*<<< orphan*/  MSIPACKAGE ;
-typedef  TYPE_2__ MSICOMPONENT ;
-typedef  char* LPWSTR ;
-typedef  int /*<<< orphan*/ * LPVOID ;
-typedef  char* LPCWSTR ;
-typedef  int /*<<< orphan*/  INT ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  scalar_t__ BOOL ;
+struct TYPE_14__ {int hdr; } ;
+typedef TYPE_1__ MSIRECORD ;
+typedef int MSIPACKAGE ;
+typedef TYPE_2__ MSICOMPONENT ;
+typedef char* LPWSTR ;
+typedef int * LPVOID ;
+typedef char* LPCWSTR ;
+typedef int INT ;
+typedef int HKEY ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- int ERROR_SUCCESS ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  INSTALLMESSAGE_ACTIONDATA ; 
- scalar_t__ INSTALLSTATE_ABSENT ; 
- TYPE_1__* MSI_CreateRecord (int) ; 
- int /*<<< orphan*/  MSI_ProcessMessage (int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  MSI_RecordGetInteger (TYPE_1__*,int) ; 
- char* MSI_RecordGetString (TYPE_1__*,int) ; 
- scalar_t__ MSI_RecordIsNull (TYPE_1__*,int) ; 
- int /*<<< orphan*/  MSI_RecordSetStringW (TYPE_1__*,int,char*) ; 
- int /*<<< orphan*/  REG_PROGRESS_VALUE ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ) ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  debugstr_w (char*) ; 
- int /*<<< orphan*/  deformat_string (int /*<<< orphan*/ *,char*,char**) ; 
- int /*<<< orphan*/  delete_tree (TYPE_2__*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  delete_value (TYPE_2__*,int /*<<< orphan*/ ,char*,char*) ; 
- char* get_root_key (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- char* msi_alloc (int) ; 
- int /*<<< orphan*/  msi_free (char*) ; 
- scalar_t__ msi_get_component_action (int /*<<< orphan*/ *,TYPE_2__*) ; 
- TYPE_2__* msi_get_loaded_component (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  msi_ui_progress (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  msiobj_release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strcatW (char*,char*) ; 
- int /*<<< orphan*/  strcpyW (char*,char*) ; 
- int strlenW (char*) ; 
+
+ int ERROR_SUCCESS ;
+ scalar_t__ FALSE ;
+ int INSTALLMESSAGE_ACTIONDATA ;
+ scalar_t__ INSTALLSTATE_ABSENT ;
+ TYPE_1__* MSI_CreateRecord (int) ;
+ int MSI_ProcessMessage (int *,int ,TYPE_1__*) ;
+ int MSI_RecordGetInteger (TYPE_1__*,int) ;
+ char* MSI_RecordGetString (TYPE_1__*,int) ;
+ scalar_t__ MSI_RecordIsNull (TYPE_1__*,int) ;
+ int MSI_RecordSetStringW (TYPE_1__*,int,char*) ;
+ int REG_PROGRESS_VALUE ;
+ int TRACE (char*,int ) ;
+ scalar_t__ TRUE ;
+ int debugstr_w (char*) ;
+ int deformat_string (int *,char*,char**) ;
+ int delete_tree (TYPE_2__*,int ,char*) ;
+ int delete_value (TYPE_2__*,int ,char*,char*) ;
+ char* get_root_key (int *,int ,int *) ;
+ char* msi_alloc (int) ;
+ int msi_free (char*) ;
+ scalar_t__ msi_get_component_action (int *,TYPE_2__*) ;
+ TYPE_2__* msi_get_loaded_component (int *,char*) ;
+ int msi_ui_progress (int *,int,int ,int ,int ) ;
+ int msiobj_release (int *) ;
+ int strcatW (char*,char*) ;
+ int strcpyW (char*,char*) ;
+ int strlenW (char*) ;
 
 __attribute__((used)) static UINT ITERATE_RemoveRegistryValuesOnUninstall( MSIRECORD *row, LPVOID param )
 {
@@ -89,7 +89,7 @@ __attribute__((used)) static UINT ITERATE_RemoveRegistryValuesOnUninstall( MSIRE
         if ((name[0] == '-' || name[0] == '*') && !name[1])
         {
             delete_key = TRUE;
-            name = NULL;
+            name = ((void*)0);
         }
     }
 

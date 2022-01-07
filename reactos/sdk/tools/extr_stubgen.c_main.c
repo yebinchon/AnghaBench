@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {char* name; char* origin; struct TYPE_2__* next; } ;
-typedef  TYPE_1__ stub ;
-typedef  int /*<<< orphan*/  line ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef TYPE_1__ stub ;
+typedef int line ;
+typedef int FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- scalar_t__ fgets (char*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*,...) ; 
- scalar_t__ isspace (char) ; 
- scalar_t__ malloc (int) ; 
- int /*<<< orphan*/  memmove (char*,char*,int) ; 
- int /*<<< orphan*/  pclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * popen (char*,char*) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,char*,...) ; 
- int /*<<< orphan*/  stderr ; 
- char* strchr (char*,char) ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
- void* strdup (char*) ; 
- char* strrchr (char*,char) ; 
- char* strstr (char*,char*) ; 
- int /*<<< orphan*/  usage (char*) ; 
+
+ int fclose (int *) ;
+ scalar_t__ fgets (char*,int,int *) ;
+ int * fopen (char*,char*) ;
+ int fprintf (int *,char*,...) ;
+ scalar_t__ isspace (char) ;
+ scalar_t__ malloc (int) ;
+ int memmove (char*,char*,int) ;
+ int pclose (int *) ;
+ int * popen (char*,char*) ;
+ int snprintf (char*,int,char*,char*,...) ;
+ int stderr ;
+ char* strchr (char*,char) ;
+ int strcmp (char*,char*) ;
+ void* strdup (char*) ;
+ char* strrchr (char*,char) ;
+ char* strstr (char*,char*) ;
+ int usage (char*) ;
 
 int main( int argc, char **argv ) {
     char line[1024];
     char *make = "make";
     char *nm = "nm";
     char *origin = "unknown.a";
-    stub *functions = NULL, *new_f, *imports = NULL, *search;
+    stub *functions = ((void*)0), *new_f, *imports = ((void*)0), *search;
     FILE *make_f, *nm_f;
     int i, libstart = argc;
     FILE *out = fopen("tests/stubs.tst","w");
@@ -92,7 +92,7 @@ int main( int argc, char **argv ) {
 
         if( !begin_q || !end_q ) continue;
 
-        begin_q += 2; /* skip `_ */
+        begin_q += 2;
 
         memmove( line, begin_q, end_q - begin_q );
         line[end_q - begin_q] = 0;
@@ -116,7 +116,7 @@ int main( int argc, char **argv ) {
         functions = new_f;
     }
 
-    /* Scan libraries and collect available import sections */
+
     for( i = libstart; i < argc; i++ ) {
         snprintf( line, sizeof(line), "%s %s", nm, argv[i] );
         nm_f = popen( line, "r" );
@@ -139,7 +139,7 @@ int main( int argc, char **argv ) {
             import_sign += 3;
             while( *import_sign && isspace(*import_sign) ) import_sign++;
 
-            /* Strip ws after name */
+
             for( eol = import_sign; *eol && !isspace(*eol); eol++ );
 
             *eol = 0;
@@ -159,17 +159,17 @@ int main( int argc, char **argv ) {
                 return 1;
             }
 
-            new_f->name   = strdup( import_sign + 1 );
+            new_f->name = strdup( import_sign + 1 );
             new_f->origin = origin;
-            new_f->next   = imports;
+            new_f->next = imports;
             imports = new_f;
         }
 
         pclose( nm_f );
     }
 
-    /* Now we have a list of unique functions and a list of imports,
-    lookup each function and output the entry from the import list. */
+
+
     for( new_f = functions; new_f; new_f = new_f->next ) {
         for( search = imports; search; search = search->next ) {
             if( !strcmp( new_f->name, search->name ) ) {

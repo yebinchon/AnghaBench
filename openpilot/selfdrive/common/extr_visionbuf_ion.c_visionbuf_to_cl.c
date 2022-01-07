@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  host_cache_policy; int /*<<< orphan*/  allocation_type; } ;
-struct TYPE_7__ {scalar_t__ ion_hostptr; int /*<<< orphan*/  ion_filedesc; TYPE_1__ ext_host_ptr; int /*<<< orphan*/  member_0; } ;
-typedef  TYPE_2__ cl_mem_ion_host_ptr ;
-typedef  int /*<<< orphan*/  cl_mem ;
-typedef  int /*<<< orphan*/  cl_device_id ;
-typedef  int /*<<< orphan*/  cl_context ;
-struct TYPE_8__ {int /*<<< orphan*/  len; scalar_t__ addr; int /*<<< orphan*/  fd; } ;
-typedef  TYPE_3__ VisionBuf ;
 
-/* Variables and functions */
- int CL_MEM_EXT_HOST_PTR_QCOM ; 
- int /*<<< orphan*/  CL_MEM_HOST_UNCACHED_QCOM ; 
- int /*<<< orphan*/  CL_MEM_ION_HOST_PTR_QCOM ; 
- int CL_MEM_USE_HOST_PTR ; 
- uintptr_t DEVICE_PAGE_SIZE_CL ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  clCreateBuffer (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,TYPE_2__*,int*) ; 
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int host_cache_policy; int allocation_type; } ;
+struct TYPE_7__ {scalar_t__ ion_hostptr; int ion_filedesc; TYPE_1__ ext_host_ptr; int member_0; } ;
+typedef TYPE_2__ cl_mem_ion_host_ptr ;
+typedef int cl_mem ;
+typedef int cl_device_id ;
+typedef int cl_context ;
+struct TYPE_8__ {int len; scalar_t__ addr; int fd; } ;
+typedef TYPE_3__ VisionBuf ;
+
+
+ int CL_MEM_EXT_HOST_PTR_QCOM ;
+ int CL_MEM_HOST_UNCACHED_QCOM ;
+ int CL_MEM_ION_HOST_PTR_QCOM ;
+ int CL_MEM_USE_HOST_PTR ;
+ uintptr_t DEVICE_PAGE_SIZE_CL ;
+ int assert (int) ;
+ int clCreateBuffer (int ,int,int ,TYPE_2__*,int*) ;
 
 cl_mem visionbuf_to_cl(const VisionBuf* buf, cl_device_id device_id, cl_context ctx) {
   int err = 0;

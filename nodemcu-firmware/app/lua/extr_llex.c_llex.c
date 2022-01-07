@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_21__   TYPE_2__ ;
-typedef  struct TYPE_20__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_21__ {int current; int /*<<< orphan*/  buff; } ;
-struct TYPE_20__ {int /*<<< orphan*/ * ts; } ;
-typedef  int /*<<< orphan*/  TString ;
-typedef  TYPE_1__ SemInfo ;
-typedef  TYPE_2__ LexState ;
 
-/* Variables and functions */
-#define  EOZ 128 
- int /*<<< orphan*/  FIRST_RESERVED ; 
- int NUM_RESERVED ; 
- int TK_CONCAT ; 
- int TK_DOTS ; 
- int TK_EOS ; 
- int TK_EQ ; 
- int TK_GE ; 
- int TK_LE ; 
- int TK_NAME ; 
- int TK_NE ; 
- int TK_NUMBER ; 
- int TK_STRING ; 
- int /*<<< orphan*/  check_next (TYPE_2__*,char*) ; 
- int /*<<< orphan*/  currIsNewline (TYPE_2__*) ; 
- int /*<<< orphan*/  inclinenumber (TYPE_2__*) ; 
- int /*<<< orphan*/  isalnum (char) ; 
- int /*<<< orphan*/  isalpha (char) ; 
- int /*<<< orphan*/  isdigit (char) ; 
- int /*<<< orphan*/  isspace (char) ; 
- int /*<<< orphan*/  luaX_lexerror (TYPE_2__*,char*,int) ; 
- int /*<<< orphan*/ * luaX_newstring (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * luaX_tokens ; 
- int /*<<< orphan*/  luaZ_buffer (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  luaZ_bufflen (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  luaZ_resetbuffer (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_assert (int) ; 
- int /*<<< orphan*/  next (TYPE_2__*) ; 
- int /*<<< orphan*/  read_long_string (TYPE_2__*,TYPE_1__*,int) ; 
- int /*<<< orphan*/  read_numeral (TYPE_2__*,TYPE_1__*) ; 
- int /*<<< orphan*/  read_string (TYPE_2__*,char,TYPE_1__*) ; 
- int /*<<< orphan*/  save (TYPE_2__*,char) ; 
- int /*<<< orphan*/  save_and_next (TYPE_2__*) ; 
- int skip_sep (TYPE_2__*) ; 
- int /*<<< orphan*/  strcmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_21__ TYPE_2__ ;
+typedef struct TYPE_20__ TYPE_1__ ;
+
+
+struct TYPE_21__ {int current; int buff; } ;
+struct TYPE_20__ {int * ts; } ;
+typedef int TString ;
+typedef TYPE_1__ SemInfo ;
+typedef TYPE_2__ LexState ;
+
+
+
+ int FIRST_RESERVED ;
+ int NUM_RESERVED ;
+ int TK_CONCAT ;
+ int TK_DOTS ;
+ int TK_EOS ;
+ int TK_EQ ;
+ int TK_GE ;
+ int TK_LE ;
+ int TK_NAME ;
+ int TK_NE ;
+ int TK_NUMBER ;
+ int TK_STRING ;
+ int check_next (TYPE_2__*,char*) ;
+ int currIsNewline (TYPE_2__*) ;
+ int inclinenumber (TYPE_2__*) ;
+ int isalnum (char) ;
+ int isalpha (char) ;
+ int isdigit (char) ;
+ int isspace (char) ;
+ int luaX_lexerror (TYPE_2__*,char*,int) ;
+ int * luaX_newstring (TYPE_2__*,int ,int ) ;
+ int * luaX_tokens ;
+ int luaZ_buffer (int ) ;
+ int luaZ_bufflen (int ) ;
+ int luaZ_resetbuffer (int ) ;
+ int lua_assert (int) ;
+ int next (TYPE_2__*) ;
+ int read_long_string (TYPE_2__*,TYPE_1__*,int) ;
+ int read_numeral (TYPE_2__*,TYPE_1__*) ;
+ int read_string (TYPE_2__*,char,TYPE_1__*) ;
+ int save (TYPE_2__*,char) ;
+ int save_and_next (TYPE_2__*) ;
+ int skip_sep (TYPE_2__*) ;
+ int strcmp (int ,int ) ;
 
 __attribute__((used)) static int llex (LexState *ls, SemInfo *seminfo) {
   luaZ_resetbuffer(ls->buff);
@@ -67,19 +67,19 @@ __attribute__((used)) static int llex (LexState *ls, SemInfo *seminfo) {
       case '-': {
         next(ls);
         if (ls->current != '-') return '-';
-        /* else is a comment */
+
         next(ls);
         if (ls->current == '[') {
           int sep = skip_sep(ls);
-          luaZ_resetbuffer(ls->buff);  /* `skip_sep' may dirty the buffer */
+          luaZ_resetbuffer(ls->buff);
           if (sep >= 0) {
-            read_long_string(ls, NULL, sep);  /* long comment */
+            read_long_string(ls, ((void*)0), sep);
             luaZ_resetbuffer(ls->buff);
             continue;
           }
         }
-        /* else short comment */
-        while (!currIsNewline(ls) && ls->current != EOZ)
+
+        while (!currIsNewline(ls) && ls->current != 128)
           next(ls);
         continue;
       }
@@ -121,8 +121,8 @@ __attribute__((used)) static int llex (LexState *ls, SemInfo *seminfo) {
         save_and_next(ls);
         if (check_next(ls, ".")) {
           if (check_next(ls, "."))
-            return TK_DOTS;   /* ... */
-          else return TK_CONCAT;   /* .. */
+            return TK_DOTS;
+          else return TK_CONCAT;
         }
         else if (!isdigit(ls->current)) return '.';
         else {
@@ -130,7 +130,7 @@ __attribute__((used)) static int llex (LexState *ls, SemInfo *seminfo) {
           return TK_NUMBER;
         }
       }
-      case EOZ: {
+      case 128: {
         return TK_EOS;
       }
       default: {
@@ -144,13 +144,13 @@ __attribute__((used)) static int llex (LexState *ls, SemInfo *seminfo) {
           return TK_NUMBER;
         }
         else if (isalpha(ls->current) || ls->current == '_') {
-          /* identifier or reserved word */
+
           TString *ts;
           int i;
           do {
             save_and_next(ls);
           } while (isalnum(ls->current) || ls->current == '_');
-          /* look for reserved word */
+
           save(ls, '\0');
           for (i = 0; i < NUM_RESERVED; i++)
             if (!strcmp(luaX_tokens[i], luaZ_buffer(ls->buff)))
@@ -163,7 +163,7 @@ __attribute__((used)) static int llex (LexState *ls, SemInfo *seminfo) {
         else {
           int c = ls->current;
           next(ls);
-          return c;  /* single-char tokens (+ - / ...) */
+          return c;
         }
       }
     }

@@ -1,64 +1,64 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_22__   TYPE_8__ ;
-typedef  struct TYPE_21__   TYPE_7__ ;
-typedef  struct TYPE_20__   TYPE_6__ ;
-typedef  struct TYPE_19__   TYPE_5__ ;
-typedef  struct TYPE_18__   TYPE_4__ ;
-typedef  struct TYPE_17__   TYPE_3__ ;
-typedef  struct TYPE_16__   TYPE_2__ ;
-typedef  struct TYPE_15__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int USHORT ;
+
+
+typedef struct TYPE_22__ TYPE_8__ ;
+typedef struct TYPE_21__ TYPE_7__ ;
+typedef struct TYPE_20__ TYPE_6__ ;
+typedef struct TYPE_19__ TYPE_5__ ;
+typedef struct TYPE_18__ TYPE_4__ ;
+typedef struct TYPE_17__ TYPE_3__ ;
+typedef struct TYPE_16__ TYPE_2__ ;
+typedef struct TYPE_15__ TYPE_1__ ;
+
+
+typedef int USHORT ;
 struct TYPE_22__ {int VendorId; } ;
-struct TYPE_21__ {int /*<<< orphan*/  ProdId; int /*<<< orphan*/  VendorId; } ;
-struct TYPE_20__ {int /*<<< orphan*/  Flags; TYPE_4__* DeviceExtension; } ;
+struct TYPE_21__ {int ProdId; int VendorId; } ;
+struct TYPE_20__ {int Flags; TYPE_4__* DeviceExtension; } ;
 struct TYPE_16__ {TYPE_1__* Self; } ;
-struct TYPE_19__ {int /*<<< orphan*/  DeviceCount; int /*<<< orphan*/  DeviceListHead; int /*<<< orphan*/  ReadDataPort; TYPE_2__ Common; } ;
-struct TYPE_17__ {TYPE_6__* Self; int /*<<< orphan*/  State; int /*<<< orphan*/  IsFdo; } ;
-struct TYPE_18__ {int CSN; int LDN; int /*<<< orphan*/  ListEntry; int /*<<< orphan*/  IrqNo; int /*<<< orphan*/  IoAddr; int /*<<< orphan*/  ProdId; int /*<<< orphan*/  VendorId; TYPE_3__ Common; } ;
-struct TYPE_15__ {int /*<<< orphan*/  DriverObject; } ;
-typedef  TYPE_4__* PISAPNP_LOGICAL_DEVICE ;
-typedef  TYPE_5__* PISAPNP_FDO_EXTENSION ;
-typedef  TYPE_6__* PDEVICE_OBJECT ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
-typedef  int /*<<< orphan*/  Identifier ;
-typedef  int /*<<< orphan*/  ISAPNP_LOGICAL_DEVICE ;
-typedef  TYPE_7__ ISAPNP_LOGDEVID ;
-typedef  TYPE_8__ ISAPNP_IDENTIFIER ;
+struct TYPE_19__ {int DeviceCount; int DeviceListHead; int ReadDataPort; TYPE_2__ Common; } ;
+struct TYPE_17__ {TYPE_6__* Self; int State; int IsFdo; } ;
+struct TYPE_18__ {int CSN; int LDN; int ListEntry; int IrqNo; int IoAddr; int ProdId; int VendorId; TYPE_3__ Common; } ;
+struct TYPE_15__ {int DriverObject; } ;
+typedef TYPE_4__* PISAPNP_LOGICAL_DEVICE ;
+typedef TYPE_5__* PISAPNP_FDO_EXTENSION ;
+typedef TYPE_6__* PDEVICE_OBJECT ;
+typedef int NTSTATUS ;
+typedef int Identifier ;
+typedef int ISAPNP_LOGICAL_DEVICE ;
+typedef TYPE_7__ ISAPNP_LOGDEVID ;
+typedef TYPE_8__ ISAPNP_IDENTIFIER ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DO_BUS_ENUMERATED_DEVICE ; 
- int /*<<< orphan*/  DO_DEVICE_INITIALIZING ; 
- int /*<<< orphan*/  DPRINT1 (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  FILE_DEVICE_CONTROLLER ; 
- int /*<<< orphan*/  FILE_DEVICE_SECURE_OPEN ; 
- int /*<<< orphan*/  FindLogDevId (int /*<<< orphan*/ ,int,TYPE_7__*) ; 
- int /*<<< orphan*/  InsertTailList (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IoCreateDevice (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_6__**) ; 
- int /*<<< orphan*/  IoDeleteDevice (TYPE_6__*) ; 
- int /*<<< orphan*/  NT_SUCCESS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Peek (int /*<<< orphan*/ ,TYPE_8__*,int) ; 
- int /*<<< orphan*/  ReadIoBase (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReadIrqNo (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RtlZeroMemory (TYPE_4__*,int) ; 
- int /*<<< orphan*/  STATUS_SUCCESS ; 
- int /*<<< orphan*/  SendKey () ; 
- int /*<<< orphan*/  WaitForKey () ; 
- int /*<<< orphan*/  Wake (int) ; 
- int /*<<< orphan*/  WriteLogicalDeviceNumber (int) ; 
- int /*<<< orphan*/  dsStopped ; 
+
+ int ASSERT (int ) ;
+ int DO_BUS_ENUMERATED_DEVICE ;
+ int DO_DEVICE_INITIALIZING ;
+ int DPRINT1 (char*,int ,int ,int ,int ) ;
+ int FALSE ;
+ int FILE_DEVICE_CONTROLLER ;
+ int FILE_DEVICE_SECURE_OPEN ;
+ int FindLogDevId (int ,int,TYPE_7__*) ;
+ int InsertTailList (int *,int *) ;
+ int IoCreateDevice (int ,int,int *,int ,int ,int ,TYPE_6__**) ;
+ int IoDeleteDevice (TYPE_6__*) ;
+ int NT_SUCCESS (int ) ;
+ int Peek (int ,TYPE_8__*,int) ;
+ int ReadIoBase (int ,int ) ;
+ int ReadIrqNo (int ,int ) ;
+ int RtlZeroMemory (TYPE_4__*,int) ;
+ int STATUS_SUCCESS ;
+ int SendKey () ;
+ int WaitForKey () ;
+ int Wake (int) ;
+ int WriteLogicalDeviceNumber (int) ;
+ int dsStopped ;
 
 NTSTATUS
 ProbeIsaPnpBus(PISAPNP_FDO_EXTENSION FdoExt)
@@ -79,7 +79,7 @@ ProbeIsaPnpBus(PISAPNP_FDO_EXTENSION FdoExt)
     {
       Status = IoCreateDevice(FdoExt->Common.Self->DriverObject,
                               sizeof(ISAPNP_LOGICAL_DEVICE),
-                              NULL,
+                              ((void*)0),
                               FILE_DEVICE_CONTROLLER,
                               FILE_DEVICE_SECURE_OPEN,
                               FALSE,

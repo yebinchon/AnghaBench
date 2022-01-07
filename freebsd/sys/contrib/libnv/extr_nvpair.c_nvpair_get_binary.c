@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {scalar_t__ nvp_type; size_t nvp_datasize; scalar_t__ nvp_data; } ;
-typedef  TYPE_1__ nvpair_t ;
+typedef TYPE_1__ nvpair_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NVPAIR_ASSERT (TYPE_1__ const*) ; 
- scalar_t__ NV_TYPE_BINARY ; 
- int /*<<< orphan*/  PJDLOG_ASSERT (int) ; 
+
+ int NVPAIR_ASSERT (TYPE_1__ const*) ;
+ scalar_t__ NV_TYPE_BINARY ;
+ int PJDLOG_ASSERT (int) ;
 
 const void *
 nvpair_get_binary(const nvpair_t *nvp, size_t *sizep)
 {
 
-	NVPAIR_ASSERT(nvp);
-	PJDLOG_ASSERT(nvp->nvp_type == NV_TYPE_BINARY);
+ NVPAIR_ASSERT(nvp);
+ PJDLOG_ASSERT(nvp->nvp_type == NV_TYPE_BINARY);
 
-	if (sizep != NULL)
-		*sizep = nvp->nvp_datasize;
+ if (sizep != ((void*)0))
+  *sizep = nvp->nvp_datasize;
 
-	return ((const void *)(intptr_t)nvp->nvp_data);
+ return ((const void *)(intptr_t)nvp->nvp_data);
 }

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  fstype; int /*<<< orphan*/  node; } ;
-typedef  TYPE_1__ DissectedPartition ;
 
-/* Variables and functions */
- int USEC_PER_SEC ; 
- int add_automount (char*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int,char*,char*,int) ; 
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int fstab_is_mount_point (char*) ; 
- scalar_t__ in_initrd () ; 
- int /*<<< orphan*/  log_debug (char*) ; 
- int log_error_errno (int,char*) ; 
- int path_is_busy (char*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int fstype; int node; } ;
+typedef TYPE_1__ DissectedPartition ;
+
+
+ int USEC_PER_SEC ;
+ int add_automount (char*,int ,char*,int ,int,char*,char*,int) ;
+ int assert (TYPE_1__*) ;
+ int fstab_is_mount_point (char*) ;
+ scalar_t__ in_initrd () ;
+ int log_debug (char*) ;
+ int log_error_errno (int,char*) ;
+ int path_is_busy (char*) ;
 
 __attribute__((used)) static int add_xbootldr(DissectedPartition *p) {
         int r;
@@ -52,7 +52,7 @@ __attribute__((used)) static int add_xbootldr(DissectedPartition *p) {
                              p->node,
                              "/boot",
                              p->fstype,
-                             true,
+                             1,
                              "umask=0077",
                              "Boot Loader Partition",
                              120 * USEC_PER_SEC);

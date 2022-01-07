@@ -1,85 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
-#define  DW_FORM_addr 148 
-#define  DW_FORM_block 147 
-#define  DW_FORM_block1 146 
-#define  DW_FORM_block2 145 
-#define  DW_FORM_block4 144 
-#define  DW_FORM_data1 143 
-#define  DW_FORM_data2 142 
-#define  DW_FORM_data4 141 
-#define  DW_FORM_data8 140 
-#define  DW_FORM_flag 139 
-#define  DW_FORM_indirect 138 
-#define  DW_FORM_ref1 137 
-#define  DW_FORM_ref2 136 
-#define  DW_FORM_ref4 135 
-#define  DW_FORM_ref8 134 
-#define  DW_FORM_ref_addr 133 
-#define  DW_FORM_ref_udata 132 
-#define  DW_FORM_sdata 131 
-#define  DW_FORM_string 130 
-#define  DW_FORM_strp 129 
-#define  DW_FORM_udata 128 
-
 __attribute__((used)) static char *
 dwarf_form_name (unsigned form)
 {
   switch (form)
     {
-    case DW_FORM_addr:
+    case 148:
       return "DW_FORM_addr";
-    case DW_FORM_block2:
+    case 145:
       return "DW_FORM_block2";
-    case DW_FORM_block4:
+    case 144:
       return "DW_FORM_block4";
-    case DW_FORM_data2:
+    case 142:
       return "DW_FORM_data2";
-    case DW_FORM_data4:
+    case 141:
       return "DW_FORM_data4";
-    case DW_FORM_data8:
+    case 140:
       return "DW_FORM_data8";
-    case DW_FORM_string:
+    case 130:
       return "DW_FORM_string";
-    case DW_FORM_block:
+    case 147:
       return "DW_FORM_block";
-    case DW_FORM_block1:
+    case 146:
       return "DW_FORM_block1";
-    case DW_FORM_data1:
+    case 143:
       return "DW_FORM_data1";
-    case DW_FORM_flag:
+    case 139:
       return "DW_FORM_flag";
-    case DW_FORM_sdata:
+    case 131:
       return "DW_FORM_sdata";
-    case DW_FORM_strp:
+    case 129:
       return "DW_FORM_strp";
-    case DW_FORM_udata:
+    case 128:
       return "DW_FORM_udata";
-    case DW_FORM_ref_addr:
+    case 133:
       return "DW_FORM_ref_addr";
-    case DW_FORM_ref1:
+    case 137:
       return "DW_FORM_ref1";
-    case DW_FORM_ref2:
+    case 136:
       return "DW_FORM_ref2";
-    case DW_FORM_ref4:
+    case 135:
       return "DW_FORM_ref4";
-    case DW_FORM_ref8:
+    case 134:
       return "DW_FORM_ref8";
-    case DW_FORM_ref_udata:
+    case 132:
       return "DW_FORM_ref_udata";
-    case DW_FORM_indirect:
+    case 138:
       return "DW_FORM_indirect";
     default:
       return "DW_FORM_<unknown>";

@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct configuration {int entries_capacity; int /*<<< orphan*/  rwlock; int /*<<< orphan*/ * entries; } ;
 
-/* Variables and functions */
- int INITIAL_ENTRIES_CAPACITY ; 
- int /*<<< orphan*/  TRACE_IN (struct configuration* (*) ()) ; 
- int /*<<< orphan*/  TRACE_OUT (struct configuration* (*) ()) ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- void* calloc (int,int) ; 
- int /*<<< orphan*/  pthread_rwlock_init (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+struct configuration {int entries_capacity; int rwlock; int * entries; } ;
+
+
+ int INITIAL_ENTRIES_CAPACITY ;
+ int TRACE_IN (struct configuration* (*) ()) ;
+ int TRACE_OUT (struct configuration* (*) ()) ;
+ int assert (int ) ;
+ void* calloc (int,int) ;
+ int pthread_rwlock_init (int *,int *) ;
 
 struct configuration *
 init_configuration(void)
 {
-	struct configuration	*retval;
+ struct configuration *retval;
 
-	TRACE_IN(init_configuration);
-	retval = calloc(1, sizeof(*retval));
-	assert(retval != NULL);
+ TRACE_IN(init_configuration);
+ retval = calloc(1, sizeof(*retval));
+ assert(retval != ((void*)0));
 
-	retval->entries_capacity = INITIAL_ENTRIES_CAPACITY;
-	retval->entries = calloc(retval->entries_capacity,
-		sizeof(*retval->entries));
-	assert(retval->entries != NULL);
+ retval->entries_capacity = INITIAL_ENTRIES_CAPACITY;
+ retval->entries = calloc(retval->entries_capacity,
+  sizeof(*retval->entries));
+ assert(retval->entries != ((void*)0));
 
-	pthread_rwlock_init(&retval->rwlock, NULL);
+ pthread_rwlock_init(&retval->rwlock, ((void*)0));
 
-	TRACE_OUT(init_configuration);
-	return (retval);
+ TRACE_OUT(init_configuration);
+ return (retval);
 }

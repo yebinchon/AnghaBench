@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  void* tree ;
+
+
+
+
+typedef void* tree ;
 struct cgraph_node {struct cgraph_node* master_clone; struct cgraph_node* nested; struct cgraph_node* origin; struct cgraph_node* next_nested; void* decl; } ;
 
-/* Variables and functions */
- void* DECL_CONTEXT (void*) ; 
- scalar_t__ FUNCTION_DECL ; 
- int /*<<< orphan*/  INSERT ; 
- scalar_t__ TREE_CODE (void*) ; 
- struct cgraph_node* cgraph_create_node () ; 
- scalar_t__ cgraph_hash ; 
- int /*<<< orphan*/  eq_node ; 
- int /*<<< orphan*/  gcc_assert (int) ; 
- int /*<<< orphan*/  hash_node ; 
- scalar_t__ htab_create_ggc (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ htab_find_slot (scalar_t__,struct cgraph_node*,int /*<<< orphan*/ ) ; 
+
+ void* DECL_CONTEXT (void*) ;
+ scalar_t__ FUNCTION_DECL ;
+ int INSERT ;
+ scalar_t__ TREE_CODE (void*) ;
+ struct cgraph_node* cgraph_create_node () ;
+ scalar_t__ cgraph_hash ;
+ int eq_node ;
+ int gcc_assert (int) ;
+ int hash_node ;
+ scalar_t__ htab_create_ggc (int,int ,int ,int *) ;
+ scalar_t__ htab_find_slot (scalar_t__,struct cgraph_node*,int ) ;
 
 struct cgraph_node *
 cgraph_node (tree decl)
@@ -34,7 +34,7 @@ cgraph_node (tree decl)
   gcc_assert (TREE_CODE (decl) == FUNCTION_DECL);
 
   if (!cgraph_hash)
-    cgraph_hash = htab_create_ggc (10, hash_node, eq_node, NULL);
+    cgraph_hash = htab_create_ggc (10, hash_node, eq_node, ((void*)0));
 
   key.decl = decl;
 
@@ -44,7 +44,7 @@ cgraph_node (tree decl)
     {
       node = *slot;
       if (!node->master_clone)
-	node->master_clone = node;
+ node->master_clone = node;
       return node;
     }
 

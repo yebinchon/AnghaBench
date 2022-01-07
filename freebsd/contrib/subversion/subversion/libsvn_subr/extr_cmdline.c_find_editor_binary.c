@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_error_t ;
+
+
+
+
+typedef int svn_error_t ;
 struct svn_config_t {int dummy; } ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
+typedef int apr_hash_t ;
 
-/* Variables and functions */
- char* SVN_CLIENT_EDITOR ; 
- int /*<<< orphan*/  SVN_CONFIG_CATEGORY_CONFIG ; 
- int /*<<< orphan*/  SVN_CONFIG_OPTION_EDITOR_CMD ; 
- int /*<<< orphan*/  SVN_CONFIG_SECTION_HELPERS ; 
- int /*<<< orphan*/  SVN_ERR_CL_NO_EXTERNAL_EDITOR ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  _ (char*) ; 
- char* getenv (char*) ; 
- int /*<<< orphan*/  svn_config_get (struct svn_config_t*,char const**,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_ctype_isspace (char const) ; 
- int /*<<< orphan*/ * svn_error_create (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- struct svn_config_t* svn_hash_gets (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ char* SVN_CLIENT_EDITOR ;
+ int SVN_CONFIG_CATEGORY_CONFIG ;
+ int SVN_CONFIG_OPTION_EDITOR_CMD ;
+ int SVN_CONFIG_SECTION_HELPERS ;
+ int SVN_ERR_CL_NO_EXTERNAL_EDITOR ;
+ int * SVN_NO_ERROR ;
+ int _ (char*) ;
+ char* getenv (char*) ;
+ int svn_config_get (struct svn_config_t*,char const**,int ,int ,int *) ;
+ int svn_ctype_isspace (char const) ;
+ int * svn_error_create (int ,int *,int ) ;
+ struct svn_config_t* svn_hash_gets (int *,int ) ;
 
 __attribute__((used)) static svn_error_t *
 find_editor_binary(const char **editor,
@@ -36,34 +36,26 @@ find_editor_binary(const char **editor,
   const char *e;
   struct svn_config_t *cfg;
 
-  /* Use the editor specified on the command line via --editor-cmd, if any. */
+
   e = editor_cmd;
 
-  /* Otherwise look for the Subversion-specific environment variable. */
+
   if (! e)
     e = getenv("SVN_EDITOR");
 
-  /* If not found then fall back on the config file. */
+
   if (! e)
     {
-      cfg = config ? svn_hash_gets(config, SVN_CONFIG_CATEGORY_CONFIG) : NULL;
+      cfg = config ? svn_hash_gets(config, SVN_CONFIG_CATEGORY_CONFIG) : ((void*)0);
       svn_config_get(cfg, &e, SVN_CONFIG_SECTION_HELPERS,
-                     SVN_CONFIG_OPTION_EDITOR_CMD, NULL);
+                     SVN_CONFIG_OPTION_EDITOR_CMD, ((void*)0));
     }
 
-  /* If not found yet then try general purpose environment variables. */
+
   if (! e)
     e = getenv("VISUAL");
   if (! e)
     e = getenv("EDITOR");
-
-#ifdef SVN_CLIENT_EDITOR
-  /* If still not found then fall back on the hard-coded default. */
-  if (! e)
-    e = SVN_CLIENT_EDITOR;
-#endif
-
-  /* Error if there is no editor specified */
   if (e)
     {
       const char *c;
@@ -74,14 +66,14 @@ find_editor_binary(const char **editor,
 
       if (! *c)
         return svn_error_create
-          (SVN_ERR_CL_NO_EXTERNAL_EDITOR, NULL,
+          (SVN_ERR_CL_NO_EXTERNAL_EDITOR, ((void*)0),
            _("The EDITOR, SVN_EDITOR or VISUAL environment variable or "
              "'editor-cmd' run-time configuration option is empty or "
              "consists solely of whitespace. Expected a shell command."));
     }
   else
     return svn_error_create
-      (SVN_ERR_CL_NO_EXTERNAL_EDITOR, NULL,
+      (SVN_ERR_CL_NO_EXTERNAL_EDITOR, ((void*)0),
        _("None of the environment variables SVN_EDITOR, VISUAL or EDITOR are "
          "set, and no 'editor-cmd' run-time configuration option was found"));
 

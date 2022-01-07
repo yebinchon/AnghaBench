@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct lev_search_text_short_entry {unsigned int obj_id; char* text; scalar_t__ rate2; scalar_t__ rate; scalar_t__ type; } ;
-struct lev_search_text_long_entry {unsigned int obj_id; int text_len; char* text; scalar_t__ rate2; scalar_t__ rate; int /*<<< orphan*/  type; } ;
+struct lev_search_text_long_entry {unsigned int obj_id; int text_len; char* text; scalar_t__ rate2; scalar_t__ rate; int type; } ;
 
-/* Variables and functions */
- scalar_t__* I ; 
- int* L ; 
- int /*<<< orphan*/  LEV_SEARCH_TEXT_LONG ; 
- scalar_t__ LEV_SEARCH_TEXT_SHORT ; 
- char** S ; 
- int /*<<< orphan*/  adj_rec ; 
- int /*<<< orphan*/  fits (scalar_t__) ; 
- int /*<<< orphan*/  make_tag (char*,char,scalar_t__) ; 
- int /*<<< orphan*/  memcpy (char*,char*,int) ; 
- size_t qu_date ; 
- size_t qu_id ; 
- size_t qu_message ; 
- size_t qu_num ; 
- size_t qu_owner_id ; 
- size_t qu_type ; 
- void* write_alloc (int) ; 
+
+ scalar_t__* I ;
+ int* L ;
+ int LEV_SEARCH_TEXT_LONG ;
+ scalar_t__ LEV_SEARCH_TEXT_SHORT ;
+ char** S ;
+ int adj_rec ;
+ int fits (scalar_t__) ;
+ int make_tag (char*,char,scalar_t__) ;
+ int memcpy (char*,char*,int) ;
+ size_t qu_date ;
+ size_t qu_id ;
+ size_t qu_message ;
+ size_t qu_num ;
+ size_t qu_owner_id ;
+ size_t qu_type ;
+ void* write_alloc (int) ;
 
 void process_questions_row (void) {
   char *p, *q;

@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int SIZE_T ;
-typedef  scalar_t__* LPWSTR ;
-typedef  scalar_t__* LPCWSTR ;
-typedef  int /*<<< orphan*/  LPBYTE ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int ERROR_NOT_ENOUGH_MEMORY ; 
- int ERROR_SUCCESS ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HEAP_ZERO_MEMORY ; 
- scalar_t__* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__*) ; 
- int /*<<< orphan*/  REG_MULTI_SZ ; 
- int /*<<< orphan*/  RegDeleteValueW (int /*<<< orphan*/ ,char*) ; 
- int RegSetValueExW (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- scalar_t__ SC_GROUP_IDENTIFIERW ; 
- int /*<<< orphan*/  wcscpy (scalar_t__*,scalar_t__*) ; 
- int wcslen (scalar_t__*) ; 
+
+
+
+typedef int WCHAR ;
+typedef int SIZE_T ;
+typedef scalar_t__* LPWSTR ;
+typedef scalar_t__* LPCWSTR ;
+typedef int LPBYTE ;
+typedef int HKEY ;
+typedef int DWORD ;
+
+
+ int ERROR_NOT_ENOUGH_MEMORY ;
+ int ERROR_SUCCESS ;
+ int GetProcessHeap () ;
+ int HEAP_ZERO_MEMORY ;
+ scalar_t__* HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,scalar_t__*) ;
+ int REG_MULTI_SZ ;
+ int RegDeleteValueW (int ,char*) ;
+ int RegSetValueExW (int ,char*,int ,int ,int ,int) ;
+ scalar_t__ SC_GROUP_IDENTIFIERW ;
+ int wcscpy (scalar_t__*,scalar_t__*) ;
+ int wcslen (scalar_t__*) ;
 
 DWORD
 ScmWriteDependencies(HKEY hServiceKey,
@@ -58,7 +58,7 @@ ScmWriteDependencies(HKEY hServiceKey,
         lpGroupDeps = HeapAlloc(GetProcessHeap(),
                                 HEAP_ZERO_MEMORY,
                                 (dwDependenciesLength + 2) * sizeof(WCHAR));
-        if (lpGroupDeps == NULL)
+        if (lpGroupDeps == ((void*)0))
             return ERROR_NOT_ENOUGH_MEMORY;
 
         lpSrc = lpDependencies;

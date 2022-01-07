@@ -1,68 +1,68 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct stir_cb {int /*<<< orphan*/  receiving; int /*<<< orphan*/  netdev; } ;
+
+
+
+
+struct stir_cb {int receiving; int netdev; } ;
 struct net_device {int dummy; } ;
 struct ifreq {int dummy; } ;
-struct if_irda_req {int /*<<< orphan*/  ifr_receiving; int /*<<< orphan*/  ifr_baudrate; } ;
+struct if_irda_req {int ifr_receiving; int ifr_baudrate; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CAP_NET_ADMIN ; 
- int EOPNOTSUPP ; 
- int EPERM ; 
-#define  SIOCGRECEIVING 130 
-#define  SIOCSBANDWIDTH 129 
-#define  SIOCSMEDIABUSY 128 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  capable (int /*<<< orphan*/ ) ; 
- int change_speed (struct stir_cb*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  irda_device_set_media_busy (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- struct stir_cb* netdev_priv (struct net_device*) ; 
- int /*<<< orphan*/  netif_device_present (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  netif_running (int /*<<< orphan*/ ) ; 
+
+ int CAP_NET_ADMIN ;
+ int EOPNOTSUPP ;
+ int EPERM ;
+
+
+
+ int TRUE ;
+ int capable (int ) ;
+ int change_speed (struct stir_cb*,int ) ;
+ int irda_device_set_media_busy (int ,int ) ;
+ struct stir_cb* netdev_priv (struct net_device*) ;
+ int netif_device_present (int ) ;
+ int netif_running (int ) ;
 
 __attribute__((used)) static int stir_net_ioctl(struct net_device *netdev, struct ifreq *rq, int cmd)
 {
-	struct if_irda_req *irq = (struct if_irda_req *) rq;
-	struct stir_cb *stir = netdev_priv(netdev);
-	int ret = 0;
+ struct if_irda_req *irq = (struct if_irda_req *) rq;
+ struct stir_cb *stir = netdev_priv(netdev);
+ int ret = 0;
 
-	switch (cmd) {
-	case SIOCSBANDWIDTH: /* Set bandwidth */
-		if (!capable(CAP_NET_ADMIN))
-			return -EPERM;
+ switch (cmd) {
+ case 129:
+  if (!capable(CAP_NET_ADMIN))
+   return -EPERM;
 
-		/* Check if the device is still there */
-		if (netif_device_present(stir->netdev))
-			ret = change_speed(stir, irq->ifr_baudrate);
-		break;
 
-	case SIOCSMEDIABUSY: /* Set media busy */
-		if (!capable(CAP_NET_ADMIN))
-			return -EPERM;
+  if (netif_device_present(stir->netdev))
+   ret = change_speed(stir, irq->ifr_baudrate);
+  break;
 
-		/* Check if the IrDA stack is still there */
-		if (netif_running(stir->netdev))
-			irda_device_set_media_busy(stir->netdev, TRUE);
-		break;
+ case 128:
+  if (!capable(CAP_NET_ADMIN))
+   return -EPERM;
 
-	case SIOCGRECEIVING:
-		/* Only approximately true */
-		irq->ifr_receiving = stir->receiving;
-		break;
 
-	default:
-		ret = -EOPNOTSUPP;
-	}
+  if (netif_running(stir->netdev))
+   irda_device_set_media_busy(stir->netdev, TRUE);
+  break;
 
-	return ret;
+ case 130:
+
+  irq->ifr_receiving = stir->receiving;
+  break;
+
+ default:
+  ret = -EOPNOTSUPP;
+ }
+
+ return ret;
 }

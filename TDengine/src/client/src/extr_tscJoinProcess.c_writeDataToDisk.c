@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_6__ ;
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  int64_t ;
-typedef  int int32_t ;
-struct TYPE_11__ {int len; int /*<<< orphan*/  allocSize; int /*<<< orphan*/  rawBuf; } ;
+
+
+typedef struct TYPE_11__ TYPE_6__ ;
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int int64_t ;
+typedef int int32_t ;
+struct TYPE_11__ {int len; int allocSize; int rawBuf; } ;
 struct TYPE_10__ {int numOfElem; int compLen; int* payload; int tag; } ;
-struct TYPE_9__ {int numOfVnodes; TYPE_6__ tsData; TYPE_2__* pData; int /*<<< orphan*/  fileSize; int /*<<< orphan*/  f; int /*<<< orphan*/  bufSize; int /*<<< orphan*/  assistBuf; TYPE_4__ block; } ;
-struct TYPE_7__ {int numOfBlocks; int /*<<< orphan*/  compLen; } ;
+struct TYPE_9__ {int numOfVnodes; TYPE_6__ tsData; TYPE_2__* pData; int fileSize; int f; int bufSize; int assistBuf; TYPE_4__ block; } ;
+struct TYPE_7__ {int numOfBlocks; int compLen; } ;
 struct TYPE_8__ {TYPE_1__ info; } ;
-typedef  TYPE_3__ STSBuf ;
-typedef  TYPE_4__ STSBlock ;
+typedef TYPE_3__ STSBuf ;
+typedef TYPE_4__ STSBlock ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SEEK_SET ; 
- int TSDB_KEYSIZE ; 
- int /*<<< orphan*/  TWO_STAGE_COMP ; 
- int /*<<< orphan*/  UNUSED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fseek (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fwrite (int*,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  shrinkBuffer (TYPE_6__*) ; 
- int tsCompressTimestamp (int /*<<< orphan*/ ,int,int,int*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int SEEK_SET ;
+ int TSDB_KEYSIZE ;
+ int TWO_STAGE_COMP ;
+ int UNUSED (int ) ;
+ int fseek (int ,int ,int ) ;
+ int fwrite (int*,int,int,int ) ;
+ int shrinkBuffer (TYPE_6__*) ;
+ int tsCompressTimestamp (int ,int,int,int*,int ,int ,int ,int ) ;
 
 __attribute__((used)) static void writeDataToDisk(STSBuf* pTSBuf) {
   if (pTSBuf->tsData.len == 0) {
@@ -49,14 +49,6 @@ __attribute__((used)) static void writeDataToDisk(STSBuf* pTSBuf) {
 
   int64_t r = fseek(pTSBuf->f, pTSBuf->fileSize, SEEK_SET);
   UNUSED(r);
-
-  /*
-   * format for output data:
-   * 1. tags, number of ts, size after compressed, payload, size after compressed
-   * 2. tags, number of ts, size after compressed, payload, size after compressed
-   *
-   * both side has the compressed length is used to support load data forwards/backwords.
-   */
   fwrite(&pBlock->tag, sizeof(pBlock->tag), 1, pTSBuf->f);
   fwrite(&pBlock->numOfElem, sizeof(pBlock->numOfElem), 1, pTSBuf->f);
 

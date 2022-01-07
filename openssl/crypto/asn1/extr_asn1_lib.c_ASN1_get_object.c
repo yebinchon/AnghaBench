@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  ASN1_F_ASN1_GET_OBJECT ; 
- int /*<<< orphan*/  ASN1_R_HEADER_TOO_LONG ; 
- int /*<<< orphan*/  ASN1_R_TOO_LONG ; 
- int /*<<< orphan*/  ASN1err (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- long INT_MAX ; 
- unsigned char const V_ASN1_CONSTRUCTED ; 
- unsigned char const V_ASN1_PRIMITIVE_TAG ; 
- unsigned char const V_ASN1_PRIVATE ; 
- int /*<<< orphan*/  asn1_get_length (unsigned char const**,int*,long*,long) ; 
+ int ASN1_F_ASN1_GET_OBJECT ;
+ int ASN1_R_HEADER_TOO_LONG ;
+ int ASN1_R_TOO_LONG ;
+ int ASN1err (int ,int ) ;
+ long INT_MAX ;
+ unsigned char const V_ASN1_CONSTRUCTED ;
+ unsigned char const V_ASN1_PRIMITIVE_TAG ;
+ unsigned char const V_ASN1_PRIVATE ;
+ int asn1_get_length (unsigned char const**,int*,long*,long) ;
 
 int ASN1_get_object(const unsigned char **pp, long *plength, int *ptag,
                     int *pclass, long omax)
@@ -36,7 +28,7 @@ int ASN1_get_object(const unsigned char **pp, long *plength, int *ptag,
     ret = (*p & V_ASN1_CONSTRUCTED);
     xclass = (*p & V_ASN1_PRIVATE);
     i = *p & V_ASN1_PRIMITIVE_TAG;
-    if (i == V_ASN1_PRIMITIVE_TAG) { /* high-tag */
+    if (i == V_ASN1_PRIMITIVE_TAG) {
         p++;
         if (--max == 0)
             goto err;
@@ -70,10 +62,10 @@ int ASN1_get_object(const unsigned char **pp, long *plength, int *ptag,
 
     if (*plength > (omax - (p - *pp))) {
         ASN1err(ASN1_F_ASN1_GET_OBJECT, ASN1_R_TOO_LONG);
-        /*
-         * Set this so that even if things are not long enough the values are
-         * set correctly
-         */
+
+
+
+
         ret |= 0x80;
     }
     *pp = p;

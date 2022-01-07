@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uintmax_t ;
-struct vlc_http_resource {int /*<<< orphan*/  response; } ;
 
-/* Variables and functions */
- int vlc_http_msg_get_file_size (int /*<<< orphan*/ ) ; 
- int vlc_http_msg_get_size (int /*<<< orphan*/ ) ; 
- int vlc_http_res_get_status (struct vlc_http_resource*) ; 
+
+
+
+typedef int uintmax_t ;
+struct vlc_http_resource {int response; } ;
+
+
+ int vlc_http_msg_get_file_size (int ) ;
+ int vlc_http_msg_get_size (int ) ;
+ int vlc_http_res_get_status (struct vlc_http_resource*) ;
 
 uintmax_t vlc_http_file_get_size(struct vlc_http_resource *res)
 {
@@ -29,9 +29,9 @@ uintmax_t vlc_http_file_get_size(struct vlc_http_resource *res)
         return ret;
 
     if (status >= 300 || status == 201)
-        return -1; /* Error or redirection, size is unknown/irrelevant. */
+        return -1;
 
-    /* Content-Range is meaningless here (see RFC7233 B), so check if the size
-     * of the response entity body is known. */
+
+
     return vlc_http_msg_get_size(res->response);
 }

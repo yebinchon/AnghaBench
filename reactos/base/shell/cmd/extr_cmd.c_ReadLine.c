@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ TCHAR ;
-typedef  scalar_t__* LPTSTR ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BREAK_INPUT ; 
- int CMDLINE_LENGTH ; 
- scalar_t__ CheckCtrlBreak (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ConOutChar (scalar_t__) ; 
- int /*<<< orphan*/  ConOutResPrintf (int /*<<< orphan*/ ) ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  PrintPrompt () ; 
- scalar_t__* ReadBatchLine () ; 
- int /*<<< orphan*/  ReadCommand (scalar_t__*,int) ; 
- int /*<<< orphan*/  STRING_MORE ; 
- scalar_t__ SubstituteVars (scalar_t__*,scalar_t__*,scalar_t__) ; 
- int /*<<< orphan*/  TRUE ; 
- scalar_t__ _T (char) ; 
- scalar_t__ bEcho ; 
- int /*<<< orphan*/  bExit ; 
- int /*<<< orphan*/  bIgnoreEcho ; 
- int /*<<< orphan*/ * bc ; 
+
+
+
+typedef scalar_t__ TCHAR ;
+typedef scalar_t__* LPTSTR ;
+typedef scalar_t__ BOOL ;
+
+
+ int BREAK_INPUT ;
+ int CMDLINE_LENGTH ;
+ scalar_t__ CheckCtrlBreak (int ) ;
+ int ConOutChar (scalar_t__) ;
+ int ConOutResPrintf (int ) ;
+ scalar_t__ FALSE ;
+ int PrintPrompt () ;
+ scalar_t__* ReadBatchLine () ;
+ int ReadCommand (scalar_t__*,int) ;
+ int STRING_MORE ;
+ scalar_t__ SubstituteVars (scalar_t__*,scalar_t__*,scalar_t__) ;
+ int TRUE ;
+ scalar_t__ _T (char) ;
+ scalar_t__ bEcho ;
+ int bExit ;
+ int bIgnoreEcho ;
+ int * bc ;
 
 BOOL
 ReadLine(TCHAR *commandline, BOOL bMore)
@@ -39,8 +39,8 @@ ReadLine(TCHAR *commandline, BOOL bMore)
     TCHAR readline[CMDLINE_LENGTH];
     LPTSTR ip;
 
-    /* if no batch input then... */
-    if (bc == NULL)
+
+    if (bc == ((void*)0))
     {
         if (bMore)
         {
@@ -48,7 +48,7 @@ ReadLine(TCHAR *commandline, BOOL bMore)
         }
         else
         {
-            /* JPP 19980807 - if echo off, don't print prompt */
+
             if (bEcho)
             {
                 if (!bIgnoreEcho)

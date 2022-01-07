@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_8__ {TYPE_1__* location; } ;
-struct TYPE_7__ {int /*<<< orphan*/  IHTMLLocation_iface; } ;
-typedef  TYPE_1__ HTMLLocation ;
-typedef  TYPE_2__ HTMLInnerWindow ;
-typedef  int /*<<< orphan*/  HRESULT ;
+struct TYPE_7__ {int IHTMLLocation_iface; } ;
+typedef TYPE_1__ HTMLLocation ;
+typedef TYPE_2__ HTMLInnerWindow ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HTMLLocation_Create (TYPE_2__*,TYPE_1__**) ; 
- int /*<<< orphan*/  IHTMLLocation_AddRef (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  S_OK ; 
+
+ scalar_t__ FAILED (int ) ;
+ int HTMLLocation_Create (TYPE_2__*,TYPE_1__**) ;
+ int IHTMLLocation_AddRef (int *) ;
+ int S_OK ;
 
 __attribute__((used)) static HRESULT get_location(HTMLInnerWindow *This, HTMLLocation **ret)
 {

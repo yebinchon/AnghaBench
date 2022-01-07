@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int int64_t ;
-struct TYPE_5__ {int /*<<< orphan*/  pb; TYPE_1__* priv_data; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int int64_t ;
+struct TYPE_5__ {int pb; TYPE_1__* priv_data; } ;
 struct TYPE_4__ {scalar_t__ audio_codec; int packet_size; int swap; int dss_sp_swap_byte; scalar_t__ counter; scalar_t__ dss_header_size; } ;
-typedef  TYPE_1__ DSSDemuxContext ;
-typedef  TYPE_2__ AVFormatContext ;
+typedef TYPE_1__ DSSDemuxContext ;
+typedef TYPE_2__ AVFormatContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- scalar_t__ DSS_ACODEC_DSS_SP ; 
- int DSS_AUDIO_BLOCK_HEADER_SIZE ; 
- scalar_t__ DSS_BLOCK_SIZE ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  avio_read (int /*<<< orphan*/ ,int*,int) ; 
- int avio_seek (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int avio_skip (int /*<<< orphan*/ ,int) ; 
+
+ int AVERROR_INVALIDDATA ;
+ scalar_t__ DSS_ACODEC_DSS_SP ;
+ int DSS_AUDIO_BLOCK_HEADER_SIZE ;
+ scalar_t__ DSS_BLOCK_SIZE ;
+ int SEEK_SET ;
+ int avio_read (int ,int*,int) ;
+ int avio_seek (int ,int,int ) ;
+ int avio_skip (int ,int) ;
 
 __attribute__((used)) static int dss_read_seek(AVFormatContext *s, int stream_index,
                          int64_t timestamp, int flags)

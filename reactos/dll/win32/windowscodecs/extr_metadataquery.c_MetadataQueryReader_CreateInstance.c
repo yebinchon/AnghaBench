@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-struct TYPE_6__ {int /*<<< orphan*/ * lpVtbl; } ;
-struct TYPE_5__ {int ref; TYPE_2__ IWICMetadataQueryReader_iface; int /*<<< orphan*/ * root; int /*<<< orphan*/ * block; } ;
-typedef  TYPE_1__ QueryReader ;
-typedef  TYPE_2__ IWICMetadataQueryReader ;
-typedef  int /*<<< orphan*/  IWICMetadataBlockReader ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HEAP_ZERO_MEMORY ; 
- TYPE_1__* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  IWICMetadataBlockReader_AddRef (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/ * heap_strdupW (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  mqr_vtbl ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
+struct TYPE_6__ {int * lpVtbl; } ;
+struct TYPE_5__ {int ref; TYPE_2__ IWICMetadataQueryReader_iface; int * root; int * block; } ;
+typedef TYPE_1__ QueryReader ;
+typedef TYPE_2__ IWICMetadataQueryReader ;
+typedef int IWICMetadataBlockReader ;
+typedef int HRESULT ;
+
+
+ int E_OUTOFMEMORY ;
+ int GetProcessHeap () ;
+ int HEAP_ZERO_MEMORY ;
+ TYPE_1__* HeapAlloc (int ,int ,int) ;
+ int IWICMetadataBlockReader_AddRef (int *) ;
+ int S_OK ;
+ int * heap_strdupW (int const*) ;
+ int mqr_vtbl ;
 
 HRESULT MetadataQueryReader_CreateInstance(IWICMetadataBlockReader *mbr, const WCHAR *root, IWICMetadataQueryReader **out)
 {
@@ -44,7 +44,7 @@ HRESULT MetadataQueryReader_CreateInstance(IWICMetadataBlockReader *mbr, const W
     IWICMetadataBlockReader_AddRef(mbr);
     obj->block = mbr;
 
-    obj->root = root ? heap_strdupW(root) : NULL;
+    obj->root = root ? heap_strdupW(root) : ((void*)0);
 
     *out = &obj->IWICMetadataQueryReader_iface;
 

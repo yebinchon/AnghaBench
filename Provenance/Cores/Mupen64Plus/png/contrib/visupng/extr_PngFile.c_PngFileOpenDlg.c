@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  Flags; void* lpstrFileTitle; void* lpstrFile; int /*<<< orphan*/  hwndOwner; } ;
-typedef  void* PTSTR ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetOpenFileName (TYPE_1__*) ; 
- int /*<<< orphan*/  OFN_HIDEREADONLY ; 
- TYPE_1__ ofn ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int Flags; void* lpstrFileTitle; void* lpstrFile; int hwndOwner; } ;
+typedef void* PTSTR ;
+typedef int HWND ;
+typedef int BOOL ;
+
+
+ int GetOpenFileName (TYPE_1__*) ;
+ int OFN_HIDEREADONLY ;
+ TYPE_1__ ofn ;
 
 BOOL PngFileOpenDlg (HWND hwnd, PTSTR pstrFileName, PTSTR pstrTitleName)
 {
-    ofn.hwndOwner         = hwnd;
-    ofn.lpstrFile         = pstrFileName;
-    ofn.lpstrFileTitle    = pstrTitleName;
-    ofn.Flags             = OFN_HIDEREADONLY;
+    ofn.hwndOwner = hwnd;
+    ofn.lpstrFile = pstrFileName;
+    ofn.lpstrFileTitle = pstrTitleName;
+    ofn.Flags = OFN_HIDEREADONLY;
 
     return GetOpenFileName (&ofn);
 }

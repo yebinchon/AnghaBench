@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buf ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  IInternetProtocolInfo ;
-typedef  int /*<<< orphan*/  IClassFactory ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLSCTX_INPROC_SERVER ; 
- int /*<<< orphan*/  CLSID_JSProtocol ; 
- int /*<<< orphan*/  CoGetClassObject (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  E_FAIL ; 
- int /*<<< orphan*/  E_NOTIMPL ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IClassFactory_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IID_IClassFactory ; 
- int /*<<< orphan*/  IID_IInternetProtocolInfo ; 
- int /*<<< orphan*/  IID_IUnknown ; 
- int /*<<< orphan*/  IInternetProtocolInfo_CombineUrl (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IInternetProtocolInfo_CompareUrl (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IInternetProtocolInfo_ParseUrl (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IInternetProtocolInfo_QueryInfo (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int const,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IInternetProtocolInfo_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  INET_E_DEFAULT_ACTION ; 
- int /*<<< orphan*/  INET_E_USE_DEFAULT_PROTOCOLHANDLER ; 
- int /*<<< orphan*/  IUnknown_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IUnknown_Release (int /*<<< orphan*/ *) ; 
- int PARSE_CANONICALIZE ; 
- int PARSE_DOMAIN ; 
- int PARSE_SECURITY_URL ; 
- int PARSE_UNESCAPE ; 
-#define  QUERY_IS_SECURE 129 
-#define  QUERY_USES_NETWORK 128 
- scalar_t__ SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  javascript_test_url ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,char,int) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
+
+
+
+typedef int buf ;
+typedef int WCHAR ;
+typedef int IUnknown ;
+typedef int IInternetProtocolInfo ;
+typedef int IClassFactory ;
+typedef int HRESULT ;
+typedef int DWORD ;
+
+
+ int CLSCTX_INPROC_SERVER ;
+ int CLSID_JSProtocol ;
+ int CoGetClassObject (int *,int ,int *,int *,void**) ;
+ int E_FAIL ;
+ int E_NOTIMPL ;
+ scalar_t__ FAILED (int ) ;
+ int IClassFactory_Release (int *) ;
+ int IID_IClassFactory ;
+ int IID_IInternetProtocolInfo ;
+ int IID_IUnknown ;
+ int IInternetProtocolInfo_CombineUrl (int *,int ,int ,int ,int *,int,int*,int ) ;
+ int IInternetProtocolInfo_CompareUrl (int *,int ,int ,int ) ;
+ int IInternetProtocolInfo_ParseUrl (int *,int ,int,int ,int *,int,int*,int ) ;
+ int IInternetProtocolInfo_QueryInfo (int *,int ,int const,int ,int *,int,int*,int ) ;
+ int IInternetProtocolInfo_Release (int *) ;
+ int INET_E_DEFAULT_ACTION ;
+ int INET_E_USE_DEFAULT_PROTOCOLHANDLER ;
+ int IUnknown_QueryInterface (int *,int *,void**) ;
+ int IUnknown_Release (int *) ;
+ int PARSE_CANONICALIZE ;
+ int PARSE_DOMAIN ;
+ int PARSE_SECURITY_URL ;
+ int PARSE_UNESCAPE ;
+
+
+ scalar_t__ SUCCEEDED (int ) ;
+ int S_OK ;
+ int javascript_test_url ;
+ int memset (int *,char,int) ;
+ int ok (int,char*,...) ;
 
 __attribute__((used)) static void test_javascript_protocol(void)
 {
@@ -57,7 +57,7 @@ __attribute__((used)) static void test_javascript_protocol(void)
     IClassFactory *factory;
     HRESULT hres;
 
-    hres = CoGetClassObject(&CLSID_JSProtocol, CLSCTX_INPROC_SERVER, NULL, &IID_IUnknown, (void**)&unk);
+    hres = CoGetClassObject(&CLSID_JSProtocol, CLSCTX_INPROC_SERVER, ((void*)0), &IID_IUnknown, (void**)&unk);
     ok(hres == S_OK, "CoGetClassObject failed: %08x\n", hres);
     if(FAILED(hres))
         return;
@@ -94,8 +94,8 @@ __attribute__((used)) static void test_javascript_protocol(void)
 
         for(i=0; i<30; i++) {
             switch(i) {
-            case QUERY_USES_NETWORK:
-            case QUERY_IS_SECURE:
+            case 128:
+            case 129:
                 break;
             default:
                 hres = IInternetProtocolInfo_QueryInfo(protocol_info, javascript_test_url, i, 0,
@@ -107,32 +107,32 @@ __attribute__((used)) static void test_javascript_protocol(void)
 
 
         memset(buf, '?', sizeof(buf));
-        hres = IInternetProtocolInfo_QueryInfo(protocol_info, javascript_test_url, QUERY_USES_NETWORK, 0,
+        hres = IInternetProtocolInfo_QueryInfo(protocol_info, javascript_test_url, 128, 0,
                                                buf, sizeof(buf), &size, 0);
         ok(hres == S_OK, "QueryInfo(QUERY_USES_NETWORK) failed: %08x\n", hres);
         ok(size == sizeof(DWORD), "size=%d\n", size);
         ok(!*(DWORD*)buf, "buf=%d\n", *(DWORD*)buf);
 
         memset(buf, '?', sizeof(buf));
-        hres = IInternetProtocolInfo_QueryInfo(protocol_info, javascript_test_url, QUERY_USES_NETWORK, 0,
-                                               buf, sizeof(buf), NULL, 0);
+        hres = IInternetProtocolInfo_QueryInfo(protocol_info, javascript_test_url, 128, 0,
+                                               buf, sizeof(buf), ((void*)0), 0);
         ok(hres == S_OK, "QueryInfo(QUERY_USES_NETWORK) failed: %08x\n", hres);
         ok(!*(DWORD*)buf, "buf=%d\n", *(DWORD*)buf);
 
-        hres = IInternetProtocolInfo_QueryInfo(protocol_info, javascript_test_url, QUERY_USES_NETWORK, 0,
+        hres = IInternetProtocolInfo_QueryInfo(protocol_info, javascript_test_url, 128, 0,
                                                buf, 3, &size, 0);
         ok(hres == E_FAIL, "QueryInfo(QUERY_USES_NETWORK) failed: %08x, expected E_FAIL\n", hres);
 
-        hres = IInternetProtocolInfo_QueryInfo(protocol_info, javascript_test_url, QUERY_USES_NETWORK, 0,
-                                               NULL, sizeof(buf), &size, 0);
+        hres = IInternetProtocolInfo_QueryInfo(protocol_info, javascript_test_url, 128, 0,
+                                               ((void*)0), sizeof(buf), &size, 0);
         ok(hres == E_FAIL, "QueryInfo(QUERY_USES_NETWORK) failed: %08x, expected E_FAIL\n", hres);
 
         hres = IInternetProtocolInfo_QueryInfo(protocol_info, javascript_test_url, 60, 0,
-                                               NULL, sizeof(buf), &size, 0);
+                                               ((void*)0), sizeof(buf), &size, 0);
         ok(hres == INET_E_USE_DEFAULT_PROTOCOLHANDLER,
            "QueryInfo failed: %08x, expected INET_E_USE_DEFAULT_PROTOCOLHANDLER\n", hres);
 
-        /* FIXME: test QUERY_IS_SECURE */
+
 
         IInternetProtocolInfo_Release(protocol_info);
     }

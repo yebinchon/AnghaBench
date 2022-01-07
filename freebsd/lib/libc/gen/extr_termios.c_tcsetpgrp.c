@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int pid_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TIOCSPGRP ; 
- int _ioctl (int,int /*<<< orphan*/ ,int*) ; 
+
+
+
+typedef int pid_t ;
+
+
+ int TIOCSPGRP ;
+ int _ioctl (int,int ,int*) ;
 
 int
 tcsetpgrp(int fd, pid_t pgrp)
 {
-	int s;
+ int s;
 
-	s = pgrp;
-	return (_ioctl(fd, TIOCSPGRP, &s));
+ s = pgrp;
+ return (_ioctl(fd, TIOCSPGRP, &s));
 }

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct vgic_io_device {int /*<<< orphan*/  dev; int /*<<< orphan*/  nr_regions; int /*<<< orphan*/  regions; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAY_SIZE (int /*<<< orphan*/ ) ; 
- unsigned int SZ_4K ; 
- int /*<<< orphan*/  kvm_io_gic_ops ; 
- int /*<<< orphan*/  kvm_iodevice_init (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vgic_v2_dist_registers ; 
+
+
+
+struct vgic_io_device {int dev; int nr_regions; int regions; } ;
+
+
+ int ARRAY_SIZE (int ) ;
+ unsigned int SZ_4K ;
+ int kvm_io_gic_ops ;
+ int kvm_iodevice_init (int *,int *) ;
+ int vgic_v2_dist_registers ;
 
 unsigned int vgic_v2_init_dist_iodev(struct vgic_io_device *dev)
 {
-	dev->regions = vgic_v2_dist_registers;
-	dev->nr_regions = ARRAY_SIZE(vgic_v2_dist_registers);
+ dev->regions = vgic_v2_dist_registers;
+ dev->nr_regions = ARRAY_SIZE(vgic_v2_dist_registers);
 
-	kvm_iodevice_init(&dev->dev, &kvm_io_gic_ops);
+ kvm_iodevice_init(&dev->dev, &kvm_io_gic_ops);
 
-	return SZ_4K;
+ return SZ_4K;
 }

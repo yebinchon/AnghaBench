@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct mrb_md {int dummy; } ;
 struct RClass {int dummy; } ;
-typedef  int /*<<< orphan*/  mrb_value ;
-typedef  int /*<<< orphan*/  mrb_state ;
+typedef int mrb_value ;
+typedef int mrb_state ;
 
-/* Variables and functions */
- scalar_t__ DATA_PTR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  E_NOTIMP_ERROR ; 
- int /*<<< orphan*/  E_RUNTIME_ERROR ; 
- int /*<<< orphan*/  TYPESYM ; 
- int /*<<< orphan*/  mrb_const_get (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_intern_lit (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ mrb_nil_p (int /*<<< orphan*/ ) ; 
- struct RClass* mrb_obj_class (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_obj_value (struct RClass*) ; 
- int /*<<< orphan*/  mrb_raise (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
+
+ scalar_t__ DATA_PTR (int ) ;
+ int E_NOTIMP_ERROR ;
+ int E_RUNTIME_ERROR ;
+ int TYPESYM ;
+ int mrb_const_get (int *,int ,int ) ;
+ int mrb_intern_lit (int *,int ) ;
+ scalar_t__ mrb_nil_p (int ) ;
+ struct RClass* mrb_obj_class (int *,int ) ;
+ int mrb_obj_value (struct RClass*) ;
+ int mrb_raise (int *,int ,char*) ;
 
 __attribute__((used)) static void
 basecheck(mrb_state *mrb, mrb_value self, struct mrb_md **mdp)

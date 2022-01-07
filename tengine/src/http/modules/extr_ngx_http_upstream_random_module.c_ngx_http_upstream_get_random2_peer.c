@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_21__   TYPE_7__ ;
-typedef  struct TYPE_20__   TYPE_6__ ;
-typedef  struct TYPE_19__   TYPE_5__ ;
-typedef  struct TYPE_18__   TYPE_4__ ;
-typedef  struct TYPE_17__   TYPE_3__ ;
-typedef  struct TYPE_16__   TYPE_2__ ;
-typedef  struct TYPE_15__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ time_t ;
-typedef  size_t ngx_uint_t ;
-struct TYPE_17__ {int /*<<< orphan*/ * name; int /*<<< orphan*/  socklen; int /*<<< orphan*/  sockaddr; int /*<<< orphan*/ * connection; scalar_t__ cached; int /*<<< orphan*/  tries; int /*<<< orphan*/  log; } ;
-typedef  TYPE_3__ ngx_peer_connection_t ;
-typedef  int /*<<< orphan*/  ngx_int_t ;
+
+
+typedef struct TYPE_21__ TYPE_7__ ;
+typedef struct TYPE_20__ TYPE_6__ ;
+typedef struct TYPE_19__ TYPE_5__ ;
+typedef struct TYPE_18__ TYPE_4__ ;
+typedef struct TYPE_17__ TYPE_3__ ;
+typedef struct TYPE_16__ TYPE_2__ ;
+typedef struct TYPE_15__ TYPE_1__ ;
+
+
+typedef scalar_t__ time_t ;
+typedef size_t ngx_uint_t ;
+struct TYPE_17__ {int * name; int socklen; int sockaddr; int * connection; scalar_t__ cached; int tries; int log; } ;
+typedef TYPE_3__ ngx_peer_connection_t ;
+typedef int ngx_int_t ;
 struct TYPE_18__ {scalar_t__ single; } ;
-typedef  TYPE_4__ ngx_http_upstream_rr_peers_t ;
-struct TYPE_19__ {scalar_t__ max_fails; scalar_t__ fails; scalar_t__ checked; scalar_t__ fail_timeout; int max_conns; int conns; int weight; int /*<<< orphan*/  name; int /*<<< orphan*/  socklen; int /*<<< orphan*/  sockaddr; scalar_t__ down; } ;
-typedef  TYPE_5__ ngx_http_upstream_rr_peer_t ;
+typedef TYPE_4__ ngx_http_upstream_rr_peers_t ;
+struct TYPE_19__ {scalar_t__ max_fails; scalar_t__ fails; scalar_t__ checked; scalar_t__ fail_timeout; int max_conns; int conns; int weight; int name; int socklen; int sockaddr; scalar_t__ down; } ;
+typedef TYPE_5__ ngx_http_upstream_rr_peer_t ;
 struct TYPE_20__ {uintptr_t* tried; TYPE_5__* current; TYPE_4__* peers; } ;
-typedef  TYPE_6__ ngx_http_upstream_rr_peer_data_t ;
+typedef TYPE_6__ ngx_http_upstream_rr_peer_data_t ;
 struct TYPE_21__ {int tries; TYPE_2__* conf; TYPE_6__ rrp; } ;
-typedef  TYPE_7__ ngx_http_upstream_random_peer_data_t ;
+typedef TYPE_7__ ngx_http_upstream_random_peer_data_t ;
 struct TYPE_16__ {TYPE_1__* ranges; } ;
 struct TYPE_15__ {TYPE_5__* peer; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NGX_LOG_DEBUG_HTTP ; 
- int /*<<< orphan*/  NGX_OK ; 
- int /*<<< orphan*/  ngx_http_upstream_get_round_robin_peer (TYPE_3__*,TYPE_6__*) ; 
- size_t ngx_http_upstream_peek_random_peer (TYPE_4__*,TYPE_7__*) ; 
- int /*<<< orphan*/  ngx_http_upstream_rr_peers_unlock (TYPE_4__*) ; 
- int /*<<< orphan*/  ngx_http_upstream_rr_peers_wlock (TYPE_4__*) ; 
- int /*<<< orphan*/  ngx_log_debug1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- scalar_t__ ngx_time () ; 
+
+ int NGX_LOG_DEBUG_HTTP ;
+ int NGX_OK ;
+ int ngx_http_upstream_get_round_robin_peer (TYPE_3__*,TYPE_6__*) ;
+ size_t ngx_http_upstream_peek_random_peer (TYPE_4__*,TYPE_7__*) ;
+ int ngx_http_upstream_rr_peers_unlock (TYPE_4__*) ;
+ int ngx_http_upstream_rr_peers_wlock (TYPE_4__*) ;
+ int ngx_log_debug1 (int ,int ,int ,char*,int ) ;
+ scalar_t__ ngx_time () ;
 
 __attribute__((used)) static ngx_int_t
 ngx_http_upstream_get_random2_peer(ngx_peer_connection_t *pc, void *data)
 {
-    ngx_http_upstream_random_peer_data_t  *rp = data;
+    ngx_http_upstream_random_peer_data_t *rp = data;
 
-    time_t                             now;
-    uintptr_t                          m;
-    ngx_uint_t                         i, n, p;
-    ngx_http_upstream_rr_peer_t       *peer, *prev;
-    ngx_http_upstream_rr_peers_t      *peers;
-    ngx_http_upstream_rr_peer_data_t  *rrp;
+    time_t now;
+    uintptr_t m;
+    ngx_uint_t i, n, p;
+    ngx_http_upstream_rr_peer_t *peer, *prev;
+    ngx_http_upstream_rr_peers_t *peers;
+    ngx_http_upstream_rr_peer_data_t *rrp;
 
     ngx_log_debug1(NGX_LOG_DEBUG_HTTP, pc->log, 0,
                    "get random2 peer, try: %ui", pc->tries);
@@ -69,15 +69,15 @@ ngx_http_upstream_get_random2_peer(ngx_peer_connection_t *pc, void *data)
     }
 
     pc->cached = 0;
-    pc->connection = NULL;
+    pc->connection = ((void*)0);
 
     now = ngx_time();
 
-    prev = NULL;
+    prev = ((void*)0);
 
-#if (NGX_SUPPRESS_WARN)
-    p = 0;
-#endif
+
+
+
 
     for ( ;; ) {
 

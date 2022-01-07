@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  USHORT ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int USHORT ;
 struct TYPE_4__ {int ClientLCPOptionDetermined; } ;
-typedef  TYPE_1__ PPP_SESSION ;
+typedef TYPE_1__ PPP_SESSION ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PPPRecvResponsePacket (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  PPP_PROTOCOL_LCP ; 
+
+ int PPPRecvResponsePacket (TYPE_1__*,int *,int ,int *,int,int) ;
+ int PPP_PROTOCOL_LCP ;
 
 bool PPPContinueUntilFinishAllLCPOptionRequestsDetermined(PPP_SESSION *p)
 {
-	USHORT received_protocol = 0;
-	// Validate arguments
-	if (p == NULL)
-	{
-		return false;
-	}
+ USHORT received_protocol = 0;
 
-	PPPRecvResponsePacket(p, NULL, PPP_PROTOCOL_LCP, &received_protocol, true, false);
+ if (p == ((void*)0))
+ {
+  return 0;
+ }
 
-	return p->ClientLCPOptionDetermined;
+ PPPRecvResponsePacket(p, ((void*)0), PPP_PROTOCOL_LCP, &received_protocol, 1, 0);
+
+ return p->ClientLCPOptionDetermined;
 }

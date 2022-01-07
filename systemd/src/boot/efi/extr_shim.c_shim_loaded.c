@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct ShimLock {int dummy; } ;
-typedef  int /*<<< orphan*/  VOID ;
-struct TYPE_2__ {int /*<<< orphan*/  LocateProtocol; } ;
-typedef  int /*<<< orphan*/  EFI_GUID ;
-typedef  int BOOLEAN ;
+typedef int VOID ;
+struct TYPE_2__ {int LocateProtocol; } ;
+typedef int EFI_GUID ;
+typedef int BOOLEAN ;
 
-/* Variables and functions */
- TYPE_1__* BS ; 
- scalar_t__ EFI_SUCCESS ; 
- int /*<<< orphan*/  shim_lock_guid ; 
- scalar_t__ uefi_call_wrapper (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
+
+ TYPE_1__* BS ;
+ scalar_t__ EFI_SUCCESS ;
+ int shim_lock_guid ;
+ scalar_t__ uefi_call_wrapper (int ,int,int *,int *,int **) ;
 
 BOOLEAN shim_loaded(void) {
         struct ShimLock *shim_lock;
 
-        return uefi_call_wrapper(BS->LocateProtocol, 3, (EFI_GUID*) &shim_lock_guid, NULL, (VOID**) &shim_lock) == EFI_SUCCESS;
+        return uefi_call_wrapper(BS->LocateProtocol, 3, (EFI_GUID*) &shim_lock_guid, ((void*)0), (VOID**) &shim_lock) == EFI_SUCCESS;
 }

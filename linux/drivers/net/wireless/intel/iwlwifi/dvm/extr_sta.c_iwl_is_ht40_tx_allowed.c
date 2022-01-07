@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  is_40mhz; int /*<<< orphan*/  enabled; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int is_40mhz; int enabled; } ;
 struct iwl_rxon_context {TYPE_1__ ht; } ;
 struct iwl_priv {scalar_t__ disable_ht40; } ;
 struct ieee80211_sta {scalar_t__ bandwidth; } ;
 
-/* Variables and functions */
- scalar_t__ IEEE80211_STA_RX_BW_40 ; 
+
+ scalar_t__ IEEE80211_STA_RX_BW_40 ;
 
 bool iwl_is_ht40_tx_allowed(struct iwl_priv *priv,
-			    struct iwl_rxon_context *ctx,
-			    struct ieee80211_sta *sta)
+       struct iwl_rxon_context *ctx,
+       struct ieee80211_sta *sta)
 {
-	if (!ctx->ht.enabled || !ctx->ht.is_40mhz)
-		return false;
+ if (!ctx->ht.enabled || !ctx->ht.is_40mhz)
+  return 0;
 
-#ifdef CONFIG_IWLWIFI_DEBUGFS
-	if (priv->disable_ht40)
-		return false;
-#endif
 
-	/* special case for RXON */
-	if (!sta)
-		return true;
 
-	return sta->bandwidth >= IEEE80211_STA_RX_BW_40;
+
+
+
+
+ if (!sta)
+  return 1;
+
+ return sta->bandwidth >= IEEE80211_STA_RX_BW_40;
 }

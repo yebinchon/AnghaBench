@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int BUFFSIZE ; 
- int /*<<< orphan*/ * Buff ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ *) ; 
- int idx_crc32c_complement ; 
- int /*<<< orphan*/ * malloc (int) ; 
- int /*<<< orphan*/ * rptr ; 
- int /*<<< orphan*/ * wptr ; 
+ int BUFFSIZE ;
+ int * Buff ;
+ int assert (int *) ;
+ int idx_crc32c_complement ;
+ int * malloc (int) ;
+ int * rptr ;
+ int * wptr ;
 
 __attribute__((used)) static void clearin (void) {
-  if (Buff == NULL) {
+  if (Buff == ((void*)0)) {
     Buff = malloc (BUFFSIZE);
     assert (Buff);
   }

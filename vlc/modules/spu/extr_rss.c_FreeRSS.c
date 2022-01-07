@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int i_items; struct TYPE_5__* psz_url; int /*<<< orphan*/ * p_pic; struct TYPE_5__* psz_image; struct TYPE_5__* psz_description; struct TYPE_5__* psz_link; struct TYPE_5__* psz_title; struct TYPE_5__* p_items; } ;
-typedef  TYPE_1__ rss_item_t ;
-typedef  TYPE_1__ rss_feed_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (TYPE_1__*) ; 
- int /*<<< orphan*/  picture_Release (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int i_items; struct TYPE_5__* psz_url; int * p_pic; struct TYPE_5__* psz_image; struct TYPE_5__* psz_description; struct TYPE_5__* psz_link; struct TYPE_5__* psz_title; struct TYPE_5__* p_items; } ;
+typedef TYPE_1__ rss_item_t ;
+typedef TYPE_1__ rss_feed_t ;
+
+
+ int free (TYPE_1__*) ;
+ int picture_Release (int *) ;
 
 __attribute__((used)) static void FreeRSS( rss_feed_t *p_feeds, int i_feeds )
 {
@@ -36,7 +36,7 @@ __attribute__((used)) static void FreeRSS( rss_feed_t *p_feeds, int i_feeds )
         free( p_feed->psz_link );
         free( p_feed->psz_description );
         free( p_feed->psz_image );
-        if( p_feed->p_pic != NULL )
+        if( p_feed->p_pic != ((void*)0) )
             picture_Release( p_feed->p_pic );
         free( p_feed->psz_url );
     }

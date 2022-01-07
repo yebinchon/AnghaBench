@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int state; scalar_t__ restart; int /*<<< orphan*/  timer; } ;
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int state; scalar_t__ restart; int timer; } ;
 struct cbcp {TYPE_2__* p; TYPE_1__ fsm; } ;
-struct TYPE_6__ {int /*<<< orphan*/  name; } ;
+struct TYPE_6__ {int name; } ;
 struct TYPE_5__ {TYPE_3__* dl; } ;
 
-/* Variables and functions */
-#define  CBCP_ACKSENT 132 
-#define  CBCP_CLOSED 131 
-#define  CBCP_REQSENT 130 
-#define  CBCP_RESPSENT 129 
-#define  CBCP_STOPPED 128 
- int /*<<< orphan*/  LogCBCP ; 
- int /*<<< orphan*/  cbcp_SendAck (struct cbcp*) ; 
- int /*<<< orphan*/  cbcp_SendReq (struct cbcp*) ; 
- int /*<<< orphan*/  cbcp_SendResponse (struct cbcp*) ; 
- int /*<<< orphan*/  datalink_CBCPFailed (TYPE_3__*) ; 
- int /*<<< orphan*/  log_Printf (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  timer_Stop (int /*<<< orphan*/ *) ; 
+
+
+
+
+
+
+ int LogCBCP ;
+ int cbcp_SendAck (struct cbcp*) ;
+ int cbcp_SendReq (struct cbcp*) ;
+ int cbcp_SendResponse (struct cbcp*) ;
+ int datalink_CBCPFailed (TYPE_3__*) ;
+ int log_Printf (int ,char*,int ,...) ;
+ int timer_Stop (int *) ;
 
 __attribute__((used)) static void
 cbcp_Timeout(void *v)
@@ -40,19 +40,19 @@ cbcp_Timeout(void *v)
   timer_Stop(&cbcp->fsm.timer);
   if (cbcp->fsm.restart) {
     switch (cbcp->fsm.state) {
-      case CBCP_CLOSED:
-      case CBCP_STOPPED:
+      case 131:
+      case 128:
         log_Printf(LogCBCP, "%s: Urk - unexpected CBCP timeout !\n",
                    cbcp->p->dl->name);
         break;
 
-      case CBCP_REQSENT:
+      case 130:
         cbcp_SendReq(cbcp);
         break;
-      case CBCP_RESPSENT:
+      case 129:
         cbcp_SendResponse(cbcp);
         break;
-      case CBCP_ACKSENT:
+      case 132:
         cbcp_SendAck(cbcp);
         break;
     }
@@ -60,22 +60,22 @@ cbcp_Timeout(void *v)
     const char *missed;
 
     switch (cbcp->fsm.state) {
-      case CBCP_STOPPED:
+      case 128:
         missed = "REQ";
         break;
-      case CBCP_REQSENT:
+      case 130:
         missed = "RESPONSE";
         break;
-      case CBCP_RESPSENT:
+      case 129:
         missed = "ACK";
         break;
-      case CBCP_ACKSENT:
+      case 132:
         missed = "Terminate REQ";
         break;
       default:
         log_Printf(LogCBCP, "%s: Urk - unexpected CBCP timeout !\n",
                    cbcp->p->dl->name);
-        missed = NULL;
+        missed = ((void*)0);
         break;
     }
     if (missed)

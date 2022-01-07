@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  audio_output_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  var_DecInteger (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  var_IncInteger (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  vlc_object_parent (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int audio_output_t ;
+
+
+ int stub1 (int ,char*) ;
+ int var_DecInteger (int ,char*) ;
+ int var_IncInteger (int ,char*) ;
+ int vlc_object_parent (int *) ;
 
 __attribute__((used)) static void aout_PolicyNotify (audio_output_t *aout, bool cork)
 {

@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  UINT ;
-typedef  int /*<<< orphan*/  PWCHAR ;
-typedef  int /*<<< orphan*/  MMRESULT ;
-typedef  int DeviceType ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AUX_DEVICE_NAME ; 
-#define  AuxDevice 132 
- int MAX_DEVICE_NAME_LENGTH ; 
- int /*<<< orphan*/  MIDI_IN_DEVICE_NAME ; 
- int /*<<< orphan*/  MIDI_OUT_DEVICE_NAME ; 
- int /*<<< orphan*/  MMSYSERR_BADDEVICEID ; 
- int /*<<< orphan*/  MMSYSERR_NOERROR ; 
-#define  MidiInDevice 131 
-#define  MidiOutDevice 130 
- int /*<<< orphan*/  WAVE_IN_DEVICE_NAME ; 
- int /*<<< orphan*/  WAVE_OUT_DEVICE_NAME ; 
-#define  WaveInDevice 129 
-#define  WaveOutDevice 128 
- int strlen (char*) ; 
- int /*<<< orphan*/  wsprintf (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *,...) ; 
+
+
+
+typedef int WCHAR ;
+typedef int UINT ;
+typedef int PWCHAR ;
+typedef int MMRESULT ;
+typedef int DeviceType ;
+
+
+ int AUX_DEVICE_NAME ;
+
+ int MAX_DEVICE_NAME_LENGTH ;
+ int MIDI_IN_DEVICE_NAME ;
+ int MIDI_OUT_DEVICE_NAME ;
+ int MMSYSERR_BADDEVICEID ;
+ int MMSYSERR_NOERROR ;
+
+
+ int WAVE_IN_DEVICE_NAME ;
+ int WAVE_OUT_DEVICE_NAME ;
+
+
+ int strlen (char*) ;
+ int wsprintf (int ,char*,int *,...) ;
 
 MMRESULT
 CobbleDeviceName(
@@ -41,27 +41,27 @@ CobbleDeviceName(
 {
     WCHAR base_device_name[MAX_DEVICE_NAME_LENGTH];
 
-    /* Work out the base name from the device type */
+
 
     switch ( device_type )
     {
-        case WaveOutDevice :
+        case 128 :
             wsprintf(base_device_name, L"%ls", WAVE_OUT_DEVICE_NAME);
             break;
 
-        case WaveInDevice :
+        case 129 :
             wsprintf(base_device_name, L"%ls", WAVE_IN_DEVICE_NAME);
             break;
 
-        case MidiOutDevice :
+        case 130 :
             wsprintf(base_device_name, L"%ls", MIDI_OUT_DEVICE_NAME);
             break;
 
-        case MidiInDevice :
+        case 131 :
             wsprintf(base_device_name, L"%ls", MIDI_IN_DEVICE_NAME);
             break;
 
-        case AuxDevice :
+        case 132 :
             wsprintf(base_device_name, L"%ls", AUX_DEVICE_NAME);
             break;
 
@@ -69,7 +69,7 @@ CobbleDeviceName(
             return MMSYSERR_BADDEVICEID;
     };
 
-    /* Now append the device number, removing the leading \Device */
+
 
     wsprintf(out_device_name,
              L"\\\\.%ls%d",

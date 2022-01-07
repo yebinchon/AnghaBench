@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct bt_mesh_subnet {scalar_t__ net_idx; int /*<<< orphan*/ * keys; } ;
-struct bt_mesh_app_key {scalar_t__ net_idx; int updated; int /*<<< orphan*/ * keys; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct bt_mesh_subnet {scalar_t__ net_idx; int * keys; } ;
+struct bt_mesh_app_key {scalar_t__ net_idx; int updated; int * keys; } ;
 struct TYPE_2__ {struct bt_mesh_app_key* app_keys; } ;
 
-/* Variables and functions */
- int ARRAY_SIZE (struct bt_mesh_app_key*) ; 
- int /*<<< orphan*/  BT_DBG (char*,scalar_t__) ; 
- TYPE_1__ bt_mesh ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
+
+ int ARRAY_SIZE (struct bt_mesh_app_key*) ;
+ int BT_DBG (char*,scalar_t__) ;
+ TYPE_1__ bt_mesh ;
+ int memcpy (int *,int *,int) ;
 
 void bt_mesh_net_revoke_keys(struct bt_mesh_subnet *sub)
 {
@@ -37,6 +37,6 @@ void bt_mesh_net_revoke_keys(struct bt_mesh_subnet *sub)
         }
 
         memcpy(&key->keys[0], &key->keys[1], sizeof(key->keys[0]));
-        key->updated = false;
+        key->updated = 0;
     }
 }

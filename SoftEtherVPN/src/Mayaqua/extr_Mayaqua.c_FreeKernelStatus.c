@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  size_t UINT ;
 
-/* Variables and functions */
- size_t NUM_KERNEL_STATUS ; 
- int /*<<< orphan*/  OSDeleteLock (int /*<<< orphan*/ ) ; 
- int kernel_status_inited ; 
- int /*<<< orphan*/ * kernel_status_lock ; 
+
+
+
+typedef size_t UINT ;
+
+
+ size_t NUM_KERNEL_STATUS ;
+ int OSDeleteLock (int ) ;
+ int kernel_status_inited ;
+ int * kernel_status_lock ;
 
 void FreeKernelStatus()
 {
-	UINT i;
+ UINT i;
 
-	kernel_status_inited = false;
+ kernel_status_inited = 0;
 
-	// Lock release
-	for (i = 0;i < NUM_KERNEL_STATUS;i++)
-	{
-		OSDeleteLock(kernel_status_lock[i]);
-	}
+
+ for (i = 0;i < NUM_KERNEL_STATUS;i++)
+ {
+  OSDeleteLock(kernel_status_lock[i]);
+ }
 }

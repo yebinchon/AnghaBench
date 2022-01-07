@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {scalar_t__ data; scalar_t__ block_length; } ;
-typedef  TYPE_1__ filesys_tree_t ;
+typedef TYPE_1__ filesys_tree_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  alloc_tree_nodes ; 
- int /*<<< orphan*/  free (scalar_t__) ; 
- int /*<<< orphan*/  free_tree_nodes ; 
- int /*<<< orphan*/  tot_allocated_data ; 
- int /*<<< orphan*/  zfree (TYPE_1__*,int) ; 
+
+ int alloc_tree_nodes ;
+ int free (scalar_t__) ;
+ int free_tree_nodes ;
+ int tot_allocated_data ;
+ int zfree (TYPE_1__*,int) ;
 
 __attribute__((used)) static void free_tree_node (filesys_tree_t *T) {
   alloc_tree_nodes--;

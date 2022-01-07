@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
 struct TYPE_13__ {int member_0; int member_1; int member_2; int member_3; int member_4; int member_5; int member_6; int member_7; } ;
 struct TYPE_14__ {int member_0; int member_1; int member_2; TYPE_1__ member_3; } ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  TYPE_2__ IID ;
-typedef  int /*<<< orphan*/  IHTMLDocument2 ;
-typedef  int /*<<< orphan*/  HRESULT ;
+typedef int IUnknown ;
+typedef TYPE_2__ IID ;
+typedef int IHTMLDocument2 ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_NOINTERFACE ; 
- TYPE_2__ const IID_IDispatch ; 
- TYPE_2__ const IID_IExternalConnection ; 
- TYPE_2__ const IID_IHTMLDOMNode ; 
- TYPE_2__ const IID_IHTMLDOMNode2 ; 
- TYPE_2__ const IID_IMarshal ; 
- TYPE_2__ const IID_IPersistPropertyBag ; 
- TYPE_2__ const IID_IRunnableObject ; 
- TYPE_2__ const IID_IStdMarshalInfo ; 
- TYPE_2__ const IID_ITargetFrame ; 
- int /*<<< orphan*/  IUnknown_QueryInterface (int /*<<< orphan*/ *,TYPE_2__ const*,void**) ; 
- int /*<<< orphan*/  IUnknown_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
+
+ int E_NOINTERFACE ;
+ TYPE_2__ const IID_IDispatch ;
+ TYPE_2__ const IID_IExternalConnection ;
+ TYPE_2__ const IID_IHTMLDOMNode ;
+ TYPE_2__ const IID_IHTMLDOMNode2 ;
+ TYPE_2__ const IID_IMarshal ;
+ TYPE_2__ const IID_IPersistPropertyBag ;
+ TYPE_2__ const IID_IRunnableObject ;
+ TYPE_2__ const IID_IStdMarshalInfo ;
+ TYPE_2__ const IID_ITargetFrame ;
+ int IUnknown_QueryInterface (int *,TYPE_2__ const*,void**) ;
+ int IUnknown_Release (int *) ;
+ int S_OK ;
+ int ok (int,char*,...) ;
 
 __attribute__((used)) static void test_QueryInterface(IHTMLDocument2 *htmldoc)
 {
@@ -46,47 +46,47 @@ __attribute__((used)) static void test_QueryInterface(IHTMLDocument2 *htmldoc)
     qi = (void*)0xdeadbeef;
     hres = IUnknown_QueryInterface(doc, &IID_IRunnableObject, (void**)&qi);
     ok(hres == E_NOINTERFACE, "QueryInterface returned %08x, expected E_NOINTERFACE\n", hres);
-    ok(qi == NULL, "qirunnable=%p, expected NULL\n", qi);
+    ok(qi == ((void*)0), "qirunnable=%p, expected NULL\n", qi);
 
     qi = (void*)0xdeadbeef;
     hres = IUnknown_QueryInterface(doc, &IID_IHTMLDOMNode, (void**)&qi);
     ok(hres == E_NOINTERFACE, "QueryInterface returned %08x, expected E_NOINTERFACE\n", hres);
-    ok(qi == NULL, "qi=%p, expected NULL\n", qi);
+    ok(qi == ((void*)0), "qi=%p, expected NULL\n", qi);
 
     qi = (void*)0xdeadbeef;
     hres = IUnknown_QueryInterface(doc, &IID_IHTMLDOMNode2, (void**)&qi);
     ok(hres == E_NOINTERFACE, "QueryInterface returned %08x, expected E_NOINTERFACE\n", hres);
-    ok(qi == NULL, "qi=%p, expected NULL\n", qi);
+    ok(qi == ((void*)0), "qi=%p, expected NULL\n", qi);
 
     qi = (void*)0xdeadbeef;
     hres = IUnknown_QueryInterface(doc, &IID_IPersistPropertyBag, (void**)&qi);
     ok(hres == E_NOINTERFACE, "QueryInterface returned %08x, expected E_NOINTERFACE\n", hres);
-    ok(qi == NULL, "qi=%p, expected NULL\n", qi);
+    ok(qi == ((void*)0), "qi=%p, expected NULL\n", qi);
 
     qi = (void*)0xdeadbeef;
     hres = IUnknown_QueryInterface(doc, &IID_UndocumentedScriptIface, (void**)&qi);
     ok(hres == E_NOINTERFACE, "QueryInterface returned %08x, expected E_NOINTERFACE\n", hres);
-    ok(qi == NULL, "qi=%p, expected NULL\n", qi);
+    ok(qi == ((void*)0), "qi=%p, expected NULL\n", qi);
 
     qi = (void*)0xdeadbeef;
     hres = IUnknown_QueryInterface(doc, &IID_IMarshal, (void**)&qi);
     ok(hres == E_NOINTERFACE, "QueryInterface returned %08x, expected E_NOINTERFACE\n", hres);
-    ok(qi == NULL, "qi=%p, expected NULL\n", qi);
+    ok(qi == ((void*)0), "qi=%p, expected NULL\n", qi);
 
     qi = (void*)0xdeadbeef;
     hres = IUnknown_QueryInterface(doc, &IID_IExternalConnection, (void**)&qi);
     ok(hres == E_NOINTERFACE, "QueryInterface returned %08x, expected E_NOINTERFACE\n", hres);
-    ok(qi == NULL, "qi=%p, expected NULL\n", qi);
+    ok(qi == ((void*)0), "qi=%p, expected NULL\n", qi);
 
     qi = (void*)0xdeadbeef;
     hres = IUnknown_QueryInterface(doc, &IID_IStdMarshalInfo, (void**)&qi);
     ok(hres == E_NOINTERFACE, "QueryInterface returned %08x, expected E_NOINTERFACE\n", hres);
-    ok(qi == NULL, "qi=%p, expected NULL\n", qi);
+    ok(qi == ((void*)0), "qi=%p, expected NULL\n", qi);
 
     qi = (void*)0xdeadbeef;
     hres = IUnknown_QueryInterface(doc, &IID_ITargetFrame, (void**)&qi);
     ok(hres == E_NOINTERFACE, "QueryInterface returned %08x, expected E_NOINTERFACE\n", hres);
-    ok(qi == NULL, "qi=%p, expected NULL\n", qi);
+    ok(qi == ((void*)0), "qi=%p, expected NULL\n", qi);
 
     hres = IUnknown_QueryInterface(doc, &IID_IDispatch, (void**)&qi);
     ok(hres == S_OK, "Could not get IDispatch interface: %08x\n", hres);

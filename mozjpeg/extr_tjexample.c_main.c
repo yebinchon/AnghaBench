@@ -1,89 +1,89 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_9__ {int w; int h; scalar_t__ x; scalar_t__ y; } ;
-struct TYPE_10__ {scalar_t__ op; int /*<<< orphan*/  options; int /*<<< orphan*/ * customFilter; TYPE_1__ r; } ;
-typedef  TYPE_2__ tjtransform ;
+struct TYPE_10__ {scalar_t__ op; int options; int * customFilter; TYPE_1__ r; } ;
+typedef TYPE_2__ tjtransform ;
 struct TYPE_11__ {int member_0; int member_1; int num; int denom; } ;
-typedef  TYPE_3__ tjscalingfactor ;
-typedef  int /*<<< orphan*/ * tjhandle ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef TYPE_3__ tjscalingfactor ;
+typedef int * tjhandle ;
+typedef int FILE ;
 
-/* Variables and functions */
- int DEFAULT_QUALITY ; 
- int /*<<< orphan*/  SEEK_END ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int TJFLAG_ACCURATEDCT ; 
- int TJFLAG_FASTDCT ; 
- int TJFLAG_FASTUPSAMPLE ; 
- int TJPF_BGRX ; 
- int TJPF_GRAY ; 
- int TJPF_UNKNOWN ; 
- int TJSAMP_420 ; 
- int TJSAMP_422 ; 
- int TJSAMP_444 ; 
- int TJSAMP_GRAY ; 
- int TJSCALED (int,TYPE_3__) ; 
- int /*<<< orphan*/  TJXOPT_CROP ; 
- int /*<<< orphan*/  TJXOPT_GRAY ; 
- int /*<<< orphan*/  TJXOPT_TRIM ; 
- scalar_t__ TJXOP_HFLIP ; 
- scalar_t__ TJXOP_NONE ; 
- scalar_t__ TJXOP_ROT180 ; 
- scalar_t__ TJXOP_ROT270 ; 
- scalar_t__ TJXOP_ROT90 ; 
- scalar_t__ TJXOP_TRANSPOSE ; 
- scalar_t__ TJXOP_TRANSVERSE ; 
- scalar_t__ TJXOP_VFLIP ; 
- int /*<<< orphan*/  _throw (char*,char*) ; 
- int /*<<< orphan*/  _throwtj (char*) ; 
- int /*<<< orphan*/  _throwunix (char*) ; 
- int atoi (char*) ; 
- char** colorspaceName ; 
- int /*<<< orphan*/ * customFilter ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int fread (unsigned char*,unsigned long,int,int /*<<< orphan*/ *) ; 
- scalar_t__ fseek (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- long ftell (int /*<<< orphan*/ *) ; 
- int fwrite (unsigned char*,unsigned long,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memset (TYPE_2__*,int /*<<< orphan*/ ,int) ; 
- int numScalingFactors ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- TYPE_3__* scalingFactors ; 
- int sscanf (char*,char*,int*,int*,...) ; 
- int /*<<< orphan*/  strcasecmp (char*,char*) ; 
- int strlen (char*) ; 
- int /*<<< orphan*/  strncasecmp (char*,char*,int) ; 
- char* strrchr (char*,char) ; 
- char** subsampName ; 
- scalar_t__ tjAlloc (int) ; 
- scalar_t__ tjCompress2 (int /*<<< orphan*/ *,unsigned char*,int,int /*<<< orphan*/ ,int,int,unsigned char**,unsigned long*,int,int,int) ; 
- scalar_t__ tjDecompress2 (int /*<<< orphan*/ *,unsigned char*,unsigned long,unsigned char*,int,int /*<<< orphan*/ ,int,int,int) ; 
- scalar_t__ tjDecompressHeader3 (int /*<<< orphan*/ *,unsigned char*,unsigned long,int*,int*,int*,int*) ; 
- int /*<<< orphan*/  tjDestroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tjFree (unsigned char*) ; 
- TYPE_3__* tjGetScalingFactors (int*) ; 
- int /*<<< orphan*/ * tjInitCompress () ; 
- int /*<<< orphan*/ * tjInitDecompress () ; 
- int /*<<< orphan*/ * tjInitTransform () ; 
- unsigned char* tjLoadImage (char*,int*,int,int*,int*,int /*<<< orphan*/ ) ; 
- int* tjPixelSize ; 
- scalar_t__ tjSaveImage (char*,unsigned char*,int,int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ ) ; 
- scalar_t__ tjTransform (int /*<<< orphan*/ *,unsigned char*,unsigned long,int,unsigned char**,unsigned long*,TYPE_2__*,int) ; 
- int /*<<< orphan*/  usage (char*) ; 
+
+ int DEFAULT_QUALITY ;
+ int SEEK_END ;
+ int SEEK_SET ;
+ int TJFLAG_ACCURATEDCT ;
+ int TJFLAG_FASTDCT ;
+ int TJFLAG_FASTUPSAMPLE ;
+ int TJPF_BGRX ;
+ int TJPF_GRAY ;
+ int TJPF_UNKNOWN ;
+ int TJSAMP_420 ;
+ int TJSAMP_422 ;
+ int TJSAMP_444 ;
+ int TJSAMP_GRAY ;
+ int TJSCALED (int,TYPE_3__) ;
+ int TJXOPT_CROP ;
+ int TJXOPT_GRAY ;
+ int TJXOPT_TRIM ;
+ scalar_t__ TJXOP_HFLIP ;
+ scalar_t__ TJXOP_NONE ;
+ scalar_t__ TJXOP_ROT180 ;
+ scalar_t__ TJXOP_ROT270 ;
+ scalar_t__ TJXOP_ROT90 ;
+ scalar_t__ TJXOP_TRANSPOSE ;
+ scalar_t__ TJXOP_TRANSVERSE ;
+ scalar_t__ TJXOP_VFLIP ;
+ int _throw (char*,char*) ;
+ int _throwtj (char*) ;
+ int _throwunix (char*) ;
+ int atoi (char*) ;
+ char** colorspaceName ;
+ int * customFilter ;
+ int fclose (int *) ;
+ int * fopen (char*,char*) ;
+ int fread (unsigned char*,unsigned long,int,int *) ;
+ scalar_t__ fseek (int *,int ,int ) ;
+ long ftell (int *) ;
+ int fwrite (unsigned char*,unsigned long,int,int *) ;
+ int memset (TYPE_2__*,int ,int) ;
+ int numScalingFactors ;
+ int printf (char*,...) ;
+ TYPE_3__* scalingFactors ;
+ int sscanf (char*,char*,int*,int*,...) ;
+ int strcasecmp (char*,char*) ;
+ int strlen (char*) ;
+ int strncasecmp (char*,char*,int) ;
+ char* strrchr (char*,char) ;
+ char** subsampName ;
+ scalar_t__ tjAlloc (int) ;
+ scalar_t__ tjCompress2 (int *,unsigned char*,int,int ,int,int,unsigned char**,unsigned long*,int,int,int) ;
+ scalar_t__ tjDecompress2 (int *,unsigned char*,unsigned long,unsigned char*,int,int ,int,int,int) ;
+ scalar_t__ tjDecompressHeader3 (int *,unsigned char*,unsigned long,int*,int*,int*,int*) ;
+ int tjDestroy (int *) ;
+ int tjFree (unsigned char*) ;
+ TYPE_3__* tjGetScalingFactors (int*) ;
+ int * tjInitCompress () ;
+ int * tjInitDecompress () ;
+ int * tjInitTransform () ;
+ unsigned char* tjLoadImage (char*,int*,int,int*,int*,int ) ;
+ int* tjPixelSize ;
+ scalar_t__ tjSaveImage (char*,unsigned char*,int,int ,int,int,int ) ;
+ scalar_t__ tjTransform (int *,unsigned char*,unsigned long,int,unsigned char**,unsigned long*,TYPE_2__*,int) ;
+ int usage (char*) ;
 
 int main(int argc, char **argv)
 {
@@ -93,19 +93,19 @@ int main(int argc, char **argv)
   int flags = 0;
   int width, height;
   char *inFormat, *outFormat;
-  FILE *jpegFile = NULL;
-  unsigned char *imgBuf = NULL, *jpegBuf = NULL;
+  FILE *jpegFile = ((void*)0);
+  unsigned char *imgBuf = ((void*)0), *jpegBuf = ((void*)0);
   int retval = 0, i, pixelFormat = TJPF_UNKNOWN;
-  tjhandle tjInstance = NULL;
+  tjhandle tjInstance = ((void*)0);
 
-  if ((scalingFactors = tjGetScalingFactors(&numScalingFactors)) == NULL)
+  if ((scalingFactors = tjGetScalingFactors(&numScalingFactors)) == ((void*)0))
     _throwtj("getting scaling factors");
   memset(&xform, 0, sizeof(tjtransform));
 
   if (argc < 3)
     usage(argv[0]);
 
-  /* Parse arguments. */
+
   for (i = 3; i < argc; i++) {
     if (!strncasecmp(argv[i], "-sc", 3) && i < argc - 1) {
       int match = 0, temp1 = 0, temp2 = 0, j;
@@ -174,25 +174,25 @@ int main(int argc, char **argv)
     } else usage(argv[0]);
   }
 
-  /* Determine input and output image formats based on file extensions. */
+
   inFormat = strrchr(argv[1], '.');
   outFormat = strrchr(argv[2], '.');
-  if (inFormat == NULL || outFormat == NULL || strlen(inFormat) < 2 ||
+  if (inFormat == ((void*)0) || outFormat == ((void*)0) || strlen(inFormat) < 2 ||
       strlen(outFormat) < 2)
     usage(argv[0]);
   inFormat = &inFormat[1];
   outFormat = &outFormat[1];
 
   if (!strcasecmp(inFormat, "jpg")) {
-    /* Input image is a JPEG image.  Decompress and/or transform it. */
+
     long size;
     int inSubsamp, inColorspace;
     int doTransform = (xform.op != TJXOP_NONE || xform.options != 0 ||
-                       xform.customFilter != NULL);
+                       xform.customFilter != ((void*)0));
     unsigned long jpegSize;
 
-    /* Read the JPEG file into memory. */
-    if ((jpegFile = fopen(argv[1], "rb")) == NULL)
+
+    if ((jpegFile = fopen(argv[1], "rb")) == ((void*)0))
       _throwunix("opening input file");
     if (fseek(jpegFile, 0, SEEK_END) < 0 || ((size = ftell(jpegFile)) < 0) ||
         fseek(jpegFile, 0, SEEK_SET) < 0)
@@ -200,18 +200,18 @@ int main(int argc, char **argv)
     if (size == 0)
       _throw("determining input file size", "Input file contains no data");
     jpegSize = (unsigned long)size;
-    if ((jpegBuf = (unsigned char *)tjAlloc(jpegSize)) == NULL)
+    if ((jpegBuf = (unsigned char *)tjAlloc(jpegSize)) == ((void*)0))
       _throwunix("allocating JPEG buffer");
     if (fread(jpegBuf, jpegSize, 1, jpegFile) < 1)
       _throwunix("reading input file");
-    fclose(jpegFile);  jpegFile = NULL;
+    fclose(jpegFile); jpegFile = ((void*)0);
 
     if (doTransform) {
-      /* Transform it. */
-      unsigned char *dstBuf = NULL;  /* Dynamically allocate the JPEG buffer */
+
+      unsigned char *dstBuf = ((void*)0);
       unsigned long dstSize = 0;
 
-      if ((tjInstance = tjInitTransform()) == NULL)
+      if ((tjInstance = tjInitTransform()) == ((void*)0))
         _throwtj("initializing transformer");
       xform.options |= TJXOPT_TRIM;
       if (tjTransform(tjInstance, jpegBuf, jpegSize, 1, &dstBuf, &dstSize,
@@ -221,7 +221,7 @@ int main(int argc, char **argv)
       jpegBuf = dstBuf;
       jpegSize = dstSize;
     } else {
-      if ((tjInstance = tjInitDecompress()) == NULL)
+      if ((tjInstance = tjInitDecompress()) == ((void*)0))
         _throwtj("initializing decompressor");
     }
 
@@ -236,19 +236,19 @@ int main(int argc, char **argv)
     if (!strcasecmp(outFormat, "jpg") && doTransform &&
         scalingFactor.num == 1 && scalingFactor.denom == 1 && outSubsamp < 0 &&
         outQual < 0) {
-      /* Input image has been transformed, and no re-compression options
-         have been selected.  Write the transformed image to disk and exit. */
-      if ((jpegFile = fopen(argv[2], "wb")) == NULL)
+
+
+      if ((jpegFile = fopen(argv[2], "wb")) == ((void*)0))
         _throwunix("opening output file");
       if (fwrite(jpegBuf, jpegSize, 1, jpegFile) < 1)
         _throwunix("writing output file");
-      fclose(jpegFile);  jpegFile = NULL;
+      fclose(jpegFile); jpegFile = ((void*)0);
       goto bailout;
     }
 
-    /* Scaling and/or a non-JPEG output image format and/or compression options
-       have been selected, so we need to decompress the input/transformed
-       image. */
+
+
+
     width = TJSCALED(width, scalingFactor);
     height = TJSCALED(height, scalingFactor);
     if (outSubsamp < 0)
@@ -256,18 +256,18 @@ int main(int argc, char **argv)
 
     pixelFormat = TJPF_BGRX;
     if ((imgBuf = (unsigned char *)tjAlloc(width * height *
-                                           tjPixelSize[pixelFormat])) == NULL)
+                                           tjPixelSize[pixelFormat])) == ((void*)0))
       _throwunix("allocating uncompressed image buffer");
 
     if (tjDecompress2(tjInstance, jpegBuf, jpegSize, imgBuf, width, 0, height,
                       pixelFormat, flags) < 0)
       _throwtj("decompressing JPEG image");
-    tjFree(jpegBuf);  jpegBuf = NULL;
-    tjDestroy(tjInstance);  tjInstance = NULL;
+    tjFree(jpegBuf); jpegBuf = ((void*)0);
+    tjDestroy(tjInstance); tjInstance = ((void*)0);
   } else {
-    /* Input image is not a JPEG image.  Load it into memory. */
+
     if ((imgBuf = tjLoadImage(argv[1], &width, 1, &height, &pixelFormat,
-                              0)) == NULL)
+                              0)) == ((void*)0))
       _throwtj("loading input image");
     if (outSubsamp < 0) {
       if (pixelFormat == TJPF_GRAY)
@@ -281,8 +281,8 @@ int main(int argc, char **argv)
   printf("Output Image (%s):  %d x %d pixels", outFormat, width, height);
 
   if (!strcasecmp(outFormat, "jpg")) {
-    /* Output image format is JPEG.  Compress the uncompressed image. */
-    unsigned char *jpegBuf = NULL;  /* Dynamically allocate the JPEG buffer */
+
+    unsigned char *jpegBuf = ((void*)0);
     unsigned long jpegSize = 0;
 
     if (outQual < 0)
@@ -290,24 +290,24 @@ int main(int argc, char **argv)
     printf(", %s subsampling, quality = %d\n", subsampName[outSubsamp],
            outQual);
 
-    if ((tjInstance = tjInitCompress()) == NULL)
+    if ((tjInstance = tjInitCompress()) == ((void*)0))
       _throwtj("initializing compressor");
     if (tjCompress2(tjInstance, imgBuf, width, 0, height, pixelFormat,
                     &jpegBuf, &jpegSize, outSubsamp, outQual, flags) < 0)
       _throwtj("compressing image");
-    tjDestroy(tjInstance);  tjInstance = NULL;
+    tjDestroy(tjInstance); tjInstance = ((void*)0);
 
-    /* Write the JPEG image to disk. */
-    if ((jpegFile = fopen(argv[2], "wb")) == NULL)
+
+    if ((jpegFile = fopen(argv[2], "wb")) == ((void*)0))
       _throwunix("opening output file");
     if (fwrite(jpegBuf, jpegSize, 1, jpegFile) < 1)
       _throwunix("writing output file");
-    tjDestroy(tjInstance);  tjInstance = NULL;
-    fclose(jpegFile);  jpegFile = NULL;
-    tjFree(jpegBuf);  jpegBuf = NULL;
+    tjDestroy(tjInstance); tjInstance = ((void*)0);
+    fclose(jpegFile); jpegFile = ((void*)0);
+    tjFree(jpegBuf); jpegBuf = ((void*)0);
   } else {
-    /* Output image format is not JPEG.  Save the uncompressed image
-       directly to disk. */
+
+
     printf("\n");
     if (tjSaveImage(argv[2], imgBuf, width, 0, height, pixelFormat, 0) < 0)
       _throwtj("saving output image");

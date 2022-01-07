@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  free_mem_ptr ; 
- int /*<<< orphan*/  malloc_count ; 
- int /*<<< orphan*/  malloc_ptr ; 
+ int free_mem_ptr ;
+ int malloc_count ;
+ int malloc_ptr ;
 
 __attribute__((used)) static void free(void *where)
 {
        malloc_count--;
        if (!malloc_count)
-		malloc_ptr = free_mem_ptr;
+  malloc_ptr = free_mem_ptr;
 }

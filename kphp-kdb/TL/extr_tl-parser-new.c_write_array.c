@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree_var_value_t ;
-struct tl_combinator_tree {int /*<<< orphan*/  right; int /*<<< orphan*/  left; } ;
 
-/* Variables and functions */
- int TLS_ARRAY ; 
- int TLS_TREE_ARRAY ; 
- int schema_version ; 
- int /*<<< orphan*/  wint (int) ; 
- int /*<<< orphan*/  write_tree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **,int*) ; 
+
+
+
+typedef int tree_var_value_t ;
+struct tl_combinator_tree {int right; int left; } ;
+
+
+ int TLS_ARRAY ;
+ int TLS_TREE_ARRAY ;
+ int schema_version ;
+ int wint (int) ;
+ int write_tree (int ,int ,int **,int*) ;
 
 void write_array (struct tl_combinator_tree *T, tree_var_value_t **v, int *last_var) {
   if (schema_version == 1) {

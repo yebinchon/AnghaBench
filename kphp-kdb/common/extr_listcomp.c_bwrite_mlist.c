@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct left_subtree_bits_array {int n; scalar_t__ idx; int /*<<< orphan*/  a; } ;
+
+
+
+
+struct left_subtree_bits_array {int n; scalar_t__ idx; int a; } ;
 struct bitwriter {unsigned char* ptr; } ;
-typedef  int /*<<< orphan*/  dyn_mark_t ;
+typedef int dyn_mark_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  bwrite_mlist_sublist_first_pass (struct bitwriter*,int*,int*,int /*<<< orphan*/ ,int const,int,struct left_subtree_bits_array*,int) ; 
- int /*<<< orphan*/  bwrite_mlist_sublist_second_pass (struct bitwriter*,int*,int*,int /*<<< orphan*/ ,int const,int,struct left_subtree_bits_array*,int*,int) ; 
- int /*<<< orphan*/  bwrite_nbits (struct bitwriter*,int,int) ; 
- int /*<<< orphan*/  dyn_mark (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dyn_release (int /*<<< orphan*/ ) ; 
- int get_subtree_array_size (int /*<<< orphan*/ ,int const,int) ; 
- int /*<<< orphan*/  memcpy (struct bitwriter*,struct bitwriter*,int) ; 
- int /*<<< orphan*/  zmalloc (int) ; 
+
+ int assert (int) ;
+ int bwrite_mlist_sublist_first_pass (struct bitwriter*,int*,int*,int ,int const,int,struct left_subtree_bits_array*,int) ;
+ int bwrite_mlist_sublist_second_pass (struct bitwriter*,int*,int*,int ,int const,int,struct left_subtree_bits_array*,int*,int) ;
+ int bwrite_nbits (struct bitwriter*,int,int) ;
+ int dyn_mark (int ) ;
+ int dyn_release (int ) ;
+ int get_subtree_array_size (int ,int const,int) ;
+ int memcpy (struct bitwriter*,struct bitwriter*,int) ;
+ int zmalloc (int) ;
 
 void bwrite_mlist (struct bitwriter *bw, int *L, int *M, int K, int left_subtree_size_threshold, int *redundant_bits) {
   assert (L[0] == -1);
@@ -50,7 +50,7 @@ void bwrite_mlist (struct bitwriter *bw, int *L, int *M, int K, int left_subtree
   memcpy (bw, &tmp, sizeof (struct bitwriter));
   *(bw->ptr) = c;
   p.idx = 0;
-  if (redundant_bits != NULL) {
+  if (redundant_bits != ((void*)0)) {
     *redundant_bits = 0;
   }
   bwrite_nbits (bw, all_ones, 1);

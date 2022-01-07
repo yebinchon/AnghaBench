@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mp_uint_t ;
-typedef  int /*<<< orphan*/  mp_lexer_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MP_ENOENT ; 
- scalar_t__ MZ_OK ; 
- scalar_t__ memzip_locate (char const*,void**,size_t*) ; 
- int /*<<< orphan*/ * mp_lexer_new_from_str_len (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mp_raise_OSError (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  qstr_from_str (char const*) ; 
+
+
+
+typedef int mp_uint_t ;
+typedef int mp_lexer_t ;
+
+
+ int MP_ENOENT ;
+ scalar_t__ MZ_OK ;
+ scalar_t__ memzip_locate (char const*,void**,size_t*) ;
+ int * mp_lexer_new_from_str_len (int ,char const*,int ,int ) ;
+ int mp_raise_OSError (int ) ;
+ int qstr_from_str (char const*) ;
 
 mp_lexer_t *mp_lexer_new_from_file(const char *filename)
 {

@@ -1,68 +1,68 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct priv {TYPE_1__* opts; } ;
-struct ao {int /*<<< orphan*/  format; struct priv* priv; } ;
-typedef  int /*<<< orphan*/  snd_mixer_t ;
-typedef  int /*<<< orphan*/  snd_mixer_selem_id_t ;
-typedef  int /*<<< orphan*/  snd_mixer_elem_t ;
-typedef  enum aocontrol { ____Placeholder_aocontrol } aocontrol ;
+struct ao {int format; struct priv* priv; } ;
+typedef int snd_mixer_t ;
+typedef int snd_mixer_selem_id_t ;
+typedef int snd_mixer_elem_t ;
+typedef enum aocontrol { ____Placeholder_aocontrol } aocontrol ;
 struct TYPE_4__ {float left; float right; } ;
-typedef  TYPE_2__ ao_control_vol_t ;
-struct TYPE_3__ {int /*<<< orphan*/  mixer_device; int /*<<< orphan*/  mixer_name; int /*<<< orphan*/  mixer_index; } ;
+typedef TYPE_2__ ao_control_vol_t ;
+struct TYPE_3__ {int mixer_device; int mixer_name; int mixer_index; } ;
 
-/* Variables and functions */
-#define  AOCONTROL_GET_MUTE 131 
-#define  AOCONTROL_GET_VOLUME 130 
-#define  AOCONTROL_SET_MUTE 129 
-#define  AOCONTROL_SET_VOLUME 128 
- int /*<<< orphan*/  CHECK_ALSA_ERROR (char*) ; 
- int CONTROL_ERROR ; 
- int CONTROL_FALSE ; 
- int CONTROL_OK ; 
- int CONTROL_UNKNOWN ; 
- int /*<<< orphan*/  MP_DBG (struct ao*,char*,long,...) ; 
- int /*<<< orphan*/  MP_VERBOSE (struct ao*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  af_fmt_is_pcm (int /*<<< orphan*/ ) ; 
- int snd_mixer_attach (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  snd_mixer_close (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * snd_mixer_find_selem (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int snd_mixer_load (int /*<<< orphan*/ *) ; 
- int snd_mixer_open (int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  snd_mixer_selem_get_playback_switch (int /*<<< orphan*/ *,int,int*) ; 
- int /*<<< orphan*/  snd_mixer_selem_get_playback_volume (int /*<<< orphan*/ *,int,long*) ; 
- int /*<<< orphan*/  snd_mixer_selem_get_playback_volume_range (int /*<<< orphan*/ *,long*,long*) ; 
- int /*<<< orphan*/  snd_mixer_selem_has_playback_switch (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  snd_mixer_selem_has_playback_switch_joined (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  snd_mixer_selem_id_alloca (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  snd_mixer_selem_id_get_index (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  snd_mixer_selem_id_get_name (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  snd_mixer_selem_id_set_index (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  snd_mixer_selem_id_set_name (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int snd_mixer_selem_register (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  snd_mixer_selem_set_playback_switch (int /*<<< orphan*/ *,int,int) ; 
- int snd_mixer_selem_set_playback_volume (int /*<<< orphan*/ *,int,long) ; 
+
+
+
+
+
+ int CHECK_ALSA_ERROR (char*) ;
+ int CONTROL_ERROR ;
+ int CONTROL_FALSE ;
+ int CONTROL_OK ;
+ int CONTROL_UNKNOWN ;
+ int MP_DBG (struct ao*,char*,long,...) ;
+ int MP_VERBOSE (struct ao*,char*,int ,int ) ;
+ int af_fmt_is_pcm (int ) ;
+ int snd_mixer_attach (int *,int ) ;
+ int snd_mixer_close (int *) ;
+ int * snd_mixer_find_selem (int *,int *) ;
+ int snd_mixer_load (int *) ;
+ int snd_mixer_open (int **,int ) ;
+ int snd_mixer_selem_get_playback_switch (int *,int,int*) ;
+ int snd_mixer_selem_get_playback_volume (int *,int,long*) ;
+ int snd_mixer_selem_get_playback_volume_range (int *,long*,long*) ;
+ int snd_mixer_selem_has_playback_switch (int *) ;
+ int snd_mixer_selem_has_playback_switch_joined (int *) ;
+ int snd_mixer_selem_id_alloca (int **) ;
+ int snd_mixer_selem_id_get_index (int *) ;
+ int snd_mixer_selem_id_get_name (int *) ;
+ int snd_mixer_selem_id_set_index (int *,int ) ;
+ int snd_mixer_selem_id_set_name (int *,int ) ;
+ int snd_mixer_selem_register (int *,int *,int *) ;
+ int snd_mixer_selem_set_playback_switch (int *,int,int) ;
+ int snd_mixer_selem_set_playback_volume (int *,int,long) ;
 
 __attribute__((used)) static int control(struct ao *ao, enum aocontrol cmd, void *arg)
 {
     struct priv *p = ao->priv;
-    snd_mixer_t *handle = NULL;
+    snd_mixer_t *handle = ((void*)0);
     switch (cmd) {
-    case AOCONTROL_GET_MUTE:
-    case AOCONTROL_SET_MUTE:
-    case AOCONTROL_GET_VOLUME:
-    case AOCONTROL_SET_VOLUME:
+    case 131:
+    case 129:
+    case 130:
+    case 128:
     {
         int err;
         snd_mixer_elem_t *elem;
@@ -86,7 +86,7 @@ __attribute__((used)) static int control(struct ao *ao, enum aocontrol cmd, void
         err = snd_mixer_attach(handle, p->opts->mixer_device);
         CHECK_ALSA_ERROR("Mixer attach error");
 
-        err = snd_mixer_selem_register(handle, NULL, NULL);
+        err = snd_mixer_selem_register(handle, ((void*)0), ((void*)0));
         CHECK_ALSA_ERROR("Mixer register error");
 
         err = snd_mixer_load(handle);
@@ -104,7 +104,7 @@ __attribute__((used)) static int control(struct ao *ao, enum aocontrol cmd, void
         f_multi = (100 / (float)(pmax - pmin));
 
         switch (cmd) {
-        case AOCONTROL_SET_VOLUME: {
+        case 128: {
             ao_control_vol_t *vol = arg;
             set_vol = vol->left / f_multi + pmin + 0.5;
 
@@ -120,7 +120,7 @@ __attribute__((used)) static int control(struct ao *ao, enum aocontrol cmd, void
                    set_vol, pmin, pmax, f_multi);
             break;
         }
-        case AOCONTROL_GET_VOLUME: {
+        case 130: {
             ao_control_vol_t *vol = arg;
             snd_mixer_selem_get_playback_volume(elem, 0, &get_vol);
             vol->left = (get_vol - pmin) * f_multi;
@@ -129,7 +129,7 @@ __attribute__((used)) static int control(struct ao *ao, enum aocontrol cmd, void
             MP_DBG(ao, "left=%f, right=%f\n", vol->left, vol->right);
             break;
         }
-        case AOCONTROL_SET_MUTE: {
+        case 129: {
             bool *mute = arg;
             if (!snd_mixer_selem_has_playback_switch(elem))
                 goto alsa_error;
@@ -139,7 +139,7 @@ __attribute__((used)) static int control(struct ao *ao, enum aocontrol cmd, void
             snd_mixer_selem_set_playback_switch(elem, 0, !*mute);
             break;
         }
-        case AOCONTROL_GET_MUTE: {
+        case 131: {
             bool *mute = arg;
             if (!snd_mixer_selem_has_playback_switch(elem))
                 goto alsa_error;
@@ -157,7 +157,7 @@ __attribute__((used)) static int control(struct ao *ao, enum aocontrol cmd, void
         return CONTROL_OK;
     }
 
-    } //end switch
+    }
     return CONTROL_UNKNOWN;
 
 alsa_error:

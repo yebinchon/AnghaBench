@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * xmlStrdupFunc ;
-typedef  int /*<<< orphan*/ * xmlReallocFunc ;
-typedef  int /*<<< orphan*/ * xmlMallocFunc ;
-typedef  int /*<<< orphan*/ * xmlFreeFunc ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * xmlFree ; 
- int /*<<< orphan*/  xmlGenericError (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  xmlGenericErrorContext ; 
- int /*<<< orphan*/ * xmlMalloc ; 
- int /*<<< orphan*/ * xmlMallocAtomic ; 
- int /*<<< orphan*/ * xmlMemStrdup ; 
- int /*<<< orphan*/ * xmlRealloc ; 
+
+
+
+typedef int * xmlStrdupFunc ;
+typedef int * xmlReallocFunc ;
+typedef int * xmlMallocFunc ;
+typedef int * xmlFreeFunc ;
+
+
+ int * xmlFree ;
+ int xmlGenericError (int ,char*) ;
+ int xmlGenericErrorContext ;
+ int * xmlMalloc ;
+ int * xmlMallocAtomic ;
+ int * xmlMemStrdup ;
+ int * xmlRealloc ;
 
 int
 xmlGcMemSetup(xmlFreeFunc freeFunc, xmlMallocFunc mallocFunc,
               xmlMallocFunc mallocAtomicFunc, xmlReallocFunc reallocFunc,
-	      xmlStrdupFunc strdupFunc) {
-#ifdef DEBUG_MEMORY
-     xmlGenericError(xmlGenericErrorContext,
-	     "xmlGcMemSetup()\n");
-#endif
-    if (freeFunc == NULL)
-	return(-1);
-    if (mallocFunc == NULL)
-	return(-1);
-    if (mallocAtomicFunc == NULL)
-	return(-1);
-    if (reallocFunc == NULL)
-	return(-1);
-    if (strdupFunc == NULL)
-	return(-1);
+       xmlStrdupFunc strdupFunc) {
+
+
+
+
+    if (freeFunc == ((void*)0))
+ return(-1);
+    if (mallocFunc == ((void*)0))
+ return(-1);
+    if (mallocAtomicFunc == ((void*)0))
+ return(-1);
+    if (reallocFunc == ((void*)0))
+ return(-1);
+    if (strdupFunc == ((void*)0))
+ return(-1);
     xmlFree = freeFunc;
     xmlMalloc = mallocFunc;
     xmlMallocAtomic = mallocAtomicFunc;
     xmlRealloc = reallocFunc;
     xmlMemStrdup = strdupFunc;
-#ifdef DEBUG_MEMORY
-     xmlGenericError(xmlGenericErrorContext,
-	     "xmlGcMemSetup() Ok\n");
-#endif
+
+
+
+
     return(0);
 }

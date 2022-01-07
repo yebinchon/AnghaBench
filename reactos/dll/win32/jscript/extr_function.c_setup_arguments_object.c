@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_6__ ;
-typedef  struct TYPE_16__   TYPE_5__ ;
-typedef  struct TYPE_15__   TYPE_4__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_14__ {int /*<<< orphan*/  object_constr; } ;
-typedef  TYPE_3__ script_ctx_t ;
-struct TYPE_15__ {int /*<<< orphan*/ * arguments_obj; TYPE_2__* base_scope; int /*<<< orphan*/  argc; int /*<<< orphan*/  function_instance; } ;
-typedef  TYPE_4__ call_frame_t ;
-typedef  char WCHAR ;
-struct TYPE_17__ {int /*<<< orphan*/  jsdisp; TYPE_5__* function; int /*<<< orphan*/  argc; TYPE_4__* frame; } ;
-struct TYPE_12__ {int /*<<< orphan*/  dispex; } ;
+
+
+typedef struct TYPE_17__ TYPE_6__ ;
+typedef struct TYPE_16__ TYPE_5__ ;
+typedef struct TYPE_15__ TYPE_4__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+struct TYPE_14__ {int object_constr; } ;
+typedef TYPE_3__ script_ctx_t ;
+struct TYPE_15__ {int * arguments_obj; TYPE_2__* base_scope; int argc; int function_instance; } ;
+typedef TYPE_4__ call_frame_t ;
+typedef char WCHAR ;
+struct TYPE_17__ {int jsdisp; TYPE_5__* function; int argc; TYPE_4__* frame; } ;
+struct TYPE_12__ {int dispex; } ;
 struct TYPE_16__ {TYPE_1__ function; } ;
-struct TYPE_13__ {int /*<<< orphan*/  jsobj; } ;
-typedef  TYPE_5__ InterpretedFunction ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  TYPE_6__ ArgumentsInstance ;
+struct TYPE_13__ {int jsobj; } ;
+typedef TYPE_5__ InterpretedFunction ;
+typedef int HRESULT ;
+typedef TYPE_6__ ArgumentsInstance ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Arguments_info ; 
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int PROPF_CONFIGURABLE ; 
- int PROPF_WRITABLE ; 
- scalar_t__ SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  argumentsW ; 
- scalar_t__ function_from_jsdisp (int /*<<< orphan*/ ) ; 
- TYPE_6__* heap_alloc_zero (int) ; 
- int /*<<< orphan*/  heap_free (TYPE_6__*) ; 
- int /*<<< orphan*/  init_dispex_from_constr (int /*<<< orphan*/ *,TYPE_3__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jsdisp_addref (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jsdisp_define_data_property (int /*<<< orphan*/ *,char const*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jsdisp_propput (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jsdisp_release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jsval_number (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jsval_obj (int /*<<< orphan*/ *) ; 
- char const* lengthW ; 
+
+ int Arguments_info ;
+ int E_OUTOFMEMORY ;
+ scalar_t__ FAILED (int ) ;
+ int PROPF_CONFIGURABLE ;
+ int PROPF_WRITABLE ;
+ scalar_t__ SUCCEEDED (int ) ;
+ int S_OK ;
+ int argumentsW ;
+ scalar_t__ function_from_jsdisp (int ) ;
+ TYPE_6__* heap_alloc_zero (int) ;
+ int heap_free (TYPE_6__*) ;
+ int init_dispex_from_constr (int *,TYPE_3__*,int *,int ) ;
+ int jsdisp_addref (int ) ;
+ int jsdisp_define_data_property (int *,char const*,int,int ) ;
+ int jsdisp_propput (int ,int ,int,int ) ;
+ int jsdisp_release (int *) ;
+ int jsval_number (int ) ;
+ int jsval_obj (int *) ;
+ char const* lengthW ;
 
 HRESULT setup_arguments_object(script_ctx_t *ctx, call_frame_t *frame)
 {

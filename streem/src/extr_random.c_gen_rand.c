@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct rand_data {int /*<<< orphan*/  seed; } ;
-typedef  int /*<<< orphan*/  strm_value ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct rand_data {int seed; } ;
+typedef int strm_value ;
 struct TYPE_5__ {struct rand_data* data; } ;
-typedef  TYPE_1__ strm_stream ;
+typedef TYPE_1__ strm_stream ;
 
-/* Variables and functions */
- int STRM_OK ; 
- double rand_float (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strm_emit (TYPE_1__*,int /*<<< orphan*/ ,int (*) (TYPE_1__*,int /*<<< orphan*/ )) ; 
- int /*<<< orphan*/  strm_float_value (double) ; 
+
+ int STRM_OK ;
+ double rand_float (int ) ;
+ int strm_emit (TYPE_1__*,int ,int (*) (TYPE_1__*,int )) ;
+ int strm_float_value (double) ;
 
 __attribute__((used)) static int
 gen_rand(strm_stream* strm, strm_value data)

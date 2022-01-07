@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_6__ {unsigned int input_num; unsigned int output_num; unsigned int clock_num; TYPE_1__** clock; TYPE_1__** output; TYPE_1__** input; } ;
-struct TYPE_5__ {int type; int /*<<< orphan*/  name; } ;
-typedef  int /*<<< orphan*/  MMAL_STATUS_T ;
-typedef  TYPE_1__ MMAL_PORT_T ;
-typedef  int /*<<< orphan*/  MMAL_GRAPH_T ;
-typedef  TYPE_2__ MMAL_GRAPH_PRIVATE_T ;
+struct TYPE_5__ {int type; int name; } ;
+typedef int MMAL_STATUS_T ;
+typedef TYPE_1__ MMAL_PORT_T ;
+typedef int MMAL_GRAPH_T ;
+typedef TYPE_2__ MMAL_GRAPH_PRIVATE_T ;
 
-/* Variables and functions */
- unsigned int GRAPH_CONNECTIONS_MAX ; 
- int /*<<< orphan*/  LOG_ERROR (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LOG_TRACE (char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  MMAL_EINVAL ; 
- int /*<<< orphan*/  MMAL_ENOSPC ; 
-#define  MMAL_PORT_TYPE_CLOCK 130 
-#define  MMAL_PORT_TYPE_INPUT 129 
-#define  MMAL_PORT_TYPE_OUTPUT 128 
- int /*<<< orphan*/  MMAL_SUCCESS ; 
+
+ unsigned int GRAPH_CONNECTIONS_MAX ;
+ int LOG_ERROR (char*,int ) ;
+ int LOG_TRACE (char*,int *,int ,TYPE_1__*) ;
+ int MMAL_EINVAL ;
+ int MMAL_ENOSPC ;
+
+
+
+ int MMAL_SUCCESS ;
 
 MMAL_STATUS_T mmal_graph_add_port(MMAL_GRAPH_T *graph, MMAL_PORT_T *port)
 {
@@ -43,15 +43,15 @@ MMAL_STATUS_T mmal_graph_add_port(MMAL_GRAPH_T *graph, MMAL_PORT_T *port)
 
    switch (port->type)
    {
-   case MMAL_PORT_TYPE_INPUT:
+   case 129:
       list = private->input;
       list_num = &private->input_num;
       break;
-   case MMAL_PORT_TYPE_OUTPUT:
+   case 128:
       list = private->output;
       list_num = &private->output_num;
       break;
-   case MMAL_PORT_TYPE_CLOCK:
+   case 130:
       list = private->clock;
       list_num = &private->clock_num;
       break;

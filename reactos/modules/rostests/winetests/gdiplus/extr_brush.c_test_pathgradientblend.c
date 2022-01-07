@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int member_0; int member_1; } ;
-typedef  float REAL ;
-typedef  int INT ;
-typedef  int GpStatus ;
-typedef  TYPE_1__ GpPointF ;
-typedef  int /*<<< orphan*/  GpPathGradient ;
-typedef  int /*<<< orphan*/  GpBrush ;
+typedef float REAL ;
+typedef int INT ;
+typedef int GpStatus ;
+typedef TYPE_1__ GpPointF ;
+typedef int GpPathGradient ;
+typedef int GpBrush ;
 
-/* Variables and functions */
- int GdipCreatePathGradient (TYPE_1__ const*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int GdipDeleteBrush (int /*<<< orphan*/ *) ; 
- int GdipGetPathGradientBlend (int /*<<< orphan*/ *,float*,float*,int) ; 
- int GdipGetPathGradientBlendCount (int /*<<< orphan*/ *,int*) ; 
- int GdipSetPathGradientBlend (int /*<<< orphan*/ *,float const*,float const*,int) ; 
- int InsufficientBuffer ; 
- int InvalidParameter ; 
- int Ok ; 
- int /*<<< orphan*/  WrapModeClamp ; 
- int /*<<< orphan*/  expect (int,int) ; 
- int /*<<< orphan*/  expectf (float const,float) ; 
+
+ int GdipCreatePathGradient (TYPE_1__ const*,int,int ,int **) ;
+ int GdipDeleteBrush (int *) ;
+ int GdipGetPathGradientBlend (int *,float*,float*,int) ;
+ int GdipGetPathGradientBlendCount (int *,int*) ;
+ int GdipSetPathGradientBlend (int *,float const*,float const*,int) ;
+ int InsufficientBuffer ;
+ int InvalidParameter ;
+ int Ok ;
+ int WrapModeClamp ;
+ int expect (int,int) ;
+ int expectf (float const,float) ;
 
 __attribute__((used)) static void test_pathgradientblend(void)
 {
@@ -46,23 +46,23 @@ __attribute__((used)) static void test_pathgradientblend(void)
     status = GdipCreatePathGradient(path_points, 3, WrapModeClamp, &brush);
     expect(Ok, status);
 
-    status = GdipGetPathGradientBlendCount(NULL, &count);
+    status = GdipGetPathGradientBlendCount(((void*)0), &count);
     expect(InvalidParameter, status);
 
-    status = GdipGetPathGradientBlendCount(brush, NULL);
+    status = GdipGetPathGradientBlendCount(brush, ((void*)0));
     expect(InvalidParameter, status);
 
     status = GdipGetPathGradientBlendCount(brush, &count);
     expect(Ok, status);
     expect(1, count);
 
-    status = GdipGetPathGradientBlend(NULL, res_factors, res_positions, 1);
+    status = GdipGetPathGradientBlend(((void*)0), res_factors, res_positions, 1);
     expect(InvalidParameter, status);
 
-    status = GdipGetPathGradientBlend(brush, NULL, res_positions, 1);
+    status = GdipGetPathGradientBlend(brush, ((void*)0), res_positions, 1);
     expect(InvalidParameter, status);
 
-    status = GdipGetPathGradientBlend(brush, res_factors, NULL, 1);
+    status = GdipGetPathGradientBlend(brush, res_factors, ((void*)0), 1);
     expect(InvalidParameter, status);
 
     status = GdipGetPathGradientBlend(brush, res_factors, res_positions, 0);
@@ -77,13 +77,13 @@ __attribute__((used)) static void test_pathgradientblend(void)
     status = GdipGetPathGradientBlend(brush, res_factors, res_positions, 2);
     expect(Ok, status);
 
-    status = GdipSetPathGradientBlend(NULL, factors, positions, 5);
+    status = GdipSetPathGradientBlend(((void*)0), factors, positions, 5);
     expect(InvalidParameter, status);
 
-    status = GdipSetPathGradientBlend(brush, NULL, positions, 5);
+    status = GdipSetPathGradientBlend(brush, ((void*)0), positions, 5);
     expect(InvalidParameter, status);
 
-    status = GdipSetPathGradientBlend(brush, factors, NULL, 5);
+    status = GdipSetPathGradientBlend(brush, factors, ((void*)0), 5);
     expect(InvalidParameter, status);
 
     status = GdipSetPathGradientBlend(brush, factors, positions, 0);
@@ -92,11 +92,11 @@ __attribute__((used)) static void test_pathgradientblend(void)
     status = GdipSetPathGradientBlend(brush, factors, positions, -1);
     expect(InvalidParameter, status);
 
-    /* leave off the 0.0 position */
+
     status = GdipSetPathGradientBlend(brush, &factors[1], &positions[1], 4);
     expect(InvalidParameter, status);
 
-    /* leave off the 1.0 position */
+
     status = GdipSetPathGradientBlend(brush, factors, positions, 4);
     expect(InvalidParameter, status);
 

@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ ansiCodePage; int rtfMinor; } ;
-typedef  TYPE_1__ RTF_Info ;
+typedef TYPE_1__ RTF_Info ;
 
-/* Variables and functions */
- scalar_t__ CP_UTF8 ; 
-#define  rtfAnsiCharSet 131 
-#define  rtfMacCharSet 130 
-#define  rtfPcCharSet 129 
-#define  rtfPcaCharSet 128 
+
+ scalar_t__ CP_UTF8 ;
+
+
+
+
 
 __attribute__((used)) static void
 CharSet(RTF_Info *info)
 {
-	if (info->ansiCodePage == CP_UTF8)
-		return;
- 
+ if (info->ansiCodePage == CP_UTF8)
+  return;
+
         switch (info->rtfMinor)
         {
-        case rtfAnsiCharSet:
-                info->ansiCodePage = 1252; /* Latin-1 */
+        case 131:
+                info->ansiCodePage = 1252;
                 break;
-        case rtfMacCharSet:
-                info->ansiCodePage = 10000; /* MacRoman */
+        case 130:
+                info->ansiCodePage = 10000;
                 break;
-        case rtfPcCharSet:
+        case 129:
                 info->ansiCodePage = 437;
                 break;
-        case rtfPcaCharSet:
+        case 128:
                 info->ansiCodePage = 850;
                 break;
         }

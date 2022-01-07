@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {float x; float y; float z; } ;
-typedef  TYPE_1__ guVector ;
-typedef  float f32 ;
-typedef  float** Mtx ;
+typedef TYPE_1__ guVector ;
+typedef float f32 ;
+typedef float** Mtx ;
 
-/* Variables and functions */
- float c_guVecDotProduct (TYPE_1__*,TYPE_1__*) ; 
+
+ float c_guVecDotProduct (TYPE_1__*,TYPE_1__*) ;
 
 void c_guMtxReflect(Mtx m,guVector *p,guVector *n)
 {
     f32 vxy, vxz, vyz, pdotn;
 
-    vxy   = -2.0f * n->x * n->y;
-    vxz   = -2.0f * n->x * n->z;
-    vyz   = -2.0f * n->y * n->z;
+    vxy = -2.0f * n->x * n->y;
+    vxz = -2.0f * n->x * n->z;
+    vyz = -2.0f * n->y * n->z;
     pdotn = 2.0f * c_guVecDotProduct(p,n);
 
     m[0][0] = 1.0f - 2.0f * n->x * n->x;

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int uint64_t ;
 struct ra_gl {int timer_active; TYPE_1__* gl; } ;
 struct ra {struct ra_gl* priv; } ;
-struct gl_timer {int active; int /*<<< orphan*/  result; } ;
-typedef  struct gl_timer ra_timer ;
-struct TYPE_2__ {int /*<<< orphan*/  (* EndQuery ) (int /*<<< orphan*/ ) ;} ;
-typedef  TYPE_1__ GL ;
+struct gl_timer {int active; int result; } ;
+typedef struct gl_timer ra_timer ;
+struct TYPE_2__ {int (* EndQuery ) (int ) ;} ;
+typedef TYPE_1__ GL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GL_TIME_ELAPSED ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ) ; 
+
+ int GL_TIME_ELAPSED ;
+ int stub1 (int ) ;
 
 __attribute__((used)) static uint64_t gl_timer_stop(struct ra *ra, ra_timer *ratimer)
 {
@@ -33,7 +33,7 @@ __attribute__((used)) static uint64_t gl_timer_stop(struct ra *ra, ra_timer *rat
         return 0;
 
     gl->EndQuery(GL_TIME_ELAPSED);
-    p->timer_active = timer->active = false;
+    p->timer_active = timer->active = 0;
 
     return timer->result;
 }

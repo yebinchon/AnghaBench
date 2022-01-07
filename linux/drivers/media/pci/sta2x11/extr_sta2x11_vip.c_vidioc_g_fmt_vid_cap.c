@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  pix; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int pix; } ;
 struct v4l2_format {TYPE_1__ fmt; } ;
-struct sta2x11_vip {int /*<<< orphan*/  format; } ;
+struct sta2x11_vip {int format; } ;
 struct file {int dummy; } ;
 
-/* Variables and functions */
- struct sta2x11_vip* video_drvdata (struct file*) ; 
+
+ struct sta2x11_vip* video_drvdata (struct file*) ;
 
 __attribute__((used)) static int vidioc_g_fmt_vid_cap(struct file *file, void *priv,
-				struct v4l2_format *f)
+    struct v4l2_format *f)
 {
-	struct sta2x11_vip *vip = video_drvdata(file);
+ struct sta2x11_vip *vip = video_drvdata(file);
 
-	f->fmt.pix = vip->format;
+ f->fmt.pix = vip->format;
 
-	return 0;
+ return 0;
 }

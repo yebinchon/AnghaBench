@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  s_addr; } ;
-struct sockaddr_in {TYPE_1__ sin_addr; scalar_t__ sin_port; int /*<<< orphan*/  sin_family; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int s_addr; } ;
+struct sockaddr_in {TYPE_1__ sin_addr; scalar_t__ sin_port; int sin_family; } ;
 struct sockaddr {int dummy; } ;
-typedef  int /*<<< orphan*/  connect_addr ;
+typedef int connect_addr ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_INET ; 
- int /*<<< orphan*/  INADDR_ANY ; 
- int /*<<< orphan*/  SOCK_DGRAM ; 
- scalar_t__ bind (int,struct sockaddr*,int) ; 
- scalar_t__ broadcast_init (int) ; 
- int /*<<< orphan*/  htonl (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (struct sockaddr_in*,int /*<<< orphan*/ ,int) ; 
- int socket (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  socketclose (int) ; 
- scalar_t__ wiiu_log_lock ; 
- int wiiu_log_socket ; 
+
+ int AF_INET ;
+ int INADDR_ANY ;
+ int SOCK_DGRAM ;
+ scalar_t__ bind (int,struct sockaddr*,int) ;
+ scalar_t__ broadcast_init (int) ;
+ int htonl (int ) ;
+ int memset (struct sockaddr_in*,int ,int) ;
+ int socket (int ,int ,int ) ;
+ int socketclose (int) ;
+ scalar_t__ wiiu_log_lock ;
+ int wiiu_log_socket ;
 
 __attribute__((used)) static void wiiu_log_init(int port)
 {

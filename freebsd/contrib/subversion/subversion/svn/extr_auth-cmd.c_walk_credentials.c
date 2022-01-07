@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_x509_certinfo_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-struct walk_credentials_baton_t {scalar_t__ delete; int /*<<< orphan*/  show_passwords; scalar_t__ list; int /*<<< orphan*/  matches; TYPE_1__* patterns; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
-typedef  int /*<<< orphan*/  apr_array_header_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int svn_x509_certinfo_t ;
+typedef int svn_error_t ;
+typedef int svn_boolean_t ;
+struct walk_credentials_baton_t {scalar_t__ delete; int show_passwords; scalar_t__ list; int matches; TYPE_1__* patterns; } ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
+typedef int apr_array_header_t ;
 struct TYPE_2__ {scalar_t__ nelts; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  list_credential (char const*,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  match_credential (int /*<<< orphan*/ *,int /*<<< orphan*/ **,char const*,char const*,TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_cmdline_printf (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*,char const*) ; 
- int /*<<< orphan*/ * svn_sort__hash (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_sort_compare_items_lexically ; 
+
+ int FALSE ;
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int TRUE ;
+ int _ (char*) ;
+ int list_credential (char const*,char const*,int *,int ,int *,int *) ;
+ int match_credential (int *,int **,char const*,char const*,TYPE_1__*,int *,int *,int *) ;
+ int svn_cmdline_printf (int *,int ,char const*,char const*) ;
+ int * svn_sort__hash (int *,int ,int *) ;
+ int svn_sort_compare_items_lexically ;
 
 __attribute__((used)) static svn_error_t *
 walk_credentials(svn_boolean_t *delete_cred,
@@ -42,7 +42,7 @@ walk_credentials(svn_boolean_t *delete_cred,
 {
   struct walk_credentials_baton_t *b = baton;
   apr_array_header_t *sorted_cred_items;
-  svn_x509_certinfo_t *certinfo = NULL;
+  svn_x509_certinfo_t *certinfo = ((void*)0);
 
   *delete_cred = FALSE;
 

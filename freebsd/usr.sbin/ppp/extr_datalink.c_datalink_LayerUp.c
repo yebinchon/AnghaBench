@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_5__ ;
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct lcp {scalar_t__ auth_ineed; scalar_t__ want_auth; scalar_t__ auth_iwait; scalar_t__ his_auth; int /*<<< orphan*/  want_authtype; int /*<<< orphan*/  his_authtype; } ;
+
+
+typedef struct TYPE_10__ TYPE_5__ ;
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct lcp {scalar_t__ auth_ineed; scalar_t__ want_auth; scalar_t__ auth_iwait; scalar_t__ his_auth; int want_authtype; int his_authtype; } ;
 struct fsm {scalar_t__ proto; } ;
-struct TYPE_6__ {int /*<<< orphan*/  auth; } ;
-struct datalink {TYPE_5__* physical; TYPE_2__* parent; TYPE_1__ chap; int /*<<< orphan*/  pap; int /*<<< orphan*/  name; int /*<<< orphan*/  bundle; } ;
-struct TYPE_8__ {int /*<<< orphan*/  fsm; } ;
+struct TYPE_6__ {int auth; } ;
+struct datalink {TYPE_5__* physical; TYPE_2__* parent; TYPE_1__ chap; int pap; int name; int bundle; } ;
+struct TYPE_8__ {int fsm; } ;
 struct TYPE_9__ {TYPE_3__ ccp; struct lcp lcp; } ;
 struct TYPE_10__ {TYPE_4__ link; } ;
-struct TYPE_7__ {int /*<<< orphan*/  object; int /*<<< orphan*/  (* LayerUp ) (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ;} ;
+struct TYPE_7__ {int object; int (* LayerUp ) (int ,int *) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Auth2Nam (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LogPHASE ; 
- int /*<<< orphan*/  PHASE_AUTHENTICATE ; 
- scalar_t__ PHASE_NETWORK ; 
- scalar_t__ PROTO_CCP ; 
- scalar_t__ PROTO_CHAP ; 
- scalar_t__ PROTO_LCP ; 
- scalar_t__ PROTO_PAP ; 
- int /*<<< orphan*/  auth_StartReq (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bundle_NewPhase (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ bundle_Phase (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  datalink_AuthOk (struct datalink*) ; 
- int /*<<< orphan*/  datalink_GotAuthname (struct datalink*,char*) ; 
- int /*<<< orphan*/  log_Printf (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int Auth2Nam (scalar_t__,int ) ;
+ int LogPHASE ;
+ int PHASE_AUTHENTICATE ;
+ scalar_t__ PHASE_NETWORK ;
+ scalar_t__ PROTO_CCP ;
+ scalar_t__ PROTO_CHAP ;
+ scalar_t__ PROTO_LCP ;
+ scalar_t__ PROTO_PAP ;
+ int auth_StartReq (int *) ;
+ int bundle_NewPhase (int ,int ) ;
+ scalar_t__ bundle_Phase (int ) ;
+ int datalink_AuthOk (struct datalink*) ;
+ int datalink_GotAuthname (struct datalink*,char*) ;
+ int log_Printf (int ,char*,int ,int ,int ) ;
+ int stub1 (int ,int *) ;
 
 __attribute__((used)) static void
 datalink_LayerUp(void *v, struct fsm *fp)
 {
-  /* The given fsm is now up */
+
   struct datalink *dl = (struct datalink *)v;
   struct lcp *lcp = &dl->physical->link.lcp;
 

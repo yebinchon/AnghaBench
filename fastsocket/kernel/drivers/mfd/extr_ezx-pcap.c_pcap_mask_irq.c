@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct pcap_chip {int msr; int /*<<< orphan*/  msr_work; int /*<<< orphan*/  workqueue; } ;
 
-/* Variables and functions */
- struct pcap_chip* get_irq_chip_data (unsigned int) ; 
- int irq_to_pcap (struct pcap_chip*,unsigned int) ; 
- int /*<<< orphan*/  queue_work (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+struct pcap_chip {int msr; int msr_work; int workqueue; } ;
+
+
+ struct pcap_chip* get_irq_chip_data (unsigned int) ;
+ int irq_to_pcap (struct pcap_chip*,unsigned int) ;
+ int queue_work (int ,int *) ;
 
 __attribute__((used)) static void pcap_mask_irq(unsigned int irq)
 {
-	struct pcap_chip *pcap = get_irq_chip_data(irq);
+ struct pcap_chip *pcap = get_irq_chip_data(irq);
 
-	pcap->msr |= 1 << irq_to_pcap(pcap, irq);
-	queue_work(pcap->workqueue, &pcap->msr_work);
+ pcap->msr |= 1 << irq_to_pcap(pcap, irq);
+ queue_work(pcap->workqueue, &pcap->msr_work);
 }

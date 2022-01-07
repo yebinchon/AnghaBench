@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * digest; int /*<<< orphan*/  free; int /*<<< orphan*/ * mem_usage; int /*<<< orphan*/  aof_rewrite; int /*<<< orphan*/  rdb_save; int /*<<< orphan*/  rdb_load; int /*<<< orphan*/  version; } ;
-typedef  TYPE_1__ RedisModuleTypeMethods ;
-typedef  int /*<<< orphan*/  RedisModuleString ;
-typedef  int /*<<< orphan*/  RedisModuleCtx ;
 
-/* Variables and functions */
- int /*<<< orphan*/  REDISMODULE_APIVER_1 ; 
- scalar_t__ REDISMODULE_ERR ; 
- int /*<<< orphan*/  REDISMODULE_NOT_USED (int) ; 
- int REDISMODULE_OK ; 
- int /*<<< orphan*/  REDISMODULE_TYPE_METHOD_VERSION ; 
- scalar_t__ RedisModule_CreateCommand (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * RedisModule_CreateDataType (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,TYPE_1__*) ; 
- scalar_t__ RedisModule_Init (int /*<<< orphan*/ *,char*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fsl_aofrw ; 
- int /*<<< orphan*/  fsl_bpop2 ; 
- int /*<<< orphan*/  fsl_bpopgt ; 
- int /*<<< orphan*/  fsl_free ; 
- int /*<<< orphan*/  fsl_push ; 
- int /*<<< orphan*/  fsl_rdb_load ; 
- int /*<<< orphan*/  fsl_rdb_save ; 
- int /*<<< orphan*/ * fsltype ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * digest; int free; int * mem_usage; int aof_rewrite; int rdb_save; int rdb_load; int version; } ;
+typedef TYPE_1__ RedisModuleTypeMethods ;
+typedef int RedisModuleString ;
+typedef int RedisModuleCtx ;
+
+
+ int REDISMODULE_APIVER_1 ;
+ scalar_t__ REDISMODULE_ERR ;
+ int REDISMODULE_NOT_USED (int) ;
+ int REDISMODULE_OK ;
+ int REDISMODULE_TYPE_METHOD_VERSION ;
+ scalar_t__ RedisModule_CreateCommand (int *,char*,int ,char*,int ,int ,int ) ;
+ int * RedisModule_CreateDataType (int *,char*,int ,TYPE_1__*) ;
+ scalar_t__ RedisModule_Init (int *,char*,int,int ) ;
+ int fsl_aofrw ;
+ int fsl_bpop2 ;
+ int fsl_bpopgt ;
+ int fsl_free ;
+ int fsl_push ;
+ int fsl_rdb_load ;
+ int fsl_rdb_save ;
+ int * fsltype ;
 
 int RedisModule_OnLoad(RedisModuleCtx *ctx, RedisModuleString **argv, int argc) {
     REDISMODULE_NOT_USED(argv);
@@ -46,13 +46,13 @@ int RedisModule_OnLoad(RedisModuleCtx *ctx, RedisModuleString **argv, int argc) 
         .rdb_load = fsl_rdb_load,
         .rdb_save = fsl_rdb_save,
         .aof_rewrite = fsl_aofrw,
-        .mem_usage = NULL,
+        .mem_usage = ((void*)0),
         .free = fsl_free,
-        .digest = NULL
+        .digest = ((void*)0)
     };
 
     fsltype = RedisModule_CreateDataType(ctx, "fsltype_t", 0, &tm);
-    if (fsltype == NULL)
+    if (fsltype == ((void*)0))
         return REDISMODULE_ERR;
 
     if (RedisModule_CreateCommand(ctx,"fsl.push",fsl_push,"",0,0,0) == REDISMODULE_ERR)

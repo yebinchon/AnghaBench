@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct unpcb {int /*<<< orphan*/  unp_mtx; } ;
+
+
+
+
+struct unpcb {int unp_mtx; } ;
 struct socket {int dummy; } ;
 
-/* Variables and functions */
- int EINVAL ; 
- int /*<<< orphan*/  LCK_MTX_ASSERT (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LCK_MTX_ASSERT_OWNED ; 
- struct unpcb* sotounpcb (struct socket*) ; 
- int /*<<< orphan*/  unp_detach (struct unpcb*) ; 
+
+ int EINVAL ;
+ int LCK_MTX_ASSERT (int *,int ) ;
+ int LCK_MTX_ASSERT_OWNED ;
+ struct unpcb* sotounpcb (struct socket*) ;
+ int unp_detach (struct unpcb*) ;
 
 __attribute__((used)) static int
 uipc_detach(struct socket *so)
 {
-	struct unpcb *unp = sotounpcb(so);
+ struct unpcb *unp = sotounpcb(so);
 
-	if (unp == 0)
-		return (EINVAL);
+ if (unp == 0)
+  return (EINVAL);
 
-	LCK_MTX_ASSERT(&unp->unp_mtx, LCK_MTX_ASSERT_OWNED);
-	unp_detach(unp);
-	return (0);
+ LCK_MTX_ASSERT(&unp->unp_mtx, LCK_MTX_ASSERT_OWNED);
+ unp_detach(unp);
+ return (0);
 }

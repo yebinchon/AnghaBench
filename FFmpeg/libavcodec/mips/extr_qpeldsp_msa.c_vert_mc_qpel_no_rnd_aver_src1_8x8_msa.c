@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  v2i64 ;
-typedef  scalar_t__ v16u8 ;
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int int32_t ;
 
-/* Variables and functions */
- scalar_t__ APPLY_VERT_QPEL_NO_ROUND_FILTER_8BYTE (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- scalar_t__ LD_UB (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  LD_UB2 (int /*<<< orphan*/  const*,int,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  LD_UB4 (int /*<<< orphan*/  const*,int,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  ST_D4 (scalar_t__,scalar_t__,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int) ; 
- scalar_t__ __msa_ave_u_b (scalar_t__,scalar_t__) ; 
- scalar_t__ __msa_insve_d (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- scalar_t__ __msa_ldi_b (int) ; 
+
+
+
+typedef int v2i64 ;
+typedef scalar_t__ v16u8 ;
+typedef int uint8_t ;
+typedef int int32_t ;
+
+
+ scalar_t__ APPLY_VERT_QPEL_NO_ROUND_FILTER_8BYTE (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ scalar_t__ LD_UB (int const*) ;
+ int LD_UB2 (int const*,int,scalar_t__,scalar_t__) ;
+ int LD_UB4 (int const*,int,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ int ST_D4 (scalar_t__,scalar_t__,int ,int,int ,int,int *,int) ;
+ scalar_t__ __msa_ave_u_b (scalar_t__,scalar_t__) ;
+ scalar_t__ __msa_insve_d (int ,int,int ) ;
+ scalar_t__ __msa_ldi_b (int) ;
 
 __attribute__((used)) static void vert_mc_qpel_no_rnd_aver_src1_8x8_msa(const uint8_t *src,
                                                   int32_t src_stride,

@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uint16_t ;
+
+
+
+
+typedef scalar_t__ uint16_t ;
 struct sockaddr_storage {int ss_family; } ;
 struct sockaddr_in6 {void* sin6_port; } ;
 struct sockaddr_in {void* sin_port; } ;
 struct sockaddr {int dummy; } ;
-struct nn_btcp {int /*<<< orphan*/  usock; int /*<<< orphan*/  ep; } ;
-typedef  int /*<<< orphan*/  ss ;
-typedef  int /*<<< orphan*/  ipv4only ;
+struct nn_btcp {int usock; int ep; } ;
+typedef int ss ;
+typedef int ipv4only ;
 
-/* Variables and functions */
-#define  AF_INET 129 
-#define  AF_INET6 128 
- int EINVAL ; 
- int /*<<< orphan*/  NN_BTCP_BACKLOG ; 
- int /*<<< orphan*/  NN_IPV4ONLY ; 
- int /*<<< orphan*/  NN_SOL_SOCKET ; 
- int /*<<< orphan*/  SOCK_STREAM ; 
- void* htons (scalar_t__) ; 
- int /*<<< orphan*/  memset (struct sockaddr_storage*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  nn_assert (int) ; 
- int /*<<< orphan*/  nn_btcp_start_accepting (struct nn_btcp*) ; 
- char* nn_ep_getaddr (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nn_ep_getopt (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*,size_t*) ; 
- int nn_iface_resolve (char const*,int,int,struct sockaddr_storage*,size_t*) ; 
- int nn_port_resolve (char const*,int) ; 
- int nn_usock_bind (int /*<<< orphan*/ *,struct sockaddr*,size_t) ; 
- int nn_usock_listen (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int nn_usock_start (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nn_usock_stop (int /*<<< orphan*/ *) ; 
- int strlen (char const*) ; 
- char* strrchr (char const*,char) ; 
+
+
+
+ int EINVAL ;
+ int NN_BTCP_BACKLOG ;
+ int NN_IPV4ONLY ;
+ int NN_SOL_SOCKET ;
+ int SOCK_STREAM ;
+ void* htons (scalar_t__) ;
+ int memset (struct sockaddr_storage*,int ,int) ;
+ int nn_assert (int) ;
+ int nn_btcp_start_accepting (struct nn_btcp*) ;
+ char* nn_ep_getaddr (int ) ;
+ int nn_ep_getopt (int ,int ,int ,int*,size_t*) ;
+ int nn_iface_resolve (char const*,int,int,struct sockaddr_storage*,size_t*) ;
+ int nn_port_resolve (char const*,int) ;
+ int nn_usock_bind (int *,struct sockaddr*,size_t) ;
+ int nn_usock_listen (int *,int ) ;
+ int nn_usock_start (int *,int,int ,int ) ;
+ int nn_usock_stop (int *) ;
+ int strlen (char const*) ;
+ char* strrchr (char const*,char) ;
 
 __attribute__((used)) static int nn_btcp_listen (struct nn_btcp *self)
 {
@@ -54,14 +54,14 @@ __attribute__((used)) static int nn_btcp_listen (struct nn_btcp *self)
     const char *pos;
     uint16_t port;
 
-    /*  First, resolve the IP address. */
+
     addr = nn_ep_getaddr (self->ep);
     memset (&ss, 0, sizeof (ss));
 
-    /*  Parse the port. */
+
     end = addr + strlen (addr);
     pos = strrchr (addr, ':');
-    if (pos == NULL) {
+    if (pos == ((void*)0)) {
         return -EINVAL;
     }
     ++pos;
@@ -70,7 +70,7 @@ __attribute__((used)) static int nn_btcp_listen (struct nn_btcp *self)
         return rc;
     port = (uint16_t) rc;
 
-    /*  Parse the address. */
+
     ipv4onlylen = sizeof (ipv4only);
     nn_ep_getopt (self->ep, NN_SOL_SOCKET, NN_IPV4ONLY,
         &ipv4only, &ipv4onlylen);
@@ -80,13 +80,13 @@ __attribute__((used)) static int nn_btcp_listen (struct nn_btcp *self)
         return rc;
     }
 
-    /*  Combine the port and the address. */
+
     switch (ss.ss_family) {
-    case AF_INET:
+    case 129:
         ((struct sockaddr_in*) &ss)->sin_port = htons (port);
         sslen = sizeof (struct sockaddr_in);
         break;
-    case AF_INET6:
+    case 128:
         ((struct sockaddr_in6*) &ss)->sin6_port = htons (port);
         sslen = sizeof (struct sockaddr_in6);
         break;
@@ -94,7 +94,7 @@ __attribute__((used)) static int nn_btcp_listen (struct nn_btcp *self)
         nn_assert (0);
     }
 
-    /*  Start listening for incoming connections. */
+
     rc = nn_usock_start (&self->usock, ss.ss_family, SOCK_STREAM, 0);
     if (rc < 0) {
         return rc;

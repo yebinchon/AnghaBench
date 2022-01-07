@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buffer ;
-typedef  int /*<<< orphan*/  VC_CONTAINER_STATUS_T ;
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int buffer ;
+typedef int VC_CONTAINER_STATUS_T ;
 struct TYPE_6__ {char* status; } ;
-typedef  TYPE_1__ VC_CONTAINER_IO_T ;
+typedef TYPE_1__ VC_CONTAINER_IO_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOG_INFO (int /*<<< orphan*/ *,char*,char*,...) ; 
- int MAX_BUFFER_SIZE ; 
- char* VC_CONTAINER_ERROR_EOS ; 
- int /*<<< orphan*/  VC_CONTAINER_IO_MODE_READ ; 
- int /*<<< orphan*/  VC_CONTAINER_IO_MODE_WRITE ; 
- char* VC_CONTAINER_SUCCESS ; 
- scalar_t__ nb_char_available () ; 
- char nb_get_char () ; 
- int /*<<< orphan*/  nb_set_nonblocking_input (int) ; 
- int /*<<< orphan*/  vc_container_io_close (TYPE_1__*) ; 
- TYPE_1__* vc_container_io_open (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- size_t vc_container_io_read (TYPE_1__*,char*,int) ; 
- scalar_t__ vc_container_io_write (TYPE_1__*,char*,size_t) ; 
+
+ int LOG_INFO (int *,char*,char*,...) ;
+ int MAX_BUFFER_SIZE ;
+ char* VC_CONTAINER_ERROR_EOS ;
+ int VC_CONTAINER_IO_MODE_READ ;
+ int VC_CONTAINER_IO_MODE_WRITE ;
+ char* VC_CONTAINER_SUCCESS ;
+ scalar_t__ nb_char_available () ;
+ char nb_get_char () ;
+ int nb_set_nonblocking_input (int) ;
+ int vc_container_io_close (TYPE_1__*) ;
+ TYPE_1__* vc_container_io_open (char*,int ,int *) ;
+ size_t vc_container_io_read (TYPE_1__*,char*,int) ;
+ scalar_t__ vc_container_io_write (TYPE_1__*,char*,size_t) ;
 
 int main(int argc, char **argv)
 {
@@ -37,18 +37,18 @@ int main(int argc, char **argv)
    VC_CONTAINER_IO_T *read_io, *write_io;
    VC_CONTAINER_STATUS_T status;
    size_t received;
-   bool ready = true;
+   bool ready = 1;
 
    if (argc < 3)
    {
-      LOG_INFO(NULL, "Usage:\n%s <read URI> <write URI>\n", argv[0]);
+      LOG_INFO(((void*)0), "Usage:\n%s <read URI> <write URI>\n", argv[0]);
       return 1;
    }
 
    read_io = vc_container_io_open(argv[1], VC_CONTAINER_IO_MODE_READ, &status);
    if (!read_io)
    {
-      LOG_INFO(NULL, "Opening <%s> for read failed: %d\n", argv[1], status);
+      LOG_INFO(((void*)0), "Opening <%s> for read failed: %d\n", argv[1], status);
       return 2;
    }
 
@@ -56,7 +56,7 @@ int main(int argc, char **argv)
    if (!write_io)
    {
       vc_container_io_close(read_io);
-      LOG_INFO(NULL, "Opening <%s> for write failed: %d\n", argv[2], status);
+      LOG_INFO(((void*)0), "Opening <%s> for write failed: %d\n", argv[2], status);
       return 3;
    }
 
@@ -82,25 +82,25 @@ int main(int argc, char **argv)
          {
          case 'q':
          case 'Q':
-         case 0x04:  /* CTRL+D */
-         case 0x1A:  /* CTRL+Z */
-         case 0x1B:  /* Escape */
-            ready = false;
+         case 0x04:
+         case 0x1A:
+         case 0x1B:
+            ready = 0;
             break;
          default:
-            ;/* Do nothing */
+            ;
          }
       }
    }
 
    if (read_io->status != VC_CONTAINER_SUCCESS && read_io->status != VC_CONTAINER_ERROR_EOS)
    {
-      LOG_INFO(NULL, "Read failed: %d\n", read_io->status);
+      LOG_INFO(((void*)0), "Read failed: %d\n", read_io->status);
    }
 
    if (write_io->status != VC_CONTAINER_SUCCESS)
    {
-      LOG_INFO(NULL, "Write failed: %d\n", write_io->status);
+      LOG_INFO(((void*)0), "Write failed: %d\n", write_io->status);
    }
 
    vc_container_io_close(read_io);

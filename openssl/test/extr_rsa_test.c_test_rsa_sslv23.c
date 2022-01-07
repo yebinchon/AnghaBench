@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ptext_ex ;
-typedef  int /*<<< orphan*/  RSA ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RSA_SSLV23_PADDING ; 
- int /*<<< orphan*/  RSA_free (int /*<<< orphan*/ *) ; 
- int RSA_private_decrypt (int,unsigned char*,unsigned char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int RSA_public_encrypt (int,unsigned char*,unsigned char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_int_eq (int,int) ; 
- int /*<<< orphan*/  TEST_mem_eq (unsigned char*,int,unsigned char*,int) ; 
- int rsa_setkey (int /*<<< orphan*/ **,unsigned char*,int) ; 
+
+
+
+typedef int ptext_ex ;
+typedef int RSA ;
+
+
+ int RSA_SSLV23_PADDING ;
+ int RSA_free (int *) ;
+ int RSA_private_decrypt (int,unsigned char*,unsigned char*,int *,int ) ;
+ int RSA_public_encrypt (int,unsigned char*,unsigned char*,int *,int ) ;
+ int TEST_int_eq (int,int) ;
+ int TEST_mem_eq (unsigned char*,int,unsigned char*,int) ;
+ int rsa_setkey (int **,unsigned char*,int) ;
 
 __attribute__((used)) static int test_rsa_sslv23(int idx)
 {

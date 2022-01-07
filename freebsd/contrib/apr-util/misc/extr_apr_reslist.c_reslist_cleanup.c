@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ apr_status_t ;
-struct TYPE_5__ {scalar_t__ nidle; scalar_t__ ntotal; int /*<<< orphan*/  avail; int /*<<< orphan*/  listlock; } ;
-typedef  TYPE_1__ apr_reslist_t ;
-typedef  int /*<<< orphan*/  apr_res_t ;
 
-/* Variables and functions */
- scalar_t__ APR_SUCCESS ; 
- int /*<<< orphan*/  apr_thread_cond_destroy (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  apr_thread_mutex_destroy (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  apr_thread_mutex_lock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  apr_thread_mutex_unlock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ destroy_resource (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free_container (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * pop_resource (TYPE_1__*) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef scalar_t__ apr_status_t ;
+struct TYPE_5__ {scalar_t__ nidle; scalar_t__ ntotal; int avail; int listlock; } ;
+typedef TYPE_1__ apr_reslist_t ;
+typedef int apr_res_t ;
+
+
+ scalar_t__ APR_SUCCESS ;
+ int apr_thread_cond_destroy (int ) ;
+ int apr_thread_mutex_destroy (int ) ;
+ int apr_thread_mutex_lock (int ) ;
+ int apr_thread_mutex_unlock (int ) ;
+ int assert (int) ;
+ scalar_t__ destroy_resource (TYPE_1__*,int *) ;
+ int free_container (TYPE_1__*,int *) ;
+ int * pop_resource (TYPE_1__*) ;
 
 __attribute__((used)) static apr_status_t reslist_cleanup(void *data_)
 {
@@ -33,9 +33,9 @@ __attribute__((used)) static apr_status_t reslist_cleanup(void *data_)
     apr_reslist_t *rl = data_;
     apr_res_t *res;
 
-#if APR_HAS_THREADS
-    apr_thread_mutex_lock(rl->listlock);
-#endif
+
+
+
 
     while (rl->nidle > 0) {
         apr_status_t rv1;
@@ -43,8 +43,8 @@ __attribute__((used)) static apr_status_t reslist_cleanup(void *data_)
         rl->ntotal--;
         rv1 = destroy_resource(rl, res);
         if (rv1 != APR_SUCCESS) {
-            rv = rv1;  /* loses info in the unlikely event of
-                        * multiple *different* failures */
+            rv = rv1;
+
         }
         free_container(rl, res);
     }
@@ -52,11 +52,11 @@ __attribute__((used)) static apr_status_t reslist_cleanup(void *data_)
     assert(rl->nidle == 0);
     assert(rl->ntotal == 0);
 
-#if APR_HAS_THREADS
-    apr_thread_mutex_unlock(rl->listlock);
-    apr_thread_mutex_destroy(rl->listlock);
-    apr_thread_cond_destroy(rl->avail);
-#endif
+
+
+
+
+
 
     return rv;
 }

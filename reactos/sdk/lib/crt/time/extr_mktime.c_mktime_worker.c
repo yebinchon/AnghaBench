@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct tm {int tm_mon; int tm_year; int tm_mday; scalar_t__ tm_sec; scalar_t__ tm_min; scalar_t__ tm_hour; } ;
-typedef  int __time64_t ;
+typedef int __time64_t ;
 struct TYPE_3__ {int Bias; } ;
-typedef  TYPE_1__ TIME_ZONE_INFORMATION ;
-typedef  scalar_t__ DWORD ;
+typedef TYPE_1__ TIME_ZONE_INFORMATION ;
+typedef scalar_t__ DWORD ;
 
-/* Variables and functions */
- scalar_t__ GetTimeZoneInformation (TYPE_1__*) ; 
- scalar_t__ TIME_ZONE_ID_INVALID ; 
- struct tm* _gmtime64 (int*) ; 
- scalar_t__* g_monthdays ; 
+
+ scalar_t__ GetTimeZoneInformation (TYPE_1__*) ;
+ scalar_t__ TIME_ZONE_ID_INVALID ;
+ struct tm* _gmtime64 (int*) ;
+ scalar_t__* g_monthdays ;
 
 __time64_t
 mktime_worker(struct tm * ptm, int utc)
@@ -32,7 +32,7 @@ mktime_worker(struct tm * ptm, int utc)
     TIME_ZONE_INFORMATION tzi;
     DWORD ret;
 
-    /* Normalize year and month */
+
     if (ptm->tm_mon < 0)
     {
         mons = -ptm->tm_mon - 1;
@@ -46,24 +46,24 @@ mktime_worker(struct tm * ptm, int utc)
         ptm->tm_mon = mons % 12;
     }
 
-    /* Is it inside margins */
-    if (ptm->tm_year < 70 || ptm->tm_year > 139) // FIXME: max year for 64 bits
+
+    if (ptm->tm_year < 70 || ptm->tm_year > 139)
     {
         return -1;
     }
 
     years = ptm->tm_year - 70;
 
-    /* Number of leapyears passed since 1970 */
+
     leapyears = (years + 1) / 4;
 
-    /* Calculate days up to 1st of Jan */
+
     time = years * 365 + leapyears;
 
-    /* Calculate days up to 1st of month */
+
     time += g_monthdays[ptm->tm_mon];
 
-    /* Check if we need to add a leap day */
+
     if (((years + 2) % 4) == 0)
     {
         if (ptm->tm_mon > 2)
@@ -88,7 +88,7 @@ mktime_worker(struct tm * ptm, int utc)
         return -1;
     }
 
-    /* Finally get normalized tm struct */
+
     ptm2 = _gmtime64(&time);
     if (!ptm2)
     {
@@ -96,7 +96,7 @@ mktime_worker(struct tm * ptm, int utc)
     }
     *ptm = *ptm2;
 
-    /* Finally adjust by the difference to GMT in seconds */
+
     ret = GetTimeZoneInformation(&tzi);
     if (ret != TIME_ZONE_ID_INVALID)
     {

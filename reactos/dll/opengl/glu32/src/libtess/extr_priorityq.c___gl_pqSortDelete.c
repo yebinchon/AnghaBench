@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int max; int size; int /*<<< orphan*/ *** order; int /*<<< orphan*/ ** keys; int /*<<< orphan*/  heap; } ;
-typedef  TYPE_1__ PriorityQ ;
-typedef  int PQhandle ;
 
-/* Variables and functions */
- int /*<<< orphan*/  __gl_pqHeapDelete (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  assert (int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int max; int size; int *** order; int ** keys; int heap; } ;
+typedef TYPE_1__ PriorityQ ;
+typedef int PQhandle ;
+
+
+ int __gl_pqHeapDelete (int ,int) ;
+ int assert (int) ;
 
 void pqDelete( PriorityQ *pq, PQhandle curr )
 {
@@ -26,10 +26,10 @@ void pqDelete( PriorityQ *pq, PQhandle curr )
     return;
   }
   curr = -(curr+1);
-  assert( curr < pq->max && pq->keys[curr] != NULL );
+  assert( curr < pq->max && pq->keys[curr] != ((void*)0) );
 
-  pq->keys[curr] = NULL;
-  while( pq->size > 0 && *(pq->order[pq->size-1]) == NULL ) {
+  pq->keys[curr] = ((void*)0);
+  while( pq->size > 0 && *(pq->order[pq->size-1]) == ((void*)0) ) {
     -- pq->size;
   }
 }

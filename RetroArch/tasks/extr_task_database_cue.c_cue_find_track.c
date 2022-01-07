@@ -1,68 +1,68 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64_t ;
-typedef  char intfstream_t ;
-struct TYPE_3__ {int /*<<< orphan*/  type; } ;
-typedef  TYPE_1__ intfstream_info_t ;
-typedef  int int64_t ;
-typedef  int int32_t ;
 
-/* Variables and functions */
- int EINVAL ; 
- int /*<<< orphan*/  INTFSTREAM_FILE ; 
- scalar_t__ MAX_TOKEN_LEN ; 
- scalar_t__ PATH_MAX_LENGTH ; 
- int /*<<< orphan*/  RARCH_LOG (char*,char const*,...) ; 
- int /*<<< orphan*/  RETRO_VFS_FILE_ACCESS_HINT_NONE ; 
- int /*<<< orphan*/  RETRO_VFS_FILE_ACCESS_READ ; 
- int errno ; 
- int /*<<< orphan*/  fill_pathname_basedir (char*,char const*,scalar_t__) ; 
- int /*<<< orphan*/  fill_pathname_join (char*,char*,char*,scalar_t__) ; 
- int /*<<< orphan*/  free (char*) ; 
- scalar_t__ get_token (char*,char*,scalar_t__) ; 
- int /*<<< orphan*/  intfstream_close (char*) ; 
- int intfstream_get_file_size (char*) ; 
- scalar_t__ intfstream_init (TYPE_1__*) ; 
- int /*<<< orphan*/  intfstream_open (char*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ malloc (scalar_t__) ; 
- int sscanf (char*,char*,int*,int*,int*) ; 
- int /*<<< orphan*/  strerror (int) ; 
- scalar_t__ string_is_equal_noncase (char*,char*) ; 
- scalar_t__ update_cand (int*,int*,int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint64_t ;
+typedef char intfstream_t ;
+struct TYPE_3__ {int type; } ;
+typedef TYPE_1__ intfstream_info_t ;
+typedef int int64_t ;
+typedef int int32_t ;
+
+
+ int EINVAL ;
+ int INTFSTREAM_FILE ;
+ scalar_t__ MAX_TOKEN_LEN ;
+ scalar_t__ PATH_MAX_LENGTH ;
+ int RARCH_LOG (char*,char const*,...) ;
+ int RETRO_VFS_FILE_ACCESS_HINT_NONE ;
+ int RETRO_VFS_FILE_ACCESS_READ ;
+ int errno ;
+ int fill_pathname_basedir (char*,char const*,scalar_t__) ;
+ int fill_pathname_join (char*,char*,char*,scalar_t__) ;
+ int free (char*) ;
+ scalar_t__ get_token (char*,char*,scalar_t__) ;
+ int intfstream_close (char*) ;
+ int intfstream_get_file_size (char*) ;
+ scalar_t__ intfstream_init (TYPE_1__*) ;
+ int intfstream_open (char*,char const*,int ,int ) ;
+ scalar_t__ malloc (scalar_t__) ;
+ int sscanf (char*,char*,int*,int*,int*) ;
+ int strerror (int) ;
+ scalar_t__ string_is_equal_noncase (char*,char*) ;
+ scalar_t__ update_cand (int*,int*,int *,char*,int *,int *,char*,int ) ;
 
 int cue_find_track(const char *cue_path, bool first,
       uint64_t *offset, uint64_t *size, char *track_path, uint64_t max_len)
 {
    int rv;
    intfstream_info_t info;
-   char *tmp_token            = (char*)malloc(MAX_TOKEN_LEN);
-   char *last_file            = (char*)malloc(PATH_MAX_LENGTH + 1);
-   intfstream_t *fd           = NULL;
-   int64_t last_index         = -1;
-   int64_t cand_index         = -1;
-   int32_t cand_track         = -1;
-   int32_t track              = 0;
-   uint64_t largest             = 0;
+   char *tmp_token = (char*)malloc(MAX_TOKEN_LEN);
+   char *last_file = (char*)malloc(PATH_MAX_LENGTH + 1);
+   intfstream_t *fd = ((void*)0);
+   int64_t last_index = -1;
+   int64_t cand_index = -1;
+   int32_t cand_track = -1;
+   int32_t track = 0;
+   uint64_t largest = 0;
    int64_t volatile file_size = -1;
-   bool is_data               = false;
-   char *cue_dir              = (char*)malloc(PATH_MAX_LENGTH);
-   cue_dir[0]                 = '\0';
+   bool is_data = 0;
+   char *cue_dir = (char*)malloc(PATH_MAX_LENGTH);
+   cue_dir[0] = '\0';
 
    fill_pathname_basedir(cue_dir, cue_path, PATH_MAX_LENGTH);
 
-   info.type        = INTFSTREAM_FILE;
-   fd               = (intfstream_t*)intfstream_init(&info);
+   info.type = INTFSTREAM_FILE;
+   fd = (intfstream_t*)intfstream_init(&info);
 
    if (!fd)
       goto error;
@@ -85,11 +85,11 @@ int cue_find_track(const char *cue_path, bool first,
    {
       if (string_is_equal_noncase(tmp_token, "FILE"))
       {
-         /* Set last index to last EOF */
+
          if (file_size != -1)
             last_index = file_size;
 
-         /* We're changing files since the candidate, update it */
+
          if (update_cand(&cand_index, &last_index, &largest, last_file, offset,
                          size, track_path, max_len))
          {
@@ -127,7 +127,7 @@ int cue_find_track(const char *cue_path, bool first,
 
          last_index = (size_t) (((m * 60 + s) * 75) + f) * 2352;
 
-         /* If we've changed tracks since the candidate, update it */
+
          if (cand_track != -1 && track != cand_track &&
              update_cand(&cand_index, &last_index, &largest, last_file, offset,
                          size, track_path, max_len))

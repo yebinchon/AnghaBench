@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  XXH32_hash_t ;
-typedef  int /*<<< orphan*/  XXH32_canonical_t ;
 
-/* Variables and functions */
- scalar_t__ XXH_CPU_LITTLE_ENDIAN ; 
- int /*<<< orphan*/  XXH_STATIC_ASSERT (int) ; 
- int /*<<< orphan*/  XXH_swap32 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int XXH32_hash_t ;
+typedef int XXH32_canonical_t ;
+
+
+ scalar_t__ XXH_CPU_LITTLE_ENDIAN ;
+ int XXH_STATIC_ASSERT (int) ;
+ int XXH_swap32 (int ) ;
+ int memcpy (int *,int *,int) ;
 
 void XXH32_canonicalFromHash(XXH32_canonical_t* dst, XXH32_hash_t hash)
 {

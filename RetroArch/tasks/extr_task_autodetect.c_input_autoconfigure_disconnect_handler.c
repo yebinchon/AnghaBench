@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
 struct TYPE_10__ {scalar_t__ state; } ;
-typedef  TYPE_1__ retro_task_t ;
+typedef TYPE_1__ retro_task_t ;
 struct TYPE_11__ {struct TYPE_11__* msg; } ;
-typedef  TYPE_2__ autoconfig_disconnect_t ;
+typedef TYPE_2__ autoconfig_disconnect_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MSG_AUTODETECT ; 
- int /*<<< orphan*/  RARCH_LOG (char*,int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  free (TYPE_2__*) ; 
- int /*<<< orphan*/  msg_hash_to_str (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strdup (TYPE_2__*) ; 
- int /*<<< orphan*/  string_is_empty (TYPE_2__*) ; 
- int /*<<< orphan*/  task_set_finished (TYPE_1__*,int) ; 
- int /*<<< orphan*/  task_set_title (TYPE_1__*,int /*<<< orphan*/ ) ; 
+
+ int MSG_AUTODETECT ;
+ int RARCH_LOG (char*,int ,TYPE_2__*) ;
+ int free (TYPE_2__*) ;
+ int msg_hash_to_str (int ) ;
+ int strdup (TYPE_2__*) ;
+ int string_is_empty (TYPE_2__*) ;
+ int task_set_finished (TYPE_1__*,int) ;
+ int task_set_title (TYPE_1__*,int ) ;
 
 __attribute__((used)) static void input_autoconfigure_disconnect_handler(retro_task_t *task)
 {
@@ -33,7 +33,7 @@ __attribute__((used)) static void input_autoconfigure_disconnect_handler(retro_t
 
    task_set_title(task, strdup(params->msg));
 
-   task_set_finished(task, true);
+   task_set_finished(task, 1);
 
    RARCH_LOG("%s: %s\n", msg_hash_to_str(MSG_AUTODETECT), params->msg);
 

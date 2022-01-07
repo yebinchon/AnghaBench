@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct wildcard_entry {int key_len; int data_len; scalar_t__ flags; void* data; void* key; } ;
 struct data {int data_len; } ;
-typedef  int /*<<< orphan*/  hash_entry_t ;
+typedef int hash_entry_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  lrand48 () ; 
- int /*<<< orphan*/  memcpy (void*,char const*,int) ; 
- scalar_t__ memory_for_wildcard_cache ; 
- int /*<<< orphan*/  tree_insert (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wildcard_add_use (struct wildcard_entry*) ; 
- int /*<<< orphan*/  wildcard_cache_entries ; 
- scalar_t__ wildcard_cache_memory ; 
- int /*<<< orphan*/  wildcard_free_lru () ; 
- struct data wildcard_get_value (char const*,int) ; 
- int /*<<< orphan*/  wildcard_rpc_cache_tree ; 
- void* zzmalloc (int) ; 
+
+ int lrand48 () ;
+ int memcpy (void*,char const*,int) ;
+ scalar_t__ memory_for_wildcard_cache ;
+ int tree_insert (int ,int *,int ) ;
+ int wildcard_add_use (struct wildcard_entry*) ;
+ int wildcard_cache_entries ;
+ scalar_t__ wildcard_cache_memory ;
+ int wildcard_free_lru () ;
+ struct data wildcard_get_value (char const*,int) ;
+ int wildcard_rpc_cache_tree ;
+ void* zzmalloc (int) ;
 
 void wildcard_add_rpc_value (const char *key, int key_len, const char *data, int data_len) {
   while (wildcard_cache_memory + data_len + key_len + sizeof (struct wildcard_entry) > memory_for_wildcard_cache) {

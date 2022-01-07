@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_7__ ;
-typedef  struct TYPE_16__   TYPE_5__ ;
-typedef  struct TYPE_15__   TYPE_4__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
-typedef  struct TYPE_11__   TYPE_10__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_17__ TYPE_7__ ;
+typedef struct TYPE_16__ TYPE_5__ ;
+typedef struct TYPE_15__ TYPE_4__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+typedef struct TYPE_11__ TYPE_10__ ;
+
+
 struct TYPE_11__ {scalar_t__ lowLimit; } ;
-struct TYPE_15__ {scalar_t__ nextToUpdate; TYPE_10__ window; int /*<<< orphan*/  dictMatchState; int /*<<< orphan*/  loadedDictEnd; } ;
-typedef  TYPE_4__ ZSTD_matchState_t ;
+struct TYPE_15__ {scalar_t__ nextToUpdate; TYPE_10__ window; int dictMatchState; int loadedDictEnd; } ;
+typedef TYPE_4__ ZSTD_matchState_t ;
 struct TYPE_13__ {scalar_t__ checksumFlag; } ;
 struct TYPE_12__ {int windowLog; } ;
 struct TYPE_17__ {TYPE_2__ fParams; TYPE_1__ cParams; } ;
 struct TYPE_14__ {TYPE_4__ matchState; } ;
-struct TYPE_16__ {size_t blockSize; int /*<<< orphan*/  stage; scalar_t__ isFirstBlock; TYPE_7__ appliedParams; int /*<<< orphan*/  workspace; TYPE_3__ blockState; int /*<<< orphan*/  xxhState; } ;
-typedef  TYPE_5__ ZSTD_CCtx ;
-typedef  int U32 ;
-typedef  int /*<<< orphan*/  BYTE ;
+struct TYPE_16__ {size_t blockSize; int stage; scalar_t__ isFirstBlock; TYPE_7__ appliedParams; int workspace; TYPE_3__ blockState; int xxhState; } ;
+typedef TYPE_5__ ZSTD_CCtx ;
+typedef int U32 ;
+typedef int BYTE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEBUGLOG (int,char*,unsigned int) ; 
- int /*<<< orphan*/  FORWARD_IF_ERROR (size_t) ; 
- int /*<<< orphan*/  MEM_writeLE24 (int /*<<< orphan*/ *,int const) ; 
- size_t MIN_CBLOCK_SIZE ; 
- int /*<<< orphan*/  RETURN_ERROR_IF (int,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  XXH64_update (int /*<<< orphan*/ *,void const*,size_t) ; 
- int ZSTD_WINDOWLOG_MAX ; 
- size_t ZSTD_blockHeaderSize ; 
- int /*<<< orphan*/  ZSTD_checkDictValidity (TYPE_10__*,int /*<<< orphan*/  const*,int const,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- size_t ZSTD_compressBlock_internal (TYPE_5__*,int /*<<< orphan*/ *,size_t,int /*<<< orphan*/  const*,size_t,int) ; 
- size_t ZSTD_noCompressBlock (int /*<<< orphan*/ *,size_t,int /*<<< orphan*/  const*,size_t,int const) ; 
- int /*<<< orphan*/  ZSTD_overflowCorrectIfNeeded (TYPE_4__* const,int /*<<< orphan*/ *,TYPE_7__*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  ZSTDcs_ending ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ bt_compressed ; 
- scalar_t__ bt_rle ; 
- int /*<<< orphan*/  dstSize_tooSmall ; 
+
+ int DEBUGLOG (int,char*,unsigned int) ;
+ int FORWARD_IF_ERROR (size_t) ;
+ int MEM_writeLE24 (int *,int const) ;
+ size_t MIN_CBLOCK_SIZE ;
+ int RETURN_ERROR_IF (int,int ,char*) ;
+ int XXH64_update (int *,void const*,size_t) ;
+ int ZSTD_WINDOWLOG_MAX ;
+ size_t ZSTD_blockHeaderSize ;
+ int ZSTD_checkDictValidity (TYPE_10__*,int const*,int const,int *,int *) ;
+ size_t ZSTD_compressBlock_internal (TYPE_5__*,int *,size_t,int const*,size_t,int) ;
+ size_t ZSTD_noCompressBlock (int *,size_t,int const*,size_t,int const) ;
+ int ZSTD_overflowCorrectIfNeeded (TYPE_4__* const,int *,TYPE_7__*,int const*,int const*) ;
+ int ZSTDcs_ending ;
+ int assert (int) ;
+ scalar_t__ bt_compressed ;
+ scalar_t__ bt_rle ;
+ int dstSize_tooSmall ;
 
 __attribute__((used)) static size_t ZSTD_compress_frameChunk (ZSTD_CCtx* cctx,
                                      void* dst, size_t dstCapacity,
@@ -78,14 +78,14 @@ __attribute__((used)) static size_t ZSTD_compress_frameChunk (ZSTD_CCtx* cctx,
             ms, &cctx->workspace, &cctx->appliedParams, ip, ip + blockSize);
         ZSTD_checkDictValidity(&ms->window, ip + blockSize, maxDist, &ms->loadedDictEnd, &ms->dictMatchState);
 
-        /* Ensure hash/chain table insertion resumes no sooner than lowlimit */
+
         if (ms->nextToUpdate < ms->window.lowLimit) ms->nextToUpdate = ms->window.lowLimit;
 
-        {   size_t cSize = ZSTD_compressBlock_internal(cctx,
+        { size_t cSize = ZSTD_compressBlock_internal(cctx,
                                 op+ZSTD_blockHeaderSize, dstCapacity-ZSTD_blockHeaderSize,
-                                ip, blockSize, 1 /* frame */);
+                                ip, blockSize, 1 );
             FORWARD_IF_ERROR(cSize);
-            if (cSize == 0) {  /* block is not compressible */
+            if (cSize == 0) {
                 cSize = ZSTD_noCompressBlock(op, dstCapacity, ip, blockSize, lastBlock);
                 FORWARD_IF_ERROR(cSize);
             } else {
@@ -105,7 +105,7 @@ __attribute__((used)) static size_t ZSTD_compress_frameChunk (ZSTD_CCtx* cctx,
             cctx->isFirstBlock = 0;
             DEBUGLOG(5, "ZSTD_compress_frameChunk: adding a block of size %u",
                         (unsigned)cSize);
-    }   }
+    } }
 
     if (lastFrameChunk && (op>ostart)) cctx->stage = ZSTDcs_ending;
     return (size_t)(op-ostart);

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct usb_phy {int /*<<< orphan*/  dev; } ;
-struct am335x_phy {int /*<<< orphan*/  dr_mode; int /*<<< orphan*/  id; int /*<<< orphan*/  phy_ctrl; } ;
 
-/* Variables and functions */
- struct am335x_phy* dev_get_drvdata (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  phy_ctrl_power (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+
+
+struct usb_phy {int dev; } ;
+struct am335x_phy {int dr_mode; int id; int phy_ctrl; } ;
+
+
+ struct am335x_phy* dev_get_drvdata (int ) ;
+ int phy_ctrl_power (int ,int ,int ,int) ;
 
 __attribute__((used)) static int am335x_init(struct usb_phy *phy)
 {
-	struct am335x_phy *am_phy = dev_get_drvdata(phy->dev);
+ struct am335x_phy *am_phy = dev_get_drvdata(phy->dev);
 
-	phy_ctrl_power(am_phy->phy_ctrl, am_phy->id, am_phy->dr_mode, true);
-	return 0;
+ phy_ctrl_power(am_phy->phy_ctrl, am_phy->id, am_phy->dr_mode, 1);
+ return 0;
 }

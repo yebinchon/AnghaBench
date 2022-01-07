@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_5__ ;
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_12__ TYPE_5__ ;
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_9__ {int param_written; } ;
-typedef  TYPE_2__ VocEncContext ;
+typedef TYPE_2__ VocEncContext ;
 struct TYPE_12__ {int codec_tag; int sample_rate; int bits_per_coded_sample; int channels; } ;
-struct TYPE_11__ {TYPE_1__** streams; int /*<<< orphan*/ * pb; TYPE_2__* priv_data; } ;
-struct TYPE_10__ {int size; int /*<<< orphan*/  data; } ;
+struct TYPE_11__ {TYPE_1__** streams; int * pb; TYPE_2__* priv_data; } ;
+struct TYPE_10__ {int size; int data; } ;
 struct TYPE_8__ {TYPE_5__* codecpar; } ;
-typedef  TYPE_3__ AVPacket ;
-typedef  int /*<<< orphan*/  AVIOContext ;
-typedef  TYPE_4__ AVFormatContext ;
-typedef  TYPE_5__ AVCodecParameters ;
+typedef TYPE_3__ AVPacket ;
+typedef int AVIOContext ;
+typedef TYPE_4__ AVFormatContext ;
+typedef TYPE_5__ AVCodecParameters ;
 
-/* Variables and functions */
- int VOC_TYPE_EXTENDED ; 
- int VOC_TYPE_NEW_VOICE_DATA ; 
- int VOC_TYPE_VOICE_DATA ; 
- int VOC_TYPE_VOICE_DATA_CONT ; 
- int /*<<< orphan*/  avio_w8 (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  avio_wl16 (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  avio_wl24 (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  avio_wl32 (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  avio_write (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
+
+ int VOC_TYPE_EXTENDED ;
+ int VOC_TYPE_NEW_VOICE_DATA ;
+ int VOC_TYPE_VOICE_DATA ;
+ int VOC_TYPE_VOICE_DATA_CONT ;
+ int avio_w8 (int *,int) ;
+ int avio_wl16 (int *,int) ;
+ int avio_wl24 (int *,int) ;
+ int avio_wl32 (int *,int) ;
+ int avio_write (int *,int ,int) ;
 
 __attribute__((used)) static int voc_write_packet(AVFormatContext *s, AVPacket *pkt)
 {

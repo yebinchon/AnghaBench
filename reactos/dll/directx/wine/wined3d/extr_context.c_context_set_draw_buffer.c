@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  (* p_glDrawBuffer ) (int /*<<< orphan*/ ) ;} ;
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int (* p_glDrawBuffer ) (int ) ;} ;
 struct TYPE_5__ {TYPE_3__ gl; } ;
 struct wined3d_gl_info {TYPE_2__ gl_ops; } ;
 struct wined3d_context {scalar_t__ draw_buffers_mask; TYPE_1__* current_fbo; struct wined3d_gl_info* gl_info; } ;
 struct TYPE_4__ {scalar_t__ rt_mask; } ;
-typedef  int /*<<< orphan*/  GLenum ;
-typedef  scalar_t__ DWORD ;
+typedef int GLenum ;
+typedef scalar_t__ DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  checkGLcall (char*) ; 
- scalar_t__ context_generate_rt_mask (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ) ; 
+
+ int checkGLcall (char*) ;
+ scalar_t__ context_generate_rt_mask (int ) ;
+ int stub1 (int ) ;
 
 void context_set_draw_buffer(struct wined3d_context *context, GLenum buffer)
 {

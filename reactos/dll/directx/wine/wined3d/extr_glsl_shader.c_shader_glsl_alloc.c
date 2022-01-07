@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct wined3d_vertex_pipe_ops {int /*<<< orphan*/  (* vp_free ) (struct wined3d_device*) ;void* (* vp_alloc ) (int /*<<< orphan*/ *,struct shader_glsl_priv*) ;} ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct wined3d_vertex_pipe_ops {int (* vp_free ) (struct wined3d_device*) ;void* (* vp_alloc ) (int *,struct shader_glsl_priv*) ;} ;
 struct wined3d_gl_info {int dummy; } ;
 struct wined3d_device {struct shader_glsl_priv* shader_priv; void* fragment_priv; void* vertex_priv; TYPE_2__* wined3d; TYPE_1__* adapter; } ;
-struct shader_glsl_priv {int next_constant_version; int ffp_proj_control; int legacy_lighting; int /*<<< orphan*/  shader_buffer; struct shader_glsl_priv* stack; int /*<<< orphan*/  vconst_heap; int /*<<< orphan*/  pconst_heap; struct fragment_pipeline const* fragment_pipe; struct wined3d_vertex_pipe_ops const* vertex_pipe; int /*<<< orphan*/  program_lookup; int /*<<< orphan*/  string_buffers; } ;
-struct fragment_pipeline {int /*<<< orphan*/  (* free_private ) (struct wined3d_device*) ;int /*<<< orphan*/  (* get_caps ) (struct wined3d_gl_info const*,struct fragment_caps*) ;void* (* alloc_private ) (int /*<<< orphan*/ *,struct shader_glsl_priv*) ;} ;
+struct shader_glsl_priv {int next_constant_version; int ffp_proj_control; int legacy_lighting; int shader_buffer; struct shader_glsl_priv* stack; int vconst_heap; int pconst_heap; struct fragment_pipeline const* fragment_pipe; struct wined3d_vertex_pipe_ops const* vertex_pipe; int program_lookup; int string_buffers; } ;
+struct fragment_pipeline {int (* free_private ) (struct wined3d_device*) ;int (* get_caps ) (struct wined3d_gl_info const*,struct fragment_caps*) ;void* (* alloc_private ) (int *,struct shader_glsl_priv*) ;} ;
 struct fragment_caps {int wined3d_caps; } ;
 struct TYPE_4__ {int flags; } ;
 struct TYPE_3__ {struct wined3d_gl_info gl_info; } ;
-typedef  scalar_t__ SIZE_T ;
-typedef  int /*<<< orphan*/  HRESULT ;
+typedef scalar_t__ SIZE_T ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*) ; 
- int /*<<< orphan*/  E_FAIL ; 
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- int WINED3D_FRAGMENT_CAP_PROJ_CONTROL ; 
- int WINED3D_LEGACY_FFP_LIGHTING ; 
- int /*<<< orphan*/  WINED3D_MAX_PS_CONSTS_F ; 
- int /*<<< orphan*/  WINED3D_MAX_VS_CONSTS_F ; 
- int /*<<< orphan*/  WINED3D_OK ; 
- int /*<<< orphan*/  constant_heap_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  constant_heap_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glsl_program_key_compare ; 
- int /*<<< orphan*/  glsl_shader_backend ; 
- struct shader_glsl_priv* heap_alloc_zero (int) ; 
- struct shader_glsl_priv* heap_calloc (scalar_t__,int) ; 
- int /*<<< orphan*/  heap_free (struct shader_glsl_priv*) ; 
- int /*<<< orphan*/  max (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  string_buffer_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  string_buffer_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  string_buffer_list_init (int /*<<< orphan*/ *) ; 
- void* stub1 (int /*<<< orphan*/ *,struct shader_glsl_priv*) ; 
- void* stub2 (int /*<<< orphan*/ *,struct shader_glsl_priv*) ; 
- int /*<<< orphan*/  stub3 (struct wined3d_device*) ; 
- int /*<<< orphan*/  stub4 (struct wined3d_gl_info const*,struct fragment_caps*) ; 
- int /*<<< orphan*/  stub5 (struct wined3d_device*) ; 
- int /*<<< orphan*/  stub6 (struct wined3d_device*) ; 
- int /*<<< orphan*/  wine_rb_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ wined3d_log2i (int /*<<< orphan*/ ) ; 
+
+ int ERR (char*) ;
+ int E_FAIL ;
+ int E_OUTOFMEMORY ;
+ int WINED3D_FRAGMENT_CAP_PROJ_CONTROL ;
+ int WINED3D_LEGACY_FFP_LIGHTING ;
+ int WINED3D_MAX_PS_CONSTS_F ;
+ int WINED3D_MAX_VS_CONSTS_F ;
+ int WINED3D_OK ;
+ int constant_heap_free (int *) ;
+ int constant_heap_init (int *,int ) ;
+ int glsl_program_key_compare ;
+ int glsl_shader_backend ;
+ struct shader_glsl_priv* heap_alloc_zero (int) ;
+ struct shader_glsl_priv* heap_calloc (scalar_t__,int) ;
+ int heap_free (struct shader_glsl_priv*) ;
+ int max (int ,int ) ;
+ int string_buffer_free (int *) ;
+ int string_buffer_init (int *) ;
+ int string_buffer_list_init (int *) ;
+ void* stub1 (int *,struct shader_glsl_priv*) ;
+ void* stub2 (int *,struct shader_glsl_priv*) ;
+ int stub3 (struct wined3d_device*) ;
+ int stub4 (struct wined3d_gl_info const*,struct fragment_caps*) ;
+ int stub5 (struct wined3d_device*) ;
+ int stub6 (struct wined3d_device*) ;
+ int wine_rb_init (int *,int ) ;
+ scalar_t__ wined3d_log2i (int ) ;
 
 __attribute__((used)) static HRESULT shader_glsl_alloc(struct wined3d_device *device, const struct wined3d_vertex_pipe_ops *vertex_pipe,
         const struct fragment_pipeline *fragment_pipe)

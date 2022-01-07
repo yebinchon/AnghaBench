@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct mp_log {int dummy; } ;
 
-/* Variables and functions */
- int MP_NUM_CHANNELS ; 
- int MP_SPEAKER_ID_COUNT ; 
- int /*<<< orphan*/  mp_info (struct mp_log*,char*,...) ; 
- scalar_t__** speaker_names ; 
- scalar_t__** std_layout_names ; 
+
+ int MP_NUM_CHANNELS ;
+ int MP_SPEAKER_ID_COUNT ;
+ int mp_info (struct mp_log*,char*,...) ;
+ scalar_t__** speaker_names ;
+ scalar_t__** std_layout_names ;
 
 void mp_chmap_print_help(struct mp_log *log)
 {

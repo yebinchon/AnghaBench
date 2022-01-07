@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int /*<<< orphan*/  ipv6_scope_id; } ;
-typedef  TYPE_1__ IP ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IPAnd6 (TYPE_1__*,TYPE_1__*,TYPE_1__*) ; 
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int ipv6_scope_id; } ;
+typedef TYPE_1__ IP ;
+
+
+ int IPAnd6 (TYPE_1__*,TYPE_1__*,TYPE_1__*) ;
 
 void GetPrefixAddress6(IP *dst, IP *ip, IP *subnet)
 {
-	// Validate arguments
-	if (dst == NULL || ip == NULL || subnet == NULL)
-	{
-		return;
-	}
 
-	IPAnd6(dst, ip, subnet);
+ if (dst == ((void*)0) || ip == ((void*)0) || subnet == ((void*)0))
+ {
+  return;
+ }
 
-	dst->ipv6_scope_id = ip->ipv6_scope_id;
+ IPAnd6(dst, ip, subnet);
+
+ dst->ipv6_scope_id = ip->ipv6_scope_id;
 }

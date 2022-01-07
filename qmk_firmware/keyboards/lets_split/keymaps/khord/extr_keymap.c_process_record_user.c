@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint16_t ;
-struct TYPE_4__ {int /*<<< orphan*/  pressed; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint16_t ;
+struct TYPE_4__ {int pressed; } ;
 struct TYPE_5__ {TYPE_1__ event; } ;
-typedef  TYPE_2__ keyrecord_t ;
+typedef TYPE_2__ keyrecord_t ;
 
-/* Variables and functions */
-#define  ADJUST 133 
-#define  ADMIN 132 
-#define  LOWER 131 
-#define  QWERTY 130 
-#define  RAISE 129 
- int /*<<< orphan*/  SEND_STRING (char*) ; 
-#define  SMSPC1 128 
- int /*<<< orphan*/  _ADJUST ; 
- int /*<<< orphan*/  _LOWER ; 
- unsigned long _QWERTY ; 
- int /*<<< orphan*/  _RAISE ; 
- int /*<<< orphan*/  layer_off (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  layer_on (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  persistent_default_layer_set (unsigned long) ; 
- int /*<<< orphan*/  update_tri_layer (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+
+
+
+ int SEND_STRING (char*) ;
+
+ int _ADJUST ;
+ int _LOWER ;
+ unsigned long _QWERTY ;
+ int _RAISE ;
+ int layer_off (int ) ;
+ int layer_on (int ) ;
+ int persistent_default_layer_set (unsigned long) ;
+ int update_tri_layer (int ,int ,int ) ;
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
-    case QWERTY:
+    case 130:
       if (record->event.pressed) {
         persistent_default_layer_set(1UL<<_QWERTY);
       }
-      return false;
+      return 0;
       break;
-    case LOWER:
+    case 131:
       if (record->event.pressed) {
         layer_on(_LOWER);
         update_tri_layer(_LOWER, _RAISE, _ADJUST);
@@ -50,9 +50,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         layer_off(_LOWER);
         update_tri_layer(_LOWER, _RAISE, _ADJUST);
       }
-      return false;
+      return 0;
       break;
-    case RAISE:
+    case 129:
       if (record->event.pressed) {
         layer_on(_RAISE);
         update_tri_layer(_LOWER, _RAISE, _ADJUST);
@@ -60,28 +60,28 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         layer_off(_RAISE);
         update_tri_layer(_LOWER, _RAISE, _ADJUST);
       }
-      return false;
+      return 0;
       break;
-    case ADJUST:
+    case 133:
       if (record->event.pressed) {
         layer_on(_ADJUST);
       } else {
         layer_off(_ADJUST);
       }
-      return false;
+      return 0;
       break;
-    case ADMIN:
+    case 132:
       if (record->event.pressed) {
         SEND_STRING("Administrator");
       }
-      return false;
+      return 0;
       break;
-    case SMSPC1:
+    case 128:
       if (record->event.pressed) {
         SEND_STRING("Simspace1!");
       }
-      return false;
+      return 0;
       break;
   }
-  return true;
+  return 1;
 }

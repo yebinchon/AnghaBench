@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_5__ {TYPE_1__* codecpar; } ;
-struct TYPE_4__ {scalar_t__ height; int /*<<< orphan*/  width; } ;
-typedef  TYPE_2__ AVStream ;
-typedef  int /*<<< orphan*/  AVIOContext ;
+struct TYPE_4__ {scalar_t__ height; int width; } ;
+typedef TYPE_2__ AVStream ;
+typedef int AVIOContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_LOG_WARNING ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  avio_printf (int /*<<< orphan*/ *,char*,...) ; 
- scalar_t__ strlen (char*) ; 
+
+ int AV_LOG_WARNING ;
+ int av_log (int *,int ,char*) ;
+ int avio_printf (int *,char*,...) ;
+ scalar_t__ strlen (char*) ;
 
 void ff_hls_write_stream_info(AVStream *st, AVIOContext *out,
                               int bandwidth, const char *filename, char *agroup,
@@ -31,7 +31,7 @@ void ff_hls_write_stream_info(AVStream *st, AVIOContext *out,
         return;
 
     if (!bandwidth) {
-        av_log(NULL, AV_LOG_WARNING,
+        av_log(((void*)0), AV_LOG_WARNING,
                 "Bandwidth info not available, set audio and video bitrates\n");
         return;
     }

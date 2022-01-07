@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct pci_dev {int /*<<< orphan*/  devfn; int /*<<< orphan*/  dev; } ;
 
-/* Variables and functions */
- int PCI_FUNC (int /*<<< orphan*/ ) ; 
- int dev_to_node (int /*<<< orphan*/ *) ; 
- int max (int,int /*<<< orphan*/ ) ; 
+
+
+
+struct pci_dev {int devfn; int dev; } ;
+
+
+ int PCI_FUNC (int ) ;
+ int dev_to_node (int *) ;
+ int max (int,int ) ;
 
 __attribute__((used)) static inline int pci_dev_to_mc_idx(struct pci_dev *pdev)
 {
-	int node = dev_to_node(&pdev->dev);
-	int ret = PCI_FUNC(pdev->devfn);
+ int node = dev_to_node(&pdev->dev);
+ int ret = PCI_FUNC(pdev->devfn);
 
-	ret += max(node, 0) << 3;
+ ret += max(node, 0) << 3;
 
-	return ret;
+ return ret;
 }

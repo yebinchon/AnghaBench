@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  controller; } ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int controller; } ;
 struct TYPE_6__ {TYPE_2__* domain; } ;
-typedef  int /*<<< orphan*/  SCI_BASE_OBJECT_T ;
-typedef  TYPE_1__ SCIF_SAS_REMOTE_DEVICE_T ;
+typedef int SCI_BASE_OBJECT_T ;
+typedef TYPE_1__ SCIF_SAS_REMOTE_DEVICE_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SCIF_LOG_INFO (int /*<<< orphan*/ ) ; 
- int SCIF_LOG_OBJECT_REMOTE_DEVICE ; 
- int SCIF_LOG_OBJECT_REMOTE_DEVICE_CONFIG ; 
- int /*<<< orphan*/  SCIF_SAS_REMOTE_DEVICE_READY_SUBSTATE_OPERATIONAL ; 
- int /*<<< orphan*/  SET_STATE_HANDLER (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sci_base_object_get_logger (TYPE_1__*) ; 
- int /*<<< orphan*/  scif_cb_remote_device_ready (int /*<<< orphan*/ ,TYPE_2__*,TYPE_1__*) ; 
- int /*<<< orphan*/  scif_sas_remote_device_ready_substate_handler_table ; 
+
+ int SCIF_LOG_INFO (int ) ;
+ int SCIF_LOG_OBJECT_REMOTE_DEVICE ;
+ int SCIF_LOG_OBJECT_REMOTE_DEVICE_CONFIG ;
+ int SCIF_SAS_REMOTE_DEVICE_READY_SUBSTATE_OPERATIONAL ;
+ int SET_STATE_HANDLER (TYPE_1__*,int ,int ) ;
+ int sci_base_object_get_logger (TYPE_1__*) ;
+ int scif_cb_remote_device_ready (int ,TYPE_2__*,TYPE_1__*) ;
+ int scif_sas_remote_device_ready_substate_handler_table ;
 
 __attribute__((used)) static
 void scif_sas_remote_device_ready_operational_substate_enter(
@@ -47,7 +47,7 @@ void scif_sas_remote_device_ready_operational_substate_enter(
       fw_device->domain, fw_device
    ));
 
-   // Notify the user that the device has become ready.
+
    scif_cb_remote_device_ready(
       fw_device->domain->controller, fw_device->domain, fw_device
    );

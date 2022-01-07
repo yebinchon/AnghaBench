@@ -1,51 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  xmlCatalogCleanup () ; 
- int /*<<< orphan*/  xmlCleanupCharEncodingHandlers () ; 
- int /*<<< orphan*/  xmlCleanupGlobals () ; 
- int /*<<< orphan*/  xmlCleanupInputCallbacks () ; 
- int /*<<< orphan*/  xmlCleanupMemory () ; 
- int /*<<< orphan*/  xmlCleanupOutputCallbacks () ; 
- int /*<<< orphan*/  xmlCleanupThreads () ; 
- int /*<<< orphan*/  xmlDictCleanup () ; 
- scalar_t__ xmlParserInitialized ; 
- int /*<<< orphan*/  xmlRelaxNGCleanupTypes () ; 
- int /*<<< orphan*/  xmlResetLastError () ; 
- int /*<<< orphan*/  xmlSchemaCleanupTypes () ; 
+ int xmlCatalogCleanup () ;
+ int xmlCleanupCharEncodingHandlers () ;
+ int xmlCleanupGlobals () ;
+ int xmlCleanupInputCallbacks () ;
+ int xmlCleanupMemory () ;
+ int xmlCleanupOutputCallbacks () ;
+ int xmlCleanupThreads () ;
+ int xmlDictCleanup () ;
+ scalar_t__ xmlParserInitialized ;
+ int xmlRelaxNGCleanupTypes () ;
+ int xmlResetLastError () ;
+ int xmlSchemaCleanupTypes () ;
 
 void
 xmlCleanupParser(void) {
     if (!xmlParserInitialized)
-	return;
+ return;
 
     xmlCleanupCharEncodingHandlers();
-#ifdef LIBXML_CATALOG_ENABLED
-    xmlCatalogCleanup();
-#endif
+
+
+
     xmlDictCleanup();
     xmlCleanupInputCallbacks();
-#ifdef LIBXML_OUTPUT_ENABLED
-    xmlCleanupOutputCallbacks();
-#endif
-#ifdef LIBXML_SCHEMAS_ENABLED
-    xmlSchemaCleanupTypes();
-    xmlRelaxNGCleanupTypes();
-#endif
+
+
+
+
+
+
+
     xmlResetLastError();
     xmlCleanupGlobals();
-    xmlCleanupThreads(); /* must be last if called not from the main thread */
+    xmlCleanupThreads();
     xmlCleanupMemory();
     xmlParserInitialized = 0;
 }

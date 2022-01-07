@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * cmsContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DebugMemDontCheckThis (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DebugMemHandler ; 
- int /*<<< orphan*/  Die (char*) ; 
- int /*<<< orphan*/ * cmsCreateContext (int /*<<< orphan*/ *,void*) ; 
+
+
+
+typedef int * cmsContext ;
+
+
+ int DebugMemDontCheckThis (int *) ;
+ int DebugMemHandler ;
+ int Die (char*) ;
+ int * cmsCreateContext (int *,void*) ;
 
 cmsContext WatchDogContext(void* usr)
 {
@@ -24,7 +24,7 @@ cmsContext WatchDogContext(void* usr)
 
     ctx = cmsCreateContext(&DebugMemHandler, usr);
 
-    if (ctx == NULL)
+    if (ctx == ((void*)0))
         Die("Unable to create memory managed context");
 
     DebugMemDontCheckThis(ctx);

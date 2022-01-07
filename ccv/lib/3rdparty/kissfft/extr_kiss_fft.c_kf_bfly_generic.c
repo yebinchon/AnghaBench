@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  kiss_fft_cpx ;
-typedef  TYPE_1__* kiss_fft_cfg ;
-struct TYPE_3__ {int nfft; int /*<<< orphan*/ * twiddles; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  C_ADDTO (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  C_FIXDIV (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  C_MUL (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ KISS_FFT_TMP_ALLOC (int) ; 
- int /*<<< orphan*/  KISS_FFT_TMP_FREE (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int kiss_fft_cpx ;
+typedef TYPE_1__* kiss_fft_cfg ;
+struct TYPE_3__ {int nfft; int * twiddles; } ;
+
+
+ int C_ADDTO (int ,int ) ;
+ int C_FIXDIV (int ,int) ;
+ int C_MUL (int ,int ,int ) ;
+ scalar_t__ KISS_FFT_TMP_ALLOC (int) ;
+ int KISS_FFT_TMP_FREE (int *) ;
 
 __attribute__((used)) static void kf_bfly_generic(
         kiss_fft_cpx * Fout,
@@ -40,7 +40,7 @@ __attribute__((used)) static void kf_bfly_generic(
     for ( u=0; u<m; ++u ) {
         k=u;
         for ( q1=0 ; q1<p ; ++q1 ) {
-            scratch[q1] = Fout[ k  ];
+            scratch[q1] = Fout[ k ];
             C_FIXDIV(scratch[q1],p);
             k += m;
         }

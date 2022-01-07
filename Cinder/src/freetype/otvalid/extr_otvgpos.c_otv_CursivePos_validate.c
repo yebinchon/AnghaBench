@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  OTV_Validator ;
-typedef  int FT_UInt ;
-typedef  int /*<<< orphan*/  FT_Int ;
-typedef  int FT_Bytes ;
 
-/* Variables and functions */
- int EntryAnchor ; 
- int ExitAnchor ; 
- int /*<<< orphan*/  FT_INVALID_FORMAT ; 
- int FT_NEXT_USHORT (int) ; 
- int /*<<< orphan*/  OTV_EXIT ; 
- int /*<<< orphan*/  OTV_LIMIT_CHECK (int) ; 
- int /*<<< orphan*/  OTV_NAME_ENTER (char*) ; 
- int /*<<< orphan*/  OTV_OPTIONAL_OFFSET (int) ; 
- int /*<<< orphan*/  OTV_OPTIONAL_TABLE (int) ; 
- int /*<<< orphan*/  OTV_SIZE_CHECK (int) ; 
- int /*<<< orphan*/  OTV_TRACE (char*) ; 
- int /*<<< orphan*/  otv_Anchor_validate (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  otv_Coverage_validate (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int OTV_Validator ;
+typedef int FT_UInt ;
+typedef int FT_Int ;
+typedef int FT_Bytes ;
+
+
+ int EntryAnchor ;
+ int ExitAnchor ;
+ int FT_INVALID_FORMAT ;
+ int FT_NEXT_USHORT (int) ;
+ int OTV_EXIT ;
+ int OTV_LIMIT_CHECK (int) ;
+ int OTV_NAME_ENTER (char*) ;
+ int OTV_OPTIONAL_OFFSET (int) ;
+ int OTV_OPTIONAL_TABLE (int) ;
+ int OTV_SIZE_CHECK (int) ;
+ int OTV_TRACE (char*) ;
+ int otv_Anchor_validate (int,int ) ;
+ int otv_Coverage_validate (int,int ,int ) ;
 
 __attribute__((used)) static void
-  otv_CursivePos_validate( FT_Bytes       table,
-                           OTV_Validator  otvalid )
+  otv_CursivePos_validate( FT_Bytes table,
+                           OTV_Validator otvalid )
   {
-    FT_Bytes  p = table;
-    FT_UInt   PosFormat;
+    FT_Bytes p = table;
+    FT_UInt PosFormat;
 
 
     OTV_NAME_ENTER( "CursivePos" );
@@ -47,17 +47,17 @@ __attribute__((used)) static void
 
     switch ( PosFormat )
     {
-    case 1:     /* CursivePosFormat1 */
+    case 1:
       {
-        FT_UInt   table_size;
-        FT_UInt   Coverage, EntryExitCount;
+        FT_UInt table_size;
+        FT_UInt Coverage, EntryExitCount;
 
         OTV_OPTIONAL_TABLE( EntryAnchor );
-        OTV_OPTIONAL_TABLE( ExitAnchor  );
+        OTV_OPTIONAL_TABLE( ExitAnchor );
 
 
         OTV_LIMIT_CHECK( 4 );
-        Coverage       = FT_NEXT_USHORT( p );
+        Coverage = FT_NEXT_USHORT( p );
         EntryExitCount = FT_NEXT_USHORT( p );
 
         OTV_TRACE(( " (EntryExitCount = %d)\n", EntryExitCount ));
@@ -70,11 +70,11 @@ __attribute__((used)) static void
 
         table_size = EntryExitCount * 4 + 4;
 
-        /* EntryExitRecord */
+
         for ( ; EntryExitCount > 0; EntryExitCount-- )
         {
           OTV_OPTIONAL_OFFSET( EntryAnchor );
-          OTV_OPTIONAL_OFFSET( ExitAnchor  );
+          OTV_OPTIONAL_OFFSET( ExitAnchor );
 
           OTV_SIZE_CHECK( EntryAnchor );
           if ( EntryAnchor )

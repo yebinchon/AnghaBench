@@ -1,33 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int ADF_SITES_MASK_SHIFT ; 
- int Q_limit ; 
- int /*<<< orphan*/ * R ; 
- int R_cnt ; 
- int R_position ; 
- int __and_mask ; 
- long long __cat_mask ; 
- scalar_t__ __exclude_ad_id ; 
- int __use_factor ; 
- scalar_t__ __use_views_limit ; 
- int __xor_mask ; 
- int /*<<< orphan*/  heap_push_user_ad ; 
- int /*<<< orphan*/  heap_push_user_ad_ext ; 
- int /*<<< orphan*/  heap_push_user_ad_std ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int perform_query (int /*<<< orphan*/ ) ; 
+ int ADF_SITES_MASK_SHIFT ;
+ int Q_limit ;
+ int * R ;
+ int R_cnt ;
+ int R_position ;
+ int __and_mask ;
+ long long __cat_mask ;
+ scalar_t__ __exclude_ad_id ;
+ int __use_factor ;
+ scalar_t__ __use_views_limit ;
+ int __xor_mask ;
+ int heap_push_user_ad ;
+ int heap_push_user_ad_ext ;
+ int heap_push_user_ad_std ;
+ int memset (int *,int ,int) ;
+ int perform_query (int ) ;
 
 int perform_pricing (int position, int flags, int and_mask, int xor_mask) {
   int res;
@@ -54,8 +46,8 @@ int perform_pricing (int position, int flags, int and_mask, int xor_mask) {
   __xor_mask = 0;
 
   R_position = 0;
-  if (res > 0) { 
-    R_cnt = Q_limit; 
+  if (res > 0) {
+    R_cnt = Q_limit;
     while (R_cnt && !R[R_cnt-1]) { R_cnt--; }
   }
   return res;

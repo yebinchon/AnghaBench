@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/ * area; int /*<<< orphan*/ * segment; } ;
 
-/* Variables and functions */
- TYPE_1__* CurrentSession ; 
- int /*<<< orphan*/  dsa_detach (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  dsm_detach (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int * area; int * segment; } ;
+
+
+ TYPE_1__* CurrentSession ;
+ int dsa_detach (int *) ;
+ int dsm_detach (int *) ;
 
 void
 DetachSession(void)
 {
-	/* Runs detach hooks. */
-	dsm_detach(CurrentSession->segment);
-	CurrentSession->segment = NULL;
-	dsa_detach(CurrentSession->area);
-	CurrentSession->area = NULL;
+
+ dsm_detach(CurrentSession->segment);
+ CurrentSession->segment = ((void*)0);
+ dsa_detach(CurrentSession->area);
+ CurrentSession->area = ((void*)0);
 }

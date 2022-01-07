@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int char_size; } ;
-union cptable {int /*<<< orphan*/  dbcs; int /*<<< orphan*/  sbcs; TYPE_1__ info; } ;
-typedef  int /*<<< orphan*/  WCHAR ;
+union cptable {int dbcs; int sbcs; TYPE_1__ info; } ;
+typedef int WCHAR ;
 
-/* Variables and functions */
- int get_length_dbcs (int /*<<< orphan*/ *,int,int /*<<< orphan*/  const*,int,char const*,int*) ; 
- int get_length_sbcs (int /*<<< orphan*/ *,int,int /*<<< orphan*/  const*,int,int*) ; 
- int wcstombs_dbcs (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int,char*,int) ; 
- int wcstombs_dbcs_slow (int /*<<< orphan*/ *,int,int /*<<< orphan*/  const*,int,char*,int,char const*,int*) ; 
- int wcstombs_sbcs (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int,char*,int) ; 
- int wcstombs_sbcs_slow (int /*<<< orphan*/ *,int,int /*<<< orphan*/  const*,int,char*,int,char const*,int*) ; 
+
+ int get_length_dbcs (int *,int,int const*,int,char const*,int*) ;
+ int get_length_sbcs (int *,int,int const*,int,int*) ;
+ int wcstombs_dbcs (int *,int const*,int,char*,int) ;
+ int wcstombs_dbcs_slow (int *,int,int const*,int,char*,int,char const*,int*) ;
+ int wcstombs_sbcs (int *,int const*,int,char*,int) ;
+ int wcstombs_sbcs_slow (int *,int,int const*,int,char*,int,char const*,int*) ;
 
 int wine_cp_wcstombs( const union cptable *table, int flags,
                       const WCHAR *src, int srclen,
@@ -38,7 +38,7 @@ int wine_cp_wcstombs( const union cptable *table, int flags,
         if (!dstlen) return srclen;
         return wcstombs_sbcs( &table->sbcs, src, srclen, dst, dstlen );
     }
-    else /* mbcs */
+    else
     {
         if (!dstlen) return get_length_dbcs( &table->dbcs, flags, src, srclen, defchar, used );
         if (flags || defchar || used)

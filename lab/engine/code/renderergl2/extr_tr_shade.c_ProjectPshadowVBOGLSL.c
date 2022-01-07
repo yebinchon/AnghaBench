@@ -1,129 +1,129 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_8__ ;
-typedef  struct TYPE_14__   TYPE_7__ ;
-typedef  struct TYPE_13__   TYPE_5__ ;
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vec5_t ;
-typedef  float* vec4_t ;
-typedef  float* vec3_t ;
-typedef  int /*<<< orphan*/  shaderProgram_t ;
-struct TYPE_11__ {int pshadowBits; scalar_t__ numIndexes; int /*<<< orphan*/  firstIndex; } ;
-typedef  TYPE_3__ shaderCommands_t ;
-struct TYPE_12__ {float* lightOrigin; float lightRadius; float viewRadius; int /*<<< orphan*/ * lightViewAxis; } ;
-typedef  TYPE_4__ pshadow_t ;
-struct TYPE_10__ {int /*<<< orphan*/  c_totalIndexes; } ;
+
+
+typedef struct TYPE_15__ TYPE_8__ ;
+typedef struct TYPE_14__ TYPE_7__ ;
+typedef struct TYPE_13__ TYPE_5__ ;
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int vec5_t ;
+typedef float* vec4_t ;
+typedef float* vec3_t ;
+typedef int shaderProgram_t ;
+struct TYPE_11__ {int pshadowBits; scalar_t__ numIndexes; int firstIndex; } ;
+typedef TYPE_3__ shaderCommands_t ;
+struct TYPE_12__ {float* lightOrigin; float lightRadius; float viewRadius; int * lightViewAxis; } ;
+typedef TYPE_4__ pshadow_t ;
+struct TYPE_10__ {int c_totalIndexes; } ;
 struct TYPE_9__ {int num_pshadows; TYPE_4__* pshadows; } ;
 struct TYPE_15__ {TYPE_2__ pc; TYPE_1__ refdef; } ;
-struct TYPE_14__ {int /*<<< orphan*/  modelviewProjection; } ;
-struct TYPE_13__ {int /*<<< orphan*/ * pshadowMaps; int /*<<< orphan*/  pshadowShader; } ;
+struct TYPE_14__ {int modelviewProjection; } ;
+struct TYPE_13__ {int * pshadowMaps; int pshadowShader; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ComputeDeformValues (int*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GLSL_BindProgram (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GLSL_SetUniformFloat (int /*<<< orphan*/ *,int /*<<< orphan*/ ,float) ; 
- int /*<<< orphan*/  GLSL_SetUniformInt (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GLSL_SetUniformMat4 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GLSL_SetUniformVec3 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,float*) ; 
- int /*<<< orphan*/  GLSL_SetUniformVec4 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,float*) ; 
- int GLS_DEPTHFUNC_EQUAL ; 
- int GLS_DSTBLEND_ONE_MINUS_SRC_ALPHA ; 
- int GLS_SRCBLEND_SRC_ALPHA ; 
- int /*<<< orphan*/  GL_BindToTMU (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GL_State (int) ; 
- int /*<<< orphan*/  R_DrawElements (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TB_DIFFUSEMAP ; 
- int /*<<< orphan*/  UNIFORM_ALPHATEST ; 
- int /*<<< orphan*/  UNIFORM_LIGHTFORWARD ; 
- int /*<<< orphan*/  UNIFORM_LIGHTORIGIN ; 
- int /*<<< orphan*/  UNIFORM_LIGHTRADIUS ; 
- int /*<<< orphan*/  UNIFORM_LIGHTRIGHT ; 
- int /*<<< orphan*/  UNIFORM_LIGHTUP ; 
- int /*<<< orphan*/  UNIFORM_MODELVIEWPROJECTIONMATRIX ; 
- int /*<<< orphan*/  VectorCopy (float*,float*) ; 
- int /*<<< orphan*/  VectorScale (int /*<<< orphan*/ ,float,float*) ; 
- TYPE_8__ backEnd ; 
- TYPE_7__ glState ; 
- TYPE_3__ tess ; 
- TYPE_5__ tr ; 
+
+ int ComputeDeformValues (int*,int ) ;
+ int GLSL_BindProgram (int *) ;
+ int GLSL_SetUniformFloat (int *,int ,float) ;
+ int GLSL_SetUniformInt (int *,int ,int ) ;
+ int GLSL_SetUniformMat4 (int *,int ,int ) ;
+ int GLSL_SetUniformVec3 (int *,int ,float*) ;
+ int GLSL_SetUniformVec4 (int *,int ,float*) ;
+ int GLS_DEPTHFUNC_EQUAL ;
+ int GLS_DSTBLEND_ONE_MINUS_SRC_ALPHA ;
+ int GLS_SRCBLEND_SRC_ALPHA ;
+ int GL_BindToTMU (int ,int ) ;
+ int GL_State (int) ;
+ int R_DrawElements (scalar_t__,int ) ;
+ int TB_DIFFUSEMAP ;
+ int UNIFORM_ALPHATEST ;
+ int UNIFORM_LIGHTFORWARD ;
+ int UNIFORM_LIGHTORIGIN ;
+ int UNIFORM_LIGHTRADIUS ;
+ int UNIFORM_LIGHTRIGHT ;
+ int UNIFORM_LIGHTUP ;
+ int UNIFORM_MODELVIEWPROJECTIONMATRIX ;
+ int VectorCopy (float*,float*) ;
+ int VectorScale (int ,float,float*) ;
+ TYPE_8__ backEnd ;
+ TYPE_7__ glState ;
+ TYPE_3__ tess ;
+ TYPE_5__ tr ;
 
 __attribute__((used)) static void ProjectPshadowVBOGLSL( void ) {
-	int		l;
-	vec3_t	origin;
-	float	radius;
+ int l;
+ vec3_t origin;
+ float radius;
 
-	int deformGen;
-	vec5_t deformParams;
+ int deformGen;
+ vec5_t deformParams;
 
-	shaderCommands_t *input = &tess;
+ shaderCommands_t *input = &tess;
 
-	if ( !backEnd.refdef.num_pshadows ) {
-		return;
-	}
-	
-	ComputeDeformValues(&deformGen, deformParams);
+ if ( !backEnd.refdef.num_pshadows ) {
+  return;
+ }
 
-	for ( l = 0 ; l < backEnd.refdef.num_pshadows ; l++ ) {
-		pshadow_t	*ps;
-		shaderProgram_t *sp;
-		vec4_t vector;
+ ComputeDeformValues(&deformGen, deformParams);
 
-		if ( !( tess.pshadowBits & ( 1 << l ) ) ) {
-			continue;	// this surface definitely doesn't have any of this shadow
-		}
+ for ( l = 0 ; l < backEnd.refdef.num_pshadows ; l++ ) {
+  pshadow_t *ps;
+  shaderProgram_t *sp;
+  vec4_t vector;
 
-		ps = &backEnd.refdef.pshadows[l];
-		VectorCopy( ps->lightOrigin, origin );
-		radius = ps->lightRadius;
+  if ( !( tess.pshadowBits & ( 1 << l ) ) ) {
+   continue;
+  }
 
-		sp = &tr.pshadowShader;
+  ps = &backEnd.refdef.pshadows[l];
+  VectorCopy( ps->lightOrigin, origin );
+  radius = ps->lightRadius;
 
-		GLSL_BindProgram(sp);
+  sp = &tr.pshadowShader;
 
-		GLSL_SetUniformMat4(sp, UNIFORM_MODELVIEWPROJECTIONMATRIX, glState.modelviewProjection);
+  GLSL_BindProgram(sp);
 
-		VectorCopy(origin, vector);
-		vector[3] = 1.0f;
-		GLSL_SetUniformVec4(sp, UNIFORM_LIGHTORIGIN, vector);
+  GLSL_SetUniformMat4(sp, UNIFORM_MODELVIEWPROJECTIONMATRIX, glState.modelviewProjection);
 
-		VectorScale(ps->lightViewAxis[0], 1.0f / ps->viewRadius, vector);
-		GLSL_SetUniformVec3(sp, UNIFORM_LIGHTFORWARD, vector);
+  VectorCopy(origin, vector);
+  vector[3] = 1.0f;
+  GLSL_SetUniformVec4(sp, UNIFORM_LIGHTORIGIN, vector);
 
-		VectorScale(ps->lightViewAxis[1], 1.0f / ps->viewRadius, vector);
-		GLSL_SetUniformVec3(sp, UNIFORM_LIGHTRIGHT, vector);
+  VectorScale(ps->lightViewAxis[0], 1.0f / ps->viewRadius, vector);
+  GLSL_SetUniformVec3(sp, UNIFORM_LIGHTFORWARD, vector);
 
-		VectorScale(ps->lightViewAxis[2], 1.0f / ps->viewRadius, vector);
-		GLSL_SetUniformVec3(sp, UNIFORM_LIGHTUP, vector);
+  VectorScale(ps->lightViewAxis[1], 1.0f / ps->viewRadius, vector);
+  GLSL_SetUniformVec3(sp, UNIFORM_LIGHTRIGHT, vector);
 
-		GLSL_SetUniformFloat(sp, UNIFORM_LIGHTRADIUS, radius);
-	  
-		// include GLS_DEPTHFUNC_EQUAL so alpha tested surfaces don't add light
-		// where they aren't rendered
-		GL_State( GLS_SRCBLEND_SRC_ALPHA | GLS_DSTBLEND_ONE_MINUS_SRC_ALPHA | GLS_DEPTHFUNC_EQUAL );
-		GLSL_SetUniformInt(sp, UNIFORM_ALPHATEST, 0);
+  VectorScale(ps->lightViewAxis[2], 1.0f / ps->viewRadius, vector);
+  GLSL_SetUniformVec3(sp, UNIFORM_LIGHTUP, vector);
 
-		GL_BindToTMU( tr.pshadowMaps[l], TB_DIFFUSEMAP );
+  GLSL_SetUniformFloat(sp, UNIFORM_LIGHTRADIUS, radius);
 
-		//
-		// draw
-		//
 
-		R_DrawElements(input->numIndexes, input->firstIndex);
 
-		backEnd.pc.c_totalIndexes += tess.numIndexes;
-		//backEnd.pc.c_dlightIndexes += tess.numIndexes;
-	}
+  GL_State( GLS_SRCBLEND_SRC_ALPHA | GLS_DSTBLEND_ONE_MINUS_SRC_ALPHA | GLS_DEPTHFUNC_EQUAL );
+  GLSL_SetUniformInt(sp, UNIFORM_ALPHATEST, 0);
+
+  GL_BindToTMU( tr.pshadowMaps[l], TB_DIFFUSEMAP );
+
+
+
+
+
+  R_DrawElements(input->numIndexes, input->firstIndex);
+
+  backEnd.pc.c_totalIndexes += tess.numIndexes;
+
+ }
 }

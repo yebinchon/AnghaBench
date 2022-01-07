@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_6__ ;
-typedef  struct TYPE_15__   TYPE_5__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ UINT ;
-struct TYPE_16__ {int cbStruct; scalar_t__ szName; scalar_t__ dwSource; int /*<<< orphan*/  dwDestination; } ;
+
+
+typedef struct TYPE_16__ TYPE_6__ ;
+typedef struct TYPE_15__ TYPE_5__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+typedef scalar_t__ UINT ;
+struct TYPE_16__ {int cbStruct; scalar_t__ szName; scalar_t__ dwSource; int dwDestination; } ;
 struct TYPE_15__ {scalar_t__ hmx; } ;
-struct TYPE_12__ {scalar_t__ cConnections; int /*<<< orphan*/  dwDestination; } ;
+struct TYPE_12__ {scalar_t__ cConnections; int dwDestination; } ;
 struct TYPE_14__ {TYPE_2__* Connections; TYPE_1__ Info; } ;
-struct TYPE_13__ {struct TYPE_13__* Next; scalar_t__ DisplayControls; int /*<<< orphan*/ * Controls; TYPE_6__ Info; } ;
-typedef  TYPE_2__ SND_MIXER_CONNECTION ;
-typedef  TYPE_3__* PSND_MIXER_DESTINATION ;
-typedef  TYPE_2__* PSND_MIXER_CONNECTION ;
-typedef  TYPE_5__* PSND_MIXER ;
-typedef  scalar_t__ MMRESULT ;
-typedef  TYPE_6__ MIXERLINE ;
-typedef  int /*<<< orphan*/  LineInfo ;
-typedef  int /*<<< orphan*/ * LPMIXERCONTROL ;
-typedef  int /*<<< orphan*/  HMIXEROBJ ;
-typedef  int /*<<< orphan*/  BOOL ;
+struct TYPE_13__ {struct TYPE_13__* Next; scalar_t__ DisplayControls; int * Controls; TYPE_6__ Info; } ;
+typedef TYPE_2__ SND_MIXER_CONNECTION ;
+typedef TYPE_3__* PSND_MIXER_DESTINATION ;
+typedef TYPE_2__* PSND_MIXER_CONNECTION ;
+typedef TYPE_5__* PSND_MIXER ;
+typedef scalar_t__ MMRESULT ;
+typedef TYPE_6__ MIXERLINE ;
+typedef int LineInfo ;
+typedef int * LPMIXERCONTROL ;
+typedef int HMIXEROBJ ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPRINT (char*,...) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HEAP_ZERO_MEMORY ; 
- scalar_t__ HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  MIXER_GETLINEINFOF_SOURCE ; 
- scalar_t__ MMSYSERR_NOERROR ; 
- int /*<<< orphan*/  SndMixerQueryControls (TYPE_5__*,scalar_t__*,TYPE_6__*,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  TRUE ; 
- scalar_t__ mixerGetLineInfo (int /*<<< orphan*/ ,TYPE_6__*,int /*<<< orphan*/ ) ; 
+
+ int DPRINT (char*,...) ;
+ int FALSE ;
+ int GetProcessHeap () ;
+ int HEAP_ZERO_MEMORY ;
+ scalar_t__ HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,int *) ;
+ int MIXER_GETLINEINFOF_SOURCE ;
+ scalar_t__ MMSYSERR_NOERROR ;
+ int SndMixerQueryControls (TYPE_5__*,scalar_t__*,TYPE_6__*,int **) ;
+ int TRUE ;
+ scalar_t__ mixerGetLineInfo (int ,TYPE_6__*,int ) ;
 
 __attribute__((used)) static BOOL
 SndMixerQueryConnections(PSND_MIXER Mixer,
@@ -64,7 +64,7 @@ SndMixerQueryConnections(PSND_MIXER Mixer,
                                   MIXER_GETLINEINFOF_SOURCE);
         if (Result == MMSYSERR_NOERROR)
         {
-            LPMIXERCONTROL Controls = NULL;
+            LPMIXERCONTROL Controls = ((void*)0);
             PSND_MIXER_CONNECTION Con;
 
             DPRINT("++ Source: %ws\n", LineInfo.szName);
@@ -84,7 +84,7 @@ SndMixerQueryConnections(PSND_MIXER Mixer,
             Con = (SND_MIXER_CONNECTION*) HeapAlloc(GetProcessHeap(),
                             HEAP_ZERO_MEMORY,
                             sizeof(SND_MIXER_CONNECTION));
-            if (Con != NULL)
+            if (Con != ((void*)0))
             {
                 Con->Info = LineInfo;
                 Con->Controls = Controls;

@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct tl_query_header {int op; long long actor_id; int flags; scalar_t__ string_forward_keys_pos; scalar_t__ string_forward_keys_num; scalar_t__ int_forward_keys_pos; scalar_t__ int_forward_keys_num; long long wait_binlog_pos; long long* int_forward_keys; long long int_forward; long long wait_binlog_time; long long binlog_pos; long long binlog_time; int /*<<< orphan*/  custom_timeout; int /*<<< orphan*/  string_forward; int /*<<< orphan*/ * string_forward_keys; int /*<<< orphan*/  kitten_php_delay; int /*<<< orphan*/  invoke_kphp_req_extra; } ;
 
-/* Variables and functions */
- int RPC_DEST_ACTOR ; 
- int /*<<< orphan*/  RPC_DEST_ACTOR_FLAGS ; 
- scalar_t__ RPC_INVOKE_KPHP_REQ ; 
- scalar_t__ RPC_INVOKE_REQ ; 
- int RPC_REQ_ERROR ; 
- int RPC_REQ_ERROR_WRAPPED ; 
- int RPC_REQ_RESULT ; 
- int /*<<< orphan*/  RPC_REQ_RESULT_FLAGS ; 
- long long TL_OUT_QID ; 
- int TL_QUERY_HEADER_FLAG_CUSTOM_TIMEOUT ; 
- int TL_QUERY_HEADER_FLAG_INT_FORWARD ; 
- int TL_QUERY_HEADER_FLAG_INT_FORWARD_KEYS ; 
- int TL_QUERY_HEADER_FLAG_KPHP_DELAY ; 
- int TL_QUERY_HEADER_FLAG_STRING_FORWARD ; 
- int TL_QUERY_HEADER_FLAG_STRING_FORWARD_KEYS ; 
- int TL_QUERY_HEADER_FLAG_WAIT_BINLOG ; 
- int TL_QUERY_HEADER_FLAG_WAIT_BINLOG_TIME ; 
- int TL_QUERY_RESULT_HEADER_FLAG_BINLOG_POS ; 
- int TL_QUERY_RESULT_HEADER_FLAG_BINLOG_TIME ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  memcpy (int*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  strlen (int /*<<< orphan*/ ) ; 
- int tl_write_string (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int) ; 
+
+
+
+struct tl_query_header {int op; long long actor_id; int flags; scalar_t__ string_forward_keys_pos; scalar_t__ string_forward_keys_num; scalar_t__ int_forward_keys_pos; scalar_t__ int_forward_keys_num; long long wait_binlog_pos; long long* int_forward_keys; long long int_forward; long long wait_binlog_time; long long binlog_pos; long long binlog_time; int custom_timeout; int string_forward; int * string_forward_keys; int kitten_php_delay; int invoke_kphp_req_extra; } ;
+
+
+ int RPC_DEST_ACTOR ;
+ int RPC_DEST_ACTOR_FLAGS ;
+ scalar_t__ RPC_INVOKE_KPHP_REQ ;
+ scalar_t__ RPC_INVOKE_REQ ;
+ int RPC_REQ_ERROR ;
+ int RPC_REQ_ERROR_WRAPPED ;
+ int RPC_REQ_RESULT ;
+ int RPC_REQ_RESULT_FLAGS ;
+ long long TL_OUT_QID ;
+ int TL_QUERY_HEADER_FLAG_CUSTOM_TIMEOUT ;
+ int TL_QUERY_HEADER_FLAG_INT_FORWARD ;
+ int TL_QUERY_HEADER_FLAG_INT_FORWARD_KEYS ;
+ int TL_QUERY_HEADER_FLAG_KPHP_DELAY ;
+ int TL_QUERY_HEADER_FLAG_STRING_FORWARD ;
+ int TL_QUERY_HEADER_FLAG_STRING_FORWARD_KEYS ;
+ int TL_QUERY_HEADER_FLAG_WAIT_BINLOG ;
+ int TL_QUERY_HEADER_FLAG_WAIT_BINLOG_TIME ;
+ int TL_QUERY_RESULT_HEADER_FLAG_BINLOG_POS ;
+ int TL_QUERY_RESULT_HEADER_FLAG_BINLOG_TIME ;
+ int assert (int) ;
+ int memcpy (int*,int ,int) ;
+ int strlen (int ) ;
+ int tl_write_string (int ,int ,char*,int) ;
 
 int tl_write_header (struct tl_query_header *header, int *buf, int size) {
   int _size = size;
@@ -152,7 +152,7 @@ int tl_write_header (struct tl_query_header *header, int *buf, int size) {
         buf += 2;
         size -= 8;
       }
-      return _size - size; 
+      return _size - size;
     }
     return 0;
   } else if (header->op == RPC_REQ_ERROR) {

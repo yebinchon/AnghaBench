@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_object_t ;
-typedef  int uint8_t ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int vlc_object_t ;
+typedef int uint8_t ;
 struct sockaddr {int dummy; } ;
 struct in_addr {int dummy; } ;
-typedef  struct in_addr in6_addr ;
-struct TYPE_6__ {scalar_t__ mediac; int i_media_type; int rtcp_port; int /*<<< orphan*/  psz_uri; TYPE_1__* mediav; } ;
-typedef  TYPE_2__ sdp_t ;
-typedef  int /*<<< orphan*/  psz_uri ;
-typedef  int /*<<< orphan*/  psz_source ;
-struct TYPE_5__ {int n_addr; scalar_t__ addrlen; char const* fmt; int /*<<< orphan*/  addr; } ;
+typedef struct in_addr in6_addr ;
+struct TYPE_6__ {scalar_t__ mediac; int i_media_type; int rtcp_port; int psz_uri; TYPE_1__* mediav; } ;
+typedef TYPE_2__ sdp_t ;
+typedef int psz_uri ;
+typedef int psz_source ;
+struct TYPE_5__ {int n_addr; scalar_t__ addrlen; char const* fmt; int addr; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_INET ; 
- int /*<<< orphan*/  AF_INET6 ; 
- char* FindAttribute (TYPE_2__*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  NI_NUMERICHOST ; 
- int VLC_EGENERIC ; 
- int VLC_ENOMEM ; 
- int VLC_SUCCESS ; 
- int asprintf (int /*<<< orphan*/ *,char*,char const*,char const*,...) ; 
- void* atoi (char const*) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/ * inet_ntop (int /*<<< orphan*/ ,struct in_addr*,char*,int) ; 
- int /*<<< orphan*/  inet_pton (int /*<<< orphan*/ ,char*,struct in_addr*) ; 
- scalar_t__ memcmp (int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  msg_Dbg (int /*<<< orphan*/ *,char*,...) ; 
- int sscanf (char const*,char*,unsigned int*,char*) ; 
- scalar_t__ strcasecmp (char const*,char*) ; 
- int /*<<< orphan*/  strcat (char*,char*) ; 
- char* strchr (char*,char) ; 
- scalar_t__ strcmp (char const*,char*) ; 
- char* strdup (char const*) ; 
- size_t strlen (char const*) ; 
- scalar_t__ vlc_getnameinfo (struct sockaddr*,scalar_t__,char*,int,int*,int /*<<< orphan*/ ) ; 
+
+ int AF_INET ;
+ int AF_INET6 ;
+ char* FindAttribute (TYPE_2__*,int ,char*) ;
+ int NI_NUMERICHOST ;
+ int VLC_EGENERIC ;
+ int VLC_ENOMEM ;
+ int VLC_SUCCESS ;
+ int asprintf (int *,char*,char const*,char const*,...) ;
+ void* atoi (char const*) ;
+ int free (char*) ;
+ int * inet_ntop (int ,struct in_addr*,char*,int) ;
+ int inet_pton (int ,char*,struct in_addr*) ;
+ scalar_t__ memcmp (int *,int *,scalar_t__) ;
+ int msg_Dbg (int *,char*,...) ;
+ int sscanf (char const*,char*,unsigned int*,char*) ;
+ scalar_t__ strcasecmp (char const*,char*) ;
+ int strcat (char*,char*) ;
+ char* strchr (char*,char) ;
+ scalar_t__ strcmp (char const*,char*) ;
+ char* strdup (char const*) ;
+ size_t strlen (char const*) ;
+ scalar_t__ vlc_getnameinfo (struct sockaddr*,scalar_t__,char*,int,int*,int ) ;
 
 __attribute__((used)) static int ParseConnection( vlc_object_t *p_obj, sdp_t *p_sdp )
 {
@@ -91,13 +91,13 @@ __attribute__((used)) static int ParseConnection( vlc_object_t *p_obj, sdp_t *p_
     else
         host = psz_uri + 1;
 
-    /* Parse m= field */
+
     char *sdp_proto = strdup (p_sdp->mediav[0].fmt);
-    if (sdp_proto == NULL)
+    if (sdp_proto == ((void*)0))
         return VLC_ENOMEM;
 
     char *subtype = strchr (sdp_proto, ' ');
-    if (subtype == NULL)
+    if (subtype == ((void*)0))
     {
         msg_Dbg (p_obj, "missing SDP media subtype: %s", sdp_proto);
         free (sdp_proto);
@@ -106,25 +106,25 @@ __attribute__((used)) static int ParseConnection( vlc_object_t *p_obj, sdp_t *p_
     else
     {
         *subtype++ = '\0';
-        /* FIXME: check for multiple payload types in RTP/AVP case.
-         * FIXME: check for "mpeg" subtype in raw udp case. */
+
+
         if (!strcasecmp (sdp_proto, "udp"))
             p_sdp->i_media_type = 33;
         else
             p_sdp->i_media_type = atoi (subtype);
     }
 
-    /* RTP protocol, nul, VLC shortcut, nul, flags byte as follow:
-     * 0x1: Connection-Oriented media. */
+
+
     static const char proto_match[] =
-        "udp\0"             "udp\0\0"
-        "RTP/AVP\0"         "rtp\0\0"
+        "udp\0" "udp\0\0"
+        "RTP/AVP\0" "rtp\0\0"
         "UDPLite/RTP/AVP\0" "udplite\0\0"
-        "DCCP/RTP/AVP\0"    "dccp\0\1"
-        "TCP/RTP/AVP\0"     "rtptcp\0\1"
+        "DCCP/RTP/AVP\0" "dccp\0\1"
+        "TCP/RTP/AVP\0" "rtptcp\0\1"
         "\0";
 
-    const char *vlc_proto = NULL;
+    const char *vlc_proto = ((void*)0);
     uint8_t flags = 0;
     for (const char *proto = proto_match; *proto;)
     {
@@ -139,7 +139,7 @@ __attribute__((used)) static int ParseConnection( vlc_object_t *p_obj, sdp_t *p_
     }
 
     free (sdp_proto);
-    if (vlc_proto == NULL)
+    if (vlc_proto == ((void*)0))
     {
         msg_Dbg (p_obj, "unknown SDP media protocol: %s",
                  p_sdp->mediav[0].fmt);
@@ -154,18 +154,18 @@ __attribute__((used)) static int ParseConnection( vlc_object_t *p_obj, sdp_t *p_
         if (rtcp)
             p_sdp->rtcp_port = atoi (rtcp);
         else
-        if (port & 1) /* odd port -> RTCP; next even port -> RTP */
+        if (port & 1)
             p_sdp->rtcp_port = port++;
-        else /* even port -> RTP; next odd port -> RTCP */
+        else
             p_sdp->rtcp_port = port + 1;
     }
 
     if (flags & 1)
     {
-        /* Connection-oriented media */
+
         const char *setup = FindAttribute (p_sdp, 0, "setup");
-        if (setup == NULL)
-            setup = "active"; /* default value */
+        if (setup == ((void*)0))
+            setup = "active";
 
         if (strcmp (setup, "actpass") && strcmp (setup, "passive"))
         {
@@ -179,10 +179,10 @@ __attribute__((used)) static int ParseConnection( vlc_object_t *p_obj, sdp_t *p_
     }
     else
     {
-        /* Non-connected (normally multicast) media */
+
         char psz_source[258] = "";
         const char *sfilter = FindAttribute (p_sdp, 0, "source-filter");
-        if (sfilter != NULL)
+        if (sfilter != ((void*)0))
         {
             char psz_source_ip[256];
             unsigned ipv;
@@ -190,30 +190,16 @@ __attribute__((used)) static int ParseConnection( vlc_object_t *p_obj, sdp_t *p_
             if (sscanf (sfilter, " incl IN IP%u %*s %255s ", &ipv,
                         psz_source_ip) == 2)
             {
-                /* According to RFC4570, FQDNs can be used for source-filters,
-                 * but -seriously- this is impractical */
+
+
                 switch (ipv)
                 {
-#ifdef AF_INET6
-                    case 6:
-                    {
-                        struct in6_addr addr;
-                        if ((inet_pton (AF_INET6, psz_source_ip, &addr) > 0)
-                        && (inet_ntop (AF_INET6, &addr, psz_source + 1,
-                                        sizeof (psz_source) - 2) != NULL))
-                        {
-                            psz_source[0] = '[';
-                            psz_source[strlen (psz_source)] = ']';
-                        }
-                        break;
-                    }
-#endif
                     case 4:
                     {
                         struct in_addr addr;
                         if ((inet_pton (AF_INET, psz_source_ip, &addr) > 0)
                         && (inet_ntop (AF_INET, &addr, psz_source,
-                                        sizeof (psz_source)) == NULL))
+                                        sizeof (psz_source)) == ((void*)0)))
                             *psz_source = '\0';
                         break;
                     }

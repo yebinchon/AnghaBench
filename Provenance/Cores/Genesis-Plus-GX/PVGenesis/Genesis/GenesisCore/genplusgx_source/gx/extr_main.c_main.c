@@ -1,89 +1,79 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {scalar_t__ autoload; } ;
-typedef  int /*<<< orphan*/  DIR ;
+typedef int DIR ;
 
-/* Variables and functions */
- scalar_t__ ConfigRequested ; 
- char* DEFAULT_PATH ; 
- int /*<<< orphan*/  DI_Init () ; 
- int /*<<< orphan*/  DI_UseCache (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DVD_Init () ; 
- int IOS_GetVersion () ; 
- int /*<<< orphan*/  L2Enhance () ; 
- scalar_t__ LoadFile (int /*<<< orphan*/ ) ; 
- int MAXPATHLEN ; 
- scalar_t__ OpenDirectory (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  PowerOff_cb ; 
- int /*<<< orphan*/  Reset_cb ; 
- int SILENT ; 
- int /*<<< orphan*/  SYS_SetPowerCallback (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SYS_SetResetCallback (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  S_IRWXU ; 
- int /*<<< orphan*/  TYPE_RECENT ; 
- char* VERSION ; 
- int /*<<< orphan*/  closedir (int /*<<< orphan*/ *) ; 
- TYPE_1__ config ; 
- int /*<<< orphan*/  config_default () ; 
- int fatInitDefault () ; 
- int /*<<< orphan*/  gx_audio_Init () ; 
- int /*<<< orphan*/  gx_audio_Start () ; 
- int /*<<< orphan*/  gx_input_Init () ; 
- int /*<<< orphan*/  gx_video_Init () ; 
- int /*<<< orphan*/  gx_video_Start () ; 
- int /*<<< orphan*/  history_default () ; 
- int /*<<< orphan*/  init_machine () ; 
- int /*<<< orphan*/  legal () ; 
- int /*<<< orphan*/  mkdir (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * opendir (char*) ; 
- char* osd_version ; 
- int /*<<< orphan*/  reloadrom () ; 
- int /*<<< orphan*/  run_emulation () ; 
- int /*<<< orphan*/  sprintf (char*,char*,...) ; 
- int /*<<< orphan*/  usleep (int) ; 
+
+ scalar_t__ ConfigRequested ;
+ char* DEFAULT_PATH ;
+ int DI_Init () ;
+ int DI_UseCache (int ) ;
+ int DVD_Init () ;
+ int IOS_GetVersion () ;
+ int L2Enhance () ;
+ scalar_t__ LoadFile (int ) ;
+ int MAXPATHLEN ;
+ scalar_t__ OpenDirectory (int ,int) ;
+ int PowerOff_cb ;
+ int Reset_cb ;
+ int SILENT ;
+ int SYS_SetPowerCallback (int ) ;
+ int SYS_SetResetCallback (int ) ;
+ int S_IRWXU ;
+ int TYPE_RECENT ;
+ char* VERSION ;
+ int closedir (int *) ;
+ TYPE_1__ config ;
+ int config_default () ;
+ int fatInitDefault () ;
+ int gx_audio_Init () ;
+ int gx_audio_Start () ;
+ int gx_input_Init () ;
+ int gx_video_Init () ;
+ int gx_video_Start () ;
+ int history_default () ;
+ int init_machine () ;
+ int legal () ;
+ int mkdir (char*,int ) ;
+ int * opendir (char*) ;
+ char* osd_version ;
+ int reloadrom () ;
+ int run_emulation () ;
+ int sprintf (char*,char*,...) ;
+ int usleep (int) ;
 
 int main (int argc, char *argv[])
 {
- #ifdef HW_RVL
-  /* enable 64-byte fetch mode for L2 cache */
-  L2Enhance();
-  
-  /* initialize DI interface */
-  DI_UseCache(0);
-  DI_Init();
-
-  sprintf(osd_version, "%s (IOS %d)", VERSION, IOS_GetVersion());
-#else
   sprintf(osd_version, "%s (GCN)", VERSION);
-#endif
 
-  /* initialize video engine */
+
+
   gx_video_Init();
 
-#ifndef HW_RVL
-  /* initialize DVD interface */
-  DVD_Init();
-#endif
 
-  /* initialize input engine */
+
+  DVD_Init();
+
+
+
   gx_input_Init();
 
-  /* initialize FAT devices */
+
   int retry = 0;
   int fatMounted = 0;
 
-  /* try to mount FAT devices during 3 seconds */
+
   while (!fatMounted && (retry < 12))
   {
     fatMounted = fatInitDefault();
@@ -93,14 +83,14 @@ int main (int argc, char *argv[])
 
   if (fatMounted)
   {
-    /* base directory */
+
     char pathname[MAXPATHLEN];
     sprintf (pathname, DEFAULT_PATH);
     DIR *dir = opendir(pathname);
     if (dir) closedir(dir);
     else mkdir(pathname,S_IRWXU);
 
-    /* default SRAM & Savestate files directories */ 
+
     sprintf (pathname, "%s/saves",DEFAULT_PATH);
     dir = opendir(pathname);
     if (dir) closedir(dir);
@@ -126,7 +116,7 @@ int main (int argc, char *argv[])
     if (dir) closedir(dir);
     else mkdir(pathname,S_IRWXU);
 
-    /* default Snapshot files directories */ 
+
     sprintf (pathname, "%s/snaps",DEFAULT_PATH);
     dir = opendir(pathname);
     if (dir) closedir(dir);
@@ -152,7 +142,7 @@ int main (int argc, char *argv[])
     if (dir) closedir(dir);
     else mkdir(pathname,S_IRWXU);
 
-    /* default Cheat files directories */ 
+
     sprintf (pathname, "%s/cheats",DEFAULT_PATH);
     dir = opendir(pathname);
     if (dir) closedir(dir);
@@ -178,28 +168,28 @@ int main (int argc, char *argv[])
     if (dir) closedir(dir);
     else mkdir(pathname,S_IRWXU);
 
-    /* default BIOS ROM files directories */ 
+
     sprintf (pathname, "%s/bios",DEFAULT_PATH);
     dir = opendir(pathname);
     if (dir) closedir(dir);
     else mkdir(pathname,S_IRWXU);
 
-    /* default LOCK-ON ROM files directories */ 
+
     sprintf (pathname, "%s/lock-on",DEFAULT_PATH);
     dir = opendir(pathname);
     if (dir) closedir(dir);
     else mkdir(pathname,S_IRWXU);
   }
 
-  /* initialize sound engine */
+
   gx_audio_Init();
 
-  /* initialize genesis plus core */
+
   history_default();
   config_default();
   init_machine();
 
-  /* auto-load last ROM file */
+
   if (config.autoload)
   {
     SILENT = 1;
@@ -216,23 +206,23 @@ int main (int argc, char *argv[])
     SILENT = 0;
   }
 
-  /* show disclaimer */
+
   if (ConfigRequested)
   {
     legal();
   }
 
-#ifdef HW_RVL
-  /* power button callback */
-  SYS_SetPowerCallback(PowerOff_cb);
-#endif
 
-  /* reset button callback */
+
+
+
+
+
   SYS_SetResetCallback(Reset_cb);
 
-  /* main emulation loop */
+
   run_emulation();
 
-  /* we should never return anyway */
+
   return 0;
 }

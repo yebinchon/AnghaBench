@@ -1,60 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct curltime {int dummy; } ;
-struct Curl_tree {struct Curl_tree* smaller; struct Curl_tree* larger; int /*<<< orphan*/  key; } ;
+struct Curl_tree {struct Curl_tree* smaller; struct Curl_tree* larger; int key; } ;
 
-/* Variables and functions */
- long compare (struct curltime,int /*<<< orphan*/ ) ; 
+
+ long compare (struct curltime,int ) ;
 
 struct Curl_tree *Curl_splay(struct curltime i,
                              struct Curl_tree *t)
 {
   struct Curl_tree N, *l, *r, *y;
 
-  if(t == NULL)
+  if(t == ((void*)0))
     return t;
-  N.smaller = N.larger = NULL;
+  N.smaller = N.larger = ((void*)0);
   l = r = &N;
 
   for(;;) {
     long comp = compare(i, t->key);
     if(comp < 0) {
-      if(t->smaller == NULL)
+      if(t->smaller == ((void*)0))
         break;
       if(compare(i, t->smaller->key) < 0) {
-        y = t->smaller;                           /* rotate smaller */
+        y = t->smaller;
         t->smaller = y->larger;
         y->larger = t;
         t = y;
-        if(t->smaller == NULL)
+        if(t->smaller == ((void*)0))
           break;
       }
-      r->smaller = t;                               /* link smaller */
+      r->smaller = t;
       r = t;
       t = t->smaller;
     }
     else if(comp > 0) {
-      if(t->larger == NULL)
+      if(t->larger == ((void*)0))
         break;
       if(compare(i, t->larger->key) > 0) {
-        y = t->larger;                          /* rotate larger */
+        y = t->larger;
         t->larger = y->smaller;
         y->smaller = t;
         t = y;
-        if(t->larger == NULL)
+        if(t->larger == ((void*)0))
           break;
       }
-      l->larger = t;                              /* link larger */
+      l->larger = t;
       l = t;
       t = t->larger;
     }
@@ -62,7 +62,7 @@ struct Curl_tree *Curl_splay(struct curltime i,
       break;
   }
 
-  l->larger = t->smaller;                                /* assemble */
+  l->larger = t->smaller;
   r->smaller = t->larger;
   t->smaller = N.larger;
   t->larger = N.smaller;

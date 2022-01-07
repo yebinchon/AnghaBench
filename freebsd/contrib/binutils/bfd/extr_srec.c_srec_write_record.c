@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int bfd_vma ;
-typedef  int bfd_size_type ;
-typedef  unsigned int bfd_byte ;
-typedef  int bfd_boolean ;
-typedef  int /*<<< orphan*/  bfd ;
 
-/* Variables and functions */
- int MAXCHUNK ; 
- int /*<<< orphan*/  TOHEX (char*,unsigned int const,unsigned int) ; 
- int bfd_bwrite (void*,int,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int bfd_vma ;
+typedef int bfd_size_type ;
+typedef unsigned int bfd_byte ;
+typedef int bfd_boolean ;
+typedef int bfd ;
+
+
+ int MAXCHUNK ;
+ int TOHEX (char*,unsigned int const,unsigned int) ;
+ int bfd_bwrite (void*,int,int *) ;
 
 __attribute__((used)) static bfd_boolean
 srec_write_record (bfd *abfd,
-		   unsigned int type,
-		   bfd_vma address,
-		   const bfd_byte *data,
-		   const bfd_byte *end)
+     unsigned int type,
+     bfd_vma address,
+     const bfd_byte *data,
+     const bfd_byte *end)
 {
   char buffer[2 * MAXCHUNK + 6];
   unsigned int check_sum = 0;
@@ -39,7 +39,7 @@ srec_write_record (bfd *abfd,
   *dst++ = '0' + type;
 
   length = dst;
-  dst += 2;			/* Leave room for dst.  */
+  dst += 2;
 
   switch (type)
     {
@@ -67,7 +67,7 @@ srec_write_record (bfd *abfd,
       dst += 2;
     }
 
-  /* Fill in the length.  */
+
   TOHEX (length, (dst - length) / 2, check_sum);
   check_sum &= 0xff;
   check_sum = 255 - check_sum;

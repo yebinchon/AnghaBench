@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct wavesynth_context {int* pink_pool; int /*<<< orphan*/  pink_state; int /*<<< orphan*/  pink_need; scalar_t__ pink_pos; } ;
-typedef  int int32_t ;
 
-/* Variables and functions */
- int PINK_UNIT ; 
- scalar_t__ lcg_next (int /*<<< orphan*/ *) ; 
+
+
+
+struct wavesynth_context {int* pink_pool; int pink_state; int pink_need; scalar_t__ pink_pos; } ;
+typedef int int32_t ;
+
+
+ int PINK_UNIT ;
+ scalar_t__ lcg_next (int *) ;
 
 __attribute__((used)) static void pink_fill(struct wavesynth_context *ws)
 {
@@ -35,5 +35,5 @@ __attribute__((used)) static void pink_fill(struct wavesynth_context *ws)
         }
         ws->pink_pool[i] = v + ((int32_t)lcg_next(&ws->pink_state) >> 3);
     }
-    lcg_next(&ws->pink_state); /* so we use exactly 256 steps */
+    lcg_next(&ws->pink_state);
 }

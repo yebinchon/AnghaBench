@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct gather_entry {int res_read; int res_bytes; struct gather_chunk* last; struct gather_chunk* first; } ;
 struct gather_chunk {scalar_t__ data; struct gather_chunk* next; } ;
-typedef  int /*<<< orphan*/  nb_allocator_t ;
+typedef int nb_allocator_t ;
 
-/* Variables and functions */
- int CHUNK_INTS ; 
- int /*<<< orphan*/  assert (int) ; 
- struct gather_chunk* nbr_alloc (int /*<<< orphan*/ ,int) ; 
+
+ int CHUNK_INTS ;
+ int assert (int) ;
+ struct gather_chunk* nbr_alloc (int ,int) ;
 
 __attribute__((used)) static int client_result_alloc (nb_allocator_t Alloc, struct gather_entry *E, char **to) {
   int b = E->res_read, r;

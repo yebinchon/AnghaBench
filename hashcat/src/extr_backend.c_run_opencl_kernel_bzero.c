@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u64 ;
-typedef  int /*<<< orphan*/  hc_device_param_t ;
-typedef  int /*<<< orphan*/  hashcat_ctx_t ;
-typedef  int /*<<< orphan*/  cl_mem ;
 
-/* Variables and functions */
- int run_opencl_kernel_memset (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/  const) ; 
+
+
+
+typedef int u64 ;
+typedef int hc_device_param_t ;
+typedef int hashcat_ctx_t ;
+typedef int cl_mem ;
+
+
+ int run_opencl_kernel_memset (int *,int *,int ,int ,int const) ;
 
 int run_opencl_kernel_bzero (hashcat_ctx_t *hashcat_ctx, hc_device_param_t *device_param, cl_mem buf, const u64 size)
 {

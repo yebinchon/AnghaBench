@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wchar_t ;
-typedef  int /*<<< orphan*/  UINT ;
-struct TYPE_4__ {int /*<<< orphan*/  (* Write ) (TYPE_1__*,int /*<<< orphan*/ *) ;} ;
-typedef  TYPE_1__ CONSOLE ;
 
-/* Variables and functions */
- char* CopyUniToStr (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Free (char*) ; 
- int ParseHostPort (char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * _UU (char*) ; 
- int /*<<< orphan*/  stub1 (TYPE_1__*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int wchar_t ;
+typedef int UINT ;
+struct TYPE_4__ {int (* Write ) (TYPE_1__*,int *) ;} ;
+typedef TYPE_1__ CONSOLE ;
+
+
+ char* CopyUniToStr (int *) ;
+ int Free (char*) ;
+ int ParseHostPort (char*,int *,int *,int ) ;
+ int * _UU (char*) ;
+ int stub1 (TYPE_1__*,int *) ;
 
 bool CmdEvalHostAndPort(CONSOLE *c, wchar_t *str, void *param)
 {
-	char *tmp;
-	bool ret = false;
-	// Validate arguments
-	if (c == NULL || str == NULL)
-	{
-		return false;
-	}
+ char *tmp;
+ bool ret = 0;
 
-	tmp = CopyUniToStr(str);
+ if (c == ((void*)0) || str == ((void*)0))
+ {
+  return 0;
+ }
 
-	ret = ParseHostPort(tmp, NULL, NULL, (UINT)param);
+ tmp = CopyUniToStr(str);
 
-	if (ret == false)
-	{
-		c->Write(c, param == NULL ? _UU("CMD_HOSTPORT_EVAL_FAILED") : (wchar_t *)param);
-	}
+ ret = ParseHostPort(tmp, ((void*)0), ((void*)0), (UINT)param);
 
-	Free(tmp);
+ if (ret == 0)
+ {
+  c->Write(c, param == ((void*)0) ? _UU("CMD_HOSTPORT_EVAL_FAILED") : (wchar_t *)param);
+ }
 
-	return ret;
+ Free(tmp);
+
+ return ret;
 }

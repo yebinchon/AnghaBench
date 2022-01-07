@@ -1,30 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- size_t strcspn (char*,char*) ; 
- char* strndup (char*,size_t) ; 
- int strtol (char*,int /*<<< orphan*/ *,int) ; 
- scalar_t__ unlikely (int) ; 
+ size_t strcspn (char*,char*) ;
+ char* strndup (char*,size_t) ;
+ int strtol (char*,int *,int) ;
+ scalar_t__ unlikely (int) ;
 
 __attribute__((used)) static bool get_token( char **ppsz_path, char **ppsz_token, int *pi_number )
 {
     size_t i_len ;
     if( !*ppsz_path[0] )
     {
-        *ppsz_token = NULL;
+        *ppsz_token = ((void*)0);
         *pi_number = 0;
-        return true;
+        return 1;
     }
     i_len = strcspn( *ppsz_path, "/[" );
     if( !i_len && **ppsz_path == '/' )
@@ -33,15 +25,15 @@ __attribute__((used)) static bool get_token( char **ppsz_path, char **ppsz_token
     }
     *ppsz_token = strndup( *ppsz_path, i_len );
     if( unlikely(!*ppsz_token) )
-        return false;
+        return 0;
 
     *ppsz_path += i_len;
 
-    /* Parse the token number token[n] */
+
     if( **ppsz_path == '[' )
     {
         (*ppsz_path)++;
-        *pi_number = strtol( *ppsz_path, NULL, 10 );
+        *pi_number = strtol( *ppsz_path, ((void*)0), 10 );
         while( **ppsz_path && **ppsz_path != ']' )
         {
             (*ppsz_path)++;
@@ -56,11 +48,11 @@ __attribute__((used)) static bool get_token( char **ppsz_path, char **ppsz_token
         *pi_number = 0;
     }
 
-    /* Forward to start of next token */
+
     while( **ppsz_path == '/' )
     {
         (*ppsz_path)++;
     }
 
-    return true;
+    return 1;
 }

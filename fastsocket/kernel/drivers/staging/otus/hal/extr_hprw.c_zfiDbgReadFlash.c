@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  zdev_t ;
-typedef  int u32_t ;
 
-/* Variables and functions */
- int ZM_CMD_FLASH_READ ; 
- int ZM_MAX_CMD_SIZE ; 
- int /*<<< orphan*/  ZM_OID_FLASH_READ ; 
- int zfIssueCmd (int /*<<< orphan*/ *,int*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int zdev_t ;
+typedef int u32_t ;
+
+
+ int ZM_CMD_FLASH_READ ;
+ int ZM_MAX_CMD_SIZE ;
+ int ZM_OID_FLASH_READ ;
+ int zfIssueCmd (int *,int*,int,int ,int *) ;
 
 u32_t zfiDbgReadFlash(zdev_t *dev, u32_t addr, u32_t len)
 {
@@ -27,6 +27,6 @@ u32_t zfiDbgReadFlash(zdev_t *dev, u32_t addr, u32_t len)
     cmd[0] = len | (ZM_CMD_FLASH_READ << 8);
     cmd[1] = addr;
 
-    ret = zfIssueCmd(dev, cmd, 8, ZM_OID_FLASH_READ, NULL);
+    ret = zfIssueCmd(dev, cmd, 8, ZM_OID_FLASH_READ, ((void*)0));
     return ret;
 }

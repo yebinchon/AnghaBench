@@ -1,36 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  FILESIZE ; 
- void* MAP_FAILED ; 
- int /*<<< orphan*/  MAP_SHARED ; 
- int MS_INVALIDATE ; 
- int MS_SYNC ; 
- int O_CREAT ; 
- int O_RDWR ; 
- int O_TRUNC ; 
- int PROT_READ ; 
- int PROT_WRITE ; 
- int /*<<< orphan*/  S_IRWXU ; 
- int fsync (int) ; 
- void* mmap (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int msync (void*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  munmap (void*,int /*<<< orphan*/ ) ; 
- int open (char*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  perror (char*) ; 
- int /*<<< orphan*/  wbuffer ; 
- int write (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int FILESIZE ;
+ void* MAP_FAILED ;
+ int MAP_SHARED ;
+ int MS_INVALIDATE ;
+ int MS_SYNC ;
+ int O_CREAT ;
+ int O_RDWR ;
+ int O_TRUNC ;
+ int PROT_READ ;
+ int PROT_WRITE ;
+ int S_IRWXU ;
+ int fsync (int) ;
+ void* mmap (int *,int ,int,int ,int,int ) ;
+ int msync (void*,int ,int) ;
+ int munmap (void*,int ) ;
+ int open (char*,int,int ) ;
+ int perror (char*) ;
+ int wbuffer ;
+ int write (int,int ,int ) ;
 
 int prepareFile(char* filename,int* fdp)
 {
@@ -45,7 +37,7 @@ int prepareFile(char* filename,int* fdp)
       perror("Creating file");
       return fd;
     }
-  
+
   len = write(fd,wbuffer,FILESIZE);
   if (len < 0)
     {
@@ -57,10 +49,10 @@ int prepareFile(char* filename,int* fdp)
    if (status != 0)
     {
         perror("fsync failed");
-	return 1;
+ return 1;
     }
 
-  addr = mmap(NULL,FILESIZE, PROT_READ | PROT_WRITE , MAP_SHARED, fd, 0);
+  addr = mmap(((void*)0),FILESIZE, PROT_READ | PROT_WRITE , MAP_SHARED, fd, 0);
   if (addr == MAP_FAILED)
     {
       perror("Mmap failed");
@@ -71,7 +63,7 @@ int prepareFile(char* filename,int* fdp)
   if (status != 0)
     {
         perror("Msync failed");
-	return 1;
+ return 1;
     }
 
   munmap(addr,FILESIZE);

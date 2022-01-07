@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct sftp_handler {int /*<<< orphan*/  name; scalar_t__ does_write; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  debug2 (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (char*) ; 
- char* match_list (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ readonly ; 
- int /*<<< orphan*/ * request_blacklist ; 
- int /*<<< orphan*/ * request_whitelist ; 
- int /*<<< orphan*/  verbose (char*,int /*<<< orphan*/ ) ; 
+
+
+
+struct sftp_handler {int name; scalar_t__ does_write; } ;
+
+
+ int debug2 (char*,int ) ;
+ int free (char*) ;
+ char* match_list (int ,int *,int *) ;
+ scalar_t__ readonly ;
+ int * request_blacklist ;
+ int * request_whitelist ;
+ int verbose (char*,int ) ;
 
 __attribute__((used)) static int
 request_permitted(struct sftp_handler *h)
 {
-	char *result;
+ char *result;
 
-	if (readonly && h->does_write) {
-		verbose("Refusing %s request in read-only mode", h->name);
-		return 0;
-	}
-	if (request_blacklist != NULL &&
-	    ((result = match_list(h->name, request_blacklist, NULL))) != NULL) {
-		free(result);
-		verbose("Refusing blacklisted %s request", h->name);
-		return 0;
-	}
-	if (request_whitelist != NULL &&
-	    ((result = match_list(h->name, request_whitelist, NULL))) != NULL) {
-		free(result);
-		debug2("Permitting whitelisted %s request", h->name);
-		return 1;
-	}
-	if (request_whitelist != NULL) {
-		verbose("Refusing non-whitelisted %s request", h->name);
-		return 0;
-	}
-	return 1;
+ if (readonly && h->does_write) {
+  verbose("Refusing %s request in read-only mode", h->name);
+  return 0;
+ }
+ if (request_blacklist != ((void*)0) &&
+     ((result = match_list(h->name, request_blacklist, ((void*)0)))) != ((void*)0)) {
+  free(result);
+  verbose("Refusing blacklisted %s request", h->name);
+  return 0;
+ }
+ if (request_whitelist != ((void*)0) &&
+     ((result = match_list(h->name, request_whitelist, ((void*)0)))) != ((void*)0)) {
+  free(result);
+  debug2("Permitting whitelisted %s request", h->name);
+  return 1;
+ }
+ if (request_whitelist != ((void*)0)) {
+  verbose("Refusing non-whitelisted %s request", h->name);
+  return 0;
+ }
+ return 1;
 }

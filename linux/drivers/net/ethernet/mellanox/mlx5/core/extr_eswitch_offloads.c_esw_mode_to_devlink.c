@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u16 ;
 
-/* Variables and functions */
- int DEVLINK_ESWITCH_MODE_LEGACY ; 
- int DEVLINK_ESWITCH_MODE_SWITCHDEV ; 
- int EINVAL ; 
-#define  MLX5_ESWITCH_LEGACY 129 
-#define  MLX5_ESWITCH_OFFLOADS 128 
+
+
+
+typedef int u16 ;
+
+
+ int DEVLINK_ESWITCH_MODE_LEGACY ;
+ int DEVLINK_ESWITCH_MODE_SWITCHDEV ;
+ int EINVAL ;
+
+
 
 __attribute__((used)) static int esw_mode_to_devlink(u16 mlx5_mode, u16 *mode)
 {
-	switch (mlx5_mode) {
-	case MLX5_ESWITCH_LEGACY:
-		*mode = DEVLINK_ESWITCH_MODE_LEGACY;
-		break;
-	case MLX5_ESWITCH_OFFLOADS:
-		*mode = DEVLINK_ESWITCH_MODE_SWITCHDEV;
-		break;
-	default:
-		return -EINVAL;
-	}
+ switch (mlx5_mode) {
+ case 129:
+  *mode = DEVLINK_ESWITCH_MODE_LEGACY;
+  break;
+ case 128:
+  *mode = DEVLINK_ESWITCH_MODE_SWITCHDEV;
+  break;
+ default:
+  return -EINVAL;
+ }
 
-	return 0;
+ return 0;
 }

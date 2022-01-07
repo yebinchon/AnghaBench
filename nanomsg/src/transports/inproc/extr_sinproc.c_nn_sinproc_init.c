@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct nn_sinproc {int /*<<< orphan*/  item; int /*<<< orphan*/  event_disconnect; int /*<<< orphan*/  event_received; int /*<<< orphan*/  event_sent; int /*<<< orphan*/  event_connect; int /*<<< orphan*/  msg; int /*<<< orphan*/  msgqueue; int /*<<< orphan*/  pipebase; int /*<<< orphan*/ * peer; scalar_t__ flags; int /*<<< orphan*/  state; int /*<<< orphan*/  fsm; } ;
+
+
+
+
+struct nn_sinproc {int item; int event_disconnect; int event_received; int event_sent; int event_connect; int msg; int msgqueue; int pipebase; int * peer; scalar_t__ flags; int state; int fsm; } ;
 struct nn_fsm {int dummy; } ;
 struct nn_ep {int dummy; } ;
-typedef  int /*<<< orphan*/  rcvbuf ;
+typedef int rcvbuf ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NN_RCVBUF ; 
- int /*<<< orphan*/  NN_SINPROC_STATE_IDLE ; 
- int /*<<< orphan*/  NN_SOL_SOCKET ; 
- int /*<<< orphan*/  nn_assert (int) ; 
- int /*<<< orphan*/  nn_ep_getopt (struct nn_ep*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*,size_t*) ; 
- int /*<<< orphan*/  nn_fsm_event_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nn_fsm_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,struct nn_sinproc*,struct nn_fsm*) ; 
- int /*<<< orphan*/  nn_list_item_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nn_msg_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nn_msgqueue_init (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  nn_pipebase_init (int /*<<< orphan*/ *,int /*<<< orphan*/ *,struct nn_ep*) ; 
- int /*<<< orphan*/  nn_sinproc_handler ; 
- int /*<<< orphan*/  nn_sinproc_pipebase_vfptr ; 
- int /*<<< orphan*/  nn_sinproc_shutdown ; 
+
+ int NN_RCVBUF ;
+ int NN_SINPROC_STATE_IDLE ;
+ int NN_SOL_SOCKET ;
+ int nn_assert (int) ;
+ int nn_ep_getopt (struct nn_ep*,int ,int ,int*,size_t*) ;
+ int nn_fsm_event_init (int *) ;
+ int nn_fsm_init (int *,int ,int ,int,struct nn_sinproc*,struct nn_fsm*) ;
+ int nn_list_item_init (int *) ;
+ int nn_msg_init (int *,int ) ;
+ int nn_msgqueue_init (int *,int) ;
+ int nn_pipebase_init (int *,int *,struct nn_ep*) ;
+ int nn_sinproc_handler ;
+ int nn_sinproc_pipebase_vfptr ;
+ int nn_sinproc_shutdown ;
 
 void nn_sinproc_init (struct nn_sinproc *self, int src,
     struct nn_ep *ep, struct nn_fsm *owner)
@@ -41,7 +41,7 @@ void nn_sinproc_init (struct nn_sinproc *self, int src,
         src, self, owner);
     self->state = NN_SINPROC_STATE_IDLE;
     self->flags = 0;
-    self->peer = NULL;
+    self->peer = ((void*)0);
     nn_pipebase_init (&self->pipebase, &nn_sinproc_pipebase_vfptr, ep);
     sz = sizeof (rcvbuf);
     nn_ep_getopt (ep, NN_SOL_SOCKET, NN_RCVBUF, &rcvbuf, &sz);

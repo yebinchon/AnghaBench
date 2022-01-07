@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint64_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
-struct SRTPContext {int rtcp_hmac_size; int rtp_hmac_size; int seq_largest; int roc; int /*<<< orphan*/  hmac; int /*<<< orphan*/  rtp_auth; int /*<<< orphan*/  rtcp_auth; int /*<<< orphan*/  aes; int /*<<< orphan*/  rtp_key; int /*<<< orphan*/  rtcp_key; int /*<<< orphan*/  rtp_salt; int /*<<< orphan*/  rtcp_salt; int /*<<< orphan*/  rtcp_index; } ;
-typedef  int /*<<< orphan*/  hmac ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int AV_RB16 (int*) ; 
- int /*<<< orphan*/  AV_RB32 (int*) ; 
- int /*<<< orphan*/  AV_WB32 (int*,int) ; 
- int RTP_PT_IS_RTCP (int const) ; 
- int /*<<< orphan*/  av_aes_init (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_hmac_final (int /*<<< orphan*/ ,int*,int) ; 
- int /*<<< orphan*/  av_hmac_init (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  av_hmac_update (int /*<<< orphan*/ ,int*,int) ; 
- int /*<<< orphan*/  create_iv (int*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  encrypt_counter (int /*<<< orphan*/ ,int*,int*,int) ; 
- int /*<<< orphan*/  memcpy (int*,int const*,int) ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint64_t ;
+typedef int uint32_t ;
+struct SRTPContext {int rtcp_hmac_size; int rtp_hmac_size; int seq_largest; int roc; int hmac; int rtp_auth; int rtcp_auth; int aes; int rtp_key; int rtcp_key; int rtp_salt; int rtcp_salt; int rtcp_index; } ;
+typedef int hmac ;
+
+
+ int AVERROR_INVALIDDATA ;
+ int AV_RB16 (int*) ;
+ int AV_RB32 (int*) ;
+ int AV_WB32 (int*,int) ;
+ int RTP_PT_IS_RTCP (int const) ;
+ int av_aes_init (int ,int ,int,int ) ;
+ int av_hmac_final (int ,int*,int) ;
+ int av_hmac_init (int ,int ,int) ;
+ int av_hmac_update (int ,int*,int) ;
+ int create_iv (int*,int ,int,int ) ;
+ int encrypt_counter (int ,int*,int*,int) ;
+ int memcpy (int*,int const*,int) ;
 
 int ff_srtp_encrypt(struct SRTPContext *s, const uint8_t *in, int len,
                     uint8_t *out, int outlen)
@@ -46,7 +46,7 @@ int ff_srtp_encrypt(struct SRTPContext *s, const uint8_t *in, int len,
     hmac_size = rtcp ? s->rtcp_hmac_size : s->rtp_hmac_size;
     padding = hmac_size;
     if (rtcp)
-        padding += 4; // For the RTCP index
+        padding += 4;
 
     if (len + padding > outlen)
         return 0;

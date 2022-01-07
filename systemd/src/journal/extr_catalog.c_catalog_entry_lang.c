@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  EINVAL ; 
- int ENOMEM ; 
- int /*<<< orphan*/  SYNTHETIC_ERRNO (int /*<<< orphan*/ ) ; 
- int log_error_errno (int /*<<< orphan*/ ,char*,char const*,unsigned int) ; 
- int /*<<< orphan*/  log_warning (char*,char const*,unsigned int) ; 
- char* strdup (char const*) ; 
- scalar_t__ streq (char const*,char const*) ; 
- size_t strlen (char const*) ; 
+ int EINVAL ;
+ int ENOMEM ;
+ int SYNTHETIC_ERRNO (int ) ;
+ int log_error_errno (int ,char*,char const*,unsigned int) ;
+ int log_warning (char*,char const*,unsigned int) ;
+ char* strdup (char const*) ;
+ scalar_t__ streq (char const*,char const*) ;
+ size_t strlen (char const*) ;
 
 __attribute__((used)) static int catalog_entry_lang(
                 const char* filename,

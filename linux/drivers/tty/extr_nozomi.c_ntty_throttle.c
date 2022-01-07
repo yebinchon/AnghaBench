@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct tty_struct {int dummy; } ;
-struct nozomi {int /*<<< orphan*/  spin_mutex; } ;
+struct nozomi {int spin_mutex; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DBG1 (char*) ; 
- struct nozomi* get_dc_by_tty (struct tty_struct*) ; 
- int /*<<< orphan*/  set_rts (struct tty_struct*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
+
+ int DBG1 (char*) ;
+ struct nozomi* get_dc_by_tty (struct tty_struct*) ;
+ int set_rts (struct tty_struct*,int ) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
 
 __attribute__((used)) static void ntty_throttle(struct tty_struct *tty)
 {
-	struct nozomi *dc = get_dc_by_tty(tty);
-	unsigned long flags;
+ struct nozomi *dc = get_dc_by_tty(tty);
+ unsigned long flags;
 
-	DBG1("THROTTLE");
-	spin_lock_irqsave(&dc->spin_mutex, flags);
-	set_rts(tty, 0);
-	spin_unlock_irqrestore(&dc->spin_mutex, flags);
+ DBG1("THROTTLE");
+ spin_lock_irqsave(&dc->spin_mutex, flags);
+ set_rts(tty, 0);
+ spin_unlock_irqrestore(&dc->spin_mutex, flags);
 }

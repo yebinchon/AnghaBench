@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ti_sysc_platform_data {int /*<<< orphan*/  (* clkdm_allow_idle ) (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ;} ;
-struct sysc {int /*<<< orphan*/  cookie; int /*<<< orphan*/  dev; scalar_t__ legacy_mode; } ;
 
-/* Variables and functions */
- struct ti_sysc_platform_data* dev_get_platdata (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+struct ti_sysc_platform_data {int (* clkdm_allow_idle ) (int ,int *) ;} ;
+struct sysc {int cookie; int dev; scalar_t__ legacy_mode; } ;
+
+
+ struct ti_sysc_platform_data* dev_get_platdata (int ) ;
+ int stub1 (int ,int *) ;
 
 __attribute__((used)) static void sysc_clkdm_allow_idle(struct sysc *ddata)
 {
-	struct ti_sysc_platform_data *pdata;
+ struct ti_sysc_platform_data *pdata;
 
-	if (ddata->legacy_mode)
-		return;
+ if (ddata->legacy_mode)
+  return;
 
-	pdata = dev_get_platdata(ddata->dev);
-	if (pdata && pdata->clkdm_allow_idle)
-		pdata->clkdm_allow_idle(ddata->dev, &ddata->cookie);
+ pdata = dev_get_platdata(ddata->dev);
+ if (pdata && pdata->clkdm_allow_idle)
+  pdata->clkdm_allow_idle(ddata->dev, &ddata->cookie);
 }

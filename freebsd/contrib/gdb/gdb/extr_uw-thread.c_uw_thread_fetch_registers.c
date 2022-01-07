@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  fpregs; int /*<<< orphan*/  gregs; } ;
+
+
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int fpregs; int gregs; } ;
 struct TYPE_7__ {TYPE_2__ uc_mcontext; } ;
 struct thread_map {TYPE_3__ thr_ucontext; } ;
 struct thread_info {TYPE_1__* private; } ;
-struct TYPE_8__ {int /*<<< orphan*/  (* to_fetch_registers ) (int) ;} ;
-struct TYPE_5__ {int /*<<< orphan*/  mapp; } ;
+struct TYPE_8__ {int (* to_fetch_registers ) (int) ;} ;
+struct TYPE_5__ {int mapp; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TRY_BASE (int /*<<< orphan*/ ,int*) ; 
- TYPE_4__ base_ops ; 
- struct thread_info* find_thread_pid (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  inferior_ptid ; 
- int /*<<< orphan*/  read_map (int /*<<< orphan*/ ,struct thread_map*) ; 
- int /*<<< orphan*/  stub1 (int) ; 
- int /*<<< orphan*/  supply_fpregset (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  supply_gregset (int /*<<< orphan*/ *) ; 
+
+ int TRY_BASE (int ,int*) ;
+ TYPE_4__ base_ops ;
+ struct thread_info* find_thread_pid (int ) ;
+ int inferior_ptid ;
+ int read_map (int ,struct thread_map*) ;
+ int stub1 (int) ;
+ int supply_fpregset (int *) ;
+ int supply_gregset (int *) ;
 
 __attribute__((used)) static void
 uw_thread_fetch_registers (int regno)

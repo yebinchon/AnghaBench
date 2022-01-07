@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_5__ {TYPE_1__* data; } ;
-struct TYPE_4__ {int /*<<< orphan*/  ctx; } ;
-typedef  TYPE_1__ SIPHASH_PKEY_CTX ;
-typedef  TYPE_2__ EVP_PKEY_CTX ;
-typedef  int /*<<< orphan*/  EVP_MD_CTX ;
+struct TYPE_4__ {int ctx; } ;
+typedef TYPE_1__ SIPHASH_PKEY_CTX ;
+typedef TYPE_2__ EVP_PKEY_CTX ;
+typedef int EVP_MD_CTX ;
 
-/* Variables and functions */
- int SipHash_Final (int /*<<< orphan*/ *,unsigned char*,size_t) ; 
- size_t SipHash_hash_size (int /*<<< orphan*/ *) ; 
+
+ int SipHash_Final (int *,unsigned char*,size_t) ;
+ size_t SipHash_hash_size (int *) ;
 
 __attribute__((used)) static int siphash_signctx(EVP_PKEY_CTX *ctx, unsigned char *sig, size_t *siglen,
                             EVP_MD_CTX *mctx)
@@ -28,7 +28,7 @@ __attribute__((used)) static int siphash_signctx(EVP_PKEY_CTX *ctx, unsigned cha
     SIPHASH_PKEY_CTX *pctx = ctx->data;
 
     *siglen = SipHash_hash_size(&pctx->ctx);
-    if (sig != NULL)
+    if (sig != ((void*)0))
         return SipHash_Final(&pctx->ctx, sig, *siglen);
     return 1;
 }

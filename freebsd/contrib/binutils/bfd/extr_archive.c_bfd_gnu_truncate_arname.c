@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct ar_hdr {char* ar_name; } ;
-typedef  int /*<<< orphan*/  bfd ;
+typedef int bfd ;
 
-/* Variables and functions */
- size_t ar_maxnamelen (int /*<<< orphan*/ *) ; 
- char ar_padchar (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memcpy (char*,char const*,size_t) ; 
- size_t strlen (char const*) ; 
- void* strrchr (char const*,char) ; 
+
+ size_t ar_maxnamelen (int *) ;
+ char ar_padchar (int *) ;
+ int memcpy (char*,char const*,size_t) ;
+ size_t strlen (char const*) ;
+ void* strrchr (char const*,char) ;
 
 void
 bfd_gnu_truncate_arname (bfd *abfd, const char *pathname, char *arhdr)
@@ -27,19 +27,7 @@ bfd_gnu_truncate_arname (bfd *abfd, const char *pathname, char *arhdr)
   size_t length;
   const char *filename = strrchr (pathname, '/');
   size_t maxlen = ar_maxnamelen (abfd);
-
-#ifdef HAVE_DOS_BASED_FILE_SYSTEM
-  {
-    /* We could have foo/bar\\baz, or foo\\bar, or d:bar.  */
-    char *bslash = strrchr (pathname, '\\');
-    if (filename == NULL || (bslash != NULL && bslash > filename))
-      filename = bslash;
-    if (filename == NULL && pathname[0] != '\0' && pathname[1] == ':')
-      filename = pathname + 1;
-  }
-#endif
-
-  if (filename == NULL)
+  if (filename == ((void*)0))
     filename = pathname;
   else
     ++filename;
@@ -49,13 +37,13 @@ bfd_gnu_truncate_arname (bfd *abfd, const char *pathname, char *arhdr)
   if (length <= maxlen)
     memcpy (hdr->ar_name, filename, length);
   else
-    {				/* pathname: meet procrustes */
+    {
       memcpy (hdr->ar_name, filename, maxlen);
       if ((filename[length - 2] == '.') && (filename[length - 1] == 'o'))
-	{
-	  hdr->ar_name[maxlen - 2] = '.';
-	  hdr->ar_name[maxlen - 1] = 'o';
-	}
+ {
+   hdr->ar_name[maxlen - 2] = '.';
+   hdr->ar_name[maxlen - 1] = 'o';
+ }
       length = maxlen;
     }
 

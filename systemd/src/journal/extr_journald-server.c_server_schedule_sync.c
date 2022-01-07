@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  usec_t ;
-struct TYPE_6__ {int sync_scheduled; scalar_t__ sync_interval_usec; int /*<<< orphan*/  sync_event_source; int /*<<< orphan*/  event; } ;
-typedef  TYPE_1__ Server ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLOCK_MONOTONIC ; 
- int LOG_CRIT ; 
- int /*<<< orphan*/  SD_EVENT_ONESHOT ; 
- int /*<<< orphan*/  SD_EVENT_PRIORITY_IMPORTANT ; 
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int sd_event_add_time (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int sd_event_now (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int sd_event_source_set_enabled (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int sd_event_source_set_priority (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int sd_event_source_set_time (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  server_dispatch_sync ; 
- int /*<<< orphan*/  server_sync (TYPE_1__*) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int usec_t ;
+struct TYPE_6__ {int sync_scheduled; scalar_t__ sync_interval_usec; int sync_event_source; int event; } ;
+typedef TYPE_1__ Server ;
+
+
+ int CLOCK_MONOTONIC ;
+ int LOG_CRIT ;
+ int SD_EVENT_ONESHOT ;
+ int SD_EVENT_PRIORITY_IMPORTANT ;
+ int assert (TYPE_1__*) ;
+ int sd_event_add_time (int ,int *,int ,int ,int ,int ,TYPE_1__*) ;
+ int sd_event_now (int ,int ,int *) ;
+ int sd_event_source_set_enabled (int ,int ) ;
+ int sd_event_source_set_priority (int ,int ) ;
+ int sd_event_source_set_time (int ,int ) ;
+ int server_dispatch_sync ;
+ int server_sync (TYPE_1__*) ;
 
 int server_schedule_sync(Server *s, int priority) {
         int r;
@@ -35,7 +35,7 @@ int server_schedule_sync(Server *s, int priority) {
         assert(s);
 
         if (priority <= LOG_CRIT) {
-                /* Immediately sync to disk when this is of priority CRIT, ALERT, EMERG */
+
                 server_sync(s);
                 return 0;
         }
@@ -73,7 +73,7 @@ int server_schedule_sync(Server *s, int priority) {
                 if (r < 0)
                         return r;
 
-                s->sync_scheduled = true;
+                s->sync_scheduled = 1;
         }
 
         return 0;

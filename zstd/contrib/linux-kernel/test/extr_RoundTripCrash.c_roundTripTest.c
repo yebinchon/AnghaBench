@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ZSTD_parameters ;
 
-/* Variables and functions */
- size_t MIN (int,size_t) ; 
- size_t ZSTD_compressCCtx (int /*<<< orphan*/ ,void*,size_t,void const*,size_t,int /*<<< orphan*/  const) ; 
- size_t ZSTD_decompressDCtx (int /*<<< orphan*/ ,void*,size_t,void*,size_t const) ; 
- int ZSTD_getErrorCode (size_t const) ; 
- int /*<<< orphan*/  ZSTD_getParams (int const,size_t,int /*<<< orphan*/ ) ; 
- scalar_t__ ZSTD_isError (size_t const) ; 
- int /*<<< orphan*/  cctx ; 
- int /*<<< orphan*/  dctx ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int) ; 
- unsigned int const kMaxClevel ; 
- int /*<<< orphan*/  stderr ; 
- unsigned int xxh32 (void const*,size_t const,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int ZSTD_parameters ;
+
+
+ size_t MIN (int,size_t) ;
+ size_t ZSTD_compressCCtx (int ,void*,size_t,void const*,size_t,int const) ;
+ size_t ZSTD_decompressDCtx (int ,void*,size_t,void*,size_t const) ;
+ int ZSTD_getErrorCode (size_t const) ;
+ int ZSTD_getParams (int const,size_t,int ) ;
+ scalar_t__ ZSTD_isError (size_t const) ;
+ int cctx ;
+ int dctx ;
+ int fprintf (int ,char*,int) ;
+ unsigned int const kMaxClevel ;
+ int stderr ;
+ unsigned int xxh32 (void const*,size_t const,int ) ;
 
 __attribute__((used)) static size_t roundTripTest(void* resultBuff, size_t resultBuffCapacity,
                             void* compressedBuff, size_t compressedBuffCapacity,

@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/ * o_props; scalar_t__ o_num; } ;
-typedef  int /*<<< orphan*/  AMFObjectProperty ;
-typedef  TYPE_1__ AMFObject ;
 
-/* Variables and functions */
- int AMFProp_Decode (int /*<<< orphan*/ *,char const*,int,int) ; 
- int /*<<< orphan*/  AMF_AddProp (TYPE_1__*,int /*<<< orphan*/ *) ; 
- scalar_t__ AMF_DecodeInt24 (char const*) ; 
- scalar_t__ AMF_OBJECT_END ; 
- int FALSE ; 
- int /*<<< orphan*/  RTMP_LOGERROR ; 
- int /*<<< orphan*/  RTMP_Log (int /*<<< orphan*/ ,char*) ; 
- int TRUE ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int * o_props; scalar_t__ o_num; } ;
+typedef int AMFObjectProperty ;
+typedef TYPE_1__ AMFObject ;
+
+
+ int AMFProp_Decode (int *,char const*,int,int) ;
+ int AMF_AddProp (TYPE_1__*,int *) ;
+ scalar_t__ AMF_DecodeInt24 (char const*) ;
+ scalar_t__ AMF_OBJECT_END ;
+ int FALSE ;
+ int RTMP_LOGERROR ;
+ int RTMP_Log (int ,char*) ;
+ int TRUE ;
 
 int
 AMF_Decode(AMFObject *obj, const char *pBuffer, int nSize, int bDecodeName)
 {
     int nOriginalSize = nSize;
-    int bError = FALSE;		/* if there is an error while decoding - try to at least find the end mark AMF_OBJECT_END */
+    int bError = FALSE;
 
     obj->o_num = 0;
-    obj->o_props = NULL;
+    obj->o_props = ((void*)0);
     while (nSize > 0)
     {
         AMFObjectProperty prop;

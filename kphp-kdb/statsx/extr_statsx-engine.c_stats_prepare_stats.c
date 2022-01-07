@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct connection {int dummy; } ;
 struct TYPE_5__ {int pos; } ;
-typedef  TYPE_1__ stats_buffer_t ;
+typedef TYPE_1__ stats_buffer_t ;
 
-/* Variables and functions */
- scalar_t__ AM_GET_MEMORY_USAGE_OVERALL ; 
- scalar_t__ AM_GET_MEMORY_USAGE_SELF ; 
- int /*<<< orphan*/  FullVersionStr ; 
- int /*<<< orphan*/  SB_BINLOG ; 
- int /*<<< orphan*/  SB_INDEX ; 
- int /*<<< orphan*/  STATS_BUFF_SIZE ; 
- int /*<<< orphan*/  active_aio_queries ; 
- int /*<<< orphan*/  alloc_tree_nodes ; 
- int /*<<< orphan*/  counters_prime ; 
- int /*<<< orphan*/  deleted_by_lru ; 
- int /*<<< orphan*/  expired_aio_queries ; 
- int /*<<< orphan*/  index_size ; 
- int /*<<< orphan*/  max_counters ; 
- int /*<<< orphan*/  memory_to_index ; 
- int /*<<< orphan*/  percent (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sb_memory (TYPE_1__*,scalar_t__) ; 
- int /*<<< orphan*/  sb_prepare (TYPE_1__*,struct connection*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sb_printf (TYPE_1__*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  snapshot_loading_average_blocking_read_bytes ; 
- int /*<<< orphan*/  snapshot_loading_blocking_read_calls ; 
- int /*<<< orphan*/  stats_buff ; 
- int /*<<< orphan*/  tot_aio_fails ; 
- int /*<<< orphan*/  tot_aio_loaded_bytes ; 
- int tot_aio_queries ; 
- int /*<<< orphan*/  tot_counter_instances ; 
- int /*<<< orphan*/  tot_counters ; 
- int /*<<< orphan*/  tot_counters_allocated ; 
- int /*<<< orphan*/  tot_memory_allocated ; 
- int /*<<< orphan*/  tot_user_metafile_bytes ; 
- int /*<<< orphan*/  tot_user_metafiles ; 
- int /*<<< orphan*/  tot_views ; 
- int total_aio_time ; 
+
+ scalar_t__ AM_GET_MEMORY_USAGE_OVERALL ;
+ scalar_t__ AM_GET_MEMORY_USAGE_SELF ;
+ int FullVersionStr ;
+ int SB_BINLOG ;
+ int SB_INDEX ;
+ int STATS_BUFF_SIZE ;
+ int active_aio_queries ;
+ int alloc_tree_nodes ;
+ int counters_prime ;
+ int deleted_by_lru ;
+ int expired_aio_queries ;
+ int index_size ;
+ int max_counters ;
+ int memory_to_index ;
+ int percent (int ,int ) ;
+ int sb_memory (TYPE_1__*,scalar_t__) ;
+ int sb_prepare (TYPE_1__*,struct connection*,int ,int ) ;
+ int sb_printf (TYPE_1__*,char*,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int,int ,int ,int,int ,int,int ,int ,int ) ;
+ int snapshot_loading_average_blocking_read_bytes ;
+ int snapshot_loading_blocking_read_calls ;
+ int stats_buff ;
+ int tot_aio_fails ;
+ int tot_aio_loaded_bytes ;
+ int tot_aio_queries ;
+ int tot_counter_instances ;
+ int tot_counters ;
+ int tot_counters_allocated ;
+ int tot_memory_allocated ;
+ int tot_user_metafile_bytes ;
+ int tot_user_metafiles ;
+ int tot_views ;
+ int total_aio_time ;
 
 int stats_prepare_stats (struct connection *c) {
   stats_buffer_t sb;
   sb_prepare (&sb, c, stats_buff, STATS_BUFF_SIZE);
-  sb_memory (&sb, AM_GET_MEMORY_USAGE_SELF + AM_GET_MEMORY_USAGE_OVERALL);  
+  sb_memory (&sb, AM_GET_MEMORY_USAGE_SELF + AM_GET_MEMORY_USAGE_OVERALL);
   SB_BINLOG;
   SB_INDEX;
 

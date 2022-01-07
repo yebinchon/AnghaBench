@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  uv; int /*<<< orphan*/  position; } ;
-typedef  int /*<<< orphan*/  GLvoid ;
-typedef  int /*<<< orphan*/  GLuint ;
-typedef  int /*<<< orphan*/  GLfloat ;
-typedef  TYPE_1__ Attrib ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GL_ARRAY_BUFFER ; 
- int /*<<< orphan*/  GL_FALSE ; 
- int /*<<< orphan*/  GL_FLOAT ; 
- int /*<<< orphan*/  GL_TRIANGLES ; 
- int /*<<< orphan*/  glBindBuffer (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glDisableVertexAttribArray (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glDrawArrays (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  glEnableVertexAttribArray (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glVertexAttribPointer (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int uv; int position; } ;
+typedef int GLvoid ;
+typedef int GLuint ;
+typedef int GLfloat ;
+typedef TYPE_1__ Attrib ;
+
+
+ int GL_ARRAY_BUFFER ;
+ int GL_FALSE ;
+ int GL_FLOAT ;
+ int GL_TRIANGLES ;
+ int glBindBuffer (int ,int ) ;
+ int glDisableVertexAttribArray (int ) ;
+ int glDrawArrays (int ,int ,int) ;
+ int glEnableVertexAttribArray (int ) ;
+ int glVertexAttribPointer (int ,int,int ,int ,int,int *) ;
 
 void draw_triangles_2d(Attrib *attrib, GLuint buffer, int count) {
     glBindBuffer(GL_ARRAY_BUFFER, buffer);

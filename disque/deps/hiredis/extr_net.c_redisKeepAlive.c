@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  val ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int val ;
 struct TYPE_4__ {int fd; } ;
-typedef  TYPE_1__ redisContext ;
+typedef TYPE_1__ redisContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IPPROTO_TCP ; 
- int REDIS_ERR ; 
- int /*<<< orphan*/  REDIS_ERR_OTHER ; 
- int REDIS_OK ; 
- int /*<<< orphan*/  SOL_SOCKET ; 
- int /*<<< orphan*/  SO_KEEPALIVE ; 
- int /*<<< orphan*/  TCP_KEEPALIVE ; 
- int /*<<< orphan*/  TCP_KEEPCNT ; 
- int /*<<< orphan*/  TCP_KEEPIDLE ; 
- int /*<<< orphan*/  TCP_KEEPINTVL ; 
- int /*<<< orphan*/  __redisSetError (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errno ; 
- int setsockopt (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*,int) ; 
- int /*<<< orphan*/  strerror (int /*<<< orphan*/ ) ; 
+
+ int IPPROTO_TCP ;
+ int REDIS_ERR ;
+ int REDIS_ERR_OTHER ;
+ int REDIS_OK ;
+ int SOL_SOCKET ;
+ int SO_KEEPALIVE ;
+ int TCP_KEEPALIVE ;
+ int TCP_KEEPCNT ;
+ int TCP_KEEPIDLE ;
+ int TCP_KEEPINTVL ;
+ int __redisSetError (TYPE_1__*,int ,int ) ;
+ int errno ;
+ int setsockopt (int,int ,int ,int*,int) ;
+ int strerror (int ) ;
 
 int redisKeepAlive(redisContext *c, int interval) {
     int val = 1;
@@ -41,14 +41,6 @@ int redisKeepAlive(redisContext *c, int interval) {
     }
 
     val = interval;
-
-#ifdef _OSX
-    if (setsockopt(fd, IPPROTO_TCP, TCP_KEEPALIVE, &val, sizeof(val)) < 0) {
-        __redisSetError(c,REDIS_ERR_OTHER,strerror(errno));
-        return REDIS_ERR;
-    }
-#else
-#ifndef __sun
     val = interval;
     if (setsockopt(fd, IPPROTO_TCP, TCP_KEEPIDLE, &val, sizeof(val)) < 0) {
         __redisSetError(c,REDIS_ERR_OTHER,strerror(errno));
@@ -67,8 +59,8 @@ int redisKeepAlive(redisContext *c, int interval) {
         __redisSetError(c,REDIS_ERR_OTHER,strerror(errno));
         return REDIS_ERR;
     }
-#endif
-#endif
+
+
 
     return REDIS_OK;
 }

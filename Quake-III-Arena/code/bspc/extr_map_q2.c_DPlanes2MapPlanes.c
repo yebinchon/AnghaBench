@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  dist; int /*<<< orphan*/  normal; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FindFloatPlane (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_1__* dplanes ; 
- int /*<<< orphan*/ * dplanes2mapplanes ; 
- int numplanes ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int dist; int normal; } ;
+
+
+ int FindFloatPlane (int ,int ) ;
+ TYPE_1__* dplanes ;
+ int * dplanes2mapplanes ;
+ int numplanes ;
 
 void DPlanes2MapPlanes(void)
 {
-	int i;
+ int i;
 
-	for (i = 0; i < numplanes; i++)
-	{
-		dplanes2mapplanes[i] = FindFloatPlane(dplanes[i].normal, dplanes[i].dist);
-	} //end for
+ for (i = 0; i < numplanes; i++)
+ {
+  dplanes2mapplanes[i] = FindFloatPlane(dplanes[i].normal, dplanes[i].dist);
+ }
 }

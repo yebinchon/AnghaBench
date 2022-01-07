@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  device_t ;
 
-/* Variables and functions */
-#define  ACPI_MADT_GIC_VERSION_NONE 130 
-#define  ACPI_MADT_GIC_VERSION_V1 129 
-#define  ACPI_MADT_GIC_VERSION_V2 128 
- int BUS_PROBE_NOWILDCARD ; 
- int ENXIO ; 
- int /*<<< orphan*/  acpi_get_private (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  device_set_desc (int /*<<< orphan*/ ,char*) ; 
+
+
+
+typedef int device_t ;
+
+
+
+
+
+ int BUS_PROBE_NOWILDCARD ;
+ int ENXIO ;
+ int acpi_get_private (int ) ;
+ int device_set_desc (int ,char*) ;
 
 __attribute__((used)) static int
 gic_acpi_probe(device_t dev)
 {
 
-	switch((uintptr_t)acpi_get_private(dev)) {
-	case ACPI_MADT_GIC_VERSION_NONE:
-	case ACPI_MADT_GIC_VERSION_V1:
-	case ACPI_MADT_GIC_VERSION_V2:
-		break;
-	default:
-		return (ENXIO);
-	}
+ switch((uintptr_t)acpi_get_private(dev)) {
+ case 130:
+ case 129:
+ case 128:
+  break;
+ default:
+  return (ENXIO);
+ }
 
-	device_set_desc(dev, "ARM Generic Interrupt Controller");
-	return (BUS_PROBE_NOWILDCARD);
+ device_set_desc(dev, "ARM Generic Interrupt Controller");
+ return (BUS_PROBE_NOWILDCARD);
 }

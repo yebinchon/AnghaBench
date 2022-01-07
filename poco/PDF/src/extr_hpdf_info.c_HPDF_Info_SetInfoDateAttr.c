@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_7__ {int month; int day; int hour; int minutes; int seconds; char ind; int off_hour; int off_minutes; int year; } ;
-struct TYPE_6__ {int /*<<< orphan*/  mmgr; int /*<<< orphan*/  error; } ;
-typedef  int /*<<< orphan*/  HPDF_STATUS ;
-typedef  scalar_t__ HPDF_InfoType ;
-typedef  TYPE_1__* HPDF_Dict ;
-typedef  TYPE_2__ HPDF_Date ;
-typedef  int /*<<< orphan*/  HPDF_BYTE ;
+struct TYPE_6__ {int mmgr; int error; } ;
+typedef int HPDF_STATUS ;
+typedef scalar_t__ HPDF_InfoType ;
+typedef TYPE_1__* HPDF_Dict ;
+typedef TYPE_2__ HPDF_Date ;
+typedef int HPDF_BYTE ;
 
-/* Variables and functions */
- int HPDF_DATE_TIME_STR_LEN ; 
- int /*<<< orphan*/  HPDF_Dict_Add (TYPE_1__*,char const*,int /*<<< orphan*/ ) ; 
- scalar_t__ HPDF_INFO_MOD_DATE ; 
- int /*<<< orphan*/  HPDF_INVALID_DATE_TIME ; 
- int /*<<< orphan*/  HPDF_INVALID_PARAMETER ; 
- char* HPDF_IToA2 (char*,int,int) ; 
- scalar_t__ HPDF_MemCpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  HPDF_MemSet (char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HPDF_PTRACE (char*) ; 
- int /*<<< orphan*/  HPDF_SetError (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HPDF_String_New (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *) ; 
- char* InfoTypeToName (scalar_t__) ; 
+
+ int HPDF_DATE_TIME_STR_LEN ;
+ int HPDF_Dict_Add (TYPE_1__*,char const*,int ) ;
+ scalar_t__ HPDF_INFO_MOD_DATE ;
+ int HPDF_INVALID_DATE_TIME ;
+ int HPDF_INVALID_PARAMETER ;
+ char* HPDF_IToA2 (char*,int,int) ;
+ scalar_t__ HPDF_MemCpy (int *,int *,int) ;
+ int HPDF_MemSet (char*,int ,int) ;
+ int HPDF_PTRACE (char*) ;
+ int HPDF_SetError (int ,int ,int ) ;
+ int HPDF_String_New (int ,char*,int *) ;
+ char* InfoTypeToName (scalar_t__) ;
 
 HPDF_STATUS
-HPDF_Info_SetInfoDateAttr (HPDF_Dict      info,
-                           HPDF_InfoType  type,
-                           HPDF_Date      value)
+HPDF_Info_SetInfoDateAttr (HPDF_Dict info,
+                           HPDF_InfoType type,
+                           HPDF_Date value)
 {
     char tmp[HPDF_DATE_TIME_STR_LEN + 1];
     char* ptmp;
@@ -109,5 +109,5 @@ HPDF_Info_SetInfoDateAttr (HPDF_Dict      info,
     *ptmp = 0;
 
     return HPDF_Dict_Add (info, name, HPDF_String_New (info->mmgr, tmp,
-                NULL));
+                ((void*)0)));
 }

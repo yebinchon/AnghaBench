@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {scalar_t__ len; int /*<<< orphan*/  data; } ;
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_8__ {scalar_t__ len; int data; } ;
 struct TYPE_9__ {TYPE_1__ str; } ;
-typedef  TYPE_2__ ngx_str_node_t ;
+typedef TYPE_2__ ngx_str_node_t ;
 struct TYPE_10__ {scalar_t__ key; struct TYPE_10__* right; struct TYPE_10__* left; struct TYPE_10__* parent; } ;
-typedef  TYPE_3__ ngx_rbtree_node_t ;
+typedef TYPE_3__ ngx_rbtree_node_t ;
 
-/* Variables and functions */
- scalar_t__ ngx_memcmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  ngx_rbt_red (TYPE_3__*) ; 
+
+ scalar_t__ ngx_memcmp (int ,int ,scalar_t__) ;
+ int ngx_rbt_red (TYPE_3__*) ;
 
 void
 ngx_str_rbtree_insert_value(ngx_rbtree_node_t *temp,
     ngx_rbtree_node_t *node, ngx_rbtree_node_t *sentinel)
 {
-    ngx_str_node_t      *n, *t;
-    ngx_rbtree_node_t  **p;
+    ngx_str_node_t *n, *t;
+    ngx_rbtree_node_t **p;
 
     for ( ;; ) {
 

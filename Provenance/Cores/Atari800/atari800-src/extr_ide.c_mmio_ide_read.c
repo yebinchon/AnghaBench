@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint16_t ;
-struct ide_device {int* upperhalf; int cycle; int data; int /*<<< orphan*/  do_8bit; } ;
 
-/* Variables and functions */
- void* ide_data_readw (struct ide_device*,int /*<<< orphan*/ ) ; 
- int ide_ioport_read (struct ide_device*,int) ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint16_t ;
+struct ide_device {int* upperhalf; int cycle; int data; int do_8bit; } ;
+
+
+ void* ide_data_readw (struct ide_device*,int ) ;
+ int ide_ioport_read (struct ide_device*,int) ;
 
 __attribute__((used)) static uint8_t mmio_ide_read(struct ide_device *s, int addr) {
-    uint16_t ret;   /* will be cast at return */
+    uint16_t ret;
 
     addr &= 15;
 

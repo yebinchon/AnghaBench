@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct platform_device {size_t id; } ;
-struct owl_uart_port {int /*<<< orphan*/  port; } ;
+struct owl_uart_port {int port; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  owl_uart_driver ; 
- int /*<<< orphan*/ ** owl_uart_ports ; 
- struct owl_uart_port* platform_get_drvdata (struct platform_device*) ; 
- int /*<<< orphan*/  uart_remove_one_port (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int owl_uart_driver ;
+ int ** owl_uart_ports ;
+ struct owl_uart_port* platform_get_drvdata (struct platform_device*) ;
+ int uart_remove_one_port (int *,int *) ;
 
 __attribute__((used)) static int owl_uart_remove(struct platform_device *pdev)
 {
-	struct owl_uart_port *owl_port = platform_get_drvdata(pdev);
+ struct owl_uart_port *owl_port = platform_get_drvdata(pdev);
 
-	uart_remove_one_port(&owl_uart_driver, &owl_port->port);
-	owl_uart_ports[pdev->id] = NULL;
+ uart_remove_one_port(&owl_uart_driver, &owl_port->port);
+ owl_uart_ports[pdev->id] = ((void*)0);
 
-	return 0;
+ return 0;
 }

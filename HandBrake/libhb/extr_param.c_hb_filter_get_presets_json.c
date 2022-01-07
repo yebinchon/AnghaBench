@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  hb_value_array_t ;
-struct TYPE_3__ {int /*<<< orphan*/ * name; int /*<<< orphan*/ * short_name; } ;
-typedef  TYPE_1__ hb_filter_param_t ;
-typedef  int /*<<< orphan*/  hb_dict_t ;
 
-/* Variables and functions */
- TYPE_1__* filter_param_get_presets_internal (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * hb_dict_init () ; 
- int /*<<< orphan*/  hb_dict_set (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hb_value_array_append (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * hb_value_array_init () ; 
- int /*<<< orphan*/  hb_value_free (int /*<<< orphan*/ **) ; 
- char* hb_value_get_json (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  hb_value_string (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int hb_value_array_t ;
+struct TYPE_3__ {int * name; int * short_name; } ;
+typedef TYPE_1__ hb_filter_param_t ;
+typedef int hb_dict_t ;
+
+
+ TYPE_1__* filter_param_get_presets_internal (int,int *) ;
+ int * hb_dict_init () ;
+ int hb_dict_set (int *,char*,int ) ;
+ int hb_value_array_append (int *,int *) ;
+ int * hb_value_array_init () ;
+ int hb_value_free (int **) ;
+ char* hb_value_get_json (int *) ;
+ int hb_value_string (int *) ;
 
 char * hb_filter_get_presets_json(int filter_id)
 {
-    hb_value_array_t  * array = hb_value_array_init();
-    int                 ii, count = 0;
+    hb_value_array_t * array = hb_value_array_init();
+    int ii, count = 0;
     hb_filter_param_t * table;
 
-    table = filter_param_get_presets_internal(filter_id, NULL);
+    table = filter_param_get_presets_internal(filter_id, ((void*)0));
 
-    for (count = 0; table[count].name != NULL; count++);
+    for (count = 0; table[count].name != ((void*)0); count++);
     for (ii = 0; ii < count; ii++)
     {
         hb_dict_t * dict = hb_dict_init();

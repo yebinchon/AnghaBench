@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_8__ {scalar_t__ workspace_layout; scalar_t__ layout; struct TYPE_8__* parent; struct TYPE_8__* name; } ;
-typedef  TYPE_1__ Con ;
+typedef TYPE_1__ Con ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DLOG (char*,...) ; 
- scalar_t__ L_DEFAULT ; 
- int /*<<< orphan*/  con_attach (TYPE_1__*,TYPE_1__*,int) ; 
- int /*<<< orphan*/  con_fix_percent (TYPE_1__*) ; 
- TYPE_1__* con_new (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int DLOG (char*,...) ;
+ scalar_t__ L_DEFAULT ;
+ int con_attach (TYPE_1__*,TYPE_1__*,int) ;
+ int con_fix_percent (TYPE_1__*) ;
+ TYPE_1__* con_new (int *,int *) ;
 
 Con *workspace_attach_to(Con *ws) {
     DLOG("Attaching a window to workspace %p / %s\n", ws, ws->name);
@@ -30,18 +30,18 @@ Con *workspace_attach_to(Con *ws) {
     }
 
     DLOG("Non-default layout, creating a new split container\n");
-    /* 1: create a new split container */
-    Con *new = con_new(NULL, NULL);
+
+    Con *new = con_new(((void*)0), ((void*)0));
     new->parent = ws;
 
-    /* 2: set the requested layout on the split con */
+
     new->layout = ws->workspace_layout;
 
-    /* 4: attach the new split container to the workspace */
-    DLOG("Attaching new split %p to workspace %p\n", new, ws);
-    con_attach(new, ws, false);
 
-    /* 5: fix the percentages */
+    DLOG("Attaching new split %p to workspace %p\n", new, ws);
+    con_attach(new, ws, 0);
+
+
     con_fix_percent(ws);
 
     return new;

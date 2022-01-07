@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct nm_pcap_file {int /*<<< orphan*/  fd; int /*<<< orphan*/  filesize; scalar_t__ data; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  bzero (struct nm_pcap_file*,int) ; 
- int /*<<< orphan*/  close (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (struct nm_pcap_file*) ; 
- int /*<<< orphan*/  munmap (void*,int /*<<< orphan*/ ) ; 
+
+
+
+struct nm_pcap_file {int fd; int filesize; scalar_t__ data; } ;
+
+
+ int bzero (struct nm_pcap_file*,int) ;
+ int close (int ) ;
+ int free (struct nm_pcap_file*) ;
+ int munmap (void*,int ) ;
 
 __attribute__((used)) static void destroy_pcap(struct nm_pcap_file *pf)
 {
     if (!pf)
-	return;
+ return;
 
     munmap((void *)(uintptr_t)pf->data, pf->filesize);
     close(pf->fd);

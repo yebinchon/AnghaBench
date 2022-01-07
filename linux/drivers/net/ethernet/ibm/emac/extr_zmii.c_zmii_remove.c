@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct zmii_instance {scalar_t__ users; int /*<<< orphan*/  base; } ;
+
+
+
+
+struct zmii_instance {scalar_t__ users; int base; } ;
 struct platform_device {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  WARN_ON (int) ; 
- int /*<<< orphan*/  iounmap (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kfree (struct zmii_instance*) ; 
- struct zmii_instance* platform_get_drvdata (struct platform_device*) ; 
+
+ int WARN_ON (int) ;
+ int iounmap (int ) ;
+ int kfree (struct zmii_instance*) ;
+ struct zmii_instance* platform_get_drvdata (struct platform_device*) ;
 
 __attribute__((used)) static int zmii_remove(struct platform_device *ofdev)
 {
-	struct zmii_instance *dev = platform_get_drvdata(ofdev);
+ struct zmii_instance *dev = platform_get_drvdata(ofdev);
 
-	WARN_ON(dev->users != 0);
+ WARN_ON(dev->users != 0);
 
-	iounmap(dev->base);
-	kfree(dev);
+ iounmap(dev->base);
+ kfree(dev);
 
-	return 0;
+ return 0;
 }

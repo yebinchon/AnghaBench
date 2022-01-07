@@ -1,70 +1,70 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint64_t ;
-typedef  char uint16_t ;
-struct TYPE_11__ {int /*<<< orphan*/  net; int /*<<< orphan*/  self_public_key; int /*<<< orphan*/  self_secret_key; } ;
-typedef  int /*<<< orphan*/  TCP_Server ;
-typedef  int /*<<< orphan*/  Onion_Announce ;
-typedef  int /*<<< orphan*/  Onion ;
-typedef  int /*<<< orphan*/  Networking_Core ;
-typedef  int /*<<< orphan*/  LOG_BACKEND ;
-typedef  int /*<<< orphan*/  IP ;
-typedef  TYPE_1__ DHT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DAEMON_NAME ; 
- int /*<<< orphan*/  DAEMON_VERSION_NUMBER ; 
- scalar_t__ DHT_isconnected (TYPE_1__*) ; 
- int /*<<< orphan*/  LAN_DISCOVERY_INTERVAL ; 
- int /*<<< orphan*/  LANdiscovery_init (TYPE_1__*) ; 
- int /*<<< orphan*/  LOG_BACKEND_STDOUT ; 
- int /*<<< orphan*/  LOG_BACKEND_SYSLOG ; 
- int /*<<< orphan*/  LOG_LEVEL_ERROR ; 
- int /*<<< orphan*/  LOG_LEVEL_INFO ; 
- int /*<<< orphan*/  LOG_LEVEL_WARNING ; 
- int MAX_ALLOWED_PORT ; 
- int MIN_ALLOWED_PORT ; 
- int /*<<< orphan*/  SLEEP_MILLISECONDS (int) ; 
- int /*<<< orphan*/  STDOUT_FILENO ; 
- scalar_t__ bootstrap_from_config (char*,TYPE_1__*,int) ; 
- scalar_t__ bootstrap_set_callbacks (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  close_log () ; 
- int /*<<< orphan*/  daemonize (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  do_DHT (TYPE_1__*) ; 
- int /*<<< orphan*/  do_TCP_server (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (char*) ; 
- scalar_t__ get_general_config (char*,char**,char**,int*,int*,int*,int*,int*,char**,int*,int*,char**) ; 
- int /*<<< orphan*/  handle_command_line_arguments (int,char**,char**,int /*<<< orphan*/ *,int*) ; 
- char htons (int) ; 
- int /*<<< orphan*/  ip_init (int /*<<< orphan*/ *,int) ; 
- scalar_t__ is_timeout (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ isatty (int /*<<< orphan*/ ) ; 
- scalar_t__ manage_keys (TYPE_1__*,char*) ; 
- int /*<<< orphan*/  networking_poll (int /*<<< orphan*/ ) ; 
- TYPE_1__* new_DHT (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * new_TCP_server (int,int,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * new_networking (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/ * new_onion (TYPE_1__*) ; 
- int /*<<< orphan*/ * new_onion_announce (TYPE_1__*) ; 
- int /*<<< orphan*/  open_log (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  print_public_key (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  send_LANdiscovery (char const,TYPE_1__*) ; 
- scalar_t__ strlen (char*) ; 
- int /*<<< orphan*/  umask (int) ; 
- int /*<<< orphan*/  unix_time () ; 
- int /*<<< orphan*/  write_log (int /*<<< orphan*/ ,char*,...) ; 
+
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint64_t ;
+typedef char uint16_t ;
+struct TYPE_11__ {int net; int self_public_key; int self_secret_key; } ;
+typedef int TCP_Server ;
+typedef int Onion_Announce ;
+typedef int Onion ;
+typedef int Networking_Core ;
+typedef int LOG_BACKEND ;
+typedef int IP ;
+typedef TYPE_1__ DHT ;
+
+
+ int DAEMON_NAME ;
+ int DAEMON_VERSION_NUMBER ;
+ scalar_t__ DHT_isconnected (TYPE_1__*) ;
+ int LAN_DISCOVERY_INTERVAL ;
+ int LANdiscovery_init (TYPE_1__*) ;
+ int LOG_BACKEND_STDOUT ;
+ int LOG_BACKEND_SYSLOG ;
+ int LOG_LEVEL_ERROR ;
+ int LOG_LEVEL_INFO ;
+ int LOG_LEVEL_WARNING ;
+ int MAX_ALLOWED_PORT ;
+ int MIN_ALLOWED_PORT ;
+ int SLEEP_MILLISECONDS (int) ;
+ int STDOUT_FILENO ;
+ scalar_t__ bootstrap_from_config (char*,TYPE_1__*,int) ;
+ scalar_t__ bootstrap_set_callbacks (int ,int ,int *,scalar_t__) ;
+ int close_log () ;
+ int daemonize (int ,char*) ;
+ int do_DHT (TYPE_1__*) ;
+ int do_TCP_server (int *) ;
+ int free (char*) ;
+ scalar_t__ get_general_config (char*,char**,char**,int*,int*,int*,int*,int*,char**,int*,int*,char**) ;
+ int handle_command_line_arguments (int,char**,char**,int *,int*) ;
+ char htons (int) ;
+ int ip_init (int *,int) ;
+ scalar_t__ is_timeout (int ,int ) ;
+ scalar_t__ isatty (int ) ;
+ scalar_t__ manage_keys (TYPE_1__*,char*) ;
+ int networking_poll (int ) ;
+ TYPE_1__* new_DHT (int *) ;
+ int * new_TCP_server (int,int,char*,int ,int *) ;
+ int * new_networking (int ,int) ;
+ int * new_onion (TYPE_1__*) ;
+ int * new_onion_announce (TYPE_1__*) ;
+ int open_log (int ) ;
+ int print_public_key (int ) ;
+ int send_LANdiscovery (char const,TYPE_1__*) ;
+ scalar_t__ strlen (char*) ;
+ int umask (int) ;
+ int unix_time () ;
+ int write_log (int ,char*,...) ;
 
 int main(int argc, char *argv[])
 {
@@ -73,7 +73,7 @@ int main(int argc, char *argv[])
     LOG_BACKEND log_backend;
     bool run_in_foreground;
 
-    // choose backend for printing command line argument parsing output based on whether the daemon is being run from a terminal
+
     log_backend = isatty(STDOUT_FILENO) ? LOG_BACKEND_STDOUT : LOG_BACKEND_SYSLOG;
 
     open_log(log_backend);
@@ -120,14 +120,14 @@ int main(int argc, char *argv[])
 
     Networking_Core *net = new_networking(ip, port);
 
-    if (net == NULL) {
+    if (net == ((void*)0)) {
         if (enable_ipv6 && enable_ipv4_fallback) {
             write_log(LOG_LEVEL_WARNING, "Couldn't initialize IPv6 networking. Falling back to using IPv4.\n");
             enable_ipv6 = 0;
             ip_init(&ip, enable_ipv6);
             net = new_networking(ip, port);
 
-            if (net == NULL) {
+            if (net == ((void*)0)) {
                 write_log(LOG_LEVEL_ERROR, "Couldn't fallback to IPv4. Exiting.\n");
                 return 1;
             }
@@ -139,7 +139,7 @@ int main(int argc, char *argv[])
 
     DHT *dht = new_DHT(net);
 
-    if (dht == NULL) {
+    if (dht == ((void*)0)) {
         write_log(LOG_LEVEL_ERROR, "Couldn't initialize Tox DHT instance. Exiting.\n");
         return 1;
     }
@@ -172,7 +172,7 @@ int main(int argc, char *argv[])
 
     free(keys_file_path);
 
-    TCP_Server *tcp_server = NULL;
+    TCP_Server *tcp_server = ((void*)0);
 
     if (enable_tcp_relay) {
         if (tcp_relay_port_count == 0) {
@@ -182,10 +182,10 @@ int main(int argc, char *argv[])
 
         tcp_server = new_TCP_server(enable_ipv6, tcp_relay_port_count, tcp_relay_ports, dht->self_secret_key, onion);
 
-        // tcp_relay_port_count != 0 at this point
+
         free(tcp_relay_ports);
 
-        if (tcp_server != NULL) {
+        if (tcp_server != ((void*)0)) {
             write_log(LOG_LEVEL_INFO, "Initialized Tox TCP server successfully.\n");
         } else {
             write_log(LOG_LEVEL_ERROR, "Couldn't initialize Tox TCP server. Exiting.\n");

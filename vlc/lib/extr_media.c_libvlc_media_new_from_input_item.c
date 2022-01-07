@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int i_refcount; int /*<<< orphan*/ * p_input_item; int /*<<< orphan*/  event_manager; int /*<<< orphan*/ * p_subitems; int /*<<< orphan*/  state; int /*<<< orphan*/  subitems_lock; int /*<<< orphan*/  parsed_lock; int /*<<< orphan*/  parsed_cond; int /*<<< orphan*/ * p_libvlc_instance; } ;
-typedef  TYPE_1__ libvlc_media_t ;
-typedef  int /*<<< orphan*/  libvlc_instance_t ;
-typedef  int /*<<< orphan*/  input_item_t ;
 
-/* Variables and functions */
- TYPE_1__* calloc (int,int) ; 
- int /*<<< orphan*/  input_item_Hold (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  install_input_item_observer (TYPE_1__*) ; 
- int /*<<< orphan*/  libvlc_NothingSpecial ; 
- int /*<<< orphan*/  libvlc_event_manager_init (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  libvlc_printerr (char*) ; 
- int /*<<< orphan*/  libvlc_retain (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_cond_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_mutex_init (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int i_refcount; int * p_input_item; int event_manager; int * p_subitems; int state; int subitems_lock; int parsed_lock; int parsed_cond; int * p_libvlc_instance; } ;
+typedef TYPE_1__ libvlc_media_t ;
+typedef int libvlc_instance_t ;
+typedef int input_item_t ;
+
+
+ TYPE_1__* calloc (int,int) ;
+ int input_item_Hold (int *) ;
+ int install_input_item_observer (TYPE_1__*) ;
+ int libvlc_NothingSpecial ;
+ int libvlc_event_manager_init (int *,TYPE_1__*) ;
+ int libvlc_printerr (char*) ;
+ int libvlc_retain (int *) ;
+ int vlc_cond_init (int *) ;
+ int vlc_mutex_init (int *) ;
 
 libvlc_media_t * libvlc_media_new_from_input_item(
                                    libvlc_instance_t *p_instance,
@@ -36,19 +36,19 @@ libvlc_media_t * libvlc_media_new_from_input_item(
     if (!p_input_item)
     {
         libvlc_printerr( "No input item given" );
-        return NULL;
+        return ((void*)0);
     }
 
     p_md = calloc( 1, sizeof(libvlc_media_t) );
     if( !p_md )
     {
         libvlc_printerr( "Not enough memory" );
-        return NULL;
+        return ((void*)0);
     }
 
     p_md->p_libvlc_instance = p_instance;
-    p_md->p_input_item      = p_input_item;
-    p_md->i_refcount        = 1;
+    p_md->p_input_item = p_input_item;
+    p_md->i_refcount = 1;
 
     vlc_cond_init(&p_md->parsed_cond);
     vlc_mutex_init(&p_md->parsed_lock);
@@ -56,9 +56,9 @@ libvlc_media_t * libvlc_media_new_from_input_item(
 
     p_md->state = libvlc_NothingSpecial;
 
-    /* A media descriptor can be a playlist. When you open a playlist
-     * It can give a bunch of item to read. */
-    p_md->p_subitems        = NULL;
+
+
+    p_md->p_subitems = ((void*)0);
 
     libvlc_event_manager_init( &p_md->event_manager, p_md );
 

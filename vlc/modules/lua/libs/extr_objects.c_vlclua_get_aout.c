@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  int /*<<< orphan*/  audio_output_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  VLC_OBJECT (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_pushnil (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlclua_aout_release ; 
- int /*<<< orphan*/ * vlclua_get_aout_internal (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlclua_push_vlc_object (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int lua_State ;
+typedef int audio_output_t ;
+
+
+ int VLC_OBJECT (int *) ;
+ int lua_pushnil (int *) ;
+ int vlclua_aout_release ;
+ int * vlclua_get_aout_internal (int *) ;
+ int vlclua_push_vlc_object (int *,int ,int ) ;
 
 __attribute__((used)) static int vlclua_get_aout( lua_State *L )
 {

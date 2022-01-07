@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  GColors ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOG_DEBUG (char*) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  locate_attr_color (int /*<<< orphan*/ *,char*) ; 
- char* strchr (char*,char) ; 
- char* strpbrk (char*,char*) ; 
- char* xstrdup (char const*) ; 
+
+
+
+typedef int GColors ;
+
+
+ int LOG_DEBUG (char*) ;
+ int free (char*) ;
+ int locate_attr_color (int *,char*) ;
+ char* strchr (char*,char) ;
+ char* strpbrk (char*,char*) ;
+ char* xstrdup (char const*) ;
 
 __attribute__((used)) static int
 parse_attr_color (GColors * color, const char *value)
@@ -36,10 +36,10 @@ parse_attr_color (GColors * color, const char *value)
 
   start++;
   while (1) {
-    if ((ptr = strpbrk (start, ", ")) != NULL)
+    if ((ptr = strpbrk (start, ", ")) != ((void*)0))
       *ptr = 0;
     locate_attr_color (color, start);
-    if (ptr == NULL)
+    if (ptr == ((void*)0))
       break;
     start = ptr + 1;
   }

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ (* lexical_function ) (int /*<<< orphan*/  const) ;
-typedef  int /*<<< orphan*/  WCHAR ;
+
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef scalar_t__ (* lexical_function ) (int const) ;
+typedef int WCHAR ;
 struct TYPE_7__ {int start; unsigned int base; int ralf; int blwf; int pref; int end; } ;
-typedef  int /*<<< orphan*/  ScriptCache ;
-typedef  int /*<<< orphan*/  SCRIPT_ANALYSIS ;
-typedef  TYPE_1__ IndicSyllable ;
-typedef  int /*<<< orphan*/  HDC ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef int ScriptCache ;
+typedef int SCRIPT_ANALYSIS ;
+typedef TYPE_1__ IndicSyllable ;
+typedef int HDC ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*) ; 
- int /*<<< orphan*/  FindBaseConsonant (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/  const*,TYPE_1__*,scalar_t__ (*) (int /*<<< orphan*/  const),int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- TYPE_1__* HeapReAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*,int) ; 
- int Indic_process_next_syllable (int /*<<< orphan*/  const*,unsigned int,int /*<<< orphan*/ ,unsigned int*,int,scalar_t__ (*) (int /*<<< orphan*/  const)) ; 
- int /*<<< orphan*/  TRACE (char*,int,...) ; 
- int /*<<< orphan*/  debug_output_string (int /*<<< orphan*/  const*,unsigned int,scalar_t__ (*) (int /*<<< orphan*/  const)) ; 
- TYPE_1__* heap_alloc (int) ; 
- scalar_t__ lex_Generic ; 
+
+ int ERR (char*) ;
+ int FindBaseConsonant (int ,int *,int *,int const*,TYPE_1__*,scalar_t__ (*) (int const),int ) ;
+ int GetProcessHeap () ;
+ TYPE_1__* HeapReAlloc (int ,int ,TYPE_1__*,int) ;
+ int Indic_process_next_syllable (int const*,unsigned int,int ,unsigned int*,int,scalar_t__ (*) (int const)) ;
+ int TRACE (char*,int,...) ;
+ int debug_output_string (int const*,unsigned int,scalar_t__ (*) (int const)) ;
+ TYPE_1__* heap_alloc (int) ;
+ scalar_t__ lex_Generic ;
 
 void Indic_ParseSyllables(HDC hdc, SCRIPT_ANALYSIS *psa, ScriptCache *psc, const WCHAR *input, unsigned int cChar,
         IndicSyllable **syllables, int *syllable_count, lexical_function lex, BOOL modern)

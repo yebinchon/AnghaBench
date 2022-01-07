@@ -1,64 +1,64 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_65__   TYPE_9__ ;
-typedef  struct TYPE_64__   TYPE_6__ ;
-typedef  struct TYPE_63__   TYPE_5__ ;
-typedef  struct TYPE_62__   TYPE_4__ ;
-typedef  struct TYPE_61__   TYPE_3__ ;
-typedef  struct TYPE_60__   TYPE_2__ ;
-typedef  struct TYPE_59__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  void* ts_transport_type_t ;
+
+
+typedef struct TYPE_65__ TYPE_9__ ;
+typedef struct TYPE_64__ TYPE_6__ ;
+typedef struct TYPE_63__ TYPE_5__ ;
+typedef struct TYPE_62__ TYPE_4__ ;
+typedef struct TYPE_61__ TYPE_3__ ;
+typedef struct TYPE_60__ TYPE_2__ ;
+typedef struct TYPE_59__ TYPE_1__ ;
+
+
+typedef void* ts_transport_type_t ;
 struct TYPE_60__ {int i_stream_type; TYPE_9__* p_es; void* transport; } ;
-typedef  TYPE_2__ ts_stream_t ;
-typedef  int /*<<< orphan*/  ts_pmt_t ;
-typedef  scalar_t__ ts_pmt_registration_type_t ;
-struct TYPE_61__ {int /*<<< orphan*/  i_program_number; } ;
-typedef  TYPE_3__ dvbpsi_pmt_t ;
+typedef TYPE_2__ ts_stream_t ;
+typedef int ts_pmt_t ;
+typedef scalar_t__ ts_pmt_registration_type_t ;
+struct TYPE_61__ {int i_program_number; } ;
+typedef TYPE_3__ dvbpsi_pmt_t ;
 struct TYPE_62__ {int i_type; int i_pid; } ;
-typedef  TYPE_4__ dvbpsi_pmt_es_t ;
+typedef TYPE_4__ dvbpsi_pmt_es_t ;
 struct TYPE_63__ {TYPE_6__* p_sys; } ;
-typedef  TYPE_5__ demux_t ;
+typedef TYPE_5__ demux_t ;
 struct TYPE_64__ {scalar_t__ b_es_id_pid; } ;
-typedef  TYPE_6__ demux_sys_t ;
-struct TYPE_59__ {scalar_t__ i_cat; int b_packetized; int i_id; int /*<<< orphan*/  i_group; void* i_priority; } ;
+typedef TYPE_6__ demux_sys_t ;
+struct TYPE_59__ {scalar_t__ i_cat; int b_packetized; int i_id; int i_group; void* i_priority; } ;
 struct TYPE_65__ {TYPE_1__ fmt; } ;
 
-/* Variables and functions */
- scalar_t__ AUDIO_ES ; 
- void* ES_PRIORITY_NOT_DEFAULTABLE ; 
- void* ES_PRIORITY_SELECTABLE_MIN ; 
- int /*<<< orphan*/  PIDFillFormat (TYPE_5__*,TYPE_2__*,int,void**) ; 
- scalar_t__ PMTEsHasRegistration (TYPE_5__*,TYPE_4__ const*,char*) ; 
- int /*<<< orphan*/  PMTSetupEs0x02 (TYPE_9__*,TYPE_4__ const*) ; 
- int /*<<< orphan*/  PMTSetupEs0x05PrivateData (TYPE_5__*,TYPE_9__*,TYPE_4__ const*) ; 
- int /*<<< orphan*/  PMTSetupEs0x06 (TYPE_5__*,TYPE_2__*,TYPE_4__ const*) ; 
- int /*<<< orphan*/  PMTSetupEs0x83 (TYPE_3__ const*,TYPE_9__*,int) ; 
- int /*<<< orphan*/  PMTSetupEs0xA0 (TYPE_5__*,TYPE_9__*,TYPE_4__ const*) ; 
- int /*<<< orphan*/  PMTSetupEs0xD1 (TYPE_5__*,TYPE_9__*,TYPE_4__ const*) ; 
- int /*<<< orphan*/  PMTSetupEs0xEA (TYPE_5__*,TYPE_9__*,TYPE_4__ const*) ; 
- int PMTSetupEsHDMV (TYPE_5__*,TYPE_9__*,TYPE_4__ const*) ; 
- int PMTSetupEsRegistration (TYPE_5__*,TYPE_9__*,TYPE_4__ const*) ; 
- int /*<<< orphan*/  SetupAVCDescriptors (TYPE_5__*,TYPE_9__*,TYPE_4__ const*) ; 
- int /*<<< orphan*/  SetupAudioExtendedDescriptors (TYPE_5__*,TYPE_9__*,TYPE_4__ const*) ; 
- int /*<<< orphan*/  SetupISO14496Descriptors (TYPE_5__*,TYPE_2__*,int /*<<< orphan*/  const*,TYPE_4__ const*) ; 
- int /*<<< orphan*/  SetupJ2KDescriptors (TYPE_5__*,TYPE_9__*,TYPE_4__ const*) ; 
- int /*<<< orphan*/  SetupMetadataDescriptors (TYPE_5__*,TYPE_2__*,TYPE_4__ const*) ; 
- int /*<<< orphan*/  SetupStandardESDescriptors (TYPE_5__*,TYPE_9__*,TYPE_4__ const*) ; 
- scalar_t__ TS_PMT_REGISTRATION_BLURAY ; 
- void* TS_TRANSPORT_IGNORE ; 
- void* TS_TRANSPORT_PES ; 
- void* TS_TRANSPORT_SECTIONS ; 
- int /*<<< orphan*/  msg_Dbg (TYPE_5__*,char*,int,int) ; 
+
+ scalar_t__ AUDIO_ES ;
+ void* ES_PRIORITY_NOT_DEFAULTABLE ;
+ void* ES_PRIORITY_SELECTABLE_MIN ;
+ int PIDFillFormat (TYPE_5__*,TYPE_2__*,int,void**) ;
+ scalar_t__ PMTEsHasRegistration (TYPE_5__*,TYPE_4__ const*,char*) ;
+ int PMTSetupEs0x02 (TYPE_9__*,TYPE_4__ const*) ;
+ int PMTSetupEs0x05PrivateData (TYPE_5__*,TYPE_9__*,TYPE_4__ const*) ;
+ int PMTSetupEs0x06 (TYPE_5__*,TYPE_2__*,TYPE_4__ const*) ;
+ int PMTSetupEs0x83 (TYPE_3__ const*,TYPE_9__*,int) ;
+ int PMTSetupEs0xA0 (TYPE_5__*,TYPE_9__*,TYPE_4__ const*) ;
+ int PMTSetupEs0xD1 (TYPE_5__*,TYPE_9__*,TYPE_4__ const*) ;
+ int PMTSetupEs0xEA (TYPE_5__*,TYPE_9__*,TYPE_4__ const*) ;
+ int PMTSetupEsHDMV (TYPE_5__*,TYPE_9__*,TYPE_4__ const*) ;
+ int PMTSetupEsRegistration (TYPE_5__*,TYPE_9__*,TYPE_4__ const*) ;
+ int SetupAVCDescriptors (TYPE_5__*,TYPE_9__*,TYPE_4__ const*) ;
+ int SetupAudioExtendedDescriptors (TYPE_5__*,TYPE_9__*,TYPE_4__ const*) ;
+ int SetupISO14496Descriptors (TYPE_5__*,TYPE_2__*,int const*,TYPE_4__ const*) ;
+ int SetupJ2KDescriptors (TYPE_5__*,TYPE_9__*,TYPE_4__ const*) ;
+ int SetupMetadataDescriptors (TYPE_5__*,TYPE_2__*,TYPE_4__ const*) ;
+ int SetupStandardESDescriptors (TYPE_5__*,TYPE_9__*,TYPE_4__ const*) ;
+ scalar_t__ TS_PMT_REGISTRATION_BLURAY ;
+ void* TS_TRANSPORT_IGNORE ;
+ void* TS_TRANSPORT_PES ;
+ void* TS_TRANSPORT_SECTIONS ;
+ int msg_Dbg (TYPE_5__*,char*,int,int) ;
 
 __attribute__((used)) static void FillPESFromDvbpsiES( demux_t *p_demux,
                                  const dvbpsi_pmt_t *p_dvbpsipmt,
@@ -73,8 +73,8 @@ __attribute__((used)) static void FillPESFromDvbpsiES( demux_t *p_demux,
 
     p_pes->i_stream_type = p_dvbpsies->i_type;
 
-    bool b_registration_applied = false;
-    if ( p_dvbpsies->i_type >= 0x80 ) /* non standard, extensions */
+    bool b_registration_applied = 0;
+    if ( p_dvbpsies->i_type >= 0x80 )
     {
         if ( registration_type == TS_PMT_REGISTRATION_BLURAY )
         {
@@ -92,31 +92,31 @@ __attribute__((used)) static void FillPESFromDvbpsiES( demux_t *p_demux,
 
     if ( !b_registration_applied )
     {
-        p_pes->transport = type_change; /* Only change type if registration has not changed meaning */
+        p_pes->transport = type_change;
 
         switch( p_dvbpsies->i_type )
         {
         case 0x02:
             PMTSetupEs0x02( p_pes->p_es, p_dvbpsies );
             break;
-        case 0x05: /* Private data in sections */
+        case 0x05:
             p_pes->transport = TS_TRANSPORT_SECTIONS;
             PMTSetupEs0x05PrivateData( p_demux, p_pes->p_es, p_dvbpsies );
             break;
         case 0x06:
-            /* Handle PES private data */
+
             PMTSetupEs0x06( p_demux, p_pes, p_dvbpsies );
             break;
-        case 0x0a: /* DSM-CC */
+        case 0x0a:
         case 0x0b:
         case 0x0c:
         case 0x0d:
             p_pes->transport = TS_TRANSPORT_IGNORE;
             break;
-        /* All other private or reserved types */
-        case 0x13: /* SL in sections */
+
+        case 0x13:
             p_pes->transport = TS_TRANSPORT_SECTIONS;
-            /* fallthrough */
+
         case 0x0f:
         case 0x10:
         case 0x11:
@@ -133,7 +133,7 @@ __attribute__((used)) static void FillPESFromDvbpsiES( demux_t *p_demux,
             SetupJ2KDescriptors( p_demux, p_pes->p_es, p_dvbpsies );
             break;
         case 0x83:
-            /* LPCM (audio) */
+
             PMTSetupEs0x83( p_dvbpsipmt, p_pes->p_es, p_dvbpsies->i_pid );
             break;
         case 0xa0:
@@ -154,17 +154,17 @@ __attribute__((used)) static void FillPESFromDvbpsiES( demux_t *p_demux,
         SetupAudioExtendedDescriptors( p_demux, p_pes->p_es, p_dvbpsies );
     }
 
-    SetupStandardESDescriptors(  p_demux, p_pes->p_es, p_dvbpsies );
+    SetupStandardESDescriptors( p_demux, p_pes->p_es, p_dvbpsies );
 
     if ( registration_type == TS_PMT_REGISTRATION_BLURAY )
     {
-        /*
-         * 0x1011 primary video
-         * 0x1100- 0x111f primary audio
-         * 0x1a00- 0x1a1f secondary audio
-         * 0x1b00- 0x1b1f secondary video */
 
-        /* Disable dolbyvision */
+
+
+
+
+
+
         if ( p_dvbpsies->i_pid == 0x1015 &&
             PMTEsHasRegistration( p_demux, p_dvbpsies, "HDMV" ) )
         {
@@ -173,7 +173,7 @@ __attribute__((used)) static void FillPESFromDvbpsiES( demux_t *p_demux,
         else if( (p_dvbpsies->i_pid >= 0x1a00 && p_dvbpsies->i_pid <= 0x1a1f) ||
                  (p_dvbpsies->i_pid >= 0x1b00 && p_dvbpsies->i_pid <= 0x1b1f) )
         {
-            /* We might just want to prio, but it will trigger multiple videos es */
+
             p_pes->p_es->fmt.i_priority = ES_PRIORITY_NOT_DEFAULTABLE;
         }
         else
@@ -183,10 +183,10 @@ __attribute__((used)) static void FillPESFromDvbpsiES( demux_t *p_demux,
         }
     }
 
-    /* PES packets usually contain truncated frames */
-    p_pes->p_es->fmt.b_packetized = false;
 
-    /* Set Groups / ID */
+    p_pes->p_es->fmt.b_packetized = 0;
+
+
     p_pes->p_es->fmt.i_group = p_dvbpsipmt->i_program_number;
     if( p_sys->b_es_id_pid )
         p_pes->p_es->fmt.i_id = p_dvbpsies->i_pid;

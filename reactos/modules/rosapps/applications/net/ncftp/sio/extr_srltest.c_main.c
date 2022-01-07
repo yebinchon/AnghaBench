@@ -1,33 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  Server (int) ; 
- int atoi (char*) ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  stderr ; 
+ int Server (int) ;
+ int atoi (char*) ;
+ int exit (int) ;
+ int fprintf (int ,char*,char*) ;
+ int stderr ;
 
 void
 main(int argc, char **argv)
 {
-	int port;
+ int port;
 
-	if (argc < 2) {
-		fprintf(stderr, "Usage: %s <port>\n", argv[0]);
-		exit(2);
-	}
-	port = atoi(argv[1]);
-	Server(port);
-	exit(0);
+ if (argc < 2) {
+  fprintf(stderr, "Usage: %s <port>\n", argv[0]);
+  exit(2);
+ }
+ port = atoi(argv[1]);
+ Server(port);
+ exit(0);
 }

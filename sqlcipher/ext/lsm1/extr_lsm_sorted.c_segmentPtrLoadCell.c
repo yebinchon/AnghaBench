@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-struct TYPE_4__ {int nCell; int iCell; int nKey; int nVal; int /*<<< orphan*/  pVal; int /*<<< orphan*/  blob2; int /*<<< orphan*/  eType; int /*<<< orphan*/  blob1; int /*<<< orphan*/  pKey; int /*<<< orphan*/  iPgPtr; scalar_t__ pPg; } ;
-typedef  TYPE_1__ SegmentPtr ;
 
-/* Variables and functions */
- scalar_t__ GETVARINT32 (int /*<<< orphan*/ *,int) ; 
- scalar_t__ GETVARINT64 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int LSM_OK ; 
- size_t SEGMENT_CELLPTR_OFFSET (int,int) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/ * fsPageData (scalar_t__,int*) ; 
- int lsmGetU16 (int /*<<< orphan*/ *) ; 
- scalar_t__ rtIsWrite (int /*<<< orphan*/ ) ; 
- int segmentPtrReadData (TYPE_1__*,int,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int u8 ;
+struct TYPE_4__ {int nCell; int iCell; int nKey; int nVal; int pVal; int blob2; int eType; int blob1; int pKey; int iPgPtr; scalar_t__ pPg; } ;
+typedef TYPE_1__ SegmentPtr ;
+
+
+ scalar_t__ GETVARINT32 (int *,int) ;
+ scalar_t__ GETVARINT64 (int *,int ) ;
+ int LSM_OK ;
+ size_t SEGMENT_CELLPTR_OFFSET (int,int) ;
+ int assert (int) ;
+ int * fsPageData (scalar_t__,int*) ;
+ int lsmGetU16 (int *) ;
+ scalar_t__ rtIsWrite (int ) ;
+ int segmentPtrReadData (TYPE_1__*,int,int,int *,int *) ;
 
 __attribute__((used)) static int segmentPtrLoadCell(
-  SegmentPtr *pPtr,              /* Load page into this SegmentPtr object */
-  int iNew                       /* Cell number of new cell */
+  SegmentPtr *pPtr,
+  int iNew
 ){
   int rc = LSM_OK;
   if( pPtr->pPg ){
-    u8 *aData;                    /* Pointer to page data buffer */
-    int iOff;                     /* Offset in aData[] to read from */
-    int nPgsz;                    /* Size of page (aData[]) in bytes */
+    u8 *aData;
+    int iOff;
+    int nPgsz;
 
     assert( iNew<pPtr->nCell );
     pPtr->iCell = iNew;

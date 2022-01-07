@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct dynstring {int len; int /*<<< orphan*/  buf; } ;
 
-/* Variables and functions */
- int dynstring_set_size (struct dynstring*,int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,char const*,int) ; 
- int strlen (char const*) ; 
+
+
+
+struct dynstring {int len; int buf; } ;
+
+
+ int dynstring_set_size (struct dynstring*,int) ;
+ int memcpy (int ,char const*,int) ;
+ int strlen (char const*) ;
 
 __attribute__((used)) static int dynstring_dup(struct dynstring *ds, const char *src, int len)
 {

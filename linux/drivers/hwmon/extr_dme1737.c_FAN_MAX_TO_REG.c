@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int* FAN_MAX ; 
+ int* FAN_MAX ;
 
 __attribute__((used)) static int FAN_MAX_TO_REG(long val)
 {
-	int i;
+ int i;
 
-	for (i = 10; i > 0; i--) {
-		if (val > (1000 + (i - 1) * 500))
-			break;
-	}
+ for (i = 10; i > 0; i--) {
+  if (val > (1000 + (i - 1) * 500))
+   break;
+ }
 
-	return FAN_MAX[i];
+ return FAN_MAX[i];
 }

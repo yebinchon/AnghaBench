@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct tl_hashmap {int size; scalar_t__ filled; scalar_t__ n; void** h; int /*<<< orphan*/  (* compare ) (void*,void*) ;int /*<<< orphan*/  (* compute_hash ) (struct tl_hashmap*,void*,int*,int*) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  stub1 (struct tl_hashmap*,void*,int*,int*) ; 
- int /*<<< orphan*/  stub2 (void*,void*) ; 
- int /*<<< orphan*/  tl_hashmap_extend (struct tl_hashmap**) ; 
+
+
+
+struct tl_hashmap {int size; scalar_t__ filled; scalar_t__ n; void** h; int (* compare ) (void*,void*) ;int (* compute_hash ) (struct tl_hashmap*,void*,int*,int*) ;} ;
+
+
+ int assert (int) ;
+ int stub1 (struct tl_hashmap*,void*,int*,int*) ;
+ int stub2 (void*,void*) ;
+ int tl_hashmap_extend (struct tl_hashmap**) ;
 
 void *tl_hashmap_get_f (struct tl_hashmap **V, void *p, int force) {
   assert (force >= 0);
@@ -24,7 +24,7 @@ void *tl_hashmap_get_f (struct tl_hashmap **V, void *p, int force) {
   struct tl_hashmap *H = *V;
   H->compute_hash (H, p, &h1, &h2);
   void *D;
-  while ((D = H->h[h1]) != NULL) {
+  while ((D = H->h[h1]) != ((void*)0)) {
     if (!H->compare (D, p)) {
       return D;
     }
@@ -32,7 +32,7 @@ void *tl_hashmap_get_f (struct tl_hashmap **V, void *p, int force) {
     if (h1 >= H->size) { h1 -= H->size; }
   }
   if (!force) {
-    return NULL;
+    return ((void*)0);
   }
   if (H->filled == H->n) {
     tl_hashmap_extend (V);

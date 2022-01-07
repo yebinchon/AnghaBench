@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct vk_aes_ctx {int /*<<< orphan*/  (* cbc_crypt ) (struct vk_aes_ctx*,unsigned char*,unsigned char*,int,unsigned char*) ;int /*<<< orphan*/  (* ige_crypt ) (struct vk_aes_ctx*,unsigned char*,unsigned char*,int,unsigned char*) ;} ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct vk_aes_ctx {int (* cbc_crypt ) (struct vk_aes_ctx*,unsigned char*,unsigned char*,int,unsigned char*) ;int (* ige_crypt ) (struct vk_aes_ctx*,unsigned char*,unsigned char*,int,unsigned char*) ;} ;
 struct raw_message {int total_bytes; int first_offset; int last_offset; struct msg_part* last; struct msg_part* first; } ;
 struct msg_part {int offset; int len; struct msg_part* next; TYPE_1__* part; } ;
 struct TYPE_2__ {unsigned char* data; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  memcpy (unsigned char*,unsigned char*,int) ; 
- int /*<<< orphan*/  rwm_fork_deep (struct raw_message*) ; 
- int /*<<< orphan*/  stub1 (struct vk_aes_ctx*,void*,void*,int,unsigned char*) ; 
- int /*<<< orphan*/  stub2 (struct vk_aes_ctx*,void*,void*,int,unsigned char*) ; 
- int /*<<< orphan*/  stub3 (struct vk_aes_ctx*,unsigned char*,unsigned char*,int,unsigned char*) ; 
- int /*<<< orphan*/  stub4 (struct vk_aes_ctx*,unsigned char*,unsigned char*,int,unsigned char*) ; 
+
+ int assert (int) ;
+ int memcpy (unsigned char*,unsigned char*,int) ;
+ int rwm_fork_deep (struct raw_message*) ;
+ int stub1 (struct vk_aes_ctx*,void*,void*,int,unsigned char*) ;
+ int stub2 (struct vk_aes_ctx*,void*,void*,int,unsigned char*) ;
+ int stub3 (struct vk_aes_ctx*,unsigned char*,unsigned char*,int,unsigned char*) ;
+ int stub4 (struct vk_aes_ctx*,unsigned char*,unsigned char*,int,unsigned char*) ;
 
 int _rwm_encrypt_decrypt (struct raw_message *raw, int bytes, struct vk_aes_ctx *ctx, int mode, unsigned char *iv) {
   assert (bytes >= 0);
@@ -36,11 +36,11 @@ int _rwm_encrypt_decrypt (struct raw_message *raw, int bytes, struct vk_aes_ctx 
   }
   int s = bytes;
   rwm_fork_deep (raw);
-//  assert (raw->total_bytes % 16 == 0);
+
 
   struct msg_part *mp = raw->first;
   int start = (mp == raw->first) ? raw->first_offset : mp->offset;
-  int len = (mp == raw->last) ? raw->last_offset - start : mp->len + mp->offset - start;  
+  int len = (mp == raw->last) ? raw->last_offset - start : mp->len + mp->offset - start;
   while (bytes) {
     assert (start >= 0);
     assert (len >= 0);
@@ -64,7 +64,7 @@ int _rwm_encrypt_decrypt (struct raw_message *raw, int bytes, struct vk_aes_ctx 
       while (p < 16) {
         int x = (len > 16 - p) ? 16 - p : len;
         memcpy (c + p, mp->part->data + start, x);
-        p += x;        
+        p += x;
         if (len == x) {
           mp = mp->next;
           if (mp) {
@@ -91,7 +91,7 @@ int _rwm_encrypt_decrypt (struct raw_message *raw, int bytes, struct vk_aes_ctx 
       while (p < 16) {
         int x = (len > 16 - p) ? 16 - p : len;
         memcpy (mp->part->data + start, c + p, x);
-        p += x;        
+        p += x;
         if (len == x) {
           mp = mp->next;
           if (mp) {
@@ -118,8 +118,8 @@ int _rwm_encrypt_decrypt (struct raw_message *raw, int bytes, struct vk_aes_ctx 
         start = -1;
         len = -1;
       }
-    }    
+    }
   }
-//  assert (!mp || (raw->last->next == mp) || (mp == raw->last && start == raw->last_offset && !len));
+
   return s;
 }

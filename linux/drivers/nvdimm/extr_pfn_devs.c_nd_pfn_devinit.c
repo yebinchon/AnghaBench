@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct device {int dummy; } ;
-struct nd_pfn {int /*<<< orphan*/  ndns; struct device dev; int /*<<< orphan*/  align; int /*<<< orphan*/  mode; } ;
-struct nd_namespace_common {int /*<<< orphan*/  claim; int /*<<< orphan*/  dev; } ;
+struct nd_pfn {int ndns; struct device dev; int align; int mode; } ;
+struct nd_namespace_common {int claim; int dev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PFN_MODE_NONE ; 
- int /*<<< orphan*/  __nd_attach_ndns (struct device*,struct nd_namespace_common*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  dev_dbg (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dev_name (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  device_initialize (struct device*) ; 
- int /*<<< orphan*/  nd_pfn_default_alignment () ; 
- int /*<<< orphan*/  put_device (struct device*) ; 
+
+ int PFN_MODE_NONE ;
+ int __nd_attach_ndns (struct device*,struct nd_namespace_common*,int *) ;
+ int dev_dbg (int *,char*,int ) ;
+ int dev_name (int ) ;
+ int device_initialize (struct device*) ;
+ int nd_pfn_default_alignment () ;
+ int put_device (struct device*) ;
 
 struct device *nd_pfn_devinit(struct nd_pfn *nd_pfn,
-		struct nd_namespace_common *ndns)
+  struct nd_namespace_common *ndns)
 {
-	struct device *dev;
+ struct device *dev;
 
-	if (!nd_pfn)
-		return NULL;
+ if (!nd_pfn)
+  return ((void*)0);
 
-	nd_pfn->mode = PFN_MODE_NONE;
-	nd_pfn->align = nd_pfn_default_alignment();
-	dev = &nd_pfn->dev;
-	device_initialize(&nd_pfn->dev);
-	if (ndns && !__nd_attach_ndns(&nd_pfn->dev, ndns, &nd_pfn->ndns)) {
-		dev_dbg(&ndns->dev, "failed, already claimed by %s\n",
-				dev_name(ndns->claim));
-		put_device(dev);
-		return NULL;
-	}
-	return dev;
+ nd_pfn->mode = PFN_MODE_NONE;
+ nd_pfn->align = nd_pfn_default_alignment();
+ dev = &nd_pfn->dev;
+ device_initialize(&nd_pfn->dev);
+ if (ndns && !__nd_attach_ndns(&nd_pfn->dev, ndns, &nd_pfn->ndns)) {
+  dev_dbg(&ndns->dev, "failed, already claimed by %s\n",
+    dev_name(ndns->claim));
+  put_device(dev);
+  return ((void*)0);
+ }
+ return dev;
 }

@@ -1,60 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct wined3d_string_buffer_list {int dummy; } ;
-struct wined3d_string_buffer {int /*<<< orphan*/  buffer; } ;
+struct wined3d_string_buffer {int buffer; } ;
 struct wined3d_shader_version {int major; } ;
-struct wined3d_shader_signature_element {int /*<<< orphan*/  register_idx; } ;
-struct wined3d_shader_reg_maps {struct wined3d_shader_version shader_version; int /*<<< orphan*/  input_registers; scalar_t__ input_rel_addressing; } ;
+struct wined3d_shader_signature_element {int register_idx; } ;
+struct wined3d_shader_reg_maps {struct wined3d_shader_version shader_version; int input_registers; scalar_t__ input_rel_addressing; } ;
 struct TYPE_6__ {unsigned int element_count; struct wined3d_shader_signature_element* elements; } ;
 struct wined3d_shader {TYPE_3__ input_signature; TYPE_2__* limits; struct wined3d_shader_reg_maps reg_maps; } ;
-struct TYPE_4__ {int /*<<< orphan*/  user_clip_distances; } ;
+struct TYPE_4__ {int user_clip_distances; } ;
 struct wined3d_gl_info {scalar_t__* supported; TYPE_1__ limits; } ;
 struct wined3d_context {struct wined3d_gl_info* gl_info; } ;
-struct vs_compile_args {scalar_t__ next_shader_type; int /*<<< orphan*/  interpolation_mode; int /*<<< orphan*/  next_shader_input_count; int /*<<< orphan*/  flatshading; scalar_t__ clip_enabled; int /*<<< orphan*/  per_vertex_point_size; scalar_t__ point_size; } ;
+struct vs_compile_args {scalar_t__ next_shader_type; int interpolation_mode; int next_shader_input_count; int flatshading; scalar_t__ clip_enabled; int per_vertex_point_size; scalar_t__ point_size; } ;
 struct shader_glsl_priv {struct wined3d_string_buffer shader_buffer; struct wined3d_string_buffer_list string_buffers; } ;
 struct shader_glsl_ctx_priv {struct wined3d_string_buffer_list* string_buffers; struct vs_compile_args const* cur_vs_args; } ;
-typedef  int /*<<< orphan*/  priv_ctx ;
-struct TYPE_5__ {int /*<<< orphan*/  packed_output; } ;
-typedef  int /*<<< orphan*/  GLuint ;
+typedef int priv_ctx ;
+struct TYPE_5__ {int packed_output; } ;
+typedef int GLuint ;
 
-/* Variables and functions */
- size_t ARB_CLIP_CONTROL ; 
- size_t ARB_DRAW_INSTANCED ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GL_EXTCALL (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GL_VERTEX_SHADER ; 
- int /*<<< orphan*/  MAX_TEXTURES ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ) ; 
- scalar_t__ WINED3D_SHADER_TYPE_PIXEL ; 
- int /*<<< orphan*/  declare_out_varying (struct wined3d_gl_info const*,struct wined3d_string_buffer*,int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  glCreateShader (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (struct shader_glsl_ctx_priv*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  needs_legacy_glsl_syntax (struct wined3d_gl_info const*) ; 
- int /*<<< orphan*/  shader_addline (struct wined3d_string_buffer*,char*,...) ; 
- int /*<<< orphan*/  shader_generate_code (struct wined3d_shader const*,struct wined3d_string_buffer*,struct wined3d_shader_reg_maps const*,struct shader_glsl_ctx_priv*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  shader_generate_glsl_declarations (struct wined3d_context const*,struct wined3d_string_buffer*,struct wined3d_shader const*,struct wined3d_shader_reg_maps const*,struct shader_glsl_ctx_priv*) ; 
- int /*<<< orphan*/  shader_glsl_add_version_declaration (struct wined3d_string_buffer*,struct wined3d_gl_info const*) ; 
- int /*<<< orphan*/  shader_glsl_compile (struct wined3d_gl_info const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  shader_glsl_declare_generic_vertex_attribute (struct wined3d_string_buffer*,struct wined3d_gl_info const*,struct wined3d_shader_signature_element*) ; 
- int /*<<< orphan*/  shader_glsl_enable_extensions (struct wined3d_string_buffer*,struct wined3d_gl_info const*) ; 
- int /*<<< orphan*/  shader_glsl_generate_sm4_output_setup (struct shader_glsl_priv*,struct wined3d_shader const*,int /*<<< orphan*/ ,struct wined3d_gl_info const*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  shader_glsl_generate_vs_epilogue (struct wined3d_gl_info const*,struct wined3d_string_buffer*,struct wined3d_shader const*,struct vs_compile_args const*) ; 
- scalar_t__ shader_glsl_use_explicit_attrib_location (struct wined3d_gl_info const*) ; 
- unsigned int wined3d_log2i (int /*<<< orphan*/ ) ; 
+
+ size_t ARB_CLIP_CONTROL ;
+ size_t ARB_DRAW_INSTANCED ;
+ scalar_t__ FAILED (int ) ;
+ int FALSE ;
+ int GL_EXTCALL (int ) ;
+ int GL_VERTEX_SHADER ;
+ int MAX_TEXTURES ;
+ int TRACE (char*,int ) ;
+ scalar_t__ WINED3D_SHADER_TYPE_PIXEL ;
+ int declare_out_varying (struct wined3d_gl_info const*,struct wined3d_string_buffer*,int ,char*,...) ;
+ int glCreateShader (int ) ;
+ int memset (struct shader_glsl_ctx_priv*,int ,int) ;
+ int needs_legacy_glsl_syntax (struct wined3d_gl_info const*) ;
+ int shader_addline (struct wined3d_string_buffer*,char*,...) ;
+ int shader_generate_code (struct wined3d_shader const*,struct wined3d_string_buffer*,struct wined3d_shader_reg_maps const*,struct shader_glsl_ctx_priv*,int *,int *) ;
+ int shader_generate_glsl_declarations (struct wined3d_context const*,struct wined3d_string_buffer*,struct wined3d_shader const*,struct wined3d_shader_reg_maps const*,struct shader_glsl_ctx_priv*) ;
+ int shader_glsl_add_version_declaration (struct wined3d_string_buffer*,struct wined3d_gl_info const*) ;
+ int shader_glsl_compile (struct wined3d_gl_info const*,int ,int ) ;
+ int shader_glsl_declare_generic_vertex_attribute (struct wined3d_string_buffer*,struct wined3d_gl_info const*,struct wined3d_shader_signature_element*) ;
+ int shader_glsl_enable_extensions (struct wined3d_string_buffer*,struct wined3d_gl_info const*) ;
+ int shader_glsl_generate_sm4_output_setup (struct shader_glsl_priv*,struct wined3d_shader const*,int ,struct wined3d_gl_info const*,int,int ) ;
+ int shader_glsl_generate_vs_epilogue (struct wined3d_gl_info const*,struct wined3d_string_buffer*,struct wined3d_shader const*,struct vs_compile_args const*) ;
+ scalar_t__ shader_glsl_use_explicit_attrib_location (struct wined3d_gl_info const*) ;
+ unsigned int wined3d_log2i (int ) ;
 
 __attribute__((used)) static GLuint shader_glsl_generate_vshader(const struct wined3d_context *context,
         struct shader_glsl_priv *priv, const struct wined3d_shader *shader, const struct vs_compile_args *args)
@@ -80,7 +80,7 @@ __attribute__((used)) static GLuint shader_glsl_generate_vshader(const struct wi
     if (shader_glsl_use_explicit_attrib_location(gl_info))
         shader_addline(buffer, "#extension GL_ARB_explicit_attrib_location : enable\n");
 
-    /* Base Declarations */
+
     shader_generate_glsl_declarations(context, buffer, shader, reg_maps, &priv_ctx);
 
     for (i = 0; i < shader->input_signature.element_count; ++i)
@@ -132,10 +132,10 @@ __attribute__((used)) static GLuint shader_glsl_generate_vshader(const struct wi
         }
     }
 
-    if (FAILED(shader_generate_code(shader, buffer, reg_maps, &priv_ctx, NULL, NULL)))
+    if (FAILED(shader_generate_code(shader, buffer, reg_maps, &priv_ctx, ((void*)0), ((void*)0))))
         return 0;
 
-    /* In SM4+ the shader epilogue is generated by the "ret" instruction. */
+
     if (reg_maps->shader_version.major < 4)
         shader_glsl_generate_vs_epilogue(gl_info, buffer, shader, args);
 

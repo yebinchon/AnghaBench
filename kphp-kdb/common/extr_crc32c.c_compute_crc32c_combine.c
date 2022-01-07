@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  gf32_matrix_square (unsigned int*,unsigned int*) ; 
- unsigned int gf32_matrix_times (unsigned int*,unsigned int) ; 
+ int gf32_matrix_square (unsigned int*,unsigned int*) ;
+ unsigned int gf32_matrix_times (unsigned int*,unsigned int) ;
 
 unsigned compute_crc32c_combine (unsigned crc1, unsigned crc2, int len2) {
   static int power_buf_initialized = 0;
   static unsigned power_buf[1024];
   int n;
-  /* degenerate case (also disallow negative lengths) */
+
   if (len2 <= 0) {
     return crc1;
   }

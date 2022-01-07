@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-typedef  int u32 ;
-typedef  int /*<<< orphan*/  s32 ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  chdir (char*) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fflush (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  fread (int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fwrite (int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  myexit (int) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  stdout ; 
+
+
+
+typedef int u8 ;
+typedef int u32 ;
+typedef int s32 ;
+typedef int FILE ;
+
+
+ int chdir (char*) ;
+ int fclose (int *) ;
+ int fflush (int ) ;
+ int * fopen (char*,char*) ;
+ int fread (int *,int,int,int *) ;
+ int fwrite (int *,int,int,int *) ;
+ int myexit (int) ;
+ int printf (char*,...) ;
+ int stdout ;
 
 s32 convert_bin_to_iso(FILE *bin_file, char *output_dir, char *iso_file_name,
  u32 sector_count)
@@ -35,7 +35,7 @@ s32 convert_bin_to_iso(FILE *bin_file, char *output_dir, char *iso_file_name,
 
   chdir(output_dir);
   iso_file = fopen(iso_file_name, "wb");
-  if (iso_file == NULL)
+  if (iso_file == ((void*)0))
   {
     printf("failed to open: %s\n", iso_file_name);
     myexit(1);

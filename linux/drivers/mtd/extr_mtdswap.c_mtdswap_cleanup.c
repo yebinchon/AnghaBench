@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct mtdswap_dev {int /*<<< orphan*/  page_buf; int /*<<< orphan*/  oob_buf; int /*<<< orphan*/  page_data; int /*<<< orphan*/  revmap; int /*<<< orphan*/  eb_data; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  kfree (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vfree (int /*<<< orphan*/ ) ; 
+
+
+
+struct mtdswap_dev {int page_buf; int oob_buf; int page_data; int revmap; int eb_data; } ;
+
+
+ int kfree (int ) ;
+ int vfree (int ) ;
 
 __attribute__((used)) static void mtdswap_cleanup(struct mtdswap_dev *d)
 {
-	vfree(d->eb_data);
-	vfree(d->revmap);
-	vfree(d->page_data);
-	kfree(d->oob_buf);
-	kfree(d->page_buf);
+ vfree(d->eb_data);
+ vfree(d->revmap);
+ vfree(d->page_data);
+ kfree(d->oob_buf);
+ kfree(d->page_buf);
 }

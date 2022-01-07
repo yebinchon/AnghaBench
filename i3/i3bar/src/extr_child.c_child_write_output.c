@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int ssize_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int ssize_t ;
 struct TYPE_2__ {int click_events; } ;
 
-/* Variables and functions */
- TYPE_1__ child ; 
- int /*<<< orphan*/  child_stdin ; 
- int /*<<< orphan*/  draw_bars (int) ; 
- int /*<<< orphan*/  gen ; 
- int /*<<< orphan*/  kill_child () ; 
- int /*<<< orphan*/  set_statusline_error (char*) ; 
- int writeall (int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  yajl_gen_clear (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  yajl_gen_get_buf (int /*<<< orphan*/ ,unsigned char const**,size_t*) ; 
+
+ TYPE_1__ child ;
+ int child_stdin ;
+ int draw_bars (int) ;
+ int gen ;
+ int kill_child () ;
+ int set_statusline_error (char*) ;
+ int writeall (int ,...) ;
+ int yajl_gen_clear (int ) ;
+ int yajl_gen_get_buf (int ,unsigned char const**,size_t*) ;
 
 __attribute__((used)) static void child_write_output(void) {
     if (child.click_events) {
@@ -40,10 +40,10 @@ __attribute__((used)) static void child_write_output(void) {
         yajl_gen_clear(gen);
 
         if (n == -1) {
-            child.click_events = false;
+            child.click_events = 0;
             kill_child();
             set_statusline_error("child_write_output failed");
-            draw_bars(false);
+            draw_bars(0);
         }
     }
 }

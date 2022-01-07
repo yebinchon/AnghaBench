@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int didLogXid; int /*<<< orphan*/  fullTransactionId; } ;
 
-/* Variables and functions */
- TYPE_1__* CurrentTransactionState ; 
- scalar_t__ FullTransactionIdIsValid (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int didLogXid; int fullTransactionId; } ;
+
+
+ TYPE_1__* CurrentTransactionState ;
+ scalar_t__ FullTransactionIdIsValid (int ) ;
 
 void
 MarkCurrentTransactionIdLoggedIfAny(void)
 {
-	if (FullTransactionIdIsValid(CurrentTransactionState->fullTransactionId))
-		CurrentTransactionState->didLogXid = true;
+ if (FullTransactionIdIsValid(CurrentTransactionState->fullTransactionId))
+  CurrentTransactionState->didLogXid = 1;
 }

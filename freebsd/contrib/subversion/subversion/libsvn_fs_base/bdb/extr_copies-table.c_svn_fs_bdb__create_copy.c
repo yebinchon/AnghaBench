@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  trail_t ;
-typedef  int /*<<< orphan*/  svn_fs_t ;
-typedef  int /*<<< orphan*/  svn_fs_id_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct TYPE_3__ {char const* src_path; char const* src_txn_id; int /*<<< orphan*/  const* dst_noderev_id; int /*<<< orphan*/  kind; } ;
-typedef  TYPE_1__ copy_t ;
-typedef  int /*<<< orphan*/  copy_kind_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * put_copy (int /*<<< orphan*/ *,TYPE_1__*,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int trail_t ;
+typedef int svn_fs_t ;
+typedef int svn_fs_id_t ;
+typedef int svn_error_t ;
+struct TYPE_3__ {char const* src_path; char const* src_txn_id; int const* dst_noderev_id; int kind; } ;
+typedef TYPE_1__ copy_t ;
+typedef int copy_kind_t ;
+typedef int apr_pool_t ;
+
+
+ int * put_copy (int *,TYPE_1__*,char const*,int *,int *) ;
 
 svn_error_t *
 svn_fs_bdb__create_copy(svn_fs_t *fs,

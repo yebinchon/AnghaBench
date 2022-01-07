@@ -1,76 +1,68 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  DPRINTF_S (char*) ; 
- int FALSE ; 
- int /*<<< orphan*/  F_NORMAL ; 
- size_t OPERATION_FAILED ; 
- int TRUE ; 
- size_t UTIL_MISSING ; 
- int /*<<< orphan*/  cfgdir ; 
- int /*<<< orphan*/  create_dir (char*) ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  getutil (char*) ; 
- int /*<<< orphan*/ * messages ; 
- int /*<<< orphan*/  mkpath (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  printwait (int /*<<< orphan*/ ,int*) ; 
- scalar_t__ spawn (char*,char*,char*,char*,int /*<<< orphan*/ ) ; 
- char* strdup (char*) ; 
- int /*<<< orphan*/  strerror (int /*<<< orphan*/ ) ; 
- size_t strlen (char*) ; 
+ int DPRINTF_S (char*) ;
+ int FALSE ;
+ int F_NORMAL ;
+ size_t OPERATION_FAILED ;
+ int TRUE ;
+ size_t UTIL_MISSING ;
+ int cfgdir ;
+ int create_dir (char*) ;
+ int errno ;
+ int free (char*) ;
+ int getutil (char*) ;
+ int * messages ;
+ int mkpath (int ,char*,char*) ;
+ int printwait (int ,int*) ;
+ scalar_t__ spawn (char*,char*,char*,char*,int ) ;
+ char* strdup (char*) ;
+ int strerror (int ) ;
+ size_t strlen (char*) ;
 
 __attribute__((used)) static bool archive_mount(char *name, char *path, char *newpath, int *presel)
 {
-	char *dir, *cmd = "archivemount";
-	size_t len;
+ char *dir, *cmd = "archivemount";
+ size_t len;
 
-	if (!getutil(cmd)) {
-		printwait(messages[UTIL_MISSING], presel);
-		return FALSE;
-	}
+ if (!getutil(cmd)) {
+  printwait(messages[UTIL_MISSING], presel);
+  return FALSE;
+ }
 
-	dir = strdup(name);
-	if (!dir)
-		return FALSE;
+ dir = strdup(name);
+ if (!dir)
+  return FALSE;
 
-	len = strlen(dir);
+ len = strlen(dir);
 
-	while (len > 1)
-		if (dir[--len] == '.') {
-			dir[len] = '\0';
-			break;
-		}
+ while (len > 1)
+  if (dir[--len] == '.') {
+   dir[len] = '\0';
+   break;
+  }
 
-	DPRINTF_S(dir);
+ DPRINTF_S(dir);
 
-	/* Create the mount point */
-	mkpath(cfgdir, dir, newpath);
-	free(dir);
 
-	if (!create_dir(newpath)) {
-		printwait(strerror(errno), presel);
-		return FALSE;
-	}
+ mkpath(cfgdir, dir, newpath);
+ free(dir);
 
-	/* Mount archive */
-	DPRINTF_S(name);
-	DPRINTF_S(newpath);
-	if (spawn(cmd, name, newpath, path, F_NORMAL)) {
-		printwait(messages[OPERATION_FAILED], presel);
-		return FALSE;
-	}
+ if (!create_dir(newpath)) {
+  printwait(strerror(errno), presel);
+  return FALSE;
+ }
 
-	return TRUE;
+
+ DPRINTF_S(name);
+ DPRINTF_S(newpath);
+ if (spawn(cmd, name, newpath, path, F_NORMAL)) {
+  printwait(messages[OPERATION_FAILED], presel);
+  return FALSE;
+ }
+
+ return TRUE;
 }

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int ULONG ;
-typedef  scalar_t__ PUCHAR ;
 
-/* Variables and functions */
- int READ_PORT_UCHAR (scalar_t__) ; 
- int /*<<< orphan*/  StallExecutionProcessor (int) ; 
- int /*<<< orphan*/  WRITE_PORT_UCHAR (scalar_t__,int) ; 
+
+
+
+typedef int ULONG ;
+typedef scalar_t__ PUCHAR ;
+
+
+ int READ_PORT_UCHAR (scalar_t__) ;
+ int StallExecutionProcessor (int) ;
+ int WRITE_PORT_UCHAR (scalar_t__,int) ;
 
 __attribute__((used)) static ULONG
 GetSerialMousePnpId(PUCHAR Port, char *Buffer)
@@ -28,7 +28,7 @@ GetSerialMousePnpId(PUCHAR Port, char *Buffer)
 
     WRITE_PORT_UCHAR(Port + 4, 0x09);
 
-    /* Wait 10 milliseconds for the mouse getting ready */
+
     StallExecutionProcessor(10000);
 
     WRITE_PORT_UCHAR(Port + 4, 0x0b);

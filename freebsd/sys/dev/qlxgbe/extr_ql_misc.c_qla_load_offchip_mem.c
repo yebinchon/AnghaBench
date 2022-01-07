@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint64_t ;
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  qla_host_t ;
-struct TYPE_4__ {int /*<<< orphan*/  data_lo; int /*<<< orphan*/  data_hi; int /*<<< orphan*/  data_ulo; int /*<<< orphan*/  data_uhi; } ;
-typedef  TYPE_1__ q80_offchip_mem_val_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  bzero (TYPE_1__*,int) ; 
- int ql_rdwr_offchip_mem (int /*<<< orphan*/ *,scalar_t__,TYPE_1__*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint64_t ;
+typedef int uint32_t ;
+typedef int qla_host_t ;
+struct TYPE_4__ {int data_lo; int data_hi; int data_ulo; int data_uhi; } ;
+typedef TYPE_1__ q80_offchip_mem_val_t ;
+
+
+ int bzero (TYPE_1__*,int) ;
+ int ql_rdwr_offchip_mem (int *,scalar_t__,TYPE_1__*,int ) ;
 
 __attribute__((used)) static int
 qla_load_offchip_mem(qla_host_t *ha, uint64_t addr, uint32_t *data32,
         uint32_t len32)
 {
         q80_offchip_mem_val_t val;
-        int             ret = 0;
+        int ret = 0;
 
         while (len32) {
                 if (len32 > 4) {

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  time_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int time_t ;
 struct TYPE_2__ {scalar_t__ data; } ;
 struct ub_packed_rrset_key {TYPE_1__ entry; } ;
-struct packed_rrset_data {int /*<<< orphan*/  ttl; } ;
+struct packed_rrset_data {int ttl; } ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static time_t
 key_ttl(struct ub_packed_rrset_key* k)
 {
-	struct packed_rrset_data* d = (struct packed_rrset_data*)k->entry.data;
-	return d->ttl;
+ struct packed_rrset_data* d = (struct packed_rrset_data*)k->entry.data;
+ return d->ttl;
 }

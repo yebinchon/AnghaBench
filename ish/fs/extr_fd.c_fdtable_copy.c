@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct fdtable {int size; int /*<<< orphan*/  lock; TYPE_1__** cloexec; TYPE_1__** files; } ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct fdtable {int size; int lock; TYPE_1__** cloexec; TYPE_1__** files; } ;
 struct fd {int dummy; } ;
-typedef  int fd_t ;
-struct TYPE_3__ {int /*<<< orphan*/  refcount; } ;
+typedef int fd_t ;
+struct TYPE_3__ {int refcount; } ;
 
-/* Variables and functions */
- int BITS_SIZE (int) ; 
- scalar_t__ IS_ERR (struct fdtable*) ; 
- struct fdtable* fdtable_new (int) ; 
- int /*<<< orphan*/  lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memcpy (TYPE_1__**,TYPE_1__**,int) ; 
- int /*<<< orphan*/  unlock (int /*<<< orphan*/ *) ; 
+
+ int BITS_SIZE (int) ;
+ scalar_t__ IS_ERR (struct fdtable*) ;
+ struct fdtable* fdtable_new (int) ;
+ int lock (int *) ;
+ int memcpy (TYPE_1__**,TYPE_1__**,int) ;
+ int unlock (int *) ;
 
 struct fdtable *fdtable_copy(struct fdtable *table) {
     lock(&table->lock);

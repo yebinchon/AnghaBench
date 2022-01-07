@@ -1,107 +1,84 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  materialui_theme_t ;
-typedef  enum materialui_color_theme { ____Placeholder_materialui_color_theme } materialui_color_theme ;
 
-/* Variables and functions */
-#define  MATERIALUI_THEME_BLUE 148 
-#define  MATERIALUI_THEME_BLUE_GREY 147 
-#define  MATERIALUI_THEME_CUTIE_BLUE 146 
-#define  MATERIALUI_THEME_CUTIE_CYAN 145 
-#define  MATERIALUI_THEME_CUTIE_GREEN 144 
-#define  MATERIALUI_THEME_CUTIE_ORANGE 143 
-#define  MATERIALUI_THEME_CUTIE_PINK 142 
-#define  MATERIALUI_THEME_CUTIE_PURPLE 141 
-#define  MATERIALUI_THEME_CUTIE_RED 140 
-#define  MATERIALUI_THEME_DARK_BLUE 139 
-#define  MATERIALUI_THEME_GREEN 138 
-#define  MATERIALUI_THEME_GRUVBOX_DARK 137 
-#define  MATERIALUI_THEME_MATERIALUI 136 
-#define  MATERIALUI_THEME_MATERIALUI_DARK 135 
-#define  MATERIALUI_THEME_NORD 134 
-#define  MATERIALUI_THEME_NVIDIA_SHIELD 133 
-#define  MATERIALUI_THEME_OZONE_DARK 132 
-#define  MATERIALUI_THEME_RED 131 
-#define  MATERIALUI_THEME_SOLARIZED_DARK 130 
-#define  MATERIALUI_THEME_VIRTUAL_BOY 129 
-#define  MATERIALUI_THEME_YELLOW 128 
- int /*<<< orphan*/  const materialui_theme_blue ; 
- int /*<<< orphan*/  const materialui_theme_blue_grey ; 
- int /*<<< orphan*/  const materialui_theme_cutie_blue ; 
- int /*<<< orphan*/  const materialui_theme_cutie_cyan ; 
- int /*<<< orphan*/  const materialui_theme_cutie_green ; 
- int /*<<< orphan*/  const materialui_theme_cutie_orange ; 
- int /*<<< orphan*/  const materialui_theme_cutie_pink ; 
- int /*<<< orphan*/  const materialui_theme_cutie_purple ; 
- int /*<<< orphan*/  const materialui_theme_cutie_red ; 
- int /*<<< orphan*/  const materialui_theme_dark_blue ; 
- int /*<<< orphan*/  const materialui_theme_green ; 
- int /*<<< orphan*/  const materialui_theme_gruvbox_dark ; 
- int /*<<< orphan*/  const materialui_theme_materialui ; 
- int /*<<< orphan*/  const materialui_theme_materialui_dark ; 
- int /*<<< orphan*/  const materialui_theme_nord ; 
- int /*<<< orphan*/  const materialui_theme_nvidia_shield ; 
- int /*<<< orphan*/  const materialui_theme_ozone_dark ; 
- int /*<<< orphan*/  const materialui_theme_red ; 
- int /*<<< orphan*/  const materialui_theme_solarized_dark ; 
- int /*<<< orphan*/  const materialui_theme_virtual_boy ; 
- int /*<<< orphan*/  const materialui_theme_yellow ; 
+
+
+
+typedef int materialui_theme_t ;
+typedef enum materialui_color_theme { ____Placeholder_materialui_color_theme } materialui_color_theme ;
+ int const materialui_theme_blue ;
+ int const materialui_theme_blue_grey ;
+ int const materialui_theme_cutie_blue ;
+ int const materialui_theme_cutie_cyan ;
+ int const materialui_theme_cutie_green ;
+ int const materialui_theme_cutie_orange ;
+ int const materialui_theme_cutie_pink ;
+ int const materialui_theme_cutie_purple ;
+ int const materialui_theme_cutie_red ;
+ int const materialui_theme_dark_blue ;
+ int const materialui_theme_green ;
+ int const materialui_theme_gruvbox_dark ;
+ int const materialui_theme_materialui ;
+ int const materialui_theme_materialui_dark ;
+ int const materialui_theme_nord ;
+ int const materialui_theme_nvidia_shield ;
+ int const materialui_theme_ozone_dark ;
+ int const materialui_theme_red ;
+ int const materialui_theme_solarized_dark ;
+ int const materialui_theme_virtual_boy ;
+ int const materialui_theme_yellow ;
 
 __attribute__((used)) static const materialui_theme_t *materialui_get_theme(enum materialui_color_theme color_theme)
 {
    switch (color_theme)
    {
-      case MATERIALUI_THEME_BLUE:
+      case 148:
          return &materialui_theme_blue;
-      case MATERIALUI_THEME_BLUE_GREY:
+      case 147:
          return &materialui_theme_blue_grey;
-      case MATERIALUI_THEME_DARK_BLUE:
+      case 139:
          return &materialui_theme_dark_blue;
-      case MATERIALUI_THEME_GREEN:
+      case 138:
          return &materialui_theme_green;
-      case MATERIALUI_THEME_RED:
+      case 131:
          return &materialui_theme_red;
-      case MATERIALUI_THEME_YELLOW:
+      case 128:
          return &materialui_theme_yellow;
-      case MATERIALUI_THEME_NVIDIA_SHIELD:
+      case 133:
          return &materialui_theme_nvidia_shield;
-      case MATERIALUI_THEME_MATERIALUI:
+      case 136:
          return &materialui_theme_materialui;
-      case MATERIALUI_THEME_MATERIALUI_DARK:
+      case 135:
          return &materialui_theme_materialui_dark;
-      case MATERIALUI_THEME_OZONE_DARK:
+      case 132:
          return &materialui_theme_ozone_dark;
-      case MATERIALUI_THEME_NORD:
+      case 134:
          return &materialui_theme_nord;
-      case MATERIALUI_THEME_GRUVBOX_DARK:
+      case 137:
          return &materialui_theme_gruvbox_dark;
-      case MATERIALUI_THEME_SOLARIZED_DARK:
+      case 130:
          return &materialui_theme_solarized_dark;
-      case MATERIALUI_THEME_CUTIE_BLUE:
+      case 146:
          return &materialui_theme_cutie_blue;
-      case MATERIALUI_THEME_CUTIE_CYAN:
+      case 145:
          return &materialui_theme_cutie_cyan;
-      case MATERIALUI_THEME_CUTIE_GREEN:
+      case 144:
          return &materialui_theme_cutie_green;
-      case MATERIALUI_THEME_CUTIE_ORANGE:
+      case 143:
          return &materialui_theme_cutie_orange;
-      case MATERIALUI_THEME_CUTIE_PINK:
+      case 142:
          return &materialui_theme_cutie_pink;
-      case MATERIALUI_THEME_CUTIE_PURPLE:
+      case 141:
          return &materialui_theme_cutie_purple;
-      case MATERIALUI_THEME_CUTIE_RED:
+      case 140:
          return &materialui_theme_cutie_red;
-      case MATERIALUI_THEME_VIRTUAL_BOY:
+      case 129:
          return &materialui_theme_virtual_boy;
       default:
          break;

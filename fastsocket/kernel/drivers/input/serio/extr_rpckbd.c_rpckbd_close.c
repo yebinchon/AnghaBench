@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct serio {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IRQ_KEYBOARDRX ; 
- int /*<<< orphan*/  IRQ_KEYBOARDTX ; 
- int /*<<< orphan*/  free_irq (int /*<<< orphan*/ ,struct serio*) ; 
+
+ int IRQ_KEYBOARDRX ;
+ int IRQ_KEYBOARDTX ;
+ int free_irq (int ,struct serio*) ;
 
 __attribute__((used)) static void rpckbd_close(struct serio *port)
 {
-	free_irq(IRQ_KEYBOARDRX, port);
-	free_irq(IRQ_KEYBOARDTX, port);
+ free_irq(IRQ_KEYBOARDRX, port);
+ free_irq(IRQ_KEYBOARDTX, port);
 }

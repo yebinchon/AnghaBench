@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint ;
 
-/* Variables and functions */
- scalar_t__ BIT_5 (int) ; 
- scalar_t__ BIT_B (int) ; 
- int /*<<< orphan*/  LIMIT_CPU_TYPES (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  M68020_PLUS ; 
- int* g_5bit_data_table ; 
- int /*<<< orphan*/  g_cpu_ir ; 
- int /*<<< orphan*/  g_dasm_str ; 
- char* get_ea_mode_str_8 (int /*<<< orphan*/ ) ; 
- int read_imm_16 () ; 
- int /*<<< orphan*/  sprintf (char*,char*,...) ; 
+
+
+
+typedef int uint ;
+
+
+ scalar_t__ BIT_5 (int) ;
+ scalar_t__ BIT_B (int) ;
+ int LIMIT_CPU_TYPES (int ) ;
+ int M68020_PLUS ;
+ int* g_5bit_data_table ;
+ int g_cpu_ir ;
+ int g_dasm_str ;
+ char* get_ea_mode_str_8 (int ) ;
+ int read_imm_16 () ;
+ int sprintf (char*,char*,...) ;
 
 __attribute__((used)) static void d68020_bfchg(void)
 {
-	uint extension;
-	char offset[3];
-	char width[3];
+ uint extension;
+ char offset[3];
+ char width[3];
 
-	LIMIT_CPU_TYPES(M68020_PLUS);
+ LIMIT_CPU_TYPES(M68020_PLUS);
 
-	extension = read_imm_16();
+ extension = read_imm_16();
 
-	if(BIT_B(extension))
-		sprintf(offset, "D%d", (extension>>6)&7);
-	else
-		sprintf(offset, "%d", (extension>>6)&31);
-	if(BIT_5(extension))
-		sprintf(width, "D%d", extension&7);
-	else
-		sprintf(width, "%d", g_5bit_data_table[extension&31]);
-	sprintf(g_dasm_str, "bfchg   %s {%s:%s}; (2+)", get_ea_mode_str_8(g_cpu_ir), offset, width);
+ if(BIT_B(extension))
+  sprintf(offset, "D%d", (extension>>6)&7);
+ else
+  sprintf(offset, "%d", (extension>>6)&31);
+ if(BIT_5(extension))
+  sprintf(width, "D%d", extension&7);
+ else
+  sprintf(width, "%d", g_5bit_data_table[extension&31]);
+ sprintf(g_dasm_str, "bfchg   %s {%s:%s}; (2+)", get_ea_mode_str_8(g_cpu_ir), offset, width);
 }

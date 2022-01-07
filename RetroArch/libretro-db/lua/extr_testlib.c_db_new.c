@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  int /*<<< orphan*/  libretrodb_t ;
 
-/* Variables and functions */
- int libretrodb_open (char const*,int /*<<< orphan*/ *) ; 
- char* luaL_checkstring (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  luaL_getmetatable (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/ * lua_newuserdata (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pop (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pushnil (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_pushstring (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_setmetatable (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  strerror (int) ; 
+
+
+
+typedef int lua_State ;
+typedef int libretrodb_t ;
+
+
+ int libretrodb_open (char const*,int *) ;
+ char* luaL_checkstring (int *,int) ;
+ int luaL_getmetatable (int *,char*) ;
+ int * lua_newuserdata (int *,int) ;
+ int lua_pop (int *,int) ;
+ int lua_pushnil (int *) ;
+ int lua_pushstring (int *,int ) ;
+ int lua_setmetatable (int *,int) ;
+ int strerror (int) ;
 
 __attribute__((used)) static int db_new(lua_State *L)
 {
-   libretrodb_t *db = NULL;
-   const char *db_file = NULL;
+   libretrodb_t *db = ((void*)0);
+   const char *db_file = ((void*)0);
    int rv;
    db_file = luaL_checkstring(L, -1);
    db = lua_newuserdata(L, sizeof(libretrodb_t));

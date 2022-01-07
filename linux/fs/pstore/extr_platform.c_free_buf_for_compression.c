@@ -1,32 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  CONFIG_PSTORE_COMPRESS ; 
- scalar_t__ IS_ENABLED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * big_oops_buf ; 
- scalar_t__ big_oops_buf_sz ; 
- int /*<<< orphan*/  crypto_free_comp (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  kfree (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * tfm ; 
+ int CONFIG_PSTORE_COMPRESS ;
+ scalar_t__ IS_ENABLED (int ) ;
+ int * big_oops_buf ;
+ scalar_t__ big_oops_buf_sz ;
+ int crypto_free_comp (int *) ;
+ int kfree (int *) ;
+ int * tfm ;
 
 __attribute__((used)) static void free_buf_for_compression(void)
 {
-	if (IS_ENABLED(CONFIG_PSTORE_COMPRESS) && tfm) {
-		crypto_free_comp(tfm);
-		tfm = NULL;
-	}
-	kfree(big_oops_buf);
-	big_oops_buf = NULL;
-	big_oops_buf_sz = 0;
+ if (IS_ENABLED(CONFIG_PSTORE_COMPRESS) && tfm) {
+  crypto_free_comp(tfm);
+  tfm = ((void*)0);
+ }
+ kfree(big_oops_buf);
+ big_oops_buf = ((void*)0);
+ big_oops_buf_sz = 0;
 }

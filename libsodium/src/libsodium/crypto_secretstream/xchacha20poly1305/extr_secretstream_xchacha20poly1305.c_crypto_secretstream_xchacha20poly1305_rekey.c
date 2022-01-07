@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {unsigned char* k; int /*<<< orphan*/  nonce; } ;
-typedef  TYPE_1__ crypto_secretstream_xchacha20poly1305_state ;
 
-/* Variables and functions */
- unsigned char* STATE_INONCE (TYPE_1__*) ; 
- int /*<<< orphan*/  _crypto_secretstream_xchacha20poly1305_counter_reset (TYPE_1__*) ; 
- int crypto_secretstream_xchacha20poly1305_INONCEBYTES ; 
- int crypto_stream_chacha20_ietf_KEYBYTES ; 
- int /*<<< orphan*/  crypto_stream_chacha20_ietf_xor (unsigned char*,unsigned char*,int,int /*<<< orphan*/ ,unsigned char*) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {unsigned char* k; int nonce; } ;
+typedef TYPE_1__ crypto_secretstream_xchacha20poly1305_state ;
+
+
+ unsigned char* STATE_INONCE (TYPE_1__*) ;
+ int _crypto_secretstream_xchacha20poly1305_counter_reset (TYPE_1__*) ;
+ int crypto_secretstream_xchacha20poly1305_INONCEBYTES ;
+ int crypto_stream_chacha20_ietf_KEYBYTES ;
+ int crypto_stream_chacha20_ietf_xor (unsigned char*,unsigned char*,int,int ,unsigned char*) ;
 
 void
 crypto_secretstream_xchacha20poly1305_rekey
@@ -27,7 +27,7 @@ crypto_secretstream_xchacha20poly1305_rekey
 {
     unsigned char new_key_and_inonce[crypto_stream_chacha20_ietf_KEYBYTES +
                                      crypto_secretstream_xchacha20poly1305_INONCEBYTES];
-    size_t        i;
+    size_t i;
 
     for (i = 0U; i < crypto_stream_chacha20_ietf_KEYBYTES; i++) {
         new_key_and_inonce[i] = state->k[i];

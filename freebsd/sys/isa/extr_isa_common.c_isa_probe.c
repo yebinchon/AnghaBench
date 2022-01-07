@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  device_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  device_set_desc (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  isa_init (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int device_t ;
+
+
+ int device_set_desc (int ,char*) ;
+ int isa_init (int ) ;
 
 __attribute__((used)) static int
 isa_probe(device_t dev)
 {
-	device_set_desc(dev, "ISA bus");
-	isa_init(dev);		/* Allow machdep code to initialise */
-	return (0);
+ device_set_desc(dev, "ISA bus");
+ isa_init(dev);
+ return (0);
 }

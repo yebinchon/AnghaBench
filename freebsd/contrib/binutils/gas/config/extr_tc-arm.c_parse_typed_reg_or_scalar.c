@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct reg_entry {scalar_t__ type; int number; struct neon_typed_alias* neon; } ;
-struct neon_type_el {int size; int /*<<< orphan*/  type; } ;
+struct neon_type_el {int size; int type; } ;
 struct neon_typed_alias {int defined; int index; struct neon_type_el eltype; } ;
 struct TYPE_3__ {scalar_t__ X_op; int X_add_number; } ;
-typedef  TYPE_1__ expressionS ;
-typedef  enum arm_reg_type { ____Placeholder_arm_reg_type } arm_reg_type ;
+typedef TYPE_1__ expressionS ;
+typedef enum arm_reg_type { ____Placeholder_arm_reg_type } arm_reg_type ;
 
-/* Variables and functions */
- int FAIL ; 
- int /*<<< orphan*/  GE_NO_PREFIX ; 
- int NEON_ALL_LANES ; 
- int NTA_HASINDEX ; 
- int NTA_HASTYPE ; 
- int /*<<< orphan*/  NT_invtype ; 
- scalar_t__ O_constant ; 
- int REG_TYPE_MMXWC ; 
- scalar_t__ REG_TYPE_MMXWCG ; 
- int REG_TYPE_NDQ ; 
- scalar_t__ REG_TYPE_NQ ; 
- int REG_TYPE_NSDQ ; 
- scalar_t__ REG_TYPE_VFD ; 
- scalar_t__ REG_TYPE_VFS ; 
- int REG_TYPE_VFSD ; 
- scalar_t__ SUCCESS ; 
- int /*<<< orphan*/  _ (char*) ; 
- int arm_reg_alt_syntax (char**,char*,struct reg_entry*,int) ; 
- struct reg_entry* arm_reg_parse_multi (char**) ; 
- int /*<<< orphan*/  first_error (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  my_get_expression (TYPE_1__*,char**,int /*<<< orphan*/ ) ; 
- scalar_t__ parse_neon_operand_type (struct neon_type_el*,char**) ; 
- int skip_past_char (char**,char) ; 
+
+ int FAIL ;
+ int GE_NO_PREFIX ;
+ int NEON_ALL_LANES ;
+ int NTA_HASINDEX ;
+ int NTA_HASTYPE ;
+ int NT_invtype ;
+ scalar_t__ O_constant ;
+ int REG_TYPE_MMXWC ;
+ scalar_t__ REG_TYPE_MMXWCG ;
+ int REG_TYPE_NDQ ;
+ scalar_t__ REG_TYPE_NQ ;
+ int REG_TYPE_NSDQ ;
+ scalar_t__ REG_TYPE_VFD ;
+ scalar_t__ REG_TYPE_VFS ;
+ int REG_TYPE_VFSD ;
+ scalar_t__ SUCCESS ;
+ int _ (char*) ;
+ int arm_reg_alt_syntax (char**,char*,struct reg_entry*,int) ;
+ struct reg_entry* arm_reg_parse_multi (char**) ;
+ int first_error (int ) ;
+ int my_get_expression (TYPE_1__*,char**,int ) ;
+ scalar_t__ parse_neon_operand_type (struct neon_type_el*,char**) ;
+ int skip_past_char (char**,char) ;
 
 __attribute__((used)) static int
 parse_typed_reg_or_scalar (char **ccp, enum arm_reg_type type,
@@ -58,9 +58,9 @@ parse_typed_reg_or_scalar (char **ccp, enum arm_reg_type type,
   atype.eltype.type = NT_invtype;
   atype.eltype.size = -1;
 
-  /* Try alternate syntax for some types of register. Note these are mutually
-     exclusive with the Neon syntax extensions.  */
-  if (reg == NULL)
+
+
+  if (reg == ((void*)0))
     {
       int altreg = arm_reg_alt_syntax (&str, *ccp, reg, type);
       if (altreg != FAIL)
@@ -70,7 +70,7 @@ parse_typed_reg_or_scalar (char **ccp, enum arm_reg_type type,
       return altreg;
     }
 
-  /* Undo polymorphism when a set of register types may be accepted.  */
+
   if ((type == REG_TYPE_NDQ
        && (reg->type == REG_TYPE_NQ || reg->type == REG_TYPE_VFD))
       || (type == REG_TYPE_VFSD
@@ -79,7 +79,7 @@ parse_typed_reg_or_scalar (char **ccp, enum arm_reg_type type,
           && (reg->type == REG_TYPE_VFS || reg->type == REG_TYPE_VFD
               || reg->type == REG_TYPE_NQ))
       || (type == REG_TYPE_MMXWC
-	  && (reg->type == REG_TYPE_MMXWCG)))
+   && (reg->type == REG_TYPE_MMXWCG)))
     type = reg->type;
 
   if (type != reg->type)
@@ -87,7 +87,7 @@ parse_typed_reg_or_scalar (char **ccp, enum arm_reg_type type,
 
   if (reg->neon)
     atype = *reg->neon;
-  
+
   if (parse_neon_operand_type (&parsetype, &str) == SUCCESS)
     {
       if ((atype.defined & NTA_HASTYPE) != 0)
@@ -98,7 +98,7 @@ parse_typed_reg_or_scalar (char **ccp, enum arm_reg_type type,
       atype.defined |= NTA_HASTYPE;
       atype.eltype = parsetype;
     }
-    
+
   if (skip_past_char (&str, '[') == SUCCESS)
     {
       if (type != REG_TYPE_VFD)
@@ -106,7 +106,7 @@ parse_typed_reg_or_scalar (char **ccp, enum arm_reg_type type,
           first_error (_("only D registers may be indexed"));
           return FAIL;
         }
-    
+
       if ((atype.defined & NTA_HASINDEX) != 0)
         {
           first_error (_("can't change index for operand"));
@@ -135,14 +135,14 @@ parse_typed_reg_or_scalar (char **ccp, enum arm_reg_type type,
           atype.index = exp.X_add_number;
         }
     }
-  
+
   if (typeinfo)
     *typeinfo = atype;
-  
+
   if (rtype)
     *rtype = type;
-  
+
   *ccp = str;
-  
+
   return reg->number;
 }

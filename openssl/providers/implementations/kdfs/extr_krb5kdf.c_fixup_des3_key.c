@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  DES_cblock ;
 
-/* Variables and functions */
- scalar_t__ CRYPTO_memcmp (unsigned char*,unsigned char*,int) ; 
- int /*<<< orphan*/  DES_set_odd_parity (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memmove (unsigned char*,unsigned char*,int) ; 
+
+
+
+typedef int DES_cblock ;
+
+
+ scalar_t__ CRYPTO_memcmp (unsigned char*,unsigned char*,int) ;
+ int DES_set_odd_parity (int *) ;
+ int memmove (unsigned char*,unsigned char*,int) ;
 
 __attribute__((used)) static int fixup_des3_key(unsigned char *key)
 {
@@ -31,7 +31,7 @@ __attribute__((used)) static int fixup_des3_key(unsigned char *key)
         DES_set_odd_parity((DES_cblock *)cblock);
     }
 
-    /* fail if keys are such that triple des degrades to single des */
+
     if (CRYPTO_memcmp(&key[0], &key[8], 8) == 0 ||
         CRYPTO_memcmp(&key[8], &key[16], 8) == 0) {
         return 0;

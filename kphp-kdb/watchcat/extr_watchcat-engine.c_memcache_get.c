@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct connection {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INIT ; 
- scalar_t__ MAX_VALUE_LEN ; 
- int /*<<< orphan*/  RETURN (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  eat_at (char const*,int,char**,int*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char const*) ; 
- int /*<<< orphan*/  get ; 
- int /*<<< orphan*/  memcpy (char*,char*,int) ; 
- int my_verbosity_tmp ; 
- int prepare_stats (struct connection*,char*,scalar_t__) ; 
- int /*<<< orphan*/  return_one_key (struct connection*,char*,char*,int) ; 
- int sscanf (char*,char*,long long*,int*,int*,int*) ; 
- char* stats_buff ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  strncmp (char*,char*,int) ; 
- int /*<<< orphan*/  subscribe_watchcat (long long,char*,int,int) ; 
- int watchcat_prepare_stats () ; 
+
+ int INIT ;
+ scalar_t__ MAX_VALUE_LEN ;
+ int RETURN (int ,int ) ;
+ int eat_at (char const*,int,char**,int*) ;
+ int fprintf (int ,char*,char const*) ;
+ int get ;
+ int memcpy (char*,char*,int) ;
+ int my_verbosity_tmp ;
+ int prepare_stats (struct connection*,char*,scalar_t__) ;
+ int return_one_key (struct connection*,char*,char*,int) ;
+ int sscanf (char*,char*,long long*,int*,int*,int*) ;
+ char* stats_buff ;
+ int stderr ;
+ int strncmp (char*,char*,int) ;
+ int subscribe_watchcat (long long,char*,int,int) ;
+ int watchcat_prepare_stats () ;
 
 int memcache_get (struct connection *c, const char *old_key, int old_key_len) {
   INIT;

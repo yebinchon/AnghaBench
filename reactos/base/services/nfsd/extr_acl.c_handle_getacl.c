@@ -1,72 +1,72 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_19__   TYPE_7__ ;
-typedef  struct TYPE_18__   TYPE_6__ ;
-typedef  struct TYPE_17__   TYPE_5__ ;
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_14__ {int /*<<< orphan*/  count; int /*<<< orphan*/  member_0; } ;
-typedef  TYPE_2__ nfsacl41 ;
-struct TYPE_18__ {int query; int /*<<< orphan*/ * sec_desc; scalar_t__ sec_desc_len; } ;
+
+
+typedef struct TYPE_19__ TYPE_7__ ;
+typedef struct TYPE_18__ TYPE_6__ ;
+typedef struct TYPE_17__ TYPE_5__ ;
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+struct TYPE_14__ {int count; int member_0; } ;
+typedef TYPE_2__ nfsacl41 ;
+struct TYPE_18__ {int query; int * sec_desc; scalar_t__ sec_desc_len; } ;
 struct TYPE_13__ {TYPE_6__ getacl; } ;
 struct TYPE_15__ {TYPE_4__* state_ref; TYPE_1__ args; } ;
-typedef  TYPE_3__ nfs41_upcall ;
-struct TYPE_16__ {int /*<<< orphan*/  type; int /*<<< orphan*/  file; int /*<<< orphan*/  session; } ;
-typedef  TYPE_4__ nfs41_open_state ;
-struct TYPE_17__ {char* owner; char* owner_group; TYPE_2__* acl; int /*<<< orphan*/  member_0; } ;
-typedef  TYPE_5__ nfs41_file_info ;
-typedef  TYPE_6__ getacl_upcall_args ;
-struct TYPE_19__ {int count; int* arr; int /*<<< orphan*/  member_0; } ;
-typedef  TYPE_7__ bitmap4 ;
-typedef  int /*<<< orphan*/  SECURITY_DESCRIPTOR ;
-typedef  int /*<<< orphan*/ * PSID ;
-typedef  int /*<<< orphan*/ * PACL ;
-typedef  char* LPSTR ;
-typedef  scalar_t__ DWORD ;
+typedef TYPE_3__ nfs41_upcall ;
+struct TYPE_16__ {int type; int file; int session; } ;
+typedef TYPE_4__ nfs41_open_state ;
+struct TYPE_17__ {char* owner; char* owner_group; TYPE_2__* acl; int member_0; } ;
+typedef TYPE_5__ nfs41_file_info ;
+typedef TYPE_6__ getacl_upcall_args ;
+struct TYPE_19__ {int count; int* arr; int member_0; } ;
+typedef TYPE_7__ bitmap4 ;
+typedef int SECURITY_DESCRIPTOR ;
+typedef int * PSID ;
+typedef int * PACL ;
+typedef char* LPSTR ;
+typedef scalar_t__ DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACLLVL ; 
- int DACL_SECURITY_INFORMATION ; 
- int ERROR_INSUFFICIENT_BUFFER ; 
- int ERROR_INTERNAL_ERROR ; 
- int ERROR_NOT_SUPPORTED ; 
- int ERROR_SUCCESS ; 
- int FATTR4_WORD0_ACL ; 
- int FATTR4_WORD1_OWNER ; 
- int FATTR4_WORD1_OWNER_GROUP ; 
- int GROUP_SECURITY_INFORMATION ; 
- int GetLastError () ; 
- int InitializeSecurityDescriptor (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int MakeSelfRelativeSD (int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__*) ; 
- int NFS4_OPAQUE_LIMIT ; 
- int OWNER_SECURITY_INFORMATION ; 
- int /*<<< orphan*/  SECURITY_DESCRIPTOR_REVISION ; 
- int SetSecurityDescriptorDacl (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int SetSecurityDescriptorGroup (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int SetSecurityDescriptorOwner (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- int convert_nfs4acl_2_dacl (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ **,int /*<<< orphan*/ ***) ; 
- int /*<<< orphan*/  convert_nfs4name_2_user_domain (char*,char**) ; 
- int /*<<< orphan*/  dprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  eprintf (char*,int) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free_sids (int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * malloc (scalar_t__) ; 
- int map_name_2_sid (scalar_t__*,int /*<<< orphan*/ **,char*) ; 
- int nfs41_getattr (int /*<<< orphan*/ ,int /*<<< orphan*/ *,TYPE_7__*,TYPE_5__*) ; 
- int /*<<< orphan*/  nfsacl41_free (TYPE_2__*) ; 
+
+ int ACLLVL ;
+ int DACL_SECURITY_INFORMATION ;
+ int ERROR_INSUFFICIENT_BUFFER ;
+ int ERROR_INTERNAL_ERROR ;
+ int ERROR_NOT_SUPPORTED ;
+ int ERROR_SUCCESS ;
+ int FATTR4_WORD0_ACL ;
+ int FATTR4_WORD1_OWNER ;
+ int FATTR4_WORD1_OWNER_GROUP ;
+ int GROUP_SECURITY_INFORMATION ;
+ int GetLastError () ;
+ int InitializeSecurityDescriptor (int *,int ) ;
+ int MakeSelfRelativeSD (int *,int *,scalar_t__*) ;
+ int NFS4_OPAQUE_LIMIT ;
+ int OWNER_SECURITY_INFORMATION ;
+ int SECURITY_DESCRIPTOR_REVISION ;
+ int SetSecurityDescriptorDacl (int *,int ,int *,int ) ;
+ int SetSecurityDescriptorGroup (int *,int *,int ) ;
+ int SetSecurityDescriptorOwner (int *,int *,int ) ;
+ int TRUE ;
+ int convert_nfs4acl_2_dacl (TYPE_2__*,int ,int **,int ***) ;
+ int convert_nfs4name_2_user_domain (char*,char**) ;
+ int dprintf (int ,char*,...) ;
+ int eprintf (char*,int) ;
+ int free (int *) ;
+ int free_sids (int **,int ) ;
+ int * malloc (scalar_t__) ;
+ int map_name_2_sid (scalar_t__*,int **,char*) ;
+ int nfs41_getattr (int ,int *,TYPE_7__*,TYPE_5__*) ;
+ int nfsacl41_free (TYPE_2__*) ;
 
 __attribute__((used)) static int handle_getacl(nfs41_upcall *upcall)
 {
@@ -75,16 +75,16 @@ __attribute__((used)) static int handle_getacl(nfs41_upcall *upcall)
     nfs41_open_state *state = upcall->state_ref;
     nfs41_file_info info = { 0 };
     bitmap4 attr_request = { 0 };
-    LPSTR domain = NULL;
+    LPSTR domain = ((void*)0);
     SECURITY_DESCRIPTOR sec_desc;
-    PACL dacl = NULL;
-    PSID *sids = NULL;
-    PSID osid = NULL, gsid = NULL;
+    PACL dacl = ((void*)0);
+    PSID *sids = ((void*)0);
+    PSID osid = ((void*)0), gsid = ((void*)0);
     DWORD sid_len;
     char owner[NFS4_OPAQUE_LIMIT], group[NFS4_OPAQUE_LIMIT];
     nfsacl41 acl = { 0 };
 
-    // need to cache owner/group information XX
+
     attr_request.count = 2;
     attr_request.arr[1] = FATTR4_WORD1_OWNER | FATTR4_WORD1_OWNER_GROUP;
     if (args->query & DACL_SECURITY_INFORMATION) {
@@ -95,26 +95,26 @@ __attribute__((used)) static int handle_getacl(nfs41_upcall *upcall)
     info.owner_group = group;
     status = nfs41_getattr(state->session, &state->file, &attr_request, &info);
     if (status) {
-        eprintf("handle_getacl: nfs41_cached_getattr() failed with %d\n", 
+        eprintf("handle_getacl: nfs41_cached_getattr() failed with %d\n",
                 status);
         goto out;
     }
 
-    status = InitializeSecurityDescriptor(&sec_desc, 
+    status = InitializeSecurityDescriptor(&sec_desc,
                                           SECURITY_DESCRIPTOR_REVISION);
     if (!status) {
         status = GetLastError();
-        eprintf("handle_getacl: InitializeSecurityDescriptor failed with %d\n", 
+        eprintf("handle_getacl: InitializeSecurityDescriptor failed with %d\n",
                 status);
         goto out;
     }
-     /* can't (re)use the same sid variable for both owner and group sids 
-      * because security descriptor is created in absolute-form and it just
-      * stores pointers to the sids. thus each owner and group needs its own
-      * memory. free them after creating self-relative security descriptor. 
-      */
+
+
+
+
+
     if (args->query & OWNER_SECURITY_INFORMATION) {
-        // parse user@domain. currently ignoring domain part XX
+
         convert_nfs4name_2_user_domain(info.owner, &domain);
         dprintf(ACLLVL, "handle_getacl: OWNER_SECURITY_INFORMATION: for user=%s "
                 "domain=%s\n", info.owner, domain?domain:"<null>");
@@ -172,7 +172,7 @@ __attribute__((used)) static int handle_getacl(nfs41_upcall *upcall)
         goto out;
     }
     args->sec_desc = malloc(args->sec_desc_len);
-    if (args->sec_desc == NULL) {
+    if (args->sec_desc == ((void*)0)) {
         status = GetLastError();
         goto out;
     }

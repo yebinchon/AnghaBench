@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Relation ;
-typedef  int /*<<< orphan*/  ItemPointer ;
 
-/* Variables and functions */
- int /*<<< orphan*/  simple_heap_delete (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int Relation ;
+typedef int ItemPointer ;
+
+
+ int simple_heap_delete (int ,int ) ;
 
 void
 CatalogTupleDelete(Relation heapRel, ItemPointer tid)
 {
-	simple_heap_delete(heapRel, tid);
+ simple_heap_delete(heapRel, tid);
 }

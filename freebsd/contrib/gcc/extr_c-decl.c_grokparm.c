@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
-struct c_parm {int /*<<< orphan*/  attrs; int /*<<< orphan*/  specs; int /*<<< orphan*/  declarator; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PARM ; 
- int /*<<< orphan*/  decl_attributes (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  grokdeclarator (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int tree ;
+struct c_parm {int attrs; int specs; int declarator; } ;
+
+
+ int PARM ;
+ int decl_attributes (int *,int ,int ) ;
+ int grokdeclarator (int ,int ,int ,int,int *) ;
 
 tree
 grokparm (const struct c_parm *parm)
 {
-  tree decl = grokdeclarator (parm->declarator, parm->specs, PARM, false,
-			      NULL);
+  tree decl = grokdeclarator (parm->declarator, parm->specs, PARM, 0,
+         ((void*)0));
 
   decl_attributes (&decl, parm->attrs, 0);
 

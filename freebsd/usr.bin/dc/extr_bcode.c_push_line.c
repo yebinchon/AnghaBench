@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {size_t readsp; int /*<<< orphan*/ * readstack; } ;
 
-/* Variables and functions */
- TYPE_1__ bmachine ; 
- int /*<<< orphan*/  push_string (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  read_string (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {size_t readsp; int * readstack; } ;
+
+
+ TYPE_1__ bmachine ;
+ int push_string (int ) ;
+ int read_string (int *) ;
 
 __attribute__((used)) static void
 push_line(void)
 {
 
-	push_string(read_string(&bmachine.readstack[bmachine.readsp]));
+ push_string(read_string(&bmachine.readstack[bmachine.readsp]));
 }

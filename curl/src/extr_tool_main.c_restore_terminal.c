@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  dwOutputMode; int /*<<< orphan*/  hStdOut; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SetConsoleMode (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_1__ TerminalSettings ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int dwOutputMode; int hStdOut; } ;
+
+
+ int SetConsoleMode (int ,int ) ;
+ TYPE_1__ TerminalSettings ;
 
 __attribute__((used)) static void restore_terminal(void)
 {
-#ifdef WIN32
-  /* Restore Console output mode and codepage to whatever they were
-   * when Curl started */
-  SetConsoleMode(TerminalSettings.hStdOut, TerminalSettings.dwOutputMode);
-#endif
+
+
+
+
+
 }

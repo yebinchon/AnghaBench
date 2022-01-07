@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  cpuset_rwsem ; 
- int /*<<< orphan*/  percpu_up_read (int /*<<< orphan*/ *) ; 
+ int cpuset_rwsem ;
+ int percpu_up_read (int *) ;
 
 void cpuset_read_unlock(void)
 {
-	percpu_up_read(&cpuset_rwsem);
+ percpu_up_read(&cpuset_rwsem);
 }

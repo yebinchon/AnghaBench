@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * LPWSTR ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
-typedef  int /*<<< orphan*/  IUri ;
-typedef  int HRESULT ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  int /*<<< orphan*/  BYTE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CoTaskMemFree (int /*<<< orphan*/ *) ; 
- int CreateUri (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int E_INVALIDARG ; 
- scalar_t__ FAILED (int) ; 
- int /*<<< orphan*/  IUri_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  URLZONE_INVALID ; 
- int /*<<< orphan*/  Uri_CREATE_ALLOW_IMPLICIT_FILE_SCHEME ; 
- int generate_security_id (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int map_url_to_zone (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
+
+
+
+typedef int * LPWSTR ;
+typedef int LPCWSTR ;
+typedef int IUri ;
+typedef int HRESULT ;
+typedef int DWORD ;
+typedef int BYTE ;
+
+
+ int CoTaskMemFree (int *) ;
+ int CreateUri (int *,int ,int ,int **) ;
+ int E_INVALIDARG ;
+ scalar_t__ FAILED (int) ;
+ int IUri_Release (int *) ;
+ int URLZONE_INVALID ;
+ int Uri_CREATE_ALLOW_IMPLICIT_FILE_SCHEME ;
+ int generate_security_id (int *,int *,int *,int ) ;
+ int map_url_to_zone (int ,int *,int **) ;
 
 __attribute__((used)) static HRESULT get_security_id_for_url(LPCWSTR url, BYTE *secid, DWORD *secid_len)
 {
     HRESULT hres;
     DWORD zone = URLZONE_INVALID;
-    LPWSTR secur_url = NULL;
+    LPWSTR secur_url = ((void*)0);
     IUri *uri;
 
     hres = map_url_to_zone(url, &zone, &secur_url);

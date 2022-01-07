@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-struct wpa_state_machine {int TimeoutCtr; int GTimeoutCtr; int pending_1_of_4_timeout; int /*<<< orphan*/  resend_eapol; scalar_t__ index; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u8 ;
+struct wpa_state_machine {int TimeoutCtr; int GTimeoutCtr; int pending_1_of_4_timeout; int resend_eapol; scalar_t__ index; } ;
 struct TYPE_2__ {scalar_t__ tx_status; } ;
 struct wpa_authenticator {TYPE_1__ conf; } ;
-typedef  int /*<<< orphan*/  ETSTimerFunc ;
+typedef int ETSTimerFunc ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MSG_DEBUG ; 
- int WPA_KEY_INFO_KEY_TYPE ; 
- int WPA_KEY_INFO_MIC ; 
- int /*<<< orphan*/  __wpa_send_eapol (struct wpa_authenticator*,struct wpa_state_machine*,int,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,size_t,int,int,int /*<<< orphan*/ ) ; 
- int eapol_key_timeout_first ; 
- int eapol_key_timeout_first_group ; 
- int eapol_key_timeout_subseq ; 
- int /*<<< orphan*/  eloop_register_timeout (int,int,int /*<<< orphan*/ ,struct wpa_authenticator*,struct wpa_state_machine*) ; 
- int /*<<< orphan*/  ets_timer_arm (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ets_timer_disarm (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ets_timer_setfn (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void*) ; 
- scalar_t__ resend_eapol_handle ; 
- int /*<<< orphan*/  wpa_printf (int /*<<< orphan*/ ,char*,int,int) ; 
- int /*<<< orphan*/  wpa_send_eapol_timeout ; 
+
+ int MSG_DEBUG ;
+ int WPA_KEY_INFO_KEY_TYPE ;
+ int WPA_KEY_INFO_MIC ;
+ int __wpa_send_eapol (struct wpa_authenticator*,struct wpa_state_machine*,int,int const*,int const*,int const*,size_t,int,int,int ) ;
+ int eapol_key_timeout_first ;
+ int eapol_key_timeout_first_group ;
+ int eapol_key_timeout_subseq ;
+ int eloop_register_timeout (int,int,int ,struct wpa_authenticator*,struct wpa_state_machine*) ;
+ int ets_timer_arm (int *,int,int ) ;
+ int ets_timer_disarm (int *) ;
+ int ets_timer_setfn (int *,int *,void*) ;
+ scalar_t__ resend_eapol_handle ;
+ int wpa_printf (int ,char*,int,int) ;
+ int wpa_send_eapol_timeout ;
 
 __attribute__((used)) static void wpa_send_eapol(struct wpa_authenticator *wpa_auth,
                struct wpa_state_machine *sm, int key_info,
@@ -43,7 +43,7 @@ __attribute__((used)) static void wpa_send_eapol(struct wpa_authenticator *wpa_a
     int pairwise = key_info & WPA_KEY_INFO_KEY_TYPE;
     int ctr;
 
-    if (sm == NULL)
+    if (sm == ((void*)0))
         return;
 
     __wpa_send_eapol(wpa_auth, sm, key_info, key_rsc, nonce, kde, kde_len,

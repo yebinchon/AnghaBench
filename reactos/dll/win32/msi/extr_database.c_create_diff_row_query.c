@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  scalar_t__ UINT ;
-struct TYPE_7__ {int /*<<< orphan*/  hdr; } ;
-typedef  TYPE_1__ MSIRECORD ;
-typedef  int /*<<< orphan*/  MSIQUERY ;
-typedef  int /*<<< orphan*/  MSIDATABASE ;
-typedef  char const* LPWSTR ;
-typedef  char const* LPCWSTR ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- scalar_t__ ERROR_SUCCESS ; 
- scalar_t__ MSI_DatabaseGetPrimaryKeys (int /*<<< orphan*/ *,char const*,TYPE_1__**) ; 
- scalar_t__ MSI_RecordGetFieldCount (TYPE_1__*) ; 
- char* MSI_RecordGetString (TYPE_1__*,scalar_t__) ; 
- char* get_key_value (int /*<<< orphan*/ *,char const*,TYPE_1__*) ; 
- int lstrlenW (char const*) ; 
- char* msi_alloc (int) ; 
- char* msi_alloc_zero (int) ; 
- int /*<<< orphan*/  msi_free (char const*) ; 
- char* msi_realloc (char const*,int) ; 
- int /*<<< orphan*/  msiobj_release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sprintfW (char const*,char const*,char const*,char const*) ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef char WCHAR ;
+typedef scalar_t__ UINT ;
+struct TYPE_7__ {int hdr; } ;
+typedef TYPE_1__ MSIRECORD ;
+typedef int MSIQUERY ;
+typedef int MSIDATABASE ;
+typedef char const* LPWSTR ;
+typedef char const* LPCWSTR ;
+typedef int DWORD ;
+
+
+ scalar_t__ ERROR_SUCCESS ;
+ scalar_t__ MSI_DatabaseGetPrimaryKeys (int *,char const*,TYPE_1__**) ;
+ scalar_t__ MSI_RecordGetFieldCount (TYPE_1__*) ;
+ char* MSI_RecordGetString (TYPE_1__*,scalar_t__) ;
+ char* get_key_value (int *,char const*,TYPE_1__*) ;
+ int lstrlenW (char const*) ;
+ char* msi_alloc (int) ;
+ char* msi_alloc_zero (int) ;
+ int msi_free (char const*) ;
+ char* msi_realloc (char const*,int) ;
+ int msiobj_release (int *) ;
+ int sprintfW (char const*,char const*,char const*,char const*) ;
 
 __attribute__((used)) static LPWSTR create_diff_row_query(MSIDATABASE *merge, MSIQUERY *view,
                                     LPWSTR table, MSIRECORD *rec)
 {
-    LPWSTR query = NULL, clause = NULL, val;
+    LPWSTR query = ((void*)0), clause = ((void*)0), val;
     LPCWSTR setptr, key;
     DWORD size, oldsize;
     MSIRECORD *keys;
@@ -54,7 +54,7 @@ __attribute__((used)) static LPWSTR create_diff_row_query(MSIDATABASE *merge, MS
 
     r = MSI_DatabaseGetPrimaryKeys(merge, table, &keys);
     if (r != ERROR_SUCCESS)
-        return NULL;
+        return ((void*)0);
 
     clause = msi_alloc_zero(sizeof(WCHAR));
     if (!clause)

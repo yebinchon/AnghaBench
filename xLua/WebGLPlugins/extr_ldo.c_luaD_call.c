@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {scalar_t__ nCcalls; } ;
-typedef  TYPE_1__ lua_State ;
-typedef  int /*<<< orphan*/  StkId ;
+typedef TYPE_1__ lua_State ;
+typedef int StkId ;
 
-/* Variables and functions */
- scalar_t__ LUAI_MAXCCALLS ; 
- int /*<<< orphan*/  luaD_precall (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  luaV_execute (TYPE_1__*) ; 
- int /*<<< orphan*/  stackerror (TYPE_1__*) ; 
+
+ scalar_t__ LUAI_MAXCCALLS ;
+ int luaD_precall (TYPE_1__*,int ,int) ;
+ int luaV_execute (TYPE_1__*) ;
+ int stackerror (TYPE_1__*) ;
 
 void luaD_call (lua_State *L, StkId func, int nResults) {
   if (++L->nCcalls >= LUAI_MAXCCALLS)
     stackerror(L);
-  if (!luaD_precall(L, func, nResults))  /* is a Lua function? */
-    luaV_execute(L);  /* call it */
+  if (!luaD_precall(L, func, nResults))
+    luaV_execute(L);
   L->nCcalls--;
 }

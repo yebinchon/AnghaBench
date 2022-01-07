@@ -1,72 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  jsval_t ;
-typedef  int /*<<< orphan*/  jsstr_t ;
-typedef  int /*<<< orphan*/  VARIANT ;
-typedef  int /*<<< orphan*/  IDispatch ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- int /*<<< orphan*/  IDispatch_AddRef (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IID_IDispatch ; 
- int /*<<< orphan*/  IUnknown_QueryInterface (int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  SysStringLen (int /*<<< orphan*/ ) ; 
-#define  VT_BOOL 143 
-#define  VT_BSTR 142 
- int VT_BYREF ; 
-#define  VT_DISPATCH 141 
-#define  VT_EMPTY 140 
-#define  VT_I1 139 
-#define  VT_I2 138 
-#define  VT_I4 137 
-#define  VT_INT 136 
-#define  VT_NULL 135 
-#define  VT_R4 134 
-#define  VT_R8 133 
-#define  VT_UI1 132 
-#define  VT_UI2 131 
-#define  VT_UI4 130 
-#define  VT_UI8 129 
-#define  VT_UNKNOWN 128 
- int VT_VARIANT ; 
- int /*<<< orphan*/  V_BOOL (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  V_BSTR (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * V_DISPATCH (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  V_I1 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  V_I2 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  V_I4 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  V_INT (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  V_R4 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  V_R8 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  V_UI1 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  V_UI2 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  V_UI4 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  V_UI8 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  V_UNKNOWN (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * V_VARIANTREF (int /*<<< orphan*/ *) ; 
- int V_VT (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * jsstr_alloc_len (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * jsstr_null_bstr () ; 
- int /*<<< orphan*/  jsval_bool (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jsval_disp (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jsval_null () ; 
- int /*<<< orphan*/  jsval_number (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jsval_string (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jsval_undefined () ; 
- int /*<<< orphan*/  jsval_variant (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int jsval_t ;
+typedef int jsstr_t ;
+typedef int VARIANT ;
+typedef int IDispatch ;
+typedef int HRESULT ;
+
+
+ int E_OUTOFMEMORY ;
+ int IDispatch_AddRef (int *) ;
+ int IID_IDispatch ;
+ int IUnknown_QueryInterface (int ,int *,void**) ;
+ int SUCCEEDED (int ) ;
+ int S_OK ;
+ int SysStringLen (int ) ;
+
+
+ int VT_BYREF ;
+ int VT_VARIANT ;
+ int V_BOOL (int *) ;
+ int V_BSTR (int *) ;
+ int * V_DISPATCH (int *) ;
+ int V_I1 (int *) ;
+ int V_I2 (int *) ;
+ int V_I4 (int *) ;
+ int V_INT (int *) ;
+ int V_R4 (int *) ;
+ int V_R8 (int *) ;
+ int V_UI1 (int *) ;
+ int V_UI2 (int *) ;
+ int V_UI4 (int *) ;
+ int V_UI8 (int *) ;
+ int V_UNKNOWN (int *) ;
+ int * V_VARIANTREF (int *) ;
+ int V_VT (int *) ;
+ int * jsstr_alloc_len (int ,int ) ;
+ int * jsstr_null_bstr () ;
+ int jsval_bool (int ) ;
+ int jsval_disp (int *) ;
+ int jsval_null () ;
+ int jsval_number (int ) ;
+ int jsval_string (int *) ;
+ int jsval_undefined () ;
+ int jsval_variant (int *,int *) ;
 
 HRESULT variant_to_jsval(VARIANT *var, jsval_t *r)
 {
@@ -74,22 +60,22 @@ HRESULT variant_to_jsval(VARIANT *var, jsval_t *r)
         var = V_VARIANTREF(var);
 
     switch(V_VT(var)) {
-    case VT_EMPTY:
+    case 140:
         *r = jsval_undefined();
         return S_OK;
-    case VT_NULL:
+    case 135:
         *r = jsval_null();
         return S_OK;
-    case VT_BOOL:
+    case 143:
         *r = jsval_bool(V_BOOL(var));
         return S_OK;
-    case VT_I4:
+    case 137:
         *r = jsval_number(V_I4(var));
         return S_OK;
-    case VT_R8:
+    case 133:
         *r = jsval_number(V_R8(var));
         return S_OK;
-    case VT_BSTR: {
+    case 142: {
         jsstr_t *str;
 
         if(V_BSTR(var)) {
@@ -103,41 +89,41 @@ HRESULT variant_to_jsval(VARIANT *var, jsval_t *r)
         *r = jsval_string(str);
         return S_OK;
     }
-    case VT_DISPATCH: {
+    case 141: {
         if(V_DISPATCH(var))
             IDispatch_AddRef(V_DISPATCH(var));
         *r = jsval_disp(V_DISPATCH(var));
         return S_OK;
     }
-    case VT_I1:
+    case 139:
         *r = jsval_number(V_I1(var));
         return S_OK;
-    case VT_UI1:
+    case 132:
         *r = jsval_number(V_UI1(var));
         return S_OK;
-    case VT_I2:
+    case 138:
         *r = jsval_number(V_I2(var));
         return S_OK;
-    case VT_UI2:
+    case 131:
         *r = jsval_number(V_UI2(var));
         return S_OK;
-    case VT_INT:
+    case 136:
         *r = jsval_number(V_INT(var));
         return S_OK;
-    case VT_UI4:
+    case 130:
         *r = jsval_number(V_UI4(var));
         return S_OK;
-    case VT_UI8:
-        /*
-         * Native doesn't support VT_UI8 here, but it's needed for IE9+ APIs
-         * (native IE9 doesn't use jscript.dll for JavaScript).
-         */
+    case 129:
+
+
+
+
         *r = jsval_number(V_UI8(var));
         return S_OK;
-    case VT_R4:
+    case 134:
         *r = jsval_number(V_R4(var));
         return S_OK;
-    case VT_UNKNOWN:
+    case 128:
         if(V_UNKNOWN(var)) {
             IDispatch *disp;
             HRESULT hres;
@@ -148,10 +134,10 @@ HRESULT variant_to_jsval(VARIANT *var, jsval_t *r)
                 return S_OK;
             }
         }else {
-            *r = jsval_disp(NULL);
+            *r = jsval_disp(((void*)0));
             return S_OK;
         }
-        /* fall through */
+
     default:
         return jsval_variant(r, var);
     }

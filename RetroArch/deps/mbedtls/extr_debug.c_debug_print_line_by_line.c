@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mbedtls_ssl_context ;
 
-/* Variables and functions */
- int DEBUG_BUF_SIZE ; 
- int /*<<< orphan*/  debug_send_line (int /*<<< orphan*/  const*,int,char const*,int,char*) ; 
- int /*<<< orphan*/  memcpy (char*,char const*,size_t) ; 
+
+
+
+typedef int mbedtls_ssl_context ;
+
+
+ int DEBUG_BUF_SIZE ;
+ int debug_send_line (int const*,int,char const*,int,char*) ;
+ int memcpy (char*,char const*,size_t) ;
 
 __attribute__((used)) static void debug_print_line_by_line( const mbedtls_ssl_context *ssl, int level,
                                       const char *file, int line, const char *text )

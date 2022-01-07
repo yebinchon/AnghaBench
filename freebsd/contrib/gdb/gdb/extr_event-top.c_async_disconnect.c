@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  gdb_client_data ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RETURN_MASK_ALL ; 
- int /*<<< orphan*/  SIGHUP ; 
- int /*<<< orphan*/  SIG_DFL ; 
- int /*<<< orphan*/  catch_errors (int /*<<< orphan*/ ,int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  getpid () ; 
- int /*<<< orphan*/  kill (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  quit_cover ; 
- int /*<<< orphan*/  signal (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int gdb_client_data ;
+
+
+ int RETURN_MASK_ALL ;
+ int SIGHUP ;
+ int SIG_DFL ;
+ int catch_errors (int ,int *,char*,int ) ;
+ int getpid () ;
+ int kill (int ,int ) ;
+ int quit_cover ;
+ int signal (int ,int ) ;
 
 __attribute__((used)) static void
 async_disconnect (gdb_client_data arg)
 {
-  catch_errors (quit_cover, NULL,
-		"Could not kill the program being debugged",
-		RETURN_MASK_ALL);
-  signal (SIGHUP, SIG_DFL);	/*FIXME: ??????????? */
+  catch_errors (quit_cover, ((void*)0),
+  "Could not kill the program being debugged",
+  RETURN_MASK_ALL);
+  signal (SIGHUP, SIG_DFL);
   kill (getpid (), SIGHUP);
 }

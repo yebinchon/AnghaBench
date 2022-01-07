@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int /*<<< orphan*/  RRDR_GROUPING ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D_HEALTH ; 
- char* HEALTH_EVERY_KEY ; 
- char* HEALTH_FOREACH_KEY ; 
- int /*<<< orphan*/  RRDR_GROUPING_UNDEFINED ; 
- int /*<<< orphan*/  RRDR_OPTION_ABSOLUTE ; 
- int /*<<< orphan*/  RRDR_OPTION_MATCH_IDS ; 
- int /*<<< orphan*/  RRDR_OPTION_MATCH_NAMES ; 
- int /*<<< orphan*/  RRDR_OPTION_MIN2MAX ; 
- int /*<<< orphan*/  RRDR_OPTION_NOT_ALIGNED ; 
- int /*<<< orphan*/  RRDR_OPTION_NULL2ZERO ; 
- int /*<<< orphan*/  RRDR_OPTION_PERCENTAGE ; 
- int abs (int) ; 
- int /*<<< orphan*/  config_parse_duration (char*,int*) ; 
- int /*<<< orphan*/  debug (int /*<<< orphan*/ ,char*,size_t,char const*,char*) ; 
- int /*<<< orphan*/  error (char*,size_t,char const*,char*,...) ; 
- int /*<<< orphan*/  freez (char*) ; 
- scalar_t__ isspace (char) ; 
- scalar_t__ strcasecmp (char*,char*) ; 
- char* strcasestr (char*,char*) ; 
- char* strdupz (char*) ; 
- int /*<<< orphan*/  web_client_api_request_v1_data_group (char*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint32_t ;
+typedef int RRDR_GROUPING ;
+
+
+ int D_HEALTH ;
+ char* HEALTH_EVERY_KEY ;
+ char* HEALTH_FOREACH_KEY ;
+ int RRDR_GROUPING_UNDEFINED ;
+ int RRDR_OPTION_ABSOLUTE ;
+ int RRDR_OPTION_MATCH_IDS ;
+ int RRDR_OPTION_MATCH_NAMES ;
+ int RRDR_OPTION_MIN2MAX ;
+ int RRDR_OPTION_NOT_ALIGNED ;
+ int RRDR_OPTION_NULL2ZERO ;
+ int RRDR_OPTION_PERCENTAGE ;
+ int abs (int) ;
+ int config_parse_duration (char*,int*) ;
+ int debug (int ,char*,size_t,char const*,char*) ;
+ int error (char*,size_t,char const*,char*,...) ;
+ int freez (char*) ;
+ scalar_t__ isspace (char) ;
+ scalar_t__ strcasecmp (char*,char*) ;
+ char* strcasestr (char*,char*) ;
+ char* strdupz (char*) ;
+ int web_client_api_request_v1_data_group (char*,int ) ;
 
 __attribute__((used)) static inline int health_parse_db_lookup(
         size_t line, const char *filename, char *string,
@@ -45,8 +45,8 @@ __attribute__((used)) static inline int health_parse_db_lookup(
 
     if(*dimensions) freez(*dimensions);
     if(*foreachdim) freez(*foreachdim);
-    *dimensions = NULL;
-    *foreachdim = NULL;
+    *dimensions = ((void*)0);
+    *foreachdim = ((void*)0);
     *after = 0;
     *before = 0;
     *every = 0;
@@ -54,7 +54,7 @@ __attribute__((used)) static inline int health_parse_db_lookup(
 
     char *s = string, *key;
 
-    // first is the group method
+
     key = s;
     while(*s && !isspace(*s)) s++;
     while(*s && isspace(*s)) *s++ = '\0';
@@ -70,7 +70,7 @@ __attribute__((used)) static inline int health_parse_db_lookup(
         return 0;
     }
 
-    // then is the 'after' time
+
     key = s;
     while(*s && !isspace(*s)) s++;
     while(*s && isspace(*s)) *s++ = '\0';
@@ -81,10 +81,10 @@ __attribute__((used)) static inline int health_parse_db_lookup(
         return 0;
     }
 
-    // sane defaults
+
     *every = abs(*after);
 
-    // now we may have optional parameters
+
     while(*s) {
         key = s;
         while(*s && !isspace(*s)) s++;
@@ -133,7 +133,7 @@ __attribute__((used)) static inline int health_parse_db_lookup(
             *options |= RRDR_OPTION_MATCH_NAMES;
         }
         else if(!strcasecmp(key, "of")) {
-            char *find = NULL;
+            char *find = ((void*)0);
             if(*s && strcasecmp(s, "all") != 0) {
                 find = strcasestr(s, " foreach");
                 if(find) {

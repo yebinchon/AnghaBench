@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  ACLInitDefaultUser () ; 
- int /*<<< orphan*/  Users ; 
- int /*<<< orphan*/  UsersToLoad ; 
- int /*<<< orphan*/  listCreate () ; 
- int /*<<< orphan*/  raxNew () ; 
+ int ACLInitDefaultUser () ;
+ int Users ;
+ int UsersToLoad ;
+ int listCreate () ;
+ int raxNew () ;
 
 void ACLInit(void) {
     Users = raxNew();

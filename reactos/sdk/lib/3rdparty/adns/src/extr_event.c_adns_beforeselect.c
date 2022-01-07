@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct timeval {scalar_t__ tv_usec; scalar_t__ tv_sec; } ;
 struct pollfd {int fd; int events; } ;
-typedef  int /*<<< orphan*/  fd_set ;
-typedef  int /*<<< orphan*/  adns_state ;
-typedef  int ADNS_SOCKET ;
+typedef int fd_set ;
+typedef int adns_state ;
+typedef int ADNS_SOCKET ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FD_SET (int,int /*<<< orphan*/ *) ; 
- int MAX_POLLFDS ; 
- int POLLIN ; 
- int POLLOUT ; 
- int POLLPRI ; 
- int /*<<< orphan*/  adns__consistency (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  adns__must_gettimeofday (int /*<<< orphan*/ ,struct timeval const**,struct timeval*) ; 
- int adns__pollfds (int /*<<< orphan*/ ,struct pollfd*) ; 
- int /*<<< orphan*/  adns__timeouts (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct timeval**,struct timeval*,struct timeval const) ; 
- int /*<<< orphan*/  cc_entex ; 
- int /*<<< orphan*/  inter_immed (struct timeval**,struct timeval*) ; 
+
+ int FD_SET (int,int *) ;
+ int MAX_POLLFDS ;
+ int POLLIN ;
+ int POLLOUT ;
+ int POLLPRI ;
+ int adns__consistency (int ,int ,int ) ;
+ int adns__must_gettimeofday (int ,struct timeval const**,struct timeval*) ;
+ int adns__pollfds (int ,struct pollfd*) ;
+ int adns__timeouts (int ,int ,struct timeval**,struct timeval*,struct timeval const) ;
+ int cc_entex ;
+ int inter_immed (struct timeval**,struct timeval*) ;
 
 void adns_beforeselect(adns_state ads, int *maxfd_io, fd_set *readfds_io,
-		       fd_set *writefds_io, fd_set *exceptfds_io,
-		       struct timeval **tv_mod, struct timeval *tv_tobuf,
-		       const struct timeval *now) {
+         fd_set *writefds_io, fd_set *exceptfds_io,
+         struct timeval **tv_mod, struct timeval *tv_tobuf,
+         const struct timeval *now) {
   struct timeval tv_nowbuf;
   struct pollfd pollfds[MAX_POLLFDS];
   int i, maxfd, npollfds;
@@ -41,7 +41,7 @@ void adns_beforeselect(adns_state ads, int *maxfd_io, fd_set *readfds_io,
   adns__consistency(ads,0,cc_entex);
 
   if (tv_mod && (!*tv_mod || (*tv_mod)->tv_sec || (*tv_mod)->tv_usec)) {
-    /* The caller is planning to sleep. */
+
     adns__must_gettimeofday(ads,&now,&tv_nowbuf);
     if (!now) { inter_immed(tv_mod,tv_tobuf); goto xit; }
     adns__timeouts(ads, 0, tv_mod,tv_tobuf, *now);

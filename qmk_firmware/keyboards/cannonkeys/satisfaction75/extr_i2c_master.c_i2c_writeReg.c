@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint16_t ;
-typedef  int /*<<< orphan*/  msg_t ;
-typedef  int /*<<< orphan*/  i2c_status_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  I2C_DRIVER ; 
- int /*<<< orphan*/  MS2ST (int) ; 
- int /*<<< orphan*/  chibios_to_qmk (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  i2cMasterTransmitTimeout (int /*<<< orphan*/ *,int,int*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  i2cStart (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int i2c_address ; 
- int /*<<< orphan*/  i2cconfig ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint16_t ;
+typedef int msg_t ;
+typedef int i2c_status_t ;
+
+
+ int I2C_DRIVER ;
+ int MS2ST (int) ;
+ int chibios_to_qmk (int ) ;
+ int i2cMasterTransmitTimeout (int *,int,int*,int,int ,int ,int ) ;
+ int i2cStart (int *,int *) ;
+ int i2c_address ;
+ int i2cconfig ;
 
 i2c_status_t i2c_writeReg(uint8_t devaddr, uint8_t regaddr, const uint8_t* data, uint16_t length, uint16_t timeout)
 {

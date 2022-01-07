@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  glCtx; } ;
-typedef  TYPE_1__ gfx_ctx_cgl_data_t ;
-typedef  int GLint ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CGLSetParameter (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  kCGLCPSwapInterval ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int glCtx; } ;
+typedef TYPE_1__ gfx_ctx_cgl_data_t ;
+typedef int GLint ;
+
+
+ int CGLSetParameter (int ,int ,int*) ;
+ int kCGLCPSwapInterval ;
 
 __attribute__((used)) static void gfx_ctx_cgl_swap_interval(void *data, int interval)
 {
    gfx_ctx_cgl_data_t *cgl = (gfx_ctx_cgl_data_t*)data;
-   GLint params            = interval;
+   GLint params = interval;
 
    CGLSetParameter(cgl->glCtx, kCGLCPSwapInterval, &params);
 }

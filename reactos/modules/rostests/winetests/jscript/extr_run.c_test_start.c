@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  IActiveScriptParse ;
-typedef  int /*<<< orphan*/  IActiveScript ;
-typedef  scalar_t__ HRESULT ;
-typedef  int /*<<< orphan*/  BSTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ActiveScriptSite ; 
- int /*<<< orphan*/  CHECK_CALLED (int /*<<< orphan*/ ) ; 
- scalar_t__ IActiveScriptParse_InitNew (int /*<<< orphan*/ *) ; 
- scalar_t__ IActiveScriptParse_ParseScriptText (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IActiveScriptParse_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IActiveScript_AddNamedItem (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- scalar_t__ IActiveScript_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IActiveScript_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IActiveScript_SetScriptSite (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ IActiveScript_SetScriptState (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IID_IActiveScriptParse ; 
- int SCRIPTITEM_GLOBALMEMBERS ; 
- int SCRIPTITEM_ISSOURCE ; 
- int SCRIPTITEM_ISVISIBLE ; 
- int /*<<< orphan*/  SCRIPTSTATE_STARTED ; 
- int /*<<< orphan*/  SET_EXPECT (int /*<<< orphan*/ ) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  SysFreeString (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  a2bstr (char*) ; 
- int /*<<< orphan*/ * create_script () ; 
- int /*<<< orphan*/  global_success_d ; 
- int /*<<< orphan*/  global_success_i ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
- int /*<<< orphan*/ * script_engine ; 
- int /*<<< orphan*/  testW ; 
+
+
+
+typedef int IActiveScriptParse ;
+typedef int IActiveScript ;
+typedef scalar_t__ HRESULT ;
+typedef int BSTR ;
+
+
+ int ActiveScriptSite ;
+ int CHECK_CALLED (int ) ;
+ scalar_t__ IActiveScriptParse_InitNew (int *) ;
+ scalar_t__ IActiveScriptParse_ParseScriptText (int *,int ,int *,int *,int *,int ,int ,int ,int *,int *) ;
+ int IActiveScriptParse_Release (int *) ;
+ scalar_t__ IActiveScript_AddNamedItem (int *,int ,int) ;
+ scalar_t__ IActiveScript_QueryInterface (int *,int *,void**) ;
+ int IActiveScript_Release (int *) ;
+ scalar_t__ IActiveScript_SetScriptSite (int *,int *) ;
+ scalar_t__ IActiveScript_SetScriptState (int *,int ) ;
+ int IID_IActiveScriptParse ;
+ int SCRIPTITEM_GLOBALMEMBERS ;
+ int SCRIPTITEM_ISSOURCE ;
+ int SCRIPTITEM_ISVISIBLE ;
+ int SCRIPTSTATE_STARTED ;
+ int SET_EXPECT (int ) ;
+ scalar_t__ S_OK ;
+ int SysFreeString (int ) ;
+ int a2bstr (char*) ;
+ int * create_script () ;
+ int global_success_d ;
+ int global_success_i ;
+ int ok (int,char*,scalar_t__) ;
+ int * script_engine ;
+ int testW ;
 
 __attribute__((used)) static void test_start(void)
 {
@@ -67,7 +67,7 @@ __attribute__((used)) static void test_start(void)
 
     str = a2bstr("ok(getScriptState() === 5, \"getScriptState = \" + getScriptState());\n"
                  "reportSuccess();");
-    hres = IActiveScriptParse_ParseScriptText(parser, str, NULL, NULL, NULL, 0, 0, 0, NULL, NULL);
+    hres = IActiveScriptParse_ParseScriptText(parser, str, ((void*)0), ((void*)0), ((void*)0), 0, 0, 0, ((void*)0), ((void*)0));
     ok(hres == S_OK, "ParseScriptText failed: %08x\n", hres);
     SysFreeString(str);
 
@@ -80,5 +80,5 @@ __attribute__((used)) static void test_start(void)
 
     IActiveScript_Release(engine);
     IActiveScriptParse_Release(parser);
-    script_engine = NULL;
+    script_engine = ((void*)0);
 }

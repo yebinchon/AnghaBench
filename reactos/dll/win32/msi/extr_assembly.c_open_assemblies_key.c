@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  scalar_t__ UINT ;
-typedef  int /*<<< orphan*/  LONG ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HKEY_CLASSES_ROOT ; 
- int /*<<< orphan*/  HKEY_CURRENT_USER ; 
- scalar_t__ MSIINSTALLCONTEXT_MACHINE ; 
- int /*<<< orphan*/  RegCreateKeyW (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *) ; 
+
+
+
+typedef char WCHAR ;
+typedef scalar_t__ UINT ;
+typedef int LONG ;
+typedef int HKEY ;
+typedef scalar_t__ BOOL ;
+
+
+ int HKEY_CLASSES_ROOT ;
+ int HKEY_CURRENT_USER ;
+ scalar_t__ MSIINSTALLCONTEXT_MACHINE ;
+ int RegCreateKeyW (int ,char const*,int *) ;
 
 __attribute__((used)) static LONG open_assemblies_key( UINT context, BOOL win32, HKEY *hkey )
 {

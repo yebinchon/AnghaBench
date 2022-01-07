@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  dir; } ;
-typedef  TYPE_1__ LP_DIR_CTX ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EINVAL ; 
- int closedir (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  free (TYPE_1__*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int dir; } ;
+typedef TYPE_1__ LP_DIR_CTX ;
+
+
+ int EINVAL ;
+ int closedir (int ) ;
+ int errno ;
+ int free (TYPE_1__*) ;
 
 int LP_find_file_end(LP_DIR_CTX **ctx)
 {
-    if (ctx != NULL && *ctx != NULL) {
+    if (ctx != ((void*)0) && *ctx != ((void*)0)) {
         int ret = closedir((*ctx)->dir);
 
         free(*ctx);

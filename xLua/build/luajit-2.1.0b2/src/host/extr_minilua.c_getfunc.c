@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  int /*<<< orphan*/  lua_Debug ;
 
-/* Variables and functions */
- int /*<<< orphan*/  luaL_argcheck (int /*<<< orphan*/ *,int,int,char*) ; 
- int /*<<< orphan*/  luaL_argerror (int /*<<< orphan*/ *,int,char*) ; 
- int luaL_checkint (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  luaL_error (int /*<<< orphan*/ *,char*,int) ; 
- int luaL_optint (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  lua_getinfo (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *) ; 
- scalar_t__ lua_getstack (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- scalar_t__ lua_isfunction (int /*<<< orphan*/ *,int) ; 
- scalar_t__ lua_isnil (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pushvalue (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int lua_State ;
+typedef int lua_Debug ;
+
+
+ int luaL_argcheck (int *,int,int,char*) ;
+ int luaL_argerror (int *,int,char*) ;
+ int luaL_checkint (int *,int) ;
+ int luaL_error (int *,char*,int) ;
+ int luaL_optint (int *,int,int) ;
+ int lua_getinfo (int *,char*,int *) ;
+ scalar_t__ lua_getstack (int *,int,int *) ;
+ scalar_t__ lua_isfunction (int *,int) ;
+ scalar_t__ lua_isnil (int *,int) ;
+ int lua_pushvalue (int *,int) ;
 
 __attribute__((used)) static void getfunc(lua_State*L,int opt){
 if(lua_isfunction(L,1))lua_pushvalue(L,1);

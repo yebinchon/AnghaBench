@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct pid {int dummy; } ;
-typedef  int /*<<< orphan*/  pid_t ;
+typedef int pid_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  current ; 
- int /*<<< orphan*/  pid_nr_ns (struct pid*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  task_active_pid_ns (int /*<<< orphan*/ ) ; 
+
+ int current ;
+ int pid_nr_ns (struct pid*,int ) ;
+ int task_active_pid_ns (int ) ;
 
 pid_t pid_vnr(struct pid *pid)
 {
-	return pid_nr_ns(pid, task_active_pid_ns(current));
+ return pid_nr_ns(pid, task_active_pid_ns(current));
 }

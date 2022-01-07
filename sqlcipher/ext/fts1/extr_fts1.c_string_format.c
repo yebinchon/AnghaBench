@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- char* malloc (size_t) ; 
- int /*<<< orphan*/  memcpy (char*,char const*,size_t) ; 
- size_t strlen (char const*) ; 
+ int assert (int) ;
+ char* malloc (size_t) ;
+ int memcpy (char*,char const*,size_t) ;
+ size_t strlen (char const*) ;
 
 __attribute__((used)) static char *string_format(const char *zFormat,
                            const char *zDb, const char *zName){
@@ -27,11 +19,11 @@ __attribute__((used)) static char *string_format(const char *zFormat,
   char *result;
   char *r;
 
-  /* first compute length needed */
+
   for(p = zFormat ; *p ; ++p){
     len += (*p=='%' ? nFullTableName : 1);
   }
-  len += 1;  /* for null terminator */
+  len += 1;
 
   r = result = malloc(len);
   for(p = zFormat; *p; ++p){

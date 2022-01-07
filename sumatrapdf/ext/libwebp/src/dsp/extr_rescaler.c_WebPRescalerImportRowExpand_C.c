@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_4__ {int num_channels; int dst_width; int x_expand; int x_add; int src_width; int* frow; scalar_t__ x_sub; } ;
-typedef  TYPE_1__ WebPRescaler ;
+typedef TYPE_1__ WebPRescaler ;
 
-/* Variables and functions */
- int /*<<< orphan*/  WebPRescalerInputDone (TYPE_1__* const) ; 
- int /*<<< orphan*/  assert (int) ; 
+
+ int WebPRescalerInputDone (TYPE_1__* const) ;
+ int assert (int) ;
 
 void WebPRescalerImportRowExpand_C(WebPRescaler* const wrk,
                                    const uint8_t* src) {
@@ -29,7 +29,7 @@ void WebPRescalerImportRowExpand_C(WebPRescaler* const wrk,
   for (channel = 0; channel < x_stride; ++channel) {
     int x_in = channel;
     int x_out = channel;
-    // simple bilinear interpolation
+
     int accum = wrk->x_add;
     int left = src[x_in];
     int right = (wrk->src_width > 1) ? src[x_in + x_stride] : left;
@@ -47,6 +47,6 @@ void WebPRescalerImportRowExpand_C(WebPRescaler* const wrk,
         accum += wrk->x_add;
       }
     }
-    assert(wrk->x_sub == 0 /* <- special case for src_width=1 */ || accum == 0);
+    assert(wrk->x_sub == 0 || accum == 0);
   }
 }

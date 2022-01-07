@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  stbiw_uint32 ;
-struct TYPE_4__ {int /*<<< orphan*/  context; int /*<<< orphan*/  (* func ) (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ;} ;
-typedef  TYPE_1__ stbi__write_context ;
 
-/* Variables and functions */
- scalar_t__ stbi__flip_vertically_on_write ; 
- int /*<<< orphan*/  stbiw__write_pixel (TYPE_1__*,int,int,int,int,unsigned char*) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int stbiw_uint32 ;
+struct TYPE_4__ {int context; int (* func ) (int ,int *,int) ;} ;
+typedef TYPE_1__ stbi__write_context ;
+
+
+ scalar_t__ stbi__flip_vertically_on_write ;
+ int stbiw__write_pixel (TYPE_1__*,int,int,int,int,unsigned char*) ;
+ int stub1 (int ,int *,int) ;
 
 __attribute__((used)) static void stbiw__write_pixels(stbi__write_context *s, int rgb_dir, int vdir, int x, int y, int comp, void *data, int write_alpha, int scanline_pad, int expand_mono)
 {
@@ -34,7 +34,7 @@ __attribute__((used)) static void stbiw__write_pixels(stbi__write_context *s, in
    if (vdir < 0)
       j_end = -1, j = y-1;
    else
-      j_end =  y, j = 0;
+      j_end = y, j = 0;
 
    for (; j != j_end; j += vdir) {
       for (i=0; i < x; ++i) {

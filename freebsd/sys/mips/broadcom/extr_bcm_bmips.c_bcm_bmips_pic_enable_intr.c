@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct intr_irqsrc {int dummy; } ;
-struct bcm_mips_irqsrc {int /*<<< orphan*/  ivec; TYPE_1__* cpuirq; } ;
+struct bcm_mips_irqsrc {int ivec; TYPE_1__* cpuirq; } ;
 struct bcm_bmips_softc {int dummy; } ;
-typedef  int /*<<< orphan*/  device_t ;
-struct TYPE_2__ {int /*<<< orphan*/  mips_irq; } ;
+typedef int device_t ;
+struct TYPE_2__ {int mips_irq; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  KASSERT (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  bcm_bmips_unmask_irq (struct bcm_bmips_softc*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- struct bcm_bmips_softc* device_get_softc (int /*<<< orphan*/ ) ; 
+
+ int KASSERT (int ,char*) ;
+ int bcm_bmips_unmask_irq (struct bcm_bmips_softc*,int ,int ) ;
+ struct bcm_bmips_softc* device_get_softc (int ) ;
 
 __attribute__((used)) static void
 bcm_bmips_pic_enable_intr(device_t dev, struct intr_irqsrc *irqsrc)
 {
-	struct bcm_bmips_softc	*sc;
-	struct bcm_mips_irqsrc	*isrc;
+ struct bcm_bmips_softc *sc;
+ struct bcm_mips_irqsrc *isrc;
 
-	sc = device_get_softc(dev);
-	isrc = (struct bcm_mips_irqsrc *)irqsrc;
+ sc = device_get_softc(dev);
+ isrc = (struct bcm_mips_irqsrc *)irqsrc;
 
-	KASSERT(isrc->cpuirq != NULL, ("no assigned MIPS IRQ"));
+ KASSERT(isrc->cpuirq != ((void*)0), ("no assigned MIPS IRQ"));
 
-	bcm_bmips_unmask_irq(sc, isrc->cpuirq->mips_irq, isrc->ivec);
+ bcm_bmips_unmask_irq(sc, isrc->cpuirq->mips_irq, isrc->ivec);
 }

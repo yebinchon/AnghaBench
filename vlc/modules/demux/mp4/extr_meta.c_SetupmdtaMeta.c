@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_7__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_meta_t ;
-typedef  scalar_t__ uint32_t ;
+
+
+typedef struct TYPE_11__ TYPE_7__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int vlc_meta_t ;
+typedef scalar_t__ uint32_t ;
 struct TYPE_11__ {scalar_t__ i_entry_count; TYPE_1__* p_entries; } ;
 struct TYPE_10__ {scalar_t__ i_index; } ;
 struct TYPE_9__ {char* psz_value; scalar_t__ i_namespace; } ;
-typedef  TYPE_2__ MP4_Box_t ;
+typedef TYPE_2__ MP4_Box_t ;
 
-/* Variables and functions */
- scalar_t__ const ATOM_udta ; 
- TYPE_7__* BOXDATA (TYPE_2__*) ; 
- char* ExtractString (TYPE_2__*) ; 
- scalar_t__ const HANDLER_mdta ; 
- int /*<<< orphan*/  SetMeta (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*,TYPE_2__*) ; 
- int /*<<< orphan*/  VLC_FOURCC (char,char,char,char) ; 
- int /*<<< orphan*/  free (char*) ; 
- int strlen (char*) ; 
- int /*<<< orphan*/  strncmp (char*,char const*,int) ; 
+
+ scalar_t__ const ATOM_udta ;
+ TYPE_7__* BOXDATA (TYPE_2__*) ;
+ char* ExtractString (TYPE_2__*) ;
+ scalar_t__ const HANDLER_mdta ;
+ int SetMeta (int *,int ,char const*,TYPE_2__*) ;
+ int VLC_FOURCC (char,char,char,char) ;
+ int free (char*) ;
+ int strlen (char*) ;
+ int strncmp (char*,char const*,int) ;
 
 __attribute__((used)) static void SetupmdtaMeta( vlc_meta_t *p_meta, MP4_Box_t *p_box, MP4_Box_t *p_keys )
 {
@@ -48,7 +48,7 @@ __attribute__((used)) static void SetupmdtaMeta( vlc_meta_t *p_meta, MP4_Box_t *
     }
     else if ( i_namespace == ATOM_udta )
     {
-        /* Regular atom inside... could that be even more complex ??? */
+
         char *psz_utf = ExtractString( p_box );
         if ( psz_utf )
         {
@@ -56,7 +56,7 @@ __attribute__((used)) static void SetupmdtaMeta( vlc_meta_t *p_meta, MP4_Box_t *
             {
                 SetMeta( p_meta,
                          VLC_FOURCC(psz_utf[0],psz_utf[1],psz_utf[2],psz_utf[3]),
-                         NULL, p_box );
+                         ((void*)0), p_box );
             }
             free( psz_utf );
         }

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {scalar_t__ ps_drop; } ;
 struct pcap_dos {TYPE_1__ stat; } ;
 struct TYPE_6__ {int fd; struct pcap_dos* priv; } ;
-typedef  TYPE_2__ pcap_t ;
+typedef TYPE_2__ pcap_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  close_driver () ; 
- int /*<<< orphan*/  exc_occured ; 
- int /*<<< orphan*/  get_device (int) ; 
- int /*<<< orphan*/ ** handle_to_device ; 
- scalar_t__ pcap_stats (TYPE_2__*,int /*<<< orphan*/ *) ; 
- scalar_t__ ref_count ; 
+
+ int close_driver () ;
+ int exc_occured ;
+ int get_device (int) ;
+ int ** handle_to_device ;
+ scalar_t__ pcap_stats (TYPE_2__*,int *) ;
+ scalar_t__ ref_count ;
 
 __attribute__((used)) static void pcap_cleanup_dos (pcap_t *p)
 {
@@ -32,12 +32,12 @@ __attribute__((used)) static void pcap_cleanup_dos (pcap_t *p)
   if (!exc_occured)
   {
     pd = p->priv;
-    if (pcap_stats(p,NULL) < 0)
+    if (pcap_stats(p,((void*)0)) < 0)
        pd->stat.ps_drop = 0;
     if (!get_device(p->fd))
        return;
 
-    handle_to_device [p->fd-1] = NULL;
+    handle_to_device [p->fd-1] = ((void*)0);
     p->fd = 0;
     if (ref_count > 0)
         ref_count--;
@@ -45,5 +45,5 @@ __attribute__((used)) static void pcap_cleanup_dos (pcap_t *p)
        return;
   }
   close_driver();
-  /* XXX - call pcap_cleanup_live_common? */
+
 }

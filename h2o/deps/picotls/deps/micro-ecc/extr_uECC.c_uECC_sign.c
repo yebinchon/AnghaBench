@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  scalar_t__ uECC_word_t ;
-typedef  TYPE_1__* uECC_Curve ;
-struct TYPE_4__ {int /*<<< orphan*/  num_n_bits; int /*<<< orphan*/  n; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BITS_TO_WORDS (int /*<<< orphan*/ ) ; 
- int uECC_MAX_WORDS ; 
- scalar_t__ uECC_RNG_MAX_TRIES ; 
- int /*<<< orphan*/  uECC_generate_random_int (scalar_t__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ uECC_sign_with_k (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,unsigned int,scalar_t__*,int /*<<< orphan*/ *,TYPE_1__*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef scalar_t__ uECC_word_t ;
+typedef TYPE_1__* uECC_Curve ;
+struct TYPE_4__ {int num_n_bits; int n; } ;
+
+
+ int BITS_TO_WORDS (int ) ;
+ int uECC_MAX_WORDS ;
+ scalar_t__ uECC_RNG_MAX_TRIES ;
+ int uECC_generate_random_int (scalar_t__*,int ,int ) ;
+ scalar_t__ uECC_sign_with_k (int const*,int const*,unsigned int,scalar_t__*,int *,TYPE_1__*) ;
 
 int uECC_sign(const uint8_t *private_key,
               const uint8_t *message_hash,

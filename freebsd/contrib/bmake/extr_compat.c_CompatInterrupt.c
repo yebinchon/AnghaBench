@@ -1,64 +1,64 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  GNode ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CompatDeleteTarget (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Compat_Make (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  KILLPG (scalar_t__,int) ; 
- int SIGINT ; 
- int SIGQUIT ; 
- int /*<<< orphan*/  SIG_DFL ; 
- int /*<<< orphan*/  TARG_NOCREATE ; 
- int /*<<< orphan*/ * Targ_FindNode (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Targ_Precious (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  _exit (int) ; 
- int /*<<< orphan*/  bmake_signal (int,int /*<<< orphan*/ ) ; 
- scalar_t__ compatChild ; 
- int compatSigno ; 
- int /*<<< orphan*/ * curTarg ; 
- int /*<<< orphan*/  kill (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  myPid ; 
+
+
+
+typedef int GNode ;
+
+
+ int CompatDeleteTarget (int *) ;
+ int Compat_Make (int *,int *) ;
+ int KILLPG (scalar_t__,int) ;
+ int SIGINT ;
+ int SIGQUIT ;
+ int SIG_DFL ;
+ int TARG_NOCREATE ;
+ int * Targ_FindNode (char*,int ) ;
+ int Targ_Precious (int *) ;
+ int _exit (int) ;
+ int bmake_signal (int,int ) ;
+ scalar_t__ compatChild ;
+ int compatSigno ;
+ int * curTarg ;
+ int kill (int ,int) ;
+ int myPid ;
 
 __attribute__((used)) static void
 CompatInterrupt(int signo)
 {
-    GNode   *gn;
+    GNode *gn;
 
     CompatDeleteTarget(curTarg);
 
-    if ((curTarg != NULL) && !Targ_Precious (curTarg)) {
-	/*
-	 * Run .INTERRUPT only if hit with interrupt signal
-	 */
-	if (signo == SIGINT) {
-	    gn = Targ_FindNode(".INTERRUPT", TARG_NOCREATE);
-	    if (gn != NULL) {
-		Compat_Make(gn, gn);
-	    }
-	}
+    if ((curTarg != ((void*)0)) && !Targ_Precious (curTarg)) {
+
+
+
+ if (signo == SIGINT) {
+     gn = Targ_FindNode(".INTERRUPT", TARG_NOCREATE);
+     if (gn != ((void*)0)) {
+  Compat_Make(gn, gn);
+     }
+ }
     }
     if (signo == SIGQUIT)
-	_exit(signo);
-    /*
-     * If there is a child running, pass the signal on
-     * we will exist after it has exited.
-     */
+ _exit(signo);
+
+
+
+
     compatSigno = signo;
     if (compatChild > 0) {
-	KILLPG(compatChild, signo);
+ KILLPG(compatChild, signo);
     } else {
-	bmake_signal(signo, SIG_DFL);
-	kill(myPid, signo);
+ bmake_signal(signo, SIG_DFL);
+ kill(myPid, signo);
     }
 }

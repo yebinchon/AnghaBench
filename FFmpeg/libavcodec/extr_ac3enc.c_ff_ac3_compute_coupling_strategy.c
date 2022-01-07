@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_5__ {scalar_t__* channel_in_cpl; int num_cpl_channels; int cpl_in_use; int new_cpl_strategy; int new_cpl_leak; int new_snr_offsets; int* end_freq; } ;
 struct TYPE_4__ {int num_blocks; int fbw_channels; scalar_t__ cpl_on; int* start_freq; int bandwidth_code; TYPE_2__* blocks; } ;
-typedef  TYPE_1__ AC3EncodeContext ;
-typedef  TYPE_2__ AC3Block ;
+typedef TYPE_1__ AC3EncodeContext ;
+typedef TYPE_2__ AC3Block ;
 
-/* Variables and functions */
- size_t CPL_CH ; 
+
+ size_t CPL_CH ;
 
 void ff_ac3_compute_coupling_strategy(AC3EncodeContext *s)
 {
@@ -26,16 +26,16 @@ void ff_ac3_compute_coupling_strategy(AC3EncodeContext *s)
     int got_cpl_snr;
     int num_cpl_blocks;
 
-    /* set coupling use flags for each block/channel */
-    /* TODO: turn coupling on/off and adjust start band based on bit usage */
+
+
     for (blk = 0; blk < s->num_blocks; blk++) {
         AC3Block *block = &s->blocks[blk];
         for (ch = 1; ch <= s->fbw_channels; ch++)
             block->channel_in_cpl[ch] = s->cpl_on;
     }
 
-    /* enable coupling for each block if at least 2 channels have coupling
-       enabled for that block */
+
+
     got_cpl_snr = 0;
     num_cpl_blocks = 0;
     for (blk = 0; blk < s->num_blocks; blk++) {
@@ -73,7 +73,7 @@ void ff_ac3_compute_coupling_strategy(AC3EncodeContext *s)
     if (!num_cpl_blocks)
         s->cpl_on = 0;
 
-    /* set bandwidth for each channel */
+
     for (blk = 0; blk < s->num_blocks; blk++) {
         AC3Block *block = &s->blocks[blk];
         for (ch = 1; ch <= s->fbw_channels; ch++) {

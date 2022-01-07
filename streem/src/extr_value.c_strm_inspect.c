@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  strm_value ;
-typedef  scalar_t__ strm_string ;
-typedef  int /*<<< orphan*/  strm_state ;
-typedef  int strm_int ;
-typedef  scalar_t__ strm_array ;
 
-/* Variables and functions */
- scalar_t__ STRM_NG ; 
- int /*<<< orphan*/  free (char*) ; 
- char* malloc (int) ; 
- int /*<<< orphan*/  memcpy (char*,int /*<<< orphan*/ ,int) ; 
- char* realloc (char*,int) ; 
- scalar_t__ str_dump (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  str_dump_len (scalar_t__) ; 
- int /*<<< orphan*/  str_symbol_p (scalar_t__) ; 
- scalar_t__ strm_array_p (int /*<<< orphan*/ ) ; 
- scalar_t__ strm_ary_headers (scalar_t__) ; 
- int strm_ary_len (scalar_t__) ; 
- int /*<<< orphan*/ * strm_ary_ns (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * strm_ary_ptr (scalar_t__) ; 
- scalar_t__ strm_ns_name (int /*<<< orphan*/ *) ; 
- int strm_str_len (scalar_t__) ; 
- scalar_t__ strm_str_new (char*,int) ; 
- scalar_t__ strm_str_null ; 
- int /*<<< orphan*/  strm_str_ptr (scalar_t__) ; 
- scalar_t__ strm_string_p (int /*<<< orphan*/ ) ; 
- scalar_t__ strm_to_str (int /*<<< orphan*/ ) ; 
- scalar_t__ strm_value_ary (int /*<<< orphan*/ ) ; 
- scalar_t__ strm_value_str (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int strm_value ;
+typedef scalar_t__ strm_string ;
+typedef int strm_state ;
+typedef int strm_int ;
+typedef scalar_t__ strm_array ;
+
+
+ scalar_t__ STRM_NG ;
+ int free (char*) ;
+ char* malloc (int) ;
+ int memcpy (char*,int ,int) ;
+ char* realloc (char*,int) ;
+ scalar_t__ str_dump (scalar_t__,int ) ;
+ int str_dump_len (scalar_t__) ;
+ int str_symbol_p (scalar_t__) ;
+ scalar_t__ strm_array_p (int ) ;
+ scalar_t__ strm_ary_headers (scalar_t__) ;
+ int strm_ary_len (scalar_t__) ;
+ int * strm_ary_ns (int ) ;
+ int * strm_ary_ptr (scalar_t__) ;
+ scalar_t__ strm_ns_name (int *) ;
+ int strm_str_len (scalar_t__) ;
+ scalar_t__ strm_str_new (char*,int) ;
+ scalar_t__ strm_str_null ;
+ int strm_str_ptr (scalar_t__) ;
+ scalar_t__ strm_string_p (int ) ;
+ scalar_t__ strm_to_str (int ) ;
+ scalar_t__ strm_value_ary (int ) ;
+ scalar_t__ strm_value_str (int ) ;
 
 strm_string
 strm_inspect(strm_value v)
@@ -53,7 +53,7 @@ strm_inspect(strm_value v)
     strm_int i, bi = 0, capa = 32;
     strm_array a = strm_value_ary(v);
 
-    if (buf == NULL) return STRM_NG;
+    if (buf == ((void*)0)) return STRM_NG;
     buf[bi++] = '[';
     if (ns) {
       strm_string name = strm_ns_name(ns);
@@ -65,7 +65,7 @@ strm_inspect(strm_value v)
           char* p;
           capa *= 2;
           p = realloc(buf, capa);
-          if (p == NULL) {
+          if (p == ((void*)0)) {
             free(buf);
             return STRM_NG;
           }

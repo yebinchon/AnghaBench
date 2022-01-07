@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct sst_dsp {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CL_SPBFIFO_SPBFCCTL_SPIBE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CL_SPBFIFO_SPBFCCTL_SPIBE_MASK ; 
- int /*<<< orphan*/  SKL_ADSP_REG_CL_SPBFIFO_SPBFCCTL ; 
- int /*<<< orphan*/  SKL_ADSP_REG_CL_SPBFIFO_SPIB ; 
- int /*<<< orphan*/  sst_dsp_shim_update_bits_unlocked (struct sst_dsp*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sst_dsp_shim_write_unlocked (struct sst_dsp*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
 
-__attribute__((used)) static void skl_cldma_cleanup_spb(struct sst_dsp  *ctx)
+ int CL_SPBFIFO_SPBFCCTL_SPIBE (int ) ;
+ int CL_SPBFIFO_SPBFCCTL_SPIBE_MASK ;
+ int SKL_ADSP_REG_CL_SPBFIFO_SPBFCCTL ;
+ int SKL_ADSP_REG_CL_SPBFIFO_SPIB ;
+ int sst_dsp_shim_update_bits_unlocked (struct sst_dsp*,int ,int ,int ) ;
+ int sst_dsp_shim_write_unlocked (struct sst_dsp*,int ,int ) ;
+
+__attribute__((used)) static void skl_cldma_cleanup_spb(struct sst_dsp *ctx)
 {
-	sst_dsp_shim_update_bits_unlocked(ctx,
-			SKL_ADSP_REG_CL_SPBFIFO_SPBFCCTL,
-			CL_SPBFIFO_SPBFCCTL_SPIBE_MASK,
-			CL_SPBFIFO_SPBFCCTL_SPIBE(0));
+ sst_dsp_shim_update_bits_unlocked(ctx,
+   SKL_ADSP_REG_CL_SPBFIFO_SPBFCCTL,
+   CL_SPBFIFO_SPBFCCTL_SPIBE_MASK,
+   CL_SPBFIFO_SPBFCCTL_SPIBE(0));
 
-	sst_dsp_shim_write_unlocked(ctx, SKL_ADSP_REG_CL_SPBFIFO_SPIB, 0);
+ sst_dsp_shim_write_unlocked(ctx, SKL_ADSP_REG_CL_SPBFIFO_SPIB, 0);
 }

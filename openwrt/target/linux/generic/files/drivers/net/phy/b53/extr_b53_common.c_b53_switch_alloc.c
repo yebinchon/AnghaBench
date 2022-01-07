@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct device {int dummy; } ;
 struct b53_io_ops {int dummy; } ;
-struct b53_device {int /*<<< orphan*/  reg_mutex; void* priv; struct b53_io_ops* ops; struct device* dev; } ;
+struct b53_device {int reg_mutex; void* priv; struct b53_io_ops* ops; struct device* dev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GFP_KERNEL ; 
- struct b53_device* devm_kzalloc (struct device*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mutex_init (int /*<<< orphan*/ *) ; 
+
+ int GFP_KERNEL ;
+ struct b53_device* devm_kzalloc (struct device*,int,int ) ;
+ int mutex_init (int *) ;
 
 struct b53_device *b53_switch_alloc(struct device *base, struct b53_io_ops *ops,
-				    void *priv)
+        void *priv)
 {
-	struct b53_device *dev;
+ struct b53_device *dev;
 
-	dev = devm_kzalloc(base, sizeof(*dev), GFP_KERNEL);
-	if (!dev)
-		return NULL;
+ dev = devm_kzalloc(base, sizeof(*dev), GFP_KERNEL);
+ if (!dev)
+  return ((void*)0);
 
-	dev->dev = base;
-	dev->ops = ops;
-	dev->priv = priv;
-	mutex_init(&dev->reg_mutex);
+ dev->dev = base;
+ dev->ops = ops;
+ dev->priv = priv;
+ mutex_init(&dev->reg_mutex);
 
-	return dev;
+ return dev;
 }

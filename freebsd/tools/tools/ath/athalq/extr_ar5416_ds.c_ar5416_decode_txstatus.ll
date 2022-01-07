@@ -1,0 +1,380 @@
+; ModuleID = '/home/carl/AnghaBench/freebsd/tools/tools/ath/athalq/extr_ar5416_ds.c_ar5416_decode_txstatus.c'
+source_filename = "/home/carl/AnghaBench/freebsd/tools/tools/ath/athalq/extr_ar5416_ds.c_ar5416_decode_txstatus.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+%struct.if_ath_alq_payload = type { %struct.TYPE_4__, i32 }
+%struct.TYPE_4__ = type { i32, i32, i32 }
+%struct.ar5416_desc = type { %struct.TYPE_6__ }
+%struct.TYPE_6__ = type { %struct.TYPE_5__ }
+%struct.TYPE_5__ = type { i32* }
+
+@.str = private unnamed_addr constant [68 x i8] c"[%u.%06u] [%llu] TXSTATUS: TxDone=%d, FrmOk=%d, filt=%d, TS=0x%08x\0A\00", align 1
+@AR_TxDone = common dso_local global i32 0, align 4
+@AR_FrmXmitOK = common dso_local global i32 0, align 4
+@AR_Filtered = common dso_local global i32 0, align 4
+@.str.1 = private unnamed_addr constant [25 x i8] c"    RX RSSI 0 [%d %d %d]\00", align 1
+@AR_TxRSSIAnt00 = common dso_local global i32 0, align 4
+@AR_TxRSSIAnt01 = common dso_local global i32 0, align 4
+@AR_TxRSSIAnt02 = common dso_local global i32 0, align 4
+@.str.2 = private unnamed_addr constant [31 x i8] c" RX RSSI 1 [%d %d %d] Comb=%d\0A\00", align 1
+@AR_TxRSSIAnt10 = common dso_local global i32 0, align 4
+@AR_TxRSSIAnt11 = common dso_local global i32 0, align 4
+@AR_TxRSSIAnt12 = common dso_local global i32 0, align 4
+@AR_TxRSSICombined = common dso_local global i32 0, align 4
+@.str.3 = private unnamed_addr constant [16 x i8] c"    BA Valid=%d\00", align 1
+@AR_TxBaStatus = common dso_local global i32 0, align 4
+@.str.4 = private unnamed_addr constant [51 x i8] c", Frmok=%d, xretries=%d, fifounderrun=%d, filt=%d\0A\00", align 1
+@AR_ExcessiveRetries = common dso_local global i32 0, align 4
+@AR_FIFOUnderrun = common dso_local global i32 0, align 4
+@.str.5 = private unnamed_addr constant [73 x i8] c"    DelimUnderrun=%d, DataUnderun=%d, DescCfgErr=%d, TxTimerExceeded=%d\0A\00", align 1
+@AR_TxDelimUnderrun = common dso_local global i32 0, align 4
+@AR_TxDataUnderrun = common dso_local global i32 0, align 4
+@AR_DescCfgErr = common dso_local global i32 0, align 4
+@AR_TxTimerExpired = common dso_local global i32 0, align 4
+@.str.6 = private unnamed_addr constant [41 x i8] c"    RTScnt=%d, FailCnt=%d, VRetryCnt=%d\0A\00", align 1
+@AR_RTSFailCnt = common dso_local global i32 0, align 4
+@AR_DataFailCnt = common dso_local global i32 0, align 4
+@AR_VirtRetryCnt = common dso_local global i32 0, align 4
+@.str.7 = private unnamed_addr constant [23 x i8] c"    TxTimestamp=0x%08x\00", align 1
+@.str.8 = private unnamed_addr constant [15 x i8] c", BALow=0x%08x\00", align 1
+@.str.9 = private unnamed_addr constant [17 x i8] c", BAHigh=0x%08x\0A\00", align 1
+@.str.10 = private unnamed_addr constant [55 x i8] c"    TxEVM[0]=0x%08x, TxEVM[1]=0x%08x, TxEVM[2]=0x%08x\0A\00", align 1
+@.str.11 = private unnamed_addr constant [62 x i8] c"    TxDone=%d, SeqNum=0x%04x, TxOpExceeded=%d, FinalTsIdx=%d\0A\00", align 1
+@AR_SeqNum = common dso_local global i32 0, align 4
+@AR_TxOpExceeded = common dso_local global i32 0, align 4
+@AR_FinalTxIdx = common dso_local global i32 0, align 4
+@.str.12 = private unnamed_addr constant [28 x i8] c"    PowerMgmt=%d, TxTid=%d\0A\00", align 1
+@AR_PowerMgmt = common dso_local global i32 0, align 4
+@AR_TxTid = common dso_local global i32 0, align 4
+@.str.13 = private unnamed_addr constant [10 x i8] c"\0A ------\0A\00", align 1
+@llvm.used = appending global [1 x i8*] [i8* bitcast (void (%struct.if_ath_alq_payload*)* @ar5416_decode_txstatus to i8*)], section "llvm.metadata"
+
+; Function Attrs: noinline nounwind optnone uwtable
+define internal void @ar5416_decode_txstatus(%struct.if_ath_alq_payload* %0) #0 {
+  %2 = alloca %struct.if_ath_alq_payload*, align 8
+  %3 = alloca %struct.ar5416_desc, align 8
+  store %struct.if_ath_alq_payload* %0, %struct.if_ath_alq_payload** %2, align 8
+  %4 = load %struct.if_ath_alq_payload*, %struct.if_ath_alq_payload** %2, align 8
+  %5 = getelementptr inbounds %struct.if_ath_alq_payload, %struct.if_ath_alq_payload* %4, i32 0, i32 1
+  %6 = call i32 @memcpy(%struct.ar5416_desc* %3, i32* %5, i32 8)
+  %7 = load %struct.if_ath_alq_payload*, %struct.if_ath_alq_payload** %2, align 8
+  %8 = getelementptr inbounds %struct.if_ath_alq_payload, %struct.if_ath_alq_payload* %7, i32 0, i32 0
+  %9 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %8, i32 0, i32 1
+  %10 = load i32, i32* %9, align 4
+  %11 = call i64 @be32toh(i32 %10)
+  %12 = trunc i64 %11 to i32
+  %13 = load %struct.if_ath_alq_payload*, %struct.if_ath_alq_payload** %2, align 8
+  %14 = getelementptr inbounds %struct.if_ath_alq_payload, %struct.if_ath_alq_payload* %13, i32 0, i32 0
+  %15 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %14, i32 0, i32 0
+  %16 = load i32, i32* %15, align 4
+  %17 = call i64 @be32toh(i32 %16)
+  %18 = trunc i64 %17 to i32
+  %19 = load %struct.if_ath_alq_payload*, %struct.if_ath_alq_payload** %2, align 8
+  %20 = getelementptr inbounds %struct.if_ath_alq_payload, %struct.if_ath_alq_payload* %19, i32 0, i32 0
+  %21 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %20, i32 0, i32 2
+  %22 = load i32, i32* %21, align 4
+  %23 = call i64 @be64toh(i32 %22)
+  %24 = getelementptr inbounds %struct.ar5416_desc, %struct.ar5416_desc* %3, i32 0, i32 0
+  %25 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %24, i32 0, i32 0
+  %26 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %25, i32 0, i32 0
+  %27 = load i32*, i32** %26, align 8
+  %28 = getelementptr inbounds i32, i32* %27, i64 9
+  %29 = load i32, i32* %28, align 4
+  %30 = load i32, i32* @AR_TxDone, align 4
+  %31 = call i32 @MF(i32 %29, i32 %30)
+  %32 = getelementptr inbounds %struct.ar5416_desc, %struct.ar5416_desc* %3, i32 0, i32 0
+  %33 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %32, i32 0, i32 0
+  %34 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %33, i32 0, i32 0
+  %35 = load i32*, i32** %34, align 8
+  %36 = getelementptr inbounds i32, i32* %35, i64 1
+  %37 = load i32, i32* %36, align 4
+  %38 = load i32, i32* @AR_FrmXmitOK, align 4
+  %39 = call i32 @MF(i32 %37, i32 %38)
+  %40 = getelementptr inbounds %struct.ar5416_desc, %struct.ar5416_desc* %3, i32 0, i32 0
+  %41 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %40, i32 0, i32 0
+  %42 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %41, i32 0, i32 0
+  %43 = load i32*, i32** %42, align 8
+  %44 = getelementptr inbounds i32, i32* %43, i64 1
+  %45 = load i32, i32* %44, align 4
+  %46 = load i32, i32* @AR_Filtered, align 4
+  %47 = call i32 @MF(i32 %45, i32 %46)
+  %48 = getelementptr inbounds %struct.ar5416_desc, %struct.ar5416_desc* %3, i32 0, i32 0
+  %49 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %48, i32 0, i32 0
+  %50 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %49, i32 0, i32 0
+  %51 = load i32*, i32** %50, align 8
+  %52 = getelementptr inbounds i32, i32* %51, i64 2
+  %53 = load i32, i32* %52, align 4
+  %54 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([68 x i8], [68 x i8]* @.str, i64 0, i64 0), i32 %12, i32 %18, i64 %23, i32 %31, i32 %39, i32 %47, i32 %53)
+  %55 = getelementptr inbounds %struct.ar5416_desc, %struct.ar5416_desc* %3, i32 0, i32 0
+  %56 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %55, i32 0, i32 0
+  %57 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %56, i32 0, i32 0
+  %58 = load i32*, i32** %57, align 8
+  %59 = getelementptr inbounds i32, i32* %58, i64 0
+  %60 = load i32, i32* %59, align 4
+  %61 = load i32, i32* @AR_TxRSSIAnt00, align 4
+  %62 = call i32 @MS(i32 %60, i32 %61)
+  %63 = getelementptr inbounds %struct.ar5416_desc, %struct.ar5416_desc* %3, i32 0, i32 0
+  %64 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %63, i32 0, i32 0
+  %65 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %64, i32 0, i32 0
+  %66 = load i32*, i32** %65, align 8
+  %67 = getelementptr inbounds i32, i32* %66, i64 0
+  %68 = load i32, i32* %67, align 4
+  %69 = load i32, i32* @AR_TxRSSIAnt01, align 4
+  %70 = call i32 @MS(i32 %68, i32 %69)
+  %71 = getelementptr inbounds %struct.ar5416_desc, %struct.ar5416_desc* %3, i32 0, i32 0
+  %72 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %71, i32 0, i32 0
+  %73 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %72, i32 0, i32 0
+  %74 = load i32*, i32** %73, align 8
+  %75 = getelementptr inbounds i32, i32* %74, i64 0
+  %76 = load i32, i32* %75, align 4
+  %77 = load i32, i32* @AR_TxRSSIAnt02, align 4
+  %78 = call i32 @MS(i32 %76, i32 %77)
+  %79 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([25 x i8], [25 x i8]* @.str.1, i64 0, i64 0), i32 %62, i32 %70, i32 %78)
+  %80 = getelementptr inbounds %struct.ar5416_desc, %struct.ar5416_desc* %3, i32 0, i32 0
+  %81 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %80, i32 0, i32 0
+  %82 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %81, i32 0, i32 0
+  %83 = load i32*, i32** %82, align 8
+  %84 = getelementptr inbounds i32, i32* %83, i64 5
+  %85 = load i32, i32* %84, align 4
+  %86 = load i32, i32* @AR_TxRSSIAnt10, align 4
+  %87 = call i32 @MS(i32 %85, i32 %86)
+  %88 = getelementptr inbounds %struct.ar5416_desc, %struct.ar5416_desc* %3, i32 0, i32 0
+  %89 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %88, i32 0, i32 0
+  %90 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %89, i32 0, i32 0
+  %91 = load i32*, i32** %90, align 8
+  %92 = getelementptr inbounds i32, i32* %91, i64 5
+  %93 = load i32, i32* %92, align 4
+  %94 = load i32, i32* @AR_TxRSSIAnt11, align 4
+  %95 = call i32 @MS(i32 %93, i32 %94)
+  %96 = getelementptr inbounds %struct.ar5416_desc, %struct.ar5416_desc* %3, i32 0, i32 0
+  %97 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %96, i32 0, i32 0
+  %98 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %97, i32 0, i32 0
+  %99 = load i32*, i32** %98, align 8
+  %100 = getelementptr inbounds i32, i32* %99, i64 5
+  %101 = load i32, i32* %100, align 4
+  %102 = load i32, i32* @AR_TxRSSIAnt12, align 4
+  %103 = call i32 @MS(i32 %101, i32 %102)
+  %104 = getelementptr inbounds %struct.ar5416_desc, %struct.ar5416_desc* %3, i32 0, i32 0
+  %105 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %104, i32 0, i32 0
+  %106 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %105, i32 0, i32 0
+  %107 = load i32*, i32** %106, align 8
+  %108 = getelementptr inbounds i32, i32* %107, i64 5
+  %109 = load i32, i32* %108, align 4
+  %110 = load i32, i32* @AR_TxRSSICombined, align 4
+  %111 = call i32 @MS(i32 %109, i32 %110)
+  %112 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([31 x i8], [31 x i8]* @.str.2, i64 0, i64 0), i32 %87, i32 %95, i32 %103, i32 %111)
+  %113 = getelementptr inbounds %struct.ar5416_desc, %struct.ar5416_desc* %3, i32 0, i32 0
+  %114 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %113, i32 0, i32 0
+  %115 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %114, i32 0, i32 0
+  %116 = load i32*, i32** %115, align 8
+  %117 = getelementptr inbounds i32, i32* %116, i64 0
+  %118 = load i32, i32* %117, align 4
+  %119 = load i32, i32* @AR_TxBaStatus, align 4
+  %120 = call i32 @MF(i32 %118, i32 %119)
+  %121 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([16 x i8], [16 x i8]* @.str.3, i64 0, i64 0), i32 %120)
+  %122 = getelementptr inbounds %struct.ar5416_desc, %struct.ar5416_desc* %3, i32 0, i32 0
+  %123 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %122, i32 0, i32 0
+  %124 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %123, i32 0, i32 0
+  %125 = load i32*, i32** %124, align 8
+  %126 = getelementptr inbounds i32, i32* %125, i64 1
+  %127 = load i32, i32* %126, align 4
+  %128 = load i32, i32* @AR_FrmXmitOK, align 4
+  %129 = call i32 @MF(i32 %127, i32 %128)
+  %130 = getelementptr inbounds %struct.ar5416_desc, %struct.ar5416_desc* %3, i32 0, i32 0
+  %131 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %130, i32 0, i32 0
+  %132 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %131, i32 0, i32 0
+  %133 = load i32*, i32** %132, align 8
+  %134 = getelementptr inbounds i32, i32* %133, i64 1
+  %135 = load i32, i32* %134, align 4
+  %136 = load i32, i32* @AR_ExcessiveRetries, align 4
+  %137 = call i32 @MF(i32 %135, i32 %136)
+  %138 = getelementptr inbounds %struct.ar5416_desc, %struct.ar5416_desc* %3, i32 0, i32 0
+  %139 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %138, i32 0, i32 0
+  %140 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %139, i32 0, i32 0
+  %141 = load i32*, i32** %140, align 8
+  %142 = getelementptr inbounds i32, i32* %141, i64 1
+  %143 = load i32, i32* %142, align 4
+  %144 = load i32, i32* @AR_FIFOUnderrun, align 4
+  %145 = call i32 @MF(i32 %143, i32 %144)
+  %146 = getelementptr inbounds %struct.ar5416_desc, %struct.ar5416_desc* %3, i32 0, i32 0
+  %147 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %146, i32 0, i32 0
+  %148 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %147, i32 0, i32 0
+  %149 = load i32*, i32** %148, align 8
+  %150 = getelementptr inbounds i32, i32* %149, i64 1
+  %151 = load i32, i32* %150, align 4
+  %152 = load i32, i32* @AR_Filtered, align 4
+  %153 = call i32 @MF(i32 %151, i32 %152)
+  %154 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([51 x i8], [51 x i8]* @.str.4, i64 0, i64 0), i32 %129, i32 %137, i32 %145, i32 %153)
+  %155 = getelementptr inbounds %struct.ar5416_desc, %struct.ar5416_desc* %3, i32 0, i32 0
+  %156 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %155, i32 0, i32 0
+  %157 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %156, i32 0, i32 0
+  %158 = load i32*, i32** %157, align 8
+  %159 = getelementptr inbounds i32, i32* %158, i64 1
+  %160 = load i32, i32* %159, align 4
+  %161 = load i32, i32* @AR_TxDelimUnderrun, align 4
+  %162 = call i32 @MF(i32 %160, i32 %161)
+  %163 = getelementptr inbounds %struct.ar5416_desc, %struct.ar5416_desc* %3, i32 0, i32 0
+  %164 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %163, i32 0, i32 0
+  %165 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %164, i32 0, i32 0
+  %166 = load i32*, i32** %165, align 8
+  %167 = getelementptr inbounds i32, i32* %166, i64 1
+  %168 = load i32, i32* %167, align 4
+  %169 = load i32, i32* @AR_TxDataUnderrun, align 4
+  %170 = call i32 @MF(i32 %168, i32 %169)
+  %171 = getelementptr inbounds %struct.ar5416_desc, %struct.ar5416_desc* %3, i32 0, i32 0
+  %172 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %171, i32 0, i32 0
+  %173 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %172, i32 0, i32 0
+  %174 = load i32*, i32** %173, align 8
+  %175 = getelementptr inbounds i32, i32* %174, i64 1
+  %176 = load i32, i32* %175, align 4
+  %177 = load i32, i32* @AR_DescCfgErr, align 4
+  %178 = call i32 @MF(i32 %176, i32 %177)
+  %179 = getelementptr inbounds %struct.ar5416_desc, %struct.ar5416_desc* %3, i32 0, i32 0
+  %180 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %179, i32 0, i32 0
+  %181 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %180, i32 0, i32 0
+  %182 = load i32*, i32** %181, align 8
+  %183 = getelementptr inbounds i32, i32* %182, i64 1
+  %184 = load i32, i32* %183, align 4
+  %185 = load i32, i32* @AR_TxTimerExpired, align 4
+  %186 = call i32 @MF(i32 %184, i32 %185)
+  %187 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([73 x i8], [73 x i8]* @.str.5, i64 0, i64 0), i32 %162, i32 %170, i32 %178, i32 %186)
+  %188 = getelementptr inbounds %struct.ar5416_desc, %struct.ar5416_desc* %3, i32 0, i32 0
+  %189 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %188, i32 0, i32 0
+  %190 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %189, i32 0, i32 0
+  %191 = load i32*, i32** %190, align 8
+  %192 = getelementptr inbounds i32, i32* %191, i64 1
+  %193 = load i32, i32* %192, align 4
+  %194 = load i32, i32* @AR_RTSFailCnt, align 4
+  %195 = call i32 @MS(i32 %193, i32 %194)
+  %196 = getelementptr inbounds %struct.ar5416_desc, %struct.ar5416_desc* %3, i32 0, i32 0
+  %197 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %196, i32 0, i32 0
+  %198 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %197, i32 0, i32 0
+  %199 = load i32*, i32** %198, align 8
+  %200 = getelementptr inbounds i32, i32* %199, i64 1
+  %201 = load i32, i32* %200, align 4
+  %202 = load i32, i32* @AR_DataFailCnt, align 4
+  %203 = call i32 @MS(i32 %201, i32 %202)
+  %204 = getelementptr inbounds %struct.ar5416_desc, %struct.ar5416_desc* %3, i32 0, i32 0
+  %205 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %204, i32 0, i32 0
+  %206 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %205, i32 0, i32 0
+  %207 = load i32*, i32** %206, align 8
+  %208 = getelementptr inbounds i32, i32* %207, i64 1
+  %209 = load i32, i32* %208, align 4
+  %210 = load i32, i32* @AR_VirtRetryCnt, align 4
+  %211 = call i32 @MS(i32 %209, i32 %210)
+  %212 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([41 x i8], [41 x i8]* @.str.6, i64 0, i64 0), i32 %195, i32 %203, i32 %211)
+  %213 = getelementptr inbounds %struct.ar5416_desc, %struct.ar5416_desc* %3, i32 0, i32 0
+  %214 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %213, i32 0, i32 0
+  %215 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %214, i32 0, i32 0
+  %216 = load i32*, i32** %215, align 8
+  %217 = getelementptr inbounds i32, i32* %216, i64 2
+  %218 = load i32, i32* %217, align 4
+  %219 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([23 x i8], [23 x i8]* @.str.7, i64 0, i64 0), i32 %218)
+  %220 = getelementptr inbounds %struct.ar5416_desc, %struct.ar5416_desc* %3, i32 0, i32 0
+  %221 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %220, i32 0, i32 0
+  %222 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %221, i32 0, i32 0
+  %223 = load i32*, i32** %222, align 8
+  %224 = getelementptr inbounds i32, i32* %223, i64 3
+  %225 = load i32, i32* %224, align 4
+  %226 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([15 x i8], [15 x i8]* @.str.8, i64 0, i64 0), i32 %225)
+  %227 = getelementptr inbounds %struct.ar5416_desc, %struct.ar5416_desc* %3, i32 0, i32 0
+  %228 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %227, i32 0, i32 0
+  %229 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %228, i32 0, i32 0
+  %230 = load i32*, i32** %229, align 8
+  %231 = getelementptr inbounds i32, i32* %230, i64 4
+  %232 = load i32, i32* %231, align 4
+  %233 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([17 x i8], [17 x i8]* @.str.9, i64 0, i64 0), i32 %232)
+  %234 = getelementptr inbounds %struct.ar5416_desc, %struct.ar5416_desc* %3, i32 0, i32 0
+  %235 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %234, i32 0, i32 0
+  %236 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %235, i32 0, i32 0
+  %237 = load i32*, i32** %236, align 8
+  %238 = getelementptr inbounds i32, i32* %237, i64 6
+  %239 = load i32, i32* %238, align 4
+  %240 = getelementptr inbounds %struct.ar5416_desc, %struct.ar5416_desc* %3, i32 0, i32 0
+  %241 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %240, i32 0, i32 0
+  %242 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %241, i32 0, i32 0
+  %243 = load i32*, i32** %242, align 8
+  %244 = getelementptr inbounds i32, i32* %243, i64 7
+  %245 = load i32, i32* %244, align 4
+  %246 = getelementptr inbounds %struct.ar5416_desc, %struct.ar5416_desc* %3, i32 0, i32 0
+  %247 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %246, i32 0, i32 0
+  %248 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %247, i32 0, i32 0
+  %249 = load i32*, i32** %248, align 8
+  %250 = getelementptr inbounds i32, i32* %249, i64 8
+  %251 = load i32, i32* %250, align 4
+  %252 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([55 x i8], [55 x i8]* @.str.10, i64 0, i64 0), i32 %239, i32 %245, i32 %251)
+  %253 = getelementptr inbounds %struct.ar5416_desc, %struct.ar5416_desc* %3, i32 0, i32 0
+  %254 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %253, i32 0, i32 0
+  %255 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %254, i32 0, i32 0
+  %256 = load i32*, i32** %255, align 8
+  %257 = getelementptr inbounds i32, i32* %256, i64 9
+  %258 = load i32, i32* %257, align 4
+  %259 = load i32, i32* @AR_TxDone, align 4
+  %260 = call i32 @MF(i32 %258, i32 %259)
+  %261 = getelementptr inbounds %struct.ar5416_desc, %struct.ar5416_desc* %3, i32 0, i32 0
+  %262 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %261, i32 0, i32 0
+  %263 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %262, i32 0, i32 0
+  %264 = load i32*, i32** %263, align 8
+  %265 = getelementptr inbounds i32, i32* %264, i64 9
+  %266 = load i32, i32* %265, align 4
+  %267 = load i32, i32* @AR_SeqNum, align 4
+  %268 = call i32 @MS(i32 %266, i32 %267)
+  %269 = getelementptr inbounds %struct.ar5416_desc, %struct.ar5416_desc* %3, i32 0, i32 0
+  %270 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %269, i32 0, i32 0
+  %271 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %270, i32 0, i32 0
+  %272 = load i32*, i32** %271, align 8
+  %273 = getelementptr inbounds i32, i32* %272, i64 9
+  %274 = load i32, i32* %273, align 4
+  %275 = load i32, i32* @AR_TxOpExceeded, align 4
+  %276 = call i32 @MF(i32 %274, i32 %275)
+  %277 = getelementptr inbounds %struct.ar5416_desc, %struct.ar5416_desc* %3, i32 0, i32 0
+  %278 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %277, i32 0, i32 0
+  %279 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %278, i32 0, i32 0
+  %280 = load i32*, i32** %279, align 8
+  %281 = getelementptr inbounds i32, i32* %280, i64 9
+  %282 = load i32, i32* %281, align 4
+  %283 = load i32, i32* @AR_FinalTxIdx, align 4
+  %284 = call i32 @MS(i32 %282, i32 %283)
+  %285 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([62 x i8], [62 x i8]* @.str.11, i64 0, i64 0), i32 %260, i32 %268, i32 %276, i32 %284)
+  %286 = getelementptr inbounds %struct.ar5416_desc, %struct.ar5416_desc* %3, i32 0, i32 0
+  %287 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %286, i32 0, i32 0
+  %288 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %287, i32 0, i32 0
+  %289 = load i32*, i32** %288, align 8
+  %290 = getelementptr inbounds i32, i32* %289, i64 9
+  %291 = load i32, i32* %290, align 4
+  %292 = load i32, i32* @AR_PowerMgmt, align 4
+  %293 = call i32 @MF(i32 %291, i32 %292)
+  %294 = getelementptr inbounds %struct.ar5416_desc, %struct.ar5416_desc* %3, i32 0, i32 0
+  %295 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %294, i32 0, i32 0
+  %296 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %295, i32 0, i32 0
+  %297 = load i32*, i32** %296, align 8
+  %298 = getelementptr inbounds i32, i32* %297, i64 9
+  %299 = load i32, i32* %298, align 4
+  %300 = load i32, i32* @AR_TxTid, align 4
+  %301 = call i32 @MS(i32 %299, i32 %300)
+  %302 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([28 x i8], [28 x i8]* @.str.12, i64 0, i64 0), i32 %293, i32 %301)
+  %303 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str.13, i64 0, i64 0))
+  ret void
+}
+
+declare dso_local i32 @memcpy(%struct.ar5416_desc*, i32*, i32) #1
+
+declare dso_local i32 @printf(i8*, ...) #1
+
+declare dso_local i64 @be32toh(i32) #1
+
+declare dso_local i64 @be64toh(i32) #1
+
+declare dso_local i32 @MF(i32, i32) #1
+
+declare dso_local i32 @MS(i32, i32) #1
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  rd_key; } ;
-struct TYPE_5__ {TYPE_1__ u; int /*<<< orphan*/  grand_rounds; } ;
-typedef  TYPE_2__ CAMELLIA_KEY ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Camellia_Ekeygen (int const,unsigned char const*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int rd_key; } ;
+struct TYPE_5__ {TYPE_1__ u; int grand_rounds; } ;
+typedef TYPE_2__ CAMELLIA_KEY ;
+
+
+ int Camellia_Ekeygen (int const,unsigned char const*,int ) ;
 
 int Camellia_set_key(const unsigned char *userKey, const int bits,
                      CAMELLIA_KEY *key)

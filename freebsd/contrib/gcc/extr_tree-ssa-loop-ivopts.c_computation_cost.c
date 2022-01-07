@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
-typedef  int /*<<< orphan*/  rtx ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EXPAND_NORMAL ; 
- int LAST_VIRTUAL_REGISTER ; 
- scalar_t__ MEM_P (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NULL_RTX ; 
- int /*<<< orphan*/  TREE_TYPE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TYPE_MODE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XEXP (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ address_cost (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  end_sequence () ; 
- int /*<<< orphan*/  expand_expr (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  get_insns () ; 
- int /*<<< orphan*/  prepare_decl_rtl ; 
- unsigned int seq_cost (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  start_sequence () ; 
- int /*<<< orphan*/  walk_tree (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int*,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int tree ;
+typedef int rtx ;
+
+
+ int EXPAND_NORMAL ;
+ int LAST_VIRTUAL_REGISTER ;
+ scalar_t__ MEM_P (int ) ;
+ int NULL_RTX ;
+ int TREE_TYPE (int ) ;
+ int TYPE_MODE (int ) ;
+ int XEXP (int ,int ) ;
+ scalar_t__ address_cost (int ,int ) ;
+ int end_sequence () ;
+ int expand_expr (int ,int ,int ,int ) ;
+ int get_insns () ;
+ int prepare_decl_rtl ;
+ unsigned int seq_cost (int ) ;
+ int start_sequence () ;
+ int walk_tree (int *,int ,int*,int *) ;
 
 __attribute__((used)) static unsigned
 computation_cost (tree expr)
@@ -36,10 +36,10 @@ computation_cost (tree expr)
   rtx seq, rslt;
   tree type = TREE_TYPE (expr);
   unsigned cost;
-  /* Avoid using hard regs in ways which may be unsupported.  */
+
   int regno = LAST_VIRTUAL_REGISTER + 1;
 
-  walk_tree (&expr, prepare_decl_rtl, &regno, NULL);
+  walk_tree (&expr, prepare_decl_rtl, &regno, ((void*)0));
   start_sequence ();
   rslt = expand_expr (expr, NULL_RTX, TYPE_MODE (type), EXPAND_NORMAL);
   seq = get_insns ();

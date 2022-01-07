@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_2__ ;
-typedef  struct TYPE_15__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_16__ {int current; int /*<<< orphan*/  buff; } ;
-struct TYPE_15__ {int /*<<< orphan*/  ts; } ;
-typedef  TYPE_1__ SemInfo ;
-typedef  TYPE_2__ LexState ;
 
-/* Variables and functions */
-#define  EOZ 128 
- int /*<<< orphan*/  TK_EOS ; 
- int /*<<< orphan*/  TK_STRING ; 
- int /*<<< orphan*/  currIsNewline (TYPE_2__*) ; 
- int /*<<< orphan*/  escerror (TYPE_2__*,int*,int,char*) ; 
- int /*<<< orphan*/  inclinenumber (TYPE_2__*) ; 
- int /*<<< orphan*/  lexerror (TYPE_2__*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lisdigit (int) ; 
- int /*<<< orphan*/  lisspace (int) ; 
- int /*<<< orphan*/  luaX_newstring (TYPE_2__*,scalar_t__,scalar_t__) ; 
- scalar_t__ luaZ_buffer (int /*<<< orphan*/ ) ; 
- scalar_t__ luaZ_bufflen (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  next (TYPE_2__*) ; 
- int readdecesc (TYPE_2__*) ; 
- int readhexaesc (TYPE_2__*) ; 
- int /*<<< orphan*/  save (TYPE_2__*,int) ; 
- int /*<<< orphan*/  save_and_next (TYPE_2__*) ; 
+
+typedef struct TYPE_16__ TYPE_2__ ;
+typedef struct TYPE_15__ TYPE_1__ ;
+
+
+struct TYPE_16__ {int current; int buff; } ;
+struct TYPE_15__ {int ts; } ;
+typedef TYPE_1__ SemInfo ;
+typedef TYPE_2__ LexState ;
+
+
+
+ int TK_EOS ;
+ int TK_STRING ;
+ int currIsNewline (TYPE_2__*) ;
+ int escerror (TYPE_2__*,int*,int,char*) ;
+ int inclinenumber (TYPE_2__*) ;
+ int lexerror (TYPE_2__*,char*,int ) ;
+ int lisdigit (int) ;
+ int lisspace (int) ;
+ int luaX_newstring (TYPE_2__*,scalar_t__,scalar_t__) ;
+ scalar_t__ luaZ_buffer (int ) ;
+ scalar_t__ luaZ_bufflen (int ) ;
+ int next (TYPE_2__*) ;
+ int readdecesc (TYPE_2__*) ;
+ int readhexaesc (TYPE_2__*) ;
+ int save (TYPE_2__*,int) ;
+ int save_and_next (TYPE_2__*) ;
 
 __attribute__((used)) static void read_string (LexState *ls, int del, SemInfo *seminfo) {
-  save_and_next(ls);  /* keep delimiter (for error messages) */
+  save_and_next(ls);
   while (ls->current != del) {
     switch (ls->current) {
-      case EOZ:
+      case 128:
         lexerror(ls, "unfinished string", TK_EOS);
-        break;  /* to avoid warnings */
+        break;
       case '\n':
       case '\r':
         lexerror(ls, "unfinished string", TK_STRING);
-        break;  /* to avoid warnings */
-      case '\\': {  /* escape sequences */
-        int c;  /* final character to be saved */
-        next(ls);  /* do not save the `\' */
+        break;
+      case '\\': {
+        int c;
+        next(ls);
         switch (ls->current) {
           case 'a': c = '\a'; goto read_save;
           case 'b': c = '\b'; goto read_save;
@@ -63,9 +63,9 @@ __attribute__((used)) static void read_string (LexState *ls, int del, SemInfo *s
             inclinenumber(ls); c = '\n'; goto only_save;
           case '\\': case '\"': case '\'':
             c = ls->current; goto read_save;
-          case EOZ: goto no_save;  /* will raise an error next loop */
-          case 'z': {  /* zap following span of spaces */
-            next(ls);  /* skip the 'z' */
+          case 128: goto no_save;
+          case 'z': {
+            next(ls);
             while (lisspace(ls->current)) {
               if (currIsNewline(ls)) inclinenumber(ls);
               else next(ls);
@@ -75,20 +75,20 @@ __attribute__((used)) static void read_string (LexState *ls, int del, SemInfo *s
           default: {
             if (!lisdigit(ls->current))
               escerror(ls, &ls->current, 1, "invalid escape sequence");
-            /* digital escape \ddd */
+
             c = readdecesc(ls);
             goto only_save;
           }
         }
-       read_save: next(ls);  /* read next character */
-       only_save: save(ls, c);  /* save 'c' */
+       read_save: next(ls);
+       only_save: save(ls, c);
        no_save: break;
       }
       default:
         save_and_next(ls);
     }
   }
-  save_and_next(ls);  /* skip delimiter */
+  save_and_next(ls);
   seminfo->ts = luaX_newstring(ls, luaZ_buffer(ls->buff) + 1,
                                    luaZ_bufflen(ls->buff) - 2);
 }

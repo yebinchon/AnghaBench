@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct dirent {char const* d_name; } ;
-typedef  int ptrdiff_t ;
-typedef  int /*<<< orphan*/  DIR ;
+typedef int ptrdiff_t ;
+typedef int DIR ;
 
-/* Variables and functions */
- int LIST_SIZE_INCREASE ; 
- int /*<<< orphan*/  UTIL_DISPLAYLEVEL (int,char*,char const*,...) ; 
- scalar_t__ UTIL_isDirectory (char*) ; 
- scalar_t__ UTIL_isLink (char*) ; 
- scalar_t__ UTIL_realloc (char*,size_t) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  closedir (int /*<<< orphan*/ *) ; 
- scalar_t__ errno ; 
- int /*<<< orphan*/  free (char*) ; 
- scalar_t__ malloc (size_t) ; 
- int /*<<< orphan*/  memcpy (char*,char const*,size_t) ; 
- int /*<<< orphan*/ * opendir (char const*) ; 
- struct dirent* readdir (int /*<<< orphan*/ *) ; 
- scalar_t__ strcmp (char const*,char*) ; 
- int /*<<< orphan*/  strerror (scalar_t__) ; 
- size_t strlen (char const*) ; 
+
+ int LIST_SIZE_INCREASE ;
+ int UTIL_DISPLAYLEVEL (int,char*,char const*,...) ;
+ scalar_t__ UTIL_isDirectory (char*) ;
+ scalar_t__ UTIL_isLink (char*) ;
+ scalar_t__ UTIL_realloc (char*,size_t) ;
+ int assert (int) ;
+ int closedir (int *) ;
+ scalar_t__ errno ;
+ int free (char*) ;
+ scalar_t__ malloc (size_t) ;
+ int memcpy (char*,char const*,size_t) ;
+ int * opendir (char const*) ;
+ struct dirent* readdir (int *) ;
+ scalar_t__ strcmp (char const*,char*) ;
+ int strerror (scalar_t__) ;
+ size_t strlen (char const*) ;
 
 int UTIL_prepareFileList(const char *dirName, char** bufStart, size_t* pos, char** bufEnd, int followLinks)
 {
@@ -47,7 +47,7 @@ int UTIL_prepareFileList(const char *dirName, char** bufStart, size_t* pos, char
 
     dirLength = strlen(dirName);
     errno = 0;
-    while ((entry = readdir(dir)) != NULL) {
+    while ((entry = readdir(dir)) != ((void*)0)) {
         if (strcmp (entry->d_name, "..") == 0 ||
             strcmp (entry->d_name, ".") == 0) continue;
         fnameLength = strlen(entry->d_name);
@@ -67,30 +67,30 @@ int UTIL_prepareFileList(const char *dirName, char** bufStart, size_t* pos, char
         }
 
         if (UTIL_isDirectory(path)) {
-            nbFiles += UTIL_prepareFileList(path, bufStart, pos, bufEnd, followLinks);  /* Recursively call "UTIL_prepareFileList" with the new path. */
-            if (*bufStart == NULL) { free(path); closedir(dir); return 0; }
+            nbFiles += UTIL_prepareFileList(path, bufStart, pos, bufEnd, followLinks);
+            if (*bufStart == ((void*)0)) { free(path); closedir(dir); return 0; }
         } else {
             if (*bufStart + *pos + pathLength >= *bufEnd) {
                 ptrdiff_t newListSize = (*bufEnd - *bufStart) + LIST_SIZE_INCREASE;
                 assert(newListSize >= 0);
                 *bufStart = (char*)UTIL_realloc(*bufStart, (size_t)newListSize);
                 *bufEnd = *bufStart + newListSize;
-                if (*bufStart == NULL) { free(path); closedir(dir); return 0; }
+                if (*bufStart == ((void*)0)) { free(path); closedir(dir); return 0; }
             }
             if (*bufStart + *pos + pathLength < *bufEnd) {
-                memcpy(*bufStart + *pos, path, pathLength + 1);  /* with final \0 */
+                memcpy(*bufStart + *pos, path, pathLength + 1);
                 *pos += pathLength + 1;
                 nbFiles++;
             }
         }
         free(path);
-        errno = 0; /* clear errno after UTIL_isDirectory, UTIL_prepareFileList */
+        errno = 0;
     }
 
     if (errno != 0) {
         UTIL_DISPLAYLEVEL(1, "readdir(%s) error: %s\n", dirName, strerror(errno));
         free(*bufStart);
-        *bufStart = NULL;
+        *bufStart = ((void*)0);
     }
     closedir(dir);
     return nbFiles;

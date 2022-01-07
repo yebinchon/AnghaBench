@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_3__ ;
-typedef  struct TYPE_16__   TYPE_2__ ;
-typedef  struct TYPE_15__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_17__ TYPE_3__ ;
+typedef struct TYPE_16__ TYPE_2__ ;
+typedef struct TYPE_15__ TYPE_1__ ;
+
+
 struct SrcList_item {int iCursor; void* zDatabase; void* zName; } ;
-typedef  int /*<<< orphan*/  sqlite3 ;
+typedef int sqlite3 ;
 struct TYPE_15__ {scalar_t__ z; } ;
-typedef  TYPE_1__ Token ;
-struct TYPE_17__ {int /*<<< orphan*/ * db; } ;
+typedef TYPE_1__ Token ;
+struct TYPE_17__ {int * db; } ;
 struct TYPE_16__ {int nAlloc; int nSrc; struct SrcList_item* a; } ;
-typedef  TYPE_2__ SrcList ;
-typedef  TYPE_3__ Parse ;
+typedef TYPE_2__ SrcList ;
+typedef TYPE_3__ Parse ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  memset (struct SrcList_item*,int /*<<< orphan*/ ,int) ; 
- TYPE_2__* sqlite3DbMallocRawNN (int /*<<< orphan*/ *,int) ; 
- void* sqlite3NameFromToken (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  sqlite3SrcListDelete (int /*<<< orphan*/ *,TYPE_2__*) ; 
- TYPE_2__* sqlite3SrcListEnlarge (TYPE_3__*,TYPE_2__*,int,int) ; 
+
+ int assert (int) ;
+ int memset (struct SrcList_item*,int ,int) ;
+ TYPE_2__* sqlite3DbMallocRawNN (int *,int) ;
+ void* sqlite3NameFromToken (int *,TYPE_1__*) ;
+ int sqlite3SrcListDelete (int *,TYPE_2__*) ;
+ TYPE_2__* sqlite3SrcListEnlarge (TYPE_3__*,TYPE_2__*,int,int) ;
 
 SrcList *sqlite3SrcListAppend(
-  Parse *pParse,      /* Parsing context, in which errors are reported */
-  SrcList *pList,     /* Append to this SrcList. NULL creates a new SrcList */
-  Token *pTable,      /* Table to append */
-  Token *pDatabase    /* Database of the table */
+  Parse *pParse,
+  SrcList *pList,
+  Token *pTable,
+  Token *pDatabase
 ){
   struct SrcList_item *pItem;
   sqlite3 *db;
-  assert( pDatabase==0 || pTable!=0 );  /* Cannot have C without B */
+  assert( pDatabase==0 || pTable!=0 );
   assert( pParse!=0 );
   assert( pParse->db!=0 );
   db = pParse->db;

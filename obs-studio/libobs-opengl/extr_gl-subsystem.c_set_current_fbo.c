@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct fbo_info {int /*<<< orphan*/ * cur_zstencil_buffer; int /*<<< orphan*/ * cur_render_target; int /*<<< orphan*/  fbo; } ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct fbo_info {int * cur_zstencil_buffer; int * cur_render_target; int fbo; } ;
 struct TYPE_3__ {struct fbo_info* cur_fbo; } ;
-typedef  TYPE_1__ gs_device_t ;
-typedef  int /*<<< orphan*/  GLuint ;
+typedef TYPE_1__ gs_device_t ;
+typedef int GLuint ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GL_DRAW_FRAMEBUFFER ; 
- int /*<<< orphan*/  gl_bind_framebuffer (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int GL_DRAW_FRAMEBUFFER ;
+ int gl_bind_framebuffer (int ,int ) ;
 
 __attribute__((used)) static bool set_current_fbo(gs_device_t *device, struct fbo_info *fbo)
 {
-	if (device->cur_fbo != fbo) {
-		GLuint fbo_obj = fbo ? fbo->fbo : 0;
-		if (!gl_bind_framebuffer(GL_DRAW_FRAMEBUFFER, fbo_obj))
-			return false;
+ if (device->cur_fbo != fbo) {
+  GLuint fbo_obj = fbo ? fbo->fbo : 0;
+  if (!gl_bind_framebuffer(GL_DRAW_FRAMEBUFFER, fbo_obj))
+   return 0;
 
-		if (device->cur_fbo) {
-			device->cur_fbo->cur_render_target = NULL;
-			device->cur_fbo->cur_zstencil_buffer = NULL;
-		}
-	}
+  if (device->cur_fbo) {
+   device->cur_fbo->cur_render_target = ((void*)0);
+   device->cur_fbo->cur_zstencil_buffer = ((void*)0);
+  }
+ }
 
-	device->cur_fbo = fbo;
-	return true;
+ device->cur_fbo = fbo;
+ return 1;
 }

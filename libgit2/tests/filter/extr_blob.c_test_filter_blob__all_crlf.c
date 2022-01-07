@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  git_object ;
-struct TYPE_4__ {int /*<<< orphan*/  ptr; int /*<<< orphan*/  member_0; } ;
-typedef  TYPE_1__ git_buf ;
-typedef  int /*<<< orphan*/  git_blob ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ALL_CRLF_TEXT_AS_CRLF ; 
- int /*<<< orphan*/  ALL_CRLF_TEXT_RAW ; 
- int /*<<< orphan*/  cl_assert_equal_s (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cl_git_pass (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  g_repo ; 
- int /*<<< orphan*/  git_blob_filter (TYPE_1__*,int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  git_blob_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  git_blob_rawcontent (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  git_buf_dispose (TYPE_1__*) ; 
- int /*<<< orphan*/  git_revparse_single (int /*<<< orphan*/ **,int /*<<< orphan*/ ,char*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int git_object ;
+struct TYPE_4__ {int ptr; int member_0; } ;
+typedef TYPE_1__ git_buf ;
+typedef int git_blob ;
+
+
+ int ALL_CRLF_TEXT_AS_CRLF ;
+ int ALL_CRLF_TEXT_RAW ;
+ int cl_assert_equal_s (int ,int ) ;
+ int cl_git_pass (int ) ;
+ int g_repo ;
+ int git_blob_filter (TYPE_1__*,int *,char*,int *) ;
+ int git_blob_free (int *) ;
+ int git_blob_rawcontent (int *) ;
+ int git_buf_dispose (TYPE_1__*) ;
+ int git_revparse_single (int **,int ,char*) ;
 
 void test_filter_blob__all_crlf(void)
 {
-	git_blob *blob;
-	git_buf buf = { 0 };
+ git_blob *blob;
+ git_buf buf = { 0 };
 
-	cl_git_pass(git_revparse_single(
-		(git_object **)&blob, g_repo, "a9a2e891")); /* all-crlf */
+ cl_git_pass(git_revparse_single(
+  (git_object **)&blob, g_repo, "a9a2e891"));
 
-	cl_assert_equal_s(ALL_CRLF_TEXT_RAW, git_blob_rawcontent(blob));
+ cl_assert_equal_s(ALL_CRLF_TEXT_RAW, git_blob_rawcontent(blob));
 
-	cl_git_pass(git_blob_filter(&buf, blob, "file.bin", NULL));
+ cl_git_pass(git_blob_filter(&buf, blob, "file.bin", ((void*)0)));
 
-	cl_assert_equal_s(ALL_CRLF_TEXT_RAW, buf.ptr);
+ cl_assert_equal_s(ALL_CRLF_TEXT_RAW, buf.ptr);
 
-	cl_git_pass(git_blob_filter(&buf, blob, "file.crlf", NULL));
+ cl_git_pass(git_blob_filter(&buf, blob, "file.crlf", ((void*)0)));
 
-	/* in this case, raw content has crlf in it already */
-	cl_assert_equal_s(ALL_CRLF_TEXT_AS_CRLF, buf.ptr);
 
-	cl_git_pass(git_blob_filter(&buf, blob, "file.lf", NULL));
+ cl_assert_equal_s(ALL_CRLF_TEXT_AS_CRLF, buf.ptr);
 
-	/* we never convert CRLF -> LF on platforms that have LF */
-	cl_assert_equal_s(ALL_CRLF_TEXT_AS_CRLF, buf.ptr);
+ cl_git_pass(git_blob_filter(&buf, blob, "file.lf", ((void*)0)));
 
-	git_buf_dispose(&buf);
-	git_blob_free(blob);
+
+ cl_assert_equal_s(ALL_CRLF_TEXT_AS_CRLF, buf.ptr);
+
+ git_buf_dispose(&buf);
+ git_blob_free(blob);
 }

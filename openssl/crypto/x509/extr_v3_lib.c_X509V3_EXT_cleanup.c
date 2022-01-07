@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/ * ext_list ; 
- int /*<<< orphan*/  ext_list_free ; 
- int /*<<< orphan*/  sk_X509V3_EXT_METHOD_pop_free (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+ int * ext_list ;
+ int ext_list_free ;
+ int sk_X509V3_EXT_METHOD_pop_free (int *,int ) ;
 
 void X509V3_EXT_cleanup(void)
 {
     sk_X509V3_EXT_METHOD_pop_free(ext_list, ext_list_free);
-    ext_list = NULL;
+    ext_list = ((void*)0);
 }

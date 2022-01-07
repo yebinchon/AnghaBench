@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {scalar_t__ text_addr; scalar_t__ text_end; char* name; } ;
 struct so_list {struct so_list* next; TYPE_1__ som_solib; } ;
-typedef  scalar_t__ CORE_ADDR ;
+typedef scalar_t__ CORE_ADDR ;
 
-/* Variables and functions */
- struct so_list* so_list_head ; 
+
+ struct so_list* so_list_head ;
 
 char *
 som_solib_address (CORE_ADDR addr)
@@ -25,16 +25,16 @@ som_solib_address (CORE_ADDR addr)
 
   while (so)
     {
-      /* Is this address within this shlib's text range?  If so,
-         return the shlib's name.
-       */
-      if ((addr >= so->som_solib.text_addr) && (addr <= so->som_solib.text_end))
-	return so->som_solib.name;
 
-      /* Nope, keep looking... */
+
+
+      if ((addr >= so->som_solib.text_addr) && (addr <= so->som_solib.text_end))
+ return so->som_solib.name;
+
+
       so = so->next;
     }
 
-  /* No, we couldn't prove that the address is within a shlib. */
-  return NULL;
+
+  return ((void*)0);
 }

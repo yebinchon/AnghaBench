@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct timeline {TYPE_1__* demuxer; } ;
 struct dirent {char* d_name; } ;
-struct bstr {int /*<<< orphan*/  len; } ;
+struct bstr {int len; } ;
 struct TYPE_2__ {char* filename; } ;
-typedef  int /*<<< orphan*/  DIR ;
+typedef int DIR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MP_ERR (struct timeline*,char*) ; 
- int /*<<< orphan*/  MP_WARN (struct timeline*,char*,...) ; 
- struct bstr bstr0 (char*) ; 
- scalar_t__ bstr_case_startswith (struct bstr,struct bstr) ; 
- struct bstr bstr_strip_ext (struct bstr) ; 
- int /*<<< orphan*/  bstrdup0 (void*,struct bstr) ; 
- int /*<<< orphan*/  closedir (int /*<<< orphan*/ *) ; 
- char* mp_basename (char*) ; 
- struct bstr mp_dirname (char*) ; 
- char* mp_path_join_bstr (void*,struct bstr,struct bstr) ; 
- int /*<<< orphan*/ * opendir (int /*<<< orphan*/ ) ; 
- struct dirent* readdir (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  talloc_free (void*) ; 
- void* talloc_new (int /*<<< orphan*/ *) ; 
- scalar_t__ try_open (struct timeline*,char*) ; 
+
+ int MP_ERR (struct timeline*,char*) ;
+ int MP_WARN (struct timeline*,char*,...) ;
+ struct bstr bstr0 (char*) ;
+ scalar_t__ bstr_case_startswith (struct bstr,struct bstr) ;
+ struct bstr bstr_strip_ext (struct bstr) ;
+ int bstrdup0 (void*,struct bstr) ;
+ int closedir (int *) ;
+ char* mp_basename (char*) ;
+ struct bstr mp_dirname (char*) ;
+ char* mp_path_join_bstr (void*,struct bstr,struct bstr) ;
+ int * opendir (int ) ;
+ struct dirent* readdir (int *) ;
+ int talloc_free (void*) ;
+ void* talloc_new (int *) ;
+ scalar_t__ try_open (struct timeline*,char*) ;
 
 __attribute__((used)) static bool open_source(struct timeline *tl, char *filename)
 {
-    void *ctx = talloc_new(NULL);
-    bool res = false;
+    void *ctx = talloc_new(((void*)0));
+    bool res = 0;
 
     struct bstr dirname = mp_dirname(tl->demuxer->filename);
 
@@ -47,15 +47,15 @@ __attribute__((used)) static bool open_source(struct timeline *tl, char *filenam
     } else {
         char *fullname = mp_path_join_bstr(ctx, dirname, base_filename);
         if (try_open(tl, fullname)) {
-            res = true;
+            res = 1;
             goto out;
         }
     }
 
-    // Try an audio file with the same name as the .cue file (but different
-    // extension).
-    // Rationale: this situation happens easily if the audio file or both files
-    // are renamed.
+
+
+
+
 
     struct bstr cuefile =
         bstr_strip_ext(bstr0(mp_basename(tl->demuxer->filename)));
@@ -72,7 +72,7 @@ __attribute__((used)) static bool open_source(struct timeline *tl, char *filenam
                     "in .cue file found, trying with '%s' instead!\n",
                     dename0);
             if (try_open(tl, mp_path_join_bstr(ctx, dirname, dename))) {
-                res = true;
+                res = 1;
                 break;
             }
         }

@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct api_msg {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  net_apimsg (struct api_msg*) ; 
+
+ int net_apimsg (struct api_msg*) ;
 
 __attribute__((used)) static void apimsg_post(struct api_msg *msg)
 {
-	net_apimsg(msg);
+ net_apimsg(msg);
 }

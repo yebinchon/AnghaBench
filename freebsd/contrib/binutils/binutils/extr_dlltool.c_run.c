@@ -1,35 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int PEXECUTE_ONE ; 
- int PEXECUTE_SEARCH ; 
- scalar_t__ WEXITSTATUS (int) ; 
- scalar_t__ WIFEXITED (int) ; 
- scalar_t__ WIFSIGNALED (int) ; 
- char* WTERMSIG (int) ; 
- char* _ (char*) ; 
- int /*<<< orphan*/  abort () ; 
- char** alloca (int) ; 
- char* choose_temp_base () ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  fatal (char*,char*) ; 
- int /*<<< orphan*/  inform (char*,...) ; 
- int /*<<< orphan*/  non_fatal (char*,char const*,scalar_t__) ; 
- int pexecute (char const*,char* const*,int /*<<< orphan*/ ,char*,char**,char**,int) ; 
- int /*<<< orphan*/  program_name ; 
- int pwait (int,int*,int /*<<< orphan*/ ) ; 
- char* strerror (int /*<<< orphan*/ ) ; 
+ int PEXECUTE_ONE ;
+ int PEXECUTE_SEARCH ;
+ scalar_t__ WEXITSTATUS (int) ;
+ scalar_t__ WIFEXITED (int) ;
+ scalar_t__ WIFSIGNALED (int) ;
+ char* WTERMSIG (int) ;
+ char* _ (char*) ;
+ int abort () ;
+ char** alloca (int) ;
+ char* choose_temp_base () ;
+ int errno ;
+ int fatal (char*,char*) ;
+ int inform (char*,...) ;
+ int non_fatal (char*,char const*,scalar_t__) ;
+ int pexecute (char const*,char* const*,int ,char*,char**,char**,int) ;
+ int program_name ;
+ int pwait (int,int*,int ) ;
+ char* strerror (int ) ;
 
 __attribute__((used)) static void
 run (const char *what, char *args)
@@ -43,7 +35,7 @@ run (const char *what, char *args)
 
   inform ("run: %s %s", what, args);
 
-  /* Count the args */
+
   i = 0;
   for (s = args; *s; s++)
     if (*s == ' ')
@@ -56,18 +48,18 @@ run (const char *what, char *args)
   while (1)
     {
       while (*s == ' ')
-	++s;
+ ++s;
       argv[i++] = s;
       while (*s != ' ' && *s != 0)
-	s++;
+ s++;
       if (*s == 0)
-	break;
+ break;
       *s++ = 0;
     }
-  argv[i++] = NULL;
+  argv[i++] = ((void*)0);
 
   pid = pexecute (argv[0], (char * const *) argv, program_name, temp_base,
-		  &errmsg_fmt, &errmsg_arg, PEXECUTE_ONE | PEXECUTE_SEARCH);
+    &errmsg_fmt, &errmsg_arg, PEXECUTE_ONE | PEXECUTE_SEARCH);
 
   if (pid == -1)
     {
@@ -80,20 +72,20 @@ run (const char *what, char *args)
 
   if (pid == -1)
     {
-      /* xgettext:c-format */
+
       fatal (_("wait: %s"), strerror (errno));
     }
   else if (WIFSIGNALED (wait_status))
     {
-      /* xgettext:c-format */
+
       fatal (_("subprocess got fatal signal %d"), WTERMSIG (wait_status));
     }
   else if (WIFEXITED (wait_status))
     {
       if (WEXITSTATUS (wait_status) != 0)
-	/* xgettext:c-format */
-	non_fatal (_("%s exited with status %d"),
-		   what, WEXITSTATUS (wait_status));
+
+ non_fatal (_("%s exited with status %d"),
+     what, WEXITSTATUS (wait_status));
     }
   else
     abort ();

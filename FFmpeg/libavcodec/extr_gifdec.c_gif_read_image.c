@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_8__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t uint8_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
-struct TYPE_14__ {int /*<<< orphan*/  buffer; } ;
+
+
+typedef struct TYPE_14__ TYPE_8__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+typedef size_t uint8_t ;
+typedef int uint32_t ;
+struct TYPE_14__ {int buffer; } ;
 struct TYPE_13__ {int* linesize; int height; scalar_t__* data; } ;
-struct TYPE_12__ {int transparent_color_index; int screen_width; int screen_height; scalar_t__ gce_prev_disposal; int gce_l; int gce_t; int gce_w; int gce_h; scalar_t__ gce_disposal; size_t* idx_line; TYPE_8__ gb; int /*<<< orphan*/  lzw; int /*<<< orphan*/  avctx; int /*<<< orphan*/ * stored_img; int /*<<< orphan*/  stored_img_size; int /*<<< orphan*/  bg_color; int /*<<< orphan*/  stored_bg_color; int /*<<< orphan*/  trans_color; scalar_t__ has_global_palette; scalar_t__ keyframe; int /*<<< orphan*/ * global_palette; int /*<<< orphan*/ * local_palette; } ;
-typedef  TYPE_1__ GifState ;
-typedef  TYPE_2__ AVFrame ;
+struct TYPE_12__ {int transparent_color_index; int screen_width; int screen_height; scalar_t__ gce_prev_disposal; int gce_l; int gce_t; int gce_w; int gce_h; scalar_t__ gce_disposal; size_t* idx_line; TYPE_8__ gb; int lzw; int avctx; int * stored_img; int stored_img_size; int bg_color; int stored_bg_color; int trans_color; scalar_t__ has_global_palette; scalar_t__ keyframe; int * global_palette; int * local_palette; } ;
+typedef TYPE_1__ GifState ;
+typedef TYPE_2__ AVFrame ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_LOG_WARNING ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  FF_LZW_GIF ; 
- scalar_t__ GCE_DISPOSAL_BACKGROUND ; 
- scalar_t__ GCE_DISPOSAL_NONE ; 
- scalar_t__ GCE_DISPOSAL_RESTORE ; 
- int /*<<< orphan*/  av_fast_malloc (int /*<<< orphan*/ **,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,...) ; 
- int bytestream2_get_bytes_left (TYPE_8__*) ; 
- int bytestream2_get_byteu (TYPE_8__*) ; 
- int bytestream2_get_le16u (TYPE_8__*) ; 
- int /*<<< orphan*/  bytestream2_skipu (TYPE_8__*,int) ; 
- int /*<<< orphan*/  ff_dlog (int /*<<< orphan*/ ,char*,int,int,int,int) ; 
- int ff_lzw_decode (int /*<<< orphan*/ ,size_t*,int) ; 
- int ff_lzw_decode_init (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int ff_lzw_decode_tail (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gif_copy_img_rect (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int,int,int,int) ; 
- int /*<<< orphan*/  gif_fill (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gif_fill_rect (TYPE_2__*,int /*<<< orphan*/ ,int,int,int,int) ; 
- int /*<<< orphan*/  gif_read_palette (TYPE_1__*,int /*<<< orphan*/ *,int) ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ int AV_LOG_WARNING ;
+ int ENOMEM ;
+ int FF_LZW_GIF ;
+ scalar_t__ GCE_DISPOSAL_BACKGROUND ;
+ scalar_t__ GCE_DISPOSAL_NONE ;
+ scalar_t__ GCE_DISPOSAL_RESTORE ;
+ int av_fast_malloc (int **,int *,int) ;
+ int av_log (int ,int ,char*,...) ;
+ int bytestream2_get_bytes_left (TYPE_8__*) ;
+ int bytestream2_get_byteu (TYPE_8__*) ;
+ int bytestream2_get_le16u (TYPE_8__*) ;
+ int bytestream2_skipu (TYPE_8__*,int) ;
+ int ff_dlog (int ,char*,int,int,int,int) ;
+ int ff_lzw_decode (int ,size_t*,int) ;
+ int ff_lzw_decode_init (int ,int,int ,int,int ) ;
+ int ff_lzw_decode_tail (int ) ;
+ int gif_copy_img_rect (int *,int *,int,int,int,int,int) ;
+ int gif_fill (TYPE_2__*,int ) ;
+ int gif_fill_rect (TYPE_2__*,int ,int,int,int,int) ;
+ int gif_read_palette (TYPE_1__*,int *,int) ;
 
 __attribute__((used)) static int gif_read_image(GifState *s, AVFrame *frame)
 {
@@ -54,15 +54,15 @@ __attribute__((used)) static int gif_read_image(GifState *s, AVFrame *frame)
     int ret;
     uint8_t *idx;
 
-    /* At least 9 bytes of Image Descriptor. */
+
     if (bytestream2_get_bytes_left(&s->gb) < 9)
         return AVERROR_INVALIDDATA;
 
-    left   = bytestream2_get_le16u(&s->gb);
-    top    = bytestream2_get_le16u(&s->gb);
-    width  = bytestream2_get_le16u(&s->gb);
+    left = bytestream2_get_le16u(&s->gb);
+    top = bytestream2_get_le16u(&s->gb);
+    width = bytestream2_get_le16u(&s->gb);
     height = bytestream2_get_le16u(&s->gb);
-    flags  = bytestream2_get_byteu(&s->gb);
+    flags = bytestream2_get_byteu(&s->gb);
     is_interleaved = flags & 0x40;
     has_local_palette = flags & 0x80;
     bits_per_pixel = (flags & 0x07) + 1;
@@ -88,16 +88,16 @@ __attribute__((used)) static int gif_read_image(GifState *s, AVFrame *frame)
 
     if (s->keyframe) {
         if (s->transparent_color_index == -1 && s->has_global_palette) {
-            /* transparency wasn't set before the first frame, fill with background color */
+
             gif_fill(frame, s->bg_color);
         } else {
-            /* otherwise fill with transparent color.
-             * this is necessary since by default picture filled with 0x80808080. */
+
+
             gif_fill(frame, s->trans_color);
         }
     }
 
-    /* verify that all the image is inside the screen dimensions */
+
     if (!width || width > s->screen_width) {
         av_log(s->avctx, AV_LOG_WARNING, "Invalid image width: %d, truncating.\n", width);
         width = s->screen_width;
@@ -115,7 +115,7 @@ __attribute__((used)) static int gif_read_image(GifState *s, AVFrame *frame)
         return AVERROR_INVALIDDATA;
     }
     if (left + width > s->screen_width) {
-        /* width must be kept around to avoid lzw vs line desync */
+
         pw = s->screen_width - left;
         av_log(s->avctx, AV_LOG_WARNING, "Image too wide by %d, truncating.\n",
                left + width - s->screen_width);
@@ -123,13 +123,13 @@ __attribute__((used)) static int gif_read_image(GifState *s, AVFrame *frame)
         pw = width;
     }
     if (top + height > s->screen_height) {
-        /* we don't care about the extra invisible lines */
+
         av_log(s->avctx, AV_LOG_WARNING, "Image too high by %d, truncating.\n",
                top + height - s->screen_height);
         height = s->screen_height - top;
     }
 
-    /* process disposal method */
+
     if (s->gce_prev_disposal == GCE_DISPOSAL_BACKGROUND) {
         gif_fill_rect(frame, s->stored_bg_color, s->gce_l, s->gce_t, s->gce_w, s->gce_h);
     } else if (s->gce_prev_disposal == GCE_DISPOSAL_RESTORE) {
@@ -140,8 +140,8 @@ __attribute__((used)) static int gif_read_image(GifState *s, AVFrame *frame)
     s->gce_prev_disposal = s->gce_disposal;
 
     if (s->gce_disposal != GCE_DISPOSAL_NONE) {
-        s->gce_l = left;  s->gce_t = top;
-        s->gce_w = pw;    s->gce_h = height;
+        s->gce_l = left; s->gce_t = top;
+        s->gce_w = pw; s->gce_h = height;
 
         if (s->gce_disposal == GCE_DISPOSAL_BACKGROUND) {
             if (s->transparent_color_index >= 0)
@@ -158,11 +158,11 @@ __attribute__((used)) static int gif_read_image(GifState *s, AVFrame *frame)
         }
     }
 
-    /* Expect at least 2 bytes: 1 for lzw code size and 1 for block size. */
+
     if (bytestream2_get_bytes_left(&s->gb) < 2)
         return AVERROR_INVALIDDATA;
 
-    /* now get the image data */
+
     code_size = bytestream2_get_byteu(&s->gb);
     if ((ret = ff_lzw_decode_init(s->lzw, code_size, s->gb.buffer,
                                   bytestream2_get_bytes_left(&s->gb), FF_LZW_GIF)) < 0) {
@@ -170,7 +170,7 @@ __attribute__((used)) static int gif_read_image(GifState *s, AVFrame *frame)
         return ret;
     }
 
-    /* read all the image */
+
     linesize = frame->linesize[0] / sizeof(uint32_t);
     ptr1 = (uint32_t *)frame->data[0] + top * linesize + left;
     ptr = ptr1;
@@ -209,7 +209,7 @@ __attribute__((used)) static int gif_read_image(GifState *s, AVFrame *frame)
                 break;
             }
             while (y1 >= height) {
-                y1  = 4 >> pass;
+                y1 = 4 >> pass;
                 ptr = ptr1 + linesize * y1;
                 pass++;
             }
@@ -219,12 +219,12 @@ __attribute__((used)) static int gif_read_image(GifState *s, AVFrame *frame)
     }
 
  decode_tail:
-    /* read the garbage data until end marker is found */
+
     lzwed_len = ff_lzw_decode_tail(s->lzw);
     bytestream2_skipu(&s->gb, lzwed_len);
 
-    /* Graphic Control Extension's scope is single frame.
-     * Remove its influence. */
+
+
     s->transparent_color_index = -1;
     s->gce_disposal = GCE_DISPOSAL_NONE;
 

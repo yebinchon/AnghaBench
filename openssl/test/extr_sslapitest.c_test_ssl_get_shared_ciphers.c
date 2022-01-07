@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buf ;
-struct TYPE_2__ {int /*<<< orphan*/  shared; int /*<<< orphan*/ * srvrtls13ciphers; int /*<<< orphan*/  srvrciphers; int /*<<< orphan*/ * clnttls13ciphers; int /*<<< orphan*/  clntciphers; int /*<<< orphan*/  maxprot; } ;
-typedef  int /*<<< orphan*/  SSL_CTX ;
-typedef  int /*<<< orphan*/  SSL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SSL_CTX_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SSL_CTX_set_cipher_list (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SSL_CTX_set_ciphersuites (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SSL_ERROR_NONE ; 
- int /*<<< orphan*/  SSL_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SSL_get_shared_ciphers (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  TEST_info (char*,char*) ; 
- int /*<<< orphan*/  TEST_int_eq (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_ptr (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_true (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TLS1_VERSION ; 
- int /*<<< orphan*/  TLS_client_method () ; 
- int /*<<< orphan*/  TLS_server_method () ; 
- int /*<<< orphan*/  cert ; 
- int /*<<< orphan*/  create_ssl_connection (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  create_ssl_ctx_pair (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **,int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  create_ssl_objects (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  privkey ; 
- TYPE_1__* shared_ciphers_data ; 
- int /*<<< orphan*/  strcmp (char*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int buf ;
+struct TYPE_2__ {int shared; int * srvrtls13ciphers; int srvrciphers; int * clnttls13ciphers; int clntciphers; int maxprot; } ;
+typedef int SSL_CTX ;
+typedef int SSL ;
+
+
+ int SSL_CTX_free (int *) ;
+ int SSL_CTX_set_cipher_list (int *,int ) ;
+ int SSL_CTX_set_ciphersuites (int *,int *) ;
+ int SSL_ERROR_NONE ;
+ int SSL_free (int *) ;
+ int SSL_get_shared_ciphers (int *,char*,int) ;
+ int TEST_info (char*,char*) ;
+ int TEST_int_eq (int ,int ) ;
+ int TEST_ptr (int ) ;
+ int TEST_true (int ) ;
+ int TLS1_VERSION ;
+ int TLS_client_method () ;
+ int TLS_server_method () ;
+ int cert ;
+ int create_ssl_connection (int *,int *,int ) ;
+ int create_ssl_ctx_pair (int ,int ,int ,int ,int **,int **,int ,int ) ;
+ int create_ssl_objects (int *,int *,int **,int **,int *,int *) ;
+ int privkey ;
+ TYPE_1__* shared_ciphers_data ;
+ int strcmp (char*,int ) ;
 
 __attribute__((used)) static int test_ssl_get_shared_ciphers(int tst)
 {
-    SSL_CTX *cctx = NULL, *sctx = NULL;
-    SSL *clientssl = NULL, *serverssl = NULL;
+    SSL_CTX *cctx = ((void*)0), *sctx = ((void*)0);
+    SSL *clientssl = ((void*)0), *serverssl = ((void*)0);
     int testresult = 0;
     char buf[1024];
 
@@ -54,19 +54,19 @@ __attribute__((used)) static int test_ssl_get_shared_ciphers(int tst)
 
     if (!TEST_true(SSL_CTX_set_cipher_list(cctx,
                                         shared_ciphers_data[tst].clntciphers))
-            || (shared_ciphers_data[tst].clnttls13ciphers != NULL
+            || (shared_ciphers_data[tst].clnttls13ciphers != ((void*)0)
                 && !TEST_true(SSL_CTX_set_ciphersuites(cctx,
                                     shared_ciphers_data[tst].clnttls13ciphers)))
             || !TEST_true(SSL_CTX_set_cipher_list(sctx,
                                         shared_ciphers_data[tst].srvrciphers))
-            || (shared_ciphers_data[tst].srvrtls13ciphers != NULL
+            || (shared_ciphers_data[tst].srvrtls13ciphers != ((void*)0)
                 && !TEST_true(SSL_CTX_set_ciphersuites(sctx,
                                     shared_ciphers_data[tst].srvrtls13ciphers))))
         goto end;
 
 
     if (!TEST_true(create_ssl_objects(sctx, cctx, &serverssl, &clientssl,
-                                             NULL, NULL))
+                                             ((void*)0), ((void*)0)))
             || !TEST_true(create_ssl_connection(serverssl, clientssl,
                                                 SSL_ERROR_NONE)))
         goto end;

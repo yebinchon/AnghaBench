@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int ssize_t ;
-struct TYPE_3__ {int offset; int /*<<< orphan*/  fd; } ;
-typedef  TYPE_1__ FILE ;
 
-/* Variables and functions */
- int write (int /*<<< orphan*/ ,void const*,size_t) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int ssize_t ;
+struct TYPE_3__ {int offset; int fd; } ;
+typedef TYPE_1__ FILE ;
+
+
+ int write (int ,void const*,size_t) ;
 
 size_t
 fwrite(const void *ptr, size_t size, size_t count, FILE *stream)
 {
-	ssize_t w;
+ ssize_t w;
 
-	if (stream == NULL || ptr == NULL)
-		return (0);
-	w = write(stream->fd, ptr, size * count);
-	if (w == -1)
-		return (0);
+ if (stream == ((void*)0) || ptr == ((void*)0))
+  return (0);
+ w = write(stream->fd, ptr, size * count);
+ if (w == -1)
+  return (0);
 
-	stream->offset += w;
-	return ((size_t)w);
+ stream->offset += w;
+ return ((size_t)w);
 }

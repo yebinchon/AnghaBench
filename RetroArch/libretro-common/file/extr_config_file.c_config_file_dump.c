@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct config_include_list {char* path; struct config_include_list* next; } ;
-struct config_entry_list {char* key; char* value; struct config_entry_list* next; int /*<<< orphan*/  readonly; } ;
+struct config_entry_list {char* key; char* value; struct config_entry_list* next; int readonly; } ;
 struct TYPE_3__ {struct config_entry_list* entries; struct config_include_list* includes; } ;
-typedef  TYPE_1__ config_file_t ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef TYPE_1__ config_file_t ;
+typedef int FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  config_sort_compare_func ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*,char*,...) ; 
- struct config_entry_list* merge_sort_linked_list (struct config_entry_list*,int /*<<< orphan*/ ) ; 
+
+ int config_sort_compare_func ;
+ int fprintf (int *,char*,char*,...) ;
+ struct config_entry_list* merge_sort_linked_list (struct config_entry_list*,int ) ;
 
 void config_file_dump(config_file_t *conf, FILE *file, bool sort)
 {
-   struct config_entry_list       *list = NULL;
+   struct config_entry_list *list = ((void*)0);
    struct config_include_list *includes = conf->includes;
 
    while (includes)

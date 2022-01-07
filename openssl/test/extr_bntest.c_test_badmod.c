@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  BN_MONT_CTX ;
-typedef  int /*<<< orphan*/  BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BN_MONT_CTX_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BN_MONT_CTX_new () ; 
- int /*<<< orphan*/  BN_MONT_CTX_set (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BN_div (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BN_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_mod_exp (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BN_mod_exp_mont (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_mod_exp_mont_consttime (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_mod_mul (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * BN_new () ; 
- int /*<<< orphan*/  BN_set_word (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  BN_value_one () ; 
- int /*<<< orphan*/  BN_zero (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ERR_clear_error () ; 
- int /*<<< orphan*/  TEST_false (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_ptr (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TEST_true (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ctx ; 
+
+
+
+typedef int BN_MONT_CTX ;
+typedef int BIGNUM ;
+
+
+ int BN_MONT_CTX_free (int *) ;
+ int * BN_MONT_CTX_new () ;
+ int BN_MONT_CTX_set (int *,int *,int ) ;
+ int BN_div (int *,int *,int ,int *,int ) ;
+ int BN_free (int *) ;
+ int BN_mod_exp (int *,int ,int ,int *,int ) ;
+ int BN_mod_exp_mont (int *,int ,int ,int *,int ,int *) ;
+ int BN_mod_exp_mont_consttime (int *,int ,int ,int *,int ,int *) ;
+ int BN_mod_mul (int *,int ,int ,int *,int ) ;
+ int * BN_new () ;
+ int BN_set_word (int *,int) ;
+ int BN_value_one () ;
+ int BN_zero (int *) ;
+ int ERR_clear_error () ;
+ int TEST_false (int ) ;
+ int TEST_ptr (int *) ;
+ int TEST_true (int ) ;
+ int ctx ;
 
 __attribute__((used)) static int test_badmod(void)
 {
-    BIGNUM *a = NULL, *b = NULL, *zero = NULL;
-    BN_MONT_CTX *mont = NULL;
+    BIGNUM *a = ((void*)0), *b = ((void*)0), *zero = ((void*)0);
+    BN_MONT_CTX *mont = ((void*)0);
     int st = 0;
 
     if (!TEST_ptr(a = BN_new())
@@ -59,12 +59,12 @@ __attribute__((used)) static int test_badmod(void)
     ERR_clear_error();
 
     if (!TEST_false(BN_mod_exp_mont(a, BN_value_one(), BN_value_one(),
-                                    zero, ctx, NULL)))
+                                    zero, ctx, ((void*)0))))
         goto err;
     ERR_clear_error();
 
     if (!TEST_false(BN_mod_exp_mont_consttime(a, BN_value_one(), BN_value_one(),
-                                              zero, ctx, NULL)))
+                                              zero, ctx, ((void*)0))))
         goto err;
     ERR_clear_error();
 
@@ -72,7 +72,7 @@ __attribute__((used)) static int test_badmod(void)
         goto err;
     ERR_clear_error();
 
-    /* Some operations also may not be used with an even modulus. */
+
     if (!TEST_true(BN_set_word(b, 16)))
         goto err;
 
@@ -81,12 +81,12 @@ __attribute__((used)) static int test_badmod(void)
     ERR_clear_error();
 
     if (!TEST_false(BN_mod_exp_mont(a, BN_value_one(), BN_value_one(),
-                                    b, ctx, NULL)))
+                                    b, ctx, ((void*)0))))
         goto err;
     ERR_clear_error();
 
     if (!TEST_false(BN_mod_exp_mont_consttime(a, BN_value_one(), BN_value_one(),
-                                              b, ctx, NULL)))
+                                              b, ctx, ((void*)0))))
         goto err;
     ERR_clear_error();
 

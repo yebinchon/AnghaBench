@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char WCHAR ;
+
+
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef char WCHAR ;
 struct TYPE_10__ {double member_0; double member_1; } ;
 struct TYPE_9__ {double member_0; double member_1; double member_2; double member_3; } ;
-typedef  int /*<<< orphan*/  HENHMETAFILE ;
-typedef  int /*<<< orphan*/  HDC ;
-typedef  int GpStatus ;
-typedef  int /*<<< orphan*/  GpSolidFill ;
-typedef  TYPE_1__ GpRectF ;
-typedef  TYPE_2__ GpPointF ;
-typedef  int /*<<< orphan*/  GpMetafile ;
-typedef  int /*<<< orphan*/  GpImage ;
-typedef  int /*<<< orphan*/  GpGraphics ;
-typedef  int /*<<< orphan*/  GpBrush ;
-typedef  int /*<<< orphan*/  GpBitmap ;
-typedef  int ARGB ;
+typedef int HENHMETAFILE ;
+typedef int HDC ;
+typedef int GpStatus ;
+typedef int GpSolidFill ;
+typedef TYPE_1__ GpRectF ;
+typedef TYPE_2__ GpPointF ;
+typedef int GpMetafile ;
+typedef int GpImage ;
+typedef int GpGraphics ;
+typedef int GpBrush ;
+typedef int GpBitmap ;
+typedef int ARGB ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CreateCompatibleDC (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DeleteDC (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EmfTypeEmfPlusOnly ; 
- int GdipBitmapGetPixel (int /*<<< orphan*/ *,int,int,int*) ; 
- int GdipBitmapSetPixel (int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ ) ; 
- int GdipCreateBitmapFromScan0 (int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int GdipCreateSolidFill (int,int /*<<< orphan*/ **) ; 
- int GdipDeleteBrush (int /*<<< orphan*/ *) ; 
- int GdipDeleteGraphics (int /*<<< orphan*/ *) ; 
- int GdipDisposeImage (int /*<<< orphan*/ *) ; 
- int GdipDrawImagePointsRect (int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_2__ const*,int,double,double,double,double,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int GdipFillRectangleI (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int,int,int) ; 
- int GdipGetHemfFromMetafile (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int GdipGetImageGraphicsContext (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int GdipRecordMetafile (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__ const*,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ **) ; 
- int InvalidParameter ; 
- int /*<<< orphan*/  MetafileFrameUnitPixel ; 
- int Ok ; 
- int /*<<< orphan*/  PixelFormat32bppARGB ; 
- int /*<<< orphan*/  UnitPixel ; 
- int /*<<< orphan*/  check_metafile (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,TYPE_2__ const*,TYPE_1__ const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  expect (int,int) ; 
- int /*<<< orphan*/  fillrect_records ; 
- int /*<<< orphan*/  play_metafile (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,TYPE_2__ const*,TYPE_1__ const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sync_metafile (int /*<<< orphan*/ **,char*) ; 
+
+ int CreateCompatibleDC (int ) ;
+ int DeleteDC (int ) ;
+ int EmfTypeEmfPlusOnly ;
+ int GdipBitmapGetPixel (int *,int,int,int*) ;
+ int GdipBitmapSetPixel (int *,int,int,int ) ;
+ int GdipCreateBitmapFromScan0 (int,int,int ,int ,int *,int **) ;
+ int GdipCreateSolidFill (int,int **) ;
+ int GdipDeleteBrush (int *) ;
+ int GdipDeleteGraphics (int *) ;
+ int GdipDisposeImage (int *) ;
+ int GdipDrawImagePointsRect (int *,int *,TYPE_2__ const*,int,double,double,double,double,int ,int *,int *,int *) ;
+ int GdipFillRectangleI (int *,int *,int,int,int,int) ;
+ int GdipGetHemfFromMetafile (int *,int *) ;
+ int GdipGetImageGraphicsContext (int *,int **) ;
+ int GdipRecordMetafile (int ,int ,TYPE_1__ const*,int ,char const*,int **) ;
+ int InvalidParameter ;
+ int MetafileFrameUnitPixel ;
+ int Ok ;
+ int PixelFormat32bppARGB ;
+ int UnitPixel ;
+ int check_metafile (int *,int ,char*,TYPE_2__ const*,TYPE_1__ const*,int ) ;
+ int expect (int,int) ;
+ int fillrect_records ;
+ int play_metafile (int *,int *,int ,char*,TYPE_2__ const*,TYPE_1__ const*,int ) ;
+ int sync_metafile (int **,char*) ;
 
 __attribute__((used)) static void test_fillrect(void)
 {
@@ -102,7 +102,7 @@ __attribute__((used)) static void test_fillrect(void)
 
     sync_metafile(&metafile, "fillrect.emf");
 
-    stat = GdipCreateBitmapFromScan0(100, 100, 0, PixelFormat32bppARGB, NULL, &bitmap);
+    stat = GdipCreateBitmapFromScan0(100, 100, 0, PixelFormat32bppARGB, ((void*)0), &bitmap);
     expect(Ok, stat);
 
     stat = GdipGetImageGraphicsContext((GpImage*)bitmap, &graphics);
@@ -135,7 +135,7 @@ __attribute__((used)) static void test_fillrect(void)
     expect(Ok, stat);
 
     stat = GdipDrawImagePointsRect(graphics, (GpImage*)metafile, dst_points, 3,
-        0.0, 0.0, 100.0, 100.0, UnitPixel, NULL, NULL, NULL);
+        0.0, 0.0, 100.0, 100.0, UnitPixel, ((void*)0), ((void*)0), ((void*)0));
     expect(Ok, stat);
 
     stat = GdipBitmapGetPixel(bitmap, 15, 15, &color);

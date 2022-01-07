@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct onenand_chip {int /*<<< orphan*/  chip_lock; int /*<<< orphan*/  wq; int /*<<< orphan*/  state; } ;
+
+
+
+
+struct onenand_chip {int chip_lock; int wq; int state; } ;
 struct mtd_info {struct onenand_chip* priv; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FL_READY ; 
- int /*<<< orphan*/  spin_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  wake_up (int /*<<< orphan*/ *) ; 
+
+ int FL_READY ;
+ int spin_lock (int *) ;
+ int spin_unlock (int *) ;
+ int wake_up (int *) ;
 
 __attribute__((used)) static void onenand_release_device(struct mtd_info *mtd)
 {
-	struct onenand_chip *this = mtd->priv;
+ struct onenand_chip *this = mtd->priv;
 
-	/* Release the chip */
-	spin_lock(&this->chip_lock);
-	this->state = FL_READY;
-	wake_up(&this->wq);
-	spin_unlock(&this->chip_lock);
+
+ spin_lock(&this->chip_lock);
+ this->state = FL_READY;
+ wake_up(&this->wq);
+ spin_unlock(&this->chip_lock);
 }

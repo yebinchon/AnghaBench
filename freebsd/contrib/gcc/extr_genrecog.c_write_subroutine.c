@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct decision_head {TYPE_1__* first; } ;
-typedef  enum routine_type { ____Placeholder_routine_type } routine_type ;
+typedef enum routine_type { ____Placeholder_routine_type } routine_type ;
 struct TYPE_2__ {int subroutine_number; } ;
 
-/* Variables and functions */
- scalar_t__ IS_SPLIT (int) ; 
-#define  PEEPHOLE2 130 
-#define  RECOG 129 
-#define  SPLIT 128 
- int max_depth ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  sprintf (char*,char*,int) ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
- int /*<<< orphan*/  write_tree (struct decision_head*,char*,int,int) ; 
+
+ scalar_t__ IS_SPLIT (int) ;
+
+
+
+ int max_depth ;
+ int printf (char*,...) ;
+ int sprintf (char*,char*,int) ;
+ int strcpy (char*,char*) ;
+ int write_tree (struct decision_head*,char*,int,int) ;
 
 __attribute__((used)) static void
 write_subroutine (struct decision_head *head, enum routine_type type)
@@ -38,26 +38,26 @@ write_subroutine (struct decision_head *head, enum routine_type type)
 
   if (subfunction)
     sprintf (extension, "_%d", subfunction);
-  else if (type == RECOG)
+  else if (type == 129)
     extension[0] = '\0';
   else
     strcpy (extension, "_insns");
 
   switch (type)
     {
-    case RECOG:
-      printf ("%sint\n\
-recog%s (rtx x0 ATTRIBUTE_UNUSED,\n\trtx insn ATTRIBUTE_UNUSED,\n\tint *pnum_clobbers ATTRIBUTE_UNUSED)\n", s_or_e, extension);
+    case 129:
+      printf ("%sint\nrecog%s (rtx x0 ATTRIBUTE_UNUSED,\n\trtx insn ATTRIBUTE_UNUSED,\n\tint *pnum_clobbers ATTRIBUTE_UNUSED)\n", s_or_e, extension);
+
       break;
-    case SPLIT:
-      printf ("%srtx\n\
-split%s (rtx x0 ATTRIBUTE_UNUSED, rtx insn ATTRIBUTE_UNUSED)\n",
-	      s_or_e, extension);
+    case 128:
+      printf ("%srtx\nsplit%s (rtx x0 ATTRIBUTE_UNUSED, rtx insn ATTRIBUTE_UNUSED)\n",
+
+       s_or_e, extension);
       break;
-    case PEEPHOLE2:
-      printf ("%srtx\n\
-peephole2%s (rtx x0 ATTRIBUTE_UNUSED,\n\trtx insn ATTRIBUTE_UNUSED,\n\tint *_pmatch_len ATTRIBUTE_UNUSED)\n",
-	      s_or_e, extension);
+    case 130:
+      printf ("%srtx\npeephole2%s (rtx x0 ATTRIBUTE_UNUSED,\n\trtx insn ATTRIBUTE_UNUSED,\n\tint *_pmatch_len ATTRIBUTE_UNUSED)\n",
+
+       s_or_e, extension);
       break;
     }
 

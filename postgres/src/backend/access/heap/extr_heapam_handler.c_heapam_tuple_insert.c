@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int /*<<< orphan*/  tts_tid; int /*<<< orphan*/  tts_tableOid; } ;
-typedef  TYPE_1__ TupleTableSlot ;
-struct TYPE_9__ {int /*<<< orphan*/  t_self; int /*<<< orphan*/  t_tableOid; } ;
-typedef  int /*<<< orphan*/  Relation ;
-typedef  TYPE_2__* HeapTuple ;
-typedef  int /*<<< orphan*/  CommandId ;
-typedef  int /*<<< orphan*/  BulkInsertState ;
 
-/* Variables and functions */
- TYPE_2__* ExecFetchSlotHeapTuple (TYPE_1__*,int,int*) ; 
- int /*<<< orphan*/  ItemPointerCopy (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RelationGetRelid (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  heap_insert (int /*<<< orphan*/ ,TYPE_2__*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pfree (TYPE_2__*) ; 
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int tts_tid; int tts_tableOid; } ;
+typedef TYPE_1__ TupleTableSlot ;
+struct TYPE_9__ {int t_self; int t_tableOid; } ;
+typedef int Relation ;
+typedef TYPE_2__* HeapTuple ;
+typedef int CommandId ;
+typedef int BulkInsertState ;
+
+
+ TYPE_2__* ExecFetchSlotHeapTuple (TYPE_1__*,int,int*) ;
+ int ItemPointerCopy (int *,int *) ;
+ int RelationGetRelid (int ) ;
+ int heap_insert (int ,TYPE_2__*,int ,int,int ) ;
+ int pfree (TYPE_2__*) ;
 
 __attribute__((used)) static void
 heapam_tuple_insert(Relation relation, TupleTableSlot *slot, CommandId cid,
-					int options, BulkInsertState bistate)
+     int options, BulkInsertState bistate)
 {
-	bool		shouldFree = true;
-	HeapTuple	tuple = ExecFetchSlotHeapTuple(slot, true, &shouldFree);
+ bool shouldFree = 1;
+ HeapTuple tuple = ExecFetchSlotHeapTuple(slot, 1, &shouldFree);
 
-	/* Update the tuple with table oid */
-	slot->tts_tableOid = RelationGetRelid(relation);
-	tuple->t_tableOid = slot->tts_tableOid;
 
-	/* Perform the insertion, and copy the resulting ItemPointer */
-	heap_insert(relation, tuple, cid, options, bistate);
-	ItemPointerCopy(&tuple->t_self, &slot->tts_tid);
+ slot->tts_tableOid = RelationGetRelid(relation);
+ tuple->t_tableOid = slot->tts_tableOid;
 
-	if (shouldFree)
-		pfree(tuple);
+
+ heap_insert(relation, tuple, cid, options, bistate);
+ ItemPointerCopy(&tuple->t_self, &slot->tts_tid);
+
+ if (shouldFree)
+  pfree(tuple);
 }

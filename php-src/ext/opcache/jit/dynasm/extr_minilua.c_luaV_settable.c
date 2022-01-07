@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
-struct TYPE_5__ {scalar_t__ flags; int /*<<< orphan*/  metatable; } ;
-typedef  TYPE_1__ Table ;
-typedef  int /*<<< orphan*/  const TValue ;
-typedef  int /*<<< orphan*/  const* StkId ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TM_NEWINDEX ; 
- int /*<<< orphan*/  callTM (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  const* fasttm (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_1__* hvalue (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  luaC_barriert (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  luaG_runerror (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  luaG_typeerror (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,char*) ; 
- int /*<<< orphan*/  const* luaH_set (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  const* luaT_gettmbyobj (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  setobj (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*) ; 
- scalar_t__ ttisfunction (int /*<<< orphan*/  const*) ; 
- scalar_t__ ttisnil (int /*<<< orphan*/  const*) ; 
- scalar_t__ ttistable (int /*<<< orphan*/  const*) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int lua_State ;
+struct TYPE_5__ {scalar_t__ flags; int metatable; } ;
+typedef TYPE_1__ Table ;
+typedef int const TValue ;
+typedef int const* StkId ;
+
+
+ int TM_NEWINDEX ;
+ int callTM (int *,int const*,int const*,int const*,int const*) ;
+ int const* fasttm (int *,int ,int ) ;
+ TYPE_1__* hvalue (int const*) ;
+ int luaC_barriert (int *,TYPE_1__*,int const*) ;
+ int luaG_runerror (int *,char*) ;
+ int luaG_typeerror (int *,int const*,char*) ;
+ int const* luaH_set (int *,TYPE_1__*,int const*) ;
+ int const* luaT_gettmbyobj (int *,int const*,int ) ;
+ int setobj (int *,int const*,int const*) ;
+ scalar_t__ ttisfunction (int const*) ;
+ scalar_t__ ttisnil (int const*) ;
+ scalar_t__ ttistable (int const*) ;
 
 __attribute__((used)) static void luaV_settable(lua_State*L,const TValue*t,TValue*key,StkId val){
 int loop;
@@ -41,7 +41,7 @@ if(ttistable(t)){
 Table*h=hvalue(t);
 TValue*oldval=luaH_set(L,h,key);
 if(!ttisnil(oldval)||
-(tm=fasttm(L,h->metatable,TM_NEWINDEX))==NULL){
+(tm=fasttm(L,h->metatable,TM_NEWINDEX))==((void*)0)){
 setobj(L,oldval,val);
 h->flags=0;
 luaC_barriert(L,h,val);

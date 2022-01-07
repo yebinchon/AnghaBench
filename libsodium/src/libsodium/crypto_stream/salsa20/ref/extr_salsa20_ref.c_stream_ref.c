@@ -1,19 +1,11 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  crypto_core_salsa20 (unsigned char*,unsigned char*,unsigned char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sodium_memzero (unsigned char*,int) ; 
+ int crypto_core_salsa20 (unsigned char*,unsigned char*,unsigned char*,int *) ;
+ int sodium_memzero (unsigned char*,int) ;
 
 __attribute__((used)) static int
 stream_ref(unsigned char *c, unsigned long long clen, const unsigned char *n,
@@ -22,8 +14,8 @@ stream_ref(unsigned char *c, unsigned long long clen, const unsigned char *n,
     unsigned char in[16];
     unsigned char block[64];
     unsigned char kcopy[32];
-    unsigned int  i;
-    unsigned int  u;
+    unsigned int i;
+    unsigned int u;
 
     if (!clen) {
         return 0;
@@ -38,7 +30,7 @@ stream_ref(unsigned char *c, unsigned long long clen, const unsigned char *n,
         in[i] = 0;
     }
     while (clen >= 64) {
-        crypto_core_salsa20(c, in, kcopy, NULL);
+        crypto_core_salsa20(c, in, kcopy, ((void*)0));
         u = 1;
         for (i = 8; i < 16; i++) {
             u += (unsigned int) in[i];
@@ -49,7 +41,7 @@ stream_ref(unsigned char *c, unsigned long long clen, const unsigned char *n,
         c += 64;
     }
     if (clen) {
-        crypto_core_salsa20(block, in, kcopy, NULL);
+        crypto_core_salsa20(block, in, kcopy, ((void*)0));
         for (i = 0; i < (unsigned int) clen; i++) {
             c[i] = block[i];
         }

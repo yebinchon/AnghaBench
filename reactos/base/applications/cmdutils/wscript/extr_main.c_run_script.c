@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  IActiveScriptParse ;
-typedef  int /*<<< orphan*/  IActiveScript ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  BSTR ;
 
-/* Variables and functions */
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IActiveScriptParse_ParseScriptText (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IActiveScript_SetScriptState (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int SCRIPTITEM_ISVISIBLE ; 
- int /*<<< orphan*/  SCRIPTSTATE_STARTED ; 
- int SCRIPTTEXT_HOSTMANAGESSOURCE ; 
- int /*<<< orphan*/  SysFreeString (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WINE_FIXME (char*,...) ; 
- int /*<<< orphan*/  get_script_str (int /*<<< orphan*/  const*) ; 
+
+
+
+typedef int WCHAR ;
+typedef int IActiveScriptParse ;
+typedef int IActiveScript ;
+typedef int HRESULT ;
+typedef int BSTR ;
+
+
+ scalar_t__ FAILED (int ) ;
+ int IActiveScriptParse_ParseScriptText (int *,int ,int *,int *,int *,int,int,int,int *,int *) ;
+ int IActiveScript_SetScriptState (int *,int ) ;
+ int SCRIPTITEM_ISVISIBLE ;
+ int SCRIPTSTATE_STARTED ;
+ int SCRIPTTEXT_HOSTMANAGESSOURCE ;
+ int SysFreeString (int ) ;
+ int WINE_FIXME (char*,...) ;
+ int get_script_str (int const*) ;
 
 __attribute__((used)) static void run_script(const WCHAR *filename, IActiveScript *script, IActiveScriptParse *parser)
 {
@@ -38,8 +38,8 @@ __attribute__((used)) static void run_script(const WCHAR *filename, IActiveScrip
         return;
     }
 
-    hres = IActiveScriptParse_ParseScriptText(parser, text, NULL, NULL, NULL, 1, 1,
-            SCRIPTTEXT_HOSTMANAGESSOURCE|SCRIPTITEM_ISVISIBLE, NULL, NULL);
+    hres = IActiveScriptParse_ParseScriptText(parser, text, ((void*)0), ((void*)0), ((void*)0), 1, 1,
+            SCRIPTTEXT_HOSTMANAGESSOURCE|SCRIPTITEM_ISVISIBLE, ((void*)0), ((void*)0));
     SysFreeString(text);
     if(FAILED(hres)) {
         WINE_FIXME("ParseScriptText failed: %08x\n", hres);

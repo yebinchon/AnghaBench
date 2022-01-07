@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3 ;
-typedef  int /*<<< orphan*/  Tcl_Obj ;
-typedef  int /*<<< orphan*/  Tcl_Interp ;
-struct TYPE_2__ {int pWalHook; int /*<<< orphan*/ * db; int /*<<< orphan*/ * interp; } ;
-typedef  TYPE_1__ SqliteDb ;
 
-/* Variables and functions */
- int SQLITE_OK ; 
- scalar_t__ TCL_OK ; 
- int /*<<< orphan*/  Tcl_BackgroundError (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Tcl_DecrRefCount (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * Tcl_DuplicateObj (int) ; 
- scalar_t__ Tcl_EvalObjEx (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ Tcl_GetIntFromObj (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  Tcl_GetObjResult (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Tcl_IncrRefCount (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Tcl_ListObjAppendElement (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Tcl_NewIntObj (int) ; 
- int /*<<< orphan*/  Tcl_NewStringObj (char const*,int) ; 
- int /*<<< orphan*/  assert (int) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int sqlite3 ;
+typedef int Tcl_Obj ;
+typedef int Tcl_Interp ;
+struct TYPE_2__ {int pWalHook; int * db; int * interp; } ;
+typedef TYPE_1__ SqliteDb ;
+
+
+ int SQLITE_OK ;
+ scalar_t__ TCL_OK ;
+ int Tcl_BackgroundError (int *) ;
+ int Tcl_DecrRefCount (int *) ;
+ int * Tcl_DuplicateObj (int) ;
+ scalar_t__ Tcl_EvalObjEx (int *,int *,int ) ;
+ scalar_t__ Tcl_GetIntFromObj (int *,int ,int*) ;
+ int Tcl_GetObjResult (int *) ;
+ int Tcl_IncrRefCount (int *) ;
+ int Tcl_ListObjAppendElement (int *,int *,int ) ;
+ int Tcl_NewIntObj (int) ;
+ int Tcl_NewStringObj (char const*,int) ;
+ int assert (int) ;
 
 __attribute__((used)) static int DbWalHandler(
   void *clientData,

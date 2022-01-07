@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  zdev_t ;
-typedef  int /*<<< orphan*/  zbuf_t ;
-typedef  int /*<<< orphan*/  u16_t ;
-struct TYPE_2__ {int /*<<< orphan*/  frequency; } ;
 
-/* Variables and functions */
- int ZM_WLAN_EID_DS ; 
- TYPE_1__* wd ; 
- int zfChFreqToNum (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  zmw_get_wlan_dev (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  zmw_tx_buf_writeb (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int zdev_t ;
+typedef int zbuf_t ;
+typedef int u16_t ;
+struct TYPE_2__ {int frequency; } ;
+
+
+ int ZM_WLAN_EID_DS ;
+ TYPE_1__* wd ;
+ int zfChFreqToNum (int ,int *) ;
+ int zmw_get_wlan_dev (int *) ;
+ int zmw_tx_buf_writeb (int *,int *,int ,int) ;
 
 u16_t zfMmAddIeDs(zdev_t* dev, zbuf_t* buf, u16_t offset)
 {
     zmw_get_wlan_dev(dev);
 
-    /* Element ID */
+
     zmw_tx_buf_writeb(dev, buf, offset++, ZM_WLAN_EID_DS);
 
-    /* Element Length */
+
     zmw_tx_buf_writeb(dev, buf, offset++, 1);
 
-    /* Information : DS */
+
     zmw_tx_buf_writeb(dev, buf, offset++,
-                         zfChFreqToNum(wd->frequency, NULL));
+                         zfChFreqToNum(wd->frequency, ((void*)0)));
 
     return offset;
 }

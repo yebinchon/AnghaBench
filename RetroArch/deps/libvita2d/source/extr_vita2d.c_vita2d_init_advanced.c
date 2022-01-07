@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  SCE_GXM_MULTISAMPLE_NONE ; 
- int vita2d_init_internal (unsigned int,int /*<<< orphan*/ ) ; 
+ int SCE_GXM_MULTISAMPLE_NONE ;
+ int vita2d_init_internal (unsigned int,int ) ;
 
 int vita2d_init_advanced(unsigned int temp_pool_size)
 {
-	return vita2d_init_internal(temp_pool_size, SCE_GXM_MULTISAMPLE_NONE);
+ return vita2d_init_internal(temp_pool_size, SCE_GXM_MULTISAMPLE_NONE);
 }

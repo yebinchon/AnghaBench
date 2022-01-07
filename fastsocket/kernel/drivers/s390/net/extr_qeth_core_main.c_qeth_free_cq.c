@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/ * out_bufstates; int /*<<< orphan*/ * c_q; int /*<<< orphan*/  no_in_queues; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int * out_bufstates; int * c_q; int no_in_queues; } ;
 struct qeth_card {TYPE_1__ qdio; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  kfree (int /*<<< orphan*/ *) ; 
+
+ int kfree (int *) ;
 
 __attribute__((used)) static inline void qeth_free_cq(struct qeth_card *card)
 {
-	if (card->qdio.c_q) {
-		--card->qdio.no_in_queues;
-		kfree(card->qdio.c_q);
-		card->qdio.c_q = NULL;
-	}
-	kfree(card->qdio.out_bufstates);
-	card->qdio.out_bufstates = NULL;
+ if (card->qdio.c_q) {
+  --card->qdio.no_in_queues;
+  kfree(card->qdio.c_q);
+  card->qdio.c_q = ((void*)0);
+ }
+ kfree(card->qdio.out_bufstates);
+ card->qdio.out_bufstates = ((void*)0);
 }

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WORD ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- scalar_t__ CSTR_EQUAL ; 
- scalar_t__ CompareStringA (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int,char*,int) ; 
- int /*<<< orphan*/  GetThreadLocale () ; 
- char HIBYTE (int /*<<< orphan*/ ) ; 
- scalar_t__ IsDBCSLeadByte (char) ; 
- char LOBYTE (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int WORD ;
+typedef int DWORD ;
+typedef scalar_t__ BOOL ;
+
+
+ scalar_t__ CSTR_EQUAL ;
+ scalar_t__ CompareStringA (int ,int ,char*,int,char*,int) ;
+ int GetThreadLocale () ;
+ char HIBYTE (int ) ;
+ scalar_t__ IsDBCSLeadByte (char) ;
+ char LOBYTE (int ) ;
 
 __attribute__((used)) static BOOL COMCTL32_ChrCmpHelperA(WORD ch1, WORD ch2, DWORD dwFlags)
 {

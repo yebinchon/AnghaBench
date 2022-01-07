@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  register_archiver (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  zip_archiver ; 
+ int register_archiver (int *) ;
+ int zip_archiver ;
 
 void init_zip_archiver(void)
 {
-	register_archiver(&zip_archiver);
+ register_archiver(&zip_archiver);
 }

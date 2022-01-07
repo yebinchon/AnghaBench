@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct timespec {scalar_t__ tv_nsec; scalar_t__ tv_sec; } ;
-struct TYPE_2__ {int /*<<< orphan*/  lock; struct timespec xtime; int /*<<< orphan*/  wall_to_monotonic; } ;
+struct TYPE_2__ {int lock; struct timespec xtime; int wall_to_monotonic; } ;
 
-/* Variables and functions */
- int EINVAL ; 
- int /*<<< orphan*/  clock_was_set () ; 
- TYPE_1__ timekeeper ; 
- int /*<<< orphan*/  timekeeping_forward_now () ; 
- int /*<<< orphan*/  timekeeping_update (int) ; 
- int /*<<< orphan*/  timespec_sub (int /*<<< orphan*/ ,struct timespec) ; 
- int /*<<< orphan*/  timespec_valid_strict (struct timespec const*) ; 
- int /*<<< orphan*/  write_seqlock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  write_sequnlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
+
+ int EINVAL ;
+ int clock_was_set () ;
+ TYPE_1__ timekeeper ;
+ int timekeeping_forward_now () ;
+ int timekeeping_update (int) ;
+ int timespec_sub (int ,struct timespec) ;
+ int timespec_valid_strict (struct timespec const*) ;
+ int write_seqlock_irqsave (int *,unsigned long) ;
+ int write_sequnlock_irqrestore (int *,unsigned long) ;
 
 int do_settimeofday(const struct timespec *tv)
 {
-	struct timespec ts_delta;
-	unsigned long flags;
+ struct timespec ts_delta;
+ unsigned long flags;
 
-	if (!timespec_valid_strict(tv))
-		return -EINVAL;
+ if (!timespec_valid_strict(tv))
+  return -EINVAL;
 
-	write_seqlock_irqsave(&timekeeper.lock, flags);
+ write_seqlock_irqsave(&timekeeper.lock, flags);
 
-	timekeeping_forward_now();
+ timekeeping_forward_now();
 
-	ts_delta.tv_sec = tv->tv_sec - timekeeper.xtime.tv_sec;
-	ts_delta.tv_nsec = tv->tv_nsec - timekeeper.xtime.tv_nsec;
-	timekeeper.wall_to_monotonic =
-			timespec_sub(timekeeper.wall_to_monotonic, ts_delta);
+ ts_delta.tv_sec = tv->tv_sec - timekeeper.xtime.tv_sec;
+ ts_delta.tv_nsec = tv->tv_nsec - timekeeper.xtime.tv_nsec;
+ timekeeper.wall_to_monotonic =
+   timespec_sub(timekeeper.wall_to_monotonic, ts_delta);
 
-	timekeeper.xtime = *tv;
-	timekeeping_update(true);
+ timekeeper.xtime = *tv;
+ timekeeping_update(1);
 
-	write_sequnlock_irqrestore(&timekeeper.lock, flags);
+ write_sequnlock_irqrestore(&timekeeper.lock, flags);
 
-	/* signal hrtimers about time change */
-	clock_was_set();
 
-	return 0;
+ clock_was_set();
+
+ return 0;
 }

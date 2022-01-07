@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct nn_parse_context {char* data; char** last_option_usage; struct nn_option* options; } ;
 struct nn_option {char* longname; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  nn_error_ambiguous_option (struct nn_parse_context*) ; 
- int /*<<< orphan*/  nn_error_unknown_long_option (struct nn_parse_context*) ; 
- scalar_t__ nn_get_arg (struct nn_parse_context*) ; 
- scalar_t__ nn_has_arg (struct nn_option*) ; 
- int /*<<< orphan*/  nn_option_error (char*,struct nn_parse_context*,int) ; 
- int /*<<< orphan*/  nn_process_option (struct nn_parse_context*,int,char*) ; 
+
+ int nn_error_ambiguous_option (struct nn_parse_context*) ;
+ int nn_error_unknown_long_option (struct nn_parse_context*) ;
+ scalar_t__ nn_get_arg (struct nn_parse_context*) ;
+ scalar_t__ nn_has_arg (struct nn_option*) ;
+ int nn_option_error (char*,struct nn_parse_context*,int) ;
+ int nn_process_option (struct nn_parse_context*,int,char*) ;
 
 __attribute__((used)) static void nn_parse_long_option (struct nn_parse_context *ctx)
 {
@@ -39,15 +39,15 @@ __attribute__((used)) static void nn_parse_long_option (struct nn_parse_context 
         if (!opt->longname)
             break;
         for (a = opt->longname, b = arg;; ++a, ++b) {
-            if (*b == 0 || *b == '=') {  /* End of option on command-line */
+            if (*b == 0 || *b == '=') {
                 cur_prefix = a - opt->longname;
-                if (!*a) {  /* Matches end of option name */
+                if (!*a) {
                     best_match = i;
                     longest_prefix = cur_prefix;
                     goto finish;
                 }
                 if (cur_prefix == longest_prefix) {
-                    best_match = -1;  /* Ambiguity */
+                    best_match = -1;
                 } else if (cur_prefix > longest_prefix) {
                     best_match = i;
                     longest_prefix = cur_prefix;
@@ -76,7 +76,7 @@ finish:
                     nn_option_error ("requires an argument", ctx, best_match);
                 }
             } else {
-                nn_process_option (ctx, best_match, NULL);
+                nn_process_option (ctx, best_match, ((void*)0));
             }
         }
     } else if (longest_prefix > 0) {

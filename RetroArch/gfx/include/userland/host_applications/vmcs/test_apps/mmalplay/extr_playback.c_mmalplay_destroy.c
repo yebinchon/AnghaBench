@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {int time_setup; int time_enable; int time_disable; int /*<<< orphan*/  name; } ;
-struct TYPE_9__ {unsigned int connection_num; double decoded_frames; double time_playback; unsigned int component_num; TYPE_1__* component; int /*<<< orphan*/  event; TYPE_4__** connection; int /*<<< orphan*/  uri; } ;
-struct TYPE_8__ {int time_cleanup; int time_setup; int /*<<< orphan*/  name; int /*<<< orphan*/  comp; } ;
-typedef  TYPE_2__ MMALPLAY_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOG_INFO (char*,...) ; 
- int /*<<< orphan*/  LOG_TRACE (char*,TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (TYPE_2__*) ; 
- int /*<<< orphan*/  mmal_component_destroy (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mmal_connection_destroy (TYPE_4__*) ; 
- int /*<<< orphan*/  mmal_connection_disable (TYPE_4__*) ; 
- void* vcos_getmicrosecs () ; 
- int /*<<< orphan*/  vcos_semaphore_delete (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_10__ {int time_setup; int time_enable; int time_disable; int name; } ;
+struct TYPE_9__ {unsigned int connection_num; double decoded_frames; double time_playback; unsigned int component_num; TYPE_1__* component; int event; TYPE_4__** connection; int uri; } ;
+struct TYPE_8__ {int time_cleanup; int time_setup; int name; int comp; } ;
+typedef TYPE_2__ MMALPLAY_T ;
+
+
+ int LOG_INFO (char*,...) ;
+ int LOG_TRACE (char*,TYPE_2__*,int ) ;
+ int free (TYPE_2__*) ;
+ int mmal_component_destroy (int ) ;
+ int mmal_connection_destroy (TYPE_4__*) ;
+ int mmal_connection_disable (TYPE_4__*) ;
+ void* vcos_getmicrosecs () ;
+ int vcos_semaphore_delete (int *) ;
 
 void mmalplay_destroy(MMALPLAY_T *ctx)
 {
@@ -34,7 +34,7 @@ void mmalplay_destroy(MMALPLAY_T *ctx)
 
    LOG_TRACE("%p, %s", ctx, ctx->uri);
 
-   /* Disable connections */
+
    for (i = ctx->connection_num; i; i--)
       mmal_connection_disable(ctx->connection[i-1]);
 
@@ -52,11 +52,11 @@ void mmalplay_destroy(MMALPLAY_T *ctx)
                (int)(ctx->connection[i]->time_disable / 1000));
    }
 
-   /* Destroy connections */
+
    for (i = ctx->connection_num; i; i--)
       mmal_connection_destroy(ctx->connection[i-1]);
 
-   /* Destroy components */
+
    for (i = ctx->component_num; i; i--)
    {
       ctx->component[i-1].time_cleanup = vcos_getmicrosecs();

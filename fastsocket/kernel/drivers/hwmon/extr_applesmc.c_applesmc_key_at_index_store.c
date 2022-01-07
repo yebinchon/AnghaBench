@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct device_attribute {int dummy; } ;
 struct device {int dummy; } ;
-typedef  size_t ssize_t ;
+typedef size_t ssize_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  applesmc_lock ; 
- int /*<<< orphan*/  key_at_index ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  simple_strtoul (char const*,int /*<<< orphan*/ *,int) ; 
+
+ int applesmc_lock ;
+ int key_at_index ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
+ int simple_strtoul (char const*,int *,int) ;
 
 __attribute__((used)) static ssize_t applesmc_key_at_index_store(struct device *dev,
-	struct device_attribute *attr, const char *sysfsbuf, size_t count)
+ struct device_attribute *attr, const char *sysfsbuf, size_t count)
 {
-	mutex_lock(&applesmc_lock);
+ mutex_lock(&applesmc_lock);
 
-	key_at_index = simple_strtoul(sysfsbuf, NULL, 10);
+ key_at_index = simple_strtoul(sysfsbuf, ((void*)0), 10);
 
-	mutex_unlock(&applesmc_lock);
+ mutex_unlock(&applesmc_lock);
 
-	return count;
+ return count;
 }

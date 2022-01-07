@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int started; int /*<<< orphan*/  audio_port; } ;
-typedef  TYPE_1__ ps3_audio_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cellAudioPortStart (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int started; int audio_port; } ;
+typedef TYPE_1__ ps3_audio_t ;
+
+
+ int cellAudioPortStart (int ) ;
 
 __attribute__((used)) static bool ps3_audio_start(void *data, bool is_shutdown)
 {
@@ -23,7 +23,7 @@ __attribute__((used)) static bool ps3_audio_start(void *data, bool is_shutdown)
    if (!aud->started)
    {
       cellAudioPortStart(aud->audio_port);
-      aud->started = true;
+      aud->started = 1;
    }
-   return true;
+   return 1;
 }

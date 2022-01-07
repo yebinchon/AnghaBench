@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_9__ {int wFormatTag; int nChannels; int nSamplesPerSec; int nAvgBytesPerSec; int nBlockAlign; int wBitsPerSample; int cbSize; } ;
 struct TYPE_7__ {int wValidBitsPerSample; } ;
-struct TYPE_6__ {int /*<<< orphan*/  member_0; } ;
-struct TYPE_8__ {TYPE_4__ Format; int /*<<< orphan*/  SubFormat; int /*<<< orphan*/  dwChannelMask; TYPE_2__ Samples; TYPE_1__ member_0; } ;
-typedef  TYPE_3__ WAVEFORMATPCMEX ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  IAudioData ;
-typedef  scalar_t__ HRESULT ;
+struct TYPE_6__ {int member_0; } ;
+struct TYPE_8__ {TYPE_4__ Format; int SubFormat; int dwChannelMask; TYPE_2__ Samples; TYPE_1__ member_0; } ;
+typedef TYPE_3__ WAVEFORMATPCMEX ;
+typedef int IUnknown ;
+typedef int IAudioData ;
+typedef scalar_t__ HRESULT ;
 
-/* Variables and functions */
- scalar_t__ E_INVALIDARG ; 
- scalar_t__ E_POINTER ; 
- scalar_t__ FAILED (scalar_t__) ; 
- scalar_t__ IAudioData_GetFormat (int /*<<< orphan*/ *,TYPE_4__*) ; 
- int /*<<< orphan*/  IAudioData_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IAudioData_SetFormat (int /*<<< orphan*/ *,TYPE_4__*) ; 
- int /*<<< orphan*/  IID_IAudioData ; 
- scalar_t__ IUnknown_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IUnknown_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  KSAUDIO_SPEAKER_STEREO ; 
- int /*<<< orphan*/  KSDATAFORMAT_SUBTYPE_PCM ; 
- scalar_t__ S_OK ; 
- int WAVE_FORMAT_EXTENSIBLE ; 
- int WAVE_FORMAT_PCM ; 
- int /*<<< orphan*/ * create_audio_data () ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
- int /*<<< orphan*/  skip (char*) ; 
+
+ scalar_t__ E_INVALIDARG ;
+ scalar_t__ E_POINTER ;
+ scalar_t__ FAILED (scalar_t__) ;
+ scalar_t__ IAudioData_GetFormat (int *,TYPE_4__*) ;
+ int IAudioData_Release (int *) ;
+ scalar_t__ IAudioData_SetFormat (int *,TYPE_4__*) ;
+ int IID_IAudioData ;
+ scalar_t__ IUnknown_QueryInterface (int *,int *,void**) ;
+ int IUnknown_Release (int *) ;
+ int KSAUDIO_SPEAKER_STEREO ;
+ int KSDATAFORMAT_SUBTYPE_PCM ;
+ scalar_t__ S_OK ;
+ int WAVE_FORMAT_EXTENSIBLE ;
+ int WAVE_FORMAT_PCM ;
+ int * create_audio_data () ;
+ int ok (int,char*,scalar_t__) ;
+ int skip (char*) ;
 
 __attribute__((used)) static void test_audiodata_set_format(void)
 {
     IUnknown *unknown = create_audio_data();
-    IAudioData *audio_data = NULL;
+    IAudioData *audio_data = ((void*)0);
     WAVEFORMATPCMEX wave_format = {{0}};
 
     HRESULT result;
@@ -53,12 +53,12 @@ __attribute__((used)) static void test_audiodata_set_format(void)
     result = IUnknown_QueryInterface(unknown, &IID_IAudioData, (void **)&audio_data);
     if (FAILED(result))
     {
-        /* test_audiodata_query_interface handles this case */
+
         skip("No IAudioData\n");
         goto out_unknown;
     }
 
-    result = IAudioData_SetFormat(audio_data, NULL);
+    result = IAudioData_SetFormat(audio_data, ((void*)0));
     ok(E_POINTER == result, "got 0x%08x\n", result);
 
     wave_format.Format.wFormatTag = WAVE_FORMAT_EXTENSIBLE;

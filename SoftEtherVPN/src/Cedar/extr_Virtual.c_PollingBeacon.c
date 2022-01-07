@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {scalar_t__ LastSendBeacon; } ;
-typedef  TYPE_1__ VH ;
+typedef TYPE_1__ VH ;
 
-/* Variables and functions */
- scalar_t__ BEACON_SEND_INTERVAL ; 
- int /*<<< orphan*/  SendBeacon (TYPE_1__*) ; 
- scalar_t__ Tick64 () ; 
+
+ scalar_t__ BEACON_SEND_INTERVAL ;
+ int SendBeacon (TYPE_1__*) ;
+ scalar_t__ Tick64 () ;
 
 void PollingBeacon(VH *v)
 {
-	// Validate arguments
-	if (v == NULL)
-	{
-		return;
-	}
 
-	if (v->LastSendBeacon == 0 ||
-		((v->LastSendBeacon + BEACON_SEND_INTERVAL) <= Tick64()))
-	{
-		v->LastSendBeacon = Tick64();
+ if (v == ((void*)0))
+ {
+  return;
+ }
 
-		SendBeacon(v);
-	}
+ if (v->LastSendBeacon == 0 ||
+  ((v->LastSendBeacon + BEACON_SEND_INTERVAL) <= Tick64()))
+ {
+  v->LastSendBeacon = Tick64();
+
+  SendBeacon(v);
+ }
 }

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int vector_id; int timestamp; int coord_id; } ;
-typedef  TYPE_1__ weights_cyclic_buffer_en_t ;
+typedef TYPE_1__ weights_cyclic_buffer_en_t ;
 
-/* Variables and functions */
- TYPE_1__* CC ; 
- unsigned int WEIGHTS_CB_CACHE_SIZE ; 
+
+ TYPE_1__* CC ;
+ unsigned int WEIGHTS_CB_CACHE_SIZE ;
 
 __attribute__((used)) static int cyclic_buffer_cache_store (int vector_id, int coord_id, int timestamp) {
   unsigned int h = (vector_id * 63617 + coord_id) * 63617 + timestamp;

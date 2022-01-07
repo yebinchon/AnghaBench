@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  iv ;
-typedef  int /*<<< orphan*/  cbc_out ;
-typedef  int /*<<< orphan*/  cbc_in ;
-typedef  int BF_LONG ;
-typedef  int /*<<< orphan*/  BF_KEY ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BF_DECRYPT ; 
- int /*<<< orphan*/  BF_ENCRYPT ; 
- int /*<<< orphan*/  BF_cbc_encrypt (unsigned char*,unsigned char*,int,int /*<<< orphan*/ *,unsigned char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BF_set_key (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_mem_eq (unsigned char*,int,scalar_t__,int) ; 
- scalar_t__ cbc_data ; 
- int /*<<< orphan*/  cbc_iv ; 
- int /*<<< orphan*/  cbc_key ; 
- scalar_t__ cbc_ok ; 
- int /*<<< orphan*/  memcpy (unsigned char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  memset (unsigned char*,int /*<<< orphan*/ ,int) ; 
- int strlen (scalar_t__) ; 
+
+
+
+typedef int iv ;
+typedef int cbc_out ;
+typedef int cbc_in ;
+typedef int BF_LONG ;
+typedef int BF_KEY ;
+
+
+ int BF_DECRYPT ;
+ int BF_ENCRYPT ;
+ int BF_cbc_encrypt (unsigned char*,unsigned char*,int,int *,unsigned char*,int ) ;
+ int BF_set_key (int *,int,int ) ;
+ int TEST_mem_eq (unsigned char*,int,scalar_t__,int) ;
+ scalar_t__ cbc_data ;
+ int cbc_iv ;
+ int cbc_key ;
+ scalar_t__ cbc_ok ;
+ int memcpy (unsigned char*,int ,int) ;
+ int memset (unsigned char*,int ,int) ;
+ int strlen (scalar_t__) ;
 
 __attribute__((used)) static int test_bf_cbc(void)
 {

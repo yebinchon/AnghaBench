@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  ISDIGIT (char) ; 
- char* darwin_macosx_version_min ; 
- int /*<<< orphan*/  error (char*,char*) ; 
- scalar_t__ strncmp (char*,char*,int) ; 
+ int ISDIGIT (char) ;
+ char* darwin_macosx_version_min ;
+ int error (char*,char*) ;
+ scalar_t__ strncmp (char*,char*,int) ;
 
 __attribute__((used)) static const char *
 version_as_macro (void)
@@ -30,11 +22,11 @@ version_as_macro (void)
   if (darwin_macosx_version_min[4] != '\0')
     {
       if (darwin_macosx_version_min[4] != '.')
-	goto fail;
+ goto fail;
       if (! ISDIGIT (darwin_macosx_version_min[5]))
-	goto fail;
+ goto fail;
       if (darwin_macosx_version_min[6] != '\0')
-	goto fail;
+ goto fail;
       result[3] = darwin_macosx_version_min[5];
     }
   else
@@ -44,6 +36,6 @@ version_as_macro (void)
 
  fail:
   error ("Unknown value %qs of -mmacosx-version-min",
-	 darwin_macosx_version_min);
+  darwin_macosx_version_min);
   return "1000";
 }

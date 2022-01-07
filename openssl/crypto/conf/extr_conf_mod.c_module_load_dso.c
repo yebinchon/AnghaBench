@@ -1,67 +1,67 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  conf_init_func ;
-typedef  int /*<<< orphan*/  conf_finish_func ;
-typedef  int /*<<< orphan*/  DSO ;
-typedef  int /*<<< orphan*/  CONF_MODULE ;
-typedef  int /*<<< orphan*/  CONF ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CONF_F_MODULE_LOAD_DSO ; 
- int CONF_R_ERROR_LOADING_DSO ; 
- int CONF_R_MISSING_INIT_FUNCTION ; 
- int /*<<< orphan*/  CONFerr (int /*<<< orphan*/ ,int) ; 
- scalar_t__ DSO_bind_func (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DSO_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * DSO_load (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DSO_mod_finish_name ; 
- int /*<<< orphan*/  DSO_mod_init_name ; 
- int /*<<< orphan*/  ERR_add_error_data (int,char*,char const*,char*,char const*) ; 
- int /*<<< orphan*/  ERR_clear_error () ; 
- char* NCONF_get_string (int /*<<< orphan*/  const*,char const*,char*) ; 
- int /*<<< orphan*/ * module_add (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int conf_init_func ;
+typedef int conf_finish_func ;
+typedef int DSO ;
+typedef int CONF_MODULE ;
+typedef int CONF ;
+
+
+ int CONF_F_MODULE_LOAD_DSO ;
+ int CONF_R_ERROR_LOADING_DSO ;
+ int CONF_R_MISSING_INIT_FUNCTION ;
+ int CONFerr (int ,int) ;
+ scalar_t__ DSO_bind_func (int *,int ) ;
+ int DSO_free (int *) ;
+ int * DSO_load (int *,char const*,int *,int ) ;
+ int DSO_mod_finish_name ;
+ int DSO_mod_init_name ;
+ int ERR_add_error_data (int,char*,char const*,char*,char const*) ;
+ int ERR_clear_error () ;
+ char* NCONF_get_string (int const*,char const*,char*) ;
+ int * module_add (int *,char const*,int *,int *) ;
 
 __attribute__((used)) static CONF_MODULE *module_load_dso(const CONF *cnf,
                                     const char *name, const char *value)
 {
-    DSO *dso = NULL;
+    DSO *dso = ((void*)0);
     conf_init_func *ifunc;
     conf_finish_func *ffunc;
-    const char *path = NULL;
+    const char *path = ((void*)0);
     int errcode = 0;
     CONF_MODULE *md;
 
-    /* Look for alternative path in module section */
+
     path = NCONF_get_string(cnf, value, "path");
-    if (path == NULL) {
+    if (path == ((void*)0)) {
         ERR_clear_error();
         path = name;
     }
-    dso = DSO_load(NULL, path, NULL, 0);
-    if (dso == NULL) {
+    dso = DSO_load(((void*)0), path, ((void*)0), 0);
+    if (dso == ((void*)0)) {
         errcode = CONF_R_ERROR_LOADING_DSO;
         goto err;
     }
     ifunc = (conf_init_func *)DSO_bind_func(dso, DSO_mod_init_name);
-    if (ifunc == NULL) {
+    if (ifunc == ((void*)0)) {
         errcode = CONF_R_MISSING_INIT_FUNCTION;
         goto err;
     }
     ffunc = (conf_finish_func *)DSO_bind_func(dso, DSO_mod_finish_name);
-    /* All OK, add module */
+
     md = module_add(dso, name, ifunc, ffunc);
 
-    if (md == NULL)
+    if (md == ((void*)0))
         goto err;
 
     return md;
@@ -70,5 +70,5 @@ __attribute__((used)) static CONF_MODULE *module_load_dso(const CONF *cnf,
     DSO_free(dso);
     CONFerr(CONF_F_MODULE_LOAD_DSO, errcode);
     ERR_add_error_data(4, "module=", name, ", path=", path);
-    return NULL;
+    return ((void*)0);
 }

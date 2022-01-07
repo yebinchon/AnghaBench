@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct item {struct item* right; int /*<<< orphan*/  min_index_pos; int /*<<< orphan*/  key; int /*<<< orphan*/  key_len; struct item* left; } ;
 
-/* Variables and functions */
- int NODE_TYPE_MINUS ; 
- int NODE_TYPE_PLUS ; 
- scalar_t__ NODE_TYPE_S (struct item*) ; 
- scalar_t__ NODE_TYPE_SURE ; 
- int NODE_TYPE_T (struct item*) ; 
- scalar_t__ NODE_TYPE_UNSURE ; 
- int NODE_TYPE_ZERO ; 
- int /*<<< orphan*/  __index_pos ; 
- int __tree_report (struct item*) ; 
- int /*<<< orphan*/  assert (int) ; 
- int index_load_metafile (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int key_cmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int const*) ; 
- int report_index (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct item {struct item* right; int min_index_pos; int key; int key_len; struct item* left; } ;
+
+
+ int NODE_TYPE_MINUS ;
+ int NODE_TYPE_PLUS ;
+ scalar_t__ NODE_TYPE_S (struct item*) ;
+ scalar_t__ NODE_TYPE_SURE ;
+ int NODE_TYPE_T (struct item*) ;
+ scalar_t__ NODE_TYPE_UNSURE ;
+ int NODE_TYPE_ZERO ;
+ int __index_pos ;
+ int __tree_report (struct item*) ;
+ int assert (int) ;
+ int index_load_metafile (int ,int ) ;
+ int key_cmp (int ,int ,int,int const*) ;
+ int report_index (int ,int ) ;
 
 int do_listree_iterator (struct item *T, int left_len, const int *left, int right_len, int *right) {
   if (!T) { return 0; }

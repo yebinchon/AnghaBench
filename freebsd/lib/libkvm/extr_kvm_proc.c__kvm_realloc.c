@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  program; } ;
-typedef  TYPE_1__ kvm_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  _kvm_err (TYPE_1__*,int /*<<< orphan*/ ,char*) ; 
- void* reallocf (void*,size_t) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int program; } ;
+typedef TYPE_1__ kvm_t ;
+
+
+ int _kvm_err (TYPE_1__*,int ,char*) ;
+ void* reallocf (void*,size_t) ;
 
 void *
 _kvm_realloc(kvm_t *kd, void *p, size_t n)
 {
-	void *np;
+ void *np;
 
-	np = reallocf(p, n);
-	if (np == NULL)
-		_kvm_err(kd, kd->program, "out of memory");
-	return (np);
+ np = reallocf(p, n);
+ if (np == ((void*)0))
+  _kvm_err(kd, kd->program, "out of memory");
+ return (np);
 }

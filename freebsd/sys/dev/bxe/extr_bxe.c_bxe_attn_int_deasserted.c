@@ -1,66 +1,66 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint32_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
 struct TYPE_2__ {scalar_t__ int_block; } ;
-struct bxe_softc {int attn_state; TYPE_1__ devinfo; struct attn_route* attn_group; int /*<<< orphan*/  sp_err_timeout_task; } ;
+struct bxe_softc {int attn_state; TYPE_1__ devinfo; struct attn_route* attn_group; int sp_err_timeout_task; } ;
 struct attn_route {int* sig; } ;
 
-/* Variables and functions */
- int BAR_IGU_INTMEM ; 
- int /*<<< orphan*/  BLOGD (struct bxe_softc*,int /*<<< orphan*/ ,char*,int,...) ; 
- int /*<<< orphan*/  BLOGE (struct bxe_softc*,char*) ; 
- int /*<<< orphan*/  BXE_ERR_PARITY ; 
- int /*<<< orphan*/  BXE_SET_ERROR_BIT (struct bxe_softc*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CHIP_IS_E1x (struct bxe_softc*) ; 
- int COMMAND_REG_ATTN_BITS_CLR ; 
- int /*<<< orphan*/  DBG_INTR ; 
- int /*<<< orphan*/  FALSE ; 
- int HC_REG_COMMAND_REG ; 
- scalar_t__ HW_LOCK_RESOURCE_PORT0_ATT_MASK ; 
- int IGU_CMD_ATTN_BIT_CLR_UPPER ; 
- scalar_t__ INT_BLOCK_HC ; 
- int MAX_DYNAMIC_ATTN_GRPS ; 
- int MISC_REG_AEU_AFTER_INVERT_1_FUNC_0 ; 
- int MISC_REG_AEU_AFTER_INVERT_2_FUNC_0 ; 
- int MISC_REG_AEU_AFTER_INVERT_3_FUNC_0 ; 
- int MISC_REG_AEU_AFTER_INVERT_4_FUNC_0 ; 
- int MISC_REG_AEU_AFTER_INVERT_5_FUNC_0 ; 
- int MISC_REG_AEU_MASK_ATTN_FUNC_0 ; 
- int MISC_REG_AEU_MASK_ATTN_FUNC_1 ; 
- void* REG_RD (struct bxe_softc*,int) ; 
- int /*<<< orphan*/  REG_WR (struct bxe_softc*,int,int) ; 
- int SC_PORT (struct bxe_softc*) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  bxe_acquire_alr (struct bxe_softc*) ; 
- int /*<<< orphan*/  bxe_acquire_hw_lock (struct bxe_softc*,scalar_t__) ; 
- int /*<<< orphan*/  bxe_attn_int_deasserted0 (struct bxe_softc*,int) ; 
- int /*<<< orphan*/  bxe_attn_int_deasserted1 (struct bxe_softc*,int) ; 
- int /*<<< orphan*/  bxe_attn_int_deasserted2 (struct bxe_softc*,int) ; 
- int /*<<< orphan*/  bxe_attn_int_deasserted3 (struct bxe_softc*,int) ; 
- int /*<<< orphan*/  bxe_attn_int_deasserted4 (struct bxe_softc*,int) ; 
- scalar_t__ bxe_chk_parity_attn (struct bxe_softc*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bxe_int_disable (struct bxe_softc*) ; 
- int /*<<< orphan*/  bxe_release_alr (struct bxe_softc*) ; 
- int /*<<< orphan*/  bxe_release_hw_lock (struct bxe_softc*,scalar_t__) ; 
- int hz ; 
- int /*<<< orphan*/  taskqueue_enqueue_timeout (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  taskqueue_thread ; 
+
+ int BAR_IGU_INTMEM ;
+ int BLOGD (struct bxe_softc*,int ,char*,int,...) ;
+ int BLOGE (struct bxe_softc*,char*) ;
+ int BXE_ERR_PARITY ;
+ int BXE_SET_ERROR_BIT (struct bxe_softc*,int ) ;
+ int CHIP_IS_E1x (struct bxe_softc*) ;
+ int COMMAND_REG_ATTN_BITS_CLR ;
+ int DBG_INTR ;
+ int FALSE ;
+ int HC_REG_COMMAND_REG ;
+ scalar_t__ HW_LOCK_RESOURCE_PORT0_ATT_MASK ;
+ int IGU_CMD_ATTN_BIT_CLR_UPPER ;
+ scalar_t__ INT_BLOCK_HC ;
+ int MAX_DYNAMIC_ATTN_GRPS ;
+ int MISC_REG_AEU_AFTER_INVERT_1_FUNC_0 ;
+ int MISC_REG_AEU_AFTER_INVERT_2_FUNC_0 ;
+ int MISC_REG_AEU_AFTER_INVERT_3_FUNC_0 ;
+ int MISC_REG_AEU_AFTER_INVERT_4_FUNC_0 ;
+ int MISC_REG_AEU_AFTER_INVERT_5_FUNC_0 ;
+ int MISC_REG_AEU_MASK_ATTN_FUNC_0 ;
+ int MISC_REG_AEU_MASK_ATTN_FUNC_1 ;
+ void* REG_RD (struct bxe_softc*,int) ;
+ int REG_WR (struct bxe_softc*,int,int) ;
+ int SC_PORT (struct bxe_softc*) ;
+ int TRUE ;
+ int bxe_acquire_alr (struct bxe_softc*) ;
+ int bxe_acquire_hw_lock (struct bxe_softc*,scalar_t__) ;
+ int bxe_attn_int_deasserted0 (struct bxe_softc*,int) ;
+ int bxe_attn_int_deasserted1 (struct bxe_softc*,int) ;
+ int bxe_attn_int_deasserted2 (struct bxe_softc*,int) ;
+ int bxe_attn_int_deasserted3 (struct bxe_softc*,int) ;
+ int bxe_attn_int_deasserted4 (struct bxe_softc*,int) ;
+ scalar_t__ bxe_chk_parity_attn (struct bxe_softc*,int *,int ) ;
+ int bxe_int_disable (struct bxe_softc*) ;
+ int bxe_release_alr (struct bxe_softc*) ;
+ int bxe_release_hw_lock (struct bxe_softc*,scalar_t__) ;
+ int hz ;
+ int taskqueue_enqueue_timeout (int ,int *,int) ;
+ int taskqueue_thread ;
 
 __attribute__((used)) static void
 bxe_attn_int_deasserted(struct bxe_softc *sc,
-                        uint32_t         deasserted)
+                        uint32_t deasserted)
 {
     struct attn_route attn;
     struct attn_route *group_mask;
@@ -71,19 +71,19 @@ bxe_attn_int_deasserted(struct bxe_softc *sc,
     uint32_t aeu_mask;
     uint8_t global = FALSE;
 
-    /*
-     * Need to take HW lock because MCP or other port might also
-     * try to handle this event.
-     */
+
+
+
+
     bxe_acquire_alr(sc);
 
     if (bxe_chk_parity_attn(sc, &global, TRUE)) {
-        /* XXX
-         * In case of parity errors don't handle attentions so that
-         * other function would "see" parity errors.
-         */
-        // XXX schedule a recovery task...
-        /* disable HW interrupts */
+
+
+
+
+
+
         bxe_int_disable(sc);
         BXE_SET_ERROR_BIT(sc, BXE_ERR_PARITY);
         taskqueue_enqueue_timeout(taskqueue_thread,

@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
 struct TYPE_13__ {int dwFlags; } ;
 struct TYPE_10__ {int dwFlags; } ;
 struct TYPE_12__ {TYPE_1__ ppshheader; scalar_t__ height; scalar_t__ width; } ;
 struct TYPE_11__ {scalar_t__ bottom; scalar_t__ top; scalar_t__ left; scalar_t__ right; } ;
-typedef  TYPE_2__ RECT ;
-typedef  TYPE_3__ PropSheetInfo ;
-typedef  int /*<<< orphan*/  LPPOINT ;
-typedef  TYPE_4__* LPCPROPSHEETPAGEW ;
-typedef  int /*<<< orphan*/  LPARAM ;
-typedef  int /*<<< orphan*/  HWND ;
+typedef TYPE_2__ RECT ;
+typedef TYPE_3__ PropSheetInfo ;
+typedef int LPPOINT ;
+typedef TYPE_4__* LPCPROPSHEETPAGEW ;
+typedef int LPARAM ;
+typedef int HWND ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GetClientRect (int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  GetDlgItem (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IDC_SUNKEN_LINEHEADER ; 
- int /*<<< orphan*/  IDC_TABCONTROL ; 
- int INTRNL_ANY_WIZARD ; 
- int /*<<< orphan*/  MapDialogRect (int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  MapWindowPoints (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int PSH_HEADER ; 
- int PSH_WIZARD ; 
- int PSH_WIZARD97_NEW ; 
- int PSH_WIZARD97_OLD ; 
- int PSP_HIDEHEADER ; 
- int /*<<< orphan*/  SendMessageW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TCM_ADJUSTRECT ; 
- scalar_t__ WIZARD_PADDING ; 
+
+ int FALSE ;
+ int GetClientRect (int ,TYPE_2__*) ;
+ int GetDlgItem (int ,int ) ;
+ int IDC_SUNKEN_LINEHEADER ;
+ int IDC_TABCONTROL ;
+ int INTRNL_ANY_WIZARD ;
+ int MapDialogRect (int ,TYPE_2__*) ;
+ int MapWindowPoints (int ,int ,int ,int) ;
+ int PSH_HEADER ;
+ int PSH_WIZARD ;
+ int PSH_WIZARD97_NEW ;
+ int PSH_WIZARD97_OLD ;
+ int PSP_HIDEHEADER ;
+ int SendMessageW (int ,int ,int ,int ) ;
+ int TCM_ADJUSTRECT ;
+ scalar_t__ WIZARD_PADDING ;
 
 __attribute__((used)) static void PROPSHEET_GetPageRect(const PropSheetInfo * psInfo, HWND hwndDlg,
                                   RECT *rc, LPCPROPSHEETPAGEW ppshpage)
 {
-    if (psInfo->ppshheader.dwFlags & INTRNL_ANY_WIZARD) {     
+    if (psInfo->ppshheader.dwFlags & INTRNL_ANY_WIZARD) {
         HWND hwndChild;
         RECT r;
 

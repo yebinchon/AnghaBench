@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_5__ {scalar_t__ is_internal; } ;
-struct TYPE_4__ {int /*<<< orphan*/  state_machine; int /*<<< orphan*/  state_machine_logger; } ;
-typedef  int /*<<< orphan*/  SCI_STATUS ;
-typedef  TYPE_1__ SCI_BASE_REQUEST_T ;
-typedef  int /*<<< orphan*/  SCIF_SAS_TASK_REQUEST_T ;
-typedef  TYPE_2__ SCIF_SAS_REQUEST_T ;
+struct TYPE_4__ {int state_machine; int state_machine_logger; } ;
+typedef int SCI_STATUS ;
+typedef TYPE_1__ SCI_BASE_REQUEST_T ;
+typedef int SCIF_SAS_TASK_REQUEST_T ;
+typedef TYPE_2__ SCIF_SAS_REQUEST_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SCI_BASE_REQUEST_STATE_FINAL ; 
- int /*<<< orphan*/  SCI_SUCCESS ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  sci_base_state_machine_change_state (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sci_base_state_machine_logger_deinitialize (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  scif_sas_internal_task_request_destruct (int /*<<< orphan*/ *) ; 
+
+ int SCI_BASE_REQUEST_STATE_FINAL ;
+ int SCI_SUCCESS ;
+ scalar_t__ TRUE ;
+ int sci_base_state_machine_change_state (int *,int ) ;
+ int sci_base_state_machine_logger_deinitialize (int *,int *) ;
+ int scif_sas_internal_task_request_destruct (int *) ;
 
 __attribute__((used)) static
 SCI_STATUS scif_sas_task_request_completed_destruct_handler(

@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  close (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kqfd ; 
- int /*<<< orphan*/  kqueue () ; 
- int /*<<< orphan*/  test_kevent_signal_add () ; 
- int /*<<< orphan*/  test_kevent_signal_del () ; 
- int /*<<< orphan*/  test_kevent_signal_disable () ; 
- int /*<<< orphan*/  test_kevent_signal_enable () ; 
- int /*<<< orphan*/  test_kevent_signal_get () ; 
- int /*<<< orphan*/  test_kevent_signal_oneshot () ; 
+ int close (int ) ;
+ int kqfd ;
+ int kqueue () ;
+ int test_kevent_signal_add () ;
+ int test_kevent_signal_del () ;
+ int test_kevent_signal_disable () ;
+ int test_kevent_signal_enable () ;
+ int test_kevent_signal_get () ;
+ int test_kevent_signal_oneshot () ;
 
 void
 test_evfilt_signal()

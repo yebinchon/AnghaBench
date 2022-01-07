@@ -1,34 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/ * cv ; 
- scalar_t__ pthread_cond_destroy (int /*<<< orphan*/ **) ; 
- scalar_t__ pthread_cond_init (int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
+ int assert (int) ;
+ int * cv ;
+ scalar_t__ pthread_cond_destroy (int **) ;
+ scalar_t__ pthread_cond_init (int **,int *) ;
 
 int
 main()
 {
-  assert(cv == NULL);
+  assert(cv == ((void*)0));
 
-  assert(pthread_cond_init(&cv, NULL) == 0);
+  assert(pthread_cond_init(&cv, ((void*)0)) == 0);
 
-  assert(cv != NULL);
+  assert(cv != ((void*)0));
 
   assert(pthread_cond_destroy(&cv) == 0);
 
-  assert(cv == NULL);
+  assert(cv == ((void*)0));
 
   return 0;
 }

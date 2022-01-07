@@ -1,66 +1,66 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_23__   TYPE_5__ ;
-typedef  struct TYPE_22__   TYPE_4__ ;
-typedef  struct TYPE_21__   TYPE_3__ ;
-typedef  struct TYPE_20__   TYPE_2__ ;
-typedef  struct TYPE_19__   TYPE_1__ ;
-typedef  struct TYPE_18__   TYPE_13__ ;
 
-/* Type definitions */
-typedef  TYPE_2__* xsltTransformContextPtr ;
-typedef  int /*<<< orphan*/  xsltTransformContext ;
-typedef  int /*<<< orphan*/  xsltTemplatePtr ;
-typedef  TYPE_3__* xsltStylesheetPtr ;
-typedef  int /*<<< orphan*/  xsltStackElemPtr ;
-typedef  TYPE_4__* xsltRuntimeExtraPtr ;
-typedef  int /*<<< orphan*/  xsltRuntimeExtra ;
-typedef  TYPE_5__* xsltDocumentPtr ;
-typedef  int /*<<< orphan*/  xmlNodePtr ;
-typedef  scalar_t__ xmlDocPtr ;
+
+
+typedef struct TYPE_23__ TYPE_5__ ;
+typedef struct TYPE_22__ TYPE_4__ ;
+typedef struct TYPE_21__ TYPE_3__ ;
+typedef struct TYPE_20__ TYPE_2__ ;
+typedef struct TYPE_19__ TYPE_1__ ;
+typedef struct TYPE_18__ TYPE_13__ ;
+
+
+typedef TYPE_2__* xsltTransformContextPtr ;
+typedef int xsltTransformContext ;
+typedef int xsltTemplatePtr ;
+typedef TYPE_3__* xsltStylesheetPtr ;
+typedef int xsltStackElemPtr ;
+typedef TYPE_4__* xsltRuntimeExtraPtr ;
+typedef int xsltRuntimeExtra ;
+typedef TYPE_5__* xsltDocumentPtr ;
+typedef int xmlNodePtr ;
+typedef scalar_t__ xmlDocPtr ;
 struct TYPE_23__ {int main; } ;
-struct TYPE_19__ {int /*<<< orphan*/ * ptr; } ;
-struct TYPE_22__ {TYPE_1__ val; int /*<<< orphan*/ * deallocate; int /*<<< orphan*/ * info; } ;
-struct TYPE_21__ {scalar_t__ extrasNr; int /*<<< orphan*/  nsHash; scalar_t__ internalized; int /*<<< orphan*/  dict; } ;
-struct TYPE_20__ {int internalized; int templMax; int varsMax; int extrasMax; int extrasNr; unsigned long* traceCode; scalar_t__ keyInitLevel; int /*<<< orphan*/  xinclude; scalar_t__ debugStatus; int /*<<< orphan*/  sec; int /*<<< orphan*/ * outputFile; int /*<<< orphan*/ * inst; TYPE_5__* document; int /*<<< orphan*/  parserOptions; TYPE_13__* xpathCtxt; TYPE_4__* extras; TYPE_3__* style; scalar_t__ prof; scalar_t__ profMax; scalar_t__ profNr; int /*<<< orphan*/ * profTab; int /*<<< orphan*/  maxTemplateVars; scalar_t__ varsBase; int /*<<< orphan*/ * vars; scalar_t__ varsNr; int /*<<< orphan*/ * varsTab; int /*<<< orphan*/  maxTemplateDepth; int /*<<< orphan*/ * templ; scalar_t__ templNr; int /*<<< orphan*/ * templTab; int /*<<< orphan*/ * dict; int /*<<< orphan*/ * cache; } ;
-struct TYPE_18__ {int /*<<< orphan*/  nsHash; } ;
+struct TYPE_19__ {int * ptr; } ;
+struct TYPE_22__ {TYPE_1__ val; int * deallocate; int * info; } ;
+struct TYPE_21__ {scalar_t__ extrasNr; int nsHash; scalar_t__ internalized; int dict; } ;
+struct TYPE_20__ {int internalized; int templMax; int varsMax; int extrasMax; int extrasNr; unsigned long* traceCode; scalar_t__ keyInitLevel; int xinclude; scalar_t__ debugStatus; int sec; int * outputFile; int * inst; TYPE_5__* document; int parserOptions; TYPE_13__* xpathCtxt; TYPE_4__* extras; TYPE_3__* style; scalar_t__ prof; scalar_t__ profMax; scalar_t__ profNr; int * profTab; int maxTemplateVars; scalar_t__ varsBase; int * vars; scalar_t__ varsNr; int * varsTab; int maxTemplateDepth; int * templ; scalar_t__ templNr; int * templTab; int * dict; int * cache; } ;
+struct TYPE_18__ {int nsHash; } ;
 
-/* Variables and functions */
- scalar_t__ XSLT_DEBUG_NONE ; 
- int /*<<< orphan*/  XSLT_PARSE_OPTIONS ; 
- int /*<<< orphan*/  XSLT_REGISTER_FUNCTION_LOOKUP (TYPE_2__*) ; 
- int /*<<< orphan*/  XSLT_REGISTER_VARIABLE_LOOKUP (TYPE_2__*) ; 
- int /*<<< orphan*/  memset (TYPE_2__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/ * xmlDictCreateSub (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xmlGenericError (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  xmlGenericErrorContext ; 
- scalar_t__ xmlMalloc (int) ; 
- int xmlXPathContextSetCache (TYPE_13__*,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xmlXPathInit () ; 
- TYPE_13__* xmlXPathNewContext (scalar_t__) ; 
- int /*<<< orphan*/  xmlXPathOrderDocElems (scalar_t__) ; 
- scalar_t__ xslDebugStatus ; 
- int /*<<< orphan*/  xsltDefaultTrace ; 
- int /*<<< orphan*/  xsltFreeTransformContext (TYPE_2__*) ; 
- int /*<<< orphan*/  xsltGenericDebug (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  xsltGenericDebugContext ; 
- int /*<<< orphan*/  xsltGetDefaultSecurityPrefs () ; 
- int /*<<< orphan*/  xsltGetXIncludeDefault () ; 
- int /*<<< orphan*/  xsltInitCtxtExts (TYPE_2__*) ; 
- int /*<<< orphan*/  xsltInitGlobals () ; 
- int /*<<< orphan*/  xsltMaxDepth ; 
- int /*<<< orphan*/  xsltMaxVars ; 
- TYPE_5__* xsltNewDocument (TYPE_2__*,scalar_t__) ; 
- int /*<<< orphan*/ * xsltTransformCacheCreate () ; 
- int /*<<< orphan*/  xsltTransformError (TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
+
+ scalar_t__ XSLT_DEBUG_NONE ;
+ int XSLT_PARSE_OPTIONS ;
+ int XSLT_REGISTER_FUNCTION_LOOKUP (TYPE_2__*) ;
+ int XSLT_REGISTER_VARIABLE_LOOKUP (TYPE_2__*) ;
+ int memset (TYPE_2__*,int ,int) ;
+ int * xmlDictCreateSub (int ) ;
+ int xmlGenericError (int ,char*) ;
+ int xmlGenericErrorContext ;
+ scalar_t__ xmlMalloc (int) ;
+ int xmlXPathContextSetCache (TYPE_13__*,int,int,int ) ;
+ int xmlXPathInit () ;
+ TYPE_13__* xmlXPathNewContext (scalar_t__) ;
+ int xmlXPathOrderDocElems (scalar_t__) ;
+ scalar_t__ xslDebugStatus ;
+ int xsltDefaultTrace ;
+ int xsltFreeTransformContext (TYPE_2__*) ;
+ int xsltGenericDebug (int ,char*) ;
+ int xsltGenericDebugContext ;
+ int xsltGetDefaultSecurityPrefs () ;
+ int xsltGetXIncludeDefault () ;
+ int xsltInitCtxtExts (TYPE_2__*) ;
+ int xsltInitGlobals () ;
+ int xsltMaxDepth ;
+ int xsltMaxVars ;
+ TYPE_5__* xsltNewDocument (TYPE_2__*,scalar_t__) ;
+ int * xsltTransformCacheCreate () ;
+ int xsltTransformError (TYPE_2__*,int *,int ,char*) ;
 
 xsltTransformContextPtr
 xsltNewTransformContext(xsltStylesheetPtr style, xmlDocPtr doc) {
@@ -71,62 +71,54 @@ xsltNewTransformContext(xsltStylesheetPtr style, xmlDocPtr doc) {
     xsltInitGlobals();
 
     cur = (xsltTransformContextPtr) xmlMalloc(sizeof(xsltTransformContext));
-    if (cur == NULL) {
-	xsltTransformError(NULL, NULL, (xmlNodePtr)doc,
-		"xsltNewTransformContext : malloc failed\n");
-	return(NULL);
+    if (cur == ((void*)0)) {
+ xsltTransformError(((void*)0), ((void*)0), (xmlNodePtr)doc,
+  "xsltNewTransformContext : malloc failed\n");
+ return(((void*)0));
     }
     memset(cur, 0, sizeof(xsltTransformContext));
 
     cur->cache = xsltTransformCacheCreate();
-    if (cur->cache == NULL)
-	goto internal_err;
-    /*
-     * setup of the dictionary must be done early as some of the
-     * processing later like key handling may need it.
-     */
-    cur->dict = xmlDictCreateSub(style->dict);
-    cur->internalized = ((style->internalized) && (cur->dict != NULL));
-#ifdef WITH_XSLT_DEBUG
-    xsltGenericDebug(xsltGenericDebugContext,
-	     "Creating sub-dictionary from stylesheet for transformation\n");
-#endif
+    if (cur->cache == ((void*)0))
+ goto internal_err;
 
-    /*
-     * initialize the template stack
-     */
+
+
+
+    cur->dict = xmlDictCreateSub(style->dict);
+    cur->internalized = ((style->internalized) && (cur->dict != ((void*)0)));
     cur->templTab = (xsltTemplatePtr *)
-	        xmlMalloc(10 * sizeof(xsltTemplatePtr));
-    if (cur->templTab == NULL) {
-	xsltTransformError(NULL, NULL, (xmlNodePtr) doc,
-		"xsltNewTransformContext: out of memory\n");
-	goto internal_err;
+         xmlMalloc(10 * sizeof(xsltTemplatePtr));
+    if (cur->templTab == ((void*)0)) {
+ xsltTransformError(((void*)0), ((void*)0), (xmlNodePtr) doc,
+  "xsltNewTransformContext: out of memory\n");
+ goto internal_err;
     }
     cur->templNr = 0;
     cur->templMax = 5;
-    cur->templ = NULL;
+    cur->templ = ((void*)0);
     cur->maxTemplateDepth = xsltMaxDepth;
 
-    /*
-     * initialize the variables stack
-     */
+
+
+
     cur->varsTab = (xsltStackElemPtr *)
-	        xmlMalloc(10 * sizeof(xsltStackElemPtr));
-    if (cur->varsTab == NULL) {
+         xmlMalloc(10 * sizeof(xsltStackElemPtr));
+    if (cur->varsTab == ((void*)0)) {
         xmlGenericError(xmlGenericErrorContext,
-		"xsltNewTransformContext: out of memory\n");
-	goto internal_err;
+  "xsltNewTransformContext: out of memory\n");
+ goto internal_err;
     }
     cur->varsNr = 0;
     cur->varsMax = 10;
-    cur->vars = NULL;
+    cur->vars = ((void*)0);
     cur->varsBase = 0;
     cur->maxTemplateVars = xsltMaxVars;
 
-    /*
-     * the profiling stack is not initialized by default
-     */
-    cur->profTab = NULL;
+
+
+
+    cur->profTab = ((void*)0);
     cur->profNr = 0;
     cur->profMax = 0;
     cur->prof = 0;
@@ -134,68 +126,68 @@ xsltNewTransformContext(xsltStylesheetPtr style, xmlDocPtr doc) {
     cur->style = style;
     xmlXPathInit();
     cur->xpathCtxt = xmlXPathNewContext(doc);
-    if (cur->xpathCtxt == NULL) {
-	xsltTransformError(NULL, NULL, (xmlNodePtr) doc,
-		"xsltNewTransformContext : xmlXPathNewContext failed\n");
-	goto internal_err;
+    if (cur->xpathCtxt == ((void*)0)) {
+ xsltTransformError(((void*)0), ((void*)0), (xmlNodePtr) doc,
+  "xsltNewTransformContext : xmlXPathNewContext failed\n");
+ goto internal_err;
     }
-    /*
-    * Create an XPath cache.
-    */
+
+
+
     if (xmlXPathContextSetCache(cur->xpathCtxt, 1, -1, 0) == -1)
-	goto internal_err;
-    /*
-     * Initialize the extras array
-     */
+ goto internal_err;
+
+
+
     if (style->extrasNr != 0) {
-	cur->extrasMax = style->extrasNr + 20;
-	cur->extras = (xsltRuntimeExtraPtr)
-	    xmlMalloc(cur->extrasMax * sizeof(xsltRuntimeExtra));
-	if (cur->extras == NULL) {
-	    xmlGenericError(xmlGenericErrorContext,
-		    "xsltNewTransformContext: out of memory\n");
-	    goto internal_err;
-	}
-	cur->extrasNr = style->extrasNr;
-	for (i = 0;i < cur->extrasMax;i++) {
-	    cur->extras[i].info = NULL;
-	    cur->extras[i].deallocate = NULL;
-	    cur->extras[i].val.ptr = NULL;
-	}
+ cur->extrasMax = style->extrasNr + 20;
+ cur->extras = (xsltRuntimeExtraPtr)
+     xmlMalloc(cur->extrasMax * sizeof(xsltRuntimeExtra));
+ if (cur->extras == ((void*)0)) {
+     xmlGenericError(xmlGenericErrorContext,
+      "xsltNewTransformContext: out of memory\n");
+     goto internal_err;
+ }
+ cur->extrasNr = style->extrasNr;
+ for (i = 0;i < cur->extrasMax;i++) {
+     cur->extras[i].info = ((void*)0);
+     cur->extras[i].deallocate = ((void*)0);
+     cur->extras[i].val.ptr = ((void*)0);
+ }
     } else {
-	cur->extras = NULL;
-	cur->extrasNr = 0;
-	cur->extrasMax = 0;
+ cur->extras = ((void*)0);
+ cur->extrasNr = 0;
+ cur->extrasMax = 0;
     }
 
     XSLT_REGISTER_VARIABLE_LOOKUP(cur);
     XSLT_REGISTER_FUNCTION_LOOKUP(cur);
     cur->xpathCtxt->nsHash = style->nsHash;
-    /*
-     * Initialize the registered external modules
-     */
+
+
+
     xsltInitCtxtExts(cur);
-    /*
-     * Setup document element ordering for later efficiencies
-     * (bug 133289)
-     */
+
+
+
+
     if (xslDebugStatus == XSLT_DEBUG_NONE)
         xmlXPathOrderDocElems(doc);
-    /*
-     * Must set parserOptions before calling xsltNewDocument
-     * (bug 164530)
-     */
+
+
+
+
     cur->parserOptions = XSLT_PARSE_OPTIONS;
     docu = xsltNewDocument(cur, doc);
-    if (docu == NULL) {
-	xsltTransformError(cur, NULL, (xmlNodePtr)doc,
-		"xsltNewTransformContext : xsltNewDocument failed\n");
-	goto internal_err;
+    if (docu == ((void*)0)) {
+ xsltTransformError(cur, ((void*)0), (xmlNodePtr)doc,
+  "xsltNewTransformContext : xsltNewDocument failed\n");
+ goto internal_err;
     }
     docu->main = 1;
     cur->document = docu;
-    cur->inst = NULL;
-    cur->outputFile = NULL;
+    cur->inst = ((void*)0);
+    cur->outputFile = ((void*)0);
     cur->sec = xsltGetDefaultSecurityPrefs();
     cur->debugStatus = xslDebugStatus;
     cur->traceCode = (unsigned long*) &xsltDefaultTrace;
@@ -205,7 +197,7 @@ xsltNewTransformContext(xsltStylesheetPtr style, xmlDocPtr doc) {
     return(cur);
 
 internal_err:
-    if (cur != NULL)
-	xsltFreeTransformContext(cur);
-    return(NULL);
+    if (cur != ((void*)0))
+ xsltFreeTransformContext(cur);
+    return(((void*)0));
 }

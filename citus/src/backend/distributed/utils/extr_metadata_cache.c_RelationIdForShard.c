@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64 ;
-struct TYPE_5__ {int /*<<< orphan*/  relationId; int /*<<< orphan*/  isDistributedTable; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint64 ;
+struct TYPE_5__ {int relationId; int isDistributedTable; } ;
 struct TYPE_4__ {TYPE_2__* tableEntry; } ;
-typedef  TYPE_1__ ShardCacheEntry ;
-typedef  int /*<<< orphan*/  Oid ;
-typedef  TYPE_2__ DistTableCacheEntry ;
+typedef TYPE_1__ ShardCacheEntry ;
+typedef int Oid ;
+typedef TYPE_2__ DistTableCacheEntry ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Assert (int /*<<< orphan*/ ) ; 
- TYPE_1__* LookupShardCacheEntry (int /*<<< orphan*/ ) ; 
+
+ int Assert (int ) ;
+ TYPE_1__* LookupShardCacheEntry (int ) ;
 
 Oid
 RelationIdForShard(uint64 shardId)
 {
-	ShardCacheEntry *shardEntry = NULL;
-	DistTableCacheEntry *tableEntry = NULL;
+ ShardCacheEntry *shardEntry = ((void*)0);
+ DistTableCacheEntry *tableEntry = ((void*)0);
 
-	shardEntry = LookupShardCacheEntry(shardId);
+ shardEntry = LookupShardCacheEntry(shardId);
 
-	tableEntry = shardEntry->tableEntry;
+ tableEntry = shardEntry->tableEntry;
 
-	Assert(tableEntry->isDistributedTable);
+ Assert(tableEntry->isDistributedTable);
 
-	return tableEntry->relationId;
+ return tableEntry->relationId;
 }

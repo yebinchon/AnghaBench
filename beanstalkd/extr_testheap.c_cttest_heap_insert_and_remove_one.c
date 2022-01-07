@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {scalar_t__ len; int /*<<< orphan*/  data; int /*<<< orphan*/  setpos; int /*<<< orphan*/  less; } ;
-typedef  int /*<<< orphan*/  Job ;
-typedef  TYPE_1__ Heap ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assertf (int,char*) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ ) ; 
- int heapinsert (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * heapremove (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  job_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  job_pri_less ; 
- int /*<<< orphan*/  job_setpos ; 
- int /*<<< orphan*/ * make_job (int,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {scalar_t__ len; int data; int setpos; int less; } ;
+typedef int Job ;
+typedef TYPE_1__ Heap ;
+
+
+ int assertf (int,char*) ;
+ int free (int ) ;
+ int heapinsert (TYPE_1__*,int *) ;
+ int * heapremove (TYPE_1__*,int ) ;
+ int job_free (int *) ;
+ int job_pri_less ;
+ int job_setpos ;
+ int * make_job (int,int ,int,int ,int ) ;
 
 void
 cttest_heap_insert_and_remove_one()

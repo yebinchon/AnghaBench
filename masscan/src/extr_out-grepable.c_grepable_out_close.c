@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  timestamp ;
-typedef  int /*<<< orphan*/  time_t ;
+
+
+
+
+typedef int timestamp ;
+typedef int time_t ;
 struct tm {int dummy; } ;
 struct Output {int dummy; } ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef int FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  UNUSEDPARM (struct Output*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*,char*) ; 
- int /*<<< orphan*/  gmtime_s (struct tm*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strftime (char*,int,char*,struct tm*) ; 
- int /*<<< orphan*/  time (int /*<<< orphan*/ ) ; 
+
+ int UNUSEDPARM (struct Output*) ;
+ int fprintf (int *,char*,char*) ;
+ int gmtime_s (struct tm*,int *) ;
+ int strftime (char*,int,char*,struct tm*) ;
+ int time (int ) ;
 
 __attribute__((used)) static void
 grepable_out_close(struct Output *out, FILE *fp)
@@ -34,10 +34,10 @@ grepable_out_close(struct Output *out, FILE *fp)
 
     gmtime_s(&tm, &now);
 
-    //Tue Jan 21 20:23:22 2014
-    //%a %b %d %H:%M:%S %Y
+
+
     strftime(timestamp, sizeof(timestamp), "%c", &tm);
 
-    fprintf(fp, "# Masscan done at %s\n", 
+    fprintf(fp, "# Masscan done at %s\n",
                 timestamp);
 }

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* xmlRefPtr ;
-typedef  int /*<<< orphan*/  xmlLinkPtr ;
-struct TYPE_4__ {int /*<<< orphan*/ * name; int /*<<< orphan*/ * value; } ;
-typedef  TYPE_1__ xmlChar ;
 
-/* Variables and functions */
- int /*<<< orphan*/  xmlFree (TYPE_1__*) ; 
- int /*<<< orphan*/  xmlLinkGetData (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef TYPE_1__* xmlRefPtr ;
+typedef int xmlLinkPtr ;
+struct TYPE_4__ {int * name; int * value; } ;
+typedef TYPE_1__ xmlChar ;
+
+
+ int xmlFree (TYPE_1__*) ;
+ int xmlLinkGetData (int ) ;
 
 __attribute__((used)) static void
 xmlFreeRef(xmlLinkPtr lk) {
     xmlRefPtr ref = (xmlRefPtr)xmlLinkGetData(lk);
-    if (ref == NULL) return;
-    if (ref->value != NULL)
+    if (ref == ((void*)0)) return;
+    if (ref->value != ((void*)0))
         xmlFree((xmlChar *)ref->value);
-    if (ref->name != NULL)
+    if (ref->name != ((void*)0))
         xmlFree((xmlChar *)ref->name);
     xmlFree(ref);
 }

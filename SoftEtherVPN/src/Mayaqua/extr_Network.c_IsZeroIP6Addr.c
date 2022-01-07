@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  IPV6_ADDR ;
 
-/* Variables and functions */
- int IsZero (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int IPV6_ADDR ;
+
+
+ int IsZero (int *,int) ;
 
 bool IsZeroIP6Addr(IPV6_ADDR *addr)
 {
-	// Validate arguments
-	if (addr == NULL)
-	{
-		return true;
-	}
 
-	return IsZero(addr, sizeof(IPV6_ADDR));
+ if (addr == ((void*)0))
+ {
+  return 1;
+ }
+
+ return IsZero(addr, sizeof(IPV6_ADDR));
 }

@@ -1,75 +1,67 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct mg_connection {int dummy; } ;
 struct TYPE_6__ {int state; } ;
-struct TYPE_5__ {int /*<<< orphan*/  tcpip; } ;
-struct TYPE_4__ {int member_0; int* v; int /*<<< orphan*/  Val; } ;
-typedef  int /*<<< orphan*/  TCPIP_NET_HANDLE ;
-typedef  int /*<<< orphan*/  SYS_STATUS ;
-typedef  TYPE_1__ IPV4_ADDR ;
-
-/* Variables and functions */
-#define  APP_DONE 133 
-#define  APP_EMPTY 132 
-#define  APP_POLL 131 
-#define  APP_START_LISTENING 130 
-#define  APP_STATE_INIT 129 
-#define  APP_TCPIP_WAIT_FOR_IP 128 
- int /*<<< orphan*/  SYS_CONSOLE_MESSAGE (char*) ; 
- int /*<<< orphan*/  SYS_CONSOLE_PRINT (char*,...) ; 
- int /*<<< orphan*/  SYS_STATUS_READY ; 
- int /*<<< orphan*/  TCPIP_STACK_IndexToNet (int) ; 
- int /*<<< orphan*/  TCPIP_STACK_NetAddress (int /*<<< orphan*/ ) ; 
- char* TCPIP_STACK_NetBIOSName (int /*<<< orphan*/ ) ; 
- char* TCPIP_STACK_NetNameGet (int /*<<< orphan*/ ) ; 
- int TCPIP_STACK_NumberOfNetworksGet () ; 
- int /*<<< orphan*/  TCPIP_STACK_Status (int /*<<< orphan*/ ) ; 
- TYPE_3__ appData ; 
- int /*<<< orphan*/  ev_handler ; 
- struct mg_connection* mg_bind (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mg_mgr_poll (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  mg_set_protocol_http_websocket (struct mg_connection*) ; 
- int /*<<< orphan*/  mgr ; 
- TYPE_2__ sysObj ; 
+struct TYPE_5__ {int tcpip; } ;
+struct TYPE_4__ {int member_0; int* v; int Val; } ;
+typedef int TCPIP_NET_HANDLE ;
+typedef int SYS_STATUS ;
+typedef TYPE_1__ IPV4_ADDR ;
+ int SYS_CONSOLE_MESSAGE (char*) ;
+ int SYS_CONSOLE_PRINT (char*,...) ;
+ int SYS_STATUS_READY ;
+ int TCPIP_STACK_IndexToNet (int) ;
+ int TCPIP_STACK_NetAddress (int ) ;
+ char* TCPIP_STACK_NetBIOSName (int ) ;
+ char* TCPIP_STACK_NetNameGet (int ) ;
+ int TCPIP_STACK_NumberOfNetworksGet () ;
+ int TCPIP_STACK_Status (int ) ;
+ TYPE_3__ appData ;
+ int ev_handler ;
+ struct mg_connection* mg_bind (int *,char*,int ) ;
+ int mg_mgr_poll (int *,int) ;
+ int mg_set_protocol_http_websocket (struct mg_connection*) ;
+ int mgr ;
+ TYPE_2__ sysObj ;
 
 void APP_Tasks ( void )
 {
-    SYS_STATUS          tcpipStat;
-    const char          *netName, *netBiosName;
-    static IPV4_ADDR    dwLastIP[2] = { {-1}, {-1} };
-    IPV4_ADDR           ipAddr;
-    TCPIP_NET_HANDLE    netH;
-    int                 i, nNets;
+    SYS_STATUS tcpipStat;
+    const char *netName, *netBiosName;
+    static IPV4_ADDR dwLastIP[2] = { {-1}, {-1} };
+    IPV4_ADDR ipAddr;
+    TCPIP_NET_HANDLE netH;
+    int i, nNets;
 
-    /* Check the application's current state. */
+
     switch ( appData.state )
     {
-        /* Application's initial state. */
-        case APP_STATE_INIT:
+
+        case 129:
         {
             tcpipStat = TCPIP_STACK_Status(sysObj.tcpip);
             if(tcpipStat < 0)
-            {   // some error occurred
+            {
                 SYS_CONSOLE_MESSAGE(" APP: TCP/IP stack initialization failed!\r\n");
-                appData.state = APP_DONE;
+                appData.state = 133;
             }
             else if(tcpipStat == SYS_STATUS_READY)
             {
-                // now that the stack is ready we can check the
-                // available interfaces
+
+
                 nNets = TCPIP_STACK_NumberOfNetworksGet();
                 for(i = 0; i < nNets; i++)
                 {
@@ -78,22 +70,22 @@ void APP_Tasks ( void )
                     netName = TCPIP_STACK_NetNameGet(netH);
                     netBiosName = TCPIP_STACK_NetBIOSName(netH);
 
-#if defined(TCPIP_STACK_USE_NBNS)
-                    SYS_CONSOLE_PRINT("    Interface %s on host %s - NBNS enabled\r\n", netName, netBiosName);
-#else
+
+
+
                     SYS_CONSOLE_PRINT("    Interface %s on host %s - NBNS disabled\r\n", netName, netBiosName);
-#endif  // defined(TCPIP_STACK_USE_NBNS)
+
 
                 }
-                appData.state = APP_TCPIP_WAIT_FOR_IP;
+                appData.state = 128;
 
             }
             break;
         }
-        case APP_TCPIP_WAIT_FOR_IP:
+        case 128:
 
-            // if the IP address of an interface has changed
-            // display the new value on the system console
+
+
             nNets = TCPIP_STACK_NumberOfNetworksGet();
 
             for (i = 0; i < nNets; i++)
@@ -107,47 +99,47 @@ void APP_Tasks ( void )
                     SYS_CONSOLE_MESSAGE(TCPIP_STACK_NetNameGet(netH));
                     SYS_CONSOLE_MESSAGE(" IP Address: ");
                     SYS_CONSOLE_PRINT("%d.%d.%d.%d \r\n", ipAddr.v[0], ipAddr.v[1], ipAddr.v[2], ipAddr.v[3]);
-                    if (ipAddr.v[0] != 0 && ipAddr.v[0] != 169) // Wait for a Valid IP
+                    if (ipAddr.v[0] != 0 && ipAddr.v[0] != 169)
                     {
-                        appData.state = APP_START_LISTENING;
+                        appData.state = 130;
                     }
                 }
             }
             break;
-        case APP_START_LISTENING:
+        case 130:
         {
             SYS_CONSOLE_PRINT("Starting listening on port 8000\r\n");
-            struct mg_connection *nc = mg_bind(&mgr, "8000", ev_handler);  // Create listening connection and add it to the event manager
-            if (nc == NULL) {
+            struct mg_connection *nc = mg_bind(&mgr, "8000", ev_handler);
+            if (nc == ((void*)0)) {
               SYS_CONSOLE_PRINT("Failed to create listener\n\r");
-              appData.state = APP_DONE;
+              appData.state = 133;
               break;
             }
             mg_set_protocol_http_websocket(nc);
             SYS_CONSOLE_PRINT("Listener started\r\n");
 
-            appData.state = APP_POLL;
+            appData.state = 131;
             break;
         }
-        case APP_POLL:
+        case 131:
         {
             mg_mgr_poll(&mgr, 1000);
             break;
         }
-        case APP_DONE:
+        case 133:
         {
             SYS_CONSOLE_PRINT("Server stopped\n\r");
-            appData.state = APP_EMPTY;
+            appData.state = 132;
             break;
         }
-        case APP_EMPTY:
+        case 132:
         {
             break;
         }
-        /* The default state should never be executed. */
+
         default:
         {
-            /* TODO: Handle error in application's state machine. */
+
             break;
         }
     }

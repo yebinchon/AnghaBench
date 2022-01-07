@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct tc_device {char enabled; struct tc_device* prev; struct tc_device* next; int /*<<< orphan*/  id; int /*<<< orphan*/  classes_index; int /*<<< orphan*/  hash; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D_TC_LOOP ; 
- int /*<<< orphan*/  avl_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- struct tc_device* callocz (int,int) ; 
- int /*<<< orphan*/  debug (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  error (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  simple_hash (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strdupz (char*) ; 
- int /*<<< orphan*/  tc_class_compare ; 
- struct tc_device* tc_device_index_add (struct tc_device*) ; 
- struct tc_device* tc_device_index_find (char*,int /*<<< orphan*/ ) ; 
- struct tc_device* tc_device_root ; 
- scalar_t__ unlikely (int) ; 
+
+
+
+struct tc_device {char enabled; struct tc_device* prev; struct tc_device* next; int id; int classes_index; int hash; } ;
+
+
+ int D_TC_LOOP ;
+ int avl_init (int *,int ) ;
+ struct tc_device* callocz (int,int) ;
+ int debug (int ,char*,char*) ;
+ int error (char*,int ) ;
+ int simple_hash (int ) ;
+ int strdupz (char*) ;
+ int tc_class_compare ;
+ struct tc_device* tc_device_index_add (struct tc_device*) ;
+ struct tc_device* tc_device_index_find (char*,int ) ;
+ struct tc_device* tc_device_root ;
+ scalar_t__ unlikely (int) ;
 
 __attribute__((used)) static inline struct tc_device *tc_device_create(char *id)
 {

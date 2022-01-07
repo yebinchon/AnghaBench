@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_char ;
 
-/* Variables and functions */
+
+
+
+typedef int u_char ;
+
+
 
 void
 ns_name_rollback(const u_char *src, const u_char **dnptrs,
-		 const u_char **lastdnptr)
+   const u_char **lastdnptr)
 {
-	while (dnptrs < lastdnptr && *dnptrs != NULL) {
-		if (*dnptrs >= src) {
-			*dnptrs = NULL;
-			break;
-		}
-		dnptrs++;
-	}
+ while (dnptrs < lastdnptr && *dnptrs != ((void*)0)) {
+  if (*dnptrs >= src) {
+   *dnptrs = ((void*)0);
+   break;
+  }
+  dnptrs++;
+ }
 }

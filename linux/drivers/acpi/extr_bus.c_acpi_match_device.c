@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct device {int dummy; } ;
 struct acpi_device_id {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  __acpi_match_device (int /*<<< orphan*/ ,struct acpi_device_id const*,int /*<<< orphan*/ *,struct acpi_device_id const**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  acpi_companion_match (struct device const*) ; 
+
+ int __acpi_match_device (int ,struct acpi_device_id const*,int *,struct acpi_device_id const**,int *) ;
+ int acpi_companion_match (struct device const*) ;
 
 const struct acpi_device_id *acpi_match_device(const struct acpi_device_id *ids,
-					       const struct device *dev)
+            const struct device *dev)
 {
-	const struct acpi_device_id *id = NULL;
+ const struct acpi_device_id *id = ((void*)0);
 
-	__acpi_match_device(acpi_companion_match(dev), ids, NULL, &id, NULL);
-	return id;
+ __acpi_match_device(acpi_companion_match(dev), ids, ((void*)0), &id, ((void*)0));
+ return id;
 }

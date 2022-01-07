@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_fs_x__txn_id_t ;
-typedef  int /*<<< orphan*/  svn_fs_x__batch_fsync_t ;
-typedef  int /*<<< orphan*/  svn_fs_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct TYPE_3__ {void** lockcookie; int /*<<< orphan*/  txn_id; } ;
-typedef  TYPE_1__ get_writable_proto_rev_baton_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_off_t ;
-typedef  int /*<<< orphan*/  apr_file_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  APR_END ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  auto_truncate_proto_rev (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  get_writable_proto_rev_body ; 
- int /*<<< orphan*/  svn_error_compose_create (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_fs_x__batch_fsync_new_path (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_fs_x__batch_fsync_open_file (int /*<<< orphan*/ **,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *) ; 
- char* svn_fs_x__path_rev (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- char* svn_fs_x__path_txn_proto_rev (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_io_file_rename2 (char const*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_io_file_seek (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  unlock_proto_rev (int /*<<< orphan*/ *,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  with_txnlist_lock (int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int svn_revnum_t ;
+typedef int svn_fs_x__txn_id_t ;
+typedef int svn_fs_x__batch_fsync_t ;
+typedef int svn_fs_t ;
+typedef int svn_error_t ;
+struct TYPE_3__ {void** lockcookie; int txn_id; } ;
+typedef TYPE_1__ get_writable_proto_rev_baton_t ;
+typedef int apr_pool_t ;
+typedef int apr_off_t ;
+typedef int apr_file_t ;
+
+
+ int APR_END ;
+ int FALSE ;
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int auto_truncate_proto_rev (int *,int *,int ,int ,int *) ;
+ int get_writable_proto_rev_body ;
+ int svn_error_compose_create (int ,int ) ;
+ int svn_fs_x__batch_fsync_new_path (int *,char const*,int *) ;
+ int svn_fs_x__batch_fsync_open_file (int **,int *,char const*,int *) ;
+ char* svn_fs_x__path_rev (int *,int ,int *) ;
+ char* svn_fs_x__path_txn_proto_rev (int *,int ,int *) ;
+ int svn_io_file_rename2 (char const*,char const*,int ,int *) ;
+ int svn_io_file_seek (int *,int ,int *,int *) ;
+ int unlock_proto_rev (int *,int ,void*,int *) ;
+ int with_txnlist_lock (int *,int ,TYPE_1__*,int *) ;
 
 __attribute__((used)) static svn_error_t *
 get_writable_final_rev(apr_file_t **file,
@@ -56,15 +56,15 @@ get_writable_final_rev(apr_file_t **file,
   const char *final_rev_filename
     = svn_fs_x__path_rev(fs, revision, scratch_pool);
 
-  /* Acquire exclusive access to the proto-rev file. */
+
   baton.lockcookie = &lockcookie;
   baton.txn_id = txn_id;
 
   SVN_ERR(with_txnlist_lock(fs, get_writable_proto_rev_body, &baton,
                             scratch_pool));
 
-  /* Move the proto-rev file to its final location as revision data file.
-     After that, we don't need to protect it anymore and can unlock it. */
+
+
   SVN_ERR(svn_error_compose_create(svn_io_file_rename2(proto_rev_filename,
                                                        final_rev_filename,
                                                        FALSE,
@@ -74,15 +74,15 @@ get_writable_final_rev(apr_file_t **file,
   SVN_ERR(svn_fs_x__batch_fsync_new_path(batch, final_rev_filename,
                                          scratch_pool));
 
-  /* Now open the prototype revision file and seek to the end.
-     Note that BATCH always seeks to position 0 before returning the file. */
+
+
   SVN_ERR(svn_fs_x__batch_fsync_open_file(file, batch, final_rev_filename,
                                           scratch_pool));
   SVN_ERR(svn_io_file_seek(*file, APR_END, &end_offset, scratch_pool));
 
-  /* We don't want unused sections (such as leftovers from failed delta
-     stream) in our file.  Detect and fix those cases by truncating the
-     protorev file. */
+
+
+
   SVN_ERR(auto_truncate_proto_rev(fs, *file, end_offset, txn_id,
                                   scratch_pool));
 

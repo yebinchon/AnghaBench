@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  CONSTTIME_FALSE_S ; 
- int /*<<< orphan*/  CONSTTIME_TRUE_S ; 
- int /*<<< orphan*/  TEST_uint_eq (int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/  constant_time_select_s (int /*<<< orphan*/ ,size_t,size_t) ; 
+ int CONSTTIME_FALSE_S ;
+ int CONSTTIME_TRUE_S ;
+ int TEST_uint_eq (int ,size_t) ;
+ int constant_time_select_s (int ,size_t,size_t) ;
 
 __attribute__((used)) static int test_select_s(size_t a, size_t b)
 {

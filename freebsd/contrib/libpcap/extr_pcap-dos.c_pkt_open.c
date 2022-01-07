@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct device {int flags; } ;
-struct TYPE_2__ {int /*<<< orphan*/  handle; } ;
-typedef  int /*<<< orphan*/  PKT_RX_MODE ;
+struct TYPE_2__ {int handle; } ;
+typedef int PKT_RX_MODE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int IFF_PROMISC ; 
- int /*<<< orphan*/  PDRX_ALL_PACKETS ; 
- int /*<<< orphan*/  PDRX_BROADCAST ; 
- int /*<<< orphan*/  PktInitDriver (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PktQueueBusy (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PktResetStatistics (int /*<<< orphan*/ ) ; 
- TYPE_1__ pktInfo ; 
+
+ int FALSE ;
+ int IFF_PROMISC ;
+ int PDRX_ALL_PACKETS ;
+ int PDRX_BROADCAST ;
+ int PktInitDriver (int ) ;
+ int PktQueueBusy (int ) ;
+ int PktResetStatistics (int ) ;
+ TYPE_1__ pktInfo ;
 
 __attribute__((used)) static int pkt_open (struct device *dev)
 {

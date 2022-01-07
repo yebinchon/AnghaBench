@@ -1,64 +1,64 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_5__ ;
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int ULONG ;
-struct TYPE_17__ {int /*<<< orphan*/  encryption_auth_len; int /*<<< orphan*/  signature_auth_len; int /*<<< orphan*/  ctx; int /*<<< orphan*/  attr; int /*<<< orphan*/  exp; TYPE_1__* AuthInfo; scalar_t__ server; } ;
+
+
+typedef struct TYPE_17__ TYPE_5__ ;
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+typedef int ULONG ;
+struct TYPE_17__ {int encryption_auth_len; int signature_auth_len; int ctx; int attr; int exp; TYPE_1__* AuthInfo; scalar_t__ server; } ;
 struct TYPE_16__ {unsigned char* pvBuffer; unsigned int cbBuffer; void* BufferType; } ;
 struct TYPE_15__ {int cBuffers; TYPE_4__* pBuffers; scalar_t__ ulVersion; } ;
-struct TYPE_14__ {int /*<<< orphan*/  cbSecurityTrailer; int /*<<< orphan*/  cbMaxSignature; } ;
-struct TYPE_13__ {unsigned int cbMaxToken; scalar_t__ AuthnLevel; int /*<<< orphan*/ * server_principal_name; int /*<<< orphan*/  cred; } ;
-typedef  TYPE_2__ SecPkgContext_Sizes ;
-typedef  TYPE_3__ SecBufferDesc ;
-typedef  TYPE_4__ SecBuffer ;
-typedef  scalar_t__ SECURITY_STATUS ;
-typedef  TYPE_5__ RpcConnection ;
-typedef  int /*<<< orphan*/  RPC_STATUS ;
-typedef  int BOOL ;
+struct TYPE_14__ {int cbSecurityTrailer; int cbMaxSignature; } ;
+struct TYPE_13__ {unsigned int cbMaxToken; scalar_t__ AuthnLevel; int * server_principal_name; int cred; } ;
+typedef TYPE_2__ SecPkgContext_Sizes ;
+typedef TYPE_3__ SecBufferDesc ;
+typedef TYPE_4__ SecBuffer ;
+typedef scalar_t__ SECURITY_STATUS ;
+typedef TYPE_5__ RpcConnection ;
+typedef int RPC_STATUS ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int ASC_REQ_CONFIDENTIALITY ; 
- int ASC_REQ_CONNECTION ; 
- int ASC_REQ_DELEGATE ; 
- int ASC_REQ_INTEGRITY ; 
- int ASC_REQ_USE_DCE_STYLE ; 
- scalar_t__ AcceptSecurityContext (int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_3__*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,TYPE_3__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ CompleteAuthToken (int /*<<< orphan*/ *,TYPE_3__*) ; 
- int /*<<< orphan*/  ERROR_ACCESS_DENIED ; 
- scalar_t__ FAILED (scalar_t__) ; 
- int ISC_REQ_CONFIDENTIALITY ; 
- int ISC_REQ_CONNECTION ; 
- int ISC_REQ_DELEGATE ; 
- int ISC_REQ_INTEGRITY ; 
- int ISC_REQ_MUTUAL_AUTH ; 
- int ISC_REQ_USE_DCE_STYLE ; 
- scalar_t__ InitializeSecurityContextW (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,TYPE_3__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ QueryContextAttributesA (int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_2__*) ; 
- scalar_t__ RPC_C_AUTHN_LEVEL_PKT_INTEGRITY ; 
- scalar_t__ RPC_C_AUTHN_LEVEL_PKT_PRIVACY ; 
- int /*<<< orphan*/  RPC_S_OK ; 
- void* SECBUFFER_TOKEN ; 
- int /*<<< orphan*/  SECPKG_ATTR_SIZES ; 
- int /*<<< orphan*/  SECURITY_NETWORK_DREP ; 
- scalar_t__ SEC_E_OK ; 
- scalar_t__ SEC_I_COMPLETE_AND_CONTINUE ; 
- scalar_t__ SEC_I_COMPLETE_NEEDED ; 
- scalar_t__ SEC_I_CONTINUE_NEEDED ; 
- int /*<<< orphan*/  TRACE (char*,...) ; 
- int /*<<< orphan*/  WARN (char*,scalar_t__) ; 
+
+ int ASC_REQ_CONFIDENTIALITY ;
+ int ASC_REQ_CONNECTION ;
+ int ASC_REQ_DELEGATE ;
+ int ASC_REQ_INTEGRITY ;
+ int ASC_REQ_USE_DCE_STYLE ;
+ scalar_t__ AcceptSecurityContext (int *,int *,TYPE_3__*,int,int ,int *,TYPE_3__*,int *,int *) ;
+ scalar_t__ CompleteAuthToken (int *,TYPE_3__*) ;
+ int ERROR_ACCESS_DENIED ;
+ scalar_t__ FAILED (scalar_t__) ;
+ int ISC_REQ_CONFIDENTIALITY ;
+ int ISC_REQ_CONNECTION ;
+ int ISC_REQ_DELEGATE ;
+ int ISC_REQ_INTEGRITY ;
+ int ISC_REQ_MUTUAL_AUTH ;
+ int ISC_REQ_USE_DCE_STYLE ;
+ scalar_t__ InitializeSecurityContextW (int *,int *,int *,int,int ,int ,TYPE_3__*,int ,int *,TYPE_3__*,int *,int *) ;
+ scalar_t__ QueryContextAttributesA (int *,int ,TYPE_2__*) ;
+ scalar_t__ RPC_C_AUTHN_LEVEL_PKT_INTEGRITY ;
+ scalar_t__ RPC_C_AUTHN_LEVEL_PKT_PRIVACY ;
+ int RPC_S_OK ;
+ void* SECBUFFER_TOKEN ;
+ int SECPKG_ATTR_SIZES ;
+ int SECURITY_NETWORK_DREP ;
+ scalar_t__ SEC_E_OK ;
+ scalar_t__ SEC_I_COMPLETE_AND_CONTINUE ;
+ scalar_t__ SEC_I_COMPLETE_NEEDED ;
+ scalar_t__ SEC_I_CONTINUE_NEEDED ;
+ int TRACE (char*,...) ;
+ int WARN (char*,scalar_t__) ;
 
 RPC_STATUS RPCRT4_default_authorize(RpcConnection *conn, BOOL first_time,
                                     unsigned char *in_buffer,
@@ -107,13 +107,13 @@ RPC_STATUS RPCRT4_default_authorize(RpcConnection *conn, BOOL first_time,
           context_req |= ASC_REQ_CONFIDENTIALITY | ASC_REQ_INTEGRITY;
 
       r = AcceptSecurityContext(&conn->AuthInfo->cred,
-                                first_time ? NULL : &conn->ctx,
+                                first_time ? ((void*)0) : &conn->ctx,
                                 &inp_desc, context_req, SECURITY_NETWORK_DREP,
                                 &conn->ctx,
                                 &out_desc, &conn->attr, &conn->exp);
       if (r == SEC_E_OK || r == SEC_I_COMPLETE_NEEDED)
       {
-          /* authorisation done, so nothing more to send */
+
           out.cbBuffer = 0;
       }
   }
@@ -128,10 +128,10 @@ RPC_STATUS RPCRT4_default_authorize(RpcConnection *conn, BOOL first_time,
           context_req |= ISC_REQ_CONFIDENTIALITY | ISC_REQ_INTEGRITY;
 
       r = InitializeSecurityContextW(&conn->AuthInfo->cred,
-                                     first_time ? NULL: &conn->ctx,
-                                     first_time ? conn->AuthInfo->server_principal_name : NULL,
+                                     first_time ? ((void*)0): &conn->ctx,
+                                     first_time ? conn->AuthInfo->server_principal_name : ((void*)0),
                                      context_req, 0, SECURITY_NETWORK_DREP,
-                                     first_time ? NULL : &inp_desc, 0, &conn->ctx,
+                                     first_time ? ((void*)0) : &inp_desc, 0, &conn->ctx,
                                      &out_desc, &conn->attr, &conn->exp);
   }
   if (FAILED(r))
@@ -174,5 +174,5 @@ RPC_STATUS RPCRT4_default_authorize(RpcConnection *conn, BOOL first_time,
 
 failed:
   *out_size = 0;
-  return ERROR_ACCESS_DENIED; /* FIXME: is this correct? */
+  return ERROR_ACCESS_DENIED;
 }

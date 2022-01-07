@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  pa_stream_request_cb_t ;
-typedef  int /*<<< orphan*/  pa_stream ;
 
-/* Variables and functions */
- int /*<<< orphan*/  pa_stream_set_write_callback (int /*<<< orphan*/ *,int /*<<< orphan*/ ,void*) ; 
- scalar_t__ pulseaudio_context_ready () ; 
- int /*<<< orphan*/  pulseaudio_lock () ; 
- int /*<<< orphan*/  pulseaudio_unlock () ; 
+
+
+
+typedef int pa_stream_request_cb_t ;
+typedef int pa_stream ;
+
+
+ int pa_stream_set_write_callback (int *,int ,void*) ;
+ scalar_t__ pulseaudio_context_ready () ;
+ int pulseaudio_lock () ;
+ int pulseaudio_unlock () ;
 
 void pulseaudio_write_callback(pa_stream *p, pa_stream_request_cb_t cb,
-			       void *userdata)
+          void *userdata)
 {
-	if (pulseaudio_context_ready() < 0)
-		return;
+ if (pulseaudio_context_ready() < 0)
+  return;
 
-	pulseaudio_lock();
-	pa_stream_set_write_callback(p, cb, userdata);
-	pulseaudio_unlock();
+ pulseaudio_lock();
+ pa_stream_set_write_callback(p, cb, userdata);
+ pulseaudio_unlock();
 }

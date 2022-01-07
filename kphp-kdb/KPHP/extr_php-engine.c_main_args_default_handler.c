@@ -1,33 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- void* BACKLOG ; 
- void* MAX_CONNECTIONS ; 
- int MCL_CURRENT ; 
- int MCL_FUTURE ; 
- void* atoi (int /*<<< orphan*/ ) ; 
- void* backlog ; 
- int daemonize ; 
- int /*<<< orphan*/  init_logname (int /*<<< orphan*/ ) ; 
- int max_memory ; 
- void* maxconn ; 
- int /*<<< orphan*/  mlockall (int) ; 
- int /*<<< orphan*/  optarg ; 
- int /*<<< orphan*/  usage () ; 
- int /*<<< orphan*/  username ; 
- int /*<<< orphan*/  verbosity ; 
- int /*<<< orphan*/  vkprintf (int,char*) ; 
+ void* BACKLOG ;
+ void* MAX_CONNECTIONS ;
+ int MCL_CURRENT ;
+ int MCL_FUTURE ;
+ void* atoi (int ) ;
+ void* backlog ;
+ int daemonize ;
+ int init_logname (int ) ;
+ int max_memory ;
+ void* maxconn ;
+ int mlockall (int) ;
+ int optarg ;
+ int usage () ;
+ int username ;
+ int verbosity ;
+ int vkprintf (int,char*) ;
 
 int main_args_default_handler (int i) {
   switch (i) {

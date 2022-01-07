@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  calculated_number ;
-typedef  scalar_t__ BADGE_COLOR_COMPARISON ;
 
-/* Variables and functions */
- scalar_t__ COLOR_COMPARE_EQUAL ; 
- scalar_t__ COLOR_COMPARE_GREATER ; 
- scalar_t__ COLOR_COMPARE_GREATEREQUAL ; 
- scalar_t__ COLOR_COMPARE_LESS ; 
- scalar_t__ COLOR_COMPARE_LESSEQUAL ; 
- scalar_t__ COLOR_COMPARE_NOTEQUAL ; 
- int /*<<< orphan*/  NAN ; 
- scalar_t__ isgreater (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ isgreaterequal (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ isinf (int /*<<< orphan*/ ) ; 
- scalar_t__ isless (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ islessequal (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ islessgreater (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ isnan (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  str2l (char*) ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
- int /*<<< orphan*/  strncpyz (char*,char const*,size_t) ; 
- scalar_t__ unlikely (int) ; 
+
+
+
+typedef int calculated_number ;
+typedef scalar_t__ BADGE_COLOR_COMPARISON ;
+
+
+ scalar_t__ COLOR_COMPARE_EQUAL ;
+ scalar_t__ COLOR_COMPARE_GREATER ;
+ scalar_t__ COLOR_COMPARE_GREATEREQUAL ;
+ scalar_t__ COLOR_COMPARE_LESS ;
+ scalar_t__ COLOR_COMPARE_LESSEQUAL ;
+ scalar_t__ COLOR_COMPARE_NOTEQUAL ;
+ int NAN ;
+ scalar_t__ isgreater (int ,int ) ;
+ scalar_t__ isgreaterequal (int ,int ) ;
+ scalar_t__ isinf (int ) ;
+ scalar_t__ isless (int ,int ) ;
+ scalar_t__ islessequal (int ,int ) ;
+ scalar_t__ islessgreater (int ,int ) ;
+ scalar_t__ isnan (int ) ;
+ int str2l (char*) ;
+ int strcmp (char*,char*) ;
+ int strncpyz (char*,char const*,size_t) ;
+ scalar_t__ unlikely (int) ;
 
 __attribute__((used)) static inline void calc_colorz(const char *color, char *final, size_t len, calculated_number value) {
     if(isnan(value) || isinf(value))
@@ -41,12 +41,12 @@ __attribute__((used)) static inline void calc_colorz(const char *color, char *fi
     char value_buffer[256 + 1] = "";
     BADGE_COLOR_COMPARISON comparison = COLOR_COMPARE_GREATER;
 
-    // example input:
-    // color<max|color>min|color:null...
+
+
 
     const char *c = color;
     while(*c) {
-        char *dc = color_buffer, *dv = NULL;
+        char *dc = color_buffer, *dv = ((void*)0);
         size_t ci = 0, vi = 0;
 
         const char *t = c;
@@ -112,11 +112,11 @@ __attribute__((used)) static inline void calc_colorz(const char *color, char *fi
             t++;
         }
 
-        // prepare for next iteration
+
         if(*t == '|') t++;
         c = t;
 
-        // do the math
+
         *dc = '\0';
         if(dv) {
             *dv = '\0';

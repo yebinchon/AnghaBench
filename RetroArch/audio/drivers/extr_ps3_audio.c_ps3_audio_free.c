@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64_t ;
-struct TYPE_4__ {int quit_thread; int /*<<< orphan*/  cond; int /*<<< orphan*/  cond_lock; int /*<<< orphan*/  lock; int /*<<< orphan*/  buffer; int /*<<< orphan*/  audio_port; int /*<<< orphan*/  thread; } ;
-typedef  TYPE_1__ ps3_audio_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cellAudioPortClose (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cellAudioQuit () ; 
- int /*<<< orphan*/  fifo_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (void*) ; 
- int /*<<< orphan*/  ps3_audio_start (TYPE_1__*,int) ; 
- int /*<<< orphan*/  ps3_audio_stop (TYPE_1__*) ; 
- int /*<<< orphan*/  sys_lwcond_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sys_lwmutex_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sys_ppu_thread_join (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint64_t ;
+struct TYPE_4__ {int quit_thread; int cond; int cond_lock; int lock; int buffer; int audio_port; int thread; } ;
+typedef TYPE_1__ ps3_audio_t ;
+
+
+ int cellAudioPortClose (int ) ;
+ int cellAudioQuit () ;
+ int fifo_free (int ) ;
+ int free (void*) ;
+ int ps3_audio_start (TYPE_1__*,int) ;
+ int ps3_audio_stop (TYPE_1__*) ;
+ int sys_lwcond_destroy (int *) ;
+ int sys_lwmutex_destroy (int *) ;
+ int sys_ppu_thread_join (int ,int *) ;
 
 __attribute__((used)) static void ps3_audio_free(void *data)
 {
    uint64_t val;
    ps3_audio_t *aud = data;
 
-   aud->quit_thread = true;
-   ps3_audio_start(aud, false);
+   aud->quit_thread = 1;
+   ps3_audio_start(aud, 0);
    sys_ppu_thread_join(aud->thread, &val);
 
    ps3_audio_stop(aud);

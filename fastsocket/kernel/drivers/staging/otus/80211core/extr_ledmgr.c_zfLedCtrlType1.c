@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  zdev_t ;
-typedef  int u32_t ;
-typedef  size_t u16_t ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int zdev_t ;
+typedef int u32_t ;
+typedef size_t u16_t ;
 struct TYPE_3__ {int* ledMode; int counter; scalar_t__ txTraffic; scalar_t__ rxTraffic; } ;
 struct TYPE_4__ {TYPE_1__ ledStruct; } ;
 
-/* Variables and functions */
- scalar_t__ TRUE ; 
- size_t ZM_MAX_LED_NUMBER ; 
- TYPE_2__* wd ; 
- int /*<<< orphan*/  zfHpLedCtrl (int /*<<< orphan*/ *,size_t,int) ; 
- scalar_t__ zfPowerSavingMgrIsSleeping (int /*<<< orphan*/ *) ; 
- scalar_t__ zfStaIsConnected (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  zmw_get_wlan_dev (int /*<<< orphan*/ *) ; 
+
+ scalar_t__ TRUE ;
+ size_t ZM_MAX_LED_NUMBER ;
+ TYPE_2__* wd ;
+ int zfHpLedCtrl (int *,size_t,int) ;
+ scalar_t__ zfPowerSavingMgrIsSleeping (int *) ;
+ scalar_t__ zfStaIsConnected (int *) ;
+ int zmw_get_wlan_dev (int *) ;
 
 void zfLedCtrlType1(zdev_t* dev)
 {
@@ -37,7 +37,7 @@ void zfLedCtrlType1(zdev_t* dev)
     {
         if (zfStaIsConnected(dev) != TRUE)
         {
-            //Scan state
+
             ton = ((wd->ledStruct.ledMode[i] & 0xf00) >> 8) * 5;
             toff = ((wd->ledStruct.ledMode[i] & 0xf000) >> 12) * 5;
 
@@ -63,7 +63,7 @@ void zfLedCtrlType1(zdev_t* dev)
             }
             else
             {
-                //Connect state
+
                 if ((wd->ledStruct.ledMode[i] & 0x40) == 0)
                 {
                     if ((wd->ledStruct.counter & 1) == 0)
@@ -81,7 +81,7 @@ void zfLedCtrlType1(zdev_t* dev)
                             }
                         }
                     }
-                }// if ((wd->ledStruct.ledMode[i] & 0x40) == 0)
+                }
                 else
                 {
                     period = 5 * (1 << ((wd->ledStruct.ledMode[i] & 0x30) >> 4));
@@ -117,8 +117,8 @@ void zfLedCtrlType1(zdev_t* dev)
                             }
                         }
                     }
-                } //else, if ((wd->ledStruct.ledMode[i] & 0x40) == 0)
-            } //else, if (zfPowerSavingMgrIsSleeping(dev))
-        } //else : if (zfStaIsConnected(dev) != TRUE)
-    } //for (i=0; i<ZM_MAX_LED_NUMBER; i++)
+                }
+            }
+        }
+    }
 }

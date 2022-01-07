@@ -1,54 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct lev_del_list {int* list_id; } ;
-
-/* Variables and functions */
-#define  LEV_CRC32 136 
-#define  LEV_LI_DEL_OBJ 135 
-#define  LEV_NOOP 134 
-#define  LEV_ROTATE_FROM 133 
-#define  LEV_ROTATE_TO 132 
-#define  LEV_START 131 
-#define  LEV_TIMESTAMP 130 
-#define  SPLIT_FIRSTINT 129 
-#define  SPLIT_LIKED 128 
- int abs (int) ; 
- int copy_mod ; 
- int copy_rem ; 
- int /*<<< orphan*/  jump_log_pos ; 
- int /*<<< orphan*/  split_mode ; 
- int /*<<< orphan*/  targ_existed ; 
+ int abs (int) ;
+ int copy_mod ;
+ int copy_rem ;
+ int jump_log_pos ;
+ int split_mode ;
+ int targ_existed ;
 
 __attribute__((used)) static int default_want_write (int type, void *rec, int size) {
   int list_id = 0;
   switch (type) {
-  case LEV_START:
+  case 131:
     return !targ_existed++ && !jump_log_pos;
-  case LEV_NOOP:
+  case 134:
     return 0;
-  case LEV_TIMESTAMP:
-  case LEV_CRC32:
-  case LEV_ROTATE_TO:
-  case LEV_ROTATE_FROM:
+  case 130:
+  case 136:
+  case 132:
+  case 133:
     return 0;
-  case LEV_LI_DEL_OBJ:
+  case 135:
     return 1;
   default: {
     switch (split_mode) {
-    case SPLIT_FIRSTINT:
+    case 129:
       list_id = ((struct lev_del_list *) rec)->list_id[0];
       break;
-    case SPLIT_LIKED:
+    case 128:
       list_id = abs(((struct lev_del_list *) rec)->list_id[0]) + abs(((struct lev_del_list *) rec)->list_id[1]);
       break;
     }

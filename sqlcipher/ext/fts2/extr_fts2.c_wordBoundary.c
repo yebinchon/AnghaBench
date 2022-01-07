@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct snippetMatch {int iCol; int iStart; int nByte; } ;
 
-/* Variables and functions */
- scalar_t__ safe_isspace (char const) ; 
+
+ scalar_t__ safe_isspace (char const) ;
 
 __attribute__((used)) static int wordBoundary(
-  int iBreak,                   /* The suggested break point */
-  const char *zDoc,             /* Document text */
-  int nDoc,                     /* Number of bytes in zDoc[] */
-  struct snippetMatch *aMatch,  /* Matching words */
-  int nMatch,                   /* Number of entries in aMatch[] */
-  int iCol                      /* The column number for zDoc[] */
+  int iBreak,
+  const char *zDoc,
+  int nDoc,
+  struct snippetMatch *aMatch,
+  int nMatch,
+  int iCol
 ){
   int i;
   if( iBreak<=10 ){

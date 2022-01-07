@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct lev_start {int schema_id; int extra_bytes; int /*<<< orphan*/  str; void* split_max; void* split_min; scalar_t__ split_mod; int /*<<< orphan*/  type; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct lev_start {int schema_id; int extra_bytes; int str; void* split_max; void* split_min; scalar_t__ split_mod; int type; } ;
 struct TYPE_4__ {int schema_id; scalar_t__ split_mod; scalar_t__ split_min; scalar_t__ split_max; } ;
 struct TYPE_3__ {int schema_id; scalar_t__ split_mod; scalar_t__ split_min; scalar_t__ split_max; } ;
 
-/* Variables and functions */
- TYPE_2__* KHDR ; 
- int /*<<< orphan*/  LEV_START ; 
- TYPE_1__* ST ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ binlog_existed ; 
- int /*<<< orphan*/  create_binlog_headers0 (int,char*,int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,char*,int) ; 
- scalar_t__ split_max ; 
- scalar_t__ split_min ; 
- scalar_t__ split_mod ; 
- void* split_rem ; 
- struct lev_start* write_alloc (int) ; 
+
+ TYPE_2__* KHDR ;
+ int LEV_START ;
+ TYPE_1__* ST ;
+ int assert (int) ;
+ scalar_t__ binlog_existed ;
+ int create_binlog_headers0 (int,char*,int) ;
+ int memcpy (int ,char*,int) ;
+ scalar_t__ split_max ;
+ scalar_t__ split_min ;
+ scalar_t__ split_mod ;
+ void* split_rem ;
+ struct lev_start* write_alloc (int) ;
 
 void start_binlog (int schema_id, char *str, int strlen) {
   int len = str ? strlen+1 : 0;

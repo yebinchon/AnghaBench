@@ -1,60 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  pic ;
-typedef  int /*<<< orphan*/  desc ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int pic ;
+typedef int desc ;
 struct TYPE_6__ {scalar_t__ QuadPart; } ;
 struct TYPE_5__ {int cbSizeofstruct; short picType; } ;
-typedef  TYPE_1__ PICTDESC ;
-typedef  short OLE_HANDLE ;
-typedef  int LONG ;
-typedef  TYPE_2__ LARGE_INTEGER ;
-typedef  int /*<<< orphan*/  IStream ;
-typedef  int /*<<< orphan*/  IPicture ;
-typedef  int /*<<< orphan*/  IPersistStream ;
-typedef  short HRESULT ;
-typedef  int /*<<< orphan*/  HGLOBAL ;
-typedef  short DWORD ;
+typedef TYPE_1__ PICTDESC ;
+typedef short OLE_HANDLE ;
+typedef int LONG ;
+typedef TYPE_2__ LARGE_INTEGER ;
+typedef int IStream ;
+typedef int IPicture ;
+typedef int IPersistStream ;
+typedef short HRESULT ;
+typedef int HGLOBAL ;
+typedef short DWORD ;
 
-/* Variables and functions */
- short CreateStreamOnHGlobal (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GMEM_ZEROINIT ; 
- int /*<<< orphan*/  GlobalAlloc (int /*<<< orphan*/ ,int) ; 
- short* GlobalLock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GlobalUnlock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IID_IPersistStream ; 
- int /*<<< orphan*/  IID_IPicture ; 
- int /*<<< orphan*/  IPersistStream_Release (int /*<<< orphan*/ *) ; 
- short IPersistStream_Save (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- short IPicture_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IPicture_Release (int /*<<< orphan*/ *) ; 
- short IPicture_SaveAsFile (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int*) ; 
- short IPicture_get_Handle (int /*<<< orphan*/ *,short*) ; 
- short IPicture_get_Type (int /*<<< orphan*/ *,short*) ; 
- int /*<<< orphan*/  IStream_Release (int /*<<< orphan*/ *) ; 
- short IStream_Seek (int /*<<< orphan*/ *,TYPE_2__,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * NoStatStream_Construct (int /*<<< orphan*/ ) ; 
- short OleCreatePictureIndirect (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,void**) ; 
- short PICTYPE_NONE ; 
- int /*<<< orphan*/  SEEK_SET ; 
- short S_OK ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  memcmp (short*,char*,int) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ **,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- short pOleLoadPicture (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**) ; 
+
+ short CreateStreamOnHGlobal (int ,int ,int **) ;
+ int FALSE ;
+ int GMEM_ZEROINIT ;
+ int GlobalAlloc (int ,int) ;
+ short* GlobalLock (int ) ;
+ int GlobalUnlock (int ) ;
+ int IID_IPersistStream ;
+ int IID_IPicture ;
+ int IPersistStream_Release (int *) ;
+ short IPersistStream_Save (int *,int *,int ) ;
+ short IPicture_QueryInterface (int *,int *,void**) ;
+ int IPicture_Release (int *) ;
+ short IPicture_SaveAsFile (int *,int *,int ,int*) ;
+ short IPicture_get_Handle (int *,short*) ;
+ short IPicture_get_Type (int *,short*) ;
+ int IStream_Release (int *) ;
+ short IStream_Seek (int *,TYPE_2__,int ,int *) ;
+ int * NoStatStream_Construct (int ) ;
+ short OleCreatePictureIndirect (TYPE_1__*,int *,int ,void**) ;
+ short PICTYPE_NONE ;
+ int SEEK_SET ;
+ short S_OK ;
+ int TRUE ;
+ int memcmp (short*,char*,int) ;
+ int memset (int **,int ,int) ;
+ int ok (int,char*,...) ;
+ short pOleLoadPicture (int *,int ,int ,int *,void**) ;
 
 __attribute__((used)) static void test_load_save_empty_picture(void)
 {
@@ -114,16 +114,16 @@ __attribute__((used)) static void test_load_save_empty_picture(void)
     IPersistStream_Release(src_stream);
     IPicture_Release(pic);
 
-    /* first with statable and seekable stream */
+
     offset.QuadPart = 0;
-    hr = IStream_Seek(dst_stream, offset, SEEK_SET, NULL);
+    hr = IStream_Seek(dst_stream, offset, SEEK_SET, ((void*)0));
     ok(hr == S_OK, "IStream_Seek %#x\n", hr);
 
-    pic = NULL;
+    pic = ((void*)0);
     hr = pOleLoadPicture(dst_stream, 0, FALSE, &IID_IPicture, (void **)&pic);
     ok(hr == S_OK, "OleLoadPicture error %#x\n", hr);
-    ok(pic != NULL,"picture should not be not NULL\n");
-    if (pic != NULL)
+    ok(pic != ((void*)0),"picture should not be not NULL\n");
+    if (pic != ((void*)0))
     {
         type = -1;
         hr = IPicture_get_Type(pic, &type);
@@ -139,15 +139,15 @@ __attribute__((used)) static void test_load_save_empty_picture(void)
     }
     IStream_Release(dst_stream);
 
-    /* again with non-statable and non-seekable stream */
-    stream = NoStatStream_Construct(hmem);
-    ok(stream != NULL, "failed to create empty image stream\n");
 
-    pic = NULL;
+    stream = NoStatStream_Construct(hmem);
+    ok(stream != ((void*)0), "failed to create empty image stream\n");
+
+    pic = ((void*)0);
     hr = pOleLoadPicture(stream, 0, FALSE, &IID_IPicture, (void **)&pic);
     ok(hr == S_OK, "OleLoadPicture error %#x\n", hr);
-    ok(pic != NULL,"picture should not be not NULL\n");
-    if (pic != NULL)
+    ok(pic != ((void*)0),"picture should not be not NULL\n");
+    if (pic != ((void*)0))
     {
         type = -1;
         hr = IPicture_get_Type(pic, &type);
@@ -161,6 +161,6 @@ __attribute__((used)) static void test_load_save_empty_picture(void)
 
         IPicture_Release(pic);
     }
-    /* Non-statable impl always deletes on release */
+
     IStream_Release(stream);
 }

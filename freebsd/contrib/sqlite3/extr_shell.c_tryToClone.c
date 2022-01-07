@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3 ;
-struct TYPE_4__ {int /*<<< orphan*/ * db; } ;
-typedef  TYPE_1__ ShellState ;
 
-/* Variables and functions */
- scalar_t__ access (char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  close_db (int /*<<< orphan*/ *) ; 
- char const* sqlite3_errmsg (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_exec (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int sqlite3_open (char const*,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  tryToCloneData ; 
- int /*<<< orphan*/  tryToCloneSchema (TYPE_1__*,int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  utf8_printf (int /*<<< orphan*/ ,char*,char const*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int sqlite3 ;
+struct TYPE_4__ {int * db; } ;
+typedef TYPE_1__ ShellState ;
+
+
+ scalar_t__ access (char const*,int ) ;
+ int close_db (int *) ;
+ char const* sqlite3_errmsg (int *) ;
+ int sqlite3_exec (int *,char*,int ,int ,int ) ;
+ int sqlite3_open (char const*,int **) ;
+ int stderr ;
+ int tryToCloneData ;
+ int tryToCloneSchema (TYPE_1__*,int *,char*,int ) ;
+ int utf8_printf (int ,char*,char const*) ;
 
 __attribute__((used)) static void tryToClone(ShellState *p, const char *zNewDb){
   int rc;

@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_7__ {TYPE_2__* seaf; TYPE_1__* priv; } ;
-struct TYPE_6__ {int /*<<< orphan*/  db; int /*<<< orphan*/  seaf_dir; } ;
-struct TYPE_5__ {int /*<<< orphan*/  db; } ;
-typedef  TYPE_3__ SeafBranchManager ;
+struct TYPE_6__ {int db; int seaf_dir; } ;
+struct TYPE_5__ {int db; } ;
+typedef TYPE_3__ SeafBranchManager ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BRANCH_DB ; 
-#define  SEAF_DB_TYPE_MYSQL 130 
-#define  SEAF_DB_TYPE_PGSQL 129 
-#define  SEAF_DB_TYPE_SQLITE 128 
- char* g_build_filename (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  g_critical (char*) ; 
- int /*<<< orphan*/  g_free (char*) ; 
- int /*<<< orphan*/  seaf_db_query (int /*<<< orphan*/ ,char*) ; 
- int seaf_db_type (int /*<<< orphan*/ ) ; 
- scalar_t__ sqlite_open_db (char*,int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite_query_exec (int /*<<< orphan*/ ,char const*) ; 
+
+ int BRANCH_DB ;
+
+
+
+ char* g_build_filename (int ,int ,int *) ;
+ int g_critical (char*) ;
+ int g_free (char*) ;
+ int seaf_db_query (int ,char*) ;
+ int seaf_db_type (int ) ;
+ scalar_t__ sqlite_open_db (char*,int *) ;
+ scalar_t__ sqlite_query_exec (int ,char const*) ;
 
 __attribute__((used)) static int
 open_db (SeafBranchManager *mgr)
 {
-#ifndef SEAFILE_SERVER
+
 
     char *db_path;
     const char *sql;
 
-    db_path = g_build_filename (mgr->seaf->seaf_dir, BRANCH_DB, NULL);
+    db_path = g_build_filename (mgr->seaf->seaf_dir, BRANCH_DB, ((void*)0));
     if (sqlite_open_db (db_path, &mgr->priv->db) < 0) {
         g_critical ("[Branch mgr] Failed to open branch db\n");
         g_free (db_path);
@@ -55,35 +55,5 @@ open_db (SeafBranchManager *mgr)
     sql = "CREATE INDEX IF NOT EXISTS branch_index ON Branch(repo_id, name);";
     if (sqlite_query_exec (mgr->priv->db, sql) < 0)
         return -1;
-
-#elif defined FULL_FEATURE
-
-    char *sql;
-    switch (seaf_db_type (mgr->seaf->db)) {
-    case SEAF_DB_TYPE_MYSQL:
-        sql = "CREATE TABLE IF NOT EXISTS Branch ("
-            "name VARCHAR(10), repo_id CHAR(41), commit_id CHAR(41),"
-            "PRIMARY KEY (repo_id, name)) ENGINE = INNODB";
-        if (seaf_db_query (mgr->seaf->db, sql) < 0)
-            return -1;
-        break;
-    case SEAF_DB_TYPE_PGSQL:
-        sql = "CREATE TABLE IF NOT EXISTS Branch ("
-            "name VARCHAR(10), repo_id CHAR(40), commit_id CHAR(40),"
-            "PRIMARY KEY (repo_id, name))";
-        if (seaf_db_query (mgr->seaf->db, sql) < 0)
-            return -1;
-        break;
-    case SEAF_DB_TYPE_SQLITE:
-        sql = "CREATE TABLE IF NOT EXISTS Branch ("
-            "name VARCHAR(10), repo_id CHAR(41), commit_id CHAR(41),"
-            "PRIMARY KEY (repo_id, name))";
-        if (seaf_db_query (mgr->seaf->db, sql) < 0)
-            return -1;
-        break;
-    }
-
-#endif
-
     return 0;
 }

@@ -1,60 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int InitialStatusLength; unsigned int CurrentStatusLength; unsigned int CombinedStatusBufferLength; unsigned char* CombinedStatusBuffer; unsigned char* CurrentStatusBuffer; } ;
-typedef  TYPE_1__ DAC960_Controller_T ;
+typedef TYPE_1__ DAC960_Controller_T ;
 
-/* Variables and functions */
- unsigned int DAC960_InitialStatusBufferSize ; 
- int /*<<< orphan*/  DAC960_Warning (char*,TYPE_1__*) ; 
- int /*<<< orphan*/  GFP_ATOMIC ; 
- int /*<<< orphan*/  kfree (unsigned char*) ; 
- void* kmalloc (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (unsigned char*,unsigned char*,int) ; 
+
+ unsigned int DAC960_InitialStatusBufferSize ;
+ int DAC960_Warning (char*,TYPE_1__*) ;
+ int GFP_ATOMIC ;
+ int kfree (unsigned char*) ;
+ void* kmalloc (int,int ) ;
+ int memcpy (unsigned char*,unsigned char*,int) ;
 
 __attribute__((used)) static bool DAC960_CheckStatusBuffer(DAC960_Controller_T *Controller,
-					unsigned int ByteCount)
+     unsigned int ByteCount)
 {
   unsigned char *NewStatusBuffer;
   if (Controller->InitialStatusLength + 1 +
       Controller->CurrentStatusLength + ByteCount + 1 <=
       Controller->CombinedStatusBufferLength)
-    return true;
+    return 1;
   if (Controller->CombinedStatusBufferLength == 0)
     {
       unsigned int NewStatusBufferLength = DAC960_InitialStatusBufferSize;
       while (NewStatusBufferLength < ByteCount)
-	NewStatusBufferLength *= 2;
+ NewStatusBufferLength *= 2;
       Controller->CombinedStatusBuffer = kmalloc(NewStatusBufferLength,
-						  GFP_ATOMIC);
-      if (Controller->CombinedStatusBuffer == NULL) return false;
+        GFP_ATOMIC);
+      if (Controller->CombinedStatusBuffer == ((void*)0)) return 0;
       Controller->CombinedStatusBufferLength = NewStatusBufferLength;
-      return true;
+      return 1;
     }
   NewStatusBuffer = kmalloc(2 * Controller->CombinedStatusBufferLength,
-			     GFP_ATOMIC);
-  if (NewStatusBuffer == NULL)
+        GFP_ATOMIC);
+  if (NewStatusBuffer == ((void*)0))
     {
       DAC960_Warning("Unable to expand Combined Status Buffer - Truncating\n",
-		     Controller);
-      return false;
+       Controller);
+      return 0;
     }
   memcpy(NewStatusBuffer, Controller->CombinedStatusBuffer,
-	 Controller->CombinedStatusBufferLength);
+  Controller->CombinedStatusBufferLength);
   kfree(Controller->CombinedStatusBuffer);
   Controller->CombinedStatusBuffer = NewStatusBuffer;
   Controller->CombinedStatusBufferLength *= 2;
   Controller->CurrentStatusBuffer =
     &NewStatusBuffer[Controller->InitialStatusLength + 1];
-  return true;
+  return 1;
 }

@@ -1,30 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_OPTION_NOT_FOUND ; 
- int /*<<< orphan*/  AV_LOG_DEBUG ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_OPT_SEARCH_CHILDREN ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  av_free (char*) ; 
- int /*<<< orphan*/  av_freep (char**) ; 
- char* av_get_token (char const**,char const*) ; 
- int /*<<< orphan*/  av_log (void*,int /*<<< orphan*/ ,char*,char*,...) ; 
- int av_opt_set (void*,char*,char*,int /*<<< orphan*/ ) ; 
- scalar_t__ strspn (char const*,char const*) ; 
+ int AVERROR (int ) ;
+ int AVERROR_OPTION_NOT_FOUND ;
+ int AV_LOG_DEBUG ;
+ int AV_LOG_ERROR ;
+ int AV_OPT_SEARCH_CHILDREN ;
+ int EINVAL ;
+ int ENOMEM ;
+ int av_free (char*) ;
+ int av_freep (char**) ;
+ char* av_get_token (char const**,char const*) ;
+ int av_log (void*,int ,char*,char*,...) ;
+ int av_opt_set (void*,char*,char*,int ) ;
+ scalar_t__ strspn (char const*,char const*) ;
 
 __attribute__((used)) static int parse_key_value_pair(void *ctx, const char **buf,
                                 const char *key_val_sep, const char *pairs_sep)

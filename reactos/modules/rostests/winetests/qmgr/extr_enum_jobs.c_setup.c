@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ HRESULT ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BG_JOB_TYPE_DOWNLOAD ; 
- int /*<<< orphan*/  CLSCTX_LOCAL_SERVER ; 
- int /*<<< orphan*/  CLSID_BackgroundCopyManager ; 
- scalar_t__ CoCreateInstance (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  FALSE ; 
- scalar_t__ IBackgroundCopyManager_CreateJob (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- scalar_t__ IBackgroundCopyManager_EnumJobs (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ IEnumBackgroundCopyJobs_GetCount (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IID_IBackgroundCopyManager ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  test_displayNameA ; 
- int /*<<< orphan*/  test_displayNameB ; 
- int /*<<< orphan*/  test_enumJobsA ; 
- int /*<<< orphan*/  test_enumJobsB ; 
- int /*<<< orphan*/ * test_jobA ; 
- int /*<<< orphan*/ * test_jobB ; 
- int /*<<< orphan*/  test_jobCountB ; 
- int /*<<< orphan*/  test_jobIdA ; 
- int /*<<< orphan*/  test_jobIdB ; 
- int /*<<< orphan*/ * test_manager ; 
+
+
+
+typedef scalar_t__ HRESULT ;
+typedef int BOOL ;
+
+
+ int BG_JOB_TYPE_DOWNLOAD ;
+ int CLSCTX_LOCAL_SERVER ;
+ int CLSID_BackgroundCopyManager ;
+ scalar_t__ CoCreateInstance (int *,int *,int ,int *,void**) ;
+ int FALSE ;
+ scalar_t__ IBackgroundCopyManager_CreateJob (int *,int ,int ,int *,int **) ;
+ scalar_t__ IBackgroundCopyManager_EnumJobs (int *,int ,int *) ;
+ scalar_t__ IEnumBackgroundCopyJobs_GetCount (int ,int *) ;
+ int IID_IBackgroundCopyManager ;
+ scalar_t__ S_OK ;
+ int TRUE ;
+ int memset (int *,int ,int) ;
+ int test_displayNameA ;
+ int test_displayNameB ;
+ int test_enumJobsA ;
+ int test_enumJobsB ;
+ int * test_jobA ;
+ int * test_jobB ;
+ int test_jobCountB ;
+ int test_jobIdA ;
+ int test_jobIdB ;
+ int * test_manager ;
 
 __attribute__((used)) static BOOL setup(void)
 {
     HRESULT hres;
 
-    test_manager = NULL;
-    test_jobA = NULL;
-    test_jobB = NULL;
+    test_manager = ((void*)0);
+    test_jobA = ((void*)0);
+    test_jobB = ((void*)0);
     memset(&test_jobIdA, 0, sizeof test_jobIdA);
     memset(&test_jobIdB, 0, sizeof test_jobIdB);
 
-    hres = CoCreateInstance(&CLSID_BackgroundCopyManager, NULL,
+    hres = CoCreateInstance(&CLSID_BackgroundCopyManager, ((void*)0),
                             CLSCTX_LOCAL_SERVER, &IID_IBackgroundCopyManager,
                             (void **) &test_manager);
     if(hres != S_OK)

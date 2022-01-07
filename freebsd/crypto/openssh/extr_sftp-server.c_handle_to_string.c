@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_char ;
-typedef  int /*<<< orphan*/  int32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  put_u32 (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * xmalloc (int) ; 
+
+
+
+typedef int u_char ;
+typedef int int32_t ;
+
+
+ int put_u32 (int *,int) ;
+ int * xmalloc (int) ;
 
 __attribute__((used)) static int
 handle_to_string(int handle, u_char **stringp, int *hlenp)
 {
-	if (stringp == NULL || hlenp == NULL)
-		return -1;
-	*stringp = xmalloc(sizeof(int32_t));
-	put_u32(*stringp, handle);
-	*hlenp = sizeof(int32_t);
-	return 0;
+ if (stringp == ((void*)0) || hlenp == ((void*)0))
+  return -1;
+ *stringp = xmalloc(sizeof(int32_t));
+ put_u32(*stringp, handle);
+ *hlenp = sizeof(int32_t);
+ return 0;
 }

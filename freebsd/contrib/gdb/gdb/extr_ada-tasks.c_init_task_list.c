@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct task_entry {struct task_entry* next_task; } ;
 
-/* Variables and functions */
- scalar_t__ highest_task_num ; 
- struct task_entry* task_list ; 
- int /*<<< orphan*/  xfree (struct task_entry*) ; 
+
+ scalar_t__ highest_task_num ;
+ struct task_entry* task_list ;
+ int xfree (struct task_entry*) ;
 
 void
 init_task_list (void)
@@ -29,6 +29,6 @@ init_task_list (void)
       pt = pt->next_task;
       xfree (old_pt);
     };
-  task_list = NULL;
+  task_list = ((void*)0);
   highest_task_num = 0;
 }

@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_5__ ;
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
+
+
+typedef struct TYPE_12__ TYPE_5__ ;
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_10__ {int lsp_bit0; int lsp_bit1; int lsp_split; int lsp_bit2; int ppc_period_bit; int pgain_bit; TYPE_2__* fmode; } ;
-typedef  TYPE_3__ TwinVQModeTab ;
-struct TYPE_11__ {int window_type; size_t ftype; void** g_coef; void** p_coef; int /*<<< orphan*/  ppc_coeffs; void*** lpc_idx2; void** lpc_idx1; void** lpc_hist_idx; void** sub_gain_bits; void** gain_bits; int /*<<< orphan*/ ** bark_use_hist; void**** bark1; int /*<<< orphan*/  main_coeffs; } ;
-typedef  TYPE_4__ TwinVQFrameData ;
-struct TYPE_12__ {scalar_t__ cur_frame; scalar_t__ frames_per_packet; int /*<<< orphan*/  is_6kbps; TYPE_4__* bits; TYPE_1__* avctx; TYPE_3__* mtab; } ;
-typedef  TYPE_5__ TwinVQContext ;
+typedef TYPE_3__ TwinVQModeTab ;
+struct TYPE_11__ {int window_type; size_t ftype; void** g_coef; void** p_coef; int ppc_coeffs; void*** lpc_idx2; void** lpc_idx1; void** lpc_hist_idx; void** sub_gain_bits; void** gain_bits; int ** bark_use_hist; void**** bark1; int main_coeffs; } ;
+typedef TYPE_4__ TwinVQFrameData ;
+struct TYPE_12__ {scalar_t__ cur_frame; scalar_t__ frames_per_packet; int is_6kbps; TYPE_4__* bits; TYPE_1__* avctx; TYPE_3__* mtab; } ;
+typedef TYPE_5__ TwinVQContext ;
 struct TYPE_9__ {int sub; int bark_n_coef; int bark_n_bit; } ;
 struct TYPE_8__ {int channels; } ;
-typedef  int /*<<< orphan*/  GetBitContext ;
-typedef  int /*<<< orphan*/  AVCodecContext ;
+typedef int GetBitContext ;
+typedef int AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- size_t TWINVQ_FT_LONG ; 
- size_t TWINVQ_FT_SHORT ; 
- int TWINVQ_GAIN_BITS ; 
- int TWINVQ_SUB_GAIN_BITS ; 
- int TWINVQ_WINDOW_TYPE_BITS ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- size_t* ff_twinvq_wtype_to_ftype_table ; 
- void* get_bits (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  get_bits1 (int /*<<< orphan*/ *) ; 
- int get_bits_count (int /*<<< orphan*/ *) ; 
- int init_get_bits8 (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int) ; 
- int /*<<< orphan*/  read_cb_data (TYPE_5__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  skip_bits (int /*<<< orphan*/ *,int) ; 
+
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ size_t TWINVQ_FT_LONG ;
+ size_t TWINVQ_FT_SHORT ;
+ int TWINVQ_GAIN_BITS ;
+ int TWINVQ_SUB_GAIN_BITS ;
+ int TWINVQ_WINDOW_TYPE_BITS ;
+ int av_log (int *,int ,char*) ;
+ size_t* ff_twinvq_wtype_to_ftype_table ;
+ void* get_bits (int *,int) ;
+ int get_bits1 (int *) ;
+ int get_bits_count (int *) ;
+ int init_get_bits8 (int *,int const*,int) ;
+ int read_cb_data (TYPE_5__*,int *,int ,int) ;
+ int skip_bits (int *,int) ;
 
 __attribute__((used)) static int metasound_read_bitstream(AVCodecContext *avctx, TwinVQContext *tctx,
                                     const uint8_t *buf, int buf_size)
 {
-    TwinVQFrameData     *bits;
+    TwinVQFrameData *bits;
     const TwinVQModeTab *mtab = tctx->mtab;
-    int channels              = tctx->avctx->channels;
+    int channels = tctx->avctx->channels;
     int sub;
     GetBitContext gb;
     int i, j, k, ret;
@@ -101,7 +101,7 @@ __attribute__((used)) static int metasound_read_bitstream(AVCodecContext *avctx,
 
         for (i = 0; i < channels; i++) {
             bits->lpc_hist_idx[i] = get_bits(&gb, mtab->lsp_bit0);
-            bits->lpc_idx1[i]     = get_bits(&gb, mtab->lsp_bit1);
+            bits->lpc_idx1[i] = get_bits(&gb, mtab->lsp_bit1);
 
             for (j = 0; j < mtab->lsp_split; j++)
                 bits->lpc_idx2[i][j] = get_bits(&gb, mtab->lsp_bit2);
@@ -115,7 +115,7 @@ __attribute__((used)) static int metasound_read_bitstream(AVCodecContext *avctx,
             }
         }
 
-        // subframes are aligned to nibbles
+
         if (get_bits_count(&gb) & 3)
             skip_bits(&gb, 4 - (get_bits_count(&gb) & 3));
     }

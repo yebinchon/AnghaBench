@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_object_t ;
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int vlc_object_t ;
 struct TYPE_7__ {int i_width; int i_visible_width; int i_height; int i_visible_height; } ;
-typedef  TYPE_1__ video_format_t ;
+typedef TYPE_1__ video_format_t ;
 struct TYPE_8__ {int i_x; int i_y; int i_align; } ;
-typedef  TYPE_2__ subpicture_region_t ;
+typedef TYPE_2__ subpicture_region_t ;
 
-/* Variables and functions */
- int SUBPICTURE_ALIGN_LEFT ; 
- int SUBPICTURE_ALIGN_TOP ; 
- int /*<<< orphan*/  VLC_CODEC_YUVA ; 
- TYPE_2__* spuregion_CreateFromPicture (int /*<<< orphan*/ *,TYPE_1__*,char const*) ; 
- int /*<<< orphan*/  video_format_Init (TYPE_1__*,int /*<<< orphan*/ ) ; 
+
+ int SUBPICTURE_ALIGN_LEFT ;
+ int SUBPICTURE_ALIGN_TOP ;
+ int VLC_CODEC_YUVA ;
+ TYPE_2__* spuregion_CreateFromPicture (int *,TYPE_1__*,char const*) ;
+ int video_format_Init (TYPE_1__*,int ) ;
 
 __attribute__((used)) static subpicture_region_t * vout_OSDImage( vlc_object_t *p_obj,
                                             int x, int y, int w, int h,

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct passwd {int /*<<< orphan*/  pw_name; } ;
 
-/* Variables and functions */
- int pw_update (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+struct passwd {int pw_name; } ;
+
+
+ int pw_update (int *,int ) ;
 
 int
 delpwent(struct passwd * pwd)
 {
 
-	return (pw_update(NULL, pwd->pw_name));
+ return (pw_update(((void*)0), pwd->pw_name));
 }

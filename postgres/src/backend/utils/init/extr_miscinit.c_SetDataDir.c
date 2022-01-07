@@ -1,33 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  AssertArg (char const*) ; 
- char* DataDir ; 
- int /*<<< orphan*/  free (char*) ; 
- char* make_absolute_path (char const*) ; 
+ int AssertArg (char const*) ;
+ char* DataDir ;
+ int free (char*) ;
+ char* make_absolute_path (char const*) ;
 
 void
 SetDataDir(const char *dir)
 {
-	char	   *new;
+ char *new;
 
-	AssertArg(dir);
+ AssertArg(dir);
 
-	/* If presented path is relative, convert to absolute */
-	new = make_absolute_path(dir);
 
-	if (DataDir)
-		free(DataDir);
-	DataDir = new;
+ new = make_absolute_path(dir);
+
+ if (DataDir)
+  free(DataDir);
+ DataDir = new;
 }

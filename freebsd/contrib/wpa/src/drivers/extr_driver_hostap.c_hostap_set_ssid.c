@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int u8 ;
 struct TYPE_3__ {int flags; int length; scalar_t__ pointer; } ;
 struct TYPE_4__ {TYPE_1__ essid; } ;
-struct iwreq {TYPE_2__ u; int /*<<< orphan*/  ifr_name; } ;
-struct hostap_driver_data {int /*<<< orphan*/  ioctl_sock; int /*<<< orphan*/  iface; } ;
-typedef  int /*<<< orphan*/  iwr ;
-typedef  scalar_t__ caddr_t ;
+struct iwreq {TYPE_2__ u; int ifr_name; } ;
+struct hostap_driver_data {int ioctl_sock; int iface; } ;
+typedef int iwr ;
+typedef scalar_t__ caddr_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IFNAMSIZ ; 
- int /*<<< orphan*/  MSG_ERROR ; 
- int /*<<< orphan*/  SIOCSIWESSID ; 
- int /*<<< orphan*/  errno ; 
- scalar_t__ ioctl (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct iwreq*) ; 
- int /*<<< orphan*/  memset (struct iwreq*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  os_strlcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strerror (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wpa_printf (int /*<<< orphan*/ ,char*,int,int /*<<< orphan*/ ) ; 
+
+ int IFNAMSIZ ;
+ int MSG_ERROR ;
+ int SIOCSIWESSID ;
+ int errno ;
+ scalar_t__ ioctl (int ,int ,struct iwreq*) ;
+ int memset (struct iwreq*,int ,int) ;
+ int os_strlcpy (int ,int ,int ) ;
+ int strerror (int ) ;
+ int wpa_printf (int ,char*,int,int ) ;
 
 __attribute__((used)) static int hostap_set_ssid(void *priv, const u8 *buf, int len)
 {
-	struct hostap_driver_data *drv = priv;
-	struct iwreq iwr;
+ struct hostap_driver_data *drv = priv;
+ struct iwreq iwr;
 
-	memset(&iwr, 0, sizeof(iwr));
-	os_strlcpy(iwr.ifr_name, drv->iface, IFNAMSIZ);
-	iwr.u.essid.flags = 1; /* SSID active */
-	iwr.u.essid.pointer = (caddr_t) buf;
-	iwr.u.essid.length = len + 1;
+ memset(&iwr, 0, sizeof(iwr));
+ os_strlcpy(iwr.ifr_name, drv->iface, IFNAMSIZ);
+ iwr.u.essid.flags = 1;
+ iwr.u.essid.pointer = (caddr_t) buf;
+ iwr.u.essid.length = len + 1;
 
-	if (ioctl(drv->ioctl_sock, SIOCSIWESSID, &iwr) < 0) {
-		wpa_printf(MSG_ERROR, "ioctl[SIOCSIWESSID,len=%d]: %s",
-			   len, strerror(errno));
-		return -1;
-	}
+ if (ioctl(drv->ioctl_sock, SIOCSIWESSID, &iwr) < 0) {
+  wpa_printf(MSG_ERROR, "ioctl[SIOCSIWESSID,len=%d]: %s",
+      len, strerror(errno));
+  return -1;
+ }
 
-	return 0;
+ return 0;
 }

@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct lev_generic {int type; int b; } ;
 
-/* Variables and functions */
-#define  LEV_START 129 
-#define  LEV_TAG 128 
- char act ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  binlog_tag ; 
- int /*<<< orphan*/  convert_md5_to_hex (char*,int /*<<< orphan*/ ) ; 
- int default_replay_logevent (struct lev_generic*,int) ; 
- int /*<<< orphan*/  exit (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kprintf (char*,...) ; 
- int /*<<< orphan*/  log_cur_pos () ; 
- int /*<<< orphan*/  printf (char*,char*) ; 
- int start ; 
+
+
+
+ char act ;
+ int assert (int) ;
+ int binlog_tag ;
+ int convert_md5_to_hex (char*,int ) ;
+ int default_replay_logevent (struct lev_generic*,int) ;
+ int exit (int ) ;
+ int kprintf (char*,...) ;
+ int log_cur_pos () ;
+ int printf (char*,char*) ;
+ int start ;
 
 int tag_replay_logevent (struct lev_generic *E, int size) {
   int s;
   switch (E->type) {
-    case LEV_START:
+    case 129:
       assert (!start && !log_cur_pos ());
       if (size < 24 || E->b < 0 || E->b > 4096) { return -2; }
       s = 24 + ((E->b + 3) & -4);
       if (size < s) { return -2; }
       start = 1;
       return s;
-    case LEV_TAG:
+    case 128:
       s = default_replay_logevent (E, size);
       if (act == 'i') {
         char output[33];

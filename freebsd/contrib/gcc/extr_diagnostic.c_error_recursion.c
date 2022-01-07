@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  kind; } ;
-typedef  TYPE_1__ diagnostic_info ;
-struct TYPE_7__ {int lock; int /*<<< orphan*/  printer; } ;
-typedef  TYPE_2__ diagnostic_context ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DK_ICE ; 
- int /*<<< orphan*/  diagnostic_action_after_output (TYPE_2__*,TYPE_1__*) ; 
- int /*<<< orphan*/  fnotice (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  pp_flush (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  real_abort () ; 
- int /*<<< orphan*/  stderr ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int kind; } ;
+typedef TYPE_1__ diagnostic_info ;
+struct TYPE_7__ {int lock; int printer; } ;
+typedef TYPE_2__ diagnostic_context ;
+
+
+ int DK_ICE ;
+ int diagnostic_action_after_output (TYPE_2__*,TYPE_1__*) ;
+ int fnotice (int ,char*) ;
+ int pp_flush (int ) ;
+ int real_abort () ;
+ int stderr ;
 
 __attribute__((used)) static void
 error_recursion (diagnostic_context *context)
@@ -34,14 +34,14 @@ error_recursion (diagnostic_context *context)
     pp_flush (context->printer);
 
   fnotice (stderr,
-	   "Internal compiler error: Error reporting routines re-entered.\n");
+    "Internal compiler error: Error reporting routines re-entered.\n");
 
-  /* Call diagnostic_action_after_output to get the "please submit a bug
-     report" message.  It only looks at the kind field of diagnostic_info.  */
+
+
   diagnostic.kind = DK_ICE;
   diagnostic_action_after_output (context, &diagnostic);
 
-  /* Do not use gcc_unreachable here; that goes through internal_error
-     and therefore would cause infinite recursion.  */
+
+
   real_abort ();
 }

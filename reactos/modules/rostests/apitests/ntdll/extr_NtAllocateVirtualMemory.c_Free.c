@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VOID ;
-typedef  size_t ULONG ;
-typedef  scalar_t__ SIZE_T ;
-typedef  int /*<<< orphan*/ * PVOID ;
-typedef  scalar_t__ PUCHAR ;
-typedef  scalar_t__* PSIZE_T ;
-typedef  scalar_t__ NTSTATUS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- int /*<<< orphan*/ ** Allocations ; 
- size_t CurrentAllocation ; 
- int /*<<< orphan*/  MEM_RELEASE ; 
- int /*<<< orphan*/  NtCurrentProcess () ; 
- scalar_t__ NtFreeVirtualMemory (int /*<<< orphan*/ ,int /*<<< orphan*/ **,scalar_t__*,int /*<<< orphan*/ ) ; 
- scalar_t__ PAGE_SIZE ; 
- int /*<<< orphan*/  RtlFillMemory (int /*<<< orphan*/ *,scalar_t__,int) ; 
- scalar_t__ STATUS_SUCCESS ; 
- int /*<<< orphan*/  ValidateAllocations () ; 
+
+
+
+typedef int VOID ;
+typedef size_t ULONG ;
+typedef scalar_t__ SIZE_T ;
+typedef int * PVOID ;
+typedef scalar_t__ PUCHAR ;
+typedef scalar_t__* PSIZE_T ;
+typedef scalar_t__ NTSTATUS ;
+
+
+ int ASSERT (int) ;
+ int ** Allocations ;
+ size_t CurrentAllocation ;
+ int MEM_RELEASE ;
+ int NtCurrentProcess () ;
+ scalar_t__ NtFreeVirtualMemory (int ,int **,scalar_t__*,int ) ;
+ scalar_t__ PAGE_SIZE ;
+ int RtlFillMemory (int *,scalar_t__,int) ;
+ scalar_t__ STATUS_SUCCESS ;
+ int ValidateAllocations () ;
 
 __attribute__((used)) static
 VOID
@@ -56,7 +56,7 @@ Free(
     for (i = 0; i < CurrentAllocation; ++i)
         if (Allocations[i] == UserBuffer)
         {
-            Allocations[i] = NULL;
+            Allocations[i] = ((void*)0);
             break;
         }
     ValidateAllocations();

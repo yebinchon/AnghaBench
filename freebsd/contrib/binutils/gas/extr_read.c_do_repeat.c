@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sb ;
 
-/* Variables and functions */
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  as_bad (int /*<<< orphan*/ ,char const*,char const*) ; 
- int /*<<< orphan*/  buffer_and_nest (char const*,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  buffer_limit ; 
- int /*<<< orphan*/  get_line_sb ; 
- int /*<<< orphan*/  input_line_pointer ; 
- int /*<<< orphan*/  input_scrub_include_sb (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  input_scrub_next_buffer (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sb_add_sb (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sb_kill (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sb_new (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int sb ;
+
+
+ int _ (char*) ;
+ int as_bad (int ,char const*,char const*) ;
+ int buffer_and_nest (char const*,char const*,int *,int ) ;
+ int buffer_limit ;
+ int get_line_sb ;
+ int input_line_pointer ;
+ int input_scrub_include_sb (int *,int ,int) ;
+ int input_scrub_next_buffer (int *) ;
+ int sb_add_sb (int *,int *) ;
+ int sb_kill (int *) ;
+ int sb_new (int *) ;
 
 void
 do_repeat (int count, const char *start, const char *end)

@@ -1,35 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ scalar_t__ ESP_OK ;
+ int WIFI_TXCB_EAPOL_ID ;
+ int eapol_txcb ;
+ scalar_t__ esp_wifi_register_tx_cb_internal (int ,int ) ;
+ int wpa_config_assoc_ie ;
+ int wpa_deauthenticate ;
+ int wpa_get_key ;
+ int wpa_install_key ;
+ int wpa_neg_complete ;
+ int wpa_sendto_wrapper ;
+ int wpa_sm_init (int *,int ,int ,int ,int ,int ,int ) ;
 
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ ESP_OK ; 
- int /*<<< orphan*/  WIFI_TXCB_EAPOL_ID ; 
- int /*<<< orphan*/  eapol_txcb ; 
- scalar_t__ esp_wifi_register_tx_cb_internal (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wpa_config_assoc_ie ; 
- int /*<<< orphan*/  wpa_deauthenticate ; 
- int /*<<< orphan*/  wpa_get_key ; 
- int /*<<< orphan*/  wpa_install_key ; 
- int /*<<< orphan*/  wpa_neg_complete ; 
- int /*<<< orphan*/  wpa_sendto_wrapper ; 
- int wpa_sm_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
-
-bool  wpa_attach(void)
+bool wpa_attach(void)
 {
-    bool ret = true; 
-    ret = wpa_sm_init(NULL, wpa_sendto_wrapper,
+    bool ret = 1;
+    ret = wpa_sm_init(((void*)0), wpa_sendto_wrapper,
                  wpa_config_assoc_ie, wpa_install_key, wpa_get_key, wpa_deauthenticate, wpa_neg_complete);
-    if(ret) {   
+    if(ret) {
         ret = (esp_wifi_register_tx_cb_internal(eapol_txcb, WIFI_TXCB_EAPOL_ID) == ESP_OK);
     }
     return ret;

@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct redis_stat {int st_size; } ;
-typedef  int /*<<< orphan*/  sig ;
-typedef  int off_t ;
-typedef  int /*<<< orphan*/  buf ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef int sig ;
+typedef int off_t ;
+typedef int buf ;
+typedef int FILE ;
 
-/* Variables and functions */
- scalar_t__ C_ERR ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fgets (char*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fileno (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int fread (char*,int,int,int /*<<< orphan*/ *) ; 
- int ftruncate (int /*<<< orphan*/ ,int) ; 
- scalar_t__ memcmp (char*,char*,int) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int process (int /*<<< orphan*/ *) ; 
- scalar_t__ redis_check_rdb_main (int,char**,int /*<<< orphan*/ *) ; 
- int redis_fstat (int /*<<< orphan*/ ,struct redis_stat*) ; 
- int /*<<< orphan*/  rewind (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stdin ; 
- scalar_t__ strcmp (char*,char*) ; 
- scalar_t__ strncasecmp (char*,char*,int) ; 
+
+ scalar_t__ C_ERR ;
+ int exit (int) ;
+ int fclose (int *) ;
+ int * fgets (char*,int,int ) ;
+ int fileno (int *) ;
+ int * fopen (char*,char*) ;
+ int fread (char*,int,int,int *) ;
+ int ftruncate (int ,int) ;
+ scalar_t__ memcmp (char*,char*,int) ;
+ int printf (char*,...) ;
+ int process (int *) ;
+ scalar_t__ redis_check_rdb_main (int,char**,int *) ;
+ int redis_fstat (int ,struct redis_stat*) ;
+ int rewind (int *) ;
+ int stdin ;
+ scalar_t__ strcmp (char*,char*) ;
+ scalar_t__ strncasecmp (char*,char*,int) ;
 
 int redis_check_aof_main(int argc, char **argv) {
     char *filename;
@@ -57,7 +57,7 @@ int redis_check_aof_main(int argc, char **argv) {
     }
 
     FILE *fp = fopen(filename,"r+");
-    if (fp == NULL) {
+    if (fp == ((void*)0)) {
         printf("Cannot open file: %s\n", filename);
         exit(1);
     }
@@ -74,9 +74,9 @@ int redis_check_aof_main(int argc, char **argv) {
         exit(1);
     }
 
-    /* This AOF file may have an RDB preamble. Check this to start, and if this
-     * is the case, start processing the RDB part. */
-    if (size >= 8) {    /* There must be at least room for the RDB header. */
+
+
+    if (size >= 8) {
         char sig[5];
         int has_preamble = fread(sig,sizeof(sig),1,fp) == 1 &&
                             memcmp(sig,"REDIS",sizeof(sig)) == 0;
@@ -102,7 +102,7 @@ int redis_check_aof_main(int argc, char **argv) {
             char buf[2];
             printf("This will shrink the AOF from %lld bytes, with %lld bytes, to %lld bytes\n",(long long)size,(long long)diff,(long long)pos);
             printf("Continue? [y/N]: ");
-            if (fgets(buf,sizeof(buf),stdin) == NULL ||
+            if (fgets(buf,sizeof(buf),stdin) == ((void*)0) ||
                 strncasecmp(buf,"y",1) != 0) {
                     printf("Aborting...\n");
                     exit(1);

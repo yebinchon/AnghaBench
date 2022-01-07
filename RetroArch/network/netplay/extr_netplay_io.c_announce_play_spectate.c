@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  netplay_t ;
-typedef  int /*<<< orphan*/  msg ;
-typedef  enum rarch_netplay_connection_mode { ____Placeholder_rarch_netplay_connection_mode } rarch_netplay_connection_mode ;
-typedef  int /*<<< orphan*/  device_str ;
 
-/* Variables and functions */
- int MAX_INPUT_DEVICES ; 
- int /*<<< orphan*/  MESSAGE_QUEUE_CATEGORY_INFO ; 
- int /*<<< orphan*/  MESSAGE_QUEUE_ICON_DEFAULT ; 
- int /*<<< orphan*/  MSG_NETPLAY_PLAYER_S_LEFT ; 
- int /*<<< orphan*/  MSG_NETPLAY_S_HAS_JOINED_AS_PLAYER_N ; 
- int /*<<< orphan*/  MSG_NETPLAY_S_HAS_JOINED_WITH_INPUT_DEVICES_S ; 
- int /*<<< orphan*/  MSG_NETPLAY_YOU_HAVE_JOINED_AS_PLAYER_N ; 
- int /*<<< orphan*/  MSG_NETPLAY_YOU_HAVE_JOINED_WITH_INPUT_DEVICES_S ; 
- int /*<<< orphan*/  MSG_NETPLAY_YOU_HAVE_LEFT_THE_GAME ; 
-#define  NETPLAY_CONNECTION_PLAYING 130 
-#define  NETPLAY_CONNECTION_SLAVE 129 
-#define  NETPLAY_CONNECTION_SPECTATING 128 
- int NETPLAY_NICK_LEN ; 
- int /*<<< orphan*/  RARCH_LOG (char*,char*) ; 
- char* msg_hash_to_str (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  runloop_msg_queue_push (char*,int,int,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- size_t snprintf (char*,int,char*,...) ; 
- int /*<<< orphan*/  strlcpy (char*,char*,int) ; 
+
+
+
+typedef int uint32_t ;
+typedef int netplay_t ;
+typedef int msg ;
+typedef enum rarch_netplay_connection_mode { ____Placeholder_rarch_netplay_connection_mode } rarch_netplay_connection_mode ;
+typedef int device_str ;
+
+
+ int MAX_INPUT_DEVICES ;
+ int MESSAGE_QUEUE_CATEGORY_INFO ;
+ int MESSAGE_QUEUE_ICON_DEFAULT ;
+ int MSG_NETPLAY_PLAYER_S_LEFT ;
+ int MSG_NETPLAY_S_HAS_JOINED_AS_PLAYER_N ;
+ int MSG_NETPLAY_S_HAS_JOINED_WITH_INPUT_DEVICES_S ;
+ int MSG_NETPLAY_YOU_HAVE_JOINED_AS_PLAYER_N ;
+ int MSG_NETPLAY_YOU_HAVE_JOINED_WITH_INPUT_DEVICES_S ;
+ int MSG_NETPLAY_YOU_HAVE_LEFT_THE_GAME ;
+
+
+
+ int NETPLAY_NICK_LEN ;
+ int RARCH_LOG (char*,char*) ;
+ char* msg_hash_to_str (int ) ;
+ int runloop_msg_queue_push (char*,int,int,int,int *,int ,int ) ;
+ size_t snprintf (char*,int,char*,...) ;
+ int strlcpy (char*,char*,int) ;
 
 __attribute__((used)) static void announce_play_spectate(netplay_t *netplay,
       const char *nick,
@@ -45,7 +45,7 @@ __attribute__((used)) static void announce_play_spectate(netplay_t *netplay,
 
    switch (mode)
    {
-      case NETPLAY_CONNECTION_SPECTATING:
+      case 128:
          if (nick)
             snprintf(msg, sizeof(msg) - 1,
                   msg_hash_to_str(MSG_NETPLAY_PLAYER_S_LEFT), NETPLAY_NICK_LEN,
@@ -54,8 +54,8 @@ __attribute__((used)) static void announce_play_spectate(netplay_t *netplay,
             strlcpy(msg, msg_hash_to_str(MSG_NETPLAY_YOU_HAVE_LEFT_THE_GAME), sizeof(msg));
          break;
 
-      case NETPLAY_CONNECTION_PLAYING:
-      case NETPLAY_CONNECTION_SLAVE:
+      case 130:
+      case 129:
       {
          uint32_t device;
          uint32_t one_device = (uint32_t) -1;
@@ -77,7 +77,7 @@ __attribute__((used)) static void announce_play_spectate(netplay_t *netplay,
 
          if (one_device != (uint32_t) -1)
          {
-            /* Only have one device, simpler message */
+
             if (nick)
                snprintf(msg, sizeof(msg) - 1,
                      msg_hash_to_str(MSG_NETPLAY_S_HAS_JOINED_AS_PLAYER_N),
@@ -89,7 +89,7 @@ __attribute__((used)) static void announce_play_spectate(netplay_t *netplay,
          }
          else
          {
-            /* Multiple devices, so step one is to make the device string listing them all */
+
             device_str[0] = 0;
             device_str_len = 0;
             for (device = 0; device < MAX_INPUT_DEVICES; device++)
@@ -104,7 +104,7 @@ __attribute__((used)) static void announce_play_spectate(netplay_t *netplay,
                      (unsigned) (device+1));
             }
 
-            /* Then we make the final string */
+
             if (nick)
                snprintf(msg, sizeof(msg) - 1,
                      msg_hash_to_str(
@@ -121,13 +121,13 @@ __attribute__((used)) static void announce_play_spectate(netplay_t *netplay,
          break;
       }
 
-      default: /* wrong usage */
+      default:
          break;
    }
 
    if (msg[0])
    {
       RARCH_LOG("[netplay] %s\n", msg);
-      runloop_msg_queue_push(msg, 1, 180, false, NULL, MESSAGE_QUEUE_ICON_DEFAULT, MESSAGE_QUEUE_CATEGORY_INFO);
+      runloop_msg_queue_push(msg, 1, 180, 0, ((void*)0), MESSAGE_QUEUE_ICON_DEFAULT, MESSAGE_QUEUE_CATEGORY_INFO);
    }
 }

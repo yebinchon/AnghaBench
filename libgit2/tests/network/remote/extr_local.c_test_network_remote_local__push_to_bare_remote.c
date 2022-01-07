@@ -1,70 +1,70 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {char** member_0; int member_1; } ;
-typedef  TYPE_1__ git_strarray ;
-typedef  int /*<<< orphan*/  git_repository ;
-typedef  int /*<<< orphan*/  git_remote ;
+typedef TYPE_1__ git_strarray ;
+typedef int git_repository ;
+typedef int git_remote ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GIT_DIRECTION_PUSH ; 
- int /*<<< orphan*/  cl_fixture (char*) ; 
- int /*<<< orphan*/  cl_fixture_cleanup (char*) ; 
- int /*<<< orphan*/  cl_git_pass (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  connect_to_local_repository (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  git_remote_connect (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  git_remote_create_anonymous (int /*<<< orphan*/ **,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  git_remote_fetch (int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  git_remote_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  git_remote_upload (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  git_repository_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  git_repository_init (int /*<<< orphan*/ **,char*,int) ; 
- int /*<<< orphan*/  push_array ; 
- int /*<<< orphan*/  remote ; 
- int /*<<< orphan*/  repo ; 
+
+ int GIT_DIRECTION_PUSH ;
+ int cl_fixture (char*) ;
+ int cl_fixture_cleanup (char*) ;
+ int cl_git_pass (int ) ;
+ int connect_to_local_repository (int ) ;
+ int git_remote_connect (int *,int ,int *,int *,int *) ;
+ int git_remote_create_anonymous (int **,int ,char*) ;
+ int git_remote_fetch (int ,TYPE_1__*,int *,int *) ;
+ int git_remote_free (int *) ;
+ int git_remote_upload (int *,int *,int *) ;
+ int git_repository_free (int *) ;
+ int git_repository_init (int **,char*,int) ;
+ int push_array ;
+ int remote ;
+ int repo ;
 
 void test_network_remote_local__push_to_bare_remote(void)
 {
-	char *refspec_strings[] = {
-		"master:master",
-	};
-	git_strarray array = {
-		refspec_strings,
-		1,
-	};
+ char *refspec_strings[] = {
+  "master:master",
+ };
+ git_strarray array = {
+  refspec_strings,
+  1,
+ };
 
-	/* Should be able to push to a bare remote */
-	git_remote *localremote;
 
-	/* Get some commits */
-	connect_to_local_repository(cl_fixture("testrepo.git"));
-	cl_git_pass(git_remote_fetch(remote, &array, NULL, NULL));
+ git_remote *localremote;
 
-	/* Set up an empty bare repo to push into */
-	{
-		git_repository *localbarerepo;
-		cl_git_pass(git_repository_init(&localbarerepo, "./localbare.git", 1));
-		git_repository_free(localbarerepo);
-	}
 
-	/* Connect to the bare repo */
-	cl_git_pass(git_remote_create_anonymous(&localremote, repo, "./localbare.git"));
-	cl_git_pass(git_remote_connect(localremote, GIT_DIRECTION_PUSH, NULL, NULL, NULL));
+ connect_to_local_repository(cl_fixture("testrepo.git"));
+ cl_git_pass(git_remote_fetch(remote, &array, ((void*)0), ((void*)0)));
 
-	/* Try to push */
-	cl_git_pass(git_remote_upload(localremote, &push_array, NULL));
 
-	/* Clean up */
-	git_remote_free(localremote);
-	cl_fixture_cleanup("localbare.git");
+ {
+  git_repository *localbarerepo;
+  cl_git_pass(git_repository_init(&localbarerepo, "./localbare.git", 1));
+  git_repository_free(localbarerepo);
+ }
+
+
+ cl_git_pass(git_remote_create_anonymous(&localremote, repo, "./localbare.git"));
+ cl_git_pass(git_remote_connect(localremote, GIT_DIRECTION_PUSH, ((void*)0), ((void*)0), ((void*)0)));
+
+
+ cl_git_pass(git_remote_upload(localremote, &push_array, ((void*)0)));
+
+
+ git_remote_free(localremote);
+ cl_fixture_cleanup("localbare.git");
 }

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct instance {scalar_t__ pid_filename; int /*<<< orphan*/  pid; int /*<<< orphan*/  log_filename; int /*<<< orphan*/  log_level; } ;
-typedef  scalar_t__ rstatus_t ;
 
-/* Variables and functions */
- scalar_t__ NC_OK ; 
- scalar_t__ daemonize ; 
- int /*<<< orphan*/  getpid () ; 
- scalar_t__ log_init (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ nc_create_pidfile (struct instance*) ; 
- scalar_t__ nc_daemonize (int) ; 
- int /*<<< orphan*/  nc_print_run (struct instance*) ; 
- scalar_t__ signal_init () ; 
+
+
+
+struct instance {scalar_t__ pid_filename; int pid; int log_filename; int log_level; } ;
+typedef scalar_t__ rstatus_t ;
+
+
+ scalar_t__ NC_OK ;
+ scalar_t__ daemonize ;
+ int getpid () ;
+ scalar_t__ log_init (int ,int ) ;
+ scalar_t__ nc_create_pidfile (struct instance*) ;
+ scalar_t__ nc_daemonize (int) ;
+ int nc_print_run (struct instance*) ;
+ scalar_t__ signal_init () ;
 
 __attribute__((used)) static rstatus_t
 nc_pre_run(struct instance *nci)

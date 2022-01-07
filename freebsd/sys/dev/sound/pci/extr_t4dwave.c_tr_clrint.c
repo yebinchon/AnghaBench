@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct tr_info {int dummy; } ;
 struct tr_chinfo {int index; struct tr_info* parent; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TR_REG_ADDRINTA ; 
- int /*<<< orphan*/  TR_REG_ADDRINTB ; 
- int /*<<< orphan*/  tr_wr (struct tr_info*,int /*<<< orphan*/ ,int,int) ; 
+
+ int TR_REG_ADDRINTA ;
+ int TR_REG_ADDRINTB ;
+ int tr_wr (struct tr_info*,int ,int,int) ;
 
 __attribute__((used)) static void
 tr_clrint(struct tr_chinfo *ch)
 {
-	struct tr_info *tr = ch->parent;
-	int bank, chan;
+ struct tr_info *tr = ch->parent;
+ int bank, chan;
 
-	bank = (ch->index & 0x20) ? 1 : 0;
-	chan = ch->index & 0x1f;
-	tr_wr(tr, bank? TR_REG_ADDRINTB : TR_REG_ADDRINTA, 1 << chan, 4);
+ bank = (ch->index & 0x20) ? 1 : 0;
+ chan = ch->index & 0x1f;
+ tr_wr(tr, bank? TR_REG_ADDRINTB : TR_REG_ADDRINTA, 1 << chan, 4);
 }

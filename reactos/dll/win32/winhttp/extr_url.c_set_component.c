@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ WCHAR ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int ERROR_INVALID_PARAMETER ; 
- int ERROR_SUCCESS ; 
- int ICU_DECODE ; 
- int ICU_ESCAPE ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  memcpy (scalar_t__*,scalar_t__*,int) ; 
+
+
+
+typedef scalar_t__ WCHAR ;
+typedef int DWORD ;
+typedef int BOOL ;
+
+
+ int ERROR_INVALID_PARAMETER ;
+ int ERROR_SUCCESS ;
+ int ICU_DECODE ;
+ int ICU_ESCAPE ;
+ int TRUE ;
+ int memcpy (scalar_t__*,scalar_t__*,int) ;
 
 __attribute__((used)) static DWORD set_component( WCHAR **str, DWORD *str_len, WCHAR *value, DWORD len, DWORD flags, BOOL *overflow )
 {

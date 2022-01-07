@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct rxrpc_transport {int /*<<< orphan*/  peer; int /*<<< orphan*/  local; int /*<<< orphan*/  error_queue; int /*<<< orphan*/  debug_id; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  _net (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kfree (struct rxrpc_transport*) ; 
- int /*<<< orphan*/  rxrpc_purge_queue (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  rxrpc_put_local (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rxrpc_put_peer (int /*<<< orphan*/ ) ; 
+
+
+
+struct rxrpc_transport {int peer; int local; int error_queue; int debug_id; } ;
+
+
+ int _net (char*,int ) ;
+ int kfree (struct rxrpc_transport*) ;
+ int rxrpc_purge_queue (int *) ;
+ int rxrpc_put_local (int ) ;
+ int rxrpc_put_peer (int ) ;
 
 __attribute__((used)) static void rxrpc_cleanup_transport(struct rxrpc_transport *trans)
 {
-	_net("DESTROY TRANS %d", trans->debug_id);
+ _net("DESTROY TRANS %d", trans->debug_id);
 
-	rxrpc_purge_queue(&trans->error_queue);
+ rxrpc_purge_queue(&trans->error_queue);
 
-	rxrpc_put_local(trans->local);
-	rxrpc_put_peer(trans->peer);
-	kfree(trans);
+ rxrpc_put_local(trans->local);
+ rxrpc_put_peer(trans->peer);
+ kfree(trans);
 }

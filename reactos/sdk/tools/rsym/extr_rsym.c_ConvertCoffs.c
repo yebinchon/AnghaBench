@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_19__   TYPE_6__ ;
-typedef  struct TYPE_18__   TYPE_5__ ;
-typedef  struct TYPE_17__   TYPE_4__ ;
-typedef  struct TYPE_16__   TYPE_3__ ;
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_19__ TYPE_6__ ;
+typedef struct TYPE_18__ TYPE_5__ ;
+typedef struct TYPE_17__ TYPE_4__ ;
+typedef struct TYPE_16__ TYPE_3__ ;
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
 struct StringHashTable {int dummy; } ;
-typedef  int /*<<< orphan*/  ULONG_PTR ;
-typedef  int ULONG ;
+typedef int ULONG_PTR ;
+typedef int ULONG ;
 struct TYPE_14__ {scalar_t__ e_zeroes; int e_offset; } ;
-struct TYPE_15__ {int /*<<< orphan*/  e_name; TYPE_1__ e; } ;
-struct TYPE_19__ {scalar_t__ e_sclass; int e_scnum; scalar_t__ e_numaux; TYPE_2__ e; int /*<<< orphan*/  e_value; int /*<<< orphan*/  e_type; } ;
+struct TYPE_15__ {int e_name; TYPE_1__ e; } ;
+struct TYPE_19__ {scalar_t__ e_sclass; int e_scnum; scalar_t__ e_numaux; TYPE_2__ e; int e_value; int e_type; } ;
 struct TYPE_18__ {int NumberOfSections; } ;
 struct TYPE_17__ {scalar_t__ VirtualAddress; } ;
-struct TYPE_16__ {scalar_t__ SourceLine; int /*<<< orphan*/  FunctionOffset; scalar_t__ FileOffset; int /*<<< orphan*/  Address; } ;
-typedef  int /*<<< orphan*/  ROSSYM_ENTRY ;
-typedef  TYPE_3__* PROSSYM_ENTRY ;
-typedef  TYPE_4__* PIMAGE_SECTION_HEADER ;
-typedef  TYPE_5__* PIMAGE_FILE_HEADER ;
-typedef  TYPE_6__* PCOFF_SYMENT ;
-typedef  int /*<<< orphan*/  FuncName ;
-typedef  int /*<<< orphan*/  COFF_SYMENT ;
+struct TYPE_16__ {scalar_t__ SourceLine; int FunctionOffset; scalar_t__ FileOffset; int Address; } ;
+typedef int ROSSYM_ENTRY ;
+typedef TYPE_3__* PROSSYM_ENTRY ;
+typedef TYPE_4__* PIMAGE_SECTION_HEADER ;
+typedef TYPE_5__* PIMAGE_FILE_HEADER ;
+typedef TYPE_6__* PCOFF_SYMENT ;
+typedef int FuncName ;
+typedef int COFF_SYMENT ;
 
-/* Variables and functions */
- scalar_t__ C_EXT ; 
- scalar_t__ CompareSymEntry ; 
- size_t E_SYMNMLEN ; 
- int /*<<< orphan*/  FindOrAddString (struct StringHashTable*,char*,int*,void*) ; 
- scalar_t__ ISFCN (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  StringHashTableFree (struct StringHashTable*) ; 
- int /*<<< orphan*/  StringHashTableInit (struct StringHashTable*,int,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  free (TYPE_3__*) ; 
- TYPE_3__* malloc (int) ; 
- int /*<<< orphan*/  memcpy (char*,int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/  memset (TYPE_3__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  qsort (TYPE_3__*,int,int,int (*) (void const*,void const*)) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
- int strlen (char*) ; 
- char* strrchr (char*,char) ; 
+
+ scalar_t__ C_EXT ;
+ scalar_t__ CompareSymEntry ;
+ size_t E_SYMNMLEN ;
+ int FindOrAddString (struct StringHashTable*,char*,int*,void*) ;
+ scalar_t__ ISFCN (int ) ;
+ int StringHashTableFree (struct StringHashTable*) ;
+ int StringHashTableInit (struct StringHashTable*,int,char*) ;
+ int fprintf (int ,char*,...) ;
+ int free (TYPE_3__*) ;
+ TYPE_3__* malloc (int) ;
+ int memcpy (char*,int ,size_t) ;
+ int memset (TYPE_3__*,int ,int) ;
+ int qsort (TYPE_3__*,int,int,int (*) (void const*,void const*)) ;
+ int stderr ;
+ int strcpy (char*,char*) ;
+ int strlen (char*) ;
+ char* strrchr (char*,char) ;
 
 __attribute__((used)) static int
 ConvertCoffs(ULONG *SymbolsCount, PROSSYM_ENTRY *SymbolsBase,
@@ -71,7 +71,7 @@ ConvertCoffs(ULONG *SymbolsCount, PROSSYM_ENTRY *SymbolsBase,
     Count = CoffSymbolsLength / sizeof(COFF_SYMENT);
 
     *SymbolsBase = malloc(Count * sizeof(ROSSYM_ENTRY));
-    if (*SymbolsBase == NULL)
+    if (*SymbolsBase == ((void*)0))
     {
         fprintf(stderr, "Unable to allocate memory for converted COFF symbols\n");
         return 1;
@@ -117,9 +117,9 @@ ConvertCoffs(ULONG *SymbolsCount, PROSSYM_ENTRY *SymbolsBase,
                 FuncName[E_SYMNMLEN] = '\0';
             }
 
-            /* Name demangling: stdcall */
+
             p = strrchr(FuncName, '@');
-            if (p != NULL)
+            if (p != ((void*)0))
             {
                 *p = '\0';
             }

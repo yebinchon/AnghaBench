@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  HANDLE ;
-typedef  scalar_t__ DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CloseHandle (int /*<<< orphan*/ ) ; 
- scalar_t__ DuplicateToken (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GetCurrentProcess () ; 
- scalar_t__ GetLastError () ; 
- scalar_t__ OpenProcessToken (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SecurityImpersonation ; 
- int TOKEN_DUPLICATE ; 
- int TOKEN_QUERY ; 
- scalar_t__ TokenImpersonation ; 
- scalar_t__ TokenPrimary ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  test_event_security (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_file_security (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_filemap_security () ; 
- int /*<<< orphan*/  test_mutex_security (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_named_pipe_security (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_process_access () ; 
- int /*<<< orphan*/  test_semaphore_security (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_thread_security () ; 
- scalar_t__ validate_impersonation_token (int /*<<< orphan*/ ,scalar_t__*) ; 
+
+
+
+typedef int HANDLE ;
+typedef scalar_t__ DWORD ;
+
+
+ int CloseHandle (int ) ;
+ scalar_t__ DuplicateToken (int ,int ,int *) ;
+ int GetCurrentProcess () ;
+ scalar_t__ GetLastError () ;
+ scalar_t__ OpenProcessToken (int ,int,int *) ;
+ int SecurityImpersonation ;
+ int TOKEN_DUPLICATE ;
+ int TOKEN_QUERY ;
+ scalar_t__ TokenImpersonation ;
+ scalar_t__ TokenPrimary ;
+ int ok (int,char*,...) ;
+ int test_event_security (int ) ;
+ int test_file_security (int ) ;
+ int test_filemap_security () ;
+ int test_mutex_security (int ) ;
+ int test_named_pipe_security (int ) ;
+ int test_process_access () ;
+ int test_semaphore_security (int ) ;
+ int test_thread_security () ;
+ scalar_t__ validate_impersonation_token (int ,scalar_t__*) ;
 
 __attribute__((used)) static void test_kernel_objects_security(void)
 {
@@ -62,7 +62,7 @@ __attribute__((used)) static void test_kernel_objects_security(void)
     test_filemap_security();
     test_thread_security();
     test_process_access();
-    /* FIXME: test other kernel object types */
+
 
     CloseHandle(process_token);
     CloseHandle(token);

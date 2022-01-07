@@ -1,82 +1,82 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_26__   TYPE_9__ ;
-typedef  struct TYPE_25__   TYPE_8__ ;
-typedef  struct TYPE_24__   TYPE_7__ ;
-typedef  struct TYPE_23__   TYPE_6__ ;
-typedef  struct TYPE_22__   TYPE_5__ ;
-typedef  struct TYPE_21__   TYPE_4__ ;
-typedef  struct TYPE_20__   TYPE_3__ ;
-typedef  struct TYPE_19__   TYPE_2__ ;
-typedef  struct TYPE_18__   TYPE_1__ ;
-typedef  struct TYPE_17__   TYPE_11__ ;
-typedef  struct TYPE_16__   TYPE_10__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  temp ;
+
+
+typedef struct TYPE_26__ TYPE_9__ ;
+typedef struct TYPE_25__ TYPE_8__ ;
+typedef struct TYPE_24__ TYPE_7__ ;
+typedef struct TYPE_23__ TYPE_6__ ;
+typedef struct TYPE_22__ TYPE_5__ ;
+typedef struct TYPE_21__ TYPE_4__ ;
+typedef struct TYPE_20__ TYPE_3__ ;
+typedef struct TYPE_19__ TYPE_2__ ;
+typedef struct TYPE_18__ TYPE_1__ ;
+typedef struct TYPE_17__ TYPE_11__ ;
+typedef struct TYPE_16__ TYPE_10__ ;
+
+
+typedef int temp ;
 struct TYPE_24__ {char* hardware_id; char* unique_id; char* device_name; TYPE_2__* cid_list; } ;
-struct TYPE_23__ {int /*<<< orphan*/  compatible_ids; int /*<<< orphan*/  hardware_id; int /*<<< orphan*/  unique_id; } ;
+struct TYPE_23__ {int compatible_ids; int hardware_id; int unique_id; } ;
 struct acpi_device {TYPE_7__ pnp; TYPE_6__ flags; } ;
-typedef  char WCHAR ;
-typedef  void* ULONG_PTR ;
-typedef  int ULONG ;
-struct TYPE_22__ {int /*<<< orphan*/  Status; void* Information; } ;
+typedef char WCHAR ;
+typedef void* ULONG_PTR ;
+typedef int ULONG ;
+struct TYPE_22__ {int Status; void* Information; } ;
 struct TYPE_26__ {TYPE_5__ IoStatus; } ;
-struct TYPE_25__ {int /*<<< orphan*/  AcpiHandle; } ;
+struct TYPE_25__ {int AcpiHandle; } ;
 struct TYPE_20__ {int IdType; } ;
 struct TYPE_21__ {TYPE_3__ QueryId; } ;
 struct TYPE_19__ {int Count; TYPE_1__* Ids; } ;
 struct TYPE_18__ {char* String; } ;
 struct TYPE_17__ {int Length; char* Buffer; } ;
 struct TYPE_16__ {TYPE_4__ Parameters; } ;
-typedef  char* PWCHAR ;
-typedef  TYPE_8__* PPDO_DEVICE_DATA ;
-typedef  TYPE_9__* PIRP ;
-typedef  TYPE_10__* PIO_STACK_LOCATION ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
+typedef char* PWCHAR ;
+typedef TYPE_8__* PPDO_DEVICE_DATA ;
+typedef TYPE_9__* PIRP ;
+typedef TYPE_10__* PIO_STACK_LOCATION ;
+typedef int NTSTATUS ;
 
-/* Variables and functions */
-#define  BusQueryCompatibleIDs 131 
-#define  BusQueryDeviceID 130 
-#define  BusQueryHardwareIDs 129 
-#define  BusQueryInstanceID 128 
- int /*<<< orphan*/  DPRINT (char*,char*) ; 
- char* ExAllocatePoolWithTag (int /*<<< orphan*/ ,int,char) ; 
- TYPE_10__* IoGetCurrentIrpStackLocation (TYPE_9__*) ; 
- int /*<<< orphan*/  NT_ASSERT (int) ; 
- int /*<<< orphan*/  PAGED_CODE () ; 
- int /*<<< orphan*/  PagedPool ; 
- TYPE_11__ ProcessorHardwareIds ; 
- int /*<<< orphan*/  ProcessorIdString ; 
- int /*<<< orphan*/  RtlCopyMemory (char*,char*,int) ; 
- int /*<<< orphan*/  STATUS_INSUFFICIENT_RESOURCES ; 
- int /*<<< orphan*/  STATUS_NOT_SUPPORTED ; 
- int /*<<< orphan*/  STATUS_SUCCESS ; 
- char UNICODE_NULL ; 
- int /*<<< orphan*/  acpi_bus_get_device (int /*<<< orphan*/ ,struct acpi_device**) ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
- int swprintf (char*,char*,...) ; 
- int /*<<< orphan*/  wcscpy (char*,int /*<<< orphan*/ ) ; 
- int wcslen (int /*<<< orphan*/ ) ; 
+
+
+
+
+
+ int DPRINT (char*,char*) ;
+ char* ExAllocatePoolWithTag (int ,int,char) ;
+ TYPE_10__* IoGetCurrentIrpStackLocation (TYPE_9__*) ;
+ int NT_ASSERT (int) ;
+ int PAGED_CODE () ;
+ int PagedPool ;
+ TYPE_11__ ProcessorHardwareIds ;
+ int ProcessorIdString ;
+ int RtlCopyMemory (char*,char*,int) ;
+ int STATUS_INSUFFICIENT_RESOURCES ;
+ int STATUS_NOT_SUPPORTED ;
+ int STATUS_SUCCESS ;
+ char UNICODE_NULL ;
+ int acpi_bus_get_device (int ,struct acpi_device**) ;
+ int strcmp (char*,char*) ;
+ int swprintf (char*,char*,...) ;
+ int wcscpy (char*,int ) ;
+ int wcslen (int ) ;
 
 NTSTATUS
 Bus_PDO_QueryDeviceId(
-     PPDO_DEVICE_DATA     DeviceData,
-      PIRP   Irp )
+     PPDO_DEVICE_DATA DeviceData,
+      PIRP Irp )
 {
-    PIO_STACK_LOCATION      stack;
-    PWCHAR                  buffer, src;
-    WCHAR                   temp[256];
-    ULONG                   length, i;
-    NTSTATUS                status = STATUS_SUCCESS;
+    PIO_STACK_LOCATION stack;
+    PWCHAR buffer, src;
+    WCHAR temp[256];
+    ULONG length, i;
+    NTSTATUS status = STATUS_SUCCESS;
     struct acpi_device *Device;
 
     PAGED_CODE ();
@@ -85,9 +85,9 @@ Bus_PDO_QueryDeviceId(
 
     switch (stack->Parameters.QueryId.IdType) {
 
-    case BusQueryDeviceID:
+    case 130:
 
-        /* This is a REG_SZ value */
+
 
         if (DeviceData->AcpiHandle)
         {
@@ -107,10 +107,10 @@ Bus_PDO_QueryDeviceId(
         }
         else
         {
-            /* We know it's a fixed feature button because
-             * these are direct children of the ACPI root device
-             * and therefore have no handle
-             */
+
+
+
+
             length = swprintf(temp,
                               L"ACPI\\FixedButton");
         }
@@ -131,11 +131,11 @@ Bus_PDO_QueryDeviceId(
         DPRINT("BusQueryDeviceID: %ls\n",buffer);
         break;
 
-    case BusQueryInstanceID:
+    case 128:
 
-        /* This is a REG_SZ value */
 
-        /* See comment in BusQueryDeviceID case */
+
+
         if(DeviceData->AcpiHandle)
         {
            acpi_bus_get_device(DeviceData->AcpiHandle, &Device);
@@ -145,12 +145,12 @@ Bus_PDO_QueryDeviceId(
                                 L"%hs",
                                 Device->pnp.unique_id);
            else
-              /* FIXME: Generate unique id! */
+
               length = swprintf(temp, L"%ls", L"0");
         }
         else
         {
-           /* FIXME: Generate unique id! */
+
            length = swprintf(temp, L"%ls", L"0");
         }
 
@@ -169,20 +169,20 @@ Bus_PDO_QueryDeviceId(
         Irp->IoStatus.Information = (ULONG_PTR) buffer;
         break;
 
-    case BusQueryHardwareIDs:
+    case 129:
 
-        /* This is a REG_MULTI_SZ value */
+
         length = 0;
         status = STATUS_NOT_SUPPORTED;
 
-        /* See comment in BusQueryDeviceID case */
+
         if (DeviceData->AcpiHandle)
         {
             acpi_bus_get_device(DeviceData->AcpiHandle, &Device);
-            
+
             if (!Device->flags.hardware_id)
             {
-                /* We don't have the ID to satisfy this request */
+
                 break;
             }
 
@@ -237,26 +237,26 @@ Bus_PDO_QueryDeviceId(
         status = STATUS_SUCCESS;
         break;
 
-    case BusQueryCompatibleIDs:
+    case 131:
 
-        /* This is a REG_MULTI_SZ value */
+
         length = 0;
         status = STATUS_NOT_SUPPORTED;
 
-        /* See comment in BusQueryDeviceID case */
+
         if (DeviceData->AcpiHandle)
         {
             acpi_bus_get_device(DeviceData->AcpiHandle, &Device);
 
             if (!Device->flags.hardware_id)
             {
-                /* We don't have the ID to satisfy this request */
+
                 break;
             }
-            
+
             DPRINT("Device name: %s\n", Device->pnp.device_name);
             DPRINT("Hardware ID: %s\n", Device->pnp.hardware_id);
-            
+
             if (strcmp(Device->pnp.hardware_id, "Processor") == 0)
             {
                 length += swprintf(&temp[length],
@@ -278,21 +278,21 @@ Bus_PDO_QueryDeviceId(
                                    L"ACPI\\%hs",
                                    Device->pnp.cid_list->Ids[i].String);
                     temp[length++] = UNICODE_NULL;
-                    
+
                     length += swprintf(&temp[length],
                                    L"*%hs",
                                    Device->pnp.cid_list->Ids[i].String);
                     temp[length++] = UNICODE_NULL;
                 }
-                
+
                 temp[length++] = UNICODE_NULL;
             }
             else
             {
-                /* No compatible IDs */
+
                 break;
             }
-            
+
             NT_ASSERT(length * sizeof(WCHAR) <= sizeof(temp));
 
             buffer = ExAllocatePoolWithTag(PagedPool, length * sizeof(WCHAR), 'IpcA');

@@ -1,68 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct Curl_handler {char* defport; int flags; } ;
-typedef  int /*<<< orphan*/  portbuf ;
+typedef int portbuf ;
 struct TYPE_3__ {char* scheme; char* user; char* password; char* options; char* host; char* zoneid; char* port; char* portnum; char* path; char* query; char* fragment; } ;
-typedef  scalar_t__ CURLcode ;
-typedef  int /*<<< orphan*/  CURLUcode ;
-typedef  int CURLUPart ;
-typedef  TYPE_1__ CURLU ;
+typedef scalar_t__ CURLcode ;
+typedef int CURLUcode ;
+typedef int CURLUPart ;
+typedef TYPE_1__ CURLU ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CURLUE_BAD_HANDLE ; 
- int /*<<< orphan*/  CURLUE_BAD_PARTPOINTER ; 
- int /*<<< orphan*/  CURLUE_NO_FRAGMENT ; 
- int /*<<< orphan*/  CURLUE_NO_HOST ; 
- int /*<<< orphan*/  CURLUE_NO_OPTIONS ; 
- int /*<<< orphan*/  CURLUE_NO_PASSWORD ; 
- int /*<<< orphan*/  CURLUE_NO_PORT ; 
- int /*<<< orphan*/  CURLUE_NO_QUERY ; 
- int /*<<< orphan*/  CURLUE_NO_SCHEME ; 
- int /*<<< orphan*/  CURLUE_NO_USER ; 
- int /*<<< orphan*/  CURLUE_OK ; 
- int /*<<< orphan*/  CURLUE_OUT_OF_MEMORY ; 
- int /*<<< orphan*/  CURLUE_UNKNOWN_PART ; 
- int /*<<< orphan*/  CURLUE_URLDECODE ; 
-#define  CURLUPART_FRAGMENT 138 
-#define  CURLUPART_HOST 137 
-#define  CURLUPART_OPTIONS 136 
-#define  CURLUPART_PASSWORD 135 
-#define  CURLUPART_PATH 134 
-#define  CURLUPART_PORT 133 
-#define  CURLUPART_QUERY 132 
-#define  CURLUPART_SCHEME 131 
-#define  CURLUPART_URL 130 
-#define  CURLUPART_USER 129 
-#define  CURLUPART_ZONEID 128 
- unsigned int CURLU_DEFAULT_PORT ; 
- unsigned int CURLU_DEFAULT_SCHEME ; 
- unsigned int CURLU_NO_DEFAULT_PORT ; 
- unsigned int CURLU_URLDECODE ; 
- struct Curl_handler* Curl_builtin_scheme (char*) ; 
- scalar_t__ Curl_urldecode (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,char**,size_t*,int /*<<< orphan*/ ) ; 
- scalar_t__ DEFAULT_SCHEME ; 
- int FALSE ; 
- int PROTOPT_URLOPTIONS ; 
- int /*<<< orphan*/  TRUE ; 
- char* aprintf (char*,char*,char*,char*,...) ; 
- int /*<<< orphan*/  free (char*) ; 
- char* malloc (size_t) ; 
- int /*<<< orphan*/  memcpy (char*,char*,size_t) ; 
- int /*<<< orphan*/  msnprintf (char*,int,char*,char*) ; 
- int /*<<< orphan*/  strcasecompare (char*,char*) ; 
- void* strdup (char*) ; 
- size_t strlen (char*) ; 
+
+ int CURLUE_BAD_HANDLE ;
+ int CURLUE_BAD_PARTPOINTER ;
+ int CURLUE_NO_FRAGMENT ;
+ int CURLUE_NO_HOST ;
+ int CURLUE_NO_OPTIONS ;
+ int CURLUE_NO_PASSWORD ;
+ int CURLUE_NO_PORT ;
+ int CURLUE_NO_QUERY ;
+ int CURLUE_NO_SCHEME ;
+ int CURLUE_NO_USER ;
+ int CURLUE_OK ;
+ int CURLUE_OUT_OF_MEMORY ;
+ int CURLUE_UNKNOWN_PART ;
+ int CURLUE_URLDECODE ;
+ unsigned int CURLU_DEFAULT_PORT ;
+ unsigned int CURLU_DEFAULT_SCHEME ;
+ unsigned int CURLU_NO_DEFAULT_PORT ;
+ unsigned int CURLU_URLDECODE ;
+ struct Curl_handler* Curl_builtin_scheme (char*) ;
+ scalar_t__ Curl_urldecode (int *,char*,int ,char**,size_t*,int ) ;
+ scalar_t__ DEFAULT_SCHEME ;
+ int FALSE ;
+ int PROTOPT_URLOPTIONS ;
+ int TRUE ;
+ char* aprintf (char*,char*,char*,char*,...) ;
+ int free (char*) ;
+ char* malloc (size_t) ;
+ int memcpy (char*,char*,size_t) ;
+ int msnprintf (char*,int,char*,char*) ;
+ int strcasecompare (char*,char*) ;
+ void* strdup (char*) ;
+ size_t strlen (char*) ;
 
 CURLUcode curl_url_get(CURLU *u, CURLUPart what,
                        char **part, unsigned int flags)
@@ -77,40 +66,40 @@ CURLUcode curl_url_get(CURLU *u, CURLUPart what,
     return CURLUE_BAD_HANDLE;
   if(!part)
     return CURLUE_BAD_PARTPOINTER;
-  *part = NULL;
+  *part = ((void*)0);
 
   switch(what) {
-  case CURLUPART_SCHEME:
+  case 131:
     ptr = u->scheme;
     ifmissing = CURLUE_NO_SCHEME;
-    urldecode = FALSE; /* never for schemes */
+    urldecode = FALSE;
     break;
-  case CURLUPART_USER:
+  case 129:
     ptr = u->user;
     ifmissing = CURLUE_NO_USER;
     break;
-  case CURLUPART_PASSWORD:
+  case 135:
     ptr = u->password;
     ifmissing = CURLUE_NO_PASSWORD;
     break;
-  case CURLUPART_OPTIONS:
+  case 136:
     ptr = u->options;
     ifmissing = CURLUE_NO_OPTIONS;
     break;
-  case CURLUPART_HOST:
+  case 137:
     ptr = u->host;
     ifmissing = CURLUE_NO_HOST;
     break;
-  case CURLUPART_ZONEID:
+  case 128:
     ptr = u->zoneid;
     break;
-  case CURLUPART_PORT:
+  case 133:
     ptr = u->port;
     ifmissing = CURLUE_NO_PORT;
-    urldecode = FALSE; /* never for port */
+    urldecode = FALSE;
     if(!ptr && (flags & CURLU_DEFAULT_PORT) && u->scheme) {
-      /* there's no stored port number, but asked to deliver
-         a default one for the scheme */
+
+
       const struct Curl_handler *h =
         Curl_builtin_scheme(u->scheme);
       if(h) {
@@ -119,16 +108,16 @@ CURLUcode curl_url_get(CURLU *u, CURLUPart what,
       }
     }
     else if(ptr && u->scheme) {
-      /* there is a stored port number, but ask to inhibit if
-         it matches the default one for the scheme */
+
+
       const struct Curl_handler *h =
         Curl_builtin_scheme(u->scheme);
       if(h && (h->defport == u->portnum) &&
          (flags & CURLU_NO_DEFAULT_PORT))
-        ptr = NULL;
+        ptr = ((void*)0);
     }
     break;
-  case CURLUPART_PATH:
+  case 134:
     ptr = u->path;
     if(!ptr) {
       ptr = u->path = strdup("/");
@@ -136,21 +125,21 @@ CURLUcode curl_url_get(CURLU *u, CURLUPart what,
         return CURLUE_OUT_OF_MEMORY;
     }
     break;
-  case CURLUPART_QUERY:
+  case 132:
     ptr = u->query;
     ifmissing = CURLUE_NO_QUERY;
     plusdecode = urldecode;
     break;
-  case CURLUPART_FRAGMENT:
+  case 138:
     ptr = u->fragment;
     ifmissing = CURLUE_NO_FRAGMENT;
     break;
-  case CURLUPART_URL: {
+  case 130: {
     char *url;
     char *scheme;
     char *options = u->options;
     char *port = u->port;
-    char *allochost = NULL;
+    char *allochost = ((void*)0);
     if(u->scheme && strcasecompare("file", u->scheme)) {
       url = aprintf("file://%s%s%s",
                     u->path,
@@ -160,7 +149,7 @@ CURLUcode curl_url_get(CURLU *u, CURLUPart what,
     else if(!u->host)
       return CURLUE_NO_HOST;
     else {
-      const struct Curl_handler *h = NULL;
+      const struct Curl_handler *h = ((void*)0);
       if(u->scheme)
         scheme = u->scheme;
       else if(flags & CURLU_DEFAULT_SCHEME)
@@ -170,26 +159,26 @@ CURLUcode curl_url_get(CURLU *u, CURLUPart what,
 
       h = Curl_builtin_scheme(scheme);
       if(!port && (flags & CURLU_DEFAULT_PORT)) {
-        /* there's no stored port number, but asked to deliver
-           a default one for the scheme */
+
+
         if(h) {
           msnprintf(portbuf, sizeof(portbuf), "%ld", h->defport);
           port = portbuf;
         }
       }
       else if(port) {
-        /* there is a stored port number, but asked to inhibit if it matches
-           the default one for the scheme */
+
+
         if(h && (h->defport == u->portnum) &&
            (flags & CURLU_NO_DEFAULT_PORT))
-          port = NULL;
+          port = ((void*)0);
       }
 
       if(h && !(h->flags & PROTOPT_URLOPTIONS))
-        options = NULL;
+        options = ((void*)0);
 
       if((u->host[0] == '[') && u->zoneid) {
-        /* make it '[ host %25 zoneid ]' */
+
         size_t hostlen = strlen(u->host);
         size_t alen = hostlen + 3 + strlen(u->zoneid) + 1;
         allochost = malloc(alen);
@@ -225,7 +214,7 @@ CURLUcode curl_url_get(CURLU *u, CURLUPart what,
     return CURLUE_OK;
   }
   default:
-    ptr = NULL;
+    ptr = ((void*)0);
     break;
   }
   if(ptr) {
@@ -233,7 +222,7 @@ CURLUcode curl_url_get(CURLU *u, CURLUPart what,
     if(!*part)
       return CURLUE_OUT_OF_MEMORY;
     if(plusdecode) {
-      /* convert + to space */
+
       char *plus;
       for(plus = *part; *plus; ++plus) {
         if(*plus == '+')
@@ -243,10 +232,10 @@ CURLUcode curl_url_get(CURLU *u, CURLUPart what,
     if(urldecode) {
       char *decoded;
       size_t dlen;
-      CURLcode res = Curl_urldecode(NULL, *part, 0, &decoded, &dlen, TRUE);
+      CURLcode res = Curl_urldecode(((void*)0), *part, 0, &decoded, &dlen, TRUE);
       free(*part);
       if(res) {
-        *part = NULL;
+        *part = ((void*)0);
         return CURLUE_URLDECODE;
       }
       *part = decoded;

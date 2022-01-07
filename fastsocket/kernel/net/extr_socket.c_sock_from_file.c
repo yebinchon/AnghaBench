@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct socket {int dummy; } ;
-struct file {int f_mode; struct socket* private_data; int /*<<< orphan*/ * f_op; } ;
+struct file {int f_mode; struct socket* private_data; int * f_op; } ;
 
-/* Variables and functions */
- int ENOTSOCK ; 
- int FMODE_FASTSOCKET ; 
- int /*<<< orphan*/  socket_file_ops ; 
+
+ int ENOTSOCK ;
+ int FMODE_FASTSOCKET ;
+ int socket_file_ops ;
 
 __attribute__((used)) static struct socket *sock_from_file(struct file *file, int *err)
 {
-	if (file->f_mode & FMODE_FASTSOCKET || file->f_op == &socket_file_ops)
-		return file->private_data;	/* set in sock_map_fd */
+ if (file->f_mode & FMODE_FASTSOCKET || file->f_op == &socket_file_ops)
+  return file->private_data;
 
-	*err = -ENOTSOCK;
-	return NULL;
+ *err = -ENOTSOCK;
+ return ((void*)0);
 }

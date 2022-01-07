@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT8 ;
-typedef  scalar_t__ UINT32 ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int UINT8 ;
+typedef scalar_t__ UINT32 ;
 struct TYPE_4__ {char* Value; } ;
-typedef  TYPE_1__ DT_FIELD ;
+typedef TYPE_1__ DT_FIELD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASL_ERROR ; 
- int /*<<< orphan*/  ASL_MSG_STRING_LENGTH ; 
- int /*<<< orphan*/  AslGbl_MsgBuffer ; 
- int /*<<< orphan*/  DtError (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,char*,scalar_t__) ; 
- int /*<<< orphan*/  sprintf (int /*<<< orphan*/ ,char*,scalar_t__,scalar_t__,char*) ; 
- scalar_t__ strlen (char*) ; 
+
+ int ASL_ERROR ;
+ int ASL_MSG_STRING_LENGTH ;
+ int AslGbl_MsgBuffer ;
+ int DtError (int ,int ,TYPE_1__*,int ) ;
+ int memcpy (int *,char*,scalar_t__) ;
+ int sprintf (int ,char*,scalar_t__,scalar_t__,char*) ;
+ scalar_t__ strlen (char*) ;
 
 __attribute__((used)) static void
 DtCompileString (
-    UINT8                   *Buffer,
-    DT_FIELD                *Field,
-    UINT32                  ByteLength)
+    UINT8 *Buffer,
+    DT_FIELD *Field,
+    UINT32 ByteLength)
 {
-    UINT32                  Length;
+    UINT32 Length;
 
 
     Length = strlen (Field->Value);
 
-    /* Check if the string is too long for the field */
+
 
     if (Length > ByteLength)
     {

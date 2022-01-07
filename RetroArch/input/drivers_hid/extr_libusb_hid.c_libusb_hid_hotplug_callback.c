@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct libusb_device {int dummy; } ;
 struct libusb_context {int dummy; } ;
-typedef  int libusb_hotplug_event ;
-typedef  int /*<<< orphan*/  libusb_hid_t ;
+typedef int libusb_hotplug_event ;
+typedef int libusb_hid_t ;
 
-/* Variables and functions */
-#define  LIBUSB_HOTPLUG_EVENT_DEVICE_ARRIVED 129 
-#define  LIBUSB_HOTPLUG_EVENT_DEVICE_LEFT 128 
- int /*<<< orphan*/  RARCH_WARN (char*,int) ; 
- int /*<<< orphan*/  add_adapter (int /*<<< orphan*/ *,struct libusb_device*) ; 
- int /*<<< orphan*/  remove_adapter (int /*<<< orphan*/ *,struct libusb_device*) ; 
+
+
+
+ int RARCH_WARN (char*,int) ;
+ int add_adapter (int *,struct libusb_device*) ;
+ int remove_adapter (int *,struct libusb_device*) ;
 
 __attribute__((used)) static int libusb_hid_hotplug_callback(struct libusb_context *ctx,
       struct libusb_device *dev, libusb_hotplug_event event, void *user_data)
@@ -29,10 +29,10 @@ __attribute__((used)) static int libusb_hid_hotplug_callback(struct libusb_conte
 
    switch (event)
    {
-      case LIBUSB_HOTPLUG_EVENT_DEVICE_ARRIVED:
+      case 129:
          add_adapter(hid, dev);
          break;
-      case LIBUSB_HOTPLUG_EVENT_DEVICE_LEFT:
+      case 128:
          remove_adapter(hid, dev);
          break;
       default:

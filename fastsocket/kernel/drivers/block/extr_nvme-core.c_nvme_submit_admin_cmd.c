@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
-struct nvme_dev {int /*<<< orphan*/ * queues; } ;
+
+
+
+
+typedef int u32 ;
+struct nvme_dev {int * queues; } ;
 struct nvme_command {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ADMIN_TIMEOUT ; 
- int nvme_submit_sync_cmd (int /*<<< orphan*/ ,struct nvme_command*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int ADMIN_TIMEOUT ;
+ int nvme_submit_sync_cmd (int ,struct nvme_command*,int *,int ) ;
 
 int nvme_submit_admin_cmd(struct nvme_dev *dev, struct nvme_command *cmd,
-								u32 *result)
+        u32 *result)
 {
-	return nvme_submit_sync_cmd(dev->queues[0], cmd, result, ADMIN_TIMEOUT);
+ return nvme_submit_sync_cmd(dev->queues[0], cmd, result, ADMIN_TIMEOUT);
 }

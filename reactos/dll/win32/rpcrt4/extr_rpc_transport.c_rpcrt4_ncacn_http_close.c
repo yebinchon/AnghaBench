@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/ * servername; scalar_t__ cancel_event; int /*<<< orphan*/  async_data; int /*<<< orphan*/ * session; int /*<<< orphan*/ * app_info; int /*<<< orphan*/ * out_request; int /*<<< orphan*/ * in_request; int /*<<< orphan*/  timer_cancelled; } ;
-typedef  TYPE_1__ RpcConnection_http ;
-typedef  int /*<<< orphan*/  RpcConnection ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CloseHandle (scalar_t__) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  InternetCloseHandle (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RpcHttpAsyncData_Release (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetEvent (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int * servername; scalar_t__ cancel_event; int async_data; int * session; int * app_info; int * out_request; int * in_request; int timer_cancelled; } ;
+typedef TYPE_1__ RpcConnection_http ;
+typedef int RpcConnection ;
+
+
+ int CloseHandle (scalar_t__) ;
+ int GetProcessHeap () ;
+ int HeapFree (int ,int ,int *) ;
+ int InternetCloseHandle (int *) ;
+ int RpcHttpAsyncData_Release (int ) ;
+ int SetEvent (int ) ;
+ int TRACE (char*) ;
 
 __attribute__((used)) static int rpcrt4_ncacn_http_close(RpcConnection *Connection)
 {
@@ -33,21 +33,21 @@ __attribute__((used)) static int rpcrt4_ncacn_http_close(RpcConnection *Connecti
   SetEvent(httpc->timer_cancelled);
   if (httpc->in_request)
     InternetCloseHandle(httpc->in_request);
-  httpc->in_request = NULL;
+  httpc->in_request = ((void*)0);
   if (httpc->out_request)
     InternetCloseHandle(httpc->out_request);
-  httpc->out_request = NULL;
+  httpc->out_request = ((void*)0);
   if (httpc->app_info)
     InternetCloseHandle(httpc->app_info);
-  httpc->app_info = NULL;
+  httpc->app_info = ((void*)0);
   if (httpc->session)
     InternetCloseHandle(httpc->session);
-  httpc->session = NULL;
+  httpc->session = ((void*)0);
   RpcHttpAsyncData_Release(httpc->async_data);
   if (httpc->cancel_event)
     CloseHandle(httpc->cancel_event);
   HeapFree(GetProcessHeap(), 0, httpc->servername);
-  httpc->servername = NULL;
+  httpc->servername = ((void*)0);
 
   return 0;
 }

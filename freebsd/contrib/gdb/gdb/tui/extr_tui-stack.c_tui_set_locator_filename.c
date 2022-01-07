@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct tui_locator_element {scalar_t__* file_name; } ;
 struct TYPE_2__ {struct tui_locator_element locator; } ;
 struct tui_win_element {TYPE_1__ which_element; } ;
-struct tui_gen_win_info {int /*<<< orphan*/ ** content; } ;
+struct tui_gen_win_info {int ** content; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MAX_LOCATOR_ELEMENT_LEN ; 
- int /*<<< orphan*/  strcat_to_buf (scalar_t__*,int /*<<< orphan*/ ,char const*) ; 
- struct tui_gen_win_info* tui_locator_win_info_ptr () ; 
- int /*<<< orphan*/  tui_set_locator_info (char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int MAX_LOCATOR_ELEMENT_LEN ;
+ int strcat_to_buf (scalar_t__*,int ,char const*) ;
+ struct tui_gen_win_info* tui_locator_win_info_ptr () ;
+ int tui_set_locator_info (char const*,int *,int ,int ) ;
 
 __attribute__((used)) static void
 tui_set_locator_filename (const char *filename)
@@ -28,9 +28,9 @@ tui_set_locator_filename (const char *filename)
   struct tui_gen_win_info * locator = tui_locator_win_info_ptr ();
   struct tui_locator_element * element;
 
-  if (locator->content[0] == NULL)
+  if (locator->content[0] == ((void*)0))
     {
-      tui_set_locator_info (filename, NULL, 0, 0);
+      tui_set_locator_info (filename, ((void*)0), 0, 0);
       return;
     }
 

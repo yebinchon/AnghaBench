@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct SiS_Private {int SiS_VBType; scalar_t__ ChipType; int /*<<< orphan*/  SiS_Part4Port; scalar_t__ SiS_IF_DEF_CONEX; scalar_t__ SiS_IF_DEF_LVDS; } ;
 
-/* Variables and functions */
- int SiS_GetReg (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  SiS_SetReg (int /*<<< orphan*/ ,int,unsigned short) ; 
- int /*<<< orphan*/  SiS_SetRegAND (int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  SiS_SetRegOR (int /*<<< orphan*/ ,int,int) ; 
- int VB_NoLCD ; 
- int VB_SIS301 ; 
- int VB_SIS301B ; 
- int VB_SIS301C ; 
- int VB_SIS301LV ; 
- int VB_SIS302B ; 
- int VB_SIS302ELV ; 
- int VB_SIS302LV ; 
- int VB_UMC ; 
- scalar_t__ XGI_20 ; 
+
+
+
+struct SiS_Private {int SiS_VBType; scalar_t__ ChipType; int SiS_Part4Port; scalar_t__ SiS_IF_DEF_CONEX; scalar_t__ SiS_IF_DEF_LVDS; } ;
+
+
+ int SiS_GetReg (int ,int) ;
+ int SiS_SetReg (int ,int,unsigned short) ;
+ int SiS_SetRegAND (int ,int,int) ;
+ int SiS_SetRegOR (int ,int,int) ;
+ int VB_NoLCD ;
+ int VB_SIS301 ;
+ int VB_SIS301B ;
+ int VB_SIS301C ;
+ int VB_SIS301LV ;
+ int VB_SIS302B ;
+ int VB_SIS302ELV ;
+ int VB_SIS302LV ;
+ int VB_UMC ;
+ scalar_t__ XGI_20 ;
 
 __attribute__((used)) static
 void
@@ -54,23 +54,23 @@ SiS_GetVBType(struct SiS_Private *SiS_Pr)
       SiS_Pr->SiS_VBType = VB_SIS302B;
    } else if(flag == 1) {
       if(rev >= 0xC0) {
-	 SiS_Pr->SiS_VBType = VB_SIS301C;
+  SiS_Pr->SiS_VBType = VB_SIS301C;
       } else if(rev >= 0xB0) {
-	 SiS_Pr->SiS_VBType = VB_SIS301B;
-	 /* Check if 30xB DH version (no LCD support, use Panel Link instead) */
-	 nolcd = SiS_GetReg(SiS_Pr->SiS_Part4Port,0x23);
-	 if(!(nolcd & 0x02)) SiS_Pr->SiS_VBType |= VB_NoLCD;
+  SiS_Pr->SiS_VBType = VB_SIS301B;
+
+  nolcd = SiS_GetReg(SiS_Pr->SiS_Part4Port,0x23);
+  if(!(nolcd & 0x02)) SiS_Pr->SiS_VBType |= VB_NoLCD;
       } else {
-	 SiS_Pr->SiS_VBType = VB_SIS301;
+  SiS_Pr->SiS_VBType = VB_SIS301;
       }
    }
    if(SiS_Pr->SiS_VBType & (VB_SIS301B | VB_SIS301C | VB_SIS302B)) {
       if(rev >= 0xE0) {
-	 flag = SiS_GetReg(SiS_Pr->SiS_Part4Port,0x39);
-	 if(flag == 0xff) SiS_Pr->SiS_VBType = VB_SIS302LV;
-	 else 	 	  SiS_Pr->SiS_VBType = VB_SIS301C;  /* VB_SIS302ELV; */
+  flag = SiS_GetReg(SiS_Pr->SiS_Part4Port,0x39);
+  if(flag == 0xff) SiS_Pr->SiS_VBType = VB_SIS302LV;
+  else SiS_Pr->SiS_VBType = VB_SIS301C;
       } else if(rev >= 0xD0) {
-	 SiS_Pr->SiS_VBType = VB_SIS301LV;
+  SiS_Pr->SiS_VBType = VB_SIS301LV;
       }
    }
    if(SiS_Pr->SiS_VBType & (VB_SIS301C | VB_SIS301LV | VB_SIS302LV | VB_SIS302ELV)) {

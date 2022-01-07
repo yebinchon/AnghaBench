@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_18__   TYPE_4__ ;
-typedef  struct TYPE_17__   TYPE_3__ ;
-typedef  struct TYPE_16__   TYPE_2__ ;
-typedef  struct TYPE_15__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_18__ TYPE_4__ ;
+typedef struct TYPE_17__ TYPE_3__ ;
+typedef struct TYPE_16__ TYPE_2__ ;
+typedef struct TYPE_15__ TYPE_1__ ;
+
+
 struct TYPE_18__ {TYPE_1__* par_in; TYPE_2__* priv_data; } ;
 struct TYPE_17__ {int flags; scalar_t__ size; scalar_t__ data; } ;
 struct TYPE_16__ {scalar_t__ freq; TYPE_3__ pkt; } ;
 struct TYPE_15__ {scalar_t__ extradata; scalar_t__ extradata_size; } ;
-typedef  TYPE_2__ DumpExtradataContext ;
-typedef  TYPE_3__ AVPacket ;
-typedef  TYPE_4__ AVBSFContext ;
+typedef TYPE_2__ DumpExtradataContext ;
+typedef TYPE_3__ AVPacket ;
+typedef TYPE_4__ AVBSFContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AV_PKT_FLAG_KEY ; 
- scalar_t__ DUMP_FREQ_ALL ; 
- scalar_t__ DUMP_FREQ_KEYFRAME ; 
- int /*<<< orphan*/  ERANGE ; 
- scalar_t__ INT_MAX ; 
- int av_new_packet (TYPE_3__*,scalar_t__) ; 
- int av_packet_copy_props (TYPE_3__*,TYPE_3__*) ; 
- int /*<<< orphan*/  av_packet_move_ref (TYPE_3__*,TYPE_3__*) ; 
- int /*<<< orphan*/  av_packet_unref (TYPE_3__*) ; 
- int ff_bsf_get_packet_ref (TYPE_4__*,TYPE_3__*) ; 
- scalar_t__ memcmp (scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  memcpy (scalar_t__,scalar_t__,scalar_t__) ; 
+
+ int AVERROR (int ) ;
+ int AV_PKT_FLAG_KEY ;
+ scalar_t__ DUMP_FREQ_ALL ;
+ scalar_t__ DUMP_FREQ_KEYFRAME ;
+ int ERANGE ;
+ scalar_t__ INT_MAX ;
+ int av_new_packet (TYPE_3__*,scalar_t__) ;
+ int av_packet_copy_props (TYPE_3__*,TYPE_3__*) ;
+ int av_packet_move_ref (TYPE_3__*,TYPE_3__*) ;
+ int av_packet_unref (TYPE_3__*) ;
+ int ff_bsf_get_packet_ref (TYPE_4__*,TYPE_3__*) ;
+ scalar_t__ memcmp (scalar_t__,scalar_t__,scalar_t__) ;
+ int memcpy (scalar_t__,scalar_t__,scalar_t__) ;
 
 __attribute__((used)) static int dump_extradata(AVBSFContext *ctx, AVPacket *out)
 {

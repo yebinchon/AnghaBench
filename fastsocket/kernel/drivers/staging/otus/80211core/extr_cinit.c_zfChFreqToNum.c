@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u8_t ;
-typedef  int u16_t ;
 
-/* Variables and functions */
- int FALSE ; 
- int TRUE ; 
- int ZM_CH_G_1 ; 
- int ZM_CH_G_14 ; 
+
+
+
+typedef int u8_t ;
+typedef int u16_t ;
+
+
+ int FALSE ;
+ int TRUE ;
+ int ZM_CH_G_1 ;
+ int ZM_CH_G_14 ;
 
 u8_t zfChFreqToNum(u16_t freq, u8_t* pbIs5GBand)
 {
-    u8_t   ch;
-    u8_t   Is5GBand;
+    u8_t ch;
+    u8_t Is5GBand;
 
-    /* to avoid NULL value */
-    if ( pbIs5GBand == NULL )
+
+    if ( pbIs5GBand == ((void*)0) )
     {
         pbIs5GBand = &Is5GBand;
     }

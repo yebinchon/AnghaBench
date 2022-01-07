@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  SSL ;
 
-/* Variables and functions */
- unsigned int SSL3_VERSION ; 
- int SSL_AD_INTERNAL_ERROR ; 
- int SSL_AD_PROTOCOL_VERSION ; 
- int SSL_AD_UNRECOGNIZED_NAME ; 
- int SSL_CLIENT_HELLO_ERROR ; 
- int SSL_CLIENT_HELLO_SUCCESS ; 
- scalar_t__ SSL_client_hello_get0_ciphers (int /*<<< orphan*/ *,unsigned char const**) ; 
- scalar_t__ SSL_client_hello_get0_compression_methods (int /*<<< orphan*/ *,unsigned char const**) ; 
- unsigned int SSL_client_hello_get0_legacy_version (int /*<<< orphan*/ *) ; 
- scalar_t__ SSL_client_hello_get0_random (int /*<<< orphan*/ *,unsigned char const**) ; 
- int /*<<< orphan*/  SSL_client_hello_get0_session_id (int /*<<< orphan*/ *,unsigned char const**) ; 
- int /*<<< orphan*/  SSL_set_max_proto_version (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TLS1_1_VERSION ; 
- unsigned int TLS1_2_VERSION ; 
- int client_hello_select_server_ctx (int /*<<< orphan*/ *,void*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int SSL ;
+
+
+ unsigned int SSL3_VERSION ;
+ int SSL_AD_INTERNAL_ERROR ;
+ int SSL_AD_PROTOCOL_VERSION ;
+ int SSL_AD_UNRECOGNIZED_NAME ;
+ int SSL_CLIENT_HELLO_ERROR ;
+ int SSL_CLIENT_HELLO_SUCCESS ;
+ scalar_t__ SSL_client_hello_get0_ciphers (int *,unsigned char const**) ;
+ scalar_t__ SSL_client_hello_get0_compression_methods (int *,unsigned char const**) ;
+ unsigned int SSL_client_hello_get0_legacy_version (int *) ;
+ scalar_t__ SSL_client_hello_get0_random (int *,unsigned char const**) ;
+ int SSL_client_hello_get0_session_id (int *,unsigned char const**) ;
+ int SSL_set_max_proto_version (int *,int ) ;
+ int TLS1_1_VERSION ;
+ unsigned int TLS1_2_VERSION ;
+ int client_hello_select_server_ctx (int *,void*,int ) ;
 
 __attribute__((used)) static int client_hello_nov12_cb(SSL *s, int *al, void *arg)
 {
@@ -41,7 +41,7 @@ __attribute__((used)) static int client_hello_nov12_cb(SSL *s, int *al, void *ar
         return SSL_CLIENT_HELLO_ERROR;
     }
     (void)SSL_client_hello_get0_session_id(s, &p);
-    if (p == NULL ||
+    if (p == ((void*)0) ||
         SSL_client_hello_get0_random(s, &p) == 0 ||
         SSL_client_hello_get0_ciphers(s, &p) == 0 ||
         SSL_client_hello_get0_compression_methods(s, &p) == 0) {

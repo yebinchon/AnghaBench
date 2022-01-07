@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  enum tid_t { ____Placeholder_tid_t } tid_t ;
-typedef  int /*<<< orphan*/  ITypeLib ;
-typedef  int /*<<< orphan*/  ITypeInfo ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*,int /*<<< orphan*/ ) ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ITypeInfo_AddRef (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ITypeInfo_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ITypeLib_GetTypeInfoOfGuid (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- scalar_t__ InterlockedCompareExchangePointer (void**,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- unsigned int LibXml ; 
- int /*<<< orphan*/  S_OK ; 
- unsigned int get_libid_from_tid (int) ; 
- int /*<<< orphan*/  get_riid_from_tid (int) ; 
- int /*<<< orphan*/  get_typelib (unsigned int,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/ ** typeinfos ; 
+
+
+
+typedef enum tid_t { ____Placeholder_tid_t } tid_t ;
+typedef int ITypeLib ;
+typedef int ITypeInfo ;
+typedef int HRESULT ;
+
+
+ int ERR (char*,int ) ;
+ scalar_t__ FAILED (int ) ;
+ int ITypeInfo_AddRef (int *) ;
+ int ITypeInfo_Release (int *) ;
+ int ITypeLib_GetTypeInfoOfGuid (int *,int ,int **) ;
+ scalar_t__ InterlockedCompareExchangePointer (void**,int *,int *) ;
+ unsigned int LibXml ;
+ int S_OK ;
+ unsigned int get_libid_from_tid (int) ;
+ int get_riid_from_tid (int) ;
+ int get_typelib (unsigned int,int **) ;
+ int ** typeinfos ;
 
 HRESULT get_typeinfo(enum tid_t tid, ITypeInfo **typeinfo)
 {
@@ -43,7 +43,7 @@ HRESULT get_typeinfo(enum tid_t tid, ITypeInfo **typeinfo)
 
         hres = ITypeLib_GetTypeInfoOfGuid(typelib, get_riid_from_tid(tid), &ti);
         if(FAILED(hres)) {
-            /* try harder with typelib from msxml.dll */
+
             if (FAILED(hres = get_typelib(LibXml, &typelib)))
                 return hres;
             hres = ITypeLib_GetTypeInfoOfGuid(typelib, get_riid_from_tid(tid), &ti);
@@ -53,7 +53,7 @@ HRESULT get_typeinfo(enum tid_t tid, ITypeInfo **typeinfo)
             }
         }
 
-        if(InterlockedCompareExchangePointer((void**)(typeinfos+tid), ti, NULL))
+        if(InterlockedCompareExchangePointer((void**)(typeinfos+tid), ti, ((void*)0)))
             ITypeInfo_Release(ti);
     }
 

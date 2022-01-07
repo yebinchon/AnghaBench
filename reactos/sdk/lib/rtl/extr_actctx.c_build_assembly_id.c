@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  revision; int /*<<< orphan*/  build; int /*<<< orphan*/  minor; int /*<<< orphan*/  major; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int revision; int build; int minor; int major; } ;
 struct assembly_identity {char* name; char* arch; char* public_key; char* type; TYPE_1__ version; } ;
-typedef  char WCHAR ;
-typedef  int SIZE_T ;
+typedef char WCHAR ;
+typedef int SIZE_T ;
 
-/* Variables and functions */
- char* RtlAllocateHeap (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  RtlGetProcessHeap () ; 
- int /*<<< orphan*/  append_string (char*,char const*,char*) ; 
- int /*<<< orphan*/  sprintfW (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strcpyW (char*,char*) ; 
- int strlenW (char const*) ; 
- int /*<<< orphan*/  version_formatW ; 
+
+ char* RtlAllocateHeap (int ,int ,int) ;
+ int RtlGetProcessHeap () ;
+ int append_string (char*,char const*,char*) ;
+ int sprintfW (char*,int ,int ,int ,int ,int ) ;
+ int strcpyW (char*,char*) ;
+ int strlenW (char const*) ;
+ int version_formatW ;
 
 __attribute__((used)) static WCHAR *build_assembly_id( const struct assembly_identity *ai )
 {
@@ -48,7 +48,7 @@ __attribute__((used)) static WCHAR *build_assembly_id( const struct assembly_ide
     size += strlenW(versionW2) + strlenW(version) + 2;
 
     if (!(ret = RtlAllocateHeap( RtlGetProcessHeap(), 0, (size + 1) * sizeof(WCHAR) )))
-        return NULL;
+        return ((void*)0);
 
     if (ai->name) strcpyW( ret, ai->name );
     else *ret = 0;

@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct scsi_disk {int /*<<< orphan*/  openers; struct scsi_device* device; } ;
+
+
+
+
+struct scsi_disk {int openers; struct scsi_device* device; } ;
 struct scsi_device {scalar_t__ removable; } ;
 struct gendisk {int dummy; } ;
-typedef  int /*<<< orphan*/  fmode_t ;
+typedef int fmode_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  KERN_INFO ; 
- int /*<<< orphan*/  SCSI_LOG_HLQUEUE (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SCSI_REMOVAL_ALLOW ; 
- scalar_t__ scsi_block_when_processing_errors (struct scsi_device*) ; 
- struct scsi_disk* scsi_disk (struct gendisk*) ; 
- int /*<<< orphan*/  scsi_disk_put (struct scsi_disk*) ; 
- int /*<<< orphan*/  scsi_set_medium_removal (struct scsi_device*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sd_printk (int /*<<< orphan*/ ,struct scsi_disk*,char*) ; 
+
+ int KERN_INFO ;
+ int SCSI_LOG_HLQUEUE (int,int ) ;
+ int SCSI_REMOVAL_ALLOW ;
+ scalar_t__ scsi_block_when_processing_errors (struct scsi_device*) ;
+ struct scsi_disk* scsi_disk (struct gendisk*) ;
+ int scsi_disk_put (struct scsi_disk*) ;
+ int scsi_set_medium_removal (struct scsi_device*,int ) ;
+ int sd_printk (int ,struct scsi_disk*,char*) ;
 
 __attribute__((used)) static int sd_release(struct gendisk *disk, fmode_t mode)
 {
-	struct scsi_disk *sdkp = scsi_disk(disk);
-	struct scsi_device *sdev = sdkp->device;
+ struct scsi_disk *sdkp = scsi_disk(disk);
+ struct scsi_device *sdev = sdkp->device;
 
-	SCSI_LOG_HLQUEUE(3, sd_printk(KERN_INFO, sdkp, "sd_release\n"));
+ SCSI_LOG_HLQUEUE(3, sd_printk(KERN_INFO, sdkp, "sd_release\n"));
 
-	if (!--sdkp->openers && sdev->removable) {
-		if (scsi_block_when_processing_errors(sdev))
-			scsi_set_medium_removal(sdev, SCSI_REMOVAL_ALLOW);
-	}
+ if (!--sdkp->openers && sdev->removable) {
+  if (scsi_block_when_processing_errors(sdev))
+   scsi_set_medium_removal(sdev, SCSI_REMOVAL_ALLOW);
+ }
 
-	/*
-	 * XXX and what if there are packets in flight and this close()
-	 * XXX is followed by a "rmmod sd_mod"?
-	 */
-	scsi_disk_put(sdkp);
-	return 0;
+
+
+
+
+ scsi_disk_put(sdkp);
+ return 0;
 }

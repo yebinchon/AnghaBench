@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int curx ; 
- int cury ; 
- int /*<<< orphan*/  send_backspaces (int) ; 
- int /*<<< orphan*/  send_deletes (int) ; 
- int /*<<< orphan*/  send_goto_xy (int,int) ; 
- int /*<<< orphan*/  tetris_send_string (char*) ; 
+ int curx ;
+ int cury ;
+ int send_backspaces (int) ;
+ int send_deletes (int) ;
+ int send_goto_xy (int,int) ;
+ int tetris_send_string (char*) ;
 
 __attribute__((used)) static void draw_row(char c, const char oldrow[7], const char newrow[7], int x, int y) {
   char str[2] = { c, 0 };

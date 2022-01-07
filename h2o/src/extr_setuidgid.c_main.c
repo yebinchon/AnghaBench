@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct passwd {int /*<<< orphan*/  pw_uid; int /*<<< orphan*/  pw_gid; int /*<<< orphan*/  pw_name; } ;
 
-/* Variables and functions */
- int EX_CONFIG ; 
- int EX_OSERR ; 
- scalar_t__ errno ; 
- int /*<<< orphan*/  execvp (char*,char**) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- struct passwd* getpwnam (char*) ; 
- scalar_t__ initgroups (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  perror (char*) ; 
- scalar_t__ setgid (int /*<<< orphan*/ ) ; 
- scalar_t__ setuid (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stderr ; 
- char* strerror (scalar_t__) ; 
+
+
+
+struct passwd {int pw_uid; int pw_gid; int pw_name; } ;
+
+
+ int EX_CONFIG ;
+ int EX_OSERR ;
+ scalar_t__ errno ;
+ int execvp (char*,char**) ;
+ int fprintf (int ,char*,...) ;
+ struct passwd* getpwnam (char*) ;
+ scalar_t__ initgroups (int ,int ) ;
+ int perror (char*) ;
+ scalar_t__ setgid (int ) ;
+ scalar_t__ setuid (int ) ;
+ int stderr ;
+ char* strerror (scalar_t__) ;
 
 int main(int argc, char **argv)
 {
@@ -38,7 +38,7 @@ int main(int argc, char **argv)
     ++argv;
 
     errno = 0;
-    if ((user = getpwnam(*argv)) == NULL) {
+    if ((user = getpwnam(*argv)) == ((void*)0)) {
         if (errno == 0) {
             fprintf(stderr, "unknown user:%s\n", *argv);
             return EX_CONFIG;

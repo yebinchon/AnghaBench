@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  cpp_reader ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int cpp_reader ;
 struct TYPE_4__ {scalar_t__ cplusplus; scalar_t__ objc; } ;
-typedef  TYPE_1__ cpp_options ;
-struct TYPE_5__ {int /*<<< orphan*/  (* extra_includes ) (char const*,char const*,int) ;int /*<<< orphan*/  (* extra_pre_includes ) (char const*,char const*,int) ;} ;
+typedef TYPE_1__ cpp_options ;
+struct TYPE_5__ {int (* extra_includes ) (char const*,char const*,int) ;int (* extra_pre_includes ) (char const*,char const*,int) ;} ;
 
-/* Variables and functions */
- size_t BRACKET ; 
- size_t QUOTE ; 
- size_t SYSTEM ; 
- int /*<<< orphan*/  add_env_var_paths (char const* const,size_t) ; 
- int /*<<< orphan*/  add_standard_paths (char const*,char const*,char const*,int) ; 
- TYPE_1__* cpp_get_options (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cpp_set_include_chains (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * heads ; 
- int /*<<< orphan*/  merge_include_chains (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  quote_ignores_source_dir ; 
- int /*<<< orphan*/  stub1 (char const*,char const*,int) ; 
- int /*<<< orphan*/  stub2 (char const*,char const*,int) ; 
- TYPE_2__ target_c_incpath ; 
+
+ size_t BRACKET ;
+ size_t QUOTE ;
+ size_t SYSTEM ;
+ int add_env_var_paths (char const* const,size_t) ;
+ int add_standard_paths (char const*,char const*,char const*,int) ;
+ TYPE_1__* cpp_get_options (int *) ;
+ int cpp_set_include_chains (int *,int ,int ,int ) ;
+ int * heads ;
+ int merge_include_chains (int *,int) ;
+ int quote_ignores_source_dir ;
+ int stub1 (char const*,char const*,int) ;
+ int stub2 (char const*,char const*,int) ;
+ TYPE_2__ target_c_incpath ;
 
 void
 register_include_chains (cpp_reader *pfile, const char *sysroot,
-			 const char *iprefix, const char *imultilib,
-			 int stdinc, int cxx_stdinc, int verbose)
+    const char *iprefix, const char *imultilib,
+    int stdinc, int cxx_stdinc, int verbose)
 {
   static const char *const lang_env_vars[] =
     { "C_INCLUDE_PATH", "CPLUS_INCLUDE_PATH",
@@ -46,16 +46,16 @@ register_include_chains (cpp_reader *pfile, const char *sysroot,
   if (cpp_opts->cplusplus)
     idx++;
   else
-    cxx_stdinc = false;
+    cxx_stdinc = 0;
 
-  /* CPATH and language-dependent environment variables may add to the
-     include chain.  */
+
+
   add_env_var_paths ("CPATH", BRACKET);
   add_env_var_paths (lang_env_vars[idx], SYSTEM);
 
   target_c_incpath.extra_pre_includes (sysroot, iprefix, stdinc);
 
-  /* Finally chain on the standard directories.  */
+
   if (stdinc)
     add_standard_paths (sysroot, iprefix, imultilib, cxx_stdinc);
 
@@ -64,5 +64,5 @@ register_include_chains (cpp_reader *pfile, const char *sysroot,
   merge_include_chains (pfile, verbose);
 
   cpp_set_include_chains (pfile, heads[QUOTE], heads[BRACKET],
-			  quote_ignores_source_dir);
+     quote_ignores_source_dir);
 }

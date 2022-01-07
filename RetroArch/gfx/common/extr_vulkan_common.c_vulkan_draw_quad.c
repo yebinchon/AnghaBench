@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_5__ ;
-typedef  struct TYPE_15__   TYPE_4__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
-typedef  struct TYPE_11__   TYPE_10__ ;
 
-/* Type definitions */
-struct TYPE_13__ {scalar_t__ pipeline; scalar_t__ view; scalar_t__ sampler; int /*<<< orphan*/  mvp; int /*<<< orphan*/  dirty; } ;
-struct TYPE_12__ {int /*<<< orphan*/  layout; } ;
-struct TYPE_15__ {int /*<<< orphan*/  cmd; TYPE_3__* chain; TYPE_10__* context; TYPE_2__ tracker; TYPE_1__ pipelines; } ;
-typedef  TYPE_4__ vk_t ;
+
+
+typedef struct TYPE_16__ TYPE_5__ ;
+typedef struct TYPE_15__ TYPE_4__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+typedef struct TYPE_11__ TYPE_10__ ;
+
+
+struct TYPE_13__ {scalar_t__ pipeline; scalar_t__ view; scalar_t__ sampler; int mvp; int dirty; } ;
+struct TYPE_12__ {int layout; } ;
+struct TYPE_15__ {int cmd; TYPE_3__* chain; TYPE_10__* context; TYPE_2__ tracker; TYPE_1__ pipelines; } ;
+typedef TYPE_4__ vk_t ;
 struct vk_vertex {int dummy; } ;
-struct vk_draw_quad {scalar_t__ pipeline; scalar_t__ sampler; int /*<<< orphan*/  color; int /*<<< orphan*/ * mvp; TYPE_5__* texture; } ;
-struct vk_buffer_range {int /*<<< orphan*/  offset; int /*<<< orphan*/  buffer; scalar_t__ data; } ;
-typedef  int /*<<< orphan*/  VkDescriptorSet ;
+struct vk_draw_quad {scalar_t__ pipeline; scalar_t__ sampler; int color; int * mvp; TYPE_5__* texture; } ;
+struct vk_buffer_range {int offset; int buffer; scalar_t__ data; } ;
+typedef int VkDescriptorSet ;
 struct TYPE_16__ {scalar_t__ view; } ;
-struct TYPE_14__ {int /*<<< orphan*/  vbo; int /*<<< orphan*/  descriptor_manager; int /*<<< orphan*/  ubo; } ;
-struct TYPE_11__ {int /*<<< orphan*/  device; } ;
+struct TYPE_14__ {int vbo; int descriptor_manager; int ubo; } ;
+struct TYPE_11__ {int device; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  VK_PIPELINE_BIND_POINT_GRAPHICS ; 
- int /*<<< orphan*/  VULKAN_DIRTY_DYNAMIC_BIT ; 
- int /*<<< orphan*/  memcpy (scalar_t__,int /*<<< orphan*/ *,int) ; 
- scalar_t__ string_is_equal_fast (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  vkCmdBindDescriptorSets (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vkCmdBindPipeline (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  vkCmdBindVertexBuffers (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vkCmdDraw (int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vulkan_buffer_chain_alloc (TYPE_10__*,int /*<<< orphan*/ *,int,struct vk_buffer_range*) ; 
- int /*<<< orphan*/  vulkan_check_dynamic_state (TYPE_4__*) ; 
- int /*<<< orphan*/  vulkan_descriptor_manager_alloc (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vulkan_transition_texture (TYPE_4__*,int /*<<< orphan*/ ,TYPE_5__*) ; 
- int /*<<< orphan*/  vulkan_write_quad_descriptors (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,TYPE_5__*,scalar_t__) ; 
- int /*<<< orphan*/  vulkan_write_quad_vbo (struct vk_vertex*,float,float,float,float,float,float,float,float,int /*<<< orphan*/ *) ; 
+
+ int VK_PIPELINE_BIND_POINT_GRAPHICS ;
+ int VULKAN_DIRTY_DYNAMIC_BIT ;
+ int memcpy (scalar_t__,int *,int) ;
+ scalar_t__ string_is_equal_fast (int *,int *,int) ;
+ int vkCmdBindDescriptorSets (int ,int ,int ,int ,int,int *,int ,int *) ;
+ int vkCmdBindPipeline (int ,int ,scalar_t__) ;
+ int vkCmdBindVertexBuffers (int ,int ,int,int *,int *) ;
+ int vkCmdDraw (int ,int,int,int ,int ) ;
+ int vulkan_buffer_chain_alloc (TYPE_10__*,int *,int,struct vk_buffer_range*) ;
+ int vulkan_check_dynamic_state (TYPE_4__*) ;
+ int vulkan_descriptor_manager_alloc (int ,int *) ;
+ int vulkan_transition_texture (TYPE_4__*,int ,TYPE_5__*) ;
+ int vulkan_write_quad_descriptors (int ,int ,int ,int ,int,TYPE_5__*,scalar_t__) ;
+ int vulkan_write_quad_vbo (struct vk_vertex*,float,float,float,float,float,float,float,float,int *) ;
 
 void vulkan_draw_quad(vk_t *vk, const struct vk_draw_quad *quad)
 {
@@ -54,13 +54,13 @@ void vulkan_draw_quad(vk_t *vk, const struct vk_draw_quad *quad)
             VK_PIPELINE_BIND_POINT_GRAPHICS, quad->pipeline);
 
       vk->tracker.pipeline = quad->pipeline;
-      /* Changing pipeline invalidates dynamic state. */
-      vk->tracker.dirty   |= VULKAN_DIRTY_DYNAMIC_BIT;
+
+      vk->tracker.dirty |= VULKAN_DIRTY_DYNAMIC_BIT;
    }
 
    vulkan_check_dynamic_state(vk);
 
-   /* Upload descriptors */
+
    {
       VkDescriptorSet set;
       struct vk_buffer_range range;
@@ -75,7 +75,7 @@ void vulkan_draw_quad(vk_t *vk, const struct vk_draw_quad *quad)
             || quad->texture->view != vk->tracker.view
             || quad->sampler != vk->tracker.sampler)
       {
-         /* Upload UBO */
+
          struct vk_buffer_range range;
 
          if (!vulkan_buffer_chain_alloc(vk->context, &vk->chain->ubo,
@@ -99,15 +99,15 @@ void vulkan_draw_quad(vk_t *vk, const struct vk_draw_quad *quad)
 
          vkCmdBindDescriptorSets(vk->cmd, VK_PIPELINE_BIND_POINT_GRAPHICS,
                vk->pipelines.layout, 0,
-               1, &set, 0, NULL);
+               1, &set, 0, ((void*)0));
 
-         vk->tracker.view    = quad->texture->view;
+         vk->tracker.view = quad->texture->view;
          vk->tracker.sampler = quad->sampler;
-         vk->tracker.mvp     = *quad->mvp;
+         vk->tracker.mvp = *quad->mvp;
       }
    }
 
-   /* Upload VBO */
+
    {
       struct vk_buffer_range range;
       if (!vulkan_buffer_chain_alloc(vk->context, &vk->chain->vbo,
@@ -123,6 +123,6 @@ void vulkan_draw_quad(vk_t *vk, const struct vk_draw_quad *quad)
             &range.buffer, &range.offset);
    }
 
-   /* Draw the quad */
+
    vkCmdDraw(vk->cmd, 6, 1, 0, 0);
 }

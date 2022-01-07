@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  xo_ssize_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  xo_open_list_hf (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*) ; 
+
+
+
+typedef int xo_ssize_t ;
+
+
+ int xo_open_list_hf (int *,int ,char const*) ;
 
 xo_ssize_t
 xo_open_list (const char *name)
 {
-    return xo_open_list_hf(NULL, 0, name);
+    return xo_open_list_hf(((void*)0), 0, name);
 }

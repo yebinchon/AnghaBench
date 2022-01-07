@@ -1,30 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  SYNTHETIC_ERRNO (int /*<<< orphan*/ ) ; 
- char* arg_dest ; 
- scalar_t__ arg_noresume ; 
- int /*<<< orphan*/  in_initrd () ; 
- int /*<<< orphan*/  log_debug (char*) ; 
- int log_error_errno (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  log_notice (char*) ; 
- int /*<<< orphan*/  log_setup_generator () ; 
- int /*<<< orphan*/  log_warning_errno (int,char*) ; 
- int /*<<< orphan*/  parse_proc_cmdline_item ; 
- int proc_cmdline_parse (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int process_resume () ; 
+ int EINVAL ;
+ int SYNTHETIC_ERRNO (int ) ;
+ char* arg_dest ;
+ scalar_t__ arg_noresume ;
+ int in_initrd () ;
+ int log_debug (char*) ;
+ int log_error_errno (int ,char*) ;
+ int log_notice (char*) ;
+ int log_setup_generator () ;
+ int log_warning_errno (int,char*) ;
+ int parse_proc_cmdline_item ;
+ int proc_cmdline_parse (int ,int *,int ) ;
+ int process_resume () ;
 
 __attribute__((used)) static int run(int argc, char *argv[]) {
         int r = 0;
@@ -38,13 +30,13 @@ __attribute__((used)) static int run(int argc, char *argv[]) {
         if (argc > 1)
                 arg_dest = argv[1];
 
-        /* Don't even consider resuming outside of initramfs. */
+
         if (!in_initrd()) {
                 log_debug("Not running in an initrd, quitting.");
                 return 0;
         }
 
-        r = proc_cmdline_parse(parse_proc_cmdline_item, NULL, 0);
+        r = proc_cmdline_parse(parse_proc_cmdline_item, ((void*)0), 0);
         if (r < 0)
                 log_warning_errno(r, "Failed to parse kernel command line, ignoring: %m");
 

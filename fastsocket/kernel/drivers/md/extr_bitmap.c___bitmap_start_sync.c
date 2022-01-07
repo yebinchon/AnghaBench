@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  lock; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int lock; } ;
 struct bitmap {TYPE_1__ counts; } ;
-typedef  int sector_t ;
-typedef  int /*<<< orphan*/  bitmap_counter_t ;
+typedef int sector_t ;
+typedef int bitmap_counter_t ;
 
-/* Variables and functions */
- scalar_t__ NEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NEEDED_MASK ; 
- scalar_t__ RESYNC (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RESYNC_MASK ; 
- int /*<<< orphan*/ * bitmap_get_counter (TYPE_1__*,int,int*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  spin_lock_irq (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock_irq (int /*<<< orphan*/ *) ; 
+
+ scalar_t__ NEEDED (int ) ;
+ int NEEDED_MASK ;
+ scalar_t__ RESYNC (int ) ;
+ int RESYNC_MASK ;
+ int * bitmap_get_counter (TYPE_1__*,int,int*,int ) ;
+ int spin_lock_irq (int *) ;
+ int spin_unlock_irq (int *) ;
 
 __attribute__((used)) static int __bitmap_start_sync(struct bitmap *bitmap, sector_t offset, sector_t *blocks,
-			       int degraded)
+          int degraded)
 {
-	bitmap_counter_t *bmc;
-	int rv;
-	if (bitmap == NULL) {/* FIXME or bitmap set as 'failed' */
-		*blocks = 1024;
-		return 1; /* always resync if no bitmap */
-	}
-	spin_lock_irq(&bitmap->counts.lock);
-	bmc = bitmap_get_counter(&bitmap->counts, offset, blocks, 0);
-	rv = 0;
-	if (bmc) {
-		/* locked */
-		if (RESYNC(*bmc))
-			rv = 1;
-		else if (NEEDED(*bmc)) {
-			rv = 1;
-			if (!degraded) { /* don't set/clear bits if degraded */
-				*bmc |= RESYNC_MASK;
-				*bmc &= ~NEEDED_MASK;
-			}
-		}
-	}
-	spin_unlock_irq(&bitmap->counts.lock);
-	return rv;
+ bitmap_counter_t *bmc;
+ int rv;
+ if (bitmap == ((void*)0)) {
+  *blocks = 1024;
+  return 1;
+ }
+ spin_lock_irq(&bitmap->counts.lock);
+ bmc = bitmap_get_counter(&bitmap->counts, offset, blocks, 0);
+ rv = 0;
+ if (bmc) {
+
+  if (RESYNC(*bmc))
+   rv = 1;
+  else if (NEEDED(*bmc)) {
+   rv = 1;
+   if (!degraded) {
+    *bmc |= RESYNC_MASK;
+    *bmc &= ~NEEDED_MASK;
+   }
+  }
+ }
+ spin_unlock_irq(&bitmap->counts.lock);
+ return rv;
 }

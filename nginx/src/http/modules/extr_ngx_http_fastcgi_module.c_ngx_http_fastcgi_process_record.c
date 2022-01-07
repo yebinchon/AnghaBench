@@ -1,56 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u_char ;
-typedef  int /*<<< orphan*/  ngx_uint_t ;
-typedef  int /*<<< orphan*/  ngx_int_t ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int u_char ;
+typedef int ngx_uint_t ;
+typedef int ngx_int_t ;
 struct TYPE_7__ {TYPE_1__* connection; } ;
-typedef  TYPE_2__ ngx_http_request_t ;
-typedef  int ngx_http_fastcgi_state_e ;
-struct TYPE_8__ {int state; int* pos; int* last; int length; size_t padding; int /*<<< orphan*/  type; } ;
-typedef  TYPE_3__ ngx_http_fastcgi_ctx_t ;
-struct TYPE_6__ {int /*<<< orphan*/  log; } ;
+typedef TYPE_2__ ngx_http_request_t ;
+typedef int ngx_http_fastcgi_state_e ;
+struct TYPE_8__ {int state; int* pos; int* last; int length; size_t padding; int type; } ;
+typedef TYPE_3__ ngx_http_fastcgi_ctx_t ;
+struct TYPE_6__ {int log; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NGX_AGAIN ; 
- int /*<<< orphan*/  NGX_ERROR ; 
-#define  NGX_HTTP_FASTCGI_END_REQUEST 140 
-#define  NGX_HTTP_FASTCGI_STDERR 139 
-#define  NGX_HTTP_FASTCGI_STDOUT 138 
- int /*<<< orphan*/  NGX_LOG_DEBUG_HTTP ; 
- int /*<<< orphan*/  NGX_LOG_ERR ; 
- int /*<<< orphan*/  NGX_OK ; 
-#define  ngx_http_fastcgi_st_content_length_hi 137 
-#define  ngx_http_fastcgi_st_content_length_lo 136 
-#define  ngx_http_fastcgi_st_data 135 
-#define  ngx_http_fastcgi_st_padding 134 
-#define  ngx_http_fastcgi_st_padding_length 133 
-#define  ngx_http_fastcgi_st_request_id_hi 132 
-#define  ngx_http_fastcgi_st_request_id_lo 131 
-#define  ngx_http_fastcgi_st_reserved 130 
-#define  ngx_http_fastcgi_st_type 129 
-#define  ngx_http_fastcgi_st_version 128 
- int /*<<< orphan*/  ngx_log_debug1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  ngx_log_error (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int) ; 
+
+ int NGX_AGAIN ;
+ int NGX_ERROR ;
+
+
+
+ int NGX_LOG_DEBUG_HTTP ;
+ int NGX_LOG_ERR ;
+ int NGX_OK ;
+ int ngx_log_debug1 (int ,int ,int ,char*,int) ;
+ int ngx_log_error (int ,int ,int ,char*,int) ;
 
 __attribute__((used)) static ngx_int_t
 ngx_http_fastcgi_process_record(ngx_http_request_t *r,
     ngx_http_fastcgi_ctx_t *f)
 {
-    u_char                     ch, *p;
-    ngx_http_fastcgi_state_e   state;
+    u_char ch, *p;
+    ngx_http_fastcgi_state_e state;
 
     state = f->state;
 
@@ -63,21 +53,21 @@ ngx_http_fastcgi_process_record(ngx_http_request_t *r,
 
         switch (state) {
 
-        case ngx_http_fastcgi_st_version:
+        case 128:
             if (ch != 1) {
                 ngx_log_error(NGX_LOG_ERR, r->connection->log, 0,
                               "upstream sent unsupported FastCGI "
                               "protocol version: %d", ch);
                 return NGX_ERROR;
             }
-            state = ngx_http_fastcgi_st_type;
+            state = 129;
             break;
 
-        case ngx_http_fastcgi_st_type:
+        case 129:
             switch (ch) {
-            case NGX_HTTP_FASTCGI_STDOUT:
-            case NGX_HTTP_FASTCGI_STDERR:
-            case NGX_HTTP_FASTCGI_END_REQUEST:
+            case 138:
+            case 139:
+            case 140:
                 f->type = (ngx_uint_t) ch;
                 break;
             default:
@@ -87,48 +77,48 @@ ngx_http_fastcgi_process_record(ngx_http_request_t *r,
                 return NGX_ERROR;
 
             }
-            state = ngx_http_fastcgi_st_request_id_hi;
+            state = 132;
             break;
 
-        /* we support the single request per connection */
 
-        case ngx_http_fastcgi_st_request_id_hi:
+
+        case 132:
             if (ch != 0) {
                 ngx_log_error(NGX_LOG_ERR, r->connection->log, 0,
                               "upstream sent unexpected FastCGI "
                               "request id high byte: %d", ch);
                 return NGX_ERROR;
             }
-            state = ngx_http_fastcgi_st_request_id_lo;
+            state = 131;
             break;
 
-        case ngx_http_fastcgi_st_request_id_lo:
+        case 131:
             if (ch != 1) {
                 ngx_log_error(NGX_LOG_ERR, r->connection->log, 0,
                               "upstream sent unexpected FastCGI "
                               "request id low byte: %d", ch);
                 return NGX_ERROR;
             }
-            state = ngx_http_fastcgi_st_content_length_hi;
+            state = 137;
             break;
 
-        case ngx_http_fastcgi_st_content_length_hi:
+        case 137:
             f->length = ch << 8;
-            state = ngx_http_fastcgi_st_content_length_lo;
+            state = 136;
             break;
 
-        case ngx_http_fastcgi_st_content_length_lo:
+        case 136:
             f->length |= (size_t) ch;
-            state = ngx_http_fastcgi_st_padding_length;
+            state = 133;
             break;
 
-        case ngx_http_fastcgi_st_padding_length:
+        case 133:
             f->padding = (size_t) ch;
-            state = ngx_http_fastcgi_st_reserved;
+            state = 130;
             break;
 
-        case ngx_http_fastcgi_st_reserved:
-            state = ngx_http_fastcgi_st_data;
+        case 130:
+            state = 135;
 
             ngx_log_debug1(NGX_LOG_DEBUG_HTTP, r->connection->log, 0,
                            "http fastcgi record length: %z", f->length);
@@ -138,9 +128,9 @@ ngx_http_fastcgi_process_record(ngx_http_request_t *r,
 
             return NGX_OK;
 
-        /* suppress warning */
-        case ngx_http_fastcgi_st_data:
-        case ngx_http_fastcgi_st_padding:
+
+        case 135:
+        case 134:
             break;
         }
     }

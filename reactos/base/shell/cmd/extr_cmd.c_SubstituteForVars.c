@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ TCHAR ;
-typedef  scalar_t__* LPTSTR ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int CMDLINE_LENGTH ; 
- int /*<<< orphan*/  FALSE ; 
- scalar_t__* FindForVar (scalar_t__,int /*<<< orphan*/ *) ; 
- scalar_t__* GetEnhancedVar (scalar_t__**,scalar_t__* (*) (scalar_t__,int /*<<< orphan*/ *)) ; 
- int /*<<< orphan*/  TRUE ; 
- scalar_t__ _T (char) ; 
- scalar_t__* _stpcpy (scalar_t__*,scalar_t__*) ; 
- int _tcslen (scalar_t__*) ; 
+
+
+
+typedef scalar_t__ TCHAR ;
+typedef scalar_t__* LPTSTR ;
+typedef int BOOL ;
+
+
+ int CMDLINE_LENGTH ;
+ int FALSE ;
+ scalar_t__* FindForVar (scalar_t__,int *) ;
+ scalar_t__* GetEnhancedVar (scalar_t__**,scalar_t__* (*) (scalar_t__,int *)) ;
+ int TRUE ;
+ scalar_t__ _T (char) ;
+ scalar_t__* _stpcpy (scalar_t__*,scalar_t__*) ;
+ int _tcslen (scalar_t__*) ;
 
 BOOL
 SubstituteForVars(TCHAR *Src, TCHAR *Dest)
@@ -34,7 +34,7 @@ SubstituteForVars(TCHAR *Src, TCHAR *Dest)
         {
             BOOL Dummy;
             LPTSTR End = &Src[2];
-            LPTSTR Value = NULL;
+            LPTSTR Value = ((void*)0);
 
             if (Src[1] == _T('~'))
                 Value = GetEnhancedVar(&End, FindForVar);
@@ -51,7 +51,7 @@ SubstituteForVars(TCHAR *Src, TCHAR *Dest)
                 continue;
             }
         }
-        /* Not a variable; just copy the character */
+
         if (Dest >= DestEnd)
             return FALSE;
         *Dest++ = *Src++;

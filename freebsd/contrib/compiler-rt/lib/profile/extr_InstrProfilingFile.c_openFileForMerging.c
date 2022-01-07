@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- scalar_t__ COMPILER_RT_FTRUNCATE (int /*<<< orphan*/ *,long) ; 
- int /*<<< orphan*/  PROF_ERR (char*,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  createProfileDir (char const*) ; 
- int doProfileMerging (int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int fseek (int /*<<< orphan*/ *,long,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * getProfileFile () ; 
- int /*<<< orphan*/  lprofLockFileHandle (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * lprofOpenFileEx (char const*) ; 
- int /*<<< orphan*/  strerror (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int FILE ;
+
+
+ scalar_t__ COMPILER_RT_FTRUNCATE (int *,long) ;
+ int PROF_ERR (char*,char const*,int ) ;
+ int SEEK_SET ;
+ int createProfileDir (char const*) ;
+ int doProfileMerging (int *,int*) ;
+ int errno ;
+ int fclose (int *) ;
+ int fseek (int *,long,int ) ;
+ int * getProfileFile () ;
+ int lprofLockFileHandle (int *) ;
+ int * lprofOpenFileEx (char const*) ;
+ int strerror (int ) ;
 
 __attribute__((used)) static FILE *openFileForMerging(const char *ProfileFileName, int *MergeDone) {
-  FILE *ProfileFile = NULL;
+  FILE *ProfileFile = ((void*)0);
   int rc;
 
   ProfileFile = getProfileFile();
@@ -38,7 +38,7 @@ __attribute__((used)) static FILE *openFileForMerging(const char *ProfileFileNam
     ProfileFile = lprofOpenFileEx(ProfileFileName);
   }
   if (!ProfileFile)
-    return NULL;
+    return ((void*)0);
 
   rc = doProfileMerging(ProfileFile, MergeDone);
   if (rc || (!*MergeDone && COMPILER_RT_FTRUNCATE(ProfileFile, 0L)) ||
@@ -46,7 +46,7 @@ __attribute__((used)) static FILE *openFileForMerging(const char *ProfileFileNam
     PROF_ERR("Profile Merging of file %s failed: %s\n", ProfileFileName,
              strerror(errno));
     fclose(ProfileFile);
-    return NULL;
+    return ((void*)0);
   }
   return ProfileFile;
 }

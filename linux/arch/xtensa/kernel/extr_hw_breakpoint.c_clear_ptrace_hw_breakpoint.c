@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  ptrace_wp; int /*<<< orphan*/  ptrace_bp; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int ptrace_wp; int ptrace_bp; } ;
 struct task_struct {TYPE_1__ thread; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memset (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+ int memset (int ,int ,int) ;
 
 void clear_ptrace_hw_breakpoint(struct task_struct *tsk)
 {
-	memset(tsk->thread.ptrace_bp, 0, sizeof(tsk->thread.ptrace_bp));
-	memset(tsk->thread.ptrace_wp, 0, sizeof(tsk->thread.ptrace_wp));
+ memset(tsk->thread.ptrace_bp, 0, sizeof(tsk->thread.ptrace_bp));
+ memset(tsk->thread.ptrace_wp, 0, sizeof(tsk->thread.ptrace_wp));
 }

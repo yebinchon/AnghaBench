@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/ * p_proc; } ;
-struct knote {TYPE_1__ kn_ptr; int /*<<< orphan*/  kn_knlist; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  knlist_remove (int /*<<< orphan*/ ,struct knote*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int * p_proc; } ;
+struct knote {TYPE_1__ kn_ptr; int kn_knlist; } ;
+
+
+ int knlist_remove (int ,struct knote*,int ) ;
 
 __attribute__((used)) static void
 filt_procdetach(struct knote *kn)
 {
 
-	knlist_remove(kn->kn_knlist, kn, 0);
-	kn->kn_ptr.p_proc = NULL;
+ knlist_remove(kn->kn_knlist, kn, 0);
+ kn->kn_ptr.p_proc = ((void*)0);
 }

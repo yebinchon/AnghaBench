@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct entry {int /*<<< orphan*/  fourcc; int /*<<< orphan*/  alias; } ;
 
-/* Variables and functions */
- int memcmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+
+
+struct entry {int fourcc; int alias; } ;
+
+
+ int memcmp (int ,int ,int) ;
 
 __attribute__((used)) static int cmp_entry(const void *a, const void *b)
 {

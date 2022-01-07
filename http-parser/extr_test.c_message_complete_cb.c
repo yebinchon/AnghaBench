@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  http_parser ;
-struct TYPE_2__ {scalar_t__ should_keep_alive; int /*<<< orphan*/  message_complete_on_eof; int /*<<< orphan*/  message_complete_cb_called; int /*<<< orphan*/  body_is_final; scalar_t__ body_size; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  abort () ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  currently_parsing_eof ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ http_body_is_final (int /*<<< orphan*/ *) ; 
- scalar_t__ http_should_keep_alive (int /*<<< orphan*/ *) ; 
- TYPE_1__* messages ; 
- size_t num_messages ; 
- int /*<<< orphan*/  parser ; 
- int /*<<< orphan*/  stderr ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int http_parser ;
+struct TYPE_2__ {scalar_t__ should_keep_alive; int message_complete_on_eof; int message_complete_cb_called; int body_is_final; scalar_t__ body_size; } ;
+
+
+ int TRUE ;
+ int abort () ;
+ int assert (int) ;
+ int currently_parsing_eof ;
+ int fprintf (int ,char*) ;
+ scalar_t__ http_body_is_final (int *) ;
+ scalar_t__ http_should_keep_alive (int *) ;
+ TYPE_1__* messages ;
+ size_t num_messages ;
+ int parser ;
+ int stderr ;
 
 int
 message_complete_cb (http_parser *p)

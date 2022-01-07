@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_5__ ;
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_13__ TYPE_5__ ;
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_9__ {int hits_perc_len; scalar_t__ max_hits; } ;
-struct TYPE_13__ {TYPE_3__* data; int /*<<< orphan*/  module; TYPE_1__ meta; } ;
+struct TYPE_13__ {TYPE_3__* data; int module; TYPE_1__ meta; } ;
 struct TYPE_12__ {int idx; } ;
 struct TYPE_11__ {TYPE_2__* metrics; scalar_t__ is_subitem; } ;
-struct TYPE_10__ {scalar_t__ hits; int /*<<< orphan*/  hits_perc; } ;
-typedef  TYPE_4__ GDashRender ;
-typedef  TYPE_5__ GDashModule ;
-typedef  int /*<<< orphan*/  GColors ;
-typedef  int /*<<< orphan*/  GColorItem ;
+struct TYPE_10__ {scalar_t__ hits; int hits_perc; } ;
+typedef TYPE_4__ GDashRender ;
+typedef TYPE_5__ GDashModule ;
+typedef int GColors ;
+typedef int GColorItem ;
 
-/* Variables and functions */
- int /*<<< orphan*/  COLOR_MTRC_HITS_PERC ; 
- int /*<<< orphan*/  COLOR_MTRC_HITS_PERC_MAX ; 
- scalar_t__ DASH_SPACE ; 
- int /*<<< orphan*/  HOSTS ; 
- int /*<<< orphan*/ * get_color_by_item_module (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  render_percent (TYPE_4__,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int) ; 
+
+ int COLOR_MTRC_HITS_PERC ;
+ int COLOR_MTRC_HITS_PERC_MAX ;
+ scalar_t__ DASH_SPACE ;
+ int HOSTS ;
+ int * get_color_by_item_module (int ,int ) ;
+ int render_percent (TYPE_4__,int *,int ,int,int) ;
 
 __attribute__((used)) static void
 render_hits_percent (GDashModule * data, GDashRender render, int *x)

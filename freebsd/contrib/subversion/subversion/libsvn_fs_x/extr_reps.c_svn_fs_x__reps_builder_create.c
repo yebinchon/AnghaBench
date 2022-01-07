@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {void* instructions; void* reps; void* bases; int /*<<< orphan*/  hash; int /*<<< orphan*/  text; int /*<<< orphan*/ * fs; } ;
-typedef  TYPE_1__ svn_fs_x__reps_builder_t ;
-typedef  int /*<<< orphan*/  svn_fs_t ;
-typedef  int /*<<< orphan*/  rep_t ;
-typedef  int /*<<< orphan*/  instruction_t ;
-typedef  int /*<<< orphan*/  base_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- void* apr_array_make (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- TYPE_1__* apr_pcalloc (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  init_hash (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_stringbuf_create_empty (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {void* instructions; void* reps; void* bases; int hash; int text; int * fs; } ;
+typedef TYPE_1__ svn_fs_x__reps_builder_t ;
+typedef int svn_fs_t ;
+typedef int rep_t ;
+typedef int instruction_t ;
+typedef int base_t ;
+typedef int apr_pool_t ;
+
+
+ void* apr_array_make (int *,int ,int) ;
+ TYPE_1__* apr_pcalloc (int *,int) ;
+ int init_hash (int *,int,int *) ;
+ int svn_stringbuf_create_empty (int *) ;
 
 svn_fs_x__reps_builder_t *
 svn_fs_x__reps_builder_create(svn_fs_t *fs,

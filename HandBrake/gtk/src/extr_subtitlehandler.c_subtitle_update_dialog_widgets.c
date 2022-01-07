@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  builder; int /*<<< orphan*/  settings; } ;
-typedef  TYPE_1__ signal_user_data_t ;
-struct TYPE_7__ {int /*<<< orphan*/  format; } ;
-typedef  TYPE_2__ hb_container_t ;
-typedef  int gboolean ;
-typedef  int /*<<< orphan*/  GtkWidget ;
-typedef  int /*<<< orphan*/  GhbValue ;
 
-/* Variables and functions */
- int FALSE ; 
- int /*<<< orphan*/ * GHB_WIDGET (int /*<<< orphan*/ ,char*) ; 
- int IMPORTSRT ; 
- int IMPORTSSA ; 
- int TRUE ; 
- int get_sub_source (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * ghb_boolean_value (int) ; 
- int /*<<< orphan*/ * ghb_dict_get (int /*<<< orphan*/ *,char*) ; 
- int ghb_dict_get_bool (int /*<<< orphan*/ *,char*) ; 
- char* ghb_dict_get_string (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/ * ghb_dict_get_value (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  ghb_dict_set_bool (int /*<<< orphan*/ *,char*,int) ; 
- TYPE_2__* ghb_lookup_container_by_name (char const*) ; 
- int /*<<< orphan*/ * ghb_string_value (char*) ; 
- int /*<<< orphan*/  ghb_ui_update (TYPE_1__*,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  gtk_widget_set_sensitive (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  gtk_widget_set_visible (int /*<<< orphan*/ *,int) ; 
- scalar_t__ hb_subtitle_can_burn (int) ; 
- int hb_subtitle_can_force (int) ; 
- int hb_subtitle_can_pass (int,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int builder; int settings; } ;
+typedef TYPE_1__ signal_user_data_t ;
+struct TYPE_7__ {int format; } ;
+typedef TYPE_2__ hb_container_t ;
+typedef int gboolean ;
+typedef int GtkWidget ;
+typedef int GhbValue ;
+
+
+ int FALSE ;
+ int * GHB_WIDGET (int ,char*) ;
+ int IMPORTSRT ;
+ int IMPORTSSA ;
+ int TRUE ;
+ int get_sub_source (int ,int *) ;
+ int * ghb_boolean_value (int) ;
+ int * ghb_dict_get (int *,char*) ;
+ int ghb_dict_get_bool (int *,char*) ;
+ char* ghb_dict_get_string (int ,char*) ;
+ int * ghb_dict_get_value (int *,char*) ;
+ int ghb_dict_set_bool (int *,char*,int) ;
+ TYPE_2__* ghb_lookup_container_by_name (char const*) ;
+ int * ghb_string_value (char*) ;
+ int ghb_ui_update (TYPE_1__*,char*,int *) ;
+ int gtk_widget_set_sensitive (int *,int) ;
+ int gtk_widget_set_visible (int *,int) ;
+ scalar_t__ hb_subtitle_can_burn (int) ;
+ int hb_subtitle_can_force (int) ;
+ int hb_subtitle_can_pass (int,int ) ;
 
 __attribute__((used)) static void
 subtitle_update_dialog_widgets(signal_user_data_t *ud, GhbValue *subsettings)
 {
     GtkWidget *widget;
 
-    if (subsettings != NULL)
+    if (subsettings != ((void*)0))
     {
-        // Update widgets with subsettings
+
         GhbValue *val, *import;
         gboolean burn, force, def;
         int source;
@@ -58,13 +58,13 @@ subtitle_update_dialog_widgets(signal_user_data_t *ud, GhbValue *subsettings)
         const hb_container_t *mux;
 
         mux_id = ghb_dict_get_string(ud->settings, "FileFormat");
-        mux    = ghb_lookup_container_by_name(mux_id);
+        mux = ghb_lookup_container_by_name(mux_id);
 
         import = ghb_dict_get(subsettings, "Import");
         source = get_sub_source(ud->settings, subsettings);
 
         val = ghb_dict_get_value(subsettings, "Name");
-        if (val != NULL)
+        if (val != ((void*)0))
         {
             ghb_ui_update(ud, "SubtitleTrackName", val);
         }
@@ -73,18 +73,18 @@ subtitle_update_dialog_widgets(signal_user_data_t *ud, GhbValue *subsettings)
             ghb_ui_update(ud, "SubtitleTrackName", ghb_string_value(""));
         }
 
-        val    = ghb_dict_get(subsettings, "Track");
-        if (val != NULL)
+        val = ghb_dict_get(subsettings, "Track");
+        if (val != ((void*)0))
         {
             ghb_ui_update(ud, "SubtitleTrack", val);
 
-            // Hide regular subtitle widgets
-            widget = GHB_WIDGET(ud->builder, "subtitle_track_label");
-            gtk_widget_set_visible(widget, import == NULL);
-            widget = GHB_WIDGET(ud->builder, "SubtitleTrack");
-            gtk_widget_set_visible(widget, import == NULL);
 
-            // Show import subitle widgets
+            widget = GHB_WIDGET(ud->builder, "subtitle_track_label");
+            gtk_widget_set_visible(widget, import == ((void*)0));
+            widget = GHB_WIDGET(ud->builder, "SubtitleTrack");
+            gtk_widget_set_visible(widget, import == ((void*)0));
+
+
             widget = GHB_WIDGET(ud->builder, "subtitle_import_grid");
             gtk_widget_set_visible(widget, source == IMPORTSRT ||
                                            source == IMPORTSSA);
@@ -98,7 +98,7 @@ subtitle_update_dialog_widgets(signal_user_data_t *ud, GhbValue *subsettings)
         }
         else
         {
-            // Hide widgets not needed for "Foreign audio search"
+
             widget = GHB_WIDGET(ud->builder, "subtitle_track_label");
             gtk_widget_set_visible(widget, FALSE);
             widget = GHB_WIDGET(ud->builder, "SubtitleTrack");
@@ -111,7 +111,7 @@ subtitle_update_dialog_widgets(signal_user_data_t *ud, GhbValue *subsettings)
             gtk_widget_set_visible(widget, FALSE);
         }
 
-        if (import != NULL)
+        if (import != ((void*)0))
         {
             if (source == IMPORTSSA)
             {
@@ -173,11 +173,11 @@ subtitle_update_dialog_widgets(signal_user_data_t *ud, GhbValue *subsettings)
     }
     else
     {
-        // Hide SRT subitle widgets
+
         widget = GHB_WIDGET(ud->builder, "subtitle_import_grid");
         gtk_widget_set_visible(widget, FALSE);
 
-        // Show regular subtitle widgets
+
         widget = GHB_WIDGET(ud->builder, "subtitle_track_label");
         gtk_widget_set_visible(widget, TRUE);
         widget = GHB_WIDGET(ud->builder, "SubtitleTrack");

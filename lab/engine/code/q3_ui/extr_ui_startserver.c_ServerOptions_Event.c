@@ -1,65 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int id; } ;
-typedef  TYPE_1__ menucommon_s ;
-
-/* Variables and functions */
-#define  ID_BACK 133 
-#define  ID_DEDICATED 132 
-#define  ID_GO 131 
-#define  ID_MAXCLIENTS 130 
-#define  ID_PLAYER_TYPE 129 
-#define  ID_STARTSERVERNEXT 128 
- int QM_ACTIVATED ; 
- int /*<<< orphan*/  ServerOptions_SetPlayerItems () ; 
- int /*<<< orphan*/  ServerOptions_Start () ; 
- int /*<<< orphan*/  UI_PopMenu () ; 
+typedef TYPE_1__ menucommon_s ;
+ int QM_ACTIVATED ;
+ int ServerOptions_SetPlayerItems () ;
+ int ServerOptions_Start () ;
+ int UI_PopMenu () ;
 
 __attribute__((used)) static void ServerOptions_Event( void* ptr, int event ) {
-	switch( ((menucommon_s*)ptr)->id ) {
-	
-	//if( event != QM_ACTIVATED && event != QM_LOSTFOCUS) {
-	//	return;
-	//}
-	case ID_PLAYER_TYPE:
-		if( event != QM_ACTIVATED ) {
-			break;
-		}
-		ServerOptions_SetPlayerItems();
-		break;
+ switch( ((menucommon_s*)ptr)->id ) {
 
-	case ID_MAXCLIENTS:
-	case ID_DEDICATED:
-		ServerOptions_SetPlayerItems();
-		break;
-	case ID_GO:
-		if( event != QM_ACTIVATED ) {
-			break;
-		}
-		ServerOptions_Start();
-		break;
 
-	case ID_STARTSERVERNEXT:
-		if( event != QM_ACTIVATED ) {
-			break;
-		}
-		break;
-	case ID_BACK:
-		if( event != QM_ACTIVATED ) {
-			break;
-		}
-		UI_PopMenu();
-		break;
-	}
+
+
+ case 129:
+  if( event != QM_ACTIVATED ) {
+   break;
+  }
+  ServerOptions_SetPlayerItems();
+  break;
+
+ case 130:
+ case 132:
+  ServerOptions_SetPlayerItems();
+  break;
+ case 131:
+  if( event != QM_ACTIVATED ) {
+   break;
+  }
+  ServerOptions_Start();
+  break;
+
+ case 128:
+  if( event != QM_ACTIVATED ) {
+   break;
+  }
+  break;
+ case 133:
+  if( event != QM_ACTIVATED ) {
+   break;
+  }
+  UI_PopMenu();
+  break;
+ }
 }

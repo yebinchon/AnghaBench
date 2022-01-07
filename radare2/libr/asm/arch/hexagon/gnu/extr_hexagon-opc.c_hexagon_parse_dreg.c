@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  hexagon_operand ;
-typedef  int /*<<< orphan*/  hexagon_opcode ;
-typedef  int /*<<< orphan*/  hexagon_insn ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int HEXAGON_OPERAND_IS_PAIR ; 
- scalar_t__ hexagon_encode_operand (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char**) ; 
- int /*<<< orphan*/  hexagon_gp_regs ; 
- int /*<<< orphan*/  hexagon_gp_regs_count ; 
- int hexagon_reg_num (int /*<<< orphan*/  const*,char**,char,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,char) ; 
- int /*<<< orphan*/  sprintf (char*,char*,int,...) ; 
+
+
+
+typedef int hexagon_operand ;
+typedef int hexagon_opcode ;
+typedef int hexagon_insn ;
+
+
+ int FALSE ;
+ int HEXAGON_OPERAND_IS_PAIR ;
+ scalar_t__ hexagon_encode_operand (int const*,int *,int const*,int,int *,int ,int ,char**) ;
+ int hexagon_gp_regs ;
+ int hexagon_gp_regs_count ;
+ int hexagon_reg_num (int const*,char**,char,int ,int ,int *,char) ;
+ int sprintf (char*,char*,int,...) ;
 
 __attribute__((used)) static char *
 hexagon_parse_dreg
@@ -31,12 +31,12 @@ hexagon_parse_dreg
   int reg_odd;
   int reg_even;
 
-  reg_odd  = hexagon_reg_num (operand, &input, 'r', hexagon_gp_regs, hexagon_gp_regs_count, NULL, '\0');
-  reg_even = hexagon_reg_num (operand, &input, ':', hexagon_gp_regs, hexagon_gp_regs_count, NULL, '\0');
+  reg_odd = hexagon_reg_num (operand, &input, 'r', hexagon_gp_regs, hexagon_gp_regs_count, ((void*)0), '\0');
+  reg_even = hexagon_reg_num (operand, &input, ':', hexagon_gp_regs, hexagon_gp_regs_count, ((void*)0), '\0');
   if (reg_odd < 0 || reg_even < 0)
-    return (NULL);
+    return (((void*)0));
 
-  /* Make sure the register number is odd */
+
   if (reg_odd % 2 != 1)
     {
       if (errmsg)
@@ -45,10 +45,10 @@ hexagon_parse_dreg
             sprintf (buf, "invalid odd register number: %d", reg_odd);
             *errmsg = buf;
         }
-      return NULL;
+      return ((void*)0);
     }
 
-  /* Make sure the register number is even */
+
   if (reg_even % 2 != 0)
     {
       if (errmsg)
@@ -57,10 +57,10 @@ hexagon_parse_dreg
             sprintf (buf, "invalid even register number: %d", reg_even);
             *errmsg = buf;
         }
-      return NULL;
+      return ((void*)0);
     }
 
-  /* Make sure the registers are consecutive */
+
   if (reg_odd != reg_even + 1)
     {
       if (errmsg)
@@ -70,11 +70,11 @@ hexagon_parse_dreg
                       reg_odd, reg_even);
             *errmsg = buf;
         }
-      return NULL;
+      return ((void*)0);
     }
 
   if (hexagon_encode_operand
-        (operand, insn, opcode, reg_even, NULL, FALSE, FALSE, errmsg))
+        (operand, insn, opcode, reg_even, ((void*)0), FALSE, FALSE, errmsg))
     {
       if (flag)
         *flag = HEXAGON_OPERAND_IS_PAIR;
@@ -83,5 +83,5 @@ hexagon_parse_dreg
       return (input);
     }
 
-  return NULL;
+  return ((void*)0);
 }

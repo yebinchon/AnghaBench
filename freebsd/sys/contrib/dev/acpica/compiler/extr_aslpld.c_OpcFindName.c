@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  size_t UINT32 ;
-typedef  int /*<<< orphan*/  BOOLEAN ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AcpiUtStrupr (char*) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  strlen (char*) ; 
- int /*<<< orphan*/  strncmp (char const*,char*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef size_t UINT32 ;
+typedef int BOOLEAN ;
+
+
+ int AcpiUtStrupr (char*) ;
+ int FALSE ;
+ int TRUE ;
+ int strlen (char*) ;
+ int strncmp (char const*,char*,int ) ;
 
 __attribute__((used)) static BOOLEAN
 OpcFindName (
-    const char              **List,
-    char                    *Name,
-    UINT32                  *Index)
+    const char **List,
+    char *Name,
+    UINT32 *Index)
 {
-    const char              *NameString;
-    UINT32                  i;
+    const char *NameString;
+    UINT32 i;
 
 
     AcpiUtStrupr (Name);

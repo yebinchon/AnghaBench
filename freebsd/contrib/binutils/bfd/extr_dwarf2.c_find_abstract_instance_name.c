@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct comp_unit {int /*<<< orphan*/  abbrevs; int /*<<< orphan*/ * info_ptr_unit; int /*<<< orphan*/ * abfd; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct comp_unit {int abbrevs; int * info_ptr_unit; int * abfd; } ;
 struct TYPE_2__ {char* str; int val; } ;
 struct attribute {int name; TYPE_1__ u; } ;
-struct abbrev_info {unsigned int num_attrs; int /*<<< orphan*/ * attrs; } ;
-typedef  int bfd_uint64_t ;
-typedef  int /*<<< orphan*/  bfd_byte ;
-typedef  int /*<<< orphan*/  bfd ;
+struct abbrev_info {unsigned int num_attrs; int * attrs; } ;
+typedef int bfd_uint64_t ;
+typedef int bfd_byte ;
+typedef int bfd ;
 
-/* Variables and functions */
-#define  DW_AT_MIPS_linkage_name 130 
-#define  DW_AT_name 129 
-#define  DW_AT_specification 128 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  _bfd_error_handler (int /*<<< orphan*/ ,unsigned int) ; 
- int /*<<< orphan*/  bfd_error_bad_value ; 
- int /*<<< orphan*/  bfd_set_error (int /*<<< orphan*/ ) ; 
- struct abbrev_info* lookup_abbrev (unsigned int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * read_attribute (struct attribute*,int /*<<< orphan*/ *,struct comp_unit*,int /*<<< orphan*/ *) ; 
- unsigned int read_unsigned_leb128 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,unsigned int*) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,unsigned int) ; 
+
+
+
+
+ int _ (char*) ;
+ int _bfd_error_handler (int ,unsigned int) ;
+ int bfd_error_bad_value ;
+ int bfd_set_error (int ) ;
+ struct abbrev_info* lookup_abbrev (unsigned int,int ) ;
+ int * read_attribute (struct attribute*,int *,struct comp_unit*,int *) ;
+ unsigned int read_unsigned_leb128 (int *,int *,unsigned int*) ;
+ int stub1 (int ,unsigned int) ;
 
 __attribute__((used)) static char *
 find_abstract_instance_name (struct comp_unit *unit, bfd_uint64_t die_ref)
@@ -50,34 +50,34 @@ find_abstract_instance_name (struct comp_unit *unit, bfd_uint64_t die_ref)
     {
       abbrev = lookup_abbrev (abbrev_number, unit->abbrevs);
       if (! abbrev)
-	{
-	  (*_bfd_error_handler) (_("Dwarf Error: Could not find abbrev number %u."),
-				 abbrev_number);
-	  bfd_set_error (bfd_error_bad_value);
-	}
+ {
+   (*_bfd_error_handler) (_("Dwarf Error: Could not find abbrev number %u."),
+     abbrev_number);
+   bfd_set_error (bfd_error_bad_value);
+ }
       else
-	{
-	  for (i = 0; i < abbrev->num_attrs; ++i)
-	    {
-	      info_ptr = read_attribute (&attr, &abbrev->attrs[i], unit, info_ptr);
-	      switch (attr.name)
-		{
-		case DW_AT_name:
-		  /* Prefer DW_AT_MIPS_linkage_name over DW_AT_name.  */
-		  if (name == NULL)
-		    name = attr.u.str;
-		  break;
-		case DW_AT_specification:
-		  name = find_abstract_instance_name (unit, attr.u.val);
-		  break;
-		case DW_AT_MIPS_linkage_name:
-		  name = attr.u.str;
-		  break;
-		default:
-		  break;
-		}
-	    }
-	}
+ {
+   for (i = 0; i < abbrev->num_attrs; ++i)
+     {
+       info_ptr = read_attribute (&attr, &abbrev->attrs[i], unit, info_ptr);
+       switch (attr.name)
+  {
+  case 129:
+
+    if (name == ((void*)0))
+      name = attr.u.str;
+    break;
+  case 128:
+    name = find_abstract_instance_name (unit, attr.u.val);
+    break;
+  case 130:
+    name = attr.u.str;
+    break;
+  default:
+    break;
+  }
+     }
+ }
     }
   return (name);
 }

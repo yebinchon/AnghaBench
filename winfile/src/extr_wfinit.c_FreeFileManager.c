@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VOID ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLOSEHANDLE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CloseHandle (scalar_t__) ; 
- int /*<<< orphan*/  CriticalSectionPath ; 
- int /*<<< orphan*/  D_Info () ; 
- int /*<<< orphan*/  D_NetCon () ; 
- int /*<<< orphan*/  D_Space () ; 
- int /*<<< orphan*/  D_Type () ; 
- int /*<<< orphan*/  D_VolInfo () ; 
- int /*<<< orphan*/  DeleteBitmaps () ; 
- int /*<<< orphan*/  DeleteCriticalSection (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DeleteObject (scalar_t__) ; 
- int /*<<< orphan*/  DestroyDirRead () ; 
- int /*<<< orphan*/  DestroyWatchList () ; 
- int /*<<< orphan*/  DocDestruct (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  FreeLibrary (scalar_t__) ; 
- int /*<<< orphan*/  OleUninitialize () ; 
- int /*<<< orphan*/  UpdateWaitQuit () ; 
- scalar_t__ bJAPAN ; 
- scalar_t__ bUpdateRun ; 
- int /*<<< orphan*/  hEventAcledit ; 
- int /*<<< orphan*/  hEventNetLoad ; 
- int /*<<< orphan*/  hEventUpdate ; 
- int /*<<< orphan*/  hEventUpdatePartial ; 
- scalar_t__ hFont ; 
- scalar_t__ hFontStatus ; 
- scalar_t__ hMPR ; 
- scalar_t__ hNTLanman ; 
- scalar_t__ hThreadUpdate ; 
- scalar_t__ hVersion ; 
- scalar_t__ hfmifsDll ; 
- scalar_t__ hfontDriveList ; 
- int /*<<< orphan*/  lpfnRegisterPenApp (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ppDocBucket ; 
- int /*<<< orphan*/  ppProgBucket ; 
- int /*<<< orphan*/  stub1 (int,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int VOID ;
+
+
+ int CLOSEHANDLE (int ) ;
+ int CloseHandle (scalar_t__) ;
+ int CriticalSectionPath ;
+ int D_Info () ;
+ int D_NetCon () ;
+ int D_Space () ;
+ int D_Type () ;
+ int D_VolInfo () ;
+ int DeleteBitmaps () ;
+ int DeleteCriticalSection (int *) ;
+ int DeleteObject (scalar_t__) ;
+ int DestroyDirRead () ;
+ int DestroyWatchList () ;
+ int DocDestruct (int ) ;
+ int FALSE ;
+ int FreeLibrary (scalar_t__) ;
+ int OleUninitialize () ;
+ int UpdateWaitQuit () ;
+ scalar_t__ bJAPAN ;
+ scalar_t__ bUpdateRun ;
+ int hEventAcledit ;
+ int hEventNetLoad ;
+ int hEventUpdate ;
+ int hEventUpdatePartial ;
+ scalar_t__ hFont ;
+ scalar_t__ hFontStatus ;
+ scalar_t__ hMPR ;
+ scalar_t__ hNTLanman ;
+ scalar_t__ hThreadUpdate ;
+ scalar_t__ hVersion ;
+ scalar_t__ hfmifsDll ;
+ scalar_t__ hfontDriveList ;
+ int lpfnRegisterPenApp (int,int ) ;
+ int ppDocBucket ;
+ int ppProgBucket ;
+ int stub1 (int,int ) ;
 
 VOID
 FreeFileManager()
@@ -60,12 +60,12 @@ FreeFileManager()
 
    DeleteCriticalSection(&CriticalSectionPath);
 
-#define CLOSEHANDLE(handle) if (handle) CloseHandle(handle)
 
-   CLOSEHANDLE(hEventNetLoad);
-   CLOSEHANDLE(hEventAcledit);
-   CLOSEHANDLE(hEventUpdate);
-   CLOSEHANDLE(hEventUpdatePartial);
+
+   if (hEventNetLoad) CloseHandle(hEventNetLoad);
+   if (hEventAcledit) CloseHandle(hEventAcledit);
+   if (hEventUpdate) CloseHandle(hEventUpdate);
+   if (hEventUpdatePartial) CloseHandle(hEventUpdatePartial);
 
    DestroyWatchList();
    DestroyDirRead();
@@ -91,15 +91,15 @@ FreeFileManager()
    if (hfontDriveList)
       DeleteObject(hfontDriveList);
 
-    // use the smaller font for Status bar so that messages fix in it.
+
     if( bJAPAN ) {
         if (hFontStatus)
             DeleteObject(hFontStatus);
     }
 
-   //
-   // Free the fmifs junk
-   //
+
+
+
    if (hfmifsDll)
       FreeLibrary(hfmifsDll);
 
@@ -112,7 +112,7 @@ FreeFileManager()
    if (hVersion)
       FreeLibrary(hVersion);
 
-	OleUninitialize();
+ OleUninitialize();
 
-#undef CLOSEHANDLE
+
 }

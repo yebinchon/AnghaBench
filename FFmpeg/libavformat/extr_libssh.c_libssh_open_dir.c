@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  path ;
-struct TYPE_7__ {int /*<<< orphan*/  filename; TYPE_2__* priv_data; } ;
-typedef  TYPE_1__ URLContext ;
-struct TYPE_8__ {int /*<<< orphan*/  session; int /*<<< orphan*/  sftp; int /*<<< orphan*/  dir; } ;
-typedef  TYPE_2__ LIBSSHContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  EIO ; 
- int MAX_URL_SIZE ; 
- int /*<<< orphan*/  av_log (TYPE_2__*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  libssh_close (TYPE_1__*) ; 
- int libssh_connect (TYPE_1__*,int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  sftp_opendir (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ssh_get_error (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int path ;
+struct TYPE_7__ {int filename; TYPE_2__* priv_data; } ;
+typedef TYPE_1__ URLContext ;
+struct TYPE_8__ {int session; int sftp; int dir; } ;
+typedef TYPE_2__ LIBSSHContext ;
+
+
+ int AVERROR (int ) ;
+ int AV_LOG_ERROR ;
+ int EIO ;
+ int MAX_URL_SIZE ;
+ int av_log (TYPE_2__*,int ,char*,int ) ;
+ int libssh_close (TYPE_1__*) ;
+ int libssh_connect (TYPE_1__*,int ,char*,int) ;
+ int sftp_opendir (int ,char*) ;
+ int ssh_get_error (int ) ;
 
 __attribute__((used)) static int libssh_open_dir(URLContext *h)
 {

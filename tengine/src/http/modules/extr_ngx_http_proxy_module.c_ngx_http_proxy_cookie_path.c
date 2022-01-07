@@ -1,61 +1,61 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_23__   TYPE_7__ ;
-typedef  struct TYPE_22__   TYPE_6__ ;
-typedef  struct TYPE_21__   TYPE_5__ ;
-typedef  struct TYPE_20__   TYPE_4__ ;
-typedef  struct TYPE_19__   TYPE_3__ ;
-typedef  struct TYPE_18__   TYPE_2__ ;
-typedef  struct TYPE_17__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_19__ {char* data; int /*<<< orphan*/  len; } ;
-typedef  TYPE_3__ ngx_str_t ;
-struct TYPE_18__ {int /*<<< orphan*/  complex; } ;
-struct TYPE_20__ {int /*<<< orphan*/  replacement; int /*<<< orphan*/  handler; TYPE_2__ pattern; } ;
-typedef  TYPE_4__ ngx_http_proxy_rewrite_t ;
-struct TYPE_21__ {int /*<<< orphan*/ * cookie_paths; } ;
-typedef  TYPE_5__ ngx_http_proxy_loc_conf_t ;
-struct TYPE_22__ {int /*<<< orphan*/ * complex_value; TYPE_3__* value; TYPE_7__* cf; } ;
-typedef  TYPE_6__ ngx_http_compile_complex_value_t ;
-struct TYPE_23__ {int /*<<< orphan*/  pool; TYPE_1__* args; } ;
-typedef  TYPE_7__ ngx_conf_t ;
-typedef  int /*<<< orphan*/  ngx_command_t ;
+
+
+typedef struct TYPE_23__ TYPE_7__ ;
+typedef struct TYPE_22__ TYPE_6__ ;
+typedef struct TYPE_21__ TYPE_5__ ;
+typedef struct TYPE_20__ TYPE_4__ ;
+typedef struct TYPE_19__ TYPE_3__ ;
+typedef struct TYPE_18__ TYPE_2__ ;
+typedef struct TYPE_17__ TYPE_1__ ;
+
+
+struct TYPE_19__ {char* data; int len; } ;
+typedef TYPE_3__ ngx_str_t ;
+struct TYPE_18__ {int complex; } ;
+struct TYPE_20__ {int replacement; int handler; TYPE_2__ pattern; } ;
+typedef TYPE_4__ ngx_http_proxy_rewrite_t ;
+struct TYPE_21__ {int * cookie_paths; } ;
+typedef TYPE_5__ ngx_http_proxy_loc_conf_t ;
+struct TYPE_22__ {int * complex_value; TYPE_3__* value; TYPE_7__* cf; } ;
+typedef TYPE_6__ ngx_http_compile_complex_value_t ;
+struct TYPE_23__ {int pool; TYPE_1__* args; } ;
+typedef TYPE_7__ ngx_conf_t ;
+typedef int ngx_command_t ;
 struct TYPE_17__ {int nelts; TYPE_3__* elts; } ;
 
-/* Variables and functions */
- char* NGX_CONF_ERROR ; 
- char* NGX_CONF_OK ; 
- int /*<<< orphan*/ * NGX_CONF_UNSET_PTR ; 
- int /*<<< orphan*/  NGX_LOG_EMERG ; 
- scalar_t__ NGX_OK ; 
- int /*<<< orphan*/ * ngx_array_create (int /*<<< orphan*/ ,int,int) ; 
- TYPE_4__* ngx_array_push (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ngx_conf_log_error (int /*<<< orphan*/ ,TYPE_7__*,int /*<<< orphan*/ ,char*,TYPE_3__*) ; 
- scalar_t__ ngx_http_compile_complex_value (TYPE_6__*) ; 
- int /*<<< orphan*/  ngx_http_proxy_rewrite_complex_handler ; 
- scalar_t__ ngx_http_proxy_rewrite_regex (TYPE_7__*,TYPE_4__*,TYPE_3__*,int) ; 
- int /*<<< orphan*/  ngx_memzero (TYPE_6__*,int) ; 
- scalar_t__ ngx_strcmp (char*,char*) ; 
+
+ char* NGX_CONF_ERROR ;
+ char* NGX_CONF_OK ;
+ int * NGX_CONF_UNSET_PTR ;
+ int NGX_LOG_EMERG ;
+ scalar_t__ NGX_OK ;
+ int * ngx_array_create (int ,int,int) ;
+ TYPE_4__* ngx_array_push (int *) ;
+ int ngx_conf_log_error (int ,TYPE_7__*,int ,char*,TYPE_3__*) ;
+ scalar_t__ ngx_http_compile_complex_value (TYPE_6__*) ;
+ int ngx_http_proxy_rewrite_complex_handler ;
+ scalar_t__ ngx_http_proxy_rewrite_regex (TYPE_7__*,TYPE_4__*,TYPE_3__*,int) ;
+ int ngx_memzero (TYPE_6__*,int) ;
+ scalar_t__ ngx_strcmp (char*,char*) ;
 
 __attribute__((used)) static char *
 ngx_http_proxy_cookie_path(ngx_conf_t *cf, ngx_command_t *cmd, void *conf)
 {
     ngx_http_proxy_loc_conf_t *plcf = conf;
 
-    ngx_str_t                         *value;
-    ngx_http_proxy_rewrite_t          *pr;
-    ngx_http_compile_complex_value_t   ccv;
+    ngx_str_t *value;
+    ngx_http_proxy_rewrite_t *pr;
+    ngx_http_compile_complex_value_t ccv;
 
-    if (plcf->cookie_paths == NULL) {
+    if (plcf->cookie_paths == ((void*)0)) {
         return NGX_CONF_OK;
     }
 
@@ -64,7 +64,7 @@ ngx_http_proxy_cookie_path(ngx_conf_t *cf, ngx_command_t *cmd, void *conf)
     if (cf->args->nelts == 2) {
 
         if (ngx_strcmp(value[1].data, "off") == 0) {
-            plcf->cookie_paths = NULL;
+            plcf->cookie_paths = ((void*)0);
             return NGX_CONF_OK;
         }
 
@@ -76,13 +76,13 @@ ngx_http_proxy_cookie_path(ngx_conf_t *cf, ngx_command_t *cmd, void *conf)
     if (plcf->cookie_paths == NGX_CONF_UNSET_PTR) {
         plcf->cookie_paths = ngx_array_create(cf->pool, 1,
                                      sizeof(ngx_http_proxy_rewrite_t));
-        if (plcf->cookie_paths == NULL) {
+        if (plcf->cookie_paths == ((void*)0)) {
             return NGX_CONF_ERROR;
         }
     }
 
     pr = ngx_array_push(plcf->cookie_paths);
-    if (pr == NULL) {
+    if (pr == ((void*)0)) {
         return NGX_CONF_ERROR;
     }
 

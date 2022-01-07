@@ -1,120 +1,120 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  perf_timer ;
-typedef  int /*<<< orphan*/  git_reference ;
-typedef  int /*<<< orphan*/  git_oid ;
-typedef  int /*<<< orphan*/  git_object ;
-typedef  int /*<<< orphan*/  git_merge_options ;
-typedef  int /*<<< orphan*/  git_commit ;
-struct TYPE_9__ {int /*<<< orphan*/  checkout_strategy; } ;
+
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int perf_timer ;
+typedef int git_reference ;
+typedef int git_oid ;
+typedef int git_object ;
+typedef int git_merge_options ;
+typedef int git_commit ;
+struct TYPE_9__ {int checkout_strategy; } ;
 struct TYPE_8__ {TYPE_2__ checkout_opts; } ;
-typedef  TYPE_1__ git_clone_options ;
-typedef  TYPE_2__ git_checkout_options ;
-typedef  int /*<<< orphan*/  git_annotated_commit ;
+typedef TYPE_1__ git_clone_options ;
+typedef TYPE_2__ git_checkout_options ;
+typedef int git_annotated_commit ;
 
-/* Variables and functions */
- TYPE_2__ GIT_CHECKOUT_OPTIONS_INIT ; 
- int /*<<< orphan*/  GIT_CHECKOUT_SAFE ; 
- TYPE_1__ GIT_CLONE_OPTIONS_INIT ; 
- int /*<<< orphan*/  GIT_MERGE_OPTIONS_INIT ; 
- int /*<<< orphan*/  PERF_TIMER_INIT ; 
- int /*<<< orphan*/  cl_git_pass (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  g_repo ; 
- int /*<<< orphan*/  git_annotated_commit_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  git_annotated_commit_lookup (int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  git_branch_create (int /*<<< orphan*/ **,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  git_checkout_tree (int /*<<< orphan*/ ,int /*<<< orphan*/ *,TYPE_2__*) ; 
- int /*<<< orphan*/  git_clone (int /*<<< orphan*/ *,char const*,char const*,TYPE_1__*) ; 
- int /*<<< orphan*/  git_commit_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  git_commit_lookup (int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  git_merge (int /*<<< orphan*/ ,int /*<<< orphan*/  const**,int,int /*<<< orphan*/ *,TYPE_2__*) ; 
- int /*<<< orphan*/  git_oid_fromstr (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  git_reference_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  git_reference_name (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  git_repository_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  git_repository_set_head (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  perf__timer__report (int /*<<< orphan*/ *,char*,char const*) ; 
- int /*<<< orphan*/  perf__timer__start (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  perf__timer__stop (int /*<<< orphan*/ *) ; 
+
+ TYPE_2__ GIT_CHECKOUT_OPTIONS_INIT ;
+ int GIT_CHECKOUT_SAFE ;
+ TYPE_1__ GIT_CLONE_OPTIONS_INIT ;
+ int GIT_MERGE_OPTIONS_INIT ;
+ int PERF_TIMER_INIT ;
+ int cl_git_pass (int ) ;
+ int g_repo ;
+ int git_annotated_commit_free (int *) ;
+ int git_annotated_commit_lookup (int **,int ,int *) ;
+ int git_branch_create (int **,int ,char*,int *,int ) ;
+ int git_checkout_tree (int ,int *,TYPE_2__*) ;
+ int git_clone (int *,char const*,char const*,TYPE_1__*) ;
+ int git_commit_free (int *) ;
+ int git_commit_lookup (int **,int ,int *) ;
+ int git_merge (int ,int const**,int,int *,TYPE_2__*) ;
+ int git_oid_fromstr (int *,char const*) ;
+ int git_reference_free (int *) ;
+ int git_reference_name (int *) ;
+ int git_repository_free (int ) ;
+ int git_repository_set_head (int ,int ) ;
+ int perf__timer__report (int *,char*,char const*) ;
+ int perf__timer__start (int *) ;
+ int perf__timer__stop (int *) ;
 
 void perf__do_merge(const char *fixture,
-					const char *test_name,
-					const char *id_a,
-					const char *id_b)
+     const char *test_name,
+     const char *id_a,
+     const char *id_b)
 {
-	git_checkout_options checkout_opts = GIT_CHECKOUT_OPTIONS_INIT;
-	git_clone_options clone_opts = GIT_CLONE_OPTIONS_INIT;
-	git_merge_options merge_opts = GIT_MERGE_OPTIONS_INIT;
-	git_oid oid_a;
-	git_oid oid_b;
-	git_reference *ref_branch_a = NULL;
-	git_reference *ref_branch_b = NULL;
-	git_commit *commit_a = NULL;
-	git_commit *commit_b = NULL;
-	git_annotated_commit *annotated_commits[1] = { NULL };
-	perf_timer t_total = PERF_TIMER_INIT;
-	perf_timer t_clone = PERF_TIMER_INIT;
-	perf_timer t_checkout = PERF_TIMER_INIT;
-	perf_timer t_merge = PERF_TIMER_INIT;
+ git_checkout_options checkout_opts = GIT_CHECKOUT_OPTIONS_INIT;
+ git_clone_options clone_opts = GIT_CLONE_OPTIONS_INIT;
+ git_merge_options merge_opts = GIT_MERGE_OPTIONS_INIT;
+ git_oid oid_a;
+ git_oid oid_b;
+ git_reference *ref_branch_a = ((void*)0);
+ git_reference *ref_branch_b = ((void*)0);
+ git_commit *commit_a = ((void*)0);
+ git_commit *commit_b = ((void*)0);
+ git_annotated_commit *annotated_commits[1] = { ((void*)0) };
+ perf_timer t_total = PERF_TIMER_INIT;
+ perf_timer t_clone = PERF_TIMER_INIT;
+ perf_timer t_checkout = PERF_TIMER_INIT;
+ perf_timer t_merge = PERF_TIMER_INIT;
 
-	perf__timer__start(&t_total);
+ perf__timer__start(&t_total);
 
-	checkout_opts.checkout_strategy = GIT_CHECKOUT_SAFE;
-	clone_opts.checkout_opts = checkout_opts;
+ checkout_opts.checkout_strategy = GIT_CHECKOUT_SAFE;
+ clone_opts.checkout_opts = checkout_opts;
 
-	perf__timer__start(&t_clone);
-	cl_git_pass(git_clone(&g_repo, fixture, test_name, &clone_opts));
-	perf__timer__stop(&t_clone);
-	
-	git_oid_fromstr(&oid_a, id_a);
-	cl_git_pass(git_commit_lookup(&commit_a, g_repo, &oid_a));
-	cl_git_pass(git_branch_create(&ref_branch_a, g_repo,
-								  "A", commit_a,
-								  0));
+ perf__timer__start(&t_clone);
+ cl_git_pass(git_clone(&g_repo, fixture, test_name, &clone_opts));
+ perf__timer__stop(&t_clone);
 
-	perf__timer__start(&t_checkout);
-	cl_git_pass(git_checkout_tree(g_repo, (git_object*)commit_a, &checkout_opts));
-	perf__timer__stop(&t_checkout);
+ git_oid_fromstr(&oid_a, id_a);
+ cl_git_pass(git_commit_lookup(&commit_a, g_repo, &oid_a));
+ cl_git_pass(git_branch_create(&ref_branch_a, g_repo,
+          "A", commit_a,
+          0));
 
-	cl_git_pass(git_repository_set_head(g_repo, git_reference_name(ref_branch_a)));
+ perf__timer__start(&t_checkout);
+ cl_git_pass(git_checkout_tree(g_repo, (git_object*)commit_a, &checkout_opts));
+ perf__timer__stop(&t_checkout);
 
-	git_oid_fromstr(&oid_b, id_b);
-	cl_git_pass(git_commit_lookup(&commit_b, g_repo, &oid_b));
-	cl_git_pass(git_branch_create(&ref_branch_b, g_repo,
-								  "B", commit_b,
-								  0));
+ cl_git_pass(git_repository_set_head(g_repo, git_reference_name(ref_branch_a)));
 
-	cl_git_pass(git_annotated_commit_lookup(&annotated_commits[0], g_repo, &oid_b));
+ git_oid_fromstr(&oid_b, id_b);
+ cl_git_pass(git_commit_lookup(&commit_b, g_repo, &oid_b));
+ cl_git_pass(git_branch_create(&ref_branch_b, g_repo,
+          "B", commit_b,
+          0));
 
-	perf__timer__start(&t_merge);
-	cl_git_pass(git_merge(g_repo,
-						  (const git_annotated_commit **)annotated_commits, 1,
-						  &merge_opts, &checkout_opts));
-	perf__timer__stop(&t_merge);
+ cl_git_pass(git_annotated_commit_lookup(&annotated_commits[0], g_repo, &oid_b));
 
-	git_reference_free(ref_branch_a);
-	git_reference_free(ref_branch_b);
-	git_commit_free(commit_a);
-	git_commit_free(commit_b);
-	git_annotated_commit_free(annotated_commits[0]);
-	git_repository_free(g_repo);
+ perf__timer__start(&t_merge);
+ cl_git_pass(git_merge(g_repo,
+        (const git_annotated_commit **)annotated_commits, 1,
+        &merge_opts, &checkout_opts));
+ perf__timer__stop(&t_merge);
 
-	perf__timer__stop(&t_total);
+ git_reference_free(ref_branch_a);
+ git_reference_free(ref_branch_b);
+ git_commit_free(commit_a);
+ git_commit_free(commit_b);
+ git_annotated_commit_free(annotated_commits[0]);
+ git_repository_free(g_repo);
 
-	perf__timer__report(&t_clone, "%s: clone", test_name);
-	perf__timer__report(&t_checkout, "%s: checkout", test_name);
-	perf__timer__report(&t_merge, "%s: merge", test_name);
-	perf__timer__report(&t_total, "%s: total", test_name);
+ perf__timer__stop(&t_total);
+
+ perf__timer__report(&t_clone, "%s: clone", test_name);
+ perf__timer__report(&t_checkout, "%s: checkout", test_name);
+ perf__timer__report(&t_merge, "%s: merge", test_name);
+ perf__timer__report(&t_total, "%s: total", test_name);
 }

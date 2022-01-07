@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHECK (int,char*) ; 
- int /*<<< orphan*/  ERROR_fread ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  exit (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ * const) ; 
- int /*<<< orphan*/ * fopen_orDie (char const*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char const*,char*) ; 
- size_t fread (void*,int,size_t const,int /*<<< orphan*/ * const) ; 
- size_t fsize_orDie (char const*) ; 
- int /*<<< orphan*/  stderr ; 
- char* strerror (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int FILE ;
+
+
+ int CHECK (int,char*) ;
+ int ERROR_fread ;
+ int errno ;
+ int exit (int ) ;
+ int fclose (int * const) ;
+ int * fopen_orDie (char const*,char*) ;
+ int fprintf (int ,char*,char const*,char*) ;
+ size_t fread (void*,int,size_t const,int * const) ;
+ size_t fsize_orDie (char const*) ;
+ int stderr ;
+ char* strerror (int ) ;
 
 __attribute__((used)) static size_t loadFile_orDie(const char* fileName, void* buffer, size_t bufferSize)
 {
@@ -36,6 +36,6 @@ __attribute__((used)) static size_t loadFile_orDie(const char* fileName, void* b
         fprintf(stderr, "fread: %s : %s \n", fileName, strerror(errno));
         exit(ERROR_fread);
     }
-    fclose(inFile);  /* can't fail, read only */
+    fclose(inFile);
     return fileSize;
 }

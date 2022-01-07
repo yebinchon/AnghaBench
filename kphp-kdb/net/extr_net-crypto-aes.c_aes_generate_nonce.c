@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct timespec {int tv_sec; int tv_nsec; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLOCK_REALTIME ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ clock_gettime (int /*<<< orphan*/ ,struct timespec*) ; 
- int lrand48 () ; 
- int /*<<< orphan*/  md5 (unsigned char*,int,unsigned char*) ; 
- scalar_t__ rand_buf ; 
- long long rdtsc () ; 
+
+ int CLOCK_REALTIME ;
+ int assert (int) ;
+ scalar_t__ clock_gettime (int ,struct timespec*) ;
+ int lrand48 () ;
+ int md5 (unsigned char*,int,unsigned char*) ;
+ scalar_t__ rand_buf ;
+ long long rdtsc () ;
 
 int aes_generate_nonce (char res[16]) {
   *(int *)(rand_buf + 16) = lrand48 ();

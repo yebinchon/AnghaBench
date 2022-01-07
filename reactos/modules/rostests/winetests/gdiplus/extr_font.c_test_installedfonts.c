@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  GpStatus ;
-typedef  int /*<<< orphan*/  GpFontCollection ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GdipNewInstalledFontCollection (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  InvalidParameter ; 
- int /*<<< orphan*/  Ok ; 
- int /*<<< orphan*/  expect (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ok (int /*<<< orphan*/ ,char*) ; 
+
+
+
+typedef int GpStatus ;
+typedef int GpFontCollection ;
+
+
+ int GdipNewInstalledFontCollection (int **) ;
+ int InvalidParameter ;
+ int Ok ;
+ int expect (int ,int ) ;
+ int ok (int ,char*) ;
 
 __attribute__((used)) static void test_installedfonts (void)
 {
     GpStatus stat;
-    GpFontCollection* collection=NULL;
+    GpFontCollection* collection=((void*)0);
 
-    stat = GdipNewInstalledFontCollection(NULL);
+    stat = GdipNewInstalledFontCollection(((void*)0));
     expect (InvalidParameter, stat);
 
     stat = GdipNewInstalledFontCollection(&collection);
     expect (Ok, stat);
-    ok (collection != NULL, "got NULL font collection\n");
+    ok (collection != ((void*)0), "got NULL font collection\n");
 }

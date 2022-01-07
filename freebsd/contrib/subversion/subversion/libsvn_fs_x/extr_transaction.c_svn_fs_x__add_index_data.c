@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {unsigned char* data; int len; } ;
-typedef  TYPE_1__ svn_stringbuf_t ;
-typedef  int /*<<< orphan*/  svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_fs_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_checksum_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  scalar_t__ apr_off_t ;
-typedef  int /*<<< orphan*/  apr_file_t ;
+typedef TYPE_1__ svn_stringbuf_t ;
+typedef int svn_revnum_t ;
+typedef int svn_fs_t ;
+typedef int svn_error_t ;
+typedef int svn_checksum_t ;
+typedef int apr_pool_t ;
+typedef scalar_t__ apr_off_t ;
+typedef int apr_file_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  APR_END ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_ASSERT (int) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  svn_fs_x__l2p_index_append (int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_fs_x__p2l_index_append (int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- TYPE_1__* svn_fs_x__unparse_footer (scalar_t__,int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_io_file_seek (int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_io_file_write_full (int /*<<< orphan*/ *,unsigned char*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int APR_END ;
+ int SVN_ERR (int ) ;
+ int SVN_ERR_ASSERT (int) ;
+ int * SVN_NO_ERROR ;
+ int svn_fs_x__l2p_index_append (int **,int *,int *,char const*,int ,int *,int *) ;
+ int svn_fs_x__p2l_index_append (int **,int *,int *,char const*,int ,int *,int *) ;
+ TYPE_1__* svn_fs_x__unparse_footer (scalar_t__,int *,scalar_t__,int *,int *,int *) ;
+ int svn_io_file_seek (int *,int ,scalar_t__*,int *) ;
+ int svn_io_file_write_full (int *,unsigned char*,int,int *,int *) ;
 
 svn_error_t *
 svn_fs_x__add_index_data(svn_fs_t *fs,
@@ -47,7 +47,7 @@ svn_fs_x__add_index_data(svn_fs_t *fs,
   svn_checksum_t *l2p_checksum;
   svn_checksum_t *p2l_checksum;
 
-  /* Append the actual index data to the pack file. */
+
   l2p_offset = 0;
   SVN_ERR(svn_io_file_seek(file, APR_END, &l2p_offset, scratch_pool));
   SVN_ERR(svn_fs_x__l2p_index_append(&l2p_checksum, fs, file,
@@ -60,16 +60,16 @@ svn_fs_x__add_index_data(svn_fs_t *fs,
                                      p2l_proto_index, revision,
                                      scratch_pool, scratch_pool));
 
-  /* Append footer. */
+
   footer = svn_fs_x__unparse_footer(l2p_offset, l2p_checksum,
                                     p2l_offset, p2l_checksum, scratch_pool,
                                     scratch_pool);
-  SVN_ERR(svn_io_file_write_full(file, footer->data, footer->len, NULL,
+  SVN_ERR(svn_io_file_write_full(file, footer->data, footer->len, ((void*)0),
                                  scratch_pool));
 
   footer_length = footer->len;
   SVN_ERR_ASSERT(footer_length == footer->len);
-  SVN_ERR(svn_io_file_write_full(file, &footer_length, 1, NULL,
+  SVN_ERR(svn_io_file_write_full(file, &footer_length, 1, ((void*)0),
                                  scratch_pool));
 
   return SVN_NO_ERROR;

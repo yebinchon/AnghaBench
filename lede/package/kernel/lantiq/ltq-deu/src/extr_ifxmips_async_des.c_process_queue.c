@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  des_event_flags; int /*<<< orphan*/  deu_thread_wait; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DES_ASYNC_EVENT ; 
- int /*<<< orphan*/  DEU_WAKEUP_EVENT (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_1__ deu_dma_priv ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int des_event_flags; int deu_thread_wait; } ;
+
+
+ int DES_ASYNC_EVENT ;
+ int DEU_WAKEUP_EVENT (int ,int ,int ) ;
+ TYPE_1__ deu_dma_priv ;
 
 __attribute__((used)) static void process_queue(unsigned long data)
 {

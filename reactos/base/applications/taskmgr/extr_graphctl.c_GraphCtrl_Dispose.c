@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * m_brushBack; int /*<<< orphan*/ * m_dcPlot; int /*<<< orphan*/ * m_dcGrid; int /*<<< orphan*/ * m_bitmapPlot; int /*<<< orphan*/ * m_bitmapGrid; int /*<<< orphan*/ * m_bitmapOldPlot; int /*<<< orphan*/ * m_bitmapOldGrid; int /*<<< orphan*/ ** m_penPlot; } ;
-typedef  TYPE_1__ TGraphCtrl ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DeleteDC (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DeleteObject (int /*<<< orphan*/ *) ; 
- int MAX_PLOTS ; 
- int /*<<< orphan*/  SelectObject (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * m_brushBack; int * m_dcPlot; int * m_dcGrid; int * m_bitmapPlot; int * m_bitmapGrid; int * m_bitmapOldPlot; int * m_bitmapOldGrid; int ** m_penPlot; } ;
+typedef TYPE_1__ TGraphCtrl ;
+
+
+ int DeleteDC (int *) ;
+ int DeleteObject (int *) ;
+ int MAX_PLOTS ;
+ int SelectObject (int *,int *) ;
 
 void GraphCtrl_Dispose(TGraphCtrl* this)
 {
@@ -27,14 +27,14 @@ void GraphCtrl_Dispose(TGraphCtrl* this)
     for (plot = 0; plot < MAX_PLOTS; plot++)
         DeleteObject(this->m_penPlot[plot]);
 
-    /*  just to be picky restore the bitmaps for the two memory dc's */
-    /*  (these dc's are being destroyed so there shouldn't be any leaks) */
 
-    if (this->m_bitmapOldGrid != NULL) SelectObject(this->m_dcGrid, this->m_bitmapOldGrid);
-    if (this->m_bitmapOldPlot != NULL) SelectObject(this->m_dcPlot, this->m_bitmapOldPlot);
-    if (this->m_bitmapGrid    != NULL) DeleteObject(this->m_bitmapGrid);
-    if (this->m_bitmapPlot    != NULL) DeleteObject(this->m_bitmapPlot);
-    if (this->m_dcGrid        != NULL) DeleteDC(this->m_dcGrid);
-    if (this->m_dcPlot        != NULL) DeleteDC(this->m_dcPlot);
-    if (this->m_brushBack     != NULL) DeleteObject(this->m_brushBack);
+
+
+    if (this->m_bitmapOldGrid != ((void*)0)) SelectObject(this->m_dcGrid, this->m_bitmapOldGrid);
+    if (this->m_bitmapOldPlot != ((void*)0)) SelectObject(this->m_dcPlot, this->m_bitmapOldPlot);
+    if (this->m_bitmapGrid != ((void*)0)) DeleteObject(this->m_bitmapGrid);
+    if (this->m_bitmapPlot != ((void*)0)) DeleteObject(this->m_bitmapPlot);
+    if (this->m_dcGrid != ((void*)0)) DeleteDC(this->m_dcGrid);
+    if (this->m_dcPlot != ((void*)0)) DeleteDC(this->m_dcPlot);
+    if (this->m_brushBack != ((void*)0)) DeleteObject(this->m_brushBack);
 }

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-struct TYPE_3__ {scalar_t__ mode; int mode_ext; int nb_channels; int*** sb_samples; int /*<<< orphan*/  gb; } ;
-typedef  TYPE_1__ MPADecodeContext ;
 
-/* Variables and functions */
- scalar_t__ MPA_JSTEREO ; 
- int MPA_MAX_CHANNELS ; 
- int SBLIMIT ; 
- int get_bits (int /*<<< orphan*/ *,int) ; 
- int l1_unscale (int,int,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_3__ {scalar_t__ mode; int mode_ext; int nb_channels; int*** sb_samples; int gb; } ;
+typedef TYPE_1__ MPADecodeContext ;
+
+
+ scalar_t__ MPA_JSTEREO ;
+ int MPA_MAX_CHANNELS ;
+ int SBLIMIT ;
+ int get_bits (int *,int) ;
+ int l1_unscale (int,int,int) ;
 
 __attribute__((used)) static int mp_decode_layer1(MPADecodeContext *s)
 {
@@ -33,7 +33,7 @@ __attribute__((used)) static int mp_decode_layer1(MPADecodeContext *s)
     else
         bound = SBLIMIT;
 
-    /* allocation bits */
+
     for (i = 0; i < bound; i++) {
         for (ch = 0; ch < s->nb_channels; ch++) {
             allocation[ch][i] = get_bits(&s->gb, 4);
@@ -42,7 +42,7 @@ __attribute__((used)) static int mp_decode_layer1(MPADecodeContext *s)
     for (i = bound; i < SBLIMIT; i++)
         allocation[0][i] = get_bits(&s->gb, 4);
 
-    /* scale factors */
+
     for (i = 0; i < bound; i++) {
         for (ch = 0; ch < s->nb_channels; ch++) {
             if (allocation[ch][i])
@@ -56,7 +56,7 @@ __attribute__((used)) static int mp_decode_layer1(MPADecodeContext *s)
         }
     }
 
-    /* compute samples */
+
     for (j = 0; j < 12; j++) {
         for (i = 0; i < bound; i++) {
             for (ch = 0; ch < s->nb_channels; ch++) {

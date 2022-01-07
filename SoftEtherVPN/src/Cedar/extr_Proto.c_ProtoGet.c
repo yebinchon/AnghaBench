@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT ;
-typedef  int /*<<< orphan*/  PROTO ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * LIST_DATA (int /*<<< orphan*/ ,int /*<<< orphan*/  const) ; 
- int /*<<< orphan*/  protocols ; 
+
+
+
+typedef int UINT ;
+typedef int PROTO ;
+
+
+ int * LIST_DATA (int ,int const) ;
+ int protocols ;
 
 PROTO *ProtoGet(const UINT index)
 {
-	return LIST_DATA(protocols, index);
+ return LIST_DATA(protocols, index);
 }

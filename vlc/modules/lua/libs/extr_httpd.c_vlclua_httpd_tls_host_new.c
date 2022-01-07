@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_object_t ;
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  int /*<<< orphan*/  httpd_host_t ;
 
-/* Variables and functions */
- int luaL_error (int /*<<< orphan*/ *,char*) ; 
- scalar_t__ luaL_newmetatable (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  luaL_register (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_newtable (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ ** lua_newuserdata (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pushcfunction (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_setfield (int /*<<< orphan*/ *,int,char*) ; 
- int /*<<< orphan*/  lua_setmetatable (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * vlc_http_HostNew (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * vlclua_get_this (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlclua_httpd_host_delete ; 
- int /*<<< orphan*/  vlclua_httpd_reg ; 
+
+
+
+typedef int vlc_object_t ;
+typedef int lua_State ;
+typedef int httpd_host_t ;
+
+
+ int luaL_error (int *,char*) ;
+ scalar_t__ luaL_newmetatable (int *,char*) ;
+ int luaL_register (int *,int *,int ) ;
+ int lua_newtable (int *) ;
+ int ** lua_newuserdata (int *,int) ;
+ int lua_pushcfunction (int *,int ) ;
+ int lua_setfield (int *,int,char*) ;
+ int lua_setmetatable (int *,int) ;
+ int * vlc_http_HostNew (int *) ;
+ int * vlclua_get_this (int *) ;
+ int vlclua_httpd_host_delete ;
+ int vlclua_httpd_reg ;
 
 __attribute__((used)) static int vlclua_httpd_tls_host_new( lua_State *L )
 {
@@ -41,7 +41,7 @@ __attribute__((used)) static int vlclua_httpd_tls_host_new( lua_State *L )
     if( luaL_newmetatable( L, "httpd_host" ) )
     {
         lua_newtable( L );
-        luaL_register( L, NULL, vlclua_httpd_reg );
+        luaL_register( L, ((void*)0), vlclua_httpd_reg );
         lua_setfield( L, -2, "__index" );
         lua_pushcfunction( L, vlclua_httpd_host_delete );
         lua_setfield( L, -2, "__gc" );

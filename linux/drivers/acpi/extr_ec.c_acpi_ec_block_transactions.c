@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct acpi_ec {int /*<<< orphan*/  mutex; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  acpi_ec_stop (struct acpi_ec*,int) ; 
- struct acpi_ec* first_ec ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
+
+
+
+struct acpi_ec {int mutex; } ;
+
+
+ int acpi_ec_stop (struct acpi_ec*,int) ;
+ struct acpi_ec* first_ec ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
 
 void acpi_ec_block_transactions(void)
 {
-	struct acpi_ec *ec = first_ec;
+ struct acpi_ec *ec = first_ec;
 
-	if (!ec)
-		return;
+ if (!ec)
+  return;
 
-	mutex_lock(&ec->mutex);
-	/* Prevent transactions from being carried out */
-	acpi_ec_stop(ec, true);
-	mutex_unlock(&ec->mutex);
+ mutex_lock(&ec->mutex);
+
+ acpi_ec_stop(ec, 1);
+ mutex_unlock(&ec->mutex);
 }

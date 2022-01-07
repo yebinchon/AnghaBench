@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_19__   TYPE_5__ ;
-typedef  struct TYPE_18__   TYPE_4__ ;
-typedef  struct TYPE_17__   TYPE_3__ ;
-typedef  struct TYPE_16__   TYPE_2__ ;
-typedef  struct TYPE_15__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ int64_t ;
+
+
+typedef struct TYPE_19__ TYPE_5__ ;
+typedef struct TYPE_18__ TYPE_4__ ;
+typedef struct TYPE_17__ TYPE_3__ ;
+typedef struct TYPE_16__ TYPE_2__ ;
+typedef struct TYPE_15__ TYPE_1__ ;
+
+
+typedef scalar_t__ int64_t ;
 struct TYPE_19__ {int seekable; scalar_t__ eof_reached; } ;
-struct TYPE_18__ {int /*<<< orphan*/  fc; } ;
-struct TYPE_17__ {size_t nb_encrypted_samples; size_t auxiliary_info_sample_count; int auxiliary_offsets_count; scalar_t__* auxiliary_offsets; size_t auxiliary_info_default_size; size_t* auxiliary_info_sizes; int /*<<< orphan*/ ** encrypted_samples; } ;
+struct TYPE_18__ {int fc; } ;
+struct TYPE_17__ {size_t nb_encrypted_samples; size_t auxiliary_info_sample_count; int auxiliary_offsets_count; scalar_t__* auxiliary_offsets; size_t auxiliary_info_default_size; size_t* auxiliary_info_sizes; int ** encrypted_samples; } ;
 struct TYPE_15__ {size_t per_sample_iv_size; } ;
 struct TYPE_16__ {TYPE_1__ cenc; } ;
-typedef  TYPE_2__ MOVStreamContext ;
-typedef  TYPE_3__ MOVEncryptionIndex ;
-typedef  TYPE_4__ MOVContext ;
-typedef  TYPE_5__ AVIOContext ;
-typedef  int /*<<< orphan*/  AVEncryptionInfo ;
+typedef TYPE_2__ MOVStreamContext ;
+typedef TYPE_3__ MOVEncryptionIndex ;
+typedef TYPE_4__ MOVContext ;
+typedef TYPE_5__ AVIOContext ;
+typedef int AVEncryptionInfo ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_INVALIDDATA ; 
- int AVERROR_PATCHWELCOME ; 
- int AVIO_SEEKABLE_NORMAL ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_LOG_INFO ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  FFMAX (size_t,int) ; 
- unsigned int FFMIN (int /*<<< orphan*/ ,size_t) ; 
- int INT_MAX ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  av_encryption_info_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ ** av_fast_realloc (int /*<<< orphan*/ **,unsigned int*,unsigned int) ; 
- int /*<<< orphan*/  av_freep (int /*<<< orphan*/ ***) ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- scalar_t__ avio_seek (TYPE_5__*,scalar_t__,int /*<<< orphan*/ ) ; 
- scalar_t__ avio_tell (TYPE_5__*) ; 
- int mov_read_sample_encryption_info (TYPE_4__*,TYPE_5__*,TYPE_2__*,int /*<<< orphan*/ **,int) ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_INVALIDDATA ;
+ int AVERROR_PATCHWELCOME ;
+ int AVIO_SEEKABLE_NORMAL ;
+ int AV_LOG_ERROR ;
+ int AV_LOG_INFO ;
+ int ENOMEM ;
+ int FFMAX (size_t,int) ;
+ unsigned int FFMIN (int ,size_t) ;
+ int INT_MAX ;
+ int SEEK_SET ;
+ int av_encryption_info_free (int *) ;
+ int ** av_fast_realloc (int **,unsigned int*,unsigned int) ;
+ int av_freep (int ***) ;
+ int av_log (int ,int ,char*) ;
+ scalar_t__ avio_seek (TYPE_5__*,scalar_t__,int ) ;
+ scalar_t__ avio_tell (TYPE_5__*) ;
+ int mov_read_sample_encryption_info (TYPE_4__*,TYPE_5__*,TYPE_2__*,int **,int) ;
 
 __attribute__((used)) static int mov_parse_auxiliary_info(MOVContext *c, MOVStreamContext *sc, AVIOContext *pb, MOVEncryptionIndex *encryption_index)
 {

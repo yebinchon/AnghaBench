@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_string_t ;
-typedef  int /*<<< orphan*/  svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_ra_svn_conn_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
+
+
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int svn_string_t ;
+typedef int svn_revnum_t ;
+typedef int svn_ra_svn_conn_t ;
+typedef int svn_error_t ;
 struct TYPE_12__ {TYPE_2__* client_info; TYPE_1__* repository; } ;
-typedef  TYPE_3__ server_baton_t ;
-struct TYPE_13__ {int /*<<< orphan*/ * conn; TYPE_3__* server; } ;
-typedef  TYPE_4__ authz_baton_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-struct TYPE_11__ {int /*<<< orphan*/  user; } ;
-struct TYPE_10__ {int /*<<< orphan*/  repos; } ;
+typedef TYPE_3__ server_baton_t ;
+struct TYPE_13__ {int * conn; TYPE_3__* server; } ;
+typedef TYPE_4__ authz_baton_t ;
+typedef int apr_pool_t ;
+struct TYPE_11__ {int user; } ;
+struct TYPE_10__ {int repos; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  SVN_CMD_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  authz_check_access_cb_func (TYPE_3__*) ; 
- int /*<<< orphan*/  log_command (TYPE_3__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  must_have_access (int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_authz_write ; 
- int /*<<< orphan*/  svn_log__change_rev_prop (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_ra_svn__write_cmd_response (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  svn_repos_fs_change_rev_prop4 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/  const* const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_4__*,int /*<<< orphan*/ *) ; 
+
+ int FALSE ;
+ int SVN_CMD_ERR (int ) ;
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int TRUE ;
+ int authz_check_access_cb_func (TYPE_3__*) ;
+ int log_command (TYPE_3__*,int *,int *,char*,int ) ;
+ int must_have_access (int *,int *,TYPE_3__*,int ,int *,int ) ;
+ int svn_authz_write ;
+ int svn_log__change_rev_prop (int ,char const*,int *) ;
+ int svn_ra_svn__write_cmd_response (int *,int *,char*) ;
+ int svn_repos_fs_change_rev_prop4 (int ,int ,int ,char const*,int const* const*,int const*,int ,int ,int ,TYPE_4__*,int *) ;
 
 __attribute__((used)) static svn_error_t *do_change_rev_prop(svn_ra_svn_conn_t *conn,
                                        server_baton_t *b,
@@ -53,7 +53,7 @@ __attribute__((used)) static svn_error_t *do_change_rev_prop(svn_ra_svn_conn_t *
   ab.server = b;
   ab.conn = conn;
 
-  SVN_ERR(must_have_access(conn, pool, b, svn_authz_write, NULL, FALSE));
+  SVN_ERR(must_have_access(conn, pool, b, svn_authz_write, ((void*)0), FALSE));
   SVN_ERR(log_command(b, conn, pool, "%s",
                       svn_log__change_rev_prop(rev, name, pool)));
   SVN_CMD_ERR(svn_repos_fs_change_rev_prop4(b->repository->repos, rev,

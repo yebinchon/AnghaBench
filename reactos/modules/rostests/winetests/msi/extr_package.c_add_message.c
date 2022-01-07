@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct externalui_message {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetProcessHeap () ; 
- struct externalui_message* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- struct externalui_message* HeapReAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct externalui_message*,int) ; 
- int /*<<< orphan*/  assert (struct externalui_message*) ; 
- struct externalui_message* sequence ; 
- int sequence_count ; 
- int sequence_size ; 
+
+ int GetProcessHeap () ;
+ struct externalui_message* HeapAlloc (int ,int ,int) ;
+ struct externalui_message* HeapReAlloc (int ,int ,struct externalui_message*,int) ;
+ int assert (struct externalui_message*) ;
+ struct externalui_message* sequence ;
+ int sequence_count ;
+ int sequence_size ;
 
 __attribute__((used)) static void add_message(const struct externalui_message *msg)
 {

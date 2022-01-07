@@ -1,95 +1,95 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_7__ {scalar_t__ st_size; } ;
-typedef  TYPE_2__ struct_stat ;
-struct TYPE_8__ {int /*<<< orphan*/  sockets; } ;
-struct TYPE_6__ {int /*<<< orphan*/  member_2; int /*<<< orphan*/  member_1; int /*<<< orphan*/ * member_0; } ;
+typedef TYPE_2__ struct_stat ;
+struct TYPE_8__ {int sockets; } ;
+struct TYPE_6__ {int member_2; int member_1; int * member_0; } ;
 struct timeval {int member_0; int tv_sec; int tv_usec; TYPE_3__ write; TYPE_3__ read; TYPE_1__ member_1; } ;
 struct ReadWriteSockets {int member_0; int tv_sec; int tv_usec; TYPE_3__ write; TYPE_3__ read; TYPE_1__ member_1; } ;
-typedef  int /*<<< orphan*/  fd_set ;
-typedef  scalar_t__ curl_socket_t ;
-typedef  long curl_off_t ;
-typedef  int /*<<< orphan*/  FILE ;
-typedef  int /*<<< orphan*/  CURLM ;
-typedef  int /*<<< orphan*/  CURL ;
+typedef int fd_set ;
+typedef scalar_t__ curl_socket_t ;
+typedef long curl_off_t ;
+typedef int FILE ;
+typedef int CURLM ;
+typedef int CURL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CURLMOPT_SOCKETDATA ; 
- int /*<<< orphan*/  CURLMOPT_SOCKETFUNCTION ; 
- int /*<<< orphan*/  CURLMOPT_TIMERDATA ; 
- int /*<<< orphan*/  CURLMOPT_TIMERFUNCTION ; 
- int /*<<< orphan*/  CURLOPT_INFILESIZE_LARGE ; 
- int /*<<< orphan*/  CURLOPT_READDATA ; 
- int /*<<< orphan*/  CURLOPT_SSH_PRIVATE_KEYFILE ; 
- int /*<<< orphan*/  CURLOPT_SSH_PUBLIC_KEYFILE ; 
- int /*<<< orphan*/  CURLOPT_SSL_VERIFYHOST ; 
- int /*<<< orphan*/  CURLOPT_UPLOAD ; 
- int /*<<< orphan*/  CURLOPT_URL ; 
- int /*<<< orphan*/  CURLOPT_USERPWD ; 
- int /*<<< orphan*/  CURLOPT_VERBOSE ; 
- int /*<<< orphan*/  CURL_CSELECT_IN ; 
- int /*<<< orphan*/  CURL_CSELECT_OUT ; 
- int /*<<< orphan*/  CURL_GLOBAL_ALL ; 
- int /*<<< orphan*/  CURL_SOCKET_TIMEOUT ; 
- int /*<<< orphan*/  FD_ZERO (int /*<<< orphan*/ *) ; 
- int TEST_ERR_FOPEN ; 
- int TEST_ERR_FSTAT ; 
- int TEST_ERR_MAJOR_BAD ; 
- int TEST_ERR_USAGE ; 
- int /*<<< orphan*/  abort_on_test_timeout () ; 
- int /*<<< orphan*/  checkFdSet (int /*<<< orphan*/ *,TYPE_3__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  checkForCompletion (int /*<<< orphan*/ *,int*) ; 
- struct timeval* curlSocketCallback ; 
- struct timeval* curlTimerCallback ; 
- int /*<<< orphan*/  curl_easy_cleanup (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  curl_global_cleanup () ; 
- int /*<<< orphan*/  curl_multi_cleanup (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  curl_multi_remove_handle (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  easy_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  easy_setopt (int /*<<< orphan*/ *,int /*<<< orphan*/ ,...) ; 
- int errno ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fileno (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ ) ; 
- int fstat (int /*<<< orphan*/ ,TYPE_2__*) ; 
- int getMicroSecondTimeout (struct timeval*) ; 
- char* libtest_arg2 ; 
- long libtest_arg3 ; 
- int /*<<< orphan*/  multi_add_handle (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  multi_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  multi_setopt (int /*<<< orphan*/ *,int /*<<< orphan*/ ,struct timeval*) ; 
- int /*<<< orphan*/  notifyCurl (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  res_global_init (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  select_test (int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,struct timeval*) ; 
- int /*<<< orphan*/  start_test_timing () ; 
- int /*<<< orphan*/  stderr ; 
- char* strerror (int) ; 
- int /*<<< orphan*/  updateFdSet (TYPE_3__*,int /*<<< orphan*/ *,scalar_t__*) ; 
+
+ int CURLMOPT_SOCKETDATA ;
+ int CURLMOPT_SOCKETFUNCTION ;
+ int CURLMOPT_TIMERDATA ;
+ int CURLMOPT_TIMERFUNCTION ;
+ int CURLOPT_INFILESIZE_LARGE ;
+ int CURLOPT_READDATA ;
+ int CURLOPT_SSH_PRIVATE_KEYFILE ;
+ int CURLOPT_SSH_PUBLIC_KEYFILE ;
+ int CURLOPT_SSL_VERIFYHOST ;
+ int CURLOPT_UPLOAD ;
+ int CURLOPT_URL ;
+ int CURLOPT_USERPWD ;
+ int CURLOPT_VERBOSE ;
+ int CURL_CSELECT_IN ;
+ int CURL_CSELECT_OUT ;
+ int CURL_GLOBAL_ALL ;
+ int CURL_SOCKET_TIMEOUT ;
+ int FD_ZERO (int *) ;
+ int TEST_ERR_FOPEN ;
+ int TEST_ERR_FSTAT ;
+ int TEST_ERR_MAJOR_BAD ;
+ int TEST_ERR_USAGE ;
+ int abort_on_test_timeout () ;
+ int checkFdSet (int *,TYPE_3__*,int *,int ,char*) ;
+ int checkForCompletion (int *,int*) ;
+ struct timeval* curlSocketCallback ;
+ struct timeval* curlTimerCallback ;
+ int curl_easy_cleanup (int *) ;
+ int curl_global_cleanup () ;
+ int curl_multi_cleanup (int *) ;
+ int curl_multi_remove_handle (int *,int *) ;
+ int easy_init (int *) ;
+ int easy_setopt (int *,int ,...) ;
+ int errno ;
+ int fclose (int *) ;
+ int fileno (int *) ;
+ int * fopen (char*,char*) ;
+ int fprintf (int ,char*,...) ;
+ int free (int ) ;
+ int fstat (int ,TYPE_2__*) ;
+ int getMicroSecondTimeout (struct timeval*) ;
+ char* libtest_arg2 ;
+ long libtest_arg3 ;
+ int multi_add_handle (int *,int *) ;
+ int multi_init (int *) ;
+ int multi_setopt (int *,int ,struct timeval*) ;
+ int notifyCurl (int *,int ,int ,char*) ;
+ int res_global_init (int ) ;
+ int select_test (int,int *,int *,int *,struct timeval*) ;
+ int start_test_timing () ;
+ int stderr ;
+ char* strerror (int) ;
+ int updateFdSet (TYPE_3__*,int *,scalar_t__*) ;
 
 int test(char *URL)
 {
   int res = 0;
-  CURL *curl = NULL;
-  FILE *hd_src = NULL;
+  CURL *curl = ((void*)0);
+  FILE *hd_src = ((void*)0);
   int hd;
   struct_stat file_info;
-  CURLM *m = NULL;
-  struct ReadWriteSockets sockets = {{NULL, 0, 0}, {NULL, 0, 0}};
+  CURLM *m = ((void*)0);
+  struct ReadWriteSockets sockets = {{((void*)0), 0, 0}, {((void*)0), 0, 0}};
   struct timeval timeout = {-1, 0};
   int success = 0;
 
@@ -101,17 +101,17 @@ int test(char *URL)
   }
 
   hd_src = fopen(libtest_arg2, "rb");
-  if(NULL == hd_src) {
+  if(((void*)0) == hd_src) {
     fprintf(stderr, "fopen() failed with error: %d (%s)\n",
             errno, strerror(errno));
     fprintf(stderr, "Error opening file: (%s)\n", libtest_arg2);
     return TEST_ERR_FOPEN;
   }
 
-  /* get the file size of the local file */
+
   hd = fstat(fileno(hd_src), &file_info);
   if(hd == -1) {
-    /* can't open file, bail out */
+
     fprintf(stderr, "fstat() failed with error: %d (%s)\n",
             errno, strerror(errno));
     fprintf(stderr, "ERROR: cannot open file (%s)\n", libtest_arg2);
@@ -128,16 +128,16 @@ int test(char *URL)
 
   easy_init(curl);
 
-  /* enable uploading */
+
   easy_setopt(curl, CURLOPT_UPLOAD, 1L);
 
-  /* specify target */
+
   easy_setopt(curl, CURLOPT_URL, URL);
 
-  /* go verbose */
+
   easy_setopt(curl, CURLOPT_VERBOSE, 1L);
 
-  /* now specify which file to upload */
+
   easy_setopt(curl, CURLOPT_READDATA, hd_src);
 
   easy_setopt(curl, CURLOPT_USERPWD, libtest_arg3);
@@ -177,14 +177,14 @@ int test(char *URL)
       tv.tv_usec = 100000;
     }
 
-    select_test((int)maxFd, &readSet, &writeSet, NULL, &tv);
+    select_test((int)maxFd, &readSet, &writeSet, ((void*)0), &tv);
 
-    /* Check the sockets for reading / writing */
+
     checkFdSet(m, &sockets.read, &readSet, CURL_CSELECT_IN, "read");
     checkFdSet(m, &sockets.write, &writeSet, CURL_CSELECT_OUT, "write");
 
     if(timeout.tv_sec != -1 && getMicroSecondTimeout(&timeout) == 0) {
-      /* Curl's timer has elapsed. */
+
       notifyCurl(m, CURL_SOCKET_TIMEOUT, 0, "timeout");
     }
 
@@ -198,17 +198,17 @@ int test(char *URL)
 
 test_cleanup:
 
-  /* proper cleanup sequence - type PB */
+
 
   curl_multi_remove_handle(m, curl);
   curl_easy_cleanup(curl);
   curl_multi_cleanup(m);
   curl_global_cleanup();
 
-  /* close the local file */
+
   fclose(hd_src);
 
-  /* free local memory */
+
   free(sockets.read.sockets);
   free(sockets.write.sockets);
 

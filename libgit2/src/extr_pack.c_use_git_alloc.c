@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  GIT_UNUSED (void*) ; 
- void* git__calloc (unsigned int,unsigned int) ; 
+ int GIT_UNUSED (void*) ;
+ void* git__calloc (unsigned int,unsigned int) ;
 
 __attribute__((used)) static void *use_git_alloc(void *opaq, unsigned int count, unsigned int size)
 {
-	GIT_UNUSED(opaq);
-	return git__calloc(count, size);
+ GIT_UNUSED(opaq);
+ return git__calloc(count, size);
 }

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  RPC_STATUS ;
-typedef  int /*<<< orphan*/ * RPC_BINDING_HANDLE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RPC_S_OK ; 
- int /*<<< orphan*/  RpcBindingFree (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int RPC_STATUS ;
+typedef int * RPC_BINDING_HANDLE ;
+
+
+ int RPC_S_OK ;
+ int RpcBindingFree (int *) ;
 
 RPC_STATUS
 PnpUnbindRpc(RPC_BINDING_HANDLE *BindingHandle)
 {
-    if (BindingHandle != NULL)
+    if (BindingHandle != ((void*)0))
     {
         RpcBindingFree(*BindingHandle);
-        *BindingHandle = NULL;
+        *BindingHandle = ((void*)0);
     }
 
     return RPC_S_OK;

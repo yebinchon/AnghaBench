@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int fd; int flags; } ;
-typedef  TYPE_1__ FILE ;
+typedef TYPE_1__ FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EINVAL ; 
-#define  O_RDONLY 130 
-#define  O_RDWR 129 
-#define  O_WRONLY 128 
- int __FILE_CAN_READ ; 
- int __FILE_CAN_WRITE ; 
- int __parse_mode (char const*) ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  fflush (TYPE_1__*) ; 
- int open (char const*,int,int) ; 
+
+ int EINVAL ;
+
+
+
+ int __FILE_CAN_READ ;
+ int __FILE_CAN_WRITE ;
+ int __parse_mode (char const*) ;
+ int close (int) ;
+ int errno ;
+ int fflush (TYPE_1__*) ;
+ int open (char const*,int,int) ;
 
 FILE* freopen( const char* path, const char* mode, FILE* stream ) {
     int flags;
 
-    if ( stream == NULL ) {
+    if ( stream == ((void*)0) ) {
         errno = -EINVAL;
-        return NULL;
+        return ((void*)0);
     }
 
     flags = __parse_mode( mode );
@@ -46,9 +46,9 @@ FILE* freopen( const char* path, const char* mode, FILE* stream ) {
         stream->flags = 0;
 
         switch ( flags & 3 ) {
-          case O_RDWR :   stream->flags |= ( __FILE_CAN_READ | __FILE_CAN_WRITE ); break;
-          case O_RDONLY : stream->flags |= __FILE_CAN_READ; break;
-          case O_WRONLY : stream->flags |= __FILE_CAN_WRITE; break;
+          case 129 : stream->flags |= ( __FILE_CAN_READ | __FILE_CAN_WRITE ); break;
+          case 130 : stream->flags |= __FILE_CAN_READ; break;
+          case 128 : stream->flags |= __FILE_CAN_WRITE; break;
         }
     }
 

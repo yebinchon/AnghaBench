@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  psz_text; struct TYPE_3__* p_next; } ;
-typedef  TYPE_1__ text_segment_t ;
 
-/* Variables and functions */
- scalar_t__ asprintf (char**,char*,char*,int,char*) ; 
- int /*<<< orphan*/  free (char*) ; 
- char* vlc_xml_encode (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int psz_text; struct TYPE_3__* p_next; } ;
+typedef TYPE_1__ text_segment_t ;
+
+
+ scalar_t__ asprintf (char**,char*,char*,int,char*) ;
+ int free (char*) ;
+ char* vlc_xml_encode (int ) ;
 
 __attribute__((used)) static char * SegmentsToSVG( text_segment_t *p_segment, int i_height, int *pi_total_size )
 {
-    char *psz_result = NULL;
+    char *psz_result = ((void*)0);
 
     i_height = 6 * i_height / 100;
     *pi_total_size = 0;
@@ -34,7 +34,7 @@ __attribute__((used)) static char * SegmentsToSVG( text_segment_t *p_segment, in
                                    (psz_prev) ? psz_prev : "",
                                     i_height,
                                     psz_encoded ) < 0 )
-            psz_result = NULL;
+            psz_result = ((void*)0);
         free( psz_prev );
         free( psz_encoded );
 

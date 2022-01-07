@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct vaapi_gl_mapper_priv {scalar_t__* gl_textures; } ;
-struct ra_hwdec_mapper {int /*<<< orphan*/  ra; struct priv* priv; } ;
-struct priv {struct vaapi_gl_mapper_priv* interop_mapper_priv; int /*<<< orphan*/ * tex; } ;
-struct TYPE_3__ {int /*<<< orphan*/  (* DeleteTextures ) (int,scalar_t__*) ;} ;
-typedef  TYPE_1__ GL ;
+struct ra_hwdec_mapper {int ra; struct priv* priv; } ;
+struct priv {struct vaapi_gl_mapper_priv* interop_mapper_priv; int * tex; } ;
+struct TYPE_3__ {int (* DeleteTextures ) (int,scalar_t__*) ;} ;
+typedef TYPE_1__ GL ;
 
-/* Variables and functions */
- TYPE_1__* ra_gl_get (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ra_tex_free (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub1 (int,scalar_t__*) ; 
- int /*<<< orphan*/  talloc_free (struct vaapi_gl_mapper_priv*) ; 
+
+ TYPE_1__* ra_gl_get (int ) ;
+ int ra_tex_free (int ,int *) ;
+ int stub1 (int,scalar_t__*) ;
+ int talloc_free (struct vaapi_gl_mapper_priv*) ;
 
 __attribute__((used)) static void vaapi_gl_mapper_uninit(const struct ra_hwdec_mapper *mapper)
 {
@@ -36,6 +36,6 @@ __attribute__((used)) static void vaapi_gl_mapper_uninit(const struct ra_hwdec_m
             ra_tex_free(mapper->ra, &p_mapper->tex[n]);
         }
         talloc_free(p);
-        p_mapper->interop_mapper_priv = NULL;
+        p_mapper->interop_mapper_priv = ((void*)0);
     }
 }

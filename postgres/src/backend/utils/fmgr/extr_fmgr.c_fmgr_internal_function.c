@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  foid; } ;
-typedef  int /*<<< orphan*/  Oid ;
-typedef  TYPE_1__ FmgrBuiltin ;
 
-/* Variables and functions */
- int /*<<< orphan*/  InvalidOid ; 
- TYPE_1__* fmgr_lookupByName (char const*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int foid; } ;
+typedef int Oid ;
+typedef TYPE_1__ FmgrBuiltin ;
+
+
+ int InvalidOid ;
+ TYPE_1__* fmgr_lookupByName (char const*) ;
 
 Oid
 fmgr_internal_function(const char *proname)
 {
-	const FmgrBuiltin *fbp = fmgr_lookupByName(proname);
+ const FmgrBuiltin *fbp = fmgr_lookupByName(proname);
 
-	if (fbp == NULL)
-		return InvalidOid;
-	return fbp->foid;
+ if (fbp == ((void*)0))
+  return InvalidOid;
+ return fbp->foid;
 }

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {int /*<<< orphan*/  data; } ;
-typedef  TYPE_1__ svn_string_t ;
-typedef  int /*<<< orphan*/  svn_fs_x__noderev_t ;
-typedef  int /*<<< orphan*/  svn_fs_x__id_t ;
-typedef  int /*<<< orphan*/  svn_fs_t ;
+
+
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+struct TYPE_10__ {int data; } ;
+typedef TYPE_1__ svn_string_t ;
+typedef int svn_fs_x__noderev_t ;
+typedef int svn_fs_x__id_t ;
+typedef int svn_fs_t ;
 struct TYPE_11__ {scalar_t__ apr_err; } ;
-typedef  TYPE_2__ svn_error_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+typedef TYPE_2__ svn_error_t ;
+typedef int apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- scalar_t__ SVN_ERR_FS_CORRUPT ; 
- int /*<<< orphan*/  SVN_FS_X__ITEM_TYPE_NODEREV ; 
- int /*<<< orphan*/  dbg__log_access (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- TYPE_2__* get_node_revision_body (int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- TYPE_2__* svn_error_createf (scalar_t__,TYPE_2__*,char*,int /*<<< orphan*/ ) ; 
- TYPE_2__* svn_error_trace (TYPE_2__*) ; 
- TYPE_1__* svn_fs_x__id_unparse (int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
+
+ int SVN_ERR (int ) ;
+ scalar_t__ SVN_ERR_FS_CORRUPT ;
+ int SVN_FS_X__ITEM_TYPE_NODEREV ;
+ int dbg__log_access (int *,int const*,int *,int ,int *) ;
+ TYPE_2__* get_node_revision_body (int **,int *,int const*,int *,int *) ;
+ TYPE_2__* svn_error_createf (scalar_t__,TYPE_2__*,char*,int ) ;
+ TYPE_2__* svn_error_trace (TYPE_2__*) ;
+ TYPE_1__* svn_fs_x__id_unparse (int const*,int *) ;
 
 svn_error_t *
 svn_fs_x__get_node_revision(svn_fs_x__noderev_t **noderev_p,

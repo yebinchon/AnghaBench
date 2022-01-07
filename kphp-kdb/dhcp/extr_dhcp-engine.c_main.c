@@ -1,46 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ DEBUG_FILEDUMP ; 
- scalar_t__ DEBUG_UDPDUMP ; 
- scalar_t__ DHCP_PORT ; 
- scalar_t__ PRIVILEGED_TCP_PORTS ; 
- int /*<<< orphan*/  aes_load_pwd_file (int /*<<< orphan*/ ) ; 
- scalar_t__ change_user (char*) ; 
- scalar_t__ debug_mode ; 
- scalar_t__ dhcp_config_load (char*) ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  f_parse_option ; 
- scalar_t__ file_dump (char*) ; 
- int /*<<< orphan*/  init_dyn_data () ; 
- int /*<<< orphan*/  init_msg_buffers (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kprintf (char*,char*) ; 
- char* maxconn ; 
- int /*<<< orphan*/  no_argument ; 
- int /*<<< orphan*/  open_server_sockets () ; 
- int optind ; 
- int /*<<< orphan*/  parse_engine_options_long (int,char**,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  parse_option (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,float,char*) ; 
- scalar_t__ port ; 
- char* progname ; 
- scalar_t__ raise_file_rlimit (char*) ; 
- int /*<<< orphan*/  signals_init () ; 
- int /*<<< orphan*/  start_server () ; 
- int /*<<< orphan*/  start_time ; 
- int /*<<< orphan*/  time (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  usage () ; 
- char* username ; 
+ scalar_t__ DEBUG_FILEDUMP ;
+ scalar_t__ DEBUG_UDPDUMP ;
+ scalar_t__ DHCP_PORT ;
+ scalar_t__ PRIVILEGED_TCP_PORTS ;
+ int aes_load_pwd_file (int ) ;
+ scalar_t__ change_user (char*) ;
+ scalar_t__ debug_mode ;
+ scalar_t__ dhcp_config_load (char*) ;
+ int exit (int) ;
+ int f_parse_option ;
+ scalar_t__ file_dump (char*) ;
+ int init_dyn_data () ;
+ int init_msg_buffers (int ) ;
+ int kprintf (char*,char*) ;
+ char* maxconn ;
+ int no_argument ;
+ int open_server_sockets () ;
+ int optind ;
+ int parse_engine_options_long (int,char**,int ) ;
+ int parse_option (char*,int ,int ,float,char*) ;
+ scalar_t__ port ;
+ char* progname ;
+ scalar_t__ raise_file_rlimit (char*) ;
+ int signals_init () ;
+ int start_server () ;
+ int start_time ;
+ int time (int *) ;
+ int usage () ;
+ char* username ;
 
 int main (int argc, char *argv[]) {
   signals_init ();
@@ -72,7 +64,7 @@ int main (int argc, char *argv[]) {
     exit (1);
   }
 
-  aes_load_pwd_file (0); //srand48
+  aes_load_pwd_file (0);
 
   if (change_user (username) < 0) {
     kprintf ("fatal: cannot change user to %s\n", username ? username : "(none)");
@@ -87,7 +79,7 @@ int main (int argc, char *argv[]) {
     exit (1);
   }
 
-  start_time = time (NULL);
+  start_time = time (((void*)0));
   start_server ();
   return 0;
 }

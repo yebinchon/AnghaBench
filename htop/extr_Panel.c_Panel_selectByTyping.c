@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_8__ {char* value; } ;
 struct TYPE_7__ {char* eventHandlerState; } ;
-typedef  TYPE_1__ Panel ;
-typedef  TYPE_2__ ListItem ;
-typedef  int /*<<< orphan*/  HandlerResult ;
+typedef TYPE_1__ Panel ;
+typedef TYPE_2__ ListItem ;
+typedef int HandlerResult ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BREAK_LOOP ; 
- int ERR ; 
- int /*<<< orphan*/  HANDLED ; 
- int /*<<< orphan*/  IGNORED ; 
- scalar_t__ Panel_get (TYPE_1__*,int) ; 
- int /*<<< orphan*/  Panel_setSelected (TYPE_1__*,int) ; 
- int Panel_size (TYPE_1__*) ; 
- scalar_t__ isalnum (int) ; 
- int strlen (char*) ; 
- scalar_t__ strncasecmp (char*,char*,int) ; 
- char* xCalloc (int,int) ; 
+
+ int BREAK_LOOP ;
+ int ERR ;
+ int HANDLED ;
+ int IGNORED ;
+ scalar_t__ Panel_get (TYPE_1__*,int) ;
+ int Panel_setSelected (TYPE_1__*,int) ;
+ int Panel_size (TYPE_1__*) ;
+ scalar_t__ isalnum (int) ;
+ int strlen (char*) ;
+ scalar_t__ strncasecmp (char*,char*,int) ;
+ char* xCalloc (int,int) ;
 
 HandlerResult Panel_selectByTyping(Panel* this, int ch) {
    int size = Panel_size(this);
@@ -53,8 +53,8 @@ HandlerResult Panel_selectByTyping(Panel* this, int ch) {
                return HANDLED;
             }
          }
-         // if current word did not match,
-         // retry considering the character the start of a new word.
+
+
          buffer[0] = ch;
          buffer[1] = '\0';
       }

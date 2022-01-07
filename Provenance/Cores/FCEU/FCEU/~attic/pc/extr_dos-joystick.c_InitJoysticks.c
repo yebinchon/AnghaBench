@@ -1,34 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  ConfigJoystick () ; 
- int /*<<< orphan*/  DetectJoystick () ; 
- int /*<<< orphan*/  UpdateJoyData () ; 
- scalar_t__ joy ; 
- int* joyBMap ; 
- int /*<<< orphan*/  joyx ; 
- int /*<<< orphan*/  joyxcenter ; 
- int /*<<< orphan*/  joyy ; 
- int /*<<< orphan*/  joyycenter ; 
- int /*<<< orphan*/  printf (char*) ; 
- int /*<<< orphan*/  soundjoyer ; 
- int soundjoyeron ; 
- scalar_t__ soundo ; 
+ int ConfigJoystick () ;
+ int DetectJoystick () ;
+ int UpdateJoyData () ;
+ scalar_t__ joy ;
+ int* joyBMap ;
+ int joyx ;
+ int joyxcenter ;
+ int joyy ;
+ int joyycenter ;
+ int printf (char*) ;
+ int soundjoyer ;
+ int soundjoyeron ;
+ scalar_t__ soundo ;
 
 int InitJoysticks(void)
 {
-	if(!joy) return(0);
+ if(!joy) return(0);
         if(!DetectJoystick())
         {
          printf("Joystick not detected!\n");

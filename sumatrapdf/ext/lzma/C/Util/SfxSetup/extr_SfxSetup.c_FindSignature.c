@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ UInt64 ;
-typedef  int /*<<< orphan*/  CSzFile ;
-typedef  char Byte ;
-typedef  int /*<<< orphan*/  Bool ;
 
-/* Variables and functions */
- scalar_t__ CrcCalc (char*,int) ; 
- int /*<<< orphan*/  False ; 
- scalar_t__ File_Read (int /*<<< orphan*/ *,char*,size_t*) ; 
- scalar_t__ GetUi32 (char*) ; 
- int /*<<< orphan*/  True ; 
- int /*<<< orphan*/  k7zSignature ; 
- int /*<<< orphan*/  k7zSignatureSize ; 
- size_t k7zStartHeaderSize ; 
- int kBufferSize ; 
- scalar_t__ kSignatureSearchLimit ; 
- scalar_t__ memcmp (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memmove (char*,char*,size_t) ; 
+
+
+
+typedef scalar_t__ UInt64 ;
+typedef int CSzFile ;
+typedef char Byte ;
+typedef int Bool ;
+
+
+ scalar_t__ CrcCalc (char*,int) ;
+ int False ;
+ scalar_t__ File_Read (int *,char*,size_t*) ;
+ scalar_t__ GetUi32 (char*) ;
+ int True ;
+ int k7zSignature ;
+ int k7zSignatureSize ;
+ size_t k7zStartHeaderSize ;
+ int kBufferSize ;
+ scalar_t__ kSignatureSearchLimit ;
+ scalar_t__ memcmp (char*,int ,int ) ;
+ int memmove (char*,char*,size_t) ;
 
 __attribute__((used)) static Bool FindSignature(CSzFile *stream, UInt64 *resPos)
 {

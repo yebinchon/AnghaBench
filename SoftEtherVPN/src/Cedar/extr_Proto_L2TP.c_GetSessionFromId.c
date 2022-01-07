@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ UINT ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef scalar_t__ UINT ;
 struct TYPE_7__ {scalar_t__ SessionId2; } ;
-struct TYPE_6__ {int /*<<< orphan*/  SessionList; } ;
-typedef  TYPE_1__ L2TP_TUNNEL ;
-typedef  TYPE_2__ L2TP_SESSION ;
+struct TYPE_6__ {int SessionList; } ;
+typedef TYPE_1__ L2TP_TUNNEL ;
+typedef TYPE_2__ L2TP_SESSION ;
 
-/* Variables and functions */
- TYPE_2__* LIST_DATA (int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__ LIST_NUM (int /*<<< orphan*/ ) ; 
+
+ TYPE_2__* LIST_DATA (int ,scalar_t__) ;
+ scalar_t__ LIST_NUM (int ) ;
 
 L2TP_SESSION *GetSessionFromId(L2TP_TUNNEL *t, UINT session_id)
 {
-	UINT i;
-	// Validate arguments
-	if (t == NULL || session_id == 0)
-	{
-		return NULL;
-	}
+ UINT i;
 
-	for (i = 0;i < LIST_NUM(t->SessionList);i++)
-	{
-		L2TP_SESSION *s = LIST_DATA(t->SessionList, i);
+ if (t == ((void*)0) || session_id == 0)
+ {
+  return ((void*)0);
+ }
 
-		if (s->SessionId2 == session_id)
-		{
-			return s;
-		}
-	}
+ for (i = 0;i < LIST_NUM(t->SessionList);i++)
+ {
+  L2TP_SESSION *s = LIST_DATA(t->SessionList, i);
 
-	return NULL;
+  if (s->SessionId2 == session_id)
+  {
+   return s;
+  }
+ }
+
+ return ((void*)0);
 }

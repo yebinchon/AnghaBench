@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct target_ops {int dummy; } ;
 struct TYPE_3__ {scalar_t__ to_magic; } ;
 
-/* Variables and functions */
- scalar_t__ OPS_MAGIC ; 
- int /*<<< orphan*/  init_base_monitor_ops () ; 
- int /*<<< orphan*/  memcpy (struct target_ops*,TYPE_1__*,int) ; 
- TYPE_1__ monitor_ops ; 
+
+ scalar_t__ OPS_MAGIC ;
+ int init_base_monitor_ops () ;
+ int memcpy (struct target_ops*,TYPE_1__*,int) ;
+ TYPE_1__ monitor_ops ;
 
 void
 init_monitor_ops (struct target_ops *ops)

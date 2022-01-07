@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_8__ {scalar_t__ p_sys; } ;
-typedef  TYPE_1__ sout_stream_t ;
+typedef TYPE_1__ sout_stream_t ;
 struct TYPE_9__ {TYPE_3__* p_es; } ;
-typedef  TYPE_2__ out_sout_stream_sys_t ;
+typedef TYPE_2__ out_sout_stream_sys_t ;
 struct TYPE_10__ {TYPE_4__** pp_last; } ;
-typedef  TYPE_3__ bridged_es_t ;
+typedef TYPE_3__ bridged_es_t ;
 struct TYPE_11__ {struct TYPE_11__* p_next; } ;
-typedef  TYPE_4__ block_t ;
+typedef TYPE_4__ block_t ;
 
-/* Variables and functions */
- int VLC_SUCCESS ; 
- int /*<<< orphan*/  block_ChainRelease (TYPE_4__*) ; 
- int /*<<< orphan*/  lock ; 
- int /*<<< orphan*/  vlc_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_mutex_unlock (int /*<<< orphan*/ *) ; 
+
+ int VLC_SUCCESS ;
+ int block_ChainRelease (TYPE_4__*) ;
+ int lock ;
+ int vlc_mutex_lock (int *) ;
+ int vlc_mutex_unlock (int *) ;
 
 __attribute__((used)) static int SendOut( sout_stream_t *p_stream, void *id, block_t *p_buffer )
 {
@@ -45,7 +45,7 @@ __attribute__((used)) static int SendOut( sout_stream_t *p_stream, void *id, blo
 
     p_es = p_sys->p_es;
     *p_es->pp_last = p_buffer;
-    while ( p_buffer != NULL )
+    while ( p_buffer != ((void*)0) )
     {
         p_es->pp_last = &p_buffer->p_next;
         p_buffer = p_buffer->p_next;

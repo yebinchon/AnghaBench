@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  data ;
-typedef  int /*<<< orphan*/  WCHAR ;
-struct TYPE_4__ {int /*<<< orphan*/  y; int /*<<< orphan*/  x; } ;
-struct TYPE_5__ {int /*<<< orphan*/ * best_time; int /*<<< orphan*/ * best_name; int /*<<< orphan*/  IsMarkQ; int /*<<< orphan*/  mines; int /*<<< orphan*/  cols; int /*<<< orphan*/  rows; int /*<<< orphan*/  difficulty; TYPE_1__ pos; } ;
-typedef  int /*<<< orphan*/  LPBYTE ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  TYPE_2__ BOARD ;
 
-/* Variables and functions */
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  HKEY_CURRENT_USER ; 
- int /*<<< orphan*/  KEY_WRITE ; 
- int /*<<< orphan*/  MAX_PLAYER_NAME_SIZE ; 
- int /*<<< orphan*/  REG_DWORD ; 
- int /*<<< orphan*/  REG_OPTION_NON_VOLATILE ; 
- int /*<<< orphan*/  REG_SZ ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- scalar_t__ RegCreateKeyExW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RegSetValueExW (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/ * difficultyW ; 
- int /*<<< orphan*/ * heightW ; 
- int /*<<< orphan*/  lstrcpynW (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int lstrlenW (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * markW ; 
- int /*<<< orphan*/ * minesW ; 
- int /*<<< orphan*/  nameW ; 
- int /*<<< orphan*/  registry_key ; 
- int /*<<< orphan*/  timeW ; 
- int /*<<< orphan*/ * widthW ; 
- int /*<<< orphan*/  wsprintfW (int /*<<< orphan*/ *,int /*<<< orphan*/ ,unsigned int) ; 
- int /*<<< orphan*/ * xposW ; 
- int /*<<< orphan*/ * yposW ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int data ;
+typedef int WCHAR ;
+struct TYPE_4__ {int y; int x; } ;
+struct TYPE_5__ {int * best_time; int * best_name; int IsMarkQ; int mines; int cols; int rows; int difficulty; TYPE_1__ pos; } ;
+typedef int LPBYTE ;
+typedef int HKEY ;
+typedef TYPE_2__ BOARD ;
+
+
+ scalar_t__ ERROR_SUCCESS ;
+ int HKEY_CURRENT_USER ;
+ int KEY_WRITE ;
+ int MAX_PLAYER_NAME_SIZE ;
+ int REG_DWORD ;
+ int REG_OPTION_NON_VOLATILE ;
+ int REG_SZ ;
+ int RegCloseKey (int ) ;
+ scalar_t__ RegCreateKeyExW (int ,int ,int ,int *,int ,int ,int *,int *,int *) ;
+ int RegSetValueExW (int ,int *,int ,int ,int ,int) ;
+ int * difficultyW ;
+ int * heightW ;
+ int lstrcpynW (int *,int ,int) ;
+ int lstrlenW (int *) ;
+ int * markW ;
+ int * minesW ;
+ int nameW ;
+ int registry_key ;
+ int timeW ;
+ int * widthW ;
+ int wsprintfW (int *,int ,unsigned int) ;
+ int * xposW ;
+ int * yposW ;
 
 __attribute__((used)) static void SaveBoard( BOARD *p_board )
 {
@@ -53,9 +53,9 @@ __attribute__((used)) static void SaveBoard( BOARD *p_board )
     WCHAR key_name[8];
 
     if( RegCreateKeyExW( HKEY_CURRENT_USER, registry_key,
-	        0, NULL,
-                REG_OPTION_NON_VOLATILE, KEY_WRITE, NULL,
-                &hkey, NULL ) != ERROR_SUCCESS)
+         0, ((void*)0),
+                REG_OPTION_NON_VOLATILE, KEY_WRITE, ((void*)0),
+                &hkey, ((void*)0) ) != ERROR_SUCCESS)
         return;
 
     RegSetValueExW( hkey, xposW, 0, REG_DWORD, (LPBYTE) &p_board->pos.x, sizeof(p_board->pos.x) );

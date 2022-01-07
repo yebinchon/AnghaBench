@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {size_t item_index; int /*<<< orphan*/  scale; int /*<<< orphan*/  height; int /*<<< orphan*/  width; } ;
-struct TYPE_6__ {int /*<<< orphan*/  timer; int /*<<< orphan*/  sampler; int /*<<< orphan*/  camera; int /*<<< orphan*/  matrix; int /*<<< orphan*/  program; } ;
-typedef  int /*<<< orphan*/  GLuint ;
-typedef  TYPE_1__ Attrib ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GL_FALSE ; 
- int /*<<< orphan*/  del_buffer (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  draw_cube (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  draw_plant (TYPE_1__*,int /*<<< orphan*/ ) ; 
- TYPE_3__* g ; 
- int /*<<< orphan*/  gen_cube_buffer (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,double,int) ; 
- int /*<<< orphan*/  gen_plant_buffer (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,double,int) ; 
- int /*<<< orphan*/  glUniform1f (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glUniform1i (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glUniform3f (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  glUniformMatrix4fv (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,float*) ; 
- int /*<<< orphan*/  glUseProgram (int /*<<< orphan*/ ) ; 
- scalar_t__ is_plant (int) ; 
- int* items ; 
- int /*<<< orphan*/  set_matrix_item (float*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  time_of_day () ; 
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {size_t item_index; int scale; int height; int width; } ;
+struct TYPE_6__ {int timer; int sampler; int camera; int matrix; int program; } ;
+typedef int GLuint ;
+typedef TYPE_1__ Attrib ;
+
+
+ int GL_FALSE ;
+ int del_buffer (int ) ;
+ int draw_cube (TYPE_1__*,int ) ;
+ int draw_plant (TYPE_1__*,int ) ;
+ TYPE_3__* g ;
+ int gen_cube_buffer (int ,int ,int ,double,int) ;
+ int gen_plant_buffer (int ,int ,int ,double,int) ;
+ int glUniform1f (int ,int ) ;
+ int glUniform1i (int ,int ) ;
+ int glUniform3f (int ,int ,int ,int) ;
+ int glUniformMatrix4fv (int ,int,int ,float*) ;
+ int glUseProgram (int ) ;
+ scalar_t__ is_plant (int) ;
+ int* items ;
+ int set_matrix_item (float*,int ,int ,int ) ;
+ int time_of_day () ;
 
 void render_item(Attrib *attrib) {
     float matrix[16];

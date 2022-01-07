@@ -1,32 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int IsSafeChar (char) ; 
+ int IsSafeChar (char) ;
 
 void EnSafeStr(char *str, char replace)
 {
-	if (str == NULL)
-	{
-		return;
-	}
+ if (str == ((void*)0))
+ {
+  return;
+ }
 
-	while(*str != '\0')
-	{
-		if(IsSafeChar(*str) == false)
-		{
-			*str = replace;
-		}
-		str++;
-	}
+ while(*str != '\0')
+ {
+  if(IsSafeChar(*str) == 0)
+  {
+   *str = replace;
+  }
+  str++;
+ }
 }

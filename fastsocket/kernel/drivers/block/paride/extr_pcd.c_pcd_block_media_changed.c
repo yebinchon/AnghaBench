@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct pcd_unit {int /*<<< orphan*/  info; } ;
+
+
+
+
+struct pcd_unit {int info; } ;
 struct gendisk {struct pcd_unit* private_data; } ;
 
-/* Variables and functions */
- int cdrom_media_changed (int /*<<< orphan*/ *) ; 
+
+ int cdrom_media_changed (int *) ;
 
 __attribute__((used)) static int pcd_block_media_changed(struct gendisk *disk)
 {
-	struct pcd_unit *cd = disk->private_data;
-	return cdrom_media_changed(&cd->info);
+ struct pcd_unit *cd = disk->private_data;
+ return cdrom_media_changed(&cd->info);
 }

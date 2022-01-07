@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_6__ ;
-typedef  struct TYPE_13__   TYPE_5__ ;
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  filter_ctx_label ;
-typedef  int /*<<< orphan*/  dst_filter_ctx_label ;
-typedef  int /*<<< orphan*/  buf ;
+
+
+typedef struct TYPE_14__ TYPE_6__ ;
+typedef struct TYPE_13__ TYPE_5__ ;
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int filter_ctx_label ;
+typedef int dst_filter_ctx_label ;
+typedef int buf ;
 struct TYPE_14__ {char* name; int nb_outputs; TYPE_1__* filter; TYPE_4__** outputs; } ;
 struct TYPE_13__ {int nb_filters; TYPE_6__** filters; } ;
 struct TYPE_10__ {int num; int den; } ;
-struct TYPE_12__ {scalar_t__ type; int w; int h; int sample_rate; TYPE_2__ time_base; int /*<<< orphan*/  format; int /*<<< orphan*/  channel_layout; int /*<<< orphan*/  dstpad; int /*<<< orphan*/  srcpad; TYPE_6__* dst; } ;
+struct TYPE_12__ {scalar_t__ type; int w; int h; int sample_rate; TYPE_2__ time_base; int format; int channel_layout; int dstpad; int srcpad; TYPE_6__* dst; } ;
 struct TYPE_11__ {char* name; } ;
 struct TYPE_9__ {char* name; } ;
-typedef  int /*<<< orphan*/  FILE ;
-typedef  TYPE_3__ AVPixFmtDescriptor ;
-typedef  TYPE_4__ AVFilterLink ;
-typedef  TYPE_5__ AVFilterGraph ;
-typedef  TYPE_6__ AVFilterContext ;
+typedef int FILE ;
+typedef TYPE_3__ AVPixFmtDescriptor ;
+typedef TYPE_4__ AVFilterLink ;
+typedef TYPE_5__ AVFilterGraph ;
+typedef TYPE_6__ AVFilterContext ;
 
-/* Variables and functions */
- scalar_t__ AVMEDIA_TYPE_AUDIO ; 
- scalar_t__ AVMEDIA_TYPE_VIDEO ; 
- int /*<<< orphan*/  av_get_channel_layout_string (char*,int,int,int /*<<< orphan*/ ) ; 
- char* av_get_sample_fmt_name (int /*<<< orphan*/ ) ; 
- TYPE_3__* av_pix_fmt_desc_get (int /*<<< orphan*/ ) ; 
- char* avfilter_pad_get_name (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*,...) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,char*,char*) ; 
+
+ scalar_t__ AVMEDIA_TYPE_AUDIO ;
+ scalar_t__ AVMEDIA_TYPE_VIDEO ;
+ int av_get_channel_layout_string (char*,int,int,int ) ;
+ char* av_get_sample_fmt_name (int ) ;
+ TYPE_3__* av_pix_fmt_desc_get (int ) ;
+ char* avfilter_pad_get_name (int ,int ) ;
+ int fprintf (int *,char*,...) ;
+ int snprintf (char*,int,char*,char*,char*) ;
 
 __attribute__((used)) static void print_digraph(FILE *outfile, AVFilterGraph *graph)
 {

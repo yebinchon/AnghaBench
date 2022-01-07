@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- unsigned int MS_PVKMAGIC ; 
- int /*<<< orphan*/  PEM_F_DO_PVK_HEADER ; 
- int /*<<< orphan*/  PEM_R_BAD_MAGIC_NUMBER ; 
- int /*<<< orphan*/  PEM_R_INCONSISTENT_HEADER ; 
- int /*<<< orphan*/  PEM_R_PVK_TOO_SHORT ; 
- int /*<<< orphan*/  PEMerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- unsigned int PVK_MAX_KEYLEN ; 
- unsigned int PVK_MAX_SALTLEN ; 
- unsigned int read_ledword (unsigned char const**) ; 
+ unsigned int MS_PVKMAGIC ;
+ int PEM_F_DO_PVK_HEADER ;
+ int PEM_R_BAD_MAGIC_NUMBER ;
+ int PEM_R_INCONSISTENT_HEADER ;
+ int PEM_R_PVK_TOO_SHORT ;
+ int PEMerr (int ,int ) ;
+ unsigned int PVK_MAX_KEYLEN ;
+ unsigned int PVK_MAX_SALTLEN ;
+ unsigned int read_ledword (unsigned char const**) ;
 
 __attribute__((used)) static int do_PVK_header(const unsigned char **in, unsigned int length,
                          int skip_magic,
@@ -45,11 +37,11 @@ __attribute__((used)) static int do_PVK_header(const unsigned char **in, unsigne
             return 0;
         }
     }
-    /* Skip reserved */
+
     p += 4;
-    /*
-     * keytype =
-     */ read_ledword(&p);
+
+
+        read_ledword(&p);
     is_encrypted = read_ledword(&p);
     *psaltlen = read_ledword(&p);
     *pkeylen = read_ledword(&p);

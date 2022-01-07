@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct cfsrvl {int /*<<< orphan*/  layer; int /*<<< orphan*/  (* release ) (int /*<<< orphan*/ *) ;} ;
-struct cflayer {int /*<<< orphan*/ * dn; } ;
 
-/* Variables and functions */
- struct cfsrvl* container_obj (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ *) ; 
+
+
+
+struct cfsrvl {int layer; int (* release ) (int *) ;} ;
+struct cflayer {int * dn; } ;
+
+
+ struct cfsrvl* container_obj (int *) ;
+ int stub1 (int *) ;
 
 void caif_free_client(struct cflayer *adap_layer)
 {
-	struct cfsrvl *servl;
-	if (adap_layer == NULL || adap_layer->dn == NULL)
-		return;
-	servl = container_obj(adap_layer->dn);
-	servl->release(&servl->layer);
+ struct cfsrvl *servl;
+ if (adap_layer == ((void*)0) || adap_layer->dn == ((void*)0))
+  return;
+ servl = container_obj(adap_layer->dn);
+ servl->release(&servl->layer);
 }

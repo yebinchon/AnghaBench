@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u32 ;
+
+
+
+
+typedef int u32 ;
 struct radeon_device {int dummy; } ;
 
-/* Variables and functions */
- scalar_t__ SCLK_FREQ_SETTING_STEP_0_PART2 ; 
- int /*<<< orphan*/  STEP_0_SPLL_STEP_ENABLE ; 
- int /*<<< orphan*/  WREG32_P (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ SCLK_FREQ_SETTING_STEP_0_PART2 ;
+ int STEP_0_SPLL_STEP_ENABLE ;
+ int WREG32_P (scalar_t__,int ,int ) ;
 
 void r600_engine_clock_entry_enable_pulse_skipping(struct radeon_device *rdev,
-						   u32 index, bool enable)
+         u32 index, bool enable)
 {
-	if (enable)
-		WREG32_P(SCLK_FREQ_SETTING_STEP_0_PART2 + (index * 4 * 2),
-			 STEP_0_SPLL_STEP_ENABLE, ~STEP_0_SPLL_STEP_ENABLE);
-	else
-		WREG32_P(SCLK_FREQ_SETTING_STEP_0_PART2 + (index * 4 * 2),
-			 0, ~STEP_0_SPLL_STEP_ENABLE);
+ if (enable)
+  WREG32_P(SCLK_FREQ_SETTING_STEP_0_PART2 + (index * 4 * 2),
+    STEP_0_SPLL_STEP_ENABLE, ~STEP_0_SPLL_STEP_ENABLE);
+ else
+  WREG32_P(SCLK_FREQ_SETTING_STEP_0_PART2 + (index * 4 * 2),
+    0, ~STEP_0_SPLL_STEP_ENABLE);
 }

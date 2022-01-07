@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct gc_arena {int dummy; } ;
-typedef  int in_addr_t ;
+typedef int in_addr_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  M_WARN ; 
- int TOP_NET30 ; 
- int TOP_P2P ; 
- int /*<<< orphan*/  gc_free (struct gc_arena*) ; 
- struct gc_arena gc_new () ; 
- int /*<<< orphan*/  ifconfig_warn_how_to_silence ; 
- int /*<<< orphan*/  msg (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  print_in_addr_t (int,int /*<<< orphan*/ ,struct gc_arena*) ; 
+
+ int M_WARN ;
+ int TOP_NET30 ;
+ int TOP_P2P ;
+ int gc_free (struct gc_arena*) ;
+ struct gc_arena gc_new () ;
+ int ifconfig_warn_how_to_silence ;
+ int msg (int ,char*,int ,...) ;
+ int print_in_addr_t (int,int ,struct gc_arena*) ;
 
 __attribute__((used)) static void
 ifconfig_sanity_check(bool tun, in_addr_t addr, int topology)
@@ -37,7 +37,7 @@ ifconfig_sanity_check(bool tun, in_addr_t addr, int topology)
                 ifconfig_warn_how_to_silence);
         }
     }
-    else /* tap */
+    else
     {
         if (!looks_like_netmask)
         {

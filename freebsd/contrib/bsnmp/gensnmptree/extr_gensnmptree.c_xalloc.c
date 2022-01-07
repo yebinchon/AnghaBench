@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- void* calloc (int,size_t) ; 
- int /*<<< orphan*/  err (int,char*,size_t) ; 
+ void* calloc (int,size_t) ;
+ int err (int,char*,size_t) ;
 
 __attribute__((used)) static void *
 xalloc(size_t size)
 {
-	void *ptr;
+ void *ptr;
 
-	if ((ptr = calloc(1, size)) == NULL)
-		err(1, "allocing %zu bytes", size);
+ if ((ptr = calloc(1, size)) == ((void*)0))
+  err(1, "allocing %zu bytes", size);
 
-	return (ptr);
+ return (ptr);
 }

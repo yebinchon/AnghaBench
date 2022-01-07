@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_7__ ;
-typedef  struct TYPE_12__   TYPE_5__ ;
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
+
+
+typedef struct TYPE_13__ TYPE_7__ ;
+typedef struct TYPE_12__ TYPE_5__ ;
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
 struct TYPE_12__ {int sdmmc_status; int dma_status; } ;
-typedef  TYPE_5__ sdmmc_event_t ;
+typedef TYPE_5__ sdmmc_event_t ;
 struct TYPE_11__ {int sdio; } ;
 struct TYPE_10__ {int val; int sdio; } ;
 struct TYPE_9__ {int val; } ;
 struct TYPE_8__ {int val; } ;
 struct TYPE_13__ {TYPE_4__ intmask; TYPE_3__ mintsts; TYPE_2__ idsts; TYPE_1__ rintsts; } ;
-typedef  int /*<<< orphan*/  QueueHandle_t ;
+typedef int QueueHandle_t ;
 
-/* Variables and functions */
- TYPE_7__ SDMMC ; 
- int pdFALSE ; 
- int pdTRUE ; 
- int /*<<< orphan*/  portYIELD_FROM_ISR () ; 
- int /*<<< orphan*/  s_io_intr_event ; 
- int /*<<< orphan*/  xQueueSendFromISR (int /*<<< orphan*/ ,TYPE_5__*,int*) ; 
- int /*<<< orphan*/  xSemaphoreGiveFromISR (int /*<<< orphan*/ ,int*) ; 
+
+ TYPE_7__ SDMMC ;
+ int pdFALSE ;
+ int pdTRUE ;
+ int portYIELD_FROM_ISR () ;
+ int s_io_intr_event ;
+ int xQueueSendFromISR (int ,TYPE_5__*,int*) ;
+ int xSemaphoreGiveFromISR (int ,int*) ;
 
 __attribute__((used)) static void sdmmc_isr(void* arg) {
     QueueHandle_t queue = (QueueHandle_t) arg;
@@ -54,7 +54,7 @@ __attribute__((used)) static void sdmmc_isr(void* arg) {
 
     uint32_t sdio_pending = SDMMC.mintsts.sdio;
     if (sdio_pending) {
-        // disable the interrupt (no need to clear here, this is done in sdmmc_host_io_wait_int)
+
         SDMMC.intmask.sdio &= ~sdio_pending;
         xSemaphoreGiveFromISR(s_io_intr_event, &higher_priority_task_awoken);
     }

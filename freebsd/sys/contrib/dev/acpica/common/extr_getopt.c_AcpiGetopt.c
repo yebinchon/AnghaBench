@@ -1,34 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  ACPI_OPTION_ERROR (char*,int) ; 
- int ACPI_OPT_END ; 
- char* AcpiGbl_Optarg ; 
- int AcpiGbl_Optind ; 
- char AcpiGbl_SubOptChar ; 
- int CurrentCharPtr ; 
- char* strchr (char*,int) ; 
- scalar_t__ strcmp (char*,char*) ; 
+ int ACPI_OPTION_ERROR (char*,int) ;
+ int ACPI_OPT_END ;
+ char* AcpiGbl_Optarg ;
+ int AcpiGbl_Optind ;
+ char AcpiGbl_SubOptChar ;
+ int CurrentCharPtr ;
+ char* strchr (char*,int) ;
+ scalar_t__ strcmp (char*,char*) ;
 
 int
 AcpiGetopt(
-    int                     argc,
-    char                    **argv,
-    char                    *opts)
+    int argc,
+    char **argv,
+    char *opts)
 {
-    int                     CurrentChar;
-    char                    *OptsPtr;
+    int CurrentChar;
+    char *OptsPtr;
 
 
     if (CurrentCharPtr == 1)
@@ -46,14 +38,14 @@ AcpiGetopt(
         }
     }
 
-    /* Get the option */
+
 
     CurrentChar = argv[AcpiGbl_Optind][CurrentCharPtr];
 
-    /* Make sure that the option is legal */
+
 
     if (CurrentChar == ':' ||
-       (OptsPtr = strchr (opts, CurrentChar)) == NULL)
+       (OptsPtr = strchr (opts, CurrentChar)) == ((void*)0))
     {
         ACPI_OPTION_ERROR ("Illegal option: -", CurrentChar);
 
@@ -66,7 +58,7 @@ AcpiGetopt(
         return ('?');
     }
 
-    /* Option requires an argument? */
+
 
     if (*++OptsPtr == ':')
     {
@@ -90,7 +82,7 @@ AcpiGetopt(
         CurrentCharPtr = 1;
     }
 
-    /* Option has an optional argument? */
+
 
     else if (*OptsPtr == '+')
     {
@@ -100,7 +92,7 @@ AcpiGetopt(
         }
         else if (++AcpiGbl_Optind >= argc)
         {
-            AcpiGbl_Optarg = NULL;
+            AcpiGbl_Optarg = ((void*)0);
         }
         else
         {
@@ -110,7 +102,7 @@ AcpiGetopt(
         CurrentCharPtr = 1;
     }
 
-    /* Option has optional single-char arguments? */
+
 
     else if (*OptsPtr == '^')
     {
@@ -128,7 +120,7 @@ AcpiGetopt(
         CurrentCharPtr = 1;
     }
 
-    /* Option has a required single-char argument? */
+
 
     else if (*OptsPtr == '|')
     {
@@ -151,7 +143,7 @@ AcpiGetopt(
         CurrentCharPtr = 1;
     }
 
-    /* Option with no arguments */
+
 
     else
     {
@@ -161,7 +153,7 @@ AcpiGetopt(
             AcpiGbl_Optind++;
         }
 
-        AcpiGbl_Optarg = NULL;
+        AcpiGbl_Optarg = ((void*)0);
     }
 
     return (CurrentChar);

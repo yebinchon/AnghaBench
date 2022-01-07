@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_6__ ;
-typedef  struct TYPE_11__   TYPE_5__ ;
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-struct TYPE_11__ {int /*<<< orphan*/  mask_dilate_taskset; TYPE_4__* mask_temp; TYPE_2__* mask_filtered; } ;
-typedef  TYPE_5__ hb_filter_private_t ;
+
+
+typedef struct TYPE_12__ TYPE_6__ ;
+typedef struct TYPE_11__ TYPE_5__ ;
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_11__ {int mask_dilate_taskset; TYPE_4__* mask_temp; TYPE_2__* mask_filtered; } ;
+typedef TYPE_5__ hb_filter_private_t ;
 struct TYPE_12__ {int segment; int* segment_start; int* segment_height; TYPE_5__* pv; } ;
-typedef  TYPE_6__ decomb_thread_arg_t ;
+typedef TYPE_6__ decomb_thread_arg_t ;
 struct TYPE_10__ {TYPE_3__* plane; } ;
 struct TYPE_9__ {int* data; } ;
 struct TYPE_8__ {TYPE_1__* plane; } ;
 struct TYPE_7__ {int width; int height; int stride; int* data; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  hb_deep_log (int,char*,int) ; 
- int /*<<< orphan*/  taskset_thread_complete (int /*<<< orphan*/ *,int) ; 
- scalar_t__ taskset_thread_stop (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  taskset_thread_wait4start (int /*<<< orphan*/ *,int) ; 
+
+ int hb_deep_log (int,char*,int) ;
+ int taskset_thread_complete (int *,int) ;
+ scalar_t__ taskset_thread_stop (int *,int) ;
+ int taskset_thread_wait4start (int *,int) ;
 
 __attribute__((used)) static void mask_dilate_thread( void *thread_args_v )
 {
@@ -45,16 +45,16 @@ __attribute__((used)) static void mask_dilate_thread( void *thread_args_v )
 
     while (1)
     {
-        /*
-         * Wait here until there is work to do.
-         */
+
+
+
         taskset_thread_wait4start( &pv->mask_dilate_taskset, segment );
 
         if (taskset_thread_stop(&pv->mask_dilate_taskset, segment))
         {
-            /*
-             * No more work to do, exit this thread.
-             */
+
+
+
             break;
         }
 
@@ -98,7 +98,7 @@ __attribute__((used)) static void mask_dilate_thread( void *thread_args_v )
             }
 
             uint8_t *curp = &pv->mask_filtered->plane[pp].data[p * stride + 1];
-            uint8_t *cur  = &pv->mask_filtered->plane[pp].data[c * stride + 1];
+            uint8_t *cur = &pv->mask_filtered->plane[pp].data[c * stride + 1];
             uint8_t *curn = &pv->mask_filtered->plane[pp].data[n * stride + 1];
             uint8_t *dst = &pv->mask_temp->plane[pp].data[c * stride + 1];
 
@@ -113,7 +113,7 @@ __attribute__((used)) static void mask_dilate_thread( void *thread_args_v )
                     }
 
                     count = curp[xx-1] + curp[xx] + curp[xx+1] +
-                            cur [xx-1] +            cur [xx+1] +
+                            cur [xx-1] + cur [xx+1] +
                             curn[xx-1] + curn[xx] + curn[xx+1];
 
                     dst[xx] = count >= dilation_threshold;
@@ -128,8 +128,8 @@ __attribute__((used)) static void mask_dilate_thread( void *thread_args_v )
         taskset_thread_complete( &pv->mask_dilate_taskset, segment );
     }
 
-    /*
-     * Finished this segment, let everyone know.
-     */
+
+
+
     taskset_thread_complete( &pv->mask_dilate_taskset, segment );
 }

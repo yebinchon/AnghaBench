@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct item {long long item_id; } ;
-typedef  int get_item_f_mode ;
+typedef int get_item_f_mode ;
 
-/* Variables and functions */
-#define  ADD_NOT_FOUND_ITEM 129 
- int ITEMS_HASH_PRIME ; 
- int /*<<< orphan*/  ITEM_DELETED (struct item*) ; 
- struct item** Items ; 
- int /*<<< orphan*/  MAX_ITEMS ; 
-#define  ONLY_FIND 128 
- int SHORT_ID (long long) ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- scalar_t__ items_short_ids ; 
- int /*<<< orphan*/  tot_freed_deleted_items ; 
- int /*<<< orphan*/  tot_items ; 
- int /*<<< orphan*/  zfree (struct item*,int) ; 
- struct item* zmalloc0 (int) ; 
+
+
+ int ITEMS_HASH_PRIME ;
+ int ITEM_DELETED (struct item*) ;
+ struct item** Items ;
+ int MAX_ITEMS ;
+
+ int SHORT_ID (long long) ;
+ int assert (int ) ;
+ scalar_t__ items_short_ids ;
+ int tot_freed_deleted_items ;
+ int tot_items ;
+ int zfree (struct item*,int) ;
+ struct item* zmalloc0 (int) ;
 
 __attribute__((used)) static struct item *get_item_f (long long item_id, get_item_f_mode force) {
   int h1, h2;
@@ -42,7 +42,7 @@ __attribute__((used)) static struct item *get_item_f (long long item_id, get_ite
   }
 
   switch (force) {
-    case ONLY_FIND:
+    case 128:
       while ((D = Items[h1]) != 0) {
         if (D->item_id == item_id) {
           return D;
@@ -51,7 +51,7 @@ __attribute__((used)) static struct item *get_item_f (long long item_id, get_ite
         if (h1 >= ITEMS_HASH_PRIME) { h1 -= ITEMS_HASH_PRIME; }
       }
       return 0;
-    case ADD_NOT_FOUND_ITEM:
+    case 129:
       while ((D = Items[h1]) != 0) {
         if (ITEM_DELETED(D)) {
           break;

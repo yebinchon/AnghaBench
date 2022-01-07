@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ UINT ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef scalar_t__ UINT ;
 struct TYPE_5__ {scalar_t__ value; } ;
-typedef  TYPE_1__ SPY_NOTIFY ;
+typedef TYPE_1__ SPY_NOTIFY ;
 
-/* Variables and functions */
- int ARRAYSIZE (TYPE_1__ const*) ; 
- TYPE_1__ const* spnfy_array ; 
+
+ int ARRAYSIZE (TYPE_1__ const*) ;
+ TYPE_1__ const* spnfy_array ;
 
 __attribute__((used)) static const SPY_NOTIFY *SPY_Bsearch_Notify( UINT code)
 {
@@ -32,5 +32,5 @@ __attribute__((used)) static const SPY_NOTIFY *SPY_Bsearch_Notify( UINT code)
         else
             low = idx + 1;
     }
-    return NULL;
+    return ((void*)0);
 }

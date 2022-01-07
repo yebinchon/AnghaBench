@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int keyClass; int copyKey; int /*<<< orphan*/  xFree; int /*<<< orphan*/  xMalloc; scalar_t__ ht; scalar_t__ htsize; scalar_t__ count; scalar_t__ first; } ;
-typedef  TYPE_1__ Hash ;
 
-/* Variables and functions */
- int HASH_BINARY ; 
- int HASH_INT ; 
- int HASH_POINTER ; 
- int HASH_STRING ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  free ; 
- int /*<<< orphan*/  malloc_and_zero ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int keyClass; int copyKey; int xFree; int xMalloc; scalar_t__ ht; scalar_t__ htsize; scalar_t__ count; scalar_t__ first; } ;
+typedef TYPE_1__ Hash ;
+
+
+ int HASH_BINARY ;
+ int HASH_INT ;
+ int HASH_POINTER ;
+ int HASH_STRING ;
+ int assert (int) ;
+ int free ;
+ int malloc_and_zero ;
 
 void HashInit(Hash *pNew, int keyClass, int copyKey){
   assert( pNew!=0 );
   assert( keyClass>=HASH_STRING && keyClass<=HASH_BINARY );
   pNew->keyClass = keyClass;
-#if 0
-  if( keyClass==HASH_POINTER || keyClass==HASH_INT ) copyKey = 0;
-#endif
+
+
+
   pNew->copyKey = copyKey;
   pNew->first = 0;
   pNew->count = 0;

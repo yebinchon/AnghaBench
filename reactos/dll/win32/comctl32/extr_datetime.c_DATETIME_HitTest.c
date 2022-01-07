@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int nrFields; int /*<<< orphan*/ * fieldRect; int /*<<< orphan*/  checkbox; int /*<<< orphan*/  calbutton; } ;
-typedef  int /*<<< orphan*/  POINT ;
-typedef  int INT ;
-typedef  TYPE_1__ DATETIME_INFO ;
 
-/* Variables and functions */
- int DTHT_CHECKBOX ; 
- int DTHT_MCPOPUP ; 
- int DTHT_NONE ; 
- scalar_t__ PtInRect (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wine_dbgstr_point (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int nrFields; int * fieldRect; int checkbox; int calbutton; } ;
+typedef int POINT ;
+typedef int INT ;
+typedef TYPE_1__ DATETIME_INFO ;
+
+
+ int DTHT_CHECKBOX ;
+ int DTHT_MCPOPUP ;
+ int DTHT_NONE ;
+ scalar_t__ PtInRect (int *,int ) ;
+ int TRACE (char*,int ) ;
+ int wine_dbgstr_point (int *) ;
 
 __attribute__((used)) static INT
 DATETIME_HitTest (const DATETIME_INFO *infoPtr, POINT pt)

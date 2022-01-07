@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * HCRYPTMSG ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CMSG_DATA ; 
- int /*<<< orphan*/  CryptMsgClose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * CryptMsgOpenToEncode (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GetLastError () ; 
- int /*<<< orphan*/  PKCS_7_ASN_ENCODING ; 
- int /*<<< orphan*/  ok (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int * HCRYPTMSG ;
+typedef int BOOL ;
+
+
+ int CMSG_DATA ;
+ int CryptMsgClose (int *) ;
+ int * CryptMsgOpenToEncode (int ,int ,int ,int *,int *,int *) ;
+ int GetLastError () ;
+ int PKCS_7_ASN_ENCODING ;
+ int ok (int ,char*,int ) ;
 
 __attribute__((used)) static void test_msg_close(void)
 {
     BOOL ret;
     HCRYPTMSG msg;
 
-    /* NULL succeeds.. */
-    ret = CryptMsgClose(NULL);
+
+    ret = CryptMsgClose(((void*)0));
     ok(ret, "CryptMsgClose failed: %x\n", GetLastError());
-    /* but an arbitrary pointer crashes. */
+
     if (0)
         ret = CryptMsgClose((HCRYPTMSG)1);
-    msg = CryptMsgOpenToEncode(PKCS_7_ASN_ENCODING, 0, CMSG_DATA, NULL, NULL,
-     NULL);
-    ok(msg != NULL, "CryptMsgOpenToEncode failed: %x\n", GetLastError());
+    msg = CryptMsgOpenToEncode(PKCS_7_ASN_ENCODING, 0, CMSG_DATA, ((void*)0), ((void*)0),
+     ((void*)0));
+    ok(msg != ((void*)0), "CryptMsgOpenToEncode failed: %x\n", GetLastError());
     ret = CryptMsgClose(msg);
     ok(ret, "CryptMsgClose failed: %x\n", GetLastError());
 }

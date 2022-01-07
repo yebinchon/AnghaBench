@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct usb_phy {int /*<<< orphan*/  head; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  list_del (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  phy_lock ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
+
+
+
+struct usb_phy {int head; } ;
+
+
+ int list_del (int *) ;
+ int phy_lock ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
 
 void usb_remove_phy(struct usb_phy *x)
 {
-	unsigned long	flags;
+ unsigned long flags;
 
-	spin_lock_irqsave(&phy_lock, flags);
-	if (x)
-		list_del(&x->head);
-	spin_unlock_irqrestore(&phy_lock, flags);
+ spin_lock_irqsave(&phy_lock, flags);
+ if (x)
+  list_del(&x->head);
+ spin_unlock_irqrestore(&phy_lock, flags);
 }

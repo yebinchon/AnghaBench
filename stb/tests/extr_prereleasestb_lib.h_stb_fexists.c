@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wchar_t ;
+
+
+
+
+typedef int wchar_t ;
 struct stb__stat {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  _wstat (int /*<<< orphan*/  const*,struct stb__stat*) ; 
- int /*<<< orphan*/  stat (char*,struct stb__stat*) ; 
- scalar_t__ stb__from_utf8 (char*) ; 
- scalar_t__ stb__windows (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int _wstat (int const*,struct stb__stat*) ;
+ int stat (char*,struct stb__stat*) ;
+ scalar_t__ stb__from_utf8 (char*) ;
+ scalar_t__ stb__windows (int ,int ) ;
 
 int stb_fexists(char *filename)
 {

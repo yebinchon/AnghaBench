@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t U8 ;
-struct TYPE_5__ {int /*<<< orphan*/ * phy_table; } ;
-typedef  int /*<<< orphan*/  SCI_STATUS ;
-typedef  int /*<<< orphan*/ * SCI_PHY_HANDLE_T ;
-typedef  TYPE_1__* SCI_CONTROLLER_HANDLE_T ;
-typedef  TYPE_1__ SCIC_SDS_CONTROLLER_T ;
 
-/* Variables and functions */
- size_t ARRAY_SIZE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SCIC_LOG_ERROR (int /*<<< orphan*/ ) ; 
- int SCIC_LOG_OBJECT_CONTROLLER ; 
- int SCIC_LOG_OBJECT_PORT ; 
- int /*<<< orphan*/  SCIC_LOG_TRACE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SCI_FAILURE_INVALID_PHY ; 
- int /*<<< orphan*/  SCI_SUCCESS ; 
- int /*<<< orphan*/  sci_base_object_get_logger (TYPE_1__*) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef size_t U8 ;
+struct TYPE_5__ {int * phy_table; } ;
+typedef int SCI_STATUS ;
+typedef int * SCI_PHY_HANDLE_T ;
+typedef TYPE_1__* SCI_CONTROLLER_HANDLE_T ;
+typedef TYPE_1__ SCIC_SDS_CONTROLLER_T ;
+
+
+ size_t ARRAY_SIZE (int *) ;
+ int SCIC_LOG_ERROR (int ) ;
+ int SCIC_LOG_OBJECT_CONTROLLER ;
+ int SCIC_LOG_OBJECT_PORT ;
+ int SCIC_LOG_TRACE (int ) ;
+ int SCI_FAILURE_INVALID_PHY ;
+ int SCI_SUCCESS ;
+ int sci_base_object_get_logger (TYPE_1__*) ;
 
 SCI_STATUS scic_controller_get_phy_handle(
    SCI_CONTROLLER_HANDLE_T controller,
-   U8                      phy_index,
-   SCI_PHY_HANDLE_T *      phy_handle
+   U8 phy_index,
+   SCI_PHY_HANDLE_T * phy_handle
 )
 {
    SCIC_SDS_CONTROLLER_T *this_controller;

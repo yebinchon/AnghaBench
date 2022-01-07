@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint16_t ;
-typedef  int int16_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint16_t ;
+typedef int int16_t ;
 struct TYPE_3__ {scalar_t__ dstFormat; } ;
-typedef  TYPE_1__ SwsContext ;
+typedef TYPE_1__ SwsContext ;
 
-/* Variables and functions */
- scalar_t__ AV_PIX_FMT_P010BE ; 
- int /*<<< orphan*/  output_pixel (int /*<<< orphan*/ *,int) ; 
+
+ scalar_t__ AV_PIX_FMT_P010BE ;
+ int output_pixel (int *,int) ;
 
 __attribute__((used)) static void yuv2p010cX_c(SwsContext *c, const int16_t *chrFilter, int chrFilterSize,
                          const int16_t **chrUSrc, const int16_t **chrVSrc,
@@ -39,7 +39,7 @@ __attribute__((used)) static void yuv2p010cX_c(SwsContext *c, const int16_t *chr
             v += chrVSrc[j][i] * chrFilter[j];
         }
 
-        output_pixel(&dest[2*i]  , u);
+        output_pixel(&dest[2*i] , u);
         output_pixel(&dest[2*i+1], v);
     }
 }

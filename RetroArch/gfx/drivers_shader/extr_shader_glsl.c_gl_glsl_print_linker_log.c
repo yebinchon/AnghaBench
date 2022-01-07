@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  GLuint ;
-typedef  scalar_t__ GLint ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GL_INFO_LOG_LENGTH ; 
- int /*<<< orphan*/  RARCH_LOG (char*,char*) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  glGetProgramInfoLog (int /*<<< orphan*/ ,scalar_t__,scalar_t__*,char*) ; 
- int /*<<< orphan*/  glGetProgramiv (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__*) ; 
- scalar_t__ malloc (scalar_t__) ; 
+
+
+
+typedef int GLuint ;
+typedef scalar_t__ GLint ;
+
+
+ int GL_INFO_LOG_LENGTH ;
+ int RARCH_LOG (char*,char*) ;
+ int free (char*) ;
+ int glGetProgramInfoLog (int ,scalar_t__,scalar_t__*,char*) ;
+ int glGetProgramiv (int ,int ,scalar_t__*) ;
+ scalar_t__ malloc (scalar_t__) ;
 
 __attribute__((used)) static void gl_glsl_print_linker_log(GLuint obj)
 {
-   char *info_log = NULL;
+   char *info_log = ((void*)0);
    GLint max_len, info_len = 0;
 
    glGetProgramiv(obj, GL_INFO_LOG_LENGTH, &max_len);

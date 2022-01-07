@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {scalar_t__ smooth; } ;
-struct TYPE_8__ {unsigned int w; unsigned int h; int rgb32; unsigned int pitch; int active; int /*<<< orphan*/  tex; } ;
-struct TYPE_7__ {int /*<<< orphan*/  renderer; TYPE_1__ video; TYPE_3__ frame; TYPE_3__ menu; } ;
-typedef  TYPE_2__ sdl2_video_t ;
-typedef  TYPE_3__ sdl2_tex_t ;
+struct TYPE_8__ {unsigned int w; unsigned int h; int rgb32; unsigned int pitch; int active; int tex; } ;
+struct TYPE_7__ {int renderer; TYPE_1__ video; TYPE_3__ frame; TYPE_3__ menu; } ;
+typedef TYPE_2__ sdl2_video_t ;
+typedef TYPE_3__ sdl2_tex_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RARCH_ERR (char*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SDL_BLENDMODE_BLEND ; 
- int /*<<< orphan*/  SDL_CreateTexture (int /*<<< orphan*/ ,unsigned int,int /*<<< orphan*/ ,unsigned int,unsigned int) ; 
- int /*<<< orphan*/  SDL_GetError () ; 
- int /*<<< orphan*/  SDL_HINT_OVERRIDE ; 
- int /*<<< orphan*/  SDL_HINT_RENDER_SCALE_QUALITY ; 
- unsigned int SDL_PIXELFORMAT_ARGB8888 ; 
- unsigned int SDL_PIXELFORMAT_RGB565 ; 
- unsigned int SDL_PIXELFORMAT_RGBA4444 ; 
- int /*<<< orphan*/  SDL_SetHintWithPriority (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SDL_SetTextureBlendMode (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SDL_TEXTUREACCESS_STREAMING ; 
- int /*<<< orphan*/  sdl_tex_zero (TYPE_3__*) ; 
+
+ int RARCH_ERR (char*,char*,int ) ;
+ int SDL_BLENDMODE_BLEND ;
+ int SDL_CreateTexture (int ,unsigned int,int ,unsigned int,unsigned int) ;
+ int SDL_GetError () ;
+ int SDL_HINT_OVERRIDE ;
+ int SDL_HINT_RENDER_SCALE_QUALITY ;
+ unsigned int SDL_PIXELFORMAT_ARGB8888 ;
+ unsigned int SDL_PIXELFORMAT_RGB565 ;
+ unsigned int SDL_PIXELFORMAT_RGBA4444 ;
+ int SDL_SetHintWithPriority (int ,char*,int ) ;
+ int SDL_SetTextureBlendMode (int ,int ) ;
+ int SDL_TEXTUREACCESS_STREAMING ;
+ int sdl_tex_zero (TYPE_3__*) ;
 
 __attribute__((used)) static void sdl_refresh_input_size(sdl2_video_t *vid, bool menu, bool rgb32,
       unsigned width, unsigned height, unsigned pitch)
@@ -48,7 +48,7 @@ __attribute__((used)) static void sdl_refresh_input_size(sdl2_video_t *vid, bool
 
       if (menu)
          format = rgb32 ? SDL_PIXELFORMAT_ARGB8888 : SDL_PIXELFORMAT_RGBA4444;
-      else /* this assumes the frontend will convert 0RGB1555 to RGB565 */
+      else
          format = rgb32 ? SDL_PIXELFORMAT_ARGB8888 : SDL_PIXELFORMAT_RGB565;
 
       SDL_SetHintWithPriority(SDL_HINT_RENDER_SCALE_QUALITY,
@@ -72,6 +72,6 @@ __attribute__((used)) static void sdl_refresh_input_size(sdl2_video_t *vid, bool
       target->h = height;
       target->pitch = pitch;
       target->rgb32 = rgb32;
-      target->active = true;
+      target->active = 1;
    }
 }

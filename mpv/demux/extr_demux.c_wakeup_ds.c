@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct demux_stream {int need_wakeup; TYPE_1__* in; int /*<<< orphan*/  wakeup_cb_ctx; int /*<<< orphan*/  (* wakeup_cb ) (int /*<<< orphan*/ ) ;} ;
-struct TYPE_2__ {int /*<<< orphan*/  wakeup; int /*<<< orphan*/  wakeup_cb_ctx; int /*<<< orphan*/  (* wakeup_cb ) (int /*<<< orphan*/ ) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  pthread_cond_signal (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct demux_stream {int need_wakeup; TYPE_1__* in; int wakeup_cb_ctx; int (* wakeup_cb ) (int ) ;} ;
+struct TYPE_2__ {int wakeup; int wakeup_cb_ctx; int (* wakeup_cb ) (int ) ;} ;
+
+
+ int pthread_cond_signal (int *) ;
+ int stub1 (int ) ;
+ int stub2 (int ) ;
 
 __attribute__((used)) static void wakeup_ds(struct demux_stream *ds)
 {
@@ -27,7 +27,7 @@ __attribute__((used)) static void wakeup_ds(struct demux_stream *ds)
         } else if (ds->in->wakeup_cb) {
             ds->in->wakeup_cb(ds->in->wakeup_cb_ctx);
         }
-        ds->need_wakeup = false;
+        ds->need_wakeup = 0;
         pthread_cond_signal(&ds->in->wakeup);
     }
 }

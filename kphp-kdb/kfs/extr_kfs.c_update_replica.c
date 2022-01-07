@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct kfs_file_info {scalar_t__ file_size; TYPE_1__* replica; } ;
-typedef  TYPE_1__* kfs_replica_handle_t ;
-struct TYPE_6__ {char* replica_prefix; int binlog_num; int snapshot_num; struct kfs_file_info** snapshots; struct kfs_file_info** binlogs; int /*<<< orphan*/ * ctx_crypto; } ;
+typedef TYPE_1__* kfs_replica_handle_t ;
+struct TYPE_6__ {char* replica_prefix; int binlog_num; int snapshot_num; struct kfs_file_info** snapshots; struct kfs_file_info** binlogs; int * ctx_crypto; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  close_replica (TYPE_1__*) ; 
- int cmp_file_info (struct kfs_file_info*,struct kfs_file_info*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*,int,int,int,int) ; 
- TYPE_1__* open_replica (char*,int) ; 
- int /*<<< orphan*/  replica_close_ctx_crypto (TYPE_1__*) ; 
- int /*<<< orphan*/  stderr ; 
- int verbosity ; 
+
+ int assert (int) ;
+ int close_replica (TYPE_1__*) ;
+ int cmp_file_info (struct kfs_file_info*,struct kfs_file_info*) ;
+ int fprintf (int ,char*,char*,int,int,int,int) ;
+ TYPE_1__* open_replica (char*,int) ;
+ int replica_close_ctx_crypto (TYPE_1__*) ;
+ int stderr ;
+ int verbosity ;
 
 int update_replica (kfs_replica_handle_t R, int force) {
   if (!R) {
@@ -36,7 +36,7 @@ int update_replica (kfs_replica_handle_t R, int force) {
 
   replica_close_ctx_crypto (R);
   R->ctx_crypto = RN->ctx_crypto;
-  RN->ctx_crypto = NULL;
+  RN->ctx_crypto = ((void*)0);
 
   int i = 0, j = 0;
   struct kfs_file_info *FI, *FJ, **T;
@@ -74,11 +74,11 @@ int update_replica (kfs_replica_handle_t R, int force) {
     }
   }
 
-  i = R->binlog_num;  R->binlog_num = RN->binlog_num;  RN->binlog_num = i;
-  T = R->binlogs;     R->binlogs = RN->binlogs;        RN->binlogs = T;
+  i = R->binlog_num; R->binlog_num = RN->binlog_num; RN->binlog_num = i;
+  T = R->binlogs; R->binlogs = RN->binlogs; RN->binlogs = T;
 
-  i = R->snapshot_num;  R->snapshot_num = RN->snapshot_num;  RN->snapshot_num = i;
-  T = R->snapshots;     R->snapshots = RN->snapshots;        RN->snapshots = T;
+  i = R->snapshot_num; R->snapshot_num = RN->snapshot_num; RN->snapshot_num = i;
+  T = R->snapshots; R->snapshots = RN->snapshots; RN->snapshots = T;
 
   if (verbosity > 1) {
     fprintf (stderr, "finished reloading file list for replica %s: %d binlogs, %d snapshots (OLD: %d, %d)\n",

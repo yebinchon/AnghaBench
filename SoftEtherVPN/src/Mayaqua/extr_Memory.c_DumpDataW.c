@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wchar_t ;
-typedef  int /*<<< orphan*/  UINT ;
-typedef  int /*<<< orphan*/  IO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FileClose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * FileCreateW (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FileWrite (int /*<<< orphan*/ *,void*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int wchar_t ;
+typedef int UINT ;
+typedef int IO ;
+
+
+ int FileClose (int *) ;
+ int * FileCreateW (int *) ;
+ int FileWrite (int *,void*,int ) ;
 
 bool DumpDataW(void *data, UINT size, wchar_t *filename)
 {
-	IO *o;
-	// Validate arguments
-	if (filename == NULL || (size != 0 && data == NULL))
-	{
-		return false;
-	}
+ IO *o;
 
-	o = FileCreateW(filename);
-	if (o == NULL)
-	{
-		return false;
-	}
-	FileWrite(o, data, size);
-	FileClose(o);
+ if (filename == ((void*)0) || (size != 0 && data == ((void*)0)))
+ {
+  return 0;
+ }
 
-	return true;
+ o = FileCreateW(filename);
+ if (o == ((void*)0))
+ {
+  return 0;
+ }
+ FileWrite(o, data, size);
+ FileClose(o);
+
+ return 1;
 }

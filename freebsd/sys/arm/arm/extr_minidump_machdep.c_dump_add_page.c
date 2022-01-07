@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int vm_paddr_t ;
 
-/* Variables and functions */
- int PAGE_SHIFT ; 
- int /*<<< orphan*/  atomic_set_int (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/ * vm_page_dump ; 
+
+
+
+typedef int vm_paddr_t ;
+
+
+ int PAGE_SHIFT ;
+ int atomic_set_int (int *,unsigned long) ;
+ int * vm_page_dump ;
 
 void
 dump_add_page(vm_paddr_t pa)
 {
-	int idx, bit;
+ int idx, bit;
 
-	pa >>= PAGE_SHIFT;
-	idx = pa >> 5;		/* 2^5 = 32 */
-	bit = pa & 31;
-	atomic_set_int(&vm_page_dump[idx], 1ul << bit);
+ pa >>= PAGE_SHIFT;
+ idx = pa >> 5;
+ bit = pa & 31;
+ atomic_set_int(&vm_page_dump[idx], 1ul << bit);
 }

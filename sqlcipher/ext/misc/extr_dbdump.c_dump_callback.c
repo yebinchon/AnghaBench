@@ -1,70 +1,70 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int sqlite3_uint64 ;
-typedef  int /*<<< orphan*/  sqlite3_stmt ;
-typedef  int /*<<< orphan*/  r ;
-struct TYPE_10__ {int writableSchema; int rc; int /*<<< orphan*/  pArg; int /*<<< orphan*/  (* xCallback ) (char*,int /*<<< orphan*/ ) ;int /*<<< orphan*/  nErr; int /*<<< orphan*/  db; } ;
+
+
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int sqlite3_uint64 ;
+typedef int sqlite3_stmt ;
+typedef int r ;
+struct TYPE_10__ {int writableSchema; int rc; int pArg; int (* xCallback ) (char*,int ) ;int nErr; int db; } ;
 struct TYPE_9__ {char* z; } ;
-typedef  TYPE_1__ DText ;
-typedef  TYPE_2__ DState ;
+typedef TYPE_1__ DText ;
+typedef TYPE_2__ DState ;
 
-/* Variables and functions */
-#define  SQLITE_BLOB 132 
-#define  SQLITE_FLOAT 131 
-#define  SQLITE_INTEGER 130 
-#define  SQLITE_NULL 129 
- int SQLITE_OK ; 
- scalar_t__ SQLITE_ROW ; 
-#define  SQLITE_TEXT 128 
- int /*<<< orphan*/  appendText (TYPE_1__*,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  freeColumnList (char**) ; 
- int /*<<< orphan*/  freeText (TYPE_1__*) ; 
- int /*<<< orphan*/  initText (TYPE_1__*) ; 
- int /*<<< orphan*/  memcpy (int*,double*,int) ; 
- int /*<<< orphan*/  output_formatted (TYPE_2__*,char*,...) ; 
- int /*<<< orphan*/  output_quoted_escaped_string (TYPE_2__*,char const*) ; 
- int /*<<< orphan*/  quoteChar (char const*) ; 
- scalar_t__ sqlite3_column_blob (int /*<<< orphan*/ *,int) ; 
- int sqlite3_column_bytes (int /*<<< orphan*/ *,int) ; 
- double sqlite3_column_double (int /*<<< orphan*/ *,int) ; 
- double sqlite3_column_int64 (int /*<<< orphan*/ *,int) ; 
- scalar_t__ sqlite3_column_text (int /*<<< orphan*/ *,int) ; 
- int sqlite3_column_type (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  sqlite3_finalize (int /*<<< orphan*/ *) ; 
- int sqlite3_prepare_v2 (int /*<<< orphan*/ ,char*,int,int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
- scalar_t__ sqlite3_step (int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3_strglob (char*,char const*) ; 
- scalar_t__ strcmp (char const*,char*) ; 
- scalar_t__ strncmp (char const*,char*,int) ; 
- int /*<<< orphan*/  stub1 (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub10 (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub11 (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub12 (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub13 (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub14 (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub15 (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub16 (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub2 (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub3 (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub4 (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub5 (char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub6 (char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub7 (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub8 (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub9 (char*,int /*<<< orphan*/ ) ; 
- char** tableColumnList (TYPE_2__*,char const*) ; 
+
+
+
+
+
+ int SQLITE_OK ;
+ scalar_t__ SQLITE_ROW ;
+
+ int appendText (TYPE_1__*,char const*,int ) ;
+ int freeColumnList (char**) ;
+ int freeText (TYPE_1__*) ;
+ int initText (TYPE_1__*) ;
+ int memcpy (int*,double*,int) ;
+ int output_formatted (TYPE_2__*,char*,...) ;
+ int output_quoted_escaped_string (TYPE_2__*,char const*) ;
+ int quoteChar (char const*) ;
+ scalar_t__ sqlite3_column_blob (int *,int) ;
+ int sqlite3_column_bytes (int *,int) ;
+ double sqlite3_column_double (int *,int) ;
+ double sqlite3_column_int64 (int *,int) ;
+ scalar_t__ sqlite3_column_text (int *,int) ;
+ int sqlite3_column_type (int *,int) ;
+ int sqlite3_finalize (int *) ;
+ int sqlite3_prepare_v2 (int ,char*,int,int **,int ) ;
+ scalar_t__ sqlite3_step (int *) ;
+ scalar_t__ sqlite3_strglob (char*,char const*) ;
+ scalar_t__ strcmp (char const*,char*) ;
+ scalar_t__ strncmp (char const*,char*,int) ;
+ int stub1 (char*,int ) ;
+ int stub10 (char*,int ) ;
+ int stub11 (char*,int ) ;
+ int stub12 (char*,int ) ;
+ int stub13 (char*,int ) ;
+ int stub14 (char*,int ) ;
+ int stub15 (char*,int ) ;
+ int stub16 (char*,int ) ;
+ int stub2 (char*,int ) ;
+ int stub3 (char*,int ) ;
+ int stub4 (char*,int ) ;
+ int stub5 (char const*,int ) ;
+ int stub6 (char const*,int ) ;
+ int stub7 (char*,int ) ;
+ int stub8 (char*,int ) ;
+ int stub9 (char*,int ) ;
+ char** tableColumnList (TYPE_2__*,char const*) ;
 
 __attribute__((used)) static int dump_callback(void *pArg, int nArg, char **azArg, char **azCol){
   int rc;
@@ -119,14 +119,14 @@ __attribute__((used)) static int dump_callback(void *pArg, int nArg, char **azAr
     initText(&sTable);
     appendText(&sTable, "INSERT INTO ", 0);
 
-    /* Always quote the table name, even if it appears to be pure ascii,
-    ** in case it is a keyword. Ex:  INSERT INTO "table" ... */
+
+
     appendText(&sTable, zTable, quoteChar(zTable));
 
-    /* If preserving the rowid, add a column list after the table name.
-    ** In other words:  "INSERT INTO tab(rowid,a,b,c,...) VALUES(...)"
-    ** instead of the usual "INSERT INTO tab VALUES(...)".
-    */
+
+
+
+
     if( azTCol[0] ){
       appendText(&sTable, "(", 0);
       appendText(&sTable, azTCol[0], 0);
@@ -138,7 +138,7 @@ __attribute__((used)) static int dump_callback(void *pArg, int nArg, char **azAr
     }
     appendText(&sTable, " VALUES(", 0);
 
-    /* Build an appropriate SELECT statement */
+
     initText(&sSelect);
     appendText(&sSelect, "SELECT ", 0);
     if( azTCol[0] ){
@@ -167,11 +167,11 @@ __attribute__((used)) static int dump_callback(void *pArg, int nArg, char **azAr
         for(i=0; i<nCol; i++){
           if( i ) p->xCallback(",", p->pArg);
           switch( sqlite3_column_type(pStmt,i) ){
-            case SQLITE_INTEGER: {
+            case 130: {
               output_formatted(p, "%lld", sqlite3_column_int64(pStmt,i));
               break;
             }
-            case SQLITE_FLOAT: {
+            case 131: {
               double r = sqlite3_column_double(pStmt,i);
               sqlite3_uint64 ur;
               memcpy(&ur,&r,sizeof(r));
@@ -184,16 +184,16 @@ __attribute__((used)) static int dump_callback(void *pArg, int nArg, char **azAr
               }
               break;
             }
-            case SQLITE_NULL: {
+            case 129: {
               p->xCallback("NULL", p->pArg);
               break;
             }
-            case SQLITE_TEXT: {
-              output_quoted_escaped_string(p, 
+            case 128: {
+              output_quoted_escaped_string(p,
                    (const char*)sqlite3_column_text(pStmt,i));
               break;
             }
-            case SQLITE_BLOB: {
+            case 132: {
               int nByte = sqlite3_column_bytes(pStmt,i);
               unsigned char *a = (unsigned char*)sqlite3_column_blob(pStmt,i);
               int j;

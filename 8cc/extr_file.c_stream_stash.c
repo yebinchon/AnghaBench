@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  File ;
 
-/* Variables and functions */
- int /*<<< orphan*/  files ; 
- int /*<<< orphan*/  make_vector1 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stashed ; 
- int /*<<< orphan*/  vec_push (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int File ;
+
+
+ int files ;
+ int make_vector1 (int *) ;
+ int stashed ;
+ int vec_push (int ,int ) ;
 
 void stream_stash(File *f) {
     vec_push(stashed, files);

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ip_addr_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SNTP_DOLOOKUPS_ID ; 
- size_t server_count ; 
- int /*<<< orphan*/ * serverp ; 
- int /*<<< orphan*/  sntp_dbg (char*) ; 
- int /*<<< orphan*/  task_post_low (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tasknumber ; 
+
+
+
+typedef int ip_addr_t ;
+
+
+ int SNTP_DOLOOKUPS_ID ;
+ size_t server_count ;
+ int * serverp ;
+ int sntp_dbg (char*) ;
+ int task_post_low (int ,int ) ;
+ int tasknumber ;
 
 __attribute__((used)) static void sntp_dns_found(const char *name, ip_addr_t *ipaddr, void *arg)
 {
   (void)arg;
 
-  if (ipaddr == NULL)
+  if (ipaddr == ((void*)0))
   {
     sntp_dbg("DNS Fail!\n");
   }

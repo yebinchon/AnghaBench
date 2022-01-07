@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fflush (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*,...) ; 
- int /*<<< orphan*/  fputc (char,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fputs (char*,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int FILE ;
+
+
+ int fflush (int *) ;
+ int fprintf (int *,char*,...) ;
+ int fputc (char,int *) ;
+ int fputs (char*,int *) ;
 
 __attribute__((used)) static
 void dump(const char *text,
@@ -29,7 +29,7 @@ void dump(const char *text,
   unsigned int width = 0x10;
 
   if(nohex)
-    /* without the hex output, we can fit more on screen */
+
     width = 0x40;
 
   fprintf(stream, "%s, %10.10lu bytes (0x%8.8lx)\n",
@@ -40,7 +40,7 @@ void dump(const char *text,
     fprintf(stream, "%4.4lx: ", (unsigned long)i);
 
     if(!nohex) {
-      /* hex not disabled, show it */
+
       for(c = 0; c < width; c++)
         if(i + c < size)
           fprintf(stream, "%02x ", ptr[i + c]);
@@ -49,7 +49,7 @@ void dump(const char *text,
     }
 
     for(c = 0; (c < width) && (i + c < size); c++) {
-      /* check for 0D0A; if found, skip past and start a new line of output */
+
       if(nohex && (i + c + 1 < size) && ptr[i + c] == 0x0D &&
          ptr[i + c + 1] == 0x0A) {
         i += (c + 2 - width);
@@ -57,14 +57,14 @@ void dump(const char *text,
       }
       fprintf(stream, "%c",
               (ptr[i + c] >= 0x20) && (ptr[i + c]<0x80)?ptr[i + c]:'.');
-      /* check again for 0D0A, to avoid an extra \n if it's at width */
+
       if(nohex && (i + c + 2 < size) && ptr[i + c + 1] == 0x0D &&
          ptr[i + c + 2] == 0x0A) {
         i += (c + 3 - width);
         break;
       }
     }
-    fputc('\n', stream); /* newline */
+    fputc('\n', stream);
   }
   fflush(stream);
 }

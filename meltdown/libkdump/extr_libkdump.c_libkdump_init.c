@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  pthread_t ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int pthread_t ;
 struct TYPE_5__ {int load_threads; int load_type; scalar_t__ fault_handling; } ;
-typedef  TYPE_1__ libkdump_config_t ;
+typedef TYPE_1__ libkdump_config_t ;
 
-/* Variables and functions */
- int ENOMEM ; 
- int /*<<< orphan*/  ERROR ; 
-#define  IO 130 
-#define  NOP 129 
- scalar_t__ SIGNAL_HANDLER ; 
- int /*<<< orphan*/  SIGSEGV ; 
- scalar_t__ SIG_ERR ; 
- int /*<<< orphan*/  SUCCESS ; 
-#define  YIELD 128 
- int /*<<< orphan*/ * _mem ; 
- int /*<<< orphan*/  auto_config () ; 
- int check_config () ; 
- TYPE_1__ config ; 
- int /*<<< orphan*/  debug (int /*<<< orphan*/ ,char*,...) ; 
- int errno ; 
- int /*<<< orphan*/  flush (char*) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  libkdump_auto_config ; 
- int /*<<< orphan*/  libkdump_cleanup () ; 
- int /*<<< orphan*/ * load_thread ; 
- int /*<<< orphan*/ * malloc (int) ; 
- char* mem ; 
- scalar_t__ memcmp (TYPE_1__*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  memset (char*,int,int) ; 
- void* nopthread ; 
- int /*<<< orphan*/  pthread_cancel (int /*<<< orphan*/ ) ; 
- int pthread_create (int /*<<< orphan*/ *,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  segfault_handler ; 
- scalar_t__ signal (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- void* syncthread ; 
- void* yieldthread ; 
+
+ int ENOMEM ;
+ int ERROR ;
+
+
+ scalar_t__ SIGNAL_HANDLER ;
+ int SIGSEGV ;
+ scalar_t__ SIG_ERR ;
+ int SUCCESS ;
+
+ int * _mem ;
+ int auto_config () ;
+ int check_config () ;
+ TYPE_1__ config ;
+ int debug (int ,char*,...) ;
+ int errno ;
+ int flush (char*) ;
+ int free (int *) ;
+ int libkdump_auto_config ;
+ int libkdump_cleanup () ;
+ int * load_thread ;
+ int * malloc (int) ;
+ char* mem ;
+ scalar_t__ memcmp (TYPE_1__*,int *,int) ;
+ int memset (char*,int,int) ;
+ void* nopthread ;
+ int pthread_cancel (int ) ;
+ int pthread_create (int *,int ,void*,int ) ;
+ int segfault_handler ;
+ scalar_t__ signal (int ,int ) ;
+ void* syncthread ;
+ void* yieldthread ;
 
 int libkdump_init(const libkdump_config_t configuration) {
   int j;
@@ -75,13 +75,13 @@ int libkdump_init(const libkdump_config_t configuration) {
   load_thread = malloc(sizeof(pthread_t) * config.load_threads);
   void *thread_func;
   switch (config.load_type) {
-  case IO:
+  case 130:
     thread_func = syncthread;
     break;
-  case YIELD:
+  case 128:
     thread_func = yieldthread;
     break;
-  case NOP:
+  case 129:
   default:
     thread_func = nopthread;
   }

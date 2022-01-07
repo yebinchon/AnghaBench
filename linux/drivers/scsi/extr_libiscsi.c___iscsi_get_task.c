@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct iscsi_task {int /*<<< orphan*/  refcount; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  refcount_inc (int /*<<< orphan*/ *) ; 
+
+
+
+struct iscsi_task {int refcount; } ;
+
+
+ int refcount_inc (int *) ;
 
 void __iscsi_get_task(struct iscsi_task *task)
 {
-	refcount_inc(&task->refcount);
+ refcount_inc(&task->refcount);
 }

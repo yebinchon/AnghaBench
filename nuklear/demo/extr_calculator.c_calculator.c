@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct nk_context {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NK_EDIT_SIMPLE ; 
- int NK_WINDOW_BORDER ; 
- int NK_WINDOW_MOVABLE ; 
- int NK_WINDOW_NO_SCROLLBAR ; 
- double atof (char*) ; 
- scalar_t__ nk_begin (struct nk_context*,char*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ nk_button_label (struct nk_context*,char*) ; 
- scalar_t__ nk_button_text (struct nk_context*,char const*,int) ; 
- int /*<<< orphan*/  nk_edit_string (struct nk_context*,int /*<<< orphan*/ ,char*,int*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nk_end (struct nk_context*) ; 
- int /*<<< orphan*/  nk_filter_float ; 
- int /*<<< orphan*/  nk_layout_row_dynamic (struct nk_context*,int,int) ; 
- int /*<<< orphan*/  nk_rect (int,int,int,int) ; 
- int snprintf (char*,int,char*,double) ; 
+
+ int NK_EDIT_SIMPLE ;
+ int NK_WINDOW_BORDER ;
+ int NK_WINDOW_MOVABLE ;
+ int NK_WINDOW_NO_SCROLLBAR ;
+ double atof (char*) ;
+ scalar_t__ nk_begin (struct nk_context*,char*,int ,int) ;
+ scalar_t__ nk_button_label (struct nk_context*,char*) ;
+ scalar_t__ nk_button_text (struct nk_context*,char const*,int) ;
+ int nk_edit_string (struct nk_context*,int ,char*,int*,int,int ) ;
+ int nk_end (struct nk_context*) ;
+ int nk_filter_float ;
+ int nk_layout_row_dynamic (struct nk_context*,int,int) ;
+ int nk_rect (int,int,int,int) ;
+ int snprintf (char*,int,char*,double) ;
 
 __attribute__((used)) static void
 calculator(struct nk_context *ctx)

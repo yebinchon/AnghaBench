@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int SERVER () ; 
- int /*<<< orphan*/  ckresp (int,char*) ; 
- int mustdiallocal (int) ; 
- int /*<<< orphan*/  mustsend (int,char*) ; 
+ int SERVER () ;
+ int ckresp (int,char*) ;
+ int mustdiallocal (int) ;
+ int mustsend (int,char*) ;
 
 void
 cttest_unpause_tube()
@@ -38,8 +30,8 @@ cttest_unpause_tube()
     mustsend(fd0, "pause-tube default 0\r\n");
     ckresp(fd0, "PAUSED\r\n");
 
-    // ckresp will time out if this takes too long, so the
-    // test will not pass.
+
+
     ckresp(fd1, "RESERVED 1 0\r\n");
     ckresp(fd1, "\r\n");
 }

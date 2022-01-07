@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {double float_val; int /*<<< orphan*/  suffix; int /*<<< orphan*/  kind; } ;
 
-/* Variables and functions */
- double HUGE_VAL ; 
- int /*<<< orphan*/  SUFFIX_D ; 
- int /*<<< orphan*/  TOKEN_FLOAT ; 
- int /*<<< orphan*/  error_here (char*,...) ; 
- scalar_t__ isdigit (char) ; 
- char* stream ; 
- double strtod (char const*,int /*<<< orphan*/ *) ; 
- TYPE_1__ token ; 
- char tolower (char) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {double float_val; int suffix; int kind; } ;
+
+
+ double HUGE_VAL ;
+ int SUFFIX_D ;
+ int TOKEN_FLOAT ;
+ int error_here (char*,...) ;
+ scalar_t__ isdigit (char) ;
+ char* stream ;
+ double strtod (char const*,int *) ;
+ TYPE_1__ token ;
+ char tolower (char) ;
 
 void scan_float(void) {
     const char *start = stream;
@@ -47,7 +47,7 @@ void scan_float(void) {
             stream++;
         }
     }
-    double val = strtod(start, NULL);
+    double val = strtod(start, ((void*)0));
     if (val == HUGE_VAL) {
         error_here("Float literal overflow");
     }

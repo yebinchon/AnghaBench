@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wchar_t ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  __get_locale () ; 
- int /*<<< orphan*/ * fgetwln_l (int /*<<< orphan*/ *,size_t*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int wchar_t ;
+typedef int FILE ;
+
+
+ int __get_locale () ;
+ int * fgetwln_l (int *,size_t*,int ) ;
 
 wchar_t *
 fgetwln(FILE * __restrict fp, size_t *lenp)
 {
-	return fgetwln_l(fp, lenp, __get_locale());
+ return fgetwln_l(fp, lenp, __get_locale());
 }

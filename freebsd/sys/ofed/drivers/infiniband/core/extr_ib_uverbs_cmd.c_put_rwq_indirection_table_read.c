@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ib_rwq_ind_table {int /*<<< orphan*/  uobject; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  put_uobj_read (int /*<<< orphan*/ ) ; 
+
+
+
+struct ib_rwq_ind_table {int uobject; } ;
+
+
+ int put_uobj_read (int ) ;
 
 __attribute__((used)) static void put_rwq_indirection_table_read(struct ib_rwq_ind_table *ind_table)
 {
-	put_uobj_read(ind_table->uobject);
+ put_uobj_read(ind_table->uobject);
 }

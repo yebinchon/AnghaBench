@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_22__   TYPE_5__ ;
-typedef  struct TYPE_21__   TYPE_4__ ;
-typedef  struct TYPE_20__   TYPE_3__ ;
-typedef  struct TYPE_19__   TYPE_2__ ;
-typedef  struct TYPE_18__   TYPE_1__ ;
-typedef  struct TYPE_17__   TYPE_11__ ;
-typedef  struct TYPE_16__   TYPE_10__ ;
 
-/* Type definitions */
-typedef  float vlc_tick_t ;
-typedef  int /*<<< orphan*/  picture_t ;
-struct TYPE_19__ {int /*<<< orphan*/  video; } ;
-struct TYPE_18__ {int /*<<< orphan*/  video; } ;
-struct TYPE_21__ {int /*<<< orphan*/  p_module; int /*<<< orphan*/  (* pf_video_blend ) (TYPE_4__*,TYPE_10__*,TYPE_11__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;TYPE_2__ fmt_in; TYPE_1__ fmt_out; TYPE_5__* p_sys; } ;
-typedef  TYPE_4__ filter_t ;
-struct TYPE_22__ {int b_done; int i_loops; TYPE_11__* p_blend_image; int /*<<< orphan*/  i_alpha; TYPE_10__* p_base_image; } ;
-typedef  TYPE_5__ filter_sys_t ;
+
+
+typedef struct TYPE_22__ TYPE_5__ ;
+typedef struct TYPE_21__ TYPE_4__ ;
+typedef struct TYPE_20__ TYPE_3__ ;
+typedef struct TYPE_19__ TYPE_2__ ;
+typedef struct TYPE_18__ TYPE_1__ ;
+typedef struct TYPE_17__ TYPE_11__ ;
+typedef struct TYPE_16__ TYPE_10__ ;
+
+
+typedef float vlc_tick_t ;
+typedef int picture_t ;
+struct TYPE_19__ {int video; } ;
+struct TYPE_18__ {int video; } ;
+struct TYPE_21__ {int p_module; int (* pf_video_blend ) (TYPE_4__*,TYPE_10__*,TYPE_11__*,int ,int ,int ) ;TYPE_2__ fmt_in; TYPE_1__ fmt_out; TYPE_5__* p_sys; } ;
+typedef TYPE_4__ filter_t ;
+struct TYPE_22__ {int b_done; int i_loops; TYPE_11__* p_blend_image; int i_alpha; TYPE_10__* p_base_image; } ;
+typedef TYPE_5__ filter_sys_t ;
 struct TYPE_20__ {float i_visible_pitch; float i_visible_lines; } ;
-struct TYPE_17__ {TYPE_3__* p; int /*<<< orphan*/  format; } ;
-struct TYPE_16__ {int /*<<< orphan*/  format; } ;
+struct TYPE_17__ {TYPE_3__* p; int format; } ;
+struct TYPE_16__ {int format; } ;
 
-/* Variables and functions */
- float CLOCK_FREQ ; 
- size_t Y_PLANE ; 
- int /*<<< orphan*/  module_need (TYPE_4__*,char*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  module_unneed (TYPE_4__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  msg_Info (TYPE_4__*,char*,float,float) ; 
- int /*<<< orphan*/  picture_Release (int /*<<< orphan*/ *) ; 
- float secf_from_vlc_tick (float) ; 
- int /*<<< orphan*/  stub1 (TYPE_4__*,TYPE_10__*,TYPE_11__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_4__* vlc_object_create (TYPE_4__*,int) ; 
- int /*<<< orphan*/  vlc_object_delete (TYPE_4__*) ; 
- float vlc_tick_now () ; 
+
+ float CLOCK_FREQ ;
+ size_t Y_PLANE ;
+ int module_need (TYPE_4__*,char*,int *,int) ;
+ int module_unneed (TYPE_4__*,int ) ;
+ int msg_Info (TYPE_4__*,char*,float,float) ;
+ int picture_Release (int *) ;
+ float secf_from_vlc_tick (float) ;
+ int stub1 (TYPE_4__*,TYPE_10__*,TYPE_11__*,int ,int ,int ) ;
+ TYPE_4__* vlc_object_create (TYPE_4__*,int) ;
+ int vlc_object_delete (TYPE_4__*) ;
+ float vlc_tick_now () ;
 
 __attribute__((used)) static picture_t *Filter( filter_t *p_filter, picture_t *p_pic )
 {
@@ -54,16 +54,16 @@ __attribute__((used)) static picture_t *Filter( filter_t *p_filter, picture_t *p
     if( !p_blend )
     {
         picture_Release( p_pic );
-        return NULL;
+        return ((void*)0);
     }
     p_blend->fmt_out.video = p_sys->p_base_image->format;
     p_blend->fmt_in.video = p_sys->p_blend_image->format;
-    p_blend->p_module = module_need( p_blend, "video blending", NULL, false );
+    p_blend->p_module = module_need( p_blend, "video blending", ((void*)0), 0 );
     if( !p_blend->p_module )
     {
         picture_Release( p_pic );
         vlc_object_delete(p_blend);
-        return NULL;
+        return ((void*)0);
     }
 
     vlc_tick_t time = vlc_tick_now();
@@ -87,6 +87,6 @@ __attribute__((used)) static picture_t *Filter( filter_t *p_filter, picture_t *p
 
     vlc_object_delete(p_blend);
 
-    p_sys->b_done = true;
+    p_sys->b_done = 1;
     return p_pic;
 }

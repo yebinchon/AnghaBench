@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct priv {scalar_t__ buffered; double last_time; double speed; int /*<<< orphan*/  playing_final; scalar_t__ paused; } ;
+
+
+
+
+struct priv {scalar_t__ buffered; double last_time; double speed; int playing_final; scalar_t__ paused; } ;
 struct ao {double samplerate; scalar_t__ untimed; struct priv* priv; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MP_ERR (struct ao*,char*) ; 
- double mp_time_sec () ; 
+
+ int MP_ERR (struct ao*,char*) ;
+ double mp_time_sec () ;
 
 __attribute__((used)) static void drain(struct ao *ao)
 {

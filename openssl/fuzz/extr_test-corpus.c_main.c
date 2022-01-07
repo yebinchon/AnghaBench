@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  OPENSSL_DIR_CTX ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FuzzerCleanup () ; 
- int /*<<< orphan*/  FuzzerInitialize (int*,char***) ; 
- int /*<<< orphan*/  OPENSSL_DIR_end (int /*<<< orphan*/ **) ; 
- char* OPENSSL_DIR_read (int /*<<< orphan*/ **,char*) ; 
- int /*<<< orphan*/  PATH_MAX ; 
- int /*<<< orphan*/  free (char*) ; 
- char* malloc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * strchr (char*,char) ; 
- int /*<<< orphan*/  strcpy (char*,char const*) ; 
- size_t strlen (char*) ; 
- int /*<<< orphan*/  testfile (char*) ; 
+
+
+
+typedef int OPENSSL_DIR_CTX ;
+
+
+ int FuzzerCleanup () ;
+ int FuzzerInitialize (int*,char***) ;
+ int OPENSSL_DIR_end (int **) ;
+ char* OPENSSL_DIR_read (int **,char*) ;
+ int PATH_MAX ;
+ int free (char*) ;
+ char* malloc (int ) ;
+ int * strchr (char*,char) ;
+ int strcpy (char*,char const*) ;
+ size_t strlen (char*) ;
+ int testfile (char*) ;
 
 int main(int argc, char **argv) {
     int n;
@@ -32,24 +32,24 @@ int main(int argc, char **argv) {
 
     for (n = 1; n < argc; ++n) {
         size_t dirname_len = strlen(argv[n]);
-        const char *filename = NULL;
-        char *pathname = NULL;
-        OPENSSL_DIR_CTX *ctx = NULL;
+        const char *filename = ((void*)0);
+        char *pathname = ((void*)0);
+        OPENSSL_DIR_CTX *ctx = ((void*)0);
         int wasdir = 0;
 
-        /*
-         * We start with trying to read the given path as a directory.
-         */
-        while ((filename = OPENSSL_DIR_read(&ctx, argv[n])) != NULL) {
+
+
+
+        while ((filename = OPENSSL_DIR_read(&ctx, argv[n])) != ((void*)0)) {
             wasdir = 1;
-            if (pathname == NULL) {
+            if (pathname == ((void*)0)) {
                 pathname = malloc(PATH_MAX);
-                if (pathname == NULL)
+                if (pathname == ((void*)0))
                     break;
                 strcpy(pathname, argv[n]);
-#ifdef __VMS
-                if (strchr(":<]", pathname[dirname_len - 1]) == NULL)
-#endif
+
+
+
                     pathname[dirname_len++] = '/';
                 pathname[dirname_len] = '\0';
             }
@@ -58,7 +58,7 @@ int main(int argc, char **argv) {
         }
         OPENSSL_DIR_end(&ctx);
 
-        /* If it wasn't a directory, treat it as a file instead */
+
         if (!wasdir)
             testfile(argv[n]);
 

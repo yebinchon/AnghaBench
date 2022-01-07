@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct list {int dummy; } ;
-struct TYPE_4__ {size_t block_cnt; int /*<<< orphan*/  mark; scalar_t__ offset; scalar_t__ last_block; int /*<<< orphan*/ * blocks; int /*<<< orphan*/  custom_blocks; } ;
-typedef  TYPE_1__ heap_pool_t ;
-typedef  size_t DWORD ;
+struct TYPE_4__ {size_t block_cnt; int mark; scalar_t__ offset; scalar_t__ last_block; int * blocks; int custom_blocks; } ;
+typedef TYPE_1__ heap_pool_t ;
+typedef size_t DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARENA_FREE_FILLER ; 
- int /*<<< orphan*/  FALSE ; 
- scalar_t__ WARN_ON (TYPE_1__*) ; 
- int /*<<< orphan*/  block_size (size_t) ; 
- int /*<<< orphan*/  heap_free (struct list*) ; 
- struct list* list_head (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  list_remove (struct list*) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int ARENA_FREE_FILLER ;
+ int FALSE ;
+ scalar_t__ WARN_ON (TYPE_1__*) ;
+ int block_size (size_t) ;
+ int heap_free (struct list*) ;
+ struct list* list_head (int *) ;
+ int list_remove (struct list*) ;
+ int memset (int ,int ,int ) ;
 
 void heap_pool_clear(heap_pool_t *heap)
 {

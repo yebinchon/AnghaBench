@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int guint64 ;
-typedef  int gint64 ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int guint64 ;
+typedef int gint64 ;
 struct TYPE_8__ {scalar_t__ data; struct TYPE_8__* next; } ;
 struct TYPE_7__ {scalar_t__ version; TYPE_3__* entries; } ;
-struct TYPE_6__ {int size; char* id; int /*<<< orphan*/  mode; } ;
-typedef  int /*<<< orphan*/  SeafFSManager ;
-typedef  TYPE_1__ SeafDirent ;
-typedef  TYPE_2__ SeafDir ;
-typedef  TYPE_3__ GList ;
+struct TYPE_6__ {int size; char* id; int mode; } ;
+typedef int SeafFSManager ;
+typedef TYPE_1__ SeafDirent ;
+typedef TYPE_2__ SeafDir ;
+typedef TYPE_3__ GList ;
 
-/* Variables and functions */
- scalar_t__ S_ISDIR (int /*<<< orphan*/ ) ; 
- scalar_t__ S_ISREG (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  seaf_dir_free (TYPE_2__*) ; 
- int seaf_fs_manager_get_file_size (int /*<<< orphan*/ *,char const*,int,char*) ; 
- TYPE_2__* seaf_fs_manager_get_seafdir (int /*<<< orphan*/ *,char const*,int,char const*) ; 
+
+ scalar_t__ S_ISDIR (int ) ;
+ scalar_t__ S_ISREG (int ) ;
+ int seaf_dir_free (TYPE_2__*) ;
+ int seaf_fs_manager_get_file_size (int *,char const*,int,char*) ;
+ TYPE_2__* seaf_fs_manager_get_seafdir (int *,char const*,int,char const*) ;
 
 __attribute__((used)) static gint64
 get_dir_size (SeafFSManager *mgr, const char *repo_id, int version, const char *id)

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct wined3d_string_buffer {int /*<<< orphan*/  buffer; } ;
+
+
+
+
+struct wined3d_string_buffer {int buffer; } ;
 struct wined3d_gl_info {int dummy; } ;
-struct arbfp_blit_type {scalar_t__ use_color_key; int /*<<< orphan*/  res_type; } ;
-typedef  int /*<<< orphan*/  GLuint ;
+struct arbfp_blit_type {scalar_t__ use_color_key; int res_type; } ;
+typedef int GLuint ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARBFP_BLIT_PARAM_COLOR_KEY_HIGH ; 
- int /*<<< orphan*/  ARBFP_BLIT_PARAM_COLOR_KEY_LOW ; 
- int /*<<< orphan*/  ERR (char*) ; 
- int /*<<< orphan*/  GL_EXTCALL (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GL_FRAGMENT_PROGRAM_ARB ; 
- char* arbfp_texture_target (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glBindProgramARB (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glGenProgramsARB (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  shader_addline (struct wined3d_string_buffer*,char*,...) ; 
- int /*<<< orphan*/  shader_arb_compile (struct wined3d_gl_info const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  string_buffer_free (struct wined3d_string_buffer*) ; 
- int /*<<< orphan*/  string_buffer_init (struct wined3d_string_buffer*) ; 
+
+ int ARBFP_BLIT_PARAM_COLOR_KEY_HIGH ;
+ int ARBFP_BLIT_PARAM_COLOR_KEY_LOW ;
+ int ERR (char*) ;
+ int GL_EXTCALL (int ) ;
+ int GL_FRAGMENT_PROGRAM_ARB ;
+ char* arbfp_texture_target (int ) ;
+ int glBindProgramARB (int ,int ) ;
+ int glGenProgramsARB (int,int *) ;
+ int shader_addline (struct wined3d_string_buffer*,char*,...) ;
+ int shader_arb_compile (struct wined3d_gl_info const*,int ,int ) ;
+ int string_buffer_free (struct wined3d_string_buffer*) ;
+ int string_buffer_init (struct wined3d_string_buffer*) ;
 
 __attribute__((used)) static GLuint arbfp_gen_plain_shader(const struct wined3d_gl_info *gl_info, const struct arbfp_blit_type *type)
 {
@@ -35,7 +35,7 @@ __attribute__((used)) static GLuint arbfp_gen_plain_shader(const struct wined3d_
     struct wined3d_string_buffer buffer;
     const char *tex_target = arbfp_texture_target(type->res_type);
 
-    /* Shader header */
+
     if (!string_buffer_init(&buffer))
     {
         ERR("Failed to initialize shader buffer.\n");
@@ -59,12 +59,12 @@ __attribute__((used)) static GLuint arbfp_gen_plain_shader(const struct wined3d_
         shader_addline(&buffer, "PARAM color_key_low = program.local[%u];\n", ARBFP_BLIT_PARAM_COLOR_KEY_LOW);
         shader_addline(&buffer, "PARAM color_key_high = program.local[%u];\n", ARBFP_BLIT_PARAM_COLOR_KEY_HIGH);
         shader_addline(&buffer, "TEX color, fragment.texcoord[0], texture[0], %s;\n", tex_target);
-        shader_addline(&buffer, "SLT less, color, color_key_low;\n"); /* below low key */
-        shader_addline(&buffer, "SGE greater, color, color_key_high;\n"); /* above high key */
-        shader_addline(&buffer, "ADD less, less, greater;\n"); /* or */
-        shader_addline(&buffer, "DP4 less.b, less, less;\n"); /* on any channel */
-        shader_addline(&buffer, "SGE less, -less.b, 0.0;\n"); /* logical not */
-        shader_addline(&buffer, "KIL -less;\n"); /* discard if true */
+        shader_addline(&buffer, "SLT less, color, color_key_low;\n");
+        shader_addline(&buffer, "SGE greater, color, color_key_high;\n");
+        shader_addline(&buffer, "ADD less, less, greater;\n");
+        shader_addline(&buffer, "DP4 less.b, less, less;\n");
+        shader_addline(&buffer, "SGE less, -less.b, 0.0;\n");
+        shader_addline(&buffer, "KIL -less;\n");
         shader_addline(&buffer, "MOV result.color, color;\n");
     }
     else

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct va_image_formats {int num; TYPE_1__* entries; } ;
-struct priv {struct va_image_formats* image_formats; int /*<<< orphan*/  display; } ;
-typedef  int /*<<< orphan*/  VAStatus ;
-struct TYPE_3__ {int /*<<< orphan*/  fourcc; } ;
+struct priv {struct va_image_formats* image_formats; int display; } ;
+typedef int VAStatus ;
+struct TYPE_3__ {int fourcc; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHECK_VA_STATUS (struct priv*,char*) ; 
- int /*<<< orphan*/  MP_VERBOSE (struct priv*,char*,int) ; 
- int /*<<< orphan*/  VAImageFormat ; 
- struct va_image_formats* formats ; 
- int mp_tag_str (int /*<<< orphan*/ ) ; 
- TYPE_1__* talloc_array (struct va_image_formats*,int /*<<< orphan*/ ,int) ; 
- struct va_image_formats* talloc_ptrtype (struct priv*,int /*<<< orphan*/ ) ; 
- int vaMaxNumImageFormats (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vaQueryImageFormats (int /*<<< orphan*/ ,TYPE_1__*,int*) ; 
+
+ int CHECK_VA_STATUS (struct priv*,char*) ;
+ int MP_VERBOSE (struct priv*,char*,int) ;
+ int VAImageFormat ;
+ struct va_image_formats* formats ;
+ int mp_tag_str (int ) ;
+ TYPE_1__* talloc_array (struct va_image_formats*,int ,int) ;
+ struct va_image_formats* talloc_ptrtype (struct priv*,int ) ;
+ int vaMaxNumImageFormats (int ) ;
+ int vaQueryImageFormats (int ,TYPE_1__*,int*) ;
 
 __attribute__((used)) static void va_get_formats(struct priv *ctx)
 {

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  year ;
-typedef  int /*<<< orphan*/  day_month ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int year ;
+typedef int day_month ;
 struct TYPE_4__ {char* key; char* value; } ;
-typedef  TYPE_1__ AVDictionaryEntry ;
-typedef  int /*<<< orphan*/  AVDictionary ;
+typedef TYPE_1__ AVDictionaryEntry ;
+typedef int AVDictionary ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_DICT_IGNORE_SUFFIX ; 
- int /*<<< orphan*/  av_dict_free (int /*<<< orphan*/ **) ; 
- TYPE_1__* av_dict_get (int /*<<< orphan*/ *,char*,TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_dict_set (int /*<<< orphan*/ **,char const*,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_strcasecmp (char const*,char*) ; 
- int /*<<< orphan*/  av_strlcpy (char*,char const*,int) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,char const*,char const*) ; 
+
+ int AV_DICT_IGNORE_SUFFIX ;
+ int av_dict_free (int **) ;
+ TYPE_1__* av_dict_get (int *,char*,TYPE_1__*,int ) ;
+ int av_dict_set (int **,char const*,char const*,int ) ;
+ int av_strcasecmp (char const*,char*) ;
+ int av_strlcpy (char*,char const*,int) ;
+ int snprintf (char*,int,char*,char const*,char const*) ;
 
 __attribute__((used)) static void id3v2_3_metadata_split_date(AVDictionary **pm)
 {
-    AVDictionaryEntry *mtag = NULL;
-    AVDictionary *dst = NULL;
+    AVDictionaryEntry *mtag = ((void*)0);
+    AVDictionary *dst = ((void*)0);
     const char *key, *value;
     char year[5] = {0}, day_month[5] = {0};
     int i;
@@ -37,7 +37,7 @@ __attribute__((used)) static void id3v2_3_metadata_split_date(AVDictionary **pm)
     while ((mtag = av_dict_get(*pm, "", mtag, AV_DICT_IGNORE_SUFFIX))) {
         key = mtag->key;
         if (!av_strcasecmp(key, "date")) {
-            /* split date tag using "YYYY-MM-DD" format into year and month/day segments */
+
             value = mtag->value;
             i = 0;
             while (value[i] >= '0' && value[i] <= '9') i++;

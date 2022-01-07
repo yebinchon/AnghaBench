@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct i915_active_request {int /*<<< orphan*/  request; } ;
 
-/* Variables and functions */
- int IS_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rcu_access_pointer (int /*<<< orphan*/ ) ; 
+
+
+
+struct i915_active_request {int request; } ;
+
+
+ int IS_ERR (int ) ;
+ int rcu_access_pointer (int ) ;
 
 __attribute__((used)) static inline bool is_barrier(const struct i915_active_request *active)
 {
-	return IS_ERR(rcu_access_pointer(active->request));
+ return IS_ERR(rcu_access_pointer(active->request));
 }

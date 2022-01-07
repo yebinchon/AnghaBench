@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  work_item_baton_t ;
-typedef  int /*<<< orphan*/  svn_wc__db_t ;
-struct TYPE_6__ {TYPE_3__* next; int /*<<< orphan*/  len; int /*<<< orphan*/  data; TYPE_1__* children; } ;
-typedef  TYPE_2__ svn_skel_t ;
-typedef  scalar_t__ svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_cancel_func_t ;
-typedef  int svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  scalar_t__ apr_int64_t ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int work_item_baton_t ;
+typedef int svn_wc__db_t ;
+struct TYPE_6__ {TYPE_3__* next; int len; int data; TYPE_1__* children; } ;
+typedef TYPE_2__ svn_skel_t ;
+typedef scalar_t__ svn_revnum_t ;
+typedef int svn_error_t ;
+typedef int svn_cancel_func_t ;
+typedef int svn_boolean_t ;
+typedef int apr_pool_t ;
+typedef scalar_t__ apr_int64_t ;
 struct TYPE_7__ {struct TYPE_7__* next; } ;
 struct TYPE_5__ {TYPE_2__* next; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_ASSERT (int) ; 
- scalar_t__ SVN_INVALID_REVNUM ; 
- int /*<<< orphan*/  SVN_IS_VALID_REVNUM (scalar_t__) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int SVN_WC__VERSION ; 
- char* apr_pstrmemdup (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_skel__parse_int (scalar_t__*,TYPE_3__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__db_base_get_info (int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__db_base_remove (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__db_from_relpath (char const**,int /*<<< orphan*/ *,char const*,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int FALSE ;
+ int SVN_ERR (int ) ;
+ int SVN_ERR_ASSERT (int) ;
+ scalar_t__ SVN_INVALID_REVNUM ;
+ int SVN_IS_VALID_REVNUM (scalar_t__) ;
+ int * SVN_NO_ERROR ;
+ int SVN_WC__VERSION ;
+ char* apr_pstrmemdup (int *,int ,int ) ;
+ int svn_skel__parse_int (scalar_t__*,TYPE_3__*,int *) ;
+ int svn_wc__db_base_get_info (int *,int *,scalar_t__*,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,char const*,int *,int *) ;
+ int svn_wc__db_base_remove (int *,char const*,int ,int ,int ,scalar_t__,int *,int *,int *) ;
+ int svn_wc__db_from_relpath (char const**,int *,char const*,char const*,int *,int *) ;
 
 __attribute__((used)) static svn_error_t *
 run_base_remove(work_item_baton_t *wqb,
@@ -70,27 +70,27 @@ run_base_remove(work_item_baton_t *wqb,
     {
       svn_boolean_t keep_not_present;
 
-      SVN_ERR_ASSERT(SVN_WC__VERSION <= 28); /* Case unused in later versions*/
+      SVN_ERR_ASSERT(SVN_WC__VERSION <= 28);
 
       keep_not_present = (val != 0);
 
       if (keep_not_present)
         {
-          SVN_ERR(svn_wc__db_base_get_info(NULL, NULL,
-                                           &not_present_rev, NULL,
-                                           NULL, NULL, NULL,
-                                           NULL, NULL, NULL, NULL, NULL, NULL,
-                                           NULL, NULL, NULL,
+          SVN_ERR(svn_wc__db_base_get_info(((void*)0), ((void*)0),
+                                           &not_present_rev, ((void*)0),
+                                           ((void*)0), ((void*)0), ((void*)0),
+                                           ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0),
+                                           ((void*)0), ((void*)0), ((void*)0),
                                            db, local_abspath,
                                            scratch_pool, scratch_pool));
         }
     }
 
   SVN_ERR(svn_wc__db_base_remove(db, local_abspath,
-                                 FALSE /* keep_as_working */,
+                                 FALSE ,
                                  SVN_IS_VALID_REVNUM(not_present_rev), FALSE,
                                  not_present_rev,
-                                 NULL, NULL, scratch_pool));
+                                 ((void*)0), ((void*)0), scratch_pool));
 
   return SVN_NO_ERROR;
 }

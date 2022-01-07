@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct uniq_data {int /*<<< orphan*/  init; void* func; void* last; } ;
-typedef  void* strm_value ;
-typedef  int /*<<< orphan*/  strm_stream ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int STRM_NG ; 
- int STRM_OK ; 
- int /*<<< orphan*/  iter_uniq ; 
- int /*<<< orphan*/  iter_uniqf ; 
- struct uniq_data* malloc (int) ; 
- int /*<<< orphan*/  strm_filter ; 
- int /*<<< orphan*/  strm_get_args (int /*<<< orphan*/ *,int,void**,char*,void**) ; 
- scalar_t__ strm_nil_p (void*) ; 
- void* strm_nil_value () ; 
- int /*<<< orphan*/  strm_stream_new (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,void*) ; 
- void* strm_stream_value (int /*<<< orphan*/ ) ; 
+
+
+
+struct uniq_data {int init; void* func; void* last; } ;
+typedef void* strm_value ;
+typedef int strm_stream ;
+
+
+ int FALSE ;
+ int STRM_NG ;
+ int STRM_OK ;
+ int iter_uniq ;
+ int iter_uniqf ;
+ struct uniq_data* malloc (int) ;
+ int strm_filter ;
+ int strm_get_args (int *,int,void**,char*,void**) ;
+ scalar_t__ strm_nil_p (void*) ;
+ void* strm_nil_value () ;
+ int strm_stream_new (int ,int ,int *,void*) ;
+ void* strm_stream_value (int ) ;
 
 __attribute__((used)) static int
 exec_uniq(strm_stream* strm, int argc, strm_value* args, strm_value* ret)
@@ -42,6 +42,6 @@ exec_uniq(strm_stream* strm, int argc, strm_value* args, strm_value* ret)
   d->init = FALSE;
   *ret = strm_stream_value(strm_stream_new(strm_filter,
                                            strm_nil_p(func) ? iter_uniq : iter_uniqf,
-                                           NULL, (void*)d));
+                                           ((void*)0), (void*)d));
   return STRM_OK;
 }

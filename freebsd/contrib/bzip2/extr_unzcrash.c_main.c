@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int BZ2_bzBuffToBuffCompress (int /*<<< orphan*/ ,int*,scalar_t__*,int,int,int /*<<< orphan*/ ,int) ; 
- int BZ2_bzBuffToBuffDecompress (scalar_t__*,int*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int BZ_OK ; 
- int M_BLOCK ; 
- int M_BLOCK_OUT ; 
- int /*<<< orphan*/  assert (int) ; 
- char** bzerrorstrings ; 
- int /*<<< orphan*/  flip_bit (int) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int fread (scalar_t__*,int,int,int /*<<< orphan*/ *) ; 
- scalar_t__* inbuf ; 
- int nIn ; 
- int nOut ; 
- int nZ ; 
- scalar_t__* outbuf ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  zbuf ; 
+
+
+
+typedef int FILE ;
+
+
+ int BZ2_bzBuffToBuffCompress (int ,int*,scalar_t__*,int,int,int ,int) ;
+ int BZ2_bzBuffToBuffDecompress (scalar_t__*,int*,int ,int,int ,int ) ;
+ int BZ_OK ;
+ int M_BLOCK ;
+ int M_BLOCK_OUT ;
+ int assert (int) ;
+ char** bzerrorstrings ;
+ int flip_bit (int) ;
+ int * fopen (char*,char*) ;
+ int fprintf (int ,char*,...) ;
+ int fread (scalar_t__*,int,int,int *) ;
+ scalar_t__* inbuf ;
+ int nIn ;
+ int nOut ;
+ int nZ ;
+ scalar_t__* outbuf ;
+ int stderr ;
+ int zbuf ;
 
 int main ( int argc, char** argv )
 {
    FILE* f;
-   int   r;
-   int   bit;
-   int   i;
+   int r;
+   int bit;
+   int i;
 
    if (argc != 2) {
       fprintf ( stderr, "usage: unzcrash filename\n" );
@@ -76,9 +76,9 @@ int main ( int argc, char** argv )
            return 1;
          } else {
            for (i = 0; i < nOut; i++)
-             if (inbuf[i] != outbuf[i]) { 
-                fprintf(stderr, "mismatch at %d\n", i ); 
-                return 1; 
+             if (inbuf[i] != outbuf[i]) {
+                fprintf(stderr, "mismatch at %d\n", i );
+                return 1;
            }
            if (i == nOut) fprintf(stderr, "really ok!\n" );
          }
@@ -86,17 +86,6 @@ int main ( int argc, char** argv )
 
       flip_bit ( bit );
    }
-
-#if 0
-   assert (nOut == nIn);
-   for (i = 0; i < nOut; i++) {
-     if (inbuf[i] != outbuf[i]) {
-        fprintf ( stderr, "difference at %d !\n", i );
-        return 1;
-     }
-   }
-#endif
-
    fprintf ( stderr, "all ok\n" );
    return 0;
 }

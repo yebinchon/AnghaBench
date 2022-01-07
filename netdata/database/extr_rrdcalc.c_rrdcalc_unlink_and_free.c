@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  avl ;
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int avl ;
 struct TYPE_8__ {char* chart; char* name; struct TYPE_8__* next; scalar_t__ rrdset; } ;
-struct TYPE_7__ {int /*<<< orphan*/  alarms_idx_name; int /*<<< orphan*/  alarms_idx_health_log; int /*<<< orphan*/  hostname; TYPE_2__* alarms; } ;
-typedef  TYPE_1__ RRDHOST ;
-typedef  TYPE_2__ RRDCALC ;
+struct TYPE_7__ {int alarms_idx_name; int alarms_idx_health_log; int hostname; TYPE_2__* alarms; } ;
+typedef TYPE_1__ RRDHOST ;
+typedef TYPE_2__ RRDCALC ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D_HEALTH ; 
- scalar_t__ avl_remove_lock (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ avl_search_lock (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  debug (int /*<<< orphan*/ ,char*,char*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  error (char*,...) ; 
- int /*<<< orphan*/  rrdcalc_free (TYPE_2__*) ; 
- int /*<<< orphan*/  rrdsetcalc_unlink (TYPE_2__*) ; 
- scalar_t__ unlikely (int) ; 
+
+ int D_HEALTH ;
+ scalar_t__ avl_remove_lock (int *,int *) ;
+ scalar_t__ avl_search_lock (int *,int *) ;
+ int debug (int ,char*,char*,char*,int ) ;
+ int error (char*,...) ;
+ int rrdcalc_free (TYPE_2__*) ;
+ int rrdsetcalc_unlink (TYPE_2__*) ;
+ scalar_t__ unlikely (int) ;
 
 void rrdcalc_unlink_and_free(RRDHOST *host, RRDCALC *rc) {
     if(unlikely(!rc)) return;
 
     debug(D_HEALTH, "Health removing alarm '%s.%s' of host '%s'", rc->chart?rc->chart:"NOCHART", rc->name, host->hostname);
 
-    // unlink it from RRDSET
+
     if(rc->rrdset) rrdsetcalc_unlink(rc);
 
-    // unlink it from RRDHOST
+
     if(unlikely(rc == host->alarms))
         host->alarms = rc->next;
     else {
@@ -44,7 +44,7 @@ void rrdcalc_unlink_and_free(RRDHOST *host, RRDCALC *rc) {
         for(t = host->alarms; t && t->next != rc; t = t->next) ;
         if(t) {
             t->next = rc->next;
-            rc->next = NULL;
+            rc->next = ((void*)0);
         }
         else
             error("Cannot unlink alarm '%s.%s' from host '%s': not found", rc->chart?rc->chart:"NOCHART", rc->name, host->hostname);

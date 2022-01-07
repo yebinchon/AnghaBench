@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  (* Request_from_raw ) (int /*<<< orphan*/ *,char*,size_t,char*,size_t,int,void*,size_t) ;int /*<<< orphan*/  RequestType; } ;
-struct TYPE_5__ {int /*<<< orphan*/  static_request; } ;
-typedef  TYPE_1__ Protocol ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Request_dealloc (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Request_new (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- TYPE_2__* request_capi ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ *,char*,size_t,char*,size_t,int,void*,size_t) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int (* Request_from_raw ) (int *,char*,size_t,char*,size_t,int,void*,size_t) ;int RequestType; } ;
+struct TYPE_5__ {int static_request; } ;
+typedef TYPE_1__ Protocol ;
+
+
+ int Request_dealloc (int *) ;
+ int Request_new (int ,int *) ;
+ TYPE_2__* request_capi ;
+ int stub1 (int *,char*,size_t,char*,size_t,int,void*,size_t) ;
 
 Protocol*
 Protocol_on_headers(Protocol* self, char* method, size_t method_len,

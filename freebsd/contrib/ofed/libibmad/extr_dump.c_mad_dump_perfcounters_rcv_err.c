@@ -1,32 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  IB_PC_EXT_PORT_SELECT_F ; 
- int /*<<< orphan*/  IB_PC_EXT_XMT_BYTES_F ; 
- int /*<<< orphan*/  IB_PC_RCV_ERR_LAST_F ; 
- int /*<<< orphan*/  IB_PC_RCV_LOCAL_PHY_ERR_F ; 
- int _dump_fields (char*,int,void*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int IB_PC_EXT_PORT_SELECT_F ;
+ int IB_PC_EXT_XMT_BYTES_F ;
+ int IB_PC_RCV_ERR_LAST_F ;
+ int IB_PC_RCV_LOCAL_PHY_ERR_F ;
+ int _dump_fields (char*,int,void*,int ,int ) ;
 
 void mad_dump_perfcounters_rcv_err(char *buf, int bufsz, void *val, int valsz)
 {
-	int cnt;
+ int cnt;
 
-	cnt = _dump_fields(buf, bufsz, val, IB_PC_EXT_PORT_SELECT_F,
-			   IB_PC_EXT_XMT_BYTES_F);
-	if (cnt < 0)
-		return;
+ cnt = _dump_fields(buf, bufsz, val, IB_PC_EXT_PORT_SELECT_F,
+      IB_PC_EXT_XMT_BYTES_F);
+ if (cnt < 0)
+  return;
 
-	_dump_fields(buf + cnt, bufsz - cnt, val, IB_PC_RCV_LOCAL_PHY_ERR_F,
-		     IB_PC_RCV_ERR_LAST_F);
+ _dump_fields(buf + cnt, bufsz - cnt, val, IB_PC_RCV_LOCAL_PHY_ERR_F,
+       IB_PC_RCV_ERR_LAST_F);
 }

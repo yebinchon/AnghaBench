@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_module ;
-struct TYPE_5__ {int /*<<< orphan*/  mutex; } ;
-typedef  TYPE_1__ sqlite3 ;
 
-/* Variables and functions */
- int SQLITE_OK ; 
- int sqlite3ApiExit (TYPE_1__*,int) ; 
- int /*<<< orphan*/  sqlite3VtabCreateModule (TYPE_1__*,char const*,int /*<<< orphan*/  const*,void*,void (*) (void*)) ; 
- int /*<<< orphan*/  sqlite3_mutex_enter (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_mutex_leave (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int sqlite3_module ;
+struct TYPE_5__ {int mutex; } ;
+typedef TYPE_1__ sqlite3 ;
+
+
+ int SQLITE_OK ;
+ int sqlite3ApiExit (TYPE_1__*,int) ;
+ int sqlite3VtabCreateModule (TYPE_1__*,char const*,int const*,void*,void (*) (void*)) ;
+ int sqlite3_mutex_enter (int ) ;
+ int sqlite3_mutex_leave (int ) ;
 
 __attribute__((used)) static int createModule(
-  sqlite3 *db,                    /* Database in which module is registered */
-  const char *zName,              /* Name assigned to this module */
-  const sqlite3_module *pModule,  /* The definition of the module */
-  void *pAux,                     /* Context pointer for xCreate/xConnect */
-  void (*xDestroy)(void *)        /* Module destructor function */
+  sqlite3 *db,
+  const char *zName,
+  const sqlite3_module *pModule,
+  void *pAux,
+  void (*xDestroy)(void *)
 ){
   int rc = SQLITE_OK;
 

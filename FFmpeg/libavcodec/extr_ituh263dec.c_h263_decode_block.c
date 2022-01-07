@@ -1,61 +1,61 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_19__   TYPE_6__ ;
-typedef  struct TYPE_18__   TYPE_5__ ;
-typedef  struct TYPE_17__   TYPE_4__ ;
-typedef  struct TYPE_16__   TYPE_3__ ;
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
-typedef  struct TYPE_13__   TYPE_12__ ;
 
-/* Type definitions */
-typedef  size_t uint8_t ;
-typedef  int int8_t ;
-typedef  int int16_t ;
-struct TYPE_14__ {int /*<<< orphan*/  (* clear_block ) (int*) ;} ;
+
+
+typedef struct TYPE_19__ TYPE_6__ ;
+typedef struct TYPE_18__ TYPE_5__ ;
+typedef struct TYPE_17__ TYPE_4__ ;
+typedef struct TYPE_16__ TYPE_3__ ;
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+typedef struct TYPE_13__ TYPE_12__ ;
+
+
+typedef size_t uint8_t ;
+typedef int int8_t ;
+typedef int int16_t ;
+struct TYPE_14__ {int (* clear_block ) (int*) ;} ;
 struct TYPE_17__ {size_t* permutated; } ;
 struct TYPE_16__ {size_t* permutated; } ;
 struct TYPE_15__ {size_t* permutated; } ;
-struct TYPE_19__ {int mb_intra; scalar_t__ codec_id; int rv10_version; scalar_t__ pict_type; int* last_dc; int* rv10_first_dc_coded; int mb_x; int mb_y; int* block_last_index; int h263_flv; scalar_t__ h263_aic; TYPE_12__* avctx; TYPE_1__ bdsp; int /*<<< orphan*/  gb; scalar_t__ alt_inter_vlc; TYPE_4__ intra_h_scantable; TYPE_3__ intra_v_scantable; scalar_t__ h263_aic_dir; scalar_t__ ac_pred; TYPE_2__ intra_scantable; } ;
-struct TYPE_18__ {int /*<<< orphan*/ * rl_vlc; } ;
+struct TYPE_19__ {int mb_intra; scalar_t__ codec_id; int rv10_version; scalar_t__ pict_type; int* last_dc; int* rv10_first_dc_coded; int mb_x; int mb_y; int* block_last_index; int h263_flv; scalar_t__ h263_aic; TYPE_12__* avctx; TYPE_1__ bdsp; int gb; scalar_t__ alt_inter_vlc; TYPE_4__ intra_h_scantable; TYPE_3__ intra_v_scantable; scalar_t__ h263_aic_dir; scalar_t__ ac_pred; TYPE_2__ intra_scantable; } ;
+struct TYPE_18__ {int * rl_vlc; } ;
 struct TYPE_13__ {int err_recognition; } ;
-typedef  TYPE_5__ RLTable ;
-typedef  TYPE_6__ MpegEncContext ;
-typedef  int /*<<< orphan*/  GetBitContext ;
+typedef TYPE_5__ RLTable ;
+typedef TYPE_6__ MpegEncContext ;
+typedef int GetBitContext ;
 
-/* Variables and functions */
- scalar_t__ AV_CODEC_ID_RV10 ; 
- int AV_EF_BITSTREAM ; 
- int AV_EF_COMPLIANT ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- scalar_t__ AV_PICTURE_TYPE_I ; 
- int /*<<< orphan*/  CLOSE_READER (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ CONFIG_FLV_DECODER ; 
- scalar_t__ CONFIG_RV10_DECODER ; 
- int /*<<< orphan*/  GET_RL_VLC (int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OPEN_READER (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int SHOW_SBITS (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int SHOW_UBITS (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  SKIP_CACHE (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  SKIP_COUNTER (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  TEX_VLC_BITS ; 
- int /*<<< orphan*/  UPDATE_CACHE (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  av_log (TYPE_12__*,int /*<<< orphan*/ ,char*,int,int,...) ; 
- int /*<<< orphan*/  ff_h263_pred_acdc (TYPE_6__*,int*,int) ; 
- TYPE_5__ ff_h263_rl_inter ; 
- TYPE_5__ ff_rl_intra_aic ; 
- int ff_rv_decode_dc (TYPE_6__*,int) ; 
- int get_bits (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  re ; 
- int /*<<< orphan*/  stub1 (int*) ; 
+
+ scalar_t__ AV_CODEC_ID_RV10 ;
+ int AV_EF_BITSTREAM ;
+ int AV_EF_COMPLIANT ;
+ int AV_LOG_ERROR ;
+ scalar_t__ AV_PICTURE_TYPE_I ;
+ int CLOSE_READER (int ,int *) ;
+ scalar_t__ CONFIG_FLV_DECODER ;
+ scalar_t__ CONFIG_RV10_DECODER ;
+ int GET_RL_VLC (int,int,int ,int *,int ,int ,int,int ) ;
+ int OPEN_READER (int ,int *) ;
+ int SHOW_SBITS (int ,int *,int) ;
+ int SHOW_UBITS (int ,int *,int) ;
+ int SKIP_CACHE (int ,int *,int) ;
+ int SKIP_COUNTER (int ,int *,int) ;
+ int TEX_VLC_BITS ;
+ int UPDATE_CACHE (int ,int *) ;
+ int av_log (TYPE_12__*,int ,char*,int,int,...) ;
+ int ff_h263_pred_acdc (TYPE_6__*,int*,int) ;
+ TYPE_5__ ff_h263_rl_inter ;
+ TYPE_5__ ff_rl_intra_aic ;
+ int ff_rv_decode_dc (TYPE_6__*,int) ;
+ int get_bits (int *,int) ;
+ int re ;
+ int stub1 (int*) ;
 
 __attribute__((used)) static int h263_decode_block(MpegEncContext * s, int16_t * block,
                              int n, int coded)
@@ -71,12 +71,12 @@ __attribute__((used)) static int h263_decode_block(MpegEncContext * s, int16_t *
         i = 0;
         if (s->ac_pred) {
             if (s->h263_aic_dir)
-                scan_table = s->intra_v_scantable.permutated; /* left */
+                scan_table = s->intra_v_scantable.permutated;
             else
-                scan_table = s->intra_h_scantable.permutated; /* top */
+                scan_table = s->intra_h_scantable.permutated;
         }
     } else if (s->mb_intra) {
-        /* DC coef */
+
         if (CONFIG_RV10_DECODER && s->codec_id == AV_CODEC_ID_RV10) {
           if (s->rv10_version == 3 && s->pict_type == AV_PICTURE_TYPE_I) {
             int component, diff;
@@ -87,7 +87,7 @@ __attribute__((used)) static int h263_decode_block(MpegEncContext * s, int16_t *
                 if (diff == 0xffff)
                     return -1;
                 level += diff;
-                level = level & 0xff; /* handle wrap round */
+                level = level & 0xff;
                 s->last_dc[component] = level;
             } else {
                 s->rv10_first_dc_coded[component] = 1;
@@ -121,7 +121,7 @@ __attribute__((used)) static int h263_decode_block(MpegEncContext * s, int16_t *
 retry:
     {
     OPEN_READER(re, &s->gb);
-    i--; // offset by -1 to allow direct indexing of scan_table
+    i--;
     for(;;) {
         UPDATE_CACHE(re, &s->gb);
         GET_RL_VLC(level, run, re, &s->gb, rl->rl_vlc[0], TEX_VLC_BITS, 2, 0);
@@ -131,7 +131,7 @@ retry:
                 av_log(s->avctx, AV_LOG_ERROR, "illegal ac vlc code at %dx%d\n", s->mb_x, s->mb_y);
                 return -1;
             }
-            /* escape */
+
             if (CONFIG_FLV_DECODER && s->h263_flv > 1) {
                 int is11 = SHOW_UBITS(re, &s->gb, 1);
                 SKIP_CACHE(re, &s->gb, 1);
@@ -154,7 +154,7 @@ retry:
                 if(level == -128){
                     UPDATE_CACHE(re, &s->gb);
                     if (s->codec_id == AV_CODEC_ID_RV10) {
-                        /* XXX: should patch encoder too */
+
                         level = SHOW_SBITS(re, &s->gb, 12);
                         SKIP_COUNTER(re, &s->gb, 12);
                     }else{
@@ -173,15 +173,15 @@ retry:
         i += run;
         if (i >= 64){
             CLOSE_READER(re, &s->gb);
-            // redo update without last flag, revert -1 offset
+
             i = i - run + ((run-1)&63) + 1;
             if (i < 64) {
-                // only last marker, no overrun
+
                 block[scan_table[i]] = level;
                 break;
             }
             if(s->alt_inter_vlc && rl == &ff_h263_rl_inter && !s->mb_intra){
-                //Looks like a hack but no, it's the way it is supposed to work ...
+
                 rl = &ff_rl_intra_aic;
                 i = 0;
                 s->gb= gb;

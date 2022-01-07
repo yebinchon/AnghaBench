@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int ota_seq; } ;
-typedef  TYPE_1__ esp_ota_select_entry_t ;
+typedef TYPE_1__ esp_ota_select_entry_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ESP_LOGD (int /*<<< orphan*/ ,char*,...) ; 
- int MAX (int,int) ; 
- int MIN (int,int) ; 
- int /*<<< orphan*/  TAG ; 
+
+ int ESP_LOGD (int ,char*,...) ;
+ int MAX (int,int) ;
+ int MIN (int,int) ;
+ int TAG ;
 
 int bootloader_common_select_otadata(const esp_ota_select_entry_t *two_otadata, bool *valid_two_otadata, bool max)
 {
-    if (two_otadata == NULL || valid_two_otadata == NULL) {
+    if (two_otadata == ((void*)0) || valid_two_otadata == ((void*)0)) {
         return -1;
     }
     int active_otadata = -1;
     if (valid_two_otadata[0] && valid_two_otadata[1]) {
-        int condition = (max == true) ? MAX(two_otadata[0].ota_seq, two_otadata[1].ota_seq) : MIN(two_otadata[0].ota_seq, two_otadata[1].ota_seq);
+        int condition = (max == 1) ? MAX(two_otadata[0].ota_seq, two_otadata[1].ota_seq) : MIN(two_otadata[0].ota_seq, two_otadata[1].ota_seq);
         if (condition == two_otadata[0].ota_seq) {
             active_otadata = 0;
         } else {

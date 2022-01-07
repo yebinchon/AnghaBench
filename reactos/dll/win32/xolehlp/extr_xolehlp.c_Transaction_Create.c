@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ULONG ;
-struct TYPE_7__ {int /*<<< orphan*/ * lpVtbl; } ;
-struct TYPE_8__ {int /*<<< orphan*/  isoFlags; int /*<<< orphan*/  isoLevel; } ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int ULONG ;
+struct TYPE_7__ {int * lpVtbl; } ;
+struct TYPE_8__ {int isoFlags; int isoLevel; } ;
 struct TYPE_6__ {int ref; TYPE_2__ ITransaction_iface; TYPE_3__ info; } ;
-typedef  TYPE_1__ Transaction ;
-typedef  int /*<<< orphan*/  ITransactionOptions ;
-typedef  TYPE_2__ ITransaction ;
-typedef  int /*<<< orphan*/  ISOLEVEL ;
-typedef  int /*<<< orphan*/  HRESULT ;
+typedef TYPE_1__ Transaction ;
+typedef int ITransactionOptions ;
+typedef TYPE_2__ ITransaction ;
+typedef int ISOLEVEL ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_INVALIDARG ; 
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- TYPE_1__* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  Transaction_Vtbl ; 
- int /*<<< orphan*/  ZeroMemory (TYPE_3__*,int) ; 
+
+ int E_INVALIDARG ;
+ int E_OUTOFMEMORY ;
+ int GetProcessHeap () ;
+ TYPE_1__* HeapAlloc (int ,int ,int) ;
+ int S_OK ;
+ int Transaction_Vtbl ;
+ int ZeroMemory (TYPE_3__*,int) ;
 
 __attribute__((used)) static HRESULT Transaction_Create(ISOLEVEL isoLevel, ULONG isoFlags,
         ITransactionOptions *pOptions, ITransaction **ppv)

@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_fourcc_t ;
-typedef  enum at_dev { ____Placeholder_at_dev } at_dev ;
-typedef  int /*<<< orphan*/  enc_fourccs ;
+
+
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int vlc_fourcc_t ;
+typedef enum at_dev { ____Placeholder_at_dev } at_dev ;
+typedef int enc_fourccs ;
 struct TYPE_9__ {TYPE_2__* sys; } ;
-typedef  TYPE_1__ audio_output_t ;
+typedef TYPE_1__ audio_output_t ;
 struct TYPE_10__ {int at_dev; long long i_encoding_flags; } ;
-typedef  TYPE_2__ aout_sys_t ;
+typedef TYPE_2__ aout_sys_t ;
 struct TYPE_11__ {char* id; int at_dev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AOUT_RESTART_OUTPUT ; 
- int AT_DEV_DEFAULT ; 
- int AT_DEV_ENCODED ; 
- scalar_t__ AudioTrack_HasEncoding (TYPE_1__*,int /*<<< orphan*/  const) ; 
-#define  VLC_CODEC_A52 132 
-#define  VLC_CODEC_DTS 131 
-#define  VLC_CODEC_DTSHD 130 
-#define  VLC_CODEC_EAC3 129 
-#define  VLC_CODEC_TRUEHD 128 
- int VLC_SUCCESS ; 
- int /*<<< orphan*/  aout_DeviceReport (TYPE_1__*,char const*) ; 
- int /*<<< orphan*/  aout_RestartRequest (TYPE_1__*,int /*<<< orphan*/ ) ; 
- TYPE_4__* at_devs ; 
- long long atoll (char const*) ; 
- int /*<<< orphan*/  msg_Dbg (TYPE_1__*,char*,char const*) ; 
- size_t const strlen (char*) ; 
- scalar_t__ strncmp (char const*,char*,size_t const) ; 
+
+ int AOUT_RESTART_OUTPUT ;
+ int AT_DEV_DEFAULT ;
+ int AT_DEV_ENCODED ;
+ scalar_t__ AudioTrack_HasEncoding (TYPE_1__*,int const) ;
+
+
+
+
+
+ int VLC_SUCCESS ;
+ int aout_DeviceReport (TYPE_1__*,char const*) ;
+ int aout_RestartRequest (TYPE_1__*,int ) ;
+ TYPE_4__* at_devs ;
+ long long atoll (char const*) ;
+ int msg_Dbg (TYPE_1__*,char*,char const*) ;
+ size_t const strlen (char*) ;
+ scalar_t__ strncmp (char const*,char*,size_t const) ;
 
 __attribute__((used)) static int DeviceSelect(audio_output_t *p_aout, const char *p_id)
 {
@@ -76,8 +76,8 @@ __attribute__((used)) static int DeviceSelect(audio_output_t *p_aout, const char
         if( at_dev == AT_DEV_ENCODED )
         {
             static const vlc_fourcc_t enc_fourccs[] = {
-                VLC_CODEC_DTS, VLC_CODEC_DTSHD, VLC_CODEC_A52, VLC_CODEC_EAC3,
-                VLC_CODEC_TRUEHD,
+                131, 130, 132, 129,
+                128,
             };
             for( size_t i = 0;
                  i < sizeof( enc_fourccs ) / sizeof( enc_fourccs[0] ); ++i )

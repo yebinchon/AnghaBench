@@ -1,118 +1,118 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_22__   TYPE_9__ ;
-typedef  struct TYPE_21__   TYPE_8__ ;
-typedef  struct TYPE_20__   TYPE_7__ ;
-typedef  struct TYPE_19__   TYPE_6__ ;
-typedef  struct TYPE_18__   TYPE_5__ ;
-typedef  struct TYPE_17__   TYPE_4__ ;
-typedef  struct TYPE_16__   TYPE_3__ ;
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
-typedef  struct TYPE_13__   TYPE_11__ ;
-typedef  struct TYPE_12__   TYPE_10__ ;
 
-/* Type definitions */
-struct TYPE_17__ {int /*<<< orphan*/  S_addr; } ;
+
+
+typedef struct TYPE_22__ TYPE_9__ ;
+typedef struct TYPE_21__ TYPE_8__ ;
+typedef struct TYPE_20__ TYPE_7__ ;
+typedef struct TYPE_19__ TYPE_6__ ;
+typedef struct TYPE_18__ TYPE_5__ ;
+typedef struct TYPE_17__ TYPE_4__ ;
+typedef struct TYPE_16__ TYPE_3__ ;
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+typedef struct TYPE_13__ TYPE_11__ ;
+typedef struct TYPE_12__ TYPE_10__ ;
+
+
+struct TYPE_17__ {int S_addr; } ;
 struct TYPE_18__ {TYPE_4__ S_un; } ;
-struct TYPE_15__ {int /*<<< orphan*/  Word; } ;
+struct TYPE_15__ {int Word; } ;
 struct TYPE_16__ {TYPE_2__ u; } ;
-struct sockaddr_in6 {TYPE_5__ sin_addr; int /*<<< orphan*/  sin_family; TYPE_3__ sin6_addr; scalar_t__ sin6_family; } ;
-typedef  int socklen_t ;
-typedef  int /*<<< orphan*/  USHORT ;
+struct sockaddr_in6 {TYPE_5__ sin_addr; int sin_family; TYPE_3__ sin6_addr; scalar_t__ sin6_family; } ;
+typedef int socklen_t ;
+typedef int USHORT ;
 struct TYPE_19__ {int Ttl; } ;
-struct TYPE_22__ {int Status; int DataSize; int RoundTripTime; TYPE_6__ Options; int /*<<< orphan*/  Address; } ;
-struct TYPE_21__ {int /*<<< orphan*/  sin6_addr; } ;
-struct TYPE_14__ {int /*<<< orphan*/  s_addr; } ;
+struct TYPE_22__ {int Status; int DataSize; int RoundTripTime; TYPE_6__ Options; int Address; } ;
+struct TYPE_21__ {int sin6_addr; } ;
+struct TYPE_14__ {int s_addr; } ;
 struct TYPE_20__ {TYPE_1__ sin_addr; } ;
 struct TYPE_13__ {scalar_t__ ai_addr; } ;
-struct TYPE_12__ {int Status; int RoundTripTime; int /*<<< orphan*/  Address; } ;
-typedef  int /*<<< orphan*/  Source ;
-typedef  int /*<<< orphan*/  SockAddrIn6 ;
-typedef  int /*<<< orphan*/  SockAddrIn ;
-typedef  struct sockaddr_in6 SOCKADDR_IN6 ;
-typedef  struct sockaddr_in6 SOCKADDR_IN ;
-typedef  struct sockaddr_in6* PVOID ;
-typedef  TYPE_7__* PSOCKADDR_IN ;
-typedef  scalar_t__ PSOCKADDR ;
-typedef  TYPE_8__* PIPV6_ADDRESS_EX ;
-typedef  TYPE_9__* PICMP_ECHO_REPLY ;
-typedef  TYPE_10__* PICMPV6_ECHO_REPLY ;
-typedef  int /*<<< orphan*/  IPAddr ;
-typedef  int /*<<< orphan*/  ICMP_ECHO_REPLY ;
-typedef  int /*<<< orphan*/  ICMPV6_ECHO_REPLY ;
-typedef  int DWORD ;
+struct TYPE_12__ {int Status; int RoundTripTime; int Address; } ;
+typedef int Source ;
+typedef int SockAddrIn6 ;
+typedef int SockAddrIn ;
+typedef struct sockaddr_in6 SOCKADDR_IN6 ;
+typedef struct sockaddr_in6 SOCKADDR_IN ;
+typedef struct sockaddr_in6* PVOID ;
+typedef TYPE_7__* PSOCKADDR_IN ;
+typedef scalar_t__ PSOCKADDR ;
+typedef TYPE_8__* PIPV6_ADDRESS_EX ;
+typedef TYPE_9__* PICMP_ECHO_REPLY ;
+typedef TYPE_10__* PICMPV6_ECHO_REPLY ;
+typedef int IPAddr ;
+typedef int ICMP_ECHO_REPLY ;
+typedef int ICMPV6_ECHO_REPLY ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_INET ; 
- scalar_t__ AF_INET6 ; 
- int Address ; 
- int /*<<< orphan*/  ConPuts (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ConResPrintf (int /*<<< orphan*/ ,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  CopyMemory (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  EchosReceived ; 
- int /*<<< orphan*/  EchosSent ; 
- int /*<<< orphan*/  EchosSuccessful ; 
- scalar_t__ Family ; 
- int GetLastError () ; 
- int /*<<< orphan*/  GetNameInfoW (scalar_t__,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IDS_DEST_HOST_UNREACHABLE ; 
- int /*<<< orphan*/  IDS_DEST_NET_UNREACHABLE ; 
- int /*<<< orphan*/  IDS_NO_RESOURCES ; 
- int /*<<< orphan*/  IDS_REPLY_BYTES ; 
- int /*<<< orphan*/  IDS_REPLY_FROM ; 
- int /*<<< orphan*/  IDS_REPLY_STATUS ; 
- int /*<<< orphan*/  IDS_REPLY_TIME_0MS ; 
- int /*<<< orphan*/  IDS_REPLY_TIME_MS ; 
- int /*<<< orphan*/  IDS_REPLY_TTL ; 
- int /*<<< orphan*/  IDS_REQUEST_TIMED_OUT ; 
- int /*<<< orphan*/  IDS_TRANSMIT_FAILED ; 
- int /*<<< orphan*/  IDS_TTL_EXPIRED ; 
-#define  IP_DEST_HOST_UNREACHABLE 132 
-#define  IP_DEST_NET_UNREACHABLE 131 
-#define  IP_REQ_TIMED_OUT 130 
-#define  IP_SUCCESS 129 
-#define  IP_TTL_EXPIRED_TRANSIT 128 
- int Icmp6SendEcho2 (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,struct sockaddr_in6*,struct sockaddr_in6*,struct sockaddr_in6*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,struct sockaddr_in6*,int,int /*<<< orphan*/ ) ; 
- int IcmpSendEcho2 (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,struct sockaddr_in6*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,struct sockaddr_in6*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IpOptions ; 
- int /*<<< orphan*/  NI_MAXHOST ; 
- int /*<<< orphan*/  NI_NUMERICHOST ; 
- int RTTMax ; 
- int RTTMin ; 
- int RTTTotal ; 
- int RequestSize ; 
- int SIZEOF_ICMP_ERROR ; 
- int SIZEOF_IO_STATUS_BLOCK ; 
- int /*<<< orphan*/  StdErr ; 
- int /*<<< orphan*/  StdOut ; 
- TYPE_11__* Target ; 
- int /*<<< orphan*/  Timeout ; 
- int /*<<< orphan*/  ZeroMemory (struct sockaddr_in6*,int) ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  free (struct sockaddr_in6*) ; 
- int /*<<< orphan*/  hIcmpFile ; 
- struct sockaddr_in6* malloc (int) ; 
+
+ int AF_INET ;
+ scalar_t__ AF_INET6 ;
+ int Address ;
+ int ConPuts (int ,char*) ;
+ int ConResPrintf (int ,int ,...) ;
+ int CopyMemory (int ,int ,int) ;
+ int EchosReceived ;
+ int EchosSent ;
+ int EchosSuccessful ;
+ scalar_t__ Family ;
+ int GetLastError () ;
+ int GetNameInfoW (scalar_t__,int,int,int ,int *,int ,int ) ;
+ int IDS_DEST_HOST_UNREACHABLE ;
+ int IDS_DEST_NET_UNREACHABLE ;
+ int IDS_NO_RESOURCES ;
+ int IDS_REPLY_BYTES ;
+ int IDS_REPLY_FROM ;
+ int IDS_REPLY_STATUS ;
+ int IDS_REPLY_TIME_0MS ;
+ int IDS_REPLY_TIME_MS ;
+ int IDS_REPLY_TTL ;
+ int IDS_REQUEST_TIMED_OUT ;
+ int IDS_TRANSMIT_FAILED ;
+ int IDS_TTL_EXPIRED ;
+
+
+
+
+
+ int Icmp6SendEcho2 (int ,int *,int *,int *,struct sockaddr_in6*,struct sockaddr_in6*,struct sockaddr_in6*,int ,int *,struct sockaddr_in6*,int,int ) ;
+ int IcmpSendEcho2 (int ,int *,int *,int *,int ,struct sockaddr_in6*,int ,int *,struct sockaddr_in6*,int,int ) ;
+ int IpOptions ;
+ int NI_MAXHOST ;
+ int NI_NUMERICHOST ;
+ int RTTMax ;
+ int RTTMin ;
+ int RTTTotal ;
+ int RequestSize ;
+ int SIZEOF_ICMP_ERROR ;
+ int SIZEOF_IO_STATUS_BLOCK ;
+ int StdErr ;
+ int StdOut ;
+ TYPE_11__* Target ;
+ int Timeout ;
+ int ZeroMemory (struct sockaddr_in6*,int) ;
+ int exit (int) ;
+ int free (struct sockaddr_in6*) ;
+ int hIcmpFile ;
+ struct sockaddr_in6* malloc (int) ;
 
 __attribute__((used)) static
 void
 Ping(void)
 {
-    PVOID ReplyBuffer = NULL;
-    PVOID SendBuffer = NULL;
+    PVOID ReplyBuffer = ((void*)0);
+    PVOID SendBuffer = ((void*)0);
     DWORD ReplySize = 0;
     DWORD Status;
 
     SendBuffer = malloc(RequestSize);
-    if (SendBuffer == NULL)
+    if (SendBuffer == ((void*)0))
     {
         ConResPrintf(StdErr, IDS_NO_RESOURCES);
         exit(1);
@@ -128,7 +128,7 @@ Ping(void)
     ReplySize += RequestSize + SIZEOF_ICMP_ERROR + SIZEOF_IO_STATUS_BLOCK;
 
     ReplyBuffer = malloc(ReplySize);
-    if (ReplyBuffer == NULL)
+    if (ReplyBuffer == ((void*)0))
     {
         ConResPrintf(StdErr, IDS_NO_RESOURCES);
         free(SendBuffer);
@@ -146,7 +146,7 @@ Ping(void)
         ZeroMemory(&Source, sizeof(Source));
         Source.sin6_family = AF_INET6;
 
-        Status = Icmp6SendEcho2(hIcmpFile, NULL, NULL, NULL,
+        Status = Icmp6SendEcho2(hIcmpFile, ((void*)0), ((void*)0), ((void*)0),
                                 &Source,
                                 (struct sockaddr_in6 *)Target->ai_addr,
                                 SendBuffer, (USHORT)RequestSize, &IpOptions,
@@ -154,7 +154,7 @@ Ping(void)
     }
     else
     {
-        Status = IcmpSendEcho2(hIcmpFile, NULL, NULL, NULL,
+        Status = IcmpSendEcho2(hIcmpFile, ((void*)0), ((void*)0), ((void*)0),
                                ((PSOCKADDR_IN)Target->ai_addr)->sin_addr.s_addr,
                                SendBuffer, (USHORT)RequestSize, &IpOptions,
                                ReplyBuffer, ReplySize, Timeout);
@@ -167,7 +167,7 @@ Ping(void)
         Status = GetLastError();
         switch (Status)
         {
-        case IP_REQ_TIMED_OUT:
+        case 130:
             ConResPrintf(StdOut, IDS_REQUEST_TIMED_OUT);
             break;
 
@@ -198,7 +198,7 @@ Ping(void)
             Ipv6Addr = (PIPV6_ADDRESS_EX)&pEchoReply->Address;
             SockAddrIn6.sin6_family = AF_INET6;
             CopyMemory(SockAddrIn6.sin6_addr.u.Word, Ipv6Addr->sin6_addr, sizeof(SockAddrIn6.sin6_addr));
-            //SockAddrIn6.sin6_addr = Ipv6Addr->sin6_addr;
+
             SockAddr = (PSOCKADDR)&SockAddrIn6;
             Size = sizeof(SOCKADDR_IN6);
 
@@ -206,7 +206,7 @@ Ping(void)
                          Size,
                          Address,
                          NI_MAXHOST,
-                         NULL,
+                         ((void*)0),
                          0,
                          NI_NUMERICHOST);
 
@@ -214,7 +214,7 @@ Ping(void)
 
             switch (pEchoReply->Status)
             {
-            case IP_SUCCESS:
+            case 129:
             {
                 EchosSuccessful++;
 
@@ -235,15 +235,15 @@ Ping(void)
                 break;
             }
 
-            case IP_DEST_NET_UNREACHABLE:
+            case 131:
                 ConResPrintf(StdOut, IDS_DEST_NET_UNREACHABLE);
                 break;
 
-            case IP_DEST_HOST_UNREACHABLE:
+            case 132:
                 ConResPrintf(StdOut, IDS_DEST_HOST_UNREACHABLE);
                 break;
 
-            case IP_TTL_EXPIRED_TRANSIT:
+            case 128:
                 ConResPrintf(StdOut, IDS_TTL_EXPIRED);
                 break;
 
@@ -269,7 +269,7 @@ Ping(void)
                          Size,
                          Address,
                          NI_MAXHOST,
-                         NULL,
+                         ((void*)0),
                          0,
                          NI_NUMERICHOST);
 
@@ -277,7 +277,7 @@ Ping(void)
 
             switch (pEchoReply->Status)
             {
-            case IP_SUCCESS:
+            case 129:
             {
                 EchosSuccessful++;
 
@@ -300,15 +300,15 @@ Ping(void)
                 break;
             }
 
-            case IP_DEST_NET_UNREACHABLE:
+            case 131:
                 ConResPrintf(StdOut, IDS_DEST_NET_UNREACHABLE);
                 break;
 
-            case IP_DEST_HOST_UNREACHABLE:
+            case 132:
                 ConResPrintf(StdOut, IDS_DEST_HOST_UNREACHABLE);
                 break;
 
-            case IP_TTL_EXPIRED_TRANSIT:
+            case 128:
                 ConResPrintf(StdOut, IDS_TTL_EXPIRED);
                 break;
 

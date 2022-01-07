@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_8__ {scalar_t__ bEof; int eType; } ;
-typedef  TYPE_1__ Fts5ExprNode ;
-typedef  int /*<<< orphan*/  Fts5Expr ;
+typedef TYPE_1__ Fts5ExprNode ;
+typedef int Fts5Expr ;
 
-/* Variables and functions */
-#define  FTS5_AND 131 
- int FTS5_NOT ; 
-#define  FTS5_OR 130 
-#define  FTS5_STRING 129 
-#define  FTS5_TERM 128 
- int SQLITE_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- int fts5ExprNodeTest_AND (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int fts5ExprNodeTest_NOT (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  fts5ExprNodeTest_OR (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int fts5ExprNodeTest_STRING (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int fts5ExprNodeTest_TERM (int /*<<< orphan*/ *,TYPE_1__*) ; 
+
+
+ int FTS5_NOT ;
+
+
+
+ int SQLITE_OK ;
+ int assert (int) ;
+ int fts5ExprNodeTest_AND (int *,TYPE_1__*) ;
+ int fts5ExprNodeTest_NOT (int *,TYPE_1__*) ;
+ int fts5ExprNodeTest_OR (int *,TYPE_1__*) ;
+ int fts5ExprNodeTest_STRING (int *,TYPE_1__*) ;
+ int fts5ExprNodeTest_TERM (int *,TYPE_1__*) ;
 
 __attribute__((used)) static int fts5ExprNodeTest(
-  Fts5Expr *pExpr,                /* Expression of which pNode is a part */
-  Fts5ExprNode *pNode             /* Expression node to test */
+  Fts5Expr *pExpr,
+  Fts5ExprNode *pNode
 ){
   int rc = SQLITE_OK;
   if( pNode->bEof==0 ){
     switch( pNode->eType ){
 
-      case FTS5_STRING: {
+      case 129: {
         rc = fts5ExprNodeTest_STRING(pExpr, pNode);
         break;
       }
 
-      case FTS5_TERM: {
+      case 128: {
         rc = fts5ExprNodeTest_TERM(pExpr, pNode);
         break;
       }
 
-      case FTS5_AND: {
+      case 131: {
         rc = fts5ExprNodeTest_AND(pExpr, pNode);
         break;
       }
 
-      case FTS5_OR: {
+      case 130: {
         fts5ExprNodeTest_OR(pExpr, pNode);
         break;
       }

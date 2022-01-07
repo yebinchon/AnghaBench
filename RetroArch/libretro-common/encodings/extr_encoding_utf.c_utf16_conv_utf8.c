@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint32_t ;
-typedef  int uint16_t ;
 
-/* Variables and functions */
+
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef int uint16_t ;
+
+
 
 bool utf16_conv_utf8(uint8_t *out, size_t *out_chars,
      const uint16_t *in, size_t in_size)
 {
    static uint8_t kUtf8Limits[5] = { 0xC0, 0xE0, 0xF0, 0xF8, 0xFC };
    size_t out_pos = 0;
-   size_t in_pos  = 0;
+   size_t in_pos = 0;
 
    for (;;)
    {
@@ -31,7 +31,7 @@ bool utf16_conv_utf8(uint8_t *out, size_t *out_chars,
       if (in_pos == in_size)
       {
          *out_chars = out_pos;
-         return true;
+         return 1;
       }
       value = in[in_pos++];
       if (value < 0x80)
@@ -72,5 +72,5 @@ bool utf16_conv_utf8(uint8_t *out, size_t *out_chars,
    }
 
    *out_chars = out_pos;
-   return false;
+   return 0;
 }

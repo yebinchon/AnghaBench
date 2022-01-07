@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  X509_PUBKEY ;
-typedef  int /*<<< orphan*/  X509_ALGOR ;
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int X509_PUBKEY ;
+typedef int X509_ALGOR ;
 struct TYPE_8__ {unsigned char* data; int length; } ;
-struct TYPE_7__ {int /*<<< orphan*/ * pub_key; } ;
-typedef  int /*<<< orphan*/  EVP_PKEY ;
-typedef  TYPE_1__ DSA ;
-typedef  TYPE_2__ ASN1_STRING ;
-typedef  int /*<<< orphan*/  ASN1_INTEGER ;
+struct TYPE_7__ {int * pub_key; } ;
+typedef int EVP_PKEY ;
+typedef TYPE_1__ DSA ;
+typedef TYPE_2__ ASN1_STRING ;
+typedef int ASN1_INTEGER ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASN1_INTEGER_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * ASN1_INTEGER_to_BN (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DSA_F_DSA_PUB_DECODE ; 
- int /*<<< orphan*/  DSA_R_BN_DECODE_ERROR ; 
- int /*<<< orphan*/  DSA_R_DECODE_ERROR ; 
- int /*<<< orphan*/  DSA_R_PARAMETER_ENCODING_ERROR ; 
- int /*<<< orphan*/  DSA_free (TYPE_1__*) ; 
- TYPE_1__* DSA_new () ; 
- int /*<<< orphan*/  DSAerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ERR_R_MALLOC_FAILURE ; 
- int /*<<< orphan*/  EVP_PKEY_assign_DSA (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int V_ASN1_NULL ; 
- int V_ASN1_SEQUENCE ; 
- int V_ASN1_UNDEF ; 
- int /*<<< orphan*/  X509_ALGOR_get0 (int /*<<< orphan*/ *,int*,void const**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  X509_PUBKEY_get0_param (int /*<<< orphan*/ *,unsigned char const**,int*,int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * d2i_ASN1_INTEGER (int /*<<< orphan*/ *,unsigned char const**,int) ; 
- TYPE_1__* d2i_DSAparams (int /*<<< orphan*/ *,unsigned char const**,int) ; 
+
+ int ASN1_INTEGER_free (int *) ;
+ int * ASN1_INTEGER_to_BN (int *,int *) ;
+ int DSA_F_DSA_PUB_DECODE ;
+ int DSA_R_BN_DECODE_ERROR ;
+ int DSA_R_DECODE_ERROR ;
+ int DSA_R_PARAMETER_ENCODING_ERROR ;
+ int DSA_free (TYPE_1__*) ;
+ TYPE_1__* DSA_new () ;
+ int DSAerr (int ,int ) ;
+ int ERR_R_MALLOC_FAILURE ;
+ int EVP_PKEY_assign_DSA (int *,TYPE_1__*) ;
+ int V_ASN1_NULL ;
+ int V_ASN1_SEQUENCE ;
+ int V_ASN1_UNDEF ;
+ int X509_ALGOR_get0 (int *,int*,void const**,int *) ;
+ int X509_PUBKEY_get0_param (int *,unsigned char const**,int*,int **,int *) ;
+ int * d2i_ASN1_INTEGER (int *,unsigned char const**,int) ;
+ TYPE_1__* d2i_DSAparams (int *,unsigned char const**,int) ;
 
 __attribute__((used)) static int dsa_pub_decode(EVP_PKEY *pkey, X509_PUBKEY *pubkey)
 {
@@ -49,26 +49,26 @@ __attribute__((used)) static int dsa_pub_decode(EVP_PKEY *pkey, X509_PUBKEY *pub
     const void *pval;
     const ASN1_STRING *pstr;
     X509_ALGOR *palg;
-    ASN1_INTEGER *public_key = NULL;
+    ASN1_INTEGER *public_key = ((void*)0);
 
-    DSA *dsa = NULL;
+    DSA *dsa = ((void*)0);
 
-    if (!X509_PUBKEY_get0_param(NULL, &p, &pklen, &palg, pubkey))
+    if (!X509_PUBKEY_get0_param(((void*)0), &p, &pklen, &palg, pubkey))
         return 0;
-    X509_ALGOR_get0(NULL, &ptype, &pval, palg);
+    X509_ALGOR_get0(((void*)0), &ptype, &pval, palg);
 
     if (ptype == V_ASN1_SEQUENCE) {
         pstr = pval;
         pm = pstr->data;
         pmlen = pstr->length;
 
-        if ((dsa = d2i_DSAparams(NULL, &pm, pmlen)) == NULL) {
+        if ((dsa = d2i_DSAparams(((void*)0), &pm, pmlen)) == ((void*)0)) {
             DSAerr(DSA_F_DSA_PUB_DECODE, DSA_R_DECODE_ERROR);
             goto err;
         }
 
     } else if ((ptype == V_ASN1_NULL) || (ptype == V_ASN1_UNDEF)) {
-        if ((dsa = DSA_new()) == NULL) {
+        if ((dsa = DSA_new()) == ((void*)0)) {
             DSAerr(DSA_F_DSA_PUB_DECODE, ERR_R_MALLOC_FAILURE);
             goto err;
         }
@@ -77,12 +77,12 @@ __attribute__((used)) static int dsa_pub_decode(EVP_PKEY *pkey, X509_PUBKEY *pub
         goto err;
     }
 
-    if ((public_key = d2i_ASN1_INTEGER(NULL, &p, pklen)) == NULL) {
+    if ((public_key = d2i_ASN1_INTEGER(((void*)0), &p, pklen)) == ((void*)0)) {
         DSAerr(DSA_F_DSA_PUB_DECODE, DSA_R_DECODE_ERROR);
         goto err;
     }
 
-    if ((dsa->pub_key = ASN1_INTEGER_to_BN(public_key, NULL)) == NULL) {
+    if ((dsa->pub_key = ASN1_INTEGER_to_BN(public_key, ((void*)0))) == ((void*)0)) {
         DSAerr(DSA_F_DSA_PUB_DECODE, DSA_R_BN_DECODE_ERROR);
         goto err;
     }

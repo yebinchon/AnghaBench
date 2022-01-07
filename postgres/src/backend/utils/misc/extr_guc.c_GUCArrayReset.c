@@ -1,89 +1,89 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Datum ;
-typedef  int /*<<< orphan*/  ArrayType ;
 
-/* Variables and functions */
- int* ARR_DIMS (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TEXTOID ; 
- char* TextDatumGetCString (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  array_ref (int /*<<< orphan*/ *,int,int*,int,int,int,char,int*) ; 
- int /*<<< orphan*/ * array_set (int /*<<< orphan*/ *,int,int*,int /*<<< orphan*/ ,int,int,int,int,char) ; 
- int /*<<< orphan*/ * construct_array (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int,int,char) ; 
- int /*<<< orphan*/  pfree (char*) ; 
- char* strchr (char*,char) ; 
- scalar_t__ superuser () ; 
- scalar_t__ validate_option_array_item (char*,int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int Datum ;
+typedef int ArrayType ;
+
+
+ int* ARR_DIMS (int *) ;
+ int TEXTOID ;
+ char* TextDatumGetCString (int ) ;
+ int array_ref (int *,int,int*,int,int,int,char,int*) ;
+ int * array_set (int *,int,int*,int ,int,int,int,int,char) ;
+ int * construct_array (int *,int,int ,int,int,char) ;
+ int pfree (char*) ;
+ char* strchr (char*,char) ;
+ scalar_t__ superuser () ;
+ scalar_t__ validate_option_array_item (char*,int *,int) ;
 
 ArrayType *
 GUCArrayReset(ArrayType *array)
 {
-	ArrayType  *newarray;
-	int			i;
-	int			index;
+ ArrayType *newarray;
+ int i;
+ int index;
 
-	/* if array is currently null, nothing to do */
-	if (!array)
-		return NULL;
 
-	/* if we're superuser, we can delete everything, so just do it */
-	if (superuser())
-		return NULL;
+ if (!array)
+  return ((void*)0);
 
-	newarray = NULL;
-	index = 1;
 
-	for (i = 1; i <= ARR_DIMS(array)[0]; i++)
-	{
-		Datum		d;
-		char	   *val;
-		char	   *eqsgn;
-		bool		isnull;
+ if (superuser())
+  return ((void*)0);
 
-		d = array_ref(array, 1, &i,
-					  -1 /* varlenarray */ ,
-					  -1 /* TEXT's typlen */ ,
-					  false /* TEXT's typbyval */ ,
-					  'i' /* TEXT's typalign */ ,
-					  &isnull);
-		if (isnull)
-			continue;
-		val = TextDatumGetCString(d);
+ newarray = ((void*)0);
+ index = 1;
 
-		eqsgn = strchr(val, '=');
-		*eqsgn = '\0';
+ for (i = 1; i <= ARR_DIMS(array)[0]; i++)
+ {
+  Datum d;
+  char *val;
+  char *eqsgn;
+  bool isnull;
 
-		/* skip if we have permission to delete it */
-		if (validate_option_array_item(val, NULL, true))
-			continue;
+  d = array_ref(array, 1, &i,
+       -1 ,
+       -1 ,
+       0 ,
+       'i' ,
+       &isnull);
+  if (isnull)
+   continue;
+  val = TextDatumGetCString(d);
 
-		/* else add it to the output array */
-		if (newarray)
-			newarray = array_set(newarray, 1, &index,
-								 d,
-								 false,
-								 -1 /* varlenarray */ ,
-								 -1 /* TEXT's typlen */ ,
-								 false /* TEXT's typbyval */ ,
-								 'i' /* TEXT's typalign */ );
-		else
-			newarray = construct_array(&d, 1,
-									   TEXTOID,
-									   -1, false, 'i');
+  eqsgn = strchr(val, '=');
+  *eqsgn = '\0';
 
-		index++;
-		pfree(val);
-	}
 
-	return newarray;
+  if (validate_option_array_item(val, ((void*)0), 1))
+   continue;
+
+
+  if (newarray)
+   newarray = array_set(newarray, 1, &index,
+         d,
+         0,
+         -1 ,
+         -1 ,
+         0 ,
+         'i' );
+  else
+   newarray = construct_array(&d, 1,
+            TEXTOID,
+            -1, 0, 'i');
+
+  index++;
+  pfree(val);
+ }
+
+ return newarray;
 }

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ tree ;
-typedef  int /*<<< orphan*/  formals_style ;
 
-/* Variables and functions */
- scalar_t__ DECL_ARGUMENTS (scalar_t__) ; 
- scalar_t__ TREE_CHAIN (scalar_t__) ; 
- int /*<<< orphan*/  TREE_TYPE (scalar_t__) ; 
- int /*<<< orphan*/  ansi ; 
- char* concat (char const*,char const*,char*,...) ; 
- scalar_t__ deserves_ellipsis (int /*<<< orphan*/ ) ; 
- char* gen_decl (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  k_and_r_decls ; 
- int /*<<< orphan*/  k_and_r_names ; 
+
+
+
+typedef scalar_t__ tree ;
+typedef int formals_style ;
+
+
+ scalar_t__ DECL_ARGUMENTS (scalar_t__) ;
+ scalar_t__ TREE_CHAIN (scalar_t__) ;
+ int TREE_TYPE (scalar_t__) ;
+ int ansi ;
+ char* concat (char const*,char const*,char*,...) ;
+ scalar_t__ deserves_ellipsis (int ) ;
+ char* gen_decl (scalar_t__,int ,int ) ;
+ int k_and_r_decls ;
+ int k_and_r_names ;
 
 __attribute__((used)) static const char *
 gen_formal_list_for_func_def (tree fndecl, formals_style style)
@@ -36,22 +36,22 @@ gen_formal_list_for_func_def (tree fndecl, formals_style style)
       const char *this_formal;
 
       if (*formal_list && ((style == ansi) || (style == k_and_r_names)))
-	formal_list = concat (formal_list, ", ", NULL);
+ formal_list = concat (formal_list, ", ", ((void*)0));
       this_formal = gen_decl (formal_decl, 0, style);
       if (style == k_and_r_decls)
-	formal_list = concat (formal_list, this_formal, "; ", NULL);
+ formal_list = concat (formal_list, this_formal, "; ", ((void*)0));
       else
-	formal_list = concat (formal_list, this_formal, NULL);
+ formal_list = concat (formal_list, this_formal, ((void*)0));
       formal_decl = TREE_CHAIN (formal_decl);
     }
   if (style == ansi)
     {
       if (!DECL_ARGUMENTS (fndecl))
-	formal_list = concat (formal_list, "void", NULL);
+ formal_list = concat (formal_list, "void", ((void*)0));
       if (deserves_ellipsis (TREE_TYPE (fndecl)))
-	formal_list = concat (formal_list, ", ...", NULL);
+ formal_list = concat (formal_list, ", ...", ((void*)0));
     }
   if ((style == ansi) || (style == k_and_r_names))
-    formal_list = concat (" (", formal_list, ")", NULL);
+    formal_list = concat (" (", formal_list, ")", ((void*)0));
   return formal_list;
 }

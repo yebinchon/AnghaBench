@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
-typedef  int uint16_t ;
-struct openvpn_tcphdr {int /*<<< orphan*/  check; int /*<<< orphan*/  doff_res; } ;
+
+
+
+
+typedef scalar_t__ uint8_t ;
+typedef int uint16_t ;
+struct openvpn_tcphdr {int check; int doff_res; } ;
 struct buffer {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ADJUST_CHECKSUM (int,int /*<<< orphan*/ ) ; 
- int BLEN (struct buffer*) ; 
- scalar_t__ BPTR (struct buffer*) ; 
- int /*<<< orphan*/  D_MSS ; 
- int OPENVPN_TCPH_GET_DOFF (int /*<<< orphan*/ ) ; 
- int OPENVPN_TCPOLEN_MAXSEG ; 
- scalar_t__ OPENVPN_TCPOPT_EOL ; 
- scalar_t__ OPENVPN_TCPOPT_MAXSEG ; 
- scalar_t__ OPENVPN_TCPOPT_NOP ; 
- int /*<<< orphan*/  dmsg (int /*<<< orphan*/ ,char*,int,int) ; 
- int htons (int) ; 
- int /*<<< orphan*/  verify_align_4 (struct buffer*) ; 
+
+ int ADJUST_CHECKSUM (int,int ) ;
+ int BLEN (struct buffer*) ;
+ scalar_t__ BPTR (struct buffer*) ;
+ int D_MSS ;
+ int OPENVPN_TCPH_GET_DOFF (int ) ;
+ int OPENVPN_TCPOLEN_MAXSEG ;
+ scalar_t__ OPENVPN_TCPOPT_EOL ;
+ scalar_t__ OPENVPN_TCPOPT_MAXSEG ;
+ scalar_t__ OPENVPN_TCPOPT_NOP ;
+ int dmsg (int ,char*,int,int) ;
+ int htons (int) ;
+ int verify_align_4 (struct buffer*) ;
 
 void
 mss_fixup_dowork(struct buffer *buf, uint16_t maxmss)
@@ -47,7 +47,7 @@ mss_fixup_dowork(struct buffer *buf, uint16_t maxmss)
     tc = (struct openvpn_tcphdr *) BPTR(buf);
     hlen = OPENVPN_TCPH_GET_DOFF(tc->doff_res);
 
-    /* Invalid header length or header without options. */
+
     if (hlen <= (int) sizeof(struct openvpn_tcphdr)
         || hlen > BLEN(buf))
     {

@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  height; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int height; } ;
 struct vc_data {TYPE_1__ vc_font; } ;
-struct console_font {int charcount; int /*<<< orphan*/  data; int /*<<< orphan*/  height; int /*<<< orphan*/  width; } ;
+struct console_font {int charcount; int data; int height; int width; } ;
 
-/* Variables and functions */
- int EINVAL ; 
- int /*<<< orphan*/  VGA_FONTWIDTH ; 
- scalar_t__ VIDEO_TYPE_EGAM ; 
- int /*<<< orphan*/  state ; 
- scalar_t__ vga_512_chars ; 
- scalar_t__ vga_video_type ; 
- int vgacon_do_font_op (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
+
+ int EINVAL ;
+ int VGA_FONTWIDTH ;
+ scalar_t__ VIDEO_TYPE_EGAM ;
+ int state ;
+ scalar_t__ vga_512_chars ;
+ scalar_t__ vga_video_type ;
+ int vgacon_do_font_op (int *,int ,int ,scalar_t__) ;
 
 __attribute__((used)) static int vgacon_font_get(struct vc_data *c, struct console_font *font)
 {
-	if (vga_video_type < VIDEO_TYPE_EGAM)
-		return -EINVAL;
+ if (vga_video_type < VIDEO_TYPE_EGAM)
+  return -EINVAL;
 
-	font->width = VGA_FONTWIDTH;
-	font->height = c->vc_font.height;
-	font->charcount = vga_512_chars ? 512 : 256;
-	if (!font->data)
-		return 0;
-	return vgacon_do_font_op(&state, font->data, 0, vga_512_chars);
+ font->width = VGA_FONTWIDTH;
+ font->height = c->vc_font.height;
+ font->charcount = vga_512_chars ? 512 : 256;
+ if (!font->data)
+  return 0;
+ return vgacon_do_font_op(&state, font->data, 0, vga_512_chars);
 }

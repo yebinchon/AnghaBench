@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {unsigned long entry; unsigned long tag; int children; struct TYPE_5__* next; int /*<<< orphan*/ * last_attr; int /*<<< orphan*/ * first_attr; } ;
-typedef  TYPE_1__ abbrev_entry ;
 
-/* Variables and functions */
- TYPE_1__* first_abbrev ; 
- TYPE_1__* last_abbrev ; 
- TYPE_1__* malloc (int) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {unsigned long entry; unsigned long tag; int children; struct TYPE_5__* next; int * last_attr; int * first_attr; } ;
+typedef TYPE_1__ abbrev_entry ;
+
+
+ TYPE_1__* first_abbrev ;
+ TYPE_1__* last_abbrev ;
+ TYPE_1__* malloc (int) ;
 
 __attribute__((used)) static void
 add_abbrev (unsigned long number, unsigned long tag, int children)
@@ -26,18 +26,18 @@ add_abbrev (unsigned long number, unsigned long tag, int children)
 
   entry = malloc (sizeof (*entry));
 
-  if (entry == NULL)
-    /* ugg */
+  if (entry == ((void*)0))
+
     return;
 
-  entry->entry      = number;
-  entry->tag        = tag;
-  entry->children   = children;
-  entry->first_attr = NULL;
-  entry->last_attr  = NULL;
-  entry->next       = NULL;
+  entry->entry = number;
+  entry->tag = tag;
+  entry->children = children;
+  entry->first_attr = ((void*)0);
+  entry->last_attr = ((void*)0);
+  entry->next = ((void*)0);
 
-  if (first_abbrev == NULL)
+  if (first_abbrev == ((void*)0))
     first_abbrev = entry;
   else
     last_abbrev->next = entry;

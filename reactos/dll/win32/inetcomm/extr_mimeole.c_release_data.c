@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  REFIID ;
-typedef  int /*<<< orphan*/  IStream ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FIXME (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IID_IStream ; 
- int /*<<< orphan*/  IStream_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IsEqualIID (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  debugstr_guid (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int REFIID ;
+typedef int IStream ;
+
+
+ int FIXME (char*,int ) ;
+ int IID_IStream ;
+ int IStream_Release (int *) ;
+ scalar_t__ IsEqualIID (int ,int *) ;
+ int debugstr_guid (int ) ;
 
 __attribute__((used)) static void release_data(REFIID riid, void *data)
 {

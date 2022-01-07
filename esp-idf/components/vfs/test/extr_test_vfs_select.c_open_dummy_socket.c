@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct addrinfo {int /*<<< orphan*/  ai_socktype; int /*<<< orphan*/  ai_family; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_INET ; 
- int /*<<< orphan*/  SOCK_DGRAM ; 
- int /*<<< orphan*/  TEST_ASSERT (int) ; 
- int /*<<< orphan*/  TEST_ASSERT_EQUAL (int /*<<< orphan*/ ,int const) ; 
- int /*<<< orphan*/  TEST_ASSERT_NOT_NULL (struct addrinfo*) ; 
- int getaddrinfo (char*,char*,struct addrinfo const*,struct addrinfo**) ; 
- int socket (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct addrinfo {int ai_socktype; int ai_family; } ;
+
+
+ int AF_INET ;
+ int SOCK_DGRAM ;
+ int TEST_ASSERT (int) ;
+ int TEST_ASSERT_EQUAL (int ,int const) ;
+ int TEST_ASSERT_NOT_NULL (struct addrinfo*) ;
+ int getaddrinfo (char*,char*,struct addrinfo const*,struct addrinfo**) ;
+ int socket (int ,int ,int ) ;
 
 __attribute__((used)) static int open_dummy_socket(void)
 {
@@ -27,7 +27,7 @@ __attribute__((used)) static int open_dummy_socket(void)
         .ai_family = AF_INET,
         .ai_socktype = SOCK_DGRAM,
     };
-    struct addrinfo *res = NULL;
+    struct addrinfo *res = ((void*)0);
 
     const int err = getaddrinfo("localhost", "80", &hints, &res);
     TEST_ASSERT_EQUAL(0, err);

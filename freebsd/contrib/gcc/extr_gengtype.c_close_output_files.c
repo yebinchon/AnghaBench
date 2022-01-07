@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* outf_p ;
-struct TYPE_3__ {size_t bufused; scalar_t__* buf; int /*<<< orphan*/  name; struct TYPE_3__* next; } ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int EOF ; 
- int /*<<< orphan*/  exit (int) ; 
- scalar_t__ fclose (int /*<<< orphan*/ *) ; 
- int fgetc (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ fwrite (scalar_t__*,int,size_t,int /*<<< orphan*/ *) ; 
- TYPE_1__* output_files ; 
- int /*<<< orphan*/  perror (char*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef TYPE_1__* outf_p ;
+struct TYPE_3__ {size_t bufused; scalar_t__* buf; int name; struct TYPE_3__* next; } ;
+typedef int FILE ;
+
+
+ int EOF ;
+ int exit (int) ;
+ scalar_t__ fclose (int *) ;
+ int fgetc (int *) ;
+ int * fopen (int ,char*) ;
+ scalar_t__ fwrite (scalar_t__*,int,size_t,int *) ;
+ TYPE_1__* output_files ;
+ int perror (char*) ;
 
 __attribute__((used)) static void
 close_output_files (void)
@@ -35,40 +35,40 @@ close_output_files (void)
       FILE * newfile;
 
       newfile = fopen (of->name, "r");
-      if (newfile != NULL )
-	{
-	  int no_write_p;
-	  size_t i;
+      if (newfile != ((void*)0) )
+ {
+   int no_write_p;
+   size_t i;
 
-	  for (i = 0; i < of->bufused; i++)
-	    {
-	      int ch;
-	      ch = fgetc (newfile);
-	      if (ch == EOF || ch != (unsigned char) of->buf[i])
-		break;
-	    }
-	  no_write_p = i == of->bufused && fgetc (newfile) == EOF;
-	  fclose (newfile);
+   for (i = 0; i < of->bufused; i++)
+     {
+       int ch;
+       ch = fgetc (newfile);
+       if (ch == EOF || ch != (unsigned char) of->buf[i])
+  break;
+     }
+   no_write_p = i == of->bufused && fgetc (newfile) == EOF;
+   fclose (newfile);
 
-	  if (no_write_p)
-	    continue;
-	}
+   if (no_write_p)
+     continue;
+ }
 
       newfile = fopen (of->name, "w");
-      if (newfile == NULL)
-	{
-	  perror ("opening output file");
-	  exit (1);
-	}
+      if (newfile == ((void*)0))
+ {
+   perror ("opening output file");
+   exit (1);
+ }
       if (fwrite (of->buf, 1, of->bufused, newfile) != of->bufused)
-	{
-	  perror ("writing output file");
-	  exit (1);
-	}
+ {
+   perror ("writing output file");
+   exit (1);
+ }
       if (fclose (newfile) != 0)
-	{
-	  perror ("closing output file");
-	  exit (1);
-	}
+ {
+   perror ("closing output file");
+   exit (1);
+ }
     }
 }

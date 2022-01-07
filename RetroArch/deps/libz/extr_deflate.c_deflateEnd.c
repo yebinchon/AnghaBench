@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  struct internal_state_deflate* z_streamp ;
-struct internal_state_deflate {int status; int /*<<< orphan*/  window; int /*<<< orphan*/  prev; int /*<<< orphan*/  head; int /*<<< orphan*/  pending_buf; struct internal_state_deflate* state; } ;
 
-/* Variables and functions */
- int BUSY_STATE ; 
- int COMMENT_STATE ; 
- int EXTRA_STATE ; 
- int FINISH_STATE ; 
- int HCRC_STATE ; 
- int INIT_STATE ; 
- int NAME_STATE ; 
- int /*<<< orphan*/  TRY_FREE (struct internal_state_deflate*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ZFREE (struct internal_state_deflate*,struct internal_state_deflate*) ; 
- int Z_DATA_ERROR ; 
- struct internal_state_deflate* Z_NULL ; 
- int Z_OK ; 
- int Z_STREAM_ERROR ; 
+
+
+
+typedef struct internal_state_deflate* z_streamp ;
+struct internal_state_deflate {int status; int window; int prev; int head; int pending_buf; struct internal_state_deflate* state; } ;
+
+
+ int BUSY_STATE ;
+ int COMMENT_STATE ;
+ int EXTRA_STATE ;
+ int FINISH_STATE ;
+ int HCRC_STATE ;
+ int INIT_STATE ;
+ int NAME_STATE ;
+ int TRY_FREE (struct internal_state_deflate*,int ) ;
+ int ZFREE (struct internal_state_deflate*,struct internal_state_deflate*) ;
+ int Z_DATA_ERROR ;
+ struct internal_state_deflate* Z_NULL ;
+ int Z_OK ;
+ int Z_STREAM_ERROR ;
 
 int deflateEnd (z_streamp strm)
 {
@@ -47,7 +47,7 @@ int deflateEnd (z_streamp strm)
       return Z_STREAM_ERROR;
    }
 
-   /* Deallocate in reverse order of allocations: */
+
    TRY_FREE(strm, state->pending_buf);
    TRY_FREE(strm, state->head);
    TRY_FREE(strm, state->prev);

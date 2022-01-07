@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_6__ ;
-typedef  struct TYPE_13__   TYPE_5__ ;
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint16_t ;
-typedef  int ptrdiff_t ;
+
+
+typedef struct TYPE_14__ TYPE_6__ ;
+typedef struct TYPE_13__ TYPE_5__ ;
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int uint16_t ;
+typedef int ptrdiff_t ;
 struct TYPE_14__ {int coded_width; scalar_t__ coded_height; TYPE_4__* priv_data; } ;
 struct TYPE_13__ {int* linesize; scalar_t__* data; } ;
-struct TYPE_10__ {int /*<<< orphan*/  (* add_left_pred_int16 ) (int*,int*,int const,int,int) ;} ;
-struct TYPE_12__ {int interlaced; int bps; int max; int planes; int slice_height; scalar_t__ decorrelate; TYPE_2__ llviddsp; TYPE_1__* vlc; TYPE_3__** slices; scalar_t__ buf; int /*<<< orphan*/ * vshift; int /*<<< orphan*/ * hshift; TYPE_5__* p; } ;
-struct TYPE_11__ {int /*<<< orphan*/  size; scalar_t__ start; } ;
-struct TYPE_9__ {int /*<<< orphan*/  bits; int /*<<< orphan*/  table; } ;
-typedef  TYPE_4__ MagicYUVContext ;
-typedef  int /*<<< orphan*/  GetBitContext ;
-typedef  TYPE_5__ AVFrame ;
-typedef  TYPE_6__ AVCodecContext ;
+struct TYPE_10__ {int (* add_left_pred_int16 ) (int*,int*,int const,int,int) ;} ;
+struct TYPE_12__ {int interlaced; int bps; int max; int planes; int slice_height; scalar_t__ decorrelate; TYPE_2__ llviddsp; TYPE_1__* vlc; TYPE_3__** slices; scalar_t__ buf; int * vshift; int * hshift; TYPE_5__* p; } ;
+struct TYPE_11__ {int size; scalar_t__ start; } ;
+struct TYPE_9__ {int bits; int table; } ;
+typedef TYPE_4__ MagicYUVContext ;
+typedef int GetBitContext ;
+typedef TYPE_5__ AVFrame ;
+typedef TYPE_6__ AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int AV_CEIL_RSHIFT (int,int /*<<< orphan*/ ) ; 
- int FFMIN (int,scalar_t__) ; 
-#define  GRADIENT 130 
-#define  LEFT 129 
-#define  MEDIAN 128 
- int /*<<< orphan*/  avpriv_request_sample (TYPE_6__*,char*,int) ; 
- int get_bits (int /*<<< orphan*/ *,int const) ; 
- int const get_bits_left (int /*<<< orphan*/ *) ; 
- int get_vlc2 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int init_get_bits8 (int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  magicyuv_median_pred16 (int*,int*,int*,int,int*,int*,int const) ; 
- int /*<<< orphan*/  stub1 (int*,int*,int const,int,int) ; 
- int /*<<< orphan*/  stub2 (int*,int*,int const,int,int) ; 
- int /*<<< orphan*/  stub3 (int*,int*,int const,int,int) ; 
- int /*<<< orphan*/  stub4 (int*,int*,int const,int,int) ; 
- int /*<<< orphan*/  stub5 (int*,int*,int const,int,int) ; 
- int /*<<< orphan*/  stub6 (int*,int*,int const,int,int) ; 
- int /*<<< orphan*/  stub7 (int*,int*,int const,int,int) ; 
+
+ int AVERROR_INVALIDDATA ;
+ int AV_CEIL_RSHIFT (int,int ) ;
+ int FFMIN (int,scalar_t__) ;
+
+
+
+ int avpriv_request_sample (TYPE_6__*,char*,int) ;
+ int get_bits (int *,int const) ;
+ int const get_bits_left (int *) ;
+ int get_vlc2 (int *,int ,int ,int) ;
+ int init_get_bits8 (int *,scalar_t__,int ) ;
+ int magicyuv_median_pred16 (int*,int*,int*,int,int*,int*,int const) ;
+ int stub1 (int*,int*,int const,int,int) ;
+ int stub2 (int*,int*,int const,int,int) ;
+ int stub3 (int*,int*,int const,int,int) ;
+ int stub4 (int*,int*,int const,int,int) ;
+ int stub5 (int*,int*,int const,int,int) ;
+ int stub6 (int*,int*,int const,int,int) ;
+ int stub7 (int*,int*,int const,int,int) ;
 
 __attribute__((used)) static int magy_decode_slice10(AVCodecContext *avctx, void *tdata,
                                int j, int threadnr)
@@ -77,7 +77,7 @@ __attribute__((used)) static int magy_decode_slice10(AVCodecContext *avctx, void
             return ret;
 
         flags = get_bits(&gb, 8);
-        pred  = get_bits(&gb, 8);
+        pred = get_bits(&gb, 8);
 
         dst = (uint16_t *)p->data[i] + j * sheight * stride;
         if (flags & 1) {
@@ -107,7 +107,7 @@ __attribute__((used)) static int magy_decode_slice10(AVCodecContext *avctx, void
         }
 
         switch (pred) {
-        case LEFT:
+        case 129:
             dst = (uint16_t *)p->data[i] + j * sheight * stride;
             s->llviddsp.add_left_pred_int16(dst, dst, max, width, 0);
             dst += stride;
@@ -120,7 +120,7 @@ __attribute__((used)) static int magy_decode_slice10(AVCodecContext *avctx, void
                 dst += stride;
             }
             break;
-        case GRADIENT:
+        case 130:
             dst = (uint16_t *)p->data[i] + j * sheight * stride;
             s->llviddsp.add_left_pred_int16(dst, dst, max, width, 0);
             dst += stride;
@@ -141,7 +141,7 @@ __attribute__((used)) static int magy_decode_slice10(AVCodecContext *avctx, void
                 dst += stride;
             }
             break;
-        case MEDIAN:
+        case 128:
             dst = (uint16_t *)p->data[i] + j * sheight * stride;
             s->llviddsp.add_left_pred_int16(dst, dst, max, width, 0);
             dst += stride;

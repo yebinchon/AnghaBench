@@ -1,126 +1,118 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  EL_ADDFN ; 
- int /*<<< orphan*/  EL_BIND ; 
- int /*<<< orphan*/  EL_EDITOR ; 
- int /*<<< orphan*/  EL_HIST ; 
- int /*<<< orphan*/  EL_PROMPT ; 
- scalar_t__ Eflag ; 
- int /*<<< orphan*/  INTOFF ; 
- int /*<<< orphan*/  INTON ; 
- scalar_t__ Vflag ; 
- int /*<<< orphan*/ * _el_fn_complete ; 
- int /*<<< orphan*/  arg0 ; 
- scalar_t__ editing ; 
- int /*<<< orphan*/ * el ; 
- int /*<<< orphan*/  el_end (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * el_in ; 
- int /*<<< orphan*/ * el_init (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * el_out ; 
- int /*<<< orphan*/  el_set (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  el_source (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- void* fdopen (int,char*) ; 
- int /*<<< orphan*/  getprompt ; 
- int /*<<< orphan*/ * hist ; 
- int /*<<< orphan*/  history ; 
- int /*<<< orphan*/  history_end (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * history_init () ; 
- int /*<<< orphan*/  histsizeval () ; 
- scalar_t__ iflag ; 
- scalar_t__ isatty (int /*<<< orphan*/ ) ; 
- char* lookupvar (char*) ; 
- int /*<<< orphan*/  out2fmt_flush (char*) ; 
- int /*<<< orphan*/  setenv (char*,char*,int) ; 
- int /*<<< orphan*/  sethistsize (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  unsetenv (char*) ; 
+ int EL_ADDFN ;
+ int EL_BIND ;
+ int EL_EDITOR ;
+ int EL_HIST ;
+ int EL_PROMPT ;
+ scalar_t__ Eflag ;
+ int INTOFF ;
+ int INTON ;
+ scalar_t__ Vflag ;
+ int * _el_fn_complete ;
+ int arg0 ;
+ scalar_t__ editing ;
+ int * el ;
+ int el_end (int *) ;
+ int * el_in ;
+ int * el_init (int ,int *,int *,int *) ;
+ int * el_out ;
+ int el_set (int *,int ,char*,...) ;
+ int el_source (int *,int *) ;
+ void* fdopen (int,char*) ;
+ int getprompt ;
+ int * hist ;
+ int history ;
+ int history_end (int *) ;
+ int * history_init () ;
+ int histsizeval () ;
+ scalar_t__ iflag ;
+ scalar_t__ isatty (int ) ;
+ char* lookupvar (char*) ;
+ int out2fmt_flush (char*) ;
+ int setenv (char*,char*,int) ;
+ int sethistsize (int ) ;
+ int unsetenv (char*) ;
 
 void
 histedit(void)
 {
 
-#define editing (Eflag || Vflag)
 
-	if (iflag) {
-		if (!hist) {
-			/*
-			 * turn history on
-			 */
-			INTOFF;
-			hist = history_init();
-			INTON;
 
-			if (hist != NULL)
-				sethistsize(histsizeval());
-			else
-				out2fmt_flush("sh: can't initialize history\n");
-		}
-		if (editing && !el && isatty(0)) { /* && isatty(2) ??? */
-			/*
-			 * turn editing on
-			 */
-			char *term;
+ if (iflag) {
+  if (!hist) {
 
-			INTOFF;
-			if (el_in == NULL)
-				el_in = fdopen(0, "r");
-			if (el_out == NULL)
-				el_out = fdopen(2, "w");
-			if (el_in == NULL || el_out == NULL)
-				goto bad;
-			term = lookupvar("TERM");
-			if (term)
-				setenv("TERM", term, 1);
-			else
-				unsetenv("TERM");
-			el = el_init(arg0, el_in, el_out, el_out);
-			if (el != NULL) {
-				if (hist)
-					el_set(el, EL_HIST, history, hist);
-				el_set(el, EL_PROMPT, getprompt);
-				el_set(el, EL_ADDFN, "sh-complete",
-				    "Filename completion",
-				    _el_fn_complete);
-			} else {
+
+
+   INTOFF;
+   hist = history_init();
+   INTON;
+
+   if (hist != ((void*)0))
+    sethistsize(histsizeval());
+   else
+    out2fmt_flush("sh: can't initialize history\n");
+  }
+  if ((Eflag || Vflag) && !el && isatty(0)) {
+
+
+
+   char *term;
+
+   INTOFF;
+   if (el_in == ((void*)0))
+    el_in = fdopen(0, "r");
+   if (el_out == ((void*)0))
+    el_out = fdopen(2, "w");
+   if (el_in == ((void*)0) || el_out == ((void*)0))
+    goto bad;
+   term = lookupvar("TERM");
+   if (term)
+    setenv("TERM", term, 1);
+   else
+    unsetenv("TERM");
+   el = el_init(arg0, el_in, el_out, el_out);
+   if (el != ((void*)0)) {
+    if (hist)
+     el_set(el, EL_HIST, history, hist);
+    el_set(el, EL_PROMPT, getprompt);
+    el_set(el, EL_ADDFN, "sh-complete",
+        "Filename completion",
+        _el_fn_complete);
+   } else {
 bad:
-				out2fmt_flush("sh: can't initialize editing\n");
-			}
-			INTON;
-		} else if (!editing && el) {
-			INTOFF;
-			el_end(el);
-			el = NULL;
-			INTON;
-		}
-		if (el) {
-			if (Vflag)
-				el_set(el, EL_EDITOR, "vi");
-			else if (Eflag)
-				el_set(el, EL_EDITOR, "emacs");
-			el_set(el, EL_BIND, "^I", "sh-complete", NULL);
-			el_source(el, NULL);
-		}
-	} else {
-		INTOFF;
-		if (el) {	/* no editing if not interactive */
-			el_end(el);
-			el = NULL;
-		}
-		if (hist) {
-			history_end(hist);
-			hist = NULL;
-		}
-		INTON;
-	}
+    out2fmt_flush("sh: can't initialize editing\n");
+   }
+   INTON;
+  } else if (!(Eflag || Vflag) && el) {
+   INTOFF;
+   el_end(el);
+   el = ((void*)0);
+   INTON;
+  }
+  if (el) {
+   if (Vflag)
+    el_set(el, EL_EDITOR, "vi");
+   else if (Eflag)
+    el_set(el, EL_EDITOR, "emacs");
+   el_set(el, EL_BIND, "^I", "sh-complete", ((void*)0));
+   el_source(el, ((void*)0));
+  }
+ } else {
+  INTOFF;
+  if (el) {
+   el_end(el);
+   el = ((void*)0);
+  }
+  if (hist) {
+   history_end(hist);
+   hist = ((void*)0);
+  }
+  INTON;
+ }
 }

@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  clear_bit (unsigned long,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  context_map ; 
+ int clear_bit (unsigned long,int ) ;
+ int context_map ;
 
 void __destroy_context(unsigned long ctx)
 {
-	clear_bit(ctx, context_map);
+ clear_bit(ctx, context_map);
 }

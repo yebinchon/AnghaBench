@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct pmb_entry {int /*<<< orphan*/ * link; int /*<<< orphan*/  entry; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PMB_NO_ENTRY ; 
- int /*<<< orphan*/  __clear_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pmb_map ; 
+
+
+
+struct pmb_entry {int * link; int entry; } ;
+
+
+ int PMB_NO_ENTRY ;
+ int __clear_bit (int ,int ) ;
+ int pmb_map ;
 
 __attribute__((used)) static void pmb_free(struct pmb_entry *pmbe)
 {
-	__clear_bit(pmbe->entry, pmb_map);
+ __clear_bit(pmbe->entry, pmb_map);
 
-	pmbe->entry	= PMB_NO_ENTRY;
-	pmbe->link	= NULL;
+ pmbe->entry = PMB_NO_ENTRY;
+ pmbe->link = ((void*)0);
 }

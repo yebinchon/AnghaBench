@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct hx509_collector {int /*<<< orphan*/  lock; } ;
-typedef  int /*<<< orphan*/  hx509_lock ;
 
-/* Variables and functions */
+
+
+
+struct hx509_collector {int lock; } ;
+typedef int hx509_lock ;
+
+
 
 hx509_lock
 _hx509_collector_get_lock(struct hx509_collector *c)

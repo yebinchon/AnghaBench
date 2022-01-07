@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  user ;
-typedef  int /*<<< orphan*/  kfs_file_handle_t ;
-struct TYPE_7__ {int user_cnt; int /*<<< orphan*/  log_pos1_crc32; int /*<<< orphan*/  log_pos1; int /*<<< orphan*/  log_timestamp; } ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int user ;
+typedef int kfs_file_handle_t ;
+struct TYPE_7__ {int user_cnt; int log_pos1_crc32; int log_pos1; int log_timestamp; } ;
 struct TYPE_6__ {struct TYPE_6__* prev_used; struct TYPE_6__* next_used; } ;
 
-/* Variables and functions */
- TYPE_1__* LRU_head ; 
- int /*<<< orphan*/  assert (int) ; 
- TYPE_1__* dl_malloc (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  h_users ; 
- TYPE_3__ header ; 
- int /*<<< orphan*/  hset_intp_init (int /*<<< orphan*/ *) ; 
- int index_users ; 
- int /*<<< orphan*/  jump_log_crc32 ; 
- int /*<<< orphan*/  jump_log_pos ; 
- int /*<<< orphan*/  jump_log_ts ; 
- int load_header (int /*<<< orphan*/ ) ; 
- int log_ts_exact_interval ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  try_init_local_uid () ; 
- int user_cnt ; 
- int /*<<< orphan*/  user_init (TYPE_1__*) ; 
- TYPE_1__* users ; 
- int verbosity ; 
+
+ TYPE_1__* LRU_head ;
+ int assert (int) ;
+ TYPE_1__* dl_malloc (int) ;
+ int fprintf (int ,char*) ;
+ int h_users ;
+ TYPE_3__ header ;
+ int hset_intp_init (int *) ;
+ int index_users ;
+ int jump_log_crc32 ;
+ int jump_log_pos ;
+ int jump_log_ts ;
+ int load_header (int ) ;
+ int log_ts_exact_interval ;
+ int stderr ;
+ int try_init_local_uid () ;
+ int user_cnt ;
+ int user_init (TYPE_1__*) ;
+ TYPE_1__* users ;
+ int verbosity ;
 
 int init_all (kfs_file_handle_t Index) {
   int i;

@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int /*<<< orphan*/  codepage; TYPE_1__* strings; } ;
-typedef  TYPE_2__ string_table ;
-typedef  enum StringPersistence { ____Placeholder_StringPersistence } StringPersistence ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  USHORT ;
-typedef  size_t UINT ;
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int codepage; TYPE_1__* strings; } ;
+typedef TYPE_2__ string_table ;
+typedef enum StringPersistence { ____Placeholder_StringPersistence } StringPersistence ;
+typedef int WCHAR ;
+typedef int USHORT ;
+typedef size_t UINT ;
 struct TYPE_7__ {scalar_t__ nonpersistent_refcount; scalar_t__ persistent_refcount; } ;
-typedef  scalar_t__* LPWSTR ;
+typedef scalar_t__* LPWSTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*,int /*<<< orphan*/ ,size_t) ; 
- scalar_t__ ERROR_SUCCESS ; 
- int MultiByteToWideChar (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*,size_t,scalar_t__*,int) ; 
- int StringPersistent ; 
- int /*<<< orphan*/  debugstr_a (char const*) ; 
- scalar_t__* msi_alloc (int) ; 
- int /*<<< orphan*/  set_st_entry (TYPE_2__*,size_t,scalar_t__*,int,int /*<<< orphan*/ ,int) ; 
- size_t st_find_free_entry (TYPE_2__*) ; 
- scalar_t__ string2id (TYPE_2__*,char const*,size_t*) ; 
+
+ int ERR (char*,int ,size_t) ;
+ scalar_t__ ERROR_SUCCESS ;
+ int MultiByteToWideChar (int ,int ,char const*,size_t,scalar_t__*,int) ;
+ int StringPersistent ;
+ int debugstr_a (char const*) ;
+ scalar_t__* msi_alloc (int) ;
+ int set_st_entry (TYPE_2__*,size_t,scalar_t__*,int,int ,int) ;
+ size_t st_find_free_entry (TYPE_2__*) ;
+ scalar_t__ string2id (TYPE_2__*,char const*,size_t*) ;
 
 __attribute__((used)) static int add_string( string_table *st, UINT n, const char *data, UINT len, USHORT refcount, enum StringPersistence persistence )
 {
@@ -66,8 +66,8 @@ __attribute__((used)) static int add_string( string_table *st, UINT n, const cha
         return -1;
     }
 
-    /* allocate a new string */
-    sz = MultiByteToWideChar( st->codepage, 0, data, len, NULL, 0 );
+
+    sz = MultiByteToWideChar( st->codepage, 0, data, len, ((void*)0), 0 );
     str = msi_alloc( (sz+1)*sizeof(WCHAR) );
     if( !str )
         return -1;

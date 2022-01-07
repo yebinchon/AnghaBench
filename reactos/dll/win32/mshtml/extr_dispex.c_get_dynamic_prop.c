@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int flags; int /*<<< orphan*/  var; int /*<<< orphan*/  name; } ;
-typedef  TYPE_1__ dynamic_prop_t ;
+
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int flags; int var; int name; } ;
+typedef TYPE_1__ dynamic_prop_t ;
 struct TYPE_9__ {int prop_cnt; int buf_size; TYPE_1__* props; } ;
-typedef  TYPE_2__ dispex_dynamic_data_t ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  DispatchEx ;
-typedef  int DWORD ;
-typedef  int BOOL ;
+typedef TYPE_2__ dispex_dynamic_data_t ;
+typedef int WCHAR ;
+typedef int HRESULT ;
+typedef int DispatchEx ;
+typedef int DWORD ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DISP_E_UNKNOWNNAME ; 
- int DYNPROP_DELETED ; 
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  VariantInit (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  debugstr_w (int /*<<< orphan*/  const*) ; 
- int fdexNameCaseInsensitive ; 
- int fdexNameEnsure ; 
- TYPE_2__* get_dynamic_data (int /*<<< orphan*/ *) ; 
- TYPE_1__* heap_alloc (int) ; 
- TYPE_1__* heap_realloc (TYPE_1__*,int) ; 
- int /*<<< orphan*/  heap_strdupW (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  strcmpW (int /*<<< orphan*/ ,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  strcmpiW (int /*<<< orphan*/ ,int /*<<< orphan*/  const*) ; 
+
+ int DISP_E_UNKNOWNNAME ;
+ int DYNPROP_DELETED ;
+ int E_OUTOFMEMORY ;
+ int S_OK ;
+ int TRACE (char*,int ) ;
+ int VariantInit (int *) ;
+ int debugstr_w (int const*) ;
+ int fdexNameCaseInsensitive ;
+ int fdexNameEnsure ;
+ TYPE_2__* get_dynamic_data (int *) ;
+ TYPE_1__* heap_alloc (int) ;
+ TYPE_1__* heap_realloc (TYPE_1__*,int) ;
+ int heap_strdupW (int const*) ;
+ int strcmpW (int ,int const*) ;
+ int strcmpiW (int ,int const*) ;
 
 __attribute__((used)) static HRESULT get_dynamic_prop(DispatchEx *This, const WCHAR *name, DWORD flags, dynamic_prop_t **ret)
 {

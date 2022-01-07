@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  enum AVSampleFormat { ____Placeholder_AVSampleFormat } AVSampleFormat ;
-typedef  int /*<<< orphan*/  AVFilterFormats ;
-typedef  int /*<<< orphan*/  AVFilterContext ;
-typedef  int /*<<< orphan*/  AVFilterChannelLayouts ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
-#define  AV_SAMPLE_FMT_FLTP 129 
-#define  AV_SAMPLE_FMT_NONE 128 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/ * ff_all_channel_counts () ; 
- int /*<<< orphan*/ * ff_all_samplerates () ; 
- int /*<<< orphan*/ * ff_make_format_list (int const*) ; 
- int ff_set_common_channel_layouts (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int ff_set_common_formats (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int ff_set_common_samplerates (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef enum AVSampleFormat { ____Placeholder_AVSampleFormat } AVSampleFormat ;
+typedef int AVFilterFormats ;
+typedef int AVFilterContext ;
+typedef int AVFilterChannelLayouts ;
+
+
+ int AVERROR (int ) ;
+
+
+ int ENOMEM ;
+ int * ff_all_channel_counts () ;
+ int * ff_all_samplerates () ;
+ int * ff_make_format_list (int const*) ;
+ int ff_set_common_channel_layouts (int *,int *) ;
+ int ff_set_common_formats (int *,int *) ;
+ int ff_set_common_samplerates (int *,int *) ;
 
 __attribute__((used)) static int query_formats(AVFilterContext *ctx)
 {
-    AVFilterFormats *formats = NULL;
-    AVFilterChannelLayouts *layouts = NULL;
+    AVFilterFormats *formats = ((void*)0);
+    AVFilterChannelLayouts *layouts = ((void*)0);
     static const enum AVSampleFormat sample_fmts[] = {
-        AV_SAMPLE_FMT_FLTP,
-        AV_SAMPLE_FMT_NONE,
+        129,
+        128,
     };
     int ret;
 

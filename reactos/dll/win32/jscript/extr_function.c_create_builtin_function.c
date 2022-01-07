@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  script_ctx_t ;
-typedef  int /*<<< orphan*/  jsdisp_t ;
-typedef  int /*<<< orphan*/  builtin_invoke_t ;
-typedef  int /*<<< orphan*/  builtin_info_t ;
-typedef  int /*<<< orphan*/  WCHAR ;
-struct TYPE_3__ {int /*<<< orphan*/  dispex; int /*<<< orphan*/  length; } ;
-struct TYPE_4__ {TYPE_1__ function; int /*<<< orphan*/  const* name; int /*<<< orphan*/  proc; } ;
-typedef  TYPE_2__ NativeFunction ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  DWORD ;
 
-/* Variables and functions */
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  NativeFunctionVtbl ; 
- scalar_t__ SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  create_function (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  jsdisp_define_data_property (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jsdisp_release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jsval_number (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jsval_obj (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lengthW ; 
- int /*<<< orphan*/  prototypeW ; 
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int script_ctx_t ;
+typedef int jsdisp_t ;
+typedef int builtin_invoke_t ;
+typedef int builtin_info_t ;
+typedef int WCHAR ;
+struct TYPE_3__ {int dispex; int length; } ;
+struct TYPE_4__ {TYPE_1__ function; int const* name; int proc; } ;
+typedef TYPE_2__ NativeFunction ;
+typedef int HRESULT ;
+typedef int DWORD ;
+
+
+ scalar_t__ FAILED (int ) ;
+ int FALSE ;
+ int NativeFunctionVtbl ;
+ scalar_t__ SUCCEEDED (int ) ;
+ int S_OK ;
+ int create_function (int *,int const*,int *,int,int ,int ,int *,void**) ;
+ int jsdisp_define_data_property (int *,int ,int ,int ) ;
+ int jsdisp_release (int *) ;
+ int jsval_number (int ) ;
+ int jsval_obj (int *) ;
+ int lengthW ;
+ int prototypeW ;
 
 HRESULT create_builtin_function(script_ctx_t *ctx, builtin_invoke_t value_proc, const WCHAR *name,
         const builtin_info_t *builtin_info, DWORD flags, jsdisp_t *prototype, jsdisp_t **ret)
@@ -43,7 +43,7 @@ HRESULT create_builtin_function(script_ctx_t *ctx, builtin_invoke_t value_proc, 
     NativeFunction *function;
     HRESULT hres;
 
-    hres = create_function(ctx, builtin_info, &NativeFunctionVtbl, sizeof(NativeFunction), flags, FALSE, NULL, (void**)&function);
+    hres = create_function(ctx, builtin_info, &NativeFunctionVtbl, sizeof(NativeFunction), flags, FALSE, ((void*)0), (void**)&function);
     if(FAILED(hres))
         return hres;
 

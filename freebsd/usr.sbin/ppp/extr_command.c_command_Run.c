@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct prompt {int dummy; } ;
 struct datalink {int dummy; } ;
 struct bundle {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Commands ; 
- int /*<<< orphan*/  FindExec (struct bundle*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,char const* const*,struct prompt*,struct datalink*) ; 
- int LINE_LEN ; 
- int /*<<< orphan*/  LogCOMMAND ; 
- scalar_t__ arghidden (char const* const*,int) ; 
- scalar_t__ log_IsKept (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  log_Printf (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  strcat (char*,char*) ; 
- size_t strlen (char*) ; 
- int /*<<< orphan*/  strncpy (char*,char const* const,int) ; 
+
+ int Commands ;
+ int FindExec (struct bundle*,int ,int,int ,char const* const*,struct prompt*,struct datalink*) ;
+ int LINE_LEN ;
+ int LogCOMMAND ;
+ scalar_t__ arghidden (char const* const*,int) ;
+ scalar_t__ log_IsKept (int ) ;
+ int log_Printf (int ,char*,char*) ;
+ int strcat (char*,char*) ;
+ size_t strlen (char*) ;
+ int strncpy (char*,char const* const,int) ;
 
 void
 command_Run(struct bundle *bundle, int argc, char const *const *argv,
@@ -45,7 +45,7 @@ command_Run(struct bundle *bundle, int argc, char const *const *argv,
         *buf = '\0';
         n = 0;
       }
-      buf[sizeof buf - 1] = '\0';	/* In case we run out of room in buf */
+      buf[sizeof buf - 1] = '\0';
 
       for (f = 0; f < argc; f++) {
         if (n < sizeof buf - 1 && f)

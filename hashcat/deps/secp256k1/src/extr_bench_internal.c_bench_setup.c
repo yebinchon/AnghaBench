@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  data; int /*<<< orphan*/  ge_y; int /*<<< orphan*/  gej_y; int /*<<< orphan*/  ge_x; int /*<<< orphan*/  gej_x; int /*<<< orphan*/  fe_y; int /*<<< orphan*/  fe_x; int /*<<< orphan*/  scalar_y; int /*<<< orphan*/  scalar_x; } ;
-typedef  TYPE_1__ bench_inv ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHECK (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,unsigned char const*,int) ; 
- int /*<<< orphan*/  secp256k1_fe_set_b32 (int /*<<< orphan*/ *,unsigned char const*) ; 
- int /*<<< orphan*/  secp256k1_ge_set_xo_var (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  secp256k1_gej_set_ge (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  secp256k1_scalar_set_b32 (int /*<<< orphan*/ *,unsigned char const*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int data; int ge_y; int gej_y; int ge_x; int gej_x; int fe_y; int fe_x; int scalar_y; int scalar_x; } ;
+typedef TYPE_1__ bench_inv ;
+
+
+ int CHECK (int ) ;
+ int memcpy (int ,unsigned char const*,int) ;
+ int secp256k1_fe_set_b32 (int *,unsigned char const*) ;
+ int secp256k1_ge_set_xo_var (int *,int *,int) ;
+ int secp256k1_gej_set_ge (int *,int *) ;
+ int secp256k1_scalar_set_b32 (int *,unsigned char const*,int *) ;
 
 void bench_setup(void* arg) {
     bench_inv *data = (bench_inv*)arg;
@@ -39,8 +39,8 @@ void bench_setup(void* arg) {
         0x11, 0x15, 0x17, 0x1b, 0x1d, 0xb1, 0xbf, 0xd3
     };
 
-    secp256k1_scalar_set_b32(&data->scalar_x, init_x, NULL);
-    secp256k1_scalar_set_b32(&data->scalar_y, init_y, NULL);
+    secp256k1_scalar_set_b32(&data->scalar_x, init_x, ((void*)0));
+    secp256k1_scalar_set_b32(&data->scalar_y, init_y, ((void*)0));
     secp256k1_fe_set_b32(&data->fe_x, init_x);
     secp256k1_fe_set_b32(&data->fe_y, init_y);
     CHECK(secp256k1_ge_set_xo_var(&data->ge_x, &data->fe_x, 0));

@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  ASN1_F_PARSE_TAGGING ; 
- int /*<<< orphan*/  ASN1_R_INVALID_MODIFIER ; 
- int /*<<< orphan*/  ASN1_R_INVALID_NUMBER ; 
- int /*<<< orphan*/  ASN1err (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ERR_add_error_data (int,char*,char*) ; 
- int V_ASN1_APPLICATION ; 
- int V_ASN1_CONTEXT_SPECIFIC ; 
- int V_ASN1_PRIVATE ; 
- int V_ASN1_UNIVERSAL ; 
- long strtoul (char const*,char**,int) ; 
+ int ASN1_F_PARSE_TAGGING ;
+ int ASN1_R_INVALID_MODIFIER ;
+ int ASN1_R_INVALID_NUMBER ;
+ int ASN1err (int ,int ) ;
+ int ERR_add_error_data (int,char*,char*) ;
+ int V_ASN1_APPLICATION ;
+ int V_ASN1_CONTEXT_SPECIFIC ;
+ int V_ASN1_PRIVATE ;
+ int V_ASN1_UNIVERSAL ;
+ long strtoul (char const*,char**,int) ;
 
 __attribute__((used)) static int parse_tagging(const char *vstart, int vlen, int *ptag, int *pclass)
 {
@@ -31,7 +23,7 @@ __attribute__((used)) static int parse_tagging(const char *vstart, int vlen, int
     if (!vstart)
         return 0;
     tag_num = strtoul(vstart, &eptr, 10);
-    /* Check we haven't gone past max length: should be impossible */
+
     if (eptr && *eptr && (eptr > vstart + vlen))
         return 0;
     if (tag_num < 0) {
@@ -39,7 +31,7 @@ __attribute__((used)) static int parse_tagging(const char *vstart, int vlen, int
         return 0;
     }
     *ptag = tag_num;
-    /* If we have non numeric characters, parse them */
+
     if (eptr)
         vlen -= eptr - vstart;
     else

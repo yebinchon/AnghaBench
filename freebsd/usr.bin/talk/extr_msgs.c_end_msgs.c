@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct itimerval {int /*<<< orphan*/  it_interval; int /*<<< orphan*/  it_value; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ITIMER_REAL ; 
- int /*<<< orphan*/  SIGALRM ; 
- int /*<<< orphan*/  SIG_DFL ; 
- int /*<<< orphan*/  setitimer (int /*<<< orphan*/ ,struct itimerval*,struct itimerval*) ; 
- int /*<<< orphan*/  signal (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  timerclear (int /*<<< orphan*/ *) ; 
+
+
+
+struct itimerval {int it_interval; int it_value; } ;
+
+
+ int ITIMER_REAL ;
+ int SIGALRM ;
+ int SIG_DFL ;
+ int setitimer (int ,struct itimerval*,struct itimerval*) ;
+ int signal (int ,int ) ;
+ int timerclear (int *) ;
 
 void
 end_msgs(void)
 {
-	struct itimerval itimer;
+ struct itimerval itimer;
 
-	timerclear(&itimer.it_value);
-	timerclear(&itimer.it_interval);
-	setitimer(ITIMER_REAL, &itimer, (struct itimerval *)0);
-	signal(SIGALRM, SIG_DFL);
+ timerclear(&itimer.it_value);
+ timerclear(&itimer.it_interval);
+ setitimer(ITIMER_REAL, &itimer, (struct itimerval *)0);
+ signal(SIGALRM, SIG_DFL);
 }

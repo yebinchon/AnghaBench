@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  intf_thread_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  msg_rc (char*,...) ; 
+
+
+
+typedef int intf_thread_t ;
+
+
+ int _ (char*) ;
+ int msg_rc (char*,...) ;
 
 __attribute__((used)) static void Help( intf_thread_t *p_intf)
 {
     msg_rc("%s", _("+----[ Remote control commands ]"));
-    msg_rc(  "| ");
+    msg_rc( "| ");
     msg_rc("%s", _("| add XYZ  . . . . . . . . . . . . add XYZ to playlist"));
     msg_rc("%s", _("| enqueue XYZ  . . . . . . . . . queue XYZ to playlist"));
     msg_rc("%s", _("| playlist . . . . .  show items currently in playlist"));
@@ -39,7 +39,7 @@ __attribute__((used)) static void Help( intf_thread_t *p_intf)
     msg_rc("%s", _("| chapter [X]  . . . . set/get chapter in current item"));
     msg_rc("%s", _("| chapter_n  . . . . . .  next chapter in current item"));
     msg_rc("%s", _("| chapter_p  . . . .  previous chapter in current item"));
-    msg_rc(  "| ");
+    msg_rc( "| ");
     msg_rc("%s", _("| seek X . . . seek in seconds, for instance `seek 12'"));
     msg_rc("%s", _("| pause  . . . . . . . . . . . . . . . .  toggle pause"));
     msg_rc("%s", _("| fastforward  . . . . . . . .  .  set to maximum rate"));
@@ -55,7 +55,7 @@ __attribute__((used)) static void Help( intf_thread_t *p_intf)
     msg_rc("%s", _("| is_playing . . . .  1 if a stream plays, 0 otherwise"));
     msg_rc("%s", _("| get_title . . . . .  the title of the current stream"));
     msg_rc("%s", _("| get_length . . . .  the length of the current stream"));
-    msg_rc(  "| ");
+    msg_rc( "| ");
     msg_rc("%s", _("| volume [X] . . . . . . . . . .  set/get audio volume"));
     msg_rc("%s", _("| volup [X]  . . . . . . .  raise audio volume X steps"));
     msg_rc("%s", _("| voldown [X]  . . . . . .  lower audio volume X steps"));
@@ -70,10 +70,10 @@ __attribute__((used)) static void Help( intf_thread_t *p_intf)
     msg_rc("%s", _("| record [on|off] . . . . . . . . . . toggle recording"));
     msg_rc("%s", _("| strack [X] . . . . . . . . .  set/get subtitle track"));
     msg_rc("%s", _("| key [hotkey name] . . . . . .  simulate hotkey press"));
-    msg_rc(  "| ");
+    msg_rc( "| ");
     msg_rc("%s", _("| help . . . . . . . . . . . . . . . this help message"));
     msg_rc("%s", _("| logout . . . . . . .  exit (if in socket connection)"));
     msg_rc("%s", _("| quit . . . . . . . . . . . . . . . . . . .  quit vlc"));
-    msg_rc(  "| ");
+    msg_rc( "| ");
     msg_rc("%s", _("+----[ end of help ]"));
 }

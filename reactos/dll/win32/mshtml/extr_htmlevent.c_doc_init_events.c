@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_7__ {int flags; } ;
-struct TYPE_6__ {int /*<<< orphan*/  event_vector; } ;
-typedef  TYPE_1__ HTMLDocumentNode ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  BOOL ;
+struct TYPE_6__ {int event_vector; } ;
+typedef TYPE_1__ HTMLDocumentNode ;
+typedef int HRESULT ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int EVENTID_LAST ; 
- int EVENT_HASDEFAULTHANDLERS ; 
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  ensure_doc_nsevent_handler (TYPE_1__*,unsigned int) ; 
- TYPE_3__* event_info ; 
- int /*<<< orphan*/  heap_alloc_zero (int) ; 
- int /*<<< orphan*/  init_nsevents (TYPE_1__*) ; 
+
+ int EVENTID_LAST ;
+ int EVENT_HASDEFAULTHANDLERS ;
+ int E_OUTOFMEMORY ;
+ scalar_t__ FAILED (int ) ;
+ int S_OK ;
+ int ensure_doc_nsevent_handler (TYPE_1__*,unsigned int) ;
+ TYPE_3__* event_info ;
+ int heap_alloc_zero (int) ;
+ int init_nsevents (TYPE_1__*) ;
 
 HRESULT doc_init_events(HTMLDocumentNode *doc)
 {

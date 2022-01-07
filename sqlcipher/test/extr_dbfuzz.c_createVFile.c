@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {scalar_t__ sz; scalar_t__ zFilename; scalar_t__ a; scalar_t__ nRef; } ;
-typedef  TYPE_1__ VFile ;
+typedef TYPE_1__ VFile ;
 struct TYPE_6__ {TYPE_1__* aFile; } ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef int FILE ;
 
-/* Variables and functions */
- int MX_FILE ; 
- int /*<<< orphan*/  SEEK_END ; 
- int /*<<< orphan*/  fatalError (char*,char const*) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- TYPE_1__* findVFile (char const*) ; 
- int /*<<< orphan*/ * fopen (char const*,char*) ; 
- int fread (scalar_t__,long,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (scalar_t__) ; 
- int /*<<< orphan*/  fseek (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- long ftell (int /*<<< orphan*/ *) ; 
- TYPE_2__ g ; 
- void* malloc (long) ; 
- int /*<<< orphan*/  memcpy (scalar_t__,char const*,int) ; 
- int /*<<< orphan*/  rewind (int /*<<< orphan*/ *) ; 
- scalar_t__ strlen (char const*) ; 
+
+ int MX_FILE ;
+ int SEEK_END ;
+ int fatalError (char*,char const*) ;
+ int fclose (int *) ;
+ TYPE_1__* findVFile (char const*) ;
+ int * fopen (char const*,char*) ;
+ int fread (scalar_t__,long,int,int *) ;
+ int free (scalar_t__) ;
+ int fseek (int *,int ,int ) ;
+ long ftell (int *) ;
+ TYPE_2__ g ;
+ void* malloc (long) ;
+ int memcpy (scalar_t__,char const*,int) ;
+ int rewind (int *) ;
+ scalar_t__ strlen (char const*) ;
 
 __attribute__((used)) static VFile *createVFile(const char *zName, const char *zDiskFile){
   VFile *pNew = findVFile(zName);

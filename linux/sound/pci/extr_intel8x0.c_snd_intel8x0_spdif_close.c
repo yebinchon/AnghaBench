@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct snd_pcm_substream {int dummy; } ;
 struct intel8x0 {scalar_t__ device_type; TYPE_1__* ichd; } ;
-struct TYPE_2__ {int /*<<< orphan*/ * substream; } ;
+struct TYPE_2__ {int * substream; } ;
 
-/* Variables and functions */
- scalar_t__ DEVICE_NFORCE ; 
- int ICHD_SPBAR ; 
- int NVD_SPBAR ; 
- struct intel8x0* snd_pcm_substream_chip (struct snd_pcm_substream*) ; 
+
+ scalar_t__ DEVICE_NFORCE ;
+ int ICHD_SPBAR ;
+ int NVD_SPBAR ;
+ struct intel8x0* snd_pcm_substream_chip (struct snd_pcm_substream*) ;
 
 __attribute__((used)) static int snd_intel8x0_spdif_close(struct snd_pcm_substream *substream)
 {
-	struct intel8x0 *chip = snd_pcm_substream_chip(substream);
-	int idx = chip->device_type == DEVICE_NFORCE ? NVD_SPBAR : ICHD_SPBAR;
+ struct intel8x0 *chip = snd_pcm_substream_chip(substream);
+ int idx = chip->device_type == DEVICE_NFORCE ? NVD_SPBAR : ICHD_SPBAR;
 
-	chip->ichd[idx].substream = NULL;
-	return 0;
+ chip->ichd[idx].substream = ((void*)0);
+ return 0;
 }

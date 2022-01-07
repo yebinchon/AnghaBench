@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int dwControlsAccepted; scalar_t__ dwWaitHint; scalar_t__ dwCheckPoint; scalar_t__ dwServiceSpecificExitCode; scalar_t__ dwWin32ExitCode; scalar_t__ dwCurrentState; int /*<<< orphan*/  dwServiceType; } ;
-typedef  TYPE_1__ SERVICE_STATUS ;
-typedef  scalar_t__ DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- scalar_t__ ERROR_SERVICE_SPECIFIC_ERROR ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  KillService () ; 
- int SERVICE_ACCEPT_PAUSE_CONTINUE ; 
- int SERVICE_ACCEPT_SHUTDOWN ; 
- int SERVICE_ACCEPT_STOP ; 
- scalar_t__ SERVICE_START_PENDING ; 
- scalar_t__ SERVICE_STOPPED ; 
- scalar_t__ SERVICE_STOP_PENDING ; 
- int /*<<< orphan*/  SERVICE_WIN32_OWN_PROCESS ; 
- int /*<<< orphan*/  SetServiceStatus (int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  hstatus ; 
- int /*<<< orphan*/  stderr ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int dwControlsAccepted; scalar_t__ dwWaitHint; scalar_t__ dwCheckPoint; scalar_t__ dwServiceSpecificExitCode; scalar_t__ dwWin32ExitCode; scalar_t__ dwCurrentState; int dwServiceType; } ;
+typedef TYPE_1__ SERVICE_STATUS ;
+typedef scalar_t__ DWORD ;
+typedef int BOOL ;
+
+
+ scalar_t__ ERROR_SERVICE_SPECIFIC_ERROR ;
+ int FALSE ;
+ int KillService () ;
+ int SERVICE_ACCEPT_PAUSE_CONTINUE ;
+ int SERVICE_ACCEPT_SHUTDOWN ;
+ int SERVICE_ACCEPT_STOP ;
+ scalar_t__ SERVICE_START_PENDING ;
+ scalar_t__ SERVICE_STOPPED ;
+ scalar_t__ SERVICE_STOP_PENDING ;
+ int SERVICE_WIN32_OWN_PROCESS ;
+ int SetServiceStatus (int ,TYPE_1__*) ;
+ int TRUE ;
+ int fprintf (int ,char*) ;
+ int hstatus ;
+ int stderr ;
 
 __attribute__((used)) static BOOL UpdateSCMStatus(DWORD dwCurrentState, DWORD dwWin32ExitCode,
                             DWORD dwServiceSpecificExitCode)

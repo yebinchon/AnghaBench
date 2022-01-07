@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  si ;
-struct TYPE_6__ {int /*<<< orphan*/  hProcess; int /*<<< orphan*/  hThread; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int si ;
+struct TYPE_6__ {int hProcess; int hThread; } ;
 struct TYPE_5__ {int member_0; } ;
-typedef  TYPE_1__ STARTUPINFOA ;
-typedef  TYPE_2__ PROCESS_INFORMATION ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  scalar_t__ BOOL ;
+typedef TYPE_1__ STARTUPINFOA ;
+typedef TYPE_2__ PROCESS_INFORMATION ;
+typedef int DWORD ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHECK_CALLED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CLEAR_CALLED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CloseHandle (int /*<<< orphan*/ ) ; 
- scalar_t__ CreateProcessA (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_1__*,TYPE_2__*) ; 
- scalar_t__ GetExitCodeProcess (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GetLastError () ; 
- int /*<<< orphan*/  INFINITE ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  SET_EXPECT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  WaitForSingleObject (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ok (int,char*,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  reportSuccess ; 
- char const* script_name ; 
- int /*<<< orphan*/  sprintf (char*,char*,char const*) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
- int /*<<< orphan*/  wscript_process ; 
+
+ int CHECK_CALLED (int ) ;
+ int CLEAR_CALLED (int ) ;
+ int CloseHandle (int ) ;
+ scalar_t__ CreateProcessA (int *,char*,int *,int *,int ,int ,int *,int *,TYPE_1__*,TYPE_2__*) ;
+ scalar_t__ GetExitCodeProcess (int ,int *) ;
+ int GetLastError () ;
+ int INFINITE ;
+ int MAX_PATH ;
+ int SET_EXPECT (int ) ;
+ int TRUE ;
+ int WaitForSingleObject (int ,int ) ;
+ int ok (int,char*,int ,...) ;
+ int reportSuccess ;
+ char const* script_name ;
+ int sprintf (char*,char*,char const*) ;
+ int win_skip (char*) ;
+ int wscript_process ;
 
 __attribute__((used)) static void run_script_file(const char *file_name, DWORD expected_exit_code)
 {
@@ -52,7 +52,7 @@ __attribute__((used)) static void run_script_file(const char *file_name, DWORD e
 
     SET_EXPECT(reportSuccess);
 
-    bres = CreateProcessA(NULL, command, NULL, NULL, TRUE, 0, NULL, NULL, &si, &pi);
+    bres = CreateProcessA(((void*)0), command, ((void*)0), ((void*)0), TRUE, 0, ((void*)0), ((void*)0), &si, &pi);
     if(!bres) {
         win_skip("script.exe is not available\n");
         CLEAR_CALLED(reportSuccess);

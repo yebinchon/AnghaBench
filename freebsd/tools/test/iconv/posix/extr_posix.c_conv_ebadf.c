@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  iconv_t ;
 
-/* Variables and functions */
- scalar_t__ EBADF ; 
- scalar_t__ errno ; 
- size_t iconv (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int iconv_t ;
+
+
+ scalar_t__ EBADF ;
+ scalar_t__ errno ;
+ size_t iconv (int ,int *,int ,int *,int ) ;
 
 __attribute__((used)) static int
 conv_ebadf(void)
 {
-	iconv_t	cd = (iconv_t)-1;
+ iconv_t cd = (iconv_t)-1;
 
-	errno = 0;
-	return ((iconv(cd, NULL, 0, NULL, 0) == (size_t)-1 && errno == EBADF) ? 0 : 1);
+ errno = 0;
+ return ((iconv(cd, ((void*)0), 0, ((void*)0), 0) == (size_t)-1 && errno == EBADF) ? 0 : 1);
 }

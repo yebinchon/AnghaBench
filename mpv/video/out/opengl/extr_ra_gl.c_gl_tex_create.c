@@ -1,71 +1,71 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct ra_tex_params {int dimensions; int /*<<< orphan*/  initial_data; int /*<<< orphan*/  d; int /*<<< orphan*/  h; int /*<<< orphan*/  w; scalar_t__ src_repeat; scalar_t__ src_linear; TYPE_1__* format; } ;
-struct ra_tex_gl {int own_objects; int /*<<< orphan*/  texture; int /*<<< orphan*/  fbo; int /*<<< orphan*/  target; int /*<<< orphan*/  type; int /*<<< orphan*/  format; int /*<<< orphan*/  internal_format; } ;
+
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct ra_tex_params {int dimensions; int initial_data; int d; int h; int w; scalar_t__ src_repeat; scalar_t__ src_linear; TYPE_1__* format; } ;
+struct ra_tex_gl {int own_objects; int texture; int fbo; int target; int type; int format; int internal_format; } ;
 struct TYPE_9__ {TYPE_2__* format; scalar_t__ downloadable; scalar_t__ blit_dst; scalar_t__ blit_src; scalar_t__ render_dst; } ;
 struct ra_tex {TYPE_3__ params; struct ra_tex_gl* priv; } ;
-struct ra {int /*<<< orphan*/  log; } ;
-struct TYPE_10__ {int mpgl_caps; scalar_t__ (* CheckFramebufferStatus ) (int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* BindFramebuffer ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* FramebufferTexture2D ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* GenFramebuffers ) (int,int /*<<< orphan*/ *) ;int /*<<< orphan*/  (* BindTexture ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* PixelStorei ) (int /*<<< orphan*/ ,int) ;int /*<<< orphan*/  (* TexImage3D ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* TexImage2D ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* TexImage1D ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* TexParameteri ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* GenTextures ) (int,int /*<<< orphan*/ *) ;} ;
-struct TYPE_8__ {int /*<<< orphan*/  renderable; } ;
-struct TYPE_7__ {int /*<<< orphan*/  dummy_format; } ;
-typedef  int /*<<< orphan*/  GLint ;
-typedef  scalar_t__ GLenum ;
-typedef  TYPE_4__ GL ;
+struct ra {int log; } ;
+struct TYPE_10__ {int mpgl_caps; scalar_t__ (* CheckFramebufferStatus ) (int ) ;int (* BindFramebuffer ) (int ,int ) ;int (* FramebufferTexture2D ) (int ,int ,int ,int ,int ) ;int (* GenFramebuffers ) (int,int *) ;int (* BindTexture ) (int ,int ) ;int (* PixelStorei ) (int ,int) ;int (* TexImage3D ) (int ,int ,int ,int ,int ,int ,int ,int ,int ,int ) ;int (* TexImage2D ) (int ,int ,int ,int ,int ,int ,int ,int ,int ) ;int (* TexImage1D ) (int ,int ,int ,int ,int ,int ,int ,int ) ;int (* TexParameteri ) (int ,int ,int ) ;int (* GenTextures ) (int,int *) ;} ;
+struct TYPE_8__ {int renderable; } ;
+struct TYPE_7__ {int dummy_format; } ;
+typedef int GLint ;
+typedef scalar_t__ GLenum ;
+typedef TYPE_4__ GL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GL_CLAMP_TO_EDGE ; 
- int /*<<< orphan*/  GL_COLOR_ATTACHMENT0 ; 
- int /*<<< orphan*/  GL_FRAMEBUFFER ; 
- scalar_t__ GL_FRAMEBUFFER_COMPLETE ; 
- int /*<<< orphan*/  GL_LINEAR ; 
- int /*<<< orphan*/  GL_NEAREST ; 
- int /*<<< orphan*/  GL_REPEAT ; 
- int /*<<< orphan*/  GL_TEXTURE_2D ; 
- int /*<<< orphan*/  GL_TEXTURE_MAG_FILTER ; 
- int /*<<< orphan*/  GL_TEXTURE_MIN_FILTER ; 
- int /*<<< orphan*/  GL_TEXTURE_WRAP_R ; 
- int /*<<< orphan*/  GL_TEXTURE_WRAP_S ; 
- int /*<<< orphan*/  GL_TEXTURE_WRAP_T ; 
- int /*<<< orphan*/  GL_UNPACK_ALIGNMENT ; 
- int MPGL_CAP_FB ; 
- int /*<<< orphan*/  MP_ERR (struct ra*,char*,...) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  gl_check_error (TYPE_4__*,int /*<<< orphan*/ ,char*) ; 
- struct ra_tex* gl_tex_create_blank (struct ra*,struct ra_tex_params const*) ; 
- TYPE_4__* ra_gl_get (struct ra*) ; 
- int /*<<< orphan*/  ra_tex_free (struct ra*,struct ra_tex**) ; 
- int /*<<< orphan*/  stub1 (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub10 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub11 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub12 (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  stub13 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub14 (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub15 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub16 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ stub17 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub18 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub3 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub4 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub5 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub6 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub7 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub8 (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  stub9 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int GL_CLAMP_TO_EDGE ;
+ int GL_COLOR_ATTACHMENT0 ;
+ int GL_FRAMEBUFFER ;
+ scalar_t__ GL_FRAMEBUFFER_COMPLETE ;
+ int GL_LINEAR ;
+ int GL_NEAREST ;
+ int GL_REPEAT ;
+ int GL_TEXTURE_2D ;
+ int GL_TEXTURE_MAG_FILTER ;
+ int GL_TEXTURE_MIN_FILTER ;
+ int GL_TEXTURE_WRAP_R ;
+ int GL_TEXTURE_WRAP_S ;
+ int GL_TEXTURE_WRAP_T ;
+ int GL_UNPACK_ALIGNMENT ;
+ int MPGL_CAP_FB ;
+ int MP_ERR (struct ra*,char*,...) ;
+ int assert (int) ;
+ int gl_check_error (TYPE_4__*,int ,char*) ;
+ struct ra_tex* gl_tex_create_blank (struct ra*,struct ra_tex_params const*) ;
+ TYPE_4__* ra_gl_get (struct ra*) ;
+ int ra_tex_free (struct ra*,struct ra_tex**) ;
+ int stub1 (int,int *) ;
+ int stub10 (int ,int ,int ,int ,int ,int ,int ,int ,int ) ;
+ int stub11 (int ,int ,int ,int ,int ,int ,int ,int ,int ,int ) ;
+ int stub12 (int ,int) ;
+ int stub13 (int ,int ) ;
+ int stub14 (int,int *) ;
+ int stub15 (int ,int ) ;
+ int stub16 (int ,int ,int ,int ,int ) ;
+ scalar_t__ stub17 (int ) ;
+ int stub18 (int ,int ) ;
+ int stub2 (int ,int ) ;
+ int stub3 (int ,int ,int ) ;
+ int stub4 (int ,int ,int ) ;
+ int stub5 (int ,int ,int ) ;
+ int stub6 (int ,int ,int ) ;
+ int stub7 (int ,int ,int ) ;
+ int stub8 (int ,int) ;
+ int stub9 (int ,int ,int ,int ,int ,int ,int ,int ) ;
 
 __attribute__((used)) static struct ra_tex *gl_tex_create(struct ra *ra,
                                     const struct ra_tex_params *params)
@@ -75,10 +75,10 @@ __attribute__((used)) static struct ra_tex *gl_tex_create(struct ra *ra,
 
     struct ra_tex *tex = gl_tex_create_blank(ra, params);
     if (!tex)
-        return NULL;
+        return ((void*)0);
     struct ra_tex_gl *tex_gl = tex->priv;
 
-    tex_gl->own_objects = true;
+    tex_gl->own_objects = 1;
 
     gl->GenTextures(1, &tex_gl->texture);
     gl->BindTexture(tex_gl->target, tex_gl->texture);
@@ -116,8 +116,8 @@ __attribute__((used)) static struct ra_tex *gl_tex_create(struct ra *ra,
 
     gl_check_error(gl, ra->log, "after creating texture");
 
-    // Even blitting needs an FBO in OpenGL for strange reasons.
-    // Download is handled by reading from an FBO.
+
+
     if (tex->params.render_dst || tex->params.blit_src ||
         tex->params.blit_dst || tex->params.downloadable)
     {
@@ -125,7 +125,7 @@ __attribute__((used)) static struct ra_tex *gl_tex_create(struct ra *ra,
             MP_ERR(ra, "Trying to create renderable texture with unsupported "
                    "format.\n");
             ra_tex_free(ra, &tex);
-            return NULL;
+            return ((void*)0);
         }
 
         assert(gl->mpgl_caps & MPGL_CAP_FB);
@@ -141,7 +141,7 @@ __attribute__((used)) static struct ra_tex *gl_tex_create(struct ra *ra,
             MP_ERR(ra, "Error: framebuffer completeness check failed (error=%d).\n",
                    (int)err);
             ra_tex_free(ra, &tex);
-            return NULL;
+            return ((void*)0);
         }
 
 

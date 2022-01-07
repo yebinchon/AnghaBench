@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ ngx_int_t ;
-struct TYPE_13__ {int /*<<< orphan*/  write_event_handler; int /*<<< orphan*/  args; int /*<<< orphan*/  uri; struct TYPE_13__* main; scalar_t__ postponed; scalar_t__ buffered; scalar_t__ aio; TYPE_4__* connection; } ;
-typedef  TYPE_1__ ngx_http_request_t ;
-struct TYPE_14__ {int /*<<< orphan*/  send_lowat; int /*<<< orphan*/  send_timeout; } ;
-typedef  TYPE_2__ ngx_http_core_loc_conf_t ;
-struct TYPE_15__ {int /*<<< orphan*/  log; scalar_t__ delayed; scalar_t__ timedout; } ;
-typedef  TYPE_3__ ngx_event_t ;
-struct TYPE_16__ {int timedout; scalar_t__ buffered; int /*<<< orphan*/  log; TYPE_3__* write; } ;
-typedef  TYPE_4__ ngx_connection_t ;
 
-/* Variables and functions */
- scalar_t__ NGX_ERROR ; 
- int /*<<< orphan*/  NGX_ETIMEDOUT ; 
- scalar_t__ NGX_HTTP_REQUEST_TIME_OUT ; 
- int /*<<< orphan*/  NGX_LOG_DEBUG_HTTP ; 
- int /*<<< orphan*/  NGX_LOG_INFO ; 
- scalar_t__ NGX_OK ; 
- int /*<<< orphan*/  ngx_add_timer (TYPE_3__*,int /*<<< orphan*/ ) ; 
- scalar_t__ ngx_handle_write_event (TYPE_3__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_http_close_request (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_http_core_module ; 
- int /*<<< orphan*/  ngx_http_finalize_request (TYPE_1__*,scalar_t__) ; 
- TYPE_2__* ngx_http_get_module_loc_conf (TYPE_1__*,int /*<<< orphan*/ ) ; 
- scalar_t__ ngx_http_output_filter (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ngx_http_request_empty_handler ; 
- int /*<<< orphan*/  ngx_log_debug0 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ngx_log_debug2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ngx_log_debug3 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ngx_log_error (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
+
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+typedef scalar_t__ ngx_int_t ;
+struct TYPE_13__ {int write_event_handler; int args; int uri; struct TYPE_13__* main; scalar_t__ postponed; scalar_t__ buffered; scalar_t__ aio; TYPE_4__* connection; } ;
+typedef TYPE_1__ ngx_http_request_t ;
+struct TYPE_14__ {int send_lowat; int send_timeout; } ;
+typedef TYPE_2__ ngx_http_core_loc_conf_t ;
+struct TYPE_15__ {int log; scalar_t__ delayed; scalar_t__ timedout; } ;
+typedef TYPE_3__ ngx_event_t ;
+struct TYPE_16__ {int timedout; scalar_t__ buffered; int log; TYPE_3__* write; } ;
+typedef TYPE_4__ ngx_connection_t ;
+
+
+ scalar_t__ NGX_ERROR ;
+ int NGX_ETIMEDOUT ;
+ scalar_t__ NGX_HTTP_REQUEST_TIME_OUT ;
+ int NGX_LOG_DEBUG_HTTP ;
+ int NGX_LOG_INFO ;
+ scalar_t__ NGX_OK ;
+ int ngx_add_timer (TYPE_3__*,int ) ;
+ scalar_t__ ngx_handle_write_event (TYPE_3__*,int ) ;
+ int ngx_http_close_request (TYPE_1__*,int ) ;
+ int ngx_http_core_module ;
+ int ngx_http_finalize_request (TYPE_1__*,scalar_t__) ;
+ TYPE_2__* ngx_http_get_module_loc_conf (TYPE_1__*,int ) ;
+ scalar_t__ ngx_http_output_filter (TYPE_1__*,int *) ;
+ int ngx_http_request_empty_handler ;
+ int ngx_log_debug0 (int ,int ,int ,char*) ;
+ int ngx_log_debug2 (int ,int ,int ,char*,int *,int *) ;
+ int ngx_log_debug3 (int ,int ,int ,char*,scalar_t__,int *,int *) ;
+ int ngx_log_error (int ,int ,int ,char*) ;
 
 __attribute__((used)) static void
 ngx_http_writer(ngx_http_request_t *r)
 {
-    ngx_int_t                  rc;
-    ngx_event_t               *wev;
-    ngx_connection_t          *c;
-    ngx_http_core_loc_conf_t  *clcf;
+    ngx_int_t rc;
+    ngx_event_t *wev;
+    ngx_connection_t *c;
+    ngx_http_core_loc_conf_t *clcf;
 
     c = r->connection;
     wev = c->write;
@@ -84,7 +84,7 @@ ngx_http_writer(ngx_http_request_t *r)
         return;
     }
 
-    rc = ngx_http_output_filter(r, NULL);
+    rc = ngx_http_output_filter(r, ((void*)0));
 
     ngx_log_debug3(NGX_LOG_DEBUG_HTTP, c->log, 0,
                    "http writer output filter: %i, \"%V?%V\"",

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {char* ptr; int len; } ;
-typedef  TYPE_1__ xmlstr_t ;
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  DWORD ;
+typedef TYPE_1__ xmlstr_t ;
+typedef char WCHAR ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  get_olemisc_value (char const*,int) ; 
+
+ int get_olemisc_value (char const*,int) ;
 
 __attribute__((used)) static DWORD parse_com_class_misc(const xmlstr_t *value)
 {
@@ -25,7 +25,7 @@ __attribute__((used)) static DWORD parse_com_class_misc(const xmlstr_t *value)
     DWORD flags = 0;
     int i = 0;
 
-    /* it's comma separated list of flags */
+
     while (i < value->len)
     {
         start = str;
@@ -33,7 +33,7 @@ __attribute__((used)) static DWORD parse_com_class_misc(const xmlstr_t *value)
 
         flags |= get_olemisc_value(start, str-start);
 
-        /* skip separator */
+
         str++;
         i++;
     }

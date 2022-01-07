@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_4__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  gint64 ;
-struct TYPE_7__ {int /*<<< orphan*/  fs_mgr; int /*<<< orphan*/  commit_mgr; } ;
-struct TYPE_6__ {int /*<<< orphan*/  ctime; int /*<<< orphan*/  creator_name; int /*<<< orphan*/  root_id; int /*<<< orphan*/  parent_id; } ;
-typedef  TYPE_1__ SeafCommit ;
-typedef  int /*<<< orphan*/  GError ;
 
-/* Variables and functions */
- int diff_parents_with_path (TYPE_1__*,char const*,char const*,int,char const*,char*,char*,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  g_clear_error (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  g_free (char*) ; 
- char* g_strdup (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (char*,char const*,int) ; 
- TYPE_4__* seaf ; 
- TYPE_1__* seaf_commit_manager_get_commit (int /*<<< orphan*/ ,char const*,int,char*) ; 
- int /*<<< orphan*/  seaf_commit_unref (TYPE_1__*) ; 
- char* seaf_fs_manager_path_to_obj_id (int /*<<< orphan*/ ,char const*,int,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
+
+typedef struct TYPE_7__ TYPE_4__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int gint64 ;
+struct TYPE_7__ {int fs_mgr; int commit_mgr; } ;
+struct TYPE_6__ {int ctime; int creator_name; int root_id; int parent_id; } ;
+typedef TYPE_1__ SeafCommit ;
+typedef int GError ;
+
+
+ int diff_parents_with_path (TYPE_1__*,char const*,char const*,int,char const*,char*,char*,int **) ;
+ int g_clear_error (int **) ;
+ int g_free (char*) ;
+ char* g_strdup (int ) ;
+ int memcpy (char*,char const*,int) ;
+ TYPE_4__* seaf ;
+ TYPE_1__* seaf_commit_manager_get_commit (int ,char const*,int,char*) ;
+ int seaf_commit_unref (TYPE_1__*) ;
+ char* seaf_fs_manager_path_to_obj_id (int ,char const*,int,int ,char const*,int *,int **) ;
 
 __attribute__((used)) static int
 get_file_modifier_mtime_v0 (const char *repo_id, const char *store_id, int version,
@@ -35,13 +35,13 @@ get_file_modifier_mtime_v0 (const char *repo_id, const char *store_id, int versi
                             char **modifier, gint64 *mtime)
 {
     char commit_id[41];
-    SeafCommit *commit = NULL;
-    char *file_id = NULL;
+    SeafCommit *commit = ((void*)0);
+    char *file_id = ((void*)0);
     int changed;
     int ret = 0;
-    GError *error = NULL;
+    GError *error = ((void*)0);
 
-    *modifier = NULL;
+    *modifier = ((void*)0);
     *mtime = 0;
 
     memcpy (commit_id, head, 41);
@@ -55,7 +55,7 @@ get_file_modifier_mtime_v0 (const char *repo_id, const char *store_id, int versi
             break;
         }
 
-        /* We hit the initial commit. */
+
         if (!commit->parent_id)
             break;
 
@@ -63,14 +63,14 @@ get_file_modifier_mtime_v0 (const char *repo_id, const char *store_id, int versi
                                                   store_id, version,
                                                   commit->root_id,
                                                   path,
-                                                  NULL,
+                                                  ((void*)0),
                                                   &error);
         if (error) {
             g_clear_error (&error);
             ret = -1;
             break;
         }
-        /* We expect commit to have this file. */
+
         if (!file_id) {
             ret = -1;
             break;
@@ -91,9 +91,9 @@ get_file_modifier_mtime_v0 (const char *repo_id, const char *store_id, int versi
             *mtime = commit->ctime;
             break;
         } else {
-            /* If this commit doesn't change the file, commit_id will be set
-             * to the parent commit to traverse.
-             */
+
+
+
             g_free (file_id);
             seaf_commit_unref (commit);
         }

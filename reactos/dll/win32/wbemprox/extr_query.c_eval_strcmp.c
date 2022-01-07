@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int UINT ;
-typedef  int LONGLONG ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*,int) ; 
-#define  OP_EQ 134 
-#define  OP_GE 133 
-#define  OP_GT 132 
-#define  OP_LE 131 
-#define  OP_LIKE 130 
-#define  OP_LT 129 
-#define  OP_NE 128 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  WBEM_E_INVALID_QUERY ; 
- int eval_like (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*) ; 
- int strcmpW (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*) ; 
+
+
+
+typedef int WCHAR ;
+typedef int UINT ;
+typedef int LONGLONG ;
+typedef int HRESULT ;
+
+
+ int ERR (char*,int) ;
+
+
+
+
+
+
+
+ int S_OK ;
+ int WBEM_E_INVALID_QUERY ;
+ int eval_like (int const*,int const*) ;
+ int strcmpW (int const*,int const*) ;
 
 __attribute__((used)) static HRESULT eval_strcmp( UINT op, const WCHAR *lstr, const WCHAR *rstr, LONGLONG *val )
 {
@@ -38,25 +38,25 @@ __attribute__((used)) static HRESULT eval_strcmp( UINT op, const WCHAR *lstr, co
     }
     switch (op)
     {
-    case OP_EQ:
+    case 134:
         *val = !strcmpW( lstr, rstr );
         break;
-    case OP_GT:
+    case 132:
         *val = strcmpW( lstr, rstr ) > 0;
         break;
-    case OP_LT:
+    case 129:
         *val = strcmpW( lstr, rstr ) < 0;
         break;
-    case OP_LE:
+    case 131:
         *val = strcmpW( lstr, rstr ) <= 0;
         break;
-    case OP_GE:
+    case 133:
         *val = strcmpW( lstr, rstr ) >= 0;
         break;
-    case OP_NE:
+    case 128:
         *val = strcmpW( lstr, rstr );
         break;
-    case OP_LIKE:
+    case 130:
         *val = eval_like( lstr, rstr );
         break;
     default:

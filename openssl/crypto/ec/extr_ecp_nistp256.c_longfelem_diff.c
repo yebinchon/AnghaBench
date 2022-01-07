@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__* longfelem ;
-typedef  int limb ;
 
-/* Variables and functions */
+
+
+
+typedef scalar_t__* longfelem ;
+typedef int limb ;
+
+
 
 __attribute__((used)) static void longfelem_diff(longfelem out, const longfelem in)
 {
@@ -26,7 +26,7 @@ __attribute__((used)) static void longfelem_diff(longfelem out, const longfelem 
         (((limb) 1) << 6);
     static const limb two70m6 = (((limb) 1) << 70) - (((limb) 1) << 6);
 
-    /* add 0 mod p to avoid underflow */
+
     out[0] += two70m8p6;
     out[1] += two70p40;
     out[2] += two70;
@@ -36,7 +36,7 @@ __attribute__((used)) static void longfelem_diff(longfelem out, const longfelem 
     out[6] += two70m6;
     out[7] += two70m6;
 
-    /* in[i] < 7*2^67 < 2^70 - 2^40 - 2^38 + 2^6 */
+
     out[0] -= in[0];
     out[1] -= in[1];
     out[2] -= in[2];

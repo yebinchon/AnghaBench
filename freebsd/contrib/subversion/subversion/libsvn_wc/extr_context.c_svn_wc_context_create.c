@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  close_db_on_destroy; int /*<<< orphan*/ * state_pool; int /*<<< orphan*/  db; } ;
-typedef  TYPE_1__ svn_wc_context_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_config_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  TRUE ; 
- TYPE_1__* apr_pcalloc (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  apr_pool_cleanup_null ; 
- int /*<<< orphan*/  apr_pool_cleanup_register (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  close_ctx_apr ; 
- int /*<<< orphan*/  svn_wc__db_open (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int close_db_on_destroy; int * state_pool; int db; } ;
+typedef TYPE_1__ svn_wc_context_t ;
+typedef int svn_error_t ;
+typedef int svn_config_t ;
+typedef int apr_pool_t ;
+
+
+ int FALSE ;
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int TRUE ;
+ TYPE_1__* apr_pcalloc (int *,int) ;
+ int apr_pool_cleanup_null ;
+ int apr_pool_cleanup_register (int *,TYPE_1__*,int ,int ) ;
+ int close_ctx_apr ;
+ int svn_wc__db_open (int *,int *,int ,int ,int *,int *) ;
 
 svn_error_t *
 svn_wc_context_create(svn_wc_context_t **wc_ctx,
@@ -36,9 +36,9 @@ svn_wc_context_create(svn_wc_context_t **wc_ctx,
 {
   svn_wc_context_t *ctx = apr_pcalloc(result_pool, sizeof(*ctx));
 
-  /* Create the state_pool, and open up a wc_db in it.
-   * Since config contains a private mutable member but C doesn't support
-   * we need to make it writable */
+
+
+
   ctx->state_pool = result_pool;
   SVN_ERR(svn_wc__db_open(&ctx->db, (svn_config_t *)config,
                           FALSE, TRUE, ctx->state_pool, scratch_pool));

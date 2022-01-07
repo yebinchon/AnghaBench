@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  long_buf ;
-struct TYPE_6__ {char* member_0; int member_2; int member_4; int member_5; int member_6; int member_7; int member_8; int member_10; int member_12; int member_13; int member_14; int member_15; char* member_16; char* member_17; char* member_18; char* member_19; char* member_20; char* member_21; int /*<<< orphan*/  member_11; int /*<<< orphan*/  member_9; int /*<<< orphan*/  member_3; int /*<<< orphan*/  member_1; } ;
-typedef  TYPE_1__ crack_url_test_t ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int long_buf ;
+struct TYPE_6__ {char* member_0; int member_2; int member_4; int member_5; int member_6; int member_7; int member_8; int member_10; int member_12; int member_13; int member_14; int member_15; char* member_16; char* member_17; char* member_18; char* member_19; char* member_20; char* member_21; int member_11; int member_9; int member_3; int member_1; } ;
+typedef TYPE_1__ crack_url_test_t ;
 struct TYPE_7__ {char* lpszExtraInfo; char* lpszScheme; } ;
-typedef  TYPE_2__ URL_COMPONENTSA ;
-typedef  scalar_t__ BOOL ;
+typedef TYPE_2__ URL_COMPONENTSA ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- scalar_t__ ERROR_INSUFFICIENT_BUFFER ; 
- scalar_t__ GetLastError () ; 
- int /*<<< orphan*/  INTERNET_SCHEME_HTTP ; 
- scalar_t__ InternetCrackUrlA (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  memset (char*,char,int) ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  strcat (char*,char*) ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
- int /*<<< orphan*/  strlen (char*) ; 
- int /*<<< orphan*/  test_crack_url (TYPE_1__*) ; 
- int /*<<< orphan*/  zero_compsA (TYPE_2__*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+ scalar_t__ ERROR_INSUFFICIENT_BUFFER ;
+ scalar_t__ GetLastError () ;
+ int INTERNET_SCHEME_HTTP ;
+ scalar_t__ InternetCrackUrlA (char*,int ,int ,TYPE_2__*) ;
+ int memset (char*,char,int) ;
+ int ok (int,char*,scalar_t__,scalar_t__) ;
+ int strcat (char*,char*) ;
+ int strcpy (char*,char*) ;
+ int strlen (char*) ;
+ int test_crack_url (TYPE_1__*) ;
+ int zero_compsA (TYPE_2__*,int,int ,int ,int ,int ,int) ;
 
 __attribute__((used)) static void test_long_url(void)
 {

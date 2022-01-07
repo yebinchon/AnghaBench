@@ -1,74 +1,74 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct flock {scalar_t__ l_len; scalar_t__ l_start; int /*<<< orphan*/  l_whence; int /*<<< orphan*/  l_type; } ;
-struct TYPE_7__ {int interval; scalar_t__ log_max_size; int backup_num; int /*<<< orphan*/  logname; int /*<<< orphan*/ * backup; int /*<<< orphan*/  time_now; } ;
-typedef  TYPE_1__ ngx_pipe_rollback_conf_t ;
-typedef  int ngx_int_t ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct flock {scalar_t__ l_len; scalar_t__ l_start; int l_whence; int l_type; } ;
+struct TYPE_7__ {int interval; scalar_t__ log_max_size; int backup_num; int logname; int * backup; int time_now; } ;
+typedef TYPE_1__ ngx_pipe_rollback_conf_t ;
+typedef int ngx_int_t ;
 struct TYPE_8__ {int st_ctime; scalar_t__ st_size; } ;
-typedef  TYPE_2__ ngx_file_info_t ;
-struct TYPE_9__ {int /*<<< orphan*/  log; } ;
-typedef  TYPE_3__ ngx_cycle_t ;
+typedef TYPE_2__ ngx_file_info_t ;
+struct TYPE_9__ {int log; } ;
+typedef TYPE_3__ ngx_cycle_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  F_SETLKW ; 
- int /*<<< orphan*/  F_WRLCK ; 
- int /*<<< orphan*/  NGX_FILE_OPEN ; 
- int /*<<< orphan*/  NGX_FILE_RDWR ; 
- int /*<<< orphan*/  NGX_LOG_EMERG ; 
- int /*<<< orphan*/  NGX_LOG_INFO ; 
- int /*<<< orphan*/  NGX_LOG_WARN ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int fcntl (int,int /*<<< orphan*/ ,struct flock*) ; 
- int /*<<< orphan*/  ngx_close_file (int) ; 
- int /*<<< orphan*/  ngx_errno ; 
- int ngx_file_info (int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  ngx_log_error (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,...) ; 
- int ngx_open_file (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_rename_file (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int ngx_time () ; 
+
+ int F_SETLKW ;
+ int F_WRLCK ;
+ int NGX_FILE_OPEN ;
+ int NGX_FILE_RDWR ;
+ int NGX_LOG_EMERG ;
+ int NGX_LOG_INFO ;
+ int NGX_LOG_WARN ;
+ int SEEK_SET ;
+ int fcntl (int,int ,struct flock*) ;
+ int ngx_close_file (int) ;
+ int ngx_errno ;
+ int ngx_file_info (int ,TYPE_2__*) ;
+ int ngx_log_error (int ,int ,int ,char*,int ,...) ;
+ int ngx_open_file (int ,int ,int ,int ) ;
+ int ngx_rename_file (int ,int ) ;
+ int ngx_time () ;
 
 void
 ngx_pipe_do_rollback(ngx_cycle_t *cycle, ngx_pipe_rollback_conf_t *rbcf)
 {
-    int             fd;
-    struct flock    lock;
-    int             ret;
-    ngx_int_t       i;
+    int fd;
+    struct flock lock;
+    int ret;
+    ngx_int_t i;
     ngx_file_info_t sb;
-    ngx_int_t       need_do = 0;
+    ngx_int_t need_do = 0;
 
     fd = ngx_open_file(rbcf->logname, NGX_FILE_RDWR, NGX_FILE_OPEN, 0);
     if (fd < 0) {
-        //open lock file failed just no need rollback
+
         return;
     }
 
-    lock.l_type     = F_WRLCK;
-    lock.l_whence   = SEEK_SET;
-    lock.l_start    = 0;
-    lock.l_len      = 0;
+    lock.l_type = F_WRLCK;
+    lock.l_whence = SEEK_SET;
+    lock.l_start = 0;
+    lock.l_len = 0;
 
     ret = fcntl(fd, F_SETLKW, &lock);
     if (ret < 0) {
         ngx_close_file(fd);
-        //lock failed just no need rollback
+
         return;
     }
 
-    //check time
+
     if (rbcf->interval >= 0) {
         if (ngx_file_info(rbcf->backup[0], &sb) == -1) {
             need_do = 1;
@@ -92,7 +92,7 @@ ngx_pipe_do_rollback(ngx_cycle_t *cycle, ngx_pipe_rollback_conf_t *rbcf)
                       "no need check rollback [%s] time: no interval", rbcf->logname);
     }
 
-    //check size
+
     if (rbcf->log_max_size > 0) {
         if (ngx_file_info(rbcf->logname, &sb) == 0 && (sb.st_size >= rbcf->log_max_size)) {
             need_do = 1;

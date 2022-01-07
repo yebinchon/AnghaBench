@@ -1,19 +1,11 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int FILESYSTEM_PREFIX_LEN (char const*) ; 
- scalar_t__ ISSLASH (char const) ; 
+ int FILESYSTEM_PREFIX_LEN (char const*) ;
+ scalar_t__ ISSLASH (char const) ;
 
 char *
 base_name (char const *name)
@@ -24,23 +16,23 @@ base_name (char const *name)
   for (p = base; *p; p++)
     {
       if (ISSLASH (*p))
-	{
-	  /* Treat multiple adjacent slashes like a single slash.  */
-	  do p++;
-	  while (ISSLASH (*p));
+ {
 
-	  /* If the file name ends in slash, use the trailing slash as
-	     the basename if no non-slashes have been found.  */
-	  if (! *p)
-	    {
-	      if (ISSLASH (*base))
-		base = p - 1;
-	      break;
-	    }
+   do p++;
+   while (ISSLASH (*p));
 
-	  /* *P is a non-slash preceded by a slash.  */
-	  base = p;
-	}
+
+
+   if (! *p)
+     {
+       if (ISSLASH (*base))
+  base = p - 1;
+       break;
+     }
+
+
+   base = p;
+ }
     }
 
   return (char *) base;

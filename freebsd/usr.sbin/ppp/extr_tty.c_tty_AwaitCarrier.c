@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_6__ {scalar_t__ state; } ;
 struct TYPE_4__ {scalar_t__ necessity; } ;
 struct TYPE_5__ {TYPE_1__ cd; } ;
 struct ttydevice {int mbits; scalar_t__ carrier_seconds; TYPE_3__ Timer; TYPE_2__ dev; } ;
-struct physical {int /*<<< orphan*/  handler; } ;
+struct physical {int handler; } ;
 
-/* Variables and functions */
- int CARRIER_LOST ; 
- int CARRIER_OK ; 
- int CARRIER_PENDING ; 
- scalar_t__ CD_NOTREQUIRED ; 
- scalar_t__ Online (struct ttydevice*) ; 
- scalar_t__ TIMER_STOPPED ; 
- struct ttydevice* device2tty (int /*<<< orphan*/ ) ; 
- scalar_t__ physical_IsSync (struct physical*) ; 
- int /*<<< orphan*/  tty_StartTimer (struct physical*) ; 
+
+ int CARRIER_LOST ;
+ int CARRIER_OK ;
+ int CARRIER_PENDING ;
+ scalar_t__ CD_NOTREQUIRED ;
+ scalar_t__ Online (struct ttydevice*) ;
+ scalar_t__ TIMER_STOPPED ;
+ struct ttydevice* device2tty (int ) ;
+ scalar_t__ physical_IsSync (struct physical*) ;
+ int tty_StartTimer (struct physical*) ;
 
 __attribute__((used)) static int
 tty_AwaitCarrier(struct physical *p)
@@ -43,7 +43,7 @@ tty_AwaitCarrier(struct physical *p)
       dev->carrier_seconds = 0;
       tty_StartTimer(p);
     }
-    return CARRIER_PENDING;			/* Not yet ! */
+    return CARRIER_PENDING;
   }
 
   return Online(dev) ? CARRIER_OK : CARRIER_LOST;

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int /*<<< orphan*/  ocs_textbuf_t ;
-struct TYPE_3__ {int /*<<< orphan*/ * buffer; } ;
-typedef  TYPE_1__ ocs_textbuf_segment_t ;
 
-/* Variables and functions */
- TYPE_1__* ocs_textbuf_get_segment (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef int ocs_textbuf_t ;
+struct TYPE_3__ {int * buffer; } ;
+typedef TYPE_1__ ocs_textbuf_segment_t ;
+
+
+ TYPE_1__* ocs_textbuf_get_segment (int *,int ) ;
 
 uint8_t *ocs_textbuf_ext_get_buffer(ocs_textbuf_t *textbuf, uint32_t idx)
 {
-	ocs_textbuf_segment_t *segment = ocs_textbuf_get_segment(textbuf, idx);
-	if (segment == NULL) {
-		return NULL;
-	}
-	return segment->buffer;
+ ocs_textbuf_segment_t *segment = ocs_textbuf_get_segment(textbuf, idx);
+ if (segment == ((void*)0)) {
+  return ((void*)0);
+ }
+ return segment->buffer;
 }

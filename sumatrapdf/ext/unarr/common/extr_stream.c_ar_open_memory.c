@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct MemoryStream {size_t length; scalar_t__ offset; void const* data; } ;
-typedef  int /*<<< orphan*/  ar_stream ;
+typedef int ar_stream ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * ar_open_stream (struct MemoryStream*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- struct MemoryStream* malloc (int) ; 
- int /*<<< orphan*/  memory_close ; 
- int /*<<< orphan*/  memory_read ; 
- int /*<<< orphan*/  memory_seek ; 
- int /*<<< orphan*/  memory_tell ; 
+
+ int * ar_open_stream (struct MemoryStream*,int ,int ,int ,int ) ;
+ struct MemoryStream* malloc (int) ;
+ int memory_close ;
+ int memory_read ;
+ int memory_seek ;
+ int memory_tell ;
 
 ar_stream *ar_open_memory(const void *data, size_t datalen)
 {
     struct MemoryStream *stm = malloc(sizeof(struct MemoryStream));
     if (!stm)
-        return NULL;
+        return ((void*)0);
     stm->data = data;
     stm->length = datalen;
     stm->offset = 0;

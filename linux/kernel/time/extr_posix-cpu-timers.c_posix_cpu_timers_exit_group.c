@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct task_struct {TYPE_1__* signal; } ;
-struct TYPE_2__ {int /*<<< orphan*/  posix_cputimers; } ;
+struct TYPE_2__ {int posix_cputimers; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cleanup_timers (int /*<<< orphan*/ *) ; 
+
+ int cleanup_timers (int *) ;
 
 void posix_cpu_timers_exit_group(struct task_struct *tsk)
 {
-	cleanup_timers(&tsk->signal->posix_cputimers);
+ cleanup_timers(&tsk->signal->posix_cputimers);
 }

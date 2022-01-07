@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct net_device {int dummy; } ;
 struct net {int dummy; } ;
 struct in_device {int dummy; } ;
 
-/* Variables and functions */
- struct net_device* __dev_get_by_index (struct net*,int) ; 
- int /*<<< orphan*/  dev_base_lock ; 
- struct in_device* in_dev_get (struct net_device*) ; 
- int /*<<< orphan*/  read_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  read_unlock (int /*<<< orphan*/ *) ; 
+
+ struct net_device* __dev_get_by_index (struct net*,int) ;
+ int dev_base_lock ;
+ struct in_device* in_dev_get (struct net_device*) ;
+ int read_lock (int *) ;
+ int read_unlock (int *) ;
 
 struct in_device *inetdev_by_index(struct net *net, int ifindex)
 {
-	struct net_device *dev;
-	struct in_device *in_dev = NULL;
-	read_lock(&dev_base_lock);
-	dev = __dev_get_by_index(net, ifindex);
-	if (dev)
-		in_dev = in_dev_get(dev);
-	read_unlock(&dev_base_lock);
-	return in_dev;
+ struct net_device *dev;
+ struct in_device *in_dev = ((void*)0);
+ read_lock(&dev_base_lock);
+ dev = __dev_get_by_index(net, ifindex);
+ if (dev)
+  in_dev = in_dev_get(dev);
+ read_unlock(&dev_base_lock);
+ return in_dev;
 }

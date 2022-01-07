@@ -1,29 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  COMPRESSED ; 
- int /*<<< orphan*/  COMPRESSED_SIZE ; 
- int /*<<< orphan*/  DISPLAY (char*,...) ; 
- int /*<<< orphan*/  EXPECTED ; 
- size_t ZSTD_decompress (char* const,size_t const,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- size_t const ZSTD_error_prefix_unknown ; 
- int /*<<< orphan*/  ZSTD_getErrorName (size_t const) ; 
- scalar_t__ ZSTD_isError (size_t const) ; 
- int /*<<< orphan*/  free (char* const) ; 
- char* malloc (size_t const) ; 
- scalar_t__ memcmp (int /*<<< orphan*/ ,char* const,size_t const) ; 
- size_t strlen (int /*<<< orphan*/ ) ; 
+ int COMPRESSED ;
+ int COMPRESSED_SIZE ;
+ int DISPLAY (char*,...) ;
+ int EXPECTED ;
+ size_t ZSTD_decompress (char* const,size_t const,int ,int ) ;
+ size_t const ZSTD_error_prefix_unknown ;
+ int ZSTD_getErrorName (size_t const) ;
+ scalar_t__ ZSTD_isError (size_t const) ;
+ int free (char* const) ;
+ char* malloc (size_t const) ;
+ scalar_t__ memcmp (int ,char* const,size_t const) ;
+ size_t strlen (int ) ;
 
 __attribute__((used)) static int testSimpleAPI(void)
 {

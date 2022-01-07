@@ -1,59 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  time_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int time_t ;
 struct tm {int dummy; } ;
-typedef  int UINT32 ;
-struct TYPE_2__ {int /*<<< orphan*/  Filename; } ;
-
-/* Variables and functions */
-#define  ASL_FILE_ASM_INCLUDE_OUTPUT 133 
-#define  ASL_FILE_ASM_SOURCE_OUTPUT 132 
-#define  ASL_FILE_C_INCLUDE_OUTPUT 131 
-#define  ASL_FILE_C_OFFSET_OUTPUT 130 
-#define  ASL_FILE_C_SOURCE_OUTPUT 129 
-#define  ASL_FILE_HEX_OUTPUT 128 
- size_t ASL_FILE_INPUT ; 
- TYPE_1__* AslGbl_Files ; 
- int /*<<< orphan*/  AslGbl_HexOutputFlag ; 
- int /*<<< orphan*/  FlPrintFile (int,char*,...) ; 
- int /*<<< orphan*/  HEX_OUTPUT_ASL ; 
- int /*<<< orphan*/  HEX_OUTPUT_ASM ; 
- int /*<<< orphan*/  HEX_OUTPUT_C ; 
- int /*<<< orphan*/  asctime (struct tm*) ; 
- struct tm* localtime (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  time (int /*<<< orphan*/ *) ; 
+typedef int UINT32 ;
+struct TYPE_2__ {int Filename; } ;
+ size_t ASL_FILE_INPUT ;
+ TYPE_1__* AslGbl_Files ;
+ int AslGbl_HexOutputFlag ;
+ int FlPrintFile (int,char*,...) ;
+ int HEX_OUTPUT_ASL ;
+ int HEX_OUTPUT_ASM ;
+ int HEX_OUTPUT_C ;
+ int asctime (struct tm*) ;
+ struct tm* localtime (int *) ;
+ int time (int *) ;
 
 void
 AslCompilerFileHeader (
-    UINT32                  FileId)
+    UINT32 FileId)
 {
-    struct tm               *NewTime;
-    time_t                  Aclock;
-    char                    *Prefix = "";
+    struct tm *NewTime;
+    time_t Aclock;
+    char *Prefix = "";
 
 
-    /* Set line prefix depending on the destination file type */
+
 
     switch (FileId)
     {
-    case ASL_FILE_ASM_SOURCE_OUTPUT:
-    case ASL_FILE_ASM_INCLUDE_OUTPUT:
+    case 132:
+    case 133:
 
         Prefix = "; ";
         break;
 
-    case ASL_FILE_HEX_OUTPUT:
+    case 128:
 
         if (AslGbl_HexOutputFlag == HEX_OUTPUT_ASM)
         {
@@ -66,21 +58,21 @@ AslCompilerFileHeader (
         }
         break;
 
-    case ASL_FILE_C_SOURCE_OUTPUT:
-    case ASL_FILE_C_OFFSET_OUTPUT:
-    case ASL_FILE_C_INCLUDE_OUTPUT:
+    case 129:
+    case 130:
+    case 131:
 
         Prefix = " * ";
         break;
 
     default:
 
-        /* No other output types supported */
+
 
         break;
     }
 
-    /* Compilation header with timestamp */
+
 
     (void) time (&Aclock);
     NewTime = localtime (&Aclock);
@@ -92,16 +84,16 @@ AslCompilerFileHeader (
 
     switch (FileId)
     {
-    case ASL_FILE_C_SOURCE_OUTPUT:
-    case ASL_FILE_C_OFFSET_OUTPUT:
-    case ASL_FILE_C_INCLUDE_OUTPUT:
+    case 129:
+    case 130:
+    case 131:
 
         FlPrintFile (FileId, " */\n");
         break;
 
     default:
 
-        /* Nothing to do for other output types */
+
 
         break;
     }

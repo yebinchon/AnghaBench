@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  gpio_num_t ;
-typedef  int /*<<< orphan*/  esp_err_t ;
-typedef  scalar_t__ dac_channel_t ;
 
-/* Variables and functions */
- scalar_t__ DAC_CHANNEL_1 ; 
- scalar_t__ DAC_CHANNEL_MAX ; 
- int /*<<< orphan*/  DAC_ERR_STR_CHANNEL_ERROR ; 
- int /*<<< orphan*/  ESP_ERR_INVALID_ARG ; 
- int /*<<< orphan*/  ESP_OK ; 
- int /*<<< orphan*/  RTC_MODULE_CHECK (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dac_pad_get_io_num (scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  rtc_gpio_init (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rtc_gpio_input_disable (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rtc_gpio_output_disable (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rtc_gpio_pulldown_dis (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rtc_gpio_pullup_dis (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int gpio_num_t ;
+typedef int esp_err_t ;
+typedef scalar_t__ dac_channel_t ;
+
+
+ scalar_t__ DAC_CHANNEL_1 ;
+ scalar_t__ DAC_CHANNEL_MAX ;
+ int DAC_ERR_STR_CHANNEL_ERROR ;
+ int ESP_ERR_INVALID_ARG ;
+ int ESP_OK ;
+ int RTC_MODULE_CHECK (int,int ,int ) ;
+ int dac_pad_get_io_num (scalar_t__,int *) ;
+ int rtc_gpio_init (int ) ;
+ int rtc_gpio_input_disable (int ) ;
+ int rtc_gpio_output_disable (int ) ;
+ int rtc_gpio_pulldown_dis (int ) ;
+ int rtc_gpio_pullup_dis (int ) ;
 
 __attribute__((used)) static esp_err_t dac_rtc_pad_init(dac_channel_t channel)
 {

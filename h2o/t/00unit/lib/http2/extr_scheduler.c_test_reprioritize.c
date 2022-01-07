@@ -1,59 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {int /*<<< orphan*/  node; } ;
-struct TYPE_8__ {int /*<<< orphan*/ * member_0; } ;
+
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_10__ {int node; } ;
+struct TYPE_8__ {int * member_0; } ;
 struct TYPE_7__ {TYPE_2__ member_0; } ;
 struct TYPE_9__ {char* member_1; TYPE_4__ ref; TYPE_1__ member_0; } ;
-typedef  TYPE_3__ node_t ;
-typedef  int /*<<< orphan*/  h2o_http2_scheduler_node_t ;
+typedef TYPE_3__ node_t ;
+typedef int h2o_http2_scheduler_node_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dump_tree (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  h2o_http2_scheduler_close (TYPE_4__*) ; 
- int /*<<< orphan*/  h2o_http2_scheduler_dispose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  h2o_http2_scheduler_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  h2o_http2_scheduler_open (TYPE_4__*,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  h2o_http2_scheduler_rebind (TYPE_4__*,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ok (int) ; 
- char* output ; 
- scalar_t__ strcmp (char*,char*) ; 
- int /*<<< orphan*/  test_reprioritize_exclusive ; 
+
+ int dump_tree (int *) ;
+ int h2o_http2_scheduler_close (TYPE_4__*) ;
+ int h2o_http2_scheduler_dispose (int *) ;
+ int h2o_http2_scheduler_init (int *) ;
+ int h2o_http2_scheduler_open (TYPE_4__*,int *,int,int ) ;
+ int h2o_http2_scheduler_rebind (TYPE_4__*,int *,int,int ) ;
+ int ok (int) ;
+ char* output ;
+ scalar_t__ strcmp (char*,char*) ;
+ int test_reprioritize_exclusive ;
 
 __attribute__((used)) static void test_reprioritize(void)
 {
-    /* from 5.3.3 of HTTP-2 draft 16
-     *    ?                ?                ?                 ?
-     *    |               / \               |                 |
-     *    A              D   A              D                 D
-     *   / \            /   / \            / \                |
-     *  B   C     ==>  F   B   C   ==>    F   A       OR      A
-     *     / \                 |             / \             /|\
-     *    D   E                E            B   C           B C F
-     *    |                                     |             |
-     *    F                                     E             E
-     *               (intermediate)   (non-exclusive)    (exclusive)
-     */
     h2o_http2_scheduler_node_t root;
-    node_t a = {{{NULL}}, "A"};
-    node_t b = {{{NULL}}, "B"};
-    node_t c = {{{NULL}}, "C"};
-    node_t d = {{{NULL}}, "D"};
-    node_t e = {{{NULL}}, "E"};
-    node_t f = {{{NULL}}, "F"};
+    node_t a = {{{((void*)0)}}, "A"};
+    node_t b = {{{((void*)0)}}, "B"};
+    node_t c = {{{((void*)0)}}, "C"};
+    node_t d = {{{((void*)0)}}, "D"};
+    node_t e = {{{((void*)0)}}, "E"};
+    node_t f = {{{((void*)0)}}, "F"};
 
     h2o_http2_scheduler_init(&root);
     h2o_http2_scheduler_open(&a.ref, &root, 6, 0);

@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
-typedef  int /*<<< orphan*/  BZFILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * BZ2_bzReadOpen (int*,int /*<<< orphan*/ *,int,int,char*,int) ; 
- int /*<<< orphan*/ * BZ2_bzWriteOpen (int*,int /*<<< orphan*/ *,int,int,int) ; 
- int /*<<< orphan*/  BZ_HDR_0 ; 
- int BZ_MAX_UNUSED ; 
- int /*<<< orphan*/  SET_BINARY_MODE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fdopen (int,char*) ; 
- int /*<<< orphan*/ * fopen (char const*,char*) ; 
- int /*<<< orphan*/  isdigit (int) ; 
- int /*<<< orphan*/ * stdin ; 
- int /*<<< orphan*/ * stdout ; 
- int /*<<< orphan*/  strcat (char*,char*) ; 
- scalar_t__ strcmp (char const*,char*) ; 
+
+
+
+typedef int FILE ;
+typedef int BZFILE ;
+
+
+ int * BZ2_bzReadOpen (int*,int *,int,int,char*,int) ;
+ int * BZ2_bzWriteOpen (int*,int *,int,int,int) ;
+ int BZ_HDR_0 ;
+ int BZ_MAX_UNUSED ;
+ int SET_BINARY_MODE (int *) ;
+ int fclose (int *) ;
+ int * fdopen (int,char*) ;
+ int * fopen (char const*,char*) ;
+ int isdigit (int) ;
+ int * stdin ;
+ int * stdout ;
+ int strcat (char*,char*) ;
+ scalar_t__ strcmp (char const*,char*) ;
 
 __attribute__((used)) static
 BZFILE * bzopen_or_bzdopen
-               ( const char *path,   /* no use when bzdopen */
-                 int fd,             /* no use when bzdopen */
+               ( const char *path,
+                 int fd,
                  const char *mode,
-                 int open_mode)      /* bzopen: 0, bzdopen:1 */
+                 int open_mode)
 {
-   int    bzerr;
-   char   unused[BZ_MAX_UNUSED];
-   int    blockSize100k = 9;
-   int    writing       = 0;
-   char   mode2[10]     = "";
-   FILE   *fp           = NULL;
-   BZFILE *bzfp         = NULL;
-   int    verbosity     = 0;
-   int    workFactor    = 30;
-   int    smallMode     = 0;
-   int    nUnused       = 0; 
+   int bzerr;
+   char unused[BZ_MAX_UNUSED];
+   int blockSize100k = 9;
+   int writing = 0;
+   char mode2[10] = "";
+   FILE *fp = ((void*)0);
+   BZFILE *bzfp = ((void*)0);
+   int verbosity = 0;
+   int workFactor = 30;
+   int smallMode = 0;
+   int nUnused = 0;
 
-   if (mode == NULL) return NULL;
+   if (mode == ((void*)0)) return ((void*)0);
    while (*mode) {
       switch (*mode) {
       case 'r':
@@ -64,37 +64,37 @@ BZFILE * bzopen_or_bzdopen
       mode++;
    }
    strcat(mode2, writing ? "w" : "r" );
-   strcat(mode2,"b");   /* binary mode */
+   strcat(mode2,"b");
 
    if (open_mode==0) {
-      if (path==NULL || strcmp(path,"")==0) {
+      if (path==((void*)0) || strcmp(path,"")==0) {
         fp = (writing ? stdout : stdin);
         SET_BINARY_MODE(fp);
       } else {
         fp = fopen(path,mode2);
       }
    } else {
-#ifdef BZ_STRICT_ANSI
-      fp = NULL;
-#else
+
+
+
       fp = fdopen(fd,mode2);
-#endif
+
    }
-   if (fp == NULL) return NULL;
+   if (fp == ((void*)0)) return ((void*)0);
 
    if (writing) {
-      /* Guard against total chaos and anarchy -- JRS */
+
       if (blockSize100k < 1) blockSize100k = 1;
-      if (blockSize100k > 9) blockSize100k = 9; 
+      if (blockSize100k > 9) blockSize100k = 9;
       bzfp = BZ2_bzWriteOpen(&bzerr,fp,blockSize100k,
                              verbosity,workFactor);
    } else {
       bzfp = BZ2_bzReadOpen(&bzerr,fp,verbosity,smallMode,
                             unused,nUnused);
    }
-   if (bzfp == NULL) {
+   if (bzfp == ((void*)0)) {
       if (fp != stdin && fp != stdout) fclose(fp);
-      return NULL;
+      return ((void*)0);
    }
    return bzfp;
 }

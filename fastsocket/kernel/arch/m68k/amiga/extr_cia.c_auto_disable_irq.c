@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  intena; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IF_EXTER ; 
- int /*<<< orphan*/  IF_PORTS ; 
-#define  IRQ_AUTO_2 129 
-#define  IRQ_AUTO_6 128 
- TYPE_1__ amiga_custom ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int intena; } ;
+
+
+ int IF_EXTER ;
+ int IF_PORTS ;
+
+
+ TYPE_1__ amiga_custom ;
 
 __attribute__((used)) static void auto_disable_irq(unsigned int irq)
 {
-	switch (irq) {
-	case IRQ_AUTO_2:
-		amiga_custom.intena = IF_PORTS;
-		break;
-	case IRQ_AUTO_6:
-		amiga_custom.intena = IF_EXTER;
-		break;
-	}
+ switch (irq) {
+ case 129:
+  amiga_custom.intena = IF_PORTS;
+  break;
+ case 128:
+  amiga_custom.intena = IF_EXTER;
+  break;
+ }
 }

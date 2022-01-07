@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  hb_value_t ;
 
-/* Variables and functions */
- scalar_t__ HB_VALUE_TYPE_STRING ; 
- int /*<<< orphan*/ * hb_dict_get (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  hb_dict_set (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- scalar_t__ hb_value_get_bool (int /*<<< orphan*/ *) ; 
- int hb_value_get_int (int /*<<< orphan*/ *) ; 
- char* hb_value_get_string (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  hb_value_int (int) ; 
- scalar_t__ hb_value_is_number (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  hb_value_string (char const*) ; 
- scalar_t__ hb_value_type (int /*<<< orphan*/ *) ; 
- scalar_t__ strcasecmp (char const*,char*) ; 
- int strtol (char const*,char**,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int hb_value_t ;
+
+
+ scalar_t__ HB_VALUE_TYPE_STRING ;
+ int * hb_dict_get (int *,char*) ;
+ int hb_dict_set (int *,char*,int ) ;
+ scalar_t__ hb_value_get_bool (int *) ;
+ int hb_value_get_int (int *) ;
+ char* hb_value_get_string (int *) ;
+ int hb_value_int (int) ;
+ scalar_t__ hb_value_is_number (int *) ;
+ int hb_value_string (char const*) ;
+ scalar_t__ hb_value_type (int *) ;
+ scalar_t__ strcasecmp (char const*,char*) ;
+ int strtol (char const*,char**,int ) ;
 
 __attribute__((used)) static void import_pic_0_0_0(hb_value_t *preset)
 {
     if (hb_value_get_bool(hb_dict_get(preset, "UsesMaxPictureSettings")))
     {
-        // UsesMaxPictureSettings was deprecated
+
         hb_dict_set(preset, "UsesPictureSettings", hb_value_int(2));
     }
 

@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
 struct TYPE_11__ {char* session_header; } ;
-typedef  TYPE_2__ VC_CONTAINER_TRACK_MODULE_T ;
+typedef TYPE_2__ VC_CONTAINER_TRACK_MODULE_T ;
 struct TYPE_12__ {TYPE_1__* priv; } ;
-typedef  TYPE_3__ VC_CONTAINER_T ;
-typedef  scalar_t__ VC_CONTAINER_STATUS_T ;
-struct TYPE_13__ {int /*<<< orphan*/  header_list; } ;
-typedef  TYPE_4__ VC_CONTAINER_MODULE_T ;
+typedef TYPE_3__ VC_CONTAINER_T ;
+typedef scalar_t__ VC_CONTAINER_STATUS_T ;
+struct TYPE_13__ {int header_list; } ;
+typedef TYPE_4__ VC_CONTAINER_MODULE_T ;
 struct TYPE_10__ {TYPE_4__* module; } ;
 
-/* Variables and functions */
- size_t SESSION_HEADER_LENGTH_MAX ; 
- scalar_t__ VC_CONTAINER_ERROR_FORMAT_INVALID ; 
- scalar_t__ VC_CONTAINER_ERROR_OUT_OF_MEMORY ; 
- scalar_t__ VC_CONTAINER_SUCCESS ; 
- scalar_t__ malloc (size_t) ; 
- char* rtsp_get_session_header (int /*<<< orphan*/ ) ; 
- scalar_t__ rtsp_read_response (TYPE_3__*) ; 
- scalar_t__ rtsp_send_setup_request (TYPE_3__*,TYPE_2__*) ; 
- size_t strlen (char const*) ; 
- int /*<<< orphan*/  strncpy (char*,char const*,size_t) ; 
+
+ size_t SESSION_HEADER_LENGTH_MAX ;
+ scalar_t__ VC_CONTAINER_ERROR_FORMAT_INVALID ;
+ scalar_t__ VC_CONTAINER_ERROR_OUT_OF_MEMORY ;
+ scalar_t__ VC_CONTAINER_SUCCESS ;
+ scalar_t__ malloc (size_t) ;
+ char* rtsp_get_session_header (int ) ;
+ scalar_t__ rtsp_read_response (TYPE_3__*) ;
+ scalar_t__ rtsp_send_setup_request (TYPE_3__*,TYPE_2__*) ;
+ size_t strlen (char const*) ;
+ int strncpy (char*,char const*,size_t) ;
 
 __attribute__((used)) static VC_CONTAINER_STATUS_T rtsp_setup( VC_CONTAINER_T *p_ctx,
       VC_CONTAINER_TRACK_MODULE_T *t_module )

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_wc_status_func3_t ;
-typedef  int /*<<< orphan*/  svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_opt_revision_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_depth_t ;
-struct TYPE_4__ {int /*<<< orphan*/  wc_ctx; } ;
-typedef  TYPE_1__ svn_client_ctx_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-struct status4_wrapper_baton {void* old_baton; int /*<<< orphan*/  old_func; int /*<<< orphan*/  wc_ctx; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_array_header_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  status4_wrapper_func ; 
- int /*<<< orphan*/ * svn_client_status5 (int /*<<< orphan*/ *,TYPE_1__*,char const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,struct status4_wrapper_baton*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int svn_wc_status_func3_t ;
+typedef int svn_revnum_t ;
+typedef int svn_opt_revision_t ;
+typedef int svn_error_t ;
+typedef int svn_depth_t ;
+struct TYPE_4__ {int wc_ctx; } ;
+typedef TYPE_1__ svn_client_ctx_t ;
+typedef int svn_boolean_t ;
+struct status4_wrapper_baton {void* old_baton; int old_func; int wc_ctx; } ;
+typedef int apr_pool_t ;
+typedef int apr_array_header_t ;
+
+
+ int TRUE ;
+ int status4_wrapper_func ;
+ int * svn_client_status5 (int *,TYPE_1__*,char const*,int const*,int ,int ,int ,int ,int ,int ,int const*,int ,struct status4_wrapper_baton*,int *) ;
 
 svn_error_t *
 svn_client_status4(svn_revnum_t *result_rev,

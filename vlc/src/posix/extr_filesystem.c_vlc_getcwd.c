@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ ERANGE ; 
- int /*<<< orphan*/  _PC_PATH_MAX ; 
- scalar_t__ errno ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/ * getcwd (char*,size_t) ; 
- char* malloc (size_t) ; 
- long pathconf (char*,int /*<<< orphan*/ ) ; 
- scalar_t__ unlikely (int /*<<< orphan*/ ) ; 
+ scalar_t__ ERANGE ;
+ int _PC_PATH_MAX ;
+ scalar_t__ errno ;
+ int free (char*) ;
+ int * getcwd (char*,size_t) ;
+ char* malloc (size_t) ;
+ long pathconf (char*,int ) ;
+ scalar_t__ unlikely (int ) ;
 
 char *vlc_getcwd (void)
 {
@@ -29,15 +21,15 @@ char *vlc_getcwd (void)
     for (;; size *= 2)
     {
         char *buf = malloc (size);
-        if (unlikely(buf == NULL))
+        if (unlikely(buf == ((void*)0)))
             break;
 
-        if (getcwd (buf, size) != NULL)
+        if (getcwd (buf, size) != ((void*)0))
             return buf;
         free (buf);
 
         if (errno != ERANGE)
             break;
     }
-    return NULL;
+    return ((void*)0);
 }

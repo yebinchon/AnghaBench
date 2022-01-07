@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int hz; int /*<<< orphan*/  configfile; } ;
 
-/* Variables and functions */
- int CONFIG_DEFAULT_HZ ; 
- scalar_t__ EOF ; 
- int /*<<< orphan*/  LL_WARNING ; 
- int /*<<< orphan*/  O_RDONLY ; 
- scalar_t__ close (int) ; 
- int /*<<< orphan*/  errno ; 
- int fsync (int) ; 
- int open (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int rewriteConfig (int /*<<< orphan*/ ) ; 
- TYPE_1__ server ; 
- int /*<<< orphan*/  serverLog (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strerror (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int hz; int configfile; } ;
+
+
+ int CONFIG_DEFAULT_HZ ;
+ scalar_t__ EOF ;
+ int LL_WARNING ;
+ int O_RDONLY ;
+ scalar_t__ close (int) ;
+ int errno ;
+ int fsync (int) ;
+ int open (int ,int ) ;
+ int rewriteConfig (int ) ;
+ TYPE_1__ server ;
+ int serverLog (int ,char*,int ) ;
+ int strerror (int ) ;
 
 void sentinelFlushConfig(void) {
     int fd = -1;

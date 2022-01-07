@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u8 ;
-struct pcf50633 {int* mask_regs; int /*<<< orphan*/  lock; } ;
 
-/* Variables and functions */
- int PCF50633_REG_INT1M ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pcf50633_reg_set_bit_mask (struct pcf50633*,int,int,int) ; 
+
+
+
+typedef int u8 ;
+struct pcf50633 {int* mask_regs; int lock; } ;
+
+
+ int PCF50633_REG_INT1M ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
+ int pcf50633_reg_set_bit_mask (struct pcf50633*,int,int,int) ;
 
 __attribute__((used)) static int __pcf50633_irq_mask_set(struct pcf50633 *pcf, int irq, u8 mask)
 {
-	u8 reg, bit;
-	int idx;
+ u8 reg, bit;
+ int idx;
 
-	idx = irq >> 3;
-	reg = PCF50633_REG_INT1M + idx;
-	bit = 1 << (irq & 0x07);
+ idx = irq >> 3;
+ reg = PCF50633_REG_INT1M + idx;
+ bit = 1 << (irq & 0x07);
 
-	pcf50633_reg_set_bit_mask(pcf, reg, bit, mask ? bit : 0);
+ pcf50633_reg_set_bit_mask(pcf, reg, bit, mask ? bit : 0);
 
-	mutex_lock(&pcf->lock);
+ mutex_lock(&pcf->lock);
 
-	if (mask)
-		pcf->mask_regs[idx] |= bit;
-	else
-		pcf->mask_regs[idx] &= ~bit;
+ if (mask)
+  pcf->mask_regs[idx] |= bit;
+ else
+  pcf->mask_regs[idx] &= ~bit;
 
-	mutex_unlock(&pcf->lock);
+ mutex_unlock(&pcf->lock);
 
-	return 0;
+ return 0;
 }

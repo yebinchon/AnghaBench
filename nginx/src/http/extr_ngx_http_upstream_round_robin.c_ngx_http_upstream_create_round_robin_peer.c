@@ -1,78 +1,78 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_21__   TYPE_9__ ;
-typedef  struct TYPE_20__   TYPE_8__ ;
-typedef  struct TYPE_19__   TYPE_7__ ;
-typedef  struct TYPE_18__   TYPE_6__ ;
-typedef  struct TYPE_17__   TYPE_5__ ;
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_char ;
+
+
+typedef struct TYPE_21__ TYPE_9__ ;
+typedef struct TYPE_20__ TYPE_8__ ;
+typedef struct TYPE_19__ TYPE_7__ ;
+typedef struct TYPE_18__ TYPE_6__ ;
+typedef struct TYPE_17__ TYPE_5__ ;
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+typedef int u_char ;
 struct sockaddr {int dummy; } ;
-typedef  int socklen_t ;
-typedef  size_t ngx_uint_t ;
-typedef  int /*<<< orphan*/  ngx_int_t ;
+typedef int socklen_t ;
+typedef size_t ngx_uint_t ;
+typedef int ngx_int_t ;
 struct TYPE_17__ {int single; int number; TYPE_6__* peer; TYPE_4__* name; } ;
-typedef  TYPE_5__ ngx_http_upstream_rr_peers_t ;
-struct TYPE_16__ {size_t len; int /*<<< orphan*/ * data; } ;
+typedef TYPE_5__ ngx_http_upstream_rr_peers_t ;
+struct TYPE_16__ {size_t len; int * data; } ;
 struct TYPE_18__ {int socklen; int weight; int effective_weight; int max_fails; int fail_timeout; struct TYPE_18__* next; scalar_t__ max_conns; scalar_t__ current_weight; TYPE_4__ name; struct sockaddr* sockaddr; } ;
-typedef  TYPE_6__ ngx_http_upstream_rr_peer_t ;
-struct TYPE_19__ {TYPE_5__* peers; scalar_t__* tried; scalar_t__ data; scalar_t__ config; int /*<<< orphan*/ * current; } ;
-typedef  TYPE_7__ ngx_http_upstream_rr_peer_data_t ;
-struct TYPE_20__ {int naddrs; int socklen; int /*<<< orphan*/  port; TYPE_3__* addrs; TYPE_4__ host; TYPE_4__ name; struct sockaddr* sockaddr; } ;
-typedef  TYPE_8__ ngx_http_upstream_resolved_t ;
-struct TYPE_21__ {TYPE_2__* upstream; int /*<<< orphan*/  pool; } ;
-typedef  TYPE_9__ ngx_http_request_t ;
-struct TYPE_15__ {int socklen; int /*<<< orphan*/  sockaddr; } ;
-struct TYPE_13__ {int /*<<< orphan*/  save_session; int /*<<< orphan*/  set_session; int /*<<< orphan*/  tries; int /*<<< orphan*/  free; int /*<<< orphan*/  get; TYPE_7__* data; } ;
+typedef TYPE_6__ ngx_http_upstream_rr_peer_t ;
+struct TYPE_19__ {TYPE_5__* peers; scalar_t__* tried; scalar_t__ data; scalar_t__ config; int * current; } ;
+typedef TYPE_7__ ngx_http_upstream_rr_peer_data_t ;
+struct TYPE_20__ {int naddrs; int socklen; int port; TYPE_3__* addrs; TYPE_4__ host; TYPE_4__ name; struct sockaddr* sockaddr; } ;
+typedef TYPE_8__ ngx_http_upstream_resolved_t ;
+struct TYPE_21__ {TYPE_2__* upstream; int pool; } ;
+typedef TYPE_9__ ngx_http_request_t ;
+struct TYPE_15__ {int socklen; int sockaddr; } ;
+struct TYPE_13__ {int save_session; int set_session; int tries; int free; int get; TYPE_7__* data; } ;
 struct TYPE_14__ {TYPE_1__ peer; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NGX_ERROR ; 
- int /*<<< orphan*/  NGX_OK ; 
- int /*<<< orphan*/  NGX_SOCKADDR_STRLEN ; 
- int /*<<< orphan*/  ngx_http_upstream_empty_save_session ; 
- int /*<<< orphan*/  ngx_http_upstream_empty_set_session ; 
- int /*<<< orphan*/  ngx_http_upstream_free_round_robin_peer ; 
- int /*<<< orphan*/  ngx_http_upstream_get_round_robin_peer ; 
- int /*<<< orphan*/  ngx_http_upstream_tries (TYPE_5__*) ; 
- int /*<<< orphan*/  ngx_inet_set_port (struct sockaddr*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_memcpy (struct sockaddr*,int /*<<< orphan*/ ,int) ; 
- void* ngx_palloc (int /*<<< orphan*/ ,int) ; 
- void* ngx_pcalloc (int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/ * ngx_pnalloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- size_t ngx_sock_ntop (struct sockaddr*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
+
+ int NGX_ERROR ;
+ int NGX_OK ;
+ int NGX_SOCKADDR_STRLEN ;
+ int ngx_http_upstream_empty_save_session ;
+ int ngx_http_upstream_empty_set_session ;
+ int ngx_http_upstream_free_round_robin_peer ;
+ int ngx_http_upstream_get_round_robin_peer ;
+ int ngx_http_upstream_tries (TYPE_5__*) ;
+ int ngx_inet_set_port (struct sockaddr*,int ) ;
+ int ngx_memcpy (struct sockaddr*,int ,int) ;
+ void* ngx_palloc (int ,int) ;
+ void* ngx_pcalloc (int ,size_t) ;
+ int * ngx_pnalloc (int ,int ) ;
+ size_t ngx_sock_ntop (struct sockaddr*,int,int *,int ,int) ;
 
 ngx_int_t
 ngx_http_upstream_create_round_robin_peer(ngx_http_request_t *r,
     ngx_http_upstream_resolved_t *ur)
 {
-    u_char                            *p;
-    size_t                             len;
-    socklen_t                          socklen;
-    ngx_uint_t                         i, n;
-    struct sockaddr                   *sockaddr;
-    ngx_http_upstream_rr_peer_t       *peer, **peerp;
-    ngx_http_upstream_rr_peers_t      *peers;
-    ngx_http_upstream_rr_peer_data_t  *rrp;
+    u_char *p;
+    size_t len;
+    socklen_t socklen;
+    ngx_uint_t i, n;
+    struct sockaddr *sockaddr;
+    ngx_http_upstream_rr_peer_t *peer, **peerp;
+    ngx_http_upstream_rr_peers_t *peers;
+    ngx_http_upstream_rr_peer_data_t *rrp;
 
     rrp = r->upstream->peer.data;
 
-    if (rrp == NULL) {
+    if (rrp == ((void*)0)) {
         rrp = ngx_palloc(r->pool, sizeof(ngx_http_upstream_rr_peer_data_t));
-        if (rrp == NULL) {
+        if (rrp == ((void*)0)) {
             return NGX_ERROR;
         }
 
@@ -80,13 +80,13 @@ ngx_http_upstream_create_round_robin_peer(ngx_http_request_t *r,
     }
 
     peers = ngx_pcalloc(r->pool, sizeof(ngx_http_upstream_rr_peers_t));
-    if (peers == NULL) {
+    if (peers == ((void*)0)) {
         return NGX_ERROR;
     }
 
     peer = ngx_pcalloc(r->pool, sizeof(ngx_http_upstream_rr_peer_t)
                                 * ur->naddrs);
-    if (peer == NULL) {
+    if (peer == ((void*)0)) {
         return NGX_ERROR;
     }
 
@@ -114,7 +114,7 @@ ngx_http_upstream_create_round_robin_peer(ngx_http_request_t *r,
             socklen = ur->addrs[i].socklen;
 
             sockaddr = ngx_palloc(r->pool, socklen);
-            if (sockaddr == NULL) {
+            if (sockaddr == ((void*)0)) {
                 return NGX_ERROR;
             }
 
@@ -122,7 +122,7 @@ ngx_http_upstream_create_round_robin_peer(ngx_http_request_t *r,
             ngx_inet_set_port(sockaddr, ur->port);
 
             p = ngx_pnalloc(r->pool, NGX_SOCKADDR_STRLEN);
-            if (p == NULL) {
+            if (p == ((void*)0)) {
                 return NGX_ERROR;
             }
 
@@ -144,7 +144,7 @@ ngx_http_upstream_create_round_robin_peer(ngx_http_request_t *r,
     }
 
     rrp->peers = peers;
-    rrp->current = NULL;
+    rrp->current = ((void*)0);
     rrp->config = 0;
 
     if (rrp->peers->number <= 8 * sizeof(uintptr_t)) {
@@ -156,7 +156,7 @@ ngx_http_upstream_create_round_robin_peer(ngx_http_request_t *r,
                 / (8 * sizeof(uintptr_t));
 
         rrp->tried = ngx_pcalloc(r->pool, n * sizeof(uintptr_t));
-        if (rrp->tried == NULL) {
+        if (rrp->tried == ((void*)0)) {
             return NGX_ERROR;
         }
     }
@@ -164,10 +164,10 @@ ngx_http_upstream_create_round_robin_peer(ngx_http_request_t *r,
     r->upstream->peer.get = ngx_http_upstream_get_round_robin_peer;
     r->upstream->peer.free = ngx_http_upstream_free_round_robin_peer;
     r->upstream->peer.tries = ngx_http_upstream_tries(rrp->peers);
-#if (NGX_HTTP_SSL)
-    r->upstream->peer.set_session = ngx_http_upstream_empty_set_session;
-    r->upstream->peer.save_session = ngx_http_upstream_empty_save_session;
-#endif
+
+
+
+
 
     return NGX_OK;
 }

@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  path ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int path ;
 struct TYPE_4__ {void* CfgRw; } ;
-typedef  int /*<<< orphan*/  FOLDER ;
-typedef  TYPE_1__ CLIENT ;
+typedef int FOLDER ;
+typedef TYPE_1__ CLIENT ;
 
-/* Variables and functions */
- char* CLIENT_CONFIG_FILE_NAME ; 
- int /*<<< orphan*/  CfgDeleteFolder (int /*<<< orphan*/ *) ; 
- scalar_t__ CiLoadConfigFilePathFromIni (char*,int) ; 
- int CiReadSettingFromCfg (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int MAX_SIZE ; 
- void* NewCfgRw (int /*<<< orphan*/ **,char*) ; 
+
+ char* CLIENT_CONFIG_FILE_NAME ;
+ int CfgDeleteFolder (int *) ;
+ scalar_t__ CiLoadConfigFilePathFromIni (char*,int) ;
+ int CiReadSettingFromCfg (TYPE_1__*,int *) ;
+ int MAX_SIZE ;
+ void* NewCfgRw (int **,char*) ;
 
 bool CiLoadConfigurationFile(CLIENT *c)
 {
-	bool ret;
-	FOLDER *root;
-	char path[MAX_SIZE];
-	// Validate arguments
-	if (c == NULL)
-	{
-		return false;
-	}
+ bool ret;
+ FOLDER *root;
+ char path[MAX_SIZE];
 
-	// Read the configuration file
-	if (CiLoadConfigFilePathFromIni(path, sizeof(path)))
-	{
-		c->CfgRw = NewCfgRw(&root, path);
-	}
-	else
-	{
-		c->CfgRw = NewCfgRw(&root, CLIENT_CONFIG_FILE_NAME);
-	}
+ if (c == ((void*)0))
+ {
+  return 0;
+ }
 
-	if (root == NULL)
-	{
-		return false;
-	}
 
-	ret = CiReadSettingFromCfg(c, root);
+ if (CiLoadConfigFilePathFromIni(path, sizeof(path)))
+ {
+  c->CfgRw = NewCfgRw(&root, path);
+ }
+ else
+ {
+  c->CfgRw = NewCfgRw(&root, CLIENT_CONFIG_FILE_NAME);
+ }
 
-	CfgDeleteFolder(root);
+ if (root == ((void*)0))
+ {
+  return 0;
+ }
 
-	return ret;
+ ret = CiReadSettingFromCfg(c, root);
+
+ CfgDeleteFolder(root);
+
+ return ret;
 }

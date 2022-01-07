@@ -1,20 +1,12 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  UI_LAN_ADDSERVER ; 
- int syscall (int /*<<< orphan*/ ,int,char const*,char const*) ; 
+ int UI_LAN_ADDSERVER ;
+ int syscall (int ,int,char const*,char const*) ;
 
 int trap_LAN_AddServer(int source, const char *name, const char *addr) {
-	return syscall( UI_LAN_ADDSERVER, source, name, addr );
+ return syscall( UI_LAN_ADDSERVER, source, name, addr );
 }

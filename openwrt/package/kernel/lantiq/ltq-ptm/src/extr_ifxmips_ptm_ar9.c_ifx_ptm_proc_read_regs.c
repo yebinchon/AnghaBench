@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int off_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DM_RXCB ; 
- int /*<<< orphan*/  DM_RXCFG ; 
- int /*<<< orphan*/  DM_RXDB ; 
- int /*<<< orphan*/  DM_RXPGCNT ; 
- int /*<<< orphan*/  DM_RXPKTCNT ; 
- int /*<<< orphan*/  DS_RXCB ; 
- int /*<<< orphan*/  DS_RXCFG ; 
- int /*<<< orphan*/  DS_RXDB ; 
- int /*<<< orphan*/  DS_RXPGCNT ; 
- int /*<<< orphan*/  EMA_CFG ; 
- int /*<<< orphan*/  EMA_CMDCFG ; 
- int /*<<< orphan*/  EMA_DATACFG ; 
- int /*<<< orphan*/  EMA_IER ; 
- int /*<<< orphan*/  FFSM_CFG0 ; 
- int /*<<< orphan*/  FFSM_CFG1 ; 
- int /*<<< orphan*/  FFSM_DBA0 ; 
- int /*<<< orphan*/  FFSM_DBA1 ; 
- int /*<<< orphan*/  FFSM_IDLE_HEAD_BC0 ; 
- int /*<<< orphan*/  FFSM_IDLE_HEAD_BC1 ; 
- int IFX_REG_R32 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MBOX_IGU1_IER ; 
- int /*<<< orphan*/  MBOX_IGU1_ISR ; 
- int /*<<< orphan*/  MBOX_IGU3_IER ; 
- int /*<<< orphan*/  MBOX_IGU3_ISR ; 
- int /*<<< orphan*/  RFBI_CFG ; 
- int /*<<< orphan*/  SB_MST_PRI0 ; 
- int /*<<< orphan*/  SB_MST_PRI1 ; 
- int /*<<< orphan*/  SFSM_CBA0 ; 
- int /*<<< orphan*/  SFSM_CBA1 ; 
- int /*<<< orphan*/  SFSM_CFG0 ; 
- int /*<<< orphan*/  SFSM_CFG1 ; 
- int /*<<< orphan*/  SFSM_DBA0 ; 
- int /*<<< orphan*/  SFSM_DBA1 ; 
- scalar_t__ sprintf (char*,char*,...) ; 
+
+
+
+typedef int off_t ;
+
+
+ int DM_RXCB ;
+ int DM_RXCFG ;
+ int DM_RXDB ;
+ int DM_RXPGCNT ;
+ int DM_RXPKTCNT ;
+ int DS_RXCB ;
+ int DS_RXCFG ;
+ int DS_RXDB ;
+ int DS_RXPGCNT ;
+ int EMA_CFG ;
+ int EMA_CMDCFG ;
+ int EMA_DATACFG ;
+ int EMA_IER ;
+ int FFSM_CFG0 ;
+ int FFSM_CFG1 ;
+ int FFSM_DBA0 ;
+ int FFSM_DBA1 ;
+ int FFSM_IDLE_HEAD_BC0 ;
+ int FFSM_IDLE_HEAD_BC1 ;
+ int IFX_REG_R32 (int ) ;
+ int MBOX_IGU1_IER ;
+ int MBOX_IGU1_ISR ;
+ int MBOX_IGU3_IER ;
+ int MBOX_IGU3_ISR ;
+ int RFBI_CFG ;
+ int SB_MST_PRI0 ;
+ int SB_MST_PRI1 ;
+ int SFSM_CBA0 ;
+ int SFSM_CBA1 ;
+ int SFSM_CFG0 ;
+ int SFSM_CFG1 ;
+ int SFSM_DBA0 ;
+ int SFSM_DBA1 ;
+ scalar_t__ sprintf (char*,char*,...) ;
 
 int ifx_ptm_proc_read_regs(char *page, char **start, off_t off, int count, int *eof, void *data)
 {

@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  void* WORD ;
-struct TYPE_13__ {void* top; int /*<<< orphan*/  right; int /*<<< orphan*/  left; int /*<<< orphan*/  bottom; } ;
+
+
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef void* WORD ;
+struct TYPE_13__ {void* top; int right; int left; int bottom; } ;
 struct TYPE_10__ {int left; int top; int right; int bottom; } ;
 struct TYPE_11__ {int nCount; TYPE_1__ rcBound; } ;
 struct TYPE_12__ {void** rdParm; void* rdFunction; int rdSize; TYPE_2__ rdh; scalar_t__ Buffer; } ;
-typedef  TYPE_3__ RGNDATA ;
-typedef  TYPE_4__ RECT ;
-typedef  int /*<<< orphan*/  PHYSDEV ;
-typedef  TYPE_3__ METARECORD ;
-typedef  int INT16 ;
-typedef  int /*<<< orphan*/  HRGN ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef TYPE_3__ RGNDATA ;
+typedef TYPE_4__ RECT ;
+typedef int PHYSDEV ;
+typedef TYPE_3__ METARECORD ;
+typedef int INT16 ;
+typedef int HRGN ;
+typedef int DWORD ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetProcessHeap () ; 
- int GetRegionData (int /*<<< orphan*/ ,int,TYPE_3__*) ; 
- int /*<<< orphan*/  HEAP_ZERO_MEMORY ; 
- TYPE_3__* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_3__*) ; 
- void* META_CREATEREGION ; 
- int MFDRV_AddHandle (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MFDRV_WriteRecord (int /*<<< orphan*/ ,TYPE_3__*,int) ; 
- int /*<<< orphan*/  WARN (char*) ; 
+
+ int GetProcessHeap () ;
+ int GetRegionData (int ,int,TYPE_3__*) ;
+ int HEAP_ZERO_MEMORY ;
+ TYPE_3__* HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,TYPE_3__*) ;
+ void* META_CREATEREGION ;
+ int MFDRV_AddHandle (int ,int ) ;
+ int MFDRV_WriteRecord (int ,TYPE_3__*,int) ;
+ int WARN (char*) ;
 
 __attribute__((used)) static INT16 MFDRV_CreateRegion(PHYSDEV dev, HRGN hrgn)
 {
@@ -49,50 +49,50 @@ __attribute__((used)) static INT16 MFDRV_CreateRegion(PHYSDEV dev, HRGN hrgn)
     WORD *Param, *StartBand;
     BOOL ret;
 
-    if (!(len = GetRegionData( hrgn, 0, NULL ))) return -1;
+    if (!(len = GetRegionData( hrgn, 0, ((void*)0) ))) return -1;
     if( !(rgndata = HeapAlloc( GetProcessHeap(), 0, len )) ) {
         WARN("Can't alloc rgndata buffer\n");
-	return -1;
+ return -1;
     }
     GetRegionData( hrgn, len, rgndata );
 
-    /* Overestimate of length:
-     * Assume every rect is a separate band -> 6 WORDs per rect
-     */
+
+
+
     len = sizeof(METARECORD) + 20 + (rgndata->rdh.nCount * 12);
     if( !(mr = HeapAlloc( GetProcessHeap(), HEAP_ZERO_MEMORY, len )) ) {
         WARN("Can't alloc METARECORD buffer\n");
-	HeapFree( GetProcessHeap(), 0, rgndata );
-	return -1;
+ HeapFree( GetProcessHeap(), 0, rgndata );
+ return -1;
     }
 
     Param = mr->rdParm + 11;
-    StartBand = NULL;
+    StartBand = ((void*)0);
 
     pEndRect = (RECT *)rgndata->Buffer + rgndata->rdh.nCount;
     for(pCurRect = (RECT *)rgndata->Buffer; pCurRect < pEndRect; pCurRect++)
     {
         if( StartBand && pCurRect->top == *(StartBand + 1) )
         {
-	    *Param++ = pCurRect->left;
-	    *Param++ = pCurRect->right;
-	}
-	else
-	{
-	    if(StartBand)
-	    {
-	        *StartBand = Param - StartBand - 3;
-		*Param++ = *StartBand;
-		if(*StartBand > MaxBands)
-		    MaxBands = *StartBand;
-		Bands++;
-	    }
-	    StartBand = Param++;
-	    *Param++ = pCurRect->top;
-	    *Param++ = pCurRect->bottom;
-	    *Param++ = pCurRect->left;
-	    *Param++ = pCurRect->right;
-	}
+     *Param++ = pCurRect->left;
+     *Param++ = pCurRect->right;
+ }
+ else
+ {
+     if(StartBand)
+     {
+         *StartBand = Param - StartBand - 3;
+  *Param++ = *StartBand;
+  if(*StartBand > MaxBands)
+      MaxBands = *StartBand;
+  Bands++;
+     }
+     StartBand = Param++;
+     *Param++ = pCurRect->top;
+     *Param++ = pCurRect->bottom;
+     *Param++ = pCurRect->left;
+     *Param++ = pCurRect->right;
+ }
     }
 
     if (StartBand)
@@ -123,7 +123,7 @@ __attribute__((used)) static INT16 MFDRV_CreateRegion(PHYSDEV dev, HRGN hrgn)
     if(!ret)
     {
         WARN("MFDRV_WriteRecord failed\n");
-	return -1;
+ return -1;
     }
     return MFDRV_AddHandle( dev, hrgn );
 }

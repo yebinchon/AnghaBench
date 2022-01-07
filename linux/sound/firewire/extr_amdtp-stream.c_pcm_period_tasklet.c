@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct snd_pcm_substream {int dummy; } ;
-struct amdtp_stream {int /*<<< orphan*/  pcm; } ;
+struct amdtp_stream {int pcm; } ;
 
-/* Variables and functions */
- struct snd_pcm_substream* READ_ONCE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  snd_pcm_period_elapsed (struct snd_pcm_substream*) ; 
+
+ struct snd_pcm_substream* READ_ONCE (int ) ;
+ int snd_pcm_period_elapsed (struct snd_pcm_substream*) ;
 
 __attribute__((used)) static void pcm_period_tasklet(unsigned long data)
 {
-	struct amdtp_stream *s = (void *)data;
-	struct snd_pcm_substream *pcm = READ_ONCE(s->pcm);
+ struct amdtp_stream *s = (void *)data;
+ struct snd_pcm_substream *pcm = READ_ONCE(s->pcm);
 
-	if (pcm)
-		snd_pcm_period_elapsed(pcm);
+ if (pcm)
+  snd_pcm_period_elapsed(pcm);
 }

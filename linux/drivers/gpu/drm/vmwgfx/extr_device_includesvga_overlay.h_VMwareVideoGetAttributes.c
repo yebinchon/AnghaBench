@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32 ;
-typedef  int SVGAOverlayFormat ;
 
-/* Variables and functions */
-#define  VMWARE_FOURCC_UYVY 130 
-#define  VMWARE_FOURCC_YUY2 129 
-#define  VMWARE_FOURCC_YV12 128 
+
+
+
+typedef int uint32 ;
+typedef int SVGAOverlayFormat ;
+
+
+
+
+
 
 __attribute__((used)) static inline bool
-VMwareVideoGetAttributes(const SVGAOverlayFormat format,    /* IN */
-                         uint32 *width,                     /* IN / OUT */
-                         uint32 *height,                    /* IN / OUT */
-                         uint32 *size,                      /* OUT */
-                         uint32 *pitches,                   /* OUT (optional) */
-                         uint32 *offsets)                   /* OUT (optional) */
+VMwareVideoGetAttributes(const SVGAOverlayFormat format,
+                         uint32 *width,
+                         uint32 *height,
+                         uint32 *size,
+                         uint32 *pitches,
+                         uint32 *offsets)
 {
     int tmp;
 
@@ -35,7 +35,7 @@ VMwareVideoGetAttributes(const SVGAOverlayFormat format,    /* IN */
     }
 
     switch (format) {
-    case VMWARE_FOURCC_YV12:
+    case 128:
        *height = (*height + 1) & ~1;
        *size = (*width) * (*height);
 
@@ -63,8 +63,8 @@ VMwareVideoGetAttributes(const SVGAOverlayFormat format,    /* IN */
        *size += tmp;
        break;
 
-    case VMWARE_FOURCC_YUY2:
-    case VMWARE_FOURCC_UYVY:
+    case 129:
+    case 130:
        *size = *width * 2;
 
        if (pitches) {
@@ -75,8 +75,8 @@ VMwareVideoGetAttributes(const SVGAOverlayFormat format,    /* IN */
        break;
 
     default:
-       return false;
+       return 0;
     }
 
-    return true;
+    return 1;
 }

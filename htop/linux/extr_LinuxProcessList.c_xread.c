@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int ssize_t ;
 
-/* Variables and functions */
- scalar_t__ EINTR ; 
- scalar_t__ errno ; 
- int read (int,void*,size_t) ; 
+
+
+
+typedef int ssize_t ;
+
+
+ scalar_t__ EINTR ;
+ scalar_t__ errno ;
+ int read (int,void*,size_t) ;
 
 __attribute__((used)) static ssize_t xread(int fd, void *buf, size_t count) {
-  // Read some bytes. Retry on EINTR and when we don't get as many bytes as we requested.
+
   size_t alreadyRead = 0;
   for(;;) {
      ssize_t res = read(fd, buf, count);

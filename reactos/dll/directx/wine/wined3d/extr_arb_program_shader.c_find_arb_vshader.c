@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct wined3d_string_buffer {int dummy; } ;
 struct wined3d_shader_signature {int dummy; } ;
 struct wined3d_shader_reg_maps {int min_rel_offset; int max_rel_offset; } ;
 struct wined3d_shader {struct arb_vshader_private* backend_data; struct wined3d_shader_reg_maps reg_maps; } ;
-struct wined3d_gl_info {int quirks; int /*<<< orphan*/ * supported; } ;
+struct wined3d_gl_info {int quirks; int * supported; } ;
 struct arb_vshader_private {int rel_offset; size_t num_gl_shaders; size_t shader_array_size; struct arb_vs_compiled_shader* gl_shaders; } ;
 struct arb_vs_compile_args {int dummy; } ;
-struct arb_vs_compiled_shader {int /*<<< orphan*/  prgId; struct arb_vs_compile_args args; } ;
-typedef  size_t UINT ;
-typedef  int /*<<< orphan*/  GLuint ;
-typedef  int DWORD ;
+struct arb_vs_compiled_shader {int prgId; struct arb_vs_compile_args args; } ;
+typedef size_t UINT ;
+typedef int GLuint ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*) ; 
- int /*<<< orphan*/  FIXME (char*,...) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HEAP_ZERO_MEMORY ; 
- struct arb_vs_compiled_shader* HeapReAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct arb_vs_compiled_shader*,int) ; 
- size_t NV_VERTEX_PROGRAM2_OPTION ; 
- int /*<<< orphan*/  TRACE (char*) ; 
- int WINED3D_QUIRK_ARB_VS_OFFSET_LIMIT ; 
- void* heap_alloc_zero (int) ; 
- int max (int,int) ; 
- int /*<<< orphan*/  shader_arb_generate_vshader (struct wined3d_shader*,struct wined3d_gl_info const*,struct wined3d_string_buffer*,struct arb_vs_compile_args const*,struct arb_vs_compiled_shader*,struct wined3d_shader_signature const*) ; 
- int /*<<< orphan*/  string_buffer_free (struct wined3d_string_buffer*) ; 
- int /*<<< orphan*/  string_buffer_init (struct wined3d_string_buffer*) ; 
- scalar_t__ vs_args_equal (struct arb_vs_compile_args*,struct arb_vs_compile_args const*,int,int /*<<< orphan*/ ) ; 
+
+ int ERR (char*) ;
+ int FIXME (char*,...) ;
+ int GetProcessHeap () ;
+ int HEAP_ZERO_MEMORY ;
+ struct arb_vs_compiled_shader* HeapReAlloc (int ,int ,struct arb_vs_compiled_shader*,int) ;
+ size_t NV_VERTEX_PROGRAM2_OPTION ;
+ int TRACE (char*) ;
+ int WINED3D_QUIRK_ARB_VS_OFFSET_LIMIT ;
+ void* heap_alloc_zero (int) ;
+ int max (int,int) ;
+ int shader_arb_generate_vshader (struct wined3d_shader*,struct wined3d_gl_info const*,struct wined3d_string_buffer*,struct arb_vs_compile_args const*,struct arb_vs_compiled_shader*,struct wined3d_shader_signature const*) ;
+ int string_buffer_free (struct wined3d_string_buffer*) ;
+ int string_buffer_init (struct wined3d_string_buffer*) ;
+ scalar_t__ vs_args_equal (struct arb_vs_compile_args*,struct arb_vs_compile_args const*,int,int ) ;
 
 __attribute__((used)) static struct arb_vs_compiled_shader *find_arb_vshader(struct wined3d_shader *shader,
         const struct wined3d_gl_info *gl_info, DWORD use_map, const struct arb_vs_compile_args *args,
@@ -73,10 +73,10 @@ __attribute__((used)) static struct arb_vs_compiled_shader *find_arb_vshader(str
     }
     shader_data = shader->backend_data;
 
-    /* Usually we have very few GL shaders for each d3d shader(just 1 or maybe 2),
-     * so a linear search is more performant than a hashmap or a binary search
-     * (cache coherency etc)
-     */
+
+
+
+
     for(i = 0; i < shader_data->num_gl_shaders; i++) {
         if (vs_args_equal(&shader_data->gl_shaders[i].args, args,
                 use_map, gl_info->supported[NV_VERTEX_PROGRAM2_OPTION]))

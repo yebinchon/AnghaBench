@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  zdev_t ;
-typedef  int /*<<< orphan*/  zbuf_t ;
-typedef  int u8_t ;
-typedef  scalar_t__ u16_t ;
-struct TYPE_5__ {scalar_t__ staPowerSaving; int* bcmcTail; int* bcmcHead; int uniTail; int uniHead; int /*<<< orphan*/ ** uniArray; int /*<<< orphan*/  uapsdQ; TYPE_1__* staTable; int /*<<< orphan*/ *** bcmcArray; } ;
-struct TYPE_6__ {TYPE_2__ ap; int /*<<< orphan*/  tick; } ;
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int zdev_t ;
+typedef int zbuf_t ;
+typedef int u8_t ;
+typedef scalar_t__ u16_t ;
+struct TYPE_5__ {scalar_t__ staPowerSaving; int* bcmcTail; int* bcmcHead; int uniTail; int uniHead; int ** uniArray; int uapsdQ; TYPE_1__* staTable; int *** bcmcArray; } ;
+struct TYPE_6__ {TYPE_2__ ap; int tick; } ;
 struct TYPE_4__ {int psMode; int qosType; int qosInfo; } ;
 
-/* Variables and functions */
- int ZM_BCMC_ARRAY_SIZE ; 
- int /*<<< orphan*/  ZM_ERR_AP_UAPSD_QUEUE_FULL ; 
- int /*<<< orphan*/  ZM_ERR_BCMC_PS_BUFFER_UNAVAILABLE ; 
- int /*<<< orphan*/  ZM_ERR_UNI_PS_BUFFER_UNAVAILABLE ; 
- int /*<<< orphan*/  ZM_LV_0 ; 
- scalar_t__ ZM_MAX_AP_SUPPORT ; 
- scalar_t__ ZM_SUCCESS ; 
- int ZM_UNI_ARRAY_SIZE ; 
- TYPE_3__* wd ; 
- int* zcUpToAc ; 
- scalar_t__ zfApFindSta (int /*<<< orphan*/ *,scalar_t__*) ; 
- scalar_t__ zfQueuePutNcs (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  zfTxGetIpTosAndFrag (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*,scalar_t__*) ; 
- int /*<<< orphan*/  zfwBufFree (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  zm_msg0_tx (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  zmw_declare_for_critical_section () ; 
- int /*<<< orphan*/  zmw_enter_critical_section (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  zmw_get_wlan_dev (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  zmw_leave_critical_section (int /*<<< orphan*/ *) ; 
- scalar_t__ zmw_rx_buf_readh (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
+
+ int ZM_BCMC_ARRAY_SIZE ;
+ int ZM_ERR_AP_UAPSD_QUEUE_FULL ;
+ int ZM_ERR_BCMC_PS_BUFFER_UNAVAILABLE ;
+ int ZM_ERR_UNI_PS_BUFFER_UNAVAILABLE ;
+ int ZM_LV_0 ;
+ scalar_t__ ZM_MAX_AP_SUPPORT ;
+ scalar_t__ ZM_SUCCESS ;
+ int ZM_UNI_ARRAY_SIZE ;
+ TYPE_3__* wd ;
+ int* zcUpToAc ;
+ scalar_t__ zfApFindSta (int *,scalar_t__*) ;
+ scalar_t__ zfQueuePutNcs (int *,int ,int *,int ) ;
+ int zfTxGetIpTosAndFrag (int *,int *,int*,scalar_t__*) ;
+ int zfwBufFree (int *,int *,int ) ;
+ int zm_msg0_tx (int ,char*) ;
+ int zmw_declare_for_critical_section () ;
+ int zmw_enter_critical_section (int *) ;
+ int zmw_get_wlan_dev (int *) ;
+ int zmw_leave_critical_section (int *) ;
+ scalar_t__ zmw_rx_buf_readh (int *,int *,int) ;
 
 u16_t zfApBufferPsFrame(zdev_t* dev, zbuf_t* buf, u16_t port)
 {
@@ -72,7 +72,7 @@ u16_t zfApBufferPsFrame(zdev_t* dev, zbuf_t* buf, u16_t port)
         {
             zmw_enter_critical_section(dev);
 
-            /* Buffer this BC or MC frame */
+
             if (((wd->ap.bcmcTail[vap]+1)&(ZM_BCMC_ARRAY_SIZE-1))
                     != wd->ap.bcmcHead[vap])
             {
@@ -84,12 +84,12 @@ u16_t zfApBufferPsFrame(zdev_t* dev, zbuf_t* buf, u16_t port)
             }
             else
             {
-                /* bcmcArray full */
+
                 zmw_leave_critical_section(dev);
 
                 zm_msg0_tx(ZM_LV_0, "BCMC buffer full");
 
-                /* free buffer according to buffer type */
+
                 zfwBufFree(dev, buf, ZM_ERR_BCMC_PS_BUFFER_UNAVAILABLE);
             }
             return 1;
@@ -119,7 +119,7 @@ u16_t zfApBufferPsFrame(zdev_t* dev, zbuf_t* buf, u16_t port)
                 }
                 else
                 {
-                /* Buffer this unicast frame */
+
                 if (((wd->ap.uniTail+1)&(ZM_UNI_ARRAY_SIZE-1))
                         != wd->ap.uniHead)
                 {
@@ -131,16 +131,16 @@ u16_t zfApBufferPsFrame(zdev_t* dev, zbuf_t* buf, u16_t port)
                 }
                 else
                 {
-                    /* uniArray full */
+
                     zmw_leave_critical_section(dev);
                     zm_msg0_tx(ZM_LV_0, "UNI buffer full");
-                    /* free buffer according to buffer type */
+
                     zfwBufFree(dev, buf, ZM_ERR_UNI_PS_BUFFER_UNAVAILABLE);
                 }
                 }
                 return 1;
-            } /* if (wd->ap.staTable[id++].psMode == 1) */
-        } /* if ((id = zfApFindSta(dev, addr)) != 0xffff) */
+            }
+        }
         zmw_leave_critical_section(dev);
     }
 

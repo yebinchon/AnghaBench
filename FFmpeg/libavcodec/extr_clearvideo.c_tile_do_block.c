@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  AVFrame ;
-typedef  int /*<<< orphan*/  AVCodecContext ;
 
-/* Variables and functions */
- int copy_block (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int,int,int,int,int) ; 
- int copyadd_block (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int,int,int,int,int,int) ; 
+
+
+
+typedef int AVFrame ;
+typedef int AVCodecContext ;
+
+
+ int copy_block (int *,int *,int *,int,int,int,int,int,int) ;
+ int copyadd_block (int *,int *,int *,int,int,int,int,int,int,int) ;
 
 __attribute__((used)) static int tile_do_block(AVCodecContext *avctx, AVFrame *dst, AVFrame *src,
                          int plane, int x, int y, int dx, int dy, int size, int bias)

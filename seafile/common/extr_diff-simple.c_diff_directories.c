@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_7__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sub_dirs ;
-typedef  int /*<<< orphan*/  gboolean ;
-typedef  int /*<<< orphan*/  dirs ;
-struct TYPE_15__ {int /*<<< orphan*/  fs_mgr; } ;
-struct TYPE_14__ {int (* dir_cb ) (int,char const*,TYPE_1__**,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ;int /*<<< orphan*/  store_id; int /*<<< orphan*/  version; int /*<<< orphan*/  data; } ;
-struct TYPE_13__ {char* name; int /*<<< orphan*/  id; int /*<<< orphan*/  mode; } ;
-typedef  TYPE_1__ SeafDirent ;
-typedef  TYPE_1__ SeafDir ;
-typedef  TYPE_3__ DiffOptions ;
 
-/* Variables and functions */
- scalar_t__ S_ISDIR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- int diff_trees_recursive (int,TYPE_1__**,char*,TYPE_3__*) ; 
- int /*<<< orphan*/  g_free (char*) ; 
- char* g_strconcat (char const*,char*,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memset (TYPE_1__**,int /*<<< orphan*/ ,int) ; 
- TYPE_7__* seaf ; 
- int /*<<< orphan*/  seaf_dir_free (TYPE_1__*) ; 
- TYPE_1__* seaf_fs_manager_get_seafdir (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  seaf_warning (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int stub1 (int,char const*,TYPE_1__**,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_15__ TYPE_7__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+typedef int sub_dirs ;
+typedef int gboolean ;
+typedef int dirs ;
+struct TYPE_15__ {int fs_mgr; } ;
+struct TYPE_14__ {int (* dir_cb ) (int,char const*,TYPE_1__**,int ,int *) ;int store_id; int version; int data; } ;
+struct TYPE_13__ {char* name; int id; int mode; } ;
+typedef TYPE_1__ SeafDirent ;
+typedef TYPE_1__ SeafDir ;
+typedef TYPE_3__ DiffOptions ;
+
+
+ scalar_t__ S_ISDIR (int ) ;
+ int TRUE ;
+ int diff_trees_recursive (int,TYPE_1__**,char*,TYPE_3__*) ;
+ int g_free (char*) ;
+ char* g_strconcat (char const*,char*,char*,int *) ;
+ int memset (TYPE_1__**,int ,int) ;
+ TYPE_7__* seaf ;
+ int seaf_dir_free (TYPE_1__*) ;
+ TYPE_1__* seaf_fs_manager_get_seafdir (int ,int ,int ,int ) ;
+ int seaf_warning (char*,int ,int ) ;
+ int stub1 (int,char const*,TYPE_1__**,int ,int *) ;
 
 __attribute__((used)) static int
 diff_directories (int n, SeafDirent *dents[], const char *basedir, DiffOptions *opt)
@@ -66,7 +66,7 @@ diff_directories (int n, SeafDirent *dents[], const char *basedir, DiffOptions *
 
     memset (sub_dirs, 0, sizeof(sub_dirs[0])*n);
     for (i = 0; i < n; ++i) {
-        if (dents[i] != NULL && S_ISDIR(dents[i]->mode)) {
+        if (dents[i] != ((void*)0) && S_ISDIR(dents[i]->mode)) {
             dir = seaf_fs_manager_get_seafdir (seaf->fs_mgr,
                                                opt->store_id,
                                                opt->version,
@@ -83,7 +83,7 @@ diff_directories (int n, SeafDirent *dents[], const char *basedir, DiffOptions *
         }
     }
 
-    char *new_basedir = g_strconcat (basedir, dirname, "/", NULL);
+    char *new_basedir = g_strconcat (basedir, dirname, "/", ((void*)0));
 
     ret = diff_trees_recursive (n, sub_dirs, new_basedir, opt);
 

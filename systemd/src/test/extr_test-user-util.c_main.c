@@ -1,37 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int GID_NOBODY ; 
- char* NOBODY_GROUP_NAME ; 
- char* NOBODY_USER_NAME ; 
- char* NOLOGIN ; 
- int TTY_GID ; 
- int UID_NOBODY ; 
- int /*<<< orphan*/  test_get_group_creds_one (char*,char*,int) ; 
- int /*<<< orphan*/  test_get_user_creds_one (char*,char*,int,int,char*,char*) ; 
- int /*<<< orphan*/  test_gid_to_name_one (int,char*) ; 
- int /*<<< orphan*/  test_in_gid () ; 
- int /*<<< orphan*/  test_make_salt () ; 
- int /*<<< orphan*/  test_parse_uid () ; 
- int /*<<< orphan*/  test_uid_ptr () ; 
- int /*<<< orphan*/  test_uid_to_name_one (int,char*) ; 
- int /*<<< orphan*/  test_valid_gecos () ; 
- int /*<<< orphan*/  test_valid_home () ; 
- int /*<<< orphan*/  test_valid_user_group_name () ; 
- int /*<<< orphan*/  test_valid_user_group_name_compat () ; 
- int /*<<< orphan*/  test_valid_user_group_name_or_id () ; 
- int /*<<< orphan*/  test_valid_user_group_name_or_id_compat () ; 
+ int GID_NOBODY ;
+ char* NOBODY_GROUP_NAME ;
+ char* NOBODY_USER_NAME ;
+ char* NOLOGIN ;
+ int TTY_GID ;
+ int UID_NOBODY ;
+ int test_get_group_creds_one (char*,char*,int) ;
+ int test_get_user_creds_one (char*,char*,int,int,char*,char*) ;
+ int test_gid_to_name_one (int,char*) ;
+ int test_in_gid () ;
+ int test_make_salt () ;
+ int test_parse_uid () ;
+ int test_uid_ptr () ;
+ int test_uid_to_name_one (int,char*) ;
+ int test_valid_gecos () ;
+ int test_valid_home () ;
+ int test_valid_user_group_name () ;
+ int test_valid_user_group_name_compat () ;
+ int test_valid_user_group_name_or_id () ;
+ int test_valid_user_group_name_or_id_compat () ;
 
 int main(int argc, char *argv[]) {
         test_uid_to_name_one(0, "root");

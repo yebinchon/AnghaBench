@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  PWMD4 ; 
- int /*<<< orphan*/  PWM_FRACTION_TO_WIDTH (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  planck_ez_right_led_duty ; 
- int /*<<< orphan*/  pwmEnableChannel (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
+ int PWMD4 ;
+ int PWM_FRACTION_TO_WIDTH (int *,int,int ) ;
+ int planck_ez_right_led_duty ;
+ int pwmEnableChannel (int *,int,int ) ;
 
 void planck_ez_right_led_on(void){
     pwmEnableChannel(&PWMD4, 2, PWM_FRACTION_TO_WIDTH(&PWMD4,0xFFFF,planck_ez_right_led_duty));

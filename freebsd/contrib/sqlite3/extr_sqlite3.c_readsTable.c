@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_5__ ;
-typedef  struct TYPE_15__   TYPE_4__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_12__ {int /*<<< orphan*/ * pVtab; } ;
+
+
+typedef struct TYPE_16__ TYPE_5__ ;
+typedef struct TYPE_15__ TYPE_4__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+struct TYPE_12__ {int * pVtab; } ;
 struct TYPE_13__ {scalar_t__ opcode; int p3; int p2; scalar_t__ p4type; TYPE_1__ p4; } ;
-typedef  TYPE_2__ VdbeOp ;
-typedef  int /*<<< orphan*/  Vdbe ;
-typedef  int /*<<< orphan*/  VTable ;
+typedef TYPE_2__ VdbeOp ;
+typedef int Vdbe ;
+typedef int VTable ;
 struct TYPE_14__ {int tnum; TYPE_5__* pIndex; } ;
-typedef  TYPE_3__ Table ;
+typedef TYPE_3__ Table ;
 struct TYPE_16__ {int tnum; struct TYPE_16__* pNext; } ;
-struct TYPE_15__ {int /*<<< orphan*/  db; } ;
-typedef  TYPE_4__ Parse ;
-typedef  TYPE_5__ Index ;
+struct TYPE_15__ {int db; } ;
+typedef TYPE_4__ Parse ;
+typedef TYPE_5__ Index ;
 
-/* Variables and functions */
- scalar_t__ IsVirtual (TYPE_3__*) ; 
- scalar_t__ OP_OpenRead ; 
- scalar_t__ OP_VOpen ; 
- scalar_t__ P4_VTAB ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/ * sqlite3GetVTable (int /*<<< orphan*/ ,TYPE_3__*) ; 
- int /*<<< orphan*/ * sqlite3GetVdbe (TYPE_4__*) ; 
- int sqlite3VdbeCurrentAddr (int /*<<< orphan*/ *) ; 
- TYPE_2__* sqlite3VdbeGetOp (int /*<<< orphan*/ *,int) ; 
+
+ scalar_t__ IsVirtual (TYPE_3__*) ;
+ scalar_t__ OP_OpenRead ;
+ scalar_t__ OP_VOpen ;
+ scalar_t__ P4_VTAB ;
+ int assert (int) ;
+ int * sqlite3GetVTable (int ,TYPE_3__*) ;
+ int * sqlite3GetVdbe (TYPE_4__*) ;
+ int sqlite3VdbeCurrentAddr (int *) ;
+ TYPE_2__* sqlite3VdbeGetOp (int *,int) ;
 
 __attribute__((used)) static int readsTable(Parse *p, int iDb, Table *pTab){
   Vdbe *v = sqlite3GetVdbe(p);
   int i;
   int iEnd = sqlite3VdbeCurrentAddr(v);
-#ifndef SQLITE_OMIT_VIRTUALTABLE
+
   VTable *pVTab = IsVirtual(pTab) ? sqlite3GetVTable(p->db, pTab) : 0;
-#endif
+
 
   for(i=1; i<iEnd; i++){
     VdbeOp *pOp = sqlite3VdbeGetOp(v, i);
@@ -61,13 +61,13 @@ __attribute__((used)) static int readsTable(Parse *p, int iDb, Table *pTab){
         }
       }
     }
-#ifndef SQLITE_OMIT_VIRTUALTABLE
+
     if( pOp->opcode==OP_VOpen && pOp->p4.pVtab==pVTab ){
       assert( pOp->p4.pVtab!=0 );
       assert( pOp->p4type==P4_VTAB );
       return 1;
     }
-#endif
+
   }
   return 0;
 }

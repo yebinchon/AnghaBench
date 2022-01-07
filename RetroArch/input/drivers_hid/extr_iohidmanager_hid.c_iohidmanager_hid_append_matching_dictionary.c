@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int /*<<< orphan*/  CFNumberRef ;
-typedef  int /*<<< orphan*/  CFMutableDictionaryRef ;
-typedef  int /*<<< orphan*/  CFMutableArrayRef ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CFArrayAppendValue (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CFDictionaryCreateMutable (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CFDictionarySetValue (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CFNumberCreate (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CFRelease (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CFSTR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kCFAllocatorDefault ; 
- int /*<<< orphan*/  kCFNumberIntType ; 
- int /*<<< orphan*/  kCFTypeDictionaryKeyCallBacks ; 
- int /*<<< orphan*/  kCFTypeDictionaryValueCallBacks ; 
- int /*<<< orphan*/  kIOHIDDeviceUsageKey ; 
- int /*<<< orphan*/  kIOHIDDeviceUsagePageKey ; 
+
+
+
+typedef int uint32_t ;
+typedef int CFNumberRef ;
+typedef int CFMutableDictionaryRef ;
+typedef int CFMutableArrayRef ;
+
+
+ int CFArrayAppendValue (int ,int ) ;
+ int CFDictionaryCreateMutable (int ,int ,int *,int *) ;
+ int CFDictionarySetValue (int ,int ,int ) ;
+ int CFNumberCreate (int ,int ,int *) ;
+ int CFRelease (int ) ;
+ int CFSTR (int ) ;
+ int kCFAllocatorDefault ;
+ int kCFNumberIntType ;
+ int kCFTypeDictionaryKeyCallBacks ;
+ int kCFTypeDictionaryValueCallBacks ;
+ int kIOHIDDeviceUsageKey ;
+ int kIOHIDDeviceUsagePageKey ;
 
 __attribute__((used)) static void iohidmanager_hid_append_matching_dictionary(
       CFMutableArrayRef array,
@@ -38,7 +38,7 @@ __attribute__((used)) static void iohidmanager_hid_append_matching_dictionary(
          &kCFTypeDictionaryKeyCallBacks,
          &kCFTypeDictionaryValueCallBacks);
    CFNumberRef pagen = CFNumberCreate(kCFAllocatorDefault, kCFNumberIntType, &page);
-   CFNumberRef usen  = CFNumberCreate(kCFAllocatorDefault, kCFNumberIntType, &use);
+   CFNumberRef usen = CFNumberCreate(kCFAllocatorDefault, kCFNumberIntType, &use);
 
    CFDictionarySetValue(matcher, CFSTR(kIOHIDDeviceUsagePageKey), pagen);
    CFDictionarySetValue(matcher, CFSTR(kIOHIDDeviceUsageKey), usen);

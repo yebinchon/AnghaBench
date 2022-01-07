@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int BUFF_LEN ; 
- int /*<<< orphan*/  emalloc (int) ; 
- int /*<<< orphan*/  erealloc (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  result_buff ; 
- int result_buff_len ; 
+ int BUFF_LEN ;
+ int emalloc (int) ;
+ int erealloc (int ,int) ;
+ int result_buff ;
+ int result_buff_len ;
 
 void realloc_buff () {
   if (!result_buff_len) {

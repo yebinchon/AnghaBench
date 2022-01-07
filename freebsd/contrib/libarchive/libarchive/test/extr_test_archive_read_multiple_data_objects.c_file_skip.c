@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct mydata {int /*<<< orphan*/  filename; int /*<<< orphan*/  fd; } ;
+
+
+
+
+struct mydata {int filename; int fd; } ;
 struct archive {int dummy; } ;
-typedef  scalar_t__ int64_t ;
+typedef scalar_t__ int64_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SEEK_CUR ; 
- int /*<<< orphan*/  archive_set_error (struct archive*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errno ; 
- scalar_t__ lseek (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
+
+ int SEEK_CUR ;
+ int archive_set_error (struct archive*,int ,char*,int ) ;
+ int errno ;
+ scalar_t__ lseek (int ,int ,scalar_t__) ;
 
 __attribute__((used)) static int64_t
 file_skip(struct archive *a, void *data, int64_t request)

@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int UINT ;
-struct TYPE_4__ {int /*<<< orphan*/  guid; } ;
-typedef  TYPE_1__ TYPEATTR ;
-typedef  int /*<<< orphan*/ * REFIID ;
-typedef  int /*<<< orphan*/  ITypeInfo ;
-typedef  int /*<<< orphan*/  IDispatch ;
-typedef  int HRESULT ;
 
-/* Variables and functions */
- int IDispatch_GetTypeInfo (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int IDispatch_GetTypeInfoCount (int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  IID_NULL ; 
- int ITypeInfo_GetTypeAttr (int /*<<< orphan*/ *,TYPE_1__**) ; 
- int /*<<< orphan*/  ITypeInfo_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ITypeInfo_ReleaseTypeAttr (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int IsEqualGUID (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LOCALE_SYSTEM_DEFAULT ; 
- int S_OK ; 
- int /*<<< orphan*/  ok (int,char*,int) ; 
- int wine_dbgstr_guid (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int UINT ;
+struct TYPE_4__ {int guid; } ;
+typedef TYPE_1__ TYPEATTR ;
+typedef int * REFIID ;
+typedef int ITypeInfo ;
+typedef int IDispatch ;
+typedef int HRESULT ;
+
+
+ int IDispatch_GetTypeInfo (int *,int ,int ,int **) ;
+ int IDispatch_GetTypeInfoCount (int *,int*) ;
+ int IID_NULL ;
+ int ITypeInfo_GetTypeAttr (int *,TYPE_1__**) ;
+ int ITypeInfo_Release (int *) ;
+ int ITypeInfo_ReleaseTypeAttr (int *,TYPE_1__*) ;
+ int IsEqualGUID (int *,int *) ;
+ int LOCALE_SYSTEM_DEFAULT ;
+ int S_OK ;
+ int ok (int,char*,int) ;
+ int wine_dbgstr_guid (int *) ;
 
 __attribute__((used)) static void test_dispatch_typeinfo(IDispatch *disp, REFIID *riid)
 {

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mrb_value ;
-typedef  int /*<<< orphan*/  mrb_state ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_TYPE_ERROR ; 
- int RARRAY_LEN (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * RARRAY_PTR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_array_p (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_intern_lit (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  mrb_iv_set (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_raise (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  mrb_string_p (int /*<<< orphan*/  const) ; 
+
+
+
+typedef int mrb_value ;
+typedef int mrb_state ;
+
+
+ int E_TYPE_ERROR ;
+ int RARRAY_LEN (int ) ;
+ int * RARRAY_PTR (int ) ;
+ int mrb_array_p (int ) ;
+ int mrb_intern_lit (int *,char*) ;
+ int mrb_iv_set (int *,int ,int ,int ) ;
+ int mrb_raise (int *,int ,char*) ;
+ int mrb_string_p (int const) ;
 
 __attribute__((used)) static void
 set_backtrace(mrb_state *mrb, mrb_value exc, mrb_value backtrace)

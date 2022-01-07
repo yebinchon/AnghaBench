@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  decimal64 ;
-typedef  int /*<<< orphan*/  decNumber ;
 
-/* Variables and functions */
- int /*<<< orphan*/  decNumberToString (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  decimal64ToNumber (int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int decimal64 ;
+typedef int decNumber ;
+
+
+ int decNumberToString (int *,char*) ;
+ int decimal64ToNumber (int const*,int *) ;
 
 char *
 decimal64ToString (const decimal64 * d64, char *string)
 {
-  decNumber dn;			/* work */
+  decNumber dn;
   decimal64ToNumber (d64, &dn);
   decNumberToString (&dn, string);
   return string;

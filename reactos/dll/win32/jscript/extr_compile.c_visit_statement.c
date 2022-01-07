@@ -1,104 +1,88 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_29__   TYPE_9__ ;
-typedef  struct TYPE_28__   TYPE_8__ ;
-typedef  struct TYPE_27__   TYPE_7__ ;
-typedef  struct TYPE_26__   TYPE_6__ ;
-typedef  struct TYPE_25__   TYPE_5__ ;
-typedef  struct TYPE_24__   TYPE_4__ ;
-typedef  struct TYPE_23__   TYPE_3__ ;
-typedef  struct TYPE_22__   TYPE_2__ ;
-typedef  struct TYPE_21__   TYPE_1__ ;
-typedef  struct TYPE_20__   TYPE_14__ ;
-typedef  struct TYPE_19__   TYPE_13__ ;
-typedef  struct TYPE_18__   TYPE_12__ ;
-typedef  struct TYPE_17__   TYPE_11__ ;
-typedef  struct TYPE_16__   TYPE_10__ ;
 
-/* Type definitions */
-struct TYPE_22__ {TYPE_7__* statement; int /*<<< orphan*/  expr; } ;
-typedef  TYPE_2__ with_statement_t ;
-struct TYPE_23__ {TYPE_7__* statement; int /*<<< orphan*/  expr; } ;
-typedef  TYPE_3__ while_statement_t ;
-struct TYPE_24__ {int /*<<< orphan*/  variable_list; } ;
-typedef  TYPE_4__ var_statement_t ;
+
+
+typedef struct TYPE_29__ TYPE_9__ ;
+typedef struct TYPE_28__ TYPE_8__ ;
+typedef struct TYPE_27__ TYPE_7__ ;
+typedef struct TYPE_26__ TYPE_6__ ;
+typedef struct TYPE_25__ TYPE_5__ ;
+typedef struct TYPE_24__ TYPE_4__ ;
+typedef struct TYPE_23__ TYPE_3__ ;
+typedef struct TYPE_22__ TYPE_2__ ;
+typedef struct TYPE_21__ TYPE_1__ ;
+typedef struct TYPE_20__ TYPE_14__ ;
+typedef struct TYPE_19__ TYPE_13__ ;
+typedef struct TYPE_18__ TYPE_12__ ;
+typedef struct TYPE_17__ TYPE_11__ ;
+typedef struct TYPE_16__ TYPE_10__ ;
+
+
+struct TYPE_22__ {TYPE_7__* statement; int expr; } ;
+typedef TYPE_2__ with_statement_t ;
+struct TYPE_23__ {TYPE_7__* statement; int expr; } ;
+typedef TYPE_3__ while_statement_t ;
+struct TYPE_24__ {int variable_list; } ;
+typedef TYPE_4__ var_statement_t ;
 struct TYPE_25__ {TYPE_7__* finally_statement; TYPE_1__* catch_block; TYPE_7__* try_statement; } ;
-typedef  TYPE_5__ try_statement_t ;
-struct TYPE_26__ {TYPE_13__* case_list; int /*<<< orphan*/  expr; } ;
-typedef  TYPE_6__ switch_statement_t ;
+typedef TYPE_5__ try_statement_t ;
+struct TYPE_26__ {TYPE_13__* case_list; int expr; } ;
+typedef TYPE_6__ switch_statement_t ;
 struct TYPE_27__ {int type; struct TYPE_27__* next; } ;
-typedef  TYPE_7__ statement_t ;
+typedef TYPE_7__ statement_t ;
 struct TYPE_28__ {TYPE_7__* statement; } ;
-typedef  TYPE_8__ labelled_statement_t ;
-struct TYPE_29__ {TYPE_7__* else_stat; TYPE_7__* if_stat; int /*<<< orphan*/  expr; } ;
-typedef  TYPE_9__ if_statement_t ;
-struct TYPE_16__ {TYPE_7__* statement; int /*<<< orphan*/  expr; int /*<<< orphan*/  in_expr; int /*<<< orphan*/  variable; } ;
-typedef  TYPE_10__ forin_statement_t ;
-struct TYPE_17__ {int /*<<< orphan*/  end_expr; TYPE_7__* statement; int /*<<< orphan*/  expr; int /*<<< orphan*/  begin_expr; int /*<<< orphan*/  variable_list; } ;
-typedef  TYPE_11__ for_statement_t ;
-struct TYPE_18__ {int /*<<< orphan*/  expr; } ;
-typedef  TYPE_12__ expression_statement_t ;
-typedef  int /*<<< orphan*/  compiler_ctx_t ;
-struct TYPE_19__ {TYPE_7__* stat; struct TYPE_19__* next; int /*<<< orphan*/  expr; } ;
-typedef  TYPE_13__ case_clausule_t ;
-struct TYPE_20__ {int /*<<< orphan*/  stat_list; } ;
-typedef  TYPE_14__ block_statement_t ;
+typedef TYPE_8__ labelled_statement_t ;
+struct TYPE_29__ {TYPE_7__* else_stat; TYPE_7__* if_stat; int expr; } ;
+typedef TYPE_9__ if_statement_t ;
+struct TYPE_16__ {TYPE_7__* statement; int expr; int in_expr; int variable; } ;
+typedef TYPE_10__ forin_statement_t ;
+struct TYPE_17__ {int end_expr; TYPE_7__* statement; int expr; int begin_expr; int variable_list; } ;
+typedef TYPE_11__ for_statement_t ;
+struct TYPE_18__ {int expr; } ;
+typedef TYPE_12__ expression_statement_t ;
+typedef int compiler_ctx_t ;
+struct TYPE_19__ {TYPE_7__* stat; struct TYPE_19__* next; int expr; } ;
+typedef TYPE_13__ case_clausule_t ;
+struct TYPE_20__ {int stat_list; } ;
+typedef TYPE_14__ block_statement_t ;
 struct TYPE_21__ {TYPE_7__* statement; } ;
-typedef  int /*<<< orphan*/  HRESULT ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEFAULT_UNREACHABLE ; 
- int /*<<< orphan*/  FAILED (int /*<<< orphan*/ ) ; 
-#define  STAT_BLOCK 143 
-#define  STAT_BREAK 142 
-#define  STAT_CONTINUE 141 
-#define  STAT_EMPTY 140 
-#define  STAT_EXPR 139 
-#define  STAT_FOR 138 
-#define  STAT_FORIN 137 
-#define  STAT_IF 136 
-#define  STAT_LABEL 135 
-#define  STAT_RETURN 134 
-#define  STAT_SWITCH 133 
-#define  STAT_THROW 132 
-#define  STAT_TRY 131 
-#define  STAT_VAR 130 
-#define  STAT_WHILE 129 
-#define  STAT_WITH 128 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  visit_block_statement (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  visit_expression (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  visit_variable_list (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int DEFAULT_UNREACHABLE ;
+ int FAILED (int ) ;
+ int S_OK ;
+ int visit_block_statement (int *,int ) ;
+ int visit_expression (int *,int ) ;
+ int visit_variable_list (int *,int ) ;
 
 __attribute__((used)) static HRESULT visit_statement(compiler_ctx_t *ctx, statement_t *stat)
 {
     HRESULT hres = S_OK;
 
     switch(stat->type) {
-    case STAT_BLOCK:
+    case 143:
         hres = visit_block_statement(ctx, ((block_statement_t*)stat)->stat_list);
         break;
-    case STAT_BREAK:
-    case STAT_CONTINUE:
-    case STAT_EMPTY:
+    case 142:
+    case 141:
+    case 140:
         break;
-    case STAT_EXPR:
-    case STAT_RETURN:
-    case STAT_THROW: {
+    case 139:
+    case 134:
+    case 132: {
         expression_statement_t *expr_stat = (expression_statement_t*)stat;
         if(expr_stat->expr)
             hres = visit_expression(ctx, expr_stat->expr);
         break;
     }
-    case STAT_FOR: {
+    case 138: {
         for_statement_t *for_stat = (for_statement_t*)stat;
 
         if(for_stat->variable_list)
@@ -122,7 +106,7 @@ __attribute__((used)) static HRESULT visit_statement(compiler_ctx_t *ctx, statem
             hres = visit_expression(ctx, for_stat->end_expr);
         break;
     }
-    case STAT_FORIN:  {
+    case 137: {
         forin_statement_t *forin_stat = (forin_statement_t*)stat;
 
         if(forin_stat->variable) {
@@ -144,7 +128,7 @@ __attribute__((used)) static HRESULT visit_statement(compiler_ctx_t *ctx, statem
         hres = visit_statement(ctx, forin_stat->statement);
         break;
     }
-    case STAT_IF: {
+    case 136: {
         if_statement_t *if_stat = (if_statement_t*)stat;
 
         hres = visit_expression(ctx, if_stat->expr);
@@ -159,10 +143,10 @@ __attribute__((used)) static HRESULT visit_statement(compiler_ctx_t *ctx, statem
             hres = visit_statement(ctx, if_stat->else_stat);
         break;
     }
-    case STAT_LABEL:
+    case 135:
         hres = visit_statement(ctx, ((labelled_statement_t*)stat)->statement);
         break;
-    case STAT_SWITCH: {
+    case 133: {
         switch_statement_t *switch_stat = (switch_statement_t*)stat;
         statement_t *stat_iter;
         case_clausule_t *iter;
@@ -191,7 +175,7 @@ __attribute__((used)) static HRESULT visit_statement(compiler_ctx_t *ctx, statem
         }
         break;
     }
-    case STAT_TRY: {
+    case 131: {
         try_statement_t *try_stat = (try_statement_t*)stat;
 
         hres = visit_statement(ctx, try_stat->try_statement);
@@ -208,10 +192,10 @@ __attribute__((used)) static HRESULT visit_statement(compiler_ctx_t *ctx, statem
             hres = visit_statement(ctx, try_stat->finally_statement);
         break;
     }
-    case STAT_VAR:
+    case 130:
         hres = visit_variable_list(ctx, ((var_statement_t*)stat)->variable_list);
         break;
-    case STAT_WHILE: {
+    case 129: {
         while_statement_t *while_stat = (while_statement_t*)stat;
 
         hres = visit_expression(ctx, while_stat->expr);
@@ -221,7 +205,7 @@ __attribute__((used)) static HRESULT visit_statement(compiler_ctx_t *ctx, statem
         hres = visit_statement(ctx, while_stat->statement);
         break;
     }
-    case STAT_WITH: {
+    case 128: {
         with_statement_t *with_stat = (with_statement_t*)stat;
 
         hres = visit_expression(ctx, with_stat->expr);

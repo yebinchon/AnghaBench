@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_context ;
-typedef  int /*<<< orphan*/  DateTime ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SQLITE_UTF8 ; 
- scalar_t__ parseHhMmSs (char const*,int /*<<< orphan*/ *) ; 
- scalar_t__ parseYyyyMmDd (char const*,int /*<<< orphan*/ *) ; 
- int setDateTimeToCurrent (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  setRawDateNumber (int /*<<< orphan*/ *,double) ; 
- scalar_t__ sqlite3AtoF (char const*,double*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ sqlite3NotPureFunc (int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3StrICmp (char const*,char*) ; 
- int /*<<< orphan*/  sqlite3Strlen30 (char const*) ; 
+
+
+
+typedef int sqlite3_context ;
+typedef int DateTime ;
+
+
+ int SQLITE_UTF8 ;
+ scalar_t__ parseHhMmSs (char const*,int *) ;
+ scalar_t__ parseYyyyMmDd (char const*,int *) ;
+ int setDateTimeToCurrent (int *,int *) ;
+ int setRawDateNumber (int *,double) ;
+ scalar_t__ sqlite3AtoF (char const*,double*,int ,int ) ;
+ scalar_t__ sqlite3NotPureFunc (int *) ;
+ scalar_t__ sqlite3StrICmp (char const*,char*) ;
+ int sqlite3Strlen30 (char const*) ;
 
 __attribute__((used)) static int parseDateOrTime(
-  sqlite3_context *context, 
-  const char *zDate, 
+  sqlite3_context *context,
+  const char *zDate,
   DateTime *p
 ){
   double r;

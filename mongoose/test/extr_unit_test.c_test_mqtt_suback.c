@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_2__ {char* buf; char const len; } ;
 struct mg_connection {TYPE_1__ send_mbuf; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT_EQ (char const,int) ; 
- int MG_MQTT_CMD_SUBACK ; 
- char const MG_MQTT_GET_QOS (char const) ; 
- struct mg_connection* create_test_connection () ; 
- int /*<<< orphan*/  destroy_test_connection (struct mg_connection*) ; 
- int /*<<< orphan*/  mg_mqtt_suback (struct mg_connection*,int*,int,int) ; 
- int /*<<< orphan*/  mg_set_protocol_mqtt (struct mg_connection*) ; 
+
+ int ASSERT_EQ (char const,int) ;
+ int MG_MQTT_CMD_SUBACK ;
+ char const MG_MQTT_GET_QOS (char const) ;
+ struct mg_connection* create_test_connection () ;
+ int destroy_test_connection (struct mg_connection*) ;
+ int mg_mqtt_suback (struct mg_connection*,int*,int,int) ;
+ int mg_set_protocol_mqtt (struct mg_connection*) ;
 
 __attribute__((used)) static const char *test_mqtt_suback(void) {
   struct mg_connection *nc = create_test_connection();
@@ -42,5 +42,5 @@ __attribute__((used)) static const char *test_mqtt_suback(void) {
   ASSERT_EQ(got[4], 1);
 
   destroy_test_connection(nc);
-  return NULL;
+  return ((void*)0);
 }

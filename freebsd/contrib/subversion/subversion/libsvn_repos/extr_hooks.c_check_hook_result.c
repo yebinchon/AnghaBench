@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  data; } ;
-typedef  TYPE_1__ svn_stringbuf_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  apr_proc_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_file_t ;
-typedef  char const* apr_exit_why_e ;
 
-/* Variables and functions */
- scalar_t__ APR_PROC_CHECK_EXIT (char const*) ; 
- int /*<<< orphan*/  SVN_ERR_REPOS_HOOK_FAILURE ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- char const* _ (char*) ; 
- scalar_t__ strcmp (char const*,char*) ; 
- int /*<<< orphan*/  svn_error_clear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_error_create (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * svn_error_createf (int /*<<< orphan*/ ,int /*<<< orphan*/ *,char const*,char const*) ; 
- int /*<<< orphan*/ * svn_error_trace (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_io_wait_for_cmd (int /*<<< orphan*/ *,char const*,int*,char const**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_stringbuf_appendcstr (TYPE_1__*,char const*) ; 
- TYPE_1__* svn_stringbuf_createf (int /*<<< orphan*/ *,char const*,char const*,...) ; 
- int /*<<< orphan*/ * svn_stringbuf_from_aprfile (TYPE_1__**,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_utf_cstring_to_utf8 (char const**,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int data; } ;
+typedef TYPE_1__ svn_stringbuf_t ;
+typedef int svn_error_t ;
+typedef int apr_proc_t ;
+typedef int apr_pool_t ;
+typedef int apr_file_t ;
+typedef char const* apr_exit_why_e ;
+
+
+ scalar_t__ APR_PROC_CHECK_EXIT (char const*) ;
+ int SVN_ERR_REPOS_HOOK_FAILURE ;
+ int * SVN_NO_ERROR ;
+ char const* _ (char*) ;
+ scalar_t__ strcmp (char const*,char*) ;
+ int svn_error_clear (int *) ;
+ int * svn_error_create (int ,int *,int ) ;
+ int * svn_error_createf (int ,int *,char const*,char const*) ;
+ int * svn_error_trace (int *) ;
+ int * svn_io_wait_for_cmd (int *,char const*,int*,char const**,int *) ;
+ int svn_stringbuf_appendcstr (TYPE_1__*,char const*) ;
+ TYPE_1__* svn_stringbuf_createf (int *,char const*,char const*,...) ;
+ int * svn_stringbuf_from_aprfile (TYPE_1__**,int *,int *) ;
+ int * svn_utf_cstring_to_utf8 (char const**,int ,int *) ;
 
 __attribute__((used)) static svn_error_t *
 check_hook_result(const char *name, const char *cmd, apr_proc_t *cmd_proc,
@@ -56,9 +56,9 @@ check_hook_result(const char *name, const char *cmd, apr_proc_t *cmd_proc,
 
   if (APR_PROC_CHECK_EXIT(exitwhy) && exitcode == 0)
     {
-      /* The hook exited cleanly.  However, if we got an error reading
-         the hook's stderr, fail the hook anyway, because this might be
-         symptomatic of a more important problem. */
+
+
+
       if (err2)
         {
           return svn_error_createf
@@ -70,10 +70,10 @@ check_hook_result(const char *name, const char *cmd, apr_proc_t *cmd_proc,
       return SVN_NO_ERROR;
     }
 
-  /* The hook script failed. */
 
-  /* If we got the stderr output okay, try to translate it into UTF-8.
-     Ensure there is something sensible in the UTF-8 string regardless. */
+
+
+
   if (!err2)
     {
       err2 = svn_utf_cstring_to_utf8(&utf8_stderr, native_stderr->data, pool);
@@ -85,8 +85,8 @@ check_hook_result(const char *name, const char *cmd, apr_proc_t *cmd_proc,
     {
       utf8_stderr = _("[Error output could not be read.]");
     }
-  /*### It would be nice to include the text of any translation or read
-        error in the messages above before we clear it here. */
+
+
   svn_error_clear(err2);
 
   if (!APR_PROC_CHECK_EXIT(exitwhy))
@@ -109,8 +109,8 @@ check_hook_result(const char *name, const char *cmd, apr_proc_t *cmd_proc,
       else if (strcmp(name, "pre-unlock") == 0)
         action = _("Unlock");
       else
-        action = NULL;
-      if (action == NULL)
+        action = ((void*)0);
+      if (action == ((void*)0))
         failure_message = svn_stringbuf_createf(
             pool, _("%s hook failed (exit code %d)"),
             name, exitcode);

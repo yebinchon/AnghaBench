@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_vfs ;
-typedef  int /*<<< orphan*/  sqlite3 ;
 
-/* Variables and functions */
- scalar_t__ ISSPACE (char) ; 
- int SQLITE_OK ; 
- int SQLITE_OPEN_CREATE ; 
- int SQLITE_OPEN_READWRITE ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char const*,...) ; 
- int /*<<< orphan*/  prepareAndRun (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*) ; 
- char* readScriptFile (char const*,int*) ; 
- int sqlite3_complete (char*) ; 
- char* sqlite3_errmsg (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * sqlite3_instvfs_binarylog (char*,int /*<<< orphan*/ ,char const*,int) ; 
- int /*<<< orphan*/  sqlite3_instvfs_destroy (int /*<<< orphan*/ *) ; 
- int sqlite3_open_v2 (char const*,int /*<<< orphan*/ **,int,char*) ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ stringcompare (char*,char*) ; 
+
+
+
+typedef int sqlite3_vfs ;
+typedef int sqlite3 ;
+
+
+ scalar_t__ ISSPACE (char) ;
+ int SQLITE_OK ;
+ int SQLITE_OPEN_CREATE ;
+ int SQLITE_OPEN_READWRITE ;
+ int fprintf (int ,char const*,...) ;
+ int prepareAndRun (int *,int *,char*) ;
+ char* readScriptFile (char const*,int*) ;
+ int sqlite3_complete (char*) ;
+ char* sqlite3_errmsg (int *) ;
+ int * sqlite3_instvfs_binarylog (char*,int ,char const*,int) ;
+ int sqlite3_instvfs_destroy (int *) ;
+ int sqlite3_open_v2 (char const*,int **,int,char*) ;
+ int stderr ;
+ scalar_t__ stringcompare (char*,char*) ;
 
 int main(int argc, char **argv){
 
-  const char zUsageMsg[] = 
+  const char zUsageMsg[] =
     "Usage: %s options...\n"
     "  where available options are:\n"
     "\n"
@@ -53,7 +53,7 @@ int main(int argc, char **argv){
   int i, j;
   int rc;
 
-  sqlite3_vfs *pInstVfs;                 /* Instrumentation VFS */
+  sqlite3_vfs *pInstVfs;
 
   char *zSql = 0;
   int nSql;
@@ -117,10 +117,10 @@ int main(int argc, char **argv){
       }
     }
   }
-  
+
   sqlite3_instvfs_destroy(pInstVfs);
   return 0;
-  
+
 usage:
   fprintf(stderr, zUsageMsg, argv[0]);
   return -3;

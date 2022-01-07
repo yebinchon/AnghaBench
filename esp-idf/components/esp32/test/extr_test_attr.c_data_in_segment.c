@@ -1,20 +1,11 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
-
 __attribute__((used)) static bool data_in_segment(void *ptr, int *seg_start, int *seg_end)
 {
-    return ((intptr_t)ptr < (intptr_t)seg_end) && \
-           ((intptr_t)ptr >= (intptr_t)seg_start);
+    return ((intptr_t)ptr < (intptr_t)seg_end) && ((intptr_t)ptr >= (intptr_t)seg_start);
+
 }

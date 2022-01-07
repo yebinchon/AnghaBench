@@ -1,64 +1,64 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  oname ;
 
-/* Variables and functions */
- scalar_t__ EndWith (char*,char*) ; 
- int /*<<< orphan*/  GetOmissionName (char*,int,char*) ; 
- scalar_t__ IsAllUpperStr (char*) ; 
- scalar_t__ IsEmptyStr (char*) ; 
- scalar_t__ StartWith (char*,char*) ; 
- size_t StrLen (char*) ; 
+
+
+
+typedef int oname ;
+
+
+ scalar_t__ EndWith (char*,char*) ;
+ int GetOmissionName (char*,int,char*) ;
+ scalar_t__ IsAllUpperStr (char*) ;
+ scalar_t__ IsEmptyStr (char*) ;
+ scalar_t__ StartWith (char*,char*) ;
+ size_t StrLen (char*) ;
 
 bool IsOmissionName(char *input_name, char *real_name)
 {
-	char oname[128];
-	// Validate arguments
-	if (input_name == NULL || real_name == NULL)
-	{
-		return false;
-	}
+ char oname[128];
 
-	if (IsAllUpperStr(real_name))
-	{
-		// Command of all capital letters do not take abbreviations
-		return false;
-	}
+ if (input_name == ((void*)0) || real_name == ((void*)0))
+ {
+  return 0;
+ }
 
-	GetOmissionName(oname, sizeof(oname), real_name);
+ if (IsAllUpperStr(real_name))
+ {
 
-	if (IsEmptyStr(oname))
-	{
-		return false;
-	}
+  return 0;
+ }
 
-	if (StartWith(oname, input_name))
-	{
-		// Example: The oname of AccountSecureCertSet is "ascs".
-		// But if the user enters "asc", returns true
-		return true;
-	}
+ GetOmissionName(oname, sizeof(oname), real_name);
 
-	if (StartWith(input_name, oname))
-	{
-		// Example: When two commands AccountCreate and AccountConnect exist,
-		// if the user enter "aconnect" , only AccountConnect is true
+ if (IsEmptyStr(oname))
+ {
+  return 0;
+ }
 
-		if (EndWith(real_name, &input_name[StrLen(oname)]))
-		{
-			return true;
-		}
-	}
+ if (StartWith(oname, input_name))
+ {
 
-	return false;
+
+  return 1;
+ }
+
+ if (StartWith(input_name, oname))
+ {
+
+
+
+  if (EndWith(real_name, &input_name[StrLen(oname)]))
+  {
+   return 1;
+  }
+ }
+
+ return 0;
 }

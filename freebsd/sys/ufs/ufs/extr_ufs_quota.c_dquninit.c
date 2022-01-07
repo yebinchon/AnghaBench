@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct dquot {int /*<<< orphan*/  dq_lock; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  M_DQUOT ; 
- struct dquot* TAILQ_FIRST (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TAILQ_REMOVE (int /*<<< orphan*/ *,struct dquot*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dq_freelist ; 
- int /*<<< orphan*/  dqfreelist ; 
- int /*<<< orphan*/  dqhash ; 
- int /*<<< orphan*/  dqhashtbl ; 
- int /*<<< orphan*/  dqhlock ; 
- int /*<<< orphan*/  free (struct dquot*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hashdestroy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mtx_destroy (int /*<<< orphan*/ *) ; 
+
+
+
+struct dquot {int dq_lock; } ;
+
+
+ int M_DQUOT ;
+ struct dquot* TAILQ_FIRST (int *) ;
+ int TAILQ_REMOVE (int *,struct dquot*,int ) ;
+ int dq_freelist ;
+ int dqfreelist ;
+ int dqhash ;
+ int dqhashtbl ;
+ int dqhlock ;
+ int free (struct dquot*,int ) ;
+ int hashdestroy (int ,int ,int ) ;
+ int mtx_destroy (int *) ;
 
 void
 dquninit(void)
 {
-	struct dquot *dq;
+ struct dquot *dq;
 
-	hashdestroy(dqhashtbl, M_DQUOT, dqhash);
-	while ((dq = TAILQ_FIRST(&dqfreelist)) != NULL) {
-		TAILQ_REMOVE(&dqfreelist, dq, dq_freelist);
-		mtx_destroy(&dq->dq_lock);
-		free(dq, M_DQUOT);
-	}
-	mtx_destroy(&dqhlock);
+ hashdestroy(dqhashtbl, M_DQUOT, dqhash);
+ while ((dq = TAILQ_FIRST(&dqfreelist)) != ((void*)0)) {
+  TAILQ_REMOVE(&dqfreelist, dq, dq_freelist);
+  mtx_destroy(&dq->dq_lock);
+  free(dq, M_DQUOT);
+ }
+ mtx_destroy(&dqhlock);
 }

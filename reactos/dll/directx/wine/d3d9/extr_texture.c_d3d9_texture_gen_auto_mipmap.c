@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct d3d9_texture {int flags; int /*<<< orphan*/  wined3d_srv; } ;
 
-/* Variables and functions */
- int D3D9_TEXTURE_MIPMAP_DIRTY ; 
- int /*<<< orphan*/  d3d9_texture_acquire_shader_resource_view (struct d3d9_texture*) ; 
- int /*<<< orphan*/  wined3d_shader_resource_view_generate_mipmaps (int /*<<< orphan*/ ) ; 
+
+
+
+struct d3d9_texture {int flags; int wined3d_srv; } ;
+
+
+ int D3D9_TEXTURE_MIPMAP_DIRTY ;
+ int d3d9_texture_acquire_shader_resource_view (struct d3d9_texture*) ;
+ int wined3d_shader_resource_view_generate_mipmaps (int ) ;
 
 void d3d9_texture_gen_auto_mipmap(struct d3d9_texture *texture)
 {

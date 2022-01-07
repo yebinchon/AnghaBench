@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {scalar_t__ type; int /*<<< orphan*/  szValueName; } ;
-typedef  int /*<<< orphan*/  LPWSTR ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int DWORD ;
-typedef  size_t BYTE ;
 
-/* Variables and functions */
- size_t ARRAY_SIZE (TYPE_1__*) ; 
- TYPE_1__* CSIDL_Data ; 
- scalar_t__ CSIDL_Type_AllUsers ; 
- int /*<<< orphan*/  E_INVALIDARG ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HKEY_LOCAL_MACHINE ; 
- int SHGFP_TYPE_DEFAULT ; 
- int /*<<< orphan*/  TRACE (char*,int,size_t,...) ; 
- int /*<<< orphan*/  _SHGetDefaultValue (size_t,size_t,...) ; 
- int /*<<< orphan*/  _SHGetUserShellFolderPath (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  debugstr_w (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {scalar_t__ type; int szValueName; } ;
+typedef int LPWSTR ;
+typedef int HRESULT ;
+typedef int DWORD ;
+typedef size_t BYTE ;
+
+
+ size_t ARRAY_SIZE (TYPE_1__*) ;
+ TYPE_1__* CSIDL_Data ;
+ scalar_t__ CSIDL_Type_AllUsers ;
+ int E_INVALIDARG ;
+ scalar_t__ FAILED (int ) ;
+ int HKEY_LOCAL_MACHINE ;
+ int SHGFP_TYPE_DEFAULT ;
+ int TRACE (char*,int,size_t,...) ;
+ int _SHGetDefaultValue (size_t,size_t,...) ;
+ int _SHGetUserShellFolderPath (int ,int *,int ,...) ;
+ int debugstr_w (int ) ;
 
 __attribute__((used)) static HRESULT _SHGetAllUsersProfilePath(DWORD dwFlags, BYTE folder,
  LPWSTR pszPath)
@@ -45,25 +45,25 @@ __attribute__((used)) static HRESULT _SHGetAllUsersProfilePath(DWORD dwFlags, BY
         return E_INVALIDARG;
 
     if (dwFlags & SHGFP_TYPE_DEFAULT)
-#ifndef __REACTOS__
+
         hr = _SHGetDefaultValue(folder, pszPath);
-#else
-        hr = _SHGetDefaultValue(NULL, folder, pszPath);
-#endif
+
+
+
     else
     {
-#ifndef __REACTOS__
-        hr = _SHGetUserShellFolderPath(HKEY_LOCAL_MACHINE, NULL,
-#else
-        hr = _SHGetUserShellFolderPath(HKEY_LOCAL_MACHINE, NULL, NULL,
-#endif
+
+        hr = _SHGetUserShellFolderPath(HKEY_LOCAL_MACHINE, ((void*)0),
+
+
+
          CSIDL_Data[folder].szValueName, pszPath);
         if (FAILED(hr))
-#ifndef __REACTOS__
+
             hr = _SHGetDefaultValue(folder, pszPath);
-#else
-            hr = _SHGetDefaultValue(NULL, folder, pszPath);
-#endif
+
+
+
     }
     TRACE("returning 0x%08x (output path is %s)\n", hr, debugstr_w(pszPath));
     return hr;

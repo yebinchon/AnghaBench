@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct trie {scalar_t__ shift; scalar_t__ depth; int /*<<< orphan*/ * fail; int /*<<< orphan*/ * next; int /*<<< orphan*/ * parent; int /*<<< orphan*/ * links; scalar_t__ accepting; } ;
-struct kwset {int maxd; unsigned char const* trans; int /*<<< orphan*/ * target; int /*<<< orphan*/  mind; struct trie* trie; int /*<<< orphan*/  obstack; scalar_t__ words; } ;
-typedef  int /*<<< orphan*/ * kwset_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INT_MAX ; 
- int /*<<< orphan*/  kwsfree (int /*<<< orphan*/ *) ; 
- scalar_t__ obstack_alloc (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  obstack_init (int /*<<< orphan*/ *) ; 
- scalar_t__ xmalloc (int) ; 
+
+
+
+struct trie {scalar_t__ shift; scalar_t__ depth; int * fail; int * next; int * parent; int * links; scalar_t__ accepting; } ;
+struct kwset {int maxd; unsigned char const* trans; int * target; int mind; struct trie* trie; int obstack; scalar_t__ words; } ;
+typedef int * kwset_t ;
+
+
+ int INT_MAX ;
+ int kwsfree (int *) ;
+ scalar_t__ obstack_alloc (int *,int) ;
+ int obstack_init (int *) ;
+ scalar_t__ xmalloc (int) ;
 
 kwset_t
 kwsalloc (unsigned char const *trans)
@@ -35,18 +35,18 @@ kwsalloc (unsigned char const *trans)
   if (!kwset->trie)
     {
       kwsfree((kwset_t) kwset);
-      return NULL;
+      return ((void*)0);
     }
   kwset->trie->accepting = 0;
-  kwset->trie->links = NULL;
-  kwset->trie->parent = NULL;
-  kwset->trie->next = NULL;
-  kwset->trie->fail = NULL;
+  kwset->trie->links = ((void*)0);
+  kwset->trie->parent = ((void*)0);
+  kwset->trie->next = ((void*)0);
+  kwset->trie->fail = ((void*)0);
   kwset->trie->depth = 0;
   kwset->trie->shift = 0;
   kwset->mind = INT_MAX;
   kwset->maxd = -1;
-  kwset->target = NULL;
+  kwset->target = ((void*)0);
   kwset->trans = trans;
 
   return (kwset_t) kwset;

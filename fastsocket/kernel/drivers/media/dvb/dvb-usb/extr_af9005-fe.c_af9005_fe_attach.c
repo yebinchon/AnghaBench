@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct dvb_usb_device {int dummy; } ;
 struct dvb_frontend_ops {int dummy; } ;
-struct dvb_frontend {struct af9005_fe_state* demodulator_priv; int /*<<< orphan*/  ops; } ;
+struct dvb_frontend {struct af9005_fe_state* demodulator_priv; int ops; } ;
 struct af9005_fe_state {struct dvb_frontend frontend; scalar_t__ opened; struct dvb_usb_device* d; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  af9005_fe_ops ; 
- int /*<<< orphan*/  deb_info (char*) ; 
- struct af9005_fe_state* kzalloc (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
+
+ int GFP_KERNEL ;
+ int af9005_fe_ops ;
+ int deb_info (char*) ;
+ struct af9005_fe_state* kzalloc (int,int ) ;
+ int memcpy (int *,int *,int) ;
 
 struct dvb_frontend *af9005_fe_attach(struct dvb_usb_device *d)
 {
-	struct af9005_fe_state *state = NULL;
+ struct af9005_fe_state *state = ((void*)0);
 
-	/* allocate memory for the internal state */
-	state = kzalloc(sizeof(struct af9005_fe_state), GFP_KERNEL);
-	if (state == NULL)
-		goto error;
 
-	deb_info("attaching frontend af9005\n");
+ state = kzalloc(sizeof(struct af9005_fe_state), GFP_KERNEL);
+ if (state == ((void*)0))
+  goto error;
 
-	state->d = d;
-	state->opened = 0;
+ deb_info("attaching frontend af9005\n");
 
-	memcpy(&state->frontend.ops, &af9005_fe_ops,
-	       sizeof(struct dvb_frontend_ops));
-	state->frontend.demodulator_priv = state;
+ state->d = d;
+ state->opened = 0;
 
-	return &state->frontend;
+ memcpy(&state->frontend.ops, &af9005_fe_ops,
+        sizeof(struct dvb_frontend_ops));
+ state->frontend.demodulator_priv = state;
+
+ return &state->frontend;
       error:
-	return NULL;
+ return ((void*)0);
 }

@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  WHITESPACE ; 
- int /*<<< orphan*/  assert (char const**) ; 
- scalar_t__ strchr (int /*<<< orphan*/ ,char const) ; 
- size_t strcspn (char const*,int /*<<< orphan*/ ) ; 
- char* strndup (char const*,size_t) ; 
- int /*<<< orphan*/  strspn (char const*,int /*<<< orphan*/ ) ; 
+ int WHITESPACE ;
+ int assert (char const**) ;
+ scalar_t__ strchr (int ,char const) ;
+ size_t strcspn (char const*,int ) ;
+ char* strndup (char const*,size_t) ;
+ int strspn (char const*,int ) ;
 
 size_t syslog_parse_identifier(const char **buf, char **identifier, char **pid) {
         const char *p;
@@ -65,7 +57,7 @@ size_t syslog_parse_identifier(const char **buf, char **identifier, char **pid) 
         if (t)
                 *identifier = t;
 
-        /* Single space is used as separator */
+
         if (p[e] != '\0' && strchr(WHITESPACE, p[e]))
                 e++;
 

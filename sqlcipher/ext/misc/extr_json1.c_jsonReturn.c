@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t u32 ;
-typedef  int /*<<< orphan*/  sqlite3_value ;
-typedef  int sqlite3_int64 ;
-typedef  int /*<<< orphan*/  sqlite3_context ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef size_t u32 ;
+typedef int sqlite3_value ;
+typedef int sqlite3_int64 ;
+typedef int sqlite3_context ;
 struct TYPE_5__ {char* zJContent; } ;
 struct TYPE_6__ {int eType; int jnFlags; size_t n; TYPE_1__ u; } ;
-typedef  TYPE_2__ JsonNode ;
+typedef TYPE_2__ JsonNode ;
 
-/* Variables and functions */
- int JNODE_ESCAPE ; 
- int JNODE_RAW ; 
-#define  JSON_ARRAY 134 
-#define  JSON_FALSE 133 
-#define  JSON_INT 132 
- int JSON_NULL ; 
-#define  JSON_OBJECT 131 
-#define  JSON_REAL 130 
-#define  JSON_STRING 129 
-#define  JSON_TRUE 128 
- int LARGEST_INT64 ; 
- int SMALLEST_INT64 ; 
- int /*<<< orphan*/  SQLITE_TRANSIENT ; 
- int /*<<< orphan*/  SQLITE_UTF8 ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  jsonReturnJson (TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int safe_isxdigit (char) ; 
- int /*<<< orphan*/  sqlite3AtoF (char const*,double*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3Strlen30 (char const*) ; 
- int /*<<< orphan*/  sqlite3_free ; 
- char* sqlite3_malloc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_result_double (int /*<<< orphan*/ *,double) ; 
- int /*<<< orphan*/  sqlite3_result_error_nomem (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_result_int (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  sqlite3_result_int64 (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  sqlite3_result_null (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_result_text (int /*<<< orphan*/ *,char*,size_t,int /*<<< orphan*/ ) ; 
- double strtod (char*,int /*<<< orphan*/ ) ; 
+
+ int JNODE_ESCAPE ;
+ int JNODE_RAW ;
+
+
+
+ int JSON_NULL ;
+
+
+
+
+ int LARGEST_INT64 ;
+ int SMALLEST_INT64 ;
+ int SQLITE_TRANSIENT ;
+ int SQLITE_UTF8 ;
+ int assert (int) ;
+ int jsonReturnJson (TYPE_2__*,int *,int **) ;
+ int safe_isxdigit (char) ;
+ int sqlite3AtoF (char const*,double*,int ,int ) ;
+ int sqlite3Strlen30 (char const*) ;
+ int sqlite3_free ;
+ char* sqlite3_malloc (int ) ;
+ int sqlite3_result_double (int *,double) ;
+ int sqlite3_result_error_nomem (int *) ;
+ int sqlite3_result_int (int *,int) ;
+ int sqlite3_result_int64 (int *,int) ;
+ int sqlite3_result_null (int *) ;
+ int sqlite3_result_text (int *,char*,size_t,int ) ;
+ double strtod (char*,int ) ;
 
 __attribute__((used)) static void jsonReturn(
-  JsonNode *pNode,            /* Node to return */
-  sqlite3_context *pCtx,      /* Return value for this function */
-  sqlite3_value **aReplace    /* Array of replacement values */
+  JsonNode *pNode,
+  sqlite3_context *pCtx,
+  sqlite3_value **aReplace
 ){
   switch( pNode->eType ){
     default: {
@@ -61,15 +61,15 @@ __attribute__((used)) static void jsonReturn(
       sqlite3_result_null(pCtx);
       break;
     }
-    case JSON_TRUE: {
+    case 128: {
       sqlite3_result_int(pCtx, 1);
       break;
     }
-    case JSON_FALSE: {
+    case 133: {
       sqlite3_result_int(pCtx, 0);
       break;
     }
-    case JSON_INT: {
+    case 132: {
       sqlite3_int64 i = 0;
       const char *z = pNode->u.zJContent;
       if( z[0]=='-' ){ z++; }
@@ -94,35 +94,27 @@ __attribute__((used)) static void jsonReturn(
       sqlite3_result_int64(pCtx, i);
       int_done:
       break;
-      int_as_real: /* fall through to real */;
+      int_as_real: ;
     }
-    case JSON_REAL: {
+    case 130: {
       double r;
-#ifdef SQLITE_AMALGAMATION
-      const char *z = pNode->u.zJContent;
-      sqlite3AtoF(z, &r, sqlite3Strlen30(z), SQLITE_UTF8);
-#else
+
+
+
+
       r = strtod(pNode->u.zJContent, 0);
-#endif
+
       sqlite3_result_double(pCtx, r);
       break;
     }
-    case JSON_STRING: {
-#if 0 /* Never happens because JNODE_RAW is only set by json_set(),
-      ** json_insert() and json_replace() and those routines do not
-      ** call jsonReturn() */
-      if( pNode->jnFlags & JNODE_RAW ){
-        sqlite3_result_text(pCtx, pNode->u.zJContent, pNode->n,
-                            SQLITE_TRANSIENT);
-      }else 
-#endif
+    case 129: {
       assert( (pNode->jnFlags & JNODE_RAW)==0 );
       if( (pNode->jnFlags & JNODE_ESCAPE)==0 ){
-        /* JSON formatted without any backslash-escapes */
+
         sqlite3_result_text(pCtx, pNode->u.zJContent+1, pNode->n-2,
                             SQLITE_TRANSIENT);
       }else{
-        /* Translate JSON formatted string into raw text */
+
         u32 i;
         u32 n = pNode->n;
         const char *z = pNode->u.zJContent;
@@ -181,8 +173,8 @@ __attribute__((used)) static void jsonReturn(
       }
       break;
     }
-    case JSON_ARRAY:
-    case JSON_OBJECT: {
+    case 134:
+    case 131: {
       jsonReturnJson(pNode, pCtx, aReplace);
       break;
     }

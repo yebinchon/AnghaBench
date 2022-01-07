@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * messageTime; } ;
-typedef  TYPE_1__ OSSL_CMP_PKIHEADER ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * ASN1_GENERALIZEDTIME_new () ; 
- int /*<<< orphan*/ * ASN1_GENERALIZEDTIME_set (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ossl_assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  time (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * messageTime; } ;
+typedef TYPE_1__ OSSL_CMP_PKIHEADER ;
+
+
+ int * ASN1_GENERALIZEDTIME_new () ;
+ int * ASN1_GENERALIZEDTIME_set (int *,int ) ;
+ int ossl_assert (int ) ;
+ int time (int *) ;
 
 int ossl_cmp_hdr_update_messageTime(OSSL_CMP_PKIHEADER *hdr)
 {
-    if (!ossl_assert(hdr != NULL))
+    if (!ossl_assert(hdr != ((void*)0)))
         return 0;
-    if (hdr->messageTime == NULL
-            && (hdr->messageTime = ASN1_GENERALIZEDTIME_new()) == NULL)
+    if (hdr->messageTime == ((void*)0)
+            && (hdr->messageTime = ASN1_GENERALIZEDTIME_new()) == ((void*)0))
         return 0;
-    return ASN1_GENERALIZEDTIME_set(hdr->messageTime, time(NULL)) != NULL;
+    return ASN1_GENERALIZEDTIME_set(hdr->messageTime, time(((void*)0))) != ((void*)0);
 }

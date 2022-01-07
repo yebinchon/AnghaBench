@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {void* cy; void* cx; void* y; void* x; int /*<<< orphan*/  type; } ;
-typedef  TYPE_1__ stbtt_vertex ;
-typedef  int /*<<< orphan*/  stbtt_uint8 ;
-typedef  scalar_t__ stbtt_int32 ;
-typedef  void* stbtt_int16 ;
 
-/* Variables and functions */
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {void* cy; void* cx; void* y; void* x; int type; } ;
+typedef TYPE_1__ stbtt_vertex ;
+typedef int stbtt_uint8 ;
+typedef scalar_t__ stbtt_int32 ;
+typedef void* stbtt_int16 ;
+
+
 
 __attribute__((used)) static void stbtt_setvertex(stbtt_vertex *v, stbtt_uint8 type, stbtt_int32 x, stbtt_int32 y, stbtt_int32 cx, stbtt_int32 cy)
 {

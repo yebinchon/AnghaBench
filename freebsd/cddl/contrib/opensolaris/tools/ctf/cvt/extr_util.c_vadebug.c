@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  va_list ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEBUG_STREAM ; 
- int debug_level ; 
- int /*<<< orphan*/  fflush (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  vfprintf (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int va_list ;
+
+
+ int DEBUG_STREAM ;
+ int debug_level ;
+ int fflush (int ) ;
+ int fprintf (int ,char*) ;
+ int vfprintf (int ,char const*,int ) ;
 
 void
 vadebug(int level, const char *format, va_list ap)
 {
-	if (level > debug_level)
-		return;
+ if (level > debug_level)
+  return;
 
-	(void) fprintf(DEBUG_STREAM, "DEBUG: ");
-	(void) vfprintf(DEBUG_STREAM, format, ap);
-	fflush(DEBUG_STREAM);
+ (void) fprintf(DEBUG_STREAM, "DEBUG: ");
+ (void) vfprintf(DEBUG_STREAM, format, ap);
+ fflush(DEBUG_STREAM);
 }

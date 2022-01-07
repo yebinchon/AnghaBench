@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct vo {TYPE_1__* driver; } ;
-struct TYPE_2__ {int /*<<< orphan*/  (* query_format ) (struct vo*,int) ;} ;
+struct TYPE_2__ {int (* query_format ) (struct vo*,int) ;} ;
 
-/* Variables and functions */
- int IMGFMT_END ; 
- int IMGFMT_START ; 
- int /*<<< orphan*/  stub1 (struct vo*,int) ; 
+
+ int IMGFMT_END ;
+ int IMGFMT_START ;
+ int stub1 (struct vo*,int) ;
 
 __attribute__((used)) static void run_query_format(void *p)
 {

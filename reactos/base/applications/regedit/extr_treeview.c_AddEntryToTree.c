@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int mask; scalar_t__ lParam; scalar_t__ cChildren; int /*<<< orphan*/  iSelectedImage; int /*<<< orphan*/  iImage; int /*<<< orphan*/  pszText; int /*<<< orphan*/  cchTextMax; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int mask; scalar_t__ lParam; scalar_t__ cChildren; int iSelectedImage; int iImage; int pszText; int cchTextMax; } ;
 struct TYPE_5__ {void* hParent; void* hInsertAfter; TYPE_1__ item; } ;
-typedef  TYPE_1__ TVITEMW ;
-typedef  TYPE_2__ TVINSERTSTRUCTW ;
-typedef  int /*<<< orphan*/  LPWSTR ;
-typedef  scalar_t__ LPARAM ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  void* HTREEITEM ;
-typedef  scalar_t__ HKEY ;
-typedef  scalar_t__ DWORD ;
+typedef TYPE_1__ TVITEMW ;
+typedef TYPE_2__ TVINSERTSTRUCTW ;
+typedef int LPWSTR ;
+typedef scalar_t__ LPARAM ;
+typedef int HWND ;
+typedef void* HTREEITEM ;
+typedef scalar_t__ HKEY ;
+typedef scalar_t__ DWORD ;
 
-/* Variables and functions */
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  Image_Closed ; 
- int /*<<< orphan*/  Image_Open ; 
- scalar_t__ RegQueryInfoKeyW (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int TVIF_CHILDREN ; 
- int TVIF_IMAGE ; 
- int TVIF_PARAM ; 
- int TVIF_SELECTEDIMAGE ; 
- int TVIF_TEXT ; 
- scalar_t__ TVI_FIRST ; 
- scalar_t__ TVI_LAST ; 
- void* TreeView_InsertItem (int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  wcslen (int /*<<< orphan*/ ) ; 
+
+ scalar_t__ ERROR_SUCCESS ;
+ int Image_Closed ;
+ int Image_Open ;
+ scalar_t__ RegQueryInfoKeyW (scalar_t__,int ,int ,int ,scalar_t__*,int ,int ,int ,int ,int ,int ,int ) ;
+ int TVIF_CHILDREN ;
+ int TVIF_IMAGE ;
+ int TVIF_PARAM ;
+ int TVIF_SELECTEDIMAGE ;
+ int TVIF_TEXT ;
+ scalar_t__ TVI_FIRST ;
+ scalar_t__ TVI_LAST ;
+ void* TreeView_InsertItem (int ,TYPE_2__*) ;
+ int wcslen (int ) ;
 
 __attribute__((used)) static HTREEITEM AddEntryToTree(HWND hwndTV, HTREEITEM hParent, LPWSTR label, HKEY hKey, DWORD dwChildren)
 {

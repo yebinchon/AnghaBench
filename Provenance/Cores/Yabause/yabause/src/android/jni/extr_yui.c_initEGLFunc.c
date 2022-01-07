@@ -1,31 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  RTLD_LAZY ; 
- int /*<<< orphan*/  dlerror () ; 
- void* dlopen (char*,int /*<<< orphan*/ ) ; 
- void* dlsym (void*,char*) ; 
- int /*<<< orphan*/ * eglGetCurrentContext ; 
- int /*<<< orphan*/ * eglGetCurrentDisplay ; 
- int /*<<< orphan*/ * eglGetCurrentSurface ; 
- int /*<<< orphan*/ * eglGetError ; 
- int /*<<< orphan*/ * eglMakeCurrent ; 
- int /*<<< orphan*/ * eglQueryString ; 
- int /*<<< orphan*/ * eglQuerySurface ; 
- int /*<<< orphan*/ * eglSwapBuffers ; 
- int /*<<< orphan*/ * eglSwapInterval ; 
- int /*<<< orphan*/  yprintf (int /*<<< orphan*/ ) ; 
+ int RTLD_LAZY ;
+ int dlerror () ;
+ void* dlopen (char*,int ) ;
+ void* dlsym (void*,char*) ;
+ int * eglGetCurrentContext ;
+ int * eglGetCurrentDisplay ;
+ int * eglGetCurrentSurface ;
+ int * eglGetError ;
+ int * eglMakeCurrent ;
+ int * eglQueryString ;
+ int * eglQuerySurface ;
+ int * eglSwapBuffers ;
+ int * eglSwapInterval ;
+ int yprintf (int ) ;
 
 int initEGLFunc()
 {
@@ -33,38 +25,38 @@ int initEGLFunc()
    char *error;
 
    handle = dlopen("libEGL.so",RTLD_LAZY);
-   if( handle == NULL )
+   if( handle == ((void*)0) )
    {
       yprintf(dlerror());
       return -1;
    }
 
    eglGetCurrentDisplay = dlsym(handle, "eglGetCurrentDisplay");
-   if( eglGetCurrentDisplay == NULL){ yprintf(dlerror()); return -1; }
+   if( eglGetCurrentDisplay == ((void*)0)){ yprintf(dlerror()); return -1; }
 
    eglGetCurrentSurface = dlsym(handle, "eglGetCurrentSurface");
-   if( eglGetCurrentSurface == NULL){ yprintf(dlerror()); return -1; }
+   if( eglGetCurrentSurface == ((void*)0)){ yprintf(dlerror()); return -1; }
 
    eglGetCurrentContext = dlsym(handle, "eglGetCurrentContext");
-   if( eglGetCurrentContext == NULL){ yprintf(dlerror()); return -1; }
+   if( eglGetCurrentContext == ((void*)0)){ yprintf(dlerror()); return -1; }
 
-   eglQuerySurface      = dlsym(handle, "eglQuerySurface");
-   if( eglQuerySurface == NULL){ yprintf(dlerror()); return -1; }
+   eglQuerySurface = dlsym(handle, "eglQuerySurface");
+   if( eglQuerySurface == ((void*)0)){ yprintf(dlerror()); return -1; }
 
-   eglSwapInterval      = dlsym(handle, "eglSwapInterval");
-   if( eglSwapInterval == NULL){ yprintf(dlerror()); return -1; }
+   eglSwapInterval = dlsym(handle, "eglSwapInterval");
+   if( eglSwapInterval == ((void*)0)){ yprintf(dlerror()); return -1; }
 
-   eglMakeCurrent       = dlsym(handle, "eglMakeCurrent");
-   if( eglMakeCurrent == NULL){ yprintf(dlerror()); return -1; }
+   eglMakeCurrent = dlsym(handle, "eglMakeCurrent");
+   if( eglMakeCurrent == ((void*)0)){ yprintf(dlerror()); return -1; }
 
-   eglSwapBuffers       = dlsym(handle, "eglSwapBuffers");
-   if( eglSwapBuffers == NULL){ yprintf(dlerror()); return -1; }
+   eglSwapBuffers = dlsym(handle, "eglSwapBuffers");
+   if( eglSwapBuffers == ((void*)0)){ yprintf(dlerror()); return -1; }
 
-   eglQueryString       = dlsym(handle, "eglQueryString");
-   if( eglQueryString == NULL){ yprintf(dlerror()); return -1; }
+   eglQueryString = dlsym(handle, "eglQueryString");
+   if( eglQueryString == ((void*)0)){ yprintf(dlerror()); return -1; }
 
-   eglGetError          = dlsym(handle, "eglGetError");
-   if( eglGetError == NULL){ yprintf(dlerror()); return -1; }
+   eglGetError = dlsym(handle, "eglGetError");
+   if( eglGetError == ((void*)0)){ yprintf(dlerror()); return -1; }
 
    return 0;
 }

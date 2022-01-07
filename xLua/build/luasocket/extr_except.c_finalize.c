@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- int /*<<< orphan*/  lua_error (int /*<<< orphan*/ *) ; 
- int lua_gettop (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_pcall (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_pushvalue (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_settop (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_toboolean (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_upvalueindex (int) ; 
- int /*<<< orphan*/  wrap (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int lua_State ;
+
+
+ int lua_error (int *) ;
+ int lua_gettop (int *) ;
+ int lua_pcall (int *,int ,int ,int ) ;
+ int lua_pushvalue (int *,int ) ;
+ int lua_settop (int *,int) ;
+ int lua_toboolean (int *,int) ;
+ int lua_upvalueindex (int) ;
+ int wrap (int *) ;
 
 __attribute__((used)) static int finalize(lua_State *L) {
     if (!lua_toboolean(L, 1)) {

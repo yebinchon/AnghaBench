@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_7__ ;
-typedef  struct TYPE_15__   TYPE_5__ ;
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_12__ {int /*<<< orphan*/  len; int /*<<< orphan*/  data; } ;
-typedef  TYPE_2__ svn_stringbuf_t ;
+
+
+typedef struct TYPE_16__ TYPE_7__ ;
+typedef struct TYPE_15__ TYPE_5__ ;
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+struct TYPE_12__ {int len; int data; } ;
+typedef TYPE_2__ svn_stringbuf_t ;
 struct TYPE_13__ {scalar_t__ kind; TYPE_7__* data_rep; } ;
-typedef  TYPE_3__ svn_fs_x__noderev_t ;
+typedef TYPE_3__ svn_fs_x__noderev_t ;
 struct TYPE_14__ {scalar_t__ rep_sharing_allowed; } ;
-typedef  TYPE_4__ svn_fs_x__data_t ;
+typedef TYPE_4__ svn_fs_x__data_t ;
 struct TYPE_15__ {TYPE_4__* fsap_data; } ;
-typedef  TYPE_5__ svn_fs_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_int64_t ;
-typedef  int /*<<< orphan*/  apr_file_t ;
-struct TYPE_11__ {int /*<<< orphan*/  change_set; } ;
-struct TYPE_16__ {int /*<<< orphan*/  sha1_digest; TYPE_1__ id; scalar_t__ has_sha1; } ;
+typedef TYPE_5__ svn_fs_t ;
+typedef int svn_error_t ;
+typedef int apr_pool_t ;
+typedef int apr_int64_t ;
+typedef int apr_file_t ;
+struct TYPE_11__ {int change_set; } ;
+struct TYPE_16__ {int sha1_digest; TYPE_1__ id; scalar_t__ has_sha1; } ;
 
-/* Variables and functions */
- int APR_BUFFERED ; 
- int APR_CREATE ; 
- int /*<<< orphan*/  APR_OS_DEFAULT ; 
- int APR_TRUNCATE ; 
- int APR_WRITE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  svn_fs_x__get_txn_id (int /*<<< orphan*/ ) ; 
- char* svn_fs_x__path_txn_sha1 (TYPE_5__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- TYPE_2__* svn_fs_x__unparse_representation (TYPE_7__*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_io_file_close (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_io_file_open (int /*<<< orphan*/ **,char const*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_io_file_write_full (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_node_dir ; 
+
+ int APR_BUFFERED ;
+ int APR_CREATE ;
+ int APR_OS_DEFAULT ;
+ int APR_TRUNCATE ;
+ int APR_WRITE ;
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int svn_fs_x__get_txn_id (int ) ;
+ char* svn_fs_x__path_txn_sha1 (TYPE_5__*,int ,int ,int *) ;
+ TYPE_2__* svn_fs_x__unparse_representation (TYPE_7__*,int,int *,int *) ;
+ int svn_io_file_close (int *,int *) ;
+ int svn_io_file_open (int **,char const*,int,int ,int *) ;
+ int svn_io_file_write_full (int *,int ,int ,int *,int *) ;
+ scalar_t__ svn_node_dir ;
 
 __attribute__((used)) static svn_error_t *
 store_sha1_rep_mapping(svn_fs_t *fs,
@@ -54,9 +54,9 @@ store_sha1_rep_mapping(svn_fs_t *fs,
 {
   svn_fs_x__data_t *ffd = fs->fsap_data;
 
-  /* if rep sharing has been enabled and the noderev has a data rep and
-   * its SHA-1 is known, store the rep struct under its SHA1. */
-  if (   ffd->rep_sharing_allowed
+
+
+  if ( ffd->rep_sharing_allowed
       && noderev->data_rep
       && noderev->data_rep->has_sha1)
     {
@@ -77,7 +77,7 @@ store_sha1_rep_mapping(svn_fs_t *fs,
                                | APR_BUFFERED, APR_OS_DEFAULT, scratch_pool));
 
       SVN_ERR(svn_io_file_write_full(rep_file, rep_string->data,
-                                     rep_string->len, NULL, scratch_pool));
+                                     rep_string->len, ((void*)0), scratch_pool));
 
       SVN_ERR(svn_io_file_close(rep_file, scratch_pool));
     }

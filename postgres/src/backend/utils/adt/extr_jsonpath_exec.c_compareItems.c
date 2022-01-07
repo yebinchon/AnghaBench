@@ -1,143 +1,135 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int int32 ;
-struct TYPE_8__ {int /*<<< orphan*/  typid; int /*<<< orphan*/  value; } ;
-struct TYPE_7__ {int /*<<< orphan*/  len; int /*<<< orphan*/  val; } ;
-struct TYPE_9__ {TYPE_2__ datetime; TYPE_1__ string; int /*<<< orphan*/  numeric; int /*<<< orphan*/  boolean; } ;
+
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int int32 ;
+struct TYPE_8__ {int typid; int value; } ;
+struct TYPE_7__ {int len; int val; } ;
+struct TYPE_9__ {TYPE_2__ datetime; TYPE_1__ string; int numeric; int boolean; } ;
 struct TYPE_10__ {scalar_t__ type; TYPE_3__ val; } ;
-typedef  TYPE_4__ JsonbValue ;
-typedef  int /*<<< orphan*/  JsonPathBool ;
+typedef TYPE_4__ JsonbValue ;
+typedef int JsonPathBool ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERROR ; 
- int compareDatetime (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int*) ; 
- int compareNumeric (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int compareStrings (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  elog (int /*<<< orphan*/ ,char*,int) ; 
-#define  jbvArray 141 
-#define  jbvBinary 140 
-#define  jbvBool 139 
-#define  jbvDatetime 138 
-#define  jbvNull 137 
-#define  jbvNumeric 136 
-#define  jbvObject 135 
-#define  jbvString 134 
- int /*<<< orphan*/  jpbFalse ; 
- int /*<<< orphan*/  jpbTrue ; 
- int /*<<< orphan*/  jpbUnknown ; 
-#define  jpiEqual 133 
-#define  jpiGreater 132 
-#define  jpiGreaterOrEqual 131 
-#define  jpiLess 130 
-#define  jpiLessOrEqual 129 
-#define  jpiNotEqual 128 
- int /*<<< orphan*/  memcmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int ERROR ;
+ int compareDatetime (int ,int ,int ,int ,int,int*) ;
+ int compareNumeric (int ,int ) ;
+ int compareStrings (int ,int ,int ,int ) ;
+ int elog (int ,char*,int) ;
+ int jpbFalse ;
+ int jpbTrue ;
+ int jpbUnknown ;
+
+
+
+
+
+
+ int memcmp (int ,int ,int ) ;
 
 __attribute__((used)) static JsonPathBool
 compareItems(int32 op, JsonbValue *jb1, JsonbValue *jb2, bool useTz)
 {
-	int			cmp;
-	bool		res;
+ int cmp;
+ bool res;
 
-	if (jb1->type != jb2->type)
-	{
-		if (jb1->type == jbvNull || jb2->type == jbvNull)
+ if (jb1->type != jb2->type)
+ {
+  if (jb1->type == 137 || jb2->type == 137)
 
-			/*
-			 * Equality and order comparison of nulls to non-nulls returns
-			 * always false, but inequality comparison returns true.
-			 */
-			return op == jpiNotEqual ? jpbTrue : jpbFalse;
 
-		/* Non-null items of different types are not comparable. */
-		return jpbUnknown;
-	}
 
-	switch (jb1->type)
-	{
-		case jbvNull:
-			cmp = 0;
-			break;
-		case jbvBool:
-			cmp = jb1->val.boolean == jb2->val.boolean ? 0 :
-				jb1->val.boolean ? 1 : -1;
-			break;
-		case jbvNumeric:
-			cmp = compareNumeric(jb1->val.numeric, jb2->val.numeric);
-			break;
-		case jbvString:
-			if (op == jpiEqual)
-				return jb1->val.string.len != jb2->val.string.len ||
-					memcmp(jb1->val.string.val,
-						   jb2->val.string.val,
-						   jb1->val.string.len) ? jpbFalse : jpbTrue;
 
-			cmp = compareStrings(jb1->val.string.val, jb1->val.string.len,
-								 jb2->val.string.val, jb2->val.string.len);
-			break;
-		case jbvDatetime:
-			{
-				bool		cast_error;
 
-				cmp = compareDatetime(jb1->val.datetime.value,
-									  jb1->val.datetime.typid,
-									  jb2->val.datetime.value,
-									  jb2->val.datetime.typid,
-									  useTz,
-									  &cast_error);
+   return op == 128 ? jpbTrue : jpbFalse;
 
-				if (cast_error)
-					return jpbUnknown;
-			}
-			break;
 
-		case jbvBinary:
-		case jbvArray:
-		case jbvObject:
-			return jpbUnknown;	/* non-scalars are not comparable */
+  return jpbUnknown;
+ }
 
-		default:
-			elog(ERROR, "invalid jsonb value type %d", jb1->type);
-	}
+ switch (jb1->type)
+ {
+  case 137:
+   cmp = 0;
+   break;
+  case 139:
+   cmp = jb1->val.boolean == jb2->val.boolean ? 0 :
+    jb1->val.boolean ? 1 : -1;
+   break;
+  case 136:
+   cmp = compareNumeric(jb1->val.numeric, jb2->val.numeric);
+   break;
+  case 134:
+   if (op == 133)
+    return jb1->val.string.len != jb2->val.string.len ||
+     memcmp(jb1->val.string.val,
+         jb2->val.string.val,
+         jb1->val.string.len) ? jpbFalse : jpbTrue;
 
-	switch (op)
-	{
-		case jpiEqual:
-			res = (cmp == 0);
-			break;
-		case jpiNotEqual:
-			res = (cmp != 0);
-			break;
-		case jpiLess:
-			res = (cmp < 0);
-			break;
-		case jpiGreater:
-			res = (cmp > 0);
-			break;
-		case jpiLessOrEqual:
-			res = (cmp <= 0);
-			break;
-		case jpiGreaterOrEqual:
-			res = (cmp >= 0);
-			break;
-		default:
-			elog(ERROR, "unrecognized jsonpath operation: %d", op);
-			return jpbUnknown;
-	}
+   cmp = compareStrings(jb1->val.string.val, jb1->val.string.len,
+         jb2->val.string.val, jb2->val.string.len);
+   break;
+  case 138:
+   {
+    bool cast_error;
 
-	return res ? jpbTrue : jpbFalse;
+    cmp = compareDatetime(jb1->val.datetime.value,
+           jb1->val.datetime.typid,
+           jb2->val.datetime.value,
+           jb2->val.datetime.typid,
+           useTz,
+           &cast_error);
+
+    if (cast_error)
+     return jpbUnknown;
+   }
+   break;
+
+  case 140:
+  case 141:
+  case 135:
+   return jpbUnknown;
+
+  default:
+   elog(ERROR, "invalid jsonb value type %d", jb1->type);
+ }
+
+ switch (op)
+ {
+  case 133:
+   res = (cmp == 0);
+   break;
+  case 128:
+   res = (cmp != 0);
+   break;
+  case 130:
+   res = (cmp < 0);
+   break;
+  case 132:
+   res = (cmp > 0);
+   break;
+  case 129:
+   res = (cmp <= 0);
+   break;
+  case 131:
+   res = (cmp >= 0);
+   break;
+  default:
+   elog(ERROR, "unrecognized jsonpath operation: %d", op);
+   return jpbUnknown;
+ }
+
+ return res ? jpbTrue : jpbFalse;
 }

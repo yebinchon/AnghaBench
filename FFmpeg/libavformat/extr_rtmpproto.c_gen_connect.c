@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  URLContext ;
-struct TYPE_9__ {double nb_invokes; char* flashver; char* swfurl; char* swfverify; char* pageurl; char* conn; scalar_t__ is_input; int /*<<< orphan*/  auth_params; int /*<<< orphan*/  tcurl; int /*<<< orphan*/  app; } ;
-struct TYPE_8__ {int size; int /*<<< orphan*/ * data; } ;
-typedef  TYPE_1__ RTMPPacket ;
-typedef  TYPE_2__ RTMPContext ;
 
-/* Variables and functions */
- scalar_t__ APP_MAX_LENGTH ; 
- int /*<<< orphan*/  RTMP_PT_INVOKE ; 
- int /*<<< orphan*/  RTMP_SYSTEM_CHANNEL ; 
- int /*<<< orphan*/  ff_amf_write_bool (int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ff_amf_write_field_name (int /*<<< orphan*/ **,char*) ; 
- int /*<<< orphan*/  ff_amf_write_number (int /*<<< orphan*/ **,double) ; 
- int /*<<< orphan*/  ff_amf_write_object_end (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  ff_amf_write_object_start (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  ff_amf_write_string (int /*<<< orphan*/ **,char*) ; 
- int /*<<< orphan*/  ff_amf_write_string2 (int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int ff_rtmp_packet_create (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  ff_rtmp_packet_destroy (TYPE_1__*) ; 
- int rtmp_send_packet (TYPE_2__*,TYPE_1__*,int) ; 
- int rtmp_write_amf_data (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ **) ; 
- char* strchr (char*,char) ; 
- int /*<<< orphan*/  strspn (char*,char*) ; 
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int URLContext ;
+struct TYPE_9__ {double nb_invokes; char* flashver; char* swfurl; char* swfverify; char* pageurl; char* conn; scalar_t__ is_input; int auth_params; int tcurl; int app; } ;
+struct TYPE_8__ {int size; int * data; } ;
+typedef TYPE_1__ RTMPPacket ;
+typedef TYPE_2__ RTMPContext ;
+
+
+ scalar_t__ APP_MAX_LENGTH ;
+ int RTMP_PT_INVOKE ;
+ int RTMP_SYSTEM_CHANNEL ;
+ int ff_amf_write_bool (int **,int ) ;
+ int ff_amf_write_field_name (int **,char*) ;
+ int ff_amf_write_number (int **,double) ;
+ int ff_amf_write_object_end (int **) ;
+ int ff_amf_write_object_start (int **) ;
+ int ff_amf_write_string (int **,char*) ;
+ int ff_amf_write_string2 (int **,int ,int ) ;
+ int ff_rtmp_packet_create (TYPE_1__*,int ,int ,int ,scalar_t__) ;
+ int ff_rtmp_packet_destroy (TYPE_1__*) ;
+ int rtmp_send_packet (TYPE_2__*,TYPE_1__*,int) ;
+ int rtmp_write_amf_data (int *,char*,int **) ;
+ char* strchr (char*,char) ;
+ int strspn (char*,char*) ;
 
 __attribute__((used)) static int gen_connect(URLContext *s, RTMPContext *rt)
 {
@@ -78,9 +78,9 @@ __attribute__((used)) static int gen_connect(URLContext *s, RTMPContext *rt)
         ff_amf_write_field_name(&p, "capabilities");
         ff_amf_write_number(&p, 15.0);
 
-        /* Tell the server we support all the audio codecs except
-         * SUPPORT_SND_INTEL (0x0008) and SUPPORT_SND_UNUSED (0x0010)
-         * which are unused in the RTMP protocol implementation. */
+
+
+
         ff_amf_write_field_name(&p, "audioCodecs");
         ff_amf_write_number(&p, 4071.0);
         ff_amf_write_field_name(&p, "videoCodecs");
@@ -98,7 +98,7 @@ __attribute__((used)) static int gen_connect(URLContext *s, RTMPContext *rt)
     if (rt->conn) {
         char *param = rt->conn;
 
-        // Write arbitrary AMF data to the Connect message.
+
         while (param) {
             char *sep;
             param += strspn(param, " ");
@@ -108,7 +108,7 @@ __attribute__((used)) static int gen_connect(URLContext *s, RTMPContext *rt)
             if (sep)
                 *sep = '\0';
             if ((ret = rtmp_write_amf_data(s, param, &p)) < 0) {
-                // Invalid AMF parameter.
+
                 ff_rtmp_packet_destroy(&pkt);
                 return ret;
             }

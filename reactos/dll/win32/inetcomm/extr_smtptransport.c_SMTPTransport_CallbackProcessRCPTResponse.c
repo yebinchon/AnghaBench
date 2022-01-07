@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {int /*<<< orphan*/  hrServerError; } ;
-struct TYPE_11__ {TYPE_2__ rIxpResult; int /*<<< orphan*/  command; int /*<<< orphan*/  member_0; } ;
+
+
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_9__ {int hrServerError; } ;
+struct TYPE_11__ {TYPE_2__ rIxpResult; int command; int member_0; } ;
 struct TYPE_8__ {scalar_t__ pCallback; } ;
-struct TYPE_10__ {TYPE_1__ InetTransport; int /*<<< orphan*/ * addrlist; } ;
-typedef  TYPE_3__ SMTPTransport ;
-typedef  TYPE_4__ SMTPRESPONSE ;
-typedef  int /*<<< orphan*/  ISMTPCallback ;
-typedef  int /*<<< orphan*/  IInternetTransport ;
-typedef  int /*<<< orphan*/  HRESULT ;
+struct TYPE_10__ {TYPE_1__ InetTransport; int * addrlist; } ;
+typedef TYPE_3__ SMTPTransport ;
+typedef TYPE_4__ SMTPRESPONSE ;
+typedef int ISMTPCallback ;
+typedef int IInternetTransport ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*,int /*<<< orphan*/ ) ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ISMTPCallback_OnResponse (int /*<<< orphan*/ *,TYPE_4__*) ; 
- int /*<<< orphan*/  SMTPTransport_ParseResponse (TYPE_3__*,char*,TYPE_4__*) ; 
- int /*<<< orphan*/  SMTP_RCPT ; 
- int /*<<< orphan*/  TRACE (char*) ; 
- int /*<<< orphan*/  debugstr_a (char*) ; 
+
+ int ERR (char*,int ) ;
+ scalar_t__ FAILED (int ) ;
+ int GetProcessHeap () ;
+ int HeapFree (int ,int ,int *) ;
+ int ISMTPCallback_OnResponse (int *,TYPE_4__*) ;
+ int SMTPTransport_ParseResponse (TYPE_3__*,char*,TYPE_4__*) ;
+ int SMTP_RCPT ;
+ int TRACE (char*) ;
+ int debugstr_a (char*) ;
 
 __attribute__((used)) static void SMTPTransport_CallbackProcessRCPTResponse(IInternetTransport *iface, char *pBuffer, int cbBuffer)
 {
@@ -44,12 +44,12 @@ __attribute__((used)) static void SMTPTransport_CallbackProcessRCPTResponse(IInt
     TRACE("\n");
 
     HeapFree(GetProcessHeap(), 0, This->addrlist);
-    This->addrlist = NULL;
+    This->addrlist = ((void*)0);
 
     hr = SMTPTransport_ParseResponse(This, pBuffer, &response);
     if (FAILED(hr))
     {
-        /* FIXME: handle error */
+
         return;
     }
 
@@ -59,7 +59,7 @@ __attribute__((used)) static void SMTPTransport_CallbackProcessRCPTResponse(IInt
     if (FAILED(response.rIxpResult.hrServerError))
     {
         ERR("server error: %s\n", debugstr_a(pBuffer));
-        /* FIXME: handle error */
+
         return;
     }
 }

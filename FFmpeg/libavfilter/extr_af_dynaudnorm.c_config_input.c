@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_10__ {TYPE_1__* priv; } ;
-struct TYPE_9__ {int channels; int /*<<< orphan*/  sample_rate; TYPE_3__* dst; } ;
-struct TYPE_8__ {int frame_len; double* prev_amplification_factor; int filter_size; int channels; int delay; void** fade_factors; void** gain_history_smoothed; void** gain_history_minimum; void** gain_history_original; void* weights; void* is_enabled; void* compress_threshold; void* dc_correction_value; int /*<<< orphan*/  frame_len_msec; } ;
-typedef  TYPE_1__ DynamicAudioNormalizerContext ;
-typedef  TYPE_2__ AVFilterLink ;
-typedef  TYPE_3__ AVFilterContext ;
+struct TYPE_9__ {int channels; int sample_rate; TYPE_3__* dst; } ;
+struct TYPE_8__ {int frame_len; double* prev_amplification_factor; int filter_size; int channels; int delay; void** fade_factors; void** gain_history_smoothed; void** gain_history_minimum; void** gain_history_original; void* weights; void* is_enabled; void* compress_threshold; void* dc_correction_value; int frame_len_msec; } ;
+typedef TYPE_1__ DynamicAudioNormalizerContext ;
+typedef TYPE_2__ AVFilterLink ;
+typedef TYPE_3__ AVFilterContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_LOG_DEBUG ; 
- int /*<<< orphan*/  ENOMEM ; 
- void* av_calloc (int,int) ; 
- int /*<<< orphan*/  av_log (TYPE_3__*,int /*<<< orphan*/ ,char*,int) ; 
- void* av_malloc_array (int,int) ; 
- void* cqueue_create (int) ; 
- int frame_size (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  init_gaussian_filter (TYPE_1__*) ; 
- int /*<<< orphan*/  precalculate_fade_factors (void**,int) ; 
- int /*<<< orphan*/  uninit (TYPE_3__*) ; 
+
+ int AVERROR (int ) ;
+ int AV_LOG_DEBUG ;
+ int ENOMEM ;
+ void* av_calloc (int,int) ;
+ int av_log (TYPE_3__*,int ,char*,int) ;
+ void* av_malloc_array (int,int) ;
+ void* cqueue_create (int) ;
+ int frame_size (int ,int ) ;
+ int init_gaussian_filter (TYPE_1__*) ;
+ int precalculate_fade_factors (void**,int) ;
+ int uninit (TYPE_3__*) ;
 
 __attribute__((used)) static int config_input(AVFilterLink *inlink)
 {
@@ -65,7 +65,7 @@ __attribute__((used)) static int config_input(AVFilterLink *inlink)
         s->prev_amplification_factor[c] = 1.0;
 
         s->gain_history_original[c] = cqueue_create(s->filter_size);
-        s->gain_history_minimum[c]  = cqueue_create(s->filter_size);
+        s->gain_history_minimum[c] = cqueue_create(s->filter_size);
         s->gain_history_smoothed[c] = cqueue_create(s->filter_size);
 
         if (!s->gain_history_original[c] || !s->gain_history_minimum[c] ||

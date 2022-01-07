@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  GPIO_EEPROM_OE ; 
- int /*<<< orphan*/  gpio_set_value (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int GPIO_EEPROM_OE ;
+ int gpio_set_value (int ,int ) ;
 
 __attribute__((used)) static void digsy_mtc_op_prepare(void *p)
 {
-	/* enable */
-	gpio_set_value(GPIO_EEPROM_OE, 0);
+
+ gpio_set_value(GPIO_EEPROM_OE, 0);
 }

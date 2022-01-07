@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct parser {int const* start; int /*<<< orphan*/  line_pos; } ;
-typedef  int CHAR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  COMMENT ; 
- int /*<<< orphan*/  KEY_NAME ; 
- int /*<<< orphan*/  LINE_START ; 
- int /*<<< orphan*/  SECTION_NAME ; 
- int /*<<< orphan*/  close_current_line (struct parser*) ; 
- int /*<<< orphan*/  is_eof (struct parser*,int const*) ; 
- int /*<<< orphan*/  isspace (unsigned char) ; 
- int /*<<< orphan*/  push_state (struct parser*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_state (struct parser*,int /*<<< orphan*/ ) ; 
+
+
+
+struct parser {int const* start; int line_pos; } ;
+typedef int CHAR ;
+
+
+ int COMMENT ;
+ int KEY_NAME ;
+ int LINE_START ;
+ int SECTION_NAME ;
+ int close_current_line (struct parser*) ;
+ int is_eof (struct parser*,int const*) ;
+ int isspace (unsigned char) ;
+ int push_state (struct parser*,int ) ;
+ int set_state (struct parser*,int ) ;
 
 __attribute__((used)) static
 const CHAR*
@@ -65,5 +65,5 @@ line_start_state(
         }
     }
     close_current_line(parser);
-    return NULL;
+    return ((void*)0);
 }

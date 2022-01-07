@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_stmt ;
-struct TYPE_4__ {int n; int /*<<< orphan*/  a; } ;
-typedef  int /*<<< orphan*/  Fts3Table ;
-typedef  TYPE_1__ Blob ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FTS_STAT_INCRMERGEHINT ; 
- int SQLITE_OK ; 
- scalar_t__ SQLITE_ROW ; 
- int /*<<< orphan*/  SQL_SELECT_STAT ; 
- int /*<<< orphan*/  blobGrowBuffer (TYPE_1__*,int,int*) ; 
- int fts3SqlStmt (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,char const*,int) ; 
- int /*<<< orphan*/  sqlite3_bind_int (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- char* sqlite3_column_blob (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int sqlite3_column_bytes (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int sqlite3_reset (int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3_step (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int sqlite3_stmt ;
+struct TYPE_4__ {int n; int a; } ;
+typedef int Fts3Table ;
+typedef TYPE_1__ Blob ;
+
+
+ int FTS_STAT_INCRMERGEHINT ;
+ int SQLITE_OK ;
+ scalar_t__ SQLITE_ROW ;
+ int SQL_SELECT_STAT ;
+ int blobGrowBuffer (TYPE_1__*,int,int*) ;
+ int fts3SqlStmt (int *,int ,int **,int ) ;
+ int memcpy (int ,char const*,int) ;
+ int sqlite3_bind_int (int *,int,int ) ;
+ char* sqlite3_column_blob (int *,int ) ;
+ int sqlite3_column_bytes (int *,int ) ;
+ int sqlite3_reset (int *) ;
+ scalar_t__ sqlite3_step (int *) ;
 
 __attribute__((used)) static int fts3IncrmergeHintLoad(Fts3Table *p, Blob *pHint){
   sqlite3_stmt *pSelect = 0;

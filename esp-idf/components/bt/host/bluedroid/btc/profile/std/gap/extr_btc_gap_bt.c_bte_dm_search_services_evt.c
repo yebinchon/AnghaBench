@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_9__ {int event; int len; TYPE_3__* p_data; } ;
-typedef  TYPE_2__ tBTA_DM_SEARCH_PARAM ;
-typedef  int tBTA_DM_SEARCH_EVT ;
-struct TYPE_8__ {int num_uuids; int /*<<< orphan*/  result; } ;
+typedef TYPE_2__ tBTA_DM_SEARCH_PARAM ;
+typedef int tBTA_DM_SEARCH_EVT ;
+struct TYPE_8__ {int num_uuids; int result; } ;
 struct TYPE_10__ {TYPE_1__ disc_res; } ;
-typedef  TYPE_3__ tBTA_DM_SEARCH ;
-struct TYPE_11__ {int /*<<< orphan*/  act; int /*<<< orphan*/  pid; int /*<<< orphan*/  sig; } ;
-typedef  TYPE_4__ btc_msg_t ;
-typedef  int UINT16 ;
+typedef TYPE_3__ tBTA_DM_SEARCH ;
+struct TYPE_11__ {int act; int pid; int sig; } ;
+typedef TYPE_4__ btc_msg_t ;
+typedef int UINT16 ;
 
-/* Variables and functions */
-#define  BTA_DM_DISC_RES_EVT 128 
- int /*<<< orphan*/  BTA_SUCCESS ; 
- int /*<<< orphan*/  BTC_GAP_BT_SEARCH_SERVICES_EVT ; 
- int /*<<< orphan*/  BTC_PID_GAP_BT ; 
- int /*<<< orphan*/  BTC_SIG_API_CB ; 
- int MAX_UUID_SIZE ; 
- int /*<<< orphan*/  btc_transfer_context (TYPE_4__*,TYPE_2__*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  search_services_copy_cb ; 
+
+
+ int BTA_SUCCESS ;
+ int BTC_GAP_BT_SEARCH_SERVICES_EVT ;
+ int BTC_PID_GAP_BT ;
+ int BTC_SIG_API_CB ;
+ int MAX_UUID_SIZE ;
+ int btc_transfer_context (TYPE_4__*,TYPE_2__*,int,int ) ;
+ int search_services_copy_cb ;
 
 __attribute__((used)) static void bte_dm_search_services_evt(tBTA_DM_SEARCH_EVT event, tBTA_DM_SEARCH *p_data)
 {
@@ -46,7 +46,7 @@ __attribute__((used)) static void bte_dm_search_services_evt(tBTA_DM_SEARCH_EVT 
     }
 
     switch (event) {
-    case BTA_DM_DISC_RES_EVT: {
+    case 128: {
         if ((p_data->disc_res.result == BTA_SUCCESS) && (p_data->disc_res.num_uuids > 0)) {
             param_len += (p_data->disc_res.num_uuids * MAX_UUID_SIZE);
         }

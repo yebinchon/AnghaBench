@@ -1,62 +1,62 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_5__ ;
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_15__ TYPE_5__ ;
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
 struct TYPE_15__ {char* replica_prefix; } ;
 struct TYPE_14__ {TYPE_2__* info; } ;
 struct TYPE_13__ {TYPE_1__* info; } ;
-struct TYPE_12__ {char* filename; int /*<<< orphan*/  file_size; } ;
-struct TYPE_11__ {int /*<<< orphan*/  file_size; int /*<<< orphan*/  filename; } ;
+struct TYPE_12__ {char* filename; int file_size; } ;
+struct TYPE_11__ {int file_size; int filename; } ;
 
-/* Variables and functions */
- TYPE_4__* Binlog ; 
- int /*<<< orphan*/  CLOCK_MONOTONIC ; 
- TYPE_3__* Snapshot ; 
- int binlog_disabled ; 
- scalar_t__ binlog_load_time ; 
- scalar_t__ binlog_loaded_size ; 
- char* binlogname ; 
- int /*<<< orphan*/  clear_log () ; 
- int /*<<< orphan*/  clear_read_log () ; 
- int /*<<< orphan*/  clear_write_log () ; 
- int /*<<< orphan*/  close_snapshot (TYPE_3__*,int) ; 
- int /*<<< orphan*/  dyn_used_memory () ; 
- scalar_t__ engine_preload_filelist (char const*,char*) ; 
- TYPE_5__* engine_replica ; 
- char* engine_snapshot_name ; 
- int /*<<< orphan*/  engine_snapshot_replica ; 
- int /*<<< orphan*/  engine_snapshot_size ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- scalar_t__ get_utime (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  init_all (TYPE_3__*) ; 
- int /*<<< orphan*/  init_log_data (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jump_log_crc32 ; 
- scalar_t__ jump_log_pos ; 
- int /*<<< orphan*/  jump_log_ts ; 
- scalar_t__ log_pos ; 
- scalar_t__ log_readto_pos ; 
- TYPE_4__* open_binlog (TYPE_5__*,scalar_t__) ; 
- TYPE_3__* open_recent_snapshot (int /*<<< orphan*/ ) ; 
- int replay_log (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  start_time ; 
- int /*<<< orphan*/  stderr ; 
- char* strdup (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  time (int /*<<< orphan*/ ) ; 
- scalar_t__ verbosity ; 
+
+ TYPE_4__* Binlog ;
+ int CLOCK_MONOTONIC ;
+ TYPE_3__* Snapshot ;
+ int binlog_disabled ;
+ scalar_t__ binlog_load_time ;
+ scalar_t__ binlog_loaded_size ;
+ char* binlogname ;
+ int clear_log () ;
+ int clear_read_log () ;
+ int clear_write_log () ;
+ int close_snapshot (TYPE_3__*,int) ;
+ int dyn_used_memory () ;
+ scalar_t__ engine_preload_filelist (char const*,char*) ;
+ TYPE_5__* engine_replica ;
+ char* engine_snapshot_name ;
+ int engine_snapshot_replica ;
+ int engine_snapshot_size ;
+ int exit (int) ;
+ int fprintf (int ,char*,...) ;
+ scalar_t__ get_utime (int ) ;
+ int init_all (TYPE_3__*) ;
+ int init_log_data (scalar_t__,int ,int ) ;
+ int jump_log_crc32 ;
+ scalar_t__ jump_log_pos ;
+ int jump_log_ts ;
+ scalar_t__ log_pos ;
+ scalar_t__ log_readto_pos ;
+ TYPE_4__* open_binlog (TYPE_5__*,scalar_t__) ;
+ TYPE_3__* open_recent_snapshot (int ) ;
+ int replay_log (int ,int) ;
+ int start_time ;
+ int stderr ;
+ char* strdup (int ) ;
+ int time (int ) ;
+ scalar_t__ verbosity ;
 
 void antispam_engine_common_init_part (char const* index_fname) {
   if (engine_preload_filelist (index_fname, binlogname) < 0) {
@@ -75,14 +75,14 @@ void antispam_engine_common_init_part (char const* index_fname) {
       fprintf (stderr, "load index file %s (size %lld)\n", engine_snapshot_name, engine_snapshot_size);
     }
   } else {
-    engine_snapshot_name = NULL;
+    engine_snapshot_name = ((void*)0);
     engine_snapshot_size = 0;
   }
 
   init_all (Snapshot);
   close_snapshot (Snapshot, 1);
 
-  // Load binlog
+
   Binlog = open_binlog (engine_replica, jump_log_pos);
   if (!Binlog) {
     fprintf (stderr, "fatal: cannot find binlog for %s, log position %lld\n", engine_replica->replica_prefix, 0LL);

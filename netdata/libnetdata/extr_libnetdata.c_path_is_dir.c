@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct stat {int st_mode; } ;
-typedef  size_t ssize_t ;
+typedef size_t ssize_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FILENAME_MAX ; 
- int S_IFDIR ; 
- int S_IFLNK ; 
- int S_IFMT ; 
- int /*<<< orphan*/  freez (char*) ; 
- size_t readlink (char*,char*,int /*<<< orphan*/ ) ; 
- scalar_t__ stat (char*,struct stat*) ; 
- char* strdupz (char*) ; 
- char* strdupz_path_subpath (char const*,char const*) ; 
+
+ int FILENAME_MAX ;
+ int S_IFDIR ;
+ int S_IFLNK ;
+ int S_IFMT ;
+ int freez (char*) ;
+ size_t readlink (char*,char*,int ) ;
+ scalar_t__ stat (char*,struct stat*) ;
+ char* strdupz (char*) ;
+ char* strdupz_path_subpath (char const*,char const*) ;
 
 int path_is_dir(const char *path, const char *subpath) {
     char *s = strdupz_path_subpath(path, subpath);

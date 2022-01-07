@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  user ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/ * conv_uid (int) ; 
- int /*<<< orphan*/  cur_users ; 
- int /*<<< orphan*/  del_user_used (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  unbind_user_metafile (int /*<<< orphan*/ *) ; 
- scalar_t__ user_loaded (int /*<<< orphan*/ *) ; 
- int verbosity ; 
+
+
+
+typedef int user ;
+
+
+ int assert (int) ;
+ int * conv_uid (int) ;
+ int cur_users ;
+ int del_user_used (int *) ;
+ int fprintf (int ,char*,int) ;
+ int stderr ;
+ int unbind_user_metafile (int *) ;
+ scalar_t__ user_loaded (int *) ;
+ int verbosity ;
 
 void test_user_unload (int uid) {
   if (verbosity > 2) {
@@ -29,7 +29,7 @@ void test_user_unload (int uid) {
   }
 
   user *u = conv_uid (uid);
-  if (u == NULL) {
+  if (u == ((void*)0)) {
     return;
   }
 

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {scalar_t__ hash; int /*<<< orphan*/  hash_idx; } ;
-typedef  TYPE_1__ SIGALG_LOOKUP ;
-typedef  int /*<<< orphan*/  EVP_MD ;
 
-/* Variables and functions */
- scalar_t__ NID_undef ; 
- int /*<<< orphan*/ * ssl_md (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {scalar_t__ hash; int hash_idx; } ;
+typedef TYPE_1__ SIGALG_LOOKUP ;
+typedef int EVP_MD ;
+
+
+ scalar_t__ NID_undef ;
+ int * ssl_md (int ) ;
 
 int tls1_lookup_md(const SIGALG_LOOKUP *lu, const EVP_MD **pmd)
 {
     const EVP_MD *md;
-    if (lu == NULL)
+    if (lu == ((void*)0))
         return 0;
-    /* lu->hash == NID_undef means no associated digest */
+
     if (lu->hash == NID_undef) {
-        md = NULL;
+        md = ((void*)0);
     } else {
         md = ssl_md(lu->hash_idx);
-        if (md == NULL)
+        if (md == ((void*)0))
             return 0;
     }
     if (pmd)

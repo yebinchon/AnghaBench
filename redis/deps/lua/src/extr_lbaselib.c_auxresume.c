@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- int CO_SUS ; 
- int LUA_YIELD ; 
- int costatus (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  luaL_error (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  lua_checkstack (int /*<<< orphan*/ *,int) ; 
- int lua_gettop (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_pushfstring (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int lua_resume (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_setlevel (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_xmove (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * statnames ; 
+
+
+
+typedef int lua_State ;
+
+
+ int CO_SUS ;
+ int LUA_YIELD ;
+ int costatus (int *,int *) ;
+ int luaL_error (int *,char*) ;
+ int lua_checkstack (int *,int) ;
+ int lua_gettop (int *) ;
+ int lua_pushfstring (int *,char*,int ) ;
+ int lua_resume (int *,int) ;
+ int lua_setlevel (int *,int *) ;
+ int lua_xmove (int *,int *,int) ;
+ int * statnames ;
 
 __attribute__((used)) static int auxresume (lua_State *L, lua_State *co, int narg) {
   int status = costatus(L, co);
@@ -31,7 +31,7 @@ __attribute__((used)) static int auxresume (lua_State *L, lua_State *co, int nar
     luaL_error(L, "too many arguments to resume");
   if (status != CO_SUS) {
     lua_pushfstring(L, "cannot resume %s coroutine", statnames[status]);
-    return -1;  /* error flag */
+    return -1;
   }
   lua_xmove(L, co, narg);
   lua_setlevel(L, co);
@@ -40,11 +40,11 @@ __attribute__((used)) static int auxresume (lua_State *L, lua_State *co, int nar
     int nres = lua_gettop(co);
     if (!lua_checkstack(L, nres + 1))
       luaL_error(L, "too many results to resume");
-    lua_xmove(co, L, nres);  /* move yielded values */
+    lua_xmove(co, L, nres);
     return nres;
   }
   else {
-    lua_xmove(co, L, 1);  /* move error message */
-    return -1;  /* error flag */
+    lua_xmove(co, L, 1);
+    return -1;
   }
 }

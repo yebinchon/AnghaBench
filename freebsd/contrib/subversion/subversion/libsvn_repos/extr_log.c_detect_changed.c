@@ -1,62 +1,62 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_repos_revision_access_level_t ;
-typedef  int /*<<< orphan*/  svn_fs_t ;
-typedef  int /*<<< orphan*/  svn_fs_root_t ;
-typedef  int /*<<< orphan*/  svn_fs_path_change_iterator_t ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int svn_revnum_t ;
+typedef int svn_repos_revision_access_level_t ;
+typedef int svn_fs_t ;
+typedef int svn_fs_root_t ;
+typedef int svn_fs_path_change_iterator_t ;
 struct TYPE_7__ {char* data; } ;
-struct TYPE_8__ {scalar_t__ node_kind; scalar_t__ change_kind; char* copyfrom_path; int /*<<< orphan*/  copyfrom_rev; void* copyfrom_known; TYPE_1__ path; } ;
-typedef  TYPE_2__ svn_fs_path_change3_t ;
-typedef  int /*<<< orphan*/  svn_fs_history_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  void* svn_boolean_t ;
-struct TYPE_9__ {int /*<<< orphan*/  path_change_receiver_baton; int /*<<< orphan*/  (* path_change_receiver ) (int /*<<< orphan*/ ,TYPE_2__*,int /*<<< orphan*/ *) ;int /*<<< orphan*/  authz_read_baton; int /*<<< orphan*/  (* authz_read_func ) (void**,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ;} ;
-typedef  TYPE_3__ log_callbacks_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+struct TYPE_8__ {scalar_t__ node_kind; scalar_t__ change_kind; char* copyfrom_path; int copyfrom_rev; void* copyfrom_known; TYPE_1__ path; } ;
+typedef TYPE_2__ svn_fs_path_change3_t ;
+typedef int svn_fs_history_t ;
+typedef int svn_error_t ;
+typedef void* svn_boolean_t ;
+struct TYPE_9__ {int path_change_receiver_baton; int (* path_change_receiver ) (int ,TYPE_2__*,int *) ;int authz_read_baton; int (* authz_read_func ) (void**,int *,char const*,int ,int *) ;} ;
+typedef TYPE_3__ log_callbacks_t ;
+typedef int apr_pool_t ;
 
-/* Variables and functions */
- void* FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- scalar_t__ SVN_IS_VALID_REVNUM (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- void* TRUE ; 
- int /*<<< orphan*/  stub1 (void**,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub2 (void**,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub3 (int /*<<< orphan*/ ,TYPE_2__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_fs_check_path (scalar_t__*,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_fs_copied_from (int /*<<< orphan*/ *,char const**,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_fs_history_location (char const**,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_fs_history_prev2 (int /*<<< orphan*/ **,int /*<<< orphan*/ *,void*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_fs_node_history2 (int /*<<< orphan*/ **,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_fs_path_change_add ; 
- scalar_t__ svn_fs_path_change_delete ; 
- int /*<<< orphan*/  svn_fs_path_change_get (TYPE_2__**,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_fs_path_change_replace ; 
- int /*<<< orphan*/  svn_fs_paths_changed3 (int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_fs_revision_root (int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- char* svn_fspath__join (char const*,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_fspath__split (char const**,char const**,char const*,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_node_unknown ; 
- int /*<<< orphan*/  svn_pool_clear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_pool_create (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_pool_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_repos_revision_access_full ; 
- int /*<<< orphan*/  svn_repos_revision_access_none ; 
- int /*<<< orphan*/  svn_repos_revision_access_partial ; 
+
+ void* FALSE ;
+ int SVN_ERR (int ) ;
+ scalar_t__ SVN_IS_VALID_REVNUM (int ) ;
+ int * SVN_NO_ERROR ;
+ void* TRUE ;
+ int stub1 (void**,int *,char const*,int ,int *) ;
+ int stub2 (void**,int *,char const*,int ,int *) ;
+ int stub3 (int ,TYPE_2__*,int *) ;
+ int svn_fs_check_path (scalar_t__*,int *,char const*,int *) ;
+ int svn_fs_copied_from (int *,char const**,int *,char const*,int *) ;
+ int svn_fs_history_location (char const**,int *,int *,int *) ;
+ int svn_fs_history_prev2 (int **,int *,void*,int *,int *) ;
+ int svn_fs_node_history2 (int **,int *,char const*,int *,int *) ;
+ scalar_t__ svn_fs_path_change_add ;
+ scalar_t__ svn_fs_path_change_delete ;
+ int svn_fs_path_change_get (TYPE_2__**,int *) ;
+ scalar_t__ svn_fs_path_change_replace ;
+ int svn_fs_paths_changed3 (int **,int *,int *,int *) ;
+ int svn_fs_revision_root (int **,int *,int ,int *) ;
+ char* svn_fspath__join (char const*,char const*,int *) ;
+ int svn_fspath__split (char const**,char const**,char const*,int *) ;
+ scalar_t__ svn_node_unknown ;
+ int svn_pool_clear (int *) ;
+ int * svn_pool_create (int *) ;
+ int svn_pool_destroy (int *) ;
+ int svn_repos_revision_access_full ;
+ int svn_repos_revision_access_none ;
+ int svn_repos_revision_access_partial ;
 
 __attribute__((used)) static svn_error_t *
 detect_changed(svn_repos_revision_access_level_t *access_level,
@@ -71,14 +71,14 @@ detect_changed(svn_repos_revision_access_level_t *access_level,
   svn_boolean_t found_readable = FALSE;
   svn_boolean_t found_unreadable = FALSE;
 
-  /* Retrieve the first change in the list. */
+
   SVN_ERR(svn_fs_paths_changed3(&iterator, root, scratch_pool, scratch_pool));
   SVN_ERR(svn_fs_path_change_get(&change, iterator));
 
   if (!change)
     {
-      /* No paths changed in this revision?  Uh, sure, I guess the
-         revision is readable, then.  */
+
+
       *access_level = svn_repos_revision_access_full;
       return SVN_NO_ERROR;
     }
@@ -86,13 +86,13 @@ detect_changed(svn_repos_revision_access_level_t *access_level,
   iterpool = svn_pool_create(scratch_pool);
   while (change)
     {
-      /* NOTE:  Much of this loop is going to look quite similar to
-         svn_repos_check_revision_access(), but we have to do more things
-         here, so we'll live with the duplication. */
+
+
+
       const char *path = change->path.data;
       svn_pool_clear(iterpool);
 
-      /* Skip path if unreadable. */
+
       if (callbacks->authz_read_func)
         {
           svn_boolean_t readable;
@@ -107,18 +107,18 @@ detect_changed(svn_repos_revision_access_level_t *access_level,
             }
         }
 
-      /* At least one changed-path was readable. */
+
       found_readable = TRUE;
 
-      /* Pre-1.6 revision files don't store the change path kind, so fetch
-         it manually. */
+
+
       if (change->node_kind == svn_node_unknown)
         {
           svn_fs_root_t *check_root = root;
           const char *check_path = path;
 
-          /* Deleted items don't exist so check earlier revision.  We
-             know the parent must exist and could be a copy */
+
+
           if (change->change_kind == svn_fs_path_change_delete)
             {
               svn_fs_history_t *history;
@@ -130,8 +130,8 @@ detect_changed(svn_repos_revision_access_level_t *access_level,
               SVN_ERR(svn_fs_node_history2(&history, root, parent_path,
                                            iterpool, iterpool));
 
-              /* Two calls because the first call returns the original
-                 revision as the deleted child means it is 'interesting' */
+
+
               SVN_ERR(svn_fs_history_prev2(&history, history, TRUE, iterpool,
                                            iterpool));
               SVN_ERR(svn_fs_history_prev2(&history, history, TRUE, iterpool,
@@ -148,15 +148,15 @@ detect_changed(svn_repos_revision_access_level_t *access_level,
                                     iterpool));
         }
 
-      if (   (change->change_kind == svn_fs_path_change_add)
+      if ( (change->change_kind == svn_fs_path_change_add)
           || (change->change_kind == svn_fs_path_change_replace))
         {
           const char *copyfrom_path = change->copyfrom_path;
           svn_revnum_t copyfrom_rev = change->copyfrom_rev;
 
-          /* the following is a potentially expensive operation since on FSFS
-             we will follow the DAG from ROOT to PATH and that requires
-             actually reading the directories along the way. */
+
+
+
           if (!change->copyfrom_known)
             {
               SVN_ERR(svn_fs_copied_from(&copyfrom_rev, &copyfrom_path,
@@ -197,7 +197,7 @@ detect_changed(svn_repos_revision_access_level_t *access_level,
                                      change,
                                      iterpool));
 
-      /* Next changed path. */
+
       SVN_ERR(svn_fs_path_change_get(&change, iterator));
     }
 
@@ -205,17 +205,17 @@ detect_changed(svn_repos_revision_access_level_t *access_level,
 
   if (! found_readable)
     {
-      /* Every changed-path was unreadable. */
+
       *access_level = svn_repos_revision_access_none;
     }
   else if (found_unreadable)
     {
-      /* At least one changed-path was unreadable. */
+
       *access_level = svn_repos_revision_access_partial;
     }
   else
     {
-      /* Every changed-path was readable. */
+
       *access_level = svn_repos_revision_access_full;
     }
 

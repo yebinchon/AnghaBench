@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  SORT_TYPE ;
 
-/* Variables and functions */
- int SORT_CMP (int /*<<< orphan*/  const,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int SORT_TYPE ;
+
+
+ int SORT_CMP (int const,int ) ;
 
 __attribute__((used)) static __inline size_t BINARY_INSERTION_FIND(SORT_TYPE *dst, const SORT_TYPE x,
     const size_t size) {
@@ -23,7 +23,7 @@ __attribute__((used)) static __inline size_t BINARY_INSERTION_FIND(SORT_TYPE *ds
   r = size - 1;
   c = r >> 1;
 
-  /* check for out of bounds at the beginning. */
+
   if (SORT_CMP(x, dst[0]) < 0) {
     return 0;
   } else if (SORT_CMP(x, dst[r]) > 0) {
@@ -41,7 +41,7 @@ __attribute__((used)) static __inline size_t BINARY_INSERTION_FIND(SORT_TYPE *ds
       }
 
       r = c;
-    } else { /* allow = for stability. The binary search favors the right. */
+    } else {
       if (r - c <= 1) {
         return c + 1;
       }

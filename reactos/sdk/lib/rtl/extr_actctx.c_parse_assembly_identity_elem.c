@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int /*<<< orphan*/  ptr; int /*<<< orphan*/  len; } ;
-typedef  TYPE_1__ xmlstr_t ;
-typedef  int /*<<< orphan*/  xmlbuf_t ;
-struct assembly_identity {void* language; void* public_key; void* arch; int /*<<< orphan*/  version; void* type; void* name; } ;
-typedef  int /*<<< orphan*/  UNICODE_STRING ;
-typedef  scalar_t__ BOOL ;
-typedef  int /*<<< orphan*/  ACTIVATION_CONTEXT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPRINT (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DPRINT1 (char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  asmv1W ; 
- int /*<<< orphan*/  assemblyIdentityW ; 
- int /*<<< orphan*/  g_nameW ; 
- int /*<<< orphan*/  languageW ; 
- scalar_t__ next_xml_attr (int /*<<< orphan*/ *,TYPE_1__*,TYPE_1__*,scalar_t__*,scalar_t__*) ; 
- scalar_t__ parse_expect_end_elem (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  parse_version (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  processorArchitectureW ; 
- int /*<<< orphan*/  publicKeyTokenW ; 
- int /*<<< orphan*/  typeW ; 
- int /*<<< orphan*/  versionW ; 
- int /*<<< orphan*/  xmlstr2unicode (TYPE_1__*) ; 
- scalar_t__ xmlstr_cmp (TYPE_1__*,int /*<<< orphan*/ ) ; 
- void* xmlstrdupW (TYPE_1__*) ; 
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int ptr; int len; } ;
+typedef TYPE_1__ xmlstr_t ;
+typedef int xmlbuf_t ;
+struct assembly_identity {void* language; void* public_key; void* arch; int version; void* type; void* name; } ;
+typedef int UNICODE_STRING ;
+typedef scalar_t__ BOOL ;
+typedef int ACTIVATION_CONTEXT ;
+
+
+ int DPRINT (char*,int ,int ) ;
+ int DPRINT1 (char*,int *,int *) ;
+ scalar_t__ FALSE ;
+ int asmv1W ;
+ int assemblyIdentityW ;
+ int g_nameW ;
+ int languageW ;
+ scalar_t__ next_xml_attr (int *,TYPE_1__*,TYPE_1__*,scalar_t__*,scalar_t__*) ;
+ scalar_t__ parse_expect_end_elem (int *,int ,int ) ;
+ int parse_version (TYPE_1__*,int *) ;
+ int processorArchitectureW ;
+ int publicKeyTokenW ;
+ int typeW ;
+ int versionW ;
+ int xmlstr2unicode (TYPE_1__*) ;
+ scalar_t__ xmlstr_cmp (TYPE_1__*,int ) ;
+ void* xmlstrdupW (TYPE_1__*) ;
 
 __attribute__((used)) static BOOL parse_assembly_identity_elem(xmlbuf_t* xmlbuf, ACTIVATION_CONTEXT* actctx,
                                          struct assembly_identity* ai)
 {
-    xmlstr_t    attr_name, attr_value;
-    BOOL        end = FALSE, error;
-    UNICODE_STRING  attr_valueU, attr_nameU;
+    xmlstr_t attr_name, attr_value;
+    BOOL end = FALSE, error;
+    UNICODE_STRING attr_valueU, attr_nameU;
 
     while (next_xml_attr(xmlbuf, &attr_name, &attr_value, &error, &end))
     {

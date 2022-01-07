@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int DNS_LABEL_MAX ; 
- scalar_t__ ascii_strcasecmp_n (char*,char*,int) ; 
- int /*<<< orphan*/  assert (char const*) ; 
- int dns_label_unescape (char const**,char*,int,int /*<<< orphan*/ ) ; 
+ int DNS_LABEL_MAX ;
+ scalar_t__ ascii_strcasecmp_n (char*,char*,int) ;
+ int assert (char const*) ;
+ int dns_label_unescape (char const**,char*,int,int ) ;
 
 int dns_name_equal(const char *x, const char *y) {
         int r, q;
@@ -35,11 +27,11 @@ int dns_name_equal(const char *x, const char *y) {
                         return q;
 
                 if (r != q)
-                        return false;
+                        return 0;
                 if (r == 0)
-                        return true;
+                        return 1;
 
                 if (ascii_strcasecmp_n(la, lb, r) != 0)
-                        return false;
+                        return 0;
         }
 }

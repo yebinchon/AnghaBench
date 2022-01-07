@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {unsigned int base; scalar_t__ state; } ;
-typedef  int /*<<< orphan*/  STRINGINFO ;
-typedef  TYPE_1__ FICL_VM ;
-typedef  unsigned int FICL_INT ;
-typedef  int FICL_COUNT ;
+typedef int STRINGINFO ;
+typedef TYPE_1__ FICL_VM ;
+typedef unsigned int FICL_INT ;
+typedef int FICL_COUNT ;
 
-/* Variables and functions */
- scalar_t__ COMPILE ; 
- int FALSE ; 
- int /*<<< orphan*/  PUSHINT (unsigned int) ; 
- int /*<<< orphan*/  SI_COUNT (int /*<<< orphan*/ ) ; 
- char* SI_PTR (int /*<<< orphan*/ ) ; 
- int TRUE ; 
- int /*<<< orphan*/  isalnum (unsigned int) ; 
- int /*<<< orphan*/  literalIm (TYPE_1__*) ; 
- char tolower (unsigned int) ; 
+
+ scalar_t__ COMPILE ;
+ int FALSE ;
+ int PUSHINT (unsigned int) ;
+ int SI_COUNT (int ) ;
+ char* SI_PTR (int ) ;
+ int TRUE ;
+ int isalnum (unsigned int) ;
+ int literalIm (TYPE_1__*) ;
+ char tolower (unsigned int) ;
 
 int ficlParseNumber(FICL_VM *pVM, STRINGINFO si)
 {
-    FICL_INT accum  = 0;
-    char isNeg      = FALSE;
-	char hasDP      = FALSE;
-    unsigned base   = pVM->base;
-    char *cp        = SI_PTR(si);
+    FICL_INT accum = 0;
+    char isNeg = FALSE;
+ char hasDP = FALSE;
+    unsigned base = pVM->base;
+    char *cp = SI_PTR(si);
     FICL_COUNT count= (FICL_COUNT)SI_COUNT(si);
     unsigned ch;
     unsigned digit;
@@ -58,13 +58,13 @@ int ficlParseNumber(FICL_VM *pVM, STRINGINFO si)
         }
     }
 
-    if ((count > 0) && (cp[count-1] == '.')) /* detect & remove trailing decimal */
+    if ((count > 0) && (cp[count-1] == '.'))
     {
         hasDP = TRUE;
         count--;
     }
 
-    if (count == 0)        /* detect "+", "-", ".", "+." etc */
+    if (count == 0)
         return FALSE;
 
     while ((count--) && ((ch = *cp++) != '\0'))
@@ -83,8 +83,8 @@ int ficlParseNumber(FICL_VM *pVM, STRINGINFO si)
         accum = accum * base + digit;
     }
 
-	if (hasDP)		/* simple (required) DOUBLE support */
-		PUSHINT(0);
+ if (hasDP)
+  PUSHINT(0);
 
     if (isNeg)
         accum = -accum;

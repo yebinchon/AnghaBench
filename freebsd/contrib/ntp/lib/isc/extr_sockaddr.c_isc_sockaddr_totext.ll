@@ -1,0 +1,166 @@
+; ModuleID = '/home/carl/AnghaBench/freebsd/contrib/ntp/lib/isc/extr_sockaddr.c_isc_sockaddr_totext.c'
+source_filename = "/home/carl/AnghaBench/freebsd/contrib/ntp/lib/isc/extr_sockaddr.c_isc_sockaddr_totext.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+%struct.TYPE_16__ = type { %struct.TYPE_15__ }
+%struct.TYPE_15__ = type { %struct.TYPE_14__, %struct.TYPE_13__, %struct.TYPE_12__, %struct.TYPE_11__ }
+%struct.TYPE_14__ = type { i8* }
+%struct.TYPE_13__ = type { i32 }
+%struct.TYPE_12__ = type { i32 }
+%struct.TYPE_11__ = type { i32 }
+%struct.TYPE_17__ = type { i32, i8* }
+
+@.str = private unnamed_addr constant [3 x i8] c"%u\00", align 1
+@ISC_R_FAILURE = common dso_local global i64 0, align 8
+@ISC_R_SUCCESS = common dso_local global i64 0, align 8
+@ISC_R_NOSPACE = common dso_local global i64 0, align 8
+@.str.1 = private unnamed_addr constant [2 x i8] c"#\00", align 1
+
+; Function Attrs: noinline nounwind optnone uwtable
+define dso_local i64 @isc_sockaddr_totext(%struct.TYPE_16__* %0, i32* %1) #0 {
+  %3 = alloca i64, align 8
+  %4 = alloca %struct.TYPE_16__*, align 8
+  %5 = alloca i32*, align 8
+  %6 = alloca i64, align 8
+  %7 = alloca i32, align 4
+  %8 = alloca [6 x i8], align 1
+  %9 = alloca i32, align 4
+  %10 = alloca %struct.TYPE_17__, align 8
+  store %struct.TYPE_16__* %0, %struct.TYPE_16__** %4, align 8
+  store i32* %1, i32** %5, align 8
+  %11 = load %struct.TYPE_16__*, %struct.TYPE_16__** %4, align 8
+  %12 = icmp ne %struct.TYPE_16__* %11, null
+  %13 = zext i1 %12 to i32
+  %14 = call i32 @REQUIRE(i32 %13)
+  %15 = load %struct.TYPE_16__*, %struct.TYPE_16__** %4, align 8
+  %16 = getelementptr inbounds %struct.TYPE_16__, %struct.TYPE_16__* %15, i32 0, i32 0
+  %17 = getelementptr inbounds %struct.TYPE_15__, %struct.TYPE_15__* %16, i32 0, i32 3
+  %18 = getelementptr inbounds %struct.TYPE_11__, %struct.TYPE_11__* %17, i32 0, i32 0
+  %19 = load i32, i32* %18, align 8
+  switch i32 %19, label %38 [
+    i32 130, label %20
+    i32 129, label %29
+  ]
+
+20:                                               ; preds = %2
+  %21 = getelementptr inbounds [6 x i8], [6 x i8]* %8, i64 0, i64 0
+  %22 = load %struct.TYPE_16__*, %struct.TYPE_16__** %4, align 8
+  %23 = getelementptr inbounds %struct.TYPE_16__, %struct.TYPE_16__* %22, i32 0, i32 0
+  %24 = getelementptr inbounds %struct.TYPE_15__, %struct.TYPE_15__* %23, i32 0, i32 2
+  %25 = getelementptr inbounds %struct.TYPE_12__, %struct.TYPE_12__* %24, i32 0, i32 0
+  %26 = load i32, i32* %25, align 4
+  %27 = call i32 @ntohs(i32 %26)
+  %28 = call i32 @snprintf(i8* %21, i32 6, i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i64 0, i64 0), i32 %27)
+  br label %40
+
+29:                                               ; preds = %2
+  %30 = getelementptr inbounds [6 x i8], [6 x i8]* %8, i64 0, i64 0
+  %31 = load %struct.TYPE_16__*, %struct.TYPE_16__** %4, align 8
+  %32 = getelementptr inbounds %struct.TYPE_16__, %struct.TYPE_16__* %31, i32 0, i32 0
+  %33 = getelementptr inbounds %struct.TYPE_15__, %struct.TYPE_15__* %32, i32 0, i32 1
+  %34 = getelementptr inbounds %struct.TYPE_13__, %struct.TYPE_13__* %33, i32 0, i32 0
+  %35 = load i32, i32* %34, align 8
+  %36 = call i32 @ntohs(i32 %35)
+  %37 = call i32 @snprintf(i8* %30, i32 6, i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i64 0, i64 0), i32 %36)
+  br label %40
+
+38:                                               ; preds = %2
+  %39 = load i64, i64* @ISC_R_FAILURE, align 8
+  store i64 %39, i64* %3, align 8
+  br label %85
+
+40:                                               ; preds = %29, %20
+  %41 = getelementptr inbounds [6 x i8], [6 x i8]* %8, i64 0, i64 0
+  %42 = call i64 @strlen(i8* %41)
+  %43 = trunc i64 %42 to i32
+  store i32 %43, i32* %9, align 4
+  %44 = load i32, i32* %9, align 4
+  %45 = zext i32 %44 to i64
+  %46 = icmp ult i64 %45, 6
+  %47 = zext i1 %46 to i32
+  %48 = call i32 @INSIST(i32 %47)
+  %49 = load %struct.TYPE_16__*, %struct.TYPE_16__** %4, align 8
+  %50 = call i32 @isc_netaddr_fromsockaddr(i32* %7, %struct.TYPE_16__* %49)
+  %51 = load i32*, i32** %5, align 8
+  %52 = call i64 @isc_netaddr_totext(i32* %7, i32* %51)
+  store i64 %52, i64* %6, align 8
+  %53 = load i64, i64* %6, align 8
+  %54 = load i64, i64* @ISC_R_SUCCESS, align 8
+  %55 = icmp ne i64 %53, %54
+  br i1 %55, label %56, label %58
+
+56:                                               ; preds = %40
+  %57 = load i64, i64* %6, align 8
+  store i64 %57, i64* %3, align 8
+  br label %85
+
+58:                                               ; preds = %40
+  %59 = load i32, i32* %9, align 4
+  %60 = add i32 1, %59
+  %61 = add i32 %60, 1
+  %62 = load i32*, i32** %5, align 8
+  %63 = call i32 @isc_buffer_availablelength(i32* %62)
+  %64 = icmp ugt i32 %61, %63
+  br i1 %64, label %65, label %67
+
+65:                                               ; preds = %58
+  %66 = load i64, i64* @ISC_R_NOSPACE, align 8
+  store i64 %66, i64* %3, align 8
+  br label %85
+
+67:                                               ; preds = %58
+  %68 = load i32*, i32** %5, align 8
+  %69 = call i32 @isc_buffer_putmem(i32* %68, i8* getelementptr inbounds ([2 x i8], [2 x i8]* @.str.1, i64 0, i64 0), i32 1)
+  %70 = load i32*, i32** %5, align 8
+  %71 = getelementptr inbounds [6 x i8], [6 x i8]* %8, i64 0, i64 0
+  %72 = load i32, i32* %9, align 4
+  %73 = call i32 @isc_buffer_putmem(i32* %70, i8* %71, i32 %72)
+  %74 = load i32*, i32** %5, align 8
+  %75 = call i32 @isc_buffer_availableregion(i32* %74, %struct.TYPE_17__* %10)
+  %76 = getelementptr inbounds %struct.TYPE_17__, %struct.TYPE_17__* %10, i32 0, i32 0
+  %77 = load i32, i32* %76, align 8
+  %78 = icmp sge i32 %77, 1
+  %79 = zext i1 %78 to i32
+  %80 = call i32 @INSIST(i32 %79)
+  %81 = getelementptr inbounds %struct.TYPE_17__, %struct.TYPE_17__* %10, i32 0, i32 1
+  %82 = load i8*, i8** %81, align 8
+  %83 = getelementptr inbounds i8, i8* %82, i64 0
+  store i8 0, i8* %83, align 1
+  %84 = load i64, i64* @ISC_R_SUCCESS, align 8
+  store i64 %84, i64* %3, align 8
+  br label %85
+
+85:                                               ; preds = %67, %65, %56, %38
+  %86 = load i64, i64* %3, align 8
+  ret i64 %86
+}
+
+declare dso_local i32 @REQUIRE(i32) #1
+
+declare dso_local i32 @snprintf(i8*, i32, i8*, i32) #1
+
+declare dso_local i32 @ntohs(i32) #1
+
+declare dso_local i64 @strlen(i8*) #1
+
+declare dso_local i32 @INSIST(i32) #1
+
+declare dso_local i32 @isc_netaddr_fromsockaddr(i32*, %struct.TYPE_16__*) #1
+
+declare dso_local i64 @isc_netaddr_totext(i32*, i32*) #1
+
+declare dso_local i32 @isc_buffer_availablelength(i32*) #1
+
+declare dso_local i32 @isc_buffer_putmem(i32*, i8*, i32) #1
+
+declare dso_local i32 @isc_buffer_availableregion(i32*, %struct.TYPE_17__*) #1
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

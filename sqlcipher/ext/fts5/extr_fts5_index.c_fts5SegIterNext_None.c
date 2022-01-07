@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_18__   TYPE_3__ ;
-typedef  struct TYPE_17__   TYPE_2__ ;
-typedef  struct TYPE_16__   TYPE_1__ ;
-typedef  struct TYPE_15__   TYPE_12__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-typedef  int /*<<< orphan*/  u64 ;
-typedef  scalar_t__ i64 ;
-struct TYPE_18__ {scalar_t__ rc; int /*<<< orphan*/  pHash; TYPE_1__* pConfig; } ;
-struct TYPE_17__ {int flags; int iLeafOffset; int iEndofDoclist; TYPE_12__* pLeaf; scalar_t__ iRowid; int /*<<< orphan*/  term; scalar_t__ pSeg; } ;
+
+
+typedef struct TYPE_18__ TYPE_3__ ;
+typedef struct TYPE_17__ TYPE_2__ ;
+typedef struct TYPE_16__ TYPE_1__ ;
+typedef struct TYPE_15__ TYPE_12__ ;
+
+
+typedef int u8 ;
+typedef int u64 ;
+typedef scalar_t__ i64 ;
+struct TYPE_18__ {scalar_t__ rc; int pHash; TYPE_1__* pConfig; } ;
+struct TYPE_17__ {int flags; int iLeafOffset; int iEndofDoclist; TYPE_12__* pLeaf; scalar_t__ iRowid; int term; scalar_t__ pSeg; } ;
 struct TYPE_16__ {scalar_t__ eDetail; } ;
-struct TYPE_15__ {int szLeaf; int nn; int /*<<< orphan*/ * p; } ;
-typedef  TYPE_2__ Fts5SegIter ;
-typedef  TYPE_3__ Fts5Index ;
+struct TYPE_15__ {int szLeaf; int nn; int * p; } ;
+typedef TYPE_2__ Fts5SegIter ;
+typedef TYPE_3__ Fts5Index ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT_SZLEAF_OK (TYPE_12__*) ; 
- scalar_t__ FTS5_DETAIL_NONE ; 
- int FTS5_SEGITER_ONETERM ; 
- int FTS5_SEGITER_REVERSE ; 
- scalar_t__ SQLITE_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  fts5DataRelease (TYPE_12__*) ; 
- int fts5GetVarint (int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- scalar_t__ fts5GetVarint32 (int /*<<< orphan*/ *,int) ; 
- int fts5LeafFirstTermOff (TYPE_12__*) ; 
- int /*<<< orphan*/  fts5SegIterLoadNPos (TYPE_3__*,TYPE_2__*) ; 
- int /*<<< orphan*/  fts5SegIterLoadTerm (TYPE_3__*,TYPE_2__*,int) ; 
- int /*<<< orphan*/  fts5SegIterNextPage (TYPE_3__*,TYPE_2__*) ; 
- int /*<<< orphan*/  sqlite3Fts5BufferSet (scalar_t__*,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3Fts5GetVarint (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3Fts5HashScanEntry (int /*<<< orphan*/ ,char const**,int /*<<< orphan*/  const**,int*) ; 
- int /*<<< orphan*/  sqlite3Fts5HashScanNext (int /*<<< orphan*/ ) ; 
- scalar_t__ strlen (char const*) ; 
+
+ int ASSERT_SZLEAF_OK (TYPE_12__*) ;
+ scalar_t__ FTS5_DETAIL_NONE ;
+ int FTS5_SEGITER_ONETERM ;
+ int FTS5_SEGITER_REVERSE ;
+ scalar_t__ SQLITE_OK ;
+ int assert (int) ;
+ int fts5DataRelease (TYPE_12__*) ;
+ int fts5GetVarint (int const*,int *) ;
+ scalar_t__ fts5GetVarint32 (int *,int) ;
+ int fts5LeafFirstTermOff (TYPE_12__*) ;
+ int fts5SegIterLoadNPos (TYPE_3__*,TYPE_2__*) ;
+ int fts5SegIterLoadTerm (TYPE_3__*,TYPE_2__*,int) ;
+ int fts5SegIterNextPage (TYPE_3__*,TYPE_2__*) ;
+ int sqlite3Fts5BufferSet (scalar_t__*,int *,int,int *) ;
+ scalar_t__ sqlite3Fts5GetVarint (int *,int *) ;
+ int sqlite3Fts5HashScanEntry (int ,char const**,int const**,int*) ;
+ int sqlite3Fts5HashScanNext (int ) ;
+ scalar_t__ strlen (char const*) ;
 
 __attribute__((used)) static void fts5SegIterNext_None(
-  Fts5Index *p,                   /* FTS5 backend object */
-  Fts5SegIter *pIter,             /* Iterator to advance */
-  int *pbNewTerm                  /* OUT: Set for new term */
+  Fts5Index *p,
+  Fts5SegIter *pIter,
+  int *pbNewTerm
 ){
   int iOff;
 
@@ -58,7 +58,7 @@ __attribute__((used)) static void fts5SegIterNext_None(
   ASSERT_SZLEAF_OK(pIter->pLeaf);
   iOff = pIter->iLeafOffset;
 
-  /* Next entry is on the next page */
+
   if( pIter->pSeg && iOff>=pIter->pLeaf->szLeaf ){
     fts5SegIterNextPage(p, pIter);
     if( p->rc || pIter->pLeaf==0 ) return;
@@ -67,7 +67,7 @@ __attribute__((used)) static void fts5SegIterNext_None(
   }
 
   if( iOff<pIter->iEndofDoclist ){
-    /* Next entry is on the current page */
+
     i64 iDelta;
     iOff += sqlite3Fts5GetVarint(&pIter->pLeaf->p[iOff], (u64*)&iDelta);
     pIter->iLeafOffset = iOff;

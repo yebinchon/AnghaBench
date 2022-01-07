@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_22__   TYPE_4__ ;
-typedef  struct TYPE_21__   TYPE_3__ ;
-typedef  struct TYPE_20__   TYPE_2__ ;
-typedef  struct TYPE_19__   TYPE_1__ ;
-typedef  struct TYPE_18__   TYPE_13__ ;
 
-/* Type definitions */
-struct TYPE_22__ {TYPE_13__* prev_frame; int /*<<< orphan*/  gb; } ;
+
+
+typedef struct TYPE_22__ TYPE_4__ ;
+typedef struct TYPE_21__ TYPE_3__ ;
+typedef struct TYPE_20__ TYPE_2__ ;
+typedef struct TYPE_19__ TYPE_1__ ;
+typedef struct TYPE_18__ TYPE_13__ ;
+
+
+struct TYPE_22__ {TYPE_13__* prev_frame; int gb; } ;
 struct TYPE_21__ {int width; int height; TYPE_4__* priv_data; } ;
-struct TYPE_20__ {int key_frame; int /*<<< orphan*/  pict_type; } ;
-struct TYPE_19__ {int size; int /*<<< orphan*/  data; } ;
+struct TYPE_20__ {int key_frame; int pict_type; } ;
+struct TYPE_19__ {int size; int data; } ;
 struct TYPE_18__ {scalar_t__* data; } ;
-typedef  TYPE_1__ AVPacket ;
-typedef  TYPE_2__ AVFrame ;
-typedef  TYPE_3__ AVCodecContext ;
-typedef  TYPE_4__ ARBCContext ;
+typedef TYPE_1__ AVPacket ;
+typedef TYPE_2__ AVFrame ;
+typedef TYPE_3__ AVCodecContext ;
+typedef TYPE_4__ ARBCContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_GET_BUFFER_FLAG_REF ; 
- int /*<<< orphan*/  AV_PICTURE_TYPE_I ; 
- int /*<<< orphan*/  AV_PICTURE_TYPE_P ; 
- int av_frame_copy (TYPE_2__*,TYPE_13__*) ; 
- int av_frame_ref (TYPE_13__*,TYPE_2__*) ; 
- int /*<<< orphan*/  av_frame_unref (TYPE_13__*) ; 
- int bytestream2_get_byte (int /*<<< orphan*/ *) ; 
- int bytestream2_get_bytes_left (int /*<<< orphan*/ *) ; 
- int bytestream2_get_le16 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bytestream2_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  bytestream2_skip (int /*<<< orphan*/ *,int) ; 
- int ff_get_buffer (TYPE_3__*,TYPE_2__*,int /*<<< orphan*/ ) ; 
- scalar_t__ fill_tile4 (TYPE_3__*,int,TYPE_2__*) ; 
- scalar_t__ fill_tileX (TYPE_3__*,int,int,int,TYPE_2__*) ; 
+
+ int AVERROR_INVALIDDATA ;
+ int AV_GET_BUFFER_FLAG_REF ;
+ int AV_PICTURE_TYPE_I ;
+ int AV_PICTURE_TYPE_P ;
+ int av_frame_copy (TYPE_2__*,TYPE_13__*) ;
+ int av_frame_ref (TYPE_13__*,TYPE_2__*) ;
+ int av_frame_unref (TYPE_13__*) ;
+ int bytestream2_get_byte (int *) ;
+ int bytestream2_get_bytes_left (int *) ;
+ int bytestream2_get_le16 (int *) ;
+ int bytestream2_init (int *,int ,int) ;
+ int bytestream2_skip (int *,int) ;
+ int ff_get_buffer (TYPE_3__*,TYPE_2__*,int ) ;
+ scalar_t__ fill_tile4 (TYPE_3__*,int,TYPE_2__*) ;
+ scalar_t__ fill_tileX (TYPE_3__*,int,int,int,TYPE_2__*) ;
 
 __attribute__((used)) static int decode_frame(AVCodecContext *avctx, void *data,
                         int *got_frame, AVPacket *avpkt)

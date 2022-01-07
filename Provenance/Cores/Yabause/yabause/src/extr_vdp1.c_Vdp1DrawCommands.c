@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_1__ ;
-typedef  struct TYPE_13__   TYPE_12__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-typedef  int u32 ;
-typedef  int u16 ;
+
+
+typedef struct TYPE_14__ TYPE_1__ ;
+typedef struct TYPE_13__ TYPE_12__ ;
+
+
+typedef int u8 ;
+typedef int u32 ;
+typedef int u16 ;
 struct TYPE_14__ {int addr; int EDSR; int LOPR; int COPR; } ;
-typedef  TYPE_1__ Vdp1 ;
-struct TYPE_13__ {int /*<<< orphan*/  (* Vdp1DrawEnd ) () ;int /*<<< orphan*/  (* Vdp1LocalCoordinate ) (int /*<<< orphan*/ *,TYPE_1__*) ;int /*<<< orphan*/  (* Vdp1SystemClipping ) (int /*<<< orphan*/ *,TYPE_1__*) ;int /*<<< orphan*/  (* Vdp1UserClipping ) (int /*<<< orphan*/ *,TYPE_1__*) ;int /*<<< orphan*/  (* Vdp1LineDraw ) (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ *) ;int /*<<< orphan*/  (* Vdp1PolylineDraw ) (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ *) ;int /*<<< orphan*/  (* Vdp1PolygonDraw ) (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ *) ;int /*<<< orphan*/  (* Vdp1DistortedSpriteDraw ) (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ *) ;int /*<<< orphan*/  (* Vdp1ScaledSpriteDraw ) (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ *) ;int /*<<< orphan*/  (* Vdp1NormalSpriteDraw ) (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ *) ;} ;
+typedef TYPE_1__ Vdp1 ;
+struct TYPE_13__ {int (* Vdp1DrawEnd ) () ;int (* Vdp1LocalCoordinate ) (int *,TYPE_1__*) ;int (* Vdp1SystemClipping ) (int *,TYPE_1__*) ;int (* Vdp1UserClipping ) (int *,TYPE_1__*) ;int (* Vdp1LineDraw ) (int *,TYPE_1__*,int *) ;int (* Vdp1PolylineDraw ) (int *,TYPE_1__*,int *) ;int (* Vdp1PolygonDraw ) (int *,TYPE_1__*,int *) ;int (* Vdp1DistortedSpriteDraw ) (int *,TYPE_1__*,int *) ;int (* Vdp1ScaledSpriteDraw ) (int *,TYPE_1__*,int *) ;int (* Vdp1NormalSpriteDraw ) (int *,TYPE_1__*,int *) ;} ;
 
-/* Variables and functions */
- int T1ReadWord (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  VDP1LOG (char*,int) ; 
- TYPE_12__* VIDCore ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub10 () ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub3 (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub4 (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub5 (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub6 (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub7 (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  stub8 (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  stub9 (int /*<<< orphan*/ *,TYPE_1__*) ; 
+
+ int T1ReadWord (int *,int) ;
+ int VDP1LOG (char*,int) ;
+ TYPE_12__* VIDCore ;
+ int stub1 (int *,TYPE_1__*,int *) ;
+ int stub10 () ;
+ int stub2 (int *,TYPE_1__*,int *) ;
+ int stub3 (int *,TYPE_1__*,int *) ;
+ int stub4 (int *,TYPE_1__*,int *) ;
+ int stub5 (int *,TYPE_1__*,int *) ;
+ int stub6 (int *,TYPE_1__*,int *) ;
+ int stub7 (int *,TYPE_1__*) ;
+ int stub8 (int *,TYPE_1__*) ;
+ int stub9 (int *,TYPE_1__*) ;
 
 void Vdp1DrawCommands(u8 * ram, Vdp1 * regs, u8* back_framebuffer)
 {
@@ -40,42 +40,42 @@ void Vdp1DrawCommands(u8 * ram, Vdp1 * regs, u8* back_framebuffer)
    u32 commandCounter = 0;
    u32 returnAddr = 0xffffffff;
 
-   while (!(command & 0x8000) && commandCounter < 2000) { // fix me
-      // First, process the command
-      if (!(command & 0x4000)) { // if (!skip)
+   while (!(command & 0x8000) && commandCounter < 2000) {
+
+      if (!(command & 0x4000)) {
          switch (command & 0x000F) {
-         case 0: // normal sprite draw
+         case 0:
             VIDCore->Vdp1NormalSpriteDraw(ram, regs, back_framebuffer);
             break;
-         case 1: // scaled sprite draw
+         case 1:
             VIDCore->Vdp1ScaledSpriteDraw(ram, regs, back_framebuffer);
             break;
-         case 2: // distorted sprite draw
-         case 3: /* this one should be invalid, but some games
-                 (Hardcore 4x4 for instance) use it instead of 2 */
+         case 2:
+         case 3:
+
             VIDCore->Vdp1DistortedSpriteDraw(ram, regs, back_framebuffer);
             break;
-         case 4: // polygon draw
+         case 4:
             VIDCore->Vdp1PolygonDraw(ram, regs, back_framebuffer);
             break;
-         case 5: // polyline draw
-         case 7: // undocumented mirror
+         case 5:
+         case 7:
             VIDCore->Vdp1PolylineDraw(ram, regs, back_framebuffer);
             break;
-         case 6: // line draw
+         case 6:
             VIDCore->Vdp1LineDraw(ram, regs, back_framebuffer);
             break;
-         case 8: // user clipping coordinates
-         case 11: // undocumented mirror
+         case 8:
+         case 11:
             VIDCore->Vdp1UserClipping(ram, regs);
             break;
-         case 9: // system clipping coordinates
+         case 9:
             VIDCore->Vdp1SystemClipping(ram, regs);
             break;
-         case 10: // local coordinate
+         case 10:
             VIDCore->Vdp1LocalCoordinate(ram, regs);
             break;
-         default: // Abort
+         default:
             VDP1LOG("vdp1\t: Bad command: %x\n", command);
             regs->EDSR |= 2;
             VIDCore->Vdp1DrawEnd();
@@ -85,21 +85,21 @@ void Vdp1DrawCommands(u8 * ram, Vdp1 * regs, u8* back_framebuffer)
          }
       }
 
-      // Next, determine where to go next
+
       switch ((command & 0x3000) >> 12) {
-      case 0: // NEXT, jump to following table
+      case 0:
          regs->addr += 0x20;
          break;
-      case 1: // ASSIGN, jump to CMDLINK
+      case 1:
          regs->addr = T1ReadWord(ram, regs->addr + 2) * 8;
          break;
-      case 2: // CALL, call a subroutine
+      case 2:
          if (returnAddr == 0xFFFFFFFF)
             returnAddr = regs->addr + 0x20;
 
          regs->addr = T1ReadWord(ram, regs->addr + 2) * 8;
          break;
-      case 3: // RETURN, return from subroutine
+      case 3:
          if (returnAddr != 0xFFFFFFFF) {
             regs->addr = returnAddr;
             returnAddr = 0xFFFFFFFF;

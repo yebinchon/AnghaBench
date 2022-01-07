@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct params_s {int /*<<< orphan*/  packets_count; int /*<<< orphan*/  packets; scalar_t__ packets_sizes; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EXPECT_CLEANUP (int,int /*<<< orphan*/ ) ; 
- int VLC_SUCCESS ; 
- int /*<<< orphan*/  free (void*) ; 
- int /*<<< orphan*/  memcmp (int /*<<< orphan*/  const*,void*,size_t) ; 
- int xiph_PackHeaders (int*,void**,unsigned int*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint8_t ;
+struct params_s {int packets_count; int packets; scalar_t__ packets_sizes; } ;
+
+
+ int EXPECT_CLEANUP (int,int ) ;
+ int VLC_SUCCESS ;
+ int free (void*) ;
+ int memcmp (int const*,void*,size_t) ;
+ int xiph_PackHeaders (int*,void**,unsigned int*,int ,int ) ;
 
 __attribute__((used)) static int test_xiph_PackHeaders(const char *run,
                  const uint8_t *p_extra, size_t i_extra,

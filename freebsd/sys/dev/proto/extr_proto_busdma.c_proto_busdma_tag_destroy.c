@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct proto_tag {int /*<<< orphan*/ * parent; int /*<<< orphan*/  children; int /*<<< orphan*/  mds; } ;
+
+
+
+
+struct proto_tag {int * parent; int children; int mds; } ;
 struct proto_busdma {int dummy; } ;
 
-/* Variables and functions */
- int EBUSY ; 
- int /*<<< orphan*/  LIST_EMPTY (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LIST_REMOVE (struct proto_tag*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  M_PROTO_BUSDMA ; 
- int /*<<< orphan*/  free (struct proto_tag*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  peers ; 
- int /*<<< orphan*/  tags ; 
+
+ int EBUSY ;
+ int LIST_EMPTY (int *) ;
+ int LIST_REMOVE (struct proto_tag*,int ) ;
+ int M_PROTO_BUSDMA ;
+ int free (struct proto_tag*,int ) ;
+ int peers ;
+ int tags ;
 
 __attribute__((used)) static int
 proto_busdma_tag_destroy(struct proto_busdma *busdma, struct proto_tag *tag)
 {
 
-	if (!LIST_EMPTY(&tag->mds))
-		return (EBUSY);
-	if (!LIST_EMPTY(&tag->children))
-		return (EBUSY);
+ if (!LIST_EMPTY(&tag->mds))
+  return (EBUSY);
+ if (!LIST_EMPTY(&tag->children))
+  return (EBUSY);
 
-	if (tag->parent != NULL) {
-		LIST_REMOVE(tag, peers);
-		tag->parent = NULL;
-	}
-	LIST_REMOVE(tag, tags);
-	free(tag, M_PROTO_BUSDMA);
-	return (0);
+ if (tag->parent != ((void*)0)) {
+  LIST_REMOVE(tag, peers);
+  tag->parent = ((void*)0);
+ }
+ LIST_REMOVE(tag, tags);
+ free(tag, M_PROTO_BUSDMA);
+ return (0);
 }

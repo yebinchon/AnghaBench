@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct lev_search_text_short_entry {unsigned int obj_id; char* text; void* rate2; void* rate; scalar_t__ type; } ;
-struct lev_search_text_long_entry {unsigned int obj_id; int text_len; char* text; void* rate2; void* rate; int /*<<< orphan*/  type; } ;
+struct lev_search_text_long_entry {unsigned int obj_id; int text_len; char* text; void* rate2; void* rate; int type; } ;
 
-/* Variables and functions */
- void** I ; 
- int* L ; 
- int /*<<< orphan*/  LEV_SEARCH_TEXT_LONG ; 
- scalar_t__ LEV_SEARCH_TEXT_SHORT ; 
- char** S ; 
- int /*<<< orphan*/  adj_rec ; 
- size_t bp_date ; 
- size_t bp_id ; 
- size_t bp_ncom ; 
- size_t bp_post ; 
- size_t bp_title ; 
- size_t bp_user_id ; 
- size_t bp_view_privacy ; 
- int /*<<< orphan*/  fits (void*) ; 
- void* write_alloc (int) ; 
+
+ void** I ;
+ int* L ;
+ int LEV_SEARCH_TEXT_LONG ;
+ scalar_t__ LEV_SEARCH_TEXT_SHORT ;
+ char** S ;
+ int adj_rec ;
+ size_t bp_date ;
+ size_t bp_id ;
+ size_t bp_ncom ;
+ size_t bp_post ;
+ size_t bp_title ;
+ size_t bp_user_id ;
+ size_t bp_view_privacy ;
+ int fits (void*) ;
+ void* write_alloc (int) ;
 
 void process_blog_posts_row (void) {
   char *p, *q;

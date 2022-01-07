@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  scalar_t__ LPWSTR ;
-typedef  int /*<<< orphan*/  LPCSTR ;
-typedef  int INT ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CP_ACP ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- scalar_t__ HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int MultiByteToWideChar (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,scalar_t__,int) ; 
- int strlen (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int WCHAR ;
+typedef scalar_t__ LPWSTR ;
+typedef int LPCSTR ;
+typedef int INT ;
+typedef int DWORD ;
+
+
+ int CP_ACP ;
+ int GetProcessHeap () ;
+ scalar_t__ HeapAlloc (int ,int ,int) ;
+ int MultiByteToWideChar (int ,int ,int ,int,scalar_t__,int) ;
+ int strlen (int ) ;
 
 DWORD
 AnsiToUnicode(LPCSTR lpSrcStr,

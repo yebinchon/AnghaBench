@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
+
+
+
+
+typedef int tree ;
 struct cp_binding_level {scalar_t__ kind; } ;
-typedef  struct cp_binding_level cxx_scope ;
+typedef struct cp_binding_level cxx_scope ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NULL_TREE ; 
- int /*<<< orphan*/  POP_TIMEVAR_AND_RETURN (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TV_NAME_LOOKUP ; 
- struct cp_binding_level* class_binding_level ; 
- struct cp_binding_level* current_binding_level ; 
- int /*<<< orphan*/  current_function_decl ; 
- int /*<<< orphan*/  pushdecl_class_level (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pushdecl_maybe_friend (int /*<<< orphan*/ ,int) ; 
- scalar_t__ sk_class ; 
- int /*<<< orphan*/  timevar_push (int /*<<< orphan*/ ) ; 
+
+ int NULL_TREE ;
+ int POP_TIMEVAR_AND_RETURN (int ,int ) ;
+ int TV_NAME_LOOKUP ;
+ struct cp_binding_level* class_binding_level ;
+ struct cp_binding_level* current_binding_level ;
+ int current_function_decl ;
+ int pushdecl_class_level (int ) ;
+ int pushdecl_maybe_friend (int ,int) ;
+ scalar_t__ sk_class ;
+ int timevar_push (int ) ;
 
 tree
 pushdecl_with_scope (tree x, cxx_scope *level, bool is_friend)

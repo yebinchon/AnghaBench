@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t u32 ;
-struct TYPE_7__ {int CR1; int CR2; int CR3; int CR4; int /*<<< orphan*/  HIRQ; } ;
-struct TYPE_8__ {int getsectsize; int options; TYPE_3__ reg; int /*<<< orphan*/  status; scalar_t__ FAD; TYPE_2__* cdi; int /*<<< orphan*/  playtype; scalar_t__ filter; scalar_t__ outconcddev; scalar_t__ playFAD; scalar_t__ playendFAD; TYPE_1__* fileinfo; scalar_t__ maxrepeat; } ;
-struct TYPE_6__ {int /*<<< orphan*/  (* ReadAheadFAD ) (scalar_t__) ;} ;
+
+
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef size_t u32 ;
+struct TYPE_7__ {int CR1; int CR2; int CR3; int CR4; int HIRQ; } ;
+struct TYPE_8__ {int getsectsize; int options; TYPE_3__ reg; int status; scalar_t__ FAD; TYPE_2__* cdi; int playtype; scalar_t__ filter; scalar_t__ outconcddev; scalar_t__ playFAD; scalar_t__ playendFAD; TYPE_1__* fileinfo; scalar_t__ maxrepeat; } ;
+struct TYPE_6__ {int (* ReadAheadFAD ) (scalar_t__) ;} ;
 struct TYPE_5__ {int size; scalar_t__ lba; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CDB_HIRQ_CMOK ; 
- int /*<<< orphan*/  CDB_PLAYTYPE_FILE ; 
- int /*<<< orphan*/  CDB_STAT_PLAY ; 
- TYPE_4__* Cs2Area ; 
- int /*<<< orphan*/  Cs2FADToTrack (scalar_t__) ; 
- int /*<<< orphan*/  Cs2SetTiming (int) ; 
- int /*<<< orphan*/  Cs2SetupDefaultPlayStats (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  doCDReport (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 (scalar_t__) ; 
+
+ int CDB_HIRQ_CMOK ;
+ int CDB_PLAYTYPE_FILE ;
+ int CDB_STAT_PLAY ;
+ TYPE_4__* Cs2Area ;
+ int Cs2FADToTrack (scalar_t__) ;
+ int Cs2SetTiming (int) ;
+ int Cs2SetupDefaultPlayStats (int ,int ) ;
+ int doCDReport (int ) ;
+ int stub1 (scalar_t__) ;
 
 void Cs2ReadFile(void) {
   u32 rfoffset, rffilternum, rffid, rfsize;

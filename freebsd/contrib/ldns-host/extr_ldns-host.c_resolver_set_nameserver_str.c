@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ldns_resolver ;
-typedef  int /*<<< orphan*/  ldns_rdf ;
 
-/* Variables and functions */
- scalar_t__ LDNS_STATUS_OK ; 
- int /*<<< orphan*/  die (int,char*) ; 
- int /*<<< orphan*/ * ldns_rdf_new_addr_frm_str (char const*) ; 
- scalar_t__ ldns_resolver_push_nameserver (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ldns_resolver_remove_nameservers (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  resolver_set_nameserver_hostname (int /*<<< orphan*/ *,char const*) ; 
+
+
+
+typedef int ldns_resolver ;
+typedef int ldns_rdf ;
+
+
+ scalar_t__ LDNS_STATUS_OK ;
+ int die (int,char*) ;
+ int * ldns_rdf_new_addr_frm_str (char const*) ;
+ scalar_t__ ldns_resolver_push_nameserver (int *,int *) ;
+ int ldns_resolver_remove_nameservers (int *) ;
+ int resolver_set_nameserver_hostname (int *,char const*) ;
 
 __attribute__((used)) static void
 resolver_set_nameserver_str(ldns_resolver *res, const char *server) {

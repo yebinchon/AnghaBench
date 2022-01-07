@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  collected_number ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PROCFILE_FLAG_DEFAULT ; 
- int /*<<< orphan*/  error (char*) ; 
- int procfile_lines (scalar_t__) ; 
- int /*<<< orphan*/  procfile_lineword (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int procfile_linewords (scalar_t__,int /*<<< orphan*/ ) ; 
- scalar_t__ procfile_open (char*,char*,int /*<<< orphan*/ ) ; 
- scalar_t__ procfile_readall (scalar_t__) ; 
- scalar_t__ read_proc_uptime_ff ; 
- double strtold (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ unlikely (int) ; 
+
+
+
+typedef int collected_number ;
+
+
+ int PROCFILE_FLAG_DEFAULT ;
+ int error (char*) ;
+ int procfile_lines (scalar_t__) ;
+ int procfile_lineword (scalar_t__,int ,int ) ;
+ int procfile_linewords (scalar_t__,int ) ;
+ scalar_t__ procfile_open (char*,char*,int ) ;
+ scalar_t__ procfile_readall (scalar_t__) ;
+ scalar_t__ read_proc_uptime_ff ;
+ double strtold (int ,int *) ;
+ scalar_t__ unlikely (int) ;
 
 __attribute__((used)) static inline collected_number read_proc_uptime(char *filename) {
     if(unlikely(!read_proc_uptime_ff)) {
@@ -42,5 +42,5 @@ __attribute__((used)) static inline collected_number read_proc_uptime(char *file
         return 0;
     }
 
-    return (collected_number)(strtold(procfile_lineword(read_proc_uptime_ff, 0, 0), NULL) * 1000.0);
+    return (collected_number)(strtold(procfile_lineword(read_proc_uptime_ff, 0, 0), ((void*)0)) * 1000.0);
 }

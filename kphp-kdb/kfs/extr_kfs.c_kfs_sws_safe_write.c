@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  kfs_snapshot_write_stream_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  kfs_sws_crypt (int /*<<< orphan*/ *,void*,long long) ; 
- int /*<<< orphan*/  kfs_sws_write (int /*<<< orphan*/ *,void*,long long) ; 
+
+
+
+typedef int kfs_snapshot_write_stream_t ;
+
+
+ int assert (int) ;
+ int kfs_sws_crypt (int *,void*,long long) ;
+ int kfs_sws_write (int *,void*,long long) ;
 
 void kfs_sws_safe_write (kfs_snapshot_write_stream_t *S, const void *buff, long long count) {
   assert (count >= 0);
@@ -23,5 +23,5 @@ void kfs_sws_safe_write (kfs_snapshot_write_stream_t *S, const void *buff, long 
     return;
   }
   kfs_sws_write (S, (void *) buff, count);
-  kfs_sws_crypt (S, (void *) buff, count); /* restore buff */
+  kfs_sws_crypt (S, (void *) buff, count);
 }

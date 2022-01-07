@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct sc_entry {int /*<<< orphan*/  timer; scalar_t__ pass; int /*<<< orphan*/  ubo; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct sc_entry {int timer; scalar_t__ pass; int ubo; } ;
 struct gl_shader_cache {int num_entries; TYPE_2__* ra; struct sc_entry** entries; } ;
 struct TYPE_5__ {TYPE_1__* fns; } ;
-struct TYPE_4__ {int /*<<< orphan*/  (* renderpass_destroy ) (TYPE_2__*,scalar_t__) ;} ;
+struct TYPE_4__ {int (* renderpass_destroy ) (TYPE_2__*,scalar_t__) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MP_DBG (struct gl_shader_cache*,char*) ; 
- int /*<<< orphan*/  ra_buf_free (TYPE_2__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub1 (TYPE_2__*,scalar_t__) ; 
- int /*<<< orphan*/  talloc_free (struct sc_entry*) ; 
- int /*<<< orphan*/  timer_pool_destroy (int /*<<< orphan*/ ) ; 
+
+ int MP_DBG (struct gl_shader_cache*,char*) ;
+ int ra_buf_free (TYPE_2__*,int *) ;
+ int stub1 (TYPE_2__*,scalar_t__) ;
+ int talloc_free (struct sc_entry*) ;
+ int timer_pool_destroy (int ) ;
 
 __attribute__((used)) static void sc_flush_cache(struct gl_shader_cache *sc)
 {

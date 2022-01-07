@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  This ;
-typedef  int /*<<< orphan*/  RPC_MESSAGE ;
-typedef  int /*<<< orphan*/  IRpcStubBufferVtbl ;
-typedef  int /*<<< orphan*/  IRpcStubBuffer ;
-typedef  int /*<<< orphan*/  IRpcChannelBuffer ;
-typedef  int /*<<< orphan*/  DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NdrStubForwardingFunction (void*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int base_buffer_invoke_called ; 
- int /*<<< orphan*/  base_buffer_vtbl ; 
- int /*<<< orphan*/  memset (void**,int,int) ; 
- int /*<<< orphan*/  ok (int,char*,int) ; 
+
+
+
+typedef int This ;
+typedef int RPC_MESSAGE ;
+typedef int IRpcStubBufferVtbl ;
+typedef int IRpcStubBuffer ;
+typedef int IRpcChannelBuffer ;
+typedef int DWORD ;
+
+
+ int NdrStubForwardingFunction (void*,int *,int *,int *) ;
+ int base_buffer_invoke_called ;
+ int base_buffer_vtbl ;
+ int memset (void**,int,int) ;
+ int ok (int,char*,int) ;
 
 __attribute__((used)) static void test_NdrStubForwardingFunction(void)
 {

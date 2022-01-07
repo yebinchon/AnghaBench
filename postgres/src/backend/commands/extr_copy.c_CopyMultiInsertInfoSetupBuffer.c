@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  multiInsertBuffers; } ;
-struct TYPE_6__ {int /*<<< orphan*/ * ri_CopyMultiInsertBuffer; } ;
-typedef  TYPE_1__ ResultRelInfo ;
-typedef  TYPE_2__ CopyMultiInsertInfo ;
-typedef  int /*<<< orphan*/  CopyMultiInsertBuffer ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * CopyMultiInsertBufferInit (TYPE_1__*) ; 
- int /*<<< orphan*/  lappend (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int multiInsertBuffers; } ;
+struct TYPE_6__ {int * ri_CopyMultiInsertBuffer; } ;
+typedef TYPE_1__ ResultRelInfo ;
+typedef TYPE_2__ CopyMultiInsertInfo ;
+typedef int CopyMultiInsertBuffer ;
+
+
+ int * CopyMultiInsertBufferInit (TYPE_1__*) ;
+ int lappend (int ,int *) ;
 
 __attribute__((used)) static inline void
 CopyMultiInsertInfoSetupBuffer(CopyMultiInsertInfo *miinfo,
-							   ResultRelInfo *rri)
+          ResultRelInfo *rri)
 {
-	CopyMultiInsertBuffer *buffer;
+ CopyMultiInsertBuffer *buffer;
 
-	buffer = CopyMultiInsertBufferInit(rri);
+ buffer = CopyMultiInsertBufferInit(rri);
 
-	/* Setup back-link so we can easily find this buffer again */
-	rri->ri_CopyMultiInsertBuffer = buffer;
-	/* Record that we're tracking this buffer */
-	miinfo->multiInsertBuffers = lappend(miinfo->multiInsertBuffers, buffer);
+
+ rri->ri_CopyMultiInsertBuffer = buffer;
+
+ miinfo->multiInsertBuffers = lappend(miinfo->multiInsertBuffers, buffer);
 }

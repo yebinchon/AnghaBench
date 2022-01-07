@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  hdc; } ;
-typedef  TYPE_1__* PHYSDEV ;
-typedef  int /*<<< orphan*/  INT ;
-typedef  scalar_t__ HRGN ;
-typedef  int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPRINT (char*,TYPE_1__*) ; 
- int /*<<< orphan*/  DeleteObject (scalar_t__) ; 
- scalar_t__ ERROR ; 
- scalar_t__ ExtSelectClipRgn (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ) ; 
- int FALSE ; 
- scalar_t__ PathToRegion (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int hdc; } ;
+typedef TYPE_1__* PHYSDEV ;
+typedef int INT ;
+typedef scalar_t__ HRGN ;
+typedef int BOOL ;
+
+
+ int DPRINT (char*,TYPE_1__*) ;
+ int DeleteObject (scalar_t__) ;
+ scalar_t__ ERROR ;
+ scalar_t__ ExtSelectClipRgn (int ,scalar_t__,int ) ;
+ int FALSE ;
+ scalar_t__ PathToRegion (int ) ;
 
 BOOL nulldrv_SelectClipPath( PHYSDEV dev, INT mode )
 {
@@ -36,5 +36,5 @@ BOOL nulldrv_SelectClipPath( PHYSDEV dev, INT mode )
         DeleteObject( hrgn );
     }
     return ret;
-//    return TRUE;
+
 }

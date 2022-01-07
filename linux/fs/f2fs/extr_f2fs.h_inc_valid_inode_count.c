@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct f2fs_sb_info {int /*<<< orphan*/  total_valid_inode_count; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  percpu_counter_inc (int /*<<< orphan*/ *) ; 
+
+
+
+struct f2fs_sb_info {int total_valid_inode_count; } ;
+
+
+ int percpu_counter_inc (int *) ;
 
 __attribute__((used)) static inline void inc_valid_inode_count(struct f2fs_sb_info *sbi)
 {
-	percpu_counter_inc(&sbi->total_valid_inode_count);
+ percpu_counter_inc(&sbi->total_valid_inode_count);
 }

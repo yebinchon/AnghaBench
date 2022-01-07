@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  X509_STORE ;
-typedef  int /*<<< orphan*/  X509 ;
-typedef  int /*<<< orphan*/  PKCS7 ;
-typedef  int /*<<< orphan*/  BIO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BIO_new_file (char*,char*) ; 
- int /*<<< orphan*/  ERR_load_crypto_strings () ; 
- int /*<<< orphan*/  ERR_print_errors_fp (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OpenSSL_add_all_algorithms () ; 
- int /*<<< orphan*/ * PEM_read_bio_X509 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PKCS7_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PKCS7_verify (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SMIME_read_PKCS7 (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  X509_STORE_add_cert (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * X509_STORE_new () ; 
- int /*<<< orphan*/  X509_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  stderr ; 
+
+
+
+typedef int X509_STORE ;
+typedef int X509 ;
+typedef int PKCS7 ;
+typedef int BIO ;
+
+
+ int BIO_free (int *) ;
+ int * BIO_new_file (char*,char*) ;
+ int ERR_load_crypto_strings () ;
+ int ERR_print_errors_fp (int ) ;
+ int OpenSSL_add_all_algorithms () ;
+ int * PEM_read_bio_X509 (int *,int *,int ,int *) ;
+ int PKCS7_free (int *) ;
+ int PKCS7_verify (int *,int *,int *,int *,int *,int ) ;
+ int * SMIME_read_PKCS7 (int *,int **) ;
+ int X509_STORE_add_cert (int *,int *) ;
+ int * X509_STORE_new () ;
+ int X509_free (int *) ;
+ int fprintf (int ,char*) ;
+ int stderr ;
 
 int main(int argc, char **argv)
 {
-    BIO *in = NULL, *out = NULL, *tbio = NULL, *cont = NULL;
-    X509_STORE *st = NULL;
-    X509 *cacert = NULL;
-    PKCS7 *p7 = NULL;
+    BIO *in = ((void*)0), *out = ((void*)0), *tbio = ((void*)0), *cont = ((void*)0);
+    X509_STORE *st = ((void*)0);
+    X509 *cacert = ((void*)0);
+    PKCS7 *p7 = ((void*)0);
 
     int ret = 1;
 
     OpenSSL_add_all_algorithms();
     ERR_load_crypto_strings();
 
-    /* Set up trusted CA certificate store */
+
 
     st = X509_STORE_new();
 
-    /* Read in signer certificate and private key */
+
     tbio = BIO_new_file("cacert.pem", "r");
 
     if (!tbio)
         goto err;
 
-    cacert = PEM_read_bio_X509(tbio, NULL, 0, NULL);
+    cacert = PEM_read_bio_X509(tbio, ((void*)0), 0, ((void*)0));
 
     if (!cacert)
         goto err;
@@ -61,25 +61,25 @@ int main(int argc, char **argv)
     if (!X509_STORE_add_cert(st, cacert))
         goto err;
 
-    /* Open content being signed */
+
 
     in = BIO_new_file("smout.txt", "r");
 
     if (!in)
         goto err;
 
-    /* Sign content */
+
     p7 = SMIME_read_PKCS7(in, &cont);
 
     if (!p7)
         goto err;
 
-    /* File to output verified content to */
+
     out = BIO_new_file("smver.txt", "w");
     if (!out)
         goto err;
 
-    if (!PKCS7_verify(p7, NULL, st, cont, out, 0)) {
+    if (!PKCS7_verify(p7, ((void*)0), st, cont, out, 0)) {
         fprintf(stderr, "Verification Failure\n");
         goto err;
     }

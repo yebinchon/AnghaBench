@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  BIO_F_BIO_SOCKET ; 
- int /*<<< orphan*/  BIO_R_UNABLE_TO_CREATE_SOCKET ; 
- int BIO_sock_init () ; 
- int /*<<< orphan*/  BIOerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ERR_LIB_SYS ; 
- int /*<<< orphan*/  ERR_raise_data (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int INVALID_SOCKET ; 
- int /*<<< orphan*/  get_last_socket_error () ; 
- int socket (int,int,int) ; 
+ int BIO_F_BIO_SOCKET ;
+ int BIO_R_UNABLE_TO_CREATE_SOCKET ;
+ int BIO_sock_init () ;
+ int BIOerr (int ,int ) ;
+ int ERR_LIB_SYS ;
+ int ERR_raise_data (int ,int ,char*) ;
+ int INVALID_SOCKET ;
+ int get_last_socket_error () ;
+ int socket (int,int,int) ;
 
 int BIO_socket(int domain, int socktype, int protocol, int options)
 {

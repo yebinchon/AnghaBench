@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_27__   TYPE_9__ ;
-typedef  struct TYPE_26__   TYPE_8__ ;
-typedef  struct TYPE_25__   TYPE_7__ ;
-typedef  struct TYPE_24__   TYPE_6__ ;
-typedef  struct TYPE_23__   TYPE_5__ ;
-typedef  struct TYPE_22__   TYPE_4__ ;
-typedef  struct TYPE_21__   TYPE_3__ ;
-typedef  struct TYPE_20__   TYPE_2__ ;
-typedef  struct TYPE_19__   TYPE_1__ ;
-typedef  struct TYPE_18__   TYPE_13__ ;
-typedef  struct TYPE_17__   TYPE_12__ ;
-typedef  struct TYPE_16__   TYPE_11__ ;
-typedef  struct TYPE_15__   TYPE_10__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_27__ TYPE_9__ ;
+typedef struct TYPE_26__ TYPE_8__ ;
+typedef struct TYPE_25__ TYPE_7__ ;
+typedef struct TYPE_24__ TYPE_6__ ;
+typedef struct TYPE_23__ TYPE_5__ ;
+typedef struct TYPE_22__ TYPE_4__ ;
+typedef struct TYPE_21__ TYPE_3__ ;
+typedef struct TYPE_20__ TYPE_2__ ;
+typedef struct TYPE_19__ TYPE_1__ ;
+typedef struct TYPE_18__ TYPE_13__ ;
+typedef struct TYPE_17__ TYPE_12__ ;
+typedef struct TYPE_16__ TYPE_11__ ;
+typedef struct TYPE_15__ TYPE_10__ ;
+
+
 struct TYPE_16__ {scalar_t__ len; } ;
 struct TYPE_17__ {TYPE_11__ value; } ;
 struct TYPE_27__ {scalar_t__ len; } ;
@@ -35,27 +35,27 @@ struct TYPE_21__ {scalar_t__ len; } ;
 struct TYPE_22__ {TYPE_3__ value; } ;
 struct TYPE_19__ {scalar_t__ len; } ;
 struct TYPE_20__ {TYPE_1__ value; } ;
-struct TYPE_18__ {int /*<<< orphan*/  log_socket_errors; int /*<<< orphan*/  transform_underscores_in_resp_headers; int /*<<< orphan*/  pool_size; int /*<<< orphan*/  buffer_size; int /*<<< orphan*/  send_lowat; int /*<<< orphan*/  read_timeout; int /*<<< orphan*/  send_timeout; int /*<<< orphan*/  connect_timeout; int /*<<< orphan*/  keepalive_timeout; int /*<<< orphan*/  use_default_type; int /*<<< orphan*/  check_client_abort; int /*<<< orphan*/  http10_buffering; int /*<<< orphan*/  enable_code_cache; int /*<<< orphan*/  force_read_body; int /*<<< orphan*/  ssl_crl; int /*<<< orphan*/  ssl_trusted_certificate; int /*<<< orphan*/  ssl_verify_depth; int /*<<< orphan*/  ssl_ciphers; int /*<<< orphan*/  ssl_protocols; int /*<<< orphan*/  body_filter_src_key; int /*<<< orphan*/  body_filter_handler; TYPE_12__ body_filter_src; int /*<<< orphan*/  header_filter_src_key; int /*<<< orphan*/  header_filter_handler; TYPE_10__ header_filter_src; int /*<<< orphan*/  log_chunkname; int /*<<< orphan*/  log_src_key; int /*<<< orphan*/  log_handler; TYPE_8__ log_src; int /*<<< orphan*/  content_chunkname; int /*<<< orphan*/  content_src_key; int /*<<< orphan*/  content_handler; TYPE_6__ content_src; int /*<<< orphan*/  access_chunkname; int /*<<< orphan*/  access_src_key; int /*<<< orphan*/  access_handler; TYPE_4__ access_src; int /*<<< orphan*/  rewrite_chunkname; int /*<<< orphan*/  rewrite_src_key; int /*<<< orphan*/  rewrite_handler; TYPE_2__ rewrite_src; } ;
-typedef  TYPE_13__ ngx_http_lua_loc_conf_t ;
-typedef  int /*<<< orphan*/  ngx_conf_t ;
+struct TYPE_18__ {int log_socket_errors; int transform_underscores_in_resp_headers; int pool_size; int buffer_size; int send_lowat; int read_timeout; int send_timeout; int connect_timeout; int keepalive_timeout; int use_default_type; int check_client_abort; int http10_buffering; int enable_code_cache; int force_read_body; int ssl_crl; int ssl_trusted_certificate; int ssl_verify_depth; int ssl_ciphers; int ssl_protocols; int body_filter_src_key; int body_filter_handler; TYPE_12__ body_filter_src; int header_filter_src_key; int header_filter_handler; TYPE_10__ header_filter_src; int log_chunkname; int log_src_key; int log_handler; TYPE_8__ log_src; int content_chunkname; int content_src_key; int content_handler; TYPE_6__ content_src; int access_chunkname; int access_src_key; int access_handler; TYPE_4__ access_src; int rewrite_chunkname; int rewrite_src_key; int rewrite_handler; TYPE_2__ rewrite_src; } ;
+typedef TYPE_13__ ngx_http_lua_loc_conf_t ;
+typedef int ngx_conf_t ;
 
-/* Variables and functions */
- int NGX_CONF_BITMASK_SET ; 
- char* NGX_CONF_ERROR ; 
- char* NGX_CONF_OK ; 
- scalar_t__ NGX_OK ; 
- int NGX_SSL_SSLv3 ; 
- int NGX_SSL_TLSv1 ; 
- int NGX_SSL_TLSv1_1 ; 
- int NGX_SSL_TLSv1_2 ; 
- int /*<<< orphan*/  ngx_conf_merge_bitmask_value (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ngx_conf_merge_msec_value (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ngx_conf_merge_size_value (int /*<<< orphan*/ ,int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/  ngx_conf_merge_str_value (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ngx_conf_merge_uint_value (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ngx_conf_merge_value (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- scalar_t__ ngx_http_lua_set_ssl (int /*<<< orphan*/ *,TYPE_13__*) ; 
- scalar_t__ ngx_pagesize ; 
+
+ int NGX_CONF_BITMASK_SET ;
+ char* NGX_CONF_ERROR ;
+ char* NGX_CONF_OK ;
+ scalar_t__ NGX_OK ;
+ int NGX_SSL_SSLv3 ;
+ int NGX_SSL_TLSv1 ;
+ int NGX_SSL_TLSv1_1 ;
+ int NGX_SSL_TLSv1_2 ;
+ int ngx_conf_merge_bitmask_value (int ,int ,int) ;
+ int ngx_conf_merge_msec_value (int ,int ,int) ;
+ int ngx_conf_merge_size_value (int ,int ,size_t) ;
+ int ngx_conf_merge_str_value (int ,int ,char*) ;
+ int ngx_conf_merge_uint_value (int ,int ,int) ;
+ int ngx_conf_merge_value (int ,int ,int) ;
+ scalar_t__ ngx_http_lua_set_ssl (int *,TYPE_13__*) ;
+ scalar_t__ ngx_pagesize ;
 
 __attribute__((used)) static char *
 ngx_http_lua_merge_loc_conf(ngx_conf_t *cf, void *parent, void *child)
@@ -102,33 +102,6 @@ ngx_http_lua_merge_loc_conf(ngx_conf_t *cf, void *parent, void *child)
         conf->body_filter_handler = prev->body_filter_handler;
         conf->body_filter_src_key = prev->body_filter_src_key;
     }
-
-#if (NGX_HTTP_SSL)
-
-#   if defined(nginx_version) && nginx_version >= 1001013
-
-    ngx_conf_merge_bitmask_value(conf->ssl_protocols, prev->ssl_protocols,
-                                 (NGX_CONF_BITMASK_SET|NGX_SSL_SSLv3
-                                  |NGX_SSL_TLSv1|NGX_SSL_TLSv1_1
-                                  |NGX_SSL_TLSv1_2));
-
-#   endif
-
-    ngx_conf_merge_str_value(conf->ssl_ciphers, prev->ssl_ciphers,
-                             "DEFAULT");
-
-    ngx_conf_merge_uint_value(conf->ssl_verify_depth,
-                              prev->ssl_verify_depth, 1);
-    ngx_conf_merge_str_value(conf->ssl_trusted_certificate,
-                             prev->ssl_trusted_certificate, "");
-    ngx_conf_merge_str_value(conf->ssl_crl, prev->ssl_crl, "");
-
-    if (ngx_http_lua_set_ssl(cf, conf) != NGX_OK) {
-        return NGX_CONF_ERROR;
-    }
-
-#endif
-
     ngx_conf_merge_value(conf->force_read_body, prev->force_read_body, 0);
     ngx_conf_merge_value(conf->enable_code_cache, prev->enable_code_cache, 1);
     ngx_conf_merge_value(conf->http10_buffering, prev->http10_buffering, 1);

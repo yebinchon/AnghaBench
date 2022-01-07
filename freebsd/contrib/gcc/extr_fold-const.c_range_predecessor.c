@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
 
-/* Variables and functions */
- scalar_t__ INTEGRAL_TYPE_P (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MINUS_EXPR ; 
- int /*<<< orphan*/  NULL_TREE ; 
- int /*<<< orphan*/  TREE_TYPE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TYPE_MIN_VALUE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  integer_one_node ; 
- scalar_t__ operand_equal_p (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  range_binop (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int tree ;
+
+
+ scalar_t__ INTEGRAL_TYPE_P (int ) ;
+ int MINUS_EXPR ;
+ int NULL_TREE ;
+ int TREE_TYPE (int ) ;
+ int TYPE_MIN_VALUE (int ) ;
+ int integer_one_node ;
+ scalar_t__ operand_equal_p (int ,int ,int ) ;
+ int range_binop (int ,int ,int ,int ,int ,int ) ;
 
 __attribute__((used)) static tree
 range_predecessor (tree val)

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct status_line {int /*<<< orphan*/  references; int /*<<< orphan*/ * active; int /*<<< orphan*/  screen; } ;
-struct TYPE_2__ {int /*<<< orphan*/  sx; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct status_line {int references; int * active; int screen; } ;
+struct TYPE_2__ {int sx; } ;
 struct client {TYPE_1__ tty; struct status_line status; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  screen_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  status_line_size (struct client*) ; 
- int /*<<< orphan*/ * xmalloc (int) ; 
+
+ int screen_init (int *,int ,int ,int ) ;
+ int status_line_size (struct client*) ;
+ int * xmalloc (int) ;
 
 __attribute__((used)) static void
 status_push_screen(struct client *c)
 {
-	struct status_line *sl = &c->status;
+ struct status_line *sl = &c->status;
 
-	if (sl->active == &sl->screen) {
-		sl->active = xmalloc(sizeof *sl->active);
-		screen_init(sl->active, c->tty.sx, status_line_size(c), 0);
-	}
-	sl->references++;
+ if (sl->active == &sl->screen) {
+  sl->active = xmalloc(sizeof *sl->active);
+  screen_init(sl->active, c->tty.sx, status_line_size(c), 0);
+ }
+ sl->references++;
 }

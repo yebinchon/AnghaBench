@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_18__   TYPE_2__ ;
-typedef  struct TYPE_17__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  stream_t ;
-struct TYPE_17__ {int /*<<< orphan*/  buf; } ;
-typedef  TYPE_1__ strbuf_t ;
-struct TYPE_18__ {int nItems; int indentLevel; struct TYPE_18__* next; int /*<<< orphan*/  merge; struct TYPE_18__* items; struct TYPE_18__* keyword; } ;
-typedef  int /*<<< orphan*/  IndexSubItem ;
-typedef  TYPE_2__ IndexItem ;
-typedef  int /*<<< orphan*/  IStream ;
-typedef  int /*<<< orphan*/  HHInfo ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WARN (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  _strnicmp (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  get_node_name (TYPE_1__*,TYPE_1__*) ; 
- int /*<<< orphan*/  heap_free (TYPE_2__*) ; 
- int /*<<< orphan*/  item_realloc (TYPE_2__*,int) ; 
- scalar_t__ lstrcmpW (TYPE_2__*,TYPE_2__*) ; 
- int /*<<< orphan*/  memcpy (TYPE_2__*,TYPE_2__*,int) ; 
- scalar_t__ next_node (int /*<<< orphan*/ *,TYPE_1__*) ; 
- TYPE_2__* parse_li (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strbuf_free (TYPE_1__*) ; 
- int /*<<< orphan*/  strbuf_init (TYPE_1__*) ; 
- int /*<<< orphan*/  strbuf_zero (TYPE_1__*) ; 
- int /*<<< orphan*/  stream_init (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_18__ TYPE_2__ ;
+typedef struct TYPE_17__ TYPE_1__ ;
+
+
+typedef int stream_t ;
+struct TYPE_17__ {int buf; } ;
+typedef TYPE_1__ strbuf_t ;
+struct TYPE_18__ {int nItems; int indentLevel; struct TYPE_18__* next; int merge; struct TYPE_18__* items; struct TYPE_18__* keyword; } ;
+typedef int IndexSubItem ;
+typedef TYPE_2__ IndexItem ;
+typedef int IStream ;
+typedef int HHInfo ;
+
+
+ int TRACE (char*,int ) ;
+ int WARN (char*,int ) ;
+ int _strnicmp (int ,char*,int) ;
+ int get_node_name (TYPE_1__*,TYPE_1__*) ;
+ int heap_free (TYPE_2__*) ;
+ int item_realloc (TYPE_2__*,int) ;
+ scalar_t__ lstrcmpW (TYPE_2__*,TYPE_2__*) ;
+ int memcpy (TYPE_2__*,TYPE_2__*,int) ;
+ scalar_t__ next_node (int *,TYPE_1__*) ;
+ TYPE_2__* parse_li (int *,int *) ;
+ int strbuf_free (TYPE_1__*) ;
+ int strbuf_init (TYPE_1__*) ;
+ int strbuf_zero (TYPE_1__*) ;
+ int stream_init (int *,int *) ;
 
 __attribute__((used)) static void parse_hhindex(HHInfo *info, IStream *str, IndexItem *item)
 {

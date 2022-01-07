@@ -1,31 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int HISTORY ; 
- int STRING_LENGTH_WRAPPED ; 
- int /*<<< orphan*/  clrtoeol () ; 
- int count_lines (char*) ; 
- scalar_t__* flag ; 
- char* input_line ; 
- int /*<<< orphan*/ * lines ; 
- int /*<<< orphan*/  move (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printw (char*,...) ; 
- int /*<<< orphan*/  refresh () ; 
- int /*<<< orphan*/  wrap (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wrap_bars (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  x ; 
- int y ; 
+ int HISTORY ;
+ int STRING_LENGTH_WRAPPED ;
+ int clrtoeol () ;
+ int count_lines (char*) ;
+ scalar_t__* flag ;
+ char* input_line ;
+ int * lines ;
+ int move (int,int ) ;
+ int printw (char*,...) ;
+ int refresh () ;
+ int wrap (char*,int ,int ) ;
+ int wrap_bars (char*,int ,int ) ;
+ int x ;
+ int y ;
 
 void do_refresh()
 {

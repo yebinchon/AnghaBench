@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {char* fmt; } ;
-typedef  TYPE_1__ hexagon_operand ;
+typedef TYPE_1__ hexagon_operand ;
 
-/* Variables and functions */
- size_t hexagon_operand_count ; 
- TYPE_1__* hexagon_operands ; 
- int /*<<< orphan*/  sprintf (char*,char*,char*,char*) ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
+
+ size_t hexagon_operand_count ;
+ TYPE_1__* hexagon_operands ;
+ int sprintf (char*,char*,char*,char*) ;
+ int strcmp (char*,char*) ;
 
 __attribute__((used)) static const hexagon_operand *
 hexagon_operand_find_xx16
@@ -34,5 +34,5 @@ hexagon_operand_find_xx16
       return oper;
     }
   }
-  return NULL;
+  return ((void*)0);
 }

@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  crypto_generichash_state ;
 
-/* Variables and functions */
- int MAXLEN ; 
- int /*<<< orphan*/  assert (int) ; 
- int crypto_generichash_BYTES_MAX ; 
- unsigned int crypto_generichash_KEYBYTES ; 
- int crypto_generichash_KEYBYTES_MAX ; 
- int crypto_generichash_final (int /*<<< orphan*/ *,unsigned char*,int) ; 
- int crypto_generichash_init (int /*<<< orphan*/ *,unsigned char*,unsigned int,unsigned int) ; 
- int crypto_generichash_statebytes () ; 
- int /*<<< orphan*/  crypto_generichash_update (int /*<<< orphan*/ *,unsigned char*,size_t) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  sodium_free (int /*<<< orphan*/ *) ; 
- scalar_t__ sodium_malloc (int) ; 
+
+
+
+typedef int crypto_generichash_state ;
+
+
+ int MAXLEN ;
+ int assert (int) ;
+ int crypto_generichash_BYTES_MAX ;
+ unsigned int crypto_generichash_KEYBYTES ;
+ int crypto_generichash_KEYBYTES_MAX ;
+ int crypto_generichash_final (int *,unsigned char*,int) ;
+ int crypto_generichash_init (int *,unsigned char*,unsigned int,unsigned int) ;
+ int crypto_generichash_statebytes () ;
+ int crypto_generichash_update (int *,unsigned char*,size_t) ;
+ int printf (char*,...) ;
+ int sodium_free (int *) ;
+ scalar_t__ sodium_malloc (int) ;
 
 int
 main(void)
 {
-#define MAXLEN 64
+
     crypto_generichash_state *st;
-    unsigned char            in[MAXLEN];
-    unsigned char            out[crypto_generichash_BYTES_MAX];
-    unsigned char            k[crypto_generichash_KEYBYTES_MAX];
-    size_t                   h, i, j;
+    unsigned char in[64];
+    unsigned char out[crypto_generichash_BYTES_MAX];
+    unsigned char k[crypto_generichash_KEYBYTES_MAX];
+    size_t h, i, j;
 
     assert(crypto_generichash_statebytes() >= sizeof *st);
     st = (crypto_generichash_state *)
@@ -42,7 +42,7 @@ main(void)
     for (h = 0; h < crypto_generichash_KEYBYTES_MAX; ++h) {
         k[h] = (unsigned char) h;
     }
-    for (i = 0; i < MAXLEN; ++i) {
+    for (i = 0; i < 64; ++i) {
         in[i] = (unsigned char) i;
         if (crypto_generichash_init(st, k,
                                     1 + i % crypto_generichash_KEYBYTES_MAX,
@@ -74,10 +74,10 @@ main(void)
                                    sizeof out) == -1);
     assert(crypto_generichash_init(st, k, 0U, sizeof out) == 0);
     assert(crypto_generichash_init(st, k, 1U, sizeof out) == 0);
-    assert(crypto_generichash_init(st, NULL, 1U, 0U) == -1);
-    assert(crypto_generichash_init(st, NULL, crypto_generichash_KEYBYTES,
+    assert(crypto_generichash_init(st, ((void*)0), 1U, 0U) == -1);
+    assert(crypto_generichash_init(st, ((void*)0), crypto_generichash_KEYBYTES,
                                    1U) == 0);
-    assert(crypto_generichash_init(st, NULL, crypto_generichash_KEYBYTES,
+    assert(crypto_generichash_init(st, ((void*)0), crypto_generichash_KEYBYTES,
                                    0U) == -1);
 
     sodium_free(st);

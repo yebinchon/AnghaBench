@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct MPOpts {scalar_t__ use_filedir_conf; } ;
-struct MPContext {char* filename; int /*<<< orphan*/  global; struct MPOpts* opts; } ;
-typedef  int /*<<< orphan*/  cfg ;
-typedef  int /*<<< orphan*/  bstr ;
+struct MPContext {char* filename; int global; struct MPOpts* opts; } ;
+typedef int cfg ;
+typedef int bstr ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FILE_LOCAL_FLAGS ; 
- int /*<<< orphan*/  MP_VERBOSE (struct MPContext*,char*) ; 
- int /*<<< orphan*/  MSGL_INFO ; 
- int /*<<< orphan*/  bstr0 (char*) ; 
- char* mp_basename (char*) ; 
- int /*<<< orphan*/  mp_dirname (char*) ; 
- char* mp_find_config_file (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- char* mp_path_join_bstr (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int snprintf (char*,int,char*,char const*) ; 
- int /*<<< orphan*/  talloc_free (char*) ; 
- scalar_t__ try_load_config (struct MPContext*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int FILE_LOCAL_FLAGS ;
+ int MP_VERBOSE (struct MPContext*,char*) ;
+ int MSGL_INFO ;
+ int bstr0 (char*) ;
+ char* mp_basename (char*) ;
+ int mp_dirname (char*) ;
+ char* mp_find_config_file (int *,int ,char*) ;
+ char* mp_path_join_bstr (int *,int ,int ) ;
+ int snprintf (char*,int,char*,char const*) ;
+ int talloc_free (char*) ;
+ scalar_t__ try_load_config (struct MPContext*,char*,int ,int ) ;
 
 __attribute__((used)) static void mp_load_per_file_config(struct MPContext *mpctx)
 {
@@ -45,14 +45,14 @@ __attribute__((used)) static void mp_load_per_file_config(struct MPContext *mpct
         char *name = mp_basename(cfg);
 
         bstr dir = mp_dirname(cfg);
-        char *dircfg = mp_path_join_bstr(NULL, dir, bstr0("mpv.conf"));
+        char *dircfg = mp_path_join_bstr(((void*)0), dir, bstr0("mpv.conf"));
         try_load_config(mpctx, dircfg, FILE_LOCAL_FLAGS, MSGL_INFO);
         talloc_free(dircfg);
 
         if (try_load_config(mpctx, cfg, FILE_LOCAL_FLAGS, MSGL_INFO))
             return;
 
-        if ((confpath = mp_find_config_file(NULL, mpctx->global, name))) {
+        if ((confpath = mp_find_config_file(((void*)0), mpctx->global, name))) {
             try_load_config(mpctx, confpath, FILE_LOCAL_FLAGS, MSGL_INFO);
 
             talloc_free(confpath);

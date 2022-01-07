@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int (* get_param_set_func ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*) ;} ;
-typedef  TYPE_1__ VTEncContext ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int (* get_param_set_func ) (int ,int ,int *,int *,int *,int*) ;} ;
+typedef TYPE_1__ VTEncContext ;
 struct TYPE_6__ {TYPE_1__* priv_data; } ;
-typedef  int /*<<< orphan*/  CMVideoFormatDescriptionRef ;
-typedef  int /*<<< orphan*/  CMSampleBufferRef ;
-typedef  TYPE_2__ AVCodecContext ;
+typedef int CMVideoFormatDescriptionRef ;
+typedef int CMSampleBufferRef ;
+typedef TYPE_2__ AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR_EXTERNAL ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  CMSampleBufferGetFormatDescription (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_log (TYPE_2__*,int /*<<< orphan*/ ,char*,...) ; 
- int stub1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*) ; 
+
+ int AVERROR_EXTERNAL ;
+ int AV_LOG_ERROR ;
+ int CMSampleBufferGetFormatDescription (int ) ;
+ int av_log (TYPE_2__*,int ,char*,...) ;
+ int stub1 (int ,int ,int *,int *,int *,int*) ;
 
 __attribute__((used)) static int get_length_code_size(
-    AVCodecContext    *avctx,
+    AVCodecContext *avctx,
     CMSampleBufferRef sample_buffer,
-    size_t            *size)
+    size_t *size)
 {
     VTEncContext *vtctx = avctx->priv_data;
     CMVideoFormatDescriptionRef vid_fmt;
@@ -44,9 +44,9 @@ __attribute__((used)) static int get_length_code_size(
 
     status = vtctx->get_param_set_func(vid_fmt,
                                        0,
-                                       NULL,
-                                       NULL,
-                                       NULL,
+                                       ((void*)0),
+                                       ((void*)0),
+                                       ((void*)0),
                                        &isize);
     if (status) {
         av_log(avctx, AV_LOG_ERROR, "Error getting length code size: %d\n", status);

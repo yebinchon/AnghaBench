@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int /*<<< orphan*/  test1_annexbdata ;
+
+
+
+
+typedef int uint8_t ;
+typedef int test1_annexbdata ;
 struct results_s {int member_0; int member_1; } ;
-typedef  size_t ssize_t ;
+typedef size_t ssize_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAY_SIZE (struct results_s const*) ; 
- int /*<<< orphan*/  free (int*) ; 
- int* malloc (int) ; 
- int /*<<< orphan*/  memcpy (int*,int const*,int) ; 
- int /*<<< orphan*/  memset (int*,int,int) ; 
- int /*<<< orphan*/  printf (char*) ; 
- int run_annexb_sets (int const*,int const*,struct results_s const*,int /*<<< orphan*/ ,size_t const) ; 
+
+ int ARRAY_SIZE (struct results_s const*) ;
+ int free (int*) ;
+ int* malloc (int) ;
+ int memcpy (int*,int const*,int) ;
+ int memset (int*,int,int) ;
+ int printf (char*) ;
+ int run_annexb_sets (int const*,int const*,struct results_s const*,int ,size_t const) ;
 
 int main( void )
 {
-    const uint8_t test1_annexbdata[] = { 0, 0, 0, 1, 0x55, 0x55, 0x55, 0x55, 0x55, // 9
-                                         0, 0, 1, 0x22, 0x22, //14
-                                         0, 0, 1, 0x0, 0x0, //19
-                                         0, 0, 1, //22
-                                         0, 0, 1, 0, //26
-                                         0, 0, 1, 0x11, //30
+    const uint8_t test1_annexbdata[] = { 0, 0, 0, 1, 0x55, 0x55, 0x55, 0x55, 0x55,
+                                         0, 0, 1, 0x22, 0x22,
+                                         0, 0, 1, 0x0, 0x0,
+                                         0, 0, 1,
+                                         0, 0, 1, 0,
+                                         0, 0, 1, 0x11,
                                          0, 0, 1,
                                        };
     const struct results_s test1_results[] = {
-                                        { 1,  3 + 5 },
-                                        { 9,  3 + 2 },
+                                        { 1, 3 + 5 },
+                                        { 9, 3 + 2 },
                                         { 14, 3 + 2 },
                                         { 19, 3 + 0 },
                                         { 22, 3 + 1 },

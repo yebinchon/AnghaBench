@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct user_namespace {int /*<<< orphan*/  gid_map; } ;
-typedef  int /*<<< orphan*/  kgid_t ;
-typedef  int /*<<< orphan*/  gid_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  KGIDT_INIT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  map_id_down (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+struct user_namespace {int gid_map; } ;
+typedef int kgid_t ;
+typedef int gid_t ;
+
+
+ int KGIDT_INIT (int ) ;
+ int map_id_down (int *,int ) ;
 
 kgid_t make_kgid(struct user_namespace *ns, gid_t gid)
 {
-	/* Map the gid to a global kernel gid */
-	return KGIDT_INIT(map_id_down(&ns->gid_map, gid));
+
+ return KGIDT_INIT(map_id_down(&ns->gid_map, gid));
 }

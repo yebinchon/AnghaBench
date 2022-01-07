@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ssb_bus {int /*<<< orphan*/  chipco; } ;
+
+
+
+
+struct ssb_bus {int chipco; } ;
 struct gpio_chip {int dummy; } ;
 
-/* Variables and functions */
- struct ssb_bus* gpiochip_get_data (struct gpio_chip*) ; 
- int /*<<< orphan*/  ssb_chipco_gpio_control (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ssb_chipco_gpio_pulldown (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ssb_chipco_gpio_pullup (int /*<<< orphan*/ *,int,int) ; 
+
+ struct ssb_bus* gpiochip_get_data (struct gpio_chip*) ;
+ int ssb_chipco_gpio_control (int *,int,int ) ;
+ int ssb_chipco_gpio_pulldown (int *,int,int ) ;
+ int ssb_chipco_gpio_pullup (int *,int,int) ;
 
 __attribute__((used)) static int ssb_gpio_chipco_request(struct gpio_chip *chip, unsigned int gpio)
 {
-	struct ssb_bus *bus = gpiochip_get_data(chip);
+ struct ssb_bus *bus = gpiochip_get_data(chip);
 
-	ssb_chipco_gpio_control(&bus->chipco, 1 << gpio, 0);
-	/* clear pulldown */
-	ssb_chipco_gpio_pulldown(&bus->chipco, 1 << gpio, 0);
-	/* Set pullup */
-	ssb_chipco_gpio_pullup(&bus->chipco, 1 << gpio, 1 << gpio);
+ ssb_chipco_gpio_control(&bus->chipco, 1 << gpio, 0);
 
-	return 0;
+ ssb_chipco_gpio_pulldown(&bus->chipco, 1 << gpio, 0);
+
+ ssb_chipco_gpio_pullup(&bus->chipco, 1 << gpio, 1 << gpio);
+
+ return 0;
 }

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_7__ {struct TYPE_7__* location; } ;
-typedef  TYPE_1__ ACCESS_DESCRIPTION ;
+typedef TYPE_1__ ACCESS_DESCRIPTION ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACCESS_DESCRIPTION_free (TYPE_1__*) ; 
- TYPE_1__* ACCESS_DESCRIPTION_new () ; 
- int /*<<< orphan*/  GENERAL_NAME_free (TYPE_1__*) ; 
- TYPE_1__* GENERAL_NAME_new () ; 
- int /*<<< orphan*/  TEST_ptr (TYPE_1__*) ; 
+
+ int ACCESS_DESCRIPTION_free (TYPE_1__*) ;
+ TYPE_1__* ACCESS_DESCRIPTION_new () ;
+ int GENERAL_NAME_free (TYPE_1__*) ;
+ TYPE_1__* GENERAL_NAME_new () ;
+ int TEST_ptr (TYPE_1__*) ;
 
 __attribute__((used)) static int test_access_description(int testcase)
 {
@@ -30,15 +30,15 @@ __attribute__((used)) static int test_access_description(int testcase)
         goto err;
 
     switch (testcase) {
-    case 0:     /* no change */
+    case 0:
         break;
-    case 1:     /* check and release current location */
+    case 1:
         if (!TEST_ptr(ad->location))
             goto err;
         GENERAL_NAME_free(ad->location);
-        ad->location = NULL;
+        ad->location = ((void*)0);
         break;
-    case 2:     /* replace current location */
+    case 2:
         GENERAL_NAME_free(ad->location);
         ad->location = GENERAL_NAME_new();
         if (!TEST_ptr(ad->location))

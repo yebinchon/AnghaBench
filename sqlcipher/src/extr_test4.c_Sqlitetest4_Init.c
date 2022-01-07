@@ -1,58 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  aCmd ;
-typedef  int /*<<< orphan*/  Tcl_Interp ;
-typedef  int /*<<< orphan*/  Tcl_CmdProc ;
 
-/* Variables and functions */
- int TCL_OK ; 
- int /*<<< orphan*/  Tcl_CreateCommand (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
-#define  tcl_thread_argc 142 
-#define  tcl_thread_argv 141 
-#define  tcl_thread_colname 140 
-#define  tcl_thread_compile 139 
-#define  tcl_thread_create 138 
-#define  tcl_thread_db_get 137 
-#define  tcl_thread_db_put 136 
-#define  tcl_thread_error 135 
-#define  tcl_thread_finalize 134 
-#define  tcl_thread_halt 133 
-#define  tcl_thread_result 132 
-#define  tcl_thread_step 131 
-#define  tcl_thread_stmt_get 130 
-#define  tcl_thread_swap 129 
-#define  tcl_thread_wait 128 
 
+
+
+typedef int aCmd ;
+typedef int Tcl_Interp ;
+typedef int Tcl_CmdProc ;
+
+
+ int TCL_OK ;
+ int Tcl_CreateCommand (int *,char*,int *,int ,int ) ;
 int Sqlitetest4_Init(Tcl_Interp *interp){
   static struct {
      char *zName;
      Tcl_CmdProc *xProc;
   } aCmd[] = {
-     { "thread_create",     (Tcl_CmdProc*)tcl_thread_create     },
-     { "thread_wait",       (Tcl_CmdProc*)tcl_thread_wait       },
-     { "thread_halt",       (Tcl_CmdProc*)tcl_thread_halt       },
-     { "thread_argc",       (Tcl_CmdProc*)tcl_thread_argc       },
-     { "thread_argv",       (Tcl_CmdProc*)tcl_thread_argv       },
-     { "thread_colname",    (Tcl_CmdProc*)tcl_thread_colname    },
-     { "thread_result",     (Tcl_CmdProc*)tcl_thread_result     },
-     { "thread_error",      (Tcl_CmdProc*)tcl_thread_error      },
-     { "thread_compile",    (Tcl_CmdProc*)tcl_thread_compile    },
-     { "thread_step",       (Tcl_CmdProc*)tcl_thread_step       },
-     { "thread_finalize",   (Tcl_CmdProc*)tcl_thread_finalize   },
-     { "thread_swap",       (Tcl_CmdProc*)tcl_thread_swap       },
-     { "thread_db_get",     (Tcl_CmdProc*)tcl_thread_db_get     },
-     { "thread_db_put",     (Tcl_CmdProc*)tcl_thread_db_put     },
-     { "thread_stmt_get",   (Tcl_CmdProc*)tcl_thread_stmt_get   },
+     { "thread_create", (Tcl_CmdProc*)138 },
+     { "thread_wait", (Tcl_CmdProc*)128 },
+     { "thread_halt", (Tcl_CmdProc*)133 },
+     { "thread_argc", (Tcl_CmdProc*)142 },
+     { "thread_argv", (Tcl_CmdProc*)141 },
+     { "thread_colname", (Tcl_CmdProc*)140 },
+     { "thread_result", (Tcl_CmdProc*)132 },
+     { "thread_error", (Tcl_CmdProc*)135 },
+     { "thread_compile", (Tcl_CmdProc*)139 },
+     { "thread_step", (Tcl_CmdProc*)131 },
+     { "thread_finalize", (Tcl_CmdProc*)134 },
+     { "thread_swap", (Tcl_CmdProc*)129 },
+     { "thread_db_get", (Tcl_CmdProc*)137 },
+     { "thread_db_put", (Tcl_CmdProc*)136 },
+     { "thread_stmt_get", (Tcl_CmdProc*)130 },
   };
   int i;
 

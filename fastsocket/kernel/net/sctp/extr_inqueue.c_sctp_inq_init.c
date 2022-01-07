@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct sctp_inq {scalar_t__ malloced; int /*<<< orphan*/  immediate; int /*<<< orphan*/ * in_progress; int /*<<< orphan*/  in_chunk_list; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INIT_LIST_HEAD (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  INIT_WORK (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+struct sctp_inq {scalar_t__ malloced; int immediate; int * in_progress; int in_chunk_list; } ;
+
+
+ int INIT_LIST_HEAD (int *) ;
+ int INIT_WORK (int *,int *) ;
 
 void sctp_inq_init(struct sctp_inq *queue)
 {
-	INIT_LIST_HEAD(&queue->in_chunk_list);
-	queue->in_progress = NULL;
+ INIT_LIST_HEAD(&queue->in_chunk_list);
+ queue->in_progress = ((void*)0);
 
-	/* Create a task for delivering data.  */
-	INIT_WORK(&queue->immediate, NULL);
 
-	queue->malloced = 0;
+ INIT_WORK(&queue->immediate, ((void*)0));
+
+ queue->malloced = 0;
 }

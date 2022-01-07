@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct dvb_frontend_ops {int dummy; } ;
-struct dvb_frontend {struct dvb_dummy_fe_state* demodulator_priv; int /*<<< orphan*/  ops; } ;
+struct dvb_frontend {struct dvb_dummy_fe_state* demodulator_priv; int ops; } ;
 struct dvb_dummy_fe_state {struct dvb_frontend frontend; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  dvb_dummy_fe_qpsk_ops ; 
- int /*<<< orphan*/  kfree (struct dvb_dummy_fe_state*) ; 
- struct dvb_dummy_fe_state* kzalloc (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
+
+ int GFP_KERNEL ;
+ int dvb_dummy_fe_qpsk_ops ;
+ int kfree (struct dvb_dummy_fe_state*) ;
+ struct dvb_dummy_fe_state* kzalloc (int,int ) ;
+ int memcpy (int *,int *,int) ;
 
 struct dvb_frontend *dvb_dummy_fe_qpsk_attach(void)
 {
-	struct dvb_dummy_fe_state* state = NULL;
+ struct dvb_dummy_fe_state* state = ((void*)0);
 
-	/* allocate memory for the internal state */
-	state = kzalloc(sizeof(struct dvb_dummy_fe_state), GFP_KERNEL);
-	if (state == NULL) goto error;
 
-	/* create dvb_frontend */
-	memcpy(&state->frontend.ops, &dvb_dummy_fe_qpsk_ops, sizeof(struct dvb_frontend_ops));
-	state->frontend.demodulator_priv = state;
-	return &state->frontend;
+ state = kzalloc(sizeof(struct dvb_dummy_fe_state), GFP_KERNEL);
+ if (state == ((void*)0)) goto error;
+
+
+ memcpy(&state->frontend.ops, &dvb_dummy_fe_qpsk_ops, sizeof(struct dvb_frontend_ops));
+ state->frontend.demodulator_priv = state;
+ return &state->frontend;
 
 error:
-	kfree(state);
-	return NULL;
+ kfree(state);
+ return ((void*)0);
 }

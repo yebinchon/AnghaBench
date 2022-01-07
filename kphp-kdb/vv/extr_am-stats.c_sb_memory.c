@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  stats_buffer_t ;
-struct TYPE_3__ {int /*<<< orphan*/  swap_total; int /*<<< orphan*/  swap_used; int /*<<< orphan*/  mem_free; int /*<<< orphan*/  vm_data; int /*<<< orphan*/  vm_rss; int /*<<< orphan*/  vm_size; } ;
-typedef  TYPE_1__ am_memory_stat_t ;
 
-/* Variables and functions */
- int AM_GET_MEMORY_USAGE_OVERALL ; 
- int AM_GET_MEMORY_USAGE_SELF ; 
- int /*<<< orphan*/  am_get_memory_stats (TYPE_1__*,int) ; 
- scalar_t__ dyn_cur ; 
- scalar_t__ dyn_first ; 
- scalar_t__ dyn_last ; 
- scalar_t__ dyn_top ; 
- int /*<<< orphan*/  dyn_update_stats () ; 
- int /*<<< orphan*/  freed_blocks ; 
- int /*<<< orphan*/  freed_bytes ; 
- int /*<<< orphan*/  sb_printf (int /*<<< orphan*/ *,char*,long,long,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  wasted_blocks ; 
- int /*<<< orphan*/  wasted_bytes ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int stats_buffer_t ;
+struct TYPE_3__ {int swap_total; int swap_used; int mem_free; int vm_data; int vm_rss; int vm_size; } ;
+typedef TYPE_1__ am_memory_stat_t ;
+
+
+ int AM_GET_MEMORY_USAGE_OVERALL ;
+ int AM_GET_MEMORY_USAGE_SELF ;
+ int am_get_memory_stats (TYPE_1__*,int) ;
+ scalar_t__ dyn_cur ;
+ scalar_t__ dyn_first ;
+ scalar_t__ dyn_last ;
+ scalar_t__ dyn_top ;
+ int dyn_update_stats () ;
+ int freed_blocks ;
+ int freed_bytes ;
+ int sb_printf (int *,char*,long,long,int ,...) ;
+ int wasted_blocks ;
+ int wasted_bytes ;
 
 void sb_memory (stats_buffer_t *sb, int flags) {
   dyn_update_stats ();

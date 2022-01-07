@@ -1,60 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
 struct TYPE_4__ {int PATTERN_INDEX; int WAVE_FRONT_WIDTH; size_t COLOR_PATTERN_INDEX; } ;
 struct TYPE_3__ {int state; } ;
 
-/* Variables and functions */
-#define  BLACK_RGB 145 
- int*** COLOR_PATTERNS ; 
- int COLOR_PATTERN_RGB_COUNT ; 
-#define  COLOR_RGB 144 
- int* DISTANCE_FROM_LAST_KEYSTROKE ; 
-#define  KC_A 143 
- int KC_CAPS ; 
-#define  KC_D 142 
-#define  KC_E 141 
-#define  KC_H 140 
-#define  KC_I 139 
-#define  KC_J 138 
-#define  KC_K 137 
-#define  KC_L 136 
-#define  KC_O 135 
-#define  KC_P 134 
-#define  KC_Q 133 
-#define  KC_S 132 
- int KC_TAB ; 
-#define  KC_U 131 
-#define  KC_W 130 
-#define  KC_Y 129 
- int KEY_LED_COUNT ; 
- TYPE_2__ USER_CONFIG ; 
- TYPE_1__* USER_LED ; 
-#define  USE_PATTERN 128 
- int /*<<< orphan*/  calculate_keystroke_distance () ; 
- int /*<<< orphan*/  ktli (int) ; 
- int layer_state ; 
- int /*<<< orphan*/  refresh_color_pattern_indicators () ; 
- int /*<<< orphan*/  refresh_pattern_indicators () ; 
- int /*<<< orphan*/  set_indicator_led_rgb (int /*<<< orphan*/ ,int,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_user_led_rgb (int,int,int,int) ; 
- int timer_elapsed32 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  timer_read32 () ; 
- int /*<<< orphan*/  unset_indicator_led_rgb (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  unset_user_led_rgb (int) ; 
+
+
+ int*** COLOR_PATTERNS ;
+ int COLOR_PATTERN_RGB_COUNT ;
+
+ int* DISTANCE_FROM_LAST_KEYSTROKE ;
+
+ int KC_CAPS ;
+ int KC_TAB ;
+
+
+
+ int KEY_LED_COUNT ;
+ TYPE_2__ USER_CONFIG ;
+ TYPE_1__* USER_LED ;
+
+ int calculate_keystroke_distance () ;
+ int ktli (int) ;
+ int layer_state ;
+ int refresh_color_pattern_indicators () ;
+ int refresh_pattern_indicators () ;
+ int set_indicator_led_rgb (int ,int,int,int,int ) ;
+ int set_user_led_rgb (int,int,int,int) ;
+ int timer_elapsed32 (int ) ;
+ int timer_read32 () ;
+ int unset_indicator_led_rgb (int ,int) ;
+ int unset_user_led_rgb (int) ;
 
 void matrix_scan_user(void) {
     static uint32_t scan_timer = 0;
@@ -70,32 +59,32 @@ void matrix_scan_user(void) {
     calculate_keystroke_distance();
 
 
-    #define USE_PATTERN 0
-    #define BLACK_RGB 1
-    #define COLOR_RGB 2
-    uint8_t ci; // color index
+
+
+
+    uint8_t ci;
     uint8_t *rgb;
     uint8_t handle_type;
     uint8_t distance;
     for(uint8_t i = 1; i <= KEY_LED_COUNT; ++i){
         if(USER_LED[i-1].state >= 2) continue;
 
-        handle_type = USE_PATTERN;
+        handle_type = 0;
         distance = DISTANCE_FROM_LAST_KEYSTROKE[i];
 
         switch(USER_CONFIG.PATTERN_INDEX){
-        case 0: handle_type = USE_PATTERN; break;
-        case 1: handle_type = distance ? USE_PATTERN : BLACK_RGB; break;
-        case 2: handle_type = distance ? BLACK_RGB : USE_PATTERN; break;
-        case 3: handle_type = distance ? COLOR_RGB : BLACK_RGB; break;
-        case 4: handle_type = distance ? COLOR_RGB : USE_PATTERN; break;
+        case 0: handle_type = 0; break;
+        case 1: handle_type = distance ? 0 : 1; break;
+        case 2: handle_type = distance ? 1 : 0; break;
+        case 3: handle_type = distance ? 2 : 1; break;
+        case 4: handle_type = distance ? 2 : 0; break;
         case 5:
-        case 6: handle_type = distance ? COLOR_RGB : USE_PATTERN; break;
+        case 6: handle_type = distance ? 2 : 0; break;
         }
         switch(handle_type){
-        case USE_PATTERN: unset_user_led_rgb(i); break;
-        case BLACK_RGB: set_user_led_rgb(i, 0, 0, 0); break;
-        case COLOR_RGB:
+        case 0: unset_user_led_rgb(i); break;
+        case 1: set_user_led_rgb(i, 0, 0, 0); break;
+        case 2:
             ci = (DISTANCE_FROM_LAST_KEYSTROKE[i] * COLOR_PATTERN_RGB_COUNT /
                     USER_CONFIG.WAVE_FRONT_WIDTH) % COLOR_PATTERN_RGB_COUNT;
             rgb = &COLOR_PATTERNS[USER_CONFIG.COLOR_PATTERN_INDEX][ci][0];
@@ -106,14 +95,14 @@ void matrix_scan_user(void) {
     }
 
 
-    // could be moved to process_record_user()
+
     if(layer != last_layer){
 
         static uint8_t QWEASDP[] = {
-            KC_Q, KC_W, KC_E, KC_A, KC_S, KC_D, KC_P,
+            133, 130, 141, 143, 132, 142, 134,
         };
         static uint8_t YUIOHJKL[] = {
-            KC_Y, KC_U, KC_I, KC_O, KC_H, KC_J, KC_K, KC_L,
+            129, 131, 139, 135, 140, 138, 137, 136,
         };
 
         switch(last_layer){
@@ -164,7 +153,7 @@ void matrix_scan_user(void) {
         if(timer_elapsed32(scan_timer) > 2000){
             scan_timer = timer_read32();
         } else if(timer_elapsed32(scan_timer) > 1000){
-            // set_user_led_rgb(ktli(KC_F5), 255, 255, 255);
+
         }
         break;
     case 1:

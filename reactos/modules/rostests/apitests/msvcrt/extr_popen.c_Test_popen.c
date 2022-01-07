@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  str ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ZeroMemory (char*,int) ; 
- int* _errno () ; 
- int _pclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * _popen (char*,char*) ; 
- int /*<<< orphan*/  fgets (char*,int,int /*<<< orphan*/ *) ; 
- scalar_t__ lstrcmp (char*,char*) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
+
+
+
+typedef int str ;
+typedef int FILE ;
+
+
+ int ZeroMemory (char*,int) ;
+ int* _errno () ;
+ int _pclose (int *) ;
+ int * _popen (char*,char*) ;
+ int fgets (char*,int,int *) ;
+ scalar_t__ lstrcmp (char*,char*) ;
+ int ok (int,char*,...) ;
 
 __attribute__((used)) static void Test_popen()
 {
@@ -28,9 +28,9 @@ __attribute__((used)) static void Test_popen()
     int r;
     char str[20];
 
-    /* NOTE: We suppose that the NT test installation has an accessible cmd.exe */
+
     f = _popen("cmd.exe /C \"echo Hallo\"", "r");
-    ok(f != NULL, "_popen returns NULL!\n");
+    ok(f != ((void*)0), "_popen returns NULL!\n");
 
     ZeroMemory(str, sizeof(str));
     fgets(str, sizeof(str) - 1, f);

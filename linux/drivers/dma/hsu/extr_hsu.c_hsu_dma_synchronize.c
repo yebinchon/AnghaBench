@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct hsu_dma_chan {int /*<<< orphan*/  vchan; } ;
+
+
+
+
+struct hsu_dma_chan {int vchan; } ;
 struct dma_chan {int dummy; } ;
 
-/* Variables and functions */
- struct hsu_dma_chan* to_hsu_dma_chan (struct dma_chan*) ; 
- int /*<<< orphan*/  vchan_synchronize (int /*<<< orphan*/ *) ; 
+
+ struct hsu_dma_chan* to_hsu_dma_chan (struct dma_chan*) ;
+ int vchan_synchronize (int *) ;
 
 __attribute__((used)) static void hsu_dma_synchronize(struct dma_chan *chan)
 {
-	struct hsu_dma_chan *hsuc = to_hsu_dma_chan(chan);
+ struct hsu_dma_chan *hsuc = to_hsu_dma_chan(chan);
 
-	vchan_synchronize(&hsuc->vchan);
+ vchan_synchronize(&hsuc->vchan);
 }

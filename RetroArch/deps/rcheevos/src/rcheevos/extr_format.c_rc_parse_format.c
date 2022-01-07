@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int RC_FORMAT_CENTISECS ; 
- int RC_FORMAT_FRAMES ; 
- int RC_FORMAT_OTHER ; 
- int RC_FORMAT_SCORE ; 
- int RC_FORMAT_SECONDS ; 
- int RC_FORMAT_VALUE ; 
- int /*<<< orphan*/  strcmp (char const*,char*) ; 
+ int RC_FORMAT_CENTISECS ;
+ int RC_FORMAT_FRAMES ;
+ int RC_FORMAT_OTHER ;
+ int RC_FORMAT_SCORE ;
+ int RC_FORMAT_SECONDS ;
+ int RC_FORMAT_VALUE ;
+ int strcmp (char const*,char*) ;
 
 int rc_parse_format(const char* format_str) {
   switch (*format_str++) {
@@ -28,7 +20,7 @@ int rc_parse_format(const char* format_str) {
       }
 
       break;
-    
+
     case 'T':
       if (!strcmp(format_str, "IME")) {
         return RC_FORMAT_FRAMES;
@@ -38,7 +30,7 @@ int rc_parse_format(const char* format_str) {
       }
 
       break;
-    
+
     case 'S':
       if (!strcmp(format_str, "ECS")) {
         return RC_FORMAT_SECONDS;
@@ -48,7 +40,7 @@ int rc_parse_format(const char* format_str) {
       }
 
       break;
-    
+
     case 'M':
       if (!strcmp(format_str, "ILLISECS")) {
         return RC_FORMAT_CENTISECS;

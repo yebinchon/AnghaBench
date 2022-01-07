@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
 struct TYPE_12__ {scalar_t__ colortype; int bitdepth; size_t palettesize; unsigned char* palette; } ;
-typedef  TYPE_1__ LodePNGColorMode ;
-typedef  int /*<<< orphan*/  ColorTree ;
+typedef TYPE_1__ LodePNGColorMode ;
+typedef int ColorTree ;
 
-/* Variables and functions */
- scalar_t__ LCT_PALETTE ; 
- scalar_t__ LCT_RGB ; 
- scalar_t__ LCT_RGBA ; 
- int /*<<< orphan*/  color_tree_add (int /*<<< orphan*/ *,unsigned char,unsigned char,unsigned char,unsigned char,size_t) ; 
- int /*<<< orphan*/  color_tree_cleanup (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  color_tree_init (int /*<<< orphan*/ *) ; 
- unsigned int getPixelColorRGBA16 (unsigned short*,unsigned short*,unsigned short*,unsigned short*,unsigned char const*,size_t,TYPE_1__ const*) ; 
- unsigned int getPixelColorRGBA8 (unsigned char*,unsigned char*,unsigned char*,unsigned char*,unsigned char const*,size_t,TYPE_1__ const*,unsigned int) ; 
- unsigned int getPixelColorsRGBA8 (unsigned char*,size_t,int,unsigned char const*,TYPE_1__ const*,unsigned int) ; 
- scalar_t__ lodepng_color_mode_equal (TYPE_1__*,TYPE_1__ const*) ; 
- size_t lodepng_get_raw_size (unsigned int,unsigned int,TYPE_1__ const*) ; 
- unsigned int rgba16ToPixel (unsigned char*,size_t,TYPE_1__*,unsigned short,unsigned short,unsigned short,unsigned short) ; 
- unsigned int rgba8ToPixel (unsigned char*,size_t,TYPE_1__*,int /*<<< orphan*/ *,unsigned char,unsigned char,unsigned char,unsigned char) ; 
+
+ scalar_t__ LCT_PALETTE ;
+ scalar_t__ LCT_RGB ;
+ scalar_t__ LCT_RGBA ;
+ int color_tree_add (int *,unsigned char,unsigned char,unsigned char,unsigned char,size_t) ;
+ int color_tree_cleanup (int *) ;
+ int color_tree_init (int *) ;
+ unsigned int getPixelColorRGBA16 (unsigned short*,unsigned short*,unsigned short*,unsigned short*,unsigned char const*,size_t,TYPE_1__ const*) ;
+ unsigned int getPixelColorRGBA8 (unsigned char*,unsigned char*,unsigned char*,unsigned char*,unsigned char const*,size_t,TYPE_1__ const*,unsigned int) ;
+ unsigned int getPixelColorsRGBA8 (unsigned char*,size_t,int,unsigned char const*,TYPE_1__ const*,unsigned int) ;
+ scalar_t__ lodepng_color_mode_equal (TYPE_1__*,TYPE_1__ const*) ;
+ size_t lodepng_get_raw_size (unsigned int,unsigned int,TYPE_1__ const*) ;
+ unsigned int rgba16ToPixel (unsigned char*,size_t,TYPE_1__*,unsigned short,unsigned short,unsigned short,unsigned short) ;
+ unsigned int rgba8ToPixel (unsigned char*,size_t,TYPE_1__*,int *,unsigned char,unsigned char,unsigned char,unsigned char) ;
 
 unsigned lodepng_convert(unsigned char* out, const unsigned char* in,
                          LodePNGColorMode* mode_out, const LodePNGColorMode* mode_in,

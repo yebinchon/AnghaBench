@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  TOKEN_ADD ; 
- int /*<<< orphan*/  TOKEN_AND ; 
- int /*<<< orphan*/  TOKEN_DEC ; 
- int /*<<< orphan*/  TOKEN_INC ; 
- int /*<<< orphan*/  TOKEN_MUL ; 
- int /*<<< orphan*/  TOKEN_NEG ; 
- int /*<<< orphan*/  TOKEN_NOT ; 
- int /*<<< orphan*/  TOKEN_SUB ; 
- scalar_t__ is_token (int /*<<< orphan*/ ) ; 
+ int TOKEN_ADD ;
+ int TOKEN_AND ;
+ int TOKEN_DEC ;
+ int TOKEN_INC ;
+ int TOKEN_MUL ;
+ int TOKEN_NEG ;
+ int TOKEN_NOT ;
+ int TOKEN_SUB ;
+ scalar_t__ is_token (int ) ;
 
 bool is_unary_op(void) {
     return

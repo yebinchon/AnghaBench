@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sds ;
-typedef  int /*<<< orphan*/  SHA256_CTX ;
 
-/* Variables and functions */
- int HASH_PASSWORD_LEN ; 
- int SHA256_BLOCK_SIZE ; 
- int /*<<< orphan*/  sdsnewlen (char*,int) ; 
- int /*<<< orphan*/  sha256_final (int /*<<< orphan*/ *,unsigned char*) ; 
- int /*<<< orphan*/  sha256_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sha256_update (int /*<<< orphan*/ *,unsigned char*,size_t) ; 
+
+
+
+typedef int sds ;
+typedef int SHA256_CTX ;
+
+
+ int HASH_PASSWORD_LEN ;
+ int SHA256_BLOCK_SIZE ;
+ int sdsnewlen (char*,int) ;
+ int sha256_final (int *,unsigned char*) ;
+ int sha256_init (int *) ;
+ int sha256_update (int *,unsigned char*,size_t) ;
 
 sds ACLHashPassword(unsigned char *cleartext, size_t len) {
     SHA256_CTX ctx;

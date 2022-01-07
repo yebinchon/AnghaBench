@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct RtfData {int dummy; } ;
-typedef  int ULONG ;
-typedef  int /*<<< orphan*/  HLPFILE ;
-typedef  int /*<<< orphan*/  BYTE ;
-typedef  int BOOL ;
+typedef int ULONG ;
+typedef int HLPFILE ;
+typedef int BYTE ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int FALSE ; 
- int GET_UINT (int /*<<< orphan*/  const*,int) ; 
- int GET_USHORT (int /*<<< orphan*/  const*,int) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HLPFILE_AddHotSpotLinks (struct RtfData*,int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int,int) ; 
- int /*<<< orphan*/ * HLPFILE_DecompressGfx (int /*<<< orphan*/  const*,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- scalar_t__ HLPFILE_RtfAddControl (struct RtfData*,char*) ; 
- scalar_t__ HLPFILE_RtfAddHexBytes (struct RtfData*,int /*<<< orphan*/  const*,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  WINE_TRACE (char*,...) ; 
- int fetch_ulong (int /*<<< orphan*/  const**) ; 
- unsigned int fetch_ushort (int /*<<< orphan*/  const**) ; 
- int /*<<< orphan*/  sprintf (char*,char*,unsigned int,int,int) ; 
 
-__attribute__((used)) static BOOL     HLPFILE_RtfAddMetaFile(struct RtfData* rd, HLPFILE* file, const BYTE* beg, BYTE pack)
+ int FALSE ;
+ int GET_UINT (int const*,int) ;
+ int GET_USHORT (int const*,int) ;
+ int GetProcessHeap () ;
+ int HLPFILE_AddHotSpotLinks (struct RtfData*,int *,int const*,int,int) ;
+ int * HLPFILE_DecompressGfx (int const*,int,int,int ,int **) ;
+ scalar_t__ HLPFILE_RtfAddControl (struct RtfData*,char*) ;
+ scalar_t__ HLPFILE_RtfAddHexBytes (struct RtfData*,int const*,int) ;
+ int HeapFree (int ,int ,int *) ;
+ int WINE_TRACE (char*,...) ;
+ int fetch_ulong (int const**) ;
+ unsigned int fetch_ushort (int const**) ;
+ int sprintf (char*,char*,unsigned int,int,int) ;
+
+__attribute__((used)) static BOOL HLPFILE_RtfAddMetaFile(struct RtfData* rd, HLPFILE* file, const BYTE* beg, BYTE pack)
 {
-    ULONG               size, csize, off, hs_offset, hs_size;
-    const BYTE*         ptr;
-    const BYTE*         bits;
-    BYTE*               alloc = NULL;
-    char                tmp[256];
-    unsigned            mm;
-    BOOL                ret;
+    ULONG size, csize, off, hs_offset, hs_size;
+    const BYTE* ptr;
+    const BYTE* bits;
+    BYTE* alloc = ((void*)0);
+    char tmp[256];
+    unsigned mm;
+    BOOL ret;
 
     WINE_TRACE("Loading metafile\n");
 
-    ptr = beg + 2; /* for type and pack */
+    ptr = beg + 2;
 
-    mm = fetch_ushort(&ptr); /* mapping mode */
+    mm = fetch_ushort(&ptr);
     sprintf(tmp, "{\\pict\\wmetafile%u\\picw%u\\pich%u",
             mm, GET_USHORT(ptr, 0), GET_USHORT(ptr, 2));
     if (!HLPFILE_RtfAddControl(rd, tmp)) return FALSE;
     ptr += 4;
 
-    size = fetch_ulong(&ptr); /* decompressed size */
-    csize = fetch_ulong(&ptr); /* compressed size */
-    hs_size = fetch_ulong(&ptr); /* hotspot size */
+    size = fetch_ulong(&ptr);
+    csize = fetch_ulong(&ptr);
+    hs_size = fetch_ulong(&ptr);
     off = GET_UINT(ptr, 0);
     hs_offset = GET_UINT(ptr, 4);
     ptr += 8;

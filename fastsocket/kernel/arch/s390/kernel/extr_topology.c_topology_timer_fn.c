@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  PTF_CHECK ; 
- scalar_t__ ptf (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_topology_timer () ; 
- int /*<<< orphan*/  topology_schedule_update () ; 
+ int PTF_CHECK ;
+ scalar_t__ ptf (int ) ;
+ int set_topology_timer () ;
+ int topology_schedule_update () ;
 
 __attribute__((used)) static void topology_timer_fn(unsigned long ignored)
 {
-	if (ptf(PTF_CHECK))
-		topology_schedule_update();
-	set_topology_timer();
+ if (ptf(PTF_CHECK))
+  topology_schedule_update();
+ set_topology_timer();
 }

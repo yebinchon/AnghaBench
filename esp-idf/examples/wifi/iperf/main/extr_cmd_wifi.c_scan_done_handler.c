@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  rssi; int /*<<< orphan*/  ssid; } ;
-typedef  TYPE_1__ wifi_ap_record_t ;
-typedef  int uint8_t ;
-typedef  int uint16_t ;
-typedef  int /*<<< orphan*/  int32_t ;
-typedef  int /*<<< orphan*/  esp_event_base_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ESP_LOGE (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ESP_LOGI (int /*<<< orphan*/ ,char*,...) ; 
- scalar_t__ ESP_OK ; 
- int /*<<< orphan*/  TAG ; 
- int /*<<< orphan*/  esp_wifi_scan_get_ap_num (int*) ; 
- scalar_t__ esp_wifi_scan_get_ap_records (int*,TYPE_1__*) ; 
- int /*<<< orphan*/  free (TYPE_1__*) ; 
- TYPE_1__* malloc (int) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int rssi; int ssid; } ;
+typedef TYPE_1__ wifi_ap_record_t ;
+typedef int uint8_t ;
+typedef int uint16_t ;
+typedef int int32_t ;
+typedef int esp_event_base_t ;
+
+
+ int ESP_LOGE (int ,char*) ;
+ int ESP_LOGI (int ,char*,...) ;
+ scalar_t__ ESP_OK ;
+ int TAG ;
+ int esp_wifi_scan_get_ap_num (int*) ;
+ scalar_t__ esp_wifi_scan_get_ap_records (int*,TYPE_1__*) ;
+ int free (TYPE_1__*) ;
+ TYPE_1__* malloc (int) ;
 
 __attribute__((used)) static void scan_done_handler(void* arg, esp_event_base_t event_base,
                               int32_t event_id, void* event_data)
@@ -37,7 +37,7 @@ __attribute__((used)) static void scan_done_handler(void* arg, esp_event_base_t 
 
     esp_wifi_scan_get_ap_num(&sta_number);
     ap_list_buffer = malloc(sta_number * sizeof(wifi_ap_record_t));
-    if (ap_list_buffer == NULL) {
+    if (ap_list_buffer == ((void*)0)) {
         ESP_LOGE(TAG, "Failed to malloc buffer to print scan results");
         return;
     }

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {scalar_t__ force_local; int /*<<< orphan*/  settings_path; int /*<<< orphan*/  local; int /*<<< orphan*/  image_root; struct TYPE_5__* settings_job; scalar_t__ settings; int /*<<< orphan*/  final_path; struct TYPE_5__* tar_job; } ;
-typedef  TYPE_1__ TarPull ;
 
-/* Variables and functions */
- int COPY_REFLINK ; 
- int COPY_REPLACE ; 
- int EEXIST ; 
- int ENOENT ; 
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int copy_file_atomic (int /*<<< orphan*/ ,char const*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  log_debug_errno (int,char*) ; 
- int /*<<< orphan*/  log_info (char*,char const*) ; 
- int /*<<< orphan*/  log_warning_errno (int,char*,char const*) ; 
- int pull_make_local_copy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- char* strjoina (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,char*) ; 
- int tar_pull_determine_path (TYPE_1__*,char*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {scalar_t__ force_local; int settings_path; int local; int image_root; struct TYPE_5__* settings_job; scalar_t__ settings; int final_path; struct TYPE_5__* tar_job; } ;
+typedef TYPE_1__ TarPull ;
+
+
+ int COPY_REFLINK ;
+ int COPY_REPLACE ;
+ int EEXIST ;
+ int ENOENT ;
+ int assert (TYPE_1__*) ;
+ int copy_file_atomic (int ,char const*,int,int ,int ,int) ;
+ int log_debug_errno (int,char*) ;
+ int log_info (char*,char const*) ;
+ int log_warning_errno (int,char*,char const*) ;
+ int pull_make_local_copy (int ,int ,int ,scalar_t__) ;
+ char* strjoina (int ,char*,int ,char*) ;
+ int tar_pull_determine_path (TYPE_1__*,char*,int *) ;
 
 __attribute__((used)) static int tar_pull_make_local_copy(TarPull *i) {
         int r;

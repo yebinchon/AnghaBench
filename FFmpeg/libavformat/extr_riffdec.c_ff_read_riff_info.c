@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  void* uint32_t ;
-typedef  int int64_t ;
-struct TYPE_12__ {int /*<<< orphan*/  metadata; TYPE_1__* pb; } ;
+
+
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef void* uint32_t ;
+typedef int int64_t ;
+struct TYPE_12__ {int metadata; TYPE_1__* pb; } ;
 struct TYPE_11__ {scalar_t__ eof_reached; } ;
-typedef  TYPE_1__ AVIOContext ;
-typedef  TYPE_2__ AVFormatContext ;
+typedef TYPE_1__ AVIOContext ;
+typedef TYPE_2__ AVFormatContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_EOF ; 
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_DICT_DONT_STRDUP_VAL ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_LOG_WARNING ; 
- int /*<<< orphan*/  AV_WL32 (char*,void*) ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  SEEK_CUR ; 
- int UINT_MAX ; 
- int /*<<< orphan*/  av_dict_set (int /*<<< orphan*/ *,char*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_log (TYPE_2__*,int /*<<< orphan*/ ,char*) ; 
- char* av_mallocz (int) ; 
- scalar_t__ avio_feof (TYPE_1__*) ; 
- int avio_read (TYPE_1__*,char*,int) ; 
- void* avio_rl32 (TYPE_1__*) ; 
- int /*<<< orphan*/  avio_seek (TYPE_1__*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  avio_skip (TYPE_1__*,int) ; 
- int avio_tell (TYPE_1__*) ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_EOF ;
+ int AVERROR_INVALIDDATA ;
+ int AV_DICT_DONT_STRDUP_VAL ;
+ int AV_LOG_ERROR ;
+ int AV_LOG_WARNING ;
+ int AV_WL32 (char*,void*) ;
+ int ENOMEM ;
+ int SEEK_CUR ;
+ int UINT_MAX ;
+ int av_dict_set (int *,char*,char*,int ) ;
+ int av_log (TYPE_2__*,int ,char*) ;
+ char* av_mallocz (int) ;
+ scalar_t__ avio_feof (TYPE_1__*) ;
+ int avio_read (TYPE_1__*,char*,int) ;
+ void* avio_rl32 (TYPE_1__*) ;
+ int avio_seek (TYPE_1__*,int,int ) ;
+ int avio_skip (TYPE_1__*,int) ;
+ int avio_tell (TYPE_1__*) ;
 
 int ff_read_riff_info(AVFormatContext *s, int64_t size)
 {
@@ -46,10 +46,10 @@ int ff_read_riff_info(AVFormatContext *s, int64_t size)
     AVIOContext *pb = s->pb;
 
     start = avio_tell(pb);
-    end   = start + size;
+    end = start + size;
 
     while ((cur = avio_tell(pb)) >= 0 &&
-           cur <= end - 8 /* = tag + size */) {
+           cur <= end - 8 ) {
         uint32_t chunk_code;
         int64_t chunk_size;
         char key[5] = { 0 };
@@ -96,8 +96,8 @@ int ff_read_riff_info(AVFormatContext *s, int64_t size)
         }
 
         AV_WL32(key, chunk_code);
-        // Work around VC++ 2015 Update 1 code-gen bug:
-        // https://connect.microsoft.com/VisualStudio/feedback/details/2291638
+
+
         key[4] = 0;
 
         if (avio_read(pb, value, chunk_size) != chunk_size) {

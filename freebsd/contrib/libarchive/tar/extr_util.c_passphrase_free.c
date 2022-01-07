@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  PPBUFF_SIZE ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  memset (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int PPBUFF_SIZE ;
+ int free (char*) ;
+ int memset (char*,int ,int ) ;
 
 void
 passphrase_free(char *ppbuff)
 {
-	if (ppbuff != NULL) {
-		memset(ppbuff, 0, PPBUFF_SIZE);
-		free(ppbuff);
-	}
+ if (ppbuff != ((void*)0)) {
+  memset(ppbuff, 0, PPBUFF_SIZE);
+  free(ppbuff);
+ }
 }

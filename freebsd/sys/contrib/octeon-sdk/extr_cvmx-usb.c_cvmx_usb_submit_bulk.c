@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uint64_t ;
-typedef  int /*<<< orphan*/  cvmx_usb_state_t ;
-typedef  int /*<<< orphan*/  cvmx_usb_internal_state_t ;
-typedef  int /*<<< orphan*/  cvmx_usb_callback_func_t ;
 
-/* Variables and functions */
- int CVMX_USB_INVALID_PARAM ; 
- int /*<<< orphan*/  CVMX_USB_LOG_CALLED () ; 
- int /*<<< orphan*/  CVMX_USB_LOG_PARAM (char*,int) ; 
- int /*<<< orphan*/  CVMX_USB_RETURN (int) ; 
- int /*<<< orphan*/  CVMX_USB_TRANSFER_BULK ; 
- int __cvmx_usb_submit_transaction (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,void*) ; 
- scalar_t__ cvmx_unlikely (int) ; 
+
+
+
+typedef scalar_t__ uint64_t ;
+typedef int cvmx_usb_state_t ;
+typedef int cvmx_usb_internal_state_t ;
+typedef int cvmx_usb_callback_func_t ;
+
+
+ int CVMX_USB_INVALID_PARAM ;
+ int CVMX_USB_LOG_CALLED () ;
+ int CVMX_USB_LOG_PARAM (char*,int) ;
+ int CVMX_USB_RETURN (int) ;
+ int CVMX_USB_TRANSFER_BULK ;
+ int __cvmx_usb_submit_transaction (int *,int,int ,int ,scalar_t__,int,int ,int ,int ,int *,int ,void*) ;
+ scalar_t__ cvmx_unlikely (int) ;
 
 int cvmx_usb_submit_bulk(cvmx_usb_state_t *state, int pipe_handle,
                                 uint64_t buffer, int buffer_length,
@@ -38,7 +38,7 @@ int cvmx_usb_submit_bulk(cvmx_usb_state_t *state, int pipe_handle,
     CVMX_USB_LOG_PARAM("0x%llx", (unsigned long long)buffer);
     CVMX_USB_LOG_PARAM("%d", buffer_length);
 
-    /* Pipe handle checking is done later in a common place */
+
     if (cvmx_unlikely(!buffer))
         CVMX_USB_RETURN(CVMX_USB_INVALID_PARAM);
     if (cvmx_unlikely(buffer_length < 0))
@@ -46,13 +46,13 @@ int cvmx_usb_submit_bulk(cvmx_usb_state_t *state, int pipe_handle,
 
     submit_handle = __cvmx_usb_submit_transaction(usb, pipe_handle,
                                          CVMX_USB_TRANSFER_BULK,
-                                         0, /* flags */
+                                         0,
                                          buffer,
                                          buffer_length,
-                                         0, /* control_header */
-                                         0, /* iso_start_frame */
-                                         0, /* iso_number_packets */
-                                         NULL, /* iso_packets */
+                                         0,
+                                         0,
+                                         0,
+                                         ((void*)0),
                                          callback,
                                          user_data);
     CVMX_USB_RETURN(submit_handle);

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {unsigned int input_num; unsigned int output_num; unsigned int clock_num; int /*<<< orphan*/ * control; int /*<<< orphan*/ ** clock; int /*<<< orphan*/ ** output; int /*<<< orphan*/ ** input; int /*<<< orphan*/  name; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_4__ {unsigned int input_num; unsigned int output_num; unsigned int clock_num; int * control; int ** clock; int ** output; int ** input; int name; } ;
 struct TYPE_3__ {unsigned int component_num; TYPE_2__** component; } ;
-typedef  scalar_t__ MMAL_PORT_TYPE_T ;
-typedef  int /*<<< orphan*/  MMAL_PORT_T ;
-typedef  int /*<<< orphan*/  MMAL_GRAPH_T ;
-typedef  TYPE_1__ MMAL_GRAPH_PRIVATE_T ;
-typedef  TYPE_2__ MMAL_COMPONENT_T ;
+typedef scalar_t__ MMAL_PORT_TYPE_T ;
+typedef int MMAL_PORT_T ;
+typedef int MMAL_GRAPH_T ;
+typedef TYPE_1__ MMAL_GRAPH_PRIVATE_T ;
+typedef TYPE_2__ MMAL_COMPONENT_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOG_INFO (char*,char const*,unsigned int) ; 
- scalar_t__ MMAL_PORT_TYPE_CLOCK ; 
- scalar_t__ MMAL_PORT_TYPE_CONTROL ; 
- scalar_t__ MMAL_PORT_TYPE_INPUT ; 
- scalar_t__ MMAL_PORT_TYPE_OUTPUT ; 
- int /*<<< orphan*/  vcos_assert (int /*<<< orphan*/ ) ; 
- scalar_t__ vcos_strcasecmp (char const*,int /*<<< orphan*/ ) ; 
+
+ int LOG_INFO (char*,char const*,unsigned int) ;
+ scalar_t__ MMAL_PORT_TYPE_CLOCK ;
+ scalar_t__ MMAL_PORT_TYPE_CONTROL ;
+ scalar_t__ MMAL_PORT_TYPE_INPUT ;
+ scalar_t__ MMAL_PORT_TYPE_OUTPUT ;
+ int vcos_assert (int ) ;
+ scalar_t__ vcos_strcasecmp (char const*,int ) ;
 
 MMAL_PORT_T *mmal_graph_find_port(MMAL_GRAPH_T *graph,
                                   const char *name,
@@ -61,15 +61,15 @@ MMAL_PORT_T *mmal_graph_find_port(MMAL_GRAPH_T *graph,
          }
          else {
             vcos_assert(0);
-            return NULL;
+            return ((void*)0);
          }
          if (index < num)
          {
-            /* coverity[ptr_arith] num is 1 at this point */
+
             return ports[index];
          }
       }
    }
    LOG_INFO("port %s:%d not found", name, index);
-   return NULL;
+   return ((void*)0);
 }

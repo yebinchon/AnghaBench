@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Unit ;
-struct TYPE_9__ {int /*<<< orphan*/  timer_event_source; void* fdname; void* group; void* user; int /*<<< orphan*/  symlinks; void* smack_ip_out; void* smack_ip_in; void* smack; void* bind_to_device; void* tcp_congestion; int /*<<< orphan*/  service; int /*<<< orphan*/  dynamic_creds; int /*<<< orphan*/ * control_command; int /*<<< orphan*/  exec_command; int /*<<< orphan*/  exec_runtime; int /*<<< orphan*/  peers_by_address; } ;
-struct TYPE_8__ {int /*<<< orphan*/ * socket; } ;
-typedef  TYPE_1__ SocketPeer ;
-typedef  TYPE_2__ Socket ;
 
-/* Variables and functions */
- TYPE_2__* SOCKET (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  _SOCKET_EXEC_COMMAND_MAX ; 
- int /*<<< orphan*/  assert (TYPE_2__*) ; 
- int /*<<< orphan*/  dynamic_creds_unref (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  exec_command_free_array (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  exec_runtime_unref (int /*<<< orphan*/ ,int) ; 
- void* mfree (void*) ; 
- int /*<<< orphan*/  sd_event_source_unref (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_free (int /*<<< orphan*/ ) ; 
- TYPE_1__* set_steal_first (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  socket_free_ports (TYPE_2__*) ; 
- int /*<<< orphan*/  socket_unwatch_control_pid (TYPE_2__*) ; 
- int /*<<< orphan*/  strv_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  unit_ref_unset (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int Unit ;
+struct TYPE_9__ {int timer_event_source; void* fdname; void* group; void* user; int symlinks; void* smack_ip_out; void* smack_ip_in; void* smack; void* bind_to_device; void* tcp_congestion; int service; int dynamic_creds; int * control_command; int exec_command; int exec_runtime; int peers_by_address; } ;
+struct TYPE_8__ {int * socket; } ;
+typedef TYPE_1__ SocketPeer ;
+typedef TYPE_2__ Socket ;
+
+
+ TYPE_2__* SOCKET (int *) ;
+ int _SOCKET_EXEC_COMMAND_MAX ;
+ int assert (TYPE_2__*) ;
+ int dynamic_creds_unref (int *) ;
+ int exec_command_free_array (int ,int ) ;
+ int exec_runtime_unref (int ,int) ;
+ void* mfree (void*) ;
+ int sd_event_source_unref (int ) ;
+ int set_free (int ) ;
+ TYPE_1__* set_steal_first (int ) ;
+ int socket_free_ports (TYPE_2__*) ;
+ int socket_unwatch_control_pid (TYPE_2__*) ;
+ int strv_free (int ) ;
+ int unit_ref_unset (int *) ;
 
 __attribute__((used)) static void socket_done(Unit *u) {
         Socket *s = SOCKET(u);
@@ -43,13 +43,13 @@ __attribute__((used)) static void socket_done(Unit *u) {
         socket_free_ports(s);
 
         while ((p = set_steal_first(s->peers_by_address)))
-                p->socket = NULL;
+                p->socket = ((void*)0);
 
         s->peers_by_address = set_free(s->peers_by_address);
 
-        s->exec_runtime = exec_runtime_unref(s->exec_runtime, false);
+        s->exec_runtime = exec_runtime_unref(s->exec_runtime, 0);
         exec_command_free_array(s->exec_command, _SOCKET_EXEC_COMMAND_MAX);
-        s->control_command = NULL;
+        s->control_command = ((void*)0);
 
         dynamic_creds_unref(&s->dynamic_creds);
 

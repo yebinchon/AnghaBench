@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct switch_val {int dummy; } ;
 struct switch_dev {int dummy; } ;
 struct switch_attr {int dummy; } ;
-struct ar8xxx_priv {int /*<<< orphan*/  reg_mutex; TYPE_1__* chip; } ;
+struct ar8xxx_priv {int reg_mutex; TYPE_1__* chip; } ;
 struct TYPE_2__ {int (* atu_flush ) (struct ar8xxx_priv*) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
- int stub1 (struct ar8xxx_priv*) ; 
- struct ar8xxx_priv* swdev_to_ar8xxx (struct switch_dev*) ; 
+
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
+ int stub1 (struct ar8xxx_priv*) ;
+ struct ar8xxx_priv* swdev_to_ar8xxx (struct switch_dev*) ;
 
 int
 ar8xxx_sw_set_flush_arl_table(struct switch_dev *dev,
-			      const struct switch_attr *attr,
-			      struct switch_val *val)
+         const struct switch_attr *attr,
+         struct switch_val *val)
 {
-	struct ar8xxx_priv *priv = swdev_to_ar8xxx(dev);
-	int ret;
+ struct ar8xxx_priv *priv = swdev_to_ar8xxx(dev);
+ int ret;
 
-	mutex_lock(&priv->reg_mutex);
-	ret = priv->chip->atu_flush(priv);
-	mutex_unlock(&priv->reg_mutex);
+ mutex_lock(&priv->reg_mutex);
+ ret = priv->chip->atu_flush(priv);
+ mutex_unlock(&priv->reg_mutex);
 
-	return ret;
+ return ret;
 }

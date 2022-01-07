@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  path; } ;
-typedef  TYPE_1__ git_index_entry ;
 
-/* Variables and functions */
- int strcmp (char const*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int path; } ;
+typedef TYPE_1__ git_index_entry ;
+
+
+ int strcmp (char const*,int ) ;
 
 __attribute__((used)) static int index_entry_srch_path(const void *path, const void *array_member)
 {
-	const git_index_entry *entry = array_member;
+ const git_index_entry *entry = array_member;
 
-	return strcmp((const char *)path, entry->path);
+ return strcmp((const char *)path, entry->path);
 }

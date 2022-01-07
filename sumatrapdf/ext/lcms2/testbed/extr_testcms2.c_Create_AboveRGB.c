@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  cmsToneCurve ;
-typedef  int /*<<< orphan*/  cmsHPROFILE ;
+
+
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int cmsToneCurve ;
+typedef int cmsHPROFILE ;
 struct TYPE_8__ {double member_0; double member_1; int member_2; } ;
 struct TYPE_7__ {double member_0; double member_1; int member_2; } ;
 struct TYPE_6__ {double member_0; double member_1; int member_2; } ;
 struct TYPE_9__ {TYPE_3__ member_2; TYPE_2__ member_1; TYPE_1__ member_0; } ;
-typedef  TYPE_4__ cmsCIExyYTRIPLE ;
-typedef  int /*<<< orphan*/  cmsCIExyY ;
+typedef TYPE_4__ cmsCIExyYTRIPLE ;
+typedef int cmsCIExyY ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DbgThread () ; 
- int /*<<< orphan*/ * cmsBuildGamma (int /*<<< orphan*/ ,double) ; 
- int /*<<< orphan*/  cmsCreateRGBProfile (int /*<<< orphan*/ ,int /*<<< orphan*/ *,TYPE_4__*,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  cmsFreeToneCurve (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cmsWhitePointFromTemp (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
+
+ int DbgThread () ;
+ int * cmsBuildGamma (int ,double) ;
+ int cmsCreateRGBProfile (int ,int *,TYPE_4__*,int **) ;
+ int cmsFreeToneCurve (int ,int *) ;
+ int cmsWhitePointFromTemp (int ,int *,int) ;
 
 __attribute__((used)) static
 cmsHPROFILE Create_AboveRGB(void)

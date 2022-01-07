@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int sqlite3_int64 ;
-typedef  int /*<<< orphan*/  i64 ;
+
+
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int sqlite3_int64 ;
+typedef int i64 ;
 struct TYPE_10__ {int nCol; scalar_t__ eContent; scalar_t__ bColumnsize; } ;
-struct TYPE_9__ {int /*<<< orphan*/ * pIndex; TYPE_2__* pConfig; int /*<<< orphan*/ * aTotalSize; } ;
-typedef  TYPE_1__ Fts5Storage ;
-typedef  int /*<<< orphan*/  Fts5Index ;
-typedef  TYPE_2__ Fts5Config ;
+struct TYPE_9__ {int * pIndex; TYPE_2__* pConfig; int * aTotalSize; } ;
+typedef TYPE_1__ Fts5Storage ;
+typedef int Fts5Index ;
+typedef TYPE_2__ Fts5Config ;
 
-/* Variables and functions */
- scalar_t__ FTS5_CONTENT_NORMAL ; 
- int /*<<< orphan*/  FTS5_CURRENT_VERSION ; 
- int SQLITE_NOMEM ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,size_t) ; 
- int sqlite3Fts5CreateTable (TYPE_2__*,char*,char*,int,char**) ; 
- int /*<<< orphan*/  sqlite3Fts5StorageClose (TYPE_1__*) ; 
- int sqlite3Fts5StorageConfigValue (TYPE_1__*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_free (char*) ; 
- char* sqlite3_malloc64 (int) ; 
- int /*<<< orphan*/  sqlite3_snprintf (int,char*,char*,...) ; 
- scalar_t__ strlen (char*) ; 
+
+ scalar_t__ FTS5_CONTENT_NORMAL ;
+ int FTS5_CURRENT_VERSION ;
+ int SQLITE_NOMEM ;
+ int SQLITE_OK ;
+ int memset (TYPE_1__*,int ,size_t) ;
+ int sqlite3Fts5CreateTable (TYPE_2__*,char*,char*,int,char**) ;
+ int sqlite3Fts5StorageClose (TYPE_1__*) ;
+ int sqlite3Fts5StorageConfigValue (TYPE_1__*,char*,int ,int ) ;
+ int sqlite3_free (char*) ;
+ char* sqlite3_malloc64 (int) ;
+ int sqlite3_snprintf (int,char*,char*,...) ;
+ scalar_t__ strlen (char*) ;
 
 int sqlite3Fts5StorageOpen(
-  Fts5Config *pConfig, 
-  Fts5Index *pIndex, 
-  int bCreate, 
+  Fts5Config *pConfig,
+  Fts5Index *pIndex,
+  int bCreate,
   Fts5Storage **pp,
-  char **pzErr                    /* OUT: Error message */
+  char **pzErr
 ){
   int rc = SQLITE_OK;
-  Fts5Storage *p;                 /* New object */
-  sqlite3_int64 nByte;            /* Bytes of space to allocate */
+  Fts5Storage *p;
+  sqlite3_int64 nByte;
 
-  nByte = sizeof(Fts5Storage)               /* Fts5Storage object */
-        + pConfig->nCol * sizeof(i64);      /* Fts5Storage.aTotalSize[] */
+  nByte = sizeof(Fts5Storage)
+        + pConfig->nCol * sizeof(i64);
   *pp = p = (Fts5Storage*)sqlite3_malloc64(nByte);
   if( !p ) return SQLITE_NOMEM;
 

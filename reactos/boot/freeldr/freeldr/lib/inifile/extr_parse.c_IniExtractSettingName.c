@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VOID ;
-typedef  size_t ULONG ;
-typedef  char* PCHAR ;
 
-/* Variables and functions */
+
+
+
+typedef int VOID ;
+typedef size_t ULONG ;
+typedef char* PCHAR ;
+
+
 
 VOID IniExtractSettingName(PCHAR SettingName, PCHAR SettingNameLine, ULONG LineLength)
 {
-    ULONG        Idx;
-    ULONG        DestIdx;
+    ULONG Idx;
+    ULONG DestIdx;
 
-    // Skip whitespace
+
     for (Idx=0; Idx<LineLength; Idx++)
     {
         if ((SettingNameLine[Idx] == ' ') ||
@@ -35,7 +35,7 @@ VOID IniExtractSettingName(PCHAR SettingName, PCHAR SettingNameLine, ULONG LineL
         }
     }
 
-    // Get the characters up until the '=' equals sign or EOL
+
     for (DestIdx=0; Idx<LineLength; Idx++)
     {
         if ((SettingNameLine[Idx] == '=') ||
@@ -44,11 +44,11 @@ VOID IniExtractSettingName(PCHAR SettingName, PCHAR SettingNameLine, ULONG LineL
             break;
         }
 
-        // Grab a character and increment DestIdx
+
         SettingName[DestIdx] = SettingNameLine[Idx];
         DestIdx++;
     }
 
-    // Terminate the string
+
     SettingName[DestIdx] = '\0';
 }

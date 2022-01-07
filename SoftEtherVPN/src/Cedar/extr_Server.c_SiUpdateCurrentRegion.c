@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  Server; int /*<<< orphan*/  CurrentRegionLock; int /*<<< orphan*/  CurrentRegion; } ;
-typedef  TYPE_1__ CEDAR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FlushServerCaps (int /*<<< orphan*/ ) ; 
- int IsEmptyStr (char*) ; 
- int /*<<< orphan*/  Lock (int /*<<< orphan*/ ) ; 
- scalar_t__ StrCmpi (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  StrCpy (int /*<<< orphan*/ ,int,char*) ; 
- int /*<<< orphan*/  Unlock (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int Server; int CurrentRegionLock; int CurrentRegion; } ;
+typedef TYPE_1__ CEDAR ;
+
+
+ int FlushServerCaps (int ) ;
+ int IsEmptyStr (char*) ;
+ int Lock (int ) ;
+ scalar_t__ StrCmpi (int ,char*) ;
+ int StrCpy (int ,int,char*) ;
+ int Unlock (int ) ;
 
 void SiUpdateCurrentRegion(CEDAR *c, char *region, bool force_update)
 {
-	bool changed = false;
-	// Validate arguments
-	if (c == NULL)
-	{
-		return;
-	}
+ bool changed = 0;
 
-	if (IsEmptyStr(region) == false)
-	{
-		Lock(c->CurrentRegionLock);
-		{
-			if (StrCmpi(c->CurrentRegion, region) != 0)
-			{
-				StrCpy(c->CurrentRegion, sizeof(c->CurrentRegion), region);
-				changed = true;
-			}
-		}
-		Unlock(c->CurrentRegionLock);
-	}
+ if (c == ((void*)0))
+ {
+  return;
+ }
 
-	if (force_update)
-	{
-		changed = true;
-	}
+ if (IsEmptyStr(region) == 0)
+ {
+  Lock(c->CurrentRegionLock);
+  {
+   if (StrCmpi(c->CurrentRegion, region) != 0)
+   {
+    StrCpy(c->CurrentRegion, sizeof(c->CurrentRegion), region);
+    changed = 1;
+   }
+  }
+  Unlock(c->CurrentRegionLock);
+ }
 
-	if (changed)
-	{
-		FlushServerCaps(c->Server);
-	}
+ if (force_update)
+ {
+  changed = 1;
+ }
+
+ if (changed)
+ {
+  FlushServerCaps(c->Server);
+ }
 }

@@ -1,37 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- unsigned int FIVE_BYTE ; 
- unsigned int FOUR_BYTE ; 
- unsigned int THREE_BYTE ; 
- unsigned int TWO_BYTE ; 
+ unsigned int FIVE_BYTE ;
+ unsigned int FOUR_BYTE ;
+ unsigned int THREE_BYTE ;
+ unsigned int TWO_BYTE ;
 
 __attribute__((used)) static unsigned
 id_prefix_count(unsigned id)
 {
-#define TWO_BYTE       ((unsigned long long)(~0)<<7)
-#define THREE_BYTE     ((unsigned long long)(~0)<<14)
-#define FOUR_BYTE      ((unsigned long long)(~0)<<21)
-#define FIVE_BYTE      ((unsigned long long)(~0)<<28)
-    
-    if (id & FIVE_BYTE)
+
+
+
+
+
+    if (id & ((unsigned long long)(~0)<<28))
         return 4;
-    if (id & FOUR_BYTE)
+    if (id & ((unsigned long long)(~0)<<21))
         return 3;
-    if (id & THREE_BYTE)
+    if (id & ((unsigned long long)(~0)<<14))
         return 2;
-    if (id & TWO_BYTE)
+    if (id & ((unsigned long long)(~0)<<7))
         return 1;
     return 0;
 }

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  time_steps; int /*<<< orphan*/  c; int /*<<< orphan*/  h; int /*<<< orphan*/  w; int /*<<< orphan*/  batch; } ;
-typedef  TYPE_1__ size_params ;
-typedef  int /*<<< orphan*/  list ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int time_steps; int c; int h; int w; int batch; } ;
+typedef TYPE_1__ size_params ;
+typedef int list ;
 struct TYPE_7__ {void* shortcut; } ;
-typedef  TYPE_2__ layer ;
-typedef  int /*<<< orphan*/  ACTIVATION ;
+typedef TYPE_2__ layer ;
+typedef int ACTIVATION ;
 
-/* Variables and functions */
- int /*<<< orphan*/  get_activation (char*) ; 
- TYPE_2__ make_crnn_layer (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int option_find_int (int /*<<< orphan*/ *,char*,int) ; 
- void* option_find_int_quiet (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- char* option_find_str (int /*<<< orphan*/ *,char*,char*) ; 
+
+ int get_activation (char*) ;
+ TYPE_2__ make_crnn_layer (int ,int ,int ,int ,int,int,int ,int ,int) ;
+ int option_find_int (int *,char*,int) ;
+ void* option_find_int_quiet (int *,char*,int ) ;
+ char* option_find_str (int *,char*,char*) ;
 
 layer parse_crnn(list *options, size_params params)
 {

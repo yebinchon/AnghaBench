@@ -1,234 +1,173 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  enum tree_code { ____Placeholder_tree_code } tree_code ;
 
-/* Variables and functions */
-#define  ADDR_EXPR 185 
-#define  ALIGN_INDIRECT_REF 184 
-#define  BIT_AND_EXPR 183 
-#define  BIT_IOR_EXPR 182 
-#define  BIT_NOT_EXPR 181 
-#define  BIT_XOR_EXPR 180 
-#define  CEIL_DIV_EXPR 179 
-#define  CEIL_MOD_EXPR 178 
-#define  EQ_EXPR 177 
-#define  EXACT_DIV_EXPR 176 
-#define  FLOOR_DIV_EXPR 175 
-#define  FLOOR_MOD_EXPR 174 
-#define  GE_EXPR 173 
-#define  GT_EXPR 172 
-#define  INDIRECT_REF 171 
-#define  LE_EXPR 170 
-#define  LROTATE_EXPR 169 
-#define  LSHIFT_EXPR 168 
-#define  LTGT_EXPR 167 
-#define  LT_EXPR 166 
-#define  MAX_EXPR 165 
-#define  MINUS_EXPR 164 
-#define  MIN_EXPR 163 
-#define  MISALIGNED_INDIRECT_REF 162 
-#define  MODIFY_EXPR 161 
-#define  MULT_EXPR 160 
-#define  NEGATE_EXPR 159 
-#define  NE_EXPR 158 
-#define  ORDERED_EXPR 157 
-#define  PLUS_EXPR 156 
-#define  POSTDECREMENT_EXPR 155 
-#define  POSTINCREMENT_EXPR 154 
-#define  PREDECREMENT_EXPR 153 
-#define  PREINCREMENT_EXPR 152 
-#define  RDIV_EXPR 151 
-#define  REDUC_PLUS_EXPR 150 
-#define  ROUND_DIV_EXPR 149 
-#define  ROUND_MOD_EXPR 148 
-#define  RROTATE_EXPR 147 
-#define  RSHIFT_EXPR 146 
-#define  TRUNC_DIV_EXPR 145 
-#define  TRUNC_MOD_EXPR 144 
-#define  TRUTH_ANDIF_EXPR 143 
-#define  TRUTH_AND_EXPR 142 
-#define  TRUTH_NOT_EXPR 141 
-#define  TRUTH_ORIF_EXPR 140 
-#define  TRUTH_OR_EXPR 139 
-#define  TRUTH_XOR_EXPR 138 
-#define  UNEQ_EXPR 137 
-#define  UNGE_EXPR 136 
-#define  UNGT_EXPR 135 
-#define  UNLE_EXPR 134 
-#define  UNLT_EXPR 133 
-#define  UNORDERED_EXPR 132 
-#define  VEC_LSHIFT_EXPR 131 
-#define  VEC_RSHIFT_EXPR 130 
-#define  WIDEN_MULT_EXPR 129 
-#define  WIDEN_SUM_EXPR 128 
 
+
+
+typedef enum tree_code { ____Placeholder_tree_code } tree_code ;
 __attribute__((used)) static const char *
 op_symbol_1 (enum tree_code code)
 {
   switch (code)
     {
-    case MODIFY_EXPR:
+    case 161:
       return "=";
 
-    case TRUTH_OR_EXPR:
-    case TRUTH_ORIF_EXPR:
+    case 139:
+    case 140:
       return "||";
 
-    case TRUTH_AND_EXPR:
-    case TRUTH_ANDIF_EXPR:
+    case 142:
+    case 143:
       return "&&";
 
-    case BIT_IOR_EXPR:
+    case 182:
       return "|";
 
-    case TRUTH_XOR_EXPR:
-    case BIT_XOR_EXPR:
+    case 138:
+    case 180:
       return "^";
 
-    case ADDR_EXPR:
-    case BIT_AND_EXPR:
+    case 185:
+    case 183:
       return "&";
 
-    case ORDERED_EXPR:
+    case 157:
       return "ord";
-    case UNORDERED_EXPR:
+    case 132:
       return "unord";
 
-    case EQ_EXPR:
+    case 177:
       return "==";
-    case UNEQ_EXPR:
+    case 137:
       return "u==";
 
-    case NE_EXPR:
+    case 158:
       return "!=";
 
-    case LT_EXPR:
+    case 166:
       return "<";
-    case UNLT_EXPR:
+    case 133:
       return "u<";
 
-    case LE_EXPR:
+    case 170:
       return "<=";
-    case UNLE_EXPR:
+    case 134:
       return "u<=";
 
-    case GT_EXPR:
+    case 172:
       return ">";
-    case UNGT_EXPR:
+    case 135:
       return "u>";
 
-    case GE_EXPR:
+    case 173:
       return ">=";
-    case UNGE_EXPR:
+    case 136:
       return "u>=";
 
-    case LTGT_EXPR:
+    case 167:
       return "<>";
 
-    case LSHIFT_EXPR:
+    case 168:
       return "<<";
 
-    case RSHIFT_EXPR:
+    case 146:
       return ">>";
 
-    case LROTATE_EXPR:
+    case 169:
       return "r<<";
 
-    case RROTATE_EXPR:
+    case 147:
       return "r>>";
 
-    case VEC_LSHIFT_EXPR:
+    case 131:
       return "v<<";
 
-    case VEC_RSHIFT_EXPR:
+    case 130:
       return "v>>";
- 
-    case PLUS_EXPR:
+
+    case 156:
       return "+";
 
-    case REDUC_PLUS_EXPR:
+    case 150:
       return "r+";
 
-    case WIDEN_SUM_EXPR:
+    case 128:
       return "w+";
 
-    case WIDEN_MULT_EXPR:
+    case 129:
       return "w*";
 
-    case NEGATE_EXPR:
-    case MINUS_EXPR:
+    case 159:
+    case 164:
       return "-";
 
-    case BIT_NOT_EXPR:
+    case 181:
       return "~";
 
-    case TRUTH_NOT_EXPR:
+    case 141:
       return "!";
 
-    case MULT_EXPR:
-    case INDIRECT_REF:
+    case 160:
+    case 171:
       return "*";
 
-    case ALIGN_INDIRECT_REF:
+    case 184:
       return "A*";
 
-    case MISALIGNED_INDIRECT_REF:
+    case 162:
       return "M*";
 
-    case TRUNC_DIV_EXPR:
-    case RDIV_EXPR:
+    case 145:
+    case 151:
       return "/";
 
-    case CEIL_DIV_EXPR:
+    case 179:
       return "/[cl]";
 
-    case FLOOR_DIV_EXPR:
+    case 175:
       return "/[fl]";
 
-    case ROUND_DIV_EXPR:
+    case 149:
       return "/[rd]";
 
-    case EXACT_DIV_EXPR:
+    case 176:
       return "/[ex]";
 
-    case TRUNC_MOD_EXPR:
+    case 144:
       return "%";
 
-    case CEIL_MOD_EXPR:
+    case 178:
       return "%[cl]";
 
-    case FLOOR_MOD_EXPR:
+    case 174:
       return "%[fl]";
 
-    case ROUND_MOD_EXPR:
+    case 148:
       return "%[rd]";
 
-    case PREDECREMENT_EXPR:
+    case 153:
       return " --";
 
-    case PREINCREMENT_EXPR:
+    case 152:
       return " ++";
 
-    case POSTDECREMENT_EXPR:
+    case 155:
       return "-- ";
 
-    case POSTINCREMENT_EXPR:
+    case 154:
       return "++ ";
 
-    case MAX_EXPR:
+    case 165:
       return "max";
 
-    case MIN_EXPR:
+    case 163:
       return "min";
 
     default:

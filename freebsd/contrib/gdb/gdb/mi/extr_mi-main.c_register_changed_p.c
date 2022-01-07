@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- size_t DEPRECATED_REGISTER_BYTE (int) ; 
- int /*<<< orphan*/  DEPRECATED_REGISTER_RAW_SIZE (int) ; 
- int MAX_REGISTER_SIZE ; 
- int /*<<< orphan*/  deprecated_selected_frame ; 
- int /*<<< orphan*/  frame_register_read (int /*<<< orphan*/ ,int,char*) ; 
- scalar_t__ memcmp (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * old_regs ; 
+ size_t DEPRECATED_REGISTER_BYTE (int) ;
+ int DEPRECATED_REGISTER_RAW_SIZE (int) ;
+ int MAX_REGISTER_SIZE ;
+ int deprecated_selected_frame ;
+ int frame_register_read (int ,int,char*) ;
+ scalar_t__ memcmp (int *,char*,int ) ;
+ int memcpy (int *,char*,int ) ;
+ int * old_regs ;
 
 __attribute__((used)) static int
 register_changed_p (int regnum)
@@ -30,13 +22,13 @@ register_changed_p (int regnum)
     return -1;
 
   if (memcmp (&old_regs[DEPRECATED_REGISTER_BYTE (regnum)], raw_buffer,
-	      DEPRECATED_REGISTER_RAW_SIZE (regnum)) == 0)
+       DEPRECATED_REGISTER_RAW_SIZE (regnum)) == 0)
     return 0;
 
-  /* Found a changed register. Return 1. */
+
 
   memcpy (&old_regs[DEPRECATED_REGISTER_BYTE (regnum)], raw_buffer,
-	  DEPRECATED_REGISTER_RAW_SIZE (regnum));
+   DEPRECATED_REGISTER_RAW_SIZE (regnum));
 
   return 1;
 }

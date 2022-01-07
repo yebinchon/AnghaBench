@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  key_size; int /*<<< orphan*/  (* hash_function ) (void const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;} ;
-struct TYPE_5__ {int /*<<< orphan*/  arg; TYPE_1__ params; } ;
-typedef  TYPE_2__ dshash_table ;
-typedef  int /*<<< orphan*/  dshash_hash ;
 
-/* Variables and functions */
- int /*<<< orphan*/  stub1 (void const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int key_size; int (* hash_function ) (void const*,int ,int ) ;} ;
+struct TYPE_5__ {int arg; TYPE_1__ params; } ;
+typedef TYPE_2__ dshash_table ;
+typedef int dshash_hash ;
+
+
+ int stub1 (void const*,int ,int ) ;
 
 __attribute__((used)) static inline dshash_hash
 hash_key(dshash_table *hash_table, const void *key)
 {
-	return hash_table->params.hash_function(key,
-											hash_table->params.key_size,
-											hash_table->arg);
+ return hash_table->params.hash_function(key,
+           hash_table->params.key_size,
+           hash_table->arg);
 }

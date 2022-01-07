@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  pte_osResult ;
-typedef  int /*<<< orphan*/  pte_osMutexHandle ;
-typedef  int /*<<< orphan*/  mutexName ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MAX_PSP_UID ; 
- int /*<<< orphan*/  PTE_OS_OK ; 
- int /*<<< orphan*/  sceKernelCreateSema (char*,int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,int) ; 
+
+
+
+typedef int pte_osResult ;
+typedef int pte_osMutexHandle ;
+typedef int mutexName ;
+
+
+ int MAX_PSP_UID ;
+ int PTE_OS_OK ;
+ int sceKernelCreateSema (char*,int ,int,int,int ) ;
+ int snprintf (char*,int,char*,int) ;
 
 pte_osResult pte_osMutexCreate(pte_osMutexHandle *pHandle)
 {
@@ -32,10 +32,10 @@ pte_osResult pte_osMutexCreate(pte_osMutexHandle *pHandle)
    snprintf(mutexName,sizeof(mutexName),"mutex%d",mutexCtr);
 
    handle = sceKernelCreateSema(mutexName,
-         0,          /* attributes (default) */
-         1,          /* initial value        */
-         1,          /* maximum value        */
-         0);         /* options (default)    */
+         0,
+         1,
+         1,
+         0);
 
    *pHandle = handle;
 

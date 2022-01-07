@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct md5_ctx {int /*<<< orphan*/  D; int /*<<< orphan*/  C; int /*<<< orphan*/  B; int /*<<< orphan*/  A; } ;
-typedef  int /*<<< orphan*/  md5_uint32 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SWAP (int /*<<< orphan*/ ) ; 
+
+
+
+struct md5_ctx {int D; int C; int B; int A; } ;
+typedef int md5_uint32 ;
+
+
+ int SWAP (int ) ;
 
 void *
 md5_read_ctx (const struct md5_ctx *ctx, void *resbuf)

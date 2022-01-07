@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct shader_func {char* return_type; char* name; int /*<<< orphan*/ * end; int /*<<< orphan*/ * start; int /*<<< orphan*/ * mapping; int /*<<< orphan*/  params; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  da_init (int /*<<< orphan*/ ) ; 
+
+
+
+struct shader_func {char* return_type; char* name; int * end; int * start; int * mapping; int params; } ;
+
+
+ int da_init (int ) ;
 
 __attribute__((used)) static inline void shader_func_init(struct shader_func *sf, char *return_type,
-				    char *name)
+        char *name)
 {
-	da_init(sf->params);
+ da_init(sf->params);
 
-	sf->return_type = return_type;
-	sf->mapping = NULL;
-	sf->name = name;
-	sf->start = NULL;
-	sf->end = NULL;
+ sf->return_type = return_type;
+ sf->mapping = ((void*)0);
+ sf->name = name;
+ sf->start = ((void*)0);
+ sf->end = ((void*)0);
 }

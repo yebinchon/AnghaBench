@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-struct TYPE_3__ {scalar_t__ flags; int /*<<< orphan*/  const* lpattr; int /*<<< orphan*/  type; } ;
-typedef  int /*<<< orphan*/  TAG ;
-typedef  TYPE_1__* PATTRINFO ;
-typedef  size_t DWORD ;
 
-/* Variables and functions */
- scalar_t__ ATTRIBUTE_AVAILABLE ; 
- size_t find_tag (int /*<<< orphan*/ ) ; 
- scalar_t__ wcscmp (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  wine_dbgstr_w (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  winetest_ok (int,char*,size_t,scalar_t__,...) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
+struct TYPE_3__ {scalar_t__ flags; int const* lpattr; int type; } ;
+typedef int TAG ;
+typedef TYPE_1__* PATTRINFO ;
+typedef size_t DWORD ;
+
+
+ scalar_t__ ATTRIBUTE_AVAILABLE ;
+ size_t find_tag (int ) ;
+ scalar_t__ wcscmp (int const*,int const*) ;
+ int wine_dbgstr_w (int const*) ;
+ int winetest_ok (int,char*,size_t,scalar_t__,...) ;
 
 __attribute__((used)) static void expect_tag_str_imp(PATTRINFO pattr, TAG tag, const WCHAR* value)
 {

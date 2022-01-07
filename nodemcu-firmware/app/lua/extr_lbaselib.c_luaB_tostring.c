@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
-#define  LUA_TBOOLEAN 131 
-#define  LUA_TNIL 130 
-#define  LUA_TNUMBER 129 
-#define  LUA_TSTRING 128 
- scalar_t__ luaL_callmeta (int /*<<< orphan*/ *,int,char*) ; 
- int /*<<< orphan*/  luaL_checkany (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  luaL_typename (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pushfstring (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_pushliteral (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  lua_pushstring (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  lua_pushvalue (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_toboolean (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_topointer (int /*<<< orphan*/ *,int) ; 
- char* lua_tostring (int /*<<< orphan*/ *,int) ; 
- int lua_type (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int lua_State ;
+
+
+
+
+
+
+ scalar_t__ luaL_callmeta (int *,int,char*) ;
+ int luaL_checkany (int *,int) ;
+ int luaL_typename (int *,int) ;
+ int lua_pushfstring (int *,char*,int ,int ) ;
+ int lua_pushliteral (int *,char*) ;
+ int lua_pushstring (int *,char*) ;
+ int lua_pushvalue (int *,int) ;
+ int lua_toboolean (int *,int) ;
+ int lua_topointer (int *,int) ;
+ char* lua_tostring (int *,int) ;
+ int lua_type (int *,int) ;
 
 __attribute__((used)) static int luaB_tostring (lua_State *L) {
   luaL_checkany(L, 1);
-  if (luaL_callmeta(L, 1, "__tostring"))  /* is there a metafield? */
-    return 1;  /* use its value */
+  if (luaL_callmeta(L, 1, "__tostring"))
+    return 1;
   switch (lua_type(L, 1)) {
-    case LUA_TNUMBER:
+    case 129:
       lua_pushstring(L, lua_tostring(L, 1));
       break;
-    case LUA_TSTRING:
+    case 128:
       lua_pushvalue(L, 1);
       break;
-    case LUA_TBOOLEAN:
+    case 131:
       lua_pushstring(L, (lua_toboolean(L, 1) ? "true" : "false"));
       break;
-    case LUA_TNIL:
+    case 130:
       lua_pushliteral(L, "nil");
       break;
     default:

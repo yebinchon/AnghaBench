@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * tree ;
-typedef  enum tree_code_class { ____Placeholder_tree_code_class } tree_code_class ;
-typedef  enum tree_code { ____Placeholder_tree_code } tree_code ;
 
-/* Variables and functions */
- int IDENTIFIER_NODE ; 
- int /*<<< orphan*/ * I_TAG_DECL (int /*<<< orphan*/ *) ; 
- scalar_t__ RECORD_TYPE ; 
- scalar_t__ TREE_CODE (int /*<<< orphan*/ *) ; 
- int TREE_CODE_CLASS (int) ; 
- int tcc_exceptional ; 
+
+
+
+typedef int * tree ;
+typedef enum tree_code_class { ____Placeholder_tree_code_class } tree_code_class ;
+typedef enum tree_code { ____Placeholder_tree_code } tree_code ;
+
+
+ int IDENTIFIER_NODE ;
+ int * I_TAG_DECL (int *) ;
+ scalar_t__ RECORD_TYPE ;
+ scalar_t__ TREE_CODE (int *) ;
+ int TREE_CODE_CLASS (int) ;
+ int tcc_exceptional ;
 
 tree
 c_return_interface_record_type (tree typename)
 {
   enum tree_code_class class;
   enum tree_code code;
-  tree retval = NULL;
+  tree retval = ((void*)0);
 
-  if (typename == NULL)
+  if (typename == ((void*)0))
     return retval;
 
   code = TREE_CODE (typename);
@@ -42,7 +42,7 @@ c_return_interface_record_type (tree typename)
   retval = I_TAG_DECL (typename);
 
   if (TREE_CODE (retval) != RECORD_TYPE)
-    retval = NULL;
+    retval = ((void*)0);
 
   return retval;
 }

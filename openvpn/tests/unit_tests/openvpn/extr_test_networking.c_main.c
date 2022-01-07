@@ -1,30 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int atoi (char*) ; 
- char* iface ; 
- int net__addr_v4_add (char*,int) ; 
- int net__addr_v6_add (char*,int) ; 
- int net__iface_mtu_set (int) ; 
- int net__iface_up (int) ; 
- int net__route_v4_add (char*,int,int /*<<< orphan*/ ) ; 
- int net__route_v4_add_gw (char*,int,char*,int /*<<< orphan*/ ) ; 
- int net__route_v6_add (char*,int,int) ; 
- int net__route_v6_add_gw (char*,int,char*,int) ; 
- int /*<<< orphan*/  printf (char*,int) ; 
- scalar_t__ strcmp (char*,char*) ; 
- int /*<<< orphan*/  usage (char*) ; 
+ int atoi (char*) ;
+ char* iface ;
+ int net__addr_v4_add (char*,int) ;
+ int net__addr_v6_add (char*,int) ;
+ int net__iface_mtu_set (int) ;
+ int net__iface_up (int) ;
+ int net__route_v4_add (char*,int,int ) ;
+ int net__route_v4_add_gw (char*,int,char*,int ) ;
+ int net__route_v6_add (char*,int,int) ;
+ int net__route_v6_add_gw (char*,int,char*,int) ;
+ int printf (char*,int) ;
+ scalar_t__ strcmp (char*,char*) ;
+ int usage (char*) ;
 
 int
 main(int argc, char *argv[])
@@ -37,7 +29,7 @@ main(int argc, char *argv[])
         return -1;
     }
 
-    /* the t_net script can use this command to perform a dry-run test */
+
     if (strcmp(argv[1], "test") == 0)
     {
         return 0;
@@ -52,7 +44,7 @@ main(int argc, char *argv[])
     switch (test)
     {
         case 0:
-            return net__iface_up(true);
+            return net__iface_up(1);
         case 1:
             return net__iface_mtu_set(1281);
         case 2:

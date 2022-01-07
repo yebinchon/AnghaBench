@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int sqlite3_int64 ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int sqlite3_int64 ;
 struct TYPE_2__ {int bRaw; unsigned char pagesize; int mxPage; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ISDIGIT (char) ; 
- int /*<<< orphan*/  decode_btree_page (unsigned char*,int,int,char*) ; 
- int /*<<< orphan*/  decode_trunk_page (int,int,int) ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fileClose () ; 
- int fileGetsize () ; 
- int /*<<< orphan*/  fileOpen (char const*,char*) ; 
- unsigned char* fileRead (int,int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- TYPE_1__ g ; 
- int /*<<< orphan*/  page_usage_report (char const*,char*) ; 
- int /*<<< orphan*/  print_db_header () ; 
- int /*<<< orphan*/  print_page (int) ; 
- int /*<<< orphan*/  printf (char*,int) ; 
- int /*<<< orphan*/  ptrmap_coverage_report (char*) ; 
- int /*<<< orphan*/  sqlite3_free (unsigned char*) ; 
- scalar_t__ sqlite3_stricmp (char*,char*) ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ strcmp (char*,char*) ; 
- int strtol (char*,char**,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  usage (char const*) ; 
+
+ int ISDIGIT (char) ;
+ int decode_btree_page (unsigned char*,int,int,char*) ;
+ int decode_trunk_page (int,int,int) ;
+ int exit (int) ;
+ int fileClose () ;
+ int fileGetsize () ;
+ int fileOpen (char const*,char*) ;
+ unsigned char* fileRead (int,int) ;
+ int fprintf (int ,char*,...) ;
+ TYPE_1__ g ;
+ int page_usage_report (char const*,char*) ;
+ int print_db_header () ;
+ int print_page (int) ;
+ int printf (char*,int) ;
+ int ptrmap_coverage_report (char*) ;
+ int sqlite3_free (unsigned char*) ;
+ scalar_t__ sqlite3_stricmp (char*,char*) ;
+ int stderr ;
+ scalar_t__ strcmp (char*,char*) ;
+ int strtol (char*,char**,int ) ;
+ int usage (char const*) ;
 
 int main(int argc, char **argv){
   sqlite3_int64 szFile;
   unsigned char *zPgSz;
-  const char *zPrg = argv[0];     /* Name of this executable */
+  const char *zPrg = argv[0];
   char **azArg = argv;
   int nArg = argc;
 
-  /* Check for the "--uri" or "-uri" switch. */
+
   if( nArg>1 ){
-    if( sqlite3_stricmp("-raw", azArg[1])==0 
+    if( sqlite3_stricmp("-raw", azArg[1])==0
      || sqlite3_stricmp("--raw", azArg[1])==0
     ){
       g.bRaw = 1;

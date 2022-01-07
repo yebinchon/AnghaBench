@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct pmcraid_instance {int num_hrrq; int /*<<< orphan*/ * hrrq_vector; int /*<<< orphan*/ * isr_tasklet; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  pmcraid_tasklet_function ; 
- int /*<<< orphan*/  tasklet_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ,unsigned long) ; 
+
+
+
+struct pmcraid_instance {int num_hrrq; int * hrrq_vector; int * isr_tasklet; } ;
+
+
+ int pmcraid_tasklet_function ;
+ int tasklet_init (int *,int ,unsigned long) ;
 
 __attribute__((used)) static void pmcraid_init_tasklets(struct pmcraid_instance *pinstance)
 {
-	int i;
-	for (i = 0; i < pinstance->num_hrrq; i++)
-		tasklet_init(&pinstance->isr_tasklet[i],
-			     pmcraid_tasklet_function,
-			     (unsigned long)&pinstance->hrrq_vector[i]);
+ int i;
+ for (i = 0; i < pinstance->num_hrrq; i++)
+  tasklet_init(&pinstance->isr_tasklet[i],
+        pmcraid_tasklet_function,
+        (unsigned long)&pinstance->hrrq_vector[i]);
 }

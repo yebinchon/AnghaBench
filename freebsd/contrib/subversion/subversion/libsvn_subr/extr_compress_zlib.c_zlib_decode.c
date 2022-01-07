@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int len; scalar_t__* data; } ;
-typedef  TYPE_1__ svn_stringbuf_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int apr_uint64_t ;
-typedef  int apr_size_t ;
+typedef TYPE_1__ svn_stringbuf_t ;
+typedef int svn_error_t ;
+typedef int apr_uint64_t ;
+typedef int apr_size_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR_SVNDIFF_INVALID_COMPRESSED_DATA ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int Z_OK ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  memcpy (scalar_t__*,unsigned char const*,int) ; 
- unsigned char* svn__decode_uint (int*,unsigned char const*,unsigned char const*) ; 
- int /*<<< orphan*/  svn_error__wrap_zlib (int,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * svn_error_create (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * svn_error_trace (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_stringbuf_ensure (TYPE_1__*,int) ; 
- int uncompress (unsigned char*,unsigned long*,unsigned char const*,int) ; 
+
+ int SVN_ERR_SVNDIFF_INVALID_COMPRESSED_DATA ;
+ int * SVN_NO_ERROR ;
+ int Z_OK ;
+ int _ (char*) ;
+ int memcpy (scalar_t__*,unsigned char const*,int) ;
+ unsigned char* svn__decode_uint (int*,unsigned char const*,unsigned char const*) ;
+ int svn_error__wrap_zlib (int,char*,int ) ;
+ int * svn_error_create (int ,int *,int ) ;
+ int * svn_error_trace (int ) ;
+ int svn_stringbuf_ensure (TYPE_1__*,int) ;
+ int uncompress (unsigned char*,unsigned long*,unsigned char const*,int) ;
 
 __attribute__((used)) static svn_error_t *
 zlib_decode(const unsigned char *in, apr_size_t inLen, svn_stringbuf_t *out,
@@ -38,19 +38,19 @@ zlib_decode(const unsigned char *in, apr_size_t inLen, svn_stringbuf_t *out,
   apr_uint64_t size;
   const unsigned char *oldplace = in;
 
-  /* First thing in the string is the original length.  */
+
   in = svn__decode_uint(&size, in, in + inLen);
   len = (apr_size_t)size;
-  if (in == NULL || len != size)
-    return svn_error_create(SVN_ERR_SVNDIFF_INVALID_COMPRESSED_DATA, NULL,
+  if (in == ((void*)0) || len != size)
+    return svn_error_create(SVN_ERR_SVNDIFF_INVALID_COMPRESSED_DATA, ((void*)0),
                             _("Decompression of zlib compressed data failed: no size"));
   if (len > limit)
-    return svn_error_create(SVN_ERR_SVNDIFF_INVALID_COMPRESSED_DATA, NULL,
+    return svn_error_create(SVN_ERR_SVNDIFF_INVALID_COMPRESSED_DATA, ((void*)0),
                             _("Decompression of zlib compressed data failed: "
                               "size too large"));
 
-  /* We need to subtract the size of the encoded original length off the
-   *      still remaining input length.  */
+
+
   inLen -= (in - oldplace);
   if (inLen == len)
     {
@@ -73,11 +73,11 @@ zlib_decode(const unsigned char *in, apr_size_t inLen, svn_stringbuf_t *out,
                                  zerr, "uncompress",
                                  _("Decompression of svndiff data failed")));
 
-      /* Zlib should not produce something that has a different size than the
-         original length we stored. */
+
+
       if (zlen != len)
         return svn_error_create(SVN_ERR_SVNDIFF_INVALID_COMPRESSED_DATA,
-                                NULL,
+                                ((void*)0),
                                 _("Size of uncompressed data "
                                   "does not match stored original length"));
       out->data[zlen] = 0;

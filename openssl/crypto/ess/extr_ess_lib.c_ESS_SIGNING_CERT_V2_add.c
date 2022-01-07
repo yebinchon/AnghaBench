@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  PKCS7_SIGNER_INFO ;
-typedef  int /*<<< orphan*/  ESS_SIGNING_CERT_V2 ;
-typedef  int /*<<< orphan*/  ASN1_STRING ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASN1_STRING_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * ASN1_STRING_new () ; 
- int /*<<< orphan*/  ASN1_STRING_set (int /*<<< orphan*/ *,unsigned char*,int) ; 
- int /*<<< orphan*/  ERR_R_MALLOC_FAILURE ; 
- int /*<<< orphan*/  ESS_F_ESS_SIGNING_CERT_V2_ADD ; 
- int /*<<< orphan*/  ESSerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NID_id_smime_aa_signingCertificateV2 ; 
- int /*<<< orphan*/  OPENSSL_free (unsigned char*) ; 
- unsigned char* OPENSSL_malloc (int) ; 
- int PKCS7_add_signed_attribute (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  V_ASN1_SEQUENCE ; 
- int i2d_ESS_SIGNING_CERT_V2 (int /*<<< orphan*/ *,unsigned char**) ; 
+
+
+
+typedef int PKCS7_SIGNER_INFO ;
+typedef int ESS_SIGNING_CERT_V2 ;
+typedef int ASN1_STRING ;
+
+
+ int ASN1_STRING_free (int *) ;
+ int * ASN1_STRING_new () ;
+ int ASN1_STRING_set (int *,unsigned char*,int) ;
+ int ERR_R_MALLOC_FAILURE ;
+ int ESS_F_ESS_SIGNING_CERT_V2_ADD ;
+ int ESSerr (int ,int ) ;
+ int NID_id_smime_aa_signingCertificateV2 ;
+ int OPENSSL_free (unsigned char*) ;
+ unsigned char* OPENSSL_malloc (int) ;
+ int PKCS7_add_signed_attribute (int *,int ,int ,int *) ;
+ int V_ASN1_SEQUENCE ;
+ int i2d_ESS_SIGNING_CERT_V2 (int *,unsigned char**) ;
 
 int ESS_SIGNING_CERT_V2_add(PKCS7_SIGNER_INFO *si,
                             ESS_SIGNING_CERT_V2 *sc)
 {
-    ASN1_STRING *seq = NULL;
-    unsigned char *p, *pp = NULL;
-    int len = i2d_ESS_SIGNING_CERT_V2(sc, NULL);
+    ASN1_STRING *seq = ((void*)0);
+    unsigned char *p, *pp = ((void*)0);
+    int len = i2d_ESS_SIGNING_CERT_V2(sc, ((void*)0));
 
-    if ((pp = OPENSSL_malloc(len)) == NULL) {
+    if ((pp = OPENSSL_malloc(len)) == ((void*)0)) {
         ESSerr(ESS_F_ESS_SIGNING_CERT_V2_ADD, ERR_R_MALLOC_FAILURE);
         goto err;
     }
 
     p = pp;
     i2d_ESS_SIGNING_CERT_V2(sc, &p);
-    if ((seq = ASN1_STRING_new()) == NULL || !ASN1_STRING_set(seq, pp, len)) {
+    if ((seq = ASN1_STRING_new()) == ((void*)0) || !ASN1_STRING_set(seq, pp, len)) {
         ESSerr(ESS_F_ESS_SIGNING_CERT_V2_ADD, ERR_R_MALLOC_FAILURE);
         goto err;
     }
 
     OPENSSL_free(pp);
-    pp = NULL;
+    pp = ((void*)0);
     return PKCS7_add_signed_attribute(si,
                                       NID_id_smime_aa_signingCertificateV2,
                                       V_ASN1_SEQUENCE, seq);

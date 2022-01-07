@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u_int32_t ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int u_int32_t ;
 struct ath_hal {int dummy; } ;
 struct TYPE_3__ {int halNumGpioPins; } ;
 struct TYPE_4__ {TYPE_1__ ah_caps; } ;
 
-/* Variables and functions */
- TYPE_2__* AH_PRIVATE (struct ath_hal*) ; 
- int AR9382_GPIO_PIN_8_RESERVED ; 
- int AR_GPIO_BIT (int) ; 
- int /*<<< orphan*/  AR_GPIO_IN ; 
- int /*<<< orphan*/  AR_GPIO_IN_VAL ; 
- int /*<<< orphan*/  AR_HOSTIF_REG (struct ath_hal*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HALASSERT (int) ; 
- int MS (int,int /*<<< orphan*/ ) ; 
- int OS_REG_READ (struct ath_hal*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OS_REG_RMW (struct ath_hal*,int /*<<< orphan*/ ,int,int) ; 
+
+ TYPE_2__* AH_PRIVATE (struct ath_hal*) ;
+ int AR9382_GPIO_PIN_8_RESERVED ;
+ int AR_GPIO_BIT (int) ;
+ int AR_GPIO_IN ;
+ int AR_GPIO_IN_VAL ;
+ int AR_HOSTIF_REG (struct ath_hal*,int ) ;
+ int HALASSERT (int) ;
+ int MS (int,int ) ;
+ int OS_REG_READ (struct ath_hal*,int ) ;
+ int OS_REG_RMW (struct ath_hal*,int ,int,int) ;
 
 u_int32_t
 ar9300_gpio_get(struct ath_hal *ah, u_int32_t gpio)

@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int PREFIX_CS ; 
- int PREFIX_DS ; 
- int PREFIX_ES ; 
- int PREFIX_FS ; 
- int PREFIX_GS ; 
- int PREFIX_SS ; 
- size_t intel_syntax ; 
- int /*<<< orphan*/  oappend (char*) ; 
- int prefixes ; 
- int used_prefixes ; 
+ int PREFIX_CS ;
+ int PREFIX_DS ;
+ int PREFIX_ES ;
+ int PREFIX_FS ;
+ int PREFIX_GS ;
+ int PREFIX_SS ;
+ size_t intel_syntax ;
+ int oappend (char*) ;
+ int prefixes ;
+ int used_prefixes ;
 
 __attribute__((used)) static void
 append_seg (void)

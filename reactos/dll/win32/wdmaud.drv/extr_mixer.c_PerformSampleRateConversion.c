@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int ULONG64 ;
-typedef  int ULONG ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int ULONG64 ;
+typedef int ULONG ;
 struct TYPE_3__ {double* data_in; double* data_out; int input_frames; int output_frames; double src_ratio; int output_frames_gen; } ;
-typedef  int /*<<< orphan*/  SRC_STATE ;
-typedef  TYPE_1__ SRC_DATA ;
-typedef  double* PVOID ;
-typedef  scalar_t__ PUSHORT ;
-typedef  int* PULONG ;
-typedef  double* PUCHAR ;
-typedef  double* PFLOAT ;
-typedef  int /*<<< orphan*/  FLOAT ;
-typedef  int /*<<< orphan*/  DWORD ;
+typedef int SRC_STATE ;
+typedef TYPE_1__ SRC_DATA ;
+typedef double* PVOID ;
+typedef scalar_t__ PUSHORT ;
+typedef int* PULONG ;
+typedef double* PUCHAR ;
+typedef double* PFLOAT ;
+typedef int FLOAT ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- int /*<<< orphan*/  DPRINT1 (char*,int) ; 
- int /*<<< orphan*/  ERROR_INVALID_DATA ; 
- int /*<<< orphan*/  ERROR_NOT_ENOUGH_MEMORY ; 
- int /*<<< orphan*/  ERROR_SUCCESS ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- double* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,double*) ; 
- int /*<<< orphan*/  SRC_SINC_FASTEST ; 
- int lrintf (double) ; 
- int /*<<< orphan*/  src_delete (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  src_float_to_int_array (double*,int*,int) ; 
- int /*<<< orphan*/  src_float_to_short_array (double*,short*,int) ; 
- int /*<<< orphan*/  src_int_to_float_array (int*,double*,int) ; 
- int /*<<< orphan*/ * src_new (int /*<<< orphan*/ ,int,int*) ; 
- int src_process (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  src_short_to_float_array (short*,double*,int) ; 
+
+ int ASSERT (int) ;
+ int DPRINT1 (char*,int) ;
+ int ERROR_INVALID_DATA ;
+ int ERROR_NOT_ENOUGH_MEMORY ;
+ int ERROR_SUCCESS ;
+ int GetProcessHeap () ;
+ double* HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,double*) ;
+ int SRC_SINC_FASTEST ;
+ int lrintf (double) ;
+ int src_delete (int *) ;
+ int src_float_to_int_array (double*,int*,int) ;
+ int src_float_to_short_array (double*,short*,int) ;
+ int src_int_to_float_array (int*,double*,int) ;
+ int * src_new (int ,int,int*) ;
+ int src_process (int *,TYPE_1__*) ;
+ int src_short_to_float_array (short*,double*,int) ;
 
 DWORD
 PerformSampleRateConversion(
@@ -63,7 +63,7 @@ PerformSampleRateConversion(
     ULONG NumSamples;
     ULONG NewSamples;
 
-    //SND_TRACE(L"PerformSampleRateConversion OldRate %u NewRate %u BytesPerSample %u NumChannels %u\n", OldRate, NewRate, BytesPerSample, NumChannels);
+
 
     ASSERT(BytesPerSample == 1 || BytesPerSample == 2 || BytesPerSample == 4);
 
@@ -101,7 +101,7 @@ PerformSampleRateConversion(
         return ERROR_NOT_ENOUGH_MEMORY;
     }
 
-    /* fixme use asm */
+
     if (BytesPerSample == 1)
     {
         for(Index = 0; Index < NumSamples * NumChannels; Index++)
@@ -134,7 +134,7 @@ PerformSampleRateConversion(
 
     if (BytesPerSample == 1)
     {
-        /* FIXME perform over/under clipping */
+
 
         for(Index = 0; Index < Data.output_frames_gen * NumChannels; Index++)
             ResultOut[Index] = (lrintf(FloatOut[Index]) >> 24);

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
-typedef  enum tree_code { ____Placeholder_tree_code } tree_code ;
 
-/* Variables and functions */
- int SIZEOF_EXPR ; 
- int /*<<< orphan*/  cxx_alignof_expr (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cxx_sizeof_expr (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int tree ;
+typedef enum tree_code { ____Placeholder_tree_code } tree_code ;
+
+
+ int SIZEOF_EXPR ;
+ int cxx_alignof_expr (int ) ;
+ int cxx_sizeof_expr (int ) ;
 
 tree
 cxx_sizeof_or_alignof_expr (tree e, enum tree_code op)

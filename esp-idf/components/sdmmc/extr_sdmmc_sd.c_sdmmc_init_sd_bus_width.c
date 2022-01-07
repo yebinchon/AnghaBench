@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int log_bus_width; } ;
-typedef  TYPE_1__ sdmmc_card_t ;
-typedef  scalar_t__ esp_err_t ;
+typedef TYPE_1__ sdmmc_card_t ;
+typedef scalar_t__ esp_err_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ESP_LOGE (int /*<<< orphan*/ ,char*,scalar_t__) ; 
- scalar_t__ ESP_OK ; 
- int /*<<< orphan*/  TAG ; 
- scalar_t__ sdmmc_send_cmd_set_bus_width (TYPE_1__*,int) ; 
+
+ int ESP_LOGE (int ,char*,scalar_t__) ;
+ scalar_t__ ESP_OK ;
+ int TAG ;
+ scalar_t__ sdmmc_send_cmd_set_bus_width (TYPE_1__*,int) ;
 
 esp_err_t sdmmc_init_sd_bus_width(sdmmc_card_t* card)
 {

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct ucb1400_ts {int dummy; } ;
 struct input_dev {int dummy; } ;
 
-/* Variables and functions */
- struct ucb1400_ts* input_get_drvdata (struct input_dev*) ; 
- int /*<<< orphan*/  ucb1400_ts_start (struct ucb1400_ts*) ; 
+
+ struct ucb1400_ts* input_get_drvdata (struct input_dev*) ;
+ int ucb1400_ts_start (struct ucb1400_ts*) ;
 
 __attribute__((used)) static int ucb1400_ts_open(struct input_dev *idev)
 {
-	struct ucb1400_ts *ucb = input_get_drvdata(idev);
+ struct ucb1400_ts *ucb = input_get_drvdata(idev);
 
-	ucb1400_ts_start(ucb);
+ ucb1400_ts_start(ucb);
 
-	return 0;
+ return 0;
 }

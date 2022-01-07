@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int GPU_STENCILOP ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GPUCMD_AddWrite (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  GPUREG_STENCIL_OP ; 
+
+
+
+typedef int GPU_STENCILOP ;
+
+
+ int GPUCMD_AddWrite (int ,int) ;
+ int GPUREG_STENCIL_OP ;
 
 void GPU_SetStencilOp(GPU_STENCILOP sfail, GPU_STENCILOP dfail, GPU_STENCILOP pass)
 {
-	GPUCMD_AddWrite(GPUREG_STENCIL_OP, sfail | (dfail << 4) | (pass << 8));
+ GPUCMD_AddWrite(GPUREG_STENCIL_OP, sfail | (dfail << 4) | (pass << 8));
 }

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct blufi_security {struct blufi_security* iv; int /*<<< orphan*/  aes; int /*<<< orphan*/  dhm; } ;
-typedef  int /*<<< orphan*/  esp_err_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ESP_FAIL ; 
- struct blufi_security* blufi_sec ; 
- scalar_t__ malloc (int) ; 
- int /*<<< orphan*/  mbedtls_aes_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mbedtls_dhm_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memset (struct blufi_security*,int,int) ; 
+
+
+
+struct blufi_security {struct blufi_security* iv; int aes; int dhm; } ;
+typedef int esp_err_t ;
+
+
+ int ESP_FAIL ;
+ struct blufi_security* blufi_sec ;
+ scalar_t__ malloc (int) ;
+ int mbedtls_aes_init (int *) ;
+ int mbedtls_dhm_init (int *) ;
+ int memset (struct blufi_security*,int,int) ;
 
 esp_err_t blufi_security_init(void)
 {
     blufi_sec = (struct blufi_security *)malloc(sizeof(struct blufi_security));
-    if (blufi_sec == NULL) {
+    if (blufi_sec == ((void*)0)) {
         return ESP_FAIL;
     }
 

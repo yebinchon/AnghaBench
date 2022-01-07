@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct nn_cws {int /*<<< orphan*/  fsm; int /*<<< orphan*/  usock; int /*<<< orphan*/  retry; int /*<<< orphan*/  sws; int /*<<< orphan*/  dns; int /*<<< orphan*/  nic; int /*<<< orphan*/  remote_host; int /*<<< orphan*/  resource; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  nn_backoff_term (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nn_chunkref_term (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nn_dns_term (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nn_free (struct nn_cws*) ; 
- int /*<<< orphan*/  nn_fsm_term (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nn_sws_term (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nn_usock_term (int /*<<< orphan*/ *) ; 
+
+
+
+struct nn_cws {int fsm; int usock; int retry; int sws; int dns; int nic; int remote_host; int resource; } ;
+
+
+ int nn_backoff_term (int *) ;
+ int nn_chunkref_term (int *) ;
+ int nn_dns_term (int *) ;
+ int nn_free (struct nn_cws*) ;
+ int nn_fsm_term (int *) ;
+ int nn_sws_term (int *) ;
+ int nn_usock_term (int *) ;
 
 __attribute__((used)) static void nn_cws_destroy (void *self)
 {

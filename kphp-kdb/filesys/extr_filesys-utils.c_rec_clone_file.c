@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct stat {char* st_mode; } ;
 struct TYPE_4__ {char* filename; struct stat st; struct TYPE_4__* next; } ;
-typedef  TYPE_1__ file_t ;
+typedef TYPE_1__ file_t ;
 
-/* Variables and functions */
- int PATH_MAX ; 
- scalar_t__ S_ISDIR (char*) ; 
- scalar_t__ S_ISLNK (char*) ; 
- int /*<<< orphan*/  free_filelist (TYPE_1__*) ; 
- int getdir (char*,TYPE_1__**,int /*<<< orphan*/ ,int) ; 
- scalar_t__ lcopy_attrs (char*,struct stat*) ; 
- scalar_t__ link (char*,char*) ; 
- scalar_t__ mkdir (char*,char*) ; 
- int readlink (char*,char*,int) ; 
- int snprintf (char*,int,char*,char const* const,char*) ; 
- scalar_t__ symlink (char*,char*) ; 
- int /*<<< orphan*/  vkprintf (int,char*,char*,char*) ; 
+
+ int PATH_MAX ;
+ scalar_t__ S_ISDIR (char*) ;
+ scalar_t__ S_ISLNK (char*) ;
+ int free_filelist (TYPE_1__*) ;
+ int getdir (char*,TYPE_1__**,int ,int) ;
+ scalar_t__ lcopy_attrs (char*,struct stat*) ;
+ scalar_t__ link (char*,char*) ;
+ scalar_t__ mkdir (char*,char*) ;
+ int readlink (char*,char*,int) ;
+ int snprintf (char*,int,char*,char const* const,char*) ;
+ scalar_t__ symlink (char*,char*) ;
+ int vkprintf (int,char*,char*,char*) ;
 
 __attribute__((used)) static int rec_clone_file (const char *const src_path, const char *const dst_path, char *path, struct stat *S) {
   char a[PATH_MAX], b[PATH_MAX];
@@ -66,7 +66,7 @@ __attribute__((used)) static int rec_clone_file (const char *const src_path, con
     if (n < 0) {
       return -2;
     }
-    for (p = px; p != NULL; p = p->next) {
+    for (p = px; p != ((void*)0); p = p->next) {
       if (snprintf (a, PATH_MAX, "%s/%s", path, p->filename) >= PATH_MAX) {
         return -1;
       }

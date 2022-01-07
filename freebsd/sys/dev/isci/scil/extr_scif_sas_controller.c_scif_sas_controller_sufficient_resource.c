@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t U32 ;
-struct TYPE_7__ {int /*<<< orphan*/  pool; } ;
+
+
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef size_t U32 ;
+struct TYPE_7__ {int pool; } ;
 struct TYPE_9__ {TYPE_2__ hprq; TYPE_3__* domains; } ;
 struct TYPE_6__ {size_t element_count; } ;
 struct TYPE_8__ {TYPE_1__ request_list; } ;
-typedef  TYPE_3__ SCIF_SAS_DOMAIN_T ;
-typedef  TYPE_4__ SCIF_SAS_CONTROLLER_T ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef TYPE_3__ SCIF_SAS_DOMAIN_T ;
+typedef TYPE_4__ SCIF_SAS_CONTROLLER_T ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- size_t SCI_MAX_DOMAINS ; 
- size_t SCI_MAX_IO_REQUESTS ; 
- int /*<<< orphan*/  TRUE ; 
- size_t sci_pool_count (int /*<<< orphan*/ ) ; 
+
+ int FALSE ;
+ size_t SCI_MAX_DOMAINS ;
+ size_t SCI_MAX_IO_REQUESTS ;
+ int TRUE ;
+ size_t sci_pool_count (int ) ;
 
 BOOL scif_sas_controller_sufficient_resource(
    SCIF_SAS_CONTROLLER_T *fw_controller

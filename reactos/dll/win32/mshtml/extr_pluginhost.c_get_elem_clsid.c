@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  nsresult ;
-typedef  int /*<<< orphan*/  nsIDOMHTMLElement ;
-typedef  int /*<<< orphan*/  nsAString ;
-typedef  char PRUnichar ;
-typedef  int /*<<< orphan*/  CLSID ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- scalar_t__ NS_SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  get_elem_attr_value (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,char const**) ; 
- int /*<<< orphan*/  nsAString_Finish (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  parse_classid (char const*,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int nsresult ;
+typedef int nsIDOMHTMLElement ;
+typedef int nsAString ;
+typedef char PRUnichar ;
+typedef int CLSID ;
+typedef int BOOL ;
+
+
+ int FALSE ;
+ scalar_t__ NS_SUCCEEDED (int ) ;
+ int get_elem_attr_value (int *,char const*,int *,char const**) ;
+ int nsAString_Finish (int *) ;
+ int parse_classid (char const*,int *) ;
 
 __attribute__((used)) static BOOL get_elem_clsid(nsIDOMHTMLElement *elem, CLSID *clsid)
 {

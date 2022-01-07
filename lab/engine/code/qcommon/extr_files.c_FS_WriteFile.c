@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  fileHandle_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Com_Error (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  Com_Printf (char*,char const*) ; 
- int /*<<< orphan*/  ERR_FATAL ; 
- int /*<<< orphan*/  FS_FCloseFile (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FS_FOpenFileWrite (char const*) ; 
- int /*<<< orphan*/  FS_Write (void const*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fs_searchpaths ; 
+
+
+
+typedef int fileHandle_t ;
+
+
+ int Com_Error (int ,char*) ;
+ int Com_Printf (char*,char const*) ;
+ int ERR_FATAL ;
+ int FS_FCloseFile (int ) ;
+ int FS_FOpenFileWrite (char const*) ;
+ int FS_Write (void const*,int,int ) ;
+ int fs_searchpaths ;
 
 void FS_WriteFile( const char *qpath, const void *buffer, int size ) {
-	fileHandle_t f;
+ fileHandle_t f;
 
-	if ( !fs_searchpaths ) {
-		Com_Error( ERR_FATAL, "Filesystem call made without initialization" );
-	}
+ if ( !fs_searchpaths ) {
+  Com_Error( ERR_FATAL, "Filesystem call made without initialization" );
+ }
 
-	if ( !qpath || !buffer ) {
-		Com_Error( ERR_FATAL, "FS_WriteFile: NULL parameter" );
-	}
+ if ( !qpath || !buffer ) {
+  Com_Error( ERR_FATAL, "FS_WriteFile: NULL parameter" );
+ }
 
-	f = FS_FOpenFileWrite( qpath );
-	if ( !f ) {
-		Com_Printf( "Failed to open %s\n", qpath );
-		return;
-	}
+ f = FS_FOpenFileWrite( qpath );
+ if ( !f ) {
+  Com_Printf( "Failed to open %s\n", qpath );
+  return;
+ }
 
-	FS_Write( buffer, size, f );
+ FS_Write( buffer, size, f );
 
-	FS_FCloseFile( f );
+ FS_FCloseFile( f );
 }

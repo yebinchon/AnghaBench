@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  stats ;
-typedef  int VC_MEM_ADDR_T ;
-typedef  int /*<<< orphan*/  VC_MEM_ACCESS_HANDLE_T ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int stats ;
+typedef int VC_MEM_ADDR_T ;
+typedef int VC_MEM_ACCESS_HANDLE_T ;
 struct TYPE_5__ {int magic; int conversions; long time_spent; double last_image_ts; double first_image_ts; double size_requests; double max_vrf_delay; double vrf_wait_time; double duplicate_conversions; double failures; double max_delay; } ;
-typedef  TYPE_1__ IMAGECONV_STATS_T ;
+typedef TYPE_1__ IMAGECONV_STATS_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CloseVideoCoreMemory (int /*<<< orphan*/ ) ; 
- int IMAGECONV_STATS_MAGIC ; 
- int /*<<< orphan*/  LookupVideoCoreSymbol (int /*<<< orphan*/ ,char*,int*,size_t*) ; 
- int OpenVideoCoreMemory (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ReadVideoCoreMemory (int /*<<< orphan*/ ,TYPE_1__*,int,int) ; 
- int /*<<< orphan*/  ReadVideoCoreUInt32 (int /*<<< orphan*/ ,int*,int) ; 
- int /*<<< orphan*/  WriteVideoCoreMemory (int /*<<< orphan*/ ,TYPE_1__*,int,int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  printf (char*,char*,double) ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ strcasecmp (char const*,char*) ; 
+
+ int CloseVideoCoreMemory (int ) ;
+ int IMAGECONV_STATS_MAGIC ;
+ int LookupVideoCoreSymbol (int ,char*,int*,size_t*) ;
+ int OpenVideoCoreMemory (int *) ;
+ int ReadVideoCoreMemory (int ,TYPE_1__*,int,int) ;
+ int ReadVideoCoreUInt32 (int ,int*,int) ;
+ int WriteVideoCoreMemory (int ,TYPE_1__*,int,int) ;
+ int fprintf (int ,char*,...) ;
+ int memset (TYPE_1__*,int ,int) ;
+ int printf (char*,char*,double) ;
+ int stderr ;
+ scalar_t__ strcasecmp (char const*,char*) ;
 
 __attribute__((used)) static int do_imageconv_stats(int argc, const char **argv)
 {

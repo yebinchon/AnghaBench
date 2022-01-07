@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Unit ;
-struct TYPE_2__ {int (* may_gc ) (int /*<<< orphan*/ *) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * UNIT_TRIGGER (int /*<<< orphan*/ *) ; 
- TYPE_1__* UNIT_VTABLE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ *) ; 
- int stub1 (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int Unit ;
+struct TYPE_2__ {int (* may_gc ) (int *) ;} ;
+
+
+ int * UNIT_TRIGGER (int *) ;
+ TYPE_1__* UNIT_VTABLE (int *) ;
+ int assert (int *) ;
+ int stub1 (int *) ;
 
 __attribute__((used)) static bool automount_may_gc(Unit *u) {
         Unit *t;
@@ -27,7 +27,7 @@ __attribute__((used)) static bool automount_may_gc(Unit *u) {
 
         t = UNIT_TRIGGER(u);
         if (!t)
-                return true;
+                return 1;
 
         return UNIT_VTABLE(t)->may_gc(t);
 }

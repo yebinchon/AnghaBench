@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {int /*<<< orphan*/  pb; TYPE_1__* priv_data; } ;
-struct TYPE_9__ {int* data; int dts; int pts; int pos; int /*<<< orphan*/  flags; scalar_t__ stream_index; } ;
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_10__ {int pb; TYPE_1__* priv_data; } ;
+struct TYPE_9__ {int* data; int dts; int pts; int pos; int flags; scalar_t__ stream_index; } ;
 struct TYPE_8__ {int got_first_packet; } ;
-typedef  TYPE_1__ CDGContext ;
-typedef  TYPE_2__ AVPacket ;
-typedef  TYPE_3__ AVFormatContext ;
+typedef TYPE_1__ CDGContext ;
+typedef TYPE_2__ AVPacket ;
+typedef TYPE_3__ AVFormatContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_PKT_FLAG_KEY ; 
- int CDG_COMMAND ; 
- int CDG_MASK ; 
- int CDG_PACKET_SIZE ; 
- int av_get_packet (int /*<<< orphan*/ ,TYPE_2__*,int) ; 
- int /*<<< orphan*/  av_packet_unref (TYPE_2__*) ; 
+
+ int AV_PKT_FLAG_KEY ;
+ int CDG_COMMAND ;
+ int CDG_MASK ;
+ int CDG_PACKET_SIZE ;
+ int av_get_packet (int ,TYPE_2__*,int) ;
+ int av_packet_unref (TYPE_2__*) ;
 
 __attribute__((used)) static int read_packet(AVFormatContext *s, AVPacket *pkt)
 {

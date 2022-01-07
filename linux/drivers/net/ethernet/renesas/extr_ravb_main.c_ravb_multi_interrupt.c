@@ -1,62 +1,62 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u32 ;
-struct ravb_private {int /*<<< orphan*/  lock; } ;
+
+
+
+
+typedef int u32 ;
+struct ravb_private {int lock; } ;
 struct net_device {int dummy; } ;
-typedef  int /*<<< orphan*/  irqreturn_t ;
+typedef int irqreturn_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IRQ_HANDLED ; 
- int /*<<< orphan*/  IRQ_NONE ; 
- int /*<<< orphan*/  ISS ; 
- int ISS_CGIS ; 
- int ISS_ES ; 
- int ISS_TFUS ; 
- struct ravb_private* netdev_priv (struct net_device*) ; 
- int /*<<< orphan*/  ravb_error_interrupt (struct net_device*) ; 
- int /*<<< orphan*/  ravb_ptp_interrupt (struct net_device*) ; 
- int ravb_read (struct net_device*,int /*<<< orphan*/ ) ; 
- scalar_t__ ravb_timestamp_interrupt (struct net_device*) ; 
- int /*<<< orphan*/  spin_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock (int /*<<< orphan*/ *) ; 
+
+ int IRQ_HANDLED ;
+ int IRQ_NONE ;
+ int ISS ;
+ int ISS_CGIS ;
+ int ISS_ES ;
+ int ISS_TFUS ;
+ struct ravb_private* netdev_priv (struct net_device*) ;
+ int ravb_error_interrupt (struct net_device*) ;
+ int ravb_ptp_interrupt (struct net_device*) ;
+ int ravb_read (struct net_device*,int ) ;
+ scalar_t__ ravb_timestamp_interrupt (struct net_device*) ;
+ int spin_lock (int *) ;
+ int spin_unlock (int *) ;
 
 __attribute__((used)) static irqreturn_t ravb_multi_interrupt(int irq, void *dev_id)
 {
-	struct net_device *ndev = dev_id;
-	struct ravb_private *priv = netdev_priv(ndev);
-	irqreturn_t result = IRQ_NONE;
-	u32 iss;
+ struct net_device *ndev = dev_id;
+ struct ravb_private *priv = netdev_priv(ndev);
+ irqreturn_t result = IRQ_NONE;
+ u32 iss;
 
-	spin_lock(&priv->lock);
-	/* Get interrupt status */
-	iss = ravb_read(ndev, ISS);
+ spin_lock(&priv->lock);
 
-	/* Timestamp updated */
-	if ((iss & ISS_TFUS) && ravb_timestamp_interrupt(ndev))
-		result = IRQ_HANDLED;
+ iss = ravb_read(ndev, ISS);
 
-	/* Error status summary */
-	if (iss & ISS_ES) {
-		ravb_error_interrupt(ndev);
-		result = IRQ_HANDLED;
-	}
 
-	/* gPTP interrupt status summary */
-	if (iss & ISS_CGIS) {
-		ravb_ptp_interrupt(ndev);
-		result = IRQ_HANDLED;
-	}
+ if ((iss & ISS_TFUS) && ravb_timestamp_interrupt(ndev))
+  result = IRQ_HANDLED;
 
-	spin_unlock(&priv->lock);
-	return result;
+
+ if (iss & ISS_ES) {
+  ravb_error_interrupt(ndev);
+  result = IRQ_HANDLED;
+ }
+
+
+ if (iss & ISS_CGIS) {
+  ravb_ptp_interrupt(ndev);
+  result = IRQ_HANDLED;
+ }
+
+ spin_unlock(&priv->lock);
+ return result;
 }

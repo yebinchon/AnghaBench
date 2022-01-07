@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u_int32_t ;
-struct sc_info {int /*<<< orphan*/  dev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ENVY24_CCS_I2CDEV_ROM ; 
- int /*<<< orphan*/  ENVY24_CCS_I2CSTAT ; 
- int ENVY24_CCS_I2CSTAT_ROM ; 
- int /*<<< orphan*/  device_printf (int /*<<< orphan*/ ,char*,...) ; 
- int envy24_rdcs (struct sc_info*,int /*<<< orphan*/ ,int) ; 
- int envy24_rdi2c (struct sc_info*,int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int u_int32_t ;
+struct sc_info {int dev; } ;
+
+
+ int ENVY24_CCS_I2CDEV_ROM ;
+ int ENVY24_CCS_I2CSTAT ;
+ int ENVY24_CCS_I2CSTAT_ROM ;
+ int device_printf (int ,char*,...) ;
+ int envy24_rdcs (struct sc_info*,int ,int) ;
+ int envy24_rdi2c (struct sc_info*,int ,int) ;
 
 __attribute__((used)) static int
 envy24_rdrom(struct sc_info *sc, u_int32_t addr)
 {
-	u_int32_t data;
+ u_int32_t data;
 
-#if(0)
-	device_printf(sc->dev, "envy24_rdrom(sc, 0x%02x)\n", addr);
-#endif
-	data = envy24_rdcs(sc, ENVY24_CCS_I2CSTAT, 1);
-	if ((data & ENVY24_CCS_I2CSTAT_ROM) == 0) {
-#if(0)
-		device_printf(sc->dev, "envy24_rdrom(): E2PROM not presented\n");
-#endif
-		return -1;
-	}
 
-	return envy24_rdi2c(sc, ENVY24_CCS_I2CDEV_ROM, addr);
+
+
+ data = envy24_rdcs(sc, ENVY24_CCS_I2CSTAT, 1);
+ if ((data & ENVY24_CCS_I2CSTAT_ROM) == 0) {
+
+
+
+  return -1;
+ }
+
+ return envy24_rdi2c(sc, ENVY24_CCS_I2CDEV_ROM, addr);
 }

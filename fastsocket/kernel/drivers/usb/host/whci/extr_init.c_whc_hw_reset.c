@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct whc {scalar_t__ base; TYPE_1__* umc; } ;
-struct TYPE_2__ {int /*<<< orphan*/  dev; } ;
+struct TYPE_2__ {int dev; } ;
 
-/* Variables and functions */
- scalar_t__ WUSBCMD ; 
- int /*<<< orphan*/  WUSBCMD_WHCRESET ; 
- int /*<<< orphan*/  le_writel (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  whci_wait_for (int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,char*) ; 
+
+ scalar_t__ WUSBCMD ;
+ int WUSBCMD_WHCRESET ;
+ int le_writel (int ,scalar_t__) ;
+ int whci_wait_for (int *,scalar_t__,int ,int ,int,char*) ;
 
 __attribute__((used)) static void whc_hw_reset(struct whc *whc)
 {
-	le_writel(WUSBCMD_WHCRESET, whc->base + WUSBCMD);
-	whci_wait_for(&whc->umc->dev, whc->base + WUSBCMD, WUSBCMD_WHCRESET, 0,
-		      100, "reset");
+ le_writel(WUSBCMD_WHCRESET, whc->base + WUSBCMD);
+ whci_wait_for(&whc->umc->dev, whc->base + WUSBCMD, WUSBCMD_WHCRESET, 0,
+        100, "reset");
 }

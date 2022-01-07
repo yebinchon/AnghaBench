@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct _cmstransform_struct {int dummy; } ;
-typedef  int cmsUInt8Number ;
-typedef  struct _cmstransform_struct* cmsUInt32Number ;
-typedef  scalar_t__ cmsUInt16Number ;
-typedef  int /*<<< orphan*/  cmsContext ;
+typedef int cmsUInt8Number ;
+typedef struct _cmstransform_struct* cmsUInt32Number ;
+typedef scalar_t__ cmsUInt16Number ;
+typedef int cmsContext ;
 
-/* Variables and functions */
- scalar_t__ FromLabV2ToLabV4 (int) ; 
- int /*<<< orphan*/  UTILS_UNUSED_PARAMETER (struct _cmstransform_struct*) ; 
+
+ scalar_t__ FromLabV2ToLabV4 (int) ;
+ int UTILS_UNUSED_PARAMETER (struct _cmstransform_struct*) ;
 
 __attribute__((used)) static
 unsigned char* UnrollTIFFLab8(cmsContext ContextID, struct _cmstransform_struct* CMMcargo,

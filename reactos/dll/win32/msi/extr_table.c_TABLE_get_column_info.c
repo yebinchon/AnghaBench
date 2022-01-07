@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct tagMSIVIEW {int dummy; } ;
-typedef  int UINT ;
+typedef int UINT ;
 struct TYPE_5__ {int num_cols; TYPE_1__* columns; } ;
-struct TYPE_4__ {int type; int /*<<< orphan*/  temporary; int /*<<< orphan*/  tablename; int /*<<< orphan*/  colname; } ;
-typedef  TYPE_2__ MSITABLEVIEW ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
-typedef  int /*<<< orphan*/  BOOL ;
+struct TYPE_4__ {int type; int temporary; int tablename; int colname; } ;
+typedef TYPE_2__ MSITABLEVIEW ;
+typedef int LPCWSTR ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int ERROR_FUNCTION_FAILED ; 
- int ERROR_INVALID_PARAMETER ; 
- int ERROR_SUCCESS ; 
- int /*<<< orphan*/  TRACE (char*,TYPE_2__*,int,int /*<<< orphan*/ *,int*) ; 
+
+ int ERROR_FUNCTION_FAILED ;
+ int ERROR_INVALID_PARAMETER ;
+ int ERROR_SUCCESS ;
+ int TRACE (char*,TYPE_2__*,int,int *,int*) ;
 
 __attribute__((used)) static UINT TABLE_get_column_info( struct tagMSIVIEW *view,
                 UINT n, LPCWSTR *name, UINT *type, BOOL *temporary,

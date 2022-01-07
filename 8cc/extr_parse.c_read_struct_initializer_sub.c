@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Vector ;
-struct TYPE_11__ {int /*<<< orphan*/  is_struct; scalar_t__ offset; int /*<<< orphan*/  fields; } ;
-typedef  TYPE_1__ Type ;
+
+
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef int Vector ;
+struct TYPE_11__ {int is_struct; scalar_t__ offset; int fields; } ;
+typedef TYPE_1__ Type ;
 struct TYPE_12__ {scalar_t__ kind; char* sval; } ;
-typedef  TYPE_2__ Token ;
+typedef TYPE_2__ Token ;
 
-/* Variables and functions */
- scalar_t__ TIDENT ; 
- TYPE_1__* dict_get (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/ * dict_keys (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errort (TYPE_2__*,char*,int /*<<< orphan*/ ) ; 
- TYPE_2__* get () ; 
- scalar_t__ is_keyword (TYPE_2__*,char) ; 
- int maybe_read_brace () ; 
- int /*<<< orphan*/  maybe_skip_comma () ; 
- int /*<<< orphan*/  read_initializer_elem (int /*<<< orphan*/ *,TYPE_1__*,scalar_t__,int) ; 
- int /*<<< orphan*/  skip_to_brace () ; 
- scalar_t__ strcmp (char*,char*) ; 
- int /*<<< orphan*/  tok2s (TYPE_2__*) ; 
- int /*<<< orphan*/  unget_token (TYPE_2__*) ; 
- char* vec_get (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int vec_len (int /*<<< orphan*/ *) ; 
+
+ scalar_t__ TIDENT ;
+ TYPE_1__* dict_get (int ,char*) ;
+ int * dict_keys (int ) ;
+ int errort (TYPE_2__*,char*,int ) ;
+ TYPE_2__* get () ;
+ scalar_t__ is_keyword (TYPE_2__*,char) ;
+ int maybe_read_brace () ;
+ int maybe_skip_comma () ;
+ int read_initializer_elem (int *,TYPE_1__*,scalar_t__,int) ;
+ int skip_to_brace () ;
+ scalar_t__ strcmp (char*,char*) ;
+ int tok2s (TYPE_2__*) ;
+ int unget_token (TYPE_2__*) ;
+ char* vec_get (int *,int ) ;
+ int vec_len (int *) ;
 
 __attribute__((used)) static void read_struct_initializer_sub(Vector *inits, Type *ty, int off, bool designated) {
     bool has_brace = maybe_read_brace();
@@ -67,7 +67,7 @@ __attribute__((used)) static void read_struct_initializer_sub(Vector *inits, Typ
                 if (strcmp(fieldname, s) == 0)
                     break;
             }
-            designated = true;
+            designated = 1;
         } else {
             unget_token(tok);
             if (i == vec_len(keys))
@@ -77,7 +77,7 @@ __attribute__((used)) static void read_struct_initializer_sub(Vector *inits, Typ
         }
         read_initializer_elem(inits, fieldtype, off + fieldtype->offset, designated);
         maybe_skip_comma();
-        designated = false;
+        designated = 0;
         if (!ty->is_struct)
             break;
     }

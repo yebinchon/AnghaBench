@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  printf (char*,int,...) ; 
+ int printf (char*,int,...) ;
 
 void print_strs(char **list_str, int size)
 {
-	int i;
+ int i;
 
-	printf("[+] Debug %d strings:\n", size);
-	for (i = 0; i < size; ++i)
-		printf("String %d'th: %s\n", i+1, list_str[i]);
+ printf("[+] Debug %d strings:\n", size);
+ for (i = 0; i < size; ++i)
+  printf("String %d'th: %s\n", i+1, list_str[i]);
 }

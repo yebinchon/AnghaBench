@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct rb750_led_drvdata {int num_leds; TYPE_1__* led_devs; } ;
 struct platform_device {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/  cdev; } ;
+struct TYPE_2__ {int cdev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  kfree (struct rb750_led_drvdata*) ; 
- int /*<<< orphan*/  led_classdev_unregister (int /*<<< orphan*/ *) ; 
- struct rb750_led_drvdata* platform_get_drvdata (struct platform_device*) ; 
+
+ int kfree (struct rb750_led_drvdata*) ;
+ int led_classdev_unregister (int *) ;
+ struct rb750_led_drvdata* platform_get_drvdata (struct platform_device*) ;
 
 __attribute__((used)) static int rb750_led_remove(struct platform_device *pdev)
 {
-	struct rb750_led_drvdata *drvdata;
-	int i;
+ struct rb750_led_drvdata *drvdata;
+ int i;
 
-	drvdata = platform_get_drvdata(pdev);
-	for (i = 0; i < drvdata->num_leds; i++)
-		led_classdev_unregister(&drvdata->led_devs[i].cdev);
+ drvdata = platform_get_drvdata(pdev);
+ for (i = 0; i < drvdata->num_leds; i++)
+  led_classdev_unregister(&drvdata->led_devs[i].cdev);
 
-	kfree(drvdata);
-	return 0;
+ kfree(drvdata);
+ return 0;
 }

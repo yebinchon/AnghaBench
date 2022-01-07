@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_13__ {int /*<<< orphan*/  pix_fmt; } ;
-struct TYPE_12__ {unsigned int* linesize; int /*<<< orphan*/ ** data; int /*<<< orphan*/  pict_type; } ;
-struct TYPE_11__ {int size; int /*<<< orphan*/ * data; } ;
-typedef  TYPE_1__ AVPacket ;
-typedef  TYPE_2__ AVFrame ;
-typedef  TYPE_3__ AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int AVERROR_PATCHWELCOME ; 
- int /*<<< orphan*/  AV_LOG_WARNING ; 
- int /*<<< orphan*/  AV_PICTURE_TYPE_I ; 
- int /*<<< orphan*/  AV_PIX_FMT_BGR555LE ; 
- int AV_RL16 (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  av_log (TYPE_3__*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  avpriv_request_sample (TYPE_3__*,char*) ; 
- int ff_get_buffer (TYPE_3__*,TYPE_2__* const,int /*<<< orphan*/ ) ; 
- int ff_set_dimensions (TYPE_3__*,unsigned int,unsigned int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,unsigned int) ; 
+
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_13__ {int pix_fmt; } ;
+struct TYPE_12__ {unsigned int* linesize; int ** data; int pict_type; } ;
+struct TYPE_11__ {int size; int * data; } ;
+typedef TYPE_1__ AVPacket ;
+typedef TYPE_2__ AVFrame ;
+typedef TYPE_3__ AVCodecContext ;
+
+
+ int AVERROR_INVALIDDATA ;
+ int AVERROR_PATCHWELCOME ;
+ int AV_LOG_WARNING ;
+ int AV_PICTURE_TYPE_I ;
+ int AV_PIX_FMT_BGR555LE ;
+ int AV_RL16 (int const*) ;
+ int av_log (TYPE_3__*,int ,char*) ;
+ int avpriv_request_sample (TYPE_3__*,char*) ;
+ int ff_get_buffer (TYPE_3__*,TYPE_2__* const,int ) ;
+ int ff_set_dimensions (TYPE_3__*,unsigned int,unsigned int) ;
+ int memcpy (int *,int const*,unsigned int) ;
 
 __attribute__((used)) static int ptx_decode_frame(AVCodecContext *avctx, void *data, int *got_frame,
                             AVPacket *avpkt) {
@@ -45,9 +45,9 @@ __attribute__((used)) static int ptx_decode_frame(AVCodecContext *avctx, void *d
 
     if (buf_end - buf < 14)
         return AVERROR_INVALIDDATA;
-    offset          = AV_RL16(buf);
-    w               = AV_RL16(buf+8);
-    h               = AV_RL16(buf+10);
+    offset = AV_RL16(buf);
+    w = AV_RL16(buf+8);
+    h = AV_RL16(buf+10);
     bytes_per_pixel = AV_RL16(buf+12) >> 3;
 
     if (bytes_per_pixel != 2) {
@@ -75,7 +75,7 @@ __attribute__((used)) static int ptx_decode_frame(AVCodecContext *avctx, void *d
 
     p->pict_type = AV_PICTURE_TYPE_I;
 
-    ptr    = p->data[0];
+    ptr = p->data[0];
     stride = p->linesize[0];
 
     for (y = 0; y < h && buf_end - buf >= w * bytes_per_pixel; y++) {

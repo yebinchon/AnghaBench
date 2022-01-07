@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Vector ;
-struct TYPE_3__ {scalar_t__ kind; int /*<<< orphan*/  varname; int /*<<< orphan*/  ty; struct TYPE_3__* declvar; } ;
-typedef  TYPE_1__ Node ;
 
-/* Variables and functions */
- scalar_t__ AST_DECL ; 
- scalar_t__ AST_LVAR ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  error (char*,int /*<<< orphan*/ ) ; 
- scalar_t__ strcmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_1__* vec_get (int /*<<< orphan*/ *,int) ; 
- int vec_len (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int Vector ;
+struct TYPE_3__ {scalar_t__ kind; int varname; int ty; struct TYPE_3__* declvar; } ;
+typedef TYPE_1__ Node ;
+
+
+ scalar_t__ AST_DECL ;
+ scalar_t__ AST_LVAR ;
+ int assert (int) ;
+ int error (char*,int ) ;
+ scalar_t__ strcmp (int ,int ) ;
+ TYPE_1__* vec_get (int *,int) ;
+ int vec_len (int *) ;
 
 __attribute__((used)) static void update_oldstyle_param_type(Vector *params, Vector *vars) {
     for (int i = 0; i < vec_len(vars); i++) {

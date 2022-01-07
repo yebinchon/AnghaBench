@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct lev_add_message {int user_id; int peer_msg_id; int text_len; char* text; int /*<<< orphan*/  ua_hash; void* front; void* port; void* ip; void* date; void* peer_id; void* legacy_id; scalar_t__ type; } ;
 
-/* Variables and functions */
- void** I ; 
- int* L ; 
- scalar_t__ LEV_TX_ADD_MESSAGE ; 
- scalar_t__ LEV_TX_ADD_MESSAGE_EXT_ZF ; 
- char** S ; 
- int /*<<< orphan*/  adj_rec ; 
- scalar_t__ conv_uid (int) ; 
- int list_id ; 
- int /*<<< orphan*/  memcpy (char*,char*,int) ; 
- size_t pc_date ; 
- size_t pc_from_id ; 
- size_t pc_front ; 
- size_t pc_id ; 
- size_t pc_ip ; 
- size_t pc_local_id ; 
- size_t pc_message ; 
- size_t pc_owner_id ; 
- size_t pc_photo_id ; 
- size_t pc_port ; 
- size_t pc_ua_hash ; 
- int sprintf (char*,char*,int) ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
- int /*<<< orphan*/  strtoull (char*,int /*<<< orphan*/ ,int) ; 
- struct lev_add_message* write_alloc (int) ; 
+
+
+
+struct lev_add_message {int user_id; int peer_msg_id; int text_len; char* text; int ua_hash; void* front; void* port; void* ip; void* date; void* peer_id; void* legacy_id; scalar_t__ type; } ;
+
+
+ void** I ;
+ int* L ;
+ scalar_t__ LEV_TX_ADD_MESSAGE ;
+ scalar_t__ LEV_TX_ADD_MESSAGE_EXT_ZF ;
+ char** S ;
+ int adj_rec ;
+ scalar_t__ conv_uid (int) ;
+ int list_id ;
+ int memcpy (char*,char*,int) ;
+ size_t pc_date ;
+ size_t pc_from_id ;
+ size_t pc_front ;
+ size_t pc_id ;
+ size_t pc_ip ;
+ size_t pc_local_id ;
+ size_t pc_message ;
+ size_t pc_owner_id ;
+ size_t pc_photo_id ;
+ size_t pc_port ;
+ size_t pc_ua_hash ;
+ int sprintf (char*,char*,int) ;
+ int strcmp (char*,char*) ;
+ int strtoull (char*,int ,int) ;
+ struct lev_add_message* write_alloc (int) ;
 
 void process_photo_comments_row (void) {
   int i, len, from_id = I[pc_from_id];

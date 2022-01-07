@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  fd_set ;
-typedef  int /*<<< orphan*/  RDPCLIENT ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FD_ZERO (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  False ; 
- int /*<<< orphan*/  _rdpdr_check_fds (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int fd_set ;
+typedef int RDPCLIENT ;
+typedef int BOOL ;
+
+
+ int FD_ZERO (int *) ;
+ int False ;
+ int _rdpdr_check_fds (int *,int *,int *,int ) ;
 
 void
 rdpdr_check_fds(RDPCLIENT * This, fd_set * rfds, fd_set * wfds, BOOL timed_out)
 {
-	fd_set dummy;
+ fd_set dummy;
 
 
-	FD_ZERO(&dummy);
+ FD_ZERO(&dummy);
 
 
-	/* fist check event queue only,
-	   any serial wait event must be done before read block will be sent
-	 */
 
-	_rdpdr_check_fds(This, &dummy, &dummy, False);
-	_rdpdr_check_fds(This, rfds, wfds, timed_out);
+
+
+
+ _rdpdr_check_fds(This, &dummy, &dummy, False);
+ _rdpdr_check_fds(This, rfds, wfds, timed_out);
 }

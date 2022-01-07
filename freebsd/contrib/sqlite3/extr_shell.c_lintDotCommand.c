@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ShellState ;
 
-/* Variables and functions */
- int SQLITE_ERROR ; 
- int lintFkeyIndexes (int /*<<< orphan*/ *,char**,int) ; 
- int /*<<< orphan*/  raw_printf (int /*<<< orphan*/ ,char*,...) ; 
- scalar_t__ sqlite3_strnicmp (char*,char*,int) ; 
- int /*<<< orphan*/  stderr ; 
- int strlen30 (char*) ; 
+
+
+
+typedef int ShellState ;
+
+
+ int SQLITE_ERROR ;
+ int lintFkeyIndexes (int *,char**,int) ;
+ int raw_printf (int ,char*,...) ;
+ scalar_t__ sqlite3_strnicmp (char*,char*,int) ;
+ int stderr ;
+ int strlen30 (char*) ;
 
 __attribute__((used)) static int lintDotCommand(
-  ShellState *pState,             /* Current shell tool state */
-  char **azArg,                   /* Array of arguments passed to dot command */
-  int nArg                        /* Number of entries in azArg[] */
+  ShellState *pState,
+  char **azArg,
+  int nArg
 ){
   int n;
   n = (nArg>=2 ? strlen30(azArg[1]) : 0);

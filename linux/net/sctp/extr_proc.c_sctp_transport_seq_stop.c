@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct seq_file {struct sctp_ht_iter* private; } ;
-struct sctp_ht_iter {int /*<<< orphan*/  hti; } ;
+struct sctp_ht_iter {int hti; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  sctp_transport_walk_stop (int /*<<< orphan*/ *) ; 
+
+ int sctp_transport_walk_stop (int *) ;
 
 __attribute__((used)) static void sctp_transport_seq_stop(struct seq_file *seq, void *v)
 {
-	struct sctp_ht_iter *iter = seq->private;
+ struct sctp_ht_iter *iter = seq->private;
 
-	sctp_transport_walk_stop(&iter->hti);
+ sctp_transport_walk_stop(&iter->hti);
 }

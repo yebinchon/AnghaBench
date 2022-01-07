@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  pthread_exit (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  run_host () ; 
- int /*<<< orphan*/  set_affinity (void*) ; 
+ int pthread_exit (int *) ;
+ int run_host () ;
+ int set_affinity (void*) ;
 
 void *start_host(void *arg)
 {
-	set_affinity(arg);
-	run_host();
-	pthread_exit(NULL);
+ set_affinity(arg);
+ run_host();
+ pthread_exit(((void*)0));
 }

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  usec_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DUID_TYPE_EN ; 
- int /*<<< orphan*/  DUID_TYPE_LL ; 
- int /*<<< orphan*/  DUID_TYPE_LLT ; 
- int /*<<< orphan*/  DUID_TYPE_UUID ; 
- int /*<<< orphan*/  test_config_parse_duid_type_one (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int usec_t ;
+
+
+ int DUID_TYPE_EN ;
+ int DUID_TYPE_LL ;
+ int DUID_TYPE_LLT ;
+ int DUID_TYPE_UUID ;
+ int test_config_parse_duid_type_one (char*,int ,int ,int ) ;
 
 __attribute__((used)) static void test_config_parse_duid_type(void) {
         test_config_parse_duid_type_one("", 0, 0, 0);

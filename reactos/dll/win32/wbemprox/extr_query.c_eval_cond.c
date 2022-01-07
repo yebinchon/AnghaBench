@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct table {int dummy; } ;
-struct TYPE_2__ {int ival; int /*<<< orphan*/  sval; int /*<<< orphan*/  propval; int /*<<< orphan*/  expr; } ;
+struct TYPE_2__ {int ival; int sval; int propval; int expr; } ;
 struct expr {int type; TYPE_1__ u; } ;
-typedef  int /*<<< orphan*/  UINT ;
-typedef  int LONGLONG ;
-typedef  int INT_PTR ;
-typedef  int /*<<< orphan*/  HRESULT ;
+typedef int UINT ;
+typedef int LONGLONG ;
+typedef int INT_PTR ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CIM_BOOLEAN ; 
- int /*<<< orphan*/  CIM_STRING ; 
- int /*<<< orphan*/  CIM_UINT64 ; 
- int /*<<< orphan*/  ERR (char*) ; 
-#define  EXPR_BVAL 133 
-#define  EXPR_COMPLEX 132 
-#define  EXPR_IVAL 131 
-#define  EXPR_PROPVAL 130 
-#define  EXPR_SVAL 129 
-#define  EXPR_UNARY 128 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  WBEM_E_INVALID_QUERY ; 
- int /*<<< orphan*/  eval_binary (struct table const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  eval_propval (struct table const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  eval_unary (struct table const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int*,int /*<<< orphan*/ *) ; 
+
+ int CIM_BOOLEAN ;
+ int CIM_STRING ;
+ int CIM_UINT64 ;
+ int ERR (char*) ;
+
+
+
+
+
+
+ int S_OK ;
+ int WBEM_E_INVALID_QUERY ;
+ int eval_binary (struct table const*,int ,int *,int*,int *) ;
+ int eval_propval (struct table const*,int ,int ,int*,int *) ;
+ int eval_unary (struct table const*,int ,int *,int*,int *) ;
 
 HRESULT eval_cond( const struct table *table, UINT row, const struct expr *cond, LONGLONG *val, UINT *type )
 {
@@ -46,26 +46,26 @@ HRESULT eval_cond( const struct table *table, UINT row, const struct expr *cond,
     }
     switch (cond->type)
     {
-    case EXPR_COMPLEX:
+    case 132:
         return eval_binary( table, row, &cond->u.expr, val, type );
 
-    case EXPR_UNARY:
+    case 128:
         return eval_unary( table, row, &cond->u.expr, val, type );
 
-    case EXPR_PROPVAL:
+    case 130:
         return eval_propval( table, row, cond->u.propval, val, type );
 
-    case EXPR_SVAL:
+    case 129:
         *val = (INT_PTR)cond->u.sval;
         *type = CIM_STRING;
         return S_OK;
 
-    case EXPR_IVAL:
+    case 131:
         *val = cond->u.ival;
         *type = CIM_UINT64;
         return S_OK;
 
-    case EXPR_BVAL:
+    case 133:
         *val = cond->u.ival;
         *type = CIM_BOOLEAN;
         return S_OK;

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct mcam_camera {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FRAMEIRQS ; 
- int /*<<< orphan*/  REG_IRQMASK ; 
- int /*<<< orphan*/  REG_IRQSTAT ; 
- int /*<<< orphan*/  mcam_reg_set_bit (struct mcam_camera*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mcam_reg_write (struct mcam_camera*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int FRAMEIRQS ;
+ int REG_IRQMASK ;
+ int REG_IRQSTAT ;
+ int mcam_reg_set_bit (struct mcam_camera*,int ,int ) ;
+ int mcam_reg_write (struct mcam_camera*,int ,int ) ;
 
 __attribute__((used)) static void mcam_ctlr_irq_enable(struct mcam_camera *cam)
 {
-	/*
-	 * Clear any pending interrupts, since we do not
-	 * expect to have I/O active prior to enabling.
-	 */
-	mcam_reg_write(cam, REG_IRQSTAT, FRAMEIRQS);
-	mcam_reg_set_bit(cam, REG_IRQMASK, FRAMEIRQS);
+
+
+
+
+ mcam_reg_write(cam, REG_IRQSTAT, FRAMEIRQS);
+ mcam_reg_set_bit(cam, REG_IRQMASK, FRAMEIRQS);
 }

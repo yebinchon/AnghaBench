@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  XML_Parser ;
-typedef  int /*<<< orphan*/  XML_Char ;
 
-/* Variables and functions */
- int O_BINARY ; 
- int O_RDONLY ; 
- int /*<<< orphan*/  READ_SIZE ; 
- int /*<<< orphan*/  const* T (char*) ; 
- scalar_t__ XML_GetBuffer (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ XML_ParseBuffer (int /*<<< orphan*/ ,int,int) ; 
- scalar_t__ XML_STATUS_ERROR ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  ftprintf (int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*) ; 
- int read (int,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  reportError (int /*<<< orphan*/ ,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  stderr ; 
- int topen (int /*<<< orphan*/  const*,int) ; 
- int /*<<< orphan*/  tperror (int /*<<< orphan*/  const*) ; 
+
+
+
+typedef int XML_Parser ;
+typedef int XML_Char ;
+
+
+ int O_BINARY ;
+ int O_RDONLY ;
+ int READ_SIZE ;
+ int const* T (char*) ;
+ scalar_t__ XML_GetBuffer (int ,int ) ;
+ scalar_t__ XML_ParseBuffer (int ,int,int) ;
+ scalar_t__ XML_STATUS_ERROR ;
+ int close (int) ;
+ int ftprintf (int ,int const*,int const*) ;
+ int read (int,char*,int ) ;
+ int reportError (int ,int const*) ;
+ int stderr ;
+ int topen (int const*,int) ;
+ int tperror (int const*) ;
 
 __attribute__((used)) static int
 processStream(const XML_Char *filename, XML_Parser parser)
 {
-  /* passing NULL for filename means read intput from stdin */
-  int fd = 0;   /* 0 is the fileno for stdin */
 
-  if (filename != NULL) {
+  int fd = 0;
+
+  if (filename != ((void*)0)) {
     fd = topen(filename, O_BINARY|O_RDONLY);
     if (fd < 0) {
       tperror(filename);
@@ -46,27 +46,27 @@ processStream(const XML_Char *filename, XML_Parser parser)
     int nread;
     char *buf = (char *)XML_GetBuffer(parser, READ_SIZE);
     if (!buf) {
-      if (filename != NULL)
+      if (filename != ((void*)0))
         close(fd);
       ftprintf(stderr, T("%s: out of memory\n"),
-               filename != NULL ? filename : T("xmlwf"));
+               filename != ((void*)0) ? filename : T("xmlwf"));
       return 0;
     }
     nread = read(fd, buf, READ_SIZE);
     if (nread < 0) {
-      tperror(filename != NULL ? filename : T("STDIN"));
-      if (filename != NULL)
+      tperror(filename != ((void*)0) ? filename : T("STDIN"));
+      if (filename != ((void*)0))
         close(fd);
       return 0;
     }
     if (XML_ParseBuffer(parser, nread, nread == 0) == XML_STATUS_ERROR) {
-        reportError(parser, filename != NULL ? filename : T("STDIN"));
-      if (filename != NULL)
+        reportError(parser, filename != ((void*)0) ? filename : T("STDIN"));
+      if (filename != ((void*)0))
         close(fd);
       return 0;
     }
     if (nread == 0) {
-      if (filename != NULL)
+      if (filename != ((void*)0))
         close(fd);
       break;;
     }

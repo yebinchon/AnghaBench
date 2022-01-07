@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int JPWL_EXPECTED_COMPONENTS ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- scalar_t__ opj_has_thread_support () ; 
- char* opj_version () ; 
- int /*<<< orphan*/  stdout ; 
+ int JPWL_EXPECTED_COMPONENTS ;
+ int fprintf (int ,char*,...) ;
+ scalar_t__ opj_has_thread_support () ;
+ char* opj_version () ;
+ int stdout ;
 
 __attribute__((used)) static void decode_help_display(void)
 {
@@ -90,16 +82,5 @@ __attribute__((used)) static void decode_help_display(void)
     }
     fprintf(stdout, "  -quiet\n"
             "    Disable output from the library and other output.\n");
-    /* UniPG>> */
-#ifdef USE_JPWL
-    fprintf(stdout, "  -W <options>\n"
-            "    Activates the JPWL correction capability, if the codestream complies.\n"
-            "    Options can be a comma separated list of <param=val> tokens:\n"
-            "    c, c=numcomps\n"
-            "       numcomps is the number of expected components in the codestream\n"
-            "       (search of first EPB rely upon this, default is %d)\n",
-            JPWL_EXPECTED_COMPONENTS);
-#endif /* USE_JPWL */
-    /* <<UniPG */
     fprintf(stdout, "\n");
 }

@@ -1,82 +1,71 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u_char ;
-typedef  int /*<<< orphan*/  ngx_int_t ;
+
+
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int u_char ;
+typedef int ngx_int_t ;
 struct TYPE_9__ {TYPE_1__* connection; } ;
-typedef  TYPE_2__ ngx_http_request_t ;
-typedef  int ngx_http_grpc_state_e ;
-struct TYPE_10__ {int state; int rest; int type; int flags; int stream_id; int /*<<< orphan*/  frame_state; } ;
-typedef  TYPE_3__ ngx_http_grpc_ctx_t ;
+typedef TYPE_2__ ngx_http_request_t ;
+typedef int ngx_http_grpc_state_e ;
+struct TYPE_10__ {int state; int rest; int type; int flags; int stream_id; int frame_state; } ;
+typedef TYPE_3__ ngx_http_grpc_ctx_t ;
 struct TYPE_11__ {int* pos; int* last; } ;
-typedef  TYPE_4__ ngx_buf_t ;
-struct TYPE_8__ {int /*<<< orphan*/  log; } ;
+typedef TYPE_4__ ngx_buf_t ;
+struct TYPE_8__ {int log; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NGX_AGAIN ; 
- int /*<<< orphan*/  NGX_ERROR ; 
- int NGX_HTTP_V2_DEFAULT_FRAME_SIZE ; 
- int /*<<< orphan*/  NGX_LOG_DEBUG_HTTP ; 
- int /*<<< orphan*/  NGX_LOG_ERR ; 
- int /*<<< orphan*/  NGX_OK ; 
-#define  ngx_http_grpc_st_flags 138 
-#define  ngx_http_grpc_st_length_2 137 
-#define  ngx_http_grpc_st_length_3 136 
-#define  ngx_http_grpc_st_padding 135 
-#define  ngx_http_grpc_st_payload 134 
-#define  ngx_http_grpc_st_start 133 
-#define  ngx_http_grpc_st_stream_id 132 
-#define  ngx_http_grpc_st_stream_id_2 131 
-#define  ngx_http_grpc_st_stream_id_3 130 
-#define  ngx_http_grpc_st_stream_id_4 129 
-#define  ngx_http_grpc_st_type 128 
- int /*<<< orphan*/  ngx_log_debug2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int,int) ; 
- int /*<<< orphan*/  ngx_log_debug4 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int,int,int,int) ; 
- int /*<<< orphan*/  ngx_log_error (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int) ; 
+
+ int NGX_AGAIN ;
+ int NGX_ERROR ;
+ int NGX_HTTP_V2_DEFAULT_FRAME_SIZE ;
+ int NGX_LOG_DEBUG_HTTP ;
+ int NGX_LOG_ERR ;
+ int NGX_OK ;
+ int ngx_log_debug2 (int ,int ,int ,char*,int,int) ;
+ int ngx_log_debug4 (int ,int ,int ,char*,int,int,int,int) ;
+ int ngx_log_error (int ,int ,int ,char*,int) ;
 
 __attribute__((used)) static ngx_int_t
 ngx_http_grpc_parse_frame(ngx_http_request_t *r, ngx_http_grpc_ctx_t *ctx,
     ngx_buf_t *b)
 {
-    u_char                 ch, *p;
-    ngx_http_grpc_state_e  state;
+    u_char ch, *p;
+    ngx_http_grpc_state_e state;
 
     state = ctx->state;
 
     for (p = b->pos; p < b->last; p++) {
         ch = *p;
 
-#if 0
-        ngx_log_debug2(NGX_LOG_DEBUG_HTTP, r->connection->log, 0,
-                       "grpc frame byte: %02Xd, s:%d", ch, state);
-#endif
+
+
+
+
 
         switch (state) {
 
-        case ngx_http_grpc_st_start:
+        case 133:
             ctx->rest = ch << 16;
-            state = ngx_http_grpc_st_length_2;
+            state = 137;
             break;
 
-        case ngx_http_grpc_st_length_2:
+        case 137:
             ctx->rest |= ch << 8;
-            state = ngx_http_grpc_st_length_3;
+            state = 136;
             break;
 
-        case ngx_http_grpc_st_length_3:
+        case 136:
             ctx->rest |= ch;
 
             if (ctx->rest > NGX_HTTP_V2_DEFAULT_FRAME_SIZE) {
@@ -86,35 +75,35 @@ ngx_http_grpc_parse_frame(ngx_http_request_t *r, ngx_http_grpc_ctx_t *ctx,
                 return NGX_ERROR;
             }
 
-            state = ngx_http_grpc_st_type;
+            state = 128;
             break;
 
-        case ngx_http_grpc_st_type:
+        case 128:
             ctx->type = ch;
-            state = ngx_http_grpc_st_flags;
+            state = 138;
             break;
 
-        case ngx_http_grpc_st_flags:
+        case 138:
             ctx->flags = ch;
-            state = ngx_http_grpc_st_stream_id;
+            state = 132;
             break;
 
-        case ngx_http_grpc_st_stream_id:
+        case 132:
             ctx->stream_id = (ch & 0x7f) << 24;
-            state = ngx_http_grpc_st_stream_id_2;
+            state = 131;
             break;
 
-        case ngx_http_grpc_st_stream_id_2:
+        case 131:
             ctx->stream_id |= ch << 16;
-            state = ngx_http_grpc_st_stream_id_3;
+            state = 130;
             break;
 
-        case ngx_http_grpc_st_stream_id_3:
+        case 130:
             ctx->stream_id |= ch << 8;
-            state = ngx_http_grpc_st_stream_id_4;
+            state = 129;
             break;
 
-        case ngx_http_grpc_st_stream_id_4:
+        case 129:
             ctx->stream_id |= ch;
 
             ngx_log_debug4(NGX_LOG_DEBUG_HTTP, r->connection->log, 0,
@@ -123,14 +112,14 @@ ngx_http_grpc_parse_frame(ngx_http_request_t *r, ngx_http_grpc_ctx_t *ctx,
 
             b->pos = p + 1;
 
-            ctx->state = ngx_http_grpc_st_payload;
+            ctx->state = 134;
             ctx->frame_state = 0;
 
             return NGX_OK;
 
-        /* suppress warning */
-        case ngx_http_grpc_st_payload:
-        case ngx_http_grpc_st_padding:
+
+        case 134:
+        case 135:
             break;
         }
     }

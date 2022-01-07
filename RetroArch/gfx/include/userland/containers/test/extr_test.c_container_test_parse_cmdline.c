@@ -1,66 +1,66 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int int32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOG_ERROR (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  LOG_INFO (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  LONG_MAX ; 
- int /*<<< orphan*/  LONG_MIN ; 
- size_t MAX_SEEKS ; 
- int VC_CONTAINER_LOG_ERROR ; 
- int VC_CONTAINER_LOG_INFO ; 
- int /*<<< orphan*/  VC_CONTAINER_SEEK_FLAG_FORWARD ; 
- int /*<<< orphan*/  b_audio ; 
- int b_client_io ; 
- int b_dump ; 
- int /*<<< orphan*/  b_errorcode ; 
- int b_info ; 
- int b_packetize ; 
- int b_seek ; 
- int /*<<< orphan*/  b_subs ; 
- int /*<<< orphan*/  b_video ; 
- int /*<<< orphan*/  packets_num ; 
- char* psz_in ; 
- char* psz_out ; 
- int /*<<< orphan*/ * seek_flags ; 
- int /*<<< orphan*/ * seek_offsets ; 
- size_t seeks ; 
- char* strrchr (char*,char) ; 
- int /*<<< orphan*/  strtol (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  track_num ; 
- int verbosity ; 
- int verbosity_input ; 
- int verbosity_output ; 
+
+
+
+typedef int int32_t ;
+
+
+ int LOG_ERROR (int ,char*,...) ;
+ int LOG_INFO (int ,char*,...) ;
+ int LONG_MAX ;
+ int LONG_MIN ;
+ size_t MAX_SEEKS ;
+ int VC_CONTAINER_LOG_ERROR ;
+ int VC_CONTAINER_LOG_INFO ;
+ int VC_CONTAINER_SEEK_FLAG_FORWARD ;
+ int b_audio ;
+ int b_client_io ;
+ int b_dump ;
+ int b_errorcode ;
+ int b_info ;
+ int b_packetize ;
+ int b_seek ;
+ int b_subs ;
+ int b_video ;
+ int packets_num ;
+ char* psz_in ;
+ char* psz_out ;
+ int * seek_flags ;
+ int * seek_offsets ;
+ size_t seeks ;
+ char* strrchr (char*,char) ;
+ int strtol (char*,int ,int ) ;
+ int track_num ;
+ int verbosity ;
+ int verbosity_input ;
+ int verbosity_output ;
 
 __attribute__((used)) static int container_test_parse_cmdline(int argc, char **argv)
 {
    int i, j, k;
    int32_t *p_verbosity;
 
-   /* Parse the command line arguments */
+
    for(i = 1; i < argc; i++)
    {
       if(!argv[i]) continue;
 
       if(argv[i][0] != '-')
       {
-         /* Not an option argument so will be the input URI */
+
          psz_in = argv[i];
          continue;
       }
 
-      /* We are now dealing with command line options */
+
       switch(argv[i][1])
       {
       case 'i': b_info = 1; break;
@@ -114,7 +114,7 @@ __attribute__((used)) static int container_test_parse_cmdline(int argc, char **a
       continue;
    }
 
-   /* Sanity check that we have at least an input uri */
+
    if(!psz_in)
    {
      LOG_ERROR(0, "missing uri argument");

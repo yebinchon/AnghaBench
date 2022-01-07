@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct editor_baton {int /*<<< orphan*/  dedit_baton; TYPE_1__* deditor; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-struct TYPE_2__ {int /*<<< orphan*/ * (* abort_edit ) (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * drive_changes (struct editor_baton*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * stub1 (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_error_clear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_error_trace (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int svn_error_t ;
+struct editor_baton {int dedit_baton; TYPE_1__* deditor; } ;
+typedef int apr_pool_t ;
+struct TYPE_2__ {int * (* abort_edit ) (int ,int *) ;} ;
+
+
+ int * drive_changes (struct editor_baton*,int *) ;
+ int * stub1 (int ,int *) ;
+ int svn_error_clear (int *) ;
+ int * svn_error_trace (int *) ;
 
 __attribute__((used)) static svn_error_t *
 abort_cb(void *baton,
@@ -30,10 +30,10 @@ abort_cb(void *baton,
   svn_error_t *err;
   svn_error_t *err2;
 
-  /* We still need to drive anything we collected in the editor to this
-     point. */
 
-  /* Drive the tree we've created. */
+
+
+
   err = drive_changes(eb, scratch_pool);
 
   err2 = eb->deditor->abort_edit(eb->dedit_baton, scratch_pool);

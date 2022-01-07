@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {void const* elem; struct TYPE_3__** child; } ;
-typedef  TYPE_1__ IjkAVTreeNode ;
+typedef TYPE_1__ IjkAVTreeNode ;
 
-/* Variables and functions */
+
 
 void *ijk_av_tree_find(const IjkAVTreeNode *t, void *key,
                    int (*cmp)(const void *key, const void *b), void *next[2])
@@ -33,5 +33,5 @@ void *ijk_av_tree_find(const IjkAVTreeNode *t, void *key,
             return t->elem;
         }
     }
-    return NULL;
+    return ((void*)0);
 }

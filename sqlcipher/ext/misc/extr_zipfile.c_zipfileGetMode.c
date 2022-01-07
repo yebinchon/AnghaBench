@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u32 ;
-typedef  int /*<<< orphan*/  sqlite3_value ;
 
-/* Variables and functions */
- int SQLITE_CONSTRAINT ; 
- int SQLITE_ERROR ; 
- int SQLITE_OK ; 
- int S_IFDIR ; 
- int S_IFLNK ; 
- int S_IFREG ; 
- char* sqlite3_mprintf (char*,...) ; 
- scalar_t__ sqlite3_value_int (int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3_value_text (int /*<<< orphan*/ *) ; 
- int strlen (char const*) ; 
+
+
+
+typedef int u32 ;
+typedef int sqlite3_value ;
+
+
+ int SQLITE_CONSTRAINT ;
+ int SQLITE_ERROR ;
+ int SQLITE_OK ;
+ int S_IFDIR ;
+ int S_IFLNK ;
+ int S_IFREG ;
+ char* sqlite3_mprintf (char*,...) ;
+ scalar_t__ sqlite3_value_int (int *) ;
+ scalar_t__ sqlite3_value_text (int *) ;
+ int strlen (char const*) ;
 
 __attribute__((used)) static int zipfileGetMode(
-  sqlite3_value *pVal, 
-  int bIsDir,                     /* If true, default to directory */
-  u32 *pMode,                     /* OUT: Mode value */
-  char **pzErr                    /* OUT: Error message */
+  sqlite3_value *pVal,
+  int bIsDir,
+  u32 *pMode,
+  char **pzErr
 ){
   const char *z = (const char*)sqlite3_value_text(pVal);
   u32 mode = 0;
@@ -53,8 +53,8 @@ __attribute__((used)) static int zipfileGetMode(
     }
   }
   if( ((mode & S_IFDIR)==0)==bIsDir ){
-    /* The "mode" attribute is a directory, but data has been specified.
-    ** Or vice-versa - no data but "mode" is a file or symlink.  */
+
+
     *pzErr = sqlite3_mprintf("zipfile: mode does not match data");
     return SQLITE_CONSTRAINT;
   }

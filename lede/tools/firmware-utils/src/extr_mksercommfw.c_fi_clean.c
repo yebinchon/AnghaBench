@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct file_info {scalar_t__ file_size; int /*<<< orphan*/ * file_data; int /*<<< orphan*/ * file_name; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
+
+
+
+struct file_info {scalar_t__ file_size; int * file_data; int * file_name; } ;
+
+
+ int free (int *) ;
 
 __attribute__((used)) static void fi_clean(struct file_info* finfo) {
-	if (!finfo)
-		return;
+ if (!finfo)
+  return;
 
-	if (finfo->file_name) {
-		finfo->file_name = NULL;
-	}
+ if (finfo->file_name) {
+  finfo->file_name = ((void*)0);
+ }
 
-	if (finfo->file_data) {
-		free(finfo->file_data);
-		finfo->file_data = NULL;
-	}
+ if (finfo->file_data) {
+  free(finfo->file_data);
+  finfo->file_data = ((void*)0);
+ }
 
-	finfo->file_size = 0;
+ finfo->file_size = 0;
 }

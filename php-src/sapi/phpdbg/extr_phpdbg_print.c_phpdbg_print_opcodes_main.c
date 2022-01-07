@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  zend_function ;
 
-/* Variables and functions */
- scalar_t__ PHPDBG_G (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ops ; 
- int /*<<< orphan*/  phpdbg_out (char*) ; 
- int /*<<< orphan*/  phpdbg_print_function_helper (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int zend_function ;
+
+
+ scalar_t__ PHPDBG_G (int ) ;
+ int ops ;
+ int phpdbg_out (char*) ;
+ int phpdbg_print_function_helper (int *) ;
 
 void phpdbg_print_opcodes_main() {
-	phpdbg_out("function name: (null)\n");
-	phpdbg_print_function_helper((zend_function *) PHPDBG_G(ops));
+ phpdbg_out("function name: (null)\n");
+ phpdbg_print_function_helper((zend_function *) PHPDBG_G(ops));
 }

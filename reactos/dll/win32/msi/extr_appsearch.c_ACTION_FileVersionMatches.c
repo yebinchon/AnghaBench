@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {scalar_t__ dwFileVersionMS; scalar_t__ dwFileVersionLS; } ;
-typedef  TYPE_1__ VS_FIXEDFILEINFO ;
-typedef  int /*<<< orphan*/  UINT ;
-struct TYPE_5__ {scalar_t__ MinVersionMS; scalar_t__ MinVersionLS; scalar_t__ MaxVersionMS; scalar_t__ MaxVersionLS; int /*<<< orphan*/  Languages; } ;
-typedef  TYPE_2__ MSISIGNATURE ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef TYPE_1__ VS_FIXEDFILEINFO ;
+typedef int UINT ;
+struct TYPE_5__ {scalar_t__ MinVersionMS; scalar_t__ MinVersionLS; scalar_t__ MaxVersionMS; scalar_t__ MaxVersionLS; int Languages; } ;
+typedef TYPE_2__ MSISIGNATURE ;
+typedef int LPCWSTR ;
+typedef int DWORD ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERROR_OUTOFMEMORY ; 
- int /*<<< orphan*/  ERROR_SUCCESS ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GetFileVersionInfoSizeW (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ GetFileVersionInfoW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*) ; 
- int /*<<< orphan*/  HIWORD (scalar_t__) ; 
- int /*<<< orphan*/  LOWORD (scalar_t__) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  VerQueryValueW (void*,int /*<<< orphan*/ ,void**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  debugstr_w (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  match_languages (void*,int /*<<< orphan*/ ) ; 
- void* msi_alloc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  msi_free (void*) ; 
- int /*<<< orphan*/  szBackSlash ; 
+
+ int ERROR_OUTOFMEMORY ;
+ int ERROR_SUCCESS ;
+ int FALSE ;
+ int GetFileVersionInfoSizeW (int ,int *) ;
+ scalar_t__ GetFileVersionInfoW (int ,int ,int ,void*) ;
+ int HIWORD (scalar_t__) ;
+ int LOWORD (scalar_t__) ;
+ int TRACE (char*,int ,...) ;
+ int TRUE ;
+ int VerQueryValueW (void*,int ,void**,int *) ;
+ int debugstr_w (int ) ;
+ int match_languages (void*,int ) ;
+ void* msi_alloc (int ) ;
+ int msi_free (void*) ;
+ int szBackSlash ;
 
 __attribute__((used)) static UINT ACTION_FileVersionMatches(const MSISIGNATURE *sig, LPCWSTR filePath,
  BOOL *matches)
 {
     UINT len;
     void *version;
-    VS_FIXEDFILEINFO *info = NULL;
+    VS_FIXEDFILEINFO *info = ((void*)0);
     DWORD zero, size = GetFileVersionInfoSizeW( filePath, &zero );
 
     *matches = FALSE;

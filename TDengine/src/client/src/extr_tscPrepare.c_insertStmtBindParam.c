@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_7__ ;
-typedef  struct TYPE_15__   TYPE_6__ ;
-typedef  struct TYPE_14__   TYPE_5__ ;
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t uint32_t ;
-typedef  size_t int32_t ;
+
+
+typedef struct TYPE_16__ TYPE_7__ ;
+typedef struct TYPE_15__ TYPE_6__ ;
+typedef struct TYPE_14__ TYPE_5__ ;
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef size_t uint32_t ;
+typedef size_t int32_t ;
 struct TYPE_16__ {int idx; } ;
 struct TYPE_15__ {size_t numOfRows; } ;
 struct TYPE_14__ {int batchSize; TYPE_2__* pDataBlocks; } ;
@@ -26,20 +26,20 @@ struct TYPE_13__ {size_t size; size_t nAllocSize; char* pData; size_t numOfParam
 struct TYPE_12__ {TYPE_1__* pSql; } ;
 struct TYPE_11__ {size_t nSize; TYPE_4__** pData; } ;
 struct TYPE_10__ {TYPE_5__ cmd; } ;
-typedef  int /*<<< orphan*/  TAOS_BIND ;
-typedef  TYPE_3__ STscStmt ;
-typedef  TYPE_4__ STableDataBlocks ;
-typedef  TYPE_5__ SSqlCmd ;
-typedef  TYPE_6__ SShellSubmitBlock ;
-typedef  TYPE_7__ SParamInfo ;
+typedef int TAOS_BIND ;
+typedef TYPE_3__ STscStmt ;
+typedef TYPE_4__ STableDataBlocks ;
+typedef TYPE_5__ SSqlCmd ;
+typedef TYPE_6__ SShellSubmitBlock ;
+typedef TYPE_7__ SParamInfo ;
 
-/* Variables and functions */
- int TSDB_CODE_CLI_OUT_OF_MEMORY ; 
- int TSDB_CODE_SUCCESS ; 
- int /*<<< orphan*/  assert (int) ; 
- int doBindParam (char*,TYPE_7__*,int /*<<< orphan*/ *) ; 
- void* realloc (char*,size_t) ; 
- int /*<<< orphan*/  tscTrace (char*,int) ; 
+
+ int TSDB_CODE_CLI_OUT_OF_MEMORY ;
+ int TSDB_CODE_SUCCESS ;
+ int assert (int) ;
+ int doBindParam (char*,TYPE_7__*,int *) ;
+ void* realloc (char*,size_t) ;
+ int tscTrace (char*,int) ;
 
 __attribute__((used)) static int insertStmtBindParam(STscStmt* stmt, TAOS_BIND* bind) {
   SSqlCmd* pCmd = &stmt->pSql->cmd;
@@ -52,8 +52,8 @@ __attribute__((used)) static int insertStmtBindParam(STscStmt* stmt, TAOS_BIND* 
 
   for (int32_t i = 0; i < pCmd->pDataBlocks->nSize; ++i) {
     STableDataBlocks* pBlock = pCmd->pDataBlocks->pData[i];
-    uint32_t          totalDataSize = pBlock->size - sizeof(SShellSubmitBlock);
-    uint32_t          dataSize = totalDataSize / alloced;
+    uint32_t totalDataSize = pBlock->size - sizeof(SShellSubmitBlock);
+    uint32_t dataSize = totalDataSize / alloced;
     assert(dataSize * alloced == totalDataSize);
 
     if (alloced == binded) {
@@ -61,7 +61,7 @@ __attribute__((used)) static int insertStmtBindParam(STscStmt* stmt, TAOS_BIND* 
       if (totalDataSize > pBlock->nAllocSize) {
         const double factor = 1.5;
         void* tmp = realloc(pBlock->pData, (uint32_t)(totalDataSize * factor));
-        if (tmp == NULL) {
+        if (tmp == ((void*)0)) {
           return TSDB_CODE_CLI_OUT_OF_MEMORY;
         }
         pBlock->pData = (char*)tmp;
@@ -80,9 +80,9 @@ __attribute__((used)) static int insertStmtBindParam(STscStmt* stmt, TAOS_BIND* 
     }
   }
 
-  // actual work of all data blocks is done, update block size and numOfRows.
-  // note we don't do this block by block during the binding process, because 
-  // we cannot recover if something goes wrong.
+
+
+
   pCmd->batchSize = binded * 2 + 1;
 
   if (binded < alloced) {

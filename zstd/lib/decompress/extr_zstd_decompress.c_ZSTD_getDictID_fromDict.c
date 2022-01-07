@@ -1,20 +1,12 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int MEM_readLE32 (char const*) ; 
- int ZSTD_FRAMEIDSIZE ; 
- scalar_t__ ZSTD_MAGIC_DICTIONARY ; 
+ int MEM_readLE32 (char const*) ;
+ int ZSTD_FRAMEIDSIZE ;
+ scalar_t__ ZSTD_MAGIC_DICTIONARY ;
 
 unsigned ZSTD_getDictID_fromDict(const void* dict, size_t dictSize)
 {

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
+
+
+
+
+typedef int uint8_t ;
 struct params_s {scalar_t__ packets_count; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EXPECT (int) ; 
- int OK ; 
- scalar_t__ xiph_CountHeaders (int /*<<< orphan*/  const*,size_t) ; 
+
+ int EXPECT (int) ;
+ int OK ;
+ scalar_t__ xiph_CountHeaders (int const*,size_t) ;
 
 __attribute__((used)) static int test_xiph_CountHeaders(const char *run,
                  const uint8_t *p_extra, size_t i_extra,

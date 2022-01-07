@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct menelaus_chip {int /*<<< orphan*/  work; } ;
-typedef  int /*<<< orphan*/  irqreturn_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IRQ_HANDLED ; 
- int /*<<< orphan*/  disable_irq_nosync (int) ; 
- int /*<<< orphan*/  schedule_work (int /*<<< orphan*/ *) ; 
+
+
+
+struct menelaus_chip {int work; } ;
+typedef int irqreturn_t ;
+
+
+ int IRQ_HANDLED ;
+ int disable_irq_nosync (int) ;
+ int schedule_work (int *) ;
 
 __attribute__((used)) static irqreturn_t menelaus_irq(int irq, void *_menelaus)
 {
-	struct menelaus_chip *menelaus = _menelaus;
+ struct menelaus_chip *menelaus = _menelaus;
 
-	disable_irq_nosync(irq);
-	(void)schedule_work(&menelaus->work);
+ disable_irq_nosync(irq);
+ (void)schedule_work(&menelaus->work);
 
-	return IRQ_HANDLED;
+ return IRQ_HANDLED;
 }

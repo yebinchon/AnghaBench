@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  cs; int /*<<< orphan*/  context_handle_list; } ;
-struct TYPE_5__ {int refs; int /*<<< orphan*/  entry; int /*<<< orphan*/  rw_lock; void* ctx_guard; } ;
-typedef  TYPE_1__ RpcContextHandle ;
-typedef  TYPE_2__ RpcAssoc ;
-typedef  int /*<<< orphan*/  RPC_STATUS ;
-typedef  scalar_t__ NDR_SCONTEXT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EnterCriticalSection (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HEAP_ZERO_MEMORY ; 
- TYPE_1__* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  LeaveCriticalSection (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RPC_S_OK ; 
- int /*<<< orphan*/  RPC_S_OUT_OF_MEMORY ; 
- int /*<<< orphan*/  RtlAcquireResourceExclusive (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RtlInitializeResource (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  list_add_tail (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int cs; int context_handle_list; } ;
+struct TYPE_5__ {int refs; int entry; int rw_lock; void* ctx_guard; } ;
+typedef TYPE_1__ RpcContextHandle ;
+typedef TYPE_2__ RpcAssoc ;
+typedef int RPC_STATUS ;
+typedef scalar_t__ NDR_SCONTEXT ;
+
+
+ int EnterCriticalSection (int *) ;
+ int GetProcessHeap () ;
+ int HEAP_ZERO_MEMORY ;
+ TYPE_1__* HeapAlloc (int ,int ,int) ;
+ int LeaveCriticalSection (int *) ;
+ int RPC_S_OK ;
+ int RPC_S_OUT_OF_MEMORY ;
+ int RtlAcquireResourceExclusive (int *,int ) ;
+ int RtlInitializeResource (int *) ;
+ int TRUE ;
+ int list_add_tail (int *,int *) ;
 
 RPC_STATUS RpcServerAssoc_AllocateContextHandle(RpcAssoc *assoc, void *CtxGuard,
                                                 NDR_SCONTEXT *SContext)
@@ -45,8 +45,8 @@ RPC_STATUS RpcServerAssoc_AllocateContextHandle(RpcAssoc *assoc, void *CtxGuard,
     RtlInitializeResource(&context_handle->rw_lock);
     context_handle->refs = 1;
 
-    /* lock here to mirror unmarshall, so we don't need to special-case the
-     * freeing of a non-marshalled context handle */
+
+
     RtlAcquireResourceExclusive(&context_handle->rw_lock, TRUE);
 
     EnterCriticalSection(&assoc->cs);

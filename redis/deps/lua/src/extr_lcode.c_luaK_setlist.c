@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_7__ {int freereg; TYPE_1__* ls; } ;
-struct TYPE_6__ {int /*<<< orphan*/  lastline; } ;
-typedef  TYPE_2__ FuncState ;
+struct TYPE_6__ {int lastline; } ;
+typedef TYPE_2__ FuncState ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Instruction ; 
- int LFIELDS_PER_FLUSH ; 
- int LUA_MULTRET ; 
- int MAXARG_C ; 
- int /*<<< orphan*/  OP_SETLIST ; 
- int /*<<< orphan*/  cast (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  luaK_code (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  luaK_codeABC (TYPE_2__*,int /*<<< orphan*/ ,int,int,int) ; 
- int /*<<< orphan*/  lua_assert (int) ; 
+
+ int Instruction ;
+ int LFIELDS_PER_FLUSH ;
+ int LUA_MULTRET ;
+ int MAXARG_C ;
+ int OP_SETLIST ;
+ int cast (int ,int) ;
+ int luaK_code (TYPE_2__*,int ,int ) ;
+ int luaK_codeABC (TYPE_2__*,int ,int,int,int) ;
+ int lua_assert (int) ;
 
 void luaK_setlist (FuncState *fs, int base, int nelems, int tostore) {
-  int c =  (nelems - 1)/LFIELDS_PER_FLUSH + 1;
+  int c = (nelems - 1)/LFIELDS_PER_FLUSH + 1;
   int b = (tostore == LUA_MULTRET) ? 0 : tostore;
   lua_assert(tostore != 0);
   if (c <= MAXARG_C)
@@ -37,5 +37,5 @@ void luaK_setlist (FuncState *fs, int base, int nelems, int tostore) {
     luaK_codeABC(fs, OP_SETLIST, base, b, 0);
     luaK_code(fs, cast(Instruction, c), fs->ls->lastline);
   }
-  fs->freereg = base + 1;  /* free registers with list values */
+  fs->freereg = base + 1;
 }

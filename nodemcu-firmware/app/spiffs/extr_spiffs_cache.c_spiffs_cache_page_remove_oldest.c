@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u8_t ;
-typedef  scalar_t__ u32_t ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int u8_t ;
+typedef scalar_t__ u32_t ;
 struct TYPE_6__ {scalar_t__ last_access; int flags; } ;
-typedef  TYPE_1__ spiffs_cache_page ;
+typedef TYPE_1__ spiffs_cache_page ;
 struct TYPE_7__ {int cpage_use_map; int cpage_use_mask; int cpage_count; scalar_t__ last_access; } ;
-typedef  TYPE_2__ spiffs_cache ;
-typedef  int /*<<< orphan*/  spiffs ;
-typedef  int /*<<< orphan*/  s32_t ;
+typedef TYPE_2__ spiffs_cache ;
+typedef int spiffs ;
+typedef int s32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SPIFFS_OK ; 
- int /*<<< orphan*/  spiffs_cache_page_free (int /*<<< orphan*/ *,int,int) ; 
- TYPE_2__* spiffs_get_cache (int /*<<< orphan*/ *) ; 
- TYPE_1__* spiffs_get_cache_page_hdr (int /*<<< orphan*/ *,TYPE_2__*,int) ; 
+
+ int SPIFFS_OK ;
+ int spiffs_cache_page_free (int *,int,int) ;
+ TYPE_2__* spiffs_get_cache (int *) ;
+ TYPE_1__* spiffs_get_cache_page_hdr (int *,TYPE_2__*,int) ;
 
 __attribute__((used)) static s32_t spiffs_cache_page_remove_oldest(spiffs *fs, u8_t flag_mask, u8_t flags) {
   s32_t res = SPIFFS_OK;
   spiffs_cache *cache = spiffs_get_cache(fs);
 
   if ((cache->cpage_use_map & cache->cpage_use_mask) != cache->cpage_use_mask) {
-    // at least one free cpage
+
     return SPIFFS_OK;
   }
 
-  // all busy, scan thru all to find the cpage which has oldest access
+
   int i;
   int cand_ix = -1;
   u32_t oldest_val = 0;

@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  EVP_CIPHER_CTX ;
 
-/* Variables and functions */
- int dasync_cipher_ctrl_helper (int /*<<< orphan*/ *,int,int,void*,int) ; 
+
+
+
+typedef int EVP_CIPHER_CTX ;
+
+
+ int dasync_cipher_ctrl_helper (int *,int,int,void*,int) ;
 
 __attribute__((used)) static int dasync_aes128_cbc_hmac_sha1_ctrl(EVP_CIPHER_CTX *ctx, int type,
                                              int arg, void *ptr)

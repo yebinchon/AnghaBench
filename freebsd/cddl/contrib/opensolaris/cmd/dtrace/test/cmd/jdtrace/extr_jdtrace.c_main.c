@@ -1,45 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char** alloca (int) ; 
- int /*<<< orphan*/  execvp (char*,char**) ; 
- int /*<<< orphan*/  perror (char*) ; 
+ char** alloca (int) ;
+ int execvp (char*,char**) ;
+ int perror (char*) ;
 
 int
 main(int argc, char **argv)
 {
-	int i, ac, has64;
-	char **av, **p;
+ int i, ac, has64;
+ char **av, **p;
 
-	ac = argc + 3;
-	av = p = alloca(sizeof (char *) * ac);
+ ac = argc + 3;
+ av = p = alloca(sizeof (char *) * ac);
 
-	*p++ = "java";
-	*p++ = "-jar";
-	*p++ = "/opt/SUNWdtrt/lib/java/jdtrace.jar";
+ *p++ = "java";
+ *p++ = "-jar";
+ *p++ = "/opt/SUNWdtrt/lib/java/jdtrace.jar";
 
-	argc--;
-	argv++;
+ argc--;
+ argv++;
 
-	for (i = 0; i < argc; i++) {
-		p[i] = argv[i];
-	}
-	p[i] = NULL;
+ for (i = 0; i < argc; i++) {
+  p[i] = argv[i];
+ }
+ p[i] = ((void*)0);
 
-	(void) execvp(av[0], av);
+ (void) execvp(av[0], av);
 
-	perror("exec failed");
+ perror("exec failed");
 
-	return (0);
+ return (0);
 }

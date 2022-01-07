@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ ssize_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  STDIN_FILENO ; 
- scalar_t__ read (int /*<<< orphan*/ ,char*,size_t) ; 
+
+
+
+typedef scalar_t__ ssize_t ;
+
+
+ int STDIN_FILENO ;
+ scalar_t__ read (int ,char*,size_t) ;
 
 size_t read_stdin(char *buf, size_t size)
 {
@@ -27,9 +27,9 @@ size_t read_stdin(char *buf, size_t size)
       if (ret <= 0)
          break;
 
-      buf      += ret;
+      buf += ret;
       has_read += ret;
-      size     -= ret;
+      size -= ret;
    }
 
    return has_read;

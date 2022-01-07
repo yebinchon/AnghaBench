@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int const uint64_t ;
-typedef  int /*<<< orphan*/  list ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  strcmp (char*,char const* const) ; 
- scalar_t__ unlikely (int) ; 
+
+
+
+typedef int const uint64_t ;
+typedef int list ;
+
+
+ int free (char*) ;
+ int strcmp (char*,char const* const) ;
+ scalar_t__ unlikely (int) ;
 
 __attribute__((used)) static uint64_t qsv_params_get_value(const char *const *text,
                                      const int *list,
@@ -34,8 +34,8 @@ __attribute__((used)) static uint64_t qsv_params_get_value(const char *const *te
             break;
         }
 
-    // sel comes from var_InheritString and must be freed.
+
     free(sel);
-    // Returns the found item, or the default/first one if not found.
+
     return list[result];
 }

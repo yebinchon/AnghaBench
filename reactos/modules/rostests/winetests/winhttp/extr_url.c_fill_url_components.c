@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int dwStructSize; int nPort; int /*<<< orphan*/  lpszExtraInfo; void* dwExtraInfoLength; int /*<<< orphan*/  lpszUrlPath; void* dwUrlPathLength; int /*<<< orphan*/  lpszPassword; void* dwPasswordLength; int /*<<< orphan*/  lpszUserName; void* dwUserNameLength; int /*<<< orphan*/  lpszHostName; void* dwHostNameLength; int /*<<< orphan*/  nScheme; int /*<<< orphan*/  lpszScheme; void* dwSchemeLength; } ;
-typedef  TYPE_1__ URL_COMPONENTS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INTERNET_SCHEME_HTTP ; 
- int /*<<< orphan*/  about ; 
- int /*<<< orphan*/  http ; 
- void* lstrlenW (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  password ; 
- int /*<<< orphan*/  query ; 
- int /*<<< orphan*/  username ; 
- int /*<<< orphan*/  winehq ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int dwStructSize; int nPort; int lpszExtraInfo; void* dwExtraInfoLength; int lpszUrlPath; void* dwUrlPathLength; int lpszPassword; void* dwPasswordLength; int lpszUserName; void* dwUserNameLength; int lpszHostName; void* dwHostNameLength; int nScheme; int lpszScheme; void* dwSchemeLength; } ;
+typedef TYPE_1__ URL_COMPONENTS ;
+
+
+ int INTERNET_SCHEME_HTTP ;
+ int about ;
+ int http ;
+ void* lstrlenW (int ) ;
+ int password ;
+ int query ;
+ int username ;
+ int winehq ;
 
 __attribute__((used)) static void fill_url_components( URL_COMPONENTS *uc )
 {

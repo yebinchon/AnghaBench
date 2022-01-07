@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct dm_table {int /*<<< orphan*/ ** index; } ;
-typedef  int /*<<< orphan*/  sector_t ;
 
-/* Variables and functions */
- unsigned int KEYS_PER_NODE ; 
+
+
+
+struct dm_table {int ** index; } ;
+typedef int sector_t ;
+
+
+ unsigned int KEYS_PER_NODE ;
 
 __attribute__((used)) static inline sector_t *get_node(struct dm_table *t,
-				 unsigned int l, unsigned int n)
+     unsigned int l, unsigned int n)
 {
-	return t->index[l] + (n * KEYS_PER_NODE);
+ return t->index[l] + (n * KEYS_PER_NODE);
 }

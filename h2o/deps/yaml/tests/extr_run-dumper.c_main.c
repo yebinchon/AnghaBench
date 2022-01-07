@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  yaml_parser_t ;
-typedef  int /*<<< orphan*/  yaml_emitter_t ;
-typedef  unsigned char yaml_document_t ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int BUFFER_SIZE ; 
- int MAX_DOCUMENTS ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ compare_documents (unsigned char*,unsigned char*) ; 
- int copy_document (unsigned char*,unsigned char*) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fflush (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  memmove (char**,char**,int) ; 
- int /*<<< orphan*/  memset (unsigned char*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ print_output (char*,unsigned char*,size_t,int) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  stdout ; 
- scalar_t__ strcmp (char*,char*) ; 
- int /*<<< orphan*/  yaml_document_delete (unsigned char*) ; 
- int /*<<< orphan*/  yaml_document_get_root_node (unsigned char*) ; 
- int /*<<< orphan*/  yaml_emitter_close (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  yaml_emitter_delete (int /*<<< orphan*/ *) ; 
- scalar_t__ yaml_emitter_dump (int /*<<< orphan*/ *,unsigned char*) ; 
- scalar_t__ yaml_emitter_flush (int /*<<< orphan*/ *) ; 
- int yaml_emitter_initialize (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  yaml_emitter_open (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  yaml_emitter_set_canonical (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  yaml_emitter_set_output_string (int /*<<< orphan*/ *,unsigned char*,int,size_t*) ; 
- int /*<<< orphan*/  yaml_emitter_set_unicode (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  yaml_parser_delete (int /*<<< orphan*/ *) ; 
- int yaml_parser_initialize (int /*<<< orphan*/ *) ; 
- scalar_t__ yaml_parser_load (int /*<<< orphan*/ *,unsigned char*) ; 
- int /*<<< orphan*/  yaml_parser_set_input_file (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  yaml_parser_set_input_string (int /*<<< orphan*/ *,unsigned char*,size_t) ; 
+
+
+
+typedef int yaml_parser_t ;
+typedef int yaml_emitter_t ;
+typedef unsigned char yaml_document_t ;
+typedef int FILE ;
+
+
+ int BUFFER_SIZE ;
+ int MAX_DOCUMENTS ;
+ int assert (int) ;
+ scalar_t__ compare_documents (unsigned char*,unsigned char*) ;
+ int copy_document (unsigned char*,unsigned char*) ;
+ int fclose (int *) ;
+ int fflush (int ) ;
+ int * fopen (char*,char*) ;
+ int memmove (char**,char**,int) ;
+ int memset (unsigned char*,int ,int) ;
+ scalar_t__ print_output (char*,unsigned char*,size_t,int) ;
+ int printf (char*,...) ;
+ int stdout ;
+ scalar_t__ strcmp (char*,char*) ;
+ int yaml_document_delete (unsigned char*) ;
+ int yaml_document_get_root_node (unsigned char*) ;
+ int yaml_emitter_close (int *) ;
+ int yaml_emitter_delete (int *) ;
+ scalar_t__ yaml_emitter_dump (int *,unsigned char*) ;
+ scalar_t__ yaml_emitter_flush (int *) ;
+ int yaml_emitter_initialize (int *) ;
+ int yaml_emitter_open (int *) ;
+ int yaml_emitter_set_canonical (int *,int) ;
+ int yaml_emitter_set_output_string (int *,unsigned char*,int,size_t*) ;
+ int yaml_emitter_set_unicode (int *,int) ;
+ int yaml_parser_delete (int *) ;
+ int yaml_parser_initialize (int *) ;
+ scalar_t__ yaml_parser_load (int *,unsigned char*) ;
+ int yaml_parser_set_input_file (int *,int *) ;
+ int yaml_parser_set_input_string (int *,unsigned char*,size_t) ;
 
 int
 main(int argc, char *argv[])
@@ -129,7 +129,7 @@ main(int argc, char *argv[])
             if (!done) {
                 assert(document_number < MAX_DOCUMENTS);
                 assert(copy_document(&(documents[document_number++]), &document));
-                assert(yaml_emitter_dump(&emitter, &document) || 
+                assert(yaml_emitter_dump(&emitter, &document) ||
                         (yaml_emitter_flush(&emitter) && print_output(argv[number], buffer, written, count)));
                 count ++;
             }

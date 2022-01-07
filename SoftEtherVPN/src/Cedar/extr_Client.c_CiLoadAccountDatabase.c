@@ -1,66 +1,66 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t UINT ;
-struct TYPE_7__ {int /*<<< orphan*/  AccountList; } ;
-struct TYPE_6__ {size_t NumTokens; int /*<<< orphan*/ * Token; } ;
-typedef  TYPE_1__ TOKEN_LIST ;
-typedef  int /*<<< orphan*/  FOLDER ;
-typedef  TYPE_2__ CLIENT ;
-typedef  int /*<<< orphan*/  ACCOUNT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Add (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- TYPE_1__* CfgEnumFolderToTokenList (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * CfgGetFolder (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * CiLoadClientAccount (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FreeToken (TYPE_1__*) ; 
- int /*<<< orphan*/  Sort (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef size_t UINT ;
+struct TYPE_7__ {int AccountList; } ;
+struct TYPE_6__ {size_t NumTokens; int * Token; } ;
+typedef TYPE_1__ TOKEN_LIST ;
+typedef int FOLDER ;
+typedef TYPE_2__ CLIENT ;
+typedef int ACCOUNT ;
+
+
+ int Add (int ,int *) ;
+ TYPE_1__* CfgEnumFolderToTokenList (int *) ;
+ int * CfgGetFolder (int *,int ) ;
+ int * CiLoadClientAccount (int *) ;
+ int FreeToken (TYPE_1__*) ;
+ int Sort (int ) ;
 
 void CiLoadAccountDatabase(CLIENT *c, FOLDER *f)
 {
-	TOKEN_LIST *t;
-	UINT i;
-	// Validate arguments
-	if (c == NULL || f == NULL)
-	{
-		return;
-	}
+ TOKEN_LIST *t;
+ UINT i;
 
-	t = CfgEnumFolderToTokenList(f);
-	if (t == NULL)
-	{
-		return;
-	}
+ if (c == ((void*)0) || f == ((void*)0))
+ {
+  return;
+ }
 
-	for (i = 0;i < t->NumTokens;i++)
-	{
-		FOLDER *ff = CfgGetFolder(f, t->Token[i]);
+ t = CfgEnumFolderToTokenList(f);
+ if (t == ((void*)0))
+ {
+  return;
+ }
 
-		if (ff != NULL)
-		{
-			ACCOUNT *a = CiLoadClientAccount(ff);
-			if (a != NULL)
-			{
-				{
-					Add(c->AccountList, a);
-				}
-			}
-		}
-	}
+ for (i = 0;i < t->NumTokens;i++)
+ {
+  FOLDER *ff = CfgGetFolder(f, t->Token[i]);
 
-	Sort(c->AccountList);
+  if (ff != ((void*)0))
+  {
+   ACCOUNT *a = CiLoadClientAccount(ff);
+   if (a != ((void*)0))
+   {
+    {
+     Add(c->AccountList, a);
+    }
+   }
+  }
+ }
 
-	FreeToken(t);
+ Sort(c->AccountList);
+
+ FreeToken(t);
 }

@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  sec; int /*<<< orphan*/  min; int /*<<< orphan*/  hour; int /*<<< orphan*/  day; int /*<<< orphan*/  mon; int /*<<< orphan*/  year; } ;
-struct vfs_stat {TYPE_1__ tm; scalar_t__ tm_valid; int /*<<< orphan*/  is_arch; int /*<<< orphan*/  is_sys; int /*<<< orphan*/  is_hidden; int /*<<< orphan*/  is_rdonly; int /*<<< orphan*/  is_dir; int /*<<< orphan*/  name; int /*<<< orphan*/  size; } ;
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FILE_TIMEDEF_DAY ; 
- int /*<<< orphan*/  FILE_TIMEDEF_HOUR ; 
- int /*<<< orphan*/  FILE_TIMEDEF_MIN ; 
- int /*<<< orphan*/  FILE_TIMEDEF_MON ; 
- int /*<<< orphan*/  FILE_TIMEDEF_SEC ; 
- int /*<<< orphan*/  FILE_TIMEDEF_YEAR ; 
- size_t FS_OBJ_NAME_LEN ; 
- scalar_t__ VFS_RES_OK ; 
- int /*<<< orphan*/  luaL_argcheck (int /*<<< orphan*/ *,int,int,char*) ; 
- char* luaL_checklstring (int /*<<< orphan*/ *,int,size_t*) ; 
- int /*<<< orphan*/  lua_createtable (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  lua_pushboolean (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_pushinteger (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_pushnil (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_pushstring (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_setfield (int /*<<< orphan*/ *,int,char*) ; 
- size_t strlen (char const*) ; 
- scalar_t__ vfs_stat (char*,struct vfs_stat*) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int sec; int min; int hour; int day; int mon; int year; } ;
+struct vfs_stat {TYPE_1__ tm; scalar_t__ tm_valid; int is_arch; int is_sys; int is_hidden; int is_rdonly; int is_dir; int name; int size; } ;
+typedef int lua_State ;
+
+
+ int FILE_TIMEDEF_DAY ;
+ int FILE_TIMEDEF_HOUR ;
+ int FILE_TIMEDEF_MIN ;
+ int FILE_TIMEDEF_MON ;
+ int FILE_TIMEDEF_SEC ;
+ int FILE_TIMEDEF_YEAR ;
+ size_t FS_OBJ_NAME_LEN ;
+ scalar_t__ VFS_RES_OK ;
+ int luaL_argcheck (int *,int,int,char*) ;
+ char* luaL_checklstring (int *,int,size_t*) ;
+ int lua_createtable (int *,int ,int) ;
+ int lua_pushboolean (int *,int ) ;
+ int lua_pushinteger (int *,int ) ;
+ int lua_pushnil (int *) ;
+ int lua_pushstring (int *,int ) ;
+ int lua_setfield (int *,int,char*) ;
+ size_t strlen (char const*) ;
+ scalar_t__ vfs_stat (char*,struct vfs_stat*) ;
 
 __attribute__((used)) static int file_stat( lua_State* L )
 {
@@ -70,7 +70,7 @@ __attribute__((used)) static int file_stat( lua_State* L )
   lua_pushboolean( L, stat.is_arch );
   lua_setfield( L, -2, "is_arch" );
 
-  // time stamp as sub-table
+
   lua_createtable( L, 0, 6 );
 
   lua_pushinteger( L, stat.tm_valid ? stat.tm.year : FILE_TIMEDEF_YEAR );

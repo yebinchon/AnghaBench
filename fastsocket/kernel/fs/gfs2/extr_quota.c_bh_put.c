@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct gfs2_sbd {int /*<<< orphan*/  sd_quota_mutex; } ;
-struct gfs2_quota_data {int /*<<< orphan*/ * qd_bh_qc; int /*<<< orphan*/ * qd_bh; int /*<<< orphan*/  qd_bh_count; TYPE_1__* qd_gl; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct gfs2_sbd {int sd_quota_mutex; } ;
+struct gfs2_quota_data {int * qd_bh_qc; int * qd_bh; int qd_bh_count; TYPE_1__* qd_gl; } ;
 struct TYPE_2__ {struct gfs2_sbd* gl_sbd; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  brelse (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  gfs2_assert (struct gfs2_sbd*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
+
+ int brelse (int *) ;
+ int gfs2_assert (struct gfs2_sbd*,int ) ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
 
 __attribute__((used)) static void bh_put(struct gfs2_quota_data *qd)
 {
-	struct gfs2_sbd *sdp = qd->qd_gl->gl_sbd;
+ struct gfs2_sbd *sdp = qd->qd_gl->gl_sbd;
 
-	mutex_lock(&sdp->sd_quota_mutex);
-	gfs2_assert(sdp, qd->qd_bh_count);
-	if (!--qd->qd_bh_count) {
-		brelse(qd->qd_bh);
-		qd->qd_bh = NULL;
-		qd->qd_bh_qc = NULL;
-	}
-	mutex_unlock(&sdp->sd_quota_mutex);
+ mutex_lock(&sdp->sd_quota_mutex);
+ gfs2_assert(sdp, qd->qd_bh_count);
+ if (!--qd->qd_bh_count) {
+  brelse(qd->qd_bh);
+  qd->qd_bh = ((void*)0);
+  qd->qd_bh_qc = ((void*)0);
+ }
+ mutex_unlock(&sdp->sd_quota_mutex);
 }

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct afs_call {int /*<<< orphan*/  async_work; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  _enter (char*) ; 
- int /*<<< orphan*/  afs_async_calls ; 
- int /*<<< orphan*/  queue_work (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+struct afs_call {int async_work; } ;
+
+
+ int _enter (char*) ;
+ int afs_async_calls ;
+ int queue_work (int ,int *) ;
 
 __attribute__((used)) static void afs_wake_up_async_call(struct afs_call *call)
 {
-	_enter("");
-	queue_work(afs_async_calls, &call->async_work);
+ _enter("");
+ queue_work(afs_async_calls, &call->async_work);
 }

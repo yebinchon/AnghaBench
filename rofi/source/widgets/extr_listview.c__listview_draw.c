@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  widget ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int widget ;
 struct TYPE_2__ {scalar_t__ type; } ;
-typedef  TYPE_1__ listview ;
-typedef  int /*<<< orphan*/  cairo_t ;
+typedef TYPE_1__ listview ;
+typedef int cairo_t ;
 
-/* Variables and functions */
- scalar_t__ LISTVIEW ; 
- int /*<<< orphan*/  barview_draw (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  listview_draw (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ scalar_t__ LISTVIEW ;
+ int barview_draw (int *,int *) ;
+ int listview_draw (int *,int *) ;
 
 __attribute__((used)) static void _listview_draw ( widget *wid, cairo_t *draw )
 {

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  south_west; int /*<<< orphan*/  south_east; int /*<<< orphan*/  north_east; int /*<<< orphan*/  north_west; int /*<<< orphan*/  north; int /*<<< orphan*/  south; int /*<<< orphan*/  west; int /*<<< orphan*/  east; } ;
-typedef  TYPE_1__ GeoHashNeighbors ;
-typedef  int /*<<< orphan*/  GeoHashBits ;
 
-/* Variables and functions */
- int /*<<< orphan*/  geohash_move_x (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  geohash_move_y (int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int south_west; int south_east; int north_east; int north_west; int north; int south; int west; int east; } ;
+typedef TYPE_1__ GeoHashNeighbors ;
+typedef int GeoHashBits ;
+
+
+ int geohash_move_x (int *,int) ;
+ int geohash_move_y (int *,int) ;
 
 void geohashNeighbors(const GeoHashBits *hash, GeoHashNeighbors *neighbors) {
     neighbors->east = *hash;

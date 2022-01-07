@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* thread_t ;
-typedef  TYPE_2__* processor_t ;
-struct TYPE_8__ {int /*<<< orphan*/  current_perfctl_class; int /*<<< orphan*/  current_recommended_pset_type; int /*<<< orphan*/  current_sfi_class; int /*<<< orphan*/  current_pri; } ;
-struct TYPE_7__ {int /*<<< orphan*/  sfi_class; int /*<<< orphan*/  sched_pri; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  recommended_pset_type (TYPE_1__*) ; 
- int /*<<< orphan*/  thread_get_perfcontrol_class (TYPE_1__*) ; 
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef TYPE_1__* thread_t ;
+typedef TYPE_2__* processor_t ;
+struct TYPE_8__ {int current_perfctl_class; int current_recommended_pset_type; int current_sfi_class; int current_pri; } ;
+struct TYPE_7__ {int sfi_class; int sched_pri; } ;
+
+
+ int recommended_pset_type (TYPE_1__*) ;
+ int thread_get_perfcontrol_class (TYPE_1__*) ;
 
 void
 processor_state_update_from_thread(processor_t processor, thread_t thread)

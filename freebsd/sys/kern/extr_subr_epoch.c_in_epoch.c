@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  epoch_t ;
 
-/* Variables and functions */
- int in_epoch_verbose (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int epoch_t ;
+
+
+ int in_epoch_verbose (int ,int ) ;
 
 int
 in_epoch(epoch_t epoch)
 {
-	return (in_epoch_verbose(epoch, 0));
+ return (in_epoch_verbose(epoch, 0));
 }

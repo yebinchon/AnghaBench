@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  int32_t ;
-typedef  int /*<<< orphan*/  esp_event_handler_t ;
-typedef  int /*<<< orphan*/  esp_event_base_t ;
-typedef  int /*<<< orphan*/  esp_err_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ESP_ERR_INVALID_STATE ; 
- int /*<<< orphan*/  esp_event_handler_register_with (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*) ; 
- int /*<<< orphan*/ * s_default_loop ; 
+
+
+
+typedef int int32_t ;
+typedef int esp_event_handler_t ;
+typedef int esp_event_base_t ;
+typedef int esp_err_t ;
+
+
+ int ESP_ERR_INVALID_STATE ;
+ int esp_event_handler_register_with (int *,int ,int ,int ,void*) ;
+ int * s_default_loop ;
 
 esp_err_t esp_event_handler_register(esp_event_base_t event_base, int32_t event_id,
         esp_event_handler_t event_handler, void* event_handler_arg)
 {
-    if (s_default_loop == NULL) {
+    if (s_default_loop == ((void*)0)) {
         return ESP_ERR_INVALID_STATE;
     }
 

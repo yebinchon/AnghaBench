@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ SCREEN_MODE ;
-typedef  int /*<<< orphan*/  PCOORD ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ActiveFramebuffer ; 
- int /*<<< orphan*/  DisplayMessage (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EmulatorTerminate () ; 
- int /*<<< orphan*/  FALSE ; 
- scalar_t__ GRAPHICS_MODE ; 
- int /*<<< orphan*/  GetLastError () ; 
- int /*<<< orphan*/  GraphicsFramebuffer ; 
- int /*<<< orphan*/  PaletteHandle ; 
- scalar_t__ ScreenMode ; 
- scalar_t__ TEXT_MODE ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  TextFramebuffer ; 
- int /*<<< orphan*/  TextPaletteHandle ; 
- int /*<<< orphan*/  VgaConsoleCreateGraphicsScreen (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  VgaConsoleCreateTextScreen (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef scalar_t__ SCREEN_MODE ;
+typedef int PCOORD ;
+typedef int BOOL ;
+
+
+ int ActiveFramebuffer ;
+ int DisplayMessage (char*,int ) ;
+ int EmulatorTerminate () ;
+ int FALSE ;
+ scalar_t__ GRAPHICS_MODE ;
+ int GetLastError () ;
+ int GraphicsFramebuffer ;
+ int PaletteHandle ;
+ scalar_t__ ScreenMode ;
+ scalar_t__ TEXT_MODE ;
+ int TRUE ;
+ int TextFramebuffer ;
+ int TextPaletteHandle ;
+ int VgaConsoleCreateGraphicsScreen (int ,int ) ;
+ int VgaConsoleCreateTextScreen (int ,int ) ;
 
 __attribute__((used)) static BOOL VgaEnterNewMode(SCREEN_MODE NewScreenMode, PCOORD Resolution)
 {
-    /* Check if the new mode is alphanumeric */
+
     if (NewScreenMode == TEXT_MODE)
     {
-        /* Enter new text mode */
 
-        if (!VgaConsoleCreateTextScreen(// &TextFramebuffer,
+
+        if (!VgaConsoleCreateTextScreen(
                                         Resolution,
                                         TextPaletteHandle))
         {
@@ -47,19 +47,19 @@ __attribute__((used)) static BOOL VgaEnterNewMode(SCREEN_MODE NewScreenMode, PCO
             return FALSE;
         }
 
-        /* The active framebuffer is now the text framebuffer */
+
         ActiveFramebuffer = TextFramebuffer;
 
-        /* Set the screen mode flag */
+
         ScreenMode = TEXT_MODE;
 
         return TRUE;
     }
     else
     {
-        /* Enter graphics mode */
 
-        if (!VgaConsoleCreateGraphicsScreen(// &GraphicsFramebuffer,
+
+        if (!VgaConsoleCreateGraphicsScreen(
                                             Resolution,
                                             PaletteHandle))
         {
@@ -68,10 +68,10 @@ __attribute__((used)) static BOOL VgaEnterNewMode(SCREEN_MODE NewScreenMode, PCO
             return FALSE;
         }
 
-        /* The active framebuffer is now the graphics framebuffer */
+
         ActiveFramebuffer = GraphicsFramebuffer;
 
-        /* Set the screen mode flag */
+
         ScreenMode = GRAPHICS_MODE;
 
         return TRUE;

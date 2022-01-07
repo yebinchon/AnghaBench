@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ display; scalar_t__ registry; scalar_t__ cursorSurface; scalar_t__ cursorTheme; } ;
 struct TYPE_4__ {TYPE_1__ wl; } ;
 
-/* Variables and functions */
- TYPE_2__ _glfw ; 
- int /*<<< orphan*/  _glfwTerminateContextAPI () ; 
- int /*<<< orphan*/  _glfwTerminateJoysticks () ; 
- int /*<<< orphan*/  wl_cursor_theme_destroy (scalar_t__) ; 
- int /*<<< orphan*/  wl_display_disconnect (scalar_t__) ; 
- int /*<<< orphan*/  wl_display_flush (scalar_t__) ; 
- int /*<<< orphan*/  wl_registry_destroy (scalar_t__) ; 
- int /*<<< orphan*/  wl_surface_destroy (scalar_t__) ; 
+
+ TYPE_2__ _glfw ;
+ int _glfwTerminateContextAPI () ;
+ int _glfwTerminateJoysticks () ;
+ int wl_cursor_theme_destroy (scalar_t__) ;
+ int wl_display_disconnect (scalar_t__) ;
+ int wl_display_flush (scalar_t__) ;
+ int wl_registry_destroy (scalar_t__) ;
+ int wl_surface_destroy (scalar_t__) ;
 
 void _glfwPlatformTerminate(void)
 {

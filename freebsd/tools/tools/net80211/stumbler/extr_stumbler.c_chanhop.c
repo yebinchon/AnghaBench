@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct timeval {unsigned long tv_sec; unsigned long tv_usec; } ;
-struct TYPE_2__ {int chan; int /*<<< orphan*/  last_hop; } ;
+struct TYPE_2__ {int chan; int last_hop; } ;
 
-/* Variables and functions */
- TYPE_1__ chaninfo ; 
- int /*<<< orphan*/  die (int,char*) ; 
- unsigned long elapsed_ms (struct timeval*,int /*<<< orphan*/ *) ; 
- int gettimeofday (struct timeval*,int /*<<< orphan*/ *) ; 
- unsigned long hopfreq ; 
- int /*<<< orphan*/  set_chan (int) ; 
+
+ TYPE_1__ chaninfo ;
+ int die (int,char*) ;
+ unsigned long elapsed_ms (struct timeval*,int *) ;
+ int gettimeofday (struct timeval*,int *) ;
+ unsigned long hopfreq ;
+ int set_chan (int) ;
 
 void chanhop(struct timeval* tv) {
-	unsigned long elapsed = 0;
+ unsigned long elapsed = 0;
 
-	if (gettimeofday(tv, NULL) == -1)
-		die(1, "gettimeofday()");
+ if (gettimeofday(tv, ((void*)0)) == -1)
+  die(1, "gettimeofday()");
 
 
-	elapsed = elapsed_ms(tv, &chaninfo.last_hop);
+ elapsed = elapsed_ms(tv, &chaninfo.last_hop);
 
-	// need to chan hop
-	if (elapsed >= hopfreq) {
-		int c;
 
-		c = chaninfo.chan + 1;
+ if (elapsed >= hopfreq) {
+  int c;
 
-		if (c > 11)
-			c = 1;
+  c = chaninfo.chan + 1;
 
-		set_chan(c);
+  if (c > 11)
+   c = 1;
 
-		elapsed = hopfreq;
-	} 
-	// how much can we sleep?
-	else {
-		elapsed = hopfreq - elapsed;
-	}
+  set_chan(c);
 
-	// ok calculate sleeping time...
-	tv->tv_sec = elapsed/1000;
-	tv->tv_usec = (elapsed - tv->tv_sec*1000)*1000;
+  elapsed = hopfreq;
+ }
+
+ else {
+  elapsed = hopfreq - elapsed;
+ }
+
+
+ tv->tv_sec = elapsed/1000;
+ tv->tv_usec = (elapsed - tv->tv_sec*1000)*1000;
 }

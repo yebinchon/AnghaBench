@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int mp_size ;
-typedef  int /*<<< orphan*/  mp_result ;
-typedef  int /*<<< orphan*/ * mp_int ;
 
-/* Variables and functions */
- int CHAR_BIT ; 
- unsigned char* MP_DIGITS (int /*<<< orphan*/ *) ; 
- int MP_DIGIT_BIT ; 
- int /*<<< orphan*/  MP_MEMORY ; 
- int /*<<< orphan*/  MP_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  mp_int_zero (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  s_pad (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  s_qmul (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int mp_size ;
+typedef int mp_result ;
+typedef int * mp_int ;
+
+
+ int CHAR_BIT ;
+ unsigned char* MP_DIGITS (int *) ;
+ int MP_DIGIT_BIT ;
+ int MP_MEMORY ;
+ int MP_OK ;
+ int assert (int) ;
+ int mp_int_zero (int *) ;
+ int s_pad (int *,int) ;
+ int s_qmul (int *,int) ;
 
 mp_result
 mp_int_read_unsigned(mp_int z, unsigned char *buf, int len)
 {
-	assert(z != NULL && buf != NULL && len > 0);
+ assert(z != ((void*)0) && buf != ((void*)0) && len > 0);
 
-	/* Figure out how many digits are needed to represent this value */
-	mp_size		need = ((len * CHAR_BIT) + (MP_DIGIT_BIT - 1)) / MP_DIGIT_BIT;
 
-	if (!s_pad(z, need))
-		return MP_MEMORY;
+ mp_size need = ((len * CHAR_BIT) + (MP_DIGIT_BIT - 1)) / MP_DIGIT_BIT;
 
-	mp_int_zero(z);
+ if (!s_pad(z, need))
+  return MP_MEMORY;
 
-	unsigned char *tmp = buf;
+ mp_int_zero(z);
 
-	for (int i = len; i > 0; --i, ++tmp)
-	{
-		(void) s_qmul(z, CHAR_BIT);
-		*MP_DIGITS(z) |= *tmp;
-	}
+ unsigned char *tmp = buf;
 
-	return MP_OK;
+ for (int i = len; i > 0; --i, ++tmp)
+ {
+  (void) s_qmul(z, CHAR_BIT);
+  *MP_DIGITS(z) |= *tmp;
+ }
+
+ return MP_OK;
 }

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int twofitweight; } ;
-typedef  TYPE_1__ vorbis_info_floor1 ;
+typedef TYPE_1__ vorbis_info_floor1 ;
 struct TYPE_6__ {int x0; int x1; int bn; int an; double xa; double ya; double x2a; double y2a; double xya; scalar_t__ xyb; scalar_t__ y2b; scalar_t__ x2b; scalar_t__ yb; scalar_t__ xb; } ;
-typedef  TYPE_2__ lsfit_acc ;
+typedef TYPE_2__ lsfit_acc ;
 
-/* Variables and functions */
- int rint (double) ; 
+
+ int rint (double) ;
 
 __attribute__((used)) static int fit_line(lsfit_acc *a,int fits,int *y0,int *y1,
                     vorbis_info_floor1 *info){
@@ -39,20 +39,20 @@ __attribute__((used)) static int fit_line(lsfit_acc *a,int fits,int *y0,int *y1,
   }
 
   if(*y0>=0){
-    xb+=   x0;
-    yb+=  *y0;
-    x2b+=  x0 *  x0;
+    xb+= x0;
+    yb+= *y0;
+    x2b+= x0 * x0;
     y2b+= *y0 * *y0;
-    xyb+= *y0 *  x0;
+    xyb+= *y0 * x0;
     bn++;
   }
 
   if(*y1>=0){
-    xb+=   x1;
-    yb+=  *y1;
-    x2b+=  x1 *  x1;
+    xb+= x1;
+    yb+= *y1;
+    x2b+= x1 * x1;
     y2b+= *y1 * *y1;
-    xyb+= *y1 *  x1;
+    xyb+= *y1 * x1;
     bn++;
   }
 
@@ -65,7 +65,7 @@ __attribute__((used)) static int fit_line(lsfit_acc *a,int fits,int *y0,int *y1,
       *y0=rint(a+b*x0);
       *y1=rint(a+b*x1);
 
-      /* limit to our range! */
+
       if(*y0>1023)*y0=1023;
       if(*y1>1023)*y1=1023;
       if(*y0<0)*y0=0;

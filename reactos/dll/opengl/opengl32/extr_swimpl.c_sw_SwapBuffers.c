@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct wgl_dc_data {struct sw_framebuffer* sw_data; } ;
-struct sw_framebuffer {int height; TYPE_3__* pixel_format; int /*<<< orphan*/  BackBuffer; int /*<<< orphan*/  width; int /*<<< orphan*/  Hdc; TYPE_1__* gl_visual; } ;
-struct TYPE_7__ {int biSize; int biBitCount; int biPlanes; int biSizeImage; int biHeight; int /*<<< orphan*/  biCompression; int /*<<< orphan*/  biWidth; scalar_t__ biYPelsPerMeter; scalar_t__ biXPelsPerMeter; scalar_t__ biClrUsed; scalar_t__ biClrImportant; } ;
-struct TYPE_9__ {int /*<<< orphan*/ * bmiColors; TYPE_2__ bmiHeader; } ;
+struct sw_framebuffer {int height; TYPE_3__* pixel_format; int BackBuffer; int width; int Hdc; TYPE_1__* gl_visual; } ;
+struct TYPE_7__ {int biSize; int biBitCount; int biPlanes; int biSizeImage; int biHeight; int biCompression; int biWidth; scalar_t__ biYPelsPerMeter; scalar_t__ biXPelsPerMeter; scalar_t__ biClrUsed; scalar_t__ biClrImportant; } ;
+struct TYPE_9__ {int * bmiColors; TYPE_2__ bmiHeader; } ;
 struct TYPE_8__ {int cColorBits; scalar_t__ iPixelType; } ;
-struct TYPE_6__ {int /*<<< orphan*/  DBflag; } ;
-typedef  int /*<<< orphan*/  HDC ;
-typedef  int DWORD ;
-typedef  int BYTE ;
-typedef  int BOOL ;
-typedef  int /*<<< orphan*/  BITMAPINFOHEADER ;
-typedef  TYPE_4__ BITMAPINFO ;
+struct TYPE_6__ {int DBflag; } ;
+typedef int HDC ;
+typedef int DWORD ;
+typedef int BYTE ;
+typedef int BOOL ;
+typedef int BITMAPINFOHEADER ;
+typedef TYPE_4__ BITMAPINFO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BI_BITFIELDS ; 
- int /*<<< orphan*/  BI_RGB ; 
- int /*<<< orphan*/  DIB_PAL_COLORS ; 
- int /*<<< orphan*/  DIB_RGB_COLORS ; 
- int FALSE ; 
- scalar_t__ PFD_TYPE_COLORINDEX ; 
- scalar_t__ SetDIBitsToDevice (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,TYPE_4__*,int /*<<< orphan*/ ) ; 
- int TRUE ; 
- int WIDTH_BYTES_ALIGN32 (int /*<<< orphan*/ ,int) ; 
+
+ int BI_BITFIELDS ;
+ int BI_RGB ;
+ int DIB_PAL_COLORS ;
+ int DIB_RGB_COLORS ;
+ int FALSE ;
+ scalar_t__ PFD_TYPE_COLORINDEX ;
+ scalar_t__ SetDIBitsToDevice (int ,int ,int ,int ,int,int ,int ,int ,int,int ,TYPE_4__*,int ) ;
+ int TRUE ;
+ int WIDTH_BYTES_ALIGN32 (int ,int) ;
 
 BOOL sw_SwapBuffers(HDC hdc, struct wgl_dc_data* dc_data)
 {
@@ -47,7 +47,7 @@ BOOL sw_SwapBuffers(HDC hdc, struct wgl_dc_data* dc_data)
 
     if (!fb->gl_visual->DBflag)
         return TRUE;
-    
+
     if (!fb->BackBuffer)
         return FALSE;
 

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u8 ;
-typedef  void* u32 ;
-typedef  int /*<<< orphan*/  u16 ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int u8 ;
+typedef void* u32 ;
+typedef int u16 ;
 struct TYPE_3__ {int all; } ;
-struct TYPE_4__ {size_t* CT; int TOP; int /*<<< orphan*/  LOP; void* WA0; void* RA0; TYPE_1__ P; void* RX; void*** MD; } ;
+struct TYPE_4__ {size_t* CT; int TOP; int LOP; void* WA0; void* RA0; TYPE_1__ P; void* RX; void*** MD; } ;
 
-/* Variables and functions */
- TYPE_2__* ScuDsp ; 
+
+ TYPE_2__* ScuDsp ;
 
 __attribute__((used)) static void writed1busdest(u8 num, u32 val)
 {
-   switch(num) { 
+   switch(num) {
       case 0x0:
           ScuDsp->MD[0][ScuDsp->CT[0]] = val;
           ScuDsp->CT[0]++;

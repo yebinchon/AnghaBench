@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  enum_bindings (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pointer_fixup_func ; 
+ int enum_bindings (int ,int *) ;
+ int pointer_fixup_func ;
 
 __attribute__((used)) static inline void fixup_pointers(void)
 {
-	enum_bindings(pointer_fixup_func, NULL);
+ enum_bindings(pointer_fixup_func, ((void*)0));
 }

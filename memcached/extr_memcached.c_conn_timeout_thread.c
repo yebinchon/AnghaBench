@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int useconds_t ;
-typedef  scalar_t__ rel_time_t ;
-struct TYPE_6__ {scalar_t__ state; scalar_t__ last_cmd_time; TYPE_1__* thread; int /*<<< orphan*/  transport; } ;
-typedef  TYPE_2__ conn ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int useconds_t ;
+typedef scalar_t__ rel_time_t ;
+struct TYPE_6__ {scalar_t__ state; scalar_t__ last_cmd_time; TYPE_1__* thread; int transport; } ;
+typedef TYPE_2__ conn ;
 struct TYPE_7__ {int verbose; scalar_t__ idle_timeout; } ;
-struct TYPE_5__ {int /*<<< orphan*/  notify_send_fd; } ;
+struct TYPE_5__ {int notify_send_fd; } ;
 
-/* Variables and functions */
- int CONNS_PER_SLICE ; 
- int /*<<< orphan*/  IS_TCP (int /*<<< orphan*/ ) ; 
- int TIMEOUT_MSG_SIZE ; 
- scalar_t__ conn_new_cmd ; 
- scalar_t__ conn_read ; 
- TYPE_2__** conns ; 
- scalar_t__ current_time ; 
- scalar_t__ do_run_conn_timeout_thread ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int max_fds ; 
- int /*<<< orphan*/  memcpy (char*,int*,int) ; 
- int /*<<< orphan*/  perror (char*) ; 
- TYPE_3__ settings ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  usleep (int) ; 
- int write (int /*<<< orphan*/ ,char*,int) ; 
+
+ int CONNS_PER_SLICE ;
+ int IS_TCP (int ) ;
+ int TIMEOUT_MSG_SIZE ;
+ scalar_t__ conn_new_cmd ;
+ scalar_t__ conn_read ;
+ TYPE_2__** conns ;
+ scalar_t__ current_time ;
+ scalar_t__ do_run_conn_timeout_thread ;
+ int fprintf (int ,char*,...) ;
+ int max_fds ;
+ int memcpy (char*,int*,int) ;
+ int perror (char*) ;
+ TYPE_3__ settings ;
+ int stderr ;
+ int usleep (int) ;
+ int write (int ,char*,int) ;
 
 __attribute__((used)) static void *conn_timeout_thread(void *arg) {
     int i;
@@ -83,7 +83,7 @@ __attribute__((used)) static void *conn_timeout_thread(void *arg) {
             }
         }
 
-        /* This is the soonest we could have another connection time out */
+
         sleep_time = settings.idle_timeout - (current_time - oldest_last_cmd) + 1;
         if (sleep_time <= 0)
             sleep_time = 1;
@@ -95,5 +95,5 @@ __attribute__((used)) static void *conn_timeout_thread(void *arg) {
         usleep((useconds_t) sleep_time * 1000000);
     }
 
-    return NULL;
+    return ((void*)0);
 }

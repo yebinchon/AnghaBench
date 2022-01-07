@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct X500TokenW {char* start; char* end; } ;
-typedef  int WCHAR ;
-typedef  char* LPCWSTR ;
-typedef  int DWORD ;
-typedef  scalar_t__ BOOL ;
+typedef int WCHAR ;
+typedef char* LPCWSTR ;
+typedef int DWORD ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- int CERT_NAME_STR_NO_QUOTING_FLAG ; 
- int /*<<< orphan*/  CRYPT_E_INVALID_X500_STRING ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  SetLastError (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ,...) ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  debugstr_w (char*) ; 
- scalar_t__ isspaceW (char) ; 
+
+ int CERT_NAME_STR_NO_QUOTING_FLAG ;
+ int CRYPT_E_INVALID_X500_STRING ;
+ scalar_t__ FALSE ;
+ int SetLastError (int ) ;
+ int TRACE (char*,int ,...) ;
+ scalar_t__ TRUE ;
+ int debugstr_w (char*) ;
+ scalar_t__ isspaceW (char) ;
 
 __attribute__((used)) static BOOL CRYPT_GetNextValueW(LPCWSTR str, DWORD dwFlags, LPCWSTR separators,
  WCHAR *separator_used, struct X500TokenW *token, LPCWSTR *ppszError)
@@ -42,7 +42,7 @@ __attribute__((used)) static BOOL CRYPT_GetNextValueW(LPCWSTR str, DWORD dwFlags
         token->start = str;
         if (!(dwFlags & CERT_NAME_STR_NO_QUOTING_FLAG) && *str == '"')
         {
-            token->end = NULL;
+            token->end = ((void*)0);
             str++;
             while (!token->end && ret)
             {

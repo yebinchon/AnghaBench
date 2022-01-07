@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ppp_deflate_state {int /*<<< orphan*/  strm; scalar_t__ seqno; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  zlib_deflateReset (int /*<<< orphan*/ *) ; 
+
+
+
+struct ppp_deflate_state {int strm; scalar_t__ seqno; } ;
+
+
+ int zlib_deflateReset (int *) ;
 
 __attribute__((used)) static void z_comp_reset(void *arg)
 {
-	struct ppp_deflate_state *state = (struct ppp_deflate_state *) arg;
+ struct ppp_deflate_state *state = (struct ppp_deflate_state *) arg;
 
-	state->seqno = 0;
-	zlib_deflateReset(&state->strm);
+ state->seqno = 0;
+ zlib_deflateReset(&state->strm);
 }

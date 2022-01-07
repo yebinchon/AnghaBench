@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vec_u8 ;
-typedef  scalar_t__ vec_f ;
 
-/* Variables and functions */
- int /*<<< orphan*/  vcprm (int,int,int,int /*<<< orphan*/ ) ; 
- scalar_t__ vec_ld (int,float const*) ; 
- scalar_t__ vec_madd (scalar_t__,scalar_t__,scalar_t__) ; 
- scalar_t__ vec_nmsub (scalar_t__,scalar_t__,scalar_t__) ; 
- scalar_t__ vec_perm (scalar_t__,scalar_t__,int /*<<< orphan*/  const) ; 
- scalar_t__ vec_splat_u32 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vec_st (scalar_t__,int,float*) ; 
+
+
+
+typedef int vec_u8 ;
+typedef scalar_t__ vec_f ;
+
+
+ int vcprm (int,int,int,int ) ;
+ scalar_t__ vec_ld (int,float const*) ;
+ scalar_t__ vec_madd (scalar_t__,scalar_t__,scalar_t__) ;
+ scalar_t__ vec_nmsub (scalar_t__,scalar_t__,scalar_t__) ;
+ scalar_t__ vec_perm (scalar_t__,scalar_t__,int const) ;
+ scalar_t__ vec_splat_u32 (int ) ;
+ int vec_st (scalar_t__,int,float*) ;
 
 void ff_vector_fmul_window_altivec(float *dst, const float *src0,
                                    const float *src1, const float *win, int len)
@@ -29,8 +29,8 @@ void ff_vector_fmul_window_altivec(float *dst, const float *src0,
     const vec_u8 reverse = vcprm(3, 2, 1, 0);
     int i, j;
 
-    dst  += len;
-    win  += len;
+    dst += len;
+    win += len;
     src0 += len;
 
     zero = (vec_f)vec_splat_u32(0);

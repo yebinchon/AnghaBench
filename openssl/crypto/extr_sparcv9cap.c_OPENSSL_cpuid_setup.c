@@ -1,67 +1,67 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct sigaction {int /*<<< orphan*/  sa_mask; int /*<<< orphan*/  sa_handler; } ;
-typedef  int /*<<< orphan*/  sigset_t ;
-typedef  int /*<<< orphan*/  common_act ;
 
-/* Variables and functions */
- int CFR_CRC32C ; 
- int CFR_MONTMUL ; 
- int CFR_XMONTMUL ; 
- int CFR_XMONTSQR ; 
- int CFR_XMPMUL ; 
- int* OPENSSL_sparcv9cap_P ; 
- int /*<<< orphan*/  SIGBUS ; 
- int /*<<< orphan*/  SIGEMT ; 
- int /*<<< orphan*/  SIGFPE ; 
- int /*<<< orphan*/  SIGILL ; 
- int /*<<< orphan*/  SIGSEGV ; 
- int /*<<< orphan*/  SIGTRAP ; 
- int /*<<< orphan*/  SIG_SETMASK ; 
- int SPARCV9_64BIT_STACK ; 
- int SPARCV9_BLK ; 
- int SPARCV9_FJAESX ; 
- int SPARCV9_FJDESX ; 
- int SPARCV9_FJHPCACE ; 
- int SPARCV9_FMADD ; 
- int SPARCV9_IMA ; 
- int SPARCV9_PREFER_FPU ; 
- int SPARCV9_TICK_PRIVILEGED ; 
- int SPARCV9_VIS1 ; 
- int SPARCV9_VIS2 ; 
- int SPARCV9_VIS3 ; 
- int SPARCV9_VIS4 ; 
- int /*<<< orphan*/  _sparcv9_fjaesx_probe () ; 
- int /*<<< orphan*/  _sparcv9_fmadd_probe () ; 
- scalar_t__ _sparcv9_rdcfr () ; 
- int /*<<< orphan*/  _sparcv9_rdtick () ; 
- int _sparcv9_vis1_instrument () ; 
- int /*<<< orphan*/  _sparcv9_vis1_probe () ; 
- int /*<<< orphan*/  _sparcv9_vis2_probe () ; 
- int /*<<< orphan*/  _sparcv9_vis3_probe () ; 
- int /*<<< orphan*/  common_handler ; 
- int /*<<< orphan*/  common_jmp ; 
- char* getenv (char*) ; 
- scalar_t__ getisax (unsigned int*,int) ; 
- int /*<<< orphan*/  memset (struct sigaction*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  sigaction (int /*<<< orphan*/ ,struct sigaction*,struct sigaction*) ; 
- int /*<<< orphan*/  sigdelset (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sigfillset (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sigprocmask (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ sigsetjmp (int /*<<< orphan*/ ,int) ; 
- char* strchr (char*,char) ; 
- int strtoul (char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int syscall (int) ; 
+
+
+
+struct sigaction {int sa_mask; int sa_handler; } ;
+typedef int sigset_t ;
+typedef int common_act ;
+
+
+ int CFR_CRC32C ;
+ int CFR_MONTMUL ;
+ int CFR_XMONTMUL ;
+ int CFR_XMONTSQR ;
+ int CFR_XMPMUL ;
+ int* OPENSSL_sparcv9cap_P ;
+ int SIGBUS ;
+ int SIGEMT ;
+ int SIGFPE ;
+ int SIGILL ;
+ int SIGSEGV ;
+ int SIGTRAP ;
+ int SIG_SETMASK ;
+ int SPARCV9_64BIT_STACK ;
+ int SPARCV9_BLK ;
+ int SPARCV9_FJAESX ;
+ int SPARCV9_FJDESX ;
+ int SPARCV9_FJHPCACE ;
+ int SPARCV9_FMADD ;
+ int SPARCV9_IMA ;
+ int SPARCV9_PREFER_FPU ;
+ int SPARCV9_TICK_PRIVILEGED ;
+ int SPARCV9_VIS1 ;
+ int SPARCV9_VIS2 ;
+ int SPARCV9_VIS3 ;
+ int SPARCV9_VIS4 ;
+ int _sparcv9_fjaesx_probe () ;
+ int _sparcv9_fmadd_probe () ;
+ scalar_t__ _sparcv9_rdcfr () ;
+ int _sparcv9_rdtick () ;
+ int _sparcv9_vis1_instrument () ;
+ int _sparcv9_vis1_probe () ;
+ int _sparcv9_vis2_probe () ;
+ int _sparcv9_vis3_probe () ;
+ int common_handler ;
+ int common_jmp ;
+ char* getenv (char*) ;
+ scalar_t__ getisax (unsigned int*,int) ;
+ int memset (struct sigaction*,int ,int) ;
+ int sigaction (int ,struct sigaction*,struct sigaction*) ;
+ int sigdelset (int *,int ) ;
+ int sigfillset (int *) ;
+ int sigprocmask (int ,int *,int *) ;
+ scalar_t__ sigsetjmp (int ,int) ;
+ char* strchr (char*,char) ;
+ int strtoul (char*,int *,int ) ;
+ int syscall (int) ;
 
 void OPENSSL_cpuid_setup(void)
 {
@@ -75,65 +75,19 @@ void OPENSSL_cpuid_setup(void)
     trigger = 1;
 
     if ((e = getenv("OPENSSL_sparcv9cap"))) {
-        OPENSSL_sparcv9cap_P[0] = strtoul(e, NULL, 0);
+        OPENSSL_sparcv9cap_P[0] = strtoul(e, ((void*)0), 0);
         if ((e = strchr(e, ':')))
-            OPENSSL_sparcv9cap_P[1] = strtoul(e + 1, NULL, 0);
+            OPENSSL_sparcv9cap_P[1] = strtoul(e + 1, ((void*)0), 0);
         return;
     }
-
-#if defined(__sun) && defined(__SVR4)
-    if (getisax != NULL) {
-        unsigned int vec[2] = { 0, 0 };
-
-        if (getisax (vec,2)) {
-            if (vec[0]&0x00020) OPENSSL_sparcv9cap_P[0] |= SPARCV9_VIS1;
-            if (vec[0]&0x00040) OPENSSL_sparcv9cap_P[0] |= SPARCV9_VIS2;
-            if (vec[0]&0x00080) OPENSSL_sparcv9cap_P[0] |= SPARCV9_BLK;
-            if (vec[0]&0x00100) OPENSSL_sparcv9cap_P[0] |= SPARCV9_FMADD;
-            if (vec[0]&0x00400) OPENSSL_sparcv9cap_P[0] |= SPARCV9_VIS3;
-            if (vec[0]&0x01000) OPENSSL_sparcv9cap_P[0] |= SPARCV9_FJHPCACE;
-            if (vec[0]&0x02000) OPENSSL_sparcv9cap_P[0] |= SPARCV9_FJDESX;
-            if (vec[0]&0x08000) OPENSSL_sparcv9cap_P[0] |= SPARCV9_IMA;
-            if (vec[0]&0x10000) OPENSSL_sparcv9cap_P[0] |= SPARCV9_FJAESX;
-            if (vec[1]&0x00008) OPENSSL_sparcv9cap_P[0] |= SPARCV9_VIS4;
-
-            /* reconstruct %cfr copy */
-            OPENSSL_sparcv9cap_P[1] = (vec[0]>>17)&0x3ff;
-            OPENSSL_sparcv9cap_P[1] |= (OPENSSL_sparcv9cap_P[1]&CFR_MONTMUL)<<1;
-            if (vec[0]&0x20000000) OPENSSL_sparcv9cap_P[1] |= CFR_CRC32C;
-            if (vec[1]&0x00000020) OPENSSL_sparcv9cap_P[1] |= CFR_XMPMUL;
-            if (vec[1]&0x00000040)
-                OPENSSL_sparcv9cap_P[1] |= CFR_XMONTMUL|CFR_XMONTSQR;
-
-            /* Some heuristics */
-            /* all known VIS2-capable CPUs have unprivileged tick counter */
-            if (OPENSSL_sparcv9cap_P[0]&SPARCV9_VIS2)
-                OPENSSL_sparcv9cap_P[0] &= ~SPARCV9_TICK_PRIVILEGED;
-
-            OPENSSL_sparcv9cap_P[0] |= SPARCV9_PREFER_FPU;
-
-            /* detect UltraSPARC-Tx, see sparccpud.S for details... */
-            if ((OPENSSL_sparcv9cap_P[0]&SPARCV9_VIS1) &&
-                _sparcv9_vis1_instrument() >= 12)
-                OPENSSL_sparcv9cap_P[0] &= ~(SPARCV9_VIS1 | SPARCV9_PREFER_FPU);
-        }
-
-        if (sizeof(size_t) == 8)
-            OPENSSL_sparcv9cap_P[0] |= SPARCV9_64BIT_STACK;
-
-        return;
-    }
-#endif
-
-    /* Initial value, fits UltraSPARC-I&II... */
     OPENSSL_sparcv9cap_P[0] = SPARCV9_PREFER_FPU | SPARCV9_TICK_PRIVILEGED;
 
     sigfillset(&all_masked);
     sigdelset(&all_masked, SIGILL);
     sigdelset(&all_masked, SIGTRAP);
-# ifdef SIGEMT
-    sigdelset(&all_masked, SIGEMT);
-# endif
+
+
+
     sigdelset(&all_masked, SIGFPE);
     sigdelset(&all_masked, SIGBUS);
     sigdelset(&all_masked, SIGSEGV);
@@ -144,8 +98,8 @@ void OPENSSL_cpuid_setup(void)
     common_act.sa_mask = all_masked;
 
     sigaction(SIGILL, &common_act, &ill_oact);
-    sigaction(SIGBUS, &common_act, &bus_oact); /* T1 fails 16-bit ldda [on
-                                                * Linux] */
+    sigaction(SIGBUS, &common_act, &bus_oact);
+
 
     if (sigsetjmp(common_jmp, 1) == 0) {
         _sparcv9_rdtick();
@@ -155,7 +109,7 @@ void OPENSSL_cpuid_setup(void)
     if (sigsetjmp(common_jmp, 1) == 0) {
         _sparcv9_vis1_probe();
         OPENSSL_sparcv9cap_P[0] |= SPARCV9_VIS1 | SPARCV9_BLK;
-        /* detect UltraSPARC-Tx, see sparccpud.S for details... */
+
         if (_sparcv9_vis1_instrument() >= 12)
             OPENSSL_sparcv9cap_P[0] &= ~(SPARCV9_VIS1 | SPARCV9_PREFER_FPU);
         else {
@@ -169,10 +123,10 @@ void OPENSSL_cpuid_setup(void)
         OPENSSL_sparcv9cap_P[0] |= SPARCV9_FMADD;
     }
 
-    /*
-     * VIS3 flag is tested independently from VIS1, unlike VIS2 that is,
-     * because VIS3 defines even integer instructions.
-     */
+
+
+
+
     if (sigsetjmp(common_jmp, 1) == 0) {
         _sparcv9_vis3_probe();
         OPENSSL_sparcv9cap_P[0] |= SPARCV9_VIS3;
@@ -183,30 +137,30 @@ void OPENSSL_cpuid_setup(void)
         OPENSSL_sparcv9cap_P[0] |= SPARCV9_FJAESX;
     }
 
-    /*
-     * In wait for better solution _sparcv9_rdcfr is masked by
-     * VIS3 flag, because it goes to uninterruptable endless
-     * loop on UltraSPARC II running Solaris. Things might be
-     * different on Linux...
-     */
+
+
+
+
+
+
     if ((OPENSSL_sparcv9cap_P[0] & SPARCV9_VIS3) &&
         sigsetjmp(common_jmp, 1) == 0) {
         OPENSSL_sparcv9cap_P[1] = (unsigned int)_sparcv9_rdcfr();
     }
 
-    sigaction(SIGBUS, &bus_oact, NULL);
-    sigaction(SIGILL, &ill_oact, NULL);
+    sigaction(SIGBUS, &bus_oact, ((void*)0));
+    sigaction(SIGILL, &ill_oact, ((void*)0));
 
-    sigprocmask(SIG_SETMASK, &oset, NULL);
+    sigprocmask(SIG_SETMASK, &oset, ((void*)0));
 
     if (sizeof(size_t) == 8)
         OPENSSL_sparcv9cap_P[0] |= SPARCV9_64BIT_STACK;
-# ifdef __linux
+
     else {
         int ret = syscall(340);
 
         if (ret >= 0 && ret & 1)
             OPENSSL_sparcv9cap_P[0] |= SPARCV9_64BIT_STACK;
     }
-# endif
+
 }

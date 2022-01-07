@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  handle_t ;
-typedef  scalar_t__ RPC_STATUS ;
-typedef  scalar_t__ RPC_CSTR ;
 
-/* Variables and functions */
- scalar_t__ RPC_S_OK ; 
- scalar_t__ RpcBindingFree (int /*<<< orphan*/ *) ; 
- scalar_t__ RpcBindingFromStringBindingA (scalar_t__,int /*<<< orphan*/ *) ; 
- scalar_t__ RpcBindingToStringBindingA (int /*<<< orphan*/ ,scalar_t__*) ; 
- scalar_t__ RpcStringBindingComposeA (int /*<<< orphan*/ *,unsigned char*,unsigned char*,unsigned char*,int /*<<< orphan*/ *,scalar_t__*) ; 
- int /*<<< orphan*/  RpcStringFreeA (scalar_t__*) ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
- int /*<<< orphan*/  strcmp (char const*,char*) ; 
+
+
+
+typedef int handle_t ;
+typedef scalar_t__ RPC_STATUS ;
+typedef scalar_t__ RPC_CSTR ;
+
+
+ scalar_t__ RPC_S_OK ;
+ scalar_t__ RpcBindingFree (int *) ;
+ scalar_t__ RpcBindingFromStringBindingA (scalar_t__,int *) ;
+ scalar_t__ RpcBindingToStringBindingA (int ,scalar_t__*) ;
+ scalar_t__ RpcStringBindingComposeA (int *,unsigned char*,unsigned char*,unsigned char*,int *,scalar_t__*) ;
+ int RpcStringFreeA (scalar_t__*) ;
+ int ok (int,char*,scalar_t__) ;
+ int strcmp (char const*,char*) ;
 
 __attribute__((used)) static void test_RpcStringBindingFromBinding(void)
 {
@@ -33,8 +33,8 @@ __attribute__((used)) static void test_RpcStringBindingFromBinding(void)
     handle_t handle;
     RPC_CSTR binding;
 
-    status = RpcStringBindingComposeA(NULL, ncacn_np, address,
-                                     endpoint, NULL, &binding);
+    status = RpcStringBindingComposeA(((void*)0), ncacn_np, address,
+                                     endpoint, ((void*)0), &binding);
     ok(status == RPC_S_OK, "RpcStringBindingCompose failed (%u)\n", status);
 
     status = RpcBindingFromStringBindingA(binding, &handle);

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct bfa_fcs_rport_s {int /*<<< orphan*/  pwwn; int /*<<< orphan*/  fcs; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RPSM_EVENT_HCB_OFFLINE ; 
- int /*<<< orphan*/  bfa_sm_send_event (struct bfa_fcs_rport_s*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bfa_trc (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct bfa_fcs_rport_s {int pwwn; int fcs; } ;
+
+
+ int RPSM_EVENT_HCB_OFFLINE ;
+ int bfa_sm_send_event (struct bfa_fcs_rport_s*,int ) ;
+ int bfa_trc (int ,int ) ;
 
 void
 bfa_cb_rport_offline(void *cbarg)
 {
-	struct bfa_fcs_rport_s *rport = (struct bfa_fcs_rport_s *) cbarg;
+ struct bfa_fcs_rport_s *rport = (struct bfa_fcs_rport_s *) cbarg;
 
-	bfa_trc(rport->fcs, rport->pwwn);
-	bfa_sm_send_event(rport, RPSM_EVENT_HCB_OFFLINE);
+ bfa_trc(rport->fcs, rport->pwwn);
+ bfa_sm_send_event(rport, RPSM_EVENT_HCB_OFFLINE);
 }

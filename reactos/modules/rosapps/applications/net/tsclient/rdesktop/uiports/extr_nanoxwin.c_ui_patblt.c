@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8 ;
-typedef  int /*<<< orphan*/  uint32 ;
-struct TYPE_3__ {int style; int* pattern; int /*<<< orphan*/  yorigin; int /*<<< orphan*/  xorigin; } ;
-typedef  int /*<<< orphan*/  GR_WINDOW_ID ;
-typedef  int /*<<< orphan*/  GR_PIXELVAL ;
-typedef  TYPE_1__ BRUSH ;
 
-/* Variables and functions */
- int COLOR16TO32 (int) ; 
- int /*<<< orphan*/  GR_MODE_COPY ; 
- int /*<<< orphan*/  GrArea (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,int*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GrCopyArea (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GrDestroyWindow (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GrFillRect (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,int,int) ; 
- int /*<<< orphan*/  GrNewPixmap (int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GrReadArea (int /*<<< orphan*/ ,int,int,int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GrSetGCForeground (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  GrSetGCMode (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MWPF_TRUECOLOR0888 ; 
- int g_Bpp ; 
- int g_bpp ; 
- int /*<<< orphan*/  g_gc ; 
- int /*<<< orphan*/  g_gc_clean ; 
- int /*<<< orphan*/ * g_ops ; 
- int g_server_bpp ; 
- int /*<<< orphan*/  g_wnd ; 
- int get_pixel32 (int*,int,int,int,int) ; 
- int /*<<< orphan*/  is_pixel_on (int*,int,int,int,int) ; 
- int /*<<< orphan*/  memset (int*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  rop (int,int,int) ; 
- int /*<<< orphan*/  set_pixel32 (int*,int,int,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  unimpl (char*,int) ; 
- int /*<<< orphan*/  xfree (int*) ; 
- int* xmalloc (int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8 ;
+typedef int uint32 ;
+struct TYPE_3__ {int style; int* pattern; int yorigin; int xorigin; } ;
+typedef int GR_WINDOW_ID ;
+typedef int GR_PIXELVAL ;
+typedef TYPE_1__ BRUSH ;
+
+
+ int COLOR16TO32 (int) ;
+ int GR_MODE_COPY ;
+ int GrArea (int ,int ,int ,int ,int,int,int*,int ) ;
+ int GrCopyArea (int ,int ,int,int,int,int,int ,int ,int ,int ) ;
+ int GrDestroyWindow (int ) ;
+ int GrFillRect (int ,int ,int,int,int,int) ;
+ int GrNewPixmap (int,int,int ) ;
+ int GrReadArea (int ,int,int,int,int,int *) ;
+ int GrSetGCForeground (int ,int) ;
+ int GrSetGCMode (int ,int ) ;
+ int MWPF_TRUECOLOR0888 ;
+ int g_Bpp ;
+ int g_bpp ;
+ int g_gc ;
+ int g_gc_clean ;
+ int * g_ops ;
+ int g_server_bpp ;
+ int g_wnd ;
+ int get_pixel32 (int*,int,int,int,int) ;
+ int is_pixel_on (int*,int,int,int,int) ;
+ int memset (int*,int ,int) ;
+ int rop (int,int,int) ;
+ int set_pixel32 (int*,int,int,int,int,int ) ;
+ int unimpl (char*,int) ;
+ int xfree (int*) ;
+ int* xmalloc (int) ;
 
 void ui_patblt(uint8 opcode, int x, int y, int cx, int cy,
                BRUSH * brush, int bgcolor, int fgcolor)
@@ -61,7 +61,7 @@ void ui_patblt(uint8 opcode, int x, int y, int cx, int cy,
   }
   switch (brush->style)
   {
-    case 0: /* Solid */
+    case 0:
       if (opcode == 12 || opcode == 6)
       {
         op = g_ops[opcode];
@@ -75,7 +75,7 @@ void ui_patblt(uint8 opcode, int x, int y, int cx, int cy,
         unimpl("opcode %d in ui_patblt solid brush\n", opcode);
       }
       break;
-    case 3: /* Pattern - all opcodes ok */
+    case 3:
       for (i = 0; i != 8; i++)
       {
         ipattern[7 - i] = brush->pattern[i];
@@ -83,7 +83,7 @@ void ui_patblt(uint8 opcode, int x, int y, int cx, int cy,
       dest = xmalloc(cx * cy * g_Bpp);
       final = xmalloc(cx * cy * g_Bpp);
       memset(final, 0, cx * cy * g_Bpp);
-      /* dest */
+
       if (opcode != 12)
       {
         GrReadArea(g_wnd, x, y, cx, cy, (GR_PIXELVAL*)dest);

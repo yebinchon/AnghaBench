@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
-typedef  int /*<<< orphan*/  u16 ;
+
+
+
+
+typedef int u32 ;
+typedef int u16 ;
 struct selinux_state {int dummy; } ;
 
-/* Variables and functions */
- int security_compute_validatetrans (struct selinux_state*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+ int security_compute_validatetrans (struct selinux_state*,int ,int ,int ,int ,int) ;
 
 int security_validate_transition_user(struct selinux_state *state,
-				      u32 oldsid, u32 newsid, u32 tasksid,
-				      u16 tclass)
+          u32 oldsid, u32 newsid, u32 tasksid,
+          u16 tclass)
 {
-	return security_compute_validatetrans(state, oldsid, newsid, tasksid,
-					      tclass, true);
+ return security_compute_validatetrans(state, oldsid, newsid, tasksid,
+           tclass, 1);
 }

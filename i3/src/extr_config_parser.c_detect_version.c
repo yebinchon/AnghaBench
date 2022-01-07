@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  LOG (char*,int,char*) ; 
- char* strchr (char*,char) ; 
- int /*<<< orphan*/  strlen (char*) ; 
- scalar_t__ strncasecmp (char*,char*,int /*<<< orphan*/ ) ; 
+ int LOG (char*,int,char*) ;
+ char* strchr (char*,char) ;
+ int strlen (char*) ;
+ scalar_t__ strncasecmp (char*,char*,int ) ;
 
 __attribute__((used)) static int detect_version(char *buf) {
     char *walk = buf;
@@ -26,7 +18,7 @@ __attribute__((used)) static int detect_version(char *buf) {
             continue;
         }
 
-        /* check for some v4-only statements */
+
         if (strncasecmp(line, "bindcode", strlen("bindcode")) == 0 ||
             strncasecmp(line, "force_focus_wrapping", strlen("force_focus_wrapping")) == 0 ||
             strncasecmp(line, "# i3 config file (v4)", strlen("# i3 config file (v4)")) == 0 ||
@@ -35,16 +27,16 @@ __attribute__((used)) static int detect_version(char *buf) {
             return 4;
         }
 
-        /* if this is a bind statement, we can check the command */
+
         if (strncasecmp(line, "bind", strlen("bind")) == 0) {
             char *bind = strchr(line, ' ');
-            if (bind == NULL)
+            if (bind == ((void*)0))
                 goto next;
             while ((*bind == ' ' || *bind == '\t') && *bind != '\0')
                 bind++;
             if (*bind == '\0')
                 goto next;
-            if ((bind = strchr(bind, ' ')) == NULL)
+            if ((bind = strchr(bind, ' ')) == ((void*)0))
                 goto next;
             while ((*bind == ' ' || *bind == '\t') && *bind != '\0')
                 bind++;
@@ -69,7 +61,7 @@ __attribute__((used)) static int detect_version(char *buf) {
         }
 
     next:
-        /* advance to the next line */
+
         walk++;
         line = walk;
     }

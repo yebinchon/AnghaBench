@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct aac_dev {int OIMR; } ;
-struct TYPE_2__ {int /*<<< orphan*/  OIMR; } ;
+struct TYPE_2__ {int OIMR; } ;
 
-/* Variables and functions */
- TYPE_1__ MUnit ; 
- int /*<<< orphan*/  rx_writeb (struct aac_dev*,int /*<<< orphan*/ ,int) ; 
+
+ TYPE_1__ MUnit ;
+ int rx_writeb (struct aac_dev*,int ,int) ;
 
 __attribute__((used)) static void aac_rx_enable_interrupt_producer(struct aac_dev *dev)
 {
-	rx_writeb(dev, MUnit.OIMR, dev->OIMR = 0xfb);
+ rx_writeb(dev, MUnit.OIMR, dev->OIMR = 0xfb);
 }

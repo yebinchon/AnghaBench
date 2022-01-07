@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct pd6729_socket {int /*<<< orphan*/  poll_timer; } ;
 
-/* Variables and functions */
- scalar_t__ HZ ; 
- scalar_t__ jiffies ; 
- int /*<<< orphan*/  mod_timer (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  pd6729_interrupt (int /*<<< orphan*/ ,void*) ; 
+
+
+
+struct pd6729_socket {int poll_timer; } ;
+
+
+ scalar_t__ HZ ;
+ scalar_t__ jiffies ;
+ int mod_timer (int *,scalar_t__) ;
+ int pd6729_interrupt (int ,void*) ;
 
 __attribute__((used)) static void pd6729_interrupt_wrapper(unsigned long data)
 {
-	struct pd6729_socket *socket = (struct pd6729_socket *) data;
+ struct pd6729_socket *socket = (struct pd6729_socket *) data;
 
-	pd6729_interrupt(0, (void *)socket);
-	mod_timer(&socket->poll_timer, jiffies + HZ);
+ pd6729_interrupt(0, (void *)socket);
+ mod_timer(&socket->poll_timer, jiffies + HZ);
 }

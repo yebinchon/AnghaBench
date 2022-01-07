@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  Name; int /*<<< orphan*/  Tag; int /*<<< orphan*/  Address; int /*<<< orphan*/  Flags; int /*<<< orphan*/  ModBase; } ;
-typedef  int /*<<< orphan*/  TCHAR ;
-typedef  int /*<<< orphan*/  SYMBOL_INFO ;
-typedef  TYPE_1__* PSYMBOL_INFO ;
-typedef  int /*<<< orphan*/  HANDLE ;
-typedef  scalar_t__ DWORD64 ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INIT_PSYM (char*) ; 
- int MAX_SYM_NAME ; 
- int /*<<< orphan*/  SymFromName (int /*<<< orphan*/ ,char*,TYPE_1__*) ; 
- int SymTagFunction ; 
- int SymTagPublicSymbol ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  ok_hex (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ok_int (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ok_str (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ok_ulonglong (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  skip (char*) ; 
- int /*<<< orphan*/  supports_pdb (int /*<<< orphan*/ ,scalar_t__) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int Name; int Tag; int Address; int Flags; int ModBase; } ;
+typedef int TCHAR ;
+typedef int SYMBOL_INFO ;
+typedef TYPE_1__* PSYMBOL_INFO ;
+typedef int HANDLE ;
+typedef scalar_t__ DWORD64 ;
+typedef int BOOL ;
+
+
+ int INIT_PSYM (char*) ;
+ int MAX_SYM_NAME ;
+ int SymFromName (int ,char*,TYPE_1__*) ;
+ int SymTagFunction ;
+ int SymTagPublicSymbol ;
+ int TRUE ;
+ int ok_hex (int ,int) ;
+ int ok_int (int ,int ) ;
+ int ok_str (int ,char*) ;
+ int ok_ulonglong (int ,scalar_t__) ;
+ int skip (char*) ;
+ int supports_pdb (int ,scalar_t__) ;
 
 __attribute__((used)) static void test_SymFromName(HANDLE hProc, DWORD64 BaseAddress)
 {
@@ -58,7 +58,7 @@ __attribute__((used)) static void test_SymFromName(HANDLE hProc, DWORD64 BaseAdd
         Ret = SymFromName(hProc, "_DllMain@12", pSymbol);
         ok_int(Ret, TRUE);
         ok_ulonglong(pSymbol->ModBase, BaseAddress);
-        ok_hex(pSymbol->Flags, 0x400000);   // ??
+        ok_hex(pSymbol->Flags, 0x400000);
         ok_ulonglong(pSymbol->Address, BaseAddress + 0x1010);
         ok_hex(pSymbol->Tag, SymTagPublicSymbol);
         ok_str(pSymbol->Name, "_DllMain@12");
@@ -76,7 +76,7 @@ __attribute__((used)) static void test_SymFromName(HANDLE hProc, DWORD64 BaseAdd
         Ret = SymFromName(hProc, "_FfsChkdsk@24", pSymbol);
         ok_int(Ret, TRUE);
         ok_ulonglong(pSymbol->ModBase, BaseAddress);
-        ok_hex(pSymbol->Flags, 0x400000);   // ??
+        ok_hex(pSymbol->Flags, 0x400000);
         ok_ulonglong(pSymbol->Address, BaseAddress + 0x1040);
         ok_hex(pSymbol->Tag, SymTagPublicSymbol);
         ok_str(pSymbol->Name, "_FfsChkdsk@24");
@@ -94,7 +94,7 @@ __attribute__((used)) static void test_SymFromName(HANDLE hProc, DWORD64 BaseAdd
         Ret = SymFromName(hProc, "_FfsFormat@24", pSymbol);
         ok_int(Ret, TRUE);
         ok_ulonglong(pSymbol->ModBase, BaseAddress);
-        ok_hex(pSymbol->Flags, 0x400000);   // ??
+        ok_hex(pSymbol->Flags, 0x400000);
         ok_ulonglong(pSymbol->Address, BaseAddress + 0x1070);
         ok_hex(pSymbol->Tag, SymTagPublicSymbol);
         ok_str(pSymbol->Name, "_FfsFormat@24");

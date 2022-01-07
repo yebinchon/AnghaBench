@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  t_timeout ;
-typedef  scalar_t__ t_socket ;
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  int /*<<< orphan*/  fd_set ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FD_ZERO (int /*<<< orphan*/ *) ; 
- scalar_t__ SOCKET_INVALID ; 
- int check_dirty (int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  collect_fd (int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ *,scalar_t__*) ; 
- int /*<<< orphan*/  luaL_error (int /*<<< orphan*/ *,char*) ; 
- double luaL_optnumber (int /*<<< orphan*/ *,int,int) ; 
- int lua_gettop (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_newtable (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_pushstring (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  lua_settop (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  make_assoc (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  return_fd (int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__,int,int,int) ; 
- int socket_select (scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  timeout_init (int /*<<< orphan*/ *,double,int) ; 
- int /*<<< orphan*/  timeout_markstart (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int t_timeout ;
+typedef scalar_t__ t_socket ;
+typedef int lua_State ;
+typedef int fd_set ;
+
+
+ int FD_ZERO (int *) ;
+ scalar_t__ SOCKET_INVALID ;
+ int check_dirty (int *,int,int,int *) ;
+ int collect_fd (int *,int,int,int *,scalar_t__*) ;
+ int luaL_error (int *,char*) ;
+ double luaL_optnumber (int *,int,int) ;
+ int lua_gettop (int *) ;
+ int lua_newtable (int *) ;
+ int lua_pushstring (int *,char*) ;
+ int lua_settop (int *,int) ;
+ int make_assoc (int *,int) ;
+ int return_fd (int *,int *,scalar_t__,int,int,int) ;
+ int socket_select (scalar_t__,int *,int *,int *,int *) ;
+ int timeout_init (int *,double,int) ;
+ int timeout_markstart (int *) ;
 
 __attribute__((used)) static int global_select(lua_State *L) {
     int rtab, wtab, itab, ret, ndirty;
@@ -49,7 +49,7 @@ __attribute__((used)) static int global_select(lua_State *L) {
     t = ndirty > 0? 0.0: t;
     timeout_init(&tm, t, -1);
     timeout_markstart(&tm);
-    ret = socket_select(max_fd+1, &rset, &wset, NULL, &tm);
+    ret = socket_select(max_fd+1, &rset, &wset, ((void*)0), &tm);
     if (ret > 0 || ndirty > 0) {
         return_fd(L, &rset, max_fd+1, itab, rtab, ndirty);
         return_fd(L, &wset, max_fd+1, itab, wtab, 0);

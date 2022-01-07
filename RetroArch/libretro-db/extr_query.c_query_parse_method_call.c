@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct registered_func {int /*<<< orphan*/ * func; scalar_t__ name; } ;
-struct invocation {unsigned int argc; struct argument* argv; int /*<<< orphan*/ * func; } ;
-struct buffer {int /*<<< orphan*/  offset; } ;
+
+
+
+
+struct registered_func {int * func; scalar_t__ name; } ;
+struct invocation {unsigned int argc; struct argument* argv; int * func; } ;
+struct buffer {int offset; } ;
 struct argument {int dummy; } ;
 
-/* Variables and functions */
- int QUERY_MAX_ARGS ; 
- scalar_t__ malloc (int) ; 
- int /*<<< orphan*/  memcpy (struct argument*,struct argument*,int) ; 
- int /*<<< orphan*/  query_argument_free (struct argument*) ; 
- struct buffer query_chomp (struct buffer) ; 
- struct buffer query_expect_char (struct buffer,char,char const**) ; 
- struct buffer query_get_ident (struct buffer,char const**,size_t*,char const**) ; 
- struct buffer query_parse_argument (struct buffer,struct argument*,char const**) ; 
- int /*<<< orphan*/  query_peek (struct buffer,char*) ; 
- int /*<<< orphan*/  query_raise_enomem (char const**) ; 
- int /*<<< orphan*/  query_raise_too_many_arguments (char const**) ; 
- int /*<<< orphan*/  query_raise_unknown_function (int /*<<< orphan*/ ,char const*,size_t,char const**) ; 
- struct registered_func* registered_functions ; 
- scalar_t__ strncmp (scalar_t__,char const*,size_t) ; 
+
+ int QUERY_MAX_ARGS ;
+ scalar_t__ malloc (int) ;
+ int memcpy (struct argument*,struct argument*,int) ;
+ int query_argument_free (struct argument*) ;
+ struct buffer query_chomp (struct buffer) ;
+ struct buffer query_expect_char (struct buffer,char,char const**) ;
+ struct buffer query_get_ident (struct buffer,char const**,size_t*,char const**) ;
+ struct buffer query_parse_argument (struct buffer,struct argument*,char const**) ;
+ int query_peek (struct buffer,char*) ;
+ int query_raise_enomem (char const**) ;
+ int query_raise_too_many_arguments (char const**) ;
+ int query_raise_unknown_function (int ,char const*,size_t,char const**) ;
+ struct registered_func* registered_functions ;
+ scalar_t__ strncmp (scalar_t__,char const*,size_t) ;
 
 __attribute__((used)) static struct buffer query_parse_method_call(struct buffer buff,
       struct invocation *invocation, const char **error)
@@ -38,10 +38,10 @@ __attribute__((used)) static struct buffer query_parse_method_call(struct buffer
    unsigned i;
    struct argument args[QUERY_MAX_ARGS];
    unsigned argi = 0;
-   const char *func_name = NULL;
+   const char *func_name = ((void*)0);
    struct registered_func *rf = registered_functions;
 
-   invocation->func = NULL;
+   invocation->func = ((void*)0);
 
    buff = query_get_ident(buff, &func_name, &func_name_len, error);
    if (*error)
@@ -89,7 +89,7 @@ __attribute__((used)) static struct buffer query_parse_method_call(struct buffer
 
       if (*error)
       {
-         *error = NULL;
+         *error = ((void*)0);
          break;
       }
       buff = query_chomp(buff);
@@ -101,7 +101,7 @@ __attribute__((used)) static struct buffer query_parse_method_call(struct buffer
 
    invocation->argc = argi;
    invocation->argv = (argi > 0) ? (struct argument*)
-      malloc(sizeof(struct argument) * argi) : NULL;
+      malloc(sizeof(struct argument) * argi) : ((void*)0);
 
    if (!invocation->argv)
    {

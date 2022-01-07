@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  armada_38x_do_cpu_suspend ; 
- int cpu_suspend (int,int /*<<< orphan*/ ) ; 
+ int armada_38x_do_cpu_suspend ;
+ int cpu_suspend (int,int ) ;
 
 __attribute__((used)) static int armada_38x_cpu_suspend(unsigned long deepidle)
 {
-	return cpu_suspend(false, armada_38x_do_cpu_suspend);
+ return cpu_suspend(0, armada_38x_do_cpu_suspend);
 }

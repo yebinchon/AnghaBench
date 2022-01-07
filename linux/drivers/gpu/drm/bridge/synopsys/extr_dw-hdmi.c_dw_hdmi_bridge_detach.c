@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct dw_hdmi {int /*<<< orphan*/  cec_notifier_mutex; int /*<<< orphan*/ * cec_notifier; } ;
+
+
+
+
+struct dw_hdmi {int cec_notifier_mutex; int * cec_notifier; } ;
 struct drm_bridge {struct dw_hdmi* driver_private; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cec_notifier_conn_unregister (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
+
+ int cec_notifier_conn_unregister (int *) ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
 
 __attribute__((used)) static void dw_hdmi_bridge_detach(struct drm_bridge *bridge)
 {
-	struct dw_hdmi *hdmi = bridge->driver_private;
+ struct dw_hdmi *hdmi = bridge->driver_private;
 
-	mutex_lock(&hdmi->cec_notifier_mutex);
-	cec_notifier_conn_unregister(hdmi->cec_notifier);
-	hdmi->cec_notifier = NULL;
-	mutex_unlock(&hdmi->cec_notifier_mutex);
+ mutex_lock(&hdmi->cec_notifier_mutex);
+ cec_notifier_conn_unregister(hdmi->cec_notifier);
+ hdmi->cec_notifier = ((void*)0);
+ mutex_unlock(&hdmi->cec_notifier_mutex);
 }

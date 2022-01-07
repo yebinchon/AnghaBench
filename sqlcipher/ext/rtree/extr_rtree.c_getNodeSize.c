@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3 ;
-struct TYPE_4__ {int iNodeSize; int nBytesPerCell; int /*<<< orphan*/  zName; int /*<<< orphan*/  zDb; } ;
-typedef  TYPE_1__ Rtree ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RTREE_IS_CORRUPT (TYPE_1__*) ; 
- int RTREE_MAXCELLS ; 
- int SQLITE_CORRUPT_VTAB ; 
- int SQLITE_OK ; 
- int getIntFromStmt (int /*<<< orphan*/ *,char*,int*) ; 
- int /*<<< orphan*/  sqlite3_errmsg (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_free (char*) ; 
- char* sqlite3_mprintf (char*,int /*<<< orphan*/ ,...) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int sqlite3 ;
+struct TYPE_4__ {int iNodeSize; int nBytesPerCell; int zName; int zDb; } ;
+typedef TYPE_1__ Rtree ;
+
+
+ int RTREE_IS_CORRUPT (TYPE_1__*) ;
+ int RTREE_MAXCELLS ;
+ int SQLITE_CORRUPT_VTAB ;
+ int SQLITE_OK ;
+ int getIntFromStmt (int *,char*,int*) ;
+ int sqlite3_errmsg (int *) ;
+ int sqlite3_free (char*) ;
+ char* sqlite3_mprintf (char*,int ,...) ;
 
 __attribute__((used)) static int getNodeSize(
-  sqlite3 *db,                    /* Database handle */
-  Rtree *pRtree,                  /* Rtree handle */
-  int isCreate,                   /* True for xCreate, false for xConnect */
-  char **pzErr                    /* OUT: Error message, if any */
+  sqlite3 *db,
+  Rtree *pRtree,
+  int isCreate,
+  char **pzErr
 ){
   int rc;
   char *zSql;

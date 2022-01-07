@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ int64_t ;
 
-/* Variables and functions */
- int COPY_SIZE ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  pError (char*,int,int,scalar_t__,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strerror (int /*<<< orphan*/ ) ; 
- int taosReadMsg (int,char*,int) ; 
- int taosWriteMsg (int,char*,int) ; 
+
+
+
+typedef scalar_t__ int64_t ;
+
+
+ int COPY_SIZE ;
+ int errno ;
+ int pError (char*,int,int,scalar_t__,scalar_t__,int ) ;
+ int strerror (int ) ;
+ int taosReadMsg (int,char*,int) ;
+ int taosWriteMsg (int,char*,int) ;
 
 int taosCopyFds(int sfd, int dfd, int64_t len) {
   int64_t leftLen;
-  int     readLen, writeLen;
-  char    temp[COPY_SIZE];
+  int readLen, writeLen;
+  char temp[COPY_SIZE];
 
   leftLen = len;
 
@@ -31,7 +31,7 @@ int taosCopyFds(int sfd, int dfd, int64_t len) {
     if (leftLen < COPY_SIZE)
       readLen = (int)leftLen;
     else
-      readLen = COPY_SIZE;  // 4K
+      readLen = COPY_SIZE;
 
     int retLen = taosReadMsg(sfd, temp, (int)readLen);
     if (readLen != retLen) {

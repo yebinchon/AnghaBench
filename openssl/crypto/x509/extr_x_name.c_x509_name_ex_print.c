@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  X509_NAME ;
-struct TYPE_3__ {int /*<<< orphan*/  nm_flags; } ;
-typedef  int /*<<< orphan*/  BIO ;
-typedef  int /*<<< orphan*/  ASN1_VALUE ;
-typedef  TYPE_1__ ASN1_PCTX ;
 
-/* Variables and functions */
- scalar_t__ X509_NAME_print_ex (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int X509_NAME ;
+struct TYPE_3__ {int nm_flags; } ;
+typedef int BIO ;
+typedef int ASN1_VALUE ;
+typedef TYPE_1__ ASN1_PCTX ;
+
+
+ scalar_t__ X509_NAME_print_ex (int *,int const*,int,int ) ;
 
 __attribute__((used)) static int x509_name_ex_print(BIO *out, const ASN1_VALUE **pval,
                               int indent,

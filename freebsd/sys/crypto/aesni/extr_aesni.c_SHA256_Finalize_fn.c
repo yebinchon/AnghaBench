@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  SHA256_Final (void*,void*) ; 
+ int SHA256_Final (void*,void*) ;
 
 __attribute__((used)) static void
 SHA256_Finalize_fn(void *digest, void *ctx)
 {
-	SHA256_Final(digest, ctx);
+ SHA256_Final(digest, ctx);
 }

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint16_t ;
-typedef  int /*<<< orphan*/  request ;
-typedef  int /*<<< orphan*/  packet ;
-struct TYPE_4__ {int /*<<< orphan*/  ip_port1; } ;
-typedef  TYPE_1__ Onion_Path ;
-typedef  int /*<<< orphan*/  Networking_Core ;
-typedef  int /*<<< orphan*/  IP_Port ;
 
-/* Variables and functions */
- int ONION_MAX_DATA_SIZE ; 
- int ONION_MAX_PACKET_SIZE ; 
- int create_data_request (int /*<<< orphan*/ *,int,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- int create_onion_packet (int /*<<< orphan*/ *,int,TYPE_1__ const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int sendpacket (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint16_t ;
+typedef int request ;
+typedef int packet ;
+struct TYPE_4__ {int ip_port1; } ;
+typedef TYPE_1__ Onion_Path ;
+typedef int Networking_Core ;
+typedef int IP_Port ;
+
+
+ int ONION_MAX_DATA_SIZE ;
+ int ONION_MAX_PACKET_SIZE ;
+ int create_data_request (int *,int,int const*,int const*,int const*,int const*,int ) ;
+ int create_onion_packet (int *,int,TYPE_1__ const*,int ,int *,int) ;
+ int sendpacket (int *,int ,int *,int) ;
 
 int send_data_request(Networking_Core *net, const Onion_Path *path, IP_Port dest, const uint8_t *public_key,
                       const uint8_t *encrypt_public_key, const uint8_t *nonce, const uint8_t *data, uint16_t length)

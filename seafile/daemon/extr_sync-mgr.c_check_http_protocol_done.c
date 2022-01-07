@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int /*<<< orphan*/  http_tx_mgr; } ;
-struct TYPE_7__ {int /*<<< orphan*/  version; int /*<<< orphan*/  not_supported; scalar_t__ check_success; } ;
-struct TYPE_6__ {void* checking; int /*<<< orphan*/  testing_host; int /*<<< orphan*/  http_version; int /*<<< orphan*/  effective_host; } ;
-typedef  TYPE_1__ HttpServerState ;
-typedef  TYPE_2__ HttpProtocolVersion ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CURRENT_SYNC_PROTO_VERSION ; 
- void* FALSE ; 
- int /*<<< orphan*/  MIN (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  check_http_fileserver_protocol_done ; 
- int /*<<< orphan*/  g_free (char*) ; 
- int /*<<< orphan*/  g_strdup (int /*<<< orphan*/ ) ; 
- char* http_fileserver_url (int /*<<< orphan*/ ) ; 
- scalar_t__ http_tx_manager_check_protocol_version (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*) ; 
- TYPE_3__* seaf ; 
- int /*<<< orphan*/  seaf_message (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ strncmp (int /*<<< orphan*/ ,char*,int) ; 
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int http_tx_mgr; } ;
+struct TYPE_7__ {int version; int not_supported; scalar_t__ check_success; } ;
+struct TYPE_6__ {void* checking; int testing_host; int http_version; int effective_host; } ;
+typedef TYPE_1__ HttpServerState ;
+typedef TYPE_2__ HttpProtocolVersion ;
+
+
+ int CURRENT_SYNC_PROTO_VERSION ;
+ void* FALSE ;
+ int MIN (int ,int ) ;
+ int TRUE ;
+ int check_http_fileserver_protocol_done ;
+ int g_free (char*) ;
+ int g_strdup (int ) ;
+ char* http_fileserver_url (int ) ;
+ scalar_t__ http_tx_manager_check_protocol_version (int ,char*,int ,int ,TYPE_1__*) ;
+ TYPE_3__* seaf ;
+ int seaf_message (char*,int ,int ,int ,int ) ;
+ scalar_t__ strncmp (int ,char*,int) ;
 
 __attribute__((used)) static void
 check_http_protocol_done (HttpProtocolVersion *result, void *user_data)

@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct psci_softc {int dummy; } ;
-typedef  scalar_t__ (* psci_initfn_t ) (int /*<<< orphan*/ ,int) ;
-typedef  int /*<<< orphan*/  device_t ;
+typedef scalar_t__ (* psci_initfn_t ) (int ,int) ;
+typedef int device_t ;
 
-/* Variables and functions */
- int ENXIO ; 
- int /*<<< orphan*/  KASSERT (int /*<<< orphan*/ ,char*) ; 
- struct psci_softc* device_get_softc (int /*<<< orphan*/ ) ; 
- struct psci_softc* psci_softc ; 
+
+ int ENXIO ;
+ int KASSERT (int ,char*) ;
+ struct psci_softc* device_get_softc (int ) ;
+ struct psci_softc* psci_softc ;
 
 __attribute__((used)) static int
 psci_attach(device_t dev, psci_initfn_t psci_init, int default_version)
 {
-	struct psci_softc *sc = device_get_softc(dev);
+ struct psci_softc *sc = device_get_softc(dev);
 
-	if (psci_softc != NULL)
-		return (ENXIO);
+ if (psci_softc != ((void*)0))
+  return (ENXIO);
 
-	KASSERT(psci_init != NULL, ("PSCI init function cannot be NULL"));
-	if (psci_init(dev, default_version))
-		return (ENXIO);
+ KASSERT(psci_init != ((void*)0), ("PSCI init function cannot be NULL"));
+ if (psci_init(dev, default_version))
+  return (ENXIO);
 
-	psci_softc = sc;
+ psci_softc = sc;
 
-	return (0);
+ return (0);
 }

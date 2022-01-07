@@ -1,59 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/ * __debugger ; 
- int /*<<< orphan*/ * __debugger_bpt ; 
- int /*<<< orphan*/ * __debugger_break_match ; 
- int /*<<< orphan*/ * __debugger_fault_handler ; 
- int /*<<< orphan*/ * __debugger_iabr_match ; 
- int /*<<< orphan*/ * __debugger_ipi ; 
- int /*<<< orphan*/ * __debugger_sstep ; 
- int /*<<< orphan*/  rtas_token (char*) ; 
- int /*<<< orphan*/  set_indicator_token ; 
- int /*<<< orphan*/ * xmon ; 
- int /*<<< orphan*/ * xmon_bpt ; 
- int /*<<< orphan*/ * xmon_break_match ; 
- int /*<<< orphan*/ * xmon_fault_handler ; 
- int /*<<< orphan*/ * xmon_iabr_match ; 
- int /*<<< orphan*/ * xmon_ipi ; 
- int /*<<< orphan*/ * xmon_sstep ; 
+ int * __debugger ;
+ int * __debugger_bpt ;
+ int * __debugger_break_match ;
+ int * __debugger_fault_handler ;
+ int * __debugger_iabr_match ;
+ int * __debugger_ipi ;
+ int * __debugger_sstep ;
+ int rtas_token (char*) ;
+ int set_indicator_token ;
+ int * xmon ;
+ int * xmon_bpt ;
+ int * xmon_break_match ;
+ int * xmon_fault_handler ;
+ int * xmon_iabr_match ;
+ int * xmon_ipi ;
+ int * xmon_sstep ;
 
 __attribute__((used)) static void xmon_init(int enable)
 {
-	if (enable) {
-		__debugger = xmon;
-		__debugger_ipi = xmon_ipi;
-		__debugger_bpt = xmon_bpt;
-		__debugger_sstep = xmon_sstep;
-		__debugger_iabr_match = xmon_iabr_match;
-		__debugger_break_match = xmon_break_match;
-		__debugger_fault_handler = xmon_fault_handler;
-
-#ifdef CONFIG_PPC_PSERIES
-		/*
-		 * Get the token here to avoid trying to get a lock
-		 * during the crash, causing a deadlock.
-		 */
-		set_indicator_token = rtas_token("set-indicator");
-#endif
-	} else {
-		__debugger = NULL;
-		__debugger_ipi = NULL;
-		__debugger_bpt = NULL;
-		__debugger_sstep = NULL;
-		__debugger_iabr_match = NULL;
-		__debugger_break_match = NULL;
-		__debugger_fault_handler = NULL;
-	}
+ if (enable) {
+  __debugger = xmon;
+  __debugger_ipi = xmon_ipi;
+  __debugger_bpt = xmon_bpt;
+  __debugger_sstep = xmon_sstep;
+  __debugger_iabr_match = xmon_iabr_match;
+  __debugger_break_match = xmon_break_match;
+  __debugger_fault_handler = xmon_fault_handler;
+ } else {
+  __debugger = ((void*)0);
+  __debugger_ipi = ((void*)0);
+  __debugger_bpt = ((void*)0);
+  __debugger_sstep = ((void*)0);
+  __debugger_iabr_match = ((void*)0);
+  __debugger_break_match = ((void*)0);
+  __debugger_fault_handler = ((void*)0);
+ }
 }

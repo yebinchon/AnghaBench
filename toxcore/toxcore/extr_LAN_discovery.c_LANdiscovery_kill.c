@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  net; } ;
-typedef  TYPE_1__ DHT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NET_PACKET_LAN_DISCOVERY ; 
- int /*<<< orphan*/  networking_registerhandler (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int net; } ;
+typedef TYPE_1__ DHT ;
+
+
+ int NET_PACKET_LAN_DISCOVERY ;
+ int networking_registerhandler (int ,int ,int *,int *) ;
 
 void LANdiscovery_kill(DHT *dht)
 {
-    networking_registerhandler(dht->net, NET_PACKET_LAN_DISCOVERY, NULL, NULL);
+    networking_registerhandler(dht->net, NET_PACKET_LAN_DISCOVERY, ((void*)0), ((void*)0));
 }

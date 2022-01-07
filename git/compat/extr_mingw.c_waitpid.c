@@ -1,88 +1,88 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct pinfo_t {int pid; struct pinfo_t* next; int /*<<< orphan*/  proc; } ;
-typedef  int pid_t ;
-typedef  int /*<<< orphan*/  LPDWORD ;
-typedef  int /*<<< orphan*/  HANDLE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CloseHandle (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ECHILD ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  EnterCriticalSection (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GetExitCodeProcess (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  INFINITE ; 
- int /*<<< orphan*/  LeaveCriticalSection (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  OpenProcess (int,int /*<<< orphan*/ ,int) ; 
- int PROCESS_QUERY_INFORMATION ; 
- int SYNCHRONIZE ; 
- scalar_t__ WAIT_OBJECT_0 ; 
- int WNOHANG ; 
- scalar_t__ WaitForSingleObject (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  free (struct pinfo_t*) ; 
- struct pinfo_t* pinfo ; 
- int /*<<< orphan*/  pinfo_cs ; 
+
+
+
+struct pinfo_t {int pid; struct pinfo_t* next; int proc; } ;
+typedef int pid_t ;
+typedef int LPDWORD ;
+typedef int HANDLE ;
+
+
+ int CloseHandle (int ) ;
+ int ECHILD ;
+ int EINVAL ;
+ int EnterCriticalSection (int *) ;
+ int FALSE ;
+ int GetExitCodeProcess (int ,int ) ;
+ int INFINITE ;
+ int LeaveCriticalSection (int *) ;
+ int OpenProcess (int,int ,int) ;
+ int PROCESS_QUERY_INFORMATION ;
+ int SYNCHRONIZE ;
+ scalar_t__ WAIT_OBJECT_0 ;
+ int WNOHANG ;
+ scalar_t__ WaitForSingleObject (int ,int ) ;
+ int errno ;
+ int free (struct pinfo_t*) ;
+ struct pinfo_t* pinfo ;
+ int pinfo_cs ;
 
 pid_t waitpid(pid_t pid, int *status, int options)
 {
-	HANDLE h = OpenProcess(SYNCHRONIZE | PROCESS_QUERY_INFORMATION,
-	    FALSE, pid);
-	if (!h) {
-		errno = ECHILD;
-		return -1;
-	}
+ HANDLE h = OpenProcess(SYNCHRONIZE | PROCESS_QUERY_INFORMATION,
+     FALSE, pid);
+ if (!h) {
+  errno = ECHILD;
+  return -1;
+ }
 
-	if (pid > 0 && options & WNOHANG) {
-		if (WAIT_OBJECT_0 != WaitForSingleObject(h, 0)) {
-			CloseHandle(h);
-			return 0;
-		}
-		options &= ~WNOHANG;
-	}
+ if (pid > 0 && options & WNOHANG) {
+  if (WAIT_OBJECT_0 != WaitForSingleObject(h, 0)) {
+   CloseHandle(h);
+   return 0;
+  }
+  options &= ~WNOHANG;
+ }
 
-	if (options == 0) {
-		struct pinfo_t **ppinfo;
-		if (WaitForSingleObject(h, INFINITE) != WAIT_OBJECT_0) {
-			CloseHandle(h);
-			return 0;
-		}
+ if (options == 0) {
+  struct pinfo_t **ppinfo;
+  if (WaitForSingleObject(h, INFINITE) != WAIT_OBJECT_0) {
+   CloseHandle(h);
+   return 0;
+  }
 
-		if (status)
-			GetExitCodeProcess(h, (LPDWORD)status);
+  if (status)
+   GetExitCodeProcess(h, (LPDWORD)status);
 
-		EnterCriticalSection(&pinfo_cs);
+  EnterCriticalSection(&pinfo_cs);
 
-		ppinfo = &pinfo;
-		while (*ppinfo) {
-			struct pinfo_t *info = *ppinfo;
-			if (info->pid == pid) {
-				CloseHandle(info->proc);
-				*ppinfo = info->next;
-				free(info);
-				break;
-			}
-			ppinfo = &info->next;
-		}
+  ppinfo = &pinfo;
+  while (*ppinfo) {
+   struct pinfo_t *info = *ppinfo;
+   if (info->pid == pid) {
+    CloseHandle(info->proc);
+    *ppinfo = info->next;
+    free(info);
+    break;
+   }
+   ppinfo = &info->next;
+  }
 
-		LeaveCriticalSection(&pinfo_cs);
+  LeaveCriticalSection(&pinfo_cs);
 
-		CloseHandle(h);
-		return pid;
-	}
-	CloseHandle(h);
+  CloseHandle(h);
+  return pid;
+ }
+ CloseHandle(h);
 
-	errno = EINVAL;
-	return -1;
+ errno = EINVAL;
+ return -1;
 }

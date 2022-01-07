@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buf2 ;
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  LPCOLESTR ;
-typedef  int LONG ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  int /*<<< orphan*/  CLSID ;
 
-/* Variables and functions */
- int CHARS_IN_GUID ; 
- int /*<<< orphan*/  CO_E_CLASSSTRING ; 
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HKEY_CLASSES_ROOT ; 
- char* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  MAXIMUM_ALLOWED ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- scalar_t__ RegQueryValueW (int /*<<< orphan*/ ,int /*<<< orphan*/ *,char*,int*) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  WARN (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  debugstr_w (int /*<<< orphan*/ ) ; 
- scalar_t__ guid_from_string (char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lstrcatW (char*,char const*) ; 
- int /*<<< orphan*/  lstrcpyW (char*,int /*<<< orphan*/ ) ; 
- int lstrlenW (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- scalar_t__ open_classes_key (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int buf2 ;
+typedef char WCHAR ;
+typedef int LPCOLESTR ;
+typedef int LONG ;
+typedef int HRESULT ;
+typedef int HKEY ;
+typedef int CLSID ;
+
+
+ int CHARS_IN_GUID ;
+ int CO_E_CLASSSTRING ;
+ int E_OUTOFMEMORY ;
+ int GetProcessHeap () ;
+ int HKEY_CLASSES_ROOT ;
+ char* HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,char*) ;
+ int MAXIMUM_ALLOWED ;
+ int RegCloseKey (int ) ;
+ scalar_t__ RegQueryValueW (int ,int *,char*,int*) ;
+ int S_OK ;
+ int WARN (char*,int ) ;
+ int debugstr_w (int ) ;
+ scalar_t__ guid_from_string (char*,int *) ;
+ int lstrcatW (char*,char const*) ;
+ int lstrcpyW (char*,int ) ;
+ int lstrlenW (int ) ;
+ int memset (int *,int ,int) ;
+ scalar_t__ open_classes_key (int ,char*,int ,int *) ;
 
 __attribute__((used)) static HRESULT clsid_from_string_reg(LPCOLESTR progid, CLSID *clsid)
 {
@@ -60,7 +60,7 @@ __attribute__((used)) static HRESULT clsid_from_string_reg(LPCOLESTR progid, CLS
     }
     HeapFree(GetProcessHeap(),0,buf);
 
-    if (RegQueryValueW(xhkey,NULL,buf2,&buf2len))
+    if (RegQueryValueW(xhkey,((void*)0),buf2,&buf2len))
     {
         RegCloseKey(xhkey);
         WARN("couldn't query clsid value for ProgID %s\n", debugstr_w(progid));

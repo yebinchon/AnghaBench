@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
+
+
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_9__ {float width; float height; scalar_t__ use_argb; int argb_stride; scalar_t__ argb; } ;
-typedef  TYPE_1__ WebPPicture ;
+typedef TYPE_1__ WebPPicture ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ConvertToGray (TYPE_1__*) ; 
- int DiffScaleChannel (int /*<<< orphan*/ *,int,int /*<<< orphan*/  const*,int,int,float,float,int) ; 
- int /*<<< orphan*/  FREE_WARGV_AND_RETURN (int) ; 
- scalar_t__ GET_WARGV (char const**,int) ; 
- int /*<<< orphan*/  Help () ; 
- int /*<<< orphan*/  INIT_WARGV (int,char const**) ; 
- scalar_t__ ImgIoUtilWriteFile (char const*,int /*<<< orphan*/ *,size_t) ; 
- size_t ReadPicture (char const*,TYPE_1__*,int) ; 
- int SSIMScaleChannel (int /*<<< orphan*/ *,int,int /*<<< orphan*/  const*,int,int,float,float,int) ; 
- int /*<<< orphan*/  WebPBlendAlpha (TYPE_1__*,int) ; 
- size_t WebPEncodeLosslessBGRA (int /*<<< orphan*/  const*,float,float,int,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  WebPFree (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  WebPPictureDistortion (TYPE_1__*,TYPE_1__*,int,float*) ; 
- int /*<<< orphan*/  WebPPictureFree (TYPE_1__*) ; 
- int /*<<< orphan*/  WebPPictureInit (TYPE_1__*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  printf (char*,unsigned int,float,float,float,float,float,float) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  strcmp (char const*,char*) ; 
+
+ int ConvertToGray (TYPE_1__*) ;
+ int DiffScaleChannel (int *,int,int const*,int,int,float,float,int) ;
+ int FREE_WARGV_AND_RETURN (int) ;
+ scalar_t__ GET_WARGV (char const**,int) ;
+ int Help () ;
+ int INIT_WARGV (int,char const**) ;
+ scalar_t__ ImgIoUtilWriteFile (char const*,int *,size_t) ;
+ size_t ReadPicture (char const*,TYPE_1__*,int) ;
+ int SSIMScaleChannel (int *,int,int const*,int,int,float,float,int) ;
+ int WebPBlendAlpha (TYPE_1__*,int) ;
+ size_t WebPEncodeLosslessBGRA (int const*,float,float,int,int **) ;
+ int WebPFree (int *) ;
+ int WebPPictureDistortion (TYPE_1__*,TYPE_1__*,int,float*) ;
+ int WebPPictureFree (TYPE_1__*) ;
+ int WebPPictureInit (TYPE_1__*) ;
+ int fprintf (int ,char*,...) ;
+ int printf (char*,unsigned int,float,float,float,float,float,float) ;
+ int stderr ;
+ int strcmp (char const*,char*) ;
 
 int main(int argc, const char* argv[]) {
   WebPPicture pic1, pic2;
@@ -47,9 +47,9 @@ int main(int argc, const char* argv[]) {
   int keep_alpha = 0;
   int scale = 0;
   int use_gray = 0;
-  const char* name1 = NULL;
-  const char* name2 = NULL;
-  const char* output = NULL;
+  const char* name1 = ((void*)0);
+  const char* name2 = ((void*)0);
+  const char* output = ((void*)0);
 
   INIT_WARGV(argc, argv);
 
@@ -78,13 +78,13 @@ int main(int argc, const char* argv[]) {
         goto End;
       }
       output = (const char*)GET_WARGV(argv, c);
-    } else if (name1 == NULL) {
+    } else if (name1 == ((void*)0)) {
       name1 = (const char*)GET_WARGV(argv, c);
     } else {
       name2 = (const char*)GET_WARGV(argv, c);
     }
   }
-  if (help || name1 == NULL || name2 == NULL) {
+  if (help || name1 == ((void*)0) || name2 == ((void*)0)) {
     if (!help) {
       fprintf(stderr, "Error: missing arguments.\n");
     }
@@ -109,8 +109,8 @@ int main(int argc, const char* argv[]) {
          disto[4], disto[0], disto[1], disto[2], disto[3],
          8.f * size1 / pic1.width / pic1.height);
 
-  if (output != NULL) {
-    uint8_t* data = NULL;
+  if (output != ((void*)0)) {
+    uint8_t* data = ((void*)0);
     size_t data_size = 0;
     if (pic1.use_argb != pic2.use_argb) {
       fprintf(stderr, "Pictures are not in the same argb format. "
@@ -120,7 +120,7 @@ int main(int argc, const char* argv[]) {
     if (pic1.use_argb) {
       int n;
       fprintf(stderr, "max differences per channel: ");
-      for (n = 0; n < 3; ++n) {    // skip the alpha channel
+      for (n = 0; n < 3; ++n) {
         const int range = (type == 1) ?
           SSIMScaleChannel((uint8_t*)pic1.argb + n, pic1.argb_stride * 4,
                            (const uint8_t*)pic2.argb + n, pic2.argb_stride * 4,
@@ -137,7 +137,7 @@ int main(int argc, const char* argv[]) {
       fprintf(stderr, "Can only compute the difference map in ARGB format.\n");
       goto End;
     }
-#if !defined(WEBP_REDUCE_CSP)
+
     data_size = WebPEncodeLosslessBGRA((const uint8_t*)pic1.argb,
                                        pic1.width, pic1.height,
                                        pic1.argb_stride * 4,
@@ -149,12 +149,12 @@ int main(int argc, const char* argv[]) {
     ret = ImgIoUtilWriteFile(output, data, data_size) ? 0 : 1;
     WebPFree(data);
     if (ret) goto End;
-#else
-    (void)data;
-    (void)data_size;
-    fprintf(stderr, "Cannot save the difference map. Please recompile "
-                    "without the WEBP_REDUCE_CSP flag.\n");
-#endif  // WEBP_REDUCE_CSP
+
+
+
+
+
+
   }
   ret = 0;
 

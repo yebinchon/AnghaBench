@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-typedef  int /*<<< orphan*/  u32 ;
-struct qede_dev {int /*<<< orphan*/  rss_key; int /*<<< orphan*/ * rss_ind_table; } ;
+
+
+
+
+typedef int u8 ;
+typedef int u32 ;
+struct qede_dev {int rss_key; int * rss_ind_table; } ;
 struct net_device {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ETH_RSS_HASH_TOP ; 
- int QED_RSS_IND_TABLE_SIZE ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- struct qede_dev* netdev_priv (struct net_device*) ; 
- int /*<<< orphan*/  qede_get_rxfh_key_size (struct net_device*) ; 
+
+ int ETH_RSS_HASH_TOP ;
+ int QED_RSS_IND_TABLE_SIZE ;
+ int memcpy (int *,int ,int ) ;
+ struct qede_dev* netdev_priv (struct net_device*) ;
+ int qede_get_rxfh_key_size (struct net_device*) ;
 
 __attribute__((used)) static int qede_get_rxfh(struct net_device *dev, u32 *indir, u8 *key, u8 *hfunc)
 {
-	struct qede_dev *edev = netdev_priv(dev);
-	int i;
+ struct qede_dev *edev = netdev_priv(dev);
+ int i;
 
-	if (hfunc)
-		*hfunc = ETH_RSS_HASH_TOP;
+ if (hfunc)
+  *hfunc = ETH_RSS_HASH_TOP;
 
-	if (!indir)
-		return 0;
+ if (!indir)
+  return 0;
 
-	for (i = 0; i < QED_RSS_IND_TABLE_SIZE; i++)
-		indir[i] = edev->rss_ind_table[i];
+ for (i = 0; i < QED_RSS_IND_TABLE_SIZE; i++)
+  indir[i] = edev->rss_ind_table[i];
 
-	if (key)
-		memcpy(key, edev->rss_key, qede_get_rxfh_key_size(dev));
+ if (key)
+  memcpy(key, edev->rss_key, qede_get_rxfh_key_size(dev));
 
-	return 0;
+ return 0;
 }

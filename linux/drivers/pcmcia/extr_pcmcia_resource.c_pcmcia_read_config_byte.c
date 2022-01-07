@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
+
+
+
+
+typedef int u8 ;
 struct pcmcia_device {int dummy; } ;
-typedef  int /*<<< orphan*/  off_t ;
+typedef int off_t ;
 
-/* Variables and functions */
- int pcmcia_access_config (struct pcmcia_device*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pcmcia_read_cis_mem ; 
+
+ int pcmcia_access_config (struct pcmcia_device*,int ,int *,int ) ;
+ int pcmcia_read_cis_mem ;
 
 int pcmcia_read_config_byte(struct pcmcia_device *p_dev, off_t where, u8 *val)
 {
-	return pcmcia_access_config(p_dev, where, val, pcmcia_read_cis_mem);
+ return pcmcia_access_config(p_dev, where, val, pcmcia_read_cis_mem);
 }

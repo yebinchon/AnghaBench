@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct usb_otg {int /*<<< orphan*/  state; struct usb_gadget* gadget; } ;
+
+
+
+
+struct usb_otg {int state; struct usb_gadget* gadget; } ;
 struct usb_gadget {int dummy; } ;
 
-/* Variables and functions */
- int ENODEV ; 
- int /*<<< orphan*/  OTG_STATE_UNDEFINED ; 
+
+ int ENODEV ;
+ int OTG_STATE_UNDEFINED ;
 
 __attribute__((used)) static int twl4030_set_peripheral(struct usb_otg *otg,
-					struct usb_gadget *gadget)
+     struct usb_gadget *gadget)
 {
-	if (!otg)
-		return -ENODEV;
+ if (!otg)
+  return -ENODEV;
 
-	otg->gadget = gadget;
-	if (!gadget)
-		otg->state = OTG_STATE_UNDEFINED;
+ otg->gadget = gadget;
+ if (!gadget)
+  otg->state = OTG_STATE_UNDEFINED;
 
-	return 0;
+ return 0;
 }

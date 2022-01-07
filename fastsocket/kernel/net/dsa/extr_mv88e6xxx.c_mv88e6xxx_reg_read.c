@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct mv88e6xxx_priv_state {int /*<<< orphan*/  smi_mutex; } ;
-struct dsa_switch {TYPE_1__* pd; int /*<<< orphan*/  master_mii_bus; } ;
-struct TYPE_2__ {int /*<<< orphan*/  sw_addr; } ;
 
-/* Variables and functions */
- int __mv88e6xxx_reg_read (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct mv88e6xxx_priv_state {int smi_mutex; } ;
+struct dsa_switch {TYPE_1__* pd; int master_mii_bus; } ;
+struct TYPE_2__ {int sw_addr; } ;
+
+
+ int __mv88e6xxx_reg_read (int ,int ,int,int) ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
 
 int mv88e6xxx_reg_read(struct dsa_switch *ds, int addr, int reg)
 {
-	struct mv88e6xxx_priv_state *ps = (void *)(ds + 1);
-	int ret;
+ struct mv88e6xxx_priv_state *ps = (void *)(ds + 1);
+ int ret;
 
-	mutex_lock(&ps->smi_mutex);
-	ret = __mv88e6xxx_reg_read(ds->master_mii_bus,
-				   ds->pd->sw_addr, addr, reg);
-	mutex_unlock(&ps->smi_mutex);
+ mutex_lock(&ps->smi_mutex);
+ ret = __mv88e6xxx_reg_read(ds->master_mii_bus,
+       ds->pd->sw_addr, addr, reg);
+ mutex_unlock(&ps->smi_mutex);
 
-	return ret;
+ return ret;
 }

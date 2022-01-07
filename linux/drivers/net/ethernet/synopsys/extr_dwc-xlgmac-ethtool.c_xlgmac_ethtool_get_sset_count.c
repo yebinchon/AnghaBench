@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct net_device {int dummy; } ;
 
-/* Variables and functions */
- int EOPNOTSUPP ; 
-#define  ETH_SS_STATS 128 
- int XLGMAC_STATS_COUNT ; 
+
+ int EOPNOTSUPP ;
+
+ int XLGMAC_STATS_COUNT ;
 
 __attribute__((used)) static int xlgmac_ethtool_get_sset_count(struct net_device *netdev,
-					 int stringset)
+      int stringset)
 {
-	int ret;
+ int ret;
 
-	switch (stringset) {
-	case ETH_SS_STATS:
-		ret = XLGMAC_STATS_COUNT;
-		break;
+ switch (stringset) {
+ case 128:
+  ret = XLGMAC_STATS_COUNT;
+  break;
 
-	default:
-		ret = -EOPNOTSUPP;
-	}
+ default:
+  ret = -EOPNOTSUPP;
+ }
 
-	return ret;
+ return ret;
 }

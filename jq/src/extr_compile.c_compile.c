@@ -1,66 +1,66 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_19__   TYPE_6__ ;
-typedef  struct TYPE_18__   TYPE_5__ ;
-typedef  struct TYPE_17__   TYPE_4__ ;
-typedef  struct TYPE_16__   TYPE_3__ ;
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint16_t ;
+
+
+typedef struct TYPE_19__ TYPE_6__ ;
+typedef struct TYPE_18__ TYPE_5__ ;
+typedef struct TYPE_17__ TYPE_4__ ;
+typedef struct TYPE_16__ TYPE_3__ ;
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
+typedef int uint16_t ;
 struct opcode_description {int length; int flags; } ;
 struct locfile {int dummy; } ;
 struct bytecode {int nsubfunctions; int codelen; int* code; int nlocals; void* constants; struct bytecode** subfunctions; void* debuginfo; scalar_t__ nclosures; struct bytecode* parent; TYPE_1__* globals; } ;
-typedef  void* jv ;
-struct TYPE_17__ {int intval; TYPE_3__* target; void* constant; int /*<<< orphan*/ * cfunc; } ;
+typedef void* jv ;
+struct TYPE_17__ {int intval; TYPE_3__* target; void* constant; int * cfunc; } ;
 struct TYPE_15__ {TYPE_5__* first; } ;
 struct TYPE_19__ {TYPE_5__* first; TYPE_5__* last; } ;
 struct TYPE_18__ {scalar_t__ op; int bytecode_pos; char* symbol; TYPE_4__ imm; struct TYPE_18__* bound_by; struct TYPE_18__* next; TYPE_2__ arglist; TYPE_6__ subfn; struct bytecode* compiled; } ;
-typedef  TYPE_5__ inst ;
-typedef  TYPE_6__ block ;
+typedef TYPE_5__ inst ;
+typedef TYPE_6__ block ;
 struct TYPE_16__ {int bytecode_pos; } ;
-struct TYPE_14__ {int /*<<< orphan*/ * cfunctions; void* cfunc_names; int /*<<< orphan*/  ncfunctions; } ;
+struct TYPE_14__ {int * cfunctions; void* cfunc_names; int ncfunctions; } ;
 
-/* Variables and functions */
- int ARG_NEWCLOSURE ; 
- TYPE_6__ BLOCK (TYPE_6__,int /*<<< orphan*/ ) ; 
- scalar_t__ CALL_BUILTIN ; 
- scalar_t__ CALL_JQ ; 
- scalar_t__ CLOSURE_CREATE ; 
- scalar_t__ CLOSURE_CREATE_C ; 
- scalar_t__ CLOSURE_PARAM ; 
- scalar_t__ CLOSURE_REF ; 
- int OP_HAS_BRANCH ; 
- int OP_HAS_CONSTANT ; 
- int OP_HAS_VARIABLE ; 
- int /*<<< orphan*/  RET ; 
- int /*<<< orphan*/  UNKNOWN_LOCATION ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  block_free (TYPE_6__) ; 
- scalar_t__ expand_call_arglist (TYPE_6__*,void*,void**) ; 
- TYPE_6__ gen_noop () ; 
- int /*<<< orphan*/  gen_op_simple (int /*<<< orphan*/ ) ; 
- void* jv_array () ; 
- void* jv_array_append (void*,void*) ; 
- int jv_array_length (void*) ; 
- void* jv_copy (void*) ; 
- struct bytecode* jv_mem_alloc (int) ; 
- void* jv_mem_calloc (int,int) ; 
- void* jv_object () ; 
- void* jv_object_set (void*,void*,void*) ; 
- void* jv_string (char*) ; 
- int /*<<< orphan*/  locfile_locate (struct locfile*,int /*<<< orphan*/ ,char*,int) ; 
- int nesting_level (struct bytecode*,TYPE_5__*) ; 
- struct opcode_description* opcode_describe (scalar_t__) ; 
+
+ int ARG_NEWCLOSURE ;
+ TYPE_6__ BLOCK (TYPE_6__,int ) ;
+ scalar_t__ CALL_BUILTIN ;
+ scalar_t__ CALL_JQ ;
+ scalar_t__ CLOSURE_CREATE ;
+ scalar_t__ CLOSURE_CREATE_C ;
+ scalar_t__ CLOSURE_PARAM ;
+ scalar_t__ CLOSURE_REF ;
+ int OP_HAS_BRANCH ;
+ int OP_HAS_CONSTANT ;
+ int OP_HAS_VARIABLE ;
+ int RET ;
+ int UNKNOWN_LOCATION ;
+ int assert (int) ;
+ int block_free (TYPE_6__) ;
+ scalar_t__ expand_call_arglist (TYPE_6__*,void*,void**) ;
+ TYPE_6__ gen_noop () ;
+ int gen_op_simple (int ) ;
+ void* jv_array () ;
+ void* jv_array_append (void*,void*) ;
+ int jv_array_length (void*) ;
+ void* jv_copy (void*) ;
+ struct bytecode* jv_mem_alloc (int) ;
+ void* jv_mem_calloc (int,int) ;
+ void* jv_object () ;
+ void* jv_object_set (void*,void*,void*) ;
+ void* jv_string (char*) ;
+ int locfile_locate (struct locfile*,int ,char*,int) ;
+ int nesting_level (struct bytecode*,TYPE_5__*) ;
+ struct opcode_description* opcode_describe (scalar_t__) ;
 
 __attribute__((used)) static int compile(struct bytecode* bc, block b, struct locfile* lf, jv args, jv *env) {
   int errors = 0;
@@ -104,7 +104,7 @@ __attribute__((used)) static int compile(struct bytecode* bc, block b, struct lo
     }
   }
   if (pos > 0xFFFF) {
-    // too long for program counter to fit in uint16_t
+
     locfile_locate(lf, UNKNOWN_LOCATION,
         "function compiled to %d bytes which is too long", pos);
     errors++;
@@ -166,7 +166,7 @@ __attribute__((used)) static int compile(struct bytecode* bc, block b, struct lo
         code[pos++] = arg->bound_by->imm.intval | ARG_NEWCLOSURE;
       }
     } else if ((op->flags & OP_HAS_CONSTANT) && (op->flags & OP_HAS_VARIABLE)) {
-      // STORE_GLOBAL: constant global, basically
+
       code[pos++] = jv_array_length(jv_copy(constant_pool));
       constant_pool = jv_array_append(constant_pool, jv_copy(curr->imm.constant));
       code[pos++] = nesting_level(bc, curr->bound_by);
@@ -182,7 +182,7 @@ __attribute__((used)) static int compile(struct bytecode* bc, block b, struct lo
       if (var > maxvar) maxvar = var;
     } else if (op->flags & OP_HAS_BRANCH) {
       assert(curr->imm.target->bytecode_pos != -1);
-      assert(curr->imm.target->bytecode_pos > pos); // only forward branches
+      assert(curr->imm.target->bytecode_pos > pos);
       code[pos] = curr->imm.target->bytecode_pos - (pos + 1);
       pos++;
     } else if (op->length > 1) {
@@ -190,7 +190,7 @@ __attribute__((used)) static int compile(struct bytecode* bc, block b, struct lo
     }
   }
   bc->constants = constant_pool;
-  bc->nlocals = maxvar + 2; // FIXME: frames of size zero?
+  bc->nlocals = maxvar + 2;
   block_free(b);
   return errors;
 }

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  status; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int status; } ;
 struct TYPE_4__ {TYPE_1__ ret_unlink; } ;
-struct usbip_header {TYPE_2__ u; int /*<<< orphan*/  base; } ;
-struct stub_unlink {int /*<<< orphan*/  status; int /*<<< orphan*/  seqnum; } ;
+struct usbip_header {TYPE_2__ u; int base; } ;
+struct stub_unlink {int status; int seqnum; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  USBIP_RET_UNLINK ; 
- int /*<<< orphan*/  setup_base_pdu (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int USBIP_RET_UNLINK ;
+ int setup_base_pdu (int *,int ,int ) ;
 
 __attribute__((used)) static void setup_ret_unlink_pdu(struct usbip_header *rpdu,
-		struct stub_unlink *unlink)
+  struct stub_unlink *unlink)
 {
-	setup_base_pdu(&rpdu->base, USBIP_RET_UNLINK, unlink->seqnum);
+ setup_base_pdu(&rpdu->base, USBIP_RET_UNLINK, unlink->seqnum);
 
-	rpdu->u.ret_unlink.status = unlink->status;
+ rpdu->u.ret_unlink.status = unlink->status;
 }

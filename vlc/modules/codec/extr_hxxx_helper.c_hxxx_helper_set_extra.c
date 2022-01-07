@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct hxxx_helper {int i_codec; void* pf_process_block; int /*<<< orphan*/  b_need_xvcC; int /*<<< orphan*/  b_is_xvcC; } ;
 
-/* Variables and functions */
-#define  VLC_CODEC_H264 129 
-#define  VLC_CODEC_HEVC 128 
- int VLC_SUCCESS ; 
- int h264_helper_set_extra (struct hxxx_helper*,void const*,size_t) ; 
- void* helper_process_block_h264_annexb ; 
- void* helper_process_block_h264_annexb2avcc ; 
- void* helper_process_block_h264_avcc ; 
- void* helper_process_block_hevc_annexb ; 
- void* helper_process_block_hevc_annexb2hvcc ; 
- void* helper_process_block_hevc_hvcc ; 
- void* helper_process_block_xvcc2annexb ; 
- int hevc_helper_set_extra (struct hxxx_helper*,void const*,size_t) ; 
- int /*<<< orphan*/  vlc_assert_unreachable () ; 
+
+
+
+struct hxxx_helper {int i_codec; void* pf_process_block; int b_need_xvcC; int b_is_xvcC; } ;
+
+
+
+
+ int VLC_SUCCESS ;
+ int h264_helper_set_extra (struct hxxx_helper*,void const*,size_t) ;
+ void* helper_process_block_h264_annexb ;
+ void* helper_process_block_h264_annexb2avcc ;
+ void* helper_process_block_h264_avcc ;
+ void* helper_process_block_hevc_annexb ;
+ void* helper_process_block_hevc_annexb2hvcc ;
+ void* helper_process_block_hevc_hvcc ;
+ void* helper_process_block_xvcc2annexb ;
+ int hevc_helper_set_extra (struct hxxx_helper*,void const*,size_t) ;
+ int vlc_assert_unreachable () ;
 
 int
 hxxx_helper_set_extra(struct hxxx_helper *hh, const void *p_extra,
@@ -34,10 +34,10 @@ hxxx_helper_set_extra(struct hxxx_helper *hh, const void *p_extra,
     int i_ret;
     switch (hh->i_codec)
     {
-        case VLC_CODEC_H264:
+        case 129:
             i_ret = h264_helper_set_extra(hh, p_extra, i_extra);
             break;
-        case VLC_CODEC_HEVC:
+        case 128:
             i_ret = hevc_helper_set_extra(hh, p_extra, i_extra);
             break;
         default:
@@ -48,7 +48,7 @@ hxxx_helper_set_extra(struct hxxx_helper *hh, const void *p_extra,
 
     switch (hh->i_codec)
     {
-        case VLC_CODEC_H264:
+        case 129:
             if (hh->b_is_xvcC)
             {
                 if (hh->b_need_xvcC)
@@ -56,7 +56,7 @@ hxxx_helper_set_extra(struct hxxx_helper *hh, const void *p_extra,
                 else
                     hh->pf_process_block = helper_process_block_xvcc2annexb;
             }
-            else /* AnnexB */
+            else
             {
                 if (hh->b_need_xvcC)
                     hh->pf_process_block = helper_process_block_h264_annexb2avcc;
@@ -64,7 +64,7 @@ hxxx_helper_set_extra(struct hxxx_helper *hh, const void *p_extra,
                     hh->pf_process_block = helper_process_block_h264_annexb;
             }
             break;
-        case VLC_CODEC_HEVC:
+        case 128:
             if (hh->b_is_xvcC)
             {
                 if (hh->b_need_xvcC)
@@ -72,7 +72,7 @@ hxxx_helper_set_extra(struct hxxx_helper *hh, const void *p_extra,
                 else
                     hh->pf_process_block = helper_process_block_xvcc2annexb;
             }
-            else /* AnnexB */
+            else
             {
                 if (hh->b_need_xvcC)
                     hh->pf_process_block = helper_process_block_hevc_annexb2hvcc;

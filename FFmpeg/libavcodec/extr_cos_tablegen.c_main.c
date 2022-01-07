@@ -1,31 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int BITS ; 
- int M_PI ; 
- double cos (double) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  printval (double,int) ; 
- double sin (double) ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
- scalar_t__ strstr (char*,char*) ; 
+ int BITS ;
+ int M_PI ;
+ double cos (double) ;
+ int printf (char*,...) ;
+ int printval (double,int) ;
+ double sin (double) ;
+ int strcmp (char*,char*) ;
+ scalar_t__ strstr (char*,char*) ;
 
 int main(int argc, char *argv[])
 {
     int i, j;
     int do_sin = argc > 1 && !strcmp(argv[1], "sin");
-    int fixed  = argc > 1 &&  strstr(argv[1], "fixed");
+    int fixed = argc > 1 && strstr(argv[1], "fixed");
     double (*func)(double) = do_sin ? sin : cos;
 
     printf("/* This file was automatically generated. */\n");

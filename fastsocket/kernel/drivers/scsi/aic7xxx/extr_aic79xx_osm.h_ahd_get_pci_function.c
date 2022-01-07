@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* ahd_dev_softc_t ;
-struct TYPE_3__ {int /*<<< orphan*/  devfn; } ;
 
-/* Variables and functions */
- int PCI_FUNC (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef TYPE_1__* ahd_dev_softc_t ;
+struct TYPE_3__ {int devfn; } ;
+
+
+ int PCI_FUNC (int ) ;
 
 __attribute__((used)) static inline int
 ahd_get_pci_function(ahd_dev_softc_t pci)
 {
-	return (PCI_FUNC(pci->devfn));
+ return (PCI_FUNC(pci->devfn));
 }

@@ -1,141 +1,141 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wchar_t ;
-typedef  int /*<<< orphan*/  txtname ;
-typedef  int /*<<< orphan*/  tmp ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int wchar_t ;
+typedef int txtname ;
+typedef int tmp ;
 struct ssl_ctx_st {int dummy; } ;
-typedef  int /*<<< orphan*/  exedir ;
-typedef  int /*<<< orphan*/  dirname ;
-typedef  int /*<<< orphan*/  X ;
-typedef  size_t UINT ;
-typedef  int /*<<< orphan*/  UCHAR ;
+typedef int exedir ;
+typedef int dirname ;
+typedef int X ;
+typedef size_t UINT ;
+typedef int UCHAR ;
 struct TYPE_6__ {int Folder; char* FileNameW; } ;
 struct TYPE_5__ {size_t NumFiles; TYPE_2__** File; } ;
-typedef  int /*<<< orphan*/  LIST ;
-typedef  TYPE_1__ DIRLIST ;
-typedef  TYPE_2__ DIRENT ;
+typedef int LIST ;
+typedef TYPE_1__ DIRLIST ;
+typedef TYPE_2__ DIRENT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Add (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AddChainSslCert (struct ssl_ctx_st*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Clone (int /*<<< orphan*/ *,int) ; 
- scalar_t__ Cmp (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  CombinePathW (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,char*) ; 
- TYPE_1__* EnumDirW (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FileCopyW (char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * FileToXW (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FreeDir (TYPE_1__*) ; 
- int /*<<< orphan*/  FreeX (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GetExeDirW (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  GetXDigest (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int IsFileExistsW (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * LIST_DATA (int /*<<< orphan*/ *,size_t) ; 
- size_t LIST_NUM (int /*<<< orphan*/ *) ; 
- int MAX_SIZE ; 
- int /*<<< orphan*/  MakeDirExW (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * NewListFast (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ReleaseList (int /*<<< orphan*/ *) ; 
- int SHA1_SIZE ; 
+
+ int Add (int *,int ) ;
+ int AddChainSslCert (struct ssl_ctx_st*,int *) ;
+ int Clone (int *,int) ;
+ scalar_t__ Cmp (int *,int *,int) ;
+ int CombinePathW (int *,int,int *,char*) ;
+ TYPE_1__* EnumDirW (int *) ;
+ int FileCopyW (char*,int *) ;
+ int * FileToXW (int *) ;
+ int Free (int *) ;
+ int FreeDir (TYPE_1__*) ;
+ int FreeX (int *) ;
+ int GetExeDirW (int *,int) ;
+ int GetXDigest (int *,int *,int) ;
+ int IsFileExistsW (int *) ;
+ int * LIST_DATA (int *,size_t) ;
+ size_t LIST_NUM (int *) ;
+ int MAX_SIZE ;
+ int MakeDirExW (int *) ;
+ int * NewListFast (int *) ;
+ int ReleaseList (int *) ;
+ int SHA1_SIZE ;
 
 void AddChainSslCertOnDirectory(struct ssl_ctx_st *ctx)
 {
-	wchar_t dirname[MAX_SIZE];
-	wchar_t exedir[MAX_SIZE];
-	wchar_t txtname[MAX_SIZE];
-	DIRLIST *dir;
-	LIST *o;
-	UINT i;
+ wchar_t dirname[MAX_SIZE];
+ wchar_t exedir[MAX_SIZE];
+ wchar_t txtname[MAX_SIZE];
+ DIRLIST *dir;
+ LIST *o;
+ UINT i;
 
-	// Validate arguments
-	if (ctx == NULL)
-	{
-		return;
-	}
 
-	o = NewListFast(NULL);
+ if (ctx == ((void*)0))
+ {
+  return;
+ }
 
-	GetExeDirW(exedir, sizeof(exedir));
+ o = NewListFast(((void*)0));
 
-	CombinePathW(dirname, sizeof(dirname), exedir, L"chain_certs");
+ GetExeDirW(exedir, sizeof(exedir));
 
-	MakeDirExW(dirname);
+ CombinePathW(dirname, sizeof(dirname), exedir, L"chain_certs");
 
-	CombinePathW(txtname, sizeof(txtname), dirname, L"Readme_Chain_Certs.txt");
+ MakeDirExW(dirname);
 
-	if (IsFileExistsW(txtname) == false)
-	{
-		FileCopyW(L"|chain_certs.txt", txtname);
-	}
+ CombinePathW(txtname, sizeof(txtname), dirname, L"Readme_Chain_Certs.txt");
 
-	dir = EnumDirW(dirname);
+ if (IsFileExistsW(txtname) == 0)
+ {
+  FileCopyW(L"|chain_certs.txt", txtname);
+ }
 
-	if (dir != NULL)
-	{
-		for (i = 0;i < dir->NumFiles;i++)
-		{
-			DIRENT *e = dir->File[i];
+ dir = EnumDirW(dirname);
 
-			if (e->Folder == false)
-			{
-				wchar_t tmp[MAX_SIZE];
-				X *x;
+ if (dir != ((void*)0))
+ {
+  for (i = 0;i < dir->NumFiles;i++)
+  {
+   DIRENT *e = dir->File[i];
 
-				CombinePathW(tmp, sizeof(tmp), dirname, e->FileNameW);
+   if (e->Folder == 0)
+   {
+    wchar_t tmp[MAX_SIZE];
+    X *x;
 
-				x = FileToXW(tmp);
+    CombinePathW(tmp, sizeof(tmp), dirname, e->FileNameW);
 
-				if (x != NULL)
-				{
-					UINT j;
-					bool exists = false;
-					UCHAR hash[SHA1_SIZE];
+    x = FileToXW(tmp);
 
-					GetXDigest(x, hash, true);
+    if (x != ((void*)0))
+    {
+     UINT j;
+     bool exists = 0;
+     UCHAR hash[SHA1_SIZE];
 
-					for (j = 0;j < LIST_NUM(o);j++)
-					{
-						UCHAR *hash2 = LIST_DATA(o, j);
+     GetXDigest(x, hash, 1);
 
-						if (Cmp(hash, hash2, SHA1_SIZE) == 0)
-						{
-							exists = true;
-						}
-					}
+     for (j = 0;j < LIST_NUM(o);j++)
+     {
+      UCHAR *hash2 = LIST_DATA(o, j);
 
-					if (exists == false)
-					{
-						AddChainSslCert(ctx, x);
+      if (Cmp(hash, hash2, SHA1_SIZE) == 0)
+      {
+       exists = 1;
+      }
+     }
 
-						Add(o, Clone(hash, SHA1_SIZE));
-					}
+     if (exists == 0)
+     {
+      AddChainSslCert(ctx, x);
 
-					FreeX(x);
-				}
-			}
-		}
+      Add(o, Clone(hash, SHA1_SIZE));
+     }
 
-		FreeDir(dir);
-	}
+     FreeX(x);
+    }
+   }
+  }
 
-	for (i = 0;i < LIST_NUM(o);i++)
-	{
-		UCHAR *hash = LIST_DATA(o, i);
+  FreeDir(dir);
+ }
 
-		Free(hash);
-	}
+ for (i = 0;i < LIST_NUM(o);i++)
+ {
+  UCHAR *hash = LIST_DATA(o, i);
 
-	ReleaseList(o);
+  Free(hash);
+ }
+
+ ReleaseList(o);
 }

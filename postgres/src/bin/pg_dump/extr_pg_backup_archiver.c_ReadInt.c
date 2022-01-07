@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {scalar_t__ version; int (* ReadBytePtr ) (TYPE_1__*) ;int intSize; } ;
-typedef  TYPE_1__ ArchiveHandle ;
+typedef TYPE_1__ ArchiveHandle ;
 
-/* Variables and functions */
- scalar_t__ K_VERS_1_0 ; 
- int stub1 (TYPE_1__*) ; 
- int stub2 (TYPE_1__*) ; 
+
+ scalar_t__ K_VERS_1_0 ;
+ int stub1 (TYPE_1__*) ;
+ int stub2 (TYPE_1__*) ;
 
 int
 ReadInt(ArchiveHandle *AH)
 {
-	int			res = 0;
-	int			bv,
-				b;
-	int			sign = 0;		/* Default positive */
-	int			bitShift = 0;
+ int res = 0;
+ int bv,
+    b;
+ int sign = 0;
+ int bitShift = 0;
 
-	if (AH->version > K_VERS_1_0)
-		/* Read a sign byte */
-		sign = AH->ReadBytePtr(AH);
+ if (AH->version > K_VERS_1_0)
 
-	for (b = 0; b < AH->intSize; b++)
-	{
-		bv = AH->ReadBytePtr(AH) & 0xFF;
-		if (bv != 0)
-			res = res + (bv << bitShift);
-		bitShift += 8;
-	}
+  sign = AH->ReadBytePtr(AH);
 
-	if (sign)
-		res = -res;
+ for (b = 0; b < AH->intSize; b++)
+ {
+  bv = AH->ReadBytePtr(AH) & 0xFF;
+  if (bv != 0)
+   res = res + (bv << bitShift);
+  bitShift += 8;
+ }
 
-	return res;
+ if (sign)
+  res = -res;
+
+ return res;
 }

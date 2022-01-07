@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  jerry_value_t ;
-typedef  int jerry_size_t ;
-typedef  scalar_t__ jerry_char_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  JERRY_LOG_LEVEL_ERROR ; 
- int /*<<< orphan*/  assert (int) ; 
- int jerry_get_utf8_string_size (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jerry_port_log (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  jerry_release_value (int /*<<< orphan*/ ) ; 
- int jerry_string_to_utf8_char_buffer (int /*<<< orphan*/ ,scalar_t__*,int) ; 
- scalar_t__ jerry_value_is_error (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jerry_value_to_string (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int jerry_value_t ;
+typedef int jerry_size_t ;
+typedef scalar_t__ jerry_char_t ;
+
+
+ int JERRY_LOG_LEVEL_ERROR ;
+ int assert (int) ;
+ int jerry_get_utf8_string_size (int ) ;
+ int jerry_port_log (int ,char*,...) ;
+ int jerry_release_value (int ) ;
+ int jerry_string_to_utf8_char_buffer (int ,scalar_t__*,int) ;
+ scalar_t__ jerry_value_is_error (int ) ;
+ int jerry_value_to_string (int ) ;
 
 __attribute__((used)) static void
-print_unhandled_exception (jerry_value_t error_value) /**< error value */
+print_unhandled_exception (jerry_value_t error_value)
 {
   assert (!jerry_value_is_error (error_value));
 
@@ -33,7 +33,7 @@ print_unhandled_exception (jerry_value_t error_value) /**< error value */
 
   if (jerry_value_is_error (err_str_val))
   {
-    /* Avoid recursive error throws. */
+
     jerry_port_log (JERRY_LOG_LEVEL_ERROR, "Snapshot error: [value cannot be converted to string]\n");
     jerry_release_value (err_str_val);
     return;

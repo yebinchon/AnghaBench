@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_fs_x__txn_id_t ;
-struct TYPE_3__ {int /*<<< orphan*/  number; int /*<<< orphan*/  change_set; } ;
-typedef  TYPE_1__ svn_fs_x__id_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_FS_X__ITEM_INDEX_ROOT_NODE ; 
- int /*<<< orphan*/  svn_fs_x__change_set_by_txn (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int svn_fs_x__txn_id_t ;
+struct TYPE_3__ {int number; int change_set; } ;
+typedef TYPE_1__ svn_fs_x__id_t ;
+
+
+ int SVN_FS_X__ITEM_INDEX_ROOT_NODE ;
+ int svn_fs_x__change_set_by_txn (int ) ;
 
 void
 svn_fs_x__init_txn_root(svn_fs_x__id_t *noderev_id,

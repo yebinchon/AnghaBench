@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  boolean_e ;
 
-/* Variables and functions */
- int NDIG ; 
- char* apr_ecvt (double,int,int*,int*,char*) ; 
+
+
+
+typedef int boolean_e ;
+
+
+ int NDIG ;
+ char* apr_ecvt (double,int,int*,int*,char*) ;
 
 __attribute__((used)) static char *apr_gcvt(double number, int ndigit, char *buf, boolean_e altform)
 {
@@ -30,7 +30,7 @@ __attribute__((used)) static char *apr_gcvt(double number, int ndigit, char *buf
     for (i = ndigit - 1; i > 0 && p1[i] == '0'; i--)
         ndigit--;
     if ((decpt >= 0 && decpt - ndigit > 4)
-        || (decpt < 0 && decpt < -3)) {                /* use E-style */
+        || (decpt < 0 && decpt < -3)) {
         decpt--;
         *p2++ = *p1++;
         *p2++ = '.';

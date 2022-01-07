@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct fb_info {int dummy; } ;
-struct fb_fillrect {int /*<<< orphan*/  height; int /*<<< orphan*/  width; int /*<<< orphan*/  dy; int /*<<< orphan*/  dx; } ;
+struct fb_fillrect {int height; int width; int dy; int dx; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cfb_fillrect (struct fb_info*,struct fb_fillrect const*) ; 
- int /*<<< orphan*/  drm_fb_helper_dirty (struct fb_info*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int cfb_fillrect (struct fb_info*,struct fb_fillrect const*) ;
+ int drm_fb_helper_dirty (struct fb_info*,int ,int ,int ,int ) ;
 
 void drm_fb_helper_cfb_fillrect(struct fb_info *info,
-				const struct fb_fillrect *rect)
+    const struct fb_fillrect *rect)
 {
-	cfb_fillrect(info, rect);
-	drm_fb_helper_dirty(info, rect->dx, rect->dy,
-			    rect->width, rect->height);
+ cfb_fillrect(info, rect);
+ drm_fb_helper_dirty(info, rect->dx, rect->dy,
+       rect->width, rect->height);
 }

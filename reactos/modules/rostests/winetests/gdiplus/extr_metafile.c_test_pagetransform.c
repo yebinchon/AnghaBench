@@ -1,74 +1,74 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  todo_wine ;
-typedef  int stat ;
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  UINT ;
+
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int todo_wine ;
+typedef int stat ;
+typedef char WCHAR ;
+typedef int UINT ;
 struct TYPE_9__ {double member_0; double member_1; } ;
 struct TYPE_8__ {double member_0; double member_1; double member_2; double member_3; } ;
-typedef  int /*<<< orphan*/  REAL ;
-typedef  int InvalidParameter ;
-typedef  int /*<<< orphan*/  HDC ;
-typedef  int GpUnit ;
-typedef  int GpStatus ;
-typedef  int /*<<< orphan*/  GpSolidFill ;
-typedef  TYPE_1__ GpRectF ;
-typedef  TYPE_2__ GpPointF ;
-typedef  int /*<<< orphan*/  GpMetafile ;
-typedef  int /*<<< orphan*/  GpImage ;
-typedef  int /*<<< orphan*/  GpGraphics ;
-typedef  int /*<<< orphan*/  GpBrush ;
-typedef  int /*<<< orphan*/  GpBitmap ;
-typedef  int ARGB ;
+typedef int REAL ;
+typedef int InvalidParameter ;
+typedef int HDC ;
+typedef int GpUnit ;
+typedef int GpStatus ;
+typedef int GpSolidFill ;
+typedef TYPE_1__ GpRectF ;
+typedef TYPE_2__ GpPointF ;
+typedef int GpMetafile ;
+typedef int GpImage ;
+typedef int GpGraphics ;
+typedef int GpBrush ;
+typedef int GpBitmap ;
+typedef int ARGB ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CreateCompatibleDC (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DeleteDC (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EmfTypeEmfPlusOnly ; 
- int GdipBitmapGetPixel (int /*<<< orphan*/ *,int,int,int*) ; 
- int GdipCreateBitmapFromScan0 (int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int GdipCreateSolidFill (int,int /*<<< orphan*/ **) ; 
- int GdipDeleteBrush (int /*<<< orphan*/ *) ; 
- int GdipDeleteGraphics (int /*<<< orphan*/ *) ; 
- int GdipDisposeImage (int /*<<< orphan*/ *) ; 
- int GdipFillRectangle (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int,int,int) ; 
- int GdipFillRectangleI (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int,int,int) ; 
- int GdipGetDpiX (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int GdipGetDpiY (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int GdipGetImageGraphicsContext (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int GdipGetImageHeight (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int GdipGetImageHorizontalResolution (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int GdipGetImageVerticalResolution (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int GdipGetImageWidth (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int GdipGetPageScale (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int GdipGetPageUnit (int /*<<< orphan*/ *,int*) ; 
- int GdipRecordMetafile (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__ const*,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ **) ; 
- int GdipSetPageScale (int /*<<< orphan*/ *,double) ; 
- int GdipSetPageUnit (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  MetafileFrameUnitInch ; 
- int Ok ; 
- int /*<<< orphan*/  PixelFormat32bppARGB ; 
- int UnitDisplay ; 
- int UnitInch ; 
- int UnitPixel ; 
- int /*<<< orphan*/  check_metafile (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,TYPE_2__ const*,TYPE_1__ const*,int) ; 
- int /*<<< orphan*/  expect (int,int) ; 
- int /*<<< orphan*/  expectf (double,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pagetransform_records ; 
- int /*<<< orphan*/  play_metafile (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,TYPE_2__ const*,TYPE_1__ const*,int) ; 
- int /*<<< orphan*/  sync_metafile (int /*<<< orphan*/ **,char*) ; 
+
+ int CreateCompatibleDC (int ) ;
+ int DeleteDC (int ) ;
+ int EmfTypeEmfPlusOnly ;
+ int GdipBitmapGetPixel (int *,int,int,int*) ;
+ int GdipCreateBitmapFromScan0 (int,int,int ,int ,int *,int **) ;
+ int GdipCreateSolidFill (int,int **) ;
+ int GdipDeleteBrush (int *) ;
+ int GdipDeleteGraphics (int *) ;
+ int GdipDisposeImage (int *) ;
+ int GdipFillRectangle (int *,int *,int,int,int,int) ;
+ int GdipFillRectangleI (int *,int *,int,int,int,int) ;
+ int GdipGetDpiX (int *,int *) ;
+ int GdipGetDpiY (int *,int *) ;
+ int GdipGetImageGraphicsContext (int *,int **) ;
+ int GdipGetImageHeight (int *,int *) ;
+ int GdipGetImageHorizontalResolution (int *,int *) ;
+ int GdipGetImageVerticalResolution (int *,int *) ;
+ int GdipGetImageWidth (int *,int *) ;
+ int GdipGetPageScale (int *,int *) ;
+ int GdipGetPageUnit (int *,int*) ;
+ int GdipRecordMetafile (int ,int ,TYPE_1__ const*,int ,char const*,int **) ;
+ int GdipSetPageScale (int *,double) ;
+ int GdipSetPageUnit (int *,int) ;
+ int MetafileFrameUnitInch ;
+ int Ok ;
+ int PixelFormat32bppARGB ;
+ int UnitDisplay ;
+ int UnitInch ;
+ int UnitPixel ;
+ int check_metafile (int *,int ,char*,TYPE_2__ const*,TYPE_1__ const*,int) ;
+ int expect (int,int) ;
+ int expectf (double,int ) ;
+ int pagetransform_records ;
+ int play_metafile (int *,int *,int ,char*,TYPE_2__ const*,TYPE_1__ const*,int) ;
+ int sync_metafile (int **,char*) ;
 
 __attribute__((used)) static void test_pagetransform(void)
 {
@@ -111,7 +111,7 @@ __attribute__((used)) static void test_pagetransform(void)
     stat = GdipGetImageGraphicsContext((GpImage*)metafile, &graphics);
     expect(Ok, stat);
 
-    /* initial scale */
+
     stat = GdipGetPageUnit(graphics, &unit);
     expect(Ok, stat);
     expect(UnitDisplay, unit);
@@ -137,7 +137,7 @@ __attribute__((used)) static void test_pagetransform(void)
     stat = GdipDeleteBrush(brush);
     expect(Ok, stat);
 
-    /* page unit = pixels */
+
     stat = GdipSetPageUnit(graphics, UnitPixel);
     expect(Ok, stat);
 
@@ -154,7 +154,7 @@ __attribute__((used)) static void test_pagetransform(void)
     stat = GdipDeleteBrush(brush);
     expect(Ok, stat);
 
-    /* page scale = 3, unit = pixels */
+
     stat = GdipSetPageScale(graphics, 3.0);
     expect(Ok, stat);
 
@@ -171,7 +171,7 @@ __attribute__((used)) static void test_pagetransform(void)
     stat = GdipDeleteBrush(brush);
     expect(Ok, stat);
 
-    /* page scale = 3, unit = inches */
+
     stat = GdipSetPageUnit(graphics, UnitInch);
     expect(Ok, stat);
 
@@ -188,7 +188,7 @@ __attribute__((used)) static void test_pagetransform(void)
     stat = GdipDeleteBrush(brush);
     expect(Ok, stat);
 
-    /* page scale = 3, unit = display */
+
     stat = GdipSetPageUnit(graphics, UnitDisplay);
     expect(Ok, stat);
 
@@ -212,7 +212,7 @@ __attribute__((used)) static void test_pagetransform(void)
 
     sync_metafile(&metafile, "pagetransform.emf");
 
-    stat = GdipCreateBitmapFromScan0(100, 100, 0, PixelFormat32bppARGB, NULL, &bitmap);
+    stat = GdipCreateBitmapFromScan0(100, 100, 0, PixelFormat32bppARGB, ((void*)0), &bitmap);
     expect(Ok, stat);
 
     stat = GdipGetImageGraphicsContext((GpImage*)bitmap, &graphics);

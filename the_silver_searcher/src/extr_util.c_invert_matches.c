@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {size_t start; size_t end; } ;
-typedef  TYPE_1__ match_t ;
+typedef TYPE_1__ match_t ;
 
-/* Variables and functions */
- int FALSE ; 
- int TRUE ; 
- int /*<<< orphan*/  log_debug (char*,size_t,...) ; 
+
+ int FALSE ;
+ int TRUE ;
+ int log_debug (char*,size_t,...) ;
 
 size_t invert_matches(const char *buf, const size_t buf_len, match_t matches[], size_t matches_len) {
     size_t i;
@@ -36,7 +36,7 @@ size_t invert_matches(const char *buf, const size_t buf_len, match_t matches[], 
         next_match.start = buf_len + 1;
     }
 
-    /* No matches, so the whole buffer is now a match. */
+
     if (matches_len == 0) {
         matches[0].start = 0;
         matches[0].end = buf_len - 1;

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ml_get_conttime_offset () ; 
+
+
+
+typedef int uint64_t ;
+
+
+ int ml_get_conttime_offset () ;
 
 uint64_t
 ml_get_conttime_wake_time(void)
 {
-	/* The wake time is simply our continuous time offset. */
-	return ml_get_conttime_offset();
+
+ return ml_get_conttime_offset();
 }

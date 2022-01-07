@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  acpi_status ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AE_ACCESS ; 
- int /*<<< orphan*/  AE_NOT_FOUND ; 
- int /*<<< orphan*/  AE_NO_MEMORY ; 
-#define  EACCES 131 
-#define  ENOENT 130 
-#define  ENOMEM 129 
-#define  EPERM 128 
- int errno ; 
+
+
+
+typedef int acpi_status ;
+
+
+ int AE_ACCESS ;
+ int AE_NOT_FOUND ;
+ int AE_NO_MEMORY ;
+
+
+
+
+ int errno ;
 
 __attribute__((used)) static acpi_status osl_get_last_status(acpi_status default_status)
 {
 
-	switch (errno) {
-	case EACCES:
-	case EPERM:
+ switch (errno) {
+ case 131:
+ case 128:
 
-		return (AE_ACCESS);
+  return (AE_ACCESS);
 
-	case ENOENT:
+ case 130:
 
-		return (AE_NOT_FOUND);
+  return (AE_NOT_FOUND);
 
-	case ENOMEM:
+ case 129:
 
-		return (AE_NO_MEMORY);
+  return (AE_NO_MEMORY);
 
-	default:
+ default:
 
-		return (default_status);
-	}
+  return (default_status);
+ }
 }

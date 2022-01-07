@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct bookmark_user {int dummy; } ;
 struct TYPE_4__ {int small_data_offset; int large_data_offset; int small_users; int large_users; } ;
-typedef  TYPE_1__ index_header ;
+typedef TYPE_1__ index_header ;
 struct TYPE_5__ {int value; } ;
 
-/* Variables and functions */
- scalar_t__ ALLOW_OLD_INDEX_MODE ; 
- int ANS_BUFF_SIZE ; 
- int ANS_BUFF_SIZE_SMALLER ; 
- int MAX_SMALL_BOOKMARK ; 
- scalar_t__ advance_user_iterator () ; 
- int /*<<< orphan*/  ans_buff ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ bookmarks ; 
- int bookmarks_ptr ; 
- int /*<<< orphan*/  build_bookmark_lists () ; 
- int /*<<< orphan*/  clearin () ; 
- int /*<<< orphan*/  flushout () ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int get_bookmarks_num (int,int) ; 
- int get_bookmarks_packed (int,int /*<<< orphan*/ ,int) ; 
- scalar_t__ index_mode ; 
- int /*<<< orphan*/  init_user_iterator () ; 
- int /*<<< orphan*/  sort_bookmarks (scalar_t__,int) ; 
- int /*<<< orphan*/  stderr ; 
- TYPE_2__ user_iterator ; 
- int verbosity ; 
- int /*<<< orphan*/  writeint (int) ; 
- int /*<<< orphan*/  writeout (int /*<<< orphan*/ ,int) ; 
+
+ scalar_t__ ALLOW_OLD_INDEX_MODE ;
+ int ANS_BUFF_SIZE ;
+ int ANS_BUFF_SIZE_SMALLER ;
+ int MAX_SMALL_BOOKMARK ;
+ scalar_t__ advance_user_iterator () ;
+ int ans_buff ;
+ int assert (int) ;
+ scalar_t__ bookmarks ;
+ int bookmarks_ptr ;
+ int build_bookmark_lists () ;
+ int clearin () ;
+ int flushout () ;
+ int fprintf (int ,char*,...) ;
+ int get_bookmarks_num (int,int) ;
+ int get_bookmarks_packed (int,int ,int) ;
+ scalar_t__ index_mode ;
+ int init_user_iterator () ;
+ int sort_bookmarks (scalar_t__,int) ;
+ int stderr ;
+ TYPE_2__ user_iterator ;
+ int verbosity ;
+ int writeint (int) ;
+ int writeout (int ,int) ;
 
 void save_bookmarks (index_header *header) {
   clearin ();

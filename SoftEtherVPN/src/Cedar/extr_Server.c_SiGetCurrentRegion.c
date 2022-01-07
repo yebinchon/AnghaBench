@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT ;
-struct TYPE_3__ {char* CurrentRegion; int /*<<< orphan*/  CurrentRegionLock; } ;
-typedef  TYPE_1__ CEDAR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ClearStr (char*,int /*<<< orphan*/ ) ; 
- scalar_t__ GetCurrentLangId () ; 
- scalar_t__ IsEmptyStr (char*) ; 
- int /*<<< orphan*/  Lock (int /*<<< orphan*/ ) ; 
- scalar_t__ SE_LANG_CHINESE_ZH ; 
- scalar_t__ SE_LANG_JAPANESE ; 
- int /*<<< orphan*/  StrCpy (char*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  Unlock (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int UINT ;
+struct TYPE_3__ {char* CurrentRegion; int CurrentRegionLock; } ;
+typedef TYPE_1__ CEDAR ;
+
+
+ int ClearStr (char*,int ) ;
+ scalar_t__ GetCurrentLangId () ;
+ scalar_t__ IsEmptyStr (char*) ;
+ int Lock (int ) ;
+ scalar_t__ SE_LANG_CHINESE_ZH ;
+ scalar_t__ SE_LANG_JAPANESE ;
+ int StrCpy (char*,int ,char*) ;
+ int Unlock (int ) ;
 
 void SiGetCurrentRegion(CEDAR *c, char *region, UINT region_size)
 {
-	ClearStr(region, region_size);
-	// Validate arguments
-	if (c == NULL || region == NULL)
-	{
-		return;
-	}
+ ClearStr(region, region_size);
 
-	Lock(c->CurrentRegionLock);
-	{
-		StrCpy(region, region_size, c->CurrentRegion);
-	}
-	Unlock(c->CurrentRegionLock);
+ if (c == ((void*)0) || region == ((void*)0))
+ {
+  return;
+ }
 
-	if (IsEmptyStr(region))
-	{
-		if (GetCurrentLangId() == SE_LANG_JAPANESE)
-		{
-			StrCpy(region, region_size, "JP");
-		}
-		else if (GetCurrentLangId() == SE_LANG_CHINESE_ZH)
-		{
-			StrCpy(region, region_size, "CN");
-		}
-	}
+ Lock(c->CurrentRegionLock);
+ {
+  StrCpy(region, region_size, c->CurrentRegion);
+ }
+ Unlock(c->CurrentRegionLock);
+
+ if (IsEmptyStr(region))
+ {
+  if (GetCurrentLangId() == SE_LANG_JAPANESE)
+  {
+   StrCpy(region, region_size, "JP");
+  }
+  else if (GetCurrentLangId() == SE_LANG_CHINESE_ZH)
+  {
+   StrCpy(region, region_size, "CN");
+  }
+ }
 }

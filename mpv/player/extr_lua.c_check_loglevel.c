@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- int MSGL_MAX ; 
- int /*<<< orphan*/  abort () ; 
- char* luaL_checkstring (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  luaL_error (int /*<<< orphan*/ *,char*,char const*) ; 
- scalar_t__* mp_log_levels ; 
- scalar_t__ strcasecmp (scalar_t__,char const*) ; 
+
+
+
+typedef int lua_State ;
+
+
+ int MSGL_MAX ;
+ int abort () ;
+ char* luaL_checkstring (int *,int) ;
+ int luaL_error (int *,char*,char const*) ;
+ scalar_t__* mp_log_levels ;
+ scalar_t__ strcasecmp (scalar_t__,char const*) ;
 
 __attribute__((used)) static int check_loglevel(lua_State *L, int arg)
 {

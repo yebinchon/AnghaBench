@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_3__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mpfr_t ;
-struct TYPE_4__ {int /*<<< orphan*/  mf; } ;
-typedef  TYPE_1__ calc_number_t ;
-struct TYPE_5__ {int degr; int /*<<< orphan*/  is_nan; } ;
 
-/* Variables and functions */
-#define  IDC_RADIO_DEG 130 
-#define  IDC_RADIO_GRAD 129 
-#define  IDC_RADIO_RAD 128 
- int /*<<< orphan*/  MPFR_DEFAULT_RND ; 
- int /*<<< orphan*/  TRUE ; 
- TYPE_3__ calc ; 
- int /*<<< orphan*/  mpfr_clear (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mpfr_const_pi (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mpfr_div (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mpfr_init (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mpfr_mul (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mpfr_number_p (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mpfr_set_ui (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_3__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int mpfr_t ;
+struct TYPE_4__ {int mf; } ;
+typedef TYPE_1__ calc_number_t ;
+struct TYPE_5__ {int degr; int is_nan; } ;
+
+
+
+
+
+ int MPFR_DEFAULT_RND ;
+ int TRUE ;
+ TYPE_3__ calc ;
+ int mpfr_clear (int ) ;
+ int mpfr_const_pi (int ,int ) ;
+ int mpfr_div (int ,int ,int ,int ) ;
+ int mpfr_init (int ) ;
+ int mpfr_mul (int ,int ,int ,int ) ;
+ int mpfr_number_p (int ) ;
+ int mpfr_set_ui (int ,int,int ) ;
 
 __attribute__((used)) static void validate_angle2rad(calc_number_t *r)
 {
@@ -43,15 +43,15 @@ __attribute__((used)) static void validate_angle2rad(calc_number_t *r)
     mpfr_init(mult);
     mpfr_init(divs);
     switch (calc.degr) {
-    case IDC_RADIO_DEG:
+    case 130:
         mpfr_const_pi(mult, MPFR_DEFAULT_RND);
         mpfr_set_ui(divs, 180, MPFR_DEFAULT_RND);
         break;
-    case IDC_RADIO_RAD:
+    case 128:
         mpfr_set_ui(mult, 1, MPFR_DEFAULT_RND);
         mpfr_set_ui(divs, 1, MPFR_DEFAULT_RND);
         break;
-    case IDC_RADIO_GRAD:
+    case 129:
         mpfr_const_pi(mult, MPFR_DEFAULT_RND);
         mpfr_set_ui(divs, 200, MPFR_DEFAULT_RND);
         break;

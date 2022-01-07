@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * xmlDOMWrapCtxtPtr ;
-typedef  int /*<<< orphan*/  xmlDOMWrapCtxt ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/ * xmlMalloc (int) ; 
- int /*<<< orphan*/  xmlTreeErrMemory (char*) ; 
+
+
+
+typedef int * xmlDOMWrapCtxtPtr ;
+typedef int xmlDOMWrapCtxt ;
+
+
+ int memset (int *,int ,int) ;
+ int * xmlMalloc (int) ;
+ int xmlTreeErrMemory (char*) ;
 
 xmlDOMWrapCtxtPtr
 xmlDOMWrapNewCtxt(void)
@@ -24,9 +24,9 @@ xmlDOMWrapNewCtxt(void)
     xmlDOMWrapCtxtPtr ret;
 
     ret = xmlMalloc(sizeof(xmlDOMWrapCtxt));
-    if (ret == NULL) {
-	xmlTreeErrMemory("allocating DOM-wrapper context");
-	return (NULL);
+    if (ret == ((void*)0)) {
+ xmlTreeErrMemory("allocating DOM-wrapper context");
+ return (((void*)0));
     }
     memset(ret, 0, sizeof(xmlDOMWrapCtxt));
     return (ret);

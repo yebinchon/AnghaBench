@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  BIO ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * BIO_get_data (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BIO_next (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BIO_set_data (int /*<<< orphan*/ *,char*) ; 
- int subtest_level () ; 
- int /*<<< orphan*/  write_string (int /*<<< orphan*/ *,char const*,int) ; 
+
+
+
+typedef int BIO ;
+
+
+ int * BIO_get_data (int *) ;
+ int * BIO_next (int *) ;
+ int BIO_set_data (int *,char*) ;
+ int subtest_level () ;
+ int write_string (int *,char const*,int) ;
 
 __attribute__((used)) static int tap_write_ex(BIO *b, const char *buf, size_t size, size_t *in_size)
 {
@@ -27,7 +27,7 @@ __attribute__((used)) static int tap_write_ex(BIO *b, const char *buf, size_t si
     int j;
 
     for (i = 0; i < size; i++) {
-        if (BIO_get_data(b) == NULL) {
+        if (BIO_get_data(b) == ((void*)0)) {
             BIO_set_data(b, empty);
             for (j = 0; j < subtest_level(); j++)
                 if (!write_string(next, " ", 1))
@@ -38,7 +38,7 @@ __attribute__((used)) static int tap_write_ex(BIO *b, const char *buf, size_t si
         if (!write_string(next, buf + i, 1))
             goto err;
         if (buf[i] == '\n')
-            BIO_set_data(b, NULL);
+            BIO_set_data(b, ((void*)0));
     }
     *in_size = i;
     return 1;

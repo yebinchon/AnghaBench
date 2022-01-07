@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct frame_info {int /*<<< orphan*/ * next; } ;
-typedef  int /*<<< orphan*/  CORE_ADDR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  frame_pc_unwind (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  gdb_assert (int /*<<< orphan*/ ) ; 
+
+
+
+struct frame_info {int * next; } ;
+typedef int CORE_ADDR ;
+
+
+ int frame_pc_unwind (int *) ;
+ int gdb_assert (int ) ;
 
 CORE_ADDR
 get_frame_pc (struct frame_info *frame)
 {
-  gdb_assert (frame->next != NULL);
+  gdb_assert (frame->next != ((void*)0));
   return frame_pc_unwind (frame->next);
 }

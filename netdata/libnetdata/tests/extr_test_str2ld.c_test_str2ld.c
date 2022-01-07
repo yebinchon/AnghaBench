@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ LONG_DOUBLE ;
 
-/* Variables and functions */
- double abs (scalar_t__) ; 
- int /*<<< orphan*/  assert_false (int) ; 
- int /*<<< orphan*/  assert_ptr_equal (char*,char*) ; 
- int /*<<< orphan*/  assert_true (scalar_t__) ; 
- scalar_t__ isinf (scalar_t__) ; 
- scalar_t__ isnan (scalar_t__) ; 
- scalar_t__ str2ld (char*,char**) ; 
- scalar_t__ strtold (char*,char**) ; 
+
+
+
+typedef scalar_t__ LONG_DOUBLE ;
+
+
+ double abs (scalar_t__) ;
+ int assert_false (int) ;
+ int assert_ptr_equal (char*,char*) ;
+ int assert_true (scalar_t__) ;
+ scalar_t__ isinf (scalar_t__) ;
+ scalar_t__ isnan (scalar_t__) ;
+ scalar_t__ str2ld (char*,char**) ;
+ scalar_t__ strtold (char*,char**) ;
 
 __attribute__((used)) static void test_str2ld(void **state)
 {
@@ -36,7 +36,7 @@ __attribute__((used)) static void test_str2ld(void **state)
         "1wrong",
         "nan",
         "inf",
-        NULL
+        ((void*)0)
     };
 
     for (int i = 0; values[i]; i++) {

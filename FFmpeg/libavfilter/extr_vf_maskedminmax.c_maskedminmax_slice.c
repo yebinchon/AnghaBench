@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_7__ ;
-typedef  struct TYPE_14__   TYPE_6__ ;
-typedef  struct TYPE_13__   TYPE_5__ ;
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int ptrdiff_t ;
+
+
+typedef struct TYPE_15__ TYPE_7__ ;
+typedef struct TYPE_14__ TYPE_6__ ;
+typedef struct TYPE_13__ TYPE_5__ ;
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int ptrdiff_t ;
 struct TYPE_13__ {TYPE_4__* dst; TYPE_3__* f2; TYPE_2__* f1; TYPE_1__* src; } ;
-typedef  TYPE_5__ ThreadData ;
+typedef TYPE_5__ ThreadData ;
 struct TYPE_15__ {TYPE_6__* priv; } ;
-struct TYPE_14__ {int nb_planes; int* planewidth; int* planeheight; int planes; int /*<<< orphan*/  (* maskedminmax ) (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int const) ;int /*<<< orphan*/ * linesize; } ;
-struct TYPE_12__ {int* linesize; int /*<<< orphan*/ ** data; } ;
-struct TYPE_11__ {int* linesize; int /*<<< orphan*/ ** data; } ;
-struct TYPE_10__ {int* linesize; int /*<<< orphan*/ ** data; } ;
-struct TYPE_9__ {int* linesize; int /*<<< orphan*/ ** data; } ;
-typedef  TYPE_6__ MaskedMinMaxContext ;
-typedef  TYPE_7__ AVFilterContext ;
+struct TYPE_14__ {int nb_planes; int* planewidth; int* planeheight; int planes; int (* maskedminmax ) (int const*,int *,int const*,int const*,int const) ;int * linesize; } ;
+struct TYPE_12__ {int* linesize; int ** data; } ;
+struct TYPE_11__ {int* linesize; int ** data; } ;
+struct TYPE_10__ {int* linesize; int ** data; } ;
+struct TYPE_9__ {int* linesize; int ** data; } ;
+typedef TYPE_6__ MaskedMinMaxContext ;
+typedef TYPE_7__ AVFilterContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  av_image_copy_plane (int /*<<< orphan*/ *,int const,int /*<<< orphan*/  const*,int const,int /*<<< orphan*/ ,int const) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int const) ; 
+
+ int av_image_copy_plane (int *,int const,int const*,int const,int ,int const) ;
+ int stub1 (int const*,int *,int const*,int const*,int const) ;
 
 __attribute__((used)) static int maskedminmax_slice(AVFilterContext *ctx, void *arg, int jobnr, int nb_jobs)
 {
@@ -64,8 +64,8 @@ __attribute__((used)) static int maskedminmax_slice(AVFilterContext *ctx, void *
 
             dst += dst_linesize;
             src += src_linesize;
-            f1  += f1_linesize;
-            f2  += f2_linesize;
+            f1 += f1_linesize;
+            f2 += f2_linesize;
         }
     }
 

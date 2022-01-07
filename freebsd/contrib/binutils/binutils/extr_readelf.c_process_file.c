@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct stat {int /*<<< orphan*/  st_mode; } ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARMAG ; 
- scalar_t__ ENOENT ; 
- int SARMAG ; 
- int /*<<< orphan*/  S_ISREG (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  _ (char*) ; 
- scalar_t__ archive_file_offset ; 
- scalar_t__ archive_file_size ; 
- scalar_t__ errno ; 
- int /*<<< orphan*/  error (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int fread (char*,int,int,int /*<<< orphan*/ *) ; 
- scalar_t__ memcmp (char*,int /*<<< orphan*/ ,int) ; 
- int process_archive (char*,int /*<<< orphan*/ *) ; 
- int process_object (char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  rewind (int /*<<< orphan*/ *) ; 
- scalar_t__ stat (char*,struct stat*) ; 
- char* strerror (scalar_t__) ; 
+
+
+
+struct stat {int st_mode; } ;
+typedef int FILE ;
+
+
+ int ARMAG ;
+ scalar_t__ ENOENT ;
+ int SARMAG ;
+ int S_ISREG (int ) ;
+ int _ (char*) ;
+ scalar_t__ archive_file_offset ;
+ scalar_t__ archive_file_size ;
+ scalar_t__ errno ;
+ int error (int ,char*,...) ;
+ int fclose (int *) ;
+ int * fopen (char*,char*) ;
+ int fread (char*,int,int,int *) ;
+ scalar_t__ memcmp (char*,int ,int) ;
+ int process_archive (char*,int *) ;
+ int process_object (char*,int *) ;
+ int rewind (int *) ;
+ scalar_t__ stat (char*,struct stat*) ;
+ char* strerror (scalar_t__) ;
 
 __attribute__((used)) static int
 process_file (char *file_name)
@@ -44,10 +44,10 @@ process_file (char *file_name)
   if (stat (file_name, &statbuf) < 0)
     {
       if (errno == ENOENT)
-	error (_("'%s': No such file\n"), file_name);
+ error (_("'%s': No such file\n"), file_name);
       else
-	error (_("Could not locate '%s'.  System error message: %s\n"),
-	       file_name, strerror (errno));
+ error (_("Could not locate '%s'.  System error message: %s\n"),
+        file_name, strerror (errno));
       return 1;
     }
 
@@ -58,7 +58,7 @@ process_file (char *file_name)
     }
 
   file = fopen (file_name, "rb");
-  if (file == NULL)
+  if (file == ((void*)0))
     {
       error (_("Input file '%s' is not readable.\n"), file_name);
       return 1;

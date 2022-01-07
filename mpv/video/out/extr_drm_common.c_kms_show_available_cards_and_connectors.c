@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct mp_log {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  kms_show_available_connectors ; 
- int /*<<< orphan*/  kms_show_foreach_card (struct mp_log*,int /*<<< orphan*/ ) ; 
+
+ int kms_show_available_connectors ;
+ int kms_show_foreach_card (struct mp_log*,int ) ;
 
 __attribute__((used)) static void kms_show_available_cards_and_connectors(struct mp_log *log)
 {

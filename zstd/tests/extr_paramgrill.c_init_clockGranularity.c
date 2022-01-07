@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UTIL_time_t ;
-typedef  scalar_t__ U64 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEBUGOUTPUT (char*,unsigned long long) ; 
- scalar_t__ UTIL_clockSpanNano (int /*<<< orphan*/  const) ; 
- int /*<<< orphan*/  UTIL_getTime () ; 
- scalar_t__ g_clockGranularity ; 
+
+
+
+typedef int UTIL_time_t ;
+typedef scalar_t__ U64 ;
+
+
+ int DEBUGOUTPUT (char*,unsigned long long) ;
+ scalar_t__ UTIL_clockSpanNano (int const) ;
+ int UTIL_getTime () ;
+ scalar_t__ g_clockGranularity ;
 
 __attribute__((used)) static void init_clockGranularity(void)
 {

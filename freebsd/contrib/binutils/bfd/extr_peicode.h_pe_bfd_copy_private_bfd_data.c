@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  bfd_boolean ;
-typedef  int /*<<< orphan*/  bfd ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int bfd_boolean ;
+typedef int bfd ;
 struct TYPE_2__ {int real_flags; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int IMAGE_FILE_LARGE_ADDRESS_AWARE ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  _bfd_XX_bfd_copy_private_bfd_data_common (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- TYPE_1__* pe_data (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pe_saved_coff_bfd_copy_private_bfd_data (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int FALSE ;
+ int IMAGE_FILE_LARGE_ADDRESS_AWARE ;
+ int TRUE ;
+ int _bfd_XX_bfd_copy_private_bfd_data_common (int *,int *) ;
+ TYPE_1__* pe_data (int *) ;
+ int pe_saved_coff_bfd_copy_private_bfd_data (int *,int *) ;
 
 __attribute__((used)) static bfd_boolean
 pe_bfd_copy_private_bfd_data (bfd *ibfd, bfd *obfd)
 {
-  /* PR binutils/716: Copy the large address aware flag.
-     XXX: Should we be copying other flags or other fields in the pe_data()
-     structure ?  */
-  if (pe_data (obfd) != NULL
-      && pe_data (ibfd) != NULL
+
+
+
+  if (pe_data (obfd) != ((void*)0)
+      && pe_data (ibfd) != ((void*)0)
       && pe_data (ibfd)->real_flags & IMAGE_FILE_LARGE_ADDRESS_AWARE)
     pe_data (obfd)->real_flags |= IMAGE_FILE_LARGE_ADDRESS_AWARE;
-      
+
   if (!_bfd_XX_bfd_copy_private_bfd_data_common (ibfd, obfd))
     return FALSE;
 

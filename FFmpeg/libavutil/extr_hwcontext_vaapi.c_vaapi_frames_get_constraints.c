@@ -1,67 +1,67 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_26__   TYPE_9__ ;
-typedef  struct TYPE_25__   TYPE_8__ ;
-typedef  struct TYPE_24__   TYPE_7__ ;
-typedef  struct TYPE_23__   TYPE_6__ ;
-typedef  struct TYPE_22__   TYPE_5__ ;
-typedef  struct TYPE_21__   TYPE_4__ ;
-typedef  struct TYPE_20__   TYPE_3__ ;
-typedef  struct TYPE_19__   TYPE_2__ ;
-typedef  struct TYPE_18__   TYPE_1__ ;
-typedef  struct TYPE_17__   TYPE_10__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  pix_fmt ;
-typedef  enum AVPixelFormat { ____Placeholder_AVPixelFormat } AVPixelFormat ;
+
+
+typedef struct TYPE_26__ TYPE_9__ ;
+typedef struct TYPE_25__ TYPE_8__ ;
+typedef struct TYPE_24__ TYPE_7__ ;
+typedef struct TYPE_23__ TYPE_6__ ;
+typedef struct TYPE_22__ TYPE_5__ ;
+typedef struct TYPE_21__ TYPE_4__ ;
+typedef struct TYPE_20__ TYPE_3__ ;
+typedef struct TYPE_19__ TYPE_2__ ;
+typedef struct TYPE_18__ TYPE_1__ ;
+typedef struct TYPE_17__ TYPE_10__ ;
+
+
+typedef int pix_fmt ;
+typedef enum AVPixelFormat { ____Placeholder_AVPixelFormat } AVPixelFormat ;
 struct TYPE_19__ {unsigned int i; } ;
 struct TYPE_20__ {TYPE_2__ value; } ;
 struct TYPE_22__ {int type; TYPE_3__ value; } ;
-typedef  TYPE_5__ VASurfaceAttrib ;
-typedef  scalar_t__ VAStatus ;
+typedef TYPE_5__ VASurfaceAttrib ;
+typedef scalar_t__ VAStatus ;
 struct TYPE_23__ {int nb_formats; TYPE_4__* formats; } ;
-typedef  TYPE_6__ VAAPIDeviceContext ;
+typedef TYPE_6__ VAAPIDeviceContext ;
 struct TYPE_26__ {unsigned int min_width; unsigned int min_height; unsigned int max_width; unsigned int max_height; int* valid_sw_formats; int* valid_hw_formats; } ;
-struct TYPE_25__ {int driver_quirks; int /*<<< orphan*/  display; } ;
-struct TYPE_24__ {int /*<<< orphan*/  config_id; } ;
+struct TYPE_25__ {int driver_quirks; int display; } ;
+struct TYPE_24__ {int config_id; } ;
 struct TYPE_21__ {int pix_fmt; } ;
 struct TYPE_18__ {TYPE_6__* priv; } ;
 struct TYPE_17__ {TYPE_1__* internal; TYPE_8__* hwctx; } ;
-typedef  TYPE_7__ AVVAAPIHWConfig ;
-typedef  TYPE_8__ AVVAAPIDeviceContext ;
-typedef  TYPE_9__ AVHWFramesConstraints ;
-typedef  TYPE_10__ AVHWDeviceContext ;
+typedef TYPE_7__ AVVAAPIHWConfig ;
+typedef TYPE_8__ AVVAAPIDeviceContext ;
+typedef TYPE_9__ AVHWFramesConstraints ;
+typedef TYPE_10__ AVHWDeviceContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int AV_PIX_FMT_NONE ; 
- int AV_PIX_FMT_VAAPI ; 
- int AV_VAAPI_DRIVER_QUIRK_SURFACE_ATTRIBUTES ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  ENOSYS ; 
-#define  VASurfaceAttribMaxHeight 132 
-#define  VASurfaceAttribMaxWidth 131 
-#define  VASurfaceAttribMinHeight 130 
-#define  VASurfaceAttribMinWidth 129 
-#define  VASurfaceAttribPixelFormat 128 
- scalar_t__ VA_STATUS_SUCCESS ; 
- int /*<<< orphan*/  av_assert0 (int) ; 
- int /*<<< orphan*/  av_freep (TYPE_5__**) ; 
- int /*<<< orphan*/  av_log (TYPE_10__*,int /*<<< orphan*/ ,char*,scalar_t__,int /*<<< orphan*/ ) ; 
- TYPE_5__* av_malloc (int) ; 
- void* av_malloc_array (int,int) ; 
- int /*<<< orphan*/  vaErrorStr (scalar_t__) ; 
- scalar_t__ vaQuerySurfaceAttributes (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_5__*,int*) ; 
- int vaapi_pix_fmt_from_fourcc (unsigned int) ; 
+
+ int AVERROR (int ) ;
+ int AV_LOG_ERROR ;
+ int AV_PIX_FMT_NONE ;
+ int AV_PIX_FMT_VAAPI ;
+ int AV_VAAPI_DRIVER_QUIRK_SURFACE_ATTRIBUTES ;
+ int ENOMEM ;
+ int ENOSYS ;
+
+
+
+
+
+ scalar_t__ VA_STATUS_SUCCESS ;
+ int av_assert0 (int) ;
+ int av_freep (TYPE_5__**) ;
+ int av_log (TYPE_10__*,int ,char*,scalar_t__,int ) ;
+ TYPE_5__* av_malloc (int) ;
+ void* av_malloc_array (int,int) ;
+ int vaErrorStr (scalar_t__) ;
+ scalar_t__ vaQuerySurfaceAttributes (int ,int ,TYPE_5__*,int*) ;
+ int vaapi_pix_fmt_from_fourcc (unsigned int) ;
 
 __attribute__((used)) static int vaapi_frames_get_constraints(AVHWDeviceContext *hwdev,
                                         const void *hwconfig,
@@ -70,7 +70,7 @@ __attribute__((used)) static int vaapi_frames_get_constraints(AVHWDeviceContext 
     AVVAAPIDeviceContext *hwctx = hwdev->hwctx;
     const AVVAAPIHWConfig *config = hwconfig;
     VAAPIDeviceContext *ctx = hwdev->internal->priv;
-    VASurfaceAttrib *attr_list = NULL;
+    VASurfaceAttrib *attr_list = ((void*)0);
     VAStatus vas;
     enum AVPixelFormat pix_fmt;
     unsigned int fourcc;
@@ -106,33 +106,33 @@ __attribute__((used)) static int vaapi_frames_get_constraints(AVHWDeviceContext 
         pix_fmt_count = 0;
         for (i = 0; i < attr_count; i++) {
             switch (attr_list[i].type) {
-            case VASurfaceAttribPixelFormat:
+            case 128:
                 fourcc = attr_list[i].value.value.i;
                 pix_fmt = vaapi_pix_fmt_from_fourcc(fourcc);
                 if (pix_fmt != AV_PIX_FMT_NONE) {
                     ++pix_fmt_count;
                 } else {
-                    // Something unsupported - ignore.
+
                 }
                 break;
-            case VASurfaceAttribMinWidth:
-                constraints->min_width  = attr_list[i].value.value.i;
+            case 129:
+                constraints->min_width = attr_list[i].value.value.i;
                 break;
-            case VASurfaceAttribMinHeight:
+            case 130:
                 constraints->min_height = attr_list[i].value.value.i;
                 break;
-            case VASurfaceAttribMaxWidth:
-                constraints->max_width  = attr_list[i].value.value.i;
+            case 131:
+                constraints->max_width = attr_list[i].value.value.i;
                 break;
-            case VASurfaceAttribMaxHeight:
+            case 132:
                 constraints->max_height = attr_list[i].value.value.i;
                 break;
             }
         }
         if (pix_fmt_count == 0) {
-            // Nothing usable found.  Presumably there exists something which
-            // works, so leave the set null to indicate unknown.
-            constraints->valid_sw_formats = NULL;
+
+
+            constraints->valid_sw_formats = ((void*)0);
         } else {
             constraints->valid_sw_formats = av_malloc_array(pix_fmt_count + 1,
                                                             sizeof(pix_fmt));
@@ -142,7 +142,7 @@ __attribute__((used)) static int vaapi_frames_get_constraints(AVHWDeviceContext 
             }
 
             for (i = j = 0; i < attr_count; i++) {
-                if (attr_list[i].type != VASurfaceAttribPixelFormat)
+                if (attr_list[i].type != 128)
                     continue;
                 fourcc = attr_list[i].value.value.i;
                 pix_fmt = vaapi_pix_fmt_from_fourcc(fourcc);
@@ -153,8 +153,8 @@ __attribute__((used)) static int vaapi_frames_get_constraints(AVHWDeviceContext 
             constraints->valid_sw_formats[j] = AV_PIX_FMT_NONE;
         }
     } else {
-        // No configuration supplied.
-        // Return the full set of image formats known by the implementation.
+
+
         constraints->valid_sw_formats = av_malloc_array(ctx->nb_formats + 1,
                                                         sizeof(pix_fmt));
         if (!constraints->valid_sw_formats) {

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  BN_ULONG ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HBITS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LBITS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  mul (int /*<<< orphan*/ ,int /*<<< orphan*/  const,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int BN_ULONG ;
+
+
+ int HBITS (int ) ;
+ int LBITS (int ) ;
+ int assert (int) ;
+ int mul (int ,int const,int ,int ,int ) ;
 
 BN_ULONG bn_mul_words(BN_ULONG *rp, const BN_ULONG *ap, int num, BN_ULONG w)
 {
@@ -30,7 +30,7 @@ BN_ULONG bn_mul_words(BN_ULONG *rp, const BN_ULONG *ap, int num, BN_ULONG w)
     bl = LBITS(w);
     bh = HBITS(w);
 
-# ifndef OPENSSL_SMALL_FOOTPRINT
+
     while (num & ~3) {
         mul(rp[0], ap[0], bl, bh, carry);
         mul(rp[1], ap[1], bl, bh, carry);
@@ -40,7 +40,7 @@ BN_ULONG bn_mul_words(BN_ULONG *rp, const BN_ULONG *ap, int num, BN_ULONG w)
         rp += 4;
         num -= 4;
     }
-# endif
+
     while (num) {
         mul(rp[0], ap[0], bl, bh, carry);
         ap++;

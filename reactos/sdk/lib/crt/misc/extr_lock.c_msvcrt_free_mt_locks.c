@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {scalar_t__ bInit; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TRACE (char*) ; 
- int _TOTAL_LOCKS ; 
- TYPE_1__* lock_table ; 
- int /*<<< orphan*/  msvcrt_uninitialize_mlock (int) ; 
+
+ int TRACE (char*) ;
+ int _TOTAL_LOCKS ;
+ TYPE_1__* lock_table ;
+ int msvcrt_uninitialize_mlock (int) ;
 
 void msvcrt_free_mt_locks(void)
 {
@@ -25,7 +25,7 @@ void msvcrt_free_mt_locks(void)
 
   TRACE(": uninitializing all mtlocks\n" );
 
-  /* Uninitialize the table */
+
   for( i=0; i < _TOTAL_LOCKS; i++ )
   {
     if( lock_table[ i ].bInit )

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ klen; } ;
-typedef  TYPE_1__ inprocess_cache_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+typedef TYPE_1__ inprocess_cache_t ;
+typedef int apr_pool_t ;
 
-/* Variables and functions */
- scalar_t__ APR_HASH_KEY_STRING ; 
- void const* apr_pmemdup (int /*<<< orphan*/ *,void const*,scalar_t__) ; 
- void const* apr_pstrdup (int /*<<< orphan*/ *,void const*) ; 
+
+ scalar_t__ APR_HASH_KEY_STRING ;
+ void const* apr_pmemdup (int *,void const*,scalar_t__) ;
+ void const* apr_pstrdup (int *,void const*) ;
 
 __attribute__((used)) static const void *
 duplicate_key(inprocess_cache_t *cache,

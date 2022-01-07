@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct udphdr {int dummy; } ;
 struct ip_tunnel_encap {int dummy; } ;
 
-/* Variables and functions */
+
 
 size_t fou_encap_hlen(struct ip_tunnel_encap *e)
 {
-	return sizeof(struct udphdr);
+ return sizeof(struct udphdr);
 }

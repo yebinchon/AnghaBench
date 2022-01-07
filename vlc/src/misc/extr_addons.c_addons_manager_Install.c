@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  addons_manager_t ;
-typedef  int /*<<< orphan*/  addon_uuid_t ;
-typedef  int /*<<< orphan*/  addon_entry_t ;
 
-/* Variables and functions */
- int InstallEntry (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int VLC_EGENERIC ; 
- int /*<<< orphan*/  addon_entry_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * getHeldEntryByUUID (int /*<<< orphan*/ *,int /*<<< orphan*/  const) ; 
+
+
+
+typedef int addons_manager_t ;
+typedef int addon_uuid_t ;
+typedef int addon_entry_t ;
+
+
+ int InstallEntry (int *,int *) ;
+ int VLC_EGENERIC ;
+ int addon_entry_Release (int *) ;
+ int * getHeldEntryByUUID (int *,int const) ;
 
 int addons_manager_Install( addons_manager_t *p_manager, const addon_uuid_t uuid )
 {

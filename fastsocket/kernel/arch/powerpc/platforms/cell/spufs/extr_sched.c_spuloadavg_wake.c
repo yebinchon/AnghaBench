@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ LOAD_FREQ ; 
- scalar_t__ jiffies ; 
- int /*<<< orphan*/  mod_timer (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  spu_calc_load () ; 
- int /*<<< orphan*/  spuloadavg_timer ; 
+ scalar_t__ LOAD_FREQ ;
+ scalar_t__ jiffies ;
+ int mod_timer (int *,scalar_t__) ;
+ int spu_calc_load () ;
+ int spuloadavg_timer ;
 
 __attribute__((used)) static void spuloadavg_wake(unsigned long data)
 {
-	mod_timer(&spuloadavg_timer, jiffies + LOAD_FREQ);
-	spu_calc_load();
+ mod_timer(&spuloadavg_timer, jiffies + LOAD_FREQ);
+ spu_calc_load();
 }

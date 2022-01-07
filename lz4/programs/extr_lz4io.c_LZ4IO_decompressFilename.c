@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  dRess_t ;
-typedef  scalar_t__ clock_t ;
-typedef  int /*<<< orphan*/  LZ4IO_prefs_t ;
 
-/* Variables and functions */
- double CLOCKS_PER_SEC ; 
- int /*<<< orphan*/  DISPLAYLEVEL (int,char*,double const) ; 
- int /*<<< orphan*/  LZ4IO_createDResources (int /*<<< orphan*/ * const) ; 
- int LZ4IO_decompressDstFile (int /*<<< orphan*/ * const,int /*<<< orphan*/  const,char const*,char const*) ; 
- int /*<<< orphan*/  LZ4IO_freeDResources (int /*<<< orphan*/  const) ; 
- scalar_t__ clock () ; 
+
+
+
+typedef int dRess_t ;
+typedef scalar_t__ clock_t ;
+typedef int LZ4IO_prefs_t ;
+
+
+ double CLOCKS_PER_SEC ;
+ int DISPLAYLEVEL (int,char*,double const) ;
+ int LZ4IO_createDResources (int * const) ;
+ int LZ4IO_decompressDstFile (int * const,int const,char const*,char const*) ;
+ int LZ4IO_freeDResources (int const) ;
+ scalar_t__ clock () ;
 
 int LZ4IO_decompressFilename(LZ4IO_prefs_t* const prefs, const char* input_filename, const char* output_filename)
 {

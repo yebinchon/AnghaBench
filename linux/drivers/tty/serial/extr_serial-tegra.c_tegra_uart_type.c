@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct uart_port {int dummy; } ;
 
-/* Variables and functions */
- char const* TEGRA_UART_TYPE ; 
+
+ char const* TEGRA_UART_TYPE ;
 
 __attribute__((used)) static const char *tegra_uart_type(struct uart_port *u)
 {
-	return TEGRA_UART_TYPE;
+ return TEGRA_UART_TYPE;
 }

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  LPWSTR ;
-typedef  char* LPCWSTR ;
-typedef  int DWORD ;
-typedef  int BOOL ;
 
-/* Variables and functions */
- int GetComputerNameW (int /*<<< orphan*/ ,int*) ; 
- int MAX_COMPUTERNAME_LENGTH ; 
- int TRUE ; 
- int /*<<< orphan*/  heap_alloc (int) ; 
- int /*<<< orphan*/  heap_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lstrcmpW (char*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int WCHAR ;
+typedef int LPWSTR ;
+typedef char* LPCWSTR ;
+typedef int DWORD ;
+typedef int BOOL ;
+
+
+ int GetComputerNameW (int ,int*) ;
+ int MAX_COMPUTERNAME_LENGTH ;
+ int TRUE ;
+ int heap_alloc (int) ;
+ int heap_free (int ) ;
+ int lstrcmpW (char*,int ) ;
 
 BOOL ADVAPI_IsLocalComputer(LPCWSTR ServerName)
 {
@@ -34,7 +34,7 @@ BOOL ADVAPI_IsLocalComputer(LPCWSTR ServerName)
         return TRUE;
 
     buf = heap_alloc(dwSize * sizeof(WCHAR));
-    Result = GetComputerNameW(buf,  &dwSize);
+    Result = GetComputerNameW(buf, &dwSize);
     if (Result && (ServerName[0] == '\\') && (ServerName[1] == '\\'))
         ServerName += 2;
     Result = Result && !lstrcmpW(ServerName, buf);

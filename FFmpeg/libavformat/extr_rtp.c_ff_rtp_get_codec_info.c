@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int pt; scalar_t__ codec_id; scalar_t__ audio_channels; scalar_t__ clock_rate; int /*<<< orphan*/  codec_type; } ;
-struct TYPE_4__ {scalar_t__ codec_id; scalar_t__ channels; scalar_t__ sample_rate; int /*<<< orphan*/  codec_type; } ;
-typedef  TYPE_1__ AVCodecParameters ;
 
-/* Variables and functions */
- scalar_t__ AV_CODEC_ID_NONE ; 
- TYPE_2__* rtp_payload_types ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int pt; scalar_t__ codec_id; scalar_t__ audio_channels; scalar_t__ clock_rate; int codec_type; } ;
+struct TYPE_4__ {scalar_t__ codec_id; scalar_t__ channels; scalar_t__ sample_rate; int codec_type; } ;
+typedef TYPE_1__ AVCodecParameters ;
+
+
+ scalar_t__ AV_CODEC_ID_NONE ;
+ TYPE_2__* rtp_payload_types ;
 
 int ff_rtp_get_codec_info(AVCodecParameters *par, int payload_type)
 {

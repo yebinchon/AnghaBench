@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  cs; } ;
-struct TYPE_5__ {int /*<<< orphan*/  uuid; int /*<<< orphan*/  rundown_routine; int /*<<< orphan*/  refs; } ;
-typedef  TYPE_1__ RpcContextHandle ;
-typedef  TYPE_2__ RpcAssoc ;
-typedef  int /*<<< orphan*/  RPC_STATUS ;
-typedef  scalar_t__ NDR_SCONTEXT ;
-typedef  int /*<<< orphan*/  NDR_RUNDOWN ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERROR_INVALID_HANDLE ; 
- int /*<<< orphan*/  EnterCriticalSection (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LeaveCriticalSection (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RPC_S_OK ; 
- int /*<<< orphan*/  RpcContextHandle_IsGuardCorrect (scalar_t__,void*) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  UuidCreate (int /*<<< orphan*/ *) ; 
- scalar_t__ UuidIsNil (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  debugstr_guid (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int cs; } ;
+struct TYPE_5__ {int uuid; int rundown_routine; int refs; } ;
+typedef TYPE_1__ RpcContextHandle ;
+typedef TYPE_2__ RpcAssoc ;
+typedef int RPC_STATUS ;
+typedef scalar_t__ NDR_SCONTEXT ;
+typedef int NDR_RUNDOWN ;
+
+
+ int ERROR_INVALID_HANDLE ;
+ int EnterCriticalSection (int *) ;
+ int LeaveCriticalSection (int *) ;
+ int RPC_S_OK ;
+ int RpcContextHandle_IsGuardCorrect (scalar_t__,void*) ;
+ int TRACE (char*,int ,TYPE_1__*) ;
+ int UuidCreate (int *) ;
+ scalar_t__ UuidIsNil (int *,int *) ;
+ int debugstr_guid (int *) ;
 
 RPC_STATUS RpcServerAssoc_UpdateContextHandle(RpcAssoc *assoc,
                                               NDR_SCONTEXT SContext,
@@ -45,7 +45,7 @@ RPC_STATUS RpcServerAssoc_UpdateContextHandle(RpcAssoc *assoc,
     EnterCriticalSection(&assoc->cs);
     if (UuidIsNil(&context_handle->uuid, &status))
     {
-        /* add a ref for the data being valid */
+
         context_handle->refs++;
         UuidCreate(&context_handle->uuid);
         context_handle->rundown_routine = rundown_routine;

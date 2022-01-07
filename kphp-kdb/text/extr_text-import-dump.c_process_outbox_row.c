@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct lev_add_message {int user_id; int legacy_id; int peer_id; int date; int ip; int port; int front; int text_len; char* text; int /*<<< orphan*/  ua_hash; scalar_t__ peer_msg_id; scalar_t__ type; } ;
 
-/* Variables and functions */
- int* I ; 
- int* L ; 
- scalar_t__ LEV_TX_ADD_MESSAGE ; 
- char** S ; 
- int /*<<< orphan*/  TXF_FRIENDS ; 
- scalar_t__ TXF_OUTBOX ; 
- scalar_t__ TXF_UNREAD ; 
- int /*<<< orphan*/  adj_rec ; 
- scalar_t__ conv_uid (int) ; 
- scalar_t__ is_friend (int,int) ; 
- int list_id ; 
- size_t ob_date ; 
- size_t ob_from_id ; 
- size_t ob_front ; 
- size_t ob_id ; 
- size_t ob_ip ; 
- size_t ob_message ; 
- size_t ob_port ; 
- size_t ob_read_state ; 
- size_t ob_title ; 
- size_t ob_to_id ; 
- size_t ob_ua_hash ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
- int /*<<< orphan*/  strtoull (char*,int /*<<< orphan*/ ,int) ; 
- struct lev_add_message* write_alloc (int) ; 
+
+
+
+struct lev_add_message {int user_id; int legacy_id; int peer_id; int date; int ip; int port; int front; int text_len; char* text; int ua_hash; scalar_t__ peer_msg_id; scalar_t__ type; } ;
+
+
+ int* I ;
+ int* L ;
+ scalar_t__ LEV_TX_ADD_MESSAGE ;
+ char** S ;
+ int TXF_FRIENDS ;
+ scalar_t__ TXF_OUTBOX ;
+ scalar_t__ TXF_UNREAD ;
+ int adj_rec ;
+ scalar_t__ conv_uid (int) ;
+ scalar_t__ is_friend (int,int) ;
+ int list_id ;
+ size_t ob_date ;
+ size_t ob_from_id ;
+ size_t ob_front ;
+ size_t ob_id ;
+ size_t ob_ip ;
+ size_t ob_message ;
+ size_t ob_port ;
+ size_t ob_read_state ;
+ size_t ob_title ;
+ size_t ob_to_id ;
+ size_t ob_ua_hash ;
+ int strcmp (char*,char*) ;
+ int strcpy (char*,char*) ;
+ int strtoull (char*,int ,int) ;
+ struct lev_add_message* write_alloc (int) ;
 
 void process_outbox_row (void) {
   int user_id = I[ob_to_id];
   int i, len;
   char *ptr, *str;
-  list_id = I[ob_from_id]; 
+  list_id = I[ob_from_id];
   if (conv_uid (list_id) < 0 || list_id <= 0 || user_id <= 0) {
     return;
   }

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int hi; unsigned int lo; } ;
 struct TYPE_4__ {double dbl; TYPE_1__ as_int; } ;
-typedef  TYPE_2__ double_accessor ;
+typedef TYPE_2__ double_accessor ;
 
-/* Variables and functions */
- double* Zero ; 
- int __HI (double) ; 
- unsigned int __LO (double) ; 
+
+ double* Zero ;
+ int __HI (double) ;
+ unsigned int __LO (double) ;
 
 double
 fmod (double x, double y)
@@ -27,34 +27,34 @@ fmod (double x, double y)
   int n, hx, hy, hz, ix, iy, sx, i;
   unsigned lx, ly, lz;
 
-  hx = __HI (x); /* high word of x */
-  lx = __LO (x); /* low  word of x */
-  hy = __HI (y); /* high word of y */
-  ly = __LO (y); /* low  word of y */
-  sx = hx & 0x80000000; /* sign of x */
-  hx ^= sx; /* |x| */
-  hy &= 0x7fffffff; /* |y| */
+  hx = __HI (x);
+  lx = __LO (x);
+  hy = __HI (y);
+  ly = __LO (y);
+  sx = hx & 0x80000000;
+  hx ^= sx;
+  hy &= 0x7fffffff;
 
-  /* purge off exception values */
-  if ((hy | ly) == 0 || (hx >= 0x7ff00000) || /* y = 0, or x not finite */
-      ((hy | ((ly | -ly) >> 31)) > 0x7ff00000)) /* or y is NaN */
+
+  if ((hy | ly) == 0 || (hx >= 0x7ff00000) ||
+      ((hy | ((ly | -ly) >> 31)) > 0x7ff00000))
   {
     return (x * y) / (x * y);
   }
   if (hx <= hy)
   {
-    if ((hx < hy) || (lx < ly)) /* |x| < |y| return x */
+    if ((hx < hy) || (lx < ly))
     {
       return x;
     }
-    if (lx == ly) /* |x| = |y| return x * 0 */
+    if (lx == ly)
     {
       return Zero[(unsigned) sx >> 31];
     }
   }
 
-  /* determine ix = ilogb(x) */
-  if (hx < 0x00100000) /* subnormal x */
+
+  if (hx < 0x00100000)
   {
     if (hx == 0)
     {
@@ -76,8 +76,8 @@ fmod (double x, double y)
     ix = (hx >> 20) - 1023;
   }
 
-  /* determine iy = ilogb(y) */
-  if (hy < 0x00100000) /* subnormal y */
+
+  if (hy < 0x00100000)
   {
     if (hy == 0)
     {
@@ -99,12 +99,12 @@ fmod (double x, double y)
     iy = (hy >> 20) - 1023;
   }
 
-  /* set up {hx,lx}, {hy,ly} and align y to x */
+
   if (ix >= -1022)
   {
     hx = 0x00100000 | (0x000fffff & hx);
   }
-  else /* subnormal x, shift x to normal */
+  else
   {
     n = -1022 - ix;
     if (n <= 31)
@@ -122,7 +122,7 @@ fmod (double x, double y)
   {
     hy = 0x00100000 | (0x000fffff & hy);
   }
-  else /* subnormal y, shift y to normal */
+  else
   {
     n = -1022 - iy;
     if (n <= 31)
@@ -137,7 +137,7 @@ fmod (double x, double y)
     }
   }
 
-  /* fix point fmod */
+
   n = ix - iy;
   while (n--)
   {
@@ -154,7 +154,7 @@ fmod (double x, double y)
     }
     else
     {
-      if ((hz | lz) == 0) /* return sign(x) * 0 */
+      if ((hz | lz) == 0)
       {
         return Zero[(unsigned) sx >> 31];
       }
@@ -174,12 +174,12 @@ fmod (double x, double y)
     lx = lz;
   }
 
-  /* convert back to floating value and restore the sign */
-  if ((hx | lx) == 0) /* return sign(x) * 0 */
+
+  if ((hx | lx) == 0)
   {
     return Zero[(unsigned) sx >> 31];
   }
-  while (hx < 0x00100000) /* normalize x */
+  while (hx < 0x00100000)
   {
     hx = hx + hx + (lx >> 31);
     lx = lx + lx;
@@ -187,13 +187,13 @@ fmod (double x, double y)
   }
 
   double_accessor ret;
-  if (iy >= -1022) /* normalize output */
+  if (iy >= -1022)
   {
     hx = ((hx - 0x00100000) | ((iy + 1023) << 20));
     ret.as_int.hi = hx | sx;
     ret.as_int.lo = lx;
   }
-  else /* subnormal output */
+  else
   {
     n = -1022 - iy;
     if (n <= 20)
@@ -214,5 +214,5 @@ fmod (double x, double y)
     ret.as_int.hi = hx | sx;
     ret.as_int.lo = lx;
   }
-  return ret.dbl; /* exact output */
+  return ret.dbl;
 }

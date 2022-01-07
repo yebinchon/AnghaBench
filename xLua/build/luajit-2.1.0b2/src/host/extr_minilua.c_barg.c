@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  double lua_Number ;
-typedef  int /*<<< orphan*/  UB ;
-typedef  int /*<<< orphan*/  U64 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  luaL_typerror (int /*<<< orphan*/ *,int,char*) ; 
- int /*<<< orphan*/  lua_isnumber (int /*<<< orphan*/ *,int) ; 
- double lua_tonumber (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int lua_State ;
+typedef double lua_Number ;
+typedef int UB ;
+typedef int U64 ;
+
+
+ int luaL_typerror (int *,int,char*) ;
+ int lua_isnumber (int *,int) ;
+ double lua_tonumber (int *,int) ;
 
 __attribute__((used)) static UB barg(lua_State*L,int idx){
 union{lua_Number n;U64 b;}bn;

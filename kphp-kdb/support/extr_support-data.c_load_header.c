@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* kfs_file_handle_t ;
-typedef  int /*<<< orphan*/  index_header ;
-struct TYPE_7__ {int log_split_min; int log_split_max; int log_split_mod; int magic; int /*<<< orphan*/  created_at; scalar_t__ log_pos1_crc32; scalar_t__ log_pos0_crc32; scalar_t__ log_timestamp; scalar_t__ log_pos1; scalar_t__ log_pos0; } ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef TYPE_1__* kfs_file_handle_t ;
+typedef int index_header ;
+struct TYPE_7__ {int log_split_min; int log_split_max; int log_split_mod; int magic; int created_at; scalar_t__ log_pos1_crc32; scalar_t__ log_pos0_crc32; scalar_t__ log_timestamp; scalar_t__ log_pos1; scalar_t__ log_pos0; } ;
 struct TYPE_6__ {int fd; int offset; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SEEK_SET ; 
- int SUPPORT_INDEX_MAGIC ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  dbg (char*) ; 
- int* fd ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int get_index_header_size (TYPE_2__*) ; 
- TYPE_2__ header ; 
- int header_size ; 
- int log_split_max ; 
- int log_split_min ; 
- int log_split_mod ; 
- int lseek (int,int,int /*<<< orphan*/ ) ; 
- int read (int,TYPE_2__*,int) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  time (int /*<<< orphan*/ *) ; 
- int verbosity ; 
+
+ int SEEK_SET ;
+ int SUPPORT_INDEX_MAGIC ;
+ int assert (int) ;
+ int dbg (char*) ;
+ int* fd ;
+ int fprintf (int ,char*,...) ;
+ int get_index_header_size (TYPE_2__*) ;
+ TYPE_2__ header ;
+ int header_size ;
+ int log_split_max ;
+ int log_split_min ;
+ int log_split_mod ;
+ int lseek (int,int,int ) ;
+ int read (int,TYPE_2__*,int) ;
+ int stderr ;
+ int time (int *) ;
+ int verbosity ;
 
 int load_header (kfs_file_handle_t Index) {
-  if (Index == NULL) {
+  if (Index == ((void*)0)) {
     fd[0] = -1;
 
     header.log_pos0 = 0;
@@ -49,7 +49,7 @@ int load_header (kfs_file_handle_t Index) {
     header.log_pos0_crc32 = 0;
     header.log_pos1_crc32 = 0;
 
-    header.created_at = time (NULL);
+    header.created_at = time (((void*)0));
     header_size = sizeof (index_header);
 
     return 0;
@@ -60,7 +60,7 @@ int load_header (kfs_file_handle_t Index) {
   fd[0] = Index->fd;
   int offset = Index->offset;
 
-  //read header
+
   assert (lseek (fd[0], offset, SEEK_SET) == offset);
 
   int size = sizeof (index_header);

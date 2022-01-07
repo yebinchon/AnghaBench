@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct net_device {int dummy; } ;
-struct ipoib_dev_priv {int /*<<< orphan*/  lock; } ;
+struct ipoib_dev_priv {int lock; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  __ipoib_mcast_schedule_join_thread (struct ipoib_dev_priv*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ipoib_dbg_mcast (struct ipoib_dev_priv*,char*) ; 
- struct ipoib_dev_priv* ipoib_priv (struct net_device*) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
+
+ int __ipoib_mcast_schedule_join_thread (struct ipoib_dev_priv*,int *,int ) ;
+ int ipoib_dbg_mcast (struct ipoib_dev_priv*,char*) ;
+ struct ipoib_dev_priv* ipoib_priv (struct net_device*) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
 
 void ipoib_mcast_start_thread(struct net_device *dev)
 {
-	struct ipoib_dev_priv *priv = ipoib_priv(dev);
-	unsigned long flags;
+ struct ipoib_dev_priv *priv = ipoib_priv(dev);
+ unsigned long flags;
 
-	ipoib_dbg_mcast(priv, "starting multicast thread\n");
+ ipoib_dbg_mcast(priv, "starting multicast thread\n");
 
-	spin_lock_irqsave(&priv->lock, flags);
-	__ipoib_mcast_schedule_join_thread(priv, NULL, 0);
-	spin_unlock_irqrestore(&priv->lock, flags);
+ spin_lock_irqsave(&priv->lock, flags);
+ __ipoib_mcast_schedule_join_thread(priv, ((void*)0), 0);
+ spin_unlock_irqrestore(&priv->lock, flags);
 }

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct vo {scalar_t__ hwdec_devs; struct gpu_priv* priv; } ;
-struct gpu_priv {int /*<<< orphan*/  ctx; int /*<<< orphan*/  renderer; } ;
+struct gpu_priv {int ctx; int renderer; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  gl_video_uninit (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hwdec_devices_destroy (scalar_t__) ; 
- int /*<<< orphan*/  hwdec_devices_set_loader (scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ra_ctx_destroy (int /*<<< orphan*/ *) ; 
+
+ int gl_video_uninit (int ) ;
+ int hwdec_devices_destroy (scalar_t__) ;
+ int hwdec_devices_set_loader (scalar_t__,int *,int *) ;
+ int ra_ctx_destroy (int *) ;
 
 __attribute__((used)) static void uninit(struct vo *vo)
 {
@@ -25,7 +25,7 @@ __attribute__((used)) static void uninit(struct vo *vo)
 
     gl_video_uninit(p->renderer);
     if (vo->hwdec_devs) {
-        hwdec_devices_set_loader(vo->hwdec_devs, NULL, NULL);
+        hwdec_devices_set_loader(vo->hwdec_devs, ((void*)0), ((void*)0));
         hwdec_devices_destroy(vo->hwdec_devs);
     }
     ra_ctx_destroy(&p->ctx);

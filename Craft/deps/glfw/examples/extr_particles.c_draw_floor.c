@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ GLuint ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GL_COMPILE_AND_EXECUTE ; 
- int /*<<< orphan*/  GL_DIFFUSE ; 
- int /*<<< orphan*/  GL_FRONT ; 
- int /*<<< orphan*/  GL_QUADS ; 
- int /*<<< orphan*/  GL_SHININESS ; 
- int /*<<< orphan*/  GL_SPECULAR ; 
- int /*<<< orphan*/  GL_TEXTURE_2D ; 
- int /*<<< orphan*/  floor_diffuse ; 
- int /*<<< orphan*/  floor_shininess ; 
- int /*<<< orphan*/  floor_specular ; 
- int /*<<< orphan*/  floor_tex_id ; 
- int /*<<< orphan*/  glBegin (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glBindTexture (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glCallList (scalar_t__) ; 
- int /*<<< orphan*/  glDisable (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glEnable (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glEnd () ; 
- int /*<<< orphan*/  glEndList () ; 
- scalar_t__ glGenLists (int) ; 
- int /*<<< orphan*/  glMaterialf (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glMaterialfv (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glNewList (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glNormal3f (float,float,float) ; 
- int /*<<< orphan*/  tessellate_floor (float,float,float,float,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wireframe ; 
+
+
+
+typedef scalar_t__ GLuint ;
+
+
+ int GL_COMPILE_AND_EXECUTE ;
+ int GL_DIFFUSE ;
+ int GL_FRONT ;
+ int GL_QUADS ;
+ int GL_SHININESS ;
+ int GL_SPECULAR ;
+ int GL_TEXTURE_2D ;
+ int floor_diffuse ;
+ int floor_shininess ;
+ int floor_specular ;
+ int floor_tex_id ;
+ int glBegin (int ) ;
+ int glBindTexture (int ,int ) ;
+ int glCallList (scalar_t__) ;
+ int glDisable (int ) ;
+ int glEnable (int ) ;
+ int glEnd () ;
+ int glEndList () ;
+ scalar_t__ glGenLists (int) ;
+ int glMaterialf (int ,int ,int ) ;
+ int glMaterialfv (int ,int ,int ) ;
+ int glNewList (scalar_t__,int ) ;
+ int glNormal3f (float,float,float) ;
+ int tessellate_floor (float,float,float,float,int ) ;
+ int wireframe ;
 
 __attribute__((used)) static void draw_floor(void)
 {
@@ -49,7 +49,7 @@ __attribute__((used)) static void draw_floor(void)
         glBindTexture(GL_TEXTURE_2D, floor_tex_id);
     }
 
-    // The first time, we build the floor display list
+
     if (!floor_list)
     {
         floor_list = glGenLists(1);
@@ -59,14 +59,14 @@ __attribute__((used)) static void draw_floor(void)
         glMaterialfv(GL_FRONT, GL_SPECULAR, floor_specular);
         glMaterialf(GL_FRONT, GL_SHININESS, floor_shininess);
 
-        // Draw floor as a bunch of triangle strips (high tesselation
-        // improves lighting)
+
+
         glNormal3f(0.f, 0.f, 1.f);
         glBegin(GL_QUADS);
         tessellate_floor(-1.f, -1.f, 0.f, 0.f, 0);
         tessellate_floor( 0.f, -1.f, 1.f, 0.f, 0);
-        tessellate_floor( 0.f,  0.f, 1.f, 1.f, 0);
-        tessellate_floor(-1.f,  0.f, 0.f, 1.f, 0);
+        tessellate_floor( 0.f, 0.f, 1.f, 1.f, 0);
+        tessellate_floor(-1.f, 0.f, 0.f, 1.f, 0);
         glEnd();
 
         glEndList();

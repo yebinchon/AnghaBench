@@ -1,120 +1,120 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u16 ;
+
+
+
+
+typedef int u16 ;
 struct net_device {int dummy; } ;
-struct cp_private {int /*<<< orphan*/  lock; int /*<<< orphan*/  pdev; int /*<<< orphan*/  mii_if; int /*<<< orphan*/  napi; } ;
-typedef  int /*<<< orphan*/  irqreturn_t ;
+struct cp_private {int lock; int pdev; int mii_if; int napi; } ;
+typedef int irqreturn_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Cmd ; 
- int /*<<< orphan*/  CpCmd ; 
- int /*<<< orphan*/  IRQ_NONE ; 
- int /*<<< orphan*/  IRQ_RETVAL (int) ; 
- int /*<<< orphan*/  IntrMask ; 
- int /*<<< orphan*/  IntrStatus ; 
- int LinkChg ; 
- int /*<<< orphan*/  PCI_STATUS ; 
- int PciErr ; 
- int RxEmpty ; 
- int RxErr ; 
- int RxFIFOOvr ; 
- int RxOK ; 
- int SWInt ; 
- int TxEmpty ; 
- int TxErr ; 
- int TxOK ; 
- int /*<<< orphan*/  __napi_schedule (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cp_norx_intr_mask ; 
- int cp_rx_intr_mask ; 
- int /*<<< orphan*/  cp_tx (struct cp_private*) ; 
- int cpr16 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cpr8 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cpw16 (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  cpw16_f (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  intr ; 
- int /*<<< orphan*/  mii_check_media (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- scalar_t__ napi_schedule_prep (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  netdev_err (struct net_device*,char*,int,int) ; 
- struct cp_private* netdev_priv (struct net_device*) ; 
- int /*<<< orphan*/  netif_dbg (struct cp_private*,int /*<<< orphan*/ ,struct net_device*,char*,int,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  netif_msg_link (struct cp_private*) ; 
- int /*<<< orphan*/  netif_running (struct net_device*) ; 
- int /*<<< orphan*/  pci_read_config_word (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  pci_write_config_word (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  spin_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock (int /*<<< orphan*/ *) ; 
- scalar_t__ unlikely (int) ; 
+
+ int Cmd ;
+ int CpCmd ;
+ int IRQ_NONE ;
+ int IRQ_RETVAL (int) ;
+ int IntrMask ;
+ int IntrStatus ;
+ int LinkChg ;
+ int PCI_STATUS ;
+ int PciErr ;
+ int RxEmpty ;
+ int RxErr ;
+ int RxFIFOOvr ;
+ int RxOK ;
+ int SWInt ;
+ int TxEmpty ;
+ int TxErr ;
+ int TxOK ;
+ int __napi_schedule (int *) ;
+ int cp_norx_intr_mask ;
+ int cp_rx_intr_mask ;
+ int cp_tx (struct cp_private*) ;
+ int cpr16 (int ) ;
+ int cpr8 (int ) ;
+ int cpw16 (int ,int) ;
+ int cpw16_f (int ,int ) ;
+ int intr ;
+ int mii_check_media (int *,int ,int) ;
+ scalar_t__ napi_schedule_prep (int *) ;
+ int netdev_err (struct net_device*,char*,int,int) ;
+ struct cp_private* netdev_priv (struct net_device*) ;
+ int netif_dbg (struct cp_private*,int ,struct net_device*,char*,int,int ,int) ;
+ int netif_msg_link (struct cp_private*) ;
+ int netif_running (struct net_device*) ;
+ int pci_read_config_word (int ,int ,int*) ;
+ int pci_write_config_word (int ,int ,int) ;
+ int spin_lock (int *) ;
+ int spin_unlock (int *) ;
+ scalar_t__ unlikely (int) ;
 
 __attribute__((used)) static irqreturn_t cp_interrupt (int irq, void *dev_instance)
 {
-	struct net_device *dev = dev_instance;
-	struct cp_private *cp;
-	int handled = 0;
-	u16 status;
-	u16 mask;
+ struct net_device *dev = dev_instance;
+ struct cp_private *cp;
+ int handled = 0;
+ u16 status;
+ u16 mask;
 
-	if (unlikely(dev == NULL))
-		return IRQ_NONE;
-	cp = netdev_priv(dev);
+ if (unlikely(dev == ((void*)0)))
+  return IRQ_NONE;
+ cp = netdev_priv(dev);
 
-	spin_lock(&cp->lock);
+ spin_lock(&cp->lock);
 
-	mask = cpr16(IntrMask);
-	if (!mask)
-		goto out_unlock;
+ mask = cpr16(IntrMask);
+ if (!mask)
+  goto out_unlock;
 
-	status = cpr16(IntrStatus);
-	if (!status || (status == 0xFFFF))
-		goto out_unlock;
+ status = cpr16(IntrStatus);
+ if (!status || (status == 0xFFFF))
+  goto out_unlock;
 
-	handled = 1;
+ handled = 1;
 
-	netif_dbg(cp, intr, dev, "intr, status %04x cmd %02x cpcmd %04x\n",
-		  status, cpr8(Cmd), cpr16(CpCmd));
+ netif_dbg(cp, intr, dev, "intr, status %04x cmd %02x cpcmd %04x\n",
+    status, cpr8(Cmd), cpr16(CpCmd));
 
-	cpw16(IntrStatus, status & ~cp_rx_intr_mask);
-
-	/* close possible race's with dev_close */
-	if (unlikely(!netif_running(dev))) {
-		cpw16(IntrMask, 0);
-		goto out_unlock;
-	}
-
-	if (status & (RxOK | RxErr | RxEmpty | RxFIFOOvr))
-		if (napi_schedule_prep(&cp->napi)) {
-			cpw16_f(IntrMask, cp_norx_intr_mask);
-			__napi_schedule(&cp->napi);
-		}
-
-	if (status & (TxOK | TxErr | TxEmpty | SWInt))
-		cp_tx(cp);
-	if (status & LinkChg)
-		mii_check_media(&cp->mii_if, netif_msg_link(cp), false);
+ cpw16(IntrStatus, status & ~cp_rx_intr_mask);
 
 
-	if (status & PciErr) {
-		u16 pci_status;
+ if (unlikely(!netif_running(dev))) {
+  cpw16(IntrMask, 0);
+  goto out_unlock;
+ }
 
-		pci_read_config_word(cp->pdev, PCI_STATUS, &pci_status);
-		pci_write_config_word(cp->pdev, PCI_STATUS, pci_status);
-		netdev_err(dev, "PCI bus error, status=%04x, PCI status=%04x\n",
-			   status, pci_status);
+ if (status & (RxOK | RxErr | RxEmpty | RxFIFOOvr))
+  if (napi_schedule_prep(&cp->napi)) {
+   cpw16_f(IntrMask, cp_norx_intr_mask);
+   __napi_schedule(&cp->napi);
+  }
 
-		/* TODO: reset hardware */
-	}
+ if (status & (TxOK | TxErr | TxEmpty | SWInt))
+  cp_tx(cp);
+ if (status & LinkChg)
+  mii_check_media(&cp->mii_if, netif_msg_link(cp), 0);
+
+
+ if (status & PciErr) {
+  u16 pci_status;
+
+  pci_read_config_word(cp->pdev, PCI_STATUS, &pci_status);
+  pci_write_config_word(cp->pdev, PCI_STATUS, pci_status);
+  netdev_err(dev, "PCI bus error, status=%04x, PCI status=%04x\n",
+      status, pci_status);
+
+
+ }
 
 out_unlock:
-	spin_unlock(&cp->lock);
+ spin_unlock(&cp->lock);
 
-	return IRQ_RETVAL(handled);
+ return IRQ_RETVAL(handled);
 }

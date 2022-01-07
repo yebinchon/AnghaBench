@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  evutil_socket_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  tt_fail_perror (char*) ; 
- scalar_t__ write (int /*<<< orphan*/ ,char*,int) ; 
+
+
+
+typedef int evutil_socket_t ;
+
+
+ int tt_fail_perror (char*) ;
+ scalar_t__ write (int ,char*,int) ;
 
 __attribute__((used)) static void send_a_byte_cb(evutil_socket_t fd, short what, void *arg)
 {
-	evutil_socket_t *sockp = arg;
-	(void) fd; (void) what;
-	if (write(*sockp, "A", 1) < 0)
-		tt_fail_perror("write");
+ evutil_socket_t *sockp = arg;
+ (void) fd; (void) what;
+ if (write(*sockp, "A", 1) < 0)
+  tt_fail_perror("write");
 }

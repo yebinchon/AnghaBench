@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  sval; int /*<<< orphan*/  space; } ;
-typedef  TYPE_1__ Token ;
 
-/* Variables and functions */
- scalar_t__ is_keyword (TYPE_1__*,char) ; 
- TYPE_1__* lex () ; 
- int /*<<< orphan*/  read_funclike_macro (TYPE_1__*) ; 
- TYPE_1__* read_ident () ; 
- int /*<<< orphan*/  read_obj_macro (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  unget_token (TYPE_1__*) ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int sval; int space; } ;
+typedef TYPE_1__ Token ;
+
+
+ scalar_t__ is_keyword (TYPE_1__*,char) ;
+ TYPE_1__* lex () ;
+ int read_funclike_macro (TYPE_1__*) ;
+ TYPE_1__* read_ident () ;
+ int read_obj_macro (int ) ;
+ int unget_token (TYPE_1__*) ;
 
 __attribute__((used)) static void read_define() {
     Token *name = read_ident();

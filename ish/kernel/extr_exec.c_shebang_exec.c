@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct fd {TYPE_1__* ops; } ;
-typedef  int /*<<< orphan*/  header ;
-struct TYPE_2__ {int (* read ) (struct fd*,char*,int) ;scalar_t__ (* lseek ) (struct fd*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;} ;
+typedef int header ;
+struct TYPE_2__ {int (* read ) (struct fd*,char*,int) ;scalar_t__ (* lseek ) (struct fd*,int ,int ) ;} ;
 
-/* Variables and functions */
- scalar_t__ IS_ERR (struct fd*) ; 
- int /*<<< orphan*/  O_RDONLY_ ; 
- int PTR_ERR (struct fd*) ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int _E2BIG ; 
- int _EIO ; 
- int _ENOEXEC ; 
- int /*<<< orphan*/  fd_close (struct fd*) ; 
- int format_exec (struct fd*,char*,char*,char const*) ; 
- struct fd* generic_open (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (char*,char const*,size_t) ; 
- char* strchr (char*,char) ; 
- int /*<<< orphan*/  strcpy (char*,char const*) ; 
- size_t strings_size (char const*) ; 
- int strlen (char const*) ; 
- scalar_t__ stub1 (struct fd*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int stub2 (struct fd*,char*,int) ; 
+
+ scalar_t__ IS_ERR (struct fd*) ;
+ int O_RDONLY_ ;
+ int PTR_ERR (struct fd*) ;
+ int SEEK_SET ;
+ int _E2BIG ;
+ int _EIO ;
+ int _ENOEXEC ;
+ int fd_close (struct fd*) ;
+ int format_exec (struct fd*,char*,char*,char const*) ;
+ struct fd* generic_open (char*,int ,int ) ;
+ int memcpy (char*,char const*,size_t) ;
+ char* strchr (char*,char) ;
+ int strcpy (char*,char const*) ;
+ size_t strings_size (char const*) ;
+ int strlen (char const*) ;
+ scalar_t__ stub1 (struct fd*,int ,int ) ;
+ int stub2 (struct fd*,char*,int) ;
 
 __attribute__((used)) static int shebang_exec(struct fd *fd, const char *file, const char *argv, const char *envp) {
-    // read the first 128 bytes to get the shebang line out of
+
     if (fd->ops->lseek(fd, 0, SEEK_SET))
         return _EIO;
     char header[128];
@@ -44,13 +44,13 @@ __attribute__((used)) static int shebang_exec(struct fd *fd, const char *file, c
         return _EIO;
     header[size] = '\0';
 
-    // only look at the first line
+
     char *newline = strchr(header, '\n');
-    if (newline == NULL)
+    if (newline == ((void*)0))
         return _ENOEXEC;
     *newline = '\0';
 
-    // format: #![spaces]interpreter[spaces]argument[spaces]
+
     char *p = header;
     if (p[0] != '#' || p[1] != '!')
         return _ENOEXEC;
@@ -70,12 +70,12 @@ __attribute__((used)) static int shebang_exec(struct fd *fd, const char *file, c
     }
 
     char *argument = p;
-    // strip trailing whitespace
+
     p = strchr(p, '\0') - 1;
     while (*p == ' ')
         *p-- = '\0';
     if (*argument == '\0')
-        argument = NULL;
+        argument = ((void*)0);
 
     const char *argv_rest = argv + strlen(argv) + 1;
     size_t args_size = strings_size(argv_rest);

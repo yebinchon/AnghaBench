@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  immediate_quit ; 
- int next_msg_id ; 
- int /*<<< orphan*/  printf_unfiltered (char*,...) ; 
- int readchar (int) ; 
- int /*<<< orphan*/  sds_desc ; 
- int /*<<< orphan*/  sds_send (unsigned char*,int) ; 
- int /*<<< orphan*/  serial_write (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  start_remote () ; 
+ int immediate_quit ;
+ int next_msg_id ;
+ int printf_unfiltered (char*,...) ;
+ int readchar (int) ;
+ int sds_desc ;
+ int sds_send (unsigned char*,int) ;
+ int serial_write (int ,char*,int) ;
+ int start_remote () ;
 
 __attribute__((used)) static int
 sds_start_remote (void *dummy)
@@ -27,9 +19,9 @@ sds_start_remote (void *dummy)
   int c;
   unsigned char buf[200];
 
-  immediate_quit++;		/* Allow user to interrupt it */
+  immediate_quit++;
 
-  /* Ack any packet which the remote side has already sent.  */
+
   serial_write (sds_desc, "{#*\r\n", 5);
   serial_write (sds_desc, "{#}\r\n", 5);
 
@@ -47,6 +39,6 @@ sds_start_remote (void *dummy)
 
   immediate_quit--;
 
-  start_remote ();		/* Initialize gdb process mechanisms */
+  start_remote ();
   return 1;
 }

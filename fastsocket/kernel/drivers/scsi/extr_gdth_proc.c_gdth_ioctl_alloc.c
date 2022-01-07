@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ulong64 ;
-typedef  int /*<<< orphan*/  ulong ;
-struct TYPE_3__ {char* pscratch; int /*<<< orphan*/  smp_lock; int /*<<< orphan*/  pdev; int /*<<< orphan*/  scratch_phys; scalar_t__ scratch_busy; } ;
-typedef  TYPE_1__ gdth_ha_str ;
-typedef  int /*<<< orphan*/  dma_addr_t ;
 
-/* Variables and functions */
- int GDTH_SCRATCH ; 
- scalar_t__ TRUE ; 
- char* pci_alloc_consistent (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int ulong64 ;
+typedef int ulong ;
+struct TYPE_3__ {char* pscratch; int smp_lock; int pdev; int scratch_phys; scalar_t__ scratch_busy; } ;
+typedef TYPE_1__ gdth_ha_str ;
+typedef int dma_addr_t ;
+
+
+ int GDTH_SCRATCH ;
+ scalar_t__ TRUE ;
+ char* pci_alloc_consistent (int ,int,int *) ;
+ int spin_lock_irqsave (int *,int ) ;
+ int spin_unlock_irqrestore (int *,int ) ;
 
 __attribute__((used)) static char *gdth_ioctl_alloc(gdth_ha_str *ha, int size, int scratch,
                               ulong64 *paddr)
@@ -31,7 +31,7 @@ __attribute__((used)) static char *gdth_ioctl_alloc(gdth_ha_str *ha, int size, i
     char *ret_val;
 
     if (size == 0)
-        return NULL;
+        return ((void*)0);
 
     spin_lock_irqsave(&ha->smp_lock, flags);
 
@@ -40,7 +40,7 @@ __attribute__((used)) static char *gdth_ioctl_alloc(gdth_ha_str *ha, int size, i
         ret_val = ha->pscratch;
         *paddr = ha->scratch_phys;
     } else if (scratch) {
-        ret_val = NULL;
+        ret_val = ((void*)0);
     } else {
         dma_addr_t dma_addr;
 

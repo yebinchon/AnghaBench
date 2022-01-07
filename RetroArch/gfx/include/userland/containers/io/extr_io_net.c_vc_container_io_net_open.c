@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ VC_CONTAINER_STATUS_T ;
-struct TYPE_5__ {int /*<<< orphan*/  capabilities; int /*<<< orphan*/  pf_control; int /*<<< orphan*/  pf_write; int /*<<< orphan*/  pf_read; int /*<<< orphan*/  (* pf_close ) (TYPE_1__*) ;int /*<<< orphan*/ * module; int /*<<< orphan*/  uri; } ;
-typedef  TYPE_1__ VC_CONTAINER_IO_T ;
-typedef  int /*<<< orphan*/  VC_CONTAINER_IO_MODULE_T ;
-typedef  int /*<<< orphan*/  VC_CONTAINER_IO_MODE_T ;
 
-/* Variables and functions */
- scalar_t__ VC_CONTAINER_ERROR_OUT_OF_MEMORY ; 
- scalar_t__ VC_CONTAINER_ERROR_URI_NOT_FOUND ; 
- int /*<<< orphan*/  VC_CONTAINER_IO_CAPS_CANT_SEEK ; 
- int /*<<< orphan*/  VC_CONTAINER_PARAM_UNUSED (char const*) ; 
- scalar_t__ VC_CONTAINER_SUCCESS ; 
- int /*<<< orphan*/  io_net_close (TYPE_1__*) ; 
- int /*<<< orphan*/  io_net_control ; 
- scalar_t__ io_net_open_socket (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  io_net_read ; 
- int /*<<< orphan*/  io_net_recognise_scheme (int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  io_net_write ; 
- scalar_t__ malloc (int) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef scalar_t__ VC_CONTAINER_STATUS_T ;
+struct TYPE_5__ {int capabilities; int pf_control; int pf_write; int pf_read; int (* pf_close ) (TYPE_1__*) ;int * module; int uri; } ;
+typedef TYPE_1__ VC_CONTAINER_IO_T ;
+typedef int VC_CONTAINER_IO_MODULE_T ;
+typedef int VC_CONTAINER_IO_MODE_T ;
+
+
+ scalar_t__ VC_CONTAINER_ERROR_OUT_OF_MEMORY ;
+ scalar_t__ VC_CONTAINER_ERROR_URI_NOT_FOUND ;
+ int VC_CONTAINER_IO_CAPS_CANT_SEEK ;
+ int VC_CONTAINER_PARAM_UNUSED (char const*) ;
+ scalar_t__ VC_CONTAINER_SUCCESS ;
+ int io_net_close (TYPE_1__*) ;
+ int io_net_control ;
+ scalar_t__ io_net_open_socket (TYPE_1__*,int ,int) ;
+ int io_net_read ;
+ int io_net_recognise_scheme (int ,int*) ;
+ int io_net_write ;
+ scalar_t__ malloc (int) ;
+ int memset (int *,int ,int) ;
 
 VC_CONTAINER_STATUS_T vc_container_io_net_open( VC_CONTAINER_IO_T *p_ctx,
    const char *unused, VC_CONTAINER_IO_MODE_T mode )
@@ -57,7 +57,7 @@ VC_CONTAINER_STATUS_T vc_container_io_net_open( VC_CONTAINER_IO_T *p_ctx,
    p_ctx->pf_write = io_net_write;
    p_ctx->pf_control = io_net_control;
 
-   /* Disable caching, as this will block waiting for enough data to fill the cache or an error */
+
    p_ctx->capabilities = VC_CONTAINER_IO_CAPS_CANT_SEEK;
 
    return VC_CONTAINER_SUCCESS;

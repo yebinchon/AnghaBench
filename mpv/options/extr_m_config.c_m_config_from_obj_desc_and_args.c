@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct mpv_global {int dummy; } ;
 struct mp_log {int dummy; } ;
 struct m_obj_settings {char** attribs; scalar_t__ name; } ;
 struct m_obj_desc {int dummy; } ;
 struct m_config {int dummy; } ;
 
-/* Variables and functions */
- struct m_config* m_config_from_obj_desc (void*,struct mp_log*,struct mpv_global*,struct m_obj_desc*) ; 
- scalar_t__ m_config_set_obj_params (struct m_config*,struct mp_log*,struct mpv_global*,struct m_obj_desc*,char**) ; 
- scalar_t__ strcmp (scalar_t__,char const*) ; 
- int /*<<< orphan*/  talloc_free (struct m_config*) ; 
+
+ struct m_config* m_config_from_obj_desc (void*,struct mp_log*,struct mpv_global*,struct m_obj_desc*) ;
+ scalar_t__ m_config_set_obj_params (struct m_config*,struct mp_log*,struct mpv_global*,struct m_obj_desc*,char**) ;
+ scalar_t__ strcmp (scalar_t__,char const*) ;
+ int talloc_free (struct m_config*) ;
 
 struct m_config *m_config_from_obj_desc_and_args(void *ta_parent,
     struct mp_log *log, struct mpv_global *global, struct m_obj_desc *desc,
@@ -42,5 +42,5 @@ struct m_config *m_config_from_obj_desc_and_args(void *ta_parent,
     return config;
 error:
     talloc_free(config);
-    return NULL;
+    return ((void*)0);
 }

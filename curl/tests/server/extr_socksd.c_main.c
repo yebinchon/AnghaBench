@@ -1,62 +1,62 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ curl_socket_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_INET ; 
- int /*<<< orphan*/  AF_INET6 ; 
- scalar_t__ CURL_SOCKET_BAD ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  O_BINARY ; 
- int SOCKERRNO ; 
- int /*<<< orphan*/  SOCK_STREAM ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  atexit (int /*<<< orphan*/ ) ; 
- scalar_t__ atoi (char*) ; 
- char* backendaddr ; 
- unsigned short backendport ; 
- char* configfile ; 
- int /*<<< orphan*/  curlx_ultous (unsigned long) ; 
- int /*<<< orphan*/  exit_signal ; 
- int /*<<< orphan*/  fileno (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- scalar_t__ got_exit_signal ; 
- int incoming (scalar_t__) ; 
- int /*<<< orphan*/  install_signal_handlers () ; 
- char* ipv_inuse ; 
- int /*<<< orphan*/  logmsg (char*,...) ; 
- int /*<<< orphan*/  port ; 
- int /*<<< orphan*/  printf (char*,char*) ; 
- int /*<<< orphan*/  puts (char*) ; 
- int /*<<< orphan*/  raise (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  restore_signal_handlers () ; 
- int /*<<< orphan*/  sclose (scalar_t__) ; 
- char* serverlogfile ; 
- int /*<<< orphan*/  setmode (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ sockdaemon (scalar_t__,int /*<<< orphan*/ *) ; 
- scalar_t__ socket (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  stdin ; 
- int /*<<< orphan*/  stdout ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
- int /*<<< orphan*/  strerror (int) ; 
- int strlen (char*) ; 
- unsigned long strtoul (char*,char**,int) ; 
- int /*<<< orphan*/  unlink (char const*) ; 
- int /*<<< orphan*/  use_ipv6 ; 
- int /*<<< orphan*/  win32_cleanup ; 
- int /*<<< orphan*/  win32_init () ; 
- int write_pidfile (char const*) ; 
+
+
+
+typedef scalar_t__ curl_socket_t ;
+
+
+ int AF_INET ;
+ int AF_INET6 ;
+ scalar_t__ CURL_SOCKET_BAD ;
+ int FALSE ;
+ int O_BINARY ;
+ int SOCKERRNO ;
+ int SOCK_STREAM ;
+ int TRUE ;
+ int atexit (int ) ;
+ scalar_t__ atoi (char*) ;
+ char* backendaddr ;
+ unsigned short backendport ;
+ char* configfile ;
+ int curlx_ultous (unsigned long) ;
+ int exit_signal ;
+ int fileno (int ) ;
+ int fprintf (int ,char*,char*) ;
+ scalar_t__ got_exit_signal ;
+ int incoming (scalar_t__) ;
+ int install_signal_handlers () ;
+ char* ipv_inuse ;
+ int logmsg (char*,...) ;
+ int port ;
+ int printf (char*,char*) ;
+ int puts (char*) ;
+ int raise (int ) ;
+ int restore_signal_handlers () ;
+ int sclose (scalar_t__) ;
+ char* serverlogfile ;
+ int setmode (int ,int ) ;
+ scalar_t__ sockdaemon (scalar_t__,int *) ;
+ scalar_t__ socket (int ,int ,int ) ;
+ int stderr ;
+ int stdin ;
+ int stdout ;
+ int strcmp (char*,char*) ;
+ int strerror (int) ;
+ int strlen (char*) ;
+ unsigned long strtoul (char*,char**,int) ;
+ int unlink (char const*) ;
+ int use_ipv6 ;
+ int win32_cleanup ;
+ int win32_init () ;
+ int write_pidfile (char const*) ;
 
 int main(int argc, char *argv[])
 {
@@ -71,11 +71,11 @@ int main(int argc, char *argv[])
   while(argc>arg) {
     if(!strcmp("--version", argv[arg])) {
       printf("socksd IPv4%s\n",
-#ifdef ENABLE_IPV6
-             "/IPv6"
-#else
+
+
+
              ""
-#endif
+
              );
       return 0;
     }
@@ -105,18 +105,18 @@ int main(int argc, char *argv[])
         serverlogfile = argv[arg++];
     }
     else if(!strcmp("--ipv6", argv[arg])) {
-#ifdef ENABLE_IPV6
-      ipv_inuse = "IPv6";
-      use_ipv6 = TRUE;
-#endif
+
+
+
+
       arg++;
     }
     else if(!strcmp("--ipv4", argv[arg])) {
-      /* for completeness, we support this option as well */
-#ifdef ENABLE_IPV6
-      ipv_inuse = "IPv4";
-      use_ipv6 = FALSE;
-#endif
+
+
+
+
+
       arg++;
     }
     else if(!strcmp("--port", argv[arg])) {
@@ -149,26 +149,16 @@ int main(int argc, char *argv[])
       return 0;
     }
   }
-
-#ifdef WIN32
-  win32_init();
-  atexit(win32_cleanup);
-
-  setmode(fileno(stdin), O_BINARY);
-  setmode(fileno(stdout), O_BINARY);
-  setmode(fileno(stderr), O_BINARY);
-#endif
-
   install_signal_handlers();
 
-#ifdef ENABLE_IPV6
-  if(!use_ipv6)
-#endif
+
+
+
     sock = socket(AF_INET, SOCK_STREAM, 0);
-#ifdef ENABLE_IPV6
-  else
-    sock = socket(AF_INET6, SOCK_STREAM, 0);
-#endif
+
+
+
+
 
   if(CURL_SOCKET_BAD == sock) {
     error = SOCKERRNO;
@@ -178,12 +168,12 @@ int main(int argc, char *argv[])
   }
 
   {
-    /* passive daemon style */
+
     sock = sockdaemon(sock, &port);
     if(CURL_SOCKET_BAD == sock) {
       goto socks5_cleanup;
     }
-    msgsock = CURL_SOCKET_BAD; /* no stream socket yet */
+    msgsock = CURL_SOCKET_BAD;
   }
 
   logmsg("Running %s version", ipv_inuse);
@@ -213,11 +203,11 @@ socks5_cleanup:
 
   if(got_exit_signal) {
     logmsg("============> socksd exits with signal (%d)", exit_signal);
-    /*
-     * To properly set the return status of the process we
-     * must raise the same signal SIGINT or SIGTERM that we
-     * caught and let the old handler take care of it.
-     */
+
+
+
+
+
     raise(exit_signal);
   }
 

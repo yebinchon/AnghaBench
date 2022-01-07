@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct Masscan {int dummy; } ;
-typedef  int /*<<< orphan*/  line ;
-typedef  scalar_t__ errno_t ;
-typedef  int /*<<< orphan*/  dir ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef int line ;
+typedef scalar_t__ errno_t ;
+typedef int dir ;
+typedef int FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- scalar_t__ fgets (char*,int,int /*<<< orphan*/ *) ; 
- scalar_t__ fopen_s (int /*<<< orphan*/ **,char const*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  getcwd (char*,int) ; 
- scalar_t__ ispunct (char) ; 
- int /*<<< orphan*/  masscan_set_parameter (struct Masscan*,char*,char*) ; 
- int /*<<< orphan*/  perror (char const*) ; 
- int /*<<< orphan*/  stderr ; 
- char* strchr (char*,char) ; 
- int /*<<< orphan*/  trim (char*,int) ; 
+
+ int fclose (int *) ;
+ scalar_t__ fgets (char*,int,int *) ;
+ scalar_t__ fopen_s (int **,char const*,char*) ;
+ int fprintf (int ,char*,char*) ;
+ int getcwd (char*,int) ;
+ scalar_t__ ispunct (char) ;
+ int masscan_set_parameter (struct Masscan*,char*,char*) ;
+ int perror (char const*) ;
+ int stderr ;
+ char* strchr (char*,char) ;
+ int trim (char*,int) ;
 
 void
 masscan_read_config_file(struct Masscan *masscan, const char *filename)
@@ -56,7 +56,7 @@ masscan_read_config_file(struct Masscan *masscan, const char *filename)
 
         name = line;
         value = strchr(line, '=');
-        if (value == NULL)
+        if (value == ((void*)0))
             continue;
         *value = '\0';
         value++;

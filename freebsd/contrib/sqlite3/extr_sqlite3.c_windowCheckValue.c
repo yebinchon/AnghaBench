@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Vdbe ;
-typedef  int /*<<< orphan*/  Parse ;
 
-/* Variables and functions */
- int ArraySize (char const**) ; 
- int OE_Abort ; 
-#define  OP_Ge 129 
-#define  OP_Gt 128 
- int /*<<< orphan*/  OP_Halt ; 
- int /*<<< orphan*/  OP_Integer ; 
- int /*<<< orphan*/  OP_MustBeInt ; 
- int /*<<< orphan*/  OP_String8 ; 
- int /*<<< orphan*/  P4_STATIC ; 
- int SQLITE_AFF_NUMERIC ; 
- int SQLITE_ERROR ; 
- int SQLITE_JUMPIFNULL ; 
- int /*<<< orphan*/  VdbeCoverage (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  VdbeCoverageIf (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  VdbeCoverageNeverNullIf (int /*<<< orphan*/ *,int) ; 
- int WINDOW_STARTING_NUM ; 
- int /*<<< orphan*/  assert (int) ; 
- int sqlite3GetTempReg (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * sqlite3GetVdbe (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3MayAbort (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3ReleaseTempReg (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  sqlite3VdbeAddOp2 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  sqlite3VdbeAddOp3 (int /*<<< orphan*/ *,int const,int,int,int) ; 
- int /*<<< orphan*/  sqlite3VdbeAddOp4 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3VdbeAppendP4 (int /*<<< orphan*/ *,void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3VdbeChangeP5 (int /*<<< orphan*/ *,int) ; 
- int sqlite3VdbeCurrentAddr (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int Vdbe ;
+typedef int Parse ;
+
+
+ int ArraySize (char const**) ;
+ int OE_Abort ;
+
+
+ int OP_Halt ;
+ int OP_Integer ;
+ int OP_MustBeInt ;
+ int OP_String8 ;
+ int P4_STATIC ;
+ int SQLITE_AFF_NUMERIC ;
+ int SQLITE_ERROR ;
+ int SQLITE_JUMPIFNULL ;
+ int VdbeCoverage (int *) ;
+ int VdbeCoverageIf (int *,int) ;
+ int VdbeCoverageNeverNullIf (int *,int) ;
+ int WINDOW_STARTING_NUM ;
+ int assert (int) ;
+ int sqlite3GetTempReg (int *) ;
+ int * sqlite3GetVdbe (int *) ;
+ int sqlite3MayAbort (int *) ;
+ int sqlite3ReleaseTempReg (int *,int) ;
+ int sqlite3VdbeAddOp2 (int *,int ,int,int) ;
+ int sqlite3VdbeAddOp3 (int *,int const,int,int,int) ;
+ int sqlite3VdbeAddOp4 (int *,int ,int ,int,int ,char*,int ) ;
+ int sqlite3VdbeAppendP4 (int *,void*,int ) ;
+ int sqlite3VdbeChangeP5 (int *,int) ;
+ int sqlite3VdbeCurrentAddr (int *) ;
 
 __attribute__((used)) static void windowCheckValue(Parse *pParse, int reg, int eCond){
   static const char *azErr[] = {
@@ -50,7 +50,7 @@ __attribute__((used)) static void windowCheckValue(Parse *pParse, int reg, int e
     "frame starting offset must be a non-negative number",
     "frame ending offset must be a non-negative number",
   };
-  static int aOp[] = { OP_Ge, OP_Ge, OP_Gt, OP_Ge, OP_Ge };
+  static int aOp[] = { 129, 129, 128, 129, 129 };
   Vdbe *v = sqlite3GetVdbe(pParse);
   int regZero = sqlite3GetTempReg(pParse);
   assert( eCond>=0 && eCond<ArraySize(azErr) );
@@ -58,7 +58,7 @@ __attribute__((used)) static void windowCheckValue(Parse *pParse, int reg, int e
   if( eCond>=WINDOW_STARTING_NUM ){
     int regString = sqlite3GetTempReg(pParse);
     sqlite3VdbeAddOp4(v, OP_String8, 0, regString, 0, "", P4_STATIC);
-    sqlite3VdbeAddOp3(v, OP_Ge, regString, sqlite3VdbeCurrentAddr(v)+2, reg);
+    sqlite3VdbeAddOp3(v, 129, regString, sqlite3VdbeCurrentAddr(v)+2, reg);
     sqlite3VdbeChangeP5(v, SQLITE_AFF_NUMERIC|SQLITE_JUMPIFNULL);
     VdbeCoverage(v);
     assert( eCond==3 || eCond==4 );
@@ -73,11 +73,11 @@ __attribute__((used)) static void windowCheckValue(Parse *pParse, int reg, int e
     VdbeCoverageIf(v, eCond==2);
   }
   sqlite3VdbeAddOp3(v, aOp[eCond], regZero, sqlite3VdbeCurrentAddr(v)+2, reg);
-  VdbeCoverageNeverNullIf(v, eCond==0); /* NULL case captured by */
-  VdbeCoverageNeverNullIf(v, eCond==1); /*   the OP_MustBeInt */
+  VdbeCoverageNeverNullIf(v, eCond==0);
+  VdbeCoverageNeverNullIf(v, eCond==1);
   VdbeCoverageNeverNullIf(v, eCond==2);
-  VdbeCoverageNeverNullIf(v, eCond==3); /* NULL case caught by */
-  VdbeCoverageNeverNullIf(v, eCond==4); /*   the OP_Ge */
+  VdbeCoverageNeverNullIf(v, eCond==3);
+  VdbeCoverageNeverNullIf(v, eCond==4);
   sqlite3MayAbort(pParse);
   sqlite3VdbeAddOp2(v, OP_Halt, SQLITE_ERROR, OE_Abort);
   sqlite3VdbeAppendP4(v, (void*)azErr[eCond], P4_STATIC);

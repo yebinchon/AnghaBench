@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
 
-/* Variables and functions */
- int MAX_DATA_SIZE ; 
- int MAX_ENCODED_SIZE ; 
- int av_base64_decode (int /*<<< orphan*/ *,char*,unsigned int) ; 
- int /*<<< orphan*/  av_base64_encode (char*,int,int /*<<< orphan*/  const*,unsigned int) ; 
- scalar_t__ memcmp (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,unsigned int) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- char* strchr (char*,char) ; 
- scalar_t__ strcmp (char*,char const*) ; 
- int strlen (char*) ; 
+
+
+
+typedef int uint8_t ;
+
+
+ int MAX_DATA_SIZE ;
+ int MAX_ENCODED_SIZE ;
+ int av_base64_decode (int *,char*,unsigned int) ;
+ int av_base64_encode (char*,int,int const*,unsigned int) ;
+ scalar_t__ memcmp (int *,int const*,unsigned int) ;
+ int printf (char*,...) ;
+ char* strchr (char*,char) ;
+ scalar_t__ strcmp (char*,char const*) ;
+ int strlen (char*) ;
 
 __attribute__((used)) static int test_encode_decode(const uint8_t *data, unsigned int data_size,
                               const char *encoded_ref)
 {
-    char  encoded[MAX_ENCODED_SIZE];
+    char encoded[MAX_ENCODED_SIZE];
     uint8_t data2[MAX_DATA_SIZE];
     int data2_size, max_data2_size = MAX_DATA_SIZE;
 
@@ -54,7 +54,7 @@ __attribute__((used)) static int test_encode_decode(const uint8_t *data, unsigne
         printf("Failed: encoded/decoded data differs from original data\n");
         return 1;
     }
-    if (av_base64_decode(NULL, encoded, 0) != 0) {
+    if (av_base64_decode(((void*)0), encoded, 0) != 0) {
         printf("Failed: decode to NULL buffer\n");
         return 1;
     }
@@ -63,7 +63,7 @@ __attribute__((used)) static int test_encode_decode(const uint8_t *data, unsigne
         if (!end)
             end = encoded + strlen(encoded) - 1;
         *end = '%';
-        if (av_base64_decode(NULL, encoded, 0) >= 0) {
+        if (av_base64_decode(((void*)0), encoded, 0) >= 0) {
             printf("Failed: error detection\n");
             return 1;
         }

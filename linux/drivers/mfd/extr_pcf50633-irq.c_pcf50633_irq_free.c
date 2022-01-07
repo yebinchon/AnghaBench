@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct pcf50633 {int /*<<< orphan*/  irq; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free_irq (int /*<<< orphan*/ ,struct pcf50633*) ; 
+
+
+
+struct pcf50633 {int irq; } ;
+
+
+ int free_irq (int ,struct pcf50633*) ;
 
 void pcf50633_irq_free(struct pcf50633 *pcf)
 {
-	free_irq(pcf->irq, pcf);
+ free_irq(pcf->irq, pcf);
 }

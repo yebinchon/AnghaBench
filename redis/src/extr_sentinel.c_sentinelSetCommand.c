@@ -1,73 +1,73 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_20__   TYPE_4__ ;
-typedef  struct TYPE_19__   TYPE_3__ ;
-typedef  struct TYPE_18__   TYPE_2__ ;
-typedef  struct TYPE_17__   TYPE_1__ ;
-typedef  struct TYPE_16__   TYPE_11__ ;
 
-/* Type definitions */
-struct TYPE_17__ {long long down_after_period; long long failover_timeout; long long parallel_syncs; long long quorum; int /*<<< orphan*/  renamed_commands; int /*<<< orphan*/ * auth_pass; int /*<<< orphan*/ * client_reconfig_script; int /*<<< orphan*/ * notification_script; } ;
-typedef  TYPE_1__ sentinelRedisInstance ;
-typedef  char* sds ;
+
+
+typedef struct TYPE_20__ TYPE_4__ ;
+typedef struct TYPE_19__ TYPE_3__ ;
+typedef struct TYPE_18__ TYPE_2__ ;
+typedef struct TYPE_17__ TYPE_1__ ;
+typedef struct TYPE_16__ TYPE_11__ ;
+
+
+struct TYPE_17__ {long long down_after_period; long long failover_timeout; long long parallel_syncs; long long quorum; int renamed_commands; int * auth_pass; int * client_reconfig_script; int * notification_script; } ;
+typedef TYPE_1__ sentinelRedisInstance ;
+typedef char* sds ;
 struct TYPE_18__ {char* ptr; } ;
-typedef  TYPE_2__ robj ;
+typedef TYPE_2__ robj ;
 struct TYPE_19__ {int argc; TYPE_2__** argv; } ;
-typedef  TYPE_3__ client ;
-struct TYPE_20__ {int /*<<< orphan*/  ok; } ;
+typedef TYPE_3__ client ;
+struct TYPE_20__ {int ok; } ;
 struct TYPE_16__ {scalar_t__ deny_scripts_reconfig; } ;
 
-/* Variables and functions */
- scalar_t__ C_ERR ; 
- int /*<<< orphan*/  LL_WARNING ; 
- int /*<<< orphan*/  X_OK ; 
- int access (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  addReply (TYPE_3__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  addReplyError (TYPE_3__*,char*) ; 
- int /*<<< orphan*/  addReplyErrorFormat (TYPE_3__*,char*,char*,...) ; 
- int /*<<< orphan*/  dictAdd (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  dictDelete (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  dictSdsKeyCaseCompare (int /*<<< orphan*/ *,char*,char*) ; 
- scalar_t__ getLongLongFromObject (TYPE_2__*,long long*) ; 
- char* sdsdup (char*) ; 
- int /*<<< orphan*/  sdsfree (int /*<<< orphan*/ *) ; 
- scalar_t__ sdslen (char*) ; 
- int /*<<< orphan*/ * sdsnew (char*) ; 
- TYPE_11__ sentinel ; 
- int /*<<< orphan*/  sentinelEvent (int /*<<< orphan*/ ,char*,TYPE_1__*,char*,char*,...) ; 
- int /*<<< orphan*/  sentinelFlushConfig () ; 
- TYPE_1__* sentinelGetMasterByNameOrReplyError (TYPE_3__*,TYPE_2__*) ; 
- int /*<<< orphan*/  sentinelPropagateDownAfterPeriod (TYPE_1__*) ; 
- TYPE_4__ shared ; 
- int /*<<< orphan*/  strcasecmp (char*,char*) ; 
- scalar_t__ strlen (char*) ; 
+
+ scalar_t__ C_ERR ;
+ int LL_WARNING ;
+ int X_OK ;
+ int access (char*,int ) ;
+ int addReply (TYPE_3__*,int ) ;
+ int addReplyError (TYPE_3__*,char*) ;
+ int addReplyErrorFormat (TYPE_3__*,char*,char*,...) ;
+ int dictAdd (int ,char*,char*) ;
+ int dictDelete (int ,char*) ;
+ int dictSdsKeyCaseCompare (int *,char*,char*) ;
+ scalar_t__ getLongLongFromObject (TYPE_2__*,long long*) ;
+ char* sdsdup (char*) ;
+ int sdsfree (int *) ;
+ scalar_t__ sdslen (char*) ;
+ int * sdsnew (char*) ;
+ TYPE_11__ sentinel ;
+ int sentinelEvent (int ,char*,TYPE_1__*,char*,char*,...) ;
+ int sentinelFlushConfig () ;
+ TYPE_1__* sentinelGetMasterByNameOrReplyError (TYPE_3__*,TYPE_2__*) ;
+ int sentinelPropagateDownAfterPeriod (TYPE_1__*) ;
+ TYPE_4__ shared ;
+ int strcasecmp (char*,char*) ;
+ scalar_t__ strlen (char*) ;
 
 void sentinelSetCommand(client *c) {
     sentinelRedisInstance *ri;
     int j, changes = 0;
-    int badarg = 0; /* Bad argument position for error reporting. */
+    int badarg = 0;
     char *option;
 
     if ((ri = sentinelGetMasterByNameOrReplyError(c,c->argv[2]))
-        == NULL) return;
+        == ((void*)0)) return;
 
-    /* Process option - value pairs. */
+
     for (j = 3; j < c->argc; j++) {
         int moreargs = (c->argc-1) - j;
         option = c->argv[j]->ptr;
         long long ll;
-        int old_j = j; /* Used to know what to log as an event. */
+        int old_j = j;
 
         if (!strcasecmp(option,"down-after-milliseconds") && moreargs > 0) {
-            /* down-after-millisecodns <milliseconds> */
+
             robj *o = c->argv[++j];
             if (getLongLongFromObject(o,&ll) == C_ERR || ll <= 0) {
                 badarg = j;
@@ -77,7 +77,7 @@ void sentinelSetCommand(client *c) {
             sentinelPropagateDownAfterPeriod(ri);
             changes++;
         } else if (!strcasecmp(option,"failover-timeout") && moreargs > 0) {
-            /* failover-timeout <milliseconds> */
+
             robj *o = c->argv[++j];
             if (getLongLongFromObject(o,&ll) == C_ERR || ll <= 0) {
                 badarg = j;
@@ -86,7 +86,7 @@ void sentinelSetCommand(client *c) {
             ri->failover_timeout = ll;
             changes++;
         } else if (!strcasecmp(option,"parallel-syncs") && moreargs > 0) {
-            /* parallel-syncs <milliseconds> */
+
             robj *o = c->argv[++j];
             if (getLongLongFromObject(o,&ll) == C_ERR || ll <= 0) {
                 badarg = j;
@@ -95,7 +95,7 @@ void sentinelSetCommand(client *c) {
             ri->parallel_syncs = ll;
             changes++;
         } else if (!strcasecmp(option,"notification-script") && moreargs > 0) {
-            /* notification-script <path> */
+
             char *value = c->argv[++j]->ptr;
             if (sentinel.deny_scripts_reconfig) {
                 addReplyError(c,
@@ -112,10 +112,10 @@ void sentinelSetCommand(client *c) {
                 return;
             }
             sdsfree(ri->notification_script);
-            ri->notification_script = strlen(value) ? sdsnew(value) : NULL;
+            ri->notification_script = strlen(value) ? sdsnew(value) : ((void*)0);
             changes++;
         } else if (!strcasecmp(option,"client-reconfig-script") && moreargs > 0) {
-            /* client-reconfig-script <path> */
+
             char *value = c->argv[++j]->ptr;
             if (sentinel.deny_scripts_reconfig) {
                 addReplyError(c,
@@ -133,16 +133,16 @@ void sentinelSetCommand(client *c) {
                 return;
             }
             sdsfree(ri->client_reconfig_script);
-            ri->client_reconfig_script = strlen(value) ? sdsnew(value) : NULL;
+            ri->client_reconfig_script = strlen(value) ? sdsnew(value) : ((void*)0);
             changes++;
         } else if (!strcasecmp(option,"auth-pass") && moreargs > 0) {
-            /* auth-pass <password> */
+
             char *value = c->argv[++j]->ptr;
             sdsfree(ri->auth_pass);
-            ri->auth_pass = strlen(value) ? sdsnew(value) : NULL;
+            ri->auth_pass = strlen(value) ? sdsnew(value) : ((void*)0);
             changes++;
         } else if (!strcasecmp(option,"quorum") && moreargs > 0) {
-            /* quorum <count> */
+
             robj *o = c->argv[++j];
             if (getLongLongFromObject(o,&ll) == C_ERR || ll <= 0) {
                 badarg = j;
@@ -151,7 +151,7 @@ void sentinelSetCommand(client *c) {
             ri->quorum = ll;
             changes++;
         } else if (!strcasecmp(option,"rename-command") && moreargs > 1) {
-            /* rename-command <oldname> <newname> */
+
             sds oldname = c->argv[++j]->ptr;
             sds newname = c->argv[++j]->ptr;
 
@@ -160,12 +160,12 @@ void sentinelSetCommand(client *c) {
                 goto badfmt;
             }
 
-            /* Remove any older renaming for this command. */
+
             dictDelete(ri->renamed_commands,oldname);
 
-            /* If the target name is the same as the source name there
-             * is no need to add an entry mapping to itself. */
-            if (!dictSdsKeyCaseCompare(NULL,oldname,newname)) {
+
+
+            if (!dictSdsKeyCaseCompare(((void*)0),oldname,newname)) {
                 oldname = sdsdup(oldname);
                 newname = sdsdup(newname);
                 dictAdd(ri->renamed_commands,oldname,newname);
@@ -178,7 +178,7 @@ void sentinelSetCommand(client *c) {
             return;
         }
 
-        /* Log the event. */
+
         int numargs = j-old_j+1;
         switch(numargs) {
         case 2:
@@ -200,7 +200,7 @@ void sentinelSetCommand(client *c) {
     addReply(c,shared.ok);
     return;
 
-badfmt: /* Bad format errors */
+badfmt:
     if (changes) sentinelFlushConfig();
     addReplyErrorFormat(c,"Invalid argument '%s' for SENTINEL SET '%s'",
         (char*)c->argv[badarg]->ptr,option);

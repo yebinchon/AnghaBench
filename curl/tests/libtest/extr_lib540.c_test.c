@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct curl_slist {int dummy; } ;
-typedef  int /*<<< orphan*/  buffer ;
-typedef  int /*<<< orphan*/  CURLM ;
+typedef int buffer ;
+typedef int CURLM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CURL_GLOBAL_ALL ; 
- int /*<<< orphan*/  HOST ; 
- int NUM_HANDLES ; 
- int /*<<< orphan*/  PROXYUSERPWD ; 
- int TEST_ERR_MAJOR_BAD ; 
- int /*<<< orphan*/  curl_easy_cleanup (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  curl_global_cleanup () ; 
- int /*<<< orphan*/  curl_multi_cleanup (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  curl_multi_remove_handle (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- struct curl_slist* curl_slist_append (struct curl_slist*,char*) ; 
- int /*<<< orphan*/  curl_slist_free_all (struct curl_slist*) ; 
- int /*<<< orphan*/ ** eh ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int loop (int,int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,struct curl_slist*) ; 
- int /*<<< orphan*/  msnprintf (char*,int,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  res_global_init (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  res_multi_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  start_test_timing () ; 
- int /*<<< orphan*/  stderr ; 
- int test_argc ; 
+
+ int CURL_GLOBAL_ALL ;
+ int HOST ;
+ int NUM_HANDLES ;
+ int PROXYUSERPWD ;
+ int TEST_ERR_MAJOR_BAD ;
+ int curl_easy_cleanup (int *) ;
+ int curl_global_cleanup () ;
+ int curl_multi_cleanup (int *) ;
+ int curl_multi_remove_handle (int *,int *) ;
+ struct curl_slist* curl_slist_append (struct curl_slist*,char*) ;
+ int curl_slist_free_all (struct curl_slist*) ;
+ int ** eh ;
+ int fprintf (int ,char*) ;
+ int loop (int,int *,char*,int ,struct curl_slist*) ;
+ int msnprintf (char*,int,char*,int ) ;
+ int res_global_init (int ) ;
+ int res_multi_init (int *) ;
+ int start_test_timing () ;
+ int stderr ;
+ int test_argc ;
 
 int test(char *URL)
 {
-  CURLM *cm = NULL;
-  struct curl_slist *headers = NULL;
-  char buffer[246]; /* naively fixed-size */
+  CURLM *cm = ((void*)0);
+  struct curl_slist *headers = ((void*)0);
+  char buffer[246];
   int res = 0;
   int i;
 
   for(i = 0; i < NUM_HANDLES; i++)
-    eh[i] = NULL;
+    eh[i] = ((void*)0);
 
   start_test_timing();
 
@@ -54,7 +54,7 @@ int test(char *URL)
 
   msnprintf(buffer, sizeof(buffer), "Host: %s", HOST);
 
-  /* now add a custom Host: header */
+
   headers = curl_slist_append(headers, buffer);
   if(!headers) {
     fprintf(stderr, "curl_slist_append() failed\n");
@@ -84,7 +84,7 @@ int test(char *URL)
 
 test_cleanup:
 
-  /* proper cleanup sequence - type PB */
+
 
   for(i = 0; i < NUM_HANDLES; i++) {
     curl_multi_remove_handle(cm, eh[i]);

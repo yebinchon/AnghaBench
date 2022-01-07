@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct snd_pcm_substream {int dummy; } ;
-struct TYPE_5__ {int /*<<< orphan*/  reg_lock; } ;
-typedef  TYPE_1__ snd_cx25821_card_t ;
+struct TYPE_5__ {int reg_lock; } ;
+typedef TYPE_1__ snd_cx25821_card_t ;
 
-/* Variables and functions */
- int EINVAL ; 
-#define  SNDRV_PCM_TRIGGER_START 129 
-#define  SNDRV_PCM_TRIGGER_STOP 128 
- int _cx25821_start_audio_dma (TYPE_1__*) ; 
- int _cx25821_stop_audio_dma (TYPE_1__*) ; 
- TYPE_1__* snd_pcm_substream_chip (struct snd_pcm_substream*) ; 
- int /*<<< orphan*/  spin_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock (int /*<<< orphan*/ *) ; 
+
+ int EINVAL ;
+
+
+ int _cx25821_start_audio_dma (TYPE_1__*) ;
+ int _cx25821_stop_audio_dma (TYPE_1__*) ;
+ TYPE_1__* snd_pcm_substream_chip (struct snd_pcm_substream*) ;
+ int spin_lock (int *) ;
+ int spin_unlock (int *) ;
 
 __attribute__((used)) static int snd_cx25821_card_trigger(struct snd_pcm_substream *substream,
-				    int cmd)
+        int cmd)
 {
-	snd_cx25821_card_t *chip = snd_pcm_substream_chip(substream);
-	int err = 0;
+ snd_cx25821_card_t *chip = snd_pcm_substream_chip(substream);
+ int err = 0;
 
-	/* Local interrupts are already disabled by ALSA */
-	spin_lock(&chip->reg_lock);
 
-	switch (cmd) {
-	case SNDRV_PCM_TRIGGER_START:
-		err = _cx25821_start_audio_dma(chip);
-		break;
-	case SNDRV_PCM_TRIGGER_STOP:
-		err = _cx25821_stop_audio_dma(chip);
-		break;
-	default:
-		err = -EINVAL;
-		break;
-	}
+ spin_lock(&chip->reg_lock);
 
-	spin_unlock(&chip->reg_lock);
+ switch (cmd) {
+ case 129:
+  err = _cx25821_start_audio_dma(chip);
+  break;
+ case 128:
+  err = _cx25821_stop_audio_dma(chip);
+  break;
+ default:
+  err = -EINVAL;
+  break;
+ }
 
-	return err;
+ spin_unlock(&chip->reg_lock);
+
+ return err;
 }

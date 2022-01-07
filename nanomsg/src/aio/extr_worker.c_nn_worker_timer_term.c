@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct nn_worker_timer {int /*<<< orphan*/  hndl; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  nn_timerset_hndl_term (int /*<<< orphan*/ *) ; 
+
+
+
+struct nn_worker_timer {int hndl; } ;
+
+
+ int nn_timerset_hndl_term (int *) ;
 
 void nn_worker_timer_term (struct nn_worker_timer *self)
 {

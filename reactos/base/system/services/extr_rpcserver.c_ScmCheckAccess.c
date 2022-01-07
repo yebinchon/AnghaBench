@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ Tag; void* DesiredAccess; } ;
 struct TYPE_4__ {TYPE_1__ Handle; } ;
-typedef  scalar_t__ SC_HANDLE ;
-typedef  TYPE_2__* PMANAGER_HANDLE ;
-typedef  void* DWORD ;
+typedef scalar_t__ SC_HANDLE ;
+typedef TYPE_2__* PMANAGER_HANDLE ;
+typedef void* DWORD ;
 
-/* Variables and functions */
- void* ERROR_INVALID_HANDLE ; 
- void* ERROR_SUCCESS ; 
- scalar_t__ MANAGER_TAG ; 
- int /*<<< orphan*/  RtlMapGenericMask (void**,int /*<<< orphan*/ *) ; 
- scalar_t__ SERVICE_TAG ; 
- int /*<<< orphan*/  ScmManagerMapping ; 
- int /*<<< orphan*/  ScmServiceMapping ; 
+
+ void* ERROR_INVALID_HANDLE ;
+ void* ERROR_SUCCESS ;
+ scalar_t__ MANAGER_TAG ;
+ int RtlMapGenericMask (void**,int *) ;
+ scalar_t__ SERVICE_TAG ;
+ int ScmManagerMapping ;
+ int ScmServiceMapping ;
 
 __attribute__((used)) static DWORD
 ScmCheckAccess(SC_HANDLE Handle,

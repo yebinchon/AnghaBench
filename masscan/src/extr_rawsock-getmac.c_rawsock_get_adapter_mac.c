@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int sa_family; int /*<<< orphan*/  sa_data; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int sa_family; int sa_data; } ;
 struct TYPE_4__ {TYPE_1__ ifru_hwaddr; } ;
-struct ifreq {TYPE_2__ ifr_ifru; int /*<<< orphan*/  ifr_name; } ;
+struct ifreq {TYPE_2__ ifr_ifru; int ifr_name; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_INET ; 
- int /*<<< orphan*/  IFNAMSIZ ; 
- int /*<<< orphan*/  LOG (int,char*,char const*,...) ; 
- int /*<<< orphan*/  SIOCGIFHWADDR ; 
- int /*<<< orphan*/  SOCK_STREAM ; 
- int /*<<< orphan*/  close (int) ; 
- int ioctl (int,int /*<<< orphan*/ ,char*) ; 
- scalar_t__ memcmp (unsigned char*,char*,int) ; 
- int /*<<< orphan*/  memcpy (unsigned char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  perror (char*) ; 
- int socket (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strcpy_s (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*) ; 
+
+ int AF_INET ;
+ int IFNAMSIZ ;
+ int LOG (int,char*,char const*,...) ;
+ int SIOCGIFHWADDR ;
+ int SOCK_STREAM ;
+ int close (int) ;
+ int ioctl (int,int ,char*) ;
+ scalar_t__ memcmp (unsigned char*,char*,int) ;
+ int memcpy (unsigned char*,int ,int) ;
+ int perror (char*) ;
+ int socket (int ,int ,int ) ;
+ int strcpy_s (int ,int ,char const*) ;
 
 int
 rawsock_get_adapter_mac(const char *ifname, unsigned char *mac)
@@ -51,7 +51,7 @@ rawsock_get_adapter_mac(const char *ifname, unsigned char *mac)
         goto end;
     }
 
-    /* Log helpful info about the interface type */
+
     switch (ifr.ifr_ifru.ifru_hwaddr.sa_family) {
     case 1:
         LOG(1, "if:%s: type=ethernet(1)\n", ifname);
@@ -63,11 +63,11 @@ rawsock_get_adapter_mac(const char *ifname, unsigned char *mac)
 
     memcpy(mac, ifr.ifr_ifru.ifru_hwaddr.sa_data, 6);
 
-    /*
-     * [KLUDGE]
-     *  For VPN tunnels with raw IP there isn't a hardware address, so just
-     *  return a fake one instead.
-     */
+
+
+
+
+
     if (memcmp(mac, "\0\0\0\0\0\0", 6) == 0
             && ifr.ifr_ifru.ifru_hwaddr.sa_family == 0xfffe) {
         LOG(1, "%s: creating fake address\n", ifname);

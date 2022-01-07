@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/ * manager; } ;
-typedef  TYPE_1__ Unit ;
-typedef  int /*<<< orphan*/  Manager ;
-typedef  int /*<<< orphan*/  EmergencyAction ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EMERGENCY_ACTION_EXIT_FORCE ; 
- int EOPNOTSUPP ; 
- int /*<<< orphan*/  LOG_ERR ; 
- int /*<<< orphan*/  LOG_INFO ; 
- scalar_t__ MANAGER_IS_SYSTEM (int /*<<< orphan*/ *) ; 
- scalar_t__ MANAGER_IS_USER (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  assert (void*) ; 
- int /*<<< orphan*/  log_syntax (char const*,int /*<<< orphan*/ ,char const*,unsigned int,int,char*,char const*,char const*,...) ; 
- int parse_emergency_action (char const*,scalar_t__,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int * manager; } ;
+typedef TYPE_1__ Unit ;
+typedef int Manager ;
+typedef int EmergencyAction ;
+
+
+ int EMERGENCY_ACTION_EXIT_FORCE ;
+ int EOPNOTSUPP ;
+ int LOG_ERR ;
+ int LOG_INFO ;
+ scalar_t__ MANAGER_IS_SYSTEM (int *) ;
+ scalar_t__ MANAGER_IS_USER (int *) ;
+ int assert (void*) ;
+ int log_syntax (char const*,int ,char const*,unsigned int,int,char*,char const*,char const*,...) ;
+ int parse_emergency_action (char const*,scalar_t__,int *) ;
 
 int config_parse_emergency_action(
                 const char* unit,
@@ -39,7 +39,7 @@ int config_parse_emergency_action(
                 void *data,
                 void *userdata) {
 
-        Manager *m = NULL;
+        Manager *m = ((void*)0);
         EmergencyAction *x = data;
         int r;
 
@@ -56,7 +56,7 @@ int config_parse_emergency_action(
         r = parse_emergency_action(rvalue, MANAGER_IS_SYSTEM(m), x);
         if (r < 0) {
                 if (r == -EOPNOTSUPP && MANAGER_IS_USER(m)) {
-                        /* Compat mode: remove for systemd 241. */
+
 
                         log_syntax(unit, LOG_INFO, filename, line, r,
                                    "%s= in user mode specified as \"%s\", using \"exit-force\" instead.",

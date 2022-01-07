@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct assembly_version {int /*<<< orphan*/  revision; int /*<<< orphan*/  build; int /*<<< orphan*/  minor; int /*<<< orphan*/  major; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct assembly_version {int revision; int build; int minor; int major; } ;
 struct actctx_loader {unsigned int num_dependencies; TYPE_1__* dependencies; } ;
-struct TYPE_2__ {int /*<<< orphan*/  name; struct assembly_version version; int /*<<< orphan*/  delayed; int /*<<< orphan*/  optional; } ;
-typedef  scalar_t__ NTSTATUS ;
+struct TYPE_2__ {int name; struct assembly_version version; int delayed; int optional; } ;
+typedef scalar_t__ NTSTATUS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPRINT1 (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ STATUS_SUCCESS ; 
- scalar_t__ STATUS_SXS_CANT_GEN_ACTCTX ; 
- scalar_t__ lookup_assembly (struct actctx_loader*,TYPE_1__*) ; 
+
+ int DPRINT1 (char*,int ,int ,int ,int ,int ) ;
+ scalar_t__ STATUS_SUCCESS ;
+ scalar_t__ STATUS_SXS_CANT_GEN_ACTCTX ;
+ scalar_t__ lookup_assembly (struct actctx_loader*,TYPE_1__*) ;
 
 __attribute__((used)) static NTSTATUS parse_depend_manifests(struct actctx_loader* acl)
 {
@@ -42,6 +42,6 @@ __attribute__((used)) static NTSTATUS parse_depend_manifests(struct actctx_loade
             }
         }
     }
-    /* FIXME should now iterate through all refs */
+
     return status;
 }

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  MSIRECORD ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int MSI_RecordGetFieldCount (int /*<<< orphan*/  const*) ; 
- char* msi_alloc (int) ; 
- int /*<<< orphan*/  msi_free (char*) ; 
- char* msi_realloc (char*,int) ; 
- scalar_t__ sprintfW (char*,char const*,int,int) ; 
- int /*<<< orphan*/  strcatW (char*,char*) ; 
+
+
+
+typedef char WCHAR ;
+typedef int MSIRECORD ;
+typedef int DWORD ;
+
+
+ int MSI_RecordGetFieldCount (int const*) ;
+ char* msi_alloc (int) ;
+ int msi_free (char*) ;
+ char* msi_realloc (char*,int) ;
+ scalar_t__ sprintfW (char*,char const*,int,int) ;
+ int strcatW (char*,char*) ;
 
 __attribute__((used)) static WCHAR *build_default_format( const MSIRECORD *record )
 {
@@ -29,7 +29,7 @@ __attribute__((used)) static WCHAR *build_default_format( const MSIRECORD *recor
     WCHAR *ret, *tmp, buf[26];
     DWORD size = 1;
 
-    if (!(ret = msi_alloc( sizeof(*ret) ))) return NULL;
+    if (!(ret = msi_alloc( sizeof(*ret) ))) return ((void*)0);
     ret[0] = 0;
 
     for (i = 1; i <= count; i++)
@@ -38,7 +38,7 @@ __attribute__((used)) static WCHAR *build_default_format( const MSIRECORD *recor
         if (!(tmp = msi_realloc( ret, size * sizeof(*ret) )))
         {
             msi_free( ret );
-            return NULL;
+            return ((void*)0);
         }
         ret = tmp;
         strcatW( ret, buf );

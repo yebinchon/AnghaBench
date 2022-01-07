@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  float int8_t ;
 
-/* Variables and functions */
- int BLOCKSIZE ; 
- int FIXED_CB_SIZE ; 
- int /*<<< orphan*/  get_match_score (float*,float const*,float*,float const*,float const*,float*,float*,float*) ; 
+
+
+
+typedef float int8_t ;
+
+
+ int BLOCKSIZE ;
+ int FIXED_CB_SIZE ;
+ int get_match_score (float*,float const*,float*,float const*,float const*,float*,float*,float*) ;
 
 __attribute__((used)) static void find_best_vect(float *work, const float *coefs,
                            const int8_t cb[][BLOCKSIZE], const float *ortho1,

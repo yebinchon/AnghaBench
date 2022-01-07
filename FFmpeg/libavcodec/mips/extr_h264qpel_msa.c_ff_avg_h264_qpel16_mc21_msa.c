@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ v8i16 ;
-typedef  scalar_t__ v4i32 ;
-struct TYPE_8__ {int /*<<< orphan*/  member_0; } ;
-typedef  TYPE_1__ v16u8 ;
-typedef  int /*<<< orphan*/  v16i8 ;
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint64_t ;
-typedef  int uint32_t ;
-typedef  int ptrdiff_t ;
-typedef  int int32_t ;
 
-/* Variables and functions */
- scalar_t__ AVC_DOT_SW3_SW (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- scalar_t__ AVC_HORZ_FILTER_SH (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ILVL_H2_SH (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  ILVL_H4_SH (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  ILVR_H2_SH (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  ILVR_H4_SH (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  INSERT_D2_UB (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__) ; 
- int /*<<< orphan*/  LD2 (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LD_SB2 (int /*<<< orphan*/  const*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LD_SB3 (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LD_SB5 (int /*<<< orphan*/  const*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_1__ PCKEV_XORI128_UB (scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  SAT_SH2_SH (scalar_t__,scalar_t__,int) ; 
- int /*<<< orphan*/  ST_D2 (TYPE_1__,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  XORI_B2_128_SB (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XORI_B5_128_SB (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ __msa_aver_s_h (scalar_t__,scalar_t__) ; 
- TYPE_1__ __msa_aver_u_b (TYPE_1__,TYPE_1__) ; 
- scalar_t__ __msa_fill_w (int const) ; 
- scalar_t__ __msa_pckev_h (scalar_t__,scalar_t__) ; 
- scalar_t__ __msa_srari_h (scalar_t__,int) ; 
- int /*<<< orphan*/ * luma_mask_arr ; 
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef scalar_t__ v8i16 ;
+typedef scalar_t__ v4i32 ;
+struct TYPE_8__ {int member_0; } ;
+typedef TYPE_1__ v16u8 ;
+typedef int v16i8 ;
+typedef int uint8_t ;
+typedef int uint64_t ;
+typedef int uint32_t ;
+typedef int ptrdiff_t ;
+typedef int int32_t ;
+
+
+ scalar_t__ AVC_DOT_SW3_SW (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ scalar_t__ AVC_HORZ_FILTER_SH (int ,int ,int ,int ,int ) ;
+ int ILVL_H2_SH (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ int ILVL_H4_SH (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ int ILVR_H2_SH (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ int ILVR_H4_SH (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ int INSERT_D2_UB (int ,int ,TYPE_1__) ;
+ int LD2 (int *,int,int ,int ) ;
+ int LD_SB2 (int const*,int,int ,int ) ;
+ int LD_SB3 (int *,int,int ,int ,int ) ;
+ int LD_SB5 (int const*,int,int ,int ,int ,int ,int ) ;
+ TYPE_1__ PCKEV_XORI128_UB (scalar_t__,scalar_t__) ;
+ int SAT_SH2_SH (scalar_t__,scalar_t__,int) ;
+ int ST_D2 (TYPE_1__,int ,int,int *,int) ;
+ int XORI_B2_128_SB (int ,int ) ;
+ int XORI_B5_128_SB (int ,int ,int ,int ,int ) ;
+ scalar_t__ __msa_aver_s_h (scalar_t__,scalar_t__) ;
+ TYPE_1__ __msa_aver_u_b (TYPE_1__,TYPE_1__) ;
+ scalar_t__ __msa_fill_w (int const) ;
+ scalar_t__ __msa_pckev_h (scalar_t__,scalar_t__) ;
+ scalar_t__ __msa_srari_h (scalar_t__,int) ;
+ int * luma_mask_arr ;
 
 void ff_avg_h264_qpel16_mc21_msa(uint8_t *dst, const uint8_t *src,
                                  ptrdiff_t stride)

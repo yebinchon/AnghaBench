@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  device_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int device_t ;
 struct TYPE_2__ {scalar_t__ ocd_data; } ;
 
-/* Variables and functions */
- int BUS_PROBE_DEFAULT ; 
- int ENXIO ; 
- int /*<<< orphan*/  compat_data ; 
- int /*<<< orphan*/  device_set_desc (int /*<<< orphan*/ ,char*) ; 
- TYPE_1__* ofw_bus_search_compatible (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ofw_bus_status_okay (int /*<<< orphan*/ ) ; 
+
+ int BUS_PROBE_DEFAULT ;
+ int ENXIO ;
+ int compat_data ;
+ int device_set_desc (int ,char*) ;
+ TYPE_1__* ofw_bus_search_compatible (int ,int ) ;
+ int ofw_bus_status_okay (int ) ;
 
 __attribute__((used)) static int
 imx_ehci_probe(device_t dev)
 {
 
-	if (!ofw_bus_status_okay(dev))
-		return (ENXIO);
+ if (!ofw_bus_status_okay(dev))
+  return (ENXIO);
 
-	if (ofw_bus_search_compatible(dev, compat_data)->ocd_data != 0) {
-		device_set_desc(dev, "Freescale i.MX integrated USB controller");
-		return (BUS_PROBE_DEFAULT);
-	}
-	return (ENXIO);
+ if (ofw_bus_search_compatible(dev, compat_data)->ocd_data != 0) {
+  device_set_desc(dev, "Freescale i.MX integrated USB controller");
+  return (BUS_PROBE_DEFAULT);
+ }
+ return (ENXIO);
 }

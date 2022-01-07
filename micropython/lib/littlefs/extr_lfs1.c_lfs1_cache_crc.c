@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int /*<<< orphan*/  lfs1_t ;
-typedef  scalar_t__ lfs1_size_t ;
-typedef  scalar_t__ lfs1_off_t ;
-typedef  int /*<<< orphan*/  lfs1_cache_t ;
-typedef  int /*<<< orphan*/  lfs1_block_t ;
 
-/* Variables and functions */
- int lfs1_cache_read (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lfs1_crc (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef int lfs1_t ;
+typedef scalar_t__ lfs1_size_t ;
+typedef scalar_t__ lfs1_off_t ;
+typedef int lfs1_cache_t ;
+typedef int lfs1_block_t ;
+
+
+ int lfs1_cache_read (int *,int *,int const*,int ,scalar_t__,int *,int) ;
+ int lfs1_crc (int *,int *,int) ;
 
 __attribute__((used)) static int lfs1_cache_crc(lfs1_t *lfs1, lfs1_cache_t *rcache,
         const lfs1_cache_t *pcache, lfs1_block_t block,

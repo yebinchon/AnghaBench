@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_object_t ;
-typedef  int /*<<< orphan*/  fe_spectral_inversion_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INVERSION_AUTO ; 
- int /*<<< orphan*/  INVERSION_OFF ; 
- int /*<<< orphan*/  INVERSION_ON ; 
- int /*<<< orphan*/  msg_Dbg (int /*<<< orphan*/ *,char*,...) ; 
- int var_GetInteger (int /*<<< orphan*/ *,char*) ; 
+
+
+
+typedef int vlc_object_t ;
+typedef int fe_spectral_inversion_t ;
+
+
+ int INVERSION_AUTO ;
+ int INVERSION_OFF ;
+ int INVERSION_ON ;
+ int msg_Dbg (int *,char*,...) ;
+ int var_GetInteger (int *,char*) ;
 
 __attribute__((used)) static fe_spectral_inversion_t DecodeInversion( vlc_object_t *p_access )
 {

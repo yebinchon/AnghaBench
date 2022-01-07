@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VOID ;
-typedef  char* LPCSTR ;
 
-/* Variables and functions */
- scalar_t__ GetProcAddress (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  LoadLibraryA (char*) ; 
- int /*<<< orphan*/  hdll ; 
- int /*<<< orphan*/ * pInitializePrintMonitorUI ; 
+
+
+
+typedef int VOID ;
+typedef char* LPCSTR ;
+
+
+ scalar_t__ GetProcAddress (int ,char*) ;
+ int LoadLibraryA (char*) ;
+ int hdll ;
+ int * pInitializePrintMonitorUI ;
 
 __attribute__((used)) static LPCSTR load_functions(void)
 {
-    LPCSTR  ptr;
+    LPCSTR ptr;
 
     ptr = "localui.dll";
     hdll = LoadLibraryA(ptr);
@@ -31,5 +31,5 @@ __attribute__((used)) static LPCSTR load_functions(void)
     pInitializePrintMonitorUI = (VOID *) GetProcAddress(hdll, ptr);
     if (!pInitializePrintMonitorUI) return ptr;
 
-    return NULL;
+    return ((void*)0);
 }

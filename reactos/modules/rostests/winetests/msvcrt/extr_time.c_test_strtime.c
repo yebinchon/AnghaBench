@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int errno_t ;
 
-/* Variables and functions */
- int EINVAL ; 
- int ERANGE ; 
- char* _strtime (char*) ; 
- int errno ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int p_strtime_s (char*,int) ; 
- int sscanf (char*,char*,int*,int*,int*) ; 
- int strlen (char*) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
+
+
+
+typedef int errno_t ;
+
+
+ int EINVAL ;
+ int ERANGE ;
+ char* _strtime (char*) ;
+ int errno ;
+ int ok (int,char*,...) ;
+ int p_strtime_s (char*,int) ;
+ int sscanf (char*,char*,int*,int*,int*) ;
+ int strlen (char*) ;
+ int win_skip (char*) ;
 
 __attribute__((used)) static void test_strtime(void)
 {
@@ -42,11 +42,11 @@ __attribute__((used)) static void test_strtime(void)
     }
 
     errno = 0;
-    err = p_strtime_s(NULL, 0);
+    err = p_strtime_s(((void*)0), 0);
     ok(err == EINVAL, "err = %d\n", err);
     ok(errno == EINVAL, "errno = %d\n", errno);
 
-    err = p_strtime_s(NULL, 1);
+    err = p_strtime_s(((void*)0), 1);
     ok(err == EINVAL, "err = %d\n", err);
     ok(errno == EINVAL, "errno = %d\n", errno);
 

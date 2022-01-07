@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct tui_locator_element {char* proc_name; int line_no; int /*<<< orphan*/  addr; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct tui_locator_element {char* proc_name; int line_no; int addr; } ;
 struct TYPE_2__ {struct tui_locator_element locator; } ;
 struct tui_win_element {TYPE_1__ which_element; } ;
-struct tui_gen_win_info {int content_size; void** content; int /*<<< orphan*/  type; } ;
-typedef  int /*<<< orphan*/  CORE_ADDR ;
+struct tui_gen_win_info {int content_size; void** content; int type; } ;
+typedef int CORE_ADDR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MAX_LOCATOR_ELEMENT_LEN ; 
- int /*<<< orphan*/  strcat_to_buf (char*,int /*<<< orphan*/ ,char const*) ; 
- scalar_t__ tui_alloc_content (int,int /*<<< orphan*/ ) ; 
- struct tui_gen_win_info* tui_locator_win_info_ptr () ; 
- int /*<<< orphan*/  tui_set_locator_filename (char const*) ; 
+
+ int MAX_LOCATOR_ELEMENT_LEN ;
+ int strcat_to_buf (char*,int ,char const*) ;
+ scalar_t__ tui_alloc_content (int,int ) ;
+ struct tui_gen_win_info* tui_locator_win_info_ptr () ;
+ int tui_set_locator_filename (char const*) ;
 
 __attribute__((used)) static void
 tui_set_locator_info (const char *filename, const char *procname, int lineno,
@@ -31,7 +31,7 @@ tui_set_locator_info (const char *filename, const char *procname, int lineno,
   struct tui_gen_win_info * locator = tui_locator_win_info_ptr ();
   struct tui_locator_element * element;
 
-  /* Allocate the locator content if necessary.  */
+
   if (locator->content_size <= 0)
     {
       locator->content = (void **) tui_alloc_content (1, locator->type);

@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
-typedef  int uint32_t ;
-typedef  int uint16_t ;
-typedef  int /*<<< orphan*/  plain ;
-struct TYPE_3__ {int /*<<< orphan*/  net; int /*<<< orphan*/  secret_symmetric_key; } ;
-typedef  TYPE_1__ Onion ;
-typedef  int /*<<< orphan*/  IP_Port ;
 
-/* Variables and functions */
- scalar_t__ const NET_PACKET_ANNOUNCE_RESPONSE ; 
- scalar_t__ const NET_PACKET_ONION_DATA_RESPONSE ; 
- scalar_t__ NET_PACKET_ONION_RECV_1 ; 
- int ONION_MAX_PACKET_SIZE ; 
- int RETURN_1 ; 
- int RETURN_2 ; 
- int SIZE_IPPORT ; 
- int /*<<< orphan*/  change_symmetric_key (TYPE_1__*) ; 
- int crypto_box_MACBYTES ; 
- int crypto_box_NONCEBYTES ; 
- int decrypt_data_symmetric (int /*<<< orphan*/ ,scalar_t__ const*,scalar_t__ const*,int,scalar_t__*) ; 
- int ipport_unpack (int /*<<< orphan*/ *,scalar_t__*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (scalar_t__*,scalar_t__ const*,int) ; 
- scalar_t__ sendpacket (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__*,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint8_t ;
+typedef int uint32_t ;
+typedef int uint16_t ;
+typedef int plain ;
+struct TYPE_3__ {int net; int secret_symmetric_key; } ;
+typedef TYPE_1__ Onion ;
+typedef int IP_Port ;
+
+
+ scalar_t__ const NET_PACKET_ANNOUNCE_RESPONSE ;
+ scalar_t__ const NET_PACKET_ONION_DATA_RESPONSE ;
+ scalar_t__ NET_PACKET_ONION_RECV_1 ;
+ int ONION_MAX_PACKET_SIZE ;
+ int RETURN_1 ;
+ int RETURN_2 ;
+ int SIZE_IPPORT ;
+ int change_symmetric_key (TYPE_1__*) ;
+ int crypto_box_MACBYTES ;
+ int crypto_box_NONCEBYTES ;
+ int decrypt_data_symmetric (int ,scalar_t__ const*,scalar_t__ const*,int,scalar_t__*) ;
+ int ipport_unpack (int *,scalar_t__*,int,int ) ;
+ int memcpy (scalar_t__*,scalar_t__ const*,int) ;
+ scalar_t__ sendpacket (int ,int ,scalar_t__*,int) ;
 
 __attribute__((used)) static int handle_recv_2(void *object, IP_Port source, const uint8_t *packet, uint16_t length)
 {

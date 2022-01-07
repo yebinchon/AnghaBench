@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ UINT8 ;
-typedef  int /*<<< orphan*/  UINT32 ;
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef scalar_t__ UINT8 ;
+typedef int UINT32 ;
 struct TYPE_8__ {char* Name; int Opcode; } ;
 struct TYPE_7__ {struct TYPE_7__* Next; } ;
-typedef  TYPE_1__ DT_FIELD ;
-typedef  TYPE_2__ ACPI_DMTABLE_INFO ;
+typedef TYPE_1__ DT_FIELD ;
+typedef TYPE_2__ ACPI_DMTABLE_INFO ;
 
-/* Variables and functions */
- int ACPI_DMT_EXTRA_TEXT ; 
-#define  ACPI_DMT_GAS 130 
-#define  ACPI_DMT_HESTNTFY 129 
-#define  ACPI_DMT_IORTMEM 128 
- int /*<<< orphan*/  ASL_EOF ; 
- int /*<<< orphan*/  ASL_MSG_COMPILER_INTERNAL ; 
- int /*<<< orphan*/  AslGbl_MsgBuffer ; 
- int /*<<< orphan*/  DtFatal (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ DtGetFieldLength (TYPE_1__*,TYPE_2__*) ; 
- int /*<<< orphan*/  sprintf (int /*<<< orphan*/ ,char*,char*) ; 
+
+ int ACPI_DMT_EXTRA_TEXT ;
+
+
+
+ int ASL_EOF ;
+ int ASL_MSG_COMPILER_INTERNAL ;
+ int AslGbl_MsgBuffer ;
+ int DtFatal (int ,int *,int ) ;
+ scalar_t__ DtGetFieldLength (TYPE_1__*,TYPE_2__*) ;
+ int sprintf (int ,char*,char*) ;
 
 UINT32
 DtGetSubtableLength (
-    DT_FIELD                *Field,
-    ACPI_DMTABLE_INFO       *Info)
+    DT_FIELD *Field,
+    ACPI_DMTABLE_INFO *Info)
 {
-    UINT32                  ByteLength = 0;
-    UINT8                   Step;
-    UINT8                   i;
+    UINT32 ByteLength = 0;
+    UINT8 Step;
+    UINT8 i;
 
 
-    /* Walk entire Info table; Null name terminates */
+
 
     for (; Info->Name; Info++)
     {
@@ -59,17 +59,17 @@ DtGetSubtableLength (
 
         switch (Info->Opcode)
         {
-        case ACPI_DMT_GAS:
+        case 130:
 
             Step = 5;
             break;
 
-        case ACPI_DMT_HESTNTFY:
+        case 129:
 
             Step = 9;
             break;
 
-        case ACPI_DMT_IORTMEM:
+        case 128:
 
             Step = 10;
             break;
@@ -98,7 +98,7 @@ Error:
     {
         sprintf (AslGbl_MsgBuffer, "Found NULL field - Field name \"%s\" needed",
             Info->Name);
-        DtFatal (ASL_MSG_COMPILER_INTERNAL, NULL, AslGbl_MsgBuffer);
+        DtFatal (ASL_MSG_COMPILER_INTERNAL, ((void*)0), AslGbl_MsgBuffer);
     }
 
     return (ASL_EOF);

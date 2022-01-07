@@ -1,66 +1,66 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct libusb20_device {int dummy; } ;
-typedef  struct libusb20_device libusb_device_handle ;
-struct TYPE_6__ {int /*<<< orphan*/  dev_poll; struct libusb20_device* os_priv; int /*<<< orphan*/ * ctx; } ;
-typedef  TYPE_1__ libusb_device ;
-typedef  int /*<<< orphan*/  libusb_context ;
+typedef struct libusb20_device libusb_device_handle ;
+struct TYPE_6__ {int dev_poll; struct libusb20_device* os_priv; int * ctx; } ;
+typedef TYPE_1__ libusb_device ;
+typedef int libusb_context ;
 
-/* Variables and functions */
- int LIBUSB_ERROR_INVALID_PARAM ; 
- int LIBUSB_ERROR_NO_MEM ; 
- int /*<<< orphan*/  LIBUSB_NUM_SW_ENDPOINTS ; 
- int POLLIN ; 
- int POLLOUT ; 
- int POLLRDNORM ; 
- int POLLWRNORM ; 
- int /*<<< orphan*/  libusb10_add_pollfd (int /*<<< orphan*/ *,int /*<<< orphan*/ *,struct libusb20_device*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  libusb10_wakeup_event_loop (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  libusb20_dev_get_fd (struct libusb20_device*) ; 
- int libusb20_dev_open (struct libusb20_device*,int /*<<< orphan*/ ) ; 
- TYPE_1__* libusb_ref_device (TYPE_1__*) ; 
- int /*<<< orphan*/  libusb_unref_device (TYPE_1__*) ; 
+
+ int LIBUSB_ERROR_INVALID_PARAM ;
+ int LIBUSB_ERROR_NO_MEM ;
+ int LIBUSB_NUM_SW_ENDPOINTS ;
+ int POLLIN ;
+ int POLLOUT ;
+ int POLLRDNORM ;
+ int POLLWRNORM ;
+ int libusb10_add_pollfd (int *,int *,struct libusb20_device*,int ,int) ;
+ int libusb10_wakeup_event_loop (int *) ;
+ int libusb20_dev_get_fd (struct libusb20_device*) ;
+ int libusb20_dev_open (struct libusb20_device*,int ) ;
+ TYPE_1__* libusb_ref_device (TYPE_1__*) ;
+ int libusb_unref_device (TYPE_1__*) ;
 
 int
 libusb_open(libusb_device *dev, libusb_device_handle **devh)
 {
-	libusb_context *ctx = dev->ctx;
-	struct libusb20_device *pdev = dev->os_priv;
-	int err;
+ libusb_context *ctx = dev->ctx;
+ struct libusb20_device *pdev = dev->os_priv;
+ int err;
 
-	if (devh == NULL)
-		return (LIBUSB_ERROR_INVALID_PARAM);
+ if (devh == ((void*)0))
+  return (LIBUSB_ERROR_INVALID_PARAM);
 
-	/* set default device handle value */
-	*devh = NULL;
 
-	dev = libusb_ref_device(dev);
-	if (dev == NULL)
-		return (LIBUSB_ERROR_INVALID_PARAM);
+ *devh = ((void*)0);
 
-	err = libusb20_dev_open(pdev, LIBUSB_NUM_SW_ENDPOINTS);
-	if (err) {
-		libusb_unref_device(dev);
-		return (LIBUSB_ERROR_NO_MEM);
-	}
-	libusb10_add_pollfd(ctx, &dev->dev_poll, pdev, libusb20_dev_get_fd(pdev), POLLIN |
-	    POLLOUT | POLLRDNORM | POLLWRNORM);
+ dev = libusb_ref_device(dev);
+ if (dev == ((void*)0))
+  return (LIBUSB_ERROR_INVALID_PARAM);
 
-	/* make sure our event loop detects the new device */
-	libusb10_wakeup_event_loop(ctx);
+ err = libusb20_dev_open(pdev, LIBUSB_NUM_SW_ENDPOINTS);
+ if (err) {
+  libusb_unref_device(dev);
+  return (LIBUSB_ERROR_NO_MEM);
+ }
+ libusb10_add_pollfd(ctx, &dev->dev_poll, pdev, libusb20_dev_get_fd(pdev), POLLIN |
+     POLLOUT | POLLRDNORM | POLLWRNORM);
 
-	*devh = pdev;
 
-	return (0);
+ libusb10_wakeup_event_loop(ctx);
+
+ *devh = pdev;
+
+ return (0);
 }

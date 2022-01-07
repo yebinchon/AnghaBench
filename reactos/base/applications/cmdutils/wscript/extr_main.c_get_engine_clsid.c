@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  LONG ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  scalar_t__ DWORD ;
-typedef  int /*<<< orphan*/  CLSID ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAY_SIZE (char*) ; 
- int /*<<< orphan*/  CLSIDFromProgID (char*,int /*<<< orphan*/ *) ; 
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  HKEY_CLASSES_ROOT ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- scalar_t__ RegOpenKeyW (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *) ; 
- scalar_t__ RegQueryValueW (int /*<<< orphan*/ ,int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WINE_TRACE (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strcatW (char*,char const*) ; 
- int /*<<< orphan*/  wine_dbgstr_w (char*) ; 
+
+
+
+typedef char WCHAR ;
+typedef int LONG ;
+typedef int HRESULT ;
+typedef int HKEY ;
+typedef scalar_t__ DWORD ;
+typedef int CLSID ;
+typedef int BOOL ;
+
+
+ int ARRAY_SIZE (char*) ;
+ int CLSIDFromProgID (char*,int *) ;
+ scalar_t__ ERROR_SUCCESS ;
+ int FALSE ;
+ int HKEY_CLASSES_ROOT ;
+ int RegCloseKey (int ) ;
+ scalar_t__ RegOpenKeyW (int ,char const*,int *) ;
+ scalar_t__ RegQueryValueW (int ,int *,char*,int *) ;
+ int SUCCEEDED (int ) ;
+ int WINE_TRACE (char*,int ) ;
+ int strcatW (char*,char const*) ;
+ int wine_dbgstr_w (char*) ;
 
 __attribute__((used)) static BOOL get_engine_clsid(const WCHAR *ext, CLSID *clsid)
 {
@@ -48,7 +48,7 @@ __attribute__((used)) static BOOL get_engine_clsid(const WCHAR *ext, CLSID *clsi
         return FALSE;
 
     size = ARRAY_SIZE(fileid);
-    res = RegQueryValueW(hkey, NULL, fileid, &size);
+    res = RegQueryValueW(hkey, ((void*)0), fileid, &size);
     RegCloseKey(hkey);
     if(res != ERROR_SUCCESS)
         return FALSE;
@@ -61,7 +61,7 @@ __attribute__((used)) static BOOL get_engine_clsid(const WCHAR *ext, CLSID *clsi
         return FALSE;
 
     size = ARRAY_SIZE(progid);
-    res = RegQueryValueW(hkey, NULL, progid, &size);
+    res = RegQueryValueW(hkey, ((void*)0), progid, &size);
     RegCloseKey(hkey);
     if(res != ERROR_SUCCESS)
         return FALSE;

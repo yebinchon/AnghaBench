@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct file_stack {struct file_stack* next; int /*<<< orphan*/  location; } ;
 
-/* Variables and functions */
- unsigned int INPUT_FILE_STACK_BITS ; 
- int /*<<< orphan*/  VEC_safe_push (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct file_stack*) ; 
- int /*<<< orphan*/  fs_p ; 
- int /*<<< orphan*/  gcc_assert (int) ; 
- int /*<<< orphan*/  heap ; 
- struct file_stack* input_file_stack ; 
- int /*<<< orphan*/  input_file_stack_history ; 
- int /*<<< orphan*/  input_file_stack_restored ; 
- int input_file_stack_tick ; 
- int /*<<< orphan*/  input_location ; 
- int /*<<< orphan*/  sorry (char*,int) ; 
+
+
+
+struct file_stack {struct file_stack* next; int location; } ;
+
+
+ unsigned int INPUT_FILE_STACK_BITS ;
+ int VEC_safe_push (int ,int ,int ,struct file_stack*) ;
+ int fs_p ;
+ int gcc_assert (int) ;
+ int heap ;
+ struct file_stack* input_file_stack ;
+ int input_file_stack_history ;
+ int input_file_stack_restored ;
+ int input_file_stack_tick ;
+ int input_location ;
+ int sorry (char*,int) ;
 
 void
 pop_srcloc (void)

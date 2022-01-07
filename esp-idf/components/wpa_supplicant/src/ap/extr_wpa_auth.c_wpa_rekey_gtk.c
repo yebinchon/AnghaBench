@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct wpa_group {scalar_t__ changed; int /*<<< orphan*/  GTKReKey; struct wpa_group* next; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct wpa_group {scalar_t__ changed; int GTKReKey; struct wpa_group* next; } ;
 struct TYPE_2__ {scalar_t__ wpa_group_rekey; } ;
 struct wpa_authenticator {TYPE_1__ conf; struct wpa_group* group; } ;
 
-/* Variables and functions */
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  eloop_register_timeout (scalar_t__,int /*<<< orphan*/ ,void (*) (void*,void*),struct wpa_authenticator*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  wpa_group_sm_step (struct wpa_authenticator*,struct wpa_group*) ; 
+
+ scalar_t__ FALSE ;
+ int TRUE ;
+ int eloop_register_timeout (scalar_t__,int ,void (*) (void*,void*),struct wpa_authenticator*,int *) ;
+ int wpa_group_sm_step (struct wpa_authenticator*,struct wpa_group*) ;
 
 __attribute__((used)) static void wpa_rekey_gtk(void *eloop_ctx, void *timeout_ctx)
 {
@@ -36,6 +36,6 @@ __attribute__((used)) static void wpa_rekey_gtk(void *eloop_ctx, void *timeout_c
 
     if (wpa_auth->conf.wpa_group_rekey) {
         eloop_register_timeout(wpa_auth->conf.wpa_group_rekey,
-                       0, wpa_rekey_gtk, wpa_auth, NULL);
+                       0, wpa_rekey_gtk, wpa_auth, ((void*)0));
     }
 }

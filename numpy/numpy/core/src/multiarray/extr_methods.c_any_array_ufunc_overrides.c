@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  PyObject ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * PySequence_Fast (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/ ** PySequence_Fast_ITEMS (int /*<<< orphan*/ *) ; 
- int PyTuple_Size (int /*<<< orphan*/ *) ; 
- int PyUFuncOverride_GetOutObjects (int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ ***) ; 
- scalar_t__ PyUFunc_HasOverride (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Py_DECREF (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int PyObject ;
+
+
+ int * PySequence_Fast (int *,char*) ;
+ int ** PySequence_Fast_ITEMS (int *) ;
+ int PyTuple_Size (int *) ;
+ int PyUFuncOverride_GetOutObjects (int *,int **,int ***) ;
+ scalar_t__ PyUFunc_HasOverride (int *) ;
+ int Py_DECREF (int *) ;
 
 __attribute__((used)) static int
 any_array_ufunc_overrides(PyObject *args, PyObject *kwds)
@@ -29,13 +29,13 @@ any_array_ufunc_overrides(PyObject *args, PyObject *kwds)
     PyObject *fast;
     PyObject **in_objs, **out_objs;
 
-    /* check inputs */
+
     nin = PyTuple_Size(args);
     if (nin < 0) {
         return -1;
     }
     fast = PySequence_Fast(args, "Could not convert object to sequence");
-    if (fast == NULL) {
+    if (fast == ((void*)0)) {
         return -1;
     }
     in_objs = PySequence_Fast_ITEMS(fast);
@@ -46,7 +46,7 @@ any_array_ufunc_overrides(PyObject *args, PyObject *kwds)
         }
     }
     Py_DECREF(fast);
-    /* check outputs, if any */
+
     nout = PyUFuncOverride_GetOutObjects(kwds, &out_kwd_obj, &out_objs);
     if (nout < 0) {
         return -1;

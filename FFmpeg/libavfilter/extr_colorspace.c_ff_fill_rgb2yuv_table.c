@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct LumaCoefficients {double cr; double cg; double cb; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  gbr_matrix ; 
- int /*<<< orphan*/  memcpy (double**,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ycgco_matrix ; 
+
+ int gbr_matrix ;
+ int memcpy (double**,int ,int) ;
+ int ycgco_matrix ;
 
 void ff_fill_rgb2yuv_table(const struct LumaCoefficients *coeffs,
                            double rgb2yuv[3][3])
 {
     double bscale, rscale;
 
-    // special ycgco matrix
+
     if (coeffs->cr == 0.25 && coeffs->cg == 0.5 && coeffs->cb == 0.25) {
         memcpy(rgb2yuv, ycgco_matrix, sizeof(double) * 9);
         return;

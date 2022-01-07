@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ errno_t ;
-typedef  int /*<<< orphan*/  buffer ;
 
-/* Variables and functions */
- scalar_t__ EBADF ; 
- scalar_t__ EINVAL ; 
- scalar_t__ ERANGE ; 
- scalar_t__ errno ; 
- int /*<<< orphan*/  itoa (int,char*,int) ; 
- int /*<<< orphan*/  memcmp (char*,char*,int) ; 
- int /*<<< orphan*/  memset (char*,char,int) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- scalar_t__ p_itoa_s (int,char*,int,int) ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
+
+
+
+typedef scalar_t__ errno_t ;
+typedef int buffer ;
+
+
+ scalar_t__ EBADF ;
+ scalar_t__ EINVAL ;
+ scalar_t__ ERANGE ;
+ scalar_t__ errno ;
+ int itoa (int,char*,int) ;
+ int memcmp (char*,char*,int) ;
+ int memset (char*,char,int) ;
+ int ok (int,char*,...) ;
+ scalar_t__ p_itoa_s (int,char*,int,int) ;
+ int strcmp (char*,char*) ;
+ int win_skip (char*) ;
 
 __attribute__((used)) static void test__itoa_s(void)
 {
@@ -38,7 +38,7 @@ __attribute__((used)) static void test__itoa_s(void)
     }
 
     errno = EBADF;
-    ret = p_itoa_s(0, NULL, 0, 0);
+    ret = p_itoa_s(0, ((void*)0), 0, 0);
     ok(ret == EINVAL, "Expected _itoa_s to return EINVAL, got %d\n", ret);
     ok(errno == EINVAL, "Expected errno to be EINVAL, got %d\n", errno);
 

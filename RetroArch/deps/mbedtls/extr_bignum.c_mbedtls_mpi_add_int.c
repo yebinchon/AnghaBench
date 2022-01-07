@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mbedtls_mpi_uint ;
-typedef  int /*<<< orphan*/  mbedtls_mpi_sint ;
-struct TYPE_7__ {int s; int n; int /*<<< orphan*/ * p; } ;
-typedef  TYPE_1__ mbedtls_mpi ;
 
-/* Variables and functions */
- int mbedtls_mpi_add_mpi (TYPE_1__*,TYPE_1__ const*,TYPE_1__*) ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int mbedtls_mpi_uint ;
+typedef int mbedtls_mpi_sint ;
+struct TYPE_7__ {int s; int n; int * p; } ;
+typedef TYPE_1__ mbedtls_mpi ;
+
+
+ int mbedtls_mpi_add_mpi (TYPE_1__*,TYPE_1__ const*,TYPE_1__*) ;
 
 int mbedtls_mpi_add_int( mbedtls_mpi *X, const mbedtls_mpi *A, mbedtls_mpi_sint b )
 {

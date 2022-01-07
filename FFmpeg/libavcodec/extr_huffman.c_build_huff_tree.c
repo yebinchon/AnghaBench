@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int /*<<< orphan*/  int16_t ;
-typedef  int /*<<< orphan*/  VLC ;
-typedef  int /*<<< orphan*/  Node ;
 
-/* Variables and functions */
- int FF_HUFFMAN_FLAG_ZERO_COUNT ; 
- int ff_init_vlc_sparse (int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  get_tree_codes (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*,int) ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef int int16_t ;
+typedef int VLC ;
+typedef int Node ;
+
+
+ int FF_HUFFMAN_FLAG_ZERO_COUNT ;
+ int ff_init_vlc_sparse (int *,int,int,int *,int,int,int *,int,int,int *,int,int,int ) ;
+ int get_tree_codes (int *,int *,int *,int *,int,int ,int ,int*,int) ;
 
 __attribute__((used)) static int build_huff_tree(VLC *vlc, Node *nodes, int head, int flags, int nb_bits)
 {

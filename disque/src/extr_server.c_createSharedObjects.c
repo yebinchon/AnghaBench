@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_4__ {void* maxstring; void* minstring; void** bulkhdr; void** mbulkhdr; TYPE_1__** integers; void* deljob; void* loadjob; void* punsubscribebulk; void* psubscribebulk; void* unsubscribebulk; void* subscribebulk; void* pmessagebulk; void* messagebulk; void* plus; void* colon; void* space; void* busykeyerr; void* noreplicaserr; void* execaborterr; void* oomerr; void* noautherr; void* roslaveerr; void* masterdownerr; void* slowscripterr; void* loadingerr; void* noscripterr; void* outofrangeerr; void* leavingerr; void* syntaxerr; void* nokeyerr; void* wrongtypeerr; void* queued; void* pong; void* emptymultibulk; void* nullmultibulk; void* nullbulk; void* cnegone; void* cone; void* czero; void* emptybulk; void* err; void* ok; void* crlf; } ;
-struct TYPE_3__ {int /*<<< orphan*/  encoding; } ;
+struct TYPE_3__ {int encoding; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OBJ_ENCODING_INT ; 
- int OBJ_SHARED_BULKHDR_LEN ; 
- int OBJ_SHARED_INTEGERS ; 
- int /*<<< orphan*/  OBJ_STRING ; 
- void* createObject (int /*<<< orphan*/ ,void*) ; 
- void* createStringObject (char*,int) ; 
- void* sdscatprintf (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  sdsempty () ; 
- void* sdsnew (char*) ; 
- TYPE_2__ shared ; 
+
+ int OBJ_ENCODING_INT ;
+ int OBJ_SHARED_BULKHDR_LEN ;
+ int OBJ_SHARED_INTEGERS ;
+ int OBJ_STRING ;
+ void* createObject (int ,void*) ;
+ void* createStringObject (char*,int) ;
+ void* sdscatprintf (int ,char*,int) ;
+ int sdsempty () ;
+ void* sdsnew (char*) ;
+ TYPE_2__ shared ;
 
 void createSharedObjects(void) {
     int j;
@@ -94,10 +94,10 @@ void createSharedObjects(void) {
         shared.bulkhdr[j] = createObject(OBJ_STRING,
             sdscatprintf(sdsempty(),"$%d\r\n",j));
     }
-    /* The following two shared objects, minstring and maxstrings, are not
-     * actually used for their value but as a special object meaning
-     * respectively the minimum possible string and the maximum possible
-     * string in string comparisons for the ZRANGEBYLEX command. */
+
+
+
+
     shared.minstring = createStringObject("minstring",9);
     shared.maxstring = createStringObject("maxstring",9);
 }

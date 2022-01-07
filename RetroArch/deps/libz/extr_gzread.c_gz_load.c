@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* gz_statep ;
-struct TYPE_4__ {int eof; int /*<<< orphan*/  fd; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Z_ERRNO ; 
- int /*<<< orphan*/  gz_error (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int read (int /*<<< orphan*/ ,unsigned char*,unsigned int) ; 
- int /*<<< orphan*/  zstrerror () ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef TYPE_1__* gz_statep ;
+struct TYPE_4__ {int eof; int fd; } ;
+
+
+ int Z_ERRNO ;
+ int gz_error (TYPE_1__*,int ,int ) ;
+ int read (int ,unsigned char*,unsigned int) ;
+ int zstrerror () ;
 
 __attribute__((used)) static int gz_load(gz_statep state, unsigned char *buf, unsigned len, unsigned *have)
 {

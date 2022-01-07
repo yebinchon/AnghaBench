@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_22__   TYPE_9__ ;
-typedef  struct TYPE_21__   TYPE_8__ ;
-typedef  struct TYPE_20__   TYPE_7__ ;
-typedef  struct TYPE_19__   TYPE_6__ ;
-typedef  struct TYPE_18__   TYPE_5__ ;
-typedef  struct TYPE_17__   TYPE_4__ ;
-typedef  struct TYPE_16__   TYPE_3__ ;
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
-typedef  struct TYPE_13__   TYPE_10__ ;
 
-/* Type definitions */
-struct TYPE_19__ {int (* on_body ) (TYPE_10__*,int /*<<< orphan*/ *) ;} ;
-struct TYPE_16__ {int /*<<< orphan*/  response_end_at; } ;
-struct TYPE_13__ {int /*<<< orphan*/  _timeout; TYPE_8__* ctx; TYPE_6__ _cb; TYPE_3__ timings; } ;
+
+
+typedef struct TYPE_22__ TYPE_9__ ;
+typedef struct TYPE_21__ TYPE_8__ ;
+typedef struct TYPE_20__ TYPE_7__ ;
+typedef struct TYPE_19__ TYPE_6__ ;
+typedef struct TYPE_18__ TYPE_5__ ;
+typedef struct TYPE_17__ TYPE_4__ ;
+typedef struct TYPE_16__ TYPE_3__ ;
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+typedef struct TYPE_13__ TYPE_10__ ;
+
+
+struct TYPE_19__ {int (* on_body ) (TYPE_10__*,int *) ;} ;
+struct TYPE_16__ {int response_end_at; } ;
+struct TYPE_13__ {int _timeout; TYPE_8__* ctx; TYPE_6__ _cb; TYPE_3__ timings; } ;
 struct TYPE_20__ {scalar_t__ res; } ;
 struct TYPE_17__ {scalar_t__ bytesleft; } ;
 struct TYPE_18__ {TYPE_4__ content_length; } ;
 struct st_h2o_http1client_t {TYPE_10__ super; scalar_t__ _do_keepalive; TYPE_7__ state; TYPE_5__ _body_decoder; TYPE_2__* sock; } ;
 struct TYPE_22__ {scalar_t__ bytes_read; struct st_h2o_http1client_t* data; } ;
-typedef  TYPE_9__ h2o_socket_t ;
-struct TYPE_21__ {int /*<<< orphan*/  io_timeout; int /*<<< orphan*/  loop; } ;
+typedef TYPE_9__ h2o_socket_t ;
+struct TYPE_21__ {int io_timeout; int loop; } ;
 struct TYPE_15__ {TYPE_1__* input; } ;
-struct TYPE_14__ {int /*<<< orphan*/  size; } ;
+struct TYPE_14__ {int size; } ;
 
-/* Variables and functions */
- scalar_t__ STREAM_STATE_CLOSED ; 
- int /*<<< orphan*/  close_client (struct st_h2o_http1client_t*) ; 
- int /*<<< orphan*/  close_response (struct st_h2o_http1client_t*) ; 
- int /*<<< orphan*/  do_update_window (TYPE_10__*) ; 
- int /*<<< orphan*/  h2o_gettimeofday (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  h2o_httpclient_error_io ; 
- int /*<<< orphan*/ * h2o_httpclient_error_is_eos ; 
- int /*<<< orphan*/  h2o_timer_link (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  h2o_timer_unlink (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  on_error (struct st_h2o_http1client_t*,int /*<<< orphan*/ ) ; 
- int stub1 (TYPE_10__*,int /*<<< orphan*/ *) ; 
+
+ scalar_t__ STREAM_STATE_CLOSED ;
+ int close_client (struct st_h2o_http1client_t*) ;
+ int close_response (struct st_h2o_http1client_t*) ;
+ int do_update_window (TYPE_10__*) ;
+ int h2o_gettimeofday (int ) ;
+ int h2o_httpclient_error_io ;
+ int * h2o_httpclient_error_is_eos ;
+ int h2o_timer_link (int ,int ,int *) ;
+ int h2o_timer_unlink (int *) ;
+ int on_error (struct st_h2o_http1client_t*,int ) ;
+ int stub1 (TYPE_10__*,int *) ;
 
 __attribute__((used)) static void on_body_content_length(h2o_socket_t *sock, const char *err)
 {
@@ -52,7 +52,7 @@ __attribute__((used)) static void on_body_content_length(h2o_socket_t *sock, con
 
     h2o_timer_unlink(&client->super._timeout);
 
-    if (err != NULL) {
+    if (err != ((void*)0)) {
         on_error(client, h2o_httpclient_error_io);
         return;
     }
@@ -61,7 +61,7 @@ __attribute__((used)) static void on_body_content_length(h2o_socket_t *sock, con
         int ret;
         if (client->_body_decoder.content_length.bytesleft <= sock->bytes_read) {
             if (client->_body_decoder.content_length.bytesleft < sock->bytes_read) {
-                /* remove the trailing garbage from buf, and disable keepalive */
+
                 client->sock->input->size -= sock->bytes_read - client->_body_decoder.content_length.bytesleft;
                 client->_do_keepalive = 0;
             }
@@ -72,7 +72,7 @@ __attribute__((used)) static void on_body_content_length(h2o_socket_t *sock, con
             client->_body_decoder.content_length.bytesleft -= sock->bytes_read;
         }
         ret = client->super._cb.on_body(&client->super,
-                                        client->state.res == STREAM_STATE_CLOSED ? h2o_httpclient_error_is_eos : NULL);
+                                        client->state.res == STREAM_STATE_CLOSED ? h2o_httpclient_error_is_eos : ((void*)0));
         if (client->state.res == STREAM_STATE_CLOSED) {
             close_response(client);
             return;

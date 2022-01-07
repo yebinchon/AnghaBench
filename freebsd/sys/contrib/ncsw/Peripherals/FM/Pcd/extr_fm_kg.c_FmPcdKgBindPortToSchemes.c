@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  scalar_t__ t_Handle ;
-struct TYPE_5__ {int /*<<< orphan*/  hardwarePortId; } ;
-typedef  TYPE_1__ t_FmPcdKgInterModuleBindPortToSchemes ;
-typedef  int /*<<< orphan*/  t_FmPcd ;
-typedef  scalar_t__ t_Error ;
 
-/* Variables and functions */
- scalar_t__ E_OK ; 
- scalar_t__ FmPcdKgBuildBindPortToSchemes (scalar_t__,TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IncSchemeOwners (int /*<<< orphan*/ *,TYPE_1__*) ; 
- scalar_t__ KgWriteSp (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MAJOR ; 
- int /*<<< orphan*/  NO_MSG ; 
- int /*<<< orphan*/  RETURN_ERROR (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
 
-t_Error FmPcdKgBindPortToSchemes(t_Handle h_FmPcd , t_FmPcdKgInterModuleBindPortToSchemes  *p_SchemeBind)
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+typedef scalar_t__ t_Handle ;
+struct TYPE_5__ {int hardwarePortId; } ;
+typedef TYPE_1__ t_FmPcdKgInterModuleBindPortToSchemes ;
+typedef int t_FmPcd ;
+typedef scalar_t__ t_Error ;
+
+
+ scalar_t__ E_OK ;
+ scalar_t__ FmPcdKgBuildBindPortToSchemes (scalar_t__,TYPE_1__*,int *,int ) ;
+ int IncSchemeOwners (int *,TYPE_1__*) ;
+ scalar_t__ KgWriteSp (int *,int ,int ,int ) ;
+ int MAJOR ;
+ int NO_MSG ;
+ int RETURN_ERROR (int ,scalar_t__,int ) ;
+ int TRUE ;
+
+t_Error FmPcdKgBindPortToSchemes(t_Handle h_FmPcd , t_FmPcdKgInterModuleBindPortToSchemes *p_SchemeBind)
 {
-    t_FmPcd                 *p_FmPcd = (t_FmPcd*)h_FmPcd;
-    uint32_t                spReg;
-    t_Error                 err = E_OK;
+    t_FmPcd *p_FmPcd = (t_FmPcd*)h_FmPcd;
+    uint32_t spReg;
+    t_Error err = E_OK;
 
     err = FmPcdKgBuildBindPortToSchemes(h_FmPcd, p_SchemeBind, &spReg, TRUE);
     if (err)

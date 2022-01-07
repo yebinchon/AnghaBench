@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  int uint16_t ;
-typedef  int int8_t ;
-typedef  int int16_t ;
-struct TYPE_10__ {int channels; int /*<<< orphan*/  channel_layout; } ;
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+typedef int uint16_t ;
+typedef int int8_t ;
+typedef int int16_t ;
+struct TYPE_10__ {int channels; int channel_layout; } ;
 struct TYPE_9__ {int nb_samples; scalar_t__* data; } ;
-struct TYPE_8__ {int size; int /*<<< orphan*/  data; } ;
-typedef  int /*<<< orphan*/  GetBitContext ;
-typedef  TYPE_1__ AVPacket ;
-typedef  TYPE_2__ AVFrame ;
-typedef  TYPE_3__ AVCodecContext ;
+struct TYPE_8__ {int size; int data; } ;
+typedef int GetBitContext ;
+typedef TYPE_1__ AVPacket ;
+typedef TYPE_2__ AVFrame ;
+typedef TYPE_3__ AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_CH_LAYOUT_MONO ; 
- int /*<<< orphan*/  AV_CH_LAYOUT_STEREO ; 
- int av_clip (int,int /*<<< orphan*/ ,int) ; 
- int av_clip_int16 (int) ; 
- int* ff_adpcm_step_table ; 
- int ff_get_buffer (TYPE_3__*,TYPE_2__*,int /*<<< orphan*/ ) ; 
- int get_bits (int /*<<< orphan*/ *,int) ; 
- int get_bits_long (int /*<<< orphan*/ *,int) ; 
- void* get_sbits (int /*<<< orphan*/ *,int) ; 
- int init_get_bits8 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int* predict_table ; 
- int* size_table ; 
- int /*<<< orphan*/  skip_bits_long (int /*<<< orphan*/ *,int) ; 
- scalar_t__** step_index_tables ; 
+
+ int AVERROR_INVALIDDATA ;
+ int AV_CH_LAYOUT_MONO ;
+ int AV_CH_LAYOUT_STEREO ;
+ int av_clip (int,int ,int) ;
+ int av_clip_int16 (int) ;
+ int* ff_adpcm_step_table ;
+ int ff_get_buffer (TYPE_3__*,TYPE_2__*,int ) ;
+ int get_bits (int *,int) ;
+ int get_bits_long (int *,int) ;
+ void* get_sbits (int *,int) ;
+ int init_get_bits8 (int *,int ,int) ;
+ int* predict_table ;
+ int* size_table ;
+ int skip_bits_long (int *,int) ;
+ scalar_t__** step_index_tables ;
 
 __attribute__((used)) static int decode_frame(AVCodecContext *avctx, void *data,
                         int *got_frame_ptr, AVPacket *pkt)
@@ -79,7 +79,7 @@ __attribute__((used)) static int decode_frame(AVCodecContext *avctx, void *data,
     pcm_data[0] = get_sbits(&gb, 16);
     if (channels > 1) {
         channel_hint[1] = get_sbits(&gb, 8);
-        pcm_data[1]     = get_sbits(&gb, 16);
+        pcm_data[1] = get_sbits(&gb, 16);
     }
 
     frame->nb_samples = samples;
@@ -95,11 +95,11 @@ __attribute__((used)) static int decode_frame(AVCodecContext *avctx, void *data,
         for (sample = 0; sample < samples; sample++) {
             int lookup_size, lookup, highbit, lowbits;
 
-            step_index  = av_clip(step_index, 0, 88);
+            step_index = av_clip(step_index, 0, 88);
             lookup_size = size_table[step_index];
-            lookup      = get_bits(&gb, lookup_size);
-            highbit     = 1 << (lookup_size - 1);
-            lowbits     = highbit - 1;
+            lookup = get_bits(&gb, lookup_size);
+            highbit = 1 << (lookup_size - 1);
+            lowbits = highbit - 1;
 
             if (lookup & highbit)
                 lookup ^= highbit;
@@ -113,7 +113,7 @@ __attribute__((used)) static int decode_frame(AVCodecContext *avctx, void *data,
 
                 predict_index = (lookup << (7 - lookup_size)) | (step_index << 6);
                 predict_index = av_clip(predict_index, 0, 5785);
-                diff          = predict_table[predict_index];
+                diff = predict_table[predict_index];
                 if (lookup)
                     diff += ff_adpcm_step_table[step_index] >> (lookup_size - 1);
                 if (highbit)

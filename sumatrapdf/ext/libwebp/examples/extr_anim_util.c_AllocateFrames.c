@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {scalar_t__ is_key_frame; scalar_t__ duration; struct TYPE_6__* rgba; } ;
-typedef  TYPE_1__ uint8_t ;
-typedef  int const uint64_t ;
-typedef  size_t uint32_t ;
+typedef TYPE_1__ uint8_t ;
+typedef int const uint64_t ;
+typedef size_t uint32_t ;
 struct TYPE_7__ {int const canvas_height; size_t num_frames; TYPE_1__* raw_mem; TYPE_1__* frames; scalar_t__ canvas_width; } ;
-typedef  TYPE_1__ DecodedFrame ;
-typedef  TYPE_3__ AnimatedImage ;
+typedef TYPE_1__ DecodedFrame ;
+typedef TYPE_3__ AnimatedImage ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CheckSizeForOverflow (int const) ; 
- int /*<<< orphan*/  WebPFree (TYPE_1__*) ; 
- scalar_t__ WebPMalloc (size_t) ; 
- int const kNumChannels ; 
+
+ int CheckSizeForOverflow (int const) ;
+ int WebPFree (TYPE_1__*) ;
+ scalar_t__ WebPMalloc (size_t) ;
+ int const kNumChannels ;
 
 __attribute__((used)) static int AllocateFrames(AnimatedImage* const image, uint32_t num_frames) {
   uint32_t i;
-  uint8_t* mem = NULL;
-  DecodedFrame* frames = NULL;
+  uint8_t* mem = ((void*)0);
+  DecodedFrame* frames = ((void*)0);
   const uint64_t rgba_size =
       (uint64_t)image->canvas_width * kNumChannels * image->canvas_height;
   const uint64_t total_size = (uint64_t)num_frames * rgba_size * sizeof(*mem);
@@ -41,7 +41,7 @@ __attribute__((used)) static int AllocateFrames(AnimatedImage* const image, uint
   mem = (uint8_t*)WebPMalloc((size_t)total_size);
   frames = (DecodedFrame*)WebPMalloc((size_t)total_frame_size);
 
-  if (mem == NULL || frames == NULL) {
+  if (mem == ((void*)0) || frames == ((void*)0)) {
     WebPFree(mem);
     WebPFree(frames);
     return 0;

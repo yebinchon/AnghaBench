@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int loff_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int loff_t ;
 struct TYPE_3__ {int erasesize; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cond_resched () ; 
- TYPE_1__* mtd ; 
- int mtdtest_write (TYPE_1__*,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  prandom_bytes_state (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  rnd_state ; 
- int /*<<< orphan*/  writebuf ; 
+
+ int cond_resched () ;
+ TYPE_1__* mtd ;
+ int mtdtest_write (TYPE_1__*,int,int,int ) ;
+ int prandom_bytes_state (int *,int ,int) ;
+ int rnd_state ;
+ int writebuf ;
 
 __attribute__((used)) static int write_eraseblock(int ebnum)
 {
-	loff_t addr = (loff_t)ebnum * mtd->erasesize;
+ loff_t addr = (loff_t)ebnum * mtd->erasesize;
 
-	prandom_bytes_state(&rnd_state, writebuf, mtd->erasesize);
-	cond_resched();
-	return mtdtest_write(mtd, addr, mtd->erasesize, writebuf);
+ prandom_bytes_state(&rnd_state, writebuf, mtd->erasesize);
+ cond_resched();
+ return mtdtest_write(mtd, addr, mtd->erasesize, writebuf);
 }

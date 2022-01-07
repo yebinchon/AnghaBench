@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  double cmsFloat64Number ;
-typedef  int /*<<< orphan*/  cmsContext ;
 
-/* Variables and functions */
- void* BlackPointCompensation ; 
- int EOF ; 
- void* FALSE ; 
- int /*<<< orphan*/  FatalError (char*,...) ; 
- void* GamutCheck ; 
- void* InHexa ; 
- void* IncludePart ; 
- void* Intent ; 
- int PrecalcMode ; 
- int ProofingIntent ; 
- void* TRUE ; 
- int Verbose ; 
- void* Width16 ; 
- double atof (void*) ; 
- void* atoi (void*) ; 
- void* cInProf ; 
- void* cOutProf ; 
- void* cProofing ; 
- int /*<<< orphan*/  cmsSetAdaptationState (int /*<<< orphan*/ ,double) ; 
- void* lIsDeviceLink ; 
- void* lIsFloat ; 
- void* lQuantize ; 
- void* lUnbounded ; 
- int xgetopt (int,char**,char*) ; 
- void* xoptarg ; 
- int xoptind ; 
+
+
+
+typedef double cmsFloat64Number ;
+typedef int cmsContext ;
+
+
+ void* BlackPointCompensation ;
+ int EOF ;
+ void* FALSE ;
+ int FatalError (char*,...) ;
+ void* GamutCheck ;
+ void* InHexa ;
+ void* IncludePart ;
+ void* Intent ;
+ int PrecalcMode ;
+ int ProofingIntent ;
+ void* TRUE ;
+ int Verbose ;
+ void* Width16 ;
+ double atof (void*) ;
+ void* atoi (void*) ;
+ void* cInProf ;
+ void* cOutProf ;
+ void* cProofing ;
+ int cmsSetAdaptationState (int ,double) ;
+ void* lIsDeviceLink ;
+ void* lIsFloat ;
+ void* lQuantize ;
+ void* lUnbounded ;
+ int xgetopt (int,char**,char*) ;
+ void* xoptarg ;
+ int xoptind ;
 
 __attribute__((used)) static
 void HandleSwitches(cmsContext ContextID, int argc, char *argv[])
@@ -102,7 +102,7 @@ void HandleSwitches(cmsContext ContextID, int argc, char *argv[])
             lIsDeviceLink = TRUE;
             break;
 
-            // No extra intents for proofing
+
         case 'm':
         case 'M':
             ProofingIntent = atoi(xoptarg);
@@ -110,13 +110,13 @@ void HandleSwitches(cmsContext ContextID, int argc, char *argv[])
                 FatalError("Unknown Proofing Intent '%d'", ProofingIntent);
             break;
 
-            // For compatibility
+
         case 'n':
         case 'N':
             Verbose = 0;
             break;
 
-            // Output profile
+
         case 'o':
         case 'O':
             if (lIsDeviceLink)
@@ -124,31 +124,31 @@ void HandleSwitches(cmsContext ContextID, int argc, char *argv[])
             cOutProf = xoptarg;
             break;
 
-            // Proofing profile
+
         case 'p':
         case 'P':
             cProofing = xoptarg;
             break;
 
-            // Quantize (get rid of decimals)
+
         case 'q':
         case 'Q':
             lQuantize = TRUE;
             break;
 
-            // Inhibit unbounded mode
+
         case 's':
         case 'S':
                lUnbounded = FALSE;
                break;
 
-            // The intent
+
         case 't':
         case 'T':
             Intent = atoi(xoptarg);
             break;
 
-            // Verbosity level
+
         case 'V':
         case 'v':
             Verbose = atoi(xoptarg);
@@ -157,13 +157,13 @@ void HandleSwitches(cmsContext ContextID, int argc, char *argv[])
             }
             break;
 
-            // Wide (16 bits)
+
         case 'W':
         case 'w':
             Width16 = TRUE;
             break;
 
-            // Hexadecimal
+
         case 'x':
         case 'X':
             InHexa = TRUE;
@@ -175,7 +175,7 @@ void HandleSwitches(cmsContext ContextID, int argc, char *argv[])
     }
 
 
-    // If output CGATS involved, switch to float
+
     if ((argc - xoptind) > 2) {
         lIsFloat = TRUE;
     }

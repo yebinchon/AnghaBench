@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct request_queue {int /*<<< orphan*/  q_usage_counter; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  percpu_ref_put (int /*<<< orphan*/ *) ; 
+
+
+
+struct request_queue {int q_usage_counter; } ;
+
+
+ int percpu_ref_put (int *) ;
 
 void blk_queue_exit(struct request_queue *q)
 {
-	percpu_ref_put(&q->q_usage_counter);
+ percpu_ref_put(&q->q_usage_counter);
 }

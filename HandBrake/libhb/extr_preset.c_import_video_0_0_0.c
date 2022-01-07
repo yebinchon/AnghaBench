@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  hb_value_t ;
 
-/* Variables and functions */
- int HB_VCODEC_FFMPEG_MASK ; 
- int /*<<< orphan*/ * hb_dict_get (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  hb_dict_set (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hb_value_dup (int /*<<< orphan*/ *) ; 
- scalar_t__ hb_value_get_bool (int /*<<< orphan*/ *) ; 
- scalar_t__ hb_value_get_int (int /*<<< orphan*/ *) ; 
- char* hb_value_get_string (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  hb_value_int (int) ; 
- int /*<<< orphan*/  hb_value_string (char const*) ; 
- int hb_video_encoder_get_from_name (char const*) ; 
- int /*<<< orphan*/  strncasecmp (char const*,char*,int) ; 
+
+
+
+typedef int hb_value_t ;
+
+
+ int HB_VCODEC_FFMPEG_MASK ;
+ int * hb_dict_get (int *,char*) ;
+ int hb_dict_set (int *,char*,int ) ;
+ int hb_value_dup (int *) ;
+ scalar_t__ hb_value_get_bool (int *) ;
+ scalar_t__ hb_value_get_int (int *) ;
+ char* hb_value_get_string (int *) ;
+ int hb_value_int (int) ;
+ int hb_value_string (char const*) ;
+ int hb_video_encoder_get_from_name (char const*) ;
+ int strncasecmp (char const*,char*,int) ;
 
 __attribute__((used)) static void import_video_0_0_0(hb_value_t *preset)
 {
     hb_value_t *val;
 
-    if ((val = hb_dict_get(preset, "x264Preset")) != NULL)
+    if ((val = hb_dict_get(preset, "x264Preset")) != ((void*)0))
          hb_dict_set(preset, "VideoPreset", hb_value_dup(val));
-    if ((val = hb_dict_get(preset, "x264Tune")) != NULL)
+    if ((val = hb_dict_get(preset, "x264Tune")) != ((void*)0))
          hb_dict_set(preset, "VideoTune", hb_value_dup(val));
-    if ((val = hb_dict_get(preset, "h264Profile")) != NULL)
+    if ((val = hb_dict_get(preset, "h264Profile")) != ((void*)0))
          hb_dict_set(preset, "VideoProfile", hb_value_dup(val));
-    if ((val = hb_dict_get(preset, "h264Level")) != NULL)
+    if ((val = hb_dict_get(preset, "h264Level")) != ((void*)0))
          hb_dict_set(preset, "VideoLevel", hb_value_dup(val));
-    if ((val = hb_dict_get(preset, "x264OptionExtra")) != NULL)
+    if ((val = hb_dict_get(preset, "x264OptionExtra")) != ((void*)0))
         hb_dict_set(preset, "VideoOptionExtra", hb_value_dup(val));
 
-    // Remove invalid "none" tune from VideoTune.  Frontends should
-    // be removing this before saving a preset.
-    if ((val = hb_dict_get(preset, "VideoTune")) != NULL)
+
+
+    if ((val = hb_dict_get(preset, "VideoTune")) != ((void*)0))
     {
         const char *tune;
         tune = hb_value_get_string(val);
-        // "none" is not a valid tune, but is used by HandBrake
-        // to indicate no tune options.
-        if (tune != NULL && !strncasecmp(tune, "none", 4))
+
+
+        if (tune != ((void*)0) && !strncasecmp(tune, "none", 4))
         {
             tune += 4;
             if (tune[0] == ',')
@@ -56,7 +56,7 @@ __attribute__((used)) static void import_video_0_0_0(hb_value_t *preset)
                 tune++;
             }
         }
-        if (tune != NULL)
+        if (tune != ((void*)0))
         {
             hb_dict_set(preset, "VideoTune", hb_value_string(tune));
         }
@@ -64,7 +64,7 @@ __attribute__((used)) static void import_video_0_0_0(hb_value_t *preset)
 
     if (hb_value_get_int(hb_dict_get(preset, "VideoQualityType")) == 0)
     {
-        // Target size no longer supported
+
         hb_dict_set(preset, "VideoQualityType", hb_value_int(1));
     }
 
@@ -87,7 +87,7 @@ __attribute__((used)) static void import_video_0_0_0(hb_value_t *preset)
     codec = hb_video_encoder_get_from_name(enc);
     if (codec & HB_VCODEC_FFMPEG_MASK)
     {
-        if ((val = hb_dict_get(preset, "lavcOption")) != NULL)
+        if ((val = hb_dict_get(preset, "lavcOption")) != ((void*)0))
             hb_dict_set(preset, "VideoOptionExtra", hb_value_dup(val));
     }
 }

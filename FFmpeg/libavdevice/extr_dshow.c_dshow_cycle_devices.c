@@ -1,65 +1,65 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct dshow_ctx {char** device_name; int video_device_number; int audio_device_number; } ;
-typedef  enum dshowSourceFilterType { ____Placeholder_dshowSourceFilterType } dshowSourceFilterType ;
-typedef  enum dshowDeviceType { ____Placeholder_dshowDeviceType } dshowDeviceType ;
-struct TYPE_6__ {int /*<<< orphan*/ * bstrVal; int /*<<< orphan*/  vt; } ;
-typedef  TYPE_1__ VARIANT ;
+typedef enum dshowSourceFilterType { ____Placeholder_dshowSourceFilterType } dshowSourceFilterType ;
+typedef enum dshowDeviceType { ____Placeholder_dshowDeviceType } dshowDeviceType ;
+struct TYPE_6__ {int * bstrVal; int vt; } ;
+typedef TYPE_1__ VARIANT ;
 struct TYPE_7__ {struct dshow_ctx* priv_data; } ;
-typedef  int /*<<< orphan*/ * LPOLESTR ;
-typedef  int /*<<< orphan*/ * LPMALLOC ;
-typedef  int /*<<< orphan*/  IPropertyBag ;
-typedef  int /*<<< orphan*/  IMoniker ;
-typedef  int /*<<< orphan*/  IEnumMoniker ;
-typedef  int /*<<< orphan*/  ICreateDevEnum ;
-typedef  int /*<<< orphan*/  IBindCtx ;
-typedef  int /*<<< orphan*/  IBaseFilter ;
-typedef  int /*<<< orphan*/  GUID ;
-typedef  TYPE_2__ AVFormatContext ;
+typedef int * LPOLESTR ;
+typedef int * LPMALLOC ;
+typedef int IPropertyBag ;
+typedef int IMoniker ;
+typedef int IEnumMoniker ;
+typedef int ICreateDevEnum ;
+typedef int IBindCtx ;
+typedef int IBaseFilter ;
+typedef int GUID ;
+typedef TYPE_2__ AVFormatContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_LOG_INFO ; 
- int /*<<< orphan*/  const CLSID_AudioInputDeviceCategory ; 
- int /*<<< orphan*/  const CLSID_VideoInputDeviceCategory ; 
- int CoGetMalloc (int,int /*<<< orphan*/ **) ; 
- int CreateBindCtx (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  EIO ; 
- int /*<<< orphan*/  IBindCtx_Release (int /*<<< orphan*/ *) ; 
- int ICreateDevEnum_CreateClassEnumerator (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
- int IEnumMoniker_Next (int /*<<< orphan*/ *,int,int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IEnumMoniker_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IID_IBaseFilter ; 
- int /*<<< orphan*/  IID_IPropertyBag ; 
- int /*<<< orphan*/  IMalloc_Free (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int IMoniker_BindToObject (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,void*) ; 
- int IMoniker_BindToStorage (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,void*) ; 
- int IMoniker_GetDisplayName (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IMoniker_Release (int /*<<< orphan*/ *) ; 
- int IPropertyBag_Read (int /*<<< orphan*/ *,char*,TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IPropertyBag_Release (int /*<<< orphan*/ *) ; 
- int S_OK ; 
- int /*<<< orphan*/  VT_BSTR ; 
- int VideoDevice ; 
- int VideoSourceDevice ; 
- int /*<<< orphan*/  av_freep (char**) ; 
- int /*<<< orphan*/  av_log (TYPE_2__*,int /*<<< orphan*/ ,char*,char const*,...) ; 
- char* dup_wchar_to_utf8 (int /*<<< orphan*/ *) ; 
- scalar_t__ strcmp (char const*,char*) ; 
- int strlen (char*) ; 
+
+ int AVERROR (int ) ;
+ int AV_LOG_ERROR ;
+ int AV_LOG_INFO ;
+ int const CLSID_AudioInputDeviceCategory ;
+ int const CLSID_VideoInputDeviceCategory ;
+ int CoGetMalloc (int,int **) ;
+ int CreateBindCtx (int ,int **) ;
+ int EIO ;
+ int IBindCtx_Release (int *) ;
+ int ICreateDevEnum_CreateClassEnumerator (int *,int const*,int **,int ) ;
+ int IEnumMoniker_Next (int *,int,int **,int *) ;
+ int IEnumMoniker_Release (int *) ;
+ int IID_IBaseFilter ;
+ int IID_IPropertyBag ;
+ int IMalloc_Free (int *,int *) ;
+ int IMoniker_BindToObject (int *,int ,int ,int *,void*) ;
+ int IMoniker_BindToStorage (int *,int ,int ,int *,void*) ;
+ int IMoniker_GetDisplayName (int *,int *,int *,int **) ;
+ int IMoniker_Release (int *) ;
+ int IPropertyBag_Read (int *,char*,TYPE_1__*,int *) ;
+ int IPropertyBag_Release (int *) ;
+ int S_OK ;
+ int VT_BSTR ;
+ int VideoDevice ;
+ int VideoSourceDevice ;
+ int av_freep (char**) ;
+ int av_log (TYPE_2__*,int ,char*,char const*,...) ;
+ char* dup_wchar_to_utf8 (int *) ;
+ scalar_t__ strcmp (char const*,char*) ;
+ int strlen (char*) ;
 
 __attribute__((used)) static int
 dshow_cycle_devices(AVFormatContext *avctx, ICreateDevEnum *devenum,
@@ -67,9 +67,9 @@ dshow_cycle_devices(AVFormatContext *avctx, ICreateDevEnum *devenum,
                     IBaseFilter **pfilter, char **device_unique_name)
 {
     struct dshow_ctx *ctx = avctx->priv_data;
-    IBaseFilter *device_filter = NULL;
-    IEnumMoniker *classenum = NULL;
-    IMoniker *m = NULL;
+    IBaseFilter *device_filter = ((void*)0);
+    IEnumMoniker *classenum = ((void*)0);
+    IMoniker *m = ((void*)0);
     const char *device_name = ctx->device_name[devtype];
     int skip = (devtype == VideoDevice) ? ctx->video_device_number
                                         : ctx->audio_device_number;
@@ -88,14 +88,14 @@ dshow_cycle_devices(AVFormatContext *avctx, ICreateDevEnum *devenum,
         return AVERROR(EIO);
     }
 
-    while (!device_filter && IEnumMoniker_Next(classenum, 1, &m, NULL) == S_OK) {
-        IPropertyBag *bag = NULL;
-        char *friendly_name = NULL;
-        char *unique_name = NULL;
+    while (!device_filter && IEnumMoniker_Next(classenum, 1, &m, ((void*)0)) == S_OK) {
+        IPropertyBag *bag = ((void*)0);
+        char *friendly_name = ((void*)0);
+        char *unique_name = ((void*)0);
         VARIANT var;
-        IBindCtx *bind_ctx = NULL;
-        LPOLESTR olestr = NULL;
-        LPMALLOC co_malloc = NULL;
+        IBindCtx *bind_ctx = ((void*)0);
+        LPOLESTR olestr = ((void*)0);
+        LPMALLOC co_malloc = ((void*)0);
         int i;
 
         r = CoGetMalloc(1, &co_malloc);
@@ -104,12 +104,12 @@ dshow_cycle_devices(AVFormatContext *avctx, ICreateDevEnum *devenum,
         r = CreateBindCtx(0, &bind_ctx);
         if (r != S_OK)
             goto fail1;
-        /* GetDisplayname works for both video and audio, DevicePath doesn't */
-        r = IMoniker_GetDisplayName(m, bind_ctx, NULL, &olestr);
+
+        r = IMoniker_GetDisplayName(m, bind_ctx, ((void*)0), &olestr);
         if (r != S_OK)
             goto fail1;
         unique_name = dup_wchar_to_utf8(olestr);
-        /* replace ':' with '_' since we use : to delineate between sources */
+
         for (i = 0; i < strlen(unique_name); i++) {
             if (unique_name[i] == ':')
                 unique_name[i] = '_';
@@ -120,7 +120,7 @@ dshow_cycle_devices(AVFormatContext *avctx, ICreateDevEnum *devenum,
             goto fail1;
 
         var.vt = VT_BSTR;
-        r = IPropertyBag_Read(bag, L"FriendlyName", &var, NULL);
+        r = IPropertyBag_Read(bag, L"FriendlyName", &var, ((void*)0));
         if (r != S_OK)
             goto fail1;
         friendly_name = dup_wchar_to_utf8(var.bstrVal);
@@ -136,8 +136,8 @@ dshow_cycle_devices(AVFormatContext *avctx, ICreateDevEnum *devenum,
                     goto fail1;
                 }
                 *device_unique_name = unique_name;
-                unique_name = NULL;
-                // success, loop will end now
+                unique_name = ((void*)0);
+
             }
         } else {
             av_log(avctx, AV_LOG_INFO, " \"%s\"\n", friendly_name);

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3rbu ;
-typedef  int /*<<< orphan*/  sqlite3 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SQLITE_FCNTL_VFSNAME ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  sqlite3_file_control (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,char**) ; 
- int /*<<< orphan*/  sqlite3_free (char*) ; 
- int /*<<< orphan*/ * sqlite3rbu_db (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stdout ; 
+
+
+
+typedef int sqlite3rbu ;
+typedef int sqlite3 ;
+
+
+ int SQLITE_FCNTL_VFSNAME ;
+ int fprintf (int ,char*,...) ;
+ int sqlite3_file_control (int *,char*,int ,char**) ;
+ int sqlite3_free (char*) ;
+ int * sqlite3rbu_db (int *,int ) ;
+ int stdout ;
 
 void report_rbu_vfs(sqlite3rbu *pRbu){
   sqlite3 *db = sqlite3rbu_db(pRbu, 0);

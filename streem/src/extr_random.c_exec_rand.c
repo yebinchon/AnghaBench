@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct rand_data {int /*<<< orphan*/  seed; } ;
-typedef  int /*<<< orphan*/  strm_value ;
-typedef  int /*<<< orphan*/  strm_stream ;
-typedef  int strm_int ;
 
-/* Variables and functions */
- int STRM_NG ; 
- int STRM_OK ; 
- int /*<<< orphan*/  free (struct rand_data*) ; 
- int /*<<< orphan*/  gen_rand ; 
- struct rand_data* malloc (int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,char const*,int) ; 
- int /*<<< orphan*/  strm_get_args (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,char*,char const**,int*) ; 
- int /*<<< orphan*/  strm_producer ; 
- int /*<<< orphan*/  strm_raise (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  strm_stream_new (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,void*) ; 
- int /*<<< orphan*/  strm_stream_value (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xorshift128init (int /*<<< orphan*/ ) ; 
+
+
+
+struct rand_data {int seed; } ;
+typedef int strm_value ;
+typedef int strm_stream ;
+typedef int strm_int ;
+
+
+ int STRM_NG ;
+ int STRM_OK ;
+ int free (struct rand_data*) ;
+ int gen_rand ;
+ struct rand_data* malloc (int) ;
+ int memcpy (int ,char const*,int) ;
+ int strm_get_args (int *,int,int *,char*,char const**,int*) ;
+ int strm_producer ;
+ int strm_raise (int *,char*) ;
+ int strm_stream_new (int ,int ,int *,void*) ;
+ int strm_stream_value (int ) ;
+ int xorshift128init (int ) ;
 
 __attribute__((used)) static int
 exec_rand(strm_stream* strm, int argc, strm_value* args, strm_value* ret)
@@ -50,6 +50,6 @@ exec_rand(strm_stream* strm, int argc, strm_value* args, strm_value* ret)
   else {
     xorshift128init(d->seed);
   }
-  *ret = strm_stream_value(strm_stream_new(strm_producer, gen_rand, NULL, (void*)d));
+  *ret = strm_stream_value(strm_stream_new(strm_producer, gen_rand, ((void*)0), (void*)d));
   return STRM_OK;
 }

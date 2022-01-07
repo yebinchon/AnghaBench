@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_stmt ;
-typedef  int /*<<< orphan*/  sqlite3 ;
-struct TYPE_9__ {int bFlag; int iCol; struct TYPE_9__* pLink; int /*<<< orphan*/  zColl; } ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int sqlite3_stmt ;
+typedef int sqlite3 ;
+struct TYPE_9__ {int bFlag; int iCol; struct TYPE_9__* pLink; int zColl; } ;
 struct TYPE_8__ {TYPE_1__* pTab; } ;
 struct TYPE_7__ {char* zName; } ;
-typedef  TYPE_2__ IdxScan ;
-typedef  TYPE_3__ IdxConstraint ;
+typedef TYPE_2__ IdxScan ;
+typedef TYPE_3__ IdxConstraint ;
 
-/* Variables and functions */
- int SQLITE_OK ; 
- scalar_t__ SQLITE_ROW ; 
- int /*<<< orphan*/  idxFinalize (int*,int /*<<< orphan*/ *) ; 
- int idxPrintfPrepareStmt (int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ ,char*,char const*) ; 
- int sqlite3_column_int (int /*<<< orphan*/ *,int) ; 
- scalar_t__ sqlite3_column_text (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  sqlite3_finalize (int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3_step (int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3_stricmp (int /*<<< orphan*/ ,char const*) ; 
+
+ int SQLITE_OK ;
+ scalar_t__ SQLITE_ROW ;
+ int idxFinalize (int*,int *) ;
+ int idxPrintfPrepareStmt (int *,int **,int ,char*,char const*) ;
+ int sqlite3_column_int (int *,int) ;
+ scalar_t__ sqlite3_column_text (int *,int) ;
+ int sqlite3_finalize (int *) ;
+ scalar_t__ sqlite3_step (int *) ;
+ scalar_t__ sqlite3_stricmp (int ,char const*) ;
 
 __attribute__((used)) static int idxFindCompatible(
-  int *pRc,                       /* OUT: Error code */
-  sqlite3* dbm,                   /* Database to search */
-  IdxScan *pScan,                 /* Scan for table to search for index on */
-  IdxConstraint *pEq,             /* List of == constraints */
-  IdxConstraint *pTail            /* List of range constraints */
+  int *pRc,
+  sqlite3* dbm,
+  IdxScan *pScan,
+  IdxConstraint *pEq,
+  IdxConstraint *pTail
 ){
   const char *zTbl = pScan->pTab->zName;
   sqlite3_stmt *pIdxList = 0;
   IdxConstraint *pIter;
-  int nEq = 0;                    /* Number of elements in pEq */
+  int nEq = 0;
   int rc;
 
-  /* Count the elements in list pEq */
+
   for(pIter=pEq; pIter; pIter=pIter->pLink) nEq++;
 
   rc = idxPrintfPrepareStmt(dbm, &pIdxList, 0, "PRAGMA index_list=%Q", zTbl);
@@ -55,7 +55,7 @@ __attribute__((used)) static int idxFindCompatible(
     sqlite3_stmt *pInfo = 0;
     const char *zIdx = (const char*)sqlite3_column_text(pIdxList, 1);
 
-    /* Zero the IdxConstraint.bFlag values in the pEq list */
+
     for(pIter=pEq; pIter; pIter=pIter->pLink) pIter->bFlag = 0;
 
     rc = idxPrintfPrepareStmt(dbm, &pInfo, 0, "PRAGMA index_xInfo=%Q", zIdx);

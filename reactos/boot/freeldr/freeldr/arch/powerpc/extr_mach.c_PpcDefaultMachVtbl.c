@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  HwIdle; int /*<<< orphan*/  HwDetect; int /*<<< orphan*/  GetTime; int /*<<< orphan*/  DiskGetCacheableBlockCount; int /*<<< orphan*/  DiskGetDriveGeometry; int /*<<< orphan*/  DiskReadLogicalSectors; int /*<<< orphan*/  GetMemoryMap; int /*<<< orphan*/  VideoSync; int /*<<< orphan*/  VideoGetPaletteColor; int /*<<< orphan*/  VideoSetPaletteColor; int /*<<< orphan*/  VideoIsPaletteFixed; int /*<<< orphan*/  VideoCopyOffScreenBufferToVRAM; int /*<<< orphan*/  VideoPutChar; int /*<<< orphan*/  VideoHideShowTextCursor; int /*<<< orphan*/  VideoSetTextCursorPosition; int /*<<< orphan*/  VideoGetBufferSize; int /*<<< orphan*/  VideoGetDisplaySize; int /*<<< orphan*/  VideoSetDisplayMode; int /*<<< orphan*/  VideoClearScreen; int /*<<< orphan*/  ConsGetCh; int /*<<< orphan*/  ConsKbHit; int /*<<< orphan*/  ConsPutChar; } ;
 
-/* Variables and functions */
- TYPE_1__ MachVtbl ; 
- int /*<<< orphan*/  PpcConsGetCh ; 
- int /*<<< orphan*/  PpcConsKbHit ; 
- int /*<<< orphan*/  PpcDiskGetCacheableBlockCount ; 
- int /*<<< orphan*/  PpcDiskGetDriveGeometry ; 
- int /*<<< orphan*/  PpcDiskReadLogicalSectors ; 
- int /*<<< orphan*/  PpcGetMemoryMap ; 
- int /*<<< orphan*/  PpcGetTime ; 
- int /*<<< orphan*/  PpcHwDetect ; 
- int /*<<< orphan*/  PpcHwIdle ; 
- int /*<<< orphan*/  PpcOfwPutChar ; 
- int /*<<< orphan*/  PpcVideoClearScreen ; 
- int /*<<< orphan*/  PpcVideoCopyOffScreenBufferToVRAM ; 
- int /*<<< orphan*/  PpcVideoGetBufferSize ; 
- int /*<<< orphan*/  PpcVideoGetDisplaySize ; 
- int /*<<< orphan*/  PpcVideoGetPaletteColor ; 
- int /*<<< orphan*/  PpcVideoHideShowTextCursor ; 
- int /*<<< orphan*/  PpcVideoIsPaletteFixed ; 
- int /*<<< orphan*/  PpcVideoPutChar ; 
- int /*<<< orphan*/  PpcVideoSetDisplayMode ; 
- int /*<<< orphan*/  PpcVideoSetPaletteColor ; 
- int /*<<< orphan*/  PpcVideoSetTextCursorPosition ; 
- int /*<<< orphan*/  PpcVideoSync ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int HwIdle; int HwDetect; int GetTime; int DiskGetCacheableBlockCount; int DiskGetDriveGeometry; int DiskReadLogicalSectors; int GetMemoryMap; int VideoSync; int VideoGetPaletteColor; int VideoSetPaletteColor; int VideoIsPaletteFixed; int VideoCopyOffScreenBufferToVRAM; int VideoPutChar; int VideoHideShowTextCursor; int VideoSetTextCursorPosition; int VideoGetBufferSize; int VideoGetDisplaySize; int VideoSetDisplayMode; int VideoClearScreen; int ConsGetCh; int ConsKbHit; int ConsPutChar; } ;
+
+
+ TYPE_1__ MachVtbl ;
+ int PpcConsGetCh ;
+ int PpcConsKbHit ;
+ int PpcDiskGetCacheableBlockCount ;
+ int PpcDiskGetDriveGeometry ;
+ int PpcDiskReadLogicalSectors ;
+ int PpcGetMemoryMap ;
+ int PpcGetTime ;
+ int PpcHwDetect ;
+ int PpcHwIdle ;
+ int PpcOfwPutChar ;
+ int PpcVideoClearScreen ;
+ int PpcVideoCopyOffScreenBufferToVRAM ;
+ int PpcVideoGetBufferSize ;
+ int PpcVideoGetDisplaySize ;
+ int PpcVideoGetPaletteColor ;
+ int PpcVideoHideShowTextCursor ;
+ int PpcVideoIsPaletteFixed ;
+ int PpcVideoPutChar ;
+ int PpcVideoSetDisplayMode ;
+ int PpcVideoSetPaletteColor ;
+ int PpcVideoSetTextCursorPosition ;
+ int PpcVideoSync ;
 
 void PpcDefaultMachVtbl()
 {
     MachVtbl.ConsPutChar = PpcOfwPutChar;
-    MachVtbl.ConsKbHit   = PpcConsKbHit;
-    MachVtbl.ConsGetCh   = PpcConsGetCh;
+    MachVtbl.ConsKbHit = PpcConsKbHit;
+    MachVtbl.ConsGetCh = PpcConsGetCh;
     MachVtbl.VideoClearScreen = PpcVideoClearScreen;
     MachVtbl.VideoSetDisplayMode = PpcVideoSetDisplayMode;
     MachVtbl.VideoGetDisplaySize = PpcVideoGetDisplaySize;

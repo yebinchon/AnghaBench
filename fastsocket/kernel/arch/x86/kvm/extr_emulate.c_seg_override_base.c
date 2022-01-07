@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct x86_emulate_ctxt {int dummy; } ;
-struct decode_cache {int /*<<< orphan*/  seg_override; int /*<<< orphan*/  has_seg_override; } ;
+struct decode_cache {int seg_override; int has_seg_override; } ;
 
-/* Variables and functions */
- unsigned long seg_base (struct x86_emulate_ctxt*,int /*<<< orphan*/ ) ; 
+
+ unsigned long seg_base (struct x86_emulate_ctxt*,int ) ;
 
 __attribute__((used)) static unsigned long seg_override_base(struct x86_emulate_ctxt *ctxt,
-				       struct decode_cache *c)
+           struct decode_cache *c)
 {
-	if (!c->has_seg_override)
-		return 0;
+ if (!c->has_seg_override)
+  return 0;
 
-	return seg_base(ctxt, c->seg_override);
+ return seg_base(ctxt, c->seg_override);
 }

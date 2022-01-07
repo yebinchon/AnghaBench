@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char uint8_t ;
-typedef  int uint32_t ;
+
+
+
+
+typedef char uint8_t ;
+typedef int uint32_t ;
 struct string {char* data; int len; } ;
-struct conf_server {int valid; int /*<<< orphan*/  addrstr; int /*<<< orphan*/  name; void* port; void* weight; int /*<<< orphan*/  pname; } ;
-struct conf {int /*<<< orphan*/  arg; } ;
+struct conf_server {int valid; int addrstr; int name; void* port; void* weight; int pname; } ;
+struct conf {int arg; } ;
 struct command {int offset; } ;
 struct array {int dummy; } ;
-typedef  scalar_t__ rstatus_t ;
-typedef  int /*<<< orphan*/  delim ;
+typedef scalar_t__ rstatus_t ;
+typedef int delim ;
 
-/* Variables and functions */
- void* CONF_DEFAULT_KETAMA_PORT ; 
- char* CONF_ERROR ; 
- char* CONF_OK ; 
- scalar_t__ NC_OK ; 
- int /*<<< orphan*/  NOT_REACHED () ; 
- int /*<<< orphan*/  array_pop (struct array*) ; 
- struct conf_server* array_push (struct array*) ; 
- struct string* array_top (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  conf_server_init (struct conf_server*) ; 
- void* nc_atoi (char*,int) ; 
- char* nc_strrchr (char*,char*,char) ; 
- int /*<<< orphan*/  nc_valid_port (void*) ; 
- scalar_t__ string_copy (int /*<<< orphan*/ *,char*,int) ; 
+
+ void* CONF_DEFAULT_KETAMA_PORT ;
+ char* CONF_ERROR ;
+ char* CONF_OK ;
+ scalar_t__ NC_OK ;
+ int NOT_REACHED () ;
+ int array_pop (struct array*) ;
+ struct conf_server* array_push (struct array*) ;
+ struct string* array_top (int *) ;
+ int conf_server_init (struct conf_server*) ;
+ void* nc_atoi (char*,int) ;
+ char* nc_strrchr (char*,char*,char) ;
+ int nc_valid_port (void*) ;
+ scalar_t__ string_copy (int *,char*,int) ;
 
 char *
 conf_add_server(struct conf *cf, struct command *cmd, void *conf)
@@ -51,7 +51,7 @@ conf_add_server(struct conf *cf, struct command *cmd, void *conf)
     a = (struct array *)(p + cmd->offset);
 
     field = array_push(a);
-    if (field == NULL) {
+    if (field == ((void*)0)) {
         return CONF_ERROR;
     }
 
@@ -59,28 +59,28 @@ conf_add_server(struct conf *cf, struct command *cmd, void *conf)
 
     value = array_top(&cf->arg);
 
-    /* parse "hostname:port:weight [name]" or "/path/unix_socket:weight [name]" from the end */
+
     p = value->data + value->len - 1;
     start = value->data;
-    addr = NULL;
+    addr = ((void*)0);
     addrlen = 0;
-    weight = NULL;
+    weight = ((void*)0);
     weightlen = 0;
-    port = NULL;
+    port = ((void*)0);
     portlen = 0;
-    name = NULL;
+    name = ((void*)0);
     namelen = 0;
 
     delimlen = value->data[0] == '/' ? 2 : 3;
 
     for (k = 0; k < sizeof(delim); k++) {
         q = nc_strrchr(p, start, delim[k]);
-        if (q == NULL) {
+        if (q == ((void*)0)) {
             if (k == 0) {
-                /*
-                 * name in "hostname:port:weight [name]" format string is
-                 * optional
-                 */
+
+
+
+
                 continue;
             }
             break;
@@ -138,12 +138,12 @@ conf_add_server(struct conf *cf, struct command *cmd, void *conf)
         }
     }
 
-    if (name == NULL) {
-        /*
-         * To maintain backward compatibility with libmemcached, we don't
-         * include the port as the part of the input string to the consistent
-         * hashing algorithm, when it is equal to 11211.
-         */
+    if (name == ((void*)0)) {
+
+
+
+
+
         if (field->port == CONF_DEFAULT_KETAMA_PORT) {
             name = addr;
             namelen = addrlen;
@@ -162,14 +162,6 @@ conf_add_server(struct conf *cf, struct command *cmd, void *conf)
     if (status != NC_OK) {
         return CONF_ERROR;
     }
-
-    /*
-     * The address resolution of the backend server hostname is lazy.
-     * The resolution occurs when a new connection to the server is
-     * created, which could either be the first time or every time
-     * the server gets re-added to the pool after an auto ejection
-     */
-
     field->valid = 1;
 
     return CONF_OK;

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  unichar ;
-typedef  int rc_uint_type ;
-struct TYPE_2__ {scalar_t__ nval; int /*<<< orphan*/  usz; } ;
-typedef  TYPE_1__ mc_keyword ;
 
-/* Variables and functions */
- int memcmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int unichar_len (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int unichar ;
+typedef int rc_uint_type ;
+struct TYPE_2__ {scalar_t__ nval; int usz; } ;
+typedef TYPE_1__ mc_keyword ;
+
+
+ int memcmp (int ,int ,int) ;
+ int unichar_len (int ) ;
 
 __attribute__((used)) static int
 sort_keyword_by_nval (const void *l, const void *r)
@@ -33,7 +33,7 @@ sort_keyword_by_nval (const void *l, const void *r)
   if (l1->nval != r1->nval)
     {
       if (l1->nval < r1->nval)
-	return -1;
+ return -1;
       return 1;
     }
   len1 = unichar_len (l1->usz);

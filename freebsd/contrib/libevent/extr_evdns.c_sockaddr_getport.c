@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct sockaddr_in6 {int /*<<< orphan*/  sin6_port; } ;
-struct sockaddr_in {int /*<<< orphan*/  sin_port; } ;
+
+
+
+
+struct sockaddr_in6 {int sin6_port; } ;
+struct sockaddr_in {int sin_port; } ;
 struct sockaddr {scalar_t__ sa_family; } ;
-typedef  int /*<<< orphan*/  ev_uint16_t ;
+typedef int ev_uint16_t ;
 
-/* Variables and functions */
- scalar_t__ AF_INET ; 
- scalar_t__ AF_INET6 ; 
- int /*<<< orphan*/  ntohs (int /*<<< orphan*/ ) ; 
+
+ scalar_t__ AF_INET ;
+ scalar_t__ AF_INET6 ;
+ int ntohs (int ) ;
 
 __attribute__((used)) static ev_uint16_t
 sockaddr_getport(struct sockaddr *sa)
 {
-	if (sa->sa_family == AF_INET) {
-		return ntohs(((struct sockaddr_in *)sa)->sin_port);
-	} else if (sa->sa_family == AF_INET6) {
-		return ntohs(((struct sockaddr_in6 *)sa)->sin6_port);
-	} else {
-		return 0;
-	}
+ if (sa->sa_family == AF_INET) {
+  return ntohs(((struct sockaddr_in *)sa)->sin_port);
+ } else if (sa->sa_family == AF_INET6) {
+  return ntohs(((struct sockaddr_in6 *)sa)->sin6_port);
+ } else {
+  return 0;
+ }
 }

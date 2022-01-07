@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct parse {TYPE_1__* g; } ;
 struct branchc {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/  nbol; int /*<<< orphan*/  iflags; } ;
+struct TYPE_2__ {int nbol; int iflags; } ;
 
-/* Variables and functions */
- scalar_t__ EAT (char) ; 
- int /*<<< orphan*/  EMIT (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OBOL ; 
- int /*<<< orphan*/  USEBOL ; 
+
+ scalar_t__ EAT (char) ;
+ int EMIT (int ,int ) ;
+ int OBOL ;
+ int USEBOL ;
 
 __attribute__((used)) static void
 p_bre_pre_parse(struct parse *p, struct branchc *bc)
 {
 
-	(void) bc;
-	/*
-	 * Does not move cleanly into expression parser because of
-	 * ordinary interpration of * at the beginning position of
-	 * an expression.
-	 */
-	if (EAT('^')) {
-		EMIT(OBOL, 0);
-		p->g->iflags |= USEBOL;
-		p->g->nbol++;
-	}
+ (void) bc;
+
+
+
+
+
+ if (EAT('^')) {
+  EMIT(OBOL, 0);
+  p->g->iflags |= USEBOL;
+  p->g->nbol++;
+ }
 }

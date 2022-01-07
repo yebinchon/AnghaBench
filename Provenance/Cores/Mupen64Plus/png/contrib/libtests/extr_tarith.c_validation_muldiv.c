@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int png_uint_32 ;
-typedef  int png_int_32 ;
-typedef  int png_fixed_point ;
 
-/* Variables and functions */
- long long PNG_UINT_31_MAX ; 
- int RAND_MAX ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  png_64bit_product (long,long,unsigned long*,unsigned long*) ; 
- int png_muldiv (int*,int,int,int) ; 
- int /*<<< orphan*/  printf (char*,int,...) ; 
- int rand () ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ verbose ; 
+
+
+
+typedef int png_uint_32 ;
+typedef int png_int_32 ;
+typedef int png_fixed_point ;
+
+
+ long long PNG_UINT_31_MAX ;
+ int RAND_MAX ;
+ int fprintf (int ,char*,...) ;
+ int png_64bit_product (long,long,unsigned long*,unsigned long*) ;
+ int png_muldiv (int*,int,int,int) ;
+ int printf (char*,int,...) ;
+ int rand () ;
+ int stderr ;
+ scalar_t__ verbose ;
 
 int validation_muldiv(int count, int argc, char **argv)
 {
@@ -43,7 +43,7 @@ int validation_muldiv(int count, int argc, char **argv)
          return 1;
       }
 
-   /* Find out about the random number generator. */
+
    randbuffer = RAND_MAX;
    while (randbuffer != 0) ++randbits, randbuffer >>= 1;
    printf("Using random number generator that makes %d bits\n", randbits);
@@ -55,17 +55,17 @@ int validation_muldiv(int count, int argc, char **argv)
    do
    {
       png_fixed_point result;
-      /* NOTE: your mileage may vary, a type is required below that can
-       * hold 64 bits or more, if floating point is used a 64-bit or
-       * better mantissa is required.
-       */
+
+
+
+
       long long int fp, fpround;
       unsigned long hi, lo;
       int ok;
 
-      /* Check the values, png_64bit_product can only handle positive
-       * numbers, so correct for that here.
-       */
+
+
+
       {
          long u1, u2;
          int n = 0;
@@ -74,7 +74,7 @@ int validation_muldiv(int count, int argc, char **argv)
          png_64bit_product(u1, u2, &hi, &lo);
          if (n)
          {
-            /* -x = ~x+1 */
+
             lo = ((~lo) + 1) & 0xffffffff;
             hi = ~hi;
             if (lo == 0) ++hi;
@@ -92,7 +92,7 @@ int validation_muldiv(int count, int argc, char **argv)
 
       if (div != 0)
       {
-         /* Round - this is C round to zero. */
+
          if ((fp < 0) != (div < 0))
            fp -= div/2;
          else
@@ -100,13 +100,13 @@ int validation_muldiv(int count, int argc, char **argv)
 
          fp /= div;
          fpround = fp;
-         /* Assume 2's complement here: */
+
          ok = fpround <= PNG_UINT_31_MAX &&
               fpround >= -1-(long long int)PNG_UINT_31_MAX;
          if (!ok) ++overflow;
       }
       else
-        ok = 0, ++overflow, fpround = fp/*misleading*/;
+        ok = 0, ++overflow, fpround = fp ;
 
       if (verbose)
          fprintf(stderr, "TEST %d * %d / %d -> %lld (%s)\n", a, times, div,
@@ -132,10 +132,10 @@ int validation_muldiv(int count, int argc, char **argv)
       else
          ++passed;
 
-      /* Generate three new values, this uses rand() and rand() only returns
-       * up to RAND_MAX.
-       */
-      /* CRUDE */
+
+
+
+
       a += times;
       times += div;
       div = randbuffer;

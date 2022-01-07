@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  IWbemServices ;
-typedef  scalar_t__ HRESULT ;
-typedef  int /*<<< orphan*/  BSTR ;
 
-/* Variables and functions */
- scalar_t__ IWbemServices_CancelAsyncCall (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ IWbemServices_ExecQueryAsync (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  SysAllocString (char const*) ; 
- int /*<<< orphan*/  SysFreeString (int /*<<< orphan*/ ) ; 
- scalar_t__ WBEM_E_INVALID_PARAMETER ; 
- scalar_t__ WBEM_E_NOT_FOUND ; 
- scalar_t__ broken (int) ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
- int /*<<< orphan*/  sink ; 
- char const* wqlW ; 
+
+
+
+typedef char WCHAR ;
+typedef int IWbemServices ;
+typedef scalar_t__ HRESULT ;
+typedef int BSTR ;
+
+
+ scalar_t__ IWbemServices_CancelAsyncCall (int *,int *) ;
+ scalar_t__ IWbemServices_ExecQueryAsync (int *,int ,int ,int ,int *,int *) ;
+ scalar_t__ S_OK ;
+ int SysAllocString (char const*) ;
+ int SysFreeString (int ) ;
+ scalar_t__ WBEM_E_INVALID_PARAMETER ;
+ scalar_t__ WBEM_E_NOT_FOUND ;
+ scalar_t__ broken (int) ;
+ int ok (int,char*,scalar_t__) ;
+ int sink ;
+ char const* wqlW ;
 
 __attribute__((used)) static void test_query_async( IWbemServices *services )
 {
@@ -36,16 +36,16 @@ __attribute__((used)) static void test_query_async( IWbemServices *services )
     BSTR wql = SysAllocString( wqlW ), query = SysAllocString( queryW );
     HRESULT hr;
 
-    hr = IWbemServices_ExecQueryAsync( services, wql, query, 0, NULL, NULL );
+    hr = IWbemServices_ExecQueryAsync( services, wql, query, 0, ((void*)0), ((void*)0) );
     ok( hr == WBEM_E_INVALID_PARAMETER, "got %08x\n", hr );
 
-    hr = IWbemServices_ExecQueryAsync( services, wql, query, 0, NULL, &sink );
+    hr = IWbemServices_ExecQueryAsync( services, wql, query, 0, ((void*)0), &sink );
     ok( hr == S_OK || broken(hr == WBEM_E_NOT_FOUND), "got %08x\n", hr );
 
-    hr =  IWbemServices_CancelAsyncCall( services, NULL );
+    hr = IWbemServices_CancelAsyncCall( services, ((void*)0) );
     ok( hr == WBEM_E_INVALID_PARAMETER, "got %08x\n", hr );
 
-    hr =  IWbemServices_CancelAsyncCall( services, &sink );
+    hr = IWbemServices_CancelAsyncCall( services, &sink );
     ok( hr == S_OK, "got %08x\n", hr );
 
     SysFreeString( wql );

@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uuid_t ;
-typedef  scalar_t__ uint32_t ;
-typedef  scalar_t__ time_t ;
-struct TYPE_7__ {int persons_memory; int /*<<< orphan*/  persons; int /*<<< orphan*/  persons_count; } ;
-struct TYPE_6__ {int /*<<< orphan*/  guid; scalar_t__ usages; scalar_t__ last_t; scalar_t__ first_t; int /*<<< orphan*/  person_urls; } ;
-typedef  TYPE_1__ REGISTRY_PERSON ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D_REGISTRY ; 
- int /*<<< orphan*/  GUID_LEN ; 
- int /*<<< orphan*/  avl_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  debug (int /*<<< orphan*/ ,char*,char const*,...) ; 
- int /*<<< orphan*/  dictionary_get (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dictionary_set (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*,int) ; 
- int /*<<< orphan*/  info (char*,int /*<<< orphan*/ ) ; 
- TYPE_1__* mallocz (int) ; 
- int /*<<< orphan*/  person_url_compare ; 
- TYPE_3__ registry ; 
- int /*<<< orphan*/  strncpyz (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  uuid_generate (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  uuid_unparse_lower (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uuid_t ;
+typedef scalar_t__ uint32_t ;
+typedef scalar_t__ time_t ;
+struct TYPE_7__ {int persons_memory; int persons; int persons_count; } ;
+struct TYPE_6__ {int guid; scalar_t__ usages; scalar_t__ last_t; scalar_t__ first_t; int person_urls; } ;
+typedef TYPE_1__ REGISTRY_PERSON ;
+
+
+ int D_REGISTRY ;
+ int GUID_LEN ;
+ int avl_init (int *,int ) ;
+ int debug (int ,char*,char const*,...) ;
+ int dictionary_get (int ,int ) ;
+ int dictionary_set (int ,int ,TYPE_1__*,int) ;
+ int info (char*,int ) ;
+ TYPE_1__* mallocz (int) ;
+ int person_url_compare ;
+ TYPE_3__ registry ;
+ int strncpyz (int ,char const*,int ) ;
+ int uuid_generate (int ) ;
+ int uuid_unparse_lower (int ,int ) ;
 
 REGISTRY_PERSON *registry_person_allocate(const char *person_guid, time_t when) {
     debug(D_REGISTRY, "Registry: registry_person_allocate('%s'): allocating new person, sizeof(PERSON)=%zu", (person_guid)?person_guid:"", sizeof(REGISTRY_PERSON));

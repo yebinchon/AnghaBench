@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct snd_pcm_substream {TYPE_1__* runtime; } ;
-struct snd_ivtv_card {int /*<<< orphan*/  slock; } ;
+struct snd_ivtv_card {int slock; } ;
 struct TYPE_2__ {unsigned char* dma_area; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dprintk (char*) ; 
- struct snd_ivtv_card* snd_pcm_substream_chip (struct snd_pcm_substream*) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  vfree (unsigned char*) ; 
+
+ int dprintk (char*) ;
+ struct snd_ivtv_card* snd_pcm_substream_chip (struct snd_pcm_substream*) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
+ int vfree (unsigned char*) ;
 
 __attribute__((used)) static int snd_ivtv_pcm_hw_free(struct snd_pcm_substream *substream)
 {
-	struct snd_ivtv_card *itvsc = snd_pcm_substream_chip(substream);
-	unsigned long flags;
-	unsigned char *dma_area = NULL;
+ struct snd_ivtv_card *itvsc = snd_pcm_substream_chip(substream);
+ unsigned long flags;
+ unsigned char *dma_area = ((void*)0);
 
-	spin_lock_irqsave(&itvsc->slock, flags);
-	if (substream->runtime->dma_area) {
-		dprintk("freeing pcm capture region\n");
-		dma_area = substream->runtime->dma_area;
-		substream->runtime->dma_area = NULL;
-	}
-	spin_unlock_irqrestore(&itvsc->slock, flags);
-	vfree(dma_area);
+ spin_lock_irqsave(&itvsc->slock, flags);
+ if (substream->runtime->dma_area) {
+  dprintk("freeing pcm capture region\n");
+  dma_area = substream->runtime->dma_area;
+  substream->runtime->dma_area = ((void*)0);
+ }
+ spin_unlock_irqrestore(&itvsc->slock, flags);
+ vfree(dma_area);
 
-	return 0;
+ return 0;
 }

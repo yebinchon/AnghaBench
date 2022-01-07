@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_20__   TYPE_8__ ;
-typedef  struct TYPE_19__   TYPE_7__ ;
-typedef  struct TYPE_18__   TYPE_6__ ;
-typedef  struct TYPE_17__   TYPE_5__ ;
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
-typedef  struct TYPE_12__   TYPE_11__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_20__ TYPE_8__ ;
+typedef struct TYPE_19__ TYPE_7__ ;
+typedef struct TYPE_18__ TYPE_6__ ;
+typedef struct TYPE_17__ TYPE_5__ ;
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+typedef struct TYPE_12__ TYPE_11__ ;
+
+
 struct TYPE_20__ {int flag; int dip; int sip; scalar_t__ interval; scalar_t__ time; void* dport; void* sport; } ;
-typedef  TYPE_8__ iperf_cfg_t ;
-typedef  int /*<<< orphan*/  cfg ;
+typedef TYPE_8__ iperf_cfg_t ;
+typedef int cfg ;
 struct TYPE_19__ {scalar_t__ count; scalar_t__* ival; } ;
 struct TYPE_18__ {scalar_t__ count; scalar_t__* ival; } ;
 struct TYPE_17__ {scalar_t__ count; void** ival; } ;
 struct TYPE_16__ {scalar_t__ count; } ;
-struct TYPE_15__ {scalar_t__ count; int /*<<< orphan*/ * sval; } ;
+struct TYPE_15__ {scalar_t__ count; int * sval; } ;
 struct TYPE_14__ {scalar_t__ count; } ;
 struct TYPE_13__ {scalar_t__ count; } ;
-struct TYPE_12__ {TYPE_7__* time; TYPE_6__* interval; TYPE_5__* port; TYPE_4__* udp; TYPE_3__* ip; TYPE_2__* server; TYPE_1__* abort; int /*<<< orphan*/  end; } ;
+struct TYPE_12__ {TYPE_7__* time; TYPE_6__* interval; TYPE_5__* port; TYPE_4__* udp; TYPE_3__* ip; TYPE_2__* server; TYPE_1__* abort; int end; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ESP_LOGE (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ESP_LOGI (int /*<<< orphan*/ ,char*,char*,char*,int,int,int,int,void*,int,int,int,int,void*,scalar_t__,scalar_t__) ; 
- void* IPERF_DEFAULT_INTERVAL ; 
- void* IPERF_DEFAULT_PORT ; 
- scalar_t__ IPERF_DEFAULT_TIME ; 
- int IPERF_FLAG_CLIENT ; 
- int IPERF_FLAG_SERVER ; 
- int IPERF_FLAG_TCP ; 
- int IPERF_FLAG_UDP ; 
- int /*<<< orphan*/  TAG ; 
- int arg_parse (int,char**,void**) ; 
- int /*<<< orphan*/  arg_print_errors (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int esp_ip4addr_aton (int /*<<< orphan*/ ) ; 
- TYPE_11__ iperf_args ; 
- int /*<<< orphan*/  iperf_start (TYPE_8__*) ; 
- int /*<<< orphan*/  iperf_stop () ; 
- int /*<<< orphan*/  memset (TYPE_8__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  stderr ; 
- int wifi_get_local_ip () ; 
+
+ int ESP_LOGE (int ,char*) ;
+ int ESP_LOGI (int ,char*,char*,char*,int,int,int,int,void*,int,int,int,int,void*,scalar_t__,scalar_t__) ;
+ void* IPERF_DEFAULT_INTERVAL ;
+ void* IPERF_DEFAULT_PORT ;
+ scalar_t__ IPERF_DEFAULT_TIME ;
+ int IPERF_FLAG_CLIENT ;
+ int IPERF_FLAG_SERVER ;
+ int IPERF_FLAG_TCP ;
+ int IPERF_FLAG_UDP ;
+ int TAG ;
+ int arg_parse (int,char**,void**) ;
+ int arg_print_errors (int ,int ,char*) ;
+ int esp_ip4addr_aton (int ) ;
+ TYPE_11__ iperf_args ;
+ int iperf_start (TYPE_8__*) ;
+ int iperf_stop () ;
+ int memset (TYPE_8__*,int ,int) ;
+ int stderr ;
+ int wifi_get_local_ip () ;
 
 __attribute__((used)) static int wifi_cmd_iperf(int argc, char** argv)
 {

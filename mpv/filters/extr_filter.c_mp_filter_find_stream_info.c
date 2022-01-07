@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct mp_stream_info {int dummy; } ;
 struct mp_filter {TYPE_1__* in; struct mp_stream_info* stream_info; } ;
 struct TYPE_2__ {struct mp_filter* parent; } ;
 
-/* Variables and functions */
+
 
 struct mp_stream_info *mp_filter_find_stream_info(struct mp_filter *f)
 {
@@ -24,5 +24,5 @@ struct mp_stream_info *mp_filter_find_stream_info(struct mp_filter *f)
             return f->stream_info;
         f = f->in->parent;
     }
-    return NULL;
+    return ((void*)0);
 }

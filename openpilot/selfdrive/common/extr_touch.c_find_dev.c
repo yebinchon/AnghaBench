@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct dirent {int /*<<< orphan*/  d_name; } ;
-typedef  int /*<<< orphan*/  ev_bits ;
-typedef  int /*<<< orphan*/  DIR ;
 
-/* Variables and functions */
- int ABS_MT_POSITION_X ; 
- int ABS_MT_POSITION_Y ; 
- int /*<<< orphan*/  EVIOCGBIT (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  EV_ABS ; 
- int KEY_MAX ; 
- int /*<<< orphan*/  O_RDONLY ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  closedir (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  dirfd (int /*<<< orphan*/ *) ; 
- int ioctl (int,int /*<<< orphan*/ ,unsigned char*) ; 
- int openat (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * opendir (char*) ; 
- struct dirent* readdir (int /*<<< orphan*/ *) ; 
- scalar_t__ strncmp (int /*<<< orphan*/ ,char*,int) ; 
+
+
+
+struct dirent {int d_name; } ;
+typedef int ev_bits ;
+typedef int DIR ;
+
+
+ int ABS_MT_POSITION_X ;
+ int ABS_MT_POSITION_Y ;
+ int EVIOCGBIT (int ,int) ;
+ int EV_ABS ;
+ int KEY_MAX ;
+ int O_RDONLY ;
+ int assert (int) ;
+ int close (int) ;
+ int closedir (int *) ;
+ int dirfd (int *) ;
+ int ioctl (int,int ,unsigned char*) ;
+ int openat (int ,int ,int ) ;
+ int * opendir (char*) ;
+ struct dirent* readdir (int *) ;
+ scalar_t__ strncmp (int ,char*,int) ;
 
 __attribute__((used)) static int find_dev() {
   int err;
@@ -38,7 +38,7 @@ __attribute__((used)) static int find_dev() {
 
   DIR *dir = opendir("/dev/input");
   assert(dir);
-  struct dirent* de = NULL;
+  struct dirent* de = ((void*)0);
   while ((de = readdir(dir))) {
     if (strncmp(de->d_name, "event", 5)) continue;
 

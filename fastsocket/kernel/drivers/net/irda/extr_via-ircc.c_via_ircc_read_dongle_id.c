@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  IRDA_ERROR (char*) ; 
+ int IRDA_ERROR (char*) ;
 
 __attribute__((used)) static int via_ircc_read_dongle_id(int iobase)
 {
-	int dongle_id = 9;	/* Default to IBM */
+ int dongle_id = 9;
 
-	IRDA_ERROR("via-ircc: dongle probing not supported, please specify dongle_id module parameter.\n");
-	return dongle_id;
+ IRDA_ERROR("via-ircc: dongle probing not supported, please specify dongle_id module parameter.\n");
+ return dongle_id;
 }

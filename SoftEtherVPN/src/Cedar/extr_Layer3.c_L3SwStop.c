@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int Active; int Halt; int /*<<< orphan*/  lock; int /*<<< orphan*/ * Thread; } ;
-typedef  int /*<<< orphan*/  THREAD ;
-typedef  TYPE_1__ L3SW ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INFINITE ; 
- int /*<<< orphan*/  Lock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReleaseThread (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Unlock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WaitThread (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int Active; int Halt; int lock; int * Thread; } ;
+typedef int THREAD ;
+typedef TYPE_1__ L3SW ;
+
+
+ int INFINITE ;
+ int Lock (int ) ;
+ int ReleaseThread (int *) ;
+ int Unlock (int ) ;
+ int WaitThread (int *,int ) ;
 
 void L3SwStop(L3SW *s)
 {
-	THREAD *t = NULL;
-	// Validate arguments
-	if (s == NULL)
-	{
-		return;
-	}
+ THREAD *t = ((void*)0);
 
-	Lock(s->lock);
-	{
-		if (s->Active == false)
-		{
-			Unlock(s->lock);
-			return;
-		}
+ if (s == ((void*)0))
+ {
+  return;
+ }
 
-		s->Halt = true;
+ Lock(s->lock);
+ {
+  if (s->Active == 0)
+  {
+   Unlock(s->lock);
+   return;
+  }
 
-		t = s->Thread;
+  s->Halt = 1;
 
-		s->Active = false;
-	}
-	Unlock(s->lock);
+  t = s->Thread;
 
-	WaitThread(t, INFINITE);
-	ReleaseThread(t);
+  s->Active = 0;
+ }
+ Unlock(s->lock);
+
+ WaitThread(t, INFINITE);
+ ReleaseThread(t);
 }

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  scalar_t__ (* mz_stream_write_cb ) (void*,int /*<<< orphan*/ *,scalar_t__) ;
-typedef  scalar_t__ (* mz_stream_read_cb ) (void*,int /*<<< orphan*/ *,scalar_t__) ;
-typedef  scalar_t__ int32_t ;
-typedef  int /*<<< orphan*/  buf ;
 
-/* Variables and functions */
- scalar_t__ MZ_OK ; 
- scalar_t__ MZ_STREAM_ERROR ; 
- scalar_t__ mz_stream_read (void*,int /*<<< orphan*/ *,scalar_t__) ; 
- scalar_t__ mz_stream_write (void*,int /*<<< orphan*/ *,scalar_t__) ; 
+
+
+
+typedef int uint8_t ;
+typedef scalar_t__ (* mz_stream_write_cb ) (void*,int *,scalar_t__) ;
+typedef scalar_t__ (* mz_stream_read_cb ) (void*,int *,scalar_t__) ;
+typedef scalar_t__ int32_t ;
+typedef int buf ;
+
+
+ scalar_t__ MZ_OK ;
+ scalar_t__ MZ_STREAM_ERROR ;
+ scalar_t__ mz_stream_read (void*,int *,scalar_t__) ;
+ scalar_t__ mz_stream_write (void*,int *,scalar_t__) ;
 
 int32_t mz_stream_copy_stream(void *target, mz_stream_write_cb write_cb, void *source,
     mz_stream_read_cb read_cb, int32_t len)
@@ -30,9 +30,9 @@ int32_t mz_stream_copy_stream(void *target, mz_stream_write_cb write_cb, void *s
     int32_t read = 0;
     int32_t written = 0;
 
-    if (write_cb == NULL)
+    if (write_cb == ((void*)0))
         write_cb = mz_stream_write;
-    if (read_cb == NULL)
+    if (read_cb == ((void*)0))
         read_cb = mz_stream_read;
 
     while (len > 0)

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct sockaddr_storage {int nodeid; int addr_count; struct sockaddr_storage** addr; int /*<<< orphan*/  list; } ;
-struct dlm_node_addr {int nodeid; int addr_count; struct dlm_node_addr** addr; int /*<<< orphan*/  list; } ;
 
-/* Variables and functions */
- scalar_t__ DLM_MAX_ADDR_COUNT ; 
- int ENOMEM ; 
- int ENOSPC ; 
- int /*<<< orphan*/  GFP_NOFS ; 
- int /*<<< orphan*/  dlm_node_addrs ; 
- int /*<<< orphan*/  dlm_node_addrs_spin ; 
- struct sockaddr_storage* find_node_addr (int) ; 
- int /*<<< orphan*/  kfree (struct sockaddr_storage*) ; 
- struct sockaddr_storage* kzalloc (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  list_add (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memcpy (struct sockaddr_storage*,struct sockaddr_storage*,int) ; 
- int /*<<< orphan*/  spin_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock (int /*<<< orphan*/ *) ; 
+
+
+
+struct sockaddr_storage {int nodeid; int addr_count; struct sockaddr_storage** addr; int list; } ;
+struct dlm_node_addr {int nodeid; int addr_count; struct dlm_node_addr** addr; int list; } ;
+
+
+ scalar_t__ DLM_MAX_ADDR_COUNT ;
+ int ENOMEM ;
+ int ENOSPC ;
+ int GFP_NOFS ;
+ int dlm_node_addrs ;
+ int dlm_node_addrs_spin ;
+ struct sockaddr_storage* find_node_addr (int) ;
+ int kfree (struct sockaddr_storage*) ;
+ struct sockaddr_storage* kzalloc (int,int ) ;
+ int list_add (int *,int *) ;
+ int memcpy (struct sockaddr_storage*,struct sockaddr_storage*,int) ;
+ int spin_lock (int *) ;
+ int spin_unlock (int *) ;
 
 int dlm_lowcomms_addr(int nodeid, struct sockaddr_storage *addr, int len)
 {

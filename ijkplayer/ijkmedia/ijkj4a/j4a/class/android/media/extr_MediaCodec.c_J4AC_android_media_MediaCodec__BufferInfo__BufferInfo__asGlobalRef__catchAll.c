@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * jobject ;
-typedef  int /*<<< orphan*/  JNIEnv ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * J4AC_android_media_MediaCodec__BufferInfo__BufferInfo__catchAll (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  J4A_DeleteLocalRef__p (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- scalar_t__ J4A_ExceptionCheck__catchAll (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * J4A_NewGlobalRef__catchAll (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int * jobject ;
+typedef int JNIEnv ;
+
+
+ int * J4AC_android_media_MediaCodec__BufferInfo__BufferInfo__catchAll (int *) ;
+ int J4A_DeleteLocalRef__p (int *,int **) ;
+ scalar_t__ J4A_ExceptionCheck__catchAll (int *) ;
+ int * J4A_NewGlobalRef__catchAll (int *,int *) ;
 
 jobject J4AC_android_media_MediaCodec__BufferInfo__BufferInfo__asGlobalRef__catchAll(JNIEnv *env)
 {
-    jobject ret_object   = NULL;
+    jobject ret_object = ((void*)0);
     jobject local_object = J4AC_android_media_MediaCodec__BufferInfo__BufferInfo__catchAll(env);
     if (J4A_ExceptionCheck__catchAll(env) || !local_object) {
-        ret_object = NULL;
+        ret_object = ((void*)0);
         goto fail;
     }
 
     ret_object = J4A_NewGlobalRef__catchAll(env, local_object);
     if (!ret_object) {
-        ret_object = NULL;
+        ret_object = ((void*)0);
         goto fail;
     }
 

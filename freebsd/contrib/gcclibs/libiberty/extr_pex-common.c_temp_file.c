@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct pex_obj {int /*<<< orphan*/ * tempbase; } ;
 
-/* Variables and functions */
- int PEX_SUFFIX ; 
- int /*<<< orphan*/  close (int) ; 
- char* concat (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (char*) ; 
- char* make_temp_file (char*) ; 
- int mkstemps (char*,int /*<<< orphan*/ ) ; 
- scalar_t__ strcmp (int /*<<< orphan*/ *,char*) ; 
- int strlen (int /*<<< orphan*/ *) ; 
- char* xstrdup (int /*<<< orphan*/ *) ; 
+
+
+
+struct pex_obj {int * tempbase; } ;
+
+
+ int PEX_SUFFIX ;
+ int close (int) ;
+ char* concat (int *,char*,int *) ;
+ int free (char*) ;
+ char* make_temp_file (char*) ;
+ int mkstemps (char*,int ) ;
+ scalar_t__ strcmp (int *,char*) ;
+ int strlen (int *) ;
+ char* xstrdup (int *) ;
 
 __attribute__((used)) static char *
 temp_file (struct pex_obj *obj, int flags, char *name)
 {
-  if (name == NULL)
+  if (name == ((void*)0))
     {
-      if (obj->tempbase == NULL)
+      if (obj->tempbase == ((void*)0))
         {
-          name = make_temp_file (NULL);
+          name = make_temp_file (((void*)0));
         }
       else
         {
@@ -41,28 +41,28 @@ temp_file (struct pex_obj *obj, int flags, char *name)
               && strcmp (obj->tempbase + len - 6, "XXXXXX") == 0)
             name = xstrdup (obj->tempbase);
           else
-            name = concat (obj->tempbase, "XXXXXX", NULL);
+            name = concat (obj->tempbase, "XXXXXX", ((void*)0));
 
           out = mkstemps (name, 0);
           if (out < 0)
             {
               free (name);
-              return NULL;
+              return ((void*)0);
             }
 
-          /* This isn't obj->funcs->close because we got the
-             descriptor from mkstemps, not from a function in
-             obj->funcs.  Calling close here is just like what
-             make_temp_file does.  */
+
+
+
+
           close (out);
         }
     }
   else if ((flags & PEX_SUFFIX) != 0)
     {
-      if (obj->tempbase == NULL)
+      if (obj->tempbase == ((void*)0))
         name = make_temp_file (name);
       else
-        name = concat (obj->tempbase, name, NULL);
+        name = concat (obj->tempbase, name, ((void*)0));
     }
 
   return name;

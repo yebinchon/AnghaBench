@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char uint32_t ;
-struct TYPE_6__ {int /*<<< orphan*/  md_info; } ;
-typedef  TYPE_1__ mbedtls_md_context_t ;
 
-/* Variables and functions */
- int MBEDTLS_ERR_PKCS5_BAD_INPUT_DATA ; 
- int MBEDTLS_MD_MAX_SIZE ; 
- unsigned char mbedtls_md_get_size (int /*<<< orphan*/ ) ; 
- int mbedtls_md_hmac_finish (TYPE_1__*,unsigned char*) ; 
- int mbedtls_md_hmac_starts (TYPE_1__*,unsigned char const*,size_t) ; 
- int mbedtls_md_hmac_update (TYPE_1__*,unsigned char const*,unsigned char) ; 
- int /*<<< orphan*/  memcpy (unsigned char*,unsigned char*,size_t) ; 
- int /*<<< orphan*/  memset (unsigned char*,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef char uint32_t ;
+struct TYPE_6__ {int md_info; } ;
+typedef TYPE_1__ mbedtls_md_context_t ;
+
+
+ int MBEDTLS_ERR_PKCS5_BAD_INPUT_DATA ;
+ int MBEDTLS_MD_MAX_SIZE ;
+ unsigned char mbedtls_md_get_size (int ) ;
+ int mbedtls_md_hmac_finish (TYPE_1__*,unsigned char*) ;
+ int mbedtls_md_hmac_starts (TYPE_1__*,unsigned char const*,size_t) ;
+ int mbedtls_md_hmac_update (TYPE_1__*,unsigned char const*,unsigned char) ;
+ int memcpy (unsigned char*,unsigned char*,size_t) ;
+ int memset (unsigned char*,int ,int) ;
 
 int mbedtls_pkcs5_pbkdf2_hmac( mbedtls_md_context_t *ctx, const unsigned char *password,
                        size_t plen, const unsigned char *salt, size_t slen,
@@ -47,7 +47,7 @@ int mbedtls_pkcs5_pbkdf2_hmac( mbedtls_md_context_t *ctx, const unsigned char *p
 
     while( key_length )
     {
-        /* U1 ends up in work */
+
         if( ( ret = mbedtls_md_hmac_starts( ctx, password, plen ) ) != 0 )
             return( ret );
 
@@ -64,7 +64,7 @@ int mbedtls_pkcs5_pbkdf2_hmac( mbedtls_md_context_t *ctx, const unsigned char *p
 
         for( i = 1; i < iteration_count; i++ )
         {
-            /* U2 ends up in md1 */
+
             if( ( ret = mbedtls_md_hmac_starts( ctx, password, plen ) ) != 0 )
                 return( ret );
 
@@ -74,7 +74,7 @@ int mbedtls_pkcs5_pbkdf2_hmac( mbedtls_md_context_t *ctx, const unsigned char *p
             if( ( ret = mbedtls_md_hmac_finish( ctx, md1 ) ) != 0 )
                 return( ret );
 
-            /* U1 xor U2 */
+
             for( j = 0; j < md_size; j++ )
                 work[j] ^= md1[j];
         }

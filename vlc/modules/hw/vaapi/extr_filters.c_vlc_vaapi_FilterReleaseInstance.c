@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_decoder_device ;
-typedef  int /*<<< orphan*/  filter_t ;
-struct TYPE_2__ {int /*<<< orphan*/  lock; int /*<<< orphan*/ * owner; int /*<<< orphan*/ * dec_device; } ;
 
-/* Variables and functions */
- TYPE_1__ holder ; 
- int /*<<< orphan*/  vlc_decoder_device_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_mutex_unlock (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int vlc_decoder_device ;
+typedef int filter_t ;
+struct TYPE_2__ {int lock; int * owner; int * dec_device; } ;
+
+
+ TYPE_1__ holder ;
+ int vlc_decoder_device_Release (int *) ;
+ int vlc_mutex_lock (int *) ;
+ int vlc_mutex_unlock (int *) ;
 
 void
 vlc_vaapi_FilterReleaseInstance(filter_t *filter,
@@ -29,8 +29,8 @@ vlc_vaapi_FilterReleaseInstance(filter_t *filter,
     vlc_mutex_lock(&holder.lock);
     if (filter == holder.owner)
     {
-        holder.dec_device = NULL;
-        holder.owner = NULL;
+        holder.dec_device = ((void*)0);
+        holder.owner = ((void*)0);
     }
     vlc_mutex_unlock(&holder.lock);
 }

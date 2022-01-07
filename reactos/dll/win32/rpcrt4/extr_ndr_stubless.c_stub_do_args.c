@@ -1,60 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_23__   TYPE_6__ ;
-typedef  struct TYPE_22__   TYPE_4__ ;
-typedef  struct TYPE_21__   TYPE_3__ ;
-typedef  struct TYPE_20__   TYPE_2__ ;
-typedef  struct TYPE_19__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  enum stubless_phase { ____Placeholder_stubless_phase } stubless_phase ;
-struct TYPE_23__ {int ServerAllocSize; scalar_t__ IsReturn; int /*<<< orphan*/  IsOut; int /*<<< orphan*/  IsIn; int /*<<< orphan*/  IsSimpleRef; int /*<<< orphan*/  MustFree; scalar_t__ IsBasetype; } ;
-struct TYPE_22__ {unsigned char* StackTop; int /*<<< orphan*/  (* pfnFree ) (void*) ;TYPE_1__* StubDesc; } ;
+
+
+typedef struct TYPE_23__ TYPE_6__ ;
+typedef struct TYPE_22__ TYPE_4__ ;
+typedef struct TYPE_21__ TYPE_3__ ;
+typedef struct TYPE_20__ TYPE_2__ ;
+typedef struct TYPE_19__ TYPE_1__ ;
+
+
+typedef enum stubless_phase { ____Placeholder_stubless_phase } stubless_phase ;
+struct TYPE_23__ {int ServerAllocSize; scalar_t__ IsReturn; int IsOut; int IsIn; int IsSimpleRef; int MustFree; scalar_t__ IsBasetype; } ;
+struct TYPE_22__ {unsigned char* StackTop; int (* pfnFree ) (void*) ;TYPE_1__* StubDesc; } ;
 struct TYPE_20__ {size_t type_offset; unsigned char const type_format_char; } ;
 struct TYPE_21__ {int stack_offset; TYPE_6__ attr; TYPE_2__ u; } ;
 struct TYPE_19__ {unsigned char* pFormatTypes; } ;
-typedef  scalar_t__ PFORMAT_STRING ;
-typedef  int /*<<< orphan*/  NDR_SCONTEXT ;
-typedef  TYPE_3__ NDR_PARAM_OIF ;
-typedef  TYPE_4__ MIDL_STUB_MESSAGE ;
-typedef  int /*<<< orphan*/  LONG_PTR ;
-typedef  int /*<<< orphan*/  DWORD ;
+typedef scalar_t__ PFORMAT_STRING ;
+typedef int NDR_SCONTEXT ;
+typedef TYPE_3__ NDR_PARAM_OIF ;
+typedef TYPE_4__ MIDL_STUB_MESSAGE ;
+typedef int LONG_PTR ;
+typedef int DWORD ;
 
-/* Variables and functions */
- unsigned char const FC_BIND_CONTEXT ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HEAP_ZERO_MEMORY ; 
- void* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*) ; 
- void* NDRSContextValue (int /*<<< orphan*/ ) ; 
- void* NdrAllocate (TYPE_4__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NdrContextHandleInitialize (TYPE_4__*,unsigned char const*) ; 
- int /*<<< orphan*/  RPC_S_INTERNAL_ERROR ; 
- int /*<<< orphan*/  RpcRaiseException (int /*<<< orphan*/ ) ; 
-#define  STUBLESS_CALCSIZE 133 
-#define  STUBLESS_FREE 132 
-#define  STUBLESS_INITOUT 131 
-#define  STUBLESS_MARSHAL 130 
-#define  STUBLESS_MUSTFREE 129 
-#define  STUBLESS_UNMARSHAL 128 
- int /*<<< orphan*/  TRACE (char*,...) ; 
- int /*<<< orphan*/  calc_arg_size (TYPE_4__*,unsigned char const*) ; 
- int /*<<< orphan*/  call_buffer_sizer (TYPE_4__*,unsigned char*,TYPE_3__ const*) ; 
- int /*<<< orphan*/  call_freer (TYPE_4__*,unsigned char*,TYPE_3__ const*) ; 
- int /*<<< orphan*/  call_marshaller (TYPE_4__*,unsigned char*,TYPE_3__ const*) ; 
- int /*<<< orphan*/  call_unmarshaller (TYPE_4__*,unsigned char**,TYPE_3__ const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  debugstr_PROC_PF (TYPE_6__) ; 
- int /*<<< orphan*/  memset (void*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  param_needs_alloc (TYPE_6__) ; 
- int /*<<< orphan*/  stub1 (void*) ; 
+
+ unsigned char const FC_BIND_CONTEXT ;
+ int GetProcessHeap () ;
+ int HEAP_ZERO_MEMORY ;
+ void* HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,void*) ;
+ void* NDRSContextValue (int ) ;
+ void* NdrAllocate (TYPE_4__*,int ) ;
+ int NdrContextHandleInitialize (TYPE_4__*,unsigned char const*) ;
+ int RPC_S_INTERNAL_ERROR ;
+ int RpcRaiseException (int ) ;
+
+
+
+
+
+
+ int TRACE (char*,...) ;
+ int calc_arg_size (TYPE_4__*,unsigned char const*) ;
+ int call_buffer_sizer (TYPE_4__*,unsigned char*,TYPE_3__ const*) ;
+ int call_freer (TYPE_4__*,unsigned char*,TYPE_3__ const*) ;
+ int call_marshaller (TYPE_4__*,unsigned char*,TYPE_3__ const*) ;
+ int call_unmarshaller (TYPE_4__*,unsigned char**,TYPE_3__ const*,int ) ;
+ int debugstr_PROC_PF (TYPE_6__) ;
+ int memset (void*,int ,int ) ;
+ int param_needs_alloc (TYPE_6__) ;
+ int stub1 (void*) ;
 
 __attribute__((used)) static LONG_PTR *stub_do_args(MIDL_STUB_MESSAGE *pStubMsg,
                               PFORMAT_STRING pFormat, enum stubless_phase phase,
@@ -62,7 +62,7 @@ __attribute__((used)) static LONG_PTR *stub_do_args(MIDL_STUB_MESSAGE *pStubMsg,
 {
     const NDR_PARAM_OIF *params = (const NDR_PARAM_OIF *)pFormat;
     unsigned int i;
-    LONG_PTR *retval_ptr = NULL;
+    LONG_PTR *retval_ptr = ((void*)0);
 
     for (i = 0; i < number_of_params; i++)
     {
@@ -76,17 +76,17 @@ __attribute__((used)) static LONG_PTR *stub_do_args(MIDL_STUB_MESSAGE *pStubMsg,
 
         switch (phase)
         {
-        case STUBLESS_MARSHAL:
+        case 130:
             if (params[i].attr.IsOut || params[i].attr.IsReturn)
                 call_marshaller(pStubMsg, pArg, &params[i]);
             break;
-        case STUBLESS_MUSTFREE:
+        case 129:
             if (params[i].attr.MustFree)
             {
                 call_freer(pStubMsg, pArg, &params[i]);
             }
             break;
-        case STUBLESS_FREE:
+        case 132:
             if (params[i].attr.ServerAllocSize)
             {
                 HeapFree(GetProcessHeap(), 0, *(void **)pArg);
@@ -97,7 +97,7 @@ __attribute__((used)) static LONG_PTR *stub_do_args(MIDL_STUB_MESSAGE *pStubMsg,
                 if (*pTypeFormat != FC_BIND_CONTEXT) pStubMsg->pfnFree(*(void **)pArg);
             }
             break;
-        case STUBLESS_INITOUT:
+        case 131:
             if (param_needs_alloc(params[i].attr) && !params[i].attr.ServerAllocSize)
             {
                 if (*pTypeFormat == FC_BIND_CONTEXT)
@@ -116,7 +116,7 @@ __attribute__((used)) static LONG_PTR *stub_do_args(MIDL_STUB_MESSAGE *pStubMsg,
                 }
             }
             break;
-        case STUBLESS_UNMARSHAL:
+        case 128:
             if (params[i].attr.ServerAllocSize)
                 *(void **)pArg = HeapAlloc(GetProcessHeap(), HEAP_ZERO_MEMORY,
                                            params[i].attr.ServerAllocSize * 8);
@@ -124,7 +124,7 @@ __attribute__((used)) static LONG_PTR *stub_do_args(MIDL_STUB_MESSAGE *pStubMsg,
             if (params[i].attr.IsIn)
                 call_unmarshaller(pStubMsg, &pArg, &params[i], 0);
             break;
-        case STUBLESS_CALCSIZE:
+        case 133:
             if (params[i].attr.IsOut || params[i].attr.IsReturn)
                 call_buffer_sizer(pStubMsg, pArg, &params[i]);
             break;
@@ -133,7 +133,7 @@ __attribute__((used)) static LONG_PTR *stub_do_args(MIDL_STUB_MESSAGE *pStubMsg,
         }
         TRACE("\tmemory addr (after): %p -> %p\n", pArg, *(unsigned char **)pArg);
 
-        /* make a note of the address of the return value parameter for later */
+
         if (params[i].attr.IsReturn) retval_ptr = (LONG_PTR *)pArg;
     }
     return retval_ptr;

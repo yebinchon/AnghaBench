@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_5__ ;
-typedef  struct TYPE_15__   TYPE_4__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_16__ {scalar_t__ itype; int utype; int /*<<< orphan*/  size; TYPE_4__* funcs; } ;
-struct TYPE_15__ {int (* prim_new ) (int /*<<< orphan*/ **,TYPE_5__ const*) ;int /*<<< orphan*/  (* prim_clear ) (int /*<<< orphan*/ **,TYPE_5__ const*) ;} ;
-struct TYPE_14__ {int type; int /*<<< orphan*/  flags; } ;
-struct TYPE_12__ {int /*<<< orphan*/ * ptr; } ;
+
+
+typedef struct TYPE_16__ TYPE_5__ ;
+typedef struct TYPE_15__ TYPE_4__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+struct TYPE_16__ {scalar_t__ itype; int utype; int size; TYPE_4__* funcs; } ;
+struct TYPE_15__ {int (* prim_new ) (int **,TYPE_5__ const*) ;int (* prim_clear ) (int **,TYPE_5__ const*) ;} ;
+struct TYPE_14__ {int type; int flags; } ;
+struct TYPE_12__ {int * ptr; } ;
 struct TYPE_13__ {int type; TYPE_1__ value; } ;
-typedef  int /*<<< orphan*/  ASN1_VALUE ;
-typedef  TYPE_2__ ASN1_TYPE ;
-typedef  TYPE_3__ ASN1_STRING ;
-typedef  TYPE_4__ ASN1_PRIMITIVE_FUNCS ;
-typedef  TYPE_5__ ASN1_ITEM ;
-typedef  int /*<<< orphan*/  ASN1_BOOLEAN ;
+typedef int ASN1_VALUE ;
+typedef TYPE_2__ ASN1_TYPE ;
+typedef TYPE_3__ ASN1_STRING ;
+typedef TYPE_4__ ASN1_PRIMITIVE_FUNCS ;
+typedef TYPE_5__ ASN1_ITEM ;
+typedef int ASN1_BOOLEAN ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASN1_F_ASN1_PRIMITIVE_NEW ; 
- scalar_t__ ASN1_ITYPE_MSTRING ; 
- int /*<<< orphan*/  ASN1_STRING_FLAG_EMBED ; 
- int /*<<< orphan*/  ASN1_STRING_FLAG_MSTRING ; 
- TYPE_3__* ASN1_STRING_type_new (int) ; 
- int /*<<< orphan*/  ASN1err (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ERR_R_MALLOC_FAILURE ; 
- int /*<<< orphan*/  NID_undef ; 
- scalar_t__ OBJ_nid2obj (int /*<<< orphan*/ ) ; 
- TYPE_2__* OPENSSL_malloc (int) ; 
-#define  V_ASN1_ANY 131 
-#define  V_ASN1_BOOLEAN 130 
-#define  V_ASN1_NULL 129 
-#define  V_ASN1_OBJECT 128 
- int /*<<< orphan*/  memset (TYPE_3__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ **,TYPE_5__ const*) ; 
- int stub2 (int /*<<< orphan*/ **,TYPE_5__ const*) ; 
+
+ int ASN1_F_ASN1_PRIMITIVE_NEW ;
+ scalar_t__ ASN1_ITYPE_MSTRING ;
+ int ASN1_STRING_FLAG_EMBED ;
+ int ASN1_STRING_FLAG_MSTRING ;
+ TYPE_3__* ASN1_STRING_type_new (int) ;
+ int ASN1err (int ,int ) ;
+ int ERR_R_MALLOC_FAILURE ;
+ int NID_undef ;
+ scalar_t__ OBJ_nid2obj (int ) ;
+ TYPE_2__* OPENSSL_malloc (int) ;
+
+
+
+
+ int memset (TYPE_3__*,int ,int) ;
+ int stub1 (int **,TYPE_5__ const*) ;
+ int stub2 (int **,TYPE_5__ const*) ;
 
 __attribute__((used)) static int asn1_primitive_new(ASN1_VALUE **pval, const ASN1_ITEM *it,
                               int embed)
@@ -73,24 +73,24 @@ __attribute__((used)) static int asn1_primitive_new(ASN1_VALUE **pval, const ASN
     else
         utype = it->utype;
     switch (utype) {
-    case V_ASN1_OBJECT:
+    case 128:
         *pval = (ASN1_VALUE *)OBJ_nid2obj(NID_undef);
         return 1;
 
-    case V_ASN1_BOOLEAN:
+    case 130:
         *(ASN1_BOOLEAN *)pval = it->size;
         return 1;
 
-    case V_ASN1_NULL:
+    case 129:
         *pval = (ASN1_VALUE *)1;
         return 1;
 
-    case V_ASN1_ANY:
-        if ((typ = OPENSSL_malloc(sizeof(*typ))) == NULL) {
+    case 131:
+        if ((typ = OPENSSL_malloc(sizeof(*typ))) == ((void*)0)) {
             ASN1err(ASN1_F_ASN1_PRIMITIVE_NEW, ERR_R_MALLOC_FAILURE);
             return 0;
         }
-        typ->value.ptr = NULL;
+        typ->value.ptr = ((void*)0);
         typ->type = -1;
         *pval = (ASN1_VALUE *)typ;
         break;

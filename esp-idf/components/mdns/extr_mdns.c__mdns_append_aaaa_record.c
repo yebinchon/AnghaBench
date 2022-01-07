@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
-typedef  scalar_t__ uint16_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint8_t ;
+typedef scalar_t__ uint16_t ;
 struct TYPE_2__ {char* hostname; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MDNS_ANSWER_AAAA ; 
- scalar_t__ MDNS_ANSWER_AAAA_SIZE ; 
- int /*<<< orphan*/  MDNS_ANSWER_AAAA_TTL ; 
- char* MDNS_DEFAULT_DOMAIN ; 
- scalar_t__ MDNS_MAX_PACKET_SIZE ; 
- scalar_t__ _mdns_append_fqdn (scalar_t__*,scalar_t__*,char const**,int) ; 
- scalar_t__ _mdns_append_type (scalar_t__*,scalar_t__*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- TYPE_1__* _mdns_server ; 
- int /*<<< orphan*/  _mdns_set_u16 (scalar_t__*,scalar_t__,scalar_t__) ; 
- scalar_t__ _str_null_or_empty (char const*) ; 
- int /*<<< orphan*/  memcpy (scalar_t__*,scalar_t__*,scalar_t__) ; 
+
+ int MDNS_ANSWER_AAAA ;
+ scalar_t__ MDNS_ANSWER_AAAA_SIZE ;
+ int MDNS_ANSWER_AAAA_TTL ;
+ char* MDNS_DEFAULT_DOMAIN ;
+ scalar_t__ MDNS_MAX_PACKET_SIZE ;
+ scalar_t__ _mdns_append_fqdn (scalar_t__*,scalar_t__*,char const**,int) ;
+ scalar_t__ _mdns_append_type (scalar_t__*,scalar_t__*,int ,int,int ) ;
+ TYPE_1__* _mdns_server ;
+ int _mdns_set_u16 (scalar_t__*,scalar_t__,scalar_t__) ;
+ scalar_t__ _str_null_or_empty (char const*) ;
+ int memcpy (scalar_t__*,scalar_t__*,scalar_t__) ;
 
 __attribute__((used)) static uint16_t _mdns_append_aaaa_record(uint8_t * packet, uint16_t * index, uint8_t * ipv6, bool flush, bool bye)
 {

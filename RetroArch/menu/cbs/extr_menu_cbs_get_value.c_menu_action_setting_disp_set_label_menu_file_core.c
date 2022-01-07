@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  file_list_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  menu_entries_get_at_offset (int /*<<< orphan*/ *,unsigned int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const**) ; 
- int /*<<< orphan*/  strlcpy (char*,char const*,size_t) ; 
- scalar_t__ strlen (char*) ; 
+
+
+
+typedef int file_list_t ;
+
+
+ int menu_entries_get_at_offset (int *,unsigned int,int *,int *,int *,int *,char const**) ;
+ int strlcpy (char*,char const*,size_t) ;
+ scalar_t__ strlen (char*) ;
 
 __attribute__((used)) static void menu_action_setting_disp_set_label_menu_file_core(
       file_list_t* list,
@@ -25,11 +25,11 @@ __attribute__((used)) static void menu_action_setting_disp_set_label_menu_file_c
       const char *path,
       char *s2, size_t len2)
 {
-   const char *alt = NULL;
+   const char *alt = ((void*)0);
    strlcpy(s, "(CORE)", len);
 
-   menu_entries_get_at_offset(list, i, NULL,
-         NULL, NULL, NULL, &alt);
+   menu_entries_get_at_offset(list, i, ((void*)0),
+         ((void*)0), ((void*)0), ((void*)0), &alt);
 
    *w = (unsigned)strlen(s);
    if (alt)

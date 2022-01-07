@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct Decorr {int* samplesA; int value; scalar_t__ weightA; scalar_t__ sumA; int /*<<< orphan*/  delta; } ;
-typedef  void* int32_t ;
 
-/* Variables and functions */
- scalar_t__ APPLY_WEIGHT (scalar_t__,void*) ; 
- int MAX_TERM ; 
- int /*<<< orphan*/  UPDATE_WEIGHT (scalar_t__,int /*<<< orphan*/ ,void*,void*) ; 
- int /*<<< orphan*/  log2s (int) ; 
- int /*<<< orphan*/  memcpy (void**,int*,int) ; 
- scalar_t__ restore_weight (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  store_weight (scalar_t__) ; 
- int wp_exp2 (int /*<<< orphan*/ ) ; 
+
+
+
+struct Decorr {int* samplesA; int value; scalar_t__ weightA; scalar_t__ sumA; int delta; } ;
+typedef void* int32_t ;
+
+
+ scalar_t__ APPLY_WEIGHT (scalar_t__,void*) ;
+ int MAX_TERM ;
+ int UPDATE_WEIGHT (scalar_t__,int ,void*,void*) ;
+ int log2s (int) ;
+ int memcpy (void**,int*,int) ;
+ scalar_t__ restore_weight (int ) ;
+ int store_weight (scalar_t__) ;
+ int wp_exp2 (int ) ;
 
 __attribute__((used)) static void decorr_mono(int32_t *in_samples, int32_t *out_samples,
                         int nb_samples, struct Decorr *dpp, int dir)
@@ -32,7 +32,7 @@ __attribute__((used)) static void decorr_mono(int32_t *in_samples, int32_t *out_
 
     if (dir < 0) {
         out_samples += (nb_samples - 1);
-        in_samples  += (nb_samples - 1);
+        in_samples += (nb_samples - 1);
     }
 
     dpp->weightA = restore_weight(store_weight(dpp->weightA));

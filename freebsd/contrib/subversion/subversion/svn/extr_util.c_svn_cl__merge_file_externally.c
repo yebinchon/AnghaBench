@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int svn_boolean_t ;
+
+
+
+
+typedef int svn_error_t ;
+typedef int svn_boolean_t ;
 struct svn_config_t {int dummy; } ;
-typedef  scalar_t__ apr_status_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
+typedef scalar_t__ apr_status_t ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  APR_FILEPATH_NATIVE ; 
- scalar_t__ APR_SUCCESS ; 
- int /*<<< orphan*/  SVN_CONFIG_CATEGORY_CONFIG ; 
- int /*<<< orphan*/  SVN_CONFIG_OPTION_MERGE_TOOL_CMD ; 
- int /*<<< orphan*/  SVN_CONFIG_SECTION_HELPERS ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_CL_NO_EXTERNAL_MERGE_TOOL ; 
- int /*<<< orphan*/  SVN_ERR_EXTERNAL_PROGRAM ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  _ (char*) ; 
- scalar_t__ apr_env_get (char**,char*,int /*<<< orphan*/ *) ; 
- scalar_t__ apr_filepath_get (char**,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_config_get (struct svn_config_t*,char const**,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_ctype_isspace (char const) ; 
- int /*<<< orphan*/  svn_dirent_internal_style (char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_error_create (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * svn_error_createf (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/ * svn_error_wrap_apr (scalar_t__,int /*<<< orphan*/ *) ; 
- struct svn_config_t* svn_hash_gets (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_io_run_cmd (int /*<<< orphan*/ ,char*,char const**,int*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int APR_FILEPATH_NATIVE ;
+ scalar_t__ APR_SUCCESS ;
+ int SVN_CONFIG_CATEGORY_CONFIG ;
+ int SVN_CONFIG_OPTION_MERGE_TOOL_CMD ;
+ int SVN_CONFIG_SECTION_HELPERS ;
+ int SVN_ERR (int ) ;
+ int SVN_ERR_CL_NO_EXTERNAL_MERGE_TOOL ;
+ int SVN_ERR_EXTERNAL_PROGRAM ;
+ int * SVN_NO_ERROR ;
+ int TRUE ;
+ int _ (char*) ;
+ scalar_t__ apr_env_get (char**,char*,int *) ;
+ scalar_t__ apr_filepath_get (char**,int ,int *) ;
+ int svn_config_get (struct svn_config_t*,char const**,int ,int ,int *) ;
+ int svn_ctype_isspace (char const) ;
+ int svn_dirent_internal_style (char*,int *) ;
+ int * svn_error_create (int ,int *,int ) ;
+ int * svn_error_createf (int ,int *,int ,char*,int) ;
+ int * svn_error_wrap_apr (scalar_t__,int *) ;
+ struct svn_config_t* svn_hash_gets (int *,int ) ;
+ int svn_io_run_cmd (int ,char*,char const**,int*,int *,int ,int *,int *,int *,int *) ;
 
 svn_error_t *
 svn_cl__merge_file_externally(const char *base_path,
@@ -51,16 +51,16 @@ svn_cl__merge_file_externally(const char *base_path,
                               apr_pool_t *pool)
 {
   char *merge_tool;
-  /* Error if there is no editor specified */
+
   if (apr_env_get(&merge_tool, "SVN_MERGE", pool) != APR_SUCCESS)
     {
       struct svn_config_t *cfg;
-      merge_tool = NULL;
-      cfg = config ? svn_hash_gets(config, SVN_CONFIG_CATEGORY_CONFIG) : NULL;
-      /* apr_env_get wants char **, this wants const char ** */
+      merge_tool = ((void*)0);
+      cfg = config ? svn_hash_gets(config, SVN_CONFIG_CATEGORY_CONFIG) : ((void*)0);
+
       svn_config_get(cfg, (const char **)&merge_tool,
                      SVN_CONFIG_SECTION_HELPERS,
-                     SVN_CONFIG_OPTION_MERGE_TOOL_CMD, NULL);
+                     SVN_CONFIG_OPTION_MERGE_TOOL_CMD, ((void*)0));
     }
 
   if (merge_tool)
@@ -73,13 +73,13 @@ svn_cl__merge_file_externally(const char *base_path,
 
       if (! *c)
         return svn_error_create
-          (SVN_ERR_CL_NO_EXTERNAL_MERGE_TOOL, NULL,
+          (SVN_ERR_CL_NO_EXTERNAL_MERGE_TOOL, ((void*)0),
            _("The SVN_MERGE environment variable is empty or "
              "consists solely of whitespace. Expected a shell command.\n"));
     }
   else
       return svn_error_create
-        (SVN_ERR_CL_NO_EXTERNAL_MERGE_TOOL, NULL,
+        (SVN_ERR_CL_NO_EXTERNAL_MERGE_TOOL, ((void*)0),
          _("The environment variable SVN_MERGE and the merge-tool-cmd run-time "
            "configuration option were not set.\n"));
 
@@ -90,7 +90,7 @@ svn_cl__merge_file_externally(const char *base_path,
 
     apr_status_t status = apr_filepath_get(&cwd, APR_FILEPATH_NATIVE, pool);
     if (status != 0)
-      return svn_error_wrap_apr(status, NULL);
+      return svn_error_wrap_apr(status, ((void*)0));
 
     arguments[0] = merge_tool;
     arguments[1] = base_path;
@@ -98,17 +98,17 @@ svn_cl__merge_file_externally(const char *base_path,
     arguments[3] = my_path;
     arguments[4] = merged_path;
     arguments[5] = wc_path;
-    arguments[6] = NULL;
+    arguments[6] = ((void*)0);
 
     SVN_ERR(svn_io_run_cmd(svn_dirent_internal_style(cwd, pool), merge_tool,
-                           arguments, &exitcode, NULL, TRUE, NULL, NULL, NULL,
+                           arguments, &exitcode, ((void*)0), TRUE, ((void*)0), ((void*)0), ((void*)0),
                            pool));
-    /* Exit code 0 means the merge was successful.
-     * Exit code 1 means the file was left in conflict but it
-     * is OK to continue with the merge.
-     * Any other exit code means there was a real problem. */
+
+
+
+
     if (exitcode != 0 && exitcode != 1)
-      return svn_error_createf(SVN_ERR_EXTERNAL_PROGRAM, NULL,
+      return svn_error_createf(SVN_ERR_EXTERNAL_PROGRAM, ((void*)0),
         _("The external merge tool '%s' exited with exit code %d."),
         merge_tool, exitcode);
     else if (remains_in_conflict)

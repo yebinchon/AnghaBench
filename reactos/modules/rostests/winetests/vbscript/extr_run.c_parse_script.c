@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  scalar_t__ LONG ;
-typedef  int /*<<< orphan*/  IDispatch ;
-typedef  int /*<<< orphan*/  IActiveScriptParse ;
-typedef  int /*<<< orphan*/  IActiveScript ;
-typedef  scalar_t__ HRESULT ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  int /*<<< orphan*/  BSTR ;
 
-/* Variables and functions */
- scalar_t__ FAILED (scalar_t__) ; 
- int /*<<< orphan*/  Global ; 
- scalar_t__ IActiveScriptParse_ParseScriptText (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ IActiveScriptParse_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IActiveScript_Close (int /*<<< orphan*/ *) ; 
- scalar_t__ IActiveScript_GetScriptDispatch (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- scalar_t__ IActiveScript_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IActiveScript_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IDispatch_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IID_IActiveScriptParse ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/ * create_and_init_script (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- scalar_t__ test_counter ; 
+
+
+
+typedef int WCHAR ;
+typedef scalar_t__ LONG ;
+typedef int IDispatch ;
+typedef int IActiveScriptParse ;
+typedef int IActiveScript ;
+typedef scalar_t__ HRESULT ;
+typedef int DWORD ;
+typedef int BSTR ;
+
+
+ scalar_t__ FAILED (scalar_t__) ;
+ int Global ;
+ scalar_t__ IActiveScriptParse_ParseScriptText (int *,int ,int *,int *,int const*,int ,int ,int ,int *,int *) ;
+ scalar_t__ IActiveScriptParse_Release (int *) ;
+ int IActiveScript_Close (int *) ;
+ scalar_t__ IActiveScript_GetScriptDispatch (int *,int *,int **) ;
+ scalar_t__ IActiveScript_QueryInterface (int *,int *,void**) ;
+ int IActiveScript_Release (int *) ;
+ int IDispatch_Release (int *) ;
+ int IID_IActiveScriptParse ;
+ scalar_t__ S_OK ;
+ int * create_and_init_script (int ) ;
+ int ok (int,char*,...) ;
+ scalar_t__ test_counter ;
 
 __attribute__((used)) static HRESULT parse_script(DWORD flags, BSTR script_str, const WCHAR *delim)
 {
@@ -55,14 +55,14 @@ __attribute__((used)) static HRESULT parse_script(DWORD flags, BSTR script_str, 
         return hres;
     }
 
-    hres = IActiveScript_GetScriptDispatch(engine, NULL, &script_disp);
+    hres = IActiveScript_GetScriptDispatch(engine, ((void*)0), &script_disp);
     ok(hres == S_OK, "GetScriptDispatch failed: %08x\n", hres);
-    ok(script_disp != NULL, "script_disp == NULL\n");
+    ok(script_disp != ((void*)0), "script_disp == NULL\n");
     ok(script_disp != (IDispatch*)&Global, "script_disp == Global\n");
 
     test_counter = 0;
 
-    hres = IActiveScriptParse_ParseScriptText(parser, script_str, NULL, NULL, delim, 0, 0, 0, NULL, NULL);
+    hres = IActiveScriptParse_ParseScriptText(parser, script_str, ((void*)0), ((void*)0), delim, 0, 0, 0, ((void*)0), ((void*)0));
 
     IActiveScript_Close(engine);
 

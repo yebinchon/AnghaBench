@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int width; int height; TYPE_2__* stats; } ;
-typedef  TYPE_1__ WebPPicture ;
-struct TYPE_6__ {int coded_size; double* PSNR; int* block_count; int alpha_data_size; float* header_bytes; int** residual_bytes; scalar_t__ lossless_size; int /*<<< orphan*/  segment_level; int /*<<< orphan*/  segment_quant; int /*<<< orphan*/  segment_size; } ;
-typedef  TYPE_2__ WebPAuxStats ;
-typedef  int /*<<< orphan*/  W_CHAR ;
+typedef TYPE_1__ WebPPicture ;
+struct TYPE_6__ {int coded_size; double* PSNR; int* block_count; int alpha_data_size; float* header_bytes; int** residual_bytes; scalar_t__ lossless_size; int segment_level; int segment_quant; int segment_size; } ;
+typedef TYPE_2__ WebPAuxStats ;
+typedef int W_CHAR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PrintByteCount (int*,float,int*) ; 
- int /*<<< orphan*/  PrintFullLosslessInfo (TYPE_2__ const* const,char*) ; 
- int /*<<< orphan*/  PrintPercents (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PrintValues (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WFPRINTF (int /*<<< orphan*/ ,char*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  stderr ; 
+
+ int PrintByteCount (int*,float,int*) ;
+ int PrintFullLosslessInfo (TYPE_2__ const* const,char*) ;
+ int PrintPercents (int ) ;
+ int PrintValues (int ) ;
+ int WFPRINTF (int ,char*,int const*) ;
+ int fprintf (int ,char*,...) ;
+ int stderr ;
 
 __attribute__((used)) static void PrintExtraInfoLossy(const WebPPicture* const pic, int short_output,
                                 int full_details,
@@ -87,7 +87,7 @@ __attribute__((used)) static void PrintExtraInfoLossy(const WebPPicture* const p
         fprintf(stderr, "------------------+---------");
         fprintf(stderr, "+---------+---------+---------+-----------------\n");
         fprintf(stderr, " segments total:  ");
-        PrintByteCount(totals, stats->coded_size, NULL);
+        PrintByteCount(totals, stats->coded_size, ((void*)0));
       }
     }
     if (stats->lossless_size > 0) {

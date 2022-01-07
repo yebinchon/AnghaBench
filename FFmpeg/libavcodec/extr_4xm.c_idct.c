@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int int16_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FIX_1_082392200 ; 
- int /*<<< orphan*/  FIX_1_414213562 ; 
- int /*<<< orphan*/  FIX_1_847759065 ; 
- int /*<<< orphan*/  FIX_2_613125930 ; 
- int MULTIPLY (int,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int int16_t ;
+
+
+ int FIX_1_082392200 ;
+ int FIX_1_414213562 ;
+ int FIX_1_847759065 ;
+ int FIX_2_613125930 ;
+ int MULTIPLY (int,int ) ;
 
 __attribute__((used)) static void idct(int16_t block[64])
 {
@@ -44,11 +44,11 @@ __attribute__((used)) static void idct(int16_t block[64])
         z11 = block[8 * 1 + i] + block[8 * 7 + i];
         z12 = block[8 * 1 + i] - block[8 * 7 + i];
 
-        tmp7  =          z11 + z13;
+        tmp7 = z11 + z13;
         tmp11 = MULTIPLY(z11 - z13, FIX_1_414213562);
 
-        z5    = MULTIPLY(z10 + z12, FIX_1_847759065);
-        tmp10 = MULTIPLY(z12,  FIX_1_082392200) - z5;
+        z5 = MULTIPLY(z10 + z12, FIX_1_847759065);
+        tmp10 = MULTIPLY(z12, FIX_1_082392200) - z5;
         tmp12 = MULTIPLY(z10, -FIX_2_613125930) + z5;
 
         tmp6 = tmp12 - tmp7;
@@ -82,11 +82,11 @@ __attribute__((used)) static void idct(int16_t block[64])
         z11 = temp[1 + i] + temp[7 + i];
         z12 = temp[1 + i] - temp[7 + i];
 
-        tmp7  = z11 + z13;
+        tmp7 = z11 + z13;
         tmp11 = MULTIPLY(z11 - z13, FIX_1_414213562);
 
-        z5    = MULTIPLY(z10 + z12, FIX_1_847759065);
-        tmp10 = MULTIPLY(z12,  FIX_1_082392200) - z5;
+        z5 = MULTIPLY(z10 + z12, FIX_1_847759065);
+        tmp10 = MULTIPLY(z12, FIX_1_082392200) - z5;
         tmp12 = MULTIPLY(z10, -FIX_2_613125930) + z5;
 
         tmp6 = tmp12 - tmp7;

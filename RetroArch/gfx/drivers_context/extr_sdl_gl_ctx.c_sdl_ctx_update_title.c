@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  title ;
-typedef  int /*<<< orphan*/  SDL_Window ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SDL_SetWindowTitle (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  SDL_WM_SetCaption (char*,int /*<<< orphan*/ *) ; 
- scalar_t__ video_driver_display_userdata_get () ; 
- int /*<<< orphan*/  video_driver_get_window_title (char*,int) ; 
+
+
+
+typedef int title ;
+typedef int SDL_Window ;
+
+
+ int SDL_SetWindowTitle (int *,char*) ;
+ int SDL_WM_SetCaption (char*,int *) ;
+ scalar_t__ video_driver_display_userdata_get () ;
+ int video_driver_get_window_title (char*,int) ;
 
 __attribute__((used)) static void sdl_ctx_update_title(void *data, void *data2)
 {
@@ -28,10 +28,10 @@ __attribute__((used)) static void sdl_ctx_update_title(void *data, void *data2)
 
    if (title[0])
    {
-#ifdef HAVE_SDL2
-      SDL_SetWindowTitle((SDL_Window*)video_driver_display_userdata_get(), title);
-#else
-      SDL_WM_SetCaption(title, NULL);
-#endif
+
+
+
+      SDL_WM_SetCaption(title, ((void*)0));
+
    }
 }

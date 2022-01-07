@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_8__ {int dwServiceType; } ;
-struct TYPE_9__ {int /*<<< orphan*/ * lpImage; int /*<<< orphan*/ * pSecurityDescriptor; TYPE_2__ Status; int /*<<< orphan*/  bDeleted; scalar_t__ dwErrorControl; scalar_t__ dwTag; int /*<<< orphan*/  dwStartType; TYPE_1__* lpGroup; int /*<<< orphan*/  lpServiceName; int /*<<< orphan*/ * lpDisplayName; } ;
-struct TYPE_7__ {int /*<<< orphan*/  lpGroupName; } ;
-typedef  TYPE_3__* PSERVICE ;
-typedef  int /*<<< orphan*/ * LPWSTR ;
-typedef  int* LPCWSTR ;
-typedef  int /*<<< orphan*/  LPBYTE ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  scalar_t__ DWORD ;
+struct TYPE_9__ {int * lpImage; int * pSecurityDescriptor; TYPE_2__ Status; int bDeleted; scalar_t__ dwErrorControl; scalar_t__ dwTag; int dwStartType; TYPE_1__* lpGroup; int lpServiceName; int * lpDisplayName; } ;
+struct TYPE_7__ {int lpGroupName; } ;
+typedef TYPE_3__* PSERVICE ;
+typedef int * LPWSTR ;
+typedef int* LPCWSTR ;
+typedef int LPBYTE ;
+typedef int HKEY ;
+typedef scalar_t__ DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DPRINT (char*,...) ; 
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ RegQueryValueExW (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__*) ; 
- scalar_t__ SERVICE_FILE_SYSTEM_DRIVER ; 
- scalar_t__ SERVICE_INTERACTIVE_PROCESS ; 
- scalar_t__ SERVICE_KERNEL_DRIVER ; 
- int SERVICE_WIN32 ; 
- scalar_t__ SERVICE_WIN32_OWN_PROCESS ; 
- scalar_t__ SERVICE_WIN32_SHARE_PROCESS ; 
- scalar_t__ ScmCreateDefaultServiceSD (int /*<<< orphan*/ **) ; 
- scalar_t__ ScmCreateNewServiceRecord (int*,TYPE_3__**,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  ScmGenerateServiceTag (TYPE_3__*) ; 
- scalar_t__ ScmIsDeleteFlagSet (int /*<<< orphan*/ ) ; 
- scalar_t__ ScmReadSecurityDescriptor (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- scalar_t__ ScmReadString (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ **) ; 
- scalar_t__ ScmSetServiceGroup (TYPE_3__*,int /*<<< orphan*/ *) ; 
- scalar_t__ ScmWriteSecurityDescriptor (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TRUE ; 
+
+ int ASSERT (int ) ;
+ int DPRINT (char*,...) ;
+ scalar_t__ ERROR_SUCCESS ;
+ int GetProcessHeap () ;
+ int HeapFree (int ,int ,int *) ;
+ scalar_t__ RegQueryValueExW (int ,char*,int *,int *,int ,scalar_t__*) ;
+ scalar_t__ SERVICE_FILE_SYSTEM_DRIVER ;
+ scalar_t__ SERVICE_INTERACTIVE_PROCESS ;
+ scalar_t__ SERVICE_KERNEL_DRIVER ;
+ int SERVICE_WIN32 ;
+ scalar_t__ SERVICE_WIN32_OWN_PROCESS ;
+ scalar_t__ SERVICE_WIN32_SHARE_PROCESS ;
+ scalar_t__ ScmCreateDefaultServiceSD (int **) ;
+ scalar_t__ ScmCreateNewServiceRecord (int*,TYPE_3__**,scalar_t__,scalar_t__) ;
+ int ScmGenerateServiceTag (TYPE_3__*) ;
+ scalar_t__ ScmIsDeleteFlagSet (int ) ;
+ scalar_t__ ScmReadSecurityDescriptor (int ,int **) ;
+ scalar_t__ ScmReadString (int ,char*,int **) ;
+ scalar_t__ ScmSetServiceGroup (TYPE_3__*,int *) ;
+ scalar_t__ ScmWriteSecurityDescriptor (int ,int *) ;
+ int TRUE ;
 
 __attribute__((used)) static DWORD
 CreateServiceListEntry(LPCWSTR lpServiceName,
                        HKEY hServiceKey)
 {
-    PSERVICE lpService = NULL;
-    LPWSTR lpDisplayName = NULL;
-    LPWSTR lpGroup = NULL;
+    PSERVICE lpService = ((void*)0);
+    LPWSTR lpDisplayName = ((void*)0);
+    LPWSTR lpGroup = ((void*)0);
     DWORD dwSize;
     DWORD dwError;
     DWORD dwServiceType;
@@ -67,8 +67,8 @@ CreateServiceListEntry(LPCWSTR lpServiceName,
     dwSize = sizeof(DWORD);
     dwError = RegQueryValueExW(hServiceKey,
                                L"Type",
-                               NULL,
-                               NULL,
+                               ((void*)0),
+                               ((void*)0),
                                (LPBYTE)&dwServiceType,
                                &dwSize);
     if (dwError != ERROR_SUCCESS)
@@ -85,8 +85,8 @@ CreateServiceListEntry(LPCWSTR lpServiceName,
     dwSize = sizeof(DWORD);
     dwError = RegQueryValueExW(hServiceKey,
                                L"Start",
-                               NULL,
-                               NULL,
+                               ((void*)0),
+                               ((void*)0),
                                (LPBYTE)&dwStartType,
                                &dwSize);
     if (dwError != ERROR_SUCCESS)
@@ -97,8 +97,8 @@ CreateServiceListEntry(LPCWSTR lpServiceName,
     dwSize = sizeof(DWORD);
     dwError = RegQueryValueExW(hServiceKey,
                                L"ErrorControl",
-                               NULL,
-                               NULL,
+                               ((void*)0),
+                               ((void*)0),
                                (LPBYTE)&dwErrorControl,
                                &dwSize);
     if (dwError != ERROR_SUCCESS)
@@ -108,8 +108,8 @@ CreateServiceListEntry(LPCWSTR lpServiceName,
 
     dwError = RegQueryValueExW(hServiceKey,
                                L"Tag",
-                               NULL,
-                               NULL,
+                               ((void*)0),
+                               ((void*)0),
                                (LPBYTE)&dwTagId,
                                &dwSize);
     if (dwError != ERROR_SUCCESS)
@@ -121,7 +121,7 @@ CreateServiceListEntry(LPCWSTR lpServiceName,
                             L"Group",
                             &lpGroup);
     if (dwError != ERROR_SUCCESS)
-        lpGroup = NULL;
+        lpGroup = ((void*)0);
 
     DPRINT("Group: %S\n", lpGroup);
 
@@ -129,7 +129,7 @@ CreateServiceListEntry(LPCWSTR lpServiceName,
                             L"DisplayName",
                             &lpDisplayName);
     if (dwError != ERROR_SUCCESS)
-        lpDisplayName = NULL;
+        lpDisplayName = ((void*)0);
 
     DPRINT("Display name: %S\n", lpDisplayName);
 
@@ -143,21 +143,21 @@ CreateServiceListEntry(LPCWSTR lpServiceName,
     lpService->dwErrorControl = dwErrorControl;
     lpService->dwTag = dwTagId;
 
-    if (lpGroup != NULL)
+    if (lpGroup != ((void*)0))
     {
         dwError = ScmSetServiceGroup(lpService, lpGroup);
         if (dwError != ERROR_SUCCESS)
             goto done;
     }
 
-    if (lpDisplayName != NULL)
+    if (lpDisplayName != ((void*)0))
     {
         lpService->lpDisplayName = lpDisplayName;
-        lpDisplayName = NULL;
+        lpDisplayName = ((void*)0);
     }
 
     DPRINT("ServiceName: '%S'\n", lpService->lpServiceName);
-    if (lpService->lpGroup != NULL)
+    if (lpService->lpGroup != ((void*)0))
     {
         DPRINT("Group: '%S'\n", lpService->lpGroup->lpGroupName);
     }
@@ -179,8 +179,8 @@ CreateServiceListEntry(LPCWSTR lpServiceName,
         if (dwError != ERROR_SUCCESS)
             goto done;
 
-        /* Assing the default security descriptor if the security descriptor cannot be read */
-        if (lpService->pSecurityDescriptor == NULL)
+
+        if (lpService->pSecurityDescriptor == ((void*)0))
         {
             DPRINT("No security descriptor found! Assign default security descriptor!\n");
             dwError = ScmCreateDefaultServiceSD(&lpService->pSecurityDescriptor);
@@ -195,15 +195,15 @@ CreateServiceListEntry(LPCWSTR lpServiceName,
     }
 
 done:
-    if (lpGroup != NULL)
+    if (lpGroup != ((void*)0))
         HeapFree(GetProcessHeap(), 0, lpGroup);
 
-    if (lpDisplayName != NULL)
+    if (lpDisplayName != ((void*)0))
         HeapFree(GetProcessHeap(), 0, lpDisplayName);
 
-    if (lpService != NULL)
+    if (lpService != ((void*)0))
     {
-        ASSERT(lpService->lpImage == NULL);
+        ASSERT(lpService->lpImage == ((void*)0));
     }
 
     return dwError;

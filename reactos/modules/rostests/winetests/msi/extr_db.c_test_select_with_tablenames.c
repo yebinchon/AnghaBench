@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int UINT ;
-typedef  int /*<<< orphan*/  MSIHANDLE ;
-typedef  char* LPCSTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DeleteFileA (int /*<<< orphan*/ ) ; 
- int ERROR_NO_MORE_ITEMS ; 
- int ERROR_SUCCESS ; 
- int /*<<< orphan*/  MsiCloseHandle (int /*<<< orphan*/ ) ; 
- int MsiDatabaseOpenViewA (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *) ; 
- int MsiRecordGetInteger (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  MsiViewClose (int /*<<< orphan*/ ) ; 
- int MsiViewExecute (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int MsiViewFetch (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  create_db () ; 
- int /*<<< orphan*/  msifile ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int run_query (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
+
+
+
+typedef int UINT ;
+typedef int MSIHANDLE ;
+typedef char* LPCSTR ;
+
+
+ int DeleteFileA (int ) ;
+ int ERROR_NO_MORE_ITEMS ;
+ int ERROR_SUCCESS ;
+ int MsiCloseHandle (int ) ;
+ int MsiDatabaseOpenViewA (int ,char*,int *) ;
+ int MsiRecordGetInteger (int ,int) ;
+ int MsiViewClose (int ) ;
+ int MsiViewExecute (int ,int ) ;
+ int MsiViewFetch (int ,int *) ;
+ int create_db () ;
+ int msifile ;
+ int ok (int,char*,...) ;
+ int run_query (int ,int ,char*) ;
 
 __attribute__((used)) static void test_select_with_tablenames(void)
 {
@@ -45,7 +45,7 @@ __attribute__((used)) static void test_select_with_tablenames(void)
     hdb = create_db();
     ok(hdb, "failed to create db\n");
 
-    /* Build a pair of tables with the same column names, but unique data */
+
     query = "CREATE TABLE `T1` ( `A` SHORT, `B` SHORT PRIMARY KEY `A`)";
     r = run_query(hdb, 0, query);
     ok(r == ERROR_SUCCESS, "Expected ERROR_SUCCESS, got %d\n", r);
@@ -71,8 +71,8 @@ __attribute__((used)) static void test_select_with_tablenames(void)
     ok(r == ERROR_SUCCESS, "Expected ERROR_SUCCESS, got %d\n", r);
 
 
-    /* Test that selection based on prefixing the column with the table
-     * actually selects the right data */
+
+
 
     query = "SELECT T1.A, T2.B FROM T1,T2";
     r = MsiDatabaseOpenViewA(hdb, query, &view);

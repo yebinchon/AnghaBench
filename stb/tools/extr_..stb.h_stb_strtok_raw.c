@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/ * strchr (char*,char) ; 
+ int * strchr (char*,char) ;
 
 __attribute__((used)) static char *stb_strtok_raw(char *output, char *src, char *delimit, int keep, int invert)
 {
    if (invert) {
-      while (*src && strchr(delimit, *src) != NULL) {
+      while (*src && strchr(delimit, *src) != ((void*)0)) {
          *output++ = *src++;
       }
    } else {
-      while (*src && strchr(delimit, *src) == NULL) {
+      while (*src && strchr(delimit, *src) == ((void*)0)) {
          *output++ = *src++;
       }
    }

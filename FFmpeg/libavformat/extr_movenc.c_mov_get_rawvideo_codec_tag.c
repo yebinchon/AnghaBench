@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  enum AVPixelFormat { ____Placeholder_AVPixelFormat } AVPixelFormat ;
-struct TYPE_8__ {scalar_t__ pix_fmt; int tag; int /*<<< orphan*/  bps; } ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef enum AVPixelFormat { ____Placeholder_AVPixelFormat } AVPixelFormat ;
+struct TYPE_8__ {scalar_t__ pix_fmt; int tag; int bps; } ;
 struct TYPE_7__ {TYPE_1__* par; } ;
-struct TYPE_6__ {int codec_tag; scalar_t__ format; int /*<<< orphan*/  bits_per_coded_sample; } ;
-typedef  TYPE_2__ MOVTrack ;
-typedef  int /*<<< orphan*/  AVFormatContext ;
+struct TYPE_6__ {int codec_tag; scalar_t__ format; int bits_per_coded_sample; } ;
+typedef TYPE_2__ MOVTrack ;
+typedef int AVFormatContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- scalar_t__ AV_PIX_FMT_GRAY8 ; 
- scalar_t__ AV_PIX_FMT_NONE ; 
- int FF_ARRAY_ELEMS (TYPE_3__*) ; 
- int MKTAG (char,char,char,char) ; 
- int /*<<< orphan*/  av_get_pix_fmt_name (scalar_t__) ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int avpriv_find_pix_fmt (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  avpriv_pix_fmt_bps_mov ; 
- TYPE_3__* mov_pix_fmt_tags ; 
+
+ int AV_LOG_ERROR ;
+ scalar_t__ AV_PIX_FMT_GRAY8 ;
+ scalar_t__ AV_PIX_FMT_NONE ;
+ int FF_ARRAY_ELEMS (TYPE_3__*) ;
+ int MKTAG (char,char,char,char) ;
+ int av_get_pix_fmt_name (scalar_t__) ;
+ int av_log (int *,int ,char*,int ) ;
+ int avpriv_find_pix_fmt (int ,int ) ;
+ int avpriv_pix_fmt_bps_mov ;
+ TYPE_3__* mov_pix_fmt_tags ;
 
 __attribute__((used)) static int mov_get_rawvideo_codec_tag(AVFormatContext *s, MOVTrack *track)
 {

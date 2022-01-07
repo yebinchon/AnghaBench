@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  plane_t ;
-typedef  int /*<<< orphan*/  int32_t ;
-typedef  int /*<<< orphan*/  int16_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHECK_PIX_OFS (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LIGHTEN_PIXEL (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ likely (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int plane_t ;
+typedef int int32_t ;
+typedef int int16_t ;
+
+
+ int CHECK_PIX_OFS (int ,int ,int *) ;
+ int LIGHTEN_PIXEL (int ,int ,int ,int *) ;
+ scalar_t__ likely (int ) ;
 
 __attribute__((used)) static inline void CHECK_N_LIGHTEN_PIXEL(int32_t i_x, int32_t i_y,
                                 int16_t intensity, plane_t *ps_plane) {

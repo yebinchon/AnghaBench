@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  xx ;
-struct TYPE_2__ {int /*<<< orphan*/  name; } ;
 
-/* Variables and functions */
- size_t SMACK_NOT_FOUND ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  global_mib ; 
- TYPE_1__* mib ; 
- size_t smack_search_next (int /*<<< orphan*/ ,unsigned int*,unsigned char const*,unsigned int*,unsigned int) ; 
- scalar_t__ snmp_selftest_banner () ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ strcmp (int /*<<< orphan*/ ,char*) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int xx ;
+struct TYPE_2__ {int name; } ;
+
+
+ size_t SMACK_NOT_FOUND ;
+ int fprintf (int ,char*) ;
+ int global_mib ;
+ TYPE_1__* mib ;
+ size_t smack_search_next (int ,unsigned int*,unsigned char const*,unsigned int*,unsigned int) ;
+ scalar_t__ snmp_selftest_banner () ;
+ int stderr ;
+ scalar_t__ strcmp (int ,char*) ;
 
 int
 snmp_selftest(void)
@@ -39,13 +39,13 @@ snmp_selftest(void)
     if (snmp_selftest_banner())
         return 1;
 
-    /*
-     * test of searching OIDs
-     */
+
+
+
     state = 0;
     offset = 0;
     while (offset < sizeof(xx)) {
-        i = smack_search_next(  global_mib,
+        i = smack_search_next( global_mib,
                                 &state,
                                 xx,
                                 &offset,

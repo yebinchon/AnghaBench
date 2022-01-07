@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct scatterlist {int dummy; } ;
-struct qup_i2c_dev {int /*<<< orphan*/  dev; } ;
+struct qup_i2c_dev {int dev; } ;
 
-/* Variables and functions */
- int EINVAL ; 
- int dma_map_sg (int /*<<< orphan*/ ,struct scatterlist*,int,int) ; 
- int /*<<< orphan*/  sg_set_buf (struct scatterlist*,void*,unsigned int) ; 
+
+ int EINVAL ;
+ int dma_map_sg (int ,struct scatterlist*,int,int) ;
+ int sg_set_buf (struct scatterlist*,void*,unsigned int) ;
 
 __attribute__((used)) static int qup_sg_set_buf(struct scatterlist *sg, void *buf,
-			  unsigned int buflen, struct qup_i2c_dev *qup,
-			  int dir)
+     unsigned int buflen, struct qup_i2c_dev *qup,
+     int dir)
 {
-	int ret;
+ int ret;
 
-	sg_set_buf(sg, buf, buflen);
-	ret = dma_map_sg(qup->dev, sg, 1, dir);
-	if (!ret)
-		return -EINVAL;
+ sg_set_buf(sg, buf, buflen);
+ ret = dma_map_sg(qup->dev, sg, 1, dir);
+ if (!ret)
+  return -EINVAL;
 
-	return 0;
+ return 0;
 }

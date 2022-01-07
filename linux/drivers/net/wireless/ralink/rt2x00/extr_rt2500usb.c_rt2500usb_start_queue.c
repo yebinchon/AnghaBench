@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u16 ;
+
+
+
+
+typedef int u16 ;
 struct rt2x00_dev {int dummy; } ;
 struct data_queue {int qid; struct rt2x00_dev* rt2x00dev; } ;
 
-/* Variables and functions */
-#define  QID_BEACON 129 
-#define  QID_RX 128 
- int /*<<< orphan*/  TXRX_CSR19 ; 
- int /*<<< orphan*/  TXRX_CSR19_BEACON_GEN ; 
- int /*<<< orphan*/  TXRX_CSR19_TBCN ; 
- int /*<<< orphan*/  TXRX_CSR19_TSF_COUNT ; 
- int /*<<< orphan*/  TXRX_CSR2 ; 
- int /*<<< orphan*/  TXRX_CSR2_DISABLE_RX ; 
- int /*<<< orphan*/  rt2500usb_register_read (struct rt2x00_dev*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rt2500usb_register_write (struct rt2x00_dev*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rt2x00_set_field16 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
+
+
+
+ int TXRX_CSR19 ;
+ int TXRX_CSR19_BEACON_GEN ;
+ int TXRX_CSR19_TBCN ;
+ int TXRX_CSR19_TSF_COUNT ;
+ int TXRX_CSR2 ;
+ int TXRX_CSR2_DISABLE_RX ;
+ int rt2500usb_register_read (struct rt2x00_dev*,int ) ;
+ int rt2500usb_register_write (struct rt2x00_dev*,int ,int ) ;
+ int rt2x00_set_field16 (int *,int ,int) ;
 
 __attribute__((used)) static void rt2500usb_start_queue(struct data_queue *queue)
 {
-	struct rt2x00_dev *rt2x00dev = queue->rt2x00dev;
-	u16 reg;
+ struct rt2x00_dev *rt2x00dev = queue->rt2x00dev;
+ u16 reg;
 
-	switch (queue->qid) {
-	case QID_RX:
-		reg = rt2500usb_register_read(rt2x00dev, TXRX_CSR2);
-		rt2x00_set_field16(&reg, TXRX_CSR2_DISABLE_RX, 0);
-		rt2500usb_register_write(rt2x00dev, TXRX_CSR2, reg);
-		break;
-	case QID_BEACON:
-		reg = rt2500usb_register_read(rt2x00dev, TXRX_CSR19);
-		rt2x00_set_field16(&reg, TXRX_CSR19_TSF_COUNT, 1);
-		rt2x00_set_field16(&reg, TXRX_CSR19_TBCN, 1);
-		rt2x00_set_field16(&reg, TXRX_CSR19_BEACON_GEN, 1);
-		rt2500usb_register_write(rt2x00dev, TXRX_CSR19, reg);
-		break;
-	default:
-		break;
-	}
+ switch (queue->qid) {
+ case 128:
+  reg = rt2500usb_register_read(rt2x00dev, TXRX_CSR2);
+  rt2x00_set_field16(&reg, TXRX_CSR2_DISABLE_RX, 0);
+  rt2500usb_register_write(rt2x00dev, TXRX_CSR2, reg);
+  break;
+ case 129:
+  reg = rt2500usb_register_read(rt2x00dev, TXRX_CSR19);
+  rt2x00_set_field16(&reg, TXRX_CSR19_TSF_COUNT, 1);
+  rt2x00_set_field16(&reg, TXRX_CSR19_TBCN, 1);
+  rt2x00_set_field16(&reg, TXRX_CSR19_BEACON_GEN, 1);
+  rt2500usb_register_write(rt2x00dev, TXRX_CSR19, reg);
+  break;
+ default:
+  break;
+ }
 }

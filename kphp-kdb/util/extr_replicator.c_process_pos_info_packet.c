@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct repl_pos_info {scalar_t__ session_id; long long binlog_time; scalar_t__ binlog_pos; int /*<<< orphan*/  handshake_id; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct repl_pos_info {scalar_t__ session_id; long long binlog_time; scalar_t__ binlog_pos; int handshake_id; } ;
 struct repl_client_status {scalar_t__ session_id; struct related_binlog* rb; } ;
-struct related_binlog {TYPE_1__* kfs_replica; int /*<<< orphan*/  replica_name_hash; } ;
-struct connection {int /*<<< orphan*/  remote_port; } ;
-struct TYPE_2__ {int /*<<< orphan*/  replica_prefix; } ;
+struct related_binlog {TYPE_1__* kfs_replica; int replica_name_hash; } ;
+struct connection {int remote_port; } ;
+struct TYPE_2__ {int replica_prefix; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  R_ERROR_EBADFD ; 
- int /*<<< orphan*/  destroy_client (struct repl_client_status*) ; 
- struct repl_client_status* get_client_by_handshake (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- long long get_precise_time (int) ; 
- int /*<<< orphan*/  posinfo_packets_received ; 
- int send_error (struct connection*,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  show_remote_ip (struct connection*) ; 
- int update_binlog_postime_info (int /*<<< orphan*/ ,scalar_t__,long long) ; 
- int /*<<< orphan*/  vkprintf (int,char*,int /*<<< orphan*/ ,scalar_t__,long long,int,...) ; 
+
+ int R_ERROR_EBADFD ;
+ int destroy_client (struct repl_client_status*) ;
+ struct repl_client_status* get_client_by_handshake (int ,int ) ;
+ long long get_precise_time (int) ;
+ int posinfo_packets_received ;
+ int send_error (struct connection*,int ,scalar_t__,int ,char*) ;
+ int show_remote_ip (struct connection*) ;
+ int update_binlog_postime_info (int ,scalar_t__,long long) ;
+ int vkprintf (int,char*,int ,scalar_t__,long long,int,...) ;
 
 int process_pos_info_packet (struct connection *c, struct repl_pos_info *RP) {
   posinfo_packets_received++;

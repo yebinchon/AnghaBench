@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct deflate_state {int /*<<< orphan*/  cx; scalar_t__ uncomp_rec; scalar_t__ seqno; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LogCCP ; 
- int /*<<< orphan*/  inflateReset (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  log_Printf (int /*<<< orphan*/ ,char*) ; 
+
+
+
+struct deflate_state {int cx; scalar_t__ uncomp_rec; scalar_t__ seqno; } ;
+
+
+ int LogCCP ;
+ int inflateReset (int *) ;
+ int log_Printf (int ,char*) ;
 
 __attribute__((used)) static void
 DeflateResetInput(void *v)

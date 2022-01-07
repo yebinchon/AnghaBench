@@ -1,112 +1,112 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/ * obj; } ;
-typedef  TYPE_1__ pdf_page ;
-typedef  int /*<<< orphan*/  pdf_obj ;
-struct TYPE_7__ {int duration; int vertical; int outwards; int /*<<< orphan*/  type; int /*<<< orphan*/  direction; } ;
-typedef  TYPE_2__ fz_transition ;
-typedef  int /*<<< orphan*/  fz_context ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Blinds ; 
- int /*<<< orphan*/  Box ; 
- int /*<<< orphan*/  Cover ; 
- int /*<<< orphan*/  D ; 
- int /*<<< orphan*/  Di ; 
- int /*<<< orphan*/  Dissolve ; 
- int /*<<< orphan*/  Dm ; 
- int /*<<< orphan*/  Dur ; 
- int /*<<< orphan*/  FZ_TRANSITION_BLINDS ; 
- int /*<<< orphan*/  FZ_TRANSITION_BOX ; 
- int /*<<< orphan*/  FZ_TRANSITION_COVER ; 
- int /*<<< orphan*/  FZ_TRANSITION_DISSOLVE ; 
- int /*<<< orphan*/  FZ_TRANSITION_FADE ; 
- int /*<<< orphan*/  FZ_TRANSITION_FLY ; 
- int /*<<< orphan*/  FZ_TRANSITION_GLITTER ; 
- int /*<<< orphan*/  FZ_TRANSITION_NONE ; 
- int /*<<< orphan*/  FZ_TRANSITION_PUSH ; 
- int /*<<< orphan*/  FZ_TRANSITION_SPLIT ; 
- int /*<<< orphan*/  FZ_TRANSITION_UNCOVER ; 
- int /*<<< orphan*/  FZ_TRANSITION_WIPE ; 
- int /*<<< orphan*/  Fade ; 
- int /*<<< orphan*/  Fly ; 
- int /*<<< orphan*/  Glitter ; 
- int /*<<< orphan*/  H ; 
- int /*<<< orphan*/  I ; 
- int /*<<< orphan*/  M ; 
- int /*<<< orphan*/  PDF_NAME (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Push ; 
- int /*<<< orphan*/  S ; 
- int /*<<< orphan*/  Split ; 
- int /*<<< orphan*/  Trans ; 
- int /*<<< orphan*/  Uncover ; 
- int /*<<< orphan*/  Wipe ; 
- int /*<<< orphan*/ * pdf_dict_get (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pdf_dict_get_int (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- float pdf_dict_get_real (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ pdf_name_eq (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int pdf_to_real (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int * obj; } ;
+typedef TYPE_1__ pdf_page ;
+typedef int pdf_obj ;
+struct TYPE_7__ {int duration; int vertical; int outwards; int type; int direction; } ;
+typedef TYPE_2__ fz_transition ;
+typedef int fz_context ;
+
+
+ int Blinds ;
+ int Box ;
+ int Cover ;
+ int D ;
+ int Di ;
+ int Dissolve ;
+ int Dm ;
+ int Dur ;
+ int FZ_TRANSITION_BLINDS ;
+ int FZ_TRANSITION_BOX ;
+ int FZ_TRANSITION_COVER ;
+ int FZ_TRANSITION_DISSOLVE ;
+ int FZ_TRANSITION_FADE ;
+ int FZ_TRANSITION_FLY ;
+ int FZ_TRANSITION_GLITTER ;
+ int FZ_TRANSITION_NONE ;
+ int FZ_TRANSITION_PUSH ;
+ int FZ_TRANSITION_SPLIT ;
+ int FZ_TRANSITION_UNCOVER ;
+ int FZ_TRANSITION_WIPE ;
+ int Fade ;
+ int Fly ;
+ int Glitter ;
+ int H ;
+ int I ;
+ int M ;
+ int PDF_NAME (int ) ;
+ int Push ;
+ int S ;
+ int Split ;
+ int Trans ;
+ int Uncover ;
+ int Wipe ;
+ int * pdf_dict_get (int *,int *,int ) ;
+ int pdf_dict_get_int (int *,int *,int ) ;
+ float pdf_dict_get_real (int *,int *,int ) ;
+ scalar_t__ pdf_name_eq (int *,int *,int ) ;
+ int pdf_to_real (int *,int *) ;
 
 fz_transition *
 pdf_page_presentation(fz_context *ctx, pdf_page *page, fz_transition *transition, float *duration)
 {
-	pdf_obj *obj, *transdict;
+ pdf_obj *obj, *transdict;
 
-	*duration = pdf_dict_get_real(ctx, page->obj, PDF_NAME(Dur));
+ *duration = pdf_dict_get_real(ctx, page->obj, PDF_NAME(Dur));
 
-	transdict = pdf_dict_get(ctx, page->obj, PDF_NAME(Trans));
-	if (!transdict)
-		return NULL;
+ transdict = pdf_dict_get(ctx, page->obj, PDF_NAME(Trans));
+ if (!transdict)
+  return ((void*)0);
 
-	obj = pdf_dict_get(ctx, transdict, PDF_NAME(D));
+ obj = pdf_dict_get(ctx, transdict, PDF_NAME(D));
 
-	transition->duration = (obj ? pdf_to_real(ctx, obj) : 1);
+ transition->duration = (obj ? pdf_to_real(ctx, obj) : 1);
 
-	transition->vertical = !pdf_name_eq(ctx, pdf_dict_get(ctx, transdict, PDF_NAME(Dm)), PDF_NAME(H));
-	transition->outwards = !pdf_name_eq(ctx, pdf_dict_get(ctx, transdict, PDF_NAME(M)), PDF_NAME(I));
-	/* FIXME: If 'Di' is None, it should be handled differently, but
-	 * this only affects Fly, and we don't implement that currently. */
-	transition->direction = (pdf_dict_get_int(ctx, transdict, PDF_NAME(Di)));
-	/* FIXME: Read SS for Fly when we implement it */
-	/* FIXME: Read B for Fly when we implement it */
+ transition->vertical = !pdf_name_eq(ctx, pdf_dict_get(ctx, transdict, PDF_NAME(Dm)), PDF_NAME(H));
+ transition->outwards = !pdf_name_eq(ctx, pdf_dict_get(ctx, transdict, PDF_NAME(M)), PDF_NAME(I));
 
-	obj = pdf_dict_get(ctx, transdict, PDF_NAME(S));
-	if (pdf_name_eq(ctx, obj, PDF_NAME(Split)))
-		transition->type = FZ_TRANSITION_SPLIT;
-	else if (pdf_name_eq(ctx, obj, PDF_NAME(Blinds)))
-		transition->type = FZ_TRANSITION_BLINDS;
-	else if (pdf_name_eq(ctx, obj, PDF_NAME(Box)))
-		transition->type = FZ_TRANSITION_BOX;
-	else if (pdf_name_eq(ctx, obj, PDF_NAME(Wipe)))
-		transition->type = FZ_TRANSITION_WIPE;
-	else if (pdf_name_eq(ctx, obj, PDF_NAME(Dissolve)))
-		transition->type = FZ_TRANSITION_DISSOLVE;
-	else if (pdf_name_eq(ctx, obj, PDF_NAME(Glitter)))
-		transition->type = FZ_TRANSITION_GLITTER;
-	else if (pdf_name_eq(ctx, obj, PDF_NAME(Fly)))
-		transition->type = FZ_TRANSITION_FLY;
-	else if (pdf_name_eq(ctx, obj, PDF_NAME(Push)))
-		transition->type = FZ_TRANSITION_PUSH;
-	else if (pdf_name_eq(ctx, obj, PDF_NAME(Cover)))
-		transition->type = FZ_TRANSITION_COVER;
-	else if (pdf_name_eq(ctx, obj, PDF_NAME(Uncover)))
-		transition->type = FZ_TRANSITION_UNCOVER;
-	else if (pdf_name_eq(ctx, obj, PDF_NAME(Fade)))
-		transition->type = FZ_TRANSITION_FADE;
-	else
-		transition->type = FZ_TRANSITION_NONE;
 
-	return transition;
+ transition->direction = (pdf_dict_get_int(ctx, transdict, PDF_NAME(Di)));
+
+
+
+ obj = pdf_dict_get(ctx, transdict, PDF_NAME(S));
+ if (pdf_name_eq(ctx, obj, PDF_NAME(Split)))
+  transition->type = FZ_TRANSITION_SPLIT;
+ else if (pdf_name_eq(ctx, obj, PDF_NAME(Blinds)))
+  transition->type = FZ_TRANSITION_BLINDS;
+ else if (pdf_name_eq(ctx, obj, PDF_NAME(Box)))
+  transition->type = FZ_TRANSITION_BOX;
+ else if (pdf_name_eq(ctx, obj, PDF_NAME(Wipe)))
+  transition->type = FZ_TRANSITION_WIPE;
+ else if (pdf_name_eq(ctx, obj, PDF_NAME(Dissolve)))
+  transition->type = FZ_TRANSITION_DISSOLVE;
+ else if (pdf_name_eq(ctx, obj, PDF_NAME(Glitter)))
+  transition->type = FZ_TRANSITION_GLITTER;
+ else if (pdf_name_eq(ctx, obj, PDF_NAME(Fly)))
+  transition->type = FZ_TRANSITION_FLY;
+ else if (pdf_name_eq(ctx, obj, PDF_NAME(Push)))
+  transition->type = FZ_TRANSITION_PUSH;
+ else if (pdf_name_eq(ctx, obj, PDF_NAME(Cover)))
+  transition->type = FZ_TRANSITION_COVER;
+ else if (pdf_name_eq(ctx, obj, PDF_NAME(Uncover)))
+  transition->type = FZ_TRANSITION_UNCOVER;
+ else if (pdf_name_eq(ctx, obj, PDF_NAME(Fade)))
+  transition->type = FZ_TRANSITION_FADE;
+ else
+  transition->type = FZ_TRANSITION_NONE;
+
+ return transition;
 }

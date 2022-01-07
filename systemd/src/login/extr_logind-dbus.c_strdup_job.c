@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sd_bus_message ;
 
-/* Variables and functions */
- int ENOMEM ; 
- int sd_bus_message_read (int /*<<< orphan*/ *,char*,char const**) ; 
- char* strdup (char const*) ; 
+
+
+
+typedef int sd_bus_message ;
+
+
+ int ENOMEM ;
+ int sd_bus_message_read (int *,char*,char const**) ;
+ char* strdup (char const*) ;
 
 __attribute__((used)) static int strdup_job(sd_bus_message *reply, char **job) {
         const char *j;

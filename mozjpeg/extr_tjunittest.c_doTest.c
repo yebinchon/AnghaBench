@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * tjhandle ;
 
-/* Variables and functions */
- int TJFLAG_BOTTOMUP ; 
- int TJFLAG_FASTUPSAMPLE ; 
- int TJPF_RGBA ; 
- int TJPF_RGBX ; 
- int TJPF_XRGB ; 
- int TJSAMP_411 ; 
- int TJSAMP_420 ; 
- int TJSAMP_422 ; 
- int TJSAMP_440 ; 
- int /*<<< orphan*/  _throw (char*) ; 
- int /*<<< orphan*/  _throwtj () ; 
- int /*<<< orphan*/  alloc ; 
- int /*<<< orphan*/  compTest (int /*<<< orphan*/ *,unsigned char**,unsigned long*,int,int,int,char*,int,int,int) ; 
- int /*<<< orphan*/  decompTest (int /*<<< orphan*/ *,unsigned char*,unsigned long,int,int,int,char*,int,int) ; 
- int /*<<< orphan*/  printf (char*) ; 
- scalar_t__ tjAlloc (unsigned long) ; 
- unsigned long tjBufSize (int,int,int) ; 
- int /*<<< orphan*/  tjDestroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tjFree (unsigned char*) ; 
- int /*<<< orphan*/ * tjInitCompress () ; 
- int /*<<< orphan*/ * tjInitDecompress () ; 
+
+
+
+typedef int * tjhandle ;
+
+
+ int TJFLAG_BOTTOMUP ;
+ int TJFLAG_FASTUPSAMPLE ;
+ int TJPF_RGBA ;
+ int TJPF_RGBX ;
+ int TJPF_XRGB ;
+ int TJSAMP_411 ;
+ int TJSAMP_420 ;
+ int TJSAMP_422 ;
+ int TJSAMP_440 ;
+ int _throw (char*) ;
+ int _throwtj () ;
+ int alloc ;
+ int compTest (int *,unsigned char**,unsigned long*,int,int,int,char*,int,int,int) ;
+ int decompTest (int *,unsigned char*,unsigned long,int,int,int,char*,int,int) ;
+ int printf (char*) ;
+ scalar_t__ tjAlloc (unsigned long) ;
+ unsigned long tjBufSize (int,int,int) ;
+ int tjDestroy (int *) ;
+ int tjFree (unsigned char*) ;
+ int * tjInitCompress () ;
+ int * tjInitDecompress () ;
 
 void doTest(int w, int h, const int *formats, int nformats, int subsamp,
             char *basename)
 {
-  tjhandle chandle = NULL, dhandle = NULL;
-  unsigned char *dstBuf = NULL;
+  tjhandle chandle = ((void*)0), dhandle = ((void*)0);
+  unsigned char *dstBuf = ((void*)0);
   unsigned long size = 0;
   int pfi, pf, i;
 
   if (!alloc)
     size = tjBufSize(w, h, subsamp);
   if (size != 0)
-    if ((dstBuf = (unsigned char *)tjAlloc(size)) == NULL)
+    if ((dstBuf = (unsigned char *)tjAlloc(size)) == ((void*)0))
       _throw("Memory allocation failure.");
 
-  if ((chandle = tjInitCompress()) == NULL ||
-      (dhandle = tjInitDecompress()) == NULL)
+  if ((chandle = tjInitCompress()) == ((void*)0) ||
+      (dhandle = tjInitDecompress()) == ((void*)0))
     _throwtj();
 
   for (pfi = 0; pfi < nformats; pfi++) {

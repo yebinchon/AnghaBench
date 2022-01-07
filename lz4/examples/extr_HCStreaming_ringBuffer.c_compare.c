@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  b1 ;
-typedef  int /*<<< orphan*/  b0 ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- size_t fread (char*,int,int,int /*<<< orphan*/ *) ; 
- scalar_t__ memcmp (char*,char*,size_t const) ; 
+
+
+
+typedef int b1 ;
+typedef int b0 ;
+typedef int FILE ;
+
+
+ size_t fread (char*,int,int,int *) ;
+ scalar_t__ memcmp (char*,char*,size_t const) ;
 
 size_t compare(FILE* f0, FILE* f1)
 {
@@ -28,7 +28,7 @@ size_t compare(FILE* f0, FILE* f1)
         const size_t r0 = fread(b0, 1, sizeof(b0), f0);
         const size_t r1 = fread(b1, 1, sizeof(b1), f1);
 
-        if ((r0==0) && (r1==0)) return 0;   // success
+        if ((r0==0) && (r1==0)) return 0;
 
         if (r0 != r1) {
             size_t smallest = r0;

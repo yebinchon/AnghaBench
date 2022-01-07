@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_revnum_t ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int svn_revnum_t ;
 struct TYPE_6__ {TYPE_1__* vtable; } ;
-typedef  TYPE_2__ svn_ra_session_t ;
-typedef  int /*<<< orphan*/  svn_ra_reporter2_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_delta_editor_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-struct reporter_3in2_baton {int /*<<< orphan*/  reporter3_baton; int /*<<< orphan*/  reporter3; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-struct TYPE_5__ {int /*<<< orphan*/ * (* do_update ) (TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,void*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ;} ;
+typedef TYPE_2__ svn_ra_session_t ;
+typedef int svn_ra_reporter2_t ;
+typedef int svn_error_t ;
+typedef int svn_delta_editor_t ;
+typedef int svn_boolean_t ;
+struct reporter_3in2_baton {int reporter3_baton; int reporter3; } ;
+typedef int apr_pool_t ;
+struct TYPE_5__ {int * (* do_update ) (TYPE_2__*,int *,int *,int ,char const*,int ,int ,int ,int const*,void*,int *,int *) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  SVN_DEPTH_INFINITY_OR_FILES (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_ASSERT (int) ; 
- struct reporter_3in2_baton* apr_palloc (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  reporter_3in2_wrapper ; 
- int /*<<< orphan*/ * stub1 (TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,void*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_path_is_empty (char const*) ; 
- scalar_t__ svn_path_is_single_path_component (char const*) ; 
+
+ int FALSE ;
+ int SVN_DEPTH_INFINITY_OR_FILES (int ) ;
+ int SVN_ERR_ASSERT (int) ;
+ struct reporter_3in2_baton* apr_palloc (int *,int) ;
+ int reporter_3in2_wrapper ;
+ int * stub1 (TYPE_2__*,int *,int *,int ,char const*,int ,int ,int ,int const*,void*,int *,int *) ;
+ scalar_t__ svn_path_is_empty (char const*) ;
+ scalar_t__ svn_path_is_single_path_component (char const*) ;
 
 svn_error_t *svn_ra_do_update(svn_ra_session_t *session,
                               const svn_ra_reporter2_t **reporter,
@@ -52,8 +52,8 @@ svn_error_t *svn_ra_do_update(svn_ra_session_t *session,
                                     &(b->reporter3), &(b->reporter3_baton),
                                     revision_to_update_to, update_target,
                                     SVN_DEPTH_INFINITY_OR_FILES(recurse),
-                                    FALSE, /* no copyfrom args */
-                                    FALSE /* ignore_ancestry */,
+                                    FALSE,
+                                    FALSE ,
                                     update_editor, update_baton,
                                     pool, pool);
 }

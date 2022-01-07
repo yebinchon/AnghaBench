@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-struct TYPE_2__ {int (* pmCPUControl ) (int /*<<< orphan*/ ,void*) ;} ;
 
-/* Variables and functions */
- TYPE_1__* pmDispatch ; 
- int stub1 (int /*<<< orphan*/ ,void*) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+struct TYPE_2__ {int (* pmCPUControl ) (int ,void*) ;} ;
+
+
+ TYPE_1__* pmDispatch ;
+ int stub1 (int ,void*) ;
 
 int
 pmCPUControl(uint32_t cmd, void *datap)
 {
-    int		rc	= -1;
+    int rc = -1;
 
-    if (pmDispatch != NULL
-	&& pmDispatch->pmCPUControl != NULL)
-	rc = (*pmDispatch->pmCPUControl)(cmd, datap);
+    if (pmDispatch != ((void*)0)
+ && pmDispatch->pmCPUControl != ((void*)0))
+ rc = (*pmDispatch->pmCPUControl)(cmd, datap);
 
     return(rc);
 }

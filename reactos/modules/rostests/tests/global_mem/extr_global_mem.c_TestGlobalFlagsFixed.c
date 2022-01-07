@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int UINT ;
-typedef  int /*<<< orphan*/  TEST_STATUS ;
-typedef  scalar_t__ HGLOBAL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FAILED ; 
- int /*<<< orphan*/  GMEM_FIXED ; 
- int GMEM_LOCKCOUNT ; 
- scalar_t__ GlobalAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int GlobalFlags (scalar_t__) ; 
- int /*<<< orphan*/  GlobalFree (scalar_t__) ; 
- scalar_t__ GlobalLock (scalar_t__) ; 
- int /*<<< orphan*/  MEM_BLOCK_SIZE ; 
- int /*<<< orphan*/  OUTPUT_Handle (scalar_t__) ; 
- int /*<<< orphan*/  OUTPUT_Line (char*) ; 
- int /*<<< orphan*/  OUTPUT_Result (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PASSED ; 
- int /*<<< orphan*/  SKIPPED ; 
- int /*<<< orphan*/  TEST_CombineStatus (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int UINT ;
+typedef int TEST_STATUS ;
+typedef scalar_t__ HGLOBAL ;
+
+
+ int FAILED ;
+ int GMEM_FIXED ;
+ int GMEM_LOCKCOUNT ;
+ scalar_t__ GlobalAlloc (int ,int ) ;
+ int GlobalFlags (scalar_t__) ;
+ int GlobalFree (scalar_t__) ;
+ scalar_t__ GlobalLock (scalar_t__) ;
+ int MEM_BLOCK_SIZE ;
+ int OUTPUT_Handle (scalar_t__) ;
+ int OUTPUT_Line (char*) ;
+ int OUTPUT_Result (int ) ;
+ int PASSED ;
+ int SKIPPED ;
+ int TEST_CombineStatus (int ,int ) ;
 
 TEST_STATUS TestGlobalFlagsFixed()
 {
-    HGLOBAL     hMem   = 0;
-    UINT        uFlags = 0;
+    HGLOBAL hMem = 0;
+    UINT uFlags = 0;
     TEST_STATUS result = SKIPPED;
 
     OUTPUT_Line("Testing for correct handling of GMEM_FIXED memory");
@@ -47,8 +47,8 @@ TEST_STATUS TestGlobalFlagsFixed()
         OUTPUT_Line("Testing initial allocation");
         OUTPUT_Line("Testing for non-discarded and lock of 0");
         uFlags = GlobalFlags(hMem);
-        if (((GMEM_LOCKCOUNT & uFlags) == 0) && /*no locks*/
-            (((uFlags >> 8) & 0xff) == 0 ))   /*not discarded*/
+        if (((GMEM_LOCKCOUNT & uFlags) == 0) &&
+            (((uFlags >> 8) & 0xff) == 0 ))
         {
             result = TEST_CombineStatus(result, PASSED);
         }
@@ -63,8 +63,8 @@ TEST_STATUS TestGlobalFlagsFixed()
         OUTPUT_Line("Testing after a lock");
         OUTPUT_Line("Testing for non-discarded and lock of 0");
         uFlags = GlobalFlags(hMem);
-        if (((GMEM_LOCKCOUNT & uFlags) == 0) && /*no locks*/
-            (((uFlags >> 8) & 0xff) == 0 ))   /*not discarded*/
+        if (((GMEM_LOCKCOUNT & uFlags) == 0) &&
+            (((uFlags >> 8) & 0xff) == 0 ))
         {
             result = TEST_CombineStatus(result, PASSED);
         }

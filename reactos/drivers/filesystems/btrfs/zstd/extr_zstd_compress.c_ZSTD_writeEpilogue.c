@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {scalar_t__ checksumFlag; } ;
 struct TYPE_7__ {TYPE_1__ fParams; } ;
-struct TYPE_6__ {scalar_t__ stage; int /*<<< orphan*/  xxhState; TYPE_3__ appliedParams; } ;
-typedef  TYPE_2__ ZSTD_CCtx ;
-typedef  int U32 ;
-typedef  int /*<<< orphan*/  BYTE ;
+struct TYPE_6__ {scalar_t__ stage; int xxhState; TYPE_3__ appliedParams; } ;
+typedef TYPE_2__ ZSTD_CCtx ;
+typedef int U32 ;
+typedef int BYTE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEBUGLOG (int,char*,...) ; 
- size_t ERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MEM_writeLE32 (int /*<<< orphan*/ *,int const) ; 
- scalar_t__ XXH64_digest (int /*<<< orphan*/ *) ; 
- scalar_t__ ZSTD_blockHeaderSize ; 
- scalar_t__ ZSTD_isError (size_t) ; 
- size_t ZSTD_writeFrameHeader (void*,size_t,TYPE_3__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ ZSTDcs_created ; 
- scalar_t__ ZSTDcs_ending ; 
- scalar_t__ ZSTDcs_init ; 
- scalar_t__ ZSTDcs_ongoing ; 
- scalar_t__ bt_raw ; 
- int /*<<< orphan*/  dstSize_tooSmall ; 
- int /*<<< orphan*/  stage_wrong ; 
+
+ int DEBUGLOG (int,char*,...) ;
+ size_t ERROR (int ) ;
+ int MEM_writeLE32 (int *,int const) ;
+ scalar_t__ XXH64_digest (int *) ;
+ scalar_t__ ZSTD_blockHeaderSize ;
+ scalar_t__ ZSTD_isError (size_t) ;
+ size_t ZSTD_writeFrameHeader (void*,size_t,TYPE_3__,int ,int ) ;
+ scalar_t__ ZSTDcs_created ;
+ scalar_t__ ZSTDcs_ending ;
+ scalar_t__ ZSTDcs_init ;
+ scalar_t__ ZSTDcs_ongoing ;
+ scalar_t__ bt_raw ;
+ int dstSize_tooSmall ;
+ int stage_wrong ;
 
 __attribute__((used)) static size_t ZSTD_writeEpilogue(ZSTD_CCtx* cctx, void* dst, size_t dstCapacity)
 {
@@ -43,9 +43,9 @@ __attribute__((used)) static size_t ZSTD_writeEpilogue(ZSTD_CCtx* cctx, void* ds
     size_t fhSize = 0;
 
     DEBUGLOG(4, "ZSTD_writeEpilogue");
-    if (cctx->stage == ZSTDcs_created) return ERROR(stage_wrong);  /* init missing */
+    if (cctx->stage == ZSTDcs_created) return ERROR(stage_wrong);
 
-    /* special case : empty frame */
+
     if (cctx->stage == ZSTDcs_init) {
         fhSize = ZSTD_writeFrameHeader(dst, dstCapacity, cctx->appliedParams, 0, 0);
         if (ZSTD_isError(fhSize)) return fhSize;
@@ -55,8 +55,8 @@ __attribute__((used)) static size_t ZSTD_writeEpilogue(ZSTD_CCtx* cctx, void* ds
     }
 
     if (cctx->stage != ZSTDcs_ending) {
-        /* write one last empty block, make it the "last" block */
-        U32 const cBlockHeader24 = 1 /* last block */ + (((U32)bt_raw)<<1) + 0;
+
+        U32 const cBlockHeader24 = 1 + (((U32)bt_raw)<<1) + 0;
         if (dstCapacity<4) return ERROR(dstSize_tooSmall);
         MEM_writeLE32(op, cBlockHeader24);
         op += ZSTD_blockHeaderSize;
@@ -71,6 +71,6 @@ __attribute__((used)) static size_t ZSTD_writeEpilogue(ZSTD_CCtx* cctx, void* ds
         op += 4;
     }
 
-    cctx->stage = ZSTDcs_created;  /* return to "created but no init" status */
+    cctx->stage = ZSTDcs_created;
     return op-ostart;
 }

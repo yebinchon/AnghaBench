@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ IOPMCopySleepWakeUUIDKey (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ get_test_wake_uuid (int /*<<< orphan*/ *) ; 
+ scalar_t__ IOPMCopySleepWakeUUIDKey (int *,int ) ;
+ scalar_t__ get_test_wake_uuid (int *) ;
 
 __attribute__((used)) static bool
 is_wakeuuid_set(void)
 {
-	/*
-	 * IOPMCopySleepWakeUUIDKey() tells if SleepWakeUUID is currently set
-	 * That means we are currently in a sleep/wake cycle
-	 */
-	return (get_test_wake_uuid(NULL) || IOPMCopySleepWakeUUIDKey(NULL, 0));
+
+
+
+
+ return (get_test_wake_uuid(((void*)0)) || IOPMCopySleepWakeUUIDKey(((void*)0), 0));
 }

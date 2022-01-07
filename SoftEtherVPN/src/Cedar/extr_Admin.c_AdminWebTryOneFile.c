@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT ;
-typedef  int /*<<< orphan*/  BUF ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * ReadDump (char*) ; 
- int /*<<< orphan*/  StrCpy (char*,int /*<<< orphan*/ ,char*) ; 
+
+
+
+typedef int UINT ;
+typedef int BUF ;
+
+
+ int * ReadDump (char*) ;
+ int StrCpy (char*,int ,char*) ;
 
 BUF *AdminWebTryOneFile(char *filename, char *ret_filename, UINT ret_filename_size)
 {
-	BUF *b;
-	if (filename == NULL || ret_filename == NULL)
-	{
-		return NULL;
-	}
+ BUF *b;
+ if (filename == ((void*)0) || ret_filename == ((void*)0))
+ {
+  return ((void*)0);
+ }
 
-	b = ReadDump(filename);
-	if (b == NULL)
-	{
-		return NULL;
-	}
+ b = ReadDump(filename);
+ if (b == ((void*)0))
+ {
+  return ((void*)0);
+ }
 
-	StrCpy(ret_filename, ret_filename_size, filename);
+ StrCpy(ret_filename, ret_filename_size, filename);
 
-	return b;
+ return b;
 }

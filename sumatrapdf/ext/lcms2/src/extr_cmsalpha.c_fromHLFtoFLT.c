@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  cmsUInt16Number ;
-typedef  int /*<<< orphan*/  cmsFloat32Number ;
 
-/* Variables and functions */
- int /*<<< orphan*/  _cmsHalf2Float (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cmsUNUSED_PARAMETER (void const*) ; 
+
+
+
+typedef int cmsUInt16Number ;
+typedef int cmsFloat32Number ;
+
+
+ int _cmsHalf2Float (int ) ;
+ int cmsUNUSED_PARAMETER (void const*) ;
 
 __attribute__((used)) static
 void fromHLFtoFLT(void* dst, const void* src)
 {
-#ifndef CMS_NO_HALF_SUPPORT
+
        *(cmsFloat32Number*)dst = _cmsHalf2Float(*(cmsUInt16Number*)src);
-#else
-    cmsUNUSED_PARAMETER(dst);
-    cmsUNUSED_PARAMETER(src);
-#endif
+
+
+
+
 }

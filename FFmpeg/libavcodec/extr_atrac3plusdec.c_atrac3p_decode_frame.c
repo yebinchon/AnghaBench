@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_23__   TYPE_6__ ;
-typedef  struct TYPE_22__   TYPE_4__ ;
-typedef  struct TYPE_21__   TYPE_3__ ;
-typedef  struct TYPE_20__   TYPE_2__ ;
-typedef  struct TYPE_19__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_23__ TYPE_6__ ;
+typedef struct TYPE_22__ TYPE_4__ ;
+typedef struct TYPE_21__ TYPE_3__ ;
+typedef struct TYPE_20__ TYPE_2__ ;
+typedef struct TYPE_19__ TYPE_1__ ;
+
+
 struct TYPE_23__ {int unit_type; } ;
-struct TYPE_22__ {int num_channel_blocks; int* channel_blocks; int /*<<< orphan*/ * outp_buf; TYPE_6__* ch_units; int /*<<< orphan*/  samples; int /*<<< orphan*/  gb; } ;
-struct TYPE_21__ {scalar_t__ codec_id; int /*<<< orphan*/  block_align; TYPE_4__* priv_data; } ;
+struct TYPE_22__ {int num_channel_blocks; int* channel_blocks; int * outp_buf; TYPE_6__* ch_units; int samples; int gb; } ;
+struct TYPE_21__ {scalar_t__ codec_id; int block_align; TYPE_4__* priv_data; } ;
 struct TYPE_20__ {int nb_samples; scalar_t__ extended_data; } ;
-struct TYPE_19__ {int size; int /*<<< orphan*/  data; } ;
-typedef  TYPE_1__ AVPacket ;
-typedef  TYPE_2__ AVFrame ;
-typedef  TYPE_3__ AVCodecContext ;
-typedef  TYPE_4__ ATRAC3PContext ;
+struct TYPE_19__ {int size; int data; } ;
+typedef TYPE_1__ AVPacket ;
+typedef TYPE_2__ AVFrame ;
+typedef TYPE_3__ AVCodecContext ;
+typedef TYPE_4__ ATRAC3PContext ;
 
-/* Variables and functions */
- int ATRAC3P_FRAME_SAMPLES ; 
- int AVERROR_INVALIDDATA ; 
- int AVERROR_PATCHWELCOME ; 
- scalar_t__ AV_CODEC_ID_ATRAC3P ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int CH_UNIT_EXTENSION ; 
- int CH_UNIT_TERMINATOR ; 
- int FFMIN (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  av_log (TYPE_3__*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  avpriv_report_missing_feature (TYPE_3__*,char*) ; 
- int /*<<< orphan*/  decode_residual_spectrum (TYPE_4__*,TYPE_6__*,int /*<<< orphan*/ ,int,TYPE_3__*) ; 
- int ff_atrac3p_decode_channel_unit (int /*<<< orphan*/ *,TYPE_6__*,int,TYPE_3__*) ; 
- int ff_get_buffer (TYPE_3__*,TYPE_2__*,int /*<<< orphan*/ ) ; 
- int get_bits (int /*<<< orphan*/ *,int) ; 
- scalar_t__ get_bits1 (int /*<<< orphan*/ *) ; 
- int get_bits_left (int /*<<< orphan*/ *) ; 
- int init_get_bits8 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  memcpy (float*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  reconstruct_frame (TYPE_4__*,TYPE_6__*,int,TYPE_3__*) ; 
+
+ int ATRAC3P_FRAME_SAMPLES ;
+ int AVERROR_INVALIDDATA ;
+ int AVERROR_PATCHWELCOME ;
+ scalar_t__ AV_CODEC_ID_ATRAC3P ;
+ int AV_LOG_ERROR ;
+ int CH_UNIT_EXTENSION ;
+ int CH_UNIT_TERMINATOR ;
+ int FFMIN (int ,int) ;
+ int av_log (TYPE_3__*,int ,char*) ;
+ int avpriv_report_missing_feature (TYPE_3__*,char*) ;
+ int decode_residual_spectrum (TYPE_4__*,TYPE_6__*,int ,int,TYPE_3__*) ;
+ int ff_atrac3p_decode_channel_unit (int *,TYPE_6__*,int,TYPE_3__*) ;
+ int ff_get_buffer (TYPE_3__*,TYPE_2__*,int ) ;
+ int get_bits (int *,int) ;
+ scalar_t__ get_bits1 (int *) ;
+ int get_bits_left (int *) ;
+ int init_get_bits8 (int *,int ,int) ;
+ int memcpy (float*,int ,int) ;
+ int reconstruct_frame (TYPE_4__*,TYPE_6__*,int,TYPE_3__*) ;
 
 __attribute__((used)) static int atrac3p_decode_frame(AVCodecContext *avctx, void *data,
                                 int *got_frame_ptr, AVPacket *avpkt)
 {
     ATRAC3PContext *ctx = avctx->priv_data;
-    AVFrame *frame      = data;
+    AVFrame *frame = data;
     int i, ret, ch_unit_id, ch_block = 0, out_ch_index = 0, channels_to_process;
     float **samples_p = (float **)frame->extended_data;
 
@@ -80,7 +80,7 @@ __attribute__((used)) static int atrac3p_decode_frame(AVCodecContext *avctx, voi
         }
 
         ctx->ch_units[ch_block].unit_type = ch_unit_id;
-        channels_to_process               = ch_unit_id + 1;
+        channels_to_process = ch_unit_id + 1;
 
         if ((ret = ff_atrac3p_decode_channel_unit(&ctx->gb,
                                                   &ctx->ch_units[ch_block],

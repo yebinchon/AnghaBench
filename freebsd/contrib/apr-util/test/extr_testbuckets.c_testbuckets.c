@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  abts_suite ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * ADD_SUITE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  abts_run_test (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  test_bwrite ; 
- int /*<<< orphan*/  test_create ; 
- int /*<<< orphan*/  test_flatten ; 
- int /*<<< orphan*/  test_insertfile ; 
- int /*<<< orphan*/  test_manyfile ; 
- int /*<<< orphan*/  test_partition ; 
- int /*<<< orphan*/  test_simple ; 
- int /*<<< orphan*/  test_split ; 
- int /*<<< orphan*/  test_splitline ; 
- int /*<<< orphan*/  test_splits ; 
- int /*<<< orphan*/  test_truncfile ; 
- int /*<<< orphan*/  test_write_putstrs ; 
- int /*<<< orphan*/  test_write_split ; 
+
+
+
+typedef int abts_suite ;
+
+
+ int * ADD_SUITE (int *) ;
+ int abts_run_test (int *,int ,int *) ;
+ int test_bwrite ;
+ int test_create ;
+ int test_flatten ;
+ int test_insertfile ;
+ int test_manyfile ;
+ int test_partition ;
+ int test_simple ;
+ int test_split ;
+ int test_splitline ;
+ int test_splits ;
+ int test_truncfile ;
+ int test_write_putstrs ;
+ int test_write_split ;
 
 abts_suite *testbuckets(abts_suite *suite)
 {
     suite = ADD_SUITE(suite);
 
-    abts_run_test(suite, test_create, NULL);
-    abts_run_test(suite, test_simple, NULL);
-    abts_run_test(suite, test_flatten, NULL);
-    abts_run_test(suite, test_split, NULL);
-    abts_run_test(suite, test_bwrite, NULL);
-    abts_run_test(suite, test_splitline, NULL);
-    abts_run_test(suite, test_splits, NULL);
-    abts_run_test(suite, test_insertfile, NULL);
-    abts_run_test(suite, test_manyfile, NULL);
-    abts_run_test(suite, test_truncfile, NULL);
-    abts_run_test(suite, test_partition, NULL);
-    abts_run_test(suite, test_write_split, NULL);
-    abts_run_test(suite, test_write_putstrs, NULL);
+    abts_run_test(suite, test_create, ((void*)0));
+    abts_run_test(suite, test_simple, ((void*)0));
+    abts_run_test(suite, test_flatten, ((void*)0));
+    abts_run_test(suite, test_split, ((void*)0));
+    abts_run_test(suite, test_bwrite, ((void*)0));
+    abts_run_test(suite, test_splitline, ((void*)0));
+    abts_run_test(suite, test_splits, ((void*)0));
+    abts_run_test(suite, test_insertfile, ((void*)0));
+    abts_run_test(suite, test_manyfile, ((void*)0));
+    abts_run_test(suite, test_truncfile, ((void*)0));
+    abts_run_test(suite, test_partition, ((void*)0));
+    abts_run_test(suite, test_write_split, ((void*)0));
+    abts_run_test(suite, test_write_putstrs, ((void*)0));
 
     return suite;
 }

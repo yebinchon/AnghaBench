@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  scalar_t__ uint32_t ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef scalar_t__ uint32_t ;
 struct TYPE_5__ {int member_0; scalar_t__ value; int clkcnt_n; int clkdiv_pre; int clkcnt_l; } ;
-typedef  TYPE_1__ spiClk_t ;
-typedef  scalar_t__ int8_t ;
-typedef  int int32_t ;
-typedef  int /*<<< orphan*/  bestReg ;
+typedef TYPE_1__ spiClk_t ;
+typedef scalar_t__ int8_t ;
+typedef int int32_t ;
+typedef int bestReg ;
 
-/* Variables and functions */
- void* ClkRegToFreq (TYPE_1__*) ; 
- scalar_t__ SPI_CLK_EQU_SYSCLK ; 
- scalar_t__ abs (int) ; 
- scalar_t__ getApbFrequency () ; 
- int /*<<< orphan*/  memcpy (TYPE_1__*,TYPE_1__*,int) ; 
+
+ void* ClkRegToFreq (TYPE_1__*) ;
+ scalar_t__ SPI_CLK_EQU_SYSCLK ;
+ scalar_t__ abs (int) ;
+ scalar_t__ getApbFrequency () ;
+ int memcpy (TYPE_1__*,TYPE_1__*,int) ;
 
 uint32_t spiFrequencyToClockDiv(uint32_t freq)
 {

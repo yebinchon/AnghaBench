@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int annotation_level ; 
- scalar_t__ ignore_count_changed ; 
- int /*<<< orphan*/  printf_unfiltered (char*) ; 
- int /*<<< orphan*/  target_terminal_ours () ; 
+ int annotation_level ;
+ scalar_t__ ignore_count_changed ;
+ int printf_unfiltered (char*) ;
+ int target_terminal_ours () ;
 
 void
 breakpoints_changed (void)
@@ -25,6 +17,6 @@ breakpoints_changed (void)
       target_terminal_ours ();
       printf_unfiltered ("\n\032\032breakpoints-invalid\n");
       if (ignore_count_changed)
-	ignore_count_changed = 0;	/* Avoid multiple break annotations. */
+ ignore_count_changed = 0;
     }
 }

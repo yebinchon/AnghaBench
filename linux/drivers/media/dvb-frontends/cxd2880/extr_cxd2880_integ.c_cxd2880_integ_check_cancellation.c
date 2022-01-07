@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct cxd2880_tnrdmd {int /*<<< orphan*/  cancel; } ;
 
-/* Variables and functions */
- int ECANCELED ; 
- int EINVAL ; 
- scalar_t__ atomic_read (int /*<<< orphan*/ *) ; 
+
+
+
+struct cxd2880_tnrdmd {int cancel; } ;
+
+
+ int ECANCELED ;
+ int EINVAL ;
+ scalar_t__ atomic_read (int *) ;
 
 int cxd2880_integ_check_cancellation(struct cxd2880_tnrdmd *tnr_dmd)
 {
-	if (!tnr_dmd)
-		return -EINVAL;
+ if (!tnr_dmd)
+  return -EINVAL;
 
-	if (atomic_read(&tnr_dmd->cancel) != 0)
-		return -ECANCELED;
+ if (atomic_read(&tnr_dmd->cancel) != 0)
+  return -ECANCELED;
 
-	return 0;
+ return 0;
 }

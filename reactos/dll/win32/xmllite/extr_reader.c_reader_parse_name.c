@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
 struct TYPE_12__ {scalar_t__* resume; } ;
-typedef  TYPE_1__ xmlreader ;
-struct TYPE_13__ {int /*<<< orphan*/  len; } ;
-typedef  TYPE_2__ strval ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  scalar_t__ UINT ;
-typedef  int /*<<< orphan*/  HRESULT ;
+typedef TYPE_1__ xmlreader ;
+struct TYPE_13__ {int len; } ;
+typedef TYPE_2__ strval ;
+typedef int WCHAR ;
+typedef scalar_t__ UINT ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_PENDING ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WC_E_NAMECHARACTER ; 
- size_t XmlReadResume_Name ; 
- int /*<<< orphan*/  debug_strval (TYPE_1__*,TYPE_2__*) ; 
- scalar_t__ is_namechar (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  is_namestartchar (int /*<<< orphan*/ ) ; 
- scalar_t__ is_reader_pending (TYPE_1__*) ; 
- scalar_t__ reader_get_cur (TYPE_1__*) ; 
- int /*<<< orphan*/ * reader_get_ptr (TYPE_1__*) ; 
- int /*<<< orphan*/  reader_init_strvalue (scalar_t__,scalar_t__,TYPE_2__*) ; 
- int /*<<< orphan*/  reader_skipn (TYPE_1__*,int) ; 
+
+ int E_PENDING ;
+ int S_OK ;
+ int TRACE (char*,int ,int ) ;
+ int WC_E_NAMECHARACTER ;
+ size_t XmlReadResume_Name ;
+ int debug_strval (TYPE_1__*,TYPE_2__*) ;
+ scalar_t__ is_namechar (int ) ;
+ int is_namestartchar (int ) ;
+ scalar_t__ is_reader_pending (TYPE_1__*) ;
+ scalar_t__ reader_get_cur (TYPE_1__*) ;
+ int * reader_get_ptr (TYPE_1__*) ;
+ int reader_init_strvalue (scalar_t__,scalar_t__,TYPE_2__*) ;
+ int reader_skipn (TYPE_1__*,int) ;
 
 __attribute__((used)) static HRESULT reader_parse_name(xmlreader *reader, strval *name)
 {

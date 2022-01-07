@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct seq_file {int dummy; } ;
-struct TYPE_3__ {int /*<<< orphan*/  name; } ;
+struct TYPE_3__ {int name; } ;
 
-/* Variables and functions */
- TYPE_1__* current_fiq ; 
- TYPE_1__ default_owner ; 
- int /*<<< orphan*/  seq_printf (struct seq_file*,char*,int,char*,int /*<<< orphan*/ ) ; 
+
+ TYPE_1__* current_fiq ;
+ TYPE_1__ default_owner ;
+ int seq_printf (struct seq_file*,char*,int,char*,int ) ;
 
 int show_fiq_list(struct seq_file *p, int prec)
 {
-	if (current_fiq != &default_owner)
-		seq_printf(p, "%*s:              %s\n", prec, "FIQ",
-			current_fiq->name);
+ if (current_fiq != &default_owner)
+  seq_printf(p, "%*s:              %s\n", prec, "FIQ",
+   current_fiq->name);
 
-	return 0;
+ return 0;
 }

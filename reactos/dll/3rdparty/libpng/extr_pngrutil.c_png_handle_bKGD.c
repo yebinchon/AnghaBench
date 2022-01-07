@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_4__ ;
-typedef  struct TYPE_16__   TYPE_3__ ;
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  unsigned int png_uint_32 ;
-typedef  void* png_uint_16 ;
-typedef  TYPE_2__* png_structrp ;
-typedef  TYPE_3__* png_inforp ;
+
+
+typedef struct TYPE_17__ TYPE_4__ ;
+typedef struct TYPE_16__ TYPE_3__ ;
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
+typedef unsigned int png_uint_32 ;
+typedef void* png_uint_16 ;
+typedef TYPE_2__* png_structrp ;
+typedef TYPE_3__* png_inforp ;
 struct TYPE_17__ {size_t index; void* gray; void* blue; void* green; void* red; } ;
-typedef  TYPE_4__ png_color_16 ;
-typedef  size_t png_byte ;
+typedef TYPE_4__ png_color_16 ;
+typedef size_t png_byte ;
 struct TYPE_16__ {int valid; scalar_t__ num_palette; } ;
 struct TYPE_15__ {int mode; int color_type; int bit_depth; TYPE_1__* palette; } ;
 struct TYPE_14__ {scalar_t__ blue; scalar_t__ green; scalar_t__ red; } ;
 
-/* Variables and functions */
- int PNG_COLOR_MASK_COLOR ; 
- int PNG_COLOR_TYPE_PALETTE ; 
- int PNG_HAVE_IDAT ; 
- int PNG_HAVE_IHDR ; 
- int PNG_HAVE_PLTE ; 
- int PNG_INFO_bKGD ; 
- int /*<<< orphan*/  png_chunk_benign_error (TYPE_2__*,char*) ; 
- int /*<<< orphan*/  png_chunk_error (TYPE_2__*,char*) ; 
- scalar_t__ png_crc_finish (TYPE_2__*,unsigned int) ; 
- int /*<<< orphan*/  png_crc_read (TYPE_2__*,size_t*,unsigned int) ; 
- int /*<<< orphan*/  png_debug (int,char*) ; 
- void* png_get_uint_16 (size_t*) ; 
- int /*<<< orphan*/  png_set_bKGD (TYPE_2__*,TYPE_3__*,TYPE_4__*) ; 
 
-void /* PRIVATE */
+ int PNG_COLOR_MASK_COLOR ;
+ int PNG_COLOR_TYPE_PALETTE ;
+ int PNG_HAVE_IDAT ;
+ int PNG_HAVE_IHDR ;
+ int PNG_HAVE_PLTE ;
+ int PNG_INFO_bKGD ;
+ int png_chunk_benign_error (TYPE_2__*,char*) ;
+ int png_chunk_error (TYPE_2__*,char*) ;
+ scalar_t__ png_crc_finish (TYPE_2__*,unsigned int) ;
+ int png_crc_read (TYPE_2__*,size_t*,unsigned int) ;
+ int png_debug (int,char*) ;
+ void* png_get_uint_16 (size_t*) ;
+ int png_set_bKGD (TYPE_2__*,TYPE_3__*,TYPE_4__*) ;
+
+void
 png_handle_bKGD(png_structrp png_ptr, png_inforp info_ptr, png_uint_32 length)
 {
    unsigned int truelen;
@@ -61,7 +61,7 @@ png_handle_bKGD(png_structrp png_ptr, png_inforp info_ptr, png_uint_32 length)
       return;
    }
 
-   else if (info_ptr != NULL && (info_ptr->valid & PNG_INFO_bKGD) != 0)
+   else if (info_ptr != ((void*)0) && (info_ptr->valid & PNG_INFO_bKGD) != 0)
    {
       png_crc_finish(png_ptr, length);
       png_chunk_benign_error(png_ptr, "duplicate");
@@ -89,16 +89,16 @@ png_handle_bKGD(png_structrp png_ptr, png_inforp info_ptr, png_uint_32 length)
    if (png_crc_finish(png_ptr, 0) != 0)
       return;
 
-   /* We convert the index value into RGB components so that we can allow
-    * arbitrary RGB values for background when we have transparency, and
-    * so it is easy to determine the RGB values of the background color
-    * from the info_ptr struct.
-    */
+
+
+
+
+
    if (png_ptr->color_type == PNG_COLOR_TYPE_PALETTE)
    {
       background.index = buf[0];
 
-      if (info_ptr != NULL && info_ptr->num_palette != 0)
+      if (info_ptr != ((void*)0) && info_ptr->num_palette != 0)
       {
          if (buf[0] >= info_ptr->num_palette)
          {
@@ -117,7 +117,7 @@ png_handle_bKGD(png_structrp png_ptr, png_inforp info_ptr, png_uint_32 length)
       background.gray = 0;
    }
 
-   else if ((png_ptr->color_type & PNG_COLOR_MASK_COLOR) == 0) /* GRAY */
+   else if ((png_ptr->color_type & PNG_COLOR_MASK_COLOR) == 0)
    {
       if (png_ptr->bit_depth <= 8)
       {

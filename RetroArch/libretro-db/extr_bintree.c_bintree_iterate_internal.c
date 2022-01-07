@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct bintree_node {struct bintree_node* right; int /*<<< orphan*/  value; struct bintree_node* left; } ;
-typedef  int (* bintree_iter_cb ) (int /*<<< orphan*/ ,void*) ;
 
-/* Variables and functions */
- scalar_t__ bintree_is_nil (struct bintree_node*) ; 
+
+
+
+struct bintree_node {struct bintree_node* right; int value; struct bintree_node* left; } ;
+typedef int (* bintree_iter_cb ) (int ,void*) ;
+
+
+ scalar_t__ bintree_is_nil (struct bintree_node*) ;
 
 __attribute__((used)) static int bintree_iterate_internal(struct bintree_node *n,
       bintree_iter_cb cb, void *ctx)

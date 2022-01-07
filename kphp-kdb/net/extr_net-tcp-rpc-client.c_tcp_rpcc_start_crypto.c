@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct tcp_rpc_data {int /*<<< orphan*/  nonce_time; int /*<<< orphan*/  nonce; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct tcp_rpc_data {int nonce_time; int nonce; } ;
 struct TYPE_4__ {scalar_t__ total_bytes; } ;
 struct TYPE_3__ {scalar_t__ total_bytes; } ;
-struct connection {int /*<<< orphan*/  our_ipv6; int /*<<< orphan*/  our_port; int /*<<< orphan*/  our_ip; int /*<<< orphan*/  remote_ipv6; int /*<<< orphan*/  remote_port; int /*<<< orphan*/  remote_ip; TYPE_2__ out; TYPE_1__ in; scalar_t__ crypto; } ;
+struct connection {int our_ipv6; int our_port; int our_ip; int remote_ipv6; int remote_port; int remote_ip; TYPE_2__ out; TYPE_1__ in; scalar_t__ crypto; } ;
 struct aes_key_data {int dummy; } ;
-typedef  int /*<<< orphan*/  aes_keys ;
+typedef int aes_keys ;
 
-/* Variables and functions */
- struct tcp_rpc_data* TCP_RPC_DATA (struct connection*) ; 
- scalar_t__ aes_create_keys (struct aes_key_data*,int,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ aes_crypto_init (struct connection*,struct aes_key_data*,int) ; 
- int get_crypto_key_id () ; 
- int /*<<< orphan*/  vkprintf (int,char*,int) ; 
+
+ struct tcp_rpc_data* TCP_RPC_DATA (struct connection*) ;
+ scalar_t__ aes_create_keys (struct aes_key_data*,int,char*,int ,int ,int ,int ,int ,int ,int ,int ) ;
+ scalar_t__ aes_crypto_init (struct connection*,struct aes_key_data*,int) ;
+ int get_crypto_key_id () ;
+ int vkprintf (int,char*,int) ;
 
 int tcp_rpcc_start_crypto (struct connection *c, char *nonce, int key_select) {
   struct tcp_rpc_data *D = TCP_RPC_DATA(c);

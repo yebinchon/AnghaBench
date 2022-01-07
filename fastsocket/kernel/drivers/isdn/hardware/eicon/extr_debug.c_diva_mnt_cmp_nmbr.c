@@ -1,20 +1,12 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char const* TraceFilter ; 
- scalar_t__ diva_dbg_cmp_key (char const*,char*) ; 
- int strlen (char const*) ; 
+ char const* TraceFilter ;
+ scalar_t__ diva_dbg_cmp_key (char const*,char*) ;
+ int strlen (char const*) ;
 
 __attribute__((used)) static int diva_mnt_cmp_nmbr (const char* nmbr) {
   const char* ref = &TraceFilter[0];
@@ -32,7 +24,7 @@ __attribute__((used)) static int diva_mnt_cmp_nmbr (const char* nmbr) {
   }
 
   nmbr = nmbr + nmbr_len - 1;
-  ref  = ref  + ref_len  - 1;
+  ref = ref + ref_len - 1;
 
   while (ref_len--) {
     if (*nmbr-- != *ref--) {

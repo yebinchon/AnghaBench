@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_5__ ;
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_decoder_device ;
-struct TYPE_10__ {unsigned int tex_count; int /*<<< orphan*/  tex_target; TYPE_2__* vt; int /*<<< orphan*/  gl; TYPE_1__* texs; TYPE_5__* priv; } ;
-typedef  TYPE_3__ opengl_tex_converter_t ;
-struct TYPE_11__ {int /*<<< orphan*/ * cuCtx; } ;
-typedef  TYPE_4__ decoder_device_nvdec_t ;
-struct TYPE_12__ {int /*<<< orphan*/ * cu_res; int /*<<< orphan*/ * mappedArray; int /*<<< orphan*/ * cuConverterCtx; int /*<<< orphan*/ * device; } ;
-typedef  TYPE_5__ converter_sys_t ;
-struct TYPE_9__ {scalar_t__ (* GetError ) () ;int /*<<< orphan*/  (* BindTexture ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* TexImage2D ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/  const,int /*<<< orphan*/  const,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ;} ;
-struct TYPE_8__ {int /*<<< orphan*/  type; int /*<<< orphan*/  format; int /*<<< orphan*/  internal; } ;
-typedef  int /*<<< orphan*/  GLuint ;
-typedef  int /*<<< orphan*/  GLsizei ;
 
-/* Variables and functions */
- int CALL_CUDA (int /*<<< orphan*/ ,int,...) ; 
- int /*<<< orphan*/  CU_GRAPHICS_REGISTER_FLAGS_WRITE_DISCARD ; 
- scalar_t__ GL_NO_ERROR ; 
- TYPE_4__* GetNVDECOpaqueDevice (int /*<<< orphan*/ *) ; 
- int VLC_EGENERIC ; 
- int VLC_SUCCESS ; 
- int /*<<< orphan*/  cuCtxPopCurrent ; 
- int /*<<< orphan*/  cuCtxPushCurrent ; 
- int /*<<< orphan*/  cuGraphicsGLRegisterImage ; 
- int /*<<< orphan*/  cuGraphicsMapResources ; 
- int /*<<< orphan*/  cuGraphicsSubResourceGetMappedArray ; 
- int /*<<< orphan*/  cuGraphicsUnmapResources ; 
- int /*<<< orphan*/  msg_Err (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/  const,int /*<<< orphan*/  const,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ stub3 () ; 
- int /*<<< orphan*/  stub4 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_12__ TYPE_5__ ;
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int vlc_decoder_device ;
+struct TYPE_10__ {unsigned int tex_count; int tex_target; TYPE_2__* vt; int gl; TYPE_1__* texs; TYPE_5__* priv; } ;
+typedef TYPE_3__ opengl_tex_converter_t ;
+struct TYPE_11__ {int * cuCtx; } ;
+typedef TYPE_4__ decoder_device_nvdec_t ;
+struct TYPE_12__ {int * cu_res; int * mappedArray; int * cuConverterCtx; int * device; } ;
+typedef TYPE_5__ converter_sys_t ;
+struct TYPE_9__ {scalar_t__ (* GetError ) () ;int (* BindTexture ) (int ,int ) ;int (* TexImage2D ) (int ,int ,int ,int const,int const,int ,int ,int ,int *) ;} ;
+struct TYPE_8__ {int type; int format; int internal; } ;
+typedef int GLuint ;
+typedef int GLsizei ;
+
+
+ int CALL_CUDA (int ,int,...) ;
+ int CU_GRAPHICS_REGISTER_FLAGS_WRITE_DISCARD ;
+ scalar_t__ GL_NO_ERROR ;
+ TYPE_4__* GetNVDECOpaqueDevice (int *) ;
+ int VLC_EGENERIC ;
+ int VLC_SUCCESS ;
+ int cuCtxPopCurrent ;
+ int cuCtxPushCurrent ;
+ int cuGraphicsGLRegisterImage ;
+ int cuGraphicsMapResources ;
+ int cuGraphicsSubResourceGetMappedArray ;
+ int cuGraphicsUnmapResources ;
+ int msg_Err (int ,char*) ;
+ int stub1 (int ,int ) ;
+ int stub2 (int ,int ,int ,int const,int const,int ,int ,int ,int *) ;
+ scalar_t__ stub3 () ;
+ int stub4 (int ,int ) ;
 
 __attribute__((used)) static int tc_nvdec_gl_allocate_texture(const opengl_tex_converter_t *tc, GLuint *textures,
                                 const GLsizei *tex_width, const GLsizei *tex_height)
@@ -63,7 +63,7 @@ __attribute__((used)) static int tc_nvdec_gl_allocate_texture(const opengl_tex_c
         tc->vt->BindTexture(tc->tex_target, textures[i]);
         tc->vt->TexImage2D(tc->tex_target, 0, tc->texs[i].internal,
                            tex_width[i], tex_height[i], 0, tc->texs[i].format,
-                           tc->texs[i].type, NULL);
+                           tc->texs[i].type, ((void*)0));
         if (tc->vt->GetError() != GL_NO_ERROR)
         {
             msg_Err(tc->gl, "could not alloc PBO buffers");
@@ -79,6 +79,6 @@ __attribute__((used)) static int tc_nvdec_gl_allocate_texture(const opengl_tex_c
         tc->vt->BindTexture(tc->tex_target, 0);
     }
 
-    CALL_CUDA(cuCtxPopCurrent, NULL);
+    CALL_CUDA(cuCtxPopCurrent, ((void*)0));
     return result;
 }

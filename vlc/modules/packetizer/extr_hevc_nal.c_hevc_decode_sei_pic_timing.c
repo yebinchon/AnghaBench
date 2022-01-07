@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_7__ {scalar_t__ frame_field_info_present_flag; } ;
 struct TYPE_8__ {TYPE_1__ vui; } ;
-typedef  TYPE_2__ hevc_sequence_parameter_set_t ;
+typedef TYPE_2__ hevc_sequence_parameter_set_t ;
 struct TYPE_9__ {int source_scan_type; void* pic_struct; } ;
-typedef  TYPE_3__ hevc_sei_pic_timing_t ;
-typedef  int /*<<< orphan*/  bs_t ;
+typedef TYPE_3__ hevc_sei_pic_timing_t ;
+typedef int bs_t ;
 
-/* Variables and functions */
- void* bs_read (int /*<<< orphan*/ *,int) ; 
- TYPE_3__* malloc (int) ; 
+
+ void* bs_read (int *,int) ;
+ TYPE_3__* malloc (int) ;
 
 hevc_sei_pic_timing_t * hevc_decode_sei_pic_timing( bs_t *p_bs,
                                                     const hevc_sequence_parameter_set_t *p_sps )

@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  png_uint_32 ;
-typedef  int /*<<< orphan*/  png_structp ;
-typedef  int /*<<< orphan*/  png_size_t ;
-typedef  long png_fixed_point ;
-typedef  int /*<<< orphan*/  png_byte ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PNG_cHRM ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,long,long) ; 
- int /*<<< orphan*/  png_cHRM ; 
- int /*<<< orphan*/  png_debug (int,char*) ; 
- int /*<<< orphan*/  png_save_uint_32 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  png_warning (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  png_write_chunk (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stderr ; 
 
-void /* PRIVATE */
+
+
+typedef int png_uint_32 ;
+typedef int png_structp ;
+typedef int png_size_t ;
+typedef long png_fixed_point ;
+typedef int png_byte ;
+
+
+ int PNG_cHRM ;
+ int fprintf (int ,char*,long,long) ;
+ int png_cHRM ;
+ int png_debug (int,char*) ;
+ int png_save_uint_32 (int *,int ) ;
+ int png_warning (int ,char*) ;
+ int png_write_chunk (int ,int ,int *,int ) ;
+ int stderr ;
+
+void
 png_write_cHRM_fixed(png_structp png_ptr, png_fixed_point white_x,
    png_fixed_point white_y, png_fixed_point red_x, png_fixed_point red_y,
    png_fixed_point green_x, png_fixed_point green_y, png_fixed_point blue_x,
    png_fixed_point blue_y)
 {
-#ifdef PNG_USE_LOCAL_ARRAYS
-   PNG_cHRM;
-#endif
+
+
+
    png_byte buf[32];
 
    png_debug(1, "in png_write_cHRM\n");
-   /* each value is saved in 1/100,000ths */
+
    if (white_x > 80000L || white_y > 80000L || white_x + white_y > 100000L)
    {
       png_warning(png_ptr, "Invalid fixed cHRM white point specified");
-#if !defined(PNG_NO_CONSOLE_IO)
+
       fprintf(stderr,"white_x=%ld, white_y=%ld\n",white_x, white_y);
-#endif
+
       return;
    }
    png_save_uint_32(buf, (png_uint_32)white_x);

@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_8__ {TYPE_2__* p_sys; } ;
-typedef  TYPE_1__ filter_t ;
+typedef TYPE_1__ filter_t ;
 struct TYPE_9__ {size_t i_commands; TYPE_3__** pp_commands; } ;
-typedef  TYPE_2__ filter_sys_t ;
-struct TYPE_10__ {size_t psz_command; int /*<<< orphan*/  pf_unparse; int /*<<< orphan*/  pf_execute; int /*<<< orphan*/  pf_parser; int /*<<< orphan*/  b_atomic; } ;
-typedef  TYPE_3__ commanddesc_t ;
-struct TYPE_11__ {int /*<<< orphan*/  pf_unparse; int /*<<< orphan*/  pf_execute; int /*<<< orphan*/  pf_parser; int /*<<< orphan*/  b_atomic; int /*<<< orphan*/  psz_command; } ;
+typedef TYPE_2__ filter_sys_t ;
+struct TYPE_10__ {size_t psz_command; int pf_unparse; int pf_execute; int pf_parser; int b_atomic; } ;
+typedef TYPE_3__ commanddesc_t ;
+struct TYPE_11__ {int pf_unparse; int pf_execute; int pf_parser; int b_atomic; int psz_command; } ;
 
-/* Variables and functions */
- size_t ARRAY_SIZE (TYPE_4__*) ; 
- scalar_t__ calloc (size_t,int) ; 
- scalar_t__ malloc (int) ; 
- int /*<<< orphan*/  msg_Dbg (TYPE_1__*,char*,size_t) ; 
- TYPE_4__* p_commands ; 
- size_t strdup (int /*<<< orphan*/ ) ; 
+
+ size_t ARRAY_SIZE (TYPE_4__*) ;
+ scalar_t__ calloc (size_t,int) ;
+ scalar_t__ malloc (int) ;
+ int msg_Dbg (TYPE_1__*,char*,size_t) ;
+ TYPE_4__* p_commands ;
+ size_t strdup (int ) ;
 
 void RegisterCommand( filter_t *p_filter )
 {

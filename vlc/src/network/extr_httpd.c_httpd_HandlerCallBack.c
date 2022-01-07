@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_6__ {size_t i_body; int /*<<< orphan*/ * p_body; int /*<<< orphan*/  i_type; int /*<<< orphan*/  psz_url; int /*<<< orphan*/ * psz_args; scalar_t__ i_status; int /*<<< orphan*/  i_proto; } ;
-typedef  TYPE_1__ httpd_message_t ;
-struct TYPE_7__ {int /*<<< orphan*/  p_sys; int /*<<< orphan*/  (* pf_fill ) (int /*<<< orphan*/ ,TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,size_t,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ **,size_t*) ;} ;
-typedef  TYPE_2__ httpd_handler_t ;
-typedef  int /*<<< orphan*/  httpd_client_t ;
-typedef  int /*<<< orphan*/  httpd_callback_sys_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HTTPD_MSG_ANSWER ; 
- int /*<<< orphan*/  HTTPD_MSG_HEAD ; 
- int /*<<< orphan*/  HTTPD_PROTO_NONE ; 
- int NI_MAXNUMERICHOST ; 
- int VLC_SUCCESS ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  httpd_ClientIP (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *) ; 
- char* httpd_ReasonFromCode (int) ; 
- int /*<<< orphan*/  memcpy (char*,char*,int) ; 
- int /*<<< orphan*/  sprintf (char*,char*,int,char const*) ; 
- char* strchr (char*,char) ; 
- size_t strlen (char const*) ; 
- scalar_t__ strncmp (char*,char*,int) ; 
- int strtol (char*,char**,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,size_t,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ **,size_t*) ; 
- scalar_t__ xmalloc (int) ; 
- int /*<<< orphan*/ * xrealloc (int /*<<< orphan*/ *,size_t) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_6__ {size_t i_body; int * p_body; int i_type; int psz_url; int * psz_args; scalar_t__ i_status; int i_proto; } ;
+typedef TYPE_1__ httpd_message_t ;
+struct TYPE_7__ {int p_sys; int (* pf_fill ) (int ,TYPE_2__*,int ,int *,int ,int *,size_t,char*,int *,int **,size_t*) ;} ;
+typedef TYPE_2__ httpd_handler_t ;
+typedef int httpd_client_t ;
+typedef int httpd_callback_sys_t ;
+
+
+ int HTTPD_MSG_ANSWER ;
+ int HTTPD_MSG_HEAD ;
+ int HTTPD_PROTO_NONE ;
+ int NI_MAXNUMERICHOST ;
+ int VLC_SUCCESS ;
+ int free (int *) ;
+ int httpd_ClientIP (int *,char*,int *) ;
+ char* httpd_ReasonFromCode (int) ;
+ int memcpy (char*,char*,int) ;
+ int sprintf (char*,char*,int,char const*) ;
+ char* strchr (char*,char) ;
+ size_t strlen (char const*) ;
+ scalar_t__ strncmp (char*,char*,int) ;
+ int strtol (char*,char**,int ) ;
+ int stub1 (int ,TYPE_2__*,int ,int *,int ,int *,size_t,char*,int *,int **,size_t*) ;
+ scalar_t__ xmalloc (int) ;
+ int * xrealloc (int *,size_t) ;
 
 __attribute__((used)) static int
 httpd_HandlerCallBack(httpd_callback_sys_t *p_sys, httpd_client_t *cl,
@@ -49,25 +49,25 @@ httpd_HandlerCallBack(httpd_callback_sys_t *p_sys, httpd_client_t *cl,
     if (!answer || !query)
         return VLC_SUCCESS;
 
-    answer->i_proto  = HTTPD_PROTO_NONE;
-    answer->i_type   = HTTPD_MSG_ANSWER;
+    answer->i_proto = HTTPD_PROTO_NONE;
+    answer->i_type = HTTPD_MSG_ANSWER;
 
-    /* We do it ourselves, thanks */
+
     answer->i_status = 0;
 
-    if (!httpd_ClientIP(cl, psz_remote_addr, NULL))
+    if (!httpd_ClientIP(cl, psz_remote_addr, ((void*)0)))
         *psz_remote_addr = '\0';
 
     uint8_t *psz_args = query->psz_args;
     handler->pf_fill(handler->p_sys, handler, query->psz_url, psz_args,
                       query->i_type, query->p_body, query->i_body,
-                      psz_remote_addr, NULL,
+                      psz_remote_addr, ((void*)0),
                       &answer->p_body, &answer->i_body);
 
     if (query->i_type == HTTPD_MSG_HEAD) {
         char *p = (char *)answer->p_body;
 
-        /* Looks for end of header (i.e. one empty line) */
+
         while ((p = strchr(p, '\r')))
             if (p[1] == '\n' && p[2] == '\r' && p[3] == '\n')
                 break;
@@ -85,7 +85,7 @@ httpd_HandlerCallBack(httpd_callback_sys_t *p_sys, httpd_client_t *cl,
         const char *psz_status;
 
         if (!strncmp((char *)answer->p_body, "Status: ", 8)) {
-            /* Apache-style */
+
             i_status = strtol((char *)&answer->p_body[8], &psz_headers, 0);
             if (*psz_headers == '\r' || *psz_headers == '\n') psz_headers++;
             if (*psz_headers == '\n') psz_headers++;

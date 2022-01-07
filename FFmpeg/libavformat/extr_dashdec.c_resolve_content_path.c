@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * xmlNodePtr ;
-typedef  int /*<<< orphan*/  AVFormatContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ENOMEM ; 
- int aligned (int) ; 
- int /*<<< orphan*/  av_free (char*) ; 
- char* av_mallocz (int) ; 
- scalar_t__ av_strcasecmp (char*,char*) ; 
- scalar_t__ av_stristr (char*,char*) ; 
- int /*<<< orphan*/  av_strlcat (char*,char*,int) ; 
- int /*<<< orphan*/  av_strlcpy (char*,char const*,int) ; 
- int /*<<< orphan*/  av_strncasecmp (char*,char*,int) ; 
- int /*<<< orphan*/  av_strstart (char*,char*,int /*<<< orphan*/ *) ; 
- char* av_strtok (char*,char*,char**) ; 
- int ishttp (char*) ; 
- int /*<<< orphan*/  memset (char*,int /*<<< orphan*/ ,int) ; 
- char* strchr (char*,char) ; 
- int strlen (char const*) ; 
- int /*<<< orphan*/  xmlFree (char*) ; 
- char* xmlNodeGetContent (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  xmlNodeSetContent (int /*<<< orphan*/ *,char*) ; 
+
+
+
+typedef int * xmlNodePtr ;
+typedef int AVFormatContext ;
+
+
+ int AVERROR (int ) ;
+ int ENOMEM ;
+ int aligned (int) ;
+ int av_free (char*) ;
+ char* av_mallocz (int) ;
+ scalar_t__ av_strcasecmp (char*,char*) ;
+ scalar_t__ av_stristr (char*,char*) ;
+ int av_strlcat (char*,char*,int) ;
+ int av_strlcpy (char*,char const*,int) ;
+ int av_strncasecmp (char*,char*,int) ;
+ int av_strstart (char*,char*,int *) ;
+ char* av_strtok (char*,char*,char**) ;
+ int ishttp (char*) ;
+ int memset (char*,int ,int) ;
+ char* strchr (char*,char) ;
+ int strlen (char const*) ;
+ int xmlFree (char*) ;
+ char* xmlNodeGetContent (int *) ;
+ int xmlNodeSetContent (int *,char*) ;
 
 __attribute__((used)) static int resolve_content_path(AVFormatContext *s, const char *url, int *max_url_size, xmlNodePtr *baseurl_nodes, int n_baseurl_nodes)
 {
-    char *tmp_str = NULL;
-    char *path = NULL;
-    char *mpdName = NULL;
-    xmlNodePtr node = NULL;
-    char *baseurl = NULL;
-    char *root_url = NULL;
-    char *text = NULL;
-    char *tmp = NULL;
+    char *tmp_str = ((void*)0);
+    char *path = ((void*)0);
+    char *mpdName = ((void*)0);
+    xmlNodePtr node = ((void*)0);
+    char *baseurl = ((void*)0);
+    char *root_url = ((void*)0);
+    char *text = ((void*)0);
+    char *tmp = ((void*)0);
     int isRootHttp = 0;
     char token ='/';
-    int start =  0;
+    int start = 0;
     int rootId = 0;
     int updated = 0;
     int size = 0;
@@ -73,7 +73,7 @@ __attribute__((used)) static int resolve_content_path(AVFormatContext *s, const 
     }
     av_strlcpy(text, url, strlen(url)+1);
     tmp = text;
-    while (mpdName = av_strtok(tmp, "/", &tmp))  {
+    while (mpdName = av_strtok(tmp, "/", &tmp)) {
         size = strlen(mpdName);
     }
     av_free(text);
@@ -119,7 +119,7 @@ __attribute__((used)) static int resolve_content_path(AVFormatContext *s, const 
             continue;
         }
         text = xmlNodeGetContent(baseurl_nodes[i]);
-        if (text && !av_strstart(text, "/", NULL)) {
+        if (text && !av_strstart(text, "/", ((void*)0))) {
             memset(tmp_str, 0, strlen(tmp_str));
             if (!ishttp(text) && isRootHttp) {
                 av_strlcpy(tmp_str, root_url, size + 1);

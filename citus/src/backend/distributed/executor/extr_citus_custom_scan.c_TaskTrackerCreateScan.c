@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  type; } ;
+
+
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int type; } ;
 struct TYPE_7__ {TYPE_1__ ps; } ;
-struct TYPE_8__ {int /*<<< orphan*/ * methods; TYPE_2__ ss; } ;
-struct TYPE_9__ {TYPE_3__ customScanState; int /*<<< orphan*/  distributedPlan; int /*<<< orphan*/  executorType; } ;
-typedef  int /*<<< orphan*/  Node ;
-typedef  int /*<<< orphan*/  CustomScan ;
-typedef  TYPE_4__ CitusScanState ;
+struct TYPE_8__ {int * methods; TYPE_2__ ss; } ;
+struct TYPE_9__ {TYPE_3__ customScanState; int distributedPlan; int executorType; } ;
+typedef int Node ;
+typedef int CustomScan ;
+typedef TYPE_4__ CitusScanState ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetDistributedPlan (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  MULTI_EXECUTOR_TASK_TRACKER ; 
- int /*<<< orphan*/  T_CustomScanState ; 
- int /*<<< orphan*/  TaskTrackerCustomExecMethods ; 
- TYPE_4__* palloc0 (int) ; 
+
+ int GetDistributedPlan (int *) ;
+ int MULTI_EXECUTOR_TASK_TRACKER ;
+ int T_CustomScanState ;
+ int TaskTrackerCustomExecMethods ;
+ TYPE_4__* palloc0 (int) ;
 
 __attribute__((used)) static Node *
 TaskTrackerCreateScan(CustomScan *scan)
 {
-	CitusScanState *scanState = palloc0(sizeof(CitusScanState));
+ CitusScanState *scanState = palloc0(sizeof(CitusScanState));
 
-	scanState->executorType = MULTI_EXECUTOR_TASK_TRACKER;
-	scanState->customScanState.ss.ps.type = T_CustomScanState;
-	scanState->distributedPlan = GetDistributedPlan(scan);
+ scanState->executorType = MULTI_EXECUTOR_TASK_TRACKER;
+ scanState->customScanState.ss.ps.type = T_CustomScanState;
+ scanState->distributedPlan = GetDistributedPlan(scan);
 
-	scanState->customScanState.methods = &TaskTrackerCustomExecMethods;
+ scanState->customScanState.methods = &TaskTrackerCustomExecMethods;
 
-	return (Node *) scanState;
+ return (Node *) scanState;
 }

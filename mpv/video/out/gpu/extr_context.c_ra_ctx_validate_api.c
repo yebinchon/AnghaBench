@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct mp_log {int dummy; } ;
 struct m_option {int dummy; } ;
 struct bstr {int dummy; } ;
-struct TYPE_3__ {char* type; int /*<<< orphan*/  name; } ;
+struct TYPE_3__ {char* type; int name; } ;
 
-/* Variables and functions */
- int MP_ARRAY_SIZE (TYPE_1__**) ; 
- int M_OPT_EXIT ; 
- int M_OPT_INVALID ; 
- scalar_t__ bstr_equals0 (struct bstr,char*) ; 
- TYPE_1__** contexts ; 
- int /*<<< orphan*/  mp_info (struct mp_log*,char*,...) ; 
+
+ int MP_ARRAY_SIZE (TYPE_1__**) ;
+ int M_OPT_EXIT ;
+ int M_OPT_INVALID ;
+ scalar_t__ bstr_equals0 (struct bstr,char*) ;
+ TYPE_1__** contexts ;
+ int mp_info (struct mp_log*,char*,...) ;
 
 int ra_ctx_validate_api(struct mp_log *log, const struct m_option *opt,
                         struct bstr name, struct bstr param)

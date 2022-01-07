@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  error; int /*<<< orphan*/  handle; } ;
-typedef  TYPE_1__ mz_stream_posix ;
-typedef  int /*<<< orphan*/  int64_t ;
-typedef  int int32_t ;
 
-/* Variables and functions */
- int MZ_OK ; 
-#define  MZ_SEEK_CUR 130 
-#define  MZ_SEEK_END 129 
- int MZ_SEEK_ERROR ; 
-#define  MZ_SEEK_SET 128 
- int SEEK_CUR ; 
- int SEEK_END ; 
- int SEEK_SET ; 
- int /*<<< orphan*/  errno ; 
- scalar_t__ fseeko64 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int error; int handle; } ;
+typedef TYPE_1__ mz_stream_posix ;
+typedef int int64_t ;
+typedef int int32_t ;
+
+
+ int MZ_OK ;
+
+
+ int MZ_SEEK_ERROR ;
+
+ int SEEK_CUR ;
+ int SEEK_END ;
+ int SEEK_SET ;
+ int errno ;
+ scalar_t__ fseeko64 (int ,int ,int) ;
 
 int32_t mz_stream_os_seek(void *stream, int64_t offset, int32_t origin)
 {
@@ -35,13 +35,13 @@ int32_t mz_stream_os_seek(void *stream, int64_t offset, int32_t origin)
 
     switch (origin)
     {
-        case MZ_SEEK_CUR:
+        case 130:
             fseek_origin = SEEK_CUR;
             break;
-        case MZ_SEEK_END:
+        case 129:
             fseek_origin = SEEK_END;
             break;
-        case MZ_SEEK_SET:
+        case 128:
             fseek_origin = SEEK_SET;
             break;
         default:

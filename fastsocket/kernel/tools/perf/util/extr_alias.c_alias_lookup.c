@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char const* alias_key ; 
- int /*<<< orphan*/  alias_lookup_cb ; 
- char* alias_val ; 
- int /*<<< orphan*/  perf_config (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+ char const* alias_key ;
+ int alias_lookup_cb ;
+ char* alias_val ;
+ int perf_config (int ,int *) ;
 
 char *alias_lookup(const char *alias)
 {
-	alias_key = alias;
-	alias_val = NULL;
-	perf_config(alias_lookup_cb, NULL);
-	return alias_val;
+ alias_key = alias;
+ alias_val = ((void*)0);
+ perf_config(alias_lookup_cb, ((void*)0));
+ return alias_val;
 }

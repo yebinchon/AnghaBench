@@ -1,62 +1,62 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char WCHAR ;
-struct TYPE_5__ {int InternalHigh; scalar_t__ Internal; int /*<<< orphan*/  hEvent; } ;
-struct TYPE_4__ {scalar_t__ NextEntryOffset; scalar_t__ Action; int FileNameLength; int /*<<< orphan*/  FileName; } ;
-typedef  TYPE_1__* PFILE_NOTIFY_INFORMATION ;
-typedef  TYPE_2__ OVERLAPPED ;
-typedef  scalar_t__ NTSTATUS ;
-typedef  scalar_t__ HANDLE ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CREATE_ALWAYS ; 
- int CloseHandle (scalar_t__) ; 
- scalar_t__ CreateDirectoryW (char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CreateEventW (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ CreateFileW (char*,int,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- scalar_t__ DeleteFileW (char*) ; 
- scalar_t__ ERROR_CALL_NOT_IMPLEMENTED ; 
- scalar_t__ FILE_ACTION_ADDED ; 
- int FILE_FLAG_BACKUP_SEMANTICS ; 
- int FILE_FLAG_OVERLAPPED ; 
- int FILE_LIST_DIRECTORY ; 
- int FILE_NOTIFY_CHANGE_FILE_NAME ; 
- int FILE_SHARE_READ ; 
- int FILE_SHARE_WRITE ; 
- int GENERIC_READ ; 
- int GENERIC_WRITE ; 
- scalar_t__ GetLastError () ; 
- scalar_t__ GetTempPathW (int,char*) ; 
- scalar_t__ INVALID_HANDLE_VALUE ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  OPEN_EXISTING ; 
- scalar_t__ RemoveDirectoryW (char*) ; 
- scalar_t__ STATUS_SUCCESS ; 
- int SYNCHRONIZE ; 
- int /*<<< orphan*/  SetLastError (int) ; 
- scalar_t__ TRUE ; 
- scalar_t__ WAIT_OBJECT_0 ; 
- scalar_t__ WAIT_TIMEOUT ; 
- scalar_t__ WaitForSingleObject (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  lstrcatW (char*,char const*) ; 
- int /*<<< orphan*/  lstrcpyW (char*,char*) ; 
- int /*<<< orphan*/  memcmp (int /*<<< orphan*/ ,char const*,int) ; 
- int /*<<< orphan*/  ok (int,char*) ; 
- scalar_t__ pReadDirectoryChangesW (scalar_t__,char*,int,scalar_t__,int,int /*<<< orphan*/ *,TYPE_2__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef char WCHAR ;
+struct TYPE_5__ {int InternalHigh; scalar_t__ Internal; int hEvent; } ;
+struct TYPE_4__ {scalar_t__ NextEntryOffset; scalar_t__ Action; int FileNameLength; int FileName; } ;
+typedef TYPE_1__* PFILE_NOTIFY_INFORMATION ;
+typedef TYPE_2__ OVERLAPPED ;
+typedef scalar_t__ NTSTATUS ;
+typedef scalar_t__ HANDLE ;
+typedef int DWORD ;
+
+
+ int CREATE_ALWAYS ;
+ int CloseHandle (scalar_t__) ;
+ scalar_t__ CreateDirectoryW (char*,int *) ;
+ int CreateEventW (int *,int ,int ,int *) ;
+ scalar_t__ CreateFileW (char*,int,int,int *,int ,int,int *) ;
+ scalar_t__ DeleteFileW (char*) ;
+ scalar_t__ ERROR_CALL_NOT_IMPLEMENTED ;
+ scalar_t__ FILE_ACTION_ADDED ;
+ int FILE_FLAG_BACKUP_SEMANTICS ;
+ int FILE_FLAG_OVERLAPPED ;
+ int FILE_LIST_DIRECTORY ;
+ int FILE_NOTIFY_CHANGE_FILE_NAME ;
+ int FILE_SHARE_READ ;
+ int FILE_SHARE_WRITE ;
+ int GENERIC_READ ;
+ int GENERIC_WRITE ;
+ scalar_t__ GetLastError () ;
+ scalar_t__ GetTempPathW (int,char*) ;
+ scalar_t__ INVALID_HANDLE_VALUE ;
+ int MAX_PATH ;
+ int OPEN_EXISTING ;
+ scalar_t__ RemoveDirectoryW (char*) ;
+ scalar_t__ STATUS_SUCCESS ;
+ int SYNCHRONIZE ;
+ int SetLastError (int) ;
+ scalar_t__ TRUE ;
+ scalar_t__ WAIT_OBJECT_0 ;
+ scalar_t__ WAIT_TIMEOUT ;
+ scalar_t__ WaitForSingleObject (int ,int) ;
+ int lstrcatW (char*,char const*) ;
+ int lstrcpyW (char*,char*) ;
+ int memcmp (int ,char const*,int) ;
+ int ok (int,char*) ;
+ scalar_t__ pReadDirectoryChangesW (scalar_t__,char*,int,scalar_t__,int,int *,TYPE_2__*,int *) ;
+ int win_skip (char*) ;
 
 __attribute__((used)) static void test_readdirectorychanges_filedir(void)
 {
@@ -93,29 +93,29 @@ __attribute__((used)) static void test_readdirectorychanges_filedir(void)
     RemoveDirectoryW( subdir );
     RemoveDirectoryW( path );
 
-    r = CreateDirectoryW(path, NULL);
+    r = CreateDirectoryW(path, ((void*)0));
     ok( r == TRUE, "failed to create directory\n");
 
     fflags = FILE_FLAG_BACKUP_SEMANTICS | FILE_FLAG_OVERLAPPED;
-    hdir = CreateFileW(path, GENERIC_READ|SYNCHRONIZE|FILE_LIST_DIRECTORY, 
-                        FILE_SHARE_READ|FILE_SHARE_WRITE, NULL, 
-                        OPEN_EXISTING, fflags, NULL);
+    hdir = CreateFileW(path, GENERIC_READ|SYNCHRONIZE|FILE_LIST_DIRECTORY,
+                        FILE_SHARE_READ|FILE_SHARE_WRITE, ((void*)0),
+                        OPEN_EXISTING, fflags, ((void*)0));
     ok( hdir != INVALID_HANDLE_VALUE, "failed to open directory\n");
 
-    ov.hEvent = CreateEventW( NULL, 0, 0, NULL );
+    ov.hEvent = CreateEventW( ((void*)0), 0, 0, ((void*)0) );
 
     filter = FILE_NOTIFY_CHANGE_FILE_NAME;
 
-    r = pReadDirectoryChangesW(hdir,buffer,sizeof buffer,TRUE,filter,NULL,&ov,NULL);
+    r = pReadDirectoryChangesW(hdir,buffer,sizeof buffer,TRUE,filter,((void*)0),&ov,((void*)0));
     ok(r==TRUE, "should return true\n");
 
     r = WaitForSingleObject( ov.hEvent, 10 );
     ok( r == WAIT_TIMEOUT, "should timeout\n" );
 
-    r = CreateDirectoryW( subdir, NULL );
+    r = CreateDirectoryW( subdir, ((void*)0) );
     ok( r == TRUE, "failed to create directory\n");
 
-    hfile = CreateFileW( file, GENERIC_READ|GENERIC_WRITE, 0, NULL, CREATE_ALWAYS, 0, NULL );
+    hfile = CreateFileW( file, GENERIC_READ|GENERIC_WRITE, 0, ((void*)0), CREATE_ALWAYS, 0, ((void*)0) );
     ok( hfile != INVALID_HANDLE_VALUE, "failed to create file\n");
     ok( CloseHandle(hfile), "failed to close file\n");
 

@@ -1,38 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  Lock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SiNewServer (int) ; 
- int /*<<< orphan*/  Unlock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * server ; 
- int /*<<< orphan*/  server_lock ; 
+ int Lock (int ) ;
+ int * SiNewServer (int) ;
+ int Unlock (int ) ;
+ int * server ;
+ int server_lock ;
 
 void StStartServer(bool bridge)
 {
-	Lock(server_lock);
-	{
-		if (server != NULL)
-		{
-			// It has already started
-			Unlock(server_lock);
-			return;
-		}
+ Lock(server_lock);
+ {
+  if (server != ((void*)0))
+  {
 
-		// Create a server
-		server = SiNewServer(bridge);
-	}
-	Unlock(server_lock);
+   Unlock(server_lock);
+   return;
+  }
 
-//	StartCedarLog();
+
+  server = SiNewServer(bridge);
+ }
+ Unlock(server_lock);
+
+
 }

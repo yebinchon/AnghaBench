@@ -1,31 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  MyLatch ; 
- int /*<<< orphan*/  SetLatch (int /*<<< orphan*/ ) ; 
- int catchupInterruptPending ; 
+ int MyLatch ;
+ int SetLatch (int ) ;
+ int catchupInterruptPending ;
 
 void
 HandleCatchupInterrupt(void)
 {
-	/*
-	 * Note: this is called by a SIGNAL HANDLER. You must be very wary what
-	 * you do here.
-	 */
 
-	catchupInterruptPending = true;
 
-	/* make sure the event is processed in due course */
-	SetLatch(MyLatch);
+
+
+
+ catchupInterruptPending = 1;
+
+
+ SetLatch(MyLatch);
 }

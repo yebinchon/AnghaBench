@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct user_regs_struct {int rsp; int rax; int rbx; int rcx; scalar_t__ rdx; } ;
 struct msghdr {char* msg_control; int msg_controllen; } ;
-struct cmsghdr {int /*<<< orphan*/  cmsg_len; int /*<<< orphan*/  cmsg_type; int /*<<< orphan*/  cmsg_level; } ;
-typedef  int /*<<< orphan*/  sent_fd ;
-typedef  int /*<<< orphan*/  msg_bak ;
-typedef  int /*<<< orphan*/  msg32 ;
-typedef  int /*<<< orphan*/  cmsg_bak ;
-typedef  int /*<<< orphan*/  cmsg ;
-typedef  int addr_t ;
+struct cmsghdr {int cmsg_len; int cmsg_type; int cmsg_level; } ;
+typedef int sent_fd ;
+typedef int msg_bak ;
+typedef int msg32 ;
+typedef int cmsg_bak ;
+typedef int cmsg ;
+typedef int addr_t ;
 struct TYPE_2__ {int real_fd; } ;
 
-/* Variables and functions */
- scalar_t__ CMSG_DATA (struct cmsghdr*) ; 
- struct cmsghdr* CMSG_FIRSTHDR (struct msghdr*) ; 
- int /*<<< orphan*/  CMSG_LEN (int) ; 
- int CMSG_SPACE (int) ; 
- int /*<<< orphan*/  SCM_RIGHTS ; 
- int /*<<< orphan*/  SOL_SOCKET ; 
- int errno ; 
- int /*<<< orphan*/  exit (int) ; 
- TYPE_1__* f_get (int) ; 
- int /*<<< orphan*/  getregs (int,struct user_regs_struct*) ; 
- int /*<<< orphan*/  memset (char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  perror (char*) ; 
- int /*<<< orphan*/  pt_readn (int,int,...) ; 
- int /*<<< orphan*/  pt_writen (int,int,...) ; 
- int /*<<< orphan*/  sendmsg (int,struct msghdr*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  setregs (int,struct user_regs_struct*) ; 
- int /*<<< orphan*/  step (int) ; 
- int /*<<< orphan*/  trycall (int /*<<< orphan*/ ,char*) ; 
+
+ scalar_t__ CMSG_DATA (struct cmsghdr*) ;
+ struct cmsghdr* CMSG_FIRSTHDR (struct msghdr*) ;
+ int CMSG_LEN (int) ;
+ int CMSG_SPACE (int) ;
+ int SCM_RIGHTS ;
+ int SOL_SOCKET ;
+ int errno ;
+ int exit (int) ;
+ TYPE_1__* f_get (int) ;
+ int getregs (int,struct user_regs_struct*) ;
+ int memset (char*,int ,int) ;
+ int perror (char*) ;
+ int pt_readn (int,int,...) ;
+ int pt_writen (int,int,...) ;
+ int sendmsg (int,struct msghdr*,int ) ;
+ int setregs (int,struct user_regs_struct*) ;
+ int step (int) ;
+ int trycall (int ,char*) ;
 
 __attribute__((used)) static int transmit_fd(int pid, int sender, int receiver, int fake_fd) {
-    // this sends the fd over a unix domain socket. yes, I'm crazy
 
-    // sending part
+
+
     int real_fd = f_get(fake_fd)->real_fd;
     struct msghdr msg = {};
     char cmsg[CMSG_SPACE(sizeof(int))];
@@ -62,19 +62,19 @@ __attribute__((used)) static int transmit_fd(int pid, int sender, int receiver, 
 
     trycall(sendmsg(sender, &msg, 0), "sendmsg insanity");
 
-    // receiving part
-    // painful, because we're 64-bit and the child is 32-bit and I want to kill myself
+
+
     struct user_regs_struct saved_regs;
     getregs(pid, &saved_regs);
     struct user_regs_struct regs = saved_regs;
 
-    // reserve space for 32-bit version of cmsg
-    regs.rsp -= 16; // according to my calculations
+
+    regs.rsp -= 16;
     addr_t cmsg_addr = regs.rsp;
     char cmsg_bak[16];
     pt_readn(pid, regs.rsp, cmsg_bak, sizeof(cmsg_bak));
 
-    // copy 32-bit msghdr
+
     regs.rsp -= 32;
     int msg32[] = {0, 0, 0, 0, cmsg_addr, 20, 0};
     addr_t msg_addr = regs.rsp;
@@ -86,7 +86,7 @@ __attribute__((used)) static int transmit_fd(int pid, int sender, int receiver, 
     regs.rbx = receiver;
     regs.rcx = msg_addr;
     regs.rdx = 0;
-    // assume we're already on an int $0x80
+
     setregs(pid, &regs);
     step(pid);
     getregs(pid, &regs);
@@ -97,7 +97,7 @@ __attribute__((used)) static int transmit_fd(int pid, int sender, int receiver, 
     else
         sent_fd = regs.rax;
 
-    // restore crap
+
     pt_writen(pid, cmsg_addr, cmsg_bak, sizeof(cmsg_bak));
     pt_writen(pid, msg_addr, msg_bak, sizeof(msg_bak));
     setregs(pid, &regs);

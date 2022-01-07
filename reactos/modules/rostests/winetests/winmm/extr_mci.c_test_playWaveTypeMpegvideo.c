@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buf ;
-struct TYPE_2__ {scalar_t__ dwReturn; int /*<<< orphan*/  dwItem; } ;
-typedef  TYPE_1__ MCI_STATUS_PARMS ;
-typedef  int /*<<< orphan*/  MCI_PLAY_PARMS ;
-typedef  scalar_t__ MCIERROR ;
-typedef  int MCIDEVICEID ;
-typedef  int /*<<< orphan*/  DWORD_PTR ;
-typedef  char* DWORD ;
 
-/* Variables and functions */
- scalar_t__ MCIERR_OUTOFRANGE ; 
- scalar_t__ MCI_MODE_PLAY ; 
- int /*<<< orphan*/  MCI_PLAY ; 
- int /*<<< orphan*/  MCI_STATUS ; 
- int /*<<< orphan*/  MCI_STATUS_ITEM ; 
- int /*<<< orphan*/  MCI_STATUS_MODE ; 
- char* dbg_mcierr (scalar_t__) ; 
- int mciGetDeviceIDA (char*) ; 
- scalar_t__ mciSendCommandA (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ mciSendStringA (char*,char*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memset (char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- scalar_t__ ok_saved ; 
- int /*<<< orphan*/  skip (char*,char*) ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int buf ;
+struct TYPE_2__ {scalar_t__ dwReturn; int dwItem; } ;
+typedef TYPE_1__ MCI_STATUS_PARMS ;
+typedef int MCI_PLAY_PARMS ;
+typedef scalar_t__ MCIERROR ;
+typedef int MCIDEVICEID ;
+typedef int DWORD_PTR ;
+typedef char* DWORD ;
+
+
+ scalar_t__ MCIERR_OUTOFRANGE ;
+ scalar_t__ MCI_MODE_PLAY ;
+ int MCI_PLAY ;
+ int MCI_STATUS ;
+ int MCI_STATUS_ITEM ;
+ int MCI_STATUS_MODE ;
+ char* dbg_mcierr (scalar_t__) ;
+ int mciGetDeviceIDA (char*) ;
+ scalar_t__ mciSendCommandA (int,int ,int ,int ) ;
+ scalar_t__ mciSendStringA (char*,char*,int,int *) ;
+ int memset (char*,int ,int) ;
+ int ok (int,char*,...) ;
+ scalar_t__ ok_saved ;
+ int skip (char*,char*) ;
+ int strcmp (char*,char*) ;
 
 __attribute__((used)) static void test_playWaveTypeMpegvideo(void)
 {
@@ -46,7 +46,7 @@ __attribute__((used)) static void test_playWaveTypeMpegvideo(void)
     char buf[1024];
     memset(buf, 0, sizeof(buf));
 
-    err = mciSendStringA("open tempfile.wav type MPEGVideo alias mysound", NULL, 0, NULL);
+    err = mciSendStringA("open tempfile.wav type MPEGVideo alias mysound", ((void*)0), 0, ((void*)0));
     ok(err==ok_saved,"mci open tempfile.wav type MPEGVideo returned %s\n", dbg_mcierr(err));
     if(err) {
         skip("Cannot open tempfile.wav type MPEGVideo for playing (%s), skipping\n", dbg_mcierr(err));
@@ -59,7 +59,7 @@ __attribute__((used)) static void test_playWaveTypeMpegvideo(void)
     err = mciSendCommandA(wDeviceID, MCI_PLAY, 0, (DWORD_PTR)&play_parm);
     ok(!err,"mciCommand play returned %s\n", dbg_mcierr(err));
 
-    err = mciSendStringA("status mysound mode", buf, sizeof(buf), NULL);
+    err = mciSendStringA("status mysound mode", buf, sizeof(buf), ((void*)0));
     ok(!err,"mci status mode returned %s\n", dbg_mcierr(err));
     ok(!strcmp(buf,"playing"), "mci status mode: %s\n", buf);
 
@@ -71,20 +71,20 @@ __attribute__((used)) static void test_playWaveTypeMpegvideo(void)
     ok(status_parm.dwReturn == MCI_MODE_PLAY,
        "mciCommand status mode: %u\n", (DWORD)status_parm.dwReturn);
 
-    err = mciSendStringA("setaudio mysound volume to 1000", NULL, 0, NULL);
+    err = mciSendStringA("setaudio mysound volume to 1000", ((void*)0), 0, ((void*)0));
     ok(!err,"mci setaudio volume to 1000 returned %s\n", dbg_mcierr(err));
 
-    err = mciSendStringA("status mysound mode", buf, sizeof(buf), NULL);
+    err = mciSendStringA("status mysound mode", buf, sizeof(buf), ((void*)0));
     ok(!err,"mci status mode returned %s\n", dbg_mcierr(err));
     ok(!strcmp(buf,"playing"), "mci status mode: %s\n", buf);
 
-    err = mciSendStringA("setaudio mysound volume to 1001", NULL, 0, NULL);
+    err = mciSendStringA("setaudio mysound volume to 1001", ((void*)0), 0, ((void*)0));
     ok(err==MCIERR_OUTOFRANGE,"mci setaudio volume to 1001 returned %s\n", dbg_mcierr(err));
 
-    err = mciSendStringA("status mysound mode", buf, sizeof(buf), NULL);
+    err = mciSendStringA("status mysound mode", buf, sizeof(buf), ((void*)0));
     ok(!err,"mci status mode returned %s\n", dbg_mcierr(err));
     ok(!strcmp(buf,"playing"), "mci status mode: %s\n", buf);
 
-    err = mciSendStringA("close mysound", NULL, 0, NULL);
+    err = mciSendStringA("close mysound", ((void*)0), 0, ((void*)0));
     ok(!err,"mci close returned %s\n", dbg_mcierr(err));
 }

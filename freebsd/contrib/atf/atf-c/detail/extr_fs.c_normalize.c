@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  atf_error_t ;
-typedef  int /*<<< orphan*/  atf_dynstr_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PRE (int) ; 
- int /*<<< orphan*/  atf_dynstr_append_fmt (int /*<<< orphan*/ *,char*,...) ; 
- scalar_t__ atf_dynstr_length (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  atf_is_error (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  atf_no_error () ; 
- scalar_t__ strlen (char const*) ; 
- char* strtok_r (char*,char*,char**) ; 
+
+
+
+typedef int atf_error_t ;
+typedef int atf_dynstr_t ;
+
+
+ int PRE (int) ;
+ int atf_dynstr_append_fmt (int *,char*,...) ;
+ scalar_t__ atf_dynstr_length (int *) ;
+ int atf_is_error (int ) ;
+ int atf_no_error () ;
+ scalar_t__ strlen (char const*) ;
+ char* strtok_r (char*,char*,char**) ;
 
 __attribute__((used)) static
 atf_error_t
@@ -39,16 +39,16 @@ normalize(atf_dynstr_t *d, char *p)
     else
         err = atf_no_error();
 
-    first = true;
-    last = NULL; /* Silence GCC warning. */
+    first = 1;
+    last = ((void*)0);
     ptr = strtok_r(p, "/", &last);
-    while (!atf_is_error(err) && ptr != NULL) {
+    while (!atf_is_error(err) && ptr != ((void*)0)) {
         if (strlen(ptr) > 0) {
             err = atf_dynstr_append_fmt(d, "%s%s", first ? "" : "/", ptr);
-            first = false;
+            first = 0;
         }
 
-        ptr = strtok_r(NULL, "/", &last);
+        ptr = strtok_r(((void*)0), "/", &last);
     }
 
     return err;

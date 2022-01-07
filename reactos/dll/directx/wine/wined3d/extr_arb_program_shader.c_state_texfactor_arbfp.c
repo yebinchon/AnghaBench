@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct wined3d_state {int /*<<< orphan*/ * render_states; } ;
+
+
+
+
+struct wined3d_state {int * render_states; } ;
 struct wined3d_gl_info {int dummy; } ;
-struct wined3d_device {struct shader_arb_priv* shader_priv; int /*<<< orphan*/ * shader_backend; } ;
+struct wined3d_device {struct shader_arb_priv* shader_priv; int * shader_backend; } ;
 struct wined3d_context {struct wined3d_device* device; struct wined3d_gl_info* gl_info; } ;
-struct wined3d_color {int /*<<< orphan*/  r; } ;
-struct shader_arb_priv {int* pshader_const_dirty; int /*<<< orphan*/  highest_dirty_ps_const; } ;
-typedef  int /*<<< orphan*/  DWORD ;
+struct wined3d_color {int r; } ;
+struct shader_arb_priv {int* pshader_const_dirty; int highest_dirty_ps_const; } ;
+typedef int DWORD ;
 
-/* Variables and functions */
- size_t ARB_FFP_CONST_TFACTOR ; 
- int /*<<< orphan*/  GL_EXTCALL (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GL_FRAGMENT_PROGRAM_ARB ; 
- size_t WINED3D_RS_TEXTUREFACTOR ; 
- int /*<<< orphan*/  arb_program_shader_backend ; 
- int /*<<< orphan*/  checkGLcall (char*) ; 
- int /*<<< orphan*/  glProgramEnvParameter4fvARB (int /*<<< orphan*/ ,size_t,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  max (int /*<<< orphan*/ ,size_t) ; 
- scalar_t__ use_ps (struct wined3d_state const*) ; 
- int /*<<< orphan*/  wined3d_color_from_d3dcolor (struct wined3d_color*,int /*<<< orphan*/ ) ; 
+
+ size_t ARB_FFP_CONST_TFACTOR ;
+ int GL_EXTCALL (int ) ;
+ int GL_FRAGMENT_PROGRAM_ARB ;
+ size_t WINED3D_RS_TEXTUREFACTOR ;
+ int arb_program_shader_backend ;
+ int checkGLcall (char*) ;
+ int glProgramEnvParameter4fvARB (int ,size_t,int *) ;
+ int max (int ,size_t) ;
+ scalar_t__ use_ps (struct wined3d_state const*) ;
+ int wined3d_color_from_d3dcolor (struct wined3d_color*,int ) ;
 
 __attribute__((used)) static void state_texfactor_arbfp(struct wined3d_context *context,
         const struct wined3d_state *state, DWORD state_id)
@@ -41,8 +41,8 @@ __attribute__((used)) static void state_texfactor_arbfp(struct wined3d_context *
     {
         struct shader_arb_priv *priv;
 
-        /* Don't load the parameter if we're using an arbfp pixel shader,
-         * otherwise we'll overwrite application provided constants. */
+
+
         if (use_ps(state))
             return;
 

@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct remote_event {int fired; scalar_t__ armed; } ;
 
-/* Variables and functions */
- scalar_t__ BELL2 ; 
- int /*<<< orphan*/  dsb (int /*<<< orphan*/ ) ; 
- scalar_t__ g_regs ; 
- int /*<<< orphan*/  sy ; 
- int /*<<< orphan*/  wmb () ; 
- int /*<<< orphan*/  writel (int /*<<< orphan*/ ,scalar_t__) ; 
+
+ scalar_t__ BELL2 ;
+ int dsb (int ) ;
+ scalar_t__ g_regs ;
+ int sy ;
+ int wmb () ;
+ int writel (int ,scalar_t__) ;
 
 void
 remote_event_signal(struct remote_event *event)
 {
-	wmb();
+ wmb();
 
-	event->fired = 1;
+ event->fired = 1;
 
-	dsb(sy);         /* data barrier operation */
+ dsb(sy);
 
-	if (event->armed)
-		writel(0, g_regs + BELL2); /* trigger vc interrupt */
+ if (event->armed)
+  writel(0, g_regs + BELL2);
 }

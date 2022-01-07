@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_7__ {int CheckSum; } ;
 struct TYPE_10__ {TYPE_1__ OptionalHeader; } ;
 struct TYPE_8__ {int CheckSum; } ;
 struct TYPE_9__ {TYPE_2__ OptionalHeader; } ;
-typedef  int /*<<< orphan*/  LPVOID ;
-typedef  TYPE_3__ IMAGE_NT_HEADERS64 ;
-typedef  TYPE_4__ IMAGE_NT_HEADERS32 ;
-typedef  int /*<<< orphan*/  HANDLE ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef int LPVOID ;
+typedef TYPE_3__ IMAGE_NT_HEADERS64 ;
+typedef TYPE_4__ IMAGE_NT_HEADERS32 ;
+typedef int HANDLE ;
+typedef int DWORD ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CheckSumMappedFile (int /*<<< orphan*/ ,int,int*,int*) ; 
- int /*<<< orphan*/  CloseHandle (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CreateFileMappingW (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  FILE_BEGIN ; 
- int /*<<< orphan*/  FILE_MAP_READ ; 
- int GetFileSize (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int HDR_NT32 ; 
- int HDR_NT64 ; 
- int IMAGEHLP_GetNTHeaders (int /*<<< orphan*/ ,int*,TYPE_4__*,TYPE_3__*) ; 
- int INVALID_SET_FILE_POINTER ; 
- int /*<<< orphan*/  MapViewOfFile (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PAGE_READONLY ; 
- int SetFilePointer (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  UnmapViewOfFile (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WriteFile (int /*<<< orphan*/ ,void*,int,int*,int /*<<< orphan*/ *) ; 
+
+ int CheckSumMappedFile (int ,int,int*,int*) ;
+ int CloseHandle (int ) ;
+ int CreateFileMappingW (int ,int *,int ,int ,int ,int *) ;
+ int FALSE ;
+ int FILE_BEGIN ;
+ int FILE_MAP_READ ;
+ int GetFileSize (int ,int *) ;
+ int HDR_NT32 ;
+ int HDR_NT64 ;
+ int IMAGEHLP_GetNTHeaders (int ,int*,TYPE_4__*,TYPE_3__*) ;
+ int INVALID_SET_FILE_POINTER ;
+ int MapViewOfFile (int ,int ,int ,int ,int ) ;
+ int PAGE_READONLY ;
+ int SetFilePointer (int ,int,int *,int ) ;
+ int TRACE (char*,int ) ;
+ int TRUE ;
+ int UnmapViewOfFile (int ) ;
+ int WriteFile (int ,void*,int,int*,int *) ;
 
 __attribute__((used)) static BOOL IMAGEHLP_RecalculateChecksum(HANDLE handle)
 {
@@ -78,7 +78,7 @@ __attribute__((used)) static BOOL IMAGEHLP_RecalculateChecksum(HANDLE handle)
     else
         return FALSE;
 
-    hMapping = CreateFileMappingW(handle, NULL, PAGE_READONLY, 0, 0, NULL);
+    hMapping = CreateFileMappingW(handle, ((void*)0), PAGE_READONLY, 0, 0, ((void*)0));
 
     if (!hMapping)
         return FALSE;
@@ -91,7 +91,7 @@ __attribute__((used)) static BOOL IMAGEHLP_RecalculateChecksum(HANDLE handle)
         return FALSE;
     }
 
-    FileLength = GetFileSize(handle, NULL);
+    FileLength = GetFileSize(handle, ((void*)0));
 
     *CheckSum = 0;
     CheckSumMappedFile(BaseAddress, FileLength, &HeaderSum, CheckSum);
@@ -101,15 +101,15 @@ __attribute__((used)) static BOOL IMAGEHLP_RecalculateChecksum(HANDLE handle)
 
     if (*CheckSum)
     {
-        /* write the header back again */
-        count = SetFilePointer(handle, pe_offset, NULL, FILE_BEGIN);
+
+        count = SetFilePointer(handle, pe_offset, ((void*)0), FILE_BEGIN);
 
         if (count == INVALID_SET_FILE_POINTER)
             return FALSE;
 
         count = 0;
 
-        r = WriteFile(handle, nt_hdr, nt_hdr_size, &count, NULL);
+        r = WriteFile(handle, nt_hdr, nt_hdr_size, &count, ((void*)0));
 
         if (!r)
             return FALSE;

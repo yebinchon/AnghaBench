@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_18__   TYPE_4__ ;
-typedef  struct TYPE_17__   TYPE_3__ ;
-typedef  struct TYPE_16__   TYPE_2__ ;
-typedef  struct TYPE_15__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_18__ TYPE_4__ ;
+typedef struct TYPE_17__ TYPE_3__ ;
+typedef struct TYPE_16__ TYPE_2__ ;
+typedef struct TYPE_15__ TYPE_1__ ;
+
+
 struct TYPE_18__ {TYPE_3__** outputs; TYPE_1__* priv; } ;
-struct TYPE_17__ {int /*<<< orphan*/  format; int /*<<< orphan*/  sample_rate; int /*<<< orphan*/  time_base; TYPE_4__* dst; } ;
-struct TYPE_16__ {int nb_samples; scalar_t__ pts; int /*<<< orphan*/  format; int /*<<< orphan*/  sample_rate; int /*<<< orphan*/ * linesize; int /*<<< orphan*/  extended_data; } ;
+struct TYPE_17__ {int format; int sample_rate; int time_base; TYPE_4__* dst; } ;
+struct TYPE_16__ {int nb_samples; scalar_t__ pts; int format; int sample_rate; int * linesize; int extended_data; } ;
 struct TYPE_15__ {scalar_t__ next_pts; scalar_t__ next_in_pts; int got_output; scalar_t__ resampling; scalar_t__ avr; } ;
-typedef  TYPE_1__ ResampleContext ;
-typedef  TYPE_2__ AVFrame ;
-typedef  TYPE_3__ AVFilterLink ;
-typedef  TYPE_4__ AVFilterContext ;
+typedef TYPE_1__ ResampleContext ;
+typedef TYPE_2__ AVFrame ;
+typedef TYPE_3__ AVFilterLink ;
+typedef TYPE_4__ AVFilterContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_LOG_WARNING ; 
- scalar_t__ AV_NOPTS_VALUE ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  av_assert0 (int) ; 
- int av_frame_copy_props (TYPE_2__*,TYPE_2__*) ; 
- int /*<<< orphan*/  av_frame_free (TYPE_2__**) ; 
- int /*<<< orphan*/  av_log (TYPE_4__*,int /*<<< orphan*/ ,char*) ; 
- void* av_rescale (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- void* av_rescale_q (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  avresample_available (scalar_t__) ; 
- int avresample_convert (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int avresample_get_delay (scalar_t__) ; 
- int avresample_get_out_samples (scalar_t__,int) ; 
- int ff_filter_frame (TYPE_3__*,TYPE_2__*) ; 
- TYPE_2__* ff_get_audio_buffer (TYPE_3__*,int) ; 
+
+ int AVERROR (int ) ;
+ int AV_LOG_WARNING ;
+ scalar_t__ AV_NOPTS_VALUE ;
+ int ENOMEM ;
+ int av_assert0 (int) ;
+ int av_frame_copy_props (TYPE_2__*,TYPE_2__*) ;
+ int av_frame_free (TYPE_2__**) ;
+ int av_log (TYPE_4__*,int ,char*) ;
+ void* av_rescale (int,int ,int ) ;
+ void* av_rescale_q (scalar_t__,int ,int ) ;
+ int avresample_available (scalar_t__) ;
+ int avresample_convert (scalar_t__,int ,int ,int,int ,int ,int) ;
+ int avresample_get_delay (scalar_t__) ;
+ int avresample_get_out_samples (scalar_t__,int) ;
+ int ff_filter_frame (TYPE_3__*,TYPE_2__*) ;
+ TYPE_2__* ff_get_audio_buffer (TYPE_3__*,int) ;
 
 __attribute__((used)) static int filter_frame(AVFilterLink *inlink, AVFrame *in)
 {
-    AVFilterContext  *ctx = inlink->dst;
-    ResampleContext    *s = ctx->priv;
+    AVFilterContext *ctx = inlink->dst;
+    ResampleContext *s = ctx->priv;
     AVFilterLink *outlink = ctx->outputs[0];
     int ret;
 
@@ -52,8 +52,8 @@ __attribute__((used)) static int filter_frame(AVFilterLink *inlink, AVFrame *in)
         AVFrame *out;
         int delay, nb_samples;
 
-        /* maximum possible samples lavr can output */
-        delay      = avresample_get_delay(s->avr);
+
+        delay = avresample_get_delay(s->avr);
         nb_samples = avresample_get_out_samples(s->avr, in->nb_samples);
 
         out = ff_get_audio_buffer(outlink, nb_samples);
@@ -94,11 +94,11 @@ __attribute__((used)) static int filter_frame(AVFilterLink *inlink, AVFrame *in)
 
             if (s->resampling) {
                 out->sample_rate = outlink->sample_rate;
-                /* Only convert in->pts if there is a discontinuous jump.
-                   This ensures that out->pts tracks the number of samples actually
-                   output by the resampler in the absence of such a jump.
-                   Otherwise, the rounding in av_rescale_q() and av_rescale()
-                   causes off-by-1 errors. */
+
+
+
+
+
                 if (in->pts != AV_NOPTS_VALUE && in->pts != s->next_in_pts) {
                     out->pts = av_rescale_q(in->pts, inlink->time_base,
                                                 outlink->time_base) -

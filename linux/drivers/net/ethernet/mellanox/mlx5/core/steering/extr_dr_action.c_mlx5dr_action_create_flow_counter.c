@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
-struct TYPE_2__ {int /*<<< orphan*/  ctr_id; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u32 ;
+struct TYPE_2__ {int ctr_id; } ;
 struct mlx5dr_action {TYPE_1__ ctr; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DR_ACTION_TYP_CTR ; 
- struct mlx5dr_action* dr_action_create_generic (int /*<<< orphan*/ ) ; 
+
+ int DR_ACTION_TYP_CTR ;
+ struct mlx5dr_action* dr_action_create_generic (int ) ;
 
 struct mlx5dr_action *
 mlx5dr_action_create_flow_counter(u32 counter_id)
 {
-	struct mlx5dr_action *action;
+ struct mlx5dr_action *action;
 
-	action = dr_action_create_generic(DR_ACTION_TYP_CTR);
-	if (!action)
-		return NULL;
+ action = dr_action_create_generic(DR_ACTION_TYP_CTR);
+ if (!action)
+  return ((void*)0);
 
-	action->ctr.ctr_id = counter_id;
+ action->ctr.ctr_id = counter_id;
 
-	return action;
+ return action;
 }

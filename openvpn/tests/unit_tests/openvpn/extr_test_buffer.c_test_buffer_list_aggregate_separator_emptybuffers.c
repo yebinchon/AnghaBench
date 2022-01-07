@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct test_buffer_list_aggregate_ctx {struct buffer_list* empty_buffers; } ;
-struct buffer_list {int /*<<< orphan*/  size; } ;
+struct buffer_list {int size; } ;
 struct buffer {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BLEN (struct buffer*) ; 
- int /*<<< orphan*/  assert_int_equal (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  buffer_list_aggregate_separator (struct buffer_list*,int,int /*<<< orphan*/ ) ; 
- struct buffer* buffer_list_peek (struct buffer_list*) ; 
- int /*<<< orphan*/  testnosep ; 
+
+ int BLEN (struct buffer*) ;
+ int assert_int_equal (int ,int) ;
+ int buffer_list_aggregate_separator (struct buffer_list*,int,int ) ;
+ struct buffer* buffer_list_peek (struct buffer_list*) ;
+ int testnosep ;
 
 __attribute__((used)) static void
 test_buffer_list_aggregate_separator_emptybuffers(void **state)
@@ -27,7 +27,7 @@ test_buffer_list_aggregate_separator_emptybuffers(void **state)
     struct test_buffer_list_aggregate_ctx *ctx = *state;
     struct buffer_list *bl_emptybuffers = ctx->empty_buffers;
 
-    /* Aggregate all */
+
     buffer_list_aggregate_separator(bl_emptybuffers, 1<<16, testnosep);
     assert_int_equal(bl_emptybuffers->size, 1);
     struct buffer *buf = buffer_list_peek(bl_emptybuffers);

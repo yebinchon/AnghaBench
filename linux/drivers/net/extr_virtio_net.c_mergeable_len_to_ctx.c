@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- unsigned int MRG_CTX_HEADER_SHIFT ; 
+ unsigned int MRG_CTX_HEADER_SHIFT ;
 
 __attribute__((used)) static void *mergeable_len_to_ctx(unsigned int truesize,
-				  unsigned int headroom)
+      unsigned int headroom)
 {
-	return (void *)(unsigned long)((headroom << MRG_CTX_HEADER_SHIFT) | truesize);
+ return (void *)(unsigned long)((headroom << MRG_CTX_HEADER_SHIFT) | truesize);
 }

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_string_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_diff_t ;
-typedef  int /*<<< orphan*/  svn_diff_file_options_t ;
-struct TYPE_4__ {int /*<<< orphan*/  const* normalization_options; int /*<<< orphan*/ * sources; } ;
-typedef  TYPE_1__ diff_mem_baton_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  alloc_normalization_bufs (TYPE_1__*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fill_source_tokens (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_diff__mem_vtable ; 
- int /*<<< orphan*/ * svn_diff_diff_2 (int /*<<< orphan*/ **,TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int svn_string_t ;
+typedef int svn_error_t ;
+typedef int svn_diff_t ;
+typedef int svn_diff_file_options_t ;
+struct TYPE_4__ {int const* normalization_options; int * sources; } ;
+typedef TYPE_1__ diff_mem_baton_t ;
+typedef int apr_pool_t ;
+
+
+ int alloc_normalization_bufs (TYPE_1__*,int,int *) ;
+ int fill_source_tokens (int *,int const*,int *) ;
+ int svn_diff__mem_vtable ;
+ int * svn_diff_diff_2 (int **,TYPE_1__*,int *,int *) ;
 
 svn_error_t *
 svn_diff_mem_string_diff(svn_diff_t **diff,

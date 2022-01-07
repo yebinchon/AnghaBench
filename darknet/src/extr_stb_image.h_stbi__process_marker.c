@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  unsigned char stbi_uc ;
-typedef  int /*<<< orphan*/  stbi__uint16 ;
-struct TYPE_7__ {int restart_interval; int jfif; unsigned char app14_color_transform; int /*<<< orphan*/  s; TYPE_2__* huff_ac; int /*<<< orphan*/ * fast_ac; TYPE_1__* huff_dc; int /*<<< orphan*/ ** dequant; } ;
-typedef  TYPE_3__ stbi__jpeg ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef unsigned char stbi_uc ;
+typedef int stbi__uint16 ;
+struct TYPE_7__ {int restart_interval; int jfif; unsigned char app14_color_transform; int s; TYPE_2__* huff_ac; int * fast_ac; TYPE_1__* huff_dc; int ** dequant; } ;
+typedef TYPE_3__ stbi__jpeg ;
 struct TYPE_6__ {unsigned char* values; } ;
 struct TYPE_5__ {unsigned char* values; } ;
 
-/* Variables and functions */
-#define  STBI__MARKER_none 128 
- int /*<<< orphan*/  stbi__build_fast_ac (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stbi__build_huffman (int /*<<< orphan*/ ,int*) ; 
- int stbi__err (char*,char*) ; 
- int stbi__get16be (int /*<<< orphan*/ ) ; 
- unsigned char const stbi__get8 (int /*<<< orphan*/ ) ; 
- size_t* stbi__jpeg_dezigzag ; 
- int /*<<< orphan*/  stbi__skip (int /*<<< orphan*/ ,int) ; 
+
+
+ int stbi__build_fast_ac (int ,int ) ;
+ int stbi__build_huffman (int ,int*) ;
+ int stbi__err (char*,char*) ;
+ int stbi__get16be (int ) ;
+ unsigned char const stbi__get8 (int ) ;
+ size_t* stbi__jpeg_dezigzag ;
+ int stbi__skip (int ,int) ;
 
 __attribute__((used)) static int stbi__process_marker(stbi__jpeg *z, int m)
 {
    int L;
    switch (m) {
-      case STBI__MARKER_none: // no marker found
+      case 128:
          return stbi__err("expected marker","Corrupt JPEG");
 
-      case 0xDD: // DRI - specify restart interval
+      case 0xDD:
          if (stbi__get16be(z->s) != 4) return stbi__err("bad DRI len","Corrupt JPEG");
          z->restart_interval = stbi__get16be(z->s);
          return 1;
 
-      case 0xDB: // DQT - define quantization table
+      case 0xDB:
          L = stbi__get16be(z->s)-2;
          while (L > 0) {
             int q = stbi__get8(z->s);
@@ -57,7 +57,7 @@ __attribute__((used)) static int stbi__process_marker(stbi__jpeg *z, int m)
          }
          return L==0;
 
-      case 0xC4: // DHT - define huffman table
+      case 0xC4:
          L = stbi__get16be(z->s)-2;
          while (L > 0) {
             stbi_uc *v;
@@ -87,7 +87,7 @@ __attribute__((used)) static int stbi__process_marker(stbi__jpeg *z, int m)
          return L==0;
    }
 
-   // check for comment block or APP blocks
+
    if ((m >= 0xE0 && m <= 0xEF) || m == 0xFE) {
       L = stbi__get16be(z->s);
       if (L < 2) {
@@ -98,7 +98,7 @@ __attribute__((used)) static int stbi__process_marker(stbi__jpeg *z, int m)
       }
       L -= 2;
 
-      if (m == 0xE0 && L >= 5) { // JFIF APP0 segment
+      if (m == 0xE0 && L >= 5) {
          static const unsigned char tag[5] = {'J','F','I','F','\0'};
          int ok = 1;
          int i;
@@ -108,7 +108,7 @@ __attribute__((used)) static int stbi__process_marker(stbi__jpeg *z, int m)
          L -= 5;
          if (ok)
             z->jfif = 1;
-      } else if (m == 0xEE && L >= 12) { // Adobe APP14 segment
+      } else if (m == 0xEE && L >= 12) {
          static const unsigned char tag[6] = {'A','d','o','b','e','\0'};
          int ok = 1;
          int i;
@@ -117,10 +117,10 @@ __attribute__((used)) static int stbi__process_marker(stbi__jpeg *z, int m)
                ok = 0;
          L -= 6;
          if (ok) {
-            stbi__get8(z->s); // version
-            stbi__get16be(z->s); // flags0
-            stbi__get16be(z->s); // flags1
-            z->app14_color_transform = stbi__get8(z->s); // color transform
+            stbi__get8(z->s);
+            stbi__get16be(z->s);
+            stbi__get16be(z->s);
+            z->app14_color_transform = stbi__get8(z->s);
             L -= 6;
          }
       }

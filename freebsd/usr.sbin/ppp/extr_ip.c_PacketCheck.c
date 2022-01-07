@@ -1,88 +1,65 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  const u_short ;
-typedef  int /*<<< orphan*/  u_long ;
-typedef  scalar_t__ u_int32_t ;
-typedef  scalar_t__ u_char ;
-struct udphdr {int /*<<< orphan*/  const uh_dport; int /*<<< orphan*/  const uh_sport; } ;
-struct tcphdr {int th_off; int th_flags; int /*<<< orphan*/  th_ack; int /*<<< orphan*/  th_seq; int /*<<< orphan*/  const th_dport; int /*<<< orphan*/  const th_sport; } ;
+
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int const u_short ;
+typedef int u_long ;
+typedef scalar_t__ u_int32_t ;
+typedef scalar_t__ u_char ;
+struct udphdr {int const uh_dport; int const uh_sport; } ;
+struct tcphdr {int th_off; int th_flags; int th_ack; int th_seq; int const th_dport; int const th_sport; } ;
 struct ncpaddr {int dummy; } ;
-struct ip6_hdr {int ip6_nxt; int /*<<< orphan*/  const ip6_plen; int /*<<< orphan*/  ip6_dst; int /*<<< orphan*/  ip6_src; } ;
-struct ip {int ip_hl; int ip_p; int ip_v; int /*<<< orphan*/  const ip_off; scalar_t__ ip_tos; int /*<<< orphan*/  const ip_len; int /*<<< orphan*/  ip_dst; int /*<<< orphan*/  ip_src; } ;
+struct ip6_hdr {int ip6_nxt; int const ip6_plen; int ip6_dst; int ip6_src; } ;
+struct ip {int ip_hl; int ip_p; int ip_v; int const ip_off; scalar_t__ ip_tos; int const ip_len; int ip_dst; int ip_src; } ;
 struct icmp6_hdr {int icmp6_type; } ;
 struct icmp {int icmp_type; } ;
 struct filter {char* name; scalar_t__ logok; } ;
 struct TYPE_9__ {struct filter alive; } ;
-struct TYPE_7__ {int /*<<< orphan*/  tos; } ;
+struct TYPE_7__ {int tos; } ;
 struct TYPE_8__ {TYPE_1__ urgent; } ;
 struct TYPE_10__ {TYPE_2__ cfg; } ;
 struct bundle {TYPE_3__ filter; TYPE_4__ ncp; } ;
 
-/* Variables and functions */
- scalar_t__ AF_INET ; 
- scalar_t__ AF_INET6 ; 
- int /*<<< orphan*/  Enabled (struct bundle*,int /*<<< orphan*/ ) ; 
- scalar_t__ FilterCheck (unsigned char const*,scalar_t__,struct filter*,unsigned int*) ; 
- unsigned char const HDLC_ADDR ; 
- unsigned char const HDLC_UI ; 
-#define  IPPROTO_AH 150 
-#define  IPPROTO_ESP 149 
-#define  IPPROTO_GRE 148 
-#define  IPPROTO_ICMP 147 
-#define  IPPROTO_ICMPV6 146 
-#define  IPPROTO_IGMP 145 
-#define  IPPROTO_IPIP 144 
-#define  IPPROTO_IPV6 143 
-#define  IPPROTO_OSPFIGP 142 
-#define  IPPROTO_TCP 141 
-#define  IPPROTO_UDP 140 
- scalar_t__ IPTOS_LOWDELAY ; 
- int IP_OFFMASK ; 
- int /*<<< orphan*/  LogDNS ; 
- int /*<<< orphan*/  LogTCPIP ; 
- int /*<<< orphan*/  OPT_FILTERDECAP ; 
-#define  PROTO_CBCP 139 
-#define  PROTO_CHAP 138 
-#define  PROTO_COMPD 137 
-#define  PROTO_ICOMPD 136 
-#define  PROTO_IP 135 
-#define  PROTO_IPCP 134 
-#define  PROTO_LCP 133 
-#define  PROTO_LQR 132 
-#define  PROTO_MP 131 
-#define  PROTO_PAP 130 
-#define  PROTO_VJCOMP 129 
-#define  PROTO_VJUNCOMP 128 
- int TH_FIN ; 
- int TH_SYN ; 
- int /*<<< orphan*/  ip_LogDNS (struct udphdr const*,char*) ; 
- scalar_t__ log_IsKept (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  log_Printf (int /*<<< orphan*/ ,char*,char*,...) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/  const*,unsigned char const*,int) ; 
- int /*<<< orphan*/  ncp_IsUrgentTcpLen (TYPE_4__*,int) ; 
- int /*<<< orphan*/  ncp_IsUrgentTcpPort (TYPE_4__*,int,int) ; 
- int /*<<< orphan*/  ncp_IsUrgentUdpPort (TYPE_4__*,int,int) ; 
- char* ncpaddr_ntoa (struct ncpaddr*) ; 
- int /*<<< orphan*/  ncpaddr_setip4 (struct ncpaddr*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ncpaddr_setip6 (struct ncpaddr*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ntohl (int /*<<< orphan*/ ) ; 
- int ntohs (int /*<<< orphan*/  const) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,...) ; 
- scalar_t__ strlen (char*) ; 
+
+ scalar_t__ AF_INET ;
+ scalar_t__ AF_INET6 ;
+ int Enabled (struct bundle*,int ) ;
+ scalar_t__ FilterCheck (unsigned char const*,scalar_t__,struct filter*,unsigned int*) ;
+ unsigned char const HDLC_ADDR ;
+ unsigned char const HDLC_UI ;
+ scalar_t__ IPTOS_LOWDELAY ;
+ int IP_OFFMASK ;
+ int LogDNS ;
+ int LogTCPIP ;
+ int OPT_FILTERDECAP ;
+ int TH_FIN ;
+ int TH_SYN ;
+ int ip_LogDNS (struct udphdr const*,char*) ;
+ scalar_t__ log_IsKept (int ) ;
+ int log_Printf (int ,char*,char*,...) ;
+ int memcpy (int const*,unsigned char const*,int) ;
+ int ncp_IsUrgentTcpLen (TYPE_4__*,int) ;
+ int ncp_IsUrgentTcpPort (TYPE_4__*,int,int) ;
+ int ncp_IsUrgentUdpPort (TYPE_4__*,int,int) ;
+ char* ncpaddr_ntoa (struct ncpaddr*) ;
+ int ncpaddr_setip4 (struct ncpaddr*,int ) ;
+ int ncpaddr_setip6 (struct ncpaddr*,int *) ;
+ int ntohl (int ) ;
+ int ntohs (int const) ;
+ int snprintf (char*,int,char*,...) ;
+ scalar_t__ strlen (char*) ;
 
 int
 PacketCheck(struct bundle *bundle, u_int32_t family,
@@ -96,9 +73,9 @@ PacketCheck(struct bundle *bundle, u_int32_t family,
   const struct tcphdr *th;
   const struct udphdr *uh;
   const struct icmp *icmph;
-#ifndef NOINET6
+
   const struct icmp6_hdr *icmp6h;
-#endif
+
   const unsigned char *payload;
   struct ncpaddr srcaddr, dstaddr;
   int cproto, mask, len, n, pri, logit, result, datalen, frag;
@@ -110,7 +87,7 @@ PacketCheck(struct bundle *bundle, u_int32_t family,
   loglen = 0;
   pri = 0;
 
-#ifndef NOINET6
+
   if (family == AF_INET6) {
     const struct ip6_hdr *pip6 = (const struct ip6_hdr *)packet;
 
@@ -119,10 +96,10 @@ PacketCheck(struct bundle *bundle, u_int32_t family,
     datalen = ntohs(pip6->ip6_plen);
     payload = packet + sizeof *pip6;
     cproto = pip6->ip6_nxt;
-    tos = 0;					/* XXX: pip6->ip6_vfc >> 4 ? */
-    frag = 0;					/* XXX: ??? */
+    tos = 0;
+    frag = 0;
   } else
-#endif
+
   {
     const struct ip *pip = (const struct ip *)packet;
 
@@ -135,7 +112,7 @@ PacketCheck(struct bundle *bundle, u_int32_t family,
     frag = ntohs(pip->ip_off) & IP_OFFMASK;
   }
 
-  uh = NULL;
+  uh = ((void*)0);
 
   if (logit && loglen < sizeof logbuf) {
     if (prefix)
@@ -148,7 +125,7 @@ PacketCheck(struct bundle *bundle, u_int32_t family,
   }
 
   switch (cproto) {
-  case IPPROTO_ICMP:
+  case 147:
     if (logit && loglen < sizeof logbuf) {
       len = datalen - sizeof *icmph;
       icmph = (const struct icmp *)payload;
@@ -161,8 +138,8 @@ PacketCheck(struct bundle *bundle, u_int32_t family,
     }
     break;
 
-#ifndef NOINET6
-  case IPPROTO_ICMPV6:
+
+  case 146:
     if (logit && loglen < sizeof logbuf) {
       len = datalen - sizeof *icmp6h;
       icmp6h = (const struct icmp6_hdr *)payload;
@@ -174,9 +151,9 @@ PacketCheck(struct bundle *bundle, u_int32_t family,
       loglen += strlen(logbuf + loglen);
     }
     break;
-#endif
 
-  case IPPROTO_UDP:
+
+  case 140:
     uh = (const struct udphdr *)payload;
     if (tos == IPTOS_LOWDELAY && bundle->ncp.cfg.urgent.tos)
       pri++;
@@ -203,10 +180,10 @@ PacketCheck(struct bundle *bundle, u_int32_t family,
       const char *type;
 
       memcpy(&proto, payload + sizeof *uh + 2, sizeof proto);
-      type = NULL;
+      type = ((void*)0);
 
       switch (ntohs(proto)) {
-        case PROTO_IP:
+        case 135:
           snprintf(logbuf + loglen, sizeof logbuf - loglen, " contains ");
           result = PacketCheck(bundle, AF_INET, payload + sizeof *uh + 4,
                                nb - (payload - packet) - sizeof *uh - 4, filter,
@@ -216,17 +193,17 @@ PacketCheck(struct bundle *bundle, u_int32_t family,
           type = "IP";
           break;
 
-        case PROTO_VJUNCOMP: type = "compressed VJ";   break;
-        case PROTO_VJCOMP:   type = "uncompressed VJ"; break;
-        case PROTO_MP:       type = "Multi-link"; break;
-        case PROTO_ICOMPD:   type = "Individual link CCP"; break;
-        case PROTO_COMPD:    type = "CCP"; break;
-        case PROTO_IPCP:     type = "IPCP"; break;
-        case PROTO_LCP:      type = "LCP"; break;
-        case PROTO_PAP:      type = "PAP"; break;
-        case PROTO_CBCP:     type = "CBCP"; break;
-        case PROTO_LQR:      type = "LQR"; break;
-        case PROTO_CHAP:     type = "CHAP"; break;
+        case 128: type = "compressed VJ"; break;
+        case 129: type = "uncompressed VJ"; break;
+        case 131: type = "Multi-link"; break;
+        case 136: type = "Individual link CCP"; break;
+        case 137: type = "CCP"; break;
+        case 134: type = "IPCP"; break;
+        case 133: type = "LCP"; break;
+        case 130: type = "PAP"; break;
+        case 139: type = "CBCP"; break;
+        case 132: type = "LQR"; break;
+        case 138: type = "CHAP"; break;
       }
       if (type) {
         snprintf(logbuf + loglen, sizeof logbuf - loglen,
@@ -237,8 +214,8 @@ PacketCheck(struct bundle *bundle, u_int32_t family,
 
     break;
 
-#ifdef IPPROTO_GRE
-  case IPPROTO_GRE:
+
+  case 148:
     if (logit && loglen < sizeof logbuf) {
       snprintf(logbuf + loglen, sizeof logbuf - loglen,
           "GRE: %s ---> ", ncpaddr_ntoa(&srcaddr));
@@ -248,10 +225,10 @@ PacketCheck(struct bundle *bundle, u_int32_t family,
       loglen += strlen(logbuf + loglen);
     }
     break;
-#endif
 
-#ifdef IPPROTO_OSPFIGP
-  case IPPROTO_OSPFIGP:
+
+
+  case 142:
     if (logit && loglen < sizeof logbuf) {
       snprintf(logbuf + loglen, sizeof logbuf - loglen,
                "OSPF: %s ---> ", ncpaddr_ntoa(&srcaddr));
@@ -261,10 +238,10 @@ PacketCheck(struct bundle *bundle, u_int32_t family,
       loglen += strlen(logbuf + loglen);
     }
     break;
-#endif
 
-#ifndef NOINET6
-  case IPPROTO_IPV6:
+
+
+  case 143:
     if (logit && loglen < sizeof logbuf) {
       snprintf(logbuf + loglen, sizeof logbuf - loglen,
                "IPv6: %s ---> ", ncpaddr_ntoa(&srcaddr));
@@ -282,9 +259,9 @@ PacketCheck(struct bundle *bundle, u_int32_t family,
         return result;
     }
     break;
-#endif
 
-  case IPPROTO_IPIP:
+
+  case 144:
     if (logit && loglen < sizeof logbuf) {
       snprintf(logbuf + loglen, sizeof logbuf - loglen,
                "IPIP: %s ---> ", ncpaddr_ntoa(&srcaddr));
@@ -305,7 +282,7 @@ PacketCheck(struct bundle *bundle, u_int32_t family,
     }
     break;
 
-  case IPPROTO_ESP:
+  case 149:
     if (logit && loglen < sizeof logbuf) {
       snprintf(logbuf + loglen, sizeof logbuf - loglen,
                "ESP: %s ---> ", ncpaddr_ntoa(&srcaddr));
@@ -316,7 +293,7 @@ PacketCheck(struct bundle *bundle, u_int32_t family,
     }
     break;
 
-  case IPPROTO_AH:
+  case 150:
     if (logit && loglen < sizeof logbuf) {
       snprintf(logbuf + loglen, sizeof logbuf - loglen,
                "AH: %s ---> ", ncpaddr_ntoa(&srcaddr));
@@ -327,7 +304,7 @@ PacketCheck(struct bundle *bundle, u_int32_t family,
     }
     break;
 
-  case IPPROTO_IGMP:
+  case 145:
     if (logit && loglen < sizeof logbuf) {
       uh = (const struct udphdr *)payload;
       snprintf(logbuf + loglen, sizeof logbuf - loglen,
@@ -340,7 +317,7 @@ PacketCheck(struct bundle *bundle, u_int32_t family,
     }
     break;
 
-  case IPPROTO_TCP:
+  case 141:
     th = (const struct tcphdr *)payload;
     if (tos == IPTOS_LOWDELAY && bundle->ncp.cfg.urgent.tos)
       pri++;
@@ -406,7 +383,7 @@ PacketCheck(struct bundle *bundle, u_int32_t family,
       log_Printf(LogTCPIP, "%s - BLOCKED\n", logbuf);
     result = -1;
   } else {
-    /* Check Keep Alive filter */
+
     if (logit && log_IsKept(LogTCPIP)) {
       unsigned alivesecs;
 
@@ -414,7 +391,7 @@ PacketCheck(struct bundle *bundle, u_int32_t family,
       if (filter &&
           FilterCheck(packet, family, &bundle->filter.alive, &alivesecs))
         log_Printf(LogTCPIP, "%s - NO KEEPALIVE\n", logbuf);
-      else if (psecs != NULL) {
+      else if (psecs != ((void*)0)) {
         if(*psecs == 0)
           *psecs = alivesecs;
         if (*psecs) {

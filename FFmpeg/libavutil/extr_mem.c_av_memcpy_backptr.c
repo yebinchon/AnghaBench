@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_COPY16U (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  AV_COPY32U (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  fill16 (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  fill24 (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  fill32 (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/  const,int) ; 
+
+
+
+typedef int uint8_t ;
+
+
+ int AV_COPY16U (int *,int const*) ;
+ int AV_COPY32U (int *,int const*) ;
+ int fill16 (int *,int) ;
+ int fill24 (int *,int) ;
+ int fill32 (int *,int) ;
+ int memcpy (int *,int const*,int) ;
+ int memset (int *,int const,int) ;
 
 void av_memcpy_backptr(uint8_t *dst, int back, int cnt)
 {
@@ -40,15 +40,15 @@ void av_memcpy_backptr(uint8_t *dst, int back, int cnt)
             int blocklen = back;
             while (cnt > blocklen) {
                 memcpy(dst, src, blocklen);
-                dst       += blocklen;
-                cnt       -= blocklen;
+                dst += blocklen;
+                cnt -= blocklen;
                 blocklen <<= 1;
             }
             memcpy(dst, src, cnt);
             return;
         }
         if (cnt >= 8) {
-            AV_COPY32U(dst,     src);
+            AV_COPY32U(dst, src);
             AV_COPY32U(dst + 4, src + 4);
             src += 8;
             dst += 8;

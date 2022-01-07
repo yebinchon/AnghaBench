@@ -1,20 +1,12 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  KeccakP1600_ExtractBytesInLane ; 
- int /*<<< orphan*/  KeccakP1600_ExtractLanes ; 
- int /*<<< orphan*/  SnP_ExtractBytes (void const*,unsigned char*,unsigned int,unsigned int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+ int KeccakP1600_ExtractBytesInLane ;
+ int KeccakP1600_ExtractLanes ;
+ int SnP_ExtractBytes (void const*,unsigned char*,unsigned int,unsigned int,int ,int ,int) ;
 
 void KeccakP1600_ExtractBytes(const void *state, unsigned char *data, unsigned int offset, unsigned int length)
 {

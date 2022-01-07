@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  (* IsJavaWindow ) (int /*<<< orphan*/ ) ;} ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ) ; 
- TYPE_1__ theAccessBridge ; 
- scalar_t__ theAccessBridgeInitializedFlag ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int (* IsJavaWindow ) (int ) ;} ;
+typedef int HWND ;
+typedef int BOOL ;
+
+
+ int FALSE ;
+ scalar_t__ TRUE ;
+ int stub1 (int ) ;
+ TYPE_1__ theAccessBridge ;
+ scalar_t__ theAccessBridgeInitializedFlag ;
 
 BOOL IsJavaWindow(HWND window) {
         if (theAccessBridgeInitializedFlag == TRUE) {

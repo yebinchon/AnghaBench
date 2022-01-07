@@ -1,64 +1,64 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  X509 ;
-typedef  int /*<<< orphan*/  X ;
-typedef  int /*<<< orphan*/  BIO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Lock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * PEM_read_bio_X509 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Unlock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * X509ToX (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * d2i_X509_bio (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  openssl_lock ; 
+
+
+
+typedef int X509 ;
+typedef int X ;
+typedef int BIO ;
+
+
+ int Lock (int ) ;
+ int * PEM_read_bio_X509 (int *,int *,int *,int *) ;
+ int Unlock (int ) ;
+ int * X509ToX (int *) ;
+ int * d2i_X509_bio (int *,int *) ;
+ int openssl_lock ;
 
 X *BioToX(BIO *bio, bool text)
 {
-	X *x;
-	X509 *x509;
-	// Validate arguments
-	if (bio == NULL)
-	{
-		return NULL;
-	}
+ X *x;
+ X509 *x509;
 
-	Lock(openssl_lock);
-	{
-		// Reading x509
-		if (text == false)
-		{
-			// Binary mode
-			x509 = d2i_X509_bio(bio, NULL);
-		}
-		else
-		{
-			// Text mode
-			x509 = PEM_read_bio_X509(bio, NULL, NULL, NULL);
-		}
-	}
-	Unlock(openssl_lock);
+ if (bio == ((void*)0))
+ {
+  return ((void*)0);
+ }
 
-	if (x509 == NULL)
-	{
-		return NULL;
-	}
+ Lock(openssl_lock);
+ {
 
-	x = X509ToX(x509);
+  if (text == 0)
+  {
 
-	if (x == NULL)
-	{
-		return NULL;
-	}
+   x509 = d2i_X509_bio(bio, ((void*)0));
+  }
+  else
+  {
 
-	return x;
+   x509 = PEM_read_bio_X509(bio, ((void*)0), ((void*)0), ((void*)0));
+  }
+ }
+ Unlock(openssl_lock);
+
+ if (x509 == ((void*)0))
+ {
+  return ((void*)0);
+ }
+
+ x = X509ToX(x509);
+
+ if (x == ((void*)0))
+ {
+  return ((void*)0);
+ }
+
+ return x;
 }

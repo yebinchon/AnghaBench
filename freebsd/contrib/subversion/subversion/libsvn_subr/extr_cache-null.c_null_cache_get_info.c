@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct TYPE_3__ {scalar_t__ total_size; scalar_t__ data_size; scalar_t__ used_size; scalar_t__ total_entries; scalar_t__ used_entries; int /*<<< orphan*/  id; } ;
-typedef  TYPE_1__ svn_cache__info_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  apr_pstrdup (int /*<<< orphan*/ *,char const*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int svn_error_t ;
+struct TYPE_3__ {scalar_t__ total_size; scalar_t__ data_size; scalar_t__ used_size; scalar_t__ total_entries; scalar_t__ used_entries; int id; } ;
+typedef TYPE_1__ svn_cache__info_t ;
+typedef int svn_boolean_t ;
+typedef int apr_pool_t ;
+
+
+ int * SVN_NO_ERROR ;
+ int apr_pstrdup (int *,char const*) ;
 
 __attribute__((used)) static svn_error_t *
 null_cache_get_info(void *cache_void,

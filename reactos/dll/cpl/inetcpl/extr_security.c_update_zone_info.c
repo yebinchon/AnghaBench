@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {size_t last_lv_index; int /*<<< orphan*/  hsec; TYPE_2__* zone_attr; } ;
-typedef  TYPE_1__ secdlg_data ;
-struct TYPE_6__ {int /*<<< orphan*/  szDisplayName; int /*<<< orphan*/ * szDescription; } ;
-typedef  TYPE_2__ ZONEATTRIBUTES ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  size_t DWORD ;
 
-/* Variables and functions */
- size_t ARRAY_SIZE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GetDlgItem (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IDC_SEC_GROUP ; 
- int /*<<< orphan*/  IDC_SEC_ZONE_INFO ; 
- int /*<<< orphan*/  IDS_SEC_SETTINGS ; 
- size_t LoadStringW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,size_t) ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  SetWindowTextW (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  debugstr_w (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  hcpl ; 
- int /*<<< orphan*/  lstrcpynW (int /*<<< orphan*/ *,int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/  update_security_level (TYPE_1__*,size_t,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {size_t last_lv_index; int hsec; TYPE_2__* zone_attr; } ;
+typedef TYPE_1__ secdlg_data ;
+struct TYPE_6__ {int szDisplayName; int * szDescription; } ;
+typedef TYPE_2__ ZONEATTRIBUTES ;
+typedef int WCHAR ;
+typedef size_t DWORD ;
+
+
+ size_t ARRAY_SIZE (int *) ;
+ int GetDlgItem (int ,int ) ;
+ int IDC_SEC_GROUP ;
+ int IDC_SEC_ZONE_INFO ;
+ int IDS_SEC_SETTINGS ;
+ size_t LoadStringW (int ,int ,int *,size_t) ;
+ int MAX_PATH ;
+ int SetWindowTextW (int ,int *) ;
+ int TRACE (char*,int ) ;
+ int debugstr_w (int *) ;
+ int hcpl ;
+ int lstrcpynW (int *,int ,size_t) ;
+ int update_security_level (TYPE_1__*,size_t,int ) ;
 
 __attribute__((used)) static void update_zone_info(secdlg_data *sd, DWORD lv_index)
 {

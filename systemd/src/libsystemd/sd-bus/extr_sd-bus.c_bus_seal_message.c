@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  usec_t ;
-struct TYPE_11__ {int /*<<< orphan*/  cookie; scalar_t__ patch_sender; int /*<<< orphan*/  sender; scalar_t__ sealed; } ;
-typedef  TYPE_1__ sd_bus_message ;
-typedef  TYPE_1__ sd_bus ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BUS_MESSAGE_COOKIE (TYPE_1__*) ; 
- int /*<<< orphan*/  MAX (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int next_cookie (TYPE_1__*) ; 
- int sd_bus_get_method_call_timeout (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int sd_bus_message_seal (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int sd_bus_message_set_sender (TYPE_1__*,scalar_t__) ; 
+
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef int usec_t ;
+struct TYPE_11__ {int cookie; scalar_t__ patch_sender; int sender; scalar_t__ sealed; } ;
+typedef TYPE_1__ sd_bus_message ;
+typedef TYPE_1__ sd_bus ;
+
+
+ int BUS_MESSAGE_COOKIE (TYPE_1__*) ;
+ int MAX (int ,int ) ;
+ int assert (TYPE_1__*) ;
+ int next_cookie (TYPE_1__*) ;
+ int sd_bus_get_method_call_timeout (TYPE_1__*,int *) ;
+ int sd_bus_message_seal (TYPE_1__*,int ,int ) ;
+ int sd_bus_message_set_sender (TYPE_1__*,scalar_t__) ;
 
 __attribute__((used)) static int bus_seal_message(sd_bus *b, sd_bus_message *m, usec_t timeout) {
         int r;
@@ -32,9 +32,9 @@ __attribute__((used)) static int bus_seal_message(sd_bus *b, sd_bus_message *m, 
         assert(m);
 
         if (m->sealed) {
-                /* If we copy the same message to multiple
-                 * destinations, avoid using the same cookie
-                 * numbers. */
+
+
+
                 b->cookie = MAX(b->cookie, BUS_MESSAGE_COOKIE(m));
                 return 0;
         }

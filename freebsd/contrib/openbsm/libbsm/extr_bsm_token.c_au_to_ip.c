@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_char ;
-typedef  int /*<<< orphan*/  token_t ;
+
+
+
+
+typedef int u_char ;
+typedef int token_t ;
 struct ip {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ADD_MEM (int /*<<< orphan*/ *,struct ip*,int) ; 
- int /*<<< orphan*/  ADD_U_CHAR (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AUT_IP ; 
- int /*<<< orphan*/  GET_TOKEN_AREA (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
+
+ int ADD_MEM (int *,struct ip*,int) ;
+ int ADD_U_CHAR (int *,int ) ;
+ int AUT_IP ;
+ int GET_TOKEN_AREA (int *,int *,int) ;
 
 token_t *
 au_to_ip(struct ip *ip)
 {
-	token_t *t;
-	u_char *dptr = NULL;
+ token_t *t;
+ u_char *dptr = ((void*)0);
 
-	GET_TOKEN_AREA(t, dptr, sizeof(u_char) + sizeof(struct ip));
-	if (t == NULL)
-		return (NULL);
+ GET_TOKEN_AREA(t, dptr, sizeof(u_char) + sizeof(struct ip));
+ if (t == ((void*)0))
+  return (((void*)0));
 
-	ADD_U_CHAR(dptr, AUT_IP);
-	ADD_MEM(dptr, ip, sizeof(struct ip));
+ ADD_U_CHAR(dptr, AUT_IP);
+ ADD_MEM(dptr, ip, sizeof(struct ip));
 
-	return (t);
+ return (t);
 }

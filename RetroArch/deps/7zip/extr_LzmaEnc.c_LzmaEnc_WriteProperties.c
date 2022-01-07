@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
 struct TYPE_2__ {int dictSize; int pb; int lp; scalar_t__ lc; } ;
-typedef  int /*<<< orphan*/  SRes ;
-typedef  scalar_t__ CLzmaEncHandle ;
-typedef  TYPE_1__ CLzmaEnc ;
+typedef int SRes ;
+typedef scalar_t__ CLzmaEncHandle ;
+typedef TYPE_1__ CLzmaEnc ;
 
-/* Variables and functions */
- size_t LZMA_PROPS_SIZE ; 
- int /*<<< orphan*/  SZ_ERROR_PARAM ; 
- int /*<<< orphan*/  SZ_OK ; 
+
+ size_t LZMA_PROPS_SIZE ;
+ int SZ_ERROR_PARAM ;
+ int SZ_OK ;
 
 SRes LzmaEnc_WriteProperties(CLzmaEncHandle pp, unsigned char *props, size_t *size)
 {

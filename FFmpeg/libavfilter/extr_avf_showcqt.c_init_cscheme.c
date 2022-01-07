@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {float* cscheme_v; int /*<<< orphan*/  ctx; int /*<<< orphan*/  cscheme; } ;
-typedef  TYPE_1__ ShowCQTContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- scalar_t__ isnan (float) ; 
- int sscanf (int /*<<< orphan*/ ,char*,float*,float*,float*,float*,float*,float*,char*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {float* cscheme_v; int ctx; int cscheme; } ;
+typedef TYPE_1__ ShowCQTContext ;
+
+
+ int AVERROR (int ) ;
+ int AV_LOG_ERROR ;
+ int EINVAL ;
+ int av_log (int ,int ,char*) ;
+ scalar_t__ isnan (float) ;
+ int sscanf (int ,char*,float*,float*,float*,float*,float*,float*,char*) ;
 
 __attribute__((used)) static int init_cscheme(ShowCQTContext *s)
 {

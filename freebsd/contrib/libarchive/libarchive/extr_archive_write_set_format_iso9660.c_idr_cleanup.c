@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct idr {int /*<<< orphan*/  idrent_pool; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (int /*<<< orphan*/ ) ; 
+
+
+
+struct idr {int idrent_pool; } ;
+
+
+ int free (int ) ;
 
 __attribute__((used)) static void
 idr_cleanup(struct idr *idr)
 {
-	free(idr->idrent_pool);
+ free(idr->idrent_pool);
 }

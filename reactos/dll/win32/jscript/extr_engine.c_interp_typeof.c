@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  script_ctx_t ;
-typedef  int /*<<< orphan*/  jsval_t ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*) ; 
- int /*<<< orphan*/  jsval_release (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stack_pop (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stack_push_string (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  typeof_string (int /*<<< orphan*/ ,int /*<<< orphan*/  const**) ; 
+
+
+
+typedef int script_ctx_t ;
+typedef int jsval_t ;
+typedef int WCHAR ;
+typedef int HRESULT ;
+
+
+ scalar_t__ FAILED (int ) ;
+ int TRACE (char*) ;
+ int jsval_release (int ) ;
+ int stack_pop (int *) ;
+ int stack_push_string (int *,int const*) ;
+ int typeof_string (int ,int const**) ;
 
 __attribute__((used)) static HRESULT interp_typeof(script_ctx_t *ctx)
 {

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct script_ctx {int /*<<< orphan*/  client; } ;
+
+
+
+
+struct script_ctx {int client; } ;
 struct mpv_node {int dummy; } ;
-typedef  int /*<<< orphan*/  lua_State ;
+typedef int lua_State ;
 
-/* Variables and functions */
- int /*<<< orphan*/  auto_free_node (void*,struct mpv_node*) ; 
- struct script_ctx* get_ctx (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_pushstring (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_pushvalue (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  makenode (void*,struct mpv_node*,int /*<<< orphan*/ *,int) ; 
- void* mp_lua_PITA (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mp_lua_optarg (int /*<<< orphan*/ *,int) ; 
- int mpv_command_node (int /*<<< orphan*/ ,struct mpv_node*,struct mpv_node*) ; 
- int /*<<< orphan*/  mpv_error_string (int) ; 
- int /*<<< orphan*/  pushnode (int /*<<< orphan*/ *,struct mpv_node*) ; 
- int /*<<< orphan*/  talloc_free_children (void*) ; 
+
+ int auto_free_node (void*,struct mpv_node*) ;
+ struct script_ctx* get_ctx (int *) ;
+ int lua_pushstring (int *,int ) ;
+ int lua_pushvalue (int *,int) ;
+ int makenode (void*,struct mpv_node*,int *,int) ;
+ void* mp_lua_PITA (int *) ;
+ int mp_lua_optarg (int *,int) ;
+ int mpv_command_node (int ,struct mpv_node*,struct mpv_node*) ;
+ int mpv_error_string (int) ;
+ int pushnode (int *,struct mpv_node*) ;
+ int talloc_free_children (void*) ;
 
 __attribute__((used)) static int script_command_native(lua_State *L)
 {

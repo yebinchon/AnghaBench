@@ -1,34 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  Assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DoingCopyOut ; 
- int PqCommBusy ; 
- int internal_putbytes (char const*,size_t) ; 
+ int Assert (int ) ;
+ int DoingCopyOut ;
+ int PqCommBusy ;
+ int internal_putbytes (char const*,size_t) ;
 
 int
 pq_putbytes(const char *s, size_t len)
 {
-	int			res;
+ int res;
 
-	/* Should only be called by old-style COPY OUT */
-	Assert(DoingCopyOut);
-	/* No-op if reentrant call */
-	if (PqCommBusy)
-		return 0;
-	PqCommBusy = true;
-	res = internal_putbytes(s, len);
-	PqCommBusy = false;
-	return res;
+
+ Assert(DoingCopyOut);
+
+ if (PqCommBusy)
+  return 0;
+ PqCommBusy = 1;
+ res = internal_putbytes(s, len);
+ PqCommBusy = 0;
+ return res;
 }

@@ -1,153 +1,133 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char* LPSTR ;
-typedef  char* LPCSTR ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int DPCAPS_ASYNCCANCELALLSUPPORTED ; 
- int DPCAPS_ASYNCCANCELSUPPORTED ; 
- int DPCAPS_ASYNCSUPPORTED ; 
- int DPCAPS_ENCRYPTIONSUPPORTED ; 
- int DPCAPS_GROUPOPTIMIZED ; 
- int DPCAPS_GUARANTEEDOPTIMIZED ; 
- int DPCAPS_GUARANTEEDSUPPORTED ; 
- int DPCAPS_ISHOST ; 
- int DPCAPS_KEEPALIVEOPTIMIZED ; 
- int DPCAPS_SENDPRIORITYSUPPORTED ; 
- int DPCAPS_SENDTIMEOUTSUPPORTED ; 
- int DPCAPS_SIGNINGSUPPORTED ; 
- int DPCONNECTION_DIRECTPLAY ; 
- int DPCONNECTION_DIRECTPLAYLOBBY ; 
- int DPCONNECT_RETURNSTATUS ; 
- int DPENUMGROUPS_ALL ; 
- int DPENUMGROUPS_HIDDEN ; 
- int DPENUMGROUPS_SHORTCUT ; 
- int DPENUMGROUPS_STAGINGAREA ; 
- int DPENUMPLAYERS_ALL ; 
- int DPENUMPLAYERS_GROUP ; 
- int DPENUMPLAYERS_LOCAL ; 
- int DPENUMPLAYERS_OWNER ; 
- int DPENUMPLAYERS_REMOTE ; 
- int DPENUMPLAYERS_SERVERPLAYER ; 
- int DPENUMPLAYERS_SESSION ; 
- int DPENUMPLAYERS_SPECTATOR ; 
- int DPENUMSESSIONS_ALL ; 
- int DPENUMSESSIONS_ASYNC ; 
- int DPENUMSESSIONS_AVAILABLE ; 
- int DPENUMSESSIONS_PASSWORDREQUIRED ; 
- int DPENUMSESSIONS_RETURNSTATUS ; 
- int DPENUMSESSIONS_STOPASYNC ; 
- int DPESC_TIMEDOUT ; 
- int DPGETCAPS_GUARANTEED ; 
- int DPGET_LOCAL ; 
- int DPGET_REMOTE ; 
- int DPGROUP_HIDDEN ; 
- int DPGROUP_LOCAL ; 
- int DPGROUP_STAGINGAREA ; 
- int DPLCONNECTION_CREATESESSION ; 
- int DPLCONNECTION_JOINSESSION ; 
- int DPMESSAGEQUEUE_RECEIVE ; 
- int DPMESSAGEQUEUE_SEND ; 
- int DPOPEN_CREATE ; 
- int DPOPEN_JOIN ; 
- int DPOPEN_RETURNSTATUS ; 
- int DPPLAYERCAPS_LOCAL ; 
- int DPPLAYER_LOCAL ; 
- int DPPLAYER_OWNER ; 
- int DPPLAYER_SERVERPLAYER ; 
- int DPPLAYER_SPECTATOR ; 
- int DPRECEIVE_ALL ; 
- int DPRECEIVE_FROMPLAYER ; 
- int DPRECEIVE_PEEK ; 
- int DPRECEIVE_TOPLAYER ; 
- int DPSEND_ASYNC ; 
- int DPSEND_CLOSESTREAM ; 
- int DPSEND_ENCRYPTED ; 
- int DPSEND_GUARANTEED ; 
- int DPSEND_HIGHPRIORITY ; 
- int DPSEND_LOBBYSYSTEMMESSAGE ; 
- int DPSEND_MAX_PRIORITY ; 
- int DPSEND_NOSENDCOMPLETEMSG ; 
- int DPSEND_OPENSTREAM ; 
- int DPSEND_SIGNED ; 
- int DPSESSION_CLIENTSERVER ; 
- int DPSESSION_DIRECTPLAYPROTOCOL ; 
- int DPSESSION_JOINDISABLED ; 
- int DPSESSION_KEEPALIVE ; 
- int DPSESSION_MIGRATEHOST ; 
- int DPSESSION_MULTICASTSERVER ; 
- int DPSESSION_NEWPLAYERSDISABLED ; 
- int DPSESSION_NODATAMESSAGES ; 
- int DPSESSION_NOMESSAGEID ; 
- int DPSESSION_NOPRESERVEORDER ; 
- int DPSESSION_OPTIMIZELATENCY ; 
- int DPSESSION_PASSWORDREQUIRED ; 
- int DPSESSION_PRIVATE ; 
- int DPSESSION_SECURESERVER ; 
- int DPSET_GUARANTEED ; 
- int DPSET_LOCAL ; 
- int DPSET_REMOTE ; 
- int FLAGS_DPCAPS ; 
- int FLAGS_DPCONNECT ; 
- int FLAGS_DPCONNECTION ; 
- int FLAGS_DPENUMGROUPS ; 
- int FLAGS_DPENUMPLAYERS ; 
- int FLAGS_DPENUMSESSIONS ; 
- int FLAGS_DPESC ; 
- int FLAGS_DPGET ; 
- int FLAGS_DPGETCAPS ; 
- int FLAGS_DPGROUP ; 
- int FLAGS_DPLCONNECTION ; 
- int FLAGS_DPMESSAGEQUEUE ; 
- int FLAGS_DPOPEN ; 
- int FLAGS_DPPLAYER ; 
- int FLAGS_DPRECEIVE ; 
- int FLAGS_DPSEND ; 
- int FLAGS_DPSESSION ; 
- int FLAGS_DPSET ; 
- char* get_temp_buffer () ; 
- int /*<<< orphan*/  strcat (char*,char*) ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
- int strlen (char*) ; 
+
+
+
+typedef char* LPSTR ;
+typedef char* LPCSTR ;
+typedef int DWORD ;
+
+
+ int DPCAPS_ASYNCCANCELALLSUPPORTED ;
+ int DPCAPS_ASYNCCANCELSUPPORTED ;
+ int DPCAPS_ASYNCSUPPORTED ;
+ int DPCAPS_ENCRYPTIONSUPPORTED ;
+ int DPCAPS_GROUPOPTIMIZED ;
+ int DPCAPS_GUARANTEEDOPTIMIZED ;
+ int DPCAPS_GUARANTEEDSUPPORTED ;
+ int DPCAPS_ISHOST ;
+ int DPCAPS_KEEPALIVEOPTIMIZED ;
+ int DPCAPS_SENDPRIORITYSUPPORTED ;
+ int DPCAPS_SENDTIMEOUTSUPPORTED ;
+ int DPCAPS_SIGNINGSUPPORTED ;
+ int DPCONNECTION_DIRECTPLAY ;
+ int DPCONNECTION_DIRECTPLAYLOBBY ;
+ int DPCONNECT_RETURNSTATUS ;
+ int DPENUMGROUPS_ALL ;
+ int DPENUMGROUPS_HIDDEN ;
+ int DPENUMGROUPS_SHORTCUT ;
+ int DPENUMGROUPS_STAGINGAREA ;
+ int DPENUMPLAYERS_ALL ;
+ int DPENUMPLAYERS_GROUP ;
+ int DPENUMPLAYERS_LOCAL ;
+ int DPENUMPLAYERS_OWNER ;
+ int DPENUMPLAYERS_REMOTE ;
+ int DPENUMPLAYERS_SERVERPLAYER ;
+ int DPENUMPLAYERS_SESSION ;
+ int DPENUMPLAYERS_SPECTATOR ;
+ int DPENUMSESSIONS_ALL ;
+ int DPENUMSESSIONS_ASYNC ;
+ int DPENUMSESSIONS_AVAILABLE ;
+ int DPENUMSESSIONS_PASSWORDREQUIRED ;
+ int DPENUMSESSIONS_RETURNSTATUS ;
+ int DPENUMSESSIONS_STOPASYNC ;
+ int DPESC_TIMEDOUT ;
+ int DPGETCAPS_GUARANTEED ;
+ int DPGET_LOCAL ;
+ int DPGET_REMOTE ;
+ int DPGROUP_HIDDEN ;
+ int DPGROUP_LOCAL ;
+ int DPGROUP_STAGINGAREA ;
+ int DPLCONNECTION_CREATESESSION ;
+ int DPLCONNECTION_JOINSESSION ;
+ int DPMESSAGEQUEUE_RECEIVE ;
+ int DPMESSAGEQUEUE_SEND ;
+ int DPOPEN_CREATE ;
+ int DPOPEN_JOIN ;
+ int DPOPEN_RETURNSTATUS ;
+ int DPPLAYERCAPS_LOCAL ;
+ int DPPLAYER_LOCAL ;
+ int DPPLAYER_OWNER ;
+ int DPPLAYER_SERVERPLAYER ;
+ int DPPLAYER_SPECTATOR ;
+ int DPRECEIVE_ALL ;
+ int DPRECEIVE_FROMPLAYER ;
+ int DPRECEIVE_PEEK ;
+ int DPRECEIVE_TOPLAYER ;
+ int DPSEND_ASYNC ;
+ int DPSEND_CLOSESTREAM ;
+ int DPSEND_ENCRYPTED ;
+ int DPSEND_GUARANTEED ;
+ int DPSEND_HIGHPRIORITY ;
+ int DPSEND_LOBBYSYSTEMMESSAGE ;
+ int DPSEND_MAX_PRIORITY ;
+ int DPSEND_NOSENDCOMPLETEMSG ;
+ int DPSEND_OPENSTREAM ;
+ int DPSEND_SIGNED ;
+ int DPSESSION_CLIENTSERVER ;
+ int DPSESSION_DIRECTPLAYPROTOCOL ;
+ int DPSESSION_JOINDISABLED ;
+ int DPSESSION_KEEPALIVE ;
+ int DPSESSION_MIGRATEHOST ;
+ int DPSESSION_MULTICASTSERVER ;
+ int DPSESSION_NEWPLAYERSDISABLED ;
+ int DPSESSION_NODATAMESSAGES ;
+ int DPSESSION_NOMESSAGEID ;
+ int DPSESSION_NOPRESERVEORDER ;
+ int DPSESSION_OPTIMIZELATENCY ;
+ int DPSESSION_PASSWORDREQUIRED ;
+ int DPSESSION_PRIVATE ;
+ int DPSESSION_SECURESERVER ;
+ int DPSET_GUARANTEED ;
+ int DPSET_LOCAL ;
+ int DPSET_REMOTE ;
+ int FLAGS_DPCAPS ;
+ int FLAGS_DPCONNECT ;
+ int FLAGS_DPCONNECTION ;
+ int FLAGS_DPENUMGROUPS ;
+ int FLAGS_DPENUMPLAYERS ;
+ int FLAGS_DPENUMSESSIONS ;
+ int FLAGS_DPESC ;
+ int FLAGS_DPGET ;
+ int FLAGS_DPGETCAPS ;
+ int FLAGS_DPGROUP ;
+ int FLAGS_DPLCONNECTION ;
+ int FLAGS_DPMESSAGEQUEUE ;
+ int FLAGS_DPOPEN ;
+ int FLAGS_DPPLAYER ;
+ int FLAGS_DPRECEIVE ;
+ int FLAGS_DPSEND ;
+ int FLAGS_DPSESSION ;
+ int FLAGS_DPSET ;
+ char* get_temp_buffer () ;
+ int strcat (char*,char*) ;
+ int strcpy (char*,char*) ;
+ int strlen (char*) ;
 
 __attribute__((used)) static LPCSTR dwFlags2str(DWORD dwFlags, DWORD flagType)
 {
-
-#define FLAGS_DPCONNECTION     (1<<0)
-#define FLAGS_DPENUMPLAYERS    (1<<1)
-#define FLAGS_DPENUMGROUPS     (1<<2)
-#define FLAGS_DPPLAYER         (1<<3)
-#define FLAGS_DPGROUP          (1<<4)
-#define FLAGS_DPENUMSESSIONS   (1<<5)
-#define FLAGS_DPGETCAPS        (1<<6)
-#define FLAGS_DPGET            (1<<7)
-#define FLAGS_DPRECEIVE        (1<<8)
-#define FLAGS_DPSEND           (1<<9)
-#define FLAGS_DPSET            (1<<10)
-#define FLAGS_DPMESSAGEQUEUE   (1<<11)
-#define FLAGS_DPCONNECT        (1<<12)
-#define FLAGS_DPOPEN           (1<<13)
-#define FLAGS_DPSESSION        (1<<14)
-#define FLAGS_DPLCONNECTION    (1<<15)
-#define FLAGS_DPESC            (1<<16)
-#define FLAGS_DPCAPS           (1<<17)
-
     LPSTR flags = get_temp_buffer();
 
-    /* EnumConnections */
 
-    if (flagType & FLAGS_DPCONNECTION)
+
+    if (flagType & (1<<0))
     {
         if (dwFlags & DPCONNECTION_DIRECTPLAY)
             strcat(flags, "DPCONNECTION_DIRECTPLAY,");
@@ -155,10 +135,10 @@ __attribute__((used)) static LPCSTR dwFlags2str(DWORD dwFlags, DWORD flagType)
             strcat(flags, "DPCONNECTION_DIRECTPLAYLOBBY,");
     }
 
-    /* EnumPlayers,
-       EnumGroups */
 
-    if (flagType & FLAGS_DPENUMPLAYERS)
+
+
+    if (flagType & (1<<1))
     {
         if (dwFlags == DPENUMPLAYERS_ALL)
             strcat(flags, "DPENUMPLAYERS_ALL,");
@@ -177,7 +157,7 @@ __attribute__((used)) static LPCSTR dwFlags2str(DWORD dwFlags, DWORD flagType)
         if (dwFlags & DPENUMPLAYERS_OWNER)
             strcat(flags, "DPENUMPLAYERS_OWNER,");
     }
-    if (flagType & FLAGS_DPENUMGROUPS)
+    if (flagType & (1<<2))
     {
         if (dwFlags == DPENUMGROUPS_ALL)
             strcat(flags, "DPENUMGROUPS_ALL,");
@@ -197,9 +177,9 @@ __attribute__((used)) static LPCSTR dwFlags2str(DWORD dwFlags, DWORD flagType)
             strcat(flags, "DPENUMGROUPS_HIDDEN,");
     }
 
-    /* CreatePlayer */
 
-    if (flagType & FLAGS_DPPLAYER)
+
+    if (flagType & (1<<3))
     {
         if (dwFlags & DPPLAYER_SERVERPLAYER)
             strcat(flags, "DPPLAYER_SERVERPLAYER,");
@@ -211,9 +191,9 @@ __attribute__((used)) static LPCSTR dwFlags2str(DWORD dwFlags, DWORD flagType)
             strcat(flags, "DPPLAYER_OWNER,");
     }
 
-    /* CreateGroup */
 
-    if (flagType & FLAGS_DPGROUP)
+
+    if (flagType & (1<<4))
     {
         if (dwFlags & DPGROUP_STAGINGAREA)
             strcat(flags, "DPGROUP_STAGINGAREA,");
@@ -223,13 +203,13 @@ __attribute__((used)) static LPCSTR dwFlags2str(DWORD dwFlags, DWORD flagType)
             strcat(flags, "DPGROUP_HIDDEN,");
     }
 
-    /* EnumSessions */
 
-    if (flagType & FLAGS_DPENUMSESSIONS)
+
+    if (flagType & (1<<5))
     {
         if (dwFlags & DPENUMSESSIONS_AVAILABLE)
             strcat(flags, "DPENUMSESSIONS_AVAILABLE,");
-        if (dwFlags &  DPENUMSESSIONS_ALL)
+        if (dwFlags & DPENUMSESSIONS_ALL)
             strcat(flags, "DPENUMSESSIONS_ALL,");
         if (dwFlags & DPENUMSESSIONS_ASYNC)
             strcat(flags, "DPENUMSESSIONS_ASYNC,");
@@ -241,19 +221,19 @@ __attribute__((used)) static LPCSTR dwFlags2str(DWORD dwFlags, DWORD flagType)
             strcat(flags, "DPENUMSESSIONS_RETURNSTATUS,");
     }
 
-    /* GetCaps,
-       GetPlayerCaps */
 
-    if (flagType & FLAGS_DPGETCAPS)
+
+
+    if (flagType & (1<<6))
     {
         if (dwFlags & DPGETCAPS_GUARANTEED)
             strcat(flags, "DPGETCAPS_GUARANTEED,");
     }
 
-    /* GetGroupData,
-       GetPlayerData */
 
-    if (flagType & FLAGS_DPGET)
+
+
+    if (flagType & (1<<7))
     {
         if (dwFlags == DPGET_REMOTE)
             strcat(flags, "DPGET_REMOTE,");
@@ -261,9 +241,9 @@ __attribute__((used)) static LPCSTR dwFlags2str(DWORD dwFlags, DWORD flagType)
             strcat(flags, "DPGET_LOCAL,");
     }
 
-    /* Receive */
 
-    if (flagType & FLAGS_DPRECEIVE)
+
+    if (flagType & (1<<8))
     {
         if (dwFlags & DPRECEIVE_ALL)
             strcat(flags, "DPRECEIVE_ALL,");
@@ -275,13 +255,13 @@ __attribute__((used)) static LPCSTR dwFlags2str(DWORD dwFlags, DWORD flagType)
             strcat(flags, "DPRECEIVE_PEEK,");
     }
 
-    /* Send */
 
-    if (flagType & FLAGS_DPSEND)
+
+    if (flagType & (1<<9))
     {
-        /*if (dwFlags == DPSEND_NONGUARANTEED)
-          strcat(flags, "DPSEND_NONGUARANTEED,");*/
-        if (dwFlags == DPSEND_MAX_PRIORITY) /* = DPSEND_MAX_PRI */
+
+
+        if (dwFlags == DPSEND_MAX_PRIORITY)
         {
             strcat(flags, "DPSEND_MAX_PRIORITY,");
         }
@@ -308,13 +288,13 @@ __attribute__((used)) static LPCSTR dwFlags2str(DWORD dwFlags, DWORD flagType)
         }
     }
 
-    /* SetGroupData,
-       SetGroupName,
-       SetPlayerData,
-       SetPlayerName,
-       SetSessionDesc */
 
-    if (flagType & FLAGS_DPSET)
+
+
+
+
+
+    if (flagType & (1<<10))
     {
         if (dwFlags == DPSET_REMOTE)
             strcat(flags, "DPSET_REMOTE,");
@@ -324,9 +304,9 @@ __attribute__((used)) static LPCSTR dwFlags2str(DWORD dwFlags, DWORD flagType)
             strcat(flags, "DPSET_GUARANTEED,");
     }
 
-    /* GetMessageQueue */
 
-    if (flagType & FLAGS_DPMESSAGEQUEUE)
+
+    if (flagType & (1<<11))
     {
         if (dwFlags & DPMESSAGEQUEUE_SEND)
             strcat(flags, "DPMESSAGEQUEUE_SEND,");
@@ -334,17 +314,17 @@ __attribute__((used)) static LPCSTR dwFlags2str(DWORD dwFlags, DWORD flagType)
             strcat(flags, "DPMESSAGEQUEUE_RECEIVE,");
     }
 
-    /* Connect */
 
-    if (flagType & FLAGS_DPCONNECT)
+
+    if (flagType & (1<<12))
     {
         if (dwFlags & DPCONNECT_RETURNSTATUS)
             strcat(flags, "DPCONNECT_RETURNSTATUS,");
     }
 
-    /* Open */
 
-    if (flagType & FLAGS_DPOPEN)
+
+    if (flagType & (1<<13))
     {
         if (dwFlags & DPOPEN_JOIN)
             strcat(flags, "DPOPEN_JOIN,");
@@ -354,9 +334,9 @@ __attribute__((used)) static LPCSTR dwFlags2str(DWORD dwFlags, DWORD flagType)
             strcat(flags, "DPOPEN_RETURNSTATUS,");
     }
 
-    /* DPSESSIONDESC2 */
 
-    if (flagType & FLAGS_DPSESSION)
+
+    if (flagType & (1<<14))
     {
         if (dwFlags & DPSESSION_NEWPLAYERSDISABLED)
             strcat(flags, "DPSESSION_NEWPLAYERSDISABLED,");
@@ -390,9 +370,9 @@ __attribute__((used)) static LPCSTR dwFlags2str(DWORD dwFlags, DWORD flagType)
 
     }
 
-    /* DPLCONNECTION */
 
-    if (flagType & FLAGS_DPLCONNECTION)
+
+    if (flagType & (1<<15))
     {
         if (dwFlags & DPLCONNECTION_CREATESESSION)
             strcat(flags, "DPLCONNECTION_CREATESESSION,");
@@ -400,18 +380,18 @@ __attribute__((used)) static LPCSTR dwFlags2str(DWORD dwFlags, DWORD flagType)
             strcat(flags, "DPLCONNECTION_JOINSESSION,");
     }
 
-    /* EnumSessionsCallback2 */
 
-    if (flagType & FLAGS_DPESC)
+
+    if (flagType & (1<<16))
     {
         if (dwFlags & DPESC_TIMEDOUT)
             strcat(flags, "DPESC_TIMEDOUT,");
     }
 
-    /* GetCaps,
-       GetPlayerCaps */
 
-    if (flagType & FLAGS_DPCAPS)
+
+
+    if (flagType & (1<<17))
     {
         if (dwFlags & DPCAPS_ISHOST)
             strcat(flags, "DPCAPS_ISHOST,");

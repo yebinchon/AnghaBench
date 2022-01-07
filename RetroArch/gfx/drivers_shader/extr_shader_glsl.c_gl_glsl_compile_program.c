@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct shader_program_info {int /*<<< orphan*/  fragment; int /*<<< orphan*/  vertex; } ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct shader_program_info {int fragment; int vertex; } ;
 struct shader_program_glsl_data {scalar_t__ id; void* fprg; void* vprg; } ;
 struct TYPE_4__ {struct shader_program_glsl_data* prg; } ;
-typedef  TYPE_1__ glsl_shader_data_t ;
-typedef  scalar_t__ GLuint ;
+typedef TYPE_1__ glsl_shader_data_t ;
+typedef scalar_t__ GLuint ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GL_FRAGMENT_SHADER ; 
- int /*<<< orphan*/  GL_VERTEX_SHADER ; 
- int /*<<< orphan*/  RARCH_ERR (char*,unsigned int) ; 
- int /*<<< orphan*/  RARCH_LOG (char*) ; 
- int /*<<< orphan*/  glAttachShader (scalar_t__,void*) ; 
- scalar_t__ glCreateProgram () ; 
- void* glCreateShader (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glDeleteShader (void*) ; 
- int /*<<< orphan*/  glUniform1i (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glUseProgram (scalar_t__) ; 
- int /*<<< orphan*/  gl_glsl_compile_shader (TYPE_1__*,void*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gl_glsl_get_uniform (TYPE_1__*,scalar_t__,char*) ; 
- int /*<<< orphan*/  gl_glsl_link_program (scalar_t__) ; 
+
+ int GL_FRAGMENT_SHADER ;
+ int GL_VERTEX_SHADER ;
+ int RARCH_ERR (char*,unsigned int) ;
+ int RARCH_LOG (char*) ;
+ int glAttachShader (scalar_t__,void*) ;
+ scalar_t__ glCreateProgram () ;
+ void* glCreateShader (int ) ;
+ int glDeleteShader (void*) ;
+ int glUniform1i (int ,int ) ;
+ int glUseProgram (scalar_t__) ;
+ int gl_glsl_compile_shader (TYPE_1__*,void*,char*,int ) ;
+ int gl_glsl_get_uniform (TYPE_1__*,scalar_t__,char*) ;
+ int gl_glsl_link_program (scalar_t__) ;
 
 __attribute__((used)) static bool gl_glsl_compile_program(
       void *data,
@@ -85,9 +85,9 @@ __attribute__((used)) static bool gl_glsl_compile_program(
       if (!gl_glsl_link_program(prog))
          goto error;
 
-      /* Clean up dead memory. We're not going to relink the program.
-       * Detaching first seems to kill some mobile drivers
-       * (according to the intertubes anyways). */
+
+
+
       if (program->vprg)
          glDeleteShader(program->vprg);
       if (program->fprg)
@@ -102,10 +102,10 @@ __attribute__((used)) static bool gl_glsl_compile_program(
 
    program->id = prog;
 
-   return true;
+   return 1;
 
 error:
    RARCH_ERR("Failed to link program #%u.\n", idx);
    program->id = 0;
-   return false;
+   return 0;
 }

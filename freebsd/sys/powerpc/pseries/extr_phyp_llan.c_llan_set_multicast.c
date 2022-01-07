@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct llan_softc {int /*<<< orphan*/  unit; int /*<<< orphan*/  io_lock; struct ifnet* ifp; } ;
+
+
+
+
+struct llan_softc {int unit; int io_lock; struct ifnet* ifp; } ;
 struct ifnet {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  H_MULTICAST_CTRL ; 
- int /*<<< orphan*/  LLAN_CLEAR_MULTICAST ; 
- int /*<<< orphan*/  MA_OWNED ; 
- int /*<<< orphan*/  if_foreach_llmaddr (struct ifnet*,int /*<<< orphan*/ ,struct llan_softc*) ; 
- int /*<<< orphan*/  llan_set_maddr ; 
- int /*<<< orphan*/  mtx_assert (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  phyp_hcall (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int H_MULTICAST_CTRL ;
+ int LLAN_CLEAR_MULTICAST ;
+ int MA_OWNED ;
+ int if_foreach_llmaddr (struct ifnet*,int ,struct llan_softc*) ;
+ int llan_set_maddr ;
+ int mtx_assert (int *,int ) ;
+ int phyp_hcall (int ,int ,int ,int ) ;
 
 __attribute__((used)) static int
 llan_set_multicast(struct llan_softc *sc)
 {
-	struct ifnet *ifp = sc->ifp;
+ struct ifnet *ifp = sc->ifp;
 
-	mtx_assert(&sc->io_lock, MA_OWNED);
+ mtx_assert(&sc->io_lock, MA_OWNED);
 
-	phyp_hcall(H_MULTICAST_CTRL, sc->unit, LLAN_CLEAR_MULTICAST, 0);
+ phyp_hcall(H_MULTICAST_CTRL, sc->unit, LLAN_CLEAR_MULTICAST, 0);
 
-	if_foreach_llmaddr(ifp, llan_set_maddr, sc);
+ if_foreach_llmaddr(ifp, llan_set_maddr, sc);
 
-	return (0);
+ return (0);
 }

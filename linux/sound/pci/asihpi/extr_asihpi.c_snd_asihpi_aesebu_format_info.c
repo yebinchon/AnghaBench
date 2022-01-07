@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct snd_kcontrol {int dummy; } ;
 struct snd_ctl_elem_info {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  asihpi_aesebu_format_names ; 
- int snd_ctl_enum_info (struct snd_ctl_elem_info*,int,int,int /*<<< orphan*/ ) ; 
+
+ int asihpi_aesebu_format_names ;
+ int snd_ctl_enum_info (struct snd_ctl_elem_info*,int,int,int ) ;
 
 __attribute__((used)) static int snd_asihpi_aesebu_format_info(struct snd_kcontrol *kcontrol,
-				  struct snd_ctl_elem_info *uinfo)
+      struct snd_ctl_elem_info *uinfo)
 {
-	return snd_ctl_enum_info(uinfo, 1, 3, asihpi_aesebu_format_names);
+ return snd_ctl_enum_info(uinfo, 1, 3, asihpi_aesebu_format_names);
 }

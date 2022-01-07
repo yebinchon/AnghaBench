@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int (* xSize ) (void*) ;int (* xRoundup ) (int) ;void* (* xRealloc ) (void*,int) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fprintf (scalar_t__,char*,int,int) ; 
- TYPE_1__ memtraceBase ; 
- int /*<<< orphan*/  memtraceFree (void*) ; 
- void* memtraceMalloc (int) ; 
- scalar_t__ memtraceOut ; 
- int stub1 (void*) ; 
- int stub2 (int) ; 
- int stub3 (void*) ; 
- int stub4 (int) ; 
- void* stub5 (void*,int) ; 
+
+ int fprintf (scalar_t__,char*,int,int) ;
+ TYPE_1__ memtraceBase ;
+ int memtraceFree (void*) ;
+ void* memtraceMalloc (int) ;
+ scalar_t__ memtraceOut ;
+ int stub1 (void*) ;
+ int stub2 (int) ;
+ int stub3 (void*) ;
+ int stub4 (int) ;
+ void* stub5 (void*,int) ;
 
 __attribute__((used)) static void *memtraceRealloc(void *p, int n){
   if( p==0 ) return memtraceMalloc(n);

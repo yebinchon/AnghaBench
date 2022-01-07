@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uint32_t ;
-typedef  int /*<<< orphan*/  jerry_value_t ;
-typedef  scalar_t__ jerry_typedarray_type_t ;
-typedef  scalar_t__ jerry_length_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TEST_ASSERT (int) ; 
- int /*<<< orphan*/  jerry_get_typedarray_buffer (int /*<<< orphan*/ ,scalar_t__*,scalar_t__*) ; 
- scalar_t__ jerry_get_typedarray_length (int /*<<< orphan*/ ) ; 
- scalar_t__ jerry_get_typedarray_type (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jerry_release_value (int /*<<< orphan*/ ) ; 
- int jerry_value_is_arraybuffer (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jerry_value_is_error (int /*<<< orphan*/ ) ; 
- int jerry_value_is_typedarray (int /*<<< orphan*/ ) ; 
+
+
+
+typedef scalar_t__ uint32_t ;
+typedef int jerry_value_t ;
+typedef scalar_t__ jerry_typedarray_type_t ;
+typedef scalar_t__ jerry_length_t ;
+
+
+ int TEST_ASSERT (int) ;
+ int jerry_get_typedarray_buffer (int ,scalar_t__*,scalar_t__*) ;
+ scalar_t__ jerry_get_typedarray_length (int ) ;
+ scalar_t__ jerry_get_typedarray_type (int ) ;
+ int jerry_release_value (int ) ;
+ int jerry_value_is_arraybuffer (int ) ;
+ int jerry_value_is_error (int ) ;
+ int jerry_value_is_typedarray (int ) ;
 
 __attribute__((used)) static void
-test_typedarray_info (jerry_value_t typedarray, /**< target TypedArray to query */
-                      jerry_typedarray_type_t typedarray_type, /**< expected TypedArray type */
-                      jerry_length_t element_count, /**< expected element count */
-                      jerry_length_t bytes_per_element) /**< bytes per element for the given type */
+test_typedarray_info (jerry_value_t typedarray,
+                      jerry_typedarray_type_t typedarray_type,
+                      jerry_length_t element_count,
+                      jerry_length_t bytes_per_element)
 {
   TEST_ASSERT (!jerry_value_is_error (typedarray));
   TEST_ASSERT (jerry_value_is_typedarray (typedarray));

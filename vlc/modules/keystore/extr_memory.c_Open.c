@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_object_t ;
-typedef  int /*<<< orphan*/  vlc_keystore_sys ;
-struct TYPE_3__ {int /*<<< orphan*/  pf_remove; int /*<<< orphan*/  pf_find; int /*<<< orphan*/  pf_store; TYPE_2__* p_sys; } ;
-typedef  TYPE_1__ vlc_keystore ;
-struct TYPE_4__ {int /*<<< orphan*/  lock; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Find ; 
- int /*<<< orphan*/  Remove ; 
- int /*<<< orphan*/  Store ; 
- int VLC_EGENERIC ; 
- int VLC_SUCCESS ; 
- TYPE_2__* calloc (int,int) ; 
- int /*<<< orphan*/  vlc_mutex_init (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int vlc_object_t ;
+typedef int vlc_keystore_sys ;
+struct TYPE_3__ {int pf_remove; int pf_find; int pf_store; TYPE_2__* p_sys; } ;
+typedef TYPE_1__ vlc_keystore ;
+struct TYPE_4__ {int lock; } ;
+
+
+ int Find ;
+ int Remove ;
+ int Store ;
+ int VLC_EGENERIC ;
+ int VLC_SUCCESS ;
+ TYPE_2__* calloc (int,int) ;
+ int vlc_mutex_init (int *) ;
 
 __attribute__((used)) static int
 Open(vlc_object_t *p_this)

@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  char const IRunningObjectTable ;
-typedef  int /*<<< orphan*/  IMoniker ;
-typedef  scalar_t__ HRESULT ;
-typedef  scalar_t__ DWORD ;
 
-/* Variables and functions */
- scalar_t__ CreateFileMoniker (char const*,scalar_t__) ; 
- scalar_t__ GetRunningObjectTable (char const*,scalar_t__) ; 
- int /*<<< orphan*/  IMoniker_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IRunningObjectTable_GetObject (char const*,scalar_t__,...) ; 
- scalar_t__ IRunningObjectTable_Register (char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__*) ; 
- int /*<<< orphan*/  IRunningObjectTable_Release (char const*) ; 
- scalar_t__ IRunningObjectTable_Revoke (char const*,scalar_t__) ; 
- int /*<<< orphan*/  IUnknown_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ MK_S_MONIKERALREADYREGISTERED ; 
- int /*<<< orphan*/  Test_ClassFactory ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
- int /*<<< orphan*/  ok_ole_success (scalar_t__,...) ; 
+
+
+
+typedef char WCHAR ;
+typedef int IUnknown ;
+typedef char const IRunningObjectTable ;
+typedef int IMoniker ;
+typedef scalar_t__ HRESULT ;
+typedef scalar_t__ DWORD ;
+
+
+ scalar_t__ CreateFileMoniker (char const*,scalar_t__) ;
+ scalar_t__ GetRunningObjectTable (char const*,scalar_t__) ;
+ int IMoniker_Release (int *) ;
+ scalar_t__ IRunningObjectTable_GetObject (char const*,scalar_t__,...) ;
+ scalar_t__ IRunningObjectTable_Register (char const*,int ,int *,int *,scalar_t__*) ;
+ int IRunningObjectTable_Release (char const*) ;
+ scalar_t__ IRunningObjectTable_Revoke (char const*,scalar_t__) ;
+ int IUnknown_Release (int *) ;
+ scalar_t__ MK_S_MONIKERALREADYREGISTERED ;
+ int Test_ClassFactory ;
+ int ok (int,char*,scalar_t__) ;
+ int ok_ole_success (scalar_t__,...) ;
 
 __attribute__((used)) static void test_ROT_multiple_entries(void)
 {
     HRESULT hr;
-    IMoniker *pMoniker = NULL;
-    IRunningObjectTable *pROT = NULL;
+    IMoniker *pMoniker = ((void*)0);
+    IRunningObjectTable *pROT = ((void*)0);
     DWORD dwCookie1, dwCookie2;
-    IUnknown *pObject = NULL;
+    IUnknown *pObject = ((void*)0);
     static const WCHAR moniker_path[] =
         {'\\', 'w','i','n','d','o','w','s','\\','s','y','s','t','e','m','\\','t','e','s','t','1','.','d','o','c',0};
 

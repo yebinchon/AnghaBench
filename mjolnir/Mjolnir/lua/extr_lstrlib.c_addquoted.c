@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  luaL_Buffer ;
-typedef  int /*<<< orphan*/  buff ;
 
-/* Variables and functions */
- scalar_t__ iscntrl (scalar_t__) ; 
- int /*<<< orphan*/  isdigit (scalar_t__) ; 
- int /*<<< orphan*/  l_sprintf (char*,int,char*,int) ; 
- int /*<<< orphan*/  luaL_addchar (int /*<<< orphan*/ *,char const) ; 
- int /*<<< orphan*/  luaL_addstring (int /*<<< orphan*/ *,char*) ; 
- scalar_t__ uchar (char const) ; 
+
+
+
+typedef int luaL_Buffer ;
+typedef int buff ;
+
+
+ scalar_t__ iscntrl (scalar_t__) ;
+ int isdigit (scalar_t__) ;
+ int l_sprintf (char*,int,char*,int) ;
+ int luaL_addchar (int *,char const) ;
+ int luaL_addstring (int *,char*) ;
+ scalar_t__ uchar (char const) ;
 
 __attribute__((used)) static void addquoted (luaL_Buffer *b, const char *s, size_t len) {
   luaL_addchar(b, '"');

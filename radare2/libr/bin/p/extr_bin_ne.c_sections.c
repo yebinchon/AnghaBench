@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_5__ {TYPE_1__* o; } ;
-struct TYPE_4__ {int /*<<< orphan*/  bin_obj; } ;
-typedef  int /*<<< orphan*/  RList ;
-typedef  TYPE_2__ RBinFile ;
+struct TYPE_4__ {int bin_obj; } ;
+typedef int RList ;
+typedef TYPE_2__ RBinFile ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * r_bin_ne_get_segments (int /*<<< orphan*/ ) ; 
+
+ int * r_bin_ne_get_segments (int ) ;
 
 RList *sections(RBinFile *bf) {
-	return r_bin_ne_get_segments (bf->o->bin_obj);
+ return r_bin_ne_get_segments (bf->o->bin_obj);
 }

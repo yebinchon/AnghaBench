@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int wait_for_push; } ;
 
-/* Variables and functions */
- TYPE_1__ auth_user_pass ; 
- int /*<<< orphan*/  purge_user_pass (TYPE_1__*,int) ; 
+
+ TYPE_1__ auth_user_pass ;
+ int purge_user_pass (TYPE_1__*,int) ;
 
 void
 delayed_auth_pass_purge(void)
 {
-    auth_user_pass.wait_for_push = false;
-    purge_user_pass(&auth_user_pass, false);
+    auth_user_pass.wait_for_push = 0;
+    purge_user_pass(&auth_user_pass, 0);
 }

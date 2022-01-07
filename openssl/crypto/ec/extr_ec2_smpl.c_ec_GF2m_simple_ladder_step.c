@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_21__   TYPE_3__ ;
-typedef  struct TYPE_20__   TYPE_2__ ;
-typedef  struct TYPE_19__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_21__ {int /*<<< orphan*/  b; TYPE_1__* meth; } ;
-struct TYPE_20__ {int /*<<< orphan*/  Y; int /*<<< orphan*/  X; int /*<<< orphan*/  Z; } ;
-struct TYPE_19__ {int /*<<< orphan*/  (* field_mul ) (TYPE_3__ const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ;int /*<<< orphan*/  (* field_sqr ) (TYPE_3__ const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ;} ;
-typedef  TYPE_2__ EC_POINT ;
-typedef  TYPE_3__ EC_GROUP ;
-typedef  int /*<<< orphan*/  BN_CTX ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BN_GF2m_add (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 (TYPE_3__ const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub10 (TYPE_3__ const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub11 (TYPE_3__ const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub2 (TYPE_3__ const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub3 (TYPE_3__ const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub4 (TYPE_3__ const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub5 (TYPE_3__ const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub6 (TYPE_3__ const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub7 (TYPE_3__ const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub8 (TYPE_3__ const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub9 (TYPE_3__ const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_21__ TYPE_3__ ;
+typedef struct TYPE_20__ TYPE_2__ ;
+typedef struct TYPE_19__ TYPE_1__ ;
+
+
+struct TYPE_21__ {int b; TYPE_1__* meth; } ;
+struct TYPE_20__ {int Y; int X; int Z; } ;
+struct TYPE_19__ {int (* field_mul ) (TYPE_3__ const*,int ,int ,int ,int *) ;int (* field_sqr ) (TYPE_3__ const*,int ,int ,int *) ;} ;
+typedef TYPE_2__ EC_POINT ;
+typedef TYPE_3__ EC_GROUP ;
+typedef int BN_CTX ;
+
+
+ int BN_GF2m_add (int ,int ,int ) ;
+ int stub1 (TYPE_3__ const*,int ,int ,int ,int *) ;
+ int stub10 (TYPE_3__ const*,int ,int ,int *) ;
+ int stub11 (TYPE_3__ const*,int ,int ,int ,int *) ;
+ int stub2 (TYPE_3__ const*,int ,int ,int ,int *) ;
+ int stub3 (TYPE_3__ const*,int ,int ,int *) ;
+ int stub4 (TYPE_3__ const*,int ,int ,int *) ;
+ int stub5 (TYPE_3__ const*,int ,int ,int *) ;
+ int stub6 (TYPE_3__ const*,int ,int ,int ,int *) ;
+ int stub7 (TYPE_3__ const*,int ,int ,int ,int *) ;
+ int stub8 (TYPE_3__ const*,int ,int ,int *) ;
+ int stub9 (TYPE_3__ const*,int ,int ,int ,int *) ;
 
 __attribute__((used)) static
 int ec_GF2m_simple_ladder_step(const EC_GROUP *group,

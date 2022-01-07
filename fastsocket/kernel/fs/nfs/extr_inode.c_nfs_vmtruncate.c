@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct inode {int /*<<< orphan*/  i_lock; int /*<<< orphan*/  i_size; } ;
-typedef  int /*<<< orphan*/  loff_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  i_size_write (struct inode*,int /*<<< orphan*/ ) ; 
- int inode_newsize_ok (struct inode*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  spin_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  truncate_pagecache (struct inode*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct inode {int i_lock; int i_size; } ;
+typedef int loff_t ;
+
+
+ int i_size_write (struct inode*,int ) ;
+ int inode_newsize_ok (struct inode*,int ) ;
+ int spin_lock (int *) ;
+ int spin_unlock (int *) ;
+ int truncate_pagecache (struct inode*,int ,int ) ;
 
 __attribute__((used)) static int nfs_vmtruncate(struct inode * inode, loff_t offset)
 {
-	loff_t oldsize;
-	int err;
+ loff_t oldsize;
+ int err;
 
-	err = inode_newsize_ok(inode, offset);
-	if (err)
-		goto out;
+ err = inode_newsize_ok(inode, offset);
+ if (err)
+  goto out;
 
-	spin_lock(&inode->i_lock);
-	oldsize = inode->i_size;
-	i_size_write(inode, offset);
-	spin_unlock(&inode->i_lock);
+ spin_lock(&inode->i_lock);
+ oldsize = inode->i_size;
+ i_size_write(inode, offset);
+ spin_unlock(&inode->i_lock);
 
-	truncate_pagecache(inode, oldsize, offset);
+ truncate_pagecache(inode, oldsize, offset);
 out:
-	return err;
+ return err;
 }

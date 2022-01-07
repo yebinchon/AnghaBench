@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct lev_start {int type; } ;
-struct lev_rotate_from {int crc32; int timestamp; int /*<<< orphan*/  prev_log_hash; int /*<<< orphan*/  cur_log_hash; int /*<<< orphan*/  cur_log_pos; } ;
-struct kfs_file_info {char* filename; TYPE_1__* khdr; int /*<<< orphan*/  log_pos; } ;
-struct TYPE_2__ {int log_pos_crc32; int prev_log_time; int /*<<< orphan*/  prev_log_hash; int /*<<< orphan*/  file_id_hash; } ;
+struct lev_rotate_from {int crc32; int timestamp; int prev_log_hash; int cur_log_hash; int cur_log_pos; } ;
+struct kfs_file_info {char* filename; TYPE_1__* khdr; int log_pos; } ;
+struct TYPE_2__ {int log_pos_crc32; int prev_log_time; int prev_log_hash; int file_id_hash; } ;
 
-/* Variables and functions */
-#define  LEV_ROTATE_FROM 129 
-#define  LEV_START 128 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*,int,...) ; 
- int /*<<< orphan*/  stderr ; 
+
+
+
+ int assert (int) ;
+ int close (int) ;
+ int fprintf (int ,char*,char*,int,...) ;
+ int stderr ;
 
 __attribute__((used)) static int process_first36_bytes (struct kfs_file_info *FI, int fd, int r, struct lev_start *E) {
   switch (E->type) {
-    case LEV_START:
+    case 128:
       assert (r >= sizeof (struct lev_start) - 4);
       FI->log_pos = 0;
       break;
-    case LEV_ROTATE_FROM:
+    case 129:
       assert (r >= sizeof (struct lev_rotate_from));
       FI->log_pos = ((struct lev_rotate_from *)E)->cur_log_pos;
       if (FI->khdr && FI->khdr->file_id_hash != ((struct lev_rotate_from *)E)->cur_log_hash) {

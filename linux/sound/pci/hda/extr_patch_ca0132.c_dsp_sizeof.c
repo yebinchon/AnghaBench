@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct dsp_image_seg {int /*<<< orphan*/  count; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  data ; 
- size_t struct_size (struct dsp_image_seg const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct dsp_image_seg {int count; } ;
+
+
+ int data ;
+ size_t struct_size (struct dsp_image_seg const*,int ,int ) ;
 
 __attribute__((used)) static size_t dsp_sizeof(const struct dsp_image_seg *p)
 {
-	return struct_size(p, data, p->count);
+ return struct_size(p, data, p->count);
 }

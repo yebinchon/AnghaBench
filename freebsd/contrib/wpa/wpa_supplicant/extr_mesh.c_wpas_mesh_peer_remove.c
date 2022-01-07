@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
+
+
+
+
+typedef int u8 ;
 struct wpa_supplicant {int dummy; } ;
 
-/* Variables and functions */
- int mesh_mpm_close_peer (struct wpa_supplicant*,int /*<<< orphan*/  const*) ; 
+
+ int mesh_mpm_close_peer (struct wpa_supplicant*,int const*) ;
 
 int wpas_mesh_peer_remove(struct wpa_supplicant *wpa_s, const u8 *addr)
 {
-	return mesh_mpm_close_peer(wpa_s, addr);
+ return mesh_mpm_close_peer(wpa_s, addr);
 }

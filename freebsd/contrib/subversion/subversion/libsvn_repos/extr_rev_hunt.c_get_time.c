@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  data; } ;
-typedef  TYPE_1__ svn_string_t ;
-typedef  int /*<<< orphan*/  svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_fs_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  apr_time_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_FS_GENERAL ; 
- int /*<<< orphan*/  SVN_PROP_REVISION_DATE ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/ * svn_error_createf (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_fs_revision_prop2 (TYPE_1__**,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_time_from_cstring (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int data; } ;
+typedef TYPE_1__ svn_string_t ;
+typedef int svn_revnum_t ;
+typedef int svn_fs_t ;
+typedef int svn_error_t ;
+typedef int apr_time_t ;
+typedef int apr_pool_t ;
+
+
+ int FALSE ;
+ int SVN_ERR (int ) ;
+ int SVN_ERR_FS_GENERAL ;
+ int SVN_PROP_REVISION_DATE ;
+ int _ (char*) ;
+ int * svn_error_createf (int ,int *,int ,int ) ;
+ int svn_fs_revision_prop2 (TYPE_1__**,int *,int ,int ,int ,int *,int *) ;
+ int * svn_time_from_cstring (int *,int ,int *) ;
 
 __attribute__((used)) static svn_error_t *
 get_time(apr_time_t *tm,
@@ -41,7 +41,7 @@ get_time(apr_time_t *tm,
                                 FALSE, pool, pool));
   if (! date_str)
     return svn_error_createf
-      (SVN_ERR_FS_GENERAL, NULL,
+      (SVN_ERR_FS_GENERAL, ((void*)0),
        _("Failed to find time on revision %ld"), rev);
 
   return svn_time_from_cstring(tm, date_str->data, pool);

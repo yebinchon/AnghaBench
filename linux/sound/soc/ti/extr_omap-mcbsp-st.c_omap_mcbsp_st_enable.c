@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct omap_mcbsp_st_data {int enabled; } ;
-struct omap_mcbsp {int /*<<< orphan*/  lock; struct omap_mcbsp_st_data* st_data; } ;
+struct omap_mcbsp {int lock; struct omap_mcbsp_st_data* st_data; } ;
 
-/* Variables and functions */
- int ENODEV ; 
- int /*<<< orphan*/  omap_mcbsp_st_start (struct omap_mcbsp*) ; 
- int /*<<< orphan*/  spin_lock_irq (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock_irq (int /*<<< orphan*/ *) ; 
+
+ int ENODEV ;
+ int omap_mcbsp_st_start (struct omap_mcbsp*) ;
+ int spin_lock_irq (int *) ;
+ int spin_unlock_irq (int *) ;
 
 __attribute__((used)) static int omap_mcbsp_st_enable(struct omap_mcbsp *mcbsp)
 {
-	struct omap_mcbsp_st_data *st_data = mcbsp->st_data;
+ struct omap_mcbsp_st_data *st_data = mcbsp->st_data;
 
-	if (!st_data)
-		return -ENODEV;
+ if (!st_data)
+  return -ENODEV;
 
-	spin_lock_irq(&mcbsp->lock);
-	st_data->enabled = 1;
-	omap_mcbsp_st_start(mcbsp);
-	spin_unlock_irq(&mcbsp->lock);
+ spin_lock_irq(&mcbsp->lock);
+ st_data->enabled = 1;
+ omap_mcbsp_st_start(mcbsp);
+ spin_unlock_irq(&mcbsp->lock);
 
-	return 0;
+ return 0;
 }

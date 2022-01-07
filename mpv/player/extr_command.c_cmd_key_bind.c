@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct mp_cmd_ctx {int success; TYPE_2__* args; struct MPContext* mpctx; } ;
-struct MPContext {int /*<<< orphan*/  input; } ;
+struct MPContext {int input; } ;
 struct TYPE_3__ {char* s; } ;
 struct TYPE_4__ {TYPE_1__ v; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MP_ERR (struct MPContext*,char*,char*) ; 
- int /*<<< orphan*/  bstr0 (char const*) ; 
- int /*<<< orphan*/  mp_input_bind_key (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int mp_input_get_key_from_name (char*) ; 
+
+ int MP_ERR (struct MPContext*,char*,char*) ;
+ int bstr0 (char const*) ;
+ int mp_input_bind_key (int ,int,int ) ;
+ int mp_input_get_key_from_name (char*) ;
 
 __attribute__((used)) static void cmd_key_bind(void *p)
 {
@@ -31,7 +31,7 @@ __attribute__((used)) static void cmd_key_bind(void *p)
     int code = mp_input_get_key_from_name(cmd->args[0].v.s);
     if (code < 0) {
         MP_ERR(mpctx, "%s is not a valid input name.\n", cmd->args[0].v.s);
-        cmd->success = false;
+        cmd->success = 0;
         return;
     }
     const char *target_cmd = cmd->args[1].v.s;

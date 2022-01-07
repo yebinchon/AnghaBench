@@ -1,36 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  LOAD_CMD ; 
- int /*<<< orphan*/  LOAD_CMD_UDP ; 
- int /*<<< orphan*/ * fopen (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  mips_expect (char*) ; 
- int /*<<< orphan*/  mips_send_command (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  perror_with_name (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * tftp_file ; 
- scalar_t__ tftp_in_use ; 
- int /*<<< orphan*/  tftp_localname ; 
- scalar_t__ udp_in_use ; 
+ int LOAD_CMD ;
+ int LOAD_CMD_UDP ;
+ int * fopen (int ,char*) ;
+ int mips_expect (char*) ;
+ int mips_send_command (int ,int ) ;
+ int perror_with_name (int ) ;
+ int * tftp_file ;
+ scalar_t__ tftp_in_use ;
+ int tftp_localname ;
+ scalar_t__ udp_in_use ;
 
 __attribute__((used)) static void
 pmon_start_download (void)
 {
   if (tftp_in_use)
     {
-      /* Create the temporary download file.  */
-      if ((tftp_file = fopen (tftp_localname, "w")) == NULL)
-	perror_with_name (tftp_localname);
+
+      if ((tftp_file = fopen (tftp_localname, "w")) == ((void*)0))
+ perror_with_name (tftp_localname);
     }
   else
     {

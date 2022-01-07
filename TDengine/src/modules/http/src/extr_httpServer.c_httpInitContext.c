@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int /*<<< orphan*/  buffer; int /*<<< orphan*/  pLast; int /*<<< orphan*/  pCur; } ;
-struct TYPE_9__ {int /*<<< orphan*/  parsed; int /*<<< orphan*/  accessTimes; TYPE_1__* pThread; int /*<<< orphan*/  ipstr; int /*<<< orphan*/  fd; TYPE_2__ parser; TYPE_2__ singleCmd; int /*<<< orphan*/ * timer; int /*<<< orphan*/ * encodeMethod; int /*<<< orphan*/  reqType; void* contentEncoding; void* acceptEncoding; int /*<<< orphan*/  httpChunked; int /*<<< orphan*/  httpKeepAlive; int /*<<< orphan*/  httpVersion; int /*<<< orphan*/  lastAccessTime; } ;
-struct TYPE_7__ {int /*<<< orphan*/  label; } ;
-typedef  int /*<<< orphan*/  HttpSqlCmd ;
-typedef  TYPE_2__ HttpParser ;
-typedef  TYPE_3__ HttpContext ;
 
-/* Variables and functions */
- void* HTTP_COMPRESS_IDENTITY ; 
- int /*<<< orphan*/  HTTP_KEEPALIVE_NO_INPUT ; 
- int /*<<< orphan*/  HTTP_REQTYPE_OTHERS ; 
- int /*<<< orphan*/  HTTP_UNCUNKED ; 
- int /*<<< orphan*/  HTTP_VERSION_10 ; 
- int /*<<< orphan*/  httpTrace (char*,TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (TYPE_2__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  taosGetTimestampSec () ; 
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int buffer; int pLast; int pCur; } ;
+struct TYPE_9__ {int parsed; int accessTimes; TYPE_1__* pThread; int ipstr; int fd; TYPE_2__ parser; TYPE_2__ singleCmd; int * timer; int * encodeMethod; int reqType; void* contentEncoding; void* acceptEncoding; int httpChunked; int httpKeepAlive; int httpVersion; int lastAccessTime; } ;
+struct TYPE_7__ {int label; } ;
+typedef int HttpSqlCmd ;
+typedef TYPE_2__ HttpParser ;
+typedef TYPE_3__ HttpContext ;
+
+
+ void* HTTP_COMPRESS_IDENTITY ;
+ int HTTP_KEEPALIVE_NO_INPUT ;
+ int HTTP_REQTYPE_OTHERS ;
+ int HTTP_UNCUNKED ;
+ int HTTP_VERSION_10 ;
+ int httpTrace (char*,TYPE_3__*,int ,int ,int ,int ,int ) ;
+ int memset (TYPE_2__*,int ,int) ;
+ int taosGetTimestampSec () ;
 
 bool httpInitContext(HttpContext *pContext) {
   pContext->accessTimes++;
@@ -39,8 +39,8 @@ bool httpInitContext(HttpContext *pContext) {
   pContext->acceptEncoding = HTTP_COMPRESS_IDENTITY;
   pContext->contentEncoding = HTTP_COMPRESS_IDENTITY;
   pContext->reqType = HTTP_REQTYPE_OTHERS;
-  pContext->encodeMethod = NULL;
-  pContext->timer = NULL;
+  pContext->encodeMethod = ((void*)0);
+  pContext->timer = ((void*)0);
   memset(&pContext->singleCmd, 0, sizeof(HttpSqlCmd));
 
   HttpParser *pParser = &pContext->parser;
@@ -49,5 +49,5 @@ bool httpInitContext(HttpContext *pContext) {
 
   httpTrace("context:%p, fd:%d, ip:%s, thread:%s, accessTimes:%d, parsed:%d",
           pContext, pContext->fd, pContext->ipstr, pContext->pThread->label, pContext->accessTimes, pContext->parsed);
-  return true;
+  return 1;
 }

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ symindex ;
-typedef  int /*<<< orphan*/  carsym ;
-typedef  int /*<<< orphan*/  bfd ;
-struct TYPE_2__ {scalar_t__ symdef_count; int /*<<< orphan*/ * symdefs; } ;
 
-/* Variables and functions */
- scalar_t__ BFD_NO_MORE_SYMBOLS ; 
- TYPE_1__* bfd_ardata (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bfd_error_invalid_operation ; 
- int /*<<< orphan*/  bfd_has_map (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bfd_set_error (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef scalar_t__ symindex ;
+typedef int carsym ;
+typedef int bfd ;
+struct TYPE_2__ {scalar_t__ symdef_count; int * symdefs; } ;
+
+
+ scalar_t__ BFD_NO_MORE_SYMBOLS ;
+ TYPE_1__* bfd_ardata (int *) ;
+ int bfd_error_invalid_operation ;
+ int bfd_has_map (int *) ;
+ int bfd_set_error (int ) ;
 
 symindex
 bfd_get_next_mapent (bfd *abfd, symindex prev, carsym **entry)

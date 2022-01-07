@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char* CURR_DIR ; 
- int /*<<< orphan*/  CreateDirectoryA (char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GetCurrentDirectoryA (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  MAX_PATH ; 
- int /*<<< orphan*/  createTestFile (char*) ; 
- int lstrlenA (char*) ; 
+ char* CURR_DIR ;
+ int CreateDirectoryA (char*,int *) ;
+ int GetCurrentDirectoryA (int ,char*) ;
+ int MAX_PATH ;
+ int createTestFile (char*) ;
+ int lstrlenA (char*) ;
 
 __attribute__((used)) static void create_test_files(void)
 {
@@ -31,8 +23,8 @@ __attribute__((used)) static void create_test_files(void)
 
     createTestFile("a.txt");
     createTestFile("b.txt");
-    CreateDirectoryA("testdir", NULL);
+    CreateDirectoryA("testdir", ((void*)0));
     createTestFile("testdir\\c.txt");
     createTestFile("testdir\\d.txt");
-    CreateDirectoryA("dest", NULL);
+    CreateDirectoryA("dest", ((void*)0));
 }

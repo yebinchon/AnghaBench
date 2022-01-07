@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct device {int /*<<< orphan*/  item; int /*<<< orphan*/  sd; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (struct device*) ; 
- int /*<<< orphan*/  input_item_Release (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  services_discovery_RemoveItem (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct device {int item; int sd; } ;
+
+
+ int free (struct device*) ;
+ int input_item_Release (int ) ;
+ int services_discovery_RemoveItem (int ,int ) ;
 
 __attribute__((used)) static void DestroySource (void *data)
 {

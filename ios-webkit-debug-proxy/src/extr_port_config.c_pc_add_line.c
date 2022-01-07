@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  pc_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  pc_add (int /*<<< orphan*/ ,char*,int,int) ; 
- scalar_t__ pc_parse (int /*<<< orphan*/ ,char const*,int,char**,int*,int*) ; 
+
+
+
+typedef int pc_t ;
+
+
+ int pc_add (int ,char*,int,int) ;
+ scalar_t__ pc_parse (int ,char const*,int,char**,int*,int*) ;
 
 const char *pc_add_line(pc_t self, const char *line, size_t len) {
   const char *curr = line;
@@ -41,5 +41,5 @@ const char *pc_add_line(pc_t self, const char *line, size_t len) {
     if (*end != ',') break;
     curr = end+1;
   }
-  return NULL;
+  return ((void*)0);
 }

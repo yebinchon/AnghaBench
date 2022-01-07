@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_8__ {scalar_t__ count; } ;
 struct TYPE_7__ {TYPE_3__* code_space_range; TYPE_3__* notdef_range; TYPE_3__* cmap_range; } ;
-struct TYPE_6__ {int /*<<< orphan*/ * attr; int /*<<< orphan*/  mmgr; } ;
-typedef  scalar_t__ HPDF_UINT ;
-typedef  TYPE_1__* HPDF_Encoder ;
-typedef  int /*<<< orphan*/  HPDF_CidRange_Rec ;
-typedef  TYPE_2__* HPDF_CMapEncoderAttr ;
+struct TYPE_6__ {int * attr; int mmgr; } ;
+typedef scalar_t__ HPDF_UINT ;
+typedef TYPE_1__* HPDF_Encoder ;
+typedef int HPDF_CidRange_Rec ;
+typedef TYPE_2__* HPDF_CMapEncoderAttr ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HPDF_FreeMem (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  HPDF_List_Free (TYPE_3__*) ; 
- int /*<<< orphan*/ * HPDF_List_ItemAt (TYPE_3__*,scalar_t__) ; 
- int /*<<< orphan*/  HPDF_PTRACE (char*) ; 
+
+ int HPDF_FreeMem (int ,int *) ;
+ int HPDF_List_Free (TYPE_3__*) ;
+ int * HPDF_List_ItemAt (TYPE_3__*,scalar_t__) ;
+ int HPDF_PTRACE (char*) ;
 
 void
-HPDF_CMapEncoder_Free  (HPDF_Encoder  encoder)
+HPDF_CMapEncoder_Free (HPDF_Encoder encoder)
 {
     HPDF_CMapEncoderAttr attr;
     HPDF_UINT i;
@@ -69,5 +69,5 @@ HPDF_CMapEncoder_Free  (HPDF_Encoder  encoder)
     }
 
     HPDF_FreeMem (encoder->mmgr, encoder->attr);
-    encoder->attr = NULL;
+    encoder->attr = ((void*)0);
 }

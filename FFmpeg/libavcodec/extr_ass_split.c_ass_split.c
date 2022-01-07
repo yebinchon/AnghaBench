@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_4__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  section; } ;
+
+
+typedef struct TYPE_7__ TYPE_4__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int section; } ;
 struct TYPE_6__ {int current_section; } ;
-typedef  TYPE_1__ ASSSplitContext ;
+typedef TYPE_1__ ASSSplitContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int FF_ARRAY_ELEMS (TYPE_4__*) ; 
- TYPE_4__* ass_sections ; 
- char* ass_split_section (TYPE_1__*,char const*) ; 
- int sscanf (char const*,char*,char*,char*) ; 
- int /*<<< orphan*/  strcmp (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strcspn (char const*,char*) ; 
+
+ int AVERROR_INVALIDDATA ;
+ int FF_ARRAY_ELEMS (TYPE_4__*) ;
+ TYPE_4__* ass_sections ;
+ char* ass_split_section (TYPE_1__*,char const*) ;
+ int sscanf (char const*,char*,char*,char*) ;
+ int strcmp (char*,int ) ;
+ int strcspn (char const*,char*) ;
 
 __attribute__((used)) static int ass_split(ASSSplitContext *ctx, const char *buf)
 {

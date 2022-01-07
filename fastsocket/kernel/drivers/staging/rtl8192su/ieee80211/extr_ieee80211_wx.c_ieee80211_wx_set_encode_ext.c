@@ -1,63 +1,63 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct iw_point {int flags; } ;
 union iwreq_data {struct iw_point encoding; } ;
-struct net_device {int /*<<< orphan*/  name; } ;
+struct net_device {int name; } ;
 struct iw_request_info {int dummy; } ;
-struct iw_encode_ext {int ext_flags; int alg; scalar_t__ key_len; int /*<<< orphan*/  rx_seq; int /*<<< orphan*/  key; } ;
-struct ieee80211_security {int flags; int enabled; int active_key; scalar_t__* key_sizes; int /*<<< orphan*/  level; } ;
-struct ieee80211_device {int tx_keyidx; scalar_t__ iw_mode; scalar_t__ (* reset_port ) (struct net_device*) ;scalar_t__ reset_on_keychange; struct net_device* dev; int /*<<< orphan*/  (* set_security ) (struct net_device*,struct ieee80211_security*) ;struct ieee80211_crypt_data** crypt; } ;
-struct ieee80211_crypto_ops {scalar_t__ (* set_key ) (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ;int /*<<< orphan*/ * (* init ) (int) ;} ;
-struct ieee80211_crypt_data {int /*<<< orphan*/ * priv; struct ieee80211_crypto_ops* ops; } ;
+struct iw_encode_ext {int ext_flags; int alg; scalar_t__ key_len; int rx_seq; int key; } ;
+struct ieee80211_security {int flags; int enabled; int active_key; scalar_t__* key_sizes; int level; } ;
+struct ieee80211_device {int tx_keyidx; scalar_t__ iw_mode; scalar_t__ (* reset_port ) (struct net_device*) ;scalar_t__ reset_on_keychange; struct net_device* dev; int (* set_security ) (struct net_device*,struct ieee80211_security*) ;struct ieee80211_crypt_data** crypt; } ;
+struct ieee80211_crypto_ops {scalar_t__ (* set_key ) (int ,scalar_t__,int ,int *) ;int * (* init ) (int) ;} ;
+struct ieee80211_crypt_data {int * priv; struct ieee80211_crypto_ops* ops; } ;
 
-/* Variables and functions */
- int EINVAL ; 
- int ENOMEM ; 
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  IEEE80211_DEBUG_WX (char*,int /*<<< orphan*/ ,...) ; 
-#define  IW_ENCODE_ALG_CCMP 130 
- int IW_ENCODE_ALG_NONE ; 
-#define  IW_ENCODE_ALG_TKIP 129 
-#define  IW_ENCODE_ALG_WEP 128 
- int IW_ENCODE_DISABLED ; 
- int IW_ENCODE_EXT_GROUP_KEY ; 
- int IW_ENCODE_EXT_SET_TX_KEY ; 
- int IW_ENCODE_INDEX ; 
- scalar_t__ IW_MODE_INFRA ; 
- int SEC_ACTIVE_KEY ; 
- int SEC_ENABLED ; 
- int SEC_LEVEL ; 
- int /*<<< orphan*/  SEC_LEVEL_0 ; 
- int /*<<< orphan*/  SEC_LEVEL_1 ; 
- int /*<<< orphan*/  SEC_LEVEL_2 ; 
- int /*<<< orphan*/  SEC_LEVEL_3 ; 
- int WEP_KEYS ; 
- int /*<<< orphan*/  ieee80211_crypt_delayed_deinit (struct ieee80211_device*,struct ieee80211_crypt_data**) ; 
- struct ieee80211_crypto_ops* ieee80211_get_crypto_ops (char const*) ; 
- int /*<<< orphan*/  kfree (struct ieee80211_crypt_data*) ; 
- struct ieee80211_crypt_data* kzalloc (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printk (char*,...) ; 
- int /*<<< orphan*/ * stub1 (int) ; 
- scalar_t__ stub2 (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub3 (struct net_device*,struct ieee80211_security*) ; 
- scalar_t__ stub4 (struct net_device*) ; 
+
+ int EINVAL ;
+ int ENOMEM ;
+ int GFP_KERNEL ;
+ int IEEE80211_DEBUG_WX (char*,int ,...) ;
+
+ int IW_ENCODE_ALG_NONE ;
+
+
+ int IW_ENCODE_DISABLED ;
+ int IW_ENCODE_EXT_GROUP_KEY ;
+ int IW_ENCODE_EXT_SET_TX_KEY ;
+ int IW_ENCODE_INDEX ;
+ scalar_t__ IW_MODE_INFRA ;
+ int SEC_ACTIVE_KEY ;
+ int SEC_ENABLED ;
+ int SEC_LEVEL ;
+ int SEC_LEVEL_0 ;
+ int SEC_LEVEL_1 ;
+ int SEC_LEVEL_2 ;
+ int SEC_LEVEL_3 ;
+ int WEP_KEYS ;
+ int ieee80211_crypt_delayed_deinit (struct ieee80211_device*,struct ieee80211_crypt_data**) ;
+ struct ieee80211_crypto_ops* ieee80211_get_crypto_ops (char const*) ;
+ int kfree (struct ieee80211_crypt_data*) ;
+ struct ieee80211_crypt_data* kzalloc (int,int ) ;
+ int printk (char*,...) ;
+ int * stub1 (int) ;
+ scalar_t__ stub2 (int ,scalar_t__,int ,int *) ;
+ int stub3 (struct net_device*,struct ieee80211_security*) ;
+ scalar_t__ stub4 (struct net_device*) ;
 
 int ieee80211_wx_set_encode_ext(struct ieee80211_device *ieee,
                                struct iw_request_info *info,
                                union iwreq_data *wrqu, char *extra)
 {
-	int ret = 0;
-	struct net_device *dev = ieee->dev;
+ int ret = 0;
+ struct net_device *dev = ieee->dev;
         struct iw_point *encoding = &wrqu->encoding;
         struct iw_encode_ext *ext = (struct iw_encode_ext *)extra;
         int i, idx;
@@ -69,7 +69,7 @@ int ieee80211_wx_set_encode_ext(struct ieee80211_device *ieee,
         struct ieee80211_security sec = {
                 .flags = 0,
         };
-	//printk("======>encoding flag:%x,ext flag:%x, ext alg:%d\n", encoding->flags,ext->ext_flags, ext->alg);
+
         idx = encoding->flags & IW_ENCODE_INDEX;
         if (idx) {
                 if (idx < 1 || idx > WEP_KEYS)
@@ -84,9 +84,9 @@ int ieee80211_wx_set_encode_ext(struct ieee80211_device *ieee,
 
                 group_key = 1;
         } else {
-                /* some Cisco APs use idx>0 for unicast in dynamic WEP */
-		//printk("not group key, flags:%x, ext->alg:%d\n", ext->ext_flags, ext->alg);
-                if (idx != 0 && ext->alg != IW_ENCODE_ALG_WEP)
+
+
+                if (idx != 0 && ext->alg != 128)
                         return -EINVAL;
                 if (ieee->iw_mode == IW_MODE_INFRA)
 
@@ -96,7 +96,7 @@ int ieee80211_wx_set_encode_ext(struct ieee80211_device *ieee,
                         return -EINVAL;
         }
 
-	sec.flags |= SEC_ENABLED;
+ sec.flags |= SEC_ENABLED;
 
         if ((encoding->flags & IW_ENCODE_DISABLED) ||
             ext->alg == IW_ENCODE_ALG_NONE) {
@@ -105,31 +105,31 @@ int ieee80211_wx_set_encode_ext(struct ieee80211_device *ieee,
 
                 for (i = 0; i < WEP_KEYS; i++)
 
-			if (ieee->crypt[i] != NULL)
+   if (ieee->crypt[i] != ((void*)0))
 
                                 break;
 
                 if (i == WEP_KEYS) {
                         sec.enabled = 0;
-                      //  sec.encrypt = 0;
+
                         sec.level = SEC_LEVEL_0;
                         sec.flags |= SEC_LEVEL;
                 }
-		//printk("disabled: flag:%x\n", encoding->flags);
+
                 goto done;
         }
 
-	sec.enabled = 1;
-    //    sec.encrypt = 1;
+ sec.enabled = 1;
+
 
         switch (ext->alg) {
-        case IW_ENCODE_ALG_WEP:
+        case 128:
                 alg = "WEP";
                 break;
-        case IW_ENCODE_ALG_TKIP:
+        case 129:
                 alg = "TKIP";
                 break;
-        case IW_ENCODE_ALG_CCMP:
+        case 130:
                 alg = "CCMP";
                 break;
         default:
@@ -138,52 +138,52 @@ int ieee80211_wx_set_encode_ext(struct ieee80211_device *ieee,
                 ret = -EINVAL;
                 goto done;
         }
-	printk("alg name:%s\n",alg);
+ printk("alg name:%s\n",alg);
 
-	 ops = ieee80211_get_crypto_ops(alg);
-        if (ops == NULL)
+  ops = ieee80211_get_crypto_ops(alg);
+        if (ops == ((void*)0))
                 ops = ieee80211_get_crypto_ops(alg);
-        if (ops == NULL) {
+        if (ops == ((void*)0)) {
                 IEEE80211_DEBUG_WX("%s: unknown crypto alg %d\n",
                                    dev->name, ext->alg);
-		printk("========>unknown crypto alg %d\n", ext->alg);
+  printk("========>unknown crypto alg %d\n", ext->alg);
                 ret = -EINVAL;
                 goto done;
         }
 
-        if (*crypt == NULL || (*crypt)->ops != ops) {
+        if (*crypt == ((void*)0) || (*crypt)->ops != ops) {
                 struct ieee80211_crypt_data *new_crypt;
 
                 ieee80211_crypt_delayed_deinit(ieee, crypt);
 
                 new_crypt = kzalloc(sizeof(*new_crypt), GFP_KERNEL);
-                if (new_crypt == NULL) {
+                if (new_crypt == ((void*)0)) {
                         ret = -ENOMEM;
                         goto done;
                 }
                 new_crypt->ops = ops;
                 if (new_crypt->ops)
                         new_crypt->priv = new_crypt->ops->init(idx);
-                if (new_crypt->priv == NULL) {
+                if (new_crypt->priv == ((void*)0)) {
                         kfree(new_crypt);
                         ret = -EINVAL;
                         goto done;
                 }
                 *crypt = new_crypt;
 
- 	}
+  }
 
         if (ext->key_len > 0 && (*crypt)->ops->set_key &&
             (*crypt)->ops->set_key(ext->key, ext->key_len, ext->rx_seq,
                                    (*crypt)->priv) < 0) {
                 IEEE80211_DEBUG_WX("%s: key setting failed\n", dev->name);
-		printk("key setting failed\n");
+  printk("key setting failed\n");
                 ret = -EINVAL;
                 goto done;
         }
-#if 1
- //skip_host_crypt:
-	//printk("skip_host_crypt:ext_flags:%x\n", ext->ext_flags);
+
+
+
         if (ext->ext_flags & IW_ENCODE_EXT_SET_TX_KEY) {
                 ieee->tx_keyidx = idx;
                 sec.active_key = idx;
@@ -191,29 +191,29 @@ int ieee80211_wx_set_encode_ext(struct ieee80211_device *ieee,
         }
 
         if (ext->alg != IW_ENCODE_ALG_NONE) {
-                //memcpy(sec.keys[idx], ext->key, ext->key_len);
+
                 sec.key_sizes[idx] = ext->key_len;
                 sec.flags |= (1 << idx);
-                if (ext->alg == IW_ENCODE_ALG_WEP) {
+                if (ext->alg == 128) {
                         sec.flags |= SEC_LEVEL;
                         sec.level = SEC_LEVEL_1;
-                } else if (ext->alg == IW_ENCODE_ALG_TKIP) {
+                } else if (ext->alg == 129) {
                         sec.flags |= SEC_LEVEL;
                         sec.level = SEC_LEVEL_2;
-                } else if (ext->alg == IW_ENCODE_ALG_CCMP) {
+                } else if (ext->alg == 130) {
                         sec.flags |= SEC_LEVEL;
                         sec.level = SEC_LEVEL_3;
                 }
-                /* Don't set sec level for group keys. */
+
                 if (group_key)
                         sec.flags &= ~SEC_LEVEL;
         }
-#endif
+
 done:
         if (ieee->set_security)
                 ieee->set_security(ieee->dev, &sec);
 
-	 if (ieee->reset_on_keychange &&
+  if (ieee->reset_on_keychange &&
             ieee->iw_mode != IW_MODE_INFRA &&
             ieee->reset_port && ieee->reset_port(dev)) {
                 IEEE80211_DEBUG_WX("%s: reset_port failed\n", dev->name);

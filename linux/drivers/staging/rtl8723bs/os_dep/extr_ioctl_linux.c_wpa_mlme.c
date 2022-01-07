@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u32 ;
+
+
+
+
+typedef int u32 ;
 struct net_device {int dummy; } ;
 struct adapter {int dummy; } ;
 
-/* Variables and functions */
- int EOPNOTSUPP ; 
-#define  IEEE_MLME_STA_DEAUTH 129 
-#define  IEEE_MLME_STA_DISASSOC 128 
- scalar_t__ rtw_netdev_priv (struct net_device*) ; 
- int /*<<< orphan*/  rtw_set_802_11_disassociate (struct adapter*) ; 
+
+ int EOPNOTSUPP ;
+
+
+ scalar_t__ rtw_netdev_priv (struct net_device*) ;
+ int rtw_set_802_11_disassociate (struct adapter*) ;
 
 __attribute__((used)) static int wpa_mlme(struct net_device *dev, u32 command, u32 reason)
 {
-	int ret = 0;
-	struct adapter *padapter = (struct adapter *)rtw_netdev_priv(dev);
+ int ret = 0;
+ struct adapter *padapter = (struct adapter *)rtw_netdev_priv(dev);
 
-	switch (command) {
-	case IEEE_MLME_STA_DEAUTH:
+ switch (command) {
+ case 129:
 
-		if (!rtw_set_802_11_disassociate(padapter))
-			ret = -1;
+  if (!rtw_set_802_11_disassociate(padapter))
+   ret = -1;
 
-		break;
+  break;
 
-	case IEEE_MLME_STA_DISASSOC:
+ case 128:
 
-		if (!rtw_set_802_11_disassociate(padapter))
-			ret = -1;
+  if (!rtw_set_802_11_disassociate(padapter))
+   ret = -1;
 
-		break;
+  break;
 
-	default:
-		ret = -EOPNOTSUPP;
-		break;
-	}
+ default:
+  ret = -EOPNOTSUPP;
+  break;
+ }
 
-	return ret;
+ return ret;
 
 }

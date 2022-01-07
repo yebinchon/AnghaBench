@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct target_type {int /*<<< orphan*/  list; int /*<<< orphan*/  name; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BUG () ; 
- int /*<<< orphan*/  DMCRIT (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  __find_target_type (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  _lock ; 
- int /*<<< orphan*/  down_write (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  list_del (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  up_write (int /*<<< orphan*/ *) ; 
+
+
+
+struct target_type {int list; int name; } ;
+
+
+ int BUG () ;
+ int DMCRIT (char*,int ) ;
+ int __find_target_type (int ) ;
+ int _lock ;
+ int down_write (int *) ;
+ int list_del (int *) ;
+ int up_write (int *) ;
 
 void dm_unregister_target(struct target_type *tt)
 {
-	down_write(&_lock);
-	if (!__find_target_type(tt->name)) {
-		DMCRIT("Unregistering unrecognised target: %s", tt->name);
-		BUG();
-	}
+ down_write(&_lock);
+ if (!__find_target_type(tt->name)) {
+  DMCRIT("Unregistering unrecognised target: %s", tt->name);
+  BUG();
+ }
 
-	list_del(&tt->list);
+ list_del(&tt->list);
 
-	up_write(&_lock);
+ up_write(&_lock);
 }

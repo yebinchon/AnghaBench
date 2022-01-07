@@ -1,77 +1,77 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_21__   TYPE_4__ ;
-typedef  struct TYPE_20__   TYPE_3__ ;
-typedef  struct TYPE_19__   TYPE_2__ ;
-typedef  struct TYPE_18__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_18__ {int /*<<< orphan*/  L; } ;
-typedef  TYPE_1__ jit_State ;
-typedef  int /*<<< orphan*/  cTValue ;
-struct TYPE_21__ {int /*<<< orphan*/  metatable; } ;
-struct TYPE_20__ {int udtype; int /*<<< orphan*/  metatable; } ;
-struct TYPE_19__ {void* tab; void* mt; int /*<<< orphan*/  mobj; scalar_t__ idxchain; scalar_t__ val; int /*<<< orphan*/  key; int /*<<< orphan*/  keyv; int /*<<< orphan*/  tabv; int /*<<< orphan*/ * mtv; int /*<<< orphan*/  mobjv; } ;
-typedef  void* TRef ;
-typedef  TYPE_2__ RecordIndex ;
-typedef  int /*<<< orphan*/  MMS ;
-typedef  int /*<<< orphan*/  GCtab ;
-typedef  int /*<<< orphan*/  GCstr ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IRFL_TAB_META ; 
- int /*<<< orphan*/  IRFL_UDATA_META ; 
- int /*<<< orphan*/  IRFL_UDATA_UDTYPE ; 
- int /*<<< orphan*/  IRT (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IRTG (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IRTGI (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IRT_FUNC ; 
- int /*<<< orphan*/  IRT_P32 ; 
- int /*<<< orphan*/  IRT_TAB ; 
- int /*<<< orphan*/  IRT_U8 ; 
- int /*<<< orphan*/  IR_EQ ; 
- int /*<<< orphan*/  IR_FLOAD ; 
- int /*<<< orphan*/  IR_NE ; 
- int /*<<< orphan*/  J2G (TYPE_1__*) ; 
- scalar_t__ LJ_HASFFI ; 
- int /*<<< orphan*/  LJ_TRERR_BADTYPE ; 
- void* TREF_NIL ; 
- int UDTYPE_FFI_CLIB ; 
- int UDTYPE_USERDATA ; 
- int /*<<< orphan*/  basemt_obj (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  copyTV (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- void* emitir (int /*<<< orphan*/ ,void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gcV (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lj_ir_kgc (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lj_ir_kint (TYPE_1__*,int) ; 
- int /*<<< orphan*/  lj_ir_knull (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lj_ir_kptr (TYPE_1__*,TYPE_3__*) ; 
- int /*<<< orphan*/  lj_ir_kstr (TYPE_1__*,int /*<<< orphan*/ *) ; 
- void* lj_ir_ktab (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lj_record_idx (TYPE_1__*,TYPE_2__*) ; 
- int /*<<< orphan*/ * lj_tab_getstr (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lj_trace_err (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * mmname_str (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  setstrV (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  settabV (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- TYPE_4__* tabV (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * tabref (int /*<<< orphan*/ ) ; 
- scalar_t__ tref_iscdata (void*) ; 
- int /*<<< orphan*/  tref_isnil (int /*<<< orphan*/ ) ; 
- scalar_t__ tref_istab (void*) ; 
- scalar_t__ tref_isudata (void*) ; 
- scalar_t__ tvisfunc (int /*<<< orphan*/ *) ; 
- scalar_t__ tvisnil (int /*<<< orphan*/ *) ; 
- scalar_t__ tvistab (int /*<<< orphan*/ *) ; 
- TYPE_3__* udataV (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_21__ TYPE_4__ ;
+typedef struct TYPE_20__ TYPE_3__ ;
+typedef struct TYPE_19__ TYPE_2__ ;
+typedef struct TYPE_18__ TYPE_1__ ;
+
+
+struct TYPE_18__ {int L; } ;
+typedef TYPE_1__ jit_State ;
+typedef int cTValue ;
+struct TYPE_21__ {int metatable; } ;
+struct TYPE_20__ {int udtype; int metatable; } ;
+struct TYPE_19__ {void* tab; void* mt; int mobj; scalar_t__ idxchain; scalar_t__ val; int key; int keyv; int tabv; int * mtv; int mobjv; } ;
+typedef void* TRef ;
+typedef TYPE_2__ RecordIndex ;
+typedef int MMS ;
+typedef int GCtab ;
+typedef int GCstr ;
+
+
+ int IRFL_TAB_META ;
+ int IRFL_UDATA_META ;
+ int IRFL_UDATA_UDTYPE ;
+ int IRT (int ,int ) ;
+ int IRTG (int ,int ) ;
+ int IRTGI (int ) ;
+ int IRT_FUNC ;
+ int IRT_P32 ;
+ int IRT_TAB ;
+ int IRT_U8 ;
+ int IR_EQ ;
+ int IR_FLOAD ;
+ int IR_NE ;
+ int J2G (TYPE_1__*) ;
+ scalar_t__ LJ_HASFFI ;
+ int LJ_TRERR_BADTYPE ;
+ void* TREF_NIL ;
+ int UDTYPE_FFI_CLIB ;
+ int UDTYPE_USERDATA ;
+ int basemt_obj (int ,int *) ;
+ int copyTV (int ,int *,int *) ;
+ void* emitir (int ,void*,int ) ;
+ int gcV (int *) ;
+ int lj_ir_kgc (TYPE_1__*,int ,int ) ;
+ int lj_ir_kint (TYPE_1__*,int) ;
+ int lj_ir_knull (TYPE_1__*,int ) ;
+ int lj_ir_kptr (TYPE_1__*,TYPE_3__*) ;
+ int lj_ir_kstr (TYPE_1__*,int *) ;
+ void* lj_ir_ktab (TYPE_1__*,int *) ;
+ int lj_record_idx (TYPE_1__*,TYPE_2__*) ;
+ int * lj_tab_getstr (int *,int *) ;
+ int lj_trace_err (TYPE_1__*,int ) ;
+ int * mmname_str (int ,int ) ;
+ int setstrV (int ,int *,int *) ;
+ int settabV (int ,int *,int *) ;
+ TYPE_4__* tabV (int *) ;
+ int * tabref (int ) ;
+ scalar_t__ tref_iscdata (void*) ;
+ int tref_isnil (int ) ;
+ scalar_t__ tref_istab (void*) ;
+ scalar_t__ tref_isudata (void*) ;
+ scalar_t__ tvisfunc (int *) ;
+ scalar_t__ tvisnil (int *) ;
+ scalar_t__ tvistab (int *) ;
+ TYPE_3__* udataV (int *) ;
 
 int lj_record_mm_lookup(jit_State *J, RecordIndex *ix, MMS mm)
 {
@@ -83,39 +83,39 @@ int lj_record_mm_lookup(jit_State *J, RecordIndex *ix, MMS mm)
   } else if (tref_isudata(ix->tab)) {
     int udtype = udataV(&ix->tabv)->udtype;
     mt = tabref(udataV(&ix->tabv)->metatable);
-    /* The metatables of special userdata objects are treated as immutable. */
+
     if (udtype != UDTYPE_USERDATA) {
       cTValue *mo;
       if (LJ_HASFFI && udtype == UDTYPE_FFI_CLIB) {
-	/* Specialize to the C library namespace object. */
-	emitir(IRTG(IR_EQ, IRT_P32), ix->tab, lj_ir_kptr(J, udataV(&ix->tabv)));
+
+ emitir(IRTG(IR_EQ, IRT_P32), ix->tab, lj_ir_kptr(J, udataV(&ix->tabv)));
       } else {
-	/* Specialize to the type of userdata. */
-	TRef tr = emitir(IRT(IR_FLOAD, IRT_U8), ix->tab, IRFL_UDATA_UDTYPE);
-	emitir(IRTGI(IR_EQ), tr, lj_ir_kint(J, udtype));
+
+ TRef tr = emitir(IRT(IR_FLOAD, IRT_U8), ix->tab, IRFL_UDATA_UDTYPE);
+ emitir(IRTGI(IR_EQ), tr, lj_ir_kint(J, udtype));
       }
   immutable_mt:
       mo = lj_tab_getstr(mt, mmname_str(J2G(J), mm));
       if (!mo || tvisnil(mo))
-	return 0;  /* No metamethod. */
-      /* Treat metamethod or index table as immutable, too. */
+ return 0;
+
       if (!(tvisfunc(mo) || tvistab(mo)))
-	lj_trace_err(J, LJ_TRERR_BADTYPE);
+ lj_trace_err(J, LJ_TRERR_BADTYPE);
       copyTV(J->L, &ix->mobjv, mo);
       ix->mobj = lj_ir_kgc(J, gcV(mo), tvisfunc(mo) ? IRT_FUNC : IRT_TAB);
       ix->mtv = mt;
-      ix->mt = TREF_NIL;  /* Dummy value for comparison semantics. */
-      return 1;  /* Got metamethod or index table. */
+      ix->mt = TREF_NIL;
+      return 1;
     }
     mix.tab = emitir(IRT(IR_FLOAD, IRT_TAB), ix->tab, IRFL_UDATA_META);
   } else {
-    /* Specialize to base metatable. Must flush mcode in lua_setmetatable(). */
+
     mt = tabref(basemt_obj(J2G(J), &ix->tabv));
-    if (mt == NULL) {
+    if (mt == ((void*)0)) {
       ix->mt = TREF_NIL;
-      return 0;  /* No metamethod. */
+      return 0;
     }
-    /* The cdata metatable is treated as immutable. */
+
     if (LJ_HASFFI && tref_iscdata(ix->tab)) goto immutable_mt;
     ix->mt = mix.tab = lj_ir_ktab(J, mt);
     goto nocheck;
@@ -135,7 +135,7 @@ nocheck:
     mix.val = 0;
     mix.idxchain = 0;
     ix->mobj = lj_record_idx(J, &mix);
-    return !tref_isnil(ix->mobj);  /* 1 if metamethod found, 0 if not. */
+    return !tref_isnil(ix->mobj);
   }
-  return 0;  /* No metamethod. */
+  return 0;
 }

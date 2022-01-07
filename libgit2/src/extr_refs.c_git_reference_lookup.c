@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  git_repository ;
-typedef  int /*<<< orphan*/  git_reference ;
 
-/* Variables and functions */
- int git_reference_lookup_resolved (int /*<<< orphan*/ **,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int git_repository ;
+typedef int git_reference ;
+
+
+ int git_reference_lookup_resolved (int **,int *,char const*,int ) ;
 
 int git_reference_lookup(git_reference **ref_out,
-	git_repository *repo, const char *name)
+ git_repository *repo, const char *name)
 {
-	return git_reference_lookup_resolved(ref_out, repo, name, 0);
+ return git_reference_lookup_resolved(ref_out, repo, name, 0);
 }

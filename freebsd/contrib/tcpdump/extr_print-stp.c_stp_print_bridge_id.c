@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u_char ;
-typedef  int /*<<< orphan*/  bridge_id_str ;
 
-/* Variables and functions */
- int /*<<< orphan*/  snprintf (char*,int,char*,int const,int const,int const,int const,int const,int const,int const,int const) ; 
+
+
+
+typedef int u_char ;
+typedef int bridge_id_str ;
+
+
+ int snprintf (char*,int,char*,int const,int const,int const,int const,int const,int const,int const,int const) ;
 
 __attribute__((used)) static char *
 stp_print_bridge_id(const u_char *p)

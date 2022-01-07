@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  json_t ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int json_t ;
 struct TYPE_5__ {TYPE_1__* priv; } ;
-struct TYPE_4__ {int /*<<< orphan*/  chans; } ;
-typedef  TYPE_2__ SeafMqManager ;
-typedef  int /*<<< orphan*/  GAsyncQueue ;
+struct TYPE_4__ {int chans; } ;
+typedef TYPE_2__ SeafMqManager ;
+typedef int GAsyncQueue ;
 
-/* Variables and functions */
- char* SEAFILE_NOTIFY_CHAN ; 
- int /*<<< orphan*/  g_async_queue_push (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * g_hash_table_lookup (int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/ * json_object () ; 
- int /*<<< orphan*/  json_object_set_new (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  json_string (char const*) ; 
- int /*<<< orphan*/  seaf_warning (char*,...) ; 
+
+ char* SEAFILE_NOTIFY_CHAN ;
+ int g_async_queue_push (int *,int *) ;
+ int * g_hash_table_lookup (int ,char const*) ;
+ int * json_object () ;
+ int json_object_set_new (int *,char*,int ) ;
+ int json_string (char const*) ;
+ int seaf_warning (char*,...) ;
 
 void
 seaf_mq_manager_publish_notification (SeafMqManager *mgr, const char *type, const char *content)

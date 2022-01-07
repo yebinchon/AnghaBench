@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  HRGN ;
 
-/* Variables and functions */
- int /*<<< orphan*/  COMPLEXREGION ; 
- int /*<<< orphan*/  CombineRgn (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CreateRectRgn (int,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  EqualRgn (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RGN_OR ; 
- int /*<<< orphan*/  SIMPLEREGION ; 
- int /*<<< orphan*/  SetRectRgn (int /*<<< orphan*/ ,int,int,int,int) ; 
- int /*<<< orphan*/  ok (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ok_long (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int HRGN ;
+
+
+ int COMPLEXREGION ;
+ int CombineRgn (int ,int ,int ,int ) ;
+ int CreateRectRgn (int,int ,int,int) ;
+ int EqualRgn (int ,int ) ;
+ int RGN_OR ;
+ int SIMPLEREGION ;
+ int SetRectRgn (int ,int,int,int,int) ;
+ int ok (int ,char*) ;
+ int ok_long (int ,int ) ;
 
 void Test_CombineRgn_OR()
 {

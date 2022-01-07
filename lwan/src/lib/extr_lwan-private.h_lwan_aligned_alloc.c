@@ -1,20 +1,12 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ UNLIKELY (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  posix_memalign (void**,size_t,size_t) ; 
+ scalar_t__ UNLIKELY (int ) ;
+ int assert (int) ;
+ int posix_memalign (void**,size_t,size_t) ;
 
 __attribute__((used)) static inline void *
 lwan_aligned_alloc(size_t n, size_t alignment)
@@ -25,7 +17,7 @@ lwan_aligned_alloc(size_t n, size_t alignment)
 
     n = (n + alignment - 1) & ~(alignment - 1);
     if (UNLIKELY(posix_memalign(&ret, alignment, n)))
-        return NULL;
+        return ((void*)0);
 
     return ret;
 }

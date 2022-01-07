@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct termios {int c_iflag; int c_oflag; int c_cflag; int c_lflag; scalar_t__* c_cc; } ;
 
-/* Variables and functions */
- int CREAD ; 
- int CS8 ; 
- int ECHO ; 
- int ICANON ; 
- int IGNBRK ; 
- int IGNPAR ; 
- int ISIG ; 
- int /*<<< orphan*/  KDGKBMODE ; 
- int /*<<< orphan*/  KDSKBMODE ; 
- int /*<<< orphan*/ * K_CODE ; 
- int /*<<< orphan*/ * K_RAW ; 
- int /*<<< orphan*/ * K_XLATE ; 
- int ONLCR ; 
- int OPOST ; 
- int TCSAFLUSH ; 
- int TCSANOW ; 
- int /*<<< orphan*/  VGLKeyboardMode ; 
- struct termios VGLKeyboardTty ; 
-#define  VGL_CODEKEYS 130 
-#define  VGL_RAWKEYS 129 
-#define  VGL_XLATEKEYS 128 
- size_t VMIN ; 
- size_t VTIME ; 
- int /*<<< orphan*/  cfmakeraw (struct termios*) ; 
- int /*<<< orphan*/  cfsetispeed (struct termios*,int) ; 
- int /*<<< orphan*/  cfsetospeed (struct termios*,int) ; 
- int /*<<< orphan*/  ioctl (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tcgetattr (int /*<<< orphan*/ ,struct termios*) ; 
- int /*<<< orphan*/  tcsetattr (int /*<<< orphan*/ ,int,struct termios*) ; 
+
+ int CREAD ;
+ int CS8 ;
+ int ECHO ;
+ int ICANON ;
+ int IGNBRK ;
+ int IGNPAR ;
+ int ISIG ;
+ int KDGKBMODE ;
+ int KDSKBMODE ;
+ int * K_CODE ;
+ int * K_RAW ;
+ int * K_XLATE ;
+ int ONLCR ;
+ int OPOST ;
+ int TCSAFLUSH ;
+ int TCSANOW ;
+ int VGLKeyboardMode ;
+ struct termios VGLKeyboardTty ;
+
+
+
+ size_t VMIN ;
+ size_t VTIME ;
+ int cfmakeraw (struct termios*) ;
+ int cfsetispeed (struct termios*,int) ;
+ int cfsetospeed (struct termios*,int) ;
+ int ioctl (int ,int ,int *) ;
+ int tcgetattr (int ,struct termios*) ;
+ int tcsetattr (int ,int,struct termios*) ;
 
 int
 VGLKeyboardInit(int mode)
@@ -64,13 +64,13 @@ VGLKeyboardInit(int mode)
   tcsetattr(0, TCSANOW | TCSAFLUSH, &term);
 
   switch (mode) {
-  case VGL_RAWKEYS:
+  case 129:
     ioctl(0, KDSKBMODE, K_RAW);
     break;
-  case VGL_CODEKEYS:
+  case 130:
     ioctl(0, KDSKBMODE, K_CODE);
     break;
-  case VGL_XLATEKEYS:
+  case 128:
     ioctl(0, KDSKBMODE, K_XLATE);
     break;
   }

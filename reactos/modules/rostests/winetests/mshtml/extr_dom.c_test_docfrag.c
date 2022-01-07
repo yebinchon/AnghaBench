@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  elem_type_t ;
-typedef  int /*<<< orphan*/  all_types ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  void IHTMLLocation ;
-typedef  int /*<<< orphan*/  IHTMLElementCollection ;
-typedef  int /*<<< orphan*/  IHTMLElement ;
-typedef  int /*<<< orphan*/  IHTMLDocument2 ;
-typedef  scalar_t__ HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DIID_DispHTMLDocument ; 
-#define  ET_BODY 133 
-#define  ET_BR 132 
-#define  ET_DIV 131 
-#define  ET_HEAD 130 
-#define  ET_HTML 129 
-#define  ET_TITLE 128 
- scalar_t__ E_UNEXPECTED ; 
- int /*<<< orphan*/  IHTMLDocument2_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IHTMLDocument2_get_all (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- scalar_t__ IHTMLDocument2_get_body (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- scalar_t__ IHTMLDocument2_get_location (int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IHTMLElementCollection_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IHTMLElement_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/ * create_docfrag (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * get_doc_node (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * get_elem_by_id (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * get_owner_doc (int /*<<< orphan*/ *) ; 
- int iface_cmp (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/ * test_create_elem (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  test_disp (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  test_elem_collection (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int) ; 
- int /*<<< orphan*/  test_elem_source_index (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  test_node_append_child (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int elem_type_t ;
+typedef int all_types ;
+typedef int IUnknown ;
+typedef void IHTMLLocation ;
+typedef int IHTMLElementCollection ;
+typedef int IHTMLElement ;
+typedef int IHTMLDocument2 ;
+typedef scalar_t__ HRESULT ;
+
+
+ int DIID_DispHTMLDocument ;
+
+
+
+
+
+
+ scalar_t__ E_UNEXPECTED ;
+ int IHTMLDocument2_Release (int *) ;
+ scalar_t__ IHTMLDocument2_get_all (int *,int **) ;
+ scalar_t__ IHTMLDocument2_get_body (int *,int **) ;
+ scalar_t__ IHTMLDocument2_get_location (int *,void**) ;
+ int IHTMLElementCollection_Release (int *) ;
+ int IHTMLElement_Release (int *) ;
+ scalar_t__ S_OK ;
+ int TRUE ;
+ int * create_docfrag (int *) ;
+ int * get_doc_node (int *) ;
+ int * get_elem_by_id (int *,char*,int ) ;
+ int * get_owner_doc (int *) ;
+ int iface_cmp (int *,int *) ;
+ int ok (int,char*,...) ;
+ int * test_create_elem (int *,char*) ;
+ int test_disp (int *,int *,char*) ;
+ int test_elem_collection (int *,int const*,int) ;
+ int test_elem_source_index (int *,int) ;
+ int test_node_append_child (int *,int *) ;
 
 __attribute__((used)) static void test_docfrag(IHTMLDocument2 *doc)
 {
@@ -57,12 +57,12 @@ __attribute__((used)) static void test_docfrag(IHTMLDocument2 *doc)
     HRESULT hres;
 
     static const elem_type_t all_types[] = {
-        ET_HTML,
-        ET_HEAD,
-        ET_TITLE,
-        ET_BODY,
-        ET_DIV,
-        ET_BR
+        129,
+        130,
+        128,
+        133,
+        131,
+        132
     };
 
     frag = create_docfrag(doc);

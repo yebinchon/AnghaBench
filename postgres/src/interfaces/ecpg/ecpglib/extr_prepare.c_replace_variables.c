@@ -1,78 +1,70 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int CHAR_BIT ; 
- scalar_t__ ecpg_alloc (int,int) ; 
- int /*<<< orphan*/  ecpg_free (char*) ; 
- scalar_t__ isvarchar (char) ; 
- int /*<<< orphan*/  memcpy (char*,char*,int) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strcat (char*,char*) ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
- int strlen (char*) ; 
+ int CHAR_BIT ;
+ scalar_t__ ecpg_alloc (int,int) ;
+ int ecpg_free (char*) ;
+ scalar_t__ isvarchar (char) ;
+ int memcpy (char*,char*,int) ;
+ int snprintf (char*,int,char*,int ) ;
+ int strcat (char*,char*) ;
+ int strcpy (char*,char*) ;
+ int strlen (char*) ;
 
 __attribute__((used)) static bool
 replace_variables(char **text, int lineno)
 {
-	bool		string = false;
-	int			counter = 1,
-				ptr = 0;
+ bool string = 0;
+ int counter = 1,
+    ptr = 0;
 
-	for (; (*text)[ptr] != '\0'; ptr++)
-	{
-		if ((*text)[ptr] == '\'')
-			string = string ? false : true;
+ for (; (*text)[ptr] != '\0'; ptr++)
+ {
+  if ((*text)[ptr] == '\'')
+   string = string ? 0 : 1;
 
-		if (string || (((*text)[ptr] != ':') && ((*text)[ptr] != '?')))
-			continue;
+  if (string || (((*text)[ptr] != ':') && ((*text)[ptr] != '?')))
+   continue;
 
-		if (((*text)[ptr] == ':') && ((*text)[ptr + 1] == ':'))
-			ptr += 2;			/* skip  '::' */
-		else
-		{
-			/* a rough guess of the size we need: */
-			int			buffersize = sizeof(int) * CHAR_BIT * 10 / 3;
-			int			len;
-			char	   *buffer,
-					   *newcopy;
+  if (((*text)[ptr] == ':') && ((*text)[ptr + 1] == ':'))
+   ptr += 2;
+  else
+  {
 
-			if (!(buffer = (char *) ecpg_alloc(buffersize, lineno)))
-				return false;
+   int buffersize = sizeof(int) * CHAR_BIT * 10 / 3;
+   int len;
+   char *buffer,
+        *newcopy;
 
-			snprintf(buffer, buffersize, "$%d", counter++);
+   if (!(buffer = (char *) ecpg_alloc(buffersize, lineno)))
+    return 0;
 
-			for (len = 1; (*text)[ptr + len] && isvarchar((*text)[ptr + len]); len++)
-				 /* skip */ ;
-			if (!(newcopy = (char *) ecpg_alloc(strlen(*text) -len + strlen(buffer) + 1, lineno)))
-			{
-				ecpg_free(buffer);
-				return false;
-			}
+   snprintf(buffer, buffersize, "$%d", counter++);
 
-			memcpy(newcopy, *text, ptr);
-			strcpy(newcopy + ptr, buffer);
-			strcat(newcopy, (*text) +ptr + len);
+   for (len = 1; (*text)[ptr + len] && isvarchar((*text)[ptr + len]); len++)
+                ;
+   if (!(newcopy = (char *) ecpg_alloc(strlen(*text) -len + strlen(buffer) + 1, lineno)))
+   {
+    ecpg_free(buffer);
+    return 0;
+   }
 
-			ecpg_free(*text);
-			ecpg_free(buffer);
+   memcpy(newcopy, *text, ptr);
+   strcpy(newcopy + ptr, buffer);
+   strcat(newcopy, (*text) +ptr + len);
 
-			*text = newcopy;
+   ecpg_free(*text);
+   ecpg_free(buffer);
 
-			if ((*text)[ptr] == '\0')	/* we reached the end */
-				ptr--;			/* since we will (*text)[ptr]++ in the top
-								 * level for loop */
-		}
-	}
-	return true;
+   *text = newcopy;
+
+   if ((*text)[ptr] == '\0')
+    ptr--;
+
+  }
+ }
+ return 1;
 }

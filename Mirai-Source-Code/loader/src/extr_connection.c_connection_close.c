@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int addr; char* user; char* pass; char* arch; int /*<<< orphan*/  port; } ;
-struct TYPE_4__ {scalar_t__ deadline; int /*<<< orphan*/  data; } ;
-struct connection {int fd; int state_telnet; int /*<<< orphan*/  lock; TYPE_3__* srv; TYPE_2__ info; scalar_t__ success; scalar_t__ rdbuf_pos; int /*<<< orphan*/  rdbuf; void* ctrlc_retry; void* retry_bin; void* open; scalar_t__ last_recv; TYPE_1__ output_buffer; } ;
-struct TYPE_6__ {int /*<<< orphan*/  curr_open; int /*<<< orphan*/  total_failures; int /*<<< orphan*/  total_successes; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ATOMIC_DEC (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ATOMIC_INC (int /*<<< orphan*/ *) ; 
- void* FALSE ; 
- int TELNET_CLOSED ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,int,int,int,int,char*,char*,char*,...) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int ntohs (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stderr ; 
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int addr; char* user; char* pass; char* arch; int port; } ;
+struct TYPE_4__ {scalar_t__ deadline; int data; } ;
+struct connection {int fd; int state_telnet; int lock; TYPE_3__* srv; TYPE_2__ info; scalar_t__ success; scalar_t__ rdbuf_pos; int rdbuf; void* ctrlc_retry; void* retry_bin; void* open; scalar_t__ last_recv; TYPE_1__ output_buffer; } ;
+struct TYPE_6__ {int curr_open; int total_failures; int total_successes; } ;
+
+
+ int ATOMIC_DEC (int *) ;
+ int ATOMIC_INC (int *) ;
+ void* FALSE ;
+ int TELNET_CLOSED ;
+ int close (int) ;
+ int fprintf (int ,char*,int,int,int,int,int,char*,char*,char*,...) ;
+ int memset (int ,int ,int) ;
+ int ntohs (int ) ;
+ int printf (char*,...) ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
+ int stderr ;
 
 void connection_close(struct connection *conn)
 {
@@ -38,9 +38,9 @@ void connection_close(struct connection *conn)
 
     if (conn->open)
     {
-#ifdef DEBUG
-        printf("[FD%d] Shut down connection\n", conn->fd);
-#endif
+
+
+
         memset(conn->output_buffer.data, 0, sizeof(conn->output_buffer.data));
         conn->output_buffer.deadline = 0;
         conn->last_recv = 0;
@@ -50,7 +50,7 @@ void connection_close(struct connection *conn)
         memset(conn->rdbuf, 0, sizeof(conn->rdbuf));
         conn->rdbuf_pos = 0;
 
-        if (conn->srv == NULL)
+        if (conn->srv == ((void*)0))
         {
             printf("srv == NULL\n");
             return;

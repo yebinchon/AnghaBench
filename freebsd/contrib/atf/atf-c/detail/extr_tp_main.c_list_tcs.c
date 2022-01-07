@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  atf_tp_t ;
-typedef  int /*<<< orphan*/  atf_tc_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INV (int /*<<< orphan*/ ) ; 
- char** atf_tc_get_md_vars (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/ ** atf_tp_get_tcs (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  atf_utils_free_charpp (char**) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- scalar_t__ strcmp (char*,char*) ; 
+
+
+
+typedef int atf_tp_t ;
+typedef int atf_tc_t ;
+
+
+ int INV (int ) ;
+ char** atf_tc_get_md_vars (int const*) ;
+ int ** atf_tp_get_tcs (int const*) ;
+ int atf_utils_free_charpp (char**) ;
+ int printf (char*,...) ;
+ scalar_t__ strcmp (char*,char*) ;
 
 __attribute__((used)) static
 void
@@ -31,25 +31,25 @@ list_tcs(const atf_tp_t *tp)
     printf("Content-Type: application/X-atf-tp; version=\"1\"\n\n");
 
     tcs = atf_tp_get_tcs(tp);
-    INV(tcs != NULL);  /* Should be checked. */
-    for (tcsptr = tcs; *tcsptr != NULL; tcsptr++) {
+    INV(tcs != ((void*)0));
+    for (tcsptr = tcs; *tcsptr != ((void*)0); tcsptr++) {
         const atf_tc_t *tc = *tcsptr;
         char **vars = atf_tc_get_md_vars(tc);
         char **ptr;
 
-        INV(vars != NULL);  /* Should be checked. */
+        INV(vars != ((void*)0));
 
-        if (tcsptr != tcs)  /* Not first. */
+        if (tcsptr != tcs)
             printf("\n");
 
-        for (ptr = vars; *ptr != NULL; ptr += 2) {
+        for (ptr = vars; *ptr != ((void*)0); ptr += 2) {
             if (strcmp(*ptr, "ident") == 0) {
                 printf("ident: %s\n", *(ptr + 1));
                 break;
             }
         }
 
-        for (ptr = vars; *ptr != NULL; ptr += 2) {
+        for (ptr = vars; *ptr != ((void*)0); ptr += 2) {
             if (strcmp(*ptr, "ident") != 0) {
                 printf("%s: %s\n", *ptr, *(ptr + 1));
             }

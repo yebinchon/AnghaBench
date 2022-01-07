@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ UBYTE ;
-typedef  int /*<<< orphan*/  ACTOR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACTOR_ENABLED (scalar_t__*) ; 
- int /*<<< orphan*/  ACTOR_X (scalar_t__*) ; 
- int /*<<< orphan*/  ACTOR_Y (scalar_t__*) ; 
- scalar_t__ DIV_8 (int /*<<< orphan*/ ) ; 
- scalar_t__* actors ; 
- scalar_t__ scene_num_actors ; 
+
+
+
+typedef scalar_t__ UBYTE ;
+typedef int ACTOR ;
+
+
+ int ACTOR_ENABLED (scalar_t__*) ;
+ int ACTOR_X (scalar_t__*) ;
+ int ACTOR_Y (scalar_t__*) ;
+ scalar_t__ DIV_8 (int ) ;
+ scalar_t__* actors ;
+ scalar_t__ scene_num_actors ;
 
 UBYTE SceneNpcAt_b(UBYTE index, UBYTE tx_a, UBYTE ty_a)
 {
@@ -40,8 +40,8 @@ UBYTE SceneNpcAt_b(UBYTE index, UBYTE tx_a, UBYTE ty_a)
     ty_b = DIV_8(ACTOR_Y(ptr));
     if (ty_b == 0)
     {
-      // If actor at posY=256 (really 0 since 8bit) convert to correct tile
-      // since DIV_8 will give tile as 0 rather than 32
+
+
       ty_b = 32;
     }
     if ((ty_a == ty_b || ty_a == ty_b - 1) &&

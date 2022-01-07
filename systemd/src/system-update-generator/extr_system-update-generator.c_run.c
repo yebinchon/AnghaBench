@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char const* arg_dest ; 
- int /*<<< orphan*/  assert_se (char const*) ; 
- int generate_symlink () ; 
- int /*<<< orphan*/  log_warning_errno (int,char*) ; 
- int /*<<< orphan*/  parse_proc_cmdline_item ; 
- int proc_cmdline_parse (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+ char const* arg_dest ;
+ int assert_se (char const*) ;
+ int generate_symlink () ;
+ int log_warning_errno (int,char*) ;
+ int parse_proc_cmdline_item ;
+ int proc_cmdline_parse (int ,int *,int ) ;
 
 __attribute__((used)) static int run(const char *dest, const char *dest_early, const char *dest_late) {
         int r;
@@ -28,8 +20,8 @@ __attribute__((used)) static int run(const char *dest, const char *dest_early, c
         if (r <= 0)
                 return r;
 
-        /* We parse the command line only to emit warnings. */
-        r = proc_cmdline_parse(parse_proc_cmdline_item, NULL, 0);
+
+        r = proc_cmdline_parse(parse_proc_cmdline_item, ((void*)0), 0);
         if (r < 0)
                 log_warning_errno(r, "Failed to parse kernel command line, ignoring: %m");
 

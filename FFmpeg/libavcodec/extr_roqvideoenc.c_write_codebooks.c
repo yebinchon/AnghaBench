@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_10__ {TYPE_2__* cb4x4; TYPE_1__* cb2x2; int /*<<< orphan*/ * out_buf; } ;
+
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_10__ {TYPE_2__* cb4x4; TYPE_1__* cb2x2; int * out_buf; } ;
 struct TYPE_9__ {int numCB2; int numCB4; size_t* f2i2; int* i2f2; size_t* f2i4; } ;
 struct TYPE_8__ {size_t* idx; } ;
-struct TYPE_7__ {int u; int v; int /*<<< orphan*/  y; } ;
-typedef  TYPE_3__ RoqTempdata ;
-typedef  TYPE_4__ RoqContext ;
+struct TYPE_7__ {int u; int v; int y; } ;
+typedef TYPE_3__ RoqTempdata ;
+typedef TYPE_4__ RoqContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RoQ_QUAD_CODEBOOK ; 
- int /*<<< orphan*/  bytestream_put_buffer (int /*<<< orphan*/ **,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  bytestream_put_byte (int /*<<< orphan*/ **,int) ; 
- int /*<<< orphan*/  bytestream_put_le16 (int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bytestream_put_le32 (int /*<<< orphan*/ **,int) ; 
+
+ int RoQ_QUAD_CODEBOOK ;
+ int bytestream_put_buffer (int **,int ,int) ;
+ int bytestream_put_byte (int **,int) ;
+ int bytestream_put_le16 (int **,int ) ;
+ int bytestream_put_le32 (int **,int) ;
 
 __attribute__((used)) static void write_codebooks(RoqContext *enc, RoqTempdata *tempData)
 {

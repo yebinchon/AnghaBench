@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-struct TYPE_13__ {int it_flags; int /*<<< orphan*/  time; int /*<<< orphan*/  nbytes; int /*<<< orphan*/  nkey; } ;
-typedef  TYPE_1__ item ;
+
+
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+struct TYPE_13__ {int it_flags; int time; int nbytes; int nkey; } ;
+typedef TYPE_1__ item ;
 struct TYPE_16__ {scalar_t__ use_cas; } ;
 struct TYPE_15__ {int total_items; } ;
-struct TYPE_14__ {int curr_items; int /*<<< orphan*/  curr_bytes; } ;
+struct TYPE_14__ {int curr_items; int curr_bytes; } ;
 
-/* Variables and functions */
- int ITEM_LINKED ; 
- int ITEM_SLABBED ; 
- int /*<<< orphan*/  ITEM_key (TYPE_1__*) ; 
- scalar_t__ ITEM_ntotal (TYPE_1__*) ; 
- int /*<<< orphan*/  ITEM_set_cas (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MEMCACHED_ITEM_LINK (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  STATS_LOCK () ; 
- int /*<<< orphan*/  STATS_UNLOCK () ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  assoc_insert (TYPE_1__*,int /*<<< orphan*/  const) ; 
- int /*<<< orphan*/  current_time ; 
- int /*<<< orphan*/  get_cas_id () ; 
- int /*<<< orphan*/  item_link_q (TYPE_1__*) ; 
- int /*<<< orphan*/  item_stats_sizes_add (TYPE_1__*) ; 
- int /*<<< orphan*/  refcount_incr (TYPE_1__*) ; 
- TYPE_4__ settings ; 
- TYPE_3__ stats ; 
- TYPE_2__ stats_state ; 
+
+ int ITEM_LINKED ;
+ int ITEM_SLABBED ;
+ int ITEM_key (TYPE_1__*) ;
+ scalar_t__ ITEM_ntotal (TYPE_1__*) ;
+ int ITEM_set_cas (TYPE_1__*,int ) ;
+ int MEMCACHED_ITEM_LINK (int ,int ,int ) ;
+ int STATS_LOCK () ;
+ int STATS_UNLOCK () ;
+ int assert (int) ;
+ int assoc_insert (TYPE_1__*,int const) ;
+ int current_time ;
+ int get_cas_id () ;
+ int item_link_q (TYPE_1__*) ;
+ int item_stats_sizes_add (TYPE_1__*) ;
+ int refcount_incr (TYPE_1__*) ;
+ TYPE_4__ settings ;
+ TYPE_3__ stats ;
+ TYPE_2__ stats_state ;
 
 int do_item_link(item *it, const uint32_t hv) {
     MEMCACHED_ITEM_LINK(ITEM_key(it), it->nkey, it->nbytes);
@@ -53,7 +53,7 @@ int do_item_link(item *it, const uint32_t hv) {
     stats.total_items += 1;
     STATS_UNLOCK();
 
-    /* Allocate a new CAS ID on link. */
+
     ITEM_set_cas(it, (settings.use_cas) ? get_cas_id() : 0);
     assoc_insert(it, hv);
     item_link_q(it);

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct device {int dummy; } ;
 
-/* Variables and functions */
- unsigned int SC16IS7XX_REG_SHIFT ; 
-#define  SC16IS7XX_RHR_REG 128 
+
+ unsigned int SC16IS7XX_REG_SHIFT ;
+
 
 __attribute__((used)) static bool sc16is7xx_regmap_precious(struct device *dev, unsigned int reg)
 {
-	switch (reg >> SC16IS7XX_REG_SHIFT) {
-	case SC16IS7XX_RHR_REG:
-		return true;
-	default:
-		break;
-	}
+ switch (reg >> SC16IS7XX_REG_SHIFT) {
+ case 128:
+  return 1;
+ default:
+  break;
+ }
 
-	return false;
+ return 0;
 }

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  index_hash; int /*<<< orphan*/  block_decoder; } ;
-typedef  TYPE_1__ lzma_coder ;
-typedef  int /*<<< orphan*/  lzma_allocator ;
 
-/* Variables and functions */
- int /*<<< orphan*/  lzma_free (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lzma_index_hash_end (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lzma_next_end (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int index_hash; int block_decoder; } ;
+typedef TYPE_1__ lzma_coder ;
+typedef int lzma_allocator ;
+
+
+ int lzma_free (TYPE_1__*,int *) ;
+ int lzma_index_hash_end (int ,int *) ;
+ int lzma_next_end (int *,int *) ;
 
 __attribute__((used)) static void
 stream_decoder_end(lzma_coder *coder, lzma_allocator *allocator)
 {
-	lzma_next_end(&coder->block_decoder, allocator);
-	lzma_index_hash_end(coder->index_hash, allocator);
-	lzma_free(coder, allocator);
-	return;
+ lzma_next_end(&coder->block_decoder, allocator);
+ lzma_index_hash_end(coder->index_hash, allocator);
+ lzma_free(coder, allocator);
+ return;
 }

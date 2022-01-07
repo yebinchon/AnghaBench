@@ -1,103 +1,93 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {struct TYPE_4__* Next; struct TYPE_4__* NetworkAddresses; int /*<<< orphan*/  Name; } ;
-typedef  int /*<<< orphan*/  PCHAR ;
-typedef  TYPE_1__* PADAPTER_INFO ;
-typedef  scalar_t__ BOOLEAN ;
 
-/* Variables and functions */
- TYPE_1__* AdaptersInfoList ; 
- int /*<<< orphan*/  AdaptersInfoMutex ; 
- scalar_t__ AddAdapter (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FAKE_NDISWAN_ADAPTER_NAME ; 
- int /*<<< orphan*/  GlobalFreePtr (TYPE_1__*) ; 
- int /*<<< orphan*/  INFINITE ; 
- int /*<<< orphan*/  PacketAddFakeNdisWanAdapter () ; 
- int /*<<< orphan*/  PacketGetAdaptersDag () ; 
- int /*<<< orphan*/  PacketGetAdaptersIPH () ; 
- int /*<<< orphan*/  ReleaseMutex (int /*<<< orphan*/ ) ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  WaitForSingleObject (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * p_dagc_open ; 
- scalar_t__ strcmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {struct TYPE_4__* Next; struct TYPE_4__* NetworkAddresses; int Name; } ;
+typedef int PCHAR ;
+typedef TYPE_1__* PADAPTER_INFO ;
+typedef scalar_t__ BOOLEAN ;
+
+
+ TYPE_1__* AdaptersInfoList ;
+ int AdaptersInfoMutex ;
+ scalar_t__ AddAdapter (int ,int ) ;
+ int FAKE_NDISWAN_ADAPTER_NAME ;
+ int GlobalFreePtr (TYPE_1__*) ;
+ int INFINITE ;
+ int PacketAddFakeNdisWanAdapter () ;
+ int PacketGetAdaptersDag () ;
+ int PacketGetAdaptersIPH () ;
+ int ReleaseMutex (int ) ;
+ scalar_t__ TRUE ;
+ int WaitForSingleObject (int ,int ) ;
+ int * p_dagc_open ;
+ scalar_t__ strcmp (int ,int ) ;
 
 BOOLEAN PacketUpdateAdInfo(PCHAR AdapterName)
 {
-	//this function should acquire the AdaptersInfoMutex, since it's NOT called with an ADAPTER_INFO as parameter
-	PADAPTER_INFO TAdInfo, PrevAdInfo;
-	
-	WaitForSingleObject(AdaptersInfoMutex, INFINITE);
-	
-	PrevAdInfo = TAdInfo = AdaptersInfoList;
 
-	//
-	// If an entry for this adapter is present in the list, we destroy it
-	//
-	while(TAdInfo != NULL)
-	{
-		if(strcmp(TAdInfo->Name, AdapterName) == 0)
-		{
-			if (strcmp(AdapterName, FAKE_NDISWAN_ADAPTER_NAME) == 0)
-			{
-				ReleaseMutex(AdaptersInfoMutex);
-				return TRUE;
-			}
+ PADAPTER_INFO TAdInfo, PrevAdInfo;
 
-			if(TAdInfo == AdaptersInfoList)
-			{
-				AdaptersInfoList = TAdInfo->Next;
-			}
-			else
-			{
-				PrevAdInfo->Next = TAdInfo->Next;
-			}
+ WaitForSingleObject(AdaptersInfoMutex, INFINITE);
 
-			if (TAdInfo->NetworkAddresses != NULL)
-				GlobalFreePtr(TAdInfo->NetworkAddresses);
-			GlobalFreePtr(TAdInfo);
+ PrevAdInfo = TAdInfo = AdaptersInfoList;
 
-			break;
-		}
 
-		PrevAdInfo = TAdInfo;
 
-		TAdInfo = TAdInfo->Next;
-	}
 
-	ReleaseMutex(AdaptersInfoMutex);
+ while(TAdInfo != ((void*)0))
+ {
+  if(strcmp(TAdInfo->Name, AdapterName) == 0)
+  {
+   if (strcmp(AdapterName, FAKE_NDISWAN_ADAPTER_NAME) == 0)
+   {
+    ReleaseMutex(AdaptersInfoMutex);
+    return TRUE;
+   }
 
-	//
-	// Now obtain the information about this adapter
-	//
-	if(AddAdapter(AdapterName, 0) == TRUE)
-		return TRUE;
-#ifndef _WINNT4
-	// 
-	// Not a tradiditonal adapter, but possibly a Wan or DAG interface 
-	// Gather all the available adapters from IPH API and dagc API
-	//
-	PacketGetAdaptersIPH();
-	PacketAddFakeNdisWanAdapter();
-#ifdef HAVE_DAG_API
-	if(p_dagc_open == NULL)	
-		return TRUE;	// dagc.dll not present on this system.
-	else
-	PacketGetAdaptersDag();
-#endif // HAVE_DAG_API
+   if(TAdInfo == AdaptersInfoList)
+   {
+    AdaptersInfoList = TAdInfo->Next;
+   }
+   else
+   {
+    PrevAdInfo->Next = TAdInfo->Next;
+   }
 
-#endif // _WINNT4
+   if (TAdInfo->NetworkAddresses != ((void*)0))
+    GlobalFreePtr(TAdInfo->NetworkAddresses);
+   GlobalFreePtr(TAdInfo);
 
-	// Adapter not found
-	return TRUE;
+   break;
+  }
+
+  PrevAdInfo = TAdInfo;
+
+  TAdInfo = TAdInfo->Next;
+ }
+
+ ReleaseMutex(AdaptersInfoMutex);
+
+
+
+
+ if(AddAdapter(AdapterName, 0) == TRUE)
+  return TRUE;
+
+
+
+
+
+ PacketGetAdaptersIPH();
+ PacketAddFakeNdisWanAdapter();
+ return TRUE;
 }

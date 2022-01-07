@@ -1,70 +1,70 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int Halt; int /*<<< orphan*/  Event; int /*<<< orphan*/  Cancel; int /*<<< orphan*/  PacketQueue; int /*<<< orphan*/  PacketGeneratorThread; } ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int Halt; int Event; int Cancel; int PacketQueue; int PacketGeneratorThread; } ;
 struct TYPE_7__ {TYPE_1__* PacketAdapter; } ;
 struct TYPE_6__ {TYPE_3__* Param; } ;
-typedef  TYPE_2__ SESSION ;
-typedef  TYPE_3__ NULL_LAN ;
-typedef  int /*<<< orphan*/  BLOCK ;
+typedef TYPE_2__ SESSION ;
+typedef TYPE_3__ NULL_LAN ;
+typedef int BLOCK ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Free (TYPE_3__*) ; 
- int /*<<< orphan*/  FreeBlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * GetNext (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  INFINITE ; 
- int /*<<< orphan*/  LockQueue (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReleaseCancel (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReleaseEvent (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReleaseQueue (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReleaseThread (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Set (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  UnlockQueue (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WaitThread (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int Free (TYPE_3__*) ;
+ int FreeBlock (int *) ;
+ int * GetNext (int ) ;
+ int INFINITE ;
+ int LockQueue (int ) ;
+ int ReleaseCancel (int ) ;
+ int ReleaseEvent (int ) ;
+ int ReleaseQueue (int ) ;
+ int ReleaseThread (int ) ;
+ int Set (int ) ;
+ int UnlockQueue (int ) ;
+ int WaitThread (int ,int ) ;
 
 void NullPaFree(SESSION *s)
 {
-	// Validate arguments
-	NULL_LAN *n;
-	BLOCK *b;
-	if (s == NULL || (n = s->PacketAdapter->Param) == NULL)
-	{
-		return;
-	}
 
-	n->Halt = true;
-	Set(n->Event);
+ NULL_LAN *n;
+ BLOCK *b;
+ if (s == ((void*)0) || (n = s->PacketAdapter->Param) == ((void*)0))
+ {
+  return;
+ }
 
-	WaitThread(n->PacketGeneratorThread, INFINITE);
-	ReleaseThread(n->PacketGeneratorThread);
+ n->Halt = 1;
+ Set(n->Event);
 
-	LockQueue(n->PacketQueue);
-	{
-		while (b = GetNext(n->PacketQueue))
-		{
-			FreeBlock(b);
-		}
-	}
-	UnlockQueue(n->PacketQueue);
+ WaitThread(n->PacketGeneratorThread, INFINITE);
+ ReleaseThread(n->PacketGeneratorThread);
 
-	ReleaseQueue(n->PacketQueue);
+ LockQueue(n->PacketQueue);
+ {
+  while (b = GetNext(n->PacketQueue))
+  {
+   FreeBlock(b);
+  }
+ }
+ UnlockQueue(n->PacketQueue);
 
-	ReleaseCancel(n->Cancel);
+ ReleaseQueue(n->PacketQueue);
 
-	ReleaseEvent(n->Event);
+ ReleaseCancel(n->Cancel);
 
-	s->PacketAdapter->Param = NULL;
-	Free(n);
+ ReleaseEvent(n->Event);
+
+ s->PacketAdapter->Param = ((void*)0);
+ Free(n);
 }

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct explicit_list_iterator {int pos; int* cur; int* last; void* jump_to; } ;
-typedef  scalar_t__ iterator_t ;
+typedef scalar_t__ iterator_t ;
 
-/* Variables and functions */
- int INFTY ; 
- int /*<<< orphan*/  assert (int) ; 
- void* empty_iterator_jump_to ; 
+
+ int INFTY ;
+ int assert (int) ;
+ void* empty_iterator_jump_to ;
 
 int explicit_list_iterator_jump_to (iterator_t I, int req_pos) {
   struct explicit_list_iterator *IL = (struct explicit_list_iterator *) I;
@@ -31,16 +31,16 @@ int explicit_list_iterator_jump_to (iterator_t I, int req_pos) {
   int *A = IL->cur;
   long a = 0, b = 1, c = IL->last - A;
   if (b < c) {
-    while (A[b] < req_pos) {  // a < b < c, A[a] < req_pos
+    while (A[b] < req_pos) {
       a = b;
       b <<= 1;
       if (b >= c) {
-	b = c;
-	break;
+ b = c;
+ break;
       }
     }
   }
-  // A[a] < req_pos <= A[b] , 0 <= a < b <= c
+
   while (b - a > 1) {
     c = (a + b) >> 1;
     if (A[c] < req_pos) {

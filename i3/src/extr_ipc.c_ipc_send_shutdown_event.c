@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ylength ;
-typedef  int /*<<< orphan*/  yajl_gen ;
-typedef  scalar_t__ shutdown_reason_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  I3_IPC_EVENT_SHUTDOWN ; 
- scalar_t__ SHUTDOWN_REASON_EXIT ; 
- scalar_t__ SHUTDOWN_REASON_RESTART ; 
- int /*<<< orphan*/  free ; 
- int /*<<< orphan*/  get_buf ; 
- int /*<<< orphan*/  ipc_send_event (char*,int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  map_close ; 
- int /*<<< orphan*/  map_open ; 
- int /*<<< orphan*/  y (int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  ygenalloc () ; 
- int /*<<< orphan*/  ystr (char*) ; 
+
+
+
+typedef int ylength ;
+typedef int yajl_gen ;
+typedef scalar_t__ shutdown_reason_t ;
+
+
+ int I3_IPC_EVENT_SHUTDOWN ;
+ scalar_t__ SHUTDOWN_REASON_EXIT ;
+ scalar_t__ SHUTDOWN_REASON_RESTART ;
+ int free ;
+ int get_buf ;
+ int ipc_send_event (char*,int ,char const*) ;
+ int map_close ;
+ int map_open ;
+ int y (int ,...) ;
+ int ygenalloc () ;
+ int ystr (char*) ;
 
 __attribute__((used)) static void ipc_send_shutdown_event(shutdown_reason_t reason) {
     yajl_gen gen = ygenalloc();

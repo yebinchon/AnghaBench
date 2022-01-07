@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct task_struct {int /*<<< orphan*/  pi_waiters; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  plist_head_empty (int /*<<< orphan*/ *) ; 
+
+
+
+struct task_struct {int pi_waiters; } ;
+
+
+ int plist_head_empty (int *) ;
 
 __attribute__((used)) static inline int task_has_pi_waiters(struct task_struct *p)
 {
-	return !plist_head_empty(&p->pi_waiters);
+ return !plist_head_empty(&p->pi_waiters);
 }

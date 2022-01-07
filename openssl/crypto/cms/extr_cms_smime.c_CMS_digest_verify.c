@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  CMS_ContentInfo ;
-typedef  int /*<<< orphan*/  BIO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CMS_F_CMS_DIGEST_VERIFY ; 
- int /*<<< orphan*/  CMS_R_TYPE_NOT_DIGESTED_DATA ; 
- int /*<<< orphan*/ * CMS_dataInit (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CMS_get0_type (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CMSerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ NID_pkcs7_digest ; 
- scalar_t__ OBJ_obj2nid (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  check_content (int /*<<< orphan*/ *) ; 
- int cms_DigestedData_do_final (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int cms_copy_content (int /*<<< orphan*/ *,int /*<<< orphan*/ *,unsigned int) ; 
- int /*<<< orphan*/  do_free_upto (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int CMS_ContentInfo ;
+typedef int BIO ;
+
+
+ int CMS_F_CMS_DIGEST_VERIFY ;
+ int CMS_R_TYPE_NOT_DIGESTED_DATA ;
+ int * CMS_dataInit (int *,int *) ;
+ int CMS_get0_type (int *) ;
+ int CMSerr (int ,int ) ;
+ scalar_t__ NID_pkcs7_digest ;
+ scalar_t__ OBJ_obj2nid (int ) ;
+ int check_content (int *) ;
+ int cms_DigestedData_do_final (int *,int *,int) ;
+ int cms_copy_content (int *,int *,unsigned int) ;
+ int do_free_upto (int *,int *) ;
 
 int CMS_digest_verify(CMS_ContentInfo *cms, BIO *dcont, BIO *out,
                       unsigned int flags)

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_9__ {int ex_flags; scalar_t__ akid; } ;
-typedef  TYPE_1__ X509 ;
+typedef TYPE_1__ X509 ;
 
-/* Variables and functions */
- int EXFLAG_PROXY ; 
- int /*<<< orphan*/  KU_DIGITAL_SIGNATURE ; 
- int /*<<< orphan*/  KU_KEY_CERT_SIGN ; 
- scalar_t__ X509_NAME_cmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int X509_V_ERR_KEYUSAGE_NO_CERTSIGN ; 
- int X509_V_ERR_KEYUSAGE_NO_DIGITAL_SIGNATURE ; 
- int X509_V_ERR_SUBJECT_ISSUER_MISMATCH ; 
- int X509_V_OK ; 
- int X509_check_akid (TYPE_1__*,scalar_t__) ; 
- int /*<<< orphan*/  X509_get_issuer_name (TYPE_1__*) ; 
- int /*<<< orphan*/  X509_get_subject_name (TYPE_1__*) ; 
- scalar_t__ ku_reject (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  x509v3_cache_extensions (TYPE_1__*) ; 
+
+ int EXFLAG_PROXY ;
+ int KU_DIGITAL_SIGNATURE ;
+ int KU_KEY_CERT_SIGN ;
+ scalar_t__ X509_NAME_cmp (int ,int ) ;
+ int X509_V_ERR_KEYUSAGE_NO_CERTSIGN ;
+ int X509_V_ERR_KEYUSAGE_NO_DIGITAL_SIGNATURE ;
+ int X509_V_ERR_SUBJECT_ISSUER_MISMATCH ;
+ int X509_V_OK ;
+ int X509_check_akid (TYPE_1__*,scalar_t__) ;
+ int X509_get_issuer_name (TYPE_1__*) ;
+ int X509_get_subject_name (TYPE_1__*) ;
+ scalar_t__ ku_reject (TYPE_1__*,int ) ;
+ int x509v3_cache_extensions (TYPE_1__*) ;
 
 int X509_check_issued(X509 *issuer, X509 *subject)
 {

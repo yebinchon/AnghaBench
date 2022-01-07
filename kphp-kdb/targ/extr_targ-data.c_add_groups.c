@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int user_id; struct user_groups* grp; } ;
-typedef  TYPE_1__ user_t ;
+typedef TYPE_1__ user_t ;
 struct user_groups {int cur_groups; int tot_groups; int* G; } ;
 
-/* Variables and functions */
- int MAX_USER_GROUPS ; 
- int MIN_USER_GROUPS ; 
- int /*<<< orphan*/  add_user_group (TYPE_1__*,int) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  memcpy (struct user_groups*,struct user_groups*,int) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  zfree (struct user_groups*,int) ; 
- struct user_groups* zmalloc (int) ; 
+
+ int MAX_USER_GROUPS ;
+ int MIN_USER_GROUPS ;
+ int add_user_group (TYPE_1__*,int) ;
+ int assert (int) ;
+ int fprintf (int ,char*,...) ;
+ int memcpy (struct user_groups*,struct user_groups*,int) ;
+ int stderr ;
+ int zfree (struct user_groups*,int) ;
+ struct user_groups* zmalloc (int) ;
 
 __attribute__((used)) static int add_groups (user_t *U, int List[], int len) {
   struct user_groups *G = U->grp;
@@ -55,7 +55,7 @@ __attribute__((used)) static int add_groups (user_t *U, int List[], int len) {
     while (i < len && j < G->cur_groups) {
       if (List[i] < G->G[j]) { i++; }
       else if (List[i] > G->G[j]) { j++; }
-      else { c++;  i++;  j++; }
+      else { c++; i++; j++; }
     }
     int t = G->cur_groups + len - c, tt = G->tot_groups;
     if (t > tt) {
@@ -98,11 +98,11 @@ __attribute__((used)) static int add_groups (user_t *U, int List[], int len) {
 
   int tt = MIN_USER_GROUPS;
   while (tt < len) { tt <<= 1; }
-  
+
   U->grp = G = zmalloc (sizeof (struct user_groups) + 4*tt);
   G->cur_groups = len;
   G->tot_groups = tt;
-  
+
   for (i = 0; i < len; i++) {
     G->G[i] = List[i];
     add_user_group (U, List[i]);

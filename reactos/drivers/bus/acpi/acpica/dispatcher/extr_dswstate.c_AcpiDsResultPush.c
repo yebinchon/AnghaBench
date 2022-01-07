@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t UINT32 ;
-struct TYPE_6__ {int /*<<< orphan*/ ** ObjDesc; } ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef size_t UINT32 ;
+struct TYPE_6__ {int ** ObjDesc; } ;
 struct TYPE_8__ {TYPE_1__ Results; } ;
-struct TYPE_7__ {scalar_t__ ResultCount; scalar_t__ ResultSize; int /*<<< orphan*/  CurrentResult; TYPE_3__* Results; } ;
-typedef  TYPE_2__ ACPI_WALK_STATE ;
-typedef  int /*<<< orphan*/  ACPI_STATUS ;
-typedef  int /*<<< orphan*/  ACPI_OPERAND_OBJECT ;
-typedef  TYPE_3__ ACPI_GENERIC_STATE ;
+struct TYPE_7__ {scalar_t__ ResultCount; scalar_t__ ResultSize; int CurrentResult; TYPE_3__* Results; } ;
+typedef TYPE_2__ ACPI_WALK_STATE ;
+typedef int ACPI_STATUS ;
+typedef int ACPI_OPERAND_OBJECT ;
+typedef TYPE_3__ ACPI_GENERIC_STATE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACPI_DB_EXEC ; 
- int /*<<< orphan*/  ACPI_DEBUG_PRINT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ACPI_ERROR (int /*<<< orphan*/ ) ; 
- scalar_t__ ACPI_FAILURE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ACPI_FUNCTION_NAME (int /*<<< orphan*/ ) ; 
- size_t ACPI_RESULTS_FRAME_OBJ_NUM ; 
- int /*<<< orphan*/  AE_AML_INTERNAL ; 
- int /*<<< orphan*/  AE_BAD_PARAMETER ; 
- int /*<<< orphan*/  AE_INFO ; 
- int /*<<< orphan*/  AE_OK ; 
- int /*<<< orphan*/  AcpiDsResultStackPush (TYPE_2__*) ; 
- int /*<<< orphan*/  AcpiUtGetObjectTypeName (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DsResultPush ; 
+
+ int ACPI_DB_EXEC ;
+ int ACPI_DEBUG_PRINT (int ) ;
+ int ACPI_ERROR (int ) ;
+ scalar_t__ ACPI_FAILURE (int ) ;
+ int ACPI_FUNCTION_NAME (int ) ;
+ size_t ACPI_RESULTS_FRAME_OBJ_NUM ;
+ int AE_AML_INTERNAL ;
+ int AE_BAD_PARAMETER ;
+ int AE_INFO ;
+ int AE_OK ;
+ int AcpiDsResultStackPush (TYPE_2__*) ;
+ int AcpiUtGetObjectTypeName (int *) ;
+ int DsResultPush ;
 
 ACPI_STATUS
 AcpiDsResultPush (
-    ACPI_OPERAND_OBJECT     *Object,
-    ACPI_WALK_STATE         *WalkState)
+    ACPI_OPERAND_OBJECT *Object,
+    ACPI_WALK_STATE *WalkState)
 {
-    ACPI_GENERIC_STATE      *State;
-    ACPI_STATUS             Status;
-    UINT32                  Index;
+    ACPI_GENERIC_STATE *State;
+    ACPI_STATUS Status;
+    UINT32 Index;
 
 
     ACPI_FUNCTION_NAME (DsResultPush);
@@ -57,7 +57,7 @@ AcpiDsResultPush (
     }
     else if (WalkState->ResultCount == WalkState->ResultSize)
     {
-        /* Extend the result stack */
+
 
         Status = AcpiDsResultStackPush (WalkState);
         if (ACPI_FAILURE (Status))
@@ -88,7 +88,7 @@ AcpiDsResultPush (
         return (AE_BAD_PARAMETER);
     }
 
-    /* Assign the address of object to the top free element of result stack */
+
 
     Index = (UINT32) WalkState->ResultCount % ACPI_RESULTS_FRAME_OBJ_NUM;
     State->Results.ObjDesc [Index] = Object;

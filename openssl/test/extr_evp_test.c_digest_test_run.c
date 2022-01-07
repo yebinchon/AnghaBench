@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {unsigned int output_len; int /*<<< orphan*/  output; int /*<<< orphan*/  digest; int /*<<< orphan*/  input; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {unsigned int output_len; int output; int digest; int input; } ;
 struct TYPE_5__ {char* err; TYPE_2__* data; } ;
-typedef  TYPE_1__ EVP_TEST ;
-typedef  unsigned char EVP_MD_CTX ;
-typedef  TYPE_2__ DIGEST_DATA ;
+typedef TYPE_1__ EVP_TEST ;
+typedef unsigned char EVP_MD_CTX ;
+typedef TYPE_2__ DIGEST_DATA ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EVP_DigestFinal (unsigned char*,unsigned char*,unsigned int*) ; 
- int /*<<< orphan*/  EVP_DigestFinalXOF (unsigned char*,unsigned char*,unsigned int) ; 
- int /*<<< orphan*/  EVP_DigestInit_ex (unsigned char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- unsigned int EVP_MAX_MD_SIZE ; 
- int /*<<< orphan*/  EVP_MD_CTX_copy (unsigned char*,unsigned char*) ; 
- int /*<<< orphan*/  EVP_MD_CTX_free (unsigned char*) ; 
- unsigned char* EVP_MD_CTX_new () ; 
- int EVP_MD_FLAG_XOF ; 
- int EVP_MD_flags (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OPENSSL_free (unsigned char*) ; 
- unsigned char* OPENSSL_malloc (unsigned int) ; 
- int /*<<< orphan*/  TEST_int_eq (unsigned int,unsigned int) ; 
- int /*<<< orphan*/  TEST_ptr (unsigned char*) ; 
- int /*<<< orphan*/  TEST_str_eq (char*,char*) ; 
- int /*<<< orphan*/  digest_update_fn ; 
- int /*<<< orphan*/  evp_test_buffer_do (int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned char*) ; 
- int /*<<< orphan*/  memory_err_compare (TYPE_1__*,char*,int /*<<< orphan*/ ,unsigned int,unsigned char*,unsigned int) ; 
+
+ int EVP_DigestFinal (unsigned char*,unsigned char*,unsigned int*) ;
+ int EVP_DigestFinalXOF (unsigned char*,unsigned char*,unsigned int) ;
+ int EVP_DigestInit_ex (unsigned char*,int ,int *) ;
+ unsigned int EVP_MAX_MD_SIZE ;
+ int EVP_MD_CTX_copy (unsigned char*,unsigned char*) ;
+ int EVP_MD_CTX_free (unsigned char*) ;
+ unsigned char* EVP_MD_CTX_new () ;
+ int EVP_MD_FLAG_XOF ;
+ int EVP_MD_flags (int ) ;
+ int OPENSSL_free (unsigned char*) ;
+ unsigned char* OPENSSL_malloc (unsigned int) ;
+ int TEST_int_eq (unsigned int,unsigned int) ;
+ int TEST_ptr (unsigned char*) ;
+ int TEST_str_eq (char*,char*) ;
+ int digest_update_fn ;
+ int evp_test_buffer_do (int ,int ,unsigned char*) ;
+ int memory_err_compare (TYPE_1__*,char*,int ,unsigned int,unsigned char*,unsigned int) ;
 
 __attribute__((used)) static int digest_test_run(EVP_TEST *t)
 {
     DIGEST_DATA *expected = t->data;
     EVP_MD_CTX *mctx;
-    unsigned char *got = NULL;
+    unsigned char *got = ((void*)0);
     unsigned int got_len;
 
     t->err = "TEST_FAILURE";
@@ -53,7 +53,7 @@ __attribute__((used)) static int digest_test_run(EVP_TEST *t)
     if (!TEST_ptr(got))
         goto err;
 
-    if (!EVP_DigestInit_ex(mctx, expected->digest, NULL)) {
+    if (!EVP_DigestInit_ex(mctx, expected->digest, ((void*)0))) {
         t->err = "DIGESTINIT_ERROR";
         goto err;
     }
@@ -105,7 +105,7 @@ __attribute__((used)) static int digest_test_run(EVP_TEST *t)
                             got, got_len))
         goto err;
 
-    t->err = NULL;
+    t->err = ((void*)0);
 
  err:
     OPENSSL_free(got);

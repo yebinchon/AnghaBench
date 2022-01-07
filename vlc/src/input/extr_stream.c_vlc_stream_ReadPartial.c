@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  stream_t ;
-struct TYPE_2__ {int eof; int /*<<< orphan*/  offset; int /*<<< orphan*/  peek; } ;
-typedef  TYPE_1__ stream_priv_t ;
-typedef  scalar_t__ ssize_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ vlc_stream_CopyBlock (int /*<<< orphan*/ *,void*,size_t) ; 
- scalar_t__ vlc_stream_ReadRaw (int /*<<< orphan*/ *,void*,size_t) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int stream_t ;
+struct TYPE_2__ {int eof; int offset; int peek; } ;
+typedef TYPE_1__ stream_priv_t ;
+typedef scalar_t__ ssize_t ;
+
+
+ int assert (int) ;
+ scalar_t__ vlc_stream_CopyBlock (int *,void*,size_t) ;
+ scalar_t__ vlc_stream_ReadRaw (int *,void*,size_t) ;
 
 ssize_t vlc_stream_ReadPartial(stream_t *s, void *buf, size_t len)
 {

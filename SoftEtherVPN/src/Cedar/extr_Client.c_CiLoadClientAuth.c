@@ -1,96 +1,96 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int AuthType; int /*<<< orphan*/  SecurePrivateKeyName; int /*<<< orphan*/  SecurePublicCertName; int /*<<< orphan*/  ClientK; int /*<<< orphan*/  ClientX; int /*<<< orphan*/  PlainPassword; int /*<<< orphan*/  HashedPassword; int /*<<< orphan*/  Username; } ;
-typedef  int /*<<< orphan*/  FOLDER ;
-typedef  TYPE_1__ CLIENT_AUTH ;
-typedef  int /*<<< orphan*/  BUF ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BufToK (int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BufToX (int /*<<< orphan*/ *,int) ; 
-#define  CLIENT_AUTHTYPE_ANONYMOUS 132 
-#define  CLIENT_AUTHTYPE_CERT 131 
-#define  CLIENT_AUTHTYPE_PASSWORD 130 
-#define  CLIENT_AUTHTYPE_PLAIN_PASSWORD 129 
-#define  CLIENT_AUTHTYPE_SECURE 128 
- int /*<<< orphan*/ * CfgGetBuf (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  CfgGetByte (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int CfgGetInt (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  CfgGetStr (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int) ; 
- char* DecryptPassword (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Free (char*) ; 
- int /*<<< orphan*/  FreeBuf (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SHA1_SIZE ; 
- int /*<<< orphan*/  StrCpy (int /*<<< orphan*/ ,int,char*) ; 
- TYPE_1__* ZeroMalloc (int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int AuthType; int SecurePrivateKeyName; int SecurePublicCertName; int ClientK; int ClientX; int PlainPassword; int HashedPassword; int Username; } ;
+typedef int FOLDER ;
+typedef TYPE_1__ CLIENT_AUTH ;
+typedef int BUF ;
+
+
+ int BufToK (int *,int,int,int *) ;
+ int BufToX (int *,int) ;
+
+
+
+
+
+ int * CfgGetBuf (int *,char*) ;
+ int CfgGetByte (int *,char*,int ,int ) ;
+ int CfgGetInt (int *,char*) ;
+ int CfgGetStr (int *,char*,int ,int) ;
+ char* DecryptPassword (int *) ;
+ int Free (char*) ;
+ int FreeBuf (int *) ;
+ int SHA1_SIZE ;
+ int StrCpy (int ,int,char*) ;
+ TYPE_1__* ZeroMalloc (int) ;
 
 CLIENT_AUTH *CiLoadClientAuth(FOLDER *f)
 {
-	CLIENT_AUTH *a;
-	char *s;
-	BUF *b;
-	// Validate arguments
-	if (f == NULL)
-	{
-		return NULL;
-	}
+ CLIENT_AUTH *a;
+ char *s;
+ BUF *b;
 
-	a = ZeroMalloc(sizeof(CLIENT_AUTH));
+ if (f == ((void*)0))
+ {
+  return ((void*)0);
+ }
 
-	a->AuthType = CfgGetInt(f, "AuthType");
-	CfgGetStr(f, "Username", a->Username, sizeof(a->Username));
+ a = ZeroMalloc(sizeof(CLIENT_AUTH));
 
-	switch (a->AuthType)
-	{
-	case CLIENT_AUTHTYPE_ANONYMOUS:
-		break;
+ a->AuthType = CfgGetInt(f, "AuthType");
+ CfgGetStr(f, "Username", a->Username, sizeof(a->Username));
 
-	case CLIENT_AUTHTYPE_PASSWORD:
-		CfgGetByte(f, "HashedPassword", a->HashedPassword, SHA1_SIZE);
-		break;
+ switch (a->AuthType)
+ {
+ case 132:
+  break;
 
-	case CLIENT_AUTHTYPE_PLAIN_PASSWORD:
-		b = CfgGetBuf(f, "EncryptedPassword");
-		if (b != NULL)
-		{
-			s = DecryptPassword(b);
-			StrCpy(a->PlainPassword, sizeof(a->PlainPassword), s);
-			Free(s);
-			FreeBuf(b);
-		}
-		break;
+ case 130:
+  CfgGetByte(f, "HashedPassword", a->HashedPassword, SHA1_SIZE);
+  break;
 
-	case CLIENT_AUTHTYPE_CERT:
-		b = CfgGetBuf(f, "ClientCert");
-		if (b != NULL)
-		{
-			a->ClientX = BufToX(b, false);
-		}
-		FreeBuf(b);
-		b = CfgGetBuf(f, "ClientKey");
-		if (b != NULL)
-		{
-			a->ClientK = BufToK(b, true, false, NULL);
-		}
-		FreeBuf(b);
-		break;
+ case 129:
+  b = CfgGetBuf(f, "EncryptedPassword");
+  if (b != ((void*)0))
+  {
+   s = DecryptPassword(b);
+   StrCpy(a->PlainPassword, sizeof(a->PlainPassword), s);
+   Free(s);
+   FreeBuf(b);
+  }
+  break;
 
-	case CLIENT_AUTHTYPE_SECURE:
-		CfgGetStr(f, "SecurePublicCertName", a->SecurePublicCertName, sizeof(a->SecurePublicCertName));
-		CfgGetStr(f, "SecurePrivateKeyName", a->SecurePrivateKeyName, sizeof(a->SecurePrivateKeyName));
-		break;
-	}
+ case 131:
+  b = CfgGetBuf(f, "ClientCert");
+  if (b != ((void*)0))
+  {
+   a->ClientX = BufToX(b, 0);
+  }
+  FreeBuf(b);
+  b = CfgGetBuf(f, "ClientKey");
+  if (b != ((void*)0))
+  {
+   a->ClientK = BufToK(b, 1, 0, ((void*)0));
+  }
+  FreeBuf(b);
+  break;
 
-	return a;
+ case 128:
+  CfgGetStr(f, "SecurePublicCertName", a->SecurePublicCertName, sizeof(a->SecurePublicCertName));
+  CfgGetStr(f, "SecurePrivateKeyName", a->SecurePrivateKeyName, sizeof(a->SecurePrivateKeyName));
+  break;
+ }
+
+ return a;
 }

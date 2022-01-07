@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Oid ;
-typedef  int /*<<< orphan*/  List ;
-typedef  int /*<<< orphan*/ * HeapTuple ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERROR ; 
- int /*<<< orphan*/  HeapTupleIsValid (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ObjectIdGetDatum (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OidIsValid (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SearchSysCache1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TSCONFIGOID ; 
- int /*<<< orphan*/  elog (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  get_ts_config_oid (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int Oid ;
+typedef int List ;
+typedef int * HeapTuple ;
+
+
+ int ERROR ;
+ int HeapTupleIsValid (int *) ;
+ int ObjectIdGetDatum (int ) ;
+ int OidIsValid (int ) ;
+ int * SearchSysCache1 (int ,int ) ;
+ int TSCONFIGOID ;
+ int elog (int ,char*,int ) ;
+ int get_ts_config_oid (int *,int) ;
 
 __attribute__((used)) static HeapTuple
 GetTSConfigTuple(List *names)
 {
-	HeapTuple	tup;
-	Oid			cfgId;
+ HeapTuple tup;
+ Oid cfgId;
 
-	cfgId = get_ts_config_oid(names, true);
-	if (!OidIsValid(cfgId))
-		return NULL;
+ cfgId = get_ts_config_oid(names, 1);
+ if (!OidIsValid(cfgId))
+  return ((void*)0);
 
-	tup = SearchSysCache1(TSCONFIGOID, ObjectIdGetDatum(cfgId));
+ tup = SearchSysCache1(TSCONFIGOID, ObjectIdGetDatum(cfgId));
 
-	if (!HeapTupleIsValid(tup)) /* should not happen */
-		elog(ERROR, "cache lookup failed for text search configuration %u",
-			 cfgId);
+ if (!HeapTupleIsValid(tup))
+  elog(ERROR, "cache lookup failed for text search configuration %u",
+    cfgId);
 
-	return tup;
+ return tup;
 }

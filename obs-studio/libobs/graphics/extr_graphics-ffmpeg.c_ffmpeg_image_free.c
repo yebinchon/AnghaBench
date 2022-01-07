@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ffmpeg_image {int /*<<< orphan*/  fmt_ctx; int /*<<< orphan*/  decoder_ctx; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  avcodec_close (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  avformat_close_input (int /*<<< orphan*/ *) ; 
+
+
+
+struct ffmpeg_image {int fmt_ctx; int decoder_ctx; } ;
+
+
+ int avcodec_close (int ) ;
+ int avformat_close_input (int *) ;
 
 __attribute__((used)) static void ffmpeg_image_free(struct ffmpeg_image *info)
 {
-	avcodec_close(info->decoder_ctx);
-	avformat_close_input(&info->fmt_ctx);
+ avcodec_close(info->decoder_ctx);
+ avformat_close_input(&info->fmt_ctx);
 }

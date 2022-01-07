@@ -1,32 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  phys_addr_t ;
 
-/* Variables and functions */
- unsigned long MMIO_UPPER_LIMIT ; 
- int /*<<< orphan*/  OF_BAD_ADDR ; 
- int /*<<< orphan*/  logic_pio_to_hwaddr (unsigned long) ; 
+
+
+
+typedef int phys_addr_t ;
+
+
+ unsigned long MMIO_UPPER_LIMIT ;
+ int OF_BAD_ADDR ;
+ int logic_pio_to_hwaddr (unsigned long) ;
 
 phys_addr_t pci_pio_to_address(unsigned long pio)
 {
-	phys_addr_t address = (phys_addr_t)OF_BAD_ADDR;
-
-#ifdef PCI_IOBASE
-	if (pio >= MMIO_UPPER_LIMIT)
-		return address;
-
-	address = logic_pio_to_hwaddr(pio);
-#endif
-
-	return address;
+ phys_addr_t address = (phys_addr_t)OF_BAD_ADDR;
+ return address;
 }

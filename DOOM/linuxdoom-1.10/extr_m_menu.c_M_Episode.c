@@ -1,48 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  M_SetupNextMenu (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  M_StartMessage (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  NewDef ; 
- int /*<<< orphan*/  ReadDef1 ; 
- int /*<<< orphan*/  SWSTRING ; 
- int epi ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ gamemode ; 
- scalar_t__ registered ; 
- scalar_t__ shareware ; 
- int /*<<< orphan*/  stderr ; 
+ int M_SetupNextMenu (int *) ;
+ int M_StartMessage (int ,int *,int) ;
+ int NewDef ;
+ int ReadDef1 ;
+ int SWSTRING ;
+ int epi ;
+ int fprintf (int ,char*) ;
+ scalar_t__ gamemode ;
+ scalar_t__ registered ;
+ scalar_t__ shareware ;
+ int stderr ;
 
 void M_Episode(int choice)
 {
     if ( (gamemode == shareware)
-	 && choice)
+  && choice)
     {
-	M_StartMessage(SWSTRING,NULL,false);
-	M_SetupNextMenu(&ReadDef1);
-	return;
+ M_StartMessage(SWSTRING,((void*)0),0);
+ M_SetupNextMenu(&ReadDef1);
+ return;
     }
 
-    // Yet another hack...
+
     if ( (gamemode == registered)
-	 && (choice > 2))
+  && (choice > 2))
     {
       fprintf( stderr,
-	       "M_Episode: 4th episode requires UltimateDOOM\n");
+        "M_Episode: 4th episode requires UltimateDOOM\n");
       choice = 0;
     }
-	 
+
     epi = choice;
     M_SetupNextMenu(&NewDef);
 }

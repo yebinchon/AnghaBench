@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  LPCTSTR ;
-typedef  int /*<<< orphan*/  INT ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  _T (char*) ; 
- int /*<<< orphan*/  seta_ltorTerm (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  seta_mulTerm ; 
+
+
+
+typedef int LPCTSTR ;
+typedef int INT ;
+typedef int BOOL ;
+
+
+ int _T (char*) ;
+ int seta_ltorTerm (int *,int *,int ,int ) ;
+ int seta_mulTerm ;
 
 __attribute__((used)) static BOOL
 seta_addTerm(LPCTSTR* p_, INT* result)

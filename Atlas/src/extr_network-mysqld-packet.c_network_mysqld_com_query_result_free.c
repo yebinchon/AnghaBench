@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  network_mysqld_com_query_result_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  g_free (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int network_mysqld_com_query_result_t ;
+
+
+ int g_free (int *) ;
 
 void network_mysqld_com_query_result_free(network_mysqld_com_query_result_t *udata) {
-	if (!udata) return;
+ if (!udata) return;
 
-	g_free(udata);
+ g_free(udata);
 }

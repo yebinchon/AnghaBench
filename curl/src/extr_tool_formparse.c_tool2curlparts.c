@@ -1,61 +1,61 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {char* filename; int kind; char* data; int /*<<< orphan*/  name; int /*<<< orphan*/  encoder; int /*<<< orphan*/  headers; int /*<<< orphan*/  type; int /*<<< orphan*/  size; struct TYPE_5__* prev; } ;
-typedef  TYPE_1__ tool_mime ;
-typedef  int /*<<< orphan*/  curl_seek_callback ;
-typedef  int /*<<< orphan*/  curl_read_callback ;
-typedef  int /*<<< orphan*/  curl_mimepart ;
-typedef  int /*<<< orphan*/  curl_mime ;
-typedef  scalar_t__ CURLcode ;
-typedef  int /*<<< orphan*/  CURL ;
 
-/* Variables and functions */
- scalar_t__ CURLE_OK ; 
- scalar_t__ CURLE_OUT_OF_MEMORY ; 
- int /*<<< orphan*/  CURL_ZERO_TERMINATED ; 
-#define  TOOLMIME_DATA 133 
-#define  TOOLMIME_FILE 132 
-#define  TOOLMIME_FILEDATA 131 
-#define  TOOLMIME_PARTS 130 
-#define  TOOLMIME_STDIN 129 
-#define  TOOLMIME_STDINDATA 128 
- scalar_t__ convert_to_network (char*,size_t) ; 
- int /*<<< orphan*/ * curl_mime_addpart (int /*<<< orphan*/ *) ; 
- scalar_t__ curl_mime_data (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- scalar_t__ curl_mime_data_cb (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,TYPE_1__*) ; 
- scalar_t__ curl_mime_encoder (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ curl_mime_filedata (int /*<<< orphan*/ *,char*) ; 
- scalar_t__ curl_mime_filename (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  curl_mime_free (int /*<<< orphan*/ *) ; 
- scalar_t__ curl_mime_headers (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ curl_mime_name (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ curl_mime_subparts (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ curl_mime_type (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (char*) ; 
- char* malloc (size_t) ; 
- int /*<<< orphan*/  memcpy (char*,char*,size_t) ; 
- size_t strlen (char*) ; 
- scalar_t__ tool2curlmime (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  tool_mime_stdin_read ; 
- int /*<<< orphan*/  tool_mime_stdin_seek ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {char* filename; int kind; char* data; int name; int encoder; int headers; int type; int size; struct TYPE_5__* prev; } ;
+typedef TYPE_1__ tool_mime ;
+typedef int curl_seek_callback ;
+typedef int curl_read_callback ;
+typedef int curl_mimepart ;
+typedef int curl_mime ;
+typedef scalar_t__ CURLcode ;
+typedef int CURL ;
+
+
+ scalar_t__ CURLE_OK ;
+ scalar_t__ CURLE_OUT_OF_MEMORY ;
+ int CURL_ZERO_TERMINATED ;
+
+
+
+
+
+
+ scalar_t__ convert_to_network (char*,size_t) ;
+ int * curl_mime_addpart (int *) ;
+ scalar_t__ curl_mime_data (int *,char*,int ) ;
+ scalar_t__ curl_mime_data_cb (int *,int ,int ,int ,int *,TYPE_1__*) ;
+ scalar_t__ curl_mime_encoder (int *,int ) ;
+ scalar_t__ curl_mime_filedata (int *,char*) ;
+ scalar_t__ curl_mime_filename (int *,char const*) ;
+ int curl_mime_free (int *) ;
+ scalar_t__ curl_mime_headers (int *,int ,int ) ;
+ scalar_t__ curl_mime_name (int *,int ) ;
+ scalar_t__ curl_mime_subparts (int *,int *) ;
+ scalar_t__ curl_mime_type (int *,int ) ;
+ int free (char*) ;
+ char* malloc (size_t) ;
+ int memcpy (char*,char*,size_t) ;
+ size_t strlen (char*) ;
+ scalar_t__ tool2curlmime (int *,TYPE_1__*,int **) ;
+ int tool_mime_stdin_read ;
+ int tool_mime_stdin_seek ;
 
 __attribute__((used)) static CURLcode tool2curlparts(CURL *curl, tool_mime *m, curl_mime *mime)
 {
   CURLcode ret = CURLE_OK;
-  curl_mimepart *part = NULL;
-  curl_mime *submime = NULL;
-  const char *filename = NULL;
+  curl_mimepart *part = ((void*)0);
+  curl_mime *submime = ((void*)0);
+  const char *filename = ((void*)0);
 
   if(m) {
     ret = tool2curlparts(curl, m->prev, mime);
@@ -67,7 +67,7 @@ __attribute__((used)) static CURLcode tool2curlparts(CURL *curl, tool_mime *m, c
     if(!ret) {
       filename = m->filename;
       switch(m->kind) {
-      case TOOLMIME_PARTS:
+      case 130:
         ret = tool2curlmime(curl, m, &submime);
         if(!ret) {
           ret = curl_mime_subparts(part, submime);
@@ -76,48 +76,31 @@ __attribute__((used)) static CURLcode tool2curlparts(CURL *curl, tool_mime *m, c
         }
         break;
 
-      case TOOLMIME_DATA:
-#ifdef CURL_DOES_CONVERSIONS
-        /* Our data is always textual: convert it to ASCII. */
-        {
-          size_t size = strlen(m->data);
-          char *cp = malloc(size + 1);
-
-          if(!cp)
-            ret = CURLE_OUT_OF_MEMORY;
-          else {
-            memcpy(cp, m->data, size + 1);
-            ret = convert_to_network(cp, size);
-            if(!ret)
-              ret = curl_mime_data(part, cp, CURL_ZERO_TERMINATED);
-            free(cp);
-          }
-        }
-#else
+      case 133:
         ret = curl_mime_data(part, m->data, CURL_ZERO_TERMINATED);
-#endif
+
         break;
 
-      case TOOLMIME_FILE:
-      case TOOLMIME_FILEDATA:
+      case 132:
+      case 131:
         ret = curl_mime_filedata(part, m->data);
-        if(!ret && m->kind == TOOLMIME_FILEDATA && !filename)
-          ret = curl_mime_filename(part, NULL);
+        if(!ret && m->kind == 131 && !filename)
+          ret = curl_mime_filename(part, ((void*)0));
         break;
 
-      case TOOLMIME_STDIN:
+      case 129:
         if(!filename)
           filename = "-";
-        /* FALLTHROUGH */
-      case TOOLMIME_STDINDATA:
+
+      case 128:
         ret = curl_mime_data_cb(part, m->size,
                                 (curl_read_callback) tool_mime_stdin_read,
                                 (curl_seek_callback) tool_mime_stdin_seek,
-                                NULL, m);
+                                ((void*)0), m);
         break;
 
       default:
-        /* Other cases not possible in this context. */
+
         break;
       }
     }

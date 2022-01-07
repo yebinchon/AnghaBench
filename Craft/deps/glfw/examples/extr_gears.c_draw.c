@@ -1,32 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int GL_COLOR_BUFFER_BIT ; 
- int GL_DEPTH_BUFFER_BIT ; 
- float angle ; 
- int /*<<< orphan*/  gear1 ; 
- int /*<<< orphan*/  gear2 ; 
- int /*<<< orphan*/  gear3 ; 
- int /*<<< orphan*/  glCallList (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glClear (int) ; 
- int /*<<< orphan*/  glPopMatrix () ; 
- int /*<<< orphan*/  glPushMatrix () ; 
- int /*<<< orphan*/  glRotatef (float,float,float,float) ; 
- int /*<<< orphan*/  glTranslatef (float,float,float) ; 
- float view_rotx ; 
- float view_roty ; 
- float view_rotz ; 
+ int GL_COLOR_BUFFER_BIT ;
+ int GL_DEPTH_BUFFER_BIT ;
+ float angle ;
+ int gear1 ;
+ int gear2 ;
+ int gear3 ;
+ int glCallList (int ) ;
+ int glClear (int) ;
+ int glPopMatrix () ;
+ int glPushMatrix () ;
+ int glRotatef (float,float,float,float) ;
+ int glTranslatef (float,float,float) ;
+ float view_rotx ;
+ float view_roty ;
+ float view_rotz ;
 
 __attribute__((used)) static void draw(void)
 {

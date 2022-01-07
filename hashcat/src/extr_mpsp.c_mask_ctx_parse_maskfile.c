@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_8__ {char* custom_charset_1; char* custom_charset_2; char* custom_charset_3; char* custom_charset_4; } ;
-typedef  TYPE_1__ user_options_t ;
+typedef TYPE_1__ user_options_t ;
 struct TYPE_9__ {size_t mf_len; char* mf_buf; } ;
-typedef  TYPE_2__ mf_t ;
-struct TYPE_10__ {int enabled; int mask_from_file; char* mask; int /*<<< orphan*/  mp_usr; int /*<<< orphan*/  mp_sys; TYPE_2__* mfs; } ;
-typedef  TYPE_3__ mask_ctx_t ;
+typedef TYPE_2__ mf_t ;
+struct TYPE_10__ {int enabled; int mask_from_file; char* mask; int mp_usr; int mp_sys; TYPE_2__* mfs; } ;
+typedef TYPE_3__ mask_ctx_t ;
 struct TYPE_11__ {TYPE_1__* user_options; TYPE_3__* mask_ctx; } ;
-typedef  TYPE_4__ hashcat_ctx_t ;
+typedef TYPE_4__ hashcat_ctx_t ;
 
-/* Variables and functions */
- size_t MAX_MFS ; 
- int /*<<< orphan*/  event_log_error (TYPE_4__*,char*,char*) ; 
- int /*<<< orphan*/  mp_reset_usr (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  mp_setup_usr (TYPE_4__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int) ; 
- size_t strlen (char*) ; 
+
+ size_t MAX_MFS ;
+ int event_log_error (TYPE_4__*,char*,char*) ;
+ int mp_reset_usr (int ,int) ;
+ int mp_setup_usr (TYPE_4__*,int ,int ,char*,int) ;
+ size_t strlen (char*) ;
 
 int mask_ctx_parse_maskfile (hashcat_ctx_t *hashcat_ctx)
 {
-  mask_ctx_t     *mask_ctx     = hashcat_ctx->mask_ctx;
+  mask_ctx_t *mask_ctx = hashcat_ctx->mask_ctx;
   user_options_t *user_options = hashcat_ctx->user_options;
 
-  if (mask_ctx->enabled == false) return 0;
+  if (mask_ctx->enabled == 0) return 0;
 
-  if (mask_ctx->mask_from_file == false) return 0;
+  if (mask_ctx->mask_from_file == 0) return 0;
 
   mf_t *mfs_buf = mask_ctx->mfs;
 
@@ -53,15 +53,15 @@ int mask_ctx_parse_maskfile (hashcat_ctx_t *hashcat_ctx)
 
   const size_t mask_len = strlen (mask_buf);
 
-  bool escaped = false;
+  bool escaped = 0;
 
   for (size_t i = 0; i < mask_len; i++)
   {
     mf_t *mf = mfs_buf + mfs_cnt;
 
-    if (escaped == true)
+    if (escaped == 1)
     {
-      escaped = false;
+      escaped = 0;
 
       mf->mf_buf[mf->mf_len] = mask_buf[i];
 
@@ -71,7 +71,7 @@ int mask_ctx_parse_maskfile (hashcat_ctx_t *hashcat_ctx)
     {
       if (mask_buf[i] == '\\')
       {
-        escaped = true;
+        escaped = 1;
       }
       else if (mask_buf[i] == ',')
       {
@@ -99,10 +99,10 @@ int mask_ctx_parse_maskfile (hashcat_ctx_t *hashcat_ctx)
 
   mf->mf_buf[mf->mf_len] = 0;
 
-  user_options->custom_charset_1 = NULL;
-  user_options->custom_charset_2 = NULL;
-  user_options->custom_charset_3 = NULL;
-  user_options->custom_charset_4 = NULL;
+  user_options->custom_charset_1 = ((void*)0);
+  user_options->custom_charset_2 = ((void*)0);
+  user_options->custom_charset_3 = ((void*)0);
+  user_options->custom_charset_4 = ((void*)0);
 
   mp_reset_usr (mask_ctx->mp_usr, 0);
   mp_reset_usr (mask_ctx->mp_usr, 1);

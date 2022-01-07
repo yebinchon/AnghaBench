@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {scalar_t__ data; } ;
-typedef  int /*<<< orphan*/  CONF ;
-typedef  TYPE_1__ BUF_MEM ;
-typedef  int /*<<< orphan*/  ASN1_TYPE ;
+typedef int CONF ;
+typedef TYPE_1__ BUF_MEM ;
+typedef int ASN1_TYPE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASN1_TYPE_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * ASN1_generate_nconf (char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BIO_printf (int /*<<< orphan*/ ,char*,char const*) ; 
- int /*<<< orphan*/  BUF_MEM_grow (TYPE_1__*,int) ; 
- int /*<<< orphan*/  NCONF_free (int /*<<< orphan*/ *) ; 
- char* NCONF_get_string (int /*<<< orphan*/ *,char*,char*) ; 
- int /*<<< orphan*/ * app_load_config (char const*) ; 
- int /*<<< orphan*/  bio_err ; 
- int i2d_ASN1_TYPE (int /*<<< orphan*/ *,unsigned char**) ; 
+
+ int ASN1_TYPE_free (int *) ;
+ int * ASN1_generate_nconf (char*,int *) ;
+ int BIO_printf (int ,char*,char const*) ;
+ int BUF_MEM_grow (TYPE_1__*,int) ;
+ int NCONF_free (int *) ;
+ char* NCONF_get_string (int *,char*,char*) ;
+ int * app_load_config (char const*) ;
+ int bio_err ;
+ int i2d_ASN1_TYPE (int *,unsigned char**) ;
 
 __attribute__((used)) static int do_generate(char *genstr, const char *genconf, BUF_MEM *buf)
 {
-    CONF *cnf = NULL;
+    CONF *cnf = ((void*)0);
     int len;
     unsigned char *p;
-    ASN1_TYPE *atyp = NULL;
+    ASN1_TYPE *atyp = ((void*)0);
 
-    if (genconf != NULL) {
-        if ((cnf = app_load_config(genconf)) == NULL)
+    if (genconf != ((void*)0)) {
+        if ((cnf = app_load_config(genconf)) == ((void*)0))
             goto err;
-        if (genstr == NULL)
+        if (genstr == ((void*)0))
             genstr = NCONF_get_string(cnf, "default", "asn1");
-        if (genstr == NULL) {
+        if (genstr == ((void*)0)) {
             BIO_printf(bio_err, "Can't find 'asn1' in '%s'\n", genconf);
             goto err;
         }
@@ -47,12 +47,12 @@ __attribute__((used)) static int do_generate(char *genstr, const char *genconf, 
 
     atyp = ASN1_generate_nconf(genstr, cnf);
     NCONF_free(cnf);
-    cnf = NULL;
+    cnf = ((void*)0);
 
-    if (atyp == NULL)
+    if (atyp == ((void*)0))
         return -1;
 
-    len = i2d_ASN1_TYPE(atyp, NULL);
+    len = i2d_ASN1_TYPE(atyp, ((void*)0));
 
     if (len <= 0)
         goto err;

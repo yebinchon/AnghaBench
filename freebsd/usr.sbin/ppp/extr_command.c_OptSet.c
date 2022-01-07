@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct cmdargs {int argn; int /*<<< orphan*/  bundle; int /*<<< orphan*/ * argv; TYPE_1__* cmd; } ;
-struct TYPE_4__ {int /*<<< orphan*/  ipv6_available; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct cmdargs {int argn; int bundle; int * argv; TYPE_1__* cmd; } ;
+struct TYPE_4__ {int ipv6_available; } ;
 struct TYPE_3__ {scalar_t__ args; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Enabled (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  LogWARN ; 
- unsigned int NEG_ENABLED ; 
- int OPT_IPV6CP ; 
- int OPT_NAS_IDENTIFIER ; 
- int OPT_NAS_IP_ADDRESS ; 
- int /*<<< orphan*/ * ident_cmd (int /*<<< orphan*/ ,unsigned int*,unsigned int*) ; 
- int /*<<< orphan*/  log_Printf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  opt_disable (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  opt_enable (int /*<<< orphan*/ ,int) ; 
- TYPE_2__ probe ; 
+
+ int Enabled (int ,int) ;
+ int LogWARN ;
+ unsigned int NEG_ENABLED ;
+ int OPT_IPV6CP ;
+ int OPT_NAS_IDENTIFIER ;
+ int OPT_NAS_IP_ADDRESS ;
+ int * ident_cmd (int ,unsigned int*,unsigned int*) ;
+ int log_Printf (int ,char*) ;
+ int opt_disable (int ,int) ;
+ int opt_enable (int ,int) ;
+ TYPE_2__ probe ;
 
 __attribute__((used)) static int
 OptSet(struct cmdargs const *arg)
 {
   int opt = (int)(long)arg->cmd->args;
-  unsigned keep;			/* Keep this opt */
-  unsigned add;				/* Add this opt */
+  unsigned keep;
+  unsigned add;
 
-  if (ident_cmd(arg->argv[arg->argn - 2], &keep, &add) == NULL)
+  if (ident_cmd(arg->argv[arg->argn - 2], &keep, &add) == ((void*)0))
     return 1;
 
-#ifndef NOINET6
+
   if (add == NEG_ENABLED && opt == OPT_IPV6CP && !probe.ipv6_available) {
     log_Printf(LogWARN, "IPv6 is not available on this machine\n");
     return 1;
   }
-#endif
+
   if (!add && ((opt == OPT_NAS_IP_ADDRESS &&
                 !Enabled(arg->bundle, OPT_NAS_IDENTIFIER)) ||
                (opt == OPT_NAS_IDENTIFIER &&

@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  peer_bda; int /*<<< orphan*/  transport; } ;
-typedef  TYPE_1__ tGATT_TCB ;
-typedef  int /*<<< orphan*/  UINT16 ;
-typedef  scalar_t__ BOOLEAN ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GATT_CONN_TERMINATE_PEER_USER ; 
- int /*<<< orphan*/  GATT_TRANSPORT_BR_EDR ; 
- int /*<<< orphan*/  L2CA_DisconnectRsp (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  L2CA_GetDisconnectReason (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ btm_sec_is_a_bonded_dev (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gatt_add_a_bonded_dev_for_srv_chg (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gatt_cleanup_upon_disc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_1__* gatt_find_tcb_by_cid (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * gatt_is_bda_in_the_srv_chg_clt_list (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int peer_bda; int transport; } ;
+typedef TYPE_1__ tGATT_TCB ;
+typedef int UINT16 ;
+typedef scalar_t__ BOOLEAN ;
+
+
+ int GATT_CONN_TERMINATE_PEER_USER ;
+ int GATT_TRANSPORT_BR_EDR ;
+ int L2CA_DisconnectRsp (int ) ;
+ int L2CA_GetDisconnectReason (int ,int ) ;
+ scalar_t__ btm_sec_is_a_bonded_dev (int ) ;
+ int gatt_add_a_bonded_dev_for_srv_chg (int ) ;
+ int gatt_cleanup_upon_disc (int ,int ,int ) ;
+ TYPE_1__* gatt_find_tcb_by_cid (int ) ;
+ int * gatt_is_bda_in_the_srv_chg_clt_list (int ) ;
 
 void gatt_l2cif_disconnect_ind_cback(UINT16 lcid, BOOLEAN ack_needed)
 {
-    tGATT_TCB       *p_tcb;
-    UINT16          reason;
+    tGATT_TCB *p_tcb;
+    UINT16 reason;
 
-    /* look up clcb for this channel */
-    if ((p_tcb = gatt_find_tcb_by_cid(lcid)) != NULL) {
+
+    if ((p_tcb = gatt_find_tcb_by_cid(lcid)) != ((void*)0)) {
         if (ack_needed) {
-            /* send L2CAP disconnect response */
+
             L2CA_DisconnectRsp(lcid);
         }
-        if (gatt_is_bda_in_the_srv_chg_clt_list(p_tcb->peer_bda) == NULL) {
+        if (gatt_is_bda_in_the_srv_chg_clt_list(p_tcb->peer_bda) == ((void*)0)) {
             if (btm_sec_is_a_bonded_dev(p_tcb->peer_bda)) {
                 gatt_add_a_bonded_dev_for_srv_chg(p_tcb->peer_bda);
             }
         }
-        /* if ACL link is still up, no reason is logged, l2cap is disconnect from peer */
+
         if ((reason = L2CA_GetDisconnectReason(p_tcb->peer_bda, p_tcb->transport)) == 0) {
             reason = GATT_CONN_TERMINATE_PEER_USER;
         }
 
-        /* send disconnect callback */
+
         gatt_cleanup_upon_disc(p_tcb->peer_bda, reason, GATT_TRANSPORT_BR_EDR);
     }
 }

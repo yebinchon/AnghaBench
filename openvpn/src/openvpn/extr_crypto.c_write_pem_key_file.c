@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct key {int /*<<< orphan*/  member_0; } ;
+
+
+
+
+struct key {int member_0; } ;
 struct gc_arena {int dummy; } ;
 struct buffer {int dummy; } ;
-typedef  int /*<<< orphan*/  server_key ;
+typedef int server_key ;
 
-/* Variables and functions */
- char* BPTR (struct buffer*) ; 
- int /*<<< orphan*/  M_ERR ; 
- int /*<<< orphan*/  M_NONFATAL ; 
- int /*<<< orphan*/  M_WARN ; 
- int /*<<< orphan*/  buf_clear (struct buffer*) ; 
- int /*<<< orphan*/  buf_set_read (struct buffer*,void*,int) ; 
- int /*<<< orphan*/  buffer_write_file (char const*,struct buffer*) ; 
- struct buffer clear_buf () ; 
- int /*<<< orphan*/  crypto_pem_encode (char const*,struct buffer*,struct buffer*,struct gc_arena*) ; 
- int /*<<< orphan*/  gc_free (struct gc_arena*) ; 
- struct gc_arena gc_new () ; 
- int /*<<< orphan*/  msg (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  printf (char*,char*) ; 
- int /*<<< orphan*/  rand_bytes (void*,int) ; 
- int /*<<< orphan*/  secure_memzero (struct key*,int) ; 
- scalar_t__ strcmp (char const*,char*) ; 
+
+ char* BPTR (struct buffer*) ;
+ int M_ERR ;
+ int M_NONFATAL ;
+ int M_WARN ;
+ int buf_clear (struct buffer*) ;
+ int buf_set_read (struct buffer*,void*,int) ;
+ int buffer_write_file (char const*,struct buffer*) ;
+ struct buffer clear_buf () ;
+ int crypto_pem_encode (char const*,struct buffer*,struct buffer*,struct gc_arena*) ;
+ int gc_free (struct gc_arena*) ;
+ struct gc_arena gc_new () ;
+ int msg (int ,char*) ;
+ int printf (char*,char*) ;
+ int rand_bytes (void*,int) ;
+ int secure_memzero (struct key*,int) ;
+ scalar_t__ strcmp (char const*,char*) ;
 
 void
 write_pem_key_file(const char *filename, const char *pem_name)

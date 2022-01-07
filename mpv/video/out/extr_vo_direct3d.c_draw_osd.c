@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct vo {int /*<<< orphan*/  osd; TYPE_1__* priv; } ;
-struct TYPE_3__ {int /*<<< orphan*/  osd_pts; int /*<<< orphan*/  osd_res; int /*<<< orphan*/ * osd_fmt_table; int /*<<< orphan*/  d3d_device; } ;
-typedef  TYPE_1__ d3d_priv ;
 
-/* Variables and functions */
- int SUBBITMAP_COUNT ; 
- int /*<<< orphan*/  draw_osd_cb ; 
- int /*<<< orphan*/  osd_draw (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*,int /*<<< orphan*/ ,TYPE_1__*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct vo {int osd; TYPE_1__* priv; } ;
+struct TYPE_3__ {int osd_pts; int osd_res; int * osd_fmt_table; int d3d_device; } ;
+typedef TYPE_1__ d3d_priv ;
+
+
+ int SUBBITMAP_COUNT ;
+ int draw_osd_cb ;
+ int osd_draw (int ,int ,int ,int ,int*,int ,TYPE_1__*) ;
 
 __attribute__((used)) static void draw_osd(struct vo *vo)
 {

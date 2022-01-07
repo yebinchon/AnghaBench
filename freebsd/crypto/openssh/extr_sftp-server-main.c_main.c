@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_long ;
+
+
+
+
+typedef int u_long ;
 struct passwd {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- struct passwd* getpwuid (scalar_t__) ; 
- scalar_t__ getuid () ; 
- int /*<<< orphan*/  sanitise_stdfd () ; 
- int sftp_server_main (int,char**,struct passwd*) ; 
- int /*<<< orphan*/  ssh_malloc_init () ; 
- int /*<<< orphan*/  stderr ; 
+
+ int fprintf (int ,char*,int ) ;
+ struct passwd* getpwuid (scalar_t__) ;
+ scalar_t__ getuid () ;
+ int sanitise_stdfd () ;
+ int sftp_server_main (int,char**,struct passwd*) ;
+ int ssh_malloc_init () ;
+ int stderr ;
 
 int
 main(int argc, char **argv)
 {
-	struct passwd *user_pw;
+ struct passwd *user_pw;
 
-	ssh_malloc_init();	/* must be called before any mallocs */
-	/* Ensure that fds 0, 1 and 2 are open or directed to /dev/null */
-	sanitise_stdfd();
+ ssh_malloc_init();
 
-	if ((user_pw = getpwuid(getuid())) == NULL) {
-		fprintf(stderr, "No user found for uid %lu\n",
-		    (u_long)getuid());
-		return 1;
-	}
+ sanitise_stdfd();
 
-	return (sftp_server_main(argc, argv, user_pw));
+ if ((user_pw = getpwuid(getuid())) == ((void*)0)) {
+  fprintf(stderr, "No user found for uid %lu\n",
+      (u_long)getuid());
+  return 1;
+ }
+
+ return (sftp_server_main(argc, argv, user_pw));
 }

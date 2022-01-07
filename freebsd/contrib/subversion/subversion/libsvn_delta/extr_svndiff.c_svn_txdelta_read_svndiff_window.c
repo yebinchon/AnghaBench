@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_txdelta_window_t ;
-typedef  int /*<<< orphan*/  svn_stream_t ;
-typedef  int /*<<< orphan*/  svn_filesize_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  scalar_t__ apr_size_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_SVNDIFF_UNEXPECTED_END ; 
- int /*<<< orphan*/  _ (char*) ; 
- void* apr_palloc (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * decode_window (int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__,scalar_t__,scalar_t__,scalar_t__,unsigned char*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  read_window_header (int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__*,scalar_t__*,scalar_t__*,scalar_t__*,scalar_t__*) ; 
- int /*<<< orphan*/ * svn_error_create (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_stream_read_full (int /*<<< orphan*/ *,char*,scalar_t__*) ; 
+
+
+
+typedef int svn_txdelta_window_t ;
+typedef int svn_stream_t ;
+typedef int svn_filesize_t ;
+typedef int svn_error_t ;
+typedef scalar_t__ apr_size_t ;
+typedef int apr_pool_t ;
+
+
+ int SVN_ERR (int ) ;
+ int SVN_ERR_SVNDIFF_UNEXPECTED_END ;
+ int _ (char*) ;
+ void* apr_palloc (int *,int) ;
+ int * decode_window (int *,int ,scalar_t__,scalar_t__,scalar_t__,scalar_t__,unsigned char*,int *,int) ;
+ int read_window_header (int *,int *,scalar_t__*,scalar_t__*,scalar_t__*,scalar_t__*,scalar_t__*) ;
+ int * svn_error_create (int ,int *,int ) ;
+ int svn_stream_read_full (int *,char*,scalar_t__*) ;
 
 svn_error_t *
 svn_txdelta_read_svndiff_window(svn_txdelta_window_t **window,
@@ -43,7 +43,7 @@ svn_txdelta_read_svndiff_window(svn_txdelta_window_t **window,
   buf = apr_palloc(pool, len);
   SVN_ERR(svn_stream_read_full(stream, (char*)buf, &len));
   if (len < inslen + newlen)
-    return svn_error_create(SVN_ERR_SVNDIFF_UNEXPECTED_END, NULL,
+    return svn_error_create(SVN_ERR_SVNDIFF_UNEXPECTED_END, ((void*)0),
                             _("Unexpected end of svndiff input"));
   *window = apr_palloc(pool, sizeof(**window));
   return decode_window(*window, sview_offset, sview_len, tview_len, inslen,

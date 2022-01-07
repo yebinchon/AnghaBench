@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct udl_gem_object {int /*<<< orphan*/  flags; int /*<<< orphan*/  base; } ;
+
+
+
+
+struct udl_gem_object {int flags; int base; } ;
 struct drm_device {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  UDL_BO_CACHEABLE ; 
- scalar_t__ drm_gem_object_init (struct drm_device*,int /*<<< orphan*/ *,size_t) ; 
- int /*<<< orphan*/  kfree (struct udl_gem_object*) ; 
- struct udl_gem_object* kzalloc (int,int /*<<< orphan*/ ) ; 
+
+ int GFP_KERNEL ;
+ int UDL_BO_CACHEABLE ;
+ scalar_t__ drm_gem_object_init (struct drm_device*,int *,size_t) ;
+ int kfree (struct udl_gem_object*) ;
+ struct udl_gem_object* kzalloc (int,int ) ;
 
 struct udl_gem_object *udl_gem_alloc_object(struct drm_device *dev,
-					    size_t size)
+         size_t size)
 {
-	struct udl_gem_object *obj;
+ struct udl_gem_object *obj;
 
-	obj = kzalloc(sizeof(*obj), GFP_KERNEL);
-	if (obj == NULL)
-		return NULL;
+ obj = kzalloc(sizeof(*obj), GFP_KERNEL);
+ if (obj == ((void*)0))
+  return ((void*)0);
 
-	if (drm_gem_object_init(dev, &obj->base, size) != 0) {
-		kfree(obj);
-		return NULL;
-	}
+ if (drm_gem_object_init(dev, &obj->base, size) != 0) {
+  kfree(obj);
+  return ((void*)0);
+ }
 
-	obj->flags = UDL_BO_CACHEABLE;
-	return obj;
+ obj->flags = UDL_BO_CACHEABLE;
+ return obj;
 }

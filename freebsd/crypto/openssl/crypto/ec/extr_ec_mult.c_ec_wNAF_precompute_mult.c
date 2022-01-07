@@ -1,85 +1,85 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {size_t blocksize; size_t numblocks; size_t w; size_t num; int /*<<< orphan*/  const** points; int /*<<< orphan*/ * group; } ;
-typedef  TYPE_1__ EC_PRE_COMP ;
-typedef  int /*<<< orphan*/  const EC_POINT ;
-typedef  int /*<<< orphan*/  EC_GROUP ;
-typedef  int /*<<< orphan*/  BN_CTX ;
-typedef  int /*<<< orphan*/  BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BN_CTX_end (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_CTX_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BN_CTX_new () ; 
- int /*<<< orphan*/  BN_CTX_start (int /*<<< orphan*/ *) ; 
- scalar_t__ BN_is_zero (int /*<<< orphan*/  const*) ; 
- size_t BN_num_bits (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  EC_F_EC_WNAF_PRECOMPUTE_MULT ; 
- int /*<<< orphan*/  const* EC_GROUP_get0_generator (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * EC_GROUP_get0_order (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EC_POINT_add (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EC_POINT_copy (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  EC_POINT_dbl (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EC_POINT_free (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  const* EC_POINT_new (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EC_POINTs_make_affine (int /*<<< orphan*/ *,size_t,int /*<<< orphan*/  const**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EC_R_UNDEFINED_GENERATOR ; 
- int /*<<< orphan*/  EC_R_UNKNOWN_ORDER ; 
- int /*<<< orphan*/  EC_ec_pre_comp_free (TYPE_1__*) ; 
- int /*<<< orphan*/  EC_pre_comp_free (int /*<<< orphan*/ *) ; 
- size_t EC_window_bits_for_scalar_size (size_t) ; 
- int /*<<< orphan*/  ECerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ERR_R_INTERNAL_ERROR ; 
- int /*<<< orphan*/  ERR_R_MALLOC_FAILURE ; 
- int /*<<< orphan*/  OPENSSL_free (int /*<<< orphan*/  const**) ; 
- int /*<<< orphan*/  const** OPENSSL_malloc (int) ; 
- int /*<<< orphan*/  SETPRECOMP (int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  ec ; 
- TYPE_1__* ec_pre_comp_new (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {size_t blocksize; size_t numblocks; size_t w; size_t num; int const** points; int * group; } ;
+typedef TYPE_1__ EC_PRE_COMP ;
+typedef int const EC_POINT ;
+typedef int EC_GROUP ;
+typedef int BN_CTX ;
+typedef int BIGNUM ;
+
+
+ int BN_CTX_end (int *) ;
+ int BN_CTX_free (int *) ;
+ int * BN_CTX_new () ;
+ int BN_CTX_start (int *) ;
+ scalar_t__ BN_is_zero (int const*) ;
+ size_t BN_num_bits (int const*) ;
+ int EC_F_EC_WNAF_PRECOMPUTE_MULT ;
+ int const* EC_GROUP_get0_generator (int *) ;
+ int * EC_GROUP_get0_order (int *) ;
+ int EC_POINT_add (int *,int const*,int const*,int const*,int *) ;
+ int EC_POINT_copy (int const*,int const*) ;
+ int EC_POINT_dbl (int *,int const*,int const*,int *) ;
+ int EC_POINT_free (int const*) ;
+ int const* EC_POINT_new (int *) ;
+ int EC_POINTs_make_affine (int *,size_t,int const**,int *) ;
+ int EC_R_UNDEFINED_GENERATOR ;
+ int EC_R_UNKNOWN_ORDER ;
+ int EC_ec_pre_comp_free (TYPE_1__*) ;
+ int EC_pre_comp_free (int *) ;
+ size_t EC_window_bits_for_scalar_size (size_t) ;
+ int ECerr (int ,int ) ;
+ int ERR_R_INTERNAL_ERROR ;
+ int ERR_R_MALLOC_FAILURE ;
+ int OPENSSL_free (int const**) ;
+ int const** OPENSSL_malloc (int) ;
+ int SETPRECOMP (int *,int ,TYPE_1__*) ;
+ int ec ;
+ TYPE_1__* ec_pre_comp_new (int *) ;
 
 int ec_wNAF_precompute_mult(EC_GROUP *group, BN_CTX *ctx)
 {
     const EC_POINT *generator;
-    EC_POINT *tmp_point = NULL, *base = NULL, **var;
-    BN_CTX *new_ctx = NULL;
+    EC_POINT *tmp_point = ((void*)0), *base = ((void*)0), **var;
+    BN_CTX *new_ctx = ((void*)0);
     const BIGNUM *order;
     size_t i, bits, w, pre_points_per_block, blocksize, numblocks, num;
-    EC_POINT **points = NULL;
+    EC_POINT **points = ((void*)0);
     EC_PRE_COMP *pre_comp;
     int ret = 0;
 
-    /* if there is an old EC_PRE_COMP object, throw it away */
+
     EC_pre_comp_free(group);
-    if ((pre_comp = ec_pre_comp_new(group)) == NULL)
+    if ((pre_comp = ec_pre_comp_new(group)) == ((void*)0))
         return 0;
 
     generator = EC_GROUP_get0_generator(group);
-    if (generator == NULL) {
+    if (generator == ((void*)0)) {
         ECerr(EC_F_EC_WNAF_PRECOMPUTE_MULT, EC_R_UNDEFINED_GENERATOR);
         goto err;
     }
 
-    if (ctx == NULL) {
+    if (ctx == ((void*)0)) {
         ctx = new_ctx = BN_CTX_new();
-        if (ctx == NULL)
+        if (ctx == ((void*)0))
             goto err;
     }
 
     BN_CTX_start(ctx);
 
     order = EC_GROUP_get0_order(group);
-    if (order == NULL)
+    if (order == ((void*)0))
         goto err;
     if (BN_is_zero(order)) {
         ECerr(EC_F_EC_WNAF_PRECOMPUTE_MULT, EC_R_UNKNOWN_ORDER);
@@ -87,44 +87,44 @@ int ec_wNAF_precompute_mult(EC_GROUP *group, BN_CTX *ctx)
     }
 
     bits = BN_num_bits(order);
-    /*
-     * The following parameters mean we precompute (approximately) one point
-     * per bit. TBD: The combination 8, 4 is perfect for 160 bits; for other
-     * bit lengths, other parameter combinations might provide better
-     * efficiency.
-     */
+
+
+
+
+
+
     blocksize = 8;
     w = 4;
     if (EC_window_bits_for_scalar_size(bits) > w) {
-        /* let's not make the window too small ... */
+
         w = EC_window_bits_for_scalar_size(bits);
     }
 
-    numblocks = (bits + blocksize - 1) / blocksize; /* max. number of blocks
-                                                     * to use for wNAF
-                                                     * splitting */
+    numblocks = (bits + blocksize - 1) / blocksize;
+
+
 
     pre_points_per_block = (size_t)1 << (w - 1);
-    num = pre_points_per_block * numblocks; /* number of points to compute
-                                             * and store */
+    num = pre_points_per_block * numblocks;
+
 
     points = OPENSSL_malloc(sizeof(*points) * (num + 1));
-    if (points == NULL) {
+    if (points == ((void*)0)) {
         ECerr(EC_F_EC_WNAF_PRECOMPUTE_MULT, ERR_R_MALLOC_FAILURE);
         goto err;
     }
 
     var = points;
-    var[num] = NULL;            /* pivot */
+    var[num] = ((void*)0);
     for (i = 0; i < num; i++) {
-        if ((var[i] = EC_POINT_new(group)) == NULL) {
+        if ((var[i] = EC_POINT_new(group)) == ((void*)0)) {
             ECerr(EC_F_EC_WNAF_PRECOMPUTE_MULT, ERR_R_MALLOC_FAILURE);
             goto err;
         }
     }
 
-    if ((tmp_point = EC_POINT_new(group)) == NULL
-        || (base = EC_POINT_new(group)) == NULL) {
+    if ((tmp_point = EC_POINT_new(group)) == ((void*)0)
+        || (base = EC_POINT_new(group)) == ((void*)0)) {
         ECerr(EC_F_EC_WNAF_PRECOMPUTE_MULT, ERR_R_MALLOC_FAILURE);
         goto err;
     }
@@ -132,7 +132,7 @@ int ec_wNAF_precompute_mult(EC_GROUP *group, BN_CTX *ctx)
     if (!EC_POINT_copy(base, generator))
         goto err;
 
-    /* do the precomputation */
+
     for (i = 0; i < numblocks; i++) {
         size_t j;
 
@@ -143,17 +143,17 @@ int ec_wNAF_precompute_mult(EC_GROUP *group, BN_CTX *ctx)
             goto err;
 
         for (j = 1; j < pre_points_per_block; j++, var++) {
-            /*
-             * calculate odd multiples of the current base point
-             */
+
+
+
             if (!EC_POINT_add(group, *var, tmp_point, *(var - 1), ctx))
                 goto err;
         }
 
         if (i < numblocks - 1) {
-            /*
-             * get the next base (multiply current one by 2^blocksize)
-             */
+
+
+
             size_t k;
 
             if (blocksize <= 2) {
@@ -178,10 +178,10 @@ int ec_wNAF_precompute_mult(EC_GROUP *group, BN_CTX *ctx)
     pre_comp->numblocks = numblocks;
     pre_comp->w = w;
     pre_comp->points = points;
-    points = NULL;
+    points = ((void*)0);
     pre_comp->num = num;
     SETPRECOMP(group, ec, pre_comp);
-    pre_comp = NULL;
+    pre_comp = ((void*)0);
     ret = 1;
 
  err:
@@ -191,7 +191,7 @@ int ec_wNAF_precompute_mult(EC_GROUP *group, BN_CTX *ctx)
     if (points) {
         EC_POINT **p;
 
-        for (p = points; *p != NULL; p++)
+        for (p = points; *p != ((void*)0); p++)
             EC_POINT_free(*p);
         OPENSSL_free(points);
     }

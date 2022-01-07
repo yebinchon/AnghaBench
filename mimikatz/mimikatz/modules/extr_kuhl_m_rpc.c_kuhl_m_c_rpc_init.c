@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  NTSTATUS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  InitializeCriticalSection (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  STATUS_SUCCESS ; 
- int /*<<< orphan*/ * clientKey ; 
- int /*<<< orphan*/ * hBinding ; 
- int /*<<< orphan*/ * hMimi ; 
- int /*<<< orphan*/  isFinish ; 
- int /*<<< orphan*/  outputCritical ; 
+
+
+
+typedef int NTSTATUS ;
+
+
+ int FALSE ;
+ int InitializeCriticalSection (int *) ;
+ int STATUS_SUCCESS ;
+ int * clientKey ;
+ int * hBinding ;
+ int * hMimi ;
+ int isFinish ;
+ int outputCritical ;
 
 NTSTATUS kuhl_m_c_rpc_init()
 {
-	hMimi = NULL;
-	hBinding = NULL;
-	clientKey = NULL;
-	isFinish = FALSE;
-	InitializeCriticalSection(&outputCritical);
-	return STATUS_SUCCESS;
+ hMimi = ((void*)0);
+ hBinding = ((void*)0);
+ clientKey = ((void*)0);
+ isFinish = FALSE;
+ InitializeCriticalSection(&outputCritical);
+ return STATUS_SUCCESS;
 }

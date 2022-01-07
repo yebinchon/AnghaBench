@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int /*<<< orphan*/  out; TYPE_2__* p_sys; } ;
-typedef  TYPE_1__ demux_t ;
-struct TYPE_9__ {scalar_t__ i_next_date; scalar_t__ i_incr; int /*<<< orphan*/  es; } ;
-typedef  TYPE_2__ demux_sys_t ;
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int out; TYPE_2__* p_sys; } ;
+typedef TYPE_1__ demux_t ;
+struct TYPE_9__ {scalar_t__ i_next_date; scalar_t__ i_incr; int es; } ;
+typedef TYPE_2__ demux_sys_t ;
 struct TYPE_10__ {scalar_t__ i_dts; scalar_t__ i_pts; } ;
-typedef  TYPE_3__ block_t ;
+typedef TYPE_3__ block_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  es_out_Send (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_3__*) ; 
- int /*<<< orphan*/  es_out_SetPCR (int /*<<< orphan*/ ,scalar_t__) ; 
- TYPE_3__* screen_Capture (TYPE_1__*) ; 
- scalar_t__ vlc_tick_now () ; 
- int /*<<< orphan*/  vlc_tick_wait (scalar_t__) ; 
+
+ int es_out_Send (int ,int ,TYPE_3__*) ;
+ int es_out_SetPCR (int ,scalar_t__) ;
+ TYPE_3__* screen_Capture (TYPE_1__*) ;
+ scalar_t__ vlc_tick_now () ;
+ int vlc_tick_wait (scalar_t__) ;
 
 __attribute__((used)) static int Demux( demux_t *p_demux )
 {
@@ -34,7 +34,7 @@ __attribute__((used)) static int Demux( demux_t *p_demux )
 
     if( !p_sys->i_next_date ) p_sys->i_next_date = vlc_tick_now();
 
-    /* Frame skipping if necessary */
+
     while( vlc_tick_now() >= p_sys->i_next_date + p_sys->i_incr )
         p_sys->i_next_date += p_sys->i_incr;
 

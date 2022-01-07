@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_opt_revision_t ;
-typedef  int /*<<< orphan*/ * svn_mergeinfo_t ;
-typedef  scalar_t__ svn_mergeinfo_catalog_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct TYPE_4__ {int /*<<< orphan*/  wc_ctx; } ;
-typedef  TYPE_1__ svn_client_ctx_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_ASSERT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  get_mergeinfo (scalar_t__*,char const**,char const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mergeinfo_relpaths_to_urls (int /*<<< orphan*/ **,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_dirent_get_absolute (char const**,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_hash_gets (scalar_t__,char const*) ; 
- int /*<<< orphan*/  svn_path_is_url (char const*) ; 
- char* svn_uri_skip_ancestor (char const*,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__node_get_repos_info (int /*<<< orphan*/ *,char const**,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int svn_opt_revision_t ;
+typedef int * svn_mergeinfo_t ;
+typedef scalar_t__ svn_mergeinfo_catalog_t ;
+typedef int svn_error_t ;
+struct TYPE_4__ {int wc_ctx; } ;
+typedef TYPE_1__ svn_client_ctx_t ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
+
+
+ int FALSE ;
+ int SVN_ERR (int ) ;
+ int SVN_ERR_ASSERT (int ) ;
+ int * SVN_NO_ERROR ;
+ int get_mergeinfo (scalar_t__*,char const**,char const*,int const*,int ,int ,TYPE_1__*,int *,int *,int *) ;
+ int mergeinfo_relpaths_to_urls (int **,int *,char const*,int *,int *) ;
+ int svn_dirent_get_absolute (char const**,char const*,int *) ;
+ int * svn_hash_gets (scalar_t__,char const*) ;
+ int svn_path_is_url (char const*) ;
+ char* svn_uri_skip_ancestor (char const*,char const*,int *) ;
+ int svn_wc__node_get_repos_info (int *,char const**,int *,int *,int ,char const*,int *,int *) ;
 
 svn_error_t *
 svn_client_mergeinfo_get_merged(apr_hash_t **mergeinfo_p,
@@ -45,7 +45,7 @@ svn_client_mergeinfo_get_merged(apr_hash_t **mergeinfo_p,
   svn_mergeinfo_t mergeinfo;
 
   SVN_ERR(get_mergeinfo(&mergeinfo_cat, &repos_root, path_or_url,
-                        peg_revision, FALSE, FALSE, ctx, NULL, pool, pool));
+                        peg_revision, FALSE, FALSE, ctx, ((void*)0), pool, pool));
   if (mergeinfo_cat)
     {
       const char *repos_relpath;
@@ -53,7 +53,7 @@ svn_client_mergeinfo_get_merged(apr_hash_t **mergeinfo_p,
       if (! svn_path_is_url(path_or_url))
         {
           SVN_ERR(svn_dirent_get_absolute(&path_or_url, path_or_url, pool));
-          SVN_ERR(svn_wc__node_get_repos_info(NULL, &repos_relpath, NULL, NULL,
+          SVN_ERR(svn_wc__node_get_repos_info(((void*)0), &repos_relpath, ((void*)0), ((void*)0),
                                               ctx->wc_ctx, path_or_url,
                                               pool, pool));
         }
@@ -61,14 +61,14 @@ svn_client_mergeinfo_get_merged(apr_hash_t **mergeinfo_p,
         {
           repos_relpath = svn_uri_skip_ancestor(repos_root, path_or_url, pool);
 
-          SVN_ERR_ASSERT(repos_relpath != NULL); /* Or get_mergeinfo failed */
+          SVN_ERR_ASSERT(repos_relpath != ((void*)0));
         }
 
       mergeinfo = svn_hash_gets(mergeinfo_cat, repos_relpath);
     }
   else
     {
-      mergeinfo = NULL;
+      mergeinfo = ((void*)0);
     }
 
   SVN_ERR(mergeinfo_relpaths_to_urls(mergeinfo_p, mergeinfo,

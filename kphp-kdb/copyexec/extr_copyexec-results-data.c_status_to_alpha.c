@@ -1,49 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
-#define  ts_cancelled 135 
-#define  ts_decryption_failed 134 
-#define  ts_failed 133 
-#define  ts_ignored 132 
-#define  ts_interrupted 131 
-#define  ts_io_failed 130 
-#define  ts_running 129 
-#define  ts_terminated 128 
-
 __attribute__((used)) static char *status_to_alpha (int tp) {
   switch (tp) {
-    case ts_running:
+    case 129:
       return "running";
-    case ts_ignored:
+    case 132:
       return "ignored";
       break;
-    case ts_interrupted:
+    case 131:
       return "interrupted";
       break;
-    case ts_cancelled:
+    case 135:
       return "cancelled";
       break;
-    case ts_terminated:
+    case 128:
       return "terminated";
       break;
-    case ts_failed:
+    case 133:
       return "failed";
       break;
-    case ts_decryption_failed:
+    case 134:
       return "decryption_failed";
       break;
-    case ts_io_failed:
+    case 130:
       return "io_failed";
     default:
       return "unknown";

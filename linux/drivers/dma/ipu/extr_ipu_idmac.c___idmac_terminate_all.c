@@ -1,71 +1,71 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ipu {int /*<<< orphan*/  tasklet; } ;
-struct idmac_tx_desc {int /*<<< orphan*/  txd; int /*<<< orphan*/  list; } ;
-struct idmac_channel {scalar_t__ status; int n_tx_desc; int /*<<< orphan*/  lock; int /*<<< orphan*/ ** sg; int /*<<< orphan*/  free_list; struct idmac_tx_desc* desc; int /*<<< orphan*/  queue; } ;
+
+
+
+
+struct ipu {int tasklet; } ;
+struct idmac_tx_desc {int txd; int list; } ;
+struct idmac_channel {scalar_t__ status; int n_tx_desc; int lock; int ** sg; int free_list; struct idmac_tx_desc* desc; int queue; } ;
 struct idmac {int dummy; } ;
-struct dma_chan {int /*<<< orphan*/  device; } ;
+struct dma_chan {int device; } ;
 
-/* Variables and functions */
- scalar_t__ IPU_CHANNEL_ENABLED ; 
- scalar_t__ IPU_CHANNEL_INITIALIZED ; 
- int /*<<< orphan*/  async_tx_clear_ack (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ipu_disable_channel (struct idmac*,struct idmac_channel*,int) ; 
- int /*<<< orphan*/  list_add (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ list_empty (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  list_splice_init (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  tasklet_disable (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tasklet_enable (int /*<<< orphan*/ *) ; 
- struct idmac* to_idmac (int /*<<< orphan*/ ) ; 
- struct idmac_channel* to_idmac_chan (struct dma_chan*) ; 
- struct ipu* to_ipu (struct idmac*) ; 
+
+ scalar_t__ IPU_CHANNEL_ENABLED ;
+ scalar_t__ IPU_CHANNEL_INITIALIZED ;
+ int async_tx_clear_ack (int *) ;
+ int ipu_disable_channel (struct idmac*,struct idmac_channel*,int) ;
+ int list_add (int *,int *) ;
+ scalar_t__ list_empty (int *) ;
+ int list_splice_init (int *,int *) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
+ int tasklet_disable (int *) ;
+ int tasklet_enable (int *) ;
+ struct idmac* to_idmac (int ) ;
+ struct idmac_channel* to_idmac_chan (struct dma_chan*) ;
+ struct ipu* to_ipu (struct idmac*) ;
 
 __attribute__((used)) static int __idmac_terminate_all(struct dma_chan *chan)
 {
-	struct idmac_channel *ichan = to_idmac_chan(chan);
-	struct idmac *idmac = to_idmac(chan->device);
-	struct ipu *ipu = to_ipu(idmac);
-	unsigned long flags;
-	int i;
+ struct idmac_channel *ichan = to_idmac_chan(chan);
+ struct idmac *idmac = to_idmac(chan->device);
+ struct ipu *ipu = to_ipu(idmac);
+ unsigned long flags;
+ int i;
 
-	ipu_disable_channel(idmac, ichan,
-			    ichan->status >= IPU_CHANNEL_ENABLED);
+ ipu_disable_channel(idmac, ichan,
+       ichan->status >= IPU_CHANNEL_ENABLED);
 
-	tasklet_disable(&ipu->tasklet);
+ tasklet_disable(&ipu->tasklet);
 
-	/* ichan->queue is modified in ISR, have to spinlock */
-	spin_lock_irqsave(&ichan->lock, flags);
-	list_splice_init(&ichan->queue, &ichan->free_list);
 
-	if (ichan->desc)
-		for (i = 0; i < ichan->n_tx_desc; i++) {
-			struct idmac_tx_desc *desc = ichan->desc + i;
-			if (list_empty(&desc->list))
-				/* Descriptor was prepared, but not submitted */
-				list_add(&desc->list, &ichan->free_list);
+ spin_lock_irqsave(&ichan->lock, flags);
+ list_splice_init(&ichan->queue, &ichan->free_list);
 
-			async_tx_clear_ack(&desc->txd);
-		}
+ if (ichan->desc)
+  for (i = 0; i < ichan->n_tx_desc; i++) {
+   struct idmac_tx_desc *desc = ichan->desc + i;
+   if (list_empty(&desc->list))
 
-	ichan->sg[0] = NULL;
-	ichan->sg[1] = NULL;
-	spin_unlock_irqrestore(&ichan->lock, flags);
+    list_add(&desc->list, &ichan->free_list);
 
-	tasklet_enable(&ipu->tasklet);
+   async_tx_clear_ack(&desc->txd);
+  }
 
-	ichan->status = IPU_CHANNEL_INITIALIZED;
+ ichan->sg[0] = ((void*)0);
+ ichan->sg[1] = ((void*)0);
+ spin_unlock_irqrestore(&ichan->lock, flags);
 
-	return 0;
+ tasklet_enable(&ipu->tasklet);
+
+ ichan->status = IPU_CHANNEL_INITIALIZED;
+
+ return 0;
 }

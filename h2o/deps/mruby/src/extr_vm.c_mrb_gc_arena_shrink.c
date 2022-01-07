@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct RBasic {int dummy; } ;
 struct TYPE_6__ {int arena_capa; struct RBasic** arena; } ;
 struct TYPE_5__ {TYPE_2__ gc; } ;
-typedef  TYPE_1__ mrb_state ;
-typedef  TYPE_2__ mrb_gc ;
+typedef TYPE_1__ mrb_state ;
+typedef TYPE_2__ mrb_gc ;
 
-/* Variables and functions */
- int MRB_GC_ARENA_SIZE ; 
- scalar_t__ mrb_realloc (TYPE_1__*,struct RBasic**,int) ; 
+
+ int MRB_GC_ARENA_SIZE ;
+ scalar_t__ mrb_realloc (TYPE_1__*,struct RBasic**,int) ;
 
 __attribute__((used)) static void
 mrb_gc_arena_shrink(mrb_state *mrb, int idx)

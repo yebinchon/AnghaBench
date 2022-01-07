@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  zPrefix ;
-struct callback_data {int /*<<< orphan*/  db; scalar_t__ cnt; scalar_t__ echoOn; int /*<<< orphan*/  out; } ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BEGIN_TIMER ; 
- int /*<<< orphan*/  END_TIMER ; 
- scalar_t__ IsSpace (char) ; 
- scalar_t__ _all_whitespace (char*) ; 
- scalar_t__ _contains_semicolon (char*,int) ; 
- scalar_t__ _is_command_terminator (char*) ; 
- scalar_t__ _is_complete (char*,int) ; 
- int /*<<< orphan*/  bail_on_error ; 
- int do_meta_command (char*,struct callback_data*) ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fflush (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  free (char*) ; 
- char* malloc (int) ; 
- int /*<<< orphan*/  memcpy (char*,char*,int) ; 
- char* one_input_line (char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  open_db (struct callback_data*) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- char* realloc (char*,int) ; 
- scalar_t__ seenInterrupt ; 
- int /*<<< orphan*/  shell_callback ; 
- int shell_exec (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,struct callback_data*,char**) ; 
- scalar_t__ sqlite3_complete (char*) ; 
- char* sqlite3_errmsg (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_free (char*) ; 
- int /*<<< orphan*/  sqlite3_snprintf (int,char*,char*,...) ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ stdin_is_interactive ; 
- int strlen30 (char*) ; 
+
+
+
+typedef int zPrefix ;
+struct callback_data {int db; scalar_t__ cnt; scalar_t__ echoOn; int out; } ;
+typedef int FILE ;
+
+
+ int BEGIN_TIMER ;
+ int END_TIMER ;
+ scalar_t__ IsSpace (char) ;
+ scalar_t__ _all_whitespace (char*) ;
+ scalar_t__ _contains_semicolon (char*,int) ;
+ scalar_t__ _is_command_terminator (char*) ;
+ scalar_t__ _is_complete (char*,int) ;
+ int bail_on_error ;
+ int do_meta_command (char*,struct callback_data*) ;
+ int exit (int) ;
+ int fflush (int ) ;
+ int fprintf (int ,char*,...) ;
+ int free (char*) ;
+ char* malloc (int) ;
+ int memcpy (char*,char*,int) ;
+ char* one_input_line (char*,int *) ;
+ int open_db (struct callback_data*) ;
+ int printf (char*,...) ;
+ char* realloc (char*,int) ;
+ scalar_t__ seenInterrupt ;
+ int shell_callback ;
+ int shell_exec (int ,char*,int ,struct callback_data*,char**) ;
+ scalar_t__ sqlite3_complete (char*) ;
+ char* sqlite3_errmsg (int ) ;
+ int sqlite3_free (char*) ;
+ int sqlite3_snprintf (int,char*,char*,...) ;
+ int stderr ;
+ scalar_t__ stdin_is_interactive ;
+ int strlen30 (char*) ;
 
 __attribute__((used)) static int process_input(struct callback_data *p, FILE *in){
   char *zLine = 0;
@@ -61,7 +61,7 @@ __attribute__((used)) static int process_input(struct callback_data *p, FILE *in
     free(zLine);
     zLine = one_input_line(zSql, in);
     if( zLine==0 ){
-      /* End of input */
+
       if( stdin_is_interactive ) printf("\n");
       break;
     }
@@ -74,7 +74,7 @@ __attribute__((used)) static int process_input(struct callback_data *p, FILE *in
     if( zLine && zLine[0]=='.' && nSql==0 ){
       if( p->echoOn ) printf("%s\n", zLine);
       rc = do_meta_command(zLine, p);
-      if( rc==2 ){ /* exit requested */
+      if( rc==2 ){
         break;
       }else if( rc ){
         errCnt++;
@@ -119,7 +119,7 @@ __attribute__((used)) static int process_input(struct callback_data *p, FILE *in
       if( rc || zErrMsg ){
         char zPrefix[100];
         if( in!=0 || !stdin_is_interactive ){
-          sqlite3_snprintf(sizeof(zPrefix), zPrefix, 
+          sqlite3_snprintf(sizeof(zPrefix), zPrefix,
                            "Error: near line %d:", startline);
         }else{
           sqlite3_snprintf(sizeof(zPrefix), zPrefix, "Error:");

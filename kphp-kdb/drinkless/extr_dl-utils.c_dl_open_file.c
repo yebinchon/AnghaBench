@@ -1,37 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int MAX_FN ; 
- int O_CREAT ; 
- int O_RDONLY ; 
- int O_RDWR ; 
- int O_TRUNC ; 
- int /*<<< orphan*/  SEEK_END ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  dl_strdup (char const*) ; 
- int /*<<< orphan*/  exit (int) ; 
- int* fd ; 
- int /*<<< orphan*/ * fnames ; 
- scalar_t__* fpos ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char const*,...) ; 
- int* fread_only ; 
- int /*<<< orphan*/ * fsize ; 
- int /*<<< orphan*/  lseek (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int open (char const*,int,int) ; 
- char* progname ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ verbosity ; 
+ int MAX_FN ;
+ int O_CREAT ;
+ int O_RDONLY ;
+ int O_RDWR ;
+ int O_TRUNC ;
+ int SEEK_END ;
+ int SEEK_SET ;
+ int dl_strdup (char const*) ;
+ int exit (int) ;
+ int* fd ;
+ int * fnames ;
+ scalar_t__* fpos ;
+ int fprintf (int ,char*,char const*,...) ;
+ int* fread_only ;
+ int * fsize ;
+ int lseek (int,int ,int ) ;
+ int open (char const*,int,int) ;
+ char* progname ;
+ int stderr ;
+ scalar_t__ verbosity ;
 
 int dl_open_file (int x, const char *fname, int creat) {
   if (x < 0 || x >= MAX_FN) {

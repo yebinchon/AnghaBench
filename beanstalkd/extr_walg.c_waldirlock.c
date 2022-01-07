@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct flock {scalar_t__ l_len; scalar_t__ l_start; int /*<<< orphan*/  l_whence; int /*<<< orphan*/  l_type; } ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct flock {scalar_t__ l_len; scalar_t__ l_start; int l_whence; int l_type; } ;
 struct TYPE_3__ {char* dir; } ;
-typedef  TYPE_1__ Wal ;
+typedef TYPE_1__ Wal ;
 
-/* Variables and functions */
- int /*<<< orphan*/  F_SETLK ; 
- int /*<<< orphan*/  F_WRLCK ; 
- int O_CREAT ; 
- int O_WRONLY ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int fcntl (int,int /*<<< orphan*/ ,struct flock*) ; 
- int /*<<< orphan*/  free (char*) ; 
- char* malloc (size_t) ; 
- int open (char*,int,int) ; 
- int /*<<< orphan*/  snprintf (char*,size_t,char*,char*) ; 
- int strlen (char*) ; 
- int /*<<< orphan*/  twarn (char*) ; 
+
+ int F_SETLK ;
+ int F_WRLCK ;
+ int O_CREAT ;
+ int O_WRONLY ;
+ int SEEK_SET ;
+ int fcntl (int,int ,struct flock*) ;
+ int free (char*) ;
+ char* malloc (size_t) ;
+ int open (char*,int,int) ;
+ int snprintf (char*,size_t,char*,char*) ;
+ int strlen (char*) ;
+ int twarn (char*) ;
 
 int
 waldirlock(Wal *w)
@@ -39,7 +39,7 @@ waldirlock(Wal *w)
     size_t path_length;
 
     path_length = strlen(w->dir) + strlen("/lock") + 1;
-    if ((path = malloc(path_length)) == NULL) {
+    if ((path = malloc(path_length)) == ((void*)0)) {
         twarn("malloc");
         return 0;
     }
@@ -62,7 +62,7 @@ waldirlock(Wal *w)
         return 0;
     }
 
-    // intentionally leak fd, since we never want to close it
-    // and we'll never need it again
+
+
     return 1;
 }

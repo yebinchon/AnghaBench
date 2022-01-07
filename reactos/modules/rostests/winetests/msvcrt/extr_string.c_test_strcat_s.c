@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  dest ;
 
-/* Variables and functions */
- int EINVAL ; 
- int ERANGE ; 
- int /*<<< orphan*/  memset (char*,char,int) ; 
- int /*<<< orphan*/  ok (int,char*,int,...) ; 
- int pstrcat_s (char*,int,char const*) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
+
+
+
+typedef int dest ;
+
+
+ int EINVAL ;
+ int ERANGE ;
+ int memset (char*,char,int) ;
+ int ok (int,char*,int,...) ;
+ int pstrcat_s (char*,int,char const*) ;
+ int win_skip (char*) ;
 
 __attribute__((used)) static void test_strcat_s(void)
 {
@@ -65,20 +65,20 @@ __attribute__((used)) static void test_strcat_s(void)
        "Unexpected return data from strcpy_s: 0x%02x 0x%02x 0x%02x 0x%02x 0x%02x 0x%02x 0x%02x 0x%02x\n",
        dest[0], dest[1], dest[2], dest[3], dest[4], dest[5], dest[6], dest[7]);
 
-    ret = pstrcat_s(dest, 0, NULL);
+    ret = pstrcat_s(dest, 0, ((void*)0));
     ok(ret == EINVAL, "strcat_s: len = 0 and src = NULL returned %d, expected EINVAL\n", ret);
     ok(dest[0] == 'a' && dest[1] == '\0'&& dest[2] == 'X' && dest[3] == 'X' &&
        dest[4] == 'X' && dest[5] == 'X' && dest[6] == 'X' && dest[7] == 'X',
        "Unexpected return data from strcpy_s: 0x%02x 0x%02x 0x%02x 0x%02x 0x%02x 0x%02x 0x%02x 0x%02x\n",
        dest[0], dest[1], dest[2], dest[3], dest[4], dest[5], dest[6], dest[7]);
 
-    ret = pstrcat_s(dest, sizeof(dest), NULL);
+    ret = pstrcat_s(dest, sizeof(dest), ((void*)0));
     ok(ret == EINVAL, "strcat_s:  Sourcing from NULL returned %d, expected EINVAL\n", ret);
     ok(dest[0] == '\0'&& dest[1] == '\0'&& dest[2] == 'X' && dest[3] == 'X' &&
        dest[4] == 'X' && dest[5] == 'X' && dest[6] == 'X' && dest[7] == 'X',
        "Unexpected return data from strcpy_s: 0x%02x 0x%02x 0x%02x 0x%02x 0x%02x 0x%02x 0x%02x 0x%02x\n",
        dest[0], dest[1], dest[2], dest[3], dest[4], dest[5], dest[6], dest[7]);
 
-    ret = pstrcat_s(NULL, sizeof(dest), small);
+    ret = pstrcat_s(((void*)0), sizeof(dest), small);
     ok(ret == EINVAL, "strcat_s: Writing to a NULL string returned %d, expected EINVAL\n", ret);
 }

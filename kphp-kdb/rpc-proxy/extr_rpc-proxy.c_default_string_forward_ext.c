@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct rpc_cluster_bucket {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MAX_KEY_LEN ; 
- int /*<<< orphan*/  TL_ERROR_PROXY_NO_TARGET ; 
- struct rpc_cluster_bucket* calculate_key_target (char*,int) ; 
- int query_forward (struct rpc_cluster_bucket) ; 
- int /*<<< orphan*/  tl_fetch_int () ; 
- int /*<<< orphan*/  tl_fetch_mark_delete () ; 
- int /*<<< orphan*/  tl_fetch_mark_restore () ; 
- int /*<<< orphan*/  tl_fetch_set_error_format (int /*<<< orphan*/ ,char*,int,char*,char*) ; 
- int tl_fetch_string0 (char*,int /*<<< orphan*/ ) ; 
+
+ int MAX_KEY_LEN ;
+ int TL_ERROR_PROXY_NO_TARGET ;
+ struct rpc_cluster_bucket* calculate_key_target (char*,int) ;
+ int query_forward (struct rpc_cluster_bucket) ;
+ int tl_fetch_int () ;
+ int tl_fetch_mark_delete () ;
+ int tl_fetch_mark_restore () ;
+ int tl_fetch_set_error_format (int ,char*,int,char*,char*) ;
+ int tl_fetch_string0 (char*,int ) ;
 
 int default_string_forward_ext (void) {
-  tl_fetch_int (); //op
+  tl_fetch_int ();
   int key_len;
   char key[MAX_KEY_LEN + 1];
   key_len = tl_fetch_string0 (key, MAX_KEY_LEN);

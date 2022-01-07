@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  int PDH_STATUS ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int ERROR_SUCCESS ; 
- int PDH_INVALID_ARGUMENT ; 
- int PDH_STRING_NOT_FOUND ; 
- int PdhLookupPerfIndexByNameW (int /*<<< orphan*/ *,char const*,int*) ; 
- int /*<<< orphan*/  ok (int,char*,int) ; 
- char const* processor_time ; 
- char const* uptime ; 
+
+
+
+typedef char WCHAR ;
+typedef int PDH_STATUS ;
+typedef int DWORD ;
+
+
+ int ERROR_SUCCESS ;
+ int PDH_INVALID_ARGUMENT ;
+ int PDH_STRING_NOT_FOUND ;
+ int PdhLookupPerfIndexByNameW (int *,char const*,int*) ;
+ int ok (int,char*,int) ;
+ char const* processor_time ;
+ char const* uptime ;
 
 __attribute__((used)) static void test_PdhLookupPerfIndexByNameW( void )
 {
@@ -30,23 +30,23 @@ __attribute__((used)) static void test_PdhLookupPerfIndexByNameW( void )
 
     static const WCHAR no_counter[] = {'N','o',' ','C','o','u','n','t','e','r',0};
 
-    ret = PdhLookupPerfIndexByNameW( NULL, NULL, NULL );
+    ret = PdhLookupPerfIndexByNameW( ((void*)0), ((void*)0), ((void*)0) );
     ok(ret == PDH_INVALID_ARGUMENT, "PdhLookupPerfIndexByNameW failed 0x%08x\n", ret);
 
-    ret = PdhLookupPerfIndexByNameW( NULL, NULL, &index );
+    ret = PdhLookupPerfIndexByNameW( ((void*)0), ((void*)0), &index );
     ok(ret == PDH_INVALID_ARGUMENT, "PdhLookupPerfIndexByNameW failed 0x%08x\n", ret);
 
-    ret = PdhLookupPerfIndexByNameW( NULL, no_counter, &index );
+    ret = PdhLookupPerfIndexByNameW( ((void*)0), no_counter, &index );
     ok(ret == PDH_STRING_NOT_FOUND, "PdhLookupPerfIndexByNameW failed 0x%08x\n", ret);
 
-    ret = PdhLookupPerfIndexByNameW( NULL, processor_time, NULL );
+    ret = PdhLookupPerfIndexByNameW( ((void*)0), processor_time, ((void*)0) );
     ok(ret == PDH_INVALID_ARGUMENT, "PdhLookupPerfIndexByNameW failed 0x%08x\n", ret);
 
-    ret = PdhLookupPerfIndexByNameW( NULL, processor_time, &index );
+    ret = PdhLookupPerfIndexByNameW( ((void*)0), processor_time, &index );
     ok(ret == ERROR_SUCCESS, "PdhLookupPerfIndexByNameW failed 0x%08x\n", ret);
     ok(index == 6, "PdhLookupPerfIndexByNameW failed %d\n", index);
 
-    ret = PdhLookupPerfIndexByNameW( NULL, uptime, &index );
+    ret = PdhLookupPerfIndexByNameW( ((void*)0), uptime, &index );
     ok(ret == ERROR_SUCCESS, "PdhLookupPerfIndexByNameW failed 0x%08x\n", ret);
     ok(index == 674, "PdhLookupPerfIndexByNameW failed %d\n", index);
 }

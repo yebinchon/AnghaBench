@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct rs_control {int dummy; } ;
-typedef  int /*<<< orphan*/  gfp_t ;
+typedef int gfp_t ;
 
-/* Variables and functions */
- struct rs_control* init_rs_internal (int,int,int /*<<< orphan*/ *,int,int,int,int /*<<< orphan*/ ) ; 
+
+ struct rs_control* init_rs_internal (int,int,int *,int,int,int,int ) ;
 
 struct rs_control *init_rs_gfp(int symsize, int gfpoly, int fcr, int prim,
-			       int nroots, gfp_t gfp)
+          int nroots, gfp_t gfp)
 {
-	return init_rs_internal(symsize, gfpoly, NULL, fcr, prim, nroots, gfp);
+ return init_rs_internal(symsize, gfpoly, ((void*)0), fcr, prim, nroots, gfp);
 }

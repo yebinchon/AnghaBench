@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ tree ;
 
-/* Variables and functions */
- scalar_t__ DECL_NAMESPACE_ASSOCIATIONS (scalar_t__) ; 
- scalar_t__ NULL_TREE ; 
- scalar_t__ TREE_CHAIN (scalar_t__) ; 
- scalar_t__ TREE_PURPOSE (scalar_t__) ; 
- int /*<<< orphan*/  purpose_member (scalar_t__,scalar_t__) ; 
- scalar_t__ tree_cons (scalar_t__,scalar_t__,scalar_t__) ; 
+
+
+
+typedef scalar_t__ tree ;
+
+
+ scalar_t__ DECL_NAMESPACE_ASSOCIATIONS (scalar_t__) ;
+ scalar_t__ NULL_TREE ;
+ scalar_t__ TREE_CHAIN (scalar_t__) ;
+ scalar_t__ TREE_PURPOSE (scalar_t__) ;
+ int purpose_member (scalar_t__,scalar_t__) ;
+ scalar_t__ tree_cons (scalar_t__,scalar_t__,scalar_t__) ;
 
 bool
 is_associated_namespace (tree current, tree scope)
@@ -29,17 +29,17 @@ is_associated_namespace (tree current, tree scope)
   while (1)
     {
       if (scope == current)
-	return true;
+ return 1;
       seen = tree_cons (scope, NULL_TREE, seen);
       for (t = DECL_NAMESPACE_ASSOCIATIONS (scope); t; t = TREE_CHAIN (t))
-	if (!purpose_member (TREE_PURPOSE (t), seen))
-	  todo = tree_cons (TREE_PURPOSE (t), NULL_TREE, todo);
+ if (!purpose_member (TREE_PURPOSE (t), seen))
+   todo = tree_cons (TREE_PURPOSE (t), NULL_TREE, todo);
       if (todo)
-	{
-	  scope = TREE_PURPOSE (todo);
-	  todo = TREE_CHAIN (todo);
-	}
+ {
+   scope = TREE_PURPOSE (todo);
+   todo = TREE_CHAIN (todo);
+ }
       else
-	return false;
+ return 0;
     }
 }

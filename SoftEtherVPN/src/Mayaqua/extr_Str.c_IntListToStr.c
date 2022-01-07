@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int UINT ;
-typedef  int /*<<< orphan*/  LIST ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ClearStr (char*,int) ; 
- scalar_t__ IsEmptyStr (char*) ; 
- int* LIST_DATA (int /*<<< orphan*/ *,int) ; 
- int LIST_NUM (int /*<<< orphan*/ *) ; 
- int MAX_SIZE ; 
- int /*<<< orphan*/  StrCat (char*,int,char*) ; 
- int /*<<< orphan*/  ToStr (char*,int) ; 
+
+
+
+typedef int UINT ;
+typedef int LIST ;
+
+
+ int ClearStr (char*,int) ;
+ scalar_t__ IsEmptyStr (char*) ;
+ int* LIST_DATA (int *,int) ;
+ int LIST_NUM (int *) ;
+ int MAX_SIZE ;
+ int StrCat (char*,int,char*) ;
+ int ToStr (char*,int) ;
 
 void IntListToStr(char *str, UINT str_size, LIST *o, char *separate_str)
 {
-	UINT i;
-	ClearStr(str, str_size);
-	// Validate arguments
-	if (o == NULL)
-	{
-		return;
-	}
-	if (IsEmptyStr(separate_str))
-	{
-		separate_str = ", ";
-	}
+ UINT i;
+ ClearStr(str, str_size);
 
-	for (i = 0;i < LIST_NUM(o);i++)
-	{
-		char tmp[MAX_SIZE];
-		UINT *v = LIST_DATA(o, i);
+ if (o == ((void*)0))
+ {
+  return;
+ }
+ if (IsEmptyStr(separate_str))
+ {
+  separate_str = ", ";
+ }
 
-		ToStr(tmp, *v);
+ for (i = 0;i < LIST_NUM(o);i++)
+ {
+  char tmp[MAX_SIZE];
+  UINT *v = LIST_DATA(o, i);
 
-		StrCat(str, str_size, tmp);
+  ToStr(tmp, *v);
 
-		if (i != (LIST_NUM(o) - 1))
-		{
-			StrCat(str, str_size, separate_str);
-		}
-	}
+  StrCat(str, str_size, tmp);
+
+  if (i != (LIST_NUM(o) - 1))
+  {
+   StrCat(str, str_size, separate_str);
+  }
+ }
 }

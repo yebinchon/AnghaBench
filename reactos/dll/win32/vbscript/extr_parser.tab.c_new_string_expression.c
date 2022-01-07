@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  expr; int /*<<< orphan*/  const* value; } ;
-typedef  TYPE_1__ string_expression_t ;
-typedef  int /*<<< orphan*/  parser_ctx_t ;
-typedef  int /*<<< orphan*/  expression_t ;
-typedef  int /*<<< orphan*/  WCHAR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EXPR_STRING ; 
- TYPE_1__* new_expression (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int expr; int const* value; } ;
+typedef TYPE_1__ string_expression_t ;
+typedef int parser_ctx_t ;
+typedef int expression_t ;
+typedef int WCHAR ;
+
+
+ int EXPR_STRING ;
+ TYPE_1__* new_expression (int *,int ,int) ;
 
 __attribute__((used)) static expression_t *new_string_expression(parser_ctx_t *ctx, const WCHAR *value)
 {
@@ -27,7 +27,7 @@ __attribute__((used)) static expression_t *new_string_expression(parser_ctx_t *c
 
     expr = new_expression(ctx, EXPR_STRING, sizeof(*expr));
     if(!expr)
-        return NULL;
+        return ((void*)0);
 
     expr->value = value;
     return &expr->expr;

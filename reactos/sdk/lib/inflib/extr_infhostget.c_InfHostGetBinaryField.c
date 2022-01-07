@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ULONG ;
-typedef  int /*<<< orphan*/  UCHAR ;
-typedef  int /*<<< orphan*/  PINFCONTEXT ;
-typedef  int /*<<< orphan*/  INFSTATUS ;
 
-/* Variables and functions */
- scalar_t__ INF_SUCCESS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  InfpGetBinaryField (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  errno ; 
+
+
+
+typedef int ULONG ;
+typedef int UCHAR ;
+typedef int PINFCONTEXT ;
+typedef int INFSTATUS ;
+
+
+ scalar_t__ INF_SUCCESS (int ) ;
+ int InfpGetBinaryField (int ,int ,int *,int ,int *) ;
+ int errno ;
 
 int
 InfHostGetBinaryField(PINFCONTEXT Context,

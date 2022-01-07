@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  wVersion; } ;
-typedef  TYPE_1__ WSADATA ;
 
-/* Variables and functions */
- int HIBYTE (int /*<<< orphan*/ ) ; 
- int LOBYTE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MAKEWORD (int,int) ; 
- int /*<<< orphan*/  WSACleanup () ; 
- scalar_t__ WSAStartup (int /*<<< orphan*/ ,TYPE_1__*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int wVersion; } ;
+typedef TYPE_1__ WSADATA ;
+
+
+ int HIBYTE (int ) ;
+ int LOBYTE (int ) ;
+ int MAKEWORD (int,int) ;
+ int WSACleanup () ;
+ scalar_t__ WSAStartup (int ,TYPE_1__*) ;
 
 __attribute__((used)) static int system_InitWSA(int hi, int lo)
 {
@@ -29,7 +29,7 @@ __attribute__((used)) static int system_InitWSA(int hi, int lo)
     {
         if (LOBYTE(data.wVersion) == 2 && HIBYTE(data.wVersion) == 2)
             return 0;
-        /* Winsock DLL is not usable */
+
         WSACleanup( );
     }
     return -1;

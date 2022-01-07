@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int shmid; scalar_t__ data; int /*<<< orphan*/  seg; int /*<<< orphan*/  xcb; } ;
-typedef  TYPE_1__ xcb_shm_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IPC_RMID ; 
- int /*<<< orphan*/  bfree (TYPE_1__*) ; 
- int /*<<< orphan*/  shmctl (int,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  shmdt (scalar_t__) ; 
- int /*<<< orphan*/  xcb_shm_detach (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int shmid; scalar_t__ data; int seg; int xcb; } ;
+typedef TYPE_1__ xcb_shm_t ;
+
+
+ int IPC_RMID ;
+ int bfree (TYPE_1__*) ;
+ int shmctl (int,int ,int *) ;
+ int shmdt (scalar_t__) ;
+ int xcb_shm_detach (int ,int ) ;
 
 void xshm_xcb_detach(xcb_shm_t *shm)
 {
-	if (!shm)
-		return;
+ if (!shm)
+  return;
 
-	xcb_shm_detach(shm->xcb, shm->seg);
+ xcb_shm_detach(shm->xcb, shm->seg);
 
-	if ((char *)shm->data != (char *)-1)
-		shmdt(shm->data);
+ if ((char *)shm->data != (char *)-1)
+  shmdt(shm->data);
 
-	if (shm->shmid != -1)
-		shmctl(shm->shmid, IPC_RMID, NULL);
+ if (shm->shmid != -1)
+  shmctl(shm->shmid, IPC_RMID, ((void*)0));
 
-	bfree(shm);
+ bfree(shm);
 }

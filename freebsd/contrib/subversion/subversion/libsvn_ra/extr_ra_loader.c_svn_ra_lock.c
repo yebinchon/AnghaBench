@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_6__ {TYPE_1__* vtable; } ;
-typedef  TYPE_2__ svn_ra_session_t ;
-typedef  int /*<<< orphan*/  svn_ra_lock_callback_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
-typedef  int /*<<< orphan*/  apr_hash_index_t ;
-struct TYPE_5__ {int /*<<< orphan*/ * (* lock ) (TYPE_2__*,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *) ;} ;
+typedef TYPE_2__ svn_ra_session_t ;
+typedef int svn_ra_lock_callback_t ;
+typedef int svn_error_t ;
+typedef int svn_boolean_t ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
+typedef int apr_hash_index_t ;
+struct TYPE_5__ {int * (* lock ) (TYPE_2__*,int *,char const*,int ,int ,void*,int *) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR_ASSERT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_XML_UNESCAPABLE_DATA ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/ * apr_hash_first (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * apr_hash_next (int /*<<< orphan*/ *) ; 
- char* apr_hash_this_key (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strlen (char const*) ; 
- int /*<<< orphan*/ * stub1 (TYPE_2__*,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_error_create (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_relpath_is_canonical (char const*) ; 
- int /*<<< orphan*/  svn_xml_is_xml_safe (char const*,int /*<<< orphan*/ ) ; 
+
+ int SVN_ERR_ASSERT (int ) ;
+ int SVN_ERR_XML_UNESCAPABLE_DATA ;
+ int _ (char*) ;
+ int * apr_hash_first (int *,int *) ;
+ int * apr_hash_next (int *) ;
+ char* apr_hash_this_key (int *) ;
+ int strlen (char const*) ;
+ int * stub1 (TYPE_2__*,int *,char const*,int ,int ,void*,int *) ;
+ int * svn_error_create (int ,int *,int ) ;
+ int svn_relpath_is_canonical (char const*) ;
+ int svn_xml_is_xml_safe (char const*,int ) ;
 
 svn_error_t *svn_ra_lock(svn_ra_session_t *session,
                          apr_hash_t *path_revs,
@@ -54,7 +54,7 @@ svn_error_t *svn_ra_lock(svn_ra_session_t *session,
 
   if (comment && ! svn_xml_is_xml_safe(comment, strlen(comment)))
     return svn_error_create
-      (SVN_ERR_XML_UNESCAPABLE_DATA, NULL,
+      (SVN_ERR_XML_UNESCAPABLE_DATA, ((void*)0),
        _("Lock comment contains illegal characters"));
 
   return session->vtable->lock(session, path_revs, comment, steal_lock,

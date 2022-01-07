@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  pcre_uchar ;
-struct TYPE_3__ {int /*<<< orphan*/ * hwm; scalar_t__ start_workspace; int /*<<< orphan*/ * start_code; } ;
-typedef  TYPE_1__ compile_data ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- scalar_t__ GET (int /*<<< orphan*/ *,int) ; 
- scalar_t__ LINK_SIZE ; 
- int /*<<< orphan*/  PUT (int /*<<< orphan*/ *,int,int) ; 
- scalar_t__ find_recurse (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int pcre_uchar ;
+struct TYPE_3__ {int * hwm; scalar_t__ start_workspace; int * start_code; } ;
+typedef TYPE_1__ compile_data ;
+typedef int BOOL ;
+
+
+ scalar_t__ GET (int *,int) ;
+ scalar_t__ LINK_SIZE ;
+ int PUT (int *,int,int) ;
+ scalar_t__ find_recurse (int *,int ) ;
 
 __attribute__((used)) static void
 adjust_recurse(pcre_uchar *group, int adjust, BOOL utf, compile_data *cd,
@@ -30,7 +30,7 @@ int offset;
 pcre_uchar *hc;
 pcre_uchar *ptr = group;
 
-while ((ptr = (pcre_uchar *)find_recurse(ptr, utf)) != NULL)
+while ((ptr = (pcre_uchar *)find_recurse(ptr, utf)) != ((void*)0))
   {
   for (hc = (pcre_uchar *)cd->start_workspace + save_hwm_offset; hc < cd->hwm;
        hc += LINK_SIZE)
@@ -39,8 +39,8 @@ while ((ptr = (pcre_uchar *)find_recurse(ptr, utf)) != NULL)
     if (cd->start_code + offset == ptr + 1) break;
     }
 
-  /* If we have not found this recursion on the forward reference list, adjust
-  the recursion's offset if it's after the start of this group. */
+
+
 
   if (hc >= cd->hwm)
     {
@@ -51,7 +51,7 @@ while ((ptr = (pcre_uchar *)find_recurse(ptr, utf)) != NULL)
   ptr += 1 + LINK_SIZE;
   }
 
-/* Now adjust all forward reference offsets for the group. */
+
 
 for (hc = (pcre_uchar *)cd->start_workspace + save_hwm_offset; hc < cd->hwm;
      hc += LINK_SIZE)

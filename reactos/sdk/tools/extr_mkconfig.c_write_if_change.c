@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SEEK_END ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  fputs (char*,int /*<<< orphan*/ *) ; 
- unsigned int fread (char*,int,unsigned int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  fseek (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- unsigned int ftell (int /*<<< orphan*/ *) ; 
- unsigned int fwrite (char*,int,unsigned int,int /*<<< orphan*/ *) ; 
- char* malloc (unsigned int) ; 
- scalar_t__ memcmp (char*,char*,unsigned int) ; 
- int /*<<< orphan*/  stderr ; 
- unsigned int strlen (char*) ; 
+
+
+
+typedef int FILE ;
+
+
+ int SEEK_END ;
+ int SEEK_SET ;
+ int fclose (int *) ;
+ int * fopen (char*,char*) ;
+ int fprintf (int ,char*) ;
+ int fputs (char*,int *) ;
+ unsigned int fread (char*,int,unsigned int,int *) ;
+ int free (char*) ;
+ int fseek (int *,int ,int ) ;
+ unsigned int ftell (int *) ;
+ unsigned int fwrite (char*,int,unsigned int,int *) ;
+ char* malloc (unsigned int) ;
+ scalar_t__ memcmp (char*,char*,unsigned int) ;
+ int stderr ;
+ unsigned int strlen (char*) ;
 
 int
 write_if_change(char* outbuf, char* filename)
@@ -38,14 +38,14 @@ write_if_change(char* outbuf, char* filename)
   unsigned int stat;
 
   out = fopen(filename, "rb");
-  if (out == NULL)
+  if (out == ((void*)0))
     {
       out = fopen(filename, "wb");
-      if (out == NULL)
-	{
-	  fprintf(stderr, "Unable to create output file\n");
-	  return(1);
-	}
+      if (out == ((void*)0))
+ {
+   fprintf(stderr, "Unable to create output file\n");
+   return(1);
+ }
       fputs(outbuf, out);
       fclose(out);
       return(0);
@@ -54,7 +54,7 @@ write_if_change(char* outbuf, char* filename)
   fseek(out, 0, SEEK_END);
   end = ftell(out);
   cmpbuf = malloc(end);
-  if (cmpbuf == NULL)
+  if (cmpbuf == ((void*)0))
     {
       fprintf(stderr, "Out of memory\n");
       fclose(out);
@@ -80,7 +80,7 @@ write_if_change(char* outbuf, char* filename)
   fclose(out);
   free(cmpbuf);
   out = fopen(filename, "wb");
-  if (out == NULL)
+  if (out == ((void*)0))
     {
       fprintf(stderr, "Unable to create output file\n");
       return(1);

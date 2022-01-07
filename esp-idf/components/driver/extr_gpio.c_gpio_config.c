@@ -1,62 +1,62 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_4__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint64_t ;
-typedef  int uint32_t ;
-struct TYPE_6__ {int pin_bit_mask; int mode; int /*<<< orphan*/  intr_type; scalar_t__ pull_down_en; scalar_t__ pull_up_en; } ;
-typedef  TYPE_2__ gpio_config_t ;
-typedef  int /*<<< orphan*/  esp_err_t ;
+
+
+typedef struct TYPE_7__ TYPE_4__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint64_t ;
+typedef int uint32_t ;
+struct TYPE_6__ {int pin_bit_mask; int mode; int intr_type; scalar_t__ pull_down_en; scalar_t__ pull_up_en; } ;
+typedef TYPE_2__ gpio_config_t ;
+typedef int esp_err_t ;
 struct TYPE_7__ {TYPE_1__* pin; } ;
 struct TYPE_5__ {int pad_driver; } ;
 
-/* Variables and functions */
- int BIT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ESP_ERR_INVALID_ARG ; 
- int /*<<< orphan*/  ESP_LOGE (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  ESP_LOGI (int /*<<< orphan*/ ,char*,int,int,int,int,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ESP_OK ; 
- TYPE_4__ GPIO ; 
- int GPIO_MODE_DEF_INPUT ; 
- int GPIO_MODE_DEF_OD ; 
- int GPIO_MODE_DEF_OUTPUT ; 
- int GPIO_PIN_COUNT ; 
- int* GPIO_PIN_MUX_REG ; 
- int GPIO_SEL_34 ; 
- int GPIO_SEL_35 ; 
- int GPIO_SEL_36 ; 
- int GPIO_SEL_37 ; 
- int GPIO_SEL_38 ; 
- int GPIO_SEL_39 ; 
- int GPIO_SEL_46 ; 
- int /*<<< orphan*/  GPIO_TAG ; 
- int /*<<< orphan*/  PIN_FUNC_GPIO ; 
- int /*<<< orphan*/  PIN_FUNC_SELECT (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PIN_INPUT_DISABLE (int) ; 
- int /*<<< orphan*/  PIN_INPUT_ENABLE (int) ; 
- scalar_t__ RTC_GPIO_IS_VALID_GPIO (int) ; 
- int /*<<< orphan*/  gpio_intr_disable (int) ; 
- int /*<<< orphan*/  gpio_intr_enable (int) ; 
- int /*<<< orphan*/  gpio_output_disable (int) ; 
- int /*<<< orphan*/  gpio_output_enable (int) ; 
- int /*<<< orphan*/  gpio_pulldown_dis (int) ; 
- int /*<<< orphan*/  gpio_pulldown_en (int) ; 
- int /*<<< orphan*/  gpio_pullup_dis (int) ; 
- int /*<<< orphan*/  gpio_pullup_en (int) ; 
- int /*<<< orphan*/  gpio_set_intr_type (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rtc_gpio_deinit (int) ; 
+
+ int BIT (int ) ;
+ int ESP_ERR_INVALID_ARG ;
+ int ESP_LOGE (int ,char*,...) ;
+ int ESP_LOGI (int ,char*,int,int,int,int,int,int,int ) ;
+ int ESP_OK ;
+ TYPE_4__ GPIO ;
+ int GPIO_MODE_DEF_INPUT ;
+ int GPIO_MODE_DEF_OD ;
+ int GPIO_MODE_DEF_OUTPUT ;
+ int GPIO_PIN_COUNT ;
+ int* GPIO_PIN_MUX_REG ;
+ int GPIO_SEL_34 ;
+ int GPIO_SEL_35 ;
+ int GPIO_SEL_36 ;
+ int GPIO_SEL_37 ;
+ int GPIO_SEL_38 ;
+ int GPIO_SEL_39 ;
+ int GPIO_SEL_46 ;
+ int GPIO_TAG ;
+ int PIN_FUNC_GPIO ;
+ int PIN_FUNC_SELECT (int,int ) ;
+ int PIN_INPUT_DISABLE (int) ;
+ int PIN_INPUT_ENABLE (int) ;
+ scalar_t__ RTC_GPIO_IS_VALID_GPIO (int) ;
+ int gpio_intr_disable (int) ;
+ int gpio_intr_enable (int) ;
+ int gpio_output_disable (int) ;
+ int gpio_output_enable (int) ;
+ int gpio_pulldown_dis (int) ;
+ int gpio_pulldown_en (int) ;
+ int gpio_pullup_dis (int) ;
+ int gpio_pullup_en (int) ;
+ int gpio_set_intr_type (int,int ) ;
+ int rtc_gpio_deinit (int) ;
 
 esp_err_t gpio_config(const gpio_config_t *pGPIOConfig)
 {
@@ -72,20 +72,6 @@ esp_err_t gpio_config(const gpio_config_t *pGPIOConfig)
         ESP_LOGE(GPIO_TAG, "GPIO_PIN mask error ");
         return ESP_ERR_INVALID_ARG;
     }
-#if CONFIG_IDF_TARGET_ESP32
-    if ((pGPIOConfig->mode) & (GPIO_MODE_DEF_OUTPUT)) {
-        //GPIO 34/35/36/37/38/39 can only be used as input mode;
-        if ((gpio_pin_mask & ( GPIO_SEL_34 | GPIO_SEL_35 | GPIO_SEL_36 | GPIO_SEL_37 | GPIO_SEL_38 | GPIO_SEL_39))) {
-            ESP_LOGE(GPIO_TAG, "GPIO34-39 can only be used as input mode");
-            return ESP_ERR_INVALID_ARG;
-        }
-    }
-#elif CONFIG_IDF_TARGET_ESP32S2BETA
-    if ( (pGPIOConfig->mode & GPIO_MODE_DEF_OUTPUT) && (gpio_pin_mask & GPIO_SEL_46) ) {
-        ESP_LOGE(GPIO_TAG, "GPIO46 can only be used as input mode");
-        return ESP_ERR_INVALID_ARG;
-    }
-#endif
     do {
         io_reg = GPIO_PIN_MUX_REG[io_num];
         if (((gpio_pin_mask >> io_num) & BIT(0))) {
@@ -104,9 +90,9 @@ esp_err_t gpio_config(const gpio_config_t *pGPIOConfig)
             }
             if ((pGPIOConfig->mode) & GPIO_MODE_DEF_OD) {
                 od_en = 1;
-                GPIO.pin[io_num].pad_driver = 1; /*0x01 Open-drain */
+                GPIO.pin[io_num].pad_driver = 1;
             } else {
-                GPIO.pin[io_num].pad_driver = 0; /*0x00 Normal gpio output */
+                GPIO.pin[io_num].pad_driver = 0;
             }
             if ((pGPIOConfig->mode) & GPIO_MODE_DEF_OUTPUT) {
                 output_en = 1;
@@ -133,7 +119,7 @@ esp_err_t gpio_config(const gpio_config_t *pGPIOConfig)
             } else {
                 gpio_intr_disable(io_num);
             }
-            PIN_FUNC_SELECT(io_reg, PIN_FUNC_GPIO); /*function number 2 is GPIO_FUNC for each pin */
+            PIN_FUNC_SELECT(io_reg, PIN_FUNC_GPIO);
         }
         io_num++;
     } while (io_num < GPIO_PIN_COUNT);

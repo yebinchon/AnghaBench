@@ -1,33 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int EINVAL ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,unsigned int) ; 
- int get_val (char*,unsigned int*) ; 
- int /*<<< orphan*/  stderr ; 
+ int EINVAL ;
+ int fprintf (int ,char*,unsigned int) ;
+ int get_val (char*,unsigned int*) ;
+ int stderr ;
 
 __attribute__((used)) static int get_addr(char *str, unsigned int *val)
 {
-	int err;
+ int err;
 
-	err = get_val(str, val);
-	if (*val & 3) {
-		fprintf(stderr, "Address 0x%.8x is not a multiple of 4.\n",
-			*val);
+ err = get_val(str, val);
+ if (*val & 3) {
+  fprintf(stderr, "Address 0x%.8x is not a multiple of 4.\n",
+   *val);
 
-		return -EINVAL;
-	}
+  return -EINVAL;
+ }
 
-	return err;
+ return err;
 }

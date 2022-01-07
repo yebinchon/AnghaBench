@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_value ;
-typedef  int /*<<< orphan*/  sqlite3_context ;
-typedef  int /*<<< orphan*/  pPtr ;
-typedef  int /*<<< orphan*/  fts2Hash ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SQLITE_TRANSIENT ; 
- int /*<<< orphan*/  assert (int) ; 
- void* sqlite3Fts2HashFind (int /*<<< orphan*/ *,unsigned char const*,int) ; 
- void* sqlite3Fts2HashInsert (int /*<<< orphan*/ *,void*,int,void*) ; 
- int /*<<< orphan*/  sqlite3_free (char*) ; 
- char* sqlite3_mprintf (char*,unsigned char const*) ; 
- int /*<<< orphan*/  sqlite3_result_blob (int /*<<< orphan*/ *,void*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_result_error (int /*<<< orphan*/ *,char*,int) ; 
- scalar_t__ sqlite3_user_data (int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3_value_blob (int /*<<< orphan*/ *) ; 
- int sqlite3_value_bytes (int /*<<< orphan*/ *) ; 
- unsigned char* sqlite3_value_text (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int sqlite3_value ;
+typedef int sqlite3_context ;
+typedef int pPtr ;
+typedef int fts2Hash ;
+
+
+ int SQLITE_TRANSIENT ;
+ int assert (int) ;
+ void* sqlite3Fts2HashFind (int *,unsigned char const*,int) ;
+ void* sqlite3Fts2HashInsert (int *,void*,int,void*) ;
+ int sqlite3_free (char*) ;
+ char* sqlite3_mprintf (char*,unsigned char const*) ;
+ int sqlite3_result_blob (int *,void*,int,int ) ;
+ int sqlite3_result_error (int *,char*,int) ;
+ scalar_t__ sqlite3_user_data (int *) ;
+ scalar_t__ sqlite3_value_blob (int *) ;
+ int sqlite3_value_bytes (int *) ;
+ unsigned char* sqlite3_value_text (int *) ;
 
 __attribute__((used)) static void scalarFunc(
   sqlite3_context *context,

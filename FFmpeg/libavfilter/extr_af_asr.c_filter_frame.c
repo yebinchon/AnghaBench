@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  int16_t ;
-struct TYPE_11__ {int utt_started; int /*<<< orphan*/  ps; } ;
-struct TYPE_10__ {int /*<<< orphan*/ * outputs; TYPE_4__* priv; } ;
+
+
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int int16_t ;
+struct TYPE_11__ {int utt_started; int ps; } ;
+struct TYPE_10__ {int * outputs; TYPE_4__* priv; } ;
 struct TYPE_9__ {TYPE_3__* dst; } ;
-struct TYPE_8__ {int /*<<< orphan*/  nb_samples; scalar_t__* data; int /*<<< orphan*/ * metadata; } ;
-typedef  TYPE_1__ AVFrame ;
-typedef  TYPE_2__ AVFilterLink ;
-typedef  TYPE_3__ AVFilterContext ;
-typedef  int /*<<< orphan*/  AVDictionary ;
-typedef  TYPE_4__ ASRContext ;
+struct TYPE_8__ {int nb_samples; scalar_t__* data; int * metadata; } ;
+typedef TYPE_1__ AVFrame ;
+typedef TYPE_2__ AVFilterLink ;
+typedef TYPE_3__ AVFilterContext ;
+typedef int AVDictionary ;
+typedef TYPE_4__ ASRContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  av_dict_set (int /*<<< orphan*/ **,char*,char const*,int /*<<< orphan*/ ) ; 
- int ff_filter_frame (int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  ps_end_utt (int /*<<< orphan*/ ) ; 
- char* ps_get_hyp (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int ps_get_in_speech (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ps_process_raw (int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ps_start_utt (int /*<<< orphan*/ ) ; 
+
+ int av_dict_set (int **,char*,char const*,int ) ;
+ int ff_filter_frame (int ,TYPE_1__*) ;
+ int ps_end_utt (int ) ;
+ char* ps_get_hyp (int ,int *) ;
+ int ps_get_in_speech (int ) ;
+ int ps_process_raw (int ,int const*,int ,int ,int ) ;
+ int ps_start_utt (int ) ;
 
 __attribute__((used)) static int filter_frame(AVFilterLink *inlink, AVFrame *in)
 {
@@ -48,8 +48,8 @@ __attribute__((used)) static int filter_frame(AVFilterLink *inlink, AVFrame *in)
         s->utt_started = 1;
     if (!have_speech && s->utt_started) {
         ps_end_utt(s->ps);
-        speech = ps_get_hyp(s->ps, NULL);
-        if (speech != NULL)
+        speech = ps_get_hyp(s->ps, ((void*)0));
+        if (speech != ((void*)0))
             av_dict_set(metadata, "lavfi.asr.text", speech, 0);
         ps_start_utt(s->ps);
         s->utt_started = 0;

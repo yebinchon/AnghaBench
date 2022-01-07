@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uv_loop_t ;
-struct TYPE_4__ {int flags; int /*<<< orphan*/ * buffer; int /*<<< orphan*/  req_pending; } ;
-typedef  TYPE_1__ uv_fs_event_t ;
 
-/* Variables and functions */
- int UV_HANDLE_CLOSED ; 
- int UV_HANDLE_CLOSING ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  uv__free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  uv__handle_close (TYPE_1__*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uv_loop_t ;
+struct TYPE_4__ {int flags; int * buffer; int req_pending; } ;
+typedef TYPE_1__ uv_fs_event_t ;
+
+
+ int UV_HANDLE_CLOSED ;
+ int UV_HANDLE_CLOSING ;
+ int assert (int) ;
+ int uv__free (int *) ;
+ int uv__handle_close (TYPE_1__*) ;
 
 void uv_fs_event_endgame(uv_loop_t* loop, uv_fs_event_t* handle) {
   if ((handle->flags & UV_HANDLE_CLOSING) && !handle->req_pending) {
@@ -28,7 +28,7 @@ void uv_fs_event_endgame(uv_loop_t* loop, uv_fs_event_t* handle) {
 
     if (handle->buffer) {
       uv__free(handle->buffer);
-      handle->buffer = NULL;
+      handle->buffer = ((void*)0);
     }
 
     uv__handle_close(handle);

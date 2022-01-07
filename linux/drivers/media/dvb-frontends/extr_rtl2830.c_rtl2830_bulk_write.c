@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct rtl2830_dev {int /*<<< orphan*/  regmap; } ;
-struct i2c_client {int /*<<< orphan*/  adapter; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  I2C_LOCK_SEGMENT ; 
- struct rtl2830_dev* i2c_get_clientdata (struct i2c_client*) ; 
- int /*<<< orphan*/  i2c_lock_bus (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  i2c_unlock_bus (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int regmap_bulk_write (int /*<<< orphan*/ ,unsigned int,void const*,size_t) ; 
+
+
+
+struct rtl2830_dev {int regmap; } ;
+struct i2c_client {int adapter; } ;
+
+
+ int I2C_LOCK_SEGMENT ;
+ struct rtl2830_dev* i2c_get_clientdata (struct i2c_client*) ;
+ int i2c_lock_bus (int ,int ) ;
+ int i2c_unlock_bus (int ,int ) ;
+ int regmap_bulk_write (int ,unsigned int,void const*,size_t) ;
 
 __attribute__((used)) static int rtl2830_bulk_write(struct i2c_client *client, unsigned int reg,
-			      const void *val, size_t val_count)
+         const void *val, size_t val_count)
 {
-	struct rtl2830_dev *dev = i2c_get_clientdata(client);
-	int ret;
+ struct rtl2830_dev *dev = i2c_get_clientdata(client);
+ int ret;
 
-	i2c_lock_bus(client->adapter, I2C_LOCK_SEGMENT);
-	ret = regmap_bulk_write(dev->regmap, reg, val, val_count);
-	i2c_unlock_bus(client->adapter, I2C_LOCK_SEGMENT);
-	return ret;
+ i2c_lock_bus(client->adapter, I2C_LOCK_SEGMENT);
+ ret = regmap_bulk_write(dev->regmap, reg, val, val_count);
+ i2c_unlock_bus(client->adapter, I2C_LOCK_SEGMENT);
+ return ret;
 }

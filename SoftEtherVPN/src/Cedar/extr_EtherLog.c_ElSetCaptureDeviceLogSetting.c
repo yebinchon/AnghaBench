@@ -1,64 +1,64 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  t ;
-struct TYPE_12__ {int /*<<< orphan*/  DeviceList; } ;
-struct TYPE_11__ {int /*<<< orphan*/  Logger; int /*<<< orphan*/  LogSetting; int /*<<< orphan*/  DeviceName; } ;
-struct TYPE_10__ {int /*<<< orphan*/  PacketLogSwitchType; } ;
-typedef  TYPE_1__ HUB_LOG ;
-typedef  TYPE_2__ EL_DEVICE ;
-typedef  TYPE_3__ EL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Copy (int /*<<< orphan*/ *,TYPE_1__*,int) ; 
- int /*<<< orphan*/  LockList (int /*<<< orphan*/ ) ; 
- TYPE_2__* Search (int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  SetLogSwitchType (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  StrCpy (int /*<<< orphan*/ ,int,char*) ; 
- int /*<<< orphan*/  UnlockList (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Zero (TYPE_2__*,int) ; 
+
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int t ;
+struct TYPE_12__ {int DeviceList; } ;
+struct TYPE_11__ {int Logger; int LogSetting; int DeviceName; } ;
+struct TYPE_10__ {int PacketLogSwitchType; } ;
+typedef TYPE_1__ HUB_LOG ;
+typedef TYPE_2__ EL_DEVICE ;
+typedef TYPE_3__ EL ;
+
+
+ int Copy (int *,TYPE_1__*,int) ;
+ int LockList (int ) ;
+ TYPE_2__* Search (int ,TYPE_2__*) ;
+ int SetLogSwitchType (int ,int ) ;
+ int StrCpy (int ,int,char*) ;
+ int UnlockList (int ) ;
+ int Zero (TYPE_2__*,int) ;
 
 bool ElSetCaptureDeviceLogSetting(EL *e, char *name, HUB_LOG *log)
 {
-	EL_DEVICE *d;
-	bool ret = false;
-	// Validate arguments
-	if (e == NULL || log == NULL || name == NULL)
-	{
-		return false;
-	}
+ EL_DEVICE *d;
+ bool ret = 0;
 
-	LockList(e->DeviceList);
-	{
-		EL_DEVICE t;
+ if (e == ((void*)0) || log == ((void*)0) || name == ((void*)0))
+ {
+  return 0;
+ }
 
-		Zero(&t, sizeof(t));
-		StrCpy(t.DeviceName, sizeof(t.DeviceName), name);
+ LockList(e->DeviceList);
+ {
+  EL_DEVICE t;
 
-		d = Search(e->DeviceList, &t);
+  Zero(&t, sizeof(t));
+  StrCpy(t.DeviceName, sizeof(t.DeviceName), name);
 
-		if (d != NULL)
-		{
-			Copy(&d->LogSetting, log, sizeof(HUB_LOG));
+  d = Search(e->DeviceList, &t);
 
-			SetLogSwitchType(d->Logger, log->PacketLogSwitchType);
+  if (d != ((void*)0))
+  {
+   Copy(&d->LogSetting, log, sizeof(HUB_LOG));
 
-			ret = true;
-		}
-	}
-	UnlockList(e->DeviceList);
+   SetLogSwitchType(d->Logger, log->PacketLogSwitchType);
 
-	return ret;
+   ret = 1;
+  }
+ }
+ UnlockList(e->DeviceList);
+
+ return ret;
 }

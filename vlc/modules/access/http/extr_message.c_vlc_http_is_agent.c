@@ -1,33 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- size_t strspn (char const*,char*) ; 
- size_t vlc_http_comment_length (char const*) ; 
- int /*<<< orphan*/  vlc_http_istoken (char const) ; 
- size_t vlc_http_token_length (char const*) ; 
+ size_t strspn (char const*,char*) ;
+ size_t vlc_http_comment_length (char const*) ;
+ int vlc_http_istoken (char const) ;
+ size_t vlc_http_token_length (char const*) ;
 
 __attribute__((used)) static bool vlc_http_is_agent(const char *s)
-{   /* IETF RFC7231 §5.5.3 and §7.4.2 */
+{
     if (!vlc_http_istoken(*s))
-        return false;
+        return 0;
 
     for (;;)
     {
         size_t l = vlc_http_token_length(s);
-        if (l != 0) /* product */
+        if (l != 0)
         {
-            if (s[l] == '/') /* product version */
+            if (s[l] == '/')
             {
                 s += l + 1;
                 l = vlc_http_token_length(s);
@@ -42,9 +34,9 @@ __attribute__((used)) static bool vlc_http_is_agent(const char *s)
         s += l;
 
         if (*s == '\0')
-            return true;
+            return 1;
 
-        l = strspn(s, "\t "); /* RWS */
+        l = strspn(s, "\t ");
 
         if (l == 0)
             break;
@@ -52,5 +44,5 @@ __attribute__((used)) static bool vlc_http_is_agent(const char *s)
         s += l;
     }
 
-    return false;
+    return 0;
 }

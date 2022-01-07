@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int Channels; long clear_call_command; } ;
-typedef  TYPE_1__ diva_strace_context_t ;
+typedef TYPE_1__ diva_strace_context_t ;
 
-/* Variables and functions */
- int ScheduleNextTraceRequest (TYPE_1__*) ; 
+
+ int ScheduleNextTraceRequest (TYPE_1__*) ;
 
 __attribute__((used)) static int SuperTraceClearCall (void* hLib, int Channel) {
-	diva_strace_context_t* pLib = (diva_strace_context_t*)hLib;
+ diva_strace_context_t* pLib = (diva_strace_context_t*)hLib;
 
-	if ((Channel < 1) || (Channel > pLib->Channels)) {
-		return (-1);
-	}
-	Channel--;
+ if ((Channel < 1) || (Channel > pLib->Channels)) {
+  return (-1);
+ }
+ Channel--;
 
-	pLib->clear_call_command |= (1L << Channel);
+ pLib->clear_call_command |= (1L << Channel);
 
-	return (ScheduleNextTraceRequest (pLib));
+ return (ScheduleNextTraceRequest (pLib));
 }

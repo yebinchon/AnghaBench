@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct curl_slist {int dummy; } ;
-struct curl_httppost {char* name; long namelength; char* contents; char* buffer; long bufferlength; char* contenttype; char* showfilename; char* userp; long flags; struct curl_httppost* next; struct curl_httppost* more; struct curl_slist* contentheader; int /*<<< orphan*/  contentlen; } ;
-typedef  int /*<<< orphan*/  curl_off_t ;
+struct curl_httppost {char* name; long namelength; char* contents; char* buffer; long bufferlength; char* contenttype; char* showfilename; char* userp; long flags; struct curl_httppost* next; struct curl_httppost* more; struct curl_slist* contentheader; int contentlen; } ;
+typedef int curl_off_t ;
 
-/* Variables and functions */
- long CURL_HTTPPOST_LARGE ; 
- struct curl_httppost* calloc (int,int) ; 
- size_t strlen (char*) ; 
+
+ long CURL_HTTPPOST_LARGE ;
+ struct curl_httppost* calloc (int,int) ;
+ size_t strlen (char*) ;
 
 __attribute__((used)) static struct curl_httppost *
 AddHttpPost(char *name, size_t namelength,
@@ -47,17 +47,17 @@ AddHttpPost(char *name, size_t namelength,
     post->flags = flags | CURL_HTTPPOST_LARGE;
   }
   else
-    return NULL;
+    return ((void*)0);
 
   if(parent_post) {
-    /* now, point our 'more' to the original 'more' */
+
     post->more = parent_post->more;
 
-    /* then move the original 'more' to point to ourselves */
+
     parent_post->more = post;
   }
   else {
-    /* make the previous point to this */
+
     if(*last_post)
       (*last_post)->next = post;
     else

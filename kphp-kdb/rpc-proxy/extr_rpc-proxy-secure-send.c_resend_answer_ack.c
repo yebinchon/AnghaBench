@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct rpc_query {int /*<<< orphan*/  qid; } ;
-struct process_id {int /*<<< orphan*/  port; int /*<<< orphan*/  ip; } ;
+
+
+
+
+struct rpc_query {int qid; } ;
+struct process_id {int port; int ip; } ;
 struct connection {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RPC_REQ_RESULT_ACK ; 
- int /*<<< orphan*/  resent_answer_ack ; 
- struct connection* rpc_target_choose_connection (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rpc_target_lookup_hp (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tl_store_end_ext (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tl_store_init (struct connection*,int /*<<< orphan*/ ) ; 
 
-void resend_answer_ack (struct rpc_query *q, struct process_id *pid) {  
+ int RPC_REQ_RESULT_ACK ;
+ int resent_answer_ack ;
+ struct connection* rpc_target_choose_connection (int ,int ) ;
+ int rpc_target_lookup_hp (int ,int ) ;
+ int tl_store_end_ext (int ) ;
+ int tl_store_init (struct connection*,int ) ;
+
+void resend_answer_ack (struct rpc_query *q, struct process_id *pid) {
   resent_answer_ack ++;
   struct connection *d = rpc_target_choose_connection (rpc_target_lookup_hp (pid->ip, pid->port), 0);
   if (!d) { return; }

@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct arizona_priv {int /*<<< orphan*/  dvfs_lock; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mutex_init (int /*<<< orphan*/ *) ; 
+
+
+
+struct arizona_priv {int dvfs_lock; } ;
+
+
+ int mutex_init (int *) ;
 
 void arizona_init_dvfs(struct arizona_priv *priv)
 {
-	mutex_init(&priv->dvfs_lock);
+ mutex_init(&priv->dvfs_lock);
 }

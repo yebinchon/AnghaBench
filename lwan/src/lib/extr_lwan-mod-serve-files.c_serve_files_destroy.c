@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct serve_files_priv {struct serve_files_priv* prefix; struct serve_files_priv* root_path; int /*<<< orphan*/  root_fd; int /*<<< orphan*/  cache; int /*<<< orphan*/  directory_list_tpl; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cache_destroy (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  close (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (struct serve_files_priv*) ; 
- int /*<<< orphan*/  lwan_status_warning (char*) ; 
- int /*<<< orphan*/  lwan_tpl_free (int /*<<< orphan*/ ) ; 
+
+
+
+struct serve_files_priv {struct serve_files_priv* prefix; struct serve_files_priv* root_path; int root_fd; int cache; int directory_list_tpl; } ;
+
+
+ int cache_destroy (int ) ;
+ int close (int ) ;
+ int free (struct serve_files_priv*) ;
+ int lwan_status_warning (char*) ;
+ int lwan_tpl_free (int ) ;
 
 __attribute__((used)) static void serve_files_destroy(void *data)
 {

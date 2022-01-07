@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int nuv_frametype ;
-typedef  scalar_t__ int64_t ;
-struct TYPE_6__ {int /*<<< orphan*/ * streams; int /*<<< orphan*/ * pb; TYPE_1__* priv_data; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int nuv_frametype ;
+typedef scalar_t__ int64_t ;
+struct TYPE_6__ {int * streams; int * pb; TYPE_1__* priv_data; } ;
 struct TYPE_5__ {int v_id; int a_id; } ;
-typedef  TYPE_1__ NUVContext ;
-typedef  int /*<<< orphan*/  AVIOContext ;
-typedef  TYPE_2__ AVFormatContext ;
+typedef TYPE_1__ NUVContext ;
+typedef int AVIOContext ;
+typedef TYPE_2__ AVFormatContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AVINDEX_KEYFRAME ; 
- scalar_t__ AV_NOPTS_VALUE ; 
- scalar_t__ AV_RL32 (int*) ; 
- int HDRSIZE ; 
-#define  NUV_AUDIO 130 
-#define  NUV_SEEKP 129 
-#define  NUV_VIDEO 128 
- int PKTSIZE (scalar_t__) ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  av_add_index_entry (int /*<<< orphan*/ ,scalar_t__,scalar_t__,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  avio_feof (int /*<<< orphan*/ *) ; 
- int avio_read (int /*<<< orphan*/ *,int*,int) ; 
- scalar_t__ avio_seek (int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  avio_skip (int /*<<< orphan*/ *,int) ; 
- int avio_tell (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nuv_resync (TYPE_2__*,scalar_t__) ; 
+
+ int AVINDEX_KEYFRAME ;
+ scalar_t__ AV_NOPTS_VALUE ;
+ scalar_t__ AV_RL32 (int*) ;
+ int HDRSIZE ;
+
+
+
+ int PKTSIZE (scalar_t__) ;
+ int SEEK_SET ;
+ int av_add_index_entry (int ,scalar_t__,scalar_t__,int,int ,int ) ;
+ int avio_feof (int *) ;
+ int avio_read (int *,int*,int) ;
+ scalar_t__ avio_seek (int *,scalar_t__,int ) ;
+ int avio_skip (int *,int) ;
+ int avio_tell (int *) ;
+ int nuv_resync (TYPE_2__*,scalar_t__) ;
 
 __attribute__((used)) static int64_t nuv_read_dts(AVFormatContext *s, int stream_index,
                             int64_t *ppos, int64_t pos_limit)
@@ -61,11 +61,11 @@ __attribute__((used)) static int64_t nuv_read_dts(AVFormatContext *s, int stream
         frametype = hdr[0];
         size = PKTSIZE(AV_RL32(&hdr[8]));
         switch (frametype) {
-            case NUV_SEEKP:
+            case 129:
                 break;
-            case NUV_AUDIO:
-            case NUV_VIDEO:
-                if (frametype == NUV_VIDEO) {
+            case 130:
+            case 128:
+                if (frametype == 128) {
                     idx = ctx->v_id;
                     key = hdr[2] == 0;
                 } else {
@@ -77,7 +77,7 @@ __attribute__((used)) static int64_t nuv_read_dts(AVFormatContext *s, int stream
                     pos = avio_tell(s->pb) - HDRSIZE;
                     dts = AV_RL32(&hdr[4]);
 
-                    // TODO - add general support in av_gen_search, so it adds positions after reading timestamps
+
                     av_add_index_entry(s->streams[stream_index], pos, dts, size + HDRSIZE, 0,
                             key ? AVINDEX_KEYFRAME : 0);
 

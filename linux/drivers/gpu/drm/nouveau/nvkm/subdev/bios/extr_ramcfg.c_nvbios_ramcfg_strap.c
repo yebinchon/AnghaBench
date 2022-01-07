@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u8 ;
-struct nvkm_subdev {int /*<<< orphan*/  device; } ;
 
-/* Variables and functions */
- int nvkm_rd32 (int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int u8 ;
+struct nvkm_subdev {int device; } ;
+
+
+ int nvkm_rd32 (int ,int) ;
 
 __attribute__((used)) static u8
 nvbios_ramcfg_strap(struct nvkm_subdev *subdev)
 {
-	return (nvkm_rd32(subdev->device, 0x101000) & 0x0000003c) >> 2;
+ return (nvkm_rd32(subdev->device, 0x101000) & 0x0000003c) >> 2;
 }

@@ -1,101 +1,87 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int WPARAM ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int WPARAM ;
 struct TYPE_3__ {scalar_t__ top; scalar_t__ bottom; scalar_t__ left; scalar_t__ right; } ;
-typedef  TYPE_1__ RECT ;
-typedef  int LPARAM ;
-typedef  int INT ;
-typedef  int /*<<< orphan*/  HWND ;
-
-/* Variables and functions */
-#define  ACTION_ACTIVATE 139 
-#define  ACTION_DEACTIVATE 138 
-#define  ACTION_DESTROY 137 
-#define  ACTION_FIRSTMINMAX 136 
-#define  ACTION_HIDE 135 
-#define  ACTION_IME_NOTIFY_CLOSE 134 
-#define  ACTION_IME_NOTIFY_OPEN 133 
-#define  ACTION_IME_SETCONTEXT_CLOSE 132 
-#define  ACTION_IME_SETCONTEXT_OPEN 131 
-#define  ACTION_NCCREATE 130 
-#define  ACTION_SHOW 129 
-#define  ACTION_ZERO 128 
- int /*<<< orphan*/  DestroyWindow (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GetDesktopWindow () ; 
- int /*<<< orphan*/  GetWindowRect (int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  HEIGHT ; 
- int /*<<< orphan*/  IsWindowVisible (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SW_HIDE ; 
- int /*<<< orphan*/  SW_SHOWNORMAL ; 
- int /*<<< orphan*/  SetForegroundWindow (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ShowWindow (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WIDTH ; 
- int /*<<< orphan*/  ok (int,char*,int /*<<< orphan*/ ,void*) ; 
- int /*<<< orphan*/  ok_int (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ok_long (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  s_iStep ; 
+typedef TYPE_1__ RECT ;
+typedef int LPARAM ;
+typedef int INT ;
+typedef int HWND ;
+ int DestroyWindow (int ) ;
+ int FALSE ;
+ int GetDesktopWindow () ;
+ int GetWindowRect (int ,TYPE_1__*) ;
+ int HEIGHT ;
+ int IsWindowVisible (int ) ;
+ int SW_HIDE ;
+ int SW_SHOWNORMAL ;
+ int SetForegroundWindow (int ) ;
+ int ShowWindow (int ,int ) ;
+ int WIDTH ;
+ int ok (int,char*,int ,void*) ;
+ int ok_int (int ,int ) ;
+ int ok_long (scalar_t__,int ) ;
+ int s_iStep ;
 
 __attribute__((used)) static void DoAction(HWND hwnd, INT iAction, WPARAM wParam, LPARAM lParam)
 {
     RECT rc;
     switch (iAction)
     {
-        case ACTION_ZERO:
-            /* does nothing */
+        case 128:
+
             break;
-        case ACTION_FIRSTMINMAX:
+        case 136:
             GetWindowRect(hwnd, &rc);
             ok_long(rc.right - rc.left, 0);
             ok_long(rc.bottom - rc.top, 0);
             ok_int(IsWindowVisible(hwnd), FALSE);
             break;
-        case ACTION_NCCREATE:
+        case 130:
             GetWindowRect(hwnd, &rc);
             ok_long(rc.right - rc.left, WIDTH);
             ok_long(rc.bottom - rc.top, HEIGHT);
             ok_int(IsWindowVisible(hwnd), FALSE);
             break;
-        case ACTION_SHOW:
+        case 129:
             ShowWindow(hwnd, SW_SHOWNORMAL);
             break;
-        case ACTION_IME_SETCONTEXT_OPEN:
+        case 131:
             ok(wParam == 1, "Step %d: wParam was %p\n", s_iStep, (void *)wParam);
             ok(lParam == 0xC000000F, "Step %d: lParam was %p\n", s_iStep, (void *)lParam);
             break;
-        case ACTION_IME_NOTIFY_OPEN:
+        case 133:
             ok(wParam == 2, "Step %d: wParam was %p\n", s_iStep, (void *)wParam);
             ok(lParam == 0, "Step %d: lParam was %p\n", s_iStep, (void *)lParam);
             break;
-        case ACTION_DESTROY:
+        case 137:
             DestroyWindow(hwnd);
             break;
-        case ACTION_IME_SETCONTEXT_CLOSE:
+        case 132:
             ok(wParam == 0, "Step %d: wParam was %p\n", s_iStep, (void *)wParam);
             ok(lParam == 0xC000000F, "Step %d: lParam was %p\n", s_iStep, (void *)lParam);
             break;
-        case ACTION_IME_NOTIFY_CLOSE:
+        case 134:
             ok(wParam == 1, "Step %d: wParam was %p\n", s_iStep, (void *)wParam);
             ok(lParam == 0, "Step %d: lParam was %p\n", s_iStep, (void *)lParam);
             break;
-        case ACTION_HIDE:
+        case 135:
             ShowWindow(hwnd, SW_HIDE);
             break;
-        case ACTION_DEACTIVATE:
+        case 138:
             SetForegroundWindow(GetDesktopWindow());
             break;
-        case ACTION_ACTIVATE:
+        case 139:
             SetForegroundWindow(hwnd);
             break;
     }

@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
-struct TYPE_2__ {int /*<<< orphan*/  sid; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u32 ;
+struct TYPE_2__ {int sid; } ;
 struct sel_netif {TYPE_1__ nsec; } ;
 
-/* Variables and functions */
- scalar_t__ likely (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rcu_read_lock () ; 
- int /*<<< orphan*/  rcu_read_unlock () ; 
- struct sel_netif* sel_netif_find (int) ; 
- int sel_netif_sid_slow (int,int /*<<< orphan*/ *) ; 
+
+ scalar_t__ likely (int ) ;
+ int rcu_read_lock () ;
+ int rcu_read_unlock () ;
+ struct sel_netif* sel_netif_find (int) ;
+ int sel_netif_sid_slow (int,int *) ;
 
 int sel_netif_sid(int ifindex, u32 *sid)
 {
-	struct sel_netif *netif;
+ struct sel_netif *netif;
 
-	rcu_read_lock();
-	netif = sel_netif_find(ifindex);
-	if (likely(netif != NULL)) {
-		*sid = netif->nsec.sid;
-		rcu_read_unlock();
-		return 0;
-	}
-	rcu_read_unlock();
+ rcu_read_lock();
+ netif = sel_netif_find(ifindex);
+ if (likely(netif != ((void*)0))) {
+  *sid = netif->nsec.sid;
+  rcu_read_unlock();
+  return 0;
+ }
+ rcu_read_unlock();
 
-	return sel_netif_sid_slow(ifindex, sid);
+ return sel_netif_sid_slow(ifindex, sid);
 }

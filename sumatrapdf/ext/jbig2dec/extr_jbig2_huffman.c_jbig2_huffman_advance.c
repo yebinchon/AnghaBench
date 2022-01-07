@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {size_t offset_bits; int this_word; int next_word; int /*<<< orphan*/  ctx; scalar_t__ offset; } ;
-typedef  TYPE_1__ Jbig2HuffmanState ;
 
-/* Variables and functions */
- int /*<<< orphan*/  JBIG2_SEVERITY_WARNING ; 
- int huff_get_next_word (TYPE_1__*,scalar_t__,int*) ; 
- int jbig2_error (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,char*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {size_t offset_bits; int this_word; int next_word; int ctx; scalar_t__ offset; } ;
+typedef TYPE_1__ Jbig2HuffmanState ;
+
+
+ int JBIG2_SEVERITY_WARNING ;
+ int huff_get_next_word (TYPE_1__*,scalar_t__,int*) ;
+ int jbig2_error (int ,int ,int,char*) ;
 
 int
 jbig2_huffman_advance(Jbig2HuffmanState *hs, size_t advance)

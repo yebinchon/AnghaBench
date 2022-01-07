@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct gc_arena {int dummy; } ;
 struct buffer {scalar_t__ data; } ;
 
-/* Variables and functions */
-#define  OPENVPN_EXECVE_ERROR 129 
- int const OPENVPN_EXECVE_FAILURE ; 
-#define  OPENVPN_EXECVE_NOT_ALLOWED 128 
- int WEXITSTATUS (int) ; 
- int /*<<< orphan*/  WIFEXITED (int) ; 
- struct buffer alloc_buf_gc (int,struct gc_arena*) ; 
- int /*<<< orphan*/  buf_printf (struct buffer*,char*,...) ; 
+
+
+ int const OPENVPN_EXECVE_FAILURE ;
+
+ int WEXITSTATUS (int) ;
+ int WIFEXITED (int) ;
+ struct buffer alloc_buf_gc (int,struct gc_arena*) ;
+ int buf_printf (struct buffer*,char*,...) ;
 
 __attribute__((used)) static const char *
 system_error_message(int stat, struct gc_arena *gc)
@@ -29,21 +29,10 @@ system_error_message(int stat, struct gc_arena *gc)
 
     switch (stat)
     {
-        case OPENVPN_EXECVE_NOT_ALLOWED:
+        case 128:
             buf_printf(&out, "disallowed by script-security setting");
             break;
-
-#ifdef _WIN32
-        case OPENVPN_EXECVE_ERROR:
-            buf_printf(&out, "external program did not execute -- ");
-        /* fall through */
-
-        default:
-            buf_printf(&out, "returned error code %d", stat);
-            break;
-#else  /* ifdef _WIN32 */
-
-        case OPENVPN_EXECVE_ERROR:
+        case 129:
             buf_printf(&out, "external program fork failed");
             break;
 
@@ -69,7 +58,7 @@ system_error_message(int stat, struct gc_arena *gc)
                 }
             }
             break;
-#endif /* ifdef _WIN32 */
+
     }
     return (const char *)out.data;
 }

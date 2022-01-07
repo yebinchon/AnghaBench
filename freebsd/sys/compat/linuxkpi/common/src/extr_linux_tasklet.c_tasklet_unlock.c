@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct tasklet_struct {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TASKLET_ST_IDLE ; 
- int /*<<< orphan*/  TASKLET_ST_SET (struct tasklet_struct*,int /*<<< orphan*/ ) ; 
+
+ int TASKLET_ST_IDLE ;
+ int TASKLET_ST_SET (struct tasklet_struct*,int ) ;
 
 void
 tasklet_unlock(struct tasklet_struct *ts)
 {
 
-	TASKLET_ST_SET(ts, TASKLET_ST_IDLE);
+ TASKLET_ST_SET(ts, TASKLET_ST_IDLE);
 }

@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int UInt32 ;
-struct TYPE_4__ {int historySize; int* hashBuf; int* btBuf; int /*<<< orphan*/  btSync; int /*<<< orphan*/  hashSync; int /*<<< orphan*/ * MatchFinder; } ;
-typedef  int /*<<< orphan*/  SRes ;
-typedef  int /*<<< orphan*/  ISzAllocPtr ;
-typedef  TYPE_1__ CMatchFinderMt ;
-typedef  int /*<<< orphan*/  CMatchFinder ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BtThreadFunc2 ; 
- int /*<<< orphan*/  HashThreadFunc2 ; 
- scalar_t__ ISzAlloc_Alloc (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  MatchFinder_Create (int /*<<< orphan*/ *,int,int,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MtSync_Create (int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RINOK (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SZ_ERROR_MEM ; 
- int /*<<< orphan*/  SZ_ERROR_PARAM ; 
- int /*<<< orphan*/  SZ_OK ; 
- int kBtBufferSize ; 
- int kHashBufferSize ; 
- int kMtBtBlockSize ; 
- int /*<<< orphan*/  kMtBtNumBlocks ; 
- scalar_t__ kMtHashBlockSize ; 
- int /*<<< orphan*/  kMtHashNumBlocks ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int UInt32 ;
+struct TYPE_4__ {int historySize; int* hashBuf; int* btBuf; int btSync; int hashSync; int * MatchFinder; } ;
+typedef int SRes ;
+typedef int ISzAllocPtr ;
+typedef TYPE_1__ CMatchFinderMt ;
+typedef int CMatchFinder ;
+
+
+ int BtThreadFunc2 ;
+ int HashThreadFunc2 ;
+ scalar_t__ ISzAlloc_Alloc (int ,int) ;
+ int MatchFinder_Create (int *,int,int,int,int,int ) ;
+ int MtSync_Create (int *,int ,TYPE_1__*,int ) ;
+ int RINOK (int ) ;
+ int SZ_ERROR_MEM ;
+ int SZ_ERROR_PARAM ;
+ int SZ_OK ;
+ int kBtBufferSize ;
+ int kHashBufferSize ;
+ int kMtBtBlockSize ;
+ int kMtBtNumBlocks ;
+ scalar_t__ kMtHashBlockSize ;
+ int kMtHashNumBlocks ;
 
 SRes MatchFinderMt_Create(CMatchFinderMt *p, UInt32 historySize, UInt32 keepAddBufferBefore,
     UInt32 matchMaxLen, UInt32 keepAddBufferAfter, ISzAllocPtr alloc)

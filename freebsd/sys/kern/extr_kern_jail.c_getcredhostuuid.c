@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct ucred {TYPE_1__* cr_prison; } ;
-struct TYPE_2__ {int /*<<< orphan*/  pr_mtx; int /*<<< orphan*/  pr_hostuuid; } ;
+struct TYPE_2__ {int pr_mtx; int pr_hostuuid; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mtx_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mtx_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strlcpy (char*,int /*<<< orphan*/ ,size_t) ; 
+
+ int mtx_lock (int *) ;
+ int mtx_unlock (int *) ;
+ int strlcpy (char*,int ,size_t) ;
 
 void
 getcredhostuuid(struct ucred *cred, char *buf, size_t size)
 {
 
-	mtx_lock(&cred->cr_prison->pr_mtx);
-	strlcpy(buf, cred->cr_prison->pr_hostuuid, size);
-	mtx_unlock(&cred->cr_prison->pr_mtx);
+ mtx_lock(&cred->cr_prison->pr_mtx);
+ strlcpy(buf, cred->cr_prison->pr_hostuuid, size);
+ mtx_unlock(&cred->cr_prison->pr_mtx);
 }

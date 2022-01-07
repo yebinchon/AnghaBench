@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  tun_mtu; int /*<<< orphan*/  tun_mtu_defined; int /*<<< orphan*/  link_mtu; int /*<<< orphan*/  link_mtu_defined; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int tun_mtu; int tun_mtu_defined; int link_mtu; int link_mtu_defined; } ;
 struct options {TYPE_2__ ce; } ;
-struct TYPE_3__ {int /*<<< orphan*/  frame; } ;
+struct TYPE_3__ {int frame; } ;
 struct context {TYPE_1__ c2; struct options options; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CIPHER_ENABLED (struct context*) ; 
- int FRAME_HEADROOM_MARKER_FRAGMENT ; 
- int FRAME_HEADROOM_MARKER_READ_LINK ; 
- int FRAME_HEADROOM_MARKER_READ_STREAM ; 
- int /*<<< orphan*/  PAYLOAD_ALIGN ; 
- int /*<<< orphan*/  frame_add_to_extra_buffer (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  frame_align_to_extra_frame (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  frame_finalize (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  frame_or_align_flags (int /*<<< orphan*/ *,int) ; 
+
+ int CIPHER_ENABLED (struct context*) ;
+ int FRAME_HEADROOM_MARKER_FRAGMENT ;
+ int FRAME_HEADROOM_MARKER_READ_LINK ;
+ int FRAME_HEADROOM_MARKER_READ_STREAM ;
+ int PAYLOAD_ALIGN ;
+ int frame_add_to_extra_buffer (int *,int ) ;
+ int frame_align_to_extra_frame (int *) ;
+ int frame_finalize (int *,int ,int ,int ,int ) ;
+ int frame_or_align_flags (int *,int) ;
 
 __attribute__((used)) static void
 frame_finalize_options(struct context *c, const struct options *o)
@@ -36,10 +36,10 @@ frame_finalize_options(struct context *c, const struct options *o)
         o = &c->options;
     }
 
-    /*
-     * Set adjustment factor for buffer alignment when no
-     * cipher is used.
-     */
+
+
+
+
     if (!CIPHER_ENABLED(c))
     {
         frame_align_to_extra_frame(&c->c2.frame);

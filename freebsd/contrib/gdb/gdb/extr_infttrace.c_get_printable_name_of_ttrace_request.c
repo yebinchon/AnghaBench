@@ -1,106 +1,79 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int ttreq_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IS_TTRACE_REQ (int) ; 
-#define  TT_LWP_CONTINUE 153 
-#define  TT_LWP_GET_EVENT_MASK 152 
-#define  TT_LWP_GET_STATE 151 
-#define  TT_LWP_RUREGS 150 
-#define  TT_LWP_SET_EVENT_MASK 149 
-#define  TT_LWP_SINGLE 148 
-#define  TT_LWP_STOP 147 
-#define  TT_LWP_WUREGS 146 
-#define  TT_PROC_ATTACH 145 
-#define  TT_PROC_CONTINUE 144 
-#define  TT_PROC_DETACH 143 
-#define  TT_PROC_EXIT 142 
-#define  TT_PROC_GET_EVENT_MASK 141 
-#define  TT_PROC_GET_FIRST_LWP_STATE 140 
-#define  TT_PROC_GET_MPROTECT 139 
-#define  TT_PROC_GET_NEXT_LWP_STATE 138 
-#define  TT_PROC_GET_PATHNAME 137 
-#define  TT_PROC_RDDATA 136 
-#define  TT_PROC_RDTEXT 135 
-#define  TT_PROC_SETTRC 134 
-#define  TT_PROC_SET_EVENT_MASK 133 
-#define  TT_PROC_SET_MPROTECT 132 
-#define  TT_PROC_SET_SCBM 131 
-#define  TT_PROC_STOP 130 
-#define  TT_PROC_WRDATA 129 
-#define  TT_PROC_WRTEXT 128 
 
+
+
+typedef int ttreq_t ;
+
+
+ int IS_TTRACE_REQ (int) ;
 char *
 get_printable_name_of_ttrace_request (ttreq_t request)
 {
   if (!IS_TTRACE_REQ (request))
     return "?bad req?";
 
-  /* This enumeration is "gappy", so don't use a table. */
+
   switch (request)
     {
-    case TT_PROC_SETTRC:
+    case 134:
       return "TT_PROC_SETTRC";
-    case TT_PROC_ATTACH:
+    case 145:
       return "TT_PROC_ATTACH";
-    case TT_PROC_DETACH:
+    case 143:
       return "TT_PROC_DETACH";
-    case TT_PROC_RDTEXT:
+    case 135:
       return "TT_PROC_RDTEXT";
-    case TT_PROC_WRTEXT:
+    case 128:
       return "TT_PROC_WRTEXT";
-    case TT_PROC_RDDATA:
+    case 136:
       return "TT_PROC_RDDATA";
-    case TT_PROC_WRDATA:
+    case 129:
       return "TT_PROC_WRDATA";
-    case TT_PROC_STOP:
+    case 130:
       return "TT_PROC_STOP";
-    case TT_PROC_CONTINUE:
+    case 144:
       return "TT_PROC_CONTINUE";
-    case TT_PROC_GET_PATHNAME:
+    case 137:
       return "TT_PROC_GET_PATHNAME";
-    case TT_PROC_GET_EVENT_MASK:
+    case 141:
       return "TT_PROC_GET_EVENT_MASK";
-    case TT_PROC_SET_EVENT_MASK:
+    case 133:
       return "TT_PROC_SET_EVENT_MASK";
-    case TT_PROC_GET_FIRST_LWP_STATE:
+    case 140:
       return "TT_PROC_GET_FIRST_LWP_STATE";
-    case TT_PROC_GET_NEXT_LWP_STATE:
+    case 138:
       return "TT_PROC_GET_NEXT_LWP_STATE";
-    case TT_PROC_EXIT:
+    case 142:
       return "TT_PROC_EXIT";
-    case TT_PROC_GET_MPROTECT:
+    case 139:
       return "TT_PROC_GET_MPROTECT";
-    case TT_PROC_SET_MPROTECT:
+    case 132:
       return "TT_PROC_SET_MPROTECT";
-    case TT_PROC_SET_SCBM:
+    case 131:
       return "TT_PROC_SET_SCBM";
-    case TT_LWP_STOP:
+    case 147:
       return "TT_LWP_STOP";
-    case TT_LWP_CONTINUE:
+    case 153:
       return "TT_LWP_CONTINUE";
-    case TT_LWP_SINGLE:
+    case 148:
       return "TT_LWP_SINGLE";
-    case TT_LWP_RUREGS:
+    case 150:
       return "TT_LWP_RUREGS";
-    case TT_LWP_WUREGS:
+    case 146:
       return "TT_LWP_WUREGS";
-    case TT_LWP_GET_EVENT_MASK:
+    case 152:
       return "TT_LWP_GET_EVENT_MASK";
-    case TT_LWP_SET_EVENT_MASK:
+    case 149:
       return "TT_LWP_SET_EVENT_MASK";
-    case TT_LWP_GET_STATE:
+    case 151:
       return "TT_LWP_GET_STATE";
     default:
       return "?new req?";

@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int UINT ;
-typedef  int /*<<< orphan*/  MSIHANDLE ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int DeleteFileA (int /*<<< orphan*/ ) ; 
- int ERROR_FUNCTION_FAILED ; 
- int ERROR_NO_MORE_ITEMS ; 
- int ERROR_SUCCESS ; 
- int /*<<< orphan*/  MSICOLINFO_NAMES ; 
- int /*<<< orphan*/  MSICOLINFO_TYPES ; 
- int /*<<< orphan*/  MSIDBOPEN_CREATE ; 
- int MSI_NULL_INTEGER ; 
- int MsiCloseHandle (int /*<<< orphan*/ ) ; 
- int MsiDatabaseCommit (int /*<<< orphan*/ ) ; 
- int MsiDatabaseOpenViewA (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *) ; 
- int MsiOpenDatabaseW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int MsiRecordGetFieldCount (int /*<<< orphan*/ ) ; 
- int MsiRecordGetInteger (int /*<<< orphan*/ ,int) ; 
- int MsiViewClose (int /*<<< orphan*/ ) ; 
- int MsiViewExecute (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int MsiViewGetColumnInfo (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int TRUE ; 
- int check_record (int /*<<< orphan*/ ,int,char*) ; 
- int do_query (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  msifile ; 
- int /*<<< orphan*/  msifileW ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
+
+
+
+typedef int UINT ;
+typedef int MSIHANDLE ;
+typedef int DWORD ;
+
+
+ int DeleteFileA (int ) ;
+ int ERROR_FUNCTION_FAILED ;
+ int ERROR_NO_MORE_ITEMS ;
+ int ERROR_SUCCESS ;
+ int MSICOLINFO_NAMES ;
+ int MSICOLINFO_TYPES ;
+ int MSIDBOPEN_CREATE ;
+ int MSI_NULL_INTEGER ;
+ int MsiCloseHandle (int ) ;
+ int MsiDatabaseCommit (int ) ;
+ int MsiDatabaseOpenViewA (int ,char const*,int *) ;
+ int MsiOpenDatabaseW (int ,int ,int *) ;
+ int MsiRecordGetFieldCount (int ) ;
+ int MsiRecordGetInteger (int ,int) ;
+ int MsiViewClose (int ) ;
+ int MsiViewExecute (int ,int ) ;
+ int MsiViewGetColumnInfo (int ,int ,int *) ;
+ int TRUE ;
+ int check_record (int ,int,char*) ;
+ int do_query (int ,char const*,int *) ;
+ int msifile ;
+ int msifileW ;
+ int ok (int,char*,...) ;
 
 __attribute__((used)) static void test_integers(void)
 {
@@ -46,11 +46,11 @@ __attribute__((used)) static void test_integers(void)
     const char *query;
     UINT r;
 
-    /* just MsiOpenDatabase should not create a file */
+
     r = MsiOpenDatabaseW(msifileW, MSIDBOPEN_CREATE, &hdb);
     ok(r == ERROR_SUCCESS, "MsiOpenDatabase failed\n");
 
-    /* create a table */
+
     query = "CREATE TABLE `integers` ( "
             "`one` SHORT, `two` INT, `three` INTEGER, `four` LONG, "
             "`five` SHORT NOT NULL, `six` INT NOT NULL, "
@@ -100,7 +100,7 @@ __attribute__((used)) static void test_integers(void)
     MsiViewClose(view);
     MsiCloseHandle(view);
 
-    /* insert values into it, NULL where NOT NULL is specified */
+
     query = "INSERT INTO `integers` ( `one`, `two`, `three`, `four`, `five`, `six`, `seven`, `eight` )"
         "VALUES('', '', '', '', '', '', '', '')";
     r = MsiDatabaseOpenViewA(hdb, query, &view);
@@ -120,7 +120,7 @@ __attribute__((used)) static void test_integers(void)
 
     MsiCloseHandle(rec);
 
-    /* insert legitimate values into it */
+
     query = "INSERT INTO `integers` ( `one`, `two`, `three`, `four`, `five`, `six`, `seven`, `eight` )"
         "VALUES('', '2', '', '4', '5', '6', '7', '8')";
     r = MsiDatabaseOpenViewA(hdb, query, &view);

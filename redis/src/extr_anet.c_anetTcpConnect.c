@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  ANET_CONNECT_NONE ; 
- int anetTcpGenericConnect (char*,char const*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+ int ANET_CONNECT_NONE ;
+ int anetTcpGenericConnect (char*,char const*,int,int *,int ) ;
 
 int anetTcpConnect(char *err, const char *addr, int port)
 {
-    return anetTcpGenericConnect(err,addr,port,NULL,ANET_CONNECT_NONE);
+    return anetTcpGenericConnect(err,addr,port,((void*)0),ANET_CONNECT_NONE);
 }

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int nr_segments; TYPE_1__* segment; } ;
-struct TYPE_4__ {int memsz; int /*<<< orphan*/  mem; } ;
+struct TYPE_4__ {int memsz; int mem; } ;
 
-/* Variables and functions */
- int PAGE_SHIFT ; 
- int /*<<< orphan*/  __phys_to_virt (int /*<<< orphan*/ ) ; 
- TYPE_2__* kexec_crash_image ; 
- int /*<<< orphan*/  kexec_segment_flush (TYPE_2__*) ; 
- int /*<<< orphan*/  set_memory_valid (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
+
+ int PAGE_SHIFT ;
+ int __phys_to_virt (int ) ;
+ TYPE_2__* kexec_crash_image ;
+ int kexec_segment_flush (TYPE_2__*) ;
+ int set_memory_valid (int ,int,int ) ;
 
 void arch_kexec_protect_crashkres(void)
 {
-	int i;
+ int i;
 
-	kexec_segment_flush(kexec_crash_image);
+ kexec_segment_flush(kexec_crash_image);
 
-	for (i = 0; i < kexec_crash_image->nr_segments; i++)
-		set_memory_valid(
-			__phys_to_virt(kexec_crash_image->segment[i].mem),
-			kexec_crash_image->segment[i].memsz >> PAGE_SHIFT, 0);
+ for (i = 0; i < kexec_crash_image->nr_segments; i++)
+  set_memory_valid(
+   __phys_to_virt(kexec_crash_image->segment[i].mem),
+   kexec_crash_image->segment[i].memsz >> PAGE_SHIFT, 0);
 }

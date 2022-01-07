@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  LPWSTR ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DebugBreak () ; 
- int /*<<< orphan*/  GetCurrentProcessId () ; 
- int /*<<< orphan*/  GetEnvironmentVariableW (char const*,char*,int) ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  MB_OK ; 
- int /*<<< orphan*/  MessageBoxW (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ) ; 
- int lstrlenW (char const*) ; 
- int /*<<< orphan*/  msi_alloc (int) ; 
- int /*<<< orphan*/  msi_free (int /*<<< orphan*/ ) ; 
- scalar_t__ strcmpiW (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wsprintfW (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef char WCHAR ;
+typedef int LPWSTR ;
+typedef int LPCWSTR ;
+
+
+ int DebugBreak () ;
+ int GetCurrentProcessId () ;
+ int GetEnvironmentVariableW (char const*,char*,int) ;
+ int MAX_PATH ;
+ int MB_OK ;
+ int MessageBoxW (int *,int ,char const*,int ) ;
+ int lstrlenW (char const*) ;
+ int msi_alloc (int) ;
+ int msi_free (int ) ;
+ scalar_t__ strcmpiW (char*,int ) ;
+ int wsprintfW (int ,char const*,int ,int ) ;
 
 __attribute__((used)) static void handle_msi_break( LPCWSTR target )
 {
@@ -56,7 +56,7 @@ __attribute__((used)) static void handle_msi_break( LPCWSTR target )
         return;
 
     wsprintfW( msg, format, GetCurrentProcessId(), GetCurrentProcessId());
-    MessageBoxW( NULL, msg, WindowsInstaller, MB_OK);
+    MessageBoxW( ((void*)0), msg, WindowsInstaller, MB_OK);
     msi_free(msg);
     DebugBreak();
 }

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct tty_struct {scalar_t__ driver_data; } ;
-struct rfcomm_dev {int /*<<< orphan*/  dlc; } ;
+struct rfcomm_dev {int dlc; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BT_DBG (char*,struct tty_struct*,struct rfcomm_dev*) ; 
- int /*<<< orphan*/  rfcomm_dlc_throttle (int /*<<< orphan*/ ) ; 
+
+ int BT_DBG (char*,struct tty_struct*,struct rfcomm_dev*) ;
+ int rfcomm_dlc_throttle (int ) ;
 
 __attribute__((used)) static void rfcomm_tty_throttle(struct tty_struct *tty)
 {
-	struct rfcomm_dev *dev = (struct rfcomm_dev *) tty->driver_data;
+ struct rfcomm_dev *dev = (struct rfcomm_dev *) tty->driver_data;
 
-	BT_DBG("tty %p dev %p", tty, dev);
+ BT_DBG("tty %p dev %p", tty, dev);
 
-	rfcomm_dlc_throttle(dev->dlc);
+ rfcomm_dlc_throttle(dev->dlc);
 }

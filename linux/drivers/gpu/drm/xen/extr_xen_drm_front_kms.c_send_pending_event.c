@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct drm_crtc {struct drm_device* dev; } ;
 struct TYPE_2__ {struct drm_crtc crtc; } ;
-struct xen_drm_front_drm_pipeline {int /*<<< orphan*/ * pending_event; TYPE_1__ pipe; } ;
-struct drm_device {int /*<<< orphan*/  event_lock; } ;
+struct xen_drm_front_drm_pipeline {int * pending_event; TYPE_1__ pipe; } ;
+struct drm_device {int event_lock; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  drm_crtc_send_vblank_event (struct drm_crtc*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
+
+ int drm_crtc_send_vblank_event (struct drm_crtc*,int *) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
 
 __attribute__((used)) static void send_pending_event(struct xen_drm_front_drm_pipeline *pipeline)
 {
-	struct drm_crtc *crtc = &pipeline->pipe.crtc;
-	struct drm_device *dev = crtc->dev;
-	unsigned long flags;
+ struct drm_crtc *crtc = &pipeline->pipe.crtc;
+ struct drm_device *dev = crtc->dev;
+ unsigned long flags;
 
-	spin_lock_irqsave(&dev->event_lock, flags);
-	if (pipeline->pending_event)
-		drm_crtc_send_vblank_event(crtc, pipeline->pending_event);
-	pipeline->pending_event = NULL;
-	spin_unlock_irqrestore(&dev->event_lock, flags);
+ spin_lock_irqsave(&dev->event_lock, flags);
+ if (pipeline->pending_event)
+  drm_crtc_send_vblank_event(crtc, pipeline->pending_event);
+ pipeline->pending_event = ((void*)0);
+ spin_unlock_irqrestore(&dev->event_lock, flags);
 }

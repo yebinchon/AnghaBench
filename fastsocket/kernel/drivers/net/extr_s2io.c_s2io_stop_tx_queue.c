@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_6__ {TYPE_2__* fifos; } ;
-struct TYPE_4__ {int /*<<< orphan*/  multiq; } ;
-struct s2io_nic {int /*<<< orphan*/  dev; TYPE_3__ mac_control; TYPE_1__ config; } ;
-struct TYPE_5__ {int /*<<< orphan*/  queue_state; } ;
+struct TYPE_4__ {int multiq; } ;
+struct s2io_nic {int dev; TYPE_3__ mac_control; TYPE_1__ config; } ;
+struct TYPE_5__ {int queue_state; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FIFO_QUEUE_STOP ; 
- int /*<<< orphan*/  netif_tx_stop_all_queues (int /*<<< orphan*/ ) ; 
+
+ int FIFO_QUEUE_STOP ;
+ int netif_tx_stop_all_queues (int ) ;
 
 __attribute__((used)) static inline void s2io_stop_tx_queue(struct s2io_nic *sp, int fifo_no)
 {
-	if (!sp->config.multiq)
-		sp->mac_control.fifos[fifo_no].queue_state =
-			FIFO_QUEUE_STOP;
+ if (!sp->config.multiq)
+  sp->mac_control.fifos[fifo_no].queue_state =
+   FIFO_QUEUE_STOP;
 
-	netif_tx_stop_all_queues(sp->dev);
+ netif_tx_stop_all_queues(sp->dev);
 }

@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ len; char* data; } ;
-typedef  TYPE_1__ svn_string_t ;
+typedef TYPE_1__ svn_string_t ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static const char *
 detect_eol(svn_string_t *token)
@@ -22,13 +22,13 @@ detect_eol(svn_string_t *token)
   const char *curp;
 
   if (token->len == 0)
-    return NULL;
+    return ((void*)0);
 
   curp = token->data + token->len - 1;
   if (*curp == '\r')
     return "\r";
   else if (*curp != '\n')
-    return NULL;
+    return ((void*)0);
   else
     {
       if (token->len == 1

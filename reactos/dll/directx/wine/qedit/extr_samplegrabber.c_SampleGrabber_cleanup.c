@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int /*<<< orphan*/  pbFormat; } ;
+
+
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int pbFormat; } ;
 struct TYPE_9__ {scalar_t__ pGraph; } ;
 struct TYPE_10__ {TYPE_2__ filterInfo; } ;
-struct TYPE_11__ {scalar_t__ seekthru_unk; int /*<<< orphan*/  bufferData; TYPE_1__ mtype; scalar_t__ grabberIface; scalar_t__ memOutput; scalar_t__ allocator; TYPE_3__ filter; } ;
-typedef  TYPE_4__ SG_Impl ;
+struct TYPE_11__ {scalar_t__ seekthru_unk; int bufferData; TYPE_1__ mtype; scalar_t__ grabberIface; scalar_t__ memOutput; scalar_t__ allocator; TYPE_3__ filter; } ;
+typedef TYPE_4__ SG_Impl ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CoTaskMemFree (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IMemAllocator_Release (scalar_t__) ; 
- int /*<<< orphan*/  IMemInputPin_Release (scalar_t__) ; 
- int /*<<< orphan*/  ISampleGrabberCB_Release (scalar_t__) ; 
- int /*<<< orphan*/  IUnknown_Release (scalar_t__) ; 
- int /*<<< orphan*/  TRACE (char*,TYPE_4__*) ; 
- int /*<<< orphan*/  WARN (char*,TYPE_4__*,scalar_t__) ; 
+
+ int CoTaskMemFree (int ) ;
+ int IMemAllocator_Release (scalar_t__) ;
+ int IMemInputPin_Release (scalar_t__) ;
+ int ISampleGrabberCB_Release (scalar_t__) ;
+ int IUnknown_Release (scalar_t__) ;
+ int TRACE (char*,TYPE_4__*) ;
+ int WARN (char*,TYPE_4__*,scalar_t__) ;
 
 __attribute__((used)) static void SampleGrabber_cleanup(SG_Impl *This)
 {

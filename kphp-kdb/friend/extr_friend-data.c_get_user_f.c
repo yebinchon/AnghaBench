@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {int user_id; int cat_mask; int* cat_ver; } ;
-typedef  TYPE_1__ user_t ;
+typedef TYPE_1__ user_t ;
 
-/* Variables and functions */
- TYPE_1__** User ; 
- int conv_uid (int) ; 
- int max_uid ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  tot_users ; 
- TYPE_1__* zmalloc (int) ; 
+
+ TYPE_1__** User ;
+ int conv_uid (int) ;
+ int max_uid ;
+ int memset (TYPE_1__*,int ,int) ;
+ int tot_users ;
+ TYPE_1__* zmalloc (int) ;
 
 __attribute__((used)) static user_t *get_user_f (int user_id) {
   int i = conv_uid (user_id);
@@ -39,6 +39,6 @@ __attribute__((used)) static user_t *get_user_f (int user_id) {
   for (i = 0; i < 31; i++) {
     U->cat_ver[i] = i;
   }
- 
+
   return U;
 }

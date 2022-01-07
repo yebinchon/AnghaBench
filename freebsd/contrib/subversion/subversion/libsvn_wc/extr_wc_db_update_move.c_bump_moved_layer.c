@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {int /*<<< orphan*/  wc_id; int /*<<< orphan*/  sdb; } ;
-typedef  TYPE_1__ svn_wc__db_wcroot_t ;
-typedef  int /*<<< orphan*/  svn_wc__db_t ;
-typedef  int /*<<< orphan*/  svn_sqlite__stmt_t ;
-typedef  int /*<<< orphan*/  svn_skel_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_depth_t ;
-typedef  scalar_t__ svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  STMT_HAS_LAYER_BETWEEN ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  bump_mark_tree_conflict (TYPE_1__*,char const*,int,char const*,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  depth_sufficient_to_bump (scalar_t__*,TYPE_1__*,char const*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- char* svn_relpath_prefix (char const*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_sqlite__bindf (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,char const*,int,int) ; 
- int /*<<< orphan*/  svn_sqlite__get_statement (int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_sqlite__reset (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_sqlite__step (scalar_t__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__db_op_copy_layer_internal (TYPE_1__*,char const*,int,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__db_read_conflict_internal (int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_1__*,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__db_wclock_owns_lock_internal (scalar_t__*,TYPE_1__*,char const*,scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  verify_write_lock (TYPE_1__*,char const*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_9__ {int wc_id; int sdb; } ;
+typedef TYPE_1__ svn_wc__db_wcroot_t ;
+typedef int svn_wc__db_t ;
+typedef int svn_sqlite__stmt_t ;
+typedef int svn_skel_t ;
+typedef int svn_error_t ;
+typedef int svn_depth_t ;
+typedef scalar_t__ svn_boolean_t ;
+typedef int apr_pool_t ;
+
+
+ scalar_t__ FALSE ;
+ int STMT_HAS_LAYER_BETWEEN ;
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ scalar_t__ TRUE ;
+ int bump_mark_tree_conflict (TYPE_1__*,char const*,int,char const*,char const*,int *,int *) ;
+ int depth_sufficient_to_bump (scalar_t__*,TYPE_1__*,char const*,int,int ,int *) ;
+ char* svn_relpath_prefix (char const*,int,int *) ;
+ int svn_sqlite__bindf (int *,char*,int ,char const*,int,int) ;
+ int svn_sqlite__get_statement (int **,int ,int ) ;
+ int svn_sqlite__reset (int *) ;
+ int svn_sqlite__step (scalar_t__*,int *) ;
+ int svn_wc__db_op_copy_layer_internal (TYPE_1__*,char const*,int,char const*,int *,int *,int *) ;
+ int svn_wc__db_read_conflict_internal (int **,int *,int *,TYPE_1__*,char const*,int *,int *) ;
+ int svn_wc__db_wclock_owns_lock_internal (scalar_t__*,TYPE_1__*,char const*,scalar_t__,int *) ;
+ int verify_write_lock (TYPE_1__*,char const*,int *) ;
 
 __attribute__((used)) static svn_error_t *
 bump_moved_layer(svn_boolean_t *recurse,
@@ -77,11 +77,11 @@ bump_moved_layer(svn_boolean_t *recurse,
     SVN_ERR(depth_sufficient_to_bump(&can_bump, wcroot, src_relpath,
                                      op_depth, src_depth, scratch_pool));
   else
-    /* Having chosen to bump an entire BASE tree move we
-       always have sufficient depth to bump subtree moves. */
+
+
     can_bump = TRUE;
 
-  /* Are we allowed to bump */
+
   if (can_bump)
     {
       svn_boolean_t locked;
@@ -106,20 +106,20 @@ bump_moved_layer(svn_boolean_t *recurse,
       return SVN_NO_ERROR;
     }
 
-  SVN_ERR(svn_wc__db_read_conflict_internal(&conflict, NULL, NULL,
+  SVN_ERR(svn_wc__db_read_conflict_internal(&conflict, ((void*)0), ((void*)0),
                                             wcroot, src_root_relpath,
                                             scratch_pool, scratch_pool));
 
-  /* ### TODO: check this is the right sort of tree-conflict? */
+
   if (!conflict)
     {
-      /* ### TODO: verify moved_here? */
+
 
       SVN_ERR(verify_write_lock(wcroot, src_relpath, scratch_pool));
 
       SVN_ERR(svn_wc__db_op_copy_layer_internal(wcroot,
                                                 src_relpath, op_depth,
-                                                dst_relpath, NULL, NULL,
+                                                dst_relpath, ((void*)0), ((void*)0),
                                                 scratch_pool));
 
       *recurse = TRUE;

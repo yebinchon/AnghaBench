@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  swig_type_info ;
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SWIG_NewPointerObj (int /*<<< orphan*/ *,void*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * SWIG_TypeQuery (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  warn (char*,char const*,int,char const*,char*,char const*) ; 
+
+
+
+typedef int swig_type_info ;
+typedef int lua_State ;
+
+
+ int SWIG_NewPointerObj (int *,void*,int *,int) ;
+ int * SWIG_TypeQuery (int *,char const*) ;
+ int warn (char*,char const*,int,char const*,char*,char const*) ;
 
 bool ls_push_libobs_obj_(lua_State *script, const char *type, void *libobs_in,
-			 bool ownership, const char *id, const char *func,
-			 int line)
+    bool ownership, const char *id, const char *func,
+    int line)
 {
-	swig_type_info *info = SWIG_TypeQuery(script, type);
-	if (info == NULL) {
-		warn("%s:%d: SWIG could not find type: %s%s%s", func, line,
-		     id ? id : "", id ? "::" : "", type);
-		return false;
-	}
+ swig_type_info *info = SWIG_TypeQuery(script, type);
+ if (info == ((void*)0)) {
+  warn("%s:%d: SWIG could not find type: %s%s%s", func, line,
+       id ? id : "", id ? "::" : "", type);
+  return 0;
+ }
 
-	SWIG_NewPointerObj(script, libobs_in, info, (int)ownership);
-	return true;
+ SWIG_NewPointerObj(script, libobs_in, info, (int)ownership);
+ return 1;
 }

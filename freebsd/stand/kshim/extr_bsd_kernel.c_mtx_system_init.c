@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  Giant ; 
- int MTX_DEF ; 
- int MTX_RECURSE ; 
- int /*<<< orphan*/  mtx_init (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,int) ; 
+ int Giant ;
+ int MTX_DEF ;
+ int MTX_RECURSE ;
+ int mtx_init (int *,char*,int *,int) ;
 
 __attribute__((used)) static void
 mtx_system_init(void *arg)
 {
-	mtx_init(&Giant, "Giant", NULL, MTX_DEF | MTX_RECURSE);
+ mtx_init(&Giant, "Giant", ((void*)0), MTX_DEF | MTX_RECURSE);
 }

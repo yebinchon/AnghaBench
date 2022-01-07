@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ int64_t ;
-struct TYPE_4__ {scalar_t__ show_mode; scalar_t__ force_refresh; int /*<<< orphan*/  paused; int /*<<< orphan*/  abort_request; } ;
-typedef  TYPE_1__ VideoState ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef scalar_t__ int64_t ;
+struct TYPE_4__ {scalar_t__ show_mode; scalar_t__ force_refresh; int paused; int abort_request; } ;
+typedef TYPE_1__ VideoState ;
 struct TYPE_5__ {TYPE_1__* is; } ;
-typedef  TYPE_2__ FFPlayer ;
+typedef TYPE_2__ FFPlayer ;
 
-/* Variables and functions */
- double REFRESH_RATE ; 
- scalar_t__ SHOW_MODE_NONE ; 
- int /*<<< orphan*/  av_usleep (int) ; 
- int /*<<< orphan*/  video_refresh (TYPE_2__*,double*) ; 
+
+ double REFRESH_RATE ;
+ scalar_t__ SHOW_MODE_NONE ;
+ int av_usleep (int) ;
+ int video_refresh (TYPE_2__*,double*) ;
 
 __attribute__((used)) static int video_refresh_thread(void *arg)
 {

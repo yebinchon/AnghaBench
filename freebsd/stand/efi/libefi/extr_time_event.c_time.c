@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int time_t ;
 
-/* Variables and functions */
- int curtime ; 
+
+
+
+typedef int time_t ;
+
+
+ int curtime ;
 
 time_t
 time(time_t *tloc)
 {
-	time_t t;
+ time_t t;
 
-	t = curtime / 1000;
-	if (tloc != NULL)
-		*tloc = t;
+ t = curtime / 1000;
+ if (tloc != ((void*)0))
+  *tloc = t;
 
-	return (t);
+ return (t);
 }

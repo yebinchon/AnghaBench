@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT ;
-typedef  int /*<<< orphan*/  THREAD_PROC ;
-typedef  int /*<<< orphan*/  LISTENER ;
-typedef  int /*<<< orphan*/  CEDAR ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * NewListenerEx2 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,void*,int) ; 
+
+
+
+typedef int UINT ;
+typedef int THREAD_PROC ;
+typedef int LISTENER ;
+typedef int CEDAR ;
+
+
+ int * NewListenerEx2 (int *,int ,int ,int *,void*,int) ;
 
 LISTENER *NewListenerEx(CEDAR *cedar, UINT proto, UINT port, THREAD_PROC *proc, void *thread_param)
 {
-	return NewListenerEx2(cedar, proto, port, proc, thread_param, false);
+ return NewListenerEx2(cedar, proto, port, proc, thread_param, 0);
 }

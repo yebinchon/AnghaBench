@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  Entry ; 
- int /*<<< orphan*/  ans ; 
- scalar_t__ ans_n ; 
- int /*<<< orphan*/  dl_qsort_addr (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  process_entry (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strlen (char*) ; 
- int /*<<< orphan*/  watchcat_prepare_entry (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
+ int Entry ;
+ int ans ;
+ scalar_t__ ans_n ;
+ int dl_qsort_addr (int ,scalar_t__) ;
+ int process_entry (int *) ;
+ int strlen (char*) ;
+ int watchcat_prepare_entry (int *,char*,int ) ;
 
 char *gen_addrs (char *s) {
-  // s == text 0x1 info
+
   char *t = s;
   int f = 0;
   while (*t) {

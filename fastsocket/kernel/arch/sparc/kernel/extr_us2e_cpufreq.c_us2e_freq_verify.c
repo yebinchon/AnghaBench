@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct cpufreq_policy {size_t cpu; } ;
-struct TYPE_2__ {int /*<<< orphan*/ * table; } ;
+struct TYPE_2__ {int * table; } ;
 
-/* Variables and functions */
- int cpufreq_frequency_table_verify (struct cpufreq_policy*,int /*<<< orphan*/ *) ; 
- TYPE_1__* us2e_freq_table ; 
+
+ int cpufreq_frequency_table_verify (struct cpufreq_policy*,int *) ;
+ TYPE_1__* us2e_freq_table ;
 
 __attribute__((used)) static int us2e_freq_verify(struct cpufreq_policy *policy)
 {
-	return cpufreq_frequency_table_verify(policy,
-					      &us2e_freq_table[policy->cpu].table[0]);
+ return cpufreq_frequency_table_verify(policy,
+           &us2e_freq_table[policy->cpu].table[0]);
 }

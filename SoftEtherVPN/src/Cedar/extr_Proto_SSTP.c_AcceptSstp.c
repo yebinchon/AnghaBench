@@ -1,85 +1,85 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  date_str ;
-struct TYPE_3__ {int /*<<< orphan*/  Cedar; int /*<<< orphan*/ * FirstSock; } ;
-typedef  int /*<<< orphan*/  SOCK_EVENT ;
-typedef  int /*<<< orphan*/  SOCK ;
-typedef  int /*<<< orphan*/  HTTP_HEADER ;
-typedef  TYPE_1__ CONNECTION ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AddHttpValue (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Debug (char*) ; 
- int /*<<< orphan*/  Disconnect (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FreeHttpHeader (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GetHttpDateStr (char*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  INFINITE ; 
- int /*<<< orphan*/  JoinSockToSockEvent (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int MAX_SIZE ; 
- int /*<<< orphan*/ * NewHttpHeader (char*,char*,char*) ; 
- int /*<<< orphan*/  NewHttpValue (char*,char*) ; 
- int /*<<< orphan*/ * NewSockEvent () ; 
- int PostHttp (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int ProcessSstpHttps (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ReleaseSockEvent (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SetTimeout (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SystemTime64 () ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int date_str ;
+struct TYPE_3__ {int Cedar; int * FirstSock; } ;
+typedef int SOCK_EVENT ;
+typedef int SOCK ;
+typedef int HTTP_HEADER ;
+typedef TYPE_1__ CONNECTION ;
+
+
+ int AddHttpValue (int *,int ) ;
+ int Debug (char*) ;
+ int Disconnect (int *) ;
+ int FreeHttpHeader (int *) ;
+ int GetHttpDateStr (char*,int,int ) ;
+ int INFINITE ;
+ int JoinSockToSockEvent (int *,int *) ;
+ int MAX_SIZE ;
+ int * NewHttpHeader (char*,char*,char*) ;
+ int NewHttpValue (char*,char*) ;
+ int * NewSockEvent () ;
+ int PostHttp (int *,int *,int *,int ) ;
+ int ProcessSstpHttps (int ,int *,int *) ;
+ int ReleaseSockEvent (int *) ;
+ int SetTimeout (int *,int ) ;
+ int SystemTime64 () ;
 
 bool AcceptSstp(CONNECTION *c)
 {
-	SOCK *s;
-	HTTP_HEADER *h;
-	char date_str[MAX_SIZE];
-	bool ret;
-	bool ret2 = false;
-	SOCK_EVENT *se;
-	// Validate arguments
-	if (c == NULL)
-	{
-		return false;
-	}
+ SOCK *s;
+ HTTP_HEADER *h;
+ char date_str[MAX_SIZE];
+ bool ret;
+ bool ret2 = 0;
+ SOCK_EVENT *se;
 
-	s = c->FirstSock;
+ if (c == ((void*)0))
+ {
+  return 0;
+ }
 
-	GetHttpDateStr(date_str, sizeof(date_str), SystemTime64());
+ s = c->FirstSock;
 
-	// Return a response
-	h = NewHttpHeader("HTTP/1.1", "200", "OK");
-	AddHttpValue(h, NewHttpValue("Content-Length", "18446744073709551615"));
-	AddHttpValue(h, NewHttpValue("Server", "Microsoft-HTTPAPI/2.0"));
-	AddHttpValue(h, NewHttpValue("Date", date_str));
+ GetHttpDateStr(date_str, sizeof(date_str), SystemTime64());
 
-	ret = PostHttp(s, h, NULL, 0);
 
-	FreeHttpHeader(h);
+ h = NewHttpHeader("HTTP/1.1", "200", "OK");
+ AddHttpValue(h, NewHttpValue("Content-Length", "18446744073709551615"));
+ AddHttpValue(h, NewHttpValue("Server", "Microsoft-HTTPAPI/2.0"));
+ AddHttpValue(h, NewHttpValue("Date", date_str));
 
-	if (ret)
-	{
-		SetTimeout(s, INFINITE);
+ ret = PostHttp(s, h, ((void*)0), 0);
 
-		se = NewSockEvent();
+ FreeHttpHeader(h);
 
-		JoinSockToSockEvent(s, se);
+ if (ret)
+ {
+  SetTimeout(s, INFINITE);
 
-		Debug("ProcessSstpHttps Start.\n");
-		ret2 = ProcessSstpHttps(c->Cedar, s, se);
-		Debug("ProcessSstpHttps End.\n");
+  se = NewSockEvent();
 
-		ReleaseSockEvent(se);
-	}
+  JoinSockToSockEvent(s, se);
 
-	Disconnect(s);
+  Debug("ProcessSstpHttps Start.\n");
+  ret2 = ProcessSstpHttps(c->Cedar, s, se);
+  Debug("ProcessSstpHttps End.\n");
 
-	return ret2;
+  ReleaseSockEvent(se);
+ }
+
+ Disconnect(s);
+
+ return ret2;
 }

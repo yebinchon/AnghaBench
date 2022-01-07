@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  OPENSSL_fork_child ; 
- int /*<<< orphan*/  OPENSSL_fork_parent ; 
- int /*<<< orphan*/  OPENSSL_fork_prepare ; 
- int /*<<< orphan*/  pthread_atfork (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int OPENSSL_fork_child ;
+ int OPENSSL_fork_parent ;
+ int OPENSSL_fork_prepare ;
+ int pthread_atfork (int ,int ,int ) ;
 
 __attribute__((used)) static void fork_once_func(void)
 {

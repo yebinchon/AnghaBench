@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
+
+
+
+
+typedef int u32 ;
 struct ath10k {int dummy; } ;
-typedef  int /*<<< orphan*/  __le32 ;
+typedef int __le32 ;
 
-/* Variables and functions */
- int ENOMEM ; 
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  __le32_to_cpu (int /*<<< orphan*/ ) ; 
- int ath10k_sdio_hif_diag_read (struct ath10k*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  kfree (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * kzalloc (int,int /*<<< orphan*/ ) ; 
+
+ int ENOMEM ;
+ int GFP_KERNEL ;
+ int __le32_to_cpu (int ) ;
+ int ath10k_sdio_hif_diag_read (struct ath10k*,int ,int *,int) ;
+ int kfree (int *) ;
+ int * kzalloc (int,int ) ;
 
 __attribute__((used)) static int ath10k_sdio_hif_diag_read32(struct ath10k *ar, u32 address,
-				       u32 *value)
+           u32 *value)
 {
-	__le32 *val;
-	int ret;
+ __le32 *val;
+ int ret;
 
-	val = kzalloc(sizeof(*val), GFP_KERNEL);
-	if (!val)
-		return -ENOMEM;
+ val = kzalloc(sizeof(*val), GFP_KERNEL);
+ if (!val)
+  return -ENOMEM;
 
-	ret = ath10k_sdio_hif_diag_read(ar, address, val, sizeof(*val));
-	if (ret)
-		goto out;
+ ret = ath10k_sdio_hif_diag_read(ar, address, val, sizeof(*val));
+ if (ret)
+  goto out;
 
-	*value = __le32_to_cpu(*val);
+ *value = __le32_to_cpu(*val);
 
 out:
-	kfree(val);
+ kfree(val);
 
-	return ret;
+ return ret;
 }

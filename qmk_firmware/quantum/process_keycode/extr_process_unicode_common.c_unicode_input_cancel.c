@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int input_mode; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  KC_ESC ; 
- int /*<<< orphan*/  KC_LALT ; 
-#define  UC_LNX 131 
-#define  UC_OSX 130 
-#define  UC_WIN 129 
-#define  UC_WINC 128 
- int /*<<< orphan*/  UNICODE_KEY_OSX ; 
- int /*<<< orphan*/  set_mods (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tap_code (int /*<<< orphan*/ ) ; 
- TYPE_1__ unicode_config ; 
- int /*<<< orphan*/  unicode_saved_mods ; 
- int /*<<< orphan*/  unregister_code (int /*<<< orphan*/ ) ; 
+
+ int KC_ESC ;
+ int KC_LALT ;
+
+
+
+
+ int UNICODE_KEY_OSX ;
+ int set_mods (int ) ;
+ int tap_code (int ) ;
+ TYPE_1__ unicode_config ;
+ int unicode_saved_mods ;
+ int unregister_code (int ) ;
 
 __attribute__((weak)) void unicode_input_cancel(void) {
     switch (unicode_config.input_mode) {
-        case UC_OSX:
+        case 130:
             unregister_code(UNICODE_KEY_OSX);
             break;
-        case UC_LNX:
-        case UC_WINC:
+        case 131:
+        case 128:
             tap_code(KC_ESC);
             break;
-        case UC_WIN:
+        case 129:
             unregister_code(KC_LALT);
             break;
     }
 
-    set_mods(unicode_saved_mods);  // Reregister previously set mods
+    set_mods(unicode_saved_mods);
 }

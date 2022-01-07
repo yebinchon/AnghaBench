@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 union poll_fd_info {scalar_t__ ptr; } ;
 struct pollfd_ {int revents; int events; } ;
 struct poll_context {int nfds; scalar_t__* files; struct pollfd_* polls; } ;
 
-/* Variables and functions */
- int POLL_ALWAYS_LISTENING ; 
+
+ int POLL_ALWAYS_LISTENING ;
 
 __attribute__((used)) static int poll_event_callback(void *context, int types, union poll_fd_info info) {
     struct poll_context *c = context;

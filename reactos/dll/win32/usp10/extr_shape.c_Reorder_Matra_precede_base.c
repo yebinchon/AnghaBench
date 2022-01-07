@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ (* lexical_function ) (int /*<<< orphan*/ ) ;
-typedef  int /*<<< orphan*/  WCHAR ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ (* lexical_function ) (int ) ;
+typedef int WCHAR ;
 struct TYPE_3__ {scalar_t__ end; scalar_t__ base; size_t ralf; size_t blwf; size_t pref; } ;
-typedef  TYPE_1__ IndicSyllable ;
+typedef TYPE_1__ IndicSyllable ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ lex_Matra_pre ; 
+
+ int TRACE (char*,int ,int ) ;
+ scalar_t__ lex_Matra_pre ;
 
 __attribute__((used)) static void Reorder_Matra_precede_base(WCHAR *pwChar, IndicSyllable *s, lexical_function lexical)
 {
     int i;
 
-    /* reorder Matras */
+
     if (s->end > s->base)
     {
         for (i = 1; i <= s->end-s->base; i++)

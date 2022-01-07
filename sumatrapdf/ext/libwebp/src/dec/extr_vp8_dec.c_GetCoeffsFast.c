@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int* quant_t ;
-typedef  int int16_t ;
-typedef  int /*<<< orphan*/ * VP8ProbaArray ;
-typedef  int /*<<< orphan*/  VP8BitReader ;
-struct TYPE_3__ {int /*<<< orphan*/ ** probas_; } ;
-typedef  TYPE_1__ VP8BandProbas ;
 
-/* Variables and functions */
- int GetLargeValue (int /*<<< orphan*/ * const,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  VP8GetBit (int /*<<< orphan*/ * const,int /*<<< orphan*/  const,char*) ; 
- int VP8GetSigned (int /*<<< orphan*/ * const,int,char*) ; 
- size_t* kZigzag ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int* quant_t ;
+typedef int int16_t ;
+typedef int * VP8ProbaArray ;
+typedef int VP8BitReader ;
+struct TYPE_3__ {int ** probas_; } ;
+typedef TYPE_1__ VP8BandProbas ;
+
+
+ int GetLargeValue (int * const,int const*) ;
+ int VP8GetBit (int * const,int const,char*) ;
+ int VP8GetSigned (int * const,int,char*) ;
+ size_t* kZigzag ;
 
 __attribute__((used)) static int GetCoeffsFast(VP8BitReader* const br,
                          const VP8BandProbas* const prob[],
@@ -31,13 +31,13 @@ __attribute__((used)) static int GetCoeffsFast(VP8BitReader* const br,
   const uint8_t* p = prob[n]->probas_[ctx];
   for (; n < 16; ++n) {
     if (!VP8GetBit(br, p[0], "coeffs")) {
-      return n;  // previous coeff was last non-zero coeff
+      return n;
     }
-    while (!VP8GetBit(br, p[1], "coeffs")) {       // sequence of zero coeffs
+    while (!VP8GetBit(br, p[1], "coeffs")) {
       p = prob[++n]->probas_[0];
       if (n == 16) return 16;
     }
-    {        // non zero coeff
+    {
       const VP8ProbaArray* const p_ctx = &prob[n + 1]->probas_[0];
       int v;
       if (!VP8GetBit(br, p[2], "coeffs")) {

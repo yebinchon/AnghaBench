@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  BUF_MEM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BUF_F_BUF_MEM_NEW ; 
- int /*<<< orphan*/  BUFerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ERR_R_MALLOC_FAILURE ; 
- int /*<<< orphan*/ * OPENSSL_zalloc (int) ; 
+
+
+
+typedef int BUF_MEM ;
+
+
+ int BUF_F_BUF_MEM_NEW ;
+ int BUFerr (int ,int ) ;
+ int ERR_R_MALLOC_FAILURE ;
+ int * OPENSSL_zalloc (int) ;
 
 BUF_MEM *BUF_MEM_new(void)
 {
     BUF_MEM *ret;
 
     ret = OPENSSL_zalloc(sizeof(*ret));
-    if (ret == NULL) {
+    if (ret == ((void*)0)) {
         BUFerr(BUF_F_BUF_MEM_NEW, ERR_R_MALLOC_FAILURE);
-        return NULL;
+        return ((void*)0);
     }
     return ret;
 }

@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_5__ ;
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  enum AVPixelFormat { ____Placeholder_AVPixelFormat } AVPixelFormat ;
-struct TYPE_15__ {TYPE_4__ const* sps; TYPE_2__** vps_list; int /*<<< orphan*/ * vps; } ;
-struct TYPE_17__ {TYPE_3__ ps; void** sao_pixel_buffer_v; void** sao_pixel_buffer_h; TYPE_1__* avctx; int /*<<< orphan*/  vdsp; int /*<<< orphan*/  hevcdsp; int /*<<< orphan*/  hpc; } ;
-struct TYPE_16__ {scalar_t__ chroma_format_idc; int width; int* hshift; int height; int* vshift; int ctb_height; int pixel_shift; int ctb_width; size_t vps_id; scalar_t__ sao_enabled; int /*<<< orphan*/  bit_depth; } ;
+
+
+typedef struct TYPE_17__ TYPE_5__ ;
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+typedef enum AVPixelFormat { ____Placeholder_AVPixelFormat } AVPixelFormat ;
+struct TYPE_15__ {TYPE_4__ const* sps; TYPE_2__** vps_list; int * vps; } ;
+struct TYPE_17__ {TYPE_3__ ps; void** sao_pixel_buffer_v; void** sao_pixel_buffer_h; TYPE_1__* avctx; int vdsp; int hevcdsp; int hpc; } ;
+struct TYPE_16__ {scalar_t__ chroma_format_idc; int width; int* hshift; int height; int* vshift; int ctb_height; int pixel_shift; int ctb_width; size_t vps_id; scalar_t__ sao_enabled; int bit_depth; } ;
 struct TYPE_14__ {scalar_t__ data; } ;
-struct TYPE_13__ {int pix_fmt; int /*<<< orphan*/  hwaccel; } ;
-typedef  int /*<<< orphan*/  HEVCVPS ;
-typedef  TYPE_4__ HEVCSPS ;
-typedef  TYPE_5__ HEVCContext ;
+struct TYPE_13__ {int pix_fmt; int hwaccel; } ;
+typedef int HEVCVPS ;
+typedef TYPE_4__ HEVCSPS ;
+typedef TYPE_5__ HEVCContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  av_freep (void**) ; 
- void* av_malloc (int) ; 
- int /*<<< orphan*/  export_stream_params (TYPE_5__*,TYPE_4__ const*) ; 
- int /*<<< orphan*/  ff_hevc_dsp_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ff_hevc_pred_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ff_videodsp_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pic_arrays_free (TYPE_5__*) ; 
- int pic_arrays_init (TYPE_5__*,TYPE_4__ const*) ; 
+
+ int av_freep (void**) ;
+ void* av_malloc (int) ;
+ int export_stream_params (TYPE_5__*,TYPE_4__ const*) ;
+ int ff_hevc_dsp_init (int *,int ) ;
+ int ff_hevc_pred_init (int *,int ) ;
+ int ff_videodsp_init (int *,int ) ;
+ int pic_arrays_free (TYPE_5__*) ;
+ int pic_arrays_init (TYPE_5__*,TYPE_4__ const*) ;
 
 __attribute__((used)) static int set_sps(HEVCContext *s, const HEVCSPS *sps,
                    enum AVPixelFormat pix_fmt)
@@ -41,8 +41,8 @@ __attribute__((used)) static int set_sps(HEVCContext *s, const HEVCSPS *sps,
     int ret, i;
 
     pic_arrays_free(s);
-    s->ps.sps = NULL;
-    s->ps.vps = NULL;
+    s->ps.sps = ((void*)0);
+    s->ps.vps = ((void*)0);
 
     if (!sps)
         return 0;
@@ -55,9 +55,9 @@ __attribute__((used)) static int set_sps(HEVCContext *s, const HEVCSPS *sps,
 
     s->avctx->pix_fmt = pix_fmt;
 
-    ff_hevc_pred_init(&s->hpc,     sps->bit_depth);
+    ff_hevc_pred_init(&s->hpc, sps->bit_depth);
     ff_hevc_dsp_init (&s->hevcdsp, sps->bit_depth);
-    ff_videodsp_init (&s->vdsp,    sps->bit_depth);
+    ff_videodsp_init (&s->vdsp, sps->bit_depth);
 
     for (i = 0; i < 3; i++) {
         av_freep(&s->sao_pixel_buffer_h[i]);
@@ -87,6 +87,6 @@ __attribute__((used)) static int set_sps(HEVCContext *s, const HEVCSPS *sps,
 
 fail:
     pic_arrays_free(s);
-    s->ps.sps = NULL;
+    s->ps.sps = ((void*)0);
     return ret;
 }

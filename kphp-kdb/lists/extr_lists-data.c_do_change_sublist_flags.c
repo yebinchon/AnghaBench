@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct lev_sublist_flags {int xor_cond; int and_cond; int and_set; int xor_set; } ;
 struct lev_generic {int dummy; } ;
-typedef  int /*<<< orphan*/  list_id_t ;
+typedef int list_id_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FIRST_INT (int /*<<< orphan*/ ) ; 
- struct lev_sublist_flags* LEV_ADJUST_L (struct lev_sublist_flags*) ; 
- int /*<<< orphan*/  LEV_LI_SUBLIST_FLAGS ; 
- struct lev_sublist_flags* alloc_log_event (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ) ; 
- int change_sublist_flags (int /*<<< orphan*/ ,int,struct lev_generic*) ; 
- scalar_t__ conv_list_id (int /*<<< orphan*/ ) ; 
- scalar_t__ lev_list_id_bytes ; 
- scalar_t__ metafile_mode ; 
- scalar_t__ prepare_list_metafile (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  upcopy_list_id (struct lev_sublist_flags*,int /*<<< orphan*/ ) ; 
+
+ int FIRST_INT (int ) ;
+ struct lev_sublist_flags* LEV_ADJUST_L (struct lev_sublist_flags*) ;
+ int LEV_LI_SUBLIST_FLAGS ;
+ struct lev_sublist_flags* alloc_log_event (int ,scalar_t__,int ) ;
+ int change_sublist_flags (int ,int,struct lev_generic*) ;
+ scalar_t__ conv_list_id (int ) ;
+ scalar_t__ lev_list_id_bytes ;
+ scalar_t__ metafile_mode ;
+ scalar_t__ prepare_list_metafile (int ,int) ;
+ int upcopy_list_id (struct lev_sublist_flags*,int ) ;
 
 int do_change_sublist_flags (list_id_t list_id, int xor_cond, int and_cond, int and_set, int xor_set) {
   if (conv_list_id (list_id) < 0) {

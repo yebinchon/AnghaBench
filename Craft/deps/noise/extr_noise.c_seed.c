@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- unsigned char* PERM ; 
- int RAND_MAX ; 
- int /*<<< orphan*/  memcpy (unsigned char*,unsigned char*,int) ; 
- int rand () ; 
- int /*<<< orphan*/  srand (unsigned int) ; 
+ unsigned char* PERM ;
+ int RAND_MAX ;
+ int memcpy (unsigned char*,unsigned char*,int) ;
+ int rand () ;
+ int srand (unsigned int) ;
 
 void seed(unsigned int x) {
     srand(x);

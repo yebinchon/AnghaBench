@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int copy_process (unsigned long,unsigned long,int) ; 
- int /*<<< orphan*/  enable_interrupt_controller () ; 
- int /*<<< orphan*/  enable_irq () ; 
- int /*<<< orphan*/  init_printf (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  irq_vector_init () ; 
- int /*<<< orphan*/  printf (char*) ; 
- int /*<<< orphan*/  process ; 
- int /*<<< orphan*/  putc ; 
- int /*<<< orphan*/  schedule () ; 
- int /*<<< orphan*/  timer_init () ; 
- int /*<<< orphan*/  uart_init () ; 
+ int copy_process (unsigned long,unsigned long,int) ;
+ int enable_interrupt_controller () ;
+ int enable_irq () ;
+ int init_printf (int ,int ) ;
+ int irq_vector_init () ;
+ int printf (char*) ;
+ int process ;
+ int putc ;
+ int schedule () ;
+ int timer_init () ;
+ int uart_init () ;
 
 void kernel_main(void) {
   uart_init();

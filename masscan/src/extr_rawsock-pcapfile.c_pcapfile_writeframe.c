@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct PcapFile {scalar_t__ byte_order; char* filename; int /*<<< orphan*/ * fp; int /*<<< orphan*/  frame_number; } ;
 
-/* Variables and functions */
- scalar_t__ CAPFILE_BIGENDIAN ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*,int /*<<< orphan*/ ) ; 
- unsigned int fwrite (void const*,int,unsigned int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  perror (char*) ; 
- int /*<<< orphan*/  stderr ; 
+
+
+
+struct PcapFile {scalar_t__ byte_order; char* filename; int * fp; int frame_number; } ;
+
+
+ scalar_t__ CAPFILE_BIGENDIAN ;
+ int fclose (int *) ;
+ int fprintf (int ,char*,char*,int ) ;
+ unsigned int fwrite (void const*,int,unsigned int,int *) ;
+ int perror (char*) ;
+ int stderr ;
 
 void pcapfile_writeframe(
     struct PcapFile *capfile,
@@ -30,12 +30,12 @@ void pcapfile_writeframe(
 {
     unsigned char header[16];
 
-    if (capfile == NULL || capfile->fp == NULL)
+    if (capfile == ((void*)0) || capfile->fp == ((void*)0))
         return;
 
-    /*
-     * Write timestamp
-     */
+
+
+
     if (capfile->byte_order == CAPFILE_BIGENDIAN) {
         header[ 0] = (unsigned char)(time_sec>>24);
         header[ 1] = (unsigned char)(time_sec>>16);
@@ -85,7 +85,7 @@ void pcapfile_writeframe(
             capfile->filename, capfile->frame_number);
         perror(capfile->filename);
         fclose(capfile->fp);
-        capfile->fp = NULL;
+        capfile->fp = ((void*)0);
     }
 
     if (fwrite(buffer, 1, buffer_size, capfile->fp) != buffer_size) {
@@ -93,6 +93,6 @@ void pcapfile_writeframe(
             capfile->filename, capfile->frame_number);
         perror(capfile->filename);
         fclose(capfile->fp);
-        capfile->fp = NULL;
+        capfile->fp = ((void*)0);
     }
 }

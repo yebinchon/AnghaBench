@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int state; int /*<<< orphan*/  area; } ;
-typedef  TYPE_1__ YuiWindow ;
 
-/* Variables and functions */
- int /*<<< orphan*/  YUI_GL (int /*<<< orphan*/ ) ; 
- int YUI_IS_RUNNING ; 
- int /*<<< orphan*/  yui_gl_draw (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  yui_gl_draw_pause (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int state; int area; } ;
+typedef TYPE_1__ YuiWindow ;
+
+
+ int YUI_GL (int ) ;
+ int YUI_IS_RUNNING ;
+ int yui_gl_draw (int ) ;
+ int yui_gl_draw_pause (int ) ;
 
 void yui_window_update(YuiWindow * yui) {
 

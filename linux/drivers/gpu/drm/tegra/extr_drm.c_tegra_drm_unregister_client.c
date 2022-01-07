@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct tegra_drm_client {int /*<<< orphan*/ * drm; int /*<<< orphan*/  list; } ;
-struct tegra_drm {int /*<<< orphan*/  clients_lock; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  list_del_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
+
+
+
+struct tegra_drm_client {int * drm; int list; } ;
+struct tegra_drm {int clients_lock; } ;
+
+
+ int list_del_init (int *) ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
 
 int tegra_drm_unregister_client(struct tegra_drm *tegra,
-				struct tegra_drm_client *client)
+    struct tegra_drm_client *client)
 {
-	mutex_lock(&tegra->clients_lock);
-	list_del_init(&client->list);
-	client->drm = NULL;
-	mutex_unlock(&tegra->clients_lock);
+ mutex_lock(&tegra->clients_lock);
+ list_del_init(&client->list);
+ client->drm = ((void*)0);
+ mutex_unlock(&tegra->clients_lock);
 
-	return 0;
+ return 0;
 }

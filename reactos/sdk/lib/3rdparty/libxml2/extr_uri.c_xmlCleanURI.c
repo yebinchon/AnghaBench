@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* xmlURIPtr ;
-struct TYPE_3__ {int /*<<< orphan*/ * query_raw; int /*<<< orphan*/ * query; int /*<<< orphan*/ * authority; int /*<<< orphan*/ * opaque; int /*<<< orphan*/ * fragment; int /*<<< orphan*/ * path; int /*<<< orphan*/ * user; int /*<<< orphan*/ * server; int /*<<< orphan*/ * scheme; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  xmlFree (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef TYPE_1__* xmlURIPtr ;
+struct TYPE_3__ {int * query_raw; int * query; int * authority; int * opaque; int * fragment; int * path; int * user; int * server; int * scheme; } ;
+
+
+ int xmlFree (int *) ;
 
 __attribute__((used)) static void
 xmlCleanURI(xmlURIPtr uri) {
-    if (uri == NULL) return;
+    if (uri == ((void*)0)) return;
 
-    if (uri->scheme != NULL) xmlFree(uri->scheme);
-    uri->scheme = NULL;
-    if (uri->server != NULL) xmlFree(uri->server);
-    uri->server = NULL;
-    if (uri->user != NULL) xmlFree(uri->user);
-    uri->user = NULL;
-    if (uri->path != NULL) xmlFree(uri->path);
-    uri->path = NULL;
-    if (uri->fragment != NULL) xmlFree(uri->fragment);
-    uri->fragment = NULL;
-    if (uri->opaque != NULL) xmlFree(uri->opaque);
-    uri->opaque = NULL;
-    if (uri->authority != NULL) xmlFree(uri->authority);
-    uri->authority = NULL;
-    if (uri->query != NULL) xmlFree(uri->query);
-    uri->query = NULL;
-    if (uri->query_raw != NULL) xmlFree(uri->query_raw);
-    uri->query_raw = NULL;
+    if (uri->scheme != ((void*)0)) xmlFree(uri->scheme);
+    uri->scheme = ((void*)0);
+    if (uri->server != ((void*)0)) xmlFree(uri->server);
+    uri->server = ((void*)0);
+    if (uri->user != ((void*)0)) xmlFree(uri->user);
+    uri->user = ((void*)0);
+    if (uri->path != ((void*)0)) xmlFree(uri->path);
+    uri->path = ((void*)0);
+    if (uri->fragment != ((void*)0)) xmlFree(uri->fragment);
+    uri->fragment = ((void*)0);
+    if (uri->opaque != ((void*)0)) xmlFree(uri->opaque);
+    uri->opaque = ((void*)0);
+    if (uri->authority != ((void*)0)) xmlFree(uri->authority);
+    uri->authority = ((void*)0);
+    if (uri->query != ((void*)0)) xmlFree(uri->query);
+    uri->query = ((void*)0);
+    if (uri->query_raw != ((void*)0)) xmlFree(uri->query_raw);
+    uri->query_raw = ((void*)0);
 }

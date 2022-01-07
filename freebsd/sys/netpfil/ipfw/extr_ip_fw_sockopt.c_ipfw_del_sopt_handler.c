@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ipfw_sopt_handler {int /*<<< orphan*/  handler; int /*<<< orphan*/  version; int /*<<< orphan*/  opcode; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CTL3_LOCK () ; 
- int /*<<< orphan*/  CTL3_UNLOCK () ; 
- int /*<<< orphan*/  M_IPFW ; 
- int /*<<< orphan*/  ctl3_gencnt ; 
- struct ipfw_sopt_handler* ctl3_handlers ; 
- int ctl3_hsize ; 
- struct ipfw_sopt_handler* find_sh (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (struct ipfw_sopt_handler*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memmove (struct ipfw_sopt_handler*,struct ipfw_sopt_handler*,size_t) ; 
+
+
+
+struct ipfw_sopt_handler {int handler; int version; int opcode; } ;
+
+
+ int CTL3_LOCK () ;
+ int CTL3_UNLOCK () ;
+ int M_IPFW ;
+ int ctl3_gencnt ;
+ struct ipfw_sopt_handler* ctl3_handlers ;
+ int ctl3_hsize ;
+ struct ipfw_sopt_handler* find_sh (int ,int ,int ) ;
+ int free (struct ipfw_sopt_handler*,int ) ;
+ int memmove (struct ipfw_sopt_handler*,struct ipfw_sopt_handler*,size_t) ;
 
 int
 ipfw_del_sopt_handler(struct ipfw_sopt_handler *sh, size_t count)
 {
-	size_t sz;
-	struct ipfw_sopt_handler *tmp, *h;
-	int i;
+ size_t sz;
+ struct ipfw_sopt_handler *tmp, *h;
+ int i;
 
-	CTL3_LOCK();
+ CTL3_LOCK();
 
-	for (i = 0; i < count; i++) {
-		tmp = &sh[i];
-		h = find_sh(tmp->opcode, tmp->version, tmp->handler);
-		if (h == NULL)
-			continue;
+ for (i = 0; i < count; i++) {
+  tmp = &sh[i];
+  h = find_sh(tmp->opcode, tmp->version, tmp->handler);
+  if (h == ((void*)0))
+   continue;
 
-		sz = (ctl3_handlers + ctl3_hsize - (h + 1)) * sizeof(*h);
-		memmove(h, h + 1, sz);
-		ctl3_hsize--;
-	}
+  sz = (ctl3_handlers + ctl3_hsize - (h + 1)) * sizeof(*h);
+  memmove(h, h + 1, sz);
+  ctl3_hsize--;
+ }
 
-	if (ctl3_hsize == 0) {
-		if (ctl3_handlers != NULL)
-			free(ctl3_handlers, M_IPFW);
-		ctl3_handlers = NULL;
-	}
+ if (ctl3_hsize == 0) {
+  if (ctl3_handlers != ((void*)0))
+   free(ctl3_handlers, M_IPFW);
+  ctl3_handlers = ((void*)0);
+ }
 
-	ctl3_gencnt++;
+ ctl3_gencnt++;
 
-	CTL3_UNLOCK();
+ CTL3_UNLOCK();
 
-	return (0);
+ return (0);
 }

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct sppp {int /*<<< orphan*/  (* if_start ) (int /*<<< orphan*/ ) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SP2IFP (struct sppp*) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ) ; 
+
+
+
+struct sppp {int (* if_start ) (int ) ;} ;
+
+
+ int SP2IFP (struct sppp*) ;
+ int stub1 (int ) ;
 
 __attribute__((used)) static void
 sppp_ifstart_sched(void *dummy)
 {
-	struct sppp *sp = dummy;
-	
-	sp->if_start(SP2IFP(sp));
+ struct sppp *sp = dummy;
+
+ sp->if_start(SP2IFP(sp));
 }

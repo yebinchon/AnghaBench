@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  (* l1l2 ) (struct PStack*,int,int /*<<< orphan*/ *) ;} ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int (* l1l2 ) (struct PStack*,int,int *) ;} ;
 struct PStack {TYPE_1__ l1; } ;
 struct FsmInst {struct PStack* userdata; } ;
 
-/* Variables and functions */
- int CONFIRM ; 
- int /*<<< orphan*/  FsmChangeState (struct FsmInst*,int /*<<< orphan*/ ) ; 
- int PH_ACTIVATE ; 
- int /*<<< orphan*/  ST_L1_ACTIV ; 
- int /*<<< orphan*/  stub1 (struct PStack*,int,int /*<<< orphan*/ *) ; 
+
+ int CONFIRM ;
+ int FsmChangeState (struct FsmInst*,int ) ;
+ int PH_ACTIVATE ;
+ int ST_L1_ACTIV ;
+ int stub1 (struct PStack*,int,int *) ;
 
 __attribute__((used)) static void
 l1b_timer_act(struct FsmInst *fi, int event, void *arg)
 {
-	struct PStack *st = fi->userdata;
+ struct PStack *st = fi->userdata;
 
-	FsmChangeState(fi, ST_L1_ACTIV);
-	st->l1.l1l2(st, PH_ACTIVATE | CONFIRM, NULL);
+ FsmChangeState(fi, ST_L1_ACTIV);
+ st->l1.l1l2(st, PH_ACTIVATE | CONFIRM, ((void*)0));
 }

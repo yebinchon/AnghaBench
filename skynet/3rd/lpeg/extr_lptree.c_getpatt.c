@@ -1,75 +1,75 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
-struct TYPE_12__ {int /*<<< orphan*/  tag; } ;
-struct TYPE_11__ {int /*<<< orphan*/  key; int /*<<< orphan*/  tag; } ;
-typedef  TYPE_1__ TTree ;
 
-/* Variables and functions */
-#define  LUA_TBOOLEAN 132 
-#define  LUA_TFUNCTION 131 
-#define  LUA_TNUMBER 130 
-#define  LUA_TSTRING 129 
-#define  LUA_TTABLE 128 
- int /*<<< orphan*/  TChar ; 
- int /*<<< orphan*/  TFalse ; 
- int /*<<< orphan*/  TRunTime ; 
- int /*<<< orphan*/  TTrue ; 
- int /*<<< orphan*/  addtonewktable (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  fillseq (TYPE_1__*,int /*<<< orphan*/ ,size_t,char const*) ; 
- int getsize (int /*<<< orphan*/ *,int) ; 
- TYPE_1__* gettree (int /*<<< orphan*/ *,int,int*) ; 
- int /*<<< orphan*/  lua_replace (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_toboolean (int /*<<< orphan*/ *,int) ; 
- int lua_tointeger (int /*<<< orphan*/ *,int) ; 
- char* lua_tolstring (int /*<<< orphan*/ *,int,size_t*) ; 
- int lua_type (int /*<<< orphan*/ *,int) ; 
- TYPE_1__* newgrammar (int /*<<< orphan*/ *,int) ; 
- TYPE_1__* newleaf (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- TYPE_1__* newtree (int /*<<< orphan*/ *,int) ; 
- TYPE_1__* numtree (int /*<<< orphan*/ *,int) ; 
- TYPE_2__* sib1 (TYPE_1__*) ; 
+
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef int lua_State ;
+struct TYPE_12__ {int tag; } ;
+struct TYPE_11__ {int key; int tag; } ;
+typedef TYPE_1__ TTree ;
+
+
+
+
+
+
+
+ int TChar ;
+ int TFalse ;
+ int TRunTime ;
+ int TTrue ;
+ int addtonewktable (int *,int ,int) ;
+ int fillseq (TYPE_1__*,int ,size_t,char const*) ;
+ int getsize (int *,int) ;
+ TYPE_1__* gettree (int *,int,int*) ;
+ int lua_replace (int *,int) ;
+ int lua_toboolean (int *,int) ;
+ int lua_tointeger (int *,int) ;
+ char* lua_tolstring (int *,int,size_t*) ;
+ int lua_type (int *,int) ;
+ TYPE_1__* newgrammar (int *,int) ;
+ TYPE_1__* newleaf (int *,int ) ;
+ TYPE_1__* newtree (int *,int) ;
+ TYPE_1__* numtree (int *,int) ;
+ TYPE_2__* sib1 (TYPE_1__*) ;
 
 __attribute__((used)) static TTree *getpatt (lua_State *L, int idx, int *len) {
   TTree *tree;
   switch (lua_type(L, idx)) {
-    case LUA_TSTRING: {
+    case 129: {
       size_t slen;
-      const char *s = lua_tolstring(L, idx, &slen);  /* get string */
-      if (slen == 0)  /* empty? */
-        tree = newleaf(L, TTrue);  /* always match */
+      const char *s = lua_tolstring(L, idx, &slen);
+      if (slen == 0)
+        tree = newleaf(L, TTrue);
       else {
         tree = newtree(L, 2 * (slen - 1) + 1);
-        fillseq(tree, TChar, slen, s);  /* sequence of 'slen' chars */
+        fillseq(tree, TChar, slen, s);
       }
       break;
     }
-    case LUA_TNUMBER: {
+    case 130: {
       int n = lua_tointeger(L, idx);
       tree = numtree(L, n);
       break;
     }
-    case LUA_TBOOLEAN: {
+    case 132: {
       tree = (lua_toboolean(L, idx) ? newleaf(L, TTrue) : newleaf(L, TFalse));
       break;
     }
-    case LUA_TTABLE: {
+    case 128: {
       tree = newgrammar(L, idx);
       break;
     }
-    case LUA_TFUNCTION: {
+    case 131: {
       tree = newtree(L, 2);
       tree->tag = TRunTime;
       tree->key = addtonewktable(L, 0, idx);
@@ -80,7 +80,7 @@ __attribute__((used)) static TTree *getpatt (lua_State *L, int idx, int *len) {
       return gettree(L, idx, len);
     }
   }
-  lua_replace(L, idx);  /* put new tree into 'idx' slot */
+  lua_replace(L, idx);
   if (len)
     *len = getsize(L, idx);
   return tree;

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct outqueuenode {int textlen; int* buffer; int* textp; scalar_t__ addr; } ;
 struct TYPE_3__ {struct outqueuenode* tail; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LIST_LINK_TAIL (TYPE_1__,struct outqueuenode*) ; 
- TYPE_1__ outqueue ; 
- int /*<<< orphan*/  outqueuelen ; 
- int peroutqueuenode ; 
- void* xmalloc (int) ; 
+
+ int LIST_LINK_TAIL (TYPE_1__,struct outqueuenode*) ;
+ TYPE_1__ outqueue ;
+ int outqueuelen ;
+ int peroutqueuenode ;
+ void* xmalloc (int) ;
 
 __attribute__((used)) static void queueoutchar(int c) {
   struct outqueuenode *entry;

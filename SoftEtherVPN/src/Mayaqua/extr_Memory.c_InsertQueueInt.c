@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT ;
-typedef  int /*<<< orphan*/  QUEUE ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * Clone (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  InsertQueue (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int UINT ;
+typedef int QUEUE ;
+
+
+ int * Clone (int *,int) ;
+ int InsertQueue (int *,int *) ;
 
 void InsertQueueInt(QUEUE *q, UINT value)
 {
-	UINT *p;
-	// Validate arguments
-	if (q == NULL)
-	{
-		return;
-	}
+ UINT *p;
 
-	p = Clone(&value, sizeof(UINT));
+ if (q == ((void*)0))
+ {
+  return;
+ }
 
-	InsertQueue(q, p);
+ p = Clone(&value, sizeof(UINT));
+
+ InsertQueue(q, p);
 }

@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int nouveau_fence_done (void*) ; 
+ int nouveau_fence_done (void*) ;
 
 __attribute__((used)) static bool
 nouveau_bo_fence_signalled(void *sync_obj)
 {
-	return nouveau_fence_done(sync_obj);
+ return nouveau_fence_done(sync_obj);
 }

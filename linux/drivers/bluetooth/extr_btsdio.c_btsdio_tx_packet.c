@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct sk_buff {int* data; int len; } ;
-struct btsdio_data {TYPE_2__* hdev; int /*<<< orphan*/  func; } ;
+struct btsdio_data {TYPE_2__* hdev; int func; } ;
 struct TYPE_3__ {int byte_tx; } ;
-struct TYPE_4__ {TYPE_1__ stat; int /*<<< orphan*/  name; } ;
+struct TYPE_4__ {TYPE_1__ stat; int name; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BT_DBG (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  REG_PC_WRT ; 
- int /*<<< orphan*/  REG_TDAT ; 
- int hci_skb_pkt_type (struct sk_buff*) ; 
- int /*<<< orphan*/  kfree_skb (struct sk_buff*) ; 
- int /*<<< orphan*/  sdio_writeb (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int sdio_writesb (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*,int) ; 
- int /*<<< orphan*/  skb_pull (struct sk_buff*,int) ; 
- int /*<<< orphan*/  skb_push (struct sk_buff*,int) ; 
+
+ int BT_DBG (char*,int ) ;
+ int REG_PC_WRT ;
+ int REG_TDAT ;
+ int hci_skb_pkt_type (struct sk_buff*) ;
+ int kfree_skb (struct sk_buff*) ;
+ int sdio_writeb (int ,int,int ,int *) ;
+ int sdio_writesb (int ,int ,int*,int) ;
+ int skb_pull (struct sk_buff*,int) ;
+ int skb_push (struct sk_buff*,int) ;
 
 __attribute__((used)) static int btsdio_tx_packet(struct btsdio_data *data, struct sk_buff *skb)
 {
-	int err;
+ int err;
 
-	BT_DBG("%s", data->hdev->name);
+ BT_DBG("%s", data->hdev->name);
 
-	/* Prepend Type-A header */
-	skb_push(skb, 4);
-	skb->data[0] = (skb->len & 0x0000ff);
-	skb->data[1] = (skb->len & 0x00ff00) >> 8;
-	skb->data[2] = (skb->len & 0xff0000) >> 16;
-	skb->data[3] = hci_skb_pkt_type(skb);
 
-	err = sdio_writesb(data->func, REG_TDAT, skb->data, skb->len);
-	if (err < 0) {
-		skb_pull(skb, 4);
-		sdio_writeb(data->func, 0x01, REG_PC_WRT, NULL);
-		return err;
-	}
+ skb_push(skb, 4);
+ skb->data[0] = (skb->len & 0x0000ff);
+ skb->data[1] = (skb->len & 0x00ff00) >> 8;
+ skb->data[2] = (skb->len & 0xff0000) >> 16;
+ skb->data[3] = hci_skb_pkt_type(skb);
 
-	data->hdev->stat.byte_tx += skb->len;
+ err = sdio_writesb(data->func, REG_TDAT, skb->data, skb->len);
+ if (err < 0) {
+  skb_pull(skb, 4);
+  sdio_writeb(data->func, 0x01, REG_PC_WRT, ((void*)0));
+  return err;
+ }
 
-	kfree_skb(skb);
+ data->hdev->stat.byte_tx += skb->len;
 
-	return 0;
+ kfree_skb(skb);
+
+ return 0;
 }

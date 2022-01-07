@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sd_bus ;
-typedef  int /*<<< orphan*/  pthread_t ;
 
-/* Variables and functions */
- int EXIT_FAILURE ; 
- int EXIT_SUCCESS ; 
- int /*<<< orphan*/  LOG_INFO ; 
- scalar_t__ PTR_TO_INT (void*) ; 
- int /*<<< orphan*/  client1 ; 
- int /*<<< orphan*/  client2 ; 
- int /*<<< orphan*/  log_info (char*) ; 
- int log_tests_skipped (char*) ; 
- int pthread_create (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int pthread_join (int /*<<< orphan*/ ,void**) ; 
- int server (int /*<<< orphan*/ *) ; 
- int server_init (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  test_setup_logging (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int sd_bus ;
+typedef int pthread_t ;
+
+
+ int EXIT_FAILURE ;
+ int EXIT_SUCCESS ;
+ int LOG_INFO ;
+ scalar_t__ PTR_TO_INT (void*) ;
+ int client1 ;
+ int client2 ;
+ int log_info (char*) ;
+ int log_tests_skipped (char*) ;
+ int pthread_create (int *,int *,int ,int *) ;
+ int pthread_join (int ,void**) ;
+ int server (int *) ;
+ int server_init (int **) ;
+ int test_setup_logging (int ) ;
 
 int main(int argc, char *argv[]) {
         pthread_t c1, c2;
@@ -42,11 +42,11 @@ int main(int argc, char *argv[]) {
 
         log_info("Initialized...");
 
-        r = pthread_create(&c1, NULL, client1, bus);
+        r = pthread_create(&c1, ((void*)0), client1, bus);
         if (r != 0)
                 return EXIT_FAILURE;
 
-        r = pthread_create(&c2, NULL, client2, bus);
+        r = pthread_create(&c2, ((void*)0), client2, bus);
         if (r != 0)
                 return EXIT_FAILURE;
 

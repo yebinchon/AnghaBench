@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
 struct TYPE_12__ {int dwFileAttributes; int nFileSizeLow; } ;
-typedef  TYPE_2__ WIN32_FIND_DATAW ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int USHORT ;
-struct TYPE_11__ {int Length; scalar_t__ Buffer; int /*<<< orphan*/  MaximumLength; } ;
+typedef TYPE_2__ WIN32_FIND_DATAW ;
+typedef int WCHAR ;
+typedef int USHORT ;
+struct TYPE_11__ {int Length; scalar_t__ Buffer; int MaximumLength; } ;
 struct TYPE_13__ {TYPE_1__ Str; } ;
-typedef  TYPE_3__ SDB_TMP_STR ;
-typedef  char* PWCHAR ;
-typedef  TYPE_3__* PSDB_TMP_STR ;
-typedef  scalar_t__ HANDLE ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef TYPE_3__ SDB_TMP_STR ;
+typedef char* PWCHAR ;
+typedef TYPE_3__* PSDB_TMP_STR ;
+typedef scalar_t__ HANDLE ;
+typedef int DWORD ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int FILE_ATTRIBUTE_DIRECTORY ; 
- int /*<<< orphan*/  FindClose (scalar_t__) ; 
- scalar_t__ FindFirstFileW (scalar_t__,TYPE_2__*) ; 
- scalar_t__ FindNextFileW (scalar_t__,TYPE_2__*) ; 
- scalar_t__ INVALID_HANDLE_VALUE ; 
- int /*<<< orphan*/  SIGN_MEDIA_FMT ; 
- int /*<<< orphan*/  SdbpFreeTempStr (TYPE_3__*) ; 
- int /*<<< orphan*/  SdbpInitTempStr (TYPE_3__*) ; 
- int /*<<< orphan*/  SdbpResizeTempStr (TYPE_3__*,int) ; 
- scalar_t__ SdbpStrlen (scalar_t__) ; 
- int /*<<< orphan*/  StringCbCopyNW (scalar_t__,int /*<<< orphan*/ ,scalar_t__,int) ; 
- int /*<<< orphan*/  StringCbPrintfW (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,scalar_t__) ; 
- int /*<<< orphan*/  TRUE ; 
- char* wcsrchr (scalar_t__,char) ; 
+
+ int FALSE ;
+ int FILE_ATTRIBUTE_DIRECTORY ;
+ int FindClose (scalar_t__) ;
+ scalar_t__ FindFirstFileW (scalar_t__,TYPE_2__*) ;
+ scalar_t__ FindNextFileW (scalar_t__,TYPE_2__*) ;
+ scalar_t__ INVALID_HANDLE_VALUE ;
+ int SIGN_MEDIA_FMT ;
+ int SdbpFreeTempStr (TYPE_3__*) ;
+ int SdbpInitTempStr (TYPE_3__*) ;
+ int SdbpResizeTempStr (TYPE_3__*,int) ;
+ scalar_t__ SdbpStrlen (scalar_t__) ;
+ int StringCbCopyNW (scalar_t__,int ,scalar_t__,int) ;
+ int StringCbPrintfW (scalar_t__,int ,int ,int,scalar_t__) ;
+ int TRUE ;
+ char* wcsrchr (scalar_t__,char) ;
 
 BOOL SdbpBuildSignMediaId(PSDB_TMP_STR LongPath)
 {

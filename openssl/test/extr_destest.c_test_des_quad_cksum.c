@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  DES_cblock ;
-typedef  int /*<<< orphan*/  DES_LONG ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DES_quad_cksum (scalar_t__,int /*<<< orphan*/ *,long,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TEST_cs_eq (int /*<<< orphan*/ ,int) ; 
- scalar_t__ cbc_data ; 
- scalar_t__ cbc_iv ; 
- scalar_t__ strlen (char*) ; 
+
+
+
+typedef int DES_cblock ;
+typedef int DES_LONG ;
+
+
+ int DES_quad_cksum (scalar_t__,int *,long,int,int *) ;
+ int TEST_cs_eq (int ,int) ;
+ scalar_t__ cbc_data ;
+ scalar_t__ cbc_iv ;
+ scalar_t__ strlen (char*) ;
 
 __attribute__((used)) static int test_des_quad_cksum(void)
 {

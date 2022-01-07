@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint16_t ;
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int uint16_t ;
 struct TYPE_10__ {TYPE_1__* priv; } ;
 struct TYPE_9__ {TYPE_3__* src; } ;
-struct TYPE_8__ {int depth; int depthx; int depthy; int nb_planes; int nb_planesx; int odepth; double** lut; int* var_values; int /*<<< orphan*/ * comp_expr_str; int /*<<< orphan*/ ** comp_expr; void* lut2; } ;
-typedef  TYPE_1__ LUT2Context ;
-typedef  TYPE_2__ AVFilterLink ;
-typedef  TYPE_3__ AVFilterContext ;
+struct TYPE_8__ {int depth; int depthx; int depthy; int nb_planes; int nb_planesx; int odepth; double** lut; int* var_values; int * comp_expr_str; int ** comp_expr; void* lut2; } ;
+typedef TYPE_1__ LUT2Context ;
+typedef TYPE_2__ AVFilterLink ;
+typedef TYPE_3__ AVFilterContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  ENOMEM ; 
- size_t VAR_X ; 
- size_t VAR_Y ; 
- double av_expr_eval (int /*<<< orphan*/ *,int*,TYPE_1__*) ; 
- int /*<<< orphan*/  av_expr_free (int /*<<< orphan*/ *) ; 
- int av_expr_parse (int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_3__*) ; 
- int /*<<< orphan*/  av_log (TYPE_3__*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int,...) ; 
- double* av_malloc_array (int,int) ; 
- scalar_t__ isnan (double) ; 
- void* lut2_16_16_16 ; 
- void* lut2_16_16_8 ; 
- void* lut2_16_8_16 ; 
- void* lut2_16_8_8 ; 
- void* lut2_8_16_16 ; 
- void* lut2_8_16_8 ; 
- void* lut2_8_8_16 ; 
- void* lut2_8_8_8 ; 
- int /*<<< orphan*/  var_names ; 
+
+ int AVERROR (int ) ;
+ int AV_LOG_ERROR ;
+ int EINVAL ;
+ int ENOMEM ;
+ size_t VAR_X ;
+ size_t VAR_Y ;
+ double av_expr_eval (int *,int*,TYPE_1__*) ;
+ int av_expr_free (int *) ;
+ int av_expr_parse (int **,int ,int ,int *,int *,int *,int *,int ,TYPE_3__*) ;
+ int av_log (TYPE_3__*,int ,char*,int ,int,...) ;
+ double* av_malloc_array (int,int) ;
+ scalar_t__ isnan (double) ;
+ void* lut2_16_16_16 ;
+ void* lut2_16_16_8 ;
+ void* lut2_16_8_16 ;
+ void* lut2_16_8_8 ;
+ void* lut2_8_16_16 ;
+ void* lut2_8_16_8 ;
+ void* lut2_8_8_16 ;
+ void* lut2_8_8_8 ;
+ int var_names ;
 
 __attribute__((used)) static int config_output(AVFilterLink *outlink)
 {
@@ -83,11 +83,11 @@ __attribute__((used)) static int config_output(AVFilterLink *outlink)
         double res;
         int x, y;
 
-        /* create the parsed expression */
+
         av_expr_free(s->comp_expr[p]);
-        s->comp_expr[p] = NULL;
+        s->comp_expr[p] = ((void*)0);
         ret = av_expr_parse(&s->comp_expr[p], s->comp_expr_str[p],
-                            var_names, NULL, NULL, NULL, NULL, 0, ctx);
+                            var_names, ((void*)0), ((void*)0), ((void*)0), ((void*)0), 0, ctx);
         if (ret < 0) {
             av_log(ctx, AV_LOG_ERROR,
                    "Error when parsing the expression '%s' for the component %d.\n",
@@ -95,7 +95,7 @@ __attribute__((used)) static int config_output(AVFilterLink *outlink)
             return AVERROR(EINVAL);
         }
 
-        /* compute the lut */
+
         for (y = 0; y < (1 << s->depthy); y++) {
             s->var_values[VAR_Y] = y;
             for (x = 0; x < (1 << s->depthx); x++) {

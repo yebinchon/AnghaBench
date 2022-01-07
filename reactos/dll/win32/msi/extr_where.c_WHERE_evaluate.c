@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  expr; int /*<<< orphan*/  uval; int /*<<< orphan*/  column; } ;
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int expr; int uval; int column; } ;
 struct expr {int type; TYPE_1__ u; } ;
-typedef  int /*<<< orphan*/  UINT ;
-struct TYPE_8__ {int /*<<< orphan*/  rec_index; } ;
-typedef  TYPE_2__ MSIWHEREVIEW ;
-typedef  int /*<<< orphan*/  MSIRECORD ;
-typedef  int /*<<< orphan*/  INT ;
+typedef int UINT ;
+struct TYPE_8__ {int rec_index; } ;
+typedef TYPE_2__ MSIWHEREVIEW ;
+typedef int MSIRECORD ;
+typedef int INT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*) ; 
- int /*<<< orphan*/  ERROR_FUNCTION_FAILED ; 
- int /*<<< orphan*/  ERROR_SUCCESS ; 
-#define  EXPR_COL_NUMBER 134 
-#define  EXPR_COL_NUMBER32 133 
-#define  EXPR_COMPLEX 132 
-#define  EXPR_STRCMP 131 
-#define  EXPR_UNARY 130 
-#define  EXPR_UVAL 129 
-#define  EXPR_WILDCARD 128 
- int /*<<< orphan*/  INT_evaluate_binary (TYPE_2__*,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  INT_evaluate_unary (TYPE_2__*,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  MSI_RecordGetInteger (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  STRCMP_Evaluate (TYPE_2__*,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  expr_fetch_value (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
+
+ int ERR (char*) ;
+ int ERROR_FUNCTION_FAILED ;
+ int ERROR_SUCCESS ;
+
+
+
+
+
+
+
+ int INT_evaluate_binary (TYPE_2__*,int const*,int *,int *,int *) ;
+ int INT_evaluate_unary (TYPE_2__*,int const*,int *,int *,int *) ;
+ int MSI_RecordGetInteger (int *,int ) ;
+ int STRCMP_Evaluate (TYPE_2__*,int const*,int *,int *,int *) ;
+ int TRUE ;
+ int expr_fetch_value (int *,int const*,int *) ;
 
 __attribute__((used)) static UINT WHERE_evaluate( MSIWHEREVIEW *wv, const UINT rows[],
                             struct expr *cond, INT *val, MSIRECORD *record )
@@ -51,34 +51,34 @@ __attribute__((used)) static UINT WHERE_evaluate( MSIWHEREVIEW *wv, const UINT r
 
     switch( cond->type )
     {
-    case EXPR_COL_NUMBER:
+    case 134:
         r = expr_fetch_value(&cond->u.column, rows, &tval);
         if( r != ERROR_SUCCESS )
             return r;
         *val = tval - 0x8000;
         return ERROR_SUCCESS;
 
-    case EXPR_COL_NUMBER32:
+    case 133:
         r = expr_fetch_value(&cond->u.column, rows, &tval);
         if( r != ERROR_SUCCESS )
             return r;
         *val = tval - 0x80000000;
         return r;
 
-    case EXPR_UVAL:
+    case 129:
         *val = cond->u.uval;
         return ERROR_SUCCESS;
 
-    case EXPR_COMPLEX:
+    case 132:
         return INT_evaluate_binary(wv, rows, &cond->u.expr, val, record);
 
-    case EXPR_UNARY:
+    case 130:
         return INT_evaluate_unary( wv, rows, &cond->u.expr, val, record );
 
-    case EXPR_STRCMP:
+    case 131:
         return STRCMP_Evaluate( wv, rows, &cond->u.expr, val, record );
 
-    case EXPR_WILDCARD:
+    case 128:
         *val = MSI_RecordGetInteger( record, ++wv->rec_index );
         return ERROR_SUCCESS;
 

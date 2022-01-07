@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct in_addr {int dummy; } ;
-struct hostent {scalar_t__ h_addrtype; int h_length; scalar_t__ h_addr; int /*<<< orphan*/  h_addr_list; } ;
+struct hostent {scalar_t__ h_addrtype; int h_length; scalar_t__ h_addr; int h_addr_list; } ;
 struct cluster_server {char* hostname; int port; struct in_addr addr; scalar_t__ id; } ;
 
-/* Variables and functions */
- scalar_t__ AF_INET ; 
- struct cluster_server* CS ; 
- scalar_t__ CSN ; 
- scalar_t__ MAX_CLUSTER_SERVERS ; 
- int MAX_CONFIG_SIZE ; 
- char* cfg_cur ; 
- scalar_t__* cfg_end ; 
- scalar_t__ cfg_lno ; 
- scalar_t__ cfg_skipspc () ; 
- char cfg_skspc () ; 
- void* cfg_start ; 
- void* config_buff ; 
- int config_bytes ; 
- char* config_filename ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/ * fd ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- struct hostent* gethostbyname (char*) ; 
- char* inet_ntoa (struct in_addr) ; 
- int /*<<< orphan*/  memset (struct cluster_server*,int /*<<< orphan*/ ,int) ; 
- int read (int /*<<< orphan*/ ,void*,int) ; 
- int /*<<< orphan*/  stderr ; 
- int strtol (char*,char**,int) ; 
- int /*<<< orphan*/  syntax (char*) ; 
- scalar_t__ verbosity ; 
+
+ scalar_t__ AF_INET ;
+ struct cluster_server* CS ;
+ scalar_t__ CSN ;
+ scalar_t__ MAX_CLUSTER_SERVERS ;
+ int MAX_CONFIG_SIZE ;
+ char* cfg_cur ;
+ scalar_t__* cfg_end ;
+ scalar_t__ cfg_lno ;
+ scalar_t__ cfg_skipspc () ;
+ char cfg_skspc () ;
+ void* cfg_start ;
+ void* config_buff ;
+ int config_bytes ;
+ char* config_filename ;
+ int exit (int) ;
+ int * fd ;
+ int fprintf (int ,char*,...) ;
+ struct hostent* gethostbyname (char*) ;
+ char* inet_ntoa (struct in_addr) ;
+ int memset (struct cluster_server*,int ,int) ;
+ int read (int ,void*,int) ;
+ int stderr ;
+ int strtol (char*,char**,int) ;
+ int syntax (char*) ;
+ scalar_t__ verbosity ;
 
 void parse_config (void) {
   int r, c;

@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint64_t ;
-typedef  scalar_t__ uint16_t ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint64_t ;
+typedef scalar_t__ uint16_t ;
 struct TYPE_5__ {TYPE_1__* c; } ;
-struct TYPE_4__ {int /*<<< orphan*/  self_secret_key; } ;
-typedef  TYPE_2__ Onion_Client ;
-typedef  int /*<<< orphan*/  IP_Port ;
+struct TYPE_4__ {int self_secret_key; } ;
+typedef TYPE_2__ Onion_Client ;
+typedef int IP_Port ;
 
-/* Variables and functions */
- scalar_t__ DATA_IN_RESPONSE_MIN_SIZE ; 
- scalar_t__ DHTPK_DATA_MAX_LENGTH ; 
- scalar_t__ DHTPK_DATA_MIN_LENGTH ; 
- scalar_t__ crypto_box_NONCEBYTES ; 
- int crypto_box_PUBLICKEYBYTES ; 
- int decrypt_data (int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,scalar_t__,int /*<<< orphan*/ *) ; 
- int handle_dhtpk_announce (TYPE_2__*,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int) ; 
- scalar_t__ public_key_cmp (int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
+
+ scalar_t__ DATA_IN_RESPONSE_MIN_SIZE ;
+ scalar_t__ DHTPK_DATA_MAX_LENGTH ;
+ scalar_t__ DHTPK_DATA_MIN_LENGTH ;
+ scalar_t__ crypto_box_NONCEBYTES ;
+ int crypto_box_PUBLICKEYBYTES ;
+ int decrypt_data (int const*,int ,int const*,int const*,scalar_t__,int *) ;
+ int handle_dhtpk_announce (TYPE_2__*,int const*,int *,int) ;
+ scalar_t__ public_key_cmp (int const*,int *) ;
 
 __attribute__((used)) static int handle_dht_dhtpk(void *object, IP_Port source, const uint8_t *source_pubkey, const uint8_t *packet,
                             uint16_t length)

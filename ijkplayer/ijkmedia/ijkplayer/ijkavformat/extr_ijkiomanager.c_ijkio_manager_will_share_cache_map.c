@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {TYPE_1__* ijkio_app_ctx; int /*<<< orphan*/  cache_map_path; } ;
-struct TYPE_4__ {int shared; scalar_t__ fd; int /*<<< orphan*/  mutex; int /*<<< orphan*/  cache_info_map; } ;
-typedef  TYPE_2__ IjkIOManagerContext ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_LOG_INFO ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  fsync (scalar_t__) ; 
- int /*<<< orphan*/  ijk_map_traversal_handle (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ijkio_manager_save_tree_to_file ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strlen (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_5__ {TYPE_1__* ijkio_app_ctx; int cache_map_path; } ;
+struct TYPE_4__ {int shared; scalar_t__ fd; int mutex; int cache_info_map; } ;
+typedef TYPE_2__ IjkIOManagerContext ;
+typedef int FILE ;
+
+
+ int AV_LOG_INFO ;
+ int av_log (int *,int ,char*) ;
+ int fclose (int *) ;
+ int * fopen (int ,char*) ;
+ int fsync (scalar_t__) ;
+ int ijk_map_traversal_handle (int ,int *,int ) ;
+ int ijkio_manager_save_tree_to_file ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
+ int strlen (int ) ;
 
 void ijkio_manager_will_share_cache_map(IjkIOManagerContext *h) {
-    av_log(NULL, AV_LOG_INFO, "will share cache\n");
+    av_log(((void*)0), AV_LOG_INFO, "will share cache\n");
     if (!h || !h->ijkio_app_ctx || !strlen(h->cache_map_path)) {
         return;
     }

@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  conversion_obstack ; 
- int conversion_obstack_initialized ; 
- int /*<<< orphan*/  gcc_obstack_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memset (void*,int /*<<< orphan*/ ,size_t) ; 
- void* obstack_alloc (int /*<<< orphan*/ *,size_t) ; 
+ int conversion_obstack ;
+ int conversion_obstack_initialized ;
+ int gcc_obstack_init (int *) ;
+ int memset (void*,int ,size_t) ;
+ void* obstack_alloc (int *,size_t) ;
 
 __attribute__((used)) static void *
 conversion_obstack_alloc (size_t n)
@@ -25,7 +17,7 @@ conversion_obstack_alloc (size_t n)
   if (!conversion_obstack_initialized)
     {
       gcc_obstack_init (&conversion_obstack);
-      conversion_obstack_initialized = true;
+      conversion_obstack_initialized = 1;
     }
   p = obstack_alloc (&conversion_obstack, n);
   memset (p, 0, n);

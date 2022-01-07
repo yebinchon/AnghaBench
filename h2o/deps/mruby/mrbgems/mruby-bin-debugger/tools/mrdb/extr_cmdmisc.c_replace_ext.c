@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mrb_state ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memset (char*,char,size_t) ; 
- scalar_t__ mrb_malloc (int /*<<< orphan*/ *,size_t) ; 
- int /*<<< orphan*/  strcat (char*,char const*) ; 
- int /*<<< orphan*/ * strchr (char const*,char) ; 
- size_t strlen (char const*) ; 
- int /*<<< orphan*/  strncpy (char*,char const*,size_t) ; 
- char* strrchr (char const*,char) ; 
+
+
+
+typedef int mrb_state ;
+
+
+ int memset (char*,char,size_t) ;
+ scalar_t__ mrb_malloc (int *,size_t) ;
+ int strcat (char*,char const*) ;
+ int * strchr (char const*,char) ;
+ size_t strlen (char const*) ;
+ int strncpy (char*,char const*,size_t) ;
+ char* strrchr (char const*,char) ;
 
 char*
 replace_ext(mrb_state *mrb, const char *filename, const char *ext)
@@ -28,11 +28,11 @@ replace_ext(mrb_state *mrb, const char *filename, const char *ext)
   const char *p;
   char *s;
 
-  if (filename == NULL) {
-    return NULL;
+  if (filename == ((void*)0)) {
+    return ((void*)0);
   }
 
-  if ((p = strrchr(filename, '.')) != NULL && strchr(p, '/') == NULL) {
+  if ((p = strrchr(filename, '.')) != ((void*)0) && strchr(p, '/') == ((void*)0)) {
     len = p - filename;
   }
   else {

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct bfa_fcs_fabric_s {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BFA_FCS_FABRIC_SM_LOGOCOMP ; 
- int /*<<< orphan*/  bfa_sm_send_event (struct bfa_fcs_fabric_s*,int /*<<< orphan*/ ) ; 
+
+ int BFA_FCS_FABRIC_SM_LOGOCOMP ;
+ int bfa_sm_send_event (struct bfa_fcs_fabric_s*,int ) ;
 
 void
 bfa_cb_lps_flogo_comp(void *bfad, void *uarg)
 {
-	struct bfa_fcs_fabric_s *fabric = uarg;
-	bfa_sm_send_event(fabric, BFA_FCS_FABRIC_SM_LOGOCOMP);
+ struct bfa_fcs_fabric_s *fabric = uarg;
+ bfa_sm_send_event(fabric, BFA_FCS_FABRIC_SM_LOGOCOMP);
 }

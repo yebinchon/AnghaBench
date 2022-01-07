@@ -1,30 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
 
-/* Variables and functions */
- int inMouse ; 
- int /*<<< orphan*/  mousePress ; 
- int /*<<< orphan*/  mousekey_on (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mousekey_send () ; 
+
+
+
+typedef int uint8_t ;
+
+
+ int inMouse ;
+ int mousePress ;
+ int mousekey_on (int ) ;
+ int mousekey_send () ;
 
 void CLICK_MOUSE(uint8_t kc) {
-#ifdef MOUSEKEY_ENABLE
-	mousekey_on(kc);
-	mousekey_send();
-
-	// Store state for later use
-	inMouse = true;
-	mousePress = kc;
-#endif
 }

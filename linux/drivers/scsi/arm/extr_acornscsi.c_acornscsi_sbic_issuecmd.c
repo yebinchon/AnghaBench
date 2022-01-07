@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  AS_Host ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASR_CIP ; 
- int /*<<< orphan*/  SBIC_CMND ; 
- scalar_t__ acornscsi_sbic_wait (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,char*) ; 
- int /*<<< orphan*/  sbic_arm_write (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int AS_Host ;
+
+
+ int ASR_CIP ;
+ int SBIC_CMND ;
+ scalar_t__ acornscsi_sbic_wait (int *,int ,int ,int,char*) ;
+ int sbic_arm_write (int *,int ,int) ;
 
 __attribute__((used)) static
 int acornscsi_sbic_issuecmd(AS_Host *host, int command)
 {
     if (acornscsi_sbic_wait(host, ASR_CIP, 0, 1000, "issuing command"))
-	return -1;
+ return -1;
 
     sbic_arm_write(host, SBIC_CMND, command);
 

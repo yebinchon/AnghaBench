@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int slice_type; } ;
-typedef  TYPE_1__ H264SliceContext ;
+typedef TYPE_1__ H264SliceContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
-#define  AV_PICTURE_TYPE_B 132 
-#define  AV_PICTURE_TYPE_I 131 
-#define  AV_PICTURE_TYPE_P 130 
-#define  AV_PICTURE_TYPE_SI 129 
-#define  AV_PICTURE_TYPE_SP 128 
+
+ int AVERROR_INVALIDDATA ;
+
+
+
+
+
 
 int ff_h264_get_slice_type(const H264SliceContext *sl)
 {
     switch (sl->slice_type) {
-    case AV_PICTURE_TYPE_P:
+    case 130:
         return 0;
-    case AV_PICTURE_TYPE_B:
+    case 132:
         return 1;
-    case AV_PICTURE_TYPE_I:
+    case 131:
         return 2;
-    case AV_PICTURE_TYPE_SP:
+    case 128:
         return 3;
-    case AV_PICTURE_TYPE_SI:
+    case 129:
         return 4;
     default:
         return AVERROR_INVALIDDATA;

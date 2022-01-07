@@ -1,97 +1,97 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct sdio_func_tuple {struct sdio_func_tuple* next; int /*<<< orphan*/  size; int /*<<< orphan*/  code; } ;
-struct sdio_func {int /*<<< orphan*/  dev; int /*<<< orphan*/  class; struct sdio_func_tuple* tuples; } ;
+
+
+
+
+struct sdio_func_tuple {struct sdio_func_tuple* next; int size; int code; } ;
+struct sdio_func {int dev; int class; struct sdio_func_tuple* tuples; } ;
 struct sdio_device_id {int dummy; } ;
-struct hci_dev {int /*<<< orphan*/  owner; int /*<<< orphan*/  destruct; int /*<<< orphan*/  send; int /*<<< orphan*/  flush; int /*<<< orphan*/  close; int /*<<< orphan*/  open; struct btsdio_data* driver_data; int /*<<< orphan*/  type; } ;
-struct btsdio_data {struct hci_dev* hdev; int /*<<< orphan*/  txq; int /*<<< orphan*/  work; struct sdio_func* func; } ;
+struct hci_dev {int owner; int destruct; int send; int flush; int close; int open; struct btsdio_data* driver_data; int type; } ;
+struct btsdio_data {struct hci_dev* hdev; int txq; int work; struct sdio_func* func; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BT_DBG (char*,struct sdio_func*,int /*<<< orphan*/ ,...) ; 
- int ENOMEM ; 
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  HCI_SDIO ; 
- int /*<<< orphan*/  INIT_WORK (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SET_HCIDEV_DEV (struct hci_dev*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  THIS_MODULE ; 
- int /*<<< orphan*/  btsdio_close ; 
- int /*<<< orphan*/  btsdio_destruct ; 
- int /*<<< orphan*/  btsdio_flush ; 
- int /*<<< orphan*/  btsdio_open ; 
- int /*<<< orphan*/  btsdio_send_frame ; 
- int /*<<< orphan*/  btsdio_work ; 
- struct hci_dev* hci_alloc_dev () ; 
- int /*<<< orphan*/  hci_free_dev (struct hci_dev*) ; 
- int hci_register_dev (struct hci_dev*) ; 
- int /*<<< orphan*/  kfree (struct btsdio_data*) ; 
- struct btsdio_data* kzalloc (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sdio_set_drvdata (struct sdio_func*,struct btsdio_data*) ; 
- int /*<<< orphan*/  skb_queue_head_init (int /*<<< orphan*/ *) ; 
+
+ int BT_DBG (char*,struct sdio_func*,int ,...) ;
+ int ENOMEM ;
+ int GFP_KERNEL ;
+ int HCI_SDIO ;
+ int INIT_WORK (int *,int ) ;
+ int SET_HCIDEV_DEV (struct hci_dev*,int *) ;
+ int THIS_MODULE ;
+ int btsdio_close ;
+ int btsdio_destruct ;
+ int btsdio_flush ;
+ int btsdio_open ;
+ int btsdio_send_frame ;
+ int btsdio_work ;
+ struct hci_dev* hci_alloc_dev () ;
+ int hci_free_dev (struct hci_dev*) ;
+ int hci_register_dev (struct hci_dev*) ;
+ int kfree (struct btsdio_data*) ;
+ struct btsdio_data* kzalloc (int,int ) ;
+ int sdio_set_drvdata (struct sdio_func*,struct btsdio_data*) ;
+ int skb_queue_head_init (int *) ;
 
 __attribute__((used)) static int btsdio_probe(struct sdio_func *func,
-				const struct sdio_device_id *id)
+    const struct sdio_device_id *id)
 {
-	struct btsdio_data *data;
-	struct hci_dev *hdev;
-	struct sdio_func_tuple *tuple = func->tuples;
-	int err;
+ struct btsdio_data *data;
+ struct hci_dev *hdev;
+ struct sdio_func_tuple *tuple = func->tuples;
+ int err;
 
-	BT_DBG("func %p id %p class 0x%04x", func, id, func->class);
+ BT_DBG("func %p id %p class 0x%04x", func, id, func->class);
 
-	while (tuple) {
-		BT_DBG("code 0x%x size %d", tuple->code, tuple->size);
-		tuple = tuple->next;
-	}
+ while (tuple) {
+  BT_DBG("code 0x%x size %d", tuple->code, tuple->size);
+  tuple = tuple->next;
+ }
 
-	data = kzalloc(sizeof(*data), GFP_KERNEL);
-	if (!data)
-		return -ENOMEM;
+ data = kzalloc(sizeof(*data), GFP_KERNEL);
+ if (!data)
+  return -ENOMEM;
 
-	data->func = func;
+ data->func = func;
 
-	INIT_WORK(&data->work, btsdio_work);
+ INIT_WORK(&data->work, btsdio_work);
 
-	skb_queue_head_init(&data->txq);
+ skb_queue_head_init(&data->txq);
 
-	hdev = hci_alloc_dev();
-	if (!hdev) {
-		kfree(data);
-		return -ENOMEM;
-	}
+ hdev = hci_alloc_dev();
+ if (!hdev) {
+  kfree(data);
+  return -ENOMEM;
+ }
 
-	hdev->type = HCI_SDIO;
-	hdev->driver_data = data;
+ hdev->type = HCI_SDIO;
+ hdev->driver_data = data;
 
-	data->hdev = hdev;
+ data->hdev = hdev;
 
-	SET_HCIDEV_DEV(hdev, &func->dev);
+ SET_HCIDEV_DEV(hdev, &func->dev);
 
-	hdev->open     = btsdio_open;
-	hdev->close    = btsdio_close;
-	hdev->flush    = btsdio_flush;
-	hdev->send     = btsdio_send_frame;
-	hdev->destruct = btsdio_destruct;
+ hdev->open = btsdio_open;
+ hdev->close = btsdio_close;
+ hdev->flush = btsdio_flush;
+ hdev->send = btsdio_send_frame;
+ hdev->destruct = btsdio_destruct;
 
-	hdev->owner = THIS_MODULE;
+ hdev->owner = THIS_MODULE;
 
-	err = hci_register_dev(hdev);
-	if (err < 0) {
-		hci_free_dev(hdev);
-		kfree(data);
-		return err;
-	}
+ err = hci_register_dev(hdev);
+ if (err < 0) {
+  hci_free_dev(hdev);
+  kfree(data);
+  return err;
+ }
 
-	sdio_set_drvdata(func, data);
+ sdio_set_drvdata(func, data);
 
-	return 0;
+ return 0;
 }

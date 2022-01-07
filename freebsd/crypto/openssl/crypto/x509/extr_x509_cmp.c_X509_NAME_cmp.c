@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int canon_enclen; int /*<<< orphan*/  canon_enc; scalar_t__ modified; } ;
-typedef  TYPE_1__ X509_NAME ;
 
-/* Variables and functions */
- int i2d_X509_NAME (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int memcmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int canon_enclen; int canon_enc; scalar_t__ modified; } ;
+typedef TYPE_1__ X509_NAME ;
+
+
+ int i2d_X509_NAME (TYPE_1__*,int *) ;
+ int memcmp (int ,int ,scalar_t__) ;
 
 int X509_NAME_cmp(const X509_NAME *a, const X509_NAME *b)
 {
     int ret;
 
-    /* Ensure canonical encoding is present and up to date */
+
 
     if (!a->canon_enc || a->modified) {
-        ret = i2d_X509_NAME((X509_NAME *)a, NULL);
+        ret = i2d_X509_NAME((X509_NAME *)a, ((void*)0));
         if (ret < 0)
             return -2;
     }
 
     if (!b->canon_enc || b->modified) {
-        ret = i2d_X509_NAME((X509_NAME *)b, NULL);
+        ret = i2d_X509_NAME((X509_NAME *)b, ((void*)0));
         if (ret < 0)
             return -2;
     }

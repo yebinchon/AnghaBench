@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ UINT ;
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef scalar_t__ UINT ;
 struct TYPE_8__ {size_t table_index; scalar_t__ row_count; } ;
-struct TYPE_7__ {int /*<<< orphan*/  cond; scalar_t__ rec_index; } ;
-typedef  TYPE_1__ MSIWHEREVIEW ;
-typedef  int /*<<< orphan*/  MSIRECORD ;
-typedef  TYPE_2__ JOINTABLE ;
-typedef  scalar_t__ INT ;
+struct TYPE_7__ {int cond; scalar_t__ rec_index; } ;
+typedef TYPE_1__ MSIWHEREVIEW ;
+typedef int MSIRECORD ;
+typedef TYPE_2__ JOINTABLE ;
+typedef scalar_t__ INT ;
 
-/* Variables and functions */
- scalar_t__ ERROR_CONTINUE ; 
- scalar_t__ ERROR_FUNCTION_FAILED ; 
- scalar_t__ ERROR_SUCCESS ; 
- scalar_t__ INVALID_ROW_INDEX ; 
- scalar_t__ WHERE_evaluate (TYPE_1__*,scalar_t__*,int /*<<< orphan*/ ,scalar_t__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  add_row (TYPE_1__*,scalar_t__*) ; 
+
+ scalar_t__ ERROR_CONTINUE ;
+ scalar_t__ ERROR_FUNCTION_FAILED ;
+ scalar_t__ ERROR_SUCCESS ;
+ scalar_t__ INVALID_ROW_INDEX ;
+ scalar_t__ WHERE_evaluate (TYPE_1__*,scalar_t__*,int ,scalar_t__*,int *) ;
+ int add_row (TYPE_1__*,scalar_t__*) ;
 
 __attribute__((used)) static UINT check_condition( MSIWHEREVIEW *wv, MSIRECORD *record, JOINTABLE **tables,
                              UINT table_rows[] )

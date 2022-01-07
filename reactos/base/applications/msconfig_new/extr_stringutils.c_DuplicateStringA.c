@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * LPSTR ;
-typedef  int /*<<< orphan*/  LPCSTR ;
-typedef  int /*<<< orphan*/  CHAR ;
 
-/* Variables and functions */
- scalar_t__ MemAlloc (int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/  StringCchCopyA (int /*<<< orphan*/ *,size_t,int /*<<< orphan*/ ) ; 
- int strlen (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int * LPSTR ;
+typedef int LPCSTR ;
+typedef int CHAR ;
+
+
+ scalar_t__ MemAlloc (int ,size_t) ;
+ int StringCchCopyA (int *,size_t,int ) ;
+ int strlen (int ) ;
 
 LPSTR DuplicateStringA(LPCSTR str)
 {
     LPSTR dupStr;
     size_t strSizePlusNull;
 
-    if (!str) return NULL;
+    if (!str) return ((void*)0);
 
     strSizePlusNull = strlen(str) + 1;
 
     dupStr = (LPSTR)MemAlloc(0, strSizePlusNull * sizeof(CHAR));
-    if (!dupStr) return NULL;
+    if (!dupStr) return ((void*)0);
 
     StringCchCopyA(dupStr, strSizePlusNull, str);
 

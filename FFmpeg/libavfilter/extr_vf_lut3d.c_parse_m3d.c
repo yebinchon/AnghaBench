@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct rgbvec {float r; float g; float b; } ;
-typedef  int /*<<< orphan*/  line ;
+typedef int line ;
 struct TYPE_7__ {TYPE_1__* priv; } ;
 struct TYPE_6__ {int lutsize; struct rgbvec* lut; } ;
-typedef  TYPE_1__ LUT3DContext ;
-typedef  int /*<<< orphan*/  FILE ;
-typedef  TYPE_2__ AVFilterContext ;
+typedef TYPE_1__ LUT3DContext ;
+typedef int FILE ;
+typedef TYPE_2__ AVFilterContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int MAX_LEVEL ; 
- int MAX_LINE_SIZE ; 
- int /*<<< orphan*/  NEXT_LINE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SET_COLOR (int) ; 
- int allocate_3dlut (TYPE_2__*,int) ; 
- int /*<<< orphan*/  av_log (TYPE_2__*,int /*<<< orphan*/ ,char*,...) ; 
- int av_sscanf (char*,char*,float*,float*,float*) ; 
- scalar_t__ fgets (char*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strncmp (char*,char*,int) ; 
- int strtol (char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ int MAX_LEVEL ;
+ int MAX_LINE_SIZE ;
+ int NEXT_LINE (int ) ;
+ int SET_COLOR (int) ;
+ int allocate_3dlut (TYPE_2__*,int) ;
+ int av_log (TYPE_2__*,int ,char*,...) ;
+ int av_sscanf (char*,char*,float*,float*,float*) ;
+ scalar_t__ fgets (char*,int,int *) ;
+ int strncmp (char*,char*,int) ;
+ int strtol (char*,int *,int ) ;
 
 __attribute__((used)) static int parse_m3d(AVFilterContext *ctx, FILE *f)
 {
@@ -44,24 +44,13 @@ __attribute__((used)) static int parse_m3d(AVFilterContext *ctx, FILE *f)
     uint8_t rgb_map[3] = {0, 1, 2};
 
     while (fgets(line, sizeof(line), f)) {
-        if      (!strncmp(line, "in",  2)) in  = strtol(line + 2, NULL, 0);
-        else if (!strncmp(line, "out", 3)) out = strtol(line + 3, NULL, 0);
+        if (!strncmp(line, "in", 2)) in = strtol(line + 2, ((void*)0), 0);
+        else if (!strncmp(line, "out", 3)) out = strtol(line + 3, ((void*)0), 0);
         else if (!strncmp(line, "values", 6)) {
             const char *p = line + 6;
-#define SET_COLOR(id) do {                  \
-    while (av_isspace(*p))                  \
-        p++;                                \
-    switch (*p) {                           \
-    case 'r': rgb_map[id] = 0; break;       \
-    case 'g': rgb_map[id] = 1; break;       \
-    case 'b': rgb_map[id] = 2; break;       \
-    }                                       \
-    while (*p && !av_isspace(*p))           \
-        p++;                                \
-} while (0)
-            SET_COLOR(0);
-            SET_COLOR(1);
-            SET_COLOR(2);
+            do { while (av_isspace(*p)) p++; switch (*p) { case 'r': rgb_map[0] = 0; break; case 'g': rgb_map[0] = 1; break; case 'b': rgb_map[0] = 2; break; } while (*p && !av_isspace(*p)) p++; } while (0);
+            do { while (av_isspace(*p)) p++; switch (*p) { case 'r': rgb_map[1] = 0; break; case 'g': rgb_map[1] = 1; break; case 'b': rgb_map[1] = 2; break; } while (*p && !av_isspace(*p)) p++; } while (0);
+            do { while (av_isspace(*p)) p++; switch (*p) { case 'r': rgb_map[2] = 0; break; case 'g': rgb_map[2] = 1; break; case 'b': rgb_map[2] = 2; break; } while (*p && !av_isspace(*p)) p++; } while (0);
             break;
         }
     }
@@ -71,7 +60,7 @@ __attribute__((used)) static int parse_m3d(AVFilterContext *ctx, FILE *f)
         return AVERROR_INVALIDDATA;
     }
     if (in < 2 || out < 2 ||
-        in  > MAX_LEVEL*MAX_LEVEL*MAX_LEVEL ||
+        in > MAX_LEVEL*MAX_LEVEL*MAX_LEVEL ||
         out > MAX_LEVEL*MAX_LEVEL*MAX_LEVEL) {
         av_log(ctx, AV_LOG_ERROR, "invalid in (%d) or out (%d)\n", in, out);
         return AVERROR_INVALIDDATA;

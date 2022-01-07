@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
+
+
+
+
+typedef int uint8_t ;
 struct SwsContext {int dummy; } ;
-typedef  enum AVPixelFormat { ____Placeholder_AVPixelFormat } AVPixelFormat ;
+typedef enum AVPixelFormat { ____Placeholder_AVPixelFormat } AVPixelFormat ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  av_get_pix_fmt_name (int) ; 
- int av_image_alloc (int /*<<< orphan*/ **,int*,int,int,int,int) ; 
- int /*<<< orphan*/  av_log (void*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  sws_freeContext (struct SwsContext*) ; 
- struct SwsContext* sws_getContext (int,int,int,int,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sws_scale (struct SwsContext*,int /*<<< orphan*/  const* const*,int*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ **,int*) ; 
+
+ int AVERROR (int ) ;
+ int AV_LOG_ERROR ;
+ int EINVAL ;
+ int av_get_pix_fmt_name (int) ;
+ int av_image_alloc (int **,int*,int,int,int,int) ;
+ int av_log (void*,int ,char*,int ,int,int,int ,int,int) ;
+ int sws_freeContext (struct SwsContext*) ;
+ struct SwsContext* sws_getContext (int,int,int,int,int,int,int ,int *,int *,int *) ;
+ int sws_scale (struct SwsContext*,int const* const*,int*,int ,int,int **,int*) ;
 
 int ff_scale_image(uint8_t *dst_data[4], int dst_linesize[4],
                    int dst_w, int dst_h, enum AVPixelFormat dst_pix_fmt,
@@ -34,7 +34,7 @@ int ff_scale_image(uint8_t *dst_data[4], int dst_linesize[4],
     int ret;
     struct SwsContext *sws_ctx = sws_getContext(src_w, src_h, src_pix_fmt,
                                                 dst_w, dst_h, dst_pix_fmt,
-                                                0, NULL, NULL, NULL);
+                                                0, ((void*)0), ((void*)0), ((void*)0));
     if (!sws_ctx) {
         av_log(log_ctx, AV_LOG_ERROR,
                "Impossible to create scale context for the conversion "

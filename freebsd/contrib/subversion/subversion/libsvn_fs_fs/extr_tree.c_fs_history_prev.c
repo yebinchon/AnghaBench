@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_fs_t ;
+
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int svn_fs_t ;
 struct TYPE_8__ {TYPE_2__* fsap_data; } ;
-typedef  TYPE_1__ svn_fs_history_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-struct TYPE_9__ {scalar_t__ revision; scalar_t__ is_interesting; int /*<<< orphan*/  path; int /*<<< orphan*/ * fs; } ;
-typedef  TYPE_2__ fs_history_data_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+typedef TYPE_1__ svn_fs_history_t ;
+typedef int svn_error_t ;
+typedef int svn_boolean_t ;
+struct TYPE_9__ {scalar_t__ revision; scalar_t__ is_interesting; int path; int * fs; } ;
+typedef TYPE_2__ fs_history_data_t ;
+typedef int apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_INVALID_REVNUM ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- TYPE_1__* assemble_history (int /*<<< orphan*/ *,char*,scalar_t__,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  history_prev (TYPE_1__**,TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ strcmp (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  svn_pool_clear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_pool_create (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_pool_destroy (int /*<<< orphan*/ *) ; 
+
+ int SVN_ERR (int ) ;
+ int SVN_INVALID_REVNUM ;
+ int * SVN_NO_ERROR ;
+ TYPE_1__* assemble_history (int *,char*,scalar_t__,int,int *,int ,int ,int *,int *) ;
+ int history_prev (TYPE_1__**,TYPE_1__*,int ,int *,int *) ;
+ scalar_t__ strcmp (int ,char*) ;
+ int svn_pool_clear (int *) ;
+ int * svn_pool_create (int *) ;
+ int svn_pool_destroy (int *) ;
 
 __attribute__((used)) static svn_error_t *
 fs_history_prev(svn_fs_history_t **prev_history_p,
@@ -39,25 +39,25 @@ fs_history_prev(svn_fs_history_t **prev_history_p,
                 apr_pool_t *result_pool,
                 apr_pool_t *scratch_pool)
 {
-  svn_fs_history_t *prev_history = NULL;
+  svn_fs_history_t *prev_history = ((void*)0);
   fs_history_data_t *fhd = history->fsap_data;
   svn_fs_t *fs = fhd->fs;
 
-  /* Special case: the root directory changes in every single
-     revision, no exceptions.  And, the root can't be the target (or
-     child of a target -- duh) of a copy.  So, if that's our path,
-     then we need only decrement our revision by 1, and there you go. */
+
+
+
+
   if (strcmp(fhd->path, "/") == 0)
     {
       if (! fhd->is_interesting)
         prev_history = assemble_history(fs, "/", fhd->revision,
-                                        1, NULL, SVN_INVALID_REVNUM,
-                                        SVN_INVALID_REVNUM, NULL,
+                                        1, ((void*)0), SVN_INVALID_REVNUM,
+                                        SVN_INVALID_REVNUM, ((void*)0),
                                         result_pool);
       else if (fhd->revision > 0)
         prev_history = assemble_history(fs, "/", fhd->revision - 1,
-                                        1, NULL, SVN_INVALID_REVNUM,
-                                        SVN_INVALID_REVNUM, NULL,
+                                        1, ((void*)0), SVN_INVALID_REVNUM,
+                                        SVN_INVALID_REVNUM, ((void*)0),
                                         result_pool);
     }
   else

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  scalar_t__ uint16_t ;
-typedef  int /*<<< orphan*/  packet ;
-struct TYPE_3__ {int sent_nonce; int /*<<< orphan*/  mutex; int /*<<< orphan*/  shared_key; } ;
-typedef  int /*<<< orphan*/  Net_Crypto ;
-typedef  TYPE_1__ Crypto_Connection ;
 
-/* Variables and functions */
- scalar_t__ MAX_CRYPTO_PACKET_SIZE ; 
- int /*<<< orphan*/  NET_PACKET_CRYPTO_DATA ; 
- scalar_t__ crypto_box_MACBYTES ; 
- int crypto_box_NONCEBYTES ; 
- int encrypt_data_symmetric (int /*<<< orphan*/ ,int,int /*<<< orphan*/  const*,scalar_t__,int /*<<< orphan*/ *) ; 
- TYPE_1__* get_crypto_connection (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  increment_nonce (int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
- int send_packet_to (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef scalar_t__ uint16_t ;
+typedef int packet ;
+struct TYPE_3__ {int sent_nonce; int mutex; int shared_key; } ;
+typedef int Net_Crypto ;
+typedef TYPE_1__ Crypto_Connection ;
+
+
+ scalar_t__ MAX_CRYPTO_PACKET_SIZE ;
+ int NET_PACKET_CRYPTO_DATA ;
+ scalar_t__ crypto_box_MACBYTES ;
+ int crypto_box_NONCEBYTES ;
+ int encrypt_data_symmetric (int ,int,int const*,scalar_t__,int *) ;
+ TYPE_1__* get_crypto_connection (int *,int) ;
+ int increment_nonce (int) ;
+ int memcpy (int *,int,int) ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
+ int send_packet_to (int *,int,int *,int) ;
 
 __attribute__((used)) static int send_data_packet(Net_Crypto *c, int crypt_connection_id, const uint8_t *data, uint16_t length)
 {

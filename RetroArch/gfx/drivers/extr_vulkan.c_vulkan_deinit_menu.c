@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {TYPE_4__* textures_optimal; TYPE_4__* textures; } ;
 struct TYPE_8__ {TYPE_1__ menu; TYPE_2__* context; } ;
-typedef  TYPE_3__ vk_t ;
+typedef TYPE_3__ vk_t ;
 struct TYPE_9__ {scalar_t__ memory; } ;
-struct TYPE_7__ {int /*<<< orphan*/  device; } ;
+struct TYPE_7__ {int device; } ;
 
-/* Variables and functions */
- unsigned int VULKAN_MAX_SWAPCHAIN_IMAGES ; 
- int /*<<< orphan*/  vulkan_destroy_texture (int /*<<< orphan*/ ,TYPE_4__*) ; 
+
+ unsigned int VULKAN_MAX_SWAPCHAIN_IMAGES ;
+ int vulkan_destroy_texture (int ,TYPE_4__*) ;
 
 __attribute__((used)) static void vulkan_deinit_menu(vk_t *vk)
 {

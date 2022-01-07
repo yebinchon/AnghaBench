@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char* bmake_malloc (size_t) ; 
- char* bmake_strdup (char const*) ; 
- int /*<<< orphan*/  isalpha (unsigned char) ; 
- size_t strlen (char const*) ; 
+ char* bmake_malloc (size_t) ;
+ char* bmake_strdup (char const*) ;
+ int isalpha (unsigned char) ;
+ size_t strlen (char const*) ;
 
 __attribute__((used)) static char *
 explode(const char *flags)
@@ -24,22 +16,22 @@ explode(const char *flags)
     char *nf, *st;
     const char *f;
 
-    if (flags == NULL)
-	return NULL;
+    if (flags == ((void*)0))
+ return ((void*)0);
 
     for (f = flags; *f; f++)
-	if (!isalpha((unsigned char)*f))
-	    break;
+ if (!isalpha((unsigned char)*f))
+     break;
 
     if (*f)
-	return bmake_strdup(flags);
+ return bmake_strdup(flags);
 
     len = strlen(flags);
     st = nf = bmake_malloc(len * 3 + 1);
     while (*flags) {
-	*nf++ = '-';
-	*nf++ = *flags++;
-	*nf++ = ' ';
+ *nf++ = '-';
+ *nf++ = *flags++;
+ *nf++ = ' ';
     }
     *nf = '\0';
     return st;

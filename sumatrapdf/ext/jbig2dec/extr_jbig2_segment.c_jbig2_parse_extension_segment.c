@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint32_t ;
-struct TYPE_3__ {int data_length; int /*<<< orphan*/  number; } ;
-typedef  TYPE_1__ Jbig2Segment ;
-typedef  int /*<<< orphan*/  Jbig2Ctx ;
 
-/* Variables and functions */
- int /*<<< orphan*/  JBIG2_SEVERITY_FATAL ; 
- int /*<<< orphan*/  JBIG2_SEVERITY_INFO ; 
- int /*<<< orphan*/  JBIG2_SEVERITY_WARNING ; 
- int jbig2_error (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,...) ; 
- int jbig2_get_uint32 (int /*<<< orphan*/  const*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+struct TYPE_3__ {int data_length; int number; } ;
+typedef TYPE_1__ Jbig2Segment ;
+typedef int Jbig2Ctx ;
+
+
+ int JBIG2_SEVERITY_FATAL ;
+ int JBIG2_SEVERITY_INFO ;
+ int JBIG2_SEVERITY_WARNING ;
+ int jbig2_error (int *,int ,int ,char*,...) ;
+ int jbig2_get_uint32 (int const*) ;
 
 __attribute__((used)) static int
 jbig2_parse_extension_segment(Jbig2Ctx *ctx, Jbig2Segment *segment, const uint8_t *segment_data)
@@ -36,10 +36,10 @@ jbig2_parse_extension_segment(Jbig2Ctx *ctx, Jbig2Segment *segment, const uint8_
 
     type = jbig2_get_uint32(segment_data);
     reserved = type & 0x20000000;
-    /* Not implemented since this bit
-    is only needed by encoders.
-    dependent = type & 0x40000000;
-    */
+
+
+
+
     necessary = type & 0x80000000;
 
     if (necessary && !reserved) {

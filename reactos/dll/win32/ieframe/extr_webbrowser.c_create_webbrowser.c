@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_8__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_13__ {int /*<<< orphan*/ * lpVtbl; } ;
-struct TYPE_11__ {int /*<<< orphan*/ * lpVtbl; } ;
-struct TYPE_12__ {int ref; int version; TYPE_8__ IWebBrowser2_iface; int /*<<< orphan*/  doc_host; int /*<<< orphan*/  hlink_frame; void* tool_bar; void* status_bar; void* address_bar; void* menu_bar; void* visible; TYPE_1__ IServiceProvider_iface; } ;
-typedef  TYPE_2__ WebBrowser ;
-typedef  int /*<<< orphan*/  REFIID ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DocHostContainerVtbl ; 
- int /*<<< orphan*/  DocHost_Init (int /*<<< orphan*/ *,TYPE_8__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  HlinkFrame_Init (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IWebBrowser2_QueryInterface (TYPE_8__*,int /*<<< orphan*/ ,void**) ; 
- int /*<<< orphan*/  IWebBrowser2_Release (TYPE_8__*) ; 
- int /*<<< orphan*/  ServiceProviderVtbl ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,void**,int) ; 
- void* VARIANT_TRUE ; 
- int /*<<< orphan*/  WebBrowser2Vtbl ; 
- int /*<<< orphan*/  WebBrowser_ClassInfo_Init (TYPE_2__*) ; 
- int /*<<< orphan*/  WebBrowser_OleObject_Init (TYPE_2__*) ; 
- int /*<<< orphan*/  WebBrowser_Persist_Init (TYPE_2__*) ; 
- int /*<<< orphan*/  WebBrowser_ViewObject_Init (TYPE_2__*) ; 
- int /*<<< orphan*/  debugstr_guid (int /*<<< orphan*/ ) ; 
- TYPE_2__* heap_alloc_zero (int) ; 
- int /*<<< orphan*/  lock_module () ; 
+
+typedef struct TYPE_13__ TYPE_8__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+struct TYPE_13__ {int * lpVtbl; } ;
+struct TYPE_11__ {int * lpVtbl; } ;
+struct TYPE_12__ {int ref; int version; TYPE_8__ IWebBrowser2_iface; int doc_host; int hlink_frame; void* tool_bar; void* status_bar; void* address_bar; void* menu_bar; void* visible; TYPE_1__ IServiceProvider_iface; } ;
+typedef TYPE_2__ WebBrowser ;
+typedef int REFIID ;
+typedef int IUnknown ;
+typedef int HRESULT ;
+
+
+ int DocHostContainerVtbl ;
+ int DocHost_Init (int *,TYPE_8__*,int *) ;
+ int HlinkFrame_Init (int *,int *,int *) ;
+ int IWebBrowser2_QueryInterface (TYPE_8__*,int ,void**) ;
+ int IWebBrowser2_Release (TYPE_8__*) ;
+ int ServiceProviderVtbl ;
+ int TRACE (char*,int *,int ,void**,int) ;
+ void* VARIANT_TRUE ;
+ int WebBrowser2Vtbl ;
+ int WebBrowser_ClassInfo_Init (TYPE_2__*) ;
+ int WebBrowser_OleObject_Init (TYPE_2__*) ;
+ int WebBrowser_Persist_Init (TYPE_2__*) ;
+ int WebBrowser_ViewObject_Init (TYPE_2__*) ;
+ int debugstr_guid (int ) ;
+ TYPE_2__* heap_alloc_zero (int) ;
+ int lock_module () ;
 
 __attribute__((used)) static HRESULT create_webbrowser(int version, IUnknown *outer, REFIID riid, void **ppv)
 {

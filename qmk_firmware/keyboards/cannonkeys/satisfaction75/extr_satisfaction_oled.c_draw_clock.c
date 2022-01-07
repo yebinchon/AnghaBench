@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int int8_t ;
-typedef  int int16_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int int8_t ;
+typedef int int16_t ;
 struct TYPE_2__ {int year; int month; int day; } ;
 
-/* Variables and functions */
- scalar_t__ CAPS_DISPLAY_X ; 
- scalar_t__ CAPS_DISPLAY_Y ; 
- scalar_t__ CLOCK_DISPLAY_X ; 
- scalar_t__ CLOCK_DISPLAY_Y ; 
- scalar_t__ DATE_DISPLAY_X ; 
- scalar_t__ DATE_DISPLAY_Y ; 
- scalar_t__ ENC_MODE_CLOCK_SET ; 
- int /*<<< orphan*/  NORM ; 
- int /*<<< orphan*/  PIXEL_OFF ; 
- int /*<<< orphan*/  PIXEL_ON ; 
- scalar_t__ clock_set_mode ; 
- int day_config ; 
- int /*<<< orphan*/  draw_encoder (int,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  draw_layer_section (int,int,int) ; 
- int /*<<< orphan*/  draw_line (scalar_t__,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  draw_rect_filled_soft (scalar_t__,scalar_t__,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  draw_string (scalar_t__,scalar_t__,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- scalar_t__ encoder_mode ; 
- int hour_config ; 
- int last_minute ; 
- TYPE_1__ last_timespec ; 
- int led_capslock ; 
- int minute_config ; 
- int month_config ; 
- int /*<<< orphan*/  send_buffer () ; 
- int /*<<< orphan*/  sprintf (char*,char*,int) ; 
- int time_config_idx ; 
- int year_config ; 
+
+ scalar_t__ CAPS_DISPLAY_X ;
+ scalar_t__ CAPS_DISPLAY_Y ;
+ scalar_t__ CLOCK_DISPLAY_X ;
+ scalar_t__ CLOCK_DISPLAY_Y ;
+ scalar_t__ DATE_DISPLAY_X ;
+ scalar_t__ DATE_DISPLAY_Y ;
+ scalar_t__ ENC_MODE_CLOCK_SET ;
+ int NORM ;
+ int PIXEL_OFF ;
+ int PIXEL_ON ;
+ scalar_t__ clock_set_mode ;
+ int day_config ;
+ int draw_encoder (int,int ,int) ;
+ int draw_layer_section (int,int,int) ;
+ int draw_line (scalar_t__,int ,scalar_t__,int ,int ,int ) ;
+ int draw_rect_filled_soft (scalar_t__,scalar_t__,int,int,int ,int ) ;
+ int draw_string (scalar_t__,scalar_t__,char*,int ,int ,int) ;
+ scalar_t__ encoder_mode ;
+ int hour_config ;
+ int last_minute ;
+ TYPE_1__ last_timespec ;
+ int led_capslock ;
+ int minute_config ;
+ int month_config ;
+ int send_buffer () ;
+ int sprintf (char*,char*,int) ;
+ int time_config_idx ;
+ int year_config ;
 
 void draw_clock(){
   int8_t hour = last_minute / 60;
@@ -78,57 +78,57 @@ void draw_clock(){
   sprintf(day_str, "%02d", day);
 
 
-#define DATE_DISPLAY_X 6
-#define DATE_DISPLAY_Y 0
-  draw_string(DATE_DISPLAY_X, DATE_DISPLAY_Y, year_str, PIXEL_ON, NORM, 0);
-  draw_string(DATE_DISPLAY_X + 25, DATE_DISPLAY_Y, "-", PIXEL_ON, NORM, 0);
-  draw_string(DATE_DISPLAY_X + 31, DATE_DISPLAY_Y, month_str, PIXEL_ON, NORM, 0);
-  draw_string(DATE_DISPLAY_X + 44, DATE_DISPLAY_Y, "-", PIXEL_ON, NORM, 0);
-  draw_string(DATE_DISPLAY_X + 50, DATE_DISPLAY_Y, day_str, PIXEL_ON, NORM, 0);
 
-#define CLOCK_DISPLAY_X 6
-#define CLOCK_DISPLAY_Y 14
-  draw_string(CLOCK_DISPLAY_X, CLOCK_DISPLAY_Y, hour_str, PIXEL_ON, NORM, 1);
-  draw_string(CLOCK_DISPLAY_X + 17, CLOCK_DISPLAY_Y, ":", PIXEL_ON, NORM, 1);
-  draw_string(CLOCK_DISPLAY_X + 25, CLOCK_DISPLAY_Y, min_str, PIXEL_ON, NORM, 1);
+
+  draw_string(6, 0, year_str, PIXEL_ON, NORM, 0);
+  draw_string(6 + 25, 0, "-", PIXEL_ON, NORM, 0);
+  draw_string(6 + 31, 0, month_str, PIXEL_ON, NORM, 0);
+  draw_string(6 + 44, 0, "-", PIXEL_ON, NORM, 0);
+  draw_string(6 + 50, 0, day_str, PIXEL_ON, NORM, 0);
+
+
+
+  draw_string(6, 14, hour_str, PIXEL_ON, NORM, 1);
+  draw_string(6 + 17, 14, ":", PIXEL_ON, NORM, 1);
+  draw_string(6 + 25, 14, min_str, PIXEL_ON, NORM, 1);
   if(is_pm){
-    draw_string(CLOCK_DISPLAY_X + 41, CLOCK_DISPLAY_Y, "pm", PIXEL_ON, NORM, 1);
+    draw_string(6 + 41, 14, "pm", PIXEL_ON, NORM, 1);
   } else{
-    draw_string(CLOCK_DISPLAY_X + 41, CLOCK_DISPLAY_Y, "am", PIXEL_ON, NORM, 1);
+    draw_string(6 + 41, 14, "am", PIXEL_ON, NORM, 1);
   }
 
   if(clock_set_mode){
     switch(time_config_idx){
-      case 0: // hour
+      case 0:
       default:
-        draw_line(CLOCK_DISPLAY_X, CLOCK_DISPLAY_Y + 17, CLOCK_DISPLAY_X + 16, CLOCK_DISPLAY_Y + 17, PIXEL_ON, NORM);
+        draw_line(6, 14 + 17, 6 + 16, 14 + 17, PIXEL_ON, NORM);
         break;
-      case 1: // minute
-        draw_line(CLOCK_DISPLAY_X + 25, CLOCK_DISPLAY_Y + 17, CLOCK_DISPLAY_X + 41, CLOCK_DISPLAY_Y + 17, PIXEL_ON, NORM);
+      case 1:
+        draw_line(6 + 25, 14 + 17, 6 + 41, 14 + 17, PIXEL_ON, NORM);
         break;
-      case 2: // year
-        draw_line(DATE_DISPLAY_X, DATE_DISPLAY_Y + 9, DATE_DISPLAY_X + 23, DATE_DISPLAY_Y + 9, PIXEL_ON, NORM);
+      case 2:
+        draw_line(6, 0 + 9, 6 + 23, 0 + 9, PIXEL_ON, NORM);
         break;
-      case 3: // month
-        draw_line(DATE_DISPLAY_X + 31, DATE_DISPLAY_Y + 9, DATE_DISPLAY_X + 43, DATE_DISPLAY_Y + 9, PIXEL_ON, NORM);
+      case 3:
+        draw_line(6 + 31, 0 + 9, 6 + 43, 0 + 9, PIXEL_ON, NORM);
         break;
-      case 4: //day
-        draw_line(DATE_DISPLAY_X + 50, DATE_DISPLAY_Y + 9, DATE_DISPLAY_X + 61, DATE_DISPLAY_Y + 9,PIXEL_ON, NORM);
+      case 4:
+        draw_line(6 + 50, 0 + 9, 6 + 61, 0 + 9,PIXEL_ON, NORM);
         break;
     }
   }
 
-  draw_encoder(80, 0, true);
-  draw_layer_section(80, 11, true);
+  draw_encoder(80, 0, 1);
+  draw_layer_section(80, 11, 1);
 
-#define CAPS_DISPLAY_X 86
-#define CAPS_DISPLAY_Y 22
 
-  if (led_capslock == true) {
-    draw_rect_filled_soft(CAPS_DISPLAY_X, CAPS_DISPLAY_Y, 5 + (4 * 6), 9, PIXEL_ON, NORM);
-    draw_string(CAPS_DISPLAY_X + 3, CAPS_DISPLAY_Y +1, "CAPS", PIXEL_OFF, NORM, 0);
-  } else if (led_capslock == false) {
-    draw_string(CAPS_DISPLAY_X + 3, CAPS_DISPLAY_Y +1, "CAPS", PIXEL_ON, NORM, 0);
+
+
+  if (led_capslock == 1) {
+    draw_rect_filled_soft(86, 22, 5 + (4 * 6), 9, PIXEL_ON, NORM);
+    draw_string(86 + 3, 22 +1, "CAPS", PIXEL_OFF, NORM, 0);
+  } else if (led_capslock == 0) {
+    draw_string(86 + 3, 22 +1, "CAPS", PIXEL_ON, NORM, 0);
   }
 
 

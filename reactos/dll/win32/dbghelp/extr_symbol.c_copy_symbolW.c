@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  Name; int /*<<< orphan*/  MaxNameLen; int /*<<< orphan*/  NameLen; int /*<<< orphan*/  Tag; int /*<<< orphan*/  Scope; int /*<<< orphan*/  Register; int /*<<< orphan*/  Address; int /*<<< orphan*/  Value; int /*<<< orphan*/  Flags; int /*<<< orphan*/  ModBase; int /*<<< orphan*/  Size; int /*<<< orphan*/  Index; int /*<<< orphan*/ * Reserved; int /*<<< orphan*/  TypeIndex; int /*<<< orphan*/  SizeOfStruct; } ;
-struct TYPE_5__ {int /*<<< orphan*/  MaxNameLen; int /*<<< orphan*/  Name; int /*<<< orphan*/  NameLen; int /*<<< orphan*/  Tag; int /*<<< orphan*/  Scope; int /*<<< orphan*/  Register; int /*<<< orphan*/  Address; int /*<<< orphan*/  Value; int /*<<< orphan*/  Flags; int /*<<< orphan*/  ModBase; int /*<<< orphan*/  Size; int /*<<< orphan*/  Index; int /*<<< orphan*/ * Reserved; int /*<<< orphan*/  TypeIndex; int /*<<< orphan*/  SizeOfStruct; } ;
-typedef  TYPE_1__ SYMBOL_INFOW ;
-typedef  TYPE_2__ SYMBOL_INFO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CP_ACP ; 
- int /*<<< orphan*/  MultiByteToWideChar (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int Name; int MaxNameLen; int NameLen; int Tag; int Scope; int Register; int Address; int Value; int Flags; int ModBase; int Size; int Index; int * Reserved; int TypeIndex; int SizeOfStruct; } ;
+struct TYPE_5__ {int MaxNameLen; int Name; int NameLen; int Tag; int Scope; int Register; int Address; int Value; int Flags; int ModBase; int Size; int Index; int * Reserved; int TypeIndex; int SizeOfStruct; } ;
+typedef TYPE_1__ SYMBOL_INFOW ;
+typedef TYPE_2__ SYMBOL_INFO ;
+
+
+ int CP_ACP ;
+ int MultiByteToWideChar (int ,int ,int ,int,int ,int ) ;
 
 void copy_symbolW(SYMBOL_INFOW* siw, const SYMBOL_INFO* si)
 {
     siw->SizeOfStruct = si->SizeOfStruct;
-    siw->TypeIndex = si->TypeIndex; 
+    siw->TypeIndex = si->TypeIndex;
     siw->Reserved[0] = si->Reserved[0];
     siw->Reserved[1] = si->Reserved[1];
     siw->Index = si->Index;

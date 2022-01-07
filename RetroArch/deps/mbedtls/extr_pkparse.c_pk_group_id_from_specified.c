@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mbedtls_ecp_group_id ;
-typedef  int /*<<< orphan*/  mbedtls_ecp_group ;
-typedef  int /*<<< orphan*/  mbedtls_asn1_buf ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mbedtls_ecp_group_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mbedtls_ecp_group_init (int /*<<< orphan*/ *) ; 
- int pk_group_from_specified (int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int pk_group_id_from_group (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int mbedtls_ecp_group_id ;
+typedef int mbedtls_ecp_group ;
+typedef int mbedtls_asn1_buf ;
+
+
+ int mbedtls_ecp_group_free (int *) ;
+ int mbedtls_ecp_group_init (int *) ;
+ int pk_group_from_specified (int const*,int *) ;
+ int pk_group_id_from_group (int *,int *) ;
 
 __attribute__((used)) static int pk_group_id_from_specified( const mbedtls_asn1_buf *params,
                                        mbedtls_ecp_group_id *grp_id )

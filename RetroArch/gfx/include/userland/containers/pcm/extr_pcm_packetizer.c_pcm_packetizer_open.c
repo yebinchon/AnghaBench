@@ -1,61 +1,61 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_21__   TYPE_9__ ;
-typedef  struct TYPE_20__   TYPE_8__ ;
-typedef  struct TYPE_19__   TYPE_7__ ;
-typedef  struct TYPE_18__   TYPE_6__ ;
-typedef  struct TYPE_17__   TYPE_5__ ;
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  enum conversion { ____Placeholder_conversion } conversion ;
+
+
+typedef struct TYPE_21__ TYPE_9__ ;
+typedef struct TYPE_20__ TYPE_8__ ;
+typedef struct TYPE_19__ TYPE_7__ ;
+typedef struct TYPE_18__ TYPE_6__ ;
+typedef struct TYPE_17__ TYPE_5__ ;
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+typedef enum conversion { ____Placeholder_conversion } conversion ;
 struct TYPE_20__ {int max_frame_size; TYPE_7__* priv; TYPE_6__* in; TYPE_3__* out; } ;
-typedef  TYPE_8__ VC_PACKETIZER_T ;
+typedef TYPE_8__ VC_PACKETIZER_T ;
 struct TYPE_21__ {int conversion; int conversion_factor; int max_frame_size; unsigned int bytes_per_sample; unsigned int samples_per_frame; } ;
-typedef  TYPE_9__ VC_PACKETIZER_MODULE_T ;
-typedef  int /*<<< orphan*/  VC_CONTAINER_STATUS_T ;
-struct TYPE_19__ {int /*<<< orphan*/  pf_reset; int /*<<< orphan*/  pf_packetize; int /*<<< orphan*/  pf_close; int /*<<< orphan*/  time; TYPE_9__* module; } ;
+typedef TYPE_9__ VC_PACKETIZER_MODULE_T ;
+typedef int VC_CONTAINER_STATUS_T ;
+struct TYPE_19__ {int pf_reset; int pf_packetize; int pf_close; int time; TYPE_9__* module; } ;
 struct TYPE_18__ {scalar_t__ codec; TYPE_5__* type; } ;
-struct TYPE_16__ {int block_align; int bits_per_sample; int channels; int /*<<< orphan*/  sample_rate; } ;
+struct TYPE_16__ {int block_align; int bits_per_sample; int channels; int sample_rate; } ;
 struct TYPE_17__ {TYPE_4__ audio; } ;
 struct TYPE_15__ {scalar_t__ codec_variant; scalar_t__ codec; TYPE_2__* type; } ;
 struct TYPE_13__ {int bits_per_sample; int block_align; } ;
 struct TYPE_14__ {TYPE_1__ audio; } ;
 
-/* Variables and functions */
- int CONVERSION_NONE ; 
- int CONVERSION_U8_TO_S16L ; 
- int CONVERSION_UNKNOWN ; 
- int FACTOR_SHIFT ; 
- int FRAME_SIZE ; 
- int /*<<< orphan*/  LOG_DEBUG (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ VC_CONTAINER_CODEC_PCM_FLOAT_BE ; 
- scalar_t__ VC_CONTAINER_CODEC_PCM_FLOAT_LE ; 
- scalar_t__ VC_CONTAINER_CODEC_PCM_SIGNED_BE ; 
- scalar_t__ VC_CONTAINER_CODEC_PCM_SIGNED_LE ; 
- scalar_t__ VC_CONTAINER_CODEC_PCM_UNSIGNED_BE ; 
- scalar_t__ VC_CONTAINER_CODEC_PCM_UNSIGNED_LE ; 
- int /*<<< orphan*/  VC_CONTAINER_ERROR_FORMAT_NOT_SUPPORTED ; 
- int /*<<< orphan*/  VC_CONTAINER_ERROR_OUT_OF_MEMORY ; 
- int /*<<< orphan*/  VC_CONTAINER_SUCCESS ; 
- scalar_t__ VC_FOURCC (char,char,char,char) ; 
- TYPE_9__* malloc (int) ; 
- int /*<<< orphan*/  memset (TYPE_9__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  pcm_packetizer_close ; 
- int /*<<< orphan*/  pcm_packetizer_packetize ; 
- int /*<<< orphan*/  pcm_packetizer_reset ; 
- int /*<<< orphan*/  vc_container_time_set_samplerate (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
+
+ int CONVERSION_NONE ;
+ int CONVERSION_U8_TO_S16L ;
+ int CONVERSION_UNKNOWN ;
+ int FACTOR_SHIFT ;
+ int FRAME_SIZE ;
+ int LOG_DEBUG (int ,char*) ;
+ scalar_t__ VC_CONTAINER_CODEC_PCM_FLOAT_BE ;
+ scalar_t__ VC_CONTAINER_CODEC_PCM_FLOAT_LE ;
+ scalar_t__ VC_CONTAINER_CODEC_PCM_SIGNED_BE ;
+ scalar_t__ VC_CONTAINER_CODEC_PCM_SIGNED_LE ;
+ scalar_t__ VC_CONTAINER_CODEC_PCM_UNSIGNED_BE ;
+ scalar_t__ VC_CONTAINER_CODEC_PCM_UNSIGNED_LE ;
+ int VC_CONTAINER_ERROR_FORMAT_NOT_SUPPORTED ;
+ int VC_CONTAINER_ERROR_OUT_OF_MEMORY ;
+ int VC_CONTAINER_SUCCESS ;
+ scalar_t__ VC_FOURCC (char,char,char,char) ;
+ TYPE_9__* malloc (int) ;
+ int memset (TYPE_9__*,int ,int) ;
+ int pcm_packetizer_close ;
+ int pcm_packetizer_packetize ;
+ int pcm_packetizer_reset ;
+ int vc_container_time_set_samplerate (int *,int ,int) ;
 
 VC_CONTAINER_STATUS_T pcm_packetizer_open( VC_PACKETIZER_T *p_ctx )
 {
@@ -80,7 +80,7 @@ VC_CONTAINER_STATUS_T pcm_packetizer_open( VC_PACKETIZER_T *p_ctx )
    if(!bytes_per_sample)
       return VC_CONTAINER_ERROR_FORMAT_NOT_SUPPORTED;
 
-   /* Check if we support any potential conversion we've been asked to do */
+
    if(p_ctx->out->codec_variant)
       conversion = CONVERSION_UNKNOWN;
    if(p_ctx->out->codec_variant == VC_FOURCC('s','1','6','l') &&

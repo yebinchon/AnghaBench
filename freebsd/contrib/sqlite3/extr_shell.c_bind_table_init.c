@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  db; } ;
-typedef  TYPE_1__ ShellState ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SQLITE_DBCONFIG_WRITABLE_SCHEMA ; 
- int /*<<< orphan*/  sqlite3_db_config (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int*) ; 
- int /*<<< orphan*/  sqlite3_exec (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int db; } ;
+typedef TYPE_1__ ShellState ;
+
+
+ int SQLITE_DBCONFIG_WRITABLE_SCHEMA ;
+ int sqlite3_db_config (int ,int ,int,int*) ;
+ int sqlite3_exec (int ,char*,int ,int ,int ) ;
 
 __attribute__((used)) static void bind_table_init(ShellState *p){
   int wrSchema = 0;

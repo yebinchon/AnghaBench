@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  bfd_boolean ;
-typedef  int /*<<< orphan*/  bfd ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int bfd_boolean ;
+typedef int bfd ;
 struct TYPE_2__ {int flags; } ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef int FILE ;
 
-/* Variables and functions */
- scalar_t__ APCS_26_FLAG (int /*<<< orphan*/ *) ; 
- scalar_t__ APCS_FLOAT_FLAG (int /*<<< orphan*/ *) ; 
- scalar_t__ APCS_SET (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BFD_ASSERT (int) ; 
- scalar_t__ INTERWORK_FLAG (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  INTERWORK_SET (int /*<<< orphan*/ *) ; 
- scalar_t__ PIC_FLAG (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TRUE ; 
- char* _ (char*) ; 
- TYPE_1__* coff_data (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*,...) ; 
- int /*<<< orphan*/  fputc (char,int /*<<< orphan*/ *) ; 
+
+ scalar_t__ APCS_26_FLAG (int *) ;
+ scalar_t__ APCS_FLOAT_FLAG (int *) ;
+ scalar_t__ APCS_SET (int *) ;
+ int BFD_ASSERT (int) ;
+ scalar_t__ INTERWORK_FLAG (int *) ;
+ int INTERWORK_SET (int *) ;
+ scalar_t__ PIC_FLAG (int *) ;
+ int TRUE ;
+ char* _ (char*) ;
+ TYPE_1__* coff_data (int *) ;
+ int fprintf (int *,char*,...) ;
+ int fputc (char,int *) ;
 
 __attribute__((used)) static bfd_boolean
 coff_arm_print_private_bfd_data (bfd * abfd, void * ptr)
 {
   FILE * file = (FILE *) ptr;
 
-  BFD_ASSERT (abfd != NULL && ptr != NULL);
+  BFD_ASSERT (abfd != ((void*)0) && ptr != ((void*)0));
 
-  /* xgettext:c-format */
+
   fprintf (file, _("private flags = %x:"), coff_data (abfd)->flags);
 
   if (APCS_SET (abfd))
     {
-      /* xgettext: APCS is ARM Procedure Call Standard, it should not be translated.  */
+
       fprintf (file, " [APCS-%d]", APCS_26_FLAG (abfd) ? 26 : 32);
 
       if (APCS_FLOAT_FLAG (abfd))
-	fprintf (file, _(" [floats passed in float registers]"));
+ fprintf (file, _(" [floats passed in float registers]"));
       else
-	fprintf (file, _(" [floats passed in integer registers]"));
+ fprintf (file, _(" [floats passed in integer registers]"));
 
       if (PIC_FLAG (abfd))
-	fprintf (file, _(" [position independent]"));
+ fprintf (file, _(" [position independent]"));
       else
-	fprintf (file, _(" [absolute position]"));
+ fprintf (file, _(" [absolute position]"));
     }
 
   if (! INTERWORK_SET (abfd))

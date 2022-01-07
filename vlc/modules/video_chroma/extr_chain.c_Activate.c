@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_20__   TYPE_4__ ;
-typedef  struct TYPE_19__   TYPE_3__ ;
-typedef  struct TYPE_18__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_18__ {int /*<<< orphan*/  pf_video_filter; int /*<<< orphan*/  fmt_out; scalar_t__ b_allow_fmt_out_change; TYPE_3__* p_sys; } ;
-typedef  TYPE_1__ filter_t ;
-struct TYPE_19__ {int /*<<< orphan*/  p_chain; scalar_t__ p_video_filter; } ;
-typedef  TYPE_3__ filter_sys_t ;
-struct TYPE_20__ {TYPE_1__* sys; int /*<<< orphan*/ * video; } ;
-typedef  TYPE_4__ filter_owner_t ;
 
-/* Variables and functions */
- int CHAIN_LEVEL_MAX ; 
- int /*<<< orphan*/  Chain ; 
- int /*<<< orphan*/  RestartFilterCallback ; 
- int VLC_EGENERIC ; 
- int VLC_ENOMEM ; 
- int VLC_SUCCESS ; 
- int VLC_VAR_DOINHERIT ; 
- int VLC_VAR_INTEGER ; 
- TYPE_3__* calloc (int,int) ; 
- int /*<<< orphan*/  es_format_Clean (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  es_format_Copy (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  filter_DelProxyCallbacks (TYPE_1__*,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  filter_chain_Delete (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  filter_chain_GetFmtOut (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  filter_chain_NewVideo (TYPE_1__*,scalar_t__,TYPE_4__*) ; 
- int /*<<< orphan*/  filter_video_chain_cbs ; 
- int /*<<< orphan*/  free (TYPE_3__*) ; 
- int /*<<< orphan*/  msg_Err (TYPE_1__*,char*,int) ; 
- int /*<<< orphan*/  var_Create (TYPE_1__*,char*,int) ; 
- int /*<<< orphan*/  var_Destroy (TYPE_1__*,char*) ; 
- int var_GetInteger (TYPE_1__*,char*) ; 
- int /*<<< orphan*/  var_IncInteger (TYPE_1__*,char*) ; 
- scalar_t__ var_Type (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  vlc_object_parent (TYPE_1__*) ; 
+
+typedef struct TYPE_20__ TYPE_4__ ;
+typedef struct TYPE_19__ TYPE_3__ ;
+typedef struct TYPE_18__ TYPE_1__ ;
+
+
+struct TYPE_18__ {int pf_video_filter; int fmt_out; scalar_t__ b_allow_fmt_out_change; TYPE_3__* p_sys; } ;
+typedef TYPE_1__ filter_t ;
+struct TYPE_19__ {int p_chain; scalar_t__ p_video_filter; } ;
+typedef TYPE_3__ filter_sys_t ;
+struct TYPE_20__ {TYPE_1__* sys; int * video; } ;
+typedef TYPE_4__ filter_owner_t ;
+
+
+ int CHAIN_LEVEL_MAX ;
+ int Chain ;
+ int RestartFilterCallback ;
+ int VLC_EGENERIC ;
+ int VLC_ENOMEM ;
+ int VLC_SUCCESS ;
+ int VLC_VAR_DOINHERIT ;
+ int VLC_VAR_INTEGER ;
+ TYPE_3__* calloc (int,int) ;
+ int es_format_Clean (int *) ;
+ int es_format_Copy (int *,int ) ;
+ int filter_DelProxyCallbacks (TYPE_1__*,scalar_t__,int ) ;
+ int filter_chain_Delete (int ) ;
+ int filter_chain_GetFmtOut (int ) ;
+ int filter_chain_NewVideo (TYPE_1__*,scalar_t__,TYPE_4__*) ;
+ int filter_video_chain_cbs ;
+ int free (TYPE_3__*) ;
+ int msg_Err (TYPE_1__*,char*,int) ;
+ int var_Create (TYPE_1__*,char*,int) ;
+ int var_Destroy (TYPE_1__*,char*) ;
+ int var_GetInteger (TYPE_1__*,char*) ;
+ int var_IncInteger (TYPE_1__*,char*) ;
+ scalar_t__ var_Type (int ,char*) ;
+ int vlc_object_parent (TYPE_1__*) ;
 
 __attribute__((used)) static int Activate( filter_t *p_filter, int (*pf_build)(filter_t *) )
 {
@@ -72,7 +72,7 @@ __attribute__((used)) static int Activate( filter_t *p_filter, int (*pf_build)(f
         type |= VLC_VAR_DOINHERIT;
 
     var_Create( p_filter, "chain-level", type );
-    /* Note: atomicity is not actually needed here. */
+
     var_IncInteger( p_filter, "chain-level" );
 
     int level = var_GetInteger( p_filter, "chain-level" );
@@ -85,7 +85,7 @@ __attribute__((used)) static int Activate( filter_t *p_filter, int (*pf_build)(f
 
     if( i_ret )
     {
-        /* Hum ... looks like this really isn't going to work. Too bad. */
+
         if (p_sys->p_video_filter)
             filter_DelProxyCallbacks( p_filter, p_sys->p_video_filter,
                                       RestartFilterCallback );
@@ -99,7 +99,7 @@ __attribute__((used)) static int Activate( filter_t *p_filter, int (*pf_build)(f
         es_format_Copy( &p_filter->fmt_out,
                         filter_chain_GetFmtOut( p_sys->p_chain ) );
     }
-    /* */
+
     p_filter->pf_video_filter = Chain;
     return VLC_SUCCESS;
 }

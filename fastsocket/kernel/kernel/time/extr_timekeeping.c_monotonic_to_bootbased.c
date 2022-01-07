@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct timespec {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/  total_sleep_time; } ;
+struct TYPE_2__ {int total_sleep_time; } ;
 
-/* Variables and functions */
- TYPE_1__ timekeeper ; 
- struct timespec timespec_add (struct timespec,int /*<<< orphan*/ ) ; 
+
+ TYPE_1__ timekeeper ;
+ struct timespec timespec_add (struct timespec,int ) ;
 
 void monotonic_to_bootbased(struct timespec *ts)
 {
-	*ts = timespec_add(*ts, timekeeper.total_sleep_time);
+ *ts = timespec_add(*ts, timekeeper.total_sleep_time);
 }

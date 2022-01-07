@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_6__ {TYPE_1__* priv_data; } ;
-struct TYPE_5__ {int max_payload_size; int* buf; int /*<<< orphan*/  cur_timestamp; int /*<<< orphan*/  timestamp; } ;
-typedef  TYPE_1__ RTPMuxContext ;
-typedef  TYPE_2__ AVFormatContext ;
+struct TYPE_5__ {int max_payload_size; int* buf; int cur_timestamp; int timestamp; } ;
+typedef TYPE_1__ RTPMuxContext ;
+typedef TYPE_2__ AVFormatContext ;
 
-/* Variables and functions */
- int* avpriv_find_start_code (int const*,int const*,int*) ; 
- int /*<<< orphan*/  ff_rtp_send_data (TYPE_2__*,int*,int,int) ; 
- int /*<<< orphan*/  memcpy (int*,int const*,int) ; 
+
+ int* avpriv_find_start_code (int const*,int const*,int*) ;
+ int ff_rtp_send_data (TYPE_2__*,int*,int,int) ;
+ int memcpy (int*,int const*,int) ;
 
 void ff_rtp_send_mpegvideo(AVFormatContext *s1, const uint8_t *buf1, int size)
 {
@@ -55,7 +55,7 @@ void ff_rtp_send_mpegvideo(AVFormatContext *s1, const uint8_t *buf1, int size)
                 start_code = -1;
                 r = avpriv_find_start_code(r1, end, &start_code);
                 if((start_code & 0xFFFFFF00) == 0x100) {
-                    /* New start code found */
+
                     if (start_code == 0x100) {
                         frame_type = (r[1] & 0x38) >> 3;
                         temporal_reference = (int)r[0] << 2 | r[1] >> 6;
@@ -65,9 +65,9 @@ void ff_rtp_send_mpegvideo(AVFormatContext *s1, const uint8_t *buf1, int size)
                     }
 
                     if (r - buf1 - 4 <= len) {
-                        /* The current slice fits in the packet */
+
                         if (begin_of_slice == 0) {
-                            /* no slice at the beginning of the packet... */
+
                             end_of_slice = 1;
                             len = r - buf1 - 4;
                             break;
@@ -102,7 +102,7 @@ void ff_rtp_send_mpegvideo(AVFormatContext *s1, const uint8_t *buf1, int size)
         memcpy(q, buf1, len);
         q += len;
 
-        /* 90kHz time stamp */
+
         s->timestamp = s->cur_timestamp;
         ff_rtp_send_data(s1, s->buf, q - s->buf, (len == size));
 

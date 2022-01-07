@@ -1,65 +1,65 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct sockaddr {int dummy; } ;
-typedef  int /*<<< orphan*/  sa ;
-typedef  int krb5_socklen_t ;
-typedef  scalar_t__ krb5_error_code ;
-typedef  int /*<<< orphan*/  krb5_context ;
-typedef  int /*<<< orphan*/  krb5_address ;
-typedef  int /*<<< orphan*/  int16_t ;
-struct TYPE_3__ {int /*<<< orphan*/  value; } ;
-typedef  TYPE_1__ gss_buffer_desc ;
-typedef  int OM_uint32 ;
+typedef int sa ;
+typedef int krb5_socklen_t ;
+typedef scalar_t__ krb5_error_code ;
+typedef int krb5_context ;
+typedef int krb5_address ;
+typedef int int16_t ;
+struct TYPE_3__ {int value; } ;
+typedef TYPE_1__ gss_buffer_desc ;
+typedef int OM_uint32 ;
 
-/* Variables and functions */
- int AF_INET ; 
- int AF_INET6 ; 
-#define  GSS_C_AF_INET 129 
-#define  GSS_C_AF_INET6 128 
- scalar_t__ GSS_S_FAILURE ; 
- scalar_t__ krb5_h_addr2sockaddr (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,struct sockaddr*,int*,int /*<<< orphan*/ ) ; 
- scalar_t__ krb5_sockaddr2address (int /*<<< orphan*/ ,struct sockaddr*,int /*<<< orphan*/ *) ; 
+
+ int AF_INET ;
+ int AF_INET6 ;
+
+
+ scalar_t__ GSS_S_FAILURE ;
+ scalar_t__ krb5_h_addr2sockaddr (int ,int,int ,struct sockaddr*,int*,int ) ;
+ scalar_t__ krb5_sockaddr2address (int ,struct sockaddr*,int *) ;
 
 krb5_error_code
 _gsskrb5i_address_to_krb5addr(krb5_context context,
-			      OM_uint32 gss_addr_type,
-			      gss_buffer_desc *gss_addr,
-			      int16_t port,
-			      krb5_address *address)
+         OM_uint32 gss_addr_type,
+         gss_buffer_desc *gss_addr,
+         int16_t port,
+         krb5_address *address)
 {
    int addr_type;
    struct sockaddr sa;
    krb5_socklen_t sa_size = sizeof(sa);
    krb5_error_code problem;
 
-   if (gss_addr == NULL)
+   if (gss_addr == ((void*)0))
       return GSS_S_FAILURE;
 
    switch (gss_addr_type) {
-#ifdef HAVE_IPV6
-      case GSS_C_AF_INET6: addr_type = AF_INET6;
-                           break;
-#endif /* HAVE_IPV6 */
 
-      case GSS_C_AF_INET:  addr_type = AF_INET;
+
+
+
+
+      case 129: addr_type = AF_INET;
                            break;
       default:
                            return GSS_S_FAILURE;
    }
 
    problem = krb5_h_addr2sockaddr (context,
-				   addr_type,
+       addr_type,
                                    gss_addr->value,
                                    &sa,
                                    &sa_size,

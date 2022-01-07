@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_11__ {scalar_t__ token; int /*<<< orphan*/  saved_text; } ;
-typedef  TYPE_1__ lex_t ;
-typedef  int /*<<< orphan*/  json_error_t ;
 
-/* Variables and functions */
- int STREAM_STATE_EOF ; 
- int STREAM_STATE_ERROR ; 
- scalar_t__ TOKEN_EOF ; 
- int TOKEN_FALSE ; 
- void* TOKEN_INVALID ; 
- int TOKEN_NULL ; 
- scalar_t__ TOKEN_STRING ; 
- int TOKEN_TRUE ; 
- scalar_t__ l_isalpha (int) ; 
- scalar_t__ l_isdigit (int) ; 
- int /*<<< orphan*/  lex_free_string (TYPE_1__*) ; 
- int lex_get (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int lex_get_save (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lex_save (TYPE_1__*,int) ; 
- int /*<<< orphan*/  lex_save_cached (TYPE_1__*) ; 
- scalar_t__ lex_scan_number (TYPE_1__*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lex_scan_string (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lex_unget_unsave (TYPE_1__*,int) ; 
- int /*<<< orphan*/  strbuffer_clear (int /*<<< orphan*/ *) ; 
- char* strbuffer_value (int /*<<< orphan*/ *) ; 
- scalar_t__ strcmp (char const*,char*) ; 
+
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+struct TYPE_11__ {scalar_t__ token; int saved_text; } ;
+typedef TYPE_1__ lex_t ;
+typedef int json_error_t ;
+
+
+ int STREAM_STATE_EOF ;
+ int STREAM_STATE_ERROR ;
+ scalar_t__ TOKEN_EOF ;
+ int TOKEN_FALSE ;
+ void* TOKEN_INVALID ;
+ int TOKEN_NULL ;
+ scalar_t__ TOKEN_STRING ;
+ int TOKEN_TRUE ;
+ scalar_t__ l_isalpha (int) ;
+ scalar_t__ l_isdigit (int) ;
+ int lex_free_string (TYPE_1__*) ;
+ int lex_get (TYPE_1__*,int *) ;
+ int lex_get_save (TYPE_1__*,int *) ;
+ int lex_save (TYPE_1__*,int) ;
+ int lex_save_cached (TYPE_1__*) ;
+ scalar_t__ lex_scan_number (TYPE_1__*,int,int *) ;
+ int lex_scan_string (TYPE_1__*,int *) ;
+ int lex_unget_unsave (TYPE_1__*,int) ;
+ int strbuffer_clear (int *) ;
+ char* strbuffer_value (int *) ;
+ scalar_t__ strcmp (char const*,char*) ;
 
 __attribute__((used)) static int lex_scan(lex_t *lex, json_error_t *error)
 {
@@ -75,7 +75,7 @@ __attribute__((used)) static int lex_scan(lex_t *lex, json_error_t *error)
     }
 
     else if(l_isalpha(c)) {
-        /* eat up the whole identifier for clearer error messages */
+
         const char *saved_text;
 
         do
@@ -96,8 +96,8 @@ __attribute__((used)) static int lex_scan(lex_t *lex, json_error_t *error)
     }
 
     else {
-        /* save the rest of the input UTF-8 sequence to get an error
-           message of valid UTF-8 */
+
+
         lex_save_cached(lex);
         lex->token = TOKEN_INVALID;
     }

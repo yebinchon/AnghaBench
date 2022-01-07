@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_7__ {TYPE_1__* methods; } ;
-typedef  TYPE_2__ isc_task_t ;
-typedef  int /*<<< orphan*/  isc_event_t ;
-struct TYPE_6__ {int /*<<< orphan*/  (* sendanddetach ) (TYPE_2__**,int /*<<< orphan*/ **) ;} ;
+typedef TYPE_2__ isc_task_t ;
+typedef int isc_event_t ;
+struct TYPE_6__ {int (* sendanddetach ) (TYPE_2__**,int **) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ENSURE (int) ; 
- scalar_t__ ISCAPI_TASK_VALID (TYPE_2__*) ; 
- int /*<<< orphan*/  REQUIRE (int) ; 
- int /*<<< orphan*/  stub1 (TYPE_2__**,int /*<<< orphan*/ **) ; 
+
+ int ENSURE (int) ;
+ scalar_t__ ISCAPI_TASK_VALID (TYPE_2__*) ;
+ int REQUIRE (int) ;
+ int stub1 (TYPE_2__**,int **) ;
 
 void
 isc_task_sendanddetach(isc_task_t **taskp, isc_event_t **eventp) {
-	REQUIRE(taskp != NULL && ISCAPI_TASK_VALID(*taskp));
-	REQUIRE(eventp != NULL && *eventp != NULL);
+ REQUIRE(taskp != ((void*)0) && ISCAPI_TASK_VALID(*taskp));
+ REQUIRE(eventp != ((void*)0) && *eventp != ((void*)0));
 
-	(*taskp)->methods->sendanddetach(taskp, eventp);
+ (*taskp)->methods->sendanddetach(taskp, eventp);
 
-	ENSURE(*taskp == NULL && *eventp == NULL);
+ ENSURE(*taskp == ((void*)0) && *eventp == ((void*)0));
 }

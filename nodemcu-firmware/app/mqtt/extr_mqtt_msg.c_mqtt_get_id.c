@@ -1,29 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint16_t ;
 
-/* Variables and functions */
-#define  MQTT_MSG_TYPE_PUBACK 135 
-#define  MQTT_MSG_TYPE_PUBCOMP 134 
-#define  MQTT_MSG_TYPE_PUBLISH 133 
-#define  MQTT_MSG_TYPE_PUBREC 132 
-#define  MQTT_MSG_TYPE_PUBREL 131 
-#define  MQTT_MSG_TYPE_SUBACK 130 
-#define  MQTT_MSG_TYPE_SUBSCRIBE 129 
-#define  MQTT_MSG_TYPE_UNSUBACK 128 
- int /*<<< orphan*/  mqtt_get_qos (int*) ; 
- int mqtt_get_type (int*) ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint16_t ;
+ int mqtt_get_qos (int*) ;
+ int mqtt_get_type (int*) ;
 
 uint16_t mqtt_get_id(uint8_t* buffer, uint16_t buffer_length)
 {
@@ -32,7 +22,7 @@ uint16_t mqtt_get_id(uint8_t* buffer, uint16_t buffer_length)
 
   switch(mqtt_get_type(buffer))
   {
-    case MQTT_MSG_TYPE_PUBLISH:
+    case 133:
     {
       int i;
       int topiclen;
@@ -63,16 +53,16 @@ uint16_t mqtt_get_id(uint8_t* buffer, uint16_t buffer_length)
 
       return (buffer[i] << 8) | buffer[i + 1];
     }
-    case MQTT_MSG_TYPE_PUBACK:
-    case MQTT_MSG_TYPE_PUBREC:
-    case MQTT_MSG_TYPE_PUBREL:
-    case MQTT_MSG_TYPE_PUBCOMP:
-    case MQTT_MSG_TYPE_SUBACK:
-    case MQTT_MSG_TYPE_UNSUBACK:
-    case MQTT_MSG_TYPE_SUBSCRIBE:
+    case 135:
+    case 132:
+    case 131:
+    case 134:
+    case 130:
+    case 128:
+    case 129:
     {
-      // This requires the remaining length to be encoded in 1 byte,
-      // which it should be.
+
+
       if(buffer_length >= 4 && (buffer[1] & 0x80) == 0)
         return (buffer[2] << 8) | buffer[3];
       else

@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  OCTEON_CN30XX ; 
- int /*<<< orphan*/  OCTEON_CN31XX ; 
- int /*<<< orphan*/  OCTEON_CN50XX ; 
- int /*<<< orphan*/  OCTEON_CN52XX ; 
- int /*<<< orphan*/  OCTEON_CN56XX ; 
- scalar_t__ OCTEON_IS_MODEL (int /*<<< orphan*/ ) ; 
- int __cvmx_helper_board_usb_get_num_ports (int) ; 
+ int OCTEON_CN30XX ;
+ int OCTEON_CN31XX ;
+ int OCTEON_CN50XX ;
+ int OCTEON_CN52XX ;
+ int OCTEON_CN56XX ;
+ scalar_t__ OCTEON_IS_MODEL (int ) ;
+ int __cvmx_helper_board_usb_get_num_ports (int) ;
 
 int cvmx_usb_get_num_ports(void)
 {

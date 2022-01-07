@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  video; int /*<<< orphan*/  sub; int /*<<< orphan*/  audio; } ;
-typedef  TYPE_1__ es_out_sys_t ;
-typedef  int /*<<< orphan*/  es_out_es_props_t ;
 
-/* Variables and functions */
-#define  AUDIO_ES 130 
-#define  SPU_ES 129 
-#define  VIDEO_ES 128 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int video; int sub; int audio; } ;
+typedef TYPE_1__ es_out_sys_t ;
+typedef int es_out_es_props_t ;
+
+
+
+
+
 
 __attribute__((used)) static es_out_es_props_t * GetPropsByCat( es_out_sys_t *p_sys, int i_cat )
 {
     switch( i_cat )
     {
-    case AUDIO_ES:
+    case 130:
         return &p_sys->audio;
-    case SPU_ES:
+    case 129:
         return &p_sys->sub;
-    case VIDEO_ES:
+    case 128:
         return &p_sys->video;
     }
-    return NULL;
+    return ((void*)0);
 }

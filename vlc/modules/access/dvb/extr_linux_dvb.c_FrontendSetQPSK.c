@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_object_t ;
-struct TYPE_6__ {int /*<<< orphan*/  fec_inner; void* symbol_rate; } ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int vlc_object_t ;
+struct TYPE_6__ {int fec_inner; void* symbol_rate; } ;
 struct TYPE_7__ {TYPE_1__ qpsk; } ;
-struct dvb_frontend_parameters {int frequency; TYPE_2__ u; int /*<<< orphan*/  inversion; } ;
-struct dvb_frontend_event {int frequency; TYPE_2__ u; int /*<<< orphan*/  inversion; } ;
-struct TYPE_8__ {int /*<<< orphan*/  i_frontend_handle; } ;
-typedef  TYPE_3__ dvb_sys_t ;
+struct dvb_frontend_parameters {int frequency; TYPE_2__ u; int inversion; } ;
+struct dvb_frontend_event {int frequency; TYPE_2__ u; int inversion; } ;
+struct TYPE_8__ {int i_frontend_handle; } ;
+typedef TYPE_3__ dvb_sys_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DecodeInversion (int /*<<< orphan*/ *) ; 
- scalar_t__ DoDiseqc (int /*<<< orphan*/ *,TYPE_3__*) ; 
- scalar_t__ EWOULDBLOCK ; 
- int /*<<< orphan*/  FEC_NONE ; 
- int /*<<< orphan*/  FE_GET_EVENT ; 
- int /*<<< orphan*/  FE_SET_FRONTEND ; 
- int VLC_EGENERIC ; 
- int VLC_SUCCESS ; 
- scalar_t__ errno ; 
- scalar_t__ ioctl (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct dvb_frontend_parameters*) ; 
- int /*<<< orphan*/  msg_Dbg (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  msg_Err (int /*<<< orphan*/ *,char*,...) ; 
- void* var_GetInteger (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  var_SetInteger (int /*<<< orphan*/ *,char*,int) ; 
- int vlc_strerror_c (scalar_t__) ; 
+
+ int DecodeInversion (int *) ;
+ scalar_t__ DoDiseqc (int *,TYPE_3__*) ;
+ scalar_t__ EWOULDBLOCK ;
+ int FEC_NONE ;
+ int FE_GET_EVENT ;
+ int FE_SET_FRONTEND ;
+ int VLC_EGENERIC ;
+ int VLC_SUCCESS ;
+ scalar_t__ errno ;
+ scalar_t__ ioctl (int ,int ,struct dvb_frontend_parameters*) ;
+ int msg_Dbg (int *,char*,int) ;
+ int msg_Err (int *,char*,...) ;
+ void* var_GetInteger (int *,char*) ;
+ int var_SetInteger (int *,char*,int) ;
+ int vlc_strerror_c (scalar_t__) ;
 
 __attribute__((used)) static int FrontendSetQPSK( vlc_object_t *p_access, dvb_sys_t *p_sys )
 {
@@ -44,13 +44,13 @@ __attribute__((used)) static int FrontendSetQPSK( vlc_object_t *p_access, dvb_sy
     int i_val;
     int i_frequency, i_lnb_slof = 0, i_lnb_lof1, i_lnb_lof2 = 0;
 
-    /* Prepare the fep structure */
+
     i_frequency = var_GetInteger( p_access, "dvb-frequency" );
 
     i_val = var_GetInteger( p_access, "dvb-lnb-lof1" );
     if( i_val == 0 )
     {
-        /* Automatic mode. */
+
         if ( i_frequency >= 950000 && i_frequency <= 2150000 )
         {
             msg_Dbg( p_access, "frequency %d is in IF-band", i_frequency );
@@ -121,7 +121,7 @@ __attribute__((used)) static int FrontendSetQPSK( vlc_object_t *p_access, dvb_sy
         return VLC_EGENERIC;
     }
 
-    /* Empty the event queue */
+
     for( ; ; )
     {
         struct dvb_frontend_event event;
@@ -130,7 +130,7 @@ __attribute__((used)) static int FrontendSetQPSK( vlc_object_t *p_access, dvb_sy
             break;
     }
 
-    /* Now send it all to the frontend device */
+
     if( ioctl( p_sys->i_frontend_handle, FE_SET_FRONTEND, &fep ) < 0 )
     {
         msg_Err( p_access, "frontend error: %s", vlc_strerror_c(errno) );

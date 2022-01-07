@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {size_t curlen; size_t length; unsigned char* buf; } ;
-typedef  TYPE_1__ _picohash_sha256_ctx_t ;
+typedef TYPE_1__ _picohash_sha256_ctx_t ;
 
-/* Variables and functions */
- size_t PICOHASH_SHA256_BLOCK_LENGTH ; 
- int /*<<< orphan*/  _picohash_sha256_compress (TYPE_1__*,unsigned char*) ; 
- int /*<<< orphan*/  memcpy (unsigned char*,unsigned char const*,size_t) ; 
+
+ size_t PICOHASH_SHA256_BLOCK_LENGTH ;
+ int _picohash_sha256_compress (TYPE_1__*,unsigned char*) ;
+ int memcpy (unsigned char*,unsigned char const*,size_t) ;
 
 inline void _picohash_sha256_update(_picohash_sha256_ctx_t *ctx, const void *data, size_t len)
 {

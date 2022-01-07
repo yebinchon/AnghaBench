@@ -1,61 +1,61 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- int dobytecode (int /*<<< orphan*/ *,char**) ; 
- int /*<<< orphan*/  dojitcmd (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  dojitopt (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  dolibrary (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  dostring (int /*<<< orphan*/ *,char const*,char*) ; 
- int /*<<< orphan*/  lua_assert (int) ; 
+
+
+
+typedef int lua_State ;
+
+
+ int dobytecode (int *,char**) ;
+ int dojitcmd (int *,char const*) ;
+ int dojitopt (int *,char*) ;
+ int dolibrary (int *,char const*) ;
+ int dostring (int *,char const*,char*) ;
+ int lua_assert (int) ;
 
 __attribute__((used)) static int runargs(lua_State *L, char **argv, int n)
 {
   int i;
   for (i = 1; i < n; i++) {
-    if (argv[i] == NULL) continue;
+    if (argv[i] == ((void*)0)) continue;
     lua_assert(argv[i][0] == '-');
-    switch (argv[i][1]) {  /* option */
+    switch (argv[i][1]) {
     case 'e': {
       const char *chunk = argv[i] + 2;
       if (*chunk == '\0') chunk = argv[++i];
-      lua_assert(chunk != NULL);
+      lua_assert(chunk != ((void*)0));
       if (dostring(L, chunk, "=(command line)") != 0)
-	return 1;
+ return 1;
       break;
       }
     case 'l': {
       const char *filename = argv[i] + 2;
       if (*filename == '\0') filename = argv[++i];
-      lua_assert(filename != NULL);
+      lua_assert(filename != ((void*)0));
       if (dolibrary(L, filename))
-	return 1;  /* stop if file fails */
+ return 1;
       break;
       }
-    case 'j': {  /* LuaJIT extension */
+    case 'j': {
       const char *cmd = argv[i] + 2;
       if (*cmd == '\0') cmd = argv[++i];
-      lua_assert(cmd != NULL);
+      lua_assert(cmd != ((void*)0));
       if (dojitcmd(L, cmd))
-	return 1;
+ return 1;
       break;
       }
-    case 'O':  /* LuaJIT extension */
+    case 'O':
       if (dojitopt(L, argv[i] + 2))
-	return 1;
+ return 1;
       break;
-    case 'b':  /* LuaJIT extension */
+    case 'b':
       return dobytecode(L, argv+i);
     default: break;
     }

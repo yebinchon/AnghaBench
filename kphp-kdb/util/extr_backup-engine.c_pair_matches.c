@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct file_info {scalar_t__ fsize; scalar_t__ head_crc32; int /*<<< orphan*/  tail_data; int /*<<< orphan*/  fd; int /*<<< orphan*/  filename; } ;
 
-/* Variables and functions */
- int BSIZE ; 
- int /*<<< orphan*/  Buffer ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ lseek (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ) ; 
- scalar_t__ memcmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int read (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int strlen (int /*<<< orphan*/ ) ; 
+
+
+
+struct file_info {scalar_t__ fsize; scalar_t__ head_crc32; int tail_data; int fd; int filename; } ;
+
+
+ int BSIZE ;
+ int Buffer ;
+ int SEEK_SET ;
+ int assert (int) ;
+ scalar_t__ lseek (int ,scalar_t__,int ) ;
+ scalar_t__ memcmp (int ,int ,int) ;
+ int read (int ,int ,int) ;
+ int strlen (int ) ;
 
 __attribute__((used)) static int pair_matches (struct file_info *FS, struct file_info *FD) {
   int l1 = strlen (FS->filename), l2 = strlen (FD->filename), r;

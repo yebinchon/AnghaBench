@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {scalar_t__ pVtab; } ;
 struct TYPE_7__ {scalar_t__ pStmt; int bSeekStmt; TYPE_1__ base; } ;
-struct TYPE_6__ {scalar_t__ pSeekStmt; int /*<<< orphan*/  db; int /*<<< orphan*/  zReadExprlist; } ;
-typedef  TYPE_2__ Fts3Table ;
-typedef  TYPE_3__ Fts3Cursor ;
+struct TYPE_6__ {scalar_t__ pSeekStmt; int db; int zReadExprlist; } ;
+typedef TYPE_2__ Fts3Table ;
+typedef TYPE_3__ Fts3Cursor ;
 
-/* Variables and functions */
- int SQLITE_NOMEM ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  SQLITE_PREPARE_PERSISTENT ; 
- int /*<<< orphan*/  sqlite3_free (char*) ; 
- char* sqlite3_mprintf (char*,int /*<<< orphan*/ ) ; 
- int sqlite3_prepare_v3 (int /*<<< orphan*/ ,char*,int,int /*<<< orphan*/ ,scalar_t__*,int /*<<< orphan*/ ) ; 
+
+ int SQLITE_NOMEM ;
+ int SQLITE_OK ;
+ int SQLITE_PREPARE_PERSISTENT ;
+ int sqlite3_free (char*) ;
+ char* sqlite3_mprintf (char*,int ) ;
+ int sqlite3_prepare_v3 (int ,char*,int,int ,scalar_t__*,int ) ;
 
 __attribute__((used)) static int fts3CursorSeekStmt(Fts3Cursor *pCsr){
   int rc = SQLITE_OK;

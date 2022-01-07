@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct locfile {int dummy; } ;
-typedef  int /*<<< orphan*/  block ;
+typedef int block ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OP_IS_CALL_PSEUDO ; 
- int /*<<< orphan*/  UNKNOWN_LOCATION ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- scalar_t__ block_has_main (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  block_has_only_binders_and_imports (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int jq_parse (struct locfile*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  locfile_locate (struct locfile*,int /*<<< orphan*/ ,char*) ; 
+
+ int OP_IS_CALL_PSEUDO ;
+ int UNKNOWN_LOCATION ;
+ int assert (int ) ;
+ scalar_t__ block_has_main (int ) ;
+ int block_has_only_binders_and_imports (int ,int ) ;
+ int jq_parse (struct locfile*,int *) ;
+ int locfile_locate (struct locfile*,int ,char*) ;
 
 int jq_parse_library(struct locfile* locations, block* answer) {
   int errs = jq_parse(locations, answer);

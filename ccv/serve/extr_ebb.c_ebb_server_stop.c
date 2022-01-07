@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {char* port; scalar_t__ listening; int /*<<< orphan*/  fd; int /*<<< orphan*/  connection_watcher; int /*<<< orphan*/  loop; } ;
-typedef  TYPE_1__ ebb_server ;
 
-/* Variables and functions */
- int /*<<< orphan*/  close (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ev_io_stop (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
 
-void 
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {char* port; scalar_t__ listening; int fd; int connection_watcher; int loop; } ;
+typedef TYPE_1__ ebb_server ;
+
+
+ int close (int ) ;
+ int ev_io_stop (int ,int *) ;
+
+void
 ebb_server_stop(ebb_server *server)
 {
   if(server->listening) {

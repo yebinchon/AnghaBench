@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char uint8_t ;
-typedef  int int64_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef char uint8_t ;
+typedef int int64_t ;
 struct TYPE_3__ {char* buf; int buf_size; } ;
-typedef  TYPE_1__ AVProbeData ;
+typedef TYPE_1__ AVProbeData ;
 
-/* Variables and functions */
- int AVPROBE_SCORE_EXTENSION ; 
- int AVPROBE_SCORE_MAX ; 
- scalar_t__ AV_RL32 (char const*) ; 
- scalar_t__ TAG_MPCK ; 
- int bs_get_v (char const**) ; 
+
+ int AVPROBE_SCORE_EXTENSION ;
+ int AVPROBE_SCORE_MAX ;
+ scalar_t__ AV_RL32 (char const*) ;
+ scalar_t__ TAG_MPCK ;
+ int bs_get_v (char const**) ;
 
 __attribute__((used)) static int mpc8_probe(const AVProbeData *p)
 {
@@ -42,11 +42,11 @@ __attribute__((used)) static int mpc8_probe(const AVProbeData *p)
         if (size < 2)
             return 0;
         if (size >= bs_end - bs + 2)
-            return AVPROBE_SCORE_EXTENSION - 1; // seems to be valid MPC but no header yet
+            return AVPROBE_SCORE_EXTENSION - 1;
         if (header_found) {
             if (size < 11 || size > 28)
                 return 0;
-            if (!AV_RL32(bs)) //zero CRC is invalid
+            if (!AV_RL32(bs))
                 return 0;
             return AVPROBE_SCORE_MAX;
         } else {

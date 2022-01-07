@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  int64_t ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int int64_t ;
 struct TYPE_9__ {TYPE_2__* priv; } ;
-typedef  TYPE_3__ VC_CONTAINER_T ;
-typedef  scalar_t__ VC_CONTAINER_STATUS_T ;
+typedef TYPE_3__ VC_CONTAINER_T ;
+typedef scalar_t__ VC_CONTAINER_STATUS_T ;
 struct TYPE_8__ {TYPE_1__* module; } ;
-struct TYPE_7__ {int /*<<< orphan*/ * elements_list; } ;
-typedef  int /*<<< orphan*/  MKV_ELEMENT_T ;
-typedef  int /*<<< orphan*/  MKV_ELEMENT_ID_T ;
+struct TYPE_7__ {int * elements_list; } ;
+typedef int MKV_ELEMENT_T ;
+typedef int MKV_ELEMENT_ID_T ;
 
-/* Variables and functions */
- scalar_t__ VC_CONTAINER_SUCCESS ; 
- scalar_t__ mkv_read_element_data (TYPE_3__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ mkv_read_element_header (TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
+
+ scalar_t__ VC_CONTAINER_SUCCESS ;
+ scalar_t__ mkv_read_element_data (TYPE_3__*,int *,int ,int ) ;
+ scalar_t__ mkv_read_element_header (TYPE_3__*,int ,int *,int *,int ,int **) ;
 
 __attribute__((used)) static VC_CONTAINER_STATUS_T mkv_read_element(VC_CONTAINER_T *p_ctx,
    int64_t size, MKV_ELEMENT_ID_T parent_id)

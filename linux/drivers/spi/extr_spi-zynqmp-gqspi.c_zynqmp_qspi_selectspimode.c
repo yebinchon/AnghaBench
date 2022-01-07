@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u8 ;
-typedef  int /*<<< orphan*/  u32 ;
-struct zynqmp_qspi {int /*<<< orphan*/  dev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GQSPI_GENFIFO_MODE_DUALSPI ; 
- int /*<<< orphan*/  GQSPI_GENFIFO_MODE_QUADSPI ; 
- int /*<<< orphan*/  GQSPI_GENFIFO_MODE_SPI ; 
-#define  GQSPI_SELECT_MODE_DUALSPI 130 
-#define  GQSPI_SELECT_MODE_QUADSPI 129 
-#define  GQSPI_SELECT_MODE_SPI 128 
- int /*<<< orphan*/  dev_warn (int /*<<< orphan*/ ,char*) ; 
+
+
+
+typedef int u8 ;
+typedef int u32 ;
+struct zynqmp_qspi {int dev; } ;
+
+
+ int GQSPI_GENFIFO_MODE_DUALSPI ;
+ int GQSPI_GENFIFO_MODE_QUADSPI ;
+ int GQSPI_GENFIFO_MODE_SPI ;
+
+
+
+ int dev_warn (int ,char*) ;
 
 __attribute__((used)) static inline u32 zynqmp_qspi_selectspimode(struct zynqmp_qspi *xqspi,
-						u8 spimode)
+      u8 spimode)
 {
-	u32 mask = 0;
+ u32 mask = 0;
 
-	switch (spimode) {
-	case GQSPI_SELECT_MODE_DUALSPI:
-		mask = GQSPI_GENFIFO_MODE_DUALSPI;
-		break;
-	case GQSPI_SELECT_MODE_QUADSPI:
-		mask = GQSPI_GENFIFO_MODE_QUADSPI;
-		break;
-	case GQSPI_SELECT_MODE_SPI:
-		mask = GQSPI_GENFIFO_MODE_SPI;
-		break;
-	default:
-		dev_warn(xqspi->dev, "Invalid SPI mode\n");
-	}
+ switch (spimode) {
+ case 130:
+  mask = GQSPI_GENFIFO_MODE_DUALSPI;
+  break;
+ case 129:
+  mask = GQSPI_GENFIFO_MODE_QUADSPI;
+  break;
+ case 128:
+  mask = GQSPI_GENFIFO_MODE_SPI;
+  break;
+ default:
+  dev_warn(xqspi->dev, "Invalid SPI mode\n");
+ }
 
-	return mask;
+ return mask;
 }

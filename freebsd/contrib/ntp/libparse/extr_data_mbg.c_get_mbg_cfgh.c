@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * health; int /*<<< orphan*/ * cfg; int /*<<< orphan*/  t0a; int /*<<< orphan*/  tot_63; int /*<<< orphan*/  tot_51; int /*<<< orphan*/  valid; scalar_t__ csum; } ;
-typedef  scalar_t__ CSUM ;
-typedef  TYPE_1__ CFGH ;
 
-/* Variables and functions */
- int N_SVNO_GPS ; 
- int /*<<< orphan*/  get_lsb_int16 (unsigned char**) ; 
- scalar_t__ get_lsb_short (unsigned char**) ; 
- int /*<<< orphan*/  get_mbg_cfg (unsigned char**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  get_mbg_health (unsigned char**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  get_mbg_tgps (unsigned char**,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * health; int * cfg; int t0a; int tot_63; int tot_51; int valid; scalar_t__ csum; } ;
+typedef scalar_t__ CSUM ;
+typedef TYPE_1__ CFGH ;
+
+
+ int N_SVNO_GPS ;
+ int get_lsb_int16 (unsigned char**) ;
+ scalar_t__ get_lsb_short (unsigned char**) ;
+ int get_mbg_cfg (unsigned char**,int *) ;
+ int get_mbg_health (unsigned char**,int *) ;
+ int get_mbg_tgps (unsigned char**,int *) ;
 
 void
 get_mbg_cfgh(
-	unsigned char **buffpp,
-	CFGH *cfghp
-	)
+ unsigned char **buffpp,
+ CFGH *cfghp
+ )
 {
   int i;
 

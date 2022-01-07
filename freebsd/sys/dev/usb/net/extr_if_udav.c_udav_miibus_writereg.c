@@ -1,68 +1,68 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-struct udav_softc {int /*<<< orphan*/  sc_mtx; } ;
-typedef  int /*<<< orphan*/  device_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  UDAV_CLRBIT (struct udav_softc*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  UDAV_EPAR ; 
- int UDAV_EPAR_EROA_MASK ; 
- int UDAV_EPAR_PHY_ADR0 ; 
- int /*<<< orphan*/  UDAV_EPCR ; 
- int UDAV_EPCR_EPOS ; 
- int UDAV_EPCR_ERPRW ; 
- int /*<<< orphan*/  UDAV_EPDRL ; 
- int /*<<< orphan*/  UDAV_LOCK (struct udav_softc*) ; 
- int /*<<< orphan*/  UDAV_UNLOCK (struct udav_softc*) ; 
- struct udav_softc* device_get_softc (int /*<<< orphan*/ ) ; 
- int mtx_owned (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  udav_csr_write (struct udav_softc*,int /*<<< orphan*/ ,int*,int) ; 
- int /*<<< orphan*/  udav_csr_write1 (struct udav_softc*,int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int uint8_t ;
+struct udav_softc {int sc_mtx; } ;
+typedef int device_t ;
+
+
+ int UDAV_CLRBIT (struct udav_softc*,int ,int) ;
+ int UDAV_EPAR ;
+ int UDAV_EPAR_EROA_MASK ;
+ int UDAV_EPAR_PHY_ADR0 ;
+ int UDAV_EPCR ;
+ int UDAV_EPCR_EPOS ;
+ int UDAV_EPCR_ERPRW ;
+ int UDAV_EPDRL ;
+ int UDAV_LOCK (struct udav_softc*) ;
+ int UDAV_UNLOCK (struct udav_softc*) ;
+ struct udav_softc* device_get_softc (int ) ;
+ int mtx_owned (int *) ;
+ int udav_csr_write (struct udav_softc*,int ,int*,int) ;
+ int udav_csr_write1 (struct udav_softc*,int ,int) ;
 
 __attribute__((used)) static int
 udav_miibus_writereg(device_t dev, int phy, int reg, int data)
 {
-	struct udav_softc *sc = device_get_softc(dev);
-	uint8_t val[2];
-	int locked;
+ struct udav_softc *sc = device_get_softc(dev);
+ uint8_t val[2];
+ int locked;
 
-	/* XXX: one PHY only for the internal PHY */
-	if (phy != 0)
-		return (0);
 
-	locked = mtx_owned(&sc->sc_mtx);
-	if (!locked)
-		UDAV_LOCK(sc);
+ if (phy != 0)
+  return (0);
 
-	/* select internal PHY and set PHY register address */
-	udav_csr_write1(sc, UDAV_EPAR,
-	    UDAV_EPAR_PHY_ADR0 | (reg & UDAV_EPAR_EROA_MASK));
+ locked = mtx_owned(&sc->sc_mtx);
+ if (!locked)
+  UDAV_LOCK(sc);
 
-	/* put the value to the data registers */
-	val[0] = (data & 0xff);
-	val[1] = (data >> 8) & 0xff;
-	udav_csr_write(sc, UDAV_EPDRL, val, 2);
 
-	/* select PHY operation and start write command */
-	udav_csr_write1(sc, UDAV_EPCR, UDAV_EPCR_EPOS | UDAV_EPCR_ERPRW);
+ udav_csr_write1(sc, UDAV_EPAR,
+     UDAV_EPAR_PHY_ADR0 | (reg & UDAV_EPAR_EROA_MASK));
 
-	/* XXX: should we wait? */
 
-	/* end write command */
-	UDAV_CLRBIT(sc, UDAV_EPCR, UDAV_EPCR_ERPRW);
+ val[0] = (data & 0xff);
+ val[1] = (data >> 8) & 0xff;
+ udav_csr_write(sc, UDAV_EPDRL, val, 2);
 
-	if (!locked)
-		UDAV_UNLOCK(sc);
-	return (0);
+
+ udav_csr_write1(sc, UDAV_EPCR, UDAV_EPCR_EPOS | UDAV_EPCR_ERPRW);
+
+
+
+
+ UDAV_CLRBIT(sc, UDAV_EPCR, UDAV_EPCR_ERPRW);
+
+ if (!locked)
+  UDAV_UNLOCK(sc);
+ return (0);
 }

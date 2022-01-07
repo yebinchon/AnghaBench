@@ -1,73 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct bpf_verifier_env {int seen_direct_write; TYPE_1__* prog; } ;
 struct bpf_call_arg_meta {int pkt_access; } ;
-typedef  enum bpf_access_type { ____Placeholder_bpf_access_type } bpf_access_type ;
+typedef enum bpf_access_type { ____Placeholder_bpf_access_type } bpf_access_type ;
 struct TYPE_2__ {int type; } ;
-
-/* Variables and functions */
-#define  BPF_PROG_TYPE_CGROUP_SKB 140 
-#define  BPF_PROG_TYPE_CGROUP_SOCKOPT 139 
-#define  BPF_PROG_TYPE_FLOW_DISSECTOR 138 
-#define  BPF_PROG_TYPE_LWT_IN 137 
-#define  BPF_PROG_TYPE_LWT_OUT 136 
-#define  BPF_PROG_TYPE_LWT_SEG6LOCAL 135 
-#define  BPF_PROG_TYPE_LWT_XMIT 134 
-#define  BPF_PROG_TYPE_SCHED_ACT 133 
-#define  BPF_PROG_TYPE_SCHED_CLS 132 
-#define  BPF_PROG_TYPE_SK_MSG 131 
-#define  BPF_PROG_TYPE_SK_REUSEPORT 130 
-#define  BPF_PROG_TYPE_SK_SKB 129 
-#define  BPF_PROG_TYPE_XDP 128 
- int BPF_WRITE ; 
+ int BPF_WRITE ;
 
 __attribute__((used)) static bool may_access_direct_pkt_data(struct bpf_verifier_env *env,
-				       const struct bpf_call_arg_meta *meta,
-				       enum bpf_access_type t)
+           const struct bpf_call_arg_meta *meta,
+           enum bpf_access_type t)
 {
-	switch (env->prog->type) {
-	/* Program types only with direct read access go here! */
-	case BPF_PROG_TYPE_LWT_IN:
-	case BPF_PROG_TYPE_LWT_OUT:
-	case BPF_PROG_TYPE_LWT_SEG6LOCAL:
-	case BPF_PROG_TYPE_SK_REUSEPORT:
-	case BPF_PROG_TYPE_FLOW_DISSECTOR:
-	case BPF_PROG_TYPE_CGROUP_SKB:
-		if (t == BPF_WRITE)
-			return false;
-		/* fallthrough */
+ switch (env->prog->type) {
 
-	/* Program types with direct read + write access go here! */
-	case BPF_PROG_TYPE_SCHED_CLS:
-	case BPF_PROG_TYPE_SCHED_ACT:
-	case BPF_PROG_TYPE_XDP:
-	case BPF_PROG_TYPE_LWT_XMIT:
-	case BPF_PROG_TYPE_SK_SKB:
-	case BPF_PROG_TYPE_SK_MSG:
-		if (meta)
-			return meta->pkt_access;
+ case 137:
+ case 136:
+ case 135:
+ case 130:
+ case 138:
+ case 140:
+  if (t == BPF_WRITE)
+   return 0;
 
-		env->seen_direct_write = true;
-		return true;
 
-	case BPF_PROG_TYPE_CGROUP_SOCKOPT:
-		if (t == BPF_WRITE)
-			env->seen_direct_write = true;
 
-		return true;
+ case 132:
+ case 133:
+ case 128:
+ case 134:
+ case 129:
+ case 131:
+  if (meta)
+   return meta->pkt_access;
 
-	default:
-		return false;
-	}
+  env->seen_direct_write = 1;
+  return 1;
+
+ case 139:
+  if (t == BPF_WRITE)
+   env->seen_direct_write = 1;
+
+  return 1;
+
+ default:
+  return 0;
+ }
 }

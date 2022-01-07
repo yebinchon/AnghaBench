@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lzma_ret ;
-typedef  int /*<<< orphan*/  lzma_next_coder ;
-typedef  int /*<<< orphan*/  lzma_filter_info ;
-typedef  int /*<<< orphan*/  lzma_allocator ;
 
-/* Variables and functions */
- int /*<<< orphan*/  armthumb_coder_init (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int) ; 
+
+
+
+typedef int lzma_ret ;
+typedef int lzma_next_coder ;
+typedef int lzma_filter_info ;
+typedef int lzma_allocator ;
+
+
+ int armthumb_coder_init (int *,int const*,int const*,int) ;
 
 extern lzma_ret
 lzma_simple_armthumb_decoder_init(lzma_next_coder *next,
-		const lzma_allocator *allocator,
-		const lzma_filter_info *filters)
+  const lzma_allocator *allocator,
+  const lzma_filter_info *filters)
 {
-	return armthumb_coder_init(next, allocator, filters, false);
+ return armthumb_coder_init(next, allocator, filters, 0);
 }

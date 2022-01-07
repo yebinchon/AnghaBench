@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ LONG ;
-typedef  scalar_t__ HRESULT ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  int DWORD ;
-typedef  char CHAR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSOCSTR_EXECUTABLE ; 
- int /*<<< orphan*/  ERROR_FILE_NOT_FOUND ; 
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  HKEY_CLASSES_ROOT ; 
- scalar_t__ HRESULT_FROM_WIN32 (int /*<<< orphan*/ ) ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  REG_SZ ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- scalar_t__ RegCreateKeyA (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *) ; 
- scalar_t__ RegSetValueA (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SHDeleteKeyA (int /*<<< orphan*/ ,char const*) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  expect_hr (scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  lstrlenA (char const*) ; 
- int /*<<< orphan*/  ok (int,char*,char*) ; 
- scalar_t__ pAssocQueryStringA (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*,char*,char*,int*) ; 
- int /*<<< orphan*/  skip (char*) ; 
- int /*<<< orphan*/ * strstr (char*,char const*) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
+
+
+
+typedef scalar_t__ LONG ;
+typedef scalar_t__ HRESULT ;
+typedef int HKEY ;
+typedef int DWORD ;
+typedef char CHAR ;
+
+
+ int ASSOCSTR_EXECUTABLE ;
+ int ERROR_FILE_NOT_FOUND ;
+ scalar_t__ ERROR_SUCCESS ;
+ int HKEY_CLASSES_ROOT ;
+ scalar_t__ HRESULT_FROM_WIN32 (int ) ;
+ int MAX_PATH ;
+ int REG_SZ ;
+ int RegCloseKey (int ) ;
+ scalar_t__ RegCreateKeyA (int ,char const*,int *) ;
+ scalar_t__ RegSetValueA (int ,int *,int ,char const*,int ) ;
+ int SHDeleteKeyA (int ,char const*) ;
+ scalar_t__ S_OK ;
+ int expect_hr (scalar_t__,scalar_t__) ;
+ int lstrlenA (char const*) ;
+ int ok (int,char*,char*) ;
+ scalar_t__ pAssocQueryStringA (int ,int ,char const*,char*,char*,int*) ;
+ int skip (char*) ;
+ int * strstr (char*,char const*) ;
+ int win_skip (char*) ;
 
 __attribute__((used)) static void test_getstring_no_extra(void)
 {
@@ -73,7 +73,7 @@ __attribute__((used)) static void test_getstring_no_extra(void)
         return;
     }
 
-    ret = RegSetValueA(hkey, NULL, REG_SZ, winetestfile, lstrlenA(winetestfile));
+    ret = RegSetValueA(hkey, ((void*)0), REG_SZ, winetestfile, lstrlenA(winetestfile));
     RegCloseKey(hkey);
     if (ret != ERROR_SUCCESS)
     {
@@ -88,7 +88,7 @@ __attribute__((used)) static void test_getstring_no_extra(void)
         goto cleanup;
     }
 
-    ret = RegSetValueA(hkey, NULL, REG_SZ, action, lstrlenA(action));
+    ret = RegSetValueA(hkey, ((void*)0), REG_SZ, action, lstrlenA(action));
     RegCloseKey(hkey);
     if (ret != ERROR_SUCCESS)
     {
@@ -96,13 +96,13 @@ __attribute__((used)) static void test_getstring_no_extra(void)
         goto cleanup;
     }
 
-    hr = pAssocQueryStringA(0, ASSOCSTR_EXECUTABLE, dotWinetest, NULL, buf, &len);
+    hr = pAssocQueryStringA(0, ASSOCSTR_EXECUTABLE, dotWinetest, ((void*)0), buf, &len);
     ok(hr == S_OK ||
-       hr == HRESULT_FROM_WIN32(ERROR_FILE_NOT_FOUND), /* XP and W2K3 */
+       hr == HRESULT_FROM_WIN32(ERROR_FILE_NOT_FOUND),
        "Unexpected result : %08x\n", hr);
     hr = pAssocQueryStringA(0, ASSOCSTR_EXECUTABLE, dotWinetest, "foo", buf, &len);
     expect_hr(S_OK, hr);
-    ok(strstr(buf, action) != NULL,
+    ok(strstr(buf, action) != ((void*)0),
         "got '%s' (Expected result to include 'notepad.exe')\n", buf);
 
 cleanup:

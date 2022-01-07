@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct blk_buf {int dummy; } ;
-typedef  int /*<<< orphan*/  Char ;
+typedef int Char ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Dcp ; 
- int /*<<< orphan*/ * const* Dvp ; 
- scalar_t__ Dword (struct blk_buf*) ; 
- int /*<<< orphan*/  STRNULL ; 
- struct blk_buf* bb_alloc () ; 
- int /*<<< orphan*/ ** bb_finish (struct blk_buf*) ; 
- int /*<<< orphan*/  bb_free ; 
- int /*<<< orphan*/  cleanup_ignore (struct blk_buf*) ; 
- int /*<<< orphan*/  cleanup_push (struct blk_buf*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cleanup_until (struct blk_buf*) ; 
- scalar_t__ dolcnt ; 
- scalar_t__ dolp ; 
- int /*<<< orphan*/  unDgetC (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  unDredc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xfree (struct blk_buf*) ; 
+
+ int Dcp ;
+ int * const* Dvp ;
+ scalar_t__ Dword (struct blk_buf*) ;
+ int STRNULL ;
+ struct blk_buf* bb_alloc () ;
+ int ** bb_finish (struct blk_buf*) ;
+ int bb_free ;
+ int cleanup_ignore (struct blk_buf*) ;
+ int cleanup_push (struct blk_buf*,int ) ;
+ int cleanup_until (struct blk_buf*) ;
+ scalar_t__ dolcnt ;
+ scalar_t__ dolp ;
+ int unDgetC (int ) ;
+ int unDredc (int ) ;
+ int xfree (struct blk_buf*) ;
 
 __attribute__((used)) static Char **
 Dfix2(Char *const *v)
@@ -37,14 +37,14 @@ Dfix2(Char *const *v)
     Char **vec;
 
     Dvp = v;
-    Dcp = STRNULL;		/* Setup input vector for Dreadc */
+    Dcp = STRNULL;
     unDgetC(0);
-    unDredc(0);			/* Clear out any old peeks (at error) */
+    unDredc(0);
     dolp = 0;
-    dolcnt = 0;			/* Clear out residual $ expands (...) */
+    dolcnt = 0;
     cleanup_push(bb, bb_free);
     while (Dword(bb))
-	continue;
+ continue;
     cleanup_ignore(bb);
     cleanup_until(bb);
     vec = bb_finish(bb);

@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  pid_t ;
 
-/* Variables and functions */
- int EXEC_FAILED ; 
- int FORK_FAILED ; 
- int TASK_SUCCESS ; 
- int WEXITSTATUS (int) ; 
- int /*<<< orphan*/  WIFEXITED (int) ; 
- int /*<<< orphan*/  execvp (char const*,char* const*) ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fork () ; 
- int /*<<< orphan*/  perror (char*) ; 
- int /*<<< orphan*/  wait (int*) ; 
+
+
+
+typedef int pid_t ;
+
+
+ int EXEC_FAILED ;
+ int FORK_FAILED ;
+ int TASK_SUCCESS ;
+ int WEXITSTATUS (int) ;
+ int WIFEXITED (int) ;
+ int execvp (char const*,char* const*) ;
+ int exit (int) ;
+ int fork () ;
+ int perror (char*) ;
+ int wait (int*) ;
 
 __attribute__((used)) static int runTask(const char *taskname, char * const argv[], int *exit_status)
 {
-	pid_t pid;
-	int status;
+ pid_t pid;
+ int status;
 
-	switch (pid = fork()) {
-		case -1: /* Failed to fork */
-			perror("fork");
-			return FORK_FAILED; /* Failed to fork. */
-		case 0: /* Child process */
-			execvp(taskname, argv);
-			exit(42); /* Failed to run task. */
-		default: /* Parent process */
-			wait(&status); /* Block execution until finished. */
+ switch (pid = fork()) {
+  case -1:
+   perror("fork");
+   return FORK_FAILED;
+  case 0:
+   execvp(taskname, argv);
+   exit(42);
+  default:
+   wait(&status);
 
-			if (!WIFEXITED(status) || (status = WEXITSTATUS(status)) == 42) {
-				return EXEC_FAILED; /* Task failed to run. */
-			}
-			if (exit_status != NULL) *exit_status = status;
-			return TASK_SUCCESS; /* Success! */
-	}
+   if (!WIFEXITED(status) || (status = WEXITSTATUS(status)) == 42) {
+    return EXEC_FAILED;
+   }
+   if (exit_status != ((void*)0)) *exit_status = status;
+   return TASK_SUCCESS;
+ }
 }

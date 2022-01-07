@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct vo {struct vdpctx* priv; } ;
-struct vdpctx {scalar_t__ flip_queue; scalar_t__ flip_target; int num_output_surfaces; scalar_t__* output_surfaces; scalar_t__ rotation_surface; int /*<<< orphan*/ * mpvdp; struct osd_bitmap_surface* osd_surfaces; struct vdp_functions* vdp; } ;
-struct vdp_functions {int /*<<< orphan*/  (* bitmap_surface_destroy ) (scalar_t__) ;int /*<<< orphan*/  (* output_surface_destroy ) (scalar_t__) ;int /*<<< orphan*/  (* presentation_queue_target_destroy ) (scalar_t__) ;int /*<<< orphan*/  (* presentation_queue_destroy ) (scalar_t__) ;} ;
+struct vdpctx {scalar_t__ flip_queue; scalar_t__ flip_target; int num_output_surfaces; scalar_t__* output_surfaces; scalar_t__ rotation_surface; int * mpvdp; struct osd_bitmap_surface* osd_surfaces; struct vdp_functions* vdp; } ;
+struct vdp_functions {int (* bitmap_surface_destroy ) (scalar_t__) ;int (* output_surface_destroy ) (scalar_t__) ;int (* presentation_queue_target_destroy ) (scalar_t__) ;int (* presentation_queue_destroy ) (scalar_t__) ;} ;
 struct osd_bitmap_surface {scalar_t__ surface; } ;
-typedef  int /*<<< orphan*/  VdpStatus ;
+typedef int VdpStatus ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHECK_VDP_WARNING (struct vo*,char*) ; 
- int MAX_OSD_PARTS ; 
- scalar_t__ VDP_INVALID_HANDLE ; 
- int /*<<< orphan*/  free_video_specific (struct vo*) ; 
- int /*<<< orphan*/  mp_vdpau_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub1 (scalar_t__) ; 
- int /*<<< orphan*/  stub2 (scalar_t__) ; 
- int /*<<< orphan*/  stub3 (scalar_t__) ; 
- int /*<<< orphan*/  stub4 (scalar_t__) ; 
- int /*<<< orphan*/  stub5 (scalar_t__) ; 
+
+ int CHECK_VDP_WARNING (struct vo*,char*) ;
+ int MAX_OSD_PARTS ;
+ scalar_t__ VDP_INVALID_HANDLE ;
+ int free_video_specific (struct vo*) ;
+ int mp_vdpau_destroy (int *) ;
+ int stub1 (scalar_t__) ;
+ int stub2 (scalar_t__) ;
+ int stub3 (scalar_t__) ;
+ int stub4 (scalar_t__) ;
+ int stub5 (scalar_t__) ;
 
 __attribute__((used)) static void destroy_vdpau_objects(struct vo *vo)
 {
@@ -68,5 +68,5 @@ __attribute__((used)) static void destroy_vdpau_objects(struct vo *vo)
     }
 
     mp_vdpau_destroy(vc->mpvdp);
-    vc->mpvdp = NULL;
+    vc->mpvdp = ((void*)0);
 }

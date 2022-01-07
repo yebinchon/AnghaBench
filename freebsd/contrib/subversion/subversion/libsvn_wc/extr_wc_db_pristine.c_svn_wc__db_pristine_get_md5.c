@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {int /*<<< orphan*/  sdb; } ;
-typedef  TYPE_1__ svn_wc__db_wcroot_t ;
-typedef  int /*<<< orphan*/  svn_wc__db_t ;
-typedef  int /*<<< orphan*/  svn_sqlite__stmt_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
+
+
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+struct TYPE_10__ {int sdb; } ;
+typedef TYPE_1__ svn_wc__db_wcroot_t ;
+typedef int svn_wc__db_t ;
+typedef int svn_sqlite__stmt_t ;
+typedef int svn_error_t ;
 struct TYPE_11__ {scalar_t__ kind; } ;
-typedef  TYPE_2__ svn_checksum_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+typedef TYPE_2__ svn_checksum_t ;
+typedef int svn_boolean_t ;
+typedef int apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  STMT_SELECT_PRISTINE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_ASSERT (int) ; 
- int /*<<< orphan*/  SVN_ERR_WC_DB_ERROR ; 
- int /*<<< orphan*/  VERIFY_USABLE_WCROOT (TYPE_1__*) ; 
- int /*<<< orphan*/  _ (char*) ; 
- scalar_t__ svn_checksum_md5 ; 
- scalar_t__ svn_checksum_sha1 ; 
- int /*<<< orphan*/  svn_checksum_to_cstring_display (TYPE_2__ const*,int /*<<< orphan*/ *) ; 
- int svn_dirent_is_absolute (char const*) ; 
- int /*<<< orphan*/ * svn_error_createf (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * svn_error_trace (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_sqlite__bind_checksum (int /*<<< orphan*/ *,int,TYPE_2__ const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_sqlite__column_checksum (TYPE_2__ const**,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_sqlite__get_statement (int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_sqlite__reset (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_sqlite__step (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__db_wcroot_parse_local_abspath (TYPE_1__**,char const**,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int STMT_SELECT_PRISTINE ;
+ int SVN_ERR (int ) ;
+ int SVN_ERR_ASSERT (int) ;
+ int SVN_ERR_WC_DB_ERROR ;
+ int VERIFY_USABLE_WCROOT (TYPE_1__*) ;
+ int _ (char*) ;
+ scalar_t__ svn_checksum_md5 ;
+ scalar_t__ svn_checksum_sha1 ;
+ int svn_checksum_to_cstring_display (TYPE_2__ const*,int *) ;
+ int svn_dirent_is_absolute (char const*) ;
+ int * svn_error_createf (int ,int ,int ,int ) ;
+ int * svn_error_trace (int ) ;
+ int svn_sqlite__bind_checksum (int *,int,TYPE_2__ const*,int *) ;
+ int svn_sqlite__column_checksum (TYPE_2__ const**,int *,int ,int *) ;
+ int svn_sqlite__get_statement (int **,int ,int ) ;
+ int svn_sqlite__reset (int *) ;
+ int svn_sqlite__step (int *,int *) ;
+ int svn_wc__db_wcroot_parse_local_abspath (TYPE_1__**,char const**,int *,char const*,int *,int *) ;
 
 svn_error_t *
 svn_wc__db_pristine_get_md5(const svn_checksum_t **md5_checksum,
@@ -56,7 +56,7 @@ svn_wc__db_pristine_get_md5(const svn_checksum_t **md5_checksum,
   svn_boolean_t have_row;
 
   SVN_ERR_ASSERT(svn_dirent_is_absolute(wri_abspath));
-  SVN_ERR_ASSERT(sha1_checksum != NULL);
+  SVN_ERR_ASSERT(sha1_checksum != ((void*)0));
   SVN_ERR_ASSERT(sha1_checksum->kind == svn_checksum_sha1);
 
   SVN_ERR(svn_wc__db_wcroot_parse_local_abspath(&wcroot, &local_relpath, db,

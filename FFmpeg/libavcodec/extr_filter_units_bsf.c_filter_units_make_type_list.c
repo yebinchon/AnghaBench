@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  long CodedBitstreamUnitType ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  av_freep (long**) ; 
- long* av_malloc_array (int,int) ; 
- long strtol (char const*,char**,int /*<<< orphan*/ ) ; 
+
+
+
+typedef long CodedBitstreamUnitType ;
+
+
+ int AVERROR (int ) ;
+ int EINVAL ;
+ int ENOMEM ;
+ int av_freep (long**) ;
+ long* av_malloc_array (int,int) ;
+ long strtol (char const*,char**,int ) ;
 
 __attribute__((used)) static int filter_units_make_type_list(const char *list_string,
                                        CodedBitstreamUnitType **type_list,
                                        int *nb_types)
 {
-    CodedBitstreamUnitType *list = NULL;
+    CodedBitstreamUnitType *list = ((void*)0);
     int pass, count;
 
     for (pass = 1; pass <= 2; pass++) {
@@ -41,7 +41,7 @@ __attribute__((used)) static int filter_units_make_type_list(const char *list_st
             if (*str == '-') {
                 ++str;
                 range_start = value;
-                range_end   = strtol(str, &value_end, 0);
+                range_end = strtol(str, &value_end, 0);
                 if (str == value_end)
                     goto invalid;
 
@@ -66,7 +66,7 @@ __attribute__((used)) static int filter_units_make_type_list(const char *list_st
     }
 
     *type_list = list;
-    *nb_types  = count;
+    *nb_types = count;
     return 0;
 
 invalid:

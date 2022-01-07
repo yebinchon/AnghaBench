@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  a ;
+
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int a ;
 struct TYPE_8__ {struct TYPE_8__* pDirty; } ;
-typedef  TYPE_1__ PgHdr ;
+typedef TYPE_1__ PgHdr ;
 
-/* Variables and functions */
- scalar_t__ ALWAYS (int) ; 
- scalar_t__ NEVER (int) ; 
- int N_SORT_BUCKET ; 
- int /*<<< orphan*/  memset (TYPE_1__**,int /*<<< orphan*/ ,int) ; 
- TYPE_1__* pcacheMergeDirtyList (TYPE_1__*,TYPE_1__*) ; 
+
+ scalar_t__ ALWAYS (int) ;
+ scalar_t__ NEVER (int) ;
+ int N_SORT_BUCKET ;
+ int memset (TYPE_1__**,int ,int) ;
+ TYPE_1__* pcacheMergeDirtyList (TYPE_1__*,TYPE_1__*) ;
 
 __attribute__((used)) static PgHdr *pcacheSortDirtyList(PgHdr *pIn){
   PgHdr *a[N_SORT_BUCKET], *p;
@@ -40,9 +40,9 @@ __attribute__((used)) static PgHdr *pcacheSortDirtyList(PgHdr *pIn){
       }
     }
     if( NEVER(i==N_SORT_BUCKET-1) ){
-      /* To get here, there need to be 2^(N_SORT_BUCKET) elements in
-      ** the input list.  But that is impossible.
-      */
+
+
+
       a[i] = pcacheMergeDirtyList(a[i], p);
     }
   }

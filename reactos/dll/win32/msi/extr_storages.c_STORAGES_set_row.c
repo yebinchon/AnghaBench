@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct tagMSIVIEW {int dummy; } ;
-typedef  scalar_t__ UINT ;
-struct TYPE_5__ {scalar_t__ num_rows; int /*<<< orphan*/ * storages; TYPE_1__* db; } ;
-struct TYPE_4__ {int /*<<< orphan*/  storage; } ;
-typedef  TYPE_2__ MSISTORAGESVIEW ;
-typedef  int /*<<< orphan*/  MSIRECORD ;
-typedef  int /*<<< orphan*/ * LPWSTR ;
-typedef  int /*<<< orphan*/  IStream ;
-typedef  int /*<<< orphan*/  IStorage ;
-typedef  int /*<<< orphan*/  HRESULT ;
+typedef scalar_t__ UINT ;
+struct TYPE_5__ {scalar_t__ num_rows; int * storages; TYPE_1__* db; } ;
+struct TYPE_4__ {int storage; } ;
+typedef TYPE_2__ MSISTORAGESVIEW ;
+typedef int MSIRECORD ;
+typedef int * LPWSTR ;
+typedef int IStream ;
+typedef int IStorage ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- scalar_t__ ERROR_FUNCTION_FAILED ; 
- scalar_t__ ERROR_OUTOFMEMORY ; 
- scalar_t__ ERROR_SUCCESS ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IStorage_CopyTo (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IStorage_CreateStorage (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IStorage_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IStream_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ MSI_RecordGetIStream (int /*<<< orphan*/ *,int,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  MSI_RecordGetString (int /*<<< orphan*/ *,int) ; 
- int STGM_SHARE_EXCLUSIVE ; 
- int STGM_WRITE ; 
- int /*<<< orphan*/  TRACE (char*,struct tagMSIVIEW*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  create_storage (TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  msi_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * strdupW (int /*<<< orphan*/ ) ; 
- scalar_t__ stream_to_storage (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
+
+ scalar_t__ ERROR_FUNCTION_FAILED ;
+ scalar_t__ ERROR_OUTOFMEMORY ;
+ scalar_t__ ERROR_SUCCESS ;
+ scalar_t__ FAILED (int ) ;
+ int IStorage_CopyTo (int *,int ,int *,int *,int *) ;
+ int IStorage_CreateStorage (int ,int *,int,int ,int ,int **) ;
+ int IStorage_Release (int *) ;
+ int IStream_Release (int *) ;
+ scalar_t__ MSI_RecordGetIStream (int *,int,int **) ;
+ int MSI_RecordGetString (int *,int) ;
+ int STGM_SHARE_EXCLUSIVE ;
+ int STGM_WRITE ;
+ int TRACE (char*,struct tagMSIVIEW*,int *) ;
+ int create_storage (TYPE_2__*,int *,int *) ;
+ int msi_free (int *) ;
+ int * strdupW (int ) ;
+ scalar_t__ stream_to_storage (int *,int **) ;
 
 __attribute__((used)) static UINT STORAGES_set_row(struct tagMSIVIEW *view, UINT row, MSIRECORD *rec, UINT mask)
 {
     MSISTORAGESVIEW *sv = (MSISTORAGESVIEW *)view;
-    IStorage *stg, *substg = NULL;
+    IStorage *stg, *substg = ((void*)0);
     IStream *stm;
-    LPWSTR name = NULL;
+    LPWSTR name = ((void*)0);
     HRESULT hr;
     UINT r = ERROR_FUNCTION_FAILED;
 
@@ -83,7 +83,7 @@ __attribute__((used)) static UINT STORAGES_set_row(struct tagMSIVIEW *view, UINT
         goto done;
     }
 
-    hr = IStorage_CopyTo(stg, 0, NULL, NULL, substg);
+    hr = IStorage_CopyTo(stg, 0, ((void*)0), ((void*)0), substg);
     if (FAILED(hr))
     {
         r = ERROR_FUNCTION_FAILED;

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  enum AVPixelFormat { ____Placeholder_AVPixelFormat } AVPixelFormat ;
-typedef  int /*<<< orphan*/  data ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef enum AVPixelFormat { ____Placeholder_AVPixelFormat } AVPixelFormat ;
+typedef int data ;
 struct TYPE_5__ {int flags; int log2_chroma_h; TYPE_1__* comp; } ;
 struct TYPE_4__ {size_t plane; } ;
-typedef  TYPE_2__ AVPixFmtDescriptor ;
+typedef TYPE_2__ AVPixFmtDescriptor ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AV_PIX_FMT_FLAG_HWACCEL ; 
- int AV_PIX_FMT_FLAG_PAL ; 
- int /*<<< orphan*/  EINVAL ; 
- int FF_PSEUDOPAL ; 
- int INT_MAX ; 
- TYPE_2__* av_pix_fmt_desc_get (int) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ **,int /*<<< orphan*/ ,int) ; 
+
+ int AVERROR (int ) ;
+ int AV_PIX_FMT_FLAG_HWACCEL ;
+ int AV_PIX_FMT_FLAG_PAL ;
+ int EINVAL ;
+ int FF_PSEUDOPAL ;
+ int INT_MAX ;
+ TYPE_2__* av_pix_fmt_desc_get (int) ;
+ int memset (int **,int ,int) ;
 
 int av_image_fill_pointers(uint8_t *data[4], enum AVPixelFormat pix_fmt, int height,
                            uint8_t *ptr, const int linesizes[4])
@@ -35,7 +35,7 @@ int av_image_fill_pointers(uint8_t *data[4], enum AVPixelFormat pix_fmt, int hei
     int i, total_size, size[4] = { 0 }, has_plane[4] = { 0 };
 
     const AVPixFmtDescriptor *desc = av_pix_fmt_desc_get(pix_fmt);
-    memset(data     , 0, sizeof(data[0])*4);
+    memset(data , 0, sizeof(data[0])*4);
 
     if (!desc || desc->flags & AV_PIX_FMT_FLAG_HWACCEL)
         return AVERROR(EINVAL);
@@ -47,7 +47,7 @@ int av_image_fill_pointers(uint8_t *data[4], enum AVPixelFormat pix_fmt, int hei
 
     if (desc->flags & AV_PIX_FMT_FLAG_PAL ||
         desc->flags & FF_PSEUDOPAL) {
-        data[1] = ptr + size[0]; /* palette is stored here as 256 32 bits words */
+        data[1] = ptr + size[0];
         return size[0] + 256 * 4;
     }
 

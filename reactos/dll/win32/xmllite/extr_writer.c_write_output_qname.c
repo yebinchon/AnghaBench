@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  xmlwriteroutput ;
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int ARRAY_SIZE (char const*) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  write_output_buffer (int /*<<< orphan*/ *,char const*,int) ; 
+
+
+
+typedef int xmlwriteroutput ;
+typedef char WCHAR ;
+typedef int HRESULT ;
+
+
+ int ARRAY_SIZE (char const*) ;
+ int S_OK ;
+ int write_output_buffer (int *,char const*,int) ;
 
 __attribute__((used)) static HRESULT write_output_qname(xmlwriteroutput *output, const WCHAR *prefix, const WCHAR *local_name)
 {

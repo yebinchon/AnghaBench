@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct tws_softc {int /*<<< orphan*/  sim_lock; scalar_t__ sim; scalar_t__ path; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  TWS_TRACE_DEBUG (struct tws_softc*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cam_sim_free (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cam_sim_path (scalar_t__) ; 
- int /*<<< orphan*/  mtx_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mtx_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  xpt_bus_deregister (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xpt_free_path (scalar_t__) ; 
+
+
+
+struct tws_softc {int sim_lock; scalar_t__ sim; scalar_t__ path; } ;
+
+
+ int TRUE ;
+ int TWS_TRACE_DEBUG (struct tws_softc*,char*,int ,int ) ;
+ int cam_sim_free (scalar_t__,int ) ;
+ int cam_sim_path (scalar_t__) ;
+ int mtx_lock (int *) ;
+ int mtx_unlock (int *) ;
+ int xpt_bus_deregister (int ) ;
+ int xpt_free_path (scalar_t__) ;
 
 void
 tws_cam_detach(struct tws_softc *sc)

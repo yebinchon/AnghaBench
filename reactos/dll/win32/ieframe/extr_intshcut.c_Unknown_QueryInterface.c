@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  IPropertySetStorage_iface; int /*<<< orphan*/  IPersistFile_iface; int /*<<< orphan*/  IUniformResourceLocatorW_iface; int /*<<< orphan*/  IUniformResourceLocatorA_iface; } ;
-typedef  int /*<<< orphan*/  REFIID ;
-typedef  int /*<<< orphan*/ * PVOID ;
-typedef  TYPE_1__ InternetShortcut ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_NOINTERFACE ; 
- int /*<<< orphan*/  FIXME (char*,...) ; 
- int /*<<< orphan*/  IID_IPersistFile ; 
- int /*<<< orphan*/  IID_IPropertySetStorage ; 
- int /*<<< orphan*/  IID_IShellLinkA ; 
- int /*<<< orphan*/  IID_IShellLinkW ; 
- int /*<<< orphan*/  IID_IUniformResourceLocatorA ; 
- int /*<<< orphan*/  IID_IUniformResourceLocatorW ; 
- int /*<<< orphan*/  IID_IUnknown ; 
- int /*<<< orphan*/  IUnknown_AddRef (int /*<<< orphan*/ *) ; 
- scalar_t__ IsEqualGUID (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TRACE (char*,TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  debugstr_guid (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int IPropertySetStorage_iface; int IPersistFile_iface; int IUniformResourceLocatorW_iface; int IUniformResourceLocatorA_iface; } ;
+typedef int REFIID ;
+typedef int * PVOID ;
+typedef TYPE_1__ InternetShortcut ;
+typedef int IUnknown ;
+typedef int HRESULT ;
+
+
+ int E_NOINTERFACE ;
+ int FIXME (char*,...) ;
+ int IID_IPersistFile ;
+ int IID_IPropertySetStorage ;
+ int IID_IShellLinkA ;
+ int IID_IShellLinkW ;
+ int IID_IUniformResourceLocatorA ;
+ int IID_IUniformResourceLocatorW ;
+ int IID_IUnknown ;
+ int IUnknown_AddRef (int *) ;
+ scalar_t__ IsEqualGUID (int *,int ) ;
+ int S_OK ;
+ int TRACE (char*,TYPE_1__*,int ,int **) ;
+ int debugstr_guid (int ) ;
 
 __attribute__((used)) static HRESULT Unknown_QueryInterface(InternetShortcut *This, REFIID riid, PVOID *ppvObject)
 {
     TRACE("(%p, %s, %p)\n", This, debugstr_guid(riid), ppvObject);
-    *ppvObject = NULL;
+    *ppvObject = ((void*)0);
     if (IsEqualGUID(&IID_IUnknown, riid))
         *ppvObject = &This->IUniformResourceLocatorA_iface;
     else if (IsEqualGUID(&IID_IUniformResourceLocatorA, riid))

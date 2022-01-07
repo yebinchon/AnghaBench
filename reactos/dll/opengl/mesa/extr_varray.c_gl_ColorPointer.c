@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int ColorSize; int ColorType; void* ColorPtr; scalar_t__ ColorStride; scalar_t__ ColorStrideB; } ;
 struct TYPE_6__ {TYPE_1__ Array; } ;
-typedef  int /*<<< orphan*/  GLvoid ;
-typedef  int /*<<< orphan*/  GLushort ;
-typedef  int /*<<< orphan*/  GLuint ;
-typedef  int /*<<< orphan*/  GLubyte ;
-typedef  scalar_t__ GLsizei ;
-typedef  int /*<<< orphan*/  GLshort ;
-typedef  int GLint ;
-typedef  int /*<<< orphan*/  GLfloat ;
-typedef  int GLenum ;
-typedef  int /*<<< orphan*/  GLdouble ;
-typedef  TYPE_2__ GLcontext ;
-typedef  int /*<<< orphan*/  GLbyte ;
+typedef int GLvoid ;
+typedef int GLushort ;
+typedef int GLuint ;
+typedef int GLubyte ;
+typedef scalar_t__ GLsizei ;
+typedef int GLshort ;
+typedef int GLint ;
+typedef int GLfloat ;
+typedef int GLenum ;
+typedef int GLdouble ;
+typedef TYPE_2__ GLcontext ;
+typedef int GLbyte ;
 
-/* Variables and functions */
-#define  GL_BYTE 135 
-#define  GL_DOUBLE 134 
-#define  GL_FLOAT 133 
-#define  GL_INT 132 
- int /*<<< orphan*/  GL_INVALID_ENUM ; 
- int /*<<< orphan*/  GL_INVALID_VALUE ; 
-#define  GL_SHORT 131 
-#define  GL_UNSIGNED_BYTE 130 
-#define  GL_UNSIGNED_INT 129 
-#define  GL_UNSIGNED_SHORT 128 
- int /*<<< orphan*/  gl_error (TYPE_2__*,int /*<<< orphan*/ ,char*) ; 
+
+
+
+
+
+ int GL_INVALID_ENUM ;
+ int GL_INVALID_VALUE ;
+
+
+
+
+ int gl_error (TYPE_2__*,int ,char*) ;
 
 void gl_ColorPointer( GLcontext *ctx,
                       GLint size, GLenum type, GLsizei stride,
@@ -53,28 +53,28 @@ void gl_ColorPointer( GLcontext *ctx,
       return;
    }
    switch (type) {
-      case GL_BYTE:
+      case 135:
          ctx->Array.ColorStrideB = stride ? stride : size*sizeof(GLbyte);
          break;
-      case GL_UNSIGNED_BYTE:
+      case 130:
          ctx->Array.ColorStrideB = stride ? stride : size*sizeof(GLubyte);
          break;
-      case GL_SHORT:
+      case 131:
          ctx->Array.ColorStrideB = stride ? stride : size*sizeof(GLshort);
          break;
-      case GL_UNSIGNED_SHORT:
+      case 128:
          ctx->Array.ColorStrideB = stride ? stride : size*sizeof(GLushort);
          break;
-      case GL_INT:
+      case 132:
          ctx->Array.ColorStrideB = stride ? stride : size*sizeof(GLint);
          break;
-      case GL_UNSIGNED_INT:
+      case 129:
          ctx->Array.ColorStrideB = stride ? stride : size*sizeof(GLuint);
          break;
-      case GL_FLOAT:
+      case 133:
          ctx->Array.ColorStrideB = stride ? stride : size*sizeof(GLfloat);
          break;
-      case GL_DOUBLE:
+      case 134:
          ctx->Array.ColorStrideB = stride ? stride : size*sizeof(GLdouble);
          break;
       default:

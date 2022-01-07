@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  unw_word ;
 
-/* Variables and functions */
- int /*<<< orphan*/  R2 ; 
- int /*<<< orphan*/  UNW_DEC_PROLOGUE_GR (int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned char,unsigned char,void*) ; 
- int /*<<< orphan*/  unw_decode_uleb128 (unsigned char**) ; 
+
+
+
+typedef int unw_word ;
+
+
+ int R2 ;
+ int UNW_DEC_PROLOGUE_GR (int ,int ,unsigned char,unsigned char,void*) ;
+ int unw_decode_uleb128 (unsigned char**) ;
 
 __attribute__((used)) static unsigned char *
 unw_decode_r2 (unsigned char *dp, unsigned char code, void *arg)

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {scalar_t__* lengthlist; } ;
-typedef  TYPE_1__ static_codebook ;
-typedef  int /*<<< orphan*/  p ;
+typedef TYPE_1__ static_codebook ;
+typedef int p ;
 struct TYPE_5__ {int dim; int minval; int delta; int quantvals; int entries; TYPE_1__* c; } ;
-typedef  TYPE_2__ codebook ;
+typedef TYPE_2__ codebook ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memcpy (int*,int*,int) ; 
+
+ int memcpy (int*,int*,int) ;
 
 __attribute__((used)) static int local_book_besterror(codebook *book,int *a){
   int dim=book->dim;
@@ -29,7 +29,7 @@ __attribute__((used)) static int local_book_besterror(codebook *book,int *a){
   int qv=book->quantvals;
   int ze=(qv>>1);
   int index=0;
-  /* assumes integer/centered encoder codebook maptype 1 no more than dim 8 */
+
   int p[8]={0,0,0,0,0,0,0,0};
 
   if(del!=1){
@@ -51,7 +51,7 @@ __attribute__((used)) static int local_book_besterror(codebook *book,int *a){
   if(book->c->lengthlist[index]<=0){
     const static_codebook *c=book->c;
     int best=-1;
-    /* assumes integer/centered encoder codebook maptype 1 no more than dim 8 */
+
     int e[8]={0,0,0,0,0,0,0,0};
     int maxval = book->minval + book->delta*(book->quantvals-1);
     for(i=0;i<book->entries;i++){
@@ -67,7 +67,7 @@ __attribute__((used)) static int local_book_besterror(codebook *book,int *a){
           index=i;
         }
       }
-      /* assumes the value patterning created by the tools in vq/ */
+
       j=0;
       while(e[j]>=maxval)
         e[j++]=0;

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct wined3d_state {int dummy; } ;
 struct wined3d_gl_info {int dummy; } ;
 struct wined3d_context {struct wined3d_gl_info* gl_info; } ;
-struct TYPE_2__ {int /*<<< orphan*/  pointsize_q_att_location; int /*<<< orphan*/  pointsize_l_att_location; int /*<<< orphan*/  pointsize_c_att_location; int /*<<< orphan*/  pointsize_location; int /*<<< orphan*/  pointsize_max_location; int /*<<< orphan*/  pointsize_min_location; } ;
+struct TYPE_2__ {int pointsize_q_att_location; int pointsize_l_att_location; int pointsize_c_att_location; int pointsize_location; int pointsize_max_location; int pointsize_min_location; } ;
 struct glsl_shader_prog_link {TYPE_1__ vs; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GL_EXTCALL (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  checkGLcall (char*) ; 
- int /*<<< orphan*/  get_pointsize (struct wined3d_context const*,struct wined3d_state const*,float*,float*) ; 
- int /*<<< orphan*/  get_pointsize_minmax (struct wined3d_context const*,struct wined3d_state const*,float*,float*) ; 
- int /*<<< orphan*/  glUniform1f (int /*<<< orphan*/ ,float) ; 
+
+ int GL_EXTCALL (int ) ;
+ int checkGLcall (char*) ;
+ int get_pointsize (struct wined3d_context const*,struct wined3d_state const*,float*,float*) ;
+ int get_pointsize_minmax (struct wined3d_context const*,struct wined3d_state const*,float*,float*) ;
+ int glUniform1f (int ,float) ;
 
 __attribute__((used)) static void shader_glsl_pointsize_uniform(const struct wined3d_context *context,
         const struct wined3d_state *state, struct glsl_shader_prog_link *prog)

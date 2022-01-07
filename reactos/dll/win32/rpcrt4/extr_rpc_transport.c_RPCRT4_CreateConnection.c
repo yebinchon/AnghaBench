@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct connection_ops {TYPE_1__* (* alloc ) () ;} ;
-struct TYPE_5__ {int ref; int NextCallId; int /*<<< orphan*/  protseq_entry; int /*<<< orphan*/  conn_pool_entry; int /*<<< orphan*/ * QOS; int /*<<< orphan*/  auth_context_id; int /*<<< orphan*/ * AuthInfo; int /*<<< orphan*/  ctx; int /*<<< orphan*/  MaxTransmissionSize; void* CookieAuth; void* NetworkOptions; void* Endpoint; void* NetworkAddr; struct connection_ops const* ops; int /*<<< orphan*/  server; } ;
-typedef  int /*<<< orphan*/  RpcQualityOfService ;
-typedef  TYPE_1__ RpcConnection ;
-typedef  int /*<<< orphan*/  RpcAuthInfo ;
-typedef  int /*<<< orphan*/  RPC_STATUS ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
-typedef  int /*<<< orphan*/  LPCSTR ;
-typedef  int /*<<< orphan*/  LONG ;
-typedef  int /*<<< orphan*/  BOOL ;
+struct TYPE_5__ {int ref; int NextCallId; int protseq_entry; int conn_pool_entry; int * QOS; int auth_context_id; int * AuthInfo; int ctx; int MaxTransmissionSize; void* CookieAuth; void* NetworkOptions; void* Endpoint; void* NetworkAddr; struct connection_ops const* ops; int server; } ;
+typedef int RpcQualityOfService ;
+typedef TYPE_1__ RpcConnection ;
+typedef int RpcAuthInfo ;
+typedef int RPC_STATUS ;
+typedef int LPCWSTR ;
+typedef int LPCSTR ;
+typedef int LONG ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FIXME (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  InterlockedIncrement (int /*<<< orphan*/ *) ; 
- void* RPCRT4_strdupA (int /*<<< orphan*/ ) ; 
- void* RPCRT4_strdupW (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RPC_MAX_PACKET_SIZE ; 
- int /*<<< orphan*/  RPC_S_OK ; 
- int /*<<< orphan*/  RPC_S_PROTSEQ_NOT_SUPPORTED ; 
- int /*<<< orphan*/  RpcAuthInfo_AddRef (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RpcQualityOfService_AddRef (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SecInvalidateHandle (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TRACE (char*,TYPE_1__*) ; 
- int /*<<< orphan*/  list_init (int /*<<< orphan*/ *) ; 
- struct connection_ops* rpcrt4_get_conn_protseq_ops (int /*<<< orphan*/ ) ; 
- TYPE_1__* stub1 () ; 
+
+ int FIXME (char*,int ) ;
+ int InterlockedIncrement (int *) ;
+ void* RPCRT4_strdupA (int ) ;
+ void* RPCRT4_strdupW (int ) ;
+ int RPC_MAX_PACKET_SIZE ;
+ int RPC_S_OK ;
+ int RPC_S_PROTSEQ_NOT_SUPPORTED ;
+ int RpcAuthInfo_AddRef (int *) ;
+ int RpcQualityOfService_AddRef (int *) ;
+ int SecInvalidateHandle (int *) ;
+ int TRACE (char*,TYPE_1__*) ;
+ int list_init (int *) ;
+ struct connection_ops* rpcrt4_get_conn_protseq_ops (int ) ;
+ TYPE_1__* stub1 () ;
 
 RPC_STATUS RPCRT4_CreateConnection(RpcConnection** Connection, BOOL server,
     LPCSTR Protseq, LPCSTR NetworkAddr, LPCSTR Endpoint,

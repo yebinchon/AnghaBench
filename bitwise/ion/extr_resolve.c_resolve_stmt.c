@@ -1,104 +1,87 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_43__   TYPE_9__ ;
-typedef  struct TYPE_42__   TYPE_8__ ;
-typedef  struct TYPE_41__   TYPE_7__ ;
-typedef  struct TYPE_40__   TYPE_6__ ;
-typedef  struct TYPE_39__   TYPE_5__ ;
-typedef  struct TYPE_38__   TYPE_4__ ;
-typedef  struct TYPE_37__   TYPE_3__ ;
-typedef  struct TYPE_36__   TYPE_2__ ;
-typedef  struct TYPE_35__   TYPE_22__ ;
-typedef  struct TYPE_34__   TYPE_1__ ;
-typedef  struct TYPE_33__   TYPE_17__ ;
-typedef  struct TYPE_32__   TYPE_15__ ;
-typedef  struct TYPE_31__   TYPE_13__ ;
-typedef  struct TYPE_30__   TYPE_12__ ;
-typedef  struct TYPE_29__   TYPE_11__ ;
-typedef  struct TYPE_28__   TYPE_10__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Type ;
+
+
+typedef struct TYPE_43__ TYPE_9__ ;
+typedef struct TYPE_42__ TYPE_8__ ;
+typedef struct TYPE_41__ TYPE_7__ ;
+typedef struct TYPE_40__ TYPE_6__ ;
+typedef struct TYPE_39__ TYPE_5__ ;
+typedef struct TYPE_38__ TYPE_4__ ;
+typedef struct TYPE_37__ TYPE_3__ ;
+typedef struct TYPE_36__ TYPE_2__ ;
+typedef struct TYPE_35__ TYPE_22__ ;
+typedef struct TYPE_34__ TYPE_1__ ;
+typedef struct TYPE_33__ TYPE_17__ ;
+typedef struct TYPE_32__ TYPE_15__ ;
+typedef struct TYPE_31__ TYPE_13__ ;
+typedef struct TYPE_30__ TYPE_12__ ;
+typedef struct TYPE_29__ TYPE_11__ ;
+typedef struct TYPE_28__ TYPE_10__ ;
+
+
+typedef int Type ;
 struct TYPE_43__ {int is_break_legal; int is_continue_legal; } ;
 struct TYPE_33__ {int num_stmts; TYPE_10__** stmts; } ;
-struct TYPE_42__ {size_t num_patterns; TYPE_17__ block; int /*<<< orphan*/  is_default; TYPE_7__* patterns; } ;
+struct TYPE_42__ {size_t num_patterns; TYPE_17__ block; int is_default; TYPE_7__* patterns; } ;
 struct TYPE_41__ {TYPE_12__* end; TYPE_12__* start; } ;
-struct TYPE_40__ {size_t num_cases; TYPE_8__* cases; int /*<<< orphan*/  expr; } ;
-struct TYPE_39__ {TYPE_17__ block; TYPE_10__* next; int /*<<< orphan*/  cond; TYPE_10__* init; } ;
-struct TYPE_38__ {TYPE_17__ block; int /*<<< orphan*/  cond; } ;
-struct TYPE_37__ {size_t num_elseifs; TYPE_17__ else_block; TYPE_13__* elseifs; TYPE_17__ then_block; TYPE_10__* init; int /*<<< orphan*/  cond; } ;
-struct TYPE_36__ {int /*<<< orphan*/  name; } ;
-struct TYPE_35__ {int num_args; int /*<<< orphan*/  name; TYPE_1__* args; } ;
-struct TYPE_34__ {int /*<<< orphan*/  expr; } ;
+struct TYPE_40__ {size_t num_cases; TYPE_8__* cases; int expr; } ;
+struct TYPE_39__ {TYPE_17__ block; TYPE_10__* next; int cond; TYPE_10__* init; } ;
+struct TYPE_38__ {TYPE_17__ block; int cond; } ;
+struct TYPE_37__ {size_t num_elseifs; TYPE_17__ else_block; TYPE_13__* elseifs; TYPE_17__ then_block; TYPE_10__* init; int cond; } ;
+struct TYPE_36__ {int name; } ;
+struct TYPE_35__ {int num_args; int name; TYPE_1__* args; } ;
+struct TYPE_34__ {int expr; } ;
 struct TYPE_32__ {int ll; } ;
-struct TYPE_31__ {TYPE_17__ block; int /*<<< orphan*/  cond; } ;
-struct TYPE_30__ {int /*<<< orphan*/  pos; } ;
-struct TYPE_29__ {TYPE_15__ val; int /*<<< orphan*/ * type; } ;
-struct TYPE_28__ {int kind; int /*<<< orphan*/  label; int /*<<< orphan*/  pos; int /*<<< orphan*/  expr; TYPE_6__ switch_stmt; TYPE_5__ for_stmt; TYPE_4__ while_stmt; TYPE_3__ if_stmt; TYPE_2__ init; TYPE_22__ note; TYPE_17__ block; } ;
-typedef  int /*<<< orphan*/  Sym ;
-typedef  TYPE_7__ SwitchCasePattern ;
-typedef  TYPE_8__ SwitchCase ;
-typedef  TYPE_9__ StmtCtx ;
-typedef  TYPE_10__ Stmt ;
-typedef  TYPE_11__ Operand ;
-typedef  TYPE_12__ Expr ;
-typedef  TYPE_13__ ElseIf ;
-
-/* Variables and functions */
-#define  STMT_ASSIGN 142 
-#define  STMT_BLOCK 141 
-#define  STMT_BREAK 140 
-#define  STMT_CONTINUE 139 
-#define  STMT_DO_WHILE 138 
-#define  STMT_EXPR 137 
-#define  STMT_FOR 136 
-#define  STMT_GOTO 135 
-#define  STMT_IF 134 
-#define  STMT_INIT 133 
-#define  STMT_LABEL 132 
-#define  STMT_NOTE 131 
-#define  STMT_RETURN 130 
-#define  STMT_SWITCH 129 
-#define  STMT_WHILE 128 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert_name ; 
- int /*<<< orphan*/  convert_operand (TYPE_11__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  define_label (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fatal_error (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  foreign_name ; 
- int /*<<< orphan*/  get_type_name (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  is_cond_operand (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  is_integer_type (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  reference_label (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  resolve_cond_expr (int /*<<< orphan*/ ) ; 
- TYPE_11__ resolve_const_expr (TYPE_12__*) ; 
- TYPE_11__ resolve_expected_expr_rvalue (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  resolve_expr (int /*<<< orphan*/ ) ; 
- TYPE_11__ resolve_expr_rvalue (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  resolve_name_operand (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  resolve_static_assert (TYPE_22__) ; 
- int /*<<< orphan*/  resolve_stmt_assign (TYPE_10__*) ; 
- int resolve_stmt_block (TYPE_17__,int /*<<< orphan*/ *,TYPE_9__) ; 
- int /*<<< orphan*/  resolve_stmt_init (TYPE_10__*) ; 
- int /*<<< orphan*/  set_resolved_val (TYPE_12__*,TYPE_15__) ; 
- int /*<<< orphan*/  static_assert_name ; 
- int /*<<< orphan*/ * sym_enter () ; 
- int /*<<< orphan*/  sym_leave (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * type_llong ; 
- int /*<<< orphan*/ * type_void ; 
- int /*<<< orphan*/  warning (int /*<<< orphan*/ ,char*,...) ; 
+struct TYPE_31__ {TYPE_17__ block; int cond; } ;
+struct TYPE_30__ {int pos; } ;
+struct TYPE_29__ {TYPE_15__ val; int * type; } ;
+struct TYPE_28__ {int kind; int label; int pos; int expr; TYPE_6__ switch_stmt; TYPE_5__ for_stmt; TYPE_4__ while_stmt; TYPE_3__ if_stmt; TYPE_2__ init; TYPE_22__ note; TYPE_17__ block; } ;
+typedef int Sym ;
+typedef TYPE_7__ SwitchCasePattern ;
+typedef TYPE_8__ SwitchCase ;
+typedef TYPE_9__ StmtCtx ;
+typedef TYPE_10__ Stmt ;
+typedef TYPE_11__ Operand ;
+typedef TYPE_12__ Expr ;
+typedef TYPE_13__ ElseIf ;
+ int assert (int ) ;
+ int assert_name ;
+ int convert_operand (TYPE_11__*,int *) ;
+ int define_label (int ,int ) ;
+ int fatal_error (int ,char*,...) ;
+ int foreign_name ;
+ int get_type_name (int *) ;
+ int is_cond_operand (int ) ;
+ int is_integer_type (int *) ;
+ int reference_label (int ,int ) ;
+ int resolve_cond_expr (int ) ;
+ TYPE_11__ resolve_const_expr (TYPE_12__*) ;
+ TYPE_11__ resolve_expected_expr_rvalue (int ,int *) ;
+ int resolve_expr (int ) ;
+ TYPE_11__ resolve_expr_rvalue (int ) ;
+ int resolve_name_operand (int ,int ) ;
+ int resolve_static_assert (TYPE_22__) ;
+ int resolve_stmt_assign (TYPE_10__*) ;
+ int resolve_stmt_block (TYPE_17__,int *,TYPE_9__) ;
+ int resolve_stmt_init (TYPE_10__*) ;
+ int set_resolved_val (TYPE_12__*,TYPE_15__) ;
+ int static_assert_name ;
+ int * sym_enter () ;
+ int sym_leave (int *) ;
+ int * type_llong ;
+ int * type_void ;
+ int warning (int ,char*,...) ;
 
 bool resolve_stmt(Stmt *stmt, Type *ret_type, StmtCtx ctx) {
     switch (stmt->kind) {
-    case STMT_RETURN:
+    case 130:
         if (stmt->expr) {
             Operand operand = resolve_expected_expr_rvalue(stmt->expr, ret_type);
             if (!convert_operand(&operand, ret_type)) {
@@ -107,20 +90,20 @@ bool resolve_stmt(Stmt *stmt, Type *ret_type, StmtCtx ctx) {
         } else if (ret_type != type_void) {
             fatal_error(stmt->pos, "Empty return expression for function with non-void return type");
         }
-        return true;
-    case STMT_BREAK:
+        return 1;
+    case 140:
         if (!ctx.is_break_legal) {
             fatal_error(stmt->pos, "Illegal break");
         }
-        return false;
-    case STMT_CONTINUE:
+        return 0;
+    case 139:
         if (!ctx.is_continue_legal) {
             fatal_error(stmt->pos, "Illegal continue");
         }
-        return false;
-    case STMT_BLOCK:
+        return 0;
+    case 141:
         return resolve_stmt_block(stmt->block, ret_type, ctx);
-    case STMT_NOTE:
+    case 131:
         if (stmt->note.name == assert_name) {
             if (stmt->note.num_args != 1) {
                 fatal_error(stmt->pos, "#assert takes 1 argument");
@@ -129,12 +112,12 @@ bool resolve_stmt(Stmt *stmt, Type *ret_type, StmtCtx ctx) {
         } else if (stmt->note.name == static_assert_name) {
             resolve_static_assert(stmt->note);
         } else if (stmt->note.name == foreign_name) {
-            // TODO: check args
+
         } else {
             warning(stmt->pos, "Unknown statement #directive '%s'", stmt->note.name);
         }
-        return false;
-    case STMT_IF: {
+        return 0;
+    case 134: {
         Sym *scope = sym_enter();
         if (stmt->if_stmt.init) {
             resolve_stmt_init(stmt->if_stmt.init);
@@ -153,19 +136,19 @@ bool resolve_stmt(Stmt *stmt, Type *ret_type, StmtCtx ctx) {
         if (stmt->if_stmt.else_block.stmts) {
             returns = resolve_stmt_block(stmt->if_stmt.else_block, ret_type, ctx) && returns;
         } else {
-            returns = false;
+            returns = 0;
         }
         sym_leave(scope);
         return returns;
     }
-    case STMT_WHILE:
-    case STMT_DO_WHILE:
+    case 128:
+    case 138:
         resolve_cond_expr(stmt->while_stmt.cond);
-        ctx.is_break_legal = true;
-        ctx.is_continue_legal = true;
+        ctx.is_break_legal = 1;
+        ctx.is_continue_legal = 1;
         resolve_stmt_block(stmt->while_stmt.block, ret_type, ctx);
-        return false;
-    case STMT_FOR: {
+        return 0;
+    case 136: {
         Sym *scope = sym_enter();
         if (stmt->for_stmt.init) {
             resolve_stmt(stmt->for_stmt.init, ret_type, ctx);
@@ -176,20 +159,20 @@ bool resolve_stmt(Stmt *stmt, Type *ret_type, StmtCtx ctx) {
         if (stmt->for_stmt.next) {
             resolve_stmt(stmt->for_stmt.next, ret_type, ctx);
         }
-        ctx.is_break_legal = true;
-        ctx.is_continue_legal = true;
+        ctx.is_break_legal = 1;
+        ctx.is_continue_legal = 1;
         resolve_stmt_block(stmt->for_stmt.block, ret_type, ctx);
         sym_leave(scope);
-        return false;
+        return 0;
     }
-    case STMT_SWITCH: {
+    case 129: {
         Operand operand = resolve_expr_rvalue(stmt->switch_stmt.expr);
         if (!is_integer_type(operand.type)) {
             fatal_error(stmt->pos, "Switch expression must have integer type");
         }
-        ctx.is_break_legal = true;
-        bool returns = true;
-        bool has_default = false;
+        ctx.is_break_legal = 1;
+        bool returns = 1;
+        bool has_default = 0;
         for (size_t i = 0; i < stmt->switch_stmt.num_cases; i++) {
             SwitchCase switch_case = stmt->switch_stmt.cases[i];
             for (size_t j = 0; j < switch_case.num_patterns; j++) {
@@ -221,11 +204,11 @@ bool resolve_stmt(Stmt *stmt, Type *ret_type, StmtCtx ctx) {
                 if (has_default) {
                     fatal_error(stmt->pos, "Switch statement has multiple default clauses");
                 }
-                has_default = true;
+                has_default = 1;
             }
             if (switch_case.block.num_stmts > 1) {
                 Stmt *last_stmt = switch_case.block.stmts[switch_case.block.num_stmts - 1];
-                if (last_stmt->kind == STMT_BREAK) {
+                if (last_stmt->kind == 140) {
                     warning(last_stmt->pos, "Case blocks already end with an implicit break");
                 }
             }
@@ -233,23 +216,23 @@ bool resolve_stmt(Stmt *stmt, Type *ret_type, StmtCtx ctx) {
         }
         return returns && has_default;
     }
-    case STMT_ASSIGN:
+    case 142:
         resolve_stmt_assign(stmt);
-        return false;
-    case STMT_INIT:
+        return 0;
+    case 133:
         resolve_stmt_init(stmt);
-        return false;
-    case STMT_EXPR:
+        return 0;
+    case 137:
         resolve_expr(stmt->expr);
-        return false;
-    case STMT_LABEL:
+        return 0;
+    case 132:
         define_label(stmt->pos, stmt->label);
-        return false;
-    case STMT_GOTO:
+        return 0;
+    case 135:
         reference_label(stmt->pos, stmt->label);
-        return false;
+        return 0;
     default:
         assert(0);
-        return false;
+        return 0;
     }
 }

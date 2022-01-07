@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  string_table ;
-typedef  int USHORT ;
-typedef  int UINT ;
-typedef  int /*<<< orphan*/  IStorage ;
-typedef  int DWORD ;
-typedef  int CHAR ;
-typedef  int /*<<< orphan*/  BYTE ;
 
-/* Variables and functions */
- int CP_ACP ; 
- int /*<<< orphan*/  ERR (char*,...) ; 
- int ERROR_SUCCESS ; 
- int LONG_STR_BYTES ; 
- int /*<<< orphan*/  StringPersistent ; 
- int /*<<< orphan*/  TRACE (char*,int) ; 
- int /*<<< orphan*/  TRUE ; 
- int add_string (int /*<<< orphan*/ *,int,int*,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * init_stringtable (int,int) ; 
- int /*<<< orphan*/  msi_free (int*) ; 
- int read_stream_data (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **,int*) ; 
- int /*<<< orphan*/  szStringData ; 
- int /*<<< orphan*/  szStringPool ; 
+
+
+
+typedef int string_table ;
+typedef int USHORT ;
+typedef int UINT ;
+typedef int IStorage ;
+typedef int DWORD ;
+typedef int CHAR ;
+typedef int BYTE ;
+
+
+ int CP_ACP ;
+ int ERR (char*,...) ;
+ int ERROR_SUCCESS ;
+ int LONG_STR_BYTES ;
+ int StringPersistent ;
+ int TRACE (char*,int) ;
+ int TRUE ;
+ int add_string (int *,int,int*,int,int,int ) ;
+ int * init_stringtable (int,int) ;
+ int msi_free (int*) ;
+ int read_stream_data (int *,int ,int ,int **,int*) ;
+ int szStringData ;
+ int szStringPool ;
 
 string_table *msi_load_string_table( IStorage *stg, UINT *bytes_per_strref )
 {
-    string_table *st = NULL;
-    CHAR *data = NULL;
-    USHORT *pool = NULL;
+    string_table *st = ((void*)0);
+    CHAR *data = ((void*)0);
+    USHORT *pool = ((void*)0);
     UINT r, datasize = 0, poolsize = 0, codepage;
     DWORD i, count, offset, len, n, refs;
 
@@ -67,10 +67,10 @@ string_table *msi_load_string_table( IStorage *stg, UINT *bytes_per_strref )
     i = 1;
     while( i<count )
     {
-        /* the string reference count is always the second word */
+
         refs = pool[i*2+1];
 
-        /* empty entries have two zeros, still have a string id */
+
         if (pool[i*2] == 0 && refs == 0)
         {
             i++;
@@ -78,11 +78,11 @@ string_table *msi_load_string_table( IStorage *stg, UINT *bytes_per_strref )
             continue;
         }
 
-        /*
-         * If a string is over 64k, the previous string entry is made null
-         * and its the high word of the length is inserted in the null string's
-         * reference count field.
-         */
+
+
+
+
+
         if( pool[i*2] == 0)
         {
             len = (pool[i*2+3] << 16) + pool[i*2+2];

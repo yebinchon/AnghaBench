@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
+
+
+
+
+typedef int uint8_t ;
 struct hpack_decoder {int dummy; } ;
-typedef  scalar_t__ int_fast32_t ;
+typedef scalar_t__ int_fast32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (char*) ; 
- scalar_t__ hpack_decode_int (int,int /*<<< orphan*/  const**,size_t*) ; 
- char* hpack_lookup_name (struct hpack_decoder*,scalar_t__) ; 
- char* hpack_lookup_value (struct hpack_decoder*,scalar_t__) ; 
+
+ int free (char*) ;
+ scalar_t__ hpack_decode_int (int,int const**,size_t*) ;
+ char* hpack_lookup_name (struct hpack_decoder*,scalar_t__) ;
+ char* hpack_lookup_value (struct hpack_decoder*,scalar_t__) ;
 
 __attribute__((used)) static int hpack_decode_hdr_indexed(struct hpack_decoder *dec,
                                     const uint8_t **restrict datap,
@@ -31,11 +31,11 @@ __attribute__((used)) static int hpack_decode_hdr_indexed(struct hpack_decoder *
         return -1;
 
     char *name = hpack_lookup_name(dec, idx);
-    if (name == NULL)
+    if (name == ((void*)0))
         return -1;
 
     char *value = hpack_lookup_value(dec, idx);
-    if (value == NULL)
+    if (value == ((void*)0))
     {
         free(name);
         return -1;

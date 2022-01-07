@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  SEM_BLOCK_NAME ; 
- int /*<<< orphan*/  SEM_COUNT_NAME ; 
- int /*<<< orphan*/  printf (char*) ; 
- int /*<<< orphan*/  sem_unlink (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sscanf (char*,char*,int*) ; 
- scalar_t__ sync_wait (int) ; 
- int wait_timeout ; 
+ int SEM_BLOCK_NAME ;
+ int SEM_COUNT_NAME ;
+ int printf (char*) ;
+ int sem_unlink (int ) ;
+ int sscanf (char*,char*,int*) ;
+ scalar_t__ sync_wait (int) ;
+ int wait_timeout ;
 
 int main(int argc,char *argv[])
 {

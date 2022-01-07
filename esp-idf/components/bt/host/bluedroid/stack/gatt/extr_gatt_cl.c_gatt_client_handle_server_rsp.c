@@ -1,71 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_25__   TYPE_2__ ;
-typedef  struct TYPE_24__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_25__ TYPE_2__ ;
+typedef struct TYPE_24__ TYPE_1__ ;
+
+
 struct TYPE_24__ {scalar_t__ payload_size; } ;
-typedef  TYPE_1__ tGATT_TCB ;
-struct TYPE_25__ {int /*<<< orphan*/  status; scalar_t__ retry_count; int /*<<< orphan*/  rsp_timer_ent; } ;
-typedef  TYPE_2__ tGATT_CLCB ;
-typedef  scalar_t__ UINT8 ;
-typedef  scalar_t__ UINT16 ;
+typedef TYPE_1__ tGATT_TCB ;
+struct TYPE_25__ {int status; scalar_t__ retry_count; int rsp_timer_ent; } ;
+typedef TYPE_2__ tGATT_CLCB ;
+typedef scalar_t__ UINT8 ;
+typedef scalar_t__ UINT16 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GATT_ERROR ; 
-#define  GATT_HANDLE_VALUE_IND 141 
-#define  GATT_HANDLE_VALUE_NOTIF 140 
-#define  GATT_RSP_ERROR 139 
-#define  GATT_RSP_EXEC_WRITE 138 
-#define  GATT_RSP_FIND_INFO 137 
-#define  GATT_RSP_FIND_TYPE_VALUE 136 
-#define  GATT_RSP_MTU 135 
-#define  GATT_RSP_PREPARE_WRITE 134 
-#define  GATT_RSP_READ 133 
-#define  GATT_RSP_READ_BLOB 132 
-#define  GATT_RSP_READ_BY_GRP_TYPE 131 
-#define  GATT_RSP_READ_BY_TYPE 130 
-#define  GATT_RSP_READ_MULTI 129 
-#define  GATT_RSP_WRITE 128 
- int /*<<< orphan*/  GATT_TRACE_ERROR (char*,scalar_t__,...) ; 
- int /*<<< orphan*/  GATT_TRACE_WARNING (char*,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  btu_stop_timer (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  gatt_cl_send_next_cmd_inq (TYPE_1__*) ; 
- TYPE_2__* gatt_cmd_dequeue (TYPE_1__*,scalar_t__*) ; 
- scalar_t__ gatt_cmd_to_rsp_code (scalar_t__) ; 
- int /*<<< orphan*/  gatt_end_operation (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  gatt_process_error_rsp (TYPE_1__*,TYPE_2__*,scalar_t__,scalar_t__,scalar_t__*) ; 
- int /*<<< orphan*/  gatt_process_find_type_value_rsp (TYPE_1__*,TYPE_2__*,scalar_t__,scalar_t__*) ; 
- int /*<<< orphan*/  gatt_process_handle_rsp (TYPE_2__*) ; 
- int /*<<< orphan*/  gatt_process_mtu_rsp (TYPE_1__*,TYPE_2__*,scalar_t__,scalar_t__*) ; 
- int /*<<< orphan*/  gatt_process_notification (TYPE_1__*,scalar_t__,scalar_t__,scalar_t__*) ; 
- int /*<<< orphan*/  gatt_process_prep_write_rsp (TYPE_1__*,TYPE_2__*,scalar_t__,scalar_t__,scalar_t__*) ; 
- int /*<<< orphan*/  gatt_process_read_by_type_rsp (TYPE_1__*,TYPE_2__*,scalar_t__,scalar_t__,scalar_t__*) ; 
- int /*<<< orphan*/  gatt_process_read_info_rsp (TYPE_1__*,TYPE_2__*,scalar_t__,scalar_t__,scalar_t__*) ; 
- int /*<<< orphan*/  gatt_process_read_rsp (TYPE_1__*,TYPE_2__*,scalar_t__,scalar_t__,scalar_t__*) ; 
+
+ int GATT_ERROR ;
+ int GATT_TRACE_ERROR (char*,scalar_t__,...) ;
+ int GATT_TRACE_WARNING (char*,scalar_t__,scalar_t__) ;
+ int btu_stop_timer (int *) ;
+ int gatt_cl_send_next_cmd_inq (TYPE_1__*) ;
+ TYPE_2__* gatt_cmd_dequeue (TYPE_1__*,scalar_t__*) ;
+ scalar_t__ gatt_cmd_to_rsp_code (scalar_t__) ;
+ int gatt_end_operation (TYPE_2__*,int ,int *) ;
+ int gatt_process_error_rsp (TYPE_1__*,TYPE_2__*,scalar_t__,scalar_t__,scalar_t__*) ;
+ int gatt_process_find_type_value_rsp (TYPE_1__*,TYPE_2__*,scalar_t__,scalar_t__*) ;
+ int gatt_process_handle_rsp (TYPE_2__*) ;
+ int gatt_process_mtu_rsp (TYPE_1__*,TYPE_2__*,scalar_t__,scalar_t__*) ;
+ int gatt_process_notification (TYPE_1__*,scalar_t__,scalar_t__,scalar_t__*) ;
+ int gatt_process_prep_write_rsp (TYPE_1__*,TYPE_2__*,scalar_t__,scalar_t__,scalar_t__*) ;
+ int gatt_process_read_by_type_rsp (TYPE_1__*,TYPE_2__*,scalar_t__,scalar_t__,scalar_t__*) ;
+ int gatt_process_read_info_rsp (TYPE_1__*,TYPE_2__*,scalar_t__,scalar_t__,scalar_t__*) ;
+ int gatt_process_read_rsp (TYPE_1__*,TYPE_2__*,scalar_t__,scalar_t__,scalar_t__*) ;
 
 void gatt_client_handle_server_rsp (tGATT_TCB *p_tcb, UINT8 op_code,
                                     UINT16 len, UINT8 *p_data)
 {
-    tGATT_CLCB   *p_clcb = NULL;
-    UINT8        rsp_code;
+    tGATT_CLCB *p_clcb = ((void*)0);
+    UINT8 rsp_code;
 
-    if (op_code != GATT_HANDLE_VALUE_IND && op_code != GATT_HANDLE_VALUE_NOTIF) {
+    if (op_code != 141 && op_code != 140) {
         p_clcb = gatt_cmd_dequeue(p_tcb, &rsp_code);
 
         rsp_code = gatt_cmd_to_rsp_code(rsp_code);
 
-        if (p_clcb == NULL || (rsp_code != op_code && op_code != GATT_RSP_ERROR)) {
-            GATT_TRACE_WARNING ("ATT - Ignore wrong response. Receives (%02x) \
-                                Request(%02x) Ignored", op_code, rsp_code);
+        if (p_clcb == ((void*)0) || (rsp_code != op_code && op_code != 139)) {
+            GATT_TRACE_WARNING ("ATT - Ignore wrong response. Receives (%02x)                                 Request(%02x) Ignored", op_code, rsp_code);
+
 
             return;
         } else {
@@ -73,57 +59,57 @@ void gatt_client_handle_server_rsp (tGATT_TCB *p_tcb, UINT8 op_code,
             p_clcb->retry_count = 0;
         }
     }
-    /* the size of the message may not be bigger than the local max PDU size*/
-    /* The message has to be smaller than the agreed MTU, len does not count op_code */
+
+
     if (len >= p_tcb->payload_size) {
         GATT_TRACE_ERROR("invalid response/indicate pkt size: %d, PDU size: %d", len + 1, p_tcb->payload_size);
-        if (op_code != GATT_HANDLE_VALUE_NOTIF &&
-                op_code != GATT_HANDLE_VALUE_IND) {
-            gatt_end_operation(p_clcb, GATT_ERROR, NULL);
+        if (op_code != 140 &&
+                op_code != 141) {
+            gatt_end_operation(p_clcb, GATT_ERROR, ((void*)0));
         }
     } else {
         switch (op_code) {
-        case GATT_RSP_ERROR:
+        case 139:
             gatt_process_error_rsp(p_tcb, p_clcb, op_code, len, p_data);
             break;
 
-        case GATT_RSP_MTU:       /* 2 bytes mtu */
+        case 135:
             gatt_process_mtu_rsp(p_tcb, p_clcb, len , p_data);
             break;
 
-        case GATT_RSP_FIND_INFO:
+        case 137:
             gatt_process_read_info_rsp(p_tcb, p_clcb, op_code, len, p_data);
             break;
 
-        case GATT_RSP_READ_BY_TYPE:
-        case GATT_RSP_READ_BY_GRP_TYPE:
+        case 130:
+        case 131:
             gatt_process_read_by_type_rsp(p_tcb, p_clcb, op_code, len, p_data);
             break;
 
-        case GATT_RSP_READ:
-        case GATT_RSP_READ_BLOB:
-        case GATT_RSP_READ_MULTI:
+        case 133:
+        case 132:
+        case 129:
             gatt_process_read_rsp(p_tcb, p_clcb, op_code, len, p_data);
             break;
 
-        case GATT_RSP_FIND_TYPE_VALUE: /* disc service with UUID */
+        case 136:
             gatt_process_find_type_value_rsp(p_tcb, p_clcb, len, p_data);
             break;
 
-        case GATT_RSP_WRITE:
+        case 128:
             gatt_process_handle_rsp(p_clcb);
             break;
 
-        case GATT_RSP_PREPARE_WRITE:
+        case 134:
             gatt_process_prep_write_rsp(p_tcb, p_clcb, op_code, len, p_data);
             break;
 
-        case GATT_RSP_EXEC_WRITE:
-            gatt_end_operation(p_clcb, p_clcb->status, NULL);
+        case 138:
+            gatt_end_operation(p_clcb, p_clcb->status, ((void*)0));
             break;
 
-        case GATT_HANDLE_VALUE_NOTIF:
-        case GATT_HANDLE_VALUE_IND:
+        case 140:
+        case 141:
             gatt_process_notification(p_tcb, op_code, len, p_data);
             break;
 
@@ -133,7 +119,7 @@ void gatt_client_handle_server_rsp (tGATT_TCB *p_tcb, UINT8 op_code,
         }
     }
 
-    if (op_code != GATT_HANDLE_VALUE_IND && op_code != GATT_HANDLE_VALUE_NOTIF) {
+    if (op_code != 141 && op_code != 140) {
         gatt_cl_send_next_cmd_inq(p_tcb);
     }
 

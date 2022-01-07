@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  LPARAM ;
-typedef  int /*<<< orphan*/  ITextSelection ;
-typedef  int /*<<< orphan*/  ITextRange ;
-typedef  int /*<<< orphan*/  ITextPara ;
-typedef  int /*<<< orphan*/  ITextDocument ;
-typedef  int /*<<< orphan*/  IRichEditOle ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  char CHAR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CO_E_RELEASED ; 
- int /*<<< orphan*/  EXPECT_REF (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  E_INVALIDARG ; 
- int /*<<< orphan*/  ITextDocument_Range (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  ITextPara_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ITextRange_GetPara (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  ITextRange_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ITextSelection_GetPara (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  ITextSelection_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  SendMessageA (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WM_SETTEXT ; 
- int /*<<< orphan*/  create_interfaces (int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ **,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  ok (int,char*,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  release_interfaces (int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int LPARAM ;
+typedef int ITextSelection ;
+typedef int ITextRange ;
+typedef int ITextPara ;
+typedef int ITextDocument ;
+typedef int IRichEditOle ;
+typedef int HWND ;
+typedef int HRESULT ;
+typedef char CHAR ;
+
+
+ int CO_E_RELEASED ;
+ int EXPECT_REF (int *,int) ;
+ int E_INVALIDARG ;
+ int ITextDocument_Range (int *,int ,int,int **) ;
+ int ITextPara_Release (int *) ;
+ int ITextRange_GetPara (int *,int **) ;
+ int ITextRange_Release (int *) ;
+ int ITextSelection_GetPara (int *,int **) ;
+ int ITextSelection_Release (int *) ;
+ int S_OK ;
+ int SendMessageA (int ,int ,int ,int ) ;
+ int WM_SETTEXT ;
+ int create_interfaces (int *,int **,int **,int **) ;
+ int ok (int,char*,int ,...) ;
+ int release_interfaces (int *,int **,int **,int *) ;
 
 __attribute__((used)) static void test_GetPara(void)
 {
   static const CHAR test_text1[] = "TestSomeText";
-  IRichEditOle *reOle = NULL;
-  ITextDocument *doc = NULL;
+  IRichEditOle *reOle = ((void*)0);
+  ITextDocument *doc = ((void*)0);
   ITextSelection *selection;
-  ITextRange *range = NULL;
+  ITextRange *range = ((void*)0);
   ITextPara *para, *para2;
   HRESULT hr;
   HWND hwnd;
@@ -61,7 +61,7 @@ __attribute__((used)) static void test_GetPara(void)
   EXPECT_REF(doc, 3);
   EXPECT_REF(range, 1);
 
-  hr = ITextRange_GetPara(range, NULL);
+  hr = ITextRange_GetPara(range, ((void*)0));
   ok(hr == E_INVALIDARG, "got 0x%08x\n", hr);
 
   hr = ITextRange_GetPara(range, &para);
@@ -103,15 +103,15 @@ __attribute__((used)) static void test_GetPara(void)
 
   ITextPara_Release(para);
   ITextPara_Release(para2);
-  release_interfaces(&hwnd, &reOle, &doc, NULL);
+  release_interfaces(&hwnd, &reOle, &doc, ((void*)0));
 
-  hr = ITextRange_GetPara(range, NULL);
+  hr = ITextRange_GetPara(range, ((void*)0));
   ok(hr == CO_E_RELEASED, "got 0x%08x\n", hr);
 
   hr = ITextRange_GetPara(range, &para);
   ok(hr == CO_E_RELEASED, "got 0x%08x\n", hr);
 
-  hr = ITextSelection_GetPara(selection, NULL);
+  hr = ITextSelection_GetPara(selection, ((void*)0));
   ok(hr == CO_E_RELEASED, "got 0x%08x\n", hr);
 
   hr = ITextSelection_GetPara(selection, &para);

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int WCHAR ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_FAIL ; 
- int REG_FOLD ; 
- int REG_GLOB ; 
- int REG_MULTILINE ; 
- int REG_STICKY ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  WARN (char*,int const) ; 
+
+
+
+typedef int WCHAR ;
+typedef int HRESULT ;
+typedef int DWORD ;
+
+
+ int E_FAIL ;
+ int REG_FOLD ;
+ int REG_GLOB ;
+ int REG_MULTILINE ;
+ int REG_STICKY ;
+ int S_OK ;
+ int WARN (char*,int const) ;
 
 HRESULT parse_regexp_flags(const WCHAR *str, DWORD str_len, DWORD *ret)
 {

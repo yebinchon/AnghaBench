@@ -1,39 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UInt32 ;
-struct TYPE_9__ {int NumStreams; int /*<<< orphan*/  MethodID; } ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int UInt32 ;
+struct TYPE_9__ {int NumStreams; int MethodID; } ;
 struct TYPE_8__ {int NumCoders; int NumPackStreams; scalar_t__* PackStreams; int NumBonds; TYPE_1__* Bonds; TYPE_3__* Coders; } ;
 struct TYPE_7__ {int InIndex; scalar_t__ OutIndex; } ;
-typedef  int /*<<< orphan*/  SRes ;
-typedef  TYPE_2__ CSzFolder ;
-typedef  TYPE_3__ CSzCoderInfo ;
+typedef int SRes ;
+typedef TYPE_2__ CSzFolder ;
+typedef TYPE_3__ CSzCoderInfo ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IS_BCJ2 (TYPE_3__*) ; 
- int /*<<< orphan*/  IS_SUPPORTED_CODER (TYPE_3__*) ; 
- int /*<<< orphan*/  SZ_ERROR_UNSUPPORTED ; 
- int /*<<< orphan*/  SZ_OK ; 
-#define  k_ARM 134 
-#define  k_ARMT 133 
-#define  k_BCJ 132 
-#define  k_Delta 131 
-#define  k_IA64 130 
-#define  k_PPC 129 
-#define  k_SPARC 128 
 
+ int IS_BCJ2 (TYPE_3__*) ;
+ int IS_SUPPORTED_CODER (TYPE_3__*) ;
+ int SZ_ERROR_UNSUPPORTED ;
+ int SZ_OK ;
 __attribute__((used)) static SRes CheckSupportedFolder(const CSzFolder *f)
 {
   if (f->NumCoders < 1 || f->NumCoders > 4)
@@ -46,15 +38,15 @@ __attribute__((used)) static SRes CheckSupportedFolder(const CSzFolder *f)
       return SZ_ERROR_UNSUPPORTED;
     return SZ_OK;
   }
-  
-  
-  #ifndef _7Z_NO_METHODS_FILTERS
+
+
+
 
   if (f->NumCoders == 2)
   {
     const CSzCoderInfo *c = &f->Coders[1];
     if (
-        /* c->MethodID > (UInt32)0xFFFFFFFF || */
+
         c->NumStreams != 1
         || f->NumPackStreams != 1
         || f->PackStreams[0] != 0
@@ -64,13 +56,13 @@ __attribute__((used)) static SRes CheckSupportedFolder(const CSzFolder *f)
       return SZ_ERROR_UNSUPPORTED;
     switch ((UInt32)c->MethodID)
     {
-      case k_Delta:
-      case k_BCJ:
-      case k_PPC:
-      case k_IA64:
-      case k_SPARC:
-      case k_ARM:
-      case k_ARMT:
+      case 131:
+      case 132:
+      case 129:
+      case 130:
+      case 128:
+      case 134:
+      case 133:
         break;
       default:
         return SZ_ERROR_UNSUPPORTED;
@@ -78,9 +70,9 @@ __attribute__((used)) static SRes CheckSupportedFolder(const CSzFolder *f)
     return SZ_OK;
   }
 
-  #endif
 
-  
+
+
   if (f->NumCoders == 4)
   {
     if (!IS_SUPPORTED_CODER(&f->Coders[1])
@@ -99,6 +91,6 @@ __attribute__((used)) static SRes CheckSupportedFolder(const CSzFolder *f)
       return SZ_ERROR_UNSUPPORTED;
     return SZ_OK;
   }
-  
+
   return SZ_ERROR_UNSUPPORTED;
 }

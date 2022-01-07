@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  equiv; } ;
-typedef  TYPE_1__ value_range_t ;
-typedef  int /*<<< orphan*/  tree ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TYPE_MAX_VALUE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  VR_RANGE ; 
- int /*<<< orphan*/  build_int_cst (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  positive_overflow_infinity (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_value_range (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_value_range_to_varying (TYPE_1__*) ; 
- int /*<<< orphan*/  supports_overflow_infinity (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int equiv; } ;
+typedef TYPE_1__ value_range_t ;
+typedef int tree ;
+
+
+ int TYPE_MAX_VALUE (int ) ;
+ int VR_RANGE ;
+ int build_int_cst (int ,int ) ;
+ int positive_overflow_infinity (int ) ;
+ int set_value_range (TYPE_1__*,int ,int ,int ,int ) ;
+ int set_value_range_to_varying (TYPE_1__*) ;
+ int supports_overflow_infinity (int ) ;
 
 __attribute__((used)) static inline void
 set_value_range_to_nonnegative (value_range_t *vr, tree type,
-				bool overflow_infinity)
+    bool overflow_infinity)
 {
   tree zero;
 
@@ -38,8 +38,8 @@ set_value_range_to_nonnegative (value_range_t *vr, tree type,
 
   zero = build_int_cst (type, 0);
   set_value_range (vr, VR_RANGE, zero,
-		   (overflow_infinity
-		    ? positive_overflow_infinity (type)
-		    : TYPE_MAX_VALUE (type)),
-		   vr->equiv);
+     (overflow_infinity
+      ? positive_overflow_infinity (type)
+      : TYPE_MAX_VALUE (type)),
+     vr->equiv);
 }

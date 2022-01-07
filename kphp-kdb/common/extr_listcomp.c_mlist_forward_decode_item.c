@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct mlist_decoder_stack_entry {int right_value; int left_idx; int right_idx; scalar_t__ right_subtree_offset; int middle_value; int multiplicity; int left_value; } ;
-struct mlist_decoder {int p; int k; int K; int /*<<< orphan*/  br; struct mlist_decoder_stack_entry* stack; } ;
+struct mlist_decoder {int p; int k; int K; int br; struct mlist_decoder_stack_entry* stack; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  bread_seek (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  mlist_decode_node (struct mlist_decoder*,struct mlist_decoder_stack_entry*) ; 
- int /*<<< orphan*/  mlist_decode_pair (struct mlist_decoder*,int*) ; 
- int /*<<< orphan*/  mlist_uptree (struct mlist_decoder*,struct mlist_decoder_stack_entry*,int,int*) ; 
+
+ int assert (int) ;
+ int bread_seek (int *,scalar_t__) ;
+ int mlist_decode_node (struct mlist_decoder*,struct mlist_decoder_stack_entry*) ;
+ int mlist_decode_pair (struct mlist_decoder*,int*) ;
+ int mlist_uptree (struct mlist_decoder*,struct mlist_decoder_stack_entry*,int,int*) ;
 
 int mlist_forward_decode_item (struct mlist_decoder *dec, long long item_id_lowerbound, long long (*docid_to_itemid) (int), int *multiplicity) {
   struct mlist_decoder_stack_entry *data = dec->stack;
@@ -73,13 +73,13 @@ int mlist_forward_decode_item (struct mlist_decoder *dec, long long item_id_lowe
         *multiplicity = data->multiplicity;
         return data->middle_value;
       }
-      //assert (data->left_value >= doc_id_lowerbound);
+
       mlist_uptree (dec, data, data->left_idx, multiplicity);
       return data->left_value;
     }
     struct mlist_decoder_stack_entry *next = data + 1;
     if (docid_to_itemid (data->middle_value) > item_id_lowerbound) {
-      // left subtree
+
       if (data->left_idx == middle - 1) {
         dec->k = middle;
         *multiplicity = data->multiplicity;

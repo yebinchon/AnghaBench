@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct snd_soc_card {TYPE_1__* dev; } ;
 struct device_node {int dummy; } ;
-typedef  int /*<<< orphan*/  prop ;
+typedef int prop ;
 struct TYPE_2__ {struct device_node* of_node; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  of_property_read_bool (struct device_node*,char*) ; 
- int snd_soc_of_parse_audio_routing (struct snd_soc_card*,char*) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,char*,char*) ; 
+
+ int of_property_read_bool (struct device_node*,char*) ;
+ int snd_soc_of_parse_audio_routing (struct snd_soc_card*,char*) ;
+ int snprintf (char*,int,char*,char*,char*) ;
 
 int asoc_simple_parse_routing(struct snd_soc_card *card,
-			      char *prefix)
+         char *prefix)
 {
-	struct device_node *node = card->dev->of_node;
-	char prop[128];
+ struct device_node *node = card->dev->of_node;
+ char prop[128];
 
-	if (!prefix)
-		prefix = "";
+ if (!prefix)
+  prefix = "";
 
-	snprintf(prop, sizeof(prop), "%s%s", prefix, "routing");
+ snprintf(prop, sizeof(prop), "%s%s", prefix, "routing");
 
-	if (!of_property_read_bool(node, prop))
-		return 0;
+ if (!of_property_read_bool(node, prop))
+  return 0;
 
-	return snd_soc_of_parse_audio_routing(card, prop);
+ return snd_soc_of_parse_audio_routing(card, prop);
 }

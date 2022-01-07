@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_stmt ;
-typedef  int /*<<< orphan*/  krb5_kvno ;
-typedef  scalar_t__ krb5_error_code ;
-struct TYPE_10__ {void* data; int /*<<< orphan*/  length; } ;
-typedef  TYPE_1__ krb5_data ;
-typedef  int /*<<< orphan*/  krb5_context ;
-typedef  int /*<<< orphan*/  krb5_const_principal ;
-struct TYPE_11__ {int /*<<< orphan*/  db; int /*<<< orphan*/ * fetch; } ;
-typedef  TYPE_2__ hdb_sqlite_db ;
-struct TYPE_12__ {int /*<<< orphan*/  entry; } ;
-typedef  TYPE_3__ hdb_entry_ex ;
+
+
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int sqlite3_stmt ;
+typedef int krb5_kvno ;
+typedef scalar_t__ krb5_error_code ;
+struct TYPE_10__ {void* data; int length; } ;
+typedef TYPE_1__ krb5_data ;
+typedef int krb5_context ;
+typedef int krb5_const_principal ;
+struct TYPE_11__ {int db; int * fetch; } ;
+typedef TYPE_2__ hdb_sqlite_db ;
+struct TYPE_12__ {int entry; } ;
+typedef TYPE_3__ hdb_entry_ex ;
 struct TYPE_13__ {scalar_t__ hdb_master_key_set; scalar_t__ hdb_db; } ;
-typedef  TYPE_4__ HDB ;
+typedef TYPE_4__ HDB ;
 
-/* Variables and functions */
- scalar_t__ EINVAL ; 
- scalar_t__ HDB_ERR_NOENTRY ; 
- unsigned int HDB_F_DECRYPT ; 
- int SQLITE_DONE ; 
- int SQLITE_ROW ; 
- int /*<<< orphan*/  SQLITE_STATIC ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  hdb_free_entry (int /*<<< orphan*/ ,TYPE_3__*) ; 
- int hdb_sqlite_step (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ hdb_unseal_keys (int /*<<< orphan*/ ,TYPE_4__*,int /*<<< orphan*/ *) ; 
- scalar_t__ hdb_value2entry (int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  krb5_set_error_message (int /*<<< orphan*/ ,scalar_t__,char*,int) ; 
- scalar_t__ krb5_unparse_name (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char**) ; 
- int /*<<< orphan*/  sqlite3_bind_text (int /*<<< orphan*/ *,int,char*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_clear_bindings (int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3_column_blob (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_column_bytes (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_reset (int /*<<< orphan*/ *) ; 
+
+ scalar_t__ EINVAL ;
+ scalar_t__ HDB_ERR_NOENTRY ;
+ unsigned int HDB_F_DECRYPT ;
+ int SQLITE_DONE ;
+ int SQLITE_ROW ;
+ int SQLITE_STATIC ;
+ int free (char*) ;
+ int hdb_free_entry (int ,TYPE_3__*) ;
+ int hdb_sqlite_step (int ,int ,int *) ;
+ scalar_t__ hdb_unseal_keys (int ,TYPE_4__*,int *) ;
+ scalar_t__ hdb_value2entry (int ,TYPE_1__*,int *) ;
+ int krb5_set_error_message (int ,scalar_t__,char*,int) ;
+ scalar_t__ krb5_unparse_name (int ,int ,char**) ;
+ int sqlite3_bind_text (int *,int,char*,int,int ) ;
+ int sqlite3_clear_bindings (int *) ;
+ scalar_t__ sqlite3_column_blob (int *,int ) ;
+ int sqlite3_column_bytes (int *,int ) ;
+ int sqlite3_reset (int *) ;
 
 __attribute__((used)) static krb5_error_code
 hdb_sqlite_fetch_kvno(krb5_context context, HDB *db, krb5_const_principal principal,
-		      unsigned flags, krb5_kvno kvno, hdb_entry_ex *entry)
+        unsigned flags, krb5_kvno kvno, hdb_entry_ex *entry)
 {
     int sqlite_error;
     krb5_error_code ret;

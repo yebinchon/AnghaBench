@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int i_frmsiz; size_t i_fscod2; size_t i_numblkscod; } ;
 struct vlc_a52_bitstream_info {int i_fscod; size_t i_acmod; scalar_t__ i_lfeon; TYPE_1__ eac3; } ;
-struct TYPE_5__ {int i_size; unsigned int i_rate; int i_blocks_per_sync_frame; int i_bitrate; int i_samples; int b_eac3; int /*<<< orphan*/  i_channels_conf; int /*<<< orphan*/  i_channels; int /*<<< orphan*/  i_chan_mode; struct vlc_a52_bitstream_info bs; } ;
-typedef  TYPE_2__ vlc_a52_header_t ;
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
+struct TYPE_5__ {int i_size; unsigned int i_rate; int i_blocks_per_sync_frame; int i_bitrate; int i_samples; int b_eac3; int i_channels_conf; int i_channels; int i_chan_mode; struct vlc_a52_bitstream_info bs; } ;
+typedef TYPE_2__ vlc_a52_header_t ;
+typedef int uint8_t ;
+typedef int uint32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AOUT_CHANMODE_DUALMONO ; 
- int /*<<< orphan*/  AOUT_CHAN_LFE ; 
- scalar_t__ VLC_A52_MIN_HEADER_SIZE ; 
- int VLC_EGENERIC ; 
- scalar_t__ VLC_SUCCESS ; 
- scalar_t__ vlc_a52_ParseEac3BitstreamInfo (struct vlc_a52_bitstream_info*,int /*<<< orphan*/  const*,scalar_t__) ; 
- int /*<<< orphan*/  vlc_popcount (int /*<<< orphan*/ ) ; 
+
+ int AOUT_CHANMODE_DUALMONO ;
+ int AOUT_CHAN_LFE ;
+ scalar_t__ VLC_A52_MIN_HEADER_SIZE ;
+ int VLC_EGENERIC ;
+ scalar_t__ VLC_SUCCESS ;
+ scalar_t__ vlc_a52_ParseEac3BitstreamInfo (struct vlc_a52_bitstream_info*,int const*,scalar_t__) ;
+ int vlc_popcount (int ) ;
 
 __attribute__((used)) static inline int vlc_a52_header_ParseEac3( vlc_a52_header_t *p_header,
                                             const uint8_t *p_buf,
@@ -34,7 +34,7 @@ __attribute__((used)) static inline int vlc_a52_header_ParseEac3( vlc_a52_header
                                             const unsigned *pi_fscod_samplerates )
 {
     if( vlc_a52_ParseEac3BitstreamInfo( &p_header->bs,
-                                        &p_buf[2], /* start code */
+                                        &p_buf[2],
                                         VLC_A52_MIN_HEADER_SIZE - 2 ) != VLC_SUCCESS )
         return VLC_EGENERIC;
 
@@ -65,6 +65,6 @@ __attribute__((used)) static inline int vlc_a52_header_ParseEac3( vlc_a52_header
                         / (p_header->i_blocks_per_sync_frame * 256);
     p_header->i_samples = p_header->i_blocks_per_sync_frame * 256;
 
-    p_header->b_eac3 = true;
+    p_header->b_eac3 = 1;
     return VLC_SUCCESS;
 }

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct st_reject_data {char* driver_hint; int /*<<< orphan*/ * rev; int /*<<< orphan*/ * model; int /*<<< orphan*/ * vendor; } ;
-struct scsi_device {int /*<<< orphan*/  rev; int /*<<< orphan*/  model; int /*<<< orphan*/  vendor; } ;
 
-/* Variables and functions */
- struct st_reject_data* reject_list ; 
- int /*<<< orphan*/  strlen (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strncmp (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct st_reject_data {char* driver_hint; int * rev; int * model; int * vendor; } ;
+struct scsi_device {int rev; int model; int vendor; } ;
+
+
+ struct st_reject_data* reject_list ;
+ int strlen (int *) ;
+ int strncmp (int *,int ,int ) ;
 
 __attribute__((used)) static char * st_incompatible(struct scsi_device* SDp)
 {
-	struct st_reject_data *rp;
+ struct st_reject_data *rp;
 
-	for (rp=&(reject_list[0]); rp->vendor != NULL; rp++)
-		if (!strncmp(rp->vendor, SDp->vendor, strlen(rp->vendor)) &&
-		    !strncmp(rp->model, SDp->model, strlen(rp->model)) &&
-		    !strncmp(rp->rev, SDp->rev, strlen(rp->rev))) {
-			if (rp->driver_hint)
-				return rp->driver_hint;
-			else
-				return "unknown";
-		}
-	return NULL;
+ for (rp=&(reject_list[0]); rp->vendor != ((void*)0); rp++)
+  if (!strncmp(rp->vendor, SDp->vendor, strlen(rp->vendor)) &&
+      !strncmp(rp->model, SDp->model, strlen(rp->model)) &&
+      !strncmp(rp->rev, SDp->rev, strlen(rp->rev))) {
+   if (rp->driver_hint)
+    return rp->driver_hint;
+   else
+    return "unknown";
+  }
+ return ((void*)0);
 }

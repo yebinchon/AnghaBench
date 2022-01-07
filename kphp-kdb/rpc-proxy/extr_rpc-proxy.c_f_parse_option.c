@@ -1,38 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- void* PING_INTERVAL ; 
- int /*<<< orphan*/  assert (int) ; 
- void* atof (int /*<<< orphan*/ ) ; 
- int atoi (int /*<<< orphan*/ ) ; 
- int binlog_cyclic_mode ; 
- int binlog_mode_on ; 
- int /*<<< orphan*/  bname ; 
- long long dynamic_data_buffer_size ; 
- int /*<<< orphan*/  errno ; 
- long long max_binlog_size ; 
- int /*<<< orphan*/  nice (int) ; 
- int /*<<< orphan*/  only_first_cluster ; 
- int /*<<< orphan*/  optarg ; 
- int /*<<< orphan*/  perror (char*) ; 
- void* ping_interval ; 
- int rpc_crc32_mode ; 
- int rpc_disable_crc32_check ; 
- int sscanf (int /*<<< orphan*/ ,char*,long long*,char*) ; 
- int /*<<< orphan*/  tcp_buffers ; 
- int /*<<< orphan*/  test_mode ; 
- void* vv_tl_drop_probability ; 
+ void* PING_INTERVAL ;
+ int assert (int) ;
+ void* atof (int ) ;
+ int atoi (int ) ;
+ int binlog_cyclic_mode ;
+ int binlog_mode_on ;
+ int bname ;
+ long long dynamic_data_buffer_size ;
+ int errno ;
+ long long max_binlog_size ;
+ int nice (int) ;
+ int only_first_cluster ;
+ int optarg ;
+ int perror (char*) ;
+ void* ping_interval ;
+ int rpc_crc32_mode ;
+ int rpc_disable_crc32_check ;
+ int sscanf (int ,char*,long long*,char*) ;
+ int tcp_buffers ;
+ int test_mode ;
+ void* vv_tl_drop_probability ;
 
 int f_parse_option (int val) {
   char c;
@@ -55,10 +47,10 @@ int f_parse_option (int val) {
     c = 0;
     assert (sscanf (optarg, "%lld%c", &x, &c) >= 1);
     switch (c | 0x20) {
-      case 'k':  x <<= 10; break;
-      case 'm':  x <<= 20; break;
-      case 'g':  x <<= 30; break;
-      case 't':  x <<= 40; break;
+      case 'k': x <<= 10; break;
+      case 'm': x <<= 20; break;
+      case 'g': x <<= 30; break;
+      case 't': x <<= 40; break;
       default: assert (c == 0x20);
     }
     if (val == 'H') {
@@ -77,7 +69,7 @@ int f_parse_option (int val) {
     bname = optarg;
     binlog_cyclic_mode = 1;
     binlog_mode_on |= 1;
-    //max_binlog_size = 100000;
+
     break;
   case 'F':
     binlog_mode_on |= 2;

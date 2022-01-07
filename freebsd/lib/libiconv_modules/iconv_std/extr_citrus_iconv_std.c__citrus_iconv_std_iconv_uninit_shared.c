@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct _citrus_iconv_std_shared {int /*<<< orphan*/  is_srcs; int /*<<< orphan*/  is_dst_encoding; int /*<<< orphan*/  is_src_encoding; } ;
+
+
+
+
+struct _citrus_iconv_std_shared {int is_srcs; int is_dst_encoding; int is_src_encoding; } ;
 struct _citrus_iconv_shared {struct _citrus_iconv_std_shared* ci_closure; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  _stdenc_close (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  close_srcs (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (struct _citrus_iconv_std_shared*) ; 
+
+ int _stdenc_close (int ) ;
+ int close_srcs (int *) ;
+ int free (struct _citrus_iconv_std_shared*) ;
 
 __attribute__((used)) static void
 _citrus_iconv_std_iconv_uninit_shared(struct _citrus_iconv_shared *ci)
 {
-	struct _citrus_iconv_std_shared *is = ci->ci_closure;
+ struct _citrus_iconv_std_shared *is = ci->ci_closure;
 
-	if (is == NULL)
-		return;
+ if (is == ((void*)0))
+  return;
 
-	_stdenc_close(is->is_src_encoding);
-	_stdenc_close(is->is_dst_encoding);
-	close_srcs(&is->is_srcs);
-	free(is);
+ _stdenc_close(is->is_src_encoding);
+ _stdenc_close(is->is_dst_encoding);
+ close_srcs(&is->is_srcs);
+ free(is);
 }

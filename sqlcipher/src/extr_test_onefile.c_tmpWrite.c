@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int nAlloc; char* zAlloc; int nSize; } ;
-typedef  TYPE_1__ tmp_file ;
-typedef  int sqlite_int64 ;
-typedef  int /*<<< orphan*/  sqlite3_file ;
+typedef TYPE_1__ tmp_file ;
+typedef int sqlite_int64 ;
+typedef int sqlite3_file ;
 
-/* Variables and functions */
- scalar_t__ MAX (int,int) ; 
- int SQLITE_NOMEM ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  memcpy (char*,void const*,int) ; 
- char* sqlite3_realloc (char*,int) ; 
+
+ scalar_t__ MAX (int,int) ;
+ int SQLITE_NOMEM ;
+ int SQLITE_OK ;
+ int memcpy (char*,void const*,int) ;
+ char* sqlite3_realloc (char*,int) ;
 
 __attribute__((used)) static int tmpWrite(
-  sqlite3_file *pFile, 
-  const void *zBuf, 
-  int iAmt, 
+  sqlite3_file *pFile,
+  const void *zBuf,
+  int iAmt,
   sqlite_int64 iOfst
 ){
   tmp_file *pTmp = (tmp_file *)pFile;

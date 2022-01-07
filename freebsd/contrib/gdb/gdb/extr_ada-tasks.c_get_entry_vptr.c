@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct task_entry {int task_num; struct task_entry* next_task; } ;
 
-/* Variables and functions */
- struct task_entry* task_list ; 
+
+ struct task_entry* task_list ;
 
 __attribute__((used)) static struct task_entry *
 get_entry_vptr (int p_task_num)
@@ -24,8 +24,8 @@ get_entry_vptr (int p_task_num)
   while (pt)
     {
       if (pt->task_num == p_task_num)
-	return pt;
+ return pt;
       pt = pt->next_task;
     }
-  return NULL;
+  return ((void*)0);
 }

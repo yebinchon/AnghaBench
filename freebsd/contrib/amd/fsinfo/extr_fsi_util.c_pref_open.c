@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  p ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int MAXPATHLEN ; 
- int /*<<< orphan*/  error (char*,char*) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  fsi_log (char*,char*,char*,char*) ; 
- int /*<<< orphan*/  make_banner (int /*<<< orphan*/ *) ; 
- void stub1 (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  xsnprintf (char*,int,char*,char*,char*) ; 
+
+
+
+typedef int p ;
+typedef int FILE ;
+
+
+ int MAXPATHLEN ;
+ int error (char*,char*) ;
+ int * fopen (char*,char*) ;
+ int fsi_log (char*,char*,char*,char*) ;
+ int make_banner (int *) ;
+ void stub1 (int *,char*) ;
+ int xsnprintf (char*,int,char*,char*,char*) ;
 
 FILE *
 pref_open(char *pref, char *hn, void (*hdr) (FILE *, char *), char *arg)

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  thumb_noop ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int thumb_noop ;
 struct TYPE_5__ {scalar_t__ fr_type; int fr_address; int fr_fix; char* fr_literal; int fr_var; scalar_t__ tc_frag_data; TYPE_1__* fr_next; } ;
-typedef  TYPE_2__ fragS ;
-typedef  int /*<<< orphan*/  arm_noop ;
+typedef TYPE_2__ fragS ;
+typedef int arm_noop ;
 struct TYPE_4__ {int fr_address; } ;
 
-/* Variables and functions */
- int MAX_MEM_FOR_RS_ALIGN_CODE ; 
- int /*<<< orphan*/  memcpy (char*,char const*,int) ; 
- int /*<<< orphan*/  memset (char*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ rs_align_code ; 
- scalar_t__ target_big_endian ; 
+
+ int MAX_MEM_FOR_RS_ALIGN_CODE ;
+ int memcpy (char*,char const*,int) ;
+ int memset (char*,int ,int) ;
+ scalar_t__ rs_align_code ;
+ scalar_t__ target_big_endian ;
 
 void
 arm_handle_align (fragS * fragP)
@@ -50,17 +50,17 @@ arm_handle_align (fragS * fragP)
   if (fragP->tc_frag_data)
     {
       if (target_big_endian)
-	noop = thumb_bigend_noop;
+ noop = thumb_bigend_noop;
       else
-	noop = thumb_noop;
+ noop = thumb_noop;
       noop_size = sizeof (thumb_noop);
     }
   else
     {
       if (target_big_endian)
-	noop = arm_bigend_noop;
+ noop = arm_bigend_noop;
       else
-	noop = arm_noop;
+ noop = arm_noop;
       noop_size = sizeof (arm_noop);
     }
 

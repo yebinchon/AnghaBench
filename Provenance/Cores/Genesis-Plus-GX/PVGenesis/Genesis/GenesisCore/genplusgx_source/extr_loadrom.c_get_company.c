@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {scalar_t__ company; int /*<<< orphan*/  companyid; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_4__ {scalar_t__ company; int companyid; } ;
 struct TYPE_3__ {char* copyright; } ;
 
-/* Variables and functions */
- int MAXCOMPANY ; 
- TYPE_2__* companyinfo ; 
- TYPE_1__ rominfo ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
- int strlen (char*) ; 
- int /*<<< orphan*/  strncmp (char*,int /*<<< orphan*/ ,int) ; 
- char* strstr (char*,char*) ; 
+
+ int MAXCOMPANY ;
+ TYPE_2__* companyinfo ;
+ TYPE_1__ rominfo ;
+ int strcpy (char*,char*) ;
+ int strlen (char*) ;
+ int strncmp (char*,int ,int) ;
+ char* strstr (char*,char*) ;
 
 char *get_company(void)
 {
@@ -30,23 +30,23 @@ char *get_company(void)
   int i;
   char company[10];
 
-  for (i = 3; i < 8; i++) 
+  for (i = 3; i < 8; i++)
   {
     company[i - 3] = rominfo.copyright[i];
   }
   company[5] = 0;
 
-  /** OK, first look for a hyphen
-   *  Capcom use T-12 for example
-   */
+
+
+
   s = strstr (company, "-");
-  if (s != NULL)
+  if (s != ((void*)0))
   {
     s++;
     strcpy (company, s);
   }
 
-  /** Strip any trailing spaces **/
+
   for (i = strlen (company) - 1; i >= 0; i--)
     if (company[i] == 32)
       company[i] = 0;

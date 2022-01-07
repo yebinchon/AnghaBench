@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_5__ ;
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
-typedef  struct TYPE_12__   TYPE_10__ ;
 
-/* Type definitions */
-typedef  int int16_t ;
+
+
+typedef struct TYPE_17__ TYPE_5__ ;
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+typedef struct TYPE_12__ TYPE_10__ ;
+
+
+typedef int int16_t ;
 struct TYPE_17__ {TYPE_2__* priv_data; } ;
 struct TYPE_16__ {int nb_samples; scalar_t__* data; } ;
-struct TYPE_15__ {int size; int /*<<< orphan*/  data; } ;
-struct TYPE_13__ {int /*<<< orphan*/  (* apply_qmf ) (int*,int*) ;} ;
+struct TYPE_15__ {int size; int data; } ;
+struct TYPE_13__ {int (* apply_qmf ) (int*,int*) ;} ;
 struct TYPE_14__ {int bits_per_codeword; int* prev_samples; int prev_samples_pos; TYPE_1__ dsp; TYPE_10__* band; } ;
 struct TYPE_12__ {int const scale_factor; scalar_t__ s_predictor; } ;
-typedef  int /*<<< orphan*/  GetBitContext ;
-typedef  TYPE_2__ G722Context ;
-typedef  TYPE_3__ AVPacket ;
-typedef  TYPE_4__ AVFrame ;
-typedef  TYPE_5__ AVCodecContext ;
+typedef int GetBitContext ;
+typedef TYPE_2__ G722Context ;
+typedef TYPE_3__ AVPacket ;
+typedef TYPE_4__ AVFrame ;
+typedef TYPE_5__ AVCodecContext ;
 
-/* Variables and functions */
- scalar_t__ PREV_SAMPLES_BUF_SIZE ; 
- void* av_clip_int16 (int) ; 
- int av_clip_intp2 (scalar_t__,int) ; 
- int* ff_g722_high_inv_quant ; 
- int /*<<< orphan*/  ff_g722_update_high_predictor (TYPE_10__*,int,int) ; 
- int /*<<< orphan*/  ff_g722_update_low_predictor (TYPE_10__*,int) ; 
- int ff_get_buffer (TYPE_5__*,TYPE_4__*,int /*<<< orphan*/ ) ; 
- int get_bits (int /*<<< orphan*/ *,int) ; 
- int init_get_bits8 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int** low_inv_quants ; 
- int /*<<< orphan*/  memmove (int*,int*,int) ; 
- int /*<<< orphan*/  skip_bits (int /*<<< orphan*/ *,int const) ; 
- int /*<<< orphan*/  stub1 (int*,int*) ; 
+
+ scalar_t__ PREV_SAMPLES_BUF_SIZE ;
+ void* av_clip_int16 (int) ;
+ int av_clip_intp2 (scalar_t__,int) ;
+ int* ff_g722_high_inv_quant ;
+ int ff_g722_update_high_predictor (TYPE_10__*,int,int) ;
+ int ff_g722_update_low_predictor (TYPE_10__*,int) ;
+ int ff_get_buffer (TYPE_5__*,TYPE_4__*,int ) ;
+ int get_bits (int *,int) ;
+ int init_get_bits8 (int *,int ,int) ;
+ int** low_inv_quants ;
+ int memmove (int*,int*,int) ;
+ int skip_bits (int *,int const) ;
+ int stub1 (int*,int*) ;
 
 __attribute__((used)) static int g722_decode_frame(AVCodecContext *avctx, void *data,
                              int *got_frame_ptr, AVPacket *avpkt)
@@ -55,7 +55,7 @@ __attribute__((used)) static int g722_decode_frame(AVCodecContext *avctx, void *
     const int16_t *quantizer_table = low_inv_quants[skip];
     GetBitContext gb;
 
-    /* get output buffer */
+
     frame->nb_samples = avpkt->size * 2;
     if ((ret = ff_get_buffer(avctx, frame, 0)) < 0)
         return ret;

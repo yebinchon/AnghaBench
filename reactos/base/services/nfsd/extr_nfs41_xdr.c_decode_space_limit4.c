@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64_t ;
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  bool_t ;
-typedef  int /*<<< orphan*/  XDR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
-#define  NFS_LIMIT_BLOCKS 129 
-#define  NFS_LIMIT_SIZE 128 
- int /*<<< orphan*/  decode_modified_limit4 (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  eprintf (char*,int) ; 
- int /*<<< orphan*/  xdr_u_hyper (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  xdr_u_int32_t (int /*<<< orphan*/ *,int*) ; 
+
+
+
+typedef int uint64_t ;
+typedef int uint32_t ;
+typedef int bool_t ;
+typedef int XDR ;
+
+
+ int FALSE ;
+
+
+ int decode_modified_limit4 (int *,int *) ;
+ int eprintf (char*,int) ;
+ int xdr_u_hyper (int *,int *) ;
+ int xdr_u_int32_t (int *,int*) ;
 
 __attribute__((used)) static bool_t decode_space_limit4(
     XDR *xdr,
@@ -35,9 +35,9 @@ __attribute__((used)) static bool_t decode_space_limit4(
 
     switch (limitby)
     {
-    case NFS_LIMIT_SIZE:
+    case 128:
         return xdr_u_hyper(xdr, filesize);
-    case NFS_LIMIT_BLOCKS:
+    case 129:
         return decode_modified_limit4(xdr, filesize);
     default:
         eprintf("decode_space_limit4: limitby %d invalid\n", limitby);

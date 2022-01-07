@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int UINT ;
-struct TYPE_4__ {int /*<<< orphan*/ * lpVtbl; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int UINT ;
+struct TYPE_4__ {int * lpVtbl; } ;
 struct TYPE_5__ {int ref; int fmtetc_cnt; TYPE_1__ IEnumFORMATETC_iface; void* fmtetc; scalar_t__ cur; } ;
-typedef  TYPE_1__ IEnumFORMATETC ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  FORMATETC ;
-typedef  TYPE_2__ EnumFormatImpl ;
+typedef TYPE_1__ IEnumFORMATETC ;
+typedef int HRESULT ;
+typedef int FORMATETC ;
+typedef TYPE_2__ EnumFormatImpl ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetProcessHeap () ; 
- void* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  VT_EnumFormatImpl ; 
- int /*<<< orphan*/  memcpy (void*,int /*<<< orphan*/ *,int) ; 
+
+ int GetProcessHeap () ;
+ void* HeapAlloc (int ,int ,int) ;
+ int S_OK ;
+ int VT_EnumFormatImpl ;
+ int memcpy (void*,int *,int) ;
 
 __attribute__((used)) static HRESULT EnumFormatImpl_Create(FORMATETC *fmtetc, UINT fmtetc_cnt, IEnumFORMATETC **lplpformatetc)
 {

@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_uint64 ;
-typedef  int /*<<< orphan*/  sqlite3_stmt ;
-typedef  int /*<<< orphan*/  sqlite3 ;
-typedef  int /*<<< orphan*/  r ;
 
-/* Variables and functions */
- scalar_t__ SQLITE_ROW ; 
- int atoi (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  findOption (char*,int,char*) ; 
- int /*<<< orphan*/ * prepare (int /*<<< orphan*/ *,char*,char const*,...) ; 
- int /*<<< orphan*/  printf (char*,int,...) ; 
- int /*<<< orphan*/  runSql (int /*<<< orphan*/ *,char*,...) ; 
- int sqlite3_column_int (int /*<<< orphan*/ *,int) ; 
- char* sqlite3_column_text (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_finalize (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_free (char*) ; 
- char* sqlite3_mprintf (char*,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_randomness (int,int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3_step (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int sqlite3_uint64 ;
+typedef int sqlite3_stmt ;
+typedef int sqlite3 ;
+typedef int r ;
+
+
+ scalar_t__ SQLITE_ROW ;
+ int atoi (int ) ;
+ int findOption (char*,int,char*) ;
+ int * prepare (int *,char*,char const*,...) ;
+ int printf (char*,int,...) ;
+ int runSql (int *,char*,...) ;
+ int sqlite3_column_int (int *,int) ;
+ char* sqlite3_column_text (int *,int ) ;
+ int sqlite3_finalize (int *) ;
+ int sqlite3_free (char*) ;
+ char* sqlite3_mprintf (char*,char const*,int ) ;
+ int sqlite3_randomness (int,int *) ;
+ scalar_t__ sqlite3_step (int *) ;
 
 __attribute__((used)) static void showVocabulary(sqlite3 *db, const char *zTab){
   char *zAux;
@@ -51,7 +51,7 @@ __attribute__((used)) static void showVocabulary(sqlite3 *db, const char *zTab){
   printf("Number of documents...................... %9d\n", nDoc);
 
   runSql(db, "CREATE VIRTUAL TABLE %s USING fts4aux(%Q)", zAux, zTab);
-  pStmt = prepare(db, 
+  pStmt = prepare(db,
              "SELECT count(*), sum(occurrences) FROM %s WHERE col='*'",
              zAux);
   while( sqlite3_step(pStmt)==SQLITE_ROW ){

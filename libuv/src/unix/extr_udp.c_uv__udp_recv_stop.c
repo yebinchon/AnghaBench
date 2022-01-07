@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/ * recv_cb; int /*<<< orphan*/ * alloc_cb; int /*<<< orphan*/  io_watcher; int /*<<< orphan*/  loop; } ;
-typedef  TYPE_1__ uv_udp_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  POLLIN ; 
- int /*<<< orphan*/  POLLOUT ; 
- int /*<<< orphan*/  uv__handle_stop (TYPE_1__*) ; 
- int /*<<< orphan*/  uv__io_active (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  uv__io_stop (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int * recv_cb; int * alloc_cb; int io_watcher; int loop; } ;
+typedef TYPE_1__ uv_udp_t ;
+
+
+ int POLLIN ;
+ int POLLOUT ;
+ int uv__handle_stop (TYPE_1__*) ;
+ int uv__io_active (int *,int ) ;
+ int uv__io_stop (int ,int *,int ) ;
 
 int uv__udp_recv_stop(uv_udp_t* handle) {
   uv__io_stop(handle->loop, &handle->io_watcher, POLLIN);
@@ -27,8 +27,8 @@ int uv__udp_recv_stop(uv_udp_t* handle) {
   if (!uv__io_active(&handle->io_watcher, POLLOUT))
     uv__handle_stop(handle);
 
-  handle->alloc_cb = NULL;
-  handle->recv_cb = NULL;
+  handle->alloc_cb = ((void*)0);
+  handle->recv_cb = ((void*)0);
 
   return 0;
 }

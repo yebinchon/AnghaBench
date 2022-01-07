@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct elf32_arm_link_hash_entry {int plt_got_offset; int /*<<< orphan*/ * export_glue; scalar_t__ plt_thumb_refcount; int /*<<< orphan*/  tls_type; int /*<<< orphan*/ * relocs_copied; } ;
+
+
+
+
+struct elf32_arm_link_hash_entry {int plt_got_offset; int * export_glue; scalar_t__ plt_thumb_refcount; int tls_type; int * relocs_copied; } ;
 struct bfd_hash_table {int dummy; } ;
 struct bfd_hash_entry {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GOT_UNKNOWN ; 
- scalar_t__ _bfd_elf_link_hash_newfunc (struct bfd_hash_entry*,struct bfd_hash_table*,char const*) ; 
- struct elf32_arm_link_hash_entry* bfd_hash_allocate (struct bfd_hash_table*,int) ; 
+
+ int GOT_UNKNOWN ;
+ scalar_t__ _bfd_elf_link_hash_newfunc (struct bfd_hash_entry*,struct bfd_hash_table*,char const*) ;
+ struct elf32_arm_link_hash_entry* bfd_hash_allocate (struct bfd_hash_table*,int) ;
 
 __attribute__((used)) static struct bfd_hash_entry *
 elf32_arm_link_hash_newfunc (struct bfd_hash_entry * entry,
@@ -27,24 +27,24 @@ elf32_arm_link_hash_newfunc (struct bfd_hash_entry * entry,
   struct elf32_arm_link_hash_entry * ret =
     (struct elf32_arm_link_hash_entry *) entry;
 
-  /* Allocate the structure if it has not already been allocated by a
-     subclass.  */
-  if (ret == (struct elf32_arm_link_hash_entry *) NULL)
+
+
+  if (ret == (struct elf32_arm_link_hash_entry *) ((void*)0))
     ret = bfd_hash_allocate (table, sizeof (struct elf32_arm_link_hash_entry));
-  if (ret == NULL)
+  if (ret == ((void*)0))
     return (struct bfd_hash_entry *) ret;
 
-  /* Call the allocation method of the superclass.  */
+
   ret = ((struct elf32_arm_link_hash_entry *)
-	 _bfd_elf_link_hash_newfunc ((struct bfd_hash_entry *) ret,
-				     table, string));
-  if (ret != NULL)
+  _bfd_elf_link_hash_newfunc ((struct bfd_hash_entry *) ret,
+         table, string));
+  if (ret != ((void*)0))
     {
-      ret->relocs_copied = NULL;
+      ret->relocs_copied = ((void*)0);
       ret->tls_type = GOT_UNKNOWN;
       ret->plt_thumb_refcount = 0;
       ret->plt_got_offset = -1;
-      ret->export_glue = NULL;
+      ret->export_glue = ((void*)0);
     }
 
   return (struct bfd_hash_entry *) ret;

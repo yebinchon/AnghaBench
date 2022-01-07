@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DLM_LOCK_CW ; 
- int /*<<< orphan*/  DLM_LOCK_EX ; 
- int /*<<< orphan*/  DLM_LOCK_NL ; 
- int /*<<< orphan*/  DLM_LOCK_PR ; 
-#define  LM_ST_DEFERRED 130 
-#define  LM_ST_EXCLUSIVE 129 
-#define  LM_ST_SHARED 128 
+
+
+
+typedef int u8 ;
+
+
+ int DLM_LOCK_CW ;
+ int DLM_LOCK_EX ;
+ int DLM_LOCK_NL ;
+ int DLM_LOCK_PR ;
+
+
+
 
 __attribute__((used)) static inline u8 glock_trace_state(unsigned int state)
 {
-	switch(state) {
-	case LM_ST_SHARED:
-		return DLM_LOCK_PR;
-	case LM_ST_DEFERRED:
-		return DLM_LOCK_CW;
-	case LM_ST_EXCLUSIVE:
-		return DLM_LOCK_EX;
-	}
-	return DLM_LOCK_NL;
+ switch(state) {
+ case 128:
+  return DLM_LOCK_PR;
+ case 130:
+  return DLM_LOCK_CW;
+ case 129:
+  return DLM_LOCK_EX;
+ }
+ return DLM_LOCK_NL;
 }

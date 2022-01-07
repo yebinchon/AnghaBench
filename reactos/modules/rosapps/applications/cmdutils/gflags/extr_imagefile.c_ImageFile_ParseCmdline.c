@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char* LPWSTR ;
-typedef  int INT ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEST_IMAGE ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  FindFlag (char*,int /*<<< orphan*/ ) ; 
- char* ImageFile ; 
- int /*<<< orphan*/  OptionsAdd ; 
- int /*<<< orphan*/  OptionsRemove ; 
- scalar_t__ OptionsSet ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  wcstoul (char*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  wprintf (char*,...) ; 
+
+
+
+typedef char* LPWSTR ;
+typedef int INT ;
+typedef scalar_t__ BOOL ;
+
+
+ int DEST_IMAGE ;
+ scalar_t__ FALSE ;
+ int FindFlag (char*,int ) ;
+ char* ImageFile ;
+ int OptionsAdd ;
+ int OptionsRemove ;
+ scalar_t__ OptionsSet ;
+ scalar_t__ TRUE ;
+ int wcstoul (char*,int *,int) ;
+ int wprintf (char*,...) ;
 
 BOOL ImageFile_ParseCmdline(INT i, int argc, LPWSTR argv[])
 {
     for (; i < argc; i++)
     {
-        if (ImageFile == NULL)
+        if (ImageFile == ((void*)0))
         {
             ImageFile = argv[i];
         }
@@ -55,13 +55,13 @@ BOOL ImageFile_ParseCmdline(INT i, int argc, LPWSTR argv[])
         else
         {
             OptionsSet = TRUE;
-            OptionsAdd = wcstoul(argv[i], NULL, 16);
+            OptionsAdd = wcstoul(argv[i], ((void*)0), 16);
             if (OptionsAdd == ~0)
                 OptionsAdd = 0;
         }
     }
 
-    if (ImageFile == NULL)
+    if (ImageFile == ((void*)0))
     {
         wprintf(L"No Image specified\n");
         return FALSE;

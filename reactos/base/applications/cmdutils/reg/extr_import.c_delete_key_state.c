@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct parser {int dummy; } ;
-typedef  char WCHAR ;
-typedef  scalar_t__ HKEY ;
+typedef char WCHAR ;
+typedef scalar_t__ HKEY ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LINE_START ; 
- int /*<<< orphan*/  RegDeleteTreeW (scalar_t__,char*) ; 
- int /*<<< orphan*/  close_key (struct parser*) ; 
- scalar_t__ parse_key_name (char*,char**) ; 
- int /*<<< orphan*/  set_state (struct parser*,int /*<<< orphan*/ ) ; 
+
+ int LINE_START ;
+ int RegDeleteTreeW (scalar_t__,char*) ;
+ int close_key (struct parser*) ;
+ scalar_t__ parse_key_name (char*,char**) ;
+ int set_state (struct parser*,int ) ;
 
 __attribute__((used)) static WCHAR *delete_key_state(struct parser *parser, WCHAR *pos)
 {

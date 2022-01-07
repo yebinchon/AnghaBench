@@ -1,29 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char* _ (char*) ; 
- int /*<<< orphan*/  bfd_close (scalar_t__) ; 
- int /*<<< orphan*/  bfd_get_filename (scalar_t__) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  maybequit () ; 
- scalar_t__ obfd ; 
- char* program_name ; 
- int /*<<< orphan*/  real_name ; 
- int /*<<< orphan*/  smart_rename (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stderr ; 
- char* xstrdup (int /*<<< orphan*/ ) ; 
+ char* _ (char*) ;
+ int bfd_close (scalar_t__) ;
+ int bfd_get_filename (scalar_t__) ;
+ int fprintf (int ,char*,char*) ;
+ int free (char*) ;
+ int maybequit () ;
+ scalar_t__ obfd ;
+ char* program_name ;
+ int real_name ;
+ int smart_rename (char*,int ,int ) ;
+ int stderr ;
+ char* xstrdup (int ) ;
 
 void
 ar_save (void)

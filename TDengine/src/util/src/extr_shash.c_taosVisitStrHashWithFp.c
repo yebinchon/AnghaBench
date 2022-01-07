@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_4__ {char* data; struct TYPE_4__* next; } ;
-struct TYPE_3__ {scalar_t__ maxSessions; int /*<<< orphan*/  mutex; TYPE_2__** hashList; } ;
-typedef  TYPE_1__ SHashObj ;
-typedef  TYPE_2__ SHashNode ;
+struct TYPE_3__ {scalar_t__ maxSessions; int mutex; TYPE_2__** hashList; } ;
+typedef TYPE_1__ SHashObj ;
+typedef TYPE_2__ SHashNode ;
 
-/* Variables and functions */
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
+
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
 
 char *taosVisitStrHashWithFp(void *handle, int (*fp)(char *)) {
   SHashObj * pObj;
   SHashNode *pNode, *pNext;
-  char *     pData = NULL;
+  char * pData = ((void*)0);
 
   pObj = (SHashObj *)handle;
-  if (pObj == NULL || pObj->maxSessions <= 0) return NULL;
+  if (pObj == ((void*)0) || pObj->maxSessions <= 0) return ((void*)0);
 
   pthread_mutex_lock(&pObj->mutex);
 

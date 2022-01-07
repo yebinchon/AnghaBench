@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint16_t ;
+
+
+
+
+typedef int uint16_t ;
 struct peer_svc {int dummy; } ;
-struct peer {int /*<<< orphan*/  svcs; } ;
+struct peer {int svcs; } ;
 
-/* Variables and functions */
- int BLE_HS_ENOTCONN ; 
- int BLE_HS_EOS ; 
- struct peer_svc* SLIST_FIRST (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SLIST_REMOVE (int /*<<< orphan*/ *,struct peer*,struct peer*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SLIST_REMOVE_HEAD (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  next ; 
- int os_memblock_put (int /*<<< orphan*/ *,struct peer*) ; 
- struct peer* peer_find (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  peer_pool ; 
- int /*<<< orphan*/  peer_svc_delete (struct peer_svc*) ; 
- int /*<<< orphan*/  peers ; 
+
+ int BLE_HS_ENOTCONN ;
+ int BLE_HS_EOS ;
+ struct peer_svc* SLIST_FIRST (int *) ;
+ int SLIST_REMOVE (int *,struct peer*,struct peer*,int ) ;
+ int SLIST_REMOVE_HEAD (int *,int ) ;
+ int next ;
+ int os_memblock_put (int *,struct peer*) ;
+ struct peer* peer_find (int ) ;
+ int peer_pool ;
+ int peer_svc_delete (struct peer_svc*) ;
+ int peers ;
 
 int
 peer_delete(uint16_t conn_handle)
@@ -35,13 +35,13 @@ peer_delete(uint16_t conn_handle)
     int rc;
 
     peer = peer_find(conn_handle);
-    if (peer == NULL) {
+    if (peer == ((void*)0)) {
         return BLE_HS_ENOTCONN;
     }
 
     SLIST_REMOVE(&peers, peer, peer, next);
 
-    while ((svc = SLIST_FIRST(&peer->svcs)) != NULL) {
+    while ((svc = SLIST_FIRST(&peer->svcs)) != ((void*)0)) {
         SLIST_REMOVE_HEAD(&peer->svcs, next);
         peer_svc_delete(svc);
     }

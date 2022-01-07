@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct lev_cache_set_new_local_copy_short {int /*<<< orphan*/  packed_location; scalar_t__ data; } ;
+
+
+
+
+struct lev_cache_set_new_local_copy_short {int packed_location; scalar_t__ data; } ;
 struct cache_uri {int dummy; } ;
-struct cache_local_copy {int /*<<< orphan*/  packed_location; int /*<<< orphan*/  flags; } ;
-typedef  int /*<<< orphan*/  md5_t ;
-typedef  int /*<<< orphan*/  L ;
+struct cache_local_copy {int packed_location; int flags; } ;
+typedef int md5_t ;
+typedef int L ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CACHE_LOCAL_COPY_FLAG_INT ; 
- int /*<<< orphan*/  assert (struct cache_uri*) ; 
- int cache_delete_local_copy (struct cache_uri*,struct cache_local_copy*) ; 
- struct cache_uri* cache_get_uri_by_md5 (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  memset (struct cache_local_copy*,int /*<<< orphan*/ ,int) ; 
+
+ int CACHE_LOCAL_COPY_FLAG_INT ;
+ int assert (struct cache_uri*) ;
+ int cache_delete_local_copy (struct cache_uri*,struct cache_local_copy*) ;
+ struct cache_uri* cache_get_uri_by_md5 (int *,int) ;
+ int memset (struct cache_local_copy*,int ,int) ;
 
 __attribute__((used)) static int cache_delete_local_copy_short (struct lev_cache_set_new_local_copy_short *E) {
   struct cache_uri *U = cache_get_uri_by_md5 ((md5_t *) E->data, 8);

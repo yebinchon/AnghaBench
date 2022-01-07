@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct dasd_device {TYPE_1__* discipline; int /*<<< orphan*/  flags; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct dasd_device {TYPE_1__* discipline; int flags; } ;
 struct ccw_device {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/  (* freeze ) (struct dasd_device*) ;} ;
+struct TYPE_2__ {int (* freeze ) (struct dasd_device*) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DASD_FLAG_SUSPENDED ; 
- int /*<<< orphan*/  DASD_STOPPED_PM ; 
- scalar_t__ IS_ERR (struct dasd_device*) ; 
- int PTR_ERR (struct dasd_device*) ; 
- struct dasd_device* dasd_device_from_cdev (struct ccw_device*) ; 
- int /*<<< orphan*/  dasd_device_set_stop_bits (struct dasd_device*,int /*<<< orphan*/ ) ; 
- int dasd_generic_requeue_all_requests (struct dasd_device*) ; 
- int /*<<< orphan*/  set_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub1 (struct dasd_device*) ; 
+
+ int DASD_FLAG_SUSPENDED ;
+ int DASD_STOPPED_PM ;
+ scalar_t__ IS_ERR (struct dasd_device*) ;
+ int PTR_ERR (struct dasd_device*) ;
+ struct dasd_device* dasd_device_from_cdev (struct ccw_device*) ;
+ int dasd_device_set_stop_bits (struct dasd_device*,int ) ;
+ int dasd_generic_requeue_all_requests (struct dasd_device*) ;
+ int set_bit (int ,int *) ;
+ int stub1 (struct dasd_device*) ;
 
 int dasd_generic_pm_freeze(struct ccw_device *cdev)
 {
-	struct dasd_device *device = dasd_device_from_cdev(cdev);
+ struct dasd_device *device = dasd_device_from_cdev(cdev);
 
-	if (IS_ERR(device))
-		return PTR_ERR(device);
+ if (IS_ERR(device))
+  return PTR_ERR(device);
 
-	/* mark device as suspended */
-	set_bit(DASD_FLAG_SUSPENDED, &device->flags);
 
-	if (device->discipline->freeze)
-		device->discipline->freeze(device);
+ set_bit(DASD_FLAG_SUSPENDED, &device->flags);
 
-	/* disallow new I/O  */
-	dasd_device_set_stop_bits(device, DASD_STOPPED_PM);
+ if (device->discipline->freeze)
+  device->discipline->freeze(device);
 
-	return dasd_generic_requeue_all_requests(device);
+
+ dasd_device_set_stop_bits(device, DASD_STOPPED_PM);
+
+ return dasd_generic_requeue_all_requests(device);
 }

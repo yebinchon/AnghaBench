@@ -1,71 +1,71 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_5__ ;
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_5__ ;
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct pending_marks {int dummy; } ;
 struct TYPE_9__ {void* title; void* window_role; void* instance; void* class; } ;
-struct TYPE_8__ {char* name; char* title_format; char* sticky_group; int current_border_width; int /*<<< orphan*/  scratchpad_state; int /*<<< orphan*/  floating; void* last_split_layout; void* workspace_layout; void* layout; int /*<<< orphan*/  type; void* border_style; } ;
-struct TYPE_7__ {TYPE_4__* con_to_be_marked; int /*<<< orphan*/  mark; } ;
+struct TYPE_8__ {char* name; char* title_format; char* sticky_group; int current_border_width; int scratchpad_state; int floating; void* last_split_layout; void* workspace_layout; void* layout; int type; void* border_style; } ;
+struct TYPE_7__ {TYPE_4__* con_to_be_marked; int mark; } ;
 
-/* Variables and functions */
- void* BS_NONE ; 
- void* BS_NORMAL ; 
- void* BS_PIXEL ; 
- int /*<<< orphan*/  CT_CON ; 
- int /*<<< orphan*/  CT_DOCKAREA ; 
- int /*<<< orphan*/  CT_FLOATING_CON ; 
- int /*<<< orphan*/  CT_OUTPUT ; 
- int /*<<< orphan*/  CT_ROOT ; 
- int /*<<< orphan*/  CT_WORKSPACE ; 
- int /*<<< orphan*/  DLOG (char*) ; 
- int /*<<< orphan*/  ELOG (char*,char*) ; 
- int /*<<< orphan*/  FLOATING_AUTO_OFF ; 
- int /*<<< orphan*/  FLOATING_AUTO_ON ; 
- int /*<<< orphan*/  FLOATING_USER_OFF ; 
- int /*<<< orphan*/  FLOATING_USER_ON ; 
- int /*<<< orphan*/  FREE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LOG (char*,...) ; 
- void* L_DEFAULT ; 
- void* L_DOCKAREA ; 
- void* L_OUTPUT ; 
- void* L_SPLITH ; 
- void* L_SPLITV ; 
- void* L_STACKED ; 
- void* L_TABBED ; 
- int /*<<< orphan*/  MM_REPLACE ; 
- int /*<<< orphan*/  SCRATCHPAD_CHANGED ; 
- int /*<<< orphan*/  SCRATCHPAD_FRESH ; 
- int /*<<< orphan*/  SCRATCHPAD_NONE ; 
- int /*<<< orphan*/  con_mark (TYPE_4__*,char*,int /*<<< orphan*/ ) ; 
- TYPE_5__* current_swallow ; 
- int /*<<< orphan*/  free (char*) ; 
- TYPE_4__* json_node ; 
- char* last_key ; 
- TYPE_1__* marks ; 
- int /*<<< orphan*/  memcpy (char*,unsigned char const*,size_t) ; 
- int num_marks ; 
- scalar_t__ parsing_marks ; 
- scalar_t__ parsing_swallows ; 
- int /*<<< orphan*/  previous_workspace_name ; 
- void* regex_new (char*) ; 
- int /*<<< orphan*/  sasprintf (char**,char*,int,unsigned char const*) ; 
- void* scalloc (size_t,int) ; 
- TYPE_1__* srealloc (TYPE_1__*,int) ; 
- int /*<<< orphan*/  sstrdup (char*) ; 
- int /*<<< orphan*/  sstrndup (char const*,size_t) ; 
- scalar_t__ strcasecmp (char*,char*) ; 
- int swallow_is_empty ; 
+
+ void* BS_NONE ;
+ void* BS_NORMAL ;
+ void* BS_PIXEL ;
+ int CT_CON ;
+ int CT_DOCKAREA ;
+ int CT_FLOATING_CON ;
+ int CT_OUTPUT ;
+ int CT_ROOT ;
+ int CT_WORKSPACE ;
+ int DLOG (char*) ;
+ int ELOG (char*,char*) ;
+ int FLOATING_AUTO_OFF ;
+ int FLOATING_AUTO_ON ;
+ int FLOATING_USER_OFF ;
+ int FLOATING_USER_ON ;
+ int FREE (int ) ;
+ int LOG (char*,...) ;
+ void* L_DEFAULT ;
+ void* L_DOCKAREA ;
+ void* L_OUTPUT ;
+ void* L_SPLITH ;
+ void* L_SPLITV ;
+ void* L_STACKED ;
+ void* L_TABBED ;
+ int MM_REPLACE ;
+ int SCRATCHPAD_CHANGED ;
+ int SCRATCHPAD_FRESH ;
+ int SCRATCHPAD_NONE ;
+ int con_mark (TYPE_4__*,char*,int ) ;
+ TYPE_5__* current_swallow ;
+ int free (char*) ;
+ TYPE_4__* json_node ;
+ char* last_key ;
+ TYPE_1__* marks ;
+ int memcpy (char*,unsigned char const*,size_t) ;
+ int num_marks ;
+ scalar_t__ parsing_marks ;
+ scalar_t__ parsing_swallows ;
+ int previous_workspace_name ;
+ void* regex_new (char*) ;
+ int sasprintf (char**,char*,int,unsigned char const*) ;
+ void* scalloc (size_t,int) ;
+ TYPE_1__* srealloc (TYPE_1__*,int) ;
+ int sstrdup (char*) ;
+ int sstrndup (char const*,size_t) ;
+ scalar_t__ strcasecmp (char*,char*) ;
+ int swallow_is_empty ;
 
 __attribute__((used)) static int json_string(void *ctx, const unsigned char *val, size_t len) {
     LOG("string: %.*s for key %s\n", (int)len, val, last_key);
@@ -74,16 +74,16 @@ __attribute__((used)) static int json_string(void *ctx, const unsigned char *val
         sasprintf(&sval, "%.*s", len, val);
         if (strcasecmp(last_key, "class") == 0) {
             current_swallow->class = regex_new(sval);
-            swallow_is_empty = false;
+            swallow_is_empty = 0;
         } else if (strcasecmp(last_key, "instance") == 0) {
             current_swallow->instance = regex_new(sval);
-            swallow_is_empty = false;
+            swallow_is_empty = 0;
         } else if (strcasecmp(last_key, "window_role") == 0) {
             current_swallow->window_role = regex_new(sval);
-            swallow_is_empty = false;
+            swallow_is_empty = 0;
         } else if (strcasecmp(last_key, "title") == 0) {
             current_swallow->title = regex_new(sval);
-            swallow_is_empty = false;
+            swallow_is_empty = 0;
         } else {
             ELOG("swallow key %s unknown\n", last_key);
         }
@@ -107,13 +107,13 @@ __attribute__((used)) static int json_string(void *ctx, const unsigned char *val
             memcpy(json_node->sticky_group, val, len);
             LOG("sticky_group of this container is %s\n", json_node->sticky_group);
         } else if (strcasecmp(last_key, "orientation") == 0) {
-            /* Upgrade path from older versions of i3 (doing an inplace restart
-             * to a newer version):
-             * "orientation" is dumped before "layout". Therefore, we store
-             * whether the orientation was horizontal or vertical in the
-             * last_split_layout. When we then encounter layout == "default",
-             * we will use the last_split_layout as layout instead. */
-            char *buf = NULL;
+
+
+
+
+
+
+            char *buf = ((void*)0);
             sasprintf(&buf, "%.*s", (int)len, val);
             if (strcasecmp(buf, "none") == 0 ||
                 strcasecmp(buf, "horizontal") == 0)
@@ -124,7 +124,7 @@ __attribute__((used)) static int json_string(void *ctx, const unsigned char *val
                 LOG("Unhandled orientation: %s\n", buf);
             free(buf);
         } else if (strcasecmp(last_key, "border") == 0) {
-            char *buf = NULL;
+            char *buf = ((void*)0);
             sasprintf(&buf, "%.*s", (int)len, val);
             if (strcasecmp(buf, "none") == 0)
                 json_node->border_style = BS_NONE;
@@ -139,7 +139,7 @@ __attribute__((used)) static int json_string(void *ctx, const unsigned char *val
                 LOG("Unhandled \"border\": %s\n", buf);
             free(buf);
         } else if (strcasecmp(last_key, "type") == 0) {
-            char *buf = NULL;
+            char *buf = ((void*)0);
             sasprintf(&buf, "%.*s", (int)len, val);
             if (strcasecmp(buf, "root") == 0)
                 json_node->type = CT_ROOT;
@@ -157,10 +157,10 @@ __attribute__((used)) static int json_string(void *ctx, const unsigned char *val
                 LOG("Unhandled \"type\": %s\n", buf);
             free(buf);
         } else if (strcasecmp(last_key, "layout") == 0) {
-            char *buf = NULL;
+            char *buf = ((void*)0);
             sasprintf(&buf, "%.*s", (int)len, val);
             if (strcasecmp(buf, "default") == 0)
-                /* This set above when we read "orientation". */
+
                 json_node->layout = json_node->last_split_layout;
             else if (strcasecmp(buf, "stacked") == 0)
                 json_node->layout = L_STACKED;
@@ -178,7 +178,7 @@ __attribute__((used)) static int json_string(void *ctx, const unsigned char *val
                 LOG("Unhandled \"layout\": %s\n", buf);
             free(buf);
         } else if (strcasecmp(last_key, "workspace_layout") == 0) {
-            char *buf = NULL;
+            char *buf = ((void*)0);
             sasprintf(&buf, "%.*s", (int)len, val);
             if (strcasecmp(buf, "default") == 0)
                 json_node->workspace_layout = L_DEFAULT;
@@ -190,7 +190,7 @@ __attribute__((used)) static int json_string(void *ctx, const unsigned char *val
                 LOG("Unhandled \"workspace_layout\": %s\n", buf);
             free(buf);
         } else if (strcasecmp(last_key, "last_split_layout") == 0) {
-            char *buf = NULL;
+            char *buf = ((void*)0);
             sasprintf(&buf, "%.*s", (int)len, val);
             if (strcasecmp(buf, "splith") == 0)
                 json_node->last_split_layout = L_SPLITH;
@@ -202,12 +202,12 @@ __attribute__((used)) static int json_string(void *ctx, const unsigned char *val
         } else if (strcasecmp(last_key, "mark") == 0) {
             DLOG("Found deprecated key \"mark\".\n");
 
-            char *buf = NULL;
+            char *buf = ((void*)0);
             sasprintf(&buf, "%.*s", (int)len, val);
 
             con_mark(json_node, buf, MM_REPLACE);
         } else if (strcasecmp(last_key, "floating") == 0) {
-            char *buf = NULL;
+            char *buf = ((void*)0);
             sasprintf(&buf, "%.*s", (int)len, val);
             if (strcasecmp(buf, "auto_off") == 0)
                 json_node->floating = FLOATING_AUTO_OFF;
@@ -219,7 +219,7 @@ __attribute__((used)) static int json_string(void *ctx, const unsigned char *val
                 json_node->floating = FLOATING_USER_ON;
             free(buf);
         } else if (strcasecmp(last_key, "scratchpad_state") == 0) {
-            char *buf = NULL;
+            char *buf = ((void*)0);
             sasprintf(&buf, "%.*s", (int)len, val);
             if (strcasecmp(buf, "none") == 0)
                 json_node->scratchpad_state = SCRATCHPAD_NONE;

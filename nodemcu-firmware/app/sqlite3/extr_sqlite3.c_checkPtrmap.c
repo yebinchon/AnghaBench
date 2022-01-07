@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ u8 ;
-struct TYPE_4__ {int mallocFailed; int /*<<< orphan*/  pBt; } ;
-typedef  scalar_t__ Pgno ;
-typedef  TYPE_1__ IntegrityCk ;
 
-/* Variables and functions */
- int SQLITE_IOERR_NOMEM ; 
- int SQLITE_NOMEM ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  checkAppendMsg (TYPE_1__*,char*,scalar_t__,...) ; 
- int ptrmapGet (int /*<<< orphan*/ ,scalar_t__,scalar_t__*,scalar_t__*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef scalar_t__ u8 ;
+struct TYPE_4__ {int mallocFailed; int pBt; } ;
+typedef scalar_t__ Pgno ;
+typedef TYPE_1__ IntegrityCk ;
+
+
+ int SQLITE_IOERR_NOMEM ;
+ int SQLITE_NOMEM ;
+ int SQLITE_OK ;
+ int checkAppendMsg (TYPE_1__*,char*,scalar_t__,...) ;
+ int ptrmapGet (int ,scalar_t__,scalar_t__*,scalar_t__*) ;
 
 __attribute__((used)) static void checkPtrmap(
-  IntegrityCk *pCheck,   /* Integrity check context */
-  Pgno iChild,           /* Child page number */
-  u8 eType,              /* Expected pointer map type */
-  Pgno iParent           /* Expected pointer map parent page number */
+  IntegrityCk *pCheck,
+  Pgno iChild,
+  u8 eType,
+  Pgno iParent
 ){
   int rc;
   u8 ePtrmapType;

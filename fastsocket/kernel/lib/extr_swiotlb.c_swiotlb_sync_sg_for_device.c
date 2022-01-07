@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct scatterlist {int dummy; } ;
 struct device {int dummy; } ;
-typedef  enum dma_data_direction { ____Placeholder_dma_data_direction } dma_data_direction ;
+typedef enum dma_data_direction { ____Placeholder_dma_data_direction } dma_data_direction ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SYNC_FOR_DEVICE ; 
- int /*<<< orphan*/  swiotlb_sync_sg (struct device*,struct scatterlist*,int,int,int /*<<< orphan*/ ) ; 
+
+ int SYNC_FOR_DEVICE ;
+ int swiotlb_sync_sg (struct device*,struct scatterlist*,int,int,int ) ;
 
 void
 swiotlb_sync_sg_for_device(struct device *hwdev, struct scatterlist *sg,
-			   int nelems, enum dma_data_direction dir)
+      int nelems, enum dma_data_direction dir)
 {
-	swiotlb_sync_sg(hwdev, sg, nelems, dir, SYNC_FOR_DEVICE);
+ swiotlb_sync_sg(hwdev, sg, nelems, dir, SYNC_FOR_DEVICE);
 }

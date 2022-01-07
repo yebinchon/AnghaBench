@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VARIANT ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int VARIANT ;
 struct TYPE_6__ {TYPE_1__* doc_obj; } ;
-struct TYPE_5__ {int /*<<< orphan*/  nscontainer; } ;
-typedef  TYPE_2__ HTMLDocument ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  DWORD ;
+struct TYPE_5__ {int nscontainer; } ;
+typedef TYPE_2__ HTMLDocument ;
+typedef int HRESULT ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_NOTIMPL ; 
- int /*<<< orphan*/  FIXME (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TRACE (char*,TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ VT_I4 ; 
- scalar_t__ V_I4 (int /*<<< orphan*/ *) ; 
- scalar_t__ V_VT (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  debugstr_variant (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  set_viewer_zoom (int /*<<< orphan*/ ,float) ; 
+
+ int E_NOTIMPL ;
+ int FIXME (char*,int ) ;
+ int S_OK ;
+ int TRACE (char*,TYPE_2__*,int ,int ,int *) ;
+ scalar_t__ VT_I4 ;
+ scalar_t__ V_I4 (int *) ;
+ scalar_t__ V_VT (int *) ;
+ int debugstr_variant (int *) ;
+ int set_viewer_zoom (int ,float) ;
 
 __attribute__((used)) static HRESULT exec_optical_zoom(HTMLDocument *This, DWORD nCmdexecopt, VARIANT *pvaIn, VARIANT *pvaOut)
 {

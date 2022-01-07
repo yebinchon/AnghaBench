@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {scalar_t__ dwFlags; scalar_t__ uiCodePage; scalar_t__ uiFamilyCodePage; scalar_t__ bGDICharset; int /*<<< orphan*/  wszProportionalFont; int /*<<< orphan*/  wszFixedWidthFont; int /*<<< orphan*/  wszBodyCharset; int /*<<< orphan*/  wszHeaderCharset; int /*<<< orphan*/  wszWebCharset; int /*<<< orphan*/  wszDescription; } ;
-typedef  TYPE_1__ MIMECPINFO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  lstrcmpW (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {scalar_t__ dwFlags; scalar_t__ uiCodePage; scalar_t__ uiFamilyCodePage; scalar_t__ bGDICharset; int wszProportionalFont; int wszFixedWidthFont; int wszBodyCharset; int wszHeaderCharset; int wszWebCharset; int wszDescription; } ;
+typedef TYPE_1__ MIMECPINFO ;
+
+
+ int lstrcmpW (int ,int ) ;
+ int ok (int,char*,...) ;
 
 __attribute__((used)) static void cpinfo_cmp(MIMECPINFO *cpinfo1, MIMECPINFO *cpinfo2)
 {

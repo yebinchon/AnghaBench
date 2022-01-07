@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * socket_t ;
-typedef  int /*<<< orphan*/  errno_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  solisten (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int * socket_t ;
+typedef int errno_t ;
+
+
+ int EINVAL ;
+ int solisten (int *,int) ;
 
 errno_t
 sock_listen(socket_t sock, int backlog)
 {
-	if (sock == NULL)
-		return (EINVAL);
+ if (sock == ((void*)0))
+  return (EINVAL);
 
-	return (solisten(sock, backlog)); /* will lock socket */
+ return (solisten(sock, backlog));
 }

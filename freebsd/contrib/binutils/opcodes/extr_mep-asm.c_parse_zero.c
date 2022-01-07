@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  enum cgen_parse_operand_result { ____Placeholder_cgen_parse_operand_result } cgen_parse_operand_result ;
-typedef  long bfd_vma ;
-typedef  int /*<<< orphan*/  CGEN_CPU_DESC ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BFD_RELOC_MEP_GPREL ; 
- int /*<<< orphan*/  BFD_RELOC_MEP_HI16S ; 
- int /*<<< orphan*/  BFD_RELOC_MEP_HI16U ; 
- int /*<<< orphan*/  BFD_RELOC_MEP_LOW16 ; 
- int /*<<< orphan*/  BFD_RELOC_MEP_TPREL ; 
- int /*<<< orphan*/  BFD_RELOC_NONE ; 
- int CGEN_PARSE_OPERAND_RESULT_NUMBER ; 
- char* cgen_parse_address (int /*<<< orphan*/ ,char const**,int,int /*<<< orphan*/ ,int*,long*) ; 
- scalar_t__ strncasecmp (char const*,char*,int) ; 
- scalar_t__ strncmp (char const*,char*,int) ; 
+
+
+
+typedef enum cgen_parse_operand_result { ____Placeholder_cgen_parse_operand_result } cgen_parse_operand_result ;
+typedef long bfd_vma ;
+typedef int CGEN_CPU_DESC ;
+
+
+ int BFD_RELOC_MEP_GPREL ;
+ int BFD_RELOC_MEP_HI16S ;
+ int BFD_RELOC_MEP_HI16U ;
+ int BFD_RELOC_MEP_LOW16 ;
+ int BFD_RELOC_MEP_TPREL ;
+ int BFD_RELOC_NONE ;
+ int CGEN_PARSE_OPERAND_RESULT_NUMBER ;
+ char* cgen_parse_address (int ,char const**,int,int ,int*,long*) ;
+ scalar_t__ strncasecmp (char const*,char*,int) ;
+ scalar_t__ strncmp (char const*,char*,int) ;
 
 __attribute__((used)) static const char *
 parse_zero (CGEN_CPU_DESC cd, const char **strp, int opindex, long *valuep)
@@ -33,25 +33,25 @@ parse_zero (CGEN_CPU_DESC cd, const char **strp, int opindex, long *valuep)
   enum cgen_parse_operand_result result_type;
   bfd_vma value;
 
-  /*fprintf(stderr, "dj: signed parse opindex `%s'\n", *strp);*/
 
-  /* Prevent ($ry) from being attempted as an expression on 'sw $rx,($ry)'.
-     It will fail and cause ry to be listed as an undefined symbol in the
-     listing.  */
+
+
+
+
   if (strncmp (*strp, "($", 2) == 0)
-    return "not zero"; /* any string will do -- will never be seen.  */
+    return "not zero";
 
   if (strncasecmp (*strp, "%lo(", 4) == 0)
     {
       *strp += 4;
       errmsg = cgen_parse_address (cd, strp, opindex, BFD_RELOC_MEP_LOW16,
-				   &result_type, &value);
+       &result_type, &value);
       if (**strp != ')')
-	return "missing `)'";
+ return "missing `)'";
       ++*strp;
-      if (errmsg == NULL
-	  && (result_type != CGEN_PARSE_OPERAND_RESULT_NUMBER || value != 0))
-	return "not zero"; /* any string will do -- will never be seen.  */
+      if (errmsg == ((void*)0)
+   && (result_type != CGEN_PARSE_OPERAND_RESULT_NUMBER || value != 0))
+ return "not zero";
       *valuep = value;
       return errmsg;
     }
@@ -60,13 +60,13 @@ parse_zero (CGEN_CPU_DESC cd, const char **strp, int opindex, long *valuep)
     {
       *strp += 4;
       errmsg = cgen_parse_address (cd, strp, opindex, BFD_RELOC_MEP_HI16S,
-				   &result_type, &value);
+       &result_type, &value);
       if (**strp != ')')
-	return "missing `)'";
+ return "missing `)'";
       ++*strp;
-      if (errmsg == NULL
-	  && (result_type != CGEN_PARSE_OPERAND_RESULT_NUMBER || value != 0))
-	return "not zero"; /* any string will do -- will never be seen.  */
+      if (errmsg == ((void*)0)
+   && (result_type != CGEN_PARSE_OPERAND_RESULT_NUMBER || value != 0))
+ return "not zero";
       *valuep = value;
       return errmsg;
     }
@@ -75,13 +75,13 @@ parse_zero (CGEN_CPU_DESC cd, const char **strp, int opindex, long *valuep)
     {
       *strp += 5;
       errmsg = cgen_parse_address (cd, strp, opindex, BFD_RELOC_MEP_HI16U,
-				   &result_type, &value);
+       &result_type, &value);
       if (**strp != ')')
-	return "missing `)'";
+ return "missing `)'";
       ++*strp;
-      if (errmsg == NULL
-	  && (result_type != CGEN_PARSE_OPERAND_RESULT_NUMBER || value != 0))
-	return "not zero"; /* any string will do -- will never be seen.  */
+      if (errmsg == ((void*)0)
+   && (result_type != CGEN_PARSE_OPERAND_RESULT_NUMBER || value != 0))
+ return "not zero";
       *valuep = value;
       return errmsg;
     }
@@ -90,13 +90,13 @@ parse_zero (CGEN_CPU_DESC cd, const char **strp, int opindex, long *valuep)
     {
       *strp += 8;
       errmsg = cgen_parse_address (cd, strp, opindex, BFD_RELOC_MEP_GPREL,
-				   &result_type, &value);
+       &result_type, &value);
       if (**strp != ')')
-	return "missing `)'";
+ return "missing `)'";
       ++*strp;
-      if (errmsg == NULL
-	  && (result_type != CGEN_PARSE_OPERAND_RESULT_NUMBER || value != 0))
-	return "not zero"; /* any string will do -- will never be seen.  */
+      if (errmsg == ((void*)0)
+   && (result_type != CGEN_PARSE_OPERAND_RESULT_NUMBER || value != 0))
+ return "not zero";
       *valuep = value;
       return errmsg;
     }
@@ -105,13 +105,13 @@ parse_zero (CGEN_CPU_DESC cd, const char **strp, int opindex, long *valuep)
     {
       *strp += 7;
       errmsg = cgen_parse_address (cd, strp, opindex, BFD_RELOC_MEP_TPREL,
-				   &result_type, &value);
+       &result_type, &value);
       if (**strp != ')')
-	return "missing `)'";
+ return "missing `)'";
       ++*strp;
-      if (errmsg == NULL
-	  && (result_type != CGEN_PARSE_OPERAND_RESULT_NUMBER || value != 0))
-	return "not zero"; /* any string will do -- will never be seen.  */
+      if (errmsg == ((void*)0)
+   && (result_type != CGEN_PARSE_OPERAND_RESULT_NUMBER || value != 0))
+ return "not zero";
       *valuep = value;
       return errmsg;
     }
@@ -120,10 +120,10 @@ parse_zero (CGEN_CPU_DESC cd, const char **strp, int opindex, long *valuep)
     return "invalid %function() here";
 
   errmsg = cgen_parse_address (cd, strp, opindex, BFD_RELOC_NONE,
-			       &result_type, &value);
-  if (errmsg == NULL
+          &result_type, &value);
+  if (errmsg == ((void*)0)
       && (result_type != CGEN_PARSE_OPERAND_RESULT_NUMBER || value != 0))
-    return "not zero"; /* any string will do -- will never be seen.  */
+    return "not zero";
 
   return errmsg;
 }

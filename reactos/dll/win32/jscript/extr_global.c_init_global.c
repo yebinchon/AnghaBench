@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_9__ {int version; scalar_t__ global; } ;
-typedef  TYPE_1__ script_ctx_t ;
-typedef  int /*<<< orphan*/  jsdisp_t ;
-typedef  int /*<<< orphan*/  HRESULT ;
+typedef TYPE_1__ script_ctx_t ;
+typedef int jsdisp_t ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ActiveXObjectW ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  INFINITY ; 
- int /*<<< orphan*/  InfinityW ; 
- int /*<<< orphan*/  JSGlobal_info ; 
- int /*<<< orphan*/  JSONW ; 
- int /*<<< orphan*/  MathW ; 
- int /*<<< orphan*/  NAN ; 
- int /*<<< orphan*/  NaNW ; 
- unsigned int PROPF_WRITABLE ; 
- int SCRIPTLANGUAGEVERSION_ES5 ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  create_activex_constr (TYPE_1__*,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  create_dispex (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__*) ; 
- int /*<<< orphan*/  create_json (TYPE_1__*,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  create_math (TYPE_1__*,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  create_object_prototype (TYPE_1__*,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  init_constructors (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jsdisp_define_data_property (scalar_t__,int /*<<< orphan*/ ,unsigned int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jsdisp_release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jsval_number (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jsval_obj (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jsval_undefined () ; 
- int /*<<< orphan*/  undefinedW ; 
+
+ int ActiveXObjectW ;
+ scalar_t__ FAILED (int ) ;
+ int INFINITY ;
+ int InfinityW ;
+ int JSGlobal_info ;
+ int JSONW ;
+ int MathW ;
+ int NAN ;
+ int NaNW ;
+ unsigned int PROPF_WRITABLE ;
+ int SCRIPTLANGUAGEVERSION_ES5 ;
+ int S_OK ;
+ int create_activex_constr (TYPE_1__*,int **) ;
+ int create_dispex (TYPE_1__*,int *,int *,scalar_t__*) ;
+ int create_json (TYPE_1__*,int **) ;
+ int create_math (TYPE_1__*,int **) ;
+ int create_object_prototype (TYPE_1__*,int **) ;
+ int init_constructors (TYPE_1__*,int *) ;
+ int jsdisp_define_data_property (scalar_t__,int ,unsigned int,int ) ;
+ int jsdisp_release (int *) ;
+ int jsval_number (int ) ;
+ int jsval_obj (int *) ;
+ int jsval_undefined () ;
+ int undefinedW ;
 
 HRESULT init_global(script_ctx_t *ctx)
 {
@@ -51,7 +51,7 @@ HRESULT init_global(script_ctx_t *ctx)
     if(ctx->global)
         return S_OK;
 
-    hres = create_dispex(ctx, &JSGlobal_info, NULL, &ctx->global);
+    hres = create_dispex(ctx, &JSGlobal_info, ((void*)0), &ctx->global);
     if(FAILED(hres))
         return hres;
 

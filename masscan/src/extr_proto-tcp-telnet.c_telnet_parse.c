@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tmp ;
+
+
+
+
+typedef int tmp ;
 struct ProtocolState {unsigned int state; } ;
-typedef  void const InteractiveData ;
+typedef void const InteractiveData ;
 struct BannerOutput {int dummy; } ;
-typedef  void Banner1 ;
+typedef void Banner1 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AUTO_LEN ; 
- unsigned char FLAG_DO ; 
- unsigned char FLAG_DONT ; 
- unsigned char FLAG_WILL ; 
- unsigned char FLAG_WONT ; 
- unsigned char* MALLOC (size_t) ; 
- int /*<<< orphan*/  PROTO_TELNET ; 
- int /*<<< orphan*/  UNUSEDPARM (void const*) ; 
- int /*<<< orphan*/  banout_append (struct BannerOutput*,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  banout_append_char (struct BannerOutput*,int /*<<< orphan*/ ,char) ; 
- int /*<<< orphan*/  memcpy (unsigned char*,unsigned char*,size_t) ; 
- char* option_name_lookup (int) ; 
- int r_length ; 
- int /*<<< orphan*/  sprintf_s (char*,int,char*,int) ; 
- int /*<<< orphan*/  tcp_transmit (void const*,unsigned char*,size_t,int) ; 
+
+ int AUTO_LEN ;
+ unsigned char FLAG_DO ;
+ unsigned char FLAG_DONT ;
+ unsigned char FLAG_WILL ;
+ unsigned char FLAG_WONT ;
+ unsigned char* MALLOC (size_t) ;
+ int PROTO_TELNET ;
+ int UNUSEDPARM (void const*) ;
+ int banout_append (struct BannerOutput*,int ,char const*,int ) ;
+ int banout_append_char (struct BannerOutput*,int ,char) ;
+ int memcpy (unsigned char*,unsigned char*,size_t) ;
+ char* option_name_lookup (int) ;
+ int r_length ;
+ int sprintf_s (char*,int,char*,int) ;
+ int tcp_transmit (void const*,unsigned char*,size_t,int) ;
 
 __attribute__((used)) static void
-telnet_parse(  const struct Banner1 *banner1,
+telnet_parse( const struct Banner1 *banner1,
         void *banner1_private,
         struct ProtocolState *pstate,
         const unsigned char *px, size_t length,
@@ -66,77 +66,77 @@ telnet_parse(  const struct Banner1 *banner1,
         switch (state) {
             case 0:
                 if (c == 0xFF) {
-                    /* Telnet option code negotiation */
+
                     state = TELNET_IAC;
                 } else if (c == '\r') {
-                    /* Ignore carriage returns */
+
                     continue;
                 } else if (c == '\n') {
                     banout_append(banout, PROTO_TELNET, "\\n ", AUTO_LEN);
                 } else {
-                    /* Append the raw text */
+
                     banout_append_char(banout, PROTO_TELNET, c);
                 }
                 break;
             case TELNET_IAC:
                 switch (c) {
-                    case 240: /* 0xF0 SE - End of subnegotiation parameters */
+                    case 240:
                         state = 0;
                         break;
-                    case 246: /* 0xF6 Are you there? - The function AYT. */
+                    case 246:
                         banout_append(banout, PROTO_TELNET, " IAC(AYT)", AUTO_LEN);
                         state = 0;
                         break;
-                    case 241: /* 0xF1 NOP - No operation. */
+                    case 241:
                         banout_append(banout, PROTO_TELNET, " IAC(NOP)", AUTO_LEN);
                         state = 0;
                         break;
-                    case 242: /* 0xF2 Data mark */
+                    case 242:
                         banout_append(banout, PROTO_TELNET, " IAC(MRK)", AUTO_LEN);
                         state = 0;
                         break;
-                    case 243: /* 0xF3 BRK - NVT character BRK. */
+                    case 243:
                         banout_append(banout, PROTO_TELNET, " IAC(NOP)", AUTO_LEN);
                         state = 0;
                         break;
-                    case 244: /* 0xF4 Interrupt process - The function IP. */
+                    case 244:
                         banout_append(banout, PROTO_TELNET, " IAC(INT)", AUTO_LEN);
                         state = 0;
                         break;
-                    case 245: /* 0xF5 Abort - The function AO. */
+                    case 245:
                         banout_append(banout, PROTO_TELNET, " IAC(ABRT)", AUTO_LEN);
                         state = 0;
                         break;
-                    case 247: /* 0xF7 Erase character -  The function EC. */
+                    case 247:
                         banout_append(banout, PROTO_TELNET, " IAC(EC)", AUTO_LEN);
                         state = 0;
                         break;
-                    case 248: /* 0xF8 Erase line - The function EL. */
+                    case 248:
                         banout_append(banout, PROTO_TELNET, " IAC(EL)", AUTO_LEN);
                         state = 0;
                         break;
-                    case 249: /* 0xF9 Go ahead -  The GA signal. */
+                    case 249:
                         banout_append(banout, PROTO_TELNET, " IAC(GA)", AUTO_LEN);
                         state = 0;
                         break;
-                    case 250: /* 0xFA SB - Start of subnegotiation */
+                    case 250:
                         state = TELNET_SB;
                         break;
-                    case 251: /* 0xFB WILL */
+                    case 251:
                         state = TELNET_WILL;
                         break;
-                    case 252: /* 0xFC WONT */
+                    case 252:
                         state = TELNET_WONT;
                         break;
-                    case 253: /* 0xFD DO */
+                    case 253:
                         state = TELNET_DO;
                         break;
-                    case 254: /* 0xFE DONT */
+                    case 254:
                         state = TELNET_DONT;
                         break;
                     default:
-                    case 255: /* 0xFF IAC */
-                        /* ??? */
+                    case 255:
+
                         state = TELNET_INVALID;
                         break;
                 }
@@ -151,7 +151,7 @@ telnet_parse(  const struct Banner1 *banner1,
                 {
                     const char *name = option_name_lookup(c);
                     char tmp[16];
-                    if (name == NULL) {
+                    if (name == ((void*)0)) {
                         sprintf_s(tmp, sizeof(tmp), "0x%02x", c);
                         name = tmp;
                     }
@@ -186,7 +186,7 @@ telnet_parse(  const struct Banner1 *banner1,
             {
                 const char *name = option_name_lookup(c);
                 char tmp[16];
-                if (name == NULL) {
+                if (name == ((void*)0)) {
                     sprintf_s(tmp, sizeof(tmp), "0x%02x", c);
                     name = tmp;
                 }
@@ -205,32 +205,32 @@ telnet_parse(  const struct Banner1 *banner1,
                 break;
         }
     }
-    
+
     {
-#define r_length (256*3*4)
-        unsigned char reply[r_length];
+
+        unsigned char reply[(256*3*4)];
         size_t r_offset = 0;
         size_t i;
-        
-        for (i=0; i<256 && r_offset + 3 < r_length; i++) {
+
+        for (i=0; i<256 && r_offset + 3 < (256*3*4); i++) {
             if (nego[i] & FLAG_WILL) {
-                reply[r_offset++] = 0xFF; /* IAC */
-                reply[r_offset++] = 0xFB; /* WILL */
+                reply[r_offset++] = 0xFF;
+                reply[r_offset++] = 0xFB;
                 reply[r_offset++] = (unsigned char)i;
             }
             if (nego[i] & FLAG_WONT) {
-                reply[r_offset++] = 0xFF; /* IAC */
-                reply[r_offset++] = 0xFC; /* WONT */
+                reply[r_offset++] = 0xFF;
+                reply[r_offset++] = 0xFC;
                 reply[r_offset++] = (unsigned char)i;
             }
             if (nego[i] & FLAG_DO) {
-                reply[r_offset++] = 0xFF; /* IAC */
-                reply[r_offset++] = 0xFD; /* DO */
+                reply[r_offset++] = 0xFF;
+                reply[r_offset++] = 0xFD;
                 reply[r_offset++] = (unsigned char)i;
             }
             if (nego[i] & FLAG_DONT) {
-                reply[r_offset++] = 0xFF; /* IAC */
-                reply[r_offset++] = 0xFE; /* DONT */
+                reply[r_offset++] = 0xFF;
+                reply[r_offset++] = 0xFE;
                 reply[r_offset++] = (unsigned char)i;
             }
         }

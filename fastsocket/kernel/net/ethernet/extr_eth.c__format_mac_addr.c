@@ -1,31 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  scnprintf (char*,int,char*,unsigned char const) ; 
- int /*<<< orphan*/  strlcpy (char*,char*,int) ; 
+ int scnprintf (char*,int,char*,unsigned char const) ;
+ int strlcpy (char*,char*,int) ;
 
 __attribute__((used)) static size_t _format_mac_addr(char *buf, int buflen,
-				const unsigned char *addr, int len)
+    const unsigned char *addr, int len)
 {
-	int i;
-	char *cp = buf;
+ int i;
+ char *cp = buf;
 
-	for (i = 0; i < len; i++) {
-		cp += scnprintf(cp, buflen - (cp - buf), "%02x", addr[i]);
-		if (i == len - 1)
-			break;
-		cp += strlcpy(cp, ":", buflen - (cp - buf));
-	}
-	return cp - buf;
+ for (i = 0; i < len; i++) {
+  cp += scnprintf(cp, buflen - (cp - buf), "%02x", addr[i]);
+  if (i == len - 1)
+   break;
+  cp += strlcpy(cp, ":", buflen - (cp - buf));
+ }
+ return cp - buf;
 }

@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct in_addr {int dummy; } ;
 
-/* Variables and functions */
- int UV_EINVAL ; 
- int /*<<< orphan*/  memcpy (unsigned char*,unsigned char*,int) ; 
- char* strchr (char const*,int) ; 
+
+ int UV_EINVAL ;
+ int memcpy (unsigned char*,unsigned char*,int) ;
+ char* strchr (char const*,int) ;
 
 __attribute__((used)) static int inet_pton4(const char *src, unsigned char *dst) {
   static const char digits[] = "0123456789";
@@ -28,7 +28,7 @@ __attribute__((used)) static int inet_pton4(const char *src, unsigned char *dst)
   while ((ch = *src++) != '\0') {
     const char *pch;
 
-    if ((pch = strchr(digits, ch)) != NULL) {
+    if ((pch = strchr(digits, ch)) != ((void*)0)) {
       unsigned int nw = *tp * 10 + (pch - digits);
 
       if (saw_digit && *tp == 0)

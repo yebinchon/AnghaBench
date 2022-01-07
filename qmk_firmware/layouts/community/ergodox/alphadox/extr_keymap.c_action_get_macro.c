@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int /*<<< orphan*/  macro_t ;
-typedef  int /*<<< orphan*/  keyrecord_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  const* MACRO_NONE ; 
-#define  TEENSY 128 
+
+
+
+typedef int uint8_t ;
+typedef int macro_t ;
+typedef int keyrecord_t ;
+
+
+ int const* MACRO_NONE ;
+
 
 const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt) {
   switch(id) {
-    case TEENSY:
+    case 128:
       break;
   }
   return MACRO_NONE;

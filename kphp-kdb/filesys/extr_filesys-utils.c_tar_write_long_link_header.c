@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  gzFile ;
 
-/* Variables and functions */
- int TAR_PACK_ERR_GZWRITE ; 
- int TAR_PACK_ERR_WRITE_HEADER ; 
- int gzwrite (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  memcpy (char*,char const* const,int) ; 
- int /*<<< orphan*/  memset (char*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ tar_write_header (int /*<<< orphan*/ ,char*) ; 
+
+
+
+typedef int gzFile ;
+
+
+ int TAR_PACK_ERR_GZWRITE ;
+ int TAR_PACK_ERR_WRITE_HEADER ;
+ int gzwrite (int ,char*,int) ;
+ int memcpy (char*,char const* const,int) ;
+ int memset (char*,int ,int) ;
+ scalar_t__ tar_write_header (int ,char*) ;
 
 __attribute__((used)) static int tar_write_long_link_header (gzFile f, char header[512], int link_length, const char *const data) {
   if (tar_write_header (f, header) < 0) {

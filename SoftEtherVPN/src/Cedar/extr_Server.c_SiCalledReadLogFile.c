@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  t ;
-typedef  int /*<<< orphan*/  filepath ;
-typedef  int /*<<< orphan*/  UINT ;
-typedef  int /*<<< orphan*/  SERVER ;
-typedef  int /*<<< orphan*/  RPC_READ_LOG_FILE ;
-typedef  int /*<<< orphan*/  PACK ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FreeRpcReadLogFile (int /*<<< orphan*/ *) ; 
- int MAX_PATH ; 
- int /*<<< orphan*/ * NewPack () ; 
- int /*<<< orphan*/  OutRpcReadLogFile (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PackGetInt (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  PackGetStr (int /*<<< orphan*/ *,char*,char*,int) ; 
- int /*<<< orphan*/  SiReadLocalLogFile (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Zero (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int t ;
+typedef int filepath ;
+typedef int UINT ;
+typedef int SERVER ;
+typedef int RPC_READ_LOG_FILE ;
+typedef int PACK ;
+
+
+ int FreeRpcReadLogFile (int *) ;
+ int MAX_PATH ;
+ int * NewPack () ;
+ int OutRpcReadLogFile (int *,int *) ;
+ int PackGetInt (int *,char*) ;
+ int PackGetStr (int *,char*,char*,int) ;
+ int SiReadLocalLogFile (int *,char*,int ,int *) ;
+ int Zero (int *,int) ;
 
 PACK *SiCalledReadLogFile(SERVER *s, PACK *p)
 {
-	RPC_READ_LOG_FILE t;
-	PACK *ret;
-	char filepath[MAX_PATH];
-	UINT offset;
-	// Validate arguments
-	if (s == NULL || p == NULL)
-	{
-		return NULL;
-	}
+ RPC_READ_LOG_FILE t;
+ PACK *ret;
+ char filepath[MAX_PATH];
+ UINT offset;
 
-	PackGetStr(p, "FilePath", filepath, sizeof(filepath));
-	offset = PackGetInt(p, "Offset");
+ if (s == ((void*)0) || p == ((void*)0))
+ {
+  return ((void*)0);
+ }
 
-	Zero(&t, sizeof(t));
+ PackGetStr(p, "FilePath", filepath, sizeof(filepath));
+ offset = PackGetInt(p, "Offset");
 
-	SiReadLocalLogFile(s, filepath, offset, &t);
+ Zero(&t, sizeof(t));
 
-	ret = NewPack();
+ SiReadLocalLogFile(s, filepath, offset, &t);
 
-	OutRpcReadLogFile(ret, &t);
-	FreeRpcReadLogFile(&t);
+ ret = NewPack();
 
-	return ret;
+ OutRpcReadLogFile(ret, &t);
+ FreeRpcReadLogFile(&t);
+
+ return ret;
 }

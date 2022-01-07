@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  _rtld_error (char*,char*) ; 
- int /*<<< orphan*/ * error_message ; 
- int /*<<< orphan*/  free (char*) ; 
+ int _rtld_error (char*,char*) ;
+ int * error_message ;
+ int free (char*) ;
 
 __attribute__((used)) static void
 errmsg_restore(char *saved_msg)
 {
-    if (saved_msg == NULL)
-	error_message = NULL;
+    if (saved_msg == ((void*)0))
+ error_message = ((void*)0);
     else {
-	_rtld_error("%s", saved_msg);
-	free(saved_msg);
+ _rtld_error("%s", saved_msg);
+ free(saved_msg);
     }
 }

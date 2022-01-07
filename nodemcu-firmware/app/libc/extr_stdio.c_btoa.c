@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  long u_int ;
 
-/* Variables and functions */
- int /*<<< orphan*/  strcat (char*,char*) ; 
- int strlen (char*) ; 
+
+
+
+typedef long u_int ;
+
+
+ int strcat (char*,char*) ;
+ int strlen (char*) ;
 
 char *
 btoa(char *dst, u_int value, int base)
@@ -51,7 +51,7 @@ btoa(char *dst, u_int value, int base)
     if (neg)
         strcat (buf, "-");
 
-    /* reverse the string */
+
     for (i = 0, j = strlen (buf) - 1; j >= 0; i++, j--)
         dst[i] = buf[j];
     dst[i] = 0;

@@ -1,76 +1,65 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  StringInfo ;
-typedef  int Oid ;
 
-/* Variables and functions */
-#define  BITOID 137 
-#define  BOOLOID 136 
-#define  FLOAT4OID 135 
-#define  FLOAT8OID 134 
-#define  INT2OID 133 
-#define  INT4OID 132 
-#define  INT8OID 131 
-#define  NUMERICOID 130 
-#define  OIDOID 129 
- int /*<<< orphan*/  SQL_STR_DOUBLE (char,int) ; 
-#define  VARBITOID 128 
- int /*<<< orphan*/  appendStringInfo (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  appendStringInfoChar (int /*<<< orphan*/ ,char) ; 
- int /*<<< orphan*/  appendStringInfoString (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
+
+
+
+typedef int StringInfo ;
+typedef int Oid ;
+ int SQL_STR_DOUBLE (char,int) ;
+
+ int appendStringInfo (int ,char*,char*) ;
+ int appendStringInfoChar (int ,char) ;
+ int appendStringInfoString (int ,char*) ;
+ int strcmp (char*,char*) ;
 
 __attribute__((used)) static void
 print_literal(StringInfo s, Oid typid, char *outputstr)
 {
-	const char *valptr;
+ const char *valptr;
 
-	switch (typid)
-	{
-		case INT2OID:
-		case INT4OID:
-		case INT8OID:
-		case OIDOID:
-		case FLOAT4OID:
-		case FLOAT8OID:
-		case NUMERICOID:
-			/* NB: We don't care about Inf, NaN et al. */
-			appendStringInfoString(s, outputstr);
-			break;
+ switch (typid)
+ {
+  case 133:
+  case 132:
+  case 131:
+  case 129:
+  case 135:
+  case 134:
+  case 130:
 
-		case BITOID:
-		case VARBITOID:
-			appendStringInfo(s, "B'%s'", outputstr);
-			break;
+   appendStringInfoString(s, outputstr);
+   break;
 
-		case BOOLOID:
-			if (strcmp(outputstr, "t") == 0)
-				appendStringInfoString(s, "true");
-			else
-				appendStringInfoString(s, "false");
-			break;
+  case 137:
+  case 128:
+   appendStringInfo(s, "B'%s'", outputstr);
+   break;
 
-		default:
-			appendStringInfoChar(s, '\'');
-			for (valptr = outputstr; *valptr; valptr++)
-			{
-				char		ch = *valptr;
+  case 136:
+   if (strcmp(outputstr, "t") == 0)
+    appendStringInfoString(s, "true");
+   else
+    appendStringInfoString(s, "false");
+   break;
 
-				if (SQL_STR_DOUBLE(ch, false))
-					appendStringInfoChar(s, ch);
-				appendStringInfoChar(s, ch);
-			}
-			appendStringInfoChar(s, '\'');
-			break;
-	}
+  default:
+   appendStringInfoChar(s, '\'');
+   for (valptr = outputstr; *valptr; valptr++)
+   {
+    char ch = *valptr;
+
+    if (SQL_STR_DOUBLE(ch, 0))
+     appendStringInfoChar(s, ch);
+    appendStringInfoChar(s, ch);
+   }
+   appendStringInfoChar(s, '\'');
+   break;
+ }
 }

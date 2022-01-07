@@ -1,135 +1,135 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ UINT ;
-typedef  int /*<<< orphan*/  UCHAR ;
-typedef  int /*<<< orphan*/  SOCK ;
-typedef  int /*<<< orphan*/  RPC ;
-typedef  int /*<<< orphan*/  PACK ;
-typedef  int /*<<< orphan*/  CEDAR ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * Connect (char*,scalar_t__) ; 
- scalar_t__ ERR_CONNECT_FAILED ; 
- scalar_t__ ERR_DISCONNECTED ; 
- scalar_t__ ERR_INTERNAL_ERROR ; 
- scalar_t__ ERR_NO_ERROR ; 
- scalar_t__ ERR_PROTOCOL_ERROR ; 
- int /*<<< orphan*/  FreePack (int /*<<< orphan*/ *) ; 
- scalar_t__ GetErrorFromPack (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * HttpClientRecv (int /*<<< orphan*/ *) ; 
- int HttpClientSend (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * NewPack () ; 
- int /*<<< orphan*/  PackAddData (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,int) ; 
- int PackGetData2 (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  ReleaseSock (int /*<<< orphan*/ *) ; 
- int SHA1_SIZE ; 
- int /*<<< orphan*/  SecurePassword (int /*<<< orphan*/ *,void*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SetTimeout (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * StartRpcClient (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int StartSSL (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int TIMEOUT_INFINITE ; 
+
+
+
+typedef scalar_t__ UINT ;
+typedef int UCHAR ;
+typedef int SOCK ;
+typedef int RPC ;
+typedef int PACK ;
+typedef int CEDAR ;
+
+
+ int * Connect (char*,scalar_t__) ;
+ scalar_t__ ERR_CONNECT_FAILED ;
+ scalar_t__ ERR_DISCONNECTED ;
+ scalar_t__ ERR_INTERNAL_ERROR ;
+ scalar_t__ ERR_NO_ERROR ;
+ scalar_t__ ERR_PROTOCOL_ERROR ;
+ int FreePack (int *) ;
+ scalar_t__ GetErrorFromPack (int *) ;
+ int * HttpClientRecv (int *) ;
+ int HttpClientSend (int *,int *) ;
+ int * NewPack () ;
+ int PackAddData (int *,char*,int *,int) ;
+ int PackGetData2 (int *,char*,int *,int) ;
+ int ReleaseSock (int *) ;
+ int SHA1_SIZE ;
+ int SecurePassword (int *,void*,int *) ;
+ int SetTimeout (int *,int) ;
+ int * StartRpcClient (int *,int *) ;
+ int StartSSL (int *,int *,int *) ;
+ int TIMEOUT_INFINITE ;
 
 RPC *NatAdminConnect(CEDAR *cedar, char *hostname, UINT port, void *hashed_password, UINT *err)
 {
-	UCHAR secure_password[SHA1_SIZE];
-	UCHAR random[SHA1_SIZE];
-	SOCK *sock;
-	RPC *rpc;
-	PACK *p;
-	UINT error;
-	// Validate arguments
-	if (cedar == NULL || hostname == NULL || port == 0 || hashed_password == NULL || err == NULL)
-	{
-		if (err != NULL)
-		{
-			*err = ERR_INTERNAL_ERROR;
-		}
-		return NULL;
-	}
+ UCHAR secure_password[SHA1_SIZE];
+ UCHAR random[SHA1_SIZE];
+ SOCK *sock;
+ RPC *rpc;
+ PACK *p;
+ UINT error;
 
-	// Connection
-	sock = Connect(hostname, port);
-	if (sock == NULL)
-	{
-		*err = ERR_CONNECT_FAILED;
-		return NULL;
-	}
+ if (cedar == ((void*)0) || hostname == ((void*)0) || port == 0 || hashed_password == ((void*)0) || err == ((void*)0))
+ {
+  if (err != ((void*)0))
+  {
+   *err = ERR_INTERNAL_ERROR;
+  }
+  return ((void*)0);
+ }
 
-	if (StartSSL(sock, NULL, NULL) == false)
-	{
-		*err = ERR_PROTOCOL_ERROR;
-		ReleaseSock(sock);
-		return NULL;
-	}
 
-	SetTimeout(sock, 5000);
+ sock = Connect(hostname, port);
+ if (sock == ((void*)0))
+ {
+  *err = ERR_CONNECT_FAILED;
+  return ((void*)0);
+ }
 
-	p = HttpClientRecv(sock);
-	if (p == NULL)
-	{
-		*err = ERR_DISCONNECTED;
-		ReleaseSock(sock);
-		return NULL;
-	}
+ if (StartSSL(sock, ((void*)0), ((void*)0)) == 0)
+ {
+  *err = ERR_PROTOCOL_ERROR;
+  ReleaseSock(sock);
+  return ((void*)0);
+ }
 
-	if (PackGetData2(p, "auth_random", random, SHA1_SIZE) == false)
-	{
-		FreePack(p);
-		*err = ERR_PROTOCOL_ERROR;
-		ReleaseSock(sock);
-		return NULL;
-	}
+ SetTimeout(sock, 5000);
 
-	FreePack(p);
+ p = HttpClientRecv(sock);
+ if (p == ((void*)0))
+ {
+  *err = ERR_DISCONNECTED;
+  ReleaseSock(sock);
+  return ((void*)0);
+ }
 
-	SecurePassword(secure_password, hashed_password, random);
+ if (PackGetData2(p, "auth_random", random, SHA1_SIZE) == 0)
+ {
+  FreePack(p);
+  *err = ERR_PROTOCOL_ERROR;
+  ReleaseSock(sock);
+  return ((void*)0);
+ }
 
-	p = NewPack();
-	PackAddData(p, "secure_password", secure_password, SHA1_SIZE);
+ FreePack(p);
 
-	if (HttpClientSend(sock, p) == false)
-	{
-		FreePack(p);
-		*err = ERR_DISCONNECTED;
-		ReleaseSock(sock);
-		return NULL;
-	}
+ SecurePassword(secure_password, hashed_password, random);
 
-	FreePack(p);
+ p = NewPack();
+ PackAddData(p, "secure_password", secure_password, SHA1_SIZE);
 
-	p = HttpClientRecv(sock);
-	if (p == NULL)
-	{
-		*err = ERR_DISCONNECTED;
-		ReleaseSock(sock);
-		return NULL;
-	}
+ if (HttpClientSend(sock, p) == 0)
+ {
+  FreePack(p);
+  *err = ERR_DISCONNECTED;
+  ReleaseSock(sock);
+  return ((void*)0);
+ }
 
-	error = GetErrorFromPack(p);
+ FreePack(p);
 
-	FreePack(p);
+ p = HttpClientRecv(sock);
+ if (p == ((void*)0))
+ {
+  *err = ERR_DISCONNECTED;
+  ReleaseSock(sock);
+  return ((void*)0);
+ }
 
-	if (error != ERR_NO_ERROR)
-	{
-		*err = error;
-		ReleaseSock(sock);
-		return NULL;
-	}
+ error = GetErrorFromPack(p);
 
-	SetTimeout(sock, TIMEOUT_INFINITE);
+ FreePack(p);
 
-	rpc = StartRpcClient(sock, NULL);
-	ReleaseSock(sock);
+ if (error != ERR_NO_ERROR)
+ {
+  *err = error;
+  ReleaseSock(sock);
+  return ((void*)0);
+ }
 
-	return rpc;
+ SetTimeout(sock, TIMEOUT_INFINITE);
+
+ rpc = StartRpcClient(sock, ((void*)0));
+ ReleaseSock(sock);
+
+ return rpc;
 }

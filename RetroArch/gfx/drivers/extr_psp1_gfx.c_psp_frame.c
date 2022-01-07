@@ -1,88 +1,88 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  video_frame_info_t ;
-typedef  int /*<<< orphan*/  uint64_t ;
-typedef  int uint32_t ;
-typedef  int u32 ;
-struct TYPE_4__ {int /*<<< orphan*/  context_storage; int /*<<< orphan*/  dList; scalar_t__ active; } ;
-struct TYPE_5__ {int hw_render; int vblank_not_reached; int bpp_log2; TYPE_1__ menu; int /*<<< orphan*/  frame_dList; int /*<<< orphan*/  texture; scalar_t__ rgb32; scalar_t__ frame_coords; int /*<<< orphan*/  tex_filter; int /*<<< orphan*/  main_dList; scalar_t__ should_resize; int /*<<< orphan*/  draw_buffer; scalar_t__ vsync; } ;
-typedef  TYPE_2__ psp1_video_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FROM_GU_POINTER (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GU_COLOR_BUFFER_BIT ; 
- int /*<<< orphan*/  GU_DIRECT ; 
- int /*<<< orphan*/  GU_PSM_5650 ; 
- int /*<<< orphan*/  GU_PSM_8888 ; 
- int /*<<< orphan*/  GU_SPRITES ; 
- int /*<<< orphan*/  GU_TAIL ; 
- int GU_TEXTURE_32BITF ; 
- int GU_TRANSFORM_2D ; 
- int GU_VERTEX_32BITF ; 
- int /*<<< orphan*/  PSP_FRAME_VERTEX_COUNT ; 
- void const* RETRO_HW_FRAME_BUFFER_VALID ; 
- int /*<<< orphan*/  menu_driver_frame (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  next_pow2 (unsigned int) ; 
- int /*<<< orphan*/  pspDebugScreenPuts (char const*) ; 
- int /*<<< orphan*/  pspDebugScreenSetBase (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pspDebugScreenSetXY (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  psp_set_tex_coords (scalar_t__,unsigned int,unsigned int) ; 
- int /*<<< orphan*/  psp_update_viewport (TYPE_2__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sceDisplayWaitVblankStart () ; 
- int /*<<< orphan*/  sceGuCallList (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sceGuClear (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sceGuCopyImage (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,unsigned int,unsigned int,unsigned int,void*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sceGuDrawArray (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,void*) ; 
- int /*<<< orphan*/  sceGuFinish () ; 
- int /*<<< orphan*/  sceGuSendList (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sceGuStart (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sceGuSwapBuffers () ; 
- int /*<<< orphan*/  sceGuSync (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sceGuTexFilter (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sceGuTexImage (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sceKernelDcacheWritebackRange (void const*,unsigned int) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int video_frame_info_t ;
+typedef int uint64_t ;
+typedef int uint32_t ;
+typedef int u32 ;
+struct TYPE_4__ {int context_storage; int dList; scalar_t__ active; } ;
+struct TYPE_5__ {int hw_render; int vblank_not_reached; int bpp_log2; TYPE_1__ menu; int frame_dList; int texture; scalar_t__ rgb32; scalar_t__ frame_coords; int tex_filter; int main_dList; scalar_t__ should_resize; int draw_buffer; scalar_t__ vsync; } ;
+typedef TYPE_2__ psp1_video_t ;
+
+
+ int FROM_GU_POINTER (int ) ;
+ int GU_COLOR_BUFFER_BIT ;
+ int GU_DIRECT ;
+ int GU_PSM_5650 ;
+ int GU_PSM_8888 ;
+ int GU_SPRITES ;
+ int GU_TAIL ;
+ int GU_TEXTURE_32BITF ;
+ int GU_TRANSFORM_2D ;
+ int GU_VERTEX_32BITF ;
+ int PSP_FRAME_VERTEX_COUNT ;
+ void const* RETRO_HW_FRAME_BUFFER_VALID ;
+ int menu_driver_frame (int *) ;
+ int next_pow2 (unsigned int) ;
+ int pspDebugScreenPuts (char const*) ;
+ int pspDebugScreenSetBase (int ) ;
+ int pspDebugScreenSetXY (int ,int ) ;
+ int psp_set_tex_coords (scalar_t__,unsigned int,unsigned int) ;
+ int psp_update_viewport (TYPE_2__*,int *) ;
+ int sceDisplayWaitVblankStart () ;
+ int sceGuCallList (int ) ;
+ int sceGuClear (int ) ;
+ int sceGuCopyImage (int ,int,int ,unsigned int,unsigned int,unsigned int,void*,int ,int ,unsigned int,int ) ;
+ int sceGuDrawArray (int ,int,int ,int *,void*) ;
+ int sceGuFinish () ;
+ int sceGuSendList (int ,int ,int *) ;
+ int sceGuStart (int ,int ) ;
+ int sceGuSwapBuffers () ;
+ int sceGuSync (int ,int ) ;
+ int sceGuTexFilter (int ,int ) ;
+ int sceGuTexImage (int ,int ,int ,unsigned int,int ) ;
+ int sceKernelDcacheWritebackRange (void const*,unsigned int) ;
 
 __attribute__((used)) static bool psp_frame(void *data, const void *frame,
       unsigned width, unsigned height, uint64_t frame_count,
       unsigned pitch, const char *msg, video_frame_info_t *video_info)
 {
-   psp1_video_t *psp                       = (psp1_video_t*)data;
+   psp1_video_t *psp = (psp1_video_t*)data;
 
    if (!width || !height)
-      return false;
+      return 0;
 
    if (((uint32_t)frame&0x04000000) || (frame == RETRO_HW_FRAME_BUFFER_VALID))
-      psp->hw_render = true;
+      psp->hw_render = 1;
    else if (frame)
-      psp->hw_render = false;
+      psp->hw_render = 0;
 
    if (!psp->hw_render)
-      sceGuSync(0, 0); /* let the core decide when to sync when HW_RENDER */
+      sceGuSync(0, 0);
 
-   if (msg) 
+   if (msg)
    {
       pspDebugScreenSetBase(psp->draw_buffer);
       pspDebugScreenSetXY(0,0);
       pspDebugScreenPuts(msg);
    }
-      
+
 
    if ((psp->vsync)&&(psp->vblank_not_reached))
       sceDisplayWaitVblankStart();
 
-   psp->vblank_not_reached = true;
+   psp->vblank_not_reached = 1;
 
    psp->draw_buffer = FROM_GU_POINTER(sceGuSwapBuffers());
 
@@ -96,11 +96,11 @@ __attribute__((used)) static bool psp_frame(void *data, const void *frame,
    sceGuTexFilter(psp->tex_filter, psp->tex_filter);
    sceGuClear(GU_COLOR_BUFFER_BIT);
 
-   /* frame in VRAM ? texture/palette was
-    * set in core so draw directly */
+
+
    if (psp->hw_render)
       sceGuDrawArray(GU_SPRITES, GU_TEXTURE_32BITF | GU_VERTEX_32BITF |
-            GU_TRANSFORM_2D, PSP_FRAME_VERTEX_COUNT, NULL,
+            GU_TRANSFORM_2D, PSP_FRAME_VERTEX_COUNT, ((void*)0),
             (void*)(psp->frame_coords));
    else
    {
@@ -117,9 +117,9 @@ __attribute__((used)) static bool psp_frame(void *data, const void *frame,
 
    sceGuFinish();
 
-#ifdef HAVE_MENU
-   menu_driver_frame(video_info);
-#endif
+
+
+
 
    if(psp->menu.active)
    {
@@ -127,5 +127,5 @@ __attribute__((used)) static bool psp_frame(void *data, const void *frame,
       sceGuSync(0, 0);
    }
 
-   return true;
+   return 1;
 }

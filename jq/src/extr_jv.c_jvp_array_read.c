@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int length; int /*<<< orphan*/ * elements; } ;
-typedef  TYPE_1__ jvp_array ;
-typedef  int /*<<< orphan*/  jv ;
 
-/* Variables and functions */
- int JVP_HAS_KIND (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  JV_KIND_ARRAY ; 
- int /*<<< orphan*/  assert (int) ; 
- int jvp_array_length (int /*<<< orphan*/ ) ; 
- int jvp_array_offset (int /*<<< orphan*/ ) ; 
- TYPE_1__* jvp_array_ptr (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int length; int * elements; } ;
+typedef TYPE_1__ jvp_array ;
+typedef int jv ;
+
+
+ int JVP_HAS_KIND (int ,int ) ;
+ int JV_KIND_ARRAY ;
+ int assert (int) ;
+ int jvp_array_length (int ) ;
+ int jvp_array_offset (int ) ;
+ TYPE_1__* jvp_array_ptr (int ) ;
 
 __attribute__((used)) static jv* jvp_array_read(jv a, int i) {
   assert(JVP_HAS_KIND(a, JV_KIND_ARRAY));

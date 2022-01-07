@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  m_h ; 
- int /*<<< orphan*/  m_w ; 
- int /*<<< orphan*/  m_x ; 
- int /*<<< orphan*/  m_y ; 
- int /*<<< orphan*/  old_m_h ; 
- int /*<<< orphan*/  old_m_w ; 
- int /*<<< orphan*/  old_m_x ; 
- int /*<<< orphan*/  old_m_y ; 
+ int m_h ;
+ int m_w ;
+ int m_x ;
+ int m_y ;
+ int old_m_h ;
+ int old_m_w ;
+ int old_m_x ;
+ int old_m_y ;
 
 void AM_saveScaleAndLoc(void)
 {

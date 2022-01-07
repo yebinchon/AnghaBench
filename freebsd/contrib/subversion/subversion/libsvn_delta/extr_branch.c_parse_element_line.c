@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {char* data; } ;
-typedef  TYPE_1__ svn_stringbuf_t ;
-typedef  int /*<<< orphan*/  svn_stream_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+typedef TYPE_1__ svn_stringbuf_t ;
+typedef int svn_stream_t ;
+typedef int svn_error_t ;
+typedef int svn_boolean_t ;
+typedef int apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_ASSERT (int) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- char* apr_pstrdup (int /*<<< orphan*/ *,char*) ; 
- int sscanf (char*,char*,int*,char*,int*,int*) ; 
- scalar_t__ strcmp (char const*,char*) ; 
- int /*<<< orphan*/  svn_stream_readline (int /*<<< orphan*/ *,TYPE_1__**,char*,int*,int /*<<< orphan*/ *) ; 
+
+ int SVN_ERR (int ) ;
+ int SVN_ERR_ASSERT (int) ;
+ int * SVN_NO_ERROR ;
+ char* apr_pstrdup (int *,char*) ;
+ int sscanf (char*,char*,int*,char*,int*,int*) ;
+ scalar_t__ strcmp (char const*,char*) ;
+ int svn_stream_readline (int *,TYPE_1__**,char*,int*,int *) ;
 
 __attribute__((used)) static svn_error_t *
 parse_element_line(int *eid_p,
@@ -42,21 +42,21 @@ parse_element_line(int *eid_p,
   int n;
   int offset;
 
-  /* Read a line */
+
   SVN_ERR(svn_stream_readline(stream, &line, "\n", &eof, scratch_pool));
   SVN_ERR_ASSERT(!eof);
 
   n = sscanf(line->data, "e%d: %9s %d%n",
              eid_p,
              kind, parent_eid_p, &offset);
-  SVN_ERR_ASSERT(n >= 3);  /* C std is unclear on whether '%n' counts */
+  SVN_ERR_ASSERT(n >= 3);
   SVN_ERR_ASSERT(line->data[offset] == ' ');
 
   *name_p = apr_pstrdup(result_pool, line->data + offset + 1);
   *is_subbranch_p = (strcmp(kind, "subbranch") == 0);
 
   if (strcmp(*name_p, "(null)") == 0)
-    *name_p = NULL;
+    *name_p = ((void*)0);
   else if (strcmp(*name_p, ".") == 0)
     *name_p = "";
 

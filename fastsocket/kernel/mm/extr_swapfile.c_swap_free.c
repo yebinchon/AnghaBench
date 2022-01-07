@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  swp_entry_t ;
+
+
+
+
+typedef int swp_entry_t ;
 struct swap_info_struct {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  spin_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  swap_entry_free (struct swap_info_struct*,int /*<<< orphan*/ ,int) ; 
- struct swap_info_struct* swap_info_get (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  swap_lock ; 
+
+ int spin_unlock (int *) ;
+ int swap_entry_free (struct swap_info_struct*,int ,int) ;
+ struct swap_info_struct* swap_info_get (int ) ;
+ int swap_lock ;
 
 void swap_free(swp_entry_t entry)
 {
-	struct swap_info_struct *p;
+ struct swap_info_struct *p;
 
-	p = swap_info_get(entry);
-	if (p) {
-		swap_entry_free(p, entry, 1);
-		spin_unlock(&swap_lock);
-	}
+ p = swap_info_get(entry);
+ if (p) {
+  swap_entry_free(p, entry, 1);
+  spin_unlock(&swap_lock);
+ }
 }

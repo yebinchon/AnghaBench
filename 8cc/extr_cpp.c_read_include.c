@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Token ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int Token ;
 struct TYPE_3__ {scalar_t__ name; } ;
-typedef  TYPE_1__ File ;
+typedef TYPE_1__ File ;
 
-/* Variables and functions */
- char* dirname (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errort (int /*<<< orphan*/ *,char*,char*) ; 
- int /*<<< orphan*/  expect_newline () ; 
- char* read_cpp_header_name (int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  std_include_path ; 
- int /*<<< orphan*/  strdup (scalar_t__) ; 
- scalar_t__ try_include (char*,char*,int) ; 
- char* vec_get (int /*<<< orphan*/ ,int) ; 
- int vec_len (int /*<<< orphan*/ ) ; 
+
+ char* dirname (int ) ;
+ int errort (int *,char*,char*) ;
+ int expect_newline () ;
+ char* read_cpp_header_name (int *,int*) ;
+ int std_include_path ;
+ int strdup (scalar_t__) ;
+ scalar_t__ try_include (char*,char*,int) ;
+ char* vec_get (int ,int) ;
+ int vec_len (int ) ;
 
 __attribute__((used)) static void read_include(Token *hash, File *file, bool isimport) {
     bool std;

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct dao {int /*<<< orphan*/  ctrl_blk; TYPE_1__* hw; } ;
-struct TYPE_2__ {int /*<<< orphan*/  (* dao_set_spos ) (int /*<<< orphan*/ ,unsigned int) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,unsigned int) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct dao {int ctrl_blk; TYPE_1__* hw; } ;
+struct TYPE_2__ {int (* dao_set_spos ) (int ,unsigned int) ;} ;
+
+
+ int stub1 (int ,unsigned int) ;
 
 __attribute__((used)) static int dao_spdif_set_spos(struct dao *dao, unsigned int spos)
 {
-	dao->hw->dao_set_spos(dao->ctrl_blk, spos);
-	return 0;
+ dao->hw->dao_set_spos(dao->ctrl_blk, spos);
+ return 0;
 }

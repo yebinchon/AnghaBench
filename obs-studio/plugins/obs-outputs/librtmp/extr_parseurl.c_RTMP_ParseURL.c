@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int av_len; char* av_val; } ;
-typedef  TYPE_1__ AVal ;
+typedef TYPE_1__ AVal ;
 
-/* Variables and functions */
- int FALSE ; 
- int /*<<< orphan*/  RTMP_LOGDEBUG ; 
- int /*<<< orphan*/  RTMP_LOGERROR ; 
- int /*<<< orphan*/  RTMP_LOGWARNING ; 
- int /*<<< orphan*/  RTMP_Log (int /*<<< orphan*/ ,char*,...) ; 
- int RTMP_PROTOCOL_RTMFP ; 
- int RTMP_PROTOCOL_RTMP ; 
- int RTMP_PROTOCOL_RTMPE ; 
- int RTMP_PROTOCOL_RTMPS ; 
- int RTMP_PROTOCOL_RTMPT ; 
- int RTMP_PROTOCOL_RTMPTE ; 
- int RTMP_PROTOCOL_RTMPTS ; 
- int TRUE ; 
- unsigned int atoi (char*) ; 
- char* strchr (char*,char) ; 
- int strlen (char*) ; 
- scalar_t__ strncasecmp (char const*,char*,int) ; 
- char* strstr (char const*,char*) ; 
+
+ int FALSE ;
+ int RTMP_LOGDEBUG ;
+ int RTMP_LOGERROR ;
+ int RTMP_LOGWARNING ;
+ int RTMP_Log (int ,char*,...) ;
+ int RTMP_PROTOCOL_RTMFP ;
+ int RTMP_PROTOCOL_RTMP ;
+ int RTMP_PROTOCOL_RTMPE ;
+ int RTMP_PROTOCOL_RTMPS ;
+ int RTMP_PROTOCOL_RTMPT ;
+ int RTMP_PROTOCOL_RTMPTE ;
+ int RTMP_PROTOCOL_RTMPTS ;
+ int TRUE ;
+ unsigned int atoi (char*) ;
+ char* strchr (char*,char) ;
+ int strlen (char*) ;
+ scalar_t__ strncasecmp (char const*,char*,int) ;
+ char* strstr (char const*,char*) ;
 
 int RTMP_ParseURL(const char *url, int *protocol, AVal *host, unsigned int *port,
                   AVal *app)
 {
-    char *p, *end, *col, /* *ques, */ *slash, *v6;
+    char *p, *end, *col, *slash, *v6;
 
     RTMP_Log(RTMP_LOGDEBUG, "Parsing...");
 
     *protocol = RTMP_PROTOCOL_RTMP;
     *port = 0;
     app->av_len = 0;
-    app->av_val = NULL;
+    app->av_val = ((void*)0);
 
-    /* Old School Parsing */
 
-    /* look for usual :// pattern */
+
+
     p = strstr(url, "://");
     if(!p)
     {
@@ -82,21 +82,21 @@ int RTMP_ParseURL(const char *url, int *protocol, AVal *host, unsigned int *port
     RTMP_Log(RTMP_LOGDEBUG, "Parsed protocol: %d", *protocol);
 
 parsehost:
-    /* let's get the hostname */
+
     p+=3;
 
-    /* check for sudden death */
+
     if(*p==0)
     {
         RTMP_Log(RTMP_LOGWARNING, "No hostname in URL!");
         return FALSE;
     }
 
-    end   = p + strlen(p);
-    v6    = strchr(p, ']');
-    // ques  = strchr(p, '?');
+    end = p + strlen(p);
+    v6 = strchr(p, ']');
+
     slash = strchr(p, '/');
-    col   = strchr((v6 && v6 < slash) ? v6 : p, ':');
+    col = strchr((v6 && v6 < slash) ? v6 : p, ':');
 
     {
         int hostlen;
@@ -121,7 +121,7 @@ parsehost:
         p+=hostlen;
     }
 
-    /* get the port number if available */
+
     if(*p == ':')
     {
         unsigned int p2;
@@ -144,7 +144,7 @@ parsehost:
     }
     p = slash+1;
 
-    //just..  whatever.
+
     app->av_val = p;
     app->av_len = (int)strlen(p);
 

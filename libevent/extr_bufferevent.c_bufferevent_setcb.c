@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct bufferevent {void* cbarg; int /*<<< orphan*/  errorcb; void* writecb; void* readcb; } ;
-typedef  int /*<<< orphan*/  bufferevent_event_cb ;
-typedef  void* bufferevent_data_cb ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BEV_LOCK (struct bufferevent*) ; 
- int /*<<< orphan*/  BEV_UNLOCK (struct bufferevent*) ; 
+
+
+
+struct bufferevent {void* cbarg; int errorcb; void* writecb; void* readcb; } ;
+typedef int bufferevent_event_cb ;
+typedef void* bufferevent_data_cb ;
+
+
+ int BEV_LOCK (struct bufferevent*) ;
+ int BEV_UNLOCK (struct bufferevent*) ;
 
 void
 bufferevent_setcb(struct bufferevent *bufev,
     bufferevent_data_cb readcb, bufferevent_data_cb writecb,
     bufferevent_event_cb eventcb, void *cbarg)
 {
-	BEV_LOCK(bufev);
+ BEV_LOCK(bufev);
 
-	bufev->readcb = readcb;
-	bufev->writecb = writecb;
-	bufev->errorcb = eventcb;
+ bufev->readcb = readcb;
+ bufev->writecb = writecb;
+ bufev->errorcb = eventcb;
 
-	bufev->cbarg = cbarg;
-	BEV_UNLOCK(bufev);
+ bufev->cbarg = cbarg;
+ BEV_UNLOCK(bufev);
 }

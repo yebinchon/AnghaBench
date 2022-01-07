@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int* uint32_t ;
-typedef  int /*<<< orphan*/  mac ;
-typedef  int /*<<< orphan*/  buff ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ESP_EFUSE_MAC_FACTORY ; 
- int /*<<< orphan*/  ESP_EFUSE_MAC_FACTORY_CRC ; 
- int /*<<< orphan*/  ESP_ERR_INVALID_ARG ; 
- int /*<<< orphan*/  ESP_LOGI (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  TAG ; 
- int /*<<< orphan*/  TEST_ASSERT_EQUAL_HEX8 (int,int) ; 
- int /*<<< orphan*/  TEST_ASSERT_EQUAL_INT (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_ASSERT_TRUE_MESSAGE (int,char*) ; 
- int /*<<< orphan*/  TEST_ESP_ERR (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_ESP_OK (int /*<<< orphan*/ ) ; 
- int esp_crc8 (int*,int) ; 
- int /*<<< orphan*/  esp_efuse_get_field_size (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  esp_efuse_read_field_blob (int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  esp_efuse_utility_debug_dump_blocks () ; 
- int /*<<< orphan*/  esp_efuse_utility_update_virt_blocks () ; 
- scalar_t__ memcmp (int*,int*,int) ; 
- int /*<<< orphan*/  memset (int*,int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int uint8_t ;
+typedef int* uint32_t ;
+typedef int mac ;
+typedef int buff ;
+
+
+ int ESP_EFUSE_MAC_FACTORY ;
+ int ESP_EFUSE_MAC_FACTORY_CRC ;
+ int ESP_ERR_INVALID_ARG ;
+ int ESP_LOGI (int ,char*,...) ;
+ int TAG ;
+ int TEST_ASSERT_EQUAL_HEX8 (int,int) ;
+ int TEST_ASSERT_EQUAL_INT (int,int ) ;
+ int TEST_ASSERT_TRUE_MESSAGE (int,char*) ;
+ int TEST_ESP_ERR (int ,int ) ;
+ int TEST_ESP_OK (int ) ;
+ int esp_crc8 (int*,int) ;
+ int esp_efuse_get_field_size (int ) ;
+ int esp_efuse_read_field_blob (int ,...) ;
+ int esp_efuse_utility_debug_dump_blocks () ;
+ int esp_efuse_utility_update_virt_blocks () ;
+ scalar_t__ memcmp (int*,int*,int) ;
+ int memset (int*,int ,int) ;
 
 __attribute__((used)) static void test_read_blob(void)
 {
@@ -46,17 +46,9 @@ __attribute__((used)) static void test_read_blob(void)
     TEST_ESP_OK(esp_efuse_read_field_blob(ESP_EFUSE_MAC_FACTORY, &mac, sizeof(mac) * 8));
     TEST_ASSERT_EQUAL_INT(sizeof(mac) * 8, esp_efuse_get_field_size(ESP_EFUSE_MAC_FACTORY));
     ESP_LOGI(TAG, "MAC: %02x:%02x:%02x:%02x:%02x:%02x", mac[0], mac[1], mac[2], mac[3], mac[4], mac[5]);
-
-#if CONFIG_IDF_TARGET_ESP32
-    ESP_LOGI(TAG, "2. Check CRC by MAC");
-    uint8_t crc;
-    TEST_ESP_OK(esp_efuse_read_field_blob(ESP_EFUSE_MAC_FACTORY_CRC, &crc, 8));
-    TEST_ASSERT_EQUAL_HEX8(crc, esp_crc8(mac, sizeof(mac)));
-#endif // CONFIG_IDF_TARGET_ESP32
-
     ESP_LOGI(TAG, "3. Test check args");
     uint32_t test_var;
-    TEST_ESP_ERR(ESP_ERR_INVALID_ARG, esp_efuse_read_field_blob(ESP_EFUSE_MAC_FACTORY, NULL, 1));
+    TEST_ESP_ERR(ESP_ERR_INVALID_ARG, esp_efuse_read_field_blob(ESP_EFUSE_MAC_FACTORY, ((void*)0), 1));
     TEST_ESP_ERR(ESP_ERR_INVALID_ARG, esp_efuse_read_field_blob(ESP_EFUSE_MAC_FACTORY, &test_var, 0));
 
     uint8_t half_byte;

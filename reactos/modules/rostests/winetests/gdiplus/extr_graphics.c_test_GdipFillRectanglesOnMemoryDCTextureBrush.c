@@ -1,64 +1,64 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int UINT ;
-struct TYPE_5__ {int /*<<< orphan*/  member_1; int /*<<< orphan*/  member_0; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int UINT ;
+struct TYPE_5__ {int member_1; int member_0; } ;
 struct TYPE_4__ {int member_0; int member_1; int member_2; int member_3; int right; int left; int bottom; int top; } ;
-typedef  TYPE_1__ RECT ;
-typedef  TYPE_2__ POINT ;
-typedef  int /*<<< orphan*/  HGDIOBJ ;
-typedef  int /*<<< orphan*/  HDC ;
-typedef  int /*<<< orphan*/  HBITMAP ;
-typedef  int /*<<< orphan*/  GpTexture ;
-typedef  int /*<<< orphan*/  GpStatus ;
-typedef  int /*<<< orphan*/  GpImage ;
-typedef  int /*<<< orphan*/  GpGraphics ;
-typedef  int /*<<< orphan*/  GpBrush ;
-typedef  int /*<<< orphan*/  GpBitmap ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  int /*<<< orphan*/  BYTE ;
-typedef  scalar_t__ ARGB ;
+typedef TYPE_1__ RECT ;
+typedef TYPE_2__ POINT ;
+typedef int HGDIOBJ ;
+typedef int HDC ;
+typedef int HBITMAP ;
+typedef int GpTexture ;
+typedef int GpStatus ;
+typedef int GpImage ;
+typedef int GpGraphics ;
+typedef int GpBrush ;
+typedef int GpBitmap ;
+typedef int DWORD ;
+typedef int BYTE ;
+typedef scalar_t__ ARGB ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BLUE_COLOR ; 
- int /*<<< orphan*/  CombineModeReplace ; 
- int /*<<< orphan*/  CreateCompatibleBitmap (int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  CreateCompatibleDC (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DeleteDC (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DeleteObject (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * GdipAlloc (int) ; 
- int /*<<< orphan*/  GdipCreateBitmapFromScan0 (int,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GdipCreateFromHDC (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GdipCreateTexture (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GdipDeleteBrush (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipDeleteGraphics (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipDisposeImage (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipFillRectangleI (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  GdipFree (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipSetClipRectI (int /*<<< orphan*/ *,int,int,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * GetBitmapPixelBuffer (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  GetDC (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Ok ; 
- int /*<<< orphan*/  PixelFormat32bppARGB ; 
- int /*<<< orphan*/  ReleaseDC (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SelectObject (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetWindowOrgEx (int /*<<< orphan*/ ,int,int,TYPE_2__*) ; 
- int /*<<< orphan*/  expect (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ get_bitmap_pixel (int,int) ; 
- int /*<<< orphan*/  hwnd ; 
- scalar_t__ is_blue_color (scalar_t__) ; 
- int /*<<< orphan*/  ok (int,char*) ; 
+
+ int BLUE_COLOR ;
+ int CombineModeReplace ;
+ int CreateCompatibleBitmap (int ,int,int) ;
+ int CreateCompatibleDC (int ) ;
+ int DeleteDC (int ) ;
+ int DeleteObject (int ) ;
+ int * GdipAlloc (int) ;
+ int GdipCreateBitmapFromScan0 (int,int,int,int ,int *,int **) ;
+ int GdipCreateFromHDC (int ,int **) ;
+ int GdipCreateTexture (int *,int ,int **) ;
+ int GdipDeleteBrush (int *) ;
+ int GdipDeleteGraphics (int *) ;
+ int GdipDisposeImage (int *) ;
+ int GdipFillRectangleI (int *,int *,int ,int ,int,int) ;
+ int GdipFree (int *) ;
+ int GdipSetClipRectI (int *,int,int,int,int,int ) ;
+ int * GetBitmapPixelBuffer (int ,int ,int,int) ;
+ int GetDC (int ) ;
+ int Ok ;
+ int PixelFormat32bppARGB ;
+ int ReleaseDC (int ,int ) ;
+ int SelectObject (int ,int ) ;
+ int SetWindowOrgEx (int ,int,int,TYPE_2__*) ;
+ int expect (int ,int ) ;
+ scalar_t__ get_bitmap_pixel (int,int) ;
+ int hwnd ;
+ scalar_t__ is_blue_color (scalar_t__) ;
+ int ok (int,char*) ;
 
 __attribute__((used)) static void test_GdipFillRectanglesOnMemoryDCTextureBrush(void)
 {
@@ -73,8 +73,8 @@ __attribute__((used)) static void test_GdipFillRectanglesOnMemoryDCTextureBrush(
         GpBitmap *bitmap;
         GpImage *image;
     } src_img;
-    GpTexture *brush = NULL;
-    GpGraphics *graphics = NULL;
+    GpTexture *brush = ((void*)0);
+    GpGraphics *graphics = ((void*)0);
     HDC dc = GetDC( hwnd);
     HDC hdc = CreateCompatibleDC(dc);
     HBITMAP bmp = CreateCompatibleBitmap(dc, width, height);
@@ -86,12 +86,12 @@ __attribute__((used)) static void test_GdipFillRectanglesOnMemoryDCTextureBrush(
     UINT src_img_height = height/2;
     BYTE *src_img_data = GdipAlloc(src_img_width*src_img_height*4);
     DWORD *pixel = (DWORD *)src_img_data;
-    ok(pixel != NULL, "Expected src_img_data is valid\n");
+    ok(pixel != ((void*)0), "Expected src_img_data is valid\n");
 
-    /*Change the window origin is the key test point*/
+
     SetWindowOrgEx(hdc, rect.left, rect.top, &pt);
 
-    /*build a blue solid image!*/
+
     for(y = 0; y < src_img_height; ++y)
     {
         for(x = 0; x < src_img_width; ++x)

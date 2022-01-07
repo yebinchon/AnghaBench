@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {void* CommentType; int /*<<< orphan*/ * ParsingParenBraceNode; scalar_t__ SpacesBefore; } ;
 
-/* Variables and functions */
- void* ASLCOMMENT_INLINE ; 
- void* ASL_COMMENT_CLOSE_BRACE ; 
- void* ASL_COMMENT_CLOSE_PAREN ; 
- void* ASL_COMMENT_OPEN_PAREN ; 
- void* ASL_COMMENT_STANDARD ; 
- TYPE_1__ AslGbl_CommentState ; 
- int /*<<< orphan*/  CvDbgPrint (char*) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {void* CommentType; int * ParsingParenBraceNode; scalar_t__ SpacesBefore; } ;
+
+
+ void* ASLCOMMENT_INLINE ;
+ void* ASL_COMMENT_CLOSE_BRACE ;
+ void* ASL_COMMENT_CLOSE_PAREN ;
+ void* ASL_COMMENT_OPEN_PAREN ;
+ void* ASL_COMMENT_STANDARD ;
+ TYPE_1__ AslGbl_CommentState ;
+ int CvDbgPrint (char*) ;
 
 void
 CvProcessCommentState (
-    char                    Input)
+    char Input)
 {
 
     if (Input != ' ')
@@ -41,7 +41,7 @@ CvProcessCommentState (
 
     case ' ':
 
-        /* Keep the CommentType the same */
+
 
         AslGbl_CommentState.SpacesBefore++;
         break;
@@ -59,7 +59,7 @@ CvProcessCommentState (
     case '{':
 
         AslGbl_CommentState.CommentType = ASL_COMMENT_STANDARD;
-        AslGbl_CommentState.ParsingParenBraceNode = NULL;
+        AslGbl_CommentState.ParsingParenBraceNode = ((void*)0);
         CvDbgPrint ("End Parsing paren/Brace node!\n");
         break;
 

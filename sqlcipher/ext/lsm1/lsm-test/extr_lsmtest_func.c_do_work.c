@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct Option   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lsm_db ;
+
+
+typedef struct Option TYPE_1__ ;
+
+
+typedef int lsm_db ;
 struct Option {char const* zName; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LSM_CONFIG_AUTOCHECKPOINT ; 
- int /*<<< orphan*/  LSM_CONFIG_BLOCK_SIZE ; 
- int LSM_OK ; 
- int atoi (char*) ; 
- int lsm_checkpoint (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lsm_close (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lsm_config (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int*) ; 
- int lsm_new (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int lsm_open (int /*<<< orphan*/ *,char const*) ; 
- int lsm_work (int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ ) ; 
- int testArgSelect (TYPE_1__*,char*,char*,int*) ; 
- int /*<<< orphan*/  testPrintError (char*,int) ; 
- int /*<<< orphan*/  testPrintUsage (char*) ; 
+
+ int LSM_CONFIG_AUTOCHECKPOINT ;
+ int LSM_CONFIG_BLOCK_SIZE ;
+ int LSM_OK ;
+ int atoi (char*) ;
+ int lsm_checkpoint (int *,int ) ;
+ int lsm_close (int *) ;
+ int lsm_config (int *,int ,int*) ;
+ int lsm_new (int ,int **) ;
+ int lsm_open (int *,char const*) ;
+ int lsm_work (int *,int,int,int ) ;
+ int testArgSelect (TYPE_1__*,char*,char*,int*) ;
+ int testPrintError (char*,int) ;
+ int testPrintUsage (char*) ;
 
 int do_work(int nArg, char **azArg){
   struct Option {

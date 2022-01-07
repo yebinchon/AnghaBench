@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_5__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_5__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct mp_image {scalar_t__ imgfmt; } ;
 struct mp_frame {scalar_t__ type; struct mp_image* data; } ;
-struct mp_filter {int /*<<< orphan*/ * ppins; struct deint_priv* priv; } ;
+struct mp_filter {int * ppins; struct deint_priv* priv; } ;
 struct mp_autoconvert {struct mp_filter* f; } ;
 struct filter_opts {scalar_t__ deinterlace; } ;
 struct TYPE_6__ {struct mp_filter* filter; struct mp_frame frame; } ;
 struct deint_priv {scalar_t__ prev_imgfmt; scalar_t__ prev_setting; TYPE_1__ sub; TYPE_5__* opts; } ;
 struct TYPE_7__ {struct filter_opts* opts; } ;
 
-/* Variables and functions */
- scalar_t__ IMGFMT_CUDA ; 
- scalar_t__ IMGFMT_D3D11 ; 
- scalar_t__ IMGFMT_VDPAU ; 
- int /*<<< orphan*/  MP_ERR (struct mp_filter*,char*,...) ; 
- scalar_t__ MP_FRAME_VIDEO ; 
- int /*<<< orphan*/  MP_OUTPUT_CHAIN_VIDEO ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  m_config_cache_update (TYPE_5__*) ; 
- int /*<<< orphan*/  mp_autoconvert_add_all_sw_imgfmts (struct mp_autoconvert*) ; 
- struct mp_autoconvert* mp_autoconvert_create (struct mp_filter*) ; 
- int /*<<< orphan*/  mp_autoconvert_probe_input_video (struct mp_autoconvert*,struct mp_image*) ; 
- struct mp_filter* mp_bidir_dummy_filter_create (struct mp_filter*) ; 
- int /*<<< orphan*/  mp_chain_filters (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct mp_filter**,int) ; 
- void* mp_create_user_filter (struct mp_filter*,int /*<<< orphan*/ ,char*,char**) ; 
- int /*<<< orphan*/  mp_filter_internal_mark_failed (struct mp_filter*) ; 
- scalar_t__ mp_frame_is_signaling (struct mp_frame) ; 
- int /*<<< orphan*/  mp_imgfmt_to_name (scalar_t__) ; 
- int /*<<< orphan*/  mp_subfilter_continue (TYPE_1__*) ; 
- int /*<<< orphan*/  mp_subfilter_destroy (TYPE_1__*) ; 
- int /*<<< orphan*/  mp_subfilter_drain_destroy (TYPE_1__*) ; 
- int /*<<< orphan*/  mp_subfilter_read (TYPE_1__*) ; 
- int /*<<< orphan*/  talloc_free (struct mp_filter*) ; 
+
+ scalar_t__ IMGFMT_CUDA ;
+ scalar_t__ IMGFMT_D3D11 ;
+ scalar_t__ IMGFMT_VDPAU ;
+ int MP_ERR (struct mp_filter*,char*,...) ;
+ scalar_t__ MP_FRAME_VIDEO ;
+ int MP_OUTPUT_CHAIN_VIDEO ;
+ int assert (int) ;
+ int m_config_cache_update (TYPE_5__*) ;
+ int mp_autoconvert_add_all_sw_imgfmts (struct mp_autoconvert*) ;
+ struct mp_autoconvert* mp_autoconvert_create (struct mp_filter*) ;
+ int mp_autoconvert_probe_input_video (struct mp_autoconvert*,struct mp_image*) ;
+ struct mp_filter* mp_bidir_dummy_filter_create (struct mp_filter*) ;
+ int mp_chain_filters (int ,int ,struct mp_filter**,int) ;
+ void* mp_create_user_filter (struct mp_filter*,int ,char*,char**) ;
+ int mp_filter_internal_mark_failed (struct mp_filter*) ;
+ scalar_t__ mp_frame_is_signaling (struct mp_frame) ;
+ int mp_imgfmt_to_name (scalar_t__) ;
+ int mp_subfilter_continue (TYPE_1__*) ;
+ int mp_subfilter_destroy (TYPE_1__*) ;
+ int mp_subfilter_drain_destroy (TYPE_1__*) ;
+ int mp_subfilter_read (TYPE_1__*) ;
+ int talloc_free (struct mp_filter*) ;
 
 __attribute__((used)) static void deint_process(struct mp_filter *f)
 {
@@ -91,14 +91,14 @@ __attribute__((used)) static void deint_process(struct mp_filter *f)
     }
 
     if (img->imgfmt == IMGFMT_VDPAU) {
-        char *args[] = {"deint", "yes", NULL};
+        char *args[] = {"deint", "yes", ((void*)0)};
         p->sub.filter =
             mp_create_user_filter(f, MP_OUTPUT_CHAIN_VIDEO, "vdpaupp", args);
     } else if (img->imgfmt == IMGFMT_D3D11) {
         p->sub.filter =
-            mp_create_user_filter(f, MP_OUTPUT_CHAIN_VIDEO, "d3d11vpp", NULL);
+            mp_create_user_filter(f, MP_OUTPUT_CHAIN_VIDEO, "d3d11vpp", ((void*)0));
     } else if (img->imgfmt == IMGFMT_CUDA) {
-        char *args[] = {"mode", "send_field", NULL};
+        char *args[] = {"mode", "send_field", ((void*)0)};
         p->sub.filter =
             mp_create_user_filter(f, MP_OUTPUT_CHAIN_VIDEO, "yadif_cuda", args);
     } else {
@@ -108,7 +108,7 @@ __attribute__((used)) static void deint_process(struct mp_filter *f)
         struct mp_autoconvert *ac = mp_autoconvert_create(subf);
         if (ac) {
             filters[0] = ac->f;
-            // We know vf_yadif does not support hw inputs.
+
             mp_autoconvert_add_all_sw_imgfmts(ac);
 
             if (!mp_autoconvert_probe_input_video(ac, img)) {
@@ -120,7 +120,7 @@ __attribute__((used)) static void deint_process(struct mp_filter *f)
             }
         }
 
-        char *args[] = {"mode", "send_field", NULL};
+        char *args[] = {"mode", "send_field", ((void*)0)};
         filters[1] =
             mp_create_user_filter(subf, MP_OUTPUT_CHAIN_VIDEO, "yadif", args);
 

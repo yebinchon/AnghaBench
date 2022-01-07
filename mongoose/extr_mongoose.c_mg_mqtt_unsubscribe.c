@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char uint16_t ;
+
+
+
+
+typedef char uint16_t ;
 struct mg_connection {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MG_MQTT_CMD_UNSUBSCRIBE ; 
- int /*<<< orphan*/  MG_MQTT_QOS (int) ; 
- char htons (char) ; 
- int /*<<< orphan*/  mg_send (struct mg_connection*,char*,char) ; 
- int /*<<< orphan*/  mg_send_mqtt_header (struct mg_connection*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,size_t) ; 
- char strlen (char*) ; 
+
+ int MG_MQTT_CMD_UNSUBSCRIBE ;
+ int MG_MQTT_QOS (int) ;
+ char htons (char) ;
+ int mg_send (struct mg_connection*,char*,char) ;
+ int mg_send_mqtt_header (struct mg_connection*,int ,int ,size_t) ;
+ char strlen (char*) ;
 
 void mg_mqtt_unsubscribe(struct mg_connection *nc, char **topics,
                          size_t topics_len, uint16_t message_id) {

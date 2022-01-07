@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct flock {int l_type; scalar_t__ l_len; scalar_t__ l_start; int /*<<< orphan*/  l_whence; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  F_SETLK ; 
- int /*<<< orphan*/  SEEK_SET ; 
- scalar_t__ fcntl (int,int /*<<< orphan*/ ,struct flock*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  stderr ; 
+
+
+
+struct flock {int l_type; scalar_t__ l_len; scalar_t__ l_start; int l_whence; } ;
+
+
+ int F_SETLK ;
+ int SEEK_SET ;
+ scalar_t__ fcntl (int,int ,struct flock*) ;
+ int fprintf (int ,char*,int) ;
+ int stderr ;
 
 int lock_whole_file (int fd, int mode) {
   static struct flock L;

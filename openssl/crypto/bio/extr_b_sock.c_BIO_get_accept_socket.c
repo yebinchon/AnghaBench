@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  BIO_ADDRINFO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_UNSPEC ; 
- int /*<<< orphan*/  BIO_ADDRINFO_address (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BIO_ADDRINFO_family (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BIO_ADDRINFO_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BIO_ADDRINFO_protocol (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BIO_ADDRINFO_socktype (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BIO_LOOKUP_SERVER ; 
- int /*<<< orphan*/  BIO_PARSE_PRIO_SERV ; 
- int /*<<< orphan*/  BIO_SOCK_REUSEADDR ; 
- int /*<<< orphan*/  BIO_closesocket (int) ; 
- int /*<<< orphan*/  BIO_listen (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ BIO_lookup (char*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  BIO_parse_hostserv (char*,char**,char**,int /*<<< orphan*/ ) ; 
- int BIO_sock_init () ; 
- int BIO_socket (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int INVALID_SOCKET ; 
- int /*<<< orphan*/  OPENSSL_free (char*) ; 
- int /*<<< orphan*/  SOCK_STREAM ; 
+
+
+
+typedef int BIO_ADDRINFO ;
+
+
+ int AF_UNSPEC ;
+ int BIO_ADDRINFO_address (int *) ;
+ int BIO_ADDRINFO_family (int *) ;
+ int BIO_ADDRINFO_free (int *) ;
+ int BIO_ADDRINFO_protocol (int *) ;
+ int BIO_ADDRINFO_socktype (int *) ;
+ int BIO_LOOKUP_SERVER ;
+ int BIO_PARSE_PRIO_SERV ;
+ int BIO_SOCK_REUSEADDR ;
+ int BIO_closesocket (int) ;
+ int BIO_listen (int,int ,int ) ;
+ scalar_t__ BIO_lookup (char*,char*,int ,int ,int ,int **) ;
+ int BIO_parse_hostserv (char*,char**,char**,int ) ;
+ int BIO_sock_init () ;
+ int BIO_socket (int ,int ,int ,int ) ;
+ int INVALID_SOCKET ;
+ int OPENSSL_free (char*) ;
+ int SOCK_STREAM ;
 
 int BIO_get_accept_socket(char *host, int bind_mode)
 {
     int s = INVALID_SOCKET;
-    char *h = NULL, *p = NULL;
-    BIO_ADDRINFO *res = NULL;
+    char *h = ((void*)0), *p = ((void*)0);
+    BIO_ADDRINFO *res = ((void*)0);
 
     if (!BIO_parse_hostserv(host, &h, &p, BIO_PARSE_PRIO_SERV))
         return INVALID_SOCKET;

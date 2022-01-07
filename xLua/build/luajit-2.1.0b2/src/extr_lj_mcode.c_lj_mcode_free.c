@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {scalar_t__ szallmcarea; int /*<<< orphan*/ * mcarea; } ;
-typedef  TYPE_1__ jit_State ;
-struct TYPE_6__ {int /*<<< orphan*/  size; int /*<<< orphan*/ * next; } ;
-typedef  int /*<<< orphan*/  MCode ;
-typedef  TYPE_2__ MCLink ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mcode_free (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {scalar_t__ szallmcarea; int * mcarea; } ;
+typedef TYPE_1__ jit_State ;
+struct TYPE_6__ {int size; int * next; } ;
+typedef int MCode ;
+typedef TYPE_2__ MCLink ;
+
+
+ int mcode_free (TYPE_1__*,int *,int ) ;
 
 void lj_mcode_free(jit_State *J)
 {
   MCode *mc = J->mcarea;
-  J->mcarea = NULL;
+  J->mcarea = ((void*)0);
   J->szallmcarea = 0;
   while (mc) {
     MCode *next = ((MCLink *)mc)->next;

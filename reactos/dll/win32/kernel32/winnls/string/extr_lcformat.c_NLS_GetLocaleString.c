@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  LCID ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAY_SIZE (char*) ; 
- int /*<<< orphan*/  GetLocaleInfoW (int /*<<< orphan*/ ,int,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- char* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  memcpy (char*,char*,int) ; 
- int strlenW (char*) ; 
+
+
+
+typedef char WCHAR ;
+typedef int LCID ;
+typedef int DWORD ;
+
+
+ int ARRAY_SIZE (char*) ;
+ int GetLocaleInfoW (int ,int,char*,int ) ;
+ int GetProcessHeap () ;
+ char* HeapAlloc (int ,int ,int) ;
+ int memcpy (char*,char*,int) ;
+ int strlenW (char*) ;
 
 __attribute__((used)) static WCHAR* NLS_GetLocaleString(LCID lcid, DWORD dwFlags)
 {

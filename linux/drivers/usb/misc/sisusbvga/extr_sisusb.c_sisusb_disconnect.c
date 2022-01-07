@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct usb_interface {int dummy; } ;
-struct sisusb_usb_data {int /*<<< orphan*/  kref; int /*<<< orphan*/  lock; scalar_t__ ready; scalar_t__ present; } ;
+struct sisusb_usb_data {int kref; int lock; scalar_t__ ready; scalar_t__ present; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  kref_put (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sisusb_console_exit (struct sisusb_usb_data*) ; 
- int /*<<< orphan*/  sisusb_delete ; 
- int /*<<< orphan*/  sisusb_kill_all_busy (struct sisusb_usb_data*) ; 
- int /*<<< orphan*/  sisusb_wait_all_out_complete (struct sisusb_usb_data*) ; 
- int /*<<< orphan*/  usb_deregister_dev (struct usb_interface*,int /*<<< orphan*/ *) ; 
- struct sisusb_usb_data* usb_get_intfdata (struct usb_interface*) ; 
- int /*<<< orphan*/  usb_set_intfdata (struct usb_interface*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  usb_sisusb_class ; 
+
+ int kref_put (int *,int ) ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
+ int sisusb_console_exit (struct sisusb_usb_data*) ;
+ int sisusb_delete ;
+ int sisusb_kill_all_busy (struct sisusb_usb_data*) ;
+ int sisusb_wait_all_out_complete (struct sisusb_usb_data*) ;
+ int usb_deregister_dev (struct usb_interface*,int *) ;
+ struct sisusb_usb_data* usb_get_intfdata (struct usb_interface*) ;
+ int usb_set_intfdata (struct usb_interface*,int *) ;
+ int usb_sisusb_class ;
 
 __attribute__((used)) static void sisusb_disconnect(struct usb_interface *intf)
 {
-	struct sisusb_usb_data *sisusb;
+ struct sisusb_usb_data *sisusb;
 
-	/* This should *not* happen */
-	sisusb = usb_get_intfdata(intf);
-	if (!sisusb)
-		return;
 
-#ifdef CONFIG_USB_SISUSBVGA_CON
-	sisusb_console_exit(sisusb);
-#endif
+ sisusb = usb_get_intfdata(intf);
+ if (!sisusb)
+  return;
 
-	usb_deregister_dev(intf, &usb_sisusb_class);
 
-	mutex_lock(&sisusb->lock);
 
-	/* Wait for all URBs to complete and kill them in case (MUST do) */
-	if (!sisusb_wait_all_out_complete(sisusb))
-		sisusb_kill_all_busy(sisusb);
 
-	usb_set_intfdata(intf, NULL);
 
-	sisusb->present = 0;
-	sisusb->ready = 0;
+ usb_deregister_dev(intf, &usb_sisusb_class);
 
-	mutex_unlock(&sisusb->lock);
+ mutex_lock(&sisusb->lock);
 
-	/* decrement our usage count */
-	kref_put(&sisusb->kref, sisusb_delete);
+
+ if (!sisusb_wait_all_out_complete(sisusb))
+  sisusb_kill_all_busy(sisusb);
+
+ usb_set_intfdata(intf, ((void*)0));
+
+ sisusb->present = 0;
+ sisusb->ready = 0;
+
+ mutex_unlock(&sisusb->lock);
+
+
+ kref_put(&sisusb->kref, sisusb_delete);
 }

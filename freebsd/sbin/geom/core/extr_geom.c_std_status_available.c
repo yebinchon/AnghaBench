@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int std_list_available () ; 
+ int std_list_available () ;
 
 __attribute__((used)) static int
 std_status_available(void)
 {
 
-	/* 'status' command is available when 'list' command is. */
-	return (std_list_available());
+
+ return (std_list_available());
 }

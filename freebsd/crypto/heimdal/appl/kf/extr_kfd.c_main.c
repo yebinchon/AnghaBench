@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  krb5_log_facility ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOG_AUTH ; 
- int LOG_ODELAY ; 
- int LOG_PID ; 
- int /*<<< orphan*/  closelog () ; 
- int /*<<< orphan*/  context ; 
- int doit (int,int /*<<< orphan*/ ) ; 
- int execl (int /*<<< orphan*/ *,char*,char*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  krb5_err (int /*<<< orphan*/ ,int,int,char*) ; 
- int krb5_openlog (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ **) ; 
- int krb5_set_warn_dest (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  krb5_tkfile ; 
- int /*<<< orphan*/ * regpag_str ; 
- int /*<<< orphan*/  roken_openlog (char*,int,int /*<<< orphan*/ ) ; 
- int server_setup (int /*<<< orphan*/ *,int,char**) ; 
- int /*<<< orphan*/  service ; 
- int /*<<< orphan*/  setprogname (char*) ; 
+
+
+
+typedef int krb5_log_facility ;
+
+
+ int LOG_AUTH ;
+ int LOG_ODELAY ;
+ int LOG_PID ;
+ int closelog () ;
+ int context ;
+ int doit (int,int ) ;
+ int execl (int *,char*,char*,int ,char*,int *) ;
+ int krb5_err (int ,int,int,char*) ;
+ int krb5_openlog (int ,char*,int **) ;
+ int krb5_set_warn_dest (int ,int *) ;
+ int krb5_tkfile ;
+ int * regpag_str ;
+ int roken_openlog (char*,int,int ) ;
+ int server_setup (int *,int,char**) ;
+ int service ;
+ int setprogname (char*) ;
 
 int
 main(int argc, char **argv)
@@ -47,7 +47,7 @@ main(int argc, char **argv)
 
     ret = doit (port, service);
     closelog();
-    if (ret == 0 && regpag_str != NULL)
-        ret = execl(regpag_str, "regpag", "-t", krb5_tkfile, "-r", NULL);
+    if (ret == 0 && regpag_str != ((void*)0))
+        ret = execl(regpag_str, "regpag", "-t", krb5_tkfile, "-r", ((void*)0));
     return ret;
 }

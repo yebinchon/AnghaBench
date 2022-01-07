@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- double MP_NOPTS_VALUE ; 
- int /*<<< orphan*/  appendf (char**,char*,...) ; 
- int lrint (double) ; 
- int /*<<< orphan*/  talloc_free (char*) ; 
- char* talloc_strdup (int /*<<< orphan*/ *,char*) ; 
+ double MP_NOPTS_VALUE ;
+ int appendf (char**,char*,...) ;
+ int lrint (double) ;
+ int talloc_free (char*) ;
+ char* talloc_strdup (int *,char*) ;
 
 char *mp_format_time_fmt(const char *fmt, double time)
 {
     if (time == MP_NOPTS_VALUE)
-        return talloc_strdup(NULL, "unknown");
+        return talloc_strdup(((void*)0), "unknown");
     char *sign = time < 0 ? "-" : "";
     time = time < 0 ? -time : time;
     long long int itime = time;
@@ -37,7 +29,7 @@ char *mp_format_time_fmt(const char *fmt, double time)
     s -= h * 3600;
     m = s / 60;
     s -= m * 60;
-    char *res = talloc_strdup(NULL, "");
+    char *res = talloc_strdup(((void*)0), "");
     while (*fmt) {
         if (fmt[0] == '%') {
             fmt++;
@@ -62,5 +54,5 @@ char *mp_format_time_fmt(const char *fmt, double time)
     return res;
 error:
     talloc_free(res);
-    return NULL;
+    return ((void*)0);
 }

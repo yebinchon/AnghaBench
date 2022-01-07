@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  derived_secret_label ;
-typedef  int /*<<< orphan*/  SSL ;
-typedef  int /*<<< orphan*/  OSSL_PARAM ;
-typedef  int /*<<< orphan*/  EVP_MD_CTX ;
-typedef  int /*<<< orphan*/  EVP_MD ;
-typedef  int /*<<< orphan*/  EVP_KDF_CTX ;
-typedef  int /*<<< orphan*/  EVP_KDF ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR_R_INTERNAL_ERROR ; 
- scalar_t__ EVP_DigestFinal_ex (int /*<<< orphan*/ *,unsigned char*,int /*<<< orphan*/ *) ; 
- scalar_t__ EVP_DigestInit_ex (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EVP_KDF_CTX_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * EVP_KDF_CTX_new (int /*<<< orphan*/ *) ; 
- scalar_t__ EVP_KDF_CTX_set_params (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ EVP_KDF_derive (int /*<<< orphan*/ *,unsigned char*,size_t) ; 
- int /*<<< orphan*/ * EVP_KDF_fetch (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EVP_KDF_free (int /*<<< orphan*/ *) ; 
- int EVP_MAX_MD_SIZE ; 
- int /*<<< orphan*/  EVP_MD_CTX_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * EVP_MD_CTX_new () ; 
- char* EVP_MD_name (int /*<<< orphan*/  const*) ; 
- int EVP_MD_size (int /*<<< orphan*/  const*) ; 
- int EVP_PKEY_HKDEF_MODE_EXTRACT_ONLY ; 
- int /*<<< orphan*/  OPENSSL_cleanse (unsigned char*,size_t) ; 
- int /*<<< orphan*/  OSSL_KDF_NAME_HKDF ; 
- int /*<<< orphan*/  OSSL_KDF_PARAM_DIGEST ; 
- int /*<<< orphan*/  OSSL_KDF_PARAM_KEY ; 
- int /*<<< orphan*/  OSSL_KDF_PARAM_MODE ; 
- int /*<<< orphan*/  OSSL_KDF_PARAM_SALT ; 
- int /*<<< orphan*/  OSSL_PARAM_construct_end () ; 
- int /*<<< orphan*/  OSSL_PARAM_construct_int (int /*<<< orphan*/ ,int*) ; 
- void* OSSL_PARAM_construct_octet_string (int /*<<< orphan*/ ,unsigned char*,size_t) ; 
- int /*<<< orphan*/  OSSL_PARAM_construct_utf8_string (int /*<<< orphan*/ ,char*,scalar_t__) ; 
- int /*<<< orphan*/  SSL_AD_INTERNAL_ERROR ; 
- int /*<<< orphan*/  SSL_F_TLS13_GENERATE_SECRET ; 
- int /*<<< orphan*/  SSLfatal (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- unsigned char* default_zeros ; 
- int /*<<< orphan*/  ossl_assert (int) ; 
- scalar_t__ strlen (char const*) ; 
- int /*<<< orphan*/  tls13_hkdf_expand (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,unsigned char const*,unsigned char*,int,unsigned char*,size_t,unsigned char*,size_t,int) ; 
+
+
+
+typedef int derived_secret_label ;
+typedef int SSL ;
+typedef int OSSL_PARAM ;
+typedef int EVP_MD_CTX ;
+typedef int EVP_MD ;
+typedef int EVP_KDF_CTX ;
+typedef int EVP_KDF ;
+
+
+ int ERR_R_INTERNAL_ERROR ;
+ scalar_t__ EVP_DigestFinal_ex (int *,unsigned char*,int *) ;
+ scalar_t__ EVP_DigestInit_ex (int *,int const*,int *) ;
+ int EVP_KDF_CTX_free (int *) ;
+ int * EVP_KDF_CTX_new (int *) ;
+ scalar_t__ EVP_KDF_CTX_set_params (int *,int *) ;
+ scalar_t__ EVP_KDF_derive (int *,unsigned char*,size_t) ;
+ int * EVP_KDF_fetch (int *,int ,int *) ;
+ int EVP_KDF_free (int *) ;
+ int EVP_MAX_MD_SIZE ;
+ int EVP_MD_CTX_free (int *) ;
+ int * EVP_MD_CTX_new () ;
+ char* EVP_MD_name (int const*) ;
+ int EVP_MD_size (int const*) ;
+ int EVP_PKEY_HKDEF_MODE_EXTRACT_ONLY ;
+ int OPENSSL_cleanse (unsigned char*,size_t) ;
+ int OSSL_KDF_NAME_HKDF ;
+ int OSSL_KDF_PARAM_DIGEST ;
+ int OSSL_KDF_PARAM_KEY ;
+ int OSSL_KDF_PARAM_MODE ;
+ int OSSL_KDF_PARAM_SALT ;
+ int OSSL_PARAM_construct_end () ;
+ int OSSL_PARAM_construct_int (int ,int*) ;
+ void* OSSL_PARAM_construct_octet_string (int ,unsigned char*,size_t) ;
+ int OSSL_PARAM_construct_utf8_string (int ,char*,scalar_t__) ;
+ int SSL_AD_INTERNAL_ERROR ;
+ int SSL_F_TLS13_GENERATE_SECRET ;
+ int SSLfatal (int *,int ,int ,int ) ;
+ unsigned char* default_zeros ;
+ int ossl_assert (int) ;
+ scalar_t__ strlen (char const*) ;
+ int tls13_hkdf_expand (int *,int const*,unsigned char const*,unsigned char*,int,unsigned char*,size_t,unsigned char*,size_t,int) ;
 
 int tls13_generate_secret(SSL *s, const EVP_MD *md,
                           const unsigned char *prevsecret,
@@ -66,24 +66,24 @@ int tls13_generate_secret(SSL *s, const EVP_MD *md,
     OSSL_PARAM params[5], *p = params;
     int mode = EVP_PKEY_HKDEF_MODE_EXTRACT_ONLY;
     const char *mdname = EVP_MD_name(md);
-#ifdef CHARSET_EBCDIC
-    static const char derived_secret_label[] = { 0x64, 0x65, 0x72, 0x69, 0x76, 0x65, 0x64, 0x00 };
-#else
+
+
+
     static const char derived_secret_label[] = "derived";
-#endif
+
     unsigned char preextractsec[EVP_MAX_MD_SIZE];
 
-    kdf = EVP_KDF_fetch(NULL, OSSL_KDF_NAME_HKDF, NULL);
+    kdf = EVP_KDF_fetch(((void*)0), OSSL_KDF_NAME_HKDF, ((void*)0));
     kctx = EVP_KDF_CTX_new(kdf);
     EVP_KDF_free(kdf);
-    if (kctx == NULL) {
+    if (kctx == ((void*)0)) {
         SSLfatal(s, SSL_AD_INTERNAL_ERROR, SSL_F_TLS13_GENERATE_SECRET,
                  ERR_R_INTERNAL_ERROR);
         return 0;
     }
 
     mdleni = EVP_MD_size(md);
-    /* Ensure cast to size_t is safe */
+
     if (!ossl_assert(mdleni >= 0)) {
         SSLfatal(s, SSL_AD_INTERNAL_ERROR, SSL_F_TLS13_GENERATE_SECRET,
                  ERR_R_INTERNAL_ERROR);
@@ -92,21 +92,21 @@ int tls13_generate_secret(SSL *s, const EVP_MD *md,
     }
     mdlen = (size_t)mdleni;
 
-    if (insecret == NULL) {
+    if (insecret == ((void*)0)) {
         insecret = default_zeros;
         insecretlen = mdlen;
     }
-    if (prevsecret == NULL) {
+    if (prevsecret == ((void*)0)) {
         prevsecret = default_zeros;
         prevsecretlen = 0;
     } else {
         EVP_MD_CTX *mctx = EVP_MD_CTX_new();
         unsigned char hash[EVP_MAX_MD_SIZE];
 
-        /* The pre-extract derive step uses a hash of no messages */
-        if (mctx == NULL
-                || EVP_DigestInit_ex(mctx, md, NULL) <= 0
-                || EVP_DigestFinal_ex(mctx, hash, NULL) <= 0) {
+
+        if (mctx == ((void*)0)
+                || EVP_DigestInit_ex(mctx, md, ((void*)0)) <= 0
+                || EVP_DigestFinal_ex(mctx, hash, ((void*)0)) <= 0) {
             SSLfatal(s, SSL_AD_INTERNAL_ERROR, SSL_F_TLS13_GENERATE_SECRET,
                      ERR_R_INTERNAL_ERROR);
             EVP_MD_CTX_free(mctx);
@@ -115,12 +115,12 @@ int tls13_generate_secret(SSL *s, const EVP_MD *md,
         }
         EVP_MD_CTX_free(mctx);
 
-        /* Generate the pre-extract secret */
+
         if (!tls13_hkdf_expand(s, md, prevsecret,
                                (unsigned char *)derived_secret_label,
                                sizeof(derived_secret_label) - 1, hash, mdlen,
                                preextractsec, mdlen, 1)) {
-            /* SSLfatal() already called */
+
             EVP_KDF_CTX_free(kctx);
             return 0;
         }

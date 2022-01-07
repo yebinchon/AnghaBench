@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint32_t ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint32_t ;
 struct TYPE_4__ {scalar_t__ value; scalar_t__ name; } ;
-typedef  TYPE_1__ VC_URI_QUERY_T ;
+typedef TYPE_1__ VC_URI_QUERY_T ;
 struct TYPE_5__ {scalar_t__ fragment; TYPE_1__* queries; scalar_t__ num_queries; scalar_t__ path; scalar_t__ port; scalar_t__ host; scalar_t__ userinfo; scalar_t__ scheme; } ;
-typedef  TYPE_2__ VC_URI_PARTS_T ;
+typedef TYPE_2__ VC_URI_PARTS_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  escape_string (scalar_t__,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fragment_reserved_chars ; 
- int /*<<< orphan*/  host_reserved_chars ; 
- int /*<<< orphan*/  path_reserved_chars ; 
- int /*<<< orphan*/  port_reserved_chars ; 
- int /*<<< orphan*/  query_reserved_chars ; 
- int /*<<< orphan*/  scheme_reserved_chars ; 
- int /*<<< orphan*/  strncpy (char*,scalar_t__,size_t) ; 
- int /*<<< orphan*/  userinfo_reserved_chars ; 
+
+ int escape_string (scalar_t__,char*,int ) ;
+ int fragment_reserved_chars ;
+ int host_reserved_chars ;
+ int path_reserved_chars ;
+ int port_reserved_chars ;
+ int query_reserved_chars ;
+ int scheme_reserved_chars ;
+ int strncpy (char*,scalar_t__,size_t) ;
+ int userinfo_reserved_chars ;
 
 __attribute__((used)) static void build_uri(const VC_URI_PARTS_T *p_uri, char *buffer, size_t buffer_size)
 {
    uint32_t count;
 
-   /* With no scheme, assume this is a plain path (without escaping) */
+
    if (!p_uri->scheme)
    {
       if (p_uri->path)
@@ -82,7 +82,7 @@ __attribute__((used)) static void build_uri(const VC_URI_PARTS_T *p_uri, char *b
             buffer += escape_string(queries->value, buffer, query_reserved_chars);
          }
 
-         /* Add separator if there is another item to add */
+
          if (count)
             *buffer++ = '&';
 

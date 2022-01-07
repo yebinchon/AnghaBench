@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct lev_setlist_long {int user_id; int num; int* L; int /*<<< orphan*/  type; } ;
-struct lev_setlist_cat_long {int user_id; int num; TYPE_1__* L; int /*<<< orphan*/  type; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct lev_setlist_long {int user_id; int num; int* L; int type; } ;
+struct lev_setlist_cat_long {int user_id; int num; TYPE_1__* L; int type; } ;
 struct lev_setlist_cat {int user_id; TYPE_1__* L; scalar_t__ type; } ;
 struct lev_setlist {int user_id; int* L; scalar_t__ type; } ;
 struct friend {int cat; int id; struct friend* next; } ;
 struct TYPE_2__ {int id; int cat; } ;
-typedef  TYPE_1__ id_cat_pair_t ;
+typedef TYPE_1__ id_cat_pair_t ;
 
-/* Variables and functions */
- scalar_t__ LEV_FR_SETLIST ; 
- scalar_t__ LEV_FR_SETLIST_CAT ; 
- int /*<<< orphan*/  LEV_FR_SETLIST_CAT_LONG ; 
- int /*<<< orphan*/  LEV_FR_SETLIST_LONG ; 
- int MAX_IMPORT_FRIENDS ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  ext_lists_output ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,int,int) ; 
- int /*<<< orphan*/ * list_len_cnt ; 
- int /*<<< orphan*/  lists_output ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ verbosity ; 
- void* write_alloc (int) ; 
+
+ scalar_t__ LEV_FR_SETLIST ;
+ scalar_t__ LEV_FR_SETLIST_CAT ;
+ int LEV_FR_SETLIST_CAT_LONG ;
+ int LEV_FR_SETLIST_LONG ;
+ int MAX_IMPORT_FRIENDS ;
+ int assert (int) ;
+ int ext_lists_output ;
+ int fprintf (int ,char*,int,int,int) ;
+ int * list_len_cnt ;
+ int lists_output ;
+ int stderr ;
+ scalar_t__ verbosity ;
+ void* write_alloc (int) ;
 
 void output_user_friends (int user_id, struct friend *list) {
   int cnt = 0, cnt2 = 0;
   struct friend *p = list;
-  if (!list) { 
-    return; 
+  if (!list) {
+    return;
   }
   while (p) {
     if (p->cat != 1) {
@@ -51,8 +51,8 @@ void output_user_friends (int user_id, struct friend *list) {
   p = list;
   if (cnt > MAX_IMPORT_FRIENDS) {
     if (verbosity > 0) {
-      fprintf (stderr, "warning: user %d has %d friends, only %d imported\n", 
-	user_id, cnt, MAX_IMPORT_FRIENDS);
+      fprintf (stderr, "warning: user %d has %d friends, only %d imported\n",
+ user_id, cnt, MAX_IMPORT_FRIENDS);
     }
     while (cnt > MAX_IMPORT_FRIENDS) {
       if (p->cat != 1) {

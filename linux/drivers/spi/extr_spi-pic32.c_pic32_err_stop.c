@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct pic32_spi {int /*<<< orphan*/  xfer_done; TYPE_2__* master; int /*<<< orphan*/  tx_irq; int /*<<< orphan*/  rx_irq; int /*<<< orphan*/  fault_irq; } ;
-struct TYPE_4__ {TYPE_1__* cur_msg; int /*<<< orphan*/  dev; } ;
-struct TYPE_3__ {int /*<<< orphan*/  status; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EIO ; 
- int /*<<< orphan*/  complete (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  dev_err (int /*<<< orphan*/ *,char*,char const*) ; 
- int /*<<< orphan*/  disable_irq_nosync (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct pic32_spi {int xfer_done; TYPE_2__* master; int tx_irq; int rx_irq; int fault_irq; } ;
+struct TYPE_4__ {TYPE_1__* cur_msg; int dev; } ;
+struct TYPE_3__ {int status; } ;
+
+
+ int EIO ;
+ int complete (int *) ;
+ int dev_err (int *,char*,char const*) ;
+ int disable_irq_nosync (int ) ;
 
 __attribute__((used)) static void pic32_err_stop(struct pic32_spi *pic32s, const char *msg)
 {
-	/* disable all interrupts */
-	disable_irq_nosync(pic32s->fault_irq);
-	disable_irq_nosync(pic32s->rx_irq);
-	disable_irq_nosync(pic32s->tx_irq);
 
-	/* Show err message and abort xfer with err */
-	dev_err(&pic32s->master->dev, "%s\n", msg);
-	if (pic32s->master->cur_msg)
-		pic32s->master->cur_msg->status = -EIO;
-	complete(&pic32s->xfer_done);
+ disable_irq_nosync(pic32s->fault_irq);
+ disable_irq_nosync(pic32s->rx_irq);
+ disable_irq_nosync(pic32s->tx_irq);
+
+
+ dev_err(&pic32s->master->dev, "%s\n", msg);
+ if (pic32s->master->cur_msg)
+  pic32s->master->cur_msg->status = -EIO;
+ complete(&pic32s->xfer_done);
 }

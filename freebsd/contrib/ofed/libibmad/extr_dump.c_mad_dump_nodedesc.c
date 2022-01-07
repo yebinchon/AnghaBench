@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  strncpy (char*,void*,int) ; 
+ int strncpy (char*,void*,int) ;
 
 void mad_dump_nodedesc(char *buf, int bufsz, void *val, int valsz)
 {
-	strncpy(buf, val, bufsz);
+ strncpy(buf, val, bufsz);
 
-	if (valsz < bufsz)
-		buf[valsz] = 0;
+ if (valsz < bufsz)
+  buf[valsz] = 0;
 }

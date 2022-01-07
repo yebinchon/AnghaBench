@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wchar_t ;
-typedef  int /*<<< orphan*/  X ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * CopyStrToUni (char*) ; 
- int /*<<< orphan*/ * FileToXW (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Free (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int wchar_t ;
+typedef int X ;
+
+
+ int * CopyStrToUni (char*) ;
+ int * FileToXW (int *) ;
+ int Free (int *) ;
 
 X *FileToX(char *filename)
 {
-	wchar_t *filename_w = CopyStrToUni(filename);
-	X *ret = FileToXW(filename_w);
+ wchar_t *filename_w = CopyStrToUni(filename);
+ X *ret = FileToXW(filename_w);
 
-	Free(filename_w);
+ Free(filename_w);
 
-	return ret;
+ return ret;
 }

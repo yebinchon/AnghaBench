@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  char_u ;
-typedef  scalar_t__ GuiFont ;
 
-/* Variables and functions */
- scalar_t__ NOFONT ; 
- int /*<<< orphan*/ * vim_strsave (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int char_u ;
+typedef scalar_t__ GuiFont ;
+
+
+ scalar_t__ NOFONT ;
+ int * vim_strsave (int *) ;
 
 char_u *
 gui_mch_get_fontname(GuiFont font, char_u *name)
@@ -24,5 +24,5 @@ gui_mch_get_fontname(GuiFont font, char_u *name)
     {
         return vim_strsave((char_u*)font);
     }
-    return NULL;
+    return ((void*)0);
 }

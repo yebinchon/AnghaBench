@@ -1,15 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct sem_t_ {int dummy; } ;
 struct sched_param {int dummy; } ;
 struct ptw32_mcs_node_t_ {int dummy; } ;
@@ -26,11 +26,11 @@ struct pthread_cond_t_ {int dummy; } ;
 struct pthread_barrierattr_t_ {int dummy; } ;
 struct pthread_barrier_t_ {int dummy; } ;
 struct pthread_attr_t_ {int dummy; } ;
-typedef  int /*<<< orphan*/  ptw32_thread_t ;
-typedef  int /*<<< orphan*/  pthread_t ;
+typedef int ptw32_thread_t ;
+typedef int pthread_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  printf (char*,...) ; 
+
+ int printf (char*,...) ;
 
 int
 main()

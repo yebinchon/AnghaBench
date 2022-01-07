@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct thermal_cooling_device {struct devfreq_cooling_device* devdata; } ;
-struct devfreq_cooling_device {struct devfreq_cooling_device* freq_table; struct devfreq_cooling_device* power_table; int /*<<< orphan*/  id; int /*<<< orphan*/  cdev; } ;
+struct devfreq_cooling_device {struct devfreq_cooling_device* freq_table; struct devfreq_cooling_device* power_table; int id; int cdev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  devfreq_ida ; 
- int /*<<< orphan*/  ida_simple_remove (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kfree (struct devfreq_cooling_device*) ; 
- int /*<<< orphan*/  thermal_cooling_device_unregister (int /*<<< orphan*/ ) ; 
+
+ int devfreq_ida ;
+ int ida_simple_remove (int *,int ) ;
+ int kfree (struct devfreq_cooling_device*) ;
+ int thermal_cooling_device_unregister (int ) ;
 
 void devfreq_cooling_unregister(struct thermal_cooling_device *cdev)
 {
-	struct devfreq_cooling_device *dfc;
+ struct devfreq_cooling_device *dfc;
 
-	if (!cdev)
-		return;
+ if (!cdev)
+  return;
 
-	dfc = cdev->devdata;
+ dfc = cdev->devdata;
 
-	thermal_cooling_device_unregister(dfc->cdev);
-	ida_simple_remove(&devfreq_ida, dfc->id);
-	kfree(dfc->power_table);
-	kfree(dfc->freq_table);
+ thermal_cooling_device_unregister(dfc->cdev);
+ ida_simple_remove(&devfreq_ida, dfc->id);
+ kfree(dfc->power_table);
+ kfree(dfc->freq_table);
 
-	kfree(dfc);
+ kfree(dfc);
 }

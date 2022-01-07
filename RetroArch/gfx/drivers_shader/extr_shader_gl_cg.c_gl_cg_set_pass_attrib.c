@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct shader_program_cg {int /*<<< orphan*/  vprg; int /*<<< orphan*/  fprg; } ;
+
+
+
+
+struct shader_program_cg {int vprg; int fprg; } ;
 struct cg_fbo_params {void* coord; void* tex_size_f; void* tex_size_v; void* vid_size_f; void* vid_size_v; void* tex; } ;
-typedef  int /*<<< orphan*/  attr_buf ;
+typedef int attr_buf ;
 
-/* Variables and functions */
- void* cgGetNamedParameter (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,char const*) ; 
+
+ void* cgGetNamedParameter (int ,char*) ;
+ int snprintf (char*,int,char*,char const*) ;
 
 __attribute__((used)) static void gl_cg_set_pass_attrib(
       struct shader_program_cg *program,

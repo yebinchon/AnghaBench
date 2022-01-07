@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  image_id; } ;
-struct va_surface {scalar_t__ is_derived; int /*<<< orphan*/  ctx; TYPE_1__ image; int /*<<< orphan*/  id; int /*<<< orphan*/  display; } ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int image_id; } ;
+struct va_surface {scalar_t__ is_derived; int ctx; TYPE_1__ image; int id; int display; } ;
 struct priv {int dummy; } ;
-struct mp_image {scalar_t__ w; scalar_t__ h; int /*<<< orphan*/  imgfmt; } ;
-typedef  int /*<<< orphan*/  VAStatus ;
+struct mp_image {scalar_t__ w; scalar_t__ h; int imgfmt; } ;
+typedef int VAStatus ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHECK_VA_STATUS (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  mp_image_copy (struct mp_image*,struct mp_image*) ; 
- int /*<<< orphan*/  mp_image_set_size (struct mp_image*,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  vaPutImage (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  va_image_map (int /*<<< orphan*/ ,TYPE_1__*,struct mp_image*) ; 
- int /*<<< orphan*/  va_image_unmap (int /*<<< orphan*/ ,TYPE_1__*) ; 
- scalar_t__ va_surface_alloc_imgfmt (struct priv*,struct mp_image*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  va_surface_image_destroy (struct va_surface*) ; 
- struct va_surface* va_surface_in_mp_image (struct mp_image*) ; 
+
+ int CHECK_VA_STATUS (int ,char*) ;
+ int assert (int) ;
+ int mp_image_copy (struct mp_image*,struct mp_image*) ;
+ int mp_image_set_size (struct mp_image*,scalar_t__,scalar_t__) ;
+ int vaPutImage (int ,int ,int ,int ,int ,scalar_t__,scalar_t__,int ,int ,scalar_t__,scalar_t__) ;
+ int va_image_map (int ,TYPE_1__*,struct mp_image*) ;
+ int va_image_unmap (int ,TYPE_1__*) ;
+ scalar_t__ va_surface_alloc_imgfmt (struct priv*,struct mp_image*,int ) ;
+ int va_surface_image_destroy (struct va_surface*) ;
+ struct va_surface* va_surface_in_mp_image (struct mp_image*) ;
 
 __attribute__((used)) static int va_surface_upload(struct priv *priv, struct mp_image *va_dst,
                              struct mp_image *sw_src)
@@ -43,7 +43,7 @@ __attribute__((used)) static int va_surface_upload(struct priv *priv, struct mp_
     if (!va_image_map(p->ctx, &p->image, &img))
         return -1;
     assert(sw_src->w <= img.w && sw_src->h <= img.h);
-    mp_image_set_size(&img, sw_src->w, sw_src->h); // copy only visible part
+    mp_image_set_size(&img, sw_src->w, sw_src->h);
     mp_image_copy(&img, sw_src);
     va_image_unmap(p->ctx, &p->image);
 

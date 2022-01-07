@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * PCCERT_CONTEXT ;
-typedef  scalar_t__ HCERTSTORE ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * CRYPT_FindCertInStore (scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CertCloseStore (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * CertEnumCertificatesInStore (scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CertFreeCertificateContext (int /*<<< orphan*/ *) ; 
- scalar_t__ CertOpenSystemStoreW (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ FALSE ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  rootW ; 
+
+
+
+typedef int * PCCERT_CONTEXT ;
+typedef scalar_t__ HCERTSTORE ;
+typedef scalar_t__ BOOL ;
+
+
+ int * CRYPT_FindCertInStore (scalar_t__,int *) ;
+ int CertCloseStore (scalar_t__,int ) ;
+ int * CertEnumCertificatesInStore (scalar_t__,int *) ;
+ int CertFreeCertificateContext (int *) ;
+ scalar_t__ CertOpenSystemStoreW (int ,int ) ;
+ scalar_t__ FALSE ;
+ scalar_t__ TRUE ;
+ int rootW ;
 
 __attribute__((used)) static BOOL CRYPT_CheckRestrictedRoot(HCERTSTORE store)
 {
@@ -31,7 +31,7 @@ __attribute__((used)) static BOOL CRYPT_CheckRestrictedRoot(HCERTSTORE store)
     if (store)
     {
         HCERTSTORE rootStore = CertOpenSystemStoreW(0, rootW);
-        PCCERT_CONTEXT cert = NULL, check;
+        PCCERT_CONTEXT cert = ((void*)0), check;
 
         do {
             cert = CertEnumCertificatesInStore(store, cert);

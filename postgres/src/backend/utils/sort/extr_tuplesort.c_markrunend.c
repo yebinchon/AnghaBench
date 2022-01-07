@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  len ;
-struct TYPE_3__ {int /*<<< orphan*/  tapeset; } ;
-typedef  TYPE_1__ Tuplesortstate ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LogicalTapeWrite (int /*<<< orphan*/ ,int,void*,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int len ;
+struct TYPE_3__ {int tapeset; } ;
+typedef TYPE_1__ Tuplesortstate ;
+
+
+ int LogicalTapeWrite (int ,int,void*,int) ;
 
 __attribute__((used)) static void
 markrunend(Tuplesortstate *state, int tapenum)
 {
-	unsigned int len = 0;
+ unsigned int len = 0;
 
-	LogicalTapeWrite(state->tapeset, tapenum, (void *) &len, sizeof(len));
+ LogicalTapeWrite(state->tapeset, tapenum, (void *) &len, sizeof(len));
 }

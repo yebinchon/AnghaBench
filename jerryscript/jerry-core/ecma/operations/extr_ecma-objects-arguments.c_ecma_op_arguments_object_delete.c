@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint32_t ;
-typedef  scalar_t__ ecma_value_t ;
-typedef  int /*<<< orphan*/  ecma_string_t ;
-typedef  int /*<<< orphan*/  ecma_object_t ;
+
+
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint32_t ;
+typedef scalar_t__ ecma_value_t ;
+typedef int ecma_string_t ;
+typedef int ecma_object_t ;
 struct TYPE_5__ {scalar_t__ length; } ;
 struct TYPE_6__ {TYPE_1__ u1; } ;
 struct TYPE_7__ {TYPE_2__ pseudo_array; } ;
 struct TYPE_8__ {TYPE_3__ u; } ;
-typedef  TYPE_4__ ecma_extended_object_t ;
+typedef TYPE_4__ ecma_extended_object_t ;
 
-/* Variables and functions */
- scalar_t__ ECMA_IS_VALUE_ERROR (scalar_t__) ; 
- scalar_t__ ECMA_STRING_NOT_ARRAY_INDEX ; 
- scalar_t__ ECMA_VALUE_EMPTY ; 
- scalar_t__ ECMA_VALUE_TRUE ; 
- int /*<<< orphan*/  JERRY_ASSERT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ecma_deref_ecma_string (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * ecma_get_string_from_value (scalar_t__) ; 
- int /*<<< orphan*/  ecma_is_value_boolean (scalar_t__) ; 
- scalar_t__ ecma_is_value_true (scalar_t__) ; 
- scalar_t__ ecma_op_general_object_delete (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- scalar_t__ ecma_string_get_array_index (int /*<<< orphan*/ *) ; 
+
+ scalar_t__ ECMA_IS_VALUE_ERROR (scalar_t__) ;
+ scalar_t__ ECMA_STRING_NOT_ARRAY_INDEX ;
+ scalar_t__ ECMA_VALUE_EMPTY ;
+ scalar_t__ ECMA_VALUE_TRUE ;
+ int JERRY_ASSERT (int ) ;
+ int ecma_deref_ecma_string (int *) ;
+ int * ecma_get_string_from_value (scalar_t__) ;
+ int ecma_is_value_boolean (scalar_t__) ;
+ scalar_t__ ecma_is_value_true (scalar_t__) ;
+ scalar_t__ ecma_op_general_object_delete (int *,int *,int) ;
+ scalar_t__ ecma_string_get_array_index (int *) ;
 
 ecma_value_t
-ecma_op_arguments_object_delete (ecma_object_t *object_p, /**< the object */
-                                 ecma_string_t *property_name_p, /**< property name */
-                                 bool is_throw) /**< flag that controls failure handling */
+ecma_op_arguments_object_delete (ecma_object_t *object_p,
+                                 ecma_string_t *property_name_p,
+                                 bool is_throw)
 {
-  /* 3. */
+
   ecma_value_t ret_value = ecma_op_general_object_delete (object_p, property_name_p, is_throw);
 
   if (ECMA_IS_VALUE_ERROR (ret_value))

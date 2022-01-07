@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VARIANT ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  IHTMLXMLHttpRequestFactory ;
-typedef  int /*<<< orphan*/  IHTMLXMLHttpRequest ;
-typedef  int /*<<< orphan*/  IHTMLWindow5 ;
-typedef  scalar_t__ HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DIID_DispHTMLXMLHttpRequest ; 
- scalar_t__ IDispatch_QueryInterface (int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**) ; 
- scalar_t__ IHTMLWindow5_get_XMLHttpRequest (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IHTMLXMLHttpRequestFactory_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IHTMLXMLHttpRequestFactory_create (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IHTMLXMLHttpRequest_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IID_IHTMLXMLHttpRequestFactory ; 
- scalar_t__ S_OK ; 
- scalar_t__ VT_DISPATCH ; 
- int /*<<< orphan*/  V_DISPATCH (int /*<<< orphan*/ *) ; 
- scalar_t__ V_VT (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  VariantClear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  debugstr_variant (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  test_disp (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*) ; 
+
+
+
+typedef int VARIANT ;
+typedef int IUnknown ;
+typedef int IHTMLXMLHttpRequestFactory ;
+typedef int IHTMLXMLHttpRequest ;
+typedef int IHTMLWindow5 ;
+typedef scalar_t__ HRESULT ;
+
+
+ int DIID_DispHTMLXMLHttpRequest ;
+ scalar_t__ IDispatch_QueryInterface (int ,int *,void**) ;
+ scalar_t__ IHTMLWindow5_get_XMLHttpRequest (int *,int *) ;
+ int IHTMLXMLHttpRequestFactory_Release (int *) ;
+ scalar_t__ IHTMLXMLHttpRequestFactory_create (int *,int **) ;
+ int IHTMLXMLHttpRequest_Release (int *) ;
+ int IID_IHTMLXMLHttpRequestFactory ;
+ scalar_t__ S_OK ;
+ scalar_t__ VT_DISPATCH ;
+ int V_DISPATCH (int *) ;
+ scalar_t__ V_VT (int *) ;
+ int VariantClear (int *) ;
+ int debugstr_variant (int *) ;
+ int ok (int,char*,...) ;
+ int test_disp (int *,int *,char*) ;
 
 __attribute__((used)) static void test_xmlhttprequest(IHTMLWindow5 *window)
 {
@@ -45,15 +45,15 @@ __attribute__((used)) static void test_xmlhttprequest(IHTMLWindow5 *window)
     ok(hres == S_OK, "get_XMLHttpRequest failed: %08x\n", hres);
     ok(V_VT(&var) == VT_DISPATCH, "expect VT_DISPATCH, got %s\n", debugstr_variant(&var));
 
-    factory = NULL;
+    factory = ((void*)0);
     hres = IDispatch_QueryInterface(V_DISPATCH(&var), &IID_IHTMLXMLHttpRequestFactory, (void**)&factory);
     ok(hres == S_OK, "QueryInterface(&IID_IHTMLXMLHttpRequestFactory) failed: %08x\n", hres);
-    ok(factory != NULL, "factory == NULL\n");
+    ok(factory != ((void*)0), "factory == NULL\n");
 
-    xml = NULL;
+    xml = ((void*)0);
     hres = IHTMLXMLHttpRequestFactory_create(factory, &xml);
     ok(hres == S_OK, "create failed: %08x\n", hres);
-    ok(xml != NULL, "xml == NULL\n");
+    ok(xml != ((void*)0), "xml == NULL\n");
     test_disp((IUnknown*)xml, &DIID_DispHTMLXMLHttpRequest, "[object]");
 
     IHTMLXMLHttpRequest_Release(xml);

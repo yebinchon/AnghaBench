@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ vlc_fourcc_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AUDIO_ES ; 
- scalar_t__ VLC_CODEC_FL32 ; 
- scalar_t__ VLC_CODEC_FL64 ; 
- scalar_t__ VLC_CODEC_S16B ; 
- scalar_t__ VLC_CODEC_S16L ; 
- scalar_t__ VLC_CODEC_S24B ; 
- scalar_t__ VLC_CODEC_S24L ; 
- scalar_t__ VLC_CODEC_S32B ; 
- scalar_t__ VLC_CODEC_S32L ; 
- scalar_t__ VLC_CODEC_S8 ; 
- scalar_t__ VLC_CODEC_U8 ; 
- scalar_t__ VLC_FOURCC (char,char,char,char) ; 
- scalar_t__ vlc_fourcc_GetCodec (int /*<<< orphan*/ ,scalar_t__) ; 
+
+
+
+typedef scalar_t__ vlc_fourcc_t ;
+
+
+ int AUDIO_ES ;
+ scalar_t__ VLC_CODEC_FL32 ;
+ scalar_t__ VLC_CODEC_FL64 ;
+ scalar_t__ VLC_CODEC_S16B ;
+ scalar_t__ VLC_CODEC_S16L ;
+ scalar_t__ VLC_CODEC_S24B ;
+ scalar_t__ VLC_CODEC_S24L ;
+ scalar_t__ VLC_CODEC_S32B ;
+ scalar_t__ VLC_CODEC_S32L ;
+ scalar_t__ VLC_CODEC_S8 ;
+ scalar_t__ VLC_CODEC_U8 ;
+ scalar_t__ VLC_FOURCC (char,char,char,char) ;
+ scalar_t__ vlc_fourcc_GetCodec (int ,scalar_t__) ;
 
 vlc_fourcc_t vlc_fourcc_GetCodecAudio( vlc_fourcc_t i_fourcc, int i_bits )
 {

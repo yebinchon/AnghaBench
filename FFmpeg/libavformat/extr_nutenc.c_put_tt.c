@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64_t ;
-struct TYPE_3__ {int /*<<< orphan*/ * time_base; int /*<<< orphan*/  time_base_count; } ;
-typedef  TYPE_1__ NUTContext ;
-typedef  int /*<<< orphan*/  AVRational ;
-typedef  int /*<<< orphan*/  AVIOContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ff_put_v (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint64_t ;
+struct TYPE_3__ {int * time_base; int time_base_count; } ;
+typedef TYPE_1__ NUTContext ;
+typedef int AVRational ;
+typedef int AVIOContext ;
+
+
+ int ff_put_v (int *,int ) ;
 
 __attribute__((used)) static void put_tt(NUTContext *nut, AVRational *time_base, AVIOContext *bc, uint64_t val)
 {

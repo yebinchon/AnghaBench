@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct pvr2_hdw {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FX2CMD_POWER_OFF ; 
- int pvr2_issue_simple_cmd (struct pvr2_hdw*,int /*<<< orphan*/ ) ; 
+
+ int FX2CMD_POWER_OFF ;
+ int pvr2_issue_simple_cmd (struct pvr2_hdw*,int ) ;
 
 int pvr2_hdw_cmd_powerdown(struct pvr2_hdw *hdw)
 {
-	return pvr2_issue_simple_cmd(hdw,FX2CMD_POWER_OFF);
+ return pvr2_issue_simple_cmd(hdw,FX2CMD_POWER_OFF);
 }

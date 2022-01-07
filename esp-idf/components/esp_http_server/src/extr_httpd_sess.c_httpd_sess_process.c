@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct sock_db {int /*<<< orphan*/  lru_counter; } ;
+
+
+
+
+struct sock_db {int lru_counter; } ;
 struct httpd_data {int dummy; } ;
-typedef  scalar_t__ esp_err_t ;
+typedef scalar_t__ esp_err_t ;
 
-/* Variables and functions */
- scalar_t__ ESP_FAIL ; 
- int /*<<< orphan*/  ESP_LOGD (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ ESP_OK ; 
- int /*<<< orphan*/  LOG_FMT (char*) ; 
- int /*<<< orphan*/  TAG ; 
- scalar_t__ httpd_req_delete (struct httpd_data*) ; 
- scalar_t__ httpd_req_new (struct httpd_data*,struct sock_db*) ; 
- struct sock_db* httpd_sess_get (struct httpd_data*,int) ; 
- int /*<<< orphan*/  httpd_sess_get_lru_counter () ; 
+
+ scalar_t__ ESP_FAIL ;
+ int ESP_LOGD (int ,int ) ;
+ scalar_t__ ESP_OK ;
+ int LOG_FMT (char*) ;
+ int TAG ;
+ scalar_t__ httpd_req_delete (struct httpd_data*) ;
+ scalar_t__ httpd_req_new (struct httpd_data*,struct sock_db*) ;
+ struct sock_db* httpd_sess_get (struct httpd_data*,int) ;
+ int httpd_sess_get_lru_counter () ;
 
 esp_err_t httpd_sess_process(struct httpd_data *hd, int newfd)
 {

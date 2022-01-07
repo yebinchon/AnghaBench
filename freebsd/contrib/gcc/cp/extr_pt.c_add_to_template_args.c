@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SET_TMPL_ARGS_LEVEL (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int TMPL_ARGS_DEPTH (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TMPL_ARGS_LEVEL (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  make_tree_vec (int) ; 
+
+
+
+typedef int tree ;
+
+
+ int SET_TMPL_ARGS_LEVEL (int ,int,int ) ;
+ int TMPL_ARGS_DEPTH (int ) ;
+ int TMPL_ARGS_LEVEL (int ,int) ;
+ int make_tree_vec (int) ;
 
 __attribute__((used)) static tree
 add_to_template_args (tree args, tree extra_args)

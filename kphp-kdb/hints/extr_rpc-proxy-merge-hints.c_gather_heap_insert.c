@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_7__ {int remaining; int* cur; } ;
-typedef  TYPE_1__ gh_entry_t ;
+typedef TYPE_1__ gh_entry_t ;
 
-/* Variables and functions */
- TYPE_1__** GH ; 
- TYPE_1__* GH_E ; 
- size_t GH_N ; 
- int /*<<< orphan*/  GH_total ; 
- int /*<<< orphan*/  TL_VECTOR_TOTAL ; 
- scalar_t__ gh_entry_less (TYPE_1__*,TYPE_1__*) ; 
- int /*<<< orphan*/  load_heap_v (TYPE_1__*) ; 
- int /*<<< orphan*/  vkprintf (int,char*,int,...) ; 
+
+ TYPE_1__** GH ;
+ TYPE_1__* GH_E ;
+ size_t GH_N ;
+ int GH_total ;
+ int TL_VECTOR_TOTAL ;
+ scalar_t__ gh_entry_less (TYPE_1__*,TYPE_1__*) ;
+ int load_heap_v (TYPE_1__*) ;
+ int vkprintf (int,char*,int,...) ;
 
 __attribute__((used)) static int gather_heap_insert (int *data, int bytes) {
   if (bytes < 12) {

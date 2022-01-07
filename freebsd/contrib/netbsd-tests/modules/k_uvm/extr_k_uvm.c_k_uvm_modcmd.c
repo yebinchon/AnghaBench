@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int modcmd_t ;
 
-/* Variables and functions */
- int ENOTTY ; 
-#define  MODULE_CMD_FINI 130 
-#define  MODULE_CMD_INIT 129 
-#define  MODULE_CMD_STAT 128 
- int k_uvm_fini (void*) ; 
- int k_uvm_init (void*) ; 
+
+
+
+typedef int modcmd_t ;
+
+
+ int ENOTTY ;
+
+
+
+ int k_uvm_fini (void*) ;
+ int k_uvm_init (void*) ;
 
 __attribute__((used)) static
 int
 k_uvm_modcmd(modcmd_t cmd, void *arg)
 {
-	int ret;
+ int ret;
 
-	switch (cmd) {
-	case MODULE_CMD_INIT:
-		ret = k_uvm_init(arg);
-		break;
+ switch (cmd) {
+ case 129:
+  ret = k_uvm_init(arg);
+  break;
 
-	case MODULE_CMD_FINI:
-		ret = k_uvm_fini(arg);
-		break;
+ case 130:
+  ret = k_uvm_fini(arg);
+  break;
 
-	case MODULE_CMD_STAT:
-	default:
-		ret = ENOTTY;
-	}
+ case 128:
+ default:
+  ret = ENOTTY;
+ }
 
-	return ret;
+ return ret;
 }

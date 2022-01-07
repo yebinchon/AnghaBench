@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_5__ ;
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_12__ {int /*<<< orphan*/  backward; TYPE_1__* level; } ;
-typedef  TYPE_4__ zskiplistNode ;
-struct TYPE_13__ {int level; int /*<<< orphan*/  length; TYPE_3__* header; int /*<<< orphan*/  tail; } ;
-typedef  TYPE_5__ zskiplist ;
+
+
+typedef struct TYPE_13__ TYPE_5__ ;
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_12__ {int backward; TYPE_1__* level; } ;
+typedef TYPE_4__ zskiplistNode ;
+struct TYPE_13__ {int level; int length; TYPE_3__* header; int tail; } ;
+typedef TYPE_5__ zskiplist ;
 struct TYPE_11__ {TYPE_2__* level; } ;
-struct TYPE_10__ {int /*<<< orphan*/ * forward; } ;
+struct TYPE_10__ {int * forward; } ;
 struct TYPE_9__ {int span; TYPE_4__* forward; } ;
 
-/* Variables and functions */
+
 
 void zslDeleteNode(zskiplist *zsl, zskiplistNode *x, zskiplistNode **update) {
     int i;
@@ -40,7 +40,7 @@ void zslDeleteNode(zskiplist *zsl, zskiplistNode *x, zskiplistNode **update) {
     } else {
         zsl->tail = x->backward;
     }
-    while(zsl->level > 1 && zsl->header->level[zsl->level-1].forward == NULL)
+    while(zsl->level > 1 && zsl->header->level[zsl->level-1].forward == ((void*)0))
         zsl->level--;
     zsl->length--;
 }

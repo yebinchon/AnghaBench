@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {unsigned int** input_keymapper_ids; } ;
 struct TYPE_6__ {TYPE_1__ uints; } ;
-typedef  TYPE_2__ settings_t ;
+typedef TYPE_2__ settings_t ;
 struct TYPE_7__ {unsigned int key; } ;
 
-/* Variables and functions */
- int MENU_SETTINGS_INPUT_DESC_KBD_BEGIN ; 
- unsigned int RARCH_FIRST_CUSTOM_BIND ; 
- int RARCH_MAX_KEYS ; 
- TYPE_2__* config_get_ptr () ; 
- TYPE_3__* key_descriptors ; 
+
+ int MENU_SETTINGS_INPUT_DESC_KBD_BEGIN ;
+ unsigned int RARCH_FIRST_CUSTOM_BIND ;
+ int RARCH_MAX_KEYS ;
+ TYPE_2__* config_get_ptr () ;
+ TYPE_3__* key_descriptors ;
 
 __attribute__((used)) static int action_left_input_desc_kbd(unsigned type, const char *label,
    bool wraparound)
@@ -36,7 +36,7 @@ __attribute__((used)) static int action_left_input_desc_kbd(unsigned type, const
       return 0;
 
    user_idx = (type - MENU_SETTINGS_INPUT_DESC_KBD_BEGIN) / RARCH_FIRST_CUSTOM_BIND;
-   btn_idx  = (type - MENU_SETTINGS_INPUT_DESC_KBD_BEGIN) - RARCH_FIRST_CUSTOM_BIND * user_idx;
+   btn_idx = (type - MENU_SETTINGS_INPUT_DESC_KBD_BEGIN) - RARCH_FIRST_CUSTOM_BIND * user_idx;
 
    remap_id =
       settings->uints.input_keymapper_ids[user_idx][btn_idx];

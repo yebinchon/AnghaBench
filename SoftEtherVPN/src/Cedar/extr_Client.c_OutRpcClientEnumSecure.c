@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t UINT ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef size_t UINT ;
 struct TYPE_5__ {size_t NumItem; TYPE_1__** Items; } ;
-struct TYPE_4__ {int /*<<< orphan*/  Manufacturer; int /*<<< orphan*/  DeviceName; int /*<<< orphan*/  Type; int /*<<< orphan*/  DeviceId; } ;
-typedef  TYPE_1__ RPC_CLIENT_ENUM_SECURE_ITEM ;
-typedef  TYPE_2__ RPC_CLIENT_ENUM_SECURE ;
-typedef  int /*<<< orphan*/  PACK ;
+struct TYPE_4__ {int Manufacturer; int DeviceName; int Type; int DeviceId; } ;
+typedef TYPE_1__ RPC_CLIENT_ENUM_SECURE_ITEM ;
+typedef TYPE_2__ RPC_CLIENT_ENUM_SECURE ;
+typedef int PACK ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PackAddIntEx (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,size_t,size_t) ; 
- int /*<<< orphan*/  PackAddNum (int /*<<< orphan*/ *,char*,size_t) ; 
- int /*<<< orphan*/  PackAddStrEx (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,size_t,size_t) ; 
- int /*<<< orphan*/  PackSetCurrentJsonGroupName (int /*<<< orphan*/ *,char*) ; 
+
+ int PackAddIntEx (int *,char*,int ,size_t,size_t) ;
+ int PackAddNum (int *,char*,size_t) ;
+ int PackAddStrEx (int *,char*,int ,size_t,size_t) ;
+ int PackSetCurrentJsonGroupName (int *,char*) ;
 
 void OutRpcClientEnumSecure(PACK *p, RPC_CLIENT_ENUM_SECURE *e)
 {
-	UINT i;
-	// Validate arguments
-	if (e == NULL || p == NULL)
-	{
-		return;
-	}
+ UINT i;
 
-	PackAddNum(p, "NumItem", e->NumItem);
+ if (e == ((void*)0) || p == ((void*)0))
+ {
+  return;
+ }
 
-	PackSetCurrentJsonGroupName(p, "SecureDeviceList");
-	for (i = 0;i < e->NumItem;i++)
-	{
-		RPC_CLIENT_ENUM_SECURE_ITEM *item = e->Items[i];
+ PackAddNum(p, "NumItem", e->NumItem);
 
-		PackAddIntEx(p, "DeviceId", item->DeviceId, i, e->NumItem);
-		PackAddIntEx(p, "Type", item->Type, i, e->NumItem);
-		PackAddStrEx(p, "DeviceName", item->DeviceName, i, e->NumItem);
-		PackAddStrEx(p, "Manufacturer", item->Manufacturer, i, e->NumItem);
-	}
-	PackSetCurrentJsonGroupName(p, NULL);
+ PackSetCurrentJsonGroupName(p, "SecureDeviceList");
+ for (i = 0;i < e->NumItem;i++)
+ {
+  RPC_CLIENT_ENUM_SECURE_ITEM *item = e->Items[i];
+
+  PackAddIntEx(p, "DeviceId", item->DeviceId, i, e->NumItem);
+  PackAddIntEx(p, "Type", item->Type, i, e->NumItem);
+  PackAddStrEx(p, "DeviceName", item->DeviceName, i, e->NumItem);
+  PackAddStrEx(p, "Manufacturer", item->Manufacturer, i, e->NumItem);
+ }
+ PackSetCurrentJsonGroupName(p, ((void*)0));
 }

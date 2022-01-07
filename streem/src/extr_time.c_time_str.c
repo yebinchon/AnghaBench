@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct tm {scalar_t__ tm_hour; scalar_t__ tm_min; scalar_t__ tm_sec; } ;
-struct TYPE_2__ {scalar_t__ tv_usec; int /*<<< orphan*/  tv_sec; } ;
+struct TYPE_2__ {scalar_t__ tv_usec; int tv_sec; } ;
 struct strm_time {int utc_offset; TYPE_1__ tv; } ;
-typedef  int /*<<< orphan*/  strm_value ;
-typedef  int /*<<< orphan*/  strm_stream ;
-typedef  int /*<<< orphan*/  strm_int ;
-typedef  int /*<<< orphan*/  sbuf ;
-typedef  int /*<<< orphan*/  buf ;
+typedef int strm_value ;
+typedef int strm_stream ;
+typedef int strm_int ;
+typedef int sbuf ;
+typedef int buf ;
 
-/* Variables and functions */
- int STRM_NG ; 
- int STRM_OK ; 
- int TZ_FAIL ; 
- int TZ_NONE ; 
- struct strm_time* get_time (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  get_tm (int /*<<< orphan*/ ,int,struct tm*) ; 
- int parse_tz (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,char,...) ; 
- size_t strftime (char*,int,char*,struct tm*) ; 
- size_t strlen (char*) ; 
- int /*<<< orphan*/  strm_get_args (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,char**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strm_raise (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  strm_str_new (char*,size_t) ; 
- int /*<<< orphan*/  strncpy (char*,char*,size_t) ; 
+
+ int STRM_NG ;
+ int STRM_OK ;
+ int TZ_FAIL ;
+ int TZ_NONE ;
+ struct strm_time* get_time (int ) ;
+ int get_tm (int ,int,struct tm*) ;
+ int parse_tz (char*,int ) ;
+ int snprintf (char*,int,char*,char,...) ;
+ size_t strftime (char*,int,char*,struct tm*) ;
+ size_t strlen (char*) ;
+ int strm_get_args (int *,int,int *,char*,int *,char**,int *) ;
+ int strm_raise (int *,char*) ;
+ int strm_str_new (char*,size_t) ;
+ int strncpy (char*,char*,size_t) ;
 
 __attribute__((used)) static int
 time_str(strm_stream* strm, int argc, strm_value* args, strm_value* ret)

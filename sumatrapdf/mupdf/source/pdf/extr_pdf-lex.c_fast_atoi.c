@@ -1,39 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
-
 __attribute__((used)) static int fast_atoi(char *s)
 {
-	int neg = 0;
-	int i = 0;
+ int neg = 0;
+ int i = 0;
 
-	while (*s == '-')
-	{
-		neg = 1;
-		++s;
-	}
-	while (*s == '+')
-	{
-		++s;
-	}
+ while (*s == '-')
+ {
+  neg = 1;
+  ++s;
+ }
+ while (*s == '+')
+ {
+  ++s;
+ }
 
-	while (*s >= '0' && *s <= '9')
-	{
-		/* We deliberately ignore overflow here. */
-		i = i * 10 + (*s - '0');
-		++s;
-	}
+ while (*s >= '0' && *s <= '9')
+ {
 
-	return neg ? -i : i;
+  i = i * 10 + (*s - '0');
+  ++s;
+ }
+
+ return neg ? -i : i;
 }

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {scalar_t__ kind; int /*<<< orphan*/  sval; } ;
-typedef  TYPE_1__ Token ;
 
-/* Variables and functions */
- scalar_t__ TSTRING ; 
- int /*<<< orphan*/  errort (TYPE_1__*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  expect (char) ; 
- TYPE_1__* get () ; 
- int read_intexpr () ; 
- int /*<<< orphan*/  tok2s (TYPE_1__*) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {scalar_t__ kind; int sval; } ;
+typedef TYPE_1__ Token ;
+
+
+ scalar_t__ TSTRING ;
+ int errort (TYPE_1__*,char*,int ) ;
+ int expect (char) ;
+ TYPE_1__* get () ;
+ int read_intexpr () ;
+ int tok2s (TYPE_1__*) ;
 
 __attribute__((used)) static void read_static_assert() {
     expect('(');

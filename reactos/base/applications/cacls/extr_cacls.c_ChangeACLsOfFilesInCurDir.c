@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int dwFileAttributes; int /*<<< orphan*/ * cFileName; } ;
-typedef  TYPE_1__ WIN32_FIND_DATA ;
-typedef  int /*<<< orphan*/  TCHAR ;
-typedef  int /*<<< orphan*/  LPCTSTR ;
-typedef  scalar_t__ HANDLE ;
-typedef  scalar_t__ DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AddBackslash (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ChangeFileACL (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ ERROR_ACCESS_DENIED ; 
- scalar_t__ ERROR_NO_MORE_FILES ; 
- int /*<<< orphan*/  FALSE ; 
- int FILE_ATTRIBUTE_DIRECTORY ; 
- int /*<<< orphan*/  FindClose (scalar_t__) ; 
- scalar_t__ FindFirstFile (int /*<<< orphan*/ ,TYPE_1__*) ; 
- scalar_t__ FindNextFile (scalar_t__,TYPE_1__*) ; 
- int /*<<< orphan*/  GetCurrentDirectory (int,int /*<<< orphan*/ *) ; 
- scalar_t__ GetLastError () ; 
- scalar_t__ INVALID_HANDLE_VALUE ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  OptionC ; 
- int /*<<< orphan*/  PrintError (scalar_t__) ; 
- scalar_t__ SetCurrentDirectory (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  _T (char*) ; 
- scalar_t__ _tcscmp (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int dwFileAttributes; int * cFileName; } ;
+typedef TYPE_1__ WIN32_FIND_DATA ;
+typedef int TCHAR ;
+typedef int LPCTSTR ;
+typedef scalar_t__ HANDLE ;
+typedef scalar_t__ DWORD ;
+typedef int BOOL ;
+
+
+ int AddBackslash (int *) ;
+ int ChangeFileACL (int *,int *) ;
+ scalar_t__ ERROR_ACCESS_DENIED ;
+ scalar_t__ ERROR_NO_MORE_FILES ;
+ int FALSE ;
+ int FILE_ATTRIBUTE_DIRECTORY ;
+ int FindClose (scalar_t__) ;
+ scalar_t__ FindFirstFile (int ,TYPE_1__*) ;
+ scalar_t__ FindNextFile (scalar_t__,TYPE_1__*) ;
+ int GetCurrentDirectory (int,int *) ;
+ scalar_t__ GetLastError () ;
+ scalar_t__ INVALID_HANDLE_VALUE ;
+ int MAX_PATH ;
+ int OptionC ;
+ int PrintError (scalar_t__) ;
+ scalar_t__ SetCurrentDirectory (int *) ;
+ int TRUE ;
+ int _T (char*) ;
+ scalar_t__ _tcscmp (int *,int ) ;
 
 __attribute__((used)) static BOOL
 ChangeACLsOfFilesInCurDir(LPCTSTR pszFiles)
@@ -48,15 +48,15 @@ ChangeACLsOfFilesInCurDir(LPCTSTR pszFiles)
     TCHAR szCurDir[MAX_PATH];
     DWORD LastError;
 
-    /*
-     * get the file path (current directory)
-     */
+
+
+
     GetCurrentDirectory(MAX_PATH, szCurDir);
     AddBackslash(szCurDir);
 
-    /*
-     * search for files in current directory
-     */
+
+
+
     hFind = FindFirstFile(pszFiles, &FindData);
     if (hFind == INVALID_HANDLE_VALUE)
         return FALSE;
@@ -92,9 +92,9 @@ ChangeACLsOfFilesInCurDir(LPCTSTR pszFiles)
         return FALSE;
     }
 
-    /*
-     * search for subdirectory in current directory
-     */
+
+
+
     hFind = FindFirstFile(_T("*"), &FindData);
     if (hFind == INVALID_HANDLE_VALUE)
         return FALSE;

@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
 
-/* Variables and functions */
- int __MIN (int,int) ; 
+
+
+
+typedef int uint8_t ;
+
+
+ int __MIN (int,int) ;
 
 __attribute__((used)) static int Buf14To16( uint8_t *p_out, const uint8_t *p_in, int i_in, int i_le,
                       int i_out_le )
@@ -22,7 +22,7 @@ __attribute__((used)) static int Buf14To16( uint8_t *p_out, const uint8_t *p_in,
     int bits_in, bits_out = 0;
     int i, i_out = 0;
 
-    for( i = 0; i < i_in; i++  )
+    for( i = 0; i < i_in; i++ )
     {
         if( i%2 )
         {

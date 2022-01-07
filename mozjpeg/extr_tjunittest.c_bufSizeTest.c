@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * tjhandle ;
 
-/* Variables and functions */
- int RAND_MAX ; 
- int /*<<< orphan*/  TJFLAG_NOREALLOC ; 
- int /*<<< orphan*/  TJPF_BGRX ; 
- int TJ_NUMSAMP ; 
- int /*<<< orphan*/  _throw (char*) ; 
- int /*<<< orphan*/  _throwtj () ; 
- int /*<<< orphan*/  _tj (int /*<<< orphan*/ ) ; 
- scalar_t__ alloc ; 
- scalar_t__ doYUV ; 
- int /*<<< orphan*/  free (unsigned char*) ; 
- scalar_t__ malloc (int) ; 
- int /*<<< orphan*/  pad ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int random () ; 
- scalar_t__ tjAlloc (unsigned long) ; 
- unsigned long tjBufSize (int,int,int) ; 
- unsigned long tjBufSizeYUV2 (int,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  tjCompress2 (int /*<<< orphan*/ *,unsigned char*,int,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,unsigned char**,unsigned long*,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tjDestroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tjEncodeYUV3 (int /*<<< orphan*/ *,unsigned char*,int,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,unsigned char*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tjFree (unsigned char*) ; 
- int /*<<< orphan*/ * tjInitCompress () ; 
+
+
+
+typedef int * tjhandle ;
+
+
+ int RAND_MAX ;
+ int TJFLAG_NOREALLOC ;
+ int TJPF_BGRX ;
+ int TJ_NUMSAMP ;
+ int _throw (char*) ;
+ int _throwtj () ;
+ int _tj (int ) ;
+ scalar_t__ alloc ;
+ scalar_t__ doYUV ;
+ int free (unsigned char*) ;
+ scalar_t__ malloc (int) ;
+ int pad ;
+ int printf (char*,...) ;
+ int random () ;
+ scalar_t__ tjAlloc (unsigned long) ;
+ unsigned long tjBufSize (int,int,int) ;
+ unsigned long tjBufSizeYUV2 (int,int ,int,int) ;
+ int tjCompress2 (int *,unsigned char*,int,int ,int,int ,unsigned char**,unsigned long*,int,int,int ) ;
+ int tjDestroy (int *) ;
+ int tjEncodeYUV3 (int *,unsigned char*,int,int ,int,int ,unsigned char*,int ,int,int ) ;
+ int tjFree (unsigned char*) ;
+ int * tjInitCompress () ;
 
 void bufSizeTest(void)
 {
   int w, h, i, subsamp;
-  unsigned char *srcBuf = NULL, *dstBuf = NULL;
-  tjhandle handle = NULL;
+  unsigned char *srcBuf = ((void*)0), *dstBuf = ((void*)0);
+  tjhandle handle = ((void*)0);
   unsigned long dstSize = 0;
 
-  if ((handle = tjInitCompress()) == NULL) _throwtj();
+  if ((handle = tjInitCompress()) == ((void*)0)) _throwtj();
 
   printf("Buffer size regression test\n");
   for (subsamp = 0; subsamp < TJ_NUMSAMP; subsamp++) {
@@ -52,12 +52,12 @@ void bufSizeTest(void)
 
       for (h = 1; h < maxh; h++) {
         if (h % 100 == 0) printf("%.4d x %.4d\b\b\b\b\b\b\b\b\b\b\b", w, h);
-        if ((srcBuf = (unsigned char *)malloc(w * h * 4)) == NULL)
+        if ((srcBuf = (unsigned char *)malloc(w * h * 4)) == ((void*)0))
           _throw("Memory allocation failure");
         if (!alloc || doYUV) {
           if (doYUV) dstSize = tjBufSizeYUV2(w, pad, h, subsamp);
           else dstSize = tjBufSize(w, h, subsamp);
-          if ((dstBuf = (unsigned char *)tjAlloc(dstSize)) == NULL)
+          if ((dstBuf = (unsigned char *)tjAlloc(dstSize)) == ((void*)0))
             _throw("Memory allocation failure");
         }
 
@@ -74,17 +74,17 @@ void bufSizeTest(void)
                           &dstSize, subsamp, 100,
                           alloc ? 0 : TJFLAG_NOREALLOC));
         }
-        free(srcBuf);  srcBuf = NULL;
+        free(srcBuf); srcBuf = ((void*)0);
         if (!alloc || doYUV) {
-          tjFree(dstBuf);  dstBuf = NULL;
+          tjFree(dstBuf); dstBuf = ((void*)0);
         }
 
-        if ((srcBuf = (unsigned char *)malloc(h * w * 4)) == NULL)
+        if ((srcBuf = (unsigned char *)malloc(h * w * 4)) == ((void*)0))
           _throw("Memory allocation failure");
         if (!alloc || doYUV) {
           if (doYUV) dstSize = tjBufSizeYUV2(h, pad, w, subsamp);
           else dstSize = tjBufSize(h, w, subsamp);
-          if ((dstBuf = (unsigned char *)tjAlloc(dstSize)) == NULL)
+          if ((dstBuf = (unsigned char *)tjAlloc(dstSize)) == ((void*)0))
             _throw("Memory allocation failure");
         }
 
@@ -101,9 +101,9 @@ void bufSizeTest(void)
                           &dstSize, subsamp, 100,
                           alloc ? 0 : TJFLAG_NOREALLOC));
         }
-        free(srcBuf);  srcBuf = NULL;
+        free(srcBuf); srcBuf = ((void*)0);
         if (!alloc || doYUV) {
-          tjFree(dstBuf);  dstBuf = NULL;
+          tjFree(dstBuf); dstBuf = ((void*)0);
         }
       }
     }

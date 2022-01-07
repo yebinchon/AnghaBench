@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uint32_t ;
-typedef  int /*<<< orphan*/  result ;
-typedef  int /*<<< orphan*/  WFCNativeStreamType ;
-typedef  scalar_t__ VCOS_STATUS_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  VCOS_FUNCTION ; 
- scalar_t__ VCOS_SUCCESS ; 
- int /*<<< orphan*/  WFC_IPC_MSG_SS_IS_IN_USE ; 
- int /*<<< orphan*/  vcos_log_trace (char*,int /*<<< orphan*/ ,scalar_t__,...) ; 
- scalar_t__ wfc_client_server_api_sendwait_stream (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__*,size_t*) ; 
+
+
+
+typedef scalar_t__ uint32_t ;
+typedef int result ;
+typedef int WFCNativeStreamType ;
+typedef scalar_t__ VCOS_STATUS_T ;
+
+
+ int VCOS_FUNCTION ;
+ scalar_t__ VCOS_SUCCESS ;
+ int WFC_IPC_MSG_SS_IS_IN_USE ;
+ int vcos_log_trace (char*,int ,scalar_t__,...) ;
+ scalar_t__ wfc_client_server_api_sendwait_stream (int ,int ,scalar_t__*,size_t*) ;
 
 bool wfc_server_stream_is_in_use(WFCNativeStreamType stream)
 {

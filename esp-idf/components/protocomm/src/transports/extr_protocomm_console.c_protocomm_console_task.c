@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char uint8_t ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef char uint8_t ;
 struct TYPE_4__ {scalar_t__ type; } ;
-typedef  TYPE_1__ uart_event_t ;
-typedef  int /*<<< orphan*/  linebuf ;
-typedef  scalar_t__ esp_err_t ;
+typedef TYPE_1__ uart_event_t ;
+typedef int linebuf ;
+typedef scalar_t__ esp_err_t ;
 struct TYPE_5__ {int max_cmdline_args; int max_cmdline_length; } ;
-typedef  TYPE_2__ esp_console_config_t ;
-typedef  int TickType_t ;
-typedef  int /*<<< orphan*/  QueueHandle_t ;
+typedef TYPE_2__ esp_console_config_t ;
+typedef int TickType_t ;
+typedef int QueueHandle_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ESP_LOGD (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  ESP_LOGE (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ESP_LOGI (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  TAG ; 
- scalar_t__ UART_DATA ; 
- int /*<<< orphan*/  esp_console_deinit () ; 
- int /*<<< orphan*/  esp_console_init (TYPE_2__*) ; 
- int /*<<< orphan*/  esp_console_register_help_command () ; 
- scalar_t__ esp_console_run (char*,int*) ; 
- int /*<<< orphan*/  memset (char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/ * pc_console ; 
- scalar_t__ pdPASS ; 
- int portTICK_RATE_MS ; 
- scalar_t__ stopped () ; 
- int /*<<< orphan*/  uart_driver_install (int,int,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ uart_read_bytes (int,char*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  uart_write_bytes (int,char*,int) ; 
- int /*<<< orphan*/  vTaskDelete (int /*<<< orphan*/ *) ; 
- scalar_t__ xQueueReceive (int /*<<< orphan*/ ,void*,int) ; 
+
+ int ESP_LOGD (int ,char*,int) ;
+ int ESP_LOGE (int ,char*) ;
+ int ESP_LOGI (int ,char*) ;
+ int TAG ;
+ scalar_t__ UART_DATA ;
+ int esp_console_deinit () ;
+ int esp_console_init (TYPE_2__*) ;
+ int esp_console_register_help_command () ;
+ scalar_t__ esp_console_run (char*,int*) ;
+ int memset (char*,int ,int) ;
+ int * pc_console ;
+ scalar_t__ pdPASS ;
+ int portTICK_RATE_MS ;
+ scalar_t__ stopped () ;
+ int uart_driver_install (int,int,int ,int,int *,int ) ;
+ scalar_t__ uart_read_bytes (int,char*,int,int ) ;
+ int uart_write_bytes (int,char*,int) ;
+ int vTaskDelete (int *) ;
+ scalar_t__ xQueueReceive (int ,void*,int) ;
 
 __attribute__((used)) static void protocomm_console_task(void *arg)
 {
@@ -54,7 +54,7 @@ __attribute__((used)) static void protocomm_console_task(void *arg)
 
     ESP_LOGD(TAG, "Initializing UART on port %d", uart_num);
     uart_driver_install(uart_num, 256, 0, 8, &uart_queue, 0);
-    /* Initialize the console */
+
     esp_console_config_t console_config = {
             .max_cmdline_args = 8,
             .max_cmdline_length = 256,
@@ -97,9 +97,9 @@ __attribute__((used)) static void protocomm_console_task(void *arg)
         }
     }
 
-    pc_console = NULL;
+    pc_console = ((void*)0);
     esp_console_deinit();
 
     ESP_LOGI(TAG, "Console stopped");
-    vTaskDelete(NULL);
+    vTaskDelete(((void*)0));
 }

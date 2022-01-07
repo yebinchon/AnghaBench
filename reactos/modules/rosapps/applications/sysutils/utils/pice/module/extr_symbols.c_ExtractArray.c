@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ULONG ;
-struct TYPE_3__ {int /*<<< orphan*/  type; int /*<<< orphan*/  type_name; int /*<<< orphan*/  file; int /*<<< orphan*/  pSymbols; int /*<<< orphan*/  bArrayType; } ;
-typedef  TYPE_1__* PVRET ;
-typedef  scalar_t__ LPSTR ;
-typedef  int /*<<< orphan*/  BOOLEAN ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPRINT (int) ; 
- int /*<<< orphan*/  ExtractNumber (scalar_t__) ; 
- int /*<<< orphan*/  ExtractTypeName (scalar_t__) ; 
- int /*<<< orphan*/  ExtractTypeNumber (scalar_t__) ; 
- int /*<<< orphan*/  FALSE ; 
- scalar_t__ FindTypeDefinition (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ PICE_strchr (scalar_t__,char) ; 
- int /*<<< orphan*/  PICE_strcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int ULONG ;
+struct TYPE_3__ {int type; int type_name; int file; int pSymbols; int bArrayType; } ;
+typedef TYPE_1__* PVRET ;
+typedef scalar_t__ LPSTR ;
+typedef int BOOLEAN ;
+
+
+ int DPRINT (int) ;
+ int ExtractNumber (scalar_t__) ;
+ int ExtractTypeName (scalar_t__) ;
+ int ExtractTypeNumber (scalar_t__) ;
+ int FALSE ;
+ scalar_t__ FindTypeDefinition (int ,int ,int ) ;
+ scalar_t__ PICE_strchr (scalar_t__,char) ;
+ int PICE_strcpy (int ,int ) ;
+ int TRUE ;
 
 BOOLEAN ExtractArray(PVRET pvr,LPSTR p)
 {
@@ -36,7 +36,7 @@ BOOLEAN ExtractArray(PVRET pvr,LPSTR p)
 
     DPRINT((1,"ExtractArray(%s)\n",p));
 
-    // index-type index-type-number;lower;upper;element-type-number
+
     pvr->bArrayType = TRUE;
     p++;
     index_typenumber = ExtractTypeNumber(p);

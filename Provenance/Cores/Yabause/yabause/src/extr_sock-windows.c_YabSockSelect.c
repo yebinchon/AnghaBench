@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct timeval {scalar_t__ tv_usec; scalar_t__ tv_sec; } ;
-typedef  int /*<<< orphan*/  fd_set ;
-typedef  scalar_t__ YabSock ;
+typedef int fd_set ;
+typedef scalar_t__ YabSock ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FD_SET (scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FD_ZERO (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LOG (char*,int) ; 
- int SOCKET_ERROR ; 
- int WSAGetLastError () ; 
- int /*<<< orphan*/  read_fds ; 
- int select (scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,struct timeval*) ; 
- int /*<<< orphan*/  write_fds ; 
+
+ int FD_SET (scalar_t__,int *) ;
+ int FD_ZERO (int *) ;
+ int LOG (char*,int) ;
+ int SOCKET_ERROR ;
+ int WSAGetLastError () ;
+ int read_fds ;
+ int select (scalar_t__,int *,int *,int *,struct timeval*) ;
+ int write_fds ;
 
 int YabSockSelect(YabSock sock, int check_read, int check_write )
 {
@@ -34,14 +34,14 @@ int YabSockSelect(YabSock sock, int check_read, int check_write )
    FD_ZERO(&read_fds);
    FD_ZERO(&write_fds);
 
-   // Let's see if we can even connect at this point
+
    if (check_read)
    {
       FD_SET(sock, &read_fds);
       read_fds_ptr = &read_fds;
    }
    else
-      read_fds_ptr = NULL;
+      read_fds_ptr = ((void*)0);
 
    if (check_write)
    {
@@ -49,12 +49,12 @@ int YabSockSelect(YabSock sock, int check_read, int check_write )
       write_fds_ptr = &write_fds;
    }
    else
-      write_fds_ptr = NULL;
+      write_fds_ptr = ((void*)0);
 
    tv.tv_sec = 0;
    tv.tv_usec = 0;
 
-   if ((ret=select(sock+1, read_fds_ptr, write_fds_ptr, NULL, &tv)) < 1)
+   if ((ret=select(sock+1, read_fds_ptr, write_fds_ptr, ((void*)0), &tv)) < 1)
    {
       if (ret == SOCKET_ERROR)
          LOG("select: err code %d\n", WSAGetLastError());

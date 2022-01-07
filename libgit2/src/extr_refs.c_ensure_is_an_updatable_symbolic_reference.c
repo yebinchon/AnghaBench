@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ type; } ;
-typedef  TYPE_1__ git_reference ;
+typedef TYPE_1__ git_reference ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GIT_ERROR_REFERENCE ; 
- scalar_t__ GIT_REFERENCE_SYMBOLIC ; 
- int /*<<< orphan*/  git_error_set (int /*<<< orphan*/ ,char*) ; 
+
+ int GIT_ERROR_REFERENCE ;
+ scalar_t__ GIT_REFERENCE_SYMBOLIC ;
+ int git_error_set (int ,char*) ;
 
 __attribute__((used)) static int ensure_is_an_updatable_symbolic_reference(git_reference *ref)
 {
-	if (ref->type == GIT_REFERENCE_SYMBOLIC)
-		return 0;
+ if (ref->type == GIT_REFERENCE_SYMBOLIC)
+  return 0;
 
-	git_error_set(GIT_ERROR_REFERENCE, "cannot set symbolic target on a direct reference");
-	return -1;
+ git_error_set(GIT_ERROR_REFERENCE, "cannot set symbolic target on a direct reference");
+ return -1;
 }

@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buffer ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  UINT ;
-typedef  int /*<<< orphan*/ * LPSTR ;
-typedef  int /*<<< orphan*/ * LPCWSTR ;
-typedef  int /*<<< orphan*/ * LPBYTE ;
-typedef  int /*<<< orphan*/  HANDLE ;
-typedef  int ENCODING ;
-typedef  scalar_t__ DWORD ;
-typedef  int /*<<< orphan*/  BYTE ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CP_ACP ; 
- int /*<<< orphan*/  CP_UTF8 ; 
-#define  ENCODING_ANSI 131 
-#define  ENCODING_UTF16BE 130 
-#define  ENCODING_UTF16LE 129 
-#define  ENCODING_UTF8 128 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TRUE ; 
- void* WideCharToMultiByte (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  WriteFile (int /*<<< orphan*/ ,int /*<<< orphan*/ *,scalar_t__,scalar_t__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__) ; 
+
+
+
+typedef int buffer ;
+typedef int WCHAR ;
+typedef int UINT ;
+typedef int * LPSTR ;
+typedef int * LPCWSTR ;
+typedef int * LPBYTE ;
+typedef int HANDLE ;
+typedef int ENCODING ;
+typedef scalar_t__ DWORD ;
+typedef int BYTE ;
+typedef int BOOL ;
+
+
+ int CP_ACP ;
+ int CP_UTF8 ;
+
+
+
+
+ int FALSE ;
+ int GetProcessHeap () ;
+ int HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,int *) ;
+ int TRUE ;
+ void* WideCharToMultiByte (int ,int ,int *,scalar_t__,int *,int,int *,int *) ;
+ int WriteFile (int ,int *,scalar_t__,scalar_t__*,int *) ;
+ int memcpy (int *,int *,scalar_t__) ;
 
 __attribute__((used)) static BOOL WriteEncodedText(HANDLE hFile, LPCWSTR pszText, DWORD dwTextLen, ENCODING encFile)
 {
-    LPBYTE pBytes = NULL;
-    LPBYTE pAllocBuffer = NULL;
+    LPBYTE pBytes = ((void*)0);
+    LPBYTE pAllocBuffer = ((void*)0);
     DWORD dwPos = 0;
     DWORD dwByteCount;
     BYTE buffer[1024];
@@ -55,13 +55,13 @@ __attribute__((used)) static BOOL WriteEncodedText(HANDLE hFile, LPCWSTR pszText
     {
         switch(encFile)
         {
-            case ENCODING_UTF16LE:
+            case 129:
                 pBytes = (LPBYTE) &pszText[dwPos];
                 dwByteCount = (dwTextLen - dwPos) * sizeof(WCHAR);
                 dwPos = dwTextLen;
                 break;
 
-            case ENCODING_UTF16BE:
+            case 130:
                 dwByteCount = (dwTextLen - dwPos) * sizeof(WCHAR);
                 if (dwByteCount > sizeof(buffer))
                     dwByteCount = sizeof(buffer);
@@ -77,14 +77,14 @@ __attribute__((used)) static BOOL WriteEncodedText(HANDLE hFile, LPCWSTR pszText
                 dwPos += dwByteCount / sizeof(WCHAR);
                 break;
 
-            case ENCODING_ANSI:
-            case ENCODING_UTF8:
-                if (encFile == ENCODING_ANSI)
+            case 131:
+            case 128:
+                if (encFile == 131)
                     iCodePage = CP_ACP;
-                else if (encFile == ENCODING_UTF8)
+                else if (encFile == 128)
                     iCodePage = CP_UTF8;
 
-                iRequiredBytes = WideCharToMultiByte(iCodePage, 0, &pszText[dwPos], dwTextLen - dwPos, NULL, 0, NULL, NULL);
+                iRequiredBytes = WideCharToMultiByte(iCodePage, 0, &pszText[dwPos], dwTextLen - dwPos, ((void*)0), 0, ((void*)0), ((void*)0));
                 if (iRequiredBytes <= 0)
                 {
                     goto done;
@@ -103,7 +103,7 @@ __attribute__((used)) static BOOL WriteEncodedText(HANDLE hFile, LPCWSTR pszText
                     iBufferSize = iRequiredBytes;
                 }
 
-                dwByteCount = WideCharToMultiByte(iCodePage, 0, &pszText[dwPos], dwTextLen - dwPos, (LPSTR) pBytes, iBufferSize, NULL, NULL);
+                dwByteCount = WideCharToMultiByte(iCodePage, 0, &pszText[dwPos], dwTextLen - dwPos, (LPSTR) pBytes, iBufferSize, ((void*)0), ((void*)0));
                 if (!dwByteCount)
                     goto done;
 
@@ -114,14 +114,14 @@ __attribute__((used)) static BOOL WriteEncodedText(HANDLE hFile, LPCWSTR pszText
                 goto done;
         }
 
-        if (!WriteFile(hFile, pBytes, dwByteCount, &dwDummy, NULL))
+        if (!WriteFile(hFile, pBytes, dwByteCount, &dwDummy, ((void*)0)))
             goto done;
 
-        /* free the buffer, if we have allocated one */
+
         if (pAllocBuffer)
         {
             HeapFree(GetProcessHeap(), 0, pAllocBuffer);
-            pAllocBuffer = NULL;
+            pAllocBuffer = ((void*)0);
         }
     }
     bSuccess = TRUE;

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  StringInfo ;
-typedef  int /*<<< orphan*/  AlterStatsStmt ;
 
-/* Variables and functions */
- int /*<<< orphan*/  WRITE_BOOL_FIELD (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WRITE_INT_FIELD (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WRITE_NODE_FIELD (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WRITE_NODE_TYPE (char*) ; 
- int /*<<< orphan*/  defnames ; 
- int /*<<< orphan*/  missing_ok ; 
- int /*<<< orphan*/  stxstattarget ; 
+
+
+
+typedef int StringInfo ;
+typedef int AlterStatsStmt ;
+
+
+ int WRITE_BOOL_FIELD (int ) ;
+ int WRITE_INT_FIELD (int ) ;
+ int WRITE_NODE_FIELD (int ) ;
+ int WRITE_NODE_TYPE (char*) ;
+ int defnames ;
+ int missing_ok ;
+ int stxstattarget ;
 
 __attribute__((used)) static void
 _outAlterStatsStmt(StringInfo str, const AlterStatsStmt *node)
 {
-	WRITE_NODE_TYPE("ALTERSTATSSTMT");
+ WRITE_NODE_TYPE("ALTERSTATSSTMT");
 
-	WRITE_NODE_FIELD(defnames);
-	WRITE_INT_FIELD(stxstattarget);
-	WRITE_BOOL_FIELD(missing_ok);
+ WRITE_NODE_FIELD(defnames);
+ WRITE_INT_FIELD(stxstattarget);
+ WRITE_BOOL_FIELD(missing_ok);
 }

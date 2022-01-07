@@ -1,67 +1,67 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_19__   TYPE_7__ ;
-typedef  struct TYPE_18__   TYPE_6__ ;
-typedef  struct TYPE_17__   TYPE_5__ ;
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_object_t ;
-struct TYPE_17__ {int /*<<< orphan*/  es; } ;
-typedef  TYPE_5__ imem_sys_t ;
+
+
+typedef struct TYPE_19__ TYPE_7__ ;
+typedef struct TYPE_18__ TYPE_6__ ;
+typedef struct TYPE_17__ TYPE_5__ ;
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+typedef int vlc_object_t ;
+struct TYPE_17__ {int es; } ;
+typedef TYPE_5__ imem_sys_t ;
 struct TYPE_15__ {void* i_original_frame_height; void* i_original_frame_width; } ;
 struct TYPE_16__ {TYPE_3__ spu; } ;
 struct TYPE_14__ {unsigned int i_width; unsigned int i_height; unsigned int i_sar_num; unsigned int i_sar_den; unsigned int i_frame_rate; unsigned int i_frame_rate_base; } ;
 struct TYPE_13__ {void* i_rate; void* i_channels; } ;
-struct TYPE_18__ {int i_cat; void* psz_language; int /*<<< orphan*/  i_codec; TYPE_4__ subs; TYPE_2__ video; TYPE_1__ audio; void* i_group; void* i_id; } ;
-typedef  TYPE_6__ es_format_t ;
-struct TYPE_19__ {TYPE_5__* p_sys; int /*<<< orphan*/  pf_demux; int /*<<< orphan*/  pf_control; int /*<<< orphan*/ * out; int /*<<< orphan*/  psz_location; } ;
-typedef  TYPE_7__ demux_t ;
+struct TYPE_18__ {int i_cat; void* psz_language; int i_codec; TYPE_4__ subs; TYPE_2__ video; TYPE_1__ audio; void* i_group; void* i_id; } ;
+typedef TYPE_6__ es_format_t ;
+struct TYPE_19__ {TYPE_5__* p_sys; int pf_demux; int pf_control; int * out; int psz_location; } ;
+typedef TYPE_7__ demux_t ;
 
-/* Variables and functions */
-#define  AUDIO_ES 130 
- int /*<<< orphan*/  CloseCommon (TYPE_5__*) ; 
- int /*<<< orphan*/  ControlDemux ; 
- int /*<<< orphan*/  Demux ; 
- int /*<<< orphan*/  GetCategory (int /*<<< orphan*/ *) ; 
- scalar_t__ OpenCommon (int /*<<< orphan*/ *,TYPE_5__**,int /*<<< orphan*/ ) ; 
-#define  SPU_ES 129 
-#define  VIDEO_ES 128 
- int VLC_EGENERIC ; 
- int VLC_SUCCESS ; 
- int /*<<< orphan*/  es_format_Clean (TYPE_6__*) ; 
- int /*<<< orphan*/  es_format_Init (TYPE_6__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  es_out_Add (int /*<<< orphan*/ *,TYPE_6__*) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  msg_Dbg (int /*<<< orphan*/ *,char*,char const*,...) ; 
- void* var_InheritInteger (int /*<<< orphan*/ *,char*) ; 
- void* var_InheritString (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  var_InheritURational (int /*<<< orphan*/ *,unsigned int*,unsigned int*,char*) ; 
- int /*<<< orphan*/  vlc_fourcc_GetCodecFromString (int,char*) ; 
+
+
+ int CloseCommon (TYPE_5__*) ;
+ int ControlDemux ;
+ int Demux ;
+ int GetCategory (int *) ;
+ scalar_t__ OpenCommon (int *,TYPE_5__**,int ) ;
+
+
+ int VLC_EGENERIC ;
+ int VLC_SUCCESS ;
+ int es_format_Clean (TYPE_6__*) ;
+ int es_format_Init (TYPE_6__*,int ,int ) ;
+ int es_out_Add (int *,TYPE_6__*) ;
+ int free (char*) ;
+ int msg_Dbg (int *,char*,char const*,...) ;
+ void* var_InheritInteger (int *,char*) ;
+ void* var_InheritString (int *,char*) ;
+ int var_InheritURational (int *,unsigned int*,unsigned int*,char*) ;
+ int vlc_fourcc_GetCodecFromString (int,char*) ;
 
 __attribute__((used)) static int OpenDemux(vlc_object_t *object)
 {
-    demux_t    *demux = (demux_t *)object;
+    demux_t *demux = (demux_t *)object;
     imem_sys_t *sys;
 
-    if (demux->out == NULL)
+    if (demux->out == ((void*)0))
         return VLC_EGENERIC;
 
     if (OpenCommon(object, &sys, demux->psz_location))
         return VLC_EGENERIC;
 
-    /* ES format */
+
     es_format_t fmt;
     es_format_Init(&fmt, GetCategory(object), 0);
 
@@ -74,7 +74,7 @@ __attribute__((used)) static int OpenDemux(vlc_object_t *object)
     free(tmp);
 
     switch (fmt.i_cat) {
-    case AUDIO_ES: {
+    case 130: {
         fmt.audio.i_channels = var_InheritInteger(object, "imem-channels");
         fmt.audio.i_rate = var_InheritInteger(object, "imem-samplerate");
 
@@ -83,8 +83,8 @@ __attribute__((used)) static int OpenDemux(vlc_object_t *object)
                 fmt.audio.i_channels, fmt.audio.i_rate);
         break;
     }
-    case VIDEO_ES: {
-        fmt.video.i_width  = var_InheritInteger(object, "imem-width");
+    case 128: {
+        fmt.video.i_width = var_InheritInteger(object, "imem-width");
         fmt.video.i_height = var_InheritInteger(object, "imem-height");
         unsigned num, den;
         if (!var_InheritURational(object, &num, &den, "imem-dar") && num > 0 && den > 0) {
@@ -94,7 +94,7 @@ __attribute__((used)) static int OpenDemux(vlc_object_t *object)
             }
         }
         if (!var_InheritURational(object, &num, &den, "imem-fps") && num > 0 && den > 0) {
-            fmt.video.i_frame_rate      = num;
+            fmt.video.i_frame_rate = num;
             fmt.video.i_frame_rate_base = den;
         }
 
@@ -105,7 +105,7 @@ __attribute__((used)) static int OpenDemux(vlc_object_t *object)
                 fmt.video.i_frame_rate, fmt.video.i_frame_rate_base);
         break;
     }
-    case SPU_ES: {
+    case 129: {
         fmt.subs.spu.i_original_frame_width =
             var_InheritInteger(object, "imem-width");
         fmt.subs.spu.i_original_frame_height =
@@ -131,10 +131,10 @@ __attribute__((used)) static int OpenDemux(vlc_object_t *object)
         return VLC_EGENERIC;
     }
 
-    /* */
+
     demux->pf_control = ControlDemux;
-    demux->pf_demux   = Demux;
-    demux->p_sys      = sys;
+    demux->pf_demux = Demux;
+    demux->p_sys = sys;
 
     return VLC_SUCCESS;
 }

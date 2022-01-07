@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int num_of_sources_or_masks; } ;
-typedef  TYPE_1__ WFC_STREAM_T ;
-typedef  int /*<<< orphan*/  WFCNativeStreamType ;
+typedef TYPE_1__ WFC_STREAM_T ;
+typedef int WFCNativeStreamType ;
 
-/* Variables and functions */
- int /*<<< orphan*/  STREAM_UNLOCK (TYPE_1__*) ; 
- int /*<<< orphan*/  VCOS_FUNCTION ; 
- int /*<<< orphan*/  vcos_log_trace (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int) ; 
- scalar_t__ vcos_verify (int) ; 
- int /*<<< orphan*/  wfc_stream_destroy_if_ready (TYPE_1__*) ; 
- TYPE_1__* wfc_stream_find_stream_ptr (int /*<<< orphan*/ ) ; 
+
+ int STREAM_UNLOCK (TYPE_1__*) ;
+ int VCOS_FUNCTION ;
+ int vcos_log_trace (char*,int ,int ,int,int) ;
+ scalar_t__ vcos_verify (int) ;
+ int wfc_stream_destroy_if_ready (TYPE_1__*) ;
+ TYPE_1__* wfc_stream_find_stream_ptr (int ) ;
 
 bool wfc_stream_register_source_or_mask(WFCNativeStreamType stream, bool add_source_or_mask)
-// Indicate that a source or mask is now associated with this stream, or should
-// now be removed from such an association.
+
+
 {
    WFC_STREAM_T *stream_ptr = wfc_stream_find_stream_ptr(stream);
 
    if (!stream_ptr)
-      return false;
+      return 0;
 
    vcos_log_trace("%s: stream 0x%x %d->%d", VCOS_FUNCTION, stream,
          stream_ptr->num_of_sources_or_masks,
@@ -46,9 +46,9 @@ bool wfc_stream_register_source_or_mask(WFCNativeStreamType stream, bool add_sou
       if(vcos_verify(stream_ptr->num_of_sources_or_masks > 0))
          {stream_ptr->num_of_sources_or_masks--;}
 
-      // Stream is unlocked by destroy_if_ready
+
       wfc_stream_destroy_if_ready(stream_ptr);
    }
 
-   return true;
+   return 1;
 }

@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * xmlParserInputPtr ;
-typedef  int /*<<< orphan*/  xmlParserCtxtPtr ;
-typedef  int /*<<< orphan*/  xmlChar ;
 
-/* Variables and functions */
- scalar_t__ xmlCanonicPath (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/ * xmlCurrentExternalEntityLoader (char const*,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xmlFree (char*) ; 
- int /*<<< orphan*/  xmlIOErrMemory (char*) ; 
- scalar_t__ xmlNoNetExists (char const*) ; 
+
+
+
+typedef int * xmlParserInputPtr ;
+typedef int xmlParserCtxtPtr ;
+typedef int xmlChar ;
+
+
+ scalar_t__ xmlCanonicPath (int const*) ;
+ int * xmlCurrentExternalEntityLoader (char const*,char const*,int ) ;
+ int xmlFree (char*) ;
+ int xmlIOErrMemory (char*) ;
+ scalar_t__ xmlNoNetExists (char const*) ;
 
 xmlParserInputPtr
 xmlLoadExternalEntity(const char *URL, const char *ID,
                       xmlParserCtxtPtr ctxt) {
-    if ((URL != NULL) && (xmlNoNetExists(URL) == 0)) {
-	char *canonicFilename;
-	xmlParserInputPtr ret;
+    if ((URL != ((void*)0)) && (xmlNoNetExists(URL) == 0)) {
+ char *canonicFilename;
+ xmlParserInputPtr ret;
 
-	canonicFilename = (char *) xmlCanonicPath((const xmlChar *) URL);
-	if (canonicFilename == NULL) {
+ canonicFilename = (char *) xmlCanonicPath((const xmlChar *) URL);
+ if (canonicFilename == ((void*)0)) {
             xmlIOErrMemory("building canonical path\n");
-	    return(NULL);
-	}
+     return(((void*)0));
+ }
 
-	ret = xmlCurrentExternalEntityLoader(canonicFilename, ID, ctxt);
-	xmlFree(canonicFilename);
-	return(ret);
+ ret = xmlCurrentExternalEntityLoader(canonicFilename, ID, ctxt);
+ xmlFree(canonicFilename);
+ return(ret);
     }
     return(xmlCurrentExternalEntityLoader(URL, ID, ctxt));
 }

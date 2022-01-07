@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  DEBUG (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  DL_INF ; 
- int /*<<< orphan*/  ext4_set_bit (int,char*) ; 
- int /*<<< orphan*/  memset (char*,int,int) ; 
+ int DEBUG (int ,char*) ;
+ int DL_INF ;
+ int ext4_set_bit (int,char*) ;
+ int memset (char*,int,int) ;
 
 void mark_bitmap_end(int start_bit, int end_bit, char *bitmap)
 {

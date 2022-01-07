@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct gpio_desc {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  VALIDATE_DESC_VOID (struct gpio_desc*) ; 
- int /*<<< orphan*/  extra_checks ; 
- int /*<<< orphan*/  gpiod_set_raw_value_commit (struct gpio_desc*,int) ; 
- int /*<<< orphan*/  might_sleep_if (int /*<<< orphan*/ ) ; 
+
+ int VALIDATE_DESC_VOID (struct gpio_desc*) ;
+ int extra_checks ;
+ int gpiod_set_raw_value_commit (struct gpio_desc*,int) ;
+ int might_sleep_if (int ) ;
 
 void gpiod_set_raw_value_cansleep(struct gpio_desc *desc, int value)
 {
-	might_sleep_if(extra_checks);
-	VALIDATE_DESC_VOID(desc);
-	gpiod_set_raw_value_commit(desc, value);
+ might_sleep_if(extra_checks);
+ VALIDATE_DESC_VOID(desc);
+ gpiod_set_raw_value_commit(desc, value);
 }

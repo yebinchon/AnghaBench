@@ -1,29 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  cselib_clear_table () ; 
- scalar_t__ cselib_hash_table ; 
- int /*<<< orphan*/  cselib_val_pool ; 
- int /*<<< orphan*/  elt_list_pool ; 
- int /*<<< orphan*/  elt_loc_list_pool ; 
- int /*<<< orphan*/  free (scalar_t__) ; 
- int /*<<< orphan*/  free_alloc_pool (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  htab_delete (scalar_t__) ; 
- scalar_t__ n_useless_values ; 
- scalar_t__ next_unknown_value ; 
- scalar_t__ used_regs ; 
- int /*<<< orphan*/  value_pool ; 
+ int cselib_clear_table () ;
+ scalar_t__ cselib_hash_table ;
+ int cselib_val_pool ;
+ int elt_list_pool ;
+ int elt_loc_list_pool ;
+ int free (scalar_t__) ;
+ int free_alloc_pool (int ) ;
+ int htab_delete (scalar_t__) ;
+ scalar_t__ n_useless_values ;
+ scalar_t__ next_unknown_value ;
+ scalar_t__ used_regs ;
+ int value_pool ;
 
 void
 cselib_finish (void)

@@ -1,47 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
-#define  HB_COLR_MAT_BT2020_NCL 135 
-#define  HB_COLR_MAT_BT470BG 134 
-#define  HB_COLR_MAT_BT709 133 
-#define  HB_COLR_MAT_FCC 132 
-#define  HB_COLR_MAT_RGB 131 
-#define  HB_COLR_MAT_SMPTE170M 130 
-#define  HB_COLR_MAT_SMPTE240M 129 
-#define  HB_COLR_MAT_YCGCO 128 
-
 const char * hb_get_matrix_name(int matrix)
 {
     switch (matrix)
     {
-        case HB_COLR_MAT_BT709:
+        case 133:
             return "bt709";
-        case HB_COLR_MAT_FCC:
+        case 132:
             return "fcc";
-        case HB_COLR_MAT_BT470BG:
+        case 134:
             return "bt470bg";
-        case HB_COLR_MAT_SMPTE170M:
+        case 130:
             return "smpte170m";
-        case HB_COLR_MAT_SMPTE240M:
+        case 129:
             return "smpte240m";
-        case HB_COLR_MAT_YCGCO:
+        case 128:
             return "ycgco";
-        case HB_COLR_MAT_RGB:
+        case 131:
             return "gbr";
-        case HB_COLR_MAT_BT2020_NCL:
+        case 135:
             return "bt2020ncl";
         default:
-            return NULL;
+            return ((void*)0);
     }
 }

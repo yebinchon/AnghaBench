@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u16 ;
-struct tcf_meta_info {int /*<<< orphan*/  metaid; scalar_t__ metaval; } ;
+
+
+
+
+typedef int u16 ;
+struct tcf_meta_info {int metaid; scalar_t__ metaval; } ;
 struct sk_buff {int dummy; } ;
 
-/* Variables and functions */
- int nla_put (struct sk_buff*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int nla_put_u16 (struct sk_buff*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int nla_put (struct sk_buff*,int ,int ,int *) ;
+ int nla_put_u16 (struct sk_buff*,int ,int ) ;
 
 int ife_get_meta_u16(struct sk_buff *skb, struct tcf_meta_info *mi)
 {
-	if (mi->metaval)
-		return nla_put_u16(skb, mi->metaid, *(u16 *)mi->metaval);
-	else
-		return nla_put(skb, mi->metaid, 0, NULL);
+ if (mi->metaval)
+  return nla_put_u16(skb, mi->metaid, *(u16 *)mi->metaval);
+ else
+  return nla_put(skb, mi->metaid, 0, ((void*)0));
 }

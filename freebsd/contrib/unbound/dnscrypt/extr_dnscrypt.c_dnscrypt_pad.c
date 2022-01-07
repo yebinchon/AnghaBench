@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
-typedef  size_t const uint32_t ;
-typedef  int /*<<< orphan*/  rnd ;
 
-/* Variables and functions */
- size_t DNSCRYPT_BLOCK_SIZE ; 
- size_t const DNSCRYPT_MIN_PAD_LEN ; 
- int /*<<< orphan*/  assert (int) ; 
- size_t crypto_box_HALF_NONCEBYTES ; 
- int /*<<< orphan*/  crypto_stream (unsigned char*,unsigned long long,scalar_t__ const*,scalar_t__ const*) ; 
- int /*<<< orphan*/  memset (scalar_t__*,int /*<<< orphan*/ ,size_t) ; 
+
+
+
+typedef scalar_t__ uint8_t ;
+typedef size_t const uint32_t ;
+typedef int rnd ;
+
+
+ size_t DNSCRYPT_BLOCK_SIZE ;
+ size_t const DNSCRYPT_MIN_PAD_LEN ;
+ int assert (int) ;
+ size_t crypto_box_HALF_NONCEBYTES ;
+ int crypto_stream (unsigned char*,unsigned long long,scalar_t__ const*,scalar_t__ const*) ;
+ int memset (scalar_t__*,int ,size_t) ;
 
 size_t
 dnscrypt_pad(uint8_t *buf, const size_t len, const size_t max_len,
@@ -30,7 +30,7 @@ dnscrypt_pad(uint8_t *buf, const size_t len, const size_t max_len,
     size_t padded_len;
     uint32_t rnd;
 
-    // no padding
+
     if (max_len < len + DNSCRYPT_MIN_PAD_LEN)
         return len;
 

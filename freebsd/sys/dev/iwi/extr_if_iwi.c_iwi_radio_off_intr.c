@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct iwi_softc {int /*<<< orphan*/  sc_radiofftask; int /*<<< orphan*/  sc_ic; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ieee80211_runtask (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+struct iwi_softc {int sc_radiofftask; int sc_ic; } ;
+
+
+ int ieee80211_runtask (int *,int *) ;
 
 __attribute__((used)) static void
 iwi_radio_off_intr(struct iwi_softc *sc)
 {
 
-	ieee80211_runtask(&sc->sc_ic, &sc->sc_radiofftask);
+ ieee80211_runtask(&sc->sc_ic, &sc->sc_radiofftask);
 }

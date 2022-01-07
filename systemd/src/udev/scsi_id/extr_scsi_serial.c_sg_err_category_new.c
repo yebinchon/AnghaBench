@@ -1,45 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  DID_BUS_BUSY ; 
- int /*<<< orphan*/  DID_NO_CONNECT ; 
- int /*<<< orphan*/  DID_TIME_OUT ; 
- int DRIVER_SENSE ; 
- int DRIVER_TIMEOUT ; 
- int ILLEGAL_REQUEST ; 
- scalar_t__ IN_SET (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,...) ; 
- int RECOVERED_ERROR ; 
- int /*<<< orphan*/  SCSI_CHECK_CONDITION ; 
- int /*<<< orphan*/  SCSI_COMMAND_TERMINATED ; 
- int SG_ERR_CAT_CLEAN ; 
- int SG_ERR_CAT_MEDIA_CHANGED ; 
- int SG_ERR_CAT_NOTSUPPORTED ; 
- int SG_ERR_CAT_OTHER ; 
- int SG_ERR_CAT_RECOVERED ; 
- int SG_ERR_CAT_RESET ; 
- int SG_ERR_CAT_SENSE ; 
- int SG_ERR_CAT_TIMEOUT ; 
- int UNIT_ATTENTION ; 
+ int DID_BUS_BUSY ;
+ int DID_NO_CONNECT ;
+ int DID_TIME_OUT ;
+ int DRIVER_SENSE ;
+ int DRIVER_TIMEOUT ;
+ int ILLEGAL_REQUEST ;
+ scalar_t__ IN_SET (int,int ,int ,...) ;
+ int RECOVERED_ERROR ;
+ int SCSI_CHECK_CONDITION ;
+ int SCSI_COMMAND_TERMINATED ;
+ int SG_ERR_CAT_CLEAN ;
+ int SG_ERR_CAT_MEDIA_CHANGED ;
+ int SG_ERR_CAT_NOTSUPPORTED ;
+ int SG_ERR_CAT_OTHER ;
+ int SG_ERR_CAT_RECOVERED ;
+ int SG_ERR_CAT_RESET ;
+ int SG_ERR_CAT_SENSE ;
+ int SG_ERR_CAT_TIMEOUT ;
+ int UNIT_ATTENTION ;
 
 __attribute__((used)) static int sg_err_category_new(int scsi_status, int msg_status, int
                                host_status, int driver_status, const
                                unsigned char *sense_buffer, int sb_len) {
         scsi_status &= 0x7e;
 
-        /*
-         * XXX change to return only two values - failed or OK.
-         */
+
+
+
 
         if (!scsi_status && !host_status && !driver_status)
                 return SG_ERR_CAT_CLEAN;

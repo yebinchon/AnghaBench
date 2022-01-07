@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/ * hlibiconv; } ;
-typedef  TYPE_1__ rec_iconv_t ;
-typedef  int /*<<< orphan*/  outbuf ;
-typedef  scalar_t__ iconv_t ;
-typedef  int /*<<< orphan*/  dllpath ;
 
-/* Variables and functions */
- int BUFSIZ ; 
- int /*<<< orphan*/  GetModuleFileNameA (int /*<<< orphan*/ *,char*,int) ; 
- int _MAX_PATH ; 
- int errno ; 
- char* errstr (int) ; 
- int /*<<< orphan*/  exit (int) ; 
- size_t iconv (scalar_t__,char const**,size_t*,char**,size_t*) ; 
- scalar_t__ iconv_open (char const*,char const*) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- scalar_t__ strcmp (char*,char const*) ; 
- char* tohex (char const*,int) ; 
- scalar_t__ use_dll ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int * hlibiconv; } ;
+typedef TYPE_1__ rec_iconv_t ;
+typedef int outbuf ;
+typedef scalar_t__ iconv_t ;
+typedef int dllpath ;
+
+
+ int BUFSIZ ;
+ int GetModuleFileNameA (int *,char*,int) ;
+ int _MAX_PATH ;
+ int errno ;
+ char* errstr (int) ;
+ int exit (int) ;
+ size_t iconv (scalar_t__,char const**,size_t*,char**,size_t*) ;
+ scalar_t__ iconv_open (char const*,char const*) ;
+ int printf (char*,...) ;
+ scalar_t__ strcmp (char*,char const*) ;
+ char* tohex (char const*,int) ;
+ scalar_t__ use_dll ;
 
 void
 test(const char *from, const char *fromstr, int fromsize, const char *to, const char *tostr, int tosize, int errcode, int bufsize, int line)
@@ -41,9 +41,9 @@ test(const char *from, const char *fromstr, int fromsize, const char *to, const 
     size_t outbytesleft;
     iconv_t cd;
     size_t r;
-#ifdef USE_LIBICONV_DLL
-    char dllpath[_MAX_PATH];
-#endif
+
+
+
 
     cd = iconv_open(to, from);
     if (cd == (iconv_t)(-1))
@@ -51,23 +51,6 @@ test(const char *from, const char *fromstr, int fromsize, const char *to, const 
         printf("%s -> %s: NG: INVALID ENCODING NAME: line=%d\n", from, to, line);
         exit(1);
     }
-
-#ifdef USE_LIBICONV_DLL
-    if (((rec_iconv_t *)cd)->hlibiconv != NULL)
-        GetModuleFileNameA(((rec_iconv_t *)cd)->hlibiconv, dllpath, sizeof(dllpath));
-
-    if (use_dll && ((rec_iconv_t *)cd)->hlibiconv == NULL)
-    {
-        printf("%s: %s -> %s: NG: FAILED TO USE DLL: line=%d\n", dllpath, from, to, line);
-        exit(1);
-    }
-    else if (!use_dll && ((rec_iconv_t *)cd)->hlibiconv != NULL)
-    {
-        printf("%s: %s -> %s: NG: DLL IS LOADED UNEXPECTEDLY: line=%d\n", dllpath, from, to, line);
-        exit(1);
-    }
-#endif
-
     errno = 0;
 
     pin = (char *)fromstr;
@@ -76,13 +59,13 @@ test(const char *from, const char *fromstr, int fromsize, const char *to, const 
     outbytesleft = bufsize;
     r = iconv(cd, &pin, &inbytesleft, &pout, &outbytesleft);
     if (r != (size_t)(-1))
-        r = iconv(cd, NULL, NULL, &pout, &outbytesleft);
+        r = iconv(cd, ((void*)0), ((void*)0), &pout, &outbytesleft);
     *pout = 0;
 
-#ifdef USE_LIBICONV_DLL
-    if (use_dll)
-        printf("%s: ", dllpath);
-#endif
+
+
+
+
     printf("%s(%s) -> ", from, tohex(fromstr, fromsize));
     printf("%s(%s%s%s): ", to, tohex(tostr, tosize),
             errcode == 0 ? "" : ":",

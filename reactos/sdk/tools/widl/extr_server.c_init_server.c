@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  PACKAGE_VERSION ; 
- int /*<<< orphan*/  error (char*,int /*<<< orphan*/ ) ; 
- scalar_t__ fopen (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  fprintf (scalar_t__,char*) ; 
- int /*<<< orphan*/  header_name ; 
- int /*<<< orphan*/  input_name ; 
- int /*<<< orphan*/  print_server (char*,...) ; 
- scalar_t__ server ; 
- int /*<<< orphan*/  server_name ; 
+ int PACKAGE_VERSION ;
+ int error (char*,int ) ;
+ scalar_t__ fopen (int ,char*) ;
+ int fprintf (scalar_t__,char*) ;
+ int header_name ;
+ int input_name ;
+ int print_server (char*,...) ;
+ scalar_t__ server ;
+ int server_name ;
 
 __attribute__((used)) static void init_server(void)
 {

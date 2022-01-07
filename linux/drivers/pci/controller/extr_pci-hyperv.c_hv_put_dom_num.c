@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u16 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  clear_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hvpci_dom_map ; 
+
+
+
+typedef int u16 ;
+
+
+ int clear_bit (int ,int ) ;
+ int hvpci_dom_map ;
 
 __attribute__((used)) static void hv_put_dom_num(u16 dom)
 {
-	clear_bit(dom, hvpci_dom_map);
+ clear_bit(dom, hvpci_dom_map);
 }

@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
 
-/* Variables and functions */
- scalar_t__ IB_CA_CONG_ENTRY_DATA_SIZE ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  log_report (char*) ; 
- int /*<<< orphan*/  null_str ; 
- scalar_t__ strcmp (int /*<<< orphan*/ ,char*) ; 
- char* strdup (char*) ; 
- char* strtok_r (char*,char*,char**) ; 
- scalar_t__ strtoul (char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef scalar_t__ uint8_t ;
+
+
+ scalar_t__ IB_CA_CONG_ENTRY_DATA_SIZE ;
+ int free (char*) ;
+ int log_report (char*) ;
+ int null_str ;
+ scalar_t__ strcmp (int ,char*) ;
+ char* strdup (char*) ;
+ char* strtok_r (char*,char*,char**) ;
+ scalar_t__ strtoul (char*,int *,int ) ;
 
 __attribute__((used)) static int parse_ca_cong_common(char *p_val_str, uint8_t *sl, unsigned int *val_offset) {
-	char *new, *lasts, *sl_str, *val_str;
-	uint8_t sltmp;
+ char *new, *lasts, *sl_str, *val_str;
+ uint8_t sltmp;
 
-	new = strcmp(null_str, p_val_str) ? strdup(p_val_str) : NULL;
-	if (!new)
-		return -1;
+ new = strcmp(null_str, p_val_str) ? strdup(p_val_str) : ((void*)0);
+ if (!new)
+  return -1;
 
-	sl_str = strtok_r(new, " \t", &lasts);
-	val_str = strtok_r(NULL, " \t", &lasts);
+ sl_str = strtok_r(new, " \t", &lasts);
+ val_str = strtok_r(((void*)0), " \t", &lasts);
 
-	if (!val_str) {
-		log_report("value must be specified in addition to SL\n");
-		free(new);
-		return -1;
-	}
+ if (!val_str) {
+  log_report("value must be specified in addition to SL\n");
+  free(new);
+  return -1;
+ }
 
-	sltmp = strtoul(sl_str, NULL, 0);
-	if (sltmp >= IB_CA_CONG_ENTRY_DATA_SIZE) {
-		log_report("invalid SL specified\n");
-		free(new);
-		return -1;
-	}
+ sltmp = strtoul(sl_str, ((void*)0), 0);
+ if (sltmp >= IB_CA_CONG_ENTRY_DATA_SIZE) {
+  log_report("invalid SL specified\n");
+  free(new);
+  return -1;
+ }
 
-	*sl = sltmp;
-	*val_offset = (unsigned int)(val_str - new);
+ *sl = sltmp;
+ *val_offset = (unsigned int)(val_str - new);
 
-	free(new);
-	return 0;
+ free(new);
+ return 0;
 }

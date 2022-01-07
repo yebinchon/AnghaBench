@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_34__   TYPE_9__ ;
-typedef  struct TYPE_33__   TYPE_8__ ;
-typedef  struct TYPE_32__   TYPE_7__ ;
-typedef  struct TYPE_31__   TYPE_6__ ;
-typedef  struct TYPE_30__   TYPE_5__ ;
-typedef  struct TYPE_29__   TYPE_4__ ;
-typedef  struct TYPE_28__   TYPE_3__ ;
-typedef  struct TYPE_27__   TYPE_2__ ;
-typedef  struct TYPE_26__   TYPE_1__ ;
-typedef  struct TYPE_25__   TYPE_12__ ;
-typedef  struct TYPE_24__   TYPE_11__ ;
-typedef  struct TYPE_23__   TYPE_10__ ;
 
-/* Type definitions */
-struct TYPE_23__ {unsigned long* iO1iw4; TYPE_7__* v6D2d3; int /*<<< orphan*/ ** hRUi43; TYPE_6__* oXafA1; TYPE_5__* YRHFy; TYPE_1__* fV7o35; } ;
-typedef  TYPE_10__ kWMzp1 ;
+
+
+typedef struct TYPE_34__ TYPE_9__ ;
+typedef struct TYPE_33__ TYPE_8__ ;
+typedef struct TYPE_32__ TYPE_7__ ;
+typedef struct TYPE_31__ TYPE_6__ ;
+typedef struct TYPE_30__ TYPE_5__ ;
+typedef struct TYPE_29__ TYPE_4__ ;
+typedef struct TYPE_28__ TYPE_3__ ;
+typedef struct TYPE_27__ TYPE_2__ ;
+typedef struct TYPE_26__ TYPE_1__ ;
+typedef struct TYPE_25__ TYPE_12__ ;
+typedef struct TYPE_24__ TYPE_11__ ;
+typedef struct TYPE_23__ TYPE_10__ ;
+
+
+struct TYPE_23__ {unsigned long* iO1iw4; TYPE_7__* v6D2d3; int ** hRUi43; TYPE_6__* oXafA1; TYPE_5__* YRHFy; TYPE_1__* fV7o35; } ;
+typedef TYPE_10__ kWMzp1 ;
 struct TYPE_33__ {int E7Ual2; int W4f921; int kgEeY3; int _Oqi51; int x2RgK4; int PBtXm1; unsigned char TIQMZ1; int AuCs73; int DDAs81; int VPJzO1; int JhCor3; unsigned long aW7n84; int Q1iXV3; int DvwSz1; } ;
 struct TYPE_34__ {int G15W41; TYPE_8__ C6yEr1; } ;
 struct TYPE_32__ {int E7Ual2; int W4f921; int kgEeY3; int _Oqi51; int x2RgK4; int PBtXm1; unsigned char TIQMZ1; int AuCs73; int DDAs81; int VPJzO1; int JhCor3; unsigned long aW7n84; int Q1iXV3; int DvwSz1; } ;
@@ -35,32 +35,32 @@ struct TYPE_28__ {TYPE_2__ gMQg82; } ;
 struct TYPE_26__ {unsigned long UyRVB4; } ;
 struct TYPE_25__ {TYPE_9__ tQcig; } ;
 struct TYPE_24__ {unsigned int QvZLK; TYPE_3__ NpyOc1; } ;
-typedef  TYPE_11__ QDNE6 ;
-typedef  TYPE_12__ DCf0T2 ;
+typedef TYPE_11__ QDNE6 ;
+typedef TYPE_12__ DCf0T2 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AErNL3 (TYPE_10__*) ; 
- int /*<<< orphan*/  AUUSL3 (unsigned long volatile*,int,int) ; 
- int /*<<< orphan*/  BucKo (unsigned long volatile*,int,int) ; 
- int CeDcj3 ; 
- int D1OxN4 ; 
- int /*<<< orphan*/  GLE_s4 (TYPE_10__*,int) ; 
- int /*<<< orphan*/  HcALQ1 (unsigned long volatile*,int,unsigned long) ; 
- int KZEMj4 ; 
- int KZp71 ; 
- int /*<<< orphan*/  NHDsK3 (unsigned long volatile*,int) ; 
- int /*<<< orphan*/  Rqv1w3 (unsigned long volatile*,int,unsigned long) ; 
- unsigned int WqCeB2 (TYPE_10__*) ; 
- int /*<<< orphan*/  cYVI15 (unsigned int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dMM0e1 (unsigned long volatile*,int) ; 
- int eKIU_4 ; 
- int /*<<< orphan*/  pxiAh4 (TYPE_10__*,TYPE_12__*,int) ; 
- int qS5lW1 ; 
- int /*<<< orphan*/  s3sCI1 (unsigned long volatile*,int,int) ; 
- int /*<<< orphan*/  tsz3n4 (TYPE_10__*) ; 
- int vC4oo ; 
- int /*<<< orphan*/  w_2xo4 (TYPE_10__*) ; 
- int zJyAP1 ; 
+
+ int AErNL3 (TYPE_10__*) ;
+ int AUUSL3 (unsigned long volatile*,int,int) ;
+ int BucKo (unsigned long volatile*,int,int) ;
+ int CeDcj3 ;
+ int D1OxN4 ;
+ int GLE_s4 (TYPE_10__*,int) ;
+ int HcALQ1 (unsigned long volatile*,int,unsigned long) ;
+ int KZEMj4 ;
+ int KZp71 ;
+ int NHDsK3 (unsigned long volatile*,int) ;
+ int Rqv1w3 (unsigned long volatile*,int,unsigned long) ;
+ unsigned int WqCeB2 (TYPE_10__*) ;
+ int cYVI15 (unsigned int,int ) ;
+ int dMM0e1 (unsigned long volatile*,int) ;
+ int eKIU_4 ;
+ int pxiAh4 (TYPE_10__*,TYPE_12__*,int) ;
+ int qS5lW1 ;
+ int s3sCI1 (unsigned long volatile*,int,int) ;
+ int tsz3n4 (TYPE_10__*) ;
+ int vC4oo ;
+ int w_2xo4 (TYPE_10__*) ;
+ int zJyAP1 ;
 
 __attribute__((used)) static int xnb4g3(kWMzp1*
 J7Iki4,QDNE6*a02Gz4,DCf0T2*esWTk2){{if(!(a02Gz4->QvZLK&64u))goto pqgzS

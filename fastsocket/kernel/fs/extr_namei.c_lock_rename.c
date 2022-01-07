@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct dentry {TYPE_2__* d_inode; } ;
-struct TYPE_4__ {int /*<<< orphan*/  i_mutex; TYPE_1__* i_sb; } ;
-struct TYPE_3__ {int /*<<< orphan*/  s_vfs_rename_mutex; } ;
+struct TYPE_4__ {int i_mutex; TYPE_1__* i_sb; } ;
+struct TYPE_3__ {int s_vfs_rename_mutex; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  I_MUTEX_CHILD ; 
- int /*<<< orphan*/  I_MUTEX_PARENT ; 
- struct dentry* d_ancestor (struct dentry*,struct dentry*) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_lock_nested (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int I_MUTEX_CHILD ;
+ int I_MUTEX_PARENT ;
+ struct dentry* d_ancestor (struct dentry*,struct dentry*) ;
+ int mutex_lock (int *) ;
+ int mutex_lock_nested (int *,int ) ;
 
 struct dentry *lock_rename(struct dentry *p1, struct dentry *p2)
 {
-	struct dentry *p;
+ struct dentry *p;
 
-	if (p1 == p2) {
-		mutex_lock_nested(&p1->d_inode->i_mutex, I_MUTEX_PARENT);
-		return NULL;
-	}
+ if (p1 == p2) {
+  mutex_lock_nested(&p1->d_inode->i_mutex, I_MUTEX_PARENT);
+  return ((void*)0);
+ }
 
-	mutex_lock(&p1->d_inode->i_sb->s_vfs_rename_mutex);
+ mutex_lock(&p1->d_inode->i_sb->s_vfs_rename_mutex);
 
-	p = d_ancestor(p2, p1);
-	if (p) {
-		mutex_lock_nested(&p2->d_inode->i_mutex, I_MUTEX_PARENT);
-		mutex_lock_nested(&p1->d_inode->i_mutex, I_MUTEX_CHILD);
-		return p;
-	}
+ p = d_ancestor(p2, p1);
+ if (p) {
+  mutex_lock_nested(&p2->d_inode->i_mutex, I_MUTEX_PARENT);
+  mutex_lock_nested(&p1->d_inode->i_mutex, I_MUTEX_CHILD);
+  return p;
+ }
 
-	p = d_ancestor(p1, p2);
-	if (p) {
-		mutex_lock_nested(&p1->d_inode->i_mutex, I_MUTEX_PARENT);
-		mutex_lock_nested(&p2->d_inode->i_mutex, I_MUTEX_CHILD);
-		return p;
-	}
+ p = d_ancestor(p1, p2);
+ if (p) {
+  mutex_lock_nested(&p1->d_inode->i_mutex, I_MUTEX_PARENT);
+  mutex_lock_nested(&p2->d_inode->i_mutex, I_MUTEX_CHILD);
+  return p;
+ }
 
-	mutex_lock_nested(&p1->d_inode->i_mutex, I_MUTEX_PARENT);
-	mutex_lock_nested(&p2->d_inode->i_mutex, I_MUTEX_CHILD);
-	return NULL;
+ mutex_lock_nested(&p1->d_inode->i_mutex, I_MUTEX_PARENT);
+ mutex_lock_nested(&p2->d_inode->i_mutex, I_MUTEX_CHILD);
+ return ((void*)0);
 }

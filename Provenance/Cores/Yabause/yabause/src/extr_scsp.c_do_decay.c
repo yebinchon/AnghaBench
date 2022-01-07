@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int envelope_steps_taken; int attenuation; int /*<<< orphan*/  sample_counter; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int envelope_steps_taken; int attenuation; int sample_counter; } ;
 struct Slot {TYPE_1__ state; } ;
 
-/* Variables and functions */
- int** decay_rate_table ; 
- int get_rate (struct Slot*,int) ; 
- scalar_t__ need_envelope_step (int,int /*<<< orphan*/ ,struct Slot*) ; 
+
+ int** decay_rate_table ;
+ int get_rate (struct Slot*,int) ;
+ scalar_t__ need_envelope_step (int,int ,struct Slot*) ;
 
 void do_decay(struct Slot * slot, int rate_in)
 {

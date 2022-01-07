@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_12__ {struct TYPE_12__* home; struct TYPE_12__* name; struct TYPE_12__* state_file; struct TYPE_12__* runtime_path; struct TYPE_12__* slice; struct TYPE_12__* runtime_dir_service; struct TYPE_12__* service; struct TYPE_12__* service_job; int /*<<< orphan*/  timer_event_source; int /*<<< orphan*/  uid; TYPE_1__* manager; scalar_t__ sessions; scalar_t__ in_gc_queue; } ;
-typedef  TYPE_2__ User ;
-struct TYPE_11__ {int /*<<< orphan*/  users; int /*<<< orphan*/  user_units; int /*<<< orphan*/  user_gc_queue; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LIST_REMOVE (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_2__*) ; 
- TYPE_2__* UID_TO_PTR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gc_queue ; 
- int /*<<< orphan*/  hashmap_remove_value (int /*<<< orphan*/ ,TYPE_2__*,TYPE_2__*) ; 
- TYPE_2__* mfree (TYPE_2__*) ; 
- int /*<<< orphan*/  sd_event_source_unref (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  session_free (scalar_t__) ; 
+
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+struct TYPE_12__ {struct TYPE_12__* home; struct TYPE_12__* name; struct TYPE_12__* state_file; struct TYPE_12__* runtime_path; struct TYPE_12__* slice; struct TYPE_12__* runtime_dir_service; struct TYPE_12__* service; struct TYPE_12__* service_job; int timer_event_source; int uid; TYPE_1__* manager; scalar_t__ sessions; scalar_t__ in_gc_queue; } ;
+typedef TYPE_2__ User ;
+struct TYPE_11__ {int users; int user_units; int user_gc_queue; } ;
+
+
+ int LIST_REMOVE (int ,int ,TYPE_2__*) ;
+ TYPE_2__* UID_TO_PTR (int ) ;
+ int gc_queue ;
+ int hashmap_remove_value (int ,TYPE_2__*,TYPE_2__*) ;
+ TYPE_2__* mfree (TYPE_2__*) ;
+ int sd_event_source_unref (int ) ;
+ int session_free (scalar_t__) ;
 
 User *user_free(User *u) {
         if (!u)
-                return NULL;
+                return ((void*)0);
 
         if (u->in_gc_queue)
                 LIST_REMOVE(gc_queue, u->manager->user_gc_queue, u);

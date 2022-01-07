@@ -1,71 +1,71 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct slip {int /*<<< orphan*/  outfill_timer; int /*<<< orphan*/  keepalive_timer; int /*<<< orphan*/  mode; int /*<<< orphan*/  tx_work; int /*<<< orphan*/  lock; struct net_device* dev; int /*<<< orphan*/  magic; } ;
+
+
+
+
+struct slip {int outfill_timer; int keepalive_timer; int mode; int tx_work; int lock; struct net_device* dev; int magic; } ;
 struct net_device {int base_addr; } ;
 
-/* Variables and functions */
- int IFNAMSIZ ; 
- int /*<<< orphan*/  INIT_WORK (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NET_NAME_UNKNOWN ; 
- int /*<<< orphan*/  SLIP_MAGIC ; 
- int /*<<< orphan*/  SL_MODE_DEFAULT ; 
- struct net_device* alloc_netdev (int,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- struct slip* netdev_priv (struct net_device*) ; 
- int /*<<< orphan*/  sl_keepalive ; 
- int /*<<< orphan*/  sl_outfill ; 
- int /*<<< orphan*/  sl_setup ; 
- struct net_device** slip_devs ; 
- int slip_maxdev ; 
- int /*<<< orphan*/  slip_transmit ; 
- int /*<<< orphan*/  spin_lock_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sprintf (char*,char*,int) ; 
- int /*<<< orphan*/  timer_setup (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int IFNAMSIZ ;
+ int INIT_WORK (int *,int ) ;
+ int NET_NAME_UNKNOWN ;
+ int SLIP_MAGIC ;
+ int SL_MODE_DEFAULT ;
+ struct net_device* alloc_netdev (int,char*,int ,int ) ;
+ struct slip* netdev_priv (struct net_device*) ;
+ int sl_keepalive ;
+ int sl_outfill ;
+ int sl_setup ;
+ struct net_device** slip_devs ;
+ int slip_maxdev ;
+ int slip_transmit ;
+ int spin_lock_init (int *) ;
+ int sprintf (char*,char*,int) ;
+ int timer_setup (int *,int ,int ) ;
 
 __attribute__((used)) static struct slip *sl_alloc(void)
 {
-	int i;
-	char name[IFNAMSIZ];
-	struct net_device *dev = NULL;
-	struct slip       *sl;
+ int i;
+ char name[IFNAMSIZ];
+ struct net_device *dev = ((void*)0);
+ struct slip *sl;
 
-	for (i = 0; i < slip_maxdev; i++) {
-		dev = slip_devs[i];
-		if (dev == NULL)
-			break;
-	}
-	/* Sorry, too many, all slots in use */
-	if (i >= slip_maxdev)
-		return NULL;
+ for (i = 0; i < slip_maxdev; i++) {
+  dev = slip_devs[i];
+  if (dev == ((void*)0))
+   break;
+ }
 
-	sprintf(name, "sl%d", i);
-	dev = alloc_netdev(sizeof(*sl), name, NET_NAME_UNKNOWN, sl_setup);
-	if (!dev)
-		return NULL;
+ if (i >= slip_maxdev)
+  return ((void*)0);
 
-	dev->base_addr  = i;
-	sl = netdev_priv(dev);
+ sprintf(name, "sl%d", i);
+ dev = alloc_netdev(sizeof(*sl), name, NET_NAME_UNKNOWN, sl_setup);
+ if (!dev)
+  return ((void*)0);
 
-	/* Initialize channel control data */
-	sl->magic       = SLIP_MAGIC;
-	sl->dev	      	= dev;
-	spin_lock_init(&sl->lock);
-	INIT_WORK(&sl->tx_work, slip_transmit);
-	sl->mode        = SL_MODE_DEFAULT;
-#ifdef CONFIG_SLIP_SMART
-	/* initialize timer_list struct */
-	timer_setup(&sl->keepalive_timer, sl_keepalive, 0);
-	timer_setup(&sl->outfill_timer, sl_outfill, 0);
-#endif
-	slip_devs[i] = dev;
-	return sl;
+ dev->base_addr = i;
+ sl = netdev_priv(dev);
+
+
+ sl->magic = SLIP_MAGIC;
+ sl->dev = dev;
+ spin_lock_init(&sl->lock);
+ INIT_WORK(&sl->tx_work, slip_transmit);
+ sl->mode = SL_MODE_DEFAULT;
+
+
+
+
+
+ slip_devs[i] = dev;
+ return sl;
 }

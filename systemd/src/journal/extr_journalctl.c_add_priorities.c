@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sd_journal ;
-typedef  int /*<<< orphan*/  match ;
 
-/* Variables and functions */
- int LOG_DEBUG ; 
- int LOG_EMERG ; 
- int arg_priorities ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ *) ; 
- int log_error_errno (int,char*) ; 
- int sd_journal_add_conjunction (int /*<<< orphan*/ *) ; 
- int sd_journal_add_match (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strlen (char*) ; 
+
+
+
+typedef int sd_journal ;
+typedef int match ;
+
+
+ int LOG_DEBUG ;
+ int LOG_EMERG ;
+ int arg_priorities ;
+ int assert (int *) ;
+ int log_error_errno (int,char*) ;
+ int sd_journal_add_conjunction (int *) ;
+ int sd_journal_add_match (int *,char*,int ) ;
+ int strlen (char*) ;
 
 __attribute__((used)) static int add_priorities(sd_journal *j) {
         char match[] = "PRIORITY=0";

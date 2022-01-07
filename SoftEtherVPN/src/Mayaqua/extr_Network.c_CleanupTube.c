@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  Lock; int /*<<< orphan*/  TubePairData; int /*<<< orphan*/  SockEvent; int /*<<< orphan*/  Event; int /*<<< orphan*/  Queue; } ;
-typedef  int /*<<< orphan*/  TUBEDATA ;
-typedef  TYPE_1__ TUBE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DeleteLock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Free (TYPE_1__*) ; 
- int /*<<< orphan*/  FreeTubeData (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * GetNext (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReleaseEvent (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReleaseQueue (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReleaseSockEvent (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReleaseTubePairData (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int Lock; int TubePairData; int SockEvent; int Event; int Queue; } ;
+typedef int TUBEDATA ;
+typedef TYPE_1__ TUBE ;
+
+
+ int DeleteLock (int ) ;
+ int Free (TYPE_1__*) ;
+ int FreeTubeData (int *) ;
+ int * GetNext (int ) ;
+ int ReleaseEvent (int ) ;
+ int ReleaseQueue (int ) ;
+ int ReleaseSockEvent (int ) ;
+ int ReleaseTubePairData (int ) ;
 
 void CleanupTube(TUBE *t)
 {
-	// Validate arguments
-	if (t == NULL)
-	{
-		return;
-	}
 
-	while (true)
-	{
-		TUBEDATA *d = GetNext(t->Queue);
-		if (d == NULL)
-		{
-			break;
-		}
+ if (t == ((void*)0))
+ {
+  return;
+ }
 
-		FreeTubeData(d);
-	}
+ while (1)
+ {
+  TUBEDATA *d = GetNext(t->Queue);
+  if (d == ((void*)0))
+  {
+   break;
+  }
 
-	ReleaseQueue(t->Queue);
-	ReleaseEvent(t->Event);
-	ReleaseSockEvent(t->SockEvent);
+  FreeTubeData(d);
+ }
 
-	ReleaseTubePairData(t->TubePairData);
+ ReleaseQueue(t->Queue);
+ ReleaseEvent(t->Event);
+ ReleaseSockEvent(t->SockEvent);
 
-	DeleteLock(t->Lock);
+ ReleaseTubePairData(t->TubePairData);
 
-	Free(t);
+ DeleteLock(t->Lock);
+
+ Free(t);
 }

@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int length; scalar_t__ showCmd; int /*<<< orphan*/  rcNormalPosition; } ;
-typedef  TYPE_1__ WINDOWPLACEMENT ;
-typedef  int /*<<< orphan*/  RECT ;
-typedef  int /*<<< orphan*/  LPBYTE ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  GetWindowPlacement (int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  REG_BINARY ; 
- int /*<<< orphan*/  REG_DWORD ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RegSetValueExW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- scalar_t__ SW_SHOWMAXIMIZED ; 
- int /*<<< orphan*/  key_options ; 
- int /*<<< orphan*/  key_settings ; 
- scalar_t__ registry_get_handle (int /*<<< orphan*/ *,int*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  registry_set_pagemargins (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  registry_set_previewpages (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  var_framerect ; 
- int /*<<< orphan*/  var_maximized ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int length; scalar_t__ showCmd; int rcNormalPosition; } ;
+typedef TYPE_1__ WINDOWPLACEMENT ;
+typedef int RECT ;
+typedef int LPBYTE ;
+typedef int HWND ;
+typedef int HKEY ;
+typedef int DWORD ;
+
+
+ scalar_t__ ERROR_SUCCESS ;
+ int GetWindowPlacement (int ,TYPE_1__*) ;
+ int REG_BINARY ;
+ int REG_DWORD ;
+ int RegCloseKey (int ) ;
+ int RegSetValueExW (int ,int ,int ,int ,int ,int) ;
+ scalar_t__ SW_SHOWMAXIMIZED ;
+ int key_options ;
+ int key_settings ;
+ scalar_t__ registry_get_handle (int *,int*,int ) ;
+ int registry_set_pagemargins (int ) ;
+ int registry_set_previewpages (int ) ;
+ int var_framerect ;
+ int var_maximized ;
 
 void registry_set_options(HWND hMainWnd)
 {

@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct acpi_gpio_event {int irqflags; int irq_requested; int /*<<< orphan*/  irq; int /*<<< orphan*/  (* handler ) (int /*<<< orphan*/ ,struct acpi_gpio_event*) ;int /*<<< orphan*/  desc; scalar_t__ irq_is_wake; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct acpi_gpio_event {int irqflags; int irq_requested; int irq; int (* handler ) (int ,struct acpi_gpio_event*) ;int desc; scalar_t__ irq_is_wake; } ;
 struct acpi_gpio_chip {TYPE_1__* chip; } ;
-struct TYPE_2__ {int /*<<< orphan*/  parent; } ;
+struct TYPE_2__ {int parent; } ;
 
-/* Variables and functions */
- int IRQF_TRIGGER_FALLING ; 
- int IRQF_TRIGGER_RISING ; 
- int /*<<< orphan*/  dev_err (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  enable_irq_wake (int /*<<< orphan*/ ) ; 
- int gpiod_get_raw_value_cansleep (int /*<<< orphan*/ ) ; 
- int request_threaded_irq (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/  (*) (int /*<<< orphan*/ ,struct acpi_gpio_event*),int,char*,struct acpi_gpio_event*) ; 
- scalar_t__ run_edge_events_on_boot ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,struct acpi_gpio_event*) ; 
+
+ int IRQF_TRIGGER_FALLING ;
+ int IRQF_TRIGGER_RISING ;
+ int dev_err (int ,char*,int ) ;
+ int enable_irq_wake (int ) ;
+ int gpiod_get_raw_value_cansleep (int ) ;
+ int request_threaded_irq (int ,int *,int (*) (int ,struct acpi_gpio_event*),int,char*,struct acpi_gpio_event*) ;
+ scalar_t__ run_edge_events_on_boot ;
+ int stub1 (int ,struct acpi_gpio_event*) ;
 
 __attribute__((used)) static void acpi_gpiochip_request_irq(struct acpi_gpio_chip *acpi_gpio,
-				      struct acpi_gpio_event *event)
+          struct acpi_gpio_event *event)
 {
-	int ret, value;
+ int ret, value;
 
-	ret = request_threaded_irq(event->irq, NULL, event->handler,
-				   event->irqflags, "ACPI:Event", event);
-	if (ret) {
-		dev_err(acpi_gpio->chip->parent,
-			"Failed to setup interrupt handler for %d\n",
-			event->irq);
-		return;
-	}
+ ret = request_threaded_irq(event->irq, ((void*)0), event->handler,
+       event->irqflags, "ACPI:Event", event);
+ if (ret) {
+  dev_err(acpi_gpio->chip->parent,
+   "Failed to setup interrupt handler for %d\n",
+   event->irq);
+  return;
+ }
 
-	if (event->irq_is_wake)
-		enable_irq_wake(event->irq);
+ if (event->irq_is_wake)
+  enable_irq_wake(event->irq);
 
-	event->irq_requested = true;
+ event->irq_requested = 1;
 
-	/* Make sure we trigger the initial state of edge-triggered IRQs */
-	if (run_edge_events_on_boot &&
-	    (event->irqflags & (IRQF_TRIGGER_RISING | IRQF_TRIGGER_FALLING))) {
-		value = gpiod_get_raw_value_cansleep(event->desc);
-		if (((event->irqflags & IRQF_TRIGGER_RISING) && value == 1) ||
-		    ((event->irqflags & IRQF_TRIGGER_FALLING) && value == 0))
-			event->handler(event->irq, event);
-	}
+
+ if (run_edge_events_on_boot &&
+     (event->irqflags & (IRQF_TRIGGER_RISING | IRQF_TRIGGER_FALLING))) {
+  value = gpiod_get_raw_value_cansleep(event->desc);
+  if (((event->irqflags & IRQF_TRIGGER_RISING) && value == 1) ||
+      ((event->irqflags & IRQF_TRIGGER_FALLING) && value == 0))
+   event->handler(event->irq, event);
+ }
 }

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-union socket_address {int /*<<< orphan*/  sa; } ;
-typedef  int socklen_t ;
-typedef  int /*<<< orphan*/  sock_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  getpeername (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  getsockname (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  memset (union socket_address*,int /*<<< orphan*/ ,int) ; 
+
+
+
+union socket_address {int sa; } ;
+typedef int socklen_t ;
+typedef int sock_t ;
+
+
+ int getpeername (int ,int *,int*) ;
+ int getsockname (int ,int *,int*) ;
+ int memset (union socket_address*,int ,int) ;
 
 __attribute__((used)) static void mg_sock_get_addr(sock_t sock, int remote,
                              union socket_address *sa) {

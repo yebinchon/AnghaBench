@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  spell_checker; scalar_t__ russian; int /*<<< orphan*/ ** stat; } ;
-struct TYPE_3__ {int /*<<< orphan*/  spell_checker; int /*<<< orphan*/ ** stat; int /*<<< orphan*/  name; } ;
-typedef  int /*<<< orphan*/  AspellWordList ;
-typedef  int /*<<< orphan*/  AspellStringEnumeration ;
 
-/* Variables and functions */
- TYPE_2__** SC ; 
- TYPE_1__** SS ; 
- int aspell_speller_check (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  aspell_speller_error_message (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * aspell_speller_suggest (int /*<<< orphan*/ ,char*,int) ; 
- char* aspell_string_enumeration_next (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * aspell_word_list_elements (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  delete_aspell_string_enumeration (int /*<<< orphan*/ *) ; 
- int get_str_class (char const*,int) ; 
- int spellers ; 
- int strlen (char const*) ; 
- int /*<<< orphan*/  use_aspell_suggestion ; 
- int /*<<< orphan*/  vkprintf (int,char*,char const*,...) ; 
- scalar_t__ yo_hack ; 
- int /*<<< orphan*/ * yo_hack_stat ; 
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int spell_checker; scalar_t__ russian; int ** stat; } ;
+struct TYPE_3__ {int spell_checker; int ** stat; int name; } ;
+typedef int AspellWordList ;
+typedef int AspellStringEnumeration ;
+
+
+ TYPE_2__** SC ;
+ TYPE_1__** SS ;
+ int aspell_speller_check (int ,char*,int) ;
+ int aspell_speller_error_message (int ) ;
+ int * aspell_speller_suggest (int ,char*,int) ;
+ char* aspell_string_enumeration_next (int *) ;
+ int * aspell_word_list_elements (int const*) ;
+ int delete_aspell_string_enumeration (int *) ;
+ int get_str_class (char const*,int) ;
+ int spellers ;
+ int strlen (char const*) ;
+ int use_aspell_suggestion ;
+ int vkprintf (int,char*,char const*,...) ;
+ scalar_t__ yo_hack ;
+ int * yo_hack_stat ;
 
 int check_word (char *word, int len) {
   int i;
@@ -46,7 +46,7 @@ int check_word (char *word, int len) {
       }
     }
   }
-  
+
   if (yo_hack) {
     int j;
     yo_hack_stat[1]++;
@@ -54,7 +54,7 @@ int check_word (char *word, int len) {
       if ((unsigned char) word[j] == 0xe5) {
         word[j] = 0xb8;
         for (i = 0; i < spellers; i++) {
-          if (SC[i]->russian && aspell_speller_check (SC[i]->spell_checker, word, len) == 1) {            
+          if (SC[i]->russian && aspell_speller_check (SC[i]->spell_checker, word, len) == 1) {
             word[j] = 0xe5;
             yo_hack_stat[0]++;
             return 1;
@@ -76,7 +76,7 @@ int check_word (char *word, int len) {
       AspellStringEnumeration *elements = aspell_word_list_elements (suggestions);
       const char *w;
       int words = 0;
-      while ( (w = aspell_string_enumeration_next (elements)) != NULL ) {
+      while ( (w = aspell_string_enumeration_next (elements)) != ((void*)0) ) {
         vkprintf (3, "suggest: %s, %.*s (%s)\n", w, len, word, SS[i]->name);
         if (class != get_str_class (w, strlen (w))) {
           continue;

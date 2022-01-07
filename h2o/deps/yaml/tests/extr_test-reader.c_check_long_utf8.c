@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_7__ {unsigned char* pointer; } ;
 struct TYPE_8__ {int unread; char* problem; int problem_offset; int eof; TYPE_1__ buffer; } ;
-typedef  TYPE_2__ yaml_parser_t ;
+typedef TYPE_2__ yaml_parser_t ;
 
-/* Variables and functions */
- int LONG ; 
- int /*<<< orphan*/  assert (unsigned char*) ; 
- int /*<<< orphan*/  free (unsigned char*) ; 
- unsigned char* malloc (int) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  yaml_parser_delete (TYPE_2__*) ; 
- int /*<<< orphan*/  yaml_parser_initialize (TYPE_2__*) ; 
- int /*<<< orphan*/  yaml_parser_set_input_string (TYPE_2__*,unsigned char*,int) ; 
- int /*<<< orphan*/  yaml_parser_update_buffer (TYPE_2__*,int) ; 
+
+ int LONG ;
+ int assert (unsigned char*) ;
+ int free (unsigned char*) ;
+ unsigned char* malloc (int) ;
+ int printf (char*,...) ;
+ int yaml_parser_delete (TYPE_2__*) ;
+ int yaml_parser_initialize (TYPE_2__*) ;
+ int yaml_parser_set_input_string (TYPE_2__*,unsigned char*,int) ;
+ int yaml_parser_update_buffer (TYPE_2__*,int) ;
 
 int check_long_utf8(void)
 {

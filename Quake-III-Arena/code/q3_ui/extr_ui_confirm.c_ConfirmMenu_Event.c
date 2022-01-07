@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  qboolean ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int qboolean ;
 struct TYPE_3__ {scalar_t__ id; } ;
-typedef  TYPE_1__ menucommon_s ;
-struct TYPE_4__ {int /*<<< orphan*/  (* action ) (int /*<<< orphan*/ ) ;} ;
+typedef TYPE_1__ menucommon_s ;
+struct TYPE_4__ {int (* action ) (int ) ;} ;
 
-/* Variables and functions */
- scalar_t__ ID_CONFIRM_NO ; 
- int QM_ACTIVATED ; 
- int /*<<< orphan*/  UI_PopMenu () ; 
- int /*<<< orphan*/  qfalse ; 
- int /*<<< orphan*/  qtrue ; 
- TYPE_2__ s_confirm ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ) ; 
+
+ scalar_t__ ID_CONFIRM_NO ;
+ int QM_ACTIVATED ;
+ int UI_PopMenu () ;
+ int qfalse ;
+ int qtrue ;
+ TYPE_2__ s_confirm ;
+ int stub1 (int ) ;
 
 __attribute__((used)) static void ConfirmMenu_Event( void* ptr, int event ) {
-	qboolean	result;
+ qboolean result;
 
-	if( event != QM_ACTIVATED ) {
-		return;
-	}
+ if( event != QM_ACTIVATED ) {
+  return;
+ }
 
-	UI_PopMenu();
+ UI_PopMenu();
 
-	if( ((menucommon_s*)ptr)->id == ID_CONFIRM_NO ) {
-		result = qfalse;
-	}
-	else {
-		result = qtrue;
-	}
+ if( ((menucommon_s*)ptr)->id == ID_CONFIRM_NO ) {
+  result = qfalse;
+ }
+ else {
+  result = qtrue;
+ }
 
-	if( s_confirm.action ) {
-		s_confirm.action( result );
-	}
+ if( s_confirm.action ) {
+  s_confirm.action( result );
+ }
 }

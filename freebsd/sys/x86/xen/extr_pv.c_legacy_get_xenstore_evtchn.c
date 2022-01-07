@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  evtchn_port_t ;
-struct TYPE_2__ {int /*<<< orphan*/  store_evtchn; } ;
 
-/* Variables and functions */
- TYPE_1__* legacy_start_info ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int evtchn_port_t ;
+struct TYPE_2__ {int store_evtchn; } ;
+
+
+ TYPE_1__* legacy_start_info ;
 
 __attribute__((used)) static evtchn_port_t
 legacy_get_xenstore_evtchn(void)
 {
 
-	return (legacy_start_info->store_evtchn);
+ return (legacy_start_info->store_evtchn);
 }

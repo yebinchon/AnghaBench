@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wiiu_hid_t ;
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int wiiu_hid_t ;
 struct TYPE_6__ {scalar_t__ type; struct TYPE_6__* next; } ;
-typedef  TYPE_1__ wiiu_attach_event ;
+typedef TYPE_1__ wiiu_attach_event ;
 
-/* Variables and functions */
- scalar_t__ HID_DEVICE_ATTACH ; 
- int /*<<< orphan*/  delete_attach_event (TYPE_1__*) ; 
- int /*<<< orphan*/  wiiu_hid_attach (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  wiiu_hid_detach (int /*<<< orphan*/ *,TYPE_1__*) ; 
+
+ scalar_t__ HID_DEVICE_ATTACH ;
+ int delete_attach_event (TYPE_1__*) ;
+ int wiiu_hid_attach (int *,TYPE_1__*) ;
+ int wiiu_hid_detach (int *,TYPE_1__*) ;
 
 __attribute__((used)) static void wiiu_handle_attach_events(wiiu_hid_t *hid, wiiu_attach_event *list)
 {
-   wiiu_attach_event *event, *event_next = NULL;
+   wiiu_attach_event *event, *event_next = ((void*)0);
 
    if (!hid || !list)
       return;
 
-   for (event = list; event != NULL; event = event_next)
+   for (event = list; event != ((void*)0); event = event_next)
    {
-      event_next  = event->next;
+      event_next = event->next;
       if (event->type == HID_DEVICE_ATTACH)
          wiiu_hid_attach(hid, event);
       else

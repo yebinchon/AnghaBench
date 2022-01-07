@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  VARIANT ;
-struct TYPE_3__ {int /*<<< orphan*/  member_3; int /*<<< orphan*/  member_2; int /*<<< orphan*/ * member_1; int /*<<< orphan*/ * member_0; } ;
-typedef  int LONG ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  IHTMLDOMNode ;
-typedef  int /*<<< orphan*/  IHTMLDOMChildrenCollection ;
-typedef  int /*<<< orphan*/  IDispatchEx ;
-typedef  int HRESULT ;
-typedef  int /*<<< orphan*/  EXCEPINFO ;
-typedef  TYPE_1__ DISPPARAMS ;
-typedef  int /*<<< orphan*/  DISPID ;
-typedef  int /*<<< orphan*/  BSTR ;
 
-/* Variables and functions */
- int DISP_E_UNKNOWNNAME ; 
- int IDispatchEx_GetDispID (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int IDispatchEx_InvokeEx (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IDispatchEx_Release (int /*<<< orphan*/ *) ; 
- int IHTMLDOMChildrenCollection_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IHTMLDOMNode_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IID_IDispatchEx ; 
- int /*<<< orphan*/  INVOKE_PROPERTYGET ; 
- int /*<<< orphan*/  LOCALE_NEUTRAL ; 
- int S_OK ; 
- int /*<<< orphan*/  SysAllocString (char const*) ; 
- int /*<<< orphan*/  SysFreeString (int /*<<< orphan*/ ) ; 
- scalar_t__ VT_DISPATCH ; 
- int /*<<< orphan*/ * V_DISPATCH (int /*<<< orphan*/ *) ; 
- int V_VT (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  VariantClear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  VariantInit (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fdexNameCaseSensitive ; 
- int /*<<< orphan*/ * get_node_iface (int /*<<< orphan*/ *) ; 
- int get_node_type (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef char WCHAR ;
+typedef int VARIANT ;
+struct TYPE_3__ {int member_3; int member_2; int * member_1; int * member_0; } ;
+typedef int LONG ;
+typedef int IUnknown ;
+typedef int IHTMLDOMNode ;
+typedef int IHTMLDOMChildrenCollection ;
+typedef int IDispatchEx ;
+typedef int HRESULT ;
+typedef int EXCEPINFO ;
+typedef TYPE_1__ DISPPARAMS ;
+typedef int DISPID ;
+typedef int BSTR ;
+
+
+ int DISP_E_UNKNOWNNAME ;
+ int IDispatchEx_GetDispID (int *,int ,int ,int *) ;
+ int IDispatchEx_InvokeEx (int *,int ,int ,int ,TYPE_1__*,int *,int *,int *) ;
+ int IDispatchEx_Release (int *) ;
+ int IHTMLDOMChildrenCollection_QueryInterface (int *,int *,void**) ;
+ int IHTMLDOMNode_Release (int *) ;
+ int IID_IDispatchEx ;
+ int INVOKE_PROPERTYGET ;
+ int LOCALE_NEUTRAL ;
+ int S_OK ;
+ int SysAllocString (char const*) ;
+ int SysFreeString (int ) ;
+ scalar_t__ VT_DISPATCH ;
+ int * V_DISPATCH (int *) ;
+ int V_VT (int *) ;
+ int VariantClear (int *) ;
+ int VariantInit (int *) ;
+ int fdexNameCaseSensitive ;
+ int * get_node_iface (int *) ;
+ int get_node_type (int *) ;
+ int ok (int,char*,...) ;
 
 __attribute__((used)) static void test_child_col_disp(IHTMLDOMChildrenCollection *col)
 {
     IDispatchEx *dispex;
     IHTMLDOMNode *node;
-    DISPPARAMS dp = {NULL, NULL, 0, 0};
+    DISPPARAMS dp = {((void*)0), ((void*)0), 0, 0};
     VARIANT var;
     EXCEPINFO ei;
     LONG type;
@@ -72,10 +72,10 @@ __attribute__((used)) static void test_child_col_disp(IHTMLDOMChildrenCollection
     SysFreeString(bstr);
 
     VariantInit(&var);
-    hres = IDispatchEx_InvokeEx(dispex, id, LOCALE_NEUTRAL, INVOKE_PROPERTYGET, &dp, &var, &ei, NULL);
+    hres = IDispatchEx_InvokeEx(dispex, id, LOCALE_NEUTRAL, INVOKE_PROPERTYGET, &dp, &var, &ei, ((void*)0));
     ok(hres == S_OK, "InvokeEx failed: %08x\n", hres);
     ok(V_VT(&var) == VT_DISPATCH, "V_VT(var)=%d\n", V_VT(&var));
-    ok(V_DISPATCH(&var) != NULL, "V_DISPATCH(var) == NULL\n");
+    ok(V_DISPATCH(&var) != ((void*)0), "V_DISPATCH(var) == NULL\n");
     node = get_node_iface((IUnknown*)V_DISPATCH(&var));
     type = get_node_type((IUnknown*)node);
     ok(type == 3, "type=%d\n", type);

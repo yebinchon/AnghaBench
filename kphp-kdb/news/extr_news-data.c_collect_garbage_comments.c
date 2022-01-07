@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {struct TYPE_4__* hnext; } ;
-typedef  TYPE_1__ place_t ;
+typedef TYPE_1__ place_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  COMM_MODE ; 
- int PLACES_HASH ; 
- TYPE_1__** Place ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int const comments_kept ; 
- int /*<<< orphan*/  garbage_objects_collected ; 
- int garbage_uid ; 
- int /*<<< orphan*/  remove_old_comments (TYPE_1__*) ; 
+
+ int COMM_MODE ;
+ int PLACES_HASH ;
+ TYPE_1__** Place ;
+ int assert (int ) ;
+ int const comments_kept ;
+ int garbage_objects_collected ;
+ int garbage_uid ;
+ int remove_old_comments (TYPE_1__*) ;
 
 __attribute__((used)) static inline int collect_garbage_comments (int steps) {
   assert (COMM_MODE);

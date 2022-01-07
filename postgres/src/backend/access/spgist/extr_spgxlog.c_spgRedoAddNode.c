@@ -1,234 +1,224 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_22__   TYPE_5__ ;
-typedef  struct TYPE_21__   TYPE_4__ ;
-typedef  struct TYPE_20__   TYPE_3__ ;
-typedef  struct TYPE_19__   TYPE_2__ ;
-typedef  struct TYPE_18__   TYPE_1__ ;
-typedef  struct TYPE_17__   TYPE_16__ ;
 
-/* Type definitions */
-struct TYPE_18__ {int parentBlk; scalar_t__ offnum; int /*<<< orphan*/  offnumNew; int /*<<< orphan*/  nodeI; int /*<<< orphan*/  offnumParent; scalar_t__ newPage; int /*<<< orphan*/  stateSrc; } ;
-typedef  TYPE_1__ spgxlogAddNode ;
-typedef  scalar_t__ XLogRedoAction ;
-typedef  int /*<<< orphan*/  XLogRecPtr ;
-struct TYPE_19__ {int /*<<< orphan*/  EndRecPtr; } ;
-typedef  TYPE_2__ XLogReaderState ;
-struct TYPE_22__ {int /*<<< orphan*/  size; } ;
-struct TYPE_21__ {int /*<<< orphan*/  size; } ;
+
+
+typedef struct TYPE_22__ TYPE_5__ ;
+typedef struct TYPE_21__ TYPE_4__ ;
+typedef struct TYPE_20__ TYPE_3__ ;
+typedef struct TYPE_19__ TYPE_2__ ;
+typedef struct TYPE_18__ TYPE_1__ ;
+typedef struct TYPE_17__ TYPE_16__ ;
+
+
+struct TYPE_18__ {int parentBlk; scalar_t__ offnum; int offnumNew; int nodeI; int offnumParent; scalar_t__ newPage; int stateSrc; } ;
+typedef TYPE_1__ spgxlogAddNode ;
+typedef scalar_t__ XLogRedoAction ;
+typedef int XLogRecPtr ;
+struct TYPE_19__ {int EndRecPtr; } ;
+typedef TYPE_2__ XLogReaderState ;
+struct TYPE_22__ {int size; } ;
+struct TYPE_21__ {int size; } ;
 struct TYPE_20__ {scalar_t__ isBuild; } ;
-struct TYPE_17__ {int /*<<< orphan*/  nRedirection; int /*<<< orphan*/  nPlaceholder; } ;
-typedef  TYPE_3__ SpGistState ;
-typedef  TYPE_4__ SpGistInnerTupleData ;
-typedef  scalar_t__ SpGistInnerTuple ;
-typedef  TYPE_5__* SpGistDeadTuple ;
-typedef  int /*<<< orphan*/  Page ;
-typedef  int /*<<< orphan*/  Item ;
-typedef  int /*<<< orphan*/  Buffer ;
-typedef  int /*<<< orphan*/  BlockNumber ;
+struct TYPE_17__ {int nRedirection; int nPlaceholder; } ;
+typedef TYPE_3__ SpGistState ;
+typedef TYPE_4__ SpGistInnerTupleData ;
+typedef scalar_t__ SpGistInnerTuple ;
+typedef TYPE_5__* SpGistDeadTuple ;
+typedef int Page ;
+typedef int Item ;
+typedef int Buffer ;
+typedef int BlockNumber ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Assert (int) ; 
- scalar_t__ BLK_NEEDS_REDO ; 
- int /*<<< orphan*/  BufferGetPage (int /*<<< orphan*/ ) ; 
- scalar_t__ BufferIsValid (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ERROR ; 
- int /*<<< orphan*/  InvalidBlockNumber ; 
- int /*<<< orphan*/  InvalidOffsetNumber ; 
- int /*<<< orphan*/  MarkBufferDirty (int /*<<< orphan*/ ) ; 
- scalar_t__ PageAddItem (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,int,int) ; 
- scalar_t__ PageGetItem (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PageGetItemId (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PageIndexTupleDelete (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  PageSetLSN (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SPGIST_PLACEHOLDER ; 
- int /*<<< orphan*/  SPGIST_REDIRECT ; 
- int /*<<< orphan*/  SpGistInitBuffer (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_16__* SpGistPageGetOpaque (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  UnlockReleaseBuffer (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XLogInitBufferForRedo (TYPE_2__*,int) ; 
- scalar_t__ XLogReadBufferForRedo (TYPE_2__*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  XLogRecGetBlockTag (TYPE_2__*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- char* XLogRecGetData (TYPE_2__*) ; 
- int /*<<< orphan*/  XLogRecHasBlockRef (TYPE_2__*,int) ; 
- int /*<<< orphan*/  addOrReplaceTuple (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  elog (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fillFakeState (TYPE_3__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (TYPE_4__*,char*,int) ; 
- TYPE_5__* spgFormDeadTuple (TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  spgUpdateNodeLink (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int Assert (int) ;
+ scalar_t__ BLK_NEEDS_REDO ;
+ int BufferGetPage (int ) ;
+ scalar_t__ BufferIsValid (int ) ;
+ int ERROR ;
+ int InvalidBlockNumber ;
+ int InvalidOffsetNumber ;
+ int MarkBufferDirty (int ) ;
+ scalar_t__ PageAddItem (int ,int ,int ,scalar_t__,int,int) ;
+ scalar_t__ PageGetItem (int ,int ) ;
+ int PageGetItemId (int ,int ) ;
+ int PageIndexTupleDelete (int ,scalar_t__) ;
+ int PageSetLSN (int ,int ) ;
+ int SPGIST_PLACEHOLDER ;
+ int SPGIST_REDIRECT ;
+ int SpGistInitBuffer (int ,int ) ;
+ TYPE_16__* SpGistPageGetOpaque (int ) ;
+ int UnlockReleaseBuffer (int ) ;
+ int XLogInitBufferForRedo (TYPE_2__*,int) ;
+ scalar_t__ XLogReadBufferForRedo (TYPE_2__*,int,int *) ;
+ int XLogRecGetBlockTag (TYPE_2__*,int,int *,int *,int *) ;
+ char* XLogRecGetData (TYPE_2__*) ;
+ int XLogRecHasBlockRef (TYPE_2__*,int) ;
+ int addOrReplaceTuple (int ,int ,int ,int ) ;
+ int elog (int ,char*,int ) ;
+ int fillFakeState (TYPE_3__*,int ) ;
+ int memcpy (TYPE_4__*,char*,int) ;
+ TYPE_5__* spgFormDeadTuple (TYPE_3__*,int ,int ,int ) ;
+ int spgUpdateNodeLink (scalar_t__,int ,int ,int ) ;
 
 __attribute__((used)) static void
 spgRedoAddNode(XLogReaderState *record)
 {
-	XLogRecPtr	lsn = record->EndRecPtr;
-	char	   *ptr = XLogRecGetData(record);
-	spgxlogAddNode *xldata = (spgxlogAddNode *) ptr;
-	char	   *innerTuple;
-	SpGistInnerTupleData innerTupleHdr;
-	SpGistState state;
-	Buffer		buffer;
-	Page		page;
-	XLogRedoAction action;
+ XLogRecPtr lsn = record->EndRecPtr;
+ char *ptr = XLogRecGetData(record);
+ spgxlogAddNode *xldata = (spgxlogAddNode *) ptr;
+ char *innerTuple;
+ SpGistInnerTupleData innerTupleHdr;
+ SpGistState state;
+ Buffer buffer;
+ Page page;
+ XLogRedoAction action;
 
-	ptr += sizeof(spgxlogAddNode);
-	innerTuple = ptr;
-	/* the tuple is unaligned, so make a copy to access its header */
-	memcpy(&innerTupleHdr, innerTuple, sizeof(SpGistInnerTupleData));
+ ptr += sizeof(spgxlogAddNode);
+ innerTuple = ptr;
 
-	fillFakeState(&state, xldata->stateSrc);
+ memcpy(&innerTupleHdr, innerTuple, sizeof(SpGistInnerTupleData));
 
-	if (!XLogRecHasBlockRef(record, 1))
-	{
-		/* update in place */
-		Assert(xldata->parentBlk == -1);
-		if (XLogReadBufferForRedo(record, 0, &buffer) == BLK_NEEDS_REDO)
-		{
-			page = BufferGetPage(buffer);
+ fillFakeState(&state, xldata->stateSrc);
 
-			PageIndexTupleDelete(page, xldata->offnum);
-			if (PageAddItem(page, (Item) innerTuple, innerTupleHdr.size,
-							xldata->offnum,
-							false, false) != xldata->offnum)
-				elog(ERROR, "failed to add item of size %u to SPGiST index page",
-					 innerTupleHdr.size);
+ if (!XLogRecHasBlockRef(record, 1))
+ {
 
-			PageSetLSN(page, lsn);
-			MarkBufferDirty(buffer);
-		}
-		if (BufferIsValid(buffer))
-			UnlockReleaseBuffer(buffer);
-	}
-	else
-	{
-		BlockNumber blkno;
-		BlockNumber blknoNew;
+  Assert(xldata->parentBlk == -1);
+  if (XLogReadBufferForRedo(record, 0, &buffer) == BLK_NEEDS_REDO)
+  {
+   page = BufferGetPage(buffer);
 
-		XLogRecGetBlockTag(record, 0, NULL, NULL, &blkno);
-		XLogRecGetBlockTag(record, 1, NULL, NULL, &blknoNew);
+   PageIndexTupleDelete(page, xldata->offnum);
+   if (PageAddItem(page, (Item) innerTuple, innerTupleHdr.size,
+       xldata->offnum,
+       0, 0) != xldata->offnum)
+    elog(ERROR, "failed to add item of size %u to SPGiST index page",
+      innerTupleHdr.size);
 
-		/*
-		 * In normal operation we would have all three pages (source, dest,
-		 * and parent) locked simultaneously; but in WAL replay it should be
-		 * safe to update them one at a time, as long as we do it in the right
-		 * order. We must insert the new tuple before replacing the old tuple
-		 * with the redirect tuple.
-		 */
+   PageSetLSN(page, lsn);
+   MarkBufferDirty(buffer);
+  }
+  if (BufferIsValid(buffer))
+   UnlockReleaseBuffer(buffer);
+ }
+ else
+ {
+  BlockNumber blkno;
+  BlockNumber blknoNew;
 
-		/* Install new tuple first so redirect is valid */
-		if (xldata->newPage)
-		{
-			/* AddNode is not used for nulls pages */
-			buffer = XLogInitBufferForRedo(record, 1);
-			SpGistInitBuffer(buffer, 0);
-			action = BLK_NEEDS_REDO;
-		}
-		else
-			action = XLogReadBufferForRedo(record, 1, &buffer);
-		if (action == BLK_NEEDS_REDO)
-		{
-			page = BufferGetPage(buffer);
+  XLogRecGetBlockTag(record, 0, ((void*)0), ((void*)0), &blkno);
+  XLogRecGetBlockTag(record, 1, ((void*)0), ((void*)0), &blknoNew);
+  if (xldata->newPage)
+  {
 
-			addOrReplaceTuple(page, (Item) innerTuple,
-							  innerTupleHdr.size, xldata->offnumNew);
+   buffer = XLogInitBufferForRedo(record, 1);
+   SpGistInitBuffer(buffer, 0);
+   action = BLK_NEEDS_REDO;
+  }
+  else
+   action = XLogReadBufferForRedo(record, 1, &buffer);
+  if (action == BLK_NEEDS_REDO)
+  {
+   page = BufferGetPage(buffer);
 
-			/*
-			 * If parent is in this same page, update it now.
-			 */
-			if (xldata->parentBlk == 1)
-			{
-				SpGistInnerTuple parentTuple;
+   addOrReplaceTuple(page, (Item) innerTuple,
+         innerTupleHdr.size, xldata->offnumNew);
 
-				parentTuple = (SpGistInnerTuple) PageGetItem(page,
-															 PageGetItemId(page, xldata->offnumParent));
 
-				spgUpdateNodeLink(parentTuple, xldata->nodeI,
-								  blknoNew, xldata->offnumNew);
-			}
-			PageSetLSN(page, lsn);
-			MarkBufferDirty(buffer);
-		}
-		if (BufferIsValid(buffer))
-			UnlockReleaseBuffer(buffer);
 
-		/* Delete old tuple, replacing it with redirect or placeholder tuple */
-		if (XLogReadBufferForRedo(record, 0, &buffer) == BLK_NEEDS_REDO)
-		{
-			SpGistDeadTuple dt;
 
-			page = BufferGetPage(buffer);
+   if (xldata->parentBlk == 1)
+   {
+    SpGistInnerTuple parentTuple;
 
-			if (state.isBuild)
-				dt = spgFormDeadTuple(&state, SPGIST_PLACEHOLDER,
-									  InvalidBlockNumber,
-									  InvalidOffsetNumber);
-			else
-				dt = spgFormDeadTuple(&state, SPGIST_REDIRECT,
-									  blknoNew,
-									  xldata->offnumNew);
+    parentTuple = (SpGistInnerTuple) PageGetItem(page,
+                PageGetItemId(page, xldata->offnumParent));
 
-			PageIndexTupleDelete(page, xldata->offnum);
-			if (PageAddItem(page, (Item) dt, dt->size,
-							xldata->offnum,
-							false, false) != xldata->offnum)
-				elog(ERROR, "failed to add item of size %u to SPGiST index page",
-					 dt->size);
+    spgUpdateNodeLink(parentTuple, xldata->nodeI,
+          blknoNew, xldata->offnumNew);
+   }
+   PageSetLSN(page, lsn);
+   MarkBufferDirty(buffer);
+  }
+  if (BufferIsValid(buffer))
+   UnlockReleaseBuffer(buffer);
 
-			if (state.isBuild)
-				SpGistPageGetOpaque(page)->nPlaceholder++;
-			else
-				SpGistPageGetOpaque(page)->nRedirection++;
 
-			/*
-			 * If parent is in this same page, update it now.
-			 */
-			if (xldata->parentBlk == 0)
-			{
-				SpGistInnerTuple parentTuple;
+  if (XLogReadBufferForRedo(record, 0, &buffer) == BLK_NEEDS_REDO)
+  {
+   SpGistDeadTuple dt;
 
-				parentTuple = (SpGistInnerTuple) PageGetItem(page,
-															 PageGetItemId(page, xldata->offnumParent));
+   page = BufferGetPage(buffer);
 
-				spgUpdateNodeLink(parentTuple, xldata->nodeI,
-								  blknoNew, xldata->offnumNew);
-			}
-			PageSetLSN(page, lsn);
-			MarkBufferDirty(buffer);
-		}
-		if (BufferIsValid(buffer))
-			UnlockReleaseBuffer(buffer);
+   if (state.isBuild)
+    dt = spgFormDeadTuple(&state, SPGIST_PLACEHOLDER,
+           InvalidBlockNumber,
+           InvalidOffsetNumber);
+   else
+    dt = spgFormDeadTuple(&state, SPGIST_REDIRECT,
+           blknoNew,
+           xldata->offnumNew);
 
-		/*
-		 * Update parent downlink (if we didn't do it as part of the source or
-		 * destination page update already).
-		 */
-		if (xldata->parentBlk == 2)
-		{
-			if (XLogReadBufferForRedo(record, 2, &buffer) == BLK_NEEDS_REDO)
-			{
-				SpGistInnerTuple parentTuple;
+   PageIndexTupleDelete(page, xldata->offnum);
+   if (PageAddItem(page, (Item) dt, dt->size,
+       xldata->offnum,
+       0, 0) != xldata->offnum)
+    elog(ERROR, "failed to add item of size %u to SPGiST index page",
+      dt->size);
 
-				page = BufferGetPage(buffer);
+   if (state.isBuild)
+    SpGistPageGetOpaque(page)->nPlaceholder++;
+   else
+    SpGistPageGetOpaque(page)->nRedirection++;
 
-				parentTuple = (SpGistInnerTuple) PageGetItem(page,
-															 PageGetItemId(page, xldata->offnumParent));
 
-				spgUpdateNodeLink(parentTuple, xldata->nodeI,
-								  blknoNew, xldata->offnumNew);
 
-				PageSetLSN(page, lsn);
-				MarkBufferDirty(buffer);
-			}
-			if (BufferIsValid(buffer))
-				UnlockReleaseBuffer(buffer);
-		}
-	}
+
+   if (xldata->parentBlk == 0)
+   {
+    SpGistInnerTuple parentTuple;
+
+    parentTuple = (SpGistInnerTuple) PageGetItem(page,
+                PageGetItemId(page, xldata->offnumParent));
+
+    spgUpdateNodeLink(parentTuple, xldata->nodeI,
+          blknoNew, xldata->offnumNew);
+   }
+   PageSetLSN(page, lsn);
+   MarkBufferDirty(buffer);
+  }
+  if (BufferIsValid(buffer))
+   UnlockReleaseBuffer(buffer);
+
+
+
+
+
+  if (xldata->parentBlk == 2)
+  {
+   if (XLogReadBufferForRedo(record, 2, &buffer) == BLK_NEEDS_REDO)
+   {
+    SpGistInnerTuple parentTuple;
+
+    page = BufferGetPage(buffer);
+
+    parentTuple = (SpGistInnerTuple) PageGetItem(page,
+                PageGetItemId(page, xldata->offnumParent));
+
+    spgUpdateNodeLink(parentTuple, xldata->nodeI,
+          blknoNew, xldata->offnumNew);
+
+    PageSetLSN(page, lsn);
+    MarkBufferDirty(buffer);
+   }
+   if (BufferIsValid(buffer))
+    UnlockReleaseBuffer(buffer);
+  }
+ }
 }

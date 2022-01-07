@@ -1,18 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int _Unwind_Word ;
 
-/* Variables and functions */
+
+
+
+typedef int _Unwind_Word ;
+
+
 
 __attribute__((used)) static const unsigned char *
 read_uleb128 (const unsigned char *p, _Unwind_Word *val)

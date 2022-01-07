@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct connection {int dummy; } ;
 
-/* Variables and functions */
- int MAX_USERLIST_NUM ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  get_common_friends_num (int,int,int*,int /*<<< orphan*/ ) ; 
- int get_saved_userlist (struct connection*,int) ; 
- int /*<<< orphan*/  resultlist ; 
- int /*<<< orphan*/  return_one_key_list (struct connection*,char const*,int,int,int,int /*<<< orphan*/ ,int) ; 
- int sscanf (char const*,char*,int*,int*) ; 
- int* userlist ; 
+
+ int MAX_USERLIST_NUM ;
+ int assert (int) ;
+ int get_common_friends_num (int,int,int*,int ) ;
+ int get_saved_userlist (struct connection*,int) ;
+ int resultlist ;
+ int return_one_key_list (struct connection*,char const*,int,int,int,int ,int) ;
+ int sscanf (char const*,char*,int*,int*) ;
+ int* userlist ;
 
 void exec_get_common_friends_num (struct connection *c, const char *str, int len) {
   int user_id = 0;

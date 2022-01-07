@@ -1,71 +1,71 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  SortState ;
-typedef  int /*<<< orphan*/  ResultState ;
-typedef  int /*<<< orphan*/  PlanState ;
-typedef  int /*<<< orphan*/  MaterialState ;
-typedef  int /*<<< orphan*/  IndexScanState ;
-typedef  int /*<<< orphan*/  IndexOnlyScanState ;
-typedef  int /*<<< orphan*/  CustomScanState ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERROR ; 
- int /*<<< orphan*/  ExecCustomRestrPos (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ExecIndexOnlyRestrPos (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ExecIndexRestrPos (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ExecMaterialRestrPos (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ExecResultRestrPos (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ExecSortRestrPos (int /*<<< orphan*/ *) ; 
-#define  T_CustomScanState 133 
-#define  T_IndexOnlyScanState 132 
-#define  T_IndexScanState 131 
-#define  T_MaterialState 130 
-#define  T_ResultState 129 
-#define  T_SortState 128 
- int /*<<< orphan*/  elog (int /*<<< orphan*/ ,char*,int) ; 
- int nodeTag (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int SortState ;
+typedef int ResultState ;
+typedef int PlanState ;
+typedef int MaterialState ;
+typedef int IndexScanState ;
+typedef int IndexOnlyScanState ;
+typedef int CustomScanState ;
+
+
+ int ERROR ;
+ int ExecCustomRestrPos (int *) ;
+ int ExecIndexOnlyRestrPos (int *) ;
+ int ExecIndexRestrPos (int *) ;
+ int ExecMaterialRestrPos (int *) ;
+ int ExecResultRestrPos (int *) ;
+ int ExecSortRestrPos (int *) ;
+
+
+
+
+
+
+ int elog (int ,char*,int) ;
+ int nodeTag (int *) ;
 
 void
 ExecRestrPos(PlanState *node)
 {
-	switch (nodeTag(node))
-	{
-		case T_IndexScanState:
-			ExecIndexRestrPos((IndexScanState *) node);
-			break;
+ switch (nodeTag(node))
+ {
+  case 131:
+   ExecIndexRestrPos((IndexScanState *) node);
+   break;
 
-		case T_IndexOnlyScanState:
-			ExecIndexOnlyRestrPos((IndexOnlyScanState *) node);
-			break;
+  case 132:
+   ExecIndexOnlyRestrPos((IndexOnlyScanState *) node);
+   break;
 
-		case T_CustomScanState:
-			ExecCustomRestrPos((CustomScanState *) node);
-			break;
+  case 133:
+   ExecCustomRestrPos((CustomScanState *) node);
+   break;
 
-		case T_MaterialState:
-			ExecMaterialRestrPos((MaterialState *) node);
-			break;
+  case 130:
+   ExecMaterialRestrPos((MaterialState *) node);
+   break;
 
-		case T_SortState:
-			ExecSortRestrPos((SortState *) node);
-			break;
+  case 128:
+   ExecSortRestrPos((SortState *) node);
+   break;
 
-		case T_ResultState:
-			ExecResultRestrPos((ResultState *) node);
-			break;
+  case 129:
+   ExecResultRestrPos((ResultState *) node);
+   break;
 
-		default:
-			elog(ERROR, "unrecognized node type: %d", (int) nodeTag(node));
-			break;
-	}
+  default:
+   elog(ERROR, "unrecognized node type: %d", (int) nodeTag(node));
+   break;
+ }
 }

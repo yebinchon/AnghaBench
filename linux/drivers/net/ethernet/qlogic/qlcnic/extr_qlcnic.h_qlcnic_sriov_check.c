@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct qlcnic_adapter {int dummy; } ;
 
-/* Variables and functions */
- scalar_t__ qlcnic_sriov_pf_check (struct qlcnic_adapter*) ; 
- scalar_t__ qlcnic_sriov_vf_check (struct qlcnic_adapter*) ; 
+
+ scalar_t__ qlcnic_sriov_pf_check (struct qlcnic_adapter*) ;
+ scalar_t__ qlcnic_sriov_vf_check (struct qlcnic_adapter*) ;
 
 __attribute__((used)) static inline bool qlcnic_sriov_check(struct qlcnic_adapter *adapter)
 {
-	bool status;
+ bool status;
 
-	status = (qlcnic_sriov_pf_check(adapter) ||
-		  qlcnic_sriov_vf_check(adapter)) ? true : false;
+ status = (qlcnic_sriov_pf_check(adapter) ||
+    qlcnic_sriov_vf_check(adapter)) ? 1 : 0;
 
-	return status;
+ return status;
 }

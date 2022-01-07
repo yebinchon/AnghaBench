@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
 struct TYPE_11__ {scalar_t__ handle; } ;
-typedef  TYPE_1__ xlate_handle_node_t ;
-struct TYPE_12__ {int /*<<< orphan*/  len; int /*<<< orphan*/  data; } ;
-typedef  TYPE_2__ svn_stringbuf_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+typedef TYPE_1__ xlate_handle_node_t ;
+struct TYPE_12__ {int len; int data; } ;
+typedef TYPE_2__ svn_stringbuf_t ;
+typedef int svn_error_t ;
+typedef int apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_UTF_NTOU_XLATE_HANDLE ; 
- int /*<<< orphan*/ * check_non_ascii (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * check_utf8 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * convert_to_stringbuf (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_2__**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  get_ntou_xlate_handle_node (TYPE_1__**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  put_xlate_handle_node (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_error_compose_create (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- TYPE_2__* svn_stringbuf_dup (TYPE_2__ const*,int /*<<< orphan*/ *) ; 
+
+ int SVN_ERR (int ) ;
+ int SVN_UTF_NTOU_XLATE_HANDLE ;
+ int * check_non_ascii (int ,int ,int *) ;
+ int * check_utf8 (int ,int ,int *) ;
+ int * convert_to_stringbuf (TYPE_1__*,int ,int ,TYPE_2__**,int *) ;
+ int get_ntou_xlate_handle_node (TYPE_1__**,int *) ;
+ int put_xlate_handle_node (TYPE_1__*,int ,int *) ;
+ int * svn_error_compose_create (int *,int ) ;
+ TYPE_2__* svn_stringbuf_dup (TYPE_2__ const*,int *) ;
 
 svn_error_t *
 svn_utf_stringbuf_to_utf8(svn_stringbuf_t **dest,

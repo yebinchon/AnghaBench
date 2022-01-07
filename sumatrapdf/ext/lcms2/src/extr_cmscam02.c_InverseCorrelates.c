@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  double cmsFloat64Number ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef double cmsFloat64Number ;
 struct TYPE_7__ {double A; } ;
 struct TYPE_8__ {double n; double Nc; double Ncb; double c; double z; double Nbb; TYPE_1__ adoptedWhite; } ;
-typedef  TYPE_2__ cmsCIECAM02 ;
+typedef TYPE_2__ cmsCIECAM02 ;
 struct TYPE_9__ {double C; double J; double h; double A; double b; double a; double* RGBpa; } ;
-typedef  TYPE_3__ CAM02COLOR ;
+typedef TYPE_3__ CAM02COLOR ;
 
-/* Variables and functions */
- double cos (double) ; 
- scalar_t__ fabs (double) ; 
- double pow (double,double) ; 
- double sin (double) ; 
+
+ double cos (double) ;
+ scalar_t__ fabs (double) ;
+ double pow (double,double) ;
+ double sin (double) ;
 
 __attribute__((used)) static
 CAM02COLOR InverseCorrelates(CAM02COLOR clr, cmsCIECAM02* pMod)

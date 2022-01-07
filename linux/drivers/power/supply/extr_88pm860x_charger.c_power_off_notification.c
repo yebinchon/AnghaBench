@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct pm860x_charger_info {int /*<<< orphan*/  dev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dev_dbg (int /*<<< orphan*/ ,char*) ; 
+
+
+
+struct pm860x_charger_info {int dev; } ;
+
+
+ int dev_dbg (int ,char*) ;
 
 __attribute__((used)) static void power_off_notification(struct pm860x_charger_info *info)
 {
-	dev_dbg(info->dev, "Power-off notification!\n");
+ dev_dbg(info->dev, "Power-off notification!\n");
 }

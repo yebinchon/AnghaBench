@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int UINT32 ;
-typedef  int /*<<< orphan*/  ACPI_OBJECT_TYPE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACPI_TYPE_BUFFER ; 
- int /*<<< orphan*/  ACPI_TYPE_FIELD_UNIT ; 
- int /*<<< orphan*/  ACPI_TYPE_INTEGER ; 
- int /*<<< orphan*/  ACPI_TYPE_PACKAGE ; 
- int /*<<< orphan*/  ACPI_TYPE_STRING ; 
+
+
+
+typedef int UINT32 ;
+typedef int ACPI_OBJECT_TYPE ;
+
+
+ int ACPI_TYPE_BUFFER ;
+ int ACPI_TYPE_FIELD_UNIT ;
+ int ACPI_TYPE_INTEGER ;
+ int ACPI_TYPE_PACKAGE ;
+ int ACPI_TYPE_STRING ;
 
 char *
 AcpiDbGetNextToken (
-    char                    *String,
-    char                    **Next,
-    ACPI_OBJECT_TYPE        *ReturnType)
+    char *String,
+    char **Next,
+    ACPI_OBJECT_TYPE *ReturnType)
 {
-    char                    *Start;
-    UINT32                  Depth;
-    ACPI_OBJECT_TYPE        Type = ACPI_TYPE_INTEGER;
+    char *Start;
+    UINT32 Depth;
+    ACPI_OBJECT_TYPE Type = ACPI_TYPE_INTEGER;
 
 
-    /* At end of buffer? */
+
 
     if (!String || !(*String))
     {
-        return (NULL);
+        return (((void*)0));
     }
 
-    /* Remove any spaces at the beginning */
+
 
     if (*String == ' ')
     {
@@ -49,7 +49,7 @@ AcpiDbGetNextToken (
 
         if (!(*String))
         {
-            return (NULL);
+            return (((void*)0));
         }
     }
 
@@ -57,13 +57,13 @@ AcpiDbGetNextToken (
     {
     case '"':
 
-        /* This is a quoted string, scan until closing quote */
+
 
         String++;
         Start = String;
         Type = ACPI_TYPE_STRING;
 
-        /* Find end of string */
+
 
         while (*String && (*String != '"'))
         {
@@ -73,13 +73,13 @@ AcpiDbGetNextToken (
 
     case '(':
 
-        /* This is the start of a buffer, scan until closing paren */
+
 
         String++;
         Start = String;
         Type = ACPI_TYPE_BUFFER;
 
-        /* Find end of buffer */
+
 
         while (*String && (*String != ')'))
         {
@@ -89,13 +89,13 @@ AcpiDbGetNextToken (
 
     case '{':
 
-        /* This is the start of a field unit, scan until closing brace */
+
 
         String++;
         Start = String;
         Type = ACPI_TYPE_FIELD_UNIT;
 
-        /* Find end of buffer */
+
 
         while (*String && (*String != '}'))
         {
@@ -105,22 +105,22 @@ AcpiDbGetNextToken (
 
     case '[':
 
-        /* This is the start of a package, scan until closing bracket */
+
 
         String++;
         Depth = 1;
         Start = String;
         Type = ACPI_TYPE_PACKAGE;
 
-        /* Find end of package (closing bracket) */
+
 
         while (*String)
         {
-            /* Handle String package elements */
+
 
             if (*String == '"')
             {
-                /* Find end of string */
+
 
                 String++;
                 while (*String && (*String != '"'))
@@ -134,12 +134,12 @@ AcpiDbGetNextToken (
             }
             else if (*String == '[')
             {
-                Depth++;         /* A nested package declaration */
+                Depth++;
             }
             else if (*String == ']')
             {
                 Depth--;
-                if (Depth == 0) /* Found final package closing bracket */
+                if (Depth == 0)
                 {
                     break;
                 }
@@ -153,7 +153,7 @@ AcpiDbGetNextToken (
 
         Start = String;
 
-        /* Find end of token */
+
 
         while (*String && (*String != ' '))
         {
@@ -164,7 +164,7 @@ AcpiDbGetNextToken (
 
     if (!(*String))
     {
-        *Next = NULL;
+        *Next = ((void*)0);
     }
     else
     {

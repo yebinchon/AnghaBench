@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_ra_session_t ;
-typedef  int /*<<< orphan*/  svn_opt_revision_t ;
-typedef  int /*<<< orphan*/  svn_mergeinfo_catalog_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_client_ctx_t ;
-struct TYPE_5__ {scalar_t__ rev; int /*<<< orphan*/  url; } ;
-typedef  TYPE_1__ svn_client__pathrev_t ;
-typedef  scalar_t__ svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- scalar_t__ TRUE ; 
- scalar_t__ strcmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_client__get_repos_mergeinfo_catalog (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_client__get_wc_or_repos_mergeinfo_catalog (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_client__ra_session_from_path2 (int /*<<< orphan*/ **,TYPE_1__**,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_client__resolve_rev_and_url (TYPE_1__**,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_client__wc_node_get_origin (TYPE_1__**,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_dirent_get_absolute (char const**,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_mergeinfo_inherited ; 
- scalar_t__ svn_path_is_url (char const*) ; 
- int /*<<< orphan*/  svn_ra_get_repos_root2 (int /*<<< orphan*/ *,char const**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_ra_reparent (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int svn_ra_session_t ;
+typedef int svn_opt_revision_t ;
+typedef int svn_mergeinfo_catalog_t ;
+typedef int svn_error_t ;
+typedef int svn_client_ctx_t ;
+struct TYPE_5__ {scalar_t__ rev; int url; } ;
+typedef TYPE_1__ svn_client__pathrev_t ;
+typedef scalar_t__ svn_boolean_t ;
+typedef int apr_pool_t ;
+
+
+ int FALSE ;
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ scalar_t__ TRUE ;
+ scalar_t__ strcmp (int ,int ) ;
+ int svn_client__get_repos_mergeinfo_catalog (int *,int *,int ,scalar_t__,int ,int ,scalar_t__,int *,int *) ;
+ int svn_client__get_wc_or_repos_mergeinfo_catalog (int *,int *,int *,scalar_t__,int ,scalar_t__,int ,int *,char const*,int *,int *,int *) ;
+ int svn_client__ra_session_from_path2 (int **,TYPE_1__**,char const*,int *,int const*,int const*,int *,int *) ;
+ int svn_client__resolve_rev_and_url (TYPE_1__**,int *,char const*,int const*,int const*,int *,int *) ;
+ int svn_client__wc_node_get_origin (TYPE_1__**,char const*,int *,int *,int *) ;
+ int svn_dirent_get_absolute (char const**,char const*,int *) ;
+ int svn_mergeinfo_inherited ;
+ scalar_t__ svn_path_is_url (char const*) ;
+ int svn_ra_get_repos_root2 (int *,char const**,int *) ;
+ int svn_ra_reparent (int *,char const*,int *) ;
 
 __attribute__((used)) static svn_error_t *
 get_mergeinfo(svn_mergeinfo_catalog_t *mergeinfo_catalog,
@@ -66,13 +66,13 @@ get_mergeinfo(svn_mergeinfo_catalog_t *mergeinfo_catalog,
   else
     {
       SVN_ERR(svn_client__ra_session_from_path2(&ra_session, &peg_loc,
-                                                path_or_url, NULL,
+                                                path_or_url, ((void*)0),
                                                 peg_revision,
                                                 peg_revision, ctx, scratch_pool));
     }
 
-  /* If PATH_OR_URL is as working copy path determine if we will need to
-     contact the repository for the requested PEG_REVISION. */
+
+
   if (!use_url)
     {
       svn_client__pathrev_t *origin;
@@ -85,7 +85,7 @@ get_mergeinfo(svn_mergeinfo_catalog_t *mergeinfo_catalog,
           || strcmp(origin->url, peg_loc->url) != 0
           || peg_loc->rev != origin->rev)
       {
-        use_url = TRUE; /* Don't rely on local mergeinfo */
+        use_url = TRUE;
       }
     }
 
@@ -98,10 +98,10 @@ get_mergeinfo(svn_mergeinfo_catalog_t *mergeinfo_catalog,
         svn_mergeinfo_inherited, FALSE, include_descendants,
         result_pool, scratch_pool));
     }
-  else /* ! svn_path_is_url() */
+  else
     {
       SVN_ERR(svn_client__get_wc_or_repos_mergeinfo_catalog(
-        mergeinfo_catalog, NULL, NULL, include_descendants, FALSE,
+        mergeinfo_catalog, ((void*)0), ((void*)0), include_descendants, FALSE,
         ignore_invalid_mergeinfo, svn_mergeinfo_inherited,
         ra_session, path_or_url, ctx,
         result_pool, scratch_pool));

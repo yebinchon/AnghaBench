@@ -1,104 +1,104 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_9__ {int cbSize; } ;
-struct TYPE_8__ {char* rtfTextBuf; char* pushedTextBuf; int ansiCodePage; int unicodeLength; int codePage; int rtfClass; int pushedClass; int dwMaxCPOutputCount; TYPE_2__ fmt; scalar_t__ borderType; void* canInheritInTbl; scalar_t__ nestingLevel; int /*<<< orphan*/ * tableDef; void* cpOutputBuffer; scalar_t__ dwCPOutputCount; void* bumpLine; void* prevChar; scalar_t__ rtfLinePos; scalar_t__ rtfLineNum; void* pushedChar; scalar_t__ defFont; } ;
-typedef  TYPE_1__ RTF_Info ;
+struct TYPE_8__ {char* rtfTextBuf; char* pushedTextBuf; int ansiCodePage; int unicodeLength; int codePage; int rtfClass; int pushedClass; int dwMaxCPOutputCount; TYPE_2__ fmt; scalar_t__ borderType; void* canInheritInTbl; scalar_t__ nestingLevel; int * tableDef; void* cpOutputBuffer; scalar_t__ dwCPOutputCount; void* bumpLine; void* prevChar; scalar_t__ rtfLinePos; scalar_t__ rtfLineNum; void* pushedChar; scalar_t__ defFont; } ;
+typedef TYPE_1__ RTF_Info ;
 
-/* Variables and functions */
- void* EOF ; 
- int /*<<< orphan*/  ERR (char*) ; 
- void* FALSE ; 
- int /*<<< orphan*/  RTFDestroyAttrs (TYPE_1__*) ; 
- int /*<<< orphan*/  RTFSetClassCallback (TYPE_1__*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RTFSetDestinationCallback (TYPE_1__*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RTFSetReadHook (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * ReadColorTbl ; 
- int /*<<< orphan*/ * ReadFontTbl ; 
- int /*<<< orphan*/ * ReadInfoGroup ; 
- int /*<<< orphan*/ * ReadObjGroup ; 
- int /*<<< orphan*/ * ReadPictGroup ; 
- int /*<<< orphan*/ * ReadStyleSheet ; 
- void* heap_alloc (int) ; 
- int /*<<< orphan*/  memset (TYPE_2__*,int /*<<< orphan*/ ,int) ; 
- int rtfBufSiz ; 
- int rtfColorTbl ; 
- int rtfFontTbl ; 
- int rtfInfo ; 
- int rtfMaxClass ; 
- int rtfMaxDestination ; 
- int rtfObject ; 
- int rtfPict ; 
- int rtfStyleSheet ; 
+
+ void* EOF ;
+ int ERR (char*) ;
+ void* FALSE ;
+ int RTFDestroyAttrs (TYPE_1__*) ;
+ int RTFSetClassCallback (TYPE_1__*,int,int *) ;
+ int RTFSetDestinationCallback (TYPE_1__*,int,int *) ;
+ int RTFSetReadHook (TYPE_1__*,int *) ;
+ int * ReadColorTbl ;
+ int * ReadFontTbl ;
+ int * ReadInfoGroup ;
+ int * ReadObjGroup ;
+ int * ReadPictGroup ;
+ int * ReadStyleSheet ;
+ void* heap_alloc (int) ;
+ int memset (TYPE_2__*,int ,int) ;
+ int rtfBufSiz ;
+ int rtfColorTbl ;
+ int rtfFontTbl ;
+ int rtfInfo ;
+ int rtfMaxClass ;
+ int rtfMaxDestination ;
+ int rtfObject ;
+ int rtfPict ;
+ int rtfStyleSheet ;
 
 void RTFInit(RTF_Info *info)
 {
-	int	i;
+ int i;
 
-	if (info->rtfTextBuf == NULL)	/* initialize the text buffers */
-	{
-		info->rtfTextBuf = heap_alloc (rtfBufSiz);
-		info->pushedTextBuf = heap_alloc (rtfBufSiz);
-		if (info->rtfTextBuf == NULL || info->pushedTextBuf == NULL) {
-			ERR ("Cannot allocate text buffers.\n");
-			return;
-		}
-		info->rtfTextBuf[0] = info->pushedTextBuf[0] = '\0';
-	}
+ if (info->rtfTextBuf == ((void*)0))
+ {
+  info->rtfTextBuf = heap_alloc (rtfBufSiz);
+  info->pushedTextBuf = heap_alloc (rtfBufSiz);
+  if (info->rtfTextBuf == ((void*)0) || info->pushedTextBuf == ((void*)0)) {
+   ERR ("Cannot allocate text buffers.\n");
+   return;
+  }
+  info->rtfTextBuf[0] = info->pushedTextBuf[0] = '\0';
+ }
 
-	for (i = 0; i < rtfMaxClass; i++)
-		RTFSetClassCallback (info, i, NULL);
-	for (i = 0; i < rtfMaxDestination; i++)
-		RTFSetDestinationCallback (info, i, NULL);
-
-	/* install built-in destination readers */
-	RTFSetDestinationCallback (info, rtfFontTbl, ReadFontTbl);
-	RTFSetDestinationCallback (info, rtfColorTbl, ReadColorTbl);
-	RTFSetDestinationCallback (info, rtfStyleSheet, ReadStyleSheet);
-	RTFSetDestinationCallback (info, rtfInfo, ReadInfoGroup);
-	RTFSetDestinationCallback (info, rtfPict, ReadPictGroup);
-	RTFSetDestinationCallback (info, rtfObject, ReadObjGroup);
+ for (i = 0; i < rtfMaxClass; i++)
+  RTFSetClassCallback (info, i, ((void*)0));
+ for (i = 0; i < rtfMaxDestination; i++)
+  RTFSetDestinationCallback (info, i, ((void*)0));
 
 
-	RTFSetReadHook (info, NULL);
+ RTFSetDestinationCallback (info, rtfFontTbl, ReadFontTbl);
+ RTFSetDestinationCallback (info, rtfColorTbl, ReadColorTbl);
+ RTFSetDestinationCallback (info, rtfStyleSheet, ReadStyleSheet);
+ RTFSetDestinationCallback (info, rtfInfo, ReadInfoGroup);
+ RTFSetDestinationCallback (info, rtfPict, ReadPictGroup);
+ RTFSetDestinationCallback (info, rtfObject, ReadObjGroup);
 
-	/* dump old lists if necessary */
 
-	RTFDestroyAttrs(info);
+ RTFSetReadHook (info, ((void*)0));
 
-        info->ansiCodePage = 1252; /* Latin-1; actually unused */
-	info->unicodeLength = 1; /* \uc1 is the default */
-	info->codePage = info->ansiCodePage;
+
+
+ RTFDestroyAttrs(info);
+
+        info->ansiCodePage = 1252;
+ info->unicodeLength = 1;
+ info->codePage = info->ansiCodePage;
         info->defFont = 0;
 
-	info->rtfClass = -1;
-	info->pushedClass = -1;
-	info->pushedChar = EOF;
+ info->rtfClass = -1;
+ info->pushedClass = -1;
+ info->pushedChar = EOF;
 
-	info->rtfLineNum = 0;
-	info->rtfLinePos = 0;
-	info->prevChar = EOF;
+ info->rtfLineNum = 0;
+ info->rtfLinePos = 0;
+ info->prevChar = EOF;
         info->bumpLine = FALSE;
 
-	info->dwCPOutputCount = 0;
+ info->dwCPOutputCount = 0;
         if (!info->cpOutputBuffer)
-	{
-		info->dwMaxCPOutputCount = 0x1000;
-		info->cpOutputBuffer = heap_alloc(info->dwMaxCPOutputCount);
-	}
+ {
+  info->dwMaxCPOutputCount = 0x1000;
+  info->cpOutputBuffer = heap_alloc(info->dwMaxCPOutputCount);
+ }
 
-        info->tableDef = NULL;
+        info->tableDef = ((void*)0);
         info->nestingLevel = 0;
         info->canInheritInTbl = FALSE;
         info->borderType = 0;

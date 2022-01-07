@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  LZ4_streamDecode_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FREEMEM (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int LZ4_streamDecode_t ;
+
+
+ int FREEMEM (int *) ;
 
 int LZ4_freeStreamDecode (LZ4_streamDecode_t* LZ4_stream)
 {
-    if (LZ4_stream == NULL) { return 0; }  /* support free on NULL */
+    if (LZ4_stream == ((void*)0)) { return 0; }
     FREEMEM(LZ4_stream);
     return 0;
 }

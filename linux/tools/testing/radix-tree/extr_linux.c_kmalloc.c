@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int gfp_t ;
 
-/* Variables and functions */
- int __GFP_DIRECT_RECLAIM ; 
- int __GFP_ZERO ; 
- scalar_t__ kmalloc_verbose ; 
- void* malloc (size_t) ; 
- int /*<<< orphan*/  memset (void*,int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/  nr_allocated ; 
- int /*<<< orphan*/  printf (char*,void*) ; 
- int /*<<< orphan*/  uatomic_inc (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int gfp_t ;
+
+
+ int __GFP_DIRECT_RECLAIM ;
+ int __GFP_ZERO ;
+ scalar_t__ kmalloc_verbose ;
+ void* malloc (size_t) ;
+ int memset (void*,int ,size_t) ;
+ int nr_allocated ;
+ int printf (char*,void*) ;
+ int uatomic_inc (int *) ;
 
 void *kmalloc(size_t size, gfp_t gfp)
 {
-	void *ret;
+ void *ret;
 
-	if (!(gfp & __GFP_DIRECT_RECLAIM))
-		return NULL;
+ if (!(gfp & __GFP_DIRECT_RECLAIM))
+  return ((void*)0);
 
-	ret = malloc(size);
-	uatomic_inc(&nr_allocated);
-	if (kmalloc_verbose)
-		printf("Allocating %p from malloc\n", ret);
-	if (gfp & __GFP_ZERO)
-		memset(ret, 0, size);
-	return ret;
+ ret = malloc(size);
+ uatomic_inc(&nr_allocated);
+ if (kmalloc_verbose)
+  printf("Allocating %p from malloc\n", ret);
+ if (gfp & __GFP_ZERO)
+  memset(ret, 0, size);
+ return ret;
 }

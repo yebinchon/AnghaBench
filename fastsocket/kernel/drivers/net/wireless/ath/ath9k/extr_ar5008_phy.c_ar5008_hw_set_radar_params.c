@@ -1,68 +1,68 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u32 ;
-struct ath_hw_radar_conf {scalar_t__ ext_channel; int /*<<< orphan*/  radar_inband; int /*<<< orphan*/  pulse_inband_step; int /*<<< orphan*/  pulse_maxlen; int /*<<< orphan*/  pulse_inband; int /*<<< orphan*/  pulse_rssi; int /*<<< orphan*/  pulse_height; int /*<<< orphan*/  radar_rssi; int /*<<< orphan*/  fir_power; } ;
+
+
+
+
+typedef int u32 ;
+struct ath_hw_radar_conf {scalar_t__ ext_channel; int radar_inband; int pulse_inband_step; int pulse_maxlen; int pulse_inband; int pulse_rssi; int pulse_height; int radar_rssi; int fir_power; } ;
 struct ath_hw {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AR_PHY_RADAR_0 ; 
- int AR_PHY_RADAR_0_ENA ; 
- int AR_PHY_RADAR_0_FFT_ENA ; 
- int /*<<< orphan*/  AR_PHY_RADAR_0_FIRPWR ; 
- int /*<<< orphan*/  AR_PHY_RADAR_0_HEIGHT ; 
- int /*<<< orphan*/  AR_PHY_RADAR_0_INBAND ; 
- int /*<<< orphan*/  AR_PHY_RADAR_0_PRSSI ; 
- int /*<<< orphan*/  AR_PHY_RADAR_0_RRSSI ; 
- int /*<<< orphan*/  AR_PHY_RADAR_1 ; 
- int AR_PHY_RADAR_1_BLOCK_CHECK ; 
- int /*<<< orphan*/  AR_PHY_RADAR_1_MAXLEN ; 
- int AR_PHY_RADAR_1_MAX_RRSSI ; 
- int /*<<< orphan*/  AR_PHY_RADAR_1_RELPWR_THRESH ; 
- int /*<<< orphan*/  AR_PHY_RADAR_1_RELSTEP_THRESH ; 
- int /*<<< orphan*/  AR_PHY_RADAR_EXT ; 
- int AR_PHY_RADAR_EXT_ENA ; 
- int /*<<< orphan*/  REG_CLR_BIT (struct ath_hw*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  REG_SET_BIT (struct ath_hw*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  REG_WRITE (struct ath_hw*,int /*<<< orphan*/ ,int) ; 
- int SM (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int AR_PHY_RADAR_0 ;
+ int AR_PHY_RADAR_0_ENA ;
+ int AR_PHY_RADAR_0_FFT_ENA ;
+ int AR_PHY_RADAR_0_FIRPWR ;
+ int AR_PHY_RADAR_0_HEIGHT ;
+ int AR_PHY_RADAR_0_INBAND ;
+ int AR_PHY_RADAR_0_PRSSI ;
+ int AR_PHY_RADAR_0_RRSSI ;
+ int AR_PHY_RADAR_1 ;
+ int AR_PHY_RADAR_1_BLOCK_CHECK ;
+ int AR_PHY_RADAR_1_MAXLEN ;
+ int AR_PHY_RADAR_1_MAX_RRSSI ;
+ int AR_PHY_RADAR_1_RELPWR_THRESH ;
+ int AR_PHY_RADAR_1_RELSTEP_THRESH ;
+ int AR_PHY_RADAR_EXT ;
+ int AR_PHY_RADAR_EXT_ENA ;
+ int REG_CLR_BIT (struct ath_hw*,int ,int) ;
+ int REG_SET_BIT (struct ath_hw*,int ,int) ;
+ int REG_WRITE (struct ath_hw*,int ,int) ;
+ int SM (int ,int ) ;
 
 __attribute__((used)) static void ar5008_hw_set_radar_params(struct ath_hw *ah,
-				       struct ath_hw_radar_conf *conf)
+           struct ath_hw_radar_conf *conf)
 {
-	u32 radar_0 = 0, radar_1 = 0;
+ u32 radar_0 = 0, radar_1 = 0;
 
-	if (!conf) {
-		REG_CLR_BIT(ah, AR_PHY_RADAR_0, AR_PHY_RADAR_0_ENA);
-		return;
-	}
+ if (!conf) {
+  REG_CLR_BIT(ah, AR_PHY_RADAR_0, AR_PHY_RADAR_0_ENA);
+  return;
+ }
 
-	radar_0 |= AR_PHY_RADAR_0_ENA | AR_PHY_RADAR_0_FFT_ENA;
-	radar_0 |= SM(conf->fir_power, AR_PHY_RADAR_0_FIRPWR);
-	radar_0 |= SM(conf->radar_rssi, AR_PHY_RADAR_0_RRSSI);
-	radar_0 |= SM(conf->pulse_height, AR_PHY_RADAR_0_HEIGHT);
-	radar_0 |= SM(conf->pulse_rssi, AR_PHY_RADAR_0_PRSSI);
-	radar_0 |= SM(conf->pulse_inband, AR_PHY_RADAR_0_INBAND);
+ radar_0 |= AR_PHY_RADAR_0_ENA | AR_PHY_RADAR_0_FFT_ENA;
+ radar_0 |= SM(conf->fir_power, AR_PHY_RADAR_0_FIRPWR);
+ radar_0 |= SM(conf->radar_rssi, AR_PHY_RADAR_0_RRSSI);
+ radar_0 |= SM(conf->pulse_height, AR_PHY_RADAR_0_HEIGHT);
+ radar_0 |= SM(conf->pulse_rssi, AR_PHY_RADAR_0_PRSSI);
+ radar_0 |= SM(conf->pulse_inband, AR_PHY_RADAR_0_INBAND);
 
-	radar_1 |= AR_PHY_RADAR_1_MAX_RRSSI;
-	radar_1 |= AR_PHY_RADAR_1_BLOCK_CHECK;
-	radar_1 |= SM(conf->pulse_maxlen, AR_PHY_RADAR_1_MAXLEN);
-	radar_1 |= SM(conf->pulse_inband_step, AR_PHY_RADAR_1_RELSTEP_THRESH);
-	radar_1 |= SM(conf->radar_inband, AR_PHY_RADAR_1_RELPWR_THRESH);
+ radar_1 |= AR_PHY_RADAR_1_MAX_RRSSI;
+ radar_1 |= AR_PHY_RADAR_1_BLOCK_CHECK;
+ radar_1 |= SM(conf->pulse_maxlen, AR_PHY_RADAR_1_MAXLEN);
+ radar_1 |= SM(conf->pulse_inband_step, AR_PHY_RADAR_1_RELSTEP_THRESH);
+ radar_1 |= SM(conf->radar_inband, AR_PHY_RADAR_1_RELPWR_THRESH);
 
-	REG_WRITE(ah, AR_PHY_RADAR_0, radar_0);
-	REG_WRITE(ah, AR_PHY_RADAR_1, radar_1);
-	if (conf->ext_channel)
-		REG_SET_BIT(ah, AR_PHY_RADAR_EXT, AR_PHY_RADAR_EXT_ENA);
-	else
-		REG_CLR_BIT(ah, AR_PHY_RADAR_EXT, AR_PHY_RADAR_EXT_ENA);
+ REG_WRITE(ah, AR_PHY_RADAR_0, radar_0);
+ REG_WRITE(ah, AR_PHY_RADAR_1, radar_1);
+ if (conf->ext_channel)
+  REG_SET_BIT(ah, AR_PHY_RADAR_EXT, AR_PHY_RADAR_EXT_ENA);
+ else
+  REG_CLR_BIT(ah, AR_PHY_RADAR_EXT, AR_PHY_RADAR_EXT_ENA);
 }

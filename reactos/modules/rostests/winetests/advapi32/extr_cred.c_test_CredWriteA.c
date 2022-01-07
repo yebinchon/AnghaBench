@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {char* TargetName; char* Comment; char* UserName; void* Type; int /*<<< orphan*/  Persist; int /*<<< orphan*/ * TargetAlias; int /*<<< orphan*/ * Attributes; scalar_t__ AttributeCount; int /*<<< orphan*/ * CredentialBlob; scalar_t__ CredentialBlobSize; scalar_t__ Flags; } ;
-typedef  TYPE_1__ CREDENTIALA ;
-typedef  int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CRED_PERSIST_ENTERPRISE ; 
- int /*<<< orphan*/  CRED_PERSIST_LOCAL_MACHINE ; 
- int /*<<< orphan*/  CRED_PERSIST_SESSION ; 
- void* CRED_TYPE_DOMAIN_PASSWORD ; 
- void* CRED_TYPE_GENERIC ; 
- scalar_t__ ERROR_BAD_USERNAME ; 
- scalar_t__ ERROR_INVALID_PARAMETER ; 
- scalar_t__ ERROR_IO_PENDING ; 
- scalar_t__ ERROR_NO_SUCH_LOGON_SESSION ; 
- scalar_t__ ERROR_SUCCESS ; 
- scalar_t__ GetLastError () ; 
- int /*<<< orphan*/  SetLastError (int) ; 
- scalar_t__ TEST_TARGET_NAME ; 
- scalar_t__ broken (int) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int pCredDeleteA (scalar_t__,void*,int /*<<< orphan*/ ) ; 
- int pCredWriteA (TYPE_1__*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {char* TargetName; char* Comment; char* UserName; void* Type; int Persist; int * TargetAlias; int * Attributes; scalar_t__ AttributeCount; int * CredentialBlob; scalar_t__ CredentialBlobSize; scalar_t__ Flags; } ;
+typedef TYPE_1__ CREDENTIALA ;
+typedef int BOOL ;
+
+
+ int CRED_PERSIST_ENTERPRISE ;
+ int CRED_PERSIST_LOCAL_MACHINE ;
+ int CRED_PERSIST_SESSION ;
+ void* CRED_TYPE_DOMAIN_PASSWORD ;
+ void* CRED_TYPE_GENERIC ;
+ scalar_t__ ERROR_BAD_USERNAME ;
+ scalar_t__ ERROR_INVALID_PARAMETER ;
+ scalar_t__ ERROR_IO_PENDING ;
+ scalar_t__ ERROR_NO_SUCH_LOGON_SESSION ;
+ scalar_t__ ERROR_SUCCESS ;
+ scalar_t__ GetLastError () ;
+ int SetLastError (int) ;
+ scalar_t__ TEST_TARGET_NAME ;
+ scalar_t__ broken (int) ;
+ int ok (int,char*,...) ;
+ int pCredDeleteA (scalar_t__,void*,int ) ;
+ int pCredWriteA (TYPE_1__*,int ) ;
 
 __attribute__((used)) static void test_CredWriteA(void)
 {
@@ -40,21 +40,21 @@ __attribute__((used)) static void test_CredWriteA(void)
     BOOL ret;
 
     SetLastError(0xdeadbeef);
-    ret = pCredWriteA(NULL, 0);
+    ret = pCredWriteA(((void*)0), 0);
     ok(!ret && GetLastError() == ERROR_INVALID_PARAMETER,
         "CredWriteA should have failed with ERROR_INVALID_PARAMETER instead of %d\n",
         GetLastError());
 
     new_cred.Flags = 0;
     new_cred.Type = CRED_TYPE_GENERIC;
-    new_cred.TargetName = NULL;
+    new_cred.TargetName = ((void*)0);
     new_cred.Comment = (char *)"Comment";
     new_cred.CredentialBlobSize = 0;
-    new_cred.CredentialBlob = NULL;
+    new_cred.CredentialBlob = ((void*)0);
     new_cred.Persist = CRED_PERSIST_ENTERPRISE;
     new_cred.AttributeCount = 0;
-    new_cred.Attributes = NULL;
-    new_cred.TargetAlias = NULL;
+    new_cred.Attributes = ((void*)0);
+    new_cred.TargetAlias = ((void*)0);
     new_cred.UserName = (char *)"winetest";
 
     SetLastError(0xdeadbeef);
@@ -71,18 +71,18 @@ __attribute__((used)) static void test_CredWriteA(void)
     if (ret)
     {
         ok(GetLastError() == ERROR_SUCCESS ||
-           GetLastError() == ERROR_IO_PENDING, /* Vista */
+           GetLastError() == ERROR_IO_PENDING,
            "Expected ERROR_IO_PENDING, got %d\n", GetLastError());
     }
     else
     {
         ok(GetLastError() == ERROR_BAD_USERNAME ||
-           GetLastError() == ERROR_NO_SUCH_LOGON_SESSION, /* Vista */
+           GetLastError() == ERROR_NO_SUCH_LOGON_SESSION,
            "CredWrite with username without domain should return ERROR_BAD_USERNAME"
            "or ERROR_NO_SUCH_LOGON_SESSION not %d\n", GetLastError());
     }
 
-    new_cred.UserName = NULL;
+    new_cred.UserName = ((void*)0);
     SetLastError(0xdeadbeef);
     ret = pCredWriteA(&new_cred, 0);
     ok(!ret && GetLastError() == ERROR_BAD_USERNAME,
@@ -103,7 +103,7 @@ __attribute__((used)) static void test_CredWriteA(void)
     SetLastError(0xdeadbeef);
     ret = pCredWriteA(&new_cred, 0);
     ok(ret || broken(!ret), "CredWriteA failed with error %u\n", GetLastError());
-    if  (ret)
+    if (ret)
     {
         ret = pCredDeleteA(TEST_TARGET_NAME, CRED_TYPE_GENERIC, 0);
         ok(ret, "CredDeleteA failed with error %u\n", GetLastError());
@@ -124,7 +124,7 @@ __attribute__((used)) static void test_CredWriteA(void)
         ret = pCredDeleteA(TEST_TARGET_NAME, CRED_TYPE_DOMAIN_PASSWORD, 0);
         ok(ret, "CredDeleteA failed with error %u\n", GetLastError());
     }
-    new_cred.UserName = NULL;
+    new_cred.UserName = ((void*)0);
     SetLastError(0xdeadbeef);
     ret = pCredWriteA(&new_cred, 0);
     ok(!ret, "CredWriteA succeeded\n");

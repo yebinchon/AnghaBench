@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_9__ {int size; scalar_t__ data; } ;
-typedef  TYPE_1__ AVPacket ;
-typedef  int /*<<< orphan*/  AVBSFContext ;
+typedef TYPE_1__ AVPacket ;
+typedef int AVBSFContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_WB16 (scalar_t__,int) ; 
- int /*<<< orphan*/  ENOMEM ; 
- int av_new_packet (TYPE_1__*,int) ; 
- int av_packet_copy_props (TYPE_1__*,TYPE_1__*) ; 
- int /*<<< orphan*/  av_packet_free (TYPE_1__**) ; 
- int /*<<< orphan*/  av_packet_unref (TYPE_1__*) ; 
- int ff_bsf_get_packet (int /*<<< orphan*/ *,TYPE_1__**) ; 
- int /*<<< orphan*/  memcpy (scalar_t__,scalar_t__,int) ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_INVALIDDATA ;
+ int AV_WB16 (scalar_t__,int) ;
+ int ENOMEM ;
+ int av_new_packet (TYPE_1__*,int) ;
+ int av_packet_copy_props (TYPE_1__*,TYPE_1__*) ;
+ int av_packet_free (TYPE_1__**) ;
+ int av_packet_unref (TYPE_1__*) ;
+ int ff_bsf_get_packet (int *,TYPE_1__**) ;
+ int memcpy (scalar_t__,scalar_t__,int) ;
 
 __attribute__((used)) static int text2movsub(AVBSFContext *ctx, AVPacket *out)
 {

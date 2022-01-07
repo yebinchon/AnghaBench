@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_23__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int v8i16 ;
-typedef  scalar_t__ v4i32 ;
-struct TYPE_23__ {int member_1; int member_2; int member_3; int member_4; int member_5; int member_6; int member_7; int /*<<< orphan*/  member_15; int /*<<< orphan*/  member_14; int /*<<< orphan*/  member_13; int /*<<< orphan*/  member_12; int /*<<< orphan*/  member_11; int /*<<< orphan*/  member_10; int /*<<< orphan*/  member_9; int /*<<< orphan*/  member_8; int /*<<< orphan*/  member_0; } ;
-typedef  TYPE_1__ v16i8 ;
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int ptrdiff_t ;
-typedef  size_t int16_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLIP_SW4_0_255 (scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  ILVL_H2_SW (TYPE_1__,int,TYPE_1__,int,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  ILVR_B4_SH (TYPE_1__,TYPE_1__,TYPE_1__,TYPE_1__,TYPE_1__,TYPE_1__,TYPE_1__,TYPE_1__,int,int,int,int) ; 
- int /*<<< orphan*/  ILVR_H2_SW (TYPE_1__,int,TYPE_1__,int,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  LD_SB4 (int /*<<< orphan*/ *,int,TYPE_1__,TYPE_1__,TYPE_1__,TYPE_1__) ; 
- int /*<<< orphan*/  LD_SW2 (int*,int,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  ST_D1 (TYPE_1__,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ST_SH (int,size_t*) ; 
- int /*<<< orphan*/  VSHF_B2_SB (scalar_t__,scalar_t__,scalar_t__,scalar_t__,TYPE_1__,TYPE_1__,TYPE_1__,TYPE_1__) ; 
+
+typedef struct TYPE_23__ TYPE_1__ ;
+
+
+typedef int v8i16 ;
+typedef scalar_t__ v4i32 ;
+struct TYPE_23__ {int member_1; int member_2; int member_3; int member_4; int member_5; int member_6; int member_7; int member_15; int member_14; int member_13; int member_12; int member_11; int member_10; int member_9; int member_8; int member_0; } ;
+typedef TYPE_1__ v16i8 ;
+typedef int uint8_t ;
+typedef int ptrdiff_t ;
+typedef size_t int16_t ;
+
+
+ int CLIP_SW4_0_255 (scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ int ILVL_H2_SW (TYPE_1__,int,TYPE_1__,int,scalar_t__,scalar_t__) ;
+ int ILVR_B4_SH (TYPE_1__,TYPE_1__,TYPE_1__,TYPE_1__,TYPE_1__,TYPE_1__,TYPE_1__,TYPE_1__,int,int,int,int) ;
+ int ILVR_H2_SW (TYPE_1__,int,TYPE_1__,int,scalar_t__,scalar_t__) ;
+ int LD_SB4 (int *,int,TYPE_1__,TYPE_1__,TYPE_1__,TYPE_1__) ;
+ int LD_SW2 (int*,int,scalar_t__,scalar_t__) ;
+ int ST_D1 (TYPE_1__,int ,int *) ;
+ int ST_SH (int,size_t*) ;
+ int VSHF_B2_SB (scalar_t__,scalar_t__,scalar_t__,scalar_t__,TYPE_1__,TYPE_1__,TYPE_1__,TYPE_1__) ;
 
 void ff_vp3_v_loop_filter_msa(uint8_t *first_pixel, ptrdiff_t stride,
                               int *bounding_values)
@@ -51,7 +51,7 @@ void ff_vp3_v_loop_filter_msa(uint8_t *first_pixel, ptrdiff_t stride,
     r0 = (c0 - c3) + (c2 - c1) * cnst3h;
     r0 += cnst4h;
     r0 = r0 >> 3;
-    /* Get filter_value from bounding_values one by one */
+
     ST_SH(r0, temp_16);
     for (int i = 0; i < 8; i++)
         temp_32[i] = bounding_values[temp_16[i]];
@@ -65,7 +65,7 @@ void ff_vp3_v_loop_filter_msa(uint8_t *first_pixel, ptrdiff_t stride,
     CLIP_SW4_0_255(f0, f1, g0, g1);
     VSHF_B2_SB(f0, f1, g0, g1, mask, mask, d1, d2);
 
-    /* Final move to first_pixel */
+
     ST_D1(d1, 0, first_pixel + nstride);
     ST_D1(d2, 0, first_pixel);
 }

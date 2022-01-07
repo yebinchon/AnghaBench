@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int UInt32 ;
-typedef  scalar_t__ Int32 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AssertD (int,char*) ; 
- int /*<<< orphan*/  AssertH (int,int) ; 
- scalar_t__ FALLBACK_QSORT_SMALL_THRESH ; 
- int FALLBACK_QSORT_STACK_SIZE ; 
- int /*<<< orphan*/  fallbackSimpleSort (int*,int*,scalar_t__,scalar_t__) ; 
- scalar_t__ fmin (scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  fpop (scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  fpush (scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  fswap (int,int) ; 
- int /*<<< orphan*/  fvswap (scalar_t__,scalar_t__,scalar_t__) ; 
+
+
+
+typedef int UInt32 ;
+typedef scalar_t__ Int32 ;
+
+
+ int AssertD (int,char*) ;
+ int AssertH (int,int) ;
+ scalar_t__ FALLBACK_QSORT_SMALL_THRESH ;
+ int FALLBACK_QSORT_STACK_SIZE ;
+ int fallbackSimpleSort (int*,int*,scalar_t__,scalar_t__) ;
+ scalar_t__ fmin (scalar_t__,scalar_t__) ;
+ int fpop (scalar_t__,scalar_t__) ;
+ int fpush (scalar_t__,scalar_t__) ;
+ int fswap (int,int) ;
+ int fvswap (scalar_t__,scalar_t__,scalar_t__) ;
 
 __attribute__((used)) static
-void fallbackQSort3 ( UInt32* fmap, 
+void fallbackQSort3 ( UInt32* fmap,
                       UInt32* eclass,
-                      Int32   loSt, 
-                      Int32   hiSt )
+                      Int32 loSt,
+                      Int32 hiSt )
 {
    Int32 unLo, unHi, ltLo, gtHi, n, m;
    Int32 sp, lo, hi;
@@ -51,14 +51,6 @@ void fallbackQSort3 ( UInt32* fmap,
          fallbackSimpleSort ( fmap, eclass, lo, hi );
          continue;
       }
-
-      /* Random partitioning.  Median of 3 sometimes fails to
-         avoid bad cases.  Median of 9 seems to help but 
-         looks rather expensive.  This too seems to work but
-         is cheaper.  Guidance for the magic constants 
-         7621 and 32768 is taken from Sedgewick's algorithms
-         book, chapter 35.
-      */
       r = ((r * 7621) + 1) % 32768;
       r3 = r % 3;
       if (r3 == 0) med = eclass[fmap[lo]]; else
@@ -72,10 +64,10 @@ void fallbackQSort3 ( UInt32* fmap,
          while (1) {
             if (unLo > unHi) break;
             n = (Int32)eclass[fmap[unLo]] - (Int32)med;
-            if (n == 0) { 
-               fswap(fmap[unLo], fmap[ltLo]); 
-               ltLo++; unLo++; 
-               continue; 
+            if (n == 0) {
+               fswap(fmap[unLo], fmap[ltLo]);
+               ltLo++; unLo++;
+               continue;
             };
             if (n > 0) break;
             unLo++;
@@ -83,10 +75,10 @@ void fallbackQSort3 ( UInt32* fmap,
          while (1) {
             if (unLo > unHi) break;
             n = (Int32)eclass[fmap[unHi]] - (Int32)med;
-            if (n == 0) { 
-               fswap(fmap[unHi], fmap[gtHi]); 
-               gtHi--; unHi--; 
-               continue; 
+            if (n == 0) {
+               fswap(fmap[unHi], fmap[gtHi]);
+               gtHi--; unHi--;
+               continue;
             };
             if (n < 0) break;
             unHi--;

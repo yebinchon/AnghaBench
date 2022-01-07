@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uv_stream_t ;
-struct TYPE_7__ {int /*<<< orphan*/  loop; } ;
-typedef  TYPE_1__ uv_pipe_t ;
-typedef  scalar_t__ uv_handle_type ;
-typedef  int /*<<< orphan*/  uv_handle_t ;
-typedef  int /*<<< orphan*/  uv_buf_t ;
-typedef  scalar_t__ ssize_t ;
 
-/* Variables and functions */
- unsigned int ARRAY_SIZE (TYPE_1__*) ; 
- int /*<<< orphan*/  ASSERT (int) ; 
- scalar_t__ UV_NAMED_PIPE ; 
- int /*<<< orphan*/  close_cb ; 
- TYPE_1__* incoming ; 
- unsigned int incoming_count ; 
- scalar_t__ uv_accept (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  uv_close (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ uv_pipe_init (int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ ) ; 
- scalar_t__ uv_pipe_pending_count (TYPE_1__*) ; 
- scalar_t__ uv_pipe_pending_type (TYPE_1__*) ; 
- scalar_t__ uv_read_stop (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int uv_stream_t ;
+struct TYPE_7__ {int loop; } ;
+typedef TYPE_1__ uv_pipe_t ;
+typedef scalar_t__ uv_handle_type ;
+typedef int uv_handle_t ;
+typedef int uv_buf_t ;
+typedef scalar_t__ ssize_t ;
+
+
+ unsigned int ARRAY_SIZE (TYPE_1__*) ;
+ int ASSERT (int) ;
+ scalar_t__ UV_NAMED_PIPE ;
+ int close_cb ;
+ TYPE_1__* incoming ;
+ unsigned int incoming_count ;
+ scalar_t__ uv_accept (int *,int *) ;
+ int uv_close (int *,int ) ;
+ scalar_t__ uv_pipe_init (int ,TYPE_1__*,int ) ;
+ scalar_t__ uv_pipe_pending_count (TYPE_1__*) ;
+ scalar_t__ uv_pipe_pending_type (TYPE_1__*) ;
+ scalar_t__ uv_read_stop (int *) ;
 
 __attribute__((used)) static void read_cb(uv_stream_t* handle,
                     ssize_t nread,

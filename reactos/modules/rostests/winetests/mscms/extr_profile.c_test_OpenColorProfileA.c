@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {char* pProfileData; int cbDataSize; void* dwType; } ;
-typedef  TYPE_1__ PROFILE ;
-typedef  int /*<<< orphan*/ * HPROFILE ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef TYPE_1__ PROFILE ;
+typedef int * HPROFILE ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FILE_SHARE_READ ; 
- int /*<<< orphan*/  GetLastError () ; 
- int /*<<< orphan*/  OPEN_EXISTING ; 
- void* PROFILE_FILENAME ; 
- int PROFILE_READ ; 
- int PROFILE_READWRITE ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  pCloseColorProfile (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * pOpenColorProfileA (TYPE_1__*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int strlen (char*) ; 
+
+ int FILE_SHARE_READ ;
+ int GetLastError () ;
+ int OPEN_EXISTING ;
+ void* PROFILE_FILENAME ;
+ int PROFILE_READ ;
+ int PROFILE_READWRITE ;
+ int ok (int,char*,...) ;
+ int pCloseColorProfile (int *) ;
+ int * pOpenColorProfileA (TYPE_1__*,int,int ,int ) ;
+ int strlen (char*) ;
 
 __attribute__((used)) static void test_OpenColorProfileA( char *standardprofile )
 {
@@ -35,24 +35,24 @@ __attribute__((used)) static void test_OpenColorProfileA( char *standardprofile 
     BOOL ret;
 
     profile.dwType = PROFILE_FILENAME;
-    profile.pProfileData = NULL;
+    profile.pProfileData = ((void*)0);
     profile.cbDataSize = 0;
 
-    /* Parameter checks */
 
-    handle = pOpenColorProfileA( NULL, 0, 0, 0 );
-    ok( handle == NULL, "OpenColorProfileA() failed (%d)\n", GetLastError() );
+
+    handle = pOpenColorProfileA( ((void*)0), 0, 0, 0 );
+    ok( handle == ((void*)0), "OpenColorProfileA() failed (%d)\n", GetLastError() );
 
     handle = pOpenColorProfileA( &profile, 0, 0, 0 );
-    ok( handle == NULL, "OpenColorProfileA() failed (%d)\n", GetLastError() );
+    ok( handle == ((void*)0), "OpenColorProfileA() failed (%d)\n", GetLastError() );
 
     handle = pOpenColorProfileA( &profile, PROFILE_READ, 0, 0 );
-    ok( handle == NULL, "OpenColorProfileA() failed (%d)\n", GetLastError() );
+    ok( handle == ((void*)0), "OpenColorProfileA() failed (%d)\n", GetLastError() );
 
     handle = pOpenColorProfileA( &profile, PROFILE_READWRITE, 0, 0 );
-    ok( handle == NULL, "OpenColorProfileA() failed (%d)\n", GetLastError() );
+    ok( handle == ((void*)0), "OpenColorProfileA() failed (%d)\n", GetLastError() );
 
-    ok ( !pCloseColorProfile( NULL ), "CloseColorProfile() succeeded\n" );
+    ok ( !pCloseColorProfile( ((void*)0) ), "CloseColorProfile() succeeded\n" );
 
     if (standardprofile)
     {
@@ -60,18 +60,18 @@ __attribute__((used)) static void test_OpenColorProfileA( char *standardprofile 
         profile.cbDataSize = strlen(standardprofile);
 
         handle = pOpenColorProfileA( &profile, 0, 0, 0 );
-        ok( handle == NULL, "OpenColorProfileA() failed (%d)\n", GetLastError() );
+        ok( handle == ((void*)0), "OpenColorProfileA() failed (%d)\n", GetLastError() );
 
         handle = pOpenColorProfileA( &profile, PROFILE_READ, 0, 0 );
-        ok( handle == NULL, "OpenColorProfileA() failed (%d)\n", GetLastError() );
+        ok( handle == ((void*)0), "OpenColorProfileA() failed (%d)\n", GetLastError() );
 
         handle = pOpenColorProfileA( &profile, PROFILE_READ|PROFILE_READWRITE, 0, 0 );
-        ok( handle == NULL, "OpenColorProfileA() failed (%d)\n", GetLastError() );
+        ok( handle == ((void*)0), "OpenColorProfileA() failed (%d)\n", GetLastError() );
 
-        /* Functional checks */
+
 
         handle = pOpenColorProfileA( &profile, PROFILE_READ, 0, OPEN_EXISTING );
-        ok( handle != NULL, "OpenColorProfileA() failed (%d)\n", GetLastError() );
+        ok( handle != ((void*)0), "OpenColorProfileA() failed (%d)\n", GetLastError() );
 
         ret = pCloseColorProfile( handle );
         ok( ret, "CloseColorProfile() failed (%d)\n", GetLastError() );
@@ -81,7 +81,7 @@ __attribute__((used)) static void test_OpenColorProfileA( char *standardprofile 
         profile.cbDataSize = sizeof("sRGB Color Space Profile.icm");
 
         handle = pOpenColorProfileA( &profile, PROFILE_READ, FILE_SHARE_READ, OPEN_EXISTING );
-        ok( handle != NULL, "OpenColorProfileA() failed (%d)\n", GetLastError() );
+        ok( handle != ((void*)0), "OpenColorProfileA() failed (%d)\n", GetLastError() );
 
         ret = pCloseColorProfile( handle );
         ok( ret, "CloseColorProfile() failed (%d)\n", GetLastError() );

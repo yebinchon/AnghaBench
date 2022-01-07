@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  b; int /*<<< orphan*/  a; TYPE_1__* meth; int /*<<< orphan*/ * field; } ;
-struct TYPE_6__ {int /*<<< orphan*/  (* field_decode ) (TYPE_2__ const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ;} ;
-typedef  TYPE_2__ EC_GROUP ;
-typedef  int /*<<< orphan*/  BN_CTX ;
-typedef  int /*<<< orphan*/  BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BN_CTX_end (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_CTX_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BN_CTX_get (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BN_CTX_new () ; 
- int /*<<< orphan*/  BN_CTX_start (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_copy (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ BN_is_zero (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_lshift (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  BN_mod_add (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_mod_mul (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_mod_sqr (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_mul_word (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  EC_F_EC_GFP_SIMPLE_GROUP_CHECK_DISCRIMINANT ; 
- int /*<<< orphan*/  ECerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ERR_R_MALLOC_FAILURE ; 
- int /*<<< orphan*/  stub1 (TYPE_2__ const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub2 (TYPE_2__ const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int b; int a; TYPE_1__* meth; int * field; } ;
+struct TYPE_6__ {int (* field_decode ) (TYPE_2__ const*,int *,int ,int *) ;} ;
+typedef TYPE_2__ EC_GROUP ;
+typedef int BN_CTX ;
+typedef int BIGNUM ;
+
+
+ int BN_CTX_end (int *) ;
+ int BN_CTX_free (int *) ;
+ int * BN_CTX_get (int *) ;
+ int * BN_CTX_new () ;
+ int BN_CTX_start (int *) ;
+ int BN_copy (int *,int ) ;
+ scalar_t__ BN_is_zero (int *) ;
+ int BN_lshift (int *,int *,int) ;
+ int BN_mod_add (int *,int *,int *,int const*,int *) ;
+ int BN_mod_mul (int *,int *,int *,int const*,int *) ;
+ int BN_mod_sqr (int *,int *,int const*,int *) ;
+ int BN_mul_word (int *,int) ;
+ int EC_F_EC_GFP_SIMPLE_GROUP_CHECK_DISCRIMINANT ;
+ int ECerr (int ,int ) ;
+ int ERR_R_MALLOC_FAILURE ;
+ int stub1 (TYPE_2__ const*,int *,int ,int *) ;
+ int stub2 (TYPE_2__ const*,int *,int ,int *) ;
 
 int ec_GFp_simple_group_check_discriminant(const EC_GROUP *group, BN_CTX *ctx)
 {
     int ret = 0;
     BIGNUM *a, *b, *order, *tmp_1, *tmp_2;
     const BIGNUM *p = group->field;
-    BN_CTX *new_ctx = NULL;
+    BN_CTX *new_ctx = ((void*)0);
 
-    if (ctx == NULL) {
+    if (ctx == ((void*)0)) {
         ctx = new_ctx = BN_CTX_new();
-        if (ctx == NULL) {
+        if (ctx == ((void*)0)) {
             ECerr(EC_F_EC_GFP_SIMPLE_GROUP_CHECK_DISCRIMINANT,
                   ERR_R_MALLOC_FAILURE);
             goto err;
@@ -58,7 +58,7 @@ int ec_GFp_simple_group_check_discriminant(const EC_GROUP *group, BN_CTX *ctx)
     tmp_1 = BN_CTX_get(ctx);
     tmp_2 = BN_CTX_get(ctx);
     order = BN_CTX_get(ctx);
-    if (order == NULL)
+    if (order == ((void*)0))
         goto err;
 
     if (group->meth->field_decode) {
@@ -73,11 +73,11 @@ int ec_GFp_simple_group_check_discriminant(const EC_GROUP *group, BN_CTX *ctx)
             goto err;
     }
 
-    /*-
-     * check the discriminant:
-     * y^2 = x^3 + a*x + b is an elliptic curve <=> 4*a^3 + 27*b^2 != 0 (mod p)
-     * 0 =< a, b < p
-     */
+
+
+
+
+
     if (BN_is_zero(a)) {
         if (BN_is_zero(b))
             goto err;
@@ -88,13 +88,13 @@ int ec_GFp_simple_group_check_discriminant(const EC_GROUP *group, BN_CTX *ctx)
             goto err;
         if (!BN_lshift(tmp_1, tmp_2, 2))
             goto err;
-        /* tmp_1 = 4*a^3 */
+
 
         if (!BN_mod_sqr(tmp_2, b, p, ctx))
             goto err;
         if (!BN_mul_word(tmp_2, 27))
             goto err;
-        /* tmp_2 = 27*b^2 */
+
 
         if (!BN_mod_add(a, tmp_1, tmp_2, p, ctx))
             goto err;

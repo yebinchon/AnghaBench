@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ ULONG ;
-struct TYPE_3__ {scalar_t__ StartingPort; scalar_t__ PortsToOversee; int /*<<< orphan*/  Lock; int /*<<< orphan*/  ProtoBitmap; } ;
-typedef  TYPE_1__* PPORT_SET ;
-typedef  int /*<<< orphan*/  KIRQL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  KeAcquireSpinLock (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  KeReleaseSpinLock (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ RtlFindClearBits (int /*<<< orphan*/ *,int,scalar_t__) ; 
- int /*<<< orphan*/  RtlSetBit (int /*<<< orphan*/ *,scalar_t__) ; 
- scalar_t__ htons (scalar_t__) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ ULONG ;
+struct TYPE_3__ {scalar_t__ StartingPort; scalar_t__ PortsToOversee; int Lock; int ProtoBitmap; } ;
+typedef TYPE_1__* PPORT_SET ;
+typedef int KIRQL ;
+
+
+ int KeAcquireSpinLock (int *,int *) ;
+ int KeReleaseSpinLock (int *,int ) ;
+ scalar_t__ RtlFindClearBits (int *,int,scalar_t__) ;
+ int RtlSetBit (int *,scalar_t__) ;
+ scalar_t__ htons (scalar_t__) ;
 
 ULONG AllocatePortFromRange( PPORT_SET PortSet, ULONG Lowest, ULONG Highest ) {
     ULONG AllocatedPort;
@@ -39,10 +39,10 @@ ULONG AllocatePortFromRange( PPORT_SET PortSet, ULONG Lowest, ULONG Highest ) {
     KeAcquireSpinLock( &PortSet->Lock, &OldIrql );
     AllocatedPort = RtlFindClearBits( &PortSet->ProtoBitmap, 1, Lowest );
     if( AllocatedPort != (ULONG)-1 && AllocatedPort <= Highest) {
-	RtlSetBit( &PortSet->ProtoBitmap, AllocatedPort );
-	AllocatedPort += PortSet->StartingPort;
-	KeReleaseSpinLock( &PortSet->Lock, OldIrql );
-	return htons(AllocatedPort);
+ RtlSetBit( &PortSet->ProtoBitmap, AllocatedPort );
+ AllocatedPort += PortSet->StartingPort;
+ KeReleaseSpinLock( &PortSet->Lock, OldIrql );
+ return htons(AllocatedPort);
     }
     KeReleaseSpinLock( &PortSet->Lock, OldIrql );
 

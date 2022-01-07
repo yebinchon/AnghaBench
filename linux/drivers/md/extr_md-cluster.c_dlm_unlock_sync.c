@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct dlm_lock_resource {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DLM_LOCK_NL ; 
- int dlm_lock_sync (struct dlm_lock_resource*,int /*<<< orphan*/ ) ; 
+
+ int DLM_LOCK_NL ;
+ int dlm_lock_sync (struct dlm_lock_resource*,int ) ;
 
 __attribute__((used)) static int dlm_unlock_sync(struct dlm_lock_resource *res)
 {
-	return dlm_lock_sync(res, DLM_LOCK_NL);
+ return dlm_lock_sync(res, DLM_LOCK_NL);
 }

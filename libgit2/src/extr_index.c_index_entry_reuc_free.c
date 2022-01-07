@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  git_index_reuc_entry ;
 
-/* Variables and functions */
- int /*<<< orphan*/  git__free (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int git_index_reuc_entry ;
+
+
+ int git__free (int *) ;
 
 __attribute__((used)) static void index_entry_reuc_free(git_index_reuc_entry *reuc)
 {
-	git__free(reuc);
+ git__free(reuc);
 }

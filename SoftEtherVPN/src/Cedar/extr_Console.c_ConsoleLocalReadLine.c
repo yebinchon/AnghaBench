@@ -1,75 +1,75 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char wchar_t ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef char wchar_t ;
 struct TYPE_7__ {scalar_t__ Param; } ;
-struct TYPE_6__ {int /*<<< orphan*/ * InBuf; } ;
-typedef  TYPE_1__ LOCAL_CONSOLE_PARAM ;
-typedef  TYPE_2__ CONSOLE ;
+struct TYPE_6__ {int * InBuf; } ;
+typedef TYPE_1__ LOCAL_CONSOLE_PARAM ;
+typedef TYPE_2__ CONSOLE ;
 
-/* Variables and functions */
- char* ConsoleReadNextFromInFile (TYPE_2__*) ; 
- int /*<<< orphan*/  ConsoleWriteOutFile (TYPE_2__*,char*,int) ; 
- char* Prompt (char*) ; 
- int /*<<< orphan*/  UniPrint (char*,char*) ; 
- char* _UU (char*) ; 
+
+ char* ConsoleReadNextFromInFile (TYPE_2__*) ;
+ int ConsoleWriteOutFile (TYPE_2__*,char*,int) ;
+ char* Prompt (char*) ;
+ int UniPrint (char*,char*) ;
+ char* _UU (char*) ;
 
 wchar_t *ConsoleLocalReadLine(CONSOLE *c, wchar_t *prompt, bool nofile)
 {
-	wchar_t *ret;
-	LOCAL_CONSOLE_PARAM *p;
-	// Validate arguments
-	if (c == NULL)
-	{
-		return NULL;
-	}
-	p = (LOCAL_CONSOLE_PARAM *)c->Param;
-	if (prompt == NULL)
-	{
-		prompt = L">";
-	}
+ wchar_t *ret;
+ LOCAL_CONSOLE_PARAM *p;
 
-	ConsoleWriteOutFile(c, prompt, false);
+ if (c == ((void*)0))
+ {
+  return ((void*)0);
+ }
+ p = (LOCAL_CONSOLE_PARAM *)c->Param;
+ if (prompt == ((void*)0))
+ {
+  prompt = L">";
+ }
 
-	if (nofile == false && p->InBuf != NULL)
-	{
-		// Read the next line from the file
-		ret = ConsoleReadNextFromInFile(c);
+ ConsoleWriteOutFile(c, prompt, 0);
 
-		if (ret != NULL)
-		{
-			// Display the pseudo prompt
-			UniPrint(L"%s", prompt);
+ if (nofile == 0 && p->InBuf != ((void*)0))
+ {
 
-			// Display on the screen
-			UniPrint(L"%s\n", ret);
-		}
-	}
-	else
-	{
-		// Read the following line from the console
-		ret = Prompt(prompt);
-	}
+  ret = ConsoleReadNextFromInFile(c);
 
-	if (ret != NULL)
-	{
-		ConsoleWriteOutFile(c, ret, true);
-	}
-	else
-	{
-		ConsoleWriteOutFile(c, _UU("CON_USER_CANCEL"), true);
-	}
+  if (ret != ((void*)0))
+  {
 
-	return ret;
+   UniPrint(L"%s", prompt);
+
+
+   UniPrint(L"%s\n", ret);
+  }
+ }
+ else
+ {
+
+  ret = Prompt(prompt);
+ }
+
+ if (ret != ((void*)0))
+ {
+  ConsoleWriteOutFile(c, ret, 1);
+ }
+ else
+ {
+  ConsoleWriteOutFile(c, _UU("CON_USER_CANCEL"), 1);
+ }
+
+ return ret;
 }

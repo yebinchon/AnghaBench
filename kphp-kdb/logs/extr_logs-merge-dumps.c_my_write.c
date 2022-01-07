@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int BUFF_SIZE ; 
- int /*<<< orphan*/  flush_w_buff () ; 
- int /*<<< orphan*/  memcpy (int,char*,int) ; 
- int w_buff ; 
- int w_buff_n ; 
+ int BUFF_SIZE ;
+ int flush_w_buff () ;
+ int memcpy (int,char*,int) ;
+ int w_buff ;
+ int w_buff_n ;
 
 void my_write (char *s, int n) {
   int i = 0;

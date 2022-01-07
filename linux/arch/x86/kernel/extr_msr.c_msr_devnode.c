@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  umode_t ;
-struct device {int /*<<< orphan*/  devt; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  MINOR (int /*<<< orphan*/ ) ; 
- char* kasprintf (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int umode_t ;
+struct device {int devt; } ;
+
+
+ int GFP_KERNEL ;
+ int MINOR (int ) ;
+ char* kasprintf (int ,char*,int ) ;
 
 __attribute__((used)) static char *msr_devnode(struct device *dev, umode_t *mode)
 {
-	return kasprintf(GFP_KERNEL, "cpu/%u/msr", MINOR(dev->devt));
+ return kasprintf(GFP_KERNEL, "cpu/%u/msr", MINOR(dev->devt));
 }

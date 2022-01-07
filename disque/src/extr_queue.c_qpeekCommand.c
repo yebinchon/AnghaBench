@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_23__   TYPE_8__ ;
-typedef  struct TYPE_22__   TYPE_7__ ;
-typedef  struct TYPE_21__   TYPE_6__ ;
-typedef  struct TYPE_20__   TYPE_5__ ;
-typedef  struct TYPE_19__   TYPE_4__ ;
-typedef  struct TYPE_18__   TYPE_3__ ;
-typedef  struct TYPE_17__   TYPE_2__ ;
-typedef  struct TYPE_16__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_20__ {TYPE_4__* level; struct TYPE_20__* backward; int /*<<< orphan*/ * obj; } ;
-typedef  TYPE_5__ skiplistNode ;
+
+
+typedef struct TYPE_23__ TYPE_8__ ;
+typedef struct TYPE_22__ TYPE_7__ ;
+typedef struct TYPE_21__ TYPE_6__ ;
+typedef struct TYPE_20__ TYPE_5__ ;
+typedef struct TYPE_19__ TYPE_4__ ;
+typedef struct TYPE_18__ TYPE_3__ ;
+typedef struct TYPE_17__ TYPE_2__ ;
+typedef struct TYPE_16__ TYPE_1__ ;
+
+
+struct TYPE_20__ {TYPE_4__* level; struct TYPE_20__* backward; int * obj; } ;
+typedef TYPE_5__ skiplistNode ;
 struct TYPE_21__ {TYPE_3__* sl; } ;
-typedef  TYPE_6__ queue ;
-typedef  int /*<<< orphan*/  job ;
-struct TYPE_22__ {int /*<<< orphan*/ * argv; } ;
-typedef  TYPE_7__ client ;
-struct TYPE_23__ {int /*<<< orphan*/  emptymultibulk; } ;
+typedef TYPE_6__ queue ;
+typedef int job ;
+struct TYPE_22__ {int * argv; } ;
+typedef TYPE_7__ client ;
+struct TYPE_23__ {int emptymultibulk; } ;
 struct TYPE_19__ {TYPE_5__* forward; } ;
 struct TYPE_18__ {TYPE_2__* header; TYPE_5__* tail; } ;
 struct TYPE_17__ {TYPE_1__* level; } ;
 struct TYPE_16__ {TYPE_5__* forward; } ;
 
-/* Variables and functions */
- scalar_t__ C_OK ; 
- int /*<<< orphan*/  GETJOB_FLAG_NONE ; 
- void* addDeferredMultiBulkLength (TYPE_7__*) ; 
- int /*<<< orphan*/  addReply (TYPE_7__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  addReplyJob (TYPE_7__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ getLongLongFromObjectOrReply (TYPE_7__*,int /*<<< orphan*/ ,long long*,int /*<<< orphan*/ *) ; 
- TYPE_6__* lookupQueue (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  setDeferredMultiBulkLength (TYPE_7__*,void*,long long) ; 
- TYPE_8__ shared ; 
+
+ scalar_t__ C_OK ;
+ int GETJOB_FLAG_NONE ;
+ void* addDeferredMultiBulkLength (TYPE_7__*) ;
+ int addReply (TYPE_7__*,int ) ;
+ int addReplyJob (TYPE_7__*,int *,int ) ;
+ scalar_t__ getLongLongFromObjectOrReply (TYPE_7__*,int ,long long*,int *) ;
+ TYPE_6__* lookupQueue (int ) ;
+ int setDeferredMultiBulkLength (TYPE_7__*,void*,long long) ;
+ TYPE_8__ shared ;
 
 void qpeekCommand(client *c) {
-    int newjobs = 0; /* Return from newest to oldest if true. */
+    int newjobs = 0;
     long long count, returned = 0;
 
-    if (getLongLongFromObjectOrReply(c,c->argv[2],&count,NULL) != C_OK)
+    if (getLongLongFromObjectOrReply(c,c->argv[2],&count,((void*)0)) != C_OK)
         return;
 
     if (count < 0) {
@@ -54,13 +54,13 @@ void qpeekCommand(client *c) {
         newjobs = 1;
     }
 
-    skiplistNode *sn = NULL;
+    skiplistNode *sn = ((void*)0);
     queue *q = lookupQueue(c->argv[1]);
 
-    if (q != NULL)
+    if (q != ((void*)0))
         sn = newjobs ? q->sl->tail : q->sl->header->level[0].forward;
 
-    if (sn == NULL) {
+    if (sn == ((void*)0)) {
         addReply(c,shared.emptymultibulk);
         return;
     }

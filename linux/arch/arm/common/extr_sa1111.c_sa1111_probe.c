@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct resource {int dummy; } ;
-struct platform_device {int /*<<< orphan*/  dev; } ;
+struct platform_device {int dev; } ;
 
-/* Variables and functions */
- int EINVAL ; 
- int /*<<< orphan*/  IORESOURCE_MEM ; 
- int __sa1111_probe (int /*<<< orphan*/ *,struct resource*,int) ; 
- int platform_get_irq (struct platform_device*,int /*<<< orphan*/ ) ; 
- struct resource* platform_get_resource (struct platform_device*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int EINVAL ;
+ int IORESOURCE_MEM ;
+ int __sa1111_probe (int *,struct resource*,int) ;
+ int platform_get_irq (struct platform_device*,int ) ;
+ struct resource* platform_get_resource (struct platform_device*,int ,int ) ;
 
 __attribute__((used)) static int sa1111_probe(struct platform_device *pdev)
 {
-	struct resource *mem;
-	int irq;
+ struct resource *mem;
+ int irq;
 
-	mem = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-	if (!mem)
-		return -EINVAL;
-	irq = platform_get_irq(pdev, 0);
-	if (irq < 0)
-		return irq;
+ mem = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+ if (!mem)
+  return -EINVAL;
+ irq = platform_get_irq(pdev, 0);
+ if (irq < 0)
+  return irq;
 
-	return __sa1111_probe(&pdev->dev, mem, irq);
+ return __sa1111_probe(&pdev->dev, mem, irq);
 }

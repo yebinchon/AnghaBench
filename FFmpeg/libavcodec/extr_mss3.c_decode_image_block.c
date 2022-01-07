@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int /*<<< orphan*/  ptrdiff_t ;
-typedef  int /*<<< orphan*/  prev_line ;
-struct TYPE_3__ {int /*<<< orphan*/  esc_model; int /*<<< orphan*/ * vq_model; int /*<<< orphan*/  vec_entry_model; int /*<<< orphan*/  vec_size_model; } ;
-typedef  int /*<<< orphan*/  RangeCoder ;
-typedef  TYPE_1__ ImageBlockCoder ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memset (int*,int /*<<< orphan*/ ,int) ; 
- void* rac_get_model256_sym (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int rac_get_model_sym (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int ptrdiff_t ;
+typedef int prev_line ;
+struct TYPE_3__ {int esc_model; int * vq_model; int vec_entry_model; int vec_size_model; } ;
+typedef int RangeCoder ;
+typedef TYPE_1__ ImageBlockCoder ;
+
+
+ int memset (int*,int ,int) ;
+ void* rac_get_model256_sym (int *,int *) ;
+ int rac_get_model_sym (int *,int *) ;
 
 __attribute__((used)) static void decode_image_block(RangeCoder *c, ImageBlockCoder *ic,
                                uint8_t *dst, ptrdiff_t stride, int block_size)

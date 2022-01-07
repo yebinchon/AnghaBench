@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct dst_state {int /*<<< orphan*/ * whead; int /*<<< orphan*/  wait; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  remove_wait_queue (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+struct dst_state {int * whead; int wait; } ;
+
+
+ int remove_wait_queue (int *,int *) ;
 
 void dst_poll_exit(struct dst_state *st)
 {
-	if (st->whead) {
-		remove_wait_queue(st->whead, &st->wait);
-		st->whead = NULL;
-	}
+ if (st->whead) {
+  remove_wait_queue(st->whead, &st->wait);
+  st->whead = ((void*)0);
+ }
 }

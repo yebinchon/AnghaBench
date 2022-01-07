@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct addrinfo {int ai_flags; scalar_t__ ai_family; int /*<<< orphan*/  ai_protocol; int /*<<< orphan*/  ai_socktype; } ;
 
-/* Variables and functions */
- scalar_t__ AF_INET ; 
- scalar_t__ AF_INET6 ; 
- int AI_IDN ; 
- int AI_NUMERICSERV ; 
- int AI_PASSIVE ; 
- int IN_MULTICAST (unsigned long) ; 
- int /*<<< orphan*/  IPPROTO_UDP ; 
- int /*<<< orphan*/  SOCK_DGRAM ; 
- int /*<<< orphan*/  freeaddrinfo (struct addrinfo*) ; 
- int /*<<< orphan*/  inet_addr (char*) ; 
- unsigned long ntohl (int /*<<< orphan*/ ) ; 
- int strlen (char*) ; 
- scalar_t__ strncmp (char*,char*,int) ; 
- int vlc_getaddrinfo (char*,int /*<<< orphan*/ ,struct addrinfo*,struct addrinfo**) ; 
+
+
+
+struct addrinfo {int ai_flags; scalar_t__ ai_family; int ai_protocol; int ai_socktype; } ;
+
+
+ scalar_t__ AF_INET ;
+ scalar_t__ AF_INET6 ;
+ int AI_IDN ;
+ int AI_NUMERICSERV ;
+ int AI_PASSIVE ;
+ int IN_MULTICAST (unsigned long) ;
+ int IPPROTO_UDP ;
+ int SOCK_DGRAM ;
+ int freeaddrinfo (struct addrinfo*) ;
+ int inet_addr (char*) ;
+ unsigned long ntohl (int ) ;
+ int strlen (char*) ;
+ scalar_t__ strncmp (char*,char*,int) ;
+ int vlc_getaddrinfo (char*,int ,struct addrinfo*,struct addrinfo**) ;
 
 __attribute__((used)) static bool is_multicast_address(char *psz_dst_server)
 {
@@ -44,7 +44,7 @@ __attribute__((used)) static bool is_multicast_address(char *psz_dst_server)
         return 0;
     } else if(res->ai_family == AF_INET) {
         unsigned long addr = ntohl(inet_addr(psz_dst_server));
-        ismulticast =  IN_MULTICAST(addr);
+        ismulticast = IN_MULTICAST(addr);
     } else if (res->ai_family == AF_INET6) {
         if (strlen(psz_dst_server) >= 5 && (strncmp("[ff00", psz_dst_server, 5) == 0 ||
                     strncmp("[FF00", psz_dst_server, 5) == 0))

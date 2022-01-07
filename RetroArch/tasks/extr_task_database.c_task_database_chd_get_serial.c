@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  intfstream_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHDSTREAM_TRACK_FIRST_DATA ; 
- int /*<<< orphan*/  RETRO_VFS_FILE_ACCESS_HINT_NONE ; 
- int /*<<< orphan*/  RETRO_VFS_FILE_ACCESS_READ ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  intfstream_close (int /*<<< orphan*/ *) ; 
- int intfstream_get_serial (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/ * intfstream_open_chd_track (char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int intfstream_t ;
+
+
+ int CHDSTREAM_TRACK_FIRST_DATA ;
+ int RETRO_VFS_FILE_ACCESS_HINT_NONE ;
+ int RETRO_VFS_FILE_ACCESS_READ ;
+ int free (int *) ;
+ int intfstream_close (int *) ;
+ int intfstream_get_serial (int *,char*) ;
+ int * intfstream_open_chd_track (char const*,int ,int ,int ) ;
 
 __attribute__((used)) static int task_database_chd_get_serial(const char *name, char* serial)
 {

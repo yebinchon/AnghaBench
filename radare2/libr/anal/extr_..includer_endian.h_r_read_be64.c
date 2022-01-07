@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int ut64 ;
-typedef  int /*<<< orphan*/  ut32 ;
 
-/* Variables and functions */
- int r_read_at_be32 (void const*,int) ; 
- scalar_t__ r_read_be32 (void const*) ; 
+
+
+
+typedef int ut64 ;
+typedef int ut32 ;
+
+
+ int r_read_at_be32 (void const*,int) ;
+ scalar_t__ r_read_be32 (void const*) ;
 
 __attribute__((used)) static inline ut64 r_read_be64(const void *src) {
-	ut64 val = ((ut64)(r_read_be32 (src))) << 32;
-	val |= r_read_at_be32 (src, sizeof (ut32));
-	return val;
+ ut64 val = ((ut64)(r_read_be32 (src))) << 32;
+ val |= r_read_at_be32 (src, sizeof (ut32));
+ return val;
 }

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int ucs4_t ;
-typedef  int /*<<< orphan*/  conv_t ;
 
-/* Variables and functions */
- int RET_ILSEQ ; 
- int RET_TOOFEW (int /*<<< orphan*/ ) ; 
- unsigned short* hkscs2001_2uni_page8c ; 
- unsigned short* hkscs2001_2uni_upages ; 
+
+
+
+typedef int ucs4_t ;
+typedef int conv_t ;
+
+
+ int RET_ILSEQ ;
+ int RET_TOOFEW (int ) ;
+ unsigned short* hkscs2001_2uni_page8c ;
+ unsigned short* hkscs2001_2uni_upages ;
 
 __attribute__((used)) static int
 hkscs2001_mbtowc (conv_t conv, ucs4_t *pwc, const unsigned char *s, int n)

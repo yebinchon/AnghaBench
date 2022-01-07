@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uint32_t ;
+
+
+
+
+typedef scalar_t__ uint32_t ;
 struct mountinfo {char* super_options; scalar_t__ filesystem_hash; scalar_t__ filesystem; struct mountinfo* next; } ;
 
-/* Variables and functions */
- scalar_t__ simple_hash (char const*) ; 
- int /*<<< orphan*/  strcmp (scalar_t__,char const*) ; 
- size_t strlen (char const*) ; 
- int /*<<< orphan*/  strncmp (char*,char const*,size_t) ; 
- scalar_t__ unlikely (int) ; 
+
+ scalar_t__ simple_hash (char const*) ;
+ int strcmp (scalar_t__,char const*) ;
+ size_t strlen (char const*) ;
+ int strncmp (char*,char const*,size_t) ;
+ scalar_t__ unlikely (int) ;
 
 struct mountinfo *mountinfo_find_by_filesystem_super_option(struct mountinfo *root, const char *filesystem, const char *super_options) {
     struct mountinfo *mi;
@@ -32,7 +32,7 @@ struct mountinfo *mountinfo_find_by_filesystem_super_option(struct mountinfo *ro
                 && mi->filesystem_hash == filesystem_hash
                 && !strcmp(mi->filesystem, filesystem))) {
 
-            // super_options is a comma separated list
+
             char *s = mi->super_options, *e;
             while(*s) {
                 e = s + 1;
@@ -47,5 +47,5 @@ struct mountinfo *mountinfo_find_by_filesystem_super_option(struct mountinfo *ro
             }
         }
 
-    return NULL;
+    return ((void*)0);
 }

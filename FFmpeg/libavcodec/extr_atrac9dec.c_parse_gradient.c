@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  float uint8_t ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef float uint8_t ;
 struct TYPE_6__ {int grad_mode; int grad_boundary; int q_unit_cnt; int* gradient; } ;
 struct TYPE_5__ {float** alloc_curve; } ;
-typedef  int /*<<< orphan*/  GetBitContext ;
-typedef  TYPE_1__ ATRAC9Context ;
-typedef  TYPE_2__ ATRAC9BlockData ;
+typedef int GetBitContext ;
+typedef TYPE_1__ ATRAC9Context ;
+typedef TYPE_2__ ATRAC9BlockData ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int FFABS (int) ; 
- int get_bits (int /*<<< orphan*/ *,int) ; 
+
+ int AVERROR_INVALIDDATA ;
+ int FFABS (int) ;
+ int get_bits (int *,int) ;
 
 __attribute__((used)) static inline int parse_gradient(ATRAC9Context *s, ATRAC9BlockData *b,
                                  GetBitContext *gb)
@@ -53,11 +53,11 @@ __attribute__((used)) static inline int parse_gradient(ATRAC9Context *s, ATRAC9B
     if (b->grad_boundary > b->q_unit_cnt)
         return AVERROR_INVALIDDATA;
 
-    values    = grad_value[1] - grad_value[0];
-    sign      = 1 - 2*(values < 0);
-    base      = grad_value[0] + sign;
-    scale     = (FFABS(values) - 1) / 31.0f;
-    curve     = s->alloc_curve[grad_range[1] - grad_range[0] - 1];
+    values = grad_value[1] - grad_value[0];
+    sign = 1 - 2*(values < 0);
+    base = grad_value[0] + sign;
+    scale = (FFABS(values) - 1) / 31.0f;
+    curve = s->alloc_curve[grad_range[1] - grad_range[0] - 1];
 
     for (int i = 0; i <= b->q_unit_cnt; i++)
         b->gradient[i] = grad_value[i >= grad_range[0]];

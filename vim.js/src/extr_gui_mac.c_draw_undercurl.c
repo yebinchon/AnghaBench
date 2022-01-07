@@ -1,31 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int FILL_X (int) ; 
- int FILL_Y (int) ; 
- int /*<<< orphan*/  LineTo (int,int) ; 
- int /*<<< orphan*/  MoveTo (int,int) ; 
- int /*<<< orphan*/  RGBForeColor (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  specialColor ; 
+ int FILL_X (int) ;
+ int FILL_Y (int) ;
+ int LineTo (int,int) ;
+ int MoveTo (int,int) ;
+ int RGBForeColor (int *) ;
+ int specialColor ;
 
 __attribute__((used)) static void
 draw_undercurl(int flags, int row, int col, int cells)
 {
-    int			x;
-    int			offset;
-    const static int	val[8] = {1, 0, 0, 0, 1, 2, 2, 2 };
-    int			y = FILL_Y(row + 1) - 1;
+    int x;
+    int offset;
+    const static int val[8] = {1, 0, 0, 0, 1, 2, 2, 2 };
+    int y = FILL_Y(row + 1) - 1;
 
     RGBForeColor(&specialColor);
 
@@ -34,7 +26,7 @@ draw_undercurl(int flags, int row, int col, int cells)
 
     for (x = FILL_X(col); x < FILL_X(col + cells); ++x)
     {
-	offset = val[x % 8];
-	LineTo(x, y - offset);
+ offset = val[x % 8];
+ LineTo(x, y - offset);
     }
 }

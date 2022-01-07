@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  size_t u8_t ;
-typedef  scalar_t__ u16_t ;
+
+
+
+
+typedef size_t u8_t ;
+typedef scalar_t__ u16_t ;
 struct bt_mesh_model {struct bt_mesh_gen_admin_prop_srv* user_data; } ;
 struct bt_mesh_generic_property {scalar_t__ id; } ;
 struct bt_mesh_gen_admin_prop_srv {size_t property_count; struct bt_mesh_generic_property* properties; } ;
 
-/* Variables and functions */
+
 
 struct bt_mesh_generic_property *gen_get_admin_property(struct bt_mesh_model *model,
         u16_t property_id)
@@ -30,5 +30,5 @@ struct bt_mesh_generic_property *gen_get_admin_property(struct bt_mesh_model *mo
         }
     }
 
-    return NULL;
+    return ((void*)0);
 }

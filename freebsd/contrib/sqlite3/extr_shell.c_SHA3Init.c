@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int nRate; int ixMask; } ;
-typedef  TYPE_1__ SHA3Context ;
+typedef TYPE_1__ SHA3Context ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
+
+ int memset (TYPE_1__*,int ,int) ;
 
 __attribute__((used)) static void SHA3Init(SHA3Context *p, int iSize){
   memset(p, 0, sizeof(*p));
@@ -24,20 +24,20 @@ __attribute__((used)) static void SHA3Init(SHA3Context *p, int iSize){
   }else{
     p->nRate = (1600 - 2*256)/8;
   }
-#if SHA3_BYTEORDER==1234
-  /* Known to be little-endian at compile-time. No-op */
-#elif SHA3_BYTEORDER==4321
-  p->ixMask = 7;  /* Big-endian */
-#else
+
+
+
+
+
   {
     static unsigned int one = 1;
     if( 1==*(unsigned char*)&one ){
-      /* Little endian.  No byte swapping. */
+
       p->ixMask = 0;
     }else{
-      /* Big endian.  Byte swap. */
+
       p->ixMask = 7;
     }
   }
-#endif
+
 }

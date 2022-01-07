@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int vsync_event_pending; } ;
-typedef  TYPE_1__ ctr_video_t ;
+typedef TYPE_1__ ctr_video_t ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static void ctr_vsync_hook(ctr_video_t* ctr)
 {
-   ctr->vsync_event_pending = false;
+   ctr->vsync_event_pending = 0;
 }

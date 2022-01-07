@@ -1,86 +1,77 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ int ALEF_ ;
 
-/* Forward declarations */
+ int ALEF_U_H_ ;
 
-/* Type definitions */
+ int AYN_ ;
 
-/* Variables and functions */
-#define  ALEF 138 
- int ALEF_ ; 
-#define  ALEF_U_H 137 
- int ALEF_U_H_ ; 
-#define  AYN 136 
- int AYN_ ; 
-#define  GHAYN 135 
- int GHAYN_ ; 
-#define  IE 134 
- int IE_ ; 
-#define  TEE 133 
- int TEE_ ; 
-#define  YE 132 
-#define  YEE 131 
- int YEE_ ; 
- int YE_ ; 
-#define  _AYN 130 
- int _AYN_ ; 
-#define  _GHAYN 129 
- int _GHAYN_ ; 
-#define  _HE 128 
- int _HE_ ; 
- int gchar_cursor () ; 
- int /*<<< orphan*/  put_and_redo (int) ; 
+ int GHAYN_ ;
+
+ int IE_ ;
+
+ int TEE_ ;
+
+
+ int YEE_ ;
+ int YE_ ;
+
+ int _AYN_ ;
+
+ int _GHAYN_ ;
+
+ int _HE_ ;
+ int gchar_cursor () ;
+ int put_and_redo (int) ;
 
 __attribute__((used)) static void
 chg_c_to_X_orX_()
 {
-    int	tempc;
+    int tempc;
 
     switch (gchar_cursor())
     {
-	case ALEF:
-		tempc = ALEF_;
-		break;
-	case ALEF_U_H:
-		tempc = ALEF_U_H_;
-		break;
-	case _AYN:
-		tempc = _AYN_;
-		break;
-	case AYN:
-		tempc = AYN_;
-		break;
-	case _GHAYN:
-		tempc = _GHAYN_;
-		break;
-	case GHAYN:
-		tempc = GHAYN_;
-		break;
-	case _HE:
-		tempc = _HE_;
-		break;
-	case YE:
-		tempc = YE_;
-		break;
-	case IE:
-		tempc = IE_;
-		break;
-	case TEE:
-		tempc = TEE_;
-		break;
-	case YEE:
-		tempc = YEE_;
-		break;
-	default:
-		tempc = 0;
+ case 138:
+  tempc = ALEF_;
+  break;
+ case 137:
+  tempc = ALEF_U_H_;
+  break;
+ case 130:
+  tempc = _AYN_;
+  break;
+ case 136:
+  tempc = AYN_;
+  break;
+ case 129:
+  tempc = _GHAYN_;
+  break;
+ case 135:
+  tempc = GHAYN_;
+  break;
+ case 128:
+  tempc = _HE_;
+  break;
+ case 132:
+  tempc = YE_;
+  break;
+ case 134:
+  tempc = IE_;
+  break;
+ case 133:
+  tempc = TEE_;
+  break;
+ case 131:
+  tempc = YEE_;
+  break;
+ default:
+  tempc = 0;
     }
 
     if (tempc)
-	put_and_redo(tempc);
+ put_and_redo(tempc);
 }

@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {int /*<<< orphan*/  error; int /*<<< orphan*/  write_fn; } ;
-typedef  int HPDF_UINT ;
-typedef  TYPE_1__* HPDF_Stream ;
-typedef  scalar_t__ HPDF_STATUS ;
-typedef  scalar_t__ HPDF_Encrypt ;
-typedef  int /*<<< orphan*/  HPDF_BYTE ;
-typedef  scalar_t__ HPDF_BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HPDF_Encrypt_CryptBuf (scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- scalar_t__ HPDF_Error_GetCode (int /*<<< orphan*/ ) ; 
- scalar_t__ HPDF_FALSE ; 
- scalar_t__ HPDF_INVALID_OBJECT ; 
- scalar_t__ HPDF_NOERROR ; 
- scalar_t__ HPDF_OK ; 
- int /*<<< orphan*/  HPDF_PTRACE (char*) ; 
- int /*<<< orphan*/  HPDF_SEEK_SET ; 
- int HPDF_STREAM_BUF_SIZ ; 
- scalar_t__ HPDF_STREAM_EOF ; 
- int HPDF_STREAM_FILTER_FLATE_DECODE ; 
- int /*<<< orphan*/  HPDF_SetError (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ) ; 
- scalar_t__ HPDF_Stream_Read (TYPE_1__*,int /*<<< orphan*/ *,int*) ; 
- scalar_t__ HPDF_Stream_Seek (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ HPDF_Stream_Size (TYPE_1__*) ; 
- scalar_t__ HPDF_Stream_Write (TYPE_1__*,int /*<<< orphan*/ *,int) ; 
- scalar_t__ HPDF_Stream_WriteToStreamWithDeflate (TYPE_1__*,TYPE_1__*,scalar_t__) ; 
- scalar_t__ HPDF_THIS_FUNC_WAS_SKIPPED ; 
- scalar_t__ HPDF_TRUE ; 
- int /*<<< orphan*/  HPDF_UNUSED (int) ; 
+
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+struct TYPE_10__ {int error; int write_fn; } ;
+typedef int HPDF_UINT ;
+typedef TYPE_1__* HPDF_Stream ;
+typedef scalar_t__ HPDF_STATUS ;
+typedef scalar_t__ HPDF_Encrypt ;
+typedef int HPDF_BYTE ;
+typedef scalar_t__ HPDF_BOOL ;
+
+
+ int HPDF_Encrypt_CryptBuf (scalar_t__,int *,int *,int) ;
+ scalar_t__ HPDF_Error_GetCode (int ) ;
+ scalar_t__ HPDF_FALSE ;
+ scalar_t__ HPDF_INVALID_OBJECT ;
+ scalar_t__ HPDF_NOERROR ;
+ scalar_t__ HPDF_OK ;
+ int HPDF_PTRACE (char*) ;
+ int HPDF_SEEK_SET ;
+ int HPDF_STREAM_BUF_SIZ ;
+ scalar_t__ HPDF_STREAM_EOF ;
+ int HPDF_STREAM_FILTER_FLATE_DECODE ;
+ int HPDF_SetError (int ,scalar_t__,int ) ;
+ scalar_t__ HPDF_Stream_Read (TYPE_1__*,int *,int*) ;
+ scalar_t__ HPDF_Stream_Seek (TYPE_1__*,int ,int ) ;
+ scalar_t__ HPDF_Stream_Size (TYPE_1__*) ;
+ scalar_t__ HPDF_Stream_Write (TYPE_1__*,int *,int) ;
+ scalar_t__ HPDF_Stream_WriteToStreamWithDeflate (TYPE_1__*,TYPE_1__*,scalar_t__) ;
+ scalar_t__ HPDF_THIS_FUNC_WAS_SKIPPED ;
+ scalar_t__ HPDF_TRUE ;
+ int HPDF_UNUSED (int) ;
 
 HPDF_STATUS
-HPDF_Stream_WriteToStream  (HPDF_Stream  src,
-                            HPDF_Stream  dst,
-                            HPDF_UINT    filter,
-                            HPDF_Encrypt  e)
+HPDF_Stream_WriteToStream (HPDF_Stream src,
+                            HPDF_Stream dst,
+                            HPDF_UINT filter,
+                            HPDF_Encrypt e)
 {
     HPDF_STATUS ret;
     HPDF_BYTE buf[HPDF_STREAM_BUF_SIZ];
@@ -64,14 +64,14 @@ HPDF_Stream_WriteToStream  (HPDF_Stream  src,
             HPDF_Error_GetCode (dst->error) != HPDF_NOERROR)
         return HPDF_THIS_FUNC_WAS_SKIPPED;
 
-    /* initialize input stream */
+
     if (HPDF_Stream_Size (src) == 0)
         return HPDF_OK;
 
-#ifndef LIBHPDF_HAVE_NOZLIB
+
     if (filter & HPDF_STREAM_FILTER_FLATE_DECODE)
         return HPDF_Stream_WriteToStreamWithDeflate (src, dst, e);
-#endif /* LIBHPDF_HAVE_NOZLIB */
+
 
     ret = HPDF_Stream_Seek (src, 0, HPDF_SEEK_SET);
     if (ret != HPDF_OK)

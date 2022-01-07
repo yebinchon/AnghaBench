@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct sk_buff {scalar_t__ data; } ;
-struct hci_rp_read_bd_addr {int /*<<< orphan*/  status; int /*<<< orphan*/  bdaddr; } ;
-struct hci_dev {int /*<<< orphan*/  bdaddr; int /*<<< orphan*/  name; } ;
+struct hci_rp_read_bd_addr {int status; int bdaddr; } ;
+struct hci_dev {int bdaddr; int name; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BT_DBG (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bacpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  hci_req_complete (struct hci_dev*,int /*<<< orphan*/ ) ; 
+
+ int BT_DBG (char*,int ,int ) ;
+ int bacpy (int *,int *) ;
+ int hci_req_complete (struct hci_dev*,int ) ;
 
 __attribute__((used)) static void hci_cc_read_bd_addr(struct hci_dev *hdev, struct sk_buff *skb)
 {
-	struct hci_rp_read_bd_addr *rp = (void *) skb->data;
+ struct hci_rp_read_bd_addr *rp = (void *) skb->data;
 
-	BT_DBG("%s status 0x%x", hdev->name, rp->status);
+ BT_DBG("%s status 0x%x", hdev->name, rp->status);
 
-	if (!rp->status)
-		bacpy(&hdev->bdaddr, &rp->bdaddr);
+ if (!rp->status)
+  bacpy(&hdev->bdaddr, &rp->bdaddr);
 
-	hci_req_complete(hdev, rp->status);
+ hci_req_complete(hdev, rp->status);
 }

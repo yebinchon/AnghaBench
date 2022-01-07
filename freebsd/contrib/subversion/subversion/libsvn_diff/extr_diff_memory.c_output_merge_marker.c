@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct TYPE_4__ {int /*<<< orphan*/ * markers; int /*<<< orphan*/  output_stream; } ;
-typedef  TYPE_1__ merge_output_baton_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * output_marker_eol (TYPE_1__*) ; 
- int /*<<< orphan*/  svn_stream_puts (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int svn_error_t ;
+struct TYPE_4__ {int * markers; int output_stream; } ;
+typedef TYPE_1__ merge_output_baton_t ;
+
+
+ int SVN_ERR (int ) ;
+ int * output_marker_eol (TYPE_1__*) ;
+ int svn_stream_puts (int ,int ) ;
 
 __attribute__((used)) static svn_error_t *
 output_merge_marker(merge_output_baton_t *btn, int idx)

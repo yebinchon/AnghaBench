@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_19__   TYPE_2__ ;
-typedef  struct TYPE_18__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_19__ {int /*<<< orphan*/  member_0; } ;
-struct TYPE_18__ {int /*<<< orphan*/  member_0; } ;
-typedef  TYPE_1__ Sqlite ;
-typedef  TYPE_2__ Error ;
 
-/* Variables and functions */
- int /*<<< orphan*/  closedb (TYPE_2__*,TYPE_1__*) ; 
- int /*<<< orphan*/  execsql (TYPE_2__*,TYPE_1__*,char*) ; 
- char* execsql_text (TYPE_2__*,TYPE_1__*,int,char const*) ; 
- int /*<<< orphan*/  integrity_check (TYPE_2__*,TYPE_1__*) ; 
- int /*<<< orphan*/  opendb (TYPE_2__*,TYPE_1__*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  print_and_free_err (TYPE_2__*) ; 
- int /*<<< orphan*/  sql_script (TYPE_2__*,TYPE_1__*,char*) ; 
- char* sqlite3_mprintf (char*,int) ; 
- scalar_t__ strcmp (char*,char*) ; 
- int /*<<< orphan*/  test_error (TYPE_2__*,char*,char*,char*,char*) ; 
- int /*<<< orphan*/  timetostop (TYPE_2__*) ; 
+
+typedef struct TYPE_19__ TYPE_2__ ;
+typedef struct TYPE_18__ TYPE_1__ ;
+
+
+struct TYPE_19__ {int member_0; } ;
+struct TYPE_18__ {int member_0; } ;
+typedef TYPE_1__ Sqlite ;
+typedef TYPE_2__ Error ;
+
+
+ int closedb (TYPE_2__*,TYPE_1__*) ;
+ int execsql (TYPE_2__*,TYPE_1__*,char*) ;
+ char* execsql_text (TYPE_2__*,TYPE_1__*,int,char const*) ;
+ int integrity_check (TYPE_2__*,TYPE_1__*) ;
+ int opendb (TYPE_2__*,TYPE_1__*,char*,int ) ;
+ int print_and_free_err (TYPE_2__*) ;
+ int sql_script (TYPE_2__*,TYPE_1__*,char*) ;
+ char* sqlite3_mprintf (char*,int) ;
+ scalar_t__ strcmp (char*,char*) ;
+ int test_error (TYPE_2__*,char*,char*,char*,char*) ;
+ int timetostop (TYPE_2__*) ;
 
 __attribute__((used)) static char *walthread1_thread(int iTid, void *pArg){
-  Error err = {0};                /* Error code and message */
-  Sqlite db = {0};                /* SQLite database connection */
-  int nIter = 0;                  /* Iterations so far */
+  Error err = {0};
+  Sqlite db = {0};
+  int nIter = 0;
 
   opendb(&err, &db, "test.db", 0);
   while( !timetostop(&err) ){

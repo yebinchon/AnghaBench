@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  scalar_t__ t_Handle ;
-struct TYPE_6__ {int /*<<< orphan*/  h_App; int /*<<< orphan*/  (* f_Exception ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;TYPE_2__* p_FmPcdPlcr; int /*<<< orphan*/  h_Fm; } ;
-typedef  TYPE_3__ t_FmPcd ;
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+typedef scalar_t__ t_Handle ;
+struct TYPE_6__ {int h_App; int (* f_Exception ) (int ,int ) ;TYPE_2__* p_FmPcdPlcr; int h_Fm; } ;
+typedef TYPE_3__ t_FmPcd ;
 struct TYPE_5__ {TYPE_1__* p_FmPcdPlcrRegs; } ;
-struct TYPE_4__ {int /*<<< orphan*/  fmpl_evr; int /*<<< orphan*/  fmpl_ifr; int /*<<< orphan*/  fmpl_ier; } ;
+struct TYPE_4__ {int fmpl_evr; int fmpl_ifr; int fmpl_ier; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT_COND (int /*<<< orphan*/ ) ; 
- int FM_PCD_PLCR_ATOMIC_ACTION_COMPLETE ; 
- int FM_PCD_PLCR_PRAM_SELF_INIT_COMPLETE ; 
- int /*<<< orphan*/  FmIsMaster (int /*<<< orphan*/ ) ; 
- int GET_UINT32 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WRITE_UINT32 (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  e_FM_PCD_PLCR_EXCEPTION_ATOMIC_ACTION_COMPLETE ; 
- int /*<<< orphan*/  e_FM_PCD_PLCR_EXCEPTION_PRAM_SELF_INIT_COMPLETE ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int ASSERT_COND (int ) ;
+ int FM_PCD_PLCR_ATOMIC_ACTION_COMPLETE ;
+ int FM_PCD_PLCR_PRAM_SELF_INIT_COMPLETE ;
+ int FmIsMaster (int ) ;
+ int GET_UINT32 (int ) ;
+ int WRITE_UINT32 (int ,int) ;
+ int e_FM_PCD_PLCR_EXCEPTION_ATOMIC_ACTION_COMPLETE ;
+ int e_FM_PCD_PLCR_EXCEPTION_PRAM_SELF_INIT_COMPLETE ;
+ int stub1 (int ,int ) ;
+ int stub2 (int ,int ) ;
 
 __attribute__((used)) static void EventsCB(t_Handle h_FmPcd)
 {
@@ -43,7 +43,7 @@ __attribute__((used)) static void EventsCB(t_Handle h_FmPcd)
 
     event &= mask;
 
-    /* clear the forced events */
+
     force = GET_UINT32(p_FmPcd->p_FmPcdPlcr->p_FmPcdPlcrRegs->fmpl_ifr);
     if (force & event)
         WRITE_UINT32(p_FmPcd->p_FmPcdPlcr->p_FmPcdPlcrRegs->fmpl_ifr, force & ~event);

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VOID ;
-typedef  int ULONG ;
-typedef  scalar_t__* PVOID ;
-typedef  scalar_t__* PCHAR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MachVideoGetDisplaySize (int*,int*,int*) ; 
- int /*<<< orphan*/  MachVideoPutChar (scalar_t__,int /*<<< orphan*/ ,int,int) ; 
- scalar_t__* video_mem ; 
+
+
+
+typedef int VOID ;
+typedef int ULONG ;
+typedef scalar_t__* PVOID ;
+typedef scalar_t__* PCHAR ;
+
+
+ int MachVideoGetDisplaySize (int*,int*,int*) ;
+ int MachVideoPutChar (scalar_t__,int ,int,int) ;
+ scalar_t__* video_mem ;
 
 VOID PpcVideoCopyOffScreenBufferToVRAM( PVOID Buffer ) {
     int i,j;

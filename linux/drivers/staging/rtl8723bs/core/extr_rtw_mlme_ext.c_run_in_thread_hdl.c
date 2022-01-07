@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
+
+
+
+
+typedef int u8 ;
 struct adapter {int dummy; } ;
-struct RunInThread_param {int /*<<< orphan*/  context; int /*<<< orphan*/  (* func ) (int /*<<< orphan*/ ) ;} ;
+struct RunInThread_param {int context; int (* func ) (int ) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  H2C_PARAMETERS_ERROR ; 
- int /*<<< orphan*/  H2C_SUCCESS ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ) ; 
+
+ int H2C_PARAMETERS_ERROR ;
+ int H2C_SUCCESS ;
+ int stub1 (int ) ;
 
 u8 run_in_thread_hdl(struct adapter *padapter, u8 *pbuf)
 {
-	struct RunInThread_param *p;
+ struct RunInThread_param *p;
 
 
-	if (NULL == pbuf)
-		return H2C_PARAMETERS_ERROR;
-	p = (struct RunInThread_param *)pbuf;
+ if (((void*)0) == pbuf)
+  return H2C_PARAMETERS_ERROR;
+ p = (struct RunInThread_param *)pbuf;
 
-	if (p->func)
-		p->func(p->context);
+ if (p->func)
+  p->func(p->context);
 
-	return H2C_SUCCESS;
+ return H2C_SUCCESS;
 }

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_7__ {scalar_t__* abID; } ;
 struct TYPE_8__ {TYPE_1__ mkid; } ;
-typedef  TYPE_2__* LPITEMIDLIST ;
-typedef  scalar_t__ HRESULT ;
-typedef  int /*<<< orphan*/  const GUID ;
+typedef TYPE_2__* LPITEMIDLIST ;
+typedef scalar_t__ HRESULT ;
+typedef int const GUID ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IMalloc_Free (int /*<<< orphan*/ ,TYPE_2__*) ; 
- scalar_t__ IsEqualIID (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*) ; 
- scalar_t__ PT_GUID ; 
- scalar_t__ PT_SHELLEXT ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  getFolderName (int) ; 
- int /*<<< orphan*/  ok (int,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,...) ; 
- TYPE_2__* pILFindLastID (TYPE_2__*) ; 
- int /*<<< orphan*/  pMalloc ; 
- scalar_t__ pSHGetFolderLocation (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_2__**) ; 
- int /*<<< orphan*/  wine_dbgstr_guid (int /*<<< orphan*/  const*) ; 
+
+ int IMalloc_Free (int ,TYPE_2__*) ;
+ scalar_t__ IsEqualIID (int const*,int const*) ;
+ scalar_t__ PT_GUID ;
+ scalar_t__ PT_SHELLEXT ;
+ scalar_t__ S_OK ;
+ int getFolderName (int) ;
+ int ok (int,char*,int ,int ,int ,...) ;
+ TYPE_2__* pILFindLastID (TYPE_2__*) ;
+ int pMalloc ;
+ scalar_t__ pSHGetFolderLocation (int *,int,int *,int ,TYPE_2__**) ;
+ int wine_dbgstr_guid (int const*) ;
 
 __attribute__((used)) static void matchGUID(int folder, const GUID *guid, const GUID *guid_alt)
 {
@@ -39,8 +39,8 @@ __attribute__((used)) static void matchGUID(int folder, const GUID *guid, const 
     if (!pSHGetFolderLocation) return;
     if (!guid) return;
 
-    pidl = NULL;
-    hr = pSHGetFolderLocation(NULL, folder, NULL, 0, &pidl);
+    pidl = ((void*)0);
+    hr = pSHGetFolderLocation(((void*)0), folder, ((void*)0), 0, &pidl);
     if (hr == S_OK)
     {
         LPITEMIDLIST pidlLast = pILFindLastID(pidl);

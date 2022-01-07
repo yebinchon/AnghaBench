@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint16_t ;
-struct virtio_desc {int /*<<< orphan*/  vd_flags; int /*<<< orphan*/  vd_len; int /*<<< orphan*/  vd_addr; } ;
-struct iovec {int /*<<< orphan*/  iov_len; int /*<<< orphan*/  iov_base; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  paddr_guest2host (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint16_t ;
+struct virtio_desc {int vd_flags; int vd_len; int vd_addr; } ;
+struct iovec {int iov_len; int iov_base; } ;
+
+
+ int paddr_guest2host (int ,int ) ;
 
 __attribute__((used)) static inline void
 _vq_record(int i, volatile struct virtio_desc *vd, struct iovec *iov, int n_iov,
-	uint16_t *flags)
+ uint16_t *flags)
 {
-	if (i >= n_iov)
-		return;
-	iov[i].iov_base = paddr_guest2host(vd->vd_addr, vd->vd_len);
-	iov[i].iov_len = vd->vd_len;
-	if (flags != NULL)
-		flags[i] = vd->vd_flags;
+ if (i >= n_iov)
+  return;
+ iov[i].iov_base = paddr_guest2host(vd->vd_addr, vd->vd_len);
+ iov[i].iov_len = vd->vd_len;
+ if (flags != ((void*)0))
+  flags[i] = vd->vd_flags;
 }

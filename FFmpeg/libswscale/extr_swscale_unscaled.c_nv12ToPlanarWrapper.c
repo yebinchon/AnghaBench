@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_3__ {scalar_t__ srcFormat; int /*<<< orphan*/  chrSrcW; int /*<<< orphan*/  srcW; } ;
-typedef  TYPE_1__ SwsContext ;
 
-/* Variables and functions */
- scalar_t__ AV_PIX_FMT_NV12 ; 
- int /*<<< orphan*/  copyPlane (int /*<<< orphan*/  const*,int,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  deinterleaveBytes (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int,int,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_3__ {scalar_t__ srcFormat; int chrSrcW; int srcW; } ;
+typedef TYPE_1__ SwsContext ;
+
+
+ scalar_t__ AV_PIX_FMT_NV12 ;
+ int copyPlane (int const*,int,int,int,int ,int *,int) ;
+ int deinterleaveBytes (int const*,int *,int *,int ,int,int,int,int) ;
 
 __attribute__((used)) static int nv12ToPlanarWrapper(SwsContext *c, const uint8_t *src[],
                                int srcStride[], int srcSliceY,

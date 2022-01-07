@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/ * fqs_ifq; } ;
-typedef  TYPE_1__ fq_if_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fq_if_purge (TYPE_1__*) ; 
- int /*<<< orphan*/  fq_if_zone ; 
- int /*<<< orphan*/  zfree (int /*<<< orphan*/ ,TYPE_1__*) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int * fqs_ifq; } ;
+typedef TYPE_1__ fq_if_t ;
+
+
+ int fq_if_purge (TYPE_1__*) ;
+ int fq_if_zone ;
+ int zfree (int ,TYPE_1__*) ;
 
 void
 fq_if_destroy(fq_if_t *fqs)
 {
-	fq_if_purge(fqs);
-	fqs->fqs_ifq = NULL;
-	zfree(fq_if_zone, fqs);
+ fq_if_purge(fqs);
+ fqs->fqs_ifq = ((void*)0);
+ zfree(fq_if_zone, fqs);
 }

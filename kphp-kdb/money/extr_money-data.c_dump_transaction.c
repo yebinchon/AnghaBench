@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int parties; char* comment_len; int /*<<< orphan*/  comment; TYPE_1__* T; int /*<<< orphan*/  status; int /*<<< orphan*/  temp_id; int /*<<< orphan*/  declared_date; int /*<<< orphan*/  created_at; int /*<<< orphan*/  transaction_id; } ;
-typedef  TYPE_3__ transaction_t ;
-struct TYPE_9__ {TYPE_2__* acc_type; int /*<<< orphan*/  acc_id; } ;
-typedef  TYPE_4__ account_t ;
-struct TYPE_7__ {int acc_type_id; int /*<<< orphan*/  currency; } ;
-struct TYPE_6__ {int /*<<< orphan*/  acc_incr; TYPE_4__* tr_account; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  stderr ; 
+
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int parties; char* comment_len; int comment; TYPE_1__* T; int status; int temp_id; int declared_date; int created_at; int transaction_id; } ;
+typedef TYPE_3__ transaction_t ;
+struct TYPE_9__ {TYPE_2__* acc_type; int acc_id; } ;
+typedef TYPE_4__ account_t ;
+struct TYPE_7__ {int acc_type_id; int currency; } ;
+struct TYPE_6__ {int acc_incr; TYPE_4__* tr_account; } ;
+
+
+ int fprintf (int ,char*,...) ;
+ int stderr ;
 
 __attribute__((used)) static void dump_transaction (transaction_t *T) {
   int i, N;

@@ -1,62 +1,62 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int DWORD ;
 
-/* Variables and functions */
- int STATE_ACTIVELIGHT (int /*<<< orphan*/ ) ; 
- int STATE_CLIPPLANE (int /*<<< orphan*/ ) ; 
- int STATE_CONSTANT_BUFFER (int /*<<< orphan*/ ) ; 
- scalar_t__ STATE_IS_ACTIVELIGHT (int) ; 
- scalar_t__ STATE_IS_BASEVERTEXINDEX (int) ; 
- scalar_t__ STATE_IS_BLEND (int) ; 
- scalar_t__ STATE_IS_CLIPPLANE (int) ; 
- scalar_t__ STATE_IS_COLOR_KEY (int) ; 
- scalar_t__ STATE_IS_COMPUTE_CONSTANT_BUFFER (int) ; 
- scalar_t__ STATE_IS_COMPUTE_SHADER (int) ; 
- scalar_t__ STATE_IS_COMPUTE_SHADER_RESOURCE_BINDING (int) ; 
- scalar_t__ STATE_IS_COMPUTE_UNORDERED_ACCESS_VIEW_BINDING (int) ; 
- scalar_t__ STATE_IS_FRAMEBUFFER (int) ; 
- scalar_t__ STATE_IS_FRONTFACE (int) ; 
- scalar_t__ STATE_IS_GRAPHICS_CONSTANT_BUFFER (int) ; 
- scalar_t__ STATE_IS_GRAPHICS_SHADER (int) ; 
- scalar_t__ STATE_IS_GRAPHICS_SHADER_RESOURCE_BINDING (int) ; 
- scalar_t__ STATE_IS_GRAPHICS_UNORDERED_ACCESS_VIEW_BINDING (int) ; 
- scalar_t__ STATE_IS_INDEXBUFFER (int) ; 
- scalar_t__ STATE_IS_LIGHT_TYPE (int) ; 
- scalar_t__ STATE_IS_MATERIAL (int) ; 
- scalar_t__ STATE_IS_POINTSPRITECOORDORIGIN (int) ; 
- scalar_t__ STATE_IS_POINT_ENABLE (int) ; 
- scalar_t__ STATE_IS_RENDER (int) ; 
- scalar_t__ STATE_IS_SAMPLER (int) ; 
- scalar_t__ STATE_IS_SCISSORRECT (int) ; 
- scalar_t__ STATE_IS_STREAMSRC (int) ; 
- scalar_t__ STATE_IS_STREAM_OUTPUT (int) ; 
- scalar_t__ STATE_IS_TEXTURESTAGE (int) ; 
- scalar_t__ STATE_IS_TRANSFORM (int) ; 
- scalar_t__ STATE_IS_VDECL (int) ; 
- scalar_t__ STATE_IS_VIEWPORT (int) ; 
- int STATE_RENDER (int /*<<< orphan*/ ) ; 
- int STATE_SAMPLER (int /*<<< orphan*/ ) ; 
- int STATE_SHADER (int /*<<< orphan*/ ) ; 
- int STATE_TEXTURESTAGE (int,int /*<<< orphan*/ ) ; 
- int STATE_TRANSFORM (int /*<<< orphan*/ ) ; 
- int WINED3D_HIGHEST_TEXTURE_STATE ; 
- int WINED3D_SHADER_TYPE_COMPUTE ; 
- int debug_d3drenderstate (int) ; 
- int /*<<< orphan*/  debug_d3dtexturestate (int) ; 
- int debug_d3dtstype (int) ; 
- int debug_shader_type (int) ; 
- char const* wine_dbg_sprintf (char*,int,...) ; 
+
+
+
+typedef int DWORD ;
+
+
+ int STATE_ACTIVELIGHT (int ) ;
+ int STATE_CLIPPLANE (int ) ;
+ int STATE_CONSTANT_BUFFER (int ) ;
+ scalar_t__ STATE_IS_ACTIVELIGHT (int) ;
+ scalar_t__ STATE_IS_BASEVERTEXINDEX (int) ;
+ scalar_t__ STATE_IS_BLEND (int) ;
+ scalar_t__ STATE_IS_CLIPPLANE (int) ;
+ scalar_t__ STATE_IS_COLOR_KEY (int) ;
+ scalar_t__ STATE_IS_COMPUTE_CONSTANT_BUFFER (int) ;
+ scalar_t__ STATE_IS_COMPUTE_SHADER (int) ;
+ scalar_t__ STATE_IS_COMPUTE_SHADER_RESOURCE_BINDING (int) ;
+ scalar_t__ STATE_IS_COMPUTE_UNORDERED_ACCESS_VIEW_BINDING (int) ;
+ scalar_t__ STATE_IS_FRAMEBUFFER (int) ;
+ scalar_t__ STATE_IS_FRONTFACE (int) ;
+ scalar_t__ STATE_IS_GRAPHICS_CONSTANT_BUFFER (int) ;
+ scalar_t__ STATE_IS_GRAPHICS_SHADER (int) ;
+ scalar_t__ STATE_IS_GRAPHICS_SHADER_RESOURCE_BINDING (int) ;
+ scalar_t__ STATE_IS_GRAPHICS_UNORDERED_ACCESS_VIEW_BINDING (int) ;
+ scalar_t__ STATE_IS_INDEXBUFFER (int) ;
+ scalar_t__ STATE_IS_LIGHT_TYPE (int) ;
+ scalar_t__ STATE_IS_MATERIAL (int) ;
+ scalar_t__ STATE_IS_POINTSPRITECOORDORIGIN (int) ;
+ scalar_t__ STATE_IS_POINT_ENABLE (int) ;
+ scalar_t__ STATE_IS_RENDER (int) ;
+ scalar_t__ STATE_IS_SAMPLER (int) ;
+ scalar_t__ STATE_IS_SCISSORRECT (int) ;
+ scalar_t__ STATE_IS_STREAMSRC (int) ;
+ scalar_t__ STATE_IS_STREAM_OUTPUT (int) ;
+ scalar_t__ STATE_IS_TEXTURESTAGE (int) ;
+ scalar_t__ STATE_IS_TRANSFORM (int) ;
+ scalar_t__ STATE_IS_VDECL (int) ;
+ scalar_t__ STATE_IS_VIEWPORT (int) ;
+ int STATE_RENDER (int ) ;
+ int STATE_SAMPLER (int ) ;
+ int STATE_SHADER (int ) ;
+ int STATE_TEXTURESTAGE (int,int ) ;
+ int STATE_TRANSFORM (int ) ;
+ int WINED3D_HIGHEST_TEXTURE_STATE ;
+ int WINED3D_SHADER_TYPE_COMPUTE ;
+ int debug_d3drenderstate (int) ;
+ int debug_d3dtexturestate (int) ;
+ int debug_d3dtstype (int) ;
+ int debug_shader_type (int) ;
+ char const* wine_dbg_sprintf (char*,int,...) ;
 
 const char *debug_d3dstate(DWORD state)
 {

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {scalar_t__ flags; int /*<<< orphan*/ * post_stream; scalar_t__ connection; scalar_t__ request; TYPE_1__* vtbl; } ;
-struct TYPE_5__ {int /*<<< orphan*/  (* close_connection ) (TYPE_2__*) ;} ;
-typedef  TYPE_2__ Protocol ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IStream_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  InternetCloseHandle (scalar_t__) ; 
- int /*<<< orphan*/  stub1 (TYPE_2__*) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {scalar_t__ flags; int * post_stream; scalar_t__ connection; scalar_t__ request; TYPE_1__* vtbl; } ;
+struct TYPE_5__ {int (* close_connection ) (TYPE_2__*) ;} ;
+typedef TYPE_2__ Protocol ;
+
+
+ int IStream_Release (int *) ;
+ int InternetCloseHandle (scalar_t__) ;
+ int stub1 (TYPE_2__*) ;
 
 void protocol_close_connection(Protocol *protocol)
 {
@@ -33,7 +33,7 @@ void protocol_close_connection(Protocol *protocol)
 
     if(protocol->post_stream) {
         IStream_Release(protocol->post_stream);
-        protocol->post_stream = NULL;
+        protocol->post_stream = ((void*)0);
     }
 
     protocol->flags = 0;

@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int USHORT ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int USHORT ;
 struct TYPE_4__ {scalar_t__ Checksum; } ;
-typedef  int* PUCHAR ;
-typedef  int /*<<< orphan*/  Identifier ;
-typedef  TYPE_1__ ISAPNP_IDENTIFIER ;
-typedef  int INT ;
-typedef  scalar_t__ BOOLEAN ;
+typedef int* PUCHAR ;
+typedef int Identifier ;
+typedef TYPE_1__ ISAPNP_IDENTIFIER ;
+typedef int INT ;
+typedef scalar_t__ BOOLEAN ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPRINT (char*,...) ; 
- int /*<<< orphan*/  EnterIsolationState () ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  HwDelay () ; 
- scalar_t__ IsaPnpChecksum (TYPE_1__*) ; 
- int ReadData (int*) ; 
- int /*<<< orphan*/  ResetCsn () ; 
- int /*<<< orphan*/  RtlZeroMemory (TYPE_1__*,int) ; 
- int /*<<< orphan*/  SendKey () ; 
- int /*<<< orphan*/  SetReadDataPort (int*) ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  WaitForKey () ; 
- int /*<<< orphan*/  Wake (int) ; 
- int /*<<< orphan*/  WriteCsn (int) ; 
+
+ int DPRINT (char*,...) ;
+ int EnterIsolationState () ;
+ scalar_t__ FALSE ;
+ int HwDelay () ;
+ scalar_t__ IsaPnpChecksum (TYPE_1__*) ;
+ int ReadData (int*) ;
+ int ResetCsn () ;
+ int RtlZeroMemory (TYPE_1__*,int) ;
+ int SendKey () ;
+ int SetReadDataPort (int*) ;
+ scalar_t__ TRUE ;
+ int WaitForKey () ;
+ int Wake (int) ;
+ int WriteCsn (int) ;
 
 __attribute__((used)) static
 INT

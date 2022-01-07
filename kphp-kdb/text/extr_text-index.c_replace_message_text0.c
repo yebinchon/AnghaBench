@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct lev_replace_text_long {int type; char* text; int text_len; int /*<<< orphan*/  user_id; } ;
+
+
+
+
+struct lev_replace_text_long {int type; char* text; int text_len; int user_id; } ;
 struct lev_replace_text {char* text; } ;
 
-/* Variables and functions */
- int LEV_TX_REPLACE_TEXT ; 
- int LEV_TX_REPLACE_TEXT_LONG ; 
- int* User ; 
- int* UserMsgBytes ; 
- int /*<<< orphan*/ * UserMsgCnt ; 
- scalar_t__* UserSearchWords ; 
- int /*<<< orphan*/  assert (int) ; 
- int compute_message_distinct_words (char*,int) ; 
- int conv_uid (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  discarded_rec ; 
- int max_uid ; 
- int /*<<< orphan*/  max_user_search_id ; 
- scalar_t__ max_user_search_words ; 
- int msgs_bytes ; 
- int /*<<< orphan*/  msgs_read ; 
- int /*<<< orphan*/  preprocess_text (char*,int) ; 
- scalar_t__ search_enabled ; 
- int tot_search_words ; 
+
+ int LEV_TX_REPLACE_TEXT ;
+ int LEV_TX_REPLACE_TEXT_LONG ;
+ int* User ;
+ int* UserMsgBytes ;
+ int * UserMsgCnt ;
+ scalar_t__* UserSearchWords ;
+ int assert (int) ;
+ int compute_message_distinct_words (char*,int) ;
+ int conv_uid (int ) ;
+ int discarded_rec ;
+ int max_uid ;
+ int max_user_search_id ;
+ scalar_t__ max_user_search_words ;
+ int msgs_bytes ;
+ int msgs_read ;
+ int preprocess_text (char*,int) ;
+ scalar_t__ search_enabled ;
+ int tot_search_words ;
 
 void replace_message_text0 (struct lev_replace_text_long *E) {
   int text_len;

@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct Curl_sh_entry {unsigned int action; int /*<<< orphan*/  transfers; int /*<<< orphan*/  socketp; int /*<<< orphan*/  users; scalar_t__ readers; scalar_t__ writers; } ;
-struct Curl_multi {int /*<<< orphan*/  sockhash; int /*<<< orphan*/  socket_userp; int /*<<< orphan*/  (* socket_cb ) (struct Curl_easy*,scalar_t__,unsigned int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;} ;
+
+
+
+
+struct Curl_sh_entry {unsigned int action; int transfers; int socketp; int users; scalar_t__ readers; scalar_t__ writers; } ;
+struct Curl_multi {int sockhash; int socket_userp; int (* socket_cb ) (struct Curl_easy*,scalar_t__,unsigned int,int ,int ) ;} ;
 struct Curl_easy {int numsocks; scalar_t__* sockets; unsigned int* actions; } ;
-typedef  scalar_t__ curl_socket_t ;
-typedef  int /*<<< orphan*/  CURLMcode ;
+typedef scalar_t__ curl_socket_t ;
+typedef int CURLMcode ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CURLM_OK ; 
- int /*<<< orphan*/  CURLM_OUT_OF_MEMORY ; 
- unsigned int CURL_POLL_IN ; 
- unsigned int CURL_POLL_NONE ; 
- unsigned int CURL_POLL_OUT ; 
- unsigned int CURL_POLL_REMOVE ; 
- scalar_t__ CURL_SOCKET_BAD ; 
- int /*<<< orphan*/  Curl_hash_add (int /*<<< orphan*/ *,char*,int,struct Curl_easy*) ; 
- scalar_t__ Curl_hash_delete (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  DEBUGASSERT (int /*<<< orphan*/ *) ; 
- int FALSE ; 
- unsigned int GETSOCK_READSOCK (int) ; 
- unsigned int GETSOCK_WRITESOCK (int) ; 
- int MAX_SOCKSPEREASYHANDLE ; 
- int TRUE ; 
- int /*<<< orphan*/  memcpy (int*,...) ; 
- unsigned int multi_getsock (struct Curl_easy*,scalar_t__*) ; 
- struct Curl_sh_entry* sh_addentry (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  sh_delentry (struct Curl_sh_entry*,int /*<<< orphan*/ *,scalar_t__) ; 
- struct Curl_sh_entry* sh_getentry (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  stub1 (struct Curl_easy*,scalar_t__,unsigned int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub2 (struct Curl_easy*,scalar_t__,unsigned int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int CURLM_OK ;
+ int CURLM_OUT_OF_MEMORY ;
+ unsigned int CURL_POLL_IN ;
+ unsigned int CURL_POLL_NONE ;
+ unsigned int CURL_POLL_OUT ;
+ unsigned int CURL_POLL_REMOVE ;
+ scalar_t__ CURL_SOCKET_BAD ;
+ int Curl_hash_add (int *,char*,int,struct Curl_easy*) ;
+ scalar_t__ Curl_hash_delete (int *,char*,int) ;
+ int DEBUGASSERT (int *) ;
+ int FALSE ;
+ unsigned int GETSOCK_READSOCK (int) ;
+ unsigned int GETSOCK_WRITESOCK (int) ;
+ int MAX_SOCKSPEREASYHANDLE ;
+ int TRUE ;
+ int memcpy (int*,...) ;
+ unsigned int multi_getsock (struct Curl_easy*,scalar_t__*) ;
+ struct Curl_sh_entry* sh_addentry (int *,scalar_t__) ;
+ int sh_delentry (struct Curl_sh_entry*,int *,scalar_t__) ;
+ struct Curl_sh_entry* sh_getentry (int *,scalar_t__) ;
+ int stub1 (struct Curl_easy*,scalar_t__,unsigned int,int ,int ) ;
+ int stub2 (struct Curl_easy*,scalar_t__,unsigned int,int ,int ) ;
 
 __attribute__((used)) static CURLMcode singlesocket(struct Curl_multi *multi,
                               struct Curl_easy *data)
@@ -54,15 +54,15 @@ __attribute__((used)) static CURLMcode singlesocket(struct Curl_multi *multi,
   for(i = 0; i< MAX_SOCKSPEREASYHANDLE; i++)
     socks[i] = CURL_SOCKET_BAD;
 
-  /* Fill in the 'current' struct with the state as it is now: what sockets to
-     supervise and for what actions */
+
+
   curraction = multi_getsock(data, socks);
 
-  /* We have 0 .. N sockets already and we get to know about the 0 .. M
-     sockets we should have from now on. Detect the differences, remove no
-     longer supervised ones and add new ones */
 
-  /* walk over the sockets we got right now */
+
+
+
+
   for(i = 0; (i< MAX_SOCKSPEREASYHANDLE) &&
         (curraction & (GETSOCK_READSOCK(i) | GETSOCK_WRITESOCK(i)));
       i++) {
@@ -73,7 +73,7 @@ __attribute__((used)) static CURLMcode singlesocket(struct Curl_multi *multi,
 
     s = socks[i];
 
-    /* get it from the hash */
+
     entry = sh_getentry(&multi->sockhash, s);
 
     if(curraction & GETSOCK_READSOCK(i))
@@ -83,7 +83,7 @@ __attribute__((used)) static CURLMcode singlesocket(struct Curl_multi *multi,
 
     actions[i] = action;
     if(entry) {
-      /* check if new for this transfer */
+
       int j;
       for(j = 0; j< data->numsocks; j++) {
         if(s == data->sockets[j]) {
@@ -94,14 +94,14 @@ __attribute__((used)) static CURLMcode singlesocket(struct Curl_multi *multi,
       }
     }
     else {
-      /* this is a socket we didn't have before, add it to the hash! */
+
       entry = sh_addentry(&multi->sockhash, s);
       if(!entry)
-        /* fatal */
+
         return CURLM_OUT_OF_MEMORY;
     }
     if(sincebefore && (prevaction != action)) {
-      /* Socket was used already, but different action now */
+
       if(prevaction & CURL_POLL_IN)
         entry->readers--;
       if(prevaction & CURL_POLL_OUT)
@@ -112,15 +112,15 @@ __attribute__((used)) static CURLMcode singlesocket(struct Curl_multi *multi,
         entry->writers++;
     }
     else if(!sincebefore) {
-      /* a new user */
+
       entry->users++;
       if(action & CURL_POLL_IN)
         entry->readers++;
       if(action & CURL_POLL_OUT)
         entry->writers++;
 
-      /* add 'data' to the transfer hash on this socket! */
-      if(!Curl_hash_add(&entry->transfers, (char *)&data, /* hash key */
+
+      if(!Curl_hash_add(&entry->transfers, (char *)&data,
                         sizeof(struct Curl_easy *), data))
         return CURLM_OUT_OF_MEMORY;
     }
@@ -128,29 +128,29 @@ __attribute__((used)) static CURLMcode singlesocket(struct Curl_multi *multi,
     comboaction = (entry->writers? CURL_POLL_OUT : 0) |
       (entry->readers ? CURL_POLL_IN : 0);
 
-    /* socket existed before and has the same action set as before */
+
     if(sincebefore && (entry->action == comboaction))
-      /* same, continue */
+
       continue;
 
     if(multi->socket_cb)
       multi->socket_cb(data, s, comboaction, multi->socket_userp,
                        entry->socketp);
 
-    entry->action = comboaction; /* store the current action state */
+    entry->action = comboaction;
   }
 
-  num = i; /* number of sockets */
+  num = i;
 
-  /* when we've walked over all the sockets we should have right now, we must
-     make sure to detect sockets that are removed */
+
+
   for(i = 0; i< data->numsocks; i++) {
     int j;
     bool stillused = FALSE;
     s = data->sockets[i];
     for(j = 0; j < num; j++) {
       if(s == socks[j]) {
-        /* this is still supervised */
+
         stillused = TRUE;
         break;
       }
@@ -159,11 +159,11 @@ __attribute__((used)) static CURLMcode singlesocket(struct Curl_multi *multi,
       continue;
 
     entry = sh_getentry(&multi->sockhash, s);
-    /* if this is NULL here, the socket has been closed and notified so
-       already by Curl_multi_closed() */
+
+
     if(entry) {
       int oldactions = data->actions[i];
-      /* this socket has been removed. Decrease user count */
+
       entry->users--;
       if(oldactions & CURL_POLL_OUT)
         entry->writers--;
@@ -177,14 +177,14 @@ __attribute__((used)) static CURLMcode singlesocket(struct Curl_multi *multi,
         sh_delentry(entry, &multi->sockhash, s);
       }
       else {
-        /* still users, but remove this handle as a user of this socket */
+
         if(Curl_hash_delete(&entry->transfers, (char *)&data,
                             sizeof(struct Curl_easy *))) {
-          DEBUGASSERT(NULL);
+          DEBUGASSERT(((void*)0));
         }
       }
     }
-  } /* for loop over numsocks */
+  }
 
   memcpy(data->sockets, socks, num*sizeof(curl_socket_t));
   memcpy(data->actions, actions, num*sizeof(int));

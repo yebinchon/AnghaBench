@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct mlx5_cmd {int mode; int max_reg_cmds; int /*<<< orphan*/  sem; int /*<<< orphan*/  pages_sem; } ;
+
+
+
+
+struct mlx5_cmd {int mode; int max_reg_cmds; int sem; int pages_sem; } ;
 struct mlx5_core_dev {struct mlx5_cmd cmd; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  down (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  up (int /*<<< orphan*/ *) ; 
+
+ int down (int *) ;
+ int up (int *) ;
 
 __attribute__((used)) static void mlx5_cmd_change_mod(struct mlx5_core_dev *dev, int mode)
 {
-	struct mlx5_cmd *cmd = &dev->cmd;
-	int i;
+ struct mlx5_cmd *cmd = &dev->cmd;
+ int i;
 
-	if (cmd->mode == mode)
-		return;
+ if (cmd->mode == mode)
+  return;
 
-	for (i = 0; i < cmd->max_reg_cmds; i++)
-		down(&cmd->sem);
+ for (i = 0; i < cmd->max_reg_cmds; i++)
+  down(&cmd->sem);
 
-	down(&cmd->pages_sem);
-	cmd->mode = mode;
+ down(&cmd->pages_sem);
+ cmd->mode = mode;
 
-	up(&cmd->pages_sem);
-	for (i = 0; i < cmd->max_reg_cmds; i++)
-		up(&cmd->sem);
+ up(&cmd->pages_sem);
+ for (i = 0; i < cmd->max_reg_cmds; i++)
+  up(&cmd->sem);
 }

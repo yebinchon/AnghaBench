@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int sqlite3_int64 ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SEEK_END ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char const*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int fread (void*,size_t,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fseek (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int ftell (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  rewind (int /*<<< orphan*/ *) ; 
- void* sqlite3_malloc64 (int) ; 
- int /*<<< orphan*/  stderr ; 
+
+
+
+typedef int sqlite3_int64 ;
+typedef int FILE ;
+
+
+ int SEEK_END ;
+ int exit (int) ;
+ int fclose (int *) ;
+ int * fopen (char const*,char*) ;
+ int fprintf (int ,char*,...) ;
+ int fread (void*,size_t,int,int *) ;
+ int fseek (int *,int ,int ) ;
+ int ftell (int *) ;
+ int rewind (int *) ;
+ void* sqlite3_malloc64 (int) ;
+ int stderr ;
 
 __attribute__((used)) static void fuzzReadFile(const char *zFilename, int *pSz, void **ppBuf){
   FILE *f;

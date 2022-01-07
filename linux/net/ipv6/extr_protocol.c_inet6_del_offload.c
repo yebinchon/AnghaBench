@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct net_offload {int dummy; } ;
 
-/* Variables and functions */
- struct net_offload const* cmpxchg (struct net_offload const**,struct net_offload const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * inet6_offloads ; 
- int /*<<< orphan*/  synchronize_net () ; 
+
+ struct net_offload const* cmpxchg (struct net_offload const**,struct net_offload const*,int *) ;
+ int * inet6_offloads ;
+ int synchronize_net () ;
 
 int inet6_del_offload(const struct net_offload *prot, unsigned char protocol)
 {
-	int ret;
+ int ret;
 
-	ret = (cmpxchg((const struct net_offload **)&inet6_offloads[protocol],
-		       prot, NULL) == prot) ? 0 : -1;
+ ret = (cmpxchg((const struct net_offload **)&inet6_offloads[protocol],
+         prot, ((void*)0)) == prot) ? 0 : -1;
 
-	synchronize_net();
+ synchronize_net();
 
-	return ret;
+ return ret;
 }

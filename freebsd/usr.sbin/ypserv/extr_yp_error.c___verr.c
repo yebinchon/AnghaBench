@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  va_list ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOG_NOTICE ; 
- int /*<<< orphan*/  _rpcpmstart ; 
- scalar_t__ debug ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- char* progname ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  vfprintf (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vsyslog (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int va_list ;
+
+
+ int LOG_NOTICE ;
+ int _rpcpmstart ;
+ scalar_t__ debug ;
+ int fprintf (int ,char*,...) ;
+ char* progname ;
+ int stderr ;
+ int vfprintf (int ,char const*,int ) ;
+ int vsyslog (int ,char const*,int ) ;
 
 __attribute__((used)) static void
 __verr(const char *fmt, va_list ap)
 {
-	if (debug && !_rpcpmstart) {
-		fprintf(stderr,"%s: ",progname);
-		vfprintf(stderr, fmt, ap);
-		fprintf(stderr, "\n");
-	} else {
-		vsyslog(LOG_NOTICE, fmt, ap);
-	}
+ if (debug && !_rpcpmstart) {
+  fprintf(stderr,"%s: ",progname);
+  vfprintf(stderr, fmt, ap);
+  fprintf(stderr, "\n");
+ } else {
+  vsyslog(LOG_NOTICE, fmt, ap);
+ }
 }

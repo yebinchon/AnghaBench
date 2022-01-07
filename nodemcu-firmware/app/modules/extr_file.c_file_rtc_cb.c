@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vfs_time ;
-typedef  int /*<<< orphan*/  sint32_t ;
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- scalar_t__ LUA_NOREF ; 
- int /*<<< orphan*/  LUA_REGISTRYINDEX ; 
- scalar_t__ LUA_TTABLE ; 
- int /*<<< orphan*/  VFS_RES_ERR ; 
- int /*<<< orphan*/  VFS_RES_OK ; 
- int /*<<< orphan*/  lua_call (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/ * lua_getstate () ; 
- int /*<<< orphan*/  lua_gettop (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_pop (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_rawgeti (int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__ lua_type (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ rtc_cb_ref ; 
- int /*<<< orphan*/  table2tm (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int vfs_time ;
+typedef int sint32_t ;
+typedef int lua_State ;
+
+
+ scalar_t__ LUA_NOREF ;
+ int LUA_REGISTRYINDEX ;
+ scalar_t__ LUA_TTABLE ;
+ int VFS_RES_ERR ;
+ int VFS_RES_OK ;
+ int lua_call (int *,int ,int) ;
+ int * lua_getstate () ;
+ int lua_gettop (int *) ;
+ int lua_pop (int *,int) ;
+ int lua_rawgeti (int *,int ,scalar_t__) ;
+ scalar_t__ lua_type (int *,int ) ;
+ scalar_t__ rtc_cb_ref ;
+ int table2tm (int *,int *) ;
 
 __attribute__((used)) static sint32_t file_rtc_cb( vfs_time *tm )
 {
@@ -44,7 +44,7 @@ __attribute__((used)) static sint32_t file_rtc_cb( vfs_time *tm )
       res = VFS_RES_OK;
     }
 
-    // pop item returned by callback
+
     lua_pop( L, 1 );
   }
 

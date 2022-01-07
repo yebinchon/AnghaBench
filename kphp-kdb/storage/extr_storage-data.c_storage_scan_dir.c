@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct dirent {char* d_name; } ;
-typedef  int /*<<< orphan*/  binlogname ;
+typedef int binlogname ;
 struct TYPE_2__ {int scanned; char* path; scalar_t__ binlogs; } ;
-typedef  int /*<<< orphan*/  DIR ;
+typedef int DIR ;
 
-/* Variables and functions */
- TYPE_1__* Dirs ; 
- int PATH_MAX ; 
- int STORAGE_ERR_OPENDIR ; 
- int STORAGE_ERR_SCANDIR_MULTIPLE ; 
- int /*<<< orphan*/  closedir (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  kprintf (char*,...) ; 
- int /*<<< orphan*/ * opendir (char*) ; 
- struct dirent* readdir (int /*<<< orphan*/ *) ; 
- int storage_add_binlog (char*,int) ; 
- scalar_t__ strcmp (char*,char*) ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
- int strlen (char*) ; 
- int /*<<< orphan*/  vkprintf (int,char*,char*) ; 
+
+ TYPE_1__* Dirs ;
+ int PATH_MAX ;
+ int STORAGE_ERR_OPENDIR ;
+ int STORAGE_ERR_SCANDIR_MULTIPLE ;
+ int closedir (int *) ;
+ int exit (int) ;
+ int kprintf (char*,...) ;
+ int * opendir (char*) ;
+ struct dirent* readdir (int *) ;
+ int storage_add_binlog (char*,int) ;
+ scalar_t__ strcmp (char*,char*) ;
+ int strcpy (char*,char*) ;
+ int strlen (char*) ;
+ int vkprintf (int,char*,char*) ;
 
 int storage_scan_dir (int dir_id) {
   char binlogname[PATH_MAX];
@@ -38,14 +38,14 @@ int storage_scan_dir (int dir_id) {
     return STORAGE_ERR_SCANDIR_MULTIPLE;
   }
   DIR *D = opendir (Dirs[dir_id].path);
-  if (D == NULL) {
+  if (D == ((void*)0)) {
     vkprintf (1, "storage_scan_dir: opendir (%s) fail. %m\n", Dirs[dir_id].path);
     return STORAGE_ERR_OPENDIR;
   }
 
   struct dirent *entry;
   int add_binlog_fails = 0;
-  while ( (entry = readdir (D)) != NULL) {
+  while ( (entry = readdir (D)) != ((void*)0)) {
     if (!strcmp (entry->d_name, ".") || !strcmp (entry->d_name, "..")) {
       continue;
     }

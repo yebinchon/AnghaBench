@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {scalar_t__ y; scalar_t__ x; } ;
-struct TYPE_7__ {int iGrabbedBand; int fStatus; int /*<<< orphan*/  hwndSelf; TYPE_1__ dragStart; TYPE_1__ dragNow; } ;
-typedef  int /*<<< orphan*/  RECT ;
-typedef  TYPE_2__ REBAR_INFO ;
-typedef  int /*<<< orphan*/  NMHDR ;
-typedef  int /*<<< orphan*/  LRESULT ;
+struct TYPE_7__ {int iGrabbedBand; int fStatus; int hwndSelf; TYPE_1__ dragStart; TYPE_1__ dragNow; } ;
+typedef int RECT ;
+typedef TYPE_2__ REBAR_INFO ;
+typedef int NMHDR ;
+typedef int LRESULT ;
 
-/* Variables and functions */
- int BEGIN_DRAG_ISSUED ; 
- int /*<<< orphan*/  GetClientRect (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  InvalidateRect (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RBN_ENDDRAG ; 
- int /*<<< orphan*/  RBN_LAYOUTCHANGED ; 
- int /*<<< orphan*/  REBAR_Notify (int /*<<< orphan*/ *,TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  REBAR_Notify_NMREBAR (TYPE_2__*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReleaseCapture () ; 
- int /*<<< orphan*/  TRUE ; 
+
+ int BEGIN_DRAG_ISSUED ;
+ int GetClientRect (int ,int *) ;
+ int InvalidateRect (int ,int *,int ) ;
+ int RBN_ENDDRAG ;
+ int RBN_LAYOUTCHANGED ;
+ int REBAR_Notify (int *,TYPE_2__*,int ) ;
+ int REBAR_Notify_NMREBAR (TYPE_2__*,int,int ) ;
+ int ReleaseCapture () ;
+ int TRUE ;
 
 __attribute__((used)) static LRESULT
 REBAR_LButtonUp (REBAR_INFO *infoPtr)
@@ -53,7 +53,7 @@ REBAR_LButtonUp (REBAR_INFO *infoPtr)
         infoPtr->iGrabbedBand = -1;
 
         GetClientRect(infoPtr->hwndSelf, &rect);
-        InvalidateRect(infoPtr->hwndSelf, NULL, TRUE);
+        InvalidateRect(infoPtr->hwndSelf, ((void*)0), TRUE);
     }
 
     return 0;

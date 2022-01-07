@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct property {int /*<<< orphan*/  name; } ;
 
-/* Variables and functions */
- int strcmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct property {int name; } ;
+
+
+ int strcmp (int ,int ) ;
 
 __attribute__((used)) static int cmp_prop(const void *ax, const void *bx)
 {
-	const struct property *a, *b;
+ const struct property *a, *b;
 
-	a = *((const struct property * const *)ax);
-	b = *((const struct property * const *)bx);
+ a = *((const struct property * const *)ax);
+ b = *((const struct property * const *)bx);
 
-	return strcmp(a->name, b->name);
+ return strcmp(a->name, b->name);
 }

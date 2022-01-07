@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int lua_State ;
 struct TYPE_4__ {int timeout; } ;
 struct TYPE_5__ {TYPE_1__ server; } ;
-typedef  TYPE_2__ lnet_userdata ;
+typedef TYPE_2__ lnet_userdata ;
 
-/* Variables and functions */
- int TYPE_TCP ; 
- int /*<<< orphan*/  TYPE_TCP_SERVER ; 
- int TYPE_UDP ; 
- int luaL_error (int /*<<< orphan*/ *,char*) ; 
- int luaL_optlong (int /*<<< orphan*/ *,int,int) ; 
- TYPE_2__* net_create (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int net_createUDPSocket (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  platform_print_deprecation_note (char*,char*) ; 
+
+ int TYPE_TCP ;
+ int TYPE_TCP_SERVER ;
+ int TYPE_UDP ;
+ int luaL_error (int *,char*) ;
+ int luaL_optlong (int *,int,int) ;
+ TYPE_2__* net_create (int *,int ) ;
+ int net_createUDPSocket (int *) ;
+ int platform_print_deprecation_note (char*,char*) ;
 
 int net_createServer( lua_State *L ) {
   int type, timeout;

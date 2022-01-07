@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct neon_type_el {scalar_t__ type; int /*<<< orphan*/  size; } ;
-typedef  enum neon_shape { ____Placeholder_neon_shape } neon_shape ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NS_DDD ; 
- int /*<<< orphan*/  NS_NULL ; 
- int /*<<< orphan*/  NS_QQQ ; 
- scalar_t__ NT_unsigned ; 
- int /*<<< orphan*/  N_EQK ; 
- int N_KEY ; 
- int N_SU_32 ; 
- struct neon_type_el neon_check_type (int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  neon_quad (int) ; 
- int neon_select_shape (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  neon_three_same (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
+
+
+
+struct neon_type_el {scalar_t__ type; int size; } ;
+typedef enum neon_shape { ____Placeholder_neon_shape } neon_shape ;
+
+
+ int NS_DDD ;
+ int NS_NULL ;
+ int NS_QQQ ;
+ scalar_t__ NT_unsigned ;
+ int N_EQK ;
+ int N_KEY ;
+ int N_SU_32 ;
+ struct neon_type_el neon_check_type (int,int,int ,int ,int) ;
+ int neon_quad (int) ;
+ int neon_select_shape (int ,int ,int ) ;
+ int neon_three_same (int ,int,int ) ;
 
 __attribute__((used)) static void
 do_neon_dyadic_i_su (void)

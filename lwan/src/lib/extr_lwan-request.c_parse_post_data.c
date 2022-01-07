@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int len; int /*<<< orphan*/  value; } ;
-struct lwan_request_parser_helper {int /*<<< orphan*/  post_params; int /*<<< orphan*/  post_data; TYPE_1__ content_type; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int len; int value; } ;
+struct lwan_request_parser_helper {int post_params; int post_data; TYPE_1__ content_type; } ;
 struct lwan_request {struct lwan_request_parser_helper* helper; } ;
-typedef  int /*<<< orphan*/  content_type ;
+typedef int content_type ;
 
-/* Variables and functions */
- scalar_t__ UNLIKELY (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  parse_key_values (struct lwan_request*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char) ; 
- int /*<<< orphan*/  strncmp (int /*<<< orphan*/ ,char const*,int) ; 
- int /*<<< orphan*/  url_decode ; 
+
+ scalar_t__ UNLIKELY (int ) ;
+ int parse_key_values (struct lwan_request*,int *,int *,int ,char) ;
+ int strncmp (int ,char const*,int) ;
+ int url_decode ;
 
 __attribute__((used)) static void parse_post_data(struct lwan_request *request)
 {

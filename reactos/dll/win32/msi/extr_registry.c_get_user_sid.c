@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-struct TYPE_6__ {int /*<<< orphan*/  Sid; } ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
+struct TYPE_6__ {int Sid; } ;
 struct TYPE_7__ {TYPE_1__ User; } ;
-typedef  TYPE_2__ TOKEN_USER ;
-typedef  int /*<<< orphan*/  HANDLE ;
-typedef  int DWORD ;
+typedef TYPE_2__ TOKEN_USER ;
+typedef int HANDLE ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CloseHandle (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ConvertSidToStringSidW (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- scalar_t__ ERROR_INSUFFICIENT_BUFFER ; 
- int /*<<< orphan*/  GetCurrentProcess () ; 
- scalar_t__ GetLastError () ; 
- int /*<<< orphan*/  GetTokenInformation (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_2__*,int,int*) ; 
- int /*<<< orphan*/  OpenProcessToken (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TOKEN_QUERY ; 
- int /*<<< orphan*/  TokenUser ; 
- TYPE_2__* msi_alloc (int) ; 
- int /*<<< orphan*/  msi_free (TYPE_2__*) ; 
+
+ int CloseHandle (int ) ;
+ int ConvertSidToStringSidW (int ,int **) ;
+ scalar_t__ ERROR_INSUFFICIENT_BUFFER ;
+ int GetCurrentProcess () ;
+ scalar_t__ GetLastError () ;
+ int GetTokenInformation (int ,int ,TYPE_2__*,int,int*) ;
+ int OpenProcessToken (int ,int ,int *) ;
+ int TOKEN_QUERY ;
+ int TokenUser ;
+ TYPE_2__* msi_alloc (int) ;
+ int msi_free (TYPE_2__*) ;
 
 __attribute__((used)) static WCHAR *get_user_sid(void)
 {
@@ -39,11 +39,11 @@ __attribute__((used)) static WCHAR *get_user_sid(void)
     TOKEN_USER *user;
     WCHAR *ret;
 
-    if (!OpenProcessToken( GetCurrentProcess(), TOKEN_QUERY, &token )) return NULL;
+    if (!OpenProcessToken( GetCurrentProcess(), TOKEN_QUERY, &token )) return ((void*)0);
     if (!(user = msi_alloc( size )))
     {
         CloseHandle( token );
-        return NULL;
+        return ((void*)0);
     }
     if (!GetTokenInformation( token, TokenUser, user, size, &size ))
     {
@@ -51,7 +51,7 @@ __attribute__((used)) static WCHAR *get_user_sid(void)
         if (GetLastError() != ERROR_INSUFFICIENT_BUFFER || !(user = msi_alloc( size )))
         {
             CloseHandle( token );
-            return NULL;
+            return ((void*)0);
         }
         GetTokenInformation( token, TokenUser, user, size, &size );
     }
@@ -59,7 +59,7 @@ __attribute__((used)) static WCHAR *get_user_sid(void)
     if (!ConvertSidToStringSidW( user->User.Sid, &ret ))
     {
         msi_free( user );
-        return NULL;
+        return ((void*)0);
     }
     msi_free( user );
     return ret;

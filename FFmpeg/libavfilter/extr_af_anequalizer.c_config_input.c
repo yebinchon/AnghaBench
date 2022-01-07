@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_5__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_11__ {int channel; double freq; int ignore; int /*<<< orphan*/  type; int /*<<< orphan*/  gain; int /*<<< orphan*/  width; } ;
+
+
+typedef struct TYPE_11__ TYPE_5__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_11__ {int channel; double freq; int ignore; int type; int gain; int width; } ;
 struct TYPE_10__ {TYPE_1__* priv; } ;
 struct TYPE_9__ {int channels; double sample_rate; TYPE_3__* dst; } ;
-struct TYPE_8__ {int nb_allocated; size_t nb_filters; TYPE_5__* filters; int /*<<< orphan*/  args; } ;
-typedef  TYPE_1__ AudioNEqualizerContext ;
-typedef  TYPE_2__ AVFilterLink ;
-typedef  TYPE_3__ AVFilterContext ;
+struct TYPE_8__ {int nb_allocated; size_t nb_filters; TYPE_5__* filters; int args; } ;
+typedef TYPE_1__ AudioNEqualizerContext ;
+typedef TYPE_2__ AVFilterLink ;
+typedef TYPE_3__ AVFilterContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  ENOMEM ; 
- scalar_t__ NB_TYPES ; 
- int add_filter (TYPE_1__*,TYPE_2__*) ; 
- TYPE_5__* av_calloc (int,int) ; 
- int /*<<< orphan*/  av_clip (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  av_free (char*) ; 
- char* av_strdup (int /*<<< orphan*/ ) ; 
- char* av_strtok (char*,char*,char**) ; 
- int sscanf (char*,char*,int*,double*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,...) ; 
+
+ int AVERROR (int ) ;
+ int EINVAL ;
+ int ENOMEM ;
+ scalar_t__ NB_TYPES ;
+ int add_filter (TYPE_1__*,TYPE_2__*) ;
+ TYPE_5__* av_calloc (int,int) ;
+ int av_clip (int ,int ,scalar_t__) ;
+ int av_free (char*) ;
+ char* av_strdup (int ) ;
+ char* av_strtok (char*,char*,char**) ;
+ int sscanf (char*,char*,int*,double*,int *,int *,...) ;
 
 __attribute__((used)) static int config_input(AVFilterLink *inlink)
 {
     AVFilterContext *ctx = inlink->dst;
     AudioNEqualizerContext *s = ctx->priv;
     char *args = av_strdup(s->args);
-    char *saveptr = NULL;
+    char *saveptr = ((void*)0);
     int ret = 0;
 
     if (!args)
@@ -55,7 +55,7 @@ __attribute__((used)) static int config_input(AVFilterLink *inlink)
     }
 
     while (1) {
-        char *arg = av_strtok(s->nb_filters == 0 ? args : NULL, "|", &saveptr);
+        char *arg = av_strtok(s->nb_filters == 0 ? args : ((void*)0), "|", &saveptr);
 
         if (!arg)
             break;

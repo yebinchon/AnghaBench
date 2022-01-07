@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  SidStart; } ;
-struct TYPE_4__ {int nLength; int /*<<< orphan*/ * lpSecurityDescriptor; void* bInheritHandle; } ;
-typedef  int /*<<< orphan*/  SECURITY_DESCRIPTOR ;
-typedef  TYPE_1__ SECURITY_ATTRIBUTES ;
-typedef  void* PSID ;
-typedef  int /*<<< orphan*/ * HANDLE ;
-typedef  scalar_t__ DWORD ;
-typedef  int BOOL ;
-typedef  void ACL ;
-typedef  TYPE_2__ ACCESS_ALLOWED_ACE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CloseHandle (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * CreateEventA (TYPE_1__*,int,int,char*) ; 
- int DACL_SECURITY_INFORMATION ; 
- scalar_t__ ERROR_INSUFFICIENT_BUFFER ; 
- scalar_t__ EqualSid (int /*<<< orphan*/ *,void*) ; 
- void* FALSE ; 
- int GetKernelObjectSecurity (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,scalar_t__,scalar_t__*) ; 
- scalar_t__ GetLastError () ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int GetSecurityDescriptorDacl (int /*<<< orphan*/ *,int*,void**,int*) ; 
- int GetSecurityDescriptorOwner (int /*<<< orphan*/ *,void**,int*) ; 
- int /*<<< orphan*/ * HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int InitializeSecurityDescriptor (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int OWNER_SECURITY_INFORMATION ; 
- scalar_t__ SECURITY_DESCRIPTOR_MIN_LENGTH ; 
- int /*<<< orphan*/  SECURITY_DESCRIPTOR_REVISION ; 
- int TRUE ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- scalar_t__ pGetAce (void*,int /*<<< orphan*/ ,void**) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int SidStart; } ;
+struct TYPE_4__ {int nLength; int * lpSecurityDescriptor; void* bInheritHandle; } ;
+typedef int SECURITY_DESCRIPTOR ;
+typedef TYPE_1__ SECURITY_ATTRIBUTES ;
+typedef void* PSID ;
+typedef int * HANDLE ;
+typedef scalar_t__ DWORD ;
+typedef int BOOL ;
+typedef void ACL ;
+typedef TYPE_2__ ACCESS_ALLOWED_ACE ;
+
+
+ int CloseHandle (int *) ;
+ int * CreateEventA (TYPE_1__*,int,int,char*) ;
+ int DACL_SECURITY_INFORMATION ;
+ scalar_t__ ERROR_INSUFFICIENT_BUFFER ;
+ scalar_t__ EqualSid (int *,void*) ;
+ void* FALSE ;
+ int GetKernelObjectSecurity (int *,int,int *,scalar_t__,scalar_t__*) ;
+ scalar_t__ GetLastError () ;
+ int GetProcessHeap () ;
+ int GetSecurityDescriptorDacl (int *,int*,void**,int*) ;
+ int GetSecurityDescriptorOwner (int *,void**,int*) ;
+ int * HeapAlloc (int ,int ,scalar_t__) ;
+ int HeapFree (int ,int ,int *) ;
+ int InitializeSecurityDescriptor (int *,int ) ;
+ int OWNER_SECURITY_INFORMATION ;
+ scalar_t__ SECURITY_DESCRIPTOR_MIN_LENGTH ;
+ int SECURITY_DESCRIPTOR_REVISION ;
+ int TRUE ;
+ int ok (int,char*,...) ;
+ scalar_t__ pGetAce (void*,int ,void**) ;
 
 __attribute__((used)) static void test_default_dacl_owner_sid(void)
 {
@@ -60,14 +60,14 @@ __attribute__((used)) static void test_default_dacl_owner_sid(void)
     ret = InitializeSecurityDescriptor( sd, SECURITY_DESCRIPTOR_REVISION );
     ok( ret, "error %u\n", GetLastError() );
 
-    sa.nLength              = sizeof(SECURITY_ATTRIBUTES);
+    sa.nLength = sizeof(SECURITY_ATTRIBUTES);
     sa.lpSecurityDescriptor = sd;
-    sa.bInheritHandle       = FALSE;
+    sa.bInheritHandle = FALSE;
     handle = CreateEventA( &sa, TRUE, TRUE, "test_event" );
-    ok( handle != NULL, "error %u\n", GetLastError() );
+    ok( handle != ((void*)0), "error %u\n", GetLastError() );
 
     size = 0;
-    ret = GetKernelObjectSecurity( handle, OWNER_SECURITY_INFORMATION|DACL_SECURITY_INFORMATION, NULL, 0, &size );
+    ret = GetKernelObjectSecurity( handle, OWNER_SECURITY_INFORMATION|DACL_SECURITY_INFORMATION, ((void*)0), 0, &size );
     ok( !ret && GetLastError() == ERROR_INSUFFICIENT_BUFFER, "error %u\n", GetLastError() );
 
     sd = HeapAlloc( GetProcessHeap(), 0, size );

@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
 struct TYPE_13__ {unsigned int Repeats; } ;
-struct TYPE_12__ {unsigned int (* Init ) (void**,TYPE_2__*,unsigned int) ;int /*<<< orphan*/  Label; int /*<<< orphan*/  (* Cleanup ) (void*,TYPE_2__*) ;int /*<<< orphan*/  (* PassCleanup ) (void*,TYPE_2__*) ;int /*<<< orphan*/  (* Proc ) (void*,TYPE_2__*,unsigned int) ;} ;
-typedef  TYPE_1__* PTEST ;
-typedef  TYPE_2__* PPERF_INFO ;
-typedef  scalar_t__ DWORD ;
+struct TYPE_12__ {unsigned int (* Init ) (void**,TYPE_2__*,unsigned int) ;int Label; int (* Cleanup ) (void*,TYPE_2__*) ;int (* PassCleanup ) (void*,TYPE_2__*) ;int (* Proc ) (void*,TYPE_2__*,unsigned int) ;} ;
+typedef TYPE_1__* PTEST ;
+typedef TYPE_2__* PPERF_INFO ;
+typedef scalar_t__ DWORD ;
 
-/* Variables and functions */
- unsigned int CalibrateTest (TYPE_1__*,TYPE_2__*) ; 
- int /*<<< orphan*/  ClearWindow (TYPE_2__*) ; 
- int /*<<< orphan*/  DisplayStatus (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,unsigned int) ; 
- int /*<<< orphan*/  FALSE ; 
- scalar_t__ GetTickCount () ; 
- int /*<<< orphan*/  LabelWnd ; 
- int /*<<< orphan*/  ProcessMessages () ; 
- int /*<<< orphan*/  ReportTimes (scalar_t__,unsigned int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- unsigned int stub1 (void**,TYPE_2__*,unsigned int) ; 
- int /*<<< orphan*/  stub2 (void*,TYPE_2__*,unsigned int) ; 
- int /*<<< orphan*/  stub3 (void*,TYPE_2__*) ; 
- int /*<<< orphan*/  stub4 (void*,TYPE_2__*) ; 
+
+ unsigned int CalibrateTest (TYPE_1__*,TYPE_2__*) ;
+ int ClearWindow (TYPE_2__*) ;
+ int DisplayStatus (int ,char*,int ,unsigned int) ;
+ int FALSE ;
+ scalar_t__ GetTickCount () ;
+ int LabelWnd ;
+ int ProcessMessages () ;
+ int ReportTimes (scalar_t__,unsigned int,int ,int ) ;
+ int TRUE ;
+ unsigned int stub1 (void**,TYPE_2__*,unsigned int) ;
+ int stub2 (void*,TYPE_2__*,unsigned int) ;
+ int stub3 (void*,TYPE_2__*) ;
+ int stub4 (void*,TYPE_2__*) ;
 
 __attribute__((used)) static void
 ProcessTest(PTEST Test, PPERF_INFO PerfInfo)

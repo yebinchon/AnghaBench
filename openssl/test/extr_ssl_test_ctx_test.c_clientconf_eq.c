@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  max_fragment_len_mode; int /*<<< orphan*/  ct_validation; int /*<<< orphan*/  alpn_protocols; int /*<<< orphan*/  npn_protocols; int /*<<< orphan*/  servername; int /*<<< orphan*/  verify_callback; } ;
-typedef  TYPE_1__ SSL_TEST_CLIENT_CONF ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TEST_int_eq (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_str_eq (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int max_fragment_len_mode; int ct_validation; int alpn_protocols; int npn_protocols; int servername; int verify_callback; } ;
+typedef TYPE_1__ SSL_TEST_CLIENT_CONF ;
+
+
+ int TEST_int_eq (int ,int ) ;
+ int TEST_str_eq (int ,int ) ;
 
 __attribute__((used)) static int clientconf_eq(SSL_TEST_CLIENT_CONF *conf1,
                          SSL_TEST_CLIENT_CONF *conf2)

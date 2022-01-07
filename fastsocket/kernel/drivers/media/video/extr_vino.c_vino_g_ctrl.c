@@ -1,95 +1,95 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct vino_channel_settings {int input; } ;
-struct v4l2_control {int /*<<< orphan*/  id; } ;
+struct v4l2_control {int id; } ;
 struct file {int dummy; } ;
-struct TYPE_6__ {int /*<<< orphan*/  input_lock; } ;
-struct TYPE_5__ {int /*<<< orphan*/  id; } ;
-struct TYPE_4__ {int /*<<< orphan*/  id; } ;
+struct TYPE_6__ {int input_lock; } ;
+struct TYPE_5__ {int id; } ;
+struct TYPE_4__ {int id; } ;
 
-/* Variables and functions */
- int EINVAL ; 
- int VINO_INDYCAM_V4L2_CONTROL_COUNT ; 
-#define  VINO_INPUT_COMPOSITE 130 
-#define  VINO_INPUT_D1 129 
-#define  VINO_INPUT_SVIDEO 128 
- int VINO_SAA7191_V4L2_CONTROL_COUNT ; 
- int camera_call (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct v4l2_control*) ; 
- int /*<<< orphan*/  core ; 
- int decoder_call (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct v4l2_control*) ; 
- int /*<<< orphan*/  g_ctrl ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
- struct vino_channel_settings* video_drvdata (struct file*) ; 
- TYPE_3__* vino_drvdata ; 
- TYPE_2__* vino_indycam_v4l2_controls ; 
- TYPE_1__* vino_saa7191_v4l2_controls ; 
+
+ int EINVAL ;
+ int VINO_INDYCAM_V4L2_CONTROL_COUNT ;
+
+
+
+ int VINO_SAA7191_V4L2_CONTROL_COUNT ;
+ int camera_call (int ,int ,struct v4l2_control*) ;
+ int core ;
+ int decoder_call (int ,int ,struct v4l2_control*) ;
+ int g_ctrl ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
+ struct vino_channel_settings* video_drvdata (struct file*) ;
+ TYPE_3__* vino_drvdata ;
+ TYPE_2__* vino_indycam_v4l2_controls ;
+ TYPE_1__* vino_saa7191_v4l2_controls ;
 
 __attribute__((used)) static int vino_g_ctrl(struct file *file, void *__fh,
-			    struct v4l2_control *control)
+       struct v4l2_control *control)
 {
-	struct vino_channel_settings *vcs = video_drvdata(file);
-	unsigned long flags;
-	int i;
-	int err = 0;
+ struct vino_channel_settings *vcs = video_drvdata(file);
+ unsigned long flags;
+ int i;
+ int err = 0;
 
-	spin_lock_irqsave(&vino_drvdata->input_lock, flags);
+ spin_lock_irqsave(&vino_drvdata->input_lock, flags);
 
-	switch (vcs->input) {
-	case VINO_INPUT_D1: {
-		err = -EINVAL;
-		for (i = 0; i < VINO_INDYCAM_V4L2_CONTROL_COUNT; i++) {
-			if (vino_indycam_v4l2_controls[i].id == control->id) {
-				err = 0;
-				break;
-			}
-		}
+ switch (vcs->input) {
+ case 129: {
+  err = -EINVAL;
+  for (i = 0; i < VINO_INDYCAM_V4L2_CONTROL_COUNT; i++) {
+   if (vino_indycam_v4l2_controls[i].id == control->id) {
+    err = 0;
+    break;
+   }
+  }
 
-		if (err)
-			goto out;
+  if (err)
+   goto out;
 
-		err = camera_call(core, g_ctrl, control);
-		if (err)
-			err = -EINVAL;
-		break;
-	}
-	case VINO_INPUT_COMPOSITE:
-	case VINO_INPUT_SVIDEO: {
-		err = -EINVAL;
-		for (i = 0; i < VINO_SAA7191_V4L2_CONTROL_COUNT; i++) {
-			if (vino_saa7191_v4l2_controls[i].id == control->id) {
-				err = 0;
-				break;
-			}
-		}
+  err = camera_call(core, g_ctrl, control);
+  if (err)
+   err = -EINVAL;
+  break;
+ }
+ case 130:
+ case 128: {
+  err = -EINVAL;
+  for (i = 0; i < VINO_SAA7191_V4L2_CONTROL_COUNT; i++) {
+   if (vino_saa7191_v4l2_controls[i].id == control->id) {
+    err = 0;
+    break;
+   }
+  }
 
-		if (err)
-			goto out;
+  if (err)
+   goto out;
 
-		err = decoder_call(core, g_ctrl, control);
-		if (err)
-			err = -EINVAL;
-		break;
-	}
-	default:
-		err =  -EINVAL;
-	}
+  err = decoder_call(core, g_ctrl, control);
+  if (err)
+   err = -EINVAL;
+  break;
+ }
+ default:
+  err = -EINVAL;
+ }
 
 out:
-	spin_unlock_irqrestore(&vino_drvdata->input_lock, flags);
+ spin_unlock_irqrestore(&vino_drvdata->input_lock, flags);
 
-	return err;
+ return err;
 }

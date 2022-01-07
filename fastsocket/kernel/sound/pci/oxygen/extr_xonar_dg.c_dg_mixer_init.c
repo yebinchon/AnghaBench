@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct oxygen {int /*<<< orphan*/  card; } ;
 
-/* Variables and functions */
- unsigned int ARRAY_SIZE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * dg_controls ; 
- int snd_ctl_add (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  snd_ctl_new1 (int /*<<< orphan*/ *,struct oxygen*) ; 
+
+
+
+struct oxygen {int card; } ;
+
+
+ unsigned int ARRAY_SIZE (int *) ;
+ int * dg_controls ;
+ int snd_ctl_add (int ,int ) ;
+ int snd_ctl_new1 (int *,struct oxygen*) ;
 
 __attribute__((used)) static int dg_mixer_init(struct oxygen *chip)
 {
-	unsigned int i;
-	int err;
+ unsigned int i;
+ int err;
 
-	for (i = 0; i < ARRAY_SIZE(dg_controls); ++i) {
-		err = snd_ctl_add(chip->card,
-				  snd_ctl_new1(&dg_controls[i], chip));
-		if (err < 0)
-			return err;
-	}
-	return 0;
+ for (i = 0; i < ARRAY_SIZE(dg_controls); ++i) {
+  err = snd_ctl_add(chip->card,
+      snd_ctl_new1(&dg_controls[i], chip));
+  if (err < 0)
+   return err;
+ }
+ return 0;
 }

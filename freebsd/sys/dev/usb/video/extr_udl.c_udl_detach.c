@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct udl_softc {int sc_gone; int /*<<< orphan*/  sc_fb_copy; int /*<<< orphan*/  sc_fb_size; int /*<<< orphan*/  sc_fb_addr; int /*<<< orphan*/  sc_cv; int /*<<< orphan*/  sc_mtx; int /*<<< orphan*/  sc_callout; int /*<<< orphan*/  sc_xfer; } ;
-typedef  int /*<<< orphan*/  device_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  M_USB_DL ; 
- int /*<<< orphan*/  UDL_LOCK (struct udl_softc*) ; 
- int /*<<< orphan*/  UDL_N_TRANSFER ; 
- int /*<<< orphan*/  UDL_UNLOCK (struct udl_softc*) ; 
- int /*<<< orphan*/  callout_drain (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  callout_stop (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cv_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  device_delete_children (int /*<<< orphan*/ ) ; 
- struct udl_softc* device_get_softc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mtx_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  udl_buffer_free (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  usbd_transfer_unsetup (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct udl_softc {int sc_gone; int sc_fb_copy; int sc_fb_size; int sc_fb_addr; int sc_cv; int sc_mtx; int sc_callout; int sc_xfer; } ;
+typedef int device_t ;
+
+
+ int M_USB_DL ;
+ int UDL_LOCK (struct udl_softc*) ;
+ int UDL_N_TRANSFER ;
+ int UDL_UNLOCK (struct udl_softc*) ;
+ int callout_drain (int *) ;
+ int callout_stop (int *) ;
+ int cv_destroy (int *) ;
+ int device_delete_children (int ) ;
+ struct udl_softc* device_get_softc (int ) ;
+ int free (int ,int ) ;
+ int mtx_destroy (int *) ;
+ int udl_buffer_free (int ,int ) ;
+ int usbd_transfer_unsetup (int ,int ) ;
 
 __attribute__((used)) static int
 udl_detach(device_t dev)
 {
-	struct udl_softc *sc = device_get_softc(dev);
+ struct udl_softc *sc = device_get_softc(dev);
 
-	/* delete all child devices */
-	device_delete_children(dev);
 
-	UDL_LOCK(sc);
-	sc->sc_gone = 1;
-	callout_stop(&sc->sc_callout);
-	UDL_UNLOCK(sc);
+ device_delete_children(dev);
 
-	usbd_transfer_unsetup(sc->sc_xfer, UDL_N_TRANSFER);
+ UDL_LOCK(sc);
+ sc->sc_gone = 1;
+ callout_stop(&sc->sc_callout);
+ UDL_UNLOCK(sc);
 
-	callout_drain(&sc->sc_callout);
+ usbd_transfer_unsetup(sc->sc_xfer, UDL_N_TRANSFER);
 
-	mtx_destroy(&sc->sc_mtx);
-	cv_destroy(&sc->sc_cv);
+ callout_drain(&sc->sc_callout);
 
-	/* put main framebuffer into a recycle list, if any */
-	udl_buffer_free(sc->sc_fb_addr, sc->sc_fb_size);
+ mtx_destroy(&sc->sc_mtx);
+ cv_destroy(&sc->sc_cv);
 
-	/* free shadow framebuffer memory, if any */
-	free(sc->sc_fb_copy, M_USB_DL);
 
-	return (0);
+ udl_buffer_free(sc->sc_fb_addr, sc->sc_fb_size);
+
+
+ free(sc->sc_fb_copy, M_USB_DL);
+
+ return (0);
 }

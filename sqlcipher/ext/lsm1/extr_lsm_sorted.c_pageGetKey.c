@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-typedef  int /*<<< orphan*/  Segment ;
-typedef  int /*<<< orphan*/  Page ;
-typedef  int /*<<< orphan*/  LsmBlob ;
 
-/* Variables and functions */
- int SEGMENT_BTREE_FLAG ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/ * fsPageData (int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  lsmVarintGet32 (int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/ * pageGetCell (int /*<<< orphan*/ *,int,int) ; 
- int pageGetFlags (int /*<<< orphan*/ *,int) ; 
- int pageGetNRec (int /*<<< orphan*/ *,int) ; 
- scalar_t__ rtIsWrite (int) ; 
- int rtTopic (int) ; 
- int /*<<< orphan*/  sortedReadData (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int,void**,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int u8 ;
+typedef int Segment ;
+typedef int Page ;
+typedef int LsmBlob ;
+
+
+ int SEGMENT_BTREE_FLAG ;
+ int assert (int) ;
+ int * fsPageData (int *,int*) ;
+ int lsmVarintGet32 (int *,int*) ;
+ int * pageGetCell (int *,int,int) ;
+ int pageGetFlags (int *,int) ;
+ int pageGetNRec (int *,int) ;
+ scalar_t__ rtIsWrite (int) ;
+ int rtTopic (int) ;
+ int sortedReadData (int *,int *,int,int,void**,int *) ;
 
 __attribute__((used)) static u8 *pageGetKey(
-  Segment *pSeg,                  /* Segment pPg belongs to */
-  Page *pPg,                      /* Page to read from */
-  int iCell,                      /* Index of cell on page to read */
-  int *piTopic,                   /* OUT: Topic associated with this key */
-  int *pnKey,                     /* OUT: Size of key in bytes */
-  LsmBlob *pBlob                  /* If required, use this for dynamic memory */
+  Segment *pSeg,
+  Page *pPg,
+  int iCell,
+  int *piTopic,
+  int *pnKey,
+  LsmBlob *pBlob
 ){
   u8 *pKey;
   int nDummy;

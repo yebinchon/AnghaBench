@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint16_t ;
-typedef  int /*<<< orphan*/  mrb_state ;
-typedef  int /*<<< orphan*/  mrb_irep ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- scalar_t__ EOF ; 
- int /*<<< orphan*/  FLAG_BYTEORDER_NATIVE ; 
- scalar_t__ MRB_DUMP_ALIGNMENT ; 
- int MRB_DUMP_INVALID_ARGUMENT ; 
- int MRB_DUMP_OK ; 
- int MRB_DUMP_WRITE_FAULT ; 
- int /*<<< orphan*/  dump_bigendian_p (int) ; 
- int dump_flags (int,int /*<<< orphan*/ ) ; 
- int dump_irep (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int**,size_t*) ; 
- scalar_t__ fprintf (int /*<<< orphan*/ *,char*,...) ; 
- scalar_t__ fputs (char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mrb_free (int /*<<< orphan*/ *,int*) ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint16_t ;
+typedef int mrb_state ;
+typedef int mrb_irep ;
+typedef int FILE ;
+
+
+ scalar_t__ EOF ;
+ int FLAG_BYTEORDER_NATIVE ;
+ scalar_t__ MRB_DUMP_ALIGNMENT ;
+ int MRB_DUMP_INVALID_ARGUMENT ;
+ int MRB_DUMP_OK ;
+ int MRB_DUMP_WRITE_FAULT ;
+ int dump_bigendian_p (int) ;
+ int dump_flags (int,int ) ;
+ int dump_irep (int *,int *,int,int**,size_t*) ;
+ scalar_t__ fprintf (int *,char*,...) ;
+ scalar_t__ fputs (char*,int *) ;
+ int mrb_free (int *,int*) ;
 
 int
 mrb_dump_irep_cfunc(mrb_state *mrb, mrb_irep *irep, uint8_t flags, FILE *fp, const char *initname)
 {
-  uint8_t *bin = NULL;
+  uint8_t *bin = ((void*)0);
   size_t bin_size = 0, bin_idx = 0;
   int result;
 
-  if (fp == NULL || initname == NULL || initname[0] == '\0') {
+  if (fp == ((void*)0) || initname == ((void*)0) || initname[0] == '\0') {
     return MRB_DUMP_INVALID_ARGUMENT;
   }
   flags = dump_flags(flags, FLAG_BYTEORDER_NATIVE);
@@ -57,7 +57,7 @@ mrb_dump_irep_cfunc(mrb_state *mrb, mrb_irep *irep, uint8_t flags, FILE *fp, con
         return MRB_DUMP_WRITE_FAULT;
       }
     }
-    if (fprintf(fp, "#include <stdint.h>\n") < 0) { /* for uint8_t under at least Darwin */
+    if (fprintf(fp, "#include <stdint.h>\n") < 0) {
       mrb_free(mrb, bin);
       return MRB_DUMP_WRITE_FAULT;
     }

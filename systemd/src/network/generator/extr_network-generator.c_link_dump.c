@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {char* ifname; int /*<<< orphan*/  mac; } ;
-typedef  TYPE_1__ Link ;
-typedef  TYPE_1__ FILE ;
 
-/* Variables and functions */
- int ETHER_ADDR_TO_STRING_MAX ; 
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int /*<<< orphan*/  ether_addr_is_null (int /*<<< orphan*/ *) ; 
- char* ether_addr_to_string (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  fprintf (TYPE_1__*,char*,char*) ; 
- int /*<<< orphan*/  fputs (char*,TYPE_1__*) ; 
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_8__ {char* ifname; int mac; } ;
+typedef TYPE_1__ Link ;
+typedef TYPE_1__ FILE ;
+
+
+ int ETHER_ADDR_TO_STRING_MAX ;
+ int assert (TYPE_1__*) ;
+ int ether_addr_is_null (int *) ;
+ char* ether_addr_to_string (int *,char*) ;
+ int fprintf (TYPE_1__*,char*,char*) ;
+ int fputs (char*,TYPE_1__*) ;
 
 void link_dump(Link *link, FILE *f) {
         char mac[ETHER_ADDR_TO_STRING_MAX];

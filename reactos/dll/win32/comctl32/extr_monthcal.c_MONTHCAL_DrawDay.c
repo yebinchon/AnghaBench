@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
-typedef  struct TYPE_11__   TYPE_10__ ;
 
-/* Type definitions */
-typedef  char WCHAR ;
-struct TYPE_11__ {int /*<<< orphan*/  wDay; } ;
-struct TYPE_14__ {int /*<<< orphan*/  hFont; int /*<<< orphan*/  hBoldFont; int /*<<< orphan*/ * brushes; int /*<<< orphan*/ * colors; TYPE_10__ maxSel; TYPE_10__ minSel; } ;
-struct TYPE_13__ {int /*<<< orphan*/  rcPaint; } ;
-struct TYPE_12__ {int /*<<< orphan*/  wDay; } ;
-typedef  TYPE_1__ SYSTEMTIME ;
-typedef  int /*<<< orphan*/  RECT ;
-typedef  TYPE_2__ PAINTSTRUCT ;
-typedef  TYPE_3__ MONTHCAL_INFO ;
-typedef  int INT ;
-typedef  int /*<<< orphan*/  HDC ;
-typedef  int /*<<< orphan*/  COLORREF ;
 
-/* Variables and functions */
- size_t BrushTitle ; 
- int DT_CENTER ; 
- int DT_SINGLELINE ; 
- int DT_VCENTER ; 
- int /*<<< orphan*/  DrawTextW (int /*<<< orphan*/ ,char*,int,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  FillRect (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IntersectRect (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- size_t MCSC_MONTHBK ; 
- size_t MCSC_TRAILINGTEXT ; 
- scalar_t__ MONTHCAL_CompareDate (TYPE_1__ const*,TYPE_10__*) ; 
- int /*<<< orphan*/  MONTHCAL_GetDayRect (TYPE_3__ const*,TYPE_1__ const*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  SelectObject (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetBkColor (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int SetBkMode (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  SetTextColor (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ,...) ; 
- int TRANSPARENT ; 
- int /*<<< orphan*/  wine_dbgstr_rect (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  wsprintfW (char*,char const*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+typedef struct TYPE_11__ TYPE_10__ ;
+
+
+typedef char WCHAR ;
+struct TYPE_11__ {int wDay; } ;
+struct TYPE_14__ {int hFont; int hBoldFont; int * brushes; int * colors; TYPE_10__ maxSel; TYPE_10__ minSel; } ;
+struct TYPE_13__ {int rcPaint; } ;
+struct TYPE_12__ {int wDay; } ;
+typedef TYPE_1__ SYSTEMTIME ;
+typedef int RECT ;
+typedef TYPE_2__ PAINTSTRUCT ;
+typedef TYPE_3__ MONTHCAL_INFO ;
+typedef int INT ;
+typedef int HDC ;
+typedef int COLORREF ;
+
+
+ size_t BrushTitle ;
+ int DT_CENTER ;
+ int DT_SINGLELINE ;
+ int DT_VCENTER ;
+ int DrawTextW (int ,char*,int,int *,int) ;
+ int FillRect (int ,int *,int ) ;
+ int IntersectRect (int *,int *,int *) ;
+ size_t MCSC_MONTHBK ;
+ size_t MCSC_TRAILINGTEXT ;
+ scalar_t__ MONTHCAL_CompareDate (TYPE_1__ const*,TYPE_10__*) ;
+ int MONTHCAL_GetDayRect (TYPE_3__ const*,TYPE_1__ const*,int *,int) ;
+ int SelectObject (int ,int ) ;
+ int SetBkColor (int ,int ) ;
+ int SetBkMode (int ,int) ;
+ int SetTextColor (int ,int ) ;
+ int TRACE (char*,int ,...) ;
+ int TRANSPARENT ;
+ int wine_dbgstr_rect (int *) ;
+ int wsprintfW (char*,char const*,int ) ;
 
 __attribute__((used)) static void MONTHCAL_DrawDay(const MONTHCAL_INFO *infoPtr, HDC hdc, const SYSTEMTIME *st,
                              int bold, const PAINTSTRUCT *ps)
@@ -55,11 +55,11 @@ __attribute__((used)) static void MONTHCAL_DrawDay(const MONTHCAL_INFO *infoPtr,
   WCHAR buf[10];
   RECT r, r_temp;
   COLORREF oldCol = 0;
-  COLORREF oldBk  = 0;
+  COLORREF oldBk = 0;
   INT old_bkmode, selection;
 
-  /* no need to check styles: when selection is not valid, it is set to zero.
-     1 < day < 31, so everything is OK */
+
+
   MONTHCAL_GetDayRect(infoPtr, st, &r, -1);
   if(!IntersectRect(&r_temp, &(ps->rcPaint), &r)) return;
 

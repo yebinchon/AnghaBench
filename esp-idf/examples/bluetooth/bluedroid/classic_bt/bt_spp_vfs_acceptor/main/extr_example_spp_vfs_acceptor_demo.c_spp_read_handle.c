@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  ESP_LOGI (int /*<<< orphan*/ ,char*,int,int) ; 
- int /*<<< orphan*/  SPP_DATA_LEN ; 
- int /*<<< orphan*/  SPP_TAG ; 
- int /*<<< orphan*/  esp_log_buffer_hex (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int portTICK_PERIOD_MS ; 
- int read (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  spp_data ; 
- int /*<<< orphan*/  spp_wr_task_shut_down () ; 
- int /*<<< orphan*/  vTaskDelay (int) ; 
+ int ESP_LOGI (int ,char*,int,int) ;
+ int SPP_DATA_LEN ;
+ int SPP_TAG ;
+ int esp_log_buffer_hex (int ,int ,int) ;
+ int portTICK_PERIOD_MS ;
+ int read (int,int ,int ) ;
+ int spp_data ;
+ int spp_wr_task_shut_down () ;
+ int vTaskDelay (int) ;
 
 __attribute__((used)) static void spp_read_handle(void * param)
 {
@@ -34,7 +26,7 @@ __attribute__((used)) static void spp_read_handle(void * param)
         }
         esp_log_buffer_hex(SPP_TAG, spp_data, size);
         if (size == 0) {
-            /*read fail due to there is no data, retry after 1s*/
+
             vTaskDelay(1000 / portTICK_PERIOD_MS);
         }
     } while (1);

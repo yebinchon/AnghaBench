@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct stack_pos {int /*<<< orphan*/  member_1; int /*<<< orphan*/  member_0; } ;
-struct TYPE_3__ {int /*<<< orphan*/  curr_frame; int /*<<< orphan*/  stk_top; } ;
-typedef  TYPE_1__ jq_state ;
 
-/* Variables and functions */
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct stack_pos {int member_1; int member_0; } ;
+struct TYPE_3__ {int curr_frame; int stk_top; } ;
+typedef TYPE_1__ jq_state ;
+
+
 
 struct stack_pos stack_get_pos(jq_state* jq) {
   struct stack_pos sp = {jq->stk_top, jq->curr_frame};

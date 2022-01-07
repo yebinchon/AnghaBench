@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_7__ {void* size; void* filepos; void* infotableofs; void* numlumps; } ;
-typedef  TYPE_1__ wadinfo_t ;
+typedef TYPE_1__ wadinfo_t ;
 struct TYPE_8__ {void* size; void* position; } ;
-typedef  TYPE_2__ lumpinfo_t ;
-typedef  int /*<<< orphan*/  header ;
-typedef  TYPE_1__ filelump_t ;
+typedef TYPE_2__ lumpinfo_t ;
+typedef int header ;
+typedef TYPE_1__ filelump_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  I_Error (char*,int /*<<< orphan*/ ) ; 
- void* LONG (void*) ; 
- int O_BINARY ; 
- int O_RDONLY ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  Z_Free (scalar_t__) ; 
- TYPE_1__* alloca (int) ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  lseek (int,void*,int /*<<< orphan*/ ) ; 
- scalar_t__* lumpcache ; 
- TYPE_2__* lumpinfo ; 
- int open (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  read (int,TYPE_1__*,int) ; 
- size_t reloadlump ; 
- int /*<<< orphan*/  reloadname ; 
+
+ int I_Error (char*,int ) ;
+ void* LONG (void*) ;
+ int O_BINARY ;
+ int O_RDONLY ;
+ int SEEK_SET ;
+ int Z_Free (scalar_t__) ;
+ TYPE_1__* alloca (int) ;
+ int close (int) ;
+ int lseek (int,void*,int ) ;
+ scalar_t__* lumpcache ;
+ TYPE_2__* lumpinfo ;
+ int open (int ,int) ;
+ int read (int,TYPE_1__*,int) ;
+ size_t reloadlump ;
+ int reloadname ;
 
 void W_Reload (void)
 {
-    wadinfo_t		header;
-    int			lumpcount;
-    lumpinfo_t*		lump_p;
-    unsigned		i;
-    int			handle;
-    int			length;
-    filelump_t*		fileinfo;
-	
+    wadinfo_t header;
+    int lumpcount;
+    lumpinfo_t* lump_p;
+    unsigned i;
+    int handle;
+    int length;
+    filelump_t* fileinfo;
+
     if (!reloadname)
-	return;
-		
+ return;
+
     if ( (handle = open (reloadname,O_RDONLY | O_BINARY)) == -1)
-	I_Error ("W_Reload: couldn't open %s",reloadname);
+ I_Error ("W_Reload: couldn't open %s",reloadname);
 
     read (handle, &header, sizeof(header));
     lumpcount = LONG(header.numlumps);
@@ -59,20 +59,20 @@ void W_Reload (void)
     fileinfo = alloca (length);
     lseek (handle, header.infotableofs, SEEK_SET);
     read (handle, fileinfo, length);
-    
-    // Fill in lumpinfo
-    lump_p = &lumpinfo[reloadlump];
-	
-    for (i=reloadlump ;
-	 i<reloadlump+lumpcount ;
-	 i++,lump_p++, fileinfo++)
-    {
-	if (lumpcache[i])
-	    Z_Free (lumpcache[i]);
 
-	lump_p->position = LONG(fileinfo->filepos);
-	lump_p->size = LONG(fileinfo->size);
+
+    lump_p = &lumpinfo[reloadlump];
+
+    for (i=reloadlump ;
+  i<reloadlump+lumpcount ;
+  i++,lump_p++, fileinfo++)
+    {
+ if (lumpcache[i])
+     Z_Free (lumpcache[i]);
+
+ lump_p->position = LONG(fileinfo->filepos);
+ lump_p->size = LONG(fileinfo->size);
     }
-	
+
     close (handle);
 }

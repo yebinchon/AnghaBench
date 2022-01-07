@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_5__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_5__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {scalar_t__ imgfmt; scalar_t__ hw_subfmt; } ;
-struct ra_hwdec_mapper {TYPE_1__ dst_params; int /*<<< orphan*/  ra; TYPE_1__ src_params; struct priv* priv; } ;
+struct ra_hwdec_mapper {TYPE_1__ dst_params; int ra; TYPE_1__ src_params; struct priv* priv; } ;
 struct TYPE_9__ {int num_planes; TYPE_2__** planes; } ;
-struct priv {TYPE_5__ desc; int /*<<< orphan*/  gl_planes; } ;
-struct TYPE_8__ {int /*<<< orphan*/  (* GenTextures ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;} ;
+struct priv {TYPE_5__ desc; int gl_planes; } ;
+struct TYPE_8__ {int (* GenTextures ) (int ,int ) ;} ;
 struct TYPE_7__ {scalar_t__ ctype; } ;
-typedef  TYPE_3__ GL ;
+typedef TYPE_3__ GL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MP_ERR (struct ra_hwdec_mapper*,char*) ; 
- int /*<<< orphan*/  MP_MAX_PLANES ; 
- scalar_t__ RA_CTYPE_UNORM ; 
- int /*<<< orphan*/  ra_get_imgfmt_desc (int /*<<< orphan*/ ,scalar_t__,TYPE_5__*) ; 
- TYPE_3__* ra_gl_get (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int MP_ERR (struct ra_hwdec_mapper*,char*) ;
+ int MP_MAX_PLANES ;
+ scalar_t__ RA_CTYPE_UNORM ;
+ int ra_get_imgfmt_desc (int ,scalar_t__,TYPE_5__*) ;
+ TYPE_3__* ra_gl_get (int ) ;
+ int stub1 (int ,int ) ;
 
 __attribute__((used)) static int mapper_init(struct ra_hwdec_mapper *mapper)
 {

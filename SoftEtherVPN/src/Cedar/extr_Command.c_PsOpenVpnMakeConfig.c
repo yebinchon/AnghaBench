@@ -1,118 +1,118 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wchar_t ;
-typedef  int /*<<< orphan*/  tmp ;
-typedef  int /*<<< orphan*/  t ;
-typedef  int /*<<< orphan*/  filename ;
-typedef  int /*<<< orphan*/  args ;
-typedef  scalar_t__ UINT ;
-struct TYPE_16__ {int /*<<< orphan*/  (* Write ) (TYPE_4__*,int /*<<< orphan*/ *) ;} ;
-struct TYPE_15__ {char* member_0; int /*<<< orphan*/ * member_4; int /*<<< orphan*/  member_3; int /*<<< orphan*/  member_2; int /*<<< orphan*/  member_1; } ;
-struct TYPE_14__ {int /*<<< orphan*/  Rpc; } ;
-struct TYPE_13__ {int /*<<< orphan*/  Buffer; } ;
-typedef  TYPE_1__ RPC_READ_LOG_FILE ;
-typedef  TYPE_2__ PS ;
-typedef  TYPE_3__ PARAM ;
-typedef  int /*<<< orphan*/  LIST ;
-typedef  TYPE_4__ CONSOLE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CmdEvalNotEmpty ; 
- int /*<<< orphan*/  CmdPrintError (TYPE_4__*,scalar_t__) ; 
- int /*<<< orphan*/  CmdPrompt ; 
- int DumpBufW (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ ERR_INTERNAL_ERROR ; 
- scalar_t__ ERR_INVALID_PARAMETER ; 
- scalar_t__ ERR_NO_ERROR ; 
- int /*<<< orphan*/  FreeParamValueList (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FreeRpcReadLogFile (TYPE_1__*) ; 
- int /*<<< orphan*/  GetParamUniStr (int /*<<< orphan*/ *,char*) ; 
- int MAX_SIZE ; 
- int /*<<< orphan*/ * ParseCommandList (TYPE_4__*,char*,int /*<<< orphan*/ *,TYPE_3__*,int) ; 
- scalar_t__ ScMakeOpenVpnConfigFile (int /*<<< orphan*/ ,TYPE_1__*) ; 
- int UniEndWith (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  UniFormat (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  UniStrCat (int /*<<< orphan*/ *,int,char*) ; 
- int /*<<< orphan*/  UniStrCpy (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Zero (TYPE_1__*,int) ; 
- int /*<<< orphan*/  _UU (char*) ; 
- int /*<<< orphan*/  stub1 (TYPE_4__*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+typedef int wchar_t ;
+typedef int tmp ;
+typedef int t ;
+typedef int filename ;
+typedef int args ;
+typedef scalar_t__ UINT ;
+struct TYPE_16__ {int (* Write ) (TYPE_4__*,int *) ;} ;
+struct TYPE_15__ {char* member_0; int * member_4; int member_3; int member_2; int member_1; } ;
+struct TYPE_14__ {int Rpc; } ;
+struct TYPE_13__ {int Buffer; } ;
+typedef TYPE_1__ RPC_READ_LOG_FILE ;
+typedef TYPE_2__ PS ;
+typedef TYPE_3__ PARAM ;
+typedef int LIST ;
+typedef TYPE_4__ CONSOLE ;
+
+
+ int CmdEvalNotEmpty ;
+ int CmdPrintError (TYPE_4__*,scalar_t__) ;
+ int CmdPrompt ;
+ int DumpBufW (int ,int *) ;
+ scalar_t__ ERR_INTERNAL_ERROR ;
+ scalar_t__ ERR_INVALID_PARAMETER ;
+ scalar_t__ ERR_NO_ERROR ;
+ int FreeParamValueList (int *) ;
+ int FreeRpcReadLogFile (TYPE_1__*) ;
+ int GetParamUniStr (int *,char*) ;
+ int MAX_SIZE ;
+ int * ParseCommandList (TYPE_4__*,char*,int *,TYPE_3__*,int) ;
+ scalar_t__ ScMakeOpenVpnConfigFile (int ,TYPE_1__*) ;
+ int UniEndWith (int *,char*) ;
+ int UniFormat (int *,int,int ,int *) ;
+ int UniStrCat (int *,int,char*) ;
+ int UniStrCpy (int *,int,int ) ;
+ int Zero (TYPE_1__*,int) ;
+ int _UU (char*) ;
+ int stub1 (TYPE_4__*,int *) ;
 
 UINT PsOpenVpnMakeConfig(CONSOLE *c, char *cmd_name, wchar_t *str, void *param)
 {
-	LIST *o;
-	PS *ps = (PS *)param;
-	UINT ret = 0;
-	RPC_READ_LOG_FILE t;
-	// Parameter list that can be specified
-	PARAM args[] =
-	{
-		// "name", prompt_proc, prompt_param, eval_proc, eval_param
-		{"[ZIP_FileName]", CmdPrompt, _UU("CMD_OpenVpnMakeConfig_Prompt_ZIP"), CmdEvalNotEmpty, NULL},
-	};
+ LIST *o;
+ PS *ps = (PS *)param;
+ UINT ret = 0;
+ RPC_READ_LOG_FILE t;
 
-	o = ParseCommandList(c, cmd_name, str, args, sizeof(args) / sizeof(args[0]));
-	if (o == NULL)
-	{
-		return ERR_INVALID_PARAMETER;
-	}
+ PARAM args[] =
+ {
 
-	Zero(&t, sizeof(t));
+  {"[ZIP_FileName]", CmdPrompt, _UU("CMD_OpenVpnMakeConfig_Prompt_ZIP"), CmdEvalNotEmpty, ((void*)0)},
+ };
 
-	// RPC call
-	ret = ScMakeOpenVpnConfigFile(ps->Rpc, &t);
+ o = ParseCommandList(c, cmd_name, str, args, sizeof(args) / sizeof(args[0]));
+ if (o == ((void*)0))
+ {
+  return ERR_INVALID_PARAMETER;
+ }
 
-	if (ret != ERR_NO_ERROR)
-	{
-		// An error has occured
-		CmdPrintError(c, ret);
-		FreeParamValueList(o);
-		return ret;
-	}
-	else
-	{
-		// Determine the file name to save
-		wchar_t filename[MAX_SIZE];
-		wchar_t tmp[MAX_SIZE];
+ Zero(&t, sizeof(t));
 
-		UniStrCpy(filename, sizeof(filename), GetParamUniStr(o, "[ZIP_FileName]"));
 
-		if (UniEndWith(filename, L".zip") == false)
-		{
-			UniStrCat(filename, sizeof(filename), L".zip");
-		}
+ ret = ScMakeOpenVpnConfigFile(ps->Rpc, &t);
 
-		if (DumpBufW(t.Buffer, filename) == false)
-		{
-			ret = ERR_INTERNAL_ERROR;
+ if (ret != ERR_NO_ERROR)
+ {
 
-			UniFormat(tmp, sizeof(tmp), _UU("CMD_OpenVpnMakeConfig_ERROR"), filename);
-		}
-		else
-		{
-			UniFormat(tmp, sizeof(tmp), _UU("CMD_OpenVpnMakeConfig_OK"), filename);
-		}
+  CmdPrintError(c, ret);
+  FreeParamValueList(o);
+  return ret;
+ }
+ else
+ {
 
-		c->Write(c, tmp);
+  wchar_t filename[MAX_SIZE];
+  wchar_t tmp[MAX_SIZE];
 
-		FreeRpcReadLogFile(&t);
-	}
+  UniStrCpy(filename, sizeof(filename), GetParamUniStr(o, "[ZIP_FileName]"));
 
-	FreeParamValueList(o);
+  if (UniEndWith(filename, L".zip") == 0)
+  {
+   UniStrCat(filename, sizeof(filename), L".zip");
+  }
 
-	return ret;
+  if (DumpBufW(t.Buffer, filename) == 0)
+  {
+   ret = ERR_INTERNAL_ERROR;
+
+   UniFormat(tmp, sizeof(tmp), _UU("CMD_OpenVpnMakeConfig_ERROR"), filename);
+  }
+  else
+  {
+   UniFormat(tmp, sizeof(tmp), _UU("CMD_OpenVpnMakeConfig_OK"), filename);
+  }
+
+  c->Write(c, tmp);
+
+  FreeRpcReadLogFile(&t);
+ }
+
+ FreeParamValueList(o);
+
+ return ret;
 }

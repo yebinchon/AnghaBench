@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u8 ;
-typedef  int /*<<< orphan*/  u64 ;
-typedef  int /*<<< orphan*/  sqlite3 ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int u8 ;
+typedef int u64 ;
+typedef int sqlite3 ;
 struct TYPE_4__ {int iReadOff; int nBuffer; int* aBuffer; } ;
-typedef  TYPE_1__ VdbeSorterIter ;
+typedef TYPE_1__ VdbeSorterIter ;
 
-/* Variables and functions */
- int SQLITE_OK ; 
- scalar_t__ sqlite3GetVarint (int*,int /*<<< orphan*/ *) ; 
- int vdbeSorterIterRead (int /*<<< orphan*/ *,TYPE_1__*,int,int**) ; 
+
+ int SQLITE_OK ;
+ scalar_t__ sqlite3GetVarint (int*,int *) ;
+ int vdbeSorterIterRead (int *,TYPE_1__*,int,int**) ;
 
 __attribute__((used)) static int vdbeSorterIterVarint(sqlite3 *db, VdbeSorterIter *p, u64 *pnOut){
   int iBuf;

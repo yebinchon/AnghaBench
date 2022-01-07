@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8_t ;
-typedef  int /*<<< orphan*/  spiffs ;
-typedef  scalar_t__ s32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHECK_CB (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SPIFFS_CHECK_ERROR ; 
- int /*<<< orphan*/  SPIFFS_CHECK_LOOKUP ; 
- int /*<<< orphan*/  SPIFFS_CHECK_PROGRESS ; 
- scalar_t__ SPIFFS_OK ; 
- scalar_t__ SPIFFS_VIS_END ; 
- int /*<<< orphan*/  spiffs_lookup_check_v ; 
- scalar_t__ spiffs_obj_lu_find_entry_visitor (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int u8_t ;
+typedef int spiffs ;
+typedef scalar_t__ s32_t ;
+
+
+ int CHECK_CB (int *,int ,int ,int,int ) ;
+ int SPIFFS_CHECK_ERROR ;
+ int SPIFFS_CHECK_LOOKUP ;
+ int SPIFFS_CHECK_PROGRESS ;
+ scalar_t__ SPIFFS_OK ;
+ scalar_t__ SPIFFS_VIS_END ;
+ int spiffs_lookup_check_v ;
+ scalar_t__ spiffs_obj_lu_find_entry_visitor (int *,int ,int ,int ,int ,int ,int ,int ,int ,int ) ;
 
 s32_t spiffs_lookup_consistency_check(spiffs *fs, u8_t check_all_objects) {
   (void)check_all_objects;

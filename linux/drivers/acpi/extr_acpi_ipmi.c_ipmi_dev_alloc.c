@@ -1,61 +1,61 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct ipmi_user {int dummy; } ;
 struct device {int dummy; } ;
-struct acpi_ipmi_device {int ipmi_ifnum; struct ipmi_user* user_interface; int /*<<< orphan*/  dev; int /*<<< orphan*/  handle; int /*<<< orphan*/  tx_msg_lock; int /*<<< orphan*/  tx_msg_list; int /*<<< orphan*/  head; int /*<<< orphan*/  kref; } ;
-typedef  int /*<<< orphan*/  acpi_handle ;
-struct TYPE_2__ {int /*<<< orphan*/  ipmi_hndlrs; } ;
+struct acpi_ipmi_device {int ipmi_ifnum; struct ipmi_user* user_interface; int dev; int handle; int tx_msg_lock; int tx_msg_list; int head; int kref; } ;
+typedef int acpi_handle ;
+struct TYPE_2__ {int ipmi_hndlrs; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  INIT_LIST_HEAD (int /*<<< orphan*/ *) ; 
- TYPE_1__ driver_data ; 
- int /*<<< orphan*/  get_device (struct device*) ; 
- int ipmi_create_user (int,int /*<<< orphan*/ *,struct acpi_ipmi_device*,struct ipmi_user**) ; 
- int /*<<< orphan*/  kfree (struct acpi_ipmi_device*) ; 
- int /*<<< orphan*/  kref_init (int /*<<< orphan*/ *) ; 
- struct acpi_ipmi_device* kzalloc (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  put_device (struct device*) ; 
- int /*<<< orphan*/  spin_lock_init (int /*<<< orphan*/ *) ; 
+
+ int GFP_KERNEL ;
+ int INIT_LIST_HEAD (int *) ;
+ TYPE_1__ driver_data ;
+ int get_device (struct device*) ;
+ int ipmi_create_user (int,int *,struct acpi_ipmi_device*,struct ipmi_user**) ;
+ int kfree (struct acpi_ipmi_device*) ;
+ int kref_init (int *) ;
+ struct acpi_ipmi_device* kzalloc (int,int ) ;
+ int put_device (struct device*) ;
+ int spin_lock_init (int *) ;
 
 __attribute__((used)) static struct acpi_ipmi_device *
 ipmi_dev_alloc(int iface, struct device *dev, acpi_handle handle)
 {
-	struct acpi_ipmi_device *ipmi_device;
-	int err;
-	struct ipmi_user *user;
+ struct acpi_ipmi_device *ipmi_device;
+ int err;
+ struct ipmi_user *user;
 
-	ipmi_device = kzalloc(sizeof(*ipmi_device), GFP_KERNEL);
-	if (!ipmi_device)
-		return NULL;
+ ipmi_device = kzalloc(sizeof(*ipmi_device), GFP_KERNEL);
+ if (!ipmi_device)
+  return ((void*)0);
 
-	kref_init(&ipmi_device->kref);
-	INIT_LIST_HEAD(&ipmi_device->head);
-	INIT_LIST_HEAD(&ipmi_device->tx_msg_list);
-	spin_lock_init(&ipmi_device->tx_msg_lock);
-	ipmi_device->handle = handle;
-	ipmi_device->dev = get_device(dev);
-	ipmi_device->ipmi_ifnum = iface;
+ kref_init(&ipmi_device->kref);
+ INIT_LIST_HEAD(&ipmi_device->head);
+ INIT_LIST_HEAD(&ipmi_device->tx_msg_list);
+ spin_lock_init(&ipmi_device->tx_msg_lock);
+ ipmi_device->handle = handle;
+ ipmi_device->dev = get_device(dev);
+ ipmi_device->ipmi_ifnum = iface;
 
-	err = ipmi_create_user(iface, &driver_data.ipmi_hndlrs,
-			       ipmi_device, &user);
-	if (err) {
-		put_device(dev);
-		kfree(ipmi_device);
-		return NULL;
-	}
-	ipmi_device->user_interface = user;
+ err = ipmi_create_user(iface, &driver_data.ipmi_hndlrs,
+          ipmi_device, &user);
+ if (err) {
+  put_device(dev);
+  kfree(ipmi_device);
+  return ((void*)0);
+ }
+ ipmi_device->user_interface = user;
 
-	return ipmi_device;
+ return ipmi_device;
 }

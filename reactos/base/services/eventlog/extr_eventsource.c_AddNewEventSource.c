@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  EventSourceListEntry; int /*<<< orphan*/  szName; int /*<<< orphan*/  LogFile; } ;
-typedef  int /*<<< orphan*/  PWSTR ;
-typedef  int /*<<< orphan*/  PLOGFILE ;
-typedef  TYPE_1__* PEVENTSOURCE ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPRINT (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EVENTSOURCE ; 
- int /*<<< orphan*/  EnterCriticalSection (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EventSourceListCs ; 
- int /*<<< orphan*/  EventSourceListHead ; 
- int /*<<< orphan*/  FIELD_OFFSET (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- TYPE_1__* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  InsertTailList (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LeaveCriticalSection (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * szName ; 
- int /*<<< orphan*/  wcscpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int wcslen (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int EventSourceListEntry; int szName; int LogFile; } ;
+typedef int PWSTR ;
+typedef int PLOGFILE ;
+typedef TYPE_1__* PEVENTSOURCE ;
+typedef int BOOL ;
+
+
+ int DPRINT (char*,int ) ;
+ int EVENTSOURCE ;
+ int EnterCriticalSection (int *) ;
+ int EventSourceListCs ;
+ int EventSourceListHead ;
+ int FIELD_OFFSET (int ,int ) ;
+ int GetProcessHeap () ;
+ TYPE_1__* HeapAlloc (int ,int ,int ) ;
+ int InsertTailList (int *,int *) ;
+ int LeaveCriticalSection (int *) ;
+ int * szName ;
+ int wcscpy (int ,int ) ;
+ int wcslen (int ) ;
 
 __attribute__((used)) static BOOL
 AddNewEventSource(PLOGFILE pLogFile,
@@ -40,7 +40,7 @@ AddNewEventSource(PLOGFILE pLogFile,
 
     lpEventSource = HeapAlloc(GetProcessHeap(), 0,
                               FIELD_OFFSET(EVENTSOURCE, szName[wcslen(lpSourceName) + 1]));
-    if (lpEventSource != NULL)
+    if (lpEventSource != ((void*)0))
     {
         wcscpy(lpEventSource->szName, lpSourceName);
         lpEventSource->LogFile = pLogFile;
@@ -53,5 +53,5 @@ AddNewEventSource(PLOGFILE pLogFile,
         LeaveCriticalSection(&EventSourceListCs);
     }
 
-    return (lpEventSource != NULL);
+    return (lpEventSource != ((void*)0));
 }

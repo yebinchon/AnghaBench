@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  pool; int /*<<< orphan*/  auth_baton; } ;
-typedef  TYPE_1__ svn_ra_serf__session_t ;
-struct TYPE_6__ {int /*<<< orphan*/  ssl_client_auth_state; TYPE_1__* session; } ;
-typedef  TYPE_2__ svn_ra_serf__connection_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int pool; int auth_baton; } ;
+typedef TYPE_1__ svn_ra_serf__session_t ;
+struct TYPE_6__ {int ssl_client_auth_state; TYPE_1__* session; } ;
+typedef TYPE_2__ svn_ra_serf__connection_t ;
+typedef int svn_error_t ;
 struct TYPE_7__ {char* cert_file; } ;
-typedef  TYPE_3__ svn_auth_cred_ssl_client_cert_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+typedef TYPE_3__ svn_auth_cred_ssl_client_cert_t ;
+typedef int apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_AUTH_CRED_SSL_CLIENT_CERT ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- char* construct_realm (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_auth_first_credentials (void**,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_auth_next_credentials (void**,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int SVN_AUTH_CRED_SSL_CLIENT_CERT ;
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ char* construct_realm (TYPE_1__*,int ) ;
+ int svn_auth_first_credentials (void**,int *,int ,char const*,int ,int *) ;
+ int svn_auth_next_credentials (void**,int ,int ) ;
 
 __attribute__((used)) static svn_error_t *
 handle_client_cert(void *data,
@@ -40,7 +40,7 @@ handle_client_cert(void *data,
     const char *realm;
     void *creds;
 
-    *cert_path = NULL;
+    *cert_path = ((void*)0);
 
     realm = construct_realm(session, session->pool);
 

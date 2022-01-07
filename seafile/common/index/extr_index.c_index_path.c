@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int st_mode; int st_size; } ;
-typedef  TYPE_1__ SeafStat ;
+typedef TYPE_1__ SeafStat ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OBJ_BLOB ; 
- int O_BINARY ; 
- int O_RDONLY ; 
- int SEAF_PATH_MAX ; 
-#define  S_IFLNK 129 
- int S_IFMT ; 
-#define  S_IFREG 128 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  hash_sha1_file (char*,int,int /*<<< orphan*/ ,unsigned char*) ; 
- int /*<<< orphan*/  index_fd (unsigned char*,int,TYPE_1__*,int /*<<< orphan*/ ,char const*) ; 
- int readlink (char const*,char*,int) ; 
- int seaf_util_open (char const*,int) ; 
- int /*<<< orphan*/  seaf_warning (char*,char const*,...) ; 
- char* strerror (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  typename (int /*<<< orphan*/ ) ; 
+
+ int OBJ_BLOB ;
+ int O_BINARY ;
+ int O_RDONLY ;
+ int SEAF_PATH_MAX ;
+
+ int S_IFMT ;
+
+ int errno ;
+ int hash_sha1_file (char*,int,int ,unsigned char*) ;
+ int index_fd (unsigned char*,int,TYPE_1__*,int ,char const*) ;
+ int readlink (char const*,char*,int) ;
+ int seaf_util_open (char const*,int) ;
+ int seaf_warning (char*,char const*,...) ;
+ char* strerror (int ) ;
+ int typename (int ) ;
 
 int index_path(unsigned char *sha1, const char *path, SeafStat *st)
 {
@@ -38,7 +38,7 @@ int index_path(unsigned char *sha1, const char *path, SeafStat *st)
     int pathlen;
 
     switch (st->st_mode & S_IFMT) {
-    case S_IFREG:
+    case 128:
         fd = seaf_util_open (path, O_RDONLY | O_BINARY);
         if (fd < 0) {
             seaf_warning("g_open (\"%s\"): %s\n", path, strerror(errno));
@@ -48,8 +48,8 @@ int index_path(unsigned char *sha1, const char *path, SeafStat *st)
             return -1;
         }
         break;
-#ifndef WIN32        
-    case S_IFLNK:
+
+    case 129:
         pathlen = readlink(path, buf, SEAF_PATH_MAX);
         if (pathlen != st->st_size) {
             char *errstr = strerror(errno);
@@ -58,7 +58,7 @@ int index_path(unsigned char *sha1, const char *path, SeafStat *st)
         }
         hash_sha1_file(buf, pathlen, typename(OBJ_BLOB), sha1);
         break;
-#endif        
+
     default:
         seaf_warning("%s: unsupported file type\n", path);
         return -1;

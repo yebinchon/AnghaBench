@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct ttm_tt {int dummy; } ;
 struct nouveau_sgdma_be {TYPE_1__* node; } ;
-struct TYPE_2__ {int /*<<< orphan*/ * vma; } ;
+struct TYPE_2__ {int * vma; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  nouveau_vm_unmap (int /*<<< orphan*/ *) ; 
+
+ int nouveau_vm_unmap (int *) ;
 
 __attribute__((used)) static int
 nv04_sgdma_unbind(struct ttm_tt *ttm)
 {
-	struct nouveau_sgdma_be *nvbe = (struct nouveau_sgdma_be *)ttm;
-	nouveau_vm_unmap(&nvbe->node->vma[0]);
-	return 0;
+ struct nouveau_sgdma_be *nvbe = (struct nouveau_sgdma_be *)ttm;
+ nouveau_vm_unmap(&nvbe->node->vma[0]);
+ return 0;
 }

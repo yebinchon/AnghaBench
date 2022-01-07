@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  Connect (int,int) ; 
- int /*<<< orphan*/  ENTER_FUNC () ; 
- int /*<<< orphan*/  FlushSerialBuffer () ; 
- int /*<<< orphan*/  LEAVE_FUNC () ; 
- int /*<<< orphan*/  PICE_free (scalar_t__) ; 
- scalar_t__ pScreenBufferSerial ; 
+ int Connect (int,int) ;
+ int ENTER_FUNC () ;
+ int FlushSerialBuffer () ;
+ int LEAVE_FUNC () ;
+ int PICE_free (scalar_t__) ;
+ scalar_t__ pScreenBufferSerial ;
 
 void ConsoleShutdownSerial(void)
 {

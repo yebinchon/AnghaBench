@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_6__ ;
-typedef  struct TYPE_12__   TYPE_5__ ;
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint16_t ;
+
+
+typedef struct TYPE_13__ TYPE_6__ ;
+typedef struct TYPE_12__ TYPE_5__ ;
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int uint16_t ;
 struct TYPE_13__ {TYPE_5__* dev; } ;
-typedef  TYPE_6__ spi_t ;
+typedef TYPE_6__ spi_t ;
 struct TYPE_10__ {int usr; } ;
 struct TYPE_9__ {scalar_t__ usr_miso_dbitlen; } ;
 struct TYPE_8__ {int usr_mosi_dbitlen; } ;
-struct TYPE_11__ {int /*<<< orphan*/  wr_bit_order; } ;
+struct TYPE_11__ {int wr_bit_order; } ;
 struct TYPE_12__ {int* data_buf; TYPE_3__ cmd; TYPE_2__ miso_dlen; TYPE_1__ mosi_dlen; TYPE_4__ ctrl; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SPI_MUTEX_LOCK () ; 
- int /*<<< orphan*/  SPI_MUTEX_UNLOCK () ; 
+
+ int SPI_MUTEX_LOCK () ;
+ int SPI_MUTEX_UNLOCK () ;
 
 void spiWriteWord(spi_t * spi, uint16_t data)
 {

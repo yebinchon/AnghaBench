@@ -1,68 +1,68 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct stub_manager {int /*<<< orphan*/  object; int /*<<< orphan*/  oid; } ;
-struct ifstub {int /*<<< orphan*/  ipid; } ;
-struct TYPE_3__ {int cPublicRefs; int /*<<< orphan*/  ipid; int /*<<< orphan*/  oid; int /*<<< orphan*/  flags; int /*<<< orphan*/  oxid; } ;
-typedef  TYPE_1__ STDOBJREF ;
-typedef  int /*<<< orphan*/  REFIID ;
-typedef  int MSHLFLAGS ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  IRpcStubBuffer ;
-typedef  int /*<<< orphan*/  IPSFactoryBuffer ;
-typedef  scalar_t__ HRESULT ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  int BOOL ;
-typedef  int /*<<< orphan*/  APARTMENT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*,int /*<<< orphan*/ ,...) ; 
- scalar_t__ E_NOINTERFACE ; 
- scalar_t__ E_OUTOFMEMORY ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  IID_IUnknown ; 
- scalar_t__ IPSFactoryBuffer_CreateStub (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IPSFactoryBuffer_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IRpcStubBuffer_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IsEqualIID (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int MSHLFLAGS_NOPING ; 
- int MSHLFLAGS_TABLESTRONG ; 
- int MSHLFLAGS_TABLEWEAK ; 
- int NORMALEXTREFS ; 
- int /*<<< orphan*/  RPC_RegisterInterface (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SORFP_TABLEWEAK ; 
- int /*<<< orphan*/  SORF_NOPING ; 
- int /*<<< orphan*/  SORF_NULL ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  TRUE ; 
- scalar_t__ apartment_createwindowifneeded (int /*<<< orphan*/ *) ; 
- scalar_t__ apartment_getoxid (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  debugstr_guid (int /*<<< orphan*/ ) ; 
- scalar_t__ get_facbuf_for_iid (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- struct stub_manager* get_stub_manager_from_object (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub_manager_ext_addref (struct stub_manager*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub_manager_ext_release (struct stub_manager*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- struct ifstub* stub_manager_find_ifstub (struct stub_manager*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  stub_manager_int_release (struct stub_manager*) ; 
- struct ifstub* stub_manager_new_ifstub (struct stub_manager*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct stub_manager {int object; int oid; } ;
+struct ifstub {int ipid; } ;
+struct TYPE_3__ {int cPublicRefs; int ipid; int oid; int flags; int oxid; } ;
+typedef TYPE_1__ STDOBJREF ;
+typedef int REFIID ;
+typedef int MSHLFLAGS ;
+typedef int IUnknown ;
+typedef int IRpcStubBuffer ;
+typedef int IPSFactoryBuffer ;
+typedef scalar_t__ HRESULT ;
+typedef int DWORD ;
+typedef int BOOL ;
+typedef int APARTMENT ;
+
+
+ int ERR (char*,int ,...) ;
+ scalar_t__ E_NOINTERFACE ;
+ scalar_t__ E_OUTOFMEMORY ;
+ int FALSE ;
+ int IID_IUnknown ;
+ scalar_t__ IPSFactoryBuffer_CreateStub (int *,int ,int ,int **) ;
+ int IPSFactoryBuffer_Release (int *) ;
+ int IRpcStubBuffer_Release (int *) ;
+ int IsEqualIID (int ,int *) ;
+ int MSHLFLAGS_NOPING ;
+ int MSHLFLAGS_TABLESTRONG ;
+ int MSHLFLAGS_TABLEWEAK ;
+ int NORMALEXTREFS ;
+ int RPC_RegisterInterface (int ) ;
+ int SORFP_TABLEWEAK ;
+ int SORF_NOPING ;
+ int SORF_NULL ;
+ scalar_t__ S_OK ;
+ int TRUE ;
+ scalar_t__ apartment_createwindowifneeded (int *) ;
+ scalar_t__ apartment_getoxid (int *,int *) ;
+ int debugstr_guid (int ) ;
+ scalar_t__ get_facbuf_for_iid (int ,int **) ;
+ struct stub_manager* get_stub_manager_from_object (int *,int *,int ) ;
+ int stub_manager_ext_addref (struct stub_manager*,int,int ) ;
+ int stub_manager_ext_release (struct stub_manager*,int ,int ,int ) ;
+ struct ifstub* stub_manager_find_ifstub (struct stub_manager*,int ,int) ;
+ int stub_manager_int_release (struct stub_manager*) ;
+ struct ifstub* stub_manager_new_ifstub (struct stub_manager*,int *,int ,int ,void*,int) ;
 
 HRESULT marshal_object(APARTMENT *apt, STDOBJREF *stdobjref, REFIID riid, IUnknown *object,
     DWORD dest_context, void *dest_context_data, MSHLFLAGS mshlflags)
 {
     struct stub_manager *manager;
-    struct ifstub       *ifstub;
-    BOOL                 tablemarshal;
-    HRESULT              hr;
+    struct ifstub *ifstub;
+    BOOL tablemarshal;
+    HRESULT hr;
 
     hr = apartment_getoxid(apt, &stdobjref->oxid);
     if (hr != S_OK)
@@ -84,13 +84,13 @@ HRESULT marshal_object(APARTMENT *apt, STDOBJREF *stdobjref, REFIID riid, IUnkno
 
     tablemarshal = ((mshlflags & MSHLFLAGS_TABLESTRONG) || (mshlflags & MSHLFLAGS_TABLEWEAK));
 
-    /* make sure ifstub that we are creating is unique */
+
     ifstub = stub_manager_find_ifstub(manager, riid, mshlflags);
     if (!ifstub) {
-        IRpcStubBuffer *stub = NULL;
+        IRpcStubBuffer *stub = ((void*)0);
 
-        /* IUnknown doesn't require a stub buffer, because it never goes out on
-         * the wire */
+
+
         if (!IsEqualIID(riid, &IID_IUnknown))
         {
             IPSFactoryBuffer *psfb;
@@ -118,8 +118,8 @@ HRESULT marshal_object(APARTMENT *apt, STDOBJREF *stdobjref, REFIID riid, IUnkno
 
         if (hr != S_OK) {
             stub_manager_int_release(manager);
-            /* destroy the stub manager if it has no ifstubs by releasing
-             * zero external references */
+
+
             stub_manager_ext_release(manager, 0, FALSE, TRUE);
             return hr;
         }
@@ -139,7 +139,7 @@ HRESULT marshal_object(APARTMENT *apt, STDOBJREF *stdobjref, REFIID riid, IUnkno
             stub_manager_ext_addref(manager, 0, TRUE);
     }
 
-    /* FIXME: check return value */
+
     RPC_RegisterInterface(riid);
 
     stdobjref->ipid = ifstub->ipid;

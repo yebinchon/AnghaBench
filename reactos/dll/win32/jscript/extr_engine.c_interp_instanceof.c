@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  script_ctx_t ;
-typedef  int /*<<< orphan*/  jsval_t ;
+
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int script_ctx_t ;
+typedef int jsval_t ;
 struct TYPE_7__ {struct TYPE_7__* prototype; } ;
-typedef  TYPE_1__ jsdisp_t ;
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef TYPE_1__ jsdisp_t ;
+typedef char WCHAR ;
+typedef int HRESULT ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_FAIL ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  FIXME (char*) ; 
- int /*<<< orphan*/  IDispatch_Release (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  JSCLASS_FUNCTION ; 
- int /*<<< orphan*/  JS_E_FUNCTION_EXPECTED ; 
- int /*<<< orphan*/  disp_cmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  get_object (int /*<<< orphan*/ ) ; 
- TYPE_1__* iface_to_jsdisp (int /*<<< orphan*/ ) ; 
- scalar_t__ is_class (TYPE_1__*,int /*<<< orphan*/ ) ; 
- scalar_t__ is_object_instance (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jsdisp_propget_name (TYPE_1__*,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jsdisp_release (TYPE_1__*) ; 
- int /*<<< orphan*/  jsval_bool (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jsval_release (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stack_pop (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stack_push (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  throw_type_error (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  to_disp (TYPE_1__*) ; 
+
+ int E_FAIL ;
+ scalar_t__ FAILED (int ) ;
+ int FALSE ;
+ int FIXME (char*) ;
+ int IDispatch_Release (int ) ;
+ int JSCLASS_FUNCTION ;
+ int JS_E_FUNCTION_EXPECTED ;
+ int disp_cmp (int ,int ,int *) ;
+ int get_object (int ) ;
+ TYPE_1__* iface_to_jsdisp (int ) ;
+ scalar_t__ is_class (TYPE_1__*,int ) ;
+ scalar_t__ is_object_instance (int ) ;
+ int jsdisp_propget_name (TYPE_1__*,char const*,int *) ;
+ int jsdisp_release (TYPE_1__*) ;
+ int jsval_bool (int ) ;
+ int jsval_release (int ) ;
+ int stack_pop (int *) ;
+ int stack_push (int *,int ) ;
+ int throw_type_error (int *,int ,int *) ;
+ int to_disp (TYPE_1__*) ;
 
 __attribute__((used)) static HRESULT interp_instanceof(script_ctx_t *ctx)
 {
-    jsdisp_t *obj, *iter, *tmp = NULL;
+    jsdisp_t *obj, *iter, *tmp = ((void*)0);
     jsval_t prot, v;
     BOOL ret = FALSE;
     HRESULT hres;
@@ -53,7 +53,7 @@ __attribute__((used)) static HRESULT interp_instanceof(script_ctx_t *ctx)
     v = stack_pop(ctx);
     if(!is_object_instance(v) || !get_object(v)) {
         jsval_release(v);
-        return throw_type_error(ctx, JS_E_FUNCTION_EXPECTED, NULL);
+        return throw_type_error(ctx, JS_E_FUNCTION_EXPECTED, ((void*)0));
     }
 
     obj = iface_to_jsdisp(get_object(v));
@@ -66,7 +66,7 @@ __attribute__((used)) static HRESULT interp_instanceof(script_ctx_t *ctx)
     if(is_class(obj, JSCLASS_FUNCTION)) {
         hres = jsdisp_propget_name(obj, prototypeW, &prot);
     }else {
-        hres = throw_type_error(ctx, JS_E_FUNCTION_EXPECTED, NULL);
+        hres = throw_type_error(ctx, JS_E_FUNCTION_EXPECTED, ((void*)0));
     }
     jsdisp_release(obj);
     if(FAILED(hres))

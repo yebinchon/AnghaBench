@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  L; } ;
-typedef  TYPE_1__ jit_State ;
-typedef  int /*<<< orphan*/  TValue ;
-typedef  int /*<<< orphan*/  GCstr ;
 
-/* Variables and functions */
- scalar_t__ LJ_LIKELY (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LJ_TRERR_BADTYPE ; 
- int /*<<< orphan*/ * lj_strfmt_number (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lj_trace_err (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  setstrV (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * strV (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tvisnumber (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tvisstr (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int L; } ;
+typedef TYPE_1__ jit_State ;
+typedef int TValue ;
+typedef int GCstr ;
+
+
+ scalar_t__ LJ_LIKELY (int ) ;
+ int LJ_TRERR_BADTYPE ;
+ int * lj_strfmt_number (int ,int *) ;
+ int lj_trace_err (TYPE_1__*,int ) ;
+ int setstrV (int ,int *,int *) ;
+ int * strV (int *) ;
+ int tvisnumber (int *) ;
+ int tvisstr (int *) ;
 
 __attribute__((used)) static GCstr *argv2str(jit_State *J, TValue *o)
 {

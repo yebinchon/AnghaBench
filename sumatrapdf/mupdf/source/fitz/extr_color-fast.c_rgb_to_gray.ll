@@ -1,0 +1,44 @@
+; ModuleID = '/home/carl/AnghaBench/sumatrapdf/mupdf/source/fitz/extr_color-fast.c_rgb_to_gray.c'
+source_filename = "/home/carl/AnghaBench/sumatrapdf/mupdf/source/fitz/extr_color-fast.c_rgb_to_gray.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+@llvm.used = appending global [1 x i8*] [i8* bitcast (void (i32*, i32*, float*, float*)* @rgb_to_gray to i8*)], section "llvm.metadata"
+
+; Function Attrs: noinline nounwind optnone uwtable
+define internal void @rgb_to_gray(i32* %0, i32* %1, float* %2, float* %3) #0 {
+  %5 = alloca i32*, align 8
+  %6 = alloca i32*, align 8
+  %7 = alloca float*, align 8
+  %8 = alloca float*, align 8
+  store i32* %0, i32** %5, align 8
+  store i32* %1, i32** %6, align 8
+  store float* %2, float** %7, align 8
+  store float* %3, float** %8, align 8
+  %9 = load float*, float** %7, align 8
+  %10 = getelementptr inbounds float, float* %9, i64 0
+  %11 = load float, float* %10, align 4
+  %12 = fmul float %11, 0x3FD3333340000000
+  %13 = load float*, float** %7, align 8
+  %14 = getelementptr inbounds float, float* %13, i64 1
+  %15 = load float, float* %14, align 4
+  %16 = fmul float %15, 0x3FE2E147A0000000
+  %17 = fadd float %12, %16
+  %18 = load float*, float** %7, align 8
+  %19 = getelementptr inbounds float, float* %18, i64 2
+  %20 = load float, float* %19, align 4
+  %21 = fmul float %20, 0x3FBC28F5C0000000
+  %22 = fadd float %17, %21
+  %23 = load float*, float** %8, align 8
+  %24 = getelementptr inbounds float, float* %23, i64 0
+  store float %22, float* %24, align 4
+  ret void
+}
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

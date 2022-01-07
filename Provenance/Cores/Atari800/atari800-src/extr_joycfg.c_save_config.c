@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  string ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- scalar_t__ fgets (char*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*,...) ; 
- int /*<<< orphan*/  fputs (char*,int /*<<< orphan*/ *) ; 
- char** joyparams ; 
- size_t* joytypes ; 
- int** keysets ; 
- int /*<<< orphan*/  printf (char*) ; 
- scalar_t__ rename (char*,char*) ; 
- int strlen (char*) ; 
- scalar_t__ strncmp (char*,char*,int) ; 
+
+
+
+typedef int string ;
+typedef int FILE ;
+
+
+ int fclose (int *) ;
+ scalar_t__ fgets (char*,int,int *) ;
+ int * fopen (char*,char*) ;
+ int fprintf (int *,char*,...) ;
+ int fputs (char*,int *) ;
+ char** joyparams ;
+ size_t* joytypes ;
+ int** keysets ;
+ int printf (char*) ;
+ scalar_t__ rename (char*,char*) ;
+ int strlen (char*) ;
+ scalar_t__ strncmp (char*,char*,int) ;
 
 void save_config()
 {
@@ -34,12 +34,12 @@ void save_config()
   char string[256];
   int i;
 
-  if ((fr=fopen("atari800.cfg","r"))==NULL)
+  if ((fr=fopen("atari800.cfg","r"))==((void*)0))
   {
     printf("Error opening atari800.cfg!\n");
     return;
   }
-  if ((fw=fopen("atari800.tmp","w"))==NULL)
+  if ((fw=fopen("atari800.tmp","w"))==((void*)0))
   {
     printf("Error creating temporary file atari800.tmp!\n");
     fclose(fr);
@@ -48,7 +48,7 @@ void save_config()
   while (fgets(string,sizeof(string),fr))
   {
     if (strncmp(string,"JOYSTICK_",9)!=0 && strncmp(string,"KEYSET_",7)!=0)
-      fputs(string,fw);  /*copy all lines except those with JOYSTICK_ and KEYSET_ parameters*/
+      fputs(string,fw);
   }
   fclose(fr);
   i=strlen(string)-1;

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  h; struct TYPE_4__* next; } ;
-typedef  TYPE_1__ thread_info ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CloseHandle (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DEBUG_EVENTS (char*) ; 
- int /*<<< orphan*/  init_thread_list () ; 
- TYPE_1__ thread_head ; 
- int /*<<< orphan*/  xfree (TYPE_1__*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int h; struct TYPE_4__* next; } ;
+typedef TYPE_1__ thread_info ;
+
+
+ int CloseHandle (int ) ;
+ int DEBUG_EVENTS (char*) ;
+ int init_thread_list () ;
+ TYPE_1__ thread_head ;
+ int xfree (TYPE_1__*) ;
 
 __attribute__((used)) static void
 child_init_thread_list (void)
@@ -28,7 +28,7 @@ child_init_thread_list (void)
 
   DEBUG_EVENTS (("gdb: child_init_thread_list\n"));
   init_thread_list ();
-  while (th->next != NULL)
+  while (th->next != ((void*)0))
     {
       thread_info *here = th->next;
       th->next = here->next;

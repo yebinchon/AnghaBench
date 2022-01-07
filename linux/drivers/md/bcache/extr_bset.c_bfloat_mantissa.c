@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64_t ;
+
+
+
+
+typedef int uint64_t ;
 struct bkey_float {int exponent; } ;
-struct bkey {int /*<<< orphan*/  low; } ;
+struct bkey {int low; } ;
 
-/* Variables and functions */
- unsigned int BKEY_MANTISSA_MASK ; 
- unsigned int shrd128 (int /*<<< orphan*/  const,int /*<<< orphan*/  const,int) ; 
+
+ unsigned int BKEY_MANTISSA_MASK ;
+ unsigned int shrd128 (int const,int const,int) ;
 
 __attribute__((used)) static inline unsigned int bfloat_mantissa(const struct bkey *k,
-				       struct bkey_float *f)
+           struct bkey_float *f)
 {
-	const uint64_t *p = &k->low - (f->exponent >> 6);
+ const uint64_t *p = &k->low - (f->exponent >> 6);
 
-	return shrd128(p[-1], p[0], f->exponent & 63) & BKEY_MANTISSA_MASK;
+ return shrd128(p[-1], p[0], f->exponent & 63) & BKEY_MANTISSA_MASK;
 }

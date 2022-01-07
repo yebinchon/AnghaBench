@@ -1,86 +1,86 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct state {struct arc* free; int /*<<< orphan*/  nins; struct arc* ins; int /*<<< orphan*/  nouts; struct arc* outs; } ;
-struct nfa {int /*<<< orphan*/  cm; int /*<<< orphan*/ * parent; } ;
+
+
+
+
+struct state {struct arc* free; int nins; struct arc* ins; int nouts; struct arc* outs; } ;
+struct nfa {int cm; int * parent; } ;
 struct arc {scalar_t__ type; struct arc* freechain; struct arc* outchainRev; struct arc* outchain; struct arc* inchainRev; struct arc* inchain; struct state* to; struct state* from; } ;
 
-/* Variables and functions */
- scalar_t__ COLORED (struct arc*) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  uncolorchain (int /*<<< orphan*/ ,struct arc*) ; 
+
+ scalar_t__ COLORED (struct arc*) ;
+ int assert (int) ;
+ int uncolorchain (int ,struct arc*) ;
 
 __attribute__((used)) static void
 freearc(struct nfa *nfa,
-		struct arc *victim)
+  struct arc *victim)
 {
-	struct state *from = victim->from;
-	struct state *to = victim->to;
-	struct arc *predecessor;
+ struct state *from = victim->from;
+ struct state *to = victim->to;
+ struct arc *predecessor;
 
-	assert(victim->type != 0);
+ assert(victim->type != 0);
 
-	/* take it off color chain if necessary */
-	if (COLORED(victim) && nfa->parent == NULL)
-		uncolorchain(nfa->cm, victim);
 
-	/* take it off source's out-chain */
-	assert(from != NULL);
-	predecessor = victim->outchainRev;
-	if (predecessor == NULL)
-	{
-		assert(from->outs == victim);
-		from->outs = victim->outchain;
-	}
-	else
-	{
-		assert(predecessor->outchain == victim);
-		predecessor->outchain = victim->outchain;
-	}
-	if (victim->outchain != NULL)
-	{
-		assert(victim->outchain->outchainRev == victim);
-		victim->outchain->outchainRev = predecessor;
-	}
-	from->nouts--;
+ if (COLORED(victim) && nfa->parent == ((void*)0))
+  uncolorchain(nfa->cm, victim);
 
-	/* take it off target's in-chain */
-	assert(to != NULL);
-	predecessor = victim->inchainRev;
-	if (predecessor == NULL)
-	{
-		assert(to->ins == victim);
-		to->ins = victim->inchain;
-	}
-	else
-	{
-		assert(predecessor->inchain == victim);
-		predecessor->inchain = victim->inchain;
-	}
-	if (victim->inchain != NULL)
-	{
-		assert(victim->inchain->inchainRev == victim);
-		victim->inchain->inchainRev = predecessor;
-	}
-	to->nins--;
 
-	/* clean up and place on from-state's free list */
-	victim->type = 0;
-	victim->from = NULL;		/* precautions... */
-	victim->to = NULL;
-	victim->inchain = NULL;
-	victim->inchainRev = NULL;
-	victim->outchain = NULL;
-	victim->outchainRev = NULL;
-	victim->freechain = from->free;
-	from->free = victim;
+ assert(from != ((void*)0));
+ predecessor = victim->outchainRev;
+ if (predecessor == ((void*)0))
+ {
+  assert(from->outs == victim);
+  from->outs = victim->outchain;
+ }
+ else
+ {
+  assert(predecessor->outchain == victim);
+  predecessor->outchain = victim->outchain;
+ }
+ if (victim->outchain != ((void*)0))
+ {
+  assert(victim->outchain->outchainRev == victim);
+  victim->outchain->outchainRev = predecessor;
+ }
+ from->nouts--;
+
+
+ assert(to != ((void*)0));
+ predecessor = victim->inchainRev;
+ if (predecessor == ((void*)0))
+ {
+  assert(to->ins == victim);
+  to->ins = victim->inchain;
+ }
+ else
+ {
+  assert(predecessor->inchain == victim);
+  predecessor->inchain = victim->inchain;
+ }
+ if (victim->inchain != ((void*)0))
+ {
+  assert(victim->inchain->inchainRev == victim);
+  victim->inchain->inchainRev = predecessor;
+ }
+ to->nins--;
+
+
+ victim->type = 0;
+ victim->from = ((void*)0);
+ victim->to = ((void*)0);
+ victim->inchain = ((void*)0);
+ victim->inchainRev = ((void*)0);
+ victim->outchain = ((void*)0);
+ victim->outchainRev = ((void*)0);
+ victim->freechain = from->free;
+ from->free = victim;
 }

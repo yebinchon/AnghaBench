@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  const EC_POINT ;
-typedef  int /*<<< orphan*/  EC_GROUP ;
-typedef  int /*<<< orphan*/  const BN_CTX ;
-typedef  int /*<<< orphan*/  const BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BN_CTX_free (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  const* BN_CTX_new () ; 
- int /*<<< orphan*/  BN_add (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  BN_free (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  BN_mul (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  const* BN_new () ; 
- int /*<<< orphan*/  BN_one (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  BN_set_negative (int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BN_set_word (int /*<<< orphan*/  const*,int) ; 
- int /*<<< orphan*/  BN_sub (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  const* BN_value_one () ; 
- int /*<<< orphan*/  const* EC_GROUP_get0_generator (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EC_GROUP_get_order (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  EC_GROUP_precompute_mult (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  EC_POINT_add (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  EC_POINT_cmp (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  EC_POINT_copy (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  EC_POINT_dbl (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  EC_POINT_free (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  EC_POINT_invert (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  EC_POINT_is_at_infinity (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  EC_POINT_mul (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  const* EC_POINT_new (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EC_POINTs_mul (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int,int /*<<< orphan*/  const**,int /*<<< orphan*/  const**,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  TEST_false (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_info (char*) ; 
- int /*<<< orphan*/  TEST_int_eq (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_ptr (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  TEST_true (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int const EC_POINT ;
+typedef int EC_GROUP ;
+typedef int const BN_CTX ;
+typedef int const BIGNUM ;
+
+
+ int BN_CTX_free (int const*) ;
+ int const* BN_CTX_new () ;
+ int BN_add (int const*,int const*,int const*) ;
+ int BN_free (int const*) ;
+ int BN_mul (int const*,int const*,int const*,int const*) ;
+ int const* BN_new () ;
+ int BN_one (int const*) ;
+ int BN_set_negative (int const*,int ) ;
+ int BN_set_word (int const*,int) ;
+ int BN_sub (int const*,int const*,int const*) ;
+ int const* BN_value_one () ;
+ int const* EC_GROUP_get0_generator (int *) ;
+ int EC_GROUP_get_order (int *,int const*,int const*) ;
+ int EC_GROUP_precompute_mult (int *,int const*) ;
+ int EC_POINT_add (int *,int const*,int const*,int const*,int const*) ;
+ int EC_POINT_cmp (int *,int const*,int const*,int const*) ;
+ int EC_POINT_copy (int const*,int const*) ;
+ int EC_POINT_dbl (int *,int const*,int const*,int const*) ;
+ int EC_POINT_free (int const*) ;
+ int EC_POINT_invert (int *,int const*,int const*) ;
+ int EC_POINT_is_at_infinity (int *,int const*) ;
+ int EC_POINT_mul (int *,int const*,int const*,int const*,int const*,int const*) ;
+ int const* EC_POINT_new (int *) ;
+ int EC_POINTs_mul (int *,int const*,int *,int,int const**,int const**,int const*) ;
+ int TEST_false (int ) ;
+ int TEST_info (char*) ;
+ int TEST_int_eq (int ,int ) ;
+ int TEST_ptr (int const*) ;
+ int TEST_true (int ) ;
 
 __attribute__((used)) static int group_order_tests(EC_GROUP *group)
 {
-    BIGNUM *n1 = NULL, *n2 = NULL, *order = NULL;
-    EC_POINT *P = NULL, *Q = NULL, *R = NULL, *S = NULL;
-    const EC_POINT *G = NULL;
-    BN_CTX *ctx = NULL;
+    BIGNUM *n1 = ((void*)0), *n2 = ((void*)0), *order = ((void*)0);
+    EC_POINT *P = ((void*)0), *Q = ((void*)0), *R = ((void*)0), *S = ((void*)0);
+    const EC_POINT *G = ((void*)0);
+    BN_CTX *ctx = ((void*)0);
     int i = 0, r = 0;
 
     if (!TEST_ptr(n1 = BN_new())
@@ -66,17 +66,17 @@ __attribute__((used)) static int group_order_tests(EC_GROUP *group)
         goto err;
 
     if (!TEST_true(EC_GROUP_get_order(group, order, ctx))
-        || !TEST_true(EC_POINT_mul(group, Q, order, NULL, NULL, ctx))
+        || !TEST_true(EC_POINT_mul(group, Q, order, ((void*)0), ((void*)0), ctx))
         || !TEST_true(EC_POINT_is_at_infinity(group, Q))
         || !TEST_true(EC_GROUP_precompute_mult(group, ctx))
-        || !TEST_true(EC_POINT_mul(group, Q, order, NULL, NULL, ctx))
+        || !TEST_true(EC_POINT_mul(group, Q, order, ((void*)0), ((void*)0), ctx))
         || !TEST_true(EC_POINT_is_at_infinity(group, Q))
         || !TEST_true(EC_POINT_copy(P, G))
         || !TEST_true(BN_one(n1))
-        || !TEST_true(EC_POINT_mul(group, Q, n1, NULL, NULL, ctx))
+        || !TEST_true(EC_POINT_mul(group, Q, n1, ((void*)0), ((void*)0), ctx))
         || !TEST_int_eq(0, EC_POINT_cmp(group, Q, P, ctx))
         || !TEST_true(BN_sub(n1, order, n1))
-        || !TEST_true(EC_POINT_mul(group, Q, n1, NULL, NULL, ctx))
+        || !TEST_true(EC_POINT_mul(group, Q, n1, ((void*)0), ((void*)0), ctx))
         || !TEST_true(EC_POINT_invert(group, Q, ctx))
         || !TEST_int_eq(0, EC_POINT_cmp(group, Q, P, ctx)))
         goto err;
@@ -86,61 +86,61 @@ __attribute__((used)) static int group_order_tests(EC_GROUP *group)
         const EC_POINT *points[6];
 
         if (!TEST_true(BN_set_word(n1, i))
-            /*
-             * If i == 1, P will be the predefined generator for which
-             * EC_GROUP_precompute_mult has set up precomputation.
-             */
-            || !TEST_true(EC_POINT_mul(group, P, n1, NULL, NULL, ctx))
+
+
+
+
+            || !TEST_true(EC_POINT_mul(group, P, n1, ((void*)0), ((void*)0), ctx))
             || (i == 1 && !TEST_int_eq(0, EC_POINT_cmp(group, P, G, ctx)))
             || !TEST_true(BN_one(n1))
-            /* n1 = 1 - order */
+
             || !TEST_true(BN_sub(n1, n1, order))
-            || !TEST_true(EC_POINT_mul(group, Q, NULL, P, n1, ctx))
+            || !TEST_true(EC_POINT_mul(group, Q, ((void*)0), P, n1, ctx))
             || !TEST_int_eq(0, EC_POINT_cmp(group, Q, P, ctx))
 
-            /* n2 = 1 + order */
+
             || !TEST_true(BN_add(n2, order, BN_value_one()))
-            || !TEST_true(EC_POINT_mul(group, Q, NULL, P, n2, ctx))
+            || !TEST_true(EC_POINT_mul(group, Q, ((void*)0), P, n2, ctx))
             || !TEST_int_eq(0, EC_POINT_cmp(group, Q, P, ctx))
 
-            /* n2 = (1 - order) * (1 + order) = 1 - order^2 */
+
             || !TEST_true(BN_mul(n2, n1, n2, ctx))
-            || !TEST_true(EC_POINT_mul(group, Q, NULL, P, n2, ctx))
+            || !TEST_true(EC_POINT_mul(group, Q, ((void*)0), P, n2, ctx))
             || !TEST_int_eq(0, EC_POINT_cmp(group, Q, P, ctx)))
             goto err;
 
-        /* n2 = order^2 - 1 */
+
         BN_set_negative(n2, 0);
-        if (!TEST_true(EC_POINT_mul(group, Q, NULL, P, n2, ctx))
-            /* Add P to verify the result. */
+        if (!TEST_true(EC_POINT_mul(group, Q, ((void*)0), P, n2, ctx))
+
             || !TEST_true(EC_POINT_add(group, Q, Q, P, ctx))
             || !TEST_true(EC_POINT_is_at_infinity(group, Q))
 
-            /* Exercise EC_POINTs_mul, including corner cases. */
+
             || !TEST_false(EC_POINT_is_at_infinity(group, P)))
             goto err;
 
         scalars[0] = scalars[1] = BN_value_one();
-        points[0]  = points[1]  = P;
+        points[0] = points[1] = P;
 
-        if (!TEST_true(EC_POINTs_mul(group, R, NULL, 2, points, scalars, ctx))
+        if (!TEST_true(EC_POINTs_mul(group, R, ((void*)0), 2, points, scalars, ctx))
             || !TEST_true(EC_POINT_dbl(group, S, points[0], ctx))
             || !TEST_int_eq(0, EC_POINT_cmp(group, R, S, ctx)))
             goto err;
 
         scalars[0] = n1;
-        points[0] = Q;          /* => infinity */
+        points[0] = Q;
         scalars[1] = n2;
-        points[1] = P;          /* => -P */
+        points[1] = P;
         scalars[2] = n1;
-        points[2] = Q;          /* => infinity */
+        points[2] = Q;
         scalars[3] = n2;
-        points[3] = Q;          /* => infinity */
+        points[3] = Q;
         scalars[4] = n1;
-        points[4] = P;          /* => P */
+        points[4] = P;
         scalars[5] = n2;
-        points[5] = Q;          /* => infinity */
-        if (!TEST_true(EC_POINTs_mul(group, P, NULL, 6, points, scalars, ctx))
+        points[5] = Q;
+        if (!TEST_true(EC_POINTs_mul(group, P, ((void*)0), 6, points, scalars, ctx))
             || !TEST_true(EC_POINT_is_at_infinity(group, P)))
             goto err;
     }

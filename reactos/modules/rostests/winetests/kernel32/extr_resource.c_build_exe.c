@@ -1,64 +1,64 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_8__ ;
-typedef  struct TYPE_16__   TYPE_7__ ;
-typedef  struct TYPE_15__   TYPE_6__ ;
-typedef  struct TYPE_14__   TYPE_5__ ;
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_17__ TYPE_8__ ;
+typedef struct TYPE_16__ TYPE_7__ ;
+typedef struct TYPE_15__ TYPE_6__ ;
+typedef struct TYPE_14__ TYPE_5__ ;
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
 struct TYPE_13__ {TYPE_8__** sect_in; } ;
-typedef  TYPE_4__ sec_build ;
-typedef  int /*<<< orphan*/  sec ;
+typedef TYPE_4__ sec_build ;
+typedef int sec ;
 struct TYPE_11__ {size_t VirtualSize; } ;
 struct TYPE_17__ {size_t VirtualAddress; size_t SizeOfRawData; size_t PointerToRawData; TYPE_2__ Misc; } ;
-struct TYPE_16__ {int e_lfanew; int /*<<< orphan*/  e_magic; } ;
-struct TYPE_12__ {int NumberOfSections; int SizeOfOptionalHeader; int Characteristics; int /*<<< orphan*/  Machine; } ;
-struct TYPE_14__ {int MajorLinkerVersion; int BaseOfCode; int ImageBase; int MajorOperatingSystemVersion; int MajorImageVersion; int MajorSubsystemVersion; int SizeOfHeaders; int SizeOfImage; int SectionAlignment; int FileAlignment; TYPE_1__* DataDirectory; int /*<<< orphan*/  Subsystem; int /*<<< orphan*/  Magic; } ;
-struct TYPE_15__ {TYPE_3__ FileHeader; TYPE_5__ OptionalHeader; int /*<<< orphan*/  Signature; } ;
-struct TYPE_10__ {int Size; int /*<<< orphan*/  VirtualAddress; } ;
-typedef  int /*<<< orphan*/  IMAGE_SECTION_HEADER ;
-typedef  TYPE_5__ IMAGE_OPTIONAL_HEADER ;
-typedef  TYPE_6__ IMAGE_NT_HEADERS ;
-typedef  TYPE_7__ IMAGE_DOS_HEADER ;
-typedef  scalar_t__ HANDLE ;
-typedef  size_t DWORD ;
-typedef  int /*<<< orphan*/  BYTE ;
+struct TYPE_16__ {int e_lfanew; int e_magic; } ;
+struct TYPE_12__ {int NumberOfSections; int SizeOfOptionalHeader; int Characteristics; int Machine; } ;
+struct TYPE_14__ {int MajorLinkerVersion; int BaseOfCode; int ImageBase; int MajorOperatingSystemVersion; int MajorImageVersion; int MajorSubsystemVersion; int SizeOfHeaders; int SizeOfImage; int SectionAlignment; int FileAlignment; TYPE_1__* DataDirectory; int Subsystem; int Magic; } ;
+struct TYPE_15__ {TYPE_3__ FileHeader; TYPE_5__ OptionalHeader; int Signature; } ;
+struct TYPE_10__ {int Size; int VirtualAddress; } ;
+typedef int IMAGE_SECTION_HEADER ;
+typedef TYPE_5__ IMAGE_OPTIONAL_HEADER ;
+typedef TYPE_6__ IMAGE_NT_HEADERS ;
+typedef TYPE_7__ IMAGE_DOS_HEADER ;
+typedef scalar_t__ HANDLE ;
+typedef size_t DWORD ;
+typedef int BYTE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CREATE_ALWAYS ; 
- int /*<<< orphan*/  CloseHandle (scalar_t__) ; 
- scalar_t__ CreateFileA (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GENERIC_WRITE ; 
- int /*<<< orphan*/  IMAGE_DOS_SIGNATURE ; 
- int IMAGE_FILE_DLL ; 
- int IMAGE_FILE_EXECUTABLE_IMAGE ; 
- int /*<<< orphan*/  IMAGE_FILE_MACHINE_I386 ; 
- size_t IMAGE_FILE_RESOURCE_DIRECTORY ; 
- int /*<<< orphan*/  IMAGE_NT_OPTIONAL_HDR_MAGIC ; 
- int /*<<< orphan*/  IMAGE_NT_SIGNATURE ; 
- int /*<<< orphan*/  IMAGE_SUBSYSTEM_WINDOWS_CUI ; 
- scalar_t__ INVALID_HANDLE_VALUE ; 
- int /*<<< orphan*/  WriteFile (scalar_t__,int /*<<< orphan*/ *,size_t,size_t*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  filename ; 
- size_t max_sections ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,TYPE_8__*,int) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- size_t min (int,size_t) ; 
- int /*<<< orphan*/  ok (int,char*) ; 
- int page_size ; 
- int /*<<< orphan*/  rva_rsrc_start ; 
+
+ int CREATE_ALWAYS ;
+ int CloseHandle (scalar_t__) ;
+ scalar_t__ CreateFileA (int ,int ,int ,int *,int ,int ,int ) ;
+ int GENERIC_WRITE ;
+ int IMAGE_DOS_SIGNATURE ;
+ int IMAGE_FILE_DLL ;
+ int IMAGE_FILE_EXECUTABLE_IMAGE ;
+ int IMAGE_FILE_MACHINE_I386 ;
+ size_t IMAGE_FILE_RESOURCE_DIRECTORY ;
+ int IMAGE_NT_OPTIONAL_HDR_MAGIC ;
+ int IMAGE_NT_SIGNATURE ;
+ int IMAGE_SUBSYSTEM_WINDOWS_CUI ;
+ scalar_t__ INVALID_HANDLE_VALUE ;
+ int WriteFile (scalar_t__,int *,size_t,size_t*,int *) ;
+ int filename ;
+ size_t max_sections ;
+ int memcpy (int *,TYPE_8__*,int) ;
+ int memset (int *,int ,int) ;
+ size_t min (int,size_t) ;
+ int ok (int,char*) ;
+ int page_size ;
+ int rva_rsrc_start ;
 
 __attribute__((used)) static int build_exe( const sec_build* sec_descr )
 {
@@ -97,8 +97,8 @@ __attribute__((used)) static int build_exe( const sec_build* sec_descr )
     opt->SizeOfImage = page_size;
     opt->Subsystem = IMAGE_SUBSYSTEM_WINDOWS_CUI;
 
-    /* if SectionAlignment and File alignment are not specified */
-    /* UpdateResource fails trying to create a huge temporary file */
+
+
     opt->SectionAlignment = page_size;
     opt->FileAlignment = page_size;
 
@@ -124,18 +124,18 @@ __attribute__((used)) static int build_exe( const sec_build* sec_descr )
                 file_size = phys_end_of_section;
         }
 
-    file = CreateFileA(filename, GENERIC_WRITE, 0, NULL, CREATE_ALWAYS, 0, 0);
+    file = CreateFileA(filename, GENERIC_WRITE, 0, ((void*)0), CREATE_ALWAYS, 0, 0);
     ok (file != INVALID_HANDLE_VALUE, "failed to create file\n");
 
-    /* write out the header */
-    WriteFile( file, page, sizeof page, &written, NULL );
 
-    /* write out zeroed pages for sections */
+    WriteFile( file, page, sizeof page, &written, ((void*)0) );
+
+
     memset( page, 0, sizeof page );
     for ( i = page_size; i < file_size; i += page_size )
     {
-	DWORD size = min(page_size, file_size - i);
-        WriteFile( file, page, size, &written, NULL );
+ DWORD size = min(page_size, file_size - i);
+        WriteFile( file, page, size, &written, ((void*)0) );
     }
 
     CloseHandle( file );

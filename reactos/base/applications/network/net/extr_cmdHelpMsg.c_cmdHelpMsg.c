@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  va_list ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  char* PWSTR ;
-typedef  int /*<<< orphan*/  LPWSTR ;
-typedef  scalar_t__ LONG ;
-typedef  int INT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ConPrintf (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  ConPuts (int /*<<< orphan*/ ,char*) ; 
- int FORMAT_MESSAGE_ALLOCATE_BUFFER ; 
- int FORMAT_MESSAGE_ARGUMENT_ARRAY ; 
- int FORMAT_MESSAGE_FROM_HMODULE ; 
- int FORMAT_MESSAGE_FROM_SYSTEM ; 
- int /*<<< orphan*/  FormatMessageW (int,int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LANG_USER_DEFAULT ; 
- int /*<<< orphan*/  LocalFree (char*) ; 
- scalar_t__ MAX_LANMAN_MESSAGE_ID ; 
- scalar_t__ MIN_LANMAN_MESSAGE_ID ; 
- int /*<<< orphan*/  MSG_HELPMSG_HELP ; 
- int /*<<< orphan*/  MSG_HELPMSG_SYNTAX ; 
- int /*<<< orphan*/  PrintErrorMessage (int) ; 
- int /*<<< orphan*/  PrintMessageString (int) ; 
- int /*<<< orphan*/  PrintNetMessage (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  StdOut ; 
- scalar_t__ _wcsicmp (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/ * hModuleNetMsg ; 
- scalar_t__ wcstol (int /*<<< orphan*/ *,char**,int) ; 
+
+
+
+typedef int va_list ;
+typedef int WCHAR ;
+typedef char* PWSTR ;
+typedef int LPWSTR ;
+typedef scalar_t__ LONG ;
+typedef int INT ;
+
+
+ int ConPrintf (int ,char*,char*) ;
+ int ConPuts (int ,char*) ;
+ int FORMAT_MESSAGE_ALLOCATE_BUFFER ;
+ int FORMAT_MESSAGE_ARGUMENT_ARRAY ;
+ int FORMAT_MESSAGE_FROM_HMODULE ;
+ int FORMAT_MESSAGE_FROM_SYSTEM ;
+ int FormatMessageW (int,int *,scalar_t__,int ,int ,int ,int *) ;
+ int LANG_USER_DEFAULT ;
+ int LocalFree (char*) ;
+ scalar_t__ MAX_LANMAN_MESSAGE_ID ;
+ scalar_t__ MIN_LANMAN_MESSAGE_ID ;
+ int MSG_HELPMSG_HELP ;
+ int MSG_HELPMSG_SYNTAX ;
+ int PrintErrorMessage (int) ;
+ int PrintMessageString (int) ;
+ int PrintNetMessage (int ) ;
+ int StdOut ;
+ scalar_t__ _wcsicmp (int *,char*) ;
+ int * hModuleNetMsg ;
+ scalar_t__ wcstol (int *,char**,int) ;
 
 INT cmdHelpMsg(INT argc, WCHAR **argv)
 {
@@ -47,7 +47,7 @@ INT cmdHelpMsg(INT argc, WCHAR **argv)
     PWSTR pBuffer;
     PWSTR pInserts[10] = {L"***", L"***", L"***", L"***",
                           L"***", L"***", L"***", L"***",
-                          L"***", NULL};
+                          L"***", ((void*)0)};
 
     if (argc < 3)
     {
@@ -100,10 +100,10 @@ INT cmdHelpMsg(INT argc, WCHAR **argv)
     }
     else
     {
-        /* Retrieve the message string without appending extra newlines */
+
         FormatMessageW(FORMAT_MESSAGE_ALLOCATE_BUFFER | FORMAT_MESSAGE_FROM_SYSTEM |
                        FORMAT_MESSAGE_ARGUMENT_ARRAY,
-                       NULL,
+                       ((void*)0),
                        errNum,
                        LANG_USER_DEFAULT,
                        (LPWSTR)&pBuffer,

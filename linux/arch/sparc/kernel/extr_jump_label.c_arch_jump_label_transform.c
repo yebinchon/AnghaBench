@@ -1,61 +1,61 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u32 ;
+
+
+
+
+typedef int u32 ;
 struct jump_entry {scalar_t__ code; scalar_t__ target; } ;
-typedef  int s32 ;
-typedef  enum jump_label_type { ____Placeholder_jump_label_type } jump_label_type ;
+typedef int s32 ;
+typedef enum jump_label_type { ____Placeholder_jump_label_type } jump_label_type ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BUG_ON (int) ; 
- int JUMP_LABEL_JMP ; 
- int /*<<< orphan*/  flushi (int*) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  text_mutex ; 
+
+ int BUG_ON (int) ;
+ int JUMP_LABEL_JMP ;
+ int flushi (int*) ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
+ int text_mutex ;
 
 void arch_jump_label_transform(struct jump_entry *entry,
-			       enum jump_label_type type)
+          enum jump_label_type type)
 {
-	u32 *insn = (u32 *) (unsigned long) entry->code;
-	u32 val;
+ u32 *insn = (u32 *) (unsigned long) entry->code;
+ u32 val;
 
-	if (type == JUMP_LABEL_JMP) {
-		s32 off = (s32)entry->target - (s32)entry->code;
-		bool use_v9_branch = false;
+ if (type == JUMP_LABEL_JMP) {
+  s32 off = (s32)entry->target - (s32)entry->code;
+  bool use_v9_branch = 0;
 
-		BUG_ON(off & 3);
+  BUG_ON(off & 3);
 
-#ifdef CONFIG_SPARC64
-		if (off <= 0xfffff && off >= -0x100000)
-			use_v9_branch = true;
-#endif
-		if (use_v9_branch) {
-			/* WDISP19 - target is . + immed << 2 */
-			/* ba,pt %xcc, . + off */
-			val = 0x10680000 | (((u32) off >> 2) & 0x7ffff);
-		} else {
-			/* WDISP22 - target is . + immed << 2 */
-			BUG_ON(off > 0x7fffff);
-			BUG_ON(off < -0x800000);
-			/* ba . + off */
-			val = 0x10800000 | (((u32) off >> 2) & 0x3fffff);
-		}
-	} else {
-		val = 0x01000000;
-	}
 
-	mutex_lock(&text_mutex);
-	*insn = val;
-	flushi(insn);
-	mutex_unlock(&text_mutex);
+
+
+
+  if (use_v9_branch) {
+
+
+   val = 0x10680000 | (((u32) off >> 2) & 0x7ffff);
+  } else {
+
+   BUG_ON(off > 0x7fffff);
+   BUG_ON(off < -0x800000);
+
+   val = 0x10800000 | (((u32) off >> 2) & 0x3fffff);
+  }
+ } else {
+  val = 0x01000000;
+ }
+
+ mutex_lock(&text_mutex);
+ *insn = val;
+ flushi(insn);
+ mutex_unlock(&text_mutex);
 }

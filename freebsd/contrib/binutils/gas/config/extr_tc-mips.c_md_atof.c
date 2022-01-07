@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  LITTLENUM_TYPE ;
 
-/* Variables and functions */
- char* _ (char*) ; 
- char* atof_ieee (char*,int,int /*<<< orphan*/ *) ; 
- char* input_line_pointer ; 
- int /*<<< orphan*/  md_number_to_chars (char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  target_big_endian ; 
+
+
+
+typedef int LITTLENUM_TYPE ;
+
+
+ char* _ (char*) ;
+ char* atof_ieee (char*,int,int *) ;
+ char* input_line_pointer ;
+ int md_number_to_chars (char*,int ,int) ;
+ int target_big_endian ;
 
 char *
 md_atof (int type, char *litP, int *sizeP)
@@ -51,19 +51,19 @@ md_atof (int type, char *litP, int *sizeP)
   if (! target_big_endian)
     {
       for (i = prec - 1; i >= 0; i--)
-	{
-	  md_number_to_chars (litP, words[i], 2);
-	  litP += 2;
-	}
+ {
+   md_number_to_chars (litP, words[i], 2);
+   litP += 2;
+ }
     }
   else
     {
       for (i = 0; i < prec; i++)
-	{
-	  md_number_to_chars (litP, words[i], 2);
-	  litP += 2;
-	}
+ {
+   md_number_to_chars (litP, words[i], 2);
+   litP += 2;
+ }
     }
 
-  return NULL;
+  return ((void*)0);
 }

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
+
+
+
+
+typedef int u32 ;
 struct mid_pwr {scalar_t__ regs; } ;
 
-/* Variables and functions */
- scalar_t__ PM_SSS (int) ; 
- int /*<<< orphan*/  readl (scalar_t__) ; 
+
+ scalar_t__ PM_SSS (int) ;
+ int readl (scalar_t__) ;
 
 __attribute__((used)) static u32 mid_pwr_get_state(struct mid_pwr *pwr, int reg)
 {
-	return readl(pwr->regs + PM_SSS(reg));
+ return readl(pwr->regs + PM_SSS(reg));
 }

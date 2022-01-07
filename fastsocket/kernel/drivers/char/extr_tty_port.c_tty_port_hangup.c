@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct tty_port {int /*<<< orphan*/  delta_msr_wait; int /*<<< orphan*/  open_wait; int /*<<< orphan*/  lock; int /*<<< orphan*/ * tty; int /*<<< orphan*/  flags; scalar_t__ count; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASYNC_NORMAL_ACTIVE ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  tty_kref_put (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tty_port_shutdown (struct tty_port*) ; 
- int /*<<< orphan*/  wake_up_interruptible (int /*<<< orphan*/ *) ; 
+
+
+
+struct tty_port {int delta_msr_wait; int open_wait; int lock; int * tty; int flags; scalar_t__ count; } ;
+
+
+ int ASYNC_NORMAL_ACTIVE ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
+ int tty_kref_put (int *) ;
+ int tty_port_shutdown (struct tty_port*) ;
+ int wake_up_interruptible (int *) ;
 
 void tty_port_hangup(struct tty_port *port)
 {
-	unsigned long flags;
+ unsigned long flags;
 
-	spin_lock_irqsave(&port->lock, flags);
-	port->count = 0;
-	port->flags &= ~ASYNC_NORMAL_ACTIVE;
-	if (port->tty)
-		tty_kref_put(port->tty);
-	port->tty = NULL;
-	spin_unlock_irqrestore(&port->lock, flags);
-	wake_up_interruptible(&port->open_wait);
-	wake_up_interruptible(&port->delta_msr_wait);
-	tty_port_shutdown(port);
+ spin_lock_irqsave(&port->lock, flags);
+ port->count = 0;
+ port->flags &= ~ASYNC_NORMAL_ACTIVE;
+ if (port->tty)
+  tty_kref_put(port->tty);
+ port->tty = ((void*)0);
+ spin_unlock_irqrestore(&port->lock, flags);
+ wake_up_interruptible(&port->open_wait);
+ wake_up_interruptible(&port->delta_msr_wait);
+ tty_port_shutdown(port);
 }

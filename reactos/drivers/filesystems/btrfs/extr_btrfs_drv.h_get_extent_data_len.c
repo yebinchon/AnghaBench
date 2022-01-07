@@ -1,45 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint16_t ;
-typedef  int /*<<< orphan*/  TREE_BLOCK_REF ;
-typedef  int /*<<< orphan*/  SHARED_DATA_REF ;
-typedef  int /*<<< orphan*/  SHARED_BLOCK_REF ;
-typedef  int /*<<< orphan*/  EXTENT_REF_V0 ;
-typedef  int /*<<< orphan*/  EXTENT_DATA_REF ;
 
-/* Variables and functions */
-#define  TYPE_EXTENT_DATA_REF 132 
-#define  TYPE_EXTENT_REF_V0 131 
-#define  TYPE_SHARED_BLOCK_REF 130 
-#define  TYPE_SHARED_DATA_REF 129 
-#define  TYPE_TREE_BLOCK_REF 128 
 
+
+
+typedef int uint8_t ;
+typedef int uint16_t ;
+typedef int TREE_BLOCK_REF ;
+typedef int SHARED_DATA_REF ;
+typedef int SHARED_BLOCK_REF ;
+typedef int EXTENT_REF_V0 ;
+typedef int EXTENT_DATA_REF ;
 __attribute__((used)) __inline static uint16_t get_extent_data_len(uint8_t type) {
     switch (type) {
-        case TYPE_TREE_BLOCK_REF:
+        case 128:
             return sizeof(TREE_BLOCK_REF);
 
-        case TYPE_EXTENT_DATA_REF:
+        case 132:
             return sizeof(EXTENT_DATA_REF);
 
-        case TYPE_EXTENT_REF_V0:
+        case 131:
             return sizeof(EXTENT_REF_V0);
 
-        case TYPE_SHARED_BLOCK_REF:
+        case 130:
             return sizeof(SHARED_BLOCK_REF);
 
-        case TYPE_SHARED_DATA_REF:
+        case 129:
             return sizeof(SHARED_DATA_REF);
 
         default:

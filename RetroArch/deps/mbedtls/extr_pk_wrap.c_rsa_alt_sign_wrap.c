@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {size_t (* key_len_func ) (int /*<<< orphan*/ ) ;int (* sign_func ) (int /*<<< orphan*/ ,int (*) (void*,unsigned char*,size_t),void*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned int,unsigned char const*,unsigned char*) ;int /*<<< orphan*/  key; } ;
-typedef  TYPE_1__ mbedtls_rsa_alt_context ;
-typedef  int /*<<< orphan*/  mbedtls_md_type_t ;
 
-/* Variables and functions */
- int MBEDTLS_ERR_PK_BAD_INPUT_DATA ; 
- int /*<<< orphan*/  MBEDTLS_RSA_PRIVATE ; 
- size_t UINT_MAX ; 
- size_t stub1 (int /*<<< orphan*/ ) ; 
- int stub2 (int /*<<< orphan*/ ,int (*) (void*,unsigned char*,size_t),void*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned int,unsigned char const*,unsigned char*) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {size_t (* key_len_func ) (int ) ;int (* sign_func ) (int ,int (*) (void*,unsigned char*,size_t),void*,int ,int ,unsigned int,unsigned char const*,unsigned char*) ;int key; } ;
+typedef TYPE_1__ mbedtls_rsa_alt_context ;
+typedef int mbedtls_md_type_t ;
+
+
+ int MBEDTLS_ERR_PK_BAD_INPUT_DATA ;
+ int MBEDTLS_RSA_PRIVATE ;
+ size_t UINT_MAX ;
+ size_t stub1 (int ) ;
+ int stub2 (int ,int (*) (void*,unsigned char*,size_t),void*,int ,int ,unsigned int,unsigned char const*,unsigned char*) ;
 
 __attribute__((used)) static int rsa_alt_sign_wrap( void *ctx, mbedtls_md_type_t md_alg,
                    const unsigned char *hash, size_t hash_len,
@@ -29,10 +29,10 @@ __attribute__((used)) static int rsa_alt_sign_wrap( void *ctx, mbedtls_md_type_t
 {
     mbedtls_rsa_alt_context *rsa_alt = (mbedtls_rsa_alt_context *) ctx;
 
-#if defined(MBEDTLS_HAVE_INT64)
-    if( UINT_MAX < hash_len )
-        return( MBEDTLS_ERR_PK_BAD_INPUT_DATA );
-#endif /* MBEDTLS_HAVE_INT64 */
+
+
+
+
 
     *sig_len = rsa_alt->key_len_func( rsa_alt->key );
 

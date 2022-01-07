@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  conv_form; int /*<<< orphan*/  pub_key; int /*<<< orphan*/  group; } ;
-typedef  TYPE_1__ EC_KEY ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EC_F_I2O_ECPUBLICKEY ; 
- size_t EC_POINT_point2oct (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned char*,size_t,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ECerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ERR_R_EC_LIB ; 
- int /*<<< orphan*/  ERR_R_MALLOC_FAILURE ; 
- int /*<<< orphan*/  ERR_R_PASSED_NULL_PARAMETER ; 
- int /*<<< orphan*/  OPENSSL_free (unsigned char*) ; 
- unsigned char* OPENSSL_malloc (size_t) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int conv_form; int pub_key; int group; } ;
+typedef TYPE_1__ EC_KEY ;
+
+
+ int EC_F_I2O_ECPUBLICKEY ;
+ size_t EC_POINT_point2oct (int ,int ,int ,unsigned char*,size_t,int *) ;
+ int ECerr (int ,int ) ;
+ int ERR_R_EC_LIB ;
+ int ERR_R_MALLOC_FAILURE ;
+ int ERR_R_PASSED_NULL_PARAMETER ;
+ int OPENSSL_free (unsigned char*) ;
+ unsigned char* OPENSSL_malloc (size_t) ;
 
 int i2o_ECPublicKey(const EC_KEY *a, unsigned char **out)
 {
     size_t buf_len = 0;
     int new_buffer = 0;
 
-    if (a == NULL) {
+    if (a == ((void*)0)) {
         ECerr(EC_F_I2O_ECPUBLICKEY, ERR_R_PASSED_NULL_PARAMETER);
         return 0;
     }
 
     buf_len = EC_POINT_point2oct(a->group, a->pub_key,
-                                 a->conv_form, NULL, 0, NULL);
+                                 a->conv_form, ((void*)0), 0, ((void*)0));
 
-    if (out == NULL || buf_len == 0)
-        /* out == NULL => just return the length of the octet string */
+    if (out == ((void*)0) || buf_len == 0)
+
         return buf_len;
 
-    if (*out == NULL) {
-        if ((*out = OPENSSL_malloc(buf_len)) == NULL) {
+    if (*out == ((void*)0)) {
+        if ((*out = OPENSSL_malloc(buf_len)) == ((void*)0)) {
             ECerr(EC_F_I2O_ECPUBLICKEY, ERR_R_MALLOC_FAILURE);
             return 0;
         }
         new_buffer = 1;
     }
     if (!EC_POINT_point2oct(a->group, a->pub_key, a->conv_form,
-                            *out, buf_len, NULL)) {
+                            *out, buf_len, ((void*)0))) {
         ECerr(EC_F_I2O_ECPUBLICKEY, ERR_R_EC_LIB);
         if (new_buffer) {
             OPENSSL_free(*out);
-            *out = NULL;
+            *out = ((void*)0);
         }
         return 0;
     }

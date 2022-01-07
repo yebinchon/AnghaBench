@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  v4l2_std_id ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int v4l2_std_id ;
 struct viu_fh {TYPE_1__* dev; } ;
 struct file {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/  std; } ;
+struct TYPE_2__ {int std; } ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static int vidioc_g_std(struct file *file, void *priv, v4l2_std_id *std_id)
 {
-	struct viu_fh *fh = priv;
+ struct viu_fh *fh = priv;
 
-	*std_id = fh->dev->std;
-	return 0;
+ *std_id = fh->dev->std;
+ return 0;
 }

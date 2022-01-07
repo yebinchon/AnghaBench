@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ int ZLOG_ALERT ;
+ int ZLOG_DEBUG ;
+ int zlog_level ;
 
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int ZLOG_ALERT ; 
- int ZLOG_DEBUG ; 
- int zlog_level ; 
-
-int zlog_set_level(int new_value) /* {{{ */
+int zlog_set_level(int new_value)
 {
-	int old_value = zlog_level;
+ int old_value = zlog_level;
 
-	if (new_value < ZLOG_DEBUG || new_value > ZLOG_ALERT) return old_value;
+ if (new_value < ZLOG_DEBUG || new_value > ZLOG_ALERT) return old_value;
 
-	zlog_level = new_value;
-	return old_value;
+ zlog_level = new_value;
+ return old_value;
 }

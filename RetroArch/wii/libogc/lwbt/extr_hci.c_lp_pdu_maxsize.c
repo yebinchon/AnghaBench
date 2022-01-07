@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u16_t ;
-struct TYPE_2__ {int /*<<< orphan*/  acl_mtu; } ;
 
-/* Variables and functions */
- TYPE_1__* hci_dev ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u16_t ;
+struct TYPE_2__ {int acl_mtu; } ;
+
+
+ TYPE_1__* hci_dev ;
 
 u16_t lp_pdu_maxsize()
 {
-	return hci_dev->acl_mtu;
+ return hci_dev->acl_mtu;
 }

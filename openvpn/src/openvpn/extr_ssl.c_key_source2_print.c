@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct key_source2 {int /*<<< orphan*/  server; int /*<<< orphan*/  client; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  key_source_print (int /*<<< orphan*/ *,char*) ; 
+
+
+
+struct key_source2 {int server; int client; } ;
+
+
+ int key_source_print (int *,char*) ;
 
 __attribute__((used)) static void
 key_source2_print(const struct key_source2 *k)

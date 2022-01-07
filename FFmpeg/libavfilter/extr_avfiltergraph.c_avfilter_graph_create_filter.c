@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  AVFilterGraph ;
-typedef  int /*<<< orphan*/  AVFilterContext ;
-typedef  int /*<<< orphan*/  AVFilter ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  avfilter_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * avfilter_graph_alloc_filter (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,char const*) ; 
- int avfilter_init_str (int /*<<< orphan*/ *,char const*) ; 
+
+
+
+typedef int AVFilterGraph ;
+typedef int AVFilterContext ;
+typedef int AVFilter ;
+
+
+ int AVERROR (int ) ;
+ int ENOMEM ;
+ int avfilter_free (int *) ;
+ int * avfilter_graph_alloc_filter (int *,int const*,char const*) ;
+ int avfilter_init_str (int *,char const*) ;
 
 int avfilter_graph_create_filter(AVFilterContext **filt_ctx, const AVFilter *filt,
                                  const char *name, const char *args, void *opaque,
@@ -40,6 +40,6 @@ int avfilter_graph_create_filter(AVFilterContext **filt_ctx, const AVFilter *fil
 fail:
     if (*filt_ctx)
         avfilter_free(*filt_ctx);
-    *filt_ctx = NULL;
+    *filt_ctx = ((void*)0);
     return ret;
 }

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  quicly_stream_t ;
+
+
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int quicly_stream_t ;
 struct TYPE_12__ {size_t len; TYPE_1__* cb; } ;
-typedef  TYPE_3__ quicly_sendbuf_vec_t ;
+typedef TYPE_3__ quicly_sendbuf_vec_t ;
 struct TYPE_11__ {size_t size; scalar_t__ capacity; TYPE_3__* entries; } ;
 struct TYPE_13__ {size_t off_in_first_vec; TYPE_2__ vecs; } ;
-typedef  TYPE_4__ quicly_sendbuf_t ;
-struct TYPE_10__ {int /*<<< orphan*/  (* discard_vec ) (TYPE_3__*) ;} ;
+typedef TYPE_4__ quicly_sendbuf_t ;
+struct TYPE_10__ {int (* discard_vec ) (TYPE_3__*) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  free (TYPE_3__*) ; 
- int /*<<< orphan*/  memmove (TYPE_3__*,TYPE_3__*,size_t) ; 
- int /*<<< orphan*/  quicly_stream_sync_sendbuf (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 (TYPE_3__*) ; 
+
+ int assert (int) ;
+ int free (TYPE_3__*) ;
+ int memmove (TYPE_3__*,TYPE_3__*,size_t) ;
+ int quicly_stream_sync_sendbuf (int *,int ) ;
+ int stub1 (TYPE_3__*) ;
 
 void quicly_sendbuf_shift(quicly_stream_t *stream, quicly_sendbuf_t *sb, size_t delta)
 {
@@ -42,7 +42,7 @@ void quicly_sendbuf_shift(quicly_stream_t *stream, quicly_sendbuf_t *sb, size_t 
             break;
         }
         delta -= bytes_in_first_vec;
-        if (first_vec->cb->discard_vec != NULL)
+        if (first_vec->cb->discard_vec != ((void*)0))
             first_vec->cb->discard_vec(first_vec);
         sb->off_in_first_vec = 0;
     }
@@ -52,7 +52,7 @@ void quicly_sendbuf_shift(quicly_stream_t *stream, quicly_sendbuf_t *sb, size_t 
             sb->vecs.size -= i;
         } else {
             free(sb->vecs.entries);
-            sb->vecs.entries = NULL;
+            sb->vecs.entries = ((void*)0);
             sb->vecs.size = 0;
             sb->vecs.capacity = 0;
         }

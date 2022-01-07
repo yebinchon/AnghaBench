@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vdisp_t ;
-typedef  int /*<<< orphan*/  script_ctx_t ;
-typedef  int /*<<< orphan*/  jsval_t ;
-typedef  int /*<<< orphan*/  WORD ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int vdisp_t ;
+typedef int script_ctx_t ;
+typedef int jsval_t ;
+typedef int WORD ;
 struct TYPE_3__ {double time; } ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  TYPE_1__ DateInstance ;
+typedef int HRESULT ;
+typedef TYPE_1__ DateInstance ;
 
-/* Variables and functions */
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  JS_E_DATE_EXPECTED ; 
- int /*<<< orphan*/  JS_E_MISSING_ARG ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TRACE (char*) ; 
- double date_from_time (double) ; 
- TYPE_1__* date_this (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jsval_number (double) ; 
- double make_date (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  make_day (int /*<<< orphan*/ ,double,double) ; 
- int /*<<< orphan*/  throw_type_error (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- double time_clip (double) ; 
- int /*<<< orphan*/  time_within_day (double) ; 
- int /*<<< orphan*/  to_number (int /*<<< orphan*/ *,int /*<<< orphan*/ ,double*) ; 
- int /*<<< orphan*/  year_from_time (double) ; 
+
+ scalar_t__ FAILED (int ) ;
+ int JS_E_DATE_EXPECTED ;
+ int JS_E_MISSING_ARG ;
+ int S_OK ;
+ int TRACE (char*) ;
+ double date_from_time (double) ;
+ TYPE_1__* date_this (int *) ;
+ int jsval_number (double) ;
+ double make_date (int ,int ) ;
+ int make_day (int ,double,double) ;
+ int throw_type_error (int *,int ,int *) ;
+ double time_clip (double) ;
+ int time_within_day (double) ;
+ int to_number (int *,int ,double*) ;
+ int year_from_time (double) ;
 
 __attribute__((used)) static HRESULT Date_setUTCMonth(script_ctx_t *ctx, vdisp_t *jsthis, WORD flags, unsigned argc, jsval_t *argv,
         jsval_t *r)
@@ -46,10 +46,10 @@ __attribute__((used)) static HRESULT Date_setUTCMonth(script_ctx_t *ctx, vdisp_t
     TRACE("\n");
 
     if(!(date = date_this(jsthis)))
-        return throw_type_error(ctx, JS_E_DATE_EXPECTED, NULL);
+        return throw_type_error(ctx, JS_E_DATE_EXPECTED, ((void*)0));
 
     if(!argc)
-        return throw_type_error(ctx, JS_E_MISSING_ARG, NULL);
+        return throw_type_error(ctx, JS_E_MISSING_ARG, ((void*)0));
 
     t = date->time;
 

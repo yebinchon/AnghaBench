@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mbedtls_cipher_context_t ;
 
-/* Variables and functions */
- int mbedtls_cipher_finish (int /*<<< orphan*/ *,unsigned char*,size_t*) ; 
- int mbedtls_cipher_reset (int /*<<< orphan*/ *) ; 
- int mbedtls_cipher_set_iv (int /*<<< orphan*/ *,unsigned char const*,size_t) ; 
- int mbedtls_cipher_update (int /*<<< orphan*/ *,unsigned char const*,size_t,unsigned char*,size_t*) ; 
+
+
+
+typedef int mbedtls_cipher_context_t ;
+
+
+ int mbedtls_cipher_finish (int *,unsigned char*,size_t*) ;
+ int mbedtls_cipher_reset (int *) ;
+ int mbedtls_cipher_set_iv (int *,unsigned char const*,size_t) ;
+ int mbedtls_cipher_update (int *,unsigned char const*,size_t,unsigned char*,size_t*) ;
 
 int mbedtls_cipher_crypt( mbedtls_cipher_context_t *ctx,
                   const unsigned char *iv, size_t iv_len,

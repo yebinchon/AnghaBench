@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
 
-/* Variables and functions */
+
+
+
+typedef int uint8_t ;
+
+
 
 char *
 pnp_eisaformat(uint8_t *data)
 {
-    static char	idbuf[8];
-    const char	hextoascii[] = "0123456789abcdef";
+    static char idbuf[8];
+    const char hextoascii[] = "0123456789abcdef";
 
     idbuf[0] = '@' + ((data[0] & 0x7c) >> 2);
     idbuf[1] = '@' + (((data[0] & 0x3) << 3) + ((data[1] & 0xe0) >> 5));

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  HANDLE ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAY_SIZE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GetDefaultPrinterW (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  OpenPrinterW (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  WARN (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  debugstr_w (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int WCHAR ;
+typedef int HANDLE ;
+typedef int DWORD ;
+typedef int BOOL ;
+
+
+ int ARRAY_SIZE (int *) ;
+ int FALSE ;
+ int GetDefaultPrinterW (int *,int *) ;
+ int OpenPrinterW (int *,int *,int *) ;
+ int WARN (char*,int ) ;
+ int debugstr_w (int *) ;
 
 __attribute__((used)) static BOOL PRINTDLG_OpenDefaultPrinter(HANDLE *hprn)
 {
@@ -30,7 +30,7 @@ __attribute__((used)) static BOOL PRINTDLG_OpenDefaultPrinter(HANDLE *hprn)
     BOOL res;
     if(!GetDefaultPrinterW(buf, &dwBufLen))
         return FALSE;
-    res = OpenPrinterW(buf, hprn, NULL);
+    res = OpenPrinterW(buf, hprn, ((void*)0));
     if (!res)
         WARN("Could not open printer %s\n", debugstr_w(buf));
     return res;

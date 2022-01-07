@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  git_repository ;
-typedef  int /*<<< orphan*/  git_oid ;
 
-/* Variables and functions */
- int detach (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int git_repository ;
+typedef int git_oid ;
+
+
+ int detach (int *,int const*,int *) ;
 
 int git_repository_set_head_detached(
-	git_repository* repo,
-	const git_oid* commitish)
+ git_repository* repo,
+ const git_oid* commitish)
 {
-	return detach(repo, commitish, NULL);
+ return detach(repo, commitish, ((void*)0));
 }

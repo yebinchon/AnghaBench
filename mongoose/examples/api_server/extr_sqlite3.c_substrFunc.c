@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_value ;
-typedef  int /*<<< orphan*/  sqlite3_context ;
-typedef  int i64 ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int sqlite3_value ;
+typedef int sqlite3_context ;
+typedef int i64 ;
 struct TYPE_2__ {int* aLimit; } ;
 
-/* Variables and functions */
- int SQLITE_BLOB ; 
- size_t SQLITE_LIMIT_LENGTH ; 
- int SQLITE_NULL ; 
- int /*<<< orphan*/  SQLITE_SKIP_UTF8 (unsigned char const*) ; 
- int /*<<< orphan*/  SQLITE_TRANSIENT ; 
- int /*<<< orphan*/  assert (int) ; 
- TYPE_1__* sqlite3_context_db_handle (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_result_blob (int /*<<< orphan*/ *,char*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_result_text (int /*<<< orphan*/ *,char*,int,int /*<<< orphan*/ ) ; 
- unsigned char* sqlite3_value_blob (int /*<<< orphan*/ *) ; 
- int sqlite3_value_bytes (int /*<<< orphan*/ *) ; 
- int sqlite3_value_int (int /*<<< orphan*/ *) ; 
- unsigned char* sqlite3_value_text (int /*<<< orphan*/ *) ; 
- int sqlite3_value_type (int /*<<< orphan*/ *) ; 
+
+ int SQLITE_BLOB ;
+ size_t SQLITE_LIMIT_LENGTH ;
+ int SQLITE_NULL ;
+ int SQLITE_SKIP_UTF8 (unsigned char const*) ;
+ int SQLITE_TRANSIENT ;
+ int assert (int) ;
+ TYPE_1__* sqlite3_context_db_handle (int *) ;
+ int sqlite3_result_blob (int *,char*,int,int ) ;
+ int sqlite3_result_text (int *,char*,int,int ) ;
+ unsigned char* sqlite3_value_blob (int *) ;
+ int sqlite3_value_bytes (int *) ;
+ int sqlite3_value_int (int *) ;
+ unsigned char* sqlite3_value_text (int *) ;
+ int sqlite3_value_type (int *) ;
 
 __attribute__((used)) static void substrFunc(
   sqlite3_context *context,

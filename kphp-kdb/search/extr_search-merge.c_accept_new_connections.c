@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct sockaddr_in {int fd; int /*<<< orphan*/  out_buff; int /*<<< orphan*/  Out; int /*<<< orphan*/  in_buff; int /*<<< orphan*/  In; int /*<<< orphan*/  state; scalar_t__ generation; TYPE_2__* ev; } ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct sockaddr_in {int fd; int out_buff; int Out; int in_buff; int In; int state; scalar_t__ generation; TYPE_2__* ev; } ;
 struct sockaddr {int dummy; } ;
-struct connection {int fd; int /*<<< orphan*/  out_buff; int /*<<< orphan*/  Out; int /*<<< orphan*/  in_buff; int /*<<< orphan*/  In; int /*<<< orphan*/  state; scalar_t__ generation; TYPE_2__* ev; } ;
-typedef  int /*<<< orphan*/  peer ;
-struct TYPE_6__ {int /*<<< orphan*/  s_addr; } ;
+struct connection {int fd; int out_buff; int Out; int in_buff; int In; int state; scalar_t__ generation; TYPE_2__* ev; } ;
+typedef int peer ;
+struct TYPE_6__ {int s_addr; } ;
 struct TYPE_8__ {int sin_port; TYPE_1__ sin_addr; } ;
 struct TYPE_7__ {TYPE_3__ peer; } ;
-typedef  TYPE_2__ event_t ;
+typedef TYPE_2__ event_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BUFF_SIZE ; 
- int /*<<< orphan*/  C_WANTRD ; 
- struct sockaddr_in* Connections ; 
- int EVA_CONTINUE ; 
- int EVT_READ ; 
- int EVT_SPEC ; 
- TYPE_2__* Events ; 
- int MAX_CONNECTIONS ; 
- int MAX_EVENTS ; 
- int accept (int,struct sockaddr*,unsigned int*) ; 
- int /*<<< orphan*/  active_connections ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  close (int) ; 
- scalar_t__ conn_generation ; 
- char* conv_addr (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  epoll_insert (int,int) ; 
- int /*<<< orphan*/  epoll_sethandler (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct sockaddr_in*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  init_builtin_buffer (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (TYPE_3__*,struct sockaddr_in*,int) ; 
- int /*<<< orphan*/  memset (struct sockaddr_in*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  server_read_write ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ verbosity ; 
+
+ int BUFF_SIZE ;
+ int C_WANTRD ;
+ struct sockaddr_in* Connections ;
+ int EVA_CONTINUE ;
+ int EVT_READ ;
+ int EVT_SPEC ;
+ TYPE_2__* Events ;
+ int MAX_CONNECTIONS ;
+ int MAX_EVENTS ;
+ int accept (int,struct sockaddr*,unsigned int*) ;
+ int active_connections ;
+ int assert (int) ;
+ int close (int) ;
+ scalar_t__ conn_generation ;
+ char* conv_addr (int ,char*) ;
+ int epoll_insert (int,int) ;
+ int epoll_sethandler (int,int ,int ,struct sockaddr_in*) ;
+ int fprintf (int ,char*,...) ;
+ int init_builtin_buffer (int *,int ,int ) ;
+ int memcpy (TYPE_3__*,struct sockaddr_in*,int) ;
+ int memset (struct sockaddr_in*,int ,int) ;
+ int server_read_write ;
+ int stderr ;
+ scalar_t__ verbosity ;
 
 int accept_new_connections (int fd, void *data, event_t *ev) {
   char buf[32];

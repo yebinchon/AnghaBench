@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_4__ {TYPE_1__* Rop; } ;
 struct riva_par {TYPE_2__ riva; } ;
-struct TYPE_3__ {int /*<<< orphan*/  Rop3; } ;
+struct TYPE_3__ {int Rop3; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NV_WR32 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  RIVA_FIFO_FREE (TYPE_2__,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  Rop ; 
- int /*<<< orphan*/  riva_set_pattern (struct riva_par*,int,int,int,int) ; 
+
+ int NV_WR32 (int *,int ,int) ;
+ int RIVA_FIFO_FREE (TYPE_2__,int ,int) ;
+ int Rop ;
+ int riva_set_pattern (struct riva_par*,int,int,int,int) ;
 
 __attribute__((used)) static void
 riva_set_rop_solid(struct riva_par *par, int rop)
 {
-	riva_set_pattern(par, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF);
+ riva_set_pattern(par, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF);
         RIVA_FIFO_FREE(par->riva, Rop, 1);
         NV_WR32(&par->riva.Rop->Rop3, 0, rop);
 

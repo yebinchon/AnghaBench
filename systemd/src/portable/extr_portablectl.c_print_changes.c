@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sd_bus_message ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SPECIAL_GLYPH_ARROW ; 
- scalar_t__ arg_quiet ; 
- int bus_log_parse_error (int) ; 
- scalar_t__ isempty (char const*) ; 
- int /*<<< orphan*/  log_error (char*,char const*,char const*,char const*) ; 
- int /*<<< orphan*/  log_info (char*,char const*,...) ; 
- int sd_bus_message_enter_container (int /*<<< orphan*/ *,char,char*) ; 
- int sd_bus_message_exit_container (int /*<<< orphan*/ *) ; 
- int sd_bus_message_read (int /*<<< orphan*/ *,char*,char const**,char const**,char const**) ; 
- int /*<<< orphan*/  special_glyph (int /*<<< orphan*/ ) ; 
- scalar_t__ streq (char const*,char*) ; 
+
+
+
+typedef int sd_bus_message ;
+
+
+ int SPECIAL_GLYPH_ARROW ;
+ scalar_t__ arg_quiet ;
+ int bus_log_parse_error (int) ;
+ scalar_t__ isempty (char const*) ;
+ int log_error (char*,char const*,char const*,char const*) ;
+ int log_info (char*,char const*,...) ;
+ int sd_bus_message_enter_container (int *,char,char*) ;
+ int sd_bus_message_exit_container (int *) ;
+ int sd_bus_message_read (int *,char*,char const**,char const**,char const**) ;
+ int special_glyph (int ) ;
+ scalar_t__ streq (char const*,char*) ;
 
 __attribute__((used)) static int print_changes(sd_bus_message *m) {
         int r;

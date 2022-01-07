@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
 
-/* Variables and functions */
-#define  GBM_FORMAT_ARGB2101010 131 
-#define  GBM_FORMAT_ARGB8888 130 
-#define  GBM_FORMAT_XRGB2101010 129 
-#define  GBM_FORMAT_XRGB8888 128 
+
+
+
+typedef int uint32_t ;
+
+
+
+
+
+
 
 __attribute__((used)) static const char *gbm_format_to_string(uint32_t format)
 {
     switch (format) {
-    case GBM_FORMAT_XRGB8888:
+    case 128:
         return "GBM_FORMAT_XRGB8888";
-    case GBM_FORMAT_ARGB8888:
+    case 130:
         return "GBM_FORMAT_ARGB8888";
-    case GBM_FORMAT_XRGB2101010:
+    case 129:
         return "GBM_FORMAT_XRGB2101010";
-    case GBM_FORMAT_ARGB2101010:
+    case 131:
         return "GBM_FORMAT_ARGB2101010";
     default:
         return "UNKNOWN";

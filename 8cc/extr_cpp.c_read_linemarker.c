@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_8__ {char* sval; scalar_t__ kind; } ;
-typedef  TYPE_1__ Token ;
+typedef TYPE_1__ Token ;
 struct TYPE_9__ {int line; char* name; } ;
-typedef  TYPE_2__ File ;
+typedef TYPE_2__ File ;
 
-/* Variables and functions */
- scalar_t__ TNEWLINE ; 
- scalar_t__ TSTRING ; 
- int atoi (char*) ; 
- TYPE_2__* current_file () ; 
- int /*<<< orphan*/  errort (TYPE_1__*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  is_digit_sequence (char*) ; 
- TYPE_1__* lex () ; 
- int /*<<< orphan*/  tok2s (TYPE_1__*) ; 
+
+ scalar_t__ TNEWLINE ;
+ scalar_t__ TSTRING ;
+ int atoi (char*) ;
+ TYPE_2__* current_file () ;
+ int errort (TYPE_1__*,char*,int ) ;
+ int is_digit_sequence (char*) ;
+ TYPE_1__* lex () ;
+ int tok2s (TYPE_1__*) ;
 
 __attribute__((used)) static void read_linemarker(Token *tok) {
     if (!is_digit_sequence(tok->sval))

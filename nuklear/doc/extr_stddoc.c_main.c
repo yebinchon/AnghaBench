@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  feof (int /*<<< orphan*/ ) ; 
- int getc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printf (char*,char*) ; 
- int /*<<< orphan*/  putc (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stdin ; 
- int /*<<< orphan*/  stdout ; 
+ int feof (int ) ;
+ int getc (int ) ;
+ int printf (char*,char*) ;
+ int putc (int,int ) ;
+ int stdin ;
+ int stdout ;
 
 int main() {
     printf("%s\n", "<meta charset='utf-8' emacsmode='-*- markdown -*-'>");
@@ -29,7 +21,7 @@ int main() {
             putc(chr, stdout);
             if( chr != '\r' && chr != '\n' ) continue;
         }
-        /**/ if( fsm_S <= 2 && chr == '/' && !fsm_D && !fsm_H ) fsm_S++;
+             if( fsm_S <= 2 && chr == '/' && !fsm_D && !fsm_H ) fsm_S++;
         else if( fsm_S == 3 && chr == ' ' && !fsm_D && !fsm_H ) fsm_S++;
         else if( fsm_D <= 2 && chr == '-' && !fsm_S && !fsm_H ) fsm_D++;
         else if( fsm_D == 3 && chr == ' ' && !fsm_S && !fsm_H ) fsm_D++;

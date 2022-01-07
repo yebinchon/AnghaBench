@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/ * fields ; 
- int /*<<< orphan*/  lrand48 () ; 
- int namespace_level ; 
- int /*<<< orphan*/  tree_insert_tl_field (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- scalar_t__ tree_lookup_tl_field (int /*<<< orphan*/ ,char*) ; 
+ int assert (int) ;
+ int * fields ;
+ int lrand48 () ;
+ int namespace_level ;
+ int tree_insert_tl_field (int ,char*,int ) ;
+ scalar_t__ tree_lookup_tl_field (int ,char*) ;
 
 int tl_add_field (char *id) {
   assert (namespace_level < 10);

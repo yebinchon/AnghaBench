@@ -1,39 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct wined3d_string_buffer {int dummy; } ;
-struct wined3d_shader_instruction {int handler_idx; int /*<<< orphan*/ * src; TYPE_1__* ctx; } ;
-struct glsl_src_param {int /*<<< orphan*/  param_str; } ;
+struct wined3d_shader_instruction {int handler_idx; int * src; TYPE_1__* ctx; } ;
+struct glsl_src_param {int param_str; } ;
 struct TYPE_2__ {struct wined3d_string_buffer* buffer; } ;
-typedef  int /*<<< orphan*/  DWORD ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FIXME (char*,int /*<<< orphan*/ ) ; 
-#define  WINED3DSIH_ADD 138 
-#define  WINED3DSIH_AND 137 
-#define  WINED3DSIH_DIV 136 
-#define  WINED3DSIH_IADD 135 
-#define  WINED3DSIH_ISHL 134 
-#define  WINED3DSIH_ISHR 133 
-#define  WINED3DSIH_MUL 132 
-#define  WINED3DSIH_OR 131 
-#define  WINED3DSIH_SUB 130 
-#define  WINED3DSIH_USHR 129 
-#define  WINED3DSIH_XOR 128 
- int /*<<< orphan*/  debug_d3dshaderinstructionhandler (int) ; 
- int /*<<< orphan*/  shader_addline (struct wined3d_string_buffer*,char*,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  shader_glsl_add_src_param (struct wined3d_shader_instruction const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,struct glsl_src_param*) ; 
- int /*<<< orphan*/  shader_glsl_append_dst (struct wined3d_string_buffer*,struct wined3d_shader_instruction const*) ; 
+
+ int FIXME (char*,int ) ;
+ int debug_d3dshaderinstructionhandler (int) ;
+ int shader_addline (struct wined3d_string_buffer*,char*,int ,char const*,int ) ;
+ int shader_glsl_add_src_param (struct wined3d_shader_instruction const*,int *,int ,struct glsl_src_param*) ;
+ int shader_glsl_append_dst (struct wined3d_string_buffer*,struct wined3d_shader_instruction const*) ;
 
 __attribute__((used)) static void shader_glsl_binop(const struct wined3d_shader_instruction *ins)
 {
@@ -43,20 +32,20 @@ __attribute__((used)) static void shader_glsl_binop(const struct wined3d_shader_
     DWORD write_mask;
     const char *op;
 
-    /* Determine the GLSL operator to use based on the opcode */
+
     switch (ins->handler_idx)
     {
-        case WINED3DSIH_ADD:  op = "+";  break;
-        case WINED3DSIH_AND:  op = "&";  break;
-        case WINED3DSIH_DIV:  op = "/";  break;
-        case WINED3DSIH_IADD: op = "+";  break;
-        case WINED3DSIH_ISHL: op = "<<"; break;
-        case WINED3DSIH_ISHR: op = ">>"; break;
-        case WINED3DSIH_MUL:  op = "*";  break;
-        case WINED3DSIH_OR:   op = "|";  break;
-        case WINED3DSIH_SUB:  op = "-";  break;
-        case WINED3DSIH_USHR: op = ">>"; break;
-        case WINED3DSIH_XOR:  op = "^";  break;
+        case 138: op = "+"; break;
+        case 137: op = "&"; break;
+        case 136: op = "/"; break;
+        case 135: op = "+"; break;
+        case 134: op = "<<"; break;
+        case 133: op = ">>"; break;
+        case 132: op = "*"; break;
+        case 131: op = "|"; break;
+        case 130: op = "-"; break;
+        case 129: op = ">>"; break;
+        case 128: op = "^"; break;
         default:
             op = "<unhandled operator>";
             FIXME("Opcode %s not yet handled in GLSL.\n", debug_d3dshaderinstructionhandler(ins->handler_idx));

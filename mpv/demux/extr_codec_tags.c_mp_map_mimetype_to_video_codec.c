@@ -1,19 +1,11 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char const*** mimetype_to_codec ; 
- scalar_t__ strcasecmp (char const*,char const*) ; 
+ char const*** mimetype_to_codec ;
+ scalar_t__ strcasecmp (char const*,char const*) ;
 
 const char *mp_map_mimetype_to_video_codec(const char *mimetype)
 {
@@ -23,5 +15,5 @@ const char *mp_map_mimetype_to_video_codec(const char *mimetype)
                 return mimetype_to_codec[n][1];
         }
     }
-    return NULL;
+    return ((void*)0);
 }

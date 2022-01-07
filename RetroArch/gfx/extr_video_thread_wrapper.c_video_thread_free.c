@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {int /*<<< orphan*/  lock; TYPE_3__* buffer; } ;
+
+
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_9__ {int lock; TYPE_3__* buffer; } ;
 struct TYPE_8__ {TYPE_3__* frame; } ;
-struct TYPE_10__ {int /*<<< orphan*/  miss_count; int /*<<< orphan*/  hit_count; int /*<<< orphan*/  alpha_lock; struct TYPE_10__* alpha_mod; int /*<<< orphan*/  cond_thread; int /*<<< orphan*/  cond_cmd; int /*<<< orphan*/  lock; TYPE_2__ frame; TYPE_1__ texture; int /*<<< orphan*/  thread; } ;
-typedef  TYPE_3__ thread_video_t ;
-struct TYPE_11__ {int /*<<< orphan*/  member_0; } ;
-typedef  TYPE_4__ thread_packet_t ;
+struct TYPE_10__ {int miss_count; int hit_count; int alpha_lock; struct TYPE_10__* alpha_mod; int cond_thread; int cond_cmd; int lock; TYPE_2__ frame; TYPE_1__ texture; int thread; } ;
+typedef TYPE_3__ thread_video_t ;
+struct TYPE_11__ {int member_0; } ;
+typedef TYPE_4__ thread_packet_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CMD_FREE ; 
- int /*<<< orphan*/  RARCH_LOG (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (TYPE_3__*) ; 
- int /*<<< orphan*/  scond_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  slock_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sthread_join (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  video_thread_send_and_wait_user_to_thread (TYPE_3__*,TYPE_4__*) ; 
+
+ int CMD_FREE ;
+ int RARCH_LOG (char*,int ,int ) ;
+ int free (TYPE_3__*) ;
+ int scond_free (int ) ;
+ int slock_free (int ) ;
+ int sthread_join (int ) ;
+ int video_thread_send_and_wait_user_to_thread (TYPE_3__*,TYPE_4__*) ;
 
 __attribute__((used)) static void video_thread_free(void *data)
 {
@@ -42,9 +42,9 @@ __attribute__((used)) static void video_thread_free(void *data)
 
    sthread_join(thr->thread);
 
-#if defined(HAVE_MENU)
-   free(thr->texture.frame);
-#endif
+
+
+
    free(thr->frame.buffer);
    slock_free(thr->frame.lock);
    slock_free(thr->lock);

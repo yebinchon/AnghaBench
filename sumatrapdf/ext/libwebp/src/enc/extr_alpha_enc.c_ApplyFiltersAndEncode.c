@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint32_t ;
-struct TYPE_8__ {int /*<<< orphan*/  lossless_data_size; int /*<<< orphan*/  lossless_hdr_size; int /*<<< orphan*/  lossless_size; int /*<<< orphan*/  palette_size; int /*<<< orphan*/  cache_bits; int /*<<< orphan*/  transform_bits; int /*<<< orphan*/  histogram_bits; int /*<<< orphan*/  lossless_features; } ;
-typedef  TYPE_2__ WebPAuxStats ;
-struct TYPE_7__ {int /*<<< orphan*/  lossless_data_size; int /*<<< orphan*/  lossless_hdr_size; int /*<<< orphan*/  lossless_size; int /*<<< orphan*/  palette_size; int /*<<< orphan*/  cache_bits; int /*<<< orphan*/  transform_bits; int /*<<< orphan*/  histogram_bits; int /*<<< orphan*/  lossless_features; } ;
-struct TYPE_9__ {scalar_t__ score; int /*<<< orphan*/  bw; TYPE_1__ stats; } ;
-typedef  TYPE_3__ FilterTrial ;
 
-/* Variables and functions */
- int EncodeAlphaInternal (int /*<<< orphan*/  const*,int,int,int,int,int,int,int /*<<< orphan*/ *,TYPE_3__*) ; 
- int FILTER_TRY_NONE ; 
- int GetFilterMap (int /*<<< orphan*/  const*,int,int,int,int) ; 
- int /*<<< orphan*/  InitFilterTrial (TYPE_3__*) ; 
- int /*<<< orphan*/ * VP8BitWriterBuf (int /*<<< orphan*/ *) ; 
- size_t VP8BitWriterSize (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  VP8BitWriterWipeOut (int /*<<< orphan*/ *) ; 
- int WEBP_FILTER_NONE ; 
- int /*<<< orphan*/  WebPSafeFree (int /*<<< orphan*/ *) ; 
- scalar_t__ WebPSafeMalloc (unsigned long long,size_t) ; 
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+struct TYPE_8__ {int lossless_data_size; int lossless_hdr_size; int lossless_size; int palette_size; int cache_bits; int transform_bits; int histogram_bits; int lossless_features; } ;
+typedef TYPE_2__ WebPAuxStats ;
+struct TYPE_7__ {int lossless_data_size; int lossless_hdr_size; int lossless_size; int palette_size; int cache_bits; int transform_bits; int histogram_bits; int lossless_features; } ;
+struct TYPE_9__ {scalar_t__ score; int bw; TYPE_1__ stats; } ;
+typedef TYPE_3__ FilterTrial ;
+
+
+ int EncodeAlphaInternal (int const*,int,int,int,int,int,int,int *,TYPE_3__*) ;
+ int FILTER_TRY_NONE ;
+ int GetFilterMap (int const*,int,int,int,int) ;
+ int InitFilterTrial (TYPE_3__*) ;
+ int * VP8BitWriterBuf (int *) ;
+ size_t VP8BitWriterSize (int *) ;
+ int VP8BitWriterWipeOut (int *) ;
+ int WEBP_FILTER_NONE ;
+ int WebPSafeFree (int *) ;
+ scalar_t__ WebPSafeMalloc (unsigned long long,size_t) ;
 
 __attribute__((used)) static int ApplyFiltersAndEncode(const uint8_t* alpha, int width, int height,
                                  size_t data_size, int method, int filter,
@@ -46,8 +46,8 @@ __attribute__((used)) static int ApplyFiltersAndEncode(const uint8_t* alpha, int
   InitFilterTrial(&best);
 
   if (try_map != FILTER_TRY_NONE) {
-    uint8_t* filtered_alpha =  (uint8_t*)WebPSafeMalloc(1ULL, data_size);
-    if (filtered_alpha == NULL) return 0;
+    uint8_t* filtered_alpha = (uint8_t*)WebPSafeMalloc(1ULL, data_size);
+    if (filtered_alpha == ((void*)0)) return 0;
 
     for (filter = WEBP_FILTER_NONE; ok && try_map; ++filter, try_map >>= 1) {
       if (try_map & 1) {
@@ -66,11 +66,11 @@ __attribute__((used)) static int ApplyFiltersAndEncode(const uint8_t* alpha, int
     WebPSafeFree(filtered_alpha);
   } else {
     ok = EncodeAlphaInternal(alpha, width, height, method, WEBP_FILTER_NONE,
-                             reduce_levels, effort_level, NULL, &best);
+                             reduce_levels, effort_level, ((void*)0), &best);
   }
   if (ok) {
-#if !defined(WEBP_DISABLE_STATS)
-    if (stats != NULL) {
+
+    if (stats != ((void*)0)) {
       stats->lossless_features = best.stats.lossless_features;
       stats->histogram_bits = best.stats.histogram_bits;
       stats->transform_bits = best.stats.transform_bits;
@@ -80,9 +80,9 @@ __attribute__((used)) static int ApplyFiltersAndEncode(const uint8_t* alpha, int
       stats->lossless_hdr_size = best.stats.lossless_hdr_size;
       stats->lossless_data_size = best.stats.lossless_data_size;
     }
-#else
-    (void)stats;
-#endif
+
+
+
     *output_size = VP8BitWriterSize(&best.bw);
     *output = VP8BitWriterBuf(&best.bw);
   } else {

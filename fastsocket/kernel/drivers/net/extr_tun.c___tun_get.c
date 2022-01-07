@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct tun_struct {int dummy; } ;
-struct tun_file {struct tun_struct* tun; int /*<<< orphan*/  count; } ;
+struct tun_file {struct tun_struct* tun; int count; } ;
 
-/* Variables and functions */
- scalar_t__ atomic_inc_not_zero (int /*<<< orphan*/ *) ; 
+
+ scalar_t__ atomic_inc_not_zero (int *) ;
 
 __attribute__((used)) static struct tun_struct *__tun_get(struct tun_file *tfile)
 {
-	struct tun_struct *tun = NULL;
+ struct tun_struct *tun = ((void*)0);
 
-	if (atomic_inc_not_zero(&tfile->count))
-		tun = tfile->tun;
+ if (atomic_inc_not_zero(&tfile->count))
+  tun = tfile->tun;
 
-	return tun;
+ return tun;
 }

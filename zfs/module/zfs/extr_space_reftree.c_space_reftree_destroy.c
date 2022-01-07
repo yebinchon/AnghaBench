@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  space_ref_t ;
-typedef  int /*<<< orphan*/  avl_tree_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  avl_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * avl_destroy_nodes (int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  kmem_free (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int space_ref_t ;
+typedef int avl_tree_t ;
+
+
+ int avl_destroy (int *) ;
+ int * avl_destroy_nodes (int *,void**) ;
+ int kmem_free (int *,int) ;
 
 void
 space_reftree_destroy(avl_tree_t *t)
 {
-	space_ref_t *sr;
-	void *cookie = NULL;
+ space_ref_t *sr;
+ void *cookie = ((void*)0);
 
-	while ((sr = avl_destroy_nodes(t, &cookie)) != NULL)
-		kmem_free(sr, sizeof (*sr));
+ while ((sr = avl_destroy_nodes(t, &cookie)) != ((void*)0))
+  kmem_free(sr, sizeof (*sr));
 
-	avl_destroy(t);
+ avl_destroy(t);
 }

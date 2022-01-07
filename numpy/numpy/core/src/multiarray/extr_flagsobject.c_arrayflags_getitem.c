@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  PyObject ;
-typedef  int /*<<< orphan*/  PyArrayFlagsObject ;
 
-/* Variables and functions */
- char* PyBytes_AS_STRING (int /*<<< orphan*/ *) ; 
- scalar_t__ PyBytes_Check (int /*<<< orphan*/ *) ; 
- int PyBytes_GET_SIZE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyErr_SetString (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  PyExc_KeyError ; 
- int /*<<< orphan*/ * PyUnicode_AsASCIIString (int /*<<< orphan*/ *) ; 
- scalar_t__ PyUnicode_Check (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Py_DECREF (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * arrayflags_aligned_get (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * arrayflags_behaved_get (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * arrayflags_carray_get (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * arrayflags_contiguous_get (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * arrayflags_farray_get (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * arrayflags_fnc_get (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * arrayflags_forc_get (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * arrayflags_fortran_get (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * arrayflags_owndata_get (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * arrayflags_updateifcopy_get (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * arrayflags_writeable_get (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * arrayflags_writebackifcopy_get (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memcpy (char*,char*,int) ; 
- int /*<<< orphan*/  strncmp (char*,char*,int) ; 
+
+
+
+typedef int PyObject ;
+typedef int PyArrayFlagsObject ;
+
+
+ char* PyBytes_AS_STRING (int *) ;
+ scalar_t__ PyBytes_Check (int *) ;
+ int PyBytes_GET_SIZE (int *) ;
+ int PyErr_SetString (int ,char*) ;
+ int PyExc_KeyError ;
+ int * PyUnicode_AsASCIIString (int *) ;
+ scalar_t__ PyUnicode_Check (int *) ;
+ int Py_DECREF (int *) ;
+ int * arrayflags_aligned_get (int *) ;
+ int * arrayflags_behaved_get (int *) ;
+ int * arrayflags_carray_get (int *) ;
+ int * arrayflags_contiguous_get (int *) ;
+ int * arrayflags_farray_get (int *) ;
+ int * arrayflags_fnc_get (int *) ;
+ int * arrayflags_forc_get (int *) ;
+ int * arrayflags_fortran_get (int *) ;
+ int * arrayflags_owndata_get (int *) ;
+ int * arrayflags_updateifcopy_get (int *) ;
+ int * arrayflags_writeable_get (int *) ;
+ int * arrayflags_writebackifcopy_get (int *) ;
+ int memcpy (char*,char*,int) ;
+ int strncmp (char*,char*,int) ;
 
 __attribute__((used)) static PyObject *
 arrayflags_getitem(PyArrayFlagsObject *self, PyObject *ind)
 {
-    char *key = NULL;
+    char *key = ((void*)0);
     char buf[16];
     int n;
     if (PyUnicode_Check(ind)) {
         PyObject *tmp_str;
         tmp_str = PyUnicode_AsASCIIString(ind);
-        if (tmp_str == NULL) {
-            return NULL;
+        if (tmp_str == ((void*)0)) {
+            return ((void*)0);
         }
         key = PyBytes_AS_STRING(tmp_str);
         n = PyBytes_GET_SIZE(tmp_str);
@@ -159,5 +159,5 @@ arrayflags_getitem(PyArrayFlagsObject *self, PyObject *ind)
 
  fail:
     PyErr_SetString(PyExc_KeyError, "Unknown flag");
-    return NULL;
+    return ((void*)0);
 }

@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_5__ ;
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_14__ TYPE_5__ ;
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
 struct TYPE_10__ {char* auth_baton; } ;
-typedef  TYPE_1__ serf_request_t ;
+typedef TYPE_1__ serf_request_t ;
 struct TYPE_13__ {TYPE_5__* baton; } ;
 struct TYPE_11__ {TYPE_4__ proxy_authn_info; } ;
-typedef  TYPE_2__ serf_context_t ;
+typedef TYPE_2__ serf_context_t ;
 struct TYPE_12__ {TYPE_2__* ctx; } ;
-typedef  TYPE_3__ serf_connection_t ;
-typedef  int /*<<< orphan*/  serf_bucket_t ;
-typedef  int /*<<< orphan*/  serf__authn_scheme_t ;
-typedef  TYPE_4__ serf__authn_info_t ;
-typedef  scalar_t__ peer_t ;
-struct TYPE_14__ {int /*<<< orphan*/  qop; int /*<<< orphan*/  cnonce; int /*<<< orphan*/  nonce; int /*<<< orphan*/  ha1; } ;
-typedef  TYPE_5__ digest_authn_info_t ;
-typedef  int /*<<< orphan*/  apr_status_t ;
-typedef  size_t apr_size_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+typedef TYPE_3__ serf_connection_t ;
+typedef int serf_bucket_t ;
+typedef int serf__authn_scheme_t ;
+typedef TYPE_4__ serf__authn_info_t ;
+typedef scalar_t__ peer_t ;
+struct TYPE_14__ {int qop; int cnonce; int nonce; int ha1; } ;
+typedef TYPE_5__ digest_authn_info_t ;
+typedef int apr_status_t ;
+typedef size_t apr_size_t ;
+typedef int apr_pool_t ;
 
-/* Variables and functions */
- int APR_MD5_DIGESTSIZE ; 
- int /*<<< orphan*/  APR_SUCCESS ; 
- scalar_t__ HOST ; 
- int /*<<< orphan*/  SERF_ERROR_AUTHN_FAILED ; 
- int /*<<< orphan*/  apr_md5 (unsigned char*,char const*,size_t) ; 
- char* apr_psprintf (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*) ; 
- char* apr_pstrdup (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- char* apr_strtok (char*,char*,char**) ; 
- int /*<<< orphan*/  build_digest_ha2 (char const**,char const*,char*,char const*,int /*<<< orphan*/ *) ; 
- char* hex_encode (unsigned char*,int /*<<< orphan*/ *) ; 
- TYPE_4__* serf__get_authn_info_for_server (TYPE_3__*) ; 
- int /*<<< orphan*/  serf_bucket_headers_get (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/ * serf_bucket_response_get_headers (int /*<<< orphan*/ *) ; 
- char* strchr (char const*,char) ; 
- scalar_t__ strcmp (char const*,char const*) ; 
- size_t strlen (char const*) ; 
+
+ int APR_MD5_DIGESTSIZE ;
+ int APR_SUCCESS ;
+ scalar_t__ HOST ;
+ int SERF_ERROR_AUTHN_FAILED ;
+ int apr_md5 (unsigned char*,char const*,size_t) ;
+ char* apr_psprintf (int *,char*,int ,int ,char const*,int ,int ,char const*) ;
+ char* apr_pstrdup (int *,int ) ;
+ char* apr_strtok (char*,char*,char**) ;
+ int build_digest_ha2 (char const**,char const*,char*,char const*,int *) ;
+ char* hex_encode (unsigned char*,int *) ;
+ TYPE_4__* serf__get_authn_info_for_server (TYPE_3__*) ;
+ int serf_bucket_headers_get (int *,char*) ;
+ int * serf_bucket_response_get_headers (int *) ;
+ char* strchr (char const*,char) ;
+ scalar_t__ strcmp (char const*,char const*) ;
+ size_t strlen (char const*) ;
 
 apr_status_t
 serf__validate_response_digest_auth(const serf__authn_scheme_t *scheme,
@@ -62,16 +62,16 @@ serf__validate_response_digest_auth(const serf__authn_scheme_t *scheme,
     const char *key;
     char *auth_attr;
     char *nextkv;
-    const char *rspauth = NULL;
-    const char *qop = NULL;
-    const char *nc_str = NULL;
+    const char *rspauth = ((void*)0);
+    const char *qop = ((void*)0);
+    const char *nc_str = ((void*)0);
     serf_bucket_t *hdrs;
     serf_context_t *ctx = conn->ctx;
     apr_status_t status;
 
     hdrs = serf_bucket_response_get_headers(response);
 
-    /* Need a copy cuz we're going to write NUL characters into the string.  */
+
     if (peer == HOST)
         auth_attr = apr_pstrdup(pool,
             serf_bucket_headers_get(hdrs, "Authentication-Info"));
@@ -79,27 +79,27 @@ serf__validate_response_digest_auth(const serf__authn_scheme_t *scheme,
         auth_attr = apr_pstrdup(pool,
             serf_bucket_headers_get(hdrs, "Proxy-Authentication-Info"));
 
-    /* If there's no Authentication-Info header there's nothing to validate. */
+
     if (! auth_attr)
         return APR_SUCCESS;
 
-    /* We're expecting a list of key=value pairs, separated by a comma.
-       Ex. rspauth="8a4b8451084b082be6b105e2b7975087",
-       cnonce="346531653132652d303033392d3435", nc=00000007,
-       qop=auth */
-    for ( ; (key = apr_strtok(auth_attr, ",", &nextkv)) != NULL; auth_attr = NULL) {
+
+
+
+
+    for ( ; (key = apr_strtok(auth_attr, ",", &nextkv)) != ((void*)0); auth_attr = ((void*)0)) {
         char *val;
 
         val = strchr(key, '=');
-        if (val == NULL)
+        if (val == ((void*)0))
             continue;
         *val++ = '\0';
 
-        /* skip leading spaces */
+
         while (*key && *key == ' ')
             key++;
 
-        /* If the value is quoted, then remove the quotes.  */
+
         if (*val == '"') {
             apr_size_t last = strlen(val) - 1;
 
@@ -139,9 +139,9 @@ serf__validate_response_digest_auth(const serf__authn_scheme_t *scheme,
                            digest_info->ha1, digest_info->nonce, nc_str,
                            digest_info->cnonce, digest_info->qop, ha2);
         apr_md5(resp_hdr, tmp, strlen(tmp));
-        resp_hdr_hex =  hex_encode(resp_hdr, pool);
+        resp_hdr_hex = hex_encode(resp_hdr, pool);
 
-        /* Incorrect response-digest in Authentication-Info header. */
+
         if (strcmp(rspauth, resp_hdr_hex) != 0) {
             return SERF_ERROR_AUTHN_FAILED;
         }

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {struct TYPE_5__* prev; } ;
-typedef  int /*<<< orphan*/  HPDF_MMgr ;
-typedef  TYPE_1__* HPDF_GState ;
+typedef int HPDF_MMgr ;
+typedef TYPE_1__* HPDF_GState ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HPDF_FreeMem (int /*<<< orphan*/ ,TYPE_1__*) ; 
+
+ int HPDF_FreeMem (int ,TYPE_1__*) ;
 
 HPDF_GState
-HPDF_GState_Free  (HPDF_MMgr    mmgr,
-                   HPDF_GState  gstate)
+HPDF_GState_Free (HPDF_MMgr mmgr,
+                   HPDF_GState gstate)
 {
-    HPDF_GState current = NULL;
+    HPDF_GState current = ((void*)0);
 
     if (gstate) {
       current = gstate->prev;

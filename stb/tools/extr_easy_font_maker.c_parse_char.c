@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ first_segment; scalar_t__ first_v_segment; int advance; int voff; } ;
-typedef  TYPE_1__ chardata ;
+typedef TYPE_1__ chardata ;
 
-/* Variables and functions */
- int /*<<< orphan*/  add_seg (int,int,int,int) ; 
- int /*<<< orphan*/  assert (int) ; 
- int* data ; 
- int h ; 
- scalar_t__* last_x ; 
- scalar_t__* last_y ; 
- int /*<<< orphan*/  segments ; 
- scalar_t__ stb_arr_len (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vsegments ; 
- int w ; 
+
+ int add_seg (int,int,int,int) ;
+ int assert (int) ;
+ int* data ;
+ int h ;
+ scalar_t__* last_x ;
+ scalar_t__* last_y ;
+ int segments ;
+ scalar_t__ stb_arr_len (int ) ;
+ int vsegments ;
+ int w ;
 
 int parse_char(int x, chardata *c, int offset)
 {
@@ -35,7 +35,7 @@ int parse_char(int x, chardata *c, int offset)
    assert(c->first_segment == stb_arr_len(segments));
    assert(c->first_v_segment + offset == stb_arr_len(vsegments));
 
-   // find advance distance
+
    end_x = x+1;
    while (data[end_x*3] == 255)
       ++end_x;
@@ -55,14 +55,14 @@ int parse_char(int x, chardata *c, int offset)
          break;
    }
    c->voff = top_y > 2;
-   if (top_y > 2) 
+   if (top_y > 2)
       top_y = 3;
 
    for (x=start_x; x < end_x; ++x) {
       int y;
       for (y=2; y < h; ++y) {
          if (data[y*3*w+x*3+1] < 255) {
-            if (data[y*3*w+x*3+0] == 255) { // red
+            if (data[y*3*w+x*3+0] == 255) {
                int len=0;
                while (y+len < h && data[(y+len)*3*w+x*3+0] == 255 && data[(y+len)*3*w+x*3+1] == 0) {
                   data[(y+len)*3*w+x*3+0] = 0;
@@ -70,7 +70,7 @@ int parse_char(int x, chardata *c, int offset)
                }
                add_seg(x-start_x,y-top_y,len,0);
             }
-            if (data[y*3*w+x*3+2] == 255) { // blue
+            if (data[y*3*w+x*3+2] == 255) {
                int len=0;
                while (x+len < end_x && data[y*3*w+(x+len)*3+2] == 255 && data[y*3*w+(x+len)*3+1] == 0) {
                   data[y*3*w+(x+len)*3+2] = 0;

@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct vlc_thread {scalar_t__ cancel_event; int /*<<< orphan*/  killable; } ;
-typedef  int ULONG ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct vlc_thread {scalar_t__ cancel_event; int killable; } ;
+typedef int ULONG ;
 struct TYPE_3__ {int ulUser; void* hsemCur; } ;
-typedef  TYPE_1__ SEMRECORD ;
-typedef  void* HSEM ;
-typedef  int /*<<< orphan*/  HMUX ;
-typedef  scalar_t__ HEV ;
+typedef TYPE_1__ SEMRECORD ;
+typedef void* HSEM ;
+typedef int HMUX ;
+typedef scalar_t__ HEV ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DCMW_WAIT_ANY ; 
- int /*<<< orphan*/  DosCloseMuxWaitSem (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DosCreateMuxWaitSem (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,TYPE_1__*,int /*<<< orphan*/ ) ; 
- int DosSleep (int) ; 
- int DosWaitEventSem (scalar_t__,int) ; 
- int DosWaitMuxWaitSem (int /*<<< orphan*/ ,int,int*) ; 
- int ERROR_INTERRUPT ; 
- int NO_ERROR ; 
- scalar_t__ NULLHANDLE ; 
- int /*<<< orphan*/  vlc_cancel_self (struct vlc_thread*) ; 
- struct vlc_thread* vlc_thread_self () ; 
+
+ int DCMW_WAIT_ANY ;
+ int DosCloseMuxWaitSem (int ) ;
+ int DosCreateMuxWaitSem (int *,int *,int,TYPE_1__*,int ) ;
+ int DosSleep (int) ;
+ int DosWaitEventSem (scalar_t__,int) ;
+ int DosWaitMuxWaitSem (int ,int,int*) ;
+ int ERROR_INTERRUPT ;
+ int NO_ERROR ;
+ scalar_t__ NULLHANDLE ;
+ int vlc_cancel_self (struct vlc_thread*) ;
+ struct vlc_thread* vlc_thread_self () ;
 
 __attribute__((used)) static ULONG vlc_DosWaitEventSemEx( HEV hev, ULONG ulTimeout )
 {
-    HMUX      hmux;
+    HMUX hmux;
     SEMRECORD asr[ 2 ];
-    ULONG     ulUser;
-    int       n;
-    ULONG     rc;
+    ULONG ulUser;
+    int n;
+    ULONG rc;
 
     struct vlc_thread *th = vlc_thread_self ();
-    if( th == NULL || !th->killable )
+    if( th == ((void*)0) || !th->killable )
     {
-        /* Main thread - cannot be cancelled anyway
-         * Alien thread - out of our control
-         * Cancel disabled thread - ignore cancel
-         */
+
+
+
+
         if( hev != NULLHANDLE )
             return DosWaitEventSem( hev, ulTimeout );
 
@@ -57,14 +57,14 @@ __attribute__((used)) static ULONG vlc_DosWaitEventSemEx( HEV hev, ULONG ulTimeo
     if( hev != NULLHANDLE )
     {
         asr[ n ].hsemCur = ( HSEM )hev;
-        asr[ n ].ulUser  = 0;
+        asr[ n ].ulUser = 0;
         n++;
     }
     asr[ n ].hsemCur = ( HSEM )th->cancel_event;
-    asr[ n ].ulUser  = 0xFFFF;
+    asr[ n ].ulUser = 0xFFFF;
     n++;
 
-    DosCreateMuxWaitSem( NULL, &hmux, n, asr, DCMW_WAIT_ANY );
+    DosCreateMuxWaitSem( ((void*)0), &hmux, n, asr, DCMW_WAIT_ANY );
     rc = DosWaitMuxWaitSem( hmux, ulTimeout, &ulUser );
     DosCloseMuxWaitSem( hmux );
     if( rc )

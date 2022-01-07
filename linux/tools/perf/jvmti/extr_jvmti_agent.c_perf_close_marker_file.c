@@ -1,33 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  _SC_PAGESIZE ; 
- int /*<<< orphan*/  marker_addr ; 
- int /*<<< orphan*/  munmap (int /*<<< orphan*/ ,long) ; 
- long sysconf (int /*<<< orphan*/ ) ; 
+ int _SC_PAGESIZE ;
+ int marker_addr ;
+ int munmap (int ,long) ;
+ long sysconf (int ) ;
 
 __attribute__((used)) static void
 perf_close_marker_file(void)
 {
-	long pgsz;
+ long pgsz;
 
-	if (!marker_addr)
-		return;
+ if (!marker_addr)
+  return;
 
-	pgsz = sysconf(_SC_PAGESIZE);
-	if (pgsz == -1)
-		return;
+ pgsz = sysconf(_SC_PAGESIZE);
+ if (pgsz == -1)
+  return;
 
-	munmap(marker_addr, pgsz);
+ munmap(marker_addr, pgsz);
 }

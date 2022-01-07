@@ -1,29 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  GL_NORMAL_ARRAY ; 
- int /*<<< orphan*/  GL_VERTEX_ARRAY ; 
- unsigned int NB_BANDS ; 
- unsigned int SPECTRUM_WIDTH ; 
- int /*<<< orphan*/  drawBar () ; 
- int /*<<< orphan*/  glDisableClientState (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glEnableClientState (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glPopMatrix () ; 
- int /*<<< orphan*/  glPushMatrix () ; 
- int /*<<< orphan*/  glScalef (float,float,float) ; 
- int /*<<< orphan*/  glTranslatef (float,float,float) ; 
- int /*<<< orphan*/  setBarColor (float) ; 
+ int GL_NORMAL_ARRAY ;
+ int GL_VERTEX_ARRAY ;
+ unsigned int NB_BANDS ;
+ unsigned int SPECTRUM_WIDTH ;
+ int drawBar () ;
+ int glDisableClientState (int ) ;
+ int glEnableClientState (int ) ;
+ int glPopMatrix () ;
+ int glPushMatrix () ;
+ int glScalef (float,float,float) ;
+ int glTranslatef (float,float,float) ;
+ int setBarColor (float) ;
 
 __attribute__((used)) static void drawBars(float heights[])
 {

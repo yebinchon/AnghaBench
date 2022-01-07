@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char chtype ;
 
-/* Variables and functions */
- char A_NORMAL ; 
- int /*<<< orphan*/  report_nstr (char*) ; 
+
+
+
+typedef char chtype ;
+
+
+ char A_NORMAL ;
+ int report_nstr (char*) ;
 
 void
 report_byte(chtype c)
 {
-	chtype string[2];
+ chtype string[2];
 
-	string[0] = c;
-	string[1] = A_NORMAL | '\0';
-	report_nstr(string);
+ string[0] = c;
+ string[1] = A_NORMAL | '\0';
+ report_nstr(string);
 }

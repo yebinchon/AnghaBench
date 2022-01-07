@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {void* cookie_engine; } ;
 struct Curl_easy {TYPE_1__ state; } ;
-struct CookieInfo {int newsession; void* running; int /*<<< orphan*/  filename; } ;
-typedef  int /*<<< orphan*/  FILE ;
+struct CookieInfo {int newsession; void* running; int filename; } ;
+typedef int FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Curl_cookie_add (struct Curl_easy*,struct CookieInfo*,int,void*,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,void*) ; 
- int /*<<< orphan*/  Curl_cookie_cleanup (struct CookieInfo*) ; 
- scalar_t__ Curl_get_line (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- void* FALSE ; 
- int /*<<< orphan*/  FOPEN_READTEXT ; 
- scalar_t__ ISBLANK (char) ; 
- int /*<<< orphan*/  MAX_COOKIE_LINE ; 
- void* TRUE ; 
- struct CookieInfo* calloc (int,int) ; 
- scalar_t__ checkprefix (char*,char*) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (char*) ; 
- char* malloc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  remove_expired (struct CookieInfo*) ; 
- int /*<<< orphan*/ * stdin ; 
- int /*<<< orphan*/  strcmp (char const*,char*) ; 
- int /*<<< orphan*/  strdup (char const*) ; 
+
+ int Curl_cookie_add (struct Curl_easy*,struct CookieInfo*,int,void*,char*,int *,int *,void*) ;
+ int Curl_cookie_cleanup (struct CookieInfo*) ;
+ scalar_t__ Curl_get_line (char*,int ,int *) ;
+ void* FALSE ;
+ int FOPEN_READTEXT ;
+ scalar_t__ ISBLANK (char) ;
+ int MAX_COOKIE_LINE ;
+ void* TRUE ;
+ struct CookieInfo* calloc (int,int) ;
+ scalar_t__ checkprefix (char*,char*) ;
+ int fclose (int *) ;
+ int * fopen (char const*,int ) ;
+ int free (char*) ;
+ char* malloc (int ) ;
+ int remove_expired (struct CookieInfo*) ;
+ int * stdin ;
+ int strcmp (char const*,char*) ;
+ int strdup (char const*) ;
 
 struct CookieInfo *Curl_cookie_init(struct Curl_easy *data,
                                     const char *file,
@@ -42,37 +42,37 @@ struct CookieInfo *Curl_cookie_init(struct Curl_easy *data,
                                     bool newsession)
 {
   struct CookieInfo *c;
-  FILE *fp = NULL;
+  FILE *fp = ((void*)0);
   bool fromfile = TRUE;
-  char *line = NULL;
+  char *line = ((void*)0);
 
-  if(NULL == inc) {
-    /* we didn't get a struct, create one */
+  if(((void*)0) == inc) {
+
     c = calloc(1, sizeof(struct CookieInfo));
     if(!c)
-      return NULL; /* failed to get memory */
-    c->filename = strdup(file?file:"none"); /* copy the name just in case */
+      return ((void*)0);
+    c->filename = strdup(file?file:"none");
     if(!c->filename)
-      goto fail; /* failed to get memory */
+      goto fail;
   }
   else {
-    /* we got an already existing one, use that */
+
     c = inc;
   }
-  c->running = FALSE; /* this is not running, this is init */
+  c->running = FALSE;
 
   if(file && !strcmp(file, "-")) {
     fp = stdin;
     fromfile = FALSE;
   }
   else if(file && !*file) {
-    /* points to a "" string */
-    fp = NULL;
+
+    fp = ((void*)0);
   }
   else
-    fp = file?fopen(file, FOPEN_READTEXT):NULL;
+    fp = file?fopen(file, FOPEN_READTEXT):((void*)0);
 
-  c->newsession = newsession; /* new session? */
+  c->newsession = newsession;
 
   if(fp) {
     char *lineptr;
@@ -83,7 +83,7 @@ struct CookieInfo *Curl_cookie_init(struct Curl_easy *data,
       goto fail;
     while(Curl_get_line(line, MAX_COOKIE_LINE, fp)) {
       if(checkprefix("Set-Cookie:", line)) {
-        /* This is a cookie line, get it! */
+
         lineptr = &line[11];
         headerline = TRUE;
       }
@@ -94,16 +94,16 @@ struct CookieInfo *Curl_cookie_init(struct Curl_easy *data,
       while(*lineptr && ISBLANK(*lineptr))
         lineptr++;
 
-      Curl_cookie_add(data, c, headerline, TRUE, lineptr, NULL, NULL, TRUE);
+      Curl_cookie_add(data, c, headerline, TRUE, lineptr, ((void*)0), ((void*)0), TRUE);
     }
-    free(line); /* free the line buffer */
-    remove_expired(c); /* run this once, not on every cookie */
+    free(line);
+    remove_expired(c);
 
     if(fromfile)
       fclose(fp);
   }
 
-  c->running = TRUE;          /* now, we're running */
+  c->running = TRUE;
   if(data)
     data->state.cookie_engine = TRUE;
 
@@ -112,10 +112,10 @@ struct CookieInfo *Curl_cookie_init(struct Curl_easy *data,
 fail:
   free(line);
   if(!inc)
-    /* Only clean up if we allocated it here, as the original could still be in
-     * use by a share handle */
+
+
     Curl_cookie_cleanup(c);
   if(fromfile && fp)
     fclose(fp);
-  return NULL; /* out of memory */
+  return ((void*)0);
 }

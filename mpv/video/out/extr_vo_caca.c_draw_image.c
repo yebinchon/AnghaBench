@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct vo {struct priv* priv; } ;
-struct priv {int image_width; int /*<<< orphan*/  dither_buffer; int /*<<< orphan*/  dither; int /*<<< orphan*/  screen_h; int /*<<< orphan*/  screen_w; int /*<<< orphan*/  canvas; int /*<<< orphan*/  image_height; } ;
-struct TYPE_4__ {int /*<<< orphan*/ * stride; int /*<<< orphan*/ * planes; } ;
-typedef  TYPE_1__ mp_image_t ;
+struct priv {int image_width; int dither_buffer; int dither; int screen_h; int screen_w; int canvas; int image_height; } ;
+struct TYPE_4__ {int * stride; int * planes; } ;
+typedef TYPE_1__ mp_image_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  caca_dither_bitmap (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int depth ; 
- int /*<<< orphan*/  memcpy_pic (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  talloc_free (TYPE_1__*) ; 
+
+ int caca_dither_bitmap (int ,int ,int ,int ,int ,int ,int ) ;
+ int depth ;
+ int memcpy_pic (int ,int ,int,int ,int,int ) ;
+ int talloc_free (TYPE_1__*) ;
 
 __attribute__((used)) static void draw_image(struct vo *vo, mp_image_t *mpi)
 {

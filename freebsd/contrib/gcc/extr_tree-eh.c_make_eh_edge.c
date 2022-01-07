@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ tree ;
+
+
+
+
+typedef scalar_t__ tree ;
 struct eh_region {int dummy; } ;
-typedef  int /*<<< orphan*/  basic_block ;
+typedef int basic_block ;
 
-/* Variables and functions */
- int EDGE_ABNORMAL ; 
- int EDGE_EH ; 
- int /*<<< orphan*/  bb_for_stmt (scalar_t__) ; 
- scalar_t__ get_eh_region_tree_label (struct eh_region*) ; 
- int /*<<< orphan*/  label_to_block (scalar_t__) ; 
- int /*<<< orphan*/  make_edge (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+ int EDGE_ABNORMAL ;
+ int EDGE_EH ;
+ int bb_for_stmt (scalar_t__) ;
+ scalar_t__ get_eh_region_tree_label (struct eh_region*) ;
+ int label_to_block (scalar_t__) ;
+ int make_edge (int ,int ,int) ;
 
 __attribute__((used)) static void
 make_eh_edge (struct eh_region *region, void *data)

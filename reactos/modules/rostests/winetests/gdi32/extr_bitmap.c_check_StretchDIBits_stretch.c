@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_21__   TYPE_2__ ;
-typedef  struct TYPE_20__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_20__ {int biSize; int biWidth; int biHeight; int biPlanes; int biBitCount; int /*<<< orphan*/  biCompression; } ;
+
+
+typedef struct TYPE_21__ TYPE_2__ ;
+typedef struct TYPE_20__ TYPE_1__ ;
+
+
+struct TYPE_20__ {int biSize; int biWidth; int biHeight; int biPlanes; int biBitCount; int biCompression; } ;
 struct TYPE_21__ {TYPE_1__ bmiHeader; } ;
-typedef  TYPE_2__ UINT32 ;
-typedef  int /*<<< orphan*/  INT ;
-typedef  int /*<<< orphan*/  HDC ;
-typedef  int /*<<< orphan*/  BITMAPINFOHEADER ;
-typedef  TYPE_2__ BITMAPINFO ;
+typedef TYPE_2__ UINT32 ;
+typedef int INT ;
+typedef int HDC ;
+typedef int BITMAPINFOHEADER ;
+typedef TYPE_2__ BITMAPINFO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BI_RGB ; 
- int /*<<< orphan*/  DIB_RGB_COLORS ; 
- int /*<<< orphan*/  SRCCOPY ; 
- int /*<<< orphan*/  StretchDIBits (int /*<<< orphan*/ ,int,int,int,int,int,int,int,int,TYPE_2__*,TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ memcmp (TYPE_2__*,TYPE_2__*,int) ; 
- int /*<<< orphan*/  memset (TYPE_2__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ok (int,char*,TYPE_2__,TYPE_2__,TYPE_2__,TYPE_2__,TYPE_2__,TYPE_2__,TYPE_2__,TYPE_2__,int,int,int,int,int,int,int,int,int) ; 
+
+ int BI_RGB ;
+ int DIB_RGB_COLORS ;
+ int SRCCOPY ;
+ int StretchDIBits (int ,int,int,int,int,int,int,int,int,TYPE_2__*,TYPE_2__*,int ,int ) ;
+ scalar_t__ memcmp (TYPE_2__*,TYPE_2__*,int) ;
+ int memset (TYPE_2__*,int ,int) ;
+ int ok (int,char*,TYPE_2__,TYPE_2__,TYPE_2__,TYPE_2__,TYPE_2__,TYPE_2__,TYPE_2__,TYPE_2__,int,int,int,int,int,int,int,int,int) ;
 
 __attribute__((used)) static INT check_StretchDIBits_stretch( HDC hdcDst, UINT32 *dstBuffer, UINT32 *srcBuffer,
                                         int nXOriginDest, int nYOriginDest, int nWidthDest, int nHeightDest,

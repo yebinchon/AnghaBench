@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct sockaddr {int dummy; } ;
-struct descr {int /*<<< orphan*/  s; int /*<<< orphan*/  __ss; struct sockaddr* sa; } ;
+struct descr {int s; int __ss; struct sockaddr* sa; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memset (struct descr*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  rk_INVALID_SOCKET ; 
+
+ int memset (struct descr*,int ,int) ;
+ int rk_INVALID_SOCKET ;
 
 __attribute__((used)) static void
 init_descr(struct descr *d)

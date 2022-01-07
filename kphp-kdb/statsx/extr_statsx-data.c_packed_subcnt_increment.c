@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct counter {unsigned long long mask_subcnt; int* subcnt; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  memcpy (int*,int*,int) ; 
- int /*<<< orphan*/  stderr ; 
- int verbosity ; 
- int /*<<< orphan*/  zzfree (int*,int) ; 
- scalar_t__ zzmalloc (int) ; 
+
+ int fprintf (int ,char*,...) ;
+ int memcpy (int*,int*,int) ;
+ int stderr ;
+ int verbosity ;
+ int zzfree (int*,int) ;
+ scalar_t__ zzmalloc (int) ;
 
 int packed_subcnt_increment (struct counter *c, int idx, int delta ) {
   int i,j;
@@ -45,7 +45,7 @@ int packed_subcnt_increment (struct counter *c, int idx, int delta ) {
       w = u & (u - 1);
       if (m > (u ^ w)) j = i;
       u = w;
-    }    
+    }
     p = (int*) zzmalloc(sizeof(int) * (i+1));
     p[j+1] = delta;
     if (i > 0) {

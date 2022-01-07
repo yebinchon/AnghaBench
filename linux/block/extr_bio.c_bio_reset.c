@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct bio {unsigned long bi_flags; int /*<<< orphan*/  __bi_remaining; } ;
 
-/* Variables and functions */
- unsigned long BIO_RESET_BITS ; 
- int /*<<< orphan*/  BIO_RESET_BYTES ; 
- int /*<<< orphan*/  atomic_set (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  bio_uninit (struct bio*) ; 
- int /*<<< orphan*/  memset (struct bio*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct bio {unsigned long bi_flags; int __bi_remaining; } ;
+
+
+ unsigned long BIO_RESET_BITS ;
+ int BIO_RESET_BYTES ;
+ int atomic_set (int *,int) ;
+ int bio_uninit (struct bio*) ;
+ int memset (struct bio*,int ,int ) ;
 
 void bio_reset(struct bio *bio)
 {
-	unsigned long flags = bio->bi_flags & (~0UL << BIO_RESET_BITS);
+ unsigned long flags = bio->bi_flags & (~0UL << BIO_RESET_BITS);
 
-	bio_uninit(bio);
+ bio_uninit(bio);
 
-	memset(bio, 0, BIO_RESET_BYTES);
-	bio->bi_flags = flags;
-	atomic_set(&bio->__bi_remaining, 1);
+ memset(bio, 0, BIO_RESET_BYTES);
+ bio->bi_flags = flags;
+ atomic_set(&bio->__bi_remaining, 1);
 }

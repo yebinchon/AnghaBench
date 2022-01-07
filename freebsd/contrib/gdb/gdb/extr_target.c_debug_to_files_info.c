@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct target_ops {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/  (* to_files_info ) (struct target_ops*) ;} ;
+struct TYPE_2__ {int (* to_files_info ) (struct target_ops*) ;} ;
 
-/* Variables and functions */
- TYPE_1__ debug_target ; 
- int /*<<< orphan*/  fprintf_unfiltered (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  gdb_stdlog ; 
- int /*<<< orphan*/  stub1 (struct target_ops*) ; 
+
+ TYPE_1__ debug_target ;
+ int fprintf_unfiltered (int ,char*) ;
+ int gdb_stdlog ;
+ int stub1 (struct target_ops*) ;
 
 __attribute__((used)) static void
 debug_to_files_info (struct target_ops *target)

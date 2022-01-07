@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {int /*<<< orphan*/  token; } ;
+
+
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_9__ {int token; } ;
 struct TYPE_11__ {TYPE_2__* fs; TYPE_1__ t; } ;
-struct TYPE_10__ {int /*<<< orphan*/  nactvar; int /*<<< orphan*/  freereg; } ;
-typedef  TYPE_3__ LexState ;
+struct TYPE_10__ {int nactvar; int freereg; } ;
+typedef TYPE_3__ LexState ;
 
-/* Variables and functions */
- int /*<<< orphan*/  block_follow (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  enterlevel (TYPE_3__*) ; 
- int /*<<< orphan*/  leavelevel (TYPE_3__*) ; 
- int statement (TYPE_3__*) ; 
- int /*<<< orphan*/  testnext (TYPE_3__*,char) ; 
+
+ int block_follow (int ) ;
+ int enterlevel (TYPE_3__*) ;
+ int leavelevel (TYPE_3__*) ;
+ int statement (TYPE_3__*) ;
+ int testnext (TYPE_3__*,char) ;
 
 __attribute__((used)) static void chunk(LexState*ls){
 int islast=0;

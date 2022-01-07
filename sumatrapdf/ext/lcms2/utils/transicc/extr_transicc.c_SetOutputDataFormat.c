@@ -1,50 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  cmsContext ;
 
-/* Variables and functions */
- char* IncludePart ; 
- int OutputColorSpace ; 
- int cmsChannelsOf (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  cmsIT8DefineDblFormat (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  cmsIT8SetComment (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  cmsIT8SetDataFormat (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,char*) ; 
- int /*<<< orphan*/  cmsIT8SetPropertyDbl (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  cmsIT8SetPropertyStr (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,char*) ; 
-#define  cmsSig10colorData 148 
-#define  cmsSig11colorData 147 
-#define  cmsSig12colorData 146 
-#define  cmsSig13colorData 145 
-#define  cmsSig14colorData 144 
-#define  cmsSig15colorData 143 
-#define  cmsSig1colorData 142 
-#define  cmsSig2colorData 141 
-#define  cmsSig3colorData 140 
-#define  cmsSig4colorData 139 
-#define  cmsSig5colorData 138 
-#define  cmsSig6colorData 137 
-#define  cmsSig7colorData 136 
-#define  cmsSig8colorData 135 
-#define  cmsSig9colorData 134 
-#define  cmsSigCmyData 133 
-#define  cmsSigCmykData 132 
-#define  cmsSigGrayData 131 
-#define  cmsSigLabData 130 
-#define  cmsSigRgbData 129 
-#define  cmsSigXYZData 128 
- int /*<<< orphan*/  hIT8out ; 
- int nMaxPatches ; 
- int /*<<< orphan*/  sprintf (char*,char*,int,...) ; 
+
+
+
+typedef int cmsContext ;
+
+
+ char* IncludePart ;
+ int OutputColorSpace ;
+ int cmsChannelsOf (int ,int) ;
+ int cmsIT8DefineDblFormat (int ,int ,char*) ;
+ int cmsIT8SetComment (int ,int ,char*) ;
+ int cmsIT8SetDataFormat (int ,int ,int,char*) ;
+ int cmsIT8SetPropertyDbl (int ,int ,char*,int) ;
+ int cmsIT8SetPropertyStr (int ,int ,char*,char*) ;
+ int hIT8out ;
+ int nMaxPatches ;
+ int sprintf (char*,char*,int,...) ;
 
 __attribute__((used)) static
 void SetOutputDataFormat(cmsContext ContextID)
@@ -52,7 +31,7 @@ void SetOutputDataFormat(cmsContext ContextID)
     cmsIT8DefineDblFormat(ContextID, hIT8out, "%.4g");
     cmsIT8SetPropertyStr(ContextID, hIT8out, "ORIGINATOR", "icctrans");
 
-    if (IncludePart != NULL)
+    if (IncludePart != ((void*)0))
         cmsIT8SetPropertyStr(ContextID, hIT8out, ".INCLUDE", IncludePart);
 
     cmsIT8SetComment(ContextID, hIT8out, "Data follows");
@@ -62,9 +41,9 @@ void SetOutputDataFormat(cmsContext ContextID)
     switch (OutputColorSpace) {
 
 
-        // Encoding should follow CGATS specification.
 
-    case cmsSigXYZData:
+
+    case 128:
         cmsIT8SetPropertyDbl(ContextID, hIT8out, "NUMBER_OF_FIELDS", 4);
         cmsIT8SetDataFormat(ContextID, hIT8out, 0, "SAMPLE_ID");
         cmsIT8SetDataFormat(ContextID, hIT8out, 1, "XYZ_X");
@@ -72,7 +51,7 @@ void SetOutputDataFormat(cmsContext ContextID)
         cmsIT8SetDataFormat(ContextID, hIT8out, 3, "XYZ_Z");
         break;
 
-    case cmsSigLabData:
+    case 130:
         cmsIT8SetPropertyDbl(ContextID, hIT8out, "NUMBER_OF_FIELDS", 4);
         cmsIT8SetDataFormat(ContextID, hIT8out, 0, "SAMPLE_ID");
         cmsIT8SetDataFormat(ContextID, hIT8out, 1, "LAB_L");
@@ -81,7 +60,7 @@ void SetOutputDataFormat(cmsContext ContextID)
         break;
 
 
-    case cmsSigRgbData:
+    case 129:
         cmsIT8SetPropertyDbl(ContextID, hIT8out, "NUMBER_OF_FIELDS", 4);
         cmsIT8SetDataFormat(ContextID, hIT8out, 0, "SAMPLE_ID");
         cmsIT8SetDataFormat(ContextID, hIT8out, 1, "RGB_R");
@@ -89,13 +68,13 @@ void SetOutputDataFormat(cmsContext ContextID)
         cmsIT8SetDataFormat(ContextID, hIT8out, 3, "RGB_B");
         break;
 
-    case cmsSigGrayData:
+    case 131:
         cmsIT8SetPropertyDbl(ContextID, hIT8out, "NUMBER_OF_FIELDS", 2);
         cmsIT8SetDataFormat(ContextID, hIT8out, 0, "SAMPLE_ID");
         cmsIT8SetDataFormat(ContextID, hIT8out, 1, "GRAY");
         break;
 
-    case cmsSigCmykData:
+    case 132:
         cmsIT8SetPropertyDbl(ContextID, hIT8out, "NUMBER_OF_FIELDS", 5);
         cmsIT8SetDataFormat(ContextID, hIT8out, 0, "SAMPLE_ID");
         cmsIT8SetDataFormat(ContextID, hIT8out, 1, "CMYK_C");
@@ -104,7 +83,7 @@ void SetOutputDataFormat(cmsContext ContextID)
         cmsIT8SetDataFormat(ContextID, hIT8out, 4, "CMYK_K");
         break;
 
-    case cmsSigCmyData:
+    case 133:
         cmsIT8SetPropertyDbl(ContextID, hIT8out, "NUMBER_OF_FIELDS", 4);
         cmsIT8SetDataFormat(ContextID, hIT8out, 0, "SAMPLE_ID");
         cmsIT8SetDataFormat(ContextID, hIT8out, 1, "CMY_C");
@@ -112,21 +91,21 @@ void SetOutputDataFormat(cmsContext ContextID)
         cmsIT8SetDataFormat(ContextID, hIT8out, 3, "CMY_Y");
         break;
 
-    case cmsSig1colorData:
-    case cmsSig2colorData:
-    case cmsSig3colorData:
-    case cmsSig4colorData:
-    case cmsSig5colorData:
-    case cmsSig6colorData:
-    case cmsSig7colorData:
-    case cmsSig8colorData:
-    case cmsSig9colorData:
-    case cmsSig10colorData:
-    case cmsSig11colorData:
-    case cmsSig12colorData:
-    case cmsSig13colorData:
-    case cmsSig14colorData:
-    case cmsSig15colorData:
+    case 142:
+    case 141:
+    case 140:
+    case 139:
+    case 138:
+    case 137:
+    case 136:
+    case 135:
+    case 134:
+    case 148:
+    case 147:
+    case 146:
+    case 145:
+    case 144:
+    case 143:
         {
             int i, n;
             char Buffer[255];

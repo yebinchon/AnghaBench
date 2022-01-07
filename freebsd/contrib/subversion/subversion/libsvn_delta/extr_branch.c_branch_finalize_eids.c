@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_error_t ;
+
+
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int svn_error_t ;
 struct TYPE_10__ {int parent_eid; } ;
-typedef  TYPE_2__ svn_element__content_t ;
-struct TYPE_11__ {TYPE_1__* priv; int /*<<< orphan*/  bid; } ;
-typedef  TYPE_3__ svn_branch__state_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_index_t ;
-struct TYPE_12__ {int root_eid; int /*<<< orphan*/  e_map; } ;
+typedef TYPE_2__ svn_element__content_t ;
+struct TYPE_11__ {TYPE_1__* priv; int bid; } ;
+typedef TYPE_3__ svn_branch__state_t ;
+typedef int apr_pool_t ;
+typedef int apr_hash_index_t ;
+struct TYPE_12__ {int root_eid; int e_map; } ;
 struct TYPE_9__ {TYPE_4__* element_tree; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/ * apr_hash_first (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * apr_hash_next (int /*<<< orphan*/ *) ; 
- TYPE_2__* apr_hash_this_val (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  branch_finalize_bid (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  branch_state_pool_get (TYPE_3__*) ; 
- int svn_eid__hash_this_key (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_element__tree_set (TYPE_4__*,int,TYPE_2__*) ; 
+
+ int * SVN_NO_ERROR ;
+ int * apr_hash_first (int *,int ) ;
+ int * apr_hash_next (int *) ;
+ TYPE_2__* apr_hash_this_val (int *) ;
+ int branch_finalize_bid (int ,int,int ) ;
+ int branch_state_pool_get (TYPE_3__*) ;
+ int svn_eid__hash_this_key (int *) ;
+ int svn_element__tree_set (TYPE_4__*,int,TYPE_2__*) ;
 
 __attribute__((used)) static svn_error_t *
 branch_finalize_eids(svn_branch__state_t *branch,
@@ -59,7 +59,7 @@ branch_finalize_eids(svn_branch__state_t *branch,
         {
           int new_eid = mapping_offset - old_eid;
 
-          svn_element__tree_set(branch->priv->element_tree, old_eid, NULL);
+          svn_element__tree_set(branch->priv->element_tree, old_eid, ((void*)0));
           svn_element__tree_set(branch->priv->element_tree, new_eid, element);
         }
       if (element->parent_eid < -1)

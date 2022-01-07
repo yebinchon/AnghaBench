@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct uwb_rc {int dummy; } ;
 struct uwb_dev_addr {int dummy; } ;
 struct device {int dummy; } ;
 
-/* Variables and functions */
- struct device* class_find_device (int /*<<< orphan*/ *,int /*<<< orphan*/ *,struct uwb_dev_addr const*,int /*<<< orphan*/ ) ; 
- struct uwb_rc* dev_get_drvdata (struct device*) ; 
- int /*<<< orphan*/  find_rc_dev ; 
- int /*<<< orphan*/  put_device (struct device*) ; 
- int /*<<< orphan*/  uwb_rc_class ; 
+
+ struct device* class_find_device (int *,int *,struct uwb_dev_addr const*,int ) ;
+ struct uwb_rc* dev_get_drvdata (struct device*) ;
+ int find_rc_dev ;
+ int put_device (struct device*) ;
+ int uwb_rc_class ;
 
 struct uwb_rc *uwb_rc_get_by_dev(const struct uwb_dev_addr *addr)
 {
-	struct device *dev;
-	struct uwb_rc *rc = NULL;
+ struct device *dev;
+ struct uwb_rc *rc = ((void*)0);
 
-	dev = class_find_device(&uwb_rc_class, NULL, addr, find_rc_dev);
-	if (dev) {
-		rc = dev_get_drvdata(dev);
-		put_device(dev);
-	}
+ dev = class_find_device(&uwb_rc_class, ((void*)0), addr, find_rc_dev);
+ if (dev) {
+  rc = dev_get_drvdata(dev);
+  put_device(dev);
+ }
 
-	return rc;
+ return rc;
 }

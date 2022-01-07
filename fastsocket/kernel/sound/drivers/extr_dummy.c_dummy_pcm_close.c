@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct snd_pcm_substream {int dummy; } ;
 struct snd_dummy {TYPE_1__* timer_ops; } ;
-struct TYPE_2__ {int /*<<< orphan*/  (* free ) (struct snd_pcm_substream*) ;} ;
+struct TYPE_2__ {int (* free ) (struct snd_pcm_substream*) ;} ;
 
-/* Variables and functions */
- struct snd_dummy* snd_pcm_substream_chip (struct snd_pcm_substream*) ; 
- int /*<<< orphan*/  stub1 (struct snd_pcm_substream*) ; 
+
+ struct snd_dummy* snd_pcm_substream_chip (struct snd_pcm_substream*) ;
+ int stub1 (struct snd_pcm_substream*) ;
 
 __attribute__((used)) static int dummy_pcm_close(struct snd_pcm_substream *substream)
 {
-	struct snd_dummy *dummy = snd_pcm_substream_chip(substream);
-	dummy->timer_ops->free(substream);
-	return 0;
+ struct snd_dummy *dummy = snd_pcm_substream_chip(substream);
+ dummy->timer_ops->free(substream);
+ return 0;
 }

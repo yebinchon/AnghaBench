@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct hci_dev {int /*<<< orphan*/  flags; struct bfusb_data* driver_data; } ;
-struct bfusb_data {int /*<<< orphan*/  lock; } ;
 
-/* Variables and functions */
- int BFUSB_MAX_BULK_RX ; 
- int /*<<< orphan*/  BT_DBG (char*,struct hci_dev*,struct bfusb_data*) ; 
- int /*<<< orphan*/  HCI_RUNNING ; 
- int bfusb_rx_submit (struct bfusb_data*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  clear_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ test_and_set_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  write_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  write_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
+
+
+
+struct hci_dev {int flags; struct bfusb_data* driver_data; } ;
+struct bfusb_data {int lock; } ;
+
+
+ int BFUSB_MAX_BULK_RX ;
+ int BT_DBG (char*,struct hci_dev*,struct bfusb_data*) ;
+ int HCI_RUNNING ;
+ int bfusb_rx_submit (struct bfusb_data*,int *) ;
+ int clear_bit (int ,int *) ;
+ scalar_t__ test_and_set_bit (int ,int *) ;
+ int write_lock_irqsave (int *,unsigned long) ;
+ int write_unlock_irqrestore (int *,unsigned long) ;
 
 __attribute__((used)) static int bfusb_open(struct hci_dev *hdev)
 {
-	struct bfusb_data *data = hdev->driver_data;
-	unsigned long flags;
-	int i, err;
+ struct bfusb_data *data = hdev->driver_data;
+ unsigned long flags;
+ int i, err;
 
-	BT_DBG("hdev %p bfusb %p", hdev, data);
+ BT_DBG("hdev %p bfusb %p", hdev, data);
 
-	if (test_and_set_bit(HCI_RUNNING, &hdev->flags))
-		return 0;
+ if (test_and_set_bit(HCI_RUNNING, &hdev->flags))
+  return 0;
 
-	write_lock_irqsave(&data->lock, flags);
+ write_lock_irqsave(&data->lock, flags);
 
-	err = bfusb_rx_submit(data, NULL);
-	if (!err) {
-		for (i = 1; i < BFUSB_MAX_BULK_RX; i++)
-			bfusb_rx_submit(data, NULL);
-	} else {
-		clear_bit(HCI_RUNNING, &hdev->flags);
-	}
+ err = bfusb_rx_submit(data, ((void*)0));
+ if (!err) {
+  for (i = 1; i < BFUSB_MAX_BULK_RX; i++)
+   bfusb_rx_submit(data, ((void*)0));
+ } else {
+  clear_bit(HCI_RUNNING, &hdev->flags);
+ }
 
-	write_unlock_irqrestore(&data->lock, flags);
+ write_unlock_irqrestore(&data->lock, flags);
 
-	return err;
+ return err;
 }

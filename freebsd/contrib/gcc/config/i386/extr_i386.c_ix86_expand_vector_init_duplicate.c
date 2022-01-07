@@ -1,192 +1,182 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  rtx ;
-typedef  enum machine_mode { ____Placeholder_machine_mode } machine_mode ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASHIFT ; 
- int /*<<< orphan*/  CONST0_RTX (int const) ; 
- int /*<<< orphan*/  GEN_INT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GET_MODE_BITSIZE (int) ; 
- int /*<<< orphan*/  GET_MODE_INNER (int) ; 
- int HImode ; 
- int /*<<< orphan*/  IOR ; 
- int /*<<< orphan*/  NULL_RTX ; 
- int /*<<< orphan*/  OPTAB_LIB_WIDEN ; 
- int QImode ; 
- int SImode ; 
- int /*<<< orphan*/  TARGET_3DNOW_A ; 
- int /*<<< orphan*/  TARGET_SSE ; 
- int /*<<< orphan*/  TARGET_SSE2 ; 
-#define  V16QImode 137 
-#define  V2DFmode 136 
-#define  V2DImode 135 
-#define  V2SFmode 134 
-#define  V2SImode 133 
-#define  V4HImode 132 
-#define  V4SFmode 131 
-#define  V4SImode 130 
-#define  V8HImode 129 
-#define  V8QImode 128 
- int /*<<< orphan*/  VOIDmode ; 
- int /*<<< orphan*/  const0_rtx ; 
- int /*<<< orphan*/  const1_rtx ; 
- int /*<<< orphan*/  convert_modes (int,int,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  emit_insn (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  emit_move_insn (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  expand_simple_binop (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  force_reg (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gcc_unreachable () ; 
- int /*<<< orphan*/  gen_lowpart (int const,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_reg_rtx (int const) ; 
- int /*<<< orphan*/  gen_rtx_SET (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_rtx_TRUNCATE (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_rtx_VEC_DUPLICATE (int const,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_rtx_VEC_MERGE (int const,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_sse2_pshufd (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_sse2_punpcklbw (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_sse2_punpcklwd (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int rtx ;
+typedef enum machine_mode { ____Placeholder_machine_mode } machine_mode ;
+
+
+ int ASHIFT ;
+ int CONST0_RTX (int const) ;
+ int GEN_INT (int ) ;
+ int GET_MODE_BITSIZE (int) ;
+ int GET_MODE_INNER (int) ;
+ int HImode ;
+ int IOR ;
+ int NULL_RTX ;
+ int OPTAB_LIB_WIDEN ;
+ int QImode ;
+ int SImode ;
+ int TARGET_3DNOW_A ;
+ int TARGET_SSE ;
+ int TARGET_SSE2 ;
+ int VOIDmode ;
+ int const0_rtx ;
+ int const1_rtx ;
+ int convert_modes (int,int,int ,int) ;
+ int emit_insn (int ) ;
+ int emit_move_insn (int ,int ) ;
+ int expand_simple_binop (int,int ,int ,int ,int ,int,int ) ;
+ int force_reg (int ,int ) ;
+ int gcc_unreachable () ;
+ int gen_lowpart (int const,int ) ;
+ int gen_reg_rtx (int const) ;
+ int gen_rtx_SET (int ,int ,int ) ;
+ int gen_rtx_TRUNCATE (int,int ) ;
+ int gen_rtx_VEC_DUPLICATE (int const,int ) ;
+ int gen_rtx_VEC_MERGE (int const,int ,int ,int ) ;
+ int gen_sse2_pshufd (int ,int ,int ) ;
+ int gen_sse2_punpcklbw (int ,int ,int ) ;
+ int gen_sse2_punpcklwd (int ,int ,int ) ;
 
 __attribute__((used)) static bool
 ix86_expand_vector_init_duplicate (bool mmx_ok, enum machine_mode mode,
-				   rtx target, rtx val)
+       rtx target, rtx val)
 {
   enum machine_mode smode, wsmode, wvmode;
   rtx x;
 
   switch (mode)
     {
-    case V2SImode:
-    case V2SFmode:
+    case 133:
+    case 134:
       if (!mmx_ok)
-	return false;
-      /* FALLTHRU */
+ return 0;
 
-    case V2DFmode:
-    case V2DImode:
-    case V4SFmode:
-    case V4SImode:
+
+    case 136:
+    case 135:
+    case 131:
+    case 130:
       val = force_reg (GET_MODE_INNER (mode), val);
       x = gen_rtx_VEC_DUPLICATE (mode, val);
       emit_insn (gen_rtx_SET (VOIDmode, target, x));
-      return true;
+      return 1;
 
-    case V4HImode:
+    case 132:
       if (!mmx_ok)
-	return false;
+ return 0;
       if (TARGET_SSE || TARGET_3DNOW_A)
-	{
-	  val = gen_lowpart (SImode, val);
-	  x = gen_rtx_TRUNCATE (HImode, val);
-	  x = gen_rtx_VEC_DUPLICATE (mode, x);
-	  emit_insn (gen_rtx_SET (VOIDmode, target, x));
-	  return true;
-	}
+ {
+   val = gen_lowpart (SImode, val);
+   x = gen_rtx_TRUNCATE (HImode, val);
+   x = gen_rtx_VEC_DUPLICATE (mode, x);
+   emit_insn (gen_rtx_SET (VOIDmode, target, x));
+   return 1;
+ }
       else
-	{
-	  smode = HImode;
-	  wsmode = SImode;
-	  wvmode = V2SImode;
-	  goto widen;
-	}
+ {
+   smode = HImode;
+   wsmode = SImode;
+   wvmode = 133;
+   goto widen;
+ }
 
-    case V8QImode:
+    case 128:
       if (!mmx_ok)
-	return false;
+ return 0;
       smode = QImode;
       wsmode = HImode;
-      wvmode = V4HImode;
+      wvmode = 132;
       goto widen;
-    case V8HImode:
+    case 129:
       if (TARGET_SSE2)
-	{
-	  rtx tmp1, tmp2;
-	  /* Extend HImode to SImode using a paradoxical SUBREG.  */
-	  tmp1 = gen_reg_rtx (SImode);
-	  emit_move_insn (tmp1, gen_lowpart (SImode, val));
-	  /* Insert the SImode value as low element of V4SImode vector. */
-	  tmp2 = gen_reg_rtx (V4SImode);
-	  tmp1 = gen_rtx_VEC_MERGE (V4SImode,
-				    gen_rtx_VEC_DUPLICATE (V4SImode, tmp1),
-				    CONST0_RTX (V4SImode),
-				    const1_rtx);
-	  emit_insn (gen_rtx_SET (VOIDmode, tmp2, tmp1));
-	  /* Cast the V4SImode vector back to a V8HImode vector.  */
-	  tmp1 = gen_reg_rtx (V8HImode);
-	  emit_move_insn (tmp1, gen_lowpart (V8HImode, tmp2));
-	  /* Duplicate the low short through the whole low SImode word.  */
-	  emit_insn (gen_sse2_punpcklwd (tmp1, tmp1, tmp1));
-	  /* Cast the V8HImode vector back to a V4SImode vector.  */
-	  tmp2 = gen_reg_rtx (V4SImode);
-	  emit_move_insn (tmp2, gen_lowpart (V4SImode, tmp1));
-	  /* Replicate the low element of the V4SImode vector.  */
-	  emit_insn (gen_sse2_pshufd (tmp2, tmp2, const0_rtx));
-	  /* Cast the V2SImode back to V8HImode, and store in target.  */
-	  emit_move_insn (target, gen_lowpart (V8HImode, tmp2));
-	  return true;
-	}
+ {
+   rtx tmp1, tmp2;
+
+   tmp1 = gen_reg_rtx (SImode);
+   emit_move_insn (tmp1, gen_lowpart (SImode, val));
+
+   tmp2 = gen_reg_rtx (130);
+   tmp1 = gen_rtx_VEC_MERGE (130,
+        gen_rtx_VEC_DUPLICATE (130, tmp1),
+        CONST0_RTX (130),
+        const1_rtx);
+   emit_insn (gen_rtx_SET (VOIDmode, tmp2, tmp1));
+
+   tmp1 = gen_reg_rtx (129);
+   emit_move_insn (tmp1, gen_lowpart (129, tmp2));
+
+   emit_insn (gen_sse2_punpcklwd (tmp1, tmp1, tmp1));
+
+   tmp2 = gen_reg_rtx (130);
+   emit_move_insn (tmp2, gen_lowpart (130, tmp1));
+
+   emit_insn (gen_sse2_pshufd (tmp2, tmp2, const0_rtx));
+
+   emit_move_insn (target, gen_lowpart (129, tmp2));
+   return 1;
+ }
       smode = HImode;
       wsmode = SImode;
-      wvmode = V4SImode;
+      wvmode = 130;
       goto widen;
-    case V16QImode:
+    case 137:
       if (TARGET_SSE2)
-	{
-	  rtx tmp1, tmp2;
-	  /* Extend QImode to SImode using a paradoxical SUBREG.  */
-	  tmp1 = gen_reg_rtx (SImode);
-	  emit_move_insn (tmp1, gen_lowpart (SImode, val));
-	  /* Insert the SImode value as low element of V4SImode vector. */
-	  tmp2 = gen_reg_rtx (V4SImode);
-	  tmp1 = gen_rtx_VEC_MERGE (V4SImode,
-				    gen_rtx_VEC_DUPLICATE (V4SImode, tmp1),
-				    CONST0_RTX (V4SImode),
-				    const1_rtx);
-	  emit_insn (gen_rtx_SET (VOIDmode, tmp2, tmp1));
-	  /* Cast the V4SImode vector back to a V16QImode vector.  */
-	  tmp1 = gen_reg_rtx (V16QImode);
-	  emit_move_insn (tmp1, gen_lowpart (V16QImode, tmp2));
-	  /* Duplicate the low byte through the whole low SImode word.  */
-	  emit_insn (gen_sse2_punpcklbw (tmp1, tmp1, tmp1));
-	  emit_insn (gen_sse2_punpcklbw (tmp1, tmp1, tmp1));
-	  /* Cast the V16QImode vector back to a V4SImode vector.  */
-	  tmp2 = gen_reg_rtx (V4SImode);
-	  emit_move_insn (tmp2, gen_lowpart (V4SImode, tmp1));
-	  /* Replicate the low element of the V4SImode vector.  */
-	  emit_insn (gen_sse2_pshufd (tmp2, tmp2, const0_rtx));
-	  /* Cast the V2SImode back to V16QImode, and store in target.  */
-	  emit_move_insn (target, gen_lowpart (V16QImode, tmp2));
-	  return true;
-	}
+ {
+   rtx tmp1, tmp2;
+
+   tmp1 = gen_reg_rtx (SImode);
+   emit_move_insn (tmp1, gen_lowpart (SImode, val));
+
+   tmp2 = gen_reg_rtx (130);
+   tmp1 = gen_rtx_VEC_MERGE (130,
+        gen_rtx_VEC_DUPLICATE (130, tmp1),
+        CONST0_RTX (130),
+        const1_rtx);
+   emit_insn (gen_rtx_SET (VOIDmode, tmp2, tmp1));
+
+   tmp1 = gen_reg_rtx (137);
+   emit_move_insn (tmp1, gen_lowpart (137, tmp2));
+
+   emit_insn (gen_sse2_punpcklbw (tmp1, tmp1, tmp1));
+   emit_insn (gen_sse2_punpcklbw (tmp1, tmp1, tmp1));
+
+   tmp2 = gen_reg_rtx (130);
+   emit_move_insn (tmp2, gen_lowpart (130, tmp1));
+
+   emit_insn (gen_sse2_pshufd (tmp2, tmp2, const0_rtx));
+
+   emit_move_insn (target, gen_lowpart (137, tmp2));
+   return 1;
+ }
       smode = QImode;
       wsmode = HImode;
-      wvmode = V8HImode;
+      wvmode = 129;
       goto widen;
     widen:
-      /* Replicate the value once into the next wider mode and recurse.  */
-      val = convert_modes (wsmode, smode, val, true);
+
+      val = convert_modes (wsmode, smode, val, 1);
       x = expand_simple_binop (wsmode, ASHIFT, val,
-			       GEN_INT (GET_MODE_BITSIZE (smode)),
-			       NULL_RTX, 1, OPTAB_LIB_WIDEN);
+          GEN_INT (GET_MODE_BITSIZE (smode)),
+          NULL_RTX, 1, OPTAB_LIB_WIDEN);
       val = expand_simple_binop (wsmode, IOR, val, x, x, 1, OPTAB_LIB_WIDEN);
 
       x = gen_reg_rtx (wvmode);
       if (!ix86_expand_vector_init_duplicate (mmx_ok, wvmode, x, val))
-	gcc_unreachable ();
+ gcc_unreachable ();
       emit_move_insn (target, gen_lowpart (mode, x));
-      return true;
+      return 1;
 
     default:
-      return false;
+      return 0;
     }
 }

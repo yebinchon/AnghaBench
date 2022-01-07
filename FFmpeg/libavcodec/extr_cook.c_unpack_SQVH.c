@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int /*<<< orphan*/  gb; TYPE_1__* sqvh; } ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int gb; TYPE_1__* sqvh; } ;
 struct TYPE_7__ {scalar_t__ bits_per_subpacket; } ;
-struct TYPE_6__ {int /*<<< orphan*/  bits; int /*<<< orphan*/  table; } ;
-typedef  TYPE_2__ COOKSubpacket ;
-typedef  TYPE_3__ COOKContext ;
+struct TYPE_6__ {int bits; int table; } ;
+typedef TYPE_2__ COOKSubpacket ;
+typedef TYPE_3__ COOKContext ;
 
-/* Variables and functions */
- int get_bits1 (int /*<<< orphan*/ *) ; 
- scalar_t__ get_bits_count (int /*<<< orphan*/ *) ; 
- int get_vlc2 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int* invradix_tab ; 
- int* kmax_tab ; 
- int* vd_tab ; 
- int* vpr_tab ; 
+
+ int get_bits1 (int *) ;
+ scalar_t__ get_bits_count (int *) ;
+ int get_vlc2 (int *,int ,int ,int) ;
+ int* invradix_tab ;
+ int* kmax_tab ;
+ int* vd_tab ;
+ int* vpr_tab ;
 
 __attribute__((used)) static int unpack_SQVH(COOKContext *q, COOKSubpacket *p, int category,
                        int *subband_coef_index, int *subband_coef_sign)

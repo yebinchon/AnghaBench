@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {scalar_t__ dwType; int /*<<< orphan*/  hDevice; int /*<<< orphan*/  hnd; int /*<<< orphan*/  y; int /*<<< orphan*/  x; } ;
-typedef  TYPE_1__ winraw_mouse_t ;
-typedef  scalar_t__ UINT ;
-struct TYPE_10__ {int /*<<< orphan*/  y; int /*<<< orphan*/  x; } ;
-typedef  TYPE_1__ RAWINPUTDEVICELIST ;
-typedef  TYPE_3__ POINT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetCursorPos (TYPE_3__*) ; 
- int /*<<< orphan*/  GetLastError () ; 
- scalar_t__ GetRawInputDeviceList (TYPE_1__*,scalar_t__*,int) ; 
- int /*<<< orphan*/  RARCH_ERR (char*,int /*<<< orphan*/ ) ; 
- scalar_t__ RIM_TYPEMOUSE ; 
- scalar_t__ calloc (int,unsigned int) ; 
- int /*<<< orphan*/  free (TYPE_1__*) ; 
- scalar_t__ malloc (scalar_t__) ; 
- int /*<<< orphan*/  winraw_log_mice_info (TYPE_1__*,unsigned int) ; 
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_9__ {scalar_t__ dwType; int hDevice; int hnd; int y; int x; } ;
+typedef TYPE_1__ winraw_mouse_t ;
+typedef scalar_t__ UINT ;
+struct TYPE_10__ {int y; int x; } ;
+typedef TYPE_1__ RAWINPUTDEVICELIST ;
+typedef TYPE_3__ POINT ;
+
+
+ int GetCursorPos (TYPE_3__*) ;
+ int GetLastError () ;
+ scalar_t__ GetRawInputDeviceList (TYPE_1__*,scalar_t__*,int) ;
+ int RARCH_ERR (char*,int ) ;
+ scalar_t__ RIM_TYPEMOUSE ;
+ scalar_t__ calloc (int,unsigned int) ;
+ int free (TYPE_1__*) ;
+ scalar_t__ malloc (scalar_t__) ;
+ int winraw_log_mice_info (TYPE_1__*,unsigned int) ;
 
 __attribute__((used)) static bool winraw_init_devices(winraw_mouse_t **mice, unsigned *mouse_cnt)
 {
    UINT i;
    POINT crs_pos;
-   winraw_mouse_t *mice_r   = NULL;
-   unsigned mouse_cnt_r     = 0;
-   RAWINPUTDEVICELIST *devs = NULL;
-   UINT dev_cnt             = 0;
-   UINT r                   = GetRawInputDeviceList(
-         NULL, &dev_cnt, sizeof(RAWINPUTDEVICELIST));
+   winraw_mouse_t *mice_r = ((void*)0);
+   unsigned mouse_cnt_r = 0;
+   RAWINPUTDEVICELIST *devs = ((void*)0);
+   UINT dev_cnt = 0;
+   UINT r = GetRawInputDeviceList(
+         ((void*)0), &dev_cnt, sizeof(RAWINPUTDEVICELIST));
 
    if (r == (UINT)-1)
    {
@@ -77,7 +77,7 @@ __attribute__((used)) static bool winraw_init_devices(winraw_mouse_t **mice, uns
       }
    }
 
-   /* count is already checked, so this is safe */
+
    for (i = mouse_cnt_r = 0; i < dev_cnt; ++i)
    {
       if (devs[i].dwType == RIM_TYPEMOUSE)
@@ -87,15 +87,15 @@ __attribute__((used)) static bool winraw_init_devices(winraw_mouse_t **mice, uns
    winraw_log_mice_info(mice_r, mouse_cnt_r);
    free(devs);
 
-   *mice      = mice_r;
+   *mice = mice_r;
    *mouse_cnt = mouse_cnt_r;
 
-   return true;
+   return 1;
 
 error:
    free(devs);
    free(mice_r);
-   *mice = NULL;
+   *mice = ((void*)0);
    *mouse_cnt = 0;
-   return false;
+   return 0;
 }

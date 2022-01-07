@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  LC_ALL ; 
- int /*<<< orphan*/  ok (int,char*,int) ; 
- int p___mb_cur_max_func () ; 
- int* p__p___mb_cur_max () ; 
- int /*<<< orphan*/  setlocale (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  skip (char*) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
+ int LC_ALL ;
+ int ok (int,char*,int) ;
+ int p___mb_cur_max_func () ;
+ int* p__p___mb_cur_max () ;
+ int setlocale (int ,char*) ;
+ int skip (char*) ;
+ int win_skip (char*) ;
 
 __attribute__((used)) static void test___mb_cur_max_func(void)
 {
@@ -26,14 +18,14 @@ __attribute__((used)) static void test___mb_cur_max_func(void)
 
     setlocale(LC_ALL, "C");
 
-    /* for newer Windows */
+
     if(!p___mb_cur_max_func)
         win_skip("Skipping ___mb_cur_max_func tests\n");
     else {
         mb_cur_max = p___mb_cur_max_func();
         ok(mb_cur_max == 1, "mb_cur_max = %d, expected 1\n", mb_cur_max);
 
-        /* some old Windows don't set chinese */
+
         if (!setlocale(LC_ALL, "chinese"))
             win_skip("Skipping test with chinese locale\n");
         else {
@@ -43,14 +35,14 @@ __attribute__((used)) static void test___mb_cur_max_func(void)
         }
     }
 
-    /* for older Windows */
+
     if (!p__p___mb_cur_max)
         skip("Skipping __p___mb_cur_max tests\n");
     else {
         mb_cur_max = *p__p___mb_cur_max();
         ok(mb_cur_max == 1, "mb_cur_max = %d, expected 1\n", mb_cur_max);
 
-        /* some old Windows don't set chinese */
+
         if (!setlocale(LC_ALL, "chinese"))
             win_skip("Skipping test with chinese locale\n");
         else {

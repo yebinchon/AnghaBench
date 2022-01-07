@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  IjkFifoBuffer ;
 
-/* Variables and functions */
- void* calloc (size_t,size_t) ; 
- int /*<<< orphan*/ * fifo_alloc_common (void*,size_t) ; 
+
+
+
+typedef int IjkFifoBuffer ;
+
+
+ void* calloc (size_t,size_t) ;
+ int * fifo_alloc_common (void*,size_t) ;
 
 IjkFifoBuffer *ijk_av_fifo_alloc_array(size_t nmemb, size_t size)
 {

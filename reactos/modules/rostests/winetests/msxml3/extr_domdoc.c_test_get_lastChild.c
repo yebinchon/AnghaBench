@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lcW ;
-typedef  int /*<<< orphan*/  foW ;
-typedef  char WCHAR ;
-typedef  scalar_t__ VARIANT_BOOL ;
-typedef  int /*<<< orphan*/  IXMLDOMNode ;
-typedef  int /*<<< orphan*/  IXMLDOMDocument ;
-typedef  scalar_t__ HRESULT ;
-typedef  int /*<<< orphan*/  BSTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IID_IXMLDOMDocument ; 
- int /*<<< orphan*/  IXMLDOMDocument_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IXMLDOMDocument_get_lastChild (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- scalar_t__ IXMLDOMDocument_loadXML (int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__*) ; 
- int /*<<< orphan*/  IXMLDOMNode_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IXMLDOMNode_get_lastChild (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- scalar_t__ IXMLDOMNode_get_nodeName (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  SysFreeString (int /*<<< orphan*/ ) ; 
- scalar_t__ VARIANT_TRUE ; 
- int /*<<< orphan*/  _bstr_ (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  complete4A ; 
- int /*<<< orphan*/ * create_document (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free_bstrs () ; 
- scalar_t__ memcmp (int /*<<< orphan*/ ,char const*,int) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
+
+
+
+typedef int lcW ;
+typedef int foW ;
+typedef char WCHAR ;
+typedef scalar_t__ VARIANT_BOOL ;
+typedef int IXMLDOMNode ;
+typedef int IXMLDOMDocument ;
+typedef scalar_t__ HRESULT ;
+typedef int BSTR ;
+
+
+ int IID_IXMLDOMDocument ;
+ int IXMLDOMDocument_Release (int *) ;
+ scalar_t__ IXMLDOMDocument_get_lastChild (int *,int **) ;
+ scalar_t__ IXMLDOMDocument_loadXML (int *,int ,scalar_t__*) ;
+ int IXMLDOMNode_Release (int *) ;
+ scalar_t__ IXMLDOMNode_get_lastChild (int *,int **) ;
+ scalar_t__ IXMLDOMNode_get_nodeName (int *,int *) ;
+ scalar_t__ S_OK ;
+ int SysFreeString (int ) ;
+ scalar_t__ VARIANT_TRUE ;
+ int _bstr_ (int ) ;
+ int complete4A ;
+ int * create_document (int *) ;
+ int free_bstrs () ;
+ scalar_t__ memcmp (int ,char const*,int) ;
+ int ok (int,char*,...) ;
 
 __attribute__((used)) static void test_get_lastChild(void)
 {

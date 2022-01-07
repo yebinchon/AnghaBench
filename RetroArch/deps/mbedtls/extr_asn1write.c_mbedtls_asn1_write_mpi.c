@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int s; } ;
-typedef  TYPE_1__ mbedtls_mpi ;
+typedef TYPE_1__ mbedtls_mpi ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MBEDTLS_ASN1_CHK_ADD (size_t,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MBEDTLS_ASN1_INTEGER ; 
- int MBEDTLS_ERR_ASN1_BUF_TOO_SMALL ; 
- int /*<<< orphan*/  MBEDTLS_MPI_CHK (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mbedtls_asn1_write_len (unsigned char**,unsigned char*,size_t) ; 
- int /*<<< orphan*/  mbedtls_asn1_write_tag (unsigned char**,unsigned char*,int /*<<< orphan*/ ) ; 
- size_t mbedtls_mpi_size (TYPE_1__ const*) ; 
- int /*<<< orphan*/  mbedtls_mpi_write_binary (TYPE_1__ const*,unsigned char*,size_t) ; 
+
+ int MBEDTLS_ASN1_CHK_ADD (size_t,int ) ;
+ int MBEDTLS_ASN1_INTEGER ;
+ int MBEDTLS_ERR_ASN1_BUF_TOO_SMALL ;
+ int MBEDTLS_MPI_CHK (int ) ;
+ int mbedtls_asn1_write_len (unsigned char**,unsigned char*,size_t) ;
+ int mbedtls_asn1_write_tag (unsigned char**,unsigned char*,int ) ;
+ size_t mbedtls_mpi_size (TYPE_1__ const*) ;
+ int mbedtls_mpi_write_binary (TYPE_1__ const*,unsigned char*,size_t) ;
 
 int mbedtls_asn1_write_mpi( unsigned char **p, unsigned char *start, const mbedtls_mpi *X )
 {
     int ret;
     size_t len = 0;
 
-    /* Write the MPI */
+
     len = mbedtls_mpi_size( X );
 
     if( *p < start || (size_t)( *p - start ) < len )
@@ -38,9 +38,9 @@ int mbedtls_asn1_write_mpi( unsigned char **p, unsigned char *start, const mbedt
     (*p) -= len;
     MBEDTLS_MPI_CHK( mbedtls_mpi_write_binary( X, *p, len ) );
 
-    /* DER format assumes 2s complement for numbers, so the leftmost bit
-     * should be 0 for positive numbers and 1 for negative numbers.
-     */
+
+
+
     if( X->s ==1 && **p & 0x80 )
     {
         if( *p - start < 1 )

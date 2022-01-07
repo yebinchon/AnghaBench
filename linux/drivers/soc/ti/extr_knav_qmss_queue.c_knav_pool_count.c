@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct knav_pool {int /*<<< orphan*/  queue; } ;
 
-/* Variables and functions */
- int knav_queue_get_count (int /*<<< orphan*/ ) ; 
+
+
+
+struct knav_pool {int queue; } ;
+
+
+ int knav_queue_get_count (int ) ;
 
 int knav_pool_count(void *ph)
 {
-	struct knav_pool *pool = ph;
-	return knav_queue_get_count(pool->queue);
+ struct knav_pool *pool = ph;
+ return knav_queue_get_count(pool->queue);
 }

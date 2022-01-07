@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct srcu_struct {int /*<<< orphan*/  per_cpu_ref; } ;
-struct TYPE_2__ {int /*<<< orphan*/ * c; } ;
 
-/* Variables and functions */
- TYPE_1__* per_cpu_ptr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  preempt_disable () ; 
- int /*<<< orphan*/  preempt_enable () ; 
- int /*<<< orphan*/  smp_processor_id () ; 
- int /*<<< orphan*/  srcu_barrier () ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct srcu_struct {int per_cpu_ref; } ;
+struct TYPE_2__ {int * c; } ;
+
+
+ TYPE_1__* per_cpu_ptr (int ,int ) ;
+ int preempt_disable () ;
+ int preempt_enable () ;
+ int smp_processor_id () ;
+ int srcu_barrier () ;
 
 void srcu_read_unlock(struct srcu_struct *sp, int idx)
 {
-	preempt_disable();
-	srcu_barrier();  /* ensure compiler won't misorder critical section. */
-	per_cpu_ptr(sp->per_cpu_ref, smp_processor_id())->c[idx]--;
-	preempt_enable();
+ preempt_disable();
+ srcu_barrier();
+ per_cpu_ptr(sp->per_cpu_ref, smp_processor_id())->c[idx]--;
+ preempt_enable();
 }

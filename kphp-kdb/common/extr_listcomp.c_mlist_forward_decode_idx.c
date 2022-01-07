@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct mlist_decoder_stack_entry {int right_value; int left_idx; int right_idx; scalar_t__ right_subtree_offset; int middle_value; int multiplicity; int left_value; } ;
-struct mlist_decoder {int N; int p; int k; int K; int /*<<< orphan*/  br; struct mlist_decoder_stack_entry* stack; } ;
+struct mlist_decoder {int N; int p; int k; int K; int br; struct mlist_decoder_stack_entry* stack; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  bread_seek (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  mlist_decode_node (struct mlist_decoder*,struct mlist_decoder_stack_entry*) ; 
- int /*<<< orphan*/  mlist_decode_pair (struct mlist_decoder*,int*) ; 
- int /*<<< orphan*/  mlist_uptree (struct mlist_decoder*,struct mlist_decoder_stack_entry*,int,int*) ; 
+
+ int assert (int) ;
+ int bread_seek (int *,scalar_t__) ;
+ int mlist_decode_node (struct mlist_decoder*,struct mlist_decoder_stack_entry*) ;
+ int mlist_decode_pair (struct mlist_decoder*,int*) ;
+ int mlist_uptree (struct mlist_decoder*,struct mlist_decoder_stack_entry*,int,int*) ;
 
 int mlist_forward_decode_idx (struct mlist_decoder *dec, int doc_id_lowerbound, int *multiplicity) {
   if (doc_id_lowerbound >= dec->N) {
@@ -84,7 +84,7 @@ int mlist_forward_decode_idx (struct mlist_decoder *dec, int doc_id_lowerbound, 
     }
     struct mlist_decoder_stack_entry *next = data + 1;
     if (data->middle_value > doc_id_lowerbound) {
-      // left subtree
+
       if (data->left_idx == middle - 1) {
         dec->k = middle;
         *multiplicity = data->multiplicity;

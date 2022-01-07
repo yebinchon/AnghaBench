@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct RBasic {int dummy; } ;
-typedef  int /*<<< orphan*/  mrb_value ;
-struct TYPE_6__ {int arena_idx; int /*<<< orphan*/  out_of_memory; struct RBasic** arena; } ;
+typedef int mrb_value ;
+struct TYPE_6__ {int arena_idx; int out_of_memory; struct RBasic** arena; } ;
 struct TYPE_7__ {scalar_t__ exc; TYPE_1__ gc; } ;
-typedef  TYPE_2__ mrb_state ;
+typedef TYPE_2__ mrb_state ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MRB_FROZEN_P (scalar_t__) ; 
- int /*<<< orphan*/  exc_debug_info (TYPE_2__*,scalar_t__) ; 
- int /*<<< orphan*/  mrb_keep_backtrace (TYPE_2__*,int /*<<< orphan*/ ) ; 
- scalar_t__ mrb_nil_p (int /*<<< orphan*/ ) ; 
- scalar_t__ mrb_obj_ptr (int /*<<< orphan*/ ) ; 
+
+ int MRB_FROZEN_P (scalar_t__) ;
+ int exc_debug_info (TYPE_2__*,scalar_t__) ;
+ int mrb_keep_backtrace (TYPE_2__*,int ) ;
+ scalar_t__ mrb_nil_p (int ) ;
+ scalar_t__ mrb_obj_ptr (int ) ;
 
 void
 mrb_exc_set(mrb_state *mrb, mrb_value exc)

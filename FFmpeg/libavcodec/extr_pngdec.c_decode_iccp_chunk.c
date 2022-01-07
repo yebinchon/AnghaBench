@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_6__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
+
+
+typedef struct TYPE_13__ TYPE_6__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint8_t ;
 struct TYPE_13__ {scalar_t__ buffer; } ;
-struct TYPE_12__ {int /*<<< orphan*/  len; } ;
-struct TYPE_11__ {int /*<<< orphan*/  data; int /*<<< orphan*/  metadata; } ;
-struct TYPE_10__ {TYPE_6__ gb; int /*<<< orphan*/  avctx; } ;
-typedef  TYPE_1__ PNGDecContext ;
-typedef  TYPE_2__ AVFrameSideData ;
-typedef  int /*<<< orphan*/  AVFrame ;
-typedef  TYPE_3__ AVBPrint ;
+struct TYPE_12__ {int len; } ;
+struct TYPE_11__ {int data; int metadata; } ;
+struct TYPE_10__ {TYPE_6__ gb; int avctx; } ;
+typedef TYPE_1__ PNGDecContext ;
+typedef TYPE_2__ AVFrameSideData ;
+typedef int AVFrame ;
+typedef TYPE_3__ AVBPrint ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_FRAME_DATA_ICC_PROFILE ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  ENOMEM ; 
- int FFMAX (int,int /*<<< orphan*/ ) ; 
- int av_bprint_finalize (TYPE_3__*,char**) ; 
- int /*<<< orphan*/  av_dict_set (int /*<<< orphan*/ *,char*,scalar_t__*,int /*<<< orphan*/ ) ; 
- TYPE_2__* av_frame_new_side_data (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_free (scalar_t__*) ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- scalar_t__ bytestream2_get_byte (TYPE_6__*) ; 
- int /*<<< orphan*/  bytestream2_skip (TYPE_6__*,int) ; 
- int decode_zbuf (TYPE_3__*,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,scalar_t__*,int /*<<< orphan*/ ) ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_INVALIDDATA ;
+ int AV_FRAME_DATA_ICC_PROFILE ;
+ int AV_LOG_ERROR ;
+ int ENOMEM ;
+ int FFMAX (int,int ) ;
+ int av_bprint_finalize (TYPE_3__*,char**) ;
+ int av_dict_set (int *,char*,scalar_t__*,int ) ;
+ TYPE_2__* av_frame_new_side_data (int *,int ,int ) ;
+ int av_free (scalar_t__*) ;
+ int av_log (int ,int ,char*) ;
+ scalar_t__ bytestream2_get_byte (TYPE_6__*) ;
+ int bytestream2_skip (TYPE_6__*,int) ;
+ int decode_zbuf (TYPE_3__*,scalar_t__,scalar_t__) ;
+ int memcpy (int ,scalar_t__*,int ) ;
 
 __attribute__((used)) static int decode_iccp_chunk(PNGDecContext *s, int length, AVFrame *f)
 {
@@ -80,7 +80,7 @@ __attribute__((used)) static int decode_iccp_chunk(PNGDecContext *s, int length,
     memcpy(sd->data, data, bp.len);
     av_free(data);
 
-    /* ICC compressed data and CRC */
+
     bytestream2_skip(&s->gb, length + 4);
 
     return 0;

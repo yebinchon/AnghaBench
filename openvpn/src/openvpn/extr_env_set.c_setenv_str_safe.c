@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
+
+
+
+
+typedef int uint8_t ;
 struct env_set {int dummy; } ;
 struct buffer {int dummy; } ;
-typedef  int /*<<< orphan*/  b ;
+typedef int b ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BSTR (struct buffer*) ; 
- int /*<<< orphan*/  M_WARN ; 
- scalar_t__ buf_printf (struct buffer*,char*,char const*) ; 
- int /*<<< orphan*/  buf_set_write (struct buffer*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  msg (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  setenv_str (struct env_set*,int /*<<< orphan*/ ,char const*) ; 
+
+ int BSTR (struct buffer*) ;
+ int M_WARN ;
+ scalar_t__ buf_printf (struct buffer*,char*,char const*) ;
+ int buf_set_write (struct buffer*,int *,int) ;
+ int msg (int ,char*) ;
+ int setenv_str (struct env_set*,int ,char const*) ;
 
 void
 setenv_str_safe(struct env_set *es, const char *name, const char *value)

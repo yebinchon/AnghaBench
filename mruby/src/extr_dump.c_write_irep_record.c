@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  mrb_state ;
+
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int mrb_state ;
 struct TYPE_8__ {int rlen; struct TYPE_8__** reps; } ;
-typedef  TYPE_1__ mrb_irep ;
+typedef TYPE_1__ mrb_irep ;
 
-/* Variables and functions */
- int MRB_DUMP_GENERAL_FAILURE ; 
- int MRB_DUMP_INVALID_IREP ; 
- int MRB_DUMP_OK ; 
- size_t get_irep_record_size_1 (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  write_irep_header (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  write_iseq_block (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  write_pool_block (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  write_syms_block (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ *) ; 
+
+ int MRB_DUMP_GENERAL_FAILURE ;
+ int MRB_DUMP_INVALID_IREP ;
+ int MRB_DUMP_OK ;
+ size_t get_irep_record_size_1 (int *,TYPE_1__*) ;
+ int write_irep_header (int *,TYPE_1__*,int *) ;
+ int write_iseq_block (int *,TYPE_1__*,int *,int ) ;
+ int write_pool_block (int *,TYPE_1__*,int *) ;
+ int write_syms_block (int *,TYPE_1__*,int *) ;
 
 __attribute__((used)) static int
 write_irep_record(mrb_state *mrb, mrb_irep *irep, uint8_t *bin, size_t *irep_record_size, uint8_t flags)
@@ -32,7 +32,7 @@ write_irep_record(mrb_state *mrb, mrb_irep *irep, uint8_t *bin, size_t *irep_rec
   int i;
   uint8_t *src = bin;
 
-  if (irep == NULL) {
+  if (irep == ((void*)0)) {
     return MRB_DUMP_INVALID_IREP;
   }
 

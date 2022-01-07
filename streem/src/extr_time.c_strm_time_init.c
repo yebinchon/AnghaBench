@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  strm_state ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * ns_time ; 
- int /*<<< orphan*/  strm_cfunc_value (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * strm_ns_new (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  strm_var_def (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  time_day ; 
- int /*<<< orphan*/  time_hour ; 
- int /*<<< orphan*/  time_min ; 
- int /*<<< orphan*/  time_minus ; 
- int /*<<< orphan*/  time_month ; 
- int /*<<< orphan*/  time_nanosec ; 
- int /*<<< orphan*/  time_now ; 
- int /*<<< orphan*/  time_num ; 
- int /*<<< orphan*/  time_plus ; 
- int /*<<< orphan*/  time_sec ; 
- int /*<<< orphan*/  time_str ; 
- int /*<<< orphan*/  time_time ; 
- int /*<<< orphan*/  time_weekday ; 
- int /*<<< orphan*/  time_year ; 
+
+
+
+typedef int strm_state ;
+
+
+ int * ns_time ;
+ int strm_cfunc_value (int ) ;
+ int * strm_ns_new (int *,char*) ;
+ int strm_var_def (int *,char*,int ) ;
+ int time_day ;
+ int time_hour ;
+ int time_min ;
+ int time_minus ;
+ int time_month ;
+ int time_nanosec ;
+ int time_now ;
+ int time_num ;
+ int time_plus ;
+ int time_sec ;
+ int time_str ;
+ int time_time ;
+ int time_weekday ;
+ int time_year ;
 
 void
 strm_time_init(strm_state* state)
@@ -38,7 +38,7 @@ strm_time_init(strm_state* state)
   strm_var_def(state, "now", strm_cfunc_value(time_now));
   strm_var_def(state, "time", strm_cfunc_value(time_time));
 
-  ns_time = strm_ns_new(NULL, "time");
+  ns_time = strm_ns_new(((void*)0), "time");
   strm_var_def(ns_time, "+", strm_cfunc_value(time_plus));
   strm_var_def(ns_time, "-", strm_cfunc_value(time_minus));
   strm_var_def(ns_time, "string", strm_cfunc_value(time_str));

@@ -1,64 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint16_t ;
-typedef  int /*<<< orphan*/  EVP_MD_CTX ;
-typedef  int /*<<< orphan*/  EVP_MD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR_R_MALLOC_FAILURE ; 
- int /*<<< orphan*/  EVP_DigestFinal_ex (int /*<<< orphan*/ *,unsigned char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EVP_DigestInit_ex (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EVP_DigestUpdate (int /*<<< orphan*/ *,unsigned char*,int) ; 
- int /*<<< orphan*/  EVP_MD_CTX_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * EVP_MD_CTX_new () ; 
- int EVP_MD_block_size (int /*<<< orphan*/  const*) ; 
- int EVP_MD_size (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  OPENSSL_free (unsigned char*) ; 
- unsigned char* OPENSSL_malloc (int) ; 
- int /*<<< orphan*/  PKCS12_F_PKCS12_KEY_GEN_UNI ; 
- int /*<<< orphan*/  PKCS12err (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  h__dump (unsigned char*,int) ; 
- int /*<<< orphan*/  memcpy (unsigned char*,unsigned char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  min (int,int) ; 
- int /*<<< orphan*/  stderr ; 
+
+
+
+typedef int uint16_t ;
+typedef int EVP_MD_CTX ;
+typedef int EVP_MD ;
+
+
+ int ERR_R_MALLOC_FAILURE ;
+ int EVP_DigestFinal_ex (int *,unsigned char*,int *) ;
+ int EVP_DigestInit_ex (int *,int const*,int *) ;
+ int EVP_DigestUpdate (int *,unsigned char*,int) ;
+ int EVP_MD_CTX_free (int *) ;
+ int * EVP_MD_CTX_new () ;
+ int EVP_MD_block_size (int const*) ;
+ int EVP_MD_size (int const*) ;
+ int OPENSSL_free (unsigned char*) ;
+ unsigned char* OPENSSL_malloc (int) ;
+ int PKCS12_F_PKCS12_KEY_GEN_UNI ;
+ int PKCS12err (int ,int ) ;
+ int fprintf (int ,char*,...) ;
+ int h__dump (unsigned char*,int) ;
+ int memcpy (unsigned char*,unsigned char*,int ) ;
+ int min (int,int) ;
+ int stderr ;
 
 int PKCS12_key_gen_uni(unsigned char *pass, int passlen, unsigned char *salt,
                        int saltlen, int id, int iter, int n,
                        unsigned char *out, const EVP_MD *md_type)
 {
-    unsigned char *B = NULL, *D = NULL, *I = NULL, *p = NULL, *Ai = NULL;
+    unsigned char *B = ((void*)0), *D = ((void*)0), *I = ((void*)0), *p = ((void*)0), *Ai = ((void*)0);
     int Slen, Plen, Ilen;
     int i, j, u, v;
     int ret = 0;
-    EVP_MD_CTX *ctx = NULL;
-#ifdef  OPENSSL_DEBUG_KEYGEN
-    unsigned char *tmpout = out;
-    int tmpn = n;
-#endif
+    EVP_MD_CTX *ctx = ((void*)0);
+
+
+
+
 
     ctx = EVP_MD_CTX_new();
-    if (ctx == NULL)
+    if (ctx == ((void*)0))
         goto err;
-
-#ifdef  OPENSSL_DEBUG_KEYGEN
-    fprintf(stderr, "KEYGEN DEBUG\n");
-    fprintf(stderr, "ID %d, ITER %d\n", id, iter);
-    fprintf(stderr, "Password (length %d):\n", passlen);
-    h__dump(pass, passlen);
-    fprintf(stderr, "Salt (length %d):\n", saltlen);
-    h__dump(salt, saltlen);
-#endif
     v = EVP_MD_block_size(md_type);
     u = EVP_MD_size(md_type);
     if (u < 0 || v <= 0)
@@ -73,7 +64,7 @@ int PKCS12_key_gen_uni(unsigned char *pass, int passlen, unsigned char *salt,
         Plen = 0;
     Ilen = Slen + Plen;
     I = OPENSSL_malloc(Ilen);
-    if (D == NULL || Ai == NULL || B == NULL || I == NULL)
+    if (D == ((void*)0) || Ai == ((void*)0) || B == ((void*)0) || I == ((void*)0))
         goto err;
     for (i = 0; i < v; i++)
         D[i] = id;
@@ -83,23 +74,23 @@ int PKCS12_key_gen_uni(unsigned char *pass, int passlen, unsigned char *salt,
     for (i = 0; i < Plen; i++)
         *p++ = pass[i % passlen];
     for (;;) {
-        if (!EVP_DigestInit_ex(ctx, md_type, NULL)
+        if (!EVP_DigestInit_ex(ctx, md_type, ((void*)0))
             || !EVP_DigestUpdate(ctx, D, v)
             || !EVP_DigestUpdate(ctx, I, Ilen)
-            || !EVP_DigestFinal_ex(ctx, Ai, NULL))
+            || !EVP_DigestFinal_ex(ctx, Ai, ((void*)0)))
             goto err;
         for (j = 1; j < iter; j++) {
-            if (!EVP_DigestInit_ex(ctx, md_type, NULL)
+            if (!EVP_DigestInit_ex(ctx, md_type, ((void*)0))
                 || !EVP_DigestUpdate(ctx, Ai, u)
-                || !EVP_DigestFinal_ex(ctx, Ai, NULL))
+                || !EVP_DigestFinal_ex(ctx, Ai, ((void*)0)))
                 goto err;
         }
         memcpy(out, Ai, min(n, u));
         if (u >= n) {
-#ifdef OPENSSL_DEBUG_KEYGEN
-            fprintf(stderr, "Output KEY (length %d)\n", tmpn);
-            h__dump(tmpout, tmpn);
-#endif
+
+
+
+
             ret = 1;
             goto end;
         }
@@ -112,7 +103,7 @@ int PKCS12_key_gen_uni(unsigned char *pass, int passlen, unsigned char *salt,
             unsigned char *Ij = I + j;
             uint16_t c = 1;
 
-            /* Work out Ij = Ij + B + 1 */
+
             for (k = v - 1; k >= 0; k--) {
                 c += Ij[k] + B[k];
                 Ij[k] = (unsigned char)c;

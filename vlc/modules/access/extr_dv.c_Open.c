@@ -1,71 +1,71 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_5__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_object_t ;
+
+
+typedef struct TYPE_15__ TYPE_5__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+typedef int vlc_object_t ;
 struct raw1394_portinfo {int dummy; } ;
 struct TYPE_13__ {TYPE_3__* p_sys; } ;
-typedef  TYPE_2__ stream_t ;
-struct TYPE_12__ {int events; int /*<<< orphan*/  fd; } ;
-struct TYPE_14__ {scalar_t__ i_cards; scalar_t__ i_node; int i_channel; TYPE_5__* p_ev; TYPE_1__ raw1394_poll; int /*<<< orphan*/ * p_raw1394; scalar_t__ i_port; int /*<<< orphan*/ * p_avc1394; scalar_t__ i_guid; int /*<<< orphan*/  lock; int /*<<< orphan*/ * p_frame; } ;
-typedef  TYPE_3__ access_sys_t ;
-struct TYPE_15__ {int /*<<< orphan*/  thread; int /*<<< orphan*/  lock; TYPE_2__* p_access; int /*<<< orphan*/ * p_frame; int /*<<< orphan*/ ** pp_last; } ;
+typedef TYPE_2__ stream_t ;
+struct TYPE_12__ {int events; int fd; } ;
+struct TYPE_14__ {scalar_t__ i_cards; scalar_t__ i_node; int i_channel; TYPE_5__* p_ev; TYPE_1__ raw1394_poll; int * p_raw1394; scalar_t__ i_port; int * p_avc1394; scalar_t__ i_guid; int lock; int * p_frame; } ;
+typedef TYPE_3__ access_sys_t ;
+struct TYPE_15__ {int thread; int lock; TYPE_2__* p_access; int * p_frame; int ** pp_last; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACCESS_SET_CALLBACKS (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * AVCOpen (TYPE_2__*,scalar_t__) ; 
- int /*<<< orphan*/  Block ; 
- int /*<<< orphan*/  Close (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Control ; 
- scalar_t__ DiscoverAVC (TYPE_2__*,scalar_t__*,scalar_t__) ; 
- int /*<<< orphan*/  ISOCHRONOUS_MAX_PACKET_SIZE ; 
- int /*<<< orphan*/  ISOCHRONOUS_QUEUE_LENGTH ; 
- int POLLIN ; 
- int POLLPRI ; 
- int /*<<< orphan*/  RAW1394_DMA_PACKET_PER_BUFFER ; 
- int /*<<< orphan*/  Raw1394EventThread ; 
- int /*<<< orphan*/  Raw1394Handler ; 
- int VLC_EGENERIC ; 
- int VLC_ENOMEM ; 
- int VLC_SUCCESS ; 
- int /*<<< orphan*/  VLC_THREAD_PRIORITY_OUTPUT ; 
- TYPE_5__* calloc (int,int) ; 
- int /*<<< orphan*/  msg_Dbg (TYPE_2__*,char*) ; 
- int /*<<< orphan*/  msg_Err (TYPE_2__*,char*) ; 
- int /*<<< orphan*/  raw1394_get_fd (int /*<<< orphan*/ *) ; 
- scalar_t__ raw1394_get_port_info (int /*<<< orphan*/ *,struct raw1394_portinfo*,int) ; 
- scalar_t__ raw1394_iso_recv_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  raw1394_iso_recv_start (int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * raw1394_new_handle () ; 
- scalar_t__ raw1394_set_port (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  raw1394_set_userdata (int /*<<< orphan*/ *,TYPE_2__*) ; 
- scalar_t__ vlc_clone (int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_5__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vlc_mutex_init (int /*<<< orphan*/ *) ; 
- TYPE_3__* vlc_obj_malloc (int /*<<< orphan*/ *,int) ; 
+
+ int ACCESS_SET_CALLBACKS (int *,int ,int ,int *) ;
+ int * AVCOpen (TYPE_2__*,scalar_t__) ;
+ int Block ;
+ int Close (int *) ;
+ int Control ;
+ scalar_t__ DiscoverAVC (TYPE_2__*,scalar_t__*,scalar_t__) ;
+ int ISOCHRONOUS_MAX_PACKET_SIZE ;
+ int ISOCHRONOUS_QUEUE_LENGTH ;
+ int POLLIN ;
+ int POLLPRI ;
+ int RAW1394_DMA_PACKET_PER_BUFFER ;
+ int Raw1394EventThread ;
+ int Raw1394Handler ;
+ int VLC_EGENERIC ;
+ int VLC_ENOMEM ;
+ int VLC_SUCCESS ;
+ int VLC_THREAD_PRIORITY_OUTPUT ;
+ TYPE_5__* calloc (int,int) ;
+ int msg_Dbg (TYPE_2__*,char*) ;
+ int msg_Err (TYPE_2__*,char*) ;
+ int raw1394_get_fd (int *) ;
+ scalar_t__ raw1394_get_port_info (int *,struct raw1394_portinfo*,int) ;
+ scalar_t__ raw1394_iso_recv_init (int *,int ,int ,int ,int,int ,int) ;
+ int raw1394_iso_recv_start (int *,int,int,int ) ;
+ int * raw1394_new_handle () ;
+ scalar_t__ raw1394_set_port (int *,scalar_t__) ;
+ int raw1394_set_userdata (int *,TYPE_2__*) ;
+ scalar_t__ vlc_clone (int *,int ,TYPE_5__*,int ) ;
+ int vlc_mutex_init (int *) ;
+ TYPE_3__* vlc_obj_malloc (int *,int) ;
 
 __attribute__((used)) static int Open( vlc_object_t *p_this )
 {
-    stream_t     *p_access = (stream_t*)p_this;
+    stream_t *p_access = (stream_t*)p_this;
     access_sys_t *p_sys;
 
     struct raw1394_portinfo port_inf[ 16 ];
 
     msg_Dbg( p_access, "opening device" );
 
-    /* Set up p_access */
-    ACCESS_SET_CALLBACKS( NULL, Block, Control, NULL );
+
+    ACCESS_SET_CALLBACKS( ((void*)0), Block, Control, ((void*)0) );
 
     p_access->p_sys = p_sys = vlc_obj_malloc( p_this, sizeof( *p_sys ) );
     if( !p_sys )
@@ -76,10 +76,10 @@ __attribute__((used)) static int Open( vlc_object_t *p_this )
     p_sys->i_port = 0;
     p_sys->i_guid = 0;
     p_sys->i_channel = 63;
-    p_sys->p_raw1394 = NULL;
-    p_sys->p_avc1394 = NULL;
-    p_sys->p_frame = NULL;
-    p_sys->p_ev = NULL;
+    p_sys->p_raw1394 = ((void*)0);
+    p_sys->p_avc1394 = ((void*)0);
+    p_sys->p_frame = ((void*)0);
+    p_sys->p_ev = ((void*)0);
 
     vlc_mutex_init( &p_sys->lock );
 
@@ -137,7 +137,7 @@ __attribute__((used)) static int Open( vlc_object_t *p_this )
     p_sys->raw1394_poll.fd = raw1394_get_fd( p_sys->p_raw1394 );
     p_sys->raw1394_poll.events = POLLIN | POLLPRI;
 
-    /* Now create our event thread catcher */
+
     p_sys->p_ev = calloc( 1, sizeof( *p_sys->p_ev ) );
     if( !p_sys->p_ev )
     {
@@ -146,7 +146,7 @@ __attribute__((used)) static int Open( vlc_object_t *p_this )
         return VLC_ENOMEM;
     }
 
-    p_sys->p_ev->p_frame = NULL;
+    p_sys->p_ev->p_frame = ((void*)0);
     p_sys->p_ev->pp_last = &p_sys->p_ev->p_frame;
     p_sys->p_ev->p_access = p_access;
     vlc_mutex_init( &p_sys->p_ev->lock );

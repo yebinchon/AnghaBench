@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
-typedef  int /*<<< orphan*/  lsm_db ;
-struct TYPE_5__ {size_t iV2Child; int /*<<< orphan*/  iV2Ptr; int /*<<< orphan*/ * aiChildPtr; scalar_t__ iV2; int /*<<< orphan*/ * aiKeyPtr; } ;
-typedef  TYPE_1__ TreeNode ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- TYPE_1__* newTreeNode (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int u32 ;
+typedef int lsm_db ;
+struct TYPE_5__ {size_t iV2Child; int iV2Ptr; int * aiChildPtr; scalar_t__ iV2; int * aiKeyPtr; } ;
+typedef TYPE_1__ TreeNode ;
+
+
+ int memcpy (int *,int *,int) ;
+ TYPE_1__* newTreeNode (int *,int *,int*) ;
 
 __attribute__((used)) static TreeNode *copyTreeNode(
-  lsm_db *pDb, 
-  TreeNode *pOld, 
-  u32 *piNew, 
+  lsm_db *pDb,
+  TreeNode *pOld,
+  u32 *piNew,
   int *pRc
 ){
   TreeNode *pNew;

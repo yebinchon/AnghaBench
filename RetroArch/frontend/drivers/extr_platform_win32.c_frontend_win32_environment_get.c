@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  menu; } ;
-struct TYPE_4__ {TYPE_1__ settings; int /*<<< orphan*/ * dirs; } ;
 
-/* Variables and functions */
- size_t DEFAULT_DIR_ASSETS ; 
- size_t DEFAULT_DIR_AUDIO_FILTER ; 
- size_t DEFAULT_DIR_AUTOCONFIG ; 
- size_t DEFAULT_DIR_CHEATS ; 
- size_t DEFAULT_DIR_CORE ; 
- size_t DEFAULT_DIR_CORE_ASSETS ; 
- size_t DEFAULT_DIR_CORE_INFO ; 
- size_t DEFAULT_DIR_CURSOR ; 
- size_t DEFAULT_DIR_DATABASE ; 
- size_t DEFAULT_DIR_LOGS ; 
- size_t DEFAULT_DIR_MENU_CONFIG ; 
- size_t DEFAULT_DIR_OVERLAY ; 
- size_t DEFAULT_DIR_PLAYLIST ; 
- size_t DEFAULT_DIR_RECORD_CONFIG ; 
- size_t DEFAULT_DIR_RECORD_OUTPUT ; 
- size_t DEFAULT_DIR_REMAP ; 
- size_t DEFAULT_DIR_SAVESTATE ; 
- size_t DEFAULT_DIR_SCREENSHOT ; 
- size_t DEFAULT_DIR_SHADER ; 
- size_t DEFAULT_DIR_SRAM ; 
- size_t DEFAULT_DIR_SYSTEM ; 
- size_t DEFAULT_DIR_THUMBNAILS ; 
- size_t DEFAULT_DIR_VIDEO_FILTER ; 
- size_t DEFAULT_DIR_VIDEO_LAYOUT ; 
- size_t DEFAULT_DIR_WALLPAPERS ; 
- int /*<<< orphan*/  fill_pathname_expand_special (int /*<<< orphan*/ ,char*,int) ; 
- TYPE_2__ g_defaults ; 
- int /*<<< orphan*/  gfx_set_dwm () ; 
- int /*<<< orphan*/  strlcpy (int /*<<< orphan*/ ,char*,int) ; 
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int menu; } ;
+struct TYPE_4__ {TYPE_1__ settings; int * dirs; } ;
+
+
+ size_t DEFAULT_DIR_ASSETS ;
+ size_t DEFAULT_DIR_AUDIO_FILTER ;
+ size_t DEFAULT_DIR_AUTOCONFIG ;
+ size_t DEFAULT_DIR_CHEATS ;
+ size_t DEFAULT_DIR_CORE ;
+ size_t DEFAULT_DIR_CORE_ASSETS ;
+ size_t DEFAULT_DIR_CORE_INFO ;
+ size_t DEFAULT_DIR_CURSOR ;
+ size_t DEFAULT_DIR_DATABASE ;
+ size_t DEFAULT_DIR_LOGS ;
+ size_t DEFAULT_DIR_MENU_CONFIG ;
+ size_t DEFAULT_DIR_OVERLAY ;
+ size_t DEFAULT_DIR_PLAYLIST ;
+ size_t DEFAULT_DIR_RECORD_CONFIG ;
+ size_t DEFAULT_DIR_RECORD_OUTPUT ;
+ size_t DEFAULT_DIR_REMAP ;
+ size_t DEFAULT_DIR_SAVESTATE ;
+ size_t DEFAULT_DIR_SCREENSHOT ;
+ size_t DEFAULT_DIR_SHADER ;
+ size_t DEFAULT_DIR_SRAM ;
+ size_t DEFAULT_DIR_SYSTEM ;
+ size_t DEFAULT_DIR_THUMBNAILS ;
+ size_t DEFAULT_DIR_VIDEO_FILTER ;
+ size_t DEFAULT_DIR_VIDEO_LAYOUT ;
+ size_t DEFAULT_DIR_WALLPAPERS ;
+ int fill_pathname_expand_special (int ,char*,int) ;
+ TYPE_2__ g_defaults ;
+ int gfx_set_dwm () ;
+ int strlcpy (int ,char*,int) ;
 
 __attribute__((used)) static void frontend_win32_environment_get(int *argc, char *argv[],
       void *args, void *params_data)
@@ -79,10 +79,10 @@ __attribute__((used)) static void frontend_win32_environment_get(int *argc, char
       ":\\thumbnails", sizeof(g_defaults.dirs[DEFAULT_DIR_THUMBNAILS]));
    fill_pathname_expand_special(g_defaults.dirs[DEFAULT_DIR_OVERLAY],
       ":\\overlays", sizeof(g_defaults.dirs[DEFAULT_DIR_OVERLAY]));
-#ifdef HAVE_VIDEO_LAYOUT
-   fill_pathname_expand_special(g_defaults.dirs[DEFAULT_DIR_VIDEO_LAYOUT],
-      ":\\layouts", sizeof(g_defaults.dirs[DEFAULT_DIR_VIDEO_LAYOUT]));
-#endif
+
+
+
+
    fill_pathname_expand_special(g_defaults.dirs[DEFAULT_DIR_CORE],
       ":\\cores", sizeof(g_defaults.dirs[DEFAULT_DIR_CORE]));
    fill_pathname_expand_special(g_defaults.dirs[DEFAULT_DIR_CORE_INFO],
@@ -103,9 +103,9 @@ __attribute__((used)) static void frontend_win32_environment_get(int *argc, char
       ":\\system", sizeof(g_defaults.dirs[DEFAULT_DIR_SYSTEM]));
    fill_pathname_expand_special(g_defaults.dirs[DEFAULT_DIR_LOGS],
       ":\\logs", sizeof(g_defaults.dirs[DEFAULT_DIR_LOGS]));
-#ifdef HAVE_MENU
-#if defined(HAVE_OPENGL) || defined(HAVE_OPENGL1) || defined(HAVE_OPENGLES) || defined(HAVE_OPENGL_CORE)
-   strlcpy(g_defaults.settings.menu, "xmb", sizeof(g_defaults.settings.menu));
-#endif
-#endif
+
+
+
+
+
 }

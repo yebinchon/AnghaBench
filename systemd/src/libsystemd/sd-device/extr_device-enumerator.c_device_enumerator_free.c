@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {size_t n_devices; int /*<<< orphan*/  match_parent; int /*<<< orphan*/  match_tag; int /*<<< orphan*/  match_sysname; int /*<<< orphan*/  match_property; int /*<<< orphan*/  nomatch_sysattr; int /*<<< orphan*/  match_sysattr; int /*<<< orphan*/  nomatch_subsystem; int /*<<< orphan*/  match_subsystem; int /*<<< orphan*/ * devices; } ;
-typedef  TYPE_1__ sd_device_enumerator ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  hashmap_free_free_free (int /*<<< orphan*/ ) ; 
- TYPE_1__* mfree (TYPE_1__*) ; 
- int /*<<< orphan*/  sd_device_unref (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_free_free (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {size_t n_devices; int match_parent; int match_tag; int match_sysname; int match_property; int nomatch_sysattr; int match_sysattr; int nomatch_subsystem; int match_subsystem; int * devices; } ;
+typedef TYPE_1__ sd_device_enumerator ;
+
+
+ int assert (TYPE_1__*) ;
+ int free (int *) ;
+ int hashmap_free_free_free (int ) ;
+ TYPE_1__* mfree (TYPE_1__*) ;
+ int sd_device_unref (int ) ;
+ int set_free_free (int ) ;
 
 __attribute__((used)) static sd_device_enumerator *device_enumerator_free(sd_device_enumerator *enumerator) {
         size_t i;

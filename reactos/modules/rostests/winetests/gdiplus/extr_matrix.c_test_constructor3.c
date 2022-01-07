@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_6__ {int X; int Y; } ;
 struct TYPE_5__ {int X; int Y; int Width; int Height; } ;
-typedef  int /*<<< orphan*/  REAL ;
-typedef  int /*<<< orphan*/  GpStatus ;
-typedef  TYPE_1__ GpRectF ;
-typedef  TYPE_2__ GpPointF ;
-typedef  int /*<<< orphan*/  GpMatrix ;
+typedef int REAL ;
+typedef int GpStatus ;
+typedef TYPE_1__ GpRectF ;
+typedef TYPE_2__ GpPointF ;
+typedef int GpMatrix ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GdipCreateMatrix3 (TYPE_1__*,TYPE_2__*,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GdipDeleteMatrix (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipGetMatrixElements (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Ok ; 
- int /*<<< orphan*/  expect (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  expectf (double,int /*<<< orphan*/ ) ; 
+
+ int GdipCreateMatrix3 (TYPE_1__*,TYPE_2__*,int **) ;
+ int GdipDeleteMatrix (int *) ;
+ int GdipGetMatrixElements (int *,int *) ;
+ int Ok ;
+ int expect (int ,int ) ;
+ int expectf (double,int ) ;
 
 __attribute__((used)) static void test_constructor3(void)
 {
-    /* MSDN is on crack. GdipCreateMatrix3 makes a matrix that transforms the
-     * corners of the given rectangle to the three points given. */
+
+
     GpMatrix *matrix;
     REAL values[6];
     GpRectF rc;

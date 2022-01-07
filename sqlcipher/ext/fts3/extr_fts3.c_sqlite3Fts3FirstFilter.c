@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_int64 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fts3ColumnlistCopy (int /*<<< orphan*/ ,char**) ; 
- int /*<<< orphan*/  sqlite3Fts3GetVarint (char*,int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3Fts3PutVarint (char*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int sqlite3_int64 ;
+
+
+ int fts3ColumnlistCopy (int ,char**) ;
+ int sqlite3Fts3GetVarint (char*,int *) ;
+ scalar_t__ sqlite3Fts3PutVarint (char*,int ) ;
 
 int sqlite3Fts3FirstFilter(
-  sqlite3_int64 iDelta,           /* Varint that may be written to pOut */
-  char *pList,                    /* Position list (no 0x00 term) */
-  int nList,                      /* Size of pList in bytes */
-  char *pOut                      /* Write output here */
+  sqlite3_int64 iDelta,
+  char *pList,
+  int nList,
+  char *pOut
 ){
   int nOut = 0;
-  int bWritten = 0;               /* True once iDelta has been written */
+  int bWritten = 0;
   char *p = pList;
   char *pEnd = &pList[nList];
 

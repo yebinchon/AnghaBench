@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {int flags; char* name; int priv_data_size; int /*<<< orphan*/ * priv_data_class; int /*<<< orphan*/  url_write; int /*<<< orphan*/  url_read; } ;
-typedef  TYPE_1__ URLProtocol ;
-struct TYPE_10__ {char* filename; int flags; struct TYPE_10__* priv_data; int /*<<< orphan*/  interrupt_callback; scalar_t__ max_packet_size; scalar_t__ is_streamed; TYPE_1__ const* prot; int /*<<< orphan*/ * av_class; } ;
-typedef  TYPE_2__ URLContext ;
-typedef  int /*<<< orphan*/  AVIOInterruptCB ;
-typedef  int /*<<< orphan*/  AVClass ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_OPTION_NOT_FOUND ; 
- int AVIO_FLAG_READ ; 
- int AVIO_FLAG_WRITE ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  EIO ; 
- int /*<<< orphan*/  ENOMEM ; 
- int URL_PROTOCOL_FLAG_NETWORK ; 
- int /*<<< orphan*/  av_freep (TYPE_2__**) ; 
- int /*<<< orphan*/  av_log (TYPE_2__*,int /*<<< orphan*/ ,char*,char*) ; 
- void* av_mallocz (int) ; 
- int av_opt_set (TYPE_2__*,char*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_opt_set_defaults (TYPE_2__*) ; 
- int /*<<< orphan*/  ff_network_close () ; 
- int /*<<< orphan*/  ff_network_init () ; 
- int /*<<< orphan*/  ffurl_context_class ; 
- int /*<<< orphan*/  memmove (char*,char*,int) ; 
- char* strchr (char*,char) ; 
- scalar_t__ strcmp (char*,char*) ; 
- int /*<<< orphan*/  strcpy (char*,char const*) ; 
- int strlen (char const*) ; 
- int /*<<< orphan*/  strncmp (char*,char*,int) ; 
+
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_9__ {int flags; char* name; int priv_data_size; int * priv_data_class; int url_write; int url_read; } ;
+typedef TYPE_1__ URLProtocol ;
+struct TYPE_10__ {char* filename; int flags; struct TYPE_10__* priv_data; int interrupt_callback; scalar_t__ max_packet_size; scalar_t__ is_streamed; TYPE_1__ const* prot; int * av_class; } ;
+typedef TYPE_2__ URLContext ;
+typedef int AVIOInterruptCB ;
+typedef int AVClass ;
+
+
+ int AVERROR (int ) ;
+ int AVERROR_OPTION_NOT_FOUND ;
+ int AVIO_FLAG_READ ;
+ int AVIO_FLAG_WRITE ;
+ int AV_LOG_ERROR ;
+ int EINVAL ;
+ int EIO ;
+ int ENOMEM ;
+ int URL_PROTOCOL_FLAG_NETWORK ;
+ int av_freep (TYPE_2__**) ;
+ int av_log (TYPE_2__*,int ,char*,char*) ;
+ void* av_mallocz (int) ;
+ int av_opt_set (TYPE_2__*,char*,char*,int ) ;
+ int av_opt_set_defaults (TYPE_2__*) ;
+ int ff_network_close () ;
+ int ff_network_init () ;
+ int ffurl_context_class ;
+ int memmove (char*,char*,int) ;
+ char* strchr (char*,char) ;
+ scalar_t__ strcmp (char*,char*) ;
+ int strcpy (char*,char const*) ;
+ int strlen (char const*) ;
+ int strncmp (char*,char*,int) ;
 
 __attribute__((used)) static int url_alloc_for_protocol(URLContext **puc, const URLProtocol *up,
                                   const char *filename, int flags,
@@ -51,17 +51,17 @@ __attribute__((used)) static int url_alloc_for_protocol(URLContext **puc, const 
     URLContext *uc;
     int err;
 
-#if CONFIG_NETWORK
-    if (up->flags & URL_PROTOCOL_FLAG_NETWORK && !ff_network_init())
-        return AVERROR(EIO);
-#endif
+
+
+
+
     if ((flags & AVIO_FLAG_READ) && !up->url_read) {
-        av_log(NULL, AV_LOG_ERROR,
+        av_log(((void*)0), AV_LOG_ERROR,
                "Impossible to open the '%s' protocol for reading\n", up->name);
         return AVERROR(EIO);
     }
     if ((flags & AVIO_FLAG_WRITE) && !up->url_write) {
-        av_log(NULL, AV_LOG_ERROR,
+        av_log(((void*)0), AV_LOG_ERROR,
                "Impossible to open the '%s' protocol for writing\n", up->name);
         return AVERROR(EIO);
     }
@@ -73,10 +73,10 @@ __attribute__((used)) static int url_alloc_for_protocol(URLContext **puc, const 
     uc->av_class = &ffurl_context_class;
     uc->filename = (char *)&uc[1];
     strcpy(uc->filename, filename);
-    uc->prot            = up;
-    uc->flags           = flags;
-    uc->is_streamed     = 0; /* default = not streamed */
-    uc->max_packet_size = 0; /* default: stream file */
+    uc->prot = up;
+    uc->flags = flags;
+    uc->is_streamed = 0;
+    uc->max_packet_size = 0;
     if (up->priv_data_size) {
         uc->priv_data = av_mallocz(up->priv_data_size);
         if (!uc->priv_data) {
@@ -126,13 +126,13 @@ __attribute__((used)) static int url_alloc_for_protocol(URLContext **puc, const 
     *puc = uc;
     return 0;
 fail:
-    *puc = NULL;
+    *puc = ((void*)0);
     if (uc)
         av_freep(&uc->priv_data);
     av_freep(&uc);
-#if CONFIG_NETWORK
-    if (up->flags & URL_PROTOCOL_FLAG_NETWORK)
-        ff_network_close();
-#endif
+
+
+
+
     return err;
 }

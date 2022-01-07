@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct property {struct property* next; int /*<<< orphan*/  name; } ;
+
+
+
+
+struct property {struct property* next; int name; } ;
 struct device_node {scalar_t__ pde; struct property* properties; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  devtree_lock ; 
- int /*<<< orphan*/  proc_device_tree_add_prop (scalar_t__,struct property*) ; 
- scalar_t__ strcmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  write_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  write_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
+
+ int devtree_lock ;
+ int proc_device_tree_add_prop (scalar_t__,struct property*) ;
+ scalar_t__ strcmp (int ,int ) ;
+ int write_lock_irqsave (int *,unsigned long) ;
+ int write_unlock_irqrestore (int *,unsigned long) ;
 
 int prom_add_property(struct device_node *np, struct property *prop)
 {
-	struct property **next;
-	unsigned long flags;
+ struct property **next;
+ unsigned long flags;
 
-	prop->next = NULL;
-	write_lock_irqsave(&devtree_lock, flags);
-	next = &np->properties;
-	while (*next) {
-		if (strcmp(prop->name, (*next)->name) == 0) {
-			/* duplicate ! don't insert it */
-			write_unlock_irqrestore(&devtree_lock, flags);
-			return -1;
-		}
-		next = &(*next)->next;
-	}
-	*next = prop;
-	write_unlock_irqrestore(&devtree_lock, flags);
+ prop->next = ((void*)0);
+ write_lock_irqsave(&devtree_lock, flags);
+ next = &np->properties;
+ while (*next) {
+  if (strcmp(prop->name, (*next)->name) == 0) {
 
-#ifdef CONFIG_PROC_DEVICETREE
-	/* try to add to proc as well if it was initialized */
-	if (np->pde)
-		proc_device_tree_add_prop(np->pde, prop);
-#endif /* CONFIG_PROC_DEVICETREE */
+   write_unlock_irqrestore(&devtree_lock, flags);
+   return -1;
+  }
+  next = &(*next)->next;
+ }
+ *next = prop;
+ write_unlock_irqrestore(&devtree_lock, flags);
 
-	return 0;
+
+
+
+
+
+
+ return 0;
 }

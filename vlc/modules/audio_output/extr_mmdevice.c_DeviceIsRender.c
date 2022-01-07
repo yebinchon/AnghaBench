@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  IMMEndpoint ;
-typedef  int /*<<< orphan*/  IMMDevice ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  scalar_t__ EDataFlow ;
-typedef  scalar_t__ DWORD ;
 
-/* Variables and functions */
- scalar_t__ DEVICE_STATE_ACTIVE ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IID_IMMEndpoint ; 
- int /*<<< orphan*/  IMMDevice_GetState (int /*<<< orphan*/ *,scalar_t__*) ; 
- int /*<<< orphan*/  IMMDevice_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IMMEndpoint_GetDataFlow (int /*<<< orphan*/ *,scalar_t__*) ; 
- int /*<<< orphan*/  IMMEndpoint_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ eRender ; 
+
+
+
+typedef int IMMEndpoint ;
+typedef int IMMDevice ;
+typedef int HRESULT ;
+typedef scalar_t__ EDataFlow ;
+typedef scalar_t__ DWORD ;
+
+
+ scalar_t__ DEVICE_STATE_ACTIVE ;
+ scalar_t__ FAILED (int ) ;
+ int IID_IMMEndpoint ;
+ int IMMDevice_GetState (int *,scalar_t__*) ;
+ int IMMDevice_QueryInterface (int *,int *,void**) ;
+ int IMMEndpoint_GetDataFlow (int *,scalar_t__*) ;
+ int IMMEndpoint_Release (int *) ;
+ scalar_t__ eRender ;
 
 __attribute__((used)) static bool DeviceIsRender(IMMDevice *dev)
 {
     void *pv;
 
     if (FAILED(IMMDevice_QueryInterface(dev, &IID_IMMEndpoint, &pv)))
-        return false;
+        return 0;
 
     IMMEndpoint *ep = pv;
     EDataFlow flow;
@@ -39,7 +39,7 @@ __attribute__((used)) static bool DeviceIsRender(IMMDevice *dev)
 
     IMMEndpoint_Release(ep);
     if (FAILED(hr) || flow != eRender)
-        return false;
+        return 0;
 
     DWORD pdwState;
     hr = IMMDevice_GetState(dev, &pdwState);

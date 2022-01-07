@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {scalar_t__ selected; int /*<<< orphan*/  items; } ;
-typedef  TYPE_1__ Panel ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Vector_moveUp (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {scalar_t__ selected; int items; } ;
+typedef TYPE_1__ Panel ;
+
+
+ int Vector_moveUp (int ,scalar_t__) ;
+ int assert (int ) ;
 
 void Panel_moveSelectedUp(Panel* this) {
-   assert (this != NULL);
+   assert (this != ((void*)0));
 
    Vector_moveUp(this->items, this->selected);
    if (this->selected > 0)

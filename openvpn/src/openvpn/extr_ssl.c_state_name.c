@@ -1,57 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
-#define  S_ACTIVE 136 
-#define  S_ERROR 135 
-#define  S_GOT_KEY 134 
-#define  S_INITIAL 133 
-#define  S_NORMAL_OP 132 
-#define  S_PRE_START 131 
-#define  S_SENT_KEY 130 
-#define  S_START 129 
-#define  S_UNDEF 128 
-
 __attribute__((used)) static const char *
 state_name(int state)
 {
     switch (state)
     {
-        case S_UNDEF:
+        case 128:
             return "S_UNDEF";
 
-        case S_INITIAL:
+        case 133:
             return "S_INITIAL";
 
-        case S_PRE_START:
+        case 131:
             return "S_PRE_START";
 
-        case S_START:
+        case 129:
             return "S_START";
 
-        case S_SENT_KEY:
+        case 130:
             return "S_SENT_KEY";
 
-        case S_GOT_KEY:
+        case 134:
             return "S_GOT_KEY";
 
-        case S_ACTIVE:
+        case 136:
             return "S_ACTIVE";
 
-        case S_NORMAL_OP:
+        case 132:
             return "S_NORMAL_OP";
 
-        case S_ERROR:
+        case 135:
             return "S_ERROR";
 
         default:

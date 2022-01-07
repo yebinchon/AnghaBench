@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint32_t ;
-typedef  int uint16_t ;
-struct TYPE_6__ {int keylen; int /*<<< orphan*/  opaque; int /*<<< orphan*/  bodylen; int /*<<< orphan*/  datatype; int /*<<< orphan*/  opcode; int /*<<< orphan*/  magic; } ;
+
+
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef int uint16_t ;
+struct TYPE_6__ {int keylen; int opaque; int bodylen; int datatype; int opcode; int magic; } ;
 struct TYPE_8__ {char const* bytes; TYPE_1__ response; } ;
-typedef  TYPE_3__ protocol_binary_response_header ;
+typedef TYPE_3__ protocol_binary_response_header ;
 struct TYPE_7__ {char* buffer; int offset; } ;
-struct TYPE_9__ {TYPE_2__ stats; int /*<<< orphan*/  opaque; } ;
-typedef  TYPE_4__ conn ;
+struct TYPE_9__ {TYPE_2__ stats; int opaque; } ;
+typedef TYPE_4__ conn ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PROTOCOL_BINARY_CMD_STAT ; 
- int /*<<< orphan*/  PROTOCOL_BINARY_RAW_BYTES ; 
- int /*<<< orphan*/  PROTOCOL_BINARY_RES ; 
- int /*<<< orphan*/  htonl (int) ; 
- int /*<<< orphan*/  htons (int const) ; 
- int /*<<< orphan*/  memcpy (char*,char const*,int const) ; 
+
+ int PROTOCOL_BINARY_CMD_STAT ;
+ int PROTOCOL_BINARY_RAW_BYTES ;
+ int PROTOCOL_BINARY_RES ;
+ int htonl (int) ;
+ int htons (int const) ;
+ int memcpy (char*,char const*,int const) ;
 
 __attribute__((used)) static void append_bin_stats(const char *key, const uint16_t klen,
                              const char *val, const uint32_t vlen,

@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_6__ ;
-typedef  struct TYPE_13__   TYPE_5__ ;
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_14__ TYPE_6__ ;
+typedef struct TYPE_13__ TYPE_5__ ;
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_12__ {scalar_t__ name; size_t num_args; TYPE_3__* args; } ;
-struct TYPE_14__ {scalar_t__ kind; int /*<<< orphan*/  pos; TYPE_4__ note; } ;
+struct TYPE_14__ {scalar_t__ kind; int pos; TYPE_4__ note; } ;
 struct TYPE_9__ {char* val; } ;
 struct TYPE_13__ {scalar_t__ kind; TYPE_1__ str_lit; } ;
-struct TYPE_11__ {char const* name; int /*<<< orphan*/  pos; TYPE_5__* expr; } ;
+struct TYPE_11__ {char const* name; int pos; TYPE_5__* expr; } ;
 struct TYPE_10__ {char* path; size_t num_decls; TYPE_6__** decls; void* external_name; } ;
-typedef  TYPE_2__ Package ;
-typedef  TYPE_3__ NoteArg ;
-typedef  TYPE_4__ Note ;
-typedef  TYPE_5__ Expr ;
-typedef  TYPE_6__ Decl ;
+typedef TYPE_2__ Package ;
+typedef TYPE_3__ NoteArg ;
+typedef TYPE_4__ Note ;
+typedef TYPE_5__ Expr ;
+typedef TYPE_6__ Decl ;
 
-/* Variables and functions */
- scalar_t__ DECL_NOTE ; 
- scalar_t__ EXPR_STR ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  add_foreign_header (char*) ; 
- int /*<<< orphan*/  add_foreign_source (char*) ; 
- int /*<<< orphan*/  buf_printf (char*,char*,...) ; 
- int /*<<< orphan*/  fatal_error (int /*<<< orphan*/ ,char*,...) ; 
- scalar_t__ foreign_name ; 
- int /*<<< orphan*/  gen_buf_pos (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_postamble_buf ; 
- int /*<<< orphan*/  gen_preamble_buf ; 
- int /*<<< orphan*/  put_include_path (char*,TYPE_2__*,char const*) ; 
- void* str_intern (char*) ; 
+
+ scalar_t__ DECL_NOTE ;
+ scalar_t__ EXPR_STR ;
+ int MAX_PATH ;
+ int add_foreign_header (char*) ;
+ int add_foreign_source (char*) ;
+ int buf_printf (char*,char*,...) ;
+ int fatal_error (int ,char*,...) ;
+ scalar_t__ foreign_name ;
+ int gen_buf_pos (int *,int ) ;
+ int gen_postamble_buf ;
+ int gen_preamble_buf ;
+ int put_include_path (char*,TYPE_2__*,char const*) ;
+ void* str_intern (char*) ;
 
 __attribute__((used)) static void preprocess_package(Package *package) {
     if (!package->external_name) {
-        char *external_name = NULL;
+        char *external_name = ((void*)0);
         for (const char *ptr = package->path; *ptr; ptr++) {
             buf_printf(external_name, "%c", *ptr == '/' ? '_' : *ptr);
         }

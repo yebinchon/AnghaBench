@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_wc_entry_t ;
-typedef  int /*<<< orphan*/  svn_wc_adm_access_t ;
-typedef  int /*<<< orphan*/  svn_wc__db_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  scalar_t__ svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  svn_dirent_get_absolute (char const**,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_dirent_split (char const**,char const**,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_hash_gets (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/ * svn_wc__adm_get_db (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_wc__adm_retrieve_internal2 (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__entries_read_internal (int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__entry_is_hidden (scalar_t__*,int /*<<< orphan*/  const*) ; 
+
+
+
+typedef int svn_wc_entry_t ;
+typedef int svn_wc_adm_access_t ;
+typedef int svn_wc__db_t ;
+typedef int svn_error_t ;
+typedef scalar_t__ svn_boolean_t ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
+
+
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int TRUE ;
+ int svn_dirent_get_absolute (char const**,char const*,int *) ;
+ int svn_dirent_split (char const**,char const**,char const*,int *) ;
+ int * svn_hash_gets (int *,char const*) ;
+ int * svn_wc__adm_get_db (int *) ;
+ int * svn_wc__adm_retrieve_internal2 (int *,char const*,int *) ;
+ int svn_wc__entries_read_internal (int **,int *,int ,int *) ;
+ int svn_wc__entry_is_hidden (scalar_t__*,int const*) ;
 
 svn_error_t *
 svn_wc_entry(const svn_wc_entry_t **entry,
@@ -45,13 +45,13 @@ svn_wc_entry(const svn_wc_entry_t **entry,
 
   SVN_ERR(svn_dirent_get_absolute(&local_abspath, path, pool));
 
-  /* Does the provided path refer to a directory with an associated
-     access baton?  */
+
+
   dir_access = svn_wc__adm_retrieve_internal2(db, local_abspath, pool);
-  if (dir_access == NULL)
+  if (dir_access == ((void*)0))
     {
-      /* Damn. Okay. Assume the path is to a child, and let's look for
-         a baton associated with its parent.  */
+
+
 
       const char *dir_abspath;
 
@@ -61,30 +61,30 @@ svn_wc_entry(const svn_wc_entry_t **entry,
     }
   else
     {
-      /* Woo! Got one. Look for "this dir" in the entries hash.  */
+
       entry_name = "";
     }
 
-  if (dir_access == NULL)
+  if (dir_access == ((void*)0))
     {
-      /* Early exit.  */
-      *entry = NULL;
+
+      *entry = ((void*)0);
       return SVN_NO_ERROR;
     }
 
-  /* Load an entries hash, and cache it into DIR_ACCESS. Go ahead and
-     fetch all entries here (optimization) since we know how to filter
-     out a "hidden" node.  */
+
+
+
   SVN_ERR(svn_wc__entries_read_internal(&entries, dir_access, TRUE, pool));
   *entry = svn_hash_gets(entries, entry_name);
 
-  if (!show_hidden && *entry != NULL)
+  if (!show_hidden && *entry != ((void*)0))
     {
       svn_boolean_t hidden;
 
       SVN_ERR(svn_wc__entry_is_hidden(&hidden, *entry));
       if (hidden)
-        *entry = NULL;
+        *entry = ((void*)0);
     }
 
   return SVN_NO_ERROR;

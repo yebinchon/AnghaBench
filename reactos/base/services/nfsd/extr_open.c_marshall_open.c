@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  unsigned short uint32_t ;
-struct TYPE_7__ {int len; int /*<<< orphan*/  path; } ;
+
+
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef unsigned short uint32_t ;
+struct TYPE_7__ {int len; int path; } ;
 struct TYPE_8__ {unsigned short basic_info; unsigned short std_info; unsigned short mode; unsigned short changeattr; unsigned short deleg_type; unsigned short symlink_embedded; TYPE_2__ symlink; } ;
-typedef  TYPE_3__ open_upcall_args ;
+typedef TYPE_3__ open_upcall_args ;
 struct TYPE_6__ {TYPE_3__ open; } ;
 struct TYPE_9__ {unsigned short state_ref; scalar_t__ last_error; TYPE_1__ args; } ;
-typedef  TYPE_4__ nfs41_upcall ;
-typedef  int /*<<< orphan*/  len ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  LPWSTR ;
-typedef  int /*<<< orphan*/  HANDLE ;
-typedef  int /*<<< orphan*/  BOOLEAN ;
+typedef TYPE_4__ nfs41_upcall ;
+typedef int len ;
+typedef int WCHAR ;
+typedef int LPWSTR ;
+typedef int HANDLE ;
+typedef int BOOLEAN ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CP_UTF8 ; 
- int ERROR_BUFFER_OVERFLOW ; 
- scalar_t__ ERROR_REPARSE ; 
- int /*<<< orphan*/  MultiByteToWideChar (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,unsigned short) ; 
- int /*<<< orphan*/  dprintf (int,char*,unsigned short,unsigned short,unsigned short) ; 
- int safe_write (unsigned char**,unsigned short*,unsigned short*,int) ; 
+
+ int CP_UTF8 ;
+ int ERROR_BUFFER_OVERFLOW ;
+ scalar_t__ ERROR_REPARSE ;
+ int MultiByteToWideChar (int ,int ,int ,int,int ,unsigned short) ;
+ int dprintf (int,char*,unsigned short,unsigned short,unsigned short) ;
+ int safe_write (unsigned char**,unsigned short*,unsigned short*,int) ;
 
 __attribute__((used)) static int marshall_open(unsigned char *buffer, uint32_t *length, nfs41_upcall *upcall)
 {
@@ -58,7 +58,7 @@ __attribute__((used)) static int marshall_open(unsigned char *buffer, uint32_t *
         if (status) goto out;
         status = safe_write(&buffer, length, &len, sizeof(len));
         if (status) goto out;
-        /* convert args->symlink to wchar */
+
         if (*length <= len || !MultiByteToWideChar(CP_UTF8, 0,
             args->symlink.path, args->symlink.len,
             (LPWSTR)buffer, len / sizeof(WCHAR))) {
@@ -66,7 +66,7 @@ __attribute__((used)) static int marshall_open(unsigned char *buffer, uint32_t *
             goto out;
         }
     }
-    dprintf(2, "NFS41_OPEN: downcall open_state=0x%p mode %o changeattr 0x%llu\n", 
+    dprintf(2, "NFS41_OPEN: downcall open_state=0x%p mode %o changeattr 0x%llu\n",
         upcall->state_ref, args->mode, args->changeattr);
 out:
     return status;

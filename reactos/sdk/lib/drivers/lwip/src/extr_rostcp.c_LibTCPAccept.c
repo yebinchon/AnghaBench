@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct tcp_pcb {int dummy; } ;
-typedef  int /*<<< orphan*/  PTCP_PCB ;
+typedef int PTCP_PCB ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (void*) ; 
- int /*<<< orphan*/  InternalErrorEventHandler ; 
- int /*<<< orphan*/  InternalRecvEventHandler ; 
- int /*<<< orphan*/  InternalSendEventHandler ; 
- int /*<<< orphan*/  tcp_accepted (struct tcp_pcb*) ; 
- int /*<<< orphan*/  tcp_arg (int /*<<< orphan*/ ,void*) ; 
- int /*<<< orphan*/  tcp_err (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tcp_recv (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tcp_sent (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int ASSERT (void*) ;
+ int InternalErrorEventHandler ;
+ int InternalRecvEventHandler ;
+ int InternalSendEventHandler ;
+ int tcp_accepted (struct tcp_pcb*) ;
+ int tcp_arg (int ,void*) ;
+ int tcp_err (int ,int ) ;
+ int tcp_recv (int ,int ) ;
+ int tcp_sent (int ,int ) ;
 
 void
 LibTCPAccept(PTCP_PCB pcb, struct tcp_pcb *listen_pcb, void *arg)
 {
     ASSERT(arg);
 
-    tcp_arg(pcb, NULL);
+    tcp_arg(pcb, ((void*)0));
     tcp_recv(pcb, InternalRecvEventHandler);
     tcp_sent(pcb, InternalSendEventHandler);
     tcp_err(pcb, InternalErrorEventHandler);

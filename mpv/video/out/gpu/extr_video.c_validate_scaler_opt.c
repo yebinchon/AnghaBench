@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct mp_log {int dummy; } ;
 struct bstr {int dummy; } ;
-typedef  int /*<<< orphan*/  s ;
-typedef  int /*<<< orphan*/  m_option_t ;
+typedef int s ;
+typedef int m_option_t ;
 struct TYPE_3__ {char const* const name; } ;
-struct TYPE_4__ {TYPE_1__ f; int /*<<< orphan*/  polar; } ;
+struct TYPE_4__ {TYPE_1__ f; int polar; } ;
 
-/* Variables and functions */
- char* BSTR_P (struct bstr) ; 
- int M_OPT_EXIT ; 
- int M_OPT_INVALID ; 
- int bstr_equals0 (struct bstr,char*) ; 
- char** fixed_scale_filters ; 
- char** fixed_tscale_filters ; 
- int /*<<< orphan*/  handle_scaler_opt (char*,int) ; 
- int /*<<< orphan*/  mp_fatal (struct mp_log*,char*,char*) ; 
- TYPE_2__* mp_filter_kernels ; 
- int /*<<< orphan*/  mp_info (struct mp_log*,char*,...) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,char*) ; 
+
+ char* BSTR_P (struct bstr) ;
+ int M_OPT_EXIT ;
+ int M_OPT_INVALID ;
+ int bstr_equals0 (struct bstr,char*) ;
+ char** fixed_scale_filters ;
+ char** fixed_tscale_filters ;
+ int handle_scaler_opt (char*,int) ;
+ int mp_fatal (struct mp_log*,char*,char*) ;
+ TYPE_2__* mp_filter_kernels ;
+ int mp_info (struct mp_log*,char*,...) ;
+ int snprintf (char*,int,char*,char*) ;
 
 __attribute__((used)) static int validate_scaler_opt(struct mp_log *log, const m_option_t *opt,
                                struct bstr name, struct bstr param)

@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uv_stream_t ;
-struct TYPE_10__ {int fd; int /*<<< orphan*/ * stream; } ;
+
+
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int uv_stream_t ;
+struct TYPE_10__ {int fd; int * stream; } ;
 struct TYPE_11__ {int flags; TYPE_1__ data; } ;
-typedef  TYPE_2__ uv_stdio_container_t ;
-typedef  int /*<<< orphan*/  uv_process_t ;
-struct TYPE_12__ {char* file; char** args; int /*<<< orphan*/  stdio_count; TYPE_2__* stdio; int /*<<< orphan*/  exit_cb; } ;
-typedef  TYPE_3__ uv_process_options_t ;
+typedef TYPE_2__ uv_stdio_container_t ;
+typedef int uv_process_t ;
+struct TYPE_12__ {char* file; char** args; int stdio_count; TYPE_2__* stdio; int exit_cb; } ;
+typedef TYPE_3__ uv_process_options_t ;
 struct TYPE_13__ {int ipc; } ;
-typedef  TYPE_4__ uv_pipe_t ;
-typedef  int /*<<< orphan*/  options ;
-typedef  int /*<<< orphan*/  exepath ;
+typedef TYPE_4__ uv_pipe_t ;
+typedef int options ;
+typedef int exepath ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAY_SIZE (TYPE_2__*) ; 
- int /*<<< orphan*/  ASSERT (int) ; 
- int UV_CREATE_PIPE ; 
- void* UV_INHERIT_FD ; 
- int UV_READABLE_PIPE ; 
- int UV_WRITABLE_PIPE ; 
- int /*<<< orphan*/  exit_cb ; 
- int /*<<< orphan*/  memset (TYPE_3__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  uv_default_loop () ; 
- int uv_exepath (char*,size_t*) ; 
- int uv_pipe_init (int /*<<< orphan*/ ,TYPE_4__*,int) ; 
- int uv_spawn (int /*<<< orphan*/ ,int /*<<< orphan*/ *,TYPE_3__*) ; 
+
+ int ARRAY_SIZE (TYPE_2__*) ;
+ int ASSERT (int) ;
+ int UV_CREATE_PIPE ;
+ void* UV_INHERIT_FD ;
+ int UV_READABLE_PIPE ;
+ int UV_WRITABLE_PIPE ;
+ int exit_cb ;
+ int memset (TYPE_3__*,int ,int) ;
+ int uv_default_loop () ;
+ int uv_exepath (char*,size_t*) ;
+ int uv_pipe_init (int ,TYPE_4__*,int) ;
+ int uv_spawn (int ,int *,TYPE_3__*) ;
 
 void spawn_helper(uv_pipe_t* channel,
                   uv_process_t* process,
@@ -61,7 +61,7 @@ void spawn_helper(uv_pipe_t* channel,
   exepath[exepath_size] = '\0';
   args[0] = exepath;
   args[1] = (char*)helper;
-  args[2] = NULL;
+  args[2] = ((void*)0);
 
   memset(&options, 0, sizeof(options));
   options.file = exepath;

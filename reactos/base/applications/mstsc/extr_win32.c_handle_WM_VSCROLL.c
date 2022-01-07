@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WPARAM ;
-typedef  int /*<<< orphan*/  UINT ;
-typedef  int /*<<< orphan*/  LRESULT ;
-typedef  int /*<<< orphan*/  LPARAM ;
-typedef  int /*<<< orphan*/  HWND ;
 
-/* Variables and functions */
- scalar_t__ HIWORD (int /*<<< orphan*/ ) ; 
- scalar_t__ LOWORD (int /*<<< orphan*/ ) ; 
- int SB_BOTTOM ; 
- int SB_LINELEFT ; 
- int SB_LINERIGHT ; 
- int SB_PAGELEFT ; 
- int SB_PAGERIGHT ; 
- int SB_THUMBPOSITION ; 
- int SB_TOP ; 
- int /*<<< orphan*/  SB_VERT ; 
- int /*<<< orphan*/  SetScrollPos (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int) ; 
- int UI_MAX (int,int /*<<< orphan*/ ) ; 
- int UI_MIN (int,int) ; 
- int /*<<< orphan*/  g_Wnd ; 
- int g_height ; 
- int g_wnd_cheight ; 
- int g_yscroll ; 
- int /*<<< orphan*/  mi_scroll (int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int WPARAM ;
+typedef int UINT ;
+typedef int LRESULT ;
+typedef int LPARAM ;
+typedef int HWND ;
+
+
+ scalar_t__ HIWORD (int ) ;
+ scalar_t__ LOWORD (int ) ;
+ int SB_BOTTOM ;
+ int SB_LINELEFT ;
+ int SB_LINERIGHT ;
+ int SB_PAGELEFT ;
+ int SB_PAGERIGHT ;
+ int SB_THUMBPOSITION ;
+ int SB_TOP ;
+ int SB_VERT ;
+ int SetScrollPos (int ,int ,int,int) ;
+ int UI_MAX (int,int ) ;
+ int UI_MIN (int,int) ;
+ int g_Wnd ;
+ int g_height ;
+ int g_wnd_cheight ;
+ int g_yscroll ;
+ int mi_scroll (int ,int) ;
 
 __attribute__((used)) static LRESULT
 handle_WM_VSCROLL(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
@@ -42,7 +42,7 @@ handle_WM_VSCROLL(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
   int code;
   int oldyscroll;
 
-  code = (int) LOWORD(wParam); /* scroll bar value */
+  code = (int) LOWORD(wParam);
   if (code == SB_LINELEFT)
   {
     oldyscroll = g_yscroll;

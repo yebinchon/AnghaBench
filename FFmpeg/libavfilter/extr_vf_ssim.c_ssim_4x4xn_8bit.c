@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint32_t ;
-typedef  int ptrdiff_t ;
 
-/* Variables and functions */
+
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef int ptrdiff_t ;
+
+
 
 __attribute__((used)) static void ssim_4x4xn_8bit(const uint8_t *main, ptrdiff_t main_stride,
                             const uint8_t *ref, ptrdiff_t ref_stride,
@@ -30,10 +30,10 @@ __attribute__((used)) static void ssim_4x4xn_8bit(const uint8_t *main, ptrdiff_t
                 int a = main[x + y * main_stride];
                 int b = ref[x + y * ref_stride];
 
-                s1  += a;
-                s2  += b;
-                ss  += a*a;
-                ss  += b*b;
+                s1 += a;
+                s2 += b;
+                ss += a*a;
+                ss += b*b;
                 s12 += a*b;
             }
         }

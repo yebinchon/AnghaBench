@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  TT_BINTIME ; 
- int /*<<< orphan*/  TT_MONOTONIC ; 
- int /*<<< orphan*/  TT_REALTIME ; 
- int /*<<< orphan*/  TT_REALTIME_MICRO ; 
- int /*<<< orphan*/  TT_TIMESTAMP ; 
- int /*<<< orphan*/  TT_TS_BINTIME ; 
- int /*<<< orphan*/  exit (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printf (char*) ; 
- int /*<<< orphan*/  srandomdev () ; 
- int /*<<< orphan*/  test_run (int /*<<< orphan*/ ,int,int,char*) ; 
+ int TT_BINTIME ;
+ int TT_MONOTONIC ;
+ int TT_REALTIME ;
+ int TT_REALTIME_MICRO ;
+ int TT_TIMESTAMP ;
+ int TT_TS_BINTIME ;
+ int exit (int ) ;
+ int printf (char*) ;
+ int srandomdev () ;
+ int test_run (int ,int,int,char*) ;
 
 int
 main(void)

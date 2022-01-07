@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ LED_BASE ; 
- int /*<<< orphan*/  clear ; 
- int /*<<< orphan*/  emma2rh_out32 (scalar_t__,int /*<<< orphan*/ ) ; 
+ scalar_t__ LED_BASE ;
+ int clear ;
+ int emma2rh_out32 (scalar_t__,int ) ;
 
 void markeins_led_clear(void)
 {
-	emma2rh_out32(LED_BASE, clear);
-	emma2rh_out32(LED_BASE + 4, clear);
+ emma2rh_out32(LED_BASE, clear);
+ emma2rh_out32(LED_BASE + 4, clear);
 }

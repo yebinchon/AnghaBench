@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  cmsPipeline ;
-typedef  scalar_t__ cmsInt32Number ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DbgThread () ; 
- int /*<<< orphan*/ * cmsPipelineAlloc (int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/ * cmsPipelineDup (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cmsPipelineFree (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ cmsPipelineStageCount (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int cmsPipeline ;
+typedef scalar_t__ cmsInt32Number ;
+
+
+ int DbgThread () ;
+ int * cmsPipelineAlloc (int ,int,int) ;
+ int * cmsPipelineDup (int ,int *) ;
+ int cmsPipelineFree (int ,int *) ;
+ scalar_t__ cmsPipelineStageCount (int ,int *) ;
 
 __attribute__((used)) static
 cmsInt32Number CheckLUTcreation(void)

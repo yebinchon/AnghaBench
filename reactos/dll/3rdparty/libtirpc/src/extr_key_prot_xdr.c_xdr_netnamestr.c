@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  netnamestr ;
-typedef  int /*<<< orphan*/  bool_t ;
-typedef  int /*<<< orphan*/  XDR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  MAXNETNAMELEN ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  xdr_string (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int netnamestr ;
+typedef int bool_t ;
+typedef int XDR ;
+
+
+ int FALSE ;
+ int MAXNETNAMELEN ;
+ int TRUE ;
+ int xdr_string (int *,int *,int ) ;
 
 bool_t
 xdr_netnamestr(register XDR *xdrs, netnamestr *objp)
 {
 
-	if (!xdr_string(xdrs, objp, MAXNETNAMELEN))
-		return (FALSE);
-	return (TRUE);
+ if (!xdr_string(xdrs, objp, MAXNETNAMELEN))
+  return (FALSE);
+ return (TRUE);
 }

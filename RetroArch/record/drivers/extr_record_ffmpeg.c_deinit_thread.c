@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int alive; int can_sleep; int /*<<< orphan*/ * thread; int /*<<< orphan*/  cond; int /*<<< orphan*/  cond_lock; int /*<<< orphan*/  lock; } ;
-typedef  TYPE_1__ ffmpeg_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  scond_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  scond_signal (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  slock_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  slock_lock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  slock_unlock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sthread_join (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int alive; int can_sleep; int * thread; int cond; int cond_lock; int lock; } ;
+typedef TYPE_1__ ffmpeg_t ;
+
+
+ int scond_free (int ) ;
+ int scond_signal (int ) ;
+ int slock_free (int ) ;
+ int slock_lock (int ) ;
+ int slock_unlock (int ) ;
+ int sthread_join (int *) ;
 
 __attribute__((used)) static void deinit_thread(ffmpeg_t *handle)
 {
@@ -28,8 +28,8 @@ __attribute__((used)) static void deinit_thread(ffmpeg_t *handle)
       return;
 
    slock_lock(handle->cond_lock);
-   handle->alive = false;
-   handle->can_sleep = false;
+   handle->alive = 0;
+   handle->can_sleep = 0;
    slock_unlock(handle->cond_lock);
 
    scond_signal(handle->cond);
@@ -39,5 +39,5 @@ __attribute__((used)) static void deinit_thread(ffmpeg_t *handle)
    slock_free(handle->cond_lock);
    scond_free(handle->cond);
 
-   handle->thread = NULL;
+   handle->thread = ((void*)0);
 }

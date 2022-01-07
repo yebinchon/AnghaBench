@@ -1,128 +1,128 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct snd_soc_dai {struct snd_soc_codec* codec; } ;
 struct snd_soc_codec {int dummy; } ;
 
-/* Variables and functions */
- int EINVAL ; 
-#define  WM8580_CLKOUTSRC 135 
- int /*<<< orphan*/  WM8580_CLKSEL ; 
- unsigned int WM8580_CLKSEL_DAC_CLKSEL_MASK ; 
- unsigned int WM8580_CLKSEL_DAC_CLKSEL_PLLA ; 
- unsigned int WM8580_CLKSEL_DAC_CLKSEL_PLLB ; 
-#define  WM8580_CLKSRC_MCLK 134 
-#define  WM8580_CLKSRC_NONE 133 
-#define  WM8580_CLKSRC_OSC 132 
-#define  WM8580_CLKSRC_PLLA 131 
-#define  WM8580_CLKSRC_PLLB 130 
-#define  WM8580_DAC_CLKSEL 129 
-#define  WM8580_MCLK 128 
- int /*<<< orphan*/  WM8580_PLLB4 ; 
- unsigned int WM8580_PLLB4_CLKOUTSRC_MASK ; 
- unsigned int WM8580_PLLB4_CLKOUTSRC_OSCCLK ; 
- unsigned int WM8580_PLLB4_CLKOUTSRC_PLLACLK ; 
- unsigned int WM8580_PLLB4_CLKOUTSRC_PLLBCLK ; 
- unsigned int WM8580_PLLB4_MCLKOUTSRC_MASK ; 
- unsigned int WM8580_PLLB4_MCLKOUTSRC_OSC ; 
- unsigned int WM8580_PLLB4_MCLKOUTSRC_PLLA ; 
- unsigned int WM8580_PLLB4_MCLKOUTSRC_PLLB ; 
- unsigned int snd_soc_read (struct snd_soc_codec*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  snd_soc_write (struct snd_soc_codec*,int /*<<< orphan*/ ,unsigned int) ; 
+
+ int EINVAL ;
+
+ int WM8580_CLKSEL ;
+ unsigned int WM8580_CLKSEL_DAC_CLKSEL_MASK ;
+ unsigned int WM8580_CLKSEL_DAC_CLKSEL_PLLA ;
+ unsigned int WM8580_CLKSEL_DAC_CLKSEL_PLLB ;
+
+
+
+
+
+
+
+ int WM8580_PLLB4 ;
+ unsigned int WM8580_PLLB4_CLKOUTSRC_MASK ;
+ unsigned int WM8580_PLLB4_CLKOUTSRC_OSCCLK ;
+ unsigned int WM8580_PLLB4_CLKOUTSRC_PLLACLK ;
+ unsigned int WM8580_PLLB4_CLKOUTSRC_PLLBCLK ;
+ unsigned int WM8580_PLLB4_MCLKOUTSRC_MASK ;
+ unsigned int WM8580_PLLB4_MCLKOUTSRC_OSC ;
+ unsigned int WM8580_PLLB4_MCLKOUTSRC_PLLA ;
+ unsigned int WM8580_PLLB4_MCLKOUTSRC_PLLB ;
+ unsigned int snd_soc_read (struct snd_soc_codec*,int ) ;
+ int snd_soc_write (struct snd_soc_codec*,int ,unsigned int) ;
 
 __attribute__((used)) static int wm8580_set_dai_clkdiv(struct snd_soc_dai *codec_dai,
-				 int div_id, int div)
+     int div_id, int div)
 {
-	struct snd_soc_codec *codec = codec_dai->codec;
-	unsigned int reg;
+ struct snd_soc_codec *codec = codec_dai->codec;
+ unsigned int reg;
 
-	switch (div_id) {
-	case WM8580_MCLK:
-		reg = snd_soc_read(codec, WM8580_PLLB4);
-		reg &= ~WM8580_PLLB4_MCLKOUTSRC_MASK;
+ switch (div_id) {
+ case 128:
+  reg = snd_soc_read(codec, WM8580_PLLB4);
+  reg &= ~WM8580_PLLB4_MCLKOUTSRC_MASK;
 
-		switch (div) {
-		case WM8580_CLKSRC_MCLK:
-			/* Input */
-			break;
+  switch (div) {
+  case 134:
 
-		case WM8580_CLKSRC_PLLA:
-			reg |= WM8580_PLLB4_MCLKOUTSRC_PLLA;
-			break;
-		case WM8580_CLKSRC_PLLB:
-			reg |= WM8580_PLLB4_MCLKOUTSRC_PLLB;
-			break;
+   break;
 
-		case WM8580_CLKSRC_OSC:
-			reg |= WM8580_PLLB4_MCLKOUTSRC_OSC;
-			break;
+  case 131:
+   reg |= WM8580_PLLB4_MCLKOUTSRC_PLLA;
+   break;
+  case 130:
+   reg |= WM8580_PLLB4_MCLKOUTSRC_PLLB;
+   break;
 
-		default:
-			return -EINVAL;
-		}
-		snd_soc_write(codec, WM8580_PLLB4, reg);
-		break;
+  case 132:
+   reg |= WM8580_PLLB4_MCLKOUTSRC_OSC;
+   break;
 
-	case WM8580_DAC_CLKSEL:
-		reg = snd_soc_read(codec, WM8580_CLKSEL);
-		reg &= ~WM8580_CLKSEL_DAC_CLKSEL_MASK;
+  default:
+   return -EINVAL;
+  }
+  snd_soc_write(codec, WM8580_PLLB4, reg);
+  break;
 
-		switch (div) {
-		case WM8580_CLKSRC_MCLK:
-			break;
+ case 129:
+  reg = snd_soc_read(codec, WM8580_CLKSEL);
+  reg &= ~WM8580_CLKSEL_DAC_CLKSEL_MASK;
 
-		case WM8580_CLKSRC_PLLA:
-			reg |= WM8580_CLKSEL_DAC_CLKSEL_PLLA;
-			break;
+  switch (div) {
+  case 134:
+   break;
 
-		case WM8580_CLKSRC_PLLB:
-			reg |= WM8580_CLKSEL_DAC_CLKSEL_PLLB;
-			break;
+  case 131:
+   reg |= WM8580_CLKSEL_DAC_CLKSEL_PLLA;
+   break;
 
-		default:
-			return -EINVAL;
-		}
-		snd_soc_write(codec, WM8580_CLKSEL, reg);
-		break;
+  case 130:
+   reg |= WM8580_CLKSEL_DAC_CLKSEL_PLLB;
+   break;
 
-	case WM8580_CLKOUTSRC:
-		reg = snd_soc_read(codec, WM8580_PLLB4);
-		reg &= ~WM8580_PLLB4_CLKOUTSRC_MASK;
+  default:
+   return -EINVAL;
+  }
+  snd_soc_write(codec, WM8580_CLKSEL, reg);
+  break;
 
-		switch (div) {
-		case WM8580_CLKSRC_NONE:
-			break;
+ case 135:
+  reg = snd_soc_read(codec, WM8580_PLLB4);
+  reg &= ~WM8580_PLLB4_CLKOUTSRC_MASK;
 
-		case WM8580_CLKSRC_PLLA:
-			reg |= WM8580_PLLB4_CLKOUTSRC_PLLACLK;
-			break;
+  switch (div) {
+  case 133:
+   break;
 
-		case WM8580_CLKSRC_PLLB:
-			reg |= WM8580_PLLB4_CLKOUTSRC_PLLBCLK;
-			break;
+  case 131:
+   reg |= WM8580_PLLB4_CLKOUTSRC_PLLACLK;
+   break;
 
-		case WM8580_CLKSRC_OSC:
-			reg |= WM8580_PLLB4_CLKOUTSRC_OSCCLK;
-			break;
+  case 130:
+   reg |= WM8580_PLLB4_CLKOUTSRC_PLLBCLK;
+   break;
 
-		default:
-			return -EINVAL;
-		}
-		snd_soc_write(codec, WM8580_PLLB4, reg);
-		break;
+  case 132:
+   reg |= WM8580_PLLB4_CLKOUTSRC_OSCCLK;
+   break;
 
-	default:
-		return -EINVAL;
-	}
+  default:
+   return -EINVAL;
+  }
+  snd_soc_write(codec, WM8580_PLLB4, reg);
+  break;
 
-	return 0;
+ default:
+  return -EINVAL;
+ }
+
+ return 0;
 }

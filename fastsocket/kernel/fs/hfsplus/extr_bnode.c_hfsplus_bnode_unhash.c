@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct hfs_bnode {TYPE_1__* tree; struct hfs_bnode* next_hash; int /*<<< orphan*/  this; int /*<<< orphan*/  refcnt; } ;
-struct TYPE_2__ {int /*<<< orphan*/  node_hash_cnt; struct hfs_bnode** node_hash; int /*<<< orphan*/  cnid; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BUG_ON (int) ; 
- int /*<<< orphan*/  DBG_BNODE_REFS ; 
- int /*<<< orphan*/  atomic_read (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  dprint (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- size_t hfs_bnode_hash (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct hfs_bnode {TYPE_1__* tree; struct hfs_bnode* next_hash; int this; int refcnt; } ;
+struct TYPE_2__ {int node_hash_cnt; struct hfs_bnode** node_hash; int cnid; } ;
+
+
+ int BUG_ON (int) ;
+ int DBG_BNODE_REFS ;
+ int atomic_read (int *) ;
+ int dprint (int ,char*,int ,int ,int ) ;
+ size_t hfs_bnode_hash (int ) ;
 
 void hfs_bnode_unhash(struct hfs_bnode *node)
 {
-	struct hfs_bnode **p;
+ struct hfs_bnode **p;
 
-	dprint(DBG_BNODE_REFS, "remove_node(%d:%d): %d\n",
-		node->tree->cnid, node->this, atomic_read(&node->refcnt));
-	for (p = &node->tree->node_hash[hfs_bnode_hash(node->this)];
-	     *p && *p != node; p = &(*p)->next_hash)
-		;
-	BUG_ON(!*p);
-	*p = node->next_hash;
-	node->tree->node_hash_cnt--;
+ dprint(DBG_BNODE_REFS, "remove_node(%d:%d): %d\n",
+  node->tree->cnid, node->this, atomic_read(&node->refcnt));
+ for (p = &node->tree->node_hash[hfs_bnode_hash(node->this)];
+      *p && *p != node; p = &(*p)->next_hash)
+  ;
+ BUG_ON(!*p);
+ *p = node->next_hash;
+ node->tree->node_hash_cnt--;
 }

@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  X509_CRL ;
-typedef  int /*<<< orphan*/  X509 ;
-typedef  int /*<<< orphan*/  OCSP_REQ_CTX ;
-typedef  int /*<<< orphan*/  BIO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_free_all (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BIO_new_connect (char*) ; 
- int /*<<< orphan*/  BIO_printf (int /*<<< orphan*/ ,char*,char*,char const*) ; 
- int /*<<< orphan*/  BIO_puts (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  BIO_set_conn_port (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  ERR_print_errors (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OCSP_REQ_CTX_add1_header (int /*<<< orphan*/ *,char*,char*) ; 
- int /*<<< orphan*/  OCSP_REQ_CTX_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  OCSP_REQ_CTX_http (int /*<<< orphan*/ *,char*,char*) ; 
- int /*<<< orphan*/ * OCSP_REQ_CTX_new (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  OCSP_parse_url (char const*,char**,char**,char**,int*) ; 
- int /*<<< orphan*/  OPENSSL_free (char*) ; 
- int X509_CRL_http_nbio (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int X509_http_nbio (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  bio_err ; 
+
+
+
+typedef int X509_CRL ;
+typedef int X509 ;
+typedef int OCSP_REQ_CTX ;
+typedef int BIO ;
+
+
+ int BIO_free_all (int *) ;
+ int * BIO_new_connect (char*) ;
+ int BIO_printf (int ,char*,char*,char const*) ;
+ int BIO_puts (int ,char*) ;
+ int BIO_set_conn_port (int *,char*) ;
+ int ERR_print_errors (int ) ;
+ int OCSP_REQ_CTX_add1_header (int *,char*,char*) ;
+ int OCSP_REQ_CTX_free (int *) ;
+ int OCSP_REQ_CTX_http (int *,char*,char*) ;
+ int * OCSP_REQ_CTX_new (int *,int) ;
+ int OCSP_parse_url (char const*,char**,char**,char**,int*) ;
+ int OPENSSL_free (char*) ;
+ int X509_CRL_http_nbio (int *,int **) ;
+ int X509_http_nbio (int *,int **) ;
+ int bio_err ;
 
 __attribute__((used)) static int load_cert_crl_http(const char *url, X509 **pcert, X509_CRL **pcrl)
 {
-    char *host = NULL, *port = NULL, *path = NULL;
-    BIO *bio = NULL;
-    OCSP_REQ_CTX *rctx = NULL;
+    char *host = ((void*)0), *port = ((void*)0), *path = ((void*)0);
+    BIO *bio = ((void*)0);
+    OCSP_REQ_CTX *rctx = ((void*)0);
     int use_ssl, rv = 0;
     if (!OCSP_parse_url(url, &host, &port, &path, &use_ssl))
         goto err;
@@ -48,7 +48,7 @@ __attribute__((used)) static int load_cert_crl_http(const char *url, X509 **pcer
     if (!bio || !BIO_set_conn_port(bio, port))
         goto err;
     rctx = OCSP_REQ_CTX_new(bio, 1024);
-    if (rctx == NULL)
+    if (rctx == ((void*)0))
         goto err;
     if (!OCSP_REQ_CTX_http(rctx, "GET", path))
         goto err;

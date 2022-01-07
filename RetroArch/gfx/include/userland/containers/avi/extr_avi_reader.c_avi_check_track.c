@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint16_t ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint16_t ;
 struct TYPE_8__ {scalar_t__ tracks_num; TYPE_2__** tracks; } ;
-typedef  TYPE_3__ VC_CONTAINER_T ;
-typedef  int /*<<< orphan*/  VC_CONTAINER_STATUS_T ;
+typedef TYPE_3__ VC_CONTAINER_T ;
+typedef int VC_CONTAINER_STATUS_T ;
 struct TYPE_7__ {TYPE_1__* format; } ;
 struct TYPE_6__ {scalar_t__ es_type; } ;
 
-/* Variables and functions */
- scalar_t__ AVI_TWOCC (char,char) ; 
- int /*<<< orphan*/  LOG_DEBUG (TYPE_3__*,char*,scalar_t__,...) ; 
- int /*<<< orphan*/  VC_CONTAINER_ERROR_FAILED ; 
- scalar_t__ VC_CONTAINER_ES_TYPE_AUDIO ; 
- scalar_t__ VC_CONTAINER_ES_TYPE_VIDEO ; 
- int /*<<< orphan*/  VC_CONTAINER_SUCCESS ; 
+
+ scalar_t__ AVI_TWOCC (char,char) ;
+ int LOG_DEBUG (TYPE_3__*,char*,scalar_t__,...) ;
+ int VC_CONTAINER_ERROR_FAILED ;
+ scalar_t__ VC_CONTAINER_ES_TYPE_AUDIO ;
+ scalar_t__ VC_CONTAINER_ES_TYPE_VIDEO ;
+ int VC_CONTAINER_SUCCESS ;
 
 __attribute__((used)) static VC_CONTAINER_STATUS_T avi_check_track(VC_CONTAINER_T *p_ctx, uint16_t data_type, uint16_t track_num)
 {

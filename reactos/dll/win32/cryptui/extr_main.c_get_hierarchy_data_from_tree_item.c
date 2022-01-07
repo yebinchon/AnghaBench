@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct hierarchy_data {int dummy; } ;
-struct TYPE_2__ {scalar_t__ lParam; int /*<<< orphan*/ * hItem; int /*<<< orphan*/  mask; } ;
-typedef  TYPE_1__ TVITEMW ;
-typedef  int /*<<< orphan*/  LPARAM ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  int /*<<< orphan*/ * HTREEITEM ;
+struct TYPE_2__ {scalar_t__ lParam; int * hItem; int mask; } ;
+typedef TYPE_1__ TVITEMW ;
+typedef int LPARAM ;
+typedef int HWND ;
+typedef int * HTREEITEM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SendMessageW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TVGN_PARENT ; 
- int /*<<< orphan*/  TVIF_PARAM ; 
- int /*<<< orphan*/  TVM_GETITEMW ; 
- int /*<<< orphan*/  TVM_GETNEXTITEM ; 
+
+ int SendMessageW (int ,int ,int ,int ) ;
+ int TVGN_PARENT ;
+ int TVIF_PARAM ;
+ int TVM_GETITEMW ;
+ int TVM_GETNEXTITEM ;
 
 __attribute__((used)) static struct hierarchy_data *get_hierarchy_data_from_tree_item(HWND tree,
  HTREEITEM hItem)
 {
-    struct hierarchy_data *data = NULL;
-    HTREEITEM root = NULL;
+    struct hierarchy_data *data = ((void*)0);
+    HTREEITEM root = ((void*)0);
 
     do {
         HTREEITEM parent = (HTREEITEM)SendMessageW(tree, TVM_GETNEXTITEM,

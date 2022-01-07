@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ tree ;
-struct goto_queue_node {int /*<<< orphan*/  repl_stmt; int /*<<< orphan*/  stmt; int /*<<< orphan*/  cont_stmt; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GOTO_EXPR ; 
- int /*<<< orphan*/  append_to_statement_list (scalar_t__,int /*<<< orphan*/ *) ; 
- scalar_t__ build1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  void_type_node ; 
+
+
+
+typedef scalar_t__ tree ;
+struct goto_queue_node {int repl_stmt; int stmt; int cont_stmt; } ;
+
+
+ int GOTO_EXPR ;
+ int append_to_statement_list (scalar_t__,int *) ;
+ scalar_t__ build1 (int ,int ,scalar_t__) ;
+ int void_type_node ;
 
 __attribute__((used)) static void
 do_goto_redirection (struct goto_queue_node *q, tree finlab, tree mod)

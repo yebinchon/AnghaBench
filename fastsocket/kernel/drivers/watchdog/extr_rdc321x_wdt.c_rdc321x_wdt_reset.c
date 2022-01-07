@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  default_ticks; } ;
 
-/* Variables and functions */
- TYPE_1__ rdc321x_wdt_device ; 
- int /*<<< orphan*/  ticks ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int default_ticks; } ;
+
+
+ TYPE_1__ rdc321x_wdt_device ;
+ int ticks ;
 
 __attribute__((used)) static void rdc321x_wdt_reset(void)
 {
-	ticks = rdc321x_wdt_device.default_ticks;
+ ticks = rdc321x_wdt_device.default_ticks;
 }

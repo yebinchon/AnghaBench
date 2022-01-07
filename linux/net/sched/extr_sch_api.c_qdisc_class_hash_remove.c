@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct Qdisc_class_hash {int /*<<< orphan*/  hashelems; } ;
-struct Qdisc_class_common {int /*<<< orphan*/  hnode; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  hlist_del (int /*<<< orphan*/ *) ; 
+
+
+
+struct Qdisc_class_hash {int hashelems; } ;
+struct Qdisc_class_common {int hnode; } ;
+
+
+ int hlist_del (int *) ;
 
 void qdisc_class_hash_remove(struct Qdisc_class_hash *clhash,
-			     struct Qdisc_class_common *cl)
+        struct Qdisc_class_common *cl)
 {
-	hlist_del(&cl->hnode);
-	clhash->hashelems--;
+ hlist_del(&cl->hnode);
+ clhash->hashelems--;
 }

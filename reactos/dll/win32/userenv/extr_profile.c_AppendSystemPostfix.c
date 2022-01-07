@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int WCHAR ;
-typedef  int* LPWSTR ;
-typedef  scalar_t__ DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAYSIZE (int*) ; 
- int /*<<< orphan*/  DPRINT1 (char*,...) ; 
- int /*<<< orphan*/  ERROR_BUFFER_OVERFLOW ; 
- int /*<<< orphan*/  ExpandEnvironmentStringsW (char*,int*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GetLastError () ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  SetLastError (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  _wcsupr (int*) ; 
- int /*<<< orphan*/  wcscat (int*,int*) ; 
- scalar_t__ wcslen (int*) ; 
+
+
+
+typedef int WCHAR ;
+typedef int* LPWSTR ;
+typedef scalar_t__ DWORD ;
+typedef int BOOL ;
+
+
+ int ARRAYSIZE (int*) ;
+ int DPRINT1 (char*,...) ;
+ int ERROR_BUFFER_OVERFLOW ;
+ int ExpandEnvironmentStringsW (char*,int*,int ) ;
+ int FALSE ;
+ int GetLastError () ;
+ int MAX_PATH ;
+ int SetLastError (int ) ;
+ int TRUE ;
+ int _wcsupr (int*) ;
+ int wcscat (int*,int*) ;
+ scalar_t__ wcslen (int*) ;
 
 BOOL
 AppendSystemPostfix(LPWSTR lpName,
@@ -37,7 +37,7 @@ AppendSystemPostfix(LPWSTR lpName,
     LPWSTR lpszPostfix;
     LPWSTR lpszPtr;
 
-    /* Build profile name postfix */
+
     if (!ExpandEnvironmentStringsW(L"%SystemRoot%",
                                    szSystemRoot,
                                    ARRAYSIZE(szSystemRoot)))
@@ -48,7 +48,7 @@ AppendSystemPostfix(LPWSTR lpName,
 
     _wcsupr(szSystemRoot);
 
-    /* Get name postfix */
+
     szSystemRoot[2] = L'.';
     lpszPostfix = &szSystemRoot[2];
     lpszPtr = lpszPostfix;

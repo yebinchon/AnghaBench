@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct pr_handle {TYPE_1__* stack; } ;
-typedef  enum debug_visibility { ____Placeholder_debug_visibility } debug_visibility ;
-typedef  int /*<<< orphan*/  bfd_boolean ;
+typedef enum debug_visibility { ____Placeholder_debug_visibility } debug_visibility ;
+typedef int bfd_boolean ;
 struct TYPE_2__ {int visibility; char* type; } ;
 
-/* Variables and functions */
-#define  DEBUG_VISIBILITY_IGNORE 131 
-#define  DEBUG_VISIBILITY_PRIVATE 130 
-#define  DEBUG_VISIBILITY_PROTECTED 129 
-#define  DEBUG_VISIBILITY_PUBLIC 128 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  abort () ; 
- int /*<<< orphan*/  append_type (struct pr_handle*,char const*) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  indent_type (struct pr_handle*) ; 
- unsigned int strlen (char*) ; 
+
+
+
+
+
+ int FALSE ;
+ int TRUE ;
+ int abort () ;
+ int append_type (struct pr_handle*,char const*) ;
+ int assert (int) ;
+ int indent_type (struct pr_handle*) ;
+ unsigned int strlen (char*) ;
 
 __attribute__((used)) static bfd_boolean
 pr_fix_visibility (struct pr_handle *info, enum debug_visibility visibility)
 {
-  const char *s = NULL;
+  const char *s = ((void*)0);
   char *t;
   unsigned int len;
 
-  assert (info->stack != NULL);
+  assert (info->stack != ((void*)0));
 
   if (info->stack->visibility == visibility)
     return TRUE;
 
   switch (visibility)
     {
-    case DEBUG_VISIBILITY_PUBLIC:
+    case 128:
       s = "public";
       break;
-    case DEBUG_VISIBILITY_PRIVATE:
+    case 130:
       s = "private";
       break;
-    case DEBUG_VISIBILITY_PROTECTED:
+    case 129:
       s = "protected";
       break;
-    case DEBUG_VISIBILITY_IGNORE:
+    case 131:
       s = "/* ignore */";
       break;
     default:
@@ -60,8 +60,8 @@ pr_fix_visibility (struct pr_handle *info, enum debug_visibility visibility)
       return FALSE;
     }
 
-  /* Trim off a trailing space in the struct string, to make the
-     output look a bit better, then stick on the visibility string.  */
+
+
 
   t = info->stack->type;
   len = strlen (t);

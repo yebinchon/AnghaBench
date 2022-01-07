@@ -1,68 +1,68 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct timeval {int tv_sec; scalar_t__ tv_usec; } ;
-typedef  int /*<<< orphan*/  fd_set ;
-typedef  int /*<<< orphan*/  CURLM ;
-typedef  int /*<<< orphan*/  CURL ;
+typedef int fd_set ;
+typedef int CURLM ;
+typedef int CURL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CURLOPT_HEADER ; 
- int /*<<< orphan*/  CURLOPT_SSL_VERIFYHOST ; 
- int /*<<< orphan*/  CURLOPT_SSL_VERIFYPEER ; 
- int /*<<< orphan*/  CURLOPT_URL ; 
- int /*<<< orphan*/  FD_ZERO (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  abort_on_test_timeout () ; 
- int /*<<< orphan*/  curl_easy_cleanup (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  curl_global_cleanup () ; 
- int /*<<< orphan*/  curl_multi_cleanup (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  easy_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  easy_setopt (int /*<<< orphan*/ *,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  multi_add_handle (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  multi_fdset (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  multi_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  multi_perform (int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  select_test (int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,struct timeval*) ; 
- int /*<<< orphan*/  start_test_timing () ; 
+
+ int CURLOPT_HEADER ;
+ int CURLOPT_SSL_VERIFYHOST ;
+ int CURLOPT_SSL_VERIFYPEER ;
+ int CURLOPT_URL ;
+ int FD_ZERO (int *) ;
+ int abort_on_test_timeout () ;
+ int curl_easy_cleanup (int *) ;
+ int curl_global_cleanup () ;
+ int curl_multi_cleanup (int *) ;
+ int easy_init (int *) ;
+ int easy_setopt (int *,int ,...) ;
+ int multi_add_handle (int *,int *) ;
+ int multi_fdset (int *,int *,int *,int *,int*) ;
+ int multi_init (int *) ;
+ int multi_perform (int *,int*) ;
+ int select_test (int,int *,int *,int *,struct timeval*) ;
+ int start_test_timing () ;
 
 int test(char *URL)
 {
-  CURL *http_handle = NULL;
-  CURLM *multi_handle = NULL;
+  CURL *http_handle = ((void*)0);
+  CURLM *multi_handle = ((void*)0);
   int res = 0;
 
-  int still_running; /* keep number of running handles */
+  int still_running;
 
   start_test_timing();
 
-  /*
-  ** curl_global_init called indirectly from curl_easy_init.
-  */
+
+
+
 
   easy_init(http_handle);
 
-  /* set options */
+
   easy_setopt(http_handle, CURLOPT_URL, URL);
   easy_setopt(http_handle, CURLOPT_HEADER, 1L);
   easy_setopt(http_handle, CURLOPT_SSL_VERIFYPEER, 0L);
   easy_setopt(http_handle, CURLOPT_SSL_VERIFYHOST, 0L);
 
-  /* init a multi stack */
+
   multi_init(multi_handle);
 
-  /* add the individual transfers */
+
   multi_add_handle(multi_handle, http_handle);
 
-  /* we start some action by calling perform right away */
+
   multi_perform(multi_handle, &still_running);
 
   abort_on_test_timeout();
@@ -79,20 +79,20 @@ int test(char *URL)
     FD_ZERO(&fdwrite);
     FD_ZERO(&fdexcep);
 
-    /* set a suitable timeout to play around with */
+
     timeout.tv_sec = 1;
     timeout.tv_usec = 0;
 
-    /* get file descriptors from the transfers */
+
     multi_fdset(multi_handle, &fdread, &fdwrite, &fdexcep, &maxfd);
 
-    /* At this point, maxfd is guaranteed to be greater or equal than -1. */
+
 
     select_test(maxfd + 1, &fdread, &fdwrite, &fdexcep, &timeout);
 
     abort_on_test_timeout();
 
-    /* timeout or readable/writable sockets */
+
     multi_perform(multi_handle, &still_running);
 
     abort_on_test_timeout();
@@ -100,7 +100,7 @@ int test(char *URL)
 
 test_cleanup:
 
-  /* undocumented cleanup sequence - type UA */
+
 
   curl_multi_cleanup(multi_handle);
   curl_easy_cleanup(http_handle);

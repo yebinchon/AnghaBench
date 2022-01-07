@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_9__ {unsigned int typestring_offset; } ;
-typedef  TYPE_1__ type_t ;
-typedef  int /*<<< orphan*/  attr_list_t ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef TYPE_1__ type_t ;
+typedef int attr_list_t ;
+typedef int FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ATTR_SWITCHIS ; 
- unsigned char FC_LONG ; 
- unsigned char FC_POINTER ; 
- scalar_t__ TYPE_UNION ; 
- int /*<<< orphan*/  error (char*,scalar_t__) ; 
- scalar_t__ is_attr (int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- scalar_t__ is_conformant_array (TYPE_1__ const*) ; 
- scalar_t__ is_embedded_complex (TYPE_1__ const*) ; 
- scalar_t__ is_ptr (TYPE_1__ const*) ; 
- int /*<<< orphan*/  print_file (int /*<<< orphan*/ *,int,char*,...) ; 
- int /*<<< orphan*/  string_of_type (unsigned char) ; 
- scalar_t__ type_get_type (TYPE_1__ const*) ; 
- int /*<<< orphan*/  write_base_type (int /*<<< orphan*/ *,TYPE_1__ const*,unsigned int*) ; 
+
+ int ATTR_SWITCHIS ;
+ unsigned char FC_LONG ;
+ unsigned char FC_POINTER ;
+ scalar_t__ TYPE_UNION ;
+ int error (char*,scalar_t__) ;
+ scalar_t__ is_attr (int const*,int ) ;
+ scalar_t__ is_conformant_array (TYPE_1__ const*) ;
+ scalar_t__ is_embedded_complex (TYPE_1__ const*) ;
+ scalar_t__ is_ptr (TYPE_1__ const*) ;
+ int print_file (int *,int,char*,...) ;
+ int string_of_type (unsigned char) ;
+ scalar_t__ type_get_type (TYPE_1__ const*) ;
+ int write_base_type (int *,TYPE_1__ const*,unsigned int*) ;
 
 __attribute__((used)) static void write_member_type(FILE *file, const type_t *cont,
                               int cont_is_complex, const attr_list_t *attrs,
@@ -53,9 +53,9 @@ __attribute__((used)) static void write_member_type(FILE *file, const type_t *co
         reloff = absoff - (*tfsoff + 2);
 
         print_file(file, 2, "0x4c,\t/* FC_EMBEDDED_COMPLEX */\n");
-        /* padding is represented using FC_STRUCTPAD* types, so presumably
-         * this is left over in the format for historical purposes in MIDL
-         * or rpcrt4. */
+
+
+
         print_file(file, 2, "0x0,\n");
         print_file(file, 2, "NdrFcShort(0x%hx),\t/* Offset= %hd (%u) */\n",
                    reloff, reloff, absoff);

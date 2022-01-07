@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_wc_context_t ;
-typedef  int /*<<< orphan*/  svn_wc_committed_queue_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_checksum_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_array_header_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/ * svn_error_trace (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_wc_queue_committed4 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int svn_wc_context_t ;
+typedef int svn_wc_committed_queue_t ;
+typedef int svn_error_t ;
+typedef int svn_checksum_t ;
+typedef int svn_boolean_t ;
+typedef int apr_pool_t ;
+typedef int apr_array_header_t ;
+
+
+ int TRUE ;
+ int * svn_error_trace (int ) ;
+ int svn_wc_queue_committed4 (int *,int *,char const*,int ,int ,int const*,int ,int ,int const*,int *) ;
 
 svn_error_t *
 svn_wc_queue_committed3(svn_wc_committed_queue_t *queue,
@@ -36,7 +36,7 @@ svn_wc_queue_committed3(svn_wc_committed_queue_t *queue,
 {
   return svn_error_trace(
             svn_wc_queue_committed4(queue, wc_ctx, local_abspath,
-                                    recurse, TRUE /* is_committed */,
+                                    recurse, TRUE ,
                                     wcprop_changes, remove_lock,
                                     remove_changelist, sha1_checksum,
                                     scratch_pool));

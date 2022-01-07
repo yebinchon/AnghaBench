@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  sources; } ;
-typedef  TYPE_1__ isc_lex_t ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int sources; } ;
+typedef TYPE_1__ isc_lex_t ;
 struct TYPE_7__ {char* name; } ;
-typedef  TYPE_2__ inputsource ;
+typedef TYPE_2__ inputsource ;
 
-/* Variables and functions */
- TYPE_2__* HEAD (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  REQUIRE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  VALID_LEX (TYPE_1__*) ; 
+
+ TYPE_2__* HEAD (int ) ;
+ int REQUIRE (int ) ;
+ int VALID_LEX (TYPE_1__*) ;
 
 char *
 isc_lex_getsourcename(isc_lex_t *lex) {
-	inputsource *source;
+ inputsource *source;
 
-	REQUIRE(VALID_LEX(lex));
-	source = HEAD(lex->sources);
+ REQUIRE(VALID_LEX(lex));
+ source = HEAD(lex->sources);
 
-	if (source == NULL)
-		return (NULL);
+ if (source == ((void*)0))
+  return (((void*)0));
 
-	return (source->name);
+ return (source->name);
 }

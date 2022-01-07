@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int uint16_t ;
-typedef  int /*<<< orphan*/  PWMDriver ;
 
-/* Variables and functions */
- scalar_t__ BREATHING_HALT_OFF ; 
- scalar_t__ BREATHING_HALT_ON ; 
- int BREATHING_STEPS ; 
- int /*<<< orphan*/  PWMD3 ; 
- int /*<<< orphan*/  PWM_FRACTION_TO_WIDTH (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int breathing_counter ; 
- scalar_t__ breathing_halt ; 
- int /*<<< orphan*/  breathing_interrupt_disable () ; 
- int breathing_period ; 
- int* breathing_table ; 
- int /*<<< orphan*/  chSysLockFromISR () ; 
- int /*<<< orphan*/  chSysUnlockFromISR () ; 
- int /*<<< orphan*/  cie_lightness (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pwmEnableChannelI (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  scale_backlight (int) ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef int uint16_t ;
+typedef int PWMDriver ;
+
+
+ scalar_t__ BREATHING_HALT_OFF ;
+ scalar_t__ BREATHING_HALT_ON ;
+ int BREATHING_STEPS ;
+ int PWMD3 ;
+ int PWM_FRACTION_TO_WIDTH (int *,int,int ) ;
+ int breathing_counter ;
+ scalar_t__ breathing_halt ;
+ int breathing_interrupt_disable () ;
+ int breathing_period ;
+ int* breathing_table ;
+ int chSysLockFromISR () ;
+ int chSysUnlockFromISR () ;
+ int cie_lightness (int ) ;
+ int pwmEnableChannelI (int *,int ,int ) ;
+ int scale_backlight (int) ;
 
 __attribute__((used)) static void breathing_callback(PWMDriver *pwmp)
 {
   (void)pwmp;
   uint16_t interval = (uint16_t) breathing_period * 256 / BREATHING_STEPS;
-  // resetting after one period to prevent ugly reset at overflow.
+
   breathing_counter = (breathing_counter + 1) % (breathing_period * 256);
   uint8_t index = breathing_counter / interval % BREATHING_STEPS;
 

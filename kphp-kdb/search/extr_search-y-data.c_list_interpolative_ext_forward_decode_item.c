@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct list_decoder {int p; int k; int K; int /*<<< orphan*/  br; int /*<<< orphan*/  (* decode_int ) (struct list_decoder*) ;scalar_t__ data; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct list_decoder {int p; int k; int K; int br; int (* decode_int ) (struct list_decoder*) ;scalar_t__ data; } ;
 struct interpolative_ext_decoder_stack_entry {size_t right_value; int left_idx; int right_idx; scalar_t__ right_subtree_offset; size_t middle_value; size_t left_value; } ;
 struct TYPE_2__ {long long item_id; } ;
 
-/* Variables and functions */
- TYPE_1__* IndexItems ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  bread_seek (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  interpolative_ext_decode_node (struct list_decoder*,struct interpolative_ext_decoder_stack_entry*) ; 
- int /*<<< orphan*/  stub1 (struct list_decoder*) ; 
- int /*<<< orphan*/  stub2 (struct list_decoder*) ; 
- int /*<<< orphan*/  stub3 (struct list_decoder*) ; 
+
+ TYPE_1__* IndexItems ;
+ int assert (int) ;
+ int bread_seek (int *,scalar_t__) ;
+ int interpolative_ext_decode_node (struct list_decoder*,struct interpolative_ext_decoder_stack_entry*) ;
+ int stub1 (struct list_decoder*) ;
+ int stub2 (struct list_decoder*) ;
+ int stub3 (struct list_decoder*) ;
 
 __attribute__((used)) static int list_interpolative_ext_forward_decode_item (struct list_decoder *dec, long long item_id_lowerbound) {
   struct interpolative_ext_decoder_stack_entry *data = (struct interpolative_ext_decoder_stack_entry *) dec->data;
@@ -75,13 +75,13 @@ __attribute__((used)) static int list_interpolative_ext_forward_decode_item (str
         dec->k = middle;
         return data->middle_value;
       }
-      //assert (data->left_value >= doc_id_lowerbound);
+
       dec->k = data->left_idx;
       return data->left_value;
     }
     struct interpolative_ext_decoder_stack_entry *next = data + 1;
     if (IndexItems[data->middle_value].item_id > item_id_lowerbound) {
-      // left subtree
+
       if (data->left_idx == middle - 1) {
         dec->k = middle;
         return data->middle_value;

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  void sd_bus_message ;
-typedef  int /*<<< orphan*/  sd_bus_error ;
-typedef  int /*<<< orphan*/  sd_bus ;
-typedef  int /*<<< orphan*/  DnsServer ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (void*) ; 
- int bus_dns_server_append (void*,int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef void sd_bus_message ;
+typedef int sd_bus_error ;
+typedef int sd_bus ;
+typedef int DnsServer ;
+
+
+ int assert (void*) ;
+ int bus_dns_server_append (void*,int *,int) ;
 
 __attribute__((used)) static int property_get_current_dns_server(
                 sd_bus *bus,
@@ -35,5 +35,5 @@ __attribute__((used)) static int property_get_current_dns_server(
 
         s = *(DnsServer **) userdata;
 
-        return bus_dns_server_append(reply, s, false);
+        return bus_dns_server_append(reply, s, 0);
 }

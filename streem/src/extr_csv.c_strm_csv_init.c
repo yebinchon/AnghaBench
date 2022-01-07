@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  strm_state ;
 
-/* Variables and functions */
- int /*<<< orphan*/  csv ; 
- int /*<<< orphan*/  ltsv ; 
- int /*<<< orphan*/  str_number ; 
- int /*<<< orphan*/  strm_cfunc_value (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * strm_ns_string ; 
- int /*<<< orphan*/  strm_var_def (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tsv ; 
+
+
+
+typedef int strm_state ;
+
+
+ int csv ;
+ int ltsv ;
+ int str_number ;
+ int strm_cfunc_value (int ) ;
+ int * strm_ns_string ;
+ int strm_var_def (int *,char*,int ) ;
+ int tsv ;
 
 void
 strm_csv_init(strm_state* state)

@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct WkstaTransportEnumData {scalar_t__ n_read; int prefmaxlen; int /*<<< orphan*/  ret; scalar_t__* pbuf; scalar_t__ n_adapt; } ;
-typedef  int /*<<< orphan*/  WKSTA_TRANSPORT_INFO_0 ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  ULONG ;
-typedef  scalar_t__ UCHAR ;
-struct TYPE_10__ {int /*<<< orphan*/  dwIndex; } ;
-struct TYPE_9__ {int /*<<< orphan*/  ifIndex; } ;
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct WkstaTransportEnumData {scalar_t__ n_read; int prefmaxlen; int ret; scalar_t__* pbuf; scalar_t__ n_adapt; } ;
+typedef int WKSTA_TRANSPORT_INFO_0 ;
+typedef int WCHAR ;
+typedef int ULONG ;
+typedef scalar_t__ UCHAR ;
+struct TYPE_10__ {int dwIndex; } ;
+struct TYPE_9__ {int ifIndex; } ;
 struct TYPE_8__ {void* wkti0_transport_address; void* wkti0_transport_name; void* wkti0_wan_ish; scalar_t__ wkti0_number_of_vcs; scalar_t__ wkti0_quality_of_service; } ;
-typedef  TYPE_1__* PWKSTA_TRANSPORT_INFO_0 ;
-typedef  TYPE_2__ NetBIOSAdapterImpl ;
-typedef  TYPE_3__ MIB_IFROW ;
-typedef  int /*<<< orphan*/  LPVOID ;
-typedef  void* LMSTR ;
-typedef  int DWORD ;
-typedef  void* BOOL ;
+typedef TYPE_1__* PWKSTA_TRANSPORT_INFO_0 ;
+typedef TYPE_2__ NetBIOSAdapterImpl ;
+typedef TYPE_3__ MIB_IFROW ;
+typedef int LPVOID ;
+typedef void* LMSTR ;
+typedef int DWORD ;
+typedef void* BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERROR_MORE_DATA ; 
- int /*<<< orphan*/  ERROR_OUTOFMEMORY ; 
- void* FALSE ; 
- int /*<<< orphan*/  GetIfEntry (TYPE_3__*) ; 
- int MAX_PREFERRED_LENGTH ; 
- int MAX_TRANSPORT_ADDR ; 
- int MAX_TRANSPORT_NAME ; 
- int /*<<< orphan*/  NERR_Success ; 
- int /*<<< orphan*/  NetApiBufferAllocate (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TRACE (char*,scalar_t__,scalar_t__,...) ; 
- int /*<<< orphan*/  TRANSPORT_NBT ; 
- void* TRUE ; 
- int /*<<< orphan*/  debugstr_w (void*) ; 
- int /*<<< orphan*/  memcmp (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  wprint_mac (void*,int,TYPE_3__*) ; 
- int /*<<< orphan*/  wprint_name (void*,int,int /*<<< orphan*/ ,TYPE_3__*) ; 
+
+ int ERROR_MORE_DATA ;
+ int ERROR_OUTOFMEMORY ;
+ void* FALSE ;
+ int GetIfEntry (TYPE_3__*) ;
+ int MAX_PREFERRED_LENGTH ;
+ int MAX_TRANSPORT_ADDR ;
+ int MAX_TRANSPORT_NAME ;
+ int NERR_Success ;
+ int NetApiBufferAllocate (int,int *) ;
+ int TRACE (char*,scalar_t__,scalar_t__,...) ;
+ int TRANSPORT_NBT ;
+ void* TRUE ;
+ int debugstr_w (void*) ;
+ int memcmp (int *,int ,int) ;
+ int wprint_mac (void*,int,TYPE_3__*) ;
+ int wprint_name (void*,int,int ,TYPE_3__*) ;
 
 __attribute__((used)) static BOOL WkstaEnumAdaptersCallback(UCHAR totalLANAs, UCHAR lanaIndex,
  ULONG transport, const NetBIOSAdapterImpl *data, void *closure)

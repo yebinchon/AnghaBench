@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  scalar_t__ UINT ;
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef char WCHAR ;
+typedef scalar_t__ UINT ;
 struct TYPE_6__ {int ui_level; } ;
-typedef  int /*<<< orphan*/  MSIRECORD ;
-typedef  TYPE_1__ MSIPACKAGE ;
-typedef  int /*<<< orphan*/  LPWSTR ;
-typedef  TYPE_1__* LPVOID ;
-typedef  int /*<<< orphan*/ * LPCWSTR ;
+typedef int MSIRECORD ;
+typedef TYPE_1__ MSIPACKAGE ;
+typedef int LPWSTR ;
+typedef TYPE_1__* LPVOID ;
+typedef int * LPCWSTR ;
 
-/* Variables and functions */
- scalar_t__ ERROR_INSTALL_FAILURE ; 
- scalar_t__ ERROR_SUCCESS ; 
- int INSTALLUILEVEL_MASK ; 
- int INSTALLUILEVEL_NONE ; 
- int /*<<< orphan*/  MB_OK ; 
- scalar_t__ MSICONDITION_FALSE ; 
- scalar_t__ MSI_EvaluateConditionW (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * MSI_RecordGetString (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  MessageBoxW (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  deformat_string (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  msi_free (int /*<<< orphan*/ ) ; 
+
+ scalar_t__ ERROR_INSTALL_FAILURE ;
+ scalar_t__ ERROR_SUCCESS ;
+ int INSTALLUILEVEL_MASK ;
+ int INSTALLUILEVEL_NONE ;
+ int MB_OK ;
+ scalar_t__ MSICONDITION_FALSE ;
+ scalar_t__ MSI_EvaluateConditionW (TYPE_1__*,int *) ;
+ int * MSI_RecordGetString (int *,int) ;
+ int MessageBoxW (int *,int ,char const*,int ) ;
+ int deformat_string (TYPE_1__*,int *,int *) ;
+ int msi_free (int ) ;
 
 __attribute__((used)) static UINT ITERATE_LaunchConditions(MSIRECORD *row, LPVOID param)
 {
     MSIPACKAGE* package = param;
-    LPCWSTR cond = NULL; 
-    LPCWSTR message = NULL;
+    LPCWSTR cond = ((void*)0);
+    LPCWSTR message = ((void*)0);
     UINT r;
 
     static const WCHAR title[]=
@@ -53,7 +53,7 @@ __attribute__((used)) static UINT ITERATE_LaunchConditions(MSIRECORD *row, LPVOI
             LPWSTR deformated;
             message = MSI_RecordGetString(row,2);
             deformat_string(package,message,&deformated);
-            MessageBoxW(NULL,deformated,title,MB_OK);
+            MessageBoxW(((void*)0),deformated,title,MB_OK);
             msi_free(deformated);
         }
 

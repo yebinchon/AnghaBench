@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vortex_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  vortex_EqHw_Disable (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vortex_EqHw_ProgramPipe (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vortex_Eqlzr_ShutDownA3d (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int vortex_t ;
+
+
+ int vortex_EqHw_Disable (int *) ;
+ int vortex_EqHw_ProgramPipe (int *) ;
+ int vortex_Eqlzr_ShutDownA3d (int *) ;
 
 __attribute__((used)) static void vortex_Eqlzr_shutdown(vortex_t * vortex)
 {
-	vortex_Eqlzr_ShutDownA3d(vortex);
-	vortex_EqHw_ProgramPipe(vortex);
-	vortex_EqHw_Disable(vortex);
+ vortex_Eqlzr_ShutDownA3d(vortex);
+ vortex_EqHw_ProgramPipe(vortex);
+ vortex_EqHw_Disable(vortex);
 }

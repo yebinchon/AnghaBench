@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  notbusy; int /*<<< orphan*/  lock; int /*<<< orphan*/  shared; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- TYPE_1__ cvthing ; 
- scalar_t__ pthread_cond_broadcast (int /*<<< orphan*/ *) ; 
- scalar_t__ pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- scalar_t__ pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int notbusy; int lock; int shared; } ;
+
+
+ int assert (int) ;
+ TYPE_1__ cvthing ;
+ scalar_t__ pthread_cond_broadcast (int *) ;
+ scalar_t__ pthread_mutex_lock (int *) ;
+ scalar_t__ pthread_mutex_unlock (int *) ;
 
 void *
 mythread(void * arg)

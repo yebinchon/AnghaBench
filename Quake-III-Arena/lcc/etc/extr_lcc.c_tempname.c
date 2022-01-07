@@ -1,32 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  append (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * com ; 
- int /*<<< orphan*/  getpid () ; 
- char* replace (char*,char,char) ; 
- int /*<<< orphan*/  rmlist ; 
- char* stringf (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/ * strstr (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  tempdir ; 
+ int append (char*,int ) ;
+ int * com ;
+ int getpid () ;
+ char* replace (char*,char,char) ;
+ int rmlist ;
+ char* stringf (char*,int ,int ,int ,char*) ;
+ int * strstr (int ,char*) ;
+ int tempdir ;
 
 char *tempname(char *suffix) {
-	static int n;
-	char *name = stringf("%s/lcc%d%d%s", tempdir, getpid(), n++, suffix);
+ static int n;
+ char *name = stringf("%s/lcc%d%d%s", tempdir, getpid(), n++, suffix);
 
-	if (strstr(com[1], "win32") != NULL)
-		name = replace(name, '/', '\\');
-	rmlist = append(name, rmlist);
-	return name;
+ if (strstr(com[1], "win32") != ((void*)0))
+  name = replace(name, '/', '\\');
+ rmlist = append(name, rmlist);
+ return name;
 }

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int INT ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
-#define  SB_HORZ 129 
-#define  SB_VERT 128 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int INT ;
+typedef int HWND ;
+typedef int BOOL ;
+
+
+ int FALSE ;
+
+
+ int TRUE ;
+ int assert (int ) ;
 
 __attribute__((used)) static BOOL SCROLL_IsVertical(HWND hwnd, INT nBar)
 {
     switch(nBar)
     {
-    case SB_HORZ:
+    case 129:
         return FALSE;
-    case SB_VERT:
+    case 128:
         return TRUE;
     default:
         assert(FALSE);

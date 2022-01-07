@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ifclassq {int /*<<< orphan*/ * ifcq_request; int /*<<< orphan*/ * ifcq_dequeue_sc; int /*<<< orphan*/ * ifcq_dequeue; int /*<<< orphan*/ * ifcq_enqueue; int /*<<< orphan*/ * ifcq_disc; int /*<<< orphan*/  ifcq_type; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IFCQ_LOCK_ASSERT_HELD (struct ifclassq*) ; 
- int /*<<< orphan*/  PKTSCHEDT_NONE ; 
- int /*<<< orphan*/  VERIFY (int /*<<< orphan*/ ) ; 
+
+
+
+struct ifclassq {int * ifcq_request; int * ifcq_dequeue_sc; int * ifcq_dequeue; int * ifcq_enqueue; int * ifcq_disc; int ifcq_type; } ;
+
+
+ int IFCQ_LOCK_ASSERT_HELD (struct ifclassq*) ;
+ int PKTSCHEDT_NONE ;
+ int VERIFY (int ) ;
 
 int
 ifclassq_detach(struct ifclassq *ifq)
 {
-	IFCQ_LOCK_ASSERT_HELD(ifq);
+ IFCQ_LOCK_ASSERT_HELD(ifq);
 
-	VERIFY(ifq->ifcq_disc == NULL);
+ VERIFY(ifq->ifcq_disc == ((void*)0));
 
-	ifq->ifcq_type = PKTSCHEDT_NONE;
-	ifq->ifcq_disc = NULL;
-	ifq->ifcq_enqueue = NULL;
-	ifq->ifcq_dequeue = NULL;
-	ifq->ifcq_dequeue_sc = NULL;
-	ifq->ifcq_request = NULL;
+ ifq->ifcq_type = PKTSCHEDT_NONE;
+ ifq->ifcq_disc = ((void*)0);
+ ifq->ifcq_enqueue = ((void*)0);
+ ifq->ifcq_dequeue = ((void*)0);
+ ifq->ifcq_dequeue_sc = ((void*)0);
+ ifq->ifcq_request = ((void*)0);
 
-	return (0);
+ return (0);
 }

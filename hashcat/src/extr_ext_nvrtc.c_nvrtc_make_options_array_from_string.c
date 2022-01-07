@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char* strtok_r (char*,char*,char**) ; 
+ char* strtok_r (char*,char*,char**) ;
 
 int nvrtc_make_options_array_from_string (char *string, char **options)
 {
-  char *saveptr = NULL;
+  char *saveptr = ((void*)0);
 
   char *next = strtok_r (string, " ", &saveptr);
 
@@ -28,7 +20,7 @@ int nvrtc_make_options_array_from_string (char *string, char **options)
 
     cnt++;
 
-  } while ((next = strtok_r ((char *) NULL, " ", &saveptr)) != NULL);
+  } while ((next = strtok_r ((char *) ((void*)0), " ", &saveptr)) != ((void*)0));
 
   return cnt;
 }

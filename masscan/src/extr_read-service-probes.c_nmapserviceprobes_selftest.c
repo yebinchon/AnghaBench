@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct NmapServiceProbeList {unsigned int line_number; } ;
 
-/* Variables and functions */
- struct NmapServiceProbeList* nmapserviceprobes_new (char*) ; 
- int /*<<< orphan*/  parse_line (struct NmapServiceProbeList*,char const*) ; 
+
+ struct NmapServiceProbeList* nmapserviceprobes_new (char*) ;
+ int parse_line (struct NmapServiceProbeList*,char const*) ;
 
 int
 nmapserviceprobes_selftest(void)
@@ -38,12 +38,12 @@ nmapserviceprobes_selftest(void)
     };
     unsigned i;
     struct NmapServiceProbeList *list = nmapserviceprobes_new("<selftest>");
-    
+
     for (i=0; lines[i]; i++) {
         list->line_number = i;
         parse_line(list, lines[i]);
     }
-    
-    //nmapserviceprobes_print(list, stdout);
+
+
     return 0;
 }

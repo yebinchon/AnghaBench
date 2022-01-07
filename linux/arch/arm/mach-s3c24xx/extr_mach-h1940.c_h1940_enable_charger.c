@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  H1940_LATCH_SM803_ENABLE ; 
- int /*<<< orphan*/  gpio_set_value (int /*<<< orphan*/ ,int) ; 
+ int H1940_LATCH_SM803_ENABLE ;
+ int gpio_set_value (int ,int) ;
 
 __attribute__((used)) static void h1940_enable_charger(void)
 {
-	gpio_set_value(H1940_LATCH_SM803_ENABLE, 1);
+ gpio_set_value(H1940_LATCH_SM803_ENABLE, 1);
 }

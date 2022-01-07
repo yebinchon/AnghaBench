@@ -1,80 +1,80 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t UINT ;
-struct TYPE_3__ {struct TYPE_3__* Next; int /*<<< orphan*/  Object; } ;
-typedef  int /*<<< orphan*/  TRACKING_OBJECT ;
-typedef  TYPE_1__ TRACKING_LIST ;
-typedef  int /*<<< orphan*/  LIST ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Add (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ LIST_DATA (int /*<<< orphan*/ *,size_t) ; 
- size_t LIST_NUM (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LockTrackingList () ; 
- int /*<<< orphan*/ * NewListFast (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Print (char*) ; 
- int /*<<< orphan*/  PrintObjectList (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ReleaseList (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Sort (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SortObjectView ; 
- size_t TRACKING_NUM_ARRAY ; 
- int /*<<< orphan*/  UnlockTrackingList () ; 
- TYPE_1__** hashlist ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef size_t UINT ;
+struct TYPE_3__ {struct TYPE_3__* Next; int Object; } ;
+typedef int TRACKING_OBJECT ;
+typedef TYPE_1__ TRACKING_LIST ;
+typedef int LIST ;
+
+
+ int Add (int *,int ) ;
+ scalar_t__ LIST_DATA (int *,size_t) ;
+ size_t LIST_NUM (int *) ;
+ int LockTrackingList () ;
+ int * NewListFast (int ) ;
+ int Print (char*) ;
+ int PrintObjectList (int *) ;
+ int ReleaseList (int *) ;
+ int Sort (int *) ;
+ int SortObjectView ;
+ size_t TRACKING_NUM_ARRAY ;
+ int UnlockTrackingList () ;
+ TYPE_1__** hashlist ;
 
 void DebugPrintAllObjects()
 {
-	UINT i;
-	LIST *view;
+ UINT i;
+ LIST *view;
 
-	// Creating a List
-	view = NewListFast(SortObjectView);
-	LockTrackingList();
-	{
-		for (i = 0;i < TRACKING_NUM_ARRAY;i++)
-		{
-			if (hashlist[i] != NULL)
-			{
-				TRACKING_LIST *t = hashlist[i];
 
-				while (true)
-				{
-					Add(view, t->Object);
+ view = NewListFast(SortObjectView);
+ LockTrackingList();
+ {
+  for (i = 0;i < TRACKING_NUM_ARRAY;i++)
+  {
+   if (hashlist[i] != ((void*)0))
+   {
+    TRACKING_LIST *t = hashlist[i];
 
-					if (t->Next == NULL)
-					{
-						break;
-					}
+    while (1)
+    {
+     Add(view, t->Object);
 
-					t = t->Next;
-				}
-			}
-		}
-	}
-	UnlockTrackingList();
+     if (t->Next == ((void*)0))
+     {
+      break;
+     }
 
-	// Sort
-	Sort(view);
+     t = t->Next;
+    }
+   }
+  }
+ }
+ UnlockTrackingList();
 
-	// Drawing
-	for (i = 0;i < LIST_NUM(view);i++)
-	{
-		TRACKING_OBJECT *o = (TRACKING_OBJECT *)LIST_DATA(view, i);
-		PrintObjectList(o);
-	}
 
-	// Release the list
-	ReleaseList(view);
+ Sort(view);
 
-	Print("\n");
+
+ for (i = 0;i < LIST_NUM(view);i++)
+ {
+  TRACKING_OBJECT *o = (TRACKING_OBJECT *)LIST_DATA(view, i);
+  PrintObjectList(o);
+ }
+
+
+ ReleaseList(view);
+
+ Print("\n");
 }

@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct detail_data {TYPE_1__* pCertViewInfo; } ;
-typedef  int /*<<< orphan*/  WCHAR ;
-struct TYPE_5__ {int /*<<< orphan*/  id; int /*<<< orphan*/ * (* prop_to_value ) (int /*<<< orphan*/ *,size_t) ;scalar_t__ prop_is_string; int /*<<< orphan*/  prop; } ;
-struct TYPE_4__ {int /*<<< orphan*/  pCertContext; } ;
-typedef  int /*<<< orphan*/  PCCERT_CONTEXT ;
-typedef  int /*<<< orphan*/ * LPWSTR ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  size_t DWORD ;
-typedef  int /*<<< orphan*/  BYTE ;
+typedef int WCHAR ;
+struct TYPE_5__ {int id; int * (* prop_to_value ) (int *,size_t) ;scalar_t__ prop_is_string; int prop; } ;
+struct TYPE_4__ {int pCertContext; } ;
+typedef int PCCERT_CONTEXT ;
+typedef int * LPWSTR ;
+typedef int HWND ;
+typedef size_t DWORD ;
+typedef int BYTE ;
 
-/* Variables and functions */
- size_t ARRAY_SIZE (TYPE_2__*) ; 
- scalar_t__ CertGetCertificateContextProperty (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,size_t*) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/ * HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  add_string_id_and_value_to_list (int /*<<< orphan*/ ,struct detail_data*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- TYPE_2__* prop_id_map ; 
- int /*<<< orphan*/ * stub1 (int /*<<< orphan*/ *,size_t) ; 
+
+ size_t ARRAY_SIZE (TYPE_2__*) ;
+ scalar_t__ CertGetCertificateContextProperty (int ,int ,int *,size_t*) ;
+ int GetProcessHeap () ;
+ int * HeapAlloc (int ,int ,size_t) ;
+ int HeapFree (int ,int ,int *) ;
+ int add_string_id_and_value_to_list (int ,struct detail_data*,int ,int *,int *,int *) ;
+ TYPE_2__* prop_id_map ;
+ int * stub1 (int *,size_t) ;
 
 __attribute__((used)) static void add_properties(HWND hwnd, struct detail_data *data)
 {
@@ -41,15 +41,15 @@ __attribute__((used)) static void add_properties(HWND hwnd, struct detail_data *
     {
         DWORD cb;
 
-        if (CertGetCertificateContextProperty(cert, prop_id_map[i].prop, NULL,
+        if (CertGetCertificateContextProperty(cert, prop_id_map[i].prop, ((void*)0),
          &cb))
         {
             BYTE *pb;
-            WCHAR *val = NULL;
+            WCHAR *val = ((void*)0);
 
-            /* FIXME: MS adds a separate value for the signature hash
-             * algorithm.
-             */
+
+
+
             pb = HeapAlloc(GetProcessHeap(), 0, cb);
             if (pb)
             {
@@ -59,8 +59,8 @@ __attribute__((used)) static void add_properties(HWND hwnd, struct detail_data *
                     if (prop_id_map[i].prop_is_string)
                     {
                         val = (LPWSTR)pb;
-                        /* Don't double-free pb */
-                        pb = NULL;
+
+                        pb = ((void*)0);
                     }
                     else
                         val = prop_id_map[i].prop_to_value(pb, cb);
@@ -68,7 +68,7 @@ __attribute__((used)) static void add_properties(HWND hwnd, struct detail_data *
                 HeapFree(GetProcessHeap(), 0, pb);
             }
             add_string_id_and_value_to_list(hwnd, data, prop_id_map[i].id, val,
-             NULL, NULL);
+             ((void*)0), ((void*)0));
         }
     }
 }

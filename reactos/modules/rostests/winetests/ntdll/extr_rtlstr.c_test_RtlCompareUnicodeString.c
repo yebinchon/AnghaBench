@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int WCHAR ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
 struct TYPE_4__ {int* Buffer; int Length; int MaximumLength; } ;
-typedef  TYPE_1__ UNICODE_STRING ;
-typedef  int LONG ;
+typedef TYPE_1__ UNICODE_STRING ;
+typedef int LONG ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  ok (int,char*,int,int,int) ; 
- int pRtlCompareUnicodeString (TYPE_1__*,TYPE_1__*,int /*<<< orphan*/ ) ; 
- int pRtlCompareUnicodeStrings (int*,int,int*,int,int /*<<< orphan*/ ) ; 
- int pRtlUpcaseUnicodeChar (int) ; 
+
+ int FALSE ;
+ int TRUE ;
+ int ok (int,char*,int,int,int) ;
+ int pRtlCompareUnicodeString (TYPE_1__*,TYPE_1__*,int ) ;
+ int pRtlCompareUnicodeStrings (int*,int,int*,int,int ) ;
+ int pRtlUpcaseUnicodeChar (int) ;
 
 __attribute__((used)) static void test_RtlCompareUnicodeString(void)
 {

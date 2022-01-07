@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct iohidmanager_hid_adapter {size_t slot; struct iohidmanager_hid_adapter* next; struct iohidmanager_hid_adapter* buttons; struct iohidmanager_hid_adapter* axes; struct iohidmanager_hid_adapter* hats; int /*<<< orphan*/  name; } ;
-struct TYPE_2__ {int /*<<< orphan*/ * slots; int /*<<< orphan*/ * axes; scalar_t__* buttons; } ;
-typedef  TYPE_1__ iohidmanager_hid_t ;
-typedef  struct iohidmanager_hid_adapter apple_input_rec_t ;
-typedef  int /*<<< orphan*/  IOReturn ;
 
-/* Variables and functions */
- size_t MAX_USERS ; 
- int /*<<< orphan*/  free (struct iohidmanager_hid_adapter*) ; 
- scalar_t__ hid_driver_get_data () ; 
- int /*<<< orphan*/  input_autoconfigure_disconnect (size_t,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  pad_connection_pad_deinit (int /*<<< orphan*/ *,size_t) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct iohidmanager_hid_adapter {size_t slot; struct iohidmanager_hid_adapter* next; struct iohidmanager_hid_adapter* buttons; struct iohidmanager_hid_adapter* axes; struct iohidmanager_hid_adapter* hats; int name; } ;
+struct TYPE_2__ {int * slots; int * axes; scalar_t__* buttons; } ;
+typedef TYPE_1__ iohidmanager_hid_t ;
+typedef struct iohidmanager_hid_adapter apple_input_rec_t ;
+typedef int IOReturn ;
+
+
+ size_t MAX_USERS ;
+ int free (struct iohidmanager_hid_adapter*) ;
+ scalar_t__ hid_driver_get_data () ;
+ int input_autoconfigure_disconnect (size_t,int ) ;
+ int memset (int ,int ,int) ;
+ int pad_connection_pad_deinit (int *,size_t) ;
 
 __attribute__((used)) static void iohidmanager_hid_device_remove(void *data,
       IOReturn result, void* sender)
@@ -45,24 +45,24 @@ __attribute__((used)) static void iohidmanager_hid_device_remove(void *data,
 
    if (adapter)
    {
-      apple_input_rec_t* tmp = NULL;
-      while (adapter->hats != NULL)
+      apple_input_rec_t* tmp = ((void*)0);
+      while (adapter->hats != ((void*)0))
       {
-          tmp           = adapter->hats;
+          tmp = adapter->hats;
           adapter->hats = adapter->hats->next;
           free(tmp);
       }
 
-      while (adapter->axes != NULL)
+      while (adapter->axes != ((void*)0))
       {
-          tmp           = adapter->axes;
+          tmp = adapter->axes;
           adapter->axes = adapter->axes->next;
           free(tmp);
       }
 
-      while (adapter->buttons != NULL)
+      while (adapter->buttons != ((void*)0))
       {
-          tmp              = adapter->buttons;
+          tmp = adapter->buttons;
           adapter->buttons = adapter->buttons->next;
           free(tmp);
       }

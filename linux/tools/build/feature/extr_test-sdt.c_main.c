@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  DTRACE_PROBE (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  name ; 
- int /*<<< orphan*/  provider ; 
+ int DTRACE_PROBE (int ,int ) ;
+ int name ;
+ int provider ;
 
 int main(void)
 {
-	DTRACE_PROBE(provider, name);
-	return 0;
+ DTRACE_PROBE(provider, name);
+ return 0;
 }

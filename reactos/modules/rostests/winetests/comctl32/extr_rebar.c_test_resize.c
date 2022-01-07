@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int cx; int cy; int x; int y; scalar_t__ flags; int /*<<< orphan*/ * hwndInsertAfter; int /*<<< orphan*/  hwnd; } ;
-typedef  TYPE_1__ WINDOWPOS ;
-typedef  int /*<<< orphan*/  LPARAM ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int ARRAY_SIZE (int*) ; 
- int CCS_BOTTOM ; 
- int CCS_NODIVIDER ; 
- int CCS_NOMOVEY ; 
- int CCS_NOPARENTALIGN ; 
- int CCS_NORESIZE ; 
- int CCS_RIGHT ; 
- int CCS_TOP ; 
- int CCS_VERT ; 
- int /*<<< orphan*/  CreateWindowA (int /*<<< orphan*/ ,char*,int,int,int,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DestroyWindow (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetModuleHandleA (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  MAKELONG (int,int) ; 
- int /*<<< orphan*/  MoveWindow (int /*<<< orphan*/ ,int,int,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RB_DELETEBAND ; 
- int /*<<< orphan*/  REBARCLASSNAMEA ; 
- int /*<<< orphan*/  SIZE_RESTORED ; 
- int /*<<< orphan*/  SendMessageA (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetRect (int /*<<< orphan*/ *,int,int,int,int) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  WM_SIZE ; 
- int /*<<< orphan*/  WM_WINDOWPOSCHANGED ; 
- int /*<<< orphan*/  WM_WINDOWPOSCHANGING ; 
- int WS_BORDER ; 
- int WS_CHILD ; 
- int WS_VISIBLE ; 
- int /*<<< orphan*/  add_band_w (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  check_client () ; 
- int /*<<< orphan*/  comment (char*,int) ; 
- int /*<<< orphan*/  hMainWnd ; 
- int /*<<< orphan*/  height_change_notify_rect ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int cx; int cy; int x; int y; scalar_t__ flags; int * hwndInsertAfter; int hwnd; } ;
+typedef TYPE_1__ WINDOWPOS ;
+typedef int LPARAM ;
+typedef int HWND ;
+typedef int DWORD ;
+
+
+ int ARRAY_SIZE (int*) ;
+ int CCS_BOTTOM ;
+ int CCS_NODIVIDER ;
+ int CCS_NOMOVEY ;
+ int CCS_NOPARENTALIGN ;
+ int CCS_NORESIZE ;
+ int CCS_RIGHT ;
+ int CCS_TOP ;
+ int CCS_VERT ;
+ int CreateWindowA (int ,char*,int,int,int,int,int,int ,int *,int ,int ) ;
+ int DestroyWindow (int ) ;
+ int GetModuleHandleA (int *) ;
+ int MAKELONG (int,int) ;
+ int MoveWindow (int ,int,int,int,int,int ) ;
+ int RB_DELETEBAND ;
+ int REBARCLASSNAMEA ;
+ int SIZE_RESTORED ;
+ int SendMessageA (int ,int ,int ,int ) ;
+ int SetRect (int *,int,int,int,int) ;
+ int TRUE ;
+ int WM_SIZE ;
+ int WM_WINDOWPOSCHANGED ;
+ int WM_WINDOWPOSCHANGING ;
+ int WS_BORDER ;
+ int WS_CHILD ;
+ int WS_VISIBLE ;
+ int add_band_w (int ,int *,int,int,int ) ;
+ int check_client () ;
+ int comment (char*,int) ;
+ int hMainWnd ;
+ int height_change_notify_rect ;
 
 __attribute__((used)) static void test_resize(void)
 {
@@ -66,23 +66,23 @@ __attribute__((used)) static void test_resize(void)
 
         comment("style %08x", dwStyles[i]);
         SetRect(&height_change_notify_rect, -1, -1, -1, -1);
-        hRebar = CreateWindowA(REBARCLASSNAMEA, "A", dwStyles[i] | WS_CHILD | WS_VISIBLE, 10, 5, 500, 15, hMainWnd, NULL, GetModuleHandleA(NULL), 0);
+        hRebar = CreateWindowA(REBARCLASSNAMEA, "A", dwStyles[i] | WS_CHILD | WS_VISIBLE, 10, 5, 500, 15, hMainWnd, ((void*)0), GetModuleHandleA(((void*)0)), 0);
         check_client();
-        add_band_w(hRebar, NULL, 70, 100, 0);
-        if (dwStyles[i] & CCS_NOPARENTALIGN)  /* the window drifts downward for CCS_NOPARENTALIGN without CCS_NODIVIDER */
+        add_band_w(hRebar, ((void*)0), 70, 100, 0);
+        if (dwStyles[i] & CCS_NOPARENTALIGN)
             check_client();
-        add_band_w(hRebar, NULL, 70, 100, 0);
+        add_band_w(hRebar, ((void*)0), 70, 100, 0);
         check_client();
         MoveWindow(hRebar, 10, 10, 100, 100, TRUE);
         check_client();
         MoveWindow(hRebar, 0, 0, 0, 0, TRUE);
         check_client();
-        /* try to fool the rebar by sending invalid width/height - won't work */
+
         if (dwStyles[i] & (CCS_NORESIZE | CCS_NOPARENTALIGN))
         {
             WINDOWPOS pos;
             pos.hwnd = hRebar;
-            pos.hwndInsertAfter = NULL;
+            pos.hwndInsertAfter = ((void*)0);
             pos.cx = 500;
             pos.cy = 500;
             pos.x = 10;

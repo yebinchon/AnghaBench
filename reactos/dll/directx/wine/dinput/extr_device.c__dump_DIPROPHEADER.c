@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {char* dwObj; scalar_t__ dwHow; } ;
-typedef  TYPE_1__* LPCDIPROPHEADER ;
+typedef TYPE_1__* LPCDIPROPHEADER ;
 
-/* Variables and functions */
- scalar_t__ DIPH_BYID ; 
- scalar_t__ DIPH_BYOFFSET ; 
- scalar_t__ DIPH_DEVICE ; 
- int /*<<< orphan*/  TRACE (char*,char*) ; 
- scalar_t__ TRACE_ON (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dinput ; 
+
+ scalar_t__ DIPH_BYID ;
+ scalar_t__ DIPH_BYOFFSET ;
+ scalar_t__ DIPH_DEVICE ;
+ int TRACE (char*,char*) ;
+ scalar_t__ TRACE_ON (int ) ;
+ int dinput ;
 
 void _dump_DIPROPHEADER(LPCDIPROPHEADER diph) {
     if (TRACE_ON(dinput)) {

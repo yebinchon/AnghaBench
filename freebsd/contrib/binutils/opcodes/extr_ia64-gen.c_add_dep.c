@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct rdep {int semantics; char* extra; int waw_special; int /*<<< orphan*/  regnotes; int /*<<< orphan*/  nregs; int /*<<< orphan*/  regs; int /*<<< orphan*/  chknotes; int /*<<< orphan*/  nchks; int /*<<< orphan*/  chks; } ;
 
-/* Variables and functions */
- struct rdep* insert_resource (char const*,int) ; 
- int /*<<< orphan*/  parse_resource_users (char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+struct rdep {int semantics; char* extra; int waw_special; int regnotes; int nregs; int regs; int chknotes; int nchks; int chks; } ;
+
+
+ struct rdep* insert_resource (char const*,int) ;
+ int parse_resource_users (char const*,int *,int *,int *) ;
 
 __attribute__((used)) static void
 add_dep (const char *name, const char *chk, const char *reg,

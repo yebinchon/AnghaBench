@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  name2 ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int name2 ;
 struct TYPE_4__ {char* scale_sws_opts; } ;
-typedef  TYPE_1__ AVFilterGraph ;
-typedef  int /*<<< orphan*/  AVFilterContext ;
-typedef  int /*<<< orphan*/  AVFilter ;
+typedef TYPE_1__ AVFilterGraph ;
+typedef int AVFilterContext ;
+typedef int AVFilter ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  ENOMEM ; 
- char* av_asprintf (char*,char const*,char*) ; 
- int /*<<< orphan*/  av_free (char*) ; 
- int /*<<< orphan*/  av_log (void*,int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  av_strlcpy (char*,char const*,int) ; 
- int /*<<< orphan*/  avfilter_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * avfilter_get_by_name (char const*) ; 
- int /*<<< orphan*/ * avfilter_graph_alloc_filter (TYPE_1__*,int /*<<< orphan*/  const*,char const*) ; 
- int avfilter_init_str (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,char const*,int) ; 
- int /*<<< orphan*/  strcmp (char const*,char*) ; 
- int /*<<< orphan*/  strstr (char const*,char*) ; 
+
+ int AVERROR (int ) ;
+ int AV_LOG_ERROR ;
+ int EINVAL ;
+ int ENOMEM ;
+ char* av_asprintf (char*,char const*,char*) ;
+ int av_free (char*) ;
+ int av_log (void*,int ,char*,...) ;
+ int av_strlcpy (char*,char const*,int) ;
+ int avfilter_free (int *) ;
+ int * avfilter_get_by_name (char const*) ;
+ int * avfilter_graph_alloc_filter (TYPE_1__*,int const*,char const*) ;
+ int avfilter_init_str (int *,char const*) ;
+ int snprintf (char*,int,char*,char const*,int) ;
+ int strcmp (char const*,char*) ;
+ int strstr (char const*,char*) ;
 
 __attribute__((used)) static int create_filter(AVFilterContext **filt_ctx, AVFilterGraph *ctx, int index,
                          const char *name, const char *args, void *log_ctx)
 {
     const AVFilter *filt;
     char name2[30];
-    const char *inst_name = NULL, *filt_name = NULL;
-    char *tmp_args = NULL;
+    const char *inst_name = ((void*)0), *filt_name = ((void*)0);
+    char *tmp_args = ((void*)0);
     int ret, k;
 
     av_strlcpy(name2, name, sizeof(name2));
@@ -95,7 +95,7 @@ __attribute__((used)) static int create_filter(AVFilterContext **filt_ctx, AVFil
             av_log(log_ctx, AV_LOG_ERROR, " with args '%s'", args);
         av_log(log_ctx, AV_LOG_ERROR, "\n");
         avfilter_free(*filt_ctx);
-        *filt_ctx = NULL;
+        *filt_ctx = ((void*)0);
     }
 
     av_free(tmp_args);

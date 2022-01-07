@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_12__ {int /*<<< orphan*/  get_format; int /*<<< orphan*/  hw_device_ctx; } ;
+
+
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+struct TYPE_12__ {int get_format; int hw_device_ctx; } ;
 struct TYPE_11__ {TYPE_1__** streams; } ;
-struct TYPE_10__ {int /*<<< orphan*/  codecpar; } ;
-typedef  TYPE_1__ AVStream ;
-typedef  int /*<<< orphan*/  AVCodec ;
+struct TYPE_10__ {int codecpar; } ;
+typedef TYPE_1__ AVStream ;
+typedef int AVCodec ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AVMEDIA_TYPE_VIDEO ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  av_buffer_ref (int /*<<< orphan*/ ) ; 
- char* av_err2str (int) ; 
- int av_find_best_stream (TYPE_2__*,int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
- TYPE_3__* avcodec_alloc_context3 (int /*<<< orphan*/ *) ; 
- int avcodec_open2 (TYPE_3__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int avcodec_parameters_to_context (TYPE_3__*,int /*<<< orphan*/ ) ; 
- int avformat_find_stream_info (TYPE_2__*,int /*<<< orphan*/ *) ; 
- int avformat_open_input (TYPE_2__**,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- TYPE_3__* decoder_ctx ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  get_vaapi_format ; 
- int /*<<< orphan*/  hw_device_ctx ; 
- TYPE_2__* ifmt_ctx ; 
- int /*<<< orphan*/  stderr ; 
- size_t video_stream ; 
+
+ int AVERROR (int ) ;
+ int AVMEDIA_TYPE_VIDEO ;
+ int ENOMEM ;
+ int av_buffer_ref (int ) ;
+ char* av_err2str (int) ;
+ int av_find_best_stream (TYPE_2__*,int ,int,int,int **,int ) ;
+ TYPE_3__* avcodec_alloc_context3 (int *) ;
+ int avcodec_open2 (TYPE_3__*,int *,int *) ;
+ int avcodec_parameters_to_context (TYPE_3__*,int ) ;
+ int avformat_find_stream_info (TYPE_2__*,int *) ;
+ int avformat_open_input (TYPE_2__**,char const*,int *,int *) ;
+ TYPE_3__* decoder_ctx ;
+ int fprintf (int ,char*,...) ;
+ int get_vaapi_format ;
+ int hw_device_ctx ;
+ TYPE_2__* ifmt_ctx ;
+ int stderr ;
+ size_t video_stream ;
 
 __attribute__((used)) static int open_input_file(const char *filename)
 {
     int ret;
-    AVCodec *decoder = NULL;
-    AVStream *video = NULL;
+    AVCodec *decoder = ((void*)0);
+    AVStream *video = ((void*)0);
 
-    if ((ret = avformat_open_input(&ifmt_ctx, filename, NULL, NULL)) < 0) {
+    if ((ret = avformat_open_input(&ifmt_ctx, filename, ((void*)0), ((void*)0))) < 0) {
         fprintf(stderr, "Cannot open input file '%s', Error code: %s\n",
                 filename, av_err2str(ret));
         return ret;
     }
 
-    if ((ret = avformat_find_stream_info(ifmt_ctx, NULL)) < 0) {
+    if ((ret = avformat_find_stream_info(ifmt_ctx, ((void*)0))) < 0) {
         fprintf(stderr, "Cannot find input stream information. Error code: %s\n",
                 av_err2str(ret));
         return ret;
@@ -80,9 +80,9 @@ __attribute__((used)) static int open_input_file(const char *filename)
         fprintf(stderr, "A hardware device reference create failed.\n");
         return AVERROR(ENOMEM);
     }
-    decoder_ctx->get_format    = get_vaapi_format;
+    decoder_ctx->get_format = get_vaapi_format;
 
-    if ((ret = avcodec_open2(decoder_ctx, decoder, NULL)) < 0)
+    if ((ret = avcodec_open2(decoder_ctx, decoder, ((void*)0))) < 0)
         fprintf(stderr, "Failed to open codec for decoding. Error code: %s\n",
                 av_err2str(ret));
 

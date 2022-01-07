@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int len; char* base; } ;
-typedef  TYPE_1__ h2o_iovec_t ;
-typedef  int /*<<< orphan*/  alphanum ;
+typedef TYPE_1__ h2o_iovec_t ;
+typedef int alphanum ;
 
-/* Variables and functions */
- int h2o_rand () ; 
+
+ int h2o_rand () ;
 
 __attribute__((used)) static void gen_rand_string(h2o_iovec_t *s)
 {

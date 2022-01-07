@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  int64_t ;
-typedef  int /*<<< orphan*/  AV1SequenceParameters ;
 
-/* Variables and functions */
-#define  AV1_OBU_SEQUENCE_HEADER 128 
- int AVERROR_INVALIDDATA ; 
- int parse_obu_header (int /*<<< orphan*/  const*,int,int /*<<< orphan*/ *,int*,int*,int*,int*) ; 
- int parse_sequence_header (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint8_t ;
+typedef int int64_t ;
+typedef int AV1SequenceParameters ;
+
+
+
+ int AVERROR_INVALIDDATA ;
+ int parse_obu_header (int const*,int,int *,int*,int*,int*,int*) ;
+ int parse_sequence_header (int *,int const*,int ) ;
 
 int ff_av1_parse_seq_header(AV1SequenceParameters *seq, const uint8_t *buf, int size)
 {
@@ -35,7 +35,7 @@ int ff_av1_parse_seq_header(AV1SequenceParameters *seq, const uint8_t *buf, int 
             return len;
 
         switch (type) {
-        case AV1_OBU_SEQUENCE_HEADER:
+        case 128:
             if (!obu_size)
                 return AVERROR_INVALIDDATA;
 
@@ -44,7 +44,7 @@ int ff_av1_parse_seq_header(AV1SequenceParameters *seq, const uint8_t *buf, int 
             break;
         }
         size -= len;
-        buf  += len;
+        buf += len;
     }
 
     return AVERROR_INVALIDDATA;

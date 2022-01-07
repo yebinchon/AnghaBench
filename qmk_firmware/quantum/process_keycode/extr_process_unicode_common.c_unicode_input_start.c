@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int input_mode; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  KC_LALT ; 
- int /*<<< orphan*/  KC_PPLS ; 
- int /*<<< orphan*/  KC_U ; 
-#define  UC_LNX 131 
-#define  UC_OSX 130 
-#define  UC_WIN 129 
-#define  UC_WINC 128 
- int /*<<< orphan*/  UNICODE_KEY_LNX ; 
- int /*<<< orphan*/  UNICODE_KEY_OSX ; 
- int /*<<< orphan*/  UNICODE_KEY_WINC ; 
- int /*<<< orphan*/  UNICODE_TYPE_DELAY ; 
- int /*<<< orphan*/  clear_mods () ; 
- int /*<<< orphan*/  get_mods () ; 
- int /*<<< orphan*/  register_code (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tap_code (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tap_code16 (int /*<<< orphan*/ ) ; 
- TYPE_1__ unicode_config ; 
- int /*<<< orphan*/  unicode_saved_mods ; 
- int /*<<< orphan*/  wait_ms (int /*<<< orphan*/ ) ; 
+
+ int KC_LALT ;
+ int KC_PPLS ;
+ int KC_U ;
+
+
+
+
+ int UNICODE_KEY_LNX ;
+ int UNICODE_KEY_OSX ;
+ int UNICODE_KEY_WINC ;
+ int UNICODE_TYPE_DELAY ;
+ int clear_mods () ;
+ int get_mods () ;
+ int register_code (int ) ;
+ int tap_code (int ) ;
+ int tap_code16 (int ) ;
+ TYPE_1__ unicode_config ;
+ int unicode_saved_mods ;
+ int wait_ms (int ) ;
 
 __attribute__((weak)) void unicode_input_start(void) {
-    unicode_saved_mods = get_mods();  // Save current mods
-    clear_mods();                     // Unregister mods to start from a clean state
+    unicode_saved_mods = get_mods();
+    clear_mods();
 
     switch (unicode_config.input_mode) {
-        case UC_OSX:
+        case 130:
             register_code(UNICODE_KEY_OSX);
             break;
-        case UC_LNX:
+        case 131:
             tap_code16(UNICODE_KEY_LNX);
             break;
-        case UC_WIN:
+        case 129:
             register_code(KC_LALT);
             tap_code(KC_PPLS);
             break;
-        case UC_WINC:
+        case 128:
             tap_code(UNICODE_KEY_WINC);
             tap_code(KC_U);
             break;

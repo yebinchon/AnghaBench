@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {int /*<<< orphan*/  iPrevId; } ;
-struct TYPE_7__ {int bFreeList; char* pList; int nList; int /*<<< orphan*/  iDocid; } ;
+
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_10__ {int iPrevId; } ;
+struct TYPE_7__ {int bFreeList; char* pList; int nList; int iDocid; } ;
 struct TYPE_9__ {int nToken; int iDoclistToken; TYPE_1__ doclist; TYPE_2__* aToken; } ;
-struct TYPE_8__ {int /*<<< orphan*/ * pDeferred; } ;
-typedef  TYPE_2__ Fts3PhraseToken ;
-typedef  TYPE_3__ Fts3Phrase ;
-typedef  int /*<<< orphan*/  Fts3DeferredToken ;
-typedef  TYPE_4__ Fts3Cursor ;
+struct TYPE_8__ {int * pDeferred; } ;
+typedef TYPE_2__ Fts3PhraseToken ;
+typedef TYPE_3__ Fts3Phrase ;
+typedef int Fts3DeferredToken ;
+typedef TYPE_4__ Fts3Cursor ;
 
-/* Variables and functions */
- int SQLITE_NOMEM ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ fts3PoslistPhraseMerge (char**,int,int /*<<< orphan*/ ,int,char**,char**) ; 
- int sqlite3Fts3DeferredTokenList (int /*<<< orphan*/ *,char**,int*) ; 
- int /*<<< orphan*/  sqlite3_free (char*) ; 
- scalar_t__ sqlite3_malloc (int) ; 
+
+ int SQLITE_NOMEM ;
+ int SQLITE_OK ;
+ int assert (int) ;
+ scalar_t__ fts3PoslistPhraseMerge (char**,int,int ,int,char**,char**) ;
+ int sqlite3Fts3DeferredTokenList (int *,char**,int*) ;
+ int sqlite3_free (char*) ;
+ scalar_t__ sqlite3_malloc (int) ;
 
 __attribute__((used)) static int fts3EvalDeferredPhrase(Fts3Cursor *pCsr, Fts3Phrase *pPhrase){
-  int iToken;                     /* Used to iterate through phrase tokens */
-  char *aPoslist = 0;             /* Position list for deferred tokens */
-  int nPoslist = 0;               /* Number of bytes in aPoslist */
-  int iPrev = -1;                 /* Token number of previous deferred token */
+  int iToken;
+  char *aPoslist = 0;
+  int nPoslist = 0;
+  int iPrev = -1;
 
   assert( pPhrase->doclist.bFreeList==0 );
 
@@ -109,7 +109,7 @@ __attribute__((used)) static int fts3EvalDeferredPhrase(Fts3Cursor *pCsr, Fts3Ph
         sqlite3_free(aPoslist);
         return SQLITE_NOMEM;
       }
-      
+
       pPhrase->doclist.pList = aOut;
       if( fts3PoslistPhraseMerge(&aOut, nDistance, 0, 1, &p1, &p2) ){
         pPhrase->doclist.bFreeList = 1;

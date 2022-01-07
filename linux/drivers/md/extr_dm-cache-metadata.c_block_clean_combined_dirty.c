@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct dm_cache_metadata {int /*<<< orphan*/  root; int /*<<< orphan*/  info; } ;
-typedef  int /*<<< orphan*/  dm_oblock_t ;
-typedef  int /*<<< orphan*/  dm_cblock_t ;
-typedef  int /*<<< orphan*/  __le64 ;
 
-/* Variables and functions */
- unsigned int M_DIRTY ; 
- unsigned int M_VALID ; 
- int dm_array_get_value (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  from_cblock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  unpack_value (int /*<<< orphan*/ ,int /*<<< orphan*/ *,unsigned int*) ; 
+
+
+
+struct dm_cache_metadata {int root; int info; } ;
+typedef int dm_oblock_t ;
+typedef int dm_cblock_t ;
+typedef int __le64 ;
+
+
+ unsigned int M_DIRTY ;
+ unsigned int M_VALID ;
+ int dm_array_get_value (int *,int ,int ,int *) ;
+ int from_cblock (int ) ;
+ int unpack_value (int ,int *,unsigned int*) ;
 
 __attribute__((used)) static int block_clean_combined_dirty(struct dm_cache_metadata *cmd, dm_cblock_t b,
-				      bool *result)
+          bool *result)
 {
-	int r;
-	__le64 value;
-	dm_oblock_t ob;
-	unsigned flags;
+ int r;
+ __le64 value;
+ dm_oblock_t ob;
+ unsigned flags;
 
-	r = dm_array_get_value(&cmd->info, cmd->root, from_cblock(b), &value);
-	if (r)
-		return r;
+ r = dm_array_get_value(&cmd->info, cmd->root, from_cblock(b), &value);
+ if (r)
+  return r;
 
-	unpack_value(value, &ob, &flags);
-	*result = !((flags & M_VALID) && (flags & M_DIRTY));
+ unpack_value(value, &ob, &flags);
+ *result = !((flags & M_VALID) && (flags & M_DIRTY));
 
-	return 0;
+ return 0;
 }

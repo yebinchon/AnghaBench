@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UnitType ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOG_WARNING ; 
- int /*<<< orphan*/  assert (char const*) ; 
- int config_parse_strv (char const*,char const*,unsigned int,char const*,unsigned int,char const*,int,char const*,void*,void*) ; 
- int log_syntax (char const*,int /*<<< orphan*/ ,char const*,unsigned int,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  unit_name_to_type (char const*) ; 
- int /*<<< orphan*/  unit_type_may_alias (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  unit_type_to_string (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int UnitType ;
+
+
+ int LOG_WARNING ;
+ int assert (char const*) ;
+ int config_parse_strv (char const*,char const*,unsigned int,char const*,unsigned int,char const*,int,char const*,void*,void*) ;
+ int log_syntax (char const*,int ,char const*,unsigned int,int ,char*,int ) ;
+ int unit_name_to_type (char const*) ;
+ int unit_type_may_alias (int ) ;
+ int unit_type_to_string (int ) ;
 
 __attribute__((used)) static int config_parse_alias(
                 const char *unit,

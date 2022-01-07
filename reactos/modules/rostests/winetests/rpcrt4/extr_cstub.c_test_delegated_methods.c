@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  ITest1 ;
-typedef  int /*<<< orphan*/  IPSFactoryBuffer ;
-typedef  int HRESULT ;
-typedef  int /*<<< orphan*/  HANDLE ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  int /*<<< orphan*/  CLSID ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLSCTX_INPROC_SERVER ; 
- int /*<<< orphan*/  CLSCTX_LOCAL_SERVER ; 
- int /*<<< orphan*/  CLSID_test1 ; 
- int /*<<< orphan*/  CLSID_test_ps ; 
- int CoCreateInstance (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**) ; 
- int CoRegisterClassObject (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int CoRegisterPSClsid (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int CoRevokeClassObject (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CreateEventA (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  IID_IPSFactoryBuffer ; 
- int /*<<< orphan*/  IID_ITest1 ; 
- int ITest1_GetClassID (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ITest1_Release (int /*<<< orphan*/ *) ; 
- int ITest1_square (int /*<<< orphan*/ *,int) ; 
- int IsEqualGUID (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int NdrDllGetClassObject (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  REGCLS_MULTIPLEUSE ; 
- int S_OK ; 
- int /*<<< orphan*/  SetEvent (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  WaitForSingleObject (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  aProxyFileList ; 
- int /*<<< orphan*/  create_process (char*) ; 
- int /*<<< orphan*/  gPFactory ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int wine_dbgstr_guid (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int IUnknown ;
+typedef int ITest1 ;
+typedef int IPSFactoryBuffer ;
+typedef int HRESULT ;
+typedef int HANDLE ;
+typedef int DWORD ;
+typedef int CLSID ;
+
+
+ int CLSCTX_INPROC_SERVER ;
+ int CLSCTX_LOCAL_SERVER ;
+ int CLSID_test1 ;
+ int CLSID_test_ps ;
+ int CoCreateInstance (int *,int *,int ,int *,void**) ;
+ int CoRegisterClassObject (int *,int *,int ,int ,int *) ;
+ int CoRegisterPSClsid (int *,int *) ;
+ int CoRevokeClassObject (int ) ;
+ int CreateEventA (int *,int ,int ,char*) ;
+ int FALSE ;
+ int IID_IPSFactoryBuffer ;
+ int IID_ITest1 ;
+ int ITest1_GetClassID (int *,int *) ;
+ int ITest1_Release (int *) ;
+ int ITest1_square (int *,int) ;
+ int IsEqualGUID (int *,int *) ;
+ int NdrDllGetClassObject (int *,int *,void**,int *,int *,int *) ;
+ int REGCLS_MULTIPLEUSE ;
+ int S_OK ;
+ int SetEvent (int ) ;
+ int TRUE ;
+ int WaitForSingleObject (int ,int) ;
+ int aProxyFileList ;
+ int create_process (char*) ;
+ int gPFactory ;
+ int ok (int,char*,...) ;
+ int wine_dbgstr_guid (int *) ;
 
 __attribute__((used)) static void test_delegated_methods(void)
 {
@@ -57,8 +57,8 @@ __attribute__((used)) static void test_delegated_methods(void)
     HRESULT hr;
     int ret;
 
-    stop_event = CreateEventA(NULL, TRUE, FALSE, "wine_cstub_test_server_stop");
-    ready_event = CreateEventA(NULL, TRUE, FALSE, "wine_cstub_test_server_ready");
+    stop_event = CreateEventA(((void*)0), TRUE, FALSE, "wine_cstub_test_server_stop");
+    ready_event = CreateEventA(((void*)0), TRUE, FALSE, "wine_cstub_test_server_ready");
 
     process = create_process("server");
     ok(!WaitForSingleObject(ready_event, 1000), "wait failed\n");
@@ -74,7 +74,7 @@ __attribute__((used)) static void test_delegated_methods(void)
     hr = CoRegisterPSClsid(&IID_ITest1, &CLSID_test_ps);
     ok(hr == S_OK, "got %#x\n", hr);
 
-    hr = CoCreateInstance(&CLSID_test1, NULL, CLSCTX_LOCAL_SERVER, &IID_ITest1, (void **)&test_obj);
+    hr = CoCreateInstance(&CLSID_test1, ((void*)0), CLSCTX_LOCAL_SERVER, &IID_ITest1, (void **)&test_obj);
     ok(hr == S_OK, "got %#x\n", hr);
 
     ret = ITest1_square(test_obj, 3);

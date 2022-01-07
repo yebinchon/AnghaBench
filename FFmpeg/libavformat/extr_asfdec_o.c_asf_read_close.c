@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_5__ ;
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  avpkt; } ;
+
+
+typedef struct TYPE_11__ TYPE_5__ ;
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int avpkt; } ;
 struct TYPE_11__ {TYPE_1__ pkt; } ;
 struct TYPE_10__ {int nb_streams; TYPE_5__** asf_st; TYPE_2__* asf_sd; } ;
 struct TYPE_9__ {TYPE_4__* priv_data; } ;
-struct TYPE_8__ {int /*<<< orphan*/  asf_met; } ;
-typedef  TYPE_3__ AVFormatContext ;
-typedef  TYPE_4__ ASFContext ;
+struct TYPE_8__ {int asf_met; } ;
+typedef TYPE_3__ AVFormatContext ;
+typedef TYPE_4__ ASFContext ;
 
-/* Variables and functions */
- int ASF_MAX_STREAMS ; 
- int /*<<< orphan*/  av_dict_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  av_freep (TYPE_5__**) ; 
- int /*<<< orphan*/  av_packet_unref (int /*<<< orphan*/ *) ; 
+
+ int ASF_MAX_STREAMS ;
+ int av_dict_free (int *) ;
+ int av_freep (TYPE_5__**) ;
+ int av_packet_unref (int *) ;
 
 __attribute__((used)) static int asf_read_close(AVFormatContext *s)
 {

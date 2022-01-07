@@ -1,33 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  add_search_dir (char*) ; 
- int /*<<< orphan*/  free (char*) ; 
- char* strdup (char*) ; 
- char* strsep (char**,char*) ; 
+ int add_search_dir (char*) ;
+ int free (char*) ;
+ char* strdup (char*) ;
+ char* strsep (char**,char*) ;
 
 void
 add_search_path(char *path)
 {
-	register char	*cp, *dup;
+ register char *cp, *dup;
 
-	if (path == NULL)
-		return;
+ if (path == ((void*)0))
+  return;
 
-	/* Add search directories from `path' */
-	path = dup = strdup(path);
-	while ((cp = strsep(&path, ":")) != NULL)
-		add_search_dir(cp);
-	free(dup);
+
+ path = dup = strdup(path);
+ while ((cp = strsep(&path, ":")) != ((void*)0))
+  add_search_dir(cp);
+ free(dup);
 }

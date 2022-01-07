@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  target_val; scalar_t__ target_kaddr; int /*<<< orphan*/  lock; int /*<<< orphan*/  started_event; } ;
-typedef  TYPE_1__ mch2_thread_args_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  U64_MAX ; 
- int /*<<< orphan*/  svcExitThread () ; 
- int /*<<< orphan*/  svcSignalEvent (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svcWaitSynchronization (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  write_kaddr (scalar_t__,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int target_val; scalar_t__ target_kaddr; int lock; int started_event; } ;
+typedef TYPE_1__ mch2_thread_args_t ;
+
+
+ int U64_MAX ;
+ int svcExitThread () ;
+ int svcSignalEvent (int ) ;
+ int svcWaitSynchronization (int ,int ) ;
+ int write_kaddr (scalar_t__,int ) ;
 
 __attribute__((used)) static void target_thread_entry(mch2_thread_args_t* args)
 {

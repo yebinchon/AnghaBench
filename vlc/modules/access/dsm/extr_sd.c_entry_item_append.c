@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct entry_item {int /*<<< orphan*/ * p_item; int /*<<< orphan*/ * p_entry; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct entry_item {int * p_item; int * p_entry; } ;
 struct TYPE_5__ {TYPE_2__* p_sys; } ;
-typedef  TYPE_1__ services_discovery_t ;
-struct TYPE_6__ {int /*<<< orphan*/  entry_item_list; } ;
-typedef  TYPE_2__ services_discovery_sys_t ;
-typedef  int /*<<< orphan*/  netbios_ns_entry ;
-typedef  int /*<<< orphan*/  input_item_t ;
+typedef TYPE_1__ services_discovery_t ;
+struct TYPE_6__ {int entry_item_list; } ;
+typedef TYPE_2__ services_discovery_sys_t ;
+typedef int netbios_ns_entry ;
+typedef int input_item_t ;
 
-/* Variables and functions */
- struct entry_item* calloc (int,int) ; 
- int /*<<< orphan*/  input_item_Hold (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  services_discovery_AddItem (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_array_append_or_abort (int /*<<< orphan*/ *,struct entry_item*) ; 
+
+ struct entry_item* calloc (int,int) ;
+ int input_item_Hold (int *) ;
+ int services_discovery_AddItem (TYPE_1__*,int *) ;
+ int vlc_array_append_or_abort (int *,struct entry_item*) ;
 
 __attribute__((used)) static void entry_item_append( services_discovery_t *p_sd,
                                netbios_ns_entry *p_entry,

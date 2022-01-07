@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_7__ {int msgCount; TYPE_1__* msgList; } ;
-typedef  TYPE_2__ tagMsgList ;
+typedef TYPE_2__ tagMsgList ;
 struct TYPE_6__ {scalar_t__ DlgProc; scalar_t__ msg; int cmpflag; scalar_t__ wParam; scalar_t__ lParam; scalar_t__ result; } ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DumpMsgList (char*,TYPE_2__ const*) ; 
- int /*<<< orphan*/  FALSE ; 
- int MSGLST_CMP_LP ; 
- int MSGLST_CMP_RES ; 
- int MSGLST_CMP_WP ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  ok (int /*<<< orphan*/ ,char*,...) ; 
+
+ int DumpMsgList (char*,TYPE_2__ const*) ;
+ int FALSE ;
+ int MSGLST_CMP_LP ;
+ int MSGLST_CMP_RES ;
+ int MSGLST_CMP_WP ;
+ int TRUE ;
+ int ok (int ,char*,...) ;
 
 BOOL CmpMsgList(const tagMsgList *recvd,
                 const tagMsgList *expect)

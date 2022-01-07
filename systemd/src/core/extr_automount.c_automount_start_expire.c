@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_6__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ usec_t ;
+
+
+typedef struct TYPE_10__ TYPE_6__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef scalar_t__ usec_t ;
 struct TYPE_10__ {TYPE_1__* manager; } ;
 struct TYPE_9__ {int timeout_idle_usec; scalar_t__ expire_event_source; } ;
-struct TYPE_8__ {int /*<<< orphan*/  event; } ;
-typedef  TYPE_2__ Automount ;
+struct TYPE_8__ {int event; } ;
+typedef TYPE_2__ Automount ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLOCK_MONOTONIC ; 
- scalar_t__ MAX (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SD_EVENT_ONESHOT ; 
- TYPE_6__* UNIT (TYPE_2__*) ; 
- int /*<<< orphan*/  USEC_PER_SEC ; 
- int /*<<< orphan*/  assert (TYPE_2__*) ; 
- int /*<<< orphan*/  automount_dispatch_expire ; 
- scalar_t__ now (int /*<<< orphan*/ ) ; 
- int sd_event_add_time (int /*<<< orphan*/ ,scalar_t__*,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  sd_event_source_set_description (scalar_t__,char*) ; 
- int sd_event_source_set_enabled (scalar_t__,int /*<<< orphan*/ ) ; 
- int sd_event_source_set_time (scalar_t__,scalar_t__) ; 
+
+ int CLOCK_MONOTONIC ;
+ scalar_t__ MAX (int,int ) ;
+ int SD_EVENT_ONESHOT ;
+ TYPE_6__* UNIT (TYPE_2__*) ;
+ int USEC_PER_SEC ;
+ int assert (TYPE_2__*) ;
+ int automount_dispatch_expire ;
+ scalar_t__ now (int ) ;
+ int sd_event_add_time (int ,scalar_t__*,int ,scalar_t__,int ,int ,TYPE_2__*) ;
+ int sd_event_source_set_description (scalar_t__,char*) ;
+ int sd_event_source_set_enabled (scalar_t__,int ) ;
+ int sd_event_source_set_time (scalar_t__,scalar_t__) ;
 
 __attribute__((used)) static int automount_start_expire(Automount *a) {
         int r;

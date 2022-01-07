@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  dstream; int /*<<< orphan*/  cstreamHC; int /*<<< orphan*/  cstream; int /*<<< orphan*/  roundTrip; int /*<<< orphan*/  compressed; } ;
-typedef  TYPE_1__ state_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LZ4_freeStream (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LZ4_freeStreamDecode (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LZ4_freeStreamHC (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cursor_free (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int dstream; int cstreamHC; int cstream; int roundTrip; int compressed; } ;
+typedef TYPE_1__ state_t ;
+
+
+ int LZ4_freeStream (int ) ;
+ int LZ4_freeStreamDecode (int ) ;
+ int LZ4_freeStreamHC (int ) ;
+ int cursor_free (int ) ;
 
 void state_free(state_t state)
 {

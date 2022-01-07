@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  CanonicalFromStringResult ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CanonicalFromString_invalidFormat ; 
- int /*<<< orphan*/  CanonicalFromString_ok ; 
- int charToHex (char const) ; 
+
+
+
+typedef int CanonicalFromStringResult ;
+
+
+ int CanonicalFromString_invalidFormat ;
+ int CanonicalFromString_ok ;
+ int charToHex (char const) ;
 
 __attribute__((used)) static CanonicalFromStringResult canonicalFromString(unsigned char* dst,
                                                      size_t dstSize,

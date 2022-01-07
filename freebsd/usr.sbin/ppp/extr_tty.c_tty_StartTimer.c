@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {char* name; struct physical* arg; int /*<<< orphan*/  func; int /*<<< orphan*/  load; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_5__ {char* name; struct physical* arg; int func; int load; } ;
 struct ttydevice {TYPE_2__ Timer; } ;
-struct TYPE_4__ {int /*<<< orphan*/  name; } ;
-struct physical {TYPE_1__ link; int /*<<< orphan*/  handler; } ;
+struct TYPE_4__ {int name; } ;
+struct physical {TYPE_1__ link; int handler; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LogDEBUG ; 
- int /*<<< orphan*/  SECTICKS ; 
- struct ttydevice* device2tty (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  log_Printf (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  timer_Start (TYPE_2__*) ; 
- int /*<<< orphan*/  timer_Stop (TYPE_2__*) ; 
- int /*<<< orphan*/  tty_Timeout ; 
+
+ int LogDEBUG ;
+ int SECTICKS ;
+ struct ttydevice* device2tty (int ) ;
+ int log_Printf (int ,char*,int ,int ) ;
+ int timer_Start (TYPE_2__*) ;
+ int timer_Stop (TYPE_2__*) ;
+ int tty_Timeout ;
 
 __attribute__((used)) static void
 tty_StartTimer(struct physical *p)

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/ * p_array; } ;
+
+
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int * p_array; } ;
 struct TYPE_8__ {TYPE_2__ runs; } ;
 struct TYPE_6__ {scalar_t__ p_frame; } ;
-struct TYPE_9__ {unsigned int i_chunk_count; TYPE_3__ context; TYPE_1__ asfinfo; int /*<<< orphan*/ * p_sample_size; int /*<<< orphan*/  i_sample_size; int /*<<< orphan*/ * chunk; scalar_t__ p_es; int /*<<< orphan*/  fmt; } ;
-typedef  TYPE_4__ mp4_track_t ;
-typedef  int /*<<< orphan*/  es_out_t ;
+struct TYPE_9__ {unsigned int i_chunk_count; TYPE_3__ context; TYPE_1__ asfinfo; int * p_sample_size; int i_sample_size; int * chunk; scalar_t__ p_es; int fmt; } ;
+typedef TYPE_4__ mp4_track_t ;
+typedef int es_out_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DestroyChunk (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  block_ChainRelease (scalar_t__) ; 
- int /*<<< orphan*/  es_format_Clean (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  es_out_Del (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
+
+ int DestroyChunk (int *) ;
+ int block_ChainRelease (scalar_t__) ;
+ int es_format_Clean (int *) ;
+ int es_out_Del (int *,scalar_t__) ;
+ int free (int *) ;
 
 __attribute__((used)) static void MP4_TrackClean( es_out_t *out, mp4_track_t *p_track )
 {

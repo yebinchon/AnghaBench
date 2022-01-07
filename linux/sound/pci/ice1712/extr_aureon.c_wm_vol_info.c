@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct snd_kcontrol {int private_value; } ;
-struct TYPE_3__ {int /*<<< orphan*/  max; scalar_t__ min; } ;
+struct TYPE_3__ {int max; scalar_t__ min; } ;
 struct TYPE_4__ {TYPE_1__ integer; } ;
-struct snd_ctl_elem_info {int count; TYPE_2__ value; int /*<<< orphan*/  type; } ;
+struct snd_ctl_elem_info {int count; TYPE_2__ value; int type; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SNDRV_CTL_ELEM_TYPE_INTEGER ; 
- int /*<<< orphan*/  WM_VOL_MAX ; 
+
+ int SNDRV_CTL_ELEM_TYPE_INTEGER ;
+ int WM_VOL_MAX ;
 
 __attribute__((used)) static int wm_vol_info(struct snd_kcontrol *kcontrol, struct snd_ctl_elem_info *uinfo)
 {
-	int voices = kcontrol->private_value >> 8;
-	uinfo->type = SNDRV_CTL_ELEM_TYPE_INTEGER;
-	uinfo->count = voices;
-	uinfo->value.integer.min = 0;		/* mute (-101dB) */
-	uinfo->value.integer.max = WM_VOL_MAX;	/* 0dB */
-	return 0;
+ int voices = kcontrol->private_value >> 8;
+ uinfo->type = SNDRV_CTL_ELEM_TYPE_INTEGER;
+ uinfo->count = voices;
+ uinfo->value.integer.min = 0;
+ uinfo->value.integer.max = WM_VOL_MAX;
+ return 0;
 }

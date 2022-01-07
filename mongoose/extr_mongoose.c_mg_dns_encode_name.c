@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct mbuf {size_t len; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mbuf_append (struct mbuf*,...) ; 
- char* strchr (char const*,char) ; 
+
+ int mbuf_append (struct mbuf*,...) ;
+ char* strchr (char const*,char) ;
 
 int mg_dns_encode_name(struct mbuf *io, const char *name, size_t len) {
   const char *s;
@@ -22,15 +22,15 @@ int mg_dns_encode_name(struct mbuf *io, const char *name, size_t len) {
   size_t pos = io->len;
 
   do {
-    if ((s = strchr(name, '.')) == NULL) {
+    if ((s = strchr(name, '.')) == ((void*)0)) {
       s = name + len;
     }
 
     if (s - name > 127) {
-      return -1; /* TODO(mkm) cover */
+      return -1;
     }
-    n = s - name;           /* chunk length */
-    mbuf_append(io, &n, 1); /* send length */
+    n = s - name;
+    mbuf_append(io, &n, 1);
     mbuf_append(io, name, n);
 
     if (*s == '.') {
@@ -40,7 +40,7 @@ int mg_dns_encode_name(struct mbuf *io, const char *name, size_t len) {
     name += n;
     len -= n;
   } while (*s != '\0');
-  mbuf_append(io, "\0", 1); /* Mark end of host name */
+  mbuf_append(io, "\0", 1);
 
   return io->len - pos;
 }

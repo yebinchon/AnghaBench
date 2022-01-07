@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uv_pipe_t ;
+
+
+
+
+typedef int uv_pipe_t ;
 struct stat {unsigned int st_mode; } ;
 
-/* Variables and functions */
- unsigned int S_IRGRP ; 
- unsigned int S_IROTH ; 
- unsigned int S_IRUSR ; 
- unsigned int S_IWGRP ; 
- unsigned int S_IWOTH ; 
- unsigned int S_IWUSR ; 
- int UV_EBADF ; 
- int UV_EINVAL ; 
- int UV_ENOBUFS ; 
- int UV_ENOMEM ; 
- int UV_READABLE ; 
- int UV_WRITABLE ; 
- int UV__ERR (int) ; 
- int chmod (char*,unsigned int) ; 
- int errno ; 
- int stat (char*,struct stat*) ; 
- int /*<<< orphan*/  uv__free (char*) ; 
- char* uv__malloc (size_t) ; 
- int uv__stream_fd (int /*<<< orphan*/ *) ; 
- int uv_pipe_getsockname (int /*<<< orphan*/ *,char*,size_t*) ; 
+
+ unsigned int S_IRGRP ;
+ unsigned int S_IROTH ;
+ unsigned int S_IRUSR ;
+ unsigned int S_IWGRP ;
+ unsigned int S_IWOTH ;
+ unsigned int S_IWUSR ;
+ int UV_EBADF ;
+ int UV_EINVAL ;
+ int UV_ENOBUFS ;
+ int UV_ENOMEM ;
+ int UV_READABLE ;
+ int UV_WRITABLE ;
+ int UV__ERR (int) ;
+ int chmod (char*,unsigned int) ;
+ int errno ;
+ int stat (char*,struct stat*) ;
+ int uv__free (char*) ;
+ char* uv__malloc (size_t) ;
+ int uv__stream_fd (int *) ;
+ int uv_pipe_getsockname (int *,char*,size_t*) ;
 
 int uv_pipe_chmod(uv_pipe_t* handle, int mode) {
   unsigned desired_mode;
@@ -42,7 +42,7 @@ int uv_pipe_chmod(uv_pipe_t* handle, int mode) {
   size_t name_len;
   int r;
 
-  if (handle == NULL || uv__stream_fd(handle) == -1)
+  if (handle == ((void*)0) || uv__stream_fd(handle) == -1)
     return UV_EBADF;
 
   if (mode != UV_READABLE &&
@@ -50,14 +50,14 @@ int uv_pipe_chmod(uv_pipe_t* handle, int mode) {
       mode != (UV_WRITABLE | UV_READABLE))
     return UV_EINVAL;
 
-  /* Unfortunately fchmod does not work on all platforms, we will use chmod. */
+
   name_len = 0;
-  r = uv_pipe_getsockname(handle, NULL, &name_len);
+  r = uv_pipe_getsockname(handle, ((void*)0), &name_len);
   if (r != UV_ENOBUFS)
     return r;
 
   name_buffer = uv__malloc(name_len);
-  if (name_buffer == NULL)
+  if (name_buffer == ((void*)0))
     return UV_ENOMEM;
 
   r = uv_pipe_getsockname(handle, name_buffer, &name_len);
@@ -66,7 +66,7 @@ int uv_pipe_chmod(uv_pipe_t* handle, int mode) {
     return r;
   }
 
-  /* stat must be used as fstat has a bug on Darwin */
+
   if (stat(name_buffer, &pipe_stat) == -1) {
     uv__free(name_buffer);
     return -errno;
@@ -78,7 +78,7 @@ int uv_pipe_chmod(uv_pipe_t* handle, int mode) {
   if (mode & UV_WRITABLE)
     desired_mode |= S_IWUSR | S_IWGRP | S_IWOTH;
 
-  /* Exit early if pipe already has desired mode. */
+
   if ((pipe_stat.st_mode & desired_mode) == desired_mode) {
     uv__free(name_buffer);
     return 0;

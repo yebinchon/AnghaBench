@@ -1,30 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct transfer {unsigned int num; } ;
-typedef  int curl_infotype ;
-typedef  int /*<<< orphan*/  CURL ;
-
-/* Variables and functions */
-#define  CURLINFO_DATA_IN 134 
-#define  CURLINFO_DATA_OUT 133 
-#define  CURLINFO_HEADER_IN 132 
-#define  CURLINFO_HEADER_OUT 131 
-#define  CURLINFO_SSL_DATA_IN 130 
-#define  CURLINFO_SSL_DATA_OUT 129 
-#define  CURLINFO_TEXT 128 
- int /*<<< orphan*/  dump (char const*,unsigned int,unsigned char*,size_t,int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,unsigned int,char*) ; 
- int /*<<< orphan*/  stderr ; 
+typedef int curl_infotype ;
+typedef int CURL ;
+ int dump (char const*,unsigned int,unsigned char*,size_t,int) ;
+ int fprintf (int ,char*,unsigned int,char*) ;
+ int stderr ;
 
 __attribute__((used)) static
 int my_trace(CURL *handle, curl_infotype type,
@@ -34,31 +25,31 @@ int my_trace(CURL *handle, curl_infotype type,
   const char *text;
   struct transfer *t = (struct transfer *)userp;
   unsigned int num = t->num;
-  (void)handle; /* prevent compiler warning */
+  (void)handle;
 
   switch(type) {
-  case CURLINFO_TEXT:
+  case 128:
     fprintf(stderr, "== %u Info: %s", num, data);
-    /* FALLTHROUGH */
-  default: /* in case a new one is introduced to shock us */
+
+  default:
     return 0;
 
-  case CURLINFO_HEADER_OUT:
+  case 131:
     text = "=> Send header";
     break;
-  case CURLINFO_DATA_OUT:
+  case 133:
     text = "=> Send data";
     break;
-  case CURLINFO_SSL_DATA_OUT:
+  case 129:
     text = "=> Send SSL data";
     break;
-  case CURLINFO_HEADER_IN:
+  case 132:
     text = "<= Recv header";
     break;
-  case CURLINFO_DATA_IN:
+  case 134:
     text = "<= Recv data";
     break;
-  case CURLINFO_SSL_DATA_IN:
+  case 130:
     text = "<= Recv SSL data";
     break;
   }

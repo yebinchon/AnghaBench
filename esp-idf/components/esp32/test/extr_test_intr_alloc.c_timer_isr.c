@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  TIMER_0 ; 
- int /*<<< orphan*/  TIMER_1 ; 
- int /*<<< orphan*/  TIMER_GROUP_0 ; 
- int /*<<< orphan*/  TIMER_GROUP_1 ; 
- int /*<<< orphan*/ * count ; 
- int /*<<< orphan*/  timer_group_enable_alarm_in_isr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  timer_group_intr_clr_in_isr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int TIMER_0 ;
+ int TIMER_1 ;
+ int TIMER_GROUP_0 ;
+ int TIMER_GROUP_1 ;
+ int * count ;
+ int timer_group_enable_alarm_in_isr (int ,int ) ;
+ int timer_group_intr_clr_in_isr (int ,int ) ;
 
 __attribute__((used)) static void timer_isr(void *arg)
 {
@@ -40,5 +32,5 @@ __attribute__((used)) static void timer_isr(void *arg)
         timer_group_intr_clr_in_isr(TIMER_GROUP_1, TIMER_1);
         timer_group_enable_alarm_in_isr(TIMER_GROUP_1, TIMER_1);
     }
-//  ets_printf("int %d\n", timer_idx);
+
 }

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
-typedef  int uint16_t ;
+
+
+
+
+typedef scalar_t__ uint8_t ;
+typedef int uint16_t ;
 struct resource {int dummy; } ;
 
-/* Variables and functions */
- int sio_read (struct resource*,scalar_t__) ; 
+
+ int sio_read (struct resource*,scalar_t__) ;
 
 __attribute__((used)) static uint16_t
 sio_readw(struct resource* res, uint8_t reg)
 {
-	uint16_t v;
+ uint16_t v;
 
-	v = sio_read(res, reg);
-	v <<= 8;
-	v |= sio_read(res, reg + 1);
-	return (v);
+ v = sio_read(res, reg);
+ v <<= 8;
+ v |= sio_read(res, reg + 1);
+ return (v);
 }

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct hfsc_class {scalar_t__ level; struct Qdisc* qdisc; } ;
 struct Qdisc {int dummy; } ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static struct Qdisc *
 hfsc_class_leaf(struct Qdisc *sch, unsigned long arg)
 {
-	struct hfsc_class *cl = (struct hfsc_class *)arg;
+ struct hfsc_class *cl = (struct hfsc_class *)arg;
 
-	if (cl->level == 0)
-		return cl->qdisc;
+ if (cl->level == 0)
+  return cl->qdisc;
 
-	return NULL;
+ return ((void*)0);
 }

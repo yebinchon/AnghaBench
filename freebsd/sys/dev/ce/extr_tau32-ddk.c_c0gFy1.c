@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_34__   TYPE_9__ ;
-typedef  struct TYPE_33__   TYPE_8__ ;
-typedef  struct TYPE_32__   TYPE_7__ ;
-typedef  struct TYPE_31__   TYPE_6__ ;
-typedef  struct TYPE_30__   TYPE_5__ ;
-typedef  struct TYPE_29__   TYPE_4__ ;
-typedef  struct TYPE_28__   TYPE_3__ ;
-typedef  struct TYPE_27__   TYPE_2__ ;
-typedef  struct TYPE_26__   TYPE_1__ ;
-typedef  struct TYPE_25__   TYPE_15__ ;
-typedef  struct TYPE_24__   TYPE_14__ ;
-typedef  struct TYPE_23__   TYPE_13__ ;
-typedef  struct TYPE_22__   TYPE_12__ ;
-typedef  struct TYPE_21__   TYPE_11__ ;
-typedef  struct TYPE_20__   TYPE_10__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_34__ TYPE_9__ ;
+typedef struct TYPE_33__ TYPE_8__ ;
+typedef struct TYPE_32__ TYPE_7__ ;
+typedef struct TYPE_31__ TYPE_6__ ;
+typedef struct TYPE_30__ TYPE_5__ ;
+typedef struct TYPE_29__ TYPE_4__ ;
+typedef struct TYPE_28__ TYPE_3__ ;
+typedef struct TYPE_27__ TYPE_2__ ;
+typedef struct TYPE_26__ TYPE_1__ ;
+typedef struct TYPE_25__ TYPE_15__ ;
+typedef struct TYPE_24__ TYPE_14__ ;
+typedef struct TYPE_23__ TYPE_13__ ;
+typedef struct TYPE_22__ TYPE_12__ ;
+typedef struct TYPE_21__ TYPE_11__ ;
+typedef struct TYPE_20__ TYPE_10__ ;
+
+
 struct TYPE_30__ {TYPE_15__* pBSeu3; } ;
 struct TYPE_29__ {TYPE_15__* pBSeu3; } ;
-struct TYPE_22__ {int /*<<< orphan*/ * rGUtq3; TYPE_11__* ZKJvS1; } ;
+struct TYPE_22__ {int * rGUtq3; TYPE_11__* ZKJvS1; } ;
 struct TYPE_24__ {int* qs0N02; TYPE_8__* _jfrJ1; TYPE_7__* pnKue2; TYPE_5__ CUhqx4; TYPE_4__ Nlajt1; TYPE_13__* fV7o35; scalar_t__ Cga1V; TYPE_12__ Rc7LY4; } ;
-typedef  TYPE_14__ kWMzp1 ;
-typedef  int /*<<< orphan*/  inWLN1 ;
+typedef TYPE_14__ kWMzp1 ;
+typedef int inWLN1 ;
 struct TYPE_34__ {TYPE_15__* OXCDa4; } ;
 struct TYPE_33__ {TYPE_15__* pBSeu3; } ;
 struct TYPE_32__ {TYPE_15__* pBSeu3; } ;
@@ -42,14 +42,14 @@ struct TYPE_25__ {TYPE_9__ NpyOc1; TYPE_6__ woMv11; } ;
 struct TYPE_23__ {int YOy672; unsigned int P3rGX3; unsigned int Be1a54; unsigned int A1jmR4; unsigned int CvU4o2; int USKhR2; int JVax01; int _BCMS3; int YosKg1; int XPQnv1; int r_aQn; int o6C8s2; int ErtY2; int eg17p3; int GiK3J1; TYPE_3__ IBcfz; TYPE_2__ x2akp; scalar_t__ y8QlL; TYPE_1__ e6VgP3; scalar_t__ PGh3e4; } ;
 struct TYPE_20__ {int KJYtb1; int iGfEm1; } ;
 struct TYPE_21__ {TYPE_10__ V9ej93; } ;
-typedef  TYPE_15__ DCf0T2 ;
+typedef TYPE_15__ DCf0T2 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  KahAO3 ; 
- int /*<<< orphan*/  TifAa1 (TYPE_14__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WdFDP4 (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lN6oU2 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  rPhOt4 (TYPE_14__*,TYPE_15__*) ; 
+
+ int KahAO3 ;
+ int TifAa1 (TYPE_14__*,int ) ;
+ int WdFDP4 (int,int ,int ,int ,int,int ) ;
+ int lN6oU2 (int *) ;
+ int rPhOt4 (TYPE_14__*,TYPE_15__*) ;
 
 __attribute__((used)) static void
 c0gFy1(kWMzp1*J7Iki4,int mdbib4){int X3V8j4;inWLN1*e0wGb1;J7Iki4->

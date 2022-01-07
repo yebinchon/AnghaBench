@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct wl_display {int dummy; } ;
 struct vo_wayland_state {int display_fd; int* wakeup_pipe; struct wl_display* display; } ;
-struct vo {int /*<<< orphan*/  input_ctx; struct vo_wayland_state* wl; } ;
+struct vo {int input_ctx; struct vo_wayland_state* wl; } ;
 struct pollfd {int fd; int events; int revents; } ;
-typedef  int int64_t ;
+typedef int int64_t ;
 
-/* Variables and functions */
- int MPCLAMP (int,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  MP_FATAL (struct vo_wayland_state*,char*) ; 
- int /*<<< orphan*/  MP_KEY_CLOSE_WIN ; 
- int POLLERR ; 
- int POLLHUP ; 
- int POLLIN ; 
- int POLLNVAL ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  mp_flush_wakeup_pipe (int) ; 
- int /*<<< orphan*/  mp_input_put_key (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int mp_time_us () ; 
- int /*<<< orphan*/  poll (struct pollfd*,int,int) ; 
- int /*<<< orphan*/  wl_display_dispatch (struct wl_display*) ; 
- int /*<<< orphan*/  wl_display_dispatch_pending (struct wl_display*) ; 
- int /*<<< orphan*/  wl_display_flush (struct wl_display*) ; 
+
+ int MPCLAMP (int,int ,int) ;
+ int MP_FATAL (struct vo_wayland_state*,char*) ;
+ int MP_KEY_CLOSE_WIN ;
+ int POLLERR ;
+ int POLLHUP ;
+ int POLLIN ;
+ int POLLNVAL ;
+ int close (int) ;
+ int mp_flush_wakeup_pipe (int) ;
+ int mp_input_put_key (int ,int ) ;
+ int mp_time_us () ;
+ int poll (struct pollfd*,int,int) ;
+ int wl_display_dispatch (struct wl_display*) ;
+ int wl_display_dispatch_pending (struct wl_display*) ;
+ int wl_display_flush (struct wl_display*) ;
 
 void vo_wayland_wait_events(struct vo *vo, int64_t until_time_us)
 {
@@ -42,7 +42,7 @@ void vo_wayland_wait_events(struct vo *vo, int64_t until_time_us)
         return;
 
     struct pollfd fds[2] = {
-        {.fd = wl->display_fd,     .events = POLLIN },
+        {.fd = wl->display_fd, .events = POLLIN },
         {.fd = wl->wakeup_pipe[0], .events = POLLIN },
     };
 

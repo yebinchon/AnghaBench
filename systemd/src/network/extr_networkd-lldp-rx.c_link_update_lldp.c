@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int flags; int /*<<< orphan*/  lldp; } ;
-typedef  TYPE_1__ Link ;
 
-/* Variables and functions */
- int IFF_UP ; 
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int /*<<< orphan*/  log_link_debug (TYPE_1__*,char*) ; 
- int log_link_warning_errno (TYPE_1__*,int,char*) ; 
- int sd_lldp_start (int /*<<< orphan*/ ) ; 
- int sd_lldp_stop (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int flags; int lldp; } ;
+typedef TYPE_1__ Link ;
+
+
+ int IFF_UP ;
+ int assert (TYPE_1__*) ;
+ int log_link_debug (TYPE_1__*,char*) ;
+ int log_link_warning_errno (TYPE_1__*,int,char*) ;
+ int sd_lldp_start (int ) ;
+ int sd_lldp_stop (int ) ;
 
 int link_update_lldp(Link *link) {
         int r;

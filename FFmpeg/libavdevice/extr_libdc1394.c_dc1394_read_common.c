@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_5__ ;
-typedef  struct TYPE_15__   TYPE_4__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_16__ TYPE_5__ ;
+typedef struct TYPE_15__ TYPE_4__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
 struct dc1394_frame_rate {scalar_t__ frame_rate; } ;
 struct dc1394_frame_format {int width; int pix_fmt; int height; } ;
-typedef  enum AVPixelFormat { ____Placeholder_AVPixelFormat } AVPixelFormat ;
-struct TYPE_13__ {scalar_t__ frame_rate; int size; int /*<<< orphan*/  stream_index; scalar_t__ current_frame; int /*<<< orphan*/  framerate; int /*<<< orphan*/  video_size; int /*<<< orphan*/  pixel_format; } ;
-typedef  TYPE_2__ dc1394_data ;
+typedef enum AVPixelFormat { ____Placeholder_AVPixelFormat } AVPixelFormat ;
+struct TYPE_13__ {scalar_t__ frame_rate; int size; int stream_index; scalar_t__ current_frame; int framerate; int video_size; int pixel_format; } ;
+typedef TYPE_2__ dc1394_data ;
 struct TYPE_16__ {TYPE_2__* priv_data; } ;
 struct TYPE_15__ {scalar_t__ num; int den; } ;
-struct TYPE_14__ {TYPE_1__* codecpar; int /*<<< orphan*/  index; TYPE_4__ avg_frame_rate; } ;
-struct TYPE_12__ {int width; int height; int format; void* bit_rate; int /*<<< orphan*/  codec_id; int /*<<< orphan*/  codec_type; } ;
-typedef  TYPE_3__ AVStream ;
-typedef  TYPE_4__ AVRational ;
-typedef  TYPE_5__ AVFormatContext ;
+struct TYPE_14__ {TYPE_1__* codecpar; int index; TYPE_4__ avg_frame_rate; } ;
+struct TYPE_12__ {int width; int height; int format; void* bit_rate; int codec_id; int codec_type; } ;
+typedef TYPE_3__ AVStream ;
+typedef TYPE_4__ AVRational ;
+typedef TYPE_5__ AVFormatContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AVMEDIA_TYPE_VIDEO ; 
- int /*<<< orphan*/  AV_CODEC_ID_RAWVIDEO ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int AV_PIX_FMT_NONE ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  ENOMEM ; 
- int av_get_pix_fmt (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_get_pix_fmt_name (int) ; 
- int av_image_get_buffer_size (int,int,int,int) ; 
- int /*<<< orphan*/  av_log (TYPE_5__*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,...) ; 
- int av_parse_video_rate (TYPE_4__*,int /*<<< orphan*/ ) ; 
- int av_parse_video_size (int*,int*,int /*<<< orphan*/ ) ; 
- void* av_rescale (int,scalar_t__,int) ; 
- TYPE_3__* avformat_new_stream (TYPE_5__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  avpriv_set_pts_info (TYPE_3__*,int,int,int) ; 
- struct dc1394_frame_format* dc1394_frame_formats ; 
- struct dc1394_frame_rate* dc1394_frame_rates ; 
+
+ int AVERROR (int ) ;
+ int AVMEDIA_TYPE_VIDEO ;
+ int AV_CODEC_ID_RAWVIDEO ;
+ int AV_LOG_ERROR ;
+ int AV_PIX_FMT_NONE ;
+ int EINVAL ;
+ int ENOMEM ;
+ int av_get_pix_fmt (int ) ;
+ int av_get_pix_fmt_name (int) ;
+ int av_image_get_buffer_size (int,int,int,int) ;
+ int av_log (TYPE_5__*,int ,char*,int ,...) ;
+ int av_parse_video_rate (TYPE_4__*,int ) ;
+ int av_parse_video_size (int*,int*,int ) ;
+ void* av_rescale (int,scalar_t__,int) ;
+ TYPE_3__* avformat_new_stream (TYPE_5__*,int *) ;
+ int avpriv_set_pts_info (TYPE_3__*,int,int,int) ;
+ struct dc1394_frame_format* dc1394_frame_formats ;
+ struct dc1394_frame_rate* dc1394_frame_rates ;
 
 __attribute__((used)) static inline int dc1394_read_common(AVFormatContext *c,
                                      const struct dc1394_frame_format **select_fmt, const struct dc1394_frame_rate **select_fps)
@@ -91,8 +91,8 @@ __attribute__((used)) static inline int dc1394_read_common(AVFormatContext *c,
         goto out;
     }
 
-    /* create a video stream */
-    vst = avformat_new_stream(c, NULL);
+
+    vst = avformat_new_stream(c, ((void*)0));
     if (!vst) {
         ret = AVERROR(ENOMEM);
         goto out;

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct rewriteConfigState {int dummy; } ;
-typedef  int /*<<< orphan*/  soft ;
-typedef  int /*<<< orphan*/  sds ;
-typedef  int /*<<< orphan*/  hard ;
+typedef int soft ;
+typedef int sds ;
+typedef int hard ;
 struct TYPE_6__ {scalar_t__ hard_limit_bytes; scalar_t__ soft_limit_bytes; scalar_t__ soft_limit_seconds; } ;
 struct TYPE_5__ {TYPE_1__* client_obuf_limits; } ;
 struct TYPE_4__ {scalar_t__ hard_limit_bytes; scalar_t__ soft_limit_bytes; scalar_t__ soft_limit_seconds; } ;
 
-/* Variables and functions */
- int CLIENT_TYPE_COUNT ; 
- TYPE_3__* clientBufferLimitsDefaults ; 
- int /*<<< orphan*/  getClientTypeName (int) ; 
- int /*<<< orphan*/  rewriteConfigFormatMemory (char*,int,scalar_t__) ; 
- int /*<<< orphan*/  rewriteConfigRewriteLine (struct rewriteConfigState*,char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  sdscatprintf (int /*<<< orphan*/ ,char*,char*,int /*<<< orphan*/ ,char*,char*,long) ; 
- int /*<<< orphan*/  sdsempty () ; 
- TYPE_2__ server ; 
+
+ int CLIENT_TYPE_COUNT ;
+ TYPE_3__* clientBufferLimitsDefaults ;
+ int getClientTypeName (int) ;
+ int rewriteConfigFormatMemory (char*,int,scalar_t__) ;
+ int rewriteConfigRewriteLine (struct rewriteConfigState*,char*,int ,int) ;
+ int sdscatprintf (int ,char*,char*,int ,char*,char*,long) ;
+ int sdsempty () ;
+ TYPE_2__ server ;
 
 void rewriteConfigClientoutputbufferlimitOption(struct rewriteConfigState *state) {
     int j;

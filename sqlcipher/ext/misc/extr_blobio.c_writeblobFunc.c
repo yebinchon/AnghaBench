@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_value ;
-typedef  int /*<<< orphan*/  sqlite3_int64 ;
-typedef  int /*<<< orphan*/  sqlite3_context ;
-typedef  int /*<<< orphan*/  sqlite3_blob ;
-typedef  int /*<<< orphan*/  sqlite3 ;
 
-/* Variables and functions */
- scalar_t__ SQLITE_BLOB ; 
- int /*<<< orphan*/  sqlite3_blob_close (int /*<<< orphan*/ *) ; 
- int sqlite3_blob_open (int /*<<< orphan*/ *,char const*,char const*,char const*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ **) ; 
- int sqlite3_blob_write (int /*<<< orphan*/ *,unsigned char*,int,int) ; 
- int /*<<< orphan*/ * sqlite3_context_db_handle (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_result_error (int /*<<< orphan*/ *,char*,int) ; 
- scalar_t__ sqlite3_value_blob (int /*<<< orphan*/ *) ; 
- int sqlite3_value_bytes (int /*<<< orphan*/ *) ; 
- int sqlite3_value_int (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_value_int64 (int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3_value_text (int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3_value_type (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int sqlite3_value ;
+typedef int sqlite3_int64 ;
+typedef int sqlite3_context ;
+typedef int sqlite3_blob ;
+typedef int sqlite3 ;
+
+
+ scalar_t__ SQLITE_BLOB ;
+ int sqlite3_blob_close (int *) ;
+ int sqlite3_blob_open (int *,char const*,char const*,char const*,int ,int,int **) ;
+ int sqlite3_blob_write (int *,unsigned char*,int,int) ;
+ int * sqlite3_context_db_handle (int *) ;
+ int sqlite3_result_error (int *,char*,int) ;
+ scalar_t__ sqlite3_value_blob (int *) ;
+ int sqlite3_value_bytes (int *) ;
+ int sqlite3_value_int (int *) ;
+ int sqlite3_value_int64 (int *) ;
+ scalar_t__ sqlite3_value_text (int *) ;
+ scalar_t__ sqlite3_value_type (int *) ;
 
 __attribute__((used)) static void writeblobFunc(
   sqlite3_context *context,

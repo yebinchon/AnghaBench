@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct roundingData {scalar_t__ mode; int /*<<< orphan*/  exception; } ;
-typedef  scalar_t__ int8 ;
-typedef  int int32 ;
-typedef  int flag ;
-typedef  int bits64 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  float_flag_inexact ; 
- int /*<<< orphan*/  float_flag_invalid ; 
- scalar_t__ float_round_down ; 
- scalar_t__ float_round_nearest_even ; 
- scalar_t__ float_round_to_zero ; 
- scalar_t__ float_round_up ; 
+
+
+
+struct roundingData {scalar_t__ mode; int exception; } ;
+typedef scalar_t__ int8 ;
+typedef int int32 ;
+typedef int flag ;
+typedef int bits64 ;
+
+
+ int float_flag_inexact ;
+ int float_flag_invalid ;
+ scalar_t__ float_round_down ;
+ scalar_t__ float_round_nearest_even ;
+ scalar_t__ float_round_to_zero ;
+ scalar_t__ float_round_up ;
 
 __attribute__((used)) static int32 roundAndPackInt32( struct roundingData *roundData, flag zSign, bits64 absZ )
 {

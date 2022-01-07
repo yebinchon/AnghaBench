@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  TestDb ;
-typedef  int /*<<< orphan*/  Datasource ;
 
-/* Variables and functions */
- int TEST_CKSUM_BYTES ; 
- int /*<<< orphan*/  doLiveRecovery (char*,char*,int*) ; 
- int /*<<< orphan*/  setupDatabase1 (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int tdb_lsm_open (char*,char*,int,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  testBegin (int /*<<< orphan*/ *,int,int*) ; 
- int /*<<< orphan*/  testCaseNDot () ; 
- int /*<<< orphan*/  testCaseProgress (int,int const,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  testCksumDatabase (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  testClose (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  testCommit (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  testDatasourceFree (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  testWriteDatasourceRange (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int const,int const,int*) ; 
+
+
+
+typedef int TestDb ;
+typedef int Datasource ;
+
+
+ int TEST_CKSUM_BYTES ;
+ int doLiveRecovery (char*,char*,int*) ;
+ int setupDatabase1 (int *,int **) ;
+ int tdb_lsm_open (char*,char*,int,int **) ;
+ int testBegin (int *,int,int*) ;
+ int testCaseNDot () ;
+ int testCaseProgress (int,int const,int ,int*) ;
+ int testCksumDatabase (int *,char*) ;
+ int testClose (int **) ;
+ int testCommit (int *,int ,int*) ;
+ int testDatasourceFree (int *) ;
+ int testWriteDatasourceRange (int *,int *,int const,int const,int*) ;
 
 __attribute__((used)) static void doWriterCrash1(int *pRc){
   const int nWrite = 2000;

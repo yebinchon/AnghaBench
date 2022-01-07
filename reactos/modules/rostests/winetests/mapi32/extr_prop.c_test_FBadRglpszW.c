@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  char* LPWSTR ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- scalar_t__ FALSE ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  ok (int,char*) ; 
- scalar_t__ pFBadRglpszW (char**,int) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
+
+
+
+typedef char WCHAR ;
+typedef char* LPWSTR ;
+typedef scalar_t__ BOOL ;
+
+
+ scalar_t__ FALSE ;
+ scalar_t__ TRUE ;
+ int ok (int,char*) ;
+ scalar_t__ pFBadRglpszW (char**,int) ;
+ int win_skip (char*) ;
 
 __attribute__((used)) static void test_FBadRglpszW(void)
 {
@@ -33,10 +33,10 @@ __attribute__((used)) static void test_FBadRglpszW(void)
         return;
     }
 
-    bRet = pFBadRglpszW(NULL, 10);
+    bRet = pFBadRglpszW(((void*)0), 10);
     ok(bRet == TRUE, "FBadRglpszW(Null): expected TRUE, got FALSE\n");
 
-    lpStrs[0] = lpStrs[1] = lpStrs[2] = lpStrs[3] = NULL;
+    lpStrs[0] = lpStrs[1] = lpStrs[2] = lpStrs[3] = ((void*)0);
     bRet = pFBadRglpszW(lpStrs, 4);
     ok(bRet == TRUE, "FBadRglpszW(Nulls): expected TRUE, got FALSE\n");
 

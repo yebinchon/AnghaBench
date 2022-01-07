@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_11__ {int /*<<< orphan*/  size; int /*<<< orphan*/  data; } ;
-typedef  TYPE_2__ ucvector ;
+
+
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+struct TYPE_11__ {int size; int data; } ;
+typedef TYPE_2__ ucvector ;
 struct TYPE_10__ {scalar_t__ colortype; } ;
 struct TYPE_12__ {int background_r; int background_g; int background_b; TYPE_1__ color; } ;
-typedef  TYPE_3__ LodePNGInfo ;
+typedef TYPE_3__ LodePNGInfo ;
 
-/* Variables and functions */
- scalar_t__ LCT_GREY ; 
- scalar_t__ LCT_GREY_ALPHA ; 
- scalar_t__ LCT_PALETTE ; 
- scalar_t__ LCT_RGB ; 
- scalar_t__ LCT_RGBA ; 
- unsigned int addChunk (TYPE_2__*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ucvector_cleanup (TYPE_2__*) ; 
- int /*<<< orphan*/  ucvector_init (TYPE_2__*) ; 
- int /*<<< orphan*/  ucvector_push_back (TYPE_2__*,unsigned char) ; 
+
+ scalar_t__ LCT_GREY ;
+ scalar_t__ LCT_GREY_ALPHA ;
+ scalar_t__ LCT_PALETTE ;
+ scalar_t__ LCT_RGB ;
+ scalar_t__ LCT_RGBA ;
+ unsigned int addChunk (TYPE_2__*,char*,int ,int ) ;
+ int ucvector_cleanup (TYPE_2__*) ;
+ int ucvector_init (TYPE_2__*) ;
+ int ucvector_push_back (TYPE_2__*,unsigned char) ;
 
 __attribute__((used)) static unsigned addChunk_bKGD(ucvector* out, const LodePNGInfo* info)
 {
@@ -51,7 +51,7 @@ __attribute__((used)) static unsigned addChunk_bKGD(ucvector* out, const LodePNG
   }
   else if(info->color.colortype == LCT_PALETTE)
   {
-    ucvector_push_back(&bKGD, (unsigned char)(info->background_r % 256)); /*palette index*/
+    ucvector_push_back(&bKGD, (unsigned char)(info->background_r % 256));
   }
 
   error = addChunk(out, "bKGD", bKGD.data, bKGD.size);

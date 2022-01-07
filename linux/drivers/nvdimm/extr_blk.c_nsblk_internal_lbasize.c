@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
-struct nd_namespace_blk {int /*<<< orphan*/  lbasize; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INT_LBASIZE_ALIGNMENT ; 
- int /*<<< orphan*/  roundup (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int u32 ;
+struct nd_namespace_blk {int lbasize; } ;
+
+
+ int INT_LBASIZE_ALIGNMENT ;
+ int roundup (int ,int ) ;
 
 __attribute__((used)) static u32 nsblk_internal_lbasize(struct nd_namespace_blk *nsblk)
 {
-	return roundup(nsblk->lbasize, INT_LBASIZE_ALIGNMENT);
+ return roundup(nsblk->lbasize, INT_LBASIZE_ALIGNMENT);
 }

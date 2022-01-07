@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
 struct TYPE_5__ {size_t props_len; scalar_t__* props; int props_size; TYPE_1__* plugin_host; } ;
-struct TYPE_4__ {int /*<<< orphan*/ * disp; } ;
-typedef  int /*<<< orphan*/  IDispatch ;
-typedef  TYPE_2__ HTMLPluginContainer ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  size_t DWORD ;
-typedef  scalar_t__ DISPID ;
+struct TYPE_4__ {int * disp; } ;
+typedef int IDispatch ;
+typedef TYPE_2__ HTMLPluginContainer ;
+typedef int HRESULT ;
+typedef size_t DWORD ;
+typedef scalar_t__ DISPID ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DISP_E_UNKNOWNNAME ; 
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IDispatch_GetIDsOfNames (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **,int,int /*<<< orphan*/ ,scalar_t__*) ; 
- int /*<<< orphan*/  IID_NULL ; 
- scalar_t__ MSHTML_DISPID_CUSTOM_MIN ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WARN (char*) ; 
- int /*<<< orphan*/  debugstr_w (int /*<<< orphan*/ *) ; 
- scalar_t__* heap_alloc (int) ; 
- scalar_t__* heap_realloc (scalar_t__*,int) ; 
+
+ int DISP_E_UNKNOWNNAME ;
+ int E_OUTOFMEMORY ;
+ scalar_t__ FAILED (int ) ;
+ int IDispatch_GetIDsOfNames (int *,int *,int **,int,int ,scalar_t__*) ;
+ int IID_NULL ;
+ scalar_t__ MSHTML_DISPID_CUSTOM_MIN ;
+ int S_OK ;
+ int TRACE (char*,int ) ;
+ int WARN (char*) ;
+ int debugstr_w (int *) ;
+ scalar_t__* heap_alloc (int) ;
+ scalar_t__* heap_realloc (scalar_t__*,int) ;
 
 HRESULT get_plugin_dispid(HTMLPluginContainer *plugin_container, WCHAR *name, DISPID *ret)
 {

@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {char* data; } ;
-typedef  TYPE_1__ StringInfoData ;
+typedef TYPE_1__ StringInfoData ;
 
-/* Variables and functions */
- int /*<<< orphan*/  appendStringInfo (TYPE_1__*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  appendStringInfoString (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  initStringInfo (TYPE_1__*) ; 
- int /*<<< orphan*/  map_sql_identifier_to_xml_name (char const*,int,int) ; 
+
+ int appendStringInfo (TYPE_1__*,char*,int ) ;
+ int appendStringInfoString (TYPE_1__*,int ) ;
+ int initStringInfo (TYPE_1__*) ;
+ int map_sql_identifier_to_xml_name (char const*,int,int) ;
 
 __attribute__((used)) static char *
 map_multipart_sql_identifier_to_xml_name(const char *a, const char *b, const char *c, const char *d)
 {
-	StringInfoData result;
+ StringInfoData result;
 
-	initStringInfo(&result);
+ initStringInfo(&result);
 
-	if (a)
-		appendStringInfoString(&result,
-							   map_sql_identifier_to_xml_name(a, true, true));
-	if (b)
-		appendStringInfo(&result, ".%s",
-						 map_sql_identifier_to_xml_name(b, true, true));
-	if (c)
-		appendStringInfo(&result, ".%s",
-						 map_sql_identifier_to_xml_name(c, true, true));
-	if (d)
-		appendStringInfo(&result, ".%s",
-						 map_sql_identifier_to_xml_name(d, true, true));
+ if (a)
+  appendStringInfoString(&result,
+          map_sql_identifier_to_xml_name(a, 1, 1));
+ if (b)
+  appendStringInfo(&result, ".%s",
+       map_sql_identifier_to_xml_name(b, 1, 1));
+ if (c)
+  appendStringInfo(&result, ".%s",
+       map_sql_identifier_to_xml_name(c, 1, 1));
+ if (d)
+  appendStringInfo(&result, ".%s",
+       map_sql_identifier_to_xml_name(d, 1, 1));
 
-	return result.data;
+ return result.data;
 }

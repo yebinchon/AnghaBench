@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  enum frontend_powerstate { ____Placeholder_frontend_powerstate } frontend_powerstate ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef enum frontend_powerstate { ____Placeholder_frontend_powerstate } frontend_powerstate ;
 struct TYPE_3__ {int BatteryFlag; int ACLineStatus; scalar_t__ BatteryLifeTime; scalar_t__ BatteryLifePercent; } ;
-typedef  TYPE_1__ SYSTEM_POWER_STATUS ;
+typedef TYPE_1__ SYSTEM_POWER_STATUS ;
 
-/* Variables and functions */
- int FRONTEND_POWERSTATE_CHARGED ; 
- int FRONTEND_POWERSTATE_CHARGING ; 
- int FRONTEND_POWERSTATE_NONE ; 
- int FRONTEND_POWERSTATE_NO_SOURCE ; 
- int FRONTEND_POWERSTATE_ON_POWER_SOURCE ; 
- int /*<<< orphan*/  GetSystemPowerStatus (TYPE_1__*) ; 
+
+ int FRONTEND_POWERSTATE_CHARGED ;
+ int FRONTEND_POWERSTATE_CHARGING ;
+ int FRONTEND_POWERSTATE_NONE ;
+ int FRONTEND_POWERSTATE_NO_SOURCE ;
+ int FRONTEND_POWERSTATE_ON_POWER_SOURCE ;
+ int GetSystemPowerStatus (TYPE_1__*) ;
 
 enum frontend_powerstate frontend_win32_get_powerstate(int *seconds, int *percent)
 {
@@ -42,13 +42,13 @@ enum frontend_powerstate frontend_win32_get_powerstate(int *seconds, int *percen
    else
       ret = FRONTEND_POWERSTATE_ON_POWER_SOURCE;
 
-   *percent  = (int)status.BatteryLifePercent;
-   *seconds  = (int)status.BatteryLifeTime;
+   *percent = (int)status.BatteryLifePercent;
+   *seconds = (int)status.BatteryLifeTime;
 
-#ifdef _WIN32
-   if (*percent == 255)
-      *percent = 0;
-#endif
+
+
+
+
 
    return ret;
 }

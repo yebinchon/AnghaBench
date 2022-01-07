@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  pdf_obj ;
-typedef  int /*<<< orphan*/  pdf_document ;
-typedef  int /*<<< orphan*/  fz_image ;
-typedef  int /*<<< orphan*/  fz_context ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fz_drop_image_imp ; 
- int /*<<< orphan*/  fz_image_size (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * pdf_find_item (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * pdf_load_image_imp (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pdf_store_item (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int pdf_obj ;
+typedef int pdf_document ;
+typedef int fz_image ;
+typedef int fz_context ;
+
+
+ int fz_drop_image_imp ;
+ int fz_image_size (int *,int *) ;
+ int * pdf_find_item (int *,int ,int *) ;
+ int * pdf_load_image_imp (int *,int *,int *,int *,int *,int ) ;
+ int pdf_store_item (int *,int *,int *,int ) ;
 
 fz_image *
 pdf_load_image(fz_context *ctx, pdf_document *doc, pdf_obj *dict)
 {
-	fz_image *image;
+ fz_image *image;
 
-	if ((image = pdf_find_item(ctx, fz_drop_image_imp, dict)) != NULL)
-		return image;
+ if ((image = pdf_find_item(ctx, fz_drop_image_imp, dict)) != ((void*)0))
+  return image;
 
-	image = pdf_load_image_imp(ctx, doc, NULL, dict, NULL, 0);
-	pdf_store_item(ctx, dict, image, fz_image_size(ctx, image));
-	return image;
+ image = pdf_load_image_imp(ctx, doc, ((void*)0), dict, ((void*)0), 0);
+ pdf_store_item(ctx, dict, image, fz_image_size(ctx, image));
+ return image;
 }

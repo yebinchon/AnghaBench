@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct video_viewport {int /*<<< orphan*/  full_height; int /*<<< orphan*/  full_width; } ;
-struct TYPE_6__ {void* y; void* x; int /*<<< orphan*/  member_0; } ;
-typedef  TYPE_1__ VPADTouchData ;
-struct TYPE_7__ {int /*<<< orphan*/  tpNormal; } ;
-typedef  TYPE_2__ VPADStatus ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PAD_GAMEPAD ; 
- int /*<<< orphan*/  VPADGetTPCalibratedPoint (int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ *) ; 
- void* scale_touchpad (int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct video_viewport {int full_height; int full_width; } ;
+struct TYPE_6__ {void* y; void* x; int member_0; } ;
+typedef TYPE_1__ VPADTouchData ;
+struct TYPE_7__ {int tpNormal; } ;
+typedef TYPE_2__ VPADStatus ;
+
+
+ int PAD_GAMEPAD ;
+ int VPADGetTPCalibratedPoint (int ,TYPE_1__*,int *) ;
+ void* scale_touchpad (int,int,int ,int ,void*) ;
 
 __attribute__((used)) static void get_calibrated_point(VPADTouchData *point, struct video_viewport *viewport, VPADStatus *vpad)
 {

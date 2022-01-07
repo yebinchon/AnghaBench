@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint16_t ;
-struct TYPE_9__ {int flags; int /*<<< orphan*/  name; TYPE_1__* comp; } ;
-struct TYPE_8__ {int srcFormat; int dstFormat; int /*<<< orphan*/  srcW; } ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint16_t ;
+struct TYPE_9__ {int flags; int name; TYPE_1__* comp; } ;
+struct TYPE_8__ {int srcFormat; int dstFormat; int srcW; } ;
 struct TYPE_7__ {int depth; } ;
-typedef  TYPE_2__ SwsContext ;
-typedef  TYPE_3__ AVPixFmtDescriptor ;
+typedef TYPE_2__ SwsContext ;
+typedef TYPE_3__ AVPixFmtDescriptor ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_LOG_ERROR ; 
-#define  AV_PIX_FMT_BGR48BE 135 
-#define  AV_PIX_FMT_BGR48LE 134 
-#define  AV_PIX_FMT_BGRA64BE 133 
-#define  AV_PIX_FMT_BGRA64LE 132 
- int AV_PIX_FMT_FLAG_ALPHA ; 
- int AV_PIX_FMT_FLAG_BE ; 
- int AV_PIX_FMT_FLAG_PLANAR ; 
- int AV_PIX_FMT_FLAG_RGB ; 
-#define  AV_PIX_FMT_RGB48BE 131 
-#define  AV_PIX_FMT_RGB48LE 130 
-#define  AV_PIX_FMT_RGBA64BE 129 
-#define  AV_PIX_FMT_RGBA64LE 128 
- scalar_t__ HAVE_BIGENDIAN ; 
- int /*<<< orphan*/  av_log (TYPE_2__*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_3__* av_pix_fmt_desc_get (int) ; 
- int /*<<< orphan*/  packed16togbra16 (int /*<<< orphan*/  const*,int,int /*<<< orphan*/ **,int*,int,int,int,int,int /*<<< orphan*/ ) ; 
+
+ int AV_LOG_ERROR ;
+
+
+
+
+ int AV_PIX_FMT_FLAG_ALPHA ;
+ int AV_PIX_FMT_FLAG_BE ;
+ int AV_PIX_FMT_FLAG_PLANAR ;
+ int AV_PIX_FMT_FLAG_RGB ;
+
+
+
+
+ scalar_t__ HAVE_BIGENDIAN ;
+ int av_log (TYPE_2__*,int ,char*,int ,int ) ;
+ TYPE_3__* av_pix_fmt_desc_get (int) ;
+ int packed16togbra16 (int const*,int,int **,int*,int,int,int,int,int ) ;
 
 __attribute__((used)) static int Rgb16ToPlanarRgb16Wrapper(SwsContext *c, const uint8_t *src[],
                                      int srcStride[], int srcSliceY, int srcSliceH,
@@ -56,10 +56,10 @@ __attribute__((used)) static int Rgb16ToPlanarRgb16Wrapper(SwsContext *c, const 
     int i;
 
     if ( HAVE_BIGENDIAN && !(src_format->flags & AV_PIX_FMT_FLAG_BE) ||
-        !HAVE_BIGENDIAN &&   src_format->flags & AV_PIX_FMT_FLAG_BE)
+        !HAVE_BIGENDIAN && src_format->flags & AV_PIX_FMT_FLAG_BE)
         swap++;
     if ( HAVE_BIGENDIAN && !(dst_format->flags & AV_PIX_FMT_FLAG_BE) ||
-        !HAVE_BIGENDIAN &&   dst_format->flags & AV_PIX_FMT_FLAG_BE)
+        !HAVE_BIGENDIAN && dst_format->flags & AV_PIX_FMT_FLAG_BE)
         swap += 2;
 
     if ((dst_format->flags & (AV_PIX_FMT_FLAG_PLANAR | AV_PIX_FMT_FLAG_RGB)) !=
@@ -75,18 +75,18 @@ __attribute__((used)) static int Rgb16ToPlanarRgb16Wrapper(SwsContext *c, const 
     }
 
     switch (c->srcFormat) {
-    case AV_PIX_FMT_RGB48LE:
-    case AV_PIX_FMT_RGB48BE:
-    case AV_PIX_FMT_RGBA64LE:
-    case AV_PIX_FMT_RGBA64BE:
+    case 130:
+    case 131:
+    case 128:
+    case 129:
         packed16togbra16(src[0], srcStride[0],
                          dst2013, stride2013, srcSliceH, alpha, swap,
                          16 - bpc, c->srcW);
         break;
-    case AV_PIX_FMT_BGR48LE:
-    case AV_PIX_FMT_BGR48BE:
-    case AV_PIX_FMT_BGRA64LE:
-    case AV_PIX_FMT_BGRA64BE:
+    case 134:
+    case 135:
+    case 132:
+    case 133:
         packed16togbra16(src[0], srcStride[0],
                          dst1023, stride1023, srcSliceH, alpha, swap,
                          16 - bpc, c->srcW);

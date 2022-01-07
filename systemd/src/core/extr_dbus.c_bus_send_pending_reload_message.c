@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {scalar_t__ pending_reload_message; } ;
-typedef  TYPE_1__ Manager ;
+typedef TYPE_1__ Manager ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int /*<<< orphan*/  log_warning_errno (int,char*) ; 
- scalar_t__ sd_bus_message_unref (scalar_t__) ; 
- int sd_bus_send (int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ *) ; 
+
+ int assert (TYPE_1__*) ;
+ int log_warning_errno (int,char*) ;
+ scalar_t__ sd_bus_message_unref (scalar_t__) ;
+ int sd_bus_send (int *,scalar_t__,int *) ;
 
 int bus_send_pending_reload_message(Manager *m) {
         int r;
@@ -28,10 +28,10 @@ int bus_send_pending_reload_message(Manager *m) {
         if (!m->pending_reload_message)
                 return 0;
 
-        /* If we cannot get rid of this message we won't dispatch any D-Bus messages, so that we won't end up wanting
-         * to queue another message. */
 
-        r = sd_bus_send(NULL, m->pending_reload_message, NULL);
+
+
+        r = sd_bus_send(((void*)0), m->pending_reload_message, ((void*)0));
         if (r < 0)
                 log_warning_errno(r, "Failed to send queued message, ignoring: %m");
 

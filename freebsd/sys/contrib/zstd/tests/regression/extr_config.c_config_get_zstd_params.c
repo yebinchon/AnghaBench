@@ -1,48 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_6__ ;
-typedef  struct TYPE_15__   TYPE_5__ ;
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64_t ;
+
+
+typedef struct TYPE_16__ TYPE_6__ ;
+typedef struct TYPE_15__ TYPE_5__ ;
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef int uint64_t ;
 struct TYPE_14__ {size_t size; TYPE_1__* data; } ;
-typedef  TYPE_4__ param_values_t ;
+typedef TYPE_4__ param_values_t ;
 struct TYPE_15__ {scalar_t__ no_pledged_src_size; TYPE_4__ param_values; } ;
-typedef  TYPE_5__ config_t ;
-typedef  int /*<<< orphan*/  ZSTD_strategy ;
-struct TYPE_13__ {unsigned int windowLog; unsigned int chainLog; unsigned int hashLog; unsigned int searchLog; unsigned int minMatch; unsigned int targetLength; int /*<<< orphan*/  strategy; } ;
+typedef TYPE_5__ config_t ;
+typedef int ZSTD_strategy ;
+struct TYPE_13__ {unsigned int windowLog; unsigned int chainLog; unsigned int hashLog; unsigned int searchLog; unsigned int minMatch; unsigned int targetLength; int strategy; } ;
 struct TYPE_12__ {unsigned int contentSizeFlag; unsigned int checksumFlag; int noDictIDFlag; } ;
 struct TYPE_16__ {TYPE_3__ cParams; TYPE_2__ fParams; } ;
-typedef  TYPE_6__ ZSTD_parameters ;
+typedef TYPE_6__ ZSTD_parameters ;
 struct TYPE_11__ {unsigned int value; int param; } ;
 
-/* Variables and functions */
- int CONFIG_NO_LEVEL ; 
- int /*<<< orphan*/  ZSTD_CONTENTSIZE_UNKNOWN ; 
-#define  ZSTD_c_chainLog 137 
-#define  ZSTD_c_checksumFlag 136 
-#define  ZSTD_c_contentSizeFlag 135 
-#define  ZSTD_c_dictIDFlag 134 
-#define  ZSTD_c_hashLog 133 
-#define  ZSTD_c_minMatch 132 
-#define  ZSTD_c_searchLog 131 
-#define  ZSTD_c_strategy 130 
-#define  ZSTD_c_targetLength 129 
-#define  ZSTD_c_windowLog 128 
- TYPE_6__ ZSTD_getParams (int,int /*<<< orphan*/ ,size_t) ; 
- int config_get_level (TYPE_5__ const*) ; 
+
+ int CONFIG_NO_LEVEL ;
+ int ZSTD_CONTENTSIZE_UNKNOWN ;
+ TYPE_6__ ZSTD_getParams (int,int ,size_t) ;
+ int config_get_level (TYPE_5__ const*) ;
 
 ZSTD_parameters config_get_zstd_params(
     config_t const* config,
@@ -61,34 +51,34 @@ ZSTD_parameters config_get_zstd_params(
     for (size_t i = 0; i < params.size; ++i) {
         unsigned const value = params.data[i].value;
         switch (params.data[i].param) {
-            case ZSTD_c_contentSizeFlag:
+            case 135:
                 zparams.fParams.contentSizeFlag = value;
                 break;
-            case ZSTD_c_checksumFlag:
+            case 136:
                 zparams.fParams.checksumFlag = value;
                 break;
-            case ZSTD_c_dictIDFlag:
+            case 134:
                 zparams.fParams.noDictIDFlag = !value;
                 break;
-            case ZSTD_c_windowLog:
+            case 128:
                 zparams.cParams.windowLog = value;
                 break;
-            case ZSTD_c_chainLog:
+            case 137:
                 zparams.cParams.chainLog = value;
                 break;
-            case ZSTD_c_hashLog:
+            case 133:
                 zparams.cParams.hashLog = value;
                 break;
-            case ZSTD_c_searchLog:
+            case 131:
                 zparams.cParams.searchLog = value;
                 break;
-            case ZSTD_c_minMatch:
+            case 132:
                 zparams.cParams.minMatch = value;
                 break;
-            case ZSTD_c_targetLength:
+            case 129:
                 zparams.cParams.targetLength = value;
                 break;
-            case ZSTD_c_strategy:
+            case 130:
                 zparams.cParams.strategy = (ZSTD_strategy)value;
                 break;
             default:

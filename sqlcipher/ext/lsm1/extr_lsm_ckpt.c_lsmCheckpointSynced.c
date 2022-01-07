@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-typedef  int u32 ;
-struct TYPE_5__ {TYPE_1__* pShmhdr; int /*<<< orphan*/  pEnv; int /*<<< orphan*/  pFS; } ;
-typedef  TYPE_2__ lsm_db ;
-typedef  int i64 ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int u8 ;
+typedef int u32 ;
+struct TYPE_5__ {TYPE_1__* pShmhdr; int pEnv; int pFS; } ;
+typedef TYPE_2__ lsm_db ;
+typedef int i64 ;
 struct TYPE_4__ {int iMetaPage; } ;
-typedef  int /*<<< orphan*/  MetaPage ;
+typedef int MetaPage ;
 
-/* Variables and functions */
- int CKPT_HDR_NCKPT ; 
- size_t CKPT_HDR_NWRITE ; 
- int LSM_META_RW_PAGE_SIZE ; 
- int LSM_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  ckptChangeEndianness (int*,int) ; 
- scalar_t__ ckptChecksumOk (int*) ; 
- int lsmCheckpointId (int*,int /*<<< orphan*/ ) ; 
- int lsmCheckpointLogOffset (int*) ; 
- int /*<<< orphan*/  lsmFree (int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/ * lsmFsMetaPageData (int /*<<< orphan*/ *,int*) ; 
- int lsmFsMetaPageGet (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  lsmFsMetaPageRelease (int /*<<< orphan*/ *) ; 
- int lsmGetU32 (int /*<<< orphan*/ *) ; 
- int* lsmMallocRc (int /*<<< orphan*/ ,int,int*) ; 
- int /*<<< orphan*/  memcpy (int*,int /*<<< orphan*/ *,int) ; 
+
+ int CKPT_HDR_NCKPT ;
+ size_t CKPT_HDR_NWRITE ;
+ int LSM_META_RW_PAGE_SIZE ;
+ int LSM_OK ;
+ int assert (int) ;
+ int ckptChangeEndianness (int*,int) ;
+ scalar_t__ ckptChecksumOk (int*) ;
+ int lsmCheckpointId (int*,int ) ;
+ int lsmCheckpointLogOffset (int*) ;
+ int lsmFree (int ,int*) ;
+ int * lsmFsMetaPageData (int *,int*) ;
+ int lsmFsMetaPageGet (int ,int ,int,int **) ;
+ int lsmFsMetaPageRelease (int *) ;
+ int lsmGetU32 (int *) ;
+ int* lsmMallocRc (int ,int,int*) ;
+ int memcpy (int*,int *,int) ;
 
 int lsmCheckpointSynced(lsm_db *pDb, i64 *piId, i64 *piLog, u32 *pnWrite){
   int rc = LSM_OK;
@@ -49,7 +49,7 @@ int lsmCheckpointSynced(lsm_db *pDb, i64 *piId, i64 *piLog, u32 *pnWrite){
     if( rc==LSM_OK ){
       int nCkpt;
       int nData;
-      u8 *aData; 
+      u8 *aData;
 
       aData = lsmFsMetaPageData(pPg, &nData);
       assert( nData==LSM_META_RW_PAGE_SIZE );

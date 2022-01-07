@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_8__ {scalar_t__ data; } ;
-typedef  TYPE_2__ svn_stringbuf_t ;
+typedef TYPE_2__ svn_stringbuf_t ;
 struct TYPE_9__ {TYPE_4__* private_data; } ;
-typedef  TYPE_3__ svn_packed__int_stream_t ;
+typedef TYPE_3__ svn_packed__int_stream_t ;
 struct TYPE_10__ {TYPE_3__* next; scalar_t__ is_last; TYPE_3__* first_substream; TYPE_1__* packed; } ;
-typedef  TYPE_4__ packed_int_private_t ;
-typedef  scalar_t__ apr_size_t ;
+typedef TYPE_4__ packed_int_private_t ;
+typedef scalar_t__ apr_size_t ;
 struct TYPE_7__ {char* data; size_t len; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memcpy (char*,scalar_t__,size_t) ; 
+
+ int memcpy (char*,scalar_t__,size_t) ;
 
 __attribute__((used)) static void
 unflatten_int_stream(svn_packed__int_stream_t *stream,
@@ -47,6 +47,6 @@ unflatten_int_stream(svn_packed__int_stream_t *stream,
     {
       private_data = stream->private_data;
       unflatten_int_stream(stream, combined, offset);
-      stream = private_data->is_last ? NULL : private_data->next;
+      stream = private_data->is_last ? ((void*)0) : private_data->next;
     }
 }

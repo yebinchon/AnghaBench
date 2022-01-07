@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
+
+
+
+
+typedef int u8 ;
 struct crypto_bignum {int dummy; } ;
-typedef  int /*<<< orphan*/  BIGNUM ;
+typedef int BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * BN_bin2bn (int /*<<< orphan*/  const*,size_t,int /*<<< orphan*/ *) ; 
- scalar_t__ TEST_FAIL () ; 
+
+ int * BN_bin2bn (int const*,size_t,int *) ;
+ scalar_t__ TEST_FAIL () ;
 
 struct crypto_bignum * crypto_bignum_init_set(const u8 *buf, size_t len)
 {
-	BIGNUM *bn;
+ BIGNUM *bn;
 
-	if (TEST_FAIL())
-		return NULL;
+ if (TEST_FAIL())
+  return ((void*)0);
 
-	bn = BN_bin2bn(buf, len, NULL);
-	return (struct crypto_bignum *) bn;
+ bn = BN_bin2bn(buf, len, ((void*)0));
+ return (struct crypto_bignum *) bn;
 }

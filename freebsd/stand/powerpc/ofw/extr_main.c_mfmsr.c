@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  register_t ;
 
-/* Variables and functions */
+
+
+
+typedef int register_t ;
+
+
 
 __attribute__((used)) static __inline register_t
 mfmsr(void)
 {
-	register_t value;
+ register_t value;
 
-	__asm __volatile ("mfmsr %0" : "=r"(value));
+ __asm __volatile ("mfmsr %0" : "=r"(value));
 
-	return (value);
+ return (value);
 }

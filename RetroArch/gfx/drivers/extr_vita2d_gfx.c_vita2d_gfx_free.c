@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * texture; } ;
-struct TYPE_4__ {int /*<<< orphan*/ * texture; TYPE_1__ menu; } ;
-typedef  TYPE_2__ vita_video_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  font_driver_free_osd () ; 
- int /*<<< orphan*/  vita2d_fini () ; 
- int /*<<< orphan*/  vita2d_free_texture (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * texture; } ;
+struct TYPE_4__ {int * texture; TYPE_1__ menu; } ;
+typedef TYPE_2__ vita_video_t ;
+
+
+ int font_driver_free_osd () ;
+ int vita2d_fini () ;
+ int vita2d_free_texture (int *) ;
 
 __attribute__((used)) static void vita2d_gfx_free(void *data)
 {
@@ -30,13 +30,13 @@ __attribute__((used)) static void vita2d_gfx_free(void *data)
    if (vita->menu.texture)
    {
       vita2d_free_texture(vita->menu.texture);
-      vita->menu.texture = NULL;
+      vita->menu.texture = ((void*)0);
    }
 
    if (vita->texture)
    {
       vita2d_free_texture(vita->texture);
-      vita->texture = NULL;
+      vita->texture = ((void*)0);
    }
 
    font_driver_free_osd();

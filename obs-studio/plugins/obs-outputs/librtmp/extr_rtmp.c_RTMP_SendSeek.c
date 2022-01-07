@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  pbuf ;
-struct TYPE_7__ {scalar_t__ nResumeTS; int /*<<< orphan*/  flags; } ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int pbuf ;
+struct TYPE_7__ {scalar_t__ nResumeTS; int flags; } ;
 struct TYPE_9__ {double m_numInvokes; TYPE_1__ m_read; } ;
-struct TYPE_8__ {int m_nChannel; char* m_body; int m_nBodySize; scalar_t__ m_hasAbsTimestamp; scalar_t__ m_nInfoField2; scalar_t__ m_nTimeStamp; int /*<<< orphan*/  m_packetType; int /*<<< orphan*/  m_headerType; } ;
-typedef  TYPE_2__ RTMPPacket ;
-typedef  TYPE_3__ RTMP ;
+struct TYPE_8__ {int m_nChannel; char* m_body; int m_nBodySize; scalar_t__ m_hasAbsTimestamp; scalar_t__ m_nInfoField2; scalar_t__ m_nTimeStamp; int m_packetType; int m_headerType; } ;
+typedef TYPE_2__ RTMPPacket ;
+typedef TYPE_3__ RTMP ;
 
-/* Variables and functions */
- char* AMF_EncodeNumber (char*,char*,double) ; 
- char* AMF_EncodeString (char*,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  AMF_NULL ; 
- int RTMP_MAX_HEADER_SIZE ; 
- int /*<<< orphan*/  RTMP_PACKET_SIZE_MEDIUM ; 
- int /*<<< orphan*/  RTMP_PACKET_TYPE_INVOKE ; 
- int /*<<< orphan*/  RTMP_READ_SEEKING ; 
- int RTMP_SendPacket (TYPE_3__*,TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  av_seek ; 
+
+ char* AMF_EncodeNumber (char*,char*,double) ;
+ char* AMF_EncodeString (char*,char*,int *) ;
+ int AMF_NULL ;
+ int RTMP_MAX_HEADER_SIZE ;
+ int RTMP_PACKET_SIZE_MEDIUM ;
+ int RTMP_PACKET_TYPE_INVOKE ;
+ int RTMP_READ_SEEKING ;
+ int RTMP_SendPacket (TYPE_3__*,TYPE_2__*,int ) ;
+ int TRUE ;
+ int av_seek ;
 
 int
 RTMP_SendSeek(RTMP *r, int iTime)
@@ -39,7 +39,7 @@ RTMP_SendSeek(RTMP *r, int iTime)
     char pbuf[256], *pend = pbuf + sizeof(pbuf);
     char *enc;
 
-    packet.m_nChannel = 0x08;	/* video channel */
+    packet.m_nChannel = 0x08;
     packet.m_headerType = RTMP_PACKET_SIZE_MEDIUM;
     packet.m_packetType = RTMP_PACKET_TYPE_INVOKE;
     packet.m_nTimeStamp = 0;

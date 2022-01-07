@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  SOCK ;
-typedef  int /*<<< orphan*/  RPC ;
-typedef  int /*<<< orphan*/  PACK ;
-typedef  int /*<<< orphan*/  NAT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FreePack (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  HttpServerSend (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * NewPack () ; 
- int /*<<< orphan*/  NiRpcServer ; 
- int /*<<< orphan*/  RpcFree (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RpcServer (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * StartRpcServer (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int SOCK ;
+typedef int RPC ;
+typedef int PACK ;
+typedef int NAT ;
+
+
+ int FreePack (int *) ;
+ int HttpServerSend (int *,int *) ;
+ int * NewPack () ;
+ int NiRpcServer ;
+ int RpcFree (int *) ;
+ int RpcServer (int *) ;
+ int * StartRpcServer (int *,int ,int *) ;
 
 void NiAdminMain(NAT *n, SOCK *s)
 {
-	RPC *r;
-	PACK *p;
-	// Validate arguments
-	if (n == NULL || s == NULL)
-	{
-		return;
-	}
+ RPC *r;
+ PACK *p;
 
-	p = NewPack();
-	HttpServerSend(s, p);
-	FreePack(p);
+ if (n == ((void*)0) || s == ((void*)0))
+ {
+  return;
+ }
 
-	r = StartRpcServer(s, NiRpcServer, n);
+ p = NewPack();
+ HttpServerSend(s, p);
+ FreePack(p);
 
-	RpcServer(r);
+ r = StartRpcServer(s, NiRpcServer, n);
 
-	RpcFree(r);
+ RpcServer(r);
+
+ RpcFree(r);
 }

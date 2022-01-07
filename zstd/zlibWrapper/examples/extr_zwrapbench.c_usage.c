@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  DEFAULT_DISPLAY_LEVEL ; 
- int /*<<< orphan*/  DISPLAY (char*,...) ; 
- char* WELCOME_MESSAGE ; 
- int /*<<< orphan*/  ZSTDCLI_CLEVEL_DEFAULT ; 
+ int DEFAULT_DISPLAY_LEVEL ;
+ int DISPLAY (char*,...) ;
+ char* WELCOME_MESSAGE ;
+ int ZSTDCLI_CLEVEL_DEFAULT ;
 
 __attribute__((used)) static int usage(const char* programName)
 {
@@ -31,9 +23,9 @@ __attribute__((used)) static int usage(const char* programName)
     DISPLAY( " -V     : display Version number and exit\n");
     DISPLAY( " -v     : verbose mode; specify multiple times to increase log level (default:%d)\n", DEFAULT_DISPLAY_LEVEL);
     DISPLAY( " -q     : suppress warnings; specify twice to suppress errors too\n");
-#ifdef UTIL_HAS_CREATEFILELIST
-    DISPLAY( " -r     : operate recursively on directories\n");
-#endif
+
+
+
     DISPLAY( "\n");
     DISPLAY( "Benchmark arguments :\n");
     DISPLAY( " -b#    : benchmark file(s), using # compression level (default : %d) \n", ZSTDCLI_CLEVEL_DEFAULT);

@@ -1,53 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- double HUGE ; 
- int MAXEXP ; 
- int MINEXP ; 
- double NAN ; 
- double* a1 ; 
- double* a2 ; 
- double g ; 
- double k ; 
- double ldexp (double,int) ; 
- double p1 ; 
- double p2 ; 
- double p3 ; 
- double p4 ; 
- double q1 ; 
- double q2 ; 
- double q3 ; 
- double q4 ; 
- double q5 ; 
- double q6 ; 
- double q7 ; 
- double r ; 
- double u1 ; 
- double u2 ; 
- double v ; 
- double w ; 
- double w1 ; 
- double w2 ; 
- double y1 ; 
- double y2 ; 
- double z ; 
+ double HUGE ;
+ int MAXEXP ;
+ int MINEXP ;
+ double NAN ;
+ double* a1 ;
+ double* a2 ;
+ double g ;
+ double k ;
+ double ldexp (double,int) ;
+ double p1 ;
+ double p2 ;
+ double p3 ;
+ double p4 ;
+ double q1 ;
+ double q2 ;
+ double q3 ;
+ double q4 ;
+ double q5 ;
+ double q6 ;
+ double q7 ;
+ double r ;
+ double u1 ;
+ double u2 ;
+ double v ;
+ double w ;
+ double w1 ;
+ double w2 ;
+ double y1 ;
+ double y2 ;
+ double z ;
 
 double pow(double x, double y)
 {
     double frexp(), g, ldexp(), r, u1, u2, v, w, w1, w2, y1, y2, z;
     int iw1, m, p;
-    bool flipsignal = false;
+    bool flipsignal = 0;
 
     if (y == 0.0)
         return (1.0);
@@ -57,15 +49,15 @@ double pow(double x, double y)
         {
             if (y > 0.0)
                 return 0.0;
-            //cmemsg(FP_POWO, &y);
-            //return(HUGE);
+
+
         }
         else
         {
-            //cmemsg(FP_POWN, &x);
+
             x = -x;
 
-            if (y != (int) y) { // if y is fractional, then this woud result in a complex number
+            if (y != (int) y) {
                 return NAN;
             }
             flipsignal = ((int) y) & 1;
@@ -105,12 +97,12 @@ double pow(double x, double y)
     }
     if (iw1 > MAXEXP)
     {
-        //cmemsg(FP_POWO, &y);
+
         return (HUGE);
     }
     if (iw1 < MINEXP)
     {
-        //cmemsg(FP_POWU, &y);
+
         return (0.0);
     }
     m = iw1 / 16;

@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u16 ;
+
+
+
+
+typedef int u16 ;
 struct usb_device {int dummy; } ;
-struct gspca_dev {int /*<<< orphan*/ * usb_buf; struct usb_device* dev; } ;
-typedef  int /*<<< orphan*/  __u8 ;
+struct gspca_dev {int * usb_buf; struct usb_device* dev; } ;
+typedef int __u8 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D_PROBE ; 
- int /*<<< orphan*/  PDEBUG (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int USB_DIR_IN ; 
- int USB_RECIP_ENDPOINT ; 
- int USB_TYPE_VENDOR ; 
- int /*<<< orphan*/  err (char*,int /*<<< orphan*/ ,int) ; 
- int usb_control_msg (struct usb_device*,int /*<<< orphan*/ ,int,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  usb_rcvctrlpipe (struct usb_device*,int /*<<< orphan*/ ) ; 
+
+ int D_PROBE ;
+ int PDEBUG (int ,char*,int ,int ) ;
+ int USB_DIR_IN ;
+ int USB_RECIP_ENDPOINT ;
+ int USB_TYPE_VENDOR ;
+ int err (char*,int ,int) ;
+ int usb_control_msg (struct usb_device*,int ,int,int,int,int ,int *,int,int) ;
+ int usb_rcvctrlpipe (struct usb_device*,int ) ;
 
 __attribute__((used)) static int cit_read_reg(struct gspca_dev *gspca_dev, u16 index, int verbose)
 {
-	struct usb_device *udev = gspca_dev->dev;
-	__u8 *buf = gspca_dev->usb_buf;
-	int res;
+ struct usb_device *udev = gspca_dev->dev;
+ __u8 *buf = gspca_dev->usb_buf;
+ int res;
 
-	res = usb_control_msg(udev, usb_rcvctrlpipe(udev, 0), 0x01,
-			USB_DIR_IN | USB_TYPE_VENDOR | USB_RECIP_ENDPOINT,
-			0x00, index, buf, 8, 1000);
-	if (res < 0) {
-		err("Failed to read a register (index 0x%04X, error %d)",
-			index, res);
-		return res;
-	}
+ res = usb_control_msg(udev, usb_rcvctrlpipe(udev, 0), 0x01,
+   USB_DIR_IN | USB_TYPE_VENDOR | USB_RECIP_ENDPOINT,
+   0x00, index, buf, 8, 1000);
+ if (res < 0) {
+  err("Failed to read a register (index 0x%04X, error %d)",
+   index, res);
+  return res;
+ }
 
-	if (verbose)
-		PDEBUG(D_PROBE, "Register %04x value: %02x", index, buf[0]);
+ if (verbose)
+  PDEBUG(D_PROBE, "Register %04x value: %02x", index, buf[0]);
 
-	return 0;
+ return 0;
 }

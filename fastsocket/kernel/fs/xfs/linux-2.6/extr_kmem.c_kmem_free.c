@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  is_vmalloc_addr (void const*) ; 
- int /*<<< orphan*/  kfree (void const*) ; 
- int /*<<< orphan*/  vfree (void const*) ; 
+ int is_vmalloc_addr (void const*) ;
+ int kfree (void const*) ;
+ int vfree (void const*) ;
 
 void
 kmem_free(const void *ptr)
 {
-	if (!is_vmalloc_addr(ptr)) {
-		kfree(ptr);
-	} else {
-		vfree(ptr);
-	}
+ if (!is_vmalloc_addr(ptr)) {
+  kfree(ptr);
+ } else {
+  vfree(ptr);
+ }
 }

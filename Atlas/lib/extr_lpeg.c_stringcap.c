@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  luaL_Buffer ;
-struct TYPE_10__ {int /*<<< orphan*/  L; int /*<<< orphan*/  ptop; TYPE_1__* cap; } ;
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int luaL_Buffer ;
+struct TYPE_10__ {int L; int ptop; TYPE_1__* cap; } ;
 struct TYPE_9__ {scalar_t__ s; scalar_t__ e; } ;
-struct TYPE_8__ {int /*<<< orphan*/  idx; } ;
-typedef  TYPE_2__ StrAux ;
-typedef  TYPE_3__ CapState ;
+struct TYPE_8__ {int idx; } ;
+typedef TYPE_2__ StrAux ;
+typedef TYPE_3__ CapState ;
 
-/* Variables and functions */
- int MAXSTRCAPS ; 
- int getstrcaps (TYPE_3__*,TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  luaL_addchar (int /*<<< orphan*/ *,char const) ; 
- int /*<<< orphan*/  luaL_addlstring (int /*<<< orphan*/ *,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  luaL_error (int /*<<< orphan*/ ,char*,char const) ; 
- char* lua_tolstring (int /*<<< orphan*/ ,int /*<<< orphan*/ ,size_t*) ; 
- int /*<<< orphan*/  subscache (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  updatecache (TYPE_3__*,int /*<<< orphan*/ ) ; 
+
+ int MAXSTRCAPS ;
+ int getstrcaps (TYPE_3__*,TYPE_2__*,int ) ;
+ int luaL_addchar (int *,char const) ;
+ int luaL_addlstring (int *,scalar_t__,scalar_t__) ;
+ int luaL_error (int ,char*,char const) ;
+ char* lua_tolstring (int ,int ,size_t*) ;
+ int subscache (int ) ;
+ int updatecache (TYPE_3__*,int ) ;
 
 __attribute__((used)) static void stringcap (luaL_Buffer *b, CapState *cs) {
   StrAux cps[MAXSTRCAPS];

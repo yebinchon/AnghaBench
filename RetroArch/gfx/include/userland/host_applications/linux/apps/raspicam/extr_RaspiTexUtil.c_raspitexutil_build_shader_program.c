@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  log ;
-struct TYPE_5__ {char** attribute_names; int* attribute_locations; char** uniform_names; int* uniform_locations; void* vs; void* fs; int /*<<< orphan*/  program; struct TYPE_5__* fragment_source; struct TYPE_5__* vertex_source; } ;
-typedef  TYPE_1__ RASPITEXUTIL_SHADER_PROGRAM_T ;
-typedef  int /*<<< orphan*/  GLint ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GL_COMPILE_STATUS ; 
- int /*<<< orphan*/  GL_FRAGMENT_SHADER ; 
- int /*<<< orphan*/  GL_LINK_STATUS ; 
- int /*<<< orphan*/  GL_VERTEX_SHADER ; 
- int SHADER_MAX_ATTRIBUTES ; 
- int SHADER_MAX_UNIFORMS ; 
- char* VCOS_FUNCTION ; 
- int /*<<< orphan*/  glAttachShader (int /*<<< orphan*/ ,void*) ; 
- int /*<<< orphan*/  glCompileShader (void*) ; 
- int /*<<< orphan*/  glCreateProgram () ; 
- void* glCreateShader (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glDeleteProgram (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glDeleteShader (void*) ; 
- int glGetAttribLocation (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  glGetProgramInfoLog (int /*<<< orphan*/ ,int,int*,char*) ; 
- int /*<<< orphan*/  glGetProgramiv (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  glGetShaderInfoLog (void*,int,int*,char*) ; 
- int /*<<< orphan*/  glGetShaderiv (void*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int glGetUniformLocation (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  glLinkProgram (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glShaderSource (void*,int,TYPE_1__**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vcos_assert (TYPE_1__*) ; 
- int /*<<< orphan*/  vcos_log_error (char*,...) ; 
- int /*<<< orphan*/  vcos_log_trace (char*,char*,int) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int log ;
+struct TYPE_5__ {char** attribute_names; int* attribute_locations; char** uniform_names; int* uniform_locations; void* vs; void* fs; int program; struct TYPE_5__* fragment_source; struct TYPE_5__* vertex_source; } ;
+typedef TYPE_1__ RASPITEXUTIL_SHADER_PROGRAM_T ;
+typedef int GLint ;
+
+
+ int GL_COMPILE_STATUS ;
+ int GL_FRAGMENT_SHADER ;
+ int GL_LINK_STATUS ;
+ int GL_VERTEX_SHADER ;
+ int SHADER_MAX_ATTRIBUTES ;
+ int SHADER_MAX_UNIFORMS ;
+ char* VCOS_FUNCTION ;
+ int glAttachShader (int ,void*) ;
+ int glCompileShader (void*) ;
+ int glCreateProgram () ;
+ void* glCreateShader (int ) ;
+ int glDeleteProgram (int ) ;
+ int glDeleteShader (void*) ;
+ int glGetAttribLocation (int ,char*) ;
+ int glGetProgramInfoLog (int ,int,int*,char*) ;
+ int glGetProgramiv (int ,int ,int *) ;
+ int glGetShaderInfoLog (void*,int,int*,char*) ;
+ int glGetShaderiv (void*,int ,int *) ;
+ int glGetUniformLocation (int ,char*) ;
+ int glLinkProgram (int ) ;
+ int glShaderSource (void*,int,TYPE_1__**,int *) ;
+ int vcos_assert (TYPE_1__*) ;
+ int vcos_log_error (char*,...) ;
+ int vcos_log_trace (char*,char*,int) ;
 
 int raspitexutil_build_shader_program(RASPITEXUTIL_SHADER_PROGRAM_T *p)
 {
@@ -58,7 +58,7 @@ int raspitexutil_build_shader_program(RASPITEXUTIL_SHADER_PROGRAM_T *p)
    p->vs = p->fs = 0;
 
    p->vs = glCreateShader(GL_VERTEX_SHADER);
-   glShaderSource(p->vs, 1, &p->vertex_source, NULL);
+   glShaderSource(p->vs, 1, &p->vertex_source, ((void*)0));
    glCompileShader(p->vs);
    glGetShaderiv(p->vs, GL_COMPILE_STATUS, &status);
    if (! status)
@@ -69,7 +69,7 @@ int raspitexutil_build_shader_program(RASPITEXUTIL_SHADER_PROGRAM_T *p)
    }
 
    p->fs = glCreateShader(GL_FRAGMENT_SHADER);
-   glShaderSource(p->fs, 1, &p->fragment_source, NULL);
+   glShaderSource(p->fs, 1, &p->fragment_source, ((void*)0));
    glCompileShader(p->fs);
 
    glGetShaderiv(p->fs, GL_COMPILE_STATUS, &status);

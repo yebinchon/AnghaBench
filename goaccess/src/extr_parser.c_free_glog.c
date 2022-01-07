@@ -1,68 +1,68 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {struct TYPE_4__* vhost; struct TYPE_4__* userid; struct TYPE_4__* uniq_key; struct TYPE_4__* time; struct TYPE_4__* status; struct TYPE_4__* req; struct TYPE_4__* req_key; struct TYPE_4__* ref; struct TYPE_4__* qstr; struct TYPE_4__* protocol; struct TYPE_4__* os_type; struct TYPE_4__* os; struct TYPE_4__* method; struct TYPE_4__* keyphrase; struct TYPE_4__* host; struct TYPE_4__* errstr; struct TYPE_4__* date; struct TYPE_4__* country; struct TYPE_4__* continent; struct TYPE_4__* browser_type; struct TYPE_4__* browser; struct TYPE_4__* agent; } ;
-typedef  TYPE_1__ GLogItem ;
+typedef TYPE_1__ GLogItem ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (TYPE_1__*) ; 
+
+ int free (TYPE_1__*) ;
 
 __attribute__((used)) static void
 free_glog (GLogItem * logitem)
 {
-  if (logitem->agent != NULL)
+  if (logitem->agent != ((void*)0))
     free (logitem->agent);
-  if (logitem->browser != NULL)
+  if (logitem->browser != ((void*)0))
     free (logitem->browser);
-  if (logitem->browser_type != NULL)
+  if (logitem->browser_type != ((void*)0))
     free (logitem->browser_type);
-  if (logitem->continent != NULL)
+  if (logitem->continent != ((void*)0))
     free (logitem->continent);
-  if (logitem->country != NULL)
+  if (logitem->country != ((void*)0))
     free (logitem->country);
-  if (logitem->date != NULL)
+  if (logitem->date != ((void*)0))
     free (logitem->date);
-  if (logitem->errstr != NULL)
+  if (logitem->errstr != ((void*)0))
     free (logitem->errstr);
-  if (logitem->host != NULL)
+  if (logitem->host != ((void*)0))
     free (logitem->host);
-  if (logitem->keyphrase != NULL)
+  if (logitem->keyphrase != ((void*)0))
     free (logitem->keyphrase);
-  if (logitem->method != NULL)
+  if (logitem->method != ((void*)0))
     free (logitem->method);
-  if (logitem->os != NULL)
+  if (logitem->os != ((void*)0))
     free (logitem->os);
-  if (logitem->os_type != NULL)
+  if (logitem->os_type != ((void*)0))
     free (logitem->os_type);
-  if (logitem->protocol != NULL)
+  if (logitem->protocol != ((void*)0))
     free (logitem->protocol);
-  if (logitem->qstr != NULL)
+  if (logitem->qstr != ((void*)0))
     free (logitem->qstr);
-  if (logitem->ref != NULL)
+  if (logitem->ref != ((void*)0))
     free (logitem->ref);
-  if (logitem->req_key != NULL)
+  if (logitem->req_key != ((void*)0))
     free (logitem->req_key);
-  if (logitem->req != NULL)
+  if (logitem->req != ((void*)0))
     free (logitem->req);
-  if (logitem->status != NULL)
+  if (logitem->status != ((void*)0))
     free (logitem->status);
-  if (logitem->time != NULL)
+  if (logitem->time != ((void*)0))
     free (logitem->time);
-  if (logitem->uniq_key != NULL)
+  if (logitem->uniq_key != ((void*)0))
     free (logitem->uniq_key);
-  if (logitem->userid != NULL)
+  if (logitem->userid != ((void*)0))
     free (logitem->userid);
-  if (logitem->vhost != NULL)
+  if (logitem->vhost != ((void*)0))
     free (logitem->vhost);
 
   free (logitem);

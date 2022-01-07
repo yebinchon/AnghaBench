@@ -1,76 +1,68 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_29__   TYPE_8__ ;
-typedef  struct TYPE_28__   TYPE_7__ ;
-typedef  struct TYPE_27__   TYPE_6__ ;
-typedef  struct TYPE_26__   TYPE_5__ ;
-typedef  struct TYPE_25__   TYPE_4__ ;
-typedef  struct TYPE_24__   TYPE_3__ ;
-typedef  struct TYPE_23__   TYPE_2__ ;
-typedef  struct TYPE_22__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_23__ {int /*<<< orphan*/  data; scalar_t__ len; } ;
-typedef  TYPE_2__ ngx_str_t ;
-struct TYPE_24__ {int test_only; scalar_t__ err; int /*<<< orphan*/  is_exec; int /*<<< orphan*/  is_link; int /*<<< orphan*/  is_dir; int /*<<< orphan*/  is_file; int /*<<< orphan*/  failed; int /*<<< orphan*/  events; int /*<<< orphan*/  errors; int /*<<< orphan*/  min_uses; int /*<<< orphan*/  valid; int /*<<< orphan*/  directio; int /*<<< orphan*/  read_ahead; } ;
-typedef  TYPE_3__ ngx_open_file_info_t ;
-struct TYPE_25__ {int /*<<< orphan*/  data; scalar_t__ len; } ;
-typedef  TYPE_4__ ngx_http_variable_value_t ;
+
+
+typedef struct TYPE_29__ TYPE_8__ ;
+typedef struct TYPE_28__ TYPE_7__ ;
+typedef struct TYPE_27__ TYPE_6__ ;
+typedef struct TYPE_26__ TYPE_5__ ;
+typedef struct TYPE_25__ TYPE_4__ ;
+typedef struct TYPE_24__ TYPE_3__ ;
+typedef struct TYPE_23__ TYPE_2__ ;
+typedef struct TYPE_22__ TYPE_1__ ;
+
+
+struct TYPE_23__ {int data; scalar_t__ len; } ;
+typedef TYPE_2__ ngx_str_t ;
+struct TYPE_24__ {int test_only; scalar_t__ err; int is_exec; int is_link; int is_dir; int is_file; int failed; int events; int errors; int min_uses; int valid; int directio; int read_ahead; } ;
+typedef TYPE_3__ ngx_open_file_info_t ;
+struct TYPE_25__ {int data; scalar_t__ len; } ;
+typedef TYPE_4__ ngx_http_variable_value_t ;
 struct TYPE_26__ {int op; } ;
-typedef  TYPE_5__ ngx_http_script_file_code_t ;
+typedef TYPE_5__ ngx_http_script_file_code_t ;
 struct TYPE_27__ {void* status; void* ip; TYPE_7__* request; TYPE_4__* sp; } ;
-typedef  TYPE_6__ ngx_http_script_engine_t ;
-struct TYPE_28__ {TYPE_1__* connection; int /*<<< orphan*/  pool; } ;
-typedef  TYPE_7__ ngx_http_request_t ;
-struct TYPE_29__ {int /*<<< orphan*/  open_file_cache; int /*<<< orphan*/  open_file_cache_events; int /*<<< orphan*/  open_file_cache_errors; int /*<<< orphan*/  open_file_cache_min_uses; int /*<<< orphan*/  open_file_cache_valid; int /*<<< orphan*/  directio; int /*<<< orphan*/  read_ahead; } ;
-typedef  TYPE_8__ ngx_http_core_loc_conf_t ;
-struct TYPE_22__ {int /*<<< orphan*/  log; } ;
+typedef TYPE_6__ ngx_http_script_engine_t ;
+struct TYPE_28__ {TYPE_1__* connection; int pool; } ;
+typedef TYPE_7__ ngx_http_request_t ;
+struct TYPE_29__ {int open_file_cache; int open_file_cache_events; int open_file_cache_errors; int open_file_cache_min_uses; int open_file_cache_valid; int directio; int read_ahead; } ;
+typedef TYPE_8__ ngx_http_core_loc_conf_t ;
+struct TYPE_22__ {int log; } ;
 
-/* Variables and functions */
- scalar_t__ NGX_ENAMETOOLONG ; 
- scalar_t__ NGX_ENOENT ; 
- scalar_t__ NGX_ENOTDIR ; 
- void* NGX_HTTP_INTERNAL_SERVER_ERROR ; 
- int /*<<< orphan*/  NGX_LOG_CRIT ; 
- int /*<<< orphan*/  NGX_LOG_DEBUG_HTTP ; 
- scalar_t__ NGX_OK ; 
- int /*<<< orphan*/  ngx_http_core_module ; 
- TYPE_8__* ngx_http_get_module_loc_conf (TYPE_7__*,int /*<<< orphan*/ ) ; 
- void* ngx_http_script_exit ; 
-#define  ngx_http_script_file_dir 135 
-#define  ngx_http_script_file_exec 134 
-#define  ngx_http_script_file_exists 133 
-#define  ngx_http_script_file_not_dir 132 
-#define  ngx_http_script_file_not_exec 131 
-#define  ngx_http_script_file_not_exists 130 
-#define  ngx_http_script_file_not_plain 129 
-#define  ngx_http_script_file_plain 128 
- scalar_t__ ngx_http_set_disable_symlinks (TYPE_7__*,TYPE_8__*,TYPE_2__*,TYPE_3__*) ; 
- TYPE_4__ ngx_http_variable_null_value ; 
- TYPE_4__ ngx_http_variable_true_value ; 
- int /*<<< orphan*/  ngx_log_debug0 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ngx_log_debug2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,void*,TYPE_2__*) ; 
- int /*<<< orphan*/  ngx_log_error (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_memzero (TYPE_3__*,int) ; 
- scalar_t__ ngx_open_cached_file (int /*<<< orphan*/ ,TYPE_2__*,TYPE_3__*,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ NGX_ENAMETOOLONG ;
+ scalar_t__ NGX_ENOENT ;
+ scalar_t__ NGX_ENOTDIR ;
+ void* NGX_HTTP_INTERNAL_SERVER_ERROR ;
+ int NGX_LOG_CRIT ;
+ int NGX_LOG_DEBUG_HTTP ;
+ scalar_t__ NGX_OK ;
+ int ngx_http_core_module ;
+ TYPE_8__* ngx_http_get_module_loc_conf (TYPE_7__*,int ) ;
+ void* ngx_http_script_exit ;
+ scalar_t__ ngx_http_set_disable_symlinks (TYPE_7__*,TYPE_8__*,TYPE_2__*,TYPE_3__*) ;
+ TYPE_4__ ngx_http_variable_null_value ;
+ TYPE_4__ ngx_http_variable_true_value ;
+ int ngx_log_debug0 (int ,int ,int ,char*) ;
+ int ngx_log_debug2 (int ,int ,int ,char*,void*,TYPE_2__*) ;
+ int ngx_log_error (int ,int ,scalar_t__,char*,int ,int ) ;
+ int ngx_memzero (TYPE_3__*,int) ;
+ scalar_t__ ngx_open_cached_file (int ,TYPE_2__*,TYPE_3__*,int ) ;
 
 void
 ngx_http_script_file_code(ngx_http_script_engine_t *e)
 {
-    ngx_str_t                     path;
-    ngx_http_request_t           *r;
-    ngx_open_file_info_t          of;
-    ngx_http_core_loc_conf_t     *clcf;
-    ngx_http_variable_value_t    *value;
-    ngx_http_script_file_code_t  *code;
+    ngx_str_t path;
+    ngx_http_request_t *r;
+    ngx_open_file_info_t of;
+    ngx_http_core_loc_conf_t *clcf;
+    ngx_http_variable_value_t *value;
+    ngx_http_script_file_code_t *code;
 
     value = e->sp - 1;
 
@@ -122,16 +114,16 @@ ngx_http_script_file_code(ngx_http_script_engine_t *e)
 
         switch (code->op) {
 
-        case ngx_http_script_file_plain:
-        case ngx_http_script_file_dir:
-        case ngx_http_script_file_exists:
-        case ngx_http_script_file_exec:
+        case 128:
+        case 135:
+        case 133:
+        case 134:
              goto false_value;
 
-        case ngx_http_script_file_not_plain:
-        case ngx_http_script_file_not_dir:
-        case ngx_http_script_file_not_exists:
-        case ngx_http_script_file_not_exec:
+        case 129:
+        case 132:
+        case 130:
+        case 131:
              goto true_value;
         }
 
@@ -139,49 +131,49 @@ ngx_http_script_file_code(ngx_http_script_engine_t *e)
     }
 
     switch (code->op) {
-    case ngx_http_script_file_plain:
+    case 128:
         if (of.is_file) {
              goto true_value;
         }
         goto false_value;
 
-    case ngx_http_script_file_not_plain:
+    case 129:
         if (of.is_file) {
             goto false_value;
         }
         goto true_value;
 
-    case ngx_http_script_file_dir:
+    case 135:
         if (of.is_dir) {
              goto true_value;
         }
         goto false_value;
 
-    case ngx_http_script_file_not_dir:
+    case 132:
         if (of.is_dir) {
             goto false_value;
         }
         goto true_value;
 
-    case ngx_http_script_file_exists:
+    case 133:
         if (of.is_file || of.is_dir || of.is_link) {
              goto true_value;
         }
         goto false_value;
 
-    case ngx_http_script_file_not_exists:
+    case 130:
         if (of.is_file || of.is_dir || of.is_link) {
             goto false_value;
         }
         goto true_value;
 
-    case ngx_http_script_file_exec:
+    case 134:
         if (of.is_exec) {
              goto true_value;
         }
         goto false_value;
 
-    case ngx_http_script_file_not_exec:
+    case 131:
         if (of.is_exec) {
             goto false_value;
         }

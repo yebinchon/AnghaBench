@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {scalar_t__ content_size; int /*<<< orphan*/  content_in_use; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {scalar_t__ content_size; int content_in_use; } ;
 struct tui_win_info {TYPE_1__ generic; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  tui_check_and_display_highlight_if_needed (struct tui_win_info*) ; 
- int /*<<< orphan*/  tui_erase_source_content (struct tui_win_info*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tui_refresh_win (TYPE_1__*) ; 
- int /*<<< orphan*/  tui_show_source_line (struct tui_win_info*,int) ; 
+
+ int TRUE ;
+ int tui_check_and_display_highlight_if_needed (struct tui_win_info*) ;
+ int tui_erase_source_content (struct tui_win_info*,int ) ;
+ int tui_refresh_win (TYPE_1__*) ;
+ int tui_show_source_line (struct tui_win_info*,int) ;
 
 void
 tui_show_source_content (struct tui_win_info * win_info)

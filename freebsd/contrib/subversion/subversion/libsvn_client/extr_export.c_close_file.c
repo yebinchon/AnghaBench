@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int /*<<< orphan*/  kind; } ;
-typedef  TYPE_3__ svn_wc_notify_t ;
-typedef  int /*<<< orphan*/  svn_subst_eol_style_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_checksum_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-struct file_baton {struct edit_baton* edit_baton; int /*<<< orphan*/  path; scalar_t__ date; int /*<<< orphan*/  special; scalar_t__ executable_val; int /*<<< orphan*/  tmppath; int /*<<< orphan*/  author; int /*<<< orphan*/  repos_root_url; int /*<<< orphan*/  url; int /*<<< orphan*/  revision; TYPE_2__* keywords_val; TYPE_1__* eol_style_val; int /*<<< orphan*/  text_digest; int /*<<< orphan*/  tmp_stream; } ;
-struct edit_baton {int /*<<< orphan*/  notify_baton; int /*<<< orphan*/  (* notify_func ) (int /*<<< orphan*/ ,TYPE_3__*,int /*<<< orphan*/ *) ;int /*<<< orphan*/  cancel_baton; int /*<<< orphan*/  cancel_func; int /*<<< orphan*/  native_eol; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
-struct TYPE_7__ {int /*<<< orphan*/  data; } ;
-struct TYPE_6__ {int /*<<< orphan*/  data; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  get_eol_style (int /*<<< orphan*/ *,char const**,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,TYPE_3__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_checksum__from_digest_md5 (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_checksum_match (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_checksum_md5 ; 
- int /*<<< orphan*/ * svn_checksum_mismatch_err (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_checksum_parse_hex (int /*<<< orphan*/ **,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_dirent_local_style (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_io_file_rename2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_io_remove_file2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_io_set_file_affected_time (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_io_set_file_executable (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_node_file ; 
- int /*<<< orphan*/  svn_stream_close (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_subst_build_keywords3 (int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_subst_copy_and_translate4 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- TYPE_3__* svn_wc_create_notify (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc_notify_update_add ; 
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int kind; } ;
+typedef TYPE_3__ svn_wc_notify_t ;
+typedef int svn_subst_eol_style_t ;
+typedef int svn_error_t ;
+typedef int svn_checksum_t ;
+typedef int svn_boolean_t ;
+struct file_baton {struct edit_baton* edit_baton; int path; scalar_t__ date; int special; scalar_t__ executable_val; int tmppath; int author; int repos_root_url; int url; int revision; TYPE_2__* keywords_val; TYPE_1__* eol_style_val; int text_digest; int tmp_stream; } ;
+struct edit_baton {int notify_baton; int (* notify_func ) (int ,TYPE_3__*,int *) ;int cancel_baton; int cancel_func; int native_eol; } ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
+struct TYPE_7__ {int data; } ;
+struct TYPE_6__ {int data; } ;
+
+
+ int FALSE ;
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int TRUE ;
+ int _ (char*) ;
+ int get_eol_style (int *,char const**,int ,int ) ;
+ int stub1 (int ,TYPE_3__*,int *) ;
+ int * svn_checksum__from_digest_md5 (int ,int *) ;
+ int svn_checksum_match (int *,int *) ;
+ int svn_checksum_md5 ;
+ int * svn_checksum_mismatch_err (int *,int *,int *,int ,int ) ;
+ int svn_checksum_parse_hex (int **,int ,char const*,int *) ;
+ int svn_dirent_local_style (int ,int *) ;
+ int svn_io_file_rename2 (int ,int ,int ,int *) ;
+ int svn_io_remove_file2 (int ,int ,int *) ;
+ int svn_io_set_file_affected_time (scalar_t__,int ,int *) ;
+ int svn_io_set_file_executable (int ,int ,int ,int *) ;
+ int svn_node_file ;
+ int svn_stream_close (int ) ;
+ int svn_subst_build_keywords3 (int **,int ,int ,int ,int ,scalar_t__,int ,int *) ;
+ int svn_subst_copy_and_translate4 (int ,int ,char const*,int ,int *,int ,int ,int ,int ,int *) ;
+ TYPE_3__* svn_wc_create_notify (int ,int ,int *) ;
+ int svn_wc_notify_update_add ;
 
 __attribute__((used)) static svn_error_t *
 close_file(void *file_baton,
@@ -61,7 +61,7 @@ close_file(void *file_baton,
   svn_checksum_t *text_checksum;
   svn_checksum_t *actual_checksum;
 
-  /* Was a txdelta even sent? */
+
   if (! fb->tmppath)
     return SVN_NO_ERROR;
 
@@ -71,9 +71,9 @@ close_file(void *file_baton,
                                  pool));
   actual_checksum = svn_checksum__from_digest_md5(fb->text_digest, pool);
 
-  /* Note that text_digest can be NULL when talking to certain repositories.
-     In that case text_checksum will be NULL and the following match code
-     will note that the checksums match */
+
+
+
   if (!svn_checksum_match(text_checksum, actual_checksum))
     return svn_checksum_mismatch_err(text_checksum, actual_checksum, pool,
                                      _("Checksum mismatch for '%s'"),
@@ -86,9 +86,9 @@ close_file(void *file_baton,
   else
     {
       svn_subst_eol_style_t style;
-      const char *eol = NULL;
+      const char *eol = ((void*)0);
       svn_boolean_t repair = FALSE;
-      apr_hash_t *final_kw = NULL;
+      apr_hash_t *final_kw = ((void*)0);
 
       if (fb->eol_style_val)
         {
@@ -105,7 +105,7 @@ close_file(void *file_baton,
 
       SVN_ERR(svn_subst_copy_and_translate4(fb->tmppath, fb->path,
                                             eol, repair, final_kw,
-                                            TRUE, /* expand */
+                                            TRUE,
                                             fb->special,
                                             eb->cancel_func, eb->cancel_baton,
                                             pool));

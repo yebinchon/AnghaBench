@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  SSL ;
-typedef  int /*<<< orphan*/  BIO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_dump (int /*<<< orphan*/ *,char const*,int) ; 
- int /*<<< orphan*/  BIO_flush (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BIO_printf (int /*<<< orphan*/ *,char*,char*,char const*,int,int) ; 
- char* lookup (int,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  tlsext_types ; 
+
+
+
+typedef int SSL ;
+typedef int BIO ;
+
+
+ int BIO_dump (int *,char const*,int) ;
+ int BIO_flush (int *) ;
+ int BIO_printf (int *,char*,char*,char const*,int,int) ;
+ char* lookup (int,int ,char*) ;
+ int tlsext_types ;
 
 void tlsext_cb(SSL *s, int client_server, int type,
                const unsigned char *data, int len, void *arg)

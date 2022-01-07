@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  dwSize; } ;
-struct TYPE_5__ {int GrantedAccess; int /*<<< orphan*/ * pwszObject; } ;
-typedef  int /*<<< orphan*/ * PWSTR ;
-typedef  TYPE_1__* PLOCALMON_XCV ;
-typedef  scalar_t__* PDWORD ;
-typedef  scalar_t__ PBYTE ;
-typedef  TYPE_2__* LPCOMMCONFIG ;
-typedef  int /*<<< orphan*/ * HANDLE ;
-typedef  scalar_t__ DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DllFreeSplMem (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ERR (char*,scalar_t__) ; 
- scalar_t__ ERROR_ACCESS_DENIED ; 
- scalar_t__ ERROR_INVALID_PARAMETER ; 
- scalar_t__ ERROR_SUCCESS ; 
- scalar_t__ GetLastError () ; 
- scalar_t__ GetPortNameWithoutColon (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  ImpersonatePrinterClient (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * RevertToPrinterSelf () ; 
- int SERVER_ACCESS_ADMINISTER ; 
- int /*<<< orphan*/  SetDefaultCommConfigW (int /*<<< orphan*/ *,TYPE_2__*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int dwSize; } ;
+struct TYPE_5__ {int GrantedAccess; int * pwszObject; } ;
+typedef int * PWSTR ;
+typedef TYPE_1__* PLOCALMON_XCV ;
+typedef scalar_t__* PDWORD ;
+typedef scalar_t__ PBYTE ;
+typedef TYPE_2__* LPCOMMCONFIG ;
+typedef int * HANDLE ;
+typedef scalar_t__ DWORD ;
+
+
+ int DllFreeSplMem (int *) ;
+ int ERR (char*,scalar_t__) ;
+ scalar_t__ ERROR_ACCESS_DENIED ;
+ scalar_t__ ERROR_INVALID_PARAMETER ;
+ scalar_t__ ERROR_SUCCESS ;
+ scalar_t__ GetLastError () ;
+ scalar_t__ GetPortNameWithoutColon (int *,int **) ;
+ int ImpersonatePrinterClient (int *) ;
+ int * RevertToPrinterSelf () ;
+ int SERVER_ACCESS_ADMINISTER ;
+ int SetDefaultCommConfigW (int *,TYPE_2__*,int ) ;
 
 __attribute__((used)) static DWORD
 _HandleSetDefaultCommConfig(PLOCALMON_XCV pXcv, PBYTE pInputData, PDWORD pcbOutputNeeded)
 {
     DWORD dwErrorCode;
-    HANDLE hToken = NULL;
+    HANDLE hToken = ((void*)0);
     LPCOMMCONFIG pCommConfig;
-    PWSTR pwszPortNameWithoutColon = NULL;
+    PWSTR pwszPortNameWithoutColon = ((void*)0);
 
-    // Sanity checks
-    // pwszObject needs to be at least 2 characters long to be a port name with a trailing colon.
+
+
     if (!pXcv || !pXcv->pwszObject || !pXcv->pwszObject[0] || !pXcv->pwszObject[1] || !pInputData || !pcbOutputNeeded)
     {
         dwErrorCode = ERROR_INVALID_PARAMETER;
@@ -53,19 +53,19 @@ _HandleSetDefaultCommConfig(PLOCALMON_XCV pXcv, PBYTE pInputData, PDWORD pcbOutp
 
     *pcbOutputNeeded = 0;
 
-    // This action can only happen at SERVER_ACCESS_ADMINISTER access level.
+
     if (!(pXcv->GrantedAccess & SERVER_ACCESS_ADMINISTER))
     {
         dwErrorCode = ERROR_ACCESS_DENIED;
         goto Cleanup;
     }
 
-    // SetDefaultCommConfigW needs the port name without colon.
+
     dwErrorCode = GetPortNameWithoutColon(pXcv->pwszObject, &pwszPortNameWithoutColon);
     if (dwErrorCode != ERROR_SUCCESS)
         goto Cleanup;
 
-    // Switch to the SYSTEM context for setting the port configuration.
+
     hToken = RevertToPrinterSelf();
     if (!hToken)
     {
@@ -74,7 +74,7 @@ _HandleSetDefaultCommConfig(PLOCALMON_XCV pXcv, PBYTE pInputData, PDWORD pcbOutp
         goto Cleanup;
     }
 
-    // Finally pass the parameters to SetDefaultCommConfigW.
+
     pCommConfig = (LPCOMMCONFIG)pInputData;
     if (!SetDefaultCommConfigW(pwszPortNameWithoutColon, pCommConfig, pCommConfig->dwSize))
     {

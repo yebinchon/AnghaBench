@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct snmp_pdu {size_t nbindings; TYPE_1__* bindings; } ;
-struct TYPE_4__ {int /*<<< orphan*/  var; } ;
+struct TYPE_4__ {int var; } ;
 struct snmp_object {scalar_t__ error; TYPE_2__ val; } ;
-typedef  size_t int32_t ;
-struct TYPE_3__ {int /*<<< orphan*/  var; } ;
+typedef size_t int32_t ;
+struct TYPE_3__ {int var; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  asn_append_oid (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int asn_append_oid (int *,int *) ;
 
 __attribute__((used)) static int32_t
 snmptool_add_vbind(struct snmp_pdu *pdu, struct snmp_object *obj)
 {
-	if (obj->error > 0)
-		return (0);
+ if (obj->error > 0)
+  return (0);
 
-	asn_append_oid(&(pdu->bindings[pdu->nbindings].var), &(obj->val.var));
-	pdu->nbindings++;
+ asn_append_oid(&(pdu->bindings[pdu->nbindings].var), &(obj->val.var));
+ pdu->nbindings++;
 
-	return (pdu->nbindings);
+ return (pdu->nbindings);
 }

@@ -1,61 +1,61 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  isc_result_t ;
-typedef  int /*<<< orphan*/  isc_mem_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ISC_R_INVALIDFILE ; 
- int /*<<< orphan*/  ISC_R_NOMEMORY ; 
- int /*<<< orphan*/  ISC_R_SUCCESS ; 
- int /*<<< orphan*/  REQUIRE (int /*<<< orphan*/ ) ; 
- char* isc_mem_allocate (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  isc_mem_free (int /*<<< orphan*/ *,char*) ; 
- char* isc_mem_strdup (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  strlcpy (char*,char*,int) ; 
- char* strrchr (char*,char) ; 
+
+
+
+typedef int isc_result_t ;
+typedef int isc_mem_t ;
+
+
+ int ISC_R_INVALIDFILE ;
+ int ISC_R_NOMEMORY ;
+ int ISC_R_SUCCESS ;
+ int REQUIRE (int ) ;
+ char* isc_mem_allocate (int *,int) ;
+ int isc_mem_free (int *,char*) ;
+ char* isc_mem_strdup (int *,char*) ;
+ int strlcpy (char*,char*,int) ;
+ char* strrchr (char*,char) ;
 
 isc_result_t
 isc_file_splitpath(isc_mem_t *mctx, char *path, char **dirnam, char **basenam)
 {
-	char *dir, *file, *slash;
+ char *dir, *file, *slash;
 
-	REQUIRE(path != NULL);
+ REQUIRE(path != ((void*)0));
 
-	slash = strrchr(path, '/');
+ slash = strrchr(path, '/');
 
-	if (slash == path) {
-		file = ++slash;
-		dir = isc_mem_strdup(mctx, "/");
-	} else if (slash != NULL) {
-		file = ++slash;
-		dir = isc_mem_allocate(mctx, slash - path);
-		if (dir != NULL)
-			strlcpy(dir, path, slash - path);
-	} else {
-		file = path;
-		dir = isc_mem_strdup(mctx, ".");
-	}
+ if (slash == path) {
+  file = ++slash;
+  dir = isc_mem_strdup(mctx, "/");
+ } else if (slash != ((void*)0)) {
+  file = ++slash;
+  dir = isc_mem_allocate(mctx, slash - path);
+  if (dir != ((void*)0))
+   strlcpy(dir, path, slash - path);
+ } else {
+  file = path;
+  dir = isc_mem_strdup(mctx, ".");
+ }
 
-	if (dir == NULL)
-		return (ISC_R_NOMEMORY);
+ if (dir == ((void*)0))
+  return (ISC_R_NOMEMORY);
 
-	if (*file == '\0') {
-		isc_mem_free(mctx, dir);
-		return (ISC_R_INVALIDFILE);
-	}
+ if (*file == '\0') {
+  isc_mem_free(mctx, dir);
+  return (ISC_R_INVALIDFILE);
+ }
 
-	*dirnam = dir;
-	*basenam = file;
+ *dirnam = dir;
+ *basenam = file;
 
-	return (ISC_R_SUCCESS);
+ return (ISC_R_SUCCESS);
 }

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char* sds ;
-struct TYPE_5__ {int flags; int /*<<< orphan*/ * replicas_count; int /*<<< orphan*/ * replicate; int /*<<< orphan*/  slots_count; int /*<<< orphan*/  port; int /*<<< orphan*/  ip; int /*<<< orphan*/  name; scalar_t__ dirty; } ;
-typedef  TYPE_1__ clusterManagerNode ;
 
-/* Variables and functions */
- int CLUSTER_MANAGER_FLAG_SLAVE ; 
- char* clusterManagerNodeFlagString (TYPE_1__*) ; 
- char* clusterManagerNodeSlotsString (TYPE_1__*) ; 
- char* sdscat (char*,char*) ; 
- char* sdscatfmt (char*,char*,char*,int /*<<< orphan*/ *,...) ; 
- char* sdsempty () ; 
- int /*<<< orphan*/  sdsfree (char*) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef char* sds ;
+struct TYPE_5__ {int flags; int * replicas_count; int * replicate; int slots_count; int port; int ip; int name; scalar_t__ dirty; } ;
+typedef TYPE_1__ clusterManagerNode ;
+
+
+ int CLUSTER_MANAGER_FLAG_SLAVE ;
+ char* clusterManagerNodeFlagString (TYPE_1__*) ;
+ char* clusterManagerNodeSlotsString (TYPE_1__*) ;
+ char* sdscat (char*,char*) ;
+ char* sdscatfmt (char*,char*,char*,int *,...) ;
+ char* sdsempty () ;
+ int sdsfree (char*) ;
 
 __attribute__((used)) static sds clusterManagerNodeInfo(clusterManagerNode *node, int indent) {
     sds info = sdsempty();
@@ -32,8 +32,8 @@ __attribute__((used)) static sds clusterManagerNodeInfo(clusterManagerNode *node
     if (indent) info = sdscat(info, spaces);
     int is_master = !(node->flags & CLUSTER_MANAGER_FLAG_SLAVE);
     char *role = (is_master ? "M" : "S");
-    sds slots = NULL;
-    if (node->dirty && node->replicate != NULL)
+    sds slots = ((void*)0);
+    if (node->dirty && node->replicate != ((void*)0))
         info = sdscatfmt(info, "S: %S %s:%u", node->name, node->ip, node->port);
     else {
         slots = clusterManagerNodeSlotsString(node);
@@ -46,7 +46,7 @@ __attribute__((used)) static sds clusterManagerNodeInfo(clusterManagerNode *node
         sdsfree(slots);
         sdsfree(flags);
     }
-    if (node->replicate != NULL)
+    if (node->replicate != ((void*)0))
         info = sdscatfmt(info, "\n%s   replicates %S", spaces, node->replicate);
     else if (node->replicas_count)
         info = sdscatfmt(info, "\n%s   %U additional replica(s)",

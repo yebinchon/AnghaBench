@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct inode {int dummy; } ;
 struct file {int dummy; } ;
 
-/* Variables and functions */
- int EBUSY ; 
- int /*<<< orphan*/  atomic_read (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  kmemleak_enabled ; 
- int /*<<< orphan*/  kmemleak_seq_ops ; 
- int seq_open (struct file*,int /*<<< orphan*/ *) ; 
+
+ int EBUSY ;
+ int atomic_read (int *) ;
+ int kmemleak_enabled ;
+ int kmemleak_seq_ops ;
+ int seq_open (struct file*,int *) ;
 
 __attribute__((used)) static int kmemleak_open(struct inode *inode, struct file *file)
 {
-	if (!atomic_read(&kmemleak_enabled))
-		return -EBUSY;
+ if (!atomic_read(&kmemleak_enabled))
+  return -EBUSY;
 
-	return seq_open(file, &kmemleak_seq_ops);
+ return seq_open(file, &kmemleak_seq_ops);
 }

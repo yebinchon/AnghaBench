@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ esp_err_t ;
-struct TYPE_4__ {TYPE_1__* key; int /*<<< orphan*/  end; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ esp_err_t ;
+struct TYPE_4__ {TYPE_1__* key; int end; } ;
 struct TYPE_3__ {char** sval; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ESP_LOGE (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- scalar_t__ ESP_OK ; 
- int /*<<< orphan*/  TAG ; 
- int arg_parse (int,char**,void**) ; 
- int /*<<< orphan*/  arg_print_errors (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- scalar_t__ erase (char const*) ; 
- TYPE_2__ erase_args ; 
- int /*<<< orphan*/  esp_err_to_name (scalar_t__) ; 
- int /*<<< orphan*/  stderr ; 
+
+ int ESP_LOGE (int ,char*,int ) ;
+ scalar_t__ ESP_OK ;
+ int TAG ;
+ int arg_parse (int,char**,void**) ;
+ int arg_print_errors (int ,int ,char*) ;
+ scalar_t__ erase (char const*) ;
+ TYPE_2__ erase_args ;
+ int esp_err_to_name (scalar_t__) ;
+ int stderr ;
 
 __attribute__((used)) static int erase_value(int argc, char **argv)
 {

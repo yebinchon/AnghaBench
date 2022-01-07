@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint16_t ;
-typedef  int /*<<< orphan*/  tBT_UUID ;
-typedef  int /*<<< orphan*/  esp_gattc_service_elem_t ;
-typedef  int /*<<< orphan*/  esp_gatt_status_t ;
-typedef  int /*<<< orphan*/  esp_bt_uuid_t ;
-typedef  int /*<<< orphan*/  btgatt_db_element_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BTA_GATTC_GetServiceWithUUID (int,int /*<<< orphan*/ *,int /*<<< orphan*/ **,int*) ; 
- int /*<<< orphan*/  ESP_GATT_DB_PRIMARY_SERVICE ; 
- int /*<<< orphan*/  ESP_GATT_OK ; 
- int /*<<< orphan*/  btc_gattc_check_valid_param (int,int) ; 
- int /*<<< orphan*/  btc_gattc_fill_gatt_db_conversion (int,int,int /*<<< orphan*/ ,int,void*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  btc_to_bta_uuid (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  osi_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * osi_malloc (int) ; 
+
+
+
+typedef int uint16_t ;
+typedef int tBT_UUID ;
+typedef int esp_gattc_service_elem_t ;
+typedef int esp_gatt_status_t ;
+typedef int esp_bt_uuid_t ;
+typedef int btgatt_db_element_t ;
+
+
+ int BTA_GATTC_GetServiceWithUUID (int,int *,int **,int*) ;
+ int ESP_GATT_DB_PRIMARY_SERVICE ;
+ int ESP_GATT_OK ;
+ int btc_gattc_check_valid_param (int,int) ;
+ int btc_gattc_fill_gatt_db_conversion (int,int,int ,int,void*,int *) ;
+ int btc_to_bta_uuid (int *,int *) ;
+ int osi_free (int *) ;
+ int * osi_malloc (int) ;
 
 esp_gatt_status_t btc_ble_gattc_get_service(uint16_t conn_id, esp_bt_uuid_t *svc_uuid,
                                                            esp_gattc_service_elem_t *result,
                                                            uint16_t *count, uint16_t offset)
 {
     esp_gatt_status_t status;
-    btgatt_db_element_t *db = NULL;
+    btgatt_db_element_t *db = ((void*)0);
     int svc_num = 0;
-    tBT_UUID *bta_uuid = NULL;
+    tBT_UUID *bta_uuid = ((void*)0);
     if (svc_uuid) {
         bta_uuid = osi_malloc(sizeof(tBT_UUID));
         btc_to_bta_uuid(bta_uuid, svc_uuid);
@@ -56,7 +56,7 @@ esp_gatt_status_t btc_ble_gattc_get_service(uint16_t conn_id, esp_bt_uuid_t *svc
     }
 
     *count = svc_num;
-    //don't forget to free the db buffer after used.
+
     if (db) {
         osi_free(db);
     }

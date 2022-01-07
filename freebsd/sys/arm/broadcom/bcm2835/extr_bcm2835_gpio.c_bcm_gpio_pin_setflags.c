@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
 struct bcm_gpio_softc {int sc_gpio_npins; TYPE_1__* sc_gpio_pins; } ;
-typedef  int /*<<< orphan*/  device_t ;
-struct TYPE_2__ {int /*<<< orphan*/  gp_pin; } ;
+typedef int device_t ;
+struct TYPE_2__ {int gp_pin; } ;
 
-/* Variables and functions */
- int EINVAL ; 
- int /*<<< orphan*/  bcm_gpio_pin_configure (struct bcm_gpio_softc*,TYPE_1__*,int /*<<< orphan*/ ) ; 
- scalar_t__ bcm_gpio_pin_is_ro (struct bcm_gpio_softc*,int /*<<< orphan*/ ) ; 
- struct bcm_gpio_softc* device_get_softc (int /*<<< orphan*/ ) ; 
+
+ int EINVAL ;
+ int bcm_gpio_pin_configure (struct bcm_gpio_softc*,TYPE_1__*,int ) ;
+ scalar_t__ bcm_gpio_pin_is_ro (struct bcm_gpio_softc*,int ) ;
+ struct bcm_gpio_softc* device_get_softc (int ) ;
 
 __attribute__((used)) static int
 bcm_gpio_pin_setflags(device_t dev, uint32_t pin, uint32_t flags)
 {
-	struct bcm_gpio_softc *sc = device_get_softc(dev);
-	int i;
+ struct bcm_gpio_softc *sc = device_get_softc(dev);
+ int i;
 
-	for (i = 0; i < sc->sc_gpio_npins; i++) {
-		if (sc->sc_gpio_pins[i].gp_pin == pin)
-			break;
-	}
+ for (i = 0; i < sc->sc_gpio_npins; i++) {
+  if (sc->sc_gpio_pins[i].gp_pin == pin)
+   break;
+ }
 
-	if (i >= sc->sc_gpio_npins)
-		return (EINVAL);
+ if (i >= sc->sc_gpio_npins)
+  return (EINVAL);
 
-	/* We never touch on read-only/reserved pins. */
-	if (bcm_gpio_pin_is_ro(sc, pin))
-		return (EINVAL);
 
-	bcm_gpio_pin_configure(sc, &sc->sc_gpio_pins[i], flags);
+ if (bcm_gpio_pin_is_ro(sc, pin))
+  return (EINVAL);
 
-	return (0);
+ bcm_gpio_pin_configure(sc, &sc->sc_gpio_pins[i], flags);
+
+ return (0);
 }

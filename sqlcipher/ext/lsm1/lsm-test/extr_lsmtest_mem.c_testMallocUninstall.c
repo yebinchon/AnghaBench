@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  xFree; int /*<<< orphan*/  xRealloc; int /*<<< orphan*/  xMalloc; scalar_t__ pMemCtx; } ;
-typedef  TYPE_1__ lsm_env ;
-struct TYPE_7__ {int /*<<< orphan*/  (* xDelMutex ) (TYPE_2__*) ;int /*<<< orphan*/  xSaveFree; int /*<<< orphan*/  xSaveRealloc; int /*<<< orphan*/  xSaveMalloc; } ;
-typedef  TYPE_2__ TmGlobal ;
 
-/* Variables and functions */
- int /*<<< orphan*/  stub1 (TYPE_2__*) ; 
- int /*<<< orphan*/  tmLsmFree (TYPE_2__*) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int xFree; int xRealloc; int xMalloc; scalar_t__ pMemCtx; } ;
+typedef TYPE_1__ lsm_env ;
+struct TYPE_7__ {int (* xDelMutex ) (TYPE_2__*) ;int xSaveFree; int xSaveRealloc; int xSaveMalloc; } ;
+typedef TYPE_2__ TmGlobal ;
+
+
+ int stub1 (TYPE_2__*) ;
+ int tmLsmFree (TYPE_2__*) ;
 
 void testMallocUninstall(lsm_env *pEnv){
   TmGlobal *p = (TmGlobal *)pEnv->pMemCtx;

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  taskqid_t ;
-typedef  int /*<<< orphan*/  taskq_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  taskq_wait (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int taskqid_t ;
+typedef int taskq_t ;
+
+
+ int taskq_wait (int *) ;
 
 void
 taskq_wait_outstanding(taskq_t *tq, taskqid_t id)
 {
-	taskq_wait(tq);
+ taskq_wait(tq);
 }

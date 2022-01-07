@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_6__ ;
-typedef  struct TYPE_15__   TYPE_5__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_14__ {struct TYPE_14__* private_data; struct TYPE_14__* common; struct TYPE_14__* streams; int /*<<< orphan*/  mutex; int /*<<< orphan*/  list_work; int /*<<< orphan*/  (* close ) (TYPE_2__*) ;int /*<<< orphan*/ * thread; TYPE_1__* stream; int /*<<< orphan*/  est_frame_count; TYPE_5__* job; } ;
-typedef  TYPE_2__ sync_delta_t ;
-typedef  TYPE_2__ hb_work_private_t ;
-typedef  TYPE_2__ hb_work_object_t ;
-struct TYPE_15__ {scalar_t__ pass_id; int /*<<< orphan*/  h; } ;
-typedef  TYPE_5__ hb_job_t ;
+
+
+typedef struct TYPE_16__ TYPE_6__ ;
+typedef struct TYPE_15__ TYPE_5__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+struct TYPE_14__ {struct TYPE_14__* private_data; struct TYPE_14__* common; struct TYPE_14__* streams; int mutex; int list_work; int (* close ) (TYPE_2__*) ;int * thread; TYPE_1__* stream; int est_frame_count; TYPE_5__* job; } ;
+typedef TYPE_2__ sync_delta_t ;
+typedef TYPE_2__ hb_work_private_t ;
+typedef TYPE_2__ hb_work_object_t ;
+struct TYPE_15__ {scalar_t__ pass_id; int h; } ;
+typedef TYPE_5__ hb_job_t ;
 struct TYPE_16__ {int frame_count; } ;
-typedef  TYPE_6__ hb_interjob_t ;
-struct TYPE_13__ {int frame_count; int min_frame_duration; int max_frame_duration; int current_duration; int /*<<< orphan*/  scr_delay_queue; int /*<<< orphan*/  in_queue; int /*<<< orphan*/  delta_list; } ;
+typedef TYPE_6__ hb_interjob_t ;
+struct TYPE_13__ {int frame_count; int min_frame_duration; int max_frame_duration; int current_duration; int scr_delay_queue; int in_queue; int delta_list; } ;
 
-/* Variables and functions */
- scalar_t__ HB_PASS_ENCODE_1ST ; 
- int /*<<< orphan*/  free (TYPE_2__*) ; 
- TYPE_6__* hb_interjob_get (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hb_list_close (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  hb_list_empty (int /*<<< orphan*/ *) ; 
- TYPE_2__* hb_list_item (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hb_list_rem (int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  hb_lock_close (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  hb_log (char*,int,int,...) ; 
- int /*<<< orphan*/  hb_thread_close (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  stub1 (TYPE_2__*) ; 
+
+ scalar_t__ HB_PASS_ENCODE_1ST ;
+ int free (TYPE_2__*) ;
+ TYPE_6__* hb_interjob_get (int ) ;
+ int hb_list_close (int *) ;
+ int hb_list_empty (int *) ;
+ TYPE_2__* hb_list_item (int ,int ) ;
+ int hb_list_rem (int ,TYPE_2__*) ;
+ int hb_lock_close (int *) ;
+ int hb_log (char*,int,int,...) ;
+ int hb_thread_close (int **) ;
+ int stub1 (TYPE_2__*) ;
 
 __attribute__((used)) static void syncVideoClose( hb_work_object_t * w )
 {
-    hb_work_private_t * pv   = w->private_data;
-    hb_job_t          * job;
+    hb_work_private_t * pv = w->private_data;
+    hb_job_t * job;
 
-    if (pv == NULL)
+    if (pv == ((void*)0))
     {
         return;
     }
@@ -61,15 +61,15 @@ __attribute__((used)) static void syncVideoClose( hb_work_object_t * w )
                 pv->stream->current_duration);
     }
 
-    /* save data for second pass */
+
     if( job->pass_id == HB_PASS_ENCODE_1ST )
     {
-        /* Preserve frame count for better accuracy in pass 2 */
+
         hb_interjob_t * interjob = hb_interjob_get( job->h );
         interjob->frame_count = pv->stream->frame_count;
     }
     sync_delta_t * delta;
-    while ((delta = hb_list_item(pv->stream->delta_list, 0)) != NULL)
+    while ((delta = hb_list_item(pv->stream->delta_list, 0)) != ((void*)0))
     {
         hb_list_rem(pv->stream->delta_list, delta);
         free(delta);
@@ -78,12 +78,12 @@ __attribute__((used)) static void syncVideoClose( hb_work_object_t * w )
     hb_list_empty(&pv->stream->in_queue);
     hb_list_empty(&pv->stream->scr_delay_queue);
 
-    // Close work threads
+
     hb_work_object_t * work;
     while ((work = hb_list_item(pv->common->list_work, 0)))
     {
         hb_list_rem(pv->common->list_work, work);
-        if (work->thread != NULL)
+        if (work->thread != ((void*)0))
         {
             hb_thread_close(&work->thread);
         }
@@ -96,5 +96,5 @@ __attribute__((used)) static void syncVideoClose( hb_work_object_t * w )
     free(pv->common->streams);
     free(pv->common);
     free(pv);
-    w->private_data = NULL;
+    w->private_data = ((void*)0);
 }

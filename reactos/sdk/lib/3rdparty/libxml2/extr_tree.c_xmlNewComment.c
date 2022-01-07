@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* xmlNodePtr ;
-typedef  int /*<<< orphan*/  xmlNode ;
-typedef  int /*<<< orphan*/  xmlChar ;
-struct TYPE_5__ {int /*<<< orphan*/  content; int /*<<< orphan*/  name; int /*<<< orphan*/  type; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  XML_COMMENT_NODE ; 
- scalar_t__ __xmlRegisterCallbacks ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ xmlMalloc (int) ; 
- int /*<<< orphan*/  xmlRegisterNodeDefaultValue (TYPE_1__*) ; 
- int /*<<< orphan*/  xmlStrdup (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  xmlStringComment ; 
- int /*<<< orphan*/  xmlTreeErrMemory (char*) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef TYPE_1__* xmlNodePtr ;
+typedef int xmlNode ;
+typedef int xmlChar ;
+struct TYPE_5__ {int content; int name; int type; } ;
+
+
+ int XML_COMMENT_NODE ;
+ scalar_t__ __xmlRegisterCallbacks ;
+ int memset (TYPE_1__*,int ,int) ;
+ scalar_t__ xmlMalloc (int) ;
+ int xmlRegisterNodeDefaultValue (TYPE_1__*) ;
+ int xmlStrdup (int const*) ;
+ int xmlStringComment ;
+ int xmlTreeErrMemory (char*) ;
 
 xmlNodePtr
 xmlNewComment(const xmlChar *content) {
     xmlNodePtr cur;
 
-    /*
-     * Allocate a new node and fill the fields.
-     */
+
+
+
     cur = (xmlNodePtr) xmlMalloc(sizeof(xmlNode));
-    if (cur == NULL) {
-	xmlTreeErrMemory("building comment");
-	return(NULL);
+    if (cur == ((void*)0)) {
+ xmlTreeErrMemory("building comment");
+ return(((void*)0));
     }
     memset(cur, 0, sizeof(xmlNode));
     cur->type = XML_COMMENT_NODE;
 
     cur->name = xmlStringComment;
-    if (content != NULL) {
-	cur->content = xmlStrdup(content);
+    if (content != ((void*)0)) {
+ cur->content = xmlStrdup(content);
     }
 
     if ((__xmlRegisterCallbacks) && (xmlRegisterNodeDefaultValue))
-	xmlRegisterNodeDefaultValue(cur);
+ xmlRegisterNodeDefaultValue(cur);
     return(cur);
 }

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int x0; int xscale; int y0; int yscale; double dmax; double const angle; } ;
-typedef  TYPE_1__ VignetteContext ;
+typedef TYPE_1__ VignetteContext ;
 
-/* Variables and functions */
- double cos (double const) ; 
- double hypot (int const,int const) ; 
+
+ double cos (double const) ;
+ double hypot (int const,int const) ;
 
 __attribute__((used)) static double get_natural_factor(const VignetteContext *s, int x, int y)
 {
@@ -27,6 +27,6 @@ __attribute__((used)) static double get_natural_factor(const VignetteContext *s,
         return 0;
     } else {
         const double c = cos(s->angle * dnorm);
-        return (c*c)*(c*c); // do not remove braces, it helps compilers
+        return (c*c)*(c*c);
     }
 }

@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * LPTSTR ;
-typedef  int /*<<< orphan*/ * LPBYTE ;
-typedef  scalar_t__ LONG ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  int /*<<< orphan*/  DWORD ;
 
-/* Variables and functions */
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HKEY_CURRENT_USER ; 
- int /*<<< orphan*/ * HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  KEY_READ ; 
- int /*<<< orphan*/  REG_SZ ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- scalar_t__ RegOpenKeyEx (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ RegQueryValueEx (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  _T (char*) ; 
+
+
+
+typedef int * LPTSTR ;
+typedef int * LPBYTE ;
+typedef scalar_t__ LONG ;
+typedef int HKEY ;
+typedef int DWORD ;
+
+
+ scalar_t__ ERROR_SUCCESS ;
+ int GetProcessHeap () ;
+ int HKEY_CURRENT_USER ;
+ int * HeapAlloc (int ,int ,int ) ;
+ int HeapFree (int ,int ,int *) ;
+ int KEY_READ ;
+ int REG_SZ ;
+ int RegCloseKey (int ) ;
+ scalar_t__ RegOpenKeyEx (int ,int ,int ,int ,int *) ;
+ scalar_t__ RegQueryValueEx (int ,int *,int ,int *,int *,int *) ;
+ int _T (char*) ;
 
 __attribute__((used)) static LPTSTR
 GetCurrentScreenSaverValue(LPTSTR lpValue)
 {
     HKEY hKey;
-    LPTSTR lpBuf = NULL;
+    LPTSTR lpBuf = ((void*)0);
     DWORD BufSize, Type = REG_SZ;
     LONG Ret;
 
@@ -43,13 +43,13 @@ GetCurrentScreenSaverValue(LPTSTR lpValue)
                        KEY_READ,
                        &hKey);
     if (Ret != ERROR_SUCCESS)
-        return NULL;
+        return ((void*)0);
 
     Ret = RegQueryValueEx(hKey,
                           lpValue,
                           0,
                           &Type,
-                          NULL,
+                          ((void*)0),
                           &BufSize);
     if (Ret == ERROR_SUCCESS)
     {
@@ -67,7 +67,7 @@ GetCurrentScreenSaverValue(LPTSTR lpValue)
             if (Ret != ERROR_SUCCESS)
             {
                 HeapFree(GetProcessHeap(), 0, lpBuf);
-                lpBuf = NULL;
+                lpBuf = ((void*)0);
             }
         }
     }

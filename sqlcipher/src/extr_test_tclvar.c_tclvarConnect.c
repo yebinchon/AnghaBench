@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * interp; int /*<<< orphan*/  base; } ;
-typedef  TYPE_1__ tclvar_vtab ;
-typedef  int /*<<< orphan*/  sqlite3_vtab ;
-typedef  int /*<<< orphan*/  sqlite3 ;
-typedef  int /*<<< orphan*/  Tcl_Interp ;
 
-/* Variables and functions */
- int SQLITE_NOMEM ; 
- int SQLITE_OK ; 
- TYPE_1__* sqlite3MallocZero (int) ; 
- int /*<<< orphan*/  sqlite3_declare_vtab (int /*<<< orphan*/ *,char const*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * interp; int base; } ;
+typedef TYPE_1__ tclvar_vtab ;
+typedef int sqlite3_vtab ;
+typedef int sqlite3 ;
+typedef int Tcl_Interp ;
+
+
+ int SQLITE_NOMEM ;
+ int SQLITE_OK ;
+ TYPE_1__* sqlite3MallocZero (int) ;
+ int sqlite3_declare_vtab (int *,char const*) ;
 
 __attribute__((used)) static int tclvarConnect(
   sqlite3 *db,
@@ -31,12 +31,12 @@ __attribute__((used)) static int tclvarConnect(
   char **pzErr
 ){
   tclvar_vtab *pVtab;
-  static const char zSchema[] = 
+  static const char zSchema[] =
      "CREATE TABLE x("
-     "  name TEXT,"                       /* Base name */
-     "  arrayname TEXT,"                  /* Array index */
-     "  value TEXT,"                      /* Value */
-     "  fullname TEXT PRIMARY KEY"        /* base(index) name */
+     "  name TEXT,"
+     "  arrayname TEXT,"
+     "  value TEXT,"
+     "  fullname TEXT PRIMARY KEY"
      ") WITHOUT ROWID";
   pVtab = sqlite3MallocZero( sizeof(*pVtab) );
   if( pVtab==0 ) return SQLITE_NOMEM;

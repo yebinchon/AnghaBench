@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int ptrdiff_t ;
-typedef  int int32_t ;
 
-/* Variables and functions */
- int FFABS (int) ; 
- int FFMAX (int,int) ; 
- int FFMIN (int,int) ; 
+
+
+
+typedef int uint8_t ;
+typedef int ptrdiff_t ;
+typedef int int32_t ;
+
+
+ int FFABS (int) ;
+ int FFMAX (int,int) ;
+ int FFMIN (int,int) ;
 
 __attribute__((used)) static void x8_loop_filter(uint8_t *ptr, const ptrdiff_t a_stride,
                            const ptrdiff_t b_stride, int quant)
@@ -43,7 +43,7 @@ __attribute__((used)) static void x8_loop_filter(uint8_t *ptr, const ptrdiff_t a
             (FFABS(p3 - p4) <= ql) +
             (FFABS(p4 - p5) <= ql);
 
-        // You need at least 1 to be able to reach a total score of 6.
+
         if (t > 0) {
             t += (FFABS(p5 - p6) <= ql) +
                  (FFABS(p6 - p7) <= ql) +
@@ -60,7 +60,7 @@ __attribute__((used)) static void x8_loop_filter(uint8_t *ptr, const ptrdiff_t a
                 max = FFMAX(max, p5);
                 min = FFMIN(min, p8);
                 max = FFMAX(max, p8);
-                if (max - min < 2 * quant) { // early stop
+                if (max - min < 2 * quant) {
                     min = FFMIN(min, p2);
                     max = FFMAX(max, p2);
                     min = FFMIN(min, p4);
@@ -72,8 +72,8 @@ __attribute__((used)) static void x8_loop_filter(uint8_t *ptr, const ptrdiff_t a
                     if (max - min < 2 * quant) {
                         ptr[-2 * a_stride] = (4 * p2 + 3 * p3 + 1 * p7 + 4) >> 3;
                         ptr[-1 * a_stride] = (3 * p2 + 3 * p4 + 2 * p7 + 4) >> 3;
-                        ptr[0]             = (2 * p2 + 3 * p5 + 3 * p7 + 4) >> 3;
-                        ptr[1 * a_stride]  = (1 * p2 + 3 * p6 + 4 * p7 + 4) >> 3;
+                        ptr[0] = (2 * p2 + 3 * p5 + 3 * p7 + 4) >> 3;
+                        ptr[1 * a_stride] = (1 * p2 + 3 * p6 + 4 * p7 + 4) >> 3;
                         continue;
                     }
                 }
@@ -95,8 +95,8 @@ __attribute__((used)) static void x8_loop_filter(uint8_t *ptr, const ptrdiff_t a
                     int32_t sign;
 
                     sign = m >> 31;
-                    m    = (m ^ sign) - sign; // abs(m)
-                    m  >>= 1;
+                    m = (m ^ sign) - sign;
+                    m >>= 1;
 
                     x = 5 * x >> 3;
 
@@ -106,7 +106,7 @@ __attribute__((used)) static void x8_loop_filter(uint8_t *ptr, const ptrdiff_t a
                     x = (x ^ sign) - sign;
 
                     ptr[-1 * a_stride] -= x;
-                    ptr[0]             += x;
+                    ptr[0] += x;
                 }
             }
         }

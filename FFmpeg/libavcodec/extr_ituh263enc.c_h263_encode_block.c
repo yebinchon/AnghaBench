@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int int16_t ;
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int int16_t ;
 struct TYPE_8__ {int* permutated; } ;
-struct TYPE_10__ {int* block_last_index; int h263_flv; int /*<<< orphan*/  pb; TYPE_1__ intra_scantable; scalar_t__ mb_intra; scalar_t__ alt_inter_vlc; scalar_t__ h263_aic; } ;
+struct TYPE_10__ {int* block_last_index; int h263_flv; int pb; TYPE_1__ intra_scantable; scalar_t__ mb_intra; scalar_t__ alt_inter_vlc; scalar_t__ h263_aic; } ;
 struct TYPE_9__ {int** table_vlc; int n; } ;
-typedef  TYPE_2__ RLTable ;
-typedef  TYPE_3__ MpegEncContext ;
+typedef TYPE_2__ RLTable ;
+typedef TYPE_3__ MpegEncContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CONFIG_FLV_ENCODER ; 
- int /*<<< orphan*/  av_assert2 (int) ; 
- int /*<<< orphan*/  ff_flv2_encode_ac_esc (int /*<<< orphan*/ *,int,int,int,int) ; 
- TYPE_2__ ff_h263_rl_inter ; 
- TYPE_2__ ff_rl_intra_aic ; 
- int get_rl_index (TYPE_2__*,int,int,int) ; 
- int /*<<< orphan*/  put_bits (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  put_sbits (int /*<<< orphan*/ *,int,int) ; 
- scalar_t__* wrong_run ; 
+
+ int CONFIG_FLV_ENCODER ;
+ int av_assert2 (int) ;
+ int ff_flv2_encode_ac_esc (int *,int,int,int,int) ;
+ TYPE_2__ ff_h263_rl_inter ;
+ TYPE_2__ ff_rl_intra_aic ;
+ int get_rl_index (TYPE_2__*,int,int,int) ;
+ int put_bits (int *,int,int) ;
+ int put_sbits (int *,int,int) ;
+ scalar_t__* wrong_run ;
 
 __attribute__((used)) static void h263_encode_block(MpegEncContext * s, int16_t * block, int n)
 {
@@ -38,19 +38,19 @@ __attribute__((used)) static void h263_encode_block(MpegEncContext * s, int16_t 
 
     rl = &ff_h263_rl_inter;
     if (s->mb_intra && !s->h263_aic) {
-        /* DC coef */
+
         level = block[0];
-        /* 255 cannot be represented, so we clamp */
+
         if (level > 254) {
             level = 254;
             block[0] = 254;
         }
-        /* 0 cannot be represented also */
+
         else if (level < 1) {
             level = 1;
             block[0] = 1;
         }
-        if (level == 128) //FIXME check rv10
+        if (level == 128)
             put_bits(&s->pb, 8, 0xff);
         else
             put_bits(&s->pb, 8, level);
@@ -80,7 +80,7 @@ __attribute__((used)) static void h263_encode_block(MpegEncContext * s, int16_t 
                     code = get_rl_index(rl, last, run, level);
                     aic_code = get_rl_index(&ff_rl_intra_aic, last, run, level);
                     inter_vlc_bits += rl->table_vlc[code][1]+1;
-                    aic_vlc_bits   += ff_rl_intra_aic.table_vlc[aic_code][1]+1;
+                    aic_vlc_bits += ff_rl_intra_aic.table_vlc[aic_code][1]+1;
 
                     if (code == rl->n) {
                         inter_vlc_bits += 1+6+8-1;
@@ -99,7 +99,7 @@ __attribute__((used)) static void h263_encode_block(MpegEncContext * s, int16_t 
         }
     }
 
-    /* AC coefs */
+
     last_index = s->block_last_index[n];
     last_non_zero = i - 1;
     for (; i <= last_index; i++) {

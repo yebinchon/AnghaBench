@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64_t ;
-typedef  enum AVSampleFormat { ____Placeholder_AVSampleFormat } AVSampleFormat ;
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int uint64_t ;
+typedef enum AVSampleFormat { ____Placeholder_AVSampleFormat } AVSampleFormat ;
 struct TYPE_10__ {TYPE_2__** inputs; TYPE_2__** outputs; TYPE_1__* priv; } ;
-struct TYPE_9__ {int /*<<< orphan*/  in_channel_layouts; int /*<<< orphan*/  out_channel_layouts; } ;
+struct TYPE_9__ {int in_channel_layouts; int out_channel_layouts; } ;
 struct TYPE_8__ {int nb_inputs; int sample_rate; int nb_outputs; } ;
-typedef  TYPE_1__ LV2Context ;
-typedef  TYPE_2__ AVFilterLink ;
-typedef  int /*<<< orphan*/  AVFilterFormats ;
-typedef  TYPE_3__ AVFilterContext ;
-typedef  int /*<<< orphan*/  AVFilterChannelLayouts ;
+typedef TYPE_1__ LV2Context ;
+typedef TYPE_2__ AVFilterLink ;
+typedef int AVFilterFormats ;
+typedef TYPE_3__ AVFilterContext ;
+typedef int AVFilterChannelLayouts ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_CH_LAYOUT_STEREO ; 
-#define  AV_SAMPLE_FMT_FLTP 129 
-#define  AV_SAMPLE_FMT_NONE 128 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  FF_COUNT2LAYOUT (int) ; 
- int ff_add_channel_layout (int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * ff_all_samplerates () ; 
- int ff_channel_layouts_ref (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * ff_make_format_list (int const*) ; 
- int ff_set_common_channel_layouts (TYPE_3__*,int /*<<< orphan*/ *) ; 
- int ff_set_common_formats (TYPE_3__*,int /*<<< orphan*/ *) ; 
- int ff_set_common_samplerates (TYPE_3__*,int /*<<< orphan*/ *) ; 
+
+ int AVERROR (int ) ;
+ int AV_CH_LAYOUT_STEREO ;
+
+
+ int ENOMEM ;
+ int FF_COUNT2LAYOUT (int) ;
+ int ff_add_channel_layout (int **,int ) ;
+ int * ff_all_samplerates () ;
+ int ff_channel_layouts_ref (int *,int *) ;
+ int * ff_make_format_list (int const*) ;
+ int ff_set_common_channel_layouts (TYPE_3__*,int *) ;
+ int ff_set_common_formats (TYPE_3__*,int *) ;
+ int ff_set_common_samplerates (TYPE_3__*,int *) ;
 
 __attribute__((used)) static int query_formats(AVFilterContext *ctx)
 {
@@ -46,7 +46,7 @@ __attribute__((used)) static int query_formats(AVFilterContext *ctx)
     AVFilterChannelLayouts *layouts;
     AVFilterLink *outlink = ctx->outputs[0];
     static const enum AVSampleFormat sample_fmts[] = {
-        AV_SAMPLE_FMT_FLTP, AV_SAMPLE_FMT_NONE };
+        129, 128 };
     int ret;
 
     formats = ff_make_format_list(sample_fmts);
@@ -73,7 +73,7 @@ __attribute__((used)) static int query_formats(AVFilterContext *ctx)
     }
 
     if (s->nb_inputs == 2 && s->nb_outputs == 2) {
-        layouts = NULL;
+        layouts = ((void*)0);
         ret = ff_add_channel_layout(&layouts, AV_CH_LAYOUT_STEREO);
         if (ret < 0)
             return ret;
@@ -85,7 +85,7 @@ __attribute__((used)) static int query_formats(AVFilterContext *ctx)
             AVFilterLink *inlink = ctx->inputs[0];
             uint64_t inlayout = FF_COUNT2LAYOUT(s->nb_inputs);
 
-            layouts = NULL;
+            layouts = ((void*)0);
             ret = ff_add_channel_layout(&layouts, inlayout);
             if (ret < 0)
                 return ret;
@@ -103,7 +103,7 @@ __attribute__((used)) static int query_formats(AVFilterContext *ctx)
         if (s->nb_outputs >= 1) {
             uint64_t outlayout = FF_COUNT2LAYOUT(s->nb_outputs);
 
-            layouts = NULL;
+            layouts = ((void*)0);
             ret = ff_add_channel_layout(&layouts, outlayout);
             if (ret < 0)
                 return ret;

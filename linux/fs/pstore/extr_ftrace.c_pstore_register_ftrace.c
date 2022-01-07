@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  write; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  debugfs_create_dir (char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  debugfs_create_file (char*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- TYPE_1__* psinfo ; 
- int /*<<< orphan*/  pstore_ftrace_dir ; 
- int /*<<< orphan*/  pstore_knob_fops ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int write; } ;
+
+
+ int debugfs_create_dir (char*,int *) ;
+ int debugfs_create_file (char*,int,int ,int *,int *) ;
+ TYPE_1__* psinfo ;
+ int pstore_ftrace_dir ;
+ int pstore_knob_fops ;
 
 void pstore_register_ftrace(void)
 {
-	if (!psinfo->write)
-		return;
+ if (!psinfo->write)
+  return;
 
-	pstore_ftrace_dir = debugfs_create_dir("pstore", NULL);
+ pstore_ftrace_dir = debugfs_create_dir("pstore", ((void*)0));
 
-	debugfs_create_file("record_ftrace", 0600, pstore_ftrace_dir, NULL,
-			    &pstore_knob_fops);
+ debugfs_create_file("record_ftrace", 0600, pstore_ftrace_dir, ((void*)0),
+       &pstore_knob_fops);
 }

@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_int32_t ;
-typedef  int /*<<< orphan*/ * socket_t ;
-typedef  int /*<<< orphan*/  sock_evupcall ;
-typedef  int /*<<< orphan*/  errno_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  sock_catchevents_locked (int /*<<< orphan*/ *,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  socket_lock (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  socket_unlock (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int u_int32_t ;
+typedef int * socket_t ;
+typedef int sock_evupcall ;
+typedef int errno_t ;
+
+
+ int EINVAL ;
+ int sock_catchevents_locked (int *,int ,void*,int ) ;
+ int socket_lock (int *,int) ;
+ int socket_unlock (int *,int) ;
 
 errno_t
 sock_catchevents(socket_t sock, sock_evupcall ecallback, void *econtext,
     u_int32_t emask)
 {
-	if (sock == NULL)
-		return (EINVAL);
+ if (sock == ((void*)0))
+  return (EINVAL);
 
-	socket_lock(sock, 1);
-	sock_catchevents_locked(sock, ecallback, econtext, emask);
-	socket_unlock(sock, 1);
+ socket_lock(sock, 1);
+ sock_catchevents_locked(sock, ecallback, econtext, emask);
+ socket_unlock(sock, 1);
 
-	return (0);
+ return (0);
 }

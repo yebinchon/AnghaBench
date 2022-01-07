@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct frame_info {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/  ppc_lr_regnum; int /*<<< orphan*/  ppc_ctr_regnum; int /*<<< orphan*/  wordsize; } ;
-typedef  scalar_t__ CORE_ADDR ;
+struct TYPE_2__ {int ppc_lr_regnum; int ppc_ctr_regnum; int wordsize; } ;
+typedef scalar_t__ CORE_ADDR ;
 
-/* Variables and functions */
- scalar_t__ SIG_FRAME_PC_OFFSET ; 
- scalar_t__ TEXT_SEGMENT_BASE ; 
- int /*<<< orphan*/  current_gdbarch ; 
- TYPE_1__* gdbarch_tdep (int /*<<< orphan*/ ) ; 
- struct frame_info* get_current_frame () ; 
- scalar_t__ get_frame_base (struct frame_info*) ; 
- scalar_t__ read_memory_addr (scalar_t__,int /*<<< orphan*/ ) ; 
- int read_register (int /*<<< orphan*/ ) ; 
+
+ scalar_t__ SIG_FRAME_PC_OFFSET ;
+ scalar_t__ TEXT_SEGMENT_BASE ;
+ int current_gdbarch ;
+ TYPE_1__* gdbarch_tdep (int ) ;
+ struct frame_info* get_current_frame () ;
+ scalar_t__ get_frame_base (struct frame_info*) ;
+ scalar_t__ read_memory_addr (scalar_t__,int ) ;
+ int read_register (int ) ;
 
 __attribute__((used)) static CORE_ADDR
 branch_dest (int opcode, int instr, CORE_ADDR pc, CORE_ADDR safety)
@@ -38,55 +38,55 @@ branch_dest (int opcode, int instr, CORE_ADDR pc, CORE_ADDR safety)
   switch (opcode)
     {
     case 18:
-      immediate = ((instr & ~3) << 6) >> 6;	/* br unconditional */
+      immediate = ((instr & ~3) << 6) >> 6;
       if (absolute)
-	dest = immediate;
+ dest = immediate;
       else
-	dest = pc + immediate;
+ dest = pc + immediate;
       break;
 
     case 16:
-      immediate = ((instr & ~3) << 16) >> 16;	/* br conditional */
+      immediate = ((instr & ~3) << 16) >> 16;
       if (absolute)
-	dest = immediate;
+ dest = immediate;
       else
-	dest = pc + immediate;
+ dest = pc + immediate;
       break;
 
     case 19:
       ext_op = (instr >> 1) & 0x3ff;
 
-      if (ext_op == 16)		/* br conditional register */
-	{
+      if (ext_op == 16)
+ {
           dest = read_register (gdbarch_tdep (current_gdbarch)->ppc_lr_regnum) & ~3;
 
-	  /* If we are about to return from a signal handler, dest is
-	     something like 0x3c90.  The current frame is a signal handler
-	     caller frame, upon completion of the sigreturn system call
-	     execution will return to the saved PC in the frame.  */
-	  if (dest < TEXT_SEGMENT_BASE)
-	    {
-	      struct frame_info *fi;
 
-	      fi = get_current_frame ();
-	      if (fi != NULL)
-		dest = read_memory_addr (get_frame_base (fi) + SIG_FRAME_PC_OFFSET,
-					 gdbarch_tdep (current_gdbarch)->wordsize);
-	    }
-	}
 
-      else if (ext_op == 528)	/* br cond to count reg */
-	{
+
+
+   if (dest < TEXT_SEGMENT_BASE)
+     {
+       struct frame_info *fi;
+
+       fi = get_current_frame ();
+       if (fi != ((void*)0))
+  dest = read_memory_addr (get_frame_base (fi) + SIG_FRAME_PC_OFFSET,
+      gdbarch_tdep (current_gdbarch)->wordsize);
+     }
+ }
+
+      else if (ext_op == 528)
+ {
           dest = read_register (gdbarch_tdep (current_gdbarch)->ppc_ctr_regnum) & ~3;
 
-	  /* If we are about to execute a system call, dest is something
-	     like 0x22fc or 0x3b00.  Upon completion the system call
-	     will return to the address in the link register.  */
-	  if (dest < TEXT_SEGMENT_BASE)
+
+
+
+   if (dest < TEXT_SEGMENT_BASE)
             dest = read_register (gdbarch_tdep (current_gdbarch)->ppc_lr_regnum) & ~3;
-	}
+ }
       else
-	return -1;
+ return -1;
       break;
 
     default:

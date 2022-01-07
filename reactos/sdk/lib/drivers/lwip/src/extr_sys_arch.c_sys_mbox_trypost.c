@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sys_mbox_t ;
-typedef  int /*<<< orphan*/  err_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR_OK ; 
- int /*<<< orphan*/  sys_mbox_post (int /*<<< orphan*/ *,void*) ; 
+
+
+
+typedef int sys_mbox_t ;
+typedef int err_t ;
+
+
+ int ERR_OK ;
+ int sys_mbox_post (int *,void*) ;
 
 err_t
 sys_mbox_trypost(sys_mbox_t *mbox, void *msg)

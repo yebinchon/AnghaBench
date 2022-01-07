@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_8__ {int size; int /*<<< orphan*/ * data; } ;
-struct TYPE_7__ {int channels; int nb_extended_buf; TYPE_2__** extended_buf; TYPE_2__** buf; int /*<<< orphan*/ ** extended_data; int /*<<< orphan*/  format; scalar_t__ nb_samples; } ;
-typedef  TYPE_1__ AVFrame ;
-typedef  TYPE_2__ AVBufferRef ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHECK_CHANNELS_CONSISTENCY (TYPE_1__*) ; 
- int FF_ARRAY_ELEMS (TYPE_2__**) ; 
- scalar_t__ av_sample_fmt_is_planar (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_8__ {int size; int * data; } ;
+struct TYPE_7__ {int channels; int nb_extended_buf; TYPE_2__** extended_buf; TYPE_2__** buf; int ** extended_data; int format; scalar_t__ nb_samples; } ;
+typedef TYPE_1__ AVFrame ;
+typedef TYPE_2__ AVBufferRef ;
+
+
+ int CHECK_CHANNELS_CONSISTENCY (TYPE_1__*) ;
+ int FF_ARRAY_ELEMS (TYPE_2__**) ;
+ scalar_t__ av_sample_fmt_is_planar (int ) ;
 
 AVBufferRef *av_frame_get_plane_buffer(AVFrame *frame, int plane)
 {
@@ -31,14 +31,14 @@ AVBufferRef *av_frame_get_plane_buffer(AVFrame *frame, int plane)
     if (frame->nb_samples) {
         int channels = frame->channels;
         if (!channels)
-            return NULL;
+            return ((void*)0);
         CHECK_CHANNELS_CONSISTENCY(frame);
         planes = av_sample_fmt_is_planar(frame->format) ? channels : 1;
     } else
         planes = 4;
 
     if (plane < 0 || plane >= planes || !frame->extended_data[plane])
-        return NULL;
+        return ((void*)0);
     data = frame->extended_data[plane];
 
     for (i = 0; i < FF_ARRAY_ELEMS(frame->buf) && frame->buf[i]; i++) {
@@ -51,5 +51,5 @@ AVBufferRef *av_frame_get_plane_buffer(AVFrame *frame, int plane)
         if (data >= buf->data && data < buf->data + buf->size)
             return buf;
     }
-    return NULL;
+    return ((void*)0);
 }

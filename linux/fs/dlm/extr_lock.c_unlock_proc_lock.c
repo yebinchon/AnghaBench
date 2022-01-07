@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct dlm_ls {int dummy; } ;
-struct dlm_lkb {int /*<<< orphan*/  lkb_ua; } ;
+struct dlm_lkb {int lkb_ua; } ;
 struct dlm_args {int dummy; } ;
 
-/* Variables and functions */
- int DLM_EUNLOCK ; 
- int DLM_LKF_FORCEUNLOCK ; 
- int DLM_LKF_IVVALBLK ; 
- int /*<<< orphan*/  set_unlock_args (int,int /*<<< orphan*/ ,struct dlm_args*) ; 
- int unlock_lock (struct dlm_ls*,struct dlm_lkb*,struct dlm_args*) ; 
+
+ int DLM_EUNLOCK ;
+ int DLM_LKF_FORCEUNLOCK ;
+ int DLM_LKF_IVVALBLK ;
+ int set_unlock_args (int,int ,struct dlm_args*) ;
+ int unlock_lock (struct dlm_ls*,struct dlm_lkb*,struct dlm_args*) ;
 
 __attribute__((used)) static int unlock_proc_lock(struct dlm_ls *ls, struct dlm_lkb *lkb)
 {
-	struct dlm_args args;
-	int error;
+ struct dlm_args args;
+ int error;
 
-	set_unlock_args(DLM_LKF_FORCEUNLOCK | DLM_LKF_IVVALBLK,
-			lkb->lkb_ua, &args);
+ set_unlock_args(DLM_LKF_FORCEUNLOCK | DLM_LKF_IVVALBLK,
+   lkb->lkb_ua, &args);
 
-	error = unlock_lock(ls, lkb, &args);
-	if (error == -DLM_EUNLOCK)
-		error = 0;
-	return error;
+ error = unlock_lock(ls, lkb, &args);
+ if (error == -DLM_EUNLOCK)
+  error = 0;
+ return error;
 }

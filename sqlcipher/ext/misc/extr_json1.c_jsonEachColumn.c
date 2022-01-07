@@ -1,68 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
-typedef  int /*<<< orphan*/  sqlite3_vtab_cursor ;
-typedef  int /*<<< orphan*/  sqlite3_int64 ;
-typedef  int /*<<< orphan*/  sqlite3_context ;
+
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int u32 ;
+typedef int sqlite3_vtab_cursor ;
+typedef int sqlite3_int64 ;
+typedef int sqlite3_context ;
 struct TYPE_8__ {size_t* aUp; char const* zJson; TYPE_3__* aNode; } ;
-struct TYPE_10__ {size_t i; size_t eType; size_t iBegin; char* zRoot; TYPE_2__ sParse; int /*<<< orphan*/  bRecursive; int /*<<< orphan*/  iRowid; } ;
-struct TYPE_7__ {int /*<<< orphan*/  zJContent; int /*<<< orphan*/  iKey; } ;
-struct TYPE_9__ {int jnFlags; size_t eType; TYPE_1__ u; int /*<<< orphan*/  n; } ;
-typedef  int /*<<< orphan*/  JsonString ;
-typedef  TYPE_3__ JsonNode ;
-typedef  TYPE_4__ JsonEachCursor ;
-
-/* Variables and functions */
-#define  JEACH_ATOM 136 
-#define  JEACH_FULLKEY 135 
-#define  JEACH_ID 134 
-#define  JEACH_JSON 133 
-#define  JEACH_KEY 132 
-#define  JEACH_PARENT 131 
-#define  JEACH_PATH 130 
-#define  JEACH_TYPE 129 
-#define  JEACH_VALUE 128 
- int JNODE_LABEL ; 
- size_t JSON_ARRAY ; 
- size_t JSON_OBJECT ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  SQLITE_STATIC ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  jsonAppendChar (int /*<<< orphan*/ *,char) ; 
- int /*<<< orphan*/  jsonAppendRaw (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  jsonEachComputePath (TYPE_4__*,int /*<<< orphan*/ *,size_t) ; 
- int /*<<< orphan*/  jsonInit (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jsonPrintf (int,int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  jsonResult (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jsonReturn (TYPE_3__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- char const** jsonType ; 
- int /*<<< orphan*/  sqlite3_result_int64 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_result_text (int /*<<< orphan*/ *,char const*,int,int /*<<< orphan*/ ) ; 
- scalar_t__ strlen (char*) ; 
+struct TYPE_10__ {size_t i; size_t eType; size_t iBegin; char* zRoot; TYPE_2__ sParse; int bRecursive; int iRowid; } ;
+struct TYPE_7__ {int zJContent; int iKey; } ;
+struct TYPE_9__ {int jnFlags; size_t eType; TYPE_1__ u; int n; } ;
+typedef int JsonString ;
+typedef TYPE_3__ JsonNode ;
+typedef TYPE_4__ JsonEachCursor ;
+ int JNODE_LABEL ;
+ size_t JSON_ARRAY ;
+ size_t JSON_OBJECT ;
+ int SQLITE_OK ;
+ int SQLITE_STATIC ;
+ int assert (int) ;
+ int jsonAppendChar (int *,char) ;
+ int jsonAppendRaw (int *,char*,int) ;
+ int jsonEachComputePath (TYPE_4__*,int *,size_t) ;
+ int jsonInit (int *,int *) ;
+ int jsonPrintf (int,int *,char*,int ,...) ;
+ int jsonResult (int *) ;
+ int jsonReturn (TYPE_3__*,int *,int ) ;
+ char const** jsonType ;
+ int sqlite3_result_int64 (int *,int ) ;
+ int sqlite3_result_text (int *,char const*,int,int ) ;
+ scalar_t__ strlen (char*) ;
 
 __attribute__((used)) static int jsonEachColumn(
-  sqlite3_vtab_cursor *cur,   /* The cursor */
-  sqlite3_context *ctx,       /* First argument to sqlite3_result_...() */
-  int i                       /* Which column to return */
+  sqlite3_vtab_cursor *cur,
+  sqlite3_context *ctx,
+  int i
 ){
   JsonEachCursor *p = (JsonEachCursor*)cur;
   JsonNode *pThis = &p->sParse.aNode[p->i];
   switch( i ){
-    case JEACH_KEY: {
+    case 132: {
       if( p->i==0 ) break;
       if( p->eType==JSON_OBJECT ){
         jsonReturn(pThis, ctx, 0);
@@ -78,34 +67,34 @@ __attribute__((used)) static int jsonEachColumn(
       }
       break;
     }
-    case JEACH_VALUE: {
+    case 128: {
       if( pThis->jnFlags & JNODE_LABEL ) pThis++;
       jsonReturn(pThis, ctx, 0);
       break;
     }
-    case JEACH_TYPE: {
+    case 129: {
       if( pThis->jnFlags & JNODE_LABEL ) pThis++;
       sqlite3_result_text(ctx, jsonType[pThis->eType], -1, SQLITE_STATIC);
       break;
     }
-    case JEACH_ATOM: {
+    case 136: {
       if( pThis->jnFlags & JNODE_LABEL ) pThis++;
       if( pThis->eType>=JSON_ARRAY ) break;
       jsonReturn(pThis, ctx, 0);
       break;
     }
-    case JEACH_ID: {
-      sqlite3_result_int64(ctx, 
+    case 134: {
+      sqlite3_result_int64(ctx,
          (sqlite3_int64)p->i + ((pThis->jnFlags & JNODE_LABEL)!=0));
       break;
     }
-    case JEACH_PARENT: {
+    case 131: {
       if( p->i>p->iBegin && p->bRecursive ){
         sqlite3_result_int64(ctx, (sqlite3_int64)p->sParse.aUp[p->i]);
       }
       break;
     }
-    case JEACH_FULLKEY: {
+    case 135: {
       JsonString x;
       jsonInit(&x, ctx);
       if( p->bRecursive ){
@@ -125,7 +114,7 @@ __attribute__((used)) static int jsonEachColumn(
       jsonResult(&x);
       break;
     }
-    case JEACH_PATH: {
+    case 130: {
       if( p->bRecursive ){
         JsonString x;
         jsonInit(&x, ctx);
@@ -133,8 +122,8 @@ __attribute__((used)) static int jsonEachColumn(
         jsonResult(&x);
         break;
       }
-      /* For json_each() path and root are the same so fall through
-      ** into the root case */
+
+
     }
     default: {
       const char *zRoot = p->zRoot;
@@ -142,8 +131,8 @@ __attribute__((used)) static int jsonEachColumn(
       sqlite3_result_text(ctx, zRoot, -1, SQLITE_STATIC);
       break;
     }
-    case JEACH_JSON: {
-      assert( i==JEACH_JSON );
+    case 133: {
+      assert( i==133 );
       sqlite3_result_text(ctx, p->sParse.zJson, -1, SQLITE_STATIC);
       break;
     }

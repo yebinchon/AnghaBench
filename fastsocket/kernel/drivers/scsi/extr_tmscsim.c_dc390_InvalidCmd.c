@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct dc390_acb {TYPE_2__* pActiveDCB; } ;
 struct TYPE_4__ {TYPE_1__* pActiveSRB; } ;
 struct TYPE_3__ {int SRBState; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLEAR_FIFO_CMD ; 
- int /*<<< orphan*/  DC390_write8 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int SRB_MSGOUT ; 
- int SRB_START_ ; 
- int /*<<< orphan*/  ScsiCmd ; 
+
+ int CLEAR_FIFO_CMD ;
+ int DC390_write8 (int ,int ) ;
+ int SRB_MSGOUT ;
+ int SRB_START_ ;
+ int ScsiCmd ;
 
 __attribute__((used)) static void __inline__
 dc390_InvalidCmd(struct dc390_acb* pACB)
 {
-	if (pACB->pActiveDCB->pActiveSRB->SRBState & (SRB_START_ | SRB_MSGOUT))
-		DC390_write8(ScsiCmd, CLEAR_FIFO_CMD);
+ if (pACB->pActiveDCB->pActiveSRB->SRBState & (SRB_START_ | SRB_MSGOUT))
+  DC390_write8(ScsiCmd, CLEAR_FIFO_CMD);
 }

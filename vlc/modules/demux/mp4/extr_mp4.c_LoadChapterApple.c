@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_23__   TYPE_8__ ;
-typedef  struct TYPE_22__   TYPE_5__ ;
-typedef  struct TYPE_21__   TYPE_4__ ;
-typedef  struct TYPE_20__   TYPE_3__ ;
-typedef  struct TYPE_19__   TYPE_2__ ;
-typedef  struct TYPE_18__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ vlc_tick_t ;
-typedef  scalar_t__ uint32_t ;
-struct TYPE_19__ {scalar_t__ i_time_offset; int /*<<< orphan*/ * psz_name; } ;
-typedef  TYPE_2__ seekpoint_t ;
-typedef  int /*<<< orphan*/  p_buffer ;
+
+
+typedef struct TYPE_23__ TYPE_8__ ;
+typedef struct TYPE_22__ TYPE_5__ ;
+typedef struct TYPE_21__ TYPE_4__ ;
+typedef struct TYPE_20__ TYPE_3__ ;
+typedef struct TYPE_19__ TYPE_2__ ;
+typedef struct TYPE_18__ TYPE_1__ ;
+
+
+typedef scalar_t__ vlc_tick_t ;
+typedef scalar_t__ uint32_t ;
+struct TYPE_19__ {scalar_t__ i_time_offset; int * psz_name; } ;
+typedef TYPE_2__ seekpoint_t ;
+typedef int p_buffer ;
 struct TYPE_20__ {scalar_t__ i_sample; scalar_t__ i_sample_count; size_t i_chunk; TYPE_1__* chunk; } ;
-typedef  TYPE_3__ mp4_track_t ;
-struct TYPE_21__ {int /*<<< orphan*/  s; TYPE_5__* p_sys; } ;
-typedef  TYPE_4__ demux_t ;
+typedef TYPE_3__ mp4_track_t ;
+struct TYPE_21__ {int s; TYPE_5__* p_sys; } ;
+typedef TYPE_4__ demux_t ;
 struct TYPE_22__ {TYPE_8__* p_title; } ;
-typedef  TYPE_5__ demux_sys_t ;
-struct TYPE_23__ {int /*<<< orphan*/  seekpoint; int /*<<< orphan*/  i_seekpoint; } ;
+typedef TYPE_5__ demux_sys_t ;
+struct TYPE_23__ {int seekpoint; int i_seekpoint; } ;
 struct TYPE_18__ {scalar_t__ i_sample_first; scalar_t__ i_sample_count; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EnsureUTF8 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * FromCharset (char*,char const*,scalar_t__ const) ; 
- int GetWBE (char*) ; 
- scalar_t__ MP4_TrackGetDTS (TYPE_4__*,TYPE_3__*) ; 
- int /*<<< orphan*/  MP4_TrackGetPTSDelta (TYPE_4__*,TYPE_3__*,scalar_t__*) ; 
- int /*<<< orphan*/  MP4_TrackGetPos (TYPE_3__*) ; 
- scalar_t__ MP4_TrackGetReadSize (TYPE_3__*,scalar_t__*) ; 
- int /*<<< orphan*/  TAB_APPEND (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_2__*) ; 
- scalar_t__ const __MAX (scalar_t__,int /*<<< orphan*/ ) ; 
- scalar_t__ __MIN (int,scalar_t__ const) ; 
- int /*<<< orphan*/  memcmp (char const*,char*,int) ; 
- scalar_t__ stream_ReadU32 (int /*<<< orphan*/ ,char*,scalar_t__) ; 
- int /*<<< orphan*/ * strndup (char const*,scalar_t__ const) ; 
- TYPE_8__* vlc_input_title_New () ; 
- int /*<<< orphan*/  vlc_seekpoint_Delete (TYPE_2__*) ; 
- TYPE_2__* vlc_seekpoint_New () ; 
- int /*<<< orphan*/  vlc_stream_Seek (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
 
-__attribute__((used)) static void LoadChapterApple( demux_t  *p_demux, mp4_track_t *tk )
+ int EnsureUTF8 (int *) ;
+ int * FromCharset (char*,char const*,scalar_t__ const) ;
+ int GetWBE (char*) ;
+ scalar_t__ MP4_TrackGetDTS (TYPE_4__*,TYPE_3__*) ;
+ int MP4_TrackGetPTSDelta (TYPE_4__*,TYPE_3__*,scalar_t__*) ;
+ int MP4_TrackGetPos (TYPE_3__*) ;
+ scalar_t__ MP4_TrackGetReadSize (TYPE_3__*,scalar_t__*) ;
+ int TAB_APPEND (int ,int ,TYPE_2__*) ;
+ scalar_t__ const __MAX (scalar_t__,int ) ;
+ scalar_t__ __MIN (int,scalar_t__ const) ;
+ int memcmp (char const*,char*,int) ;
+ scalar_t__ stream_ReadU32 (int ,char*,scalar_t__) ;
+ int * strndup (char const*,scalar_t__ const) ;
+ TYPE_8__* vlc_input_title_New () ;
+ int vlc_seekpoint_Delete (TYPE_2__*) ;
+ TYPE_2__* vlc_seekpoint_New () ;
+ int vlc_stream_Seek (int ,int ) ;
+
+__attribute__((used)) static void LoadChapterApple( demux_t *p_demux, mp4_track_t *tk )
 {
     demux_sys_t *p_sys = p_demux->p_sys;
 
@@ -73,14 +73,14 @@ __attribute__((used)) static void LoadChapterApple( demux_t  *p_demux, mp4_track
                 const char *psnz_string = &p_buffer[2];
 
                 seekpoint_t *s = vlc_seekpoint_New();
-                if( s == NULL ) continue;
+                if( s == ((void*)0) ) continue;
 
                 if( i_string > 1 && !memcmp( psnz_string, "\xFF\xFE", 2 ) )
                     s->psz_name = FromCharset( "UTF-16LE", psnz_string, i_string );
                 else
                     s->psz_name = strndup( psnz_string, i_string );
 
-                if( s->psz_name == NULL )
+                if( s->psz_name == ((void*)0) )
                 {
                     vlc_seekpoint_Delete( s );
                     continue;

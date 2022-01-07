@@ -1,62 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct dwarf2_cu {int dummy; } ;
 struct die_info {int tag; } ;
 struct cleanup {int dummy; } ;
-
-/* Variables and functions */
-#define  DW_TAG_array_type 146 
-#define  DW_TAG_base_type 145 
-#define  DW_TAG_class_type 144 
-#define  DW_TAG_const_type 143 
-#define  DW_TAG_enumeration_type 142 
-#define  DW_TAG_pointer_type 141 
-#define  DW_TAG_ptr_to_member_type 140 
-#define  DW_TAG_reference_type 139 
-#define  DW_TAG_restrict_type 138 
-#define  DW_TAG_rvalue_reference_type 137 
-#define  DW_TAG_string_type 136 
-#define  DW_TAG_structure_type 135 
-#define  DW_TAG_subprogram 134 
-#define  DW_TAG_subrange_type 133 
-#define  DW_TAG_subroutine_type 132 
-#define  DW_TAG_typedef 131 
-#define  DW_TAG_union_type 130 
-#define  DW_TAG_unspecified_type 129 
-#define  DW_TAG_volatile_type 128 
- int /*<<< orphan*/  complaint (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- char* determine_prefix (struct die_info*,struct dwarf2_cu*) ; 
- int /*<<< orphan*/  do_cleanups (struct cleanup*) ; 
- int /*<<< orphan*/  dwarf_tag_name (int) ; 
- struct cleanup* make_cleanup (int /*<<< orphan*/ ,char*) ; 
- char const* processing_current_prefix ; 
- int /*<<< orphan*/  read_array_type (struct die_info*,struct dwarf2_cu*) ; 
- int /*<<< orphan*/  read_base_type (struct die_info*,struct dwarf2_cu*) ; 
- int /*<<< orphan*/  read_enumeration_type (struct die_info*,struct dwarf2_cu*) ; 
- int /*<<< orphan*/  read_structure_type (struct die_info*,struct dwarf2_cu*) ; 
- int /*<<< orphan*/  read_subrange_type (struct die_info*,struct dwarf2_cu*) ; 
- int /*<<< orphan*/  read_subroutine_type (struct die_info*,struct dwarf2_cu*) ; 
- int /*<<< orphan*/  read_tag_const_type (struct die_info*,struct dwarf2_cu*) ; 
- int /*<<< orphan*/  read_tag_pointer_type (struct die_info*,struct dwarf2_cu*) ; 
- int /*<<< orphan*/  read_tag_ptr_to_member_type (struct die_info*,struct dwarf2_cu*) ; 
- int /*<<< orphan*/  read_tag_reference_type (struct die_info*,struct dwarf2_cu*) ; 
- int /*<<< orphan*/  read_tag_restrict_type (struct die_info*,struct dwarf2_cu*) ; 
- int /*<<< orphan*/  read_tag_string_type (struct die_info*,struct dwarf2_cu*) ; 
- int /*<<< orphan*/  read_tag_unspecified_type (struct die_info*,struct dwarf2_cu*) ; 
- int /*<<< orphan*/  read_tag_volatile_type (struct die_info*,struct dwarf2_cu*) ; 
- int /*<<< orphan*/  read_typedef (struct die_info*,struct dwarf2_cu*) ; 
- int /*<<< orphan*/  symfile_complaints ; 
- int /*<<< orphan*/  xfree ; 
+ int complaint (int *,char*,int ) ;
+ char* determine_prefix (struct die_info*,struct dwarf2_cu*) ;
+ int do_cleanups (struct cleanup*) ;
+ int dwarf_tag_name (int) ;
+ struct cleanup* make_cleanup (int ,char*) ;
+ char const* processing_current_prefix ;
+ int read_array_type (struct die_info*,struct dwarf2_cu*) ;
+ int read_base_type (struct die_info*,struct dwarf2_cu*) ;
+ int read_enumeration_type (struct die_info*,struct dwarf2_cu*) ;
+ int read_structure_type (struct die_info*,struct dwarf2_cu*) ;
+ int read_subrange_type (struct die_info*,struct dwarf2_cu*) ;
+ int read_subroutine_type (struct die_info*,struct dwarf2_cu*) ;
+ int read_tag_const_type (struct die_info*,struct dwarf2_cu*) ;
+ int read_tag_pointer_type (struct die_info*,struct dwarf2_cu*) ;
+ int read_tag_ptr_to_member_type (struct die_info*,struct dwarf2_cu*) ;
+ int read_tag_reference_type (struct die_info*,struct dwarf2_cu*) ;
+ int read_tag_restrict_type (struct die_info*,struct dwarf2_cu*) ;
+ int read_tag_string_type (struct die_info*,struct dwarf2_cu*) ;
+ int read_tag_unspecified_type (struct die_info*,struct dwarf2_cu*) ;
+ int read_tag_volatile_type (struct die_info*,struct dwarf2_cu*) ;
+ int read_typedef (struct die_info*,struct dwarf2_cu*) ;
+ int symfile_complaints ;
+ int xfree ;
 
 __attribute__((used)) static void
 read_type_die (struct die_info *die, struct dwarf2_cu *cu)
@@ -65,61 +44,61 @@ read_type_die (struct die_info *die, struct dwarf2_cu *cu)
   const char *old_prefix = processing_current_prefix;
   struct cleanup *back_to = make_cleanup (xfree, prefix);
   processing_current_prefix = prefix;
-  
+
   switch (die->tag)
     {
-    case DW_TAG_class_type:
-    case DW_TAG_structure_type:
-    case DW_TAG_union_type:
+    case 144:
+    case 135:
+    case 130:
       read_structure_type (die, cu);
       break;
-    case DW_TAG_enumeration_type:
+    case 142:
       read_enumeration_type (die, cu);
       break;
-    case DW_TAG_subprogram:
-    case DW_TAG_subroutine_type:
+    case 134:
+    case 132:
       read_subroutine_type (die, cu);
       break;
-    case DW_TAG_array_type:
+    case 146:
       read_array_type (die, cu);
       break;
-    case DW_TAG_pointer_type:
+    case 141:
       read_tag_pointer_type (die, cu);
       break;
-    case DW_TAG_unspecified_type:
+    case 129:
       read_tag_unspecified_type (die, cu);
       break;
-    case DW_TAG_ptr_to_member_type:
+    case 140:
       read_tag_ptr_to_member_type (die, cu);
       break;
-    case DW_TAG_reference_type:
-    case DW_TAG_rvalue_reference_type:
+    case 139:
+    case 137:
       read_tag_reference_type (die, cu);
       break;
-    case DW_TAG_const_type:
+    case 143:
       read_tag_const_type (die, cu);
       break;
-    case DW_TAG_volatile_type:
+    case 128:
       read_tag_volatile_type (die, cu);
       break;
-    case DW_TAG_restrict_type:
+    case 138:
       read_tag_restrict_type (die, cu);
       break;
-    case DW_TAG_string_type:
+    case 136:
       read_tag_string_type (die, cu);
       break;
-    case DW_TAG_typedef:
+    case 131:
       read_typedef (die, cu);
       break;
-    case DW_TAG_subrange_type:
+    case 133:
       read_subrange_type (die, cu);
       break;
-    case DW_TAG_base_type:
+    case 145:
       read_base_type (die, cu);
       break;
     default:
       complaint (&symfile_complaints, "unexepected tag in read_type_die: '%s'",
-		 dwarf_tag_name (die->tag));
+   dwarf_tag_name (die->tag));
       break;
     }
 

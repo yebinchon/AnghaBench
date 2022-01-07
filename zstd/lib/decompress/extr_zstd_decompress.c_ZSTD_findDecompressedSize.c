@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int U32 ;
-typedef  int /*<<< orphan*/  BYTE ;
 
-/* Variables and functions */
- int MEM_readLE32 (void const*) ; 
- unsigned long long ZSTD_CONTENTSIZE_ERROR ; 
- int const ZSTD_MAGIC_SKIPPABLE_MASK ; 
- int const ZSTD_MAGIC_SKIPPABLE_START ; 
- int /*<<< orphan*/  ZSTD_f_zstd1 ; 
- size_t ZSTD_findFrameCompressedSize (void const*,size_t) ; 
- unsigned long long ZSTD_getFrameContentSize (void const*,size_t) ; 
- scalar_t__ ZSTD_isError (size_t const) ; 
- size_t ZSTD_startingInputLength (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert (int) ; 
- size_t readSkippableFrameSize (void const*,size_t) ; 
+
+
+
+typedef int U32 ;
+typedef int BYTE ;
+
+
+ int MEM_readLE32 (void const*) ;
+ unsigned long long ZSTD_CONTENTSIZE_ERROR ;
+ int const ZSTD_MAGIC_SKIPPABLE_MASK ;
+ int const ZSTD_MAGIC_SKIPPABLE_START ;
+ int ZSTD_f_zstd1 ;
+ size_t ZSTD_findFrameCompressedSize (void const*,size_t) ;
+ unsigned long long ZSTD_getFrameContentSize (void const*,size_t) ;
+ scalar_t__ ZSTD_isError (size_t const) ;
+ size_t ZSTD_startingInputLength (int ) ;
+ int assert (int) ;
+ size_t readSkippableFrameSize (void const*,size_t) ;
 
 unsigned long long ZSTD_findDecompressedSize(const void* src, size_t srcSize)
 {
@@ -45,14 +45,14 @@ unsigned long long ZSTD_findDecompressedSize(const void* src, size_t srcSize)
             continue;
         }
 
-        {   unsigned long long const ret = ZSTD_getFrameContentSize(src, srcSize);
+        { unsigned long long const ret = ZSTD_getFrameContentSize(src, srcSize);
             if (ret >= ZSTD_CONTENTSIZE_ERROR) return ret;
 
-            /* check for overflow */
+
             if (totalDstSize + ret < totalDstSize) return ZSTD_CONTENTSIZE_ERROR;
             totalDstSize += ret;
         }
-        {   size_t const frameSrcSize = ZSTD_findFrameCompressedSize(src, srcSize);
+        { size_t const frameSrcSize = ZSTD_findFrameCompressedSize(src, srcSize);
             if (ZSTD_isError(frameSrcSize)) {
                 return ZSTD_CONTENTSIZE_ERROR;
             }
@@ -60,7 +60,7 @@ unsigned long long ZSTD_findDecompressedSize(const void* src, size_t srcSize)
             src = (const BYTE *)src + frameSrcSize;
             srcSize -= frameSrcSize;
         }
-    }  /* while (srcSize >= ZSTD_frameHeaderSize_prefix) */
+    }
 
     if (srcSize) return ZSTD_CONTENTSIZE_ERROR;
 

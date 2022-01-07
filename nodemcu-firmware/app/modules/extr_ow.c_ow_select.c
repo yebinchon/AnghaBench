@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char uint8_t ;
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MOD_CHECK_ID (int /*<<< orphan*/ ,unsigned int) ; 
- unsigned int luaL_checkinteger (int /*<<< orphan*/ *,int) ; 
- char* luaL_checklstring (int /*<<< orphan*/ *,int,size_t*) ; 
- int luaL_error (int /*<<< orphan*/ *,char*) ; 
- scalar_t__ lua_istable (int /*<<< orphan*/ *,int) ; 
- size_t lua_objlen (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pop (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_rawgeti (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  onewire_select (unsigned int,char*) ; 
- int /*<<< orphan*/  ow ; 
+
+
+
+typedef char uint8_t ;
+typedef int lua_State ;
+
+
+ int MOD_CHECK_ID (int ,unsigned int) ;
+ unsigned int luaL_checkinteger (int *,int) ;
+ char* luaL_checklstring (int *,int,size_t*) ;
+ int luaL_error (int *,char*) ;
+ scalar_t__ lua_istable (int *,int) ;
+ size_t lua_objlen (int *,int) ;
+ int lua_pop (int *,int) ;
+ int lua_rawgeti (int *,int,int) ;
+ int onewire_select (unsigned int,char*) ;
+ int ow ;
 
 __attribute__((used)) static int ow_select( lua_State *L )
 {

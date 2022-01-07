@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  enum AVPixelFormat { ____Placeholder_AVPixelFormat } AVPixelFormat ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef enum AVPixelFormat { ____Placeholder_AVPixelFormat } AVPixelFormat ;
 struct TYPE_8__ {TYPE_1__* priv; TYPE_2__** inputs; } ;
-struct TYPE_7__ {int format; int /*<<< orphan*/  h; int /*<<< orphan*/  w; TYPE_3__* src; } ;
-struct TYPE_6__ {int /*<<< orphan*/  hwframes_ref; } ;
-typedef  TYPE_1__ HWDownloadContext ;
-typedef  TYPE_2__ AVFilterLink ;
-typedef  TYPE_3__ AVFilterContext ;
+struct TYPE_7__ {int format; int h; int w; TYPE_3__* src; } ;
+struct TYPE_6__ {int hwframes_ref; } ;
+typedef TYPE_1__ HWDownloadContext ;
+typedef TYPE_2__ AVFilterLink ;
+typedef TYPE_3__ AVFilterContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_HWFRAME_TRANSFER_DIRECTION_FROM ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int AV_PIX_FMT_NONE ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  av_freep (int**) ; 
- int /*<<< orphan*/  av_get_pix_fmt_name (int) ; 
- int av_hwframe_transfer_get_formats (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int**,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_log (TYPE_1__*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
+
+ int AVERROR (int ) ;
+ int AV_HWFRAME_TRANSFER_DIRECTION_FROM ;
+ int AV_LOG_ERROR ;
+ int AV_PIX_FMT_NONE ;
+ int EINVAL ;
+ int av_freep (int**) ;
+ int av_get_pix_fmt_name (int) ;
+ int av_hwframe_transfer_get_formats (int ,int ,int**,int ) ;
+ int av_log (TYPE_1__*,int ,char*,int ) ;
 
 __attribute__((used)) static int hwdownload_config_output(AVFilterLink *outlink)
 {
     AVFilterContext *avctx = outlink->src;
-    AVFilterLink *inlink   = avctx->inputs[0];
+    AVFilterLink *inlink = avctx->inputs[0];
     HWDownloadContext *ctx = avctx->priv;
     enum AVPixelFormat *formats;
     int err, i, found;

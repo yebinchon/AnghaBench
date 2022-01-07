@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  TypeName ;
-typedef  int /*<<< orphan*/  StringInfo ;
 
-/* Variables and functions */
- int /*<<< orphan*/  WRITE_BOOL_FIELD (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WRITE_INT_FIELD (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WRITE_LOCATION_FIELD (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WRITE_NODE_FIELD (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WRITE_NODE_TYPE (char*) ; 
- int /*<<< orphan*/  WRITE_OID_FIELD (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  arrayBounds ; 
- int /*<<< orphan*/  location ; 
- int /*<<< orphan*/  names ; 
- int /*<<< orphan*/  pct_type ; 
- int /*<<< orphan*/  setof ; 
- int /*<<< orphan*/  typeOid ; 
- int /*<<< orphan*/  typemod ; 
- int /*<<< orphan*/  typmods ; 
+
+
+
+typedef int TypeName ;
+typedef int StringInfo ;
+
+
+ int WRITE_BOOL_FIELD (int ) ;
+ int WRITE_INT_FIELD (int ) ;
+ int WRITE_LOCATION_FIELD (int ) ;
+ int WRITE_NODE_FIELD (int ) ;
+ int WRITE_NODE_TYPE (char*) ;
+ int WRITE_OID_FIELD (int ) ;
+ int arrayBounds ;
+ int location ;
+ int names ;
+ int pct_type ;
+ int setof ;
+ int typeOid ;
+ int typemod ;
+ int typmods ;
 
 __attribute__((used)) static void
 _outTypeName(StringInfo str, const TypeName *node)
 {
-	WRITE_NODE_TYPE("TYPENAME");
+ WRITE_NODE_TYPE("TYPENAME");
 
-	WRITE_NODE_FIELD(names);
-	WRITE_OID_FIELD(typeOid);
-	WRITE_BOOL_FIELD(setof);
-	WRITE_BOOL_FIELD(pct_type);
-	WRITE_NODE_FIELD(typmods);
-	WRITE_INT_FIELD(typemod);
-	WRITE_NODE_FIELD(arrayBounds);
-	WRITE_LOCATION_FIELD(location);
+ WRITE_NODE_FIELD(names);
+ WRITE_OID_FIELD(typeOid);
+ WRITE_BOOL_FIELD(setof);
+ WRITE_BOOL_FIELD(pct_type);
+ WRITE_NODE_FIELD(typmods);
+ WRITE_INT_FIELD(typemod);
+ WRITE_NODE_FIELD(arrayBounds);
+ WRITE_LOCATION_FIELD(location);
 }

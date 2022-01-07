@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  enum XML_Error { ____Placeholder_XML_Error } XML_Error ;
-typedef  TYPE_1__* XML_Parser ;
-struct TYPE_7__ {int* map; int /*<<< orphan*/ * data; int /*<<< orphan*/  (* release ) (int /*<<< orphan*/ *) ;int /*<<< orphan*/ * convert; } ;
-typedef  TYPE_2__ XML_Encoding ;
-typedef  int /*<<< orphan*/  XML_Char ;
-struct TYPE_6__ {int /*<<< orphan*/ * m_encoding; int /*<<< orphan*/  (* m_unknownEncodingRelease ) (int /*<<< orphan*/ *) ;int /*<<< orphan*/ * m_unknownEncodingData; int /*<<< orphan*/  m_unknownEncodingMem; scalar_t__ m_ns; int /*<<< orphan*/  m_unknownEncodingHandlerData; scalar_t__ (* m_unknownEncodingHandler ) (int /*<<< orphan*/ ,int /*<<< orphan*/  const*,TYPE_2__*) ;} ;
-typedef  int /*<<< orphan*/  ENCODING ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MALLOC (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int XML_ERROR_NONE ; 
- int XML_ERROR_NO_MEMORY ; 
- int XML_ERROR_UNKNOWN_ENCODING ; 
- int /*<<< orphan*/ * XmlInitUnknownEncoding (int /*<<< orphan*/ ,int*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * XmlInitUnknownEncodingNS (int /*<<< orphan*/ ,int*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  XmlSizeOfUnknownEncoding () ; 
- scalar_t__ stub1 (int /*<<< orphan*/ ,int /*<<< orphan*/  const*,TYPE_2__*) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * stub3 (int /*<<< orphan*/ ,int*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub4 (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef enum XML_Error { ____Placeholder_XML_Error } XML_Error ;
+typedef TYPE_1__* XML_Parser ;
+struct TYPE_7__ {int* map; int * data; int (* release ) (int *) ;int * convert; } ;
+typedef TYPE_2__ XML_Encoding ;
+typedef int XML_Char ;
+struct TYPE_6__ {int * m_encoding; int (* m_unknownEncodingRelease ) (int *) ;int * m_unknownEncodingData; int m_unknownEncodingMem; scalar_t__ m_ns; int m_unknownEncodingHandlerData; scalar_t__ (* m_unknownEncodingHandler ) (int ,int const*,TYPE_2__*) ;} ;
+typedef int ENCODING ;
+
+
+ int MALLOC (TYPE_1__*,int ) ;
+ int XML_ERROR_NONE ;
+ int XML_ERROR_NO_MEMORY ;
+ int XML_ERROR_UNKNOWN_ENCODING ;
+ int * XmlInitUnknownEncoding (int ,int*,int *,int *) ;
+ int * XmlInitUnknownEncodingNS (int ,int*,int *,int *) ;
+ int XmlSizeOfUnknownEncoding () ;
+ scalar_t__ stub1 (int ,int const*,TYPE_2__*) ;
+ int stub2 (int *) ;
+ int * stub3 (int ,int*,int *,int *) ;
+ int stub4 (int *) ;
 
 __attribute__((used)) static enum XML_Error
 handleUnknownEncoding(XML_Parser parser, const XML_Char *encodingName)
@@ -41,9 +41,9 @@ handleUnknownEncoding(XML_Parser parser, const XML_Char *encodingName)
     int i;
     for (i = 0; i < 256; i++)
       info.map[i] = -1;
-    info.convert = NULL;
-    info.data = NULL;
-    info.release = NULL;
+    info.convert = ((void*)0);
+    info.data = ((void*)0);
+    info.release = ((void*)0);
     if (parser->m_unknownEncodingHandler(parser->m_unknownEncodingHandlerData, encodingName,
                                &info)) {
       ENCODING *enc;
@@ -66,7 +66,7 @@ handleUnknownEncoding(XML_Parser parser, const XML_Char *encodingName)
         return XML_ERROR_NONE;
       }
     }
-    if (info.release != NULL)
+    if (info.release != ((void*)0))
       info.release(info.data);
   }
   return XML_ERROR_UNKNOWN_ENCODING;

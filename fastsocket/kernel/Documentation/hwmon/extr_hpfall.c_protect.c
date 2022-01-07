@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  unload_heads_path ; 
- int /*<<< orphan*/  write_int (int /*<<< orphan*/ ,int) ; 
+ int unload_heads_path ;
+ int write_int (int ,int) ;
 
 void protect(int seconds)
 {
-	write_int(unload_heads_path, seconds*1000);
+ write_int(unload_heads_path, seconds*1000);
 }

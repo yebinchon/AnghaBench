@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct lev_photo_change_album_order {int user_id; int album_id; int album_id_near; } ;
 
-/* Variables and functions */
- scalar_t__ LEV_PHOTO_CHANGE_ALBUM_ORDER ; 
- int MY_LOG_EVENT_HANDLER (int /*<<< orphan*/ ,int) ; 
- struct lev_photo_change_album_order* alloc_log_event (scalar_t__,int,int) ; 
- int /*<<< orphan*/  change_album_order ; 
- int mode ; 
+
+ scalar_t__ LEV_PHOTO_CHANGE_ALBUM_ORDER ;
+ int MY_LOG_EVENT_HANDLER (int ,int) ;
+ struct lev_photo_change_album_order* alloc_log_event (scalar_t__,int,int) ;
+ int change_album_order ;
+ int mode ;
 
 int do_change_album_order (int uid, int aid, int aid_near, int is_next) {
   if (aid == 0 || aid_near == aid) {

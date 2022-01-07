@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  btc_config_section_iter_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BTC_BLE_STORAGE_DEV_TYPE_STR ; 
- int BT_DEVICE_TYPE_BLE ; 
- int /*<<< orphan*/  btc_config_get_int (char const*,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  btc_config_lock () ; 
- int /*<<< orphan*/ * btc_config_section_begin () ; 
- int /*<<< orphan*/  const* btc_config_section_end () ; 
- char* btc_config_section_name (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/ * btc_config_section_next (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  btc_config_unlock () ; 
- int /*<<< orphan*/  string_is_bdaddr (char const*) ; 
+
+
+
+typedef int uint32_t ;
+typedef int btc_config_section_iter_t ;
+
+
+ int BTC_BLE_STORAGE_DEV_TYPE_STR ;
+ int BT_DEVICE_TYPE_BLE ;
+ int btc_config_get_int (char const*,int ,int*) ;
+ int btc_config_lock () ;
+ int * btc_config_section_begin () ;
+ int const* btc_config_section_end () ;
+ char* btc_config_section_name (int const*) ;
+ int * btc_config_section_next (int const*) ;
+ int btc_config_unlock () ;
+ int string_is_bdaddr (char const*) ;
 
 int btc_storage_get_num_ble_bond_devices(void)
 {

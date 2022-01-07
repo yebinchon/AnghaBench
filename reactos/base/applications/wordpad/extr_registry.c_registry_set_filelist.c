@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-struct TYPE_3__ {int cbSize; scalar_t__ dwItemData; int /*<<< orphan*/  fMask; } ;
-typedef  TYPE_1__ MENUITEMINFOW ;
-typedef  int /*<<< orphan*/ * LPWSTR ;
-typedef  int /*<<< orphan*/ * LPCWSTR ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  int /*<<< orphan*/  HMENU ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  int /*<<< orphan*/  BYTE ;
 
-/* Variables and functions */
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  FALSE ; 
- int FILELIST_ENTRIES ; 
- int /*<<< orphan*/  GetMenu (int /*<<< orphan*/ ) ; 
- scalar_t__ GetMenuItemInfoW (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,TYPE_1__*) ; 
- scalar_t__ ID_FILE_RECENT1 ; 
- int /*<<< orphan*/  MIIM_DATA ; 
- int /*<<< orphan*/  REG_SZ ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RegSetValueExW (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int) ; 
- int /*<<< orphan*/  key_recentfiles ; 
- scalar_t__ lstrcmpiW (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int lstrlenW (int /*<<< orphan*/ *) ; 
- scalar_t__ registry_get_handle (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  registry_read_filelist (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  var_file ; 
- int /*<<< orphan*/  wsprintfW (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
+struct TYPE_3__ {int cbSize; scalar_t__ dwItemData; int fMask; } ;
+typedef TYPE_1__ MENUITEMINFOW ;
+typedef int * LPWSTR ;
+typedef int * LPCWSTR ;
+typedef int HWND ;
+typedef int HMENU ;
+typedef int HKEY ;
+typedef int DWORD ;
+typedef int BYTE ;
+
+
+ scalar_t__ ERROR_SUCCESS ;
+ int FALSE ;
+ int FILELIST_ENTRIES ;
+ int GetMenu (int ) ;
+ scalar_t__ GetMenuItemInfoW (int ,scalar_t__,int ,TYPE_1__*) ;
+ scalar_t__ ID_FILE_RECENT1 ;
+ int MIIM_DATA ;
+ int REG_SZ ;
+ int RegCloseKey (int ) ;
+ int RegSetValueExW (int ,int *,int ,int ,int const*,int) ;
+ int key_recentfiles ;
+ scalar_t__ lstrcmpiW (int *,int *) ;
+ int lstrlenW (int *) ;
+ scalar_t__ registry_get_handle (int *,int *,int ) ;
+ int registry_read_filelist (int ) ;
+ int var_file ;
+ int wsprintfW (int *,int ,int) ;
 
 void registry_set_filelist(LPCWSTR newFile, HWND hMainWnd)
 {
@@ -58,7 +58,7 @@ void registry_set_filelist(LPCWSTR newFile, HWND hMainWnd)
         mi.fMask = MIIM_DATA;
 
         for(i = 0; i < FILELIST_ENTRIES; i++)
-            pFiles[i] = NULL;
+            pFiles[i] = ((void*)0);
 
         for(i = 0; GetMenuItemInfoW(hMenu, ID_FILE_RECENT1+i, FALSE, &mi); i++)
             pFiles[i] = (LPWSTR)mi.dwItemData;
@@ -74,7 +74,7 @@ void registry_set_filelist(LPCWSTR newFile, HWND hMainWnd)
                     {
                         pFiles[i-j] = pFiles[i-j-1];
                     }
-                    pFiles[0] = NULL;
+                    pFiles[0] = ((void*)0);
                     break;
                 }
             }

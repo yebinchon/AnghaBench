@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  data ;
-struct TYPE_11__ {scalar_t__ status; int /*<<< orphan*/  kill_at; int /*<<< orphan*/  sock; } ;
-typedef  TYPE_1__ TCP_Client_Connection ;
 
-/* Variables and functions */
- scalar_t__ TCP_CLIENT_CONFIRMED ; 
- scalar_t__ TCP_CLIENT_CONNECTING ; 
- scalar_t__ TCP_CLIENT_DISCONNECTED ; 
- scalar_t__ TCP_CLIENT_PROXY_HTTP_CONNECTING ; 
- scalar_t__ TCP_CLIENT_PROXY_SOCKS5_CONNECTING ; 
- scalar_t__ TCP_CLIENT_PROXY_SOCKS5_UNCONFIRMED ; 
- scalar_t__ TCP_CLIENT_UNCONFIRMED ; 
- int TCP_SERVER_HANDSHAKE_SIZE ; 
- int /*<<< orphan*/  do_confirmed_TCP (TYPE_1__*) ; 
- int /*<<< orphan*/  generate_handshake (TYPE_1__*) ; 
- scalar_t__ handle_handshake (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int proxy_http_read_connection_response (TYPE_1__*) ; 
- int /*<<< orphan*/  proxy_socks5_generate_connection_request (TYPE_1__*) ; 
- int proxy_socks5_read_connection_response (TYPE_1__*) ; 
- int read_TCP_packet (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- scalar_t__ send_pending_data (TYPE_1__*) ; 
- int socks5_read_handshake_response (TYPE_1__*) ; 
- int /*<<< orphan*/  unix_time () ; 
- int /*<<< orphan*/  unix_time_update () ; 
+
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int data ;
+struct TYPE_11__ {scalar_t__ status; int kill_at; int sock; } ;
+typedef TYPE_1__ TCP_Client_Connection ;
+
+
+ scalar_t__ TCP_CLIENT_CONFIRMED ;
+ scalar_t__ TCP_CLIENT_CONNECTING ;
+ scalar_t__ TCP_CLIENT_DISCONNECTED ;
+ scalar_t__ TCP_CLIENT_PROXY_HTTP_CONNECTING ;
+ scalar_t__ TCP_CLIENT_PROXY_SOCKS5_CONNECTING ;
+ scalar_t__ TCP_CLIENT_PROXY_SOCKS5_UNCONFIRMED ;
+ scalar_t__ TCP_CLIENT_UNCONFIRMED ;
+ int TCP_SERVER_HANDSHAKE_SIZE ;
+ int do_confirmed_TCP (TYPE_1__*) ;
+ int generate_handshake (TYPE_1__*) ;
+ scalar_t__ handle_handshake (TYPE_1__*,int *) ;
+ int proxy_http_read_connection_response (TYPE_1__*) ;
+ int proxy_socks5_generate_connection_request (TYPE_1__*) ;
+ int proxy_socks5_read_connection_response (TYPE_1__*) ;
+ int read_TCP_packet (int ,int *,int) ;
+ scalar_t__ send_pending_data (TYPE_1__*) ;
+ int socks5_read_handshake_response (TYPE_1__*) ;
+ int unix_time () ;
+ int unix_time_update () ;
 
 void do_TCP_connection(TCP_Client_Connection *TCP_connection)
 {

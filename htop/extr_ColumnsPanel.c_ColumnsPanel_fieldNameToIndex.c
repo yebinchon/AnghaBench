@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  name; } ;
 
-/* Variables and functions */
- int Platform_numberOfFields ; 
- TYPE_1__* Process_fields ; 
- scalar_t__ String_eq (char const*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int name; } ;
+
+
+ int Platform_numberOfFields ;
+ TYPE_1__* Process_fields ;
+ scalar_t__ String_eq (char const*,int ) ;
 
 int ColumnsPanel_fieldNameToIndex(const char* name) {
    for (int j = 1; j <= Platform_numberOfFields; j++) {

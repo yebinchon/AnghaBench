@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uv_tcp_t ;
-typedef  int /*<<< orphan*/  uv_pipe_t ;
-typedef  int /*<<< orphan*/  uv_connect_t ;
+
+
+
+
+typedef int uv_tcp_t ;
+typedef int uv_pipe_t ;
+typedef int uv_connect_t ;
 struct sockaddr {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- scalar_t__ MAX_SIMULTANEOUS_CONNECTS ; 
- scalar_t__ TARGET_CONNECTIONS ; 
- scalar_t__ TCP ; 
- int /*<<< orphan*/  TEST_PIPENAME ; 
- int /*<<< orphan*/  connect_addr ; 
- int /*<<< orphan*/  connect_cb ; 
- int /*<<< orphan*/  loop ; 
- scalar_t__ max_connect_socket ; 
- int /*<<< orphan*/ * pipe_write_handles ; 
- scalar_t__ req_alloc () ; 
- int /*<<< orphan*/ * tcp_write_handles ; 
- scalar_t__ type ; 
- int /*<<< orphan*/  uv_pipe_connect (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int uv_pipe_init (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int uv_tcp_connect (int /*<<< orphan*/ *,int /*<<< orphan*/ *,struct sockaddr const*,int /*<<< orphan*/ ) ; 
- int uv_tcp_init (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ write_sockets ; 
+
+ int ASSERT (int) ;
+ scalar_t__ MAX_SIMULTANEOUS_CONNECTS ;
+ scalar_t__ TARGET_CONNECTIONS ;
+ scalar_t__ TCP ;
+ int TEST_PIPENAME ;
+ int connect_addr ;
+ int connect_cb ;
+ int loop ;
+ scalar_t__ max_connect_socket ;
+ int * pipe_write_handles ;
+ scalar_t__ req_alloc () ;
+ int * tcp_write_handles ;
+ scalar_t__ type ;
+ int uv_pipe_connect (int *,int *,int ,int ) ;
+ int uv_pipe_init (int ,int *,int ) ;
+ int uv_tcp_connect (int *,int *,struct sockaddr const*,int ) ;
+ int uv_tcp_init (int ,int *) ;
+ scalar_t__ write_sockets ;
 
 __attribute__((used)) static void maybe_connect_some(void) {
   uv_connect_t* req;

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-struct TYPE_5__ {int i_logo_version; int i_logo_id; int i_download_data_id; size_t i_logo_char; int /*<<< orphan*/  p_logo_char; } ;
-typedef  TYPE_1__ ts_arib_logo_dr_t ;
 
-/* Variables and functions */
- TYPE_1__* calloc (int,int) ; 
- int /*<<< orphan*/  malloc (size_t) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int const*,size_t) ; 
- int /*<<< orphan*/  ts_arib_logo_dr_Delete (TYPE_1__*) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_5__ {int i_logo_version; int i_logo_id; int i_download_data_id; size_t i_logo_char; int p_logo_char; } ;
+typedef TYPE_1__ ts_arib_logo_dr_t ;
+
+
+ TYPE_1__* calloc (int,int) ;
+ int malloc (size_t) ;
+ int memcpy (int ,int const*,size_t) ;
+ int ts_arib_logo_dr_Delete (TYPE_1__*) ;
 
 ts_arib_logo_dr_t * ts_arib_logo_dr_Decode( const uint8_t *p_data, size_t i_data )
 {
     if( i_data < 2 )
-        return NULL;
+        return ((void*)0);
 
     ts_arib_logo_dr_t *p_dr = calloc( 1, sizeof(*p_dr) );
     if( p_dr )
@@ -64,5 +64,5 @@ ts_arib_logo_dr_t * ts_arib_logo_dr_Decode( const uint8_t *p_data, size_t i_data
         }
         ts_arib_logo_dr_Delete( p_dr );
     }
-    return NULL;
+    return ((void*)0);
 }

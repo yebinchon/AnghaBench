@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
 struct TYPE_2__ {int SR; } ;
-typedef  int /*<<< orphan*/  FLASH_Status ;
+typedef int FLASH_Status ;
 
-/* Variables and functions */
- TYPE_1__* FLASH ; 
- int /*<<< orphan*/  FLASH_BUSY ; 
- int /*<<< orphan*/  FLASH_COMPLETE ; 
- int /*<<< orphan*/  FLASH_ERROR_OPERATION ; 
- int /*<<< orphan*/  FLASH_ERROR_PROGRAM ; 
- int /*<<< orphan*/  FLASH_ERROR_WRP ; 
- int FLASH_FLAG_BSY ; 
- int FLASH_FLAG_OPERR ; 
- int FLASH_FLAG_WRPERR ; 
+
+ TYPE_1__* FLASH ;
+ int FLASH_BUSY ;
+ int FLASH_COMPLETE ;
+ int FLASH_ERROR_OPERATION ;
+ int FLASH_ERROR_PROGRAM ;
+ int FLASH_ERROR_WRP ;
+ int FLASH_FLAG_BSY ;
+ int FLASH_FLAG_OPERR ;
+ int FLASH_FLAG_WRPERR ;
 
 FLASH_Status FLASH_GetStatus(void)
 {
   FLASH_Status flashstatus = FLASH_COMPLETE;
-  
-  if((FLASH->SR & FLASH_FLAG_BSY) == FLASH_FLAG_BSY) 
+
+  if((FLASH->SR & FLASH_FLAG_BSY) == FLASH_FLAG_BSY)
   {
     flashstatus = FLASH_BUSY;
   }
-  else 
-  {  
+  else
+  {
     if((FLASH->SR & FLASH_FLAG_WRPERR) != (uint32_t)0x00)
-    { 
+    {
       flashstatus = FLASH_ERROR_WRP;
     }
-    else 
+    else
     {
       if((FLASH->SR & (uint32_t)0xEF) != (uint32_t)0x00)
       {
-        flashstatus = FLASH_ERROR_PROGRAM; 
+        flashstatus = FLASH_ERROR_PROGRAM;
       }
       else
       {
@@ -59,6 +59,6 @@ FLASH_Status FLASH_GetStatus(void)
       }
     }
   }
-  /* Return the FLASH Status */
+
   return flashstatus;
 }

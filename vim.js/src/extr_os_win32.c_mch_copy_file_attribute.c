@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  char_u ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PlatformId () ; 
- scalar_t__ VER_PLATFORM_WIN32_NT ; 
- int /*<<< orphan*/  copy_infostreams (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ g_PlatformId ; 
+
+
+
+typedef int char_u ;
+
+
+ int PlatformId () ;
+ scalar_t__ VER_PLATFORM_WIN32_NT ;
+ int copy_infostreams (int *,int *) ;
+ scalar_t__ g_PlatformId ;
 
 int
 mch_copy_file_attribute(char_u *from, char_u *to)
 {
-#ifdef FEAT_MBYTE
-    /* File streams only work on Windows NT and later. */
-    PlatformId();
-    if (g_PlatformId == VER_PLATFORM_WIN32_NT)
-	copy_infostreams(from, to);
-#endif
+
+
+
+
+
+
     return 0;
 }

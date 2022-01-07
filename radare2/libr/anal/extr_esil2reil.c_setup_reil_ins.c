@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_5__ {TYPE_1__* Reil; } ;
-struct TYPE_4__ {scalar_t__ seq_num; int /*<<< orphan*/  addr; } ;
-typedef  TYPE_2__ RAnalEsil ;
+struct TYPE_4__ {scalar_t__ seq_num; int addr; } ;
+typedef TYPE_2__ RAnalEsil ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static int setup_reil_ins(RAnalEsil *esil, const char *op) {
-	esil->Reil->addr++;      // Increment the address location.
-	esil->Reil->seq_num = 0; // Reset the sequencing.
-	return 0;
+ esil->Reil->addr++;
+ esil->Reil->seq_num = 0;
+ return 0;
 }

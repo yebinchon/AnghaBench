@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int UCHAR ;
 
-/* Variables and functions */
- scalar_t__ IsZero (int*,int) ; 
+
+
+
+typedef int UCHAR ;
+
+
+ scalar_t__ IsZero (int*,int) ;
 
 bool IsValidUnicastMacAddress(UCHAR *mac)
 {
-	// Validate arguments
-	if (mac == NULL)
-	{
-		return false;
-	}
 
-	if (mac[0] & 0x01)
-	{
-		return false;
-	}
+ if (mac == ((void*)0))
+ {
+  return 0;
+ }
 
-	if (IsZero(mac, 6))
-	{
-		return false;
-	}
+ if (mac[0] & 0x01)
+ {
+  return 0;
+ }
 
-	return true;
+ if (IsZero(mac, 6))
+ {
+  return 0;
+ }
+
+ return 1;
 }

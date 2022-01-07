@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u64 ;
-struct TYPE_2__ {int /*<<< orphan*/  function; } ;
-struct rt_bandwidth {TYPE_1__ rt_period_timer; int /*<<< orphan*/  rt_runtime_lock; int /*<<< orphan*/  rt_runtime; int /*<<< orphan*/  rt_period; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLOCK_MONOTONIC ; 
- int /*<<< orphan*/  HRTIMER_MODE_REL ; 
- int /*<<< orphan*/  hrtimer_init (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ns_to_ktime (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sched_rt_period_timer ; 
- int /*<<< orphan*/  spin_lock_init (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u64 ;
+struct TYPE_2__ {int function; } ;
+struct rt_bandwidth {TYPE_1__ rt_period_timer; int rt_runtime_lock; int rt_runtime; int rt_period; } ;
+
+
+ int CLOCK_MONOTONIC ;
+ int HRTIMER_MODE_REL ;
+ int hrtimer_init (TYPE_1__*,int ,int ) ;
+ int ns_to_ktime (int ) ;
+ int sched_rt_period_timer ;
+ int spin_lock_init (int *) ;
 
 __attribute__((used)) static
 void init_rt_bandwidth(struct rt_bandwidth *rt_b, u64 period, u64 runtime)
 {
-	rt_b->rt_period = ns_to_ktime(period);
-	rt_b->rt_runtime = runtime;
+ rt_b->rt_period = ns_to_ktime(period);
+ rt_b->rt_runtime = runtime;
 
-	spin_lock_init(&rt_b->rt_runtime_lock);
+ spin_lock_init(&rt_b->rt_runtime_lock);
 
-	hrtimer_init(&rt_b->rt_period_timer,
-			CLOCK_MONOTONIC, HRTIMER_MODE_REL);
-	rt_b->rt_period_timer.function = sched_rt_period_timer;
+ hrtimer_init(&rt_b->rt_period_timer,
+   CLOCK_MONOTONIC, HRTIMER_MODE_REL);
+ rt_b->rt_period_timer.function = sched_rt_period_timer;
 }

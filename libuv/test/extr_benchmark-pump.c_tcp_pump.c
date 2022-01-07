@@ -1,31 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- int /*<<< orphan*/  MAKE_VALGRIND_HAPPY () ; 
- int MAX_WRITE_HANDLES ; 
- int TARGET_CONNECTIONS ; 
- int /*<<< orphan*/  TCP ; 
- int /*<<< orphan*/  TEST_PORT ; 
- int /*<<< orphan*/  UV_RUN_DEFAULT ; 
- int /*<<< orphan*/  connect_addr ; 
- int /*<<< orphan*/  loop ; 
- int /*<<< orphan*/  maybe_connect_some () ; 
- int /*<<< orphan*/  type ; 
- int /*<<< orphan*/  uv_default_loop () ; 
- scalar_t__ uv_ip4_addr (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  uv_run (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int ASSERT (int) ;
+ int MAKE_VALGRIND_HAPPY () ;
+ int MAX_WRITE_HANDLES ;
+ int TARGET_CONNECTIONS ;
+ int TCP ;
+ int TEST_PORT ;
+ int UV_RUN_DEFAULT ;
+ int connect_addr ;
+ int loop ;
+ int maybe_connect_some () ;
+ int type ;
+ int uv_default_loop () ;
+ scalar_t__ uv_ip4_addr (char*,int ,int *) ;
+ int uv_run (int ,int ) ;
 
 __attribute__((used)) static void tcp_pump(int n) {
   ASSERT(n <= MAX_WRITE_HANDLES);
@@ -36,7 +28,7 @@ __attribute__((used)) static void tcp_pump(int n) {
 
   ASSERT(0 == uv_ip4_addr("127.0.0.1", TEST_PORT, &connect_addr));
 
-  /* Start making connections */
+
   maybe_connect_some();
 
   uv_run(loop, UV_RUN_DEFAULT);

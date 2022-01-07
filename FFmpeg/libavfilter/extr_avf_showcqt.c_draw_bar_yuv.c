@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_3__ {int width; int* linesize; int format; int /*<<< orphan*/ ** data; } ;
-typedef  int /*<<< orphan*/  ColorFloat ;
-typedef  TYPE_1__ AVFrame ;
 
-/* Variables and functions */
- int AV_PIX_FMT_YUV420P ; 
- int AV_PIX_FMT_YUV422P ; 
- int AV_PIX_FMT_YUV444P ; 
- int /*<<< orphan*/  DRAW_BAR_WITHOUT_CHROMA (int) ; 
- int /*<<< orphan*/  DRAW_BAR_WITH_CHROMA (int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_3__ {int width; int* linesize; int format; int ** data; } ;
+typedef int ColorFloat ;
+typedef TYPE_1__ AVFrame ;
+
+
+ int AV_PIX_FMT_YUV420P ;
+ int AV_PIX_FMT_YUV422P ;
+ int AV_PIX_FMT_YUV444P ;
+ int DRAW_BAR_WITHOUT_CHROMA (int) ;
+ int DRAW_BAR_WITH_CHROMA (int) ;
 
 __attribute__((used)) static void draw_bar_yuv(AVFrame *out, const float *h, const float *rcp_h,
                          const ColorFloat *c, int bar_h, float bar_t)

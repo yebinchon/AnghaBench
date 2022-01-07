@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct in_addr {int dummy; } ;
 
-/* Variables and functions */
- scalar_t__ inet_aton (char*,struct in_addr*) ; 
- int /*<<< orphan*/  note (char*,char*) ; 
- char* strtok (char*,char*) ; 
+
+ scalar_t__ inet_aton (char*,struct in_addr*) ;
+ int note (char*,char*) ;
+ char* strtok (char*,char*) ;
 
 int
 ipv4addrs(char * buf)
@@ -29,8 +29,8 @@ ipv4addrs(char * buf)
     do {
         tmp = strtok(buf, " ");
         note("got %s", tmp);
-		if( tmp && inet_aton(tmp, &jnk) ) i++;
-        buf = NULL;
+  if( tmp && inet_aton(tmp, &jnk) ) i++;
+        buf = ((void*)0);
     } while( tmp );
 
     return (i);

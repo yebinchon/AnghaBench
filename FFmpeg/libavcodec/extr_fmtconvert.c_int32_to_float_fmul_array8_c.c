@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  int32_t ;
-struct TYPE_3__ {int /*<<< orphan*/  (* int32_to_float_fmul_scalar ) (float*,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int) ;} ;
-typedef  TYPE_1__ FmtConvertContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  stub1 (float*,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int int32_t ;
+struct TYPE_3__ {int (* int32_to_float_fmul_scalar ) (float*,int const*,int ,int) ;} ;
+typedef TYPE_1__ FmtConvertContext ;
+
+
+ int stub1 (float*,int const*,int ,int) ;
 
 __attribute__((used)) static void int32_to_float_fmul_array8_c(FmtConvertContext *c, float *dst,
                                          const int32_t *src, const float *mul,

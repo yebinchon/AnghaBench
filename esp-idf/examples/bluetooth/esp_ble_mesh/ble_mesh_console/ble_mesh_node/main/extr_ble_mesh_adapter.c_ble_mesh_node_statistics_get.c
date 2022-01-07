@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  package_num; int /*<<< orphan*/  statistics; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ESP_LOGI (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TAG ; 
- int /*<<< orphan*/  ble_mesh_node_sema ; 
- TYPE_1__ ble_mesh_node_statistics ; 
- int /*<<< orphan*/  portMAX_DELAY ; 
- int /*<<< orphan*/  xSemaphoreGive (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xSemaphoreTake (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int package_num; int statistics; } ;
+
+
+ int ESP_LOGI (int ,char*,int ,int ) ;
+ int TAG ;
+ int ble_mesh_node_sema ;
+ TYPE_1__ ble_mesh_node_statistics ;
+ int portMAX_DELAY ;
+ int xSemaphoreGive (int ) ;
+ int xSemaphoreTake (int ,int ) ;
 
 void ble_mesh_node_statistics_get(void)
 {

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_object_t ;
-typedef  int /*<<< orphan*/  sout_access_out_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  VLC_UNUSED (char const*) ; 
- int /*<<< orphan*/  msg_Err (int /*<<< orphan*/ *,char*) ; 
+
+
+
+typedef int vlc_object_t ;
+typedef int sout_access_out_t ;
+
+
+ int VLC_UNUSED (char const*) ;
+ int msg_Err (int *,char*) ;
 
 sout_access_out_t *sout_AccessOutNew (vlc_object_t *obj,
                                       const char *access, const char *name)
 {
     VLC_UNUSED (access); VLC_UNUSED (name);
     msg_Err (obj, "Output support not compiled-in!");
-    return NULL;
+    return ((void*)0);
 }

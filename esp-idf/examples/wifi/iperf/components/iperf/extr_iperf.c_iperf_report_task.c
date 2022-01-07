@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  int TickType_t ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+typedef int TickType_t ;
 struct TYPE_3__ {int interval; int time; } ;
 struct TYPE_4__ {int finish; int total_len; TYPE_1__ cfg; } ;
 
-/* Variables and functions */
- int portTICK_PERIOD_MS ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- TYPE_2__ s_iperf_ctrl ; 
- int /*<<< orphan*/  vTaskDelay (int) ; 
- int /*<<< orphan*/  vTaskDelete (int /*<<< orphan*/ *) ; 
+
+ int portTICK_PERIOD_MS ;
+ int printf (char*,...) ;
+ TYPE_2__ s_iperf_ctrl ;
+ int vTaskDelay (int) ;
+ int vTaskDelete (int *) ;
 
 __attribute__((used)) static void iperf_report_task(void *arg)
 {
@@ -49,6 +49,6 @@ __attribute__((used)) static void iperf_report_task(void *arg)
                (double)(s_iperf_ctrl.total_len * 8) / cur / 1e6);
     }
 
-    s_iperf_ctrl.finish = true;
-    vTaskDelete(NULL);
+    s_iperf_ctrl.finish = 1;
+    vTaskDelete(((void*)0));
 }

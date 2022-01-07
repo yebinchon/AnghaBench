@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct in_addr {void* s_addr; } ;
-struct hostent {scalar_t__ h_addrtype; int /*<<< orphan*/  h_length; int /*<<< orphan*/  h_addr; } ;
+struct hostent {scalar_t__ h_addrtype; int h_length; int h_addr; } ;
 
-/* Variables and functions */
- scalar_t__ AF_INET ; 
- void* INADDR_ANY ; 
- void* INADDR_NONE ; 
- struct hostent* gethostbyname (char const*) ; 
- scalar_t__ inet_aton (char const*,struct in_addr*) ; 
- int /*<<< orphan*/  isalnum (char const) ; 
- int /*<<< orphan*/  memcpy (struct in_addr*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strcasecmp (char const*,char*) ; 
- int /*<<< orphan*/ * strchr (char*,char const) ; 
+
+ scalar_t__ AF_INET ;
+ void* INADDR_ANY ;
+ void* INADDR_NONE ;
+ struct hostent* gethostbyname (char const*) ;
+ scalar_t__ inet_aton (char const*,struct in_addr*) ;
+ int isalnum (char const) ;
+ int memcpy (struct in_addr*,int ,int ) ;
+ int strcasecmp (char const*,char*) ;
+ int * strchr (char*,char const) ;
 
 struct in_addr
 GetIpAddr(const char *cp)
@@ -34,9 +34,9 @@ GetIpAddr(const char *cp)
   else if (inet_aton(cp, &ipaddr) == 0) {
     const char *ptr;
 
-    /* Any illegal characters ? */
+
     for (ptr = cp; *ptr != '\0'; ptr++)
-      if (!isalnum(*ptr) && strchr("-.", *ptr) == NULL)
+      if (!isalnum(*ptr) && strchr("-.", *ptr) == ((void*)0))
         break;
 
     if (*ptr == '\0') {

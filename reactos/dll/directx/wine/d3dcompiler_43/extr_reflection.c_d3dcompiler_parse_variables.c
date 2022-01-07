@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * lpVtbl; } ;
-struct d3dcompiler_shader_reflection_variable {int start_offset; int size; int flags; int /*<<< orphan*/  default_value; int /*<<< orphan*/  type; int /*<<< orphan*/  name; struct d3dcompiler_shader_reflection_constant_buffer* constant_buffer; TYPE_1__ ID3D11ShaderReflectionVariable_iface; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * lpVtbl; } ;
+struct d3dcompiler_shader_reflection_variable {int start_offset; int size; int flags; int default_value; int type; int name; struct d3dcompiler_shader_reflection_constant_buffer* constant_buffer; TYPE_1__ ID3D11ShaderReflectionVariable_iface; } ;
 struct d3dcompiler_shader_reflection_constant_buffer {int variable_count; struct d3dcompiler_shader_reflection_variable* variables; TYPE_2__* reflection; } ;
 struct TYPE_4__ {int target; } ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int DWORD ;
+typedef int HRESULT ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int D3DCOMPILER_SHADER_TARGET_VERSION_MASK ; 
- int /*<<< orphan*/  ERR (char*) ; 
- int /*<<< orphan*/  E_FAIL ; 
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HEAP_ZERO_MEMORY ; 
- struct d3dcompiler_shader_reflection_variable* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct d3dcompiler_shader_reflection_variable*) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TRACE (char*,int) ; 
- int /*<<< orphan*/  copy_name (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  copy_value (char const*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  d3dcompiler_shader_reflection_variable_vtbl ; 
- int debugstr_a (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free_variable (struct d3dcompiler_shader_reflection_variable*) ; 
- int /*<<< orphan*/  get_reflection_type (TYPE_2__*,char const*,int) ; 
- int /*<<< orphan*/  read_dword (char const**,int*) ; 
- int /*<<< orphan*/  skip_dword_unknown (char const**,int) ; 
+
+ int D3DCOMPILER_SHADER_TARGET_VERSION_MASK ;
+ int ERR (char*) ;
+ int E_FAIL ;
+ int E_OUTOFMEMORY ;
+ int GetProcessHeap () ;
+ int HEAP_ZERO_MEMORY ;
+ struct d3dcompiler_shader_reflection_variable* HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,struct d3dcompiler_shader_reflection_variable*) ;
+ int S_OK ;
+ int TRACE (char*,int) ;
+ int copy_name (char const*,int *) ;
+ int copy_value (char const*,int *,int) ;
+ int d3dcompiler_shader_reflection_variable_vtbl ;
+ int debugstr_a (int ) ;
+ int free_variable (struct d3dcompiler_shader_reflection_variable*) ;
+ int get_reflection_type (TYPE_2__*,char const*,int) ;
+ int read_dword (char const**,int*) ;
+ int skip_dword_unknown (char const**,int) ;
 
 __attribute__((used)) static HRESULT d3dcompiler_parse_variables(struct d3dcompiler_shader_reflection_constant_buffer *cb,
         const char *data, DWORD data_size, const char *ptr)

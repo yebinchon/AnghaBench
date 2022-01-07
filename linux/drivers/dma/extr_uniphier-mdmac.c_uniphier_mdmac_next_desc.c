@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct virt_dma_desc {int /*<<< orphan*/  node; } ;
+
+
+
+
+struct virt_dma_desc {int node; } ;
 struct uniphier_mdmac_desc {int dummy; } ;
-struct uniphier_mdmac_chan {struct uniphier_mdmac_desc* md; int /*<<< orphan*/  vc; } ;
+struct uniphier_mdmac_chan {struct uniphier_mdmac_desc* md; int vc; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  list_del (int /*<<< orphan*/ *) ; 
- struct uniphier_mdmac_desc* to_uniphier_mdmac_desc (struct virt_dma_desc*) ; 
- struct virt_dma_desc* vchan_next_desc (int /*<<< orphan*/ *) ; 
+
+ int list_del (int *) ;
+ struct uniphier_mdmac_desc* to_uniphier_mdmac_desc (struct virt_dma_desc*) ;
+ struct virt_dma_desc* vchan_next_desc (int *) ;
 
 __attribute__((used)) static struct uniphier_mdmac_desc *
 uniphier_mdmac_next_desc(struct uniphier_mdmac_chan *mc)
 {
-	struct virt_dma_desc *vd;
+ struct virt_dma_desc *vd;
 
-	vd = vchan_next_desc(&mc->vc);
-	if (!vd) {
-		mc->md = NULL;
-		return NULL;
-	}
+ vd = vchan_next_desc(&mc->vc);
+ if (!vd) {
+  mc->md = ((void*)0);
+  return ((void*)0);
+ }
 
-	list_del(&vd->node);
+ list_del(&vd->node);
 
-	mc->md = to_uniphier_mdmac_desc(vd);
+ mc->md = to_uniphier_mdmac_desc(vd);
 
-	return mc->md;
+ return mc->md;
 }

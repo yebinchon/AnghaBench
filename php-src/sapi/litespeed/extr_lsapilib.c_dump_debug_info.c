@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int m_pid; scalar_t__ m_tmStart; scalar_t__ m_tmLastCheckPoint; scalar_t__ m_tmReqBegin; int /*<<< orphan*/  m_iReqCounter; } ;
-typedef  TYPE_1__ lsapi_child_status ;
 
-/* Variables and functions */
- int /*<<< orphan*/  exit (int /*<<< orphan*/ ) ; 
- scalar_t__ fork () ; 
- int /*<<< orphan*/  getpid () ; 
- scalar_t__ kill (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lsapi_log (char*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  perror (char*) ; 
- scalar_t__ s_pid_dump_debug_info ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,int,int) ; 
- int system (char*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int m_pid; scalar_t__ m_tmStart; scalar_t__ m_tmLastCheckPoint; scalar_t__ m_tmReqBegin; int m_iReqCounter; } ;
+typedef TYPE_1__ lsapi_child_status ;
+
+
+ int exit (int ) ;
+ scalar_t__ fork () ;
+ int getpid () ;
+ scalar_t__ kill (scalar_t__,int ) ;
+ int lsapi_log (char*,int ,int,int ,scalar_t__,scalar_t__,scalar_t__) ;
+ int perror (char*) ;
+ scalar_t__ s_pid_dump_debug_info ;
+ int snprintf (char*,int,char*,int,int) ;
+ int system (char*) ;
 
 __attribute__((used)) static void dump_debug_info( lsapi_child_status * pStatus, long tmCur )
 {

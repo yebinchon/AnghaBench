@@ -1,41 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  MAX_DATA ; 
- int /*<<< orphan*/  MAX_HASHES ; 
- int /*<<< orphan*/  MAX_METAINDEX_USERS ; 
- int M_cnt ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,...) ; 
- scalar_t__* fsize ; 
- scalar_t__ log_wpos ; 
- int max_Dc ; 
- int /*<<< orphan*/  max_Dc_user ; 
- int max_Qc ; 
- int /*<<< orphan*/  max_Qc_user ; 
- int /*<<< orphan*/  percent (int,int /*<<< orphan*/ ) ; 
- int purged_msgs_cnt ; 
- int start_time ; 
- int /*<<< orphan*/  stderr ; 
- int time (int /*<<< orphan*/ ) ; 
- int tot_Dc ; 
- int tot_Qc ; 
- int tot_binlog_messages ; 
- int tot_dropped_pairs ; 
- int tot_imported_pairs ; 
- int users_added ; 
- int users_dropped ; 
- scalar_t__ wpos ; 
+ int MAX_DATA ;
+ int MAX_HASHES ;
+ int MAX_METAINDEX_USERS ;
+ int M_cnt ;
+ int fprintf (int ,char*,int,...) ;
+ scalar_t__* fsize ;
+ scalar_t__ log_wpos ;
+ int max_Dc ;
+ int max_Dc_user ;
+ int max_Qc ;
+ int max_Qc_user ;
+ int percent (int,int ) ;
+ int purged_msgs_cnt ;
+ int start_time ;
+ int stderr ;
+ int time (int ) ;
+ int tot_Dc ;
+ int tot_Qc ;
+ int tot_binlog_messages ;
+ int tot_dropped_pairs ;
+ int tot_imported_pairs ;
+ int users_added ;
+ int users_dropped ;
+ scalar_t__ wpos ;
 
 void output_stats (void) {
   fprintf (stderr, "\nmessages purged from binlog: %d\n", purged_msgs_cnt);

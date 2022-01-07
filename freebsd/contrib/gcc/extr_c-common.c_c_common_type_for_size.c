@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
 
-/* Variables and functions */
- unsigned int TYPE_PRECISION (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  intDI_type_node ; 
- int /*<<< orphan*/  intHI_type_node ; 
- int /*<<< orphan*/  intQI_type_node ; 
- int /*<<< orphan*/  intSI_type_node ; 
- int /*<<< orphan*/  integer_type_node ; 
- int /*<<< orphan*/  long_integer_type_node ; 
- int /*<<< orphan*/  long_long_integer_type_node ; 
- int /*<<< orphan*/  long_long_unsigned_type_node ; 
- int /*<<< orphan*/  long_unsigned_type_node ; 
- int /*<<< orphan*/  short_integer_type_node ; 
- int /*<<< orphan*/  short_unsigned_type_node ; 
- int /*<<< orphan*/  signed_char_type_node ; 
- int /*<<< orphan*/  unsigned_char_type_node ; 
- int /*<<< orphan*/  unsigned_intDI_type_node ; 
- int /*<<< orphan*/  unsigned_intHI_type_node ; 
- int /*<<< orphan*/  unsigned_intQI_type_node ; 
- int /*<<< orphan*/  unsigned_intSI_type_node ; 
- int /*<<< orphan*/  unsigned_type_node ; 
- int /*<<< orphan*/  widest_integer_literal_type_node ; 
- int /*<<< orphan*/  widest_unsigned_literal_type_node ; 
+
+
+
+typedef int tree ;
+
+
+ unsigned int TYPE_PRECISION (int ) ;
+ int intDI_type_node ;
+ int intHI_type_node ;
+ int intQI_type_node ;
+ int intSI_type_node ;
+ int integer_type_node ;
+ int long_integer_type_node ;
+ int long_long_integer_type_node ;
+ int long_long_unsigned_type_node ;
+ int long_unsigned_type_node ;
+ int short_integer_type_node ;
+ int short_unsigned_type_node ;
+ int signed_char_type_node ;
+ int unsigned_char_type_node ;
+ int unsigned_intDI_type_node ;
+ int unsigned_intHI_type_node ;
+ int unsigned_intQI_type_node ;
+ int unsigned_intSI_type_node ;
+ int unsigned_type_node ;
+ int widest_integer_literal_type_node ;
+ int widest_unsigned_literal_type_node ;
 
 tree
 c_common_type_for_size (unsigned int bits, int unsignedp)
@@ -52,11 +52,11 @@ c_common_type_for_size (unsigned int bits, int unsignedp)
 
   if (bits == TYPE_PRECISION (long_long_integer_type_node))
     return (unsignedp ? long_long_unsigned_type_node
-	    : long_long_integer_type_node);
+     : long_long_integer_type_node);
 
   if (bits == TYPE_PRECISION (widest_integer_literal_type_node))
     return (unsignedp ? widest_unsigned_literal_type_node
-	    : widest_integer_literal_type_node);
+     : widest_integer_literal_type_node);
 
   if (bits <= TYPE_PRECISION (intQI_type_node))
     return unsignedp ? unsigned_intQI_type_node : intQI_type_node;

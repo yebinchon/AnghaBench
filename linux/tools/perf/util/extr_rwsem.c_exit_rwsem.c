@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct rw_semaphore {int /*<<< orphan*/  lock; } ;
 
-/* Variables and functions */
- int pthread_rwlock_destroy (int /*<<< orphan*/ *) ; 
+
+
+
+struct rw_semaphore {int lock; } ;
+
+
+ int pthread_rwlock_destroy (int *) ;
 
 int exit_rwsem(struct rw_semaphore *sem)
 {
-	return pthread_rwlock_destroy(&sem->lock);
+ return pthread_rwlock_destroy(&sem->lock);
 }

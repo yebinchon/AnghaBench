@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VARIANT ;
-typedef  int /*<<< orphan*/  IWbemClassObject ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CIM_UINT32 ; 
- int /*<<< orphan*/  FIXME (char*) ; 
- int /*<<< orphan*/  IWbemClassObject_AddRef (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IWbemClassObject_Put (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IWbemClassObject_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IWbemClassObject_SpawnInstance (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  PARAM_OUT ; 
- scalar_t__ SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  VT_UI4 ; 
- int /*<<< orphan*/  class_systemsecurityW ; 
- int /*<<< orphan*/  create_signature (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  method_setsdW ; 
- int /*<<< orphan*/  param_returnvalueW ; 
- int /*<<< orphan*/  set_variant (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int VARIANT ;
+typedef int IWbemClassObject ;
+typedef int HRESULT ;
+
+
+ int CIM_UINT32 ;
+ int FIXME (char*) ;
+ int IWbemClassObject_AddRef (int *) ;
+ int IWbemClassObject_Put (int *,int ,int ,int *,int ) ;
+ int IWbemClassObject_Release (int *) ;
+ int IWbemClassObject_SpawnInstance (int *,int ,int **) ;
+ int PARAM_OUT ;
+ scalar_t__ SUCCEEDED (int ) ;
+ int S_OK ;
+ int VT_UI4 ;
+ int class_systemsecurityW ;
+ int create_signature (int ,int ,int ,int **) ;
+ int method_setsdW ;
+ int param_returnvalueW ;
+ int set_variant (int ,int ,int *,int *) ;
 
 HRESULT security_set_sd( IWbemClassObject *obj, IWbemClassObject *in, IWbemClassObject **out )
 {
     VARIANT retval;
-    IWbemClassObject *sig, *out_params = NULL;
+    IWbemClassObject *sig, *out_params = ((void*)0);
     HRESULT hr;
 
     FIXME("stub\n");
@@ -50,7 +50,7 @@ HRESULT security_set_sd( IWbemClassObject *obj, IWbemClassObject *in, IWbemClass
 
     if (SUCCEEDED(hr))
     {
-        set_variant( VT_UI4, S_OK, NULL, &retval );
+        set_variant( VT_UI4, S_OK, ((void*)0), &retval );
         hr = IWbemClassObject_Put( out_params, param_returnvalueW, 0, &retval, CIM_UINT32 );
 
         if (SUCCEEDED(hr) && out)

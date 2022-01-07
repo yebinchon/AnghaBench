@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tos ;
-typedef  int /*<<< orphan*/  evutil_socket_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IPPROTO_IP ; 
- int /*<<< orphan*/  IP_TOS ; 
- int setsockopt (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int) ; 
+
+
+
+typedef int tos ;
+typedef int evutil_socket_t ;
+
+
+ int IPPROTO_IP ;
+ int IP_TOS ;
+ int setsockopt (int ,int ,int ,char*,int) ;
 
 int
 ccnet_netSetTOS (evutil_socket_t s, int tos)
 {
-#ifdef IP_TOS
-    return setsockopt( s, IPPROTO_IP, IP_TOS, (char*)&tos, sizeof( tos ) );
-#else
+
+
+
     return 0;
-#endif
+
 }

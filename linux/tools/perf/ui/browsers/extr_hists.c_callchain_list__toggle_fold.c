@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct callchain_list {int unfolded; int /*<<< orphan*/  has_children; } ;
 
-/* Variables and functions */
+
+
+
+struct callchain_list {int unfolded; int has_children; } ;
+
+
 
 __attribute__((used)) static bool callchain_list__toggle_fold(struct callchain_list *cl)
 {
-	if (!cl)
-		return false;
+ if (!cl)
+  return 0;
 
-	if (!cl->has_children)
-		return false;
+ if (!cl->has_children)
+  return 0;
 
-	cl->unfolded = !cl->unfolded;
-	return true;
+ cl->unfolded = !cl->unfolded;
+ return 1;
 }

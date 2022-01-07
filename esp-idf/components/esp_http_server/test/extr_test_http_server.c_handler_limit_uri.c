@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {char* uri; int /*<<< orphan*/ * user_ctx; int /*<<< orphan*/  handler; int /*<<< orphan*/  method; } ;
-typedef  TYPE_1__ httpd_uri_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HTTP_GET ; 
- int /*<<< orphan*/  null_func ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {char* uri; int * user_ctx; int handler; int method; } ;
+typedef TYPE_1__ httpd_uri_t ;
+
+
+ int HTTP_GET ;
+ int null_func ;
 
 httpd_uri_t handler_limit_uri (char* path)
 {
     httpd_uri_t uri = {
-        .uri      = path,
-        .method   = HTTP_GET,
-        .handler  = null_func,
-        .user_ctx = NULL,
+        .uri = path,
+        .method = HTTP_GET,
+        .handler = null_func,
+        .user_ctx = ((void*)0),
     };
     return uri;
 }

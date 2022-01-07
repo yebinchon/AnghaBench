@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_12__ {int /*<<< orphan*/  expr; scalar_t__ do_while; int /*<<< orphan*/  statement; } ;
-typedef  TYPE_1__ while_statement_t ;
-struct TYPE_13__ {unsigned int break_label; unsigned int continue_label; int /*<<< orphan*/  member_2; int /*<<< orphan*/  member_1; int /*<<< orphan*/  member_0; } ;
-typedef  TYPE_2__ statement_ctx_t ;
+
+
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+struct TYPE_12__ {int expr; scalar_t__ do_while; int statement; } ;
+typedef TYPE_1__ while_statement_t ;
+struct TYPE_13__ {unsigned int break_label; unsigned int continue_label; int member_2; int member_1; int member_0; } ;
+typedef TYPE_2__ statement_ctx_t ;
 struct TYPE_14__ {unsigned int code_off; } ;
-typedef  TYPE_3__ compiler_ctx_t ;
-typedef  int /*<<< orphan*/  HRESULT ;
+typedef TYPE_3__ compiler_ctx_t ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  OP_jmp ; 
- int /*<<< orphan*/  OP_jmp_z ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TRUE ; 
- void* alloc_label (TYPE_3__*) ; 
- int /*<<< orphan*/  compile_expression (TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  compile_statement (TYPE_3__*,TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  label_set_addr (TYPE_3__*,unsigned int) ; 
- int /*<<< orphan*/  push_instr_uint (TYPE_3__*,int /*<<< orphan*/ ,unsigned int) ; 
+
+ int E_OUTOFMEMORY ;
+ scalar_t__ FAILED (int ) ;
+ int FALSE ;
+ int OP_jmp ;
+ int OP_jmp_z ;
+ int S_OK ;
+ int TRUE ;
+ void* alloc_label (TYPE_3__*) ;
+ int compile_expression (TYPE_3__*,int ,int ) ;
+ int compile_statement (TYPE_3__*,TYPE_2__*,int ) ;
+ int label_set_addr (TYPE_3__*,unsigned int) ;
+ int push_instr_uint (TYPE_3__*,int ,unsigned int) ;
 
 __attribute__((used)) static HRESULT compile_while_statement(compiler_ctx_t *ctx, while_statement_t *stat)
 {

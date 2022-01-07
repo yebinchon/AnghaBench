@@ -1,147 +1,132 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  notifier; TYPE_1__* otg; } ;
-struct ab8500_usb {scalar_t__ previous_link_status_state; TYPE_2__ phy; int /*<<< orphan*/  vbus_draw; int /*<<< orphan*/  mode; int /*<<< orphan*/  dev; } ;
-typedef  enum ux500_musb_vbus_id_status { ____Placeholder_ux500_musb_vbus_id_status } ux500_musb_vbus_id_status ;
-typedef  enum ab8505_usb_link_status { ____Placeholder_ab8505_usb_link_status } ab8505_usb_link_status ;
-struct TYPE_3__ {int default_a; int /*<<< orphan*/  state; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OTG_STATE_B_IDLE ; 
- int /*<<< orphan*/  USB_DEDICATED_CHG ; 
- int /*<<< orphan*/  USB_EVENT_CHARGER ; 
- int /*<<< orphan*/  USB_EVENT_ENUMERATED ; 
- int /*<<< orphan*/  USB_EVENT_NONE ; 
- int /*<<< orphan*/  USB_HOST ; 
- int /*<<< orphan*/  USB_IDLE ; 
-#define  USB_LINK_ACA_DOCK_CHGR_8505 142 
-#define  USB_LINK_ACA_RID_A_8505 141 
-#define  USB_LINK_ACA_RID_B_8505 140 
-#define  USB_LINK_ACA_RID_C_NM_8505 139 
-#define  USB_LINK_CDP_8505 138 
-#define  USB_LINK_DEDICATED_CHG_8505 137 
-#define  USB_LINK_HM_IDGND_8505 136 
-#define  USB_LINK_NOT_CONFIGURED_8505 135 
-#define  USB_LINK_RESERVED0_8505 134 
-#define  USB_LINK_RESERVED1_8505 133 
-#define  USB_LINK_RESERVED2_8505 132 
-#define  USB_LINK_RESERVED3_8505 131 
-#define  USB_LINK_STD_HOST_C_NS_8505 130 
-#define  USB_LINK_STD_HOST_C_S_8505 129 
-#define  USB_LINK_STD_HOST_NC_8505 128 
- int /*<<< orphan*/  USB_PERIPHERAL ; 
- int UX500_MUSB_CHARGER ; 
- int UX500_MUSB_ID ; 
- int UX500_MUSB_NONE ; 
- int UX500_MUSB_PREPARE ; 
- int UX500_MUSB_RIDA ; 
- int UX500_MUSB_RIDB ; 
- int UX500_MUSB_RIDC ; 
- int UX500_MUSB_VBUS ; 
- int /*<<< orphan*/  ab8500_usb_host_phy_en (struct ab8500_usb*) ; 
- int /*<<< orphan*/  ab8500_usb_peri_phy_en (struct ab8500_usb*) ; 
- int /*<<< orphan*/  atomic_notifier_call_chain (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  dev_dbg (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  usb_phy_set_event (TYPE_2__*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int notifier; TYPE_1__* otg; } ;
+struct ab8500_usb {scalar_t__ previous_link_status_state; TYPE_2__ phy; int vbus_draw; int mode; int dev; } ;
+typedef enum ux500_musb_vbus_id_status { ____Placeholder_ux500_musb_vbus_id_status } ux500_musb_vbus_id_status ;
+typedef enum ab8505_usb_link_status { ____Placeholder_ab8505_usb_link_status } ab8505_usb_link_status ;
+struct TYPE_3__ {int default_a; int state; } ;
+
+
+ int OTG_STATE_B_IDLE ;
+ int USB_DEDICATED_CHG ;
+ int USB_EVENT_CHARGER ;
+ int USB_EVENT_ENUMERATED ;
+ int USB_EVENT_NONE ;
+ int USB_HOST ;
+ int USB_IDLE ;
+ int USB_PERIPHERAL ;
+ int UX500_MUSB_CHARGER ;
+ int UX500_MUSB_ID ;
+ int UX500_MUSB_NONE ;
+ int UX500_MUSB_PREPARE ;
+ int UX500_MUSB_RIDA ;
+ int UX500_MUSB_RIDB ;
+ int UX500_MUSB_RIDC ;
+ int UX500_MUSB_VBUS ;
+ int ab8500_usb_host_phy_en (struct ab8500_usb*) ;
+ int ab8500_usb_peri_phy_en (struct ab8500_usb*) ;
+ int atomic_notifier_call_chain (int *,int,int *) ;
+ int dev_dbg (int ,char*,int) ;
+ int usb_phy_set_event (TYPE_2__*,int ) ;
 
 __attribute__((used)) static int ab8505_usb_link_status_update(struct ab8500_usb *ab,
-		enum ab8505_usb_link_status lsts)
+  enum ab8505_usb_link_status lsts)
 {
-	enum ux500_musb_vbus_id_status event = 0;
+ enum ux500_musb_vbus_id_status event = 0;
 
-	dev_dbg(ab->dev, "ab8505_usb_link_status_update %d\n", lsts);
+ dev_dbg(ab->dev, "ab8505_usb_link_status_update %d\n", lsts);
 
-	/*
-	 * Spurious link_status interrupts are seen at the time of
-	 * disconnection of a device in RIDA state
-	 */
-	if (ab->previous_link_status_state == USB_LINK_ACA_RID_A_8505 &&
-			(lsts == USB_LINK_STD_HOST_NC_8505))
-		return 0;
 
-	ab->previous_link_status_state = lsts;
 
-	switch (lsts) {
-	case USB_LINK_ACA_RID_B_8505:
-		event = UX500_MUSB_RIDB;
-		/* Fall through */
-	case USB_LINK_NOT_CONFIGURED_8505:
-	case USB_LINK_RESERVED0_8505:
-	case USB_LINK_RESERVED1_8505:
-	case USB_LINK_RESERVED2_8505:
-	case USB_LINK_RESERVED3_8505:
-		ab->mode = USB_IDLE;
-		ab->phy.otg->default_a = false;
-		ab->vbus_draw = 0;
-		if (event != UX500_MUSB_RIDB)
-			event = UX500_MUSB_NONE;
-		/*
-		 * Fallback to default B_IDLE as nothing
-		 * is connected
-		 */
-		ab->phy.otg->state = OTG_STATE_B_IDLE;
-		usb_phy_set_event(&ab->phy, USB_EVENT_NONE);
-		break;
 
-	case USB_LINK_ACA_RID_C_NM_8505:
-		event = UX500_MUSB_RIDC;
-		/* Fall through */
-	case USB_LINK_STD_HOST_NC_8505:
-	case USB_LINK_STD_HOST_C_NS_8505:
-	case USB_LINK_STD_HOST_C_S_8505:
-	case USB_LINK_CDP_8505:
-		if (ab->mode == USB_IDLE) {
-			ab->mode = USB_PERIPHERAL;
-			ab8500_usb_peri_phy_en(ab);
-			atomic_notifier_call_chain(&ab->phy.notifier,
-					UX500_MUSB_PREPARE, &ab->vbus_draw);
-			usb_phy_set_event(&ab->phy, USB_EVENT_ENUMERATED);
-		}
-		if (event != UX500_MUSB_RIDC)
-			event = UX500_MUSB_VBUS;
-		break;
 
-	case USB_LINK_ACA_RID_A_8505:
-	case USB_LINK_ACA_DOCK_CHGR_8505:
-		event = UX500_MUSB_RIDA;
-		/* Fall through */
-	case USB_LINK_HM_IDGND_8505:
-		if (ab->mode == USB_IDLE) {
-			ab->mode = USB_HOST;
-			ab8500_usb_host_phy_en(ab);
-			atomic_notifier_call_chain(&ab->phy.notifier,
-					UX500_MUSB_PREPARE, &ab->vbus_draw);
-		}
-		ab->phy.otg->default_a = true;
-		if (event != UX500_MUSB_RIDA)
-			event = UX500_MUSB_ID;
-		atomic_notifier_call_chain(&ab->phy.notifier,
-				event, &ab->vbus_draw);
-		break;
+ if (ab->previous_link_status_state == 141 &&
+   (lsts == 128))
+  return 0;
 
-	case USB_LINK_DEDICATED_CHG_8505:
-		ab->mode = USB_DEDICATED_CHG;
-		event = UX500_MUSB_CHARGER;
-		atomic_notifier_call_chain(&ab->phy.notifier,
-				event, &ab->vbus_draw);
-		usb_phy_set_event(&ab->phy, USB_EVENT_CHARGER);
-		break;
+ ab->previous_link_status_state = lsts;
 
-	default:
-		break;
-	}
+ switch (lsts) {
+ case 140:
+  event = UX500_MUSB_RIDB;
 
-	return 0;
+ case 135:
+ case 134:
+ case 133:
+ case 132:
+ case 131:
+  ab->mode = USB_IDLE;
+  ab->phy.otg->default_a = 0;
+  ab->vbus_draw = 0;
+  if (event != UX500_MUSB_RIDB)
+   event = UX500_MUSB_NONE;
+
+
+
+
+  ab->phy.otg->state = OTG_STATE_B_IDLE;
+  usb_phy_set_event(&ab->phy, USB_EVENT_NONE);
+  break;
+
+ case 139:
+  event = UX500_MUSB_RIDC;
+
+ case 128:
+ case 130:
+ case 129:
+ case 138:
+  if (ab->mode == USB_IDLE) {
+   ab->mode = USB_PERIPHERAL;
+   ab8500_usb_peri_phy_en(ab);
+   atomic_notifier_call_chain(&ab->phy.notifier,
+     UX500_MUSB_PREPARE, &ab->vbus_draw);
+   usb_phy_set_event(&ab->phy, USB_EVENT_ENUMERATED);
+  }
+  if (event != UX500_MUSB_RIDC)
+   event = UX500_MUSB_VBUS;
+  break;
+
+ case 141:
+ case 142:
+  event = UX500_MUSB_RIDA;
+
+ case 136:
+  if (ab->mode == USB_IDLE) {
+   ab->mode = USB_HOST;
+   ab8500_usb_host_phy_en(ab);
+   atomic_notifier_call_chain(&ab->phy.notifier,
+     UX500_MUSB_PREPARE, &ab->vbus_draw);
+  }
+  ab->phy.otg->default_a = 1;
+  if (event != UX500_MUSB_RIDA)
+   event = UX500_MUSB_ID;
+  atomic_notifier_call_chain(&ab->phy.notifier,
+    event, &ab->vbus_draw);
+  break;
+
+ case 137:
+  ab->mode = USB_DEDICATED_CHG;
+  event = UX500_MUSB_CHARGER;
+  atomic_notifier_call_chain(&ab->phy.notifier,
+    event, &ab->vbus_draw);
+  usb_phy_set_event(&ab->phy, USB_EVENT_CHARGER);
+  break;
+
+ default:
+  break;
+ }
+
+ return 0;
 }

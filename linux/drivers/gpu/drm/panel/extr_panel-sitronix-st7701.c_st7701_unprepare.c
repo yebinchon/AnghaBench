@@ -1,50 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct st7701 {int /*<<< orphan*/  supplies; TYPE_1__* desc; int /*<<< orphan*/  sleep_delay; int /*<<< orphan*/  reset; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct st7701 {int supplies; TYPE_1__* desc; int sleep_delay; int reset; } ;
 struct drm_panel {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/  num_supplies; } ;
+struct TYPE_2__ {int num_supplies; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MIPI_DCS_ENTER_SLEEP_MODE ; 
- int /*<<< orphan*/  ST7701_DSI (struct st7701*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  gpiod_set_value (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  msleep (int /*<<< orphan*/ ) ; 
- struct st7701* panel_to_st7701 (struct drm_panel*) ; 
- int /*<<< orphan*/  regulator_bulk_disable (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int MIPI_DCS_ENTER_SLEEP_MODE ;
+ int ST7701_DSI (struct st7701*,int ,int) ;
+ int gpiod_set_value (int ,int ) ;
+ int msleep (int ) ;
+ struct st7701* panel_to_st7701 (struct drm_panel*) ;
+ int regulator_bulk_disable (int ,int ) ;
 
 __attribute__((used)) static int st7701_unprepare(struct drm_panel *panel)
 {
-	struct st7701 *st7701 = panel_to_st7701(panel);
+ struct st7701 *st7701 = panel_to_st7701(panel);
 
-	ST7701_DSI(st7701, MIPI_DCS_ENTER_SLEEP_MODE, 0x00);
+ ST7701_DSI(st7701, MIPI_DCS_ENTER_SLEEP_MODE, 0x00);
 
-	msleep(st7701->sleep_delay);
+ msleep(st7701->sleep_delay);
 
-	gpiod_set_value(st7701->reset, 0);
+ gpiod_set_value(st7701->reset, 0);
+ msleep(st7701->sleep_delay);
 
-	/**
-	 * During the Resetting period, the display will be blanked
-	 * (The display is entering blanking sequence, which maximum
-	 * time is 120 ms, when Reset Starts in Sleep Out –mode. The
-	 * display remains the blank state in Sleep In –mode.) and
-	 * then return to Default condition for Hardware Reset.
-	 *
-	 * So we need wait sleep_delay time to make sure reset completed.
-	 */
-	msleep(st7701->sleep_delay);
+ regulator_bulk_disable(st7701->desc->num_supplies, st7701->supplies);
 
-	regulator_bulk_disable(st7701->desc->num_supplies, st7701->supplies);
-
-	return 0;
+ return 0;
 }

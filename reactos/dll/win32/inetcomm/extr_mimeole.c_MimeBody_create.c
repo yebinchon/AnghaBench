@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  IMimeBody_iface; } ;
-typedef  TYPE_1__ MimeBody ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLASS_E_NOAGGREGATION ; 
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- int /*<<< orphan*/  S_OK ; 
- TYPE_1__* mimebody_create () ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int IMimeBody_iface; } ;
+typedef TYPE_1__ MimeBody ;
+typedef int IUnknown ;
+typedef int HRESULT ;
+
+
+ int CLASS_E_NOAGGREGATION ;
+ int E_OUTOFMEMORY ;
+ int S_OK ;
+ TYPE_1__* mimebody_create () ;
 
 HRESULT MimeBody_create(IUnknown *outer, void **ppv)
 {
@@ -36,7 +36,7 @@ HRESULT MimeBody_create(IUnknown *outer, void **ppv)
     }
     else
     {
-        *ppv = NULL;
+        *ppv = ((void*)0);
         return E_OUTOFMEMORY;
     }
 }

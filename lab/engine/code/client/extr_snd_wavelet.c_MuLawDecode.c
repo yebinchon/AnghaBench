@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int byte ;
 
-/* Variables and functions */
+
+
+
+typedef int byte ;
+
+
 
 short MuLawDecode(byte uLaw) {
-	signed long adjusted;
-	byte exponent, mantissa;
+ signed long adjusted;
+ byte exponent, mantissa;
 
-	uLaw = ~uLaw;
-	exponent = (uLaw>>4) & 0x7;
-	mantissa = (uLaw&0xf) + 16;
-	adjusted = (mantissa << (exponent +3)) - 128 - 4;
+ uLaw = ~uLaw;
+ exponent = (uLaw>>4) & 0x7;
+ mantissa = (uLaw&0xf) + 16;
+ adjusted = (mantissa << (exponent +3)) - 128 - 4;
 
-	return (uLaw & 0x80)? adjusted : -adjusted;
+ return (uLaw & 0x80)? adjusted : -adjusted;
 }

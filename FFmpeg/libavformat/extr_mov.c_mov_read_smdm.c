@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_8__ ;
-typedef  struct TYPE_13__   TYPE_7__ ;
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_14__ TYPE_8__ ;
+typedef struct TYPE_13__ TYPE_7__ ;
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_14__ {int nb_streams; TYPE_1__** streams; } ;
 struct TYPE_13__ {int has_primaries; int has_luminance; void* min_luminance; void* max_luminance; void** white_point; void*** display_primaries; } ;
 struct TYPE_12__ {int size; } ;
 struct TYPE_11__ {TYPE_8__* fc; } ;
 struct TYPE_10__ {TYPE_7__* mastering; } ;
 struct TYPE_9__ {TYPE_2__* priv_data; } ;
-typedef  TYPE_2__ MOVStreamContext ;
-typedef  TYPE_3__ MOVContext ;
-typedef  TYPE_4__ MOVAtom ;
-typedef  int /*<<< orphan*/  AVIOContext ;
+typedef TYPE_2__ MOVStreamContext ;
+typedef TYPE_3__ MOVContext ;
+typedef TYPE_4__ MOVAtom ;
+typedef int AVIOContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_LOG_WARNING ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  av_log (TYPE_8__*,int /*<<< orphan*/ ,char*,...) ; 
- void* av_make_q (int /*<<< orphan*/ ,int) ; 
- TYPE_7__* av_mastering_display_metadata_alloc () ; 
- int avio_r8 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  avio_rb16 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  avio_rb32 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  avio_skip (int /*<<< orphan*/ *,int) ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ int AV_LOG_WARNING ;
+ int ENOMEM ;
+ int av_log (TYPE_8__*,int ,char*,...) ;
+ void* av_make_q (int ,int) ;
+ TYPE_7__* av_mastering_display_metadata_alloc () ;
+ int avio_r8 (int *) ;
+ int avio_rb16 (int *) ;
+ int avio_rb32 (int *) ;
+ int avio_skip (int *,int) ;
 
 __attribute__((used)) static int mov_read_smdm(MOVContext *c, AVIOContext *pb, MOVAtom atom)
 {
@@ -61,7 +61,7 @@ __attribute__((used)) static int mov_read_smdm(MOVContext *c, AVIOContext *pb, M
         av_log(c->fc, AV_LOG_WARNING, "Unsupported Mastering Display Metadata box version %d\n", version);
         return 0;
     }
-    avio_skip(pb, 3); /* flags */
+    avio_skip(pb, 3);
 
     sc->mastering = av_mastering_display_metadata_alloc();
     if (!sc->mastering)

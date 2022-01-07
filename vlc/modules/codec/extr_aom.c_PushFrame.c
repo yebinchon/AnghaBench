@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
+
+
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_11__ {TYPE_3__* p_sys; } ;
-typedef  TYPE_2__ decoder_t ;
-struct TYPE_12__ {TYPE_1__* frame_priv; int /*<<< orphan*/  i_next_frame_priv; int /*<<< orphan*/  ctx; } ;
-typedef  TYPE_3__ decoder_sys_t ;
-struct TYPE_13__ {size_t i_buffer; scalar_t__ i_pts; scalar_t__ i_dts; int /*<<< orphan*/ * p_buffer; } ;
-typedef  TYPE_4__ block_t ;
-typedef  scalar_t__ aom_codec_err_t ;
-typedef  int /*<<< orphan*/  aom_codec_ctx_t ;
+typedef TYPE_2__ decoder_t ;
+struct TYPE_12__ {TYPE_1__* frame_priv; int i_next_frame_priv; int ctx; } ;
+typedef TYPE_3__ decoder_sys_t ;
+struct TYPE_13__ {size_t i_buffer; scalar_t__ i_pts; scalar_t__ i_dts; int * p_buffer; } ;
+typedef TYPE_4__ block_t ;
+typedef scalar_t__ aom_codec_err_t ;
+typedef int aom_codec_ctx_t ;
 struct TYPE_10__ {scalar_t__ pts; } ;
 
-/* Variables and functions */
- scalar_t__ AOM_CODEC_OK ; 
- scalar_t__ AOM_CODEC_UNSUP_BITSTREAM ; 
- int /*<<< orphan*/  AOM_ERR (TYPE_2__*,int /*<<< orphan*/ *,char*) ; 
- uintptr_t AOM_MAX_FRAMES_DEPTH ; 
- int VLCDEC_ECRITICAL ; 
- int VLCDEC_SUCCESS ; 
- scalar_t__ VLC_TICK_INVALID ; 
- scalar_t__ aom_codec_decode (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,size_t,void*) ; 
- int /*<<< orphan*/  block_Release (TYPE_4__*) ; 
- scalar_t__ likely (TYPE_4__*) ; 
+
+ scalar_t__ AOM_CODEC_OK ;
+ scalar_t__ AOM_CODEC_UNSUP_BITSTREAM ;
+ int AOM_ERR (TYPE_2__*,int *,char*) ;
+ uintptr_t AOM_MAX_FRAMES_DEPTH ;
+ int VLCDEC_ECRITICAL ;
+ int VLCDEC_SUCCESS ;
+ scalar_t__ VLC_TICK_INVALID ;
+ scalar_t__ aom_codec_decode (int *,int const*,size_t,void*) ;
+ int block_Release (TYPE_4__*) ;
+ scalar_t__ likely (TYPE_4__*) ;
 
 __attribute__((used)) static int PushFrame(decoder_t *dec, block_t *block)
 {
@@ -44,7 +44,7 @@ __attribute__((used)) static int PushFrame(decoder_t *dec, block_t *block)
     const uint8_t *p_buffer;
     size_t i_buffer;
 
-    /* Associate packet PTS with decoded frame */
+
     uintptr_t priv_index = p_sys->i_next_frame_priv++ % AOM_MAX_FRAMES_DEPTH;
 
     if(likely(block))
@@ -55,7 +55,7 @@ __attribute__((used)) static int PushFrame(decoder_t *dec, block_t *block)
     }
     else
     {
-        p_buffer = NULL;
+        p_buffer = ((void*)0);
         i_buffer = 0;
     }
 

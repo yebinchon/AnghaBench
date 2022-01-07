@@ -1,30 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  CreateDirectoryA (char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DeleteFileA (char*) ; 
- int /*<<< orphan*/  MEDIA_SIZE ; 
- int /*<<< orphan*/  create_cab_file (char*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  create_file (char*,char*,int) ; 
+ int CreateDirectoryA (char*,int *) ;
+ int DeleteFileA (char*) ;
+ int MEDIA_SIZE ;
+ int create_cab_file (char*,int ,char*) ;
+ int create_file (char*,char*,int) ;
 
 __attribute__((used)) static void create_test_files(void)
 {
-    CreateDirectoryA("msitest", NULL);
+    CreateDirectoryA("msitest", ((void*)0));
     create_file("msitest\\one.txt", "msitest\\one.txt", 100);
-    CreateDirectoryA("msitest\\first", NULL);
+    CreateDirectoryA("msitest\\first", ((void*)0));
     create_file("msitest\\first\\two.txt", "msitest\\first\\two.txt", 100);
-    CreateDirectoryA("msitest\\second", NULL);
+    CreateDirectoryA("msitest\\second", ((void*)0));
     create_file("msitest\\second\\three.txt", "msitest\\second\\three.txt", 100);
 
     create_file("four.txt", "four.txt", 100);

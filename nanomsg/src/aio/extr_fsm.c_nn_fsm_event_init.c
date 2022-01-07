@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct nn_fsm_event {int src; int type; int /*<<< orphan*/  item; int /*<<< orphan*/ * srcptr; int /*<<< orphan*/ * fsm; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  nn_queue_item_init (int /*<<< orphan*/ *) ; 
+
+
+
+struct nn_fsm_event {int src; int type; int item; int * srcptr; int * fsm; } ;
+
+
+ int nn_queue_item_init (int *) ;
 
 void nn_fsm_event_init (struct nn_fsm_event *self)
 {
-    self->fsm = NULL;
+    self->fsm = ((void*)0);
     self->src = -1;
-    self->srcptr = NULL;
+    self->srcptr = ((void*)0);
     self->type = -1;
     nn_queue_item_init (&self->item);
 }

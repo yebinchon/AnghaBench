@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
-struct TYPE_3__ {int size_accepted_connections; int /*<<< orphan*/ * accepted_connection_array; } ;
-typedef  TYPE_1__ TCP_Server ;
-typedef  int /*<<< orphan*/  TCP_Secure_Connection ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/ * realloc (int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+struct TYPE_3__ {int size_accepted_connections; int * accepted_connection_array; } ;
+typedef TYPE_1__ TCP_Server ;
+typedef int TCP_Secure_Connection ;
+
+
+ int free (int *) ;
+ int memset (int *,int ,int) ;
+ int * realloc (int *,int) ;
 
 __attribute__((used)) static int realloc_connection(TCP_Server *TCP_server, uint32_t num)
 {
     if (num == 0) {
         free(TCP_server->accepted_connection_array);
-        TCP_server->accepted_connection_array = NULL;
+        TCP_server->accepted_connection_array = ((void*)0);
         TCP_server->size_accepted_connections = 0;
         return 0;
     }
@@ -37,7 +37,7 @@ __attribute__((used)) static int realloc_connection(TCP_Server *TCP_server, uint
     TCP_Secure_Connection *new_connections = realloc(TCP_server->accepted_connection_array,
             num * sizeof(TCP_Secure_Connection));
 
-    if (new_connections == NULL)
+    if (new_connections == ((void*)0))
         return -1;
 
     if (num > TCP_server->size_accepted_connections) {

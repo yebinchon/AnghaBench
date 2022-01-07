@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct lexer {scalar_t__ pos; scalar_t__ start; } ;
 
-/* Variables and functions */
- scalar_t__ EOF ; 
- int /*<<< orphan*/  LEXEME_EOF ; 
- int /*<<< orphan*/  LEXEME_TEXT ; 
- int /*<<< orphan*/  emit (struct lexer*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  left_meta ; 
- void* lex_error (struct lexer*,char*) ; 
- void* lex_left_meta ; 
- scalar_t__ lex_streq (struct lexer*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ next (struct lexer*) ; 
- int /*<<< orphan*/  right_meta ; 
- int /*<<< orphan*/  strlen (int /*<<< orphan*/ ) ; 
+
+ scalar_t__ EOF ;
+ int LEXEME_EOF ;
+ int LEXEME_TEXT ;
+ int emit (struct lexer*,int ) ;
+ int left_meta ;
+ void* lex_error (struct lexer*,char*) ;
+ void* lex_left_meta ;
+ scalar_t__ lex_streq (struct lexer*,int ,int ) ;
+ scalar_t__ next (struct lexer*) ;
+ int right_meta ;
+ int strlen (int ) ;
 
 __attribute__((used)) static void *lex_text(struct lexer *lexer)
 {
@@ -40,5 +40,5 @@ __attribute__((used)) static void *lex_text(struct lexer *lexer)
     if (lexer->pos > lexer->start)
         emit(lexer, LEXEME_TEXT);
     emit(lexer, LEXEME_EOF);
-    return NULL;
+    return ((void*)0);
 }

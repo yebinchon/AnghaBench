@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct tm {int tm_mday; } ;
-typedef  int /*<<< orphan*/  fsec_t ;
+typedef int fsec_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AdjustFractSeconds (double,struct tm*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SECS_PER_DAY ; 
+
+ int AdjustFractSeconds (double,struct tm*,int *,int ) ;
+ int SECS_PER_DAY ;
 
 __attribute__((used)) static void
-AdjustFractDays(double frac, struct /* pg_ */ tm *tm, fsec_t *fsec, int scale)
+AdjustFractDays(double frac, struct tm *tm, fsec_t *fsec, int scale)
 {
-	int			extra_days;
+ int extra_days;
 
-	if (frac == 0)
-		return;
-	frac *= scale;
-	extra_days = (int) frac;
-	tm->tm_mday += extra_days;
-	frac -= extra_days;
-	AdjustFractSeconds(frac, tm, fsec, SECS_PER_DAY);
+ if (frac == 0)
+  return;
+ frac *= scale;
+ extra_days = (int) frac;
+ tm->tm_mday += extra_days;
+ frac -= extra_days;
+ AdjustFractSeconds(frac, tm, fsec, SECS_PER_DAY);
 }

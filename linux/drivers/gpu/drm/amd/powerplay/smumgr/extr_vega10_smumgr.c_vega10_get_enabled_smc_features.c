@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64_t ;
+
+
+
+
+typedef int uint64_t ;
 struct pp_hwmgr {int dummy; } ;
 
-/* Variables and functions */
- int EINVAL ; 
- int /*<<< orphan*/  PPSMC_MSG_GetEnabledSmuFeatures ; 
- int /*<<< orphan*/  smu9_get_argument (struct pp_hwmgr*) ; 
- int /*<<< orphan*/  smu9_send_msg_to_smc (struct pp_hwmgr*,int /*<<< orphan*/ ) ; 
+
+ int EINVAL ;
+ int PPSMC_MSG_GetEnabledSmuFeatures ;
+ int smu9_get_argument (struct pp_hwmgr*) ;
+ int smu9_send_msg_to_smc (struct pp_hwmgr*,int ) ;
 
 int vega10_get_enabled_smc_features(struct pp_hwmgr *hwmgr,
-			    uint64_t *features_enabled)
+       uint64_t *features_enabled)
 {
-	if (features_enabled == NULL)
-		return -EINVAL;
+ if (features_enabled == ((void*)0))
+  return -EINVAL;
 
-	smu9_send_msg_to_smc(hwmgr, PPSMC_MSG_GetEnabledSmuFeatures);
-	*features_enabled = smu9_get_argument(hwmgr);
+ smu9_send_msg_to_smc(hwmgr, PPSMC_MSG_GetEnabledSmuFeatures);
+ *features_enabled = smu9_get_argument(hwmgr);
 
-	return 0;
+ return 0;
 }

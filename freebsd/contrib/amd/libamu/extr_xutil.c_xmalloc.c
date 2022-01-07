@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ voidp ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D_MEM ; 
- int /*<<< orphan*/  XLOG_DEBUG ; 
- int /*<<< orphan*/  XLOG_ERROR ; 
- int /*<<< orphan*/  XLOG_FATAL ; 
- int /*<<< orphan*/  abort () ; 
- scalar_t__ amuDebug (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  going_down (int) ; 
- scalar_t__ malloc (unsigned int) ; 
- int /*<<< orphan*/  plog (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  sleep (int) ; 
+
+
+
+typedef scalar_t__ voidp ;
+
+
+ int D_MEM ;
+ int XLOG_DEBUG ;
+ int XLOG_ERROR ;
+ int XLOG_FATAL ;
+ int abort () ;
+ scalar_t__ amuDebug (int ) ;
+ int going_down (int) ;
+ scalar_t__ malloc (unsigned int) ;
+ int plog (int ,char*,...) ;
+ int sleep (int) ;
 
 voidp
 xmalloc(int len)
@@ -30,9 +30,9 @@ xmalloc(int len)
   voidp p;
   int retries = 600;
 
-  /*
-   * Avoid malloc's which return NULL for malloc(0)
-   */
+
+
+
   if (len == 0)
     len = 1;
 
@@ -40,7 +40,7 @@ xmalloc(int len)
     p = (voidp) malloc((unsigned) len);
     if (p) {
       if (amuDebug(D_MEM))
-	plog(XLOG_DEBUG, "Allocated size %d; block %p", len, p);
+ plog(XLOG_DEBUG, "Allocated size %d; block %p", len, p);
       return p;
     }
     if (retries > 0) {

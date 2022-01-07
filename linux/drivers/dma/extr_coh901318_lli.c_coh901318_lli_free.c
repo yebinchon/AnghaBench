@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct coh901318_pool {int /*<<< orphan*/  lock; int /*<<< orphan*/  dmapool; } ;
-struct coh901318_lli {int /*<<< orphan*/  phy_this; struct coh901318_lli* virt_link_addr; scalar_t__ link_addr; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEBUGFS_POOL_COUNTER_ADD (struct coh901318_pool*,int) ; 
- int /*<<< orphan*/  dma_pool_free (int /*<<< orphan*/ ,struct coh901318_lli*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  spin_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock (int /*<<< orphan*/ *) ; 
+
+
+
+struct coh901318_pool {int lock; int dmapool; } ;
+struct coh901318_lli {int phy_this; struct coh901318_lli* virt_link_addr; scalar_t__ link_addr; } ;
+
+
+ int DEBUGFS_POOL_COUNTER_ADD (struct coh901318_pool*,int) ;
+ int dma_pool_free (int ,struct coh901318_lli*,int ) ;
+ int spin_lock (int *) ;
+ int spin_unlock (int *) ;
 
 void coh901318_lli_free(struct coh901318_pool *pool,
-			struct coh901318_lli **lli)
+   struct coh901318_lli **lli)
 {
-	struct coh901318_lli *l;
-	struct coh901318_lli *next;
+ struct coh901318_lli *l;
+ struct coh901318_lli *next;
 
-	if (lli == NULL)
-		return;
+ if (lli == ((void*)0))
+  return;
 
-	l = *lli;
+ l = *lli;
 
-	if (l == NULL)
-		return;
+ if (l == ((void*)0))
+  return;
 
-	spin_lock(&pool->lock);
+ spin_lock(&pool->lock);
 
-	while (l->link_addr) {
-		next = l->virt_link_addr;
-		dma_pool_free(pool->dmapool, l, l->phy_this);
-		DEBUGFS_POOL_COUNTER_ADD(pool, -1);
-		l = next;
-	}
-	dma_pool_free(pool->dmapool, l, l->phy_this);
-	DEBUGFS_POOL_COUNTER_ADD(pool, -1);
+ while (l->link_addr) {
+  next = l->virt_link_addr;
+  dma_pool_free(pool->dmapool, l, l->phy_this);
+  DEBUGFS_POOL_COUNTER_ADD(pool, -1);
+  l = next;
+ }
+ dma_pool_free(pool->dmapool, l, l->phy_this);
+ DEBUGFS_POOL_COUNTER_ADD(pool, -1);
 
-	spin_unlock(&pool->lock);
-	*lli = NULL;
+ spin_unlock(&pool->lock);
+ *lli = ((void*)0);
 }

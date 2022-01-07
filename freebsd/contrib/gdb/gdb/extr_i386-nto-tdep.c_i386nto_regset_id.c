@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int FP0_REGNUM ; 
- int FPC_REGNUM ; 
- int NTO_REG_END ; 
- int NTO_REG_FLOAT ; 
- int NTO_REG_GENERAL ; 
+ int FP0_REGNUM ;
+ int FPC_REGNUM ;
+ int NTO_REG_END ;
+ int NTO_REG_FLOAT ;
+ int NTO_REG_GENERAL ;
 
 __attribute__((used)) static int
 i386nto_regset_id (int regno)
@@ -28,5 +20,5 @@ i386nto_regset_id (int regno)
   else if (regno < FPC_REGNUM)
     return NTO_REG_FLOAT;
 
-  return -1;			/* Error.  */
+  return -1;
 }

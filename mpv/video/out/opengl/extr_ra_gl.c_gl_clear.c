@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct ra_tex_gl {int /*<<< orphan*/  fbo; } ;
-struct TYPE_4__ {int /*<<< orphan*/  render_dst; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct ra_tex_gl {int fbo; } ;
+struct TYPE_4__ {int render_dst; } ;
 struct ra_tex {struct ra_tex_gl* priv; TYPE_1__ params; } ;
 struct ra {int dummy; } ;
 struct mp_rect {scalar_t__ y0; scalar_t__ y1; scalar_t__ x0; scalar_t__ x1; } ;
-struct TYPE_5__ {int /*<<< orphan*/  (* BindFramebuffer ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* Disable ) (int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* Clear ) (int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* ClearColor ) (float,float,float,float) ;int /*<<< orphan*/  (* Enable ) (int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* Scissor ) (scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;} ;
-typedef  TYPE_2__ GL ;
+struct TYPE_5__ {int (* BindFramebuffer ) (int ,int ) ;int (* Disable ) (int ) ;int (* Clear ) (int ) ;int (* ClearColor ) (float,float,float,float) ;int (* Enable ) (int ) ;int (* Scissor ) (scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;} ;
+typedef TYPE_2__ GL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GL_COLOR_BUFFER_BIT ; 
- int /*<<< orphan*/  GL_FRAMEBUFFER ; 
- int /*<<< orphan*/  GL_SCISSOR_TEST ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- TYPE_2__* ra_gl_get (struct ra*) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub2 (scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  stub3 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub4 (float,float,float,float) ; 
- int /*<<< orphan*/  stub5 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub6 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub7 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int GL_COLOR_BUFFER_BIT ;
+ int GL_FRAMEBUFFER ;
+ int GL_SCISSOR_TEST ;
+ int assert (int ) ;
+ TYPE_2__* ra_gl_get (struct ra*) ;
+ int stub1 (int ,int ) ;
+ int stub2 (scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ int stub3 (int ) ;
+ int stub4 (float,float,float,float) ;
+ int stub5 (int ) ;
+ int stub6 (int ) ;
+ int stub7 (int ,int ) ;
 
 __attribute__((used)) static void gl_clear(struct ra *ra, struct ra_tex *dst, float color[4],
                      struct mp_rect *scissor)

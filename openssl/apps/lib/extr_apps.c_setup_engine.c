@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ENGINE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_printf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  ENGINE_CTRL_SET_LOGSTREAM ; 
- int /*<<< orphan*/  ENGINE_METHOD_ALL ; 
- int /*<<< orphan*/ * ENGINE_by_id (char const*) ; 
- int /*<<< orphan*/  ENGINE_ctrl (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ENGINE_ctrl_cmd (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ENGINE_free (int /*<<< orphan*/ *) ; 
- char const* ENGINE_get_id (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ENGINE_register_all_complete () ; 
- int /*<<< orphan*/  ENGINE_set_default (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ERR_print_errors (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bio_err ; 
- scalar_t__ get_ui_method () ; 
- scalar_t__ strcmp (char const*,char*) ; 
- int /*<<< orphan*/ * try_load_engine (char const*) ; 
+
+
+
+typedef int ENGINE ;
+
+
+ int BIO_printf (int ,char*,...) ;
+ int ENGINE_CTRL_SET_LOGSTREAM ;
+ int ENGINE_METHOD_ALL ;
+ int * ENGINE_by_id (char const*) ;
+ int ENGINE_ctrl (int *,int ,int ,int ,int ) ;
+ int ENGINE_ctrl_cmd (int *,char*,int ,void*,int ,int) ;
+ int ENGINE_free (int *) ;
+ char const* ENGINE_get_id (int *) ;
+ int ENGINE_register_all_complete () ;
+ int ENGINE_set_default (int *,int ) ;
+ int ERR_print_errors (int ) ;
+ int bio_err ;
+ scalar_t__ get_ui_method () ;
+ scalar_t__ strcmp (char const*,char*) ;
+ int * try_load_engine (char const*) ;
 
 ENGINE *setup_engine(const char *engine, int debug)
 {
-    ENGINE *e = NULL;
+    ENGINE *e = ((void*)0);
 
-#ifndef OPENSSL_NO_ENGINE
-    if (engine != NULL) {
+
+    if (engine != ((void*)0)) {
         if (strcmp(engine, "auto") == 0) {
             BIO_printf(bio_err, "enabling auto ENGINE support\n");
             ENGINE_register_all_complete();
-            return NULL;
+            return ((void*)0);
         }
-        if ((e = ENGINE_by_id(engine)) == NULL
-            && (e = try_load_engine(engine)) == NULL) {
+        if ((e = ENGINE_by_id(engine)) == ((void*)0)
+            && (e = try_load_engine(engine)) == ((void*)0)) {
             BIO_printf(bio_err, "invalid engine \"%s\"\n", engine);
             ERR_print_errors(bio_err);
-            return NULL;
+            return ((void*)0);
         }
         if (debug) {
             ENGINE_ctrl(e, ENGINE_CTRL_SET_LOGSTREAM, 0, bio_err, 0);
@@ -55,11 +55,11 @@ ENGINE *setup_engine(const char *engine, int debug)
             BIO_printf(bio_err, "can't use that engine\n");
             ERR_print_errors(bio_err);
             ENGINE_free(e);
-            return NULL;
+            return ((void*)0);
         }
 
         BIO_printf(bio_err, "engine \"%s\" set.\n", ENGINE_get_id(e));
     }
-#endif
+
     return e;
 }

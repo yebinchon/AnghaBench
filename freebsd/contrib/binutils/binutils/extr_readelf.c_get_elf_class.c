@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buff ;
 
-/* Variables and functions */
-#define  ELFCLASS32 130 
-#define  ELFCLASS64 129 
-#define  ELFCLASSNONE 128 
- char* _ (char*) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,unsigned int) ; 
+
+
+
+typedef int buff ;
+
+
+
+
+
+ char* _ (char*) ;
+ int snprintf (char*,int,char*,unsigned int) ;
 
 __attribute__((used)) static const char *
 get_elf_class (unsigned int elf_class)
@@ -26,9 +26,9 @@ get_elf_class (unsigned int elf_class)
 
   switch (elf_class)
     {
-    case ELFCLASSNONE: return _("none");
-    case ELFCLASS32:   return "ELF32";
-    case ELFCLASS64:   return "ELF64";
+    case 128: return _("none");
+    case 130: return "ELF32";
+    case 129: return "ELF64";
     default:
       snprintf (buff, sizeof (buff), _("<unknown: %x>"), elf_class);
       return buff;

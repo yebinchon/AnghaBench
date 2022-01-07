@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct bfa_fcxp_s {int /*<<< orphan*/  qe; } ;
-struct bfa_fcxp_mod_s {int /*<<< orphan*/  fcxp_active_q; int /*<<< orphan*/  fcxp_rsp_free_q; int /*<<< orphan*/  fcxp_req_free_q; } ;
-typedef  scalar_t__ bfa_boolean_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  bfa_q_deq (int /*<<< orphan*/ *,struct bfa_fcxp_s**) ; 
- int /*<<< orphan*/  list_add_tail (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+struct bfa_fcxp_s {int qe; } ;
+struct bfa_fcxp_mod_s {int fcxp_active_q; int fcxp_rsp_free_q; int fcxp_req_free_q; } ;
+typedef scalar_t__ bfa_boolean_t ;
+
+
+ int bfa_q_deq (int *,struct bfa_fcxp_s**) ;
+ int list_add_tail (int *,int *) ;
 
 __attribute__((used)) static struct bfa_fcxp_s *
 bfa_fcxp_get(struct bfa_fcxp_mod_s *fm, bfa_boolean_t req)
 {
-	struct bfa_fcxp_s *fcxp;
+ struct bfa_fcxp_s *fcxp;
 
-	if (req)
-		bfa_q_deq(&fm->fcxp_req_free_q, &fcxp);
-	else
-		bfa_q_deq(&fm->fcxp_rsp_free_q, &fcxp);
+ if (req)
+  bfa_q_deq(&fm->fcxp_req_free_q, &fcxp);
+ else
+  bfa_q_deq(&fm->fcxp_rsp_free_q, &fcxp);
 
-	if (fcxp)
-		list_add_tail(&fcxp->qe, &fm->fcxp_active_q);
+ if (fcxp)
+  list_add_tail(&fcxp->qe, &fm->fcxp_active_q);
 
-	return fcxp;
+ return fcxp;
 }

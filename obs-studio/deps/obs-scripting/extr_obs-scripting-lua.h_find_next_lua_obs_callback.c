@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct obs_lua_script {scalar_t__ first_callback; } ;
 struct TYPE_2__ {scalar_t__ next; } ;
-struct lua_obs_callback {TYPE_1__ base; int /*<<< orphan*/  reg_idx; } ;
-typedef  int /*<<< orphan*/  lua_State ;
+struct lua_obs_callback {TYPE_1__ base; int reg_idx; } ;
+typedef int lua_State ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LUA_REGISTRYINDEX ; 
- struct obs_lua_script* current_lua_script ; 
- int /*<<< orphan*/  lua_pop (int /*<<< orphan*/ *,int) ; 
- int lua_rawequal (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  lua_rawgeti (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int LUA_REGISTRYINDEX ;
+ struct obs_lua_script* current_lua_script ;
+ int lua_pop (int *,int) ;
+ int lua_rawequal (int *,int,int) ;
+ int lua_rawgeti (int *,int ,int ) ;
 
 __attribute__((used)) static inline struct lua_obs_callback *
 find_next_lua_obs_callback(lua_State *script, struct lua_obs_callback *cb,
-			   int stack_idx)
+      int stack_idx)
 {
-	struct obs_lua_script *data = current_lua_script;
+ struct obs_lua_script *data = current_lua_script;
 
-	cb = cb ? (struct lua_obs_callback *)cb->base.next
-		: (struct lua_obs_callback *)data->first_callback;
+ cb = cb ? (struct lua_obs_callback *)cb->base.next
+  : (struct lua_obs_callback *)data->first_callback;
 
-	while (cb) {
-		lua_rawgeti(script, LUA_REGISTRYINDEX, cb->reg_idx);
-		bool match = lua_rawequal(script, -1, stack_idx);
-		lua_pop(script, 1);
+ while (cb) {
+  lua_rawgeti(script, LUA_REGISTRYINDEX, cb->reg_idx);
+  bool match = lua_rawequal(script, -1, stack_idx);
+  lua_pop(script, 1);
 
-		if (match)
-			break;
+  if (match)
+   break;
 
-		cb = (struct lua_obs_callback *)cb->base.next;
-	}
+  cb = (struct lua_obs_callback *)cb->base.next;
+ }
 
-	return cb;
+ return cb;
 }

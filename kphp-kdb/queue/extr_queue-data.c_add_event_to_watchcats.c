@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  add_event (int /*<<< orphan*/ ,char*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  get_queue (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  get_watchcat_s (long long) ; 
- int my_verbosity ; 
- int /*<<< orphan*/  stderr ; 
- int strlen (char*) ; 
+ int add_event (int ,char*,int,int ,int ,int ) ;
+ int fprintf (int ,char*,...) ;
+ int get_queue (int ,int ) ;
+ int get_watchcat_s (long long) ;
+ int my_verbosity ;
+ int stderr ;
+ int strlen (char*) ;
 
 void add_event_to_watchcats (long long *ids, int idn, char *event) {
   int len = strlen (event), i;

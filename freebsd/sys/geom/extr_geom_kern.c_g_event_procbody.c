@@ -1,31 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  PRIBIO ; 
- int /*<<< orphan*/  g_event_td ; 
- int /*<<< orphan*/  g_run_events () ; 
- int /*<<< orphan*/  sched_prio (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  thread_lock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  thread_unlock (int /*<<< orphan*/ ) ; 
+ int PRIBIO ;
+ int g_event_td ;
+ int g_run_events () ;
+ int sched_prio (int ,int ) ;
+ int thread_lock (int ) ;
+ int thread_unlock (int ) ;
 
 __attribute__((used)) static void
 g_event_procbody(void *arg)
 {
 
-	thread_lock(g_event_td);
-	sched_prio(g_event_td, PRIBIO);
-	thread_unlock(g_event_td);
-	g_run_events();
-	/* NOTREACHED */
+ thread_lock(g_event_td);
+ sched_prio(g_event_td, PRIBIO);
+ thread_unlock(g_event_td);
+ g_run_events();
+
 }

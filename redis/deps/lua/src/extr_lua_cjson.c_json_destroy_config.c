@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
-struct TYPE_3__ {int /*<<< orphan*/  encode_buf; } ;
-typedef  TYPE_1__ json_config_t ;
 
-/* Variables and functions */
- TYPE_1__* lua_touserdata (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  strbuf_free (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int lua_State ;
+struct TYPE_3__ {int encode_buf; } ;
+typedef TYPE_1__ json_config_t ;
+
+
+ TYPE_1__* lua_touserdata (int *,int) ;
+ int strbuf_free (int *) ;
 
 __attribute__((used)) static int json_destroy_config(lua_State *l)
 {
@@ -26,7 +26,7 @@ __attribute__((used)) static int json_destroy_config(lua_State *l)
     cfg = lua_touserdata(l, 1);
     if (cfg)
         strbuf_free(&cfg->encode_buf);
-    cfg = NULL;
+    cfg = ((void*)0);
 
     return 0;
 }

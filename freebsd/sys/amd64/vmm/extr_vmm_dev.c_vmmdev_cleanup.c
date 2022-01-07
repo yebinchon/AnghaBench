@@ -1,30 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int EBUSY ; 
- scalar_t__ SLIST_EMPTY (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  head ; 
+ int EBUSY ;
+ scalar_t__ SLIST_EMPTY (int *) ;
+ int head ;
 
 int
 vmmdev_cleanup(void)
 {
-	int error;
+ int error;
 
-	if (SLIST_EMPTY(&head))
-		error = 0;
-	else
-		error = EBUSY;
+ if (SLIST_EMPTY(&head))
+  error = 0;
+ else
+  error = EBUSY;
 
-	return (error);
+ return (error);
 }

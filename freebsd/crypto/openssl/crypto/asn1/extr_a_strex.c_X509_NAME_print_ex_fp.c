@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  X509_NAME ;
-typedef  int /*<<< orphan*/  FILE ;
-typedef  int /*<<< orphan*/  BIO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_NOCLOSE ; 
- int /*<<< orphan*/  BIO_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BIO_new_fp (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int X509_NAME_print (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int) ; 
- unsigned long XN_FLAG_COMPAT ; 
- int do_name_ex (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int,unsigned long) ; 
- int /*<<< orphan*/  send_fp_chars ; 
+
+
+
+typedef int X509_NAME ;
+typedef int FILE ;
+typedef int BIO ;
+
+
+ int BIO_NOCLOSE ;
+ int BIO_free (int *) ;
+ int * BIO_new_fp (int *,int ) ;
+ int X509_NAME_print (int *,int const*,int) ;
+ unsigned long XN_FLAG_COMPAT ;
+ int do_name_ex (int ,int *,int const*,int,unsigned long) ;
+ int send_fp_chars ;
 
 int X509_NAME_print_ex_fp(FILE *fp, const X509_NAME *nm, int indent,
                           unsigned long flags)

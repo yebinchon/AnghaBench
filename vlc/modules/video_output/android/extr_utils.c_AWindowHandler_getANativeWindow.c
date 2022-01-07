@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  enum AWindow_ID { ____Placeholder_AWindow_ID } AWindow_ID ;
-struct TYPE_7__ {TYPE_1__* views; int /*<<< orphan*/ * (* pf_winFromSurface ) (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ;} ;
-struct TYPE_6__ {int /*<<< orphan*/ * p_anw; int /*<<< orphan*/ * jsurface; } ;
-typedef  int /*<<< orphan*/  JNIEnv ;
-typedef  TYPE_2__ AWindowHandler ;
-typedef  int /*<<< orphan*/  ANativeWindow ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * AWindowHandler_getEnv (TYPE_2__*) ; 
- int AWindow_Max ; 
- scalar_t__ VLC_SUCCESS ; 
- scalar_t__ WindowHandler_NewSurfaceEnv (TYPE_2__*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/ * stub1 (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef enum AWindow_ID { ____Placeholder_AWindow_ID } AWindow_ID ;
+struct TYPE_7__ {TYPE_1__* views; int * (* pf_winFromSurface ) (int *,int *) ;} ;
+struct TYPE_6__ {int * p_anw; int * jsurface; } ;
+typedef int JNIEnv ;
+typedef TYPE_2__ AWindowHandler ;
+typedef int ANativeWindow ;
+
+
+ int * AWindowHandler_getEnv (TYPE_2__*) ;
+ int AWindow_Max ;
+ scalar_t__ VLC_SUCCESS ;
+ scalar_t__ WindowHandler_NewSurfaceEnv (TYPE_2__*,int *,int) ;
+ int assert (int) ;
+ int * stub1 (int *,int *) ;
 
 ANativeWindow *
 AWindowHandler_getANativeWindow(AWindowHandler *p_awh, enum AWindow_ID id)
@@ -39,11 +39,11 @@ AWindowHandler_getANativeWindow(AWindowHandler *p_awh, enum AWindow_ID id)
 
     p_env = AWindowHandler_getEnv(p_awh);
     if (!p_env)
-        return NULL;
+        return ((void*)0);
 
     if (WindowHandler_NewSurfaceEnv(p_awh, p_env, id) != VLC_SUCCESS)
-        return NULL;
-    assert(p_awh->views[id].jsurface != NULL);
+        return ((void*)0);
+    assert(p_awh->views[id].jsurface != ((void*)0));
 
     p_awh->views[id].p_anw = p_awh->pf_winFromSurface(p_env,
                                                       p_awh->views[id].jsurface);

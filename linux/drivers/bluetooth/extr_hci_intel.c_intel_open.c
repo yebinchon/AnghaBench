@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct intel_data {int /*<<< orphan*/  flags; struct hci_uart* hu; int /*<<< orphan*/  busy_work; int /*<<< orphan*/  txq; } ;
+
+
+
+
+struct intel_data {int flags; struct hci_uart* hu; int busy_work; int txq; } ;
 struct hci_uart {struct intel_data* priv; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BT_DBG (char*,struct hci_uart*) ; 
- int ENOMEM ; 
- int EOPNOTSUPP ; 
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  INIT_WORK (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  STATE_BOOTING ; 
- int /*<<< orphan*/  hci_uart_has_flow_control (struct hci_uart*) ; 
- int /*<<< orphan*/  intel_busy_work ; 
- int /*<<< orphan*/  intel_set_power (struct hci_uart*,int) ; 
- struct intel_data* kzalloc (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  skb_queue_head_init (int /*<<< orphan*/ *) ; 
+
+ int BT_DBG (char*,struct hci_uart*) ;
+ int ENOMEM ;
+ int EOPNOTSUPP ;
+ int GFP_KERNEL ;
+ int INIT_WORK (int *,int ) ;
+ int STATE_BOOTING ;
+ int hci_uart_has_flow_control (struct hci_uart*) ;
+ int intel_busy_work ;
+ int intel_set_power (struct hci_uart*,int) ;
+ struct intel_data* kzalloc (int,int ) ;
+ int set_bit (int ,int *) ;
+ int skb_queue_head_init (int *) ;
 
 __attribute__((used)) static int intel_open(struct hci_uart *hu)
 {
-	struct intel_data *intel;
+ struct intel_data *intel;
 
-	BT_DBG("hu %p", hu);
+ BT_DBG("hu %p", hu);
 
-	if (!hci_uart_has_flow_control(hu))
-		return -EOPNOTSUPP;
+ if (!hci_uart_has_flow_control(hu))
+  return -EOPNOTSUPP;
 
-	intel = kzalloc(sizeof(*intel), GFP_KERNEL);
-	if (!intel)
-		return -ENOMEM;
+ intel = kzalloc(sizeof(*intel), GFP_KERNEL);
+ if (!intel)
+  return -ENOMEM;
 
-	skb_queue_head_init(&intel->txq);
-	INIT_WORK(&intel->busy_work, intel_busy_work);
+ skb_queue_head_init(&intel->txq);
+ INIT_WORK(&intel->busy_work, intel_busy_work);
 
-	intel->hu = hu;
+ intel->hu = hu;
 
-	hu->priv = intel;
+ hu->priv = intel;
 
-	if (!intel_set_power(hu, true))
-		set_bit(STATE_BOOTING, &intel->flags);
+ if (!intel_set_power(hu, 1))
+  set_bit(STATE_BOOTING, &intel->flags);
 
-	return 0;
+ return 0;
 }

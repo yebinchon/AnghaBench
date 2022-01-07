@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_6__ ;
-typedef  struct TYPE_13__   TYPE_5__ ;
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
+
+
+typedef struct TYPE_14__ TYPE_6__ ;
+typedef struct TYPE_13__ TYPE_5__ ;
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_14__ {TYPE_3__* priv; } ;
 struct TYPE_13__ {TYPE_6__* src; } ;
-struct TYPE_12__ {int* linesize; int /*<<< orphan*/ ** data; } ;
+struct TYPE_12__ {int* linesize; int ** data; } ;
 struct TYPE_11__ {TYPE_2__** input_views; TYPE_1__* pix_desc; } ;
-struct TYPE_10__ {int height; int /*<<< orphan*/  width; int /*<<< orphan*/  format; int /*<<< orphan*/  linesize; int /*<<< orphan*/ ** data; } ;
+struct TYPE_10__ {int height; int width; int format; int linesize; int ** data; } ;
 struct TYPE_9__ {int log2_chroma_h; } ;
-typedef  TYPE_3__ FramepackContext ;
-typedef  TYPE_4__ AVFrame ;
-typedef  TYPE_5__ AVFilterLink ;
-typedef  TYPE_6__ AVFilterContext ;
+typedef TYPE_3__ FramepackContext ;
+typedef TYPE_4__ AVFrame ;
+typedef TYPE_5__ AVFilterLink ;
+typedef TYPE_6__ AVFilterContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  av_image_copy (int /*<<< orphan*/ **,int*,int /*<<< orphan*/  const**,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+ int av_image_copy (int **,int*,int const**,int ,int ,int ,int) ;
 
 __attribute__((used)) static void vertical_frame_pack(AVFilterLink *outlink,
                                 AVFrame *out,

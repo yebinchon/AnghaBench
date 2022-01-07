@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ u_fp ;
-typedef  scalar_t__ s_fp ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TRUE ; 
- char* dofptoa (scalar_t__,int,short,int /*<<< orphan*/ ) ; 
+
+
+
+typedef scalar_t__ u_fp ;
+typedef scalar_t__ s_fp ;
+
+
+ int TRUE ;
+ char* dofptoa (scalar_t__,int,short,int ) ;
 
 char *
 fptoms(
-	s_fp	fpv,
-	short	ndec
-	)
+ s_fp fpv,
+ short ndec
+ )
 {
-	u_fp	plusfp;
-	int	neg;
+ u_fp plusfp;
+ int neg;
 
-	neg = (fpv < 0);
-	if (neg) {
-		plusfp = (u_fp)(-fpv);
-	} else {
-		plusfp = (u_fp)fpv;
-	}
+ neg = (fpv < 0);
+ if (neg) {
+  plusfp = (u_fp)(-fpv);
+ } else {
+  plusfp = (u_fp)fpv;
+ }
 
-	return dofptoa(plusfp, neg, ndec, TRUE);
+ return dofptoa(plusfp, neg, ndec, TRUE);
 }

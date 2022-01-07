@@ -1,68 +1,68 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int /*<<< orphan*/  ctx; } ;
-typedef  TYPE_1__ stringify_ctx_t ;
-typedef  int /*<<< orphan*/  jsval_t ;
-typedef  int /*<<< orphan*/  jsstr_t ;
-typedef  int /*<<< orphan*/  jsdisp_t ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  scalar_t__ HRESULT ;
-typedef  int /*<<< orphan*/  DISPID ;
 
-/* Variables and functions */
- scalar_t__ E_NOTIMPL ; 
- scalar_t__ E_OUTOFMEMORY ; 
- scalar_t__ FAILED (scalar_t__) ; 
- int /*<<< orphan*/  FIXME (char*) ; 
- int /*<<< orphan*/  JSCLASS_ARRAY ; 
-#define  JSV_BOOL 134 
-#define  JSV_NULL 133 
-#define  JSV_NUMBER 132 
-#define  JSV_OBJECT 131 
-#define  JSV_STRING 130 
-#define  JSV_UNDEFINED 129 
-#define  JSV_VARIANT 128 
- scalar_t__ S_FALSE ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  append_string (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  append_string_len (TYPE_1__*,int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- scalar_t__ double_to_string (double,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  falseW ; 
- int /*<<< orphan*/  get_bool (int /*<<< orphan*/ ) ; 
- double get_number (int /*<<< orphan*/ ) ; 
- scalar_t__ get_object (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * get_string (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * iface_to_jsdisp (scalar_t__) ; 
- int /*<<< orphan*/  is_callable (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  is_class (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  is_finite (double) ; 
- scalar_t__ is_object_instance (int /*<<< orphan*/ ) ; 
- scalar_t__ jsdisp_get_id (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jsdisp_release (int /*<<< orphan*/ *) ; 
- scalar_t__ json_quote (TYPE_1__*,int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * jsstr_flatten (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jsstr_length (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jsstr_release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jsval_release (int /*<<< orphan*/ ) ; 
- int jsval_type (int /*<<< orphan*/ ) ; 
- scalar_t__ maybe_to_primitive (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nullW ; 
- scalar_t__ stringify_array (TYPE_1__*,int /*<<< orphan*/ *) ; 
- scalar_t__ stringify_object (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  toJSONW ; 
- int /*<<< orphan*/  trueW ; 
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int ctx; } ;
+typedef TYPE_1__ stringify_ctx_t ;
+typedef int jsval_t ;
+typedef int jsstr_t ;
+typedef int jsdisp_t ;
+typedef int WCHAR ;
+typedef scalar_t__ HRESULT ;
+typedef int DISPID ;
+
+
+ scalar_t__ E_NOTIMPL ;
+ scalar_t__ E_OUTOFMEMORY ;
+ scalar_t__ FAILED (scalar_t__) ;
+ int FIXME (char*) ;
+ int JSCLASS_ARRAY ;
+
+
+
+
+
+
+
+ scalar_t__ S_FALSE ;
+ scalar_t__ S_OK ;
+ int append_string (TYPE_1__*,int ) ;
+ int append_string_len (TYPE_1__*,int const*,int ) ;
+ int assert (int ) ;
+ scalar_t__ double_to_string (double,int **) ;
+ int falseW ;
+ int get_bool (int ) ;
+ double get_number (int ) ;
+ scalar_t__ get_object (int ) ;
+ int * get_string (int ) ;
+ int * iface_to_jsdisp (scalar_t__) ;
+ int is_callable (int *) ;
+ int is_class (int *,int ) ;
+ int is_finite (double) ;
+ scalar_t__ is_object_instance (int ) ;
+ scalar_t__ jsdisp_get_id (int *,int ,int ,int *) ;
+ int jsdisp_release (int *) ;
+ scalar_t__ json_quote (TYPE_1__*,int const*,int ) ;
+ int * jsstr_flatten (int *) ;
+ int jsstr_length (int *) ;
+ int jsstr_release (int *) ;
+ int jsval_release (int ) ;
+ int jsval_type (int ) ;
+ scalar_t__ maybe_to_primitive (int ,int ,int *) ;
+ int nullW ;
+ scalar_t__ stringify_array (TYPE_1__*,int *) ;
+ scalar_t__ stringify_object (TYPE_1__*,int *) ;
+ int toJSONW ;
+ int trueW ;
 
 __attribute__((used)) static HRESULT stringify(stringify_ctx_t *ctx, jsval_t val)
 {
@@ -83,22 +83,22 @@ __attribute__((used)) static HRESULT stringify(stringify_ctx_t *ctx, jsval_t val
             FIXME("Use toJSON.\n");
     }
 
-    /* FIXME: Support replacer replacer. */
+
 
     hres = maybe_to_primitive(ctx->ctx, val, &value);
     if(FAILED(hres))
         return hres;
 
     switch(jsval_type(value)) {
-    case JSV_NULL:
+    case 133:
         if(!append_string(ctx, nullW))
             hres = E_OUTOFMEMORY;
         break;
-    case JSV_BOOL:
+    case 134:
         if(!append_string(ctx, get_bool(value) ? trueW : falseW))
             hres = E_OUTOFMEMORY;
         break;
-    case JSV_STRING: {
+    case 130: {
         jsstr_t *str = get_string(value);
         const WCHAR *ptr = jsstr_flatten(str);
         if(ptr)
@@ -107,19 +107,19 @@ __attribute__((used)) static HRESULT stringify(stringify_ctx_t *ctx, jsval_t val
             hres = E_OUTOFMEMORY;
         break;
     }
-    case JSV_NUMBER: {
+    case 132: {
         double n = get_number(value);
         if(is_finite(n)) {
             const WCHAR *ptr;
             jsstr_t *str;
 
-            /* FIXME: Optimize. There is no need for jsstr_t here. */
+
             hres = double_to_string(n, &str);
             if(FAILED(hres))
                 break;
 
             ptr = jsstr_flatten(str);
-            assert(ptr != NULL);
+            assert(ptr != ((void*)0));
             hres = ptr && !append_string_len(ctx, ptr, jsstr_length(str)) ? E_OUTOFMEMORY : S_OK;
             jsstr_release(str);
         }else {
@@ -128,7 +128,7 @@ __attribute__((used)) static HRESULT stringify(stringify_ctx_t *ctx, jsval_t val
         }
         break;
     }
-    case JSV_OBJECT: {
+    case 131: {
         jsdisp_t *obj;
 
         obj = iface_to_jsdisp(get_object(value));
@@ -145,10 +145,10 @@ __attribute__((used)) static HRESULT stringify(stringify_ctx_t *ctx, jsval_t val
         jsdisp_release(obj);
         break;
     }
-    case JSV_UNDEFINED:
+    case 129:
         hres = S_FALSE;
         break;
-    case JSV_VARIANT:
+    case 128:
         FIXME("VARIANT\n");
         hres = E_NOTIMPL;
         break;

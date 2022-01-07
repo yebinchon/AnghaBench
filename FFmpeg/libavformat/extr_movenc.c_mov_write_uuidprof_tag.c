@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  double int64_t ;
+
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef double int64_t ;
 struct TYPE_10__ {int sample_rate; int bit_rate; int channels; scalar_t__ codec_id; int width; int height; } ;
 struct TYPE_9__ {TYPE_2__** streams; } ;
 struct TYPE_7__ {int den; int num; } ;
 struct TYPE_8__ {TYPE_1__ avg_frame_rate; TYPE_4__* codecpar; } ;
-typedef  TYPE_2__ AVStream ;
-typedef  int /*<<< orphan*/  AVIOContext ;
-typedef  TYPE_3__ AVFormatContext ;
-typedef  TYPE_4__ AVCodecParameters ;
+typedef TYPE_2__ AVStream ;
+typedef int AVIOContext ;
+typedef TYPE_3__ AVFormatContext ;
+typedef TYPE_4__ AVCodecParameters ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- scalar_t__ AV_CODEC_ID_H264 ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  EINVAL ; 
- int FFMIN (int,int) ; 
- double INT32_MAX ; 
- int /*<<< orphan*/  av_log (TYPE_3__*,int /*<<< orphan*/ ,char*,double) ; 
- int /*<<< orphan*/  avio_wb16 (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  avio_wb32 (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  ffio_wfourcc (int /*<<< orphan*/ *,char*) ; 
+
+ int AVERROR (int ) ;
+ scalar_t__ AV_CODEC_ID_H264 ;
+ int AV_LOG_ERROR ;
+ int EINVAL ;
+ int FFMIN (int,int) ;
+ double INT32_MAX ;
+ int av_log (TYPE_3__*,int ,char*,double) ;
+ int avio_wb16 (int *,int) ;
+ int avio_wb32 (int *,int) ;
+ int ffio_wfourcc (int *,char*) ;
 
 __attribute__((used)) static int mov_write_uuidprof_tag(AVIOContext *pb, AVFormatContext *s)
 {
-    AVStream       *video_st    = s->streams[0];
+    AVStream *video_st = s->streams[0];
     AVCodecParameters *video_par = s->streams[0]->codecpar;
     AVCodecParameters *audio_par = s->streams[1]->codecpar;
     int audio_rate = audio_par->sample_rate;
@@ -53,27 +53,27 @@ __attribute__((used)) static int mov_write_uuidprof_tag(AVIOContext *pb, AVForma
         return AVERROR(EINVAL);
     }
 
-    avio_wb32(pb, 0x94); /* size */
+    avio_wb32(pb, 0x94);
     ffio_wfourcc(pb, "uuid");
     ffio_wfourcc(pb, "PROF");
 
-    avio_wb32(pb, 0x21d24fce); /* 96 bit UUID */
+    avio_wb32(pb, 0x21d24fce);
     avio_wb32(pb, 0xbb88695c);
     avio_wb32(pb, 0xfac9c740);
 
-    avio_wb32(pb, 0x0);  /* ? */
-    avio_wb32(pb, 0x3);  /* 3 sections ? */
-
-    avio_wb32(pb, 0x14); /* size */
-    ffio_wfourcc(pb, "FPRF");
-    avio_wb32(pb, 0x0);  /* ? */
-    avio_wb32(pb, 0x0);  /* ? */
-    avio_wb32(pb, 0x0);  /* ? */
-
-    avio_wb32(pb, 0x2c);  /* size */
-    ffio_wfourcc(pb, "APRF"); /* audio */
     avio_wb32(pb, 0x0);
-    avio_wb32(pb, 0x2);   /* TrackID */
+    avio_wb32(pb, 0x3);
+
+    avio_wb32(pb, 0x14);
+    ffio_wfourcc(pb, "FPRF");
+    avio_wb32(pb, 0x0);
+    avio_wb32(pb, 0x0);
+    avio_wb32(pb, 0x0);
+
+    avio_wb32(pb, 0x2c);
+    ffio_wfourcc(pb, "APRF");
+    avio_wb32(pb, 0x0);
+    avio_wb32(pb, 0x2);
     ffio_wfourcc(pb, "mp4a");
     avio_wb32(pb, 0x20f);
     avio_wb32(pb, 0x0);
@@ -82,10 +82,10 @@ __attribute__((used)) static int mov_write_uuidprof_tag(AVIOContext *pb, AVForma
     avio_wb32(pb, audio_rate);
     avio_wb32(pb, audio_par->channels);
 
-    avio_wb32(pb, 0x34);  /* size */
-    ffio_wfourcc(pb, "VPRF");   /* video */
+    avio_wb32(pb, 0x34);
+    ffio_wfourcc(pb, "VPRF");
     avio_wb32(pb, 0x0);
-    avio_wb32(pb, 0x1);    /* TrackID */
+    avio_wb32(pb, 0x1);
     if (video_par->codec_id == AV_CODEC_ID_H264) {
         ffio_wfourcc(pb, "avc1");
         avio_wb16(pb, 0x014D);
@@ -102,7 +102,7 @@ __attribute__((used)) static int mov_write_uuidprof_tag(AVIOContext *pb, AVForma
     avio_wb32(pb, frame_rate);
     avio_wb16(pb, video_par->width);
     avio_wb16(pb, video_par->height);
-    avio_wb32(pb, 0x010001); /* ? */
+    avio_wb32(pb, 0x010001);
 
     return 0;
 }

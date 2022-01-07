@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct lev_hints_set_object_type {int type; scalar_t__ object_id; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  changes_count ; 
- int /*<<< orphan*/  check_object_id (scalar_t__) ; 
- int /*<<< orphan*/  chg_list_add_int (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int,int) ; 
- int /*<<< orphan*/  global_changes_en ; 
- int /*<<< orphan*/  global_changes_st ; 
- scalar_t__ no_changes ; 
- int /*<<< orphan*/ ** stat_global ; 
- scalar_t__ write_only ; 
+
+ int changes_count ;
+ int check_object_id (scalar_t__) ;
+ int chg_list_add_int (int *,int *,int,int,int) ;
+ int global_changes_en ;
+ int global_changes_st ;
+ scalar_t__ no_changes ;
+ int ** stat_global ;
+ scalar_t__ write_only ;
 
 int set_object_type (struct lev_hints_set_object_type *E) {
   int object_type = (E->type >> 8) & 255;

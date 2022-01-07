@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {size_t num_args; int has_varargs; TYPE_2__* ret; int /*<<< orphan*/  args; } ;
+
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_8__ {size_t num_args; int has_varargs; TYPE_2__* ret; int args; } ;
 struct TYPE_9__ {TYPE_1__ func; } ;
-typedef  TYPE_2__ Typespec ;
-typedef  int /*<<< orphan*/  SrcPos ;
+typedef TYPE_2__ Typespec ;
+typedef int SrcPos ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AST_DUP (TYPE_2__**) ; 
- int /*<<< orphan*/  TYPESPEC_FUNC ; 
- TYPE_2__* new_typespec (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int AST_DUP (TYPE_2__**) ;
+ int TYPESPEC_FUNC ;
+ TYPE_2__* new_typespec (int ,int ) ;
 
 Typespec *new_typespec_func(SrcPos pos, Typespec **args, size_t num_args, Typespec *ret, bool has_varargs) {
     Typespec *t = new_typespec(TYPESPEC_FUNC, pos);

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DECL_P (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DECL_UID (int /*<<< orphan*/ ) ; 
- int bitmap_bit_p (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gcc_assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  syms_to_rename ; 
+
+
+
+typedef int tree ;
+
+
+ int DECL_P (int ) ;
+ int DECL_UID (int ) ;
+ int bitmap_bit_p (int ,int ) ;
+ int gcc_assert (int ) ;
+ int syms_to_rename ;
 
 __attribute__((used)) static inline bool
 symbol_marked_for_renaming (tree sym)

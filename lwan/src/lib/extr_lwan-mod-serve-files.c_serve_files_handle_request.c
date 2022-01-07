@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_5__ ;
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct serve_files_priv {int /*<<< orphan*/  cache; } ;
-struct TYPE_10__ {int /*<<< orphan*/ * callback; struct file_cache_entry* data; } ;
-struct lwan_response {TYPE_5__ stream; int /*<<< orphan*/  mime_type; } ;
-struct TYPE_7__ {int /*<<< orphan*/  value; } ;
-struct lwan_request {int /*<<< orphan*/  flags; TYPE_2__ url; TYPE_1__* conn; } ;
-struct TYPE_8__ {int /*<<< orphan*/  integer; } ;
-struct file_cache_entry {TYPE_4__* funcs; int /*<<< orphan*/  mime_type; TYPE_3__ last_modified; } ;
+
+
+typedef struct TYPE_10__ TYPE_5__ ;
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct serve_files_priv {int cache; } ;
+struct TYPE_10__ {int * callback; struct file_cache_entry* data; } ;
+struct lwan_response {TYPE_5__ stream; int mime_type; } ;
+struct TYPE_7__ {int value; } ;
+struct lwan_request {int flags; TYPE_2__ url; TYPE_1__* conn; } ;
+struct TYPE_8__ {int integer; } ;
+struct file_cache_entry {TYPE_4__* funcs; int mime_type; TYPE_3__ last_modified; } ;
 struct cache_entry {int dummy; } ;
-typedef  enum lwan_http_status { ____Placeholder_lwan_http_status } lwan_http_status ;
-struct TYPE_9__ {int /*<<< orphan*/ * serve; } ;
-struct TYPE_6__ {int /*<<< orphan*/  coro; } ;
+typedef enum lwan_http_status { ____Placeholder_lwan_http_status } lwan_http_status ;
+struct TYPE_9__ {int * serve; } ;
+struct TYPE_6__ {int coro; } ;
 
-/* Variables and functions */
- int HTTP_NOT_FOUND ; 
- int HTTP_NOT_MODIFIED ; 
- int HTTP_OK ; 
- int /*<<< orphan*/  RESPONSE_STREAM ; 
- scalar_t__ UNLIKELY (int) ; 
- struct cache_entry* cache_coro_get_and_ref_entry (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ client_has_fresh_content (struct lwan_request*,int /*<<< orphan*/ ) ; 
+
+ int HTTP_NOT_FOUND ;
+ int HTTP_NOT_MODIFIED ;
+ int HTTP_OK ;
+ int RESPONSE_STREAM ;
+ scalar_t__ UNLIKELY (int) ;
+ struct cache_entry* cache_coro_get_and_ref_entry (int ,int ,int ) ;
+ scalar_t__ client_has_fresh_content (struct lwan_request*,int ) ;
 
 __attribute__((used)) static enum lwan_http_status
 serve_files_handle_request(struct lwan_request *request,
@@ -68,6 +68,6 @@ serve_files_handle_request(struct lwan_request *request,
     return HTTP_OK;
 
 out:
-    response->stream.callback = NULL;
+    response->stream.callback = ((void*)0);
     return return_status;
 }

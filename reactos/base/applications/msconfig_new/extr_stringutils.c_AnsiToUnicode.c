@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/ * LPWSTR ;
-typedef  int /*<<< orphan*/  LPCSTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CP_ACP ; 
- int /*<<< orphan*/  MB_PRECOMPOSED ; 
- scalar_t__ MemAlloc (int /*<<< orphan*/ ,int) ; 
- int MultiByteToWideChar (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int WCHAR ;
+typedef int * LPWSTR ;
+typedef int LPCSTR ;
+
+
+ int CP_ACP ;
+ int MB_PRECOMPOSED ;
+ scalar_t__ MemAlloc (int ,int) ;
+ int MultiByteToWideChar (int ,int ,int ,int,int *,int) ;
 
 LPWSTR AnsiToUnicode(LPCSTR strA)
 {
     LPWSTR strW;
     int iNeededChars;
 
-    if (!strA) return NULL;
+    if (!strA) return ((void*)0);
 
     iNeededChars = MultiByteToWideChar(CP_ACP,
                                        MB_PRECOMPOSED,
-                                       strA, -1, NULL, 0);
+                                       strA, -1, ((void*)0), 0);
 
     strW = (LPWSTR)MemAlloc(0, iNeededChars * sizeof(WCHAR));
-    if (!strW) return NULL;
+    if (!strW) return ((void*)0);
 
     MultiByteToWideChar(CP_ACP,
                         MB_PRECOMPOSED,

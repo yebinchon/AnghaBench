@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct rcar_i2c_priv {int /*<<< orphan*/ * slave; int /*<<< orphan*/  irq; } ;
-struct i2c_client {int /*<<< orphan*/  adapter; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ICSCR ; 
- int /*<<< orphan*/  ICSIER ; 
- int /*<<< orphan*/  WARN_ON (int) ; 
- struct rcar_i2c_priv* i2c_get_adapdata (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pm_runtime_put (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rcar_i2c_priv_to_dev (struct rcar_i2c_priv*) ; 
- int /*<<< orphan*/  rcar_i2c_write (struct rcar_i2c_priv*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  synchronize_irq (int /*<<< orphan*/ ) ; 
+
+
+
+struct rcar_i2c_priv {int * slave; int irq; } ;
+struct i2c_client {int adapter; } ;
+
+
+ int ICSCR ;
+ int ICSIER ;
+ int WARN_ON (int) ;
+ struct rcar_i2c_priv* i2c_get_adapdata (int ) ;
+ int pm_runtime_put (int ) ;
+ int rcar_i2c_priv_to_dev (struct rcar_i2c_priv*) ;
+ int rcar_i2c_write (struct rcar_i2c_priv*,int ,int ) ;
+ int synchronize_irq (int ) ;
 
 __attribute__((used)) static int rcar_unreg_slave(struct i2c_client *slave)
 {
-	struct rcar_i2c_priv *priv = i2c_get_adapdata(slave->adapter);
+ struct rcar_i2c_priv *priv = i2c_get_adapdata(slave->adapter);
 
-	WARN_ON(!priv->slave);
+ WARN_ON(!priv->slave);
 
-	/* disable irqs and ensure none is running before clearing ptr */
-	rcar_i2c_write(priv, ICSIER, 0);
-	rcar_i2c_write(priv, ICSCR, 0);
 
-	synchronize_irq(priv->irq);
-	priv->slave = NULL;
+ rcar_i2c_write(priv, ICSIER, 0);
+ rcar_i2c_write(priv, ICSCR, 0);
 
-	pm_runtime_put(rcar_i2c_priv_to_dev(priv));
+ synchronize_irq(priv->irq);
+ priv->slave = ((void*)0);
 
-	return 0;
+ pm_runtime_put(rcar_i2c_priv_to_dev(priv));
+
+ return 0;
 }

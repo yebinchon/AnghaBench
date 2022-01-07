@@ -1,109 +1,109 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  val ;
-typedef  int /*<<< orphan*/  tmp ;
-typedef  char USHORT ;
-typedef  scalar_t__ UINT ;
-typedef  int /*<<< orphan*/  BUF ;
 
-/* Variables and functions */
- int Endian16 (char) ; 
- int /*<<< orphan*/  FreeBuf (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GetNextByte (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * NewBuf () ; 
- int ReadBuf (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  SeekBuf (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  StrCat (char*,scalar_t__,char*) ; 
- int /*<<< orphan*/  StrCpy (char*,scalar_t__,char*) ; 
- scalar_t__ StrLen (char*) ; 
- int /*<<< orphan*/  WriteBuf (int /*<<< orphan*/ *,void*,scalar_t__) ; 
- int /*<<< orphan*/  Zero (char*,int) ; 
+
+
+
+typedef int val ;
+typedef int tmp ;
+typedef char USHORT ;
+typedef scalar_t__ UINT ;
+typedef int BUF ;
+
+
+ int Endian16 (char) ;
+ int FreeBuf (int *) ;
+ int GetNextByte (int *) ;
+ int * NewBuf () ;
+ int ReadBuf (int *,char*,int) ;
+ int SeekBuf (int *,int ,int ) ;
+ int StrCat (char*,scalar_t__,char*) ;
+ int StrCpy (char*,scalar_t__,char*) ;
+ scalar_t__ StrLen (char*) ;
+ int WriteBuf (int *,void*,scalar_t__) ;
+ int Zero (char*,int) ;
 
 bool ParseDnsQuery(char *name, UINT name_size, void *data, UINT data_size)
 {
-	BUF *b;
-	char tmp[257];
-	bool ok = true;
-	USHORT val;
-	// Validate arguments
-	if (name == NULL || data == NULL || data_size == 0)
-	{
-		return false;
-	}
-	StrCpy(name, name_size, "");
+ BUF *b;
+ char tmp[257];
+ bool ok = 1;
+ USHORT val;
 
-	b = NewBuf();
-	WriteBuf(b, data, data_size);
-	SeekBuf(b, 0, 0);
+ if (name == ((void*)0) || data == ((void*)0) || data_size == 0)
+ {
+  return 0;
+ }
+ StrCpy(name, name_size, "");
 
-	while (true)
-	{
-		UINT next_len = (UINT)GetNextByte(b);
-		if (next_len > 0)
-		{
-			// Read only the specified length
-			Zero(tmp, sizeof(tmp));
-			if (ReadBuf(b, tmp, next_len) != next_len)
-			{
-				ok = false;
-				break;
-			}
-			// Append
-			if (StrLen(name) != 0)
-			{
-				StrCat(name, name_size, ".");
-			}
-			StrCat(name, name_size, tmp);
-		}
-		else
-		{
-			// Read all
-			break;
-		}
-	}
+ b = NewBuf();
+ WriteBuf(b, data, data_size);
+ SeekBuf(b, 0, 0);
 
-	if (ReadBuf(b, &val, sizeof(val)) != sizeof(val))
-	{
-		ok = false;
-	}
-	else
-	{
-		if (Endian16(val) != 0x01 && Endian16(val) != 0x0c)
-		{
-			ok = false;
-		}
-	}
+ while (1)
+ {
+  UINT next_len = (UINT)GetNextByte(b);
+  if (next_len > 0)
+  {
 
-	if (ReadBuf(b, &val, sizeof(val)) != sizeof(val))
-	{
-		ok = false;
-	}
-	else
-	{
-		if (Endian16(val) != 0x01)
-		{
-			ok = false;
-		}
-	}
+   Zero(tmp, sizeof(tmp));
+   if (ReadBuf(b, tmp, next_len) != next_len)
+   {
+    ok = 0;
+    break;
+   }
 
-	FreeBuf(b);
+   if (StrLen(name) != 0)
+   {
+    StrCat(name, name_size, ".");
+   }
+   StrCat(name, name_size, tmp);
+  }
+  else
+  {
 
-	if (ok == false || StrLen(name) == 0)
-	{
-		return false;
-	}
-	else
-	{
-		return true;
-	}
+   break;
+  }
+ }
+
+ if (ReadBuf(b, &val, sizeof(val)) != sizeof(val))
+ {
+  ok = 0;
+ }
+ else
+ {
+  if (Endian16(val) != 0x01 && Endian16(val) != 0x0c)
+  {
+   ok = 0;
+  }
+ }
+
+ if (ReadBuf(b, &val, sizeof(val)) != sizeof(val))
+ {
+  ok = 0;
+ }
+ else
+ {
+  if (Endian16(val) != 0x01)
+  {
+   ok = 0;
+  }
+ }
+
+ FreeBuf(b);
+
+ if (ok == 0 || StrLen(name) == 0)
+ {
+  return 0;
+ }
+ else
+ {
+  return 1;
+ }
 }

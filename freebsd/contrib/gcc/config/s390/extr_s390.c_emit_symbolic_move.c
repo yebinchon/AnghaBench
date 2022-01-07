@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  rtx ;
 
-/* Variables and functions */
- scalar_t__ GET_CODE (int /*<<< orphan*/ ) ; 
- scalar_t__ MEM ; 
- int /*<<< orphan*/  Pmode ; 
- scalar_t__ TLS_SYMBOLIC_CONST (int /*<<< orphan*/ ) ; 
- scalar_t__ flag_pic ; 
- int /*<<< orphan*/  force_reg (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_reg_rtx (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  legitimize_pic_address (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  legitimize_tls_address (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ no_new_pseudos ; 
+
+
+
+typedef int rtx ;
+
+
+ scalar_t__ GET_CODE (int ) ;
+ scalar_t__ MEM ;
+ int Pmode ;
+ scalar_t__ TLS_SYMBOLIC_CONST (int ) ;
+ scalar_t__ flag_pic ;
+ int force_reg (int ,int ) ;
+ int gen_reg_rtx (int ) ;
+ int legitimize_pic_address (int ,int ) ;
+ int legitimize_tls_address (int ,int ) ;
+ scalar_t__ no_new_pseudos ;
 
 void
 emit_symbolic_move (rtx *operands)

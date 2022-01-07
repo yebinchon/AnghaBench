@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  VARIANT ;
-typedef  int /*<<< orphan*/  ULONG ;
-typedef  int /*<<< orphan*/  IWbemServices ;
-typedef  int /*<<< orphan*/  IWbemLocator ;
-typedef  int /*<<< orphan*/  IWbemClassObject ;
-typedef  int /*<<< orphan*/  IEnumWbemClassObject ;
-typedef  int /*<<< orphan*/  IDxDiagContainerImpl_Container ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  scalar_t__ BSTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLSCTX_INPROC_SERVER ; 
- int /*<<< orphan*/  CLSID_WbemLocator ; 
- int /*<<< orphan*/  CoCreateInstance (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IEnumWbemClassObject_Next (int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IEnumWbemClassObject_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IID_IWbemLocator ; 
- int /*<<< orphan*/  IWbemClassObject_Get (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IWbemClassObject_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IWbemLocator_ConnectServer (int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IWbemLocator_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IWbemServices_CreateInstanceEnum (int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IWbemServices_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ SysAllocString (char const*) ; 
- int /*<<< orphan*/  SysFreeString (scalar_t__) ; 
- char* V_BSTR (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  V_I4 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  VariantClear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  WBEM_FLAG_SYSTEM_ONLY ; 
- int /*<<< orphan*/  add_bstr_property (int /*<<< orphan*/ *,char const*,char*) ; 
- int /*<<< orphan*/  swprintf (char*,char const*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef char WCHAR ;
+typedef int VARIANT ;
+typedef int ULONG ;
+typedef int IWbemServices ;
+typedef int IWbemLocator ;
+typedef int IWbemClassObject ;
+typedef int IEnumWbemClassObject ;
+typedef int IDxDiagContainerImpl_Container ;
+typedef int HRESULT ;
+typedef scalar_t__ BSTR ;
+
+
+ int CLSCTX_INPROC_SERVER ;
+ int CLSID_WbemLocator ;
+ int CoCreateInstance (int *,int *,int ,int *,void**) ;
+ int E_OUTOFMEMORY ;
+ scalar_t__ FAILED (int ) ;
+ int IEnumWbemClassObject_Next (int *,int,int,int **,int *) ;
+ int IEnumWbemClassObject_Release (int *) ;
+ int IID_IWbemLocator ;
+ int IWbemClassObject_Get (int *,char const*,int ,int *,int *,int *) ;
+ int IWbemClassObject_Release (int *) ;
+ int IWbemLocator_ConnectServer (int *,scalar_t__,int *,int *,int *,int ,int *,int *,int **) ;
+ int IWbemLocator_Release (int *) ;
+ int IWbemServices_CreateInstanceEnum (int *,scalar_t__,int ,int *,int **) ;
+ int IWbemServices_Release (int *) ;
+ scalar_t__ SysAllocString (char const*) ;
+ int SysFreeString (scalar_t__) ;
+ char* V_BSTR (int *) ;
+ int V_I4 (int *) ;
+ int VariantClear (int *) ;
+ int WBEM_FLAG_SYSTEM_ONLY ;
+ int add_bstr_property (int *,char const*,char*) ;
+ int swprintf (char*,char const*,char*,int ,int ) ;
 
 __attribute__((used)) static HRESULT fill_processor_information(IDxDiagContainerImpl_Container *node)
 {
@@ -67,7 +67,7 @@ __attribute__((used)) static HRESULT fill_processor_information(IDxDiagContainer
     ULONG no;
     HRESULT hr;
 
-    hr = CoCreateInstance(&CLSID_WbemLocator, NULL, CLSCTX_INPROC_SERVER, &IID_IWbemLocator, (void**)&wbem_locator);
+    hr = CoCreateInstance(&CLSID_WbemLocator, ((void*)0), CLSCTX_INPROC_SERVER, &IID_IWbemLocator, (void**)&wbem_locator);
     if(FAILED(hr))
         return hr;
 
@@ -76,7 +76,7 @@ __attribute__((used)) static HRESULT fill_processor_information(IDxDiagContainer
         IWbemLocator_Release(wbem_locator);
         return E_OUTOFMEMORY;
     }
-    hr = IWbemLocator_ConnectServer(wbem_locator, bstr, NULL, NULL, NULL, 0, NULL, NULL, &wbem_service);
+    hr = IWbemLocator_ConnectServer(wbem_locator, bstr, ((void*)0), ((void*)0), ((void*)0), 0, ((void*)0), ((void*)0), &wbem_service);
     IWbemLocator_Release(wbem_locator);
     SysFreeString(bstr);
     if(FAILED(hr))
@@ -87,7 +87,7 @@ __attribute__((used)) static HRESULT fill_processor_information(IDxDiagContainer
         IWbemServices_Release(wbem_service);
         return E_OUTOFMEMORY;
     }
-    hr = IWbemServices_CreateInstanceEnum(wbem_service, bstr, WBEM_FLAG_SYSTEM_ONLY, NULL, &wbem_enum);
+    hr = IWbemServices_CreateInstanceEnum(wbem_service, bstr, WBEM_FLAG_SYSTEM_ONLY, ((void*)0), &wbem_enum);
     IWbemServices_Release(wbem_service);
     SysFreeString(bstr);
     if(FAILED(hr))
@@ -98,17 +98,17 @@ __attribute__((used)) static HRESULT fill_processor_information(IDxDiagContainer
     if(FAILED(hr))
         return hr;
 
-    hr = IWbemClassObject_Get(wbem_class, cpu_noW, 0, &cpu_no, NULL, NULL);
+    hr = IWbemClassObject_Get(wbem_class, cpu_noW, 0, &cpu_no, ((void*)0), ((void*)0));
     if(FAILED(hr)) {
         IWbemClassObject_Release(wbem_class);
         return hr;
     }
-    hr = IWbemClassObject_Get(wbem_class, max_clock_speedW, 0, &clock_speed, NULL, NULL);
+    hr = IWbemClassObject_Get(wbem_class, max_clock_speedW, 0, &clock_speed, ((void*)0), ((void*)0));
     if(FAILED(hr)) {
         IWbemClassObject_Release(wbem_class);
         return hr;
     }
-    hr = IWbemClassObject_Get(wbem_class, nameW, 0, &cpu_name, NULL, NULL);
+    hr = IWbemClassObject_Get(wbem_class, nameW, 0, &cpu_name, ((void*)0), ((void*)0));
     IWbemClassObject_Release(wbem_class);
     if(FAILED(hr))
         return hr;

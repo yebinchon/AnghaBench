@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uid_t ;
-struct stat {int /*<<< orphan*/  st_mode; int /*<<< orphan*/  st_dev; } ;
-typedef  int /*<<< orphan*/  gid_t ;
-typedef  int /*<<< orphan*/  copy_progress_path_t ;
-typedef  int /*<<< orphan*/  copy_progress_bytes_t ;
-typedef  int /*<<< orphan*/  CopyFlags ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AT_SYMLINK_NOFOLLOW ; 
- int /*<<< orphan*/  COPY_DEPTH_MAX ; 
- int EOPNOTSUPP ; 
- scalar_t__ S_ISBLK (int /*<<< orphan*/ ) ; 
- scalar_t__ S_ISCHR (int /*<<< orphan*/ ) ; 
- scalar_t__ S_ISDIR (int /*<<< orphan*/ ) ; 
- scalar_t__ S_ISFIFO (int /*<<< orphan*/ ) ; 
- scalar_t__ S_ISLNK (int /*<<< orphan*/ ) ; 
- scalar_t__ S_ISREG (int /*<<< orphan*/ ) ; 
- scalar_t__ S_ISSOCK (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert (char const*) ; 
- int errno ; 
- int fd_copy_directory (int,char const*,struct stat*,int,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*) ; 
- int fd_copy_fifo (int,char const*,struct stat*,int,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int fd_copy_node (int,char const*,struct stat*,int,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int fd_copy_regular (int,char const*,struct stat*,int,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*) ; 
- int fd_copy_symlink (int,char const*,struct stat*,int,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ fstatat (int,char const*,struct stat*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uid_t ;
+struct stat {int st_mode; int st_dev; } ;
+typedef int gid_t ;
+typedef int copy_progress_path_t ;
+typedef int copy_progress_bytes_t ;
+typedef int CopyFlags ;
+
+
+ int AT_SYMLINK_NOFOLLOW ;
+ int COPY_DEPTH_MAX ;
+ int EOPNOTSUPP ;
+ scalar_t__ S_ISBLK (int ) ;
+ scalar_t__ S_ISCHR (int ) ;
+ scalar_t__ S_ISDIR (int ) ;
+ scalar_t__ S_ISFIFO (int ) ;
+ scalar_t__ S_ISLNK (int ) ;
+ scalar_t__ S_ISREG (int ) ;
+ scalar_t__ S_ISSOCK (int ) ;
+ int assert (char const*) ;
+ int errno ;
+ int fd_copy_directory (int,char const*,struct stat*,int,char const*,int ,int ,int ,int ,int ,int *,int ,int ,void*) ;
+ int fd_copy_fifo (int,char const*,struct stat*,int,char const*,int ,int ,int ) ;
+ int fd_copy_node (int,char const*,struct stat*,int,char const*,int ,int ,int ) ;
+ int fd_copy_regular (int,char const*,struct stat*,int,char const*,int ,int ,int ,int ,void*) ;
+ int fd_copy_symlink (int,char const*,struct stat*,int,char const*,int ,int ,int ) ;
+ scalar_t__ fstatat (int,char const*,struct stat*,int ) ;
 
 int copy_tree_at_full(
                 int fdf,
@@ -60,7 +60,7 @@ int copy_tree_at_full(
         if (S_ISREG(st.st_mode))
                 return fd_copy_regular(fdf, from, &st, fdt, to, override_uid, override_gid, copy_flags, progress_bytes, userdata);
         else if (S_ISDIR(st.st_mode))
-                return fd_copy_directory(fdf, from, &st, fdt, to, st.st_dev, COPY_DEPTH_MAX, override_uid, override_gid, copy_flags, NULL, progress_path, progress_bytes, userdata);
+                return fd_copy_directory(fdf, from, &st, fdt, to, st.st_dev, COPY_DEPTH_MAX, override_uid, override_gid, copy_flags, ((void*)0), progress_path, progress_bytes, userdata);
         else if (S_ISLNK(st.st_mode))
                 return fd_copy_symlink(fdf, from, &st, fdt, to, override_uid, override_gid, copy_flags);
         else if (S_ISFIFO(st.st_mode))

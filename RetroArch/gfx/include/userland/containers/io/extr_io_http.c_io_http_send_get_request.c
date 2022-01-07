@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ int64_t ;
-typedef  int /*<<< orphan*/  VC_CONTAINER_STATUS_T ;
-struct TYPE_5__ {scalar_t__ size; int /*<<< orphan*/  uri_parts; TYPE_2__* module; } ;
-typedef  TYPE_1__ VC_CONTAINER_IO_T ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef scalar_t__ int64_t ;
+typedef int VC_CONTAINER_STATUS_T ;
+struct TYPE_5__ {scalar_t__ size; int uri_parts; TYPE_2__* module; } ;
+typedef TYPE_1__ VC_CONTAINER_IO_T ;
 struct TYPE_6__ {char* comms_buffer; scalar_t__ cur_offset; } ;
-typedef  TYPE_2__ VC_CONTAINER_IO_MODULE_T ;
+typedef TYPE_2__ VC_CONTAINER_IO_MODULE_T ;
 
-/* Variables and functions */
- scalar_t__ ENABLE_HTTP_EXTRA_LOGGING ; 
- int /*<<< orphan*/  GET_METHOD ; 
- char* HTTP_RANGE_REQUEST ; 
- char* HTTP_REQUEST_LINE_FORMAT ; 
- int /*<<< orphan*/  LOG_DEBUG (int /*<<< orphan*/ *,char*,char*) ; 
- int /*<<< orphan*/  LOG_ERROR (int /*<<< orphan*/ ,char*,int,int) ; 
- char* TRAILING_HEADERS_FORMAT ; 
- int /*<<< orphan*/  VC_CONTAINER_ERROR_OUT_OF_RESOURCES ; 
- int /*<<< orphan*/  io_http_send (TYPE_1__*) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,...) ; 
- int /*<<< orphan*/  vc_uri_host (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vc_uri_path (int /*<<< orphan*/ ) ; 
+
+ scalar_t__ ENABLE_HTTP_EXTRA_LOGGING ;
+ int GET_METHOD ;
+ char* HTTP_RANGE_REQUEST ;
+ char* HTTP_REQUEST_LINE_FORMAT ;
+ int LOG_DEBUG (int *,char*,char*) ;
+ int LOG_ERROR (int ,char*,int,int) ;
+ char* TRAILING_HEADERS_FORMAT ;
+ int VC_CONTAINER_ERROR_OUT_OF_RESOURCES ;
+ int io_http_send (TYPE_1__*) ;
+ int snprintf (char*,int,char*,...) ;
+ int vc_uri_host (int ) ;
+ int vc_uri_path (int ) ;
 
 __attribute__((used)) static VC_CONTAINER_STATUS_T io_http_send_get_request(VC_CONTAINER_IO_T *p_ctx, size_t size)
 {
@@ -60,6 +60,6 @@ __attribute__((used)) static VC_CONTAINER_STATUS_T io_http_send_get_request(VC_C
    }
 
    if (ENABLE_HTTP_EXTRA_LOGGING)
-      LOG_DEBUG(NULL, "Sending server read request:\n%s\n---------------------\n", module->comms_buffer);
+      LOG_DEBUG(((void*)0), "Sending server read request:\n%s\n---------------------\n", module->comms_buffer);
    return io_http_send(p_ctx);
 }

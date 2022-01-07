@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {char* m_pRespBuf; char* m_pRespBufPos; char* m_pRespBufEnd; int m_fdListen; int m_fd; int /*<<< orphan*/ * m_respPktHeader; int /*<<< orphan*/ * m_respPktHeaderEnd; scalar_t__ m_pIovec; scalar_t__ m_pIovecToWrite; scalar_t__ m_pIovecCur; } ;
-typedef  TYPE_1__ LSAPI_Request ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LSAPI_INIT_RESP_HEADER_LEN ; 
- int LSAPI_RESP_BUF_SIZE ; 
- int /*<<< orphan*/  O_RDWR ; 
- int STDIN_FILENO ; 
- int allocateIovec (TYPE_1__*,int) ; 
- int allocateRespHeaderBuf (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int dup (int) ; 
- int /*<<< orphan*/  dup2 (int,int) ; 
- scalar_t__ isPipe (int) ; 
- int /*<<< orphan*/  lsapi_set_nblock (int,int) ; 
- scalar_t__ malloc (int) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int open (char*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {char* m_pRespBuf; char* m_pRespBufPos; char* m_pRespBufEnd; int m_fdListen; int m_fd; int * m_respPktHeader; int * m_respPktHeaderEnd; scalar_t__ m_pIovec; scalar_t__ m_pIovecToWrite; scalar_t__ m_pIovecCur; } ;
+typedef TYPE_1__ LSAPI_Request ;
+
+
+ int LSAPI_INIT_RESP_HEADER_LEN ;
+ int LSAPI_RESP_BUF_SIZE ;
+ int O_RDWR ;
+ int STDIN_FILENO ;
+ int allocateIovec (TYPE_1__*,int) ;
+ int allocateRespHeaderBuf (TYPE_1__*,int ) ;
+ int dup (int) ;
+ int dup2 (int,int) ;
+ scalar_t__ isPipe (int) ;
+ int lsapi_set_nblock (int,int) ;
+ scalar_t__ malloc (int) ;
+ int memset (TYPE_1__*,int ,int) ;
+ int open (char*,int ) ;
 
 int LSAPI_InitRequest( LSAPI_Request * pReq, int fd )
 {

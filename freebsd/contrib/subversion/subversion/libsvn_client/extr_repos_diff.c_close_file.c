@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_checksum_t ;
-struct file_baton {int /*<<< orphan*/ * pool; int /*<<< orphan*/  pfb; int /*<<< orphan*/  propchanges; int /*<<< orphan*/ * path_end_revision; scalar_t__ pristine_props; int /*<<< orphan*/ * path_start_revision; int /*<<< orphan*/  right_source; int /*<<< orphan*/  left_source; int /*<<< orphan*/  path; scalar_t__ added; scalar_t__ has_propchange; int /*<<< orphan*/  result_md5_checksum; scalar_t__ skip; struct edit_baton* edit_baton; struct dir_baton* parent_baton; } ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int svn_error_t ;
+typedef int svn_checksum_t ;
+struct file_baton {int * pool; int pfb; int propchanges; int * path_end_revision; scalar_t__ pristine_props; int * path_start_revision; int right_source; int left_source; int path; scalar_t__ added; scalar_t__ has_propchange; int result_md5_checksum; scalar_t__ skip; struct edit_baton* edit_baton; struct dir_baton* parent_baton; } ;
 struct edit_baton {TYPE_1__* processor; scalar_t__ text_deltas; } ;
 struct dir_baton {int dummy; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
-struct TYPE_3__ {int /*<<< orphan*/  (* file_changed ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ *) ;int /*<<< orphan*/  (* file_added ) (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ *) ;} ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
+struct TYPE_3__ {int (* file_changed ) (int ,int ,int ,int *,int *,scalar_t__,int *,int ,int ,int ,TYPE_1__*,int *) ;int (* file_added ) (int ,int *,int ,int *,int *,int *,int *,int ,TYPE_1__*,int *) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  get_file_from_ra (struct file_baton*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  release_dir (struct dir_baton*) ; 
- int /*<<< orphan*/  remove_non_prop_changes (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_checksum_match (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_checksum_md5 ; 
- int /*<<< orphan*/  svn_checksum_mismatch_err (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_checksum_parse_hex (int /*<<< orphan*/ **,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_error_trace (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_pool_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_prop__patch (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int TRUE ;
+ int _ (char*) ;
+ int get_file_from_ra (struct file_baton*,int ,int *) ;
+ int release_dir (struct dir_baton*) ;
+ int remove_non_prop_changes (scalar_t__,int ) ;
+ int stub1 (int ,int *,int ,int *,int *,int *,int *,int ,TYPE_1__*,int *) ;
+ int stub2 (int ,int ,int ,int *,int *,scalar_t__,int *,int ,int ,int ,TYPE_1__*,int *) ;
+ int svn_checksum_match (int *,int ) ;
+ int svn_checksum_md5 ;
+ int svn_checksum_mismatch_err (int *,int ,int *,int ,int ) ;
+ int svn_checksum_parse_hex (int **,int ,char const*,int *) ;
+ int * svn_error_trace (int ) ;
+ int svn_pool_destroy (int *) ;
+ int * svn_prop__patch (scalar_t__,int ,int *) ;
 
 __attribute__((used)) static svn_error_t *
 close_file(void *file_baton,
@@ -48,7 +48,7 @@ close_file(void *file_baton,
   struct edit_baton *eb = fb->edit_baton;
   apr_pool_t *scratch_pool;
 
-  /* Skip *everything* within a newly tree-conflicted directory. */
+
   if (fb->skip)
     {
       svn_pool_destroy(fb->pool);
@@ -80,8 +80,8 @@ close_file(void *file_baton,
 
       if (!fb->added && !fb->pristine_props)
         {
-          /* We didn't receive a text change, so we have no pristine props.
-             Retrieve just the props now. */
+
+
           SVN_ERR(get_file_from_ra(fb, TRUE, scratch_pool));
         }
 
@@ -93,11 +93,11 @@ close_file(void *file_baton,
 
       if (fb->added)
         SVN_ERR(eb->processor->file_added(fb->path,
-                                          NULL /* copyfrom_src */,
+                                          ((void*)0) ,
                                           fb->right_source,
-                                          NULL /* copyfrom_file */,
+                                          ((void*)0) ,
                                           fb->path_end_revision,
-                                          NULL /* copyfrom_props */,
+                                          ((void*)0) ,
                                           right_props,
                                           fb->pfb,
                                           eb->processor,
@@ -108,18 +108,18 @@ close_file(void *file_baton,
                                             fb->right_source,
                                             fb->path_end_revision
                                                     ? fb->path_start_revision
-                                                    : NULL,
+                                                    : ((void*)0),
                                             fb->path_end_revision,
                                             fb->pristine_props,
                                             right_props,
-                                            (fb->path_end_revision != NULL),
+                                            (fb->path_end_revision != ((void*)0)),
                                             fb->propchanges,
                                             fb->pfb,
                                             eb->processor,
                                             fb->pool));
     }
 
-  svn_pool_destroy(fb->pool); /* Destroy file and scratch pool */
+  svn_pool_destroy(fb->pool);
 
   SVN_ERR(release_dir(pb));
 

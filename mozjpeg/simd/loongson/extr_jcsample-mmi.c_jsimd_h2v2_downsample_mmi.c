@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  double __m64 ;
-typedef  int /*<<< orphan*/ * JSAMPROW ;
-typedef  int /*<<< orphan*/ ** JSAMPARRAY ;
-typedef  int JDIMENSION ;
 
-/* Variables and functions */
- int BYTE_BIT ; 
- int DCTSIZE ; 
- double _mm_add_pi16 (double,double) ; 
- double _mm_and_si64 (double,double) ; 
- double _mm_cmpeq_pi16 (double,double) ; 
- double _mm_load_si64 (double*) ; 
- double _mm_packs_pu16 (double,double) ; 
- double _mm_set1_pi32 (int) ; 
- double _mm_srli_pi16 (double,int) ; 
- int /*<<< orphan*/  _mm_store_si64 (double*,double) ; 
- int /*<<< orphan*/  expand_right_edge (int /*<<< orphan*/ **,int,int,int) ; 
+
+
+
+typedef double __m64 ;
+typedef int * JSAMPROW ;
+typedef int ** JSAMPARRAY ;
+typedef int JDIMENSION ;
+
+
+ int BYTE_BIT ;
+ int DCTSIZE ;
+ double _mm_add_pi16 (double,double) ;
+ double _mm_and_si64 (double,double) ;
+ double _mm_cmpeq_pi16 (double,double) ;
+ double _mm_load_si64 (double*) ;
+ double _mm_packs_pu16 (double,double) ;
+ double _mm_set1_pi32 (int) ;
+ double _mm_srli_pi16 (double,int) ;
+ int _mm_store_si64 (double*,double) ;
+ int expand_right_edge (int **,int,int,int) ;
 
 void jsimd_h2v2_downsample_mmi(JDIMENSION image_width, int max_v_samp_factor,
                                JDIMENSION v_samp_factor,
@@ -41,10 +41,10 @@ void jsimd_h2v2_downsample_mmi(JDIMENSION image_width, int max_v_samp_factor,
   expand_right_edge(input_data, max_v_samp_factor, image_width,
                     output_cols * 2);
 
-  bias = (1 << 17) + 1;                      /* 0x00020001 (bias pattern) */
-  mm7 = _mm_set1_pi32(bias);                 /* mm7={1, 2, 1, 2} */
+  bias = (1 << 17) + 1;
+  mm7 = _mm_set1_pi32(bias);
   mm6 = _mm_cmpeq_pi16(mm6, mm6);
-  mm6 = _mm_srli_pi16(mm6, BYTE_BIT);        /* mm6={0xFF 0x00 0xFF 0x00 ..} */
+  mm6 = _mm_srli_pi16(mm6, BYTE_BIT);
 
   for (inrow = 0, outrow = 0; outrow < v_samp_factor;
        inrow += 2, outrow++) {

@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_5__ ;
-typedef  struct TYPE_15__   TYPE_4__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint64_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int int64_t ;
+
+
+typedef struct TYPE_16__ TYPE_5__ ;
+typedef struct TYPE_15__ TYPE_4__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint64_t ;
+typedef int uint32_t ;
+typedef int int64_t ;
 struct TYPE_13__ {void* f; } ;
-typedef  TYPE_2__ ThreadFrame ;
+typedef TYPE_2__ ThreadFrame ;
 struct TYPE_16__ {scalar_t__ codec_id; TYPE_3__* priv_data; } ;
-struct TYPE_15__ {int size; int /*<<< orphan*/ * data; } ;
-struct TYPE_12__ {int /*<<< orphan*/  (* bswap_buf ) (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int) ;} ;
-struct TYPE_14__ {int width; int height; int /*<<< orphan*/  gb; scalar_t__ bitstream_buffer; TYPE_1__ bdsp; scalar_t__ chroma_v_shift; scalar_t__ last_slice_end; scalar_t__ context; int /*<<< orphan*/  bitstream_buffer_size; } ;
-typedef  TYPE_3__ HYuvContext ;
-typedef  TYPE_4__ AVPacket ;
-typedef  int /*<<< orphan*/  AVFrame ;
-typedef  TYPE_5__ AVCodecContext ;
+struct TYPE_15__ {int size; int * data; } ;
+struct TYPE_12__ {int (* bswap_buf ) (int *,int const*,int) ;} ;
+struct TYPE_14__ {int width; int height; int gb; scalar_t__ bitstream_buffer; TYPE_1__ bdsp; scalar_t__ chroma_v_shift; scalar_t__ last_slice_end; scalar_t__ context; int bitstream_buffer_size; } ;
+typedef TYPE_3__ HYuvContext ;
+typedef TYPE_4__ AVPacket ;
+typedef int AVFrame ;
+typedef TYPE_5__ AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_INVALIDDATA ; 
- scalar_t__ AV_CODEC_ID_HYMT ; 
- void* AV_RL32 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ENOMEM ; 
- int INT_MAX ; 
- int /*<<< orphan*/  av_fast_padded_malloc (scalar_t__*,int /*<<< orphan*/ *,int) ; 
- int decode_slice (TYPE_5__*,int /*<<< orphan*/ * const,int,int,int,int) ; 
- int /*<<< orphan*/  emms_c () ; 
- int ff_thread_get_buffer (TYPE_5__*,TYPE_2__*,int /*<<< orphan*/ ) ; 
- int get_bits_count (int /*<<< orphan*/ *) ; 
- int read_huffman_tables (TYPE_3__*,scalar_t__,int) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int) ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_INVALIDDATA ;
+ scalar_t__ AV_CODEC_ID_HYMT ;
+ void* AV_RL32 (int *) ;
+ int ENOMEM ;
+ int INT_MAX ;
+ int av_fast_padded_malloc (scalar_t__*,int *,int) ;
+ int decode_slice (TYPE_5__*,int * const,int,int,int,int) ;
+ int emms_c () ;
+ int ff_thread_get_buffer (TYPE_5__*,TYPE_2__*,int ) ;
+ int get_bits_count (int *) ;
+ int read_huffman_tables (TYPE_3__*,scalar_t__,int) ;
+ int stub1 (int *,int const*,int) ;
+ int stub2 (int *,int const*,int) ;
 
 __attribute__((used)) static int decode_frame(AVCodecContext *avctx, void *data, int *got_frame,
                         AVPacket *avpkt)
 {
     const uint8_t *buf = avpkt->data;
-    int buf_size       = avpkt->size;
+    int buf_size = avpkt->size;
     HYuvContext *s = avctx->priv_data;
-    const int width  = s->width;
+    const int width = s->width;
     const int height = s->height;
     ThreadFrame frame = { .f = data };
     AVFrame *const p = data;

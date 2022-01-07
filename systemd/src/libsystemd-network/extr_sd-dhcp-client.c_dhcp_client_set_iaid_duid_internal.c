@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_19__   TYPE_7__ ;
-typedef  struct TYPE_18__   TYPE_4__ ;
-typedef  struct TYPE_17__   TYPE_3__ ;
-typedef  struct TYPE_16__   TYPE_2__ ;
-typedef  struct TYPE_15__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  usec_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int uint16_t ;
-struct TYPE_15__ {int /*<<< orphan*/  data; } ;
-struct TYPE_19__ {TYPE_1__ raw; int /*<<< orphan*/  type; } ;
-struct TYPE_16__ {TYPE_7__ duid; int /*<<< orphan*/  iaid; } ;
+
+
+typedef struct TYPE_19__ TYPE_7__ ;
+typedef struct TYPE_18__ TYPE_4__ ;
+typedef struct TYPE_17__ TYPE_3__ ;
+typedef struct TYPE_16__ TYPE_2__ ;
+typedef struct TYPE_15__ TYPE_1__ ;
+
+
+typedef int usec_t ;
+typedef int uint32_t ;
+typedef int uint16_t ;
+struct TYPE_15__ {int data; } ;
+struct TYPE_19__ {TYPE_1__ raw; int type; } ;
+struct TYPE_16__ {TYPE_7__ duid; int iaid; } ;
 struct TYPE_18__ {int type; TYPE_2__ ns; } ;
-struct TYPE_17__ {int client_id_len; int /*<<< orphan*/  state; TYPE_4__ client_id; int /*<<< orphan*/  arp_type; int /*<<< orphan*/  mac_addr_len; int /*<<< orphan*/  mac_addr; int /*<<< orphan*/  ifindex; } ;
-typedef  TYPE_3__ sd_dhcp_client ;
+struct TYPE_17__ {int client_id_len; int state; TYPE_4__ client_id; int arp_type; int mac_addr_len; int mac_addr; int ifindex; } ;
+typedef TYPE_3__ sd_dhcp_client ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DHCP_CLIENT_DONT_DESTROY (TYPE_3__*) ; 
- int /*<<< orphan*/  DHCP_STATE_INIT ; 
- int /*<<< orphan*/  DHCP_STATE_STOPPED ; 
-#define  DUID_TYPE_EN 131 
-#define  DUID_TYPE_LL 130 
-#define  DUID_TYPE_LLT 129 
-#define  DUID_TYPE_UUID 128 
- int EINVAL ; 
- int EOPNOTSUPP ; 
- int /*<<< orphan*/  IN_SET (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SD_DHCP_CLIENT_EVENT_STOP ; 
- int /*<<< orphan*/  assert_return (TYPE_3__*,int) ; 
- int /*<<< orphan*/  client_stop (TYPE_3__*,int /*<<< orphan*/ ) ; 
- int dhcp_identifier_set_duid_en (TYPE_7__*,size_t*) ; 
- int dhcp_identifier_set_duid_ll (TYPE_7__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,size_t*) ; 
- int dhcp_identifier_set_duid_llt (TYPE_7__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,size_t*) ; 
- int dhcp_identifier_set_duid_uuid (TYPE_7__*,size_t*) ; 
- int dhcp_identifier_set_iaid (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- int dhcp_validate_duid_len (int,size_t,int) ; 
- int /*<<< orphan*/  htobe16 (int) ; 
- int /*<<< orphan*/  htobe32 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  log_dhcp_client (TYPE_3__*,char*,char*) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,void const*,size_t) ; 
- int /*<<< orphan*/  sd_dhcp_client_start (TYPE_3__*) ; 
- int /*<<< orphan*/  zero (TYPE_4__) ; 
+
+ int DHCP_CLIENT_DONT_DESTROY (TYPE_3__*) ;
+ int DHCP_STATE_INIT ;
+ int DHCP_STATE_STOPPED ;
+
+
+
+
+ int EINVAL ;
+ int EOPNOTSUPP ;
+ int IN_SET (int ,int ,int ) ;
+ int SD_DHCP_CLIENT_EVENT_STOP ;
+ int assert_return (TYPE_3__*,int) ;
+ int client_stop (TYPE_3__*,int ) ;
+ int dhcp_identifier_set_duid_en (TYPE_7__*,size_t*) ;
+ int dhcp_identifier_set_duid_ll (TYPE_7__*,int ,int ,int ,size_t*) ;
+ int dhcp_identifier_set_duid_llt (TYPE_7__*,int ,int ,int ,int ,size_t*) ;
+ int dhcp_identifier_set_duid_uuid (TYPE_7__*,size_t*) ;
+ int dhcp_identifier_set_iaid (int ,int ,int ,int,int *) ;
+ int dhcp_validate_duid_len (int,size_t,int) ;
+ int htobe16 (int) ;
+ int htobe32 (int ) ;
+ int log_dhcp_client (TYPE_3__*,char*,char*) ;
+ int memcpy (int *,void const*,size_t) ;
+ int sd_dhcp_client_start (TYPE_3__*) ;
+ int zero (TYPE_4__) ;
 
 __attribute__((used)) static int dhcp_client_set_iaid_duid_internal(
                 sd_dhcp_client *client,
@@ -70,7 +70,7 @@ __attribute__((used)) static int dhcp_client_set_iaid_duid_internal(
         assert_return(duid_len == 0 || duid, -EINVAL);
 
         if (duid) {
-                r = dhcp_validate_duid_len(duid_type, duid_len, true);
+                r = dhcp_validate_duid_len(duid_type, duid_len, 1);
                 if (r < 0)
                         return r;
         }
@@ -84,7 +84,7 @@ __attribute__((used)) static int dhcp_client_set_iaid_duid_internal(
                 else {
                         r = dhcp_identifier_set_iaid(client->ifindex, client->mac_addr,
                                                      client->mac_addr_len,
-                                                     true,
+                                                     1,
                                                      &client->client_id.ns.iaid);
                         if (r < 0)
                                 return r;
@@ -97,7 +97,7 @@ __attribute__((used)) static int dhcp_client_set_iaid_duid_internal(
                 len = sizeof(client->client_id.ns.duid.type) + duid_len;
         } else
                 switch (duid_type) {
-                case DUID_TYPE_LLT:
+                case 129:
                         if (client->mac_addr_len == 0)
                                 return -EOPNOTSUPP;
 
@@ -105,12 +105,12 @@ __attribute__((used)) static int dhcp_client_set_iaid_duid_internal(
                         if (r < 0)
                                 return r;
                         break;
-                case DUID_TYPE_EN:
+                case 131:
                         r = dhcp_identifier_set_duid_en(&client->client_id.ns.duid, &len);
                         if (r < 0)
                                 return r;
                         break;
-                case DUID_TYPE_LL:
+                case 130:
                         if (client->mac_addr_len == 0)
                                 return -EOPNOTSUPP;
 
@@ -118,7 +118,7 @@ __attribute__((used)) static int dhcp_client_set_iaid_duid_internal(
                         if (r < 0)
                                 return r;
                         break;
-                case DUID_TYPE_UUID:
+                case 128:
                         r = dhcp_identifier_set_duid_uuid(&client->client_id.ns.duid, &len);
                         if (r < 0)
                                 return r;

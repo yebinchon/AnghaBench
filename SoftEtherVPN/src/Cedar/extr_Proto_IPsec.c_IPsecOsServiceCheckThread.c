@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int UINT ;
-struct TYPE_3__ {int HostIPAddressListChanged; int OsServiceStoped; int Halt; int /*<<< orphan*/  OsServiceCheckThreadEvent; } ;
-typedef  int /*<<< orphan*/  THREAD ;
-typedef  TYPE_1__ IPSEC_SERVER ;
 
-/* Variables and functions */
- int IPSEC_CHECK_OS_SERVICE_INTERVAL_INITIAL ; 
- int /*<<< orphan*/  IPSEC_CHECK_OS_SERVICE_INTERVAL_MAX ; 
- scalar_t__ IPsecCheckOsService (TYPE_1__*) ; 
- int MIN (int,int /*<<< orphan*/ ) ; 
- int Wait (int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int UINT ;
+struct TYPE_3__ {int HostIPAddressListChanged; int OsServiceStoped; int Halt; int OsServiceCheckThreadEvent; } ;
+typedef int THREAD ;
+typedef TYPE_1__ IPSEC_SERVER ;
+
+
+ int IPSEC_CHECK_OS_SERVICE_INTERVAL_INITIAL ;
+ int IPSEC_CHECK_OS_SERVICE_INTERVAL_MAX ;
+ scalar_t__ IPsecCheckOsService (TYPE_1__*) ;
+ int MIN (int,int ) ;
+ int Wait (int ,int) ;
 
 void IPsecOsServiceCheckThread(THREAD *t, void *p)
 {
-	UINT interval = IPSEC_CHECK_OS_SERVICE_INTERVAL_INITIAL;
-	IPSEC_SERVER *s = (IPSEC_SERVER *)p;
-	// Validate arguments
-	if (t == NULL || p == NULL)
-	{
-		return;
-	}
+ UINT interval = IPSEC_CHECK_OS_SERVICE_INTERVAL_INITIAL;
+ IPSEC_SERVER *s = (IPSEC_SERVER *)p;
 
-	s->HostIPAddressListChanged = true;
-	s->OsServiceStoped = false;
+ if (t == ((void*)0) || p == ((void*)0))
+ {
+  return;
+ }
 
-	while (s->Halt == false)
-	{
-		if (IPsecCheckOsService(s))
-		{
-			interval = IPSEC_CHECK_OS_SERVICE_INTERVAL_INITIAL;
-		}
+ s->HostIPAddressListChanged = 1;
+ s->OsServiceStoped = 0;
 
-		if (Wait(s->OsServiceCheckThreadEvent, interval) == false)
-		{
-			interval = MIN(interval * 2, IPSEC_CHECK_OS_SERVICE_INTERVAL_MAX);
-		}
-		else
-		{
-			interval = IPSEC_CHECK_OS_SERVICE_INTERVAL_INITIAL;
-		}
-	}
+ while (s->Halt == 0)
+ {
+  if (IPsecCheckOsService(s))
+  {
+   interval = IPSEC_CHECK_OS_SERVICE_INTERVAL_INITIAL;
+  }
 
-	IPsecCheckOsService(s);
+  if (Wait(s->OsServiceCheckThreadEvent, interval) == 0)
+  {
+   interval = MIN(interval * 2, IPSEC_CHECK_OS_SERVICE_INTERVAL_MAX);
+  }
+  else
+  {
+   interval = IPSEC_CHECK_OS_SERVICE_INTERVAL_INITIAL;
+  }
+ }
+
+ IPsecCheckOsService(s);
 }

@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  TCHAR ;
-typedef  int /*<<< orphan*/ * LPTSTR ;
-typedef  int /*<<< orphan*/ * LPBYTE ;
-typedef  int INT ;
-typedef  int /*<<< orphan*/ * HKEY ;
-typedef  scalar_t__ DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ConOutPrintf (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ ERROR_FILE_NOT_FOUND ; 
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/ * HKEY_LOCAL_MACHINE ; 
- int /*<<< orphan*/  KEY_READ ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ *) ; 
- scalar_t__ RegOpenKeyEx (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- scalar_t__ RegQueryValueEx (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__*) ; 
- int /*<<< orphan*/  WARN (char*) ; 
- int /*<<< orphan*/ * _T (char*) ; 
- int /*<<< orphan*/ * cmd_alloc (scalar_t__) ; 
- int /*<<< orphan*/  cmd_free (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int TCHAR ;
+typedef int * LPTSTR ;
+typedef int * LPBYTE ;
+typedef int INT ;
+typedef int * HKEY ;
+typedef scalar_t__ DWORD ;
+
+
+ int ConOutPrintf (int *,int *,int *) ;
+ scalar_t__ ERROR_FILE_NOT_FOUND ;
+ scalar_t__ ERROR_SUCCESS ;
+ int * HKEY_LOCAL_MACHINE ;
+ int KEY_READ ;
+ int RegCloseKey (int *) ;
+ scalar_t__ RegOpenKeyEx (int *,int *,int ,int ,int **) ;
+ scalar_t__ RegQueryValueEx (int *,int *,int *,int *,int *,scalar_t__*) ;
+ int WARN (char*) ;
+ int * _T (char*) ;
+ int * cmd_alloc (scalar_t__) ;
+ int cmd_free (int *) ;
 
 __attribute__((used)) static INT
 PrintAssociation(LPTSTR extension)
 {
     DWORD return_val;
-    HKEY hKey = NULL, hInsideKey = NULL;
+    HKEY hKey = ((void*)0), hInsideKey = ((void*)0);
 
     DWORD fileTypeLength = 0;
-    LPTSTR fileType = NULL;
+    LPTSTR fileType = ((void*)0);
 
     return_val = RegOpenKeyEx(HKEY_LOCAL_MACHINE, _T("SOFTWARE\\Classes"), 0, KEY_READ, &hKey);
 
@@ -51,10 +51,10 @@ PrintAssociation(LPTSTR extension)
     if (return_val != ERROR_SUCCESS)
         return 0;
 
-    /* obtain string length */
-    return_val = RegQueryValueEx(hInsideKey, NULL, NULL, NULL, NULL, &fileTypeLength);
 
-    if (return_val == ERROR_FILE_NOT_FOUND) /* no default value, don't display */
+    return_val = RegQueryValueEx(hInsideKey, ((void*)0), ((void*)0), ((void*)0), ((void*)0), &fileTypeLength);
+
+    if (return_val == ERROR_FILE_NOT_FOUND)
     {
         RegCloseKey(hInsideKey);
         return 0;
@@ -74,8 +74,8 @@ PrintAssociation(LPTSTR extension)
         return -2;
     }
 
-    /* obtain actual file type */
-    return_val = RegQueryValueEx(hInsideKey, NULL, NULL, NULL, (LPBYTE)fileType, &fileTypeLength);
+
+    return_val = RegQueryValueEx(hInsideKey, ((void*)0), ((void*)0), ((void*)0), (LPBYTE)fileType, &fileTypeLength);
     RegCloseKey(hInsideKey);
 
     if (return_val != ERROR_SUCCESS)
@@ -84,7 +84,7 @@ PrintAssociation(LPTSTR extension)
         return -2;
     }
 
-    if (fileTypeLength != 0)    /* if there is a default key, display relevant information */
+    if (fileTypeLength != 0)
     {
         ConOutPrintf(_T("%s=%s\n"), extension, fileType);
     }

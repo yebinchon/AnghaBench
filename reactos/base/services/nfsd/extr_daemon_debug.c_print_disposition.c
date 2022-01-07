@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ DWORD ;
 
-/* Variables and functions */
- scalar_t__ FILE_CREATE ; 
- scalar_t__ FILE_OPEN ; 
- scalar_t__ FILE_OPEN_IF ; 
- scalar_t__ FILE_OVERWRITE ; 
- scalar_t__ FILE_OVERWRITE_IF ; 
- scalar_t__ FILE_SUPERSEDE ; 
- int /*<<< orphan*/  dlog_file ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int g_debug_level ; 
+
+
+
+typedef scalar_t__ DWORD ;
+
+
+ scalar_t__ FILE_CREATE ;
+ scalar_t__ FILE_OPEN ;
+ scalar_t__ FILE_OPEN_IF ;
+ scalar_t__ FILE_OVERWRITE ;
+ scalar_t__ FILE_OVERWRITE_IF ;
+ scalar_t__ FILE_SUPERSEDE ;
+ int dlog_file ;
+ int fprintf (int ,char*) ;
+ int g_debug_level ;
 
 void print_disposition(int level, DWORD disposition) {
     if (level > g_debug_level) return;

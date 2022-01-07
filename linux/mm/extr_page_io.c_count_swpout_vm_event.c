@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct page {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PSWPOUT ; 
- int /*<<< orphan*/  PageTransHuge (struct page*) ; 
- int /*<<< orphan*/  THP_SWPOUT ; 
- int /*<<< orphan*/  count_vm_event (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  count_vm_events (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hpage_nr_pages (struct page*) ; 
- scalar_t__ unlikely (int /*<<< orphan*/ ) ; 
+
+ int PSWPOUT ;
+ int PageTransHuge (struct page*) ;
+ int THP_SWPOUT ;
+ int count_vm_event (int ) ;
+ int count_vm_events (int ,int ) ;
+ int hpage_nr_pages (struct page*) ;
+ scalar_t__ unlikely (int ) ;
 
 __attribute__((used)) static inline void count_swpout_vm_event(struct page *page)
 {
-#ifdef CONFIG_TRANSPARENT_HUGEPAGE
-	if (unlikely(PageTransHuge(page)))
-		count_vm_event(THP_SWPOUT);
-#endif
-	count_vm_events(PSWPOUT, hpage_nr_pages(page));
+
+
+
+
+ count_vm_events(PSWPOUT, hpage_nr_pages(page));
 }

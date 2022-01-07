@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64_t ;
-typedef  void HelloTypeObject ;
-typedef  int /*<<< orphan*/  int64_t ;
-typedef  int /*<<< orphan*/  RedisModuleIO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HelloTypeInsert (void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RedisModule_LoadSigned (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RedisModule_LoadUnsigned (int /*<<< orphan*/ *) ; 
- void* createHelloTypeObject () ; 
+
+
+
+typedef int uint64_t ;
+typedef void HelloTypeObject ;
+typedef int int64_t ;
+typedef int RedisModuleIO ;
+
+
+ int HelloTypeInsert (void*,int ) ;
+ int RedisModule_LoadSigned (int *) ;
+ int RedisModule_LoadUnsigned (int *) ;
+ void* createHelloTypeObject () ;
 
 void *HelloTypeRdbLoad(RedisModuleIO *rdb, int encver) {
     if (encver != 0) {
-        /* RedisModule_Log("warning","Can't load data with version %d", encver);*/
-        return NULL;
+
+        return ((void*)0);
     }
     uint64_t elements = RedisModule_LoadUnsigned(rdb);
     struct HelloTypeObject *hto = createHelloTypeObject();

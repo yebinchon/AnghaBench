@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct hook_handler {int /*<<< orphan*/  type; } ;
+
+
+
+
+struct hook_handler {int type; } ;
 struct command_ctx {int num_hooks; struct hook_handler** hooks; } ;
 struct MPContext {struct command_ctx* command_ctx; } ;
 
-/* Variables and functions */
- int invoke_hook_handler (struct MPContext*,struct hook_handler*) ; 
- int /*<<< orphan*/  mp_wakeup_core (struct MPContext*) ; 
- scalar_t__ strcmp (int /*<<< orphan*/ ,char*) ; 
+
+ int invoke_hook_handler (struct MPContext*,struct hook_handler*) ;
+ int mp_wakeup_core (struct MPContext*) ;
+ scalar_t__ strcmp (int ,char*) ;
 
 __attribute__((used)) static int run_next_hook_handler(struct MPContext *mpctx, char *type, int index)
 {
@@ -29,6 +29,6 @@ __attribute__((used)) static int run_next_hook_handler(struct MPContext *mpctx, 
             return invoke_hook_handler(mpctx, h);
     }
 
-    mp_wakeup_core(mpctx); // finished hook
+    mp_wakeup_core(mpctx);
     return 0;
 }

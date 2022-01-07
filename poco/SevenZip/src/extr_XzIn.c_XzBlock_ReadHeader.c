@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int UInt32 ;
-typedef  int /*<<< orphan*/  SRes ;
-typedef  int /*<<< orphan*/  ISeqInStream ;
-typedef  int /*<<< orphan*/  CXzBlock ;
-typedef  scalar_t__ Byte ;
-typedef  int /*<<< orphan*/  Bool ;
 
-/* Variables and functions */
- int /*<<< orphan*/  False ; 
- int /*<<< orphan*/  RINOK (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SZ_OK ; 
- int /*<<< orphan*/  SeqInStream_Read (int /*<<< orphan*/ *,scalar_t__*,unsigned int) ; 
- int /*<<< orphan*/  SeqInStream_ReadByte (int /*<<< orphan*/ *,scalar_t__*) ; 
- int /*<<< orphan*/  True ; 
- int XZ_BLOCK_HEADER_SIZE_MAX ; 
- int /*<<< orphan*/  XzBlock_Parse (int /*<<< orphan*/ *,scalar_t__*) ; 
+
+
+
+typedef int UInt32 ;
+typedef int SRes ;
+typedef int ISeqInStream ;
+typedef int CXzBlock ;
+typedef scalar_t__ Byte ;
+typedef int Bool ;
+
+
+ int False ;
+ int RINOK (int ) ;
+ int SZ_OK ;
+ int SeqInStream_Read (int *,scalar_t__*,unsigned int) ;
+ int SeqInStream_ReadByte (int *,scalar_t__*) ;
+ int True ;
+ int XZ_BLOCK_HEADER_SIZE_MAX ;
+ int XzBlock_Parse (int *,scalar_t__*) ;
 
 SRes XzBlock_ReadHeader(CXzBlock *p, ISeqInStream *inStream, Bool *isIndex, UInt32 *headerSizeRes)
 {

@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int SERVER () ; 
- int /*<<< orphan*/  ckresp (int,char*) ; 
- int /*<<< orphan*/  ckrespsub (int,char*) ; 
- int mustdiallocal (int) ; 
- int /*<<< orphan*/  mustsend (int,char*) ; 
+ int SERVER () ;
+ int ckresp (int,char*) ;
+ int ckrespsub (int,char*) ;
+ int mustdiallocal (int) ;
+ int mustsend (int,char*) ;
 
 void
 cttest_reserve_job_delayed()
@@ -41,7 +33,7 @@ cttest_reserve_job_delayed()
     mustsend(fd, "release 2 1 0\r\n");
     ckresp(fd, "RELEASED\r\n");
 
-    // verify that job was released in ready state.
+
     mustsend(fd, "stats-job 2\r\n");
     ckrespsub(fd, "OK ");
     ckrespsub(fd, "\nstate: ready\n");

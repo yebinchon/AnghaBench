@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  psz_module; int /*<<< orphan*/ * psz_header; } ;
-typedef  TYPE_1__ vlc_log_t ;
-typedef  int /*<<< orphan*/  va_list ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (char*) ; 
- int* priorities ; 
- int /*<<< orphan*/  syslog (int,char*,int /*<<< orphan*/ ,char*,...) ; 
- int vasprintf (char**,char const*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int psz_module; int * psz_header; } ;
+typedef TYPE_1__ vlc_log_t ;
+typedef int va_list ;
+
+
+ int free (char*) ;
+ int* priorities ;
+ int syslog (int,char*,int ,char*,...) ;
+ int vasprintf (char**,char const*,int ) ;
 
 __attribute__((used)) static void Log(void *opaque, int type, const vlc_log_t *meta,
                 const char *format, va_list ap)
@@ -31,7 +31,7 @@ __attribute__((used)) static void Log(void *opaque, int type, const vlc_log_t *m
     if (vasprintf(&str, format, ap) == -1)
         str = (char *)default_msg;
 
-    if (meta->psz_header != NULL)
+    if (meta->psz_header != ((void*)0))
         syslog(priority, "[%s] %s: %s", meta->psz_header, meta->psz_module,
                str);
     else

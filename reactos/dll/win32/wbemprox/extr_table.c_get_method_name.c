@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct table {size_t num_cols; TYPE_1__* columns; } ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  size_t UINT ;
-struct TYPE_2__ {int type; int /*<<< orphan*/  name; } ;
-typedef  int /*<<< orphan*/ * BSTR ;
+typedef int WCHAR ;
+typedef size_t UINT ;
+struct TYPE_2__ {int type; int name; } ;
+typedef int * BSTR ;
 
-/* Variables and functions */
- int COL_FLAG_METHOD ; 
- int /*<<< orphan*/ * SysAllocString (int /*<<< orphan*/ ) ; 
- struct table* grab_table (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  release_table (struct table*) ; 
+
+ int COL_FLAG_METHOD ;
+ int * SysAllocString (int ) ;
+ struct table* grab_table (int const*) ;
+ int release_table (struct table*) ;
 
 BSTR get_method_name( const WCHAR *class, UINT index )
 {
@@ -29,7 +29,7 @@ BSTR get_method_name( const WCHAR *class, UINT index )
     UINT i, count = 0;
     BSTR ret;
 
-    if (!(table = grab_table( class ))) return NULL;
+    if (!(table = grab_table( class ))) return ((void*)0);
 
     for (i = 0; i < table->num_cols; i++)
     {
@@ -45,5 +45,5 @@ BSTR get_method_name( const WCHAR *class, UINT index )
         }
     }
     release_table( table );
-    return NULL;
+    return ((void*)0);
 }

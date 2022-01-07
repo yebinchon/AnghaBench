@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {int /*<<< orphan*/  w; int /*<<< orphan*/  format; int /*<<< orphan*/  h; TYPE_1__* dst; } ;
-struct TYPE_9__ {int flags; int /*<<< orphan*/  log2_chroma_h; } ;
-struct TYPE_8__ {int is_packed_rgb; int /*<<< orphan*/  tmp_bwidth; int /*<<< orphan*/ * tmp_data; int /*<<< orphan*/  tmp_linesize; int /*<<< orphan*/  vsub; } ;
+
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_10__ {int w; int format; int h; TYPE_1__* dst; } ;
+struct TYPE_9__ {int flags; int log2_chroma_h; } ;
+struct TYPE_8__ {int is_packed_rgb; int tmp_bwidth; int * tmp_data; int tmp_linesize; int vsub; } ;
 struct TYPE_7__ {TYPE_2__* priv; } ;
-typedef  TYPE_2__ KerndeintContext ;
-typedef  TYPE_3__ AVPixFmtDescriptor ;
-typedef  TYPE_4__ AVFilterLink ;
+typedef TYPE_2__ KerndeintContext ;
+typedef TYPE_3__ AVPixFmtDescriptor ;
+typedef TYPE_4__ AVFilterLink ;
 
-/* Variables and functions */
- int AV_PIX_FMT_FLAG_RGB ; 
- int av_image_alloc (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int av_image_fill_linesizes (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_3__* av_pix_fmt_desc_get (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+ int AV_PIX_FMT_FLAG_RGB ;
+ int av_image_alloc (int *,int ,int ,int ,int ,int) ;
+ int av_image_fill_linesizes (int ,int ,int ) ;
+ TYPE_3__* av_pix_fmt_desc_get (int ) ;
+ int memset (int ,int ,int) ;
 
 __attribute__((used)) static int config_props(AVFilterLink *inlink)
 {

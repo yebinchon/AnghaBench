@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  rarch_setting_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CMD_EVENT_VIDEO_SET_BLOCKING_STATE ; 
- int /*<<< orphan*/  RARCH_DRIVER_CTL_SET_REFRESH_RATE ; 
- int /*<<< orphan*/  command_event (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  driver_ctl (int /*<<< orphan*/ ,float*) ; 
- scalar_t__ setting_generic_action_ok_default (int /*<<< orphan*/ *,int) ; 
- float video_driver_get_refresh_rate () ; 
+
+
+
+typedef int rarch_setting_t ;
+
+
+ int CMD_EVENT_VIDEO_SET_BLOCKING_STATE ;
+ int RARCH_DRIVER_CTL_SET_REFRESH_RATE ;
+ int command_event (int ,int *) ;
+ int driver_ctl (int ,float*) ;
+ scalar_t__ setting_generic_action_ok_default (int *,int) ;
+ float video_driver_get_refresh_rate () ;
 
 __attribute__((used)) static int setting_action_ok_video_refresh_rate_polled(rarch_setting_t *setting,
       bool wraparound)
@@ -32,8 +32,8 @@ __attribute__((used)) static int setting_action_ok_video_refresh_rate_polled(rar
       return -1;
 
    driver_ctl(RARCH_DRIVER_CTL_SET_REFRESH_RATE, &refresh_rate);
-   /* Incase refresh rate update forced non-block video. */
-   command_event(CMD_EVENT_VIDEO_SET_BLOCKING_STATE, NULL);
+
+   command_event(CMD_EVENT_VIDEO_SET_BLOCKING_STATE, ((void*)0));
 
    if (setting_generic_action_ok_default(setting, wraparound) != 0)
       return -1;

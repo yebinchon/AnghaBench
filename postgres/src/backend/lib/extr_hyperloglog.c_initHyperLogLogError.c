@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8 ;
-typedef  int /*<<< orphan*/  hyperLogLogState ;
-typedef  int Size ;
 
-/* Variables and functions */
- int /*<<< orphan*/  initHyperLogLog (int /*<<< orphan*/ *,int) ; 
- double sqrt (double) ; 
+
+
+
+typedef int uint8 ;
+typedef int hyperLogLogState ;
+typedef int Size ;
+
+
+ int initHyperLogLog (int *,int) ;
+ double sqrt (double) ;
 
 void
 initHyperLogLogError(hyperLogLogState *cState, double error)
 {
-	uint8		bwidth = 4;
+ uint8 bwidth = 4;
 
-	while (bwidth < 16)
-	{
-		double		m = (Size) 1 << bwidth;
+ while (bwidth < 16)
+ {
+  double m = (Size) 1 << bwidth;
 
-		if (1.04 / sqrt(m) < error)
-			break;
-		bwidth++;
-	}
+  if (1.04 / sqrt(m) < error)
+   break;
+  bwidth++;
+ }
 
-	initHyperLogLog(cState, bwidth);
+ initHyperLogLog(cState, bwidth);
 }

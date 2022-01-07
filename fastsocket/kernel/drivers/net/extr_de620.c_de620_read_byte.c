@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct net_device {int dummy; } ;
-typedef  int byte ;
+typedef int byte ;
 
-/* Variables and functions */
- int /*<<< orphan*/  de620_flip_ds (struct net_device*) ; 
- int de620_ready (struct net_device*) ; 
+
+ int de620_flip_ds (struct net_device*) ;
+ int de620_ready (struct net_device*) ;
 
 __attribute__((used)) static inline byte
 de620_read_byte(struct net_device *dev)
 {
-	byte value;
+ byte value;
 
-	/* The de620_ready() makes 7 loops, on the average, on a DX2/66 */
-	value = de620_ready(dev); /* High nibble */
-	de620_flip_ds(dev);
-	value |= de620_ready(dev) >> 4; /* Low nibble */
-	return value;
+
+ value = de620_ready(dev);
+ de620_flip_ds(dev);
+ value |= de620_ready(dev) >> 4;
+ return value;
 }

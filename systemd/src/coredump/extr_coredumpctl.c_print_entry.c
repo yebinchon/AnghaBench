@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sd_journal ;
 
-/* Variables and functions */
- scalar_t__ arg_field ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ *) ; 
- int print_field (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int print_info (int /*<<< orphan*/ ,int /*<<< orphan*/ *,unsigned int) ; 
- int print_list (int /*<<< orphan*/ ,int /*<<< orphan*/ *,unsigned int) ; 
- int /*<<< orphan*/  stdout ; 
+
+
+
+typedef int sd_journal ;
+
+
+ scalar_t__ arg_field ;
+ int assert (int *) ;
+ int print_field (int ,int *) ;
+ int print_info (int ,int *,unsigned int) ;
+ int print_list (int ,int *,unsigned int) ;
+ int stdout ;
 
 __attribute__((used)) static int print_entry(sd_journal *j, unsigned n_found, bool verb_is_info) {
         assert(j);

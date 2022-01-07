@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct repl_server_status {scalar_t__ handshake_id; scalar_t__ client_log_pos; scalar_t__ client_log_wrpos; scalar_t__ client_log_recvpos; } ;
-struct repl_data_ack {scalar_t__ handshake_id; scalar_t__ binlog_written_pos; scalar_t__ binlog_received_pos; int /*<<< orphan*/  session_id; } ;
-struct connection {int /*<<< orphan*/  remote_port; } ;
+struct repl_data_ack {scalar_t__ handshake_id; scalar_t__ binlog_written_pos; scalar_t__ binlog_received_pos; int session_id; } ;
+struct connection {int remote_port; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  R_ERROR_EBADFD ; 
- int /*<<< orphan*/  R_ERROR_EINVAL ; 
- int /*<<< orphan*/  destroy_server (struct repl_server_status*) ; 
- struct repl_server_status* get_server_by_session (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  process_server (struct repl_server_status*) ; 
- int send_error (struct connection*,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  show_remote_ip (struct connection*) ; 
- int /*<<< orphan*/  vkprintf (int,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,scalar_t__,scalar_t__) ; 
+
+ int R_ERROR_EBADFD ;
+ int R_ERROR_EINVAL ;
+ int destroy_server (struct repl_server_status*) ;
+ struct repl_server_status* get_server_by_session (int ,int ) ;
+ int process_server (struct repl_server_status*) ;
+ int send_error (struct connection*,scalar_t__,int ,int ,char*) ;
+ int show_remote_ip (struct connection*) ;
+ int vkprintf (int,char*,int ,int ,scalar_t__,int ,scalar_t__,scalar_t__) ;
 
 int process_data_ack_packet (struct connection *c, struct repl_data_ack *A) {
   struct repl_server_status *S = get_server_by_session (A->session_id, 0);

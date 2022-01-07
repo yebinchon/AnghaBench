@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Relation ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RelationGetRelationName (int /*<<< orphan*/ ) ; 
- char* pstrdup (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int Relation ;
+
+
+ int RelationGetRelationName (int ) ;
+ char* pstrdup (int ) ;
 
 char *
 SPI_getrelname(Relation rel)
 {
-	return pstrdup(RelationGetRelationName(rel));
+ return pstrdup(RelationGetRelationName(rel));
 }

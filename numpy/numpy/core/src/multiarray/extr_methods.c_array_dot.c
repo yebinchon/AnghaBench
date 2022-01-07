@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  PyObject ;
-typedef  int /*<<< orphan*/  PyArrayObject ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PyArg_ParseTupleAndKeywords (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*,char**,int /*<<< orphan*/ **,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  PyArray_Check (int /*<<< orphan*/ *) ; 
- scalar_t__ PyArray_MatrixProduct2 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * PyArray_Return (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyErr_SetString (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  PyExc_TypeError ; 
- int /*<<< orphan*/ * Py_None ; 
+
+
+
+typedef int PyObject ;
+typedef int PyArrayObject ;
+
+
+ int PyArg_ParseTupleAndKeywords (int *,int *,char*,char**,int **,int **) ;
+ int PyArray_Check (int *) ;
+ scalar_t__ PyArray_MatrixProduct2 (int *,int *,int *) ;
+ int * PyArray_Return (int *) ;
+ int PyErr_SetString (int ,char*) ;
+ int PyExc_TypeError ;
+ int * Py_None ;
 
 __attribute__((used)) static PyObject *
 array_dot(PyArrayObject *self, PyObject *args, PyObject *kwds)
 {
-    PyObject *a = (PyObject *)self, *b, *o = NULL;
+    PyObject *a = (PyObject *)self, *b, *o = ((void*)0);
     PyArrayObject *ret;
-    char* kwlist[] = {"b", "out", NULL };
+    char* kwlist[] = {"b", "out", ((void*)0) };
 
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O|O:dot", kwlist, &b, &o)) {
-        return NULL;
+        return ((void*)0);
     }
 
-    if (o != NULL) {
+    if (o != ((void*)0)) {
         if (o == Py_None) {
-            o = NULL;
+            o = ((void*)0);
         }
         else if (!PyArray_Check(o)) {
             PyErr_SetString(PyExc_TypeError,
                             "'out' must be an array");
-            return NULL;
+            return ((void*)0);
         }
     }
     ret = (PyArrayObject *)PyArray_MatrixProduct2(a, b, (PyArrayObject *)o);

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  char lua_Integer ;
-typedef  int /*<<< orphan*/  luaL_Buffer ;
 
-/* Variables and functions */
- int /*<<< orphan*/  luaL_argcheck (int /*<<< orphan*/ *,int,int,char*) ; 
- char* luaL_buffinitsize (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- char luaL_checkinteger (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  luaL_pushresultsize (int /*<<< orphan*/ *,int) ; 
- int lua_gettop (int /*<<< orphan*/ *) ; 
- char uchar (char) ; 
+
+
+
+typedef int lua_State ;
+typedef char lua_Integer ;
+typedef int luaL_Buffer ;
+
+
+ int luaL_argcheck (int *,int,int,char*) ;
+ char* luaL_buffinitsize (int *,int *,int) ;
+ char luaL_checkinteger (int *,int) ;
+ int luaL_pushresultsize (int *,int) ;
+ int lua_gettop (int *) ;
+ char uchar (char) ;
 
 __attribute__((used)) static int str_char (lua_State *L) {
-  int n = lua_gettop(L);  /* number of arguments */
+  int n = lua_gettop(L);
   int i;
   luaL_Buffer b;
   char *p = luaL_buffinitsize(L, &b, n);

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * HKEY ;
-typedef  scalar_t__ DWORD ;
 
-/* Variables and functions */
- scalar_t__ ERROR_ACCESS_DENIED ; 
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  HKEY_LOCAL_MACHINE ; 
- int KEY_READ ; 
- int KEY_WRITE ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ *) ; 
- scalar_t__ RegOpenKeyExA (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  limited_user ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  trace (char*) ; 
+
+
+
+typedef int * HKEY ;
+typedef scalar_t__ DWORD ;
+
+
+ scalar_t__ ERROR_ACCESS_DENIED ;
+ scalar_t__ ERROR_SUCCESS ;
+ int HKEY_LOCAL_MACHINE ;
+ int KEY_READ ;
+ int KEY_WRITE ;
+ int RegCloseKey (int *) ;
+ scalar_t__ RegOpenKeyExA (int ,char*,int ,int,int **) ;
+ int TRUE ;
+ int limited_user ;
+ int ok (int,char*,...) ;
+ int trace (char*) ;
 
 __attribute__((used)) static void check_user_privs(void)
 {
@@ -35,12 +35,12 @@ __attribute__((used)) static void check_user_privs(void)
     ok(ret == ERROR_SUCCESS || ret == ERROR_ACCESS_DENIED, "expected success or access denied, got %i\n", ret);
     if (ret == ERROR_SUCCESS)
     {
-        ok(hkey != NULL, "RegOpenKeyExA succeeded but returned NULL hkey\n");
+        ok(hkey != ((void*)0), "RegOpenKeyExA succeeded but returned NULL hkey\n");
         RegCloseKey(hkey);
     }
     else
     {
-        ok(hkey == NULL, "RegOpenKeyExA failed but returned hkey %p\n", hkey);
+        ok(hkey == ((void*)0), "RegOpenKeyExA failed but returned hkey %p\n", hkey);
         limited_user = TRUE;
         trace("running as limited user\n");
     }

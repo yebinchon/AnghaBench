@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct lev_copyexec_main_transaction_skip {int first_transaction_id; int /*<<< orphan*/  type; } ;
-typedef  int /*<<< orphan*/  E ;
 
-/* Variables and functions */
- int /*<<< orphan*/  COPYEXEC_MAIN_SCHEMA_V1 ; 
- int /*<<< orphan*/  LEV_COPYEXEC_MAIN_TRANSACTION_SKIP ; 
- int /*<<< orphan*/  empty_binlog_volume_name ; 
- int /*<<< orphan*/  exit (int) ; 
- int find_last_synchronization_point () ; 
- int get_random_bytes (int*,int) ; 
- int instance_mask ; 
- int /*<<< orphan*/  kprintf (char*,int const) ; 
- int /*<<< orphan*/  make_empty_binlog (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*,int,void*,int) ; 
+
+
+
+struct lev_copyexec_main_transaction_skip {int first_transaction_id; int type; } ;
+typedef int E ;
+
+
+ int COPYEXEC_MAIN_SCHEMA_V1 ;
+ int LEV_COPYEXEC_MAIN_TRANSACTION_SKIP ;
+ int empty_binlog_volume_name ;
+ int exit (int) ;
+ int find_last_synchronization_point () ;
+ int get_random_bytes (int*,int) ;
+ int instance_mask ;
+ int kprintf (char*,int const) ;
+ int make_empty_binlog (char*,int ,int ,int*,int,void*,int) ;
 
 __attribute__((used)) static void create_main_empty_binlog (char *binlog_name) {
-  void *extra = NULL;
+  void *extra = ((void*)0);
   int extra_len = 0;
   struct lev_copyexec_main_transaction_skip E;
 

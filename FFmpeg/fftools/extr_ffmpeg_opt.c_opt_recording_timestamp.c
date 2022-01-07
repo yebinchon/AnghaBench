@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  time_t ;
+
+
+
+
+typedef int time_t ;
 struct tm {int dummy; } ;
-typedef  int int64_t ;
-typedef  int /*<<< orphan*/  buf ;
-typedef  int /*<<< orphan*/  OptionsContext ;
+typedef int int64_t ;
+typedef int buf ;
+typedef int OptionsContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_LOG_WARNING ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,char const*) ; 
- struct tm* gmtime (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  options ; 
- int /*<<< orphan*/  parse_option (int /*<<< orphan*/ *,char*,char*,int /*<<< orphan*/ ) ; 
- int parse_time_or_die (char const*,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strftime (char*,int,char*,struct tm*) ; 
+
+ int AV_LOG_WARNING ;
+ int av_log (int *,int ,char*,char const*) ;
+ struct tm* gmtime (int *) ;
+ int options ;
+ int parse_option (int *,char*,char*,int ) ;
+ int parse_time_or_die (char const*,char const*,int ) ;
+ int strftime (char*,int,char*,struct tm*) ;
 
 __attribute__((used)) static int opt_recording_timestamp(void *optctx, const char *opt, const char *arg)
 {
@@ -35,7 +35,7 @@ __attribute__((used)) static int opt_recording_timestamp(void *optctx, const cha
         return -1;
     parse_option(o, "metadata", buf, options);
 
-    av_log(NULL, AV_LOG_WARNING, "%s is deprecated, set the 'creation_time' metadata "
+    av_log(((void*)0), AV_LOG_WARNING, "%s is deprecated, set the 'creation_time' metadata "
                                  "tag instead.\n", opt);
     return 0;
 }

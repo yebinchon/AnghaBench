@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint64_t ;
-typedef  int uint32_t ;
-typedef  int int32_t ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- unsigned int AV_UTF8_FLAG_ACCEPT_INVALID_BIG_CODES ; 
- unsigned int AV_UTF8_FLAG_ACCEPT_NON_CHARACTERS ; 
- unsigned int AV_UTF8_FLAG_ACCEPT_SURROGATES ; 
- unsigned int AV_UTF8_FLAG_EXCLUDE_XML_INVALID_CONTROL_CODES ; 
- int /*<<< orphan*/  EILSEQ ; 
- int /*<<< orphan*/  av_assert0 (int) ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint64_t ;
+typedef int uint32_t ;
+typedef int int32_t ;
+
+
+ int AVERROR (int ) ;
+ unsigned int AV_UTF8_FLAG_ACCEPT_INVALID_BIG_CODES ;
+ unsigned int AV_UTF8_FLAG_ACCEPT_NON_CHARACTERS ;
+ unsigned int AV_UTF8_FLAG_ACCEPT_SURROGATES ;
+ unsigned int AV_UTF8_FLAG_EXCLUDE_XML_INVALID_CONTROL_CODES ;
+ int EILSEQ ;
+ int av_assert0 (int) ;
 
 int av_utf8_decode(int32_t *codep, const uint8_t **bufp, const uint8_t *buf_end,
                    unsigned int flags)
@@ -40,8 +40,8 @@ int av_utf8_decode(int32_t *codep, const uint8_t **bufp, const uint8_t *buf_end,
 
     code = *p++;
 
-    /* first sequence byte starts with 10, or is 1111-1110 or 1111-1111,
-       which is not admitted */
+
+
     if ((code & 0xc0) == 0x80 || code >= 0xFE) {
         ret = AVERROR(EILSEQ);
         goto end;
@@ -54,11 +54,11 @@ int av_utf8_decode(int32_t *codep, const uint8_t **bufp, const uint8_t *buf_end,
         tail_len++;
         if (p >= buf_end) {
             (*bufp) ++;
-            return AVERROR(EILSEQ); /* incomplete sequence */
+            return AVERROR(EILSEQ);
         }
 
-        /* we assume the byte to be in the form 10xx-xxxx */
-        tmp = *p++ - 128;   /* strip leading 1 */
+
+        tmp = *p++ - 128;
         if (tmp>>6) {
             (*bufp) ++;
             return AVERROR(EILSEQ);
@@ -68,7 +68,7 @@ int av_utf8_decode(int32_t *codep, const uint8_t **bufp, const uint8_t *buf_end,
     }
     code &= (top << 1) - 1;
 
-    /* check for overlong encodings */
+
     av_assert0(tail_len <= 5);
     if (code < overlong_encoding_mins[tail_len]) {
         ret = AVERROR(EILSEQ);
@@ -76,7 +76,7 @@ int av_utf8_decode(int32_t *codep, const uint8_t **bufp, const uint8_t *buf_end,
     }
 
     if (code >= 1U<<31) {
-        ret = AVERROR(EILSEQ);  /* out-of-range value */
+        ret = AVERROR(EILSEQ);
         goto end;
     }
 

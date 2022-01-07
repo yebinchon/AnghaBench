@@ -1,79 +1,79 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t UINT ;
-struct TYPE_4__ {size_t NumTokens; int /*<<< orphan*/ * Token; } ;
-typedef  TYPE_1__ TOKEN_LIST ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CopyStr (int /*<<< orphan*/ ) ; 
- scalar_t__ StrCmpi (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- void* ZeroMalloc (int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef size_t UINT ;
+struct TYPE_4__ {size_t NumTokens; int * Token; } ;
+typedef TYPE_1__ TOKEN_LIST ;
+
+
+ int CopyStr (int ) ;
+ scalar_t__ StrCmpi (int ,int ) ;
+ void* ZeroMalloc (int) ;
 
 TOKEN_LIST *UniqueToken(TOKEN_LIST *t)
 {
-	UINT i, num, j, n;
-	TOKEN_LIST *ret;
-	// Validate arguments
-	if (t == NULL)
-	{
-		return NULL;
-	}
+ UINT i, num, j, n;
+ TOKEN_LIST *ret;
 
-	num = 0;
-	for (i = 0;i < t->NumTokens;i++)
-	{
-		bool exists = false;
+ if (t == ((void*)0))
+ {
+  return ((void*)0);
+ }
 
-		for (j = 0;j < i;j++)
-		{
-			if (StrCmpi(t->Token[j], t->Token[i]) == 0)
-			{
-				exists = true;
-				break;
-			}
-		}
+ num = 0;
+ for (i = 0;i < t->NumTokens;i++)
+ {
+  bool exists = 0;
 
-		if (exists == false)
-		{
-			num++;
-		}
-	}
+  for (j = 0;j < i;j++)
+  {
+   if (StrCmpi(t->Token[j], t->Token[i]) == 0)
+   {
+    exists = 1;
+    break;
+   }
+  }
 
-	ret = ZeroMalloc(sizeof(TOKEN_LIST));
-	ret->Token = ZeroMalloc(sizeof(char *) * num);
-	ret->NumTokens = num;
+  if (exists == 0)
+  {
+   num++;
+  }
+ }
 
-	n = 0;
+ ret = ZeroMalloc(sizeof(TOKEN_LIST));
+ ret->Token = ZeroMalloc(sizeof(char *) * num);
+ ret->NumTokens = num;
 
-	for (i = 0;i < t->NumTokens;i++)
-	{
-		bool exists = false;
+ n = 0;
 
-		for (j = 0;j < i;j++)
-		{
-			if (StrCmpi(t->Token[j], t->Token[i]) == 0)
-			{
-				exists = true;
-				break;
-			}
-		}
+ for (i = 0;i < t->NumTokens;i++)
+ {
+  bool exists = 0;
 
-		if (exists == false)
-		{
-			ret->Token[n++] = CopyStr(t->Token[i]);
-		}
-	}
+  for (j = 0;j < i;j++)
+  {
+   if (StrCmpi(t->Token[j], t->Token[i]) == 0)
+   {
+    exists = 1;
+    break;
+   }
+  }
 
-	return ret;
+  if (exists == 0)
+  {
+   ret->Token[n++] = CopyStr(t->Token[i]);
+  }
+ }
+
+ return ret;
 }

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_5__ ;
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {int video_msg_color_r; int video_msg_color_g; int video_msg_color_b; int /*<<< orphan*/  video_font_size; } ;
+
+
+typedef struct TYPE_12__ TYPE_5__ ;
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_10__ {int video_msg_color_r; int video_msg_color_g; int video_msg_color_b; int video_font_size; } ;
 struct TYPE_9__ {scalar_t__* path_font; } ;
-struct TYPE_8__ {int /*<<< orphan*/  video_font_enable; } ;
+struct TYPE_8__ {int video_font_enable; } ;
 struct TYPE_11__ {TYPE_3__ floats; TYPE_2__ paths; TYPE_1__ bools; } ;
-typedef  TYPE_4__ settings_t ;
-struct TYPE_12__ {int font_r; int font_g; int font_b; int /*<<< orphan*/  font; int /*<<< orphan*/  font_driver; } ;
-typedef  TYPE_5__ sdl_video_t ;
+typedef TYPE_4__ settings_t ;
+struct TYPE_12__ {int font_r; int font_g; int font_b; int font; int font_driver; } ;
+typedef TYPE_5__ sdl_video_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RARCH_LOG (char*) ; 
- TYPE_4__* config_get_ptr () ; 
- int /*<<< orphan*/  font_renderer_create_default (int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__*,int /*<<< orphan*/ ) ; 
+
+ int RARCH_LOG (char*) ;
+ TYPE_4__* config_get_ptr () ;
+ int font_renderer_create_default (int *,int *,scalar_t__*,int ) ;
 
 __attribute__((used)) static void sdl_init_font(sdl_video_t *vid, const char *font_path, unsigned font_size)
 {
@@ -38,7 +38,7 @@ __attribute__((used)) static void sdl_init_font(sdl_video_t *vid, const char *fo
 
    if (!font_renderer_create_default(
             &vid->font_driver, &vid->font,
-            *settings->paths.path_font ? settings->paths.path_font : NULL,
+            *settings->paths.path_font ? settings->paths.path_font : ((void*)0),
             settings->floats.video_font_size))
    {
       RARCH_LOG("[SDL]: Could not initialize fonts.\n");

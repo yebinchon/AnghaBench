@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_8__ ;
-typedef  struct TYPE_14__   TYPE_6__ ;
-typedef  struct TYPE_13__   TYPE_5__ ;
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_11__ {int /*<<< orphan*/  minor; int /*<<< orphan*/  major; } ;
-struct TYPE_10__ {int /*<<< orphan*/  minor; int /*<<< orphan*/  major; } ;
-struct TYPE_12__ {scalar_t__ msg_type; scalar_t__ handshake_type; TYPE_3__ hello_version; int /*<<< orphan*/  length; TYPE_2__ version; } ;
-typedef  TYPE_4__ ngx_ssl_server_hello_t ;
-typedef  int /*<<< orphan*/  ngx_int_t ;
+
+
+typedef struct TYPE_15__ TYPE_8__ ;
+typedef struct TYPE_14__ TYPE_6__ ;
+typedef struct TYPE_13__ TYPE_5__ ;
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_11__ {int minor; int major; } ;
+struct TYPE_10__ {int minor; int major; } ;
+struct TYPE_12__ {scalar_t__ msg_type; scalar_t__ handshake_type; TYPE_3__ hello_version; int length; TYPE_2__ version; } ;
+typedef TYPE_4__ ngx_ssl_server_hello_t ;
+typedef int ngx_int_t ;
 struct TYPE_13__ {TYPE_6__* check_data; } ;
-typedef  TYPE_5__ ngx_http_upstream_check_peer_t ;
+typedef TYPE_5__ ngx_http_upstream_check_peer_t ;
 struct TYPE_9__ {size_t last; size_t pos; } ;
 struct TYPE_14__ {TYPE_1__ recv; } ;
-typedef  TYPE_6__ ngx_http_upstream_check_ctx_t ;
-struct TYPE_15__ {int /*<<< orphan*/  log; } ;
+typedef TYPE_6__ ngx_http_upstream_check_ctx_t ;
+struct TYPE_15__ {int log; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NGX_AGAIN ; 
- int /*<<< orphan*/  NGX_ERROR ; 
- int /*<<< orphan*/  NGX_LOG_DEBUG_HTTP ; 
- int /*<<< orphan*/  NGX_OK ; 
- scalar_t__ NGX_SSL_HANDSHAKE ; 
- scalar_t__ NGX_SSL_SERVER_HELLO ; 
- TYPE_8__* ngx_cycle ; 
- int /*<<< orphan*/  ngx_log_debug7 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ntohs (int /*<<< orphan*/ ) ; 
+
+ int NGX_AGAIN ;
+ int NGX_ERROR ;
+ int NGX_LOG_DEBUG_HTTP ;
+ int NGX_OK ;
+ scalar_t__ NGX_SSL_HANDSHAKE ;
+ scalar_t__ NGX_SSL_SERVER_HELLO ;
+ TYPE_8__* ngx_cycle ;
+ int ngx_log_debug7 (int ,int ,int ,char*,scalar_t__,int ,int ,int ,scalar_t__,int ,int ) ;
+ int ntohs (int ) ;
 
 __attribute__((used)) static ngx_int_t
 ngx_http_upstream_check_ssl_hello_parse(ngx_http_upstream_check_peer_t *peer)
 {
-    size_t                         size;
-    ngx_ssl_server_hello_t        *resp;
+    size_t size;
+    ngx_ssl_server_hello_t *resp;
     ngx_http_upstream_check_ctx_t *ctx;
 
     ctx = peer->check_data;

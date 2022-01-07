@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  password; int /*<<< orphan*/  user; int /*<<< orphan*/  addr; int /*<<< orphan*/  port; int /*<<< orphan*/  connectrep; int /*<<< orphan*/  reqcmd; int /*<<< orphan*/  responsemethod; int /*<<< orphan*/  responseversion; int /*<<< orphan*/  nmethods_max; int /*<<< orphan*/  nmethods_min; int /*<<< orphan*/  version; } ;
 
-/* Variables and functions */
- char* CONFIG_ADDR ; 
- int /*<<< orphan*/  CONFIG_CONNECTREP ; 
- int /*<<< orphan*/  CONFIG_NMETHODS_MAX ; 
- int /*<<< orphan*/  CONFIG_NMETHODS_MIN ; 
- int /*<<< orphan*/  CONFIG_PORT ; 
- int /*<<< orphan*/  CONFIG_REQCMD ; 
- int /*<<< orphan*/  CONFIG_RESPONSEMETHOD ; 
- int /*<<< orphan*/  CONFIG_RESPONSEVERSION ; 
- int /*<<< orphan*/  CONFIG_VERSION ; 
- TYPE_1__ config ; 
- int /*<<< orphan*/  logmsg (char*) ; 
- int /*<<< orphan*/  strcpy (int /*<<< orphan*/ ,char*) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int password; int user; int addr; int port; int connectrep; int reqcmd; int responsemethod; int responseversion; int nmethods_max; int nmethods_min; int version; } ;
+
+
+ char* CONFIG_ADDR ;
+ int CONFIG_CONNECTREP ;
+ int CONFIG_NMETHODS_MAX ;
+ int CONFIG_NMETHODS_MIN ;
+ int CONFIG_PORT ;
+ int CONFIG_REQCMD ;
+ int CONFIG_RESPONSEMETHOD ;
+ int CONFIG_RESPONSEVERSION ;
+ int CONFIG_VERSION ;
+ TYPE_1__ config ;
+ int logmsg (char*) ;
+ int strcpy (int ,char*) ;
 
 __attribute__((used)) static void resetdefaults(void)
 {

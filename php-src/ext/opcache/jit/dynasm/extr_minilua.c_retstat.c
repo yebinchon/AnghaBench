@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_21__   TYPE_4__ ;
-typedef  struct TYPE_20__   TYPE_3__ ;
-typedef  struct TYPE_19__   TYPE_2__ ;
-typedef  struct TYPE_18__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_21__ TYPE_4__ ;
+typedef struct TYPE_20__ TYPE_3__ ;
+typedef struct TYPE_19__ TYPE_2__ ;
+typedef struct TYPE_18__ TYPE_1__ ;
+
+
 struct TYPE_19__ {scalar_t__ k; } ;
-typedef  TYPE_2__ expdesc ;
+typedef TYPE_2__ expdesc ;
 struct TYPE_21__ {int nactvar; } ;
 struct TYPE_18__ {char token; } ;
 struct TYPE_20__ {TYPE_1__ t; TYPE_4__* fs; } ;
-typedef  TYPE_3__ LexState ;
-typedef  TYPE_4__ FuncState ;
+typedef TYPE_3__ LexState ;
+typedef TYPE_4__ FuncState ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OP_TAILCALL ; 
- int /*<<< orphan*/  SET_OPCODE (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ VCALL ; 
- scalar_t__ block_follow (char) ; 
- int explist1 (TYPE_3__*,TYPE_2__*) ; 
- int /*<<< orphan*/  getcode (TYPE_4__*,TYPE_2__*) ; 
- scalar_t__ hasmultret (scalar_t__) ; 
- int luaK_exp2anyreg (TYPE_4__*,TYPE_2__*) ; 
- int /*<<< orphan*/  luaK_exp2nextreg (TYPE_4__*,TYPE_2__*) ; 
- int /*<<< orphan*/  luaK_ret (TYPE_4__*,int,int) ; 
- int /*<<< orphan*/  luaK_setmultret (TYPE_4__*,TYPE_2__*) ; 
- int /*<<< orphan*/  luaX_next (TYPE_3__*) ; 
+
+ int OP_TAILCALL ;
+ int SET_OPCODE (int ,int ) ;
+ scalar_t__ VCALL ;
+ scalar_t__ block_follow (char) ;
+ int explist1 (TYPE_3__*,TYPE_2__*) ;
+ int getcode (TYPE_4__*,TYPE_2__*) ;
+ scalar_t__ hasmultret (scalar_t__) ;
+ int luaK_exp2anyreg (TYPE_4__*,TYPE_2__*) ;
+ int luaK_exp2nextreg (TYPE_4__*,TYPE_2__*) ;
+ int luaK_ret (TYPE_4__*,int,int) ;
+ int luaK_setmultret (TYPE_4__*,TYPE_2__*) ;
+ int luaX_next (TYPE_3__*) ;
 
 __attribute__((used)) static void retstat(LexState*ls){
 FuncState*fs=ls->fs;

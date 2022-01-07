@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  PGresult ;
-typedef  int /*<<< orphan*/  PGconn ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * PQexecFinish (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PQexecStart (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PQsendDescribe (int /*<<< orphan*/ *,char,char const*) ; 
+
+
+
+typedef int PGresult ;
+typedef int PGconn ;
+
+
+ int * PQexecFinish (int *) ;
+ int PQexecStart (int *) ;
+ int PQsendDescribe (int *,char,char const*) ;
 
 PGresult *
 PQdescribePrepared(PGconn *conn, const char *stmt)
 {
-	if (!PQexecStart(conn))
-		return NULL;
-	if (!PQsendDescribe(conn, 'S', stmt))
-		return NULL;
-	return PQexecFinish(conn);
+ if (!PQexecStart(conn))
+  return ((void*)0);
+ if (!PQsendDescribe(conn, 'S', stmt))
+  return ((void*)0);
+ return PQexecFinish(conn);
 }

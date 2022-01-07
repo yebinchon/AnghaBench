@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int pdso_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * FinalizeLine8bitM4 ; 
- int /*<<< orphan*/ * FinalizeLineM4 ; 
- int /*<<< orphan*/ * FinalizeLineRGB555M4 ; 
-#define  PDF_8BIT 129 
-#define  PDF_RGB555 128 
+
+
+
+typedef int pdso_t ;
+
+
+ int * FinalizeLine8bitM4 ;
+ int * FinalizeLineM4 ;
+ int * FinalizeLineRGB555M4 ;
+
+
 
 void PicoDrawSetOutputMode4(pdso_t which)
 {
   switch (which)
   {
-    case PDF_8BIT:   FinalizeLineM4 = FinalizeLine8bitM4; break;
-    case PDF_RGB555: FinalizeLineM4 = FinalizeLineRGB555M4; break;
-    default:         FinalizeLineM4 = NULL; break;
+    case 129: FinalizeLineM4 = FinalizeLine8bitM4; break;
+    case 128: FinalizeLineM4 = FinalizeLineRGB555M4; break;
+    default: FinalizeLineM4 = ((void*)0); break;
   }
 }

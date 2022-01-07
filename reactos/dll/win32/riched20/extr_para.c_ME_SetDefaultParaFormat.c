@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  texthost; } ;
-struct TYPE_6__ {int cbSize; int dwMask; int sStyle; int /*<<< orphan*/  wAlignment; int /*<<< orphan*/  bOutlineLevel; } ;
-typedef  TYPE_1__ PARAFORMAT2 ;
-typedef  int /*<<< orphan*/  PARAFORMAT ;
-typedef  TYPE_2__ ME_TextEditor ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ITextHost_OnTxParaFormatChange (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ITextHost_TxGetParaFormat (int /*<<< orphan*/ ,int /*<<< orphan*/  const**) ; 
- int /*<<< orphan*/  PFA_LEFT ; 
- int PFM_ALIGNMENT ; 
- int PFM_ALL2 ; 
- scalar_t__ SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  ZeroMemory (TYPE_1__*,int) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int texthost; } ;
+struct TYPE_6__ {int cbSize; int dwMask; int sStyle; int wAlignment; int bOutlineLevel; } ;
+typedef TYPE_1__ PARAFORMAT2 ;
+typedef int PARAFORMAT ;
+typedef TYPE_2__ ME_TextEditor ;
+typedef int HRESULT ;
+
+
+ int ITextHost_OnTxParaFormatChange (int ,int *) ;
+ int ITextHost_TxGetParaFormat (int ,int const**) ;
+ int PFA_LEFT ;
+ int PFM_ALIGNMENT ;
+ int PFM_ALL2 ;
+ scalar_t__ SUCCEEDED (int ) ;
+ int TRUE ;
+ int ZeroMemory (TYPE_1__*,int) ;
 
 void ME_SetDefaultParaFormat(ME_TextEditor *editor, PARAFORMAT2 *pFmt)
 {
@@ -44,7 +44,7 @@ void ME_SetDefaultParaFormat(ME_TextEditor *editor, PARAFORMAT2 *pFmt)
     hr = ITextHost_TxGetParaFormat( editor->texthost, (const PARAFORMAT **)&host_fmt );
     if (SUCCEEDED(hr))
     {
-        /* Just use the alignment for now */
+
         if (host_fmt->dwMask & PFM_ALIGNMENT)
             pFmt->wAlignment = host_fmt->wAlignment;
         ITextHost_OnTxParaFormatChange( editor->texthost, (PARAFORMAT *)pFmt );

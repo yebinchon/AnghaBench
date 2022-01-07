@@ -1,31 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int O_CREAT ; 
- int O_RDWR ; 
- int SECRET_CHAT_FILE_MAGIC ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  TLS ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ binlog_enabled ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  get_secret_chat_filename () ; 
- int /*<<< orphan*/  lseek (int,int,int /*<<< orphan*/ ) ; 
- int open (int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  tgl_peer_iterator_ex (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*) ; 
- int write (int,int*,int) ; 
- int /*<<< orphan*/  write_secret_chat ; 
+ int O_CREAT ;
+ int O_RDWR ;
+ int SECRET_CHAT_FILE_MAGIC ;
+ int SEEK_SET ;
+ int TLS ;
+ int assert (int) ;
+ scalar_t__ binlog_enabled ;
+ int close (int) ;
+ int get_secret_chat_filename () ;
+ int lseek (int,int,int ) ;
+ int open (int ,int,int) ;
+ int tgl_peer_iterator_ex (int ,int ,int*) ;
+ int write (int,int*,int) ;
+ int write_secret_chat ;
 
 void write_secret_chat_file (void) {
   if (binlog_enabled) { return; }
@@ -33,9 +25,9 @@ void write_secret_chat_file (void) {
   assert (secret_chat_fd >= 0);
   int x = SECRET_CHAT_FILE_MAGIC;
   assert (write (secret_chat_fd, &x, 4) == 4);
-  x = 2; 
-  assert (write (secret_chat_fd, &x, 4) == 4); // version
-  assert (write (secret_chat_fd, &x, 4) == 4); // num
+  x = 2;
+  assert (write (secret_chat_fd, &x, 4) == 4);
+  assert (write (secret_chat_fd, &x, 4) == 4);
 
   int y[2];
   y[0] = secret_chat_fd;

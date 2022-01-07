@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct clock_event_device {int features; } ;
 
-/* Variables and functions */
- int CLOCK_EVT_FEAT_DUMMY ; 
+
+ int CLOCK_EVT_FEAT_DUMMY ;
 
 __attribute__((used)) static inline int tick_device_is_functional(struct clock_event_device *dev)
 {
-	return !(dev->features & CLOCK_EVT_FEAT_DUMMY);
+ return !(dev->features & CLOCK_EVT_FEAT_DUMMY);
 }

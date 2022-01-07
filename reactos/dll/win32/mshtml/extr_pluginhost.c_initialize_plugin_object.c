@@ -1,82 +1,82 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  control ;
-typedef  int /*<<< orphan*/  container ;
-struct TYPE_11__ {int /*<<< orphan*/  plugin_unk; int /*<<< orphan*/ * disp; int /*<<< orphan*/  IAdviseSinkEx_iface; int /*<<< orphan*/  IOleClientSite_iface; int /*<<< orphan*/  IPropertyNotifySink_iface; } ;
-struct TYPE_10__ {int member_0; int dwAmbientFlags; int /*<<< orphan*/ * pPropertyNotifySink; int /*<<< orphan*/ * pAdviseSink; int /*<<< orphan*/ * pClientSite; } ;
+
+
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int control ;
+typedef int container ;
+struct TYPE_11__ {int plugin_unk; int * disp; int IAdviseSinkEx_iface; int IOleClientSite_iface; int IPropertyNotifySink_iface; } ;
+struct TYPE_10__ {int member_0; int dwAmbientFlags; int * pPropertyNotifySink; int * pAdviseSink; int * pClientSite; } ;
 struct TYPE_9__ {int member_0; } ;
-typedef  TYPE_1__ QACONTROL ;
-typedef  TYPE_2__ QACONTAINER ;
-typedef  TYPE_3__ PluginHost ;
-typedef  int /*<<< orphan*/  IViewObjectEx ;
-typedef  int /*<<< orphan*/  IQuickActivate ;
-typedef  int /*<<< orphan*/  IOleObject ;
-typedef  int /*<<< orphan*/  IOleCommandTarget ;
-typedef  int /*<<< orphan*/  IDispatchEx ;
-typedef  int /*<<< orphan*/  IDispatch ;
-typedef  int /*<<< orphan*/  IClientSecurity ;
-typedef  int /*<<< orphan*/  IAdviseSink ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  DWORD ;
+typedef TYPE_1__ QACONTROL ;
+typedef TYPE_2__ QACONTAINER ;
+typedef TYPE_3__ PluginHost ;
+typedef int IViewObjectEx ;
+typedef int IQuickActivate ;
+typedef int IOleObject ;
+typedef int IOleCommandTarget ;
+typedef int IDispatchEx ;
+typedef int IDispatch ;
+typedef int IClientSecurity ;
+typedef int IAdviseSink ;
+typedef int HRESULT ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DVASPECT_CONTENT ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FIXME (char*,...) ; 
- int /*<<< orphan*/  IClientSecurity_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IID_IClientSecurity ; 
- int /*<<< orphan*/  IID_IDispatch ; 
- int /*<<< orphan*/  IID_IDispatchEx ; 
- int /*<<< orphan*/  IID_IOleCommandTarget ; 
- int /*<<< orphan*/  IID_IOleObject ; 
- int /*<<< orphan*/  IID_IQuickActivate ; 
- int /*<<< orphan*/  IID_IViewObjectEx ; 
- int /*<<< orphan*/  IOleCommandTarget_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IOleObject_GetMiscStatus (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IOleObject_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IOleObject_SetClientSite (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IQuickActivate_QuickActivate (int /*<<< orphan*/ *,TYPE_2__*,TYPE_1__*) ; 
- int /*<<< orphan*/  IQuickActivate_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IUnknown_QueryInterface (int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IViewObjectEx_GetViewStatus (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IViewObjectEx_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IViewObjectEx_SetAdvise (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int QACONTAINER_MESSAGEREFLECT ; 
- int QACONTAINER_SUPPORTSMNEMONICS ; 
- int QACONTAINER_USERMODE ; 
- scalar_t__ SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,...) ; 
- int /*<<< orphan*/  WARN (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  load_plugin (TYPE_3__*) ; 
- int /*<<< orphan*/  update_readystate (TYPE_3__*) ; 
+
+ int DVASPECT_CONTENT ;
+ scalar_t__ FAILED (int ) ;
+ int FIXME (char*,...) ;
+ int IClientSecurity_Release (int *) ;
+ int IID_IClientSecurity ;
+ int IID_IDispatch ;
+ int IID_IDispatchEx ;
+ int IID_IOleCommandTarget ;
+ int IID_IOleObject ;
+ int IID_IQuickActivate ;
+ int IID_IViewObjectEx ;
+ int IOleCommandTarget_Release (int *) ;
+ int IOleObject_GetMiscStatus (int *,int ,int *) ;
+ int IOleObject_Release (int *) ;
+ int IOleObject_SetClientSite (int *,int *) ;
+ int IQuickActivate_QuickActivate (int *,TYPE_2__*,TYPE_1__*) ;
+ int IQuickActivate_Release (int *) ;
+ int IUnknown_QueryInterface (int ,int *,void**) ;
+ int IViewObjectEx_GetViewStatus (int *,int *) ;
+ int IViewObjectEx_Release (int *) ;
+ int IViewObjectEx_SetAdvise (int *,int ,int ,int *) ;
+ int QACONTAINER_MESSAGEREFLECT ;
+ int QACONTAINER_SUPPORTSMNEMONICS ;
+ int QACONTAINER_USERMODE ;
+ scalar_t__ SUCCEEDED (int ) ;
+ int TRACE (char*,...) ;
+ int WARN (char*,int ) ;
+ int load_plugin (TYPE_3__*) ;
+ int update_readystate (TYPE_3__*) ;
 
 __attribute__((used)) static void initialize_plugin_object(PluginHost *host)
 {
     IClientSecurity *client_security;
     IQuickActivate *quick_activate;
-    IOleObject *ole_obj = NULL;
+    IOleObject *ole_obj = ((void*)0);
     IOleCommandTarget *cmdtrg;
     IViewObjectEx *view_obj;
     IDispatchEx *dispex;
     IDispatch *disp;
     HRESULT hres;
 
-    /* Note native calls QI on plugin for an undocumented IID and CLSID_HTMLDocument */
 
-    /* FIXME: call FreezeEvents(TRUE) */
+
+
 
     hres = IUnknown_QueryInterface(host->plugin_unk, &IID_IClientSecurity, (void**)&client_security);
     if(SUCCEEDED(hres)) {
@@ -139,7 +139,7 @@ __attribute__((used)) static void initialize_plugin_object(PluginHost *host)
 
     update_readystate(host);
 
-    /* NOTE: Native QIs for IActiveScript, an undocumented IID, IOleControl and IRunnableObject */
+
 
     hres = IUnknown_QueryInterface(host->plugin_unk, &IID_IDispatchEx, (void**)&dispex);
     if(SUCCEEDED(hres)) {

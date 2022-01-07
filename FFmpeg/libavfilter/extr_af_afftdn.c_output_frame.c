@@ -1,68 +1,68 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_36__   TYPE_7__ ;
-typedef  struct TYPE_35__   TYPE_6__ ;
-typedef  struct TYPE_34__   TYPE_5__ ;
-typedef  struct TYPE_33__   TYPE_4__ ;
-typedef  struct TYPE_32__   TYPE_3__ ;
-typedef  struct TYPE_31__   TYPE_2__ ;
-typedef  struct TYPE_30__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_36__ TYPE_7__ ;
+typedef struct TYPE_35__ TYPE_6__ ;
+typedef struct TYPE_34__ TYPE_5__ ;
+typedef struct TYPE_33__ TYPE_4__ ;
+typedef struct TYPE_32__ TYPE_3__ ;
+typedef struct TYPE_31__ TYPE_2__ ;
+typedef struct TYPE_30__ TYPE_1__ ;
+
+
 struct TYPE_31__ {TYPE_5__* in; } ;
-typedef  TYPE_2__ ThreadData ;
+typedef TYPE_2__ ThreadData ;
 struct TYPE_36__ {TYPE_1__* internal; TYPE_4__* priv; TYPE_6__** outputs; } ;
 struct TYPE_35__ {int channels; TYPE_7__* dst; } ;
-struct TYPE_34__ {int /*<<< orphan*/  pts; scalar_t__* extended_data; } ;
-struct TYPE_33__ {int window_length; scalar_t__ noise_floor; scalar_t__ last_noise_floor; int sample_noise; int sample_advance; int output_mode; int /*<<< orphan*/  pts; int /*<<< orphan*/  fifo; TYPE_3__* dnch; int /*<<< orphan*/  block_count; scalar_t__ sample_noise_end; scalar_t__ sample_noise_start; scalar_t__ track_noise; } ;
+struct TYPE_34__ {int pts; scalar_t__* extended_data; } ;
+struct TYPE_33__ {int window_length; scalar_t__ noise_floor; scalar_t__ last_noise_floor; int sample_noise; int sample_advance; int output_mode; int pts; int fifo; TYPE_3__* dnch; int block_count; scalar_t__ sample_noise_end; scalar_t__ sample_noise_start; scalar_t__ track_noise; } ;
 struct TYPE_32__ {double* out_samples; } ;
-struct TYPE_30__ {int /*<<< orphan*/  (* execute ) (TYPE_7__*,int /*<<< orphan*/ ,TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ;} ;
-typedef  TYPE_3__ DeNoiseChannel ;
-typedef  TYPE_4__ AudioFFTDeNoiseContext ;
-typedef  TYPE_5__ AVFrame ;
-typedef  TYPE_6__ AVFilterLink ;
-typedef  TYPE_7__ AVFilterContext ;
+struct TYPE_30__ {int (* execute ) (TYPE_7__*,int ,TYPE_2__*,int *,int ) ;} ;
+typedef TYPE_3__ DeNoiseChannel ;
+typedef TYPE_4__ AudioFFTDeNoiseContext ;
+typedef TYPE_5__ AVFrame ;
+typedef TYPE_6__ AVFilterLink ;
+typedef TYPE_7__ AVFilterContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_BUG ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  FFMIN (int,int /*<<< orphan*/ ) ; 
-#define  IN_MODE 130 
-#define  NOISE_MODE 129 
-#define  OUT_MODE 128 
- int /*<<< orphan*/  av_audio_fifo_drain (int /*<<< orphan*/ ,int) ; 
- int av_audio_fifo_peek (int /*<<< orphan*/ ,void**,int) ; 
- int /*<<< orphan*/  av_frame_free (TYPE_5__**) ; 
- int ff_filter_frame (TYPE_6__*,TYPE_5__*) ; 
- int /*<<< orphan*/  ff_filter_get_nb_threads (TYPE_7__*) ; 
- TYPE_5__* ff_get_audio_buffer (TYPE_6__*,int) ; 
- int /*<<< orphan*/  filter_channel ; 
- int /*<<< orphan*/  finish_sample_noise (TYPE_4__*,TYPE_3__*,double*) ; 
- int /*<<< orphan*/  get_auto_noise_levels (TYPE_4__*,TYPE_3__*,double*) ; 
- int /*<<< orphan*/  init_sample_noise (TYPE_3__*) ; 
- int /*<<< orphan*/  memmove (double*,double*,int) ; 
- int /*<<< orphan*/  memset (double*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  sample_noise_block (TYPE_4__*,TYPE_3__*,TYPE_5__*,int) ; 
- int /*<<< orphan*/  set_band_parameters (TYPE_4__*,TYPE_3__*) ; 
- int /*<<< orphan*/  set_noise_profile (TYPE_4__*,TYPE_3__*,double*,int) ; 
- int /*<<< orphan*/  set_parameters (TYPE_4__*) ; 
- int /*<<< orphan*/  stub1 (TYPE_7__*,int /*<<< orphan*/ ,TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_BUG ;
+ int ENOMEM ;
+ int FFMIN (int,int ) ;
+
+
+
+ int av_audio_fifo_drain (int ,int) ;
+ int av_audio_fifo_peek (int ,void**,int) ;
+ int av_frame_free (TYPE_5__**) ;
+ int ff_filter_frame (TYPE_6__*,TYPE_5__*) ;
+ int ff_filter_get_nb_threads (TYPE_7__*) ;
+ TYPE_5__* ff_get_audio_buffer (TYPE_6__*,int) ;
+ int filter_channel ;
+ int finish_sample_noise (TYPE_4__*,TYPE_3__*,double*) ;
+ int get_auto_noise_levels (TYPE_4__*,TYPE_3__*,double*) ;
+ int init_sample_noise (TYPE_3__*) ;
+ int memmove (double*,double*,int) ;
+ int memset (double*,int ,int) ;
+ int sample_noise_block (TYPE_4__*,TYPE_3__*,TYPE_5__*,int) ;
+ int set_band_parameters (TYPE_4__*,TYPE_3__*) ;
+ int set_noise_profile (TYPE_4__*,TYPE_3__*,double*,int) ;
+ int set_parameters (TYPE_4__*) ;
+ int stub1 (TYPE_7__*,int ,TYPE_2__*,int *,int ) ;
 
 __attribute__((used)) static int output_frame(AVFilterLink *inlink)
 {
     AVFilterContext *ctx = inlink->dst;
     AVFilterLink *outlink = ctx->outputs[0];
     AudioFFTDeNoiseContext *s = ctx->priv;
-    AVFrame *out = NULL, *in = NULL;
+    AVFrame *out = ((void*)0), *in = ((void*)0);
     ThreadData td;
     int ret = 0;
 
@@ -120,7 +120,7 @@ __attribute__((used)) static int output_frame(AVFilterLink *inlink)
 
     s->block_count++;
     td.in = in;
-    ctx->internal->execute(ctx, filter_channel, &td, NULL,
+    ctx->internal->execute(ctx, filter_channel, &td, ((void*)0),
                            FFMIN(outlink->channels, ff_filter_get_nb_threads(ctx)));
 
     out = ff_get_audio_buffer(outlink, s->sample_advance);
@@ -136,15 +136,15 @@ __attribute__((used)) static int output_frame(AVFilterLink *inlink)
         float *dst = (float *)out->extended_data[ch];
 
         switch (s->output_mode) {
-        case IN_MODE:
+        case 130:
             for (int m = 0; m < s->sample_advance; m++)
                 dst[m] = orig[m];
             break;
-        case OUT_MODE:
+        case 128:
             for (int m = 0; m < s->sample_advance; m++)
                 dst[m] = src[m];
             break;
-        case NOISE_MODE:
+        case 129:
             for (int m = 0; m < s->sample_advance; m++)
                 dst[m] = orig[m] - src[m];
             break;

@@ -1,34 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  FYI ; 
- int /*<<< orphan*/  atomic_dec (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cifs_dbg (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  cifs_sm_req_poolp ; 
- int /*<<< orphan*/  mempool_free (void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  smBufAllocCount ; 
+ int FYI ;
+ int atomic_dec (int *) ;
+ int cifs_dbg (int ,char*) ;
+ int cifs_sm_req_poolp ;
+ int mempool_free (void*,int ) ;
+ int smBufAllocCount ;
 
 void
 cifs_small_buf_release(void *buf_to_free)
 {
 
-	if (buf_to_free == NULL) {
-		cifs_dbg(FYI, "Null buffer passed to cifs_small_buf_release\n");
-		return;
-	}
-	mempool_free(buf_to_free, cifs_sm_req_poolp);
+ if (buf_to_free == ((void*)0)) {
+  cifs_dbg(FYI, "Null buffer passed to cifs_small_buf_release\n");
+  return;
+ }
+ mempool_free(buf_to_free, cifs_sm_req_poolp);
 
-	atomic_dec(&smBufAllocCount);
-	return;
+ atomic_dec(&smBufAllocCount);
+ return;
 }

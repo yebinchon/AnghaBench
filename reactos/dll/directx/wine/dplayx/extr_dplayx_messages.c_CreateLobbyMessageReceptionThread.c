@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/ * hSettingRead; int /*<<< orphan*/ * hDeath; int /*<<< orphan*/ * hStart; int /*<<< orphan*/  hNotifyEvent; } ;
-typedef  TYPE_1__* LPMSGTHREADINFO ;
-typedef  int /*<<< orphan*/ * HANDLE ;
-typedef  int /*<<< orphan*/  DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CloseHandle (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * CreateThread (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DPL_MSG_ThreadMain ; 
- int /*<<< orphan*/  DUPLICATE_SAME_ACCESS ; 
- int /*<<< orphan*/  DuplicateHandle (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ERR (char*) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GetCurrentProcess () ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- TYPE_1__* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int * hSettingRead; int * hDeath; int * hStart; int hNotifyEvent; } ;
+typedef TYPE_1__* LPMSGTHREADINFO ;
+typedef int * HANDLE ;
+typedef int DWORD ;
+
+
+ int CloseHandle (int *) ;
+ int * CreateThread (int *,int ,int ,TYPE_1__*,int ,int *) ;
+ int DPL_MSG_ThreadMain ;
+ int DUPLICATE_SAME_ACCESS ;
+ int DuplicateHandle (int ,int *,int ,int *,int ,int ,int ) ;
+ int ERR (char*) ;
+ int FALSE ;
+ int GetCurrentProcess () ;
+ int GetProcessHeap () ;
+ TYPE_1__* HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,TYPE_1__*) ;
 
 DWORD CreateLobbyMessageReceptionThread( HANDLE hNotifyEvent, HANDLE hStart,
                                          HANDLE hDeath, HANDLE hConnRead )
 {
-  DWORD           dwMsgThreadId;
+  DWORD dwMsgThreadId;
   LPMSGTHREADINFO lpThreadInfo;
-  HANDLE          hThread;
+  HANDLE hThread;
 
   lpThreadInfo = HeapAlloc( GetProcessHeap(), 0, sizeof( *lpThreadInfo ) );
-  if( lpThreadInfo == NULL )
+  if( lpThreadInfo == ((void*)0) )
   {
     return 0;
   }
 
-  /* The notify event may or may not exist. Depends if async comm or not */
+
   if( hNotifyEvent &&
       !DuplicateHandle( GetCurrentProcess(), hNotifyEvent,
                         GetCurrentProcess(), &lpThreadInfo->hNotifyEvent,
@@ -52,22 +52,22 @@ DWORD CreateLobbyMessageReceptionThread( HANDLE hNotifyEvent, HANDLE hStart,
     goto error;
   }
 
-  /* These 3 handles don't need to be duplicated because we don't keep a
-   * reference to them where they're created. They're created specifically
-   * for the message thread
-   */
-  lpThreadInfo->hStart       = hStart;
-  lpThreadInfo->hDeath       = hDeath;
+
+
+
+
+  lpThreadInfo->hStart = hStart;
+  lpThreadInfo->hDeath = hDeath;
   lpThreadInfo->hSettingRead = hConnRead;
 
-  hThread = CreateThread( NULL,                  /* Security attribs */
-                          0,                     /* Stack */
-                          DPL_MSG_ThreadMain,    /* Msg reception function */
-                          lpThreadInfo,          /* Msg reception func parameter */
-                          0,                     /* Flags */
-                          &dwMsgThreadId         /* Updated with thread id */
+  hThread = CreateThread( ((void*)0),
+                          0,
+                          DPL_MSG_ThreadMain,
+                          lpThreadInfo,
+                          0,
+                          &dwMsgThreadId
                         );
-  if ( hThread == NULL )
+  if ( hThread == ((void*)0) )
   {
     ERR( "Unable to create msg thread\n" );
     goto error;

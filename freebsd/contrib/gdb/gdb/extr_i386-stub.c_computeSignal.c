@@ -1,18 +1,9 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
-
 int
 computeSignal (int exceptionVector)
 {
@@ -21,51 +12,51 @@ computeSignal (int exceptionVector)
     {
     case 0:
       sigval = 8;
-      break;			/* divide by zero */
+      break;
     case 1:
       sigval = 5;
-      break;			/* debug exception */
+      break;
     case 3:
       sigval = 5;
-      break;			/* breakpoint */
+      break;
     case 4:
       sigval = 16;
-      break;			/* into instruction (overflow) */
+      break;
     case 5:
       sigval = 16;
-      break;			/* bound instruction */
+      break;
     case 6:
       sigval = 4;
-      break;			/* Invalid opcode */
+      break;
     case 7:
       sigval = 8;
-      break;			/* coprocessor not available */
+      break;
     case 8:
       sigval = 7;
-      break;			/* double fault */
+      break;
     case 9:
       sigval = 11;
-      break;			/* coprocessor segment overrun */
+      break;
     case 10:
       sigval = 11;
-      break;			/* Invalid TSS */
+      break;
     case 11:
       sigval = 11;
-      break;			/* Segment not present */
+      break;
     case 12:
       sigval = 11;
-      break;			/* stack exception */
+      break;
     case 13:
       sigval = 11;
-      break;			/* general protection */
+      break;
     case 14:
       sigval = 11;
-      break;			/* page fault */
+      break;
     case 16:
       sigval = 7;
-      break;			/* coprocessor error */
+      break;
     default:
-      sigval = 7;		/* "software generated" */
+      sigval = 7;
     }
   return (sigval);
 }

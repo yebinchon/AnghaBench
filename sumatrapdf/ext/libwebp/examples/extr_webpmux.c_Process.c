@@ -1,103 +1,103 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_21__   TYPE_5__ ;
-typedef  struct TYPE_20__   TYPE_4__ ;
-typedef  struct TYPE_19__   TYPE_3__ ;
-typedef  struct TYPE_18__   TYPE_2__ ;
-typedef  struct TYPE_17__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
+
+
+typedef struct TYPE_21__ TYPE_5__ ;
+typedef struct TYPE_20__ TYPE_4__ ;
+typedef struct TYPE_19__ TYPE_3__ ;
+typedef struct TYPE_18__ TYPE_2__ ;
+typedef struct TYPE_17__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
 struct TYPE_20__ {scalar_t__ bytes; } ;
-struct TYPE_18__ {int duration; TYPE_4__ bitstream; int /*<<< orphan*/  id; } ;
-typedef  TYPE_2__ WebPMuxFrameInfo ;
-typedef  int /*<<< orphan*/  WebPMuxError ;
-struct TYPE_19__ {int member_0; int loop_count; int /*<<< orphan*/  bgcolor; int /*<<< orphan*/  member_1; } ;
-typedef  TYPE_3__ WebPMuxAnimParams ;
-typedef  int /*<<< orphan*/  WebPMux ;
-typedef  TYPE_4__ WebPData ;
-struct TYPE_21__ {int action_type_; size_t type_; int arg_count_; int /*<<< orphan*/  input_; int /*<<< orphan*/  output_; TYPE_1__* args_; } ;
-struct TYPE_17__ {int /*<<< orphan*/  params_; int /*<<< orphan*/  filename_; int /*<<< orphan*/  subtype_; } ;
-typedef  TYPE_5__ Config ;
+struct TYPE_18__ {int duration; TYPE_4__ bitstream; int id; } ;
+typedef TYPE_2__ WebPMuxFrameInfo ;
+typedef int WebPMuxError ;
+struct TYPE_19__ {int member_0; int loop_count; int bgcolor; int member_1; } ;
+typedef TYPE_3__ WebPMuxAnimParams ;
+typedef int WebPMux ;
+typedef TYPE_4__ WebPData ;
+struct TYPE_21__ {int action_type_; size_t type_; int arg_count_; int input_; int output_; TYPE_1__* args_; } ;
+struct TYPE_17__ {int params_; int filename_; int subtype_; } ;
+typedef TYPE_5__ Config ;
 
-/* Variables and functions */
-#define  ACTION_DURATION 139 
-#define  ACTION_GET 138 
-#define  ACTION_INFO 137 
-#define  ACTION_SET 136 
-#define  ACTION_STRIP 135 
- int CreateMux (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  DisplayInfo (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * DuplicateMuxHeader (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ERROR_GOTO1 (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ERROR_GOTO2 (char*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ERROR_GOTO3 (char*,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Err2 ; 
- int /*<<< orphan*/  Err3 ; 
- int ErrorString (int /*<<< orphan*/ ) ; 
- int ExUtilGetInt (int /*<<< orphan*/ ,int,int*) ; 
- int ExUtilGetInts (int /*<<< orphan*/ ,int,int,int*) ; 
- int ExUtilReadFileToWebPData (int /*<<< orphan*/ ,TYPE_4__*) ; 
-#define  FEATURE_ANMF 134 
-#define  FEATURE_EXIF 133 
-#define  FEATURE_ICCP 132 
-#define  FEATURE_XMP 131 
- int GetFrame (int /*<<< orphan*/ *,TYPE_5__ const*) ; 
- int ParseBgcolorArgs (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int ParseFrameArgs (int /*<<< orphan*/ ,TYPE_2__*) ; 
-#define  SUBTYPE_ANMF 130 
-#define  SUBTYPE_BGCOLOR 129 
-#define  SUBTYPE_LOOP 128 
- int /*<<< orphan*/  WEBP_CHUNK_ANMF ; 
- int /*<<< orphan*/  WEBP_MUX_MEMORY_ERROR ; 
- int /*<<< orphan*/  WEBP_MUX_OK ; 
- int /*<<< orphan*/  WebPDataClear (TYPE_4__*) ; 
- int /*<<< orphan*/  WebPFree (int*) ; 
- scalar_t__ WebPMalloc (size_t) ; 
- int /*<<< orphan*/  WebPMuxDelete (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  WebPMuxDeleteChunk (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WebPMuxGetChunk (int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_4__*) ; 
- int /*<<< orphan*/  WebPMuxGetFrame (int /*<<< orphan*/ *,int,TYPE_2__*) ; 
- int /*<<< orphan*/ * WebPMuxNew () ; 
- int /*<<< orphan*/  WebPMuxNumChunks (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  WebPMuxPushFrame (int /*<<< orphan*/ *,TYPE_2__*,int) ; 
- int /*<<< orphan*/  WebPMuxSetAnimationParams (int /*<<< orphan*/ *,TYPE_3__*) ; 
- int /*<<< orphan*/  WebPMuxSetChunk (int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_4__*,int) ; 
- int WriteData (int /*<<< orphan*/ ,TYPE_4__*) ; 
- int WriteWebP (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  free (void*) ; 
- int* kDescriptions ; 
- int /*<<< orphan*/ * kFourccList ; 
- int /*<<< orphan*/  stderr ; 
+
+
+
+
+
+
+ int CreateMux (int ,int **) ;
+ int DisplayInfo (int *) ;
+ int * DuplicateMuxHeader (int *) ;
+ int ERROR_GOTO1 (char*,int ) ;
+ int ERROR_GOTO2 (char*,int,int ) ;
+ int ERROR_GOTO3 (char*,int,int,int ) ;
+ int Err2 ;
+ int Err3 ;
+ int ErrorString (int ) ;
+ int ExUtilGetInt (int ,int,int*) ;
+ int ExUtilGetInts (int ,int,int,int*) ;
+ int ExUtilReadFileToWebPData (int ,TYPE_4__*) ;
+
+
+
+
+ int GetFrame (int *,TYPE_5__ const*) ;
+ int ParseBgcolorArgs (int ,int *) ;
+ int ParseFrameArgs (int ,TYPE_2__*) ;
+
+
+
+ int WEBP_CHUNK_ANMF ;
+ int WEBP_MUX_MEMORY_ERROR ;
+ int WEBP_MUX_OK ;
+ int WebPDataClear (TYPE_4__*) ;
+ int WebPFree (int*) ;
+ scalar_t__ WebPMalloc (size_t) ;
+ int WebPMuxDelete (int *) ;
+ int WebPMuxDeleteChunk (int *,int ) ;
+ int WebPMuxGetChunk (int *,int ,TYPE_4__*) ;
+ int WebPMuxGetFrame (int *,int,TYPE_2__*) ;
+ int * WebPMuxNew () ;
+ int WebPMuxNumChunks (int *,int ,int*) ;
+ int WebPMuxPushFrame (int *,TYPE_2__*,int) ;
+ int WebPMuxSetAnimationParams (int *,TYPE_3__*) ;
+ int WebPMuxSetChunk (int *,int ,TYPE_4__*,int) ;
+ int WriteData (int ,TYPE_4__*) ;
+ int WriteWebP (int *,int ) ;
+ int assert (int) ;
+ int fprintf (int ,char*) ;
+ int free (void*) ;
+ int* kDescriptions ;
+ int * kFourccList ;
+ int stderr ;
 
 __attribute__((used)) static int Process(const Config* config) {
-  WebPMux* mux = NULL;
+  WebPMux* mux = ((void*)0);
   WebPData chunk;
   WebPMuxError err = WEBP_MUX_OK;
   int ok = 1;
 
   switch (config->action_type_) {
-    case ACTION_GET: {
+    case 138: {
       ok = CreateMux(config->input_, &mux);
       if (!ok) goto Err2;
       switch (config->type_) {
-        case FEATURE_ANMF:
+        case 134:
           ok = GetFrame(mux, config);
           break;
 
-        case FEATURE_ICCP:
-        case FEATURE_EXIF:
-        case FEATURE_XMP:
+        case 132:
+        case 133:
+        case 131:
           err = WebPMuxGetChunk(mux, kFourccList[config->type_], &chunk);
           if (err != WEBP_MUX_OK) {
             ERROR_GOTO3("ERROR (%s): Could not get the %s.\n",
@@ -112,19 +112,19 @@ __attribute__((used)) static int Process(const Config* config) {
       }
       break;
     }
-    case ACTION_SET: {
+    case 136: {
       switch (config->type_) {
-        case FEATURE_ANMF: {
+        case 134: {
           int i;
           WebPMuxAnimParams params = { 0xFFFFFFFF, 0 };
           mux = WebPMuxNew();
-          if (mux == NULL) {
+          if (mux == ((void*)0)) {
             ERROR_GOTO2("ERROR (%s): Could not allocate a mux object.\n",
                         ErrorString(WEBP_MUX_MEMORY_ERROR), Err2);
           }
           for (i = 0; i < config->arg_count_; ++i) {
             switch (config->args_[i].subtype_) {
-              case SUBTYPE_BGCOLOR: {
+              case 129: {
                 uint32_t bgcolor;
                 ok = ParseBgcolorArgs(config->args_[i].params_, &bgcolor);
                 if (!ok) {
@@ -134,14 +134,14 @@ __attribute__((used)) static int Process(const Config* config) {
                 params.bgcolor = bgcolor;
                 break;
               }
-              case SUBTYPE_LOOP: {
+              case 128: {
                 int parse_error = 0;
                 const int loop_count =
                     ExUtilGetInt(config->args_[i].params_, 10, &parse_error);
                 if (loop_count < 0 || loop_count > 65535) {
-                  // Note: This is only a 'necessary' condition for loop_count
-                  // to be valid. The 'sufficient' conditioned in checked in
-                  // WebPMuxSetAnimationParams() method called later.
+
+
+
                   ERROR_GOTO1("ERROR: Loop count must be in the range 0 to "
                               "65535.\n", Err2);
                 }
@@ -150,7 +150,7 @@ __attribute__((used)) static int Process(const Config* config) {
                 params.loop_count = loop_count;
                 break;
               }
-              case SUBTYPE_ANMF: {
+              case 130: {
                 WebPMuxFrameInfo frame;
                 frame.id = WEBP_CHUNK_ANMF;
                 ok = ExUtilReadFileToWebPData(config->args_[i].filename_,
@@ -184,9 +184,9 @@ __attribute__((used)) static int Process(const Config* config) {
           break;
         }
 
-        case FEATURE_ICCP:
-        case FEATURE_EXIF:
-        case FEATURE_XMP: {
+        case 132:
+        case 133:
+        case 131: {
           ok = CreateMux(config->input_, &mux);
           if (!ok) goto Err2;
           ok = ExUtilReadFileToWebPData(config->args_[0].filename_, &chunk);
@@ -207,7 +207,7 @@ __attribute__((used)) static int Process(const Config* config) {
       ok = WriteWebP(mux, config->output_);
       break;
     }
-    case ACTION_DURATION: {
+    case 139: {
       int num_frames;
       ok = CreateMux(config->input_, &mux);
       if (!ok) goto Err2;
@@ -223,14 +223,14 @@ __attribute__((used)) static int Process(const Config* config) {
         if (!ok) goto Err2;
       } else {
         int i;
-        int* durations = NULL;
+        int* durations = ((void*)0);
         WebPMux* new_mux = DuplicateMuxHeader(mux);
-        if (new_mux == NULL) goto Err2;
+        if (new_mux == ((void*)0)) goto Err2;
         durations = (int*)WebPMalloc((size_t)num_frames * sizeof(*durations));
-        if (durations == NULL) goto Err2;
+        if (durations == ((void*)0)) goto Err2;
         for (i = 0; i < num_frames; ++i) durations[i] = -1;
 
-        // Parse intervals to process.
+
         for (i = 0; i < config->arg_count_; ++i) {
           int k;
           int args[3];
@@ -244,7 +244,7 @@ __attribute__((used)) static int Process(const Config* config) {
             ERROR_GOTO1("ERROR: duration must be strictly positive.\n", Err3);
           }
 
-          if (nb_args == 1) {   // only duration is present -> use full interval
+          if (nb_args == 1) {
             start = 1;
             end = num_frames;
           } else {
@@ -264,7 +264,7 @@ __attribute__((used)) static int Process(const Config* config) {
           }
         }
 
-        // Apply non-negative durations to their destination frames.
+
         for (i = 1; i <= num_frames; ++i) {
           WebPMuxFrameInfo frame;
           err = WebPMuxGetFrame(mux, i, &frame);
@@ -280,8 +280,8 @@ __attribute__((used)) static int Process(const Config* config) {
         }
         WebPMuxDelete(mux);
         ok = WriteWebP(new_mux, config->output_);
-        mux = new_mux;  // transfer for the WebPMuxDelete() call
-        new_mux = NULL;
+        mux = new_mux;
+        new_mux = ((void*)0);
 
  Err3:
         WebPFree(durations);
@@ -290,11 +290,11 @@ __attribute__((used)) static int Process(const Config* config) {
       }
       break;
     }
-    case ACTION_STRIP: {
+    case 135: {
       ok = CreateMux(config->input_, &mux);
       if (!ok) goto Err2;
-      if (config->type_ == FEATURE_ICCP || config->type_ == FEATURE_EXIF ||
-          config->type_ == FEATURE_XMP) {
+      if (config->type_ == 132 || config->type_ == 133 ||
+          config->type_ == 131) {
         err = WebPMuxDeleteChunk(mux, kFourccList[config->type_]);
         if (err != WEBP_MUX_OK) {
           ERROR_GOTO3("ERROR (%s): Could not strip the %s.\n",
@@ -307,14 +307,14 @@ __attribute__((used)) static int Process(const Config* config) {
       ok = WriteWebP(mux, config->output_);
       break;
     }
-    case ACTION_INFO: {
+    case 137: {
       ok = CreateMux(config->input_, &mux);
       if (!ok) goto Err2;
       ok = (DisplayInfo(mux) == WEBP_MUX_OK);
       break;
     }
     default: {
-      assert(0);  // Invalid action.
+      assert(0);
       break;
     }
   }

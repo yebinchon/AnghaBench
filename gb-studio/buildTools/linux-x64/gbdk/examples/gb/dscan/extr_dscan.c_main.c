@@ -1,38 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  DISPLAY_OFF ; 
- int /*<<< orphan*/  DISPLAY_ON ; 
- int /*<<< orphan*/  J_A ; 
- int /*<<< orphan*/  J_B ; 
- int /*<<< orphan*/  bombs () ; 
- int /*<<< orphan*/  delay (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  disable_interrupts () ; 
- int /*<<< orphan*/  enable_interrupts () ; 
- int /*<<< orphan*/  enemys () ; 
- int /*<<< orphan*/  init_enemy () ; 
- int /*<<< orphan*/  init_kirai () ; 
- int /*<<< orphan*/  init_player () ; 
- int /*<<< orphan*/  init_score () ; 
- int /*<<< orphan*/  init_screen () ; 
- int /*<<< orphan*/  init_tama () ; 
- int /*<<< orphan*/  k_left ; 
- int /*<<< orphan*/  k_right ; 
- int /*<<< orphan*/  kirai () ; 
- int /*<<< orphan*/  player () ; 
- int /*<<< orphan*/  pw ; 
- int /*<<< orphan*/  show_gover () ; 
+ int DISPLAY_OFF ;
+ int DISPLAY_ON ;
+ int J_A ;
+ int J_B ;
+ int bombs () ;
+ int delay (int ) ;
+ int disable_interrupts () ;
+ int enable_interrupts () ;
+ int enemys () ;
+ int init_enemy () ;
+ int init_kirai () ;
+ int init_player () ;
+ int init_score () ;
+ int init_screen () ;
+ int init_tama () ;
+ int k_left ;
+ int k_right ;
+ int kirai () ;
+ int player () ;
+ int pw ;
+ int show_gover () ;
 
 void main()
 {

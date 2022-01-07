@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  fileargs_t ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * fdopen (int,char const*) ; 
- int fileargs_open (int /*<<< orphan*/ *,char const*) ; 
+
+
+
+typedef int fileargs_t ;
+typedef int FILE ;
+
+
+ int * fdopen (int,char const*) ;
+ int fileargs_open (int *,char const*) ;
 
 FILE *
 fileargs_fopen(fileargs_t *fa, const char *name, const char *mode)
 {
-	int fd;
+ int fd;
 
-	if ((fd = fileargs_open(fa, name)) < 0) {
-		return (NULL);
-	}
+ if ((fd = fileargs_open(fa, name)) < 0) {
+  return (((void*)0));
+ }
 
-	return (fdopen(fd, mode));
+ return (fdopen(fd, mode));
 }

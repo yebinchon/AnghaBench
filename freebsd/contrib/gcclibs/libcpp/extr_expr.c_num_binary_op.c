@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_22__   TYPE_3__ ;
-typedef  struct TYPE_21__   TYPE_2__ ;
-typedef  struct TYPE_20__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  enum cpp_ttype { ____Placeholder_cpp_ttype } cpp_ttype ;
-struct TYPE_20__ {int /*<<< orphan*/  skip_eval; } ;
+
+
+typedef struct TYPE_22__ TYPE_3__ ;
+typedef struct TYPE_21__ TYPE_2__ ;
+typedef struct TYPE_20__ TYPE_1__ ;
+
+
+typedef enum cpp_ttype { ____Placeholder_cpp_ttype } cpp_ttype ;
+struct TYPE_20__ {int skip_eval; } ;
 struct TYPE_21__ {TYPE_1__ state; } ;
-typedef  TYPE_2__ cpp_reader ;
+typedef TYPE_2__ cpp_reader ;
 struct TYPE_22__ {int unsignedp; size_t low; int overflow; scalar_t__ high; } ;
-typedef  TYPE_3__ cpp_num ;
+typedef TYPE_3__ cpp_num ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CPP_DL_PEDWARN ; 
-#define  CPP_LSHIFT 131 
-#define  CPP_MINUS 130 
- size_t CPP_OPTION (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CPP_PEDANTIC (TYPE_2__*) ; 
-#define  CPP_PLUS 129 
-#define  CPP_RSHIFT 128 
- int /*<<< orphan*/  c99 ; 
- int /*<<< orphan*/  cpp_error (TYPE_2__*,int /*<<< orphan*/ ,char*) ; 
- TYPE_3__ num_lshift (TYPE_3__,size_t,size_t) ; 
- TYPE_3__ num_negate (TYPE_3__,size_t) ; 
- int num_positive (TYPE_3__,size_t) ; 
- TYPE_3__ num_rshift (TYPE_3__,size_t,size_t) ; 
- TYPE_3__ num_trim (TYPE_3__,size_t) ; 
- size_t precision ; 
+
+ int CPP_DL_PEDWARN ;
+
+
+ size_t CPP_OPTION (TYPE_2__*,int ) ;
+ int CPP_PEDANTIC (TYPE_2__*) ;
+
+
+ int c99 ;
+ int cpp_error (TYPE_2__*,int ,char*) ;
+ TYPE_3__ num_lshift (TYPE_3__,size_t,size_t) ;
+ TYPE_3__ num_negate (TYPE_3__,size_t) ;
+ int num_positive (TYPE_3__,size_t) ;
+ TYPE_3__ num_rshift (TYPE_3__,size_t,size_t) ;
+ TYPE_3__ num_trim (TYPE_3__,size_t) ;
+ size_t precision ;
 
 __attribute__((used)) static cpp_num
 num_binary_op (cpp_reader *pfile, cpp_num lhs, cpp_num rhs, enum cpp_ttype op)
@@ -46,54 +46,54 @@ num_binary_op (cpp_reader *pfile, cpp_num lhs, cpp_num rhs, enum cpp_ttype op)
 
   switch (op)
     {
-      /* Shifts.  */
-    case CPP_LSHIFT:
-    case CPP_RSHIFT:
+
+    case 131:
+    case 128:
       if (!rhs.unsignedp && !num_positive (rhs, precision))
-	{
-	  /* A negative shift is a positive shift the other way.  */
-	  if (op == CPP_LSHIFT)
-	    op = CPP_RSHIFT;
-	  else
-	    op = CPP_LSHIFT;
-	  rhs = num_negate (rhs, precision);
-	}
+ {
+
+   if (op == 131)
+     op = 128;
+   else
+     op = 131;
+   rhs = num_negate (rhs, precision);
+ }
       if (rhs.high)
-	n = ~0;			/* Maximal.  */
+ n = ~0;
       else
-	n = rhs.low;
-      if (op == CPP_LSHIFT)
-	lhs = num_lshift (lhs, precision, n);
+ n = rhs.low;
+      if (op == 131)
+ lhs = num_lshift (lhs, precision, n);
       else
-	lhs = num_rshift (lhs, precision, n);
+ lhs = num_rshift (lhs, precision, n);
       break;
 
-      /* Arithmetic.  */
-    case CPP_MINUS:
+
+    case 130:
       rhs = num_negate (rhs, precision);
-    case CPP_PLUS:
+    case 129:
       result.low = lhs.low + rhs.low;
       result.high = lhs.high + rhs.high;
       if (result.low < lhs.low)
-	result.high++;
+ result.high++;
       result.unsignedp = lhs.unsignedp || rhs.unsignedp;
-      result.overflow = false;
+      result.overflow = 0;
 
       result = num_trim (result, precision);
       if (!result.unsignedp)
-	{
-	  bool lhsp = num_positive (lhs, precision);
-	  result.overflow = (lhsp == num_positive (rhs, precision)
-			     && lhsp != num_positive (result, precision));
-	}
+ {
+   bool lhsp = num_positive (lhs, precision);
+   result.overflow = (lhsp == num_positive (rhs, precision)
+        && lhsp != num_positive (result, precision));
+ }
       return result;
 
-      /* Comma.  */
-    default: /* case CPP_COMMA: */
+
+    default:
       if (CPP_PEDANTIC (pfile) && (!CPP_OPTION (pfile, c99)
-				   || !pfile->state.skip_eval))
-	cpp_error (pfile, CPP_DL_PEDWARN,
-		   "comma operator in operand of #if");
+       || !pfile->state.skip_eval))
+ cpp_error (pfile, CPP_DL_PEDWARN,
+     "comma operator in operand of #if");
       lhs = rhs;
       break;
     }

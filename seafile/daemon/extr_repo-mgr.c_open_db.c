@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3 ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int sqlite3 ;
 struct TYPE_5__ {TYPE_1__* priv; } ;
-struct TYPE_4__ {int /*<<< orphan*/ * db; } ;
-typedef  TYPE_2__ SeafRepoManager ;
+struct TYPE_4__ {int * db; } ;
+typedef TYPE_2__ SeafRepoManager ;
 
-/* Variables and functions */
- char* g_build_filename (char const*,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  g_free (char*) ; 
- scalar_t__ sqlite_open_db (char*,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  sqlite_query_exec (int /*<<< orphan*/ *,char*) ; 
+
+ char* g_build_filename (char const*,char*,int *) ;
+ int g_free (char*) ;
+ scalar_t__ sqlite_open_db (char*,int **) ;
+ int sqlite_query_exec (int *,char*) ;
 
 __attribute__((used)) static sqlite3*
 open_db (SeafRepoManager *manager, const char *seaf_dir)
@@ -29,9 +29,9 @@ open_db (SeafRepoManager *manager, const char *seaf_dir)
     sqlite3 *db;
     char *db_path;
 
-    db_path = g_build_filename (seaf_dir, "repo.db", NULL);
+    db_path = g_build_filename (seaf_dir, "repo.db", ((void*)0));
     if (sqlite_open_db (db_path, &db) < 0)
-        return NULL;
+        return ((void*)0);
     g_free (db_path);
     manager->priv->db = db;
 
@@ -61,7 +61,7 @@ open_db (SeafRepoManager *manager, const char *seaf_dir)
     sql = "CREATE TABLE IF NOT EXISTS RepoKeys "
         "(repo_id TEXT PRIMARY KEY, key TEXT NOT NULL, iv TEXT NOT NULL);";
     sqlite_query_exec (db, sql);
-    
+
     sql = "CREATE TABLE IF NOT EXISTS RepoProperty ("
         "repo_id TEXT, key TEXT, value TEXT);";
     sqlite_query_exec (db, sql);
@@ -77,9 +77,9 @@ open_db (SeafRepoManager *manager, const char *seaf_dir)
         "repo_id TEXT PRIMARY KEY, ca_id TEXT, head_id TEXT);";
     sqlite_query_exec (db, sql);
 
-    /* Version 1 repos will be added to this table after deletion.
-     * GC will scan this table and remove the objects and blocks for the repos.
-     */
+
+
+
     sql = "CREATE TABLE IF NOT EXISTS GarbageRepos (repo_id TEXT PRIMARY KEY);";
     sqlite_query_exec (db, sql);
 

@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct nfs_server {int /*<<< orphan*/  cred; int /*<<< orphan*/  io_stats; int /*<<< orphan*/  openowner_id; int /*<<< orphan*/  lockowner_id; int /*<<< orphan*/  nfs_client; int /*<<< orphan*/  client; int /*<<< orphan*/  client_acl; int /*<<< orphan*/  (* destroy ) (struct nfs_server*) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IS_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ida_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  kfree (struct nfs_server*) ; 
- int /*<<< orphan*/  nfs_free_iostats (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nfs_put_client (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nfs_release_automount_timer () ; 
- int /*<<< orphan*/  nfs_server_remove_lists (struct nfs_server*) ; 
- int /*<<< orphan*/  put_cred (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rpc_shutdown_client (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 (struct nfs_server*) ; 
+
+
+
+struct nfs_server {int cred; int io_stats; int openowner_id; int lockowner_id; int nfs_client; int client; int client_acl; int (* destroy ) (struct nfs_server*) ;} ;
+
+
+ int IS_ERR (int ) ;
+ int ida_destroy (int *) ;
+ int kfree (struct nfs_server*) ;
+ int nfs_free_iostats (int ) ;
+ int nfs_put_client (int ) ;
+ int nfs_release_automount_timer () ;
+ int nfs_server_remove_lists (struct nfs_server*) ;
+ int put_cred (int ) ;
+ int rpc_shutdown_client (int ) ;
+ int stub1 (struct nfs_server*) ;
 
 void nfs_free_server(struct nfs_server *server)
 {
-	nfs_server_remove_lists(server);
+ nfs_server_remove_lists(server);
 
-	if (server->destroy != NULL)
-		server->destroy(server);
+ if (server->destroy != ((void*)0))
+  server->destroy(server);
 
-	if (!IS_ERR(server->client_acl))
-		rpc_shutdown_client(server->client_acl);
-	if (!IS_ERR(server->client))
-		rpc_shutdown_client(server->client);
+ if (!IS_ERR(server->client_acl))
+  rpc_shutdown_client(server->client_acl);
+ if (!IS_ERR(server->client))
+  rpc_shutdown_client(server->client);
 
-	nfs_put_client(server->nfs_client);
+ nfs_put_client(server->nfs_client);
 
-	ida_destroy(&server->lockowner_id);
-	ida_destroy(&server->openowner_id);
-	nfs_free_iostats(server->io_stats);
-	put_cred(server->cred);
-	kfree(server);
-	nfs_release_automount_timer();
+ ida_destroy(&server->lockowner_id);
+ ida_destroy(&server->openowner_id);
+ nfs_free_iostats(server->io_stats);
+ put_cred(server->cred);
+ kfree(server);
+ nfs_release_automount_timer();
 }

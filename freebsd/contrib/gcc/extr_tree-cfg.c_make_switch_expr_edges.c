@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
-typedef  int /*<<< orphan*/  basic_block ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CASE_LABEL (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SWITCH_LABELS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TREE_VEC_ELT (int /*<<< orphan*/ ,size_t) ; 
- size_t TREE_VEC_LENGTH (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  label_to_block (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  last_stmt (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  make_edge (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int tree ;
+typedef int basic_block ;
+
+
+ int CASE_LABEL (int ) ;
+ int SWITCH_LABELS (int ) ;
+ int TREE_VEC_ELT (int ,size_t) ;
+ size_t TREE_VEC_LENGTH (int ) ;
+ int label_to_block (int ) ;
+ int last_stmt (int ) ;
+ int make_edge (int ,int ,int ) ;
 
 __attribute__((used)) static void
 make_switch_expr_edges (basic_block bb)

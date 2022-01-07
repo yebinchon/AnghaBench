@@ -1,0 +1,645 @@
+; ModuleID = '/home/carl/AnghaBench/FFmpeg/libavcodec/mips/extr_hevcdsp_msa.c_hevc_copy_16w_msa.c'
+source_filename = "/home/carl/AnghaBench/FFmpeg/libavcodec/mips/extr_hevcdsp_msa.c_hevc_copy_16w_msa.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+%struct.TYPE_30__ = type { i32 }
+
+@llvm.used = appending global [1 x i8*] [i8* bitcast (void (i32*, i32, i32*, i32, i32)* @hevc_copy_16w_msa to i8*)], section "llvm.metadata"
+
+; Function Attrs: noinline nounwind optnone uwtable
+define internal void @hevc_copy_16w_msa(i32* %0, i32 %1, i32* %2, i32 %3, i32 %4) #0 {
+  %6 = alloca i32*, align 8
+  %7 = alloca i32, align 4
+  %8 = alloca i32*, align 8
+  %9 = alloca i32, align 4
+  %10 = alloca i32, align 4
+  %11 = alloca %struct.TYPE_30__, align 4
+  %12 = alloca %struct.TYPE_30__, align 4
+  %13 = alloca %struct.TYPE_30__, align 4
+  %14 = alloca %struct.TYPE_30__, align 4
+  %15 = alloca %struct.TYPE_30__, align 4
+  %16 = alloca i32, align 4
+  %17 = alloca i32, align 4
+  %18 = alloca i32, align 4
+  %19 = alloca i32, align 4
+  %20 = alloca i32, align 4
+  %21 = alloca i32, align 4
+  %22 = alloca i32, align 4
+  %23 = alloca i32, align 4
+  %24 = alloca %struct.TYPE_30__, align 4
+  %25 = alloca %struct.TYPE_30__, align 4
+  %26 = alloca %struct.TYPE_30__, align 4
+  %27 = alloca %struct.TYPE_30__, align 4
+  %28 = alloca %struct.TYPE_30__, align 4
+  %29 = alloca %struct.TYPE_30__, align 4
+  %30 = alloca %struct.TYPE_30__, align 4
+  %31 = alloca %struct.TYPE_30__, align 4
+  %32 = alloca %struct.TYPE_30__, align 4
+  %33 = alloca %struct.TYPE_30__, align 4
+  %34 = alloca %struct.TYPE_30__, align 4
+  %35 = alloca %struct.TYPE_30__, align 4
+  %36 = alloca i32, align 4
+  %37 = alloca i32, align 4
+  %38 = alloca i32, align 4
+  %39 = alloca i32, align 4
+  %40 = alloca i32, align 4
+  %41 = alloca i32, align 4
+  %42 = alloca i32, align 4
+  %43 = alloca i32, align 4
+  %44 = alloca i32, align 4
+  %45 = alloca %struct.TYPE_30__, align 4
+  %46 = alloca %struct.TYPE_30__, align 4
+  %47 = alloca %struct.TYPE_30__, align 4
+  %48 = alloca %struct.TYPE_30__, align 4
+  %49 = alloca %struct.TYPE_30__, align 4
+  %50 = alloca %struct.TYPE_30__, align 4
+  %51 = alloca %struct.TYPE_30__, align 4
+  %52 = alloca %struct.TYPE_30__, align 4
+  %53 = alloca i32, align 4
+  %54 = alloca i32, align 4
+  %55 = alloca i32, align 4
+  %56 = alloca i32, align 4
+  %57 = alloca i32, align 4
+  %58 = alloca i32, align 4
+  %59 = alloca i32, align 4
+  %60 = alloca i32, align 4
+  store i32* %0, i32** %6, align 8
+  store i32 %1, i32* %7, align 4
+  store i32* %2, i32** %8, align 8
+  store i32 %3, i32* %9, align 4
+  store i32 %4, i32* %10, align 4
+  %61 = bitcast %struct.TYPE_30__* %11 to i8*
+  call void @llvm.memset.p0i8.i64(i8* align 4 %61, i8 0, i64 4, i1 false)
+  %62 = load i32, i32* %10, align 4
+  %63 = icmp eq i32 4, %62
+  br i1 %63, label %64, label %143
+
+64:                                               ; preds = %5
+  %65 = load i32*, i32** %6, align 8
+  %66 = load i32, i32* %7, align 4
+  %67 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %12, i32 0, i32 0
+  %68 = load i32, i32* %67, align 4
+  %69 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %13, i32 0, i32 0
+  %70 = load i32, i32* %69, align 4
+  %71 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %14, i32 0, i32 0
+  %72 = load i32, i32* %71, align 4
+  %73 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %15, i32 0, i32 0
+  %74 = load i32, i32* %73, align 4
+  %75 = call i32 @LD_SB4(i32* %65, i32 %66, i32 %68, i32 %70, i32 %72, i32 %74)
+  %76 = load i32, i32* %16, align 4
+  %77 = load i32, i32* %17, align 4
+  %78 = load i32, i32* %18, align 4
+  %79 = load i32, i32* %19, align 4
+  %80 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %11, i32 0, i32 0
+  %81 = load i32, i32* %80, align 4
+  %82 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %12, i32 0, i32 0
+  %83 = load i32, i32* %82, align 4
+  %84 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %11, i32 0, i32 0
+  %85 = load i32, i32* %84, align 4
+  %86 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %13, i32 0, i32 0
+  %87 = load i32, i32* %86, align 4
+  %88 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %11, i32 0, i32 0
+  %89 = load i32, i32* %88, align 4
+  %90 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %14, i32 0, i32 0
+  %91 = load i32, i32* %90, align 4
+  %92 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %11, i32 0, i32 0
+  %93 = load i32, i32* %92, align 4
+  %94 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %15, i32 0, i32 0
+  %95 = load i32, i32* %94, align 4
+  %96 = call i32 @ILVR_B4_SH(i32 %81, i32 %83, i32 %85, i32 %87, i32 %89, i32 %91, i32 %93, i32 %95, i32 %76, i32 %77, i32 %78, i32 %79)
+  %97 = load i32, i32* %20, align 4
+  %98 = load i32, i32* %21, align 4
+  %99 = load i32, i32* %22, align 4
+  %100 = load i32, i32* %23, align 4
+  %101 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %11, i32 0, i32 0
+  %102 = load i32, i32* %101, align 4
+  %103 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %12, i32 0, i32 0
+  %104 = load i32, i32* %103, align 4
+  %105 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %11, i32 0, i32 0
+  %106 = load i32, i32* %105, align 4
+  %107 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %13, i32 0, i32 0
+  %108 = load i32, i32* %107, align 4
+  %109 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %11, i32 0, i32 0
+  %110 = load i32, i32* %109, align 4
+  %111 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %14, i32 0, i32 0
+  %112 = load i32, i32* %111, align 4
+  %113 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %11, i32 0, i32 0
+  %114 = load i32, i32* %113, align 4
+  %115 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %15, i32 0, i32 0
+  %116 = load i32, i32* %115, align 4
+  %117 = call i32 @ILVL_B4_SH(i32 %102, i32 %104, i32 %106, i32 %108, i32 %110, i32 %112, i32 %114, i32 %116, i32 %97, i32 %98, i32 %99, i32 %100)
+  %118 = load i32, i32* %16, align 4
+  %119 = load i32, i32* %17, align 4
+  %120 = load i32, i32* %18, align 4
+  %121 = load i32, i32* %19, align 4
+  %122 = call i32 @SLLI_4V(i32 %118, i32 %119, i32 %120, i32 %121, i32 6)
+  %123 = load i32, i32* %20, align 4
+  %124 = load i32, i32* %21, align 4
+  %125 = load i32, i32* %22, align 4
+  %126 = load i32, i32* %23, align 4
+  %127 = call i32 @SLLI_4V(i32 %123, i32 %124, i32 %125, i32 %126, i32 6)
+  %128 = load i32, i32* %16, align 4
+  %129 = load i32, i32* %17, align 4
+  %130 = load i32, i32* %18, align 4
+  %131 = load i32, i32* %19, align 4
+  %132 = load i32*, i32** %8, align 8
+  %133 = load i32, i32* %9, align 4
+  %134 = call i32 @ST_SH4(i32 %128, i32 %129, i32 %130, i32 %131, i32* %132, i32 %133)
+  %135 = load i32, i32* %20, align 4
+  %136 = load i32, i32* %21, align 4
+  %137 = load i32, i32* %22, align 4
+  %138 = load i32, i32* %23, align 4
+  %139 = load i32*, i32** %8, align 8
+  %140 = getelementptr inbounds i32, i32* %139, i64 8
+  %141 = load i32, i32* %9, align 4
+  %142 = call i32 @ST_SH4(i32 %135, i32 %136, i32 %137, i32 %138, i32* %140, i32 %141)
+  br label %576
+
+143:                                              ; preds = %5
+  %144 = load i32, i32* %10, align 4
+  %145 = icmp eq i32 12, %144
+  br i1 %145, label %146, label %393
+
+146:                                              ; preds = %143
+  %147 = load i32*, i32** %6, align 8
+  %148 = load i32, i32* %7, align 4
+  %149 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %24, i32 0, i32 0
+  %150 = load i32, i32* %149, align 4
+  %151 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %25, i32 0, i32 0
+  %152 = load i32, i32* %151, align 4
+  %153 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %26, i32 0, i32 0
+  %154 = load i32, i32* %153, align 4
+  %155 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %27, i32 0, i32 0
+  %156 = load i32, i32* %155, align 4
+  %157 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %28, i32 0, i32 0
+  %158 = load i32, i32* %157, align 4
+  %159 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %29, i32 0, i32 0
+  %160 = load i32, i32* %159, align 4
+  %161 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %30, i32 0, i32 0
+  %162 = load i32, i32* %161, align 4
+  %163 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %31, i32 0, i32 0
+  %164 = load i32, i32* %163, align 4
+  %165 = call i32 @LD_SB8(i32* %147, i32 %148, i32 %150, i32 %152, i32 %154, i32 %156, i32 %158, i32 %160, i32 %162, i32 %164)
+  %166 = load i32, i32* %7, align 4
+  %167 = mul nsw i32 8, %166
+  %168 = load i32*, i32** %6, align 8
+  %169 = sext i32 %167 to i64
+  %170 = getelementptr inbounds i32, i32* %168, i64 %169
+  store i32* %170, i32** %6, align 8
+  %171 = load i32*, i32** %6, align 8
+  %172 = load i32, i32* %7, align 4
+  %173 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %32, i32 0, i32 0
+  %174 = load i32, i32* %173, align 4
+  %175 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %33, i32 0, i32 0
+  %176 = load i32, i32* %175, align 4
+  %177 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %34, i32 0, i32 0
+  %178 = load i32, i32* %177, align 4
+  %179 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %35, i32 0, i32 0
+  %180 = load i32, i32* %179, align 4
+  %181 = call i32 @LD_SB4(i32* %171, i32 %172, i32 %174, i32 %176, i32 %178, i32 %180)
+  %182 = load i32, i32* %36, align 4
+  %183 = load i32, i32* %37, align 4
+  %184 = load i32, i32* %38, align 4
+  %185 = load i32, i32* %39, align 4
+  %186 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %11, i32 0, i32 0
+  %187 = load i32, i32* %186, align 4
+  %188 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %24, i32 0, i32 0
+  %189 = load i32, i32* %188, align 4
+  %190 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %11, i32 0, i32 0
+  %191 = load i32, i32* %190, align 4
+  %192 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %25, i32 0, i32 0
+  %193 = load i32, i32* %192, align 4
+  %194 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %11, i32 0, i32 0
+  %195 = load i32, i32* %194, align 4
+  %196 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %26, i32 0, i32 0
+  %197 = load i32, i32* %196, align 4
+  %198 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %11, i32 0, i32 0
+  %199 = load i32, i32* %198, align 4
+  %200 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %27, i32 0, i32 0
+  %201 = load i32, i32* %200, align 4
+  %202 = call i32 @ILVR_B4_SH(i32 %187, i32 %189, i32 %191, i32 %193, i32 %195, i32 %197, i32 %199, i32 %201, i32 %182, i32 %183, i32 %184, i32 %185)
+  %203 = load i32, i32* %40, align 4
+  %204 = load i32, i32* %41, align 4
+  %205 = load i32, i32* %42, align 4
+  %206 = load i32, i32* %43, align 4
+  %207 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %11, i32 0, i32 0
+  %208 = load i32, i32* %207, align 4
+  %209 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %24, i32 0, i32 0
+  %210 = load i32, i32* %209, align 4
+  %211 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %11, i32 0, i32 0
+  %212 = load i32, i32* %211, align 4
+  %213 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %25, i32 0, i32 0
+  %214 = load i32, i32* %213, align 4
+  %215 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %11, i32 0, i32 0
+  %216 = load i32, i32* %215, align 4
+  %217 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %26, i32 0, i32 0
+  %218 = load i32, i32* %217, align 4
+  %219 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %11, i32 0, i32 0
+  %220 = load i32, i32* %219, align 4
+  %221 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %27, i32 0, i32 0
+  %222 = load i32, i32* %221, align 4
+  %223 = call i32 @ILVL_B4_SH(i32 %208, i32 %210, i32 %212, i32 %214, i32 %216, i32 %218, i32 %220, i32 %222, i32 %203, i32 %204, i32 %205, i32 %206)
+  %224 = load i32, i32* %36, align 4
+  %225 = load i32, i32* %37, align 4
+  %226 = load i32, i32* %38, align 4
+  %227 = load i32, i32* %39, align 4
+  %228 = call i32 @SLLI_4V(i32 %224, i32 %225, i32 %226, i32 %227, i32 6)
+  %229 = load i32, i32* %40, align 4
+  %230 = load i32, i32* %41, align 4
+  %231 = load i32, i32* %42, align 4
+  %232 = load i32, i32* %43, align 4
+  %233 = call i32 @SLLI_4V(i32 %229, i32 %230, i32 %231, i32 %232, i32 6)
+  %234 = load i32, i32* %36, align 4
+  %235 = load i32, i32* %37, align 4
+  %236 = load i32, i32* %38, align 4
+  %237 = load i32, i32* %39, align 4
+  %238 = load i32*, i32** %8, align 8
+  %239 = load i32, i32* %9, align 4
+  %240 = call i32 @ST_SH4(i32 %234, i32 %235, i32 %236, i32 %237, i32* %238, i32 %239)
+  %241 = load i32, i32* %40, align 4
+  %242 = load i32, i32* %41, align 4
+  %243 = load i32, i32* %42, align 4
+  %244 = load i32, i32* %43, align 4
+  %245 = load i32*, i32** %8, align 8
+  %246 = getelementptr inbounds i32, i32* %245, i64 8
+  %247 = load i32, i32* %9, align 4
+  %248 = call i32 @ST_SH4(i32 %241, i32 %242, i32 %243, i32 %244, i32* %246, i32 %247)
+  %249 = load i32, i32* %9, align 4
+  %250 = mul nsw i32 4, %249
+  %251 = load i32*, i32** %8, align 8
+  %252 = sext i32 %250 to i64
+  %253 = getelementptr inbounds i32, i32* %251, i64 %252
+  store i32* %253, i32** %8, align 8
+  %254 = load i32, i32* %36, align 4
+  %255 = load i32, i32* %37, align 4
+  %256 = load i32, i32* %38, align 4
+  %257 = load i32, i32* %39, align 4
+  %258 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %11, i32 0, i32 0
+  %259 = load i32, i32* %258, align 4
+  %260 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %28, i32 0, i32 0
+  %261 = load i32, i32* %260, align 4
+  %262 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %11, i32 0, i32 0
+  %263 = load i32, i32* %262, align 4
+  %264 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %29, i32 0, i32 0
+  %265 = load i32, i32* %264, align 4
+  %266 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %11, i32 0, i32 0
+  %267 = load i32, i32* %266, align 4
+  %268 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %30, i32 0, i32 0
+  %269 = load i32, i32* %268, align 4
+  %270 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %11, i32 0, i32 0
+  %271 = load i32, i32* %270, align 4
+  %272 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %31, i32 0, i32 0
+  %273 = load i32, i32* %272, align 4
+  %274 = call i32 @ILVR_B4_SH(i32 %259, i32 %261, i32 %263, i32 %265, i32 %267, i32 %269, i32 %271, i32 %273, i32 %254, i32 %255, i32 %256, i32 %257)
+  %275 = load i32, i32* %40, align 4
+  %276 = load i32, i32* %41, align 4
+  %277 = load i32, i32* %42, align 4
+  %278 = load i32, i32* %43, align 4
+  %279 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %11, i32 0, i32 0
+  %280 = load i32, i32* %279, align 4
+  %281 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %28, i32 0, i32 0
+  %282 = load i32, i32* %281, align 4
+  %283 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %11, i32 0, i32 0
+  %284 = load i32, i32* %283, align 4
+  %285 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %29, i32 0, i32 0
+  %286 = load i32, i32* %285, align 4
+  %287 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %11, i32 0, i32 0
+  %288 = load i32, i32* %287, align 4
+  %289 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %30, i32 0, i32 0
+  %290 = load i32, i32* %289, align 4
+  %291 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %11, i32 0, i32 0
+  %292 = load i32, i32* %291, align 4
+  %293 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %31, i32 0, i32 0
+  %294 = load i32, i32* %293, align 4
+  %295 = call i32 @ILVL_B4_SH(i32 %280, i32 %282, i32 %284, i32 %286, i32 %288, i32 %290, i32 %292, i32 %294, i32 %275, i32 %276, i32 %277, i32 %278)
+  %296 = load i32, i32* %36, align 4
+  %297 = load i32, i32* %37, align 4
+  %298 = load i32, i32* %38, align 4
+  %299 = load i32, i32* %39, align 4
+  %300 = call i32 @SLLI_4V(i32 %296, i32 %297, i32 %298, i32 %299, i32 6)
+  %301 = load i32, i32* %40, align 4
+  %302 = load i32, i32* %41, align 4
+  %303 = load i32, i32* %42, align 4
+  %304 = load i32, i32* %43, align 4
+  %305 = call i32 @SLLI_4V(i32 %301, i32 %302, i32 %303, i32 %304, i32 6)
+  %306 = load i32, i32* %36, align 4
+  %307 = load i32, i32* %37, align 4
+  %308 = load i32, i32* %38, align 4
+  %309 = load i32, i32* %39, align 4
+  %310 = load i32*, i32** %8, align 8
+  %311 = load i32, i32* %9, align 4
+  %312 = call i32 @ST_SH4(i32 %306, i32 %307, i32 %308, i32 %309, i32* %310, i32 %311)
+  %313 = load i32, i32* %40, align 4
+  %314 = load i32, i32* %41, align 4
+  %315 = load i32, i32* %42, align 4
+  %316 = load i32, i32* %43, align 4
+  %317 = load i32*, i32** %8, align 8
+  %318 = getelementptr inbounds i32, i32* %317, i64 8
+  %319 = load i32, i32* %9, align 4
+  %320 = call i32 @ST_SH4(i32 %313, i32 %314, i32 %315, i32 %316, i32* %318, i32 %319)
+  %321 = load i32, i32* %9, align 4
+  %322 = mul nsw i32 4, %321
+  %323 = load i32*, i32** %8, align 8
+  %324 = sext i32 %322 to i64
+  %325 = getelementptr inbounds i32, i32* %323, i64 %324
+  store i32* %325, i32** %8, align 8
+  %326 = load i32, i32* %36, align 4
+  %327 = load i32, i32* %37, align 4
+  %328 = load i32, i32* %38, align 4
+  %329 = load i32, i32* %39, align 4
+  %330 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %11, i32 0, i32 0
+  %331 = load i32, i32* %330, align 4
+  %332 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %32, i32 0, i32 0
+  %333 = load i32, i32* %332, align 4
+  %334 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %11, i32 0, i32 0
+  %335 = load i32, i32* %334, align 4
+  %336 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %33, i32 0, i32 0
+  %337 = load i32, i32* %336, align 4
+  %338 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %11, i32 0, i32 0
+  %339 = load i32, i32* %338, align 4
+  %340 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %34, i32 0, i32 0
+  %341 = load i32, i32* %340, align 4
+  %342 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %11, i32 0, i32 0
+  %343 = load i32, i32* %342, align 4
+  %344 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %35, i32 0, i32 0
+  %345 = load i32, i32* %344, align 4
+  %346 = call i32 @ILVR_B4_SH(i32 %331, i32 %333, i32 %335, i32 %337, i32 %339, i32 %341, i32 %343, i32 %345, i32 %326, i32 %327, i32 %328, i32 %329)
+  %347 = load i32, i32* %40, align 4
+  %348 = load i32, i32* %41, align 4
+  %349 = load i32, i32* %42, align 4
+  %350 = load i32, i32* %43, align 4
+  %351 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %11, i32 0, i32 0
+  %352 = load i32, i32* %351, align 4
+  %353 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %32, i32 0, i32 0
+  %354 = load i32, i32* %353, align 4
+  %355 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %11, i32 0, i32 0
+  %356 = load i32, i32* %355, align 4
+  %357 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %33, i32 0, i32 0
+  %358 = load i32, i32* %357, align 4
+  %359 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %11, i32 0, i32 0
+  %360 = load i32, i32* %359, align 4
+  %361 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %34, i32 0, i32 0
+  %362 = load i32, i32* %361, align 4
+  %363 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %11, i32 0, i32 0
+  %364 = load i32, i32* %363, align 4
+  %365 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %35, i32 0, i32 0
+  %366 = load i32, i32* %365, align 4
+  %367 = call i32 @ILVL_B4_SH(i32 %352, i32 %354, i32 %356, i32 %358, i32 %360, i32 %362, i32 %364, i32 %366, i32 %347, i32 %348, i32 %349, i32 %350)
+  %368 = load i32, i32* %36, align 4
+  %369 = load i32, i32* %37, align 4
+  %370 = load i32, i32* %38, align 4
+  %371 = load i32, i32* %39, align 4
+  %372 = call i32 @SLLI_4V(i32 %368, i32 %369, i32 %370, i32 %371, i32 6)
+  %373 = load i32, i32* %40, align 4
+  %374 = load i32, i32* %41, align 4
+  %375 = load i32, i32* %42, align 4
+  %376 = load i32, i32* %43, align 4
+  %377 = call i32 @SLLI_4V(i32 %373, i32 %374, i32 %375, i32 %376, i32 6)
+  %378 = load i32, i32* %36, align 4
+  %379 = load i32, i32* %37, align 4
+  %380 = load i32, i32* %38, align 4
+  %381 = load i32, i32* %39, align 4
+  %382 = load i32*, i32** %8, align 8
+  %383 = load i32, i32* %9, align 4
+  %384 = call i32 @ST_SH4(i32 %378, i32 %379, i32 %380, i32 %381, i32* %382, i32 %383)
+  %385 = load i32, i32* %40, align 4
+  %386 = load i32, i32* %41, align 4
+  %387 = load i32, i32* %42, align 4
+  %388 = load i32, i32* %43, align 4
+  %389 = load i32*, i32** %8, align 8
+  %390 = getelementptr inbounds i32, i32* %389, i64 8
+  %391 = load i32, i32* %9, align 4
+  %392 = call i32 @ST_SH4(i32 %385, i32 %386, i32 %387, i32 %388, i32* %390, i32 %391)
+  br label %575
+
+393:                                              ; preds = %143
+  %394 = load i32, i32* %10, align 4
+  %395 = srem i32 %394, 8
+  %396 = icmp eq i32 0, %395
+  br i1 %396, label %397, label %574
+
+397:                                              ; preds = %393
+  %398 = load i32, i32* %10, align 4
+  %399 = ashr i32 %398, 3
+  store i32 %399, i32* %44, align 4
+  br label %400
+
+400:                                              ; preds = %404, %397
+  %401 = load i32, i32* %44, align 4
+  %402 = add nsw i32 %401, -1
+  store i32 %402, i32* %44, align 4
+  %403 = icmp ne i32 %401, 0
+  br i1 %403, label %404, label %573
+
+404:                                              ; preds = %400
+  %405 = load i32*, i32** %6, align 8
+  %406 = load i32, i32* %7, align 4
+  %407 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %45, i32 0, i32 0
+  %408 = load i32, i32* %407, align 4
+  %409 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %46, i32 0, i32 0
+  %410 = load i32, i32* %409, align 4
+  %411 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %47, i32 0, i32 0
+  %412 = load i32, i32* %411, align 4
+  %413 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %48, i32 0, i32 0
+  %414 = load i32, i32* %413, align 4
+  %415 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %49, i32 0, i32 0
+  %416 = load i32, i32* %415, align 4
+  %417 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %50, i32 0, i32 0
+  %418 = load i32, i32* %417, align 4
+  %419 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %51, i32 0, i32 0
+  %420 = load i32, i32* %419, align 4
+  %421 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %52, i32 0, i32 0
+  %422 = load i32, i32* %421, align 4
+  %423 = call i32 @LD_SB8(i32* %405, i32 %406, i32 %408, i32 %410, i32 %412, i32 %414, i32 %416, i32 %418, i32 %420, i32 %422)
+  %424 = load i32, i32* %7, align 4
+  %425 = mul nsw i32 8, %424
+  %426 = load i32*, i32** %6, align 8
+  %427 = sext i32 %425 to i64
+  %428 = getelementptr inbounds i32, i32* %426, i64 %427
+  store i32* %428, i32** %6, align 8
+  %429 = load i32, i32* %53, align 4
+  %430 = load i32, i32* %54, align 4
+  %431 = load i32, i32* %55, align 4
+  %432 = load i32, i32* %56, align 4
+  %433 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %11, i32 0, i32 0
+  %434 = load i32, i32* %433, align 4
+  %435 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %45, i32 0, i32 0
+  %436 = load i32, i32* %435, align 4
+  %437 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %11, i32 0, i32 0
+  %438 = load i32, i32* %437, align 4
+  %439 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %46, i32 0, i32 0
+  %440 = load i32, i32* %439, align 4
+  %441 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %11, i32 0, i32 0
+  %442 = load i32, i32* %441, align 4
+  %443 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %47, i32 0, i32 0
+  %444 = load i32, i32* %443, align 4
+  %445 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %11, i32 0, i32 0
+  %446 = load i32, i32* %445, align 4
+  %447 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %48, i32 0, i32 0
+  %448 = load i32, i32* %447, align 4
+  %449 = call i32 @ILVR_B4_SH(i32 %434, i32 %436, i32 %438, i32 %440, i32 %442, i32 %444, i32 %446, i32 %448, i32 %429, i32 %430, i32 %431, i32 %432)
+  %450 = load i32, i32* %57, align 4
+  %451 = load i32, i32* %58, align 4
+  %452 = load i32, i32* %59, align 4
+  %453 = load i32, i32* %60, align 4
+  %454 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %11, i32 0, i32 0
+  %455 = load i32, i32* %454, align 4
+  %456 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %45, i32 0, i32 0
+  %457 = load i32, i32* %456, align 4
+  %458 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %11, i32 0, i32 0
+  %459 = load i32, i32* %458, align 4
+  %460 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %46, i32 0, i32 0
+  %461 = load i32, i32* %460, align 4
+  %462 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %11, i32 0, i32 0
+  %463 = load i32, i32* %462, align 4
+  %464 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %47, i32 0, i32 0
+  %465 = load i32, i32* %464, align 4
+  %466 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %11, i32 0, i32 0
+  %467 = load i32, i32* %466, align 4
+  %468 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %48, i32 0, i32 0
+  %469 = load i32, i32* %468, align 4
+  %470 = call i32 @ILVL_B4_SH(i32 %455, i32 %457, i32 %459, i32 %461, i32 %463, i32 %465, i32 %467, i32 %469, i32 %450, i32 %451, i32 %452, i32 %453)
+  %471 = load i32, i32* %53, align 4
+  %472 = load i32, i32* %54, align 4
+  %473 = load i32, i32* %55, align 4
+  %474 = load i32, i32* %56, align 4
+  %475 = call i32 @SLLI_4V(i32 %471, i32 %472, i32 %473, i32 %474, i32 6)
+  %476 = load i32, i32* %57, align 4
+  %477 = load i32, i32* %58, align 4
+  %478 = load i32, i32* %59, align 4
+  %479 = load i32, i32* %60, align 4
+  %480 = call i32 @SLLI_4V(i32 %476, i32 %477, i32 %478, i32 %479, i32 6)
+  %481 = load i32, i32* %53, align 4
+  %482 = load i32, i32* %54, align 4
+  %483 = load i32, i32* %55, align 4
+  %484 = load i32, i32* %56, align 4
+  %485 = load i32*, i32** %8, align 8
+  %486 = load i32, i32* %9, align 4
+  %487 = call i32 @ST_SH4(i32 %481, i32 %482, i32 %483, i32 %484, i32* %485, i32 %486)
+  %488 = load i32, i32* %57, align 4
+  %489 = load i32, i32* %58, align 4
+  %490 = load i32, i32* %59, align 4
+  %491 = load i32, i32* %60, align 4
+  %492 = load i32*, i32** %8, align 8
+  %493 = getelementptr inbounds i32, i32* %492, i64 8
+  %494 = load i32, i32* %9, align 4
+  %495 = call i32 @ST_SH4(i32 %488, i32 %489, i32 %490, i32 %491, i32* %493, i32 %494)
+  %496 = load i32, i32* %9, align 4
+  %497 = mul nsw i32 4, %496
+  %498 = load i32*, i32** %8, align 8
+  %499 = sext i32 %497 to i64
+  %500 = getelementptr inbounds i32, i32* %498, i64 %499
+  store i32* %500, i32** %8, align 8
+  %501 = load i32, i32* %53, align 4
+  %502 = load i32, i32* %54, align 4
+  %503 = load i32, i32* %55, align 4
+  %504 = load i32, i32* %56, align 4
+  %505 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %11, i32 0, i32 0
+  %506 = load i32, i32* %505, align 4
+  %507 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %49, i32 0, i32 0
+  %508 = load i32, i32* %507, align 4
+  %509 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %11, i32 0, i32 0
+  %510 = load i32, i32* %509, align 4
+  %511 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %50, i32 0, i32 0
+  %512 = load i32, i32* %511, align 4
+  %513 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %11, i32 0, i32 0
+  %514 = load i32, i32* %513, align 4
+  %515 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %51, i32 0, i32 0
+  %516 = load i32, i32* %515, align 4
+  %517 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %11, i32 0, i32 0
+  %518 = load i32, i32* %517, align 4
+  %519 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %52, i32 0, i32 0
+  %520 = load i32, i32* %519, align 4
+  %521 = call i32 @ILVR_B4_SH(i32 %506, i32 %508, i32 %510, i32 %512, i32 %514, i32 %516, i32 %518, i32 %520, i32 %501, i32 %502, i32 %503, i32 %504)
+  %522 = load i32, i32* %57, align 4
+  %523 = load i32, i32* %58, align 4
+  %524 = load i32, i32* %59, align 4
+  %525 = load i32, i32* %60, align 4
+  %526 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %11, i32 0, i32 0
+  %527 = load i32, i32* %526, align 4
+  %528 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %49, i32 0, i32 0
+  %529 = load i32, i32* %528, align 4
+  %530 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %11, i32 0, i32 0
+  %531 = load i32, i32* %530, align 4
+  %532 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %50, i32 0, i32 0
+  %533 = load i32, i32* %532, align 4
+  %534 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %11, i32 0, i32 0
+  %535 = load i32, i32* %534, align 4
+  %536 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %51, i32 0, i32 0
+  %537 = load i32, i32* %536, align 4
+  %538 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %11, i32 0, i32 0
+  %539 = load i32, i32* %538, align 4
+  %540 = getelementptr inbounds %struct.TYPE_30__, %struct.TYPE_30__* %52, i32 0, i32 0
+  %541 = load i32, i32* %540, align 4
+  %542 = call i32 @ILVL_B4_SH(i32 %527, i32 %529, i32 %531, i32 %533, i32 %535, i32 %537, i32 %539, i32 %541, i32 %522, i32 %523, i32 %524, i32 %525)
+  %543 = load i32, i32* %53, align 4
+  %544 = load i32, i32* %54, align 4
+  %545 = load i32, i32* %55, align 4
+  %546 = load i32, i32* %56, align 4
+  %547 = call i32 @SLLI_4V(i32 %543, i32 %544, i32 %545, i32 %546, i32 6)
+  %548 = load i32, i32* %57, align 4
+  %549 = load i32, i32* %58, align 4
+  %550 = load i32, i32* %59, align 4
+  %551 = load i32, i32* %60, align 4
+  %552 = call i32 @SLLI_4V(i32 %548, i32 %549, i32 %550, i32 %551, i32 6)
+  %553 = load i32, i32* %53, align 4
+  %554 = load i32, i32* %54, align 4
+  %555 = load i32, i32* %55, align 4
+  %556 = load i32, i32* %56, align 4
+  %557 = load i32*, i32** %8, align 8
+  %558 = load i32, i32* %9, align 4
+  %559 = call i32 @ST_SH4(i32 %553, i32 %554, i32 %555, i32 %556, i32* %557, i32 %558)
+  %560 = load i32, i32* %57, align 4
+  %561 = load i32, i32* %58, align 4
+  %562 = load i32, i32* %59, align 4
+  %563 = load i32, i32* %60, align 4
+  %564 = load i32*, i32** %8, align 8
+  %565 = getelementptr inbounds i32, i32* %564, i64 8
+  %566 = load i32, i32* %9, align 4
+  %567 = call i32 @ST_SH4(i32 %560, i32 %561, i32 %562, i32 %563, i32* %565, i32 %566)
+  %568 = load i32, i32* %9, align 4
+  %569 = mul nsw i32 4, %568
+  %570 = load i32*, i32** %8, align 8
+  %571 = sext i32 %569 to i64
+  %572 = getelementptr inbounds i32, i32* %570, i64 %571
+  store i32* %572, i32** %8, align 8
+  br label %400
+
+573:                                              ; preds = %400
+  br label %574
+
+574:                                              ; preds = %573, %393
+  br label %575
+
+575:                                              ; preds = %574, %146
+  br label %576
+
+576:                                              ; preds = %575, %64
+  ret void
+}
+
+; Function Attrs: argmemonly nounwind willreturn
+declare void @llvm.memset.p0i8.i64(i8* nocapture writeonly, i8, i64, i1 immarg) #1
+
+declare dso_local i32 @LD_SB4(i32*, i32, i32, i32, i32, i32) #2
+
+declare dso_local i32 @ILVR_B4_SH(i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32) #2
+
+declare dso_local i32 @ILVL_B4_SH(i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32) #2
+
+declare dso_local i32 @SLLI_4V(i32, i32, i32, i32, i32) #2
+
+declare dso_local i32 @ST_SH4(i32, i32, i32, i32, i32*, i32) #2
+
+declare dso_local i32 @LD_SB8(i32*, i32, i32, i32, i32, i32, i32, i32, i32, i32) #2
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { argmemonly nounwind willreturn }
+attributes #2 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

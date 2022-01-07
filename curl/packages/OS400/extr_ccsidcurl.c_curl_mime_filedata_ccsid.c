@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  curl_mimepart ;
-typedef  int /*<<< orphan*/  CURLcode ;
 
-/* Variables and functions */
- int /*<<< orphan*/  curl_mime_filedata ; 
- int /*<<< orphan*/  mime_string_call (int /*<<< orphan*/ *,char const*,unsigned int,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int curl_mimepart ;
+typedef int CURLcode ;
+
+
+ int curl_mime_filedata ;
+ int mime_string_call (int *,char const*,unsigned int,int ) ;
 
 CURLcode
 curl_mime_filedata_ccsid(curl_mimepart *part,

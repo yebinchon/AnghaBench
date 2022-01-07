@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {int /*<<< orphan*/  ele; TYPE_1__* level; } ;
-typedef  TYPE_2__ zskiplistNode ;
+
+
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_10__ {int ele; TYPE_1__* level; } ;
+typedef TYPE_2__ zskiplistNode ;
 struct TYPE_11__ {int level; TYPE_2__* header; } ;
-typedef  TYPE_3__ zskiplist ;
-typedef  int /*<<< orphan*/  dict ;
+typedef TYPE_3__ zskiplist ;
+typedef int dict ;
 struct TYPE_9__ {unsigned long span; TYPE_2__* forward; } ;
 
-/* Variables and functions */
- int ZSKIPLIST_MAXLEVEL ; 
- int /*<<< orphan*/  dictDelete (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  zslDeleteNode (TYPE_3__*,TYPE_2__*,TYPE_2__**) ; 
- int /*<<< orphan*/  zslFreeNode (TYPE_2__*) ; 
+
+ int ZSKIPLIST_MAXLEVEL ;
+ int dictDelete (int *,int ) ;
+ int zslDeleteNode (TYPE_3__*,TYPE_2__*,TYPE_2__**) ;
+ int zslFreeNode (TYPE_2__*) ;
 
 unsigned long zslDeleteRangeByRank(zskiplist *zsl, unsigned int start, unsigned int end, dict *dict) {
     zskiplistNode *update[ZSKIPLIST_MAXLEVEL], *x;

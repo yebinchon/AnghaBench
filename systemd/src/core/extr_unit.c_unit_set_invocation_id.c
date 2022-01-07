@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sd_id128_t ;
-struct TYPE_8__ {scalar_t__* invocation_id_string; int /*<<< orphan*/  invocation_id; TYPE_1__* manager; } ;
-typedef  TYPE_2__ Unit ;
-struct TYPE_7__ {int /*<<< orphan*/  units_by_invocation_id; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SD_ID128_NULL ; 
- int /*<<< orphan*/  assert (TYPE_2__*) ; 
- int hashmap_ensure_allocated (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int hashmap_put (int /*<<< orphan*/ ,int /*<<< orphan*/ *,TYPE_2__*) ; 
- int /*<<< orphan*/  hashmap_remove_value (int /*<<< orphan*/ ,int /*<<< orphan*/ *,TYPE_2__*) ; 
- int /*<<< orphan*/  id128_hash_ops ; 
- scalar_t__ sd_id128_equal (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ sd_id128_is_null (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sd_id128_to_string (int /*<<< orphan*/ ,scalar_t__*) ; 
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int sd_id128_t ;
+struct TYPE_8__ {scalar_t__* invocation_id_string; int invocation_id; TYPE_1__* manager; } ;
+typedef TYPE_2__ Unit ;
+struct TYPE_7__ {int units_by_invocation_id; } ;
+
+
+ int SD_ID128_NULL ;
+ int assert (TYPE_2__*) ;
+ int hashmap_ensure_allocated (int *,int *) ;
+ int hashmap_put (int ,int *,TYPE_2__*) ;
+ int hashmap_remove_value (int ,int *,TYPE_2__*) ;
+ int id128_hash_ops ;
+ scalar_t__ sd_id128_equal (int ,int ) ;
+ scalar_t__ sd_id128_is_null (int ) ;
+ int sd_id128_to_string (int ,scalar_t__*) ;
 
 int unit_set_invocation_id(Unit *u, sd_id128_t id) {
         int r;
 
         assert(u);
 
-        /* Set the invocation ID for this unit. If we cannot, this will not roll back, but reset the whole thing. */
+
 
         if (sd_id128_equal(u->invocation_id, id))
                 return 0;

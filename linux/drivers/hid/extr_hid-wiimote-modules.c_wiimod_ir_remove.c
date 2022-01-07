@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct wiimote_data {int /*<<< orphan*/ * ir; } ;
+
+
+
+
+struct wiimote_data {int * ir; } ;
 struct wiimod_ops {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  input_unregister_device (int /*<<< orphan*/ *) ; 
+
+ int input_unregister_device (int *) ;
 
 __attribute__((used)) static void wiimod_ir_remove(const struct wiimod_ops *ops,
-			     struct wiimote_data *wdata)
+        struct wiimote_data *wdata)
 {
-	if (!wdata->ir)
-		return;
+ if (!wdata->ir)
+  return;
 
-	input_unregister_device(wdata->ir);
-	wdata->ir = NULL;
+ input_unregister_device(wdata->ir);
+ wdata->ir = ((void*)0);
 }

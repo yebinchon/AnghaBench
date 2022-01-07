@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lsm_file ;
-struct TYPE_3__ {scalar_t__ shmfd; int nShm; int /*<<< orphan*/  pEnv; scalar_t__* apShm; } ;
-typedef  TYPE_1__ PosixFile ;
 
-/* Variables and functions */
- int LSM_OK ; 
- int /*<<< orphan*/  LSM_SHM_CHUNK_SIZE ; 
- int /*<<< orphan*/  close (scalar_t__) ; 
- int /*<<< orphan*/  lsmFree (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  munmap (scalar_t__,int /*<<< orphan*/ ) ; 
- char* posixShmFile (TYPE_1__*) ; 
- int /*<<< orphan*/  unlink (char*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int lsm_file ;
+struct TYPE_3__ {scalar_t__ shmfd; int nShm; int pEnv; scalar_t__* apShm; } ;
+typedef TYPE_1__ PosixFile ;
+
+
+ int LSM_OK ;
+ int LSM_SHM_CHUNK_SIZE ;
+ int close (scalar_t__) ;
+ int lsmFree (int ,char*) ;
+ int munmap (scalar_t__,int ) ;
+ char* posixShmFile (TYPE_1__*) ;
+ int unlink (char*) ;
 
 __attribute__((used)) static int lsmPosixOsShmUnmap(lsm_file *pFile, int bDelete){
   PosixFile *p = (PosixFile *)pFile;

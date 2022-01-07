@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_7__ ;
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  gboolean ;
-struct TYPE_17__ {int /*<<< orphan*/  job_mgr; int /*<<< orphan*/  repo_mgr; } ;
+
+
+typedef struct TYPE_17__ TYPE_7__ ;
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+typedef int gboolean ;
+struct TYPE_17__ {int job_mgr; int repo_mgr; } ;
 struct TYPE_16__ {TYPE_1__* priv; } ;
-struct TYPE_15__ {int protocol_version; int /*<<< orphan*/  repo_name; int /*<<< orphan*/  use_fileserver_port; int /*<<< orphan*/  state; } ;
+struct TYPE_15__ {int protocol_version; int repo_name; int use_fileserver_port; int state; } ;
 struct TYPE_14__ {char const* name; } ;
-struct TYPE_13__ {int /*<<< orphan*/  upload_tasks; } ;
-typedef  TYPE_2__ SeafRepo ;
-typedef  TYPE_3__ HttpTxTask ;
-typedef  TYPE_4__ HttpTxManager ;
-typedef  int /*<<< orphan*/  GError ;
+struct TYPE_13__ {int upload_tasks; } ;
+typedef TYPE_2__ SeafRepo ;
+typedef TYPE_3__ HttpTxTask ;
+typedef TYPE_4__ HttpTxManager ;
+typedef int GError ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  HTTP_TASK_STATE_NORMAL ; 
- int /*<<< orphan*/  HTTP_TASK_TYPE_UPLOAD ; 
- int /*<<< orphan*/  SEAFILE_DOMAIN ; 
- int /*<<< orphan*/  SEAF_ERR_BAD_ARGS ; 
- int /*<<< orphan*/  clean_tasks_for_repo (TYPE_4__*,char const*) ; 
- int /*<<< orphan*/  g_hash_table_insert (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_3__*) ; 
- int /*<<< orphan*/  g_hash_table_remove (int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  g_set_error (int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  g_strdup (char const*) ; 
- TYPE_3__* http_tx_task_new (TYPE_4__*,char const*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  http_upload_done ; 
- int /*<<< orphan*/  http_upload_thread ; 
- TYPE_7__* seaf ; 
- scalar_t__ seaf_job_manager_schedule_job (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_3__*) ; 
- TYPE_2__* seaf_repo_manager_get_repo (int /*<<< orphan*/ ,char const*) ; 
+
+ int FALSE ;
+ int HTTP_TASK_STATE_NORMAL ;
+ int HTTP_TASK_TYPE_UPLOAD ;
+ int SEAFILE_DOMAIN ;
+ int SEAF_ERR_BAD_ARGS ;
+ int clean_tasks_for_repo (TYPE_4__*,char const*) ;
+ int g_hash_table_insert (int ,int ,TYPE_3__*) ;
+ int g_hash_table_remove (int ,char const*) ;
+ int g_set_error (int **,int ,int ,char*) ;
+ int g_strdup (char const*) ;
+ TYPE_3__* http_tx_task_new (TYPE_4__*,char const*,int,int ,int ,char const*,char const*,int *,int *) ;
+ int http_upload_done ;
+ int http_upload_thread ;
+ TYPE_7__* seaf ;
+ scalar_t__ seaf_job_manager_schedule_job (int ,int ,int ,TYPE_3__*) ;
+ TYPE_2__* seaf_repo_manager_get_repo (int ,char const*) ;
 
 int
 http_tx_manager_add_upload (HttpTxManager *manager,
@@ -72,7 +72,7 @@ http_tx_manager_add_upload (HttpTxManager *manager,
 
     task = http_tx_task_new (manager, repo_id, repo_version,
                              HTTP_TASK_TYPE_UPLOAD, FALSE,
-                             host, token, NULL, NULL);
+                             host, token, ((void*)0), ((void*)0));
 
     task->protocol_version = protocol_version;
 

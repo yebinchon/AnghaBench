@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ time_t ;
-typedef  int /*<<< orphan*/  forever ;
-typedef  int FT_F26Dot6 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ExecuteTest (char*) ; 
- int /*<<< orphan*/  FindFonts (char**,char**) ; 
- char** calloc (size_t,int) ; 
- int check_outlines ; 
- char** default_dir_list ; 
- char** default_ext_list ; 
- unsigned int error_count ; 
- double error_fraction ; 
- int /*<<< orphan*/  exit (int) ; 
- int font_size ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  free (char**) ; 
- int /*<<< orphan*/  mkdir (char*,int) ; 
- int nohints ; 
- int rasterize ; 
- char* results_dir ; 
- int /*<<< orphan*/  srandom (unsigned int) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  stdout ; 
- scalar_t__ strcmp (char*,char*) ; 
- int strtod (char*,char**) ; 
- scalar_t__ strtoul (char*,char**,int) ; 
- int /*<<< orphan*/  time (scalar_t__*) ; 
- int /*<<< orphan*/  usage (int /*<<< orphan*/ ,char*) ; 
+
+
+
+typedef scalar_t__ time_t ;
+typedef int forever ;
+typedef int FT_F26Dot6 ;
+
+
+ int ExecuteTest (char*) ;
+ int FindFonts (char**,char**) ;
+ char** calloc (size_t,int) ;
+ int check_outlines ;
+ char** default_dir_list ;
+ char** default_ext_list ;
+ unsigned int error_count ;
+ double error_fraction ;
+ int exit (int) ;
+ int font_size ;
+ int fprintf (int ,char*,...) ;
+ int free (char**) ;
+ int mkdir (char*,int) ;
+ int nohints ;
+ int rasterize ;
+ char* results_dir ;
+ int srandom (unsigned int) ;
+ int stderr ;
+ int stdout ;
+ scalar_t__ strcmp (char*,char*) ;
+ int strtod (char*,char**) ;
+ scalar_t__ strtoul (char*,char**,int) ;
+ int time (scalar_t__*) ;
+ int usage (int ,char*) ;
 
 int
-  main( int     argc,
-        char**  argv )
+  main( int argc,
+        char** argv )
   {
-    char    **dirs, **exts;
-    int     dcnt = 0, ecnt = 0, rset = false, allexts = false;
-    int     i;
-    time_t  now;
-    char*   testfile = NULL;
+    char **dirs, **exts;
+    int dcnt = 0, ecnt = 0, rset = 0, allexts = 0;
+    int i;
+    time_t now;
+    char* testfile = ((void*)0);
 
 
     dirs = calloc( (size_t)( argc + 1 ), sizeof ( char ** ) );
@@ -56,24 +56,24 @@ int
 
     for ( i = 1; i < argc; i++ )
     {
-      char*  pt = argv[i];
-      char*  end;
+      char* pt = argv[i];
+      char* end;
 
 
       if ( pt[0] == '-' && pt[1] == '-' )
         pt++;
 
       if ( strcmp( pt, "-all" ) == 0 )
-        allexts = true;
+        allexts = 1;
       else if ( strcmp( pt, "-check-outlines" ) == 0 )
-        check_outlines = true;
+        check_outlines = 1;
       else if ( strcmp( pt, "-dir" ) == 0 )
         dirs[dcnt++] = argv[++i];
       else if ( strcmp( pt, "-error-count" ) == 0 )
       {
         if ( !rset )
           error_fraction = 0.0;
-        rset = true;
+        rset = 1;
         error_count = (unsigned int)strtoul( argv[++i], &end, 10 );
         if ( *end != '\0' )
         {
@@ -85,7 +85,7 @@ int
       {
         if ( !rset )
           error_count = 0;
-        rset = true;
+        rset = 1;
         error_fraction = strtod( argv[++i], &end );
         if ( *end != '\0' )
         {
@@ -106,9 +106,9 @@ int
         exit( 0 );
       }
       else if ( strcmp( pt, "-nohints" ) == 0 )
-        nohints = true;
+        nohints = 1;
       else if ( strcmp( pt, "-rasterize" ) == 0 )
-        rasterize = true;
+        rasterize = 1;
       else if ( strcmp( pt, "-results" ) == 0 )
         results_dir = argv[++i];
       else if ( strcmp( pt, "-size" ) == 0 )
@@ -132,7 +132,7 @@ int
     if ( allexts )
     {
       free( exts );
-      exts = NULL;
+      exts = ((void*)0);
     }
     else if ( ecnt == 0 )
     {
@@ -147,7 +147,7 @@ int
     }
 
     if ( testfile )
-      ExecuteTest( testfile );         /* This should never return */
+      ExecuteTest( testfile );
 
     time( &now );
     srandom( (unsigned int)now );

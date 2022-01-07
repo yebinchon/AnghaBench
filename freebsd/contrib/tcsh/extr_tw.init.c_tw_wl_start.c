@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  DIR ;
-typedef  int /*<<< orphan*/  Char ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SETDIR (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  const* tw_word ; 
+
+
+
+typedef int DIR ;
+typedef int Char ;
+
+
+ int SETDIR (int *) ;
+ int const* tw_word ;
 
 void
 tw_wl_start(DIR *dfd, const Char *pat)

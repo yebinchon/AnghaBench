@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct table {scalar_t__ num_rows; scalar_t__ num_cols; TYPE_1__* columns; } ;
-typedef  int /*<<< orphan*/  class_method ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  scalar_t__ UINT ;
-struct TYPE_2__ {int type; int /*<<< orphan*/  name; } ;
-typedef  scalar_t__ LONGLONG ;
-typedef  scalar_t__ INT_PTR ;
-typedef  int /*<<< orphan*/  HRESULT ;
+typedef int class_method ;
+typedef int WCHAR ;
+typedef scalar_t__ UINT ;
+struct TYPE_2__ {int type; int name; } ;
+typedef scalar_t__ LONGLONG ;
+typedef scalar_t__ INT_PTR ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- int COL_FLAG_METHOD ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  WBEM_E_INVALID_METHOD ; 
- int /*<<< orphan*/  get_value (struct table const*,scalar_t__,scalar_t__,scalar_t__*) ; 
- int /*<<< orphan*/  strcmpW (int /*<<< orphan*/ ,int /*<<< orphan*/  const*) ; 
+
+ int COL_FLAG_METHOD ;
+ int S_OK ;
+ int WBEM_E_INVALID_METHOD ;
+ int get_value (struct table const*,scalar_t__,scalar_t__,scalar_t__*) ;
+ int strcmpW (int ,int const*) ;
 
 HRESULT get_method( const struct table *table, const WCHAR *name, class_method **func )
 {

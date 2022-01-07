@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {scalar_t__ keysym; int /*<<< orphan*/  string; } ;
-typedef  scalar_t__ KeySym ;
 
-/* Variables and functions */
- scalar_t__ NoSymbol ; 
- TYPE_1__* StringToKeysym ; 
- scalar_t__ strcmp (int /*<<< orphan*/ ,char const*) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {scalar_t__ keysym; int string; } ;
+typedef scalar_t__ KeySym ;
+
+
+ scalar_t__ NoSymbol ;
+ TYPE_1__* StringToKeysym ;
+ scalar_t__ strcmp (int ,char const*) ;
 
 KeySym
 XStringToKeysym(const char *str)
 {
-	int i;
-	for (i = 0; StringToKeysym[i].keysym != NoSymbol
-	     && strcmp(StringToKeysym[i].string, str); i++);
-	return StringToKeysym[i].keysym;
+ int i;
+ for (i = 0; StringToKeysym[i].keysym != NoSymbol
+      && strcmp(StringToKeysym[i].string, str); i++);
+ return StringToKeysym[i].keysym;
 }

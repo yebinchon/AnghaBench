@@ -1,97 +1,97 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  value; int /*<<< orphan*/  key; struct TYPE_4__* next; } ;
-typedef  TYPE_1__ epair_t ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int value; int key; struct TYPE_4__* next; } ;
+typedef TYPE_1__ epair_t ;
 struct TYPE_5__ {TYPE_1__* epairs; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Error (char*) ; 
- int MAX_MAP_ENTSTRING ; 
- int /*<<< orphan*/  Q_stricmp (char const*,char*) ; 
- int /*<<< orphan*/  StripTrailing (char*) ; 
- char* ValueForKey (TYPE_2__*,char*) ; 
- char* bspEntData ; 
- int bspEntDataSize ; 
- TYPE_2__* entities ; 
- int numBSPEntities ; 
- int numEntities ; 
- int /*<<< orphan*/  sprintf (char*,char*,char*,char*) ; 
- int /*<<< orphan*/  strcat (char*,char*) ; 
- int /*<<< orphan*/  strcpy (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strlen (char*) ; 
+
+ int Error (char*) ;
+ int MAX_MAP_ENTSTRING ;
+ int Q_stricmp (char const*,char*) ;
+ int StripTrailing (char*) ;
+ char* ValueForKey (TYPE_2__*,char*) ;
+ char* bspEntData ;
+ int bspEntDataSize ;
+ TYPE_2__* entities ;
+ int numBSPEntities ;
+ int numEntities ;
+ int sprintf (char*,char*,char*,char*) ;
+ int strcat (char*,char*) ;
+ int strcpy (char*,int ) ;
+ int strlen (char*) ;
 
 void UnparseEntities( void ){
-	int i;
-	char        *buf, *end;
-	epair_t     *ep;
-	char line[ 2048 ];
-	char key[ 1024 ], value[ 1024 ];
-	const char  *value2;
+ int i;
+ char *buf, *end;
+ epair_t *ep;
+ char line[ 2048 ];
+ char key[ 1024 ], value[ 1024 ];
+ const char *value2;
 
 
-	/* setup */
-	buf = bspEntData;
-	end = buf;
-	*end = 0;
 
-	/* run through entity list */
-	for ( i = 0; i < numBSPEntities && i < numEntities; i++ )
-	{
-		/* get epair */
-		ep = entities[ i ].epairs;
-		if ( ep == NULL ) {
-			continue;   /* ent got removed */
+ buf = bspEntData;
+ end = buf;
+ *end = 0;
 
-		}
-		/* ydnar: certain entities get stripped from bsp file */
-		value2 = ValueForKey( &entities[ i ], "classname" );
-		if ( !Q_stricmp( value2, "misc_model" ) ||
-			 !Q_stricmp( value2, "_decal" ) ||
-			 !Q_stricmp( value2, "_skybox" ) ) {
-			continue;
-		}
 
-		/* add beginning brace */
-		strcat( end, "{\n" );
-		end += 2;
+ for ( i = 0; i < numBSPEntities && i < numEntities; i++ )
+ {
 
-		/* walk epair list */
-		for ( ep = entities[ i ].epairs; ep != NULL; ep = ep->next )
-		{
-			/* copy and clean */
-			strcpy( key, ep->key );
-			StripTrailing( key );
-			strcpy( value, ep->value );
-			StripTrailing( value );
+  ep = entities[ i ].epairs;
+  if ( ep == ((void*)0) ) {
+   continue;
 
-			/* add to buffer */
-			sprintf( line, "\"%s\" \"%s\"\n", key, value );
-			strcat( end, line );
-			end += strlen( line );
-		}
+  }
 
-		/* add trailing brace */
-		strcat( end,"}\n" );
-		end += 2;
+  value2 = ValueForKey( &entities[ i ], "classname" );
+  if ( !Q_stricmp( value2, "misc_model" ) ||
+    !Q_stricmp( value2, "_decal" ) ||
+    !Q_stricmp( value2, "_skybox" ) ) {
+   continue;
+  }
 
-		/* check for overflow */
-		if ( end > buf + MAX_MAP_ENTSTRING ) {
-			Error( "Entity text too long" );
-		}
-	}
 
-	/* set size */
-	bspEntDataSize = end - buf + 1;
+  strcat( end, "{\n" );
+  end += 2;
+
+
+  for ( ep = entities[ i ].epairs; ep != ((void*)0); ep = ep->next )
+  {
+
+   strcpy( key, ep->key );
+   StripTrailing( key );
+   strcpy( value, ep->value );
+   StripTrailing( value );
+
+
+   sprintf( line, "\"%s\" \"%s\"\n", key, value );
+   strcat( end, line );
+   end += strlen( line );
+  }
+
+
+  strcat( end,"}\n" );
+  end += 2;
+
+
+  if ( end > buf + MAX_MAP_ENTSTRING ) {
+   Error( "Entity text too long" );
+  }
+ }
+
+
+ bspEntDataSize = end - buf + 1;
 }

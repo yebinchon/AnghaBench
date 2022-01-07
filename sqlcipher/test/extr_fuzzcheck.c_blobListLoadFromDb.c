@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_stmt ;
-typedef  int /*<<< orphan*/  sqlite3 ;
-struct TYPE_4__ {int sz; struct TYPE_4__* pNext; scalar_t__* a; int /*<<< orphan*/  seq; int /*<<< orphan*/  id; } ;
-typedef  TYPE_1__ Blob ;
 
-/* Variables and functions */
- scalar_t__ SQLITE_ROW ; 
- int /*<<< orphan*/  fatalError (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (scalar_t__*,int /*<<< orphan*/ ,int) ; 
- TYPE_1__* safe_realloc (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  sqlite3_column_blob (int /*<<< orphan*/ *,int) ; 
- int sqlite3_column_bytes (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  sqlite3_column_int (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_errmsg (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_finalize (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_free (char*) ; 
- char* sqlite3_mprintf (char*,char const*,...) ; 
- int sqlite3_prepare_v2 (int /*<<< orphan*/ *,char*,int,int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
- scalar_t__ sqlite3_step (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int sqlite3_stmt ;
+typedef int sqlite3 ;
+struct TYPE_4__ {int sz; struct TYPE_4__* pNext; scalar_t__* a; int seq; int id; } ;
+typedef TYPE_1__ Blob ;
+
+
+ scalar_t__ SQLITE_ROW ;
+ int fatalError (char*,int ) ;
+ int memcpy (scalar_t__*,int ,int) ;
+ TYPE_1__* safe_realloc (int ,int) ;
+ int sqlite3_column_blob (int *,int) ;
+ int sqlite3_column_bytes (int *,int) ;
+ int sqlite3_column_int (int *,int ) ;
+ int sqlite3_errmsg (int *) ;
+ int sqlite3_finalize (int *) ;
+ int sqlite3_free (char*) ;
+ char* sqlite3_mprintf (char*,char const*,...) ;
+ int sqlite3_prepare_v2 (int *,char*,int,int **,int ) ;
+ scalar_t__ sqlite3_step (int *) ;
 
 __attribute__((used)) static void blobListLoadFromDb(
-  sqlite3 *db,             /* Read from this database */
-  const char *zSql,        /* Query used to extract the blobs */
-  int onlyId,              /* Only load where id is this value */
-  int *pN,                 /* OUT: Write number of blobs loaded here */
-  Blob **ppList            /* OUT: Write the head of the blob list here */
+  sqlite3 *db,
+  const char *zSql,
+  int onlyId,
+  int *pN,
+  Blob **ppList
 ){
   Blob head;
   Blob *p;

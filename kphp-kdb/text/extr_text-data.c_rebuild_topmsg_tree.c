@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_7__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_11__ TYPE_7__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_8__ {void* topmsg_tree; } ;
-typedef  TYPE_1__ user_t ;
-struct TYPE_9__ {int x; struct TYPE_9__* right; int /*<<< orphan*/  data; struct TYPE_9__* left; } ;
-typedef  TYPE_2__ tree_t ;
-struct TYPE_10__ {int N; int* A; int last_A; int /*<<< orphan*/  root; } ;
-typedef  TYPE_3__ listree_t ;
+typedef TYPE_1__ user_t ;
+struct TYPE_9__ {int x; struct TYPE_9__* right; int data; struct TYPE_9__* left; } ;
+typedef TYPE_2__ tree_t ;
+struct TYPE_10__ {int N; int* A; int last_A; int root; } ;
+typedef TYPE_3__ listree_t ;
 struct TYPE_11__ {int extra_offset; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NIL ; 
- TYPE_7__* UserHdr ; 
- int /*<<< orphan*/  assert (int) ; 
- int listree_get_kth_last (TYPE_3__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lrand48 () ; 
- void* tree_num_insert (void*,int,int /*<<< orphan*/ ,int) ; 
+
+ int NIL ;
+ TYPE_7__* UserHdr ;
+ int assert (int) ;
+ int listree_get_kth_last (TYPE_3__*,int ) ;
+ int lrand48 () ;
+ void* tree_num_insert (void*,int,int ,int) ;
 
 int *rebuild_topmsg_tree (tree_t *T, int *L, int *LE, int max_peer_id, user_t *U, char *metafile) {
   int peer_id;

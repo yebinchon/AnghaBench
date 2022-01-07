@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct xt_led_info_internal {int /*<<< orphan*/  netfilter_led_trigger; } ;
+
+
+
+
+struct xt_led_info_internal {int netfilter_led_trigger; } ;
 struct timer_list {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LED_OFF ; 
- struct xt_led_info_internal* from_timer (int /*<<< orphan*/ ,struct timer_list*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  led_trigger_event (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- struct xt_led_info_internal* ledinternal ; 
- int /*<<< orphan*/  timer ; 
+
+ int LED_OFF ;
+ struct xt_led_info_internal* from_timer (int ,struct timer_list*,int ) ;
+ int led_trigger_event (int *,int ) ;
+ struct xt_led_info_internal* ledinternal ;
+ int timer ;
 
 __attribute__((used)) static void led_timeout_callback(struct timer_list *t)
 {
-	struct xt_led_info_internal *ledinternal = from_timer(ledinternal, t,
-							      timer);
+ struct xt_led_info_internal *ledinternal = from_timer(ledinternal, t,
+             timer);
 
-	led_trigger_event(&ledinternal->netfilter_led_trigger, LED_OFF);
+ led_trigger_event(&ledinternal->netfilter_led_trigger, LED_OFF);
 }

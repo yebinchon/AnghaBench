@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_wc_notify_func2_t ;
-struct TYPE_6__ {int /*<<< orphan*/  db; } ;
-typedef  TYPE_1__ svn_wc_context_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  scalar_t__ svn_depth_t ;
-typedef  int /*<<< orphan*/  svn_cancel_func_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int svn_wc_notify_func2_t ;
+struct TYPE_6__ {int db; } ;
+typedef TYPE_1__ svn_wc_context_t ;
+typedef int svn_error_t ;
+typedef scalar_t__ svn_depth_t ;
+typedef int svn_cancel_func_t ;
+typedef int svn_boolean_t ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
 struct TYPE_7__ {scalar_t__ nelts; } ;
-typedef  TYPE_2__ apr_array_header_t ;
+typedef TYPE_2__ apr_array_header_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_WC_INVALID_OPERATION_DEPTH ; 
- int /*<<< orphan*/  revert (int /*<<< orphan*/ ,char const*,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  revert_changelist (int /*<<< orphan*/ ,char const*,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  revert_partial (int /*<<< orphan*/ ,char const*,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_depth_empty ; 
- scalar_t__ svn_depth_files ; 
- scalar_t__ svn_depth_immediates ; 
- scalar_t__ svn_depth_infinity ; 
- int /*<<< orphan*/ * svn_error_create (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_error_trace (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_hash_from_cstring_keys (int /*<<< orphan*/ **,TYPE_2__ const*,int /*<<< orphan*/ *) ; 
+
+ int SVN_ERR (int ) ;
+ int SVN_ERR_WC_INVALID_OPERATION_DEPTH ;
+ int revert (int ,char const*,scalar_t__,int ,int ,int ,int ,void*,int ,void*,int *) ;
+ int revert_changelist (int ,char const*,scalar_t__,int ,int *,int ,int ,int ,void*,int ,void*,int *) ;
+ int revert_partial (int ,char const*,scalar_t__,int ,int ,int ,int ,void*,int ,void*,int *) ;
+ scalar_t__ svn_depth_empty ;
+ scalar_t__ svn_depth_files ;
+ scalar_t__ svn_depth_immediates ;
+ scalar_t__ svn_depth_infinity ;
+ int * svn_error_create (int ,int *,int *) ;
+ int * svn_error_trace (int ) ;
+ int svn_hash_from_cstring_keys (int **,TYPE_2__ const*,int *) ;
 
 svn_error_t *
 svn_wc_revert5(svn_wc_context_t *wc_ctx,
@@ -76,11 +76,11 @@ svn_wc_revert5(svn_wc_context_t *wc_ctx,
                                   notify_func, notify_baton,
                                   scratch_pool));
 
-  /* The user may expect svn_depth_files/svn_depth_immediates to work
-     on copied dirs with one level of children.  It doesn't, the user
-     will get an error and will need to invoke an infinite revert.  If
-     we identified those cases where svn_depth_infinity would not
-     revert too much we could invoke the recursive call above. */
+
+
+
+
+
 
   if (depth == svn_depth_files || depth == svn_depth_immediates)
     return svn_error_trace(revert_partial(wc_ctx->db, local_abspath,
@@ -90,6 +90,6 @@ svn_wc_revert5(svn_wc_context_t *wc_ctx,
                                           notify_func, notify_baton,
                                           scratch_pool));
 
-  /* Bogus depth. Tell the caller.  */
-  return svn_error_create(SVN_ERR_WC_INVALID_OPERATION_DEPTH, NULL, NULL);
+
+  return svn_error_create(SVN_ERR_WC_INVALID_OPERATION_DEPTH, ((void*)0), ((void*)0));
 }

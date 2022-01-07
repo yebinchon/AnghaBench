@@ -1,37 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ int ERROR_ACCESS_DENIED ;
+ int ERROR_BAD_NET_RESP ;
+ int ERROR_INVALID_REPARSE_DATA ;
+ int ERROR_NOT_A_REPARSE_POINT ;
+ int ERROR_NOT_EMPTY ;
 
-/* Forward declarations */
 
-/* Type definitions */
 
-/* Variables and functions */
- int ERROR_ACCESS_DENIED ; 
- int /*<<< orphan*/  ERROR_BAD_NET_RESP ; 
- int ERROR_INVALID_REPARSE_DATA ; 
- int ERROR_NOT_A_REPARSE_POINT ; 
- int ERROR_NOT_EMPTY ; 
-#define  NFS4ERR_ACCESS 132 
-#define  NFS4ERR_BADCHAR 131 
-#define  NFS4ERR_BADNAME 130 
-#define  NFS4ERR_NOTEMPTY 129 
-#define  NFS4ERR_WRONG_TYPE 128 
- int nfs_to_windows_error (int,int /*<<< orphan*/ ) ; 
+
+
+ int nfs_to_windows_error (int,int ) ;
 
 int map_symlink_errors(int status)
 {
     switch (status) {
-    case NFS4ERR_BADCHAR:
-    case NFS4ERR_BADNAME:       return ERROR_INVALID_REPARSE_DATA;
-    case NFS4ERR_WRONG_TYPE:    return ERROR_NOT_A_REPARSE_POINT;
-    case NFS4ERR_ACCESS:        return ERROR_ACCESS_DENIED;
-    case NFS4ERR_NOTEMPTY:      return ERROR_NOT_EMPTY;
+    case 131:
+    case 130: return ERROR_INVALID_REPARSE_DATA;
+    case 128: return ERROR_NOT_A_REPARSE_POINT;
+    case 132: return ERROR_ACCESS_DENIED;
+    case 129: return ERROR_NOT_EMPTY;
     default: return nfs_to_windows_error(status, ERROR_BAD_NET_RESP);
     }
 }

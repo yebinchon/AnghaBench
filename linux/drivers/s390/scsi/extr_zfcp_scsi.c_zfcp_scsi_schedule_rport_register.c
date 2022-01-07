@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct zfcp_port {int /*<<< orphan*/  dev; int /*<<< orphan*/  rport_work; TYPE_1__* adapter; int /*<<< orphan*/  rport_task; } ;
-struct TYPE_2__ {int /*<<< orphan*/  work_queue; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RPORT_ADD ; 
- int /*<<< orphan*/  get_device (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  put_device (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  queue_work (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct zfcp_port {int dev; int rport_work; TYPE_1__* adapter; int rport_task; } ;
+struct TYPE_2__ {int work_queue; } ;
+
+
+ int RPORT_ADD ;
+ int get_device (int *) ;
+ int put_device (int *) ;
+ int queue_work (int ,int *) ;
 
 void zfcp_scsi_schedule_rport_register(struct zfcp_port *port)
 {
-	get_device(&port->dev);
-	port->rport_task = RPORT_ADD;
+ get_device(&port->dev);
+ port->rport_task = RPORT_ADD;
 
-	if (!queue_work(port->adapter->work_queue, &port->rport_work))
-		put_device(&port->dev);
+ if (!queue_work(port->adapter->work_queue, &port->rport_work))
+  put_device(&port->dev);
 }

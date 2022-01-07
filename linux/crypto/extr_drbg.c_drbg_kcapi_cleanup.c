@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct crypto_tfm {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  crypto_tfm_ctx (struct crypto_tfm*) ; 
- int /*<<< orphan*/  drbg_uninstantiate (int /*<<< orphan*/ ) ; 
+
+ int crypto_tfm_ctx (struct crypto_tfm*) ;
+ int drbg_uninstantiate (int ) ;
 
 __attribute__((used)) static void drbg_kcapi_cleanup(struct crypto_tfm *tfm)
 {
-	drbg_uninstantiate(crypto_tfm_ctx(tfm));
+ drbg_uninstantiate(crypto_tfm_ctx(tfm));
 }

@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_20__   TYPE_6__ ;
-typedef  struct TYPE_19__   TYPE_5__ ;
-typedef  struct TYPE_18__   TYPE_4__ ;
-typedef  struct TYPE_17__   TYPE_3__ ;
-typedef  struct TYPE_16__   TYPE_2__ ;
-typedef  struct TYPE_15__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int sqlite3_int64 ;
-typedef  scalar_t__ i64 ;
-typedef  int /*<<< orphan*/  aStatic ;
-struct TYPE_20__ {scalar_t__ n; int /*<<< orphan*/  p; } ;
+
+
+typedef struct TYPE_20__ TYPE_6__ ;
+typedef struct TYPE_19__ TYPE_5__ ;
+typedef struct TYPE_18__ TYPE_4__ ;
+typedef struct TYPE_17__ TYPE_3__ ;
+typedef struct TYPE_16__ TYPE_2__ ;
+typedef struct TYPE_15__ TYPE_1__ ;
+
+
+typedef int sqlite3_int64 ;
+typedef scalar_t__ i64 ;
+typedef int aStatic ;
+struct TYPE_20__ {scalar_t__ n; int p; } ;
 struct TYPE_19__ {int nPhrase; scalar_t__ nNear; TYPE_4__** apPhrase; } ;
 struct TYPE_18__ {scalar_t__ nTerm; TYPE_6__ poslist; } ;
 struct TYPE_17__ {scalar_t__ iPos; scalar_t__ iLookahead; } ;
 struct TYPE_15__ {scalar_t__ iPrev; } ;
 struct TYPE_16__ {TYPE_6__* pOut; TYPE_3__ reader; TYPE_1__ writer; } ;
-typedef  TYPE_1__ Fts5PoslistWriter ;
-typedef  TYPE_2__ Fts5NearTrimmer ;
-typedef  TYPE_3__ Fts5LookaheadReader ;
-typedef  TYPE_4__ Fts5ExprPhrase ;
-typedef  TYPE_5__ Fts5ExprNearset ;
-typedef  TYPE_6__ Fts5Buffer ;
+typedef TYPE_1__ Fts5PoslistWriter ;
+typedef TYPE_2__ Fts5NearTrimmer ;
+typedef TYPE_3__ Fts5LookaheadReader ;
+typedef TYPE_4__ Fts5ExprPhrase ;
+typedef TYPE_5__ Fts5ExprNearset ;
+typedef TYPE_6__ Fts5Buffer ;
 
-/* Variables and functions */
- int ArraySize (TYPE_2__*) ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  fts5LookaheadReaderInit (int /*<<< orphan*/ ,scalar_t__,TYPE_3__*) ; 
- scalar_t__ fts5LookaheadReaderNext (TYPE_3__*) ; 
- int /*<<< orphan*/  memset (TYPE_2__*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ sqlite3Fts5MallocZero (int*,int) ; 
- int /*<<< orphan*/  sqlite3Fts5PoslistWriterAppend (TYPE_6__*,TYPE_1__*,scalar_t__) ; 
- int /*<<< orphan*/  sqlite3_free (TYPE_2__*) ; 
+
+ int ArraySize (TYPE_2__*) ;
+ int SQLITE_OK ;
+ int assert (int) ;
+ int fts5LookaheadReaderInit (int ,scalar_t__,TYPE_3__*) ;
+ scalar_t__ fts5LookaheadReaderNext (TYPE_3__*) ;
+ int memset (TYPE_2__*,int ,int) ;
+ scalar_t__ sqlite3Fts5MallocZero (int*,int) ;
+ int sqlite3Fts5PoslistWriterAppend (TYPE_6__*,TYPE_1__*,scalar_t__) ;
+ int sqlite3_free (TYPE_2__*) ;
 
 __attribute__((used)) static int fts5ExprNearIsMatch(int *pRc, Fts5ExprNearset *pNear){
   Fts5NearTrimmer aStatic[4];
@@ -54,8 +54,8 @@ __attribute__((used)) static int fts5ExprNearIsMatch(int *pRc, Fts5ExprNearset *
 
   assert( pNear->nPhrase>1 );
 
-  /* If the aStatic[] array is not large enough, allocate a large array
-  ** using sqlite3_malloc(). This approach could be improved upon. */
+
+
   if( pNear->nPhrase>ArraySize(aStatic) ){
     sqlite3_int64 nByte = sizeof(Fts5NearTrimmer) * pNear->nPhrase;
     a = (Fts5NearTrimmer*)sqlite3Fts5MallocZero(&rc, nByte);
@@ -66,15 +66,6 @@ __attribute__((used)) static int fts5ExprNearIsMatch(int *pRc, Fts5ExprNearset *
     *pRc = rc;
     return 0;
   }
-
-  /* Initialize a lookahead iterator for each phrase. After passing the
-  ** buffer and buffer size to the lookaside-reader init function, zero
-  ** the phrase poslist buffer. The new poslist for the phrase (containing
-  ** the same entries as the original with some entries removed on account 
-  ** of the NEAR constraint) is written over the original even as it is
-  ** being read. This is safe as the entries for the new poslist are a
-  ** subset of the old, so it is not possible for data yet to be read to
-  ** be overwritten.  */
   for(i=0; i<pNear->nPhrase; i++){
     Fts5Buffer *pPoslist = &apPhrase[i]->poslist;
     fts5LookaheadReaderInit(pPoslist->p, pPoslist->n, &a[i].reader);
@@ -87,8 +78,8 @@ __attribute__((used)) static int fts5ExprNearIsMatch(int *pRc, Fts5ExprNearset *
     i64 iMin;
     i64 iMax;
 
-    /* This block advances the phrase iterators until they point to a set of
-    ** entries that together comprise a match.  */
+
+
     iMax = a[0].reader.iPos;
     do {
       bMatch = 1;
@@ -105,7 +96,7 @@ __attribute__((used)) static int fts5ExprNearIsMatch(int *pRc, Fts5ExprNearset *
       }
     }while( bMatch==0 );
 
-    /* Add an entry to each output position list */
+
     for(i=0; i<pNear->nPhrase; i++){
       i64 iPos = a[i].reader.iPos;
       Fts5PoslistWriter *pWriter = &a[i].writer;

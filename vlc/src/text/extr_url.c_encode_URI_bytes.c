@@ -1,29 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ isurisafe (unsigned char) ; 
- scalar_t__ likely (int /*<<< orphan*/ ) ; 
- char* malloc (int) ; 
- char* realloc (char*,size_t) ; 
- scalar_t__ unlikely (int /*<<< orphan*/ ) ; 
- void** urihex ; 
+ scalar_t__ isurisafe (unsigned char) ;
+ scalar_t__ likely (int ) ;
+ char* malloc (int) ;
+ char* realloc (char*,size_t) ;
+ scalar_t__ unlikely (int ) ;
+ void** urihex ;
 
 __attribute__((used)) static char *encode_URI_bytes (const char *str, size_t *restrict lenp)
 {
     char *buf = malloc (3 * *lenp + 1);
-    if (unlikely(buf == NULL))
-        return NULL;
+    if (unlikely(buf == ((void*)0)))
+        return ((void*)0);
 
     char *out = buf;
     for (size_t i = 0; i < *lenp; i++)
@@ -32,8 +24,8 @@ __attribute__((used)) static char *encode_URI_bytes (const char *str, size_t *re
 
         if (isurisafe (c))
             *(out++) = c;
-        /* This is URI encoding, not HTTP forms:
-         * Space is encoded as '%20', not '+'. */
+
+
         else
         {
             *(out++) = '%';
@@ -44,5 +36,5 @@ __attribute__((used)) static char *encode_URI_bytes (const char *str, size_t *re
 
     *lenp = out - buf;
     out = realloc (buf, *lenp + 1);
-    return likely(out != NULL) ? out : buf;
+    return likely(out != ((void*)0)) ? out : buf;
 }

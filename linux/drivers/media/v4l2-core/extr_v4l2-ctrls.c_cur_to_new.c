@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct v4l2_ctrl {int /*<<< orphan*/  p_new; int /*<<< orphan*/  p_cur; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ptr_to_ptr (struct v4l2_ctrl*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct v4l2_ctrl {int p_new; int p_cur; } ;
+
+
+ int ptr_to_ptr (struct v4l2_ctrl*,int ,int ) ;
 
 __attribute__((used)) static void cur_to_new(struct v4l2_ctrl *ctrl)
 {
-	if (ctrl == NULL)
-		return;
-	ptr_to_ptr(ctrl, ctrl->p_cur, ctrl->p_new);
+ if (ctrl == ((void*)0))
+  return;
+ ptr_to_ptr(ctrl, ctrl->p_cur, ctrl->p_new);
 }

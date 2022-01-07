@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int pf; } ;
 struct ucode_cpu_info {TYPE_1__ cpu_sig; } ;
 struct device_attribute {int dummy; } ;
 struct device {int id; } ;
-typedef  int /*<<< orphan*/  ssize_t ;
+typedef int ssize_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  sprintf (char*,char*,int) ; 
- struct ucode_cpu_info* ucode_cpu_info ; 
+
+ int sprintf (char*,char*,int) ;
+ struct ucode_cpu_info* ucode_cpu_info ;
 
 __attribute__((used)) static ssize_t pf_show(struct device *dev,
-			struct device_attribute *attr, char *buf)
+   struct device_attribute *attr, char *buf)
 {
-	struct ucode_cpu_info *uci = ucode_cpu_info + dev->id;
+ struct ucode_cpu_info *uci = ucode_cpu_info + dev->id;
 
-	return sprintf(buf, "0x%x\n", uci->cpu_sig.pf);
+ return sprintf(buf, "0x%x\n", uci->cpu_sig.pf);
 }

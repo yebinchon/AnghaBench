@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint64_t ;
-typedef  int /*<<< orphan*/  packet ;
-struct TYPE_4__ {int /*<<< orphan*/  ping_response_id; } ;
-typedef  TYPE_1__ TCP_Client_Connection ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TCP_PACKET_PONG ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int write_packet_TCP_secure_connection (TYPE_1__*,int /*<<< orphan*/ *,int,int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint64_t ;
+typedef int packet ;
+struct TYPE_4__ {int ping_response_id; } ;
+typedef TYPE_1__ TCP_Client_Connection ;
+
+
+ int TCP_PACKET_PONG ;
+ int memcpy (int *,int *,int) ;
+ int write_packet_TCP_secure_connection (TYPE_1__*,int *,int,int) ;
 
 __attribute__((used)) static int send_ping_response(TCP_Client_Connection *con)
 {

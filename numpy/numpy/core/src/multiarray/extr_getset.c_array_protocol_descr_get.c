@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  PyObject ;
-typedef  int /*<<< orphan*/  PyArrayObject ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PyArray_DESCR (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyErr_Clear () ; 
- int /*<<< orphan*/ * PyList_New (int) ; 
- int /*<<< orphan*/  PyList_SET_ITEM (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyString_FromString (char*) ; 
- int /*<<< orphan*/ * PyTuple_New (int) ; 
- int /*<<< orphan*/  PyTuple_SET_ITEM (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Py_DECREF (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  array_typestr_get (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * arraydescr_protocol_descr_get (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int PyObject ;
+typedef int PyArrayObject ;
+
+
+ int PyArray_DESCR (int *) ;
+ int PyErr_Clear () ;
+ int * PyList_New (int) ;
+ int PyList_SET_ITEM (int *,int ,int *) ;
+ int PyString_FromString (char*) ;
+ int * PyTuple_New (int) ;
+ int PyTuple_SET_ITEM (int *,int,int ) ;
+ int Py_DECREF (int *) ;
+ int array_typestr_get (int *) ;
+ int * arraydescr_protocol_descr_get (int ) ;
 
 __attribute__((used)) static PyObject *
 array_protocol_descr_get(PyArrayObject *self)
@@ -37,17 +37,17 @@ array_protocol_descr_get(PyArrayObject *self)
     }
     PyErr_Clear();
 
-    /* get default */
+
     dobj = PyTuple_New(2);
-    if (dobj == NULL) {
-        return NULL;
+    if (dobj == ((void*)0)) {
+        return ((void*)0);
     }
     PyTuple_SET_ITEM(dobj, 0, PyString_FromString(""));
     PyTuple_SET_ITEM(dobj, 1, array_typestr_get(self));
     res = PyList_New(1);
-    if (res == NULL) {
+    if (res == ((void*)0)) {
         Py_DECREF(dobj);
-        return NULL;
+        return ((void*)0);
     }
     PyList_SET_ITEM(res, 0, dobj);
     return res;

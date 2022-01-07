@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_17__ {unsigned int typestring_offset; int /*<<< orphan*/  name; } ;
-typedef  TYPE_1__ type_t ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- scalar_t__ FC_RP ; 
- scalar_t__ FC_UP ; 
- int /*<<< orphan*/  FC_USER_MARSHAL ; 
- int /*<<< orphan*/  TRUE ; 
- scalar_t__ TYPE_BASIC ; 
- scalar_t__ TYPE_ENUM ; 
- scalar_t__ TYPE_POINTER ; 
- unsigned char get_basic_fc (TYPE_1__*) ; 
- unsigned char get_enum_fc (TYPE_1__*) ; 
- scalar_t__ get_pointer_fc (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- TYPE_1__* get_user_type (TYPE_1__*,char const**) ; 
- int /*<<< orphan*/  guard_rec (TYPE_1__*) ; 
- int /*<<< orphan*/  print_file (int /*<<< orphan*/ *,int,char*,...) ; 
- int /*<<< orphan*/  print_start_tfs_comment (int /*<<< orphan*/ *,TYPE_1__*,unsigned int) ; 
- scalar_t__ processed (TYPE_1__*) ; 
- int /*<<< orphan*/  string_of_type (unsigned char) ; 
- unsigned int type_buffer_alignment (TYPE_1__*) ; 
- scalar_t__ type_get_type (TYPE_1__*) ; 
- unsigned int type_memsize (TYPE_1__*) ; 
- int /*<<< orphan*/  update_tfsoff (TYPE_1__*,unsigned int,int /*<<< orphan*/ *) ; 
- scalar_t__ user_type_has_variable_size (TYPE_1__*) ; 
- unsigned short user_type_offset (char const*) ; 
- int /*<<< orphan*/  write_embedded_types (int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned int*) ; 
+
+typedef struct TYPE_17__ TYPE_1__ ;
+
+
+struct TYPE_17__ {unsigned int typestring_offset; int name; } ;
+typedef TYPE_1__ type_t ;
+typedef int FILE ;
+
+
+ int FALSE ;
+ scalar_t__ FC_RP ;
+ scalar_t__ FC_UP ;
+ int FC_USER_MARSHAL ;
+ int TRUE ;
+ scalar_t__ TYPE_BASIC ;
+ scalar_t__ TYPE_ENUM ;
+ scalar_t__ TYPE_POINTER ;
+ unsigned char get_basic_fc (TYPE_1__*) ;
+ unsigned char get_enum_fc (TYPE_1__*) ;
+ scalar_t__ get_pointer_fc (TYPE_1__*,int *,int ) ;
+ TYPE_1__* get_user_type (TYPE_1__*,char const**) ;
+ int guard_rec (TYPE_1__*) ;
+ int print_file (int *,int,char*,...) ;
+ int print_start_tfs_comment (int *,TYPE_1__*,unsigned int) ;
+ scalar_t__ processed (TYPE_1__*) ;
+ int string_of_type (unsigned char) ;
+ unsigned int type_buffer_alignment (TYPE_1__*) ;
+ scalar_t__ type_get_type (TYPE_1__*) ;
+ unsigned int type_memsize (TYPE_1__*) ;
+ int update_tfsoff (TYPE_1__*,unsigned int,int *) ;
+ scalar_t__ user_type_has_variable_size (TYPE_1__*) ;
+ unsigned short user_type_offset (char const*) ;
+ int write_embedded_types (int *,int *,TYPE_1__*,int ,int ,unsigned int*) ;
 
 __attribute__((used)) static unsigned int write_user_tfs(FILE *file, type_t *type, unsigned int *tfsoff)
 {
     unsigned int start, absoff, flags;
-    const char *name = NULL;
+    const char *name = ((void*)0);
     type_t *utype = get_user_type(type, &name);
     unsigned int usize = type_memsize(utype);
     unsigned int ualign = type_buffer_alignment(utype);
@@ -77,13 +77,13 @@ __attribute__((used)) static unsigned int write_user_tfs(FILE *file, type_t *typ
     else
     {
         if (!processed(utype))
-            write_embedded_types(file, NULL, utype, utype->name, TRUE, tfsoff);
+            write_embedded_types(file, ((void*)0), utype, utype->name, TRUE, tfsoff);
         absoff = utype->typestring_offset;
     }
 
-    if (type_get_type(utype) == TYPE_POINTER && get_pointer_fc(utype, NULL, FALSE) == FC_RP)
+    if (type_get_type(utype) == TYPE_POINTER && get_pointer_fc(utype, ((void*)0), FALSE) == FC_RP)
         flags = 0x40;
-    else if (type_get_type(utype) == TYPE_POINTER && get_pointer_fc(utype, NULL, FALSE) == FC_UP)
+    else if (type_get_type(utype) == TYPE_POINTER && get_pointer_fc(utype, ((void*)0), FALSE) == FC_UP)
         flags = 0x80;
     else
         flags = 0;

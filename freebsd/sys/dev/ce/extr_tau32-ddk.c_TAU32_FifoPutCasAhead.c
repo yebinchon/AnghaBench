@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int SP4ZU; int /*<<< orphan*/  h2LrH3; TYPE_1__* oXafA1; } ;
-typedef  TYPE_2__ kWMzp1 ;
-struct TYPE_4__ {int /*<<< orphan*/ * KqthD; } ;
 
-/* Variables and functions */
- int X9u3r2 (int,int /*<<< orphan*/ *,unsigned char*,unsigned int) ; 
- int /*<<< orphan*/  h2LrH3 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  uYS5N2 (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int SP4ZU; int h2LrH3; TYPE_1__* oXafA1; } ;
+typedef TYPE_2__ kWMzp1 ;
+struct TYPE_4__ {int * KqthD; } ;
+
+
+ int X9u3r2 (int,int *,unsigned char*,unsigned int) ;
+ int h2LrH3 (int *) ;
+ int uYS5N2 (int *) ;
 
 int __attribute__((
 cdecl))TAU32_FifoPutCasAhead(kWMzp1*J7Iki4,int b9Zs_,unsigned char*

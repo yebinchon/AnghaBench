@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  X509V3_EXT_METHOD ;
-struct TYPE_4__ {int /*<<< orphan*/  type; } ;
-typedef  int /*<<< orphan*/  BIGNUM ;
-typedef  TYPE_1__ ASN1_INTEGER ;
 
-/* Variables and functions */
- int BN_dec2bn (int /*<<< orphan*/ **,char const*) ; 
- int /*<<< orphan*/  BN_free (int /*<<< orphan*/ *) ; 
- int BN_hex2bn (int /*<<< orphan*/ **,char const*) ; 
- scalar_t__ BN_is_zero (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BN_new () ; 
- TYPE_1__* BN_to_ASN1_INTEGER (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ERR_R_MALLOC_FAILURE ; 
- int /*<<< orphan*/  V_ASN1_NEG ; 
- int /*<<< orphan*/  X509V3_F_S2I_ASN1_INTEGER ; 
- int /*<<< orphan*/  X509V3_R_BN_DEC2BN_ERROR ; 
- int /*<<< orphan*/  X509V3_R_BN_TO_ASN1_INTEGER_ERROR ; 
- int /*<<< orphan*/  X509V3_R_INVALID_NULL_VALUE ; 
- int /*<<< orphan*/  X509V3err (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int X509V3_EXT_METHOD ;
+struct TYPE_4__ {int type; } ;
+typedef int BIGNUM ;
+typedef TYPE_1__ ASN1_INTEGER ;
+
+
+ int BN_dec2bn (int **,char const*) ;
+ int BN_free (int *) ;
+ int BN_hex2bn (int **,char const*) ;
+ scalar_t__ BN_is_zero (int *) ;
+ int * BN_new () ;
+ TYPE_1__* BN_to_ASN1_INTEGER (int *,int *) ;
+ int ERR_R_MALLOC_FAILURE ;
+ int V_ASN1_NEG ;
+ int X509V3_F_S2I_ASN1_INTEGER ;
+ int X509V3_R_BN_DEC2BN_ERROR ;
+ int X509V3_R_BN_TO_ASN1_INTEGER_ERROR ;
+ int X509V3_R_INVALID_NULL_VALUE ;
+ int X509V3err (int ,int ) ;
 
 ASN1_INTEGER *s2i_ASN1_INTEGER(X509V3_EXT_METHOD *method, const char *value)
 {
-    BIGNUM *bn = NULL;
+    BIGNUM *bn = ((void*)0);
     ASN1_INTEGER *aint;
     int isneg, ishex;
     int ret;
-    if (value == NULL) {
+    if (value == ((void*)0)) {
         X509V3err(X509V3_F_S2I_ASN1_INTEGER, X509V3_R_INVALID_NULL_VALUE);
-        return NULL;
+        return ((void*)0);
     }
     bn = BN_new();
-    if (bn == NULL) {
+    if (bn == ((void*)0)) {
         X509V3err(X509V3_F_S2I_ASN1_INTEGER, ERR_R_MALLOC_FAILURE);
-        return NULL;
+        return ((void*)0);
     }
     if (value[0] == '-') {
         value++;
@@ -66,18 +66,18 @@ ASN1_INTEGER *s2i_ASN1_INTEGER(X509V3_EXT_METHOD *method, const char *value)
     if (!ret || value[ret]) {
         BN_free(bn);
         X509V3err(X509V3_F_S2I_ASN1_INTEGER, X509V3_R_BN_DEC2BN_ERROR);
-        return NULL;
+        return ((void*)0);
     }
 
     if (isneg && BN_is_zero(bn))
         isneg = 0;
 
-    aint = BN_to_ASN1_INTEGER(bn, NULL);
+    aint = BN_to_ASN1_INTEGER(bn, ((void*)0));
     BN_free(bn);
     if (!aint) {
         X509V3err(X509V3_F_S2I_ASN1_INTEGER,
                   X509V3_R_BN_TO_ASN1_INTEGER_ERROR);
-        return NULL;
+        return ((void*)0);
     }
     if (isneg)
         aint->type |= V_ASN1_NEG;

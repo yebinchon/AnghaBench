@@ -1,386 +1,241 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
-#define  XMB_TEXTURE_ACHIEVEMENTS 245 
-#define  XMB_TEXTURE_ACHIEVEMENT_LIST 244 
-#define  XMB_TEXTURE_ADD 243 
-#define  XMB_TEXTURE_ADD_FAVORITE 242 
-#define  XMB_TEXTURE_ARROW 241 
-#define  XMB_TEXTURE_AUDIO 240 
-#define  XMB_TEXTURE_BATTERY_20 239 
-#define  XMB_TEXTURE_BATTERY_40 238 
-#define  XMB_TEXTURE_BATTERY_60 237 
-#define  XMB_TEXTURE_BATTERY_80 236 
-#define  XMB_TEXTURE_BATTERY_CHARGING 235 
-#define  XMB_TEXTURE_BATTERY_FULL 234 
-#define  XMB_TEXTURE_BRIGHTNESS 233 
-#define  XMB_TEXTURE_CHEAT_OPTIONS 232 
-#define  XMB_TEXTURE_CHECKMARK 231 
-#define  XMB_TEXTURE_CLOCK 230 
-#define  XMB_TEXTURE_CLOSE 229 
-#define  XMB_TEXTURE_CORE 228 
-#define  XMB_TEXTURE_CORE_INFO 227 
-#define  XMB_TEXTURE_CORE_OPTIONS 226 
-#define  XMB_TEXTURE_CURSOR 225 
-#define  XMB_TEXTURE_DEFAULT 224 
-#define  XMB_TEXTURE_DEFAULT_CONTENT 223 
-#define  XMB_TEXTURE_DIALOG_SLICE 222 
-#define  XMB_TEXTURE_DISC 221 
-#define  XMB_TEXTURE_DISK_OPTIONS 220 
-#define  XMB_TEXTURE_DRIVERS 219 
-#define  XMB_TEXTURE_EXIT 218 
-#define  XMB_TEXTURE_FAVORITE 217 
-#define  XMB_TEXTURE_FAVORITES 216 
-#define  XMB_TEXTURE_FILE 215 
-#define  XMB_TEXTURE_FOLDER 214 
-#define  XMB_TEXTURE_FRAMESKIP 213 
-#define  XMB_TEXTURE_HELP 212 
-#define  XMB_TEXTURE_HISTORY 211 
-#define  XMB_TEXTURE_IMAGE 210 
-#define  XMB_TEXTURE_IMAGES 209 
-#define  XMB_TEXTURE_INFO 208 
-#define  XMB_TEXTURE_INPUT_ADC 207 
-#define  XMB_TEXTURE_INPUT_BIND_ALL 206 
-#define  XMB_TEXTURE_INPUT_BTN_D 205 
-#define  XMB_TEXTURE_INPUT_BTN_L 204 
-#define  XMB_TEXTURE_INPUT_BTN_R 203 
-#define  XMB_TEXTURE_INPUT_BTN_U 202 
-#define  XMB_TEXTURE_INPUT_DPAD_D 201 
-#define  XMB_TEXTURE_INPUT_DPAD_L 200 
-#define  XMB_TEXTURE_INPUT_DPAD_R 199 
-#define  XMB_TEXTURE_INPUT_DPAD_U 198 
-#define  XMB_TEXTURE_INPUT_LB 197 
-#define  XMB_TEXTURE_INPUT_LGUN 196 
-#define  XMB_TEXTURE_INPUT_LT 195 
-#define  XMB_TEXTURE_INPUT_MOUSE 194 
-#define  XMB_TEXTURE_INPUT_RB 193 
-#define  XMB_TEXTURE_INPUT_REMAPPING_OPTIONS 192 
-#define  XMB_TEXTURE_INPUT_RT 191 
-#define  XMB_TEXTURE_INPUT_SELECT 190 
-#define  XMB_TEXTURE_INPUT_SETTINGS 189 
-#define  XMB_TEXTURE_INPUT_START 188 
-#define  XMB_TEXTURE_INPUT_STCK_D 187 
-#define  XMB_TEXTURE_INPUT_STCK_L 186 
-#define  XMB_TEXTURE_INPUT_STCK_P 185 
-#define  XMB_TEXTURE_INPUT_STCK_R 184 
-#define  XMB_TEXTURE_INPUT_STCK_U 183 
-#define  XMB_TEXTURE_INPUT_TURBO 182 
-#define  XMB_TEXTURE_KEY 181 
-#define  XMB_TEXTURE_KEY_HOVER 180 
-#define  XMB_TEXTURE_LATENCY 179 
-#define  XMB_TEXTURE_LOADSTATE 178 
-#define  XMB_TEXTURE_LOG 177 
-#define  XMB_TEXTURE_MAIN_MENU 176 
-#define  XMB_TEXTURE_MENU_ADD 175 
-#define  XMB_TEXTURE_MENU_APPLY_COG 174 
-#define  XMB_TEXTURE_MENU_APPLY_TOGGLE 173 
-#define  XMB_TEXTURE_MIXER 172 
-#define  XMB_TEXTURE_MOVIE 171 
-#define  XMB_TEXTURE_MOVIES 170 
-#define  XMB_TEXTURE_MUSIC 169 
-#define  XMB_TEXTURE_MUSICS 168 
-#define  XMB_TEXTURE_NETPLAY 167 
-#define  XMB_TEXTURE_NETWORK 166 
-#define  XMB_TEXTURE_NOTIFICATIONS 165 
-#define  XMB_TEXTURE_OSD 164 
-#define  XMB_TEXTURE_OVERLAY 163 
-#define  XMB_TEXTURE_OVERRIDE 162 
-#define  XMB_TEXTURE_PAUSE 161 
-#define  XMB_TEXTURE_PLAYLIST 160 
-#define  XMB_TEXTURE_POINTER 159 
-#define  XMB_TEXTURE_POWER 158 
-#define  XMB_TEXTURE_PRIVACY 157 
-#define  XMB_TEXTURE_QUICKMENU 156 
-#define  XMB_TEXTURE_RDB 155 
-#define  XMB_TEXTURE_RECORD 154 
-#define  XMB_TEXTURE_RELOAD 153 
-#define  XMB_TEXTURE_RENAME 152 
-#define  XMB_TEXTURE_RESUME 151 
-#define  XMB_TEXTURE_REWIND 150 
-#define  XMB_TEXTURE_ROOM 149 
-#define  XMB_TEXTURE_ROOM_LAN 148 
-#define  XMB_TEXTURE_ROOM_RELAY 147 
-#define  XMB_TEXTURE_RUN 146 
-#define  XMB_TEXTURE_SAVESTATE 145 
-#define  XMB_TEXTURE_SAVING 144 
-#define  XMB_TEXTURE_SCREENSHOT 143 
-#define  XMB_TEXTURE_SETTING 142 
-#define  XMB_TEXTURE_SETTINGS 141 
-#define  XMB_TEXTURE_SHADER_OPTIONS 140 
-#define  XMB_TEXTURE_SHUTDOWN 139 
-#define  XMB_TEXTURE_STREAM 138 
-#define  XMB_TEXTURE_SUBSETTING 137 
-#define  XMB_TEXTURE_SWITCH_OFF 136 
-#define  XMB_TEXTURE_SWITCH_ON 135 
-#define  XMB_TEXTURE_UI 134 
-#define  XMB_TEXTURE_UNDO 133 
-#define  XMB_TEXTURE_UPDATER 132 
-#define  XMB_TEXTURE_USER 131 
-#define  XMB_TEXTURE_VIDEO 130 
-#define  XMB_TEXTURE_WIFI 129 
-#define  XMB_TEXTURE_ZIP 128 
-
 __attribute__((used)) static const char *xmb_texture_path(unsigned id)
 {
    switch (id)
    {
-      case XMB_TEXTURE_MAIN_MENU:
-#if defined(HAVE_LAKKA)
-         return "lakka.png";
-#else
+      case 176:
+
+
+
          return "retroarch.png";
-#endif
-      case XMB_TEXTURE_SETTINGS:
+
+      case 141:
          return "settings.png";
-      case XMB_TEXTURE_HISTORY:
+      case 211:
          return "history.png";
-      case XMB_TEXTURE_FAVORITES:
+      case 216:
          return "favorites.png";
-      case XMB_TEXTURE_ADD_FAVORITE:
+      case 242:
          return "add-favorite.png";
-      case XMB_TEXTURE_MUSICS:
+      case 168:
          return "musics.png";
-#if defined(HAVE_FFMPEG) || defined(HAVE_MPV)
-      case XMB_TEXTURE_MOVIES:
-         return "movies.png";
-#endif
-#ifdef HAVE_IMAGEVIEWER
-      case XMB_TEXTURE_IMAGES:
-         return "images.png";
-#endif
-      case XMB_TEXTURE_SETTING:
+      case 142:
          return "setting.png";
-      case XMB_TEXTURE_SUBSETTING:
+      case 137:
          return "subsetting.png";
-      case XMB_TEXTURE_ARROW:
+      case 241:
          return "arrow.png";
-      case XMB_TEXTURE_RUN:
+      case 146:
          return "run.png";
-      case XMB_TEXTURE_CLOSE:
+      case 229:
          return "close.png";
-      case XMB_TEXTURE_RESUME:
+      case 151:
          return "resume.png";
-      case XMB_TEXTURE_CLOCK:
+      case 230:
          return "clock.png";
-      case XMB_TEXTURE_BATTERY_FULL:
+      case 234:
          return "battery-full.png";
-      case XMB_TEXTURE_BATTERY_CHARGING:
+      case 235:
          return "battery-charging.png";
-      case XMB_TEXTURE_BATTERY_80:
+      case 236:
          return "battery-80.png";
-      case XMB_TEXTURE_BATTERY_60:
+      case 237:
          return "battery-60.png";
-      case XMB_TEXTURE_BATTERY_40:
+      case 238:
          return "battery-40.png";
-      case XMB_TEXTURE_BATTERY_20:
+      case 239:
          return "battery-20.png";
-      case XMB_TEXTURE_POINTER:
+      case 159:
          return "pointer.png";
-      case XMB_TEXTURE_SAVESTATE:
+      case 145:
          return "savestate.png";
-      case XMB_TEXTURE_LOADSTATE:
+      case 178:
          return "loadstate.png";
-      case XMB_TEXTURE_UNDO:
+      case 133:
          return "undo.png";
-      case XMB_TEXTURE_CORE_INFO:
+      case 227:
          return "core-infos.png";
-      case XMB_TEXTURE_WIFI:
+      case 129:
          return "wifi.png";
-      case XMB_TEXTURE_CORE_OPTIONS:
+      case 226:
          return "core-options.png";
-      case XMB_TEXTURE_INPUT_REMAPPING_OPTIONS:
+      case 192:
          return "core-input-remapping-options.png";
-      case XMB_TEXTURE_CHEAT_OPTIONS:
+      case 232:
          return "core-cheat-options.png";
-      case XMB_TEXTURE_DISK_OPTIONS:
+      case 220:
          return "core-disk-options.png";
-      case XMB_TEXTURE_SHADER_OPTIONS:
+      case 140:
          return "core-shader-options.png";
-      case XMB_TEXTURE_ACHIEVEMENT_LIST:
+      case 244:
          return "achievement-list.png";
-      case XMB_TEXTURE_SCREENSHOT:
+      case 143:
          return "screenshot.png";
-      case XMB_TEXTURE_RELOAD:
+      case 153:
          return "reload.png";
-      case XMB_TEXTURE_RENAME:
+      case 152:
          return "rename.png";
-      case XMB_TEXTURE_FILE:
+      case 215:
          return "file.png";
-      case XMB_TEXTURE_FOLDER:
+      case 214:
          return "folder.png";
-      case XMB_TEXTURE_ZIP:
+      case 128:
          return "zip.png";
-      case XMB_TEXTURE_MUSIC:
+      case 169:
          return "music.png";
-      case XMB_TEXTURE_FAVORITE:
+      case 217:
          return "favorites-content.png";
-      case XMB_TEXTURE_IMAGE:
+      case 210:
          return "image.png";
-      case XMB_TEXTURE_MOVIE:
+      case 171:
          return "movie.png";
-      case XMB_TEXTURE_CORE:
+      case 228:
          return "core.png";
-      case XMB_TEXTURE_RDB:
+      case 155:
          return "database.png";
-      case XMB_TEXTURE_CURSOR:
+      case 225:
          return "cursor.png";
-      case XMB_TEXTURE_SWITCH_ON:
+      case 135:
          return "on.png";
-      case XMB_TEXTURE_SWITCH_OFF:
+      case 136:
          return "off.png";
-      case XMB_TEXTURE_ADD:
+      case 243:
          return "add.png";
-#ifdef HAVE_NETWORKING
-      case XMB_TEXTURE_NETPLAY:
-         return "netplay.png";
-      case XMB_TEXTURE_ROOM:
-         return "menu_room.png";
-      case XMB_TEXTURE_ROOM_LAN:
-         return "menu_room_lan.png";
-      case XMB_TEXTURE_ROOM_RELAY:
-         return "menu_room_relay.png";
-#endif
-      case XMB_TEXTURE_KEY:
+      case 181:
          return "key.png";
-      case XMB_TEXTURE_KEY_HOVER:
+      case 180:
          return "key-hover.png";
-      case XMB_TEXTURE_DIALOG_SLICE:
+      case 222:
          return "dialog-slice.png";
-      case XMB_TEXTURE_ACHIEVEMENTS:
+      case 245:
          return "menu_achievements.png";
-      case XMB_TEXTURE_AUDIO:
+      case 240:
          return "menu_audio.png";
-      case XMB_TEXTURE_DRIVERS:
+      case 219:
          return "menu_drivers.png";
-      case XMB_TEXTURE_EXIT:
+      case 218:
          return "menu_exit.png";
-      case XMB_TEXTURE_FRAMESKIP:
+      case 213:
          return "menu_frameskip.png";
-      case XMB_TEXTURE_HELP:
+      case 212:
          return "menu_help.png";
-      case XMB_TEXTURE_INFO:
+      case 208:
          return "menu_info.png";
-      case XMB_TEXTURE_INPUT_SETTINGS:
+      case 189:
          return "Libretro - Pad.png";
-      case XMB_TEXTURE_LATENCY:
+      case 179:
          return "menu_latency.png";
-      case XMB_TEXTURE_NETWORK:
+      case 166:
          return "menu_network.png";
-      case XMB_TEXTURE_POWER:
+      case 158:
          return "menu_power.png";
-      case XMB_TEXTURE_RECORD:
+      case 154:
          return "menu_record.png";
-      case XMB_TEXTURE_SAVING:
+      case 144:
          return "menu_saving.png";
-      case XMB_TEXTURE_UPDATER:
+      case 132:
          return "menu_updater.png";
-      case XMB_TEXTURE_VIDEO:
+      case 130:
          return "menu_video.png";
-      case XMB_TEXTURE_MIXER:
+      case 172:
          return "menu_mixer.png";
-      case XMB_TEXTURE_LOG:
+      case 177:
          return "menu_log.png";
-      case XMB_TEXTURE_OSD:
+      case 164:
          return "menu_osd.png";
-      case XMB_TEXTURE_UI:
+      case 134:
          return "menu_ui.png";
-      case XMB_TEXTURE_USER:
+      case 131:
          return "menu_user.png";
-      case XMB_TEXTURE_PRIVACY:
+      case 157:
          return "menu_privacy.png";
-      case XMB_TEXTURE_PLAYLIST:
+      case 160:
          return "menu_playlist.png";
-      case XMB_TEXTURE_DISC:
+      case 221:
          return "disc.png";
-      case XMB_TEXTURE_QUICKMENU:
+      case 156:
          return "menu_quickmenu.png";
-      case XMB_TEXTURE_REWIND:
+      case 150:
          return "menu_rewind.png";
-      case XMB_TEXTURE_OVERLAY:
+      case 163:
          return "menu_overlay.png";
-      case XMB_TEXTURE_OVERRIDE:
+      case 162:
          return "menu_override.png";
-      case XMB_TEXTURE_NOTIFICATIONS:
+      case 165:
          return "menu_notifications.png";
-      case XMB_TEXTURE_STREAM:
+      case 138:
          return "menu_stream.png";
-      case XMB_TEXTURE_SHUTDOWN:
+      case 139:
          return "menu_shutdown.png";
-      case XMB_TEXTURE_INPUT_DPAD_U:
+      case 198:
          return "input_DPAD-U.png";
-      case XMB_TEXTURE_INPUT_DPAD_D:
+      case 201:
          return "input_DPAD-D.png";
-      case XMB_TEXTURE_INPUT_DPAD_L:
+      case 200:
          return "input_DPAD-L.png";
-      case XMB_TEXTURE_INPUT_DPAD_R:
+      case 199:
          return "input_DPAD-R.png";
-      case XMB_TEXTURE_INPUT_STCK_U:
+      case 183:
          return "input_STCK-U.png";
-      case XMB_TEXTURE_INPUT_STCK_D:
+      case 187:
          return "input_STCK-D.png";
-      case XMB_TEXTURE_INPUT_STCK_L:
+      case 186:
          return "input_STCK-L.png";
-      case XMB_TEXTURE_INPUT_STCK_R:
+      case 184:
          return "input_STCK-R.png";
-      case XMB_TEXTURE_INPUT_STCK_P:
+      case 185:
          return "input_STCK-P.png";
-      case XMB_TEXTURE_INPUT_BTN_U:
+      case 202:
          return "input_BTN-U.png";
-      case XMB_TEXTURE_INPUT_BTN_D:
+      case 205:
          return "input_BTN-D.png";
-      case XMB_TEXTURE_INPUT_BTN_L:
+      case 204:
          return "input_BTN-L.png";
-      case XMB_TEXTURE_INPUT_BTN_R:
+      case 203:
          return "input_BTN-R.png";
-      case XMB_TEXTURE_INPUT_LB:
+      case 197:
          return "input_LB.png";
-      case XMB_TEXTURE_INPUT_RB:
+      case 193:
          return "input_RB.png";
-      case XMB_TEXTURE_INPUT_LT:
+      case 195:
          return "input_LT.png";
-      case XMB_TEXTURE_INPUT_RT:
+      case 191:
          return "input_RT.png";
-      case XMB_TEXTURE_INPUT_SELECT:
+      case 190:
          return "input_SELECT.png";
-      case XMB_TEXTURE_INPUT_START:
+      case 188:
          return "input_START.png";
-      case XMB_TEXTURE_INPUT_ADC:
+      case 207:
          return "input_ADC.png";
-      case XMB_TEXTURE_INPUT_BIND_ALL:
+      case 206:
          return "input_BIND_ALL.png";
-      case XMB_TEXTURE_INPUT_MOUSE:
+      case 194:
          return "input_MOUSE.png";
-      case XMB_TEXTURE_INPUT_LGUN:
+      case 196:
          return "input_LGUN.png";
-      case XMB_TEXTURE_INPUT_TURBO:
+      case 182:
          return "input_TURBO.png";
-      case XMB_TEXTURE_CHECKMARK:
+      case 231:
          return "menu_check.png";
-      case XMB_TEXTURE_MENU_ADD:
+      case 175:
          return "menu_add.png";
-      case XMB_TEXTURE_BRIGHTNESS:
+      case 233:
          return "menu_brightness.png";
-      case XMB_TEXTURE_PAUSE:
+      case 161:
          return "menu_pause.png";
-      case XMB_TEXTURE_DEFAULT:
+      case 224:
          return "default.png";
-      case XMB_TEXTURE_DEFAULT_CONTENT:
+      case 223:
          return "default-content.png";
-      case XMB_TEXTURE_MENU_APPLY_TOGGLE:
+      case 173:
          return "menu_apply_toggle.png";
-      case XMB_TEXTURE_MENU_APPLY_COG:
+      case 174:
          return "menu_apply_cog.png";
    }
-   return NULL;
+   return ((void*)0);
 }

@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct devlink_health_reporter {void* priv; } ;
 
-/* Variables and functions */
+
 
 void *
 devlink_health_reporter_priv(struct devlink_health_reporter *reporter)
 {
-	return reporter->priv;
+ return reporter->priv;
 }

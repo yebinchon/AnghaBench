@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_12__ {int /*<<< orphan*/  kgHashShift; } ;
-typedef  TYPE_1__ uint8_t ;
-typedef  int /*<<< orphan*/  uint16_t ;
-typedef  scalar_t__ t_Handle ;
-typedef  TYPE_1__ t_FmPcdCcNode ;
-typedef  scalar_t__ t_Error ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_INVALID_HANDLE ; 
- int /*<<< orphan*/  E_NULL_POINTER ; 
- scalar_t__ FM_PCD_MatchTableFindNRemoveKey (scalar_t__,TYPE_1__,TYPE_1__*,int /*<<< orphan*/ *) ; 
- scalar_t__ FM_PCD_MatchTableGetIndexedHashBucket (TYPE_1__*,TYPE_1__,TYPE_1__*,int /*<<< orphan*/ ,scalar_t__*,TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  MAJOR ; 
- int /*<<< orphan*/  NO_MSG ; 
- int /*<<< orphan*/  RETURN_ERROR (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SANITY_CHECK_RETURN_ERROR (TYPE_1__*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+struct TYPE_12__ {int kgHashShift; } ;
+typedef TYPE_1__ uint8_t ;
+typedef int uint16_t ;
+typedef scalar_t__ t_Handle ;
+typedef TYPE_1__ t_FmPcdCcNode ;
+typedef scalar_t__ t_Error ;
+
+
+ int E_INVALID_HANDLE ;
+ int E_NULL_POINTER ;
+ scalar_t__ FM_PCD_MatchTableFindNRemoveKey (scalar_t__,TYPE_1__,TYPE_1__*,int *) ;
+ scalar_t__ FM_PCD_MatchTableGetIndexedHashBucket (TYPE_1__*,TYPE_1__,TYPE_1__*,int ,scalar_t__*,TYPE_1__*,int *) ;
+ int MAJOR ;
+ int NO_MSG ;
+ int RETURN_ERROR (int ,scalar_t__,int ) ;
+ int SANITY_CHECK_RETURN_ERROR (TYPE_1__*,int ) ;
 
 t_Error FM_PCD_HashTableRemoveKey(t_Handle h_HashTbl, uint8_t keySize,
                                   uint8_t *p_Key)
@@ -47,5 +47,5 @@ t_Error FM_PCD_HashTableRemoveKey(t_Handle h_HashTbl, uint8_t keySize,
     if (err)
         RETURN_ERROR(MAJOR, err, NO_MSG);
 
-    return FM_PCD_MatchTableFindNRemoveKey(h_HashBucket, keySize, p_Key, NULL);
+    return FM_PCD_MatchTableFindNRemoveKey(h_HashBucket, keySize, p_Key, ((void*)0));
 }

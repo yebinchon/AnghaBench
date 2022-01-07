@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint32_t ;
-struct TYPE_4__ {scalar_t__ trace_enable; int /*<<< orphan*/  log_ctx; } ;
-typedef  int /*<<< orphan*/  GetBitContext ;
-typedef  TYPE_1__ CodedBitstreamContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  av_assert0 (int) ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,char const*) ; 
- int av_log2 (scalar_t__) ; 
- int /*<<< orphan*/  ff_cbs_trace_syntax_element (TYPE_1__*,int,char const*,int const*,char*,scalar_t__) ; 
- scalar_t__ get_bits (int /*<<< orphan*/ *,int) ; 
- scalar_t__ get_bits1 (int /*<<< orphan*/ *) ; 
- int get_bits_count (int /*<<< orphan*/ *) ; 
- int get_bits_left (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint32_t ;
+struct TYPE_4__ {scalar_t__ trace_enable; int log_ctx; } ;
+typedef int GetBitContext ;
+typedef TYPE_1__ CodedBitstreamContext ;
+
+
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ int av_assert0 (int) ;
+ int av_log (int ,int ,char*,char const*) ;
+ int av_log2 (scalar_t__) ;
+ int ff_cbs_trace_syntax_element (TYPE_1__*,int,char const*,int const*,char*,scalar_t__) ;
+ scalar_t__ get_bits (int *,int) ;
+ scalar_t__ get_bits1 (int *) ;
+ int get_bits_count (int *) ;
+ int get_bits_left (int *) ;
 
 __attribute__((used)) static int cbs_av1_read_ns(CodedBitstreamContext *ctx, GetBitContext *gbc,
                            uint32_t n, const char *name,

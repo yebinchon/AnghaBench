@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uint64_t ;
-typedef  int /*<<< orphan*/  intfstream_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MAX_TOKEN_LEN ; 
- int /*<<< orphan*/  PATH_MAX_LENGTH ; 
- int /*<<< orphan*/  fill_pathname_basedir (char*,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fill_pathname_join (char*,char*,char*,size_t) ; 
- int /*<<< orphan*/  free (char*) ; 
- scalar_t__ get_token (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- scalar_t__ malloc (int /*<<< orphan*/ ) ; 
- scalar_t__ string_is_equal_noncase (char*,char*) ; 
+
+
+
+typedef scalar_t__ uint64_t ;
+typedef int intfstream_t ;
+
+
+ int MAX_TOKEN_LEN ;
+ int PATH_MAX_LENGTH ;
+ int fill_pathname_basedir (char*,char const*,int ) ;
+ int fill_pathname_join (char*,char*,char*,size_t) ;
+ int free (char*) ;
+ scalar_t__ get_token (int *,char*,int ) ;
+ scalar_t__ malloc (int ) ;
+ scalar_t__ string_is_equal_noncase (char*,char*) ;
 
 bool cue_next_file(intfstream_t *fd,
       const char *cue_path, char *path, uint64_t max_len)
 {
-   bool rv                    = false;
-   char *tmp_token            = (char*)malloc(MAX_TOKEN_LEN);
-   char *cue_dir              = (char*)malloc(PATH_MAX_LENGTH);
-   cue_dir[0]                 = '\0';
+   bool rv = 0;
+   char *tmp_token = (char*)malloc(MAX_TOKEN_LEN);
+   char *cue_dir = (char*)malloc(PATH_MAX_LENGTH);
+   cue_dir[0] = '\0';
 
    fill_pathname_basedir(cue_dir, cue_path, PATH_MAX_LENGTH);
 
@@ -41,7 +41,7 @@ bool cue_next_file(intfstream_t *fd,
       {
          get_token(fd, tmp_token, MAX_TOKEN_LEN);
          fill_pathname_join(path, cue_dir, tmp_token, (size_t)max_len);
-         rv = true;
+         rv = 1;
          break;
       }
    }

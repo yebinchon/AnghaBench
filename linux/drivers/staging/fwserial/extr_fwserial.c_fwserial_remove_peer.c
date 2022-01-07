@@ -1,66 +1,66 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct fwtty_port {int dummy; } ;
-struct fwtty_peer {int /*<<< orphan*/  lock; scalar_t__ guid; int /*<<< orphan*/  unit; int /*<<< orphan*/  list; struct fwtty_port* port; int /*<<< orphan*/  timer; TYPE_1__* serial; int /*<<< orphan*/  work; int /*<<< orphan*/  connect; } ;
+struct fwtty_peer {int lock; scalar_t__ guid; int unit; int list; struct fwtty_port* port; int timer; TYPE_1__* serial; int work; int connect; } ;
 struct TYPE_2__ {struct fwtty_peer* self; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FWPS_GONE ; 
- int /*<<< orphan*/  cancel_delayed_work_sync (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cancel_work_sync (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  del_timer (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fwserial_release_port (struct fwtty_port*,int) ; 
- int /*<<< orphan*/  fwtty_info (int /*<<< orphan*/ *,char*,unsigned long long) ; 
- int /*<<< orphan*/  kfree (struct fwtty_peer*) ; 
- int /*<<< orphan*/  list_del_rcu (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  peer_set_state (struct fwtty_peer*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  spin_lock_bh (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock_bh (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  synchronize_rcu () ; 
+
+ int FWPS_GONE ;
+ int cancel_delayed_work_sync (int *) ;
+ int cancel_work_sync (int *) ;
+ int del_timer (int *) ;
+ int fwserial_release_port (struct fwtty_port*,int) ;
+ int fwtty_info (int *,char*,unsigned long long) ;
+ int kfree (struct fwtty_peer*) ;
+ int list_del_rcu (int *) ;
+ int peer_set_state (struct fwtty_peer*,int ) ;
+ int spin_lock_bh (int *) ;
+ int spin_unlock_bh (int *) ;
+ int synchronize_rcu () ;
 
 __attribute__((used)) static void fwserial_remove_peer(struct fwtty_peer *peer)
 {
-	struct fwtty_port *port;
+ struct fwtty_port *port;
 
-	spin_lock_bh(&peer->lock);
-	peer_set_state(peer, FWPS_GONE);
-	spin_unlock_bh(&peer->lock);
+ spin_lock_bh(&peer->lock);
+ peer_set_state(peer, FWPS_GONE);
+ spin_unlock_bh(&peer->lock);
 
-	cancel_delayed_work_sync(&peer->connect);
-	cancel_work_sync(&peer->work);
+ cancel_delayed_work_sync(&peer->connect);
+ cancel_work_sync(&peer->work);
 
-	spin_lock_bh(&peer->lock);
-	/* if this unit is the local unit, clear link */
-	if (peer == peer->serial->self)
-		peer->serial->self = NULL;
+ spin_lock_bh(&peer->lock);
 
-	/* cancel the request timeout timer (if running) */
-	del_timer(&peer->timer);
+ if (peer == peer->serial->self)
+  peer->serial->self = ((void*)0);
 
-	port = peer->port;
-	peer->port = NULL;
 
-	list_del_rcu(&peer->list);
+ del_timer(&peer->timer);
 
-	fwtty_info(&peer->unit, "peer removed (guid:%016llx)\n",
-		   (unsigned long long)peer->guid);
+ port = peer->port;
+ peer->port = ((void*)0);
 
-	spin_unlock_bh(&peer->lock);
+ list_del_rcu(&peer->list);
 
-	if (port)
-		fwserial_release_port(port, true);
+ fwtty_info(&peer->unit, "peer removed (guid:%016llx)\n",
+     (unsigned long long)peer->guid);
 
-	synchronize_rcu();
-	kfree(peer);
+ spin_unlock_bh(&peer->lock);
+
+ if (port)
+  fwserial_release_port(port, 1);
+
+ synchronize_rcu();
+ kfree(peer);
 }

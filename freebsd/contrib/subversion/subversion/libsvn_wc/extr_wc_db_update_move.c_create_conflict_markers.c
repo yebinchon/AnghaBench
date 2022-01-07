@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_12__ {int /*<<< orphan*/  location_and_kind; } ;
-typedef  TYPE_1__ working_node_version_t ;
-typedef  scalar_t__ svn_wc_operation_t ;
+
+
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+struct TYPE_12__ {int location_and_kind; } ;
+typedef TYPE_1__ working_node_version_t ;
+typedef scalar_t__ svn_wc_operation_t ;
 struct TYPE_13__ {char const* path_in_repos; void* node_kind; } ;
-typedef  TYPE_2__ svn_wc_conflict_version_t ;
-typedef  int /*<<< orphan*/  svn_wc__db_t ;
-typedef  int /*<<< orphan*/  svn_skel_t ;
-typedef  void* svn_node_kind_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  scalar_t__ svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+typedef TYPE_2__ svn_wc_conflict_version_t ;
+typedef int svn_wc__db_t ;
+typedef int svn_skel_t ;
+typedef void* svn_node_kind_t ;
+typedef int svn_error_t ;
+typedef scalar_t__ svn_boolean_t ;
+typedef int apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_ASSERT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- char const* svn_relpath_join (char const*,char const*,int /*<<< orphan*/ *) ; 
- char* svn_relpath_skip_ancestor (char const*,char const*) ; 
- int /*<<< orphan*/  svn_wc__conflict_create_markers (int /*<<< orphan*/ **,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__conflict_skel_set_op_merge (int /*<<< orphan*/ *,TYPE_2__*,TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__conflict_skel_set_op_switch (int /*<<< orphan*/ *,TYPE_2__*,TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__conflict_skel_set_op_update (int /*<<< orphan*/ *,TYPE_2__*,TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- TYPE_2__* svn_wc_conflict_version_dup (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_wc_operation_merge ; 
- scalar_t__ svn_wc_operation_update ; 
+
+ int SVN_ERR (int ) ;
+ int SVN_ERR_ASSERT (int ) ;
+ int * SVN_NO_ERROR ;
+ char const* svn_relpath_join (char const*,char const*,int *) ;
+ char* svn_relpath_skip_ancestor (char const*,char const*) ;
+ int svn_wc__conflict_create_markers (int **,int *,char const*,int *,int *,int *) ;
+ int svn_wc__conflict_skel_set_op_merge (int *,TYPE_2__*,TYPE_2__*,int *,int *) ;
+ int svn_wc__conflict_skel_set_op_switch (int *,TYPE_2__*,TYPE_2__*,int *,int *) ;
+ int svn_wc__conflict_skel_set_op_update (int *,TYPE_2__*,TYPE_2__*,int *,int *) ;
+ TYPE_2__* svn_wc_conflict_version_dup (int ,int *) ;
+ scalar_t__ svn_wc_operation_merge ;
+ scalar_t__ svn_wc_operation_update ;
 
 __attribute__((used)) static svn_error_t *
 create_conflict_markers(svn_skel_t **work_items,
@@ -65,10 +65,10 @@ create_conflict_markers(svn_skel_t **work_items,
 
   part = svn_relpath_skip_ancestor(original_version->path_in_repos,
                                    repos_relpath);
-  if (part == NULL)
+  if (part == ((void*)0))
     part = svn_relpath_skip_ancestor(conflicted_version->path_in_repos,
                                      repos_relpath);
-  SVN_ERR_ASSERT(part != NULL);
+  SVN_ERR_ASSERT(part != ((void*)0));
 
   conflicted_version->path_in_repos
     = svn_relpath_join(conflicted_version->path_in_repos, part, scratch_pool);
@@ -99,8 +99,8 @@ create_conflict_markers(svn_skel_t **work_items,
         }
     }
 
-  /* According to this func's doc string, it is "Currently only used for
-   * property conflicts as text conflict markers are just in-wc files." */
+
+
   SVN_ERR(svn_wc__conflict_create_markers(work_items, db,
                                           local_abspath,
                                           conflict_skel,

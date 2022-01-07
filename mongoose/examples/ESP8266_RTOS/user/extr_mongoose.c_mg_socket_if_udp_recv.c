@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-union socket_address {int /*<<< orphan*/  sa; } ;
-struct mg_connection {int /*<<< orphan*/  sock; } ;
-typedef  size_t socklen_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mg_is_error () ; 
- int recvfrom (int /*<<< orphan*/ ,void*,size_t,int /*<<< orphan*/ ,int /*<<< orphan*/ *,size_t*) ; 
+
+
+
+union socket_address {int sa; } ;
+struct mg_connection {int sock; } ;
+typedef size_t socklen_t ;
+
+
+ int mg_is_error () ;
+ int recvfrom (int ,void*,size_t,int ,int *,size_t*) ;
 
 __attribute__((used)) static int mg_socket_if_udp_recv(struct mg_connection *nc, void *buf,
                                  size_t len, union socket_address *sa,

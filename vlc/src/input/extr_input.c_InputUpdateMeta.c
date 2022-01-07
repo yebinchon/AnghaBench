@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_meta_t ;
-typedef  int /*<<< orphan*/  input_thread_t ;
-typedef  int /*<<< orphan*/  input_attachment_t ;
-typedef  int /*<<< orphan*/  demux_t ;
-struct TYPE_4__ {int i_attachment; int /*<<< orphan*/  p_es_out; TYPE_1__* p_item; int /*<<< orphan*/ ** attachment_demux; int /*<<< orphan*/ * attachment; } ;
-struct TYPE_3__ {int /*<<< orphan*/  lock; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AppendAttachment (int*,int /*<<< orphan*/ **,int /*<<< orphan*/ ***,int,int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DEMUX_GET_ATTACHMENTS ; 
- int /*<<< orphan*/  DEMUX_GET_META ; 
- int /*<<< orphan*/  demux_Control (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ***,...) ; 
- int /*<<< orphan*/  es_out_ControlSetMeta (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- TYPE_2__* input_priv (int /*<<< orphan*/ *) ; 
- scalar_t__ unlikely (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vlc_input_attachment_Delete (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vlc_meta_Delete (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * vlc_meta_New () ; 
- int /*<<< orphan*/  vlc_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_mutex_unlock (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int vlc_meta_t ;
+typedef int input_thread_t ;
+typedef int input_attachment_t ;
+typedef int demux_t ;
+struct TYPE_4__ {int i_attachment; int p_es_out; TYPE_1__* p_item; int ** attachment_demux; int * attachment; } ;
+struct TYPE_3__ {int lock; } ;
+
+
+ int AppendAttachment (int*,int **,int ***,int,int **,int *) ;
+ int DEMUX_GET_ATTACHMENTS ;
+ int DEMUX_GET_META ;
+ int demux_Control (int *,int ,int ***,...) ;
+ int es_out_ControlSetMeta (int ,int *) ;
+ TYPE_2__* input_priv (int *) ;
+ scalar_t__ unlikely (int ) ;
+ int vlc_input_attachment_Delete (int ) ;
+ int vlc_meta_Delete (int *) ;
+ int * vlc_meta_New () ;
+ int vlc_mutex_lock (int *) ;
+ int vlc_mutex_unlock (int *) ;
 
 __attribute__((used)) static void InputUpdateMeta( input_thread_t *p_input, demux_t *p_demux )
 {
     vlc_meta_t *p_meta = vlc_meta_New();
-    if( unlikely(p_meta == NULL) )
+    if( unlikely(p_meta == ((void*)0)) )
         return;
 
     demux_Control( p_demux, DEMUX_GET_META, p_meta );
 
-    /* If metadata changed, then the attachments might have changed.
-       We need to update them in case they contain album art. */
+
+
     input_attachment_t **attachment;
     int i_attachment;
 

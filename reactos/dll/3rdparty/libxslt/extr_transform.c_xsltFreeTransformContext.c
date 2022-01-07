@@ -1,67 +1,67 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_8__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* xsltTransformContextPtr ;
-typedef  int /*<<< orphan*/  xsltTransformContext ;
-struct TYPE_12__ {int /*<<< orphan*/ * nsHash; } ;
-struct TYPE_11__ {scalar_t__ extrasNr; int /*<<< orphan*/  dict; int /*<<< orphan*/  cache; struct TYPE_11__* extras; int /*<<< orphan*/ * info; int /*<<< orphan*/  (* deallocate ) (int /*<<< orphan*/ *) ;struct TYPE_11__* profTab; struct TYPE_11__* varsTab; struct TYPE_11__* templTab; TYPE_8__* xpathCtxt; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memset (TYPE_1__*,int,int) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  xmlDictFree (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xmlFree (TYPE_1__*) ; 
- int /*<<< orphan*/  xmlXPathFreeContext (TYPE_8__*) ; 
- int /*<<< orphan*/  xsltFreeCtxtExts (TYPE_1__*) ; 
- int /*<<< orphan*/  xsltFreeDocuments (TYPE_1__*) ; 
- int /*<<< orphan*/  xsltFreeGlobalVariables (TYPE_1__*) ; 
- int /*<<< orphan*/  xsltFreeRVTs (TYPE_1__*) ; 
- int /*<<< orphan*/  xsltGenericDebug (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  xsltGenericDebugContext ; 
- int /*<<< orphan*/  xsltShutdownCtxtExts (TYPE_1__*) ; 
- int /*<<< orphan*/  xsltTransformCacheFree (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_12__ TYPE_8__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef TYPE_1__* xsltTransformContextPtr ;
+typedef int xsltTransformContext ;
+struct TYPE_12__ {int * nsHash; } ;
+struct TYPE_11__ {scalar_t__ extrasNr; int dict; int cache; struct TYPE_11__* extras; int * info; int (* deallocate ) (int *) ;struct TYPE_11__* profTab; struct TYPE_11__* varsTab; struct TYPE_11__* templTab; TYPE_8__* xpathCtxt; } ;
+
+
+ int memset (TYPE_1__*,int,int) ;
+ int stub1 (int *) ;
+ int xmlDictFree (int ) ;
+ int xmlFree (TYPE_1__*) ;
+ int xmlXPathFreeContext (TYPE_8__*) ;
+ int xsltFreeCtxtExts (TYPE_1__*) ;
+ int xsltFreeDocuments (TYPE_1__*) ;
+ int xsltFreeGlobalVariables (TYPE_1__*) ;
+ int xsltFreeRVTs (TYPE_1__*) ;
+ int xsltGenericDebug (int ,char*) ;
+ int xsltGenericDebugContext ;
+ int xsltShutdownCtxtExts (TYPE_1__*) ;
+ int xsltTransformCacheFree (int ) ;
 
 void
 xsltFreeTransformContext(xsltTransformContextPtr ctxt) {
-    if (ctxt == NULL)
-	return;
+    if (ctxt == ((void*)0))
+ return;
 
-    /*
-     * Shutdown the extension modules associated to the stylesheet
-     * used if needed.
-     */
+
+
+
+
     xsltShutdownCtxtExts(ctxt);
 
-    if (ctxt->xpathCtxt != NULL) {
-	ctxt->xpathCtxt->nsHash = NULL;
-	xmlXPathFreeContext(ctxt->xpathCtxt);
+    if (ctxt->xpathCtxt != ((void*)0)) {
+ ctxt->xpathCtxt->nsHash = ((void*)0);
+ xmlXPathFreeContext(ctxt->xpathCtxt);
     }
-    if (ctxt->templTab != NULL)
-	xmlFree(ctxt->templTab);
-    if (ctxt->varsTab != NULL)
-	xmlFree(ctxt->varsTab);
-    if (ctxt->profTab != NULL)
-	xmlFree(ctxt->profTab);
-    if ((ctxt->extrasNr > 0) && (ctxt->extras != NULL)) {
-	int i;
+    if (ctxt->templTab != ((void*)0))
+ xmlFree(ctxt->templTab);
+    if (ctxt->varsTab != ((void*)0))
+ xmlFree(ctxt->varsTab);
+    if (ctxt->profTab != ((void*)0))
+ xmlFree(ctxt->profTab);
+    if ((ctxt->extrasNr > 0) && (ctxt->extras != ((void*)0))) {
+ int i;
 
-	for (i = 0;i < ctxt->extrasNr;i++) {
-	    if ((ctxt->extras[i].deallocate != NULL) &&
-		(ctxt->extras[i].info != NULL))
-		ctxt->extras[i].deallocate(ctxt->extras[i].info);
-	}
-	xmlFree(ctxt->extras);
+ for (i = 0;i < ctxt->extrasNr;i++) {
+     if ((ctxt->extras[i].deallocate != ((void*)0)) &&
+  (ctxt->extras[i].info != ((void*)0)))
+  ctxt->extras[i].deallocate(ctxt->extras[i].info);
+ }
+ xmlFree(ctxt->extras);
     }
     xsltFreeGlobalVariables(ctxt);
     xsltFreeDocuments(ctxt);
@@ -69,10 +69,10 @@ xsltFreeTransformContext(xsltTransformContextPtr ctxt) {
     xsltFreeRVTs(ctxt);
     xsltTransformCacheFree(ctxt->cache);
     xmlDictFree(ctxt->dict);
-#ifdef WITH_XSLT_DEBUG
-    xsltGenericDebug(xsltGenericDebugContext,
-                     "freeing transformation dictionary\n");
-#endif
+
+
+
+
     memset(ctxt, -1, sizeof(xsltTransformContext));
     xmlFree(ctxt);
 }

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  secp256k1_pubkey ;
-typedef  int /*<<< orphan*/  secp256k1_context ;
-typedef  int /*<<< orphan*/  middle ;
-typedef  int /*<<< orphan*/  begin ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SECP256K1_EC_COMPRESSED ; 
- int /*<<< orphan*/  SECP256K1_EC_UNCOMPRESSED ; 
- int /*<<< orphan*/  memcpy (unsigned char*,unsigned char const*,int) ; 
- int /*<<< orphan*/  secp256k1_ec_pubkey_create (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,unsigned char const*) ; 
- int /*<<< orphan*/  secp256k1_ec_pubkey_serialize (int /*<<< orphan*/  const*,unsigned char*,size_t*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int secp256k1_pubkey ;
+typedef int secp256k1_context ;
+typedef int middle ;
+typedef int begin ;
+
+
+ int SECP256K1_EC_COMPRESSED ;
+ int SECP256K1_EC_UNCOMPRESSED ;
+ int memcpy (unsigned char*,unsigned char const*,int) ;
+ int secp256k1_ec_pubkey_create (int const*,int *,unsigned char const*) ;
+ int secp256k1_ec_pubkey_serialize (int const*,unsigned char*,size_t*,int *,int ) ;
 
 int ec_privkey_export_der(const secp256k1_context *ctx, unsigned char *privkey, size_t *privkeylen, const unsigned char *key32, int compressed) {
     secp256k1_pubkey pubkey;

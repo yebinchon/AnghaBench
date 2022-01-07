@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct wined3d_string_buffer {char* buffer; } ;
 struct wined3d_gl_info {int dummy; } ;
-struct shader_glsl_priv {int /*<<< orphan*/  string_buffers; } ;
+struct shader_glsl_priv {int string_buffers; } ;
 struct glsl_vs_program {void* clip_planes_location; void* pointsize_q_att_location; void* pointsize_l_att_location; void* pointsize_c_att_location; void* pointsize_max_location; void* pointsize_min_location; void* pointsize_location; TYPE_1__* light_location; void* light_ambient_location; void* material_shininess_location; void* material_emissive_location; void* material_specular_location; void* material_diffuse_location; void* material_ambient_location; void** texture_matrix_location; void* projection_matrix_location; void** normal_matrix_location; void** modelview_matrix_location; void* pos_fixup_location; void** uniform_b_locations; void** uniform_i_locations; void** uniform_f_locations; } ;
 struct TYPE_2__ {void* cos_hphi; void* cos_htheta; void* q_att; void* l_att; void* c_att; void* falloff; void* range; void* direction; void* position; void* ambient; void* specular; void* diffuse; } ;
-typedef  int /*<<< orphan*/  GLuint ;
+typedef int GLuint ;
 
-/* Variables and functions */
- void* GL_EXTCALL (int /*<<< orphan*/ ) ; 
- unsigned int MAX_ACTIVE_LIGHTS ; 
- unsigned int MAX_TEXTURES ; 
- unsigned int MAX_VERTEX_INDEX_BLENDS ; 
- unsigned int WINED3D_MAX_CONSTS_B ; 
- unsigned int WINED3D_MAX_CONSTS_I ; 
- unsigned int WINED3D_MAX_VS_CONSTS_F ; 
- int /*<<< orphan*/  glGetUniformLocation (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  memset (void**,int,unsigned int) ; 
- struct wined3d_string_buffer* string_buffer_get (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  string_buffer_release (int /*<<< orphan*/ *,struct wined3d_string_buffer*) ; 
- int /*<<< orphan*/  string_buffer_sprintf (struct wined3d_string_buffer*,char*,unsigned int) ; 
+
+ void* GL_EXTCALL (int ) ;
+ unsigned int MAX_ACTIVE_LIGHTS ;
+ unsigned int MAX_TEXTURES ;
+ unsigned int MAX_VERTEX_INDEX_BLENDS ;
+ unsigned int WINED3D_MAX_CONSTS_B ;
+ unsigned int WINED3D_MAX_CONSTS_I ;
+ unsigned int WINED3D_MAX_VS_CONSTS_F ;
+ int glGetUniformLocation (int ,char*) ;
+ int memset (void**,int,unsigned int) ;
+ struct wined3d_string_buffer* string_buffer_get (int *) ;
+ int string_buffer_release (int *,struct wined3d_string_buffer*) ;
+ int string_buffer_sprintf (struct wined3d_string_buffer*,char*,unsigned int) ;
 
 __attribute__((used)) static void shader_glsl_init_vs_uniform_locations(const struct wined3d_gl_info *gl_info,
         struct shader_glsl_priv *priv, GLuint program_id, struct glsl_vs_program *vs, unsigned int vs_c_count)

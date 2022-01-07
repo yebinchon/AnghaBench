@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  (* get_version ) () ;} ;
-typedef  TYPE_1__ svn_ra_plugin_t ;
-typedef  int /*<<< orphan*/  (* svn_ra_init_func_t ) (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct ra_lib_defn {int /*<<< orphan*/ * ra_name; int /*<<< orphan*/  (* compat_initfunc ) (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ;int /*<<< orphan*/  schemes; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_RA_ILLEGAL_URL ; 
- int /*<<< orphan*/  SVN_RA_ABI_VERSION ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/ * apr_hash_make (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * check_ra_version (int /*<<< orphan*/ ,char const*) ; 
- char* has_scheme_of (int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  load_ra_module (int /*<<< orphan*/ *,int /*<<< orphan*/  (*) (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *),int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- struct ra_lib_defn* ra_libraries ; 
- int /*<<< orphan*/  stub1 () ; 
- int /*<<< orphan*/ * svn_error_createf (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*) ; 
- TYPE_1__* svn_hash_gets (int /*<<< orphan*/ *,char const*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int (* get_version ) () ;} ;
+typedef TYPE_1__ svn_ra_plugin_t ;
+typedef int (* svn_ra_init_func_t ) (int ,int *,int *) ;
+typedef int svn_error_t ;
+struct ra_lib_defn {int * ra_name; int (* compat_initfunc ) (int ,int *,int *) ;int schemes; } ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
+
+
+ int SVN_ERR (int ) ;
+ int SVN_ERR_RA_ILLEGAL_URL ;
+ int SVN_RA_ABI_VERSION ;
+ int _ (char*) ;
+ int * apr_hash_make (int *) ;
+ int * check_ra_version (int ,char const*) ;
+ char* has_scheme_of (int ,char const*) ;
+ int load_ra_module (int *,int (*) (int ,int *,int *),int *,int *) ;
+ struct ra_lib_defn* ra_libraries ;
+ int stub1 () ;
+ int * svn_error_createf (int ,int *,int ,char const*) ;
+ TYPE_1__* svn_hash_gets (int *,char const*) ;
 
 svn_error_t *
 svn_ra_get_ra_library(svn_ra_plugin_t **library,
@@ -43,8 +43,8 @@ svn_ra_get_ra_library(svn_ra_plugin_t **library,
   apr_pool_t *load_pool = ra_baton;
   apr_hash_t *ht = apr_hash_make(pool);
 
-  /* Figure out which RA library key matches URL. */
-  for (defn = ra_libraries; defn->ra_name != NULL; ++defn)
+
+  for (defn = ra_libraries; defn->ra_name != ((void*)0); ++defn)
     {
       const char *scheme;
       if ((scheme = has_scheme_of(defn->schemes, url)))
@@ -54,7 +54,7 @@ svn_ra_get_ra_library(svn_ra_plugin_t **library,
           if (! compat_initfunc)
             {
               SVN_ERR(load_ra_module
-                      (NULL, &compat_initfunc, defn->ra_name, load_pool));
+                      (((void*)0), &compat_initfunc, defn->ra_name, load_pool));
             }
           if (! compat_initfunc)
             {
@@ -65,8 +65,8 @@ svn_ra_get_ra_library(svn_ra_plugin_t **library,
 
           *library = svn_hash_gets(ht, scheme);
 
-          /* The library may support just a subset of the schemes listed,
-             so we have to check here too. */
+
+
           if (! *library)
             break;
 
@@ -74,8 +74,8 @@ svn_ra_get_ra_library(svn_ra_plugin_t **library,
         }
     }
 
-  /* Couldn't find a match... */
-  *library = NULL;
-  return svn_error_createf(SVN_ERR_RA_ILLEGAL_URL, NULL,
+
+  *library = ((void*)0);
+  return svn_error_createf(SVN_ERR_RA_ILLEGAL_URL, ((void*)0),
                            _("Unrecognized URL scheme '%s'"), url);
 }

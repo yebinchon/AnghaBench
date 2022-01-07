@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  RedisModuleString ;
-typedef  int /*<<< orphan*/  RedisModuleIO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RedisModule_SaveFloat (int /*<<< orphan*/ *,double) ; 
- int /*<<< orphan*/  RedisModule_SaveLongDouble (int /*<<< orphan*/ *,long double) ; 
- int /*<<< orphan*/  RedisModule_SaveSigned (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  RedisModule_SaveString (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int RedisModuleString ;
+typedef int RedisModuleIO ;
+
+
+ int RedisModule_SaveFloat (int *,double) ;
+ int RedisModule_SaveLongDouble (int *,long double) ;
+ int RedisModule_SaveSigned (int *,int) ;
+ int RedisModule_SaveString (int *,int *) ;
 
 void testrdb_type_save(RedisModuleIO *rdb, void *value) {
     RedisModuleString *str = (RedisModuleString*)value;

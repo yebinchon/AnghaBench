@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- int LUA_OK ; 
- int /*<<< orphan*/  lua_insert (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pop (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pushnil (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_pushvalue (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_setupvalue (int /*<<< orphan*/ *,int,int) ; 
+
+
+
+typedef int lua_State ;
+
+
+ int LUA_OK ;
+ int lua_insert (int *,int) ;
+ int lua_pop (int *,int) ;
+ int lua_pushnil (int *) ;
+ int lua_pushvalue (int *,int) ;
+ int lua_setupvalue (int *,int,int) ;
 
 __attribute__((used)) static int load_aux (lua_State *L, int status, int envidx) {
   if (status == LUA_OK) {
-    if (envidx != 0) {  /* 'env' parameter? */
-      lua_pushvalue(L, envidx);  /* environment for loaded function */
-      if (!lua_setupvalue(L, -2, 1))  /* set it as 1st upvalue */
-        lua_pop(L, 1);  /* remove 'env' if not used by previous call */
+    if (envidx != 0) {
+      lua_pushvalue(L, envidx);
+      if (!lua_setupvalue(L, -2, 1))
+        lua_pop(L, 1);
     }
     return 1;
   }
-  else {  /* error (message is on top of the stack) */
+  else {
     lua_pushnil(L);
-    lua_insert(L, -2);  /* put before error message */
-    return 2;  /* return nil plus error message */
+    lua_insert(L, -2);
+    return 2;
   }
 }

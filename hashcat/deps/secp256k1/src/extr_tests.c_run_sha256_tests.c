@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  secp256k1_sha256 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHECK (int) ; 
- scalar_t__ memcmp (unsigned char*,unsigned char const*,int) ; 
- int secp256k1_rand_int (int) ; 
- int /*<<< orphan*/  secp256k1_sha256_finalize (int /*<<< orphan*/ *,unsigned char*) ; 
- int /*<<< orphan*/  secp256k1_sha256_initialize (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  secp256k1_sha256_write (int /*<<< orphan*/ *,unsigned char const*,int) ; 
- int strlen (char const*) ; 
+
+
+
+typedef int secp256k1_sha256 ;
+
+
+ int CHECK (int) ;
+ scalar_t__ memcmp (unsigned char*,unsigned char const*,int) ;
+ int secp256k1_rand_int (int) ;
+ int secp256k1_sha256_finalize (int *,unsigned char*) ;
+ int secp256k1_sha256_initialize (int *) ;
+ int secp256k1_sha256_write (int *,unsigned char const*,int) ;
+ int strlen (char const*) ;
 
 void run_sha256_tests(void) {
     static const char *inputs[8] = {

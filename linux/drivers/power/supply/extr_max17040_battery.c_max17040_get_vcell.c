@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u16 ;
-struct max17040_chip {int /*<<< orphan*/  vcell; } ;
+
+
+
+
+typedef int u16 ;
+struct max17040_chip {int vcell; } ;
 struct i2c_client {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MAX17040_VCELL ; 
- struct max17040_chip* i2c_get_clientdata (struct i2c_client*) ; 
- int /*<<< orphan*/  max17040_read_reg (struct i2c_client*,int /*<<< orphan*/ ) ; 
+
+ int MAX17040_VCELL ;
+ struct max17040_chip* i2c_get_clientdata (struct i2c_client*) ;
+ int max17040_read_reg (struct i2c_client*,int ) ;
 
 __attribute__((used)) static void max17040_get_vcell(struct i2c_client *client)
 {
-	struct max17040_chip *chip = i2c_get_clientdata(client);
-	u16 vcell;
+ struct max17040_chip *chip = i2c_get_clientdata(client);
+ u16 vcell;
 
-	vcell = max17040_read_reg(client, MAX17040_VCELL);
+ vcell = max17040_read_reg(client, MAX17040_VCELL);
 
-	chip->vcell = vcell;
+ chip->vcell = vcell;
 }

@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  jerry_value_t ;
 
-/* Variables and functions */
- int jerry_get_boolean_value (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jerry_get_property (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jerry_has_property (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jerry_release_value (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jerry_value_is_error (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int jerry_value_t ;
+
+
+ int jerry_get_boolean_value (int ) ;
+ int jerry_get_property (int ,int ) ;
+ int jerry_has_property (int ,int ) ;
+ int jerry_release_value (int ) ;
+ int jerry_value_is_error (int ) ;
 
 __attribute__((used)) static bool
-jerryx_module_check_cache (jerry_value_t cache, /**< cache from which to attempt to retrieve the module by name */
-                           jerry_value_t module_name, /**< JerryScript string value holding the module name */
-                           jerry_value_t *result) /**< Resulting value */
+jerryx_module_check_cache (jerry_value_t cache,
+                           jerry_value_t module_name,
+                           jerry_value_t *result)
 {
-  bool ret = false;
+  bool ret = 0;
 
-  /* Check if the cache has the module. */
+
   jerry_value_t js_has_property = jerry_has_property (cache, module_name);
 
-  /* If we succeed in getting an answer, we examine the answer. */
+
   if (!jerry_value_is_error (js_has_property))
   {
     bool has_property = jerry_get_boolean_value (js_has_property);
 
-    /* If the module is indeed in the cache, we return it. */
+
     if (has_property)
     {
-      if (result != NULL)
+      if (result != ((void*)0))
       {
         (*result) = jerry_get_property (cache, module_name);
       }
-      ret = true;
+      ret = 1;
     }
   }
 

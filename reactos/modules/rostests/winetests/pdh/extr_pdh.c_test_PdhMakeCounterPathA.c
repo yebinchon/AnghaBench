@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  e ;
-typedef  int /*<<< orphan*/  buffer ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int e ;
+typedef int buffer ;
 struct TYPE_4__ {char* szMachineName; char* szObjectName; char* szInstanceName; char* szParentInstance; int dwInstanceIndex; char* szCounterName; } ;
-typedef  char* PDH_STATUS ;
-typedef  TYPE_1__ PDH_COUNTER_PATH_ELEMENTS_A ;
-typedef  int DWORD ;
+typedef char* PDH_STATUS ;
+typedef TYPE_1__ PDH_COUNTER_PATH_ELEMENTS_A ;
+typedef int DWORD ;
 
-/* Variables and functions */
- char* ERROR_SUCCESS ; 
- char* PDH_INVALID_ARGUMENT ; 
- char* PdhMakeCounterPathA (TYPE_1__*,char*,int*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ok (int,char*,char*) ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
+
+ char* ERROR_SUCCESS ;
+ char* PDH_INVALID_ARGUMENT ;
+ char* PdhMakeCounterPathA (TYPE_1__*,char*,int*,int ) ;
+ int memset (TYPE_1__*,int ,int) ;
+ int ok (int,char*,char*) ;
+ int strcmp (char*,char*) ;
 
 __attribute__((used)) static void test_PdhMakeCounterPathA(void)
 {
@@ -33,15 +33,15 @@ __attribute__((used)) static void test_PdhMakeCounterPathA(void)
     char buffer[1024];
     DWORD buflen;
 
-    ret = PdhMakeCounterPathA(NULL, NULL, NULL, 0);
+    ret = PdhMakeCounterPathA(((void*)0), ((void*)0), ((void*)0), 0);
     ok(ret == PDH_INVALID_ARGUMENT, "PdhMakeCounterPathA failed 0x%08x\n", ret);
 
     buflen = 0;
-    ret = PdhMakeCounterPathA(NULL, NULL, &buflen, 0);
+    ret = PdhMakeCounterPathA(((void*)0), ((void*)0), &buflen, 0);
     ok(ret == PDH_INVALID_ARGUMENT, "PdhMakeCounterPathA failed 0x%08x\n", ret);
 
     buflen = 0;
-    ret = PdhMakeCounterPathA(NULL, buffer, &buflen, 0);
+    ret = PdhMakeCounterPathA(((void*)0), buffer, &buflen, 0);
     ok(ret == PDH_INVALID_ARGUMENT, "PdhMakeCounterPathA failed 0x%08x\n", ret);
 
     buflen = sizeof(buffer);
@@ -94,7 +94,7 @@ __attribute__((used)) static void test_PdhMakeCounterPathA(void)
 
     buffer[0] = 0;
     buflen = sizeof(buffer);
-    e.szParentInstance = NULL;
+    e.szParentInstance = ((void*)0);
     ret = PdhMakeCounterPathA(&e, buffer, &buflen, 0);
     ok(ret == ERROR_SUCCESS, "PdhMakeCounterPathA failed 0x%08x\n", ret);
     ok(!strcmp(buffer, "\\\\machine\\object(instance#1)\\counter"),
@@ -102,7 +102,7 @@ __attribute__((used)) static void test_PdhMakeCounterPathA(void)
 
     buffer[0] = 0;
     buflen = sizeof(buffer);
-    e.szInstanceName = NULL;
+    e.szInstanceName = ((void*)0);
     ret = PdhMakeCounterPathA(&e, buffer, &buflen, 0);
     ok(ret == ERROR_SUCCESS, "PdhMakeCounterPathA failed 0x%08x\n", ret);
     ok(!strcmp(buffer, "\\\\machine\\object\\counter"),
@@ -110,7 +110,7 @@ __attribute__((used)) static void test_PdhMakeCounterPathA(void)
 
     buffer[0] = 0;
     buflen = sizeof(buffer);
-    e.szMachineName = NULL;
+    e.szMachineName = ((void*)0);
     ret = PdhMakeCounterPathA(&e, buffer, &buflen, 0);
     ok(ret == ERROR_SUCCESS, "PdhMakeCounterPathA failed 0x%08x\n", ret);
     ok(!strcmp(buffer, "\\object\\counter"),
@@ -118,7 +118,7 @@ __attribute__((used)) static void test_PdhMakeCounterPathA(void)
 
     buffer[0] = 0;
     buflen = sizeof(buffer);
-    e.szObjectName = NULL;
+    e.szObjectName = ((void*)0);
     ret = PdhMakeCounterPathA(&e, buffer, &buflen, 0);
     ok(ret == PDH_INVALID_ARGUMENT, "PdhMakeCounterPathA failed 0x%08x\n", ret);
 }

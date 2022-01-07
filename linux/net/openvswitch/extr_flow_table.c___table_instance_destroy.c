@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct table_instance {int /*<<< orphan*/  buckets; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  kfree (struct table_instance*) ; 
- int /*<<< orphan*/  kvfree (int /*<<< orphan*/ ) ; 
+
+
+
+struct table_instance {int buckets; } ;
+
+
+ int kfree (struct table_instance*) ;
+ int kvfree (int ) ;
 
 __attribute__((used)) static void __table_instance_destroy(struct table_instance *ti)
 {
-	kvfree(ti->buckets);
-	kfree(ti);
+ kvfree(ti->buckets);
+ kfree(ti);
 }

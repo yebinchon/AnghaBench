@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mmtime ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int mmtime ;
 struct TYPE_4__ {scalar_t__ wType; } ;
-typedef  TYPE_1__ MMTIME ;
-typedef  scalar_t__ MMRESULT ;
-typedef  int /*<<< orphan*/  LPWAVEFORMATEX ;
-typedef  int /*<<< orphan*/  HWAVEOUT ;
-typedef  scalar_t__ DWORD ;
+typedef TYPE_1__ MMTIME ;
+typedef scalar_t__ MMRESULT ;
+typedef int LPWAVEFORMATEX ;
+typedef int HWAVEOUT ;
+typedef scalar_t__ DWORD ;
 
-/* Variables and functions */
- scalar_t__ MMSYSERR_ERROR ; 
- scalar_t__ MMSYSERR_NOERROR ; 
- scalar_t__ TIME_BYTES ; 
- scalar_t__ TIME_MIDI ; 
- scalar_t__ TIME_MS ; 
- scalar_t__ TIME_SAMPLES ; 
- scalar_t__ TIME_SMPTE ; 
- scalar_t__ TIME_TICKS ; 
- int /*<<< orphan*/  bytes_to_ms (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bytes_to_samples (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dev_name (int) ; 
- int /*<<< orphan*/  ok (int,char*,int /*<<< orphan*/ ,...) ; 
- scalar_t__ time_to_bytes (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  trace (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ waveOutGetPosition (int /*<<< orphan*/ ,TYPE_1__*,int) ; 
- int /*<<< orphan*/  wave_out_error (scalar_t__) ; 
- int /*<<< orphan*/  wave_time_format (scalar_t__) ; 
- int winetest_debug ; 
+
+ scalar_t__ MMSYSERR_ERROR ;
+ scalar_t__ MMSYSERR_NOERROR ;
+ scalar_t__ TIME_BYTES ;
+ scalar_t__ TIME_MIDI ;
+ scalar_t__ TIME_MS ;
+ scalar_t__ TIME_SAMPLES ;
+ scalar_t__ TIME_SMPTE ;
+ scalar_t__ TIME_TICKS ;
+ int bytes_to_ms (scalar_t__,int ) ;
+ int bytes_to_samples (scalar_t__,int ) ;
+ int dev_name (int) ;
+ int ok (int,char*,int ,...) ;
+ scalar_t__ time_to_bytes (TYPE_1__*,int ) ;
+ int trace (char*,int ,int ) ;
+ scalar_t__ waveOutGetPosition (int ,TYPE_1__*,int) ;
+ int wave_out_error (scalar_t__) ;
+ int wave_time_format (scalar_t__) ;
+ int winetest_debug ;
 
 __attribute__((used)) static void check_position(int device, HWAVEOUT wout, DWORD bytes,
                            LPWAVEFORMATEX pwfx )

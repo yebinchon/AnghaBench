@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct async_header {void (* proc ) (struct async_header*) ;int /*<<< orphan*/ * sink; void* wait; void* cancel; } ;
-typedef  int /*<<< orphan*/  IWbemObjectSink ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CloseHandle (void*) ; 
- void* CreateEventW (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  IWbemObjectSink_AddRef (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TRUE ; 
+
+
+
+struct async_header {void (* proc ) (struct async_header*) ;int * sink; void* wait; void* cancel; } ;
+typedef int IWbemObjectSink ;
+typedef int BOOL ;
+
+
+ int CloseHandle (void*) ;
+ void* CreateEventW (int *,int ,int ,int *) ;
+ int FALSE ;
+ int IWbemObjectSink_AddRef (int *) ;
+ int TRUE ;
 
 __attribute__((used)) static BOOL init_async( struct async_header *async, IWbemObjectSink *sink,
                         void (*proc)(struct async_header *) )
 {
-    if (!(async->wait = CreateEventW( NULL, FALSE, FALSE, NULL ))) return FALSE;
-    if (!(async->cancel = CreateEventW( NULL, FALSE, FALSE, NULL )))
+    if (!(async->wait = CreateEventW( ((void*)0), FALSE, FALSE, ((void*)0) ))) return FALSE;
+    if (!(async->cancel = CreateEventW( ((void*)0), FALSE, FALSE, ((void*)0) )))
     {
         CloseHandle( async->wait );
         return FALSE;

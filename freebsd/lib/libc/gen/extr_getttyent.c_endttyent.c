@@ -1,34 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ EOF ; 
- scalar_t__ fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * tf ; 
+ scalar_t__ EOF ;
+ scalar_t__ fclose (int *) ;
+ int * tf ;
 
 int
 endttyent(void)
 {
-	int rval;
+ int rval;
 
-	/*
-         * NB: Don't free `line' because getttynam()
-	 * may still be referencing it
-	 */
-	if (tf) {
-		rval = (fclose(tf) != EOF);
-		tf = NULL;
-		return (rval);
-	}
-	return (1);
+
+
+
+
+ if (tf) {
+  rval = (fclose(tf) != EOF);
+  tf = ((void*)0);
+  return (rval);
+ }
+ return (1);
 }

@@ -1,41 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  enum p2p_wps_method { ____Placeholder_p2p_wps_method } p2p_wps_method ;
 
-/* Variables and functions */
-#define  WPS_NFC 133 
-#define  WPS_NOT_READY 132 
-#define  WPS_P2PS 131 
-#define  WPS_PBC 130 
-#define  WPS_PIN_DISPLAY 129 
-#define  WPS_PIN_KEYPAD 128 
 
+
+
+typedef enum p2p_wps_method { ____Placeholder_p2p_wps_method } p2p_wps_method ;
 const char * p2p_wps_method_text(enum p2p_wps_method method)
 {
-	switch (method) {
-	case WPS_NOT_READY:
-		return "not-ready";
-	case WPS_PIN_DISPLAY:
-		return "Display";
-	case WPS_PIN_KEYPAD:
-		return "Keypad";
-	case WPS_PBC:
-		return "PBC";
-	case WPS_NFC:
-		return "NFC";
-	case WPS_P2PS:
-		return "P2PS";
-	}
+ switch (method) {
+ case 132:
+  return "not-ready";
+ case 129:
+  return "Display";
+ case 128:
+  return "Keypad";
+ case 130:
+  return "PBC";
+ case 133:
+  return "NFC";
+ case 131:
+  return "P2PS";
+ }
 
-	return "??";
+ return "??";
 }

@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct demangle_component {int dummy; } ;
 struct d_info {int expansion; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEMANGLE_COMPONENT_CONSTRUCTION_VTABLE ; 
- int /*<<< orphan*/  DEMANGLE_COMPONENT_COVARIANT_THUNK ; 
- int /*<<< orphan*/  DEMANGLE_COMPONENT_GUARD ; 
- int /*<<< orphan*/  DEMANGLE_COMPONENT_HIDDEN_ALIAS ; 
- int /*<<< orphan*/  DEMANGLE_COMPONENT_JAVA_CLASS ; 
- int /*<<< orphan*/  DEMANGLE_COMPONENT_NONTRANSACTION_CLONE ; 
- int /*<<< orphan*/  DEMANGLE_COMPONENT_REFTEMP ; 
- int /*<<< orphan*/  DEMANGLE_COMPONENT_THUNK ; 
- int /*<<< orphan*/  DEMANGLE_COMPONENT_TLS_INIT ; 
- int /*<<< orphan*/  DEMANGLE_COMPONENT_TLS_WRAPPER ; 
- int /*<<< orphan*/  DEMANGLE_COMPONENT_TPARM_OBJ ; 
- int /*<<< orphan*/  DEMANGLE_COMPONENT_TRANSACTION_CLONE ; 
- int /*<<< orphan*/  DEMANGLE_COMPONENT_TYPEINFO ; 
- int /*<<< orphan*/  DEMANGLE_COMPONENT_TYPEINFO_FN ; 
- int /*<<< orphan*/  DEMANGLE_COMPONENT_TYPEINFO_NAME ; 
- int /*<<< orphan*/  DEMANGLE_COMPONENT_VIRTUAL_THUNK ; 
- int /*<<< orphan*/  DEMANGLE_COMPONENT_VTABLE ; 
- int /*<<< orphan*/  DEMANGLE_COMPONENT_VTT ; 
- struct demangle_component* cplus_demangle_type (struct d_info*) ; 
- int /*<<< orphan*/  d_call_offset (struct d_info*,char) ; 
- scalar_t__ d_check_char (struct d_info*,char) ; 
- struct demangle_component* d_encoding (struct d_info*,int /*<<< orphan*/ ) ; 
- struct demangle_component* d_java_resource (struct d_info*) ; 
- struct demangle_component* d_make_comp (struct d_info*,int /*<<< orphan*/ ,struct demangle_component*,struct demangle_component*) ; 
- struct demangle_component* d_name (struct d_info*) ; 
- int d_next_char (struct d_info*) ; 
- int d_number (struct d_info*) ; 
- struct demangle_component* d_number_component (struct d_info*) ; 
- struct demangle_component* d_template_arg (struct d_info*) ; 
+
+ int DEMANGLE_COMPONENT_CONSTRUCTION_VTABLE ;
+ int DEMANGLE_COMPONENT_COVARIANT_THUNK ;
+ int DEMANGLE_COMPONENT_GUARD ;
+ int DEMANGLE_COMPONENT_HIDDEN_ALIAS ;
+ int DEMANGLE_COMPONENT_JAVA_CLASS ;
+ int DEMANGLE_COMPONENT_NONTRANSACTION_CLONE ;
+ int DEMANGLE_COMPONENT_REFTEMP ;
+ int DEMANGLE_COMPONENT_THUNK ;
+ int DEMANGLE_COMPONENT_TLS_INIT ;
+ int DEMANGLE_COMPONENT_TLS_WRAPPER ;
+ int DEMANGLE_COMPONENT_TPARM_OBJ ;
+ int DEMANGLE_COMPONENT_TRANSACTION_CLONE ;
+ int DEMANGLE_COMPONENT_TYPEINFO ;
+ int DEMANGLE_COMPONENT_TYPEINFO_FN ;
+ int DEMANGLE_COMPONENT_TYPEINFO_NAME ;
+ int DEMANGLE_COMPONENT_VIRTUAL_THUNK ;
+ int DEMANGLE_COMPONENT_VTABLE ;
+ int DEMANGLE_COMPONENT_VTT ;
+ struct demangle_component* cplus_demangle_type (struct d_info*) ;
+ int d_call_offset (struct d_info*,char) ;
+ scalar_t__ d_check_char (struct d_info*,char) ;
+ struct demangle_component* d_encoding (struct d_info*,int ) ;
+ struct demangle_component* d_java_resource (struct d_info*) ;
+ struct demangle_component* d_make_comp (struct d_info*,int ,struct demangle_component*,struct demangle_component*) ;
+ struct demangle_component* d_name (struct d_info*) ;
+ int d_next_char (struct d_info*) ;
+ int d_number (struct d_info*) ;
+ struct demangle_component* d_number_component (struct d_info*) ;
+ struct demangle_component* d_template_arg (struct d_info*) ;
 
 __attribute__((used)) static struct demangle_component *
 d_special_name (struct d_info *di)
@@ -51,128 +51,128 @@ d_special_name (struct d_info *di)
   if (d_check_char (di, 'T'))
     {
       switch (d_next_char (di))
-	{
-	case 'V':
-	  di->expansion -= 5;
-	  return d_make_comp (di, DEMANGLE_COMPONENT_VTABLE,
-			      cplus_demangle_type (di), NULL);
-	case 'T':
-	  di->expansion -= 10;
-	  return d_make_comp (di, DEMANGLE_COMPONENT_VTT,
-			      cplus_demangle_type (di), NULL);
-	case 'I':
-	  return d_make_comp (di, DEMANGLE_COMPONENT_TYPEINFO,
-			      cplus_demangle_type (di), NULL);
-	case 'S':
-	  return d_make_comp (di, DEMANGLE_COMPONENT_TYPEINFO_NAME,
-			      cplus_demangle_type (di), NULL);
+ {
+ case 'V':
+   di->expansion -= 5;
+   return d_make_comp (di, DEMANGLE_COMPONENT_VTABLE,
+         cplus_demangle_type (di), ((void*)0));
+ case 'T':
+   di->expansion -= 10;
+   return d_make_comp (di, DEMANGLE_COMPONENT_VTT,
+         cplus_demangle_type (di), ((void*)0));
+ case 'I':
+   return d_make_comp (di, DEMANGLE_COMPONENT_TYPEINFO,
+         cplus_demangle_type (di), ((void*)0));
+ case 'S':
+   return d_make_comp (di, DEMANGLE_COMPONENT_TYPEINFO_NAME,
+         cplus_demangle_type (di), ((void*)0));
 
-	case 'h':
-	  if (! d_call_offset (di, 'h'))
-	    return NULL;
-	  return d_make_comp (di, DEMANGLE_COMPONENT_THUNK,
-			      d_encoding (di, 0), NULL);
+ case 'h':
+   if (! d_call_offset (di, 'h'))
+     return ((void*)0);
+   return d_make_comp (di, DEMANGLE_COMPONENT_THUNK,
+         d_encoding (di, 0), ((void*)0));
 
-	case 'v':
-	  if (! d_call_offset (di, 'v'))
-	    return NULL;
-	  return d_make_comp (di, DEMANGLE_COMPONENT_VIRTUAL_THUNK,
-			      d_encoding (di, 0), NULL);
+ case 'v':
+   if (! d_call_offset (di, 'v'))
+     return ((void*)0);
+   return d_make_comp (di, DEMANGLE_COMPONENT_VIRTUAL_THUNK,
+         d_encoding (di, 0), ((void*)0));
 
-	case 'c':
-	  if (! d_call_offset (di, '\0'))
-	    return NULL;
-	  if (! d_call_offset (di, '\0'))
-	    return NULL;
-	  return d_make_comp (di, DEMANGLE_COMPONENT_COVARIANT_THUNK,
-			      d_encoding (di, 0), NULL);
+ case 'c':
+   if (! d_call_offset (di, '\0'))
+     return ((void*)0);
+   if (! d_call_offset (di, '\0'))
+     return ((void*)0);
+   return d_make_comp (di, DEMANGLE_COMPONENT_COVARIANT_THUNK,
+         d_encoding (di, 0), ((void*)0));
 
-	case 'C':
-	  {
-	    struct demangle_component *derived_type;
-	    int offset;
-	    struct demangle_component *base_type;
+ case 'C':
+   {
+     struct demangle_component *derived_type;
+     int offset;
+     struct demangle_component *base_type;
 
-	    derived_type = cplus_demangle_type (di);
-	    offset = d_number (di);
-	    if (offset < 0)
-	      return NULL;
-	    if (! d_check_char (di, '_'))
-	      return NULL;
-	    base_type = cplus_demangle_type (di);
-	    /* We don't display the offset.  FIXME: We should display
-	       it in verbose mode.  */
-	    di->expansion += 5;
-	    return d_make_comp (di, DEMANGLE_COMPONENT_CONSTRUCTION_VTABLE,
-				base_type, derived_type);
-	  }
+     derived_type = cplus_demangle_type (di);
+     offset = d_number (di);
+     if (offset < 0)
+       return ((void*)0);
+     if (! d_check_char (di, '_'))
+       return ((void*)0);
+     base_type = cplus_demangle_type (di);
 
-	case 'F':
-	  return d_make_comp (di, DEMANGLE_COMPONENT_TYPEINFO_FN,
-			      cplus_demangle_type (di), NULL);
-	case 'J':
-	  return d_make_comp (di, DEMANGLE_COMPONENT_JAVA_CLASS,
-			      cplus_demangle_type (di), NULL);
 
-	case 'H':
-	  return d_make_comp (di, DEMANGLE_COMPONENT_TLS_INIT,
-			      d_name (di), NULL);
+     di->expansion += 5;
+     return d_make_comp (di, DEMANGLE_COMPONENT_CONSTRUCTION_VTABLE,
+    base_type, derived_type);
+   }
 
-	case 'W':
-	  return d_make_comp (di, DEMANGLE_COMPONENT_TLS_WRAPPER,
-			      d_name (di), NULL);
+ case 'F':
+   return d_make_comp (di, DEMANGLE_COMPONENT_TYPEINFO_FN,
+         cplus_demangle_type (di), ((void*)0));
+ case 'J':
+   return d_make_comp (di, DEMANGLE_COMPONENT_JAVA_CLASS,
+         cplus_demangle_type (di), ((void*)0));
 
-	case 'A':
-	  return d_make_comp (di, DEMANGLE_COMPONENT_TPARM_OBJ,
-			      d_template_arg (di), NULL);
+ case 'H':
+   return d_make_comp (di, DEMANGLE_COMPONENT_TLS_INIT,
+         d_name (di), ((void*)0));
 
-	default:
-	  return NULL;
-	}
+ case 'W':
+   return d_make_comp (di, DEMANGLE_COMPONENT_TLS_WRAPPER,
+         d_name (di), ((void*)0));
+
+ case 'A':
+   return d_make_comp (di, DEMANGLE_COMPONENT_TPARM_OBJ,
+         d_template_arg (di), ((void*)0));
+
+ default:
+   return ((void*)0);
+ }
     }
   else if (d_check_char (di, 'G'))
     {
       switch (d_next_char (di))
-	{
-	case 'V':
-	  return d_make_comp (di, DEMANGLE_COMPONENT_GUARD,
-			      d_name (di), NULL);
+ {
+ case 'V':
+   return d_make_comp (di, DEMANGLE_COMPONENT_GUARD,
+         d_name (di), ((void*)0));
 
-	case 'R':
-	  {
-	    struct demangle_component *name = d_name (di);
-	    return d_make_comp (di, DEMANGLE_COMPONENT_REFTEMP, name,
-				d_number_component (di));
-	  }
+ case 'R':
+   {
+     struct demangle_component *name = d_name (di);
+     return d_make_comp (di, DEMANGLE_COMPONENT_REFTEMP, name,
+    d_number_component (di));
+   }
 
-	case 'A':
-	  return d_make_comp (di, DEMANGLE_COMPONENT_HIDDEN_ALIAS,
-			      d_encoding (di, 0), NULL);
+ case 'A':
+   return d_make_comp (di, DEMANGLE_COMPONENT_HIDDEN_ALIAS,
+         d_encoding (di, 0), ((void*)0));
 
-	case 'T':
-	  switch (d_next_char (di))
-	    {
-	    case 'n':
-	      return d_make_comp (di, DEMANGLE_COMPONENT_NONTRANSACTION_CLONE,
-				  d_encoding (di, 0), NULL);
-	    default:
-	      /* ??? The proposal is that other letters (such as 'h') stand
-		 for different variants of transaction cloning, such as
-		 compiling directly for hardware transaction support.  But
-		 they still should all be transactional clones of some sort
-		 so go ahead and call them that.  */
-	    case 't':
-	      return d_make_comp (di, DEMANGLE_COMPONENT_TRANSACTION_CLONE,
-				  d_encoding (di, 0), NULL);
-	    }
+ case 'T':
+   switch (d_next_char (di))
+     {
+     case 'n':
+       return d_make_comp (di, DEMANGLE_COMPONENT_NONTRANSACTION_CLONE,
+      d_encoding (di, 0), ((void*)0));
+     default:
 
-	case 'r':
-	  return d_java_resource (di);
 
-	default:
-	  return NULL;
-	}
+
+
+
+     case 't':
+       return d_make_comp (di, DEMANGLE_COMPONENT_TRANSACTION_CLONE,
+      d_encoding (di, 0), ((void*)0));
+     }
+
+ case 'r':
+   return d_java_resource (di);
+
+ default:
+   return ((void*)0);
+ }
     }
   else
-    return NULL;
+    return ((void*)0);
 }

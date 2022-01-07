@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  unsigned int uint32_t ;
-struct TYPE_4__ {int registered; int /*<<< orphan*/  result; } ;
-typedef  TYPE_1__ jerryx_register_result ;
-typedef  int /*<<< orphan*/  jerryx_property_entry ;
-typedef  int /*<<< orphan*/  jerry_value_t ;
-typedef  int /*<<< orphan*/  jerry_char_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  JERRYX_PROPERTY_BOOLEAN (char*,int) ; 
- int /*<<< orphan*/  JERRYX_PROPERTY_FUNCTION (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  JERRYX_PROPERTY_LIST_END () ; 
- int /*<<< orphan*/  JERRYX_PROPERTY_NUMBER (char*,double) ; 
- int /*<<< orphan*/  JERRYX_PROPERTY_STRING (char*,char*) ; 
- int /*<<< orphan*/  JERRYX_PROPERTY_STRING_SZ (char*,char*,int) ; 
- int /*<<< orphan*/  JERRYX_PROPERTY_UNDEFINED (char*) ; 
- int /*<<< orphan*/  JERRY_INIT_EMPTY ; 
- int /*<<< orphan*/  TEST_ASSERT (int) ; 
- int /*<<< orphan*/  jerry_cleanup () ; 
- int /*<<< orphan*/  jerry_create_object () ; 
- int /*<<< orphan*/  jerry_eval (int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int jerry_get_boolean_value (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jerry_get_global_object () ; 
- double jerry_get_number_value (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jerry_init (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jerry_release_value (int /*<<< orphan*/ ) ; 
- int jerry_value_is_boolean (int /*<<< orphan*/ ) ; 
- int jerry_value_is_number (int /*<<< orphan*/ ) ; 
- int jerry_value_is_undefined (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jerryx_release_property_entry (int /*<<< orphan*/ *,TYPE_1__) ; 
- TYPE_1__ jerryx_set_properties (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jerryx_set_property_str (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  method_hello ; 
- int /*<<< orphan*/  strlen (char const*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef unsigned int uint32_t ;
+struct TYPE_4__ {int registered; int result; } ;
+typedef TYPE_1__ jerryx_register_result ;
+typedef int jerryx_property_entry ;
+typedef int jerry_value_t ;
+typedef int jerry_char_t ;
+
+
+ int JERRYX_PROPERTY_BOOLEAN (char*,int) ;
+ int JERRYX_PROPERTY_FUNCTION (char*,int ) ;
+ int JERRYX_PROPERTY_LIST_END () ;
+ int JERRYX_PROPERTY_NUMBER (char*,double) ;
+ int JERRYX_PROPERTY_STRING (char*,char*) ;
+ int JERRYX_PROPERTY_STRING_SZ (char*,char*,int) ;
+ int JERRYX_PROPERTY_UNDEFINED (char*) ;
+ int JERRY_INIT_EMPTY ;
+ int TEST_ASSERT (int) ;
+ int jerry_cleanup () ;
+ int jerry_create_object () ;
+ int jerry_eval (int const*,int ,int ) ;
+ int jerry_get_boolean_value (int ) ;
+ int jerry_get_global_object () ;
+ double jerry_get_number_value (int ) ;
+ int jerry_init (int ) ;
+ int jerry_release_value (int ) ;
+ int jerry_value_is_boolean (int ) ;
+ int jerry_value_is_number (int ) ;
+ int jerry_value_is_undefined (int ) ;
+ int jerryx_release_property_entry (int *,TYPE_1__) ;
+ TYPE_1__ jerryx_set_properties (int ,int *) ;
+ int jerryx_set_property_str (int ,char*,int ) ;
+ int method_hello ;
+ int strlen (char const*) ;
 
 __attribute__((used)) static void
 test_simple_registration (void)
@@ -52,15 +52,15 @@ test_simple_registration (void)
 
   jerry_value_t target_object = jerry_create_object ();
 
-  // Test simple registration
+
   jerryx_property_entry methods[] =
   {
     JERRYX_PROPERTY_FUNCTION ("hello", method_hello),
     JERRYX_PROPERTY_NUMBER ("my_number", 42.5),
     JERRYX_PROPERTY_STRING ("my_str", "super_str"),
     JERRYX_PROPERTY_STRING_SZ ("my_str_sz", "super_str", 6),
-    JERRYX_PROPERTY_BOOLEAN ("my_bool", true),
-    JERRYX_PROPERTY_BOOLEAN ("my_bool_false", false),
+    JERRYX_PROPERTY_BOOLEAN ("my_bool", 1),
+    JERRYX_PROPERTY_BOOLEAN ("my_bool_false", 0),
     JERRYX_PROPERTY_UNDEFINED ("my_non_value"),
     JERRYX_PROPERTY_LIST_END (),
   };
@@ -90,7 +90,7 @@ test_simple_registration (void)
     const char *test_A = "test.my_str_sz === 'super_'";
     jerry_value_t result = jerry_eval ((const jerry_char_t *) test_A, strlen (test_A), 0);
     TEST_ASSERT (jerry_value_is_boolean (result));
-    TEST_ASSERT (jerry_get_boolean_value (result) == true);
+    TEST_ASSERT (jerry_get_boolean_value (result) == 1);
     jerry_release_value (result);
   }
 
@@ -98,7 +98,7 @@ test_simple_registration (void)
     const char *test_A = "test.my_str === 'super_str'";
     jerry_value_t result = jerry_eval ((const jerry_char_t *) test_A, strlen (test_A), 0);
     TEST_ASSERT (jerry_value_is_boolean (result));
-    TEST_ASSERT (jerry_get_boolean_value (result) == true);
+    TEST_ASSERT (jerry_get_boolean_value (result) == 1);
     jerry_release_value (result);
   }
 
@@ -106,7 +106,7 @@ test_simple_registration (void)
     const char *test_A = "test.my_bool";
     jerry_value_t result = jerry_eval ((const jerry_char_t *) test_A, strlen (test_A), 0);
     TEST_ASSERT (jerry_value_is_boolean (result));
-    TEST_ASSERT (jerry_get_boolean_value (result) == true);
+    TEST_ASSERT (jerry_get_boolean_value (result) == 1);
     jerry_release_value (result);
   }
 
@@ -114,7 +114,7 @@ test_simple_registration (void)
     const char *test_A = "test.my_bool_false";
     jerry_value_t result = jerry_eval ((const jerry_char_t *) test_A, strlen (test_A), 0);
     TEST_ASSERT (jerry_value_is_boolean (result));
-    TEST_ASSERT (jerry_get_boolean_value (result) == false);
+    TEST_ASSERT (jerry_get_boolean_value (result) == 0);
     jerry_release_value (result);
   }
 

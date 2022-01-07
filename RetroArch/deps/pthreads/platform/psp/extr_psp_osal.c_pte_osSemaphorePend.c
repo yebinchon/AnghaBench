@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  pte_osSemaphoreHandle ;
-typedef  int /*<<< orphan*/  pte_osResult ;
-typedef  scalar_t__ SceUInt ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PTE_OS_GENERAL_FAILURE ; 
- int /*<<< orphan*/  PTE_OS_OK ; 
- int /*<<< orphan*/  PTE_OS_TIMEOUT ; 
- scalar_t__ SCE_KERNEL_ERROR_OK ; 
- scalar_t__ SCE_KERNEL_ERROR_WAIT_TIMEOUT ; 
- scalar_t__ sceKernelWaitSema (int /*<<< orphan*/ ,int,unsigned int*) ; 
+
+
+
+typedef int pte_osSemaphoreHandle ;
+typedef int pte_osResult ;
+typedef scalar_t__ SceUInt ;
+
+
+ int PTE_OS_GENERAL_FAILURE ;
+ int PTE_OS_OK ;
+ int PTE_OS_TIMEOUT ;
+ scalar_t__ SCE_KERNEL_ERROR_OK ;
+ scalar_t__ SCE_KERNEL_ERROR_WAIT_TIMEOUT ;
+ scalar_t__ sceKernelWaitSema (int ,int,unsigned int*) ;
 
 pte_osResult pte_osSemaphorePend(pte_osSemaphoreHandle handle, unsigned int *pTimeoutMsecs)
 {
@@ -29,8 +29,8 @@ pte_osResult pte_osSemaphorePend(pte_osSemaphoreHandle handle, unsigned int *pTi
    SceUInt result;
    pte_osResult osResult;
 
-   if (pTimeoutMsecs == NULL)
-      pTimeoutUsecs = NULL;
+   if (pTimeoutMsecs == ((void*)0))
+      pTimeoutUsecs = ((void*)0);
    else
    {
       timeoutUsecs = *pTimeoutMsecs * 1000;

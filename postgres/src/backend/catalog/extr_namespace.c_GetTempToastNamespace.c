@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Oid ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OidIsValid (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  myTempToastNamespace ; 
+
+
+
+typedef int Oid ;
+
+
+ int Assert (int ) ;
+ int OidIsValid (int ) ;
+ int myTempToastNamespace ;
 
 Oid
 GetTempToastNamespace(void)
 {
-	Assert(OidIsValid(myTempToastNamespace));
-	return myTempToastNamespace;
+ Assert(OidIsValid(myTempToastNamespace));
+ return myTempToastNamespace;
 }

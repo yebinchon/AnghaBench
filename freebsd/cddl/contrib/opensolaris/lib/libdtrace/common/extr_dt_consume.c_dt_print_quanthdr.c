@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  dtrace_hdl_t ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int dt_printf (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*,int,char*,char*,char*) ; 
+
+
+
+typedef int dtrace_hdl_t ;
+typedef int FILE ;
+
+
+ int dt_printf (int *,int *,char*,int,char*,char*,char*) ;
 
 __attribute__((used)) static int
 dt_print_quanthdr(dtrace_hdl_t *dtp, FILE *fp, int width)
 {
-	return (dt_printf(dtp, fp, "\n%*s %41s %-9s\n",
-	    width ? width : 16, width ? "key" : "value",
-	    "------------- Distribution -------------", "count"));
+ return (dt_printf(dtp, fp, "\n%*s %41s %-9s\n",
+     width ? width : 16, width ? "key" : "value",
+     "------------- Distribution -------------", "count"));
 }

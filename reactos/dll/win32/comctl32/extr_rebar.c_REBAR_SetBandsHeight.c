@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int top; int bottom; } ;
-struct TYPE_4__ {int iRow; int cyRowSoFar; TYPE_2__ rcBand; int /*<<< orphan*/  fDraw; int /*<<< orphan*/  cyMinBand; } ;
-typedef  int /*<<< orphan*/  REBAR_INFO ;
-typedef  TYPE_1__ REBAR_BAND ;
-typedef  int INT ;
+struct TYPE_4__ {int iRow; int cyRowSoFar; TYPE_2__ rcBand; int fDraw; int cyMinBand; } ;
+typedef int REBAR_INFO ;
+typedef TYPE_1__ REBAR_BAND ;
+typedef int INT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NTF_INVALIDATE ; 
- TYPE_1__* REBAR_GetBand (int /*<<< orphan*/  const*,int) ; 
- scalar_t__ SEP_WIDTH ; 
- int /*<<< orphan*/  TRACE (char*,int,int,...) ; 
- int max (int,int /*<<< orphan*/ ) ; 
- int next_visible (int /*<<< orphan*/  const*,int) ; 
- int /*<<< orphan*/  wine_dbgstr_rect (TYPE_2__*) ; 
+
+ int NTF_INVALIDATE ;
+ TYPE_1__* REBAR_GetBand (int const*,int) ;
+ scalar_t__ SEP_WIDTH ;
+ int TRACE (char*,int,int,...) ;
+ int max (int,int ) ;
+ int next_visible (int const*,int) ;
+ int wine_dbgstr_rect (TYPE_2__*) ;
 
 __attribute__((used)) static int REBAR_SetBandsHeight(const REBAR_INFO *infoPtr, INT iBeginBand, INT iEndBand, INT yStart)
 {
@@ -45,7 +45,7 @@ __attribute__((used)) static int REBAR_SetBandsHeight(const REBAR_INFO *infoPtr,
     for (i = iBeginBand; i < iEndBand; i = next_visible(infoPtr, i))
     {
         lpBand = REBAR_GetBand(infoPtr, i);
-        /* we may be called for multiple rows if RBS_VARHEIGHT not set */
+
         if (lpBand->iRow != row) {
             yPos += yMaxHeight + SEP_WIDTH;
             row = lpBand->iRow;

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {char** ppsz_values; int /*<<< orphan*/  p_secret; } ;
-typedef  TYPE_1__ vlc_keystore_entry ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {char** ppsz_values; int p_secret; } ;
+typedef TYPE_1__ vlc_keystore_entry ;
 struct ks_list {unsigned int i_count; TYPE_1__* p_entries; } ;
 
-/* Variables and functions */
- unsigned int KEY_MAX ; 
- scalar_t__ strcmp (char const*,char const*) ; 
+
+ unsigned int KEY_MAX ;
+ scalar_t__ strcmp (char const*,char const*) ;
 
 vlc_keystore_entry *
 ks_list_find_entry(struct ks_list *p_list, const char *const ppsz_values[KEY_MAX],
@@ -30,7 +30,7 @@ ks_list_find_entry(struct ks_list *p_list, const char *const ppsz_values[KEY_MAX
         if (!p_entry->p_secret)
             continue;
 
-        bool b_match = true;
+        bool b_match = 1;
         for (unsigned int j = 0; j < KEY_MAX; ++j)
         {
             const char *psz_value1 = ppsz_values[j];
@@ -39,7 +39,7 @@ ks_list_find_entry(struct ks_list *p_list, const char *const ppsz_values[KEY_MAX
             if (!psz_value1)
                 continue;
             if (!psz_value2 || strcmp(psz_value1, psz_value2))
-                b_match = false;
+                b_match = 0;
         }
         if (b_match)
         {
@@ -48,5 +48,5 @@ ks_list_find_entry(struct ks_list *p_list, const char *const ppsz_values[KEY_MAX
             return p_entry;
         }
     }
-    return NULL;
+    return ((void*)0);
 }

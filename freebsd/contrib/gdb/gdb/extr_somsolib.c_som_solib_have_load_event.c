@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ CORE_ADDR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARG0_REGNUM ; 
- scalar_t__ SHL_LOAD ; 
- scalar_t__ read_register (int /*<<< orphan*/ ) ; 
+
+
+
+typedef scalar_t__ CORE_ADDR ;
+
+
+ int ARG0_REGNUM ;
+ scalar_t__ SHL_LOAD ;
+ scalar_t__ read_register (int ) ;
 
 int
 som_solib_have_load_event (int pid)

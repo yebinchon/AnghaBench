@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_char ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int u_char ;
 struct TYPE_4__ {scalar_t__ fd; } ;
-typedef  TYPE_1__ pcap_t ;
-typedef  int /*<<< orphan*/  pcap_handler ;
+typedef TYPE_1__ pcap_t ;
+typedef int pcap_handler ;
 
-/* Variables and functions */
- scalar_t__ PACKET_COUNT_IS_UNLIMITED (int) ; 
- int /*<<< orphan*/  _w32_os_yield () ; 
- int pcap_read_one (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ scalar_t__ PACKET_COUNT_IS_UNLIMITED (int) ;
+ int _w32_os_yield () ;
+ int pcap_read_one (TYPE_1__*,int ,int *) ;
 
 __attribute__((used)) static int
 pcap_read_dos (pcap_t *p, int cnt, pcap_handler callback, u_char *data)
@@ -35,7 +35,7 @@ pcap_read_dos (pcap_t *p, int cnt, pcap_handler callback, u_char *data)
        num++;
     if (rc < 0)
        break;
-    _w32_os_yield();  /* allow SIGINT generation, yield to Win95/NT */
+    _w32_os_yield();
   }
   return (num);
 }

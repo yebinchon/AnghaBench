@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct ao {int format; } ;
-typedef  int /*<<< orphan*/  AVCodec ;
+typedef int AVCodec ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_FORMAT_COUNT ; 
- int /*<<< orphan*/  af_get_best_sample_formats (int,int*) ; 
- scalar_t__ supports_format (int /*<<< orphan*/  const*,int) ; 
+
+ int AF_FORMAT_COUNT ;
+ int af_get_best_sample_formats (int,int*) ;
+ scalar_t__ supports_format (int const*,int) ;
 
 __attribute__((used)) static void select_format(struct ao *ao, const AVCodec *codec)
 {

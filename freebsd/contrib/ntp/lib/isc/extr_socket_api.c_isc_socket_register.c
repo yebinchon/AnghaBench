@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * isc_socketmgrcreatefunc_t ;
-typedef  scalar_t__ isc_result_t ;
 
-/* Variables and functions */
- scalar_t__ ISC_R_EXISTS ; 
- scalar_t__ ISC_R_SUCCESS ; 
- int /*<<< orphan*/  LOCK (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RUNTIME_CHECK (int) ; 
- int /*<<< orphan*/  UNLOCK (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  createlock ; 
- int /*<<< orphan*/  initialize ; 
- scalar_t__ isc_once_do (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  once ; 
- int /*<<< orphan*/ * socketmgr_createfunc ; 
+
+
+
+typedef int * isc_socketmgrcreatefunc_t ;
+typedef scalar_t__ isc_result_t ;
+
+
+ scalar_t__ ISC_R_EXISTS ;
+ scalar_t__ ISC_R_SUCCESS ;
+ int LOCK (int *) ;
+ int RUNTIME_CHECK (int) ;
+ int UNLOCK (int *) ;
+ int createlock ;
+ int initialize ;
+ scalar_t__ isc_once_do (int *,int ) ;
+ int once ;
+ int * socketmgr_createfunc ;
 
 isc_result_t
 isc_socket_register(isc_socketmgrcreatefunc_t createfunc) {
-	isc_result_t result = ISC_R_SUCCESS;
+ isc_result_t result = ISC_R_SUCCESS;
 
-	RUNTIME_CHECK(isc_once_do(&once, initialize) == ISC_R_SUCCESS);
+ RUNTIME_CHECK(isc_once_do(&once, initialize) == ISC_R_SUCCESS);
 
-	LOCK(&createlock);
-	if (socketmgr_createfunc == NULL)
-		socketmgr_createfunc = createfunc;
-	else
-		result = ISC_R_EXISTS;
-	UNLOCK(&createlock);
+ LOCK(&createlock);
+ if (socketmgr_createfunc == ((void*)0))
+  socketmgr_createfunc = createfunc;
+ else
+  result = ISC_R_EXISTS;
+ UNLOCK(&createlock);
 
-	return (result);
+ return (result);
 }

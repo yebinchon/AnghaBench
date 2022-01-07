@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct sockaddr {int /*<<< orphan*/  sa_data; } ;
+
+
+
+
+struct sockaddr {int sa_data; } ;
 struct net_device {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  axienet_set_mac_address (struct net_device*,int /*<<< orphan*/ ) ; 
+
+ int axienet_set_mac_address (struct net_device*,int ) ;
 
 __attribute__((used)) static int netdev_set_mac_address(struct net_device *ndev, void *p)
 {
-	struct sockaddr *addr = p;
-	axienet_set_mac_address(ndev, addr->sa_data);
-	return 0;
+ struct sockaddr *addr = p;
+ axienet_set_mac_address(ndev, addr->sa_data);
+ return 0;
 }

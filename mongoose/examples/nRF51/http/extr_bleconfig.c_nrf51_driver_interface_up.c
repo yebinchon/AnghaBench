@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ADVERTISING_LED ; 
- int /*<<< orphan*/  APPL_LOG (char*) ; 
- int /*<<< orphan*/  APP_ERROR_CHECK (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CONNECTED_LED ; 
- int /*<<< orphan*/  LEDS_OFF (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LEDS_ON (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LWIP_SYS_TIMER_INTERVAL ; 
- int /*<<< orphan*/  TCP_STATE_REQUEST_CONNECTION ; 
- int /*<<< orphan*/  app_timer_start (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  m_sys_timer_id ; 
- int /*<<< orphan*/  m_tcp_state ; 
- int /*<<< orphan*/  sys_check_timeouts () ; 
+
+
+
+typedef int uint32_t ;
+
+
+ int ADVERTISING_LED ;
+ int APPL_LOG (char*) ;
+ int APP_ERROR_CHECK (int ) ;
+ int CONNECTED_LED ;
+ int LEDS_OFF (int ) ;
+ int LEDS_ON (int ) ;
+ int LWIP_SYS_TIMER_INTERVAL ;
+ int TCP_STATE_REQUEST_CONNECTION ;
+ int app_timer_start (int ,int ,int *) ;
+ int m_sys_timer_id ;
+ int m_tcp_state ;
+ int sys_check_timeouts () ;
 
 void nrf51_driver_interface_up(void)
 {
@@ -36,7 +36,7 @@ void nrf51_driver_interface_up(void)
 
   m_tcp_state = TCP_STATE_REQUEST_CONNECTION;
 
-  err_code = app_timer_start(m_sys_timer_id, LWIP_SYS_TIMER_INTERVAL, NULL);
+  err_code = app_timer_start(m_sys_timer_id, LWIP_SYS_TIMER_INTERVAL, ((void*)0));
   APP_ERROR_CHECK(err_code);
 
   LEDS_OFF(ADVERTISING_LED);

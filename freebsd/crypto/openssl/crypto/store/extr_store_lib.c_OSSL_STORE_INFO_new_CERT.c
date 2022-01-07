@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  X509 ;
-typedef  int /*<<< orphan*/  OSSL_STORE_INFO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR_R_MALLOC_FAILURE ; 
- int /*<<< orphan*/  OSSL_STORE_F_OSSL_STORE_INFO_NEW_CERT ; 
- int /*<<< orphan*/  OSSL_STORE_INFO_CERT ; 
- int /*<<< orphan*/  OSSL_STOREerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * store_info_new (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int X509 ;
+typedef int OSSL_STORE_INFO ;
+
+
+ int ERR_R_MALLOC_FAILURE ;
+ int OSSL_STORE_F_OSSL_STORE_INFO_NEW_CERT ;
+ int OSSL_STORE_INFO_CERT ;
+ int OSSL_STOREerr (int ,int ) ;
+ int * store_info_new (int ,int *) ;
 
 OSSL_STORE_INFO *OSSL_STORE_INFO_new_CERT(X509 *x509)
 {
     OSSL_STORE_INFO *info = store_info_new(OSSL_STORE_INFO_CERT, x509);
 
-    if (info == NULL)
+    if (info == ((void*)0))
         OSSL_STOREerr(OSSL_STORE_F_OSSL_STORE_INFO_NEW_CERT,
                       ERR_R_MALLOC_FAILURE);
     return info;

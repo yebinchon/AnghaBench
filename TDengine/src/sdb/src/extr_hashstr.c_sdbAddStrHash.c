@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {void* data; int hash; struct TYPE_6__* prev; struct TYPE_6__* next; int /*<<< orphan*/  string; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {void* data; int hash; struct TYPE_6__* prev; struct TYPE_6__* next; int string; } ;
 struct TYPE_5__ {scalar_t__ maxSessions; int dataSize; TYPE_2__** hashList; } ;
-typedef  TYPE_1__ SHashObj ;
-typedef  TYPE_2__ SHashNode ;
+typedef TYPE_1__ SHashObj ;
+typedef TYPE_2__ SHashNode ;
 
-/* Variables and functions */
- scalar_t__ malloc (int) ; 
- int /*<<< orphan*/  memcpy (void*,void*,int) ; 
- int /*<<< orphan*/  memset (TYPE_2__*,int /*<<< orphan*/ ,int) ; 
- int sdbHashString (TYPE_1__*,char*) ; 
- int /*<<< orphan*/  strcpy (int /*<<< orphan*/ ,char*) ; 
+
+ scalar_t__ malloc (int) ;
+ int memcpy (void*,void*,int) ;
+ int memset (TYPE_2__*,int ,int) ;
+ int sdbHashString (TYPE_1__*,char*) ;
+ int strcpy (int ,char*) ;
 
 void *sdbAddStrHash(void *handle, void *key, void *pData) {
-  int        hash;
+  int hash;
   SHashNode *pNode;
   SHashObj * pObj;
-  char *     string = (char *)key;
+  char * string = (char *)key;
 
   pObj = (SHashObj *)handle;
-  if (pObj == NULL || pObj->maxSessions == 0) return NULL;
+  if (pObj == ((void*)0) || pObj->maxSessions == 0) return ((void*)0);
 
   hash = sdbHashString(pObj, string);
 

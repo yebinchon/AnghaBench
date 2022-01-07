@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct kfifo {int dummy; } ;
 
-/* Variables and functions */
- int __kfifo_len (struct kfifo*) ; 
+
+ int __kfifo_len (struct kfifo*) ;
 
 __attribute__((used)) static inline unsigned int cq_howmany(struct kfifo *kfifo)
 {
-	return __kfifo_len(kfifo) / sizeof(void *);
+ return __kfifo_len(kfifo) / sizeof(void *);
 }

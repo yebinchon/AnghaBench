@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  void Hashmap ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HASHMAP_BASE (void*) ; 
- int /*<<< orphan*/  free ; 
- scalar_t__ internal_hashmap_free (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef void Hashmap ;
+
+
+ int HASHMAP_BASE (void*) ;
+ int free ;
+ scalar_t__ internal_hashmap_free (int ,int *,int ) ;
 
 __attribute__((used)) static inline Hashmap *hashmap_free_free(Hashmap *h) {
-        return (void*) internal_hashmap_free(HASHMAP_BASE(h), NULL, free);
+        return (void*) internal_hashmap_free(HASHMAP_BASE(h), ((void*)0), free);
 }

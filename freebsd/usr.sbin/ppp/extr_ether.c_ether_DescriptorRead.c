@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  name; } ;
-struct physical {int /*<<< orphan*/  dl; TYPE_1__ link; int /*<<< orphan*/  handler; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int name; } ;
+struct physical {int dl; TYPE_1__ link; int handler; } ;
 struct fdescriptor {int dummy; } ;
 struct etherdevice {scalar_t__ cs; scalar_t__ connected; } ;
 struct bundle {int dummy; } ;
-typedef  int /*<<< orphan*/  fd_set ;
+typedef int fd_set ;
 
-/* Variables and functions */
- scalar_t__ CARRIER_LOST ; 
- int /*<<< orphan*/  CLOSE_NORMAL ; 
- scalar_t__ FD_ISSET (scalar_t__,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  LogPHASE ; 
- int /*<<< orphan*/  datalink_Down (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- struct physical* descriptor2physical (struct fdescriptor*) ; 
- struct etherdevice* device2ether (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ether_MessageIn (struct etherdevice*) ; 
- int /*<<< orphan*/  log_Printf (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  physical_DescriptorRead (struct fdescriptor*,struct bundle*,int /*<<< orphan*/  const*) ; 
- scalar_t__ physical_IsSet (struct fdescriptor*,int /*<<< orphan*/  const*) ; 
+
+ scalar_t__ CARRIER_LOST ;
+ int CLOSE_NORMAL ;
+ scalar_t__ FD_ISSET (scalar_t__,int const*) ;
+ int LogPHASE ;
+ int datalink_Down (int ,int ) ;
+ struct physical* descriptor2physical (struct fdescriptor*) ;
+ struct etherdevice* device2ether (int ) ;
+ int ether_MessageIn (struct etherdevice*) ;
+ int log_Printf (int ,char*,int ) ;
+ int physical_DescriptorRead (struct fdescriptor*,struct bundle*,int const*) ;
+ scalar_t__ physical_IsSet (struct fdescriptor*,int const*) ;
 
 __attribute__((used)) static void
 ether_DescriptorRead(struct fdescriptor *d, struct bundle *bundle,

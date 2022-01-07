@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct bmp_map {int dummy; } ;
 struct bmp_file {char* signature; int size; int offset; } ;
 struct bmp_dib {int size; int depth; int compression; int x; int y; int colors_used; } ;
-typedef  int UINTN ;
-typedef  int /*<<< orphan*/  UINT8 ;
-typedef  int UINT32 ;
-typedef  int /*<<< orphan*/  EFI_STATUS ;
+typedef int UINTN ;
+typedef int UINT8 ;
+typedef int UINT32 ;
+typedef int EFI_STATUS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EFI_INVALID_PARAMETER ; 
- int /*<<< orphan*/  EFI_SUCCESS ; 
- int /*<<< orphan*/  EFI_UNSUPPORTED ; 
+
+ int EFI_INVALID_PARAMETER ;
+ int EFI_SUCCESS ;
+ int EFI_UNSUPPORTED ;
 
 EFI_STATUS bmp_parse_header(UINT8 *bmp, UINTN size, struct bmp_dib **ret_dib,
                             struct bmp_map **ret_map, UINT8 **pixmap) {
@@ -33,7 +33,7 @@ EFI_STATUS bmp_parse_header(UINT8 *bmp, UINTN size, struct bmp_dib **ret_dib,
         if (size < sizeof(struct bmp_file) + sizeof(struct bmp_dib))
                 return EFI_INVALID_PARAMETER;
 
-        /* check file header */
+
         file = (struct bmp_file *)bmp;
         if (file->signature[0] != 'B' || file->signature[1] != 'M')
                 return EFI_INVALID_PARAMETER;
@@ -42,7 +42,7 @@ EFI_STATUS bmp_parse_header(UINT8 *bmp, UINTN size, struct bmp_dib **ret_dib,
         if (file->size < file->offset)
                 return EFI_INVALID_PARAMETER;
 
-        /*  check device-independent bitmap */
+
         dib = (struct bmp_dib *)(bmp + sizeof(struct bmp_file));
         if (dib->size < sizeof(struct bmp_dib))
                 return EFI_UNSUPPORTED;
@@ -69,12 +69,12 @@ EFI_STATUS bmp_parse_header(UINT8 *bmp, UINTN size, struct bmp_dib **ret_dib,
         }
 
         row_size = ((UINTN) dib->depth * dib->x + 31) / 32 * 4;
-        if (file->size - file->offset <  dib->y * row_size)
+        if (file->size - file->offset < dib->y * row_size)
                 return EFI_INVALID_PARAMETER;
         if (row_size * dib->y > 64 * 1024 * 1024)
                 return EFI_INVALID_PARAMETER;
 
-        /* check color table */
+
         map = (struct bmp_map *)(bmp + sizeof(struct bmp_file) + dib->size);
         if (file->offset < sizeof(struct bmp_file) + dib->size)
                 return EFI_INVALID_PARAMETER;

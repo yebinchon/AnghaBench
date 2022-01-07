@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct strbuf {char* buf; int /*<<< orphan*/  len; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct strbuf {char* buf; int len; } ;
 struct helper_data {TYPE_1__* helper; } ;
-struct TYPE_2__ {int /*<<< orphan*/  in; } ;
+struct TYPE_2__ {int in; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  _ (char*) ; 
- scalar_t__ debug ; 
- int /*<<< orphan*/  die_errno (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ write_in_full (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
+
+ int _ (char*) ;
+ scalar_t__ debug ;
+ int die_errno (int ) ;
+ int fprintf (int ,char*,char*) ;
+ int stderr ;
+ scalar_t__ write_in_full (int ,char*,int ) ;
 
 __attribute__((used)) static void sendline(struct helper_data *helper, struct strbuf *buffer)
 {
-	if (debug)
-		fprintf(stderr, "Debug: Remote helper: -> %s", buffer->buf);
-	if (write_in_full(helper->helper->in, buffer->buf, buffer->len) < 0)
-		die_errno(_("full write to remote helper failed"));
+ if (debug)
+  fprintf(stderr, "Debug: Remote helper: -> %s", buffer->buf);
+ if (write_in_full(helper->helper->in, buffer->buf, buffer->len) < 0)
+  die_errno(_("full write to remote helper failed"));
 }

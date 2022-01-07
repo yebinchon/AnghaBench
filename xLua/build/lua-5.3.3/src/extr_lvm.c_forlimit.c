@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_Number ;
-typedef  scalar_t__ lua_Integer ;
-typedef  int /*<<< orphan*/  TValue ;
 
-/* Variables and functions */
- scalar_t__ LUA_MAXINTEGER ; 
- scalar_t__ LUA_MININTEGER ; 
- int /*<<< orphan*/  luaV_tointeger (int /*<<< orphan*/  const*,scalar_t__*,int) ; 
- scalar_t__ luai_numlt (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tonumber (int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int lua_Number ;
+typedef scalar_t__ lua_Integer ;
+typedef int TValue ;
+
+
+ scalar_t__ LUA_MAXINTEGER ;
+ scalar_t__ LUA_MININTEGER ;
+ int luaV_tointeger (int const*,scalar_t__*,int) ;
+ scalar_t__ luai_numlt (int ,int ) ;
+ int tonumber (int const*,int *) ;
 
 __attribute__((used)) static int forlimit (const TValue *obj, lua_Integer *p, lua_Integer step,
                      int *stopnow) {
-  *stopnow = 0;  /* usually, let loops run */
-  if (!luaV_tointeger(obj, p, (step < 0 ? 2 : 1))) {  /* not fit in integer? */
-    lua_Number n;  /* try to convert to float */
-    if (!tonumber(obj, &n)) /* cannot convert to float? */
-      return 0;  /* not a number */
-    if (luai_numlt(0, n)) {  /* if true, float is larger than max integer */
+  *stopnow = 0;
+  if (!luaV_tointeger(obj, p, (step < 0 ? 2 : 1))) {
+    lua_Number n;
+    if (!tonumber(obj, &n))
+      return 0;
+    if (luai_numlt(0, n)) {
       *p = LUA_MAXINTEGER;
       if (step < 0) *stopnow = 1;
     }
-    else {  /* float is smaller than min integer */
+    else {
       *p = LUA_MININTEGER;
       if (step >= 0) *stopnow = 1;
     }

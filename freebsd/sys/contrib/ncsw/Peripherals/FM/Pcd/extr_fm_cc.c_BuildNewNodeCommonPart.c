@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint32_t ;
-typedef  void* t_Handle ;
-struct TYPE_7__ {int numOfKeys; int /*<<< orphan*/  p_KeysMatchTableOld; int /*<<< orphan*/  p_AdTableOld; void* p_KeysMatchTableNew; int /*<<< orphan*/ * p_AdTableNew; } ;
-typedef  TYPE_1__ t_FmPcdModifyCcKeyAdditionalParams ;
-struct TYPE_8__ {int ccKeySizeAccExtraction; int maxNumOfKeys; int keysMatchTableMaxSize; int /*<<< orphan*/  h_KeysMatchTable; int /*<<< orphan*/  h_AdTable; TYPE_3__* h_FmPcd; scalar_t__ lclMask; } ;
-typedef  TYPE_2__ t_FmPcdCcNode ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef void* t_Handle ;
+struct TYPE_7__ {int numOfKeys; int p_KeysMatchTableOld; int p_AdTableOld; void* p_KeysMatchTableNew; int * p_AdTableNew; } ;
+typedef TYPE_1__ t_FmPcdModifyCcKeyAdditionalParams ;
+struct TYPE_8__ {int ccKeySizeAccExtraction; int maxNumOfKeys; int keysMatchTableMaxSize; int h_KeysMatchTable; int h_AdTable; TYPE_3__* h_FmPcd; scalar_t__ lclMask; } ;
+typedef TYPE_2__ t_FmPcdCcNode ;
 struct TYPE_9__ {void* p_CcShadow; } ;
-typedef  TYPE_3__ t_FmPcd ;
-typedef  int /*<<< orphan*/  t_Error ;
+typedef TYPE_3__ t_FmPcd ;
+typedef int t_Error ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_NO_MEMORY ; 
- int /*<<< orphan*/  E_OK ; 
- scalar_t__ FM_MURAM_AllocMem (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FM_MURAM_FreeMem (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int FM_PCD_CC_AD_ENTRY_SIZE ; 
- int /*<<< orphan*/  FM_PCD_CC_AD_TABLE_ALIGN ; 
- int /*<<< orphan*/  FM_PCD_CC_KEYS_MATCH_TABLE_ALIGN ; 
- int /*<<< orphan*/  FmPcdGetMuramHandle (TYPE_3__*) ; 
- int /*<<< orphan*/  MAJOR ; 
- int /*<<< orphan*/  MemSet8 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- void* PTR_MOVE (void*,int) ; 
- int /*<<< orphan*/  RETURN_ERROR (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
+
+ int E_NO_MEMORY ;
+ int E_OK ;
+ scalar_t__ FM_MURAM_AllocMem (int ,int,int ) ;
+ int FM_MURAM_FreeMem (int ,int *) ;
+ int FM_PCD_CC_AD_ENTRY_SIZE ;
+ int FM_PCD_CC_AD_TABLE_ALIGN ;
+ int FM_PCD_CC_KEYS_MATCH_TABLE_ALIGN ;
+ int FmPcdGetMuramHandle (TYPE_3__*) ;
+ int MAJOR ;
+ int MemSet8 (int *,int ,int) ;
+ void* PTR_MOVE (void*,int) ;
+ int RETURN_ERROR (int ,int ,char*) ;
 
 __attribute__((used)) static t_Error BuildNewNodeCommonPart(
         t_FmPcdCcNode *p_CcNode, int *size,
@@ -70,7 +70,7 @@ __attribute__((used)) static t_Error BuildNewNodeCommonPart(
         {
             FM_MURAM_FreeMem(FmPcdGetMuramHandle(p_CcNode->h_FmPcd),
                              p_AdditionalInfo->p_AdTableNew);
-            p_AdditionalInfo->p_AdTableNew = NULL;
+            p_AdditionalInfo->p_AdTableNew = ((void*)0);
             RETURN_ERROR(MAJOR, E_NO_MEMORY,
                          ("MURAM allocation for CC node key match table"));
         }
@@ -85,15 +85,6 @@ __attribute__((used)) static t_Error BuildNewNodeCommonPart(
     }
     else
     {
-        /* The allocated shadow is divided as follows:
-         0 . . .       16 . . .
-         ---------------------------------------------------
-         |   Shadow   |   Shadow Keys   |   Shadow Next    |
-         |     Ad     |   Match Table   |   Engine Table   |
-         | (16 bytes) | (maximal size)  |  (maximal size)  |
-         ---------------------------------------------------
-         */
-
         if (!p_FmPcd->p_CcShadow)
             RETURN_ERROR(MAJOR, E_NO_MEMORY, ("CC Shadow not allocated"));
 

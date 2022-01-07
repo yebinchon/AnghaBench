@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  cmsMLU ;
-typedef  scalar_t__ cmsInt32Number ;
-typedef  int /*<<< orphan*/ * cmsHPROFILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DbgThread () ; 
- int /*<<< orphan*/  Fail (char*,...) ; 
- int /*<<< orphan*/  cmsCloseProfile (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * cmsMLUalloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * cmsMLUdup (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cmsMLUfree (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cmsMLUgetASCII (int /*<<< orphan*/ ,int /*<<< orphan*/ *,char*,char*,char*,int) ; 
- int /*<<< orphan*/  cmsMLUsetASCII (int /*<<< orphan*/ ,int /*<<< orphan*/ *,char*,char*,char*) ; 
- int /*<<< orphan*/  cmsMLUsetWide (int /*<<< orphan*/ ,int /*<<< orphan*/ *,char*,char*,char*) ; 
- int /*<<< orphan*/ * cmsOpenProfileFromFile (int /*<<< orphan*/ ,char*,char*) ; 
- scalar_t__ cmsReadTag (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cmsSetProfileVersion (int /*<<< orphan*/ ,int /*<<< orphan*/ *,double) ; 
- int /*<<< orphan*/  cmsSigProfileDescriptionTag ; 
- int /*<<< orphan*/  cmsWriteTag (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  remove (char*) ; 
- int /*<<< orphan*/  sprintf (char*,char*,scalar_t__) ; 
- scalar_t__ strcmp (char*,char*) ; 
+
+
+
+typedef int cmsMLU ;
+typedef scalar_t__ cmsInt32Number ;
+typedef int * cmsHPROFILE ;
+
+
+ int DbgThread () ;
+ int Fail (char*,...) ;
+ int cmsCloseProfile (int ,int *) ;
+ int * cmsMLUalloc (int ,int ) ;
+ int * cmsMLUdup (int ,int *) ;
+ int cmsMLUfree (int ,int *) ;
+ int cmsMLUgetASCII (int ,int *,char*,char*,char*,int) ;
+ int cmsMLUsetASCII (int ,int *,char*,char*,char*) ;
+ int cmsMLUsetWide (int ,int *,char*,char*,char*) ;
+ int * cmsOpenProfileFromFile (int ,char*,char*) ;
+ scalar_t__ cmsReadTag (int ,int *,int ) ;
+ int cmsSetProfileVersion (int ,int *,double) ;
+ int cmsSigProfileDescriptionTag ;
+ int cmsWriteTag (int ,int *,int ,int *) ;
+ int remove (char*) ;
+ int sprintf (char*,char*,scalar_t__) ;
+ scalar_t__ strcmp (char*,char*) ;
 
 __attribute__((used)) static
 cmsInt32Number CheckMLU(void)
@@ -40,19 +40,19 @@ cmsInt32Number CheckMLU(void)
     char Buffer[256], Buffer2[256];
     cmsInt32Number rc = 1;
     cmsInt32Number i;
-    cmsHPROFILE h= NULL;
+    cmsHPROFILE h= ((void*)0);
 
-    // Allocate a MLU structure, no preferred size
+
     mlu = cmsMLUalloc(DbgThread(), 0);
 
-    // Add some localizations
+
     cmsMLUsetWide(DbgThread(), mlu, "en", "US", L"Hello, world");
     cmsMLUsetWide(DbgThread(), mlu, "es", "ES", L"Hola, mundo");
     cmsMLUsetWide(DbgThread(), mlu, "fr", "FR", L"Bonjour, le monde");
     cmsMLUsetWide(DbgThread(), mlu, "ca", "CA", L"Hola, mon");
 
 
-    // Check the returned string for each language
+
 
     cmsMLUgetASCII(DbgThread(), mlu, "en", "US", Buffer, 256);
     if (strcmp(Buffer, "Hello, world") != 0) rc = 0;
@@ -72,13 +72,13 @@ cmsInt32Number CheckMLU(void)
     if (rc == 0)
         Fail("Unexpected string '%s'", Buffer);
 
-    // So far, so good.
+
     cmsMLUfree(DbgThread(), mlu);
 
-    // Now for performance, allocate an empty struct
+
     mlu = cmsMLUalloc(DbgThread(), 0);
 
-    // Fill it with several thousands of different lenguages
+
     for (i=0; i < 4096; i++) {
 
         char Lang[3];
@@ -91,13 +91,13 @@ cmsInt32Number CheckMLU(void)
         cmsMLUsetASCII(DbgThread(), mlu, Lang, Lang, Buffer);
     }
 
-    // Duplicate it
+
     mlu2 = cmsMLUdup(DbgThread(), mlu);
 
-    // Get rid of original
+
     cmsMLUfree(DbgThread(), mlu);
 
-    // Check all is still in place
+
     for (i=0; i < 4096; i++) {
 
         char Lang[3];
@@ -115,7 +115,7 @@ cmsInt32Number CheckMLU(void)
     if (rc == 0)
         Fail("Unexpected string '%s'", Buffer2);
 
-    // Check profile IO
+
 
     h = cmsOpenProfileFromFile(DbgThread(), "mlucheck.icc", "w");
 
@@ -129,9 +129,9 @@ cmsInt32Number CheckMLU(void)
     h = cmsOpenProfileFromFile(DbgThread(), "mlucheck.icc", "r");
 
     mlu3 = (cmsMLU *) cmsReadTag(DbgThread(), h, cmsSigProfileDescriptionTag);
-    if (mlu3 == NULL) { Fail("Profile didn't get the MLU\n"); rc = 0; goto Error; }
+    if (mlu3 == ((void*)0)) { Fail("Profile didn't get the MLU\n"); rc = 0; goto Error; }
 
-    // Check all is still in place
+
     for (i=0; i < 4096; i++) {
 
         char Lang[3];
@@ -150,7 +150,7 @@ cmsInt32Number CheckMLU(void)
 
 Error:
 
-    if (h != NULL) cmsCloseProfile(DbgThread(), h);
+    if (h != ((void*)0)) cmsCloseProfile(DbgThread(), h);
     remove("mlucheck.icc");
 
     return rc;

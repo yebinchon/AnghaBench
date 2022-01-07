@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct snd_soc_dai {struct snd_soc_component* component; } ;
 struct snd_soc_component {int dummy; } ;
-struct max9867_priv {int /*<<< orphan*/  regmap; } ;
+struct max9867_priv {int regmap; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MAX9867_DACLEVEL ; 
- int regmap_update_bits (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int) ; 
- struct max9867_priv* snd_soc_component_get_drvdata (struct snd_soc_component*) ; 
+
+ int MAX9867_DACLEVEL ;
+ int regmap_update_bits (int ,int ,int,int) ;
+ struct max9867_priv* snd_soc_component_get_drvdata (struct snd_soc_component*) ;
 
 __attribute__((used)) static int max9867_mute(struct snd_soc_dai *dai, int mute)
 {
-	struct snd_soc_component *component = dai->component;
-	struct max9867_priv *max9867 = snd_soc_component_get_drvdata(component);
+ struct snd_soc_component *component = dai->component;
+ struct max9867_priv *max9867 = snd_soc_component_get_drvdata(component);
 
-	return regmap_update_bits(max9867->regmap, MAX9867_DACLEVEL,
-				  1 << 6, !!mute << 6);
+ return regmap_update_bits(max9867->regmap, MAX9867_DACLEVEL,
+      1 << 6, !!mute << 6);
 }

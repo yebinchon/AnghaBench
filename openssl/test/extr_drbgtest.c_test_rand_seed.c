@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  rand_buf ;
-typedef  int /*<<< orphan*/  RAND_DRBG ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * RAND_DRBG_get0_master () ; 
- int /*<<< orphan*/  RAND_DRBG_uninstantiate (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RAND_seed (unsigned char*,size_t) ; 
- int /*<<< orphan*/  RAND_status () ; 
- int /*<<< orphan*/  TEST_int_eq (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  TEST_ptr (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TEST_true (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  disable_crngt (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memset (unsigned char*,int,int) ; 
- size_t rand_drbg_seedlen (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int rand_buf ;
+typedef int RAND_DRBG ;
+
+
+ int * RAND_DRBG_get0_master () ;
+ int RAND_DRBG_uninstantiate (int *) ;
+ int RAND_seed (unsigned char*,size_t) ;
+ int RAND_status () ;
+ int TEST_int_eq (int ,int) ;
+ int TEST_ptr (int *) ;
+ int TEST_true (int ) ;
+ int disable_crngt (int *) ;
+ int memset (unsigned char*,int,int) ;
+ size_t rand_drbg_seedlen (int *) ;
 
 __attribute__((used)) static int test_rand_seed(void)
 {
-    RAND_DRBG *master = NULL;
+    RAND_DRBG *master = ((void*)0);
     unsigned char rand_buf[256];
     size_t rand_buflen;
     size_t required_seed_buflen = 0;
@@ -36,9 +36,9 @@ __attribute__((used)) static int test_rand_seed(void)
         || !TEST_true(disable_crngt(master)))
         return 0;
 
-#ifdef OPENSSL_RAND_SEED_NONE
-    required_seed_buflen = rand_drbg_seedlen(master);
-#endif
+
+
+
 
     memset(rand_buf, 0xCD, sizeof(rand_buf));
 

@@ -1,18 +1,10 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- float sqrtf (float) ; 
+ float sqrtf (float) ;
 
 __attribute__((used)) static inline void celt_stereo_merge(float *X, float *Y, float mid, int N)
 {
@@ -22,13 +14,13 @@ __attribute__((used)) static inline void celt_stereo_merge(float *X, float *Y, f
     float mid2;
     float gain[2];
 
-    /* Compute the norm of X+Y and X-Y as |X|^2 + |Y|^2 +/- sum(xy) */
+
     for (i = 0; i < N; i++) {
-        xp   += X[i] * Y[i];
+        xp += X[i] * Y[i];
         side += Y[i] * Y[i];
     }
 
-    /* Compensating for the mid normalization */
+
     xp *= mid;
     mid2 = mid;
     E[0] = mid2 * mid2 + side - 2 * xp;
@@ -44,7 +36,7 @@ __attribute__((used)) static inline void celt_stereo_merge(float *X, float *Y, f
 
     for (i = 0; i < N; i++) {
         float value[2];
-        /* Apply mid scaling (side is already scaled) */
+
         value[0] = mid * X[i];
         value[1] = Y[i];
         X[i] = gain[0] * (value[0] - value[1]);

@@ -1,79 +1,79 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  szUserName; } ;
-struct TYPE_5__ {void* usri3_home_dir_drive; int /*<<< orphan*/ * usri3_home_dir; int /*<<< orphan*/ * usri3_script_path; int /*<<< orphan*/ * usri3_profile; } ;
-typedef  int /*<<< orphan*/  TCHAR ;
-typedef  TYPE_1__* PUSER_INFO_3 ;
-typedef  TYPE_2__* PPROFILE_USER_DATA ;
-typedef  scalar_t__ NET_API_STATUS ;
-typedef  void* LPTSTR ;
-typedef  int /*<<< orphan*/  LPBYTE ;
-typedef  int /*<<< orphan*/  LPARAM ;
-typedef  int INT ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  int BOOL ;
 
-/* Variables and functions */
- scalar_t__ BST_CHECKED ; 
- int CB_ERR ; 
- int /*<<< orphan*/  CB_GETCURSEL ; 
- int /*<<< orphan*/  CB_GETLBTEXT ; 
- int /*<<< orphan*/  CB_GETLBTEXTLEN ; 
- int /*<<< orphan*/  DebugPrintf (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetDlgItem (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetDlgItemText (int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*,int) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int GetWindowTextLength (int /*<<< orphan*/ ) ; 
- void* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*) ; 
- int /*<<< orphan*/  IDC_USER_PROFILE_DRIVE ; 
- int /*<<< orphan*/  IDC_USER_PROFILE_LOCAL ; 
- int /*<<< orphan*/  IDC_USER_PROFILE_LOCAL_PATH ; 
- int /*<<< orphan*/  IDC_USER_PROFILE_PATH ; 
- int /*<<< orphan*/  IDC_USER_PROFILE_REMOTE_PATH ; 
- int /*<<< orphan*/  IDC_USER_PROFILE_SCRIPT ; 
- scalar_t__ IsDlgButtonChecked (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ NERR_Success ; 
- int /*<<< orphan*/  NetApiBufferFree (TYPE_1__*) ; 
- int /*<<< orphan*/  NetUserGetInfo (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- scalar_t__ NetUserSetInfo (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int SendMessage (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  _T (char*) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int szUserName; } ;
+struct TYPE_5__ {void* usri3_home_dir_drive; int * usri3_home_dir; int * usri3_script_path; int * usri3_profile; } ;
+typedef int TCHAR ;
+typedef TYPE_1__* PUSER_INFO_3 ;
+typedef TYPE_2__* PPROFILE_USER_DATA ;
+typedef scalar_t__ NET_API_STATUS ;
+typedef void* LPTSTR ;
+typedef int LPBYTE ;
+typedef int LPARAM ;
+typedef int INT ;
+typedef int HWND ;
+typedef int DWORD ;
+typedef int BOOL ;
+
+
+ scalar_t__ BST_CHECKED ;
+ int CB_ERR ;
+ int CB_GETCURSEL ;
+ int CB_GETLBTEXT ;
+ int CB_GETLBTEXTLEN ;
+ int DebugPrintf (int ,scalar_t__,int ) ;
+ int GetDlgItem (int ,int ) ;
+ int GetDlgItemText (int ,int ,void*,int) ;
+ int GetProcessHeap () ;
+ int GetWindowTextLength (int ) ;
+ void* HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,void*) ;
+ int IDC_USER_PROFILE_DRIVE ;
+ int IDC_USER_PROFILE_LOCAL ;
+ int IDC_USER_PROFILE_LOCAL_PATH ;
+ int IDC_USER_PROFILE_PATH ;
+ int IDC_USER_PROFILE_REMOTE_PATH ;
+ int IDC_USER_PROFILE_SCRIPT ;
+ scalar_t__ IsDlgButtonChecked (int ,int ) ;
+ scalar_t__ NERR_Success ;
+ int NetApiBufferFree (TYPE_1__*) ;
+ int NetUserGetInfo (int *,int ,int,int *) ;
+ scalar_t__ NetUserSetInfo (int *,int ,int,int ,int *) ;
+ int SendMessage (int ,int ,int,int ) ;
+ int _T (char*) ;
 
 __attribute__((used)) static BOOL
 SetUserProfileData(HWND hwndDlg,
                    PPROFILE_USER_DATA pUserData)
 {
-    PUSER_INFO_3 pUserInfo = NULL;
-    LPTSTR pszProfilePath = NULL;
-    LPTSTR pszScriptPath = NULL;
-    LPTSTR pszHomeDir = NULL;
-    LPTSTR pszHomeDrive = NULL;
+    PUSER_INFO_3 pUserInfo = ((void*)0);
+    LPTSTR pszProfilePath = ((void*)0);
+    LPTSTR pszScriptPath = ((void*)0);
+    LPTSTR pszHomeDir = ((void*)0);
+    LPTSTR pszHomeDrive = ((void*)0);
     NET_API_STATUS status;
     DWORD dwIndex;
     INT nLength;
     INT nIndex;
 
-    NetUserGetInfo(NULL, pUserData->szUserName, 3, (LPBYTE*)&pUserInfo);
+    NetUserGetInfo(((void*)0), pUserData->szUserName, 3, (LPBYTE*)&pUserInfo);
 
-    /* Get the profile path */
+
     nLength = GetWindowTextLength(GetDlgItem(hwndDlg, IDC_USER_PROFILE_PATH));
     if (nLength == 0)
     {
-        pUserInfo->usri3_profile = NULL;
+        pUserInfo->usri3_profile = ((void*)0);
     }
     else
     {
@@ -82,11 +82,11 @@ SetUserProfileData(HWND hwndDlg,
         pUserInfo->usri3_profile = pszProfilePath;
     }
 
-    /* Get the script path */
+
     nLength = GetWindowTextLength(GetDlgItem(hwndDlg, IDC_USER_PROFILE_SCRIPT));
     if (nLength == 0)
     {
-        pUserInfo->usri3_script_path = NULL;
+        pUserInfo->usri3_script_path = ((void*)0);
     }
     else
     {
@@ -97,11 +97,11 @@ SetUserProfileData(HWND hwndDlg,
 
     if (IsDlgButtonChecked(hwndDlg, IDC_USER_PROFILE_LOCAL) == BST_CHECKED)
     {
-        /* Local home directory */
+
         nLength = GetWindowTextLength(GetDlgItem(hwndDlg, IDC_USER_PROFILE_LOCAL_PATH));
         if (nLength == 0)
         {
-            pUserInfo->usri3_home_dir = NULL;
+            pUserInfo->usri3_home_dir = ((void*)0);
         }
         else
         {
@@ -112,11 +112,11 @@ SetUserProfileData(HWND hwndDlg,
     }
     else
     {
-        /* Remote home directory */
+
         nLength = GetWindowTextLength(GetDlgItem(hwndDlg, IDC_USER_PROFILE_REMOTE_PATH));
         if (nLength == 0)
         {
-            pUserInfo->usri3_home_dir = NULL;
+            pUserInfo->usri3_home_dir = ((void*)0);
         }
         else
         {
@@ -135,7 +135,7 @@ SetUserProfileData(HWND hwndDlg,
         }
     }
 
-    status = NetUserSetInfo(NULL, pUserData->szUserName, 3, (LPBYTE)pUserInfo, &dwIndex);
+    status = NetUserSetInfo(((void*)0), pUserData->szUserName, 3, (LPBYTE)pUserInfo, &dwIndex);
     if (status != NERR_Success)
     {
         DebugPrintf(_T("Status: %lu  Index: %lu"), status, dwIndex);

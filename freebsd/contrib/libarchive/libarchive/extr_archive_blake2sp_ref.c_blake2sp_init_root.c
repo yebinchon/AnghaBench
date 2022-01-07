@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  void* uint8_t ;
-typedef  int /*<<< orphan*/  blake2s_state ;
-struct TYPE_3__ {int depth; int node_depth; int /*<<< orphan*/  personal; int /*<<< orphan*/  salt; int /*<<< orphan*/  inner_length; int /*<<< orphan*/  xof_length; int /*<<< orphan*/  node_offset; int /*<<< orphan*/  leaf_length; int /*<<< orphan*/  fanout; void* key_length; void* digest_length; } ;
-typedef  TYPE_1__ blake2s_param ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BLAKE2S_OUTBYTES ; 
- int /*<<< orphan*/  PARALLELISM_DEGREE ; 
- int blake2s_init_param (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  store16 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  store32 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef void* uint8_t ;
+typedef int blake2s_state ;
+struct TYPE_3__ {int depth; int node_depth; int personal; int salt; int inner_length; int xof_length; int node_offset; int leaf_length; int fanout; void* key_length; void* digest_length; } ;
+typedef TYPE_1__ blake2s_param ;
+
+
+ int BLAKE2S_OUTBYTES ;
+ int PARALLELISM_DEGREE ;
+ int blake2s_init_param (int *,TYPE_1__*) ;
+ int memset (int ,int ,int) ;
+ int store16 (int *,int ) ;
+ int store32 (int *,int ) ;
 
 __attribute__((used)) static int blake2sp_init_root( blake2s_state *S, size_t outlen, size_t keylen )
 {

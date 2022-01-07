@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  DH ;
-typedef  int /*<<< orphan*/  BIGNUM ;
 
-/* Variables and functions */
- int DH_CHECK_PUBKEY_INVALID ; 
- int DH_CHECK_PUBKEY_TOO_LARGE ; 
- int DH_CHECK_PUBKEY_TOO_SMALL ; 
- int /*<<< orphan*/  DH_F_DH_CHECK_PUB_KEY_EX ; 
- int /*<<< orphan*/  DH_R_CHECK_PUBKEY_INVALID ; 
- int /*<<< orphan*/  DH_R_CHECK_PUBKEY_TOO_LARGE ; 
- int /*<<< orphan*/  DH_R_CHECK_PUBKEY_TOO_SMALL ; 
- int /*<<< orphan*/  DH_check_pub_key (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int*) ; 
- int /*<<< orphan*/  DHerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int DH ;
+typedef int BIGNUM ;
+
+
+ int DH_CHECK_PUBKEY_INVALID ;
+ int DH_CHECK_PUBKEY_TOO_LARGE ;
+ int DH_CHECK_PUBKEY_TOO_SMALL ;
+ int DH_F_DH_CHECK_PUB_KEY_EX ;
+ int DH_R_CHECK_PUBKEY_INVALID ;
+ int DH_R_CHECK_PUBKEY_TOO_LARGE ;
+ int DH_R_CHECK_PUBKEY_TOO_SMALL ;
+ int DH_check_pub_key (int const*,int const*,int*) ;
+ int DHerr (int ,int ) ;
 
 int DH_check_pub_key_ex(const DH *dh, const BIGNUM *pub_key)
 {

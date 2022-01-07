@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  MSIPACKAGE ;
-typedef  char* LPWSTR ;
-typedef  int* LPDWORD ;
-typedef  int DWORD ;
-typedef  char CHAR ;
-typedef  scalar_t__ BYTE ;
 
-/* Variables and functions */
- int REG_BINARY ; 
- int REG_DWORD ; 
- int REG_EXPAND_SZ ; 
- int REG_MULTI_SZ ; 
- int REG_SZ ; 
- int /*<<< orphan*/  TRACE (char*,...) ; 
- int /*<<< orphan*/  deformat_string (int /*<<< orphan*/ *,char const*,char**) ; 
- scalar_t__* msi_alloc (int) ; 
- int /*<<< orphan*/  msi_free (char*) ; 
- scalar_t__ msi_strdupW (char const*,int) ; 
- int strlenW (char const*) ; 
- scalar_t__ strtol (char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef char WCHAR ;
+typedef int MSIPACKAGE ;
+typedef char* LPWSTR ;
+typedef int* LPDWORD ;
+typedef int DWORD ;
+typedef char CHAR ;
+typedef scalar_t__ BYTE ;
+
+
+ int REG_BINARY ;
+ int REG_DWORD ;
+ int REG_EXPAND_SZ ;
+ int REG_MULTI_SZ ;
+ int REG_SZ ;
+ int TRACE (char*,...) ;
+ int deformat_string (int *,char const*,char**) ;
+ scalar_t__* msi_alloc (int) ;
+ int msi_free (char*) ;
+ scalar_t__ msi_strdupW (char const*,int) ;
+ int strlenW (char const*) ;
+ scalar_t__ strtol (char*,int *,int ) ;
 
 __attribute__((used)) static BYTE *parse_value( MSIPACKAGE *package, const WCHAR *value, DWORD len, DWORD *type, DWORD *size )
 {
@@ -49,12 +49,12 @@ __attribute__((used)) static BYTE *parse_value( MSIPACKAGE *package, const WCHAR
         {
             LPWSTR ptr;
             CHAR byte[5];
-            LPWSTR deformated = NULL;
+            LPWSTR deformated = ((void*)0);
             int count;
 
             deformat_string(package, &value[2], &deformated);
 
-            /* binary value type */
+
             ptr = deformated;
             *type = REG_BINARY;
             if (strlenW(ptr)%2)
@@ -64,17 +64,17 @@ __attribute__((used)) static BYTE *parse_value( MSIPACKAGE *package, const WCHAR
 
             data = msi_alloc(*size);
 
-            byte[0] = '0'; 
-            byte[1] = 'x'; 
-            byte[4] = 0; 
+            byte[0] = '0';
+            byte[1] = 'x';
+            byte[4] = 0;
             count = 0;
-            /* if uneven pad with a zero in front */
+
             if (strlenW(ptr)%2)
             {
                 byte[2]= '0';
                 byte[3]= *ptr;
                 ptr++;
-                data[count] = (BYTE)strtol(byte,NULL,0);
+                data[count] = (BYTE)strtol(byte,((void*)0),0);
                 count ++;
                 TRACE("Uneven byte count\n");
             }
@@ -84,7 +84,7 @@ __attribute__((used)) static BYTE *parse_value( MSIPACKAGE *package, const WCHAR
                 ptr++;
                 byte[3]= *ptr;
                 ptr++;
-                data[count] = (BYTE)strtol(byte,NULL,0);
+                data[count] = (BYTE)strtol(byte,((void*)0),0);
                 count ++;
             }
             msi_free(deformated);
@@ -98,7 +98,7 @@ __attribute__((used)) static BYTE *parse_value( MSIPACKAGE *package, const WCHAR
             DWORD d = 0;
             deformat_string(package, &value[1], &deformated);
 
-            *type=REG_DWORD; 
+            *type=REG_DWORD;
             *size = sizeof(DWORD);
             data = msi_alloc(*size);
             p = deformated;

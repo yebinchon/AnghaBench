@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct omap_hdmi {int core_enabled; int /*<<< orphan*/  vdda_reg; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  hdmi_runtime_put (struct omap_hdmi*) ; 
- int /*<<< orphan*/  regulator_disable (int /*<<< orphan*/ ) ; 
+
+
+
+struct omap_hdmi {int core_enabled; int vdda_reg; } ;
+
+
+ int hdmi_runtime_put (struct omap_hdmi*) ;
+ int regulator_disable (int ) ;
 
 __attribute__((used)) static void hdmi_power_off_core(struct omap_hdmi *hdmi)
 {
-	hdmi->core_enabled = false;
+ hdmi->core_enabled = 0;
 
-	hdmi_runtime_put(hdmi);
-	regulator_disable(hdmi->vdda_reg);
+ hdmi_runtime_put(hdmi);
+ regulator_disable(hdmi->vdda_reg);
 }

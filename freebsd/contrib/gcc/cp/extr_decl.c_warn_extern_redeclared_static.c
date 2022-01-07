@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
 
-/* Variables and functions */
- scalar_t__ CONST_DECL ; 
- scalar_t__ DECL_ARTIFICIAL (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DECL_ASSEMBLER_NAME (int /*<<< orphan*/ ) ; 
- scalar_t__ DECL_STATIC_FUNCTION_P (int /*<<< orphan*/ ) ; 
- scalar_t__ DECL_THIS_STATIC (int /*<<< orphan*/ ) ; 
- scalar_t__ FUNCTION_DECL ; 
- scalar_t__ NAMESPACE_DECL ; 
- scalar_t__ TEMPLATE_DECL ; 
- scalar_t__ TREE_CODE (int /*<<< orphan*/ ) ; 
- scalar_t__ TYPE_DECL ; 
- int /*<<< orphan*/  pedwarn (char*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int tree ;
+
+
+ scalar_t__ CONST_DECL ;
+ scalar_t__ DECL_ARTIFICIAL (int ) ;
+ int DECL_ASSEMBLER_NAME (int ) ;
+ scalar_t__ DECL_STATIC_FUNCTION_P (int ) ;
+ scalar_t__ DECL_THIS_STATIC (int ) ;
+ scalar_t__ FUNCTION_DECL ;
+ scalar_t__ NAMESPACE_DECL ;
+ scalar_t__ TEMPLATE_DECL ;
+ scalar_t__ TREE_CODE (int ) ;
+ scalar_t__ TYPE_DECL ;
+ int pedwarn (char*,int ) ;
 
 void
 warn_extern_redeclared_static (tree newdecl, tree olddecl)
@@ -36,18 +36,18 @@ warn_extern_redeclared_static (tree newdecl, tree olddecl)
       || TREE_CODE (newdecl) == NAMESPACE_DECL)
     return;
 
-  /* Don't get confused by static member functions; that's a different
-     use of `static'.  */
+
+
   if (TREE_CODE (newdecl) == FUNCTION_DECL
       && DECL_STATIC_FUNCTION_P (newdecl))
     return;
 
-  /* If the old declaration was `static', or the new one isn't, then
-     then everything is OK.  */
+
+
   if (DECL_THIS_STATIC (olddecl) || !DECL_THIS_STATIC (newdecl))
     return;
 
-  /* It's OK to declare a builtin function as `static'.  */
+
   if (TREE_CODE (olddecl) == FUNCTION_DECL
       && DECL_ARTIFICIAL (olddecl))
     return;

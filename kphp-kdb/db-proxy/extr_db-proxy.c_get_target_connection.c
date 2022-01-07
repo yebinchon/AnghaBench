@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct connection {int fd; int remote_port; int status; int unreliability; int /*<<< orphan*/  remote_ip; struct connection* next; } ;
+
+
+
+
+struct connection {int fd; int remote_port; int status; int unreliability; int remote_ip; struct connection* next; } ;
 struct conn_target {double next_reconnect_timeout; struct connection* first_conn; } ;
 
-/* Variables and functions */
- int cr_busy ; 
- int cr_notyet ; 
- int cr_ok ; 
- int cr_stopped ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,struct connection*,int,char*,int,int,int) ; 
- int /*<<< orphan*/  rotate_target (struct conn_target*,struct connection*) ; 
- scalar_t__ round_robin ; 
- char* show_ip (int /*<<< orphan*/ ) ; 
- int sqlp_check_ready (struct connection*) ; 
- int /*<<< orphan*/  stderr ; 
- int verbosity ; 
+
+ int cr_busy ;
+ int cr_notyet ;
+ int cr_ok ;
+ int cr_stopped ;
+ int fprintf (int ,char*,struct connection*,int,char*,int,int,int) ;
+ int rotate_target (struct conn_target*,struct connection*) ;
+ scalar_t__ round_robin ;
+ char* show_ip (int ) ;
+ int sqlp_check_ready (struct connection*) ;
+ int stderr ;
+ int verbosity ;
 
 struct connection *get_target_connection (struct conn_target *S) {
   struct connection *c, *d = 0;
@@ -58,6 +58,6 @@ struct connection *get_target_connection (struct conn_target *S) {
     return 0;
   }
 
-  /* all connections failed? */
+
   return d;
 }

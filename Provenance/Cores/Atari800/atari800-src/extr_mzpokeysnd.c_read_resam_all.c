@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  double qev_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef double qev_t ;
 struct TYPE_3__ {int qebeg; int qeend; double ovola; double* qev; size_t curtick; size_t* qet; } ;
-typedef  TYPE_1__ PokeyState ;
+typedef TYPE_1__ PokeyState ;
 
-/* Variables and functions */
- double* filter_data ; 
- int filter_size ; 
+
+ double* filter_data ;
+ int filter_size ;
 
 __attribute__((used)) static double read_resam_all(PokeyState* ps)
 {
@@ -27,14 +27,14 @@ __attribute__((used)) static double read_resam_all(PokeyState* ps)
 
     if(ps->qebeg == ps->qeend)
     {
-        return ps->ovola * filter_data[0]; /* if no events in the queue */
+        return ps->ovola * filter_data[0];
     }
 
     avol = ps->ovola;
     sum = 0;
 
-    /* Separate two loop cases, for wrap-around and without */
-    if(ps->qeend < ps->qebeg) /* With wrap */
+
+    if(ps->qeend < ps->qebeg)
     {
         while(i<filter_size)
         {
@@ -46,7 +46,7 @@ __attribute__((used)) static double read_resam_all(PokeyState* ps)
         i=0;
     }
 
-    /* without wrap */
+
     while(i<ps->qeend)
     {
         bvol = ps->qev[i];

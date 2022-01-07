@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {size_t const windowLog; int searchLength; } ;
-typedef  TYPE_1__ ZSTD_compressionParameters ;
-typedef  scalar_t__ ZSTD_buffered_policy_e ;
-typedef  size_t const U64 ;
-typedef  int U32 ;
+typedef TYPE_1__ ZSTD_compressionParameters ;
+typedef scalar_t__ ZSTD_buffered_policy_e ;
+typedef size_t const U64 ;
+typedef int U32 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEBUGLOG (int,char*,int,int) ; 
- size_t MAX (int,size_t) ; 
- size_t MIN (size_t const,size_t const) ; 
- size_t const ZSTD_BLOCKSIZE_MAX ; 
- scalar_t__ ZSTDb_buffered ; 
+
+ int DEBUGLOG (int,char*,int,int) ;
+ size_t MAX (int,size_t) ;
+ size_t MIN (size_t const,size_t const) ;
+ size_t const ZSTD_BLOCKSIZE_MAX ;
+ scalar_t__ ZSTDb_buffered ;
 
 __attribute__((used)) static U32 ZSTD_sufficientBuff(size_t bufferSize1, size_t maxNbSeq1,
                             size_t maxNbLit1,

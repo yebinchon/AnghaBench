@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  i2c_port_t ;
-typedef  int /*<<< orphan*/  esp_err_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ESP_FAIL ; 
- int /*<<< orphan*/  ESP_LOGE (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  ESP_OK ; 
- int /*<<< orphan*/  I2C_NUM_0 ; 
- int /*<<< orphan*/  I2C_NUM_1 ; 
- int I2C_NUM_MAX ; 
- int /*<<< orphan*/  TAG ; 
+
+
+
+typedef int i2c_port_t ;
+typedef int esp_err_t ;
+
+
+ int ESP_FAIL ;
+ int ESP_LOGE (int ,char*,int) ;
+ int ESP_OK ;
+ int I2C_NUM_0 ;
+ int I2C_NUM_1 ;
+ int I2C_NUM_MAX ;
+ int TAG ;
 
 __attribute__((used)) static esp_err_t i2c_get_port(int port, i2c_port_t *i2c_port)
 {

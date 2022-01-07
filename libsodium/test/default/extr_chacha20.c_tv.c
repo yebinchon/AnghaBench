@@ -1,32 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ crypto_stream_chacha20 (unsigned char*,unsigned int,unsigned char*,unsigned char*) ; 
- int crypto_stream_chacha20_KEYBYTES ; 
- int crypto_stream_chacha20_NONCEBYTES ; 
- scalar_t__ crypto_stream_chacha20_xor (unsigned char*,unsigned char*,int,unsigned char*,unsigned char*) ; 
- scalar_t__ crypto_stream_chacha20_xor_ic (unsigned char*,unsigned char*,int,unsigned char*,unsigned int,unsigned char*) ; 
- scalar_t__ memcmp (unsigned char*,unsigned char*,size_t) ; 
- int /*<<< orphan*/  memset (unsigned char*,int,int) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  randombytes_buf (unsigned char*,int) ; 
- int /*<<< orphan*/  sodium_bin2hex (char*,int,unsigned char*,int) ; 
- int /*<<< orphan*/  sodium_free (unsigned char*) ; 
- int /*<<< orphan*/  sodium_hex2bin (unsigned char*,int,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ sodium_malloc (size_t) ; 
- int /*<<< orphan*/  strlen (char const*) ; 
+ int assert (int) ;
+ scalar_t__ crypto_stream_chacha20 (unsigned char*,unsigned int,unsigned char*,unsigned char*) ;
+ int crypto_stream_chacha20_KEYBYTES ;
+ int crypto_stream_chacha20_NONCEBYTES ;
+ scalar_t__ crypto_stream_chacha20_xor (unsigned char*,unsigned char*,int,unsigned char*,unsigned char*) ;
+ scalar_t__ crypto_stream_chacha20_xor_ic (unsigned char*,unsigned char*,int,unsigned char*,unsigned int,unsigned char*) ;
+ scalar_t__ memcmp (unsigned char*,unsigned char*,size_t) ;
+ int memset (unsigned char*,int,int) ;
+ int printf (char*,...) ;
+ int randombytes_buf (unsigned char*,int) ;
+ int sodium_bin2hex (char*,int,unsigned char*,int) ;
+ int sodium_free (unsigned char*) ;
+ int sodium_hex2bin (unsigned char*,int,char const*,int ,int *,int *,int *) ;
+ scalar_t__ sodium_malloc (size_t) ;
+ int strlen (char const*) ;
 
 __attribute__((used)) static
 void tv(void)
@@ -45,21 +37,21 @@ void tv(void)
             "0100000000000000" },
           { "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f",
             "0001020304050607" } };
-    unsigned char  key[crypto_stream_chacha20_KEYBYTES];
-    unsigned char  nonce[crypto_stream_chacha20_NONCEBYTES];
+    unsigned char key[crypto_stream_chacha20_KEYBYTES];
+    unsigned char nonce[crypto_stream_chacha20_NONCEBYTES];
     unsigned char *part;
-    unsigned char  out[160];
-    unsigned char  zero[160];
-    char           out_hex[160 * 2 + 1];
-    size_t         i = 0U;
-    size_t         plen;
+    unsigned char out[160];
+    unsigned char zero[160];
+    char out_hex[160 * 2 + 1];
+    size_t i = 0U;
+    size_t plen;
 
     memset(zero, 0, sizeof zero);
     do {
         sodium_hex2bin((unsigned char *)key, sizeof key, tests[i].key_hex,
-                       strlen(tests[i].key_hex), NULL, NULL, NULL);
+                       strlen(tests[i].key_hex), ((void*)0), ((void*)0), ((void*)0));
         sodium_hex2bin(nonce, sizeof nonce, tests[i].nonce_hex,
-                       strlen(tests[i].nonce_hex), NULL, NULL, NULL);
+                       strlen(tests[i].nonce_hex), ((void*)0), ((void*)0), ((void*)0));
         crypto_stream_chacha20(out, sizeof out, nonce, key);
         sodium_bin2hex(out_hex, sizeof out_hex, out, sizeof out);
         printf("[%s]\n", out_hex);

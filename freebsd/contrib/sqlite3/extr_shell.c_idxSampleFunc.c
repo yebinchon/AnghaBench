@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct IdxSampleCtx {double nRow; int nRet; int target; int iTarget; } ;
-typedef  int /*<<< orphan*/  sqlite3_value ;
-typedef  int /*<<< orphan*/  sqlite3_context ;
+typedef int sqlite3_value ;
+typedef int sqlite3_context ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  sqlite3_randomness (int,void*) ; 
- int /*<<< orphan*/  sqlite3_result_int (int /*<<< orphan*/ *,int) ; 
- scalar_t__ sqlite3_user_data (int /*<<< orphan*/ *) ; 
+
+ int assert (int) ;
+ int sqlite3_randomness (int,void*) ;
+ int sqlite3_result_int (int *,int) ;
+ scalar_t__ sqlite3_user_data (int *) ;
 
 __attribute__((used)) static void idxSampleFunc(
   sqlite3_context *pCtx,

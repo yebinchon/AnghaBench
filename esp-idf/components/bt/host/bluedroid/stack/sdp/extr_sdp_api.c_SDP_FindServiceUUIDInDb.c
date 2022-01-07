@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_5__ ;
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_14__ TYPE_5__ ;
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
 struct TYPE_12__ {struct TYPE_12__* p_next_rec; TYPE_4__* p_first_attr; } ;
-typedef  TYPE_3__ tSDP_DISC_REC ;
+typedef TYPE_3__ tSDP_DISC_REC ;
 struct TYPE_10__ {TYPE_4__* p_sub_attr; } ;
 struct TYPE_11__ {TYPE_1__ v; } ;
-struct TYPE_13__ {scalar_t__ attr_id; struct TYPE_13__* p_next_attr; int /*<<< orphan*/  attr_len_type; TYPE_2__ attr_value; } ;
-typedef  TYPE_4__ tSDP_DISC_ATTR ;
+struct TYPE_13__ {scalar_t__ attr_id; struct TYPE_13__* p_next_attr; int attr_len_type; TYPE_2__ attr_value; } ;
+typedef TYPE_4__ tSDP_DISC_ATTR ;
 struct TYPE_14__ {TYPE_3__* p_first_rec; } ;
-typedef  TYPE_5__ tSDP_DISCOVERY_DB ;
-typedef  int /*<<< orphan*/  tBT_UUID ;
+typedef TYPE_5__ tSDP_DISCOVERY_DB ;
+typedef int tBT_UUID ;
 
-/* Variables and functions */
- scalar_t__ ATTR_ID_SERVICE_CLASS_ID_LIST ; 
- scalar_t__ ATTR_ID_SERVICE_ID ; 
- scalar_t__ DATA_ELE_SEQ_DESC_TYPE ; 
- scalar_t__ SDP_DISC_ATTR_TYPE (int /*<<< orphan*/ ) ; 
- scalar_t__ UUID_DESC_TYPE ; 
- scalar_t__ sdpu_compare_uuid_with_attr (int /*<<< orphan*/ *,TYPE_4__*) ; 
+
+ scalar_t__ ATTR_ID_SERVICE_CLASS_ID_LIST ;
+ scalar_t__ ATTR_ID_SERVICE_ID ;
+ scalar_t__ DATA_ELE_SEQ_DESC_TYPE ;
+ scalar_t__ SDP_DISC_ATTR_TYPE (int ) ;
+ scalar_t__ UUID_DESC_TYPE ;
+ scalar_t__ sdpu_compare_uuid_with_attr (int *,TYPE_4__*) ;
 
 tSDP_DISC_REC *SDP_FindServiceUUIDInDb (tSDP_DISCOVERY_DB *p_db, tBT_UUID *p_uuid, tSDP_DISC_REC *p_start_rec)
 {
-#if SDP_CLIENT_ENABLED == TRUE
-    tSDP_DISC_REC   *p_rec;
-    tSDP_DISC_ATTR  *p_attr, *p_sattr;
 
-    /* Must have a valid database */
-    if (p_db == NULL) {
-        return (NULL);
+    tSDP_DISC_REC *p_rec;
+    tSDP_DISC_ATTR *p_attr, *p_sattr;
+
+
+    if (p_db == ((void*)0)) {
+        return (((void*)0));
     }
 
     if (!p_start_rec) {
@@ -76,7 +76,7 @@ tSDP_DISC_REC *SDP_FindServiceUUIDInDb (tSDP_DISCOVERY_DB *p_db, tBT_UUID *p_uui
 
         p_rec = p_rec->p_next_rec;
     }
-#endif  /* CLIENT_ENABLED == TRUE */
-    /* If here, no matching UUID found */
-    return (NULL);
+
+
+    return (((void*)0));
 }

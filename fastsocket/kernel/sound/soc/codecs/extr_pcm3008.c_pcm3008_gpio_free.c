@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct pcm3008_setup_data {int /*<<< orphan*/  pdda_pin; int /*<<< orphan*/  pdad_pin; int /*<<< orphan*/  dem1_pin; int /*<<< orphan*/  dem0_pin; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  gpio_free (int /*<<< orphan*/ ) ; 
+
+
+
+struct pcm3008_setup_data {int pdda_pin; int pdad_pin; int dem1_pin; int dem0_pin; } ;
+
+
+ int gpio_free (int ) ;
 
 __attribute__((used)) static void pcm3008_gpio_free(struct pcm3008_setup_data *setup)
 {
-	gpio_free(setup->dem0_pin);
-	gpio_free(setup->dem1_pin);
-	gpio_free(setup->pdad_pin);
-	gpio_free(setup->pdda_pin);
+ gpio_free(setup->dem0_pin);
+ gpio_free(setup->dem1_pin);
+ gpio_free(setup->pdad_pin);
+ gpio_free(setup->pdda_pin);
 }

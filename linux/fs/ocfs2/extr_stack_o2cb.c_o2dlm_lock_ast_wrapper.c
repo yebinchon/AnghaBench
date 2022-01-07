@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct ocfs2_dlm_lksb {TYPE_2__* lksb_conn; } ;
 struct TYPE_4__ {TYPE_1__* cc_proto; } ;
-struct TYPE_3__ {int /*<<< orphan*/  (* lp_lock_ast ) (struct ocfs2_dlm_lksb*) ;} ;
+struct TYPE_3__ {int (* lp_lock_ast ) (struct ocfs2_dlm_lksb*) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  stub1 (struct ocfs2_dlm_lksb*) ; 
+
+ int stub1 (struct ocfs2_dlm_lksb*) ;
 
 __attribute__((used)) static void o2dlm_lock_ast_wrapper(void *astarg)
 {
-	struct ocfs2_dlm_lksb *lksb = astarg;
+ struct ocfs2_dlm_lksb *lksb = astarg;
 
-	lksb->lksb_conn->cc_proto->lp_lock_ast(lksb);
+ lksb->lksb_conn->cc_proto->lp_lock_ast(lksb);
 }

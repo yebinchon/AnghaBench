@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char u_char ;
 
-/* Variables and functions */
- scalar_t__ isprint (char const) ; 
- scalar_t__ log_IsKept (int) ; 
- int /*<<< orphan*/  log_Printf (int,char*,char const*) ; 
- int /*<<< orphan*/  memset (char*,char,int) ; 
- int /*<<< orphan*/  sprintf (char*,char*,int) ; 
+
+
+
+typedef char u_char ;
+
+
+ scalar_t__ isprint (char const) ;
+ scalar_t__ log_IsKept (int) ;
+ int log_Printf (int,char*,char const*) ;
+ int memset (char*,char,int) ;
+ int sprintf (char*,char*,int) ;
 
 void
 log_DumpBuff(int lev, const char *hdr, const u_char *ptr, int n)
@@ -32,7 +32,7 @@ log_DumpBuff(int lev, const char *hdr, const u_char *ptr, int n)
       b = buf;
       c = b + 50;
       for (b = buf; b != buf + 48 && n--; b += 3, ptr++) {
-	sprintf(b, " %02x", (int) *ptr);
+ sprintf(b, " %02x", (int) *ptr);
         *c++ = isprint(*ptr) ? *ptr : '.';
       }
       memset(b, ' ', 50 - (b - buf));

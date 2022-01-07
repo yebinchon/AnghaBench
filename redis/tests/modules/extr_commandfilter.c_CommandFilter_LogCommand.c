@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  RedisModuleString ;
-typedef  int /*<<< orphan*/  RedisModuleKey ;
-typedef  int /*<<< orphan*/  RedisModuleCtx ;
-typedef  int /*<<< orphan*/  RedisModuleCallReply ;
 
-/* Variables and functions */
- int /*<<< orphan*/  REDISMODULE_LIST_HEAD ; 
- int REDISMODULE_OK ; 
- int REDISMODULE_READ ; 
- int REDISMODULE_WRITE ; 
- int /*<<< orphan*/ * RedisModule_Call (int /*<<< orphan*/ *,char const*,char*,int /*<<< orphan*/ **,int) ; 
- int /*<<< orphan*/  RedisModule_CloseKey (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * RedisModule_CreateString (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RedisModule_FreeCallReply (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RedisModule_FreeString (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RedisModule_ListPush (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * RedisModule_OpenKey (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  RedisModule_ReplyWithCallReply (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RedisModule_ReplyWithSimpleString (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  RedisModule_StringAppendBuffer (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*,size_t) ; 
- char* RedisModule_StringPtrLen (int /*<<< orphan*/ *,size_t*) ; 
- int in_log_command ; 
- int /*<<< orphan*/  log_key_name ; 
+
+
+
+typedef int RedisModuleString ;
+typedef int RedisModuleKey ;
+typedef int RedisModuleCtx ;
+typedef int RedisModuleCallReply ;
+
+
+ int REDISMODULE_LIST_HEAD ;
+ int REDISMODULE_OK ;
+ int REDISMODULE_READ ;
+ int REDISMODULE_WRITE ;
+ int * RedisModule_Call (int *,char const*,char*,int **,int) ;
+ int RedisModule_CloseKey (int *) ;
+ int * RedisModule_CreateString (int *,char*,int ) ;
+ int RedisModule_FreeCallReply (int *) ;
+ int RedisModule_FreeString (int *,int *) ;
+ int RedisModule_ListPush (int *,int ,int *) ;
+ int * RedisModule_OpenKey (int *,int ,int) ;
+ int RedisModule_ReplyWithCallReply (int *,int *) ;
+ int RedisModule_ReplyWithSimpleString (int *,char*) ;
+ int RedisModule_StringAppendBuffer (int *,int *,char const*,size_t) ;
+ char* RedisModule_StringPtrLen (int *,size_t*) ;
+ int in_log_command ;
+ int log_key_name ;
 
 int CommandFilter_LogCommand(RedisModuleCtx *ctx, RedisModuleString **argv, int argc)
 {

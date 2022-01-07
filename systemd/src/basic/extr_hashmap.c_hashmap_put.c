@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct swap_entries {int dummy; } ;
 struct TYPE_3__ {void const* key; } ;
 struct plain_hashmap_entry {void* value; TYPE_1__ b; } ;
 struct TYPE_4__ {struct plain_hashmap_entry p; } ;
-typedef  int /*<<< orphan*/  Hashmap ;
+typedef int Hashmap ;
 
-/* Variables and functions */
- int EEXIST ; 
- unsigned int IDX_NIL ; 
- int /*<<< orphan*/  IDX_PUT ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ *) ; 
- TYPE_2__* bucket_at_swap (struct swap_entries*,int /*<<< orphan*/ ) ; 
- unsigned int bucket_hash (int /*<<< orphan*/ *,void const*) ; 
- unsigned int bucket_scan (int /*<<< orphan*/ *,unsigned int,void const*) ; 
- int hashmap_put_boldly (int /*<<< orphan*/ *,unsigned int,struct swap_entries*,int) ; 
- struct plain_hashmap_entry* plain_bucket_at (int /*<<< orphan*/ *,unsigned int) ; 
+
+ int EEXIST ;
+ unsigned int IDX_NIL ;
+ int IDX_PUT ;
+ int assert (int *) ;
+ TYPE_2__* bucket_at_swap (struct swap_entries*,int ) ;
+ unsigned int bucket_hash (int *,void const*) ;
+ unsigned int bucket_scan (int *,unsigned int,void const*) ;
+ int hashmap_put_boldly (int *,unsigned int,struct swap_entries*,int) ;
+ struct plain_hashmap_entry* plain_bucket_at (int *,unsigned int) ;
 
 int hashmap_put(Hashmap *h, const void *key, void *value) {
         struct swap_entries swap;
@@ -48,5 +48,5 @@ int hashmap_put(Hashmap *h, const void *key, void *value) {
         e = &bucket_at_swap(&swap, IDX_PUT)->p;
         e->b.key = key;
         e->value = value;
-        return hashmap_put_boldly(h, hash, &swap, true);
+        return hashmap_put_boldly(h, hash, &swap, 1);
 }

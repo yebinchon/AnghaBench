@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_wc_context_t ;
-typedef  int /*<<< orphan*/  svn_wc_adm_access_t ;
+
+
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int svn_wc_context_t ;
+typedef int svn_wc_adm_access_t ;
 struct TYPE_10__ {scalar_t__ apr_err; } ;
-typedef  TYPE_1__ svn_error_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+typedef TYPE_1__ svn_error_t ;
+typedef int svn_boolean_t ;
+typedef int apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (TYPE_1__*) ; 
- scalar_t__ SVN_ERR_WC_NOT_WORKING_COPY ; 
- scalar_t__ SVN_ERR_WC_PATH_NOT_FOUND ; 
- TYPE_1__* SVN_NO_ERROR ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  strlen (char const*) ; 
- TYPE_1__* svn_dirent_get_absolute (char const**,char const*,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_dirent_is_root (char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_error_clear (TYPE_1__*) ; 
- TYPE_1__* svn_error_trace (int /*<<< orphan*/ ) ; 
- scalar_t__ svn_path_is_empty (char const*) ; 
- int /*<<< orphan*/  svn_wc__adm_get_db (int /*<<< orphan*/ *) ; 
- TYPE_1__* svn_wc__context_create_with_db (int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc_context_destroy (int /*<<< orphan*/ *) ; 
- TYPE_1__* svn_wc_is_wc_root2 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *) ; 
+
+ int SVN_ERR (TYPE_1__*) ;
+ scalar_t__ SVN_ERR_WC_NOT_WORKING_COPY ;
+ scalar_t__ SVN_ERR_WC_PATH_NOT_FOUND ;
+ TYPE_1__* SVN_NO_ERROR ;
+ int TRUE ;
+ int strlen (char const*) ;
+ TYPE_1__* svn_dirent_get_absolute (char const**,char const*,int *) ;
+ scalar_t__ svn_dirent_is_root (char const*,int ) ;
+ int svn_error_clear (TYPE_1__*) ;
+ TYPE_1__* svn_error_trace (int ) ;
+ scalar_t__ svn_path_is_empty (char const*) ;
+ int svn_wc__adm_get_db (int *) ;
+ TYPE_1__* svn_wc__context_create_with_db (int **,int *,int ,int *) ;
+ int svn_wc_context_destroy (int *) ;
+ TYPE_1__* svn_wc_is_wc_root2 (int *,int *,char const*,int *) ;
 
 svn_error_t *
 svn_wc_is_wc_root(svn_boolean_t *wc_root,
@@ -45,7 +45,7 @@ svn_wc_is_wc_root(svn_boolean_t *wc_root,
   const char *local_abspath;
   svn_error_t *err;
 
-  /* Subversion <= 1.6 said that '.' or a drive root is a WC root. */
+
   if (svn_path_is_empty(path) || svn_dirent_is_root(path, strlen(path)))
     {
       *wc_root = TRUE;
@@ -53,7 +53,7 @@ svn_wc_is_wc_root(svn_boolean_t *wc_root,
     }
 
   SVN_ERR(svn_dirent_get_absolute(&local_abspath, path, pool));
-  SVN_ERR(svn_wc__context_create_with_db(&wc_ctx, NULL /* config */,
+  SVN_ERR(svn_wc__context_create_with_db(&wc_ctx, ((void*)0) ,
                                          svn_wc__adm_get_db(adm_access),
                                          pool));
 
@@ -63,7 +63,7 @@ svn_wc_is_wc_root(svn_boolean_t *wc_root,
       && (err->apr_err == SVN_ERR_WC_NOT_WORKING_COPY
           || err->apr_err == SVN_ERR_WC_PATH_NOT_FOUND))
     {
-      /* Subversion <= 1.6 said that an unversioned path is a WC root. */
+
       svn_error_clear(err);
       *wc_root = TRUE;
     }

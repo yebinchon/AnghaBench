@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct demo {int /*<<< orphan*/  window; int /*<<< orphan*/  height; int /*<<< orphan*/  width; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  APP_LONG_NAME ; 
- int /*<<< orphan*/  GLFW_CLIENT_API ; 
- int /*<<< orphan*/  GLFW_NO_API ; 
- int /*<<< orphan*/  demo_key_callback ; 
- int /*<<< orphan*/  demo_refresh_callback ; 
- int /*<<< orphan*/  demo_resize_callback ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fflush (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glfwCreateWindow (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  glfwSetFramebufferSizeCallback (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glfwSetKeyCallback (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glfwSetWindowRefreshCallback (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glfwSetWindowUserPointer (int /*<<< orphan*/ ,struct demo*) ; 
- int /*<<< orphan*/  glfwWindowHint (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printf (char*) ; 
- int /*<<< orphan*/  stdout ; 
+
+
+
+struct demo {int window; int height; int width; } ;
+
+
+ int APP_LONG_NAME ;
+ int GLFW_CLIENT_API ;
+ int GLFW_NO_API ;
+ int demo_key_callback ;
+ int demo_refresh_callback ;
+ int demo_resize_callback ;
+ int exit (int) ;
+ int fflush (int ) ;
+ int glfwCreateWindow (int ,int ,int ,int *,int *) ;
+ int glfwSetFramebufferSizeCallback (int ,int ) ;
+ int glfwSetKeyCallback (int ,int ) ;
+ int glfwSetWindowRefreshCallback (int ,int ) ;
+ int glfwSetWindowUserPointer (int ,struct demo*) ;
+ int glfwWindowHint (int ,int ) ;
+ int printf (char*) ;
+ int stdout ;
 
 __attribute__((used)) static void demo_create_window(struct demo *demo) {
     glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
@@ -36,10 +36,10 @@ __attribute__((used)) static void demo_create_window(struct demo *demo) {
     demo->window = glfwCreateWindow(demo->width,
                                     demo->height,
                                     APP_LONG_NAME,
-                                    NULL,
-                                    NULL);
+                                    ((void*)0),
+                                    ((void*)0));
     if (!demo->window) {
-        // It didn't work, so try to give a useful error:
+
         printf("Cannot create a window in which to draw!\n");
         fflush(stdout);
         exit(1);

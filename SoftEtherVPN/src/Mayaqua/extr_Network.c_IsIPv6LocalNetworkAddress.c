@@ -1,92 +1,92 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int UINT ;
-typedef  int /*<<< orphan*/  LIST ;
-typedef  int /*<<< orphan*/  IP ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FreeHostIPAddressList (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * GetHostIPAddressList () ; 
- int GetIPAddrType6 (int /*<<< orphan*/ *) ; 
- int IPV6_ADDR_GLOBAL_UNICAST ; 
- int IPV6_ADDR_LOCAL_UNICAST ; 
- int /*<<< orphan*/  IntToSubnetMask6 (int /*<<< orphan*/ *,int) ; 
- int IsIP6 (int /*<<< orphan*/ *) ; 
- scalar_t__ IsInSameNetwork6 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int IsLocalHostIP6 (int /*<<< orphan*/ *) ; 
- int IsZeroIp (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * LIST_DATA (int /*<<< orphan*/ *,int) ; 
- int LIST_NUM (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int UINT ;
+typedef int LIST ;
+typedef int IP ;
+
+
+ int FreeHostIPAddressList (int *) ;
+ int * GetHostIPAddressList () ;
+ int GetIPAddrType6 (int *) ;
+ int IPV6_ADDR_GLOBAL_UNICAST ;
+ int IPV6_ADDR_LOCAL_UNICAST ;
+ int IntToSubnetMask6 (int *,int) ;
+ int IsIP6 (int *) ;
+ scalar_t__ IsInSameNetwork6 (int *,int *,int *) ;
+ int IsLocalHostIP6 (int *) ;
+ int IsZeroIp (int *) ;
+ int * LIST_DATA (int *,int) ;
+ int LIST_NUM (int *) ;
 
 bool IsIPv6LocalNetworkAddress(IP *ip)
 {
-	UINT type;
-	LIST *o;
-	UINT i;
-	bool ret = false;
-	IP mask64;
-	// Validate arguments
-	if (ip == NULL)
-	{
-		return false;
-	}
-	if (IsIP6(ip) == false)
-	{
-		return false;
-	}
-	if (IsZeroIp(ip))
-	{
-		return false;
-	}
+ UINT type;
+ LIST *o;
+ UINT i;
+ bool ret = 0;
+ IP mask64;
 
-	type = GetIPAddrType6(ip);
+ if (ip == ((void*)0))
+ {
+  return 0;
+ }
+ if (IsIP6(ip) == 0)
+ {
+  return 0;
+ }
+ if (IsZeroIp(ip))
+ {
+  return 0;
+ }
 
-	if (type & IPV6_ADDR_LOCAL_UNICAST)
-	{
-		return true;
-	}
+ type = GetIPAddrType6(ip);
 
-	if ((type & IPV6_ADDR_GLOBAL_UNICAST) == 0)
-	{
-		return false;
-	}
+ if (type & IPV6_ADDR_LOCAL_UNICAST)
+ {
+  return 1;
+ }
 
-	IntToSubnetMask6(&mask64, 64);
+ if ((type & IPV6_ADDR_GLOBAL_UNICAST) == 0)
+ {
+  return 0;
+ }
 
-	o = GetHostIPAddressList();
+ IntToSubnetMask6(&mask64, 64);
 
-	ret = false;
+ o = GetHostIPAddressList();
 
-	for (i = 0;i < LIST_NUM(o);i++)
-	{
-		IP *p = LIST_DATA(o, i);
+ ret = 0;
 
-		if (IsIP6(p))
-		{
-			if (IsZeroIp(p) == false)
-			{
-				if (IsLocalHostIP6(p) == false)
-				{
-					if (IsInSameNetwork6(p, ip, &mask64))
-					{
-						ret = true;
-					}
-				}
-			}
-		}
-	}
+ for (i = 0;i < LIST_NUM(o);i++)
+ {
+  IP *p = LIST_DATA(o, i);
 
-	FreeHostIPAddressList(o);
+  if (IsIP6(p))
+  {
+   if (IsZeroIp(p) == 0)
+   {
+    if (IsLocalHostIP6(p) == 0)
+    {
+     if (IsInSameNetwork6(p, ip, &mask64))
+     {
+      ret = 1;
+     }
+    }
+   }
+  }
+ }
 
-	return ret;
+ FreeHostIPAddressList(o);
+
+ return ret;
 }

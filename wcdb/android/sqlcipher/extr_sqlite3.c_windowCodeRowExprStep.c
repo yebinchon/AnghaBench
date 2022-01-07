@@ -1,105 +1,105 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_22__   TYPE_3__ ;
-typedef  struct TYPE_21__   TYPE_2__ ;
-typedef  struct TYPE_20__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_22__ TYPE_3__ ;
+typedef struct TYPE_21__ TYPE_2__ ;
+typedef struct TYPE_20__ TYPE_1__ ;
+
+
 struct TYPE_20__ {scalar_t__ eStart; scalar_t__ eEnd; int iEphCsr; scalar_t__ pStart; scalar_t__ pEnd; } ;
-typedef  TYPE_1__ Window ;
-typedef  int /*<<< orphan*/  WhereInfo ;
-typedef  int /*<<< orphan*/  Vdbe ;
-struct TYPE_22__ {int nMem; int /*<<< orphan*/  nTab; } ;
+typedef TYPE_1__ Window ;
+typedef int WhereInfo ;
+typedef int Vdbe ;
+struct TYPE_22__ {int nMem; int nTab; } ;
 struct TYPE_21__ {TYPE_1__* pWin; } ;
-typedef  TYPE_2__ Select ;
-typedef  TYPE_3__ Parse ;
+typedef TYPE_2__ Select ;
+typedef TYPE_3__ Parse ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OP_Copy ; 
- int /*<<< orphan*/  OP_Ge ; 
- int /*<<< orphan*/  OP_Goto ; 
- int /*<<< orphan*/  OP_IfPos ; 
- int /*<<< orphan*/  OP_Le ; 
- int /*<<< orphan*/  OP_Next ; 
- int /*<<< orphan*/  OP_Once ; 
- int /*<<< orphan*/  OP_OpenDup ; 
- int /*<<< orphan*/  OP_ResetSorter ; 
- int /*<<< orphan*/  OP_Return ; 
- int /*<<< orphan*/  OP_Rewind ; 
- int /*<<< orphan*/  OP_Subtract ; 
- scalar_t__ TK_CURRENT ; 
- scalar_t__ TK_FOLLOWING ; 
- scalar_t__ TK_PRECEDING ; 
- scalar_t__ TK_UNBOUNDED ; 
- int /*<<< orphan*/  VdbeComment (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  VdbeCoverage (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  VdbeCoverageAlwaysTaken (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  VdbeCoverageNeverNull (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  VdbeCoverageNeverTaken (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  sqlite3ExprCode (TYPE_3__*,scalar_t__,int) ; 
- int /*<<< orphan*/ * sqlite3GetVdbe (TYPE_3__*) ; 
- int sqlite3VdbeAddOp0 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3VdbeAddOp1 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  sqlite3VdbeAddOp2 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int) ; 
- int sqlite3VdbeAddOp3 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int,int) ; 
- int /*<<< orphan*/  sqlite3VdbeChangeP5 (int /*<<< orphan*/ *,int) ; 
- int sqlite3VdbeCurrentAddr (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3VdbeJumpHere (int /*<<< orphan*/ *,int) ; 
- int sqlite3VdbeMakeLabel (TYPE_3__*) ; 
- int /*<<< orphan*/  sqlite3VdbeResolveLabel (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  windowAggFinal (TYPE_3__*,TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  windowAggStep (TYPE_3__*,TYPE_1__*,int,int,int,int) ; 
- int /*<<< orphan*/  windowCheckIntValue (TYPE_3__*,int,int) ; 
- int windowInitAccum (TYPE_3__*,TYPE_1__*) ; 
- int /*<<< orphan*/  windowPartitionCache (TYPE_3__*,TYPE_2__*,int /*<<< orphan*/ *,int,int,int*) ; 
- int /*<<< orphan*/  windowReturnOneRow (TYPE_3__*,TYPE_1__*,int,int) ; 
+
+ int OP_Copy ;
+ int OP_Ge ;
+ int OP_Goto ;
+ int OP_IfPos ;
+ int OP_Le ;
+ int OP_Next ;
+ int OP_Once ;
+ int OP_OpenDup ;
+ int OP_ResetSorter ;
+ int OP_Return ;
+ int OP_Rewind ;
+ int OP_Subtract ;
+ scalar_t__ TK_CURRENT ;
+ scalar_t__ TK_FOLLOWING ;
+ scalar_t__ TK_PRECEDING ;
+ scalar_t__ TK_UNBOUNDED ;
+ int VdbeComment (int *) ;
+ int VdbeCoverage (int *) ;
+ int VdbeCoverageAlwaysTaken (int *) ;
+ int VdbeCoverageNeverNull (int *) ;
+ int VdbeCoverageNeverTaken (int *) ;
+ int assert (int) ;
+ int sqlite3ExprCode (TYPE_3__*,scalar_t__,int) ;
+ int * sqlite3GetVdbe (TYPE_3__*) ;
+ int sqlite3VdbeAddOp0 (int *,int ) ;
+ int sqlite3VdbeAddOp1 (int *,int ,int) ;
+ int sqlite3VdbeAddOp2 (int *,int ,int,int) ;
+ int sqlite3VdbeAddOp3 (int *,int ,int,int,int) ;
+ int sqlite3VdbeChangeP5 (int *,int) ;
+ int sqlite3VdbeCurrentAddr (int *) ;
+ int sqlite3VdbeJumpHere (int *,int) ;
+ int sqlite3VdbeMakeLabel (TYPE_3__*) ;
+ int sqlite3VdbeResolveLabel (int *,int) ;
+ int windowAggFinal (TYPE_3__*,TYPE_1__*,int ) ;
+ int windowAggStep (TYPE_3__*,TYPE_1__*,int,int,int,int) ;
+ int windowCheckIntValue (TYPE_3__*,int,int) ;
+ int windowInitAccum (TYPE_3__*,TYPE_1__*) ;
+ int windowPartitionCache (TYPE_3__*,TYPE_2__*,int *,int,int,int*) ;
+ int windowReturnOneRow (TYPE_3__*,TYPE_1__*,int,int) ;
 
 __attribute__((used)) static void windowCodeRowExprStep(
-  Parse *pParse, 
+  Parse *pParse,
   Select *p,
   WhereInfo *pWInfo,
-  int regGosub, 
+  int regGosub,
   int addrGosub
 ){
   Window *pMWin = p->pWin;
   Vdbe *v = sqlite3GetVdbe(pParse);
-  int regFlushPart;               /* Register for "Gosub flush_partition" */
-  int lblFlushPart;               /* Label for "Gosub flush_partition" */
-  int lblFlushDone;               /* Label for "Gosub flush_partition_done" */
+  int regFlushPart;
+  int lblFlushPart;
+  int lblFlushDone;
 
   int regArg;
   int addr;
   int csrStart = pParse->nTab++;
   int csrEnd = pParse->nTab++;
-  int regStart;                    /* Value of <expr> PRECEDING */
-  int regEnd;                      /* Value of <expr> FOLLOWING */
+  int regStart;
+  int regEnd;
   int addrGoto;
   int addrTop;
   int addrIfPos1 = 0;
   int addrIfPos2 = 0;
   int regSize = 0;
 
-  assert( pMWin->eStart==TK_PRECEDING 
-       || pMWin->eStart==TK_CURRENT 
-       || pMWin->eStart==TK_FOLLOWING 
-       || pMWin->eStart==TK_UNBOUNDED 
+  assert( pMWin->eStart==TK_PRECEDING
+       || pMWin->eStart==TK_CURRENT
+       || pMWin->eStart==TK_FOLLOWING
+       || pMWin->eStart==TK_UNBOUNDED
   );
-  assert( pMWin->eEnd==TK_FOLLOWING 
-       || pMWin->eEnd==TK_CURRENT 
-       || pMWin->eEnd==TK_UNBOUNDED 
-       || pMWin->eEnd==TK_PRECEDING 
+  assert( pMWin->eEnd==TK_FOLLOWING
+       || pMWin->eEnd==TK_CURRENT
+       || pMWin->eEnd==TK_UNBOUNDED
+       || pMWin->eEnd==TK_PRECEDING
   );
 
-  /* Allocate register and label for the "flush_partition" sub-routine. */
+
   regFlushPart = ++pParse->nMem;
   lblFlushPart = sqlite3VdbeMakeLabel(pParse);
   lblFlushDone = sqlite3VdbeMakeLabel(pParse);
@@ -111,7 +111,7 @@ __attribute__((used)) static void windowCodeRowExprStep(
 
   addrGoto = sqlite3VdbeAddOp0(v, OP_Goto);
 
-  /* Start of "flush_partition" */
+
   sqlite3VdbeResolveLabel(v, lblFlushPart);
   sqlite3VdbeAddOp2(v, OP_Once, 0, sqlite3VdbeCurrentAddr(v)+3);
   VdbeCoverage(v);
@@ -119,8 +119,8 @@ __attribute__((used)) static void windowCodeRowExprStep(
   sqlite3VdbeAddOp2(v, OP_OpenDup, csrStart, pMWin->iEphCsr);
   sqlite3VdbeAddOp2(v, OP_OpenDup, csrEnd, pMWin->iEphCsr);
 
-  /* If either regStart or regEnd are not non-negative integers, throw 
-  ** an exception.  */
+
+
   if( pMWin->pStart ){
     sqlite3ExprCode(pParse, pMWin->pStart, regStart);
     windowCheckIntValue(pParse, regStart, 0);
@@ -129,15 +129,6 @@ __attribute__((used)) static void windowCodeRowExprStep(
     sqlite3ExprCode(pParse, pMWin->pEnd, regEnd);
     windowCheckIntValue(pParse, regEnd, 1);
   }
-
-  /* If this is "ROWS <expr1> FOLLOWING AND ROWS <expr2> FOLLOWING", do:
-  **
-  **   if( regEnd<regStart ){
-  **     // The frame always consists of 0 rows
-  **     regStart = regSize;
-  **   }
-  **   regEnd = regEnd - regStart;
-  */
   if( pMWin->pEnd && pMWin->eStart==TK_FOLLOWING ){
     assert( pMWin->pStart!=0 );
     assert( pMWin->eEnd==TK_FOLLOWING );
@@ -156,7 +147,7 @@ __attribute__((used)) static void windowCodeRowExprStep(
     sqlite3VdbeAddOp2(v, OP_Copy, regSize, regEnd);
   }
 
-  /* Initialize the accumulator register for each window function to NULL */
+
   regArg = windowInitAccum(pParse, pMWin);
 
   sqlite3VdbeAddOp2(v, OP_Rewind, pMWin->iEphCsr, lblFlushDone);
@@ -168,9 +159,9 @@ __attribute__((used)) static void windowCodeRowExprStep(
   VdbeCoverageNeverTaken(v);
   sqlite3VdbeChangeP5(v, 1);
 
-  /* Invoke AggStep function for each window function using the row that
-  ** csrEnd currently points to. Or, if csrEnd is already at EOF,
-  ** do nothing.  */
+
+
+
   addrTop = sqlite3VdbeCurrentAddr(v);
   if( pMWin->eEnd==TK_PRECEDING ){
     addrIfPos1 = sqlite3VdbeAddOp3(v, OP_IfPos, regEnd, 0 , 1);
@@ -208,9 +199,9 @@ __attribute__((used)) static void windowCodeRowExprStep(
     sqlite3VdbeJumpHere(v, addrIfPos2);
   }
 
-  if( pMWin->eStart==TK_CURRENT 
-   || pMWin->eStart==TK_PRECEDING 
-   || pMWin->eStart==TK_FOLLOWING 
+  if( pMWin->eStart==TK_CURRENT
+   || pMWin->eStart==TK_PRECEDING
+   || pMWin->eStart==TK_FOLLOWING
   ){
     int lblSkipInverse = sqlite3VdbeMakeLabel(pParse);;
     if( pMWin->eStart==TK_PRECEDING ){
@@ -233,12 +224,12 @@ __attribute__((used)) static void windowCodeRowExprStep(
   }
   sqlite3VdbeAddOp2(v, OP_Goto, 0, addrTop);
 
-  /* flush_partition_done: */
+
   sqlite3VdbeResolveLabel(v, lblFlushDone);
   sqlite3VdbeAddOp1(v, OP_ResetSorter, pMWin->iEphCsr);
   sqlite3VdbeAddOp1(v, OP_Return, regFlushPart);
   VdbeComment((v, "end flush_partition subroutine"));
 
-  /* Jump to here to skip over flush_partition */
+
   sqlite3VdbeJumpHere(v, addrGoto);
 }

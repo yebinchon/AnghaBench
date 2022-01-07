@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {void* member_0; size_t member_1; size_t member_2; size_t pos; } ;
-typedef  TYPE_1__ ZSTD_outBuffer ;
+typedef TYPE_1__ ZSTD_outBuffer ;
 struct TYPE_6__ {void const* member_0; size_t member_1; size_t member_2; size_t pos; } ;
-typedef  TYPE_2__ ZSTD_inBuffer ;
-typedef  int /*<<< orphan*/  ZSTD_EndDirective ;
-typedef  int /*<<< orphan*/  ZSTD_CCtx ;
+typedef TYPE_2__ ZSTD_inBuffer ;
+typedef int ZSTD_EndDirective ;
+typedef int ZSTD_CCtx ;
 
-/* Variables and functions */
- size_t ZSTD_compressStream2 (int /*<<< orphan*/ *,TYPE_1__*,TYPE_2__*,int /*<<< orphan*/ ) ; 
+
+ size_t ZSTD_compressStream2 (int *,TYPE_1__*,TYPE_2__*,int ) ;
 
 size_t ZSTD_compressStream2_simpleArgs (
                             ZSTD_CCtx* cctx,
@@ -29,8 +29,8 @@ size_t ZSTD_compressStream2_simpleArgs (
                             ZSTD_EndDirective endOp)
 {
     ZSTD_outBuffer output = { dst, dstCapacity, *dstPos };
-    ZSTD_inBuffer  input  = { src, srcSize, *srcPos };
-    /* ZSTD_compressStream2() will check validity of dstPos and srcPos */
+    ZSTD_inBuffer input = { src, srcSize, *srcPos };
+
     size_t const cErr = ZSTD_compressStream2(cctx, &output, &input, endOp);
     *dstPos = output.pos;
     *srcPos = input.pos;

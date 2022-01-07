@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  xa_mark_t ;
+
+
+
+
+typedef int xa_mark_t ;
 struct xa_node {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  XA_CHUNK_SIZE ; 
- int /*<<< orphan*/  bitmap_empty (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  node_marks (struct xa_node*,int /*<<< orphan*/ ) ; 
+
+ int XA_CHUNK_SIZE ;
+ int bitmap_empty (int ,int ) ;
+ int node_marks (struct xa_node*,int ) ;
 
 __attribute__((used)) static inline bool node_any_mark(struct xa_node *node, xa_mark_t mark)
 {
-	return !bitmap_empty(node_marks(node, mark), XA_CHUNK_SIZE);
+ return !bitmap_empty(node_marks(node, mark), XA_CHUNK_SIZE);
 }

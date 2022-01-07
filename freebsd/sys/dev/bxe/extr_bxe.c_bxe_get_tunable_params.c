@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct bxe_softc {int max_rx_bufs; int hc_rx_ticks; int hc_tx_ticks; int max_aggregation_size; int mrrs; int autogreeen; int udp_rss; int num_queues; scalar_t__ interrupt_mode; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BLOGD (struct bxe_softc*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,scalar_t__,scalar_t__,int,int,int /*<<< orphan*/ ,int,int,int,int) ; 
- int /*<<< orphan*/  BLOGW (struct bxe_softc*,char*,int) ; 
- int /*<<< orphan*/  DBG_LOAD ; 
- scalar_t__ INTR_MODE_INTX ; 
- scalar_t__ INTR_MODE_MSI ; 
- scalar_t__ INTR_MODE_MSIX ; 
- scalar_t__ MAX_RSS_CHAINS ; 
- int RX_BD_USABLE ; 
- int TPA_AGG_SIZE ; 
- int bxe_autogreeen ; 
- int /*<<< orphan*/  bxe_debug ; 
- int bxe_hc_rx_ticks ; 
- int bxe_hc_tx_ticks ; 
- scalar_t__ bxe_interrupt_mode ; 
- int bxe_max_aggregation_size ; 
- int bxe_max_rx_bufs ; 
- int bxe_mrrs ; 
- scalar_t__ bxe_queue_count ; 
- int /*<<< orphan*/  bxe_rx_budget ; 
- int bxe_udp_rss ; 
- int min (scalar_t__,scalar_t__) ; 
- scalar_t__ mp_ncpus ; 
+
+ int BLOGD (struct bxe_softc*,int ,char*,int ,scalar_t__,scalar_t__,int,int,int ,int,int,int,int) ;
+ int BLOGW (struct bxe_softc*,char*,int) ;
+ int DBG_LOAD ;
+ scalar_t__ INTR_MODE_INTX ;
+ scalar_t__ INTR_MODE_MSI ;
+ scalar_t__ INTR_MODE_MSIX ;
+ scalar_t__ MAX_RSS_CHAINS ;
+ int RX_BD_USABLE ;
+ int TPA_AGG_SIZE ;
+ int bxe_autogreeen ;
+ int bxe_debug ;
+ int bxe_hc_rx_ticks ;
+ int bxe_hc_tx_ticks ;
+ scalar_t__ bxe_interrupt_mode ;
+ int bxe_max_aggregation_size ;
+ int bxe_max_rx_bufs ;
+ int bxe_mrrs ;
+ scalar_t__ bxe_queue_count ;
+ int bxe_rx_budget ;
+ int bxe_udp_rss ;
+ int min (scalar_t__,scalar_t__) ;
+ scalar_t__ mp_ncpus ;
 
 __attribute__((used)) static void
 bxe_get_tunable_params(struct bxe_softc *sc)
 {
-    /* sanity checks */
+
 
     if ((bxe_interrupt_mode != INTR_MODE_INTX) &&
-        (bxe_interrupt_mode != INTR_MODE_MSI)  &&
+        (bxe_interrupt_mode != INTR_MODE_MSI) &&
         (bxe_interrupt_mode != INTR_MODE_MSIX)) {
         BLOGW(sc, "invalid interrupt_mode value (%d)\n", bxe_interrupt_mode);
         bxe_interrupt_mode = INTR_MODE_MSIX;
@@ -97,20 +97,20 @@ bxe_get_tunable_params(struct bxe_softc *sc)
         bxe_udp_rss = 0;
     }
 
-    /* pull in user settings */
 
-    sc->interrupt_mode       = bxe_interrupt_mode;
-    sc->max_rx_bufs          = bxe_max_rx_bufs;
-    sc->hc_rx_ticks          = bxe_hc_rx_ticks;
-    sc->hc_tx_ticks          = bxe_hc_tx_ticks;
+
+    sc->interrupt_mode = bxe_interrupt_mode;
+    sc->max_rx_bufs = bxe_max_rx_bufs;
+    sc->hc_rx_ticks = bxe_hc_rx_ticks;
+    sc->hc_tx_ticks = bxe_hc_tx_ticks;
     sc->max_aggregation_size = bxe_max_aggregation_size;
-    sc->mrrs                 = bxe_mrrs;
-    sc->autogreeen           = bxe_autogreeen;
-    sc->udp_rss              = bxe_udp_rss;
+    sc->mrrs = bxe_mrrs;
+    sc->autogreeen = bxe_autogreeen;
+    sc->udp_rss = bxe_udp_rss;
 
     if (bxe_interrupt_mode == INTR_MODE_INTX) {
         sc->num_queues = 1;
-    } else { /* INTR_MODE_MSI or INTR_MODE_MSIX */
+    } else {
         sc->num_queues =
             min((bxe_queue_count ? bxe_queue_count : mp_ncpus),
                 MAX_RSS_CHAINS);

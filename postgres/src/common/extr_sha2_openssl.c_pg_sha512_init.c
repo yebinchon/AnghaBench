@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  pg_sha512_ctx ;
-typedef  int /*<<< orphan*/  SHA512_CTX ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SHA512_Init (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int pg_sha512_ctx ;
+typedef int SHA512_CTX ;
+
+
+ int SHA512_Init (int *) ;
 
 void
 pg_sha512_init(pg_sha512_ctx *ctx)
 {
-	SHA512_Init((SHA512_CTX *) ctx);
+ SHA512_Init((SHA512_CTX *) ctx);
 }

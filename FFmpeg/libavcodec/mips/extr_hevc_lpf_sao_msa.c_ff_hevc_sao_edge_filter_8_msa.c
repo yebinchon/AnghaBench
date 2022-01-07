@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int ptrdiff_t ;
-typedef  int /*<<< orphan*/  int16_t ;
 
-/* Variables and functions */
- int AV_INPUT_BUFFER_PADDING_SIZE ; 
- int MAX_PB_SIZE ; 
- int /*<<< orphan*/  hevc_sao_edge_filter_0degree_16multiple_msa (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  hevc_sao_edge_filter_0degree_4width_msa (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  hevc_sao_edge_filter_0degree_8width_msa (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  hevc_sao_edge_filter_135degree_16multiple_msa (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  hevc_sao_edge_filter_135degree_4width_msa (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  hevc_sao_edge_filter_135degree_8width_msa (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  hevc_sao_edge_filter_45degree_16multiple_msa (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  hevc_sao_edge_filter_45degree_4width_msa (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  hevc_sao_edge_filter_45degree_8width_msa (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  hevc_sao_edge_filter_90degree_16multiple_msa (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  hevc_sao_edge_filter_90degree_4width_msa (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  hevc_sao_edge_filter_90degree_8width_msa (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int uint8_t ;
+typedef int ptrdiff_t ;
+typedef int int16_t ;
+
+
+ int AV_INPUT_BUFFER_PADDING_SIZE ;
+ int MAX_PB_SIZE ;
+ int hevc_sao_edge_filter_0degree_16multiple_msa (int *,int,int *,int,int *,int,int) ;
+ int hevc_sao_edge_filter_0degree_4width_msa (int *,int,int *,int,int *,int) ;
+ int hevc_sao_edge_filter_0degree_8width_msa (int *,int,int *,int,int *,int) ;
+ int hevc_sao_edge_filter_135degree_16multiple_msa (int *,int,int *,int,int *,int,int) ;
+ int hevc_sao_edge_filter_135degree_4width_msa (int *,int,int *,int,int *,int) ;
+ int hevc_sao_edge_filter_135degree_8width_msa (int *,int,int *,int,int *,int) ;
+ int hevc_sao_edge_filter_45degree_16multiple_msa (int *,int,int *,int,int *,int,int) ;
+ int hevc_sao_edge_filter_45degree_4width_msa (int *,int,int *,int,int *,int) ;
+ int hevc_sao_edge_filter_45degree_8width_msa (int *,int,int *,int,int *,int) ;
+ int hevc_sao_edge_filter_90degree_16multiple_msa (int *,int,int *,int,int *,int,int) ;
+ int hevc_sao_edge_filter_90degree_4width_msa (int *,int,int *,int,int *,int) ;
+ int hevc_sao_edge_filter_90degree_8width_msa (int *,int,int *,int,int *,int) ;
 
 void ff_hevc_sao_edge_filter_8_msa(uint8_t *dst, uint8_t *src,
                                    ptrdiff_t stride_dst,

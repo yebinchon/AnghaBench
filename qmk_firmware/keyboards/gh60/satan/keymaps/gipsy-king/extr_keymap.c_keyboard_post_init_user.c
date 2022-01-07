@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  RGBLIGHT_MODE_STATIC_LIGHT ; 
- scalar_t__ cursor_pos ; 
- int /*<<< orphan*/  last_timer ; 
- int /*<<< orphan*/  reset_chars () ; 
- int /*<<< orphan*/  reset_timer ; 
- int /*<<< orphan*/  rgblight_mode (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  timer_read () ; 
+ int RGBLIGHT_MODE_STATIC_LIGHT ;
+ scalar_t__ cursor_pos ;
+ int last_timer ;
+ int reset_chars () ;
+ int reset_timer ;
+ int rgblight_mode (int ) ;
+ int timer_read () ;
 
 void keyboard_post_init_user(void) {
-  // reset the bar and animation
+
   rgblight_mode(RGBLIGHT_MODE_STATIC_LIGHT);
   cursor_pos = 0;
   reset_chars();

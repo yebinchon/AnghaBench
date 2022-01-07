@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int member_0; int member_1; int member_2; int member_3; int member_4; int member_7; int member_8; int /*<<< orphan*/  member_10; int /*<<< orphan*/  member_9; int /*<<< orphan*/  member_6; int /*<<< orphan*/  member_5; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int member_0; int member_1; int member_2; int member_3; int member_4; int member_7; int member_8; int member_10; int member_9; int member_6; int member_5; } ;
 struct TYPE_5__ {TYPE_1__ member_0; } ;
-typedef  int /*<<< orphan*/  PVOID ;
-typedef  int* PULONG ;
-typedef  int* PUCHAR ;
-typedef  scalar_t__ HDC ;
-typedef  scalar_t__ HBITMAP ;
-typedef  int BOOL ;
-typedef  int /*<<< orphan*/  BITMAPINFOHEADER ;
-typedef  TYPE_2__ BITMAPINFO ;
+typedef int PVOID ;
+typedef int* PULONG ;
+typedef int* PUCHAR ;
+typedef scalar_t__ HDC ;
+typedef scalar_t__ HBITMAP ;
+typedef int BOOL ;
+typedef int BITMAPINFOHEADER ;
+typedef TYPE_2__ BITMAPINFO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BI_RGB ; 
- scalar_t__ CreateCompatibleDC (int /*<<< orphan*/ *) ; 
- scalar_t__ CreateDIBSection (scalar_t__,TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DIB_RGB_COLORS ; 
- int /*<<< orphan*/  MAKEROP4 (int /*<<< orphan*/ ,int) ; 
- int MERGEPAINT ; 
- int MaskBlt (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SRCCOPY ; 
- int /*<<< orphan*/  SRCPAINT ; 
- int /*<<< orphan*/  SelectObject (scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
+
+ int BI_RGB ;
+ scalar_t__ CreateCompatibleDC (int *) ;
+ scalar_t__ CreateDIBSection (scalar_t__,TYPE_2__*,int ,int *,int *,int ) ;
+ int DIB_RGB_COLORS ;
+ int MAKEROP4 (int ,int) ;
+ int MERGEPAINT ;
+ int MaskBlt (scalar_t__,int ,int ,int,int,scalar_t__,int ,int ,scalar_t__,int ,int ,int ) ;
+ int SRCCOPY ;
+ int SRCPAINT ;
+ int SelectObject (scalar_t__,scalar_t__) ;
+ int ok (int,char*,...) ;
 
 void Test_MaskBlt_32bpp()
 {
@@ -46,22 +46,22 @@ void Test_MaskBlt_32bpp()
     PULONG pulBitsDst, pulBitsSrc;
     BOOL ret;
 
-    /* Create a dest dc and bitmap */
-    hdcDst = CreateCompatibleDC(NULL);
-    hbmDst = CreateDIBSection(hdcDst, &bmi32, DIB_RGB_COLORS, (PVOID*)&pulBitsDst, NULL, 0);
+
+    hdcDst = CreateCompatibleDC(((void*)0));
+    hbmDst = CreateDIBSection(hdcDst, &bmi32, DIB_RGB_COLORS, (PVOID*)&pulBitsDst, ((void*)0), 0);
     SelectObject(hdcDst, hbmDst);
 
-    /* Create a source dc and bitmap */
-    hdcSrc = CreateCompatibleDC(NULL);
-    hbmSrc = CreateDIBSection(hdcSrc, &bmi32, DIB_RGB_COLORS, (PVOID*)&pulBitsSrc, NULL, 0);
+
+    hdcSrc = CreateCompatibleDC(((void*)0));
+    hbmSrc = CreateDIBSection(hdcSrc, &bmi32, DIB_RGB_COLORS, (PVOID*)&pulBitsSrc, ((void*)0), 0);
     SelectObject(hdcSrc, hbmSrc);
     ok(hdcSrc && hbmSrc, "\n");
 
-    /* Create a 1 bpp mask bitmap */
-    hbmMsk = CreateDIBSection(hdcDst, &bmi1, DIB_RGB_COLORS, (PVOID*)&pjBitsMsk, NULL, 0);
+
+    hbmMsk = CreateDIBSection(hdcDst, &bmi1, DIB_RGB_COLORS, (PVOID*)&pjBitsMsk, ((void*)0), 0);
     ok(hbmMsk != 0, "CreateDIBSection failed\n");
 
-    /* Do the masking */
+
     pulBitsDst[0] = 0x12345678;
     pulBitsDst[1] = 0x9abcdef0;
     pulBitsSrc[0] = 0x87684321;

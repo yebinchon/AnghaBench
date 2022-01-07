@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct nft_set_elem {struct nft_rhash_elem* priv; } ;
 struct nft_set {int dummy; } ;
-struct nft_rhash_elem {int /*<<< orphan*/  ext; } ;
+struct nft_rhash_elem {int ext; } ;
 struct net {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  nft_set_elem_change_active (struct net const*,struct nft_set const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nft_set_elem_clear_busy (int /*<<< orphan*/ *) ; 
+
+ int nft_set_elem_change_active (struct net const*,struct nft_set const*,int *) ;
+ int nft_set_elem_clear_busy (int *) ;
 
 __attribute__((used)) static void nft_rhash_activate(const struct net *net, const struct nft_set *set,
-			       const struct nft_set_elem *elem)
+          const struct nft_set_elem *elem)
 {
-	struct nft_rhash_elem *he = elem->priv;
+ struct nft_rhash_elem *he = elem->priv;
 
-	nft_set_elem_change_active(net, set, &he->ext);
-	nft_set_elem_clear_busy(&he->ext);
+ nft_set_elem_change_active(net, set, &he->ext);
+ nft_set_elem_clear_busy(&he->ext);
 }

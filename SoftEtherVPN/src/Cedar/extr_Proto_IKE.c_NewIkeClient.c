@@ -1,66 +1,66 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  server_ip_str ;
-typedef  int /*<<< orphan*/  client_ip_str ;
-typedef  void* UINT ;
-struct TYPE_10__ {int /*<<< orphan*/  FirstCommTick; int /*<<< orphan*/  LastCommTick; void* ServerPort; int /*<<< orphan*/  TransportModeClientIP; int /*<<< orphan*/  TransportModeServerIP; int /*<<< orphan*/  ServerIP; void* ClientPort; int /*<<< orphan*/  ClientIP; scalar_t__ Id; } ;
-struct TYPE_9__ {int /*<<< orphan*/  Now; scalar_t__ CurrentIkeClientId; } ;
-typedef  int /*<<< orphan*/  IP ;
-typedef  TYPE_1__ IKE_SERVER ;
-typedef  TYPE_2__ IKE_CLIENT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Copy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  Debug (char*,TYPE_2__*,char*,void*,char*,void*) ; 
- int /*<<< orphan*/  IPToStr (char*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IPsecLog (TYPE_1__*,TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*) ; 
- int MAX_SIZE ; 
- TYPE_2__* ZeroMalloc (int) ; 
+
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int server_ip_str ;
+typedef int client_ip_str ;
+typedef void* UINT ;
+struct TYPE_10__ {int FirstCommTick; int LastCommTick; void* ServerPort; int TransportModeClientIP; int TransportModeServerIP; int ServerIP; void* ClientPort; int ClientIP; scalar_t__ Id; } ;
+struct TYPE_9__ {int Now; scalar_t__ CurrentIkeClientId; } ;
+typedef int IP ;
+typedef TYPE_1__ IKE_SERVER ;
+typedef TYPE_2__ IKE_CLIENT ;
+
+
+ int Copy (int *,int *,int) ;
+ int Debug (char*,TYPE_2__*,char*,void*,char*,void*) ;
+ int IPToStr (char*,int,int *) ;
+ int IPsecLog (TYPE_1__*,TYPE_2__*,int *,int *,char*) ;
+ int MAX_SIZE ;
+ TYPE_2__* ZeroMalloc (int) ;
 
 IKE_CLIENT *NewIkeClient(IKE_SERVER *ike, IP *client_ip, UINT client_port, IP *server_ip, UINT server_port)
 {
-	IKE_CLIENT *c;
-	char client_ip_str[MAX_SIZE];
-	char server_ip_str[MAX_SIZE];
-	// Validate arguments
-	if (ike == NULL || client_ip == NULL || server_ip == NULL || client_port == 0 || server_port == 0)
-	{
-		return NULL;
-	}
+ IKE_CLIENT *c;
+ char client_ip_str[MAX_SIZE];
+ char server_ip_str[MAX_SIZE];
 
-	c = ZeroMalloc(sizeof(IKE_CLIENT));
+ if (ike == ((void*)0) || client_ip == ((void*)0) || server_ip == ((void*)0) || client_port == 0 || server_port == 0)
+ {
+  return ((void*)0);
+ }
 
-	c->Id = ++ike->CurrentIkeClientId;
+ c = ZeroMalloc(sizeof(IKE_CLIENT));
 
-	Copy(&c->ClientIP, client_ip, sizeof(IP));
-	c->ClientPort = client_port;
+ c->Id = ++ike->CurrentIkeClientId;
 
-	Copy(&c->ServerIP, server_ip, sizeof(IP));
-	Copy(&c->TransportModeServerIP, server_ip, sizeof(IP));
-	Copy(&c->TransportModeClientIP, client_ip, sizeof(IP));
-	c->ServerPort = server_port;
+ Copy(&c->ClientIP, client_ip, sizeof(IP));
+ c->ClientPort = client_port;
 
-	c->LastCommTick = ike->Now;
-	c->FirstCommTick = ike->Now;
+ Copy(&c->ServerIP, server_ip, sizeof(IP));
+ Copy(&c->TransportModeServerIP, server_ip, sizeof(IP));
+ Copy(&c->TransportModeClientIP, client_ip, sizeof(IP));
+ c->ServerPort = server_port;
 
-	IPToStr(client_ip_str, sizeof(client_ip_str), client_ip);
-	IPToStr(server_ip_str, sizeof(server_ip_str), server_ip);
+ c->LastCommTick = ike->Now;
+ c->FirstCommTick = ike->Now;
 
-	Debug("New IKE_CLIENT: %p: %s:%u -> %s:%u\n", c, client_ip_str, client_port, server_ip_str, server_port);
+ IPToStr(client_ip_str, sizeof(client_ip_str), client_ip);
+ IPToStr(server_ip_str, sizeof(server_ip_str), server_ip);
 
-	IPsecLog(ike, c, NULL, NULL, "LI_NEW_IKE_CLIENT");
+ Debug("New IKE_CLIENT: %p: %s:%u -> %s:%u\n", c, client_ip_str, client_port, server_ip_str, server_port);
 
-	return c;
+ IPsecLog(ike, c, ((void*)0), ((void*)0), "LI_NEW_IKE_CLIENT");
+
+ return c;
 }

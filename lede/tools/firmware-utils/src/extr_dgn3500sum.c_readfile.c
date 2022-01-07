@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct stat {int st_size; } ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef int FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int fread (char*,int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (char*) ; 
- scalar_t__ malloc (int) ; 
- scalar_t__ stat (char*,struct stat*) ; 
+
+ int fclose (int *) ;
+ int * fopen (char*,char*) ;
+ int fread (char*,int,int,int *) ;
+ int free (char*) ;
+ scalar_t__ malloc (int) ;
+ scalar_t__ stat (char*,struct stat*) ;
 
 __attribute__((used)) static char *readfile(char *filename, int *size)
 {
-	FILE		*fp;
-	char		*buffer;
-	struct stat	info;
+ FILE *fp;
+ char *buffer;
+ struct stat info;
 
-	if (stat(filename,&info)!=0)
-		return NULL;
+ if (stat(filename,&info)!=0)
+  return ((void*)0);
 
-	if ((fp=fopen(filename,"r"))==NULL)
-		return NULL;
+ if ((fp=fopen(filename,"r"))==((void*)0))
+  return ((void*)0);
 
-	buffer=NULL;
-	for (;;)
-	{
-		if ((buffer=(char *)malloc(info.st_size+1))==NULL)
-			break;
+ buffer=((void*)0);
+ for (;;)
+ {
+  if ((buffer=(char *)malloc(info.st_size+1))==((void*)0))
+   break;
 
-		if (fread(buffer,1,info.st_size,fp)!=info.st_size)
-		{
-			free(buffer);
-			buffer=NULL;
-			break;
-		}
+  if (fread(buffer,1,info.st_size,fp)!=info.st_size)
+  {
+   free(buffer);
+   buffer=((void*)0);
+   break;
+  }
 
-		buffer[info.st_size]='\0';
-		if(size) *size = info.st_size;
+  buffer[info.st_size]='\0';
+  if(size) *size = info.st_size;
 
-		break;
-	}
+  break;
+ }
 
-	(void)fclose(fp);
+ (void)fclose(fp);
 
-	return buffer;
+ return buffer;
 }

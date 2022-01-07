@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct demux_stream {struct demux_packet* reader_head; struct demux_internal* in; } ;
-struct demux_queue {int correct_dts; int correct_pos; int last_pos; int is_eof; int is_bof; void* last_dts; void* last_ts; void* last_pruned; void* seek_end; void* seek_start; int /*<<< orphan*/ * keyframe_latest; int /*<<< orphan*/ * keyframe_first; int /*<<< orphan*/ * tail; struct demux_packet* head; scalar_t__ tail_cum_pos; struct demux_stream* ds; } ;
+struct demux_queue {int correct_dts; int correct_pos; int last_pos; int is_eof; int is_bof; void* last_dts; void* last_ts; void* last_pruned; void* seek_end; void* seek_start; int * keyframe_latest; int * keyframe_first; int * tail; struct demux_packet* head; scalar_t__ tail_cum_pos; struct demux_stream* ds; } ;
 struct demux_packet {struct demux_packet* next; scalar_t__ cum_pos; } ;
-struct demux_internal {int /*<<< orphan*/  total_bytes; } ;
+struct demux_internal {int total_bytes; } ;
 
-/* Variables and functions */
- void* MP_NOPTS_VALUE ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  free_index (struct demux_queue*) ; 
- int /*<<< orphan*/  talloc_free (struct demux_packet*) ; 
+
+ void* MP_NOPTS_VALUE ;
+ int assert (int) ;
+ int free_index (struct demux_queue*) ;
+ int talloc_free (struct demux_packet*) ;
 
 __attribute__((used)) static void clear_queue(struct demux_queue *queue)
 {
@@ -38,15 +38,15 @@ __attribute__((used)) static void clear_queue(struct demux_queue *queue)
         talloc_free(dp);
         dp = dn;
     }
-    queue->head = queue->tail = NULL;
-    queue->keyframe_first = NULL;
-    queue->keyframe_latest = NULL;
+    queue->head = queue->tail = ((void*)0);
+    queue->keyframe_first = ((void*)0);
+    queue->keyframe_latest = ((void*)0);
     queue->seek_start = queue->seek_end = queue->last_pruned = MP_NOPTS_VALUE;
 
-    queue->correct_dts = queue->correct_pos = true;
+    queue->correct_dts = queue->correct_pos = 1;
     queue->last_pos = -1;
     queue->last_ts = queue->last_dts = MP_NOPTS_VALUE;
 
-    queue->is_eof = false;
-    queue->is_bof = false;
+    queue->is_eof = 0;
+    queue->is_bof = 0;
 }

@@ -1,76 +1,76 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sigset_t ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SIG_BLOCK ; 
- int /*<<< orphan*/  SIG_SETMASK ; 
- int /*<<< orphan*/  TRAILER ; 
- char* _PATH_TMP ; 
- int /*<<< orphan*/  __libc_sigprocmask (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  _close (int) ; 
- int /*<<< orphan*/  asprintf (char**,char*,char const*,char*,int /*<<< orphan*/ ) ; 
- int errno ; 
- int /*<<< orphan*/ * fdopen (int,char*) ; 
- int /*<<< orphan*/  free (char*) ; 
- char* getenv (char*) ; 
- scalar_t__ issetugid () ; 
- int mkstemp (char*) ; 
- int /*<<< orphan*/  sigfillset (int /*<<< orphan*/ *) ; 
- int strlen (char const*) ; 
- int /*<<< orphan*/  unlink (char*) ; 
+
+
+
+typedef int sigset_t ;
+typedef int FILE ;
+
+
+ int SIG_BLOCK ;
+ int SIG_SETMASK ;
+ int TRAILER ;
+ char* _PATH_TMP ;
+ int __libc_sigprocmask (int ,int *,int *) ;
+ int _close (int) ;
+ int asprintf (char**,char*,char const*,char*,int ) ;
+ int errno ;
+ int * fdopen (int,char*) ;
+ int free (char*) ;
+ char* getenv (char*) ;
+ scalar_t__ issetugid () ;
+ int mkstemp (char*) ;
+ int sigfillset (int *) ;
+ int strlen (char const*) ;
+ int unlink (char*) ;
 
 FILE *
 tmpfile(void)
 {
-	sigset_t set, oset;
-	FILE *fp;
-	int fd, sverrno;
-#define	TRAILER	"tmp.XXXXXX"
-	char *buf;
-	const char *tmpdir;
+ sigset_t set, oset;
+ FILE *fp;
+ int fd, sverrno;
 
-	tmpdir = NULL;
-	if (issetugid() == 0)
-		tmpdir = getenv("TMPDIR");
-	if (tmpdir == NULL)
-		tmpdir = _PATH_TMP;
+ char *buf;
+ const char *tmpdir;
 
-	(void)asprintf(&buf, "%s%s%s", tmpdir,
-	    (tmpdir[strlen(tmpdir) - 1] == '/') ? "" : "/", TRAILER);
-	if (buf == NULL)
-		return (NULL);
+ tmpdir = ((void*)0);
+ if (issetugid() == 0)
+  tmpdir = getenv("TMPDIR");
+ if (tmpdir == ((void*)0))
+  tmpdir = _PATH_TMP;
 
-	sigfillset(&set);
-	(void)__libc_sigprocmask(SIG_BLOCK, &set, &oset);
+ (void)asprintf(&buf, "%s%s%s", tmpdir,
+     (tmpdir[strlen(tmpdir) - 1] == '/') ? "" : "/", "tmp.XXXXXX");
+ if (buf == ((void*)0))
+  return (((void*)0));
 
-	fd = mkstemp(buf);
-	if (fd != -1)
-		(void)unlink(buf);
+ sigfillset(&set);
+ (void)__libc_sigprocmask(SIG_BLOCK, &set, &oset);
 
-	free(buf);
+ fd = mkstemp(buf);
+ if (fd != -1)
+  (void)unlink(buf);
 
-	(void)__libc_sigprocmask(SIG_SETMASK, &oset, NULL);
+ free(buf);
 
-	if (fd == -1)
-		return (NULL);
+ (void)__libc_sigprocmask(SIG_SETMASK, &oset, ((void*)0));
 
-	if ((fp = fdopen(fd, "w+")) == NULL) {
-		sverrno = errno;
-		(void)_close(fd);
-		errno = sverrno;
-		return (NULL);
-	}
-	return (fp);
+ if (fd == -1)
+  return (((void*)0));
+
+ if ((fp = fdopen(fd, "w+")) == ((void*)0)) {
+  sverrno = errno;
+  (void)_close(fd);
+  errno = sverrno;
+  return (((void*)0));
+ }
+ return (fp);
 }

@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  m_Name; int /*<<< orphan*/  m_ClsID; } ;
-typedef  int /*<<< orphan*/  OLECHAR ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
-typedef  scalar_t__ LONG ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  TYPE_1__ FactoryTemplate ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- int CHARS_IN_GUID ; 
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  HKEY_CLASSES_ROOT ; 
- int /*<<< orphan*/  HRESULT_FROM_WIN32 (scalar_t__) ; 
- int /*<<< orphan*/  NOERROR ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- scalar_t__ RegCreateKeyW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RegDeleteTreeW (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetupRegisterClass (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  StringFromGUID2 (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  clsid_keyname ; 
- int /*<<< orphan*/  ips32_keyname ; 
- int /*<<< orphan*/  tmodel_both ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int m_Name; int m_ClsID; } ;
+typedef int OLECHAR ;
+typedef int LPCWSTR ;
+typedef scalar_t__ LONG ;
+typedef int HRESULT ;
+typedef int HKEY ;
+typedef TYPE_1__ FactoryTemplate ;
+typedef scalar_t__ BOOL ;
+
+
+ int CHARS_IN_GUID ;
+ scalar_t__ ERROR_SUCCESS ;
+ int HKEY_CLASSES_ROOT ;
+ int HRESULT_FROM_WIN32 (scalar_t__) ;
+ int NOERROR ;
+ int RegCloseKey (int ) ;
+ scalar_t__ RegCreateKeyW (int ,int ,int *) ;
+ int RegDeleteTreeW (int ,int *) ;
+ scalar_t__ SUCCEEDED (int ) ;
+ int SetupRegisterClass (int ,int *,int ,int ,int ,int ) ;
+ int StringFromGUID2 (int ,int *,int) ;
+ int clsid_keyname ;
+ int ips32_keyname ;
+ int tmodel_both ;
 
 __attribute__((used)) static HRESULT SetupRegisterAllClasses(const FactoryTemplate * pList, int num,
                                        LPCWSTR szFileName, BOOL bRegister)
@@ -48,7 +48,7 @@ __attribute__((used)) static HRESULT SetupRegisterAllClasses(const FactoryTempla
 
     for (i = 0; i < num; i++, pList++)
     {
-        /* (un)register CLSID and InprocServer32 */
+
         hr = StringFromGUID2(pList->m_ClsID, szCLSID, CHARS_IN_GUID);
         if (SUCCEEDED(hr))
         {

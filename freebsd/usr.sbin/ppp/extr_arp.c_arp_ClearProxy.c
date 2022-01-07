@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  s_addr; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int s_addr; } ;
 struct sockaddr_in {TYPE_1__ sin_addr; } ;
-struct in_addr {int /*<<< orphan*/  s_addr; } ;
+struct in_addr {int s_addr; } ;
 struct bundle {int dummy; } ;
-struct arpreq {int /*<<< orphan*/  arp_pa; } ;
-typedef  int /*<<< orphan*/  caddr_t ;
+struct arpreq {int arp_pa; } ;
+typedef int caddr_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_INET ; 
- scalar_t__ ID0ioctl (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LogERROR ; 
- int /*<<< orphan*/  SET_SA_FAMILY (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SIOCDARP ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  log_Printf (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (struct arpreq*,char,int) ; 
- int /*<<< orphan*/  strerror (int /*<<< orphan*/ ) ; 
+
+ int AF_INET ;
+ scalar_t__ ID0ioctl (int,int ,int ) ;
+ int LogERROR ;
+ int SET_SA_FAMILY (int ,int ) ;
+ int SIOCDARP ;
+ int errno ;
+ int log_Printf (int ,char*,int ) ;
+ int memset (struct arpreq*,char,int) ;
+ int strerror (int ) ;
 
 int
 arp_ClearProxy(struct bundle *bundle, struct in_addr addr, int s)

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct ui_file {int dummy; } ;
 struct type {int dummy; } ;
-typedef  int /*<<< orphan*/  LONGEST ;
+typedef int LONGEST ;
 
-/* Variables and functions */
- int TYPE_CODE (struct type*) ; 
-#define  TYPE_CODE_ENUM 129 
- int TYPE_CODE_RANGE ; 
-#define  TYPE_CODE_UNDEF 128 
- long TYPE_FIELD_BITPOS (struct type*,int /*<<< orphan*/ ) ; 
- struct type* TYPE_INDEX_TYPE (struct type*) ; 
- long TYPE_LOW_BOUND (struct type*) ; 
- struct type* TYPE_TARGET_TYPE (struct type*) ; 
- int /*<<< orphan*/  ada_print_scalar (struct type*,int /*<<< orphan*/ ,struct ui_file*) ; 
- struct type* builtin_type_long ; 
- int /*<<< orphan*/  fprintf_filtered (struct ui_file*,char*) ; 
+
+ int TYPE_CODE (struct type*) ;
+
+ int TYPE_CODE_RANGE ;
+
+ long TYPE_FIELD_BITPOS (struct type*,int ) ;
+ struct type* TYPE_INDEX_TYPE (struct type*) ;
+ long TYPE_LOW_BOUND (struct type*) ;
+ struct type* TYPE_TARGET_TYPE (struct type*) ;
+ int ada_print_scalar (struct type*,int ,struct ui_file*) ;
+ struct type* builtin_type_long ;
+ int fprintf_filtered (struct ui_file*,char*) ;
 
 __attribute__((used)) static int
 print_optional_low_bound (struct ui_file *stream, struct type *type)
@@ -36,7 +36,7 @@ print_optional_low_bound (struct ui_file *stream, struct type *type)
   index_type = TYPE_INDEX_TYPE (type);
   low_bound = 0;
 
-  if (index_type == NULL)
+  if (index_type == ((void*)0))
     return 0;
   if (TYPE_CODE (index_type) == TYPE_CODE_RANGE)
     {
@@ -48,16 +48,16 @@ print_optional_low_bound (struct ui_file *stream, struct type *type)
 
   switch (TYPE_CODE (index_type))
     {
-    case TYPE_CODE_ENUM:
+    case 129:
       if (low_bound == TYPE_FIELD_BITPOS (index_type, 0))
-	return 0;
+ return 0;
       break;
-    case TYPE_CODE_UNDEF:
+    case 128:
       index_type = builtin_type_long;
-      /* FALL THROUGH */
+
     default:
       if (low_bound == 1)
-	return 0;
+ return 0;
       break;
     }
 

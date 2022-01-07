@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct sd {int /*<<< orphan*/  colors; } ;
+
+
+
+
+struct sd {int colors; } ;
 struct gspca_dev {scalar_t__ streaming; } ;
-typedef  int /*<<< orphan*/  __s32 ;
+typedef int __s32 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  setbrightness (struct gspca_dev*) ; 
- int /*<<< orphan*/  setcontrast (struct gspca_dev*) ; 
+
+ int setbrightness (struct gspca_dev*) ;
+ int setcontrast (struct gspca_dev*) ;
 
 __attribute__((used)) static int sd_setcolors(struct gspca_dev *gspca_dev, __s32 val)
 {
-	struct sd *sd = (struct sd *) gspca_dev;
+ struct sd *sd = (struct sd *) gspca_dev;
 
-	sd->colors = val;
-	if (gspca_dev->streaming) {
-		setbrightness(gspca_dev);
-		setcontrast(gspca_dev);
-	}
-	return 0;
+ sd->colors = val;
+ if (gspca_dev->streaming) {
+  setbrightness(gspca_dev);
+  setcontrast(gspca_dev);
+ }
+ return 0;
 }

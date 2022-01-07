@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {scalar_t__ FrontFace; } ;
 struct TYPE_7__ {TYPE_1__ Polygon; } ;
-typedef  scalar_t__ GLenum ;
-typedef  TYPE_2__ GLcontext ;
+typedef scalar_t__ GLenum ;
+typedef TYPE_2__ GLcontext ;
 
-/* Variables and functions */
- scalar_t__ GL_CCW ; 
- scalar_t__ GL_CW ; 
- int /*<<< orphan*/  GL_INVALID_ENUM ; 
- int /*<<< orphan*/  GL_INVALID_OPERATION ; 
- scalar_t__ INSIDE_BEGIN_END (TYPE_2__*) ; 
- int /*<<< orphan*/  gl_error (TYPE_2__*,int /*<<< orphan*/ ,char*) ; 
+
+ scalar_t__ GL_CCW ;
+ scalar_t__ GL_CW ;
+ int GL_INVALID_ENUM ;
+ int GL_INVALID_OPERATION ;
+ scalar_t__ INSIDE_BEGIN_END (TYPE_2__*) ;
+ int gl_error (TYPE_2__*,int ,char*) ;
 
 void gl_FrontFace( GLcontext *ctx, GLenum mode )
 {

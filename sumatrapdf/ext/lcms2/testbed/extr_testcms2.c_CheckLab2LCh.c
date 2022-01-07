@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int cmsInt32Number ;
-typedef  int cmsFloat64Number ;
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int cmsInt32Number ;
+typedef int cmsFloat64Number ;
 struct TYPE_6__ {int L; int a; int b; } ;
-typedef  TYPE_1__ cmsCIELab ;
-typedef  int /*<<< orphan*/  cmsCIELCh ;
+typedef TYPE_1__ cmsCIELab ;
+typedef int cmsCIELCh ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DbgThread () ; 
- int cmsDeltaE (int /*<<< orphan*/ ,TYPE_1__*,TYPE_1__*) ; 
- int /*<<< orphan*/  cmsLCh2Lab (int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cmsLab2LCh (int /*<<< orphan*/ ,int /*<<< orphan*/ *,TYPE_1__*) ; 
+
+ int DbgThread () ;
+ int cmsDeltaE (int ,TYPE_1__*,TYPE_1__*) ;
+ int cmsLCh2Lab (int ,TYPE_1__*,int *) ;
+ int cmsLab2LCh (int ,int *,TYPE_1__*) ;
 
 __attribute__((used)) static
 cmsInt32Number CheckLab2LCh(void)

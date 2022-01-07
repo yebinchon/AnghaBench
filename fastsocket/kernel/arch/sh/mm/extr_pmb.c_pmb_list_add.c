@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct pmb_entry {struct pmb_entry* next; } ;
 
-/* Variables and functions */
- struct pmb_entry* pmb_list ; 
+
+ struct pmb_entry* pmb_list ;
 
 __attribute__((used)) static inline void pmb_list_add(struct pmb_entry *pmbe)
 {
-	struct pmb_entry **p, *tmp;
+ struct pmb_entry **p, *tmp;
 
-	p = &pmb_list;
-	while ((tmp = *p) != NULL)
-		p = &tmp->next;
+ p = &pmb_list;
+ while ((tmp = *p) != ((void*)0))
+  p = &tmp->next;
 
-	pmbe->next = tmp;
-	*p = pmbe;
+ pmbe->next = tmp;
+ *p = pmbe;
 }

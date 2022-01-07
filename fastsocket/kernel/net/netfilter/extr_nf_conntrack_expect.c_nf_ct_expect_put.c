@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct nf_conntrack_expect {int /*<<< orphan*/  rcu; int /*<<< orphan*/  use; } ;
 
-/* Variables and functions */
- scalar_t__ atomic_dec_and_test (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  call_rcu (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nf_ct_expect_free_rcu ; 
+
+
+
+struct nf_conntrack_expect {int rcu; int use; } ;
+
+
+ scalar_t__ atomic_dec_and_test (int *) ;
+ int call_rcu (int *,int ) ;
+ int nf_ct_expect_free_rcu ;
 
 void nf_ct_expect_put(struct nf_conntrack_expect *exp)
 {
-	if (atomic_dec_and_test(&exp->use))
-		call_rcu(&exp->rcu, nf_ct_expect_free_rcu);
+ if (atomic_dec_and_test(&exp->use))
+  call_rcu(&exp->rcu, nf_ct_expect_free_rcu);
 }

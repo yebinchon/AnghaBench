@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_8__ {TYPE_3__* rsa; } ;
 struct TYPE_11__ {TYPE_1__ pkey; } ;
-struct TYPE_10__ {int /*<<< orphan*/  pss; int /*<<< orphan*/  prime_infos; int /*<<< orphan*/ * iqmp; int /*<<< orphan*/ * dmq1; int /*<<< orphan*/ * dmp1; int /*<<< orphan*/ * q; int /*<<< orphan*/ * p; int /*<<< orphan*/ * d; int /*<<< orphan*/ * e; int /*<<< orphan*/ * n; } ;
-struct TYPE_9__ {int /*<<< orphan*/ * t; int /*<<< orphan*/ * d; int /*<<< orphan*/ * r; } ;
-typedef  TYPE_2__ RSA_PRIME_INFO ;
-typedef  TYPE_3__ RSA ;
-typedef  TYPE_4__ EVP_PKEY ;
-typedef  int /*<<< orphan*/  BIO ;
-typedef  int /*<<< orphan*/  BIGNUM ;
+struct TYPE_10__ {int pss; int prime_infos; int * iqmp; int * dmq1; int * dmp1; int * q; int * p; int * d; int * e; int * n; } ;
+struct TYPE_9__ {int * t; int * d; int * r; } ;
+typedef TYPE_2__ RSA_PRIME_INFO ;
+typedef TYPE_3__ RSA ;
+typedef TYPE_4__ EVP_PKEY ;
+typedef int BIO ;
+typedef int BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASN1_bn_print (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  BIO_indent (int /*<<< orphan*/ *,int,int) ; 
- scalar_t__ BIO_printf (int /*<<< orphan*/ *,char*,...) ; 
- int BN_num_bits (int /*<<< orphan*/ *) ; 
- scalar_t__ pkey_is_pss (TYPE_4__ const*) ; 
- int /*<<< orphan*/  rsa_pss_param_print (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int) ; 
- int sk_RSA_PRIME_INFO_num (int /*<<< orphan*/ ) ; 
- TYPE_2__* sk_RSA_PRIME_INFO_value (int /*<<< orphan*/ ,int) ; 
+
+ int ASN1_bn_print (int *,char const*,int *,int *,int) ;
+ int BIO_indent (int *,int,int) ;
+ scalar_t__ BIO_printf (int *,char*,...) ;
+ int BN_num_bits (int *) ;
+ scalar_t__ pkey_is_pss (TYPE_4__ const*) ;
+ int rsa_pss_param_print (int *,int,int ,int) ;
+ int sk_RSA_PRIME_INFO_num (int ) ;
+ TYPE_2__* sk_RSA_PRIME_INFO_value (int ,int) ;
 
 __attribute__((used)) static int pkey_rsa_print(BIO *bp, const EVP_PKEY *pkey, int off, int priv)
 {
@@ -41,14 +41,14 @@ __attribute__((used)) static int pkey_rsa_print(BIO *bp, const EVP_PKEY *pkey, i
     const char *s;
     int ret = 0, mod_len = 0, ex_primes;
 
-    if (x->n != NULL)
+    if (x->n != ((void*)0))
         mod_len = BN_num_bits(x->n);
     ex_primes = sk_RSA_PRIME_INFO_num(x->prime_infos);
 
     if (!BIO_indent(bp, off, 128))
         goto err;
 
-    if (BIO_printf(bp, "%s ", pkey_is_pss(pkey) ?  "RSA-PSS" : "RSA") <= 0)
+    if (BIO_printf(bp, "%s ", pkey_is_pss(pkey) ? "RSA-PSS" : "RSA") <= 0)
         goto err;
 
     if (priv && x->d) {
@@ -63,28 +63,28 @@ __attribute__((used)) static int pkey_rsa_print(BIO *bp, const EVP_PKEY *pkey, i
         str = "Modulus:";
         s = "Exponent:";
     }
-    if (!ASN1_bn_print(bp, str, x->n, NULL, off))
+    if (!ASN1_bn_print(bp, str, x->n, ((void*)0), off))
         goto err;
-    if (!ASN1_bn_print(bp, s, x->e, NULL, off))
+    if (!ASN1_bn_print(bp, s, x->e, ((void*)0), off))
         goto err;
     if (priv) {
         int i;
 
-        if (!ASN1_bn_print(bp, "privateExponent:", x->d, NULL, off))
+        if (!ASN1_bn_print(bp, "privateExponent:", x->d, ((void*)0), off))
             goto err;
-        if (!ASN1_bn_print(bp, "prime1:", x->p, NULL, off))
+        if (!ASN1_bn_print(bp, "prime1:", x->p, ((void*)0), off))
             goto err;
-        if (!ASN1_bn_print(bp, "prime2:", x->q, NULL, off))
+        if (!ASN1_bn_print(bp, "prime2:", x->q, ((void*)0), off))
             goto err;
-        if (!ASN1_bn_print(bp, "exponent1:", x->dmp1, NULL, off))
+        if (!ASN1_bn_print(bp, "exponent1:", x->dmp1, ((void*)0), off))
             goto err;
-        if (!ASN1_bn_print(bp, "exponent2:", x->dmq1, NULL, off))
+        if (!ASN1_bn_print(bp, "exponent2:", x->dmq1, ((void*)0), off))
             goto err;
-        if (!ASN1_bn_print(bp, "coefficient:", x->iqmp, NULL, off))
+        if (!ASN1_bn_print(bp, "coefficient:", x->iqmp, ((void*)0), off))
             goto err;
         for (i = 0; i < sk_RSA_PRIME_INFO_num(x->prime_infos); i++) {
-            /* print multi-prime info */
-            BIGNUM *bn = NULL;
+
+            BIGNUM *bn = ((void*)0);
             RSA_PRIME_INFO *pinfo;
             int j;
 
@@ -111,7 +111,7 @@ __attribute__((used)) static int pkey_rsa_print(BIO *bp, const EVP_PKEY *pkey, i
                 default:
                     break;
                 }
-                if (!ASN1_bn_print(bp, "", bn, NULL, off))
+                if (!ASN1_bn_print(bp, "", bn, ((void*)0), off))
                     goto err;
             }
         }

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  SSL ;
 
-/* Variables and functions */
- unsigned int CUSTOM_EXT_TYPE_3 ; 
- scalar_t__ custom_ext_cli_string ; 
- int custom_ext_error ; 
- size_t strlen (scalar_t__) ; 
+
+
+
+typedef int SSL ;
+
+
+ unsigned int CUSTOM_EXT_TYPE_3 ;
+ scalar_t__ custom_ext_cli_string ;
+ int custom_ext_error ;
+ size_t strlen (scalar_t__) ;
 
 __attribute__((used)) static int custom_ext_3_cli_add_cb(SSL *s, unsigned int ext_type,
                                    const unsigned char **out,
@@ -26,5 +26,5 @@ __attribute__((used)) static int custom_ext_3_cli_add_cb(SSL *s, unsigned int ex
         custom_ext_error = 1;
     *out = (const unsigned char *)custom_ext_cli_string;
     *outlen = strlen(custom_ext_cli_string);
-    return 1;                   /* Send "abc" */
+    return 1;
 }

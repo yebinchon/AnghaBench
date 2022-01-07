@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct omap_dss_device {int dummy; } ;
-struct TYPE_2__ {int invert_polarity; int /*<<< orphan*/  venc_lock; } ;
+struct TYPE_2__ {int invert_polarity; int venc_lock; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
- TYPE_1__ venc ; 
+
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
+ TYPE_1__ venc ;
 
 __attribute__((used)) static void venc_invert_vid_out_polarity(struct omap_dss_device *dssdev,
-		bool invert_polarity)
+  bool invert_polarity)
 {
-	mutex_lock(&venc.venc_lock);
+ mutex_lock(&venc.venc_lock);
 
-	venc.invert_polarity = invert_polarity;
+ venc.invert_polarity = invert_polarity;
 
-	mutex_unlock(&venc.venc_lock);
+ mutex_unlock(&venc.venc_lock);
 }

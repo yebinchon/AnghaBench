@@ -1,60 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sds ;
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  int /*<<< orphan*/  buf ;
-struct TYPE_2__ {int step; int currentline; int /*<<< orphan*/  cbuf; scalar_t__ bpcount; int /*<<< orphan*/  conn; } ;
 
-/* Variables and functions */
- int C_ERR ; 
- int C_OK ; 
- int atoi (int /*<<< orphan*/ ) ; 
- int connRead (int /*<<< orphan*/ ,char*,int) ; 
- TYPE_1__ ldb ; 
- int /*<<< orphan*/  ldbBreak (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  ldbEval (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  ldbList (int,int) ; 
- int /*<<< orphan*/  ldbLog (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ldbMaxlen (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  ldbPrint (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ldbPrintAll (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ldbRedis (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * ldbReplParseCommand (int*) ; 
- int /*<<< orphan*/  ldbSendLogs () ; 
- int /*<<< orphan*/  ldbTrace (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_error (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_pushstring (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  sdscatlen (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  sdsempty () ; 
- int /*<<< orphan*/  sdsfree (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sdsfreesplitres (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  sdsnew (char*) ; 
- int /*<<< orphan*/  strcasecmp (int /*<<< orphan*/ ,char*) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int sds ;
+typedef int lua_State ;
+typedef int buf ;
+struct TYPE_2__ {int step; int currentline; int cbuf; scalar_t__ bpcount; int conn; } ;
+
+
+ int C_ERR ;
+ int C_OK ;
+ int atoi (int ) ;
+ int connRead (int ,char*,int) ;
+ TYPE_1__ ldb ;
+ int ldbBreak (int *,int) ;
+ int ldbEval (int *,int *,int) ;
+ int ldbList (int,int) ;
+ int ldbLog (int ) ;
+ int ldbMaxlen (int *,int) ;
+ int ldbPrint (int *,int ) ;
+ int ldbPrintAll (int *) ;
+ int ldbRedis (int *,int *,int) ;
+ int * ldbReplParseCommand (int*) ;
+ int ldbSendLogs () ;
+ int ldbTrace (int *) ;
+ int lua_error (int *) ;
+ int lua_pushstring (int *,char*) ;
+ int sdscatlen (int ,char*,int) ;
+ int sdsempty () ;
+ int sdsfree (int ) ;
+ int sdsfreesplitres (int *,int) ;
+ int sdsnew (char*) ;
+ int strcasecmp (int ,char*) ;
 
 int ldbRepl(lua_State *lua) {
     sds *argv;
     int argc;
 
-    /* We continue processing commands until a command that should return
-     * to the Lua interpreter is found. */
+
+
     while(1) {
-        while((argv = ldbReplParseCommand(&argc)) == NULL) {
+        while((argv = ldbReplParseCommand(&argc)) == ((void*)0)) {
             char buf[1024];
             int nread = connRead(ldb.conn,buf,sizeof(buf));
             if (nread <= 0) {
-                /* Make sure the script runs without user input since the
-                 * client is no longer connected. */
+
+
                 ldb.step = 0;
                 ldb.bpcount = 0;
                 return C_ERR;
@@ -62,11 +62,11 @@ int ldbRepl(lua_State *lua) {
             ldb.cbuf = sdscatlen(ldb.cbuf,buf,nread);
         }
 
-        /* Flush the old buffer. */
+
         sdsfree(ldb.cbuf);
         ldb.cbuf = sdsempty();
 
-        /* Execute the command. */
+
         if (!strcasecmp(argv[0],"h") || !strcasecmp(argv[0],"help")) {
 ldbLog(sdsnew("Redis Lua debugger help:"));
 ldbLog(sdsnew("[h]elp               Show this help."));
@@ -148,11 +148,11 @@ ldbLog(sdsnew("                     in the next line of code."));
             ldbSendLogs();
         }
 
-        /* Free the command vector. */
+
         sdsfreesplitres(argv,argc);
     }
 
-    /* Free the current command argv if we break inside the while loop. */
+
     sdsfreesplitres(argv,argc);
     return C_OK;
 }

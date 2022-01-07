@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {scalar_t__ pid; int /*<<< orphan*/  worker_watch; int /*<<< orphan*/  fd_inotify; int /*<<< orphan*/  rules; int /*<<< orphan*/  properties; int /*<<< orphan*/  rtnl; int /*<<< orphan*/  ctrl; int /*<<< orphan*/  monitor; } ;
-typedef  TYPE_1__ Manager ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (TYPE_1__*) ; 
- scalar_t__ getpid_cached () ; 
- int /*<<< orphan*/  hashmap_free_free_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  manager_clear_for_worker (TYPE_1__*) ; 
- int /*<<< orphan*/  safe_close (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  safe_close_pair (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sd_device_monitor_unref (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sd_netlink_unref (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  udev_builtin_exit () ; 
- int /*<<< orphan*/  udev_ctrl_cleanup (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  udev_rules_free (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {scalar_t__ pid; int worker_watch; int fd_inotify; int rules; int properties; int rtnl; int ctrl; int monitor; } ;
+typedef TYPE_1__ Manager ;
+
+
+ int free (TYPE_1__*) ;
+ scalar_t__ getpid_cached () ;
+ int hashmap_free_free_free (int ) ;
+ int manager_clear_for_worker (TYPE_1__*) ;
+ int safe_close (int ) ;
+ int safe_close_pair (int ) ;
+ int sd_device_monitor_unref (int ) ;
+ int sd_netlink_unref (int ) ;
+ int udev_builtin_exit () ;
+ int udev_ctrl_cleanup (int ) ;
+ int udev_rules_free (int ) ;
 
 __attribute__((used)) static void manager_free(Manager *manager) {
         if (!manager)

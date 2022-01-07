@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {scalar_t__ result; } ;
-typedef  scalar_t__ PathResult ;
-typedef  TYPE_1__ Path ;
+typedef scalar_t__ PathResult ;
+typedef TYPE_1__ Path ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PATH_DEAD ; 
- int /*<<< orphan*/  PATH_FAILED ; 
- scalar_t__ PATH_SUCCESS ; 
- int /*<<< orphan*/  UNIT (TYPE_1__*) ; 
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int /*<<< orphan*/  path_result_to_string (scalar_t__) ; 
- int /*<<< orphan*/  path_set_state (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  unit_log_result (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
+
+ int PATH_DEAD ;
+ int PATH_FAILED ;
+ scalar_t__ PATH_SUCCESS ;
+ int UNIT (TYPE_1__*) ;
+ int assert (TYPE_1__*) ;
+ int path_result_to_string (scalar_t__) ;
+ int path_set_state (TYPE_1__*,int ) ;
+ int unit_log_result (int ,int,int ) ;
 
 __attribute__((used)) static void path_enter_dead(Path *p, PathResult f) {
         assert(p);

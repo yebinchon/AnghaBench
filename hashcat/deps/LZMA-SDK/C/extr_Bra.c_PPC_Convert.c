@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int UInt32 ;
-typedef  size_t SizeT ;
-typedef  int const Byte ;
 
-/* Variables and functions */
- int GetBe32 (int const*) ; 
- int /*<<< orphan*/  SetBe32 (int const*,int) ; 
+
+
+
+typedef int UInt32 ;
+typedef size_t SizeT ;
+typedef int const Byte ;
+
+
+ int GetBe32 (int const*) ;
+ int SetBe32 (int const*,int) ;
 
 SizeT PPC_Convert(Byte *data, SizeT size, UInt32 ip, int encoding)
 {
@@ -34,7 +34,7 @@ SizeT PPC_Convert(Byte *data, SizeT size, UInt32 ip, int encoding)
       if (p >= lim)
         return p - data;
       p += 4;
-      /* if ((v & 0xFC000003) == 0x48000001) */
+
       if ((p[-4] & 0xFC) == 0x48 && (p[-1] & 3) == 1)
         break;
     }

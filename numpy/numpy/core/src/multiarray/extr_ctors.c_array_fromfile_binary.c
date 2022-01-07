@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ npy_off_t ;
-typedef  scalar_t__ npy_intp ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef scalar_t__ npy_off_t ;
+typedef scalar_t__ npy_intp ;
 struct TYPE_5__ {scalar_t__ elsize; } ;
-typedef  TYPE_1__ PyArray_Descr ;
-typedef  int /*<<< orphan*/  PyArrayObject ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef TYPE_1__ PyArray_Descr ;
+typedef int PyArrayObject ;
+typedef int FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NPY_BEGIN_ALLOW_THREADS ; 
- int /*<<< orphan*/  NPY_END_ALLOW_THREADS ; 
- int /*<<< orphan*/  PyArray_DATA (int /*<<< orphan*/ *) ; 
- scalar_t__ PyArray_NewFromDescr (int /*<<< orphan*/ *,TYPE_1__*,int,scalar_t__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyArray_Type ; 
- int /*<<< orphan*/  PyErr_SetString (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  PyExc_IOError ; 
- int /*<<< orphan*/  Py_DECREF (TYPE_1__*) ; 
- int /*<<< orphan*/  SEEK_END ; 
- int /*<<< orphan*/  SEEK_SET ; 
- size_t fread (int /*<<< orphan*/ ,int,scalar_t__,int /*<<< orphan*/ *) ; 
- scalar_t__ npy_fseek (int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ ) ; 
- scalar_t__ npy_ftell (int /*<<< orphan*/ *) ; 
+
+ int NPY_BEGIN_ALLOW_THREADS ;
+ int NPY_END_ALLOW_THREADS ;
+ int PyArray_DATA (int *) ;
+ scalar_t__ PyArray_NewFromDescr (int *,TYPE_1__*,int,scalar_t__*,int *,int *,int ,int *) ;
+ int PyArray_Type ;
+ int PyErr_SetString (int ,char*) ;
+ int PyExc_IOError ;
+ int Py_DECREF (TYPE_1__*) ;
+ int SEEK_END ;
+ int SEEK_SET ;
+ size_t fread (int ,int,scalar_t__,int *) ;
+ scalar_t__ npy_fseek (int *,scalar_t__,int ) ;
+ scalar_t__ npy_ftell (int *) ;
 
 __attribute__((used)) static PyArrayObject *
 array_fromfile_binary(FILE *fp, PyArray_Descr *dtype, npy_intp num, size_t *nread)
@@ -61,21 +61,21 @@ array_fromfile_binary(FILE *fp, PyArray_Descr *dtype, npy_intp num, size_t *nrea
             PyErr_SetString(PyExc_IOError,
                             "could not seek in file");
             Py_DECREF(dtype);
-            return NULL;
+            return ((void*)0);
         }
         num = numbytes / dtype->elsize;
     }
 
-    /*
-     * Array creation may move sub-array dimensions from the dtype to array
-     * dimensions, so we need to use the original element size when reading.
-     */
+
+
+
+
     elsize = dtype->elsize;
 
     r = (PyArrayObject *)PyArray_NewFromDescr(&PyArray_Type, dtype, 1, &num,
-                                              NULL, NULL, 0, NULL);
-    if (r == NULL) {
-        return NULL;
+                                              ((void*)0), ((void*)0), 0, ((void*)0));
+    if (r == ((void*)0)) {
+        return ((void*)0);
     }
 
     NPY_BEGIN_ALLOW_THREADS;

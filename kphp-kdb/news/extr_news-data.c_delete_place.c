@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {int place; } ;
-typedef  TYPE_1__ place_t ;
-typedef  int /*<<< orphan*/  notify_place_t ;
+typedef TYPE_1__ place_t ;
+typedef int notify_place_t ;
 
-/* Variables and functions */
- scalar_t__ COMM_MODE ; 
- scalar_t__ NOTIFY_MODE ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  check_obj (int,int,int) ; 
- int /*<<< orphan*/  free_comment_list (TYPE_1__*) ; 
- int /*<<< orphan*/  free_notify_place_list (int /*<<< orphan*/ *) ; 
- TYPE_1__* get_place_f (int,int,int,int) ; 
- scalar_t__ min_logevent_time ; 
- scalar_t__ now ; 
- int /*<<< orphan*/  tot_places ; 
- int /*<<< orphan*/  vkprintf (int,char*,TYPE_1__*) ; 
- int /*<<< orphan*/  zfree (TYPE_1__*,int) ; 
+
+ scalar_t__ COMM_MODE ;
+ scalar_t__ NOTIFY_MODE ;
+ int assert (int) ;
+ int check_obj (int,int,int) ;
+ int free_comment_list (TYPE_1__*) ;
+ int free_notify_place_list (int *) ;
+ TYPE_1__* get_place_f (int,int,int,int) ;
+ scalar_t__ min_logevent_time ;
+ scalar_t__ now ;
+ int tot_places ;
+ int vkprintf (int,char*,TYPE_1__*) ;
+ int zfree (TYPE_1__*,int) ;
 
 __attribute__((used)) static int delete_place (int type, int owner, int place) {
   if (now < min_logevent_time) {

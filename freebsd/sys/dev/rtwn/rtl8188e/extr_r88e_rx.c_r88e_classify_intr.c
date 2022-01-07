@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct rtwn_softc {int dummy; } ;
-struct r92c_rx_stat {int /*<<< orphan*/  rxdw3; } ;
+struct r92c_rx_stat {int rxdw3; } ;
 
-/* Variables and functions */
- int MS (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  R88E_RXDW3_RPT ; 
-#define  R88E_RXDW3_RPT_HIS 131 
-#define  R88E_RXDW3_RPT_RX 130 
-#define  R88E_RXDW3_RPT_TX1 129 
-#define  R88E_RXDW3_RPT_TX2 128 
- int RTWN_RX_DATA ; 
- int RTWN_RX_OTHER ; 
- int RTWN_RX_TX_REPORT ; 
- int /*<<< orphan*/  le32toh (int /*<<< orphan*/ ) ; 
+
+ int MS (int ,int ) ;
+ int R88E_RXDW3_RPT ;
+
+
+
+
+ int RTWN_RX_DATA ;
+ int RTWN_RX_OTHER ;
+ int RTWN_RX_TX_REPORT ;
+ int le32toh (int ) ;
 
 int
 r88e_classify_intr(struct rtwn_softc *sc, void *buf, int len)
 {
-	struct r92c_rx_stat *stat = buf;
-	int report_sel = MS(le32toh(stat->rxdw3), R88E_RXDW3_RPT);
+ struct r92c_rx_stat *stat = buf;
+ int report_sel = MS(le32toh(stat->rxdw3), R88E_RXDW3_RPT);
 
-	switch (report_sel) {
-	case R88E_RXDW3_RPT_RX:
-		return (RTWN_RX_DATA);
-	case R88E_RXDW3_RPT_TX1:	/* per-packet Tx report */
-	case R88E_RXDW3_RPT_TX2:	/* periodical Tx report */
-		return (RTWN_RX_TX_REPORT);
-	case R88E_RXDW3_RPT_HIS:
-		return (RTWN_RX_OTHER);
-	default:			/* shut up the compiler */
-		return (RTWN_RX_DATA);
-	}
+ switch (report_sel) {
+ case 130:
+  return (RTWN_RX_DATA);
+ case 129:
+ case 128:
+  return (RTWN_RX_TX_REPORT);
+ case 131:
+  return (RTWN_RX_OTHER);
+ default:
+  return (RTWN_RX_DATA);
+ }
 }

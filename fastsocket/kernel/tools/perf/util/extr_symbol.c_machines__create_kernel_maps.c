@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct rb_root {int dummy; } ;
 struct machine {int dummy; } ;
-typedef  int /*<<< orphan*/  pid_t ;
+typedef int pid_t ;
 
-/* Variables and functions */
- int machine__create_kernel_maps (struct machine*) ; 
- struct machine* machines__findnew (struct rb_root*,int /*<<< orphan*/ ) ; 
+
+ int machine__create_kernel_maps (struct machine*) ;
+ struct machine* machines__findnew (struct rb_root*,int ) ;
 
 int machines__create_kernel_maps(struct rb_root *machines, pid_t pid)
 {
-	struct machine *machine = machines__findnew(machines, pid);
+ struct machine *machine = machines__findnew(machines, pid);
 
-	if (machine == NULL)
-		return -1;
+ if (machine == ((void*)0))
+  return -1;
 
-	return machine__create_kernel_maps(machine);
+ return machine__create_kernel_maps(machine);
 }

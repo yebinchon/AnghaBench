@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  definition ;
 
-/* Variables and functions */
- scalar_t__ FINDVAL (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  defined ; 
- int /*<<< orphan*/  findtype ; 
+
+
+
+typedef int definition ;
+
+
+ scalar_t__ FINDVAL (int ,char const*,int ) ;
+ int defined ;
+ int findtype ;
 
 __attribute__((used)) static int
 undefined(const char *type)
 {
-	definition *def;
+ definition *def;
 
-	def = (definition *) FINDVAL(defined, type, findtype);
-	return (def == NULL);
+ def = (definition *) FINDVAL(defined, type, findtype);
+ return (def == ((void*)0));
 }

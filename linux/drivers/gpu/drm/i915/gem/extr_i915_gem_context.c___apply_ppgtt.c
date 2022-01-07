@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct intel_context {int /*<<< orphan*/  vm; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  i915_vm_get (void*) ; 
- int /*<<< orphan*/  i915_vm_put (int /*<<< orphan*/ ) ; 
+
+
+
+struct intel_context {int vm; } ;
+
+
+ int i915_vm_get (void*) ;
+ int i915_vm_put (int ) ;
 
 __attribute__((used)) static void __apply_ppgtt(struct intel_context *ce, void *vm)
 {
-	i915_vm_put(ce->vm);
-	ce->vm = i915_vm_get(vm);
+ i915_vm_put(ce->vm);
+ ce->vm = i915_vm_get(vm);
 }

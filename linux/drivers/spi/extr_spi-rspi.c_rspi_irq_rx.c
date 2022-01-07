@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u8 ;
-struct rspi_data {int spsr; int /*<<< orphan*/  wait; } ;
-typedef  int /*<<< orphan*/  irqreturn_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IRQ_HANDLED ; 
- int /*<<< orphan*/  RSPI_SPSR ; 
- int /*<<< orphan*/  SPCR_SPRIE ; 
- int SPSR_SPRF ; 
- int /*<<< orphan*/  rspi_disable_irq (struct rspi_data*,int /*<<< orphan*/ ) ; 
- int rspi_read8 (struct rspi_data*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wake_up (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int u8 ;
+struct rspi_data {int spsr; int wait; } ;
+typedef int irqreturn_t ;
+
+
+ int IRQ_HANDLED ;
+ int RSPI_SPSR ;
+ int SPCR_SPRIE ;
+ int SPSR_SPRF ;
+ int rspi_disable_irq (struct rspi_data*,int ) ;
+ int rspi_read8 (struct rspi_data*,int ) ;
+ int wake_up (int *) ;
 
 __attribute__((used)) static irqreturn_t rspi_irq_rx(int irq, void *_sr)
 {
-	struct rspi_data *rspi = _sr;
-	u8 spsr;
+ struct rspi_data *rspi = _sr;
+ u8 spsr;
 
-	rspi->spsr = spsr = rspi_read8(rspi, RSPI_SPSR);
-	if (spsr & SPSR_SPRF) {
-		rspi_disable_irq(rspi, SPCR_SPRIE);
-		wake_up(&rspi->wait);
-		return IRQ_HANDLED;
-	}
+ rspi->spsr = spsr = rspi_read8(rspi, RSPI_SPSR);
+ if (spsr & SPSR_SPRF) {
+  rspi_disable_irq(rspi, SPCR_SPRIE);
+  wake_up(&rspi->wait);
+  return IRQ_HANDLED;
+ }
 
-	return 0;
+ return 0;
 }

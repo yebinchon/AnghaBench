@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u8 ;
+
+
+
+
+typedef int u8 ;
 struct snd_soc_component {int dummy; } ;
-typedef  enum snd_soc_bias_level { ____Placeholder_snd_soc_bias_level } snd_soc_bias_level ;
+typedef enum snd_soc_bias_level { ____Placeholder_snd_soc_bias_level } snd_soc_bias_level ;
 
-/* Variables and functions */
- int PMADC ; 
- int PMDAC ; 
- int PMVR ; 
- int /*<<< orphan*/  PW_MGMT1 ; 
- int RSTN ; 
-#define  SND_SOC_BIAS_OFF 131 
-#define  SND_SOC_BIAS_ON 130 
-#define  SND_SOC_BIAS_PREPARE 129 
-#define  SND_SOC_BIAS_STANDBY 128 
- int /*<<< orphan*/  snd_soc_component_write (struct snd_soc_component*,int /*<<< orphan*/ ,int) ; 
+
+ int PMADC ;
+ int PMDAC ;
+ int PMVR ;
+ int PW_MGMT1 ;
+ int RSTN ;
+
+
+
+
+ int snd_soc_component_write (struct snd_soc_component*,int ,int) ;
 
 __attribute__((used)) static int ak4613_set_bias_level(struct snd_soc_component *component,
-				 enum snd_soc_bias_level level)
+     enum snd_soc_bias_level level)
 {
-	u8 mgmt1 = 0;
+ u8 mgmt1 = 0;
 
-	switch (level) {
-	case SND_SOC_BIAS_ON:
-		mgmt1 |= RSTN;
-		/* fall through */
-	case SND_SOC_BIAS_PREPARE:
-		mgmt1 |= PMADC | PMDAC;
-		/* fall through */
-	case SND_SOC_BIAS_STANDBY:
-		mgmt1 |= PMVR;
-		/* fall through */
-	case SND_SOC_BIAS_OFF:
-	default:
-		break;
-	}
+ switch (level) {
+ case 130:
+  mgmt1 |= RSTN;
 
-	snd_soc_component_write(component, PW_MGMT1, mgmt1);
+ case 129:
+  mgmt1 |= PMADC | PMDAC;
 
-	return 0;
+ case 128:
+  mgmt1 |= PMVR;
+
+ case 131:
+ default:
+  break;
+ }
+
+ snd_soc_component_write(component, PW_MGMT1, mgmt1);
+
+ return 0;
 }

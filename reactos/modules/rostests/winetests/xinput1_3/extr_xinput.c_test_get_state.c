@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  state ;
-struct TYPE_8__ {int /*<<< orphan*/  sThumbRY; int /*<<< orphan*/  sThumbRX; int /*<<< orphan*/  sThumbLY; int /*<<< orphan*/  sThumbLX; int /*<<< orphan*/  bRightTrigger; int /*<<< orphan*/  bLeftTrigger; int /*<<< orphan*/  wButtons; } ;
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int state ;
+struct TYPE_8__ {int sThumbRY; int sThumbRX; int sThumbLY; int sThumbLX; int bRightTrigger; int bLeftTrigger; int wButtons; } ;
 struct TYPE_7__ {int dwPacketNumber; TYPE_2__ Gamepad; } ;
-typedef  TYPE_1__ XINPUT_STATE ;
-typedef  TYPE_2__ XINPUT_GAMEPAD ;
-typedef  int DWORD ;
+typedef TYPE_1__ XINPUT_STATE ;
+typedef TYPE_2__ XINPUT_GAMEPAD ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int ERROR_BAD_ARGUMENTS ; 
- int ERROR_DEVICE_NOT_CONNECTED ; 
- int ERROR_SUCCESS ; 
- int GetTickCount () ; 
- int /*<<< orphan*/  Sleep (int) ; 
- int XUSER_MAX_COUNT ; 
- int /*<<< orphan*/  ZeroMemory (TYPE_1__*,int) ; 
- int /*<<< orphan*/  dump_gamepad (TYPE_2__*) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int pXInputGetState (int,TYPE_1__*) ; 
- int pXInputGetStateEx (int,TYPE_1__*) ; 
- int /*<<< orphan*/  skip (char*,int) ; 
- int /*<<< orphan*/  trace (char*,...) ; 
- scalar_t__ winetest_interactive ; 
+
+ int ERROR_BAD_ARGUMENTS ;
+ int ERROR_DEVICE_NOT_CONNECTED ;
+ int ERROR_SUCCESS ;
+ int GetTickCount () ;
+ int Sleep (int) ;
+ int XUSER_MAX_COUNT ;
+ int ZeroMemory (TYPE_1__*,int) ;
+ int dump_gamepad (TYPE_2__*) ;
+ int ok (int,char*,...) ;
+ int pXInputGetState (int,TYPE_1__*) ;
+ int pXInputGetStateEx (int,TYPE_1__*) ;
+ int skip (char*,int) ;
+ int trace (char*,...) ;
+ scalar_t__ winetest_interactive ;
 
 __attribute__((used)) static void test_get_state(void)
 {

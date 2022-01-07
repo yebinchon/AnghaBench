@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct priv {int num_ports; int /*<<< orphan*/ * ports; int /*<<< orphan*/  client; } ;
+
+
+
+
+struct priv {int num_ports; int * ports; int client; } ;
 struct ao {struct priv* priv; } ;
-typedef  int /*<<< orphan*/  pname ;
+typedef int pname ;
 
-/* Variables and functions */
- int /*<<< orphan*/  JACK_DEFAULT_AUDIO_TYPE ; 
- int /*<<< orphan*/  JackPortIsOutput ; 
- int /*<<< orphan*/  MP_FATAL (struct ao*,char*) ; 
- int /*<<< orphan*/  jack_port_register (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,int) ; 
+
+ int JACK_DEFAULT_AUDIO_TYPE ;
+ int JackPortIsOutput ;
+ int MP_FATAL (struct ao*,char*) ;
+ int jack_port_register (int ,char*,int ,int ,int ) ;
+ int snprintf (char*,int,char*,int) ;
 
 __attribute__((used)) static int
 create_ports(struct ao *ao, int nports)

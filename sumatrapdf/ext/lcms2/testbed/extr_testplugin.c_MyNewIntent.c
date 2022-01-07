@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  size_t cmsUInt32Number ;
-typedef  int /*<<< orphan*/  cmsPipeline ;
-typedef  int /*<<< orphan*/  cmsHPROFILE ;
-typedef  int /*<<< orphan*/  cmsFloat64Number ;
-typedef  int /*<<< orphan*/  cmsContext ;
-typedef  int /*<<< orphan*/  cmsBool ;
 
-/* Variables and functions */
- size_t INTENT_DECEPTIVE ; 
- size_t INTENT_PERCEPTUAL ; 
- int /*<<< orphan*/ * _cmsDefaultICCintents (int /*<<< orphan*/ ,size_t,size_t*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,size_t) ; 
- int /*<<< orphan*/  cmsAT_BEGIN ; 
- scalar_t__ cmsGetColorSpace (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * cmsPipelineAlloc (int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  cmsPipelineInsertStage (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ cmsSigGrayData ; 
- int /*<<< orphan*/  cmsStageAllocIdentity (int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef size_t cmsUInt32Number ;
+typedef int cmsPipeline ;
+typedef int cmsHPROFILE ;
+typedef int cmsFloat64Number ;
+typedef int cmsContext ;
+typedef int cmsBool ;
+
+
+ size_t INTENT_DECEPTIVE ;
+ size_t INTENT_PERCEPTUAL ;
+ int * _cmsDefaultICCintents (int ,size_t,size_t*,int *,int *,int *,size_t) ;
+ int cmsAT_BEGIN ;
+ scalar_t__ cmsGetColorSpace (int ,int ) ;
+ int * cmsPipelineAlloc (int ,int,int) ;
+ int cmsPipelineInsertStage (int ,int *,int ,int ) ;
+ scalar_t__ cmsSigGrayData ;
+ int cmsStageAllocIdentity (int ,int) ;
 
 __attribute__((used)) static
-cmsPipeline*  MyNewIntent(cmsContext      ContextID,
+cmsPipeline* MyNewIntent(cmsContext ContextID,
                           cmsUInt32Number nProfiles,
                           cmsUInt32Number TheIntents[],
-                          cmsHPROFILE     hProfiles[],
-                          cmsBool         BPC[],
+                          cmsHPROFILE hProfiles[],
+                          cmsBool BPC[],
                           cmsFloat64Number AdaptationStates[],
                           cmsUInt32Number dwFlags)
 {
-    cmsPipeline*    Result;
+    cmsPipeline* Result;
     cmsUInt32Number ICCIntents[256];
     cmsUInt32Number i;
 
@@ -53,7 +53,7 @@ cmsPipeline*  MyNewIntent(cmsContext      ContextID,
                                    dwFlags);
 
     Result = cmsPipelineAlloc(ContextID, 1, 1);
-    if (Result == NULL) return NULL;
+    if (Result == ((void*)0)) return ((void*)0);
 
     cmsPipelineInsertStage(ContextID, Result, cmsAT_BEGIN,
                             cmsStageAllocIdentity(ContextID, 1));

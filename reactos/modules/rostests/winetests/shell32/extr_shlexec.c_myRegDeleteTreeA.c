@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ LSTATUS ;
-typedef  int /*<<< orphan*/ * LPCSTR ;
-typedef  scalar_t__ LONG ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  CHAR ;
 
-/* Variables and functions */
- int ARRAY_SIZE (int /*<<< orphan*/ *) ; 
- scalar_t__ ERROR_NOT_ENOUGH_MEMORY ; 
- int /*<<< orphan*/  KEY_READ ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- scalar_t__ RegDeleteKeyA (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ RegDeleteValueA (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ RegEnumKeyExA (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ RegEnumValueA (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ RegOpenKeyExA (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ RegQueryInfoKeyA (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/ * heap_alloc (int) ; 
- int /*<<< orphan*/  heap_free (int /*<<< orphan*/ *) ; 
- int max (int,int) ; 
+
+
+
+typedef scalar_t__ LSTATUS ;
+typedef int * LPCSTR ;
+typedef scalar_t__ LONG ;
+typedef int HKEY ;
+typedef int DWORD ;
+typedef int CHAR ;
+
+
+ int ARRAY_SIZE (int *) ;
+ scalar_t__ ERROR_NOT_ENOUGH_MEMORY ;
+ int KEY_READ ;
+ int MAX_PATH ;
+ int RegCloseKey (int ) ;
+ scalar_t__ RegDeleteKeyA (int ,int *) ;
+ scalar_t__ RegDeleteValueA (int ,int *) ;
+ scalar_t__ RegEnumKeyExA (int ,int ,int *,int*,int *,int *,int *,int *) ;
+ scalar_t__ RegEnumValueA (int ,int ,int *,int*,int *,int *,int *,int *) ;
+ scalar_t__ RegOpenKeyExA (int ,int *,int ,int ,int *) ;
+ scalar_t__ RegQueryInfoKeyA (int ,int *,int *,int *,int *,int*,int *,int *,int*,int *,int *,int *) ;
+ scalar_t__ TRUE ;
+ int * heap_alloc (int) ;
+ int heap_free (int *) ;
+ int max (int,int) ;
 
 __attribute__((used)) static LSTATUS myRegDeleteTreeA(HKEY hKey, LPCSTR lpszSubKey)
 {
@@ -48,9 +48,9 @@ __attribute__((used)) static LSTATUS myRegDeleteTreeA(HKEY hKey, LPCSTR lpszSubK
         if (ret) return ret;
     }
 
-    /* Get highest length for keys, values */
-    ret = RegQueryInfoKeyA(hSubKey, NULL, NULL, NULL, NULL,
-            &dwMaxSubkeyLen, NULL, NULL, &dwMaxValueLen, NULL, NULL, NULL);
+
+    ret = RegQueryInfoKeyA(hSubKey, ((void*)0), ((void*)0), ((void*)0), ((void*)0),
+            &dwMaxSubkeyLen, ((void*)0), ((void*)0), &dwMaxValueLen, ((void*)0), ((void*)0), ((void*)0));
     if (ret) goto cleanup;
 
     dwMaxSubkeyLen++;
@@ -58,7 +58,7 @@ __attribute__((used)) static LSTATUS myRegDeleteTreeA(HKEY hKey, LPCSTR lpszSubK
     dwMaxLen = max(dwMaxSubkeyLen, dwMaxValueLen);
     if (dwMaxLen > ARRAY_SIZE(szNameBuf))
     {
-        /* Name too big: alloc a buffer for it */
+
         if (!(lpszName = heap_alloc(dwMaxLen*sizeof(CHAR))))
         {
             ret = ERROR_NOT_ENOUGH_MEMORY;
@@ -67,12 +67,12 @@ __attribute__((used)) static LSTATUS myRegDeleteTreeA(HKEY hKey, LPCSTR lpszSubK
     }
 
 
-    /* Recursively delete all the subkeys */
+
     while (TRUE)
     {
         dwSize = dwMaxLen;
-        if (RegEnumKeyExA(hSubKey, 0, lpszName, &dwSize, NULL,
-                          NULL, NULL, NULL)) break;
+        if (RegEnumKeyExA(hSubKey, 0, lpszName, &dwSize, ((void*)0),
+                          ((void*)0), ((void*)0), ((void*)0))) break;
 
         ret = myRegDeleteTreeA(hSubKey, lpszName);
         if (ret) goto cleanup;
@@ -85,14 +85,14 @@ __attribute__((used)) static LSTATUS myRegDeleteTreeA(HKEY hKey, LPCSTR lpszSubK
         {
             dwSize = dwMaxLen;
             if (RegEnumValueA(hKey, 0, lpszName, &dwSize,
-                  NULL, NULL, NULL, NULL)) break;
+                  ((void*)0), ((void*)0), ((void*)0), ((void*)0))) break;
 
             ret = RegDeleteValueA(hKey, lpszName);
             if (ret) goto cleanup;
         }
 
 cleanup:
-    /* Free buffer if allocated */
+
     if (lpszName != szNameBuf)
         heap_free(lpszName);
     if(lpszSubKey)

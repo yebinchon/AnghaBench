@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  REFIID ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  IRpcStubBuffer ;
-typedef  int /*<<< orphan*/  IPSFactoryBuffer ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IPSFactoryBuffer_CreateStub (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  ok (int,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int REFIID ;
+typedef int IUnknown ;
+typedef int IRpcStubBuffer ;
+typedef int IPSFactoryBuffer ;
+typedef int HRESULT ;
+
+
+ int IPSFactoryBuffer_CreateStub (int *,int ,int *,int **) ;
+ int ok (int,char*,int ,int ) ;
 
 __attribute__((used)) static IRpcStubBuffer *create_stub(IPSFactoryBuffer *ppsf, REFIID iid, IUnknown *obj, HRESULT expected_result)
 {
-    IRpcStubBuffer *pstub = NULL;
+    IRpcStubBuffer *pstub = ((void*)0);
     HRESULT r;
 
     r = IPSFactoryBuffer_CreateStub(ppsf, iid, obj, &pstub);

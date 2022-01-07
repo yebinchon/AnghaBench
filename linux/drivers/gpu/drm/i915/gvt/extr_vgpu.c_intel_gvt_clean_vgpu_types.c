@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct intel_gvt {int /*<<< orphan*/  types; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  kfree (int /*<<< orphan*/ ) ; 
+
+
+
+struct intel_gvt {int types; } ;
+
+
+ int kfree (int ) ;
 
 void intel_gvt_clean_vgpu_types(struct intel_gvt *gvt)
 {
-	kfree(gvt->types);
+ kfree(gvt->types);
 }

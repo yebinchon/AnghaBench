@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  xmlreader ;
-typedef  int /*<<< orphan*/  strval ;
-typedef  char WCHAR ;
-typedef  scalar_t__ UINT ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WC_E_DIGIT ; 
- int /*<<< orphan*/  WC_E_XMLDECL ; 
- int /*<<< orphan*/  debug_strval (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ reader_cmp (int /*<<< orphan*/ *,char const*) ; 
- scalar_t__ reader_get_cur (int /*<<< orphan*/ *) ; 
- char* reader_get_ptr (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  reader_init_strvalue (scalar_t__,scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  reader_skipn (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int xmlreader ;
+typedef int strval ;
+typedef char WCHAR ;
+typedef scalar_t__ UINT ;
+typedef int HRESULT ;
+
+
+ int S_OK ;
+ int TRACE (char*,int ) ;
+ int WC_E_DIGIT ;
+ int WC_E_XMLDECL ;
+ int debug_strval (int *,int *) ;
+ scalar_t__ reader_cmp (int *,char const*) ;
+ scalar_t__ reader_get_cur (int *) ;
+ char* reader_get_ptr (int *) ;
+ int reader_init_strvalue (scalar_t__,scalar_t__,int *) ;
+ int reader_skipn (int *,int) ;
 
 __attribute__((used)) static HRESULT reader_parse_versionnum(xmlreader *reader, strval *val)
 {
@@ -37,7 +37,7 @@ __attribute__((used)) static HRESULT reader_parse_versionnum(xmlreader *reader, 
     if (reader_cmp(reader, onedotW)) return WC_E_XMLDECL;
 
     start = reader_get_cur(reader);
-    /* skip "1." */
+
     reader_skipn(reader, 2);
 
     ptr2 = ptr = reader_get_ptr(reader);

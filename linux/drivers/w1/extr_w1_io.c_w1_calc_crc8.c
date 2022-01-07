@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  size_t u8 ;
 
-/* Variables and functions */
- size_t* w1_crc8_table ; 
+
+
+
+typedef size_t u8 ;
+
+
+ size_t* w1_crc8_table ;
 
 u8 w1_calc_crc8(u8 * data, int len)
 {
-	u8 crc = 0;
+ u8 crc = 0;
 
-	while (len--)
-		crc = w1_crc8_table[crc ^ *data++];
+ while (len--)
+  crc = w1_crc8_table[crc ^ *data++];
 
-	return crc;
+ return crc;
 }

@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WhoamiTable ;
-typedef  int /*<<< orphan*/  WCHAR ;
+
+
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int WhoamiTable ;
+typedef int WCHAR ;
 struct TYPE_11__ {size_t PrivilegeCount; TYPE_1__* Privileges; } ;
-struct TYPE_10__ {int Attributes; int /*<<< orphan*/  Luid; } ;
-typedef  TYPE_2__* PWSTR ;
-typedef  TYPE_2__* PTOKEN_PRIVILEGES ;
-typedef  size_t DWORD ;
-typedef  scalar_t__ BOOL ;
+struct TYPE_10__ {int Attributes; int Luid; } ;
+typedef TYPE_2__* PWSTR ;
+typedef TYPE_2__* PTOKEN_PRIVILEGES ;
+typedef size_t DWORD ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- TYPE_2__* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/  IDS_COL_DESCRIPTION ; 
- int /*<<< orphan*/  IDS_COL_PRIV_NAME ; 
- int /*<<< orphan*/  IDS_COL_STATE ; 
- int /*<<< orphan*/  IDS_PRIV_HEADER ; 
- int /*<<< orphan*/  IDS_STATE_DISABLED ; 
- int /*<<< orphan*/  IDS_STATE_ENABLED ; 
- int /*<<< orphan*/  IDS_UNKNOWN_DESCRIPTION ; 
- scalar_t__ LookupPrivilegeDisplayNameW (int /*<<< orphan*/ *,TYPE_2__*,TYPE_2__*,size_t*,size_t*) ; 
- scalar_t__ LookupPrivilegeNameW (int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_2__*,size_t*) ; 
- int SE_PRIVILEGE_ENABLED ; 
- int /*<<< orphan*/  TokenPrivileges ; 
- int /*<<< orphan*/ * WhoamiAllocTable (size_t,int) ; 
- int /*<<< orphan*/  WhoamiFree (TYPE_2__*) ; 
- int /*<<< orphan*/  WhoamiGetTokenInfo (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WhoamiLoadRcString (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WhoamiPrintHeader (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WhoamiPrintTable (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  WhoamiSetTable (int /*<<< orphan*/ *,int /*<<< orphan*/ ,size_t,int) ; 
- int /*<<< orphan*/  WhoamiSetTableDyn (int /*<<< orphan*/ *,TYPE_2__*,size_t,int) ; 
+
+ scalar_t__ FALSE ;
+ int GetProcessHeap () ;
+ TYPE_2__* HeapAlloc (int ,int ,size_t) ;
+ int IDS_COL_DESCRIPTION ;
+ int IDS_COL_PRIV_NAME ;
+ int IDS_COL_STATE ;
+ int IDS_PRIV_HEADER ;
+ int IDS_STATE_DISABLED ;
+ int IDS_STATE_ENABLED ;
+ int IDS_UNKNOWN_DESCRIPTION ;
+ scalar_t__ LookupPrivilegeDisplayNameW (int *,TYPE_2__*,TYPE_2__*,size_t*,size_t*) ;
+ scalar_t__ LookupPrivilegeNameW (int *,int *,TYPE_2__*,size_t*) ;
+ int SE_PRIVILEGE_ENABLED ;
+ int TokenPrivileges ;
+ int * WhoamiAllocTable (size_t,int) ;
+ int WhoamiFree (TYPE_2__*) ;
+ int WhoamiGetTokenInfo (int ) ;
+ int WhoamiLoadRcString (int ) ;
+ int WhoamiPrintHeader (int ) ;
+ int WhoamiPrintTable (int *) ;
+ int WhoamiSetTable (int *,int ,size_t,int) ;
+ int WhoamiSetTableDyn (int *,TYPE_2__*,size_t,int) ;
 
 int WhoamiPriv(void)
 {
     PTOKEN_PRIVILEGES pPrivInfo = (PTOKEN_PRIVILEGES) WhoamiGetTokenInfo(TokenPrivileges);
     DWORD dwResult = 0, dwIndex = 0;
-    WhoamiTable *PrivTable = NULL;
+    WhoamiTable *PrivTable = ((void*)0);
 
-    if (pPrivInfo == NULL)
+    if (pPrivInfo == ((void*)0))
     {
         return 1;
     }
@@ -66,18 +66,18 @@ int WhoamiPriv(void)
 
     for (dwIndex = 0; dwIndex < pPrivInfo->PrivilegeCount; dwIndex++)
     {
-        PWSTR PrivName = NULL, DispName = NULL;
+        PWSTR PrivName = ((void*)0), DispName = ((void*)0);
         DWORD PrivNameSize = 0, DispNameSize = 0;
         BOOL ret = FALSE;
 
-        ret = LookupPrivilegeNameW(NULL,
+        ret = LookupPrivilegeNameW(((void*)0),
                                    &pPrivInfo->Privileges[dwIndex].Luid,
-                                   NULL,
+                                   ((void*)0),
                                    &PrivNameSize);
 
         PrivName = HeapAlloc(GetProcessHeap(), 0, ++PrivNameSize*sizeof(WCHAR));
 
-        LookupPrivilegeNameW(NULL,
+        LookupPrivilegeNameW(((void*)0),
                              &pPrivInfo->Privileges[dwIndex].Luid,
                              PrivName,
                              &PrivNameSize);
@@ -85,37 +85,37 @@ int WhoamiPriv(void)
         WhoamiSetTableDyn(PrivTable, PrivName, dwIndex + 1, 0);
 
 
-        /* try to grab the size of the string, also, beware, as this call is
-           unimplemented in ReactOS/Wine at the moment */
 
-        LookupPrivilegeDisplayNameW(NULL, PrivName, NULL, &DispNameSize, &dwResult);
+
+
+        LookupPrivilegeDisplayNameW(((void*)0), PrivName, ((void*)0), &DispNameSize, &dwResult);
 
         DispName = HeapAlloc(GetProcessHeap(), 0, ++DispNameSize * sizeof(WCHAR));
 
-        ret = LookupPrivilegeDisplayNameW(NULL, PrivName, DispName, &DispNameSize, &dwResult);
+        ret = LookupPrivilegeDisplayNameW(((void*)0), PrivName, DispName, &DispNameSize, &dwResult);
 
         if (ret && DispName)
         {
-            // wprintf(L"DispName: %d %x '%s'\n", DispNameSize, GetLastError(), DispName);
+
             WhoamiSetTableDyn(PrivTable, DispName, dwIndex + 1, 1);
         }
         else
         {
             WhoamiSetTable(PrivTable, WhoamiLoadRcString(IDS_UNKNOWN_DESCRIPTION), dwIndex + 1, 1);
 
-            if (DispName != NULL)
+            if (DispName != ((void*)0))
                 WhoamiFree(DispName);
         }
 
         if (pPrivInfo->Privileges[dwIndex].Attributes & SE_PRIVILEGE_ENABLED)
-            WhoamiSetTable(PrivTable, WhoamiLoadRcString(IDS_STATE_ENABLED),  dwIndex + 1, 2);
+            WhoamiSetTable(PrivTable, WhoamiLoadRcString(IDS_STATE_ENABLED), dwIndex + 1, 2);
         else
             WhoamiSetTable(PrivTable, WhoamiLoadRcString(IDS_STATE_DISABLED), dwIndex + 1, 2);
     }
 
     WhoamiPrintTable(PrivTable);
 
-    /* cleanup our allocations */
+
     WhoamiFree(pPrivInfo);
 
     return 0;

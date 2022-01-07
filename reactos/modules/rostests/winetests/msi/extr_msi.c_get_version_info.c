@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  dwFileVersionLS; int /*<<< orphan*/  dwFileVersionMS; } ;
-typedef  TYPE_1__ VS_FIXEDFILEINFO ;
-typedef  int USHORT ;
-typedef  void* LPVOID ;
-typedef  int /*<<< orphan*/  LPSTR ;
-typedef  int /*<<< orphan*/ * LPDWORD ;
-typedef  int /*<<< orphan*/  DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetFileVersionInfoA (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetFileVersionInfoSizeA (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int HIWORD (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int LOWORD (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MAX_PATH ; 
- int /*<<< orphan*/  VerQueryValueA (int /*<<< orphan*/ ,char*,void**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lstrlenA (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sprintf (int /*<<< orphan*/ ,char*,int,...) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int dwFileVersionLS; int dwFileVersionMS; } ;
+typedef TYPE_1__ VS_FIXEDFILEINFO ;
+typedef int USHORT ;
+typedef void* LPVOID ;
+typedef int LPSTR ;
+typedef int * LPDWORD ;
+typedef int DWORD ;
+
+
+ int GetFileVersionInfoA (int ,int ,int ,int ) ;
+ int GetFileVersionInfoSizeA (int ,int *) ;
+ int GetProcessHeap () ;
+ int HIWORD (int ) ;
+ int HeapAlloc (int ,int ,int ) ;
+ int HeapFree (int ,int ,int ) ;
+ int LOWORD (int ) ;
+ int MAX_PATH ;
+ int VerQueryValueA (int ,char*,void**,int *) ;
+ int lstrlenA (int ) ;
+ int sprintf (int ,char*,int,...) ;
 
 __attribute__((used)) static void get_version_info(LPSTR path, LPSTR *vercheck, LPDWORD verchecksz,
                              LPSTR *langcheck, LPDWORD langchecksz)
 {
     LPSTR version;
     VS_FIXEDFILEINFO *ffi;
-    DWORD size = GetFileVersionInfoSizeA(path, NULL);
+    DWORD size = GetFileVersionInfoSizeA(path, ((void*)0));
     USHORT *lang;
 
     version = HeapAlloc(GetProcessHeap(), 0, size);

@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  exit (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  psignal (int,char*) ; 
- int /*<<< orphan*/  ui__exit (int) ; 
+ int exit (int ) ;
+ int psignal (int,char*) ;
+ int ui__exit (int) ;
 
 __attribute__((used)) static void ui__signal(int sig)
 {
-	ui__exit(false);
-	psignal(sig, "perf");
-	exit(0);
+ ui__exit(0);
+ psignal(sig, "perf");
+ exit(0);
 }

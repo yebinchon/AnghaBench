@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct advert {int views; int l_views; int flags; int l_sump1; int g_sump1; int l_sump2; int g_sump2; long long price; long long click_money; } ;
 struct TYPE_4__ {TYPE_1__* g; } ;
 struct TYPE_3__ {double views; scalar_t__ clicks; } ;
 
-/* Variables and functions */
- int ADF_ANYVIEWS ; 
- int ADF_OLDVIEWS ; 
- TYPE_2__ AdStats ; 
- int /*<<< orphan*/  ad_is_ancient (int) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  compute_estimated_gain (struct advert*) ; 
- struct advert* get_ad_f (int,int) ; 
- scalar_t__ likely (double) ; 
- scalar_t__ load_ancient_ad (struct advert*) ; 
- long long tot_click_money ; 
- int tot_views ; 
+
+ int ADF_ANYVIEWS ;
+ int ADF_OLDVIEWS ;
+ TYPE_2__ AdStats ;
+ int ad_is_ancient (int) ;
+ int assert (int) ;
+ int compute_estimated_gain (struct advert*) ;
+ struct advert* get_ad_f (int,int) ;
+ scalar_t__ likely (double) ;
+ scalar_t__ load_ancient_ad (struct advert*) ;
+ long long tot_click_money ;
+ int tot_views ;
 
 __attribute__((used)) static void incr_ad_views (int ad_id, int new_views, int mode) {
   struct advert *A = get_ad_f (ad_id, 0);
@@ -37,7 +37,7 @@ __attribute__((used)) static void incr_ad_views (int ad_id, int new_views, int m
     }
     A = get_ad_f (ad_id, 1);
   }
-  /* have to load this ancient ad (exact views number is needed for stats) */
+
   assert (load_ancient_ad (A) >= 0);
   if ((unsigned) new_views < 0x100000) {
     A->views += new_views;

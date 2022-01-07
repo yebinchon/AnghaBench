@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {unsigned long used; char** field; } ;
-typedef  TYPE_1__ _bdf_list_t ;
+typedef TYPE_1__ _bdf_list_t ;
 
-/* Variables and functions */
- char* empty ; 
+
+ char* empty ;
 
 __attribute__((used)) static char *
-  _bdf_list_join( _bdf_list_t*    list,
-                  int             c,
-                  unsigned long  *alen )
+  _bdf_list_join( _bdf_list_t* list,
+                  int c,
+                  unsigned long *alen )
   {
-    unsigned long  i, j;
-    char*          dp;
+    unsigned long i, j;
+    char* dp;
 
 
     *alen = 0;
@@ -34,7 +34,7 @@ __attribute__((used)) static char *
     dp = list->field[0];
     for ( i = j = 0; i < list->used; i++ )
     {
-      char*  fp = list->field[i];
+      char* fp = list->field[i];
 
 
       while ( *fp )

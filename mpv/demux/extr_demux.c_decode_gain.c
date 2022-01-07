@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct mp_tags {int dummy; } ;
 struct mp_log {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MSGL_ERR ; 
- scalar_t__ decode_float (char*,float*) ; 
- int /*<<< orphan*/  mp_msg (struct mp_log*,int /*<<< orphan*/ ,char*) ; 
- char* mp_tags_get_str (struct mp_tags*,char const*) ; 
+
+ int MSGL_ERR ;
+ scalar_t__ decode_float (char*,float*) ;
+ int mp_msg (struct mp_log*,int ,char*) ;
+ char* mp_tags_get_str (struct mp_tags*,char const*) ;
 
 __attribute__((used)) static int decode_gain(struct mp_log *log, struct mp_tags *tags,
                        const char *tag, float *out)
 {
-    char *tag_val = NULL;
+    char *tag_val = ((void*)0);
     float dec_val;
 
     tag_val = mp_tags_get_str(tags, tag);

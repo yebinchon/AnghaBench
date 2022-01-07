@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct real_format {int /*<<< orphan*/  qnan_msb_set; int /*<<< orphan*/  has_nans; int /*<<< orphan*/  has_inf; } ;
-struct TYPE_4__ {unsigned long sign; int* sig; int cl; int /*<<< orphan*/  canonical; int /*<<< orphan*/  signalling; } ;
-typedef  TYPE_1__ REAL_VALUE_TYPE ;
 
-/* Variables and functions */
- int HOST_BITS_PER_LONG ; 
- int /*<<< orphan*/  REAL_EXP (TYPE_1__ const*) ; 
- int SIGSZ ; 
- int SIG_MSB ; 
- int /*<<< orphan*/  gcc_unreachable () ; 
-#define  rvc_inf 131 
-#define  rvc_nan 130 
-#define  rvc_normal 129 
-#define  rvc_zero 128 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct real_format {int qnan_msb_set; int has_nans; int has_inf; } ;
+struct TYPE_4__ {unsigned long sign; int* sig; int cl; int canonical; int signalling; } ;
+typedef TYPE_1__ REAL_VALUE_TYPE ;
+
+
+ int HOST_BITS_PER_LONG ;
+ int REAL_EXP (TYPE_1__ const*) ;
+ int SIGSZ ;
+ int SIG_MSB ;
+ int gcc_unreachable () ;
+
+
+
+
 
 __attribute__((used)) static void
 encode_ieee_single (const struct real_format *fmt, long *buf,
-		    const REAL_VALUE_TYPE *r)
+      const REAL_VALUE_TYPE *r)
 {
   unsigned long image, sig, exp;
   unsigned long sign = r->sign;
@@ -39,47 +39,47 @@ encode_ieee_single (const struct real_format *fmt, long *buf,
 
   switch (r->cl)
     {
-    case rvc_zero:
+    case 128:
       break;
 
-    case rvc_inf:
+    case 131:
       if (fmt->has_inf)
-	image |= 255 << 23;
+ image |= 255 << 23;
       else
-	image |= 0x7fffffff;
+ image |= 0x7fffffff;
       break;
 
-    case rvc_nan:
+    case 130:
       if (fmt->has_nans)
-	{
-	  if (r->canonical)
-	    sig = 0;
-	  if (r->signalling == fmt->qnan_msb_set)
-	    sig &= ~(1 << 22);
-	  else
-	    sig |= 1 << 22;
-	  /* We overload qnan_msb_set here: it's only clear for
-	     mips_ieee_single, which wants all mantissa bits but the
-	     quiet/signalling one set in canonical NaNs (at least
-	     Quiet ones).  */
-	  if (r->canonical && !fmt->qnan_msb_set)
-	    sig |= (1 << 22) - 1;
-	  else if (sig == 0)
-	    sig = 1 << 21;
+ {
+   if (r->canonical)
+     sig = 0;
+   if (r->signalling == fmt->qnan_msb_set)
+     sig &= ~(1 << 22);
+   else
+     sig |= 1 << 22;
 
-	  image |= 255 << 23;
-	  image |= sig;
-	}
+
+
+
+   if (r->canonical && !fmt->qnan_msb_set)
+     sig |= (1 << 22) - 1;
+   else if (sig == 0)
+     sig = 1 << 21;
+
+   image |= 255 << 23;
+   image |= sig;
+ }
       else
-	image |= 0x7fffffff;
+ image |= 0x7fffffff;
       break;
 
-    case rvc_normal:
-      /* Recall that IEEE numbers are interpreted as 1.F x 2**exp,
-	 whereas the intermediate representation is 0.F x 2**exp.
-	 Which means we're off by one.  */
+    case 129:
+
+
+
       if (denormal)
-	exp = 0;
+ exp = 0;
       else
       exp = REAL_EXP (r) + 127 - 1;
       image |= exp << 23;

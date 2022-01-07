@@ -1,70 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  type_t ;
 
-/* Variables and functions */
- int FALSE ; 
- int TRUE ; 
-#define  TYPE_BASIC 144 
-#define  TYPE_BASIC_BYTE 143 
-#define  TYPE_BASIC_CHAR 142 
-#define  TYPE_BASIC_DOUBLE 141 
-#define  TYPE_BASIC_ERROR_STATUS_T 140 
-#define  TYPE_BASIC_FLOAT 139 
-#define  TYPE_BASIC_HANDLE 138 
-#define  TYPE_BASIC_HYPER 137 
-#define  TYPE_BASIC_INT 136 
-#define  TYPE_BASIC_INT16 135 
-#define  TYPE_BASIC_INT32 134 
-#define  TYPE_BASIC_INT3264 133 
-#define  TYPE_BASIC_INT64 132 
-#define  TYPE_BASIC_INT8 131 
-#define  TYPE_BASIC_LONG 130 
-#define  TYPE_BASIC_WCHAR 129 
-#define  TYPE_ENUM 128 
- int /*<<< orphan*/  type_basic_get_sign (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  type_basic_get_type (int /*<<< orphan*/  const*) ; 
- int type_get_type (int /*<<< orphan*/  const*) ; 
+
+
+
+typedef int type_t ;
+
+
+ int FALSE ;
+ int TRUE ;
+ int type_basic_get_sign (int const*) ;
+ int type_basic_get_type (int const*) ;
+ int type_get_type (int const*) ;
 
 __attribute__((used)) static int is_signed_integer_type(const type_t *type)
 {
     switch (type_get_type(type))
     {
-    case TYPE_ENUM:
+    case 128:
         return FALSE;
-    case TYPE_BASIC:
+    case 144:
         switch (type_basic_get_type(type))
         {
-        case TYPE_BASIC_INT8:
-        case TYPE_BASIC_INT16:
-        case TYPE_BASIC_INT32:
-        case TYPE_BASIC_INT64:
-        case TYPE_BASIC_INT:
-        case TYPE_BASIC_INT3264:
-        case TYPE_BASIC_LONG:
+        case 131:
+        case 135:
+        case 134:
+        case 132:
+        case 136:
+        case 133:
+        case 130:
             return type_basic_get_sign(type) < 0;
-        case TYPE_BASIC_CHAR:
+        case 142:
             return TRUE;
-        case TYPE_BASIC_HYPER:
-        case TYPE_BASIC_BYTE:
-        case TYPE_BASIC_WCHAR:
-        case TYPE_BASIC_ERROR_STATUS_T:
-        case TYPE_BASIC_FLOAT:
-        case TYPE_BASIC_DOUBLE:
-        case TYPE_BASIC_HANDLE:
+        case 137:
+        case 143:
+        case 129:
+        case 140:
+        case 139:
+        case 141:
+        case 138:
             return FALSE;
         }
-        /* FALLTHROUGH */
+
     default:
         return FALSE;
     }

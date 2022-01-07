@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int SIZE_T ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HEAP_ZERO_MEMORY ; 
- void* HeapReAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*,int) ; 
- int /*<<< orphan*/  TRUE ; 
- void* heap_alloc_zero (int) ; 
- int max (int,int) ; 
+
+
+
+typedef int SIZE_T ;
+typedef int BOOL ;
+
+
+ int FALSE ;
+ int GetProcessHeap () ;
+ int HEAP_ZERO_MEMORY ;
+ void* HeapReAlloc (int ,int ,void*,int) ;
+ int TRUE ;
+ void* heap_alloc_zero (int) ;
+ int max (int,int) ;
 
 BOOL usp10_array_reserve(void **elements, SIZE_T *capacity, SIZE_T count, SIZE_T size)
 {

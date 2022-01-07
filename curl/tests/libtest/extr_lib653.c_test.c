@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  curl_mimepart ;
-typedef  int /*<<< orphan*/  curl_mime ;
-typedef  int /*<<< orphan*/  CURL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CURLOPT_HEADER ; 
- int /*<<< orphan*/  CURLOPT_MIMEPOST ; 
- int /*<<< orphan*/  CURLOPT_NOPROGRESS ; 
- int /*<<< orphan*/  CURLOPT_URL ; 
- int /*<<< orphan*/  CURLOPT_VERBOSE ; 
- int /*<<< orphan*/  CURL_GLOBAL_ALL ; 
- int /*<<< orphan*/  CURL_ZERO_TERMINATED ; 
- int /*<<< orphan*/  curl_easy_cleanup (int /*<<< orphan*/ *) ; 
- int curl_easy_perform (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  curl_global_cleanup () ; 
- int /*<<< orphan*/ * curl_mime_addpart (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  curl_mime_data (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  curl_mime_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * curl_mime_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  curl_mime_name (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  easy_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  easy_setopt (int /*<<< orphan*/ *,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  global_init (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int curl_mimepart ;
+typedef int curl_mime ;
+typedef int CURL ;
+
+
+ int CURLOPT_HEADER ;
+ int CURLOPT_MIMEPOST ;
+ int CURLOPT_NOPROGRESS ;
+ int CURLOPT_URL ;
+ int CURLOPT_VERBOSE ;
+ int CURL_GLOBAL_ALL ;
+ int CURL_ZERO_TERMINATED ;
+ int curl_easy_cleanup (int *) ;
+ int curl_easy_perform (int *) ;
+ int curl_global_cleanup () ;
+ int * curl_mime_addpart (int *) ;
+ int curl_mime_data (int *,char*,int ) ;
+ int curl_mime_free (int *) ;
+ int * curl_mime_init (int *) ;
+ int curl_mime_name (int *,char*) ;
+ int easy_init (int *) ;
+ int easy_setopt (int *,int ,...) ;
+ int global_init (int ) ;
 
 int test(char *URL)
 {
-  CURL *curls = NULL;
+  CURL *curls = ((void*)0);
   int res = 0;
-  curl_mimepart *field = NULL;
-  curl_mime *mime = NULL;
+  curl_mimepart *field = ((void*)0);
+  curl_mime *mime = ((void*)0);
 
   global_init(CURL_GLOBAL_ALL);
   easy_init(curls);
@@ -59,7 +59,7 @@ int test(char *URL)
   if(res)
     goto test_cleanup;
 
-  /* Alter form and resubmit. */
+
   curl_mime_data(field, "long value for length change", CURL_ZERO_TERMINATED);
   res = curl_easy_perform(curls);
 
@@ -67,5 +67,5 @@ test_cleanup:
   curl_mime_free(mime);
   curl_easy_cleanup(curls);
   curl_global_cleanup();
-  return (int) res; /* return the final return code */
+  return (int) res;
 }

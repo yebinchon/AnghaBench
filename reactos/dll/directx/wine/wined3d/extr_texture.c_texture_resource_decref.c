@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct wined3d_resource {int dummy; } ;
-typedef  int /*<<< orphan*/  ULONG ;
+typedef int ULONG ;
 
-/* Variables and functions */
- int /*<<< orphan*/  texture_from_resource (struct wined3d_resource*) ; 
- int /*<<< orphan*/  wined3d_texture_decref (int /*<<< orphan*/ ) ; 
+
+ int texture_from_resource (struct wined3d_resource*) ;
+ int wined3d_texture_decref (int ) ;
 
 __attribute__((used)) static ULONG texture_resource_decref(struct wined3d_resource *resource)
 {

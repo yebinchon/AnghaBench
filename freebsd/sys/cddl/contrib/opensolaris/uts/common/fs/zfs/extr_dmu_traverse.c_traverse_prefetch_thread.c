@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  zbookmark_phys_t ;
-struct TYPE_5__ {TYPE_1__* td_pfd; int /*<<< orphan*/  td_rootbp; int /*<<< orphan*/  td_objset; int /*<<< orphan*/ * td_resume; TYPE_1__* td_arg; int /*<<< orphan*/  td_func; } ;
-typedef  TYPE_2__ traverse_data_t ;
-struct TYPE_4__ {int /*<<< orphan*/  pd_mtx; int /*<<< orphan*/  pd_cv; int /*<<< orphan*/  pd_exited; int /*<<< orphan*/  pd_resume; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  B_TRUE ; 
- int /*<<< orphan*/  SET_BOOKMARK (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ZB_ROOT_BLKID ; 
- int /*<<< orphan*/  ZB_ROOT_LEVEL ; 
- int /*<<< orphan*/  ZB_ROOT_OBJECT ; 
- int /*<<< orphan*/  cv_broadcast (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_enter (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_exit (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  traverse_prefetcher ; 
- int /*<<< orphan*/  traverse_visitbp (TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int zbookmark_phys_t ;
+struct TYPE_5__ {TYPE_1__* td_pfd; int td_rootbp; int td_objset; int * td_resume; TYPE_1__* td_arg; int td_func; } ;
+typedef TYPE_2__ traverse_data_t ;
+struct TYPE_4__ {int pd_mtx; int pd_cv; int pd_exited; int pd_resume; } ;
+
+
+ int B_TRUE ;
+ int SET_BOOKMARK (int *,int ,int ,int ,int ) ;
+ int ZB_ROOT_BLKID ;
+ int ZB_ROOT_LEVEL ;
+ int ZB_ROOT_OBJECT ;
+ int cv_broadcast (int *) ;
+ int mutex_enter (int *) ;
+ int mutex_exit (int *) ;
+ int traverse_prefetcher ;
+ int traverse_visitbp (TYPE_2__*,int *,int ,int *) ;
 
 __attribute__((used)) static void
 traverse_prefetch_thread(void *arg)
 {
-	traverse_data_t *td_main = arg;
-	traverse_data_t td = *td_main;
-	zbookmark_phys_t czb;
+ traverse_data_t *td_main = arg;
+ traverse_data_t td = *td_main;
+ zbookmark_phys_t czb;
 
-	td.td_func = traverse_prefetcher;
-	td.td_arg = td_main->td_pfd;
-	td.td_pfd = NULL;
-	td.td_resume = &td_main->td_pfd->pd_resume;
+ td.td_func = traverse_prefetcher;
+ td.td_arg = td_main->td_pfd;
+ td.td_pfd = ((void*)0);
+ td.td_resume = &td_main->td_pfd->pd_resume;
 
-	SET_BOOKMARK(&czb, td.td_objset,
-	    ZB_ROOT_OBJECT, ZB_ROOT_LEVEL, ZB_ROOT_BLKID);
-	(void) traverse_visitbp(&td, NULL, td.td_rootbp, &czb);
+ SET_BOOKMARK(&czb, td.td_objset,
+     ZB_ROOT_OBJECT, ZB_ROOT_LEVEL, ZB_ROOT_BLKID);
+ (void) traverse_visitbp(&td, ((void*)0), td.td_rootbp, &czb);
 
-	mutex_enter(&td_main->td_pfd->pd_mtx);
-	td_main->td_pfd->pd_exited = B_TRUE;
-	cv_broadcast(&td_main->td_pfd->pd_cv);
-	mutex_exit(&td_main->td_pfd->pd_mtx);
+ mutex_enter(&td_main->td_pfd->pd_mtx);
+ td_main->td_pfd->pd_exited = B_TRUE;
+ cv_broadcast(&td_main->td_pfd->pd_cv);
+ mutex_exit(&td_main->td_pfd->pd_mtx);
 }

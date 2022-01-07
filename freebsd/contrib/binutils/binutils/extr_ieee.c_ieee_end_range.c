@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ieee_range {struct ieee_range* next; int /*<<< orphan*/  low; } ;
+
+
+
+
+struct ieee_range {struct ieee_range* next; int low; } ;
 struct ieee_handle {struct ieee_range* pending_ranges; } ;
-typedef  int /*<<< orphan*/  bfd_vma ;
-typedef  int /*<<< orphan*/  bfd_boolean ;
+typedef int bfd_vma ;
+typedef int bfd_boolean ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (struct ieee_range*) ; 
- int /*<<< orphan*/  ieee_add_range (struct ieee_handle*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int FALSE ;
+ int assert (int ) ;
+ int free (struct ieee_range*) ;
+ int ieee_add_range (struct ieee_handle*,int ,int ,int ) ;
 
 __attribute__((used)) static bfd_boolean
 ieee_end_range (struct ieee_handle *info, bfd_vma high)
@@ -27,7 +27,7 @@ ieee_end_range (struct ieee_handle *info, bfd_vma high)
   struct ieee_range *r;
   bfd_vma low;
 
-  assert (info->pending_ranges != NULL);
+  assert (info->pending_ranges != ((void*)0));
   r = info->pending_ranges;
   low = r->low;
   info->pending_ranges = r->next;

@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT64 ;
-struct TYPE_2__ {int /*<<< orphan*/  Filename; } ;
-typedef  int /*<<< orphan*/  ACPI_STATUS ;
 
-/* Variables and functions */
- scalar_t__ ACPI_FAILURE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ASL_ERROR ; 
- size_t ASL_FILE_INPUT ; 
- int /*<<< orphan*/  ASL_MSG_SYNTAX ; 
- char* AcpiFormatException (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AcpiUtStrtoul64 (char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  AslCommonError (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  AslGbl_CurrentColumn ; 
- int /*<<< orphan*/  AslGbl_CurrentLineNumber ; 
- int /*<<< orphan*/  AslGbl_CurrentLineOffset ; 
- TYPE_1__* AslGbl_Files ; 
- int /*<<< orphan*/  AslGbl_LogicalLineNumber ; 
- int /*<<< orphan*/  sprintf (char*,char*,char*) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int UINT64 ;
+struct TYPE_2__ {int Filename; } ;
+typedef int ACPI_STATUS ;
+
+
+ scalar_t__ ACPI_FAILURE (int ) ;
+ int ASL_ERROR ;
+ size_t ASL_FILE_INPUT ;
+ int ASL_MSG_SYNTAX ;
+ char* AcpiFormatException (int ) ;
+ int AcpiUtStrtoul64 (char*,int *) ;
+ int AslCommonError (int ,int ,int ,int ,int ,int ,int ,char*) ;
+ int AslGbl_CurrentColumn ;
+ int AslGbl_CurrentLineNumber ;
+ int AslGbl_CurrentLineOffset ;
+ TYPE_1__* AslGbl_Files ;
+ int AslGbl_LogicalLineNumber ;
+ int sprintf (char*,char*,char*) ;
 
 UINT64
 UtDoConstant (
-    char                    *String)
+    char *String)
 {
-    ACPI_STATUS             Status;
-    UINT64                  ConvertedInteger;
-    char                    ErrBuf[64];
+    ACPI_STATUS Status;
+    UINT64 ConvertedInteger;
+    char ErrBuf[64];
 
 
     Status = AcpiUtStrtoul64 (String, &ConvertedInteger);

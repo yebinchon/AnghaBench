@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  TimeStamp ;
-struct TYPE_4__ {char* User; char* Domain; char* Password; int /*<<< orphan*/  Flags; void* PasswordLength; void* DomainLength; void* UserLength; } ;
-typedef  TYPE_1__ SEC_WINNT_AUTH_IDENTITY_W ;
-typedef  TYPE_1__ SEC_WINNT_AUTH_IDENTITY_A ;
-typedef  scalar_t__ SECURITY_STATUS ;
-typedef  int /*<<< orphan*/ * PSecPkgInfoA ;
-typedef  int /*<<< orphan*/  CredHandle ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SECPKG_CRED_OUTBOUND ; 
- scalar_t__ SEC_E_OK ; 
- int /*<<< orphan*/  SEC_WINNT_AUTH_IDENTITY_ANSI ; 
- int /*<<< orphan*/  SEC_WINNT_AUTH_IDENTITY_UNICODE ; 
- int /*<<< orphan*/  getSecError (scalar_t__) ; 
- void* lstrlenW (char*) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- scalar_t__ pAcquireCredentialsHandleW (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pFreeContextBuffer (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pFreeCredentialsHandle (int /*<<< orphan*/ *) ; 
- scalar_t__ pQuerySecurityPackageInfoA (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  sec_pkg_name ; 
- void* strlen (scalar_t__) ; 
- scalar_t__ test_pass ; 
- scalar_t__ test_user ; 
- int /*<<< orphan*/  win_skip (char*) ; 
- scalar_t__ workgroup ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef char WCHAR ;
+typedef int TimeStamp ;
+struct TYPE_4__ {char* User; char* Domain; char* Password; int Flags; void* PasswordLength; void* DomainLength; void* UserLength; } ;
+typedef TYPE_1__ SEC_WINNT_AUTH_IDENTITY_W ;
+typedef TYPE_1__ SEC_WINNT_AUTH_IDENTITY_A ;
+typedef scalar_t__ SECURITY_STATUS ;
+typedef int * PSecPkgInfoA ;
+typedef int CredHandle ;
+
+
+ int SECPKG_CRED_OUTBOUND ;
+ scalar_t__ SEC_E_OK ;
+ int SEC_WINNT_AUTH_IDENTITY_ANSI ;
+ int SEC_WINNT_AUTH_IDENTITY_UNICODE ;
+ int getSecError (scalar_t__) ;
+ void* lstrlenW (char*) ;
+ int ok (int,char*,...) ;
+ scalar_t__ pAcquireCredentialsHandleW (int *,char*,int ,int *,TYPE_1__*,int *,int *,int *,int *) ;
+ int pFreeContextBuffer (int *) ;
+ int pFreeCredentialsHandle (int *) ;
+ scalar_t__ pQuerySecurityPackageInfoA (int ,int **) ;
+ int sec_pkg_name ;
+ void* strlen (scalar_t__) ;
+ scalar_t__ test_pass ;
+ scalar_t__ test_user ;
+ int win_skip (char*) ;
+ scalar_t__ workgroup ;
 
 __attribute__((used)) static void testAcquireCredentialsHandleW(void)
 {
     CredHandle cred;
     TimeStamp ttl;
     static WCHAR sec_pkg_nameW[] = {'N','T','L','M',0 };
-    static WCHAR test_userW[]    = {'t','e','s','t','u','s','e','r',0 };
-    static WCHAR workgroupW[]    = {'W','O','R','K','G','R','O','U','P',0};
-    static WCHAR test_passW[]    = {'t','e','s','t','p','a','s','s',0};
+    static WCHAR test_userW[] = {'t','e','s','t','u','s','e','r',0 };
+    static WCHAR workgroupW[] = {'W','O','R','K','G','R','O','U','P',0};
+    static WCHAR test_passW[] = {'t','e','s','t','p','a','s','s',0};
     SECURITY_STATUS ret;
     SEC_WINNT_AUTH_IDENTITY_A idA;
     SEC_WINNT_AUTH_IDENTITY_W id;
-    PSecPkgInfoA pkg_info = NULL;
+    PSecPkgInfoA pkg_info = ((void*)0);
 
     if(!pAcquireCredentialsHandleW)
     {
@@ -73,22 +73,22 @@ __attribute__((used)) static void testAcquireCredentialsHandleW(void)
     id.PasswordLength = lstrlenW(test_passW);
     id.Flags = SEC_WINNT_AUTH_IDENTITY_UNICODE;
 
-    ret = pAcquireCredentialsHandleW(NULL, sec_pkg_nameW, SECPKG_CRED_OUTBOUND,
-            NULL, &id, NULL, NULL, &cred, &ttl);
+    ret = pAcquireCredentialsHandleW(((void*)0), sec_pkg_nameW, SECPKG_CRED_OUTBOUND,
+            ((void*)0), &id, ((void*)0), ((void*)0), &cred, &ttl);
     ok(ret == SEC_E_OK, "AcquireCredentialsHandeW() returned %s\n",
             getSecError(ret));
     pFreeCredentialsHandle(&cred);
 
     id.DomainLength = 0;
-    ret = pAcquireCredentialsHandleW(NULL, sec_pkg_nameW, SECPKG_CRED_OUTBOUND,
-            NULL, &id, NULL, NULL, &cred, &ttl);
+    ret = pAcquireCredentialsHandleW(((void*)0), sec_pkg_nameW, SECPKG_CRED_OUTBOUND,
+            ((void*)0), &id, ((void*)0), ((void*)0), &cred, &ttl);
     ok(ret == SEC_E_OK, "AcquireCredentialsHandeW() returned %s\n",
             getSecError(ret));
     pFreeCredentialsHandle(&cred);
 
-    id.Domain = NULL;
-    ret = pAcquireCredentialsHandleW(NULL, sec_pkg_nameW, SECPKG_CRED_OUTBOUND,
-            NULL, &id, NULL, NULL, &cred, &ttl);
+    id.Domain = ((void*)0);
+    ret = pAcquireCredentialsHandleW(((void*)0), sec_pkg_nameW, SECPKG_CRED_OUTBOUND,
+            ((void*)0), &id, ((void*)0), ((void*)0), &cred, &ttl);
     ok(ret == SEC_E_OK, "AcquireCredentialsHandeW() returned %s\n",
             getSecError(ret));
     pFreeCredentialsHandle(&cred);
@@ -96,24 +96,24 @@ __attribute__((used)) static void testAcquireCredentialsHandleW(void)
     id.Domain = workgroupW;
     id.DomainLength = lstrlenW(workgroupW);
     id.UserLength = 0;
-    id.User = NULL;
-    ret = pAcquireCredentialsHandleW(NULL, sec_pkg_nameW, SECPKG_CRED_OUTBOUND,
-            NULL, &id, NULL, NULL, &cred, &ttl);
+    id.User = ((void*)0);
+    ret = pAcquireCredentialsHandleW(((void*)0), sec_pkg_nameW, SECPKG_CRED_OUTBOUND,
+            ((void*)0), &id, ((void*)0), ((void*)0), &cred, &ttl);
     ok(ret == SEC_E_OK, "AcquireCredentialsHandeW() returned %s\n",
             getSecError(ret));
     pFreeCredentialsHandle(&cred);
 
     id.User = test_userW;
     id.UserLength = lstrlenW(test_userW);
-    id.Password = test_passW;    /* NULL string causes a crash. */
+    id.Password = test_passW;
     id.PasswordLength = 0;
-    ret = pAcquireCredentialsHandleW(NULL, sec_pkg_nameW, SECPKG_CRED_OUTBOUND,
-            NULL, &id, NULL, NULL, &cred, &ttl);
+    ret = pAcquireCredentialsHandleW(((void*)0), sec_pkg_nameW, SECPKG_CRED_OUTBOUND,
+            ((void*)0), &id, ((void*)0), ((void*)0), &cred, &ttl);
     ok(ret == SEC_E_OK, "AcquireCredentialsHandeW() returned %s\n",
             getSecError(ret));
     pFreeCredentialsHandle(&cred);
 
-    /* Test using the ASCII structure. */
+
     idA.User = (unsigned char*) test_user;
     idA.UserLength = strlen(test_user);
     idA.Domain = (unsigned char *) workgroup;
@@ -122,8 +122,8 @@ __attribute__((used)) static void testAcquireCredentialsHandleW(void)
     idA.PasswordLength = strlen(test_pass);
     idA.Flags = SEC_WINNT_AUTH_IDENTITY_ANSI;
 
-    ret = pAcquireCredentialsHandleW(NULL, sec_pkg_nameW, SECPKG_CRED_OUTBOUND,
-            NULL, &idA, NULL, NULL, &cred, &ttl);
+    ret = pAcquireCredentialsHandleW(((void*)0), sec_pkg_nameW, SECPKG_CRED_OUTBOUND,
+            ((void*)0), &idA, ((void*)0), ((void*)0), &cred, &ttl);
     ok(ret == SEC_E_OK, "AcquireCredentialsHandeW() returned %s\n",
             getSecError(ret));
     pFreeCredentialsHandle(&cred);

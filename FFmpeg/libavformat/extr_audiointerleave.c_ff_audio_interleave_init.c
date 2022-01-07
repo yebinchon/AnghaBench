@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_5__ ;
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_13__ TYPE_5__ ;
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_13__ {int nb_streams; TYPE_3__** streams; } ;
-struct TYPE_12__ {int /*<<< orphan*/  num; } ;
+struct TYPE_12__ {int num; } ;
 struct TYPE_11__ {TYPE_1__* codecpar; TYPE_2__* priv_data; } ;
-struct TYPE_10__ {int sample_size; int const* samples_per_frame; int* samples; int fifo_size; int /*<<< orphan*/  fifo; TYPE_4__ time_base; } ;
-struct TYPE_9__ {scalar_t__ codec_type; int channels; int /*<<< orphan*/  codec_id; } ;
-typedef  TYPE_2__ AudioInterleaveContext ;
-typedef  TYPE_3__ AVStream ;
-typedef  TYPE_4__ AVRational ;
-typedef  TYPE_5__ AVFormatContext ;
+struct TYPE_10__ {int sample_size; int const* samples_per_frame; int* samples; int fifo_size; int fifo; TYPE_4__ time_base; } ;
+struct TYPE_9__ {scalar_t__ codec_type; int channels; int codec_id; } ;
+typedef TYPE_2__ AudioInterleaveContext ;
+typedef TYPE_3__ AVStream ;
+typedef TYPE_4__ AVRational ;
+typedef TYPE_5__ AVFormatContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- scalar_t__ AVMEDIA_TYPE_AUDIO ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  av_fifo_alloc_array (int,int) ; 
- int av_get_bits_per_sample (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_log (TYPE_5__*,int /*<<< orphan*/ ,char*) ; 
+
+ int AVERROR (int ) ;
+ scalar_t__ AVMEDIA_TYPE_AUDIO ;
+ int AV_LOG_ERROR ;
+ int EINVAL ;
+ int ENOMEM ;
+ int av_fifo_alloc_array (int,int) ;
+ int av_get_bits_per_sample (int ) ;
+ int av_log (TYPE_5__*,int ,char*) ;
 
 int ff_audio_interleave_init(AVFormatContext *s,
                              const int *samples_per_frame,

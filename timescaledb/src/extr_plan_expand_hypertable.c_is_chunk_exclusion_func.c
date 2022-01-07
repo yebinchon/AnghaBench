@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {scalar_t__ funcid; } ;
-typedef  int /*<<< orphan*/  Expr ;
+typedef int Expr ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FuncExpr ; 
- scalar_t__ IsA (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- TYPE_1__* castNode (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ chunk_exclusion_func ; 
+
+ int FuncExpr ;
+ scalar_t__ IsA (int *,int ) ;
+ TYPE_1__* castNode (int ,int *) ;
+ scalar_t__ chunk_exclusion_func ;
 
 __attribute__((used)) static bool
 is_chunk_exclusion_func(Expr *node)
 {
-	if (IsA(node, FuncExpr) && castNode(FuncExpr, node)->funcid == chunk_exclusion_func)
-		return true;
+ if (IsA(node, FuncExpr) && castNode(FuncExpr, node)->funcid == chunk_exclusion_func)
+  return 1;
 
-	return false;
+ return 0;
 }

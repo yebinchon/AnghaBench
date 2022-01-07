@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct sysctl_req {int dummy; } ;
 
-/* Variables and functions */
- int kperf_sysctl_get_set_uint32 (struct sysctl_req*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kperf_timer_get_count ; 
- int /*<<< orphan*/  kperf_timer_set_count ; 
+
+ int kperf_sysctl_get_set_uint32 (struct sysctl_req*,int ,int ) ;
+ int kperf_timer_get_count ;
+ int kperf_timer_set_count ;
 
 __attribute__((used)) static int
 sysctl_timer_count(struct sysctl_req *req)
 {
-	return kperf_sysctl_get_set_uint32(req, kperf_timer_get_count,
-		kperf_timer_set_count);
+ return kperf_sysctl_get_set_uint32(req, kperf_timer_get_count,
+  kperf_timer_set_count);
 }

@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ errno ; 
- long* malloc (int) ; 
- int /*<<< orphan*/  panic (char*) ; 
- long strtol (char*,char**,int) ; 
+ scalar_t__ errno ;
+ long* malloc (int) ;
+ int panic (char*) ;
+ long strtol (char*,char**,int) ;
 
 __attribute__((used)) static long *
 get_job_list(int argc, char *argv[], int *joblen)
@@ -24,18 +16,18 @@ get_job_list(int argc, char *argv[], int *joblen)
     long *joblist;
     char *ep;
 
-    joblist = NULL;
+    joblist = ((void*)0);
     len = argc;
     if (len > 0) {
-	if ((joblist = malloc(len * sizeof(*joblist))) == NULL)
-	    panic("out of memory");
+ if ((joblist = malloc(len * sizeof(*joblist))) == ((void*)0))
+     panic("out of memory");
 
-	for (i = 0; i < argc; i++) {
-	    errno = 0;
-	    if ((joblist[i] = strtol(argv[i], &ep, 10)) < 0 ||
-		ep == argv[i] || *ep != '\0' || errno)
-		panic("invalid job number");
-	}
+ for (i = 0; i < argc; i++) {
+     errno = 0;
+     if ((joblist[i] = strtol(argv[i], &ep, 10)) < 0 ||
+  ep == argv[i] || *ep != '\0' || errno)
+  panic("invalid job number");
+ }
     }
 
     *joblen = len;

@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_8__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t UINT ;
+
+
+typedef struct TYPE_12__ TYPE_8__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef size_t UINT ;
 struct TYPE_12__ {scalar_t__ tei_entity; scalar_t__ tei_instance; TYPE_2__* context; } ;
-struct TYPE_11__ {int /*<<< orphan*/  BcastAddr; int /*<<< orphan*/  Mask; int /*<<< orphan*/  Addr; int /*<<< orphan*/  Index; } ;
-struct TYPE_10__ {int /*<<< orphan*/  Index; } ;
+struct TYPE_11__ {int BcastAddr; int Mask; int Addr; int Index; } ;
+struct TYPE_10__ {int Index; } ;
 struct TYPE_9__ {scalar_t__ tei_entity; scalar_t__ tei_instance; } ;
-typedef  int /*<<< orphan*/  TDI_STATUS ;
-typedef  TYPE_1__ TDIEntityID ;
-typedef  int /*<<< orphan*/  PUINT ;
-typedef  int /*<<< orphan*/  PNDIS_BUFFER ;
-typedef  TYPE_2__* PIP_INTERFACE ;
-typedef  TYPE_3__* PIPADDR_ENTRY ;
-typedef  int /*<<< orphan*/  PCHAR ;
-typedef  int /*<<< orphan*/  KIRQL ;
-typedef  int /*<<< orphan*/  IPADDR_ENTRY ;
+typedef int TDI_STATUS ;
+typedef TYPE_1__ TDIEntityID ;
+typedef int PUINT ;
+typedef int PNDIS_BUFFER ;
+typedef TYPE_2__* PIP_INTERFACE ;
+typedef TYPE_3__* PIPADDR_ENTRY ;
+typedef int PCHAR ;
+typedef int KIRQL ;
+typedef int IPADDR_ENTRY ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ADE_ADDRMASK ; 
- int /*<<< orphan*/  ADE_BROADCAST ; 
- int /*<<< orphan*/  ADE_UNICAST ; 
- int /*<<< orphan*/  DEBUG_INFO ; 
- size_t EntityCount ; 
- TYPE_8__* EntityList ; 
- int /*<<< orphan*/  EntityListLock ; 
- TYPE_3__* ExAllocatePoolWithTag (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ExFreePoolWithTag (TYPE_3__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetInterfaceIPv4Address (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IP_ADDRESS_TAG ; 
- int /*<<< orphan*/  InfoCopyOut (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NonPagedPool ; 
- int /*<<< orphan*/  TDI_INVALID_PARAMETER ; 
- int /*<<< orphan*/  TDI_NO_RESOURCES ; 
- int /*<<< orphan*/  TDI_SUCCESS ; 
- int /*<<< orphan*/  TI_DbgPrint (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  TcpipAcquireSpinLock (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TcpipReleaseSpinLock (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int ADE_ADDRMASK ;
+ int ADE_BROADCAST ;
+ int ADE_UNICAST ;
+ int DEBUG_INFO ;
+ size_t EntityCount ;
+ TYPE_8__* EntityList ;
+ int EntityListLock ;
+ TYPE_3__* ExAllocatePoolWithTag (int ,int,int ) ;
+ int ExFreePoolWithTag (TYPE_3__*,int ) ;
+ int GetInterfaceIPv4Address (TYPE_2__*,int ,int *) ;
+ int IP_ADDRESS_TAG ;
+ int InfoCopyOut (int ,int,int ,int ) ;
+ int NonPagedPool ;
+ int TDI_INVALID_PARAMETER ;
+ int TDI_NO_RESOURCES ;
+ int TDI_SUCCESS ;
+ int TI_DbgPrint (int ,char*) ;
+ int TcpipAcquireSpinLock (int *,int *) ;
+ int TcpipReleaseSpinLock (int *,int ) ;
 
 TDI_STATUS InfoTdiQueryGetAddrTable(TDIEntityID ID,
-				    PNDIS_BUFFER Buffer,
-				    PUINT BufferSize)
+        PNDIS_BUFFER Buffer,
+        PUINT BufferSize)
 {
     KIRQL OldIrql;
     PIPADDR_ENTRY IPEntry;
@@ -88,19 +88,19 @@ TDI_STATUS InfoTdiQueryGetAddrTable(TDIEntityID ID,
 
     IPEntry->Index = CurrentIF->Index;
     GetInterfaceIPv4Address(CurrentIF,
-			    ADE_UNICAST,
-			    &IPEntry->Addr);
+       ADE_UNICAST,
+       &IPEntry->Addr);
     GetInterfaceIPv4Address(CurrentIF,
-			    ADE_ADDRMASK,
-			    &IPEntry->Mask);
+       ADE_ADDRMASK,
+       &IPEntry->Mask);
     GetInterfaceIPv4Address(CurrentIF,
-			    ADE_BROADCAST,
-			    &IPEntry->BcastAddr);
+       ADE_BROADCAST,
+       &IPEntry->BcastAddr);
 
     TcpipReleaseSpinLock(&EntityListLock, OldIrql);
 
     InfoCopyOut((PCHAR)IPEntry, sizeof(IPADDR_ENTRY),
-		Buffer, BufferSize);
+  Buffer, BufferSize);
 
     ExFreePoolWithTag(IPEntry, IP_ADDRESS_TAG);
 

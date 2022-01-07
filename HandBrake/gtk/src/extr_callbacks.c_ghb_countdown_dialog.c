@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  builder; } ;
-typedef  TYPE_1__ signal_user_data_t ;
-typedef  int /*<<< orphan*/  guint ;
-typedef  int /*<<< orphan*/  gint ;
-typedef  int /*<<< orphan*/  gchar ;
-struct TYPE_6__ {int /*<<< orphan*/  dlg; TYPE_1__* ud; int /*<<< orphan*/  timeout; int /*<<< orphan*/  const* action; int /*<<< orphan*/  const* msg; } ;
-typedef  TYPE_2__ countdown_t ;
-typedef  int /*<<< orphan*/  GtkWindow ;
-typedef  int /*<<< orphan*/  GtkWidget ;
-typedef  scalar_t__ GtkResponseType ;
-typedef  int /*<<< orphan*/  GtkMessageType ;
-typedef  int /*<<< orphan*/  GSourceFunc ;
-typedef  int /*<<< orphan*/  GSource ;
-typedef  int /*<<< orphan*/  GMainContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GHB_WIDGET (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  GTK_BUTTONS_NONE ; 
- int /*<<< orphan*/  GTK_DIALOG (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GTK_DIALOG_MODAL ; 
- int /*<<< orphan*/  GTK_MESSAGE_DIALOG (int /*<<< orphan*/ *) ; 
- scalar_t__ GTK_RESPONSE_CANCEL ; 
- int /*<<< orphan*/ * GTK_WINDOW (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/ * g_main_context_default () ; 
- int /*<<< orphan*/ * g_main_context_find_source_by_id (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  g_source_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  g_timeout_add (int,int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  gtk_dialog_add_buttons (int /*<<< orphan*/ ,int /*<<< orphan*/  const*,scalar_t__,int /*<<< orphan*/ *) ; 
- scalar_t__ gtk_dialog_run (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * gtk_message_dialog_new (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gtk_widget_destroy (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int builder; } ;
+typedef TYPE_1__ signal_user_data_t ;
+typedef int guint ;
+typedef int gint ;
+typedef int gchar ;
+struct TYPE_6__ {int dlg; TYPE_1__* ud; int timeout; int const* action; int const* msg; } ;
+typedef TYPE_2__ countdown_t ;
+typedef int GtkWindow ;
+typedef int GtkWidget ;
+typedef scalar_t__ GtkResponseType ;
+typedef int GtkMessageType ;
+typedef int GSourceFunc ;
+typedef int GSource ;
+typedef int GMainContext ;
+
+
+ int GHB_WIDGET (int ,char*) ;
+ int GTK_BUTTONS_NONE ;
+ int GTK_DIALOG (int *) ;
+ int GTK_DIALOG_MODAL ;
+ int GTK_MESSAGE_DIALOG (int *) ;
+ scalar_t__ GTK_RESPONSE_CANCEL ;
+ int * GTK_WINDOW (int ) ;
+ int _ (char*) ;
+ int * g_main_context_default () ;
+ int * g_main_context_find_source_by_id (int *,int ) ;
+ int g_source_destroy (int *) ;
+ int g_timeout_add (int,int ,TYPE_2__*) ;
+ int gtk_dialog_add_buttons (int ,int const*,scalar_t__,int *) ;
+ scalar_t__ gtk_dialog_run (int ) ;
+ int * gtk_message_dialog_new (int *,int ,int ,int ,int ,int const*,int const*,int ) ;
+ int gtk_widget_destroy (int *) ;
 
 void
 ghb_countdown_dialog(
@@ -66,7 +66,7 @@ ghb_countdown_dialog(
     cd.timeout = timeout;
     cd.ud = ud;
 
-    // Toss up a warning dialog
+
     hb_window = GTK_WINDOW(GHB_WIDGET(ud->builder, "hb_window"));
     dialog = gtk_message_dialog_new(hb_window, GTK_DIALOG_MODAL,
                             type, GTK_BUTTONS_NONE,
@@ -74,7 +74,7 @@ ghb_countdown_dialog(
                             message, action, timeout);
     gtk_dialog_add_buttons( GTK_DIALOG(dialog),
                            cancel, GTK_RESPONSE_CANCEL,
-                           NULL);
+                           ((void*)0));
 
     cd.dlg = GTK_MESSAGE_DIALOG(dialog);
     timeout_id = g_timeout_add(1000, action_func, &cd);
@@ -87,7 +87,7 @@ ghb_countdown_dialog(
 
         mc = g_main_context_default();
         source = g_main_context_find_source_by_id(mc, timeout_id);
-        if (source != NULL)
+        if (source != ((void*)0))
             g_source_destroy(source);
     }
 }

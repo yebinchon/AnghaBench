@@ -1,79 +1,63 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  void* mrb_value ;
-typedef  int /*<<< orphan*/  mrb_state ;
-typedef  double mrb_int ;
-typedef  int /*<<< orphan*/  JSON_Value ;
-typedef  int /*<<< orphan*/  JSON_Object ;
-typedef  int /*<<< orphan*/  JSON_Array ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_ARGUMENT_ERROR ; 
-#define  JSONArray 135 
-#define  JSONBoolean 134 
-#define  JSONError 133 
-#define  JSONFixed 132 
-#define  JSONNull 131 
-#define  JSONNumber 130 
-#define  JSONObject 129 
-#define  JSONString 128 
- double floor (double) ; 
- size_t json_array_get_count (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * json_array_get_value (int /*<<< orphan*/ *,size_t) ; 
- size_t json_object_get_count (int /*<<< orphan*/ *) ; 
- char* json_object_get_name (int /*<<< orphan*/ *,size_t) ; 
- int /*<<< orphan*/ * json_object_get_value (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/ * json_value_get_array (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  json_value_get_boolean (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  json_value_get_fixed (int /*<<< orphan*/ *) ; 
- double json_value_get_number (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * json_value_get_object (int /*<<< orphan*/ *) ; 
- char const* json_value_get_string (int /*<<< orphan*/ *) ; 
- int json_value_get_type (int /*<<< orphan*/ *) ; 
- void* mrb_ary_new (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mrb_ary_push (int /*<<< orphan*/ *,void*,void*) ; 
- void* mrb_false_value () ; 
- void* mrb_fixnum_value (double) ; 
- void* mrb_float_value (int /*<<< orphan*/ *,double) ; 
- int /*<<< orphan*/  mrb_gc_arena_restore (int /*<<< orphan*/ *,int) ; 
- int mrb_gc_arena_save (int /*<<< orphan*/ *) ; 
- void* mrb_hash_new (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mrb_hash_set (int /*<<< orphan*/ *,void*,void*,void*) ; 
- void* mrb_nil_value () ; 
- int /*<<< orphan*/  mrb_raise (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- void* mrb_str_new_cstr (int /*<<< orphan*/ *,char const*) ; 
- void* mrb_true_value () ; 
+
+
+
+typedef void* mrb_value ;
+typedef int mrb_state ;
+typedef double mrb_int ;
+typedef int JSON_Value ;
+typedef int JSON_Object ;
+typedef int JSON_Array ;
+
+
+ int E_ARGUMENT_ERROR ;
+ double floor (double) ;
+ size_t json_array_get_count (int *) ;
+ int * json_array_get_value (int *,size_t) ;
+ size_t json_object_get_count (int *) ;
+ char* json_object_get_name (int *,size_t) ;
+ int * json_object_get_value (int *,char const*) ;
+ int * json_value_get_array (int *) ;
+ int json_value_get_boolean (int *) ;
+ int json_value_get_fixed (int *) ;
+ double json_value_get_number (int *) ;
+ int * json_value_get_object (int *) ;
+ char const* json_value_get_string (int *) ;
+ int json_value_get_type (int *) ;
+ void* mrb_ary_new (int *) ;
+ int mrb_ary_push (int *,void*,void*) ;
+ void* mrb_false_value () ;
+ void* mrb_fixnum_value (double) ;
+ void* mrb_float_value (int *,double) ;
+ int mrb_gc_arena_restore (int *,int) ;
+ int mrb_gc_arena_save (int *) ;
+ void* mrb_hash_new (int *) ;
+ int mrb_hash_set (int *,void*,void*,void*) ;
+ void* mrb_nil_value () ;
+ int mrb_raise (int *,int ,char*) ;
+ void* mrb_str_new_cstr (int *,char const*) ;
+ void* mrb_true_value () ;
 
 __attribute__((used)) static mrb_value
 json_value_to_mrb_value(mrb_state* mrb, JSON_Value* value) {
   mrb_value ret;
   switch (json_value_get_type(value)) {
-  case JSONError:
-  case JSONNull:
+  case 133:
+  case 131:
     ret = mrb_nil_value();
     break;
-  case JSONString:
+  case 128:
     ret = mrb_str_new_cstr(mrb, json_value_get_string(value));
     break;
-#ifdef JSON_FIXED_NUMBER
-  case JSONFixed:
-    ret = mrb_fixnum_value((mrb_int)json_value_get_fixed(value));
-    break;
-  case JSONNumber:
-    ret = mrb_float_value(mrb, json_value_get_number(value));
-    break;
-#else
-  case JSONNumber:
+  case 130:
     {
       double d = json_value_get_number(value);
       if (floor(d) == d) {
@@ -84,8 +68,8 @@ json_value_to_mrb_value(mrb_state* mrb, JSON_Value* value) {
       }
     }
     break;
-#endif
-  case JSONObject:
+
+  case 129:
     {
       mrb_value hash = mrb_hash_new(mrb);
       JSON_Object* object = json_value_get_object(value);
@@ -101,7 +85,7 @@ json_value_to_mrb_value(mrb_state* mrb, JSON_Value* value) {
       ret = hash;
     }
     break;
-  case JSONArray:
+  case 135:
     {
       mrb_value ary;
       JSON_Array* array;
@@ -118,7 +102,7 @@ json_value_to_mrb_value(mrb_state* mrb, JSON_Value* value) {
       ret = ary;
     }
     break;
-  case JSONBoolean:
+  case 134:
     if (json_value_get_boolean(value))
       ret = mrb_true_value();
     else

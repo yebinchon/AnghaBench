@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ isspace (char const) ; 
+ scalar_t__ isspace (char const) ;
 
 double strtod( const char* s, char** endptr ) {
-    register const char*  p     = s;
-    register long double  value = 0.L;
-    int                   sign  = +1;
-    long double           factor;
-    unsigned int          expo;
+    register const char* p = s;
+    register long double value = 0.L;
+    int sign = +1;
+    long double factor;
+    unsigned int expo;
 
     while ( isspace(*p) ) {
         p++;
@@ -40,12 +32,12 @@ double strtod( const char* s, char** endptr ) {
         p++;
         while ( (unsigned int)(*p - '0') < 10u ) {
             factor *= 0.1;
-            value  += (*p++ - '0') * factor;
+            value += (*p++ - '0') * factor;
         }
     }
 
     if ( (*p | 32) == 'e' ) {
-        expo   = 0;
+        expo = 0;
         factor = 10.L;
 
         switch (*++p) {
@@ -55,7 +47,7 @@ double strtod( const char* s, char** endptr ) {
         case '0': case '1': case '2': case '3': case '4': case '5': case '6': case '7': case '8': case '9':
                   break;
         default : value = 0.L;
-                  p     = s;
+                  p = s;
                   goto done;
         }
 
@@ -72,7 +64,7 @@ double strtod( const char* s, char** endptr ) {
     }
 
 done:
-    if ( endptr != NULL )
+    if ( endptr != ((void*)0) )
         *endptr = (char*)p;
 
     return value * sign;

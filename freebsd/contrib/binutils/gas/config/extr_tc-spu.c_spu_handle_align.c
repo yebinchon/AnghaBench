@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_5__ {scalar_t__ fr_type; int fr_address; int fr_fix; char* fr_literal; int fr_var; TYPE_1__* fr_next; } ;
-typedef  TYPE_2__ fragS ;
+typedef TYPE_2__ fragS ;
 struct TYPE_4__ {int fr_address; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memcpy (char*,unsigned char const*,int) ; 
- int /*<<< orphan*/  memset (char*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ rs_align_code ; 
+
+ int memcpy (char*,unsigned char const*,int) ;
+ int memset (char*,int ,int) ;
+ scalar_t__ rs_align_code ;
 
 void
 spu_handle_align (fragS *fragp)
 {
   static const unsigned char nop_pattern[8] = {
-    0x40, 0x20, 0x00, 0x00, /* even nop */
-    0x00, 0x20, 0x00, 0x00, /* odd  nop */
+    0x40, 0x20, 0x00, 0x00,
+    0x00, 0x20, 0x00, 0x00,
   };
 
   int bytes;

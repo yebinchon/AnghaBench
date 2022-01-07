@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FTM_HandleTypeDef ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HAL_FTM_Base_DeInit (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int FTM_HandleTypeDef ;
+
+
+ int HAL_FTM_Base_DeInit (int *) ;
 
 void HAL_FTM_OC_DeInit(FTM_HandleTypeDef *hftm) {
     HAL_FTM_Base_DeInit(hftm);

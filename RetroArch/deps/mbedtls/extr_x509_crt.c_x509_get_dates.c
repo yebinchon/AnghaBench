@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mbedtls_x509_time ;
 
-/* Variables and functions */
- int MBEDTLS_ASN1_CONSTRUCTED ; 
- int MBEDTLS_ASN1_SEQUENCE ; 
- int MBEDTLS_ERR_ASN1_LENGTH_MISMATCH ; 
- int MBEDTLS_ERR_X509_INVALID_DATE ; 
- int mbedtls_asn1_get_tag (unsigned char**,unsigned char const*,size_t*,int) ; 
- int mbedtls_x509_get_time (unsigned char**,unsigned char const*,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int mbedtls_x509_time ;
+
+
+ int MBEDTLS_ASN1_CONSTRUCTED ;
+ int MBEDTLS_ASN1_SEQUENCE ;
+ int MBEDTLS_ERR_ASN1_LENGTH_MISMATCH ;
+ int MBEDTLS_ERR_X509_INVALID_DATE ;
+ int mbedtls_asn1_get_tag (unsigned char**,unsigned char const*,size_t*,int) ;
+ int mbedtls_x509_get_time (unsigned char**,unsigned char const*,int *) ;
 
 __attribute__((used)) static int x509_get_dates( unsigned char **p,
                            const unsigned char *end,

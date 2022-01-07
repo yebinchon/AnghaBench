@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  destroy_dev (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dev_shm_cdev ; 
+ int destroy_dev (int ) ;
+ int dev_shm_cdev ;
 
 void
 linux_dev_shm_destroy(void)
 {
 
-	destroy_dev(dev_shm_cdev);
+ destroy_dev(dev_shm_cdev);
 }

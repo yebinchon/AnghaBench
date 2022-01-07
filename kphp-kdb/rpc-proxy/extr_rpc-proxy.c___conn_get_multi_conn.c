@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct rpc_cluster_bucket {scalar_t__ RT; TYPE_1__* T; } ;
 struct TYPE_3__ {int custom_field; } ;
 
-/* Variables and functions */
- int rpc_target_choose_random_connections (scalar_t__,int /*<<< orphan*/ ,int,void*) ; 
- int /*<<< orphan*/  rpc_target_insert_target_ext (TYPE_1__*,int) ; 
- scalar_t__ rpc_target_lookup_target (TYPE_1__*) ; 
+
+ int rpc_target_choose_random_connections (scalar_t__,int ,int,void*) ;
+ int rpc_target_insert_target_ext (TYPE_1__*,int) ;
+ scalar_t__ rpc_target_lookup_target (TYPE_1__*) ;
 
 int __conn_get_multi_conn (struct rpc_cluster_bucket *B, void **buf, int n) {
   if (!B->RT) {
     if (B->T->custom_field != -1) {
-      rpc_target_insert_target_ext (B->T, B->T->custom_field);      
+      rpc_target_insert_target_ext (B->T, B->T->custom_field);
       B->RT = rpc_target_lookup_target (B->T);
     } else {
       return 0;

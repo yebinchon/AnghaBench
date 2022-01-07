@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  XML_Parser ;
-typedef  int /*<<< orphan*/  const XML_Char ;
-struct TYPE_2__ {int /*<<< orphan*/  is_internal; int /*<<< orphan*/  is_param; int /*<<< orphan*/  const* notation; int /*<<< orphan*/  textLen; int /*<<< orphan*/  const* textPtr; int /*<<< orphan*/  const* publicId; int /*<<< orphan*/  const* base; int /*<<< orphan*/  const* systemId; int /*<<< orphan*/  const* name; } ;
-typedef  int /*<<< orphan*/  STRING_POOL ;
-typedef  int /*<<< orphan*/  HASH_TABLE_ITER ;
-typedef  int /*<<< orphan*/  HASH_TABLE ;
-typedef  TYPE_1__ ENTITY ;
 
-/* Variables and functions */
- int /*<<< orphan*/  hashTableIterInit (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
- scalar_t__ hashTableIterNext (int /*<<< orphan*/ *) ; 
- scalar_t__ lookup (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int) ; 
- int /*<<< orphan*/  const* poolCopyString (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  const* poolCopyStringN (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int XML_Parser ;
+typedef int const XML_Char ;
+struct TYPE_2__ {int is_internal; int is_param; int const* notation; int textLen; int const* textPtr; int const* publicId; int const* base; int const* systemId; int const* name; } ;
+typedef int STRING_POOL ;
+typedef int HASH_TABLE_ITER ;
+typedef int HASH_TABLE ;
+typedef TYPE_1__ ENTITY ;
+
+
+ int hashTableIterInit (int *,int const*) ;
+ scalar_t__ hashTableIterNext (int *) ;
+ scalar_t__ lookup (int ,int *,int const*,int) ;
+ int const* poolCopyString (int *,int const*) ;
+ int const* poolCopyStringN (int *,int const*,int ) ;
 
 __attribute__((used)) static int
 copyEntityTable(XML_Parser oldParser,
@@ -33,8 +33,8 @@ copyEntityTable(XML_Parser oldParser,
                 const HASH_TABLE *oldTable)
 {
   HASH_TABLE_ITER iter;
-  const XML_Char *cachedOldBase = NULL;
-  const XML_Char *cachedNewBase = NULL;
+  const XML_Char *cachedOldBase = ((void*)0);
+  const XML_Char *cachedNewBase = ((void*)0);
 
   hashTableIterInit(&iter, oldTable);
 

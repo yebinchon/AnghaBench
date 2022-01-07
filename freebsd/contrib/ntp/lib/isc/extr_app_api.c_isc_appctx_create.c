@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  isc_result_t ;
-typedef  int /*<<< orphan*/  isc_mem_t ;
-typedef  int /*<<< orphan*/  isc_appctx_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOCK (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  REQUIRE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  UNLOCK (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  appctx_createfunc (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  createlock ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
+
+
+
+typedef int isc_result_t ;
+typedef int isc_mem_t ;
+typedef int isc_appctx_t ;
+
+
+ int LOCK (int *) ;
+ int REQUIRE (int ) ;
+ int UNLOCK (int *) ;
+ int appctx_createfunc (int *,int **) ;
+ int createlock ;
+ int stub1 (int *,int **) ;
 
 isc_result_t
 isc_appctx_create(isc_mem_t *mctx, isc_appctx_t **ctxp) {
-	isc_result_t result;
+ isc_result_t result;
 
-	LOCK(&createlock);
+ LOCK(&createlock);
 
-	REQUIRE(appctx_createfunc != NULL);
-	result = (*appctx_createfunc)(mctx, ctxp);
+ REQUIRE(appctx_createfunc != ((void*)0));
+ result = (*appctx_createfunc)(mctx, ctxp);
 
-	UNLOCK(&createlock);
+ UNLOCK(&createlock);
 
-	return (result);
+ return (result);
 }

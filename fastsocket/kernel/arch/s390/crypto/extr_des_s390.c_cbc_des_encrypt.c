@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct scatterlist {int dummy; } ;
-struct crypt_s390_des_ctx {int /*<<< orphan*/  iv; } ;
+struct crypt_s390_des_ctx {int iv; } ;
 struct blkcipher_walk {int dummy; } ;
-struct blkcipher_desc {int /*<<< orphan*/  tfm; } ;
+struct blkcipher_desc {int tfm; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  KMC_DEA_ENCRYPT ; 
- int /*<<< orphan*/  blkcipher_walk_init (struct blkcipher_walk*,struct scatterlist*,struct scatterlist*,unsigned int) ; 
- int cbc_desall_crypt (struct blkcipher_desc*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct blkcipher_walk*) ; 
- struct crypt_s390_des_ctx* crypto_blkcipher_ctx (int /*<<< orphan*/ ) ; 
+
+ int KMC_DEA_ENCRYPT ;
+ int blkcipher_walk_init (struct blkcipher_walk*,struct scatterlist*,struct scatterlist*,unsigned int) ;
+ int cbc_desall_crypt (struct blkcipher_desc*,int ,int ,struct blkcipher_walk*) ;
+ struct crypt_s390_des_ctx* crypto_blkcipher_ctx (int ) ;
 
 __attribute__((used)) static int cbc_des_encrypt(struct blkcipher_desc *desc,
-			   struct scatterlist *dst, struct scatterlist *src,
-			   unsigned int nbytes)
+      struct scatterlist *dst, struct scatterlist *src,
+      unsigned int nbytes)
 {
-	struct crypt_s390_des_ctx *sctx = crypto_blkcipher_ctx(desc->tfm);
-	struct blkcipher_walk walk;
+ struct crypt_s390_des_ctx *sctx = crypto_blkcipher_ctx(desc->tfm);
+ struct blkcipher_walk walk;
 
-	blkcipher_walk_init(&walk, dst, src, nbytes);
-	return cbc_desall_crypt(desc, KMC_DEA_ENCRYPT, sctx->iv, &walk);
+ blkcipher_walk_init(&walk, dst, src, nbytes);
+ return cbc_desall_crypt(desc, KMC_DEA_ENCRYPT, sctx->iv, &walk);
 }

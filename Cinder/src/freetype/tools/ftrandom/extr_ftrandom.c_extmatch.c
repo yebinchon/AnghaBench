@@ -1,41 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ strcasecmp (char*,char*) ; 
- char* strrchr (char*,char) ; 
+ scalar_t__ strcasecmp (char*,char*) ;
+ char* strrchr (char*,char) ;
 
 __attribute__((used)) static int
-  extmatch( char*   filename,
-            char**  extensions )
+  extmatch( char* filename,
+            char** extensions )
   {
-    int    i;
-    char*  pt;
+    int i;
+    char* pt;
 
 
     if ( !extensions )
-      return true;
+      return 1;
 
     pt = strrchr( filename, '.' );
     if ( !pt )
-      return false;
+      return 0;
     if ( pt < strrchr( filename, '/' ) )
-      return false;
+      return 0;
 
-    for ( i = 0; extensions[i] != NULL; i++ )
+    for ( i = 0; extensions[i] != ((void*)0); i++ )
       if ( strcasecmp( pt + 1, extensions[i] ) == 0 ||
-           strcasecmp( pt,     extensions[i] ) == 0 )
-        return true;
+           strcasecmp( pt, extensions[i] ) == 0 )
+        return 1;
 
-    return false;
+    return 0;
   }

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  szFunctionName; int /*<<< orphan*/  szModName; int /*<<< orphan*/ * Callback; void* bVirtual; void* bInstalled; void* bUsed; } ;
-typedef  TYPE_1__* PSW_BP ;
-typedef  int /*<<< orphan*/  LPSTR ;
-typedef  void* BOOLEAN ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPRINT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ENTER_FUNC () ; 
- void* FALSE ; 
- TYPE_1__* FindEmptySwBpSlot () ; 
- int /*<<< orphan*/  LEAVE_FUNC () ; 
- int /*<<< orphan*/  PICE_strcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- void* TRUE ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int szFunctionName; int szModName; int * Callback; void* bVirtual; void* bInstalled; void* bUsed; } ;
+typedef TYPE_1__* PSW_BP ;
+typedef int LPSTR ;
+typedef void* BOOLEAN ;
+
+
+ int DPRINT (int ) ;
+ int ENTER_FUNC () ;
+ void* FALSE ;
+ TYPE_1__* FindEmptySwBpSlot () ;
+ int LEAVE_FUNC () ;
+ int PICE_strcpy (int ,int ) ;
+ void* TRUE ;
 
 BOOLEAN InstallVirtualSWBreakpoint(LPSTR ModName,LPSTR FunctionName)
 {
@@ -40,7 +40,7 @@ BOOLEAN InstallVirtualSWBreakpoint(LPSTR ModName,LPSTR FunctionName)
         p->bUsed = TRUE;
         p->bInstalled = TRUE;
         p->bVirtual = TRUE;
-		p->Callback = NULL;
+  p->Callback = ((void*)0);
         PICE_strcpy(p->szModName,ModName);
         PICE_strcpy(p->szFunctionName,FunctionName);
 

@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* xmlParserInputBufferPtr ;
-typedef  int /*<<< orphan*/  xmlParserInputBuffer ;
-typedef  int /*<<< orphan*/  xmlCharEncoding ;
-struct TYPE_5__ {int compressed; int /*<<< orphan*/ * closecallback; int /*<<< orphan*/ * readcallback; void* context; int /*<<< orphan*/ * raw; int /*<<< orphan*/ * encoder; int /*<<< orphan*/ * buffer; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/ * xmlBufCreateSize (int) ; 
- int /*<<< orphan*/ * xmlBufCreateStatic (void*,size_t) ; 
- int xmlDefaultBufferSize ; 
- int /*<<< orphan*/  xmlFree (TYPE_1__*) ; 
- int /*<<< orphan*/ * xmlGetCharEncodingHandler (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xmlIOErrMemory (char*) ; 
- scalar_t__ xmlMalloc (int) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef TYPE_1__* xmlParserInputBufferPtr ;
+typedef int xmlParserInputBuffer ;
+typedef int xmlCharEncoding ;
+struct TYPE_5__ {int compressed; int * closecallback; int * readcallback; void* context; int * raw; int * encoder; int * buffer; } ;
+
+
+ int memset (TYPE_1__*,int ,size_t) ;
+ int * xmlBufCreateSize (int) ;
+ int * xmlBufCreateStatic (void*,size_t) ;
+ int xmlDefaultBufferSize ;
+ int xmlFree (TYPE_1__*) ;
+ int * xmlGetCharEncodingHandler (int ) ;
+ int xmlIOErrMemory (char*) ;
+ scalar_t__ xmlMalloc (int) ;
 
 xmlParserInputBufferPtr
 xmlParserInputBufferCreateStatic(const char *mem, int size,
                                  xmlCharEncoding enc) {
     xmlParserInputBufferPtr ret;
 
-    if (size < 0) return(NULL);
-    if (mem == NULL) return(NULL);
+    if (size < 0) return(((void*)0));
+    if (mem == ((void*)0)) return(((void*)0));
 
     ret = (xmlParserInputBufferPtr) xmlMalloc(sizeof(xmlParserInputBuffer));
-    if (ret == NULL) {
-	xmlIOErrMemory("creating input buffer");
-	return(NULL);
+    if (ret == ((void*)0)) {
+ xmlIOErrMemory("creating input buffer");
+ return(((void*)0));
     }
     memset(ret, 0, (size_t) sizeof(xmlParserInputBuffer));
     ret->buffer = xmlBufCreateStatic((void *)mem, (size_t) size);
-    if (ret->buffer == NULL) {
+    if (ret->buffer == ((void*)0)) {
         xmlFree(ret);
-	return(NULL);
+ return(((void*)0));
     }
     ret->encoder = xmlGetCharEncodingHandler(enc);
-    if (ret->encoder != NULL)
+    if (ret->encoder != ((void*)0))
         ret->raw = xmlBufCreateSize(2 * xmlDefaultBufferSize);
     else
-        ret->raw = NULL;
+        ret->raw = ((void*)0);
     ret->compressed = -1;
     ret->context = (void *) mem;
-    ret->readcallback = NULL;
-    ret->closecallback = NULL;
+    ret->readcallback = ((void*)0);
+    ret->closecallback = ((void*)0);
 
     return(ret);
 }

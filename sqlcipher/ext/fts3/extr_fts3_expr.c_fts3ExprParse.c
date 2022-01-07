@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
 struct TYPE_13__ {int eType; struct TYPE_13__* pParent; struct TYPE_13__* pLeft; struct TYPE_13__* pRight; } ;
 struct TYPE_12__ {scalar_t__ isNot; } ;
-typedef  TYPE_1__ ParseContext ;
-typedef  TYPE_2__ Fts3Expr ;
+typedef TYPE_1__ ParseContext ;
+typedef TYPE_2__ Fts3Expr ;
 
-/* Variables and functions */
- int FTSQUERY_AND ; 
- int FTSQUERY_NEAR ; 
- int FTSQUERY_NOT ; 
- int FTSQUERY_PHRASE ; 
- int SQLITE_DONE ; 
- int SQLITE_ERROR ; 
- int SQLITE_NOMEM ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- TYPE_2__* fts3MallocZero (int) ; 
- int getNextNode (TYPE_1__*,char const*,int,TYPE_2__**,int*) ; 
- int /*<<< orphan*/  insertBinaryOperator (TYPE_2__**,TYPE_2__*,TYPE_2__*) ; 
- int /*<<< orphan*/  sqlite3Fts3ExprFree (TYPE_2__*) ; 
- int /*<<< orphan*/  sqlite3_fts3_enable_parentheses ; 
+
+ int FTSQUERY_AND ;
+ int FTSQUERY_NEAR ;
+ int FTSQUERY_NOT ;
+ int FTSQUERY_PHRASE ;
+ int SQLITE_DONE ;
+ int SQLITE_ERROR ;
+ int SQLITE_NOMEM ;
+ int SQLITE_OK ;
+ int assert (int) ;
+ TYPE_2__* fts3MallocZero (int) ;
+ int getNextNode (TYPE_1__*,char const*,int,TYPE_2__**,int*) ;
+ int insertBinaryOperator (TYPE_2__**,TYPE_2__*,TYPE_2__*) ;
+ int sqlite3Fts3ExprFree (TYPE_2__*) ;
+ int sqlite3_fts3_enable_parentheses ;
 
 __attribute__((used)) static int fts3ExprParse(
-  ParseContext *pParse,                   /* fts3 query parse context */
-  const char *z, int n,                   /* Text of MATCH query */
-  Fts3Expr **ppExpr,                      /* OUT: Parsed query structure */
-  int *pnConsumed                         /* OUT: Number of bytes consumed */
+  ParseContext *pParse,
+  const char *z, int n,
+  Fts3Expr **ppExpr,
+  int *pnConsumed
 ){
   Fts3Expr *pRet = 0;
   Fts3Expr *pPrev = 0;
-  Fts3Expr *pNotBranch = 0;               /* Only used in legacy parse mode */
+  Fts3Expr *pNotBranch = 0;
   int nIn = n;
   const char *zIn = z;
   int rc = SQLITE_OK;
@@ -57,10 +57,10 @@ __attribute__((used)) static int fts3ExprParse(
       if( p ){
         int isPhrase;
 
-        if( !sqlite3_fts3_enable_parentheses 
-            && p->eType==FTSQUERY_PHRASE && pParse->isNot 
+        if( !sqlite3_fts3_enable_parentheses
+            && p->eType==FTSQUERY_PHRASE && pParse->isNot
         ){
-          /* Create an implicit NOT operator. */
+
           Fts3Expr *pNot = fts3MallocZero(sizeof(Fts3Expr));
           if( !pNot ){
             sqlite3Fts3ExprFree(p);
@@ -80,11 +80,11 @@ __attribute__((used)) static int fts3ExprParse(
           int eType = p->eType;
           isPhrase = (eType==FTSQUERY_PHRASE || p->pLeft);
 
-          /* The isRequirePhrase variable is set to true if a phrase or
-          ** an expression contained in parenthesis is required. If a
-          ** binary operator (AND, OR, NOT or NEAR) is encounted when
-          ** isRequirePhrase is set, this is a syntax error.
-          */
+
+
+
+
+
           if( !isPhrase && isRequirePhrase ){
             sqlite3Fts3ExprFree(p);
             rc = SQLITE_ERROR;
@@ -92,7 +92,7 @@ __attribute__((used)) static int fts3ExprParse(
           }
 
           if( isPhrase && !isRequirePhrase ){
-            /* Insert an implicit AND operator. */
+
             Fts3Expr *pAnd;
             assert( pRet && pPrev );
             pAnd = fts3MallocZero(sizeof(Fts3Expr));
@@ -105,16 +105,6 @@ __attribute__((used)) static int fts3ExprParse(
             insertBinaryOperator(&pRet, pPrev, pAnd);
             pPrev = pAnd;
           }
-
-          /* This test catches attempts to make either operand of a NEAR
-           ** operator something other than a phrase. For example, either of
-           ** the following:
-           **
-           **    (bracketed expression) NEAR phrase
-           **    phrase NEAR (bracketed expression)
-           **
-           ** Return an error in either case.
-           */
           if( pPrev && (
             (eType==FTSQUERY_NEAR && !isPhrase && pPrev->eType!=FTSQUERY_PHRASE)
          || (eType!=FTSQUERY_PHRASE && isPhrase && pPrev->eType==FTSQUERY_NEAR)

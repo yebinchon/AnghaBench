@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VOID ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int VOID ;
 struct TYPE_3__ {scalar_t__ DeviceInstanceData; struct TYPE_3__* Next; } ;
-typedef  TYPE_1__* PDEVICE_LIST ;
-typedef  int /*<<< orphan*/  LPVOID ;
-typedef  int /*<<< orphan*/  LPSTR ;
+typedef TYPE_1__* PDEVICE_LIST ;
+typedef int LPVOID ;
+typedef int LPSTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPRINT (char*) ; 
- TYPE_1__* DeviceList ; 
- int /*<<< orphan*/  Heap ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int DPRINT (char*) ;
+ TYPE_1__* DeviceList ;
+ int Heap ;
+ int HeapFree (int ,int ,int ) ;
 
 VOID FreeDeviceList()
 {
     PDEVICE_LIST pDevice;
 
     DPRINT("FreeDeviceList()\n");
-    
+
     while (DeviceList)
     {
         pDevice = DeviceList;

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int width; int height; int /*<<< orphan*/  (* decode_func ) (TYPE_1__*,int,int,int) ;} ;
-typedef  TYPE_1__ HQXContext ;
 
-/* Variables and functions */
- int* shuffle_16 ; 
- int /*<<< orphan*/  stub1 (TYPE_1__*,int,int,int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int width; int height; int (* decode_func ) (TYPE_1__*,int,int,int) ;} ;
+typedef TYPE_1__ HQXContext ;
+
+
+ int* shuffle_16 ;
+ int stub1 (TYPE_1__*,int,int,int) ;
 
 __attribute__((used)) static int decode_slice(HQXContext *ctx, int slice_no)
 {
-    int mb_w = (ctx->width  + 15) >> 4;
+    int mb_w = (ctx->width + 15) >> 4;
     int mb_h = (ctx->height + 15) >> 4;
     int grp_w = (mb_w + 4) / 5;
     int grp_h = (mb_h + 4) / 5;
@@ -48,21 +48,21 @@ __attribute__((used)) static int decode_slice(HQXContext *ctx, int slice_no)
             else
                 blk_addr = tile_no + 16 * num_tiles * i +
                            num_tiles * shuffle_16[(i + slice_no) & 0xF];
-            loc_row  = grp_h * (blk_addr / (grp_h * mb_w));
-            loc_addr =          blk_addr % (grp_h * mb_w);
+            loc_row = grp_h * (blk_addr / (grp_h * mb_w));
+            loc_addr = blk_addr % (grp_h * mb_w);
             if (loc_row >= grp_v_edge) {
                 mb_x = grp_w * (loc_addr / (grp_h_rest * grp_w));
-                pos  =          loc_addr % (grp_h_rest * grp_w);
+                pos = loc_addr % (grp_h_rest * grp_w);
             } else {
                 mb_x = grp_w * (loc_addr / (grp_h * grp_w));
-                pos  =          loc_addr % (grp_h * grp_w);
+                pos = loc_addr % (grp_h * grp_w);
             }
             if (mb_x >= grp_h_edge) {
-                mb_x +=            pos % grp_v_rest;
-                mb_y  = loc_row + (pos / grp_v_rest);
+                mb_x += pos % grp_v_rest;
+                mb_y = loc_row + (pos / grp_v_rest);
             } else {
-                mb_x +=            pos % grp_w;
-                mb_y  = loc_row + (pos / grp_w);
+                mb_x += pos % grp_w;
+                mb_y = loc_row + (pos / grp_w);
             }
             ctx->decode_func(ctx, slice_no, mb_x * 16, mb_y * 16);
         }

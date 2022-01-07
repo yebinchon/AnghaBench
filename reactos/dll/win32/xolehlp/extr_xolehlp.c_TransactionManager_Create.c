@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_5__ ;
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_12__ {int /*<<< orphan*/ * lpVtbl; } ;
-struct TYPE_10__ {int /*<<< orphan*/ * lpVtbl; } ;
-struct TYPE_9__ {int /*<<< orphan*/ * lpVtbl; } ;
-struct TYPE_8__ {int /*<<< orphan*/ * lpVtbl; } ;
+
+
+typedef struct TYPE_12__ TYPE_5__ ;
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_12__ {int * lpVtbl; } ;
+struct TYPE_10__ {int * lpVtbl; } ;
+struct TYPE_9__ {int * lpVtbl; } ;
+struct TYPE_8__ {int * lpVtbl; } ;
 struct TYPE_11__ {int ref; TYPE_5__ ITransactionDispenser_iface; TYPE_3__ ITransactionImport_iface; TYPE_2__ ITransactionImportWhereabouts_iface; TYPE_1__ IResourceManagerFactory2_iface; } ;
-typedef  TYPE_4__ TransactionManager ;
-typedef  int /*<<< orphan*/  REFIID ;
-typedef  int /*<<< orphan*/  HRESULT ;
+typedef TYPE_4__ TransactionManager ;
+typedef int REFIID ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- TYPE_4__* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ITransactionDispenser_QueryInterface (TYPE_5__*,int /*<<< orphan*/ ,void**) ; 
- int /*<<< orphan*/  ITransactionDispenser_Release (TYPE_5__*) ; 
- int /*<<< orphan*/  ResourceManagerFactory2_Vtbl ; 
- int /*<<< orphan*/  TransactionDispenser_Vtbl ; 
- int /*<<< orphan*/  TransactionImportWhereabouts_Vtbl ; 
- int /*<<< orphan*/  TransactionImport_Vtbl ; 
+
+ int E_OUTOFMEMORY ;
+ int GetProcessHeap () ;
+ TYPE_4__* HeapAlloc (int ,int ,int) ;
+ int ITransactionDispenser_QueryInterface (TYPE_5__*,int ,void**) ;
+ int ITransactionDispenser_Release (TYPE_5__*) ;
+ int ResourceManagerFactory2_Vtbl ;
+ int TransactionDispenser_Vtbl ;
+ int TransactionImportWhereabouts_Vtbl ;
+ int TransactionImport_Vtbl ;
 
 __attribute__((used)) static HRESULT TransactionManager_Create(REFIID riid, void **ppv)
 {

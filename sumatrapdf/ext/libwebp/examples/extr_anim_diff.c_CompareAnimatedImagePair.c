@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  size_t uint32_t ;
-typedef  int /*<<< orphan*/  tmp ;
-typedef  int /*<<< orphan*/  format ;
-struct TYPE_6__ {int num_frames; int canvas_width; int canvas_height; scalar_t__ format; int loop_count; TYPE_1__* frames; int /*<<< orphan*/  bgcolor; } ;
-struct TYPE_5__ {int duration; int /*<<< orphan*/ * rgba; } ;
-typedef  TYPE_2__ AnimatedImage ;
 
-/* Variables and functions */
- scalar_t__ ANIM_GIF ; 
- scalar_t__ ANIM_WEBP ; 
- scalar_t__ CompareBackgroundColor (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- scalar_t__ CompareValues (int,int,char*) ; 
- int /*<<< orphan*/  GetDiffAndPSNR (int /*<<< orphan*/  const* const,int /*<<< orphan*/  const* const,int,int,int,int*,double*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,size_t,int,...) ; 
- scalar_t__ snprintf (char*,int,char const*,size_t) ; 
- int /*<<< orphan*/  stderr ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef size_t uint32_t ;
+typedef int tmp ;
+typedef int format ;
+struct TYPE_6__ {int num_frames; int canvas_width; int canvas_height; scalar_t__ format; int loop_count; TYPE_1__* frames; int bgcolor; } ;
+struct TYPE_5__ {int duration; int * rgba; } ;
+typedef TYPE_2__ AnimatedImage ;
+
+
+ scalar_t__ ANIM_GIF ;
+ scalar_t__ ANIM_WEBP ;
+ scalar_t__ CompareBackgroundColor (int ,int ,int) ;
+ scalar_t__ CompareValues (int,int,char*) ;
+ int GetDiffAndPSNR (int const* const,int const* const,int,int,int,int*,double*) ;
+ int fprintf (int ,char*,size_t,int,...) ;
+ scalar_t__ snprintf (char*,int,char const*,size_t) ;
+ int stderr ;
 
 __attribute__((used)) static int CompareAnimatedImagePair(const AnimatedImage* const img1,
                                     const AnimatedImage* const img2,
@@ -44,12 +44,12 @@ __attribute__((used)) static int CompareAnimatedImagePair(const AnimatedImage* c
                      "Canvas height mismatch") && ok;
   ok = CompareValues(img1->num_frames, img2->num_frames,
                      "Frame count mismatch") && ok;
-  if (!ok) return 0;  // These are fatal failures, can't proceed.
+  if (!ok) return 0;
 
-  if (is_multi_frame_image) {  // Checks relevant for multi-frame images only.
+  if (is_multi_frame_image) {
     int max_loop_count_workaround = 0;
-    // Transcodes to webp increase the gif loop count by 1 for compatibility.
-    // When the gif has the maximum value the webp value will be off by one.
+
+
     if ((img1->format == ANIM_GIF && img1->loop_count == 65536 &&
          img2->format == ANIM_WEBP && img2->loop_count == 65535) ||
         (img1->format == ANIM_WEBP && img1->loop_count == 65535 &&
@@ -64,12 +64,12 @@ __attribute__((used)) static int CompareAnimatedImagePair(const AnimatedImage* c
   }
 
   for (i = 0; i < img1->num_frames; ++i) {
-    // Pixel-by-pixel comparison.
+
     const uint8_t* const rgba1 = img1->frames[i].rgba;
     const uint8_t* const rgba2 = img2->frames[i].rgba;
     int max_diff;
     double psnr;
-    if (is_multi_frame_image) {  // Check relevant for multi-frame images only.
+    if (is_multi_frame_image) {
       const char format[] = "Frame #%d, duration mismatch";
       char tmp[sizeof(format) + 8];
       ok = ok && (snprintf(tmp, sizeof(tmp), format, i) >= 0);

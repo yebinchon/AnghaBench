@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct tws_softc {int /*<<< orphan*/  io_lock; int /*<<< orphan*/  data_tag; } ;
-struct tws_request {int flags; int /*<<< orphan*/  dma_map; int /*<<< orphan*/ * data; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BUS_DMASYNC_POSTREAD ; 
- int /*<<< orphan*/  BUS_DMASYNC_POSTWRITE ; 
- int TWS_DIR_IN ; 
- int TWS_DIR_OUT ; 
- int /*<<< orphan*/  bus_dmamap_sync (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bus_dmamap_unload (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mtx_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mtx_unlock (int /*<<< orphan*/ *) ; 
 
-void 
+
+
+struct tws_softc {int io_lock; int data_tag; } ;
+struct tws_request {int flags; int dma_map; int * data; } ;
+
+
+ int BUS_DMASYNC_POSTREAD ;
+ int BUS_DMASYNC_POSTWRITE ;
+ int TWS_DIR_IN ;
+ int TWS_DIR_OUT ;
+ int bus_dmamap_sync (int ,int ,int ) ;
+ int bus_dmamap_unload (int ,int ) ;
+ int mtx_lock (int *) ;
+ int mtx_unlock (int *) ;
+
+void
 tws_unmap_request(struct tws_softc *sc, struct tws_request *req)
 {
-    if (req->data != NULL) {
+    if (req->data != ((void*)0)) {
         if ( req->flags & TWS_DIR_IN )
-            bus_dmamap_sync(sc->data_tag, req->dma_map, 
+            bus_dmamap_sync(sc->data_tag, req->dma_map,
                                             BUS_DMASYNC_POSTREAD);
         if ( req->flags & TWS_DIR_OUT )
-            bus_dmamap_sync(sc->data_tag, req->dma_map, 
+            bus_dmamap_sync(sc->data_tag, req->dma_map,
                                             BUS_DMASYNC_POSTWRITE);
         mtx_lock(&sc->io_lock);
         bus_dmamap_unload(sc->data_tag, req->dma_map);

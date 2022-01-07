@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct conn_target {int dummy; } ;
 
-/* Variables and functions */
- struct conn_target* Targets ; 
- int cur_lease_target ; 
- struct conn_target* cur_lease_target_ct ; 
- int cur_lease_target_ip ; 
- int cur_lease_target_port ; 
- int /*<<< orphan*/  destroy_target (struct conn_target*) ; 
- int get_target_by_pid (int,int,struct conn_target*) ; 
+
+ struct conn_target* Targets ;
+ int cur_lease_target ;
+ struct conn_target* cur_lease_target_ct ;
+ int cur_lease_target_ip ;
+ int cur_lease_target_port ;
+ int destroy_target (struct conn_target*) ;
+ int get_target_by_pid (int,int,struct conn_target*) ;
 
 int get_lease_target_by_pid (int ip, int port, struct conn_target *ct) {
   if (ip == cur_lease_target_ip && port == cur_lease_target_port && ct == cur_lease_target_ct) {

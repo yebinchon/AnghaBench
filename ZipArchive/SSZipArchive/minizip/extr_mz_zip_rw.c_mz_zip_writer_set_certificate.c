@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_2__ {char const* cert_pwd; scalar_t__ cert_data_size; int /*<<< orphan*/ * cert_data; } ;
-typedef  TYPE_1__ mz_zip_writer ;
-typedef  scalar_t__ int32_t ;
 
-/* Variables and functions */
- scalar_t__ MZ_ALLOC (scalar_t__) ; 
- int /*<<< orphan*/  MZ_FREE (int /*<<< orphan*/ *) ; 
- scalar_t__ MZ_OK ; 
- int /*<<< orphan*/  MZ_OPEN_MODE_READ ; 
- scalar_t__ MZ_PARAM_ERROR ; 
- scalar_t__ MZ_READ_ERROR ; 
- scalar_t__ mz_os_get_file_size (char const*) ; 
- int /*<<< orphan*/  mz_stream_os_close (void*) ; 
- int /*<<< orphan*/  mz_stream_os_create (void**) ; 
- int /*<<< orphan*/  mz_stream_os_delete (void**) ; 
- scalar_t__ mz_stream_os_open (void*,char const*,int /*<<< orphan*/ ) ; 
- scalar_t__ mz_stream_os_read (void*,int /*<<< orphan*/ *,scalar_t__) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_2__ {char const* cert_pwd; scalar_t__ cert_data_size; int * cert_data; } ;
+typedef TYPE_1__ mz_zip_writer ;
+typedef scalar_t__ int32_t ;
+
+
+ scalar_t__ MZ_ALLOC (scalar_t__) ;
+ int MZ_FREE (int *) ;
+ scalar_t__ MZ_OK ;
+ int MZ_OPEN_MODE_READ ;
+ scalar_t__ MZ_PARAM_ERROR ;
+ scalar_t__ MZ_READ_ERROR ;
+ scalar_t__ mz_os_get_file_size (char const*) ;
+ int mz_stream_os_close (void*) ;
+ int mz_stream_os_create (void**) ;
+ int mz_stream_os_delete (void**) ;
+ scalar_t__ mz_stream_os_open (void*,char const*,int ) ;
+ scalar_t__ mz_stream_os_read (void*,int *,scalar_t__) ;
 
 int32_t mz_zip_writer_set_certificate(void *handle, const char *cert_path, const char *cert_pwd)
 {
     mz_zip_writer *writer = (mz_zip_writer *)handle;
-    void *cert_stream = NULL;
-    uint8_t *cert_data = NULL;
+    void *cert_stream = ((void*)0);
+    uint8_t *cert_data = ((void*)0);
     int32_t cert_data_size = 0;
     int32_t err = MZ_OK;
 
-    if (cert_path == NULL)
+    if (cert_path == ((void*)0))
         return MZ_PARAM_ERROR;
 
     cert_data_size = (int32_t)mz_os_get_file_size(cert_path);
@@ -46,15 +46,15 @@ int32_t mz_zip_writer_set_certificate(void *handle, const char *cert_path, const
     if (cert_data_size == 0)
         return MZ_PARAM_ERROR;
 
-    if (writer->cert_data != NULL)
+    if (writer->cert_data != ((void*)0))
     {
         MZ_FREE(writer->cert_data);
-        writer->cert_data = NULL;
+        writer->cert_data = ((void*)0);
     }
 
     cert_data = (uint8_t *)MZ_ALLOC(cert_data_size);
 
-    /* Read pkcs12 certificate from disk */
+
     mz_stream_os_create(&cert_stream);
     err = mz_stream_os_open(cert_stream, cert_path, MZ_OPEN_MODE_READ);
     if (err == MZ_OK)

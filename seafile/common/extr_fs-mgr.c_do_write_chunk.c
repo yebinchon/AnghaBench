@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_2__ {int /*<<< orphan*/ * block_mgr; } ;
-typedef  int /*<<< orphan*/  SeafBlockManager ;
-typedef  int /*<<< orphan*/  BlockHandle ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BLOCK_WRITE ; 
- int /*<<< orphan*/  rawdata_to_hex (int /*<<< orphan*/ *,char*,int) ; 
- TYPE_1__* seaf ; 
- scalar_t__ seaf_block_manager_block_exists (int /*<<< orphan*/ *,char const*,int,char*) ; 
- int /*<<< orphan*/  seaf_block_manager_block_handle_free (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ seaf_block_manager_close_block (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ seaf_block_manager_commit_block (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * seaf_block_manager_open_block (int /*<<< orphan*/ *,char const*,int,char*,int /*<<< orphan*/ ) ; 
- int seaf_block_manager_write_block (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*,int) ; 
- int /*<<< orphan*/  seaf_warning (char*,char*) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_2__ {int * block_mgr; } ;
+typedef int SeafBlockManager ;
+typedef int BlockHandle ;
+
+
+ int BLOCK_WRITE ;
+ int rawdata_to_hex (int *,char*,int) ;
+ TYPE_1__* seaf ;
+ scalar_t__ seaf_block_manager_block_exists (int *,char const*,int,char*) ;
+ int seaf_block_manager_block_handle_free (int *,int *) ;
+ scalar_t__ seaf_block_manager_close_block (int *,int *) ;
+ scalar_t__ seaf_block_manager_commit_block (int *,int *) ;
+ int * seaf_block_manager_open_block (int *,char const*,int,char*,int ) ;
+ int seaf_block_manager_write_block (int *,int *,char const*,int) ;
+ int seaf_warning (char*,char*) ;
 
 __attribute__((used)) static int
 do_write_chunk (const char *repo_id, int version,
@@ -39,7 +39,7 @@ do_write_chunk (const char *repo_id, int version,
 
     rawdata_to_hex (checksum, chksum_str, 20);
 
-    /* Don't write if the block already exists. */
+
     if (seaf_block_manager_block_exists (seaf->block_mgr,
                                          repo_id, version,
                                          chksum_str))

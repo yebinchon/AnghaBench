@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ WCHAR ;
-typedef  int REGSAM ;
-typedef  int /*<<< orphan*/  MSICOMPONENT ;
-typedef  scalar_t__ LONG ;
-typedef  int /*<<< orphan*/  HKEY ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int READ_CONTROL ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- scalar_t__ RegDeleteKeyExW (int /*<<< orphan*/ ,scalar_t__*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  debugstr_w (scalar_t__*) ; 
- int get_registry_view (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  msi_free (scalar_t__*) ; 
- int /*<<< orphan*/  open_key (int /*<<< orphan*/  const*,int /*<<< orphan*/ ,scalar_t__*,int /*<<< orphan*/ ,int) ; 
- scalar_t__* strdupW (scalar_t__ const*) ; 
- scalar_t__* strrchrW (scalar_t__*,char) ; 
+
+
+
+typedef scalar_t__ WCHAR ;
+typedef int REGSAM ;
+typedef int MSICOMPONENT ;
+typedef scalar_t__ LONG ;
+typedef int HKEY ;
+
+
+ int FALSE ;
+ int READ_CONTROL ;
+ int RegCloseKey (int ) ;
+ scalar_t__ RegDeleteKeyExW (int ,scalar_t__*,int,int ) ;
+ int TRACE (char*,int ,scalar_t__) ;
+ int debugstr_w (scalar_t__*) ;
+ int get_registry_view (int const*) ;
+ int msi_free (scalar_t__*) ;
+ int open_key (int const*,int ,scalar_t__*,int ,int) ;
+ scalar_t__* strdupW (scalar_t__ const*) ;
+ scalar_t__* strrchrW (scalar_t__*,char) ;
 
 __attribute__((used)) static void delete_key( const MSICOMPONENT *comp, HKEY root, const WCHAR *path )
 {
@@ -44,7 +44,7 @@ __attribute__((used)) static void delete_key( const MSICOMPONENT *comp, HKEY roo
         if ((p = strrchrW( subkey, '\\' )))
         {
             *p = 0;
-            if (!p[1]) continue; /* trailing backslash */
+            if (!p[1]) continue;
             hkey = open_key( comp, root, subkey, FALSE, access | READ_CONTROL );
             if (!hkey) break;
             res = RegDeleteKeyExW( hkey, p + 1, access, 0 );

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct amdgpu_bo {int /*<<< orphan*/  tbo; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ttm_bo_get (int /*<<< orphan*/ *) ; 
+
+
+
+struct amdgpu_bo {int tbo; } ;
+
+
+ int ttm_bo_get (int *) ;
 
 struct amdgpu_bo *amdgpu_bo_ref(struct amdgpu_bo *bo)
 {
-	if (bo == NULL)
-		return NULL;
+ if (bo == ((void*)0))
+  return ((void*)0);
 
-	ttm_bo_get(&bo->tbo);
-	return bo;
+ ttm_bo_get(&bo->tbo);
+ return bo;
 }

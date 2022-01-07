@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct acpi_device {int /*<<< orphan*/ * driver_gpios; } ;
 
-/* Variables and functions */
+
+
+
+struct acpi_device {int * driver_gpios; } ;
+
+
 
 void acpi_dev_remove_driver_gpios(struct acpi_device *adev)
 {
-	if (adev)
-		adev->driver_gpios = NULL;
+ if (adev)
+  adev->driver_gpios = ((void*)0);
 }

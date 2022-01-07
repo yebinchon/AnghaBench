@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  unsigned int sqlite3_uint64 ;
 
-/* Variables and functions */
- unsigned int MX_FILE_SZ ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ eVerbosity ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- unsigned char hexToInt (unsigned char) ; 
- scalar_t__ isOffset (unsigned char const*,int,unsigned int*,unsigned int*) ; 
- scalar_t__ isxdigit (unsigned char) ; 
- scalar_t__ memcmp (unsigned char const*,char*,int) ; 
- int /*<<< orphan*/  memset (unsigned char*,int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/  sqlite3_free (unsigned char*) ; 
- unsigned char* sqlite3_malloc64 (unsigned int) ; 
- unsigned char* sqlite3_realloc64 (unsigned char*,unsigned int) ; 
- int /*<<< orphan*/  stderr ; 
+
+
+
+typedef unsigned int sqlite3_uint64 ;
+
+
+ unsigned int MX_FILE_SZ ;
+ int assert (int) ;
+ scalar_t__ eVerbosity ;
+ int exit (int) ;
+ int fprintf (int ,char*,...) ;
+ unsigned char hexToInt (unsigned char) ;
+ scalar_t__ isOffset (unsigned char const*,int,unsigned int*,unsigned int*) ;
+ scalar_t__ isxdigit (unsigned char) ;
+ scalar_t__ memcmp (unsigned char const*,char*,int) ;
+ int memset (unsigned char*,int ,size_t) ;
+ int sqlite3_free (unsigned char*) ;
+ unsigned char* sqlite3_malloc64 (unsigned int) ;
+ unsigned char* sqlite3_realloc64 (unsigned char*,unsigned int) ;
+ int stderr ;
 
 __attribute__((used)) static int decodeDatabase(
-  const unsigned char *zIn,      /* Input text to be decoded */
-  int nIn,                       /* Bytes of input text */
-  unsigned char **paDecode,      /* OUT: decoded database file */
-  int *pnDecode                  /* OUT: Size of decoded database */
+  const unsigned char *zIn,
+  int nIn,
+  unsigned char **paDecode,
+  int *pnDecode
 ){
-  unsigned char *a;              /* Database under construction */
-  int mx = 0;                    /* Current size of the database */
-  sqlite3_uint64 nAlloc = 4096;  /* Space allocated in a[] */
-  unsigned int i;                /* Next byte of zIn[] to read */
-  unsigned int j;                /* Temporary integer */
-  unsigned int k;                /* half-byte cursor index for output */
-  unsigned int n;                /* Number of bytes of input */
+  unsigned char *a;
+  int mx = 0;
+  sqlite3_uint64 nAlloc = 4096;
+  unsigned int i;
+  unsigned int j;
+  unsigned int k;
+  unsigned int n;
   unsigned char b = 0;
   if( nIn<4 ) return -1;
   n = (unsigned int)nIn;

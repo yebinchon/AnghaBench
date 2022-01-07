@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct socket {struct sock* sk; } ;
-struct sock {scalar_t__ sk_state; int /*<<< orphan*/  sk_err; int /*<<< orphan*/  sk_receive_queue; } ;
+struct sock {scalar_t__ sk_state; int sk_err; int sk_receive_queue; } ;
 struct sk_buff {int dummy; } ;
-struct rfcomm_session {int /*<<< orphan*/  state; struct socket* sock; } ;
+struct rfcomm_session {int state; struct socket* sock; } ;
 
-/* Variables and functions */
- scalar_t__ BT_CLOSED ; 
- int /*<<< orphan*/  BT_DBG (char*,struct rfcomm_session*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kfree_skb (struct sk_buff*) ; 
- struct rfcomm_session* rfcomm_recv_frame (struct rfcomm_session*,struct sk_buff*) ; 
- struct rfcomm_session* rfcomm_session_close (struct rfcomm_session*,int /*<<< orphan*/ ) ; 
- struct sk_buff* skb_dequeue (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  skb_linearize (struct sk_buff*) ; 
- int /*<<< orphan*/  skb_orphan (struct sk_buff*) ; 
- int /*<<< orphan*/  skb_queue_len (int /*<<< orphan*/ *) ; 
+
+ scalar_t__ BT_CLOSED ;
+ int BT_DBG (char*,struct rfcomm_session*,int ,int ) ;
+ int kfree_skb (struct sk_buff*) ;
+ struct rfcomm_session* rfcomm_recv_frame (struct rfcomm_session*,struct sk_buff*) ;
+ struct rfcomm_session* rfcomm_session_close (struct rfcomm_session*,int ) ;
+ struct sk_buff* skb_dequeue (int *) ;
+ int skb_linearize (struct sk_buff*) ;
+ int skb_orphan (struct sk_buff*) ;
+ int skb_queue_len (int *) ;
 
 __attribute__((used)) static struct rfcomm_session *rfcomm_process_rx(struct rfcomm_session *s)
 {
-	struct socket *sock = s->sock;
-	struct sock *sk = sock->sk;
-	struct sk_buff *skb;
+ struct socket *sock = s->sock;
+ struct sock *sk = sock->sk;
+ struct sk_buff *skb;
 
-	BT_DBG("session %p state %ld qlen %d", s, s->state, skb_queue_len(&sk->sk_receive_queue));
+ BT_DBG("session %p state %ld qlen %d", s, s->state, skb_queue_len(&sk->sk_receive_queue));
 
-	/* Get data directly from socket receive queue without copying it. */
-	while ((skb = skb_dequeue(&sk->sk_receive_queue))) {
-		skb_orphan(skb);
-		if (!skb_linearize(skb)) {
-			s = rfcomm_recv_frame(s, skb);
-			if (!s)
-				break;
-		} else {
-			kfree_skb(skb);
-		}
-	}
 
-	if (s && (sk->sk_state == BT_CLOSED))
-		s = rfcomm_session_close(s, sk->sk_err);
+ while ((skb = skb_dequeue(&sk->sk_receive_queue))) {
+  skb_orphan(skb);
+  if (!skb_linearize(skb)) {
+   s = rfcomm_recv_frame(s, skb);
+   if (!s)
+    break;
+  } else {
+   kfree_skb(skb);
+  }
+ }
 
-	return s;
+ if (s && (sk->sk_state == BT_CLOSED))
+  s = rfcomm_session_close(s, sk->sk_err);
+
+ return s;
 }

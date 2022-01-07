@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  scalar_t__ t_Handle ;
-struct TYPE_5__ {int /*<<< orphan*/  h_Spinlock; scalar_t__ h_FmPcd; scalar_t__ h_Ad; scalar_t__ h_TmpAd; scalar_t__ maxNumOfKeys; } ;
-typedef  TYPE_1__ t_FmPcdCcNode ;
-struct TYPE_6__ {int /*<<< orphan*/  h_FmMuram; } ;
-typedef  TYPE_2__ t_FmPcd ;
-typedef  int /*<<< orphan*/  t_Error ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT_COND (TYPE_1__*) ; 
- int /*<<< orphan*/  E_NO_MEMORY ; 
- int /*<<< orphan*/  E_OK ; 
- scalar_t__ FM_MURAM_AllocMem (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FM_PCD_CC_AD_ENTRY_SIZE ; 
- int /*<<< orphan*/  FM_PCD_CC_AD_TABLE_ALIGN ; 
- int /*<<< orphan*/  FillAdOfTypeContLookup (scalar_t__,int /*<<< orphan*/ *,scalar_t__,TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  MAJOR ; 
- int /*<<< orphan*/  MemSet8 (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RETURN_ERROR (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  XX_LockIntrSpinlock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XX_UnlockIntrSpinlock (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+typedef scalar_t__ t_Handle ;
+struct TYPE_5__ {int h_Spinlock; scalar_t__ h_FmPcd; scalar_t__ h_Ad; scalar_t__ h_TmpAd; scalar_t__ maxNumOfKeys; } ;
+typedef TYPE_1__ t_FmPcdCcNode ;
+struct TYPE_6__ {int h_FmMuram; } ;
+typedef TYPE_2__ t_FmPcd ;
+typedef int t_Error ;
+
+
+ int ASSERT_COND (TYPE_1__*) ;
+ int E_NO_MEMORY ;
+ int E_OK ;
+ scalar_t__ FM_MURAM_AllocMem (int ,int ,int ) ;
+ int FM_PCD_CC_AD_ENTRY_SIZE ;
+ int FM_PCD_CC_AD_TABLE_ALIGN ;
+ int FillAdOfTypeContLookup (scalar_t__,int *,scalar_t__,TYPE_1__*,int *,int *) ;
+ int MAJOR ;
+ int MemSet8 (scalar_t__,int ,int ) ;
+ int RETURN_ERROR (int ,int ,char*) ;
+ int XX_LockIntrSpinlock (int ) ;
+ int XX_UnlockIntrSpinlock (int ,int ) ;
 
 __attribute__((used)) static t_Error AllocAndFillAdForContLookupManip(t_Handle h_CcNode)
 {
@@ -60,8 +60,8 @@ __attribute__((used)) static t_Error AllocAndFillAdForContLookupManip(t_Handle h
 
         MemSet8(p_CcNode->h_Ad, 0, FM_PCD_CC_AD_ENTRY_SIZE);
 
-        FillAdOfTypeContLookup(p_CcNode->h_Ad, NULL, p_CcNode->h_FmPcd,
-                               p_CcNode, NULL, NULL);
+        FillAdOfTypeContLookup(p_CcNode->h_Ad, ((void*)0), p_CcNode->h_FmPcd,
+                               p_CcNode, ((void*)0), ((void*)0));
     }
     else
         XX_UnlockIntrSpinlock(p_CcNode->h_Spinlock, intFlags);

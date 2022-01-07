@@ -1,29 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  binlog_disabled ; 
- scalar_t__ binlogname ; 
- int child_pid ; 
- int /*<<< orphan*/  close (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  flush_binlog_ts () ; 
- scalar_t__ force_write_index ; 
- int fork () ; 
- int /*<<< orphan*/  kprintf (char*) ; 
- int /*<<< orphan*/  sfd ; 
- int /*<<< orphan*/  vkprintf (int,char*,int) ; 
- int write_index (int) ; 
+ int binlog_disabled ;
+ scalar_t__ binlogname ;
+ int child_pid ;
+ int close (int ) ;
+ int exit (int) ;
+ int flush_binlog_ts () ;
+ scalar_t__ force_write_index ;
+ int fork () ;
+ int kprintf (char*) ;
+ int sfd ;
+ int vkprintf (int,char*,int) ;
+ int write_index (int) ;
 
 void fork_write_index (void) {
   if (child_pid) {
@@ -32,7 +24,7 @@ void fork_write_index (void) {
   }
 
   flush_binlog_ts ();
-  
+
   int res = fork ();
 
   if (res < 0) {

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  int int16_t ;
-struct TYPE_3__ {size_t numAxes; int /*<<< orphan*/ * axis; } ;
-typedef  TYPE_1__ EmscriptenGamepadEvent ;
-typedef  scalar_t__ EMSCRIPTEN_RESULT ;
 
-/* Variables and functions */
- size_t AXIS_NEG_GET (int) ; 
- size_t AXIS_POS_GET (int) ; 
- int CLAMPDOUBLE (int /*<<< orphan*/ ) ; 
- scalar_t__ EMSCRIPTEN_RESULT_SUCCESS ; 
- scalar_t__ emscripten_get_gamepad_status (unsigned int,TYPE_1__*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+typedef int int16_t ;
+struct TYPE_3__ {size_t numAxes; int * axis; } ;
+typedef TYPE_1__ EmscriptenGamepadEvent ;
+typedef scalar_t__ EMSCRIPTEN_RESULT ;
+
+
+ size_t AXIS_NEG_GET (int) ;
+ size_t AXIS_POS_GET (int) ;
+ int CLAMPDOUBLE (int ) ;
+ scalar_t__ EMSCRIPTEN_RESULT_SUCCESS ;
+ scalar_t__ emscripten_get_gamepad_status (unsigned int,TYPE_1__*) ;
 
 __attribute__((used)) static int16_t rwebpad_joypad_axis(unsigned port_num, uint32_t joyaxis)
 {

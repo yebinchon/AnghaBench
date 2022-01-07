@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct wined3d_sm4_data {int /*<<< orphan*/ * src_param; } ;
-struct wined3d_shader_instruction {int /*<<< orphan*/  flags; } ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  WINED3D_DATA_UINT ; 
- int /*<<< orphan*/  WINED3D_SHADER_CONDITIONAL_OP_NZ ; 
- int /*<<< orphan*/  WINED3D_SHADER_CONDITIONAL_OP_Z ; 
- int WINED3D_SM4_CONDITIONAL_NZ ; 
- int /*<<< orphan*/  shader_sm4_read_src_param (struct wined3d_sm4_data*,int const**,int const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+struct wined3d_sm4_data {int * src_param; } ;
+struct wined3d_shader_instruction {int flags; } ;
+typedef int DWORD ;
+
+
+ int WINED3D_DATA_UINT ;
+ int WINED3D_SHADER_CONDITIONAL_OP_NZ ;
+ int WINED3D_SHADER_CONDITIONAL_OP_Z ;
+ int WINED3D_SM4_CONDITIONAL_NZ ;
+ int shader_sm4_read_src_param (struct wined3d_sm4_data*,int const**,int const*,int ,int *) ;
 
 __attribute__((used)) static void shader_sm4_read_conditional_op(struct wined3d_shader_instruction *ins,
         DWORD opcode, DWORD opcode_token, const DWORD *tokens, unsigned int token_count,

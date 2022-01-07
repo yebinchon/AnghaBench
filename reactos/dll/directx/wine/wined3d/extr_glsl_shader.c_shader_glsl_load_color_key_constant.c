@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  src_blt_color_key; } ;
-struct TYPE_3__ {int /*<<< orphan*/  format; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int src_blt_color_key; } ;
+struct TYPE_3__ {int format; } ;
 struct wined3d_texture {TYPE_2__ async; TYPE_1__ resource; } ;
 struct wined3d_state {struct wined3d_texture** textures; } ;
 struct wined3d_gl_info {int dummy; } ;
-struct wined3d_color {int /*<<< orphan*/  r; } ;
-struct glsl_ps_program {int /*<<< orphan*/  color_key_location; } ;
+struct wined3d_color {int r; } ;
+struct glsl_ps_program {int color_key_location; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GL_EXTCALL (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glUniform4fv (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  wined3d_format_get_float_color_key (int /*<<< orphan*/ ,int /*<<< orphan*/ *,struct wined3d_color*) ; 
+
+ int GL_EXTCALL (int ) ;
+ int glUniform4fv (int ,int,int *) ;
+ int wined3d_format_get_float_color_key (int ,int *,struct wined3d_color*) ;
 
 __attribute__((used)) static void shader_glsl_load_color_key_constant(const struct glsl_ps_program *ps,
         const struct wined3d_gl_info *gl_info, const struct wined3d_state *state)

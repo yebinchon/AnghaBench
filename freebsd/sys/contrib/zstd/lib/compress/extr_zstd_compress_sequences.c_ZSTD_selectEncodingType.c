@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  symbolEncodingType_e ;
-typedef  int ZSTD_strategy ;
-typedef  int ZSTD_defaultPolicy_e ;
-typedef  size_t U32 ;
-typedef  scalar_t__ FSE_repeat ;
-typedef  int /*<<< orphan*/  FSE_CTable ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEBUGLOG (int,char*,...) ; 
- size_t const ERROR (int /*<<< orphan*/ ) ; 
- scalar_t__ FSE_repeat_check ; 
- scalar_t__ FSE_repeat_none ; 
- scalar_t__ FSE_repeat_valid ; 
- int /*<<< orphan*/  GENERIC ; 
- size_t ZSTD_NCountCost (unsigned int const*,unsigned int const,size_t,unsigned int const) ; 
- int /*<<< orphan*/  ZSTD_STATIC_ASSERT (int) ; 
- size_t const ZSTD_crossEntropyCost (short const*,size_t,unsigned int const*,unsigned int const) ; 
- scalar_t__ ZSTD_defaultAllowed ; 
- scalar_t__ ZSTD_defaultDisallowed ; 
- size_t const ZSTD_entropyCost (unsigned int const*,unsigned int const,size_t) ; 
- size_t const ZSTD_fseBitCost (int /*<<< orphan*/  const*,unsigned int const*,unsigned int const) ; 
- scalar_t__ ZSTD_isError (size_t const) ; 
- int const ZSTD_lazy ; 
- int /*<<< orphan*/  assert (int const) ; 
- int /*<<< orphan*/  maxCode ; 
- int /*<<< orphan*/  set_basic ; 
- int /*<<< orphan*/  set_compressed ; 
- int /*<<< orphan*/  set_repeat ; 
- int /*<<< orphan*/  set_rle ; 
+
+
+
+typedef int symbolEncodingType_e ;
+typedef int ZSTD_strategy ;
+typedef int ZSTD_defaultPolicy_e ;
+typedef size_t U32 ;
+typedef scalar_t__ FSE_repeat ;
+typedef int FSE_CTable ;
+
+
+ int DEBUGLOG (int,char*,...) ;
+ size_t const ERROR (int ) ;
+ scalar_t__ FSE_repeat_check ;
+ scalar_t__ FSE_repeat_none ;
+ scalar_t__ FSE_repeat_valid ;
+ int GENERIC ;
+ size_t ZSTD_NCountCost (unsigned int const*,unsigned int const,size_t,unsigned int const) ;
+ int ZSTD_STATIC_ASSERT (int) ;
+ size_t const ZSTD_crossEntropyCost (short const*,size_t,unsigned int const*,unsigned int const) ;
+ scalar_t__ ZSTD_defaultAllowed ;
+ scalar_t__ ZSTD_defaultDisallowed ;
+ size_t const ZSTD_entropyCost (unsigned int const*,unsigned int const,size_t) ;
+ size_t const ZSTD_fseBitCost (int const*,unsigned int const*,unsigned int const) ;
+ scalar_t__ ZSTD_isError (size_t const) ;
+ int const ZSTD_lazy ;
+ int assert (int const) ;
+ int maxCode ;
+ int set_basic ;
+ int set_compressed ;
+ int set_repeat ;
+ int set_rle ;
 
 symbolEncodingType_e
 ZSTD_selectEncodingType(
@@ -53,10 +53,10 @@ ZSTD_selectEncodingType(
     if (mostFrequent == nbSeq) {
         *repeatMode = FSE_repeat_none;
         if (isDefaultAllowed && nbSeq <= 2) {
-            /* Prefer set_basic over set_rle when there are 2 or less symbols,
-             * since RLE uses 1 byte, but set_basic uses 5-6 bits per symbol.
-             * If basic encoding isn't possible, always choose RLE.
-             */
+
+
+
+
             DEBUGLOG(5, "Selected set_basic");
             return set_basic;
         }
@@ -68,8 +68,8 @@ ZSTD_selectEncodingType(
             size_t const staticFse_nbSeq_max = 1000;
             size_t const mult = 10 - strategy;
             size_t const baseLog = 3;
-            size_t const dynamicFse_nbSeq_min = (((size_t)1 << defaultNormLog) * mult) >> baseLog;  /* 28-36 for offset, 56-72 for lengths */
-            assert(defaultNormLog >= 5 && defaultNormLog <= 6);  /* xx_DEFAULTNORMLOG */
+            size_t const dynamicFse_nbSeq_min = (((size_t)1 << defaultNormLog) * mult) >> baseLog;
+            assert(defaultNormLog >= 5 && defaultNormLog <= 6);
             assert(mult <= 9 && mult >= 7);
             if ( (*repeatMode == FSE_repeat_valid)
               && (nbSeq < staticFse_nbSeq_max) ) {
@@ -79,12 +79,12 @@ ZSTD_selectEncodingType(
             if ( (nbSeq < dynamicFse_nbSeq_min)
               || (mostFrequent < (nbSeq >> (defaultNormLog-1))) ) {
                 DEBUGLOG(5, "Selected set_basic");
-                /* The format allows default tables to be repeated, but it isn't useful.
-                 * When using simple heuristics to select encoding type, we don't want
-                 * to confuse these tables with dictionaries. When running more careful
-                 * analysis, we don't need to waste time checking both repeating tables
-                 * and default tables.
-                 */
+
+
+
+
+
+
                 *repeatMode = FSE_repeat_none;
                 return set_basic;
             }

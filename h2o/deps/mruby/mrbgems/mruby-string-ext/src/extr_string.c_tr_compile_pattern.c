@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_2__ {int start_pos; int* ch; } ;
 struct tr_pattern {scalar_t__ type; int n; struct tr_pattern* next; TYPE_1__ val; scalar_t__ flag_reverse; } ;
-typedef  int /*<<< orphan*/  mrb_value ;
-typedef  scalar_t__ mrb_int ;
+typedef int mrb_value ;
+typedef scalar_t__ mrb_int ;
 
-/* Variables and functions */
- char* RSTRING_PTR (int /*<<< orphan*/ ) ; 
- scalar_t__ TR_IN_ORDER ; 
- scalar_t__ TR_RANGE ; 
- scalar_t__ TR_UNINITIALIZED ; 
- int /*<<< orphan*/  mrb_assert (int) ; 
- int /*<<< orphan*/  tr_bitmap_set (int*,char const) ; 
+
+ char* RSTRING_PTR (int ) ;
+ scalar_t__ TR_IN_ORDER ;
+ scalar_t__ TR_RANGE ;
+ scalar_t__ TR_UNINITIALIZED ;
+ int mrb_assert (int) ;
+ int tr_bitmap_set (int*,char const) ;
 
 __attribute__((used)) static void
 tr_compile_pattern(const struct tr_pattern *pat, mrb_value pstr, uint8_t bitmap[32])
@@ -35,7 +35,7 @@ tr_compile_pattern(const struct tr_pattern *pat, mrb_value pstr, uint8_t bitmap[
   for (i=0; i<32; i++) {
     bitmap[i] = 0;
   }
-  while (pat != NULL) {
+  while (pat != ((void*)0)) {
     if (pat->type == TR_IN_ORDER) {
       for (i = 0; i < pat->n; i++) {
         tr_bitmap_set(bitmap, pattern[pat->val.start_pos + i]);

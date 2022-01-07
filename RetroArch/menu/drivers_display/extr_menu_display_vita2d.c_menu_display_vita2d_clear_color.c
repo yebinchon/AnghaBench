@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  video_frame_info_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int video_frame_info_t ;
 struct TYPE_3__ {float r; float g; float b; float a; } ;
-typedef  TYPE_1__ menu_display_ctx_clearcolor_t ;
+typedef TYPE_1__ menu_display_ctx_clearcolor_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PSP_FB_HEIGHT ; 
- int /*<<< orphan*/  PSP_FB_WIDTH ; 
- int /*<<< orphan*/  RGBA8 (int,int,int,int) ; 
- int /*<<< orphan*/  vita2d_draw_rectangle (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vita2d_set_clear_color (int /*<<< orphan*/ ) ; 
+
+ int PSP_FB_HEIGHT ;
+ int PSP_FB_WIDTH ;
+ int RGBA8 (int,int,int,int) ;
+ int vita2d_draw_rectangle (int ,int ,int ,int ,int ) ;
+ int vita2d_set_clear_color (int ) ;
 
 __attribute__((used)) static void menu_display_vita2d_clear_color(
       menu_display_ctx_clearcolor_t *clearcolor,

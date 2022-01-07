@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wchar_t ;
-typedef  int /*<<< orphan*/  va_list ;
-typedef  int /*<<< orphan*/  locale_t ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FIX_LOCALE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FLOCKFILE_CANCELSAFE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FUNLOCKFILE_CANCELSAFE () ; 
- int /*<<< orphan*/  ORIENT (int /*<<< orphan*/ *,int) ; 
- int __vfwscanf (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int wchar_t ;
+typedef int va_list ;
+typedef int locale_t ;
+typedef int FILE ;
+
+
+ int FIX_LOCALE (int ) ;
+ int FLOCKFILE_CANCELSAFE (int *) ;
+ int FUNLOCKFILE_CANCELSAFE () ;
+ int ORIENT (int *,int) ;
+ int __vfwscanf (int *,int ,int const*,int ) ;
 
 int
 vfwscanf_l(FILE * __restrict fp, locale_t locale,
-		const wchar_t * __restrict fmt, va_list ap)
+  const wchar_t * __restrict fmt, va_list ap)
 {
-	int ret;
-	FIX_LOCALE(locale);
+ int ret;
+ FIX_LOCALE(locale);
 
-	FLOCKFILE_CANCELSAFE(fp);
-	ORIENT(fp, 1);
-	ret = __vfwscanf(fp, locale, fmt, ap);
-	FUNLOCKFILE_CANCELSAFE();
-	return (ret);
+ FLOCKFILE_CANCELSAFE(fp);
+ ORIENT(fp, 1);
+ ret = __vfwscanf(fp, locale, fmt, ap);
+ FUNLOCKFILE_CANCELSAFE();
+ return (ret);
 }

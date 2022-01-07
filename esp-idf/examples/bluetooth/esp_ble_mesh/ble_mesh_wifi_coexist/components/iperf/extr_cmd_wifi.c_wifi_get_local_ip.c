@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ wifi_mode_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int /*<<< orphan*/  esp_netif_t ;
-struct TYPE_4__ {int /*<<< orphan*/  addr; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef scalar_t__ wifi_mode_t ;
+typedef int uint32_t ;
+typedef int esp_netif_t ;
+struct TYPE_4__ {int addr; } ;
 struct TYPE_5__ {TYPE_1__ ip; } ;
-typedef  TYPE_2__ esp_netif_ip_info_t ;
+typedef TYPE_2__ esp_netif_ip_info_t ;
 
-/* Variables and functions */
- int CONNECTED_BIT ; 
- int /*<<< orphan*/  ESP_LOGE (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  TAG ; 
- scalar_t__ WIFI_MODE_STA ; 
- int /*<<< orphan*/ * ap_netif ; 
- int /*<<< orphan*/  esp_netif_get_ip_info (int /*<<< orphan*/ *,TYPE_2__*) ; 
- int /*<<< orphan*/  esp_wifi_get_mode (scalar_t__*) ; 
- int /*<<< orphan*/ * sta_netif ; 
- int /*<<< orphan*/  wifi_event_group ; 
- int xEventGroupWaitBits (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
+
+ int CONNECTED_BIT ;
+ int ESP_LOGE (int ,char*) ;
+ int TAG ;
+ scalar_t__ WIFI_MODE_STA ;
+ int * ap_netif ;
+ int esp_netif_get_ip_info (int *,TYPE_2__*) ;
+ int esp_wifi_get_mode (scalar_t__*) ;
+ int * sta_netif ;
+ int wifi_event_group ;
+ int xEventGroupWaitBits (int ,int,int ,int,int ) ;
 
 __attribute__((used)) static uint32_t wifi_get_local_ip(void)
 {

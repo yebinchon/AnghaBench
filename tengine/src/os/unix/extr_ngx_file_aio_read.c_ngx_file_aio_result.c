@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int ssize_t ;
-struct TYPE_7__ {int /*<<< orphan*/  fd; int /*<<< orphan*/  log; int /*<<< orphan*/  name; } ;
-typedef  TYPE_1__ ngx_file_t ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int ssize_t ;
+struct TYPE_7__ {int fd; int log; int name; } ;
+typedef TYPE_1__ ngx_file_t ;
 struct TYPE_8__ {int ready; scalar_t__ active; } ;
-typedef  TYPE_2__ ngx_event_t ;
-struct TYPE_9__ {int err; int nbytes; int /*<<< orphan*/  aiocb; } ;
-typedef  TYPE_3__ ngx_event_aio_t ;
-typedef  int ngx_err_t ;
+typedef TYPE_2__ ngx_event_t ;
+struct TYPE_9__ {int err; int nbytes; int aiocb; } ;
+typedef TYPE_3__ ngx_event_aio_t ;
+typedef int ngx_err_t ;
 
-/* Variables and functions */
- int NGX_AGAIN ; 
- int NGX_EINPROGRESS ; 
- int NGX_ERROR ; 
- int /*<<< orphan*/  NGX_LOG_ALERT ; 
- int /*<<< orphan*/  NGX_LOG_CRIT ; 
- int /*<<< orphan*/  NGX_LOG_DEBUG_CORE ; 
- int aio_error (int /*<<< orphan*/ *) ; 
- int aio_return (int /*<<< orphan*/ *) ; 
- int ngx_errno ; 
- int /*<<< orphan*/  ngx_log_debug2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ngx_log_error (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,char*,int /*<<< orphan*/ *) ; 
+
+ int NGX_AGAIN ;
+ int NGX_EINPROGRESS ;
+ int NGX_ERROR ;
+ int NGX_LOG_ALERT ;
+ int NGX_LOG_CRIT ;
+ int NGX_LOG_DEBUG_CORE ;
+ int aio_error (int *) ;
+ int aio_return (int *) ;
+ int ngx_errno ;
+ int ngx_log_debug2 (int ,int ,int ,char*,int ,int) ;
+ int ngx_log_error (int ,int ,int,char*,int *) ;
 
 __attribute__((used)) static ssize_t
 ngx_file_aio_result(ngx_file_t *file, ngx_event_aio_t *aio, ngx_event_t *ev)
 {
-    int        n;
-    ngx_err_t  err;
+    int n;
+    ngx_err_t err;
 
     n = aio_error(&aio->aiocb);
 

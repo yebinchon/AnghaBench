@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  strA ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  ULONG ;
-typedef  scalar_t__ REFGUID ;
-typedef  int /*<<< orphan*/  ITfCompartmentMgr ;
-typedef  int /*<<< orphan*/  IEnumGUID ;
-typedef  int /*<<< orphan*/  GUID ;
-typedef  int /*<<< orphan*/  CHAR ;
-typedef  int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAY_SIZE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CP_ACP ; 
- int FALSE ; 
- scalar_t__ IEnumGUID_Next (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IEnumGUID_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ITfCompartmentMgr_EnumCompartments (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- scalar_t__ IsEqualGUID (scalar_t__,int /*<<< orphan*/ *) ; 
- scalar_t__ SUCCEEDED (int /*<<< orphan*/ ) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  StringFromGUID2 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int TRUE ; 
- int /*<<< orphan*/  WideCharToMultiByte (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ok (int,char*) ; 
- int /*<<< orphan*/  trace (char*,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int strA ;
+typedef int WCHAR ;
+typedef int ULONG ;
+typedef scalar_t__ REFGUID ;
+typedef int ITfCompartmentMgr ;
+typedef int IEnumGUID ;
+typedef int GUID ;
+typedef int CHAR ;
+typedef int BOOL ;
+
+
+ int ARRAY_SIZE (int *) ;
+ int CP_ACP ;
+ int FALSE ;
+ scalar_t__ IEnumGUID_Next (int *,int,int *,int *) ;
+ int IEnumGUID_Release (int *) ;
+ int ITfCompartmentMgr_EnumCompartments (int *,int **) ;
+ scalar_t__ IsEqualGUID (scalar_t__,int *) ;
+ scalar_t__ SUCCEEDED (int ) ;
+ scalar_t__ S_OK ;
+ int StringFromGUID2 (int *,int *,int ) ;
+ int TRUE ;
+ int WideCharToMultiByte (int ,int ,int *,int,int *,int,int ,int ) ;
+ int ok (int,char*) ;
+ int trace (char*,int *) ;
 
 __attribute__((used)) static void enum_compartments(ITfCompartmentMgr *cmpmgr, REFGUID present, REFGUID absent)
 {

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  spa_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  snprintf (char*,size_t,char*,char*) ; 
- char* spa_state_to_name (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int spa_t ;
+
+
+ int snprintf (char*,size_t,char*,char*) ;
+ char* spa_state_to_name (int *) ;
 
 __attribute__((used)) static int
 spa_state_data(char *buf, size_t size, void *data)
 {
-	spa_t *spa = (spa_t *)data;
-	(void) snprintf(buf, size, "%s\n", spa_state_to_name(spa));
-	return (0);
+ spa_t *spa = (spa_t *)data;
+ (void) snprintf(buf, size, "%s\n", spa_state_to_name(spa));
+ return (0);
 }

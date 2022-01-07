@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct bufferevent_async {int ok; } ;
-struct bufferevent {int /*<<< orphan*/  enabled; } ;
+struct bufferevent {int enabled; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  be_async_enable (struct bufferevent*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bufferevent_init_generic_timeout_cbs_ (struct bufferevent*) ; 
- struct bufferevent_async* upcast (struct bufferevent*) ; 
+
+ int be_async_enable (struct bufferevent*,int ) ;
+ int bufferevent_init_generic_timeout_cbs_ (struct bufferevent*) ;
+ struct bufferevent_async* upcast (struct bufferevent*) ;
 
 void
 bufferevent_async_set_connected_(struct bufferevent *bev)
 {
-	struct bufferevent_async *bev_async = upcast(bev);
-	bev_async->ok = 1;
-	bufferevent_init_generic_timeout_cbs_(bev);
-	/* Now's a good time to consider reading/writing */
-	be_async_enable(bev, bev->enabled);
+ struct bufferevent_async *bev_async = upcast(bev);
+ bev_async->ok = 1;
+ bufferevent_init_generic_timeout_cbs_(bev);
+
+ be_async_enable(bev, bev->enabled);
 }

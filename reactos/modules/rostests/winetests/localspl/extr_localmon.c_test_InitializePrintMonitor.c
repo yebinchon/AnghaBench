@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int dwMonitorSize; } ;
-typedef  int /*<<< orphan*/  MONITOR ;
-typedef  TYPE_1__* LPMONITOREX ;
+typedef int MONITOR ;
+typedef TYPE_1__* LPMONITOREX ;
 
-/* Variables and functions */
- scalar_t__ ERROR_INVALID_PARAMETER ; 
- scalar_t__ GetLastError () ; 
- int /*<<< orphan*/ * Monitors_LocalPortW ; 
- int /*<<< orphan*/  SetLastError (int) ; 
- int /*<<< orphan*/ * emptyW ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- TYPE_1__* pInitializePrintMonitor (int /*<<< orphan*/ *) ; 
- TYPE_1__* pm ; 
+
+ scalar_t__ ERROR_INVALID_PARAMETER ;
+ scalar_t__ GetLastError () ;
+ int * Monitors_LocalPortW ;
+ int SetLastError (int) ;
+ int * emptyW ;
+ int ok (int,char*,...) ;
+ TYPE_1__* pInitializePrintMonitor (int *) ;
+ TYPE_1__* pm ;
 
 __attribute__((used)) static void test_InitializePrintMonitor(void)
 {
@@ -32,8 +32,8 @@ __attribute__((used)) static void test_InitializePrintMonitor(void)
     if (!pInitializePrintMonitor) return;
 
     SetLastError(0xdeadbeef);
-    res = pInitializePrintMonitor(NULL);
-    /* The Parameter was unchecked before w2k */
+    res = pInitializePrintMonitor(((void*)0));
+
     ok( res || (GetLastError() == ERROR_INVALID_PARAMETER),
         "returned %p with %u\n (expected '!= NULL' or: NULL with "
         "ERROR_INVALID_PARAMETER)\n", res, GetLastError());
@@ -44,7 +44,7 @@ __attribute__((used)) static void test_InitializePrintMonitor(void)
         "returned %p with %u\n (expected '!= NULL' or: NULL with "
         "ERROR_INVALID_PARAMETER)\n", res, GetLastError());
 
-    /* Every call with a non-empty string returns the same Pointer */
+
     SetLastError(0xdeadbeef);
     res = pInitializePrintMonitor(Monitors_LocalPortW);
     ok( res == pm,

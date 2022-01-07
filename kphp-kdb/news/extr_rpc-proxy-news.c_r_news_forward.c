@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int TL_RNEWS_GET_GROUPED_UPDATES ; 
- int TL_RNEWS_GET_RAW_UPDATES ; 
- int TL_RNEWS_SET_RATE ; 
- int default_firstint_forward () ; 
- int /*<<< orphan*/  default_query_diagonal_forward () ; 
- int /*<<< orphan*/  merge_forward (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  rnews_gather_methods ; 
- int /*<<< orphan*/  rnews_raw_gather_methods ; 
- int tl_fetch_lookup_int () ; 
+ int TL_RNEWS_GET_GROUPED_UPDATES ;
+ int TL_RNEWS_GET_RAW_UPDATES ;
+ int TL_RNEWS_SET_RATE ;
+ int default_firstint_forward () ;
+ int default_query_diagonal_forward () ;
+ int merge_forward (int *) ;
+ int rnews_gather_methods ;
+ int rnews_raw_gather_methods ;
+ int tl_fetch_lookup_int () ;
 
 int r_news_forward (void) {
   int op = tl_fetch_lookup_int ();

@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_4__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int const uint64_t ;
-struct TYPE_5__ {int width; int height; int const a_stride; TYPE_4__* stats; int /*<<< orphan*/ * a; } ;
-typedef  TYPE_1__ WebPPicture ;
+
+
+typedef struct TYPE_7__ TYPE_4__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int const uint64_t ;
+struct TYPE_5__ {int width; int height; int const a_stride; TYPE_4__* stats; int * a; } ;
+typedef TYPE_1__ WebPPicture ;
 struct TYPE_6__ {int* sse_; TYPE_1__* pic_; } ;
-typedef  TYPE_2__ VP8Encoder ;
+typedef TYPE_2__ VP8Encoder ;
 struct TYPE_7__ {int coded_size; } ;
 
-/* Variables and functions */
- int ALPHA_LOSSLESS_COMPRESSION ; 
- int ALPHA_NO_COMPRESSION ; 
- int ApplyFiltersAndEncode (int /*<<< orphan*/ *,int const,int const,size_t const,int,int,int const,int,int /*<<< orphan*/ ** const,size_t* const,TYPE_4__*) ; 
- int QuantizeLevels (int /*<<< orphan*/ *,int const,int const,int const,int const*) ; 
- int /*<<< orphan*/  VP8FiltersInit () ; 
- int WEBP_FILTER_FAST ; 
- int WEBP_FILTER_NONE ; 
- int /*<<< orphan*/  WebPCopyPlane (int /*<<< orphan*/ *,int const,int /*<<< orphan*/ *,int const,int const,int const) ; 
- int /*<<< orphan*/  WebPSafeFree (int /*<<< orphan*/ *) ; 
- scalar_t__ WebPSafeMalloc (unsigned long long,size_t const) ; 
- int /*<<< orphan*/  assert (int) ; 
+
+ int ALPHA_LOSSLESS_COMPRESSION ;
+ int ALPHA_NO_COMPRESSION ;
+ int ApplyFiltersAndEncode (int *,int const,int const,size_t const,int,int,int const,int,int ** const,size_t* const,TYPE_4__*) ;
+ int QuantizeLevels (int *,int const,int const,int const,int const*) ;
+ int VP8FiltersInit () ;
+ int WEBP_FILTER_FAST ;
+ int WEBP_FILTER_NONE ;
+ int WebPCopyPlane (int *,int const,int *,int const,int const,int const) ;
+ int WebPSafeFree (int *) ;
+ scalar_t__ WebPSafeMalloc (unsigned long long,size_t const) ;
+ int assert (int) ;
 
 __attribute__((used)) static int EncodeAlpha(VP8Encoder* const enc,
                        int quality, int method, int filter,
@@ -42,16 +42,16 @@ __attribute__((used)) static int EncodeAlpha(VP8Encoder* const enc,
   const int width = pic->width;
   const int height = pic->height;
 
-  uint8_t* quant_alpha = NULL;
+  uint8_t* quant_alpha = ((void*)0);
   const size_t data_size = width * height;
   uint64_t sse = 0;
   int ok = 1;
   const int reduce_levels = (quality < 100);
 
-  // quick sanity checks
-  assert((uint64_t)data_size == (uint64_t)width * height);  // as per spec
-  assert(enc != NULL && pic != NULL && pic->a != NULL);
-  assert(output != NULL && output_size != NULL);
+
+  assert((uint64_t)data_size == (uint64_t)width * height);
+  assert(enc != ((void*)0) && pic != ((void*)0) && pic->a != ((void*)0));
+  assert(output != ((void*)0) && output_size != ((void*)0));
   assert(width > 0 && height > 0);
   assert(pic->a_stride >= width);
   assert(filter >= WEBP_FILTER_NONE && filter <= WEBP_FILTER_FAST);
@@ -65,22 +65,22 @@ __attribute__((used)) static int EncodeAlpha(VP8Encoder* const enc,
   }
 
   if (method == ALPHA_NO_COMPRESSION) {
-    // Don't filter, as filtering will make no impact on compressed size.
+
     filter = WEBP_FILTER_NONE;
   }
 
   quant_alpha = (uint8_t*)WebPSafeMalloc(1ULL, data_size);
-  if (quant_alpha == NULL) {
+  if (quant_alpha == ((void*)0)) {
     return 0;
   }
 
-  // Extract alpha data (width x height) from raw_data (stride x height).
+
   WebPCopyPlane(pic->a, pic->a_stride, quant_alpha, width, width, height);
 
-  if (reduce_levels) {  // No Quantization required for 'quality = 100'.
-    // 16 alpha levels gives quite a low MSE w.r.t original alpha plane hence
-    // mapped to moderate quality 70. Hence Quality:[0, 70] -> Levels:[2, 16]
-    // and Quality:]70, 100] -> Levels:]16, 256].
+  if (reduce_levels) {
+
+
+
     const int alpha_levels = (quality <= 70) ? (2 + quality / 5)
                                              : (16 + (quality - 70) * 8);
     ok = QuantizeLevels(quant_alpha, width, height, alpha_levels, &sse);
@@ -91,12 +91,12 @@ __attribute__((used)) static int EncodeAlpha(VP8Encoder* const enc,
     ok = ApplyFiltersAndEncode(quant_alpha, width, height, data_size, method,
                                filter, reduce_levels, effort_level, output,
                                output_size, pic->stats);
-#if !defined(WEBP_DISABLE_STATS)
-    if (pic->stats != NULL) {  // need stats?
+
+    if (pic->stats != ((void*)0)) {
       pic->stats->coded_size += (int)(*output_size);
       enc->sse_[3] = sse;
     }
-#endif
+
   }
 
   WebPSafeFree(quant_alpha);

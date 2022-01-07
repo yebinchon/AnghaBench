@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct control_flow_graph {int dummy; } ;
 struct basic_block_def {int dummy; } ;
-struct TYPE_6__ {TYPE_2__* next_bb; int /*<<< orphan*/  index; } ;
-struct TYPE_5__ {TYPE_3__* prev_bb; int /*<<< orphan*/  index; } ;
+struct TYPE_6__ {TYPE_2__* next_bb; int index; } ;
+struct TYPE_5__ {TYPE_3__* prev_bb; int index; } ;
 struct TYPE_4__ {void* cfg; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ENTRY_BLOCK ; 
- TYPE_3__* ENTRY_BLOCK_PTR ; 
- int /*<<< orphan*/  EXIT_BLOCK ; 
- TYPE_2__* EXIT_BLOCK_PTR ; 
- TYPE_1__* cfun ; 
- void* ggc_alloc_cleared (int) ; 
- scalar_t__ n_edges ; 
+
+ int ENTRY_BLOCK ;
+ TYPE_3__* ENTRY_BLOCK_PTR ;
+ int EXIT_BLOCK ;
+ TYPE_2__* EXIT_BLOCK_PTR ;
+ TYPE_1__* cfun ;
+ void* ggc_alloc_cleared (int) ;
+ scalar_t__ n_edges ;
 
 void
 init_flow (void)

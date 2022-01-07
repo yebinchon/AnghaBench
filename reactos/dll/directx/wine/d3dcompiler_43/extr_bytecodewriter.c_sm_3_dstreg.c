@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  writemask; } ;
-struct shader_reg {scalar_t__ type; scalar_t__ rel_reg; TYPE_1__ u; int /*<<< orphan*/  regnum; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int writemask; } ;
+struct shader_reg {scalar_t__ type; scalar_t__ rel_reg; TYPE_1__ u; int regnum; } ;
 struct bytecode_buffer {int dummy; } ;
-struct bc_writer {scalar_t__ version; int /*<<< orphan*/  state; } ;
-typedef  int DWORD ;
+struct bc_writer {scalar_t__ version; int state; } ;
+typedef int DWORD ;
 
-/* Variables and functions */
- scalar_t__ BWRITERSPR_OUTPUT ; 
- scalar_t__ BWRITERVS_VERSION (int,int /*<<< orphan*/ ) ; 
- int D3DVS_ADDRESSMODE_MASK ; 
- int D3DVS_ADDRMODE_RELATIVE ; 
- int /*<<< orphan*/  E_INVALIDARG ; 
- int /*<<< orphan*/  WARN (char*) ; 
- int d3d9_dstmod (int) ; 
- int d3d9_register (scalar_t__) ; 
- int d3d9_writemask (int /*<<< orphan*/ ) ; 
- int d3dsp_register (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  put_dword (struct bytecode_buffer*,int) ; 
- int /*<<< orphan*/  sm_3_srcreg (struct bc_writer*,scalar_t__,struct bytecode_buffer*) ; 
+
+ scalar_t__ BWRITERSPR_OUTPUT ;
+ scalar_t__ BWRITERVS_VERSION (int,int ) ;
+ int D3DVS_ADDRESSMODE_MASK ;
+ int D3DVS_ADDRMODE_RELATIVE ;
+ int E_INVALIDARG ;
+ int WARN (char*) ;
+ int d3d9_dstmod (int) ;
+ int d3d9_register (scalar_t__) ;
+ int d3d9_writemask (int ) ;
+ int d3dsp_register (int,int ) ;
+ int put_dword (struct bytecode_buffer*,int) ;
+ int sm_3_srcreg (struct bc_writer*,scalar_t__,struct bytecode_buffer*) ;
 
 __attribute__((used)) static void sm_3_dstreg(struct bc_writer *This,
                         const struct shader_reg *reg,
                         struct bytecode_buffer *buffer,
                         DWORD shift, DWORD mod) {
-    DWORD token = (1u << 31); /* Bit 31 of registers is 1 */
+    DWORD token = (1u << 31);
     DWORD d3d9reg;
 
     if(reg->rel_reg) {
@@ -55,9 +55,9 @@ __attribute__((used)) static void sm_3_dstreg(struct bc_writer *This,
     token |= d3d9_writemask(reg->u.writemask);
     put_dword(buffer, token);
 
-    /* vs_2_0 and newer write the register containing the index explicitly in the
-     * binary code
-     */
+
+
+
     if(token & D3DVS_ADDRMODE_RELATIVE) {
         sm_3_srcreg(This, reg->rel_reg, buffer);
     }

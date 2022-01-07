@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct net_device {int /*<<< orphan*/  base_addr; } ;
-struct dev_priv {int /*<<< orphan*/  chip_lock; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CSR0 ; 
- int /*<<< orphan*/  CSR0_STOP ; 
- int /*<<< orphan*/  CSR3 ; 
- int /*<<< orphan*/  CSR3_MASKALL ; 
- int /*<<< orphan*/  am79c961_ramtest (struct net_device*,int) ; 
- struct dev_priv* netdev_priv (struct net_device*) ; 
- int /*<<< orphan*/  spin_lock_irq (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock_irq (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  write_rreg (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct net_device {int base_addr; } ;
+struct dev_priv {int chip_lock; } ;
+
+
+ int CSR0 ;
+ int CSR0_STOP ;
+ int CSR3 ;
+ int CSR3_MASKALL ;
+ int am79c961_ramtest (struct net_device*,int) ;
+ struct dev_priv* netdev_priv (struct net_device*) ;
+ int spin_lock_irq (int *) ;
+ int spin_unlock_irq (int *) ;
+ int write_rreg (int ,int ,int ) ;
 
 __attribute__((used)) static int
 am79c961_hw_init(struct net_device *dev)
 {
-	struct dev_priv *priv = netdev_priv(dev);
+ struct dev_priv *priv = netdev_priv(dev);
 
-	spin_lock_irq(&priv->chip_lock);
-	write_rreg (dev->base_addr, CSR0, CSR0_STOP);
-	write_rreg (dev->base_addr, CSR3, CSR3_MASKALL);
-	spin_unlock_irq(&priv->chip_lock);
+ spin_lock_irq(&priv->chip_lock);
+ write_rreg (dev->base_addr, CSR0, CSR0_STOP);
+ write_rreg (dev->base_addr, CSR3, CSR3_MASKALL);
+ spin_unlock_irq(&priv->chip_lock);
 
-	am79c961_ramtest(dev, 0x66);
-	am79c961_ramtest(dev, 0x99);
+ am79c961_ramtest(dev, 0x66);
+ am79c961_ramtest(dev, 0x99);
 
-	return 0;
+ return 0;
 }

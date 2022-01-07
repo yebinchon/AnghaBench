@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  log_show_early ; 
- int /*<<< orphan*/  show_early_output ; 
+ int log_show_early ;
+ int show_early_output ;
 
 __attribute__((used)) static void early_output(int signal)
 {
-	show_early_output = log_show_early;
+ show_early_output = log_show_early;
 }

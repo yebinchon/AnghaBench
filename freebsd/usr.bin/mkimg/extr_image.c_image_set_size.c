@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lba_t ;
 
-/* Variables and functions */
- int image_chunk_skipto (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  image_size ; 
+
+
+
+typedef int lba_t ;
+
+
+ int image_chunk_skipto (int ) ;
+ int image_size ;
 
 int
 image_set_size(lba_t blk)
 {
-	int error;
+ int error;
 
-	error = image_chunk_skipto(blk);
-	if (!error)
-		image_size = blk;
-	return (error);
+ error = image_chunk_skipto(blk);
+ if (!error)
+  image_size = blk;
+ return (error);
 }

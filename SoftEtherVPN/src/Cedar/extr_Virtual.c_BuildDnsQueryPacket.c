@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  USHORT ;
-struct TYPE_6__ {int Size; int /*<<< orphan*/ * Buf; } ;
-typedef  TYPE_1__ BUF ;
 
-/* Variables and functions */
- TYPE_1__* BuildDnsHostName (char*) ; 
- int /*<<< orphan*/  Endian16 (int) ; 
- int /*<<< orphan*/  FreeBuf (TYPE_1__*) ; 
- int /*<<< orphan*/  WriteBuf (TYPE_1__*,int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int USHORT ;
+struct TYPE_6__ {int Size; int * Buf; } ;
+typedef TYPE_1__ BUF ;
+
+
+ TYPE_1__* BuildDnsHostName (char*) ;
+ int Endian16 (int) ;
+ int FreeBuf (TYPE_1__*) ;
+ int WriteBuf (TYPE_1__*,int *,int) ;
 
 void BuildDnsQueryPacket(BUF *b, char *hostname, bool ptr)
 {
-	USHORT val;
-	BUF *c;
-	// Validate arguments
-	if (b == NULL || hostname == NULL)
-	{
-		return;
-	}
+ USHORT val;
+ BUF *c;
 
-	// Convert the host name to a buffer
-	c = BuildDnsHostName(hostname);
-	if (c == NULL)
-	{
-		return;
-	}
+ if (b == ((void*)0) || hostname == ((void*)0))
+ {
+  return;
+ }
 
-	WriteBuf(b, c->Buf, c->Size);
-	FreeBuf(c);
 
-	// Type and class
-	if (ptr == false)
-	{
-		val = Endian16(0x0001);
-	}
-	else
-	{
-		val = Endian16(0x000c);
-	}
-	WriteBuf(b, &val, 2);
+ c = BuildDnsHostName(hostname);
+ if (c == ((void*)0))
+ {
+  return;
+ }
 
-	val = Endian16(0x0001);
-	WriteBuf(b, &val, 2);
+ WriteBuf(b, c->Buf, c->Size);
+ FreeBuf(c);
+
+
+ if (ptr == 0)
+ {
+  val = Endian16(0x0001);
+ }
+ else
+ {
+  val = Endian16(0x000c);
+ }
+ WriteBuf(b, &val, 2);
+
+ val = Endian16(0x0001);
+ WriteBuf(b, &val, 2);
 }

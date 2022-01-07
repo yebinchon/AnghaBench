@@ -1,47 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint16_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int uint16_t ;
 struct http_parser_url {int port; int field_set; TYPE_1__* field_data; } ;
-typedef  enum state { ____Placeholder_state } state ;
-typedef  enum http_parser_url_fields { ____Placeholder_http_parser_url_fields } http_parser_url_fields ;
+typedef enum state { ____Placeholder_state } state ;
+typedef enum http_parser_url_fields { ____Placeholder_http_parser_url_fields } http_parser_url_fields ;
 struct TYPE_2__ {int len; int off; } ;
 
-/* Variables and functions */
- int UF_FRAGMENT ; 
- int UF_HOST ; 
- int UF_MAX ; 
- int UF_PATH ; 
- int UF_PORT ; 
- int UF_QUERY ; 
- int UF_SCHEMA ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ http_parse_host (char const*,struct http_parser_url*,int) ; 
- int parse_url_char (int,char const) ; 
-#define  s_dead 139 
-#define  s_req_fragment 138 
-#define  s_req_fragment_start 137 
-#define  s_req_path 136 
-#define  s_req_query_string 135 
-#define  s_req_query_string_start 134 
-#define  s_req_schema 133 
-#define  s_req_schema_slash 132 
-#define  s_req_schema_slash_slash 131 
-#define  s_req_server 130 
-#define  s_req_server_start 129 
-#define  s_req_server_with_at 128 
- int s_req_spaces_before_url ; 
- unsigned long strtoul (char const*,int /*<<< orphan*/ *,int) ; 
+
+ int UF_FRAGMENT ;
+ int UF_HOST ;
+ int UF_MAX ;
+ int UF_PATH ;
+ int UF_PORT ;
+ int UF_QUERY ;
+ int UF_SCHEMA ;
+ int assert (int) ;
+ scalar_t__ http_parse_host (char const*,struct http_parser_url*,int) ;
+ int parse_url_char (int,char const) ;
+ int s_req_spaces_before_url ;
+ unsigned long strtoul (char const*,int *,int) ;
 
 int
 http_parser_parse_url(const char *buf, size_t buflen, int is_connect,
@@ -53,46 +41,46 @@ http_parser_parse_url(const char *buf, size_t buflen, int is_connect,
   int found_at = 0;
 
   u->port = u->field_set = 0;
-  s = is_connect ? s_req_server_start : s_req_spaces_before_url;
+  s = is_connect ? 129 : s_req_spaces_before_url;
   old_uf = UF_MAX;
 
   for (p = buf; p < buf + buflen; p++) {
     s = parse_url_char(s, *p);
 
-    /* Figure out the next field that we're operating on */
+
     switch (s) {
-      case s_dead:
+      case 139:
         return 1;
 
-      /* Skip delimeters */
-      case s_req_schema_slash:
-      case s_req_schema_slash_slash:
-      case s_req_server_start:
-      case s_req_query_string_start:
-      case s_req_fragment_start:
+
+      case 132:
+      case 131:
+      case 129:
+      case 134:
+      case 137:
         continue;
 
-      case s_req_schema:
+      case 133:
         uf = UF_SCHEMA;
         break;
 
-      case s_req_server_with_at:
+      case 128:
         found_at = 1;
 
-      /* FALLTHROUGH */
-      case s_req_server:
+
+      case 130:
         uf = UF_HOST;
         break;
 
-      case s_req_path:
+      case 136:
         uf = UF_PATH;
         break;
 
-      case s_req_query_string:
+      case 135:
         uf = UF_QUERY;
         break;
 
-      case s_req_fragment:
+      case 138:
         uf = UF_FRAGMENT;
         break;
 
@@ -101,7 +89,7 @@ http_parser_parse_url(const char *buf, size_t buflen, int is_connect,
         return 1;
     }
 
-    /* Nothing's changed; soldier on */
+
     if (uf == old_uf) {
       u->field_data[uf].len++;
       continue;
@@ -114,8 +102,8 @@ http_parser_parse_url(const char *buf, size_t buflen, int is_connect,
     old_uf = uf;
   }
 
-  /* host must be present if there is a schema */
-  /* parsing http:///toto will fail */
+
+
   if ((u->field_set & (1 << UF_SCHEMA)) &&
       (u->field_set & (1 << UF_HOST)) == 0) {
     return 1;
@@ -127,16 +115,16 @@ http_parser_parse_url(const char *buf, size_t buflen, int is_connect,
     }
   }
 
-  /* CONNECT requests can only contain "hostname:port" */
+
   if (is_connect && u->field_set != ((1 << UF_HOST)|(1 << UF_PORT))) {
     return 1;
   }
 
   if (u->field_set & (1 << UF_PORT)) {
-    /* Don't bother with endp; we've already validated the string */
-    unsigned long v = strtoul(buf + u->field_data[UF_PORT].off, NULL, 10);
 
-    /* Ports have a max value of 2^16 */
+    unsigned long v = strtoul(buf + u->field_data[UF_PORT].off, ((void*)0), 10);
+
+
     if (v > 0xffff) {
       return 1;
     }

@@ -1,115 +1,115 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_7__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
-struct TYPE_11__ {int state; int sweepstr; size_t total; size_t estimate; int nocdatafin; int /*<<< orphan*/  debt; int /*<<< orphan*/  mmudata; int /*<<< orphan*/  sweep; int /*<<< orphan*/  gray; } ;
-struct TYPE_12__ {int strmask; int strnum; TYPE_1__ gc; int /*<<< orphan*/  jit_base; int /*<<< orphan*/ * strhash; } ;
-typedef  TYPE_2__ global_State ;
-struct TYPE_13__ {int /*<<< orphan*/  finalizer; } ;
-typedef  size_t GCSize ;
 
-/* Variables and functions */
- TYPE_2__* G (int /*<<< orphan*/ *) ; 
- size_t GCFINALIZECOST ; 
- int /*<<< orphan*/  GCRef ; 
- size_t GCSWEEPCOST ; 
- size_t GCSWEEPMAX ; 
-#define  GCSatomic 133 
-#define  GCSfinalize 132 
-#define  GCSpause 131 
-#define  GCSpropagate 130 
-#define  GCSsweep 129 
-#define  GCSsweepstring 128 
- size_t LJ_MAX_MEM ; 
- int LJ_MIN_STRTAB ; 
- int /*<<< orphan*/  atomic (TYPE_2__*,int /*<<< orphan*/ *) ; 
- TYPE_7__* ctype_ctsG (TYPE_2__*) ; 
- int /*<<< orphan*/  gc_finalize (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  gc_fullsweep (TYPE_2__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  gc_mark_start (TYPE_2__*) ; 
- int /*<<< orphan*/  gc_sweep (TYPE_2__*,int /*<<< orphan*/ *,size_t) ; 
- int /*<<< orphan*/ * gcref (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lj_str_resize (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lj_tab_rehash (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_assert (int) ; 
- int /*<<< orphan*/ * mref (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- size_t propagatemark (TYPE_2__*) ; 
- int /*<<< orphan*/  setmref (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tvref (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_13__ TYPE_7__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef int lua_State ;
+struct TYPE_11__ {int state; int sweepstr; size_t total; size_t estimate; int nocdatafin; int debt; int mmudata; int sweep; int gray; } ;
+struct TYPE_12__ {int strmask; int strnum; TYPE_1__ gc; int jit_base; int * strhash; } ;
+typedef TYPE_2__ global_State ;
+struct TYPE_13__ {int finalizer; } ;
+typedef size_t GCSize ;
+
+
+ TYPE_2__* G (int *) ;
+ size_t GCFINALIZECOST ;
+ int GCRef ;
+ size_t GCSWEEPCOST ;
+ size_t GCSWEEPMAX ;
+
+
+
+
+
+
+ size_t LJ_MAX_MEM ;
+ int LJ_MIN_STRTAB ;
+ int atomic (TYPE_2__*,int *) ;
+ TYPE_7__* ctype_ctsG (TYPE_2__*) ;
+ int gc_finalize (int *) ;
+ int gc_fullsweep (TYPE_2__*,int *) ;
+ int gc_mark_start (TYPE_2__*) ;
+ int gc_sweep (TYPE_2__*,int *,size_t) ;
+ int * gcref (int ) ;
+ int lj_str_resize (int *,int) ;
+ int lj_tab_rehash (int *,int ) ;
+ int lua_assert (int) ;
+ int * mref (int ,int ) ;
+ size_t propagatemark (TYPE_2__*) ;
+ int setmref (int ,int ) ;
+ int tvref (int ) ;
 
 __attribute__((used)) static size_t gc_onestep(lua_State *L)
 {
   global_State *g = G(L);
   switch (g->gc.state) {
-  case GCSpause:
-    gc_mark_start(g);  /* Start a new GC cycle by marking all GC roots. */
+  case 131:
+    gc_mark_start(g);
     return 0;
-  case GCSpropagate:
-    if (gcref(g->gc.gray) != NULL)
-      return propagatemark(g);  /* Propagate one gray object. */
-    g->gc.state = GCSatomic;  /* End of mark phase. */
+  case 130:
+    if (gcref(g->gc.gray) != ((void*)0))
+      return propagatemark(g);
+    g->gc.state = 133;
     return 0;
-  case GCSatomic:
-    if (tvref(g->jit_base))  /* Don't run atomic phase on trace. */
+  case 133:
+    if (tvref(g->jit_base))
       return LJ_MAX_MEM;
     atomic(g, L);
-    g->gc.state = GCSsweepstring;  /* Start of sweep phase. */
+    g->gc.state = 128;
     g->gc.sweepstr = 0;
     return 0;
-  case GCSsweepstring: {
+  case 128: {
     GCSize old = g->gc.total;
-    gc_fullsweep(g, &g->strhash[g->gc.sweepstr++]);  /* Sweep one chain. */
+    gc_fullsweep(g, &g->strhash[g->gc.sweepstr++]);
     if (g->gc.sweepstr > g->strmask)
-      g->gc.state = GCSsweep;  /* All string hash chains sweeped. */
+      g->gc.state = 129;
     lua_assert(old >= g->gc.total);
     g->gc.estimate -= old - g->gc.total;
     return GCSWEEPCOST;
     }
-  case GCSsweep: {
+  case 129: {
     GCSize old = g->gc.total;
     setmref(g->gc.sweep, gc_sweep(g, mref(g->gc.sweep, GCRef), GCSWEEPMAX));
     lua_assert(old >= g->gc.total);
     g->gc.estimate -= old - g->gc.total;
-    if (gcref(*mref(g->gc.sweep, GCRef)) == NULL) {
+    if (gcref(*mref(g->gc.sweep, GCRef)) == ((void*)0)) {
       if (g->strnum <= (g->strmask >> 2) && g->strmask > LJ_MIN_STRTAB*2-1)
-	lj_str_resize(L, g->strmask >> 1);  /* Shrink string table. */
-      if (gcref(g->gc.mmudata)) {  /* Need any finalizations? */
-	g->gc.state = GCSfinalize;
-#if LJ_HASFFI
-	g->gc.nocdatafin = 1;
-#endif
-      } else {  /* Otherwise skip this phase to help the JIT. */
-	g->gc.state = GCSpause;  /* End of GC cycle. */
-	g->gc.debt = 0;
+ lj_str_resize(L, g->strmask >> 1);
+      if (gcref(g->gc.mmudata)) {
+ g->gc.state = 132;
+
+
+
+      } else {
+ g->gc.state = 131;
+ g->gc.debt = 0;
       }
     }
     return GCSWEEPMAX*GCSWEEPCOST;
     }
-  case GCSfinalize:
-    if (gcref(g->gc.mmudata) != NULL) {
-      if (tvref(g->jit_base))  /* Don't call finalizers on trace. */
-	return LJ_MAX_MEM;
-      gc_finalize(L);  /* Finalize one userdata object. */
+  case 132:
+    if (gcref(g->gc.mmudata) != ((void*)0)) {
+      if (tvref(g->jit_base))
+ return LJ_MAX_MEM;
+      gc_finalize(L);
       if (g->gc.estimate > GCFINALIZECOST)
-	g->gc.estimate -= GCFINALIZECOST;
+ g->gc.estimate -= GCFINALIZECOST;
       return GCFINALIZECOST;
     }
-#if LJ_HASFFI
-    if (!g->gc.nocdatafin) lj_tab_rehash(L, ctype_ctsG(g)->finalizer);
-#endif
-    g->gc.state = GCSpause;  /* End of GC cycle. */
+
+
+
+    g->gc.state = 131;
     g->gc.debt = 0;
     return 0;
   default:

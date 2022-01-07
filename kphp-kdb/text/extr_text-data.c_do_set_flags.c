@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct lev_set_flags_long {int local_id; int flags; } ;
 struct lev_set_flags {int local_id; } ;
 
-/* Variables and functions */
- scalar_t__ LEV_TX_SET_MESSAGE_FLAGS ; 
- scalar_t__ LEV_TX_SET_MESSAGE_FLAGS_LONG ; 
- int adjust_message (int,int,int,int,int /*<<< orphan*/ ) ; 
- void* alloc_log_event (scalar_t__,int,int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,...) ; 
- int /*<<< orphan*/  stderr ; 
- int verbosity ; 
- scalar_t__ write_all_events ; 
+
+ scalar_t__ LEV_TX_SET_MESSAGE_FLAGS ;
+ scalar_t__ LEV_TX_SET_MESSAGE_FLAGS_LONG ;
+ int adjust_message (int,int,int,int,int ) ;
+ void* alloc_log_event (scalar_t__,int,int) ;
+ int fprintf (int ,char*,int,...) ;
+ int stderr ;
+ int verbosity ;
+ scalar_t__ write_all_events ;
 
 int do_set_flags (int user_id, int local_id, int flags) {
   if (verbosity > 1) {

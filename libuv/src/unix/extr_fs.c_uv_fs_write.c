@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uv_loop_t ;
-struct TYPE_3__ {unsigned int nbufs; int /*<<< orphan*/  off; int /*<<< orphan*/ * bufs; int /*<<< orphan*/ * bufsml; int /*<<< orphan*/  file; } ;
-typedef  TYPE_1__ uv_fs_t ;
-typedef  int /*<<< orphan*/  uv_fs_cb ;
-typedef  int /*<<< orphan*/  uv_file ;
-typedef  int /*<<< orphan*/  uv_buf_t ;
-typedef  int /*<<< orphan*/  int64_t ;
 
-/* Variables and functions */
- unsigned int ARRAY_SIZE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  INIT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  POST ; 
- int UV_EINVAL ; 
- int UV_ENOMEM ; 
- int /*<<< orphan*/  WRITE ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,unsigned int) ; 
- int /*<<< orphan*/ * uv__malloc (unsigned int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uv_loop_t ;
+struct TYPE_3__ {unsigned int nbufs; int off; int * bufs; int * bufsml; int file; } ;
+typedef TYPE_1__ uv_fs_t ;
+typedef int uv_fs_cb ;
+typedef int uv_file ;
+typedef int uv_buf_t ;
+typedef int int64_t ;
+
+
+ unsigned int ARRAY_SIZE (int *) ;
+ int INIT (int ) ;
+ int POST ;
+ int UV_EINVAL ;
+ int UV_ENOMEM ;
+ int WRITE ;
+ int memcpy (int *,int const*,unsigned int) ;
+ int * uv__malloc (unsigned int) ;
 
 int uv_fs_write(uv_loop_t* loop,
                 uv_fs_t* req,
@@ -38,7 +38,7 @@ int uv_fs_write(uv_loop_t* loop,
                 uv_fs_cb cb) {
   INIT(WRITE);
 
-  if (bufs == NULL || nbufs == 0)
+  if (bufs == ((void*)0) || nbufs == 0)
     return UV_EINVAL;
 
   req->file = file;
@@ -48,7 +48,7 @@ int uv_fs_write(uv_loop_t* loop,
   if (nbufs > ARRAY_SIZE(req->bufsml))
     req->bufs = uv__malloc(nbufs * sizeof(*bufs));
 
-  if (req->bufs == NULL)
+  if (req->bufs == ((void*)0))
     return UV_ENOMEM;
 
   memcpy(req->bufs, bufs, nbufs * sizeof(*bufs));

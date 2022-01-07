@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ ctr_running ; 
- int /*<<< orphan*/  get_online_cpus () ; 
- int /*<<< orphan*/  nmi_cpu_stop ; 
- int /*<<< orphan*/  on_each_cpu (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  put_online_cpus () ; 
+ scalar_t__ ctr_running ;
+ int get_online_cpus () ;
+ int nmi_cpu_stop ;
+ int on_each_cpu (int ,int *,int) ;
+ int put_online_cpus () ;
 
 __attribute__((used)) static void nmi_stop(void)
 {
-	get_online_cpus();
-	on_each_cpu(nmi_cpu_stop, NULL, 1);
-	ctr_running = 0;
-	put_online_cpus();
+ get_online_cpus();
+ on_each_cpu(nmi_cpu_stop, ((void*)0), 1);
+ ctr_running = 0;
+ put_online_cpus();
 }

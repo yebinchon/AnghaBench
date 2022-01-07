@@ -1,20 +1,12 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  LSR ; 
- int PCIE_MMIO_READ (int /*<<< orphan*/ ) ; 
- int UART_LSR_THRE ; 
+ int LSR ;
+ int PCIE_MMIO_READ (int ) ;
+ int UART_LSR_THRE ;
 
 __attribute__((used)) static int
 pcie_mmio_uart_tr0( void )

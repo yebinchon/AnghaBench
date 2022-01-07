@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int int64_t ;
-typedef  int int32_t ;
 
-/* Variables and functions */
- int TSDB_TIME_PRECISION_MICRO ; 
- int TSDB_TIME_PRECISION_MILLI ; 
- int /*<<< orphan*/  assert (int) ; 
- int strnatoi (char*,int) ; 
+
+
+
+typedef int int64_t ;
+typedef int int32_t ;
+
+
+ int TSDB_TIME_PRECISION_MICRO ;
+ int TSDB_TIME_PRECISION_MILLI ;
+ int assert (int) ;
+ int strnatoi (char*,int) ;
 
 int64_t parseFraction(char* str, char** end, int32_t timePrec) {
   int32_t i = 0;
@@ -38,9 +38,9 @@ int64_t parseFraction(char* str, char** end, int32_t timePrec) {
     return -1;
   }
 
-  /* parse the fraction */
+
   if (timePrec == TSDB_TIME_PRECISION_MILLI) {
-    /* only use the initial 3 bits */
+
     if (i >= MILLI_SEC_FRACTION_LEN) {
       i = MILLI_SEC_FRACTION_LEN;
     }

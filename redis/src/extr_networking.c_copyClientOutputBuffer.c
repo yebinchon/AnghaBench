@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  reply_bytes; int /*<<< orphan*/  bufpos; int /*<<< orphan*/  buf; int /*<<< orphan*/  reply; scalar_t__ sentlen; } ;
-typedef  TYPE_1__ client ;
 
-/* Variables and functions */
- int /*<<< orphan*/  listDup (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  listRelease (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int reply_bytes; int bufpos; int buf; int reply; scalar_t__ sentlen; } ;
+typedef TYPE_1__ client ;
+
+
+ int listDup (int ) ;
+ int listRelease (int ) ;
+ int memcpy (int ,int ,int ) ;
 
 void copyClientOutputBuffer(client *dst, client *src) {
     listRelease(dst->reply);

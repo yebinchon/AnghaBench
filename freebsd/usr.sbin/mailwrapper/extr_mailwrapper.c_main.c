@@ -1,135 +1,135 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char* u_long ;
-struct arglist {int /*<<< orphan*/  argv; } ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EX_CONFIG ; 
- int /*<<< orphan*/  EX_OSERR ; 
- int /*<<< orphan*/  LOG_INFO ; 
- int /*<<< orphan*/  LOG_MAIL ; 
- int /*<<< orphan*/  LOG_PID ; 
- int MAXPATHLEN ; 
- int /*<<< orphan*/  WS ; 
- char* _PATH_DEFAULTMTA ; 
- char* _PATH_MAILERCONF ; 
- int /*<<< orphan*/  addarg (struct arglist*,char*) ; 
- int /*<<< orphan*/  closelog () ; 
- int /*<<< orphan*/  err (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  errx (int /*<<< orphan*/ ,char*,char const*,...) ; 
- int /*<<< orphan*/  execve (char*,int /*<<< orphan*/ ,char**) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- scalar_t__ feof (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char const*,char*) ; 
- char* fparseln (int /*<<< orphan*/ *,size_t*,size_t*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (char*) ; 
- char* getenv (char*) ; 
- char* getprogname () ; 
- int /*<<< orphan*/  initarg (struct arglist*) ; 
- int /*<<< orphan*/  openlog (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  setprogname (char*) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,char*) ; 
- scalar_t__ strcmp (char*,char const*) ; 
- char* strsep (char**,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strspn (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  syslog (int /*<<< orphan*/ ,char*,char const*,char*) ; 
+
+
+
+typedef char* u_long ;
+struct arglist {int argv; } ;
+typedef int FILE ;
+
+
+ int EX_CONFIG ;
+ int EX_OSERR ;
+ int LOG_INFO ;
+ int LOG_MAIL ;
+ int LOG_PID ;
+ int MAXPATHLEN ;
+ int WS ;
+ char* _PATH_DEFAULTMTA ;
+ char* _PATH_MAILERCONF ;
+ int addarg (struct arglist*,char*) ;
+ int closelog () ;
+ int err (int ,char*,char*) ;
+ int errx (int ,char*,char const*,...) ;
+ int execve (char*,int ,char**) ;
+ int fclose (int *) ;
+ scalar_t__ feof (int *) ;
+ int * fopen (char const*,char*) ;
+ char* fparseln (int *,size_t*,size_t*,int *,int ) ;
+ int free (char*) ;
+ char* getenv (char*) ;
+ char* getprogname () ;
+ int initarg (struct arglist*) ;
+ int openlog (char*,int ,int ) ;
+ int setprogname (char*) ;
+ int snprintf (char*,int,char*,char*) ;
+ scalar_t__ strcmp (char*,char const*) ;
+ char* strsep (char**,int ) ;
+ int strspn (char*,int ) ;
+ int syslog (int ,char*,char const*,char*) ;
 
 int
 main(int argc, char *argv[], char *envp[])
 {
-	FILE *config;
-	char *line, *cp, *from, *to, *ap;
-	const char *progname;
-	char localmailerconf[MAXPATHLEN];
-	const char *mailerconf;
-	size_t len, lineno = 0;
-	int i;
-	struct arglist al;
+ FILE *config;
+ char *line, *cp, *from, *to, *ap;
+ const char *progname;
+ char localmailerconf[MAXPATHLEN];
+ const char *mailerconf;
+ size_t len, lineno = 0;
+ int i;
+ struct arglist al;
 
-	/* change __progname to mailwrapper so we get sensible error messages */
-	progname = getprogname();
-	setprogname("mailwrapper");
 
-	initarg(&al);
-	addarg(&al, argv[0]);
+ progname = getprogname();
+ setprogname("mailwrapper");
 
-	snprintf(localmailerconf, MAXPATHLEN, "%s/etc/mail/mailer.conf",
-	    getenv("LOCALBASE") ? getenv("LOCALBASE") : "/usr/local");
+ initarg(&al);
+ addarg(&al, argv[0]);
 
-	mailerconf = localmailerconf;
-	if ((config = fopen(localmailerconf, "r")) == NULL)
-		mailerconf = _PATH_MAILERCONF;
+ snprintf(localmailerconf, MAXPATHLEN, "%s/etc/mail/mailer.conf",
+     getenv("LOCALBASE") ? getenv("LOCALBASE") : "/usr/local");
 
-	if (config == NULL && ((config = fopen(mailerconf, "r")) == NULL)) {
-		addarg(&al, NULL);
-		openlog(getprogname(), LOG_PID, LOG_MAIL);
-		syslog(LOG_INFO, "cannot open %s, using %s as default MTA",
-		    mailerconf, _PATH_DEFAULTMTA);
-		closelog();
-		execve(_PATH_DEFAULTMTA, al.argv, envp);
-		err(EX_OSERR, "cannot exec %s", _PATH_DEFAULTMTA);
-		/*NOTREACHED*/
-	}
+ mailerconf = localmailerconf;
+ if ((config = fopen(localmailerconf, "r")) == ((void*)0))
+  mailerconf = _PATH_MAILERCONF;
 
-	for (;;) {
-		if ((line = fparseln(config, &len, &lineno, NULL, 0)) == NULL) {
-			if (feof(config))
-				errx(EX_CONFIG, "no mapping in %s", mailerconf);
-			err(EX_CONFIG, "cannot parse line %lu", (u_long)lineno);
-		}
+ if (config == ((void*)0) && ((config = fopen(mailerconf, "r")) == ((void*)0))) {
+  addarg(&al, ((void*)0));
+  openlog(getprogname(), LOG_PID, LOG_MAIL);
+  syslog(LOG_INFO, "cannot open %s, using %s as default MTA",
+      mailerconf, _PATH_DEFAULTMTA);
+  closelog();
+  execve(_PATH_DEFAULTMTA, al.argv, envp);
+  err(EX_OSERR, "cannot exec %s", _PATH_DEFAULTMTA);
 
-#define	WS	" \t\n"
-		cp = line;
+ }
 
-		cp += strspn(cp, WS);
-		if (cp[0] == '\0') {
-			/* empty line */
-			free(line);
-			continue;
-		}
+ for (;;) {
+  if ((line = fparseln(config, &len, &lineno, ((void*)0), 0)) == ((void*)0)) {
+   if (feof(config))
+    errx(EX_CONFIG, "no mapping in %s", mailerconf);
+   err(EX_CONFIG, "cannot parse line %lu", (u_long)lineno);
+  }
 
-		if ((from = strsep(&cp, WS)) == NULL || cp == NULL)
-			goto parse_error;
 
-		cp += strspn(cp, WS);
+  cp = line;
 
-		if ((to = strsep(&cp, WS)) == NULL)
-			goto parse_error;
+  cp += strspn(cp, " \t\n");
+  if (cp[0] == '\0') {
 
-		if (strcmp(from, progname) == 0) {
-			for (ap = strsep(&cp, WS); ap != NULL;
-			     ap = strsep(&cp, WS)) {
-				if (*ap)
-				    addarg(&al, ap);
-			}
-			break;
-		}
+   free(line);
+   continue;
+  }
 
-		free(line);
-	}
+  if ((from = strsep(&cp, " \t\n")) == ((void*)0) || cp == ((void*)0))
+   goto parse_error;
 
-	(void)fclose(config);
+  cp += strspn(cp, " \t\n");
 
-	for (i = 1; i < argc; i++)
-		addarg(&al, argv[i]);
+  if ((to = strsep(&cp, " \t\n")) == ((void*)0))
+   goto parse_error;
 
-	addarg(&al, NULL);
-	execve(to, al.argv, envp);
-	err(EX_OSERR, "cannot exec %s", to);
-	/*NOTREACHED*/
+  if (strcmp(from, progname) == 0) {
+   for (ap = strsep(&cp, " \t\n"); ap != ((void*)0);
+        ap = strsep(&cp, " \t\n")) {
+    if (*ap)
+        addarg(&al, ap);
+   }
+   break;
+  }
+
+  free(line);
+ }
+
+ (void)fclose(config);
+
+ for (i = 1; i < argc; i++)
+  addarg(&al, argv[i]);
+
+ addarg(&al, ((void*)0));
+ execve(to, al.argv, envp);
+ err(EX_OSERR, "cannot exec %s", to);
+
 parse_error:
-	errx(EX_CONFIG, "parse error in %s at line %lu",
-	    mailerconf, (u_long)lineno);
-	/*NOTREACHED*/
+ errx(EX_CONFIG, "parse error in %s at line %lu",
+     mailerconf, (u_long)lineno);
+
 }

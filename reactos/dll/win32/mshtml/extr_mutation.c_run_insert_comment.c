@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  nsresult ;
-typedef  int /*<<< orphan*/  nsISupports ;
-typedef  int /*<<< orphan*/  nsIDOMNode ;
-typedef  int /*<<< orphan*/  nsIDOMComment ;
-typedef  int /*<<< orphan*/  nsAString ;
-struct TYPE_4__ {int /*<<< orphan*/  nsdoc; } ;
-typedef  int /*<<< orphan*/  PRUnichar ;
-typedef  TYPE_1__ HTMLDocumentNode ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*,int /*<<< orphan*/ ) ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IID_nsIDOMComment ; 
- int /*<<< orphan*/  NS_ERROR_FAILURE ; 
- scalar_t__ NS_FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * handle_insert_comment (TYPE_1__*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  heap_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsAString_Finish (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsAString_GetData (int /*<<< orphan*/ *,int /*<<< orphan*/  const**) ; 
- int /*<<< orphan*/  nsAString_Init (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsIDOMComment_GetData (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsIDOMComment_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsISupports_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  replace_node_by_html (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int nsresult ;
+typedef int nsISupports ;
+typedef int nsIDOMNode ;
+typedef int nsIDOMComment ;
+typedef int nsAString ;
+struct TYPE_4__ {int nsdoc; } ;
+typedef int PRUnichar ;
+typedef TYPE_1__ HTMLDocumentNode ;
+typedef int HRESULT ;
+
+
+ int ERR (char*,int ) ;
+ scalar_t__ FAILED (int ) ;
+ int IID_nsIDOMComment ;
+ int NS_ERROR_FAILURE ;
+ scalar_t__ NS_FAILED (int ) ;
+ int * handle_insert_comment (TYPE_1__*,int const*) ;
+ int heap_free (int *) ;
+ int nsAString_Finish (int *) ;
+ int nsAString_GetData (int *,int const**) ;
+ int nsAString_Init (int *,int *) ;
+ int nsIDOMComment_GetData (int *,int *) ;
+ int nsIDOMComment_Release (int *) ;
+ int nsISupports_QueryInterface (int *,int *,void**) ;
+ int replace_node_by_html (int ,int *,int *) ;
 
 __attribute__((used)) static nsresult run_insert_comment(HTMLDocumentNode *doc, nsISupports *comment_iface, nsISupports *arg2)
 {
@@ -51,7 +51,7 @@ __attribute__((used)) static nsresult run_insert_comment(HTMLDocumentNode *doc, 
         return nsres;
     }
 
-    nsAString_Init(&comment_str, NULL);
+    nsAString_Init(&comment_str, ((void*)0));
     nsres = nsIDOMComment_GetData(nscomment, &comment_str);
     if(NS_FAILED(nsres))
         return nsres;

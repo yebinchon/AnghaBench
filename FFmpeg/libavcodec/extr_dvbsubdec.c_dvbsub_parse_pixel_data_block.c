@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-struct TYPE_14__ {int /*<<< orphan*/ * priv_data; } ;
-struct TYPE_13__ {int x_pos; int y_pos; int /*<<< orphan*/  region_id; } ;
+
+
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_14__ {int * priv_data; } ;
+struct TYPE_13__ {int x_pos; int y_pos; int region_id; } ;
 struct TYPE_12__ {int* pbuf; int dirty; int width; int height; int depth; scalar_t__ has_computed_clut; } ;
-typedef  TYPE_1__ DVBSubRegion ;
-typedef  TYPE_2__ DVBSubObjectDisplay ;
-typedef  int /*<<< orphan*/  DVBSubContext ;
-typedef  TYPE_3__ AVCodecContext ;
+typedef TYPE_1__ DVBSubRegion ;
+typedef TYPE_2__ DVBSubObjectDisplay ;
+typedef int DVBSubContext ;
+typedef TYPE_3__ AVCodecContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_LOG_INFO ; 
- int /*<<< orphan*/  av_log (TYPE_3__*,int /*<<< orphan*/ ,char*,int const,...) ; 
- int dvbsub_read_2bit_string (TYPE_3__*,int*,int,int const**,int,int,int*,int) ; 
- int dvbsub_read_4bit_string (TYPE_3__*,int*,int,int const**,int,int,int*,int) ; 
- int dvbsub_read_8bit_string (TYPE_3__*,int*,int,int const**,int,int,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  ff_dlog (TYPE_3__*,char*,...) ; 
- TYPE_1__* get_region (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int AV_LOG_ERROR ;
+ int AV_LOG_INFO ;
+ int av_log (TYPE_3__*,int ,char*,int const,...) ;
+ int dvbsub_read_2bit_string (TYPE_3__*,int*,int,int const**,int,int,int*,int) ;
+ int dvbsub_read_4bit_string (TYPE_3__*,int*,int,int const**,int,int,int*,int) ;
+ int dvbsub_read_8bit_string (TYPE_3__*,int*,int,int const**,int,int,int *,int) ;
+ int ff_dlog (TYPE_3__*,char*,...) ;
+ TYPE_1__* get_region (int *,int ) ;
 
 __attribute__((used)) static void dvbsub_parse_pixel_data_block(AVCodecContext *avctx, DVBSubObjectDisplay *display,
                                           const uint8_t *buf, int buf_size, int top_bottom, int non_mod)
@@ -43,29 +43,11 @@ __attribute__((used)) static void dvbsub_parse_pixel_data_block(AVCodecContext *
     int x_pos, y_pos;
     int i;
 
-    uint8_t map2to4[] = { 0x0,  0x7,  0x8,  0xf};
+    uint8_t map2to4[] = { 0x0, 0x7, 0x8, 0xf};
     uint8_t map2to8[] = {0x00, 0x77, 0x88, 0xff};
     uint8_t map4to8[] = {0x00, 0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77,
                          0x88, 0x99, 0xaa, 0xbb, 0xcc, 0xdd, 0xee, 0xff};
     uint8_t *map_table;
-
-#if 0
-    ff_dlog(avctx, "DVB pixel block size %d, %s field:\n", buf_size,
-            top_bottom ? "bottom" : "top");
-
-    for (i = 0; i < buf_size; i++) {
-        if (i % 16 == 0)
-            ff_dlog(avctx, "0x%8p: ", buf+i);
-
-        ff_dlog(avctx, "%02x ", buf[i]);
-        if (i % 16 == 15)
-            ff_dlog(avctx, "\n");
-    }
-
-    if (i % 16)
-        ff_dlog(avctx, "\n");
-#endif
-
     if (!region)
         return;
 
@@ -90,7 +72,7 @@ __attribute__((used)) static void dvbsub_parse_pixel_data_block(AVCodecContext *
             else if (region->depth == 4)
                 map_table = map2to4;
             else
-                map_table = NULL;
+                map_table = ((void*)0);
 
             x_pos = dvbsub_read_2bit_string(avctx, pbuf + (y_pos * region->width),
                                             region->width, &buf, buf_end - buf,
@@ -105,7 +87,7 @@ __attribute__((used)) static void dvbsub_parse_pixel_data_block(AVCodecContext *
             if (region->depth == 8)
                 map_table = map4to8;
             else
-                map_table = NULL;
+                map_table = ((void*)0);
 
             x_pos = dvbsub_read_4bit_string(avctx, pbuf + (y_pos * region->width),
                                             region->width, &buf, buf_end - buf,
@@ -119,7 +101,7 @@ __attribute__((used)) static void dvbsub_parse_pixel_data_block(AVCodecContext *
 
             x_pos = dvbsub_read_8bit_string(avctx, pbuf + (y_pos * region->width),
                                             region->width, &buf, buf_end - buf,
-                                            non_mod, NULL, x_pos);
+                                            non_mod, ((void*)0), x_pos);
             break;
 
         case 0x20:

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int numcomps; TYPE_1__* comps; } ;
-typedef  TYPE_2__ opj_image_t ;
-typedef  int opj_bool ;
+typedef TYPE_2__ opj_image_t ;
+typedef int opj_bool ;
 struct TYPE_4__ {scalar_t__ dx; scalar_t__ dy; scalar_t__ prec; int w; int h; scalar_t__* data; scalar_t__ sgnd; } ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef int FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OPJ_TRUE ; 
- int /*<<< orphan*/ * fopen (char const*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- size_t fwrite (unsigned char*,int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  tga_writeheader (int /*<<< orphan*/ *,int,int,int,int /*<<< orphan*/ ) ; 
+
+ int OPJ_TRUE ;
+ int * fopen (char const*,char*) ;
+ int fprintf (int ,char*,...) ;
+ size_t fwrite (unsigned char*,int,int,int *) ;
+ int stderr ;
+ int tga_writeheader (int *,int,int,int,int ) ;
 
 int imagetotga(opj_image_t * image, const char *outfile)
 {
@@ -57,10 +57,10 @@ int imagetotga(opj_image_t * image, const char *outfile)
     width = image->comps[0].w;
     height = image->comps[0].h;
 
-    /* Mono with alpha, or RGB with alpha. */
+
     write_alpha = (image->numcomps == 2) || (image->numcomps == 4);
 
-    /* Write TGA header  */
+
     bpp = write_alpha ? 32 : 24;
     if (!tga_writeheader(fdest, bpp, width, height, OPJ_TRUE)) {
         return 1;
@@ -77,18 +77,18 @@ int imagetotga(opj_image_t * image, const char *outfile)
     for (y = 0; y < height; y++) {
         unsigned int index = y * width;
 
-        for (x = 0; x < width; x++, index++)  {
+        for (x = 0; x < width; x++, index++) {
             r = (float)(image->comps[0].data[index] + adjustR);
 
             if (image->numcomps > 2) {
                 g = (float)(image->comps[1].data[index] + adjustG);
                 b = (float)(image->comps[2].data[index] + adjustB);
-            } else  { /* Greyscale ... */
+            } else {
                 g = r;
                 b = r;
             }
 
-            /* TGA format writes BGR ... */
+
             value = (unsigned char)(b * scale);
             res = fwrite(&value, 1, 1, fdest);
             if (res < 1) {

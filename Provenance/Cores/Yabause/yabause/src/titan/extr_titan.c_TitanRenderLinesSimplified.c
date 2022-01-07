@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct PixelData {scalar_t__ priority; scalar_t__ pixel; } ;
-typedef  scalar_t__ pixel_t ;
-struct TYPE_4__ {int* layer_priority; int vdp2width; struct PixelData** vdp2framebuffer; TYPE_1__* backscreen; int /*<<< orphan*/  trans; int /*<<< orphan*/  inited; } ;
+typedef scalar_t__ pixel_t ;
+struct TYPE_4__ {int* layer_priority; int vdp2width; struct PixelData** vdp2framebuffer; TYPE_1__* backscreen; int trans; int inited; } ;
 struct TYPE_3__ {scalar_t__ pixel; } ;
 
-/* Variables and functions */
- int TITAN_BACK ; 
- int TITAN_RBG0 ; 
- size_t TITAN_SPRITE ; 
- scalar_t__ TitanFixAlpha (scalar_t__) ; 
- int /*<<< orphan*/  Vdp2GetInterlaceInfo (int*,int*) ; 
- int /*<<< orphan*/  set_layer_y (int,int*) ; 
- TYPE_2__ tt_context ; 
+
+ int TITAN_BACK ;
+ int TITAN_RBG0 ;
+ size_t TITAN_SPRITE ;
+ scalar_t__ TitanFixAlpha (scalar_t__) ;
+ int Vdp2GetInterlaceInfo (int*,int*) ;
+ int set_layer_y (int,int*) ;
+ TYPE_2__ tt_context ;
 
 void TitanRenderLinesSimplified(pixel_t * dispbuffer, int start_line, int end_line)
 {
@@ -40,7 +40,7 @@ void TitanRenderLinesSimplified(pixel_t * dispbuffer, int start_line, int end_li
 
    Vdp2GetInterlaceInfo(&interlace_line, &line_increment);
 
-   //pre-sort the layers so it doesn't have to be done per-pixel
+
    for (i = 7; i >= 0; i--)
    {
       for (layer = TITAN_RBG0; layer >= 0; layer--)
@@ -50,7 +50,7 @@ void TitanRenderLinesSimplified(pixel_t * dispbuffer, int start_line, int end_li
       }
    }
 
-   //last layer is always the back screen
+
    sorted_layers[num_layers++] = TITAN_BACK;
 
    set_layer_y(start_line, &layer_y);
@@ -70,10 +70,10 @@ void TitanRenderLinesSimplified(pixel_t * dispbuffer, int start_line, int end_li
 
             int bg_layer = sorted_layers[j];
 
-            //if the top layer is the back screen
+
             if (bg_layer == TITAN_BACK)
             {
-               //use a sprite pixel if it is not transparent
+
                if (sprite.pixel)
                {
                   dispbuffer[i] = TitanFixAlpha(sprite.pixel);
@@ -81,15 +81,15 @@ void TitanRenderLinesSimplified(pixel_t * dispbuffer, int start_line, int end_li
                }
                else
                {
-                  //otherwise use the back screen pixel
+
                   dispbuffer[i] = TitanFixAlpha(tt_context.backscreen[y].pixel);
                   break;
                }
             }
-            //if the top layer is a sprite pixel
+
             else if (sprite.priority >= tt_context.layer_priority[bg_layer])
             {
-               //use the sprite pixel if it is not transparent
+
                if (sprite.pixel)
                {
                   dispbuffer[i] = TitanFixAlpha(sprite.pixel);
@@ -98,7 +98,7 @@ void TitanRenderLinesSimplified(pixel_t * dispbuffer, int start_line, int end_li
             }
             else
             {
-               //use the bg layer if it is not covered with a sprite pixel and not transparent
+
                if (tt_context.vdp2framebuffer[bg_layer][layer_pos].pixel)
                {
                   dispbuffer[i] = TitanFixAlpha(tt_context.vdp2framebuffer[bg_layer][layer_pos].pixel);

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct irq_desc {int /*<<< orphan*/  irq_data; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IRQD_IRQ_DISABLED ; 
- int /*<<< orphan*/  irqd_clear (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+struct irq_desc {int irq_data; } ;
+
+
+ int IRQD_IRQ_DISABLED ;
+ int irqd_clear (int *,int ) ;
 
 __attribute__((used)) static void irq_state_clr_disabled(struct irq_desc *desc)
 {
-	irqd_clear(&desc->irq_data, IRQD_IRQ_DISABLED);
+ irqd_clear(&desc->irq_data, IRQD_IRQ_DISABLED);
 }

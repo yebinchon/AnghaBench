@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct ila_map {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  kfree_rcu (struct ila_map*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rcu ; 
+
+ int kfree_rcu (struct ila_map*,int ) ;
+ int rcu ;
 
 __attribute__((used)) static inline void ila_release(struct ila_map *ila)
 {
-	kfree_rcu(ila, rcu);
+ kfree_rcu(ila, rcu);
 }

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  args_vector ;
-typedef  int* LPWSTR ;
-typedef  int INT ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- scalar_t__ FALSE ; 
- scalar_t__ InterpretCmd (int,int**) ; 
- int MAX_ARGS_COUNT ; 
- scalar_t__ TRUE ; 
- scalar_t__ iswspace (int) ; 
- int /*<<< orphan*/  memset (int**,int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int args_vector ;
+typedef int* LPWSTR ;
+typedef int INT ;
+typedef scalar_t__ BOOL ;
+
+
+ scalar_t__ FALSE ;
+ scalar_t__ InterpretCmd (int,int**) ;
+ int MAX_ARGS_COUNT ;
+ scalar_t__ TRUE ;
+ scalar_t__ iswspace (int) ;
+ int memset (int**,int ,int) ;
 
 BOOL
 InterpretScript(LPWSTR input_line)
@@ -55,6 +55,6 @@ InterpretScript(LPWSTR input_line)
         ptr++;
     }
 
-    /* sends the string to find the command */
+
     return InterpretCmd(args_count, args_vector);
 }

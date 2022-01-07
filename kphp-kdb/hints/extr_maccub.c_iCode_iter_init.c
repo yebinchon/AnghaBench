@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int val; int* l; scalar_t__ top; scalar_t__* st; scalar_t__* n; scalar_t__* r; scalar_t__ pred; int /*<<< orphan*/ * ptr; } ;
-typedef  TYPE_1__ iCode_iterator ;
-typedef  int /*<<< orphan*/ * iCode ;
 
-/* Variables and functions */
- scalar_t__ iCode_get_next_int (TYPE_1__*,int) ; 
- int /*<<< orphan*/  iCode_iter_next (TYPE_1__*) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int val; int* l; scalar_t__ top; scalar_t__* st; scalar_t__* n; scalar_t__* r; scalar_t__ pred; int * ptr; } ;
+typedef TYPE_1__ iCode_iterator ;
+typedef int * iCode ;
+
+
+ scalar_t__ iCode_get_next_int (TYPE_1__*,int) ;
+ int iCode_iter_next (TYPE_1__*) ;
 
 void iCode_iter_init (iCode_iterator *it, iCode x, int tot_items, int len, int r) {
   it->ptr = x;
 
-  if (x == NULL) {
+  if (x == ((void*)0)) {
     it->val = 0;
     return;
   }

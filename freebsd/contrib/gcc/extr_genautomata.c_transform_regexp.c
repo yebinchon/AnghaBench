@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  regexp_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  regexp_transform_func (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ regexp_transformed_p ; 
- int /*<<< orphan*/  transform_1 ; 
- int /*<<< orphan*/  transform_2 ; 
- int /*<<< orphan*/  transform_3 ; 
+
+
+
+typedef int regexp_t ;
+
+
+ int regexp_transform_func (int ,int ) ;
+ scalar_t__ regexp_transformed_p ;
+ int transform_1 ;
+ int transform_2 ;
+ int transform_3 ;
 
 __attribute__((used)) static regexp_t
 transform_regexp (regexp_t regexp)

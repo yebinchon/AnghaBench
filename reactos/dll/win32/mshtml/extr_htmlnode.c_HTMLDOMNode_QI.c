@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  dispex; } ;
-struct TYPE_7__ {TYPE_1__ event_target; int /*<<< orphan*/  IHTMLDOMNode_iface; int /*<<< orphan*/  IHTMLDOMNode2_iface; } ;
-typedef  int /*<<< orphan*/  REFIID ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  TYPE_2__ HTMLDOMNode ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_NOINTERFACE ; 
- int /*<<< orphan*/  IID_IDispatch ; 
- int /*<<< orphan*/  IID_IHTMLDOMNode ; 
- int /*<<< orphan*/  IID_IHTMLDOMNode2 ; 
- int /*<<< orphan*/  IID_IUnknown ; 
- int /*<<< orphan*/  IID_nsCycleCollectionISupports ; 
- int /*<<< orphan*/  IID_nsXPCOMCycleCollectionParticipant ; 
- int /*<<< orphan*/  IUnknown_AddRef (int /*<<< orphan*/ *) ; 
- scalar_t__ IsEqualGUID (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NS_OK ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TRACE (char*,TYPE_2__*,int /*<<< orphan*/ ,void**) ; 
- int /*<<< orphan*/  WARN (char*,TYPE_2__*,int /*<<< orphan*/ ,void**) ; 
- int /*<<< orphan*/  debugstr_mshtml_guid (int /*<<< orphan*/ ) ; 
- scalar_t__ dispex_query_interface (int /*<<< orphan*/ *,int /*<<< orphan*/ ,void**) ; 
- int /*<<< orphan*/  node_ccp ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int dispex; } ;
+struct TYPE_7__ {TYPE_1__ event_target; int IHTMLDOMNode_iface; int IHTMLDOMNode2_iface; } ;
+typedef int REFIID ;
+typedef int IUnknown ;
+typedef TYPE_2__ HTMLDOMNode ;
+typedef int HRESULT ;
+
+
+ int E_NOINTERFACE ;
+ int IID_IDispatch ;
+ int IID_IHTMLDOMNode ;
+ int IID_IHTMLDOMNode2 ;
+ int IID_IUnknown ;
+ int IID_nsCycleCollectionISupports ;
+ int IID_nsXPCOMCycleCollectionParticipant ;
+ int IUnknown_AddRef (int *) ;
+ scalar_t__ IsEqualGUID (int *,int ) ;
+ int NS_OK ;
+ int S_OK ;
+ int TRACE (char*,TYPE_2__*,int ,void**) ;
+ int WARN (char*,TYPE_2__*,int ,void**) ;
+ int debugstr_mshtml_guid (int ) ;
+ scalar_t__ dispex_query_interface (int *,int ,void**) ;
+ int node_ccp ;
 
 HRESULT HTMLDOMNode_QI(HTMLDOMNode *This, REFIID riid, void **ppv)
 {
@@ -58,7 +58,7 @@ HRESULT HTMLDOMNode_QI(HTMLDOMNode *This, REFIID riid, void **ppv)
     }else if(dispex_query_interface(&This->event_target.dispex, riid, ppv)) {
         return *ppv ? S_OK : E_NOINTERFACE;
     }else {
-        *ppv = NULL;
+        *ppv = ((void*)0);
         WARN("(%p)->(%s %p)\n", This, debugstr_mshtml_guid(riid), ppv);
         return E_NOINTERFACE;
     }

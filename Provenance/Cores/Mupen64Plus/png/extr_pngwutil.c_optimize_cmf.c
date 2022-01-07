@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int* png_bytep ;
-typedef  int png_byte ;
-typedef  int png_alloc_size_t ;
 
-/* Variables and functions */
+
+
+
+typedef int* png_bytep ;
+typedef int png_byte ;
+typedef int png_alloc_size_t ;
+
+
 
 __attribute__((used)) static void
 optimize_cmf(png_bytep data, png_alloc_size_t data_size)
 {
-   /* Optimize the CMF field in the zlib stream.  The resultant zlib stream is
-    * still compliant to the stream specification.
-    */
-   if (data_size <= 16384) /* else windowBits must be 15 */
+
+
+
+   if (data_size <= 16384)
    {
-      unsigned int z_cmf = data[0];  /* zlib compression method and flags */
+      unsigned int z_cmf = data[0];
 
       if ((z_cmf & 0x0f) == 8 && (z_cmf & 0xf0) <= 0x70)
       {
@@ -34,7 +34,7 @@ optimize_cmf(png_bytep data, png_alloc_size_t data_size)
          z_cinfo = z_cmf >> 4;
          half_z_window_size = 1U << (z_cinfo + 7);
 
-         if (data_size <= half_z_window_size) /* else no change */
+         if (data_size <= half_z_window_size)
          {
             unsigned int tmp;
 

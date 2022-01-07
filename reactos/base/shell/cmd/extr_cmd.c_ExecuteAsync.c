@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/ * hProcess; int /*<<< orphan*/  hThread; } ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int * hProcess; int hThread; } ;
 struct TYPE_6__ {int cb; } ;
-typedef  int /*<<< orphan*/  TCHAR ;
-typedef  TYPE_1__ STARTUPINFO ;
-typedef  TYPE_2__ PROCESS_INFORMATION ;
-typedef  int /*<<< orphan*/  PARSED_COMMAND ;
-typedef  int /*<<< orphan*/ * HANDLE ;
+typedef int TCHAR ;
+typedef TYPE_1__ STARTUPINFO ;
+typedef TYPE_2__ PROCESS_INFORMATION ;
+typedef int PARSED_COMMAND ;
+typedef int * HANDLE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAYSIZE (int /*<<< orphan*/ *) ; 
- int CMDLINE_LENGTH ; 
- int /*<<< orphan*/  CloseHandle (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CreateProcess (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_1__*,TYPE_2__*) ; 
- int /*<<< orphan*/  ErrorMessage (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GetLastError () ; 
- int /*<<< orphan*/  GetModuleFileName (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/ * Unparse (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  _T (char*) ; 
- int /*<<< orphan*/ * _stpcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  _tcscpy (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  error_out_of_memory () ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
+
+ int ARRAYSIZE (int *) ;
+ int CMDLINE_LENGTH ;
+ int CloseHandle (int ) ;
+ int CreateProcess (int *,int *,int *,int *,int ,int ,int *,int *,TYPE_1__*,TYPE_2__*) ;
+ int ErrorMessage (int ,int *) ;
+ int GetLastError () ;
+ int GetModuleFileName (int *,int *,int ) ;
+ int MAX_PATH ;
+ int TRUE ;
+ int * Unparse (int *,int *,int *) ;
+ int _T (char*) ;
+ int * _stpcpy (int *,int ) ;
+ int _tcscpy (int *,int ) ;
+ int error_out_of_memory () ;
+ int memset (TYPE_1__*,int ,int) ;
 
 __attribute__((used)) static HANDLE
 ExecuteAsync(PARSED_COMMAND *Cmd)
@@ -45,26 +45,26 @@ ExecuteAsync(PARSED_COMMAND *Cmd)
     STARTUPINFO stui;
     PROCESS_INFORMATION prci;
 
-    /* Get the path to cmd.exe */
-    GetModuleFileName(NULL, CmdPath, ARRAYSIZE(CmdPath));
 
-    /* Build the parameter string to pass to cmd.exe */
+    GetModuleFileName(((void*)0), CmdPath, ARRAYSIZE(CmdPath));
+
+
     ParamsEnd = _stpcpy(CmdParams, _T("/S/D/C\""));
     ParamsEnd = Unparse(Cmd, ParamsEnd, &CmdParams[CMDLINE_LENGTH - 2]);
     if (!ParamsEnd)
     {
         error_out_of_memory();
-        return NULL;
+        return ((void*)0);
     }
     _tcscpy(ParamsEnd, _T("\""));
 
     memset(&stui, 0, sizeof stui);
     stui.cb = sizeof(STARTUPINFO);
-    if (!CreateProcess(CmdPath, CmdParams, NULL, NULL, TRUE, 0,
-                       NULL, NULL, &stui, &prci))
+    if (!CreateProcess(CmdPath, CmdParams, ((void*)0), ((void*)0), TRUE, 0,
+                       ((void*)0), ((void*)0), &stui, &prci))
     {
-        ErrorMessage(GetLastError(), NULL);
-        return NULL;
+        ErrorMessage(GetLastError(), ((void*)0));
+        return ((void*)0);
     }
 
     CloseHandle(prci.hThread);

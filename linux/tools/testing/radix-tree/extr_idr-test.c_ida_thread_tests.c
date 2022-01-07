@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  pthread_t ;
 
-/* Variables and functions */
- int ARRAY_SIZE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  ida_random_fn ; 
- int /*<<< orphan*/  perror (char*) ; 
- scalar_t__ pthread_create (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_join (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int pthread_t ;
+
+
+ int ARRAY_SIZE (int *) ;
+ int exit (int) ;
+ int ida_random_fn ;
+ int perror (char*) ;
+ scalar_t__ pthread_create (int *,int *,int ,int *) ;
+ int pthread_join (int ,int *) ;
 
 void ida_thread_tests(void)
 {
-	pthread_t threads[20];
-	int i;
+ pthread_t threads[20];
+ int i;
 
-	for (i = 0; i < ARRAY_SIZE(threads); i++)
-		if (pthread_create(&threads[i], NULL, ida_random_fn, NULL)) {
-			perror("creating ida thread");
-			exit(1);
-		}
+ for (i = 0; i < ARRAY_SIZE(threads); i++)
+  if (pthread_create(&threads[i], ((void*)0), ida_random_fn, ((void*)0))) {
+   perror("creating ida thread");
+   exit(1);
+  }
 
-	while (i--)
-		pthread_join(threads[i], NULL);
+ while (i--)
+  pthread_join(threads[i], ((void*)0));
 }

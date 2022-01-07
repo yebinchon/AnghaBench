@@ -1,90 +1,90 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_23__   TYPE_7__ ;
-typedef  struct TYPE_22__   TYPE_6__ ;
-typedef  struct TYPE_21__   TYPE_5__ ;
-typedef  struct TYPE_20__   TYPE_4__ ;
-typedef  struct TYPE_19__   TYPE_3__ ;
-typedef  struct TYPE_18__   TYPE_2__ ;
-typedef  struct TYPE_17__   TYPE_1__ ;
-typedef  struct TYPE_16__   TYPE_15__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-struct TYPE_20__ {int /*<<< orphan*/ * pParse; } ;
-typedef  TYPE_4__ WindowCodeArg ;
+
+
+typedef struct TYPE_23__ TYPE_7__ ;
+typedef struct TYPE_22__ TYPE_6__ ;
+typedef struct TYPE_21__ TYPE_5__ ;
+typedef struct TYPE_20__ TYPE_4__ ;
+typedef struct TYPE_19__ TYPE_3__ ;
+typedef struct TYPE_18__ TYPE_2__ ;
+typedef struct TYPE_17__ TYPE_1__ ;
+typedef struct TYPE_16__ TYPE_15__ ;
+
+
+typedef int u8 ;
+struct TYPE_20__ {int * pParse; } ;
+typedef TYPE_4__ WindowCodeArg ;
 struct TYPE_21__ {scalar_t__ eStart; int iArgCol; int iEphCsr; scalar_t__ regStartRowid; int regApp; int csrApp; int regAccum; scalar_t__ bExprArgs; TYPE_3__* pOwner; scalar_t__ pFilter; TYPE_7__* pFunc; struct TYPE_21__* pNextWin; } ;
-typedef  TYPE_5__ Window ;
+typedef TYPE_5__ Window ;
 struct TYPE_22__ {scalar_t__ opcode; int p1; } ;
-typedef  TYPE_6__ VdbeOp ;
-typedef  int /*<<< orphan*/  Vdbe ;
+typedef TYPE_6__ VdbeOp ;
+typedef int Vdbe ;
 struct TYPE_23__ {scalar_t__ zName; int funcFlags; scalar_t__ xSFunc; } ;
 struct TYPE_18__ {TYPE_15__* pList; } ;
 struct TYPE_19__ {TYPE_2__ x; } ;
-struct TYPE_17__ {int /*<<< orphan*/  pExpr; } ;
+struct TYPE_17__ {int pExpr; } ;
 struct TYPE_16__ {int nExpr; TYPE_1__* a; } ;
-typedef  int /*<<< orphan*/  Parse ;
-typedef  TYPE_7__ FuncDef ;
-typedef  int /*<<< orphan*/  CollSeq ;
+typedef int Parse ;
+typedef TYPE_7__ FuncDef ;
+typedef int CollSeq ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OP_AddImm ; 
- scalar_t__ OP_AggInverse ; 
- scalar_t__ OP_AggStep ; 
- int /*<<< orphan*/  OP_CollSeq ; 
- scalar_t__ OP_Column ; 
- int /*<<< orphan*/  OP_Delete ; 
- int /*<<< orphan*/  OP_IdxInsert ; 
- scalar_t__ OP_IfNot ; 
- int /*<<< orphan*/  OP_IsNull ; 
- scalar_t__ OP_MakeRecord ; 
- int /*<<< orphan*/  OP_SCopy ; 
- int /*<<< orphan*/  OP_SeekGE ; 
- int /*<<< orphan*/  P4_COLLSEQ ; 
- int /*<<< orphan*/  P4_FUNCDEF ; 
- int SQLITE_FUNC_MINMAX ; 
- int SQLITE_FUNC_NEEDCOLL ; 
- scalar_t__ TK_UNBOUNDED ; 
- int /*<<< orphan*/  VdbeCoverage (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  VdbeCoverageNeverTaken (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ first_valueName ; 
- scalar_t__ noopStepFunc ; 
- scalar_t__ nth_valueName ; 
- int /*<<< orphan*/  sqlite3ExprCodeExprList (int /*<<< orphan*/ *,TYPE_15__*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * sqlite3ExprNNCollSeq (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int sqlite3GetTempRange (int /*<<< orphan*/ *,int) ; 
- int sqlite3GetTempReg (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * sqlite3GetVdbe (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3ReleaseTempRange (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  sqlite3ReleaseTempReg (int /*<<< orphan*/ *,int) ; 
- int sqlite3VdbeAddOp1 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  sqlite3VdbeAddOp2 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int) ; 
- int sqlite3VdbeAddOp3 (int /*<<< orphan*/ *,scalar_t__,int,int,int) ; 
- int /*<<< orphan*/  sqlite3VdbeAddOp4 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3VdbeAddOp4Int (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  sqlite3VdbeAppendP4 (int /*<<< orphan*/ *,TYPE_7__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3VdbeChangeP5 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int sqlite3VdbeCurrentAddr (int /*<<< orphan*/ *) ; 
- TYPE_6__* sqlite3VdbeGetOp (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  sqlite3VdbeJumpHere (int /*<<< orphan*/ *,int) ; 
- scalar_t__ sqlite3WindowCompare (int /*<<< orphan*/ *,TYPE_5__*,TYPE_5__*,int /*<<< orphan*/ ) ; 
- int windowArgCount (TYPE_5__*) ; 
+
+ int OP_AddImm ;
+ scalar_t__ OP_AggInverse ;
+ scalar_t__ OP_AggStep ;
+ int OP_CollSeq ;
+ scalar_t__ OP_Column ;
+ int OP_Delete ;
+ int OP_IdxInsert ;
+ scalar_t__ OP_IfNot ;
+ int OP_IsNull ;
+ scalar_t__ OP_MakeRecord ;
+ int OP_SCopy ;
+ int OP_SeekGE ;
+ int P4_COLLSEQ ;
+ int P4_FUNCDEF ;
+ int SQLITE_FUNC_MINMAX ;
+ int SQLITE_FUNC_NEEDCOLL ;
+ scalar_t__ TK_UNBOUNDED ;
+ int VdbeCoverage (int *) ;
+ int VdbeCoverageNeverTaken (int *) ;
+ int assert (int) ;
+ scalar_t__ first_valueName ;
+ scalar_t__ noopStepFunc ;
+ scalar_t__ nth_valueName ;
+ int sqlite3ExprCodeExprList (int *,TYPE_15__*,int,int ,int ) ;
+ int * sqlite3ExprNNCollSeq (int *,int ) ;
+ int sqlite3GetTempRange (int *,int) ;
+ int sqlite3GetTempReg (int *) ;
+ int * sqlite3GetVdbe (int *) ;
+ int sqlite3ReleaseTempRange (int *,int,int) ;
+ int sqlite3ReleaseTempReg (int *,int) ;
+ int sqlite3VdbeAddOp1 (int *,int ,int) ;
+ int sqlite3VdbeAddOp2 (int *,int ,int,int) ;
+ int sqlite3VdbeAddOp3 (int *,scalar_t__,int,int,int) ;
+ int sqlite3VdbeAddOp4 (int *,int ,int ,int ,int ,char const*,int ) ;
+ int sqlite3VdbeAddOp4Int (int *,int ,int,int ,int,int) ;
+ int sqlite3VdbeAppendP4 (int *,TYPE_7__*,int ) ;
+ int sqlite3VdbeChangeP5 (int *,int ) ;
+ int sqlite3VdbeCurrentAddr (int *) ;
+ TYPE_6__* sqlite3VdbeGetOp (int *,int) ;
+ int sqlite3VdbeJumpHere (int *,int) ;
+ scalar_t__ sqlite3WindowCompare (int *,TYPE_5__*,TYPE_5__*,int ) ;
+ int windowArgCount (TYPE_5__*) ;
 
 __attribute__((used)) static void windowAggStep(
   WindowCodeArg *p,
-  Window *pMWin,                  /* Linked list of window functions */
-  int csr,                        /* Read arguments from this cursor */
-  int bInverse,                   /* True to invoke xInverse instead of xStep */
-  int reg                         /* Array of registers */
+  Window *pMWin,
+  int csr,
+  int bInverse,
+  int reg
 ){
   Parse *pParse = p->pParse;
   Vdbe *v = sqlite3GetVdbe(pParse);
@@ -97,8 +97,8 @@ __attribute__((used)) static void windowAggStep(
 
     assert( bInverse==0 || pWin->eStart!=TK_UNBOUNDED );
 
-    /* All OVER clauses in the same window function aggregate step must
-    ** be the same. */
+
+
     assert( pWin==pMWin || sqlite3WindowCompare(pParse,pWin,pMWin,0)==0 );
 
     for(i=0; i<nArg; i++){
@@ -111,7 +111,7 @@ __attribute__((used)) static void windowAggStep(
     regArg = reg;
 
     if( pMWin->regStartRowid==0
-     && (pFunc->funcFlags & SQLITE_FUNC_MINMAX) 
+     && (pFunc->funcFlags & SQLITE_FUNC_MINMAX)
      && (pWin->eStart!=TK_UNBOUNDED)
     ){
       int addrIsNull = sqlite3VdbeAddOp1(v, OP_IsNull, regArg);
@@ -139,14 +139,14 @@ __attribute__((used)) static void windowAggStep(
       if( pWin->pFilter ){
         int regTmp;
         assert( pWin->bExprArgs || !nArg ||nArg==pWin->pOwner->x.pList->nExpr );
-        assert( pWin->bExprArgs || nArg  ||pWin->pOwner->x.pList==0 );
+        assert( pWin->bExprArgs || nArg ||pWin->pOwner->x.pList==0 );
         regTmp = sqlite3GetTempReg(pParse);
         sqlite3VdbeAddOp3(v, OP_Column, csr, pWin->iArgCol+nArg,regTmp);
         addrIf = sqlite3VdbeAddOp3(v, OP_IfNot, regTmp, 0, 1);
         VdbeCoverage(v);
         sqlite3ReleaseTempReg(pParse, regTmp);
       }
-      
+
       if( pWin->bExprArgs ){
         int iStart = sqlite3VdbeCurrentAddr(v);
         VdbeOp *pOp, *pEnd;
@@ -168,7 +168,7 @@ __attribute__((used)) static void windowAggStep(
         pColl = sqlite3ExprNNCollSeq(pParse, pWin->pOwner->x.pList->a[0].pExpr);
         sqlite3VdbeAddOp4(v, OP_CollSeq, 0,0,0, (const char*)pColl, P4_COLLSEQ);
       }
-      sqlite3VdbeAddOp3(v, bInverse? OP_AggInverse : OP_AggStep, 
+      sqlite3VdbeAddOp3(v, bInverse? OP_AggInverse : OP_AggStep,
                         bInverse, regArg, pWin->regAccum);
       sqlite3VdbeAppendP4(v, pFunc, P4_FUNCDEF);
       sqlite3VdbeChangeP5(v, (u8)nArg);

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct lev_copyexec_aux_transaction_header {int mask; } ;
-struct TYPE_3__ {scalar_t__ transaction_id; int /*<<< orphan*/  binlog_pos; int /*<<< orphan*/  key_id; int /*<<< orphan*/  ilen; int /*<<< orphan*/  input; } ;
-typedef  TYPE_1__ replay_transaction_info_t ;
+struct TYPE_3__ {scalar_t__ transaction_id; int binlog_pos; int key_id; int ilen; int input; } ;
+typedef TYPE_1__ replay_transaction_info_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int decrypt_transaction (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,unsigned char**,int*) ; 
- int /*<<< orphan*/  free (unsigned char*) ; 
- int instance_mask ; 
- int /*<<< orphan*/  last_decryption_failed_transaction_pos ; 
- scalar_t__ last_synchronization_point_id ; 
- int /*<<< orphan*/  last_synchronization_point_pos ; 
- scalar_t__ synchronization_point_transaction (unsigned char*,int) ; 
- int /*<<< orphan*/  vkprintf (int,char*,scalar_t__,int,int) ; 
+
+ int assert (int) ;
+ int decrypt_transaction (int ,int ,int ,int ,scalar_t__,unsigned char**,int*) ;
+ int free (unsigned char*) ;
+ int instance_mask ;
+ int last_decryption_failed_transaction_pos ;
+ scalar_t__ last_synchronization_point_id ;
+ int last_synchronization_point_pos ;
+ scalar_t__ synchronization_point_transaction (unsigned char*,int) ;
+ int vkprintf (int,char*,scalar_t__,int,int) ;
 
 void replay_synchronization_point (replay_transaction_info_t *T) {
   unsigned char *b;

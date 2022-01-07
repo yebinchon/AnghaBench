@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sectionHdr ;
-typedef  int /*<<< orphan*/  dwTemp ;
-typedef  int /*<<< orphan*/  ULONG ;
+
+
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+typedef int sectionHdr ;
+typedef int dwTemp ;
+typedef int ULONG ;
 struct TYPE_16__ {void* QuadPart; } ;
-struct TYPE_13__ {scalar_t__ lVal; int /*<<< orphan*/  iVal; } ;
+struct TYPE_13__ {scalar_t__ lVal; int iVal; } ;
 struct TYPE_15__ {TYPE_1__ u; void* vt; } ;
-struct TYPE_14__ {scalar_t__ locale; int grfFlags; int /*<<< orphan*/  stm; int /*<<< orphan*/  codePage; int /*<<< orphan*/  name_to_propid; int /*<<< orphan*/  propid_to_prop; } ;
-typedef  TYPE_2__ PropertyStorage_impl ;
-typedef  TYPE_3__ PROPVARIANT ;
-typedef  int PROPERTYSECTIONHEADER ;
-typedef  int /*<<< orphan*/  PROPERTYIDOFFSET ;
-typedef  int /*<<< orphan*/  LPBYTE ;
-typedef  TYPE_4__ LARGE_INTEGER ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int DWORD ;
+struct TYPE_14__ {scalar_t__ locale; int grfFlags; int stm; int codePage; int name_to_propid; int propid_to_prop; } ;
+typedef TYPE_2__ PropertyStorage_impl ;
+typedef TYPE_3__ PROPVARIANT ;
+typedef int PROPERTYSECTIONHEADER ;
+typedef int PROPERTYIDOFFSET ;
+typedef int LPBYTE ;
+typedef TYPE_4__ LARGE_INTEGER ;
+typedef int HRESULT ;
+typedef int DWORD ;
 
-/* Variables and functions */
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IStream_Seek (int /*<<< orphan*/ ,TYPE_4__,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IStream_Write (int /*<<< orphan*/ ,int*,int,int /*<<< orphan*/ *) ; 
- scalar_t__ LOCALE_SYSTEM_DEFAULT ; 
- int /*<<< orphan*/  PID_BEHAVIOR ; 
- int /*<<< orphan*/  PID_CODEPAGE ; 
- int /*<<< orphan*/  PID_LOCALE ; 
- int PROPSETFLAG_CASE_SENSITIVE ; 
- int /*<<< orphan*/  PropVariantInit (TYPE_3__*) ; 
- int /*<<< orphan*/  PropertyStorage_MakeSectionHdr (int /*<<< orphan*/ ,int,int*) ; 
- int /*<<< orphan*/  PropertyStorage_WriteDictionaryToStream (TYPE_2__*,int*) ; 
- int /*<<< orphan*/  PropertyStorage_WriteHeadersToStream (TYPE_2__*) ; 
- int /*<<< orphan*/  PropertyStorage_WritePropertiesToStream (TYPE_2__*,int,int*) ; 
- int /*<<< orphan*/  PropertyStorage_WritePropertyToStream (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_3__*,int*) ; 
- void* SECTIONHEADER_OFFSET ; 
- int /*<<< orphan*/  STREAM_SEEK_SET ; 
- int /*<<< orphan*/  StorageUtl_WriteDWord (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- void* VT_I2 ; 
- void* VT_I4 ; 
- scalar_t__ dictionary_num_entries (int /*<<< orphan*/ ) ; 
+
+ scalar_t__ FAILED (int ) ;
+ int IStream_Seek (int ,TYPE_4__,int ,int *) ;
+ int IStream_Write (int ,int*,int,int *) ;
+ scalar_t__ LOCALE_SYSTEM_DEFAULT ;
+ int PID_BEHAVIOR ;
+ int PID_CODEPAGE ;
+ int PID_LOCALE ;
+ int PROPSETFLAG_CASE_SENSITIVE ;
+ int PropVariantInit (TYPE_3__*) ;
+ int PropertyStorage_MakeSectionHdr (int ,int,int*) ;
+ int PropertyStorage_WriteDictionaryToStream (TYPE_2__*,int*) ;
+ int PropertyStorage_WriteHeadersToStream (TYPE_2__*) ;
+ int PropertyStorage_WritePropertiesToStream (TYPE_2__*,int,int*) ;
+ int PropertyStorage_WritePropertyToStream (TYPE_2__*,int ,int ,TYPE_3__*,int*) ;
+ void* SECTIONHEADER_OFFSET ;
+ int STREAM_SEEK_SET ;
+ int StorageUtl_WriteDWord (int ,int ,int) ;
+ void* VT_I2 ;
+ void* VT_I4 ;
+ scalar_t__ dictionary_num_entries (int ) ;
 
 __attribute__((used)) static HRESULT PropertyStorage_WriteToStream(PropertyStorage_impl *This)
 {
@@ -63,7 +63,7 @@ __attribute__((used)) static HRESULT PropertyStorage_WriteToStream(PropertyStora
 
     PropertyStorage_WriteHeadersToStream(This);
 
-    /* Count properties.  Always at least one property, the code page */
+
     numProps = 1;
     if (dictionary_num_entries(This->name_to_propid))
         numProps++;
@@ -73,12 +73,12 @@ __attribute__((used)) static HRESULT PropertyStorage_WriteToStream(PropertyStora
         numProps++;
     numProps += dictionary_num_entries(This->propid_to_prop);
 
-    /* Write section header with 0 bytes right now, I'll adjust it after
-     * writing properties.
-     */
+
+
+
     PropertyStorage_MakeSectionHdr(0, numProps, &sectionHdr);
     seek.QuadPart = SECTIONHEADER_OFFSET;
-    hr = IStream_Seek(This->stm, seek, STREAM_SEEK_SET, NULL);
+    hr = IStream_Seek(This->stm, seek, STREAM_SEEK_SET, ((void*)0));
     if (FAILED(hr))
         goto end;
     hr = IStream_Write(This->stm, &sectionHdr, sizeof(sectionHdr), &count);
@@ -130,9 +130,9 @@ __attribute__((used)) static HRESULT PropertyStorage_WriteToStream(PropertyStora
     if (FAILED(hr))
         goto end;
 
-    /* Now write the byte count of the section */
+
     seek.QuadPart = SECTIONHEADER_OFFSET;
-    hr = IStream_Seek(This->stm, seek, STREAM_SEEK_SET, NULL);
+    hr = IStream_Seek(This->stm, seek, STREAM_SEEK_SET, ((void*)0));
     if (FAILED(hr))
         goto end;
     StorageUtl_WriteDWord((LPBYTE)&dwTemp, 0, sectionOffset);

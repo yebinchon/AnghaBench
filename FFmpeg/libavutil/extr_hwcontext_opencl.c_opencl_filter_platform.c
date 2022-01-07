@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  cl_platform_id ;
-struct TYPE_6__ {int /*<<< orphan*/  key; int /*<<< orphan*/  name; } ;
-struct TYPE_5__ {int /*<<< orphan*/  key; int /*<<< orphan*/  value; } ;
-typedef  int /*<<< orphan*/  AVHWDeviceContext ;
-typedef  TYPE_1__ AVDictionaryEntry ;
-typedef  int /*<<< orphan*/  AVDictionary ;
 
-/* Variables and functions */
- int AVERROR_UNKNOWN ; 
- int /*<<< orphan*/  AV_LOG_DEBUG ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int FF_ARRAY_ELEMS (TYPE_2__*) ; 
- TYPE_1__* av_dict_get (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_free (char*) ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  av_stristr (char*,int /*<<< orphan*/ ) ; 
- char* opencl_get_platform_string (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_2__* opencl_platform_params ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int cl_platform_id ;
+struct TYPE_6__ {int key; int name; } ;
+struct TYPE_5__ {int key; int value; } ;
+typedef int AVHWDeviceContext ;
+typedef TYPE_1__ AVDictionaryEntry ;
+typedef int AVDictionary ;
+
+
+ int AVERROR_UNKNOWN ;
+ int AV_LOG_DEBUG ;
+ int AV_LOG_ERROR ;
+ int FF_ARRAY_ELEMS (TYPE_2__*) ;
+ TYPE_1__* av_dict_get (int *,int ,int *,int ) ;
+ int av_free (char*) ;
+ int av_log (int *,int ,char*,int ,char const*) ;
+ int av_stristr (char*,int ) ;
+ char* opencl_get_platform_string (int ,int ) ;
+ TYPE_2__* opencl_platform_params ;
 
 __attribute__((used)) static int opencl_filter_platform(AVHWDeviceContext *hwdev,
                                   cl_platform_id platform_id,
@@ -43,7 +43,7 @@ __attribute__((used)) static int opencl_filter_platform(AVHWDeviceContext *hwdev
 
     for (i = 0; i < FF_ARRAY_ELEMS(opencl_platform_params); i++) {
         param = av_dict_get(opts, opencl_platform_params[i].key,
-                            NULL, 0);
+                            ((void*)0), 0);
         if (!param)
             continue;
 

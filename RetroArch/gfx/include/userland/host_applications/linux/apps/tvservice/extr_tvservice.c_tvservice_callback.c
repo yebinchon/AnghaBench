@@ -1,28 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOG_INFO (char*,...) ; 
-#define  VC_HDMI_ATTACHED 135 
-#define  VC_HDMI_DVI 134 
-#define  VC_HDMI_HDCP_AUTH 133 
-#define  VC_HDMI_HDCP_KEY_DOWNLOAD 132 
-#define  VC_HDMI_HDCP_SRM_DOWNLOAD 131 
-#define  VC_HDMI_HDCP_UNAUTH 130 
-#define  VC_HDMI_HDMI 129 
-#define  VC_HDMI_UNPLUGGED 128 
 
+
+
+typedef int uint32_t ;
+
+
+ int LOG_INFO (char*,...) ;
 __attribute__((used)) static void tvservice_callback( void *callback_data,
                                 uint32_t reason,
                                 uint32_t param1,
@@ -34,49 +25,49 @@ __attribute__((used)) static void tvservice_callback( void *callback_data,
 
    switch ( reason )
    {
-      case VC_HDMI_UNPLUGGED:
+      case 128:
       {
          LOG_INFO( "HDMI cable is unplugged" );
          break;
       }
-      case VC_HDMI_ATTACHED:
+      case 135:
       {
          LOG_INFO( "HDMI is attached" );
          break;
       }
-      case VC_HDMI_DVI:
+      case 134:
       {
          LOG_INFO( "HDMI in DVI mode" );
          break;
       }
-      case VC_HDMI_HDMI:
+      case 129:
       {
          LOG_INFO( "HDMI in HDMI mode" );
          break;
       }
-      case VC_HDMI_HDCP_UNAUTH:
+      case 130:
       {
          LOG_INFO( "HDCP authentication is broken" );
          break;
       }
-      case VC_HDMI_HDCP_AUTH:
+      case 133:
       {
          LOG_INFO( "HDCP is active" );
          break;
       }
-      case VC_HDMI_HDCP_KEY_DOWNLOAD:
+      case 132:
       {
          LOG_INFO( "HDCP key download" );
          break;
       }
-      case VC_HDMI_HDCP_SRM_DOWNLOAD:
+      case 131:
       {
          LOG_INFO( "HDCP revocation list download" );
          break;
       }
       default:
       {
-         // Ignore all other reasons
+
          LOG_INFO( "Callback with reason %d", reason );
          break;
       }

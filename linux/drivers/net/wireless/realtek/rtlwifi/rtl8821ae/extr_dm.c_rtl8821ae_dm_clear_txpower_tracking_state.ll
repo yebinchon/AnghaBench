@@ -1,0 +1,167 @@
+; ModuleID = '/home/carl/AnghaBench/linux/drivers/net/wireless/realtek/rtlwifi/rtl8821ae/extr_dm.c_rtl8821ae_dm_clear_txpower_tracking_state.c'
+source_filename = "/home/carl/AnghaBench/linux/drivers/net/wireless/realtek/rtlwifi/rtl8821ae/extr_dm.c_rtl8821ae_dm_clear_txpower_tracking_state.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+%struct.ieee80211_hw = type { i32 }
+%struct.rtl_priv = type { i32 }
+%struct.rtl_dm = type { i32, i32, i32, i32, i32, i64, i64*, i64*, i64*, i64*, i64*, i32, i32*, i32*, i32*, i64, i32, i32, i32 }
+%struct.rtl_efuse = type { i32 }
+
+@RF90_PATH_A = common dso_local global i64 0, align 8
+@RF90_PATH_B = common dso_local global i64 0, align 8
+
+; Function Attrs: noinline nounwind optnone uwtable
+define dso_local void @rtl8821ae_dm_clear_txpower_tracking_state(%struct.ieee80211_hw* %0) #0 {
+  %2 = alloca %struct.ieee80211_hw*, align 8
+  %3 = alloca %struct.rtl_priv*, align 8
+  %4 = alloca %struct.rtl_dm*, align 8
+  %5 = alloca %struct.rtl_efuse*, align 8
+  %6 = alloca i64, align 8
+  store %struct.ieee80211_hw* %0, %struct.ieee80211_hw** %2, align 8
+  %7 = load %struct.ieee80211_hw*, %struct.ieee80211_hw** %2, align 8
+  %8 = call %struct.rtl_priv* @rtl_priv(%struct.ieee80211_hw* %7)
+  store %struct.rtl_priv* %8, %struct.rtl_priv** %3, align 8
+  %9 = load %struct.rtl_priv*, %struct.rtl_priv** %3, align 8
+  %10 = call %struct.rtl_dm* @rtl_dm(%struct.rtl_priv* %9)
+  store %struct.rtl_dm* %10, %struct.rtl_dm** %4, align 8
+  %11 = load %struct.rtl_priv*, %struct.rtl_priv** %3, align 8
+  %12 = call %struct.rtl_efuse* @rtl_efuse(%struct.rtl_priv* %11)
+  store %struct.rtl_efuse* %12, %struct.rtl_efuse** %5, align 8
+  store i64 0, i64* %6, align 8
+  %13 = load %struct.rtl_dm*, %struct.rtl_dm** %4, align 8
+  %14 = getelementptr inbounds %struct.rtl_dm, %struct.rtl_dm* %13, i32 0, i32 16
+  %15 = load i32, i32* %14, align 8
+  %16 = load %struct.rtl_dm*, %struct.rtl_dm** %4, align 8
+  %17 = getelementptr inbounds %struct.rtl_dm, %struct.rtl_dm* %16, i32 0, i32 18
+  store i32 %15, i32* %17, align 8
+  %18 = load %struct.rtl_dm*, %struct.rtl_dm** %4, align 8
+  %19 = getelementptr inbounds %struct.rtl_dm, %struct.rtl_dm* %18, i32 0, i32 16
+  %20 = load i32, i32* %19, align 8
+  %21 = load %struct.rtl_dm*, %struct.rtl_dm** %4, align 8
+  %22 = getelementptr inbounds %struct.rtl_dm, %struct.rtl_dm* %21, i32 0, i32 17
+  store i32 %20, i32* %22, align 4
+  %23 = load %struct.rtl_dm*, %struct.rtl_dm** %4, align 8
+  %24 = getelementptr inbounds %struct.rtl_dm, %struct.rtl_dm* %23, i32 0, i32 15
+  store i64 0, i64* %24, align 8
+  %25 = load i64, i64* @RF90_PATH_A, align 8
+  store i64 %25, i64* %6, align 8
+  br label %26
+
+26:                                               ; preds = %80, %1
+  %27 = load i64, i64* %6, align 8
+  %28 = load i64, i64* @RF90_PATH_B, align 8
+  %29 = icmp ule i64 %27, %28
+  br i1 %29, label %30, label %83
+
+30:                                               ; preds = %26
+  %31 = load %struct.rtl_dm*, %struct.rtl_dm** %4, align 8
+  %32 = getelementptr inbounds %struct.rtl_dm, %struct.rtl_dm* %31, i32 0, i32 11
+  %33 = load i32, i32* %32, align 8
+  %34 = load %struct.rtl_dm*, %struct.rtl_dm** %4, align 8
+  %35 = getelementptr inbounds %struct.rtl_dm, %struct.rtl_dm* %34, i32 0, i32 14
+  %36 = load i32*, i32** %35, align 8
+  %37 = load i64, i64* %6, align 8
+  %38 = getelementptr inbounds i32, i32* %36, i64 %37
+  store i32 %33, i32* %38, align 4
+  %39 = load %struct.rtl_dm*, %struct.rtl_dm** %4, align 8
+  %40 = getelementptr inbounds %struct.rtl_dm, %struct.rtl_dm* %39, i32 0, i32 11
+  %41 = load i32, i32* %40, align 8
+  %42 = load %struct.rtl_dm*, %struct.rtl_dm** %4, align 8
+  %43 = getelementptr inbounds %struct.rtl_dm, %struct.rtl_dm* %42, i32 0, i32 13
+  %44 = load i32*, i32** %43, align 8
+  %45 = load i64, i64* %6, align 8
+  %46 = getelementptr inbounds i32, i32* %44, i64 %45
+  store i32 %41, i32* %46, align 4
+  %47 = load %struct.rtl_dm*, %struct.rtl_dm** %4, align 8
+  %48 = getelementptr inbounds %struct.rtl_dm, %struct.rtl_dm* %47, i32 0, i32 11
+  %49 = load i32, i32* %48, align 8
+  %50 = load %struct.rtl_dm*, %struct.rtl_dm** %4, align 8
+  %51 = getelementptr inbounds %struct.rtl_dm, %struct.rtl_dm* %50, i32 0, i32 12
+  %52 = load i32*, i32** %51, align 8
+  %53 = load i64, i64* %6, align 8
+  %54 = getelementptr inbounds i32, i32* %52, i64 %53
+  store i32 %49, i32* %54, align 4
+  %55 = load %struct.rtl_dm*, %struct.rtl_dm** %4, align 8
+  %56 = getelementptr inbounds %struct.rtl_dm, %struct.rtl_dm* %55, i32 0, i32 10
+  %57 = load i64*, i64** %56, align 8
+  %58 = load i64, i64* %6, align 8
+  %59 = getelementptr inbounds i64, i64* %57, i64 %58
+  store i64 0, i64* %59, align 8
+  %60 = load %struct.rtl_dm*, %struct.rtl_dm** %4, align 8
+  %61 = getelementptr inbounds %struct.rtl_dm, %struct.rtl_dm* %60, i32 0, i32 9
+  %62 = load i64*, i64** %61, align 8
+  %63 = load i64, i64* %6, align 8
+  %64 = getelementptr inbounds i64, i64* %62, i64 %63
+  store i64 0, i64* %64, align 8
+  %65 = load %struct.rtl_dm*, %struct.rtl_dm** %4, align 8
+  %66 = getelementptr inbounds %struct.rtl_dm, %struct.rtl_dm* %65, i32 0, i32 8
+  %67 = load i64*, i64** %66, align 8
+  %68 = load i64, i64* %6, align 8
+  %69 = getelementptr inbounds i64, i64* %67, i64 %68
+  store i64 0, i64* %69, align 8
+  %70 = load %struct.rtl_dm*, %struct.rtl_dm** %4, align 8
+  %71 = getelementptr inbounds %struct.rtl_dm, %struct.rtl_dm* %70, i32 0, i32 7
+  %72 = load i64*, i64** %71, align 8
+  %73 = load i64, i64* %6, align 8
+  %74 = getelementptr inbounds i64, i64* %72, i64 %73
+  store i64 0, i64* %74, align 8
+  %75 = load %struct.rtl_dm*, %struct.rtl_dm** %4, align 8
+  %76 = getelementptr inbounds %struct.rtl_dm, %struct.rtl_dm* %75, i32 0, i32 6
+  %77 = load i64*, i64** %76, align 8
+  %78 = load i64, i64* %6, align 8
+  %79 = getelementptr inbounds i64, i64* %77, i64 %78
+  store i64 0, i64* %79, align 8
+  br label %80
+
+80:                                               ; preds = %30
+  %81 = load i64, i64* %6, align 8
+  %82 = add i64 %81, 1
+  store i64 %82, i64* %6, align 8
+  br label %26
+
+83:                                               ; preds = %26
+  %84 = load %struct.rtl_dm*, %struct.rtl_dm** %4, align 8
+  %85 = getelementptr inbounds %struct.rtl_dm, %struct.rtl_dm* %84, i32 0, i32 0
+  store i32 0, i32* %85, align 8
+  %86 = load %struct.rtl_dm*, %struct.rtl_dm** %4, align 8
+  %87 = getelementptr inbounds %struct.rtl_dm, %struct.rtl_dm* %86, i32 0, i32 1
+  store i32 0, i32* %87, align 4
+  %88 = load %struct.rtl_dm*, %struct.rtl_dm** %4, align 8
+  %89 = getelementptr inbounds %struct.rtl_dm, %struct.rtl_dm* %88, i32 0, i32 5
+  store i64 0, i64* %89, align 8
+  %90 = load %struct.rtl_efuse*, %struct.rtl_efuse** %5, align 8
+  %91 = getelementptr inbounds %struct.rtl_efuse, %struct.rtl_efuse* %90, i32 0, i32 0
+  %92 = load i32, i32* %91, align 4
+  %93 = load %struct.rtl_dm*, %struct.rtl_dm** %4, align 8
+  %94 = getelementptr inbounds %struct.rtl_dm, %struct.rtl_dm* %93, i32 0, i32 4
+  store i32 %92, i32* %94, align 8
+  %95 = load %struct.rtl_efuse*, %struct.rtl_efuse** %5, align 8
+  %96 = getelementptr inbounds %struct.rtl_efuse, %struct.rtl_efuse* %95, i32 0, i32 0
+  %97 = load i32, i32* %96, align 4
+  %98 = load %struct.rtl_dm*, %struct.rtl_dm** %4, align 8
+  %99 = getelementptr inbounds %struct.rtl_dm, %struct.rtl_dm* %98, i32 0, i32 3
+  store i32 %97, i32* %99, align 4
+  %100 = load %struct.rtl_efuse*, %struct.rtl_efuse** %5, align 8
+  %101 = getelementptr inbounds %struct.rtl_efuse, %struct.rtl_efuse* %100, i32 0, i32 0
+  %102 = load i32, i32* %101, align 4
+  %103 = load %struct.rtl_dm*, %struct.rtl_dm** %4, align 8
+  %104 = getelementptr inbounds %struct.rtl_dm, %struct.rtl_dm* %103, i32 0, i32 2
+  store i32 %102, i32* %104, align 8
+  ret void
+}
+
+declare dso_local %struct.rtl_priv* @rtl_priv(%struct.ieee80211_hw*) #1
+
+declare dso_local %struct.rtl_dm* @rtl_dm(%struct.rtl_priv*) #1
+
+declare dso_local %struct.rtl_efuse* @rtl_efuse(%struct.rtl_priv*) #1
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

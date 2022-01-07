@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t mbedtls_mpi_uint ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef size_t mbedtls_mpi_uint ;
 struct TYPE_5__ {size_t* p; } ;
-typedef  TYPE_1__ mbedtls_mpi ;
+typedef TYPE_1__ mbedtls_mpi ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHARS_TO_LIMBS (size_t) ; 
- int /*<<< orphan*/  MBEDTLS_MPI_CHK (int /*<<< orphan*/ ) ; 
- size_t ciL ; 
- int /*<<< orphan*/  mbedtls_mpi_grow (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mbedtls_mpi_lset (TYPE_1__*,int /*<<< orphan*/ ) ; 
+
+ int CHARS_TO_LIMBS (size_t) ;
+ int MBEDTLS_MPI_CHK (int ) ;
+ size_t ciL ;
+ int mbedtls_mpi_grow (TYPE_1__*,int ) ;
+ int mbedtls_mpi_lset (TYPE_1__*,int ) ;
 
 int mbedtls_mpi_read_binary( mbedtls_mpi *X, const unsigned char *buf, size_t buflen )
 {

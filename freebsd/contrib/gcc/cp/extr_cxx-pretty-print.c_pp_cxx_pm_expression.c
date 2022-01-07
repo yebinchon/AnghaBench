@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
-typedef  int /*<<< orphan*/  cxx_pretty_printer ;
 
-/* Variables and functions */
-#define  DOTSTAR_EXPR 130 
-#define  MEMBER_REF 129 
-#define  OFFSET_REF 128 
- int TREE_CODE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TREE_OPERAND (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  TYPE_P (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pp_cxx_cast_expression (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pp_cxx_dot (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pp_cxx_qualified_id (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pp_star (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int tree ;
+typedef int cxx_pretty_printer ;
+
+
+
+
+
+ int TREE_CODE (int ) ;
+ int TREE_OPERAND (int ,int) ;
+ int TYPE_P (int ) ;
+ int pp_cxx_cast_expression (int *,int ) ;
+ int pp_cxx_dot (int *) ;
+ int pp_cxx_qualified_id (int *,int ) ;
+ int pp_star (int *) ;
 
 __attribute__((used)) static void
 pp_cxx_pm_expression (cxx_pretty_printer *pp, tree t)
 {
   switch (TREE_CODE (t))
     {
-      /* Handle unfortunate OFFESET_REF overloading here.  */
-    case OFFSET_REF:
+
+    case 128:
       if (TYPE_P (TREE_OPERAND (t, 0)))
-	{
-	  pp_cxx_qualified_id (pp, t);
-	  break;
-	}
-      /* Else fall through.  */
-    case MEMBER_REF:
-    case DOTSTAR_EXPR:
+ {
+   pp_cxx_qualified_id (pp, t);
+   break;
+ }
+
+    case 129:
+    case 130:
       pp_cxx_pm_expression (pp, TREE_OPERAND (t, 0));
       pp_cxx_dot (pp);
       pp_star(pp);

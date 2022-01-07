@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  kmutex_t ;
-typedef  int /*<<< orphan*/  kcondvar_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TASK_INTERRUPTIBLE ; 
- int /*<<< orphan*/  current ; 
- int /*<<< orphan*/  cv_wait_common (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- scalar_t__ signal_pending (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int kmutex_t ;
+typedef int kcondvar_t ;
+
+
+ int TASK_INTERRUPTIBLE ;
+ int current ;
+ int cv_wait_common (int *,int *,int ,int) ;
+ scalar_t__ signal_pending (int ) ;
 
 int
 __cv_wait_io_sig(kcondvar_t *cvp, kmutex_t *mp)
 {
-	cv_wait_common(cvp, mp, TASK_INTERRUPTIBLE, 1);
+ cv_wait_common(cvp, mp, TASK_INTERRUPTIBLE, 1);
 
-	return (signal_pending(current) ? 0 : 1);
+ return (signal_pending(current) ? 0 : 1);
 }

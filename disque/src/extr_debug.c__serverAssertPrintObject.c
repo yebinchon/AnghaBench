@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  robj ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LL_WARNING ; 
- int /*<<< orphan*/  bugReportStart () ; 
- int /*<<< orphan*/  serverLog (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  serverLogObjectDebugInfo (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int robj ;
+
+
+ int LL_WARNING ;
+ int bugReportStart () ;
+ int serverLog (int ,char*) ;
+ int serverLogObjectDebugInfo (int *) ;
 
 void _serverAssertPrintObject(robj *o) {
     bugReportStart();

@@ -1,68 +1,68 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uint64_t ;
-typedef  int /*<<< orphan*/  sd_event_source ;
-typedef  int /*<<< orphan*/  sd_event ;
-typedef  int int64_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLOCK_MONOTONIC ; 
- int /*<<< orphan*/  EPOLLIN ; 
- int /*<<< orphan*/ * INT_TO_PTR (char) ; 
- int /*<<< orphan*/  SD_EVENT_ONESHOT ; 
- scalar_t__ SIGRTMIN ; 
- int /*<<< orphan*/  SIG_BLOCK ; 
- int USEC_PER_MSEC ; 
- int /*<<< orphan*/  assert_se (int) ; 
- int do_quit ; 
- int /*<<< orphan*/  exit_handler ; 
- int got_a ; 
- int got_b ; 
- int got_c ; 
- int got_d ; 
- int got_exit ; 
- int got_post ; 
- int got_unref ; 
- int /*<<< orphan*/  io_handler ; 
- scalar_t__ pipe (int*) ; 
- int /*<<< orphan*/  post_handler ; 
- int /*<<< orphan*/  prepare_handler ; 
- int /*<<< orphan*/  safe_close_pair (int*) ; 
- scalar_t__ sd_event_add_exit (int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ sd_event_add_io (int /*<<< orphan*/ *,int /*<<< orphan*/ **,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ sd_event_add_post (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ sd_event_add_signal (int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ sd_event_add_time (int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ sd_event_default (int /*<<< orphan*/ **) ; 
- scalar_t__ sd_event_loop (int /*<<< orphan*/ *) ; 
- scalar_t__ sd_event_now (int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__*) ; 
- int sd_event_run (int /*<<< orphan*/ *,scalar_t__) ; 
- scalar_t__ sd_event_set_watchdog (int /*<<< orphan*/ *,int) ; 
- scalar_t__ sd_event_source_get_priority (int /*<<< orphan*/ *,int*) ; 
- scalar_t__ sd_event_source_set_enabled (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ sd_event_source_set_prepare (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ sd_event_source_set_priority (int /*<<< orphan*/ *,int) ; 
- scalar_t__ sd_event_source_set_time (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  sd_event_source_unref (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sd_event_unref (int /*<<< orphan*/ *) ; 
- scalar_t__ sigprocmask_many (int /*<<< orphan*/ ,int /*<<< orphan*/ *,scalar_t__,int) ; 
- int /*<<< orphan*/  time_handler ; 
- int /*<<< orphan*/  unref_handler ; 
- int write (int,char const*,int) ; 
+
+
+
+typedef scalar_t__ uint64_t ;
+typedef int sd_event_source ;
+typedef int sd_event ;
+typedef int int64_t ;
+
+
+ int CLOCK_MONOTONIC ;
+ int EPOLLIN ;
+ int * INT_TO_PTR (char) ;
+ int SD_EVENT_ONESHOT ;
+ scalar_t__ SIGRTMIN ;
+ int SIG_BLOCK ;
+ int USEC_PER_MSEC ;
+ int assert_se (int) ;
+ int do_quit ;
+ int exit_handler ;
+ int got_a ;
+ int got_b ;
+ int got_c ;
+ int got_d ;
+ int got_exit ;
+ int got_post ;
+ int got_unref ;
+ int io_handler ;
+ scalar_t__ pipe (int*) ;
+ int post_handler ;
+ int prepare_handler ;
+ int safe_close_pair (int*) ;
+ scalar_t__ sd_event_add_exit (int *,int **,int ,int *) ;
+ scalar_t__ sd_event_add_io (int *,int **,int,int ,int ,int *) ;
+ scalar_t__ sd_event_add_post (int *,int *,int ,int *) ;
+ scalar_t__ sd_event_add_signal (int *,int *,scalar_t__,int *,int *) ;
+ scalar_t__ sd_event_add_time (int *,int **,int ,int ,int ,int ,int *) ;
+ scalar_t__ sd_event_default (int **) ;
+ scalar_t__ sd_event_loop (int *) ;
+ scalar_t__ sd_event_now (int *,int ,scalar_t__*) ;
+ int sd_event_run (int *,scalar_t__) ;
+ scalar_t__ sd_event_set_watchdog (int *,int) ;
+ scalar_t__ sd_event_source_get_priority (int *,int*) ;
+ scalar_t__ sd_event_source_set_enabled (int *,int ) ;
+ scalar_t__ sd_event_source_set_prepare (int *,int ) ;
+ scalar_t__ sd_event_source_set_priority (int *,int) ;
+ scalar_t__ sd_event_source_set_time (int *,scalar_t__) ;
+ int sd_event_source_unref (int *) ;
+ int sd_event_unref (int *) ;
+ scalar_t__ sigprocmask_many (int ,int *,scalar_t__,int) ;
+ int time_handler ;
+ int unref_handler ;
+ int write (int,char const*,int) ;
 
 __attribute__((used)) static void test_basic(void) {
-        sd_event *e = NULL;
-        sd_event_source *w = NULL, *x = NULL, *y = NULL, *z = NULL, *q = NULL, *t = NULL;
+        sd_event *e = ((void*)0);
+        sd_event_source *w = ((void*)0), *x = ((void*)0), *y = ((void*)0), *z = ((void*)0), *q = ((void*)0), *t = ((void*)0);
         static const char ch = 'x';
         int a[2] = { -1, -1 }, b[2] = { -1, -1}, d[2] = { -1, -1}, k[2] = { -1, -1 };
         uint64_t event_now;
@@ -76,19 +76,19 @@ __attribute__((used)) static void test_basic(void) {
         assert_se(sd_event_default(&e) >= 0);
         assert_se(sd_event_now(e, CLOCK_MONOTONIC, &event_now) > 0);
 
-        assert_se(sd_event_set_watchdog(e, true) >= 0);
+        assert_se(sd_event_set_watchdog(e, 1) >= 0);
 
-        /* Test whether we cleanly can destroy an io event source from its own handler */
-        got_unref = false;
-        assert_se(sd_event_add_io(e, &t, k[0], EPOLLIN, unref_handler, NULL) >= 0);
+
+        got_unref = 0;
+        assert_se(sd_event_add_io(e, &t, k[0], EPOLLIN, unref_handler, ((void*)0)) >= 0);
         assert_se(write(k[1], &ch, 1) == 1);
         assert_se(sd_event_run(e, (uint64_t) -1) >= 1);
         assert_se(got_unref);
 
-        got_a = false, got_b = false, got_c = false, got_d = 0;
+        got_a = 0, got_b = 0, got_c = 0, got_d = 0;
 
-        /* Add a oneshot handler, trigger it, reenable it, and trigger
-         * it again. */
+
+
         assert_se(sd_event_add_io(e, &w, d[0], EPOLLIN, io_handler, INT_TO_PTR('d')) >= 0);
         assert_se(sd_event_source_set_enabled(w, SD_EVENT_ONESHOT) >= 0);
         assert_se(write(d[1], &ch, 1) >= 0);
@@ -112,9 +112,9 @@ __attribute__((used)) static void test_basic(void) {
         assert_se(sd_event_source_set_enabled(z, SD_EVENT_ONESHOT) >= 0);
         assert_se(sd_event_source_set_prepare(z, prepare_handler) >= 0);
 
-        /* Test for floating event sources */
-        assert_se(sigprocmask_many(SIG_BLOCK, NULL, SIGRTMIN+1, -1) >= 0);
-        assert_se(sd_event_add_signal(e, NULL, SIGRTMIN+1, NULL, NULL) >= 0);
+
+        assert_se(sigprocmask_many(SIG_BLOCK, ((void*)0), SIGRTMIN+1, -1) >= 0);
+        assert_se(sd_event_add_signal(e, ((void*)0), SIGRTMIN+1, ((void*)0), ((void*)0)) >= 0);
 
         assert_se(write(a[1], &ch, 1) >= 0);
         assert_se(write(b[1], &ch, 1) >= 0);
@@ -136,8 +136,8 @@ __attribute__((used)) static void test_basic(void) {
         sd_event_source_unref(x);
         sd_event_source_unref(y);
 
-        do_quit = true;
-        assert_se(sd_event_add_post(e, NULL, post_handler, NULL) >= 0);
+        do_quit = 1;
+        assert_se(sd_event_add_post(e, ((void*)0), post_handler, ((void*)0)) >= 0);
         assert_se(sd_event_now(e, CLOCK_MONOTONIC, &event_now) == 0);
         assert_se(sd_event_source_set_time(z, event_now + 200 * USEC_PER_MSEC) >= 0);
         assert_se(sd_event_source_set_enabled(z, SD_EVENT_ONESHOT) >= 0);

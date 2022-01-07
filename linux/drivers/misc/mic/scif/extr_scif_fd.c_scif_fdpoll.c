@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct scif_endpt {int dummy; } ;
 struct file {struct scif_endpt* private_data; } ;
-typedef  int /*<<< orphan*/  poll_table ;
-typedef  int /*<<< orphan*/  __poll_t ;
+typedef int poll_table ;
+typedef int __poll_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  __scif_pollfd (struct file*,int /*<<< orphan*/ *,struct scif_endpt*) ; 
+
+ int __scif_pollfd (struct file*,int *,struct scif_endpt*) ;
 
 __attribute__((used)) static __poll_t scif_fdpoll(struct file *f, poll_table *wait)
 {
-	struct scif_endpt *priv = f->private_data;
+ struct scif_endpt *priv = f->private_data;
 
-	return __scif_pollfd(f, wait, priv);
+ return __scif_pollfd(f, wait, priv);
 }

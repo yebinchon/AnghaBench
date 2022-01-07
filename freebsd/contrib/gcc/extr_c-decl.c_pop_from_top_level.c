@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  current_function_decl ; 
- int /*<<< orphan*/  current_scope ; 
- int /*<<< orphan*/  save_current_function_decl ; 
- int /*<<< orphan*/  save_current_scope ; 
+ int current_function_decl ;
+ int current_scope ;
+ int save_current_function_decl ;
+ int save_current_scope ;
 
 void
 pop_from_top_level (void)

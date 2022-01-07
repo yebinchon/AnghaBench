@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct hostapd_sta_wpa_psk_short {int /*<<< orphan*/  ref; } ;
 
-/* Variables and functions */
+
+
+
+struct hostapd_sta_wpa_psk_short {int ref; } ;
+
+
 
 __attribute__((used)) static void copy_psk_list(struct hostapd_sta_wpa_psk_short **psk,
-			  struct hostapd_sta_wpa_psk_short *src)
+     struct hostapd_sta_wpa_psk_short *src)
 {
-	if (!psk)
-		return;
+ if (!psk)
+  return;
 
-	if (src)
-		src->ref++;
+ if (src)
+  src->ref++;
 
-	*psk = src;
+ *psk = src;
 }

@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  json_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int json_t ;
 struct TYPE_3__ {int line; char* text; } ;
-typedef  TYPE_1__ json_error_t ;
+typedef TYPE_1__ json_error_t ;
 
-/* Variables and functions */
- char* URL_FORMAT ; 
- int URL_SIZE ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/ * json_array_get (int /*<<< orphan*/ *,size_t) ; 
- size_t json_array_size (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  json_decref (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  json_is_array (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  json_is_object (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  json_is_string (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * json_loads (char*,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/ * json_object_get (int /*<<< orphan*/ *,char*) ; 
- char* json_string_value (int /*<<< orphan*/ *) ; 
- char* newline_offset (char const*) ; 
- int /*<<< orphan*/  printf (char*,char*,char*,char const*) ; 
- char* request (char*) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,char*,char*) ; 
- int /*<<< orphan*/  stderr ; 
+
+ char* URL_FORMAT ;
+ int URL_SIZE ;
+ int fprintf (int ,char*,...) ;
+ int free (char*) ;
+ int * json_array_get (int *,size_t) ;
+ size_t json_array_size (int *) ;
+ int json_decref (int *) ;
+ int json_is_array (int *) ;
+ int json_is_object (int *) ;
+ int json_is_string (int *) ;
+ int * json_loads (char*,int ,TYPE_1__*) ;
+ int * json_object_get (int *,char*) ;
+ char* json_string_value (int *) ;
+ char* newline_offset (char const*) ;
+ int printf (char*,char*,char*,char const*) ;
+ char* request (char*) ;
+ int snprintf (char*,int,char*,char*,char*) ;
+ int stderr ;
 
 int main(int argc, char *argv[])
 {

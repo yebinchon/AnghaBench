@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct device_attribute {int dummy; } ;
 struct device {int dummy; } ;
 struct TYPE_2__ {int vid; } ;
-struct atxp1_data {int /*<<< orphan*/  vrm; TYPE_1__ reg; } ;
-typedef  int ssize_t ;
+struct atxp1_data {int vrm; TYPE_1__ reg; } ;
+typedef int ssize_t ;
 
-/* Variables and functions */
- int ATXP1_VIDMASK ; 
- struct atxp1_data* atxp1_update_device (struct device*) ; 
- int sprintf (char*,char*,int) ; 
- int vid_from_reg (int,int /*<<< orphan*/ ) ; 
+
+ int ATXP1_VIDMASK ;
+ struct atxp1_data* atxp1_update_device (struct device*) ;
+ int sprintf (char*,char*,int) ;
+ int vid_from_reg (int,int ) ;
 
 __attribute__((used)) static ssize_t atxp1_showvcore(struct device *dev, struct device_attribute *attr, char *buf)
 {
-	int size;
-	struct atxp1_data *data;
+ int size;
+ struct atxp1_data *data;
 
-	data = atxp1_update_device(dev);
+ data = atxp1_update_device(dev);
 
-	size = sprintf(buf, "%d\n", vid_from_reg(data->reg.vid & ATXP1_VIDMASK, data->vrm));
+ size = sprintf(buf, "%d\n", vid_from_reg(data->reg.vid & ATXP1_VIDMASK, data->vrm));
 
-	return size;
+ return size;
 }

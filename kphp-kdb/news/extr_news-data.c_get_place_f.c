@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int place; int owner; int type; int /*<<< orphan*/ * last; int /*<<< orphan*/ * first; struct TYPE_4__* hnext; } ;
-typedef  TYPE_1__ place_t ;
-typedef  int /*<<< orphan*/  notify_place_t ;
-typedef  int /*<<< orphan*/  comment_t ;
 
-/* Variables and functions */
- scalar_t__ COMM_MODE ; 
- int NOTIFY_MODE ; 
- unsigned int PLACES_HASH ; 
- void** Place ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  tot_places ; 
- int /*<<< orphan*/  vkprintf (int,char*,...) ; 
- TYPE_1__* zmalloc0 (int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int place; int owner; int type; int * last; int * first; struct TYPE_4__* hnext; } ;
+typedef TYPE_1__ place_t ;
+typedef int notify_place_t ;
+typedef int comment_t ;
+
+
+ scalar_t__ COMM_MODE ;
+ int NOTIFY_MODE ;
+ unsigned int PLACES_HASH ;
+ void** Place ;
+ int assert (int) ;
+ int tot_places ;
+ int vkprintf (int,char*,...) ;
+ TYPE_1__* zmalloc0 (int) ;
 
 __attribute__((used)) static place_t *get_place_f (int type, int owner, int place, int force) {
   assert (NOTIFY_MODE || COMM_MODE);

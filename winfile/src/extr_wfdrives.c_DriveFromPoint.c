@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int left; int right; int top; int bottom; } ;
-typedef  TYPE_1__ RECT ;
-typedef  int /*<<< orphan*/  POINT ;
-typedef  int INT ;
-typedef  scalar_t__ HWND ;
-typedef  scalar_t__ DRIVEIND ;
+typedef TYPE_1__ RECT ;
+typedef int POINT ;
+typedef int INT ;
+typedef scalar_t__ HWND ;
+typedef scalar_t__ DRIVEIND ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetClientRect (scalar_t__,TYPE_1__*) ; 
- int /*<<< orphan*/  InflateRect (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ PtInRect (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bDriveBar ; 
- scalar_t__ cDrives ; 
- int dxDrive ; 
- int /*<<< orphan*/  dyBorder ; 
- int dyDrive ; 
- scalar_t__ hwndDriveBar ; 
+
+ int GetClientRect (scalar_t__,TYPE_1__*) ;
+ int InflateRect (TYPE_1__*,int ,int ) ;
+ scalar_t__ PtInRect (TYPE_1__*,int ) ;
+ int bDriveBar ;
+ scalar_t__ cDrives ;
+ int dxDrive ;
+ int dyBorder ;
+ int dyDrive ;
+ scalar_t__ hwndDriveBar ;
 
 INT
 DriveFromPoint(HWND hwnd, POINT pt)
@@ -64,5 +64,5 @@ DriveFromPoint(HWND hwnd, POINT pt)
       }
    }
 
-   return -1;      // no hit
+   return -1;
 }

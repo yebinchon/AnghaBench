@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_11__ {scalar_t__* linesize; scalar_t__* data; } ;
-struct TYPE_10__ {int width; int height; int /*<<< orphan*/  avctx; TYPE_1__* picture_ptr; } ;
+struct TYPE_10__ {int width; int height; int avctx; TYPE_1__* picture_ptr; } ;
 struct TYPE_9__ {int mb_width; int mb_height; } ;
-struct TYPE_8__ {scalar_t__* linesize; int /*<<< orphan*/ * data; } ;
-typedef  TYPE_2__ MXpegDecodeContext ;
-typedef  TYPE_3__ MJpegDecodeContext ;
-typedef  TYPE_4__ AVFrame ;
+struct TYPE_8__ {scalar_t__* linesize; int * data; } ;
+typedef TYPE_2__ MXpegDecodeContext ;
+typedef TYPE_3__ MJpegDecodeContext ;
+typedef TYPE_4__ AVFrame ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  EINVAL ; 
- int MAX_COMPONENTS ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
+
+ int AVERROR (int ) ;
+ int AV_LOG_ERROR ;
+ int EINVAL ;
+ int MAX_COMPONENTS ;
+ int av_log (int ,int ,char*) ;
 
 __attribute__((used)) static int mxpeg_check_dimensions(MXpegDecodeContext *s, MJpegDecodeContext *jpg,
                                   AVFrame *reference_ptr)

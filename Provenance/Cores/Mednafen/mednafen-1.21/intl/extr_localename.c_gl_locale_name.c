@@ -1,20 +1,12 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char const* gl_locale_name_default () ; 
- char* gl_locale_name_posix (int,char const*) ; 
- char* gl_locale_name_thread (int,char const*) ; 
+ char const* gl_locale_name_default () ;
+ char* gl_locale_name_posix (int,char const*) ;
+ char* gl_locale_name_thread (int,char const*) ;
 
 const char *
 gl_locale_name (int category, const char *categoryname)
@@ -22,11 +14,11 @@ gl_locale_name (int category, const char *categoryname)
   const char *retval;
 
   retval = gl_locale_name_thread (category, categoryname);
-  if (retval != NULL)
+  if (retval != ((void*)0))
     return retval;
 
   retval = gl_locale_name_posix (category, categoryname);
-  if (retval != NULL)
+  if (retval != ((void*)0))
     return retval;
 
   return gl_locale_name_default ();

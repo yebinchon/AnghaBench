@@ -1,67 +1,67 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct sk_buff {scalar_t__ data; } ;
-struct hci_ev_encrypt_change {scalar_t__ encrypt; int /*<<< orphan*/  status; int /*<<< orphan*/  handle; } ;
-struct hci_dev {int /*<<< orphan*/  name; } ;
-struct hci_conn {scalar_t__ state; int /*<<< orphan*/  pend; int /*<<< orphan*/  link_mode; } ;
+struct hci_ev_encrypt_change {scalar_t__ encrypt; int status; int handle; } ;
+struct hci_dev {int name; } ;
+struct hci_conn {scalar_t__ state; int pend; int link_mode; } ;
 
-/* Variables and functions */
- scalar_t__ BT_CONFIG ; 
- scalar_t__ BT_CONNECTED ; 
- int /*<<< orphan*/  BT_DBG (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HCI_CONN_ENCRYPT_PEND ; 
- int /*<<< orphan*/  HCI_LM_AUTH ; 
- int /*<<< orphan*/  HCI_LM_ENCRYPT ; 
- int /*<<< orphan*/  __le16_to_cpu (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  clear_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- struct hci_conn* hci_conn_hash_lookup_handle (struct hci_dev*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hci_conn_put (struct hci_conn*) ; 
- int /*<<< orphan*/  hci_dev_lock (struct hci_dev*) ; 
- int /*<<< orphan*/  hci_dev_unlock (struct hci_dev*) ; 
- int /*<<< orphan*/  hci_encrypt_cfm (struct hci_conn*,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  hci_proto_connect_cfm (struct hci_conn*,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ BT_CONFIG ;
+ scalar_t__ BT_CONNECTED ;
+ int BT_DBG (char*,int ,int ) ;
+ int HCI_CONN_ENCRYPT_PEND ;
+ int HCI_LM_AUTH ;
+ int HCI_LM_ENCRYPT ;
+ int __le16_to_cpu (int ) ;
+ int clear_bit (int ,int *) ;
+ struct hci_conn* hci_conn_hash_lookup_handle (struct hci_dev*,int ) ;
+ int hci_conn_put (struct hci_conn*) ;
+ int hci_dev_lock (struct hci_dev*) ;
+ int hci_dev_unlock (struct hci_dev*) ;
+ int hci_encrypt_cfm (struct hci_conn*,int ,scalar_t__) ;
+ int hci_proto_connect_cfm (struct hci_conn*,int ) ;
 
 __attribute__((used)) static inline void hci_encrypt_change_evt(struct hci_dev *hdev, struct sk_buff *skb)
 {
-	struct hci_ev_encrypt_change *ev = (void *) skb->data;
-	struct hci_conn *conn;
+ struct hci_ev_encrypt_change *ev = (void *) skb->data;
+ struct hci_conn *conn;
 
-	BT_DBG("%s status %d", hdev->name, ev->status);
+ BT_DBG("%s status %d", hdev->name, ev->status);
 
-	hci_dev_lock(hdev);
+ hci_dev_lock(hdev);
 
-	conn = hci_conn_hash_lookup_handle(hdev, __le16_to_cpu(ev->handle));
-	if (conn) {
-		if (!ev->status) {
-			if (ev->encrypt) {
-				/* Encryption implies authentication */
-				conn->link_mode |= HCI_LM_AUTH;
-				conn->link_mode |= HCI_LM_ENCRYPT;
-			} else
-				conn->link_mode &= ~HCI_LM_ENCRYPT;
-		}
+ conn = hci_conn_hash_lookup_handle(hdev, __le16_to_cpu(ev->handle));
+ if (conn) {
+  if (!ev->status) {
+   if (ev->encrypt) {
 
-		clear_bit(HCI_CONN_ENCRYPT_PEND, &conn->pend);
+    conn->link_mode |= HCI_LM_AUTH;
+    conn->link_mode |= HCI_LM_ENCRYPT;
+   } else
+    conn->link_mode &= ~HCI_LM_ENCRYPT;
+  }
 
-		if (conn->state == BT_CONFIG) {
-			if (!ev->status)
-				conn->state = BT_CONNECTED;
+  clear_bit(HCI_CONN_ENCRYPT_PEND, &conn->pend);
 
-			hci_proto_connect_cfm(conn, ev->status);
-			hci_conn_put(conn);
-		} else
-			hci_encrypt_cfm(conn, ev->status, ev->encrypt);
-	}
+  if (conn->state == BT_CONFIG) {
+   if (!ev->status)
+    conn->state = BT_CONNECTED;
 
-	hci_dev_unlock(hdev);
+   hci_proto_connect_cfm(conn, ev->status);
+   hci_conn_put(conn);
+  } else
+   hci_encrypt_cfm(conn, ev->status, ev->encrypt);
+ }
+
+ hci_dev_unlock(hdev);
 }

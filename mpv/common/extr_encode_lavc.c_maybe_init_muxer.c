@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct mux_stream {int /*<<< orphan*/  on_ready_ctx; int /*<<< orphan*/  (* on_ready ) (int /*<<< orphan*/ ) ;int /*<<< orphan*/  st; } ;
-struct encode_priv {int header_written; int failed; int num_streams; struct mux_stream** streams; int /*<<< orphan*/  log; TYPE_4__* muxer; TYPE_2__* metadata; int /*<<< orphan*/  t0; } ;
+
+
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct mux_stream {int on_ready_ctx; int (* on_ready ) (int ) ;int st; } ;
+struct encode_priv {int header_written; int failed; int num_streams; struct mux_stream** streams; int log; TYPE_4__* muxer; TYPE_2__* metadata; int t0; } ;
 struct encode_lavc_context {TYPE_3__* options; struct encode_priv* priv; } ;
-struct TYPE_8__ {int /*<<< orphan*/  metadata; TYPE_1__* oformat; int /*<<< orphan*/  url; int /*<<< orphan*/  pb; } ;
-struct TYPE_7__ {int /*<<< orphan*/  fopts; } ;
-struct TYPE_6__ {int num_keys; int /*<<< orphan*/ * values; int /*<<< orphan*/ * keys; } ;
-struct TYPE_5__ {int flags; int /*<<< orphan*/  name; int /*<<< orphan*/  long_name; } ;
-typedef  int /*<<< orphan*/  AVDictionary ;
+struct TYPE_8__ {int metadata; TYPE_1__* oformat; int url; int pb; } ;
+struct TYPE_7__ {int fopts; } ;
+struct TYPE_6__ {int num_keys; int * values; int * keys; } ;
+struct TYPE_5__ {int flags; int name; int long_name; } ;
+typedef int AVDictionary ;
 
-/* Variables and functions */
- int AVFMT_NOFILE ; 
- int /*<<< orphan*/  AVIO_FLAG_WRITE ; 
- int /*<<< orphan*/  MP_FATAL (struct encode_priv*,char*,...) ; 
- int /*<<< orphan*/  MP_INFO (struct encode_priv*,char*,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  MSGL_WARN ; 
- int /*<<< orphan*/  av_dict_free (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  av_dict_set (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ avformat_write_header (TYPE_4__*,int /*<<< orphan*/ **) ; 
- scalar_t__ avio_open (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mp_avdict_print_unset (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mp_set_avdict (int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mp_time_sec () ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ) ; 
+
+ int AVFMT_NOFILE ;
+ int AVIO_FLAG_WRITE ;
+ int MP_FATAL (struct encode_priv*,char*,...) ;
+ int MP_INFO (struct encode_priv*,char*,int ,...) ;
+ int MSGL_WARN ;
+ int av_dict_free (int **) ;
+ int av_dict_set (int *,int ,int ,int ) ;
+ scalar_t__ avformat_write_header (TYPE_4__*,int **) ;
+ scalar_t__ avio_open (int *,int ,int ) ;
+ int mp_avdict_print_unset (int ,int ,int *) ;
+ int mp_set_avdict (int **,int ) ;
+ int mp_time_sec () ;
+ int stub1 (int ) ;
 
 __attribute__((used)) static void maybe_init_muxer(struct encode_lavc_context *ctx)
 {
@@ -45,9 +45,9 @@ __attribute__((used)) static void maybe_init_muxer(struct encode_lavc_context *c
     if (p->header_written || p->failed)
         return;
 
-    // Check if all streams were initialized yet. We need data to know the
-    // AVStream parameters, so we wait for data from _all_ streams before
-    // starting.
+
+
+
     for (int n = 0; n < p->num_streams; n++) {
         if (!p->streams[n]->st)
             return;
@@ -74,12 +74,12 @@ __attribute__((used)) static void maybe_init_muxer(struct encode_lavc_context *c
         }
     }
 
-    AVDictionary *opts = NULL;
+    AVDictionary *opts = ((void*)0);
     mp_set_avdict(&opts, ctx->options->fopts);
 
     if (avformat_write_header(p->muxer, &opts) < 0) {
         MP_FATAL(p, "Failed to initialize muxer.\n");
-        p->failed = true;
+        p->failed = 1;
     } else {
         mp_avdict_print_unset(p->log, MSGL_WARN, opts);
     }
@@ -89,7 +89,7 @@ __attribute__((used)) static void maybe_init_muxer(struct encode_lavc_context *c
     if (p->failed)
         goto failed;
 
-    p->header_written = true;
+    p->header_written = 1;
 
     for (int n = 0; n < p->num_streams; n++) {
         struct mux_stream *s = p->streams[n];
@@ -101,5 +101,5 @@ __attribute__((used)) static void maybe_init_muxer(struct encode_lavc_context *c
     return;
 
 failed:
-    p->failed = true;
+    p->failed = 1;
 }

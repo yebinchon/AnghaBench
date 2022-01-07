@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct connectdata {struct Curl_easy* data; } ;
-struct POP3 {int /*<<< orphan*/  transfer; int /*<<< orphan*/  custom; int /*<<< orphan*/  id; } ;
+struct POP3 {int transfer; int custom; int id; } ;
 struct TYPE_2__ {struct POP3* protop; } ;
 struct Curl_easy {TYPE_1__ req; } ;
-typedef  scalar_t__ CURLcode ;
+typedef scalar_t__ CURLcode ;
 
-/* Variables and functions */
- scalar_t__ CURLE_OK ; 
- int /*<<< orphan*/  Curl_safefree (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FTPTRANSFER_BODY ; 
- int /*<<< orphan*/  connclose (struct connectdata*,char*) ; 
+
+ scalar_t__ CURLE_OK ;
+ int Curl_safefree (int ) ;
+ int FTPTRANSFER_BODY ;
+ int connclose (struct connectdata*,char*) ;
 
 __attribute__((used)) static CURLcode pop3_done(struct connectdata *conn, CURLcode status,
                           bool premature)
@@ -37,14 +37,14 @@ __attribute__((used)) static CURLcode pop3_done(struct connectdata *conn, CURLco
 
   if(status) {
     connclose(conn, "POP3 done with bad status");
-    result = status;         /* use the already set error code */
+    result = status;
   }
 
-  /* Cleanup our per-request based variables */
+
   Curl_safefree(pop3->id);
   Curl_safefree(pop3->custom);
 
-  /* Clear the transfer mode for the next request */
+
   pop3->transfer = FTPTRANSFER_BODY;
 
   return result;

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct vo {struct priv* priv; } ;
 struct timespec {int dummy; } ;
-struct priv {scalar_t__ vsync_counter; int /*<<< orphan*/  display_mutex; int /*<<< orphan*/  display_cond; int /*<<< orphan*/  reload_display; } ;
-typedef  scalar_t__ int64_t ;
+struct priv {scalar_t__ vsync_counter; int display_mutex; int display_cond; int reload_display; } ;
+typedef scalar_t__ int64_t ;
 
-/* Variables and functions */
- struct timespec mp_rel_time_to_timespec (double) ; 
- scalar_t__ pthread_cond_timedwait (int /*<<< orphan*/ *,int /*<<< orphan*/ *,struct timespec*) ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
+
+ struct timespec mp_rel_time_to_timespec (double) ;
+ scalar_t__ pthread_cond_timedwait (int *,int *,struct timespec*) ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
 
 __attribute__((used)) static void wait_next_vsync(struct vo *vo)
 {

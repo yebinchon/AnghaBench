@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  szNode ;
-typedef  int UINT ;
-typedef  int /*<<< orphan*/  TCHAR ;
-typedef  int /*<<< orphan*/ * LPTSTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IDS_BCAST ; 
- int /*<<< orphan*/  IDS_HYBRID ; 
- int /*<<< orphan*/  IDS_MIXED ; 
- int /*<<< orphan*/  IDS_P2P ; 
- int /*<<< orphan*/  IDS_UNKNOWN ; 
- int /*<<< orphan*/  LoadStringAndOem (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  hInstance ; 
+
+
+
+typedef int szNode ;
+typedef int UINT ;
+typedef int TCHAR ;
+typedef int * LPTSTR ;
+
+
+ int IDS_BCAST ;
+ int IDS_HYBRID ;
+ int IDS_MIXED ;
+ int IDS_P2P ;
+ int IDS_UNKNOWN ;
+ int LoadStringAndOem (int ,int ,int *,int) ;
+ int hInstance ;
 
 LPTSTR GetNodeTypeName(UINT NodeType)
 {
@@ -31,28 +31,28 @@ LPTSTR GetNodeTypeName(UINT NodeType)
     switch (NodeType)
     {
         case 1:
-            if (!LoadStringAndOem(hInstance, IDS_BCAST, szNode,  sizeof(szNode)))
-                return NULL;
+            if (!LoadStringAndOem(hInstance, IDS_BCAST, szNode, sizeof(szNode)))
+                return ((void*)0);
             break;
 
         case 2:
-            if (!LoadStringAndOem(hInstance, IDS_P2P, szNode,  sizeof(szNode)))
-                return NULL;
+            if (!LoadStringAndOem(hInstance, IDS_P2P, szNode, sizeof(szNode)))
+                return ((void*)0);
             break;
 
         case 4:
-            if (!LoadStringAndOem(hInstance, IDS_MIXED, szNode,  sizeof(szNode)))
-                return NULL;
+            if (!LoadStringAndOem(hInstance, IDS_MIXED, szNode, sizeof(szNode)))
+                return ((void*)0);
             break;
 
         case 8:
-            if (!LoadStringAndOem(hInstance, IDS_HYBRID, szNode,  sizeof(szNode)))
-                return NULL;
+            if (!LoadStringAndOem(hInstance, IDS_HYBRID, szNode, sizeof(szNode)))
+                return ((void*)0);
             break;
 
         default :
-            if (!LoadStringAndOem(hInstance, IDS_UNKNOWN, szNode,  sizeof(szNode)))
-                return NULL;
+            if (!LoadStringAndOem(hInstance, IDS_UNKNOWN, szNode, sizeof(szNode)))
+                return ((void*)0);
             break;
     }
 

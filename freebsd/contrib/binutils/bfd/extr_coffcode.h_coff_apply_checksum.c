@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  bfd_size_type ;
-typedef  int /*<<< orphan*/  bfd_boolean ;
-typedef  int /*<<< orphan*/  bfd ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  bfd_bwrite (unsigned int*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ bfd_seek (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- unsigned int coff_compute_checksum (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  coff_read_word (int /*<<< orphan*/ *,int*) ; 
- int peheader ; 
- unsigned int pelength ; 
+
+
+
+typedef int bfd_size_type ;
+typedef int bfd_boolean ;
+typedef int bfd ;
+
+
+ int FALSE ;
+ int SEEK_SET ;
+ int TRUE ;
+ int bfd_bwrite (unsigned int*,int ,int *) ;
+ scalar_t__ bfd_seek (int *,int,int ) ;
+ unsigned int coff_compute_checksum (int *) ;
+ int coff_read_word (int *,int*) ;
+ int peheader ;
+ unsigned int pelength ;
 
 __attribute__((used)) static bfd_boolean
 coff_apply_checksum (bfd *abfd)

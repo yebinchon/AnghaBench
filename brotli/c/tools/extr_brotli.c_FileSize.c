@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int int64_t ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SEEK_END ; 
- scalar_t__ fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char const*,char*) ; 
- scalar_t__ fseek (int /*<<< orphan*/ *,long,int /*<<< orphan*/ ) ; 
- int ftell (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int int64_t ;
+typedef int FILE ;
+
+
+ int SEEK_END ;
+ scalar_t__ fclose (int *) ;
+ int * fopen (char const*,char*) ;
+ scalar_t__ fseek (int *,long,int ) ;
+ int ftell (int *) ;
 
 __attribute__((used)) static int64_t FileSize(const char* path) {
   FILE* f = fopen(path, "rb");
   int64_t retval;
-  if (f == NULL) {
+  if (f == ((void*)0)) {
     return -1;
   }
   if (fseek(f, 0L, SEEK_END) != 0) {

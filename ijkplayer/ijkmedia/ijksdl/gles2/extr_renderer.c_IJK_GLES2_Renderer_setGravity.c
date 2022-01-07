@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int gravity; int vertices_changed; scalar_t__ layer_width; scalar_t__ layer_height; } ;
-typedef  TYPE_1__ IJK_GLES2_Renderer ;
-typedef  scalar_t__ GLsizei ;
-typedef  int /*<<< orphan*/  GLboolean ;
+typedef TYPE_1__ IJK_GLES2_Renderer ;
+typedef scalar_t__ GLsizei ;
+typedef int GLboolean ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GL_TRUE ; 
- int IJK_GLES2_GRAVITY_MAX ; 
- int IJK_GLES2_GRAVITY_MIN ; 
+
+ int GL_TRUE ;
+ int IJK_GLES2_GRAVITY_MAX ;
+ int IJK_GLES2_GRAVITY_MIN ;
 
 GLboolean IJK_GLES2_Renderer_setGravity(IJK_GLES2_Renderer *renderer, int gravity, GLsizei layer_width, GLsizei layer_height)
 {
@@ -32,8 +32,8 @@ GLboolean IJK_GLES2_Renderer_setGravity(IJK_GLES2_Renderer *renderer, int gravit
     else
         return GL_TRUE;
 
-    renderer->gravity      = gravity;
-    renderer->layer_width  = layer_width;
+    renderer->gravity = gravity;
+    renderer->layer_width = layer_width;
     renderer->layer_height = layer_height;
     return GL_TRUE;
 }

@@ -1,85 +1,85 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  NotifyCancelList; scalar_t__ Halt; } ;
-typedef  int /*<<< orphan*/  SOCKSET ;
-typedef  int /*<<< orphan*/  SOCK ;
-typedef  TYPE_1__ CLIENT ;
-typedef  int /*<<< orphan*/  CANCEL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Add (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  AddSockSet (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Delete (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Disconnect (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  INFINITE ; 
- int /*<<< orphan*/  InitSockSet (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LockList (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * NewCancel () ; 
- int /*<<< orphan*/  ReleaseCancel (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Select (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ Send (int /*<<< orphan*/ *,char*,int,int) ; 
- int /*<<< orphan*/  UnlockList (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int NotifyCancelList; scalar_t__ Halt; } ;
+typedef int SOCKSET ;
+typedef int SOCK ;
+typedef TYPE_1__ CLIENT ;
+typedef int CANCEL ;
+
+
+ int Add (int ,int *) ;
+ int AddSockSet (int *,int *) ;
+ int Delete (int ,int *) ;
+ int Disconnect (int *) ;
+ int INFINITE ;
+ int InitSockSet (int *) ;
+ int LockList (int ) ;
+ int * NewCancel () ;
+ int ReleaseCancel (int *) ;
+ int Select (int *,int ,int *,int *) ;
+ scalar_t__ Send (int *,char*,int,int) ;
+ int UnlockList (int ) ;
 
 void CiNotifyMain(CLIENT *c, SOCK *s)
 {
-	CANCEL *cancel;
-	// Validate arguments
-	if (c == NULL || s == NULL)
-	{
-		return;
-	}
+ CANCEL *cancel;
 
-	// Register a Cancel
-	cancel = NewCancel();
-	LockList(c->NotifyCancelList);
-	{
-		Add(c->NotifyCancelList, cancel);
-	}
-	UnlockList(c->NotifyCancelList);
+ if (c == ((void*)0) || s == ((void*)0))
+ {
+  return;
+ }
 
-	// Wait
-	while (true)
-	{
-		char ch = '@';
-		SOCKSET set;
-		InitSockSet(&set);
-		AddSockSet(&set, s);
-		Select(&set, INFINITE, cancel, NULL);
 
-		if (c->Halt)
-		{
-			// Abort
-			break;
-		}
+ cancel = NewCancel();
+ LockList(c->NotifyCancelList);
+ {
+  Add(c->NotifyCancelList, cancel);
+ }
+ UnlockList(c->NotifyCancelList);
 
-		// 1 byte transmission
-		if (Send(s, &ch, 1, false) == 0)
-		{
-			// Disconnected
-			break;
-		}
-	}
 
-	// Disconnect
-	Disconnect(s);
+ while (1)
+ {
+  char ch = '@';
+  SOCKSET set;
+  InitSockSet(&set);
+  AddSockSet(&set, s);
+  Select(&set, INFINITE, cancel, ((void*)0));
 
-	// Unregister the Cancel
-	LockList(c->NotifyCancelList);
-	{
-		Delete(c->NotifyCancelList, cancel);
-	}
-	UnlockList(c->NotifyCancelList);
+  if (c->Halt)
+  {
 
-	ReleaseCancel(cancel);
+   break;
+  }
+
+
+  if (Send(s, &ch, 1, 0) == 0)
+  {
+
+   break;
+  }
+ }
+
+
+ Disconnect(s);
+
+
+ LockList(c->NotifyCancelList);
+ {
+  Delete(c->NotifyCancelList, cancel);
+ }
+ UnlockList(c->NotifyCancelList);
+
+ ReleaseCancel(cancel);
 }

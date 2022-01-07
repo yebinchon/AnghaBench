@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WPARAM ;
-typedef  int /*<<< orphan*/  VOID ;
-struct TYPE_6__ {struct TYPE_6__* Next; int /*<<< orphan*/  StandardName; scalar_t__ Description; } ;
-struct TYPE_5__ {int /*<<< orphan*/  StandardName; } ;
-typedef  TYPE_1__ TIME_ZONE_INFORMATION ;
-typedef  TYPE_2__* PTIMEZONE_ENTRY ;
-typedef  int /*<<< orphan*/  LPARAM ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  scalar_t__ DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CB_ADDSTRING ; 
- int /*<<< orphan*/  CB_SETCURSEL ; 
- int /*<<< orphan*/  GetTimeZoneInformation (TYPE_1__*) ; 
- int /*<<< orphan*/  SendMessageW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_2__* TimeZoneListHead ; 
- int /*<<< orphan*/  wcscmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int WPARAM ;
+typedef int VOID ;
+struct TYPE_6__ {struct TYPE_6__* Next; int StandardName; scalar_t__ Description; } ;
+struct TYPE_5__ {int StandardName; } ;
+typedef TYPE_1__ TIME_ZONE_INFORMATION ;
+typedef TYPE_2__* PTIMEZONE_ENTRY ;
+typedef int LPARAM ;
+typedef int HWND ;
+typedef scalar_t__ DWORD ;
+
+
+ int CB_ADDSTRING ;
+ int CB_SETCURSEL ;
+ int GetTimeZoneInformation (TYPE_1__*) ;
+ int SendMessageW (int ,int ,int ,int ) ;
+ TYPE_2__* TimeZoneListHead ;
+ int wcscmp (int ,int ) ;
 
 __attribute__((used)) static VOID
 ShowTimeZoneList(HWND hwnd)
@@ -43,7 +43,7 @@ ShowTimeZoneList(HWND hwnd)
     dwIndex = 0;
     i = 0;
     Entry = TimeZoneListHead;
-    while (Entry != NULL)
+    while (Entry != ((void*)0))
     {
         SendMessageW(hwnd,
                      CB_ADDSTRING,

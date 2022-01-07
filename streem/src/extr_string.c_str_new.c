@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct strm_string {char const* ptr; int len; } ;
-typedef  int strm_value ;
-typedef  int strm_string ;
-typedef  int strm_int ;
+typedef int strm_value ;
+typedef int strm_string ;
+typedef int strm_int ;
 
-/* Variables and functions */
- int STRM_TAG_STRING_6 ; 
- int STRM_TAG_STRING_F ; 
- int STRM_TAG_STRING_I ; 
- int STRM_TAG_STRING_O ; 
- int STRM_VAL_MASK ; 
- char* VAL_PTR (int) ; 
- struct strm_string* malloc (int) ; 
- int /*<<< orphan*/  memcpy (char*,char const*,int) ; 
- int /*<<< orphan*/  memset (char*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ readonly_data_p (char const*) ; 
- int strm_tag_vptr (struct strm_string*,int /*<<< orphan*/ ) ; 
+
+ int STRM_TAG_STRING_6 ;
+ int STRM_TAG_STRING_F ;
+ int STRM_TAG_STRING_I ;
+ int STRM_TAG_STRING_O ;
+ int STRM_VAL_MASK ;
+ char* VAL_PTR (int) ;
+ struct strm_string* malloc (int) ;
+ int memcpy (char*,char const*,int) ;
+ int memset (char*,int ,int) ;
+ scalar_t__ readonly_data_p (char const*) ;
+ int strm_tag_vptr (struct strm_string*,int ) ;
 
 __attribute__((used)) static strm_string
 str_new(const char* p, strm_int len, int foreign)

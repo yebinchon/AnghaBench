@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  thread_state_t ;
-typedef  int /*<<< orphan*/  mach_port_t ;
-typedef  int /*<<< orphan*/  mach_msg_type_number_t ;
-typedef  int /*<<< orphan*/  mach_exception_data_t ;
-typedef  int /*<<< orphan*/  kern_return_t ;
-typedef  int /*<<< orphan*/  exception_type_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  KERN_NOT_SUPPORTED ; 
- int /*<<< orphan*/  T_FAIL (char*) ; 
+
+
+
+typedef int thread_state_t ;
+typedef int mach_port_t ;
+typedef int mach_msg_type_number_t ;
+typedef int mach_exception_data_t ;
+typedef int kern_return_t ;
+typedef int exception_type_t ;
+
+
+ int KERN_NOT_SUPPORTED ;
+ int T_FAIL (char*) ;
 
 kern_return_t
 catch_mach_exception_raise_state(mach_port_t exception_port,
@@ -33,6 +33,6 @@ catch_mach_exception_raise_state(mach_port_t exception_port,
                                  mach_msg_type_number_t * new_state_count)
 {
 #pragma unused(exception_port, exception, code, code_count, flavor, old_state, old_state_count, new_state, new_state_count)
-	T_FAIL("Unsupported catch_mach_exception_raise_state");
-	return KERN_NOT_SUPPORTED;
+ T_FAIL("Unsupported catch_mach_exception_raise_state");
+ return KERN_NOT_SUPPORTED;
 }

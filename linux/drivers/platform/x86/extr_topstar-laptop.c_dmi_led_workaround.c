@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct dmi_system_id {int dummy; } ;
 
-/* Variables and functions */
- int led_workaround ; 
+
+ int led_workaround ;
 
 __attribute__((used)) static int dmi_led_workaround(const struct dmi_system_id *id)
 {
-	led_workaround = true;
-	return 0;
+ led_workaround = 1;
+ return 0;
 }

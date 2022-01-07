@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  dcb; int /*<<< orphan*/ * dc_vlc; scalar_t__ interlaced; TYPE_1__* slice; } ;
-struct TYPE_5__ {int /*<<< orphan*/ * block; int /*<<< orphan*/  gb; } ;
-typedef  TYPE_1__ HQXSlice ;
-typedef  TYPE_2__ HQXContext ;
-typedef  int /*<<< orphan*/  GetBitContext ;
 
-/* Variables and functions */
- int decode_block (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*) ; 
- size_t get_bits (int /*<<< orphan*/ *,int) ; 
- int get_bits1 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  hqx_quant_chroma ; 
- int /*<<< orphan*/  hqx_quant_luma ; 
- int** hqx_quants ; 
- int /*<<< orphan*/  put_blocks (TYPE_2__*,int,int,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int dcb; int * dc_vlc; scalar_t__ interlaced; TYPE_1__* slice; } ;
+struct TYPE_5__ {int * block; int gb; } ;
+typedef TYPE_1__ HQXSlice ;
+typedef TYPE_2__ HQXContext ;
+typedef int GetBitContext ;
+
+
+ int decode_block (int *,int *,int const*,int ,int ,int*) ;
+ size_t get_bits (int *,int) ;
+ int get_bits1 (int *) ;
+ int hqx_quant_chroma ;
+ int hqx_quant_luma ;
+ int** hqx_quants ;
+ int put_blocks (TYPE_2__*,int,int,int,int,int ,int ,int ) ;
 
 __attribute__((used)) static int hqx_decode_422(HQXContext *ctx, int slice_no, int x, int y)
 {
@@ -53,8 +53,8 @@ __attribute__((used)) static int hqx_decode_422(HQXContext *ctx, int slice_no, i
             return ret;
     }
 
-    put_blocks(ctx, 0, x,      y, flag, slice->block[0], slice->block[2], hqx_quant_luma);
-    put_blocks(ctx, 0, x + 8,  y, flag, slice->block[1], slice->block[3], hqx_quant_luma);
+    put_blocks(ctx, 0, x, y, flag, slice->block[0], slice->block[2], hqx_quant_luma);
+    put_blocks(ctx, 0, x + 8, y, flag, slice->block[1], slice->block[3], hqx_quant_luma);
     put_blocks(ctx, 2, x >> 1, y, flag, slice->block[4], slice->block[5], hqx_quant_chroma);
     put_blocks(ctx, 1, x >> 1, y, flag, slice->block[6], slice->block[7], hqx_quant_chroma);
 

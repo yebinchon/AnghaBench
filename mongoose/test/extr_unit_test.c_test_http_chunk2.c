@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct mg_mgr {int dummy; } ;
-struct TYPE_4__ {int /*<<< orphan*/  len; } ;
-struct TYPE_3__ {int /*<<< orphan*/  len; } ;
-struct mg_connection {int /*<<< orphan*/ * proto_data; int /*<<< orphan*/  (* proto_data_destructor ) (int /*<<< orphan*/ *) ;TYPE_2__ message; TYPE_1__ body; int /*<<< orphan*/  handler; int /*<<< orphan*/  sock; struct mg_mgr* mgr; } ;
-struct http_message {int /*<<< orphan*/ * proto_data; int /*<<< orphan*/  (* proto_data_destructor ) (int /*<<< orphan*/ *) ;TYPE_2__ message; TYPE_1__ body; int /*<<< orphan*/  handler; int /*<<< orphan*/  sock; struct mg_mgr* mgr; } ;
-typedef  int /*<<< orphan*/  nc ;
-typedef  int /*<<< orphan*/  hm ;
+struct TYPE_4__ {int len; } ;
+struct TYPE_3__ {int len; } ;
+struct mg_connection {int * proto_data; int (* proto_data_destructor ) (int *) ;TYPE_2__ message; TYPE_1__ body; int handler; int sock; struct mg_mgr* mgr; } ;
+struct http_message {int * proto_data; int (* proto_data_destructor ) (int *) ;TYPE_2__ message; TYPE_1__ body; int handler; int sock; struct mg_mgr* mgr; } ;
+typedef int nc ;
+typedef int hm ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ASSERT_EQ (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ASSERT_EQ64 (int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/  ASSERT_STREQ (char*,char*) ; 
- int /*<<< orphan*/  INVALID_SOCKET ; 
- int /*<<< orphan*/  eh_chunk2 ; 
- int /*<<< orphan*/  memset (struct mg_connection*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  mg_handle_chunked (struct mg_connection*,struct mg_connection*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mg_http_create_proto_data (struct mg_connection*) ; 
- int /*<<< orphan*/  mg_mgr_free (struct mg_mgr*) ; 
- int /*<<< orphan*/  mg_mgr_init (struct mg_mgr*,int /*<<< orphan*/ *) ; 
- char* s_events ; 
- int s_handle_chunk_event ; 
- int /*<<< orphan*/  strcat (char*,char*) ; 
- int /*<<< orphan*/  strlen (char*) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ *) ; 
+
+ int ASSERT (int ) ;
+ int ASSERT_EQ (int ,int) ;
+ int ASSERT_EQ64 (int ,size_t) ;
+ int ASSERT_STREQ (char*,char*) ;
+ int INVALID_SOCKET ;
+ int eh_chunk2 ;
+ int memset (struct mg_connection*,int ,int) ;
+ int mg_handle_chunked (struct mg_connection*,struct mg_connection*,char*,int ) ;
+ int mg_http_create_proto_data (struct mg_connection*) ;
+ int mg_mgr_free (struct mg_mgr*) ;
+ int mg_mgr_init (struct mg_mgr*,int *) ;
+ char* s_events ;
+ int s_handle_chunk_event ;
+ int strcat (char*,char*) ;
+ int strlen (char*) ;
+ int stub1 (int *) ;
 
 __attribute__((used)) static const char *test_http_chunk2(void) {
   struct mg_connection nc;
   struct http_message hm;
   char buf[100] = "5\r\nhe";
   struct mg_mgr mgr;
-  mg_mgr_init(&mgr, NULL);
+  mg_mgr_init(&mgr, ((void*)0));
 
   memset(&nc, 0, sizeof(nc));
   memset(&hm, 0, sizeof(hm));
@@ -56,7 +56,7 @@ __attribute__((used)) static const char *test_http_chunk2(void) {
   s_handle_chunk_event = 0;
   ASSERT_EQ(mg_handle_chunked(&nc, &hm, buf, strlen(buf)), 0);
 
-  /* Simulate arrival of chunks. MG_EV_HTTP_CHUNK events are not handled. */
+
   strcat(buf, "llo\r");
   ASSERT_EQ(mg_handle_chunked(&nc, &hm, buf, strlen(buf)), 0);
   ASSERT_STREQ(buf, "5\r\nhello\r");
@@ -83,10 +83,10 @@ __attribute__((used)) static const char *test_http_chunk2(void) {
 
   ASSERT_STREQ(s_events, "_102_102_102_102");
 
-  ASSERT(nc.proto_data != NULL);
+  ASSERT(nc.proto_data != ((void*)0));
   nc.proto_data_destructor(nc.proto_data);
 
   mg_mgr_free(&mgr);
 
-  return NULL;
+  return ((void*)0);
 }

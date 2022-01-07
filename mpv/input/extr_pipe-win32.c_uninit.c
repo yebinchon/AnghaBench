@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct priv {int /*<<< orphan*/  fd; scalar_t__ close_fd; int /*<<< orphan*/  thread; } ;
+
+
+
+
+struct priv {int fd; scalar_t__ close_fd; int thread; } ;
 struct mp_input_src {struct priv* priv; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CloseHandle (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MP_VERBOSE (struct mp_input_src*,char*) ; 
- int /*<<< orphan*/  close (int /*<<< orphan*/ ) ; 
+
+ int CloseHandle (int ) ;
+ int MP_VERBOSE (struct mp_input_src*,char*) ;
+ int close (int ) ;
 
 __attribute__((used)) static void uninit(struct mp_input_src *src)
 {

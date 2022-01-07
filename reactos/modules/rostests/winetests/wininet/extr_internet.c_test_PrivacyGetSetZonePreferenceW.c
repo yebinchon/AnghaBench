@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  pref ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int PRIVACY_TEMPLATE_ADVANCED ; 
- int /*<<< orphan*/  ok (int,char*,int) ; 
- int pPrivacyGetZonePreferenceW (int,int,int*,int /*<<< orphan*/ *,int*) ; 
- int pPrivacySetZonePreferenceW (int,int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  trace (char*,int) ; 
+
+
+
+typedef int pref ;
+typedef int WCHAR ;
+typedef int DWORD ;
+
+
+ int PRIVACY_TEMPLATE_ADVANCED ;
+ int ok (int,char*,int) ;
+ int pPrivacyGetZonePreferenceW (int,int,int*,int *,int*) ;
+ int pPrivacySetZonePreferenceW (int,int,int,int *) ;
+ int trace (char*,int) ;
 
 __attribute__((used)) static void test_PrivacyGetSetZonePreferenceW(void)
 {
@@ -28,11 +28,11 @@ __attribute__((used)) static void test_PrivacyGetSetZonePreferenceW(void)
 
     zone = 3;
     type = 0;
-    ret = pPrivacyGetZonePreferenceW(zone, type, NULL, NULL, NULL);
+    ret = pPrivacyGetZonePreferenceW(zone, type, ((void*)0), ((void*)0), ((void*)0));
     ok(ret == 0, "expected ret == 0, got %u\n", ret);
 
     old_template = 0;
-    ret = pPrivacyGetZonePreferenceW(zone, type, &old_template, NULL, NULL);
+    ret = pPrivacyGetZonePreferenceW(zone, type, &old_template, ((void*)0), ((void*)0));
     ok(ret == 0, "expected ret == 0, got %u\n", ret);
 
     trace("template %u\n", old_template);
@@ -44,15 +44,15 @@ __attribute__((used)) static void test_PrivacyGetSetZonePreferenceW(void)
     }
 
     template = 5;
-    ret = pPrivacySetZonePreferenceW(zone, type, template, NULL);
+    ret = pPrivacySetZonePreferenceW(zone, type, template, ((void*)0));
     ok(ret == 0, "expected ret == 0, got %u\n", ret);
 
     template = 0;
-    ret = pPrivacyGetZonePreferenceW(zone, type, &template, NULL, NULL);
+    ret = pPrivacyGetZonePreferenceW(zone, type, &template, ((void*)0), ((void*)0));
     ok(ret == 0, "expected ret == 0, got %u\n", ret);
     ok(template == 5, "expected template == 5, got %u\n", template);
 
     template = 5;
-    ret = pPrivacySetZonePreferenceW(zone, type, old_template, pref_size ? pref : NULL);
+    ret = pPrivacySetZonePreferenceW(zone, type, old_template, pref_size ? pref : ((void*)0));
     ok(ret == 0, "expected ret == 0, got %u\n", ret);
 }

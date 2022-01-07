@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct dirent {char* d_name; } ;
-typedef  int /*<<< orphan*/  node ;
+typedef int node ;
 struct TYPE_7__ {TYPE_2__* context; } ;
-typedef  TYPE_1__ V4L2m2mPriv ;
-struct TYPE_8__ {int /*<<< orphan*/  devname; } ;
-typedef  TYPE_2__ V4L2m2mContext ;
-typedef  int /*<<< orphan*/  DIR ;
+typedef TYPE_1__ V4L2m2mPriv ;
+struct TYPE_8__ {int devname; } ;
+typedef TYPE_2__ V4L2m2mContext ;
+typedef int DIR ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_LOG_DEBUG ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_LOG_INFO ; 
- int /*<<< orphan*/  EINVAL ; 
- int PATH_MAX ; 
- int /*<<< orphan*/  av_log (TYPE_1__*,int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  closedir (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/ * opendir (char*) ; 
- struct dirent* readdir (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,char*) ; 
- scalar_t__ strlen (char*) ; 
- scalar_t__ strncmp (char*,char*,int) ; 
- int /*<<< orphan*/  strncpy (int /*<<< orphan*/ ,char*,scalar_t__) ; 
- int v4l2_configure_contexts (TYPE_2__*) ; 
- int v4l2_probe_driver (TYPE_2__*) ; 
+
+ int AVERROR (int ) ;
+ int AV_LOG_DEBUG ;
+ int AV_LOG_ERROR ;
+ int AV_LOG_INFO ;
+ int EINVAL ;
+ int PATH_MAX ;
+ int av_log (TYPE_1__*,int ,char*,...) ;
+ int closedir (int *) ;
+ int errno ;
+ int memset (int ,int ,int) ;
+ int * opendir (char*) ;
+ struct dirent* readdir (int *) ;
+ int snprintf (char*,int,char*,char*) ;
+ scalar_t__ strlen (char*) ;
+ scalar_t__ strncmp (char*,char*,int) ;
+ int strncpy (int ,char*,scalar_t__) ;
+ int v4l2_configure_contexts (TYPE_2__*) ;
+ int v4l2_probe_driver (TYPE_2__*) ;
 
 int ff_v4l2_m2m_codec_init(V4L2m2mPriv *priv)
 {

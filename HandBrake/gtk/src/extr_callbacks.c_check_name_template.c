@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  prefs; } ;
-typedef  TYPE_1__ signal_user_data_t ;
-typedef  int /*<<< orphan*/  gchar ;
-typedef  int /*<<< orphan*/  gboolean ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
- scalar_t__ ghb_dict_get_bool (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/ * ghb_dict_get_string (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/ * strstr (int /*<<< orphan*/  const*,char const*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int prefs; } ;
+typedef TYPE_1__ signal_user_data_t ;
+typedef int gchar ;
+typedef int gboolean ;
+
+
+ int FALSE ;
+ int TRUE ;
+ scalar_t__ ghb_dict_get_bool (int ,char*) ;
+ int * ghb_dict_get_string (int ,char*) ;
+ int * strstr (int const*,char const*) ;
 
 __attribute__((used)) static gboolean
 check_name_template(signal_user_data_t *ud, const char *str)
@@ -31,7 +31,7 @@ check_name_template(signal_user_data_t *ud, const char *str)
         const gchar *template;
 
         template = ghb_dict_get_string(ud->prefs, "auto_name_template");
-        if (strstr(template, str) != NULL)
+        if (strstr(template, str) != ((void*)0))
             return TRUE;
     }
     return FALSE;

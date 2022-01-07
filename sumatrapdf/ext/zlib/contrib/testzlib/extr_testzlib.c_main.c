@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_2__ ;
-typedef  struct TYPE_15__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_16__ TYPE_2__ ;
+typedef struct TYPE_15__ TYPE_1__ ;
+
+
 struct TYPE_15__ {unsigned char* next_in; unsigned char* next_out; long total_in; long avail_in; int avail_out; long total_out; } ;
-typedef  TYPE_1__ z_stream ;
-struct TYPE_16__ {int /*<<< orphan*/  QuadPart; } ;
-typedef  TYPE_2__ LARGE_INTEGER ;
-typedef  double DWORD ;
+typedef TYPE_1__ z_stream ;
+struct TYPE_16__ {int QuadPart; } ;
+typedef TYPE_2__ LARGE_INTEGER ;
+typedef double DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BeginCountPerfCounter (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BeginCountRdtsc (TYPE_2__*) ; 
- double GetMsecSincePerfCounter (TYPE_2__,int /*<<< orphan*/ ) ; 
- TYPE_2__ GetResRdtsc (TYPE_2__,int /*<<< orphan*/ ) ; 
- double GetTickCount () ; 
- scalar_t__ ReadFileMemory (char*,long*,unsigned char**) ; 
- int /*<<< orphan*/  TRUE ; 
- int Z_DEFAULT_COMPRESSION ; 
- int /*<<< orphan*/  Z_FINISH ; 
- int Z_OK ; 
- int /*<<< orphan*/  Z_SYNC_FLUSH ; 
- int atol (char*) ; 
- int deflate (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  deflateEnd (TYPE_1__*) ; 
- int /*<<< orphan*/  deflateInit (TYPE_1__*,int) ; 
- int inflate (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  inflateEnd (TYPE_1__*) ; 
- int /*<<< orphan*/  inflateInit (TYPE_1__*) ; 
- scalar_t__ malloc (long) ; 
- scalar_t__ memcmp (unsigned char*,unsigned char*,long) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- void* min (long,int) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- scalar_t__ realloc (unsigned char*,long) ; 
+
+ int BeginCountPerfCounter (TYPE_2__*,int ) ;
+ int BeginCountRdtsc (TYPE_2__*) ;
+ double GetMsecSincePerfCounter (TYPE_2__,int ) ;
+ TYPE_2__ GetResRdtsc (TYPE_2__,int ) ;
+ double GetTickCount () ;
+ scalar_t__ ReadFileMemory (char*,long*,unsigned char**) ;
+ int TRUE ;
+ int Z_DEFAULT_COMPRESSION ;
+ int Z_FINISH ;
+ int Z_OK ;
+ int Z_SYNC_FLUSH ;
+ int atol (char*) ;
+ int deflate (TYPE_1__*,int ) ;
+ int deflateEnd (TYPE_1__*) ;
+ int deflateInit (TYPE_1__*,int) ;
+ int inflate (TYPE_1__*,int ) ;
+ int inflateEnd (TYPE_1__*) ;
+ int inflateInit (TYPE_1__*) ;
+ scalar_t__ malloc (long) ;
+ scalar_t__ memcmp (unsigned char*,unsigned char*,long) ;
+ int memset (TYPE_1__*,int ,int) ;
+ void* min (long,int) ;
+ int printf (char*,...) ;
+ scalar_t__ realloc (unsigned char*,long) ;
 
 int main(int argc, char *argv[])
 {

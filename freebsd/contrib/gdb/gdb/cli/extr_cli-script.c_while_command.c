@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct command_line {int dummy; } ;
 
-/* Variables and functions */
- int control_level ; 
- int /*<<< orphan*/  execute_control_command (struct command_line*) ; 
- int /*<<< orphan*/  free_command_lines (struct command_line**) ; 
- struct command_line* get_command_line (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  while_control ; 
+
+ int control_level ;
+ int execute_control_command (struct command_line*) ;
+ int free_command_lines (struct command_line**) ;
+ struct command_line* get_command_line (int ,char*) ;
+ int while_control ;
 
 void
 while_command (char *arg, int from_tty)
 {
-  struct command_line *command = NULL;
+  struct command_line *command = ((void*)0);
 
   control_level = 1;
   command = get_command_line (while_control, arg);
 
-  if (command == NULL)
+  if (command == ((void*)0))
     return;
 
   execute_control_command (command);

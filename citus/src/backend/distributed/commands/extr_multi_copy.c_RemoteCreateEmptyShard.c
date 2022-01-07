@@ -1,71 +1,71 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  int64 ;
-struct TYPE_4__ {int /*<<< orphan*/  data; } ;
-typedef  TYPE_1__* StringInfo ;
-typedef  int /*<<< orphan*/  PGresult ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Assert (int) ; 
- int /*<<< orphan*/  CREATE_EMPTY_SHARD_QUERY ; 
- int /*<<< orphan*/  ERROR ; 
- int /*<<< orphan*/ * GetRemoteCommandResult (int /*<<< orphan*/ ,int) ; 
- scalar_t__ PGRES_TUPLES_OK ; 
- int /*<<< orphan*/  PQclear (int /*<<< orphan*/ *) ; 
- char* PQgetvalue (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ PQresultStatus (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ReportConnectionError (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReportResultError (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SendRemoteCommand (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WARNING ; 
- int /*<<< orphan*/  appendStringInfo (TYPE_1__*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ereport (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errmsg (char*) ; 
- TYPE_1__* makeStringInfo () ; 
- int /*<<< orphan*/  masterConnection ; 
- int /*<<< orphan*/  strtoul (char*,char**,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int int64 ;
+struct TYPE_4__ {int data; } ;
+typedef TYPE_1__* StringInfo ;
+typedef int PGresult ;
+
+
+ int Assert (int) ;
+ int CREATE_EMPTY_SHARD_QUERY ;
+ int ERROR ;
+ int * GetRemoteCommandResult (int ,int) ;
+ scalar_t__ PGRES_TUPLES_OK ;
+ int PQclear (int *) ;
+ char* PQgetvalue (int *,int ,int ) ;
+ scalar_t__ PQresultStatus (int *) ;
+ int ReportConnectionError (int ,int ) ;
+ int ReportResultError (int ,int *,int ) ;
+ int SendRemoteCommand (int ,int ) ;
+ int WARNING ;
+ int appendStringInfo (TYPE_1__*,int ,char*) ;
+ int ereport (int ,int ) ;
+ int errmsg (char*) ;
+ TYPE_1__* makeStringInfo () ;
+ int masterConnection ;
+ int strtoul (char*,char**,int ) ;
 
 __attribute__((used)) static int64
 RemoteCreateEmptyShard(char *relationName)
 {
-	int64 shardId = 0;
-	PGresult *queryResult = NULL;
-	bool raiseInterrupts = true;
+ int64 shardId = 0;
+ PGresult *queryResult = ((void*)0);
+ bool raiseInterrupts = 1;
 
-	StringInfo createEmptyShardCommand = makeStringInfo();
-	appendStringInfo(createEmptyShardCommand, CREATE_EMPTY_SHARD_QUERY, relationName);
+ StringInfo createEmptyShardCommand = makeStringInfo();
+ appendStringInfo(createEmptyShardCommand, CREATE_EMPTY_SHARD_QUERY, relationName);
 
-	if (!SendRemoteCommand(masterConnection, createEmptyShardCommand->data))
-	{
-		ReportConnectionError(masterConnection, ERROR);
-	}
-	queryResult = GetRemoteCommandResult(masterConnection, raiseInterrupts);
-	if (PQresultStatus(queryResult) == PGRES_TUPLES_OK)
-	{
-		char *shardIdString = PQgetvalue((PGresult *) queryResult, 0, 0);
-		char *shardIdStringEnd = NULL;
-		shardId = strtoul(shardIdString, &shardIdStringEnd, 0);
-	}
-	else
-	{
-		ReportResultError(masterConnection, queryResult, WARNING);
-		ereport(ERROR, (errmsg("could not create a new empty shard on the remote node")));
-	}
+ if (!SendRemoteCommand(masterConnection, createEmptyShardCommand->data))
+ {
+  ReportConnectionError(masterConnection, ERROR);
+ }
+ queryResult = GetRemoteCommandResult(masterConnection, raiseInterrupts);
+ if (PQresultStatus(queryResult) == PGRES_TUPLES_OK)
+ {
+  char *shardIdString = PQgetvalue((PGresult *) queryResult, 0, 0);
+  char *shardIdStringEnd = ((void*)0);
+  shardId = strtoul(shardIdString, &shardIdStringEnd, 0);
+ }
+ else
+ {
+  ReportResultError(masterConnection, queryResult, WARNING);
+  ereport(ERROR, (errmsg("could not create a new empty shard on the remote node")));
+ }
 
-	PQclear(queryResult);
-	queryResult = GetRemoteCommandResult(masterConnection, raiseInterrupts);
-	Assert(!queryResult);
+ PQclear(queryResult);
+ queryResult = GetRemoteCommandResult(masterConnection, raiseInterrupts);
+ Assert(!queryResult);
 
-	return shardId;
+ return shardId;
 }

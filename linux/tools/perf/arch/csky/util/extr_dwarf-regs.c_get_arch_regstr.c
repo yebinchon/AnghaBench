@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- unsigned int CSKY_MAX_REGS ; 
- char const** csky_dwarf_regs_table ; 
+ unsigned int CSKY_MAX_REGS ;
+ char const** csky_dwarf_regs_table ;
 
 const char *get_arch_regstr(unsigned int n)
 {
-	return (n < CSKY_MAX_REGS) ? csky_dwarf_regs_table[n] : NULL;
+ return (n < CSKY_MAX_REGS) ? csky_dwarf_regs_table[n] : ((void*)0);
 }

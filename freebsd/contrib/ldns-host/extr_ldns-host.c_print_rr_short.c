@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ ldns_rr_type ;
-typedef  int /*<<< orphan*/  ldns_rr ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ ldns_rr_type ;
+typedef int ldns_rr ;
 struct TYPE_3__ {scalar_t__ type; char* text; } ;
 
-/* Variables and functions */
- size_t countof (TYPE_1__*) ; 
- scalar_t__ ldns_rr_get_type (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ldns_rr_owner (int /*<<< orphan*/ *) ; 
- size_t ldns_rr_rd_count (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ldns_rr_rdf (int /*<<< orphan*/ *,size_t) ; 
- int /*<<< orphan*/  print_rdf (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  print_rdf_nodot (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  print_rr_type (scalar_t__) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- TYPE_1__* rr_types ; 
+
+ size_t countof (TYPE_1__*) ;
+ scalar_t__ ldns_rr_get_type (int *) ;
+ int ldns_rr_owner (int *) ;
+ size_t ldns_rr_rd_count (int *) ;
+ int ldns_rr_rdf (int *,size_t) ;
+ int print_rdf (int ) ;
+ int print_rdf_nodot (int ) ;
+ int print_rr_type (scalar_t__) ;
+ int printf (char*,...) ;
+ TYPE_1__* rr_types ;
 
 __attribute__((used)) static void
 print_rr_short(ldns_rr *rr) {

@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct TYPE_7__ {int /*<<< orphan*/  (* close_edit ) (void*,int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* close_directory ) (void*,int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* open_root ) (void*,scalar_t__,int /*<<< orphan*/ ,void**) ;} ;
-typedef  TYPE_3__ svn_delta_editor_t ;
-struct revision_baton {scalar_t__ rev; int rev_offset; int /*<<< orphan*/  pool; int /*<<< orphan*/  author; TYPE_2__* pb; int /*<<< orphan*/  datestamp; int /*<<< orphan*/  revprop_table; TYPE_1__* db; } ;
-struct TYPE_6__ {int /*<<< orphan*/  session; int /*<<< orphan*/  skip_revprops; int /*<<< orphan*/  rev_map; int /*<<< orphan*/  quiet; void* commit_edit_baton; TYPE_3__* commit_editor; } ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef scalar_t__ svn_revnum_t ;
+typedef int svn_error_t ;
+struct TYPE_7__ {int (* close_edit ) (void*,int ) ;int (* close_directory ) (void*,int ) ;int (* open_root ) (void*,scalar_t__,int ,void**) ;} ;
+typedef TYPE_3__ svn_delta_editor_t ;
+struct revision_baton {scalar_t__ rev; int rev_offset; int pool; int author; TYPE_2__* pb; int datestamp; int revprop_table; TYPE_1__* db; } ;
+struct TYPE_6__ {int session; int skip_revprops; int rev_map; int quiet; void* commit_edit_baton; TYPE_3__* commit_editor; } ;
 struct TYPE_5__ {void* baton; struct TYPE_5__* parent; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- scalar_t__ SVN_INVALID_REVNUM ; 
- scalar_t__ SVN_IS_VALID_REVNUM (scalar_t__) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  SVN_PROP_REVISION_AUTHOR ; 
- int /*<<< orphan*/  SVN_PROP_REVISION_DATE ; 
- int /*<<< orphan*/  commit_callback ; 
- scalar_t__ get_revision_mapping (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  stub1 (void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub2 (void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub3 (void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub4 (void*,scalar_t__,int /*<<< orphan*/ ,void**) ; 
- int /*<<< orphan*/  stub5 (void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub6 (void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_cmdline_printf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  svn_hash_gets (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_pool_destroy (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_ra_change_rev_prop2 (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_ra_get_commit_editor3 (int /*<<< orphan*/ ,TYPE_3__ const**,void**,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_repos__validate_prop (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int FALSE ;
+ int SVN_ERR (int ) ;
+ scalar_t__ SVN_INVALID_REVNUM ;
+ scalar_t__ SVN_IS_VALID_REVNUM (scalar_t__) ;
+ int * SVN_NO_ERROR ;
+ int SVN_PROP_REVISION_AUTHOR ;
+ int SVN_PROP_REVISION_DATE ;
+ int commit_callback ;
+ scalar_t__ get_revision_mapping (int ,scalar_t__) ;
+ int stub1 (void*,int ) ;
+ int stub2 (void*,int ) ;
+ int stub3 (void*,int ) ;
+ int stub4 (void*,scalar_t__,int ,void**) ;
+ int stub5 (void*,int ) ;
+ int stub6 (void*,int ) ;
+ int svn_cmdline_printf (int ,char*) ;
+ int svn_hash_gets (int ,int ) ;
+ int svn_pool_destroy (int ) ;
+ int svn_ra_change_rev_prop2 (int ,scalar_t__,int ,int *,int ,int ) ;
+ int svn_ra_get_commit_editor3 (int ,TYPE_3__ const**,void**,int ,int ,void*,int *,int ,int ) ;
+ int svn_repos__validate_prop (int ,int ,int ) ;
 
 __attribute__((used)) static svn_error_t *
 close_revision(void *baton)
@@ -52,23 +52,23 @@ close_revision(void *baton)
   void *commit_edit_baton = rb->pb->commit_edit_baton;
   svn_revnum_t committed_rev = SVN_INVALID_REVNUM;
 
-  /* Fake revision 0 */
+
   if (rb->rev == 0)
     {
-      /* ### Don't print directly; generate a notification. */
+
       if (! rb->pb->quiet)
         SVN_ERR(svn_cmdline_printf(rb->pool, "* Loaded revision 0.\n"));
     }
   else if (commit_editor)
     {
-      /* Close all pending open directories, and then close the edit
-         session itself */
+
+
       while (rb->db && rb->db->parent)
         {
           SVN_ERR(commit_editor->close_directory(rb->db->baton, rb->pool));
           rb->db = rb->db->parent;
         }
-      /* root dir's baton */
+
       SVN_ERR(commit_editor->close_directory(rb->db->baton, rb->pool));
       SVN_ERR(commit_editor->close_edit(commit_edit_baton, rb->pool));
     }
@@ -77,11 +77,11 @@ close_revision(void *baton)
       svn_revnum_t head_rev_before_commit = rb->rev - rb->rev_offset - 1;
       void *child_baton;
 
-      /* Legitimate revision with no node information */
+
       SVN_ERR(svn_ra_get_commit_editor3(rb->pb->session, &commit_editor,
                                         &commit_edit_baton, rb->revprop_table,
                                         commit_callback, baton,
-                                        NULL, FALSE, rb->pool));
+                                        ((void*)0), FALSE, rb->pool));
 
       SVN_ERR(commit_editor->open_root(commit_edit_baton,
                                        head_rev_before_commit,
@@ -91,10 +91,10 @@ close_revision(void *baton)
       SVN_ERR(commit_editor->close_edit(commit_edit_baton, rb->pool));
     }
 
-  /* svn_fs_commit_txn() rewrites the datestamp and author properties;
-     we'll rewrite them again by hand after closing the commit_editor.
-     The only time we don't do this is for revision 0 when loaded into
-     a non-empty repository.  */
+
+
+
+
   if (rb->rev > 0)
     {
       committed_rev = get_revision_mapping(rb->pb->rev_map, rb->rev);
@@ -112,7 +112,7 @@ close_revision(void *baton)
                                            rb->datestamp, rb->pool));
           SVN_ERR(svn_ra_change_rev_prop2(rb->pb->session, committed_rev,
                                           SVN_PROP_REVISION_DATE,
-                                          NULL, rb->datestamp, rb->pool));
+                                          ((void*)0), rb->datestamp, rb->pool));
         }
       if (!svn_hash_gets(rb->pb->skip_revprops, SVN_PROP_REVISION_AUTHOR))
         {
@@ -120,7 +120,7 @@ close_revision(void *baton)
                                            rb->author, rb->pool));
           SVN_ERR(svn_ra_change_rev_prop2(rb->pb->session, committed_rev,
                                           SVN_PROP_REVISION_AUTHOR,
-                                          NULL, rb->author, rb->pool));
+                                          ((void*)0), rb->author, rb->pool));
         }
     }
 

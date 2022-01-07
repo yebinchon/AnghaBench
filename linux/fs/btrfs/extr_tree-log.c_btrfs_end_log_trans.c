@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct btrfs_root {int /*<<< orphan*/  log_writer_wait; int /*<<< orphan*/  log_writers; } ;
 
-/* Variables and functions */
- scalar_t__ atomic_dec_and_test (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cond_wake_up_nomb (int /*<<< orphan*/ *) ; 
+
+
+
+struct btrfs_root {int log_writer_wait; int log_writers; } ;
+
+
+ scalar_t__ atomic_dec_and_test (int *) ;
+ int cond_wake_up_nomb (int *) ;
 
 void btrfs_end_log_trans(struct btrfs_root *root)
 {
-	if (atomic_dec_and_test(&root->log_writers)) {
-		/* atomic_dec_and_test implies a barrier */
-		cond_wake_up_nomb(&root->log_writer_wait);
-	}
+ if (atomic_dec_and_test(&root->log_writers)) {
+
+  cond_wake_up_nomb(&root->log_writer_wait);
+ }
 }

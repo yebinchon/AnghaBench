@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u8 ;
-typedef  int u32 ;
-typedef  int u16 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SCSP_INTTARGET_BOTH ; 
- int /*<<< orphan*/  ScspRaiseInterrupt (int,int /*<<< orphan*/ ) ; 
- scalar_t__ UNLIKELY (int) ; 
+
+
+
+typedef int u8 ;
+typedef int u32 ;
+typedef int u16 ;
+
+
+ int SCSP_INTTARGET_BOTH ;
+ int ScspRaiseInterrupt (int,int ) ;
+ scalar_t__ UNLIKELY (int) ;
 
 __attribute__((used)) static void ScspUpdateTimer(u32 samples, u16 *timer_ptr, u8 timer_scale,
                             int interrupt)
@@ -26,7 +26,7 @@ __attribute__((used)) static void ScspUpdateTimer(u32 samples, u16 *timer_ptr, u
    if (UNLIKELY(timer_new >= 0xFF00))
    {
       ScspRaiseInterrupt(interrupt, SCSP_INTTARGET_BOTH);
-      timer_new -= 0xFF00;  // We won't pass 0xFF00 multiple times at once
+      timer_new -= 0xFF00;
    }
    *timer_ptr = timer_new;
 }

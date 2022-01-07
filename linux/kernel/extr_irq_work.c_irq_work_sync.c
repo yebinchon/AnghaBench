@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct irq_work {int flags; } ;
 
-/* Variables and functions */
- int IRQ_WORK_BUSY ; 
- int /*<<< orphan*/  cpu_relax () ; 
- int /*<<< orphan*/  lockdep_assert_irqs_enabled () ; 
+
+ int IRQ_WORK_BUSY ;
+ int cpu_relax () ;
+ int lockdep_assert_irqs_enabled () ;
 
 void irq_work_sync(struct irq_work *work)
 {
-	lockdep_assert_irqs_enabled();
+ lockdep_assert_irqs_enabled();
 
-	while (work->flags & IRQ_WORK_BUSY)
-		cpu_relax();
+ while (work->flags & IRQ_WORK_BUSY)
+  cpu_relax();
 }

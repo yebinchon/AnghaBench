@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_8__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {int /*<<< orphan*/  pkey; int /*<<< orphan*/ * peer_cert_sigalgs; int /*<<< orphan*/ * peer_sigalgs; int /*<<< orphan*/  pmslen; int /*<<< orphan*/  pms; int /*<<< orphan*/ * ciphers_raw; int /*<<< orphan*/  peer_ca_names; int /*<<< orphan*/ * ctype; } ;
-struct TYPE_12__ {int /*<<< orphan*/ * alpn_proposed; int /*<<< orphan*/ * alpn_selected; int /*<<< orphan*/  peer_tmp; TYPE_1__ tmp; } ;
-struct TYPE_10__ {scalar_t__ npn_len; int /*<<< orphan*/ * npn; } ;
-struct TYPE_11__ {TYPE_2__ ext; int /*<<< orphan*/  version; TYPE_8__* s3; } ;
-typedef  TYPE_3__ SSL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EVP_PKEY_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OPENSSL_clear_free (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OPENSSL_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SSL3_VERSION ; 
- int /*<<< orphan*/  X509_NAME_free ; 
- int /*<<< orphan*/  memset (TYPE_8__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  sk_X509_NAME_pop_free (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ssl3_cleanup_key_block (TYPE_3__*) ; 
- int /*<<< orphan*/  ssl3_free_digest_list (TYPE_3__*) ; 
- int /*<<< orphan*/  ssl_free_wbio_buffer (TYPE_3__*) ; 
+
+typedef struct TYPE_12__ TYPE_8__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_9__ {int pkey; int * peer_cert_sigalgs; int * peer_sigalgs; int pmslen; int pms; int * ciphers_raw; int peer_ca_names; int * ctype; } ;
+struct TYPE_12__ {int * alpn_proposed; int * alpn_selected; int peer_tmp; TYPE_1__ tmp; } ;
+struct TYPE_10__ {scalar_t__ npn_len; int * npn; } ;
+struct TYPE_11__ {TYPE_2__ ext; int version; TYPE_8__* s3; } ;
+typedef TYPE_3__ SSL ;
+
+
+ int EVP_PKEY_free (int ) ;
+ int OPENSSL_clear_free (int ,int ) ;
+ int OPENSSL_free (int *) ;
+ int SSL3_VERSION ;
+ int X509_NAME_free ;
+ int memset (TYPE_8__*,int ,int) ;
+ int sk_X509_NAME_pop_free (int ,int ) ;
+ int ssl3_cleanup_key_block (TYPE_3__*) ;
+ int ssl3_free_digest_list (TYPE_3__*) ;
+ int ssl_free_wbio_buffer (TYPE_3__*) ;
 
 int ssl3_clear(SSL *s)
 {
@@ -42,17 +42,17 @@ int ssl3_clear(SSL *s)
     OPENSSL_free(s->s3->tmp.peer_sigalgs);
     OPENSSL_free(s->s3->tmp.peer_cert_sigalgs);
 
-#if !defined(OPENSSL_NO_EC) || !defined(OPENSSL_NO_DH)
+
     EVP_PKEY_free(s->s3->tmp.pkey);
     EVP_PKEY_free(s->s3->peer_tmp);
-#endif                          /* !OPENSSL_NO_EC */
+
 
     ssl3_free_digest_list(s);
 
     OPENSSL_free(s->s3->alpn_selected);
     OPENSSL_free(s->s3->alpn_proposed);
 
-    /* NULL/zero-out everything in the s3 struct */
+
     memset(s->s3, 0, sizeof(*s->s3));
 
     if (!ssl_free_wbio_buffer(s))
@@ -60,11 +60,11 @@ int ssl3_clear(SSL *s)
 
     s->version = SSL3_VERSION;
 
-#if !defined(OPENSSL_NO_NEXTPROTONEG)
+
     OPENSSL_free(s->ext.npn);
-    s->ext.npn = NULL;
+    s->ext.npn = ((void*)0);
     s->ext.npn_len = 0;
-#endif
+
 
     return 1;
 }

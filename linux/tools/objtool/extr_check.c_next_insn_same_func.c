@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct symbol {int /*<<< orphan*/  offset; struct symbol* cfunc; int /*<<< orphan*/  sec; } ;
-struct objtool_file {int /*<<< orphan*/  insn_list; } ;
-struct instruction {struct symbol* func; int /*<<< orphan*/  list; } ;
 
-/* Variables and functions */
- struct instruction* find_insn (struct objtool_file*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  list ; 
- struct instruction* list_next_entry (struct instruction*,int /*<<< orphan*/ ) ; 
+
+
+
+struct symbol {int offset; struct symbol* cfunc; int sec; } ;
+struct objtool_file {int insn_list; } ;
+struct instruction {struct symbol* func; int list; } ;
+
+
+ struct instruction* find_insn (struct objtool_file*,int ,int ) ;
+ int list ;
+ struct instruction* list_next_entry (struct instruction*,int ) ;
 
 __attribute__((used)) static struct instruction *next_insn_same_func(struct objtool_file *file,
-					       struct instruction *insn)
+            struct instruction *insn)
 {
-	struct instruction *next = list_next_entry(insn, list);
-	struct symbol *func = insn->func;
+ struct instruction *next = list_next_entry(insn, list);
+ struct symbol *func = insn->func;
 
-	if (!func)
-		return NULL;
+ if (!func)
+  return ((void*)0);
 
-	if (&next->list != &file->insn_list && next->func == func)
-		return next;
+ if (&next->list != &file->insn_list && next->func == func)
+  return next;
 
-	/* Check if we're already in the subfunction: */
-	if (func == func->cfunc)
-		return NULL;
 
-	/* Move to the subfunction: */
-	return find_insn(file, func->cfunc->sec, func->cfunc->offset);
+ if (func == func->cfunc)
+  return ((void*)0);
+
+
+ return find_insn(file, func->cfunc->sec, func->cfunc->offset);
 }

@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int ulonglong ;
 
-/* Variables and functions */
- int MY_TIMER_ITERATIONS ; 
+
+
+
+typedef int ulonglong ;
+
+
+ int MY_TIMER_ITERATIONS ;
 
 __attribute__((used)) static ulonglong my_timer_init_resolution(ulonglong (*this_timer)(void),
                                           ulonglong overhead_times_2)
@@ -40,7 +40,7 @@ __attribute__((used)) static ulonglong my_timer_init_resolution(ulonglong (*this
       }
       if (best_jump > time2)
         best_jump= time2;
-      /* For milliseconds, one jump is enough. */
+
       if (overhead_times_2 == 0)
         break;
     }

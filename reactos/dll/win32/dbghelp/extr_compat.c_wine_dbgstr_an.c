@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int ULONG_PTR ;
 
-/* Variables and functions */
- int LOWORD (char const*) ; 
- int min (int,int) ; 
- int /*<<< orphan*/  sprintf (char*,char*,int) ; 
- int strlen (char const*) ; 
+
+
+
+typedef int ULONG_PTR ;
+
+
+ int LOWORD (char const*) ;
+ int min (int,int) ;
+ int sprintf (char*,char*,int) ;
+ int strlen (char const*) ;
 
 const char *wine_dbgstr_an( const char *str, int n )
 {
@@ -45,7 +45,7 @@ const char *wine_dbgstr_an( const char *str, int n )
         case '\n': *dst++ = '\\'; *dst++ = 'n'; break;
         case '\r': *dst++ = '\\'; *dst++ = 'r'; break;
         case '\t': *dst++ = '\\'; *dst++ = 't'; break;
-        case '"':  *dst++ = '\\'; *dst++ = '"'; break;
+        case '"': *dst++ = '\\'; *dst++ = '"'; break;
         case '\\': *dst++ = '\\'; *dst++ = '\\'; break;
         default:
             if (c >= ' ' && c <= 126)

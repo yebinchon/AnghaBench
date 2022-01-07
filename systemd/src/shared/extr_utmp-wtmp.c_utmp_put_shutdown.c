@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct utmpx {int /*<<< orphan*/  ut_user; int /*<<< orphan*/  ut_type; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RUN_LVL ; 
- int /*<<< orphan*/  init_entry (struct utmpx*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strncpy (int /*<<< orphan*/ ,char*,int) ; 
- int write_entry_both (struct utmpx*) ; 
+
+
+
+struct utmpx {int ut_user; int ut_type; } ;
+
+
+ int RUN_LVL ;
+ int init_entry (struct utmpx*,int ) ;
+ int strncpy (int ,char*,int) ;
+ int write_entry_both (struct utmpx*) ;
 
 int utmp_put_shutdown(void) {
         struct utmpx store = {};

@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_object_t ;
-typedef  int /*<<< orphan*/  uint8_t ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int vlc_object_t ;
+typedef int uint8_t ;
 struct TYPE_6__ {scalar_t__ force; } ;
-struct TYPE_7__ {char* (* p_sys ) (char const*) ;int /*<<< orphan*/  pf_control; int /*<<< orphan*/  pf_readdir; int /*<<< orphan*/  s; TYPE_1__ obj; } ;
-typedef  TYPE_2__ stream_t ;
-typedef  int ssize_t ;
+struct TYPE_7__ {char* (* p_sys ) (char const*) ;int pf_control; int pf_readdir; int s; TYPE_1__ obj; } ;
+typedef TYPE_2__ stream_t ;
+typedef int ssize_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHECK_FILE (TYPE_2__*) ; 
- char* CheckUnicode (char const*) ; 
- scalar_t__ ContainsURL (int /*<<< orphan*/  const*,int) ; 
- char* GuessEncoding (char const*) ; 
- int /*<<< orphan*/  IsHLS (int /*<<< orphan*/  const*,int) ; 
- int /*<<< orphan*/  ReadDir ; 
- int VLC_EGENERIC ; 
- int VLC_SUCCESS ; 
- int /*<<< orphan*/  access_vaDirectoryControlHelper ; 
- int /*<<< orphan*/  free (char*) ; 
- scalar_t__ memcmp (int /*<<< orphan*/  const*,char*,int) ; 
- int /*<<< orphan*/  msg_Dbg (TYPE_2__*,char*) ; 
- scalar_t__ stream_HasExtension (TYPE_2__*,char*) ; 
- char* stream_MimeType (int /*<<< orphan*/ ) ; 
- scalar_t__ strncasecmp (char const*,char*,int) ; 
- scalar_t__ vlc_ascii_strcasecmp (char*,char*) ; 
- int vlc_stream_Peek (int /*<<< orphan*/ ,int /*<<< orphan*/  const**,int) ; 
- scalar_t__ vlc_stream_Seek (int /*<<< orphan*/ ,int) ; 
+
+ int CHECK_FILE (TYPE_2__*) ;
+ char* CheckUnicode (char const*) ;
+ scalar_t__ ContainsURL (int const*,int) ;
+ char* GuessEncoding (char const*) ;
+ int IsHLS (int const*,int) ;
+ int ReadDir ;
+ int VLC_EGENERIC ;
+ int VLC_SUCCESS ;
+ int access_vaDirectoryControlHelper ;
+ int free (char*) ;
+ scalar_t__ memcmp (int const*,char*,int) ;
+ int msg_Dbg (TYPE_2__*,char*) ;
+ scalar_t__ stream_HasExtension (TYPE_2__*,char*) ;
+ char* stream_MimeType (int ) ;
+ scalar_t__ strncasecmp (char const*,char*,int) ;
+ scalar_t__ vlc_ascii_strcasecmp (char*,char*) ;
+ int vlc_stream_Peek (int ,int const**,int) ;
+ scalar_t__ vlc_stream_Seek (int ,int) ;
 
 int Import_M3U( vlc_object_t *p_this )
 {
@@ -51,14 +51,14 @@ int Import_M3U( vlc_object_t *p_this )
     if( i_peek < 8 )
         return VLC_EGENERIC;
 
-    /* Encoding: UTF-8 or unspecified */
+
     char *(*pf_dup) (const char *) = GuessEncoding;
 
     if (stream_HasExtension(p_stream, ".m3u8")
-     || strncasecmp((const char *)p_peek, "RTSPtext", 8) == 0) /* QuickTime */
+     || strncasecmp((const char *)p_peek, "RTSPtext", 8) == 0)
         pf_dup = CheckUnicode;
     else
-    if (memcmp( p_peek, "\xef\xbb\xbf", 3) == 0) /* UTF-8 Byte Order Mark */
+    if (memcmp( p_peek, "\xef\xbb\xbf", 3) == 0)
     {
         if( i_peek < 12 )
             return VLC_EGENERIC;
@@ -68,19 +68,19 @@ int Import_M3U( vlc_object_t *p_this )
         i_peek -= offset;
     }
 
-    /* File type: playlist, or not (HLS manifest or whatever else) */
+
     char *type = stream_MimeType(p_stream->s);
     bool match;
 
     if (p_stream->obj.force)
-        match = true;
+        match = 1;
     else
-    if (type != NULL
-     && !vlc_ascii_strcasecmp(type, "application/vnd.apple.mpegurl")) /* HLS */
-        match = false;
+    if (type != ((void*)0)
+     && !vlc_ascii_strcasecmp(type, "application/vnd.apple.mpegurl"))
+        match = 0;
     else
     if (memcmp(p_peek, "#EXTM3U", 7 ) == 0
-     || (type != NULL
+     || (type != ((void*)0)
       && (vlc_ascii_strcasecmp(type, "application/mpegurl") == 0
        || vlc_ascii_strcasecmp(type, "application/x-mpegurl") == 0
        || vlc_ascii_strcasecmp(type, "audio/mpegurl") == 0
@@ -93,9 +93,9 @@ int Import_M3U( vlc_object_t *p_this )
     if (stream_HasExtension(p_stream, ".vlc")
      || strncasecmp((const char *)p_peek, "RTSPtext", 8) == 0
      || ContainsURL(p_peek, i_peek))
-        match = true;
+        match = 1;
     else
-        match = false;
+        match = 0;
 
     free(type);
 

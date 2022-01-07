@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char uint8_t ;
-typedef  int ossl_ssize_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OPENSSL_free (unsigned char*) ; 
- int OPENSSL_hexchar2int (char const) ; 
- int /*<<< orphan*/  _UC (char const) ; 
- unsigned char* app_malloc (int,char*) ; 
- scalar_t__ isspace (int /*<<< orphan*/ ) ; 
- int strlen (char const*) ; 
+
+
+
+typedef char uint8_t ;
+typedef int ossl_ssize_t ;
+
+
+ int OPENSSL_free (unsigned char*) ;
+ int OPENSSL_hexchar2int (char const) ;
+ int _UC (char const) ;
+ unsigned char* app_malloc (int,char*) ;
+ scalar_t__ isspace (int ) ;
+ int strlen (char const*) ;
 
 __attribute__((used)) static ossl_ssize_t hexdecode(const char **inptr, void *result)
 {
@@ -30,7 +30,7 @@ __attribute__((used)) static ossl_ssize_t hexdecode(const char **inptr, void *re
     uint8_t byte;
     int nibble = 0;
 
-    if (ret == NULL)
+    if (ret == ((void*)0))
         return -1;
 
     for (byte = 0; *in; ++in) {

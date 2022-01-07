@@ -1,76 +1,76 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int UINT ;
-struct TYPE_12__ {int /*<<< orphan*/  lfQuality; int /*<<< orphan*/  lfFaceName; int /*<<< orphan*/  lfCharSet; scalar_t__ lfHeight; } ;
+
+
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int UINT ;
+struct TYPE_12__ {int lfQuality; int lfFaceName; int lfCharSet; scalar_t__ lfHeight; } ;
 struct TYPE_11__ {scalar_t__ right; scalar_t__ left; scalar_t__ bottom; scalar_t__ top; } ;
-struct TYPE_10__ {int /*<<< orphan*/  bottom; int /*<<< orphan*/  right; int /*<<< orphan*/  top; int /*<<< orphan*/  left; } ;
-typedef  char TCHAR ;
-typedef  TYPE_1__ RECT ;
-typedef  TYPE_2__* LPRECT ;
-typedef  TYPE_3__ LOGFONTW ;
-typedef  scalar_t__ INT ;
-typedef  scalar_t__ HGDIOBJ ;
-typedef  scalar_t__ HFONT ;
-typedef  int /*<<< orphan*/  HDC ;
-typedef  int /*<<< orphan*/  HBRUSH ;
-typedef  int /*<<< orphan*/  COLORREF ;
-typedef  scalar_t__ BOOL ;
+struct TYPE_10__ {int bottom; int right; int top; int left; } ;
+typedef char TCHAR ;
+typedef TYPE_1__ RECT ;
+typedef TYPE_2__* LPRECT ;
+typedef TYPE_3__ LOGFONTW ;
+typedef scalar_t__ INT ;
+typedef scalar_t__ HGDIOBJ ;
+typedef scalar_t__ HFONT ;
+typedef int HDC ;
+typedef int HBRUSH ;
+typedef int COLORREF ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BLACK_BRUSH ; 
- int COLOR_3DDKSHADOW ; 
- int COLOR_3DLIGHT ; 
- int COLOR_BTNFACE ; 
- int COLOR_BTNHIGHLIGHT ; 
- int COLOR_BTNSHADOW ; 
- int COLOR_WINDOW ; 
- int COLOR_WINDOWFRAME ; 
- int COLOR_WINDOWTEXT ; 
- scalar_t__ CreateFontIndirect (TYPE_3__*) ; 
- int /*<<< orphan*/  DEFAULT_CHARSET ; 
- int DFCS_BUTTONRADIOMASK ; 
- int DFCS_CHECKED ; 
- int DFCS_FLAT ; 
- int DFCS_INACTIVE ; 
- int DFCS_MONO ; 
- int DFCS_PUSHED ; 
- int /*<<< orphan*/  DeleteObject (scalar_t__) ; 
- int /*<<< orphan*/  Ellipse (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FillRect (int /*<<< orphan*/ ,TYPE_2__*,int /*<<< orphan*/ ) ; 
- scalar_t__ GetBkMode (int /*<<< orphan*/ ) ; 
- scalar_t__ GetStockObject (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetSysColor (int) ; 
- int /*<<< orphan*/  GetTextColor (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  InflateRect (TYPE_1__*,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  NONANTIALIASED_QUALITY ; 
- int /*<<< orphan*/  NULL_PEN ; 
- scalar_t__ OPAQUE ; 
- int /*<<< orphan*/  RGB (int,int,int) ; 
- scalar_t__ SelectObject (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  SetBkColor (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetBkMode (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  SetRect (TYPE_1__*,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  SetTextColor (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEXT (char*) ; 
- scalar_t__ TRANSPARENT ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  TextOut (int /*<<< orphan*/ ,scalar_t__,scalar_t__,char*,int) ; 
- int /*<<< orphan*/  WHITE_BRUSH ; 
- int /*<<< orphan*/  ZeroMemory (TYPE_3__*,int) ; 
- int /*<<< orphan*/  lstrcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int BLACK_BRUSH ;
+ int COLOR_3DDKSHADOW ;
+ int COLOR_3DLIGHT ;
+ int COLOR_BTNFACE ;
+ int COLOR_BTNHIGHLIGHT ;
+ int COLOR_BTNSHADOW ;
+ int COLOR_WINDOW ;
+ int COLOR_WINDOWFRAME ;
+ int COLOR_WINDOWTEXT ;
+ scalar_t__ CreateFontIndirect (TYPE_3__*) ;
+ int DEFAULT_CHARSET ;
+ int DFCS_BUTTONRADIOMASK ;
+ int DFCS_CHECKED ;
+ int DFCS_FLAT ;
+ int DFCS_INACTIVE ;
+ int DFCS_MONO ;
+ int DFCS_PUSHED ;
+ int DeleteObject (scalar_t__) ;
+ int Ellipse (int ,int ,int ,int ,int ) ;
+ int FillRect (int ,TYPE_2__*,int ) ;
+ scalar_t__ GetBkMode (int ) ;
+ scalar_t__ GetStockObject (int ) ;
+ int GetSysColor (int) ;
+ int GetTextColor (int ) ;
+ int InflateRect (TYPE_1__*,scalar_t__,scalar_t__) ;
+ int NONANTIALIASED_QUALITY ;
+ int NULL_PEN ;
+ scalar_t__ OPAQUE ;
+ int RGB (int,int,int) ;
+ scalar_t__ SelectObject (int ,scalar_t__) ;
+ int SetBkColor (int ,int ) ;
+ int SetBkMode (int ,scalar_t__) ;
+ int SetRect (TYPE_1__*,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ int SetTextColor (int ,int ) ;
+ int TEXT (char*) ;
+ scalar_t__ TRANSPARENT ;
+ scalar_t__ TRUE ;
+ int TextOut (int ,scalar_t__,scalar_t__,char*,int) ;
+ int WHITE_BRUSH ;
+ int ZeroMemory (TYPE_3__*,int) ;
+ int lstrcpy (int ,int ) ;
 
 __attribute__((used)) static BOOL UITOOLS95_DFC_ButtonCheckRadio(HDC dc, LPRECT r, UINT uFlags, BOOL Radio)
 {
@@ -90,19 +90,19 @@ __attribute__((used)) static BOOL UITOOLS95_DFC_ButtonCheckRadio(HDC dc, LPRECT 
 
     if (Radio)
     {
-        OutRight = 'j'; // Outer right
-        OutLeft  = 'k'; // Outer left
-        InRight  = 'l'; // inner left
-        InLeft   = 'm'; // inner right
-        Center   = 'n'; // center
+        OutRight = 'j';
+        OutLeft = 'k';
+        InRight = 'l';
+        InLeft = 'm';
+        Center = 'n';
     }
     else
     {
-        OutRight = 'c'; // Outer right
-        OutLeft  = 'd'; // Outer left
-        InRight  = 'e'; // inner left
-        InLeft   = 'f'; // inner right
-        Center   = 'g'; // center
+        OutRight = 'c';
+        OutLeft = 'd';
+        InRight = 'e';
+        InLeft = 'f';
+        Center = 'g';
     }
 
     ZeroMemory(&lf, sizeof(LOGFONTW));
@@ -118,8 +118,8 @@ __attribute__((used)) static BOOL UITOOLS95_DFC_ButtonCheckRadio(HDC dc, LPRECT 
 
     if (Radio && ((uFlags & 0xFF) == DFCS_BUTTONRADIOMASK))
     {
-#if 1
-        // FIXME: improve font rendering
+
+
         RECT Rect;
         HGDIOBJ hbrOld, hpenOld;
         FillRect(dc, r, (HBRUSH)GetStockObject(WHITE_BRUSH));
@@ -130,23 +130,12 @@ __attribute__((used)) static BOOL UITOOLS95_DFC_ButtonCheckRadio(HDC dc, LPRECT 
         Ellipse(dc, Rect.left, Rect.top, Rect.right, Rect.bottom);
         SelectObject(dc, hbrOld);
         SelectObject(dc, hpenOld);
-#else
-        SetBkMode(dc, OPAQUE);
-        SetBkColor(dc, RGB(255, 255, 255));
-        SetTextColor(dc, RGB(0, 0, 0));
-        TextOut(dc, X, Y, &Center, 1);
-        SetBkMode(dc, TRANSPARENT);
-        TextOut(dc, X, Y, &OutRight, 1);
-        TextOut(dc, X, Y, &OutLeft, 1);
-        TextOut(dc, X, Y, &InRight, 1);
-        TextOut(dc, X, Y, &InLeft, 1);
-#endif
     }
     else
     {
         SetBkMode(dc, TRANSPARENT);
 
-        /* Center section, white for active, grey for inactive */
+
         if ((uFlags & (DFCS_INACTIVE | DFCS_PUSHED)))
             i = COLOR_BTNFACE;
         else

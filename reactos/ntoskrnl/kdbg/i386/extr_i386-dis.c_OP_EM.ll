@@ -1,0 +1,111 @@
+; ModuleID = '/home/carl/AnghaBench/reactos/ntoskrnl/kdbg/i386/extr_i386-dis.c_OP_EM.c'
+source_filename = "/home/carl/AnghaBench/reactos/ntoskrnl/kdbg/i386/extr_i386-dis.c_OP_EM.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+@mod = common dso_local global i32 0, align 4
+@REX_EXTZ = common dso_local global i32 0, align 4
+@rex = common dso_local global i32 0, align 4
+@MODRM_CHECK = common dso_local global i32 0, align 4
+@codep = common dso_local global i32 0, align 4
+@prefixes = common dso_local global i32 0, align 4
+@PREFIX_DATA = common dso_local global i32 0, align 4
+@used_prefixes = common dso_local global i32 0, align 4
+@scratchbuf = common dso_local global i64 0, align 8
+@.str = private unnamed_addr constant [8 x i8] c"%%xmm%d\00", align 1
+@rm = common dso_local global i32 0, align 4
+@.str.1 = private unnamed_addr constant [7 x i8] c"%%mm%d\00", align 1
+@intel_syntax = common dso_local global i64 0, align 8
+@llvm.used = appending global [1 x i8*] [i8* bitcast (void (i32, i32)* @OP_EM to i8*)], section "llvm.metadata"
+
+; Function Attrs: noinline nounwind optnone uwtable
+define internal void @OP_EM(i32 %0, i32 %1) #0 {
+  %3 = alloca i32, align 4
+  %4 = alloca i32, align 4
+  %5 = alloca i32, align 4
+  store i32 %0, i32* %3, align 4
+  store i32 %1, i32* %4, align 4
+  store i32 0, i32* %5, align 4
+  %6 = load i32, i32* @mod, align 4
+  %7 = icmp ne i32 %6, 3
+  br i1 %7, label %8, label %12
+
+8:                                                ; preds = %2
+  %9 = load i32, i32* %3, align 4
+  %10 = load i32, i32* %4, align 4
+  %11 = call i32 @OP_E(i32 %9, i32 %10)
+  br label %50
+
+12:                                               ; preds = %2
+  %13 = load i32, i32* @REX_EXTZ, align 4
+  %14 = call i32 @USED_REX(i32 %13)
+  %15 = load i32, i32* @rex, align 4
+  %16 = load i32, i32* @REX_EXTZ, align 4
+  %17 = and i32 %15, %16
+  %18 = icmp ne i32 %17, 0
+  br i1 %18, label %19, label %20
+
+19:                                               ; preds = %12
+  store i32 8, i32* %5, align 4
+  br label %20
+
+20:                                               ; preds = %19, %12
+  %21 = load i32, i32* @MODRM_CHECK, align 4
+  %22 = load i32, i32* @codep, align 4
+  %23 = add nsw i32 %22, 1
+  store i32 %23, i32* @codep, align 4
+  %24 = load i32, i32* @prefixes, align 4
+  %25 = load i32, i32* @PREFIX_DATA, align 4
+  %26 = and i32 %24, %25
+  %27 = load i32, i32* @used_prefixes, align 4
+  %28 = or i32 %27, %26
+  store i32 %28, i32* @used_prefixes, align 4
+  %29 = load i32, i32* @prefixes, align 4
+  %30 = load i32, i32* @PREFIX_DATA, align 4
+  %31 = and i32 %29, %30
+  %32 = icmp ne i32 %31, 0
+  br i1 %32, label %33, label %39
+
+33:                                               ; preds = %20
+  %34 = load i64, i64* @scratchbuf, align 8
+  %35 = load i32, i32* @rm, align 4
+  %36 = load i32, i32* %5, align 4
+  %37 = add nsw i32 %35, %36
+  %38 = call i32 @sprintf(i64 %34, i8* getelementptr inbounds ([8 x i8], [8 x i8]* @.str, i64 0, i64 0), i32 %37)
+  br label %45
+
+39:                                               ; preds = %20
+  %40 = load i64, i64* @scratchbuf, align 8
+  %41 = load i32, i32* @rm, align 4
+  %42 = load i32, i32* %5, align 4
+  %43 = add nsw i32 %41, %42
+  %44 = call i32 @sprintf(i64 %40, i8* getelementptr inbounds ([7 x i8], [7 x i8]* @.str.1, i64 0, i64 0), i32 %43)
+  br label %45
+
+45:                                               ; preds = %39, %33
+  %46 = load i64, i64* @scratchbuf, align 8
+  %47 = load i64, i64* @intel_syntax, align 8
+  %48 = add nsw i64 %46, %47
+  %49 = call i32 @oappend(i64 %48)
+  br label %50
+
+50:                                               ; preds = %45, %8
+  ret void
+}
+
+declare dso_local i32 @OP_E(i32, i32) #1
+
+declare dso_local i32 @USED_REX(i32) #1
+
+declare dso_local i32 @sprintf(i64, i8*, i32) #1
+
+declare dso_local i32 @oappend(i64) #1
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

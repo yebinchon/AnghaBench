@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  tex_filter; int /*<<< orphan*/  texture; } ;
-typedef  TYPE_1__ vita_video_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SCE_GXM_TEXTURE_FILTER_LINEAR ; 
- int /*<<< orphan*/  SCE_GXM_TEXTURE_FILTER_POINT ; 
- int /*<<< orphan*/  vita2d_texture_set_filters (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int tex_filter; int texture; } ;
+typedef TYPE_1__ vita_video_t ;
+
+
+ int SCE_GXM_TEXTURE_FILTER_LINEAR ;
+ int SCE_GXM_TEXTURE_FILTER_POINT ;
+ int vita2d_texture_set_filters (int ,int ,int ) ;
 
 __attribute__((used)) static void vita_set_filtering(void *data, unsigned index, bool smooth)
 {

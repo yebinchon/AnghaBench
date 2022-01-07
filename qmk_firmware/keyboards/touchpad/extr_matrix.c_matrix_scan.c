@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint16_t ;
-typedef  int /*<<< orphan*/  matrix_row_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  B4 ; 
- int /*<<< orphan*/  B5 ; 
- int /*<<< orphan*/  B6 ; 
- int /*<<< orphan*/  C6 ; 
- int /*<<< orphan*/  C7 ; 
- int /*<<< orphan*/  D6 ; 
- int /*<<< orphan*/  D7 ; 
- int /*<<< orphan*/  E6 ; 
- int /*<<< orphan*/  F0 ; 
- int /*<<< orphan*/  F1 ; 
- int /*<<< orphan*/  F4 ; 
- int /*<<< orphan*/  F5 ; 
- int /*<<< orphan*/  F6 ; 
- int /*<<< orphan*/  F7 ; 
- int MATRIX_ROWS ; 
- scalar_t__ VIBRATE_LENGTH ; 
- int /*<<< orphan*/  _BV (int) ; 
- int /*<<< orphan*/  decodeArray (int,int*,int*) ; 
- scalar_t__ isTouchChangeDetected () ; 
- int /*<<< orphan*/ * matrix ; 
- int matrix_is_on (int,int) ; 
- int /*<<< orphan*/  matrix_scan_quantum () ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  touchClearCurrentDetections () ; 
- int touchDetectionRoutine () ; 
- scalar_t__ vibrate ; 
- int /*<<< orphan*/  writePin (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  writePinHigh (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  writePinLow (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint16_t ;
+typedef int matrix_row_t ;
+
+
+ int B4 ;
+ int B5 ;
+ int B6 ;
+ int C6 ;
+ int C7 ;
+ int D6 ;
+ int D7 ;
+ int E6 ;
+ int F0 ;
+ int F1 ;
+ int F4 ;
+ int F5 ;
+ int F6 ;
+ int F7 ;
+ int MATRIX_ROWS ;
+ scalar_t__ VIBRATE_LENGTH ;
+ int _BV (int) ;
+ int decodeArray (int,int*,int*) ;
+ scalar_t__ isTouchChangeDetected () ;
+ int * matrix ;
+ int matrix_is_on (int,int) ;
+ int matrix_scan_quantum () ;
+ int memset (int *,int ,int) ;
+ int touchClearCurrentDetections () ;
+ int touchDetectionRoutine () ;
+ scalar_t__ vibrate ;
+ int writePin (int ,int) ;
+ int writePinHigh (int ) ;
+ int writePinLow (int ) ;
 
 uint8_t matrix_scan(void) {
   if (isTouchChangeDetected()) {
@@ -52,7 +52,7 @@ uint8_t matrix_scan(void) {
       uint8_t column = 10, row = 10;
       decodeArray(dataIn, &column, &row);
       if (column != 10 && row != 10) {
-        vibrate = VIBRATE_LENGTH; //Trigger vibration
+        vibrate = VIBRATE_LENGTH;
         matrix[row] = _BV(column);
       } else {
         memset(matrix, 0, MATRIX_ROWS * sizeof(matrix_row_t));
@@ -89,7 +89,7 @@ uint8_t matrix_scan(void) {
     writePinHigh(E6);
     writePinHigh(D7);
     vibrate--;
-  }  else if (vibrate > 0) {
+  } else if (vibrate > 0) {
     vibrate--;
   } else if (vibrate == 0) {
     writePinLow(D7);

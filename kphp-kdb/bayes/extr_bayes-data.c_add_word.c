@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int ll ;
 
-/* Variables and functions */
- int HASH_MUL ; 
- scalar_t__ debug ; 
- int /*<<< orphan*/  debugp (char*,char*,long long) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  put_string_utf8 (int*,char*) ; 
- int /*<<< orphan*/  stderr ; 
- int* words ; 
- int /*<<< orphan*/  words_len ; 
+
+
+
+typedef int ll ;
+
+
+ int HASH_MUL ;
+ scalar_t__ debug ;
+ int debugp (char*,char*,long long) ;
+ int fprintf (int ,char*,char*) ;
+ int put_string_utf8 (int*,char*) ;
+ int stderr ;
+ int* words ;
+ int words_len ;
 
 void add_word (int *v) {
-//TODO: remove useless put_sting_utf8
+
 
   char tmp[10000];
   put_string_utf8 (v, tmp);

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  TimestampTz ;
-struct TYPE_2__ {int /*<<< orphan*/  mutex_threshold; int /*<<< orphan*/  threshold_timestamp; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SpinLockAcquire (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SpinLockRelease (int /*<<< orphan*/ *) ; 
- TYPE_1__* oldSnapshotControl ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int TimestampTz ;
+struct TYPE_2__ {int mutex_threshold; int threshold_timestamp; } ;
+
+
+ int SpinLockAcquire (int *) ;
+ int SpinLockRelease (int *) ;
+ TYPE_1__* oldSnapshotControl ;
 
 TimestampTz
 GetOldSnapshotThresholdTimestamp(void)
 {
-	TimestampTz threshold_timestamp;
+ TimestampTz threshold_timestamp;
 
-	SpinLockAcquire(&oldSnapshotControl->mutex_threshold);
-	threshold_timestamp = oldSnapshotControl->threshold_timestamp;
-	SpinLockRelease(&oldSnapshotControl->mutex_threshold);
+ SpinLockAcquire(&oldSnapshotControl->mutex_threshold);
+ threshold_timestamp = oldSnapshotControl->threshold_timestamp;
+ SpinLockRelease(&oldSnapshotControl->mutex_threshold);
 
-	return threshold_timestamp;
+ return threshold_timestamp;
 }

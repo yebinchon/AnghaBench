@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {size_t l104; size_t l51; size_t l45; int /*<<< orphan*/  (* l65 ) (TYPE_2__*,int) ;int /*<<< orphan*/  l261; scalar_t__ x; TYPE_1__* l42; int /*<<< orphan*/ * l97; int /*<<< orphan*/  l614; } ;
-typedef  TYPE_2__ e ;
-struct TYPE_6__ {int /*<<< orphan*/  t; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  l715 (TYPE_2__*) ; 
- int /*<<< orphan*/  stub1 (TYPE_2__*,int) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {size_t l104; size_t l51; size_t l45; int (* l65 ) (TYPE_2__*,int) ;int l261; scalar_t__ x; TYPE_1__* l42; int * l97; int l614; } ;
+typedef TYPE_2__ e ;
+struct TYPE_6__ {int t; } ;
+
+
+ int l715 (TYPE_2__*) ;
+ int stub1 (TYPE_2__*,int) ;
 
 __attribute__((used)) static void l268(e*a){unsigned long
 l91;int l219=0;++a->l614;{l185:if(!((l91= * (volatile unsigned long* )&

@@ -1,73 +1,73 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ u_int ;
-typedef  int /*<<< orphan*/  u_char ;
+
+
+
+
+typedef scalar_t__ u_int ;
+typedef int u_char ;
 struct pcap_pkthdr {scalar_t__ len; scalar_t__ caplen; } ;
-struct enchdr {int flags; int af; int /*<<< orphan*/  spi; } ;
-typedef  int /*<<< orphan*/  netdissect_options ;
+struct enchdr {int flags; int af; int spi; } ;
+typedef int netdissect_options ;
 
-/* Variables and functions */
-#define  AF_INET 129 
-#define  AF_INET6 128 
- scalar_t__ ENC_HDRLEN ; 
- int /*<<< orphan*/  ENC_PRINT_TYPE (int,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  EXTRACT_32BITS (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  M_AUTH ; 
- int /*<<< orphan*/  M_CONF ; 
- int /*<<< orphan*/  ND_PRINT (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ip6_print (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,scalar_t__) ; 
- int /*<<< orphan*/  ip_print (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,scalar_t__) ; 
+
+
+
+ scalar_t__ ENC_HDRLEN ;
+ int ENC_PRINT_TYPE (int,int ,char*) ;
+ int EXTRACT_32BITS (int *) ;
+ int M_AUTH ;
+ int M_CONF ;
+ int ND_PRINT (int *) ;
+ int ip6_print (int *,int const*,scalar_t__) ;
+ int ip_print (int *,int const*,scalar_t__) ;
 
 u_int
 enc_if_print(netdissect_options *ndo,
              const struct pcap_pkthdr *h, register const u_char *p)
 {
-	register u_int length = h->len;
-	register u_int caplen = h->caplen;
-	int flags;
-	const struct enchdr *hdr;
+ register u_int length = h->len;
+ register u_int caplen = h->caplen;
+ int flags;
+ const struct enchdr *hdr;
 
-	if (caplen < ENC_HDRLEN) {
-		ND_PRINT((ndo, "[|enc]"));
-		goto out;
-	}
+ if (caplen < ENC_HDRLEN) {
+  ND_PRINT((ndo, "[|enc]"));
+  goto out;
+ }
 
-	hdr = (const struct enchdr *)p;
-	flags = hdr->flags;
-	if (flags == 0)
-		ND_PRINT((ndo, "(unprotected): "));
-	else
-		ND_PRINT((ndo, "("));
-	ENC_PRINT_TYPE(flags, M_AUTH, "authentic");
-	ENC_PRINT_TYPE(flags, M_CONF, "confidential");
-	/* ENC_PRINT_TYPE(flags, M_TUNNEL, "tunnel"); */
-	ND_PRINT((ndo, "SPI 0x%08x: ", EXTRACT_32BITS(&hdr->spi)));
+ hdr = (const struct enchdr *)p;
+ flags = hdr->flags;
+ if (flags == 0)
+  ND_PRINT((ndo, "(unprotected): "));
+ else
+  ND_PRINT((ndo, "("));
+ ENC_PRINT_TYPE(flags, M_AUTH, "authentic");
+ ENC_PRINT_TYPE(flags, M_CONF, "confidential");
 
-	length -= ENC_HDRLEN;
-	caplen -= ENC_HDRLEN;
-	p += ENC_HDRLEN;
+ ND_PRINT((ndo, "SPI 0x%08x: ", EXTRACT_32BITS(&hdr->spi)));
 
-	switch (hdr->af) {
-	case AF_INET:
-		ip_print(ndo, p, length);
-		break;
-#ifdef AF_INET6
-	case AF_INET6:
-		ip6_print(ndo, p, length);
-		break;
-#endif
-	}
+ length -= ENC_HDRLEN;
+ caplen -= ENC_HDRLEN;
+ p += ENC_HDRLEN;
+
+ switch (hdr->af) {
+ case 129:
+  ip_print(ndo, p, length);
+  break;
+
+ case 128:
+  ip6_print(ndo, p, length);
+  break;
+
+ }
 
 out:
-	return (ENC_HDRLEN);
+ return (ENC_HDRLEN);
 }

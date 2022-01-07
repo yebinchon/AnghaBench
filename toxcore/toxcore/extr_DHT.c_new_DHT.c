@@ -1,70 +1,70 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  scalar_t__ uint32_t ;
-typedef  int /*<<< orphan*/  random_key_bytes ;
-struct TYPE_10__ {int /*<<< orphan*/  self_public_key; int /*<<< orphan*/  assoc; int /*<<< orphan*/  dht_harden_ping_array; int /*<<< orphan*/  dht_ping_array; int /*<<< orphan*/  self_secret_key; int /*<<< orphan*/  secret_symmetric_key; int /*<<< orphan*/ * net; int /*<<< orphan*/ * ping; } ;
-typedef  int /*<<< orphan*/  Networking_Core ;
-typedef  TYPE_1__ DHT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CRYPTO_PACKET_HARDENING ; 
- int /*<<< orphan*/  CRYPTO_PACKET_NAT_PING ; 
- scalar_t__ DHT_FAKE_FRIEND_NUMBER ; 
- int /*<<< orphan*/  DHT_PING_ARRAY_SIZE ; 
- scalar_t__ DHT_addfriend (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NET_PACKET_CRYPTO ; 
- int /*<<< orphan*/  NET_PACKET_GET_NODES ; 
- int /*<<< orphan*/  NET_PACKET_SEND_NODES_IPV6 ; 
- int /*<<< orphan*/  PING_TIMEOUT ; 
- TYPE_1__* calloc (int,int) ; 
- int crypto_box_PUBLICKEYBYTES ; 
- int /*<<< orphan*/  crypto_box_keypair (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cryptopacket_handle ; 
- int /*<<< orphan*/  cryptopacket_registerhandler (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  handle_NATping ; 
- int /*<<< orphan*/  handle_getnodes ; 
- int /*<<< orphan*/  handle_hardening ; 
- int /*<<< orphan*/  handle_sendnodes_ipv6 ; 
- int /*<<< orphan*/  kill_DHT (TYPE_1__*) ; 
- int /*<<< orphan*/  networking_registerhandler (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  new_Assoc_default (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * new_ping (TYPE_1__*) ; 
- int /*<<< orphan*/  new_symmetric_key (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ping_array_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  randombytes (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  unix_time_update () ; 
+
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef scalar_t__ uint32_t ;
+typedef int random_key_bytes ;
+struct TYPE_10__ {int self_public_key; int assoc; int dht_harden_ping_array; int dht_ping_array; int self_secret_key; int secret_symmetric_key; int * net; int * ping; } ;
+typedef int Networking_Core ;
+typedef TYPE_1__ DHT ;
+
+
+ int CRYPTO_PACKET_HARDENING ;
+ int CRYPTO_PACKET_NAT_PING ;
+ scalar_t__ DHT_FAKE_FRIEND_NUMBER ;
+ int DHT_PING_ARRAY_SIZE ;
+ scalar_t__ DHT_addfriend (TYPE_1__*,int *,int ,int ,int ,int ) ;
+ int NET_PACKET_CRYPTO ;
+ int NET_PACKET_GET_NODES ;
+ int NET_PACKET_SEND_NODES_IPV6 ;
+ int PING_TIMEOUT ;
+ TYPE_1__* calloc (int,int) ;
+ int crypto_box_PUBLICKEYBYTES ;
+ int crypto_box_keypair (int ,int ) ;
+ int cryptopacket_handle ;
+ int cryptopacket_registerhandler (TYPE_1__*,int ,int *,TYPE_1__*) ;
+ int handle_NATping ;
+ int handle_getnodes ;
+ int handle_hardening ;
+ int handle_sendnodes_ipv6 ;
+ int kill_DHT (TYPE_1__*) ;
+ int networking_registerhandler (int *,int ,int *,TYPE_1__*) ;
+ int new_Assoc_default (int ) ;
+ int * new_ping (TYPE_1__*) ;
+ int new_symmetric_key (int ) ;
+ int ping_array_init (int *,int ,int ) ;
+ int randombytes (int *,int) ;
+ int unix_time_update () ;
 
 DHT *new_DHT(Networking_Core *net)
 {
-    /* init time */
+
     unix_time_update();
 
-    if (net == NULL)
-        return NULL;
+    if (net == ((void*)0))
+        return ((void*)0);
 
     DHT *dht = calloc(1, sizeof(DHT));
 
-    if (dht == NULL)
-        return NULL;
+    if (dht == ((void*)0))
+        return ((void*)0);
 
     dht->net = net;
     dht->ping = new_ping(dht);
 
-    if (dht->ping == NULL) {
+    if (dht->ping == ((void*)0)) {
         kill_DHT(dht);
-        return NULL;
+        return ((void*)0);
     }
 
     networking_registerhandler(dht->net, NET_PACKET_GET_NODES, &handle_getnodes, dht);
@@ -78,9 +78,9 @@ DHT *new_DHT(Networking_Core *net)
 
     ping_array_init(&dht->dht_ping_array, DHT_PING_ARRAY_SIZE, PING_TIMEOUT);
     ping_array_init(&dht->dht_harden_ping_array, DHT_PING_ARRAY_SIZE, PING_TIMEOUT);
-#ifdef ENABLE_ASSOC_DHT
-    dht->assoc = new_Assoc_default(dht->self_public_key);
-#endif
+
+
+
     uint32_t i;
 
     for (i = 0; i < DHT_FAKE_FRIEND_NUMBER; ++i) {
@@ -89,7 +89,7 @@ DHT *new_DHT(Networking_Core *net)
 
         if (DHT_addfriend(dht, random_key_bytes, 0, 0, 0, 0) != 0) {
             kill_DHT(dht);
-            return NULL;
+            return ((void*)0);
         }
     }
 

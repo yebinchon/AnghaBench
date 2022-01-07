@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  XFORM ;
+
+
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int XFORM ;
 struct TYPE_9__ {int right; int bottom; scalar_t__ top; scalar_t__ left; } ;
 struct TYPE_8__ {int right; int bottom; scalar_t__ top; scalar_t__ left; } ;
-struct TYPE_6__ {int dwSize; int nCount; int nRgnSize; TYPE_4__ rcBound; int /*<<< orphan*/  iType; } ;
-struct TYPE_7__ {TYPE_1__ rdh; int /*<<< orphan*/  Buffer; } ;
-typedef  int /*<<< orphan*/  RgnDataBuffer ;
-typedef  int /*<<< orphan*/  RGNDATAHEADER ;
-typedef  TYPE_2__ RGNDATA ;
-typedef  int /*<<< orphan*/  RECT ;
-typedef  TYPE_3__* PRECT ;
-typedef  int /*<<< orphan*/ * HRGN ;
-typedef  float FLOAT ;
-typedef  int /*<<< orphan*/  CHAR ;
+struct TYPE_6__ {int dwSize; int nCount; int nRgnSize; TYPE_4__ rcBound; int iType; } ;
+struct TYPE_7__ {TYPE_1__ rdh; int Buffer; } ;
+typedef int RgnDataBuffer ;
+typedef int RGNDATAHEADER ;
+typedef TYPE_2__ RGNDATA ;
+typedef int RECT ;
+typedef TYPE_3__* PRECT ;
+typedef int * HRGN ;
+typedef float FLOAT ;
+typedef int CHAR ;
 
-/* Variables and functions */
- scalar_t__ COMPLEXREGION ; 
- int /*<<< orphan*/  CheckRect (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int,int) ; 
- int /*<<< orphan*/  CheckRectRegion (int /*<<< orphan*/ *,int,int,int,int) ; 
- int /*<<< orphan*/ * ExtCreateRegion (int /*<<< orphan*/ *,int,TYPE_2__ const*) ; 
- scalar_t__ GetRgnBox (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  InitXFORM (int /*<<< orphan*/ *,int,int,int,int,int,int) ; 
- int /*<<< orphan*/  RDH_RECTANGLES ; 
- int /*<<< orphan*/  SetRectEmpty (TYPE_4__*) ; 
- int cosf (float) ; 
- int /*<<< orphan*/  ok (int,char*) ; 
- int sinf (float) ; 
+
+ scalar_t__ COMPLEXREGION ;
+ int CheckRect (int *,int ,int,int,int) ;
+ int CheckRectRegion (int *,int,int,int,int) ;
+ int * ExtCreateRegion (int *,int,TYPE_2__ const*) ;
+ scalar_t__ GetRgnBox (int *,int *) ;
+ int InitXFORM (int *,int,int,int,int,int,int) ;
+ int RDH_RECTANGLES ;
+ int SetRectEmpty (TYPE_4__*) ;
+ int cosf (float) ;
+ int ok (int,char*) ;
+ int sinf (float) ;
 
 void Test_ExtCreateRegion_Transform()
 {
@@ -70,40 +70,40 @@ void Test_ExtCreateRegion_Transform()
 
     SetRectEmpty(&RgnDataBuffer.rgndata.rdh.rcBound);
 
-    hrgn = ExtCreateRegion(NULL, sizeof(RgnDataBuffer), pRgnData);
-    ok(hrgn != NULL, "ExtCreateRegion failed with without transform\n");
+    hrgn = ExtCreateRegion(((void*)0), sizeof(RgnDataBuffer), pRgnData);
+    ok(hrgn != ((void*)0), "ExtCreateRegion failed with without transform\n");
     CheckRectRegion(hrgn, 0, 0, 10, 10);
 
     InitXFORM(&xform, 1., 0., 0., 1., 0., 0.);
     hrgn = ExtCreateRegion(&xform, sizeof(RgnDataBuffer), pRgnData);
-    ok(hrgn != NULL, "ExtCreateRegion failed with identity transform\n");
+    ok(hrgn != ((void*)0), "ExtCreateRegion failed with identity transform\n");
     CheckRectRegion(hrgn, 0, 0, 10, 10);
 
     InitXFORM(&xform, 1., 0., 0., 1., 10., 10.);
     hrgn = ExtCreateRegion(&xform, sizeof(RgnDataBuffer), pRgnData);
-    ok(hrgn != NULL, "ExtCreateRegion failed with offset transform\n");
+    ok(hrgn != ((void*)0), "ExtCreateRegion failed with offset transform\n");
     CheckRectRegion(hrgn, 10, 10, 20, 20);
 
     InitXFORM(&xform, 2.5, 0., 0., 1.5, 0., 0.);
     hrgn = ExtCreateRegion(&xform, sizeof(RgnDataBuffer), pRgnData);
-    ok(hrgn != NULL, "ExtCreateRegion failed with scaling transform\n");
+    ok(hrgn != ((void*)0), "ExtCreateRegion failed with scaling transform\n");
     CheckRectRegion(hrgn, 0, 0, 25, 15);
 
     InitXFORM(&xform, 2.5, 0., 0., 1.5, 20., 40.);
     hrgn = ExtCreateRegion(&xform, sizeof(RgnDataBuffer), pRgnData);
-    ok(hrgn != NULL, "ExtCreateRegion failed with scaling+offset transform\n");
+    ok(hrgn != ((void*)0), "ExtCreateRegion failed with scaling+offset transform\n");
     CheckRectRegion(hrgn, 20, 40, 45, 55);
 
     InitXFORM(&xform, 1., 10., 0., 1., 0., 0.);
     hrgn = ExtCreateRegion(&xform, sizeof(RgnDataBuffer), pRgnData);
-    ok(hrgn != NULL, "ExtCreateRegion failed with shearing transform\n");
+    ok(hrgn != ((void*)0), "ExtCreateRegion failed with shearing transform\n");
     ok(GetRgnBox(hrgn, &rcTemp) == COMPLEXREGION, "not a complex region\n");
     CheckRect(&rcTemp, 0, 1, 10, 101);
 
     eAngle = 23.6f;
     InitXFORM(&xform, cosf(eAngle), -sinf(eAngle), sinf(eAngle), cosf(eAngle), 10., 10.);
     hrgn = ExtCreateRegion(&xform, sizeof(RgnDataBuffer), pRgnData);
-    ok(hrgn != NULL, "ExtCreateRegion failed with rotating transform\n");
+    ok(hrgn != ((void*)0), "ExtCreateRegion failed with rotating transform\n");
     CheckRectRegion(hrgn, 0, 10, 10, 20);
 
 }

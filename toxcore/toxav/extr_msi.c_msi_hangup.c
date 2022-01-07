@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {scalar_t__ state; int /*<<< orphan*/  friend_number; TYPE_1__* session; } ;
-struct TYPE_6__ {int /*<<< orphan*/  mutex; int /*<<< orphan*/  messenger; } ;
-typedef  TYPE_1__ MSISession ;
-typedef  int /*<<< orphan*/  MSIMessage ;
-typedef  TYPE_2__ MSICall ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOGGER_DEBUG (char*,TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LOGGER_ERROR (char*) ; 
- int /*<<< orphan*/  kill_call (TYPE_2__*) ; 
- int /*<<< orphan*/  msg_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ msi_CallInactive ; 
- scalar_t__ pthread_mutex_trylock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  requ_pop ; 
- int /*<<< orphan*/  send_message (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {scalar_t__ state; int friend_number; TYPE_1__* session; } ;
+struct TYPE_6__ {int mutex; int messenger; } ;
+typedef TYPE_1__ MSISession ;
+typedef int MSIMessage ;
+typedef TYPE_2__ MSICall ;
+
+
+ int LOGGER_DEBUG (char*,TYPE_1__*,int ) ;
+ int LOGGER_ERROR (char*) ;
+ int kill_call (TYPE_2__*) ;
+ int msg_init (int *,int ) ;
+ scalar_t__ msi_CallInactive ;
+ scalar_t__ pthread_mutex_trylock (int ) ;
+ int pthread_mutex_unlock (int ) ;
+ int requ_pop ;
+ int send_message (int ,int ,int *) ;
 
 int msi_hangup (MSICall *call)
 {

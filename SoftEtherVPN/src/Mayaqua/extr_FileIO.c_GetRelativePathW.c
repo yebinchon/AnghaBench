@@ -1,60 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wchar_t ;
-typedef  int /*<<< orphan*/  fullpath2 ;
-typedef  int /*<<< orphan*/  basepath2 ;
-typedef  int /*<<< orphan*/  UINT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ClearUniStr (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int MAX_SIZE ; 
- int /*<<< orphan*/  NormalizePathW (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- int UniStartWith (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  UniStrCat (int /*<<< orphan*/ *,int,char*) ; 
- int /*<<< orphan*/  UniStrCpy (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int UniStrLen (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int wchar_t ;
+typedef int fullpath2 ;
+typedef int basepath2 ;
+typedef int UINT ;
+
+
+ int ClearUniStr (int *,int ) ;
+ int MAX_SIZE ;
+ int NormalizePathW (int *,int,int *) ;
+ int UniStartWith (int *,int *) ;
+ int UniStrCat (int *,int,char*) ;
+ int UniStrCpy (int *,int ,int *) ;
+ int UniStrLen (int *) ;
 
 bool GetRelativePathW(wchar_t *dst, UINT size, wchar_t *fullpath, wchar_t *basepath)
 {
-	wchar_t fullpath2[MAX_SIZE];
-	wchar_t basepath2[MAX_SIZE];
-	// Validate arguments
-	if (dst == NULL || fullpath == NULL || basepath == NULL)
-	{
-		return false;
-	}
-	ClearUniStr(dst, size);
+ wchar_t fullpath2[MAX_SIZE];
+ wchar_t basepath2[MAX_SIZE];
 
-	NormalizePathW(fullpath2, sizeof(fullpath2), fullpath);
-	NormalizePathW(basepath2, sizeof(basepath2), basepath);
+ if (dst == ((void*)0) || fullpath == ((void*)0) || basepath == ((void*)0))
+ {
+  return 0;
+ }
+ ClearUniStr(dst, size);
 
-#ifdef	OS_WIN32
-	UniStrCat(basepath2, sizeof(basepath2), L"\\");
-#else	// OS_WIN32
-	UniStrCat(basepath2, sizeof(basepath2), L"/");
-#endif	// OS_WIN32
+ NormalizePathW(fullpath2, sizeof(fullpath2), fullpath);
+ NormalizePathW(basepath2, sizeof(basepath2), basepath);
 
-	if (UniStrLen(fullpath2) <= UniStrLen(basepath2))
-	{
-		return false;
-	}
 
-	if (UniStartWith(fullpath2, basepath2) == false)
-	{
-		return false;
-	}
 
-	UniStrCpy(dst, size, fullpath2 + UniStrLen(basepath2));
 
-	return true;
+ UniStrCat(basepath2, sizeof(basepath2), L"/");
+
+
+ if (UniStrLen(fullpath2) <= UniStrLen(basepath2))
+ {
+  return 0;
+ }
+
+ if (UniStartWith(fullpath2, basepath2) == 0)
+ {
+  return 0;
+ }
+
+ UniStrCpy(dst, size, fullpath2 + UniStrLen(basepath2));
+
+ return 1;
 }

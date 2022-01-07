@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  xdrproc_t ;
-struct timeval {int member_0; int /*<<< orphan*/  member_1; } ;
-struct TYPE_4__ {char* mon_name; int /*<<< orphan*/  state; } ;
-typedef  TYPE_1__ stat_chge ;
-typedef  int /*<<< orphan*/  our_hostname ;
-struct TYPE_5__ {int /*<<< orphan*/  ourState; } ;
-typedef  int /*<<< orphan*/  CLIENT ;
 
-/* Variables and functions */
- int FALSE ; 
- int /*<<< orphan*/  LOG_DEBUG ; 
- int /*<<< orphan*/  LOG_ERR ; 
- scalar_t__ RPC_SUCCESS ; 
- int SM_MAXSTRLEN ; 
- int /*<<< orphan*/  SM_NOTIFY ; 
- int /*<<< orphan*/  SM_PROG ; 
- int /*<<< orphan*/  SM_VERS ; 
- int TRUE ; 
- scalar_t__ clnt_call (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ ,char*,struct timeval) ; 
- int /*<<< orphan*/ * clnt_create (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  clnt_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  clnt_spcreateerror (char*) ; 
- scalar_t__ debug ; 
- int /*<<< orphan*/  gethostname (char*,int) ; 
- TYPE_2__* status_info ; 
- int /*<<< orphan*/  syslog (int /*<<< orphan*/ ,char*,char*,...) ; 
- scalar_t__ xdr_stat_chge ; 
- scalar_t__ xdr_void ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int xdrproc_t ;
+struct timeval {int member_0; int member_1; } ;
+struct TYPE_4__ {char* mon_name; int state; } ;
+typedef TYPE_1__ stat_chge ;
+typedef int our_hostname ;
+struct TYPE_5__ {int ourState; } ;
+typedef int CLIENT ;
+
+
+ int FALSE ;
+ int LOG_DEBUG ;
+ int LOG_ERR ;
+ scalar_t__ RPC_SUCCESS ;
+ int SM_MAXSTRLEN ;
+ int SM_NOTIFY ;
+ int SM_PROG ;
+ int SM_VERS ;
+ int TRUE ;
+ scalar_t__ clnt_call (int *,int ,int ,TYPE_1__*,int ,char*,struct timeval) ;
+ int * clnt_create (char*,int ,int ,char*) ;
+ int clnt_destroy (int *) ;
+ int clnt_spcreateerror (char*) ;
+ scalar_t__ debug ;
+ int gethostname (char*,int) ;
+ TYPE_2__* status_info ;
+ int syslog (int ,char*,char*,...) ;
+ scalar_t__ xdr_stat_chge ;
+ scalar_t__ xdr_void ;
 
 __attribute__((used)) static int notify_one_host(char *hostname, int verbose)
 {
-  struct timeval timeout = { 20, 0 };	/* 20 secs timeout		*/
+  struct timeval timeout = { 20, 0 };
   CLIENT *cli;
-  char dummy; 
+  char dummy;
   stat_chge arg;
   char our_hostname[SM_MAXSTRLEN+1];
 

@@ -1,34 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  crt_aspect_ratio_switch (unsigned int,unsigned int) ; 
- int ra_set_core_hz ; 
- int /*<<< orphan*/  switch_crt_hz () ; 
- int /*<<< orphan*/  switch_res_crt (unsigned int,unsigned int) ; 
+ int crt_aspect_ratio_switch (unsigned int,unsigned int) ;
+ int ra_set_core_hz ;
+ int switch_crt_hz () ;
+ int switch_res_crt (unsigned int,unsigned int) ;
 
 __attribute__((used)) static void crt_screen_setup_aspect(unsigned width, unsigned height)
 {
-#if defined(HAVE_VIDEOCORE)
-   if (height > 300)
-      height = height/2;
-#endif
+
+
+
+
 
    switch_crt_hz();
-   /* get original resolution of core */
+
    if (height == 4)
    {
-      /* detect menu only */
+
       if (width < 700)
          width = 320;
 

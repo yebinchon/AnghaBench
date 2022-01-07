@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct bfad_s {int /*<<< orphan*/  bfad_flags; int /*<<< orphan*/  im; } ;
+
+
+
+
+struct bfad_s {int bfad_flags; int im; } ;
 struct bfa_fcs_itnim_s {int dummy; } ;
-struct bfad_itnim_s {int /*<<< orphan*/  itnim_work; int /*<<< orphan*/  state; struct bfa_fcs_itnim_s fcs_itnim; int /*<<< orphan*/  im; } ;
+struct bfad_itnim_s {int itnim_work; int state; struct bfa_fcs_itnim_s fcs_itnim; int im; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BFAD_RPORT_ONLINE ; 
- int ENOMEM ; 
- int /*<<< orphan*/  GFP_ATOMIC ; 
- int /*<<< orphan*/  INIT_WORK (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ITNIM_STATE_NONE ; 
- int /*<<< orphan*/  bfad_im_itnim_work_handler ; 
- struct bfad_itnim_s* kzalloc (int,int /*<<< orphan*/ ) ; 
+
+ int BFAD_RPORT_ONLINE ;
+ int ENOMEM ;
+ int GFP_ATOMIC ;
+ int INIT_WORK (int *,int ) ;
+ int ITNIM_STATE_NONE ;
+ int bfad_im_itnim_work_handler ;
+ struct bfad_itnim_s* kzalloc (int,int ) ;
 
 int
 bfa_fcb_itnim_alloc(struct bfad_s *bfad, struct bfa_fcs_itnim_s **itnim,
-		    struct bfad_itnim_s **itnim_drv)
+      struct bfad_itnim_s **itnim_drv)
 {
-	*itnim_drv = kzalloc(sizeof(struct bfad_itnim_s), GFP_ATOMIC);
-	if (*itnim_drv == NULL)
-		return -ENOMEM;
+ *itnim_drv = kzalloc(sizeof(struct bfad_itnim_s), GFP_ATOMIC);
+ if (*itnim_drv == ((void*)0))
+  return -ENOMEM;
 
-	(*itnim_drv)->im = bfad->im;
-	*itnim = &(*itnim_drv)->fcs_itnim;
-	(*itnim_drv)->state = ITNIM_STATE_NONE;
+ (*itnim_drv)->im = bfad->im;
+ *itnim = &(*itnim_drv)->fcs_itnim;
+ (*itnim_drv)->state = ITNIM_STATE_NONE;
 
-	/*
-	 * Initiaze the itnim_work
-	 */
-	INIT_WORK(&(*itnim_drv)->itnim_work, bfad_im_itnim_work_handler);
-	bfad->bfad_flags |= BFAD_RPORT_ONLINE;
-	return 0;
+
+
+
+ INIT_WORK(&(*itnim_drv)->itnim_work, bfad_im_itnim_work_handler);
+ bfad->bfad_flags |= BFAD_RPORT_ONLINE;
+ return 0;
 }

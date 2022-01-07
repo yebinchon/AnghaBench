@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_11__ {int /*<<< orphan*/  path; TYPE_3__* fsap_data; } ;
-typedef  TYPE_1__ svn_fs_t ;
-struct TYPE_12__ {int /*<<< orphan*/  apr_err; } ;
-typedef  TYPE_2__ svn_error_t ;
-typedef  int /*<<< orphan*/  bdb_env_baton_t ;
-struct TYPE_13__ {int /*<<< orphan*/ * bdb; int /*<<< orphan*/  miscellaneous; int /*<<< orphan*/  checksum_reps; int /*<<< orphan*/  node_origins; int /*<<< orphan*/  lock_tokens; int /*<<< orphan*/  locks; int /*<<< orphan*/  uuids; int /*<<< orphan*/  strings; int /*<<< orphan*/  representations; int /*<<< orphan*/  changes; int /*<<< orphan*/  copies; int /*<<< orphan*/  transactions; int /*<<< orphan*/  revisions; int /*<<< orphan*/  nodes; } ;
-typedef  TYPE_3__ base_fs_data_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- TYPE_2__* SVN_NO_ERROR ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  cleanup_fs_db (TYPE_1__*,int /*<<< orphan*/ *,char*) ; 
- TYPE_2__* svn_error_createf (int /*<<< orphan*/ ,TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_2__* svn_fs_bdb__close (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+struct TYPE_11__ {int path; TYPE_3__* fsap_data; } ;
+typedef TYPE_1__ svn_fs_t ;
+struct TYPE_12__ {int apr_err; } ;
+typedef TYPE_2__ svn_error_t ;
+typedef int bdb_env_baton_t ;
+struct TYPE_13__ {int * bdb; int miscellaneous; int checksum_reps; int node_origins; int lock_tokens; int locks; int uuids; int strings; int representations; int changes; int copies; int transactions; int revisions; int nodes; } ;
+typedef TYPE_3__ base_fs_data_t ;
+
+
+ int SVN_ERR (int ) ;
+ TYPE_2__* SVN_NO_ERROR ;
+ int _ (char*) ;
+ int cleanup_fs_db (TYPE_1__*,int *,char*) ;
+ TYPE_2__* svn_error_createf (int ,TYPE_2__*,int ,int ) ;
+ TYPE_2__* svn_fs_bdb__close (int *) ;
 
 __attribute__((used)) static svn_error_t *
 cleanup_fs(svn_fs_t *fs)
 {
   base_fs_data_t *bfd = fs->fsap_data;
-  bdb_env_baton_t *bdb = (bfd ? bfd->bdb : NULL);
+  bdb_env_baton_t *bdb = (bfd ? bfd->bdb : ((void*)0));
 
   if (!bdb)
     return SVN_NO_ERROR;
 
-  /* Close the databases.  */
+
   SVN_ERR(cleanup_fs_db(fs, &bfd->nodes, "nodes"));
   SVN_ERR(cleanup_fs_db(fs, &bfd->revisions, "revisions"));
   SVN_ERR(cleanup_fs_db(fs, &bfd->transactions, "transactions"));
@@ -53,7 +53,7 @@ cleanup_fs(svn_fs_t *fs)
   SVN_ERR(cleanup_fs_db(fs, &bfd->checksum_reps, "checksum-reps"));
   SVN_ERR(cleanup_fs_db(fs, &bfd->miscellaneous, "miscellaneous"));
 
-  /* Finally, close the environment.  */
+
   bfd->bdb = 0;
   {
     svn_error_t *err = svn_fs_bdb__close(bdb);

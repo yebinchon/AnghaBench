@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int keyCatchers; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Cvar_VariableString (char*) ; 
- scalar_t__ Cvar_VariableValue (char*) ; 
- int /*<<< orphan*/  IN_ActivateMouse () ; 
- int /*<<< orphan*/  IN_DeactivateMouse () ; 
- int /*<<< orphan*/  IN_JoyMove () ; 
- int KEYCATCH_CONSOLE ; 
- int /*<<< orphan*/  _3DFX_DRIVER_NAME ; 
- TYPE_1__ cls ; 
- scalar_t__ strcmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int Cvar_VariableString (char*) ;
+ scalar_t__ Cvar_VariableValue (char*) ;
+ int IN_ActivateMouse () ;
+ int IN_DeactivateMouse () ;
+ int IN_JoyMove () ;
+ int KEYCATCH_CONSOLE ;
+ int _3DFX_DRIVER_NAME ;
+ TYPE_1__ cls ;
+ scalar_t__ strcmp (int ,int ) ;
 
 void IN_Frame (void) {
 
-  // bk001130 - from cvs 1.17 (mkv)
-  IN_JoyMove(); // FIXME: disable if on desktop?
+
+  IN_JoyMove();
 
   if ( cls.keyCatchers & KEYCATCH_CONSOLE )
   {
-    // temporarily deactivate if not in the game and
-    // running on the desktop
-    // voodoo always counts as full screen
+
+
+
     if (Cvar_VariableValue ("r_fullscreen") == 0
         && strcmp( Cvar_VariableString("r_glDriver"), _3DFX_DRIVER_NAME ) )
     {

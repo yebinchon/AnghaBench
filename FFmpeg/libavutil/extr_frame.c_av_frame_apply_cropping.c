@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {scalar_t__ width; scalar_t__ height; int crop_left; int crop_right; scalar_t__ crop_top; scalar_t__ crop_bottom; scalar_t__* data; int /*<<< orphan*/  format; } ;
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_8__ {scalar_t__ width; scalar_t__ height; int crop_left; int crop_right; scalar_t__ crop_top; scalar_t__ crop_bottom; scalar_t__* data; int format; } ;
 struct TYPE_7__ {int flags; } ;
-typedef  TYPE_1__ AVPixFmtDescriptor ;
-typedef  TYPE_2__ AVFrame ;
+typedef TYPE_1__ AVPixFmtDescriptor ;
+typedef TYPE_2__ AVFrame ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_BUG ; 
- int AV_FRAME_CROP_UNALIGNED ; 
- int AV_PIX_FMT_FLAG_BITSTREAM ; 
- int AV_PIX_FMT_FLAG_HWACCEL ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  ERANGE ; 
- int FFMIN (int,int) ; 
- int INT_MAX ; 
- TYPE_1__* av_pix_fmt_desc_get (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  calc_cropping_offsets (size_t*,TYPE_2__*,TYPE_1__ const*) ; 
- int ff_ctz (size_t) ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_BUG ;
+ int AV_FRAME_CROP_UNALIGNED ;
+ int AV_PIX_FMT_FLAG_BITSTREAM ;
+ int AV_PIX_FMT_FLAG_HWACCEL ;
+ int EINVAL ;
+ int ERANGE ;
+ int FFMIN (int,int) ;
+ int INT_MAX ;
+ TYPE_1__* av_pix_fmt_desc_get (int ) ;
+ int calc_cropping_offsets (size_t*,TYPE_2__*,TYPE_1__ const*) ;
+ int ff_ctz (size_t) ;
 
 int av_frame_apply_cropping(AVFrame *frame, int flags)
 {
@@ -40,8 +40,8 @@ int av_frame_apply_cropping(AVFrame *frame, int flags)
     if (!(frame->width > 0 && frame->height > 0))
         return AVERROR(EINVAL);
 
-    if (frame->crop_left >= INT_MAX - frame->crop_right        ||
-        frame->crop_top  >= INT_MAX - frame->crop_bottom       ||
+    if (frame->crop_left >= INT_MAX - frame->crop_right ||
+        frame->crop_top >= INT_MAX - frame->crop_bottom ||
         (frame->crop_left + frame->crop_right) >= frame->width ||
         (frame->crop_top + frame->crop_bottom) >= frame->height)
         return AVERROR(ERANGE);
@@ -50,22 +50,22 @@ int av_frame_apply_cropping(AVFrame *frame, int flags)
     if (!desc)
         return AVERROR_BUG;
 
-    /* Apply just the right/bottom cropping for hwaccel formats. Bitstream
-     * formats cannot be easily handled here either (and corresponding decoders
-     * should not export any cropping anyway), so do the same for those as well.
-     * */
+
+
+
+
     if (desc->flags & (AV_PIX_FMT_FLAG_BITSTREAM | AV_PIX_FMT_FLAG_HWACCEL)) {
-        frame->width      -= frame->crop_right;
-        frame->height     -= frame->crop_bottom;
-        frame->crop_right  = 0;
+        frame->width -= frame->crop_right;
+        frame->height -= frame->crop_bottom;
+        frame->crop_right = 0;
         frame->crop_bottom = 0;
         return 0;
     }
 
-    /* calculate the offsets for each plane */
+
     calc_cropping_offsets(offsets, frame, desc);
 
-    /* adjust the offsets to avoid breaking alignment */
+
     if (!(flags & AV_FRAME_CROP_UNALIGNED)) {
         int log2_crop_align = frame->crop_left ? ff_ctz(frame->crop_left) : INT_MAX;
         int min_log2_align = INT_MAX;
@@ -75,8 +75,8 @@ int av_frame_apply_cropping(AVFrame *frame, int flags)
             min_log2_align = FFMIN(log2_align, min_log2_align);
         }
 
-        /* we assume, and it should always be true, that the data alignment is
-         * related to the cropping alignment by a constant power-of-2 factor */
+
+
         if (log2_crop_align < min_log2_align)
             return AVERROR_BUG;
 
@@ -89,11 +89,11 @@ int av_frame_apply_cropping(AVFrame *frame, int flags)
     for (i = 0; frame->data[i]; i++)
         frame->data[i] += offsets[i];
 
-    frame->width      -= (frame->crop_left + frame->crop_right);
-    frame->height     -= (frame->crop_top  + frame->crop_bottom);
-    frame->crop_left   = 0;
-    frame->crop_right  = 0;
-    frame->crop_top    = 0;
+    frame->width -= (frame->crop_left + frame->crop_right);
+    frame->height -= (frame->crop_top + frame->crop_bottom);
+    frame->crop_left = 0;
+    frame->crop_right = 0;
+    frame->crop_top = 0;
     frame->crop_bottom = 0;
 
     return 0;

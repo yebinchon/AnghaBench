@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  Recv; int /*<<< orphan*/  Send; } ;
-typedef  TYPE_1__ TRAFFIC ;
-typedef  int /*<<< orphan*/  FOLDER ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * CfgGetFolder (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  SiLoadTrafficInner (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Zero (TYPE_1__*,int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int Recv; int Send; } ;
+typedef TYPE_1__ TRAFFIC ;
+typedef int FOLDER ;
+
+
+ int * CfgGetFolder (int *,char*) ;
+ int SiLoadTrafficInner (int *,char*,int *) ;
+ int Zero (TYPE_1__*,int) ;
 
 void SiLoadTraffic(FOLDER *parent, char *name, TRAFFIC *t)
 {
-	FOLDER *f;
-	// Validate arguments
-	if (t != NULL)
-	{
-		Zero(t, sizeof(TRAFFIC));
-	}
-	if (parent == NULL || name == NULL || t == NULL)
-	{
-		return;
-	}
+ FOLDER *f;
 
-	f = CfgGetFolder(parent, name);
+ if (t != ((void*)0))
+ {
+  Zero(t, sizeof(TRAFFIC));
+ }
+ if (parent == ((void*)0) || name == ((void*)0) || t == ((void*)0))
+ {
+  return;
+ }
 
-	if (f == NULL)
-	{
-		return;
-	}
+ f = CfgGetFolder(parent, name);
 
-	SiLoadTrafficInner(f, "SendTraffic", &t->Send);
-	SiLoadTrafficInner(f, "RecvTraffic", &t->Recv);
+ if (f == ((void*)0))
+ {
+  return;
+ }
+
+ SiLoadTrafficInner(f, "SendTraffic", &t->Send);
+ SiLoadTrafficInner(f, "RecvTraffic", &t->Recv);
 }

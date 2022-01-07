@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/ * current; } ;
-typedef  int /*<<< orphan*/  JsonbValue ;
-typedef  int /*<<< orphan*/  JsonPathItem ;
-typedef  TYPE_1__ JsonPathExecContext ;
-typedef  int /*<<< orphan*/  JsonPathBool ;
 
-/* Variables and functions */
- int /*<<< orphan*/  executeBoolItem (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int * current; } ;
+typedef int JsonbValue ;
+typedef int JsonPathItem ;
+typedef TYPE_1__ JsonPathExecContext ;
+typedef int JsonPathBool ;
+
+
+ int executeBoolItem (TYPE_1__*,int *,int *,int) ;
 
 __attribute__((used)) static JsonPathBool
 executeNestedBoolItem(JsonPathExecContext *cxt, JsonPathItem *jsp,
-					  JsonbValue *jb)
+       JsonbValue *jb)
 {
-	JsonbValue *prev;
-	JsonPathBool res;
+ JsonbValue *prev;
+ JsonPathBool res;
 
-	prev = cxt->current;
-	cxt->current = jb;
-	res = executeBoolItem(cxt, jsp, jb, false);
-	cxt->current = prev;
+ prev = cxt->current;
+ cxt->current = jb;
+ res = executeBoolItem(cxt, jsp, jb, 0);
+ cxt->current = prev;
 
-	return res;
+ return res;
 }

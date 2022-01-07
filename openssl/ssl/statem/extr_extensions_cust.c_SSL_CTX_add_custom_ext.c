@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  SSL_custom_ext_parse_cb_ex ;
-typedef  int /*<<< orphan*/  SSL_custom_ext_free_cb_ex ;
-typedef  int /*<<< orphan*/  SSL_custom_ext_add_cb_ex ;
-typedef  int /*<<< orphan*/  SSL_CTX ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ENDPOINT_BOTH ; 
- int add_custom_ext_intern (int /*<<< orphan*/ *,int /*<<< orphan*/ ,unsigned int,unsigned int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ ,void*) ; 
+
+
+
+typedef int SSL_custom_ext_parse_cb_ex ;
+typedef int SSL_custom_ext_free_cb_ex ;
+typedef int SSL_custom_ext_add_cb_ex ;
+typedef int SSL_CTX ;
+
+
+ int ENDPOINT_BOTH ;
+ int add_custom_ext_intern (int *,int ,unsigned int,unsigned int,int ,int ,void*,int ,void*) ;
 
 int SSL_CTX_add_custom_ext(SSL_CTX *ctx, unsigned int ext_type,
                            unsigned int context,

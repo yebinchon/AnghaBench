@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  edge ;
 
-/* Variables and functions */
- int /*<<< orphan*/  disconnect_dest (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  disconnect_src (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  execute_on_shrinking_pred (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free_edge (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  remove_predictions_associated_with_edge (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int edge ;
+
+
+ int disconnect_dest (int ) ;
+ int disconnect_src (int ) ;
+ int execute_on_shrinking_pred (int ) ;
+ int free_edge (int ) ;
+ int remove_predictions_associated_with_edge (int ) ;
 
 void
 remove_edge (edge e)

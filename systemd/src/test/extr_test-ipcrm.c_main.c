@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uid_t ;
 
-/* Variables and functions */
- int ESRCH ; 
- int EXIT_FAILURE ; 
- int EXIT_SUCCESS ; 
- int /*<<< orphan*/  LOG_INFO ; 
- char* NOBODY_USER_NAME ; 
- int clean_ipc_by_uid (int /*<<< orphan*/ ) ; 
- int get_user_creds (char const**,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  log_error_errno (int,char*,char const*) ; 
- int log_tests_skipped (char*) ; 
- int /*<<< orphan*/  test_setup_logging (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uid_t ;
+
+
+ int ESRCH ;
+ int EXIT_FAILURE ;
+ int EXIT_SUCCESS ;
+ int LOG_INFO ;
+ char* NOBODY_USER_NAME ;
+ int clean_ipc_by_uid (int ) ;
+ int get_user_creds (char const**,int *,int *,int *,int *,int ) ;
+ int log_error_errno (int,char*,char const*) ;
+ int log_tests_skipped (char*) ;
+ int test_setup_logging (int ) ;
 
 int main(int argc, char *argv[]) {
         uid_t uid;
@@ -31,7 +31,7 @@ int main(int argc, char *argv[]) {
 
         test_setup_logging(LOG_INFO);
 
-        r = get_user_creds(&name, &uid, NULL, NULL, NULL, 0);
+        r = get_user_creds(&name, &uid, ((void*)0), ((void*)0), ((void*)0), 0);
         if (r == -ESRCH)
                 return log_tests_skipped("Failed to resolve user");
         if (r < 0) {
@@ -40,5 +40,5 @@ int main(int argc, char *argv[]) {
         }
 
         r = clean_ipc_by_uid(uid);
-        return  r < 0 ? EXIT_FAILURE : EXIT_SUCCESS;
+        return r < 0 ? EXIT_FAILURE : EXIT_SUCCESS;
 }

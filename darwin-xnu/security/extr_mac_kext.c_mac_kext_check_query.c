@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  kauth_cred_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MAC_CHECK (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kext_check_query ; 
+
+
+
+typedef int kauth_cred_t ;
+
+
+ int MAC_CHECK (int ,int ) ;
+ int kext_check_query ;
 
 int
 mac_kext_check_query(kauth_cred_t cred) {
-	int error;
+ int error;
 
-	MAC_CHECK(kext_check_query, cred);
+ MAC_CHECK(kext_check_query, cred);
 
-	return (error);
+ return (error);
 }

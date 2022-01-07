@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uid_t ;
-typedef  scalar_t__ CGroupUnified ;
 
-/* Variables and functions */
- scalar_t__ CGROUP_UNIFIED_ALL ; 
- int mount_legacy_cgns_supported (char const*,scalar_t__,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*) ; 
- int mount_legacy_cgns_unsupported (char const*,scalar_t__,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*) ; 
- int mount_unified_cgroups (char const*) ; 
+
+
+
+typedef int uid_t ;
+typedef scalar_t__ CGroupUnified ;
+
+
+ scalar_t__ CGROUP_UNIFIED_ALL ;
+ int mount_legacy_cgns_supported (char const*,scalar_t__,int,int ,int ,char const*) ;
+ int mount_legacy_cgns_unsupported (char const*,scalar_t__,int,int ,int ,char const*) ;
+ int mount_unified_cgroups (char const*) ;
 
 int mount_cgroups(
                 const char *dest,

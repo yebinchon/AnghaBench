@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct FFJniField {int type; int /*<<< orphan*/  offset; scalar_t__ name; } ;
-typedef  int /*<<< orphan*/ * jmethodID ;
-typedef  int /*<<< orphan*/ * jfieldID ;
-typedef  int /*<<< orphan*/ * jclass ;
-typedef  enum FFJniFieldType { ____Placeholder_FFJniFieldType } FFJniFieldType ;
-struct TYPE_5__ {int /*<<< orphan*/  (* DeleteLocalRef ) (TYPE_1__**,int /*<<< orphan*/ *) ;int /*<<< orphan*/  (* DeleteGlobalRef ) (TYPE_1__**,int /*<<< orphan*/ *) ;} ;
-typedef  TYPE_1__* JNIEnv ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_LOG_ERROR ; 
-#define  FF_JNI_CLASS 132 
-#define  FF_JNI_FIELD 131 
-#define  FF_JNI_METHOD 130 
-#define  FF_JNI_STATIC_FIELD 129 
-#define  FF_JNI_STATIC_METHOD 128 
- int /*<<< orphan*/  av_log (void*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  stub1 (TYPE_1__**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub2 (TYPE_1__**,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct FFJniField {int type; int offset; scalar_t__ name; } ;
+typedef int * jmethodID ;
+typedef int * jfieldID ;
+typedef int * jclass ;
+typedef enum FFJniFieldType { ____Placeholder_FFJniFieldType } FFJniFieldType ;
+struct TYPE_5__ {int (* DeleteLocalRef ) (TYPE_1__**,int *) ;int (* DeleteGlobalRef ) (TYPE_1__**,int *) ;} ;
+typedef TYPE_1__* JNIEnv ;
+
+
+ int AV_LOG_ERROR ;
+
+
+
+
+
+ int av_log (void*,int ,char*) ;
+ int stub1 (TYPE_1__**,int *) ;
+ int stub2 (TYPE_1__**,int *) ;
 
 int ff_jni_reset_jfields(JNIEnv *env, void *jfields, const struct FFJniField *jfields_mapping, int global, void *log_ctx)
 {
@@ -39,7 +39,7 @@ int ff_jni_reset_jfields(JNIEnv *env, void *jfields, const struct FFJniField *jf
         enum FFJniFieldType type = jfields_mapping[i].type;
 
         switch(type) {
-        case FF_JNI_CLASS: {
+        case 132: {
             jclass clazz = *(jclass*)((uint8_t*)jfields + jfields_mapping[i].offset);
             if (!clazz)
                 continue;
@@ -50,23 +50,23 @@ int ff_jni_reset_jfields(JNIEnv *env, void *jfields, const struct FFJniField *jf
                 (*env)->DeleteLocalRef(env, clazz);
             }
 
-            *(jclass*)((uint8_t*)jfields + jfields_mapping[i].offset) = NULL;
+            *(jclass*)((uint8_t*)jfields + jfields_mapping[i].offset) = ((void*)0);
             break;
         }
-        case FF_JNI_FIELD: {
-            *(jfieldID*)((uint8_t*)jfields + jfields_mapping[i].offset) = NULL;
+        case 131: {
+            *(jfieldID*)((uint8_t*)jfields + jfields_mapping[i].offset) = ((void*)0);
             break;
         }
-        case FF_JNI_STATIC_FIELD: {
-            *(jfieldID*)((uint8_t*)jfields + jfields_mapping[i].offset) = NULL;
+        case 129: {
+            *(jfieldID*)((uint8_t*)jfields + jfields_mapping[i].offset) = ((void*)0);
             break;
         }
-        case FF_JNI_METHOD: {
-            *(jmethodID*)((uint8_t*)jfields + jfields_mapping[i].offset) = NULL;
+        case 130: {
+            *(jmethodID*)((uint8_t*)jfields + jfields_mapping[i].offset) = ((void*)0);
             break;
         }
-        case FF_JNI_STATIC_METHOD: {
-            *(jmethodID*)((uint8_t*)jfields + jfields_mapping[i].offset) = NULL;
+        case 128: {
+            *(jmethodID*)((uint8_t*)jfields + jfields_mapping[i].offset) = ((void*)0);
             break;
         }
         default:

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tmp ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int tmp ;
 struct tm {int tm_year; int tm_mon; int tm_mday; int tm_hour; int tm_min; int tm_sec; } ;
 struct TYPE_3__ {scalar_t__ type; int flags; int length; scalar_t__ data; } ;
-typedef  TYPE_1__ ASN1_TIME ;
+typedef TYPE_1__ ASN1_TIME ;
 
-/* Variables and functions */
- int ASN1_STRING_FLAG_X509_TIME ; 
- int /*<<< orphan*/  OPENSSL_gmtime_adj (struct tm*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ V_ASN1_GENERALIZEDTIME ; 
- scalar_t__ V_ASN1_UTCTIME ; 
- scalar_t__ ascii_isdigit (char) ; 
- int /*<<< orphan*/  determine_days (struct tm*) ; 
- int /*<<< orphan*/  leap_year (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (struct tm*,int /*<<< orphan*/ ,int) ; 
+
+ int ASN1_STRING_FLAG_X509_TIME ;
+ int OPENSSL_gmtime_adj (struct tm*,int ,int) ;
+ scalar_t__ V_ASN1_GENERALIZEDTIME ;
+ scalar_t__ V_ASN1_UTCTIME ;
+ scalar_t__ ascii_isdigit (char) ;
+ int determine_days (struct tm*) ;
+ int leap_year (int ) ;
+ int memset (struct tm*,int ,int) ;
 
 int asn1_time_to_tm(struct tm *tm, const ASN1_TIME *d)
 {
@@ -34,19 +34,10 @@ int asn1_time_to_tm(struct tm *tm, const ASN1_TIME *d)
     char *a;
     int n, i, i2, l, o, min_l = 11, strict = 0, end = 6, btz = 5, md;
     struct tm tmp;
-#if defined(CHARSET_EBCDIC)
-    const char upper_z = 0x5A, num_zero = 0x30, period = 0x2E, minus = 0x2D, plus = 0x2B;
-#else
+
+
+
     const char upper_z = 'Z', num_zero = '0', period = '.', minus = '-', plus = '+';
-#endif
-    /*
-     * ASN1_STRING_FLAG_X509_TIME is used to enforce RFC 5280
-     * time string format, in which:
-     *
-     * 1. "seconds" is a 'MUST'
-     * 2. "Zulu" timezone is a 'MUST'
-     * 3. "+|-" is not allowed to indicate a time zone
-     */
     if (d->type == V_ASN1_UTCTIME) {
         if (d->flags & ASN1_STRING_FLAG_X509_TIME) {
             min_l = 13;
@@ -70,11 +61,11 @@ int asn1_time_to_tm(struct tm *tm, const ASN1_TIME *d)
     o = 0;
     memset(&tmp, 0, sizeof(tmp));
 
-    /*
-     * GENERALIZEDTIME is similar to UTCTIME except the year is represented
-     * as YYYY. This stuff treats everything as a two digit field so make
-     * first two fields 00 to 99
-     */
+
+
+
+
+
 
     if (l < min_l)
         goto err;
@@ -86,14 +77,14 @@ int asn1_time_to_tm(struct tm *tm, const ASN1_TIME *d)
         if (!ascii_isdigit(a[o]))
             goto err;
         n = a[o] - num_zero;
-        /* incomplete 2-digital number */
+
         if (++o == l)
             goto err;
 
         if (!ascii_isdigit(a[o]))
             goto err;
         n = (n * 10) + a[o] - num_zero;
-        /* no more bytes to read, but we haven't seen time-zone yet */
+
         if (++o == l)
             goto err;
 
@@ -103,7 +94,7 @@ int asn1_time_to_tm(struct tm *tm, const ASN1_TIME *d)
             goto err;
         switch (i2) {
         case 0:
-            /* UTC will never be here */
+
             tmp.tm_year = n * 100 - 1900;
             break;
         case 1:
@@ -116,9 +107,9 @@ int asn1_time_to_tm(struct tm *tm, const ASN1_TIME *d)
             tmp.tm_mon = n - 1;
             break;
         case 3:
-            /* check if tm_mday is valid in tm_mon */
+
             if (tmp.tm_mon == 1) {
-                /* it's February */
+
                 md = mdays[1] + leap_year(tmp.tm_year + 1900);
             } else {
                 md = mdays[tmp.tm_mon];
@@ -140,32 +131,32 @@ int asn1_time_to_tm(struct tm *tm, const ASN1_TIME *d)
         }
     }
 
-    /*
-     * Optional fractional seconds: decimal point followed by one or more
-     * digits.
-     */
+
+
+
+
     if (d->type == V_ASN1_GENERALIZEDTIME && a[o] == period) {
         if (strict)
-            /* RFC 5280 forbids fractional seconds */
+
             goto err;
         if (++o == l)
             goto err;
         i = o;
         while ((o < l) && ascii_isdigit(a[o]))
             o++;
-        /* Must have at least one digit after decimal point */
+
         if (i == o)
             goto err;
-        /* no more bytes to read, but we haven't seen time-zone yet */
+
         if (o == l)
             goto err;
     }
 
-    /*
-     * 'o' will never point to '\0' at this point, the only chance
-     * 'o' can point to '\0' is either the subsequent if or the first
-     * else if is true.
-     */
+
+
+
+
+
     if (a[o] == upper_z) {
         o++;
     } else if (!strict && ((a[o] == plus) || (a[o] == minus))) {
@@ -173,12 +164,12 @@ int asn1_time_to_tm(struct tm *tm, const ASN1_TIME *d)
         int offset = 0;
 
         o++;
-        /*
-         * if not equal, no need to do subsequent checks
-         * since the following for-loop will add 'o' by 4
-         * and the final return statement will check if 'l'
-         * and 'o' are equal.
-         */
+
+
+
+
+
+
         if (o + 4 != l)
             goto err;
         for (i = end; i < end + 2; i++) {
@@ -192,8 +183,8 @@ int asn1_time_to_tm(struct tm *tm, const ASN1_TIME *d)
             i2 = (d->type == V_ASN1_UTCTIME) ? i + 1 : i;
             if ((n < min[i2]) || (n > max[i2]))
                 goto err;
-            /* if tm is NULL, no need to adjust */
-            if (tm != NULL) {
+
+            if (tm != ((void*)0)) {
                 if (i == end)
                     offset = n * 3600;
                 else if (i == end + 1)
@@ -204,12 +195,12 @@ int asn1_time_to_tm(struct tm *tm, const ASN1_TIME *d)
         if (offset && !OPENSSL_gmtime_adj(&tmp, 0, offset * offsign))
             goto err;
     } else {
-        /* not Z, or not +/- in non-strict mode */
+
         goto err;
     }
     if (o == l) {
-        /* success, check if tm should be filled */
-        if (tm != NULL)
+
+        if (tm != ((void*)0))
             *tm = tmp;
         return 1;
     }

@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u_char ;
-typedef  int ssize_t ;
-typedef  int ngx_uint_t ;
-typedef  int /*<<< orphan*/  ngx_int_t ;
+
+
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int u_char ;
+typedef int ssize_t ;
+typedef int ngx_uint_t ;
+typedef int ngx_int_t ;
 struct TYPE_9__ {TYPE_1__* connection; } ;
-typedef  TYPE_2__ ngx_http_request_t ;
+typedef TYPE_2__ ngx_http_request_t ;
 struct TYPE_10__ {int rest; int frame_state; int error; } ;
-typedef  TYPE_3__ ngx_http_grpc_ctx_t ;
+typedef TYPE_3__ ngx_http_grpc_ctx_t ;
 struct TYPE_11__ {int* last; int* pos; } ;
-typedef  TYPE_4__ ngx_buf_t ;
-struct TYPE_8__ {int /*<<< orphan*/  log; } ;
+typedef TYPE_4__ ngx_buf_t ;
+struct TYPE_8__ {int log; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NGX_AGAIN ; 
- int /*<<< orphan*/  NGX_ERROR ; 
- int /*<<< orphan*/  NGX_LOG_DEBUG_HTTP ; 
- int /*<<< orphan*/  NGX_LOG_ERR ; 
- int /*<<< orphan*/  NGX_OK ; 
- int /*<<< orphan*/  ngx_log_debug1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  ngx_log_debug2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int,int) ; 
- int /*<<< orphan*/  ngx_log_error (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int) ; 
+
+ int NGX_AGAIN ;
+ int NGX_ERROR ;
+ int NGX_LOG_DEBUG_HTTP ;
+ int NGX_LOG_ERR ;
+ int NGX_OK ;
+ int ngx_log_debug1 (int ,int ,int ,char*,int) ;
+ int ngx_log_debug2 (int ,int ,int ,char*,int,int) ;
+ int ngx_log_error (int ,int ,int ,char*,int) ;
 
 __attribute__((used)) static ngx_int_t
 ngx_http_grpc_parse_rst_stream(ngx_http_request_t *r, ngx_http_grpc_ctx_t *ctx,
     ngx_buf_t *b)
 {
-    u_char  ch, *p, *last;
+    u_char ch, *p, *last;
     enum {
         sw_start = 0,
         sw_error_2,
@@ -70,10 +70,10 @@ ngx_http_grpc_parse_rst_stream(ngx_http_request_t *r, ngx_http_grpc_ctx_t *ctx,
     for (p = b->pos; p < last; p++) {
         ch = *p;
 
-#if 0
-        ngx_log_debug2(NGX_LOG_DEBUG_HTTP, r->connection->log, 0,
-                       "grpc rst byte: %02Xd s:%d", ch, state);
-#endif
+
+
+
+
 
         switch (state) {
 

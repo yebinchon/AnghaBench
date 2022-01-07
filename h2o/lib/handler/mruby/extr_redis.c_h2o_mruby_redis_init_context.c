@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct RClass {int dummy; } ;
-typedef  int /*<<< orphan*/  mrb_state ;
-struct TYPE_3__ {int /*<<< orphan*/ * mrb; } ;
-typedef  TYPE_1__ h2o_mruby_shared_context_t ;
+typedef int mrb_state ;
+struct TYPE_3__ {int * mrb; } ;
+typedef TYPE_1__ h2o_mruby_shared_context_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  H2O_MRUBY_CODE_REDIS ; 
- int /*<<< orphan*/  MRB_ARGS_ARG (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MRB_ARGS_NONE () ; 
- int /*<<< orphan*/  call_method ; 
- int /*<<< orphan*/  connect_method ; 
- int /*<<< orphan*/  disconnect_method ; 
- int /*<<< orphan*/  disconnected_method ; 
- int /*<<< orphan*/  h2o_mruby_assert (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  h2o_mruby_define_callback (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  h2o_mruby_eval_expr_location (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int) ; 
- struct RClass* mrb_class_get_under (int /*<<< orphan*/ *,struct RClass*,char*) ; 
- int /*<<< orphan*/  mrb_define_method (int /*<<< orphan*/ *,struct RClass*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- struct RClass* mrb_define_module (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  redis_join_reply_callback ; 
- int /*<<< orphan*/  setup_method ; 
+
+ int H2O_MRUBY_CODE_REDIS ;
+ int MRB_ARGS_ARG (int,int ) ;
+ int MRB_ARGS_NONE () ;
+ int call_method ;
+ int connect_method ;
+ int disconnect_method ;
+ int disconnected_method ;
+ int h2o_mruby_assert (int *) ;
+ int h2o_mruby_define_callback (int *,char*,int ) ;
+ int h2o_mruby_eval_expr_location (int *,int ,char*,int) ;
+ struct RClass* mrb_class_get_under (int *,struct RClass*,char*) ;
+ int mrb_define_method (int *,struct RClass*,char*,int ,int ) ;
+ struct RClass* mrb_define_module (int *,char*) ;
+ int redis_join_reply_callback ;
+ int setup_method ;
 
 void h2o_mruby_redis_init_context(h2o_mruby_shared_context_t *ctx)
 {

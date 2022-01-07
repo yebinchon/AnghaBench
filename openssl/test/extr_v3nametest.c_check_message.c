@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct set_name_fn {int /*<<< orphan*/  name; } ;
-typedef  int /*<<< orphan*/  msg ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_snprintf (char*,int,char*,int /*<<< orphan*/ ,char const*,char const*,char*,char const*) ; 
- int /*<<< orphan*/  TEST_error (char*,char*) ; 
- scalar_t__ is_exception (char*) ; 
+
+
+
+struct set_name_fn {int name; } ;
+typedef int msg ;
+
+
+ int BIO_snprintf (char*,int,char*,int ,char const*,char const*,char*,char const*) ;
+ int TEST_error (char*,char*) ;
+ scalar_t__ is_exception (char*) ;
 
 __attribute__((used)) static int check_message(const struct set_name_fn *fn, const char *op,
                          const char *nameincert, int match, const char *name)

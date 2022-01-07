@@ -1,68 +1,68 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_5__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_stmt ;
-struct TYPE_7__ {int fDebug; int /*<<< orphan*/  bSchemaOnly; int /*<<< orphan*/  db; } ;
+
+
+typedef struct TYPE_7__ TYPE_5__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int sqlite3_stmt ;
+struct TYPE_7__ {int fDebug; int bSchemaOnly; int db; } ;
 struct TYPE_6__ {char* z; } ;
-typedef  TYPE_1__ Str ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef TYPE_1__ Str ;
+typedef int FILE ;
 
-/* Variables and functions */
- int DEBUG_COLUMN_NAMES ; 
- int DEBUG_DIFF_SQL ; 
- scalar_t__ SQLITE_ROW ; 
- char** columnNames (char*,char const*,int*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * db_prepare (char*,char const*,...) ; 
- int /*<<< orphan*/  dump_table (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*,...) ; 
- TYPE_5__ g ; 
- int /*<<< orphan*/  namelistFree (char**) ; 
- int /*<<< orphan*/  printQuoted (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- char* safeId (char const*) ; 
- int sqlite3_column_int (int /*<<< orphan*/ *,int) ; 
- char* sqlite3_column_text (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_column_value (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  sqlite3_finalize (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_free (char*) ; 
- scalar_t__ sqlite3_step (int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3_stricmp (char*,char*) ; 
- scalar_t__ sqlite3_table_column_metadata (int /*<<< orphan*/ ,char*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strFree (TYPE_1__*) ; 
- int /*<<< orphan*/  strInit (TYPE_1__*) ; 
- int /*<<< orphan*/  strPrintf (TYPE_1__*,char*,...) ; 
+
+ int DEBUG_COLUMN_NAMES ;
+ int DEBUG_DIFF_SQL ;
+ scalar_t__ SQLITE_ROW ;
+ char** columnNames (char*,char const*,int*,int ) ;
+ int * db_prepare (char*,char const*,...) ;
+ int dump_table (char const*,int *) ;
+ int fprintf (int *,char*,...) ;
+ TYPE_5__ g ;
+ int namelistFree (char**) ;
+ int printQuoted (int *,int ) ;
+ int printf (char*,...) ;
+ char* safeId (char const*) ;
+ int sqlite3_column_int (int *,int) ;
+ char* sqlite3_column_text (int *,int ) ;
+ int sqlite3_column_value (int *,int) ;
+ int sqlite3_finalize (int *) ;
+ int sqlite3_free (char*) ;
+ scalar_t__ sqlite3_step (int *) ;
+ scalar_t__ sqlite3_stricmp (char*,char*) ;
+ scalar_t__ sqlite3_table_column_metadata (int ,char*,char const*,int ,int ,int ,int ,int ,int ) ;
+ int strFree (TYPE_1__*) ;
+ int strInit (TYPE_1__*) ;
+ int strPrintf (TYPE_1__*,char*,...) ;
 
 __attribute__((used)) static void diff_one_table(const char *zTab, FILE *out){
-  char *zId = safeId(zTab); /* Name of table (translated for us in SQL) */
-  char **az = 0;            /* Columns in main */
-  char **az2 = 0;           /* Columns in aux */
-  int nPk;                  /* Primary key columns in main */
-  int nPk2;                 /* Primary key columns in aux */
-  int n = 0;                /* Number of columns in main */
-  int n2;                   /* Number of columns in aux */
-  int nQ;                   /* Number of output columns in the diff query */
-  int i;                    /* Loop counter */
-  const char *zSep;         /* Separator string */
-  Str sql;                  /* Comparison query */
-  sqlite3_stmt *pStmt;      /* Query statement to do the diff */
+  char *zId = safeId(zTab);
+  char **az = 0;
+  char **az2 = 0;
+  int nPk;
+  int nPk2;
+  int n = 0;
+  int n2;
+  int nQ;
+  int i;
+  const char *zSep;
+  Str sql;
+  sqlite3_stmt *pStmt;
 
   strInit(&sql);
   if( g.fDebug==DEBUG_COLUMN_NAMES ){
-    /* Simply run columnNames() on all tables of the origin
-    ** database and show the results.  This is used for testing
-    ** and debugging of the columnNames() function.
-    */
+
+
+
+
     az = columnNames("aux",zTab, &nPk, 0);
     if( az==0 ){
       printf("Rowid not accessible for %s\n", zId);
@@ -76,18 +76,18 @@ __attribute__((used)) static void diff_one_table(const char *zTab, FILE *out){
     }
     goto end_diff_one_table;
   }
-    
+
 
   if( sqlite3_table_column_metadata(g.db,"aux",zTab,0,0,0,0,0,0) ){
     if( !sqlite3_table_column_metadata(g.db,"main",zTab,0,0,0,0,0,0) ){
-      /* Table missing from second database. */
+
       fprintf(out, "DROP TABLE %s;\n", zId);
     }
     goto end_diff_one_table;
   }
 
   if( sqlite3_table_column_metadata(g.db,"main",zTab,0,0,0,0,0,0) ){
-    /* Table missing from source */
+
     dump_table(zTab, out);
     goto end_diff_one_table;
   }
@@ -104,13 +104,13 @@ __attribute__((used)) static void diff_one_table(const char *zTab, FILE *out){
    || nPk!=nPk2
    || az[n]
   ){
-    /* Schema mismatch */
+
     fprintf(out, "DROP TABLE %s; -- due to schema mismatch\n", zId);
     dump_table(zTab, out);
     goto end_diff_one_table;
   }
 
-  /* Build the comparison query */
+
   for(n2=n; az2[n2]; n2++){
     fprintf(out, "ALTER TABLE %s ADD COLUMN %s;\n", zId, safeId(az2[n2]));
   }
@@ -165,7 +165,7 @@ __attribute__((used)) static void diff_one_table(const char *zTab, FILE *out){
   }
   strPrintf(&sql, "  FROM main.%s A\n", zId);
   strPrintf(&sql, " WHERE NOT EXISTS(SELECT 1 FROM aux.%s B\n", zId);
-  zSep =          "                   WHERE";
+  zSep = "                   WHERE";
   for(i=0; i<nPk; i++){
     strPrintf(&sql, "%s A.%s=B.%s", zSep, az[i], az[i]);
     zSep = " AND";
@@ -183,7 +183,7 @@ __attribute__((used)) static void diff_one_table(const char *zTab, FILE *out){
   }
   strPrintf(&sql, "  FROM aux.%s B\n", zId);
   strPrintf(&sql, " WHERE NOT EXISTS(SELECT 1 FROM main.%s A\n", zId);
-  zSep =          "                   WHERE";
+  zSep = "                   WHERE";
   for(i=0; i<nPk; i++){
     strPrintf(&sql, "%s A.%s=B.%s", zSep, az[i], az[i]);
     zSep = " AND";
@@ -196,12 +196,12 @@ __attribute__((used)) static void diff_one_table(const char *zTab, FILE *out){
   }
   strPrintf(&sql, ";\n");
 
-  if( g.fDebug & DEBUG_DIFF_SQL ){ 
+  if( g.fDebug & DEBUG_DIFF_SQL ){
     printf("SQL for %s:\n%s\n", zId, sql.z);
     goto end_diff_one_table;
   }
 
-  /* Drop indexes that are missing in the destination */
+
   pStmt = db_prepare(
     "SELECT name FROM main.sqlite_master"
     " WHERE type='index' AND tbl_name=%Q"
@@ -217,13 +217,13 @@ __attribute__((used)) static void diff_one_table(const char *zTab, FILE *out){
   }
   sqlite3_finalize(pStmt);
 
-  /* Run the query and output differences */
+
   if( !g.bSchemaOnly ){
     pStmt = db_prepare("%s", sql.z);
     while( SQLITE_ROW==sqlite3_step(pStmt) ){
       int iType = sqlite3_column_int(pStmt, nPk);
       if( iType==1 || iType==2 ){
-        if( iType==1 ){       /* Change the content of a row */
+        if( iType==1 ){
           fprintf(out, "UPDATE %s", zId);
           zSep = " SET";
           for(i=nPk+1; i<nQ; i+=2){
@@ -232,7 +232,7 @@ __attribute__((used)) static void diff_one_table(const char *zTab, FILE *out){
             zSep = ",";
             printQuoted(out, sqlite3_column_value(pStmt,i+1));
           }
-        }else{                /* Delete a row */
+        }else{
           fprintf(out, "DELETE FROM %s", zId);
         }
         zSep = " WHERE";
@@ -242,7 +242,7 @@ __attribute__((used)) static void diff_one_table(const char *zTab, FILE *out){
           zSep = " AND";
         }
         fprintf(out, ";\n");
-      }else{                  /* Insert a row */
+      }else{
         fprintf(out, "INSERT INTO %s(%s", zId, az2[0]);
         for(i=1; az2[i]; i++) fprintf(out, ",%s", az2[i]);
         fprintf(out, ") VALUES");
@@ -260,9 +260,9 @@ __attribute__((used)) static void diff_one_table(const char *zTab, FILE *out){
       }
     }
     sqlite3_finalize(pStmt);
-  } /* endif !g.bSchemaOnly */
+  }
 
-  /* Create indexes that are missing in the source */
+
   pStmt = db_prepare(
     "SELECT sql FROM aux.sqlite_master"
     " WHERE type='index' AND tbl_name=%Q"

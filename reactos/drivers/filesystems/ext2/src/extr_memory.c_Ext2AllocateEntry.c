@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct dentry {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/  Ext2DentryLookasideList; } ;
+struct TYPE_2__ {int Ext2DentryLookasideList; } ;
 
-/* Variables and functions */
- scalar_t__ ExAllocateFromNPagedLookasideList (int /*<<< orphan*/ *) ; 
- TYPE_1__* Ext2Global ; 
- int /*<<< orphan*/  INC_MEM_COUNT (int /*<<< orphan*/ ,struct dentry*,int) ; 
- int /*<<< orphan*/  PS_DENTRY ; 
- int /*<<< orphan*/  RtlZeroMemory (struct dentry*,int) ; 
+
+ scalar_t__ ExAllocateFromNPagedLookasideList (int *) ;
+ TYPE_1__* Ext2Global ;
+ int INC_MEM_COUNT (int ,struct dentry*,int) ;
+ int PS_DENTRY ;
+ int RtlZeroMemory (struct dentry*,int) ;
 
 struct dentry * Ext2AllocateEntry()
 {
@@ -28,7 +28,7 @@ struct dentry * Ext2AllocateEntry()
     de = (struct dentry *)ExAllocateFromNPagedLookasideList(
              &(Ext2Global->Ext2DentryLookasideList));
     if (!de) {
-        return NULL;
+        return ((void*)0);
     }
 
     RtlZeroMemory(de, sizeof(struct dentry));

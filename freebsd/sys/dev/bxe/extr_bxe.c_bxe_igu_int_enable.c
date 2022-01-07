@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
-typedef  int uint32_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint8_t ;
+typedef int uint32_t ;
 struct TYPE_2__ {scalar_t__ pmf; } ;
 struct bxe_softc {scalar_t__ interrupt_mode; int intr_count; TYPE_1__ port; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BLOGD (struct bxe_softc*,int /*<<< orphan*/ ,char*,int,char*) ; 
- int /*<<< orphan*/  DBG_INTR ; 
- scalar_t__ FALSE ; 
- int IGU_PF_CONF_ATTN_BIT_EN ; 
- int IGU_PF_CONF_FUNC_EN ; 
- int IGU_PF_CONF_INT_LINE_EN ; 
- int IGU_PF_CONF_MSI_MSIX_EN ; 
- int IGU_PF_CONF_SINGLE_ISR_EN ; 
- int /*<<< orphan*/  IGU_REG_LEADING_EDGE_LATCH ; 
- int /*<<< orphan*/  IGU_REG_PF_CONFIGURATION ; 
- int /*<<< orphan*/  IGU_REG_TRAILING_EDGE_LATCH ; 
- scalar_t__ INTR_MODE_MSI ; 
- scalar_t__ INTR_MODE_MSIX ; 
- scalar_t__ IS_MF (struct bxe_softc*) ; 
- int REG_RD (struct bxe_softc*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  REG_WR (struct bxe_softc*,int /*<<< orphan*/ ,int) ; 
- int SC_VN (struct bxe_softc*) ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  bxe_ack_int (struct bxe_softc*) ; 
- int /*<<< orphan*/  mb () ; 
+
+ int BLOGD (struct bxe_softc*,int ,char*,int,char*) ;
+ int DBG_INTR ;
+ scalar_t__ FALSE ;
+ int IGU_PF_CONF_ATTN_BIT_EN ;
+ int IGU_PF_CONF_FUNC_EN ;
+ int IGU_PF_CONF_INT_LINE_EN ;
+ int IGU_PF_CONF_MSI_MSIX_EN ;
+ int IGU_PF_CONF_SINGLE_ISR_EN ;
+ int IGU_REG_LEADING_EDGE_LATCH ;
+ int IGU_REG_PF_CONFIGURATION ;
+ int IGU_REG_TRAILING_EDGE_LATCH ;
+ scalar_t__ INTR_MODE_MSI ;
+ scalar_t__ INTR_MODE_MSIX ;
+ scalar_t__ IS_MF (struct bxe_softc*) ;
+ int REG_RD (struct bxe_softc*,int ) ;
+ int REG_WR (struct bxe_softc*,int ,int) ;
+ int SC_VN (struct bxe_softc*) ;
+ scalar_t__ TRUE ;
+ int bxe_ack_int (struct bxe_softc*) ;
+ int mb () ;
 
 __attribute__((used)) static void
 bxe_igu_int_enable(struct bxe_softc *sc)
@@ -69,7 +69,7 @@ bxe_igu_int_enable(struct bxe_softc *sc)
                 IGU_PF_CONF_SINGLE_ISR_EN);
     }
 
-    /* clean previous status - need to configure igu prior to ack*/
+
     if ((!msix) || single_msix) {
         REG_WR(sc, IGU_REG_PF_CONFIGURATION, val);
         bxe_ack_int(sc);
@@ -84,11 +84,11 @@ bxe_igu_int_enable(struct bxe_softc *sc)
 
     mb();
 
-    /* init leading/trailing edge */
+
     if (IS_MF(sc)) {
         val = (0xee0f | (1 << (SC_VN(sc) + 4)));
         if (sc->port.pmf) {
-            /* enable nig and gpio3 attention */
+
             val |= 0x1100;
         }
     } else {
@@ -98,6 +98,6 @@ bxe_igu_int_enable(struct bxe_softc *sc)
     REG_WR(sc, IGU_REG_TRAILING_EDGE_LATCH, val);
     REG_WR(sc, IGU_REG_LEADING_EDGE_LATCH, val);
 
-    /* make sure that interrupts are indeed enabled from here on */
+
     mb();
 }

@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ u64 ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef scalar_t__ u64 ;
 struct btrfs_root_item {int dummy; } ;
 struct btrfs_path {int dummy; } ;
 struct btrfs_file_extent_item {scalar_t__ type; } ;
-struct btrfs_disk_key {scalar_t__ offset; int /*<<< orphan*/  type; scalar_t__ objectid; } ;
+struct btrfs_disk_key {scalar_t__ offset; int type; scalar_t__ objectid; } ;
 struct TYPE_4__ {scalar_t__ objectid; scalar_t__ type; scalar_t__ offset; } ;
-typedef  int /*<<< orphan*/  BOOLEAN ;
+typedef int BOOLEAN ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BTRFS_EXTENT_DATA_KEY ; 
- scalar_t__ BTRFS_FILE_EXTENT_INLINE ; 
- int /*<<< orphan*/  BtrFsSearchTree (struct btrfs_root_item const*,struct btrfs_disk_key*,struct btrfs_path*) ; 
- int /*<<< orphan*/  ERR (char*) ; 
- scalar_t__ READ_ERROR ; 
- int /*<<< orphan*/  TRACE (char*,scalar_t__,scalar_t__,scalar_t__) ; 
- scalar_t__ btrfs_comp_keys (struct btrfs_disk_key*,TYPE_1__*) ; 
- scalar_t__ btrfs_comp_keys_type (struct btrfs_disk_key*,TYPE_1__*) ; 
- scalar_t__ btrfs_read_extent_inline (struct btrfs_path*,struct btrfs_file_extent_item*,scalar_t__,scalar_t__,char*) ; 
- scalar_t__ btrfs_read_extent_reg (struct btrfs_path*,struct btrfs_file_extent_item*,scalar_t__,scalar_t__,char*) ; 
- int /*<<< orphan*/  free_path (struct btrfs_path*) ; 
- int /*<<< orphan*/  init_path (struct btrfs_path*) ; 
- int next_slot (struct btrfs_disk_key*,struct btrfs_path*) ; 
- scalar_t__ path_current_data (struct btrfs_path*) ; 
- TYPE_1__* path_current_disk_key (struct btrfs_path*) ; 
- scalar_t__ prev_slot (struct btrfs_disk_key*,struct btrfs_path*) ; 
+
+ int BTRFS_EXTENT_DATA_KEY ;
+ scalar_t__ BTRFS_FILE_EXTENT_INLINE ;
+ int BtrFsSearchTree (struct btrfs_root_item const*,struct btrfs_disk_key*,struct btrfs_path*) ;
+ int ERR (char*) ;
+ scalar_t__ READ_ERROR ;
+ int TRACE (char*,scalar_t__,scalar_t__,scalar_t__) ;
+ scalar_t__ btrfs_comp_keys (struct btrfs_disk_key*,TYPE_1__*) ;
+ scalar_t__ btrfs_comp_keys_type (struct btrfs_disk_key*,TYPE_1__*) ;
+ scalar_t__ btrfs_read_extent_inline (struct btrfs_path*,struct btrfs_file_extent_item*,scalar_t__,scalar_t__,char*) ;
+ scalar_t__ btrfs_read_extent_reg (struct btrfs_path*,struct btrfs_file_extent_item*,scalar_t__,scalar_t__,char*) ;
+ int free_path (struct btrfs_path*) ;
+ int init_path (struct btrfs_path*) ;
+ int next_slot (struct btrfs_disk_key*,struct btrfs_path*) ;
+ scalar_t__ path_current_data (struct btrfs_path*) ;
+ TYPE_1__* path_current_disk_key (struct btrfs_path*) ;
+ scalar_t__ prev_slot (struct btrfs_disk_key*,struct btrfs_path*) ;
 
 __attribute__((used)) static u64 btrfs_file_read(const struct btrfs_root_item *root, u64 inr, u64 offset, u64 size, char *buf)
 {
@@ -55,7 +55,7 @@ __attribute__((used)) static u64 btrfs_file_read(const struct btrfs_root_item *r
 
     find_res = BtrFsSearchTree(root, &key, &path);
 
-    /* if we found greater key, switch to the previous one */
+
     if (!find_res && btrfs_comp_keys(&key, path_current_disk_key(&path)) < 0)
     {
         if (prev_slot(&key, &path))
@@ -78,7 +78,7 @@ __attribute__((used)) static u64 btrfs_file_read(const struct btrfs_root_item *r
         extent = (struct btrfs_file_extent_item *) path_current_data(&path);
 
         offset_in_extent = seek_pointer;
-        /* check if we need clean extent offset when switching to the next extent */
+
         if ((seek_pointer) >= path_current_disk_key(&path)->offset)
             offset_in_extent -= path_current_disk_key(&path)->offset;
 

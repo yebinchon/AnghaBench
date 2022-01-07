@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_18__   TYPE_9__ ;
-typedef  struct TYPE_17__   TYPE_5__ ;
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ vlc_fourcc_t ;
-struct TYPE_15__ {int /*<<< orphan*/  fmt; TYPE_4__* p_picture; TYPE_9__* p_text; scalar_t__ i_y; scalar_t__ i_x; } ;
-typedef  TYPE_3__ subpicture_region_t ;
-struct TYPE_16__ {int /*<<< orphan*/  format; } ;
-typedef  TYPE_4__ picture_t ;
+
+
+typedef struct TYPE_18__ TYPE_9__ ;
+typedef struct TYPE_17__ TYPE_5__ ;
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+typedef scalar_t__ vlc_fourcc_t ;
+struct TYPE_15__ {int fmt; TYPE_4__* p_picture; TYPE_9__* p_text; scalar_t__ i_y; scalar_t__ i_x; } ;
+typedef TYPE_3__ subpicture_region_t ;
+struct TYPE_16__ {int format; } ;
+typedef TYPE_4__ picture_t ;
 struct TYPE_13__ {unsigned int i_visible_width; unsigned int i_visible_height; } ;
 struct TYPE_14__ {TYPE_1__ video; } ;
 struct TYPE_17__ {TYPE_2__ fmt_out; } ;
-typedef  TYPE_5__ filter_t ;
-struct TYPE_18__ {int /*<<< orphan*/  psz_text; } ;
+typedef TYPE_5__ filter_t ;
+struct TYPE_18__ {int psz_text; } ;
 
-/* Variables and functions */
- char* SegmentsToSVG (TYPE_9__*,unsigned int,int*) ; 
- scalar_t__ const VLC_CODEC_BGRA ; 
- int VLC_EGENERIC ; 
- int VLC_SUCCESS ; 
- int /*<<< orphan*/  free (char*) ; 
- char* strdup (int /*<<< orphan*/ ) ; 
- scalar_t__ strstr (int /*<<< orphan*/ ,char*) ; 
- char* svg_GetDocument (TYPE_5__*,unsigned int,int,char*) ; 
- TYPE_4__* svg_RenderPicture (TYPE_5__*,char*) ; 
- int /*<<< orphan*/  video_format_Clean (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  video_format_Copy (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ char* SegmentsToSVG (TYPE_9__*,unsigned int,int*) ;
+ scalar_t__ const VLC_CODEC_BGRA ;
+ int VLC_EGENERIC ;
+ int VLC_SUCCESS ;
+ int free (char*) ;
+ char* strdup (int ) ;
+ scalar_t__ strstr (int ,char*) ;
+ char* svg_GetDocument (TYPE_5__*,unsigned int,int,char*) ;
+ TYPE_4__* svg_RenderPicture (TYPE_5__*,char*) ;
+ int video_format_Clean (int *) ;
+ int video_format_Copy (int *,int *) ;
 
 __attribute__((used)) static int RenderText( filter_t *p_filter, subpicture_region_t *p_region_out,
                        subpicture_region_t *p_region_in,
                        const vlc_fourcc_t *p_chroma_list )
 {
-    /* Sanity check */
+
     if( !p_region_in || !p_region_out || !p_region_in->p_text )
         return VLC_EGENERIC;
 
@@ -71,15 +71,15 @@ __attribute__((used)) static int RenderText( filter_t *p_filter, subpicture_regi
         return VLC_EGENERIC;
 
     char *psz_svg;
-    /* Check if the data is SVG or pure text. In the latter case,
-       convert the text to SVG. FIXME: find a better test */
+
+
     if( p_region_in->p_text && strstr( p_region_in->p_text->psz_text, "<svg" ) )
     {
         psz_svg = strdup( p_region_in->p_text->psz_text );
     }
     else
     {
-        /* Data is text. Convert to SVG */
+
         int i_total;
         psz_svg = SegmentsToSVG( p_region_in->p_text, i_height, &i_total );
         if( psz_svg )

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
 
-/* Variables and functions */
- scalar_t__ MICROPY_ERROR_REPORTING ; 
- scalar_t__ MICROPY_ERROR_REPORTING_TERSE ; 
- int /*<<< orphan*/  mp_arg_error_terse_mismatch () ; 
- int /*<<< orphan*/  mp_obj_new_exception_msg_varg (int /*<<< orphan*/ *,char*,size_t,...) ; 
- int /*<<< orphan*/  mp_raise_TypeError (char*) ; 
- int /*<<< orphan*/  mp_type_TypeError ; 
- int /*<<< orphan*/  nlr_raise (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint32_t ;
+
+
+ scalar_t__ MICROPY_ERROR_REPORTING ;
+ scalar_t__ MICROPY_ERROR_REPORTING_TERSE ;
+ int mp_arg_error_terse_mismatch () ;
+ int mp_obj_new_exception_msg_varg (int *,char*,size_t,...) ;
+ int mp_raise_TypeError (char*) ;
+ int mp_type_TypeError ;
+ int nlr_raise (int ) ;
 
 void mp_arg_check_num_sig(size_t n_args, size_t n_kw, uint32_t sig) {
-    // TODO maybe take the function name as an argument so we can print nicer error messages
 
-    // The reverse of MP_OBJ_FUN_MAKE_SIG
+
+
     bool takes_kw = sig & 1;
     size_t n_args_min = sig >> 17;
     size_t n_args_max = (sig >> 1) & 0xffff;

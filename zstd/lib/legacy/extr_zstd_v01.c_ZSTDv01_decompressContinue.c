@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {size_t expected; void* previousDstEnd; int phase; scalar_t__ bType; void* base; } ;
-typedef  TYPE_1__ dctx_t ;
+typedef TYPE_1__ dctx_t ;
 struct TYPE_6__ {scalar_t__ blockType; } ;
-typedef  TYPE_2__ blockProperties_t ;
-typedef  int /*<<< orphan*/  ZSTDv01_Dctx ;
-typedef  scalar_t__ U32 ;
+typedef TYPE_2__ blockProperties_t ;
+typedef int ZSTDv01_Dctx ;
+typedef scalar_t__ U32 ;
 
-/* Variables and functions */
- size_t ERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GENERIC ; 
- void* ZSTD_blockHeaderSize ; 
- size_t ZSTD_copyUncompressedBlock (void*,size_t,void const*,size_t) ; 
- size_t ZSTD_decompressBlock (TYPE_1__*,void*,size_t,void const*,size_t) ; 
- scalar_t__ ZSTD_magicNumber ; 
- scalar_t__ ZSTD_readBE32 (void const*) ; 
- size_t ZSTDv01_getcBlockSize (void const*,void*,TYPE_2__*) ; 
- scalar_t__ ZSTDv01_isError (size_t) ; 
-#define  bt_compressed 131 
-#define  bt_end 130 
-#define  bt_raw 129 
-#define  bt_rle 128 
- int /*<<< orphan*/  prefix_unknown ; 
- int /*<<< orphan*/  srcSize_wrong ; 
+
+ size_t ERROR (int ) ;
+ int GENERIC ;
+ void* ZSTD_blockHeaderSize ;
+ size_t ZSTD_copyUncompressedBlock (void*,size_t,void const*,size_t) ;
+ size_t ZSTD_decompressBlock (TYPE_1__*,void*,size_t,void const*,size_t) ;
+ scalar_t__ ZSTD_magicNumber ;
+ scalar_t__ ZSTD_readBE32 (void const*) ;
+ size_t ZSTDv01_getcBlockSize (void const*,void*,TYPE_2__*) ;
+ scalar_t__ ZSTDv01_isError (size_t) ;
+
+
+
+
+ int prefix_unknown ;
+ int srcSize_wrong ;
 
 size_t ZSTDv01_decompressContinue(ZSTDv01_Dctx* dctx, void* dst, size_t maxDstSize, const void* src, size_t srcSize)
 {
     dctx_t* ctx = (dctx_t*)dctx;
 
-    /* Sanity check */
+
     if (srcSize != ctx->expected) return ERROR(srcSize_wrong);
-    if (dst != ctx->previousDstEnd)  /* not contiguous */
+    if (dst != ctx->previousDstEnd)
         ctx->base = dst;
 
-    /* Decompress : frame header */
+
     if (ctx->phase == 0)
     {
-        /* Check frame magic header */
+
         U32 magicNumber = ZSTD_readBE32(src);
         if (magicNumber != ZSTD_magicNumber) return ERROR(prefix_unknown);
         ctx->phase = 1;
@@ -56,13 +56,13 @@ size_t ZSTDv01_decompressContinue(ZSTDv01_Dctx* dctx, void* dst, size_t maxDstSi
         return 0;
     }
 
-    /* Decompress : block header */
+
     if (ctx->phase == 1)
     {
         blockProperties_t bp;
         size_t blockSize = ZSTDv01_getcBlockSize(src, ZSTD_blockHeaderSize, &bp);
         if (ZSTDv01_isError(blockSize)) return blockSize;
-        if (bp.blockType == bt_end)
+        if (bp.blockType == 130)
         {
             ctx->expected = 0;
             ctx->phase = 0;
@@ -77,21 +77,21 @@ size_t ZSTDv01_decompressContinue(ZSTDv01_Dctx* dctx, void* dst, size_t maxDstSi
         return 0;
     }
 
-    /* Decompress : block content */
+
     {
         size_t rSize;
         switch(ctx->bType)
         {
-        case bt_compressed:
+        case 131:
             rSize = ZSTD_decompressBlock(ctx, dst, maxDstSize, src, srcSize);
             break;
-        case bt_raw :
+        case 129 :
             rSize = ZSTD_copyUncompressedBlock(dst, maxDstSize, src, srcSize);
             break;
-        case bt_rle :
-            return ERROR(GENERIC);   /* not yet handled */
+        case 128 :
+            return ERROR(GENERIC);
             break;
-        case bt_end :   /* should never happen (filtered at phase 1) */
+        case 130 :
             rSize = 0;
             break;
         default:

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct timeval {int tv_sec; scalar_t__ tv_usec; } ;
-typedef  int /*<<< orphan*/  fd_set ;
+typedef int fd_set ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EINTR ; 
- int /*<<< orphan*/  ETIMEDOUT ; 
- int /*<<< orphan*/  FD_SET (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FD_ZERO (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  pError (char*,int,...) ; 
- int select (int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,struct timeval*) ; 
- int /*<<< orphan*/  strerror (int /*<<< orphan*/ ) ; 
- scalar_t__ taosReadSocket (int,char*,size_t) ; 
+
+ int EINTR ;
+ int ETIMEDOUT ;
+ int FD_SET (int,int *) ;
+ int FD_ZERO (int *) ;
+ int errno ;
+ int pError (char*,int,...) ;
+ int select (int,int *,int *,int *,struct timeval*) ;
+ int strerror (int ) ;
+ scalar_t__ taosReadSocket (int,char*,size_t) ;
 
 int taosReadn(int fd, char *ptr, int nbytes) {
   int nread, nready, nleft = nbytes;
 
-  fd_set         fset;
+  fd_set fset;
   struct timeval tv;
 
   while (nleft > 0) {
@@ -35,7 +35,7 @@ int taosReadn(int fd, char *ptr, int nbytes) {
     tv.tv_usec = 0;
     FD_ZERO(&fset);
     FD_SET(fd, &fset);
-    if ((nready = select(fd + 1, NULL, &fset, NULL, &tv)) == 0) {
+    if ((nready = select(fd + 1, ((void*)0), &fset, ((void*)0), &tv)) == 0) {
       errno = ETIMEDOUT;
       pError("fd %d timeout\n", fd);
       break;
@@ -52,7 +52,7 @@ int taosReadn(int fd, char *ptr, int nbytes) {
 
     } else if (nread == 0) {
       pError("fd %d EOF", fd);
-      break;  // EOF
+      break;
     }
 
     nleft -= nread;

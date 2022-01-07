@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct wined3d_state {scalar_t__* render_states; } ;
-struct wined3d_context {int /*<<< orphan*/  constant_update_mask; } ;
-typedef  int /*<<< orphan*/  DWORD ;
+struct wined3d_context {int constant_update_mask; } ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  STATE_RENDER (size_t) ; 
- int /*<<< orphan*/  STATE_TRANSFORM (int /*<<< orphan*/ ) ; 
- size_t WINED3D_RS_POINTSCALEENABLE ; 
- int /*<<< orphan*/  WINED3D_SHADER_CONST_POS_FIXUP ; 
- int /*<<< orphan*/  WINED3D_SHADER_CONST_VS_POINTSIZE ; 
- int /*<<< orphan*/  WINED3D_TS_PROJECTION ; 
- int /*<<< orphan*/  glsl_vertex_pipe_projection (struct wined3d_context*,struct wined3d_state const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  isStateDirty (struct wined3d_context*,int /*<<< orphan*/ ) ; 
+
+ int STATE_RENDER (size_t) ;
+ int STATE_TRANSFORM (int ) ;
+ size_t WINED3D_RS_POINTSCALEENABLE ;
+ int WINED3D_SHADER_CONST_POS_FIXUP ;
+ int WINED3D_SHADER_CONST_VS_POINTSIZE ;
+ int WINED3D_TS_PROJECTION ;
+ int glsl_vertex_pipe_projection (struct wined3d_context*,struct wined3d_state const*,int ) ;
+ int isStateDirty (struct wined3d_context*,int ) ;
 
 __attribute__((used)) static void glsl_vertex_pipe_viewport(struct wined3d_context *context,
         const struct wined3d_state *state, DWORD state_id)

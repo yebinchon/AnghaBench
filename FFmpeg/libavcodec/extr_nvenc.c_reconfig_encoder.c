@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_25__   TYPE_9__ ;
-typedef  struct TYPE_24__   TYPE_8__ ;
-typedef  struct TYPE_23__   TYPE_7__ ;
-typedef  struct TYPE_22__   TYPE_6__ ;
-typedef  struct TYPE_21__   TYPE_5__ ;
-typedef  struct TYPE_20__   TYPE_4__ ;
-typedef  struct TYPE_19__   TYPE_3__ ;
-typedef  struct TYPE_18__   TYPE_2__ ;
-typedef  struct TYPE_17__   TYPE_1__ ;
-typedef  struct TYPE_16__   TYPE_10__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint32_t ;
-struct TYPE_25__ {scalar_t__ (* nvEncReconfigureEncoder ) (int /*<<< orphan*/ ,TYPE_8__*) ;} ;
+
+
+typedef struct TYPE_25__ TYPE_9__ ;
+typedef struct TYPE_24__ TYPE_8__ ;
+typedef struct TYPE_23__ TYPE_7__ ;
+typedef struct TYPE_22__ TYPE_6__ ;
+typedef struct TYPE_21__ TYPE_5__ ;
+typedef struct TYPE_20__ TYPE_4__ ;
+typedef struct TYPE_19__ TYPE_3__ ;
+typedef struct TYPE_18__ TYPE_2__ ;
+typedef struct TYPE_17__ TYPE_1__ ;
+typedef struct TYPE_16__ TYPE_10__ ;
+
+
+typedef scalar_t__ uint32_t ;
+struct TYPE_25__ {scalar_t__ (* nvEncReconfigureEncoder ) (int ,TYPE_8__*) ;} ;
 struct TYPE_22__ {int darWidth; int darHeight; TYPE_5__* encodeConfig; } ;
-struct TYPE_24__ {int resetEncoder; int forceIDR; TYPE_6__ reInitEncodeParams; int /*<<< orphan*/  version; int /*<<< orphan*/  member_0; } ;
+struct TYPE_24__ {int resetEncoder; int forceIDR; TYPE_6__ reInitEncodeParams; int version; int member_0; } ;
 struct TYPE_18__ {scalar_t__ vbvBufferSize; scalar_t__ maxBitRate; scalar_t__ averageBitRate; } ;
 struct TYPE_19__ {TYPE_2__ rcParams; } ;
 struct TYPE_17__ {TYPE_9__ nvenc_funcs; } ;
-struct TYPE_23__ {scalar_t__ rc; TYPE_3__ encode_config; TYPE_6__ init_encode_params; int /*<<< orphan*/  nvencoder; scalar_t__ support_dyn_bitrate; TYPE_1__ nvenc_dload_funcs; } ;
+struct TYPE_23__ {scalar_t__ rc; TYPE_3__ encode_config; TYPE_6__ init_encode_params; int nvencoder; scalar_t__ support_dyn_bitrate; TYPE_1__ nvenc_dload_funcs; } ;
 struct TYPE_20__ {scalar_t__ vbvBufferSize; scalar_t__ maxBitRate; scalar_t__ averageBitRate; } ;
 struct TYPE_21__ {TYPE_4__ rcParams; } ;
 struct TYPE_16__ {scalar_t__ rc_buffer_size; scalar_t__ rc_max_rate; scalar_t__ bit_rate; TYPE_7__* priv_data; } ;
-typedef  TYPE_7__ NvencContext ;
-typedef  TYPE_8__ NV_ENC_RECONFIGURE_PARAMS ;
-typedef  TYPE_9__ NV_ENCODE_API_FUNCTION_LIST ;
-typedef  scalar_t__ NVENCSTATUS ;
-typedef  int /*<<< orphan*/  AVFrame ;
-typedef  TYPE_10__ AVCodecContext ;
+typedef TYPE_7__ NvencContext ;
+typedef TYPE_8__ NV_ENC_RECONFIGURE_PARAMS ;
+typedef TYPE_9__ NV_ENCODE_API_FUNCTION_LIST ;
+typedef scalar_t__ NVENCSTATUS ;
+typedef int AVFrame ;
+typedef TYPE_10__ AVCodecContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_LOG_VERBOSE ; 
- scalar_t__ NV_ENC_PARAMS_RC_CONSTQP ; 
- int /*<<< orphan*/  NV_ENC_RECONFIGURE_PARAMS_VER ; 
- scalar_t__ NV_ENC_SUCCESS ; 
- int /*<<< orphan*/  av_log (TYPE_10__*,int /*<<< orphan*/ ,char*,int,int,...) ; 
- int /*<<< orphan*/  compute_dar (TYPE_10__*,int*,int*) ; 
- int /*<<< orphan*/  nvenc_print_error (TYPE_10__*,scalar_t__,char*) ; 
- scalar_t__ stub1 (int /*<<< orphan*/ ,TYPE_8__*) ; 
+
+ int AV_LOG_VERBOSE ;
+ scalar_t__ NV_ENC_PARAMS_RC_CONSTQP ;
+ int NV_ENC_RECONFIGURE_PARAMS_VER ;
+ scalar_t__ NV_ENC_SUCCESS ;
+ int av_log (TYPE_10__*,int ,char*,int,int,...) ;
+ int compute_dar (TYPE_10__*,int*,int*) ;
+ int nvenc_print_error (TYPE_10__*,scalar_t__,char*) ;
+ scalar_t__ stub1 (int ,TYPE_8__*) ;
 
 __attribute__((used)) static void reconfig_encoder(AVCodecContext *avctx, const AVFrame *frame)
 {
@@ -118,7 +118,7 @@ __attribute__((used)) static void reconfig_encoder(AVCodecContext *avctx, const 
     }
 
     if (!needs_encode_config)
-        params.reInitEncodeParams.encodeConfig = NULL;
+        params.reInitEncodeParams.encodeConfig = ((void*)0);
 
     if (needs_reconfig) {
         ret = p_nvenc->nvEncReconfigureEncoder(ctx->nvencoder, &params);

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {scalar_t__ num; } ;
-struct mp_aframe {double speed; int /*<<< orphan*/  pts; scalar_t__ format; TYPE_1__ chmap; int /*<<< orphan*/  av_frame; } ;
+struct mp_aframe {double speed; int pts; scalar_t__ format; TYPE_1__ chmap; int av_frame; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MP_NOPTS_VALUE ; 
- int /*<<< orphan*/  av_frame_unref (int /*<<< orphan*/ ) ; 
+
+ int MP_NOPTS_VALUE ;
+ int av_frame_unref (int ) ;
 
 void mp_aframe_reset(struct mp_aframe *frame)
 {

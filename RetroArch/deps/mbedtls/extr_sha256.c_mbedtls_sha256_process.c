@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint32_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint32_t ;
 struct TYPE_3__ {scalar_t__* state; } ;
-typedef  TYPE_1__ mbedtls_sha256_context ;
+typedef TYPE_1__ mbedtls_sha256_context ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GET_UINT32_BE (scalar_t__,unsigned char const*,int) ; 
- int /*<<< orphan*/  P (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,int /*<<< orphan*/ ) ; 
- scalar_t__ R (unsigned int) ; 
- int /*<<< orphan*/ * SHA256_K ; 
+
+ int GET_UINT32_BE (scalar_t__,unsigned char const*,int) ;
+ int P (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,int ) ;
+ scalar_t__ R (unsigned int) ;
+ int * SHA256_K ;
 
 void mbedtls_sha256_process( mbedtls_sha256_context *ctx, const unsigned char data[64] )
 {
@@ -29,21 +29,6 @@ void mbedtls_sha256_process( mbedtls_sha256_context *ctx, const unsigned char da
 
     for( i = 0; i < 8; i++ )
         A[i] = ctx->state[i];
-
-#if defined(MBEDTLS_SHA256_SMALLER)
-    for( i = 0; i < 64; i++ )
-    {
-        if( i < 16 )
-            GET_UINT32_BE( W[i], data, 4 * i );
-        else
-            R( i );
-
-        P( A[0], A[1], A[2], A[3], A[4], A[5], A[6], A[7], W[i], SHA256_K[i] );
-
-        temp1 = A[7]; A[7] = A[6]; A[6] = A[5]; A[5] = A[4]; A[4] = A[3];
-        A[3] = A[2]; A[2] = A[1]; A[1] = A[0]; A[0] = temp1;
-    }
-#else /* MBEDTLS_SHA256_SMALLER */
     for( i = 0; i < 16; i++ )
         GET_UINT32_BE( W[i], data, 4 * i );
 
@@ -70,7 +55,7 @@ void mbedtls_sha256_process( mbedtls_sha256_context *ctx, const unsigned char da
         P( A[2], A[3], A[4], A[5], A[6], A[7], A[0], A[1], R(i+6), SHA256_K[i+6] );
         P( A[1], A[2], A[3], A[4], A[5], A[6], A[7], A[0], R(i+7), SHA256_K[i+7] );
     }
-#endif /* MBEDTLS_SHA256_SMALLER */
+
 
     for( i = 0; i < 8; i++ )
         ctx->state[i] += A[i];

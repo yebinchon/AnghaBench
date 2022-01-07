@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  key_words ; 
- int* map_int_int_get (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  q_cnt ; 
- int /*<<< orphan*/ * set_int_get (int /*<<< orphan*/ *,int) ; 
- double sqrt (int) ; 
+ int key_words ;
+ int* map_int_int_get (int *,int) ;
+ int q_cnt ;
+ int * set_int_get (int *,int) ;
+ double sqrt (int) ;
 
 double word_weight (int word) {
   int *t = map_int_int_get (&q_cnt, word), cnt = 0;
 
-  if (t != NULL) {
+  if (t != ((void*)0)) {
     cnt = *t;
   }
 
@@ -29,7 +21,7 @@ double word_weight (int word) {
     return 0.0;
   }
 
-  if (set_int_get (&key_words, word) != NULL) {
+  if (set_int_get (&key_words, word) != ((void*)0)) {
     return 0.1;
   }
 

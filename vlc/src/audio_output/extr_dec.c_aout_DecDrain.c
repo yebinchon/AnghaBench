@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  block_t ;
-struct TYPE_12__ {int /*<<< orphan*/  (* play ) (TYPE_3__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ;} ;
-typedef  TYPE_3__ audio_output_t ;
-struct TYPE_11__ {int discontinuity; int /*<<< orphan*/  clock; } ;
-struct TYPE_10__ {int /*<<< orphan*/  i_format; } ;
-struct TYPE_13__ {int /*<<< orphan*/  original_pts; TYPE_2__ sync; int /*<<< orphan*/  filters; TYPE_1__ mixer_format; } ;
-typedef  TYPE_4__ aout_owner_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  VLC_TICK_INVALID ; 
- int /*<<< orphan*/  aout_Drain (TYPE_3__*) ; 
- int /*<<< orphan*/ * aout_FiltersDrain (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  aout_FiltersResetClock (int /*<<< orphan*/ ) ; 
- TYPE_4__* aout_owner (TYPE_3__*) ; 
- int /*<<< orphan*/  stub1 (TYPE_3__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vlc_clock_Reset (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vlc_tick_now () ; 
+
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int block_t ;
+struct TYPE_12__ {int (* play ) (TYPE_3__*,int *,int ) ;} ;
+typedef TYPE_3__ audio_output_t ;
+struct TYPE_11__ {int discontinuity; int clock; } ;
+struct TYPE_10__ {int i_format; } ;
+struct TYPE_13__ {int original_pts; TYPE_2__ sync; int filters; TYPE_1__ mixer_format; } ;
+typedef TYPE_4__ aout_owner_t ;
+
+
+ int VLC_TICK_INVALID ;
+ int aout_Drain (TYPE_3__*) ;
+ int * aout_FiltersDrain (int ) ;
+ int aout_FiltersResetClock (int ) ;
+ TYPE_4__* aout_owner (TYPE_3__*) ;
+ int stub1 (TYPE_3__*,int *,int ) ;
+ int vlc_clock_Reset (int ) ;
+ int vlc_tick_now () ;
 
 void aout_DecDrain(audio_output_t *aout)
 {
@@ -48,6 +48,6 @@ void aout_DecDrain(audio_output_t *aout)
     vlc_clock_Reset(owner->sync.clock);
     aout_FiltersResetClock(owner->filters);
 
-    owner->sync.discontinuity = true;
+    owner->sync.discontinuity = 1;
     owner->original_pts = VLC_TICK_INVALID;
 }

@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_6__ ;
-typedef  struct TYPE_14__   TYPE_5__ ;
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_15__ TYPE_6__ ;
+typedef struct TYPE_14__ TYPE_5__ ;
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
 struct timeval {long tv_sec; long tv_usec; } ;
-typedef  int /*<<< orphan*/  fd_set ;
-typedef  size_t apr_uint32_t ;
-typedef  int /*<<< orphan*/  apr_status_t ;
+typedef int fd_set ;
+typedef size_t apr_uint32_t ;
+typedef int apr_status_t ;
 struct TYPE_14__ {scalar_t__ nelts; int flags; TYPE_4__* p; TYPE_2__** wakeup_pipe; } ;
-typedef  TYPE_5__ apr_pollset_t ;
+typedef TYPE_5__ apr_pollset_t ;
 struct TYPE_12__ {TYPE_2__* f; TYPE_1__* s; } ;
-struct TYPE_15__ {scalar_t__ desc_type; int /*<<< orphan*/  rtnevents; TYPE_3__ desc; } ;
-typedef  TYPE_6__ apr_pollfd_t ;
-typedef  int /*<<< orphan*/  apr_os_sock_t ;
-typedef  scalar_t__ apr_interval_time_t ;
-typedef  int apr_int32_t ;
-struct TYPE_13__ {TYPE_6__* result_set; TYPE_6__* query_set; scalar_t__ maxfd; int /*<<< orphan*/  set_type; int /*<<< orphan*/  exceptset; int /*<<< orphan*/  writeset; int /*<<< orphan*/  readset; } ;
-struct TYPE_11__ {int /*<<< orphan*/  filedes; } ;
-struct TYPE_10__ {int /*<<< orphan*/  socketdes; } ;
+struct TYPE_15__ {scalar_t__ desc_type; int rtnevents; TYPE_3__ desc; } ;
+typedef TYPE_6__ apr_pollfd_t ;
+typedef int apr_os_sock_t ;
+typedef scalar_t__ apr_interval_time_t ;
+typedef int apr_int32_t ;
+struct TYPE_13__ {TYPE_6__* result_set; TYPE_6__* query_set; scalar_t__ maxfd; int set_type; int exceptset; int writeset; int readset; } ;
+struct TYPE_11__ {int filedes; } ;
+struct TYPE_10__ {int socketdes; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  APR_EBADF ; 
- int /*<<< orphan*/  APR_EINTR ; 
- int /*<<< orphan*/  APR_POLLERR ; 
- int /*<<< orphan*/  APR_POLLIN ; 
- int /*<<< orphan*/  APR_POLLOUT ; 
- int APR_POLLSET_WAKEABLE ; 
- scalar_t__ APR_POLL_SOCKET ; 
- int /*<<< orphan*/  APR_SUCCESS ; 
- int /*<<< orphan*/  APR_TIMEUP ; 
- scalar_t__ FD_ISSET (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ HAS_PIPES (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  apr_get_netos_error () ; 
- int /*<<< orphan*/  apr_pollset_drain_wakeup_pipe (TYPE_5__*) ; 
- int /*<<< orphan*/  apr_sleep (scalar_t__) ; 
- scalar_t__ apr_time_sec (scalar_t__) ; 
- scalar_t__ apr_time_usec (scalar_t__) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int pipe_select (scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,struct timeval*) ; 
- int select (scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,struct timeval*) ; 
+
+ int APR_EBADF ;
+ int APR_EINTR ;
+ int APR_POLLERR ;
+ int APR_POLLIN ;
+ int APR_POLLOUT ;
+ int APR_POLLSET_WAKEABLE ;
+ scalar_t__ APR_POLL_SOCKET ;
+ int APR_SUCCESS ;
+ int APR_TIMEUP ;
+ scalar_t__ FD_ISSET (int ,int *) ;
+ scalar_t__ HAS_PIPES (int ) ;
+ int apr_get_netos_error () ;
+ int apr_pollset_drain_wakeup_pipe (TYPE_5__*) ;
+ int apr_sleep (scalar_t__) ;
+ scalar_t__ apr_time_sec (scalar_t__) ;
+ scalar_t__ apr_time_usec (scalar_t__) ;
+ int memcpy (int *,int *,int) ;
+ int pipe_select (scalar_t__,int *,int *,int *,struct timeval*) ;
+ int select (scalar_t__,int *,int *,int *,struct timeval*) ;
 
 __attribute__((used)) static apr_status_t impl_pollset_poll(apr_pollset_t *pollset,
                                       apr_interval_time_t timeout,
@@ -63,24 +63,8 @@ __attribute__((used)) static apr_status_t impl_pollset_poll(apr_pollset_t *polls
     struct timeval tv, *tvptr;
     fd_set readset, writeset, exceptset;
     apr_status_t rv = APR_SUCCESS;
-
-#ifdef WIN32
-    /* On Win32, select() must be presented with at least one socket to
-     * poll on, or select() will return WSAEINVAL.  So, we'll just
-     * short-circuit and bail now.
-     */
-    if (pollset->nelts == 0) {
-        (*num) = 0;
-        if (timeout > 0) {
-            apr_sleep(timeout);
-            return APR_TIMEUP;
-        }
-        return APR_SUCCESS;
-    }
-#endif
-
     if (timeout < 0) {
-        tvptr = NULL;
+        tvptr = ((void*)0);
     }
     else {
         tv.tv_sec = (long) apr_time_sec(timeout);
@@ -91,14 +75,6 @@ __attribute__((used)) static apr_status_t impl_pollset_poll(apr_pollset_t *polls
     memcpy(&readset, &(pollset->p->readset), sizeof(fd_set));
     memcpy(&writeset, &(pollset->p->writeset), sizeof(fd_set));
     memcpy(&exceptset, &(pollset->p->exceptset), sizeof(fd_set));
-
-#ifdef NETWARE
-    if (HAS_PIPES(pollset->p->set_type)) {
-        rs = pipe_select(pollset->p->maxfd + 1, &readset, &writeset, &exceptset,
-                         tvptr);
-    }
-    else
-#endif
         rs = select(pollset->p->maxfd + 1, &readset, &writeset, &exceptset,
                     tvptr);
 
@@ -123,11 +99,11 @@ __attribute__((used)) static apr_status_t impl_pollset_poll(apr_pollset_t *polls
                 continue;
             }
             else {
-#if !APR_FILES_AS_SOCKETS
+
                 return APR_EBADF;
-#else
-                fd = pollset->p->query_set[i].desc.f->filedes;
-#endif
+
+
+
             }
         }
         if (FD_ISSET(fd, &readset) || FD_ISSET(fd, &writeset) ||

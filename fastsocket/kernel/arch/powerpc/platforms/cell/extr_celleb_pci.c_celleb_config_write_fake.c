@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  celleb_fake_config_writeb (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  celleb_fake_config_writel (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  celleb_fake_config_writew (int /*<<< orphan*/ ,char*) ; 
+
+
+
+typedef int u32 ;
+
+
+ int celleb_fake_config_writeb (int ,char*) ;
+ int celleb_fake_config_writel (int ,char*) ;
+ int celleb_fake_config_writew (int ,char*) ;
 
 __attribute__((used)) static void celleb_config_write_fake(unsigned char *config, int where,
-				     int size, u32 val)
+         int size, u32 val)
 {
-	char *p = config + where;
+ char *p = config + where;
 
-	switch (size) {
-	case 1:
-		celleb_fake_config_writeb(val, p);
-		break;
-	case 2:
-		celleb_fake_config_writew(val, p);
-		break;
-	case 4:
-		celleb_fake_config_writel(val, p);
-		break;
-	}
+ switch (size) {
+ case 1:
+  celleb_fake_config_writeb(val, p);
+  break;
+ case 2:
+  celleb_fake_config_writew(val, p);
+  break;
+ case 4:
+  celleb_fake_config_writel(val, p);
+  break;
+ }
 }

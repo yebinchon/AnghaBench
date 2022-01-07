@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  flush_workqueue (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mlxsw_owq ; 
+ int flush_workqueue (int ) ;
+ int mlxsw_owq ;
 
 void mlxsw_core_flush_owq(void)
 {
-	flush_workqueue(mlxsw_owq);
+ flush_workqueue(mlxsw_owq);
 }

@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_5__ ;
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_11__ {int /*<<< orphan*/  data; } ;
-typedef  TYPE_3__ svn_string_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
+
+
+typedef struct TYPE_13__ TYPE_5__ ;
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_11__ {int data; } ;
+typedef TYPE_3__ svn_string_t ;
+typedef int svn_error_t ;
 struct TYPE_12__ {TYPE_2__* editor; } ;
-typedef  TYPE_4__ report_context_t ;
-struct TYPE_13__ {int /*<<< orphan*/  file_baton; scalar_t__ found_lock_prop; scalar_t__ lock_token; TYPE_1__* parent_dir; } ;
-typedef  TYPE_5__ file_baton_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-struct TYPE_10__ {int /*<<< orphan*/  (* change_file_prop ) (int /*<<< orphan*/ ,char const*,TYPE_3__ const*,int /*<<< orphan*/ *) ;} ;
+typedef TYPE_4__ report_context_t ;
+struct TYPE_13__ {int file_baton; scalar_t__ found_lock_prop; scalar_t__ lock_token; TYPE_1__* parent_dir; } ;
+typedef TYPE_5__ file_baton_t ;
+typedef int apr_pool_t ;
+struct TYPE_10__ {int (* change_file_prop ) (int ,char const*,TYPE_3__ const*,int *) ;} ;
 struct TYPE_9__ {TYPE_4__* ctx; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  apr_collapse_spaces (char*,char*) ; 
- char* apr_pstrdup (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ensure_file_opened (TYPE_5__*,int /*<<< orphan*/ *) ; 
- scalar_t__ strcmp (char const*,char*) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,char const*,TYPE_3__ const*,int /*<<< orphan*/ *) ; 
- char* svn_ra_serf__svnname_from_wirename (char const*,char const*,int /*<<< orphan*/ *) ; 
+
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ scalar_t__ TRUE ;
+ int apr_collapse_spaces (char*,char*) ;
+ char* apr_pstrdup (int *,int ) ;
+ int ensure_file_opened (TYPE_5__*,int *) ;
+ scalar_t__ strcmp (char const*,char*) ;
+ int stub1 (int ,char const*,TYPE_3__ const*,int *) ;
+ char* svn_ra_serf__svnname_from_wirename (char const*,char const*,int *) ;
 
 __attribute__((used)) static svn_error_t *
 set_file_props(void *baton,
@@ -53,15 +53,6 @@ set_file_props(void *baton,
 
   if (!prop_name)
     {
-      /* This works around a bug in some older versions of
-       * mod_dav_svn in that it will not send remove-prop in the update
-       * report when a lock property disappears when send-all is false.
-       *
-       * Therefore, we'll try to look at our properties and see if there's
-       * an active lock.  If not, then we'll assume there isn't a lock
-       * anymore.
-       */
-      /* assert(!ctx->add_props_included); // Or we wouldn't be here */
       if (file->lock_token
           && !file->found_lock_prop
           && val

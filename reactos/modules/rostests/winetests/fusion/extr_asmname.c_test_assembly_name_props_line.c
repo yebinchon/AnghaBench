@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  str ;
-typedef  int WCHAR ;
-struct TYPE_3__ {size_t hr; size_t size; int /*<<< orphan*/  val; } ;
-typedef  int /*<<< orphan*/  IAssemblyName ;
-typedef  size_t HRESULT ;
-typedef  size_t DWORD ;
-typedef  TYPE_1__ ASMPROP_RES ;
 
-/* Variables and functions */
- size_t ASM_NAME_CONFIG_MASK ; 
- size_t ASM_NAME_CULTURE ; 
- size_t ASM_NAME_FILE_MAJOR_VERSION ; 
- size_t ASM_NAME_MAX_PARAMS ; 
- size_t ASM_NAME_NAME ; 
- size_t E_INVALIDARG ; 
- size_t IAssemblyName_GetProperty (int /*<<< orphan*/ *,size_t,int*,size_t*) ; 
- int MAX_PATH ; 
- size_t STRSAFE_E_INSUFFICIENT_BUFFER ; 
- scalar_t__ broken (int) ; 
- int /*<<< orphan*/  lstrcmpW (int*,int*) ; 
- int /*<<< orphan*/  memcmp (int /*<<< orphan*/ ,int*,size_t) ; 
- int /*<<< orphan*/  memset (int*,int,int) ; 
- int /*<<< orphan*/  ok (int,char*,int,size_t,...) ; 
- int /*<<< orphan*/  to_widechar (int*,int /*<<< orphan*/ ) ; 
- size_t wine_dbgstr_w (int*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int str ;
+typedef int WCHAR ;
+struct TYPE_3__ {size_t hr; size_t size; int val; } ;
+typedef int IAssemblyName ;
+typedef size_t HRESULT ;
+typedef size_t DWORD ;
+typedef TYPE_1__ ASMPROP_RES ;
+
+
+ size_t ASM_NAME_CONFIG_MASK ;
+ size_t ASM_NAME_CULTURE ;
+ size_t ASM_NAME_FILE_MAJOR_VERSION ;
+ size_t ASM_NAME_MAX_PARAMS ;
+ size_t ASM_NAME_NAME ;
+ size_t E_INVALIDARG ;
+ size_t IAssemblyName_GetProperty (int *,size_t,int*,size_t*) ;
+ int MAX_PATH ;
+ size_t STRSAFE_E_INSUFFICIENT_BUFFER ;
+ scalar_t__ broken (int) ;
+ int lstrcmpW (int*,int*) ;
+ int memcmp (int ,int*,size_t) ;
+ int memset (int*,int,int) ;
+ int ok (int,char*,int,size_t,...) ;
+ int to_widechar (int*,int ) ;
+ size_t wine_dbgstr_w (int*) ;
 
 __attribute__((used)) static void test_assembly_name_props_line(IAssemblyName *name,
                                           const ASMPROP_RES *vals, int line)
@@ -54,8 +54,8 @@ __attribute__((used)) static void test_assembly_name_props_line(IAssemblyName *n
         hr = IAssemblyName_GetProperty(name, i, str, &size);
 
         ok(hr == vals[i].hr ||
-           broken(i >= ASM_NAME_CONFIG_MASK && hr == E_INVALIDARG) || /* .NET 1.1 */
-           broken(i >= ASM_NAME_FILE_MAJOR_VERSION && hr == E_INVALIDARG), /* .NET 1.0 */
+           broken(i >= ASM_NAME_CONFIG_MASK && hr == E_INVALIDARG) ||
+           broken(i >= ASM_NAME_FILE_MAJOR_VERSION && hr == E_INVALIDARG),
            "%d: prop %d: Expected %08x, got %08x\n", line, i, vals[i].hr, hr);
         if (hr != E_INVALIDARG)
         {

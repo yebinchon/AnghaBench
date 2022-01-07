@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uv_udp_t ;
-typedef  int /*<<< orphan*/  uv_membership ;
+
+
+
+
+typedef int uv_udp_t ;
+typedef int uv_membership ;
 struct sockaddr_in6 {int dummy; } ;
 struct sockaddr_in {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_INET ; 
- int /*<<< orphan*/  AF_INET6 ; 
- int UV_EINVAL ; 
- int /*<<< orphan*/  UV_UDP_REUSEADDR ; 
- int uv__udp_maybe_deferred_bind (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int uv__udp_set_membership4 (int /*<<< orphan*/ *,struct sockaddr_in*,char const*,int /*<<< orphan*/ ) ; 
- int uv__udp_set_membership6 (int /*<<< orphan*/ *,struct sockaddr_in6*,char const*,int /*<<< orphan*/ ) ; 
- scalar_t__ uv_ip4_addr (char const*,int /*<<< orphan*/ ,struct sockaddr_in*) ; 
- scalar_t__ uv_ip6_addr (char const*,int /*<<< orphan*/ ,struct sockaddr_in6*) ; 
+
+ int AF_INET ;
+ int AF_INET6 ;
+ int UV_EINVAL ;
+ int UV_UDP_REUSEADDR ;
+ int uv__udp_maybe_deferred_bind (int *,int ,int ) ;
+ int uv__udp_set_membership4 (int *,struct sockaddr_in*,char const*,int ) ;
+ int uv__udp_set_membership6 (int *,struct sockaddr_in6*,char const*,int ) ;
+ scalar_t__ uv_ip4_addr (char const*,int ,struct sockaddr_in*) ;
+ scalar_t__ uv_ip6_addr (char const*,int ,struct sockaddr_in6*) ;
 
 int uv_udp_set_membership(uv_udp_t* handle,
                           const char* multicast_addr,

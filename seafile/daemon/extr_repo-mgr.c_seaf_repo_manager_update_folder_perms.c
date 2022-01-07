@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_4__ ;
-typedef  struct TYPE_16__   TYPE_3__ ;
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_stmt ;
+
+
+typedef struct TYPE_17__ TYPE_4__ ;
+typedef struct TYPE_16__ TYPE_3__ ;
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
+typedef int sqlite3_stmt ;
 struct TYPE_17__ {char const* path; char const* permission; } ;
 struct TYPE_16__ {TYPE_4__* data; struct TYPE_16__* next; } ;
 struct TYPE_15__ {TYPE_1__* priv; } ;
-struct TYPE_14__ {int /*<<< orphan*/  perm_lock; int /*<<< orphan*/  group_perms; int /*<<< orphan*/  user_perms; int /*<<< orphan*/  db_lock; int /*<<< orphan*/  db; } ;
-typedef  TYPE_2__ SeafRepoManager ;
-typedef  TYPE_3__ GList ;
-typedef  int /*<<< orphan*/  GDestroyNotify ;
-typedef  scalar_t__ FolderPermType ;
-typedef  TYPE_4__ FolderPerm ;
+struct TYPE_14__ {int perm_lock; int group_perms; int user_perms; int db_lock; int db; } ;
+typedef TYPE_2__ SeafRepoManager ;
+typedef TYPE_3__ GList ;
+typedef int GDestroyNotify ;
+typedef scalar_t__ FolderPermType ;
+typedef TYPE_4__ FolderPerm ;
 
-/* Variables and functions */
- scalar_t__ FOLDER_PERM_TYPE_GROUP ; 
- scalar_t__ FOLDER_PERM_TYPE_USER ; 
- scalar_t__ SQLITE_DONE ; 
- int /*<<< orphan*/  SQLITE_TRANSIENT ; 
- int /*<<< orphan*/  comp_folder_perms ; 
- scalar_t__ folder_perm_free ; 
- TYPE_3__* folder_perm_list_copy (TYPE_3__*) ; 
- int /*<<< orphan*/  g_hash_table_insert (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_3__*) ; 
- TYPE_3__* g_hash_table_lookup (int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  g_list_free_full (TYPE_3__*,int /*<<< orphan*/ ) ; 
- TYPE_3__* g_list_sort (TYPE_3__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  g_return_val_if_fail (int,int) ; 
- int /*<<< orphan*/  g_strdup (char const*) ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  seaf_warning (char*,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_bind_text (int /*<<< orphan*/ *,int,char const*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_clear_bindings (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_errmsg (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_finalize (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_reset (int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3_step (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * sqlite_query_prepare (int /*<<< orphan*/ ,char*) ; 
+
+ scalar_t__ FOLDER_PERM_TYPE_GROUP ;
+ scalar_t__ FOLDER_PERM_TYPE_USER ;
+ scalar_t__ SQLITE_DONE ;
+ int SQLITE_TRANSIENT ;
+ int comp_folder_perms ;
+ scalar_t__ folder_perm_free ;
+ TYPE_3__* folder_perm_list_copy (TYPE_3__*) ;
+ int g_hash_table_insert (int ,int ,TYPE_3__*) ;
+ TYPE_3__* g_hash_table_lookup (int ,char const*) ;
+ int g_list_free_full (TYPE_3__*,int ) ;
+ TYPE_3__* g_list_sort (TYPE_3__*,int ) ;
+ int g_return_val_if_fail (int,int) ;
+ int g_strdup (char const*) ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
+ int seaf_warning (char*,char const*,int ) ;
+ int sqlite3_bind_text (int *,int,char const*,int,int ) ;
+ int sqlite3_clear_bindings (int *) ;
+ int sqlite3_errmsg (int ) ;
+ int sqlite3_finalize (int *) ;
+ int sqlite3_reset (int *) ;
+ scalar_t__ sqlite3_step (int *) ;
+ int * sqlite_query_prepare (int ,char*) ;
 
 int
 seaf_repo_manager_update_folder_perms (SeafRepoManager *mgr,
@@ -65,7 +65,7 @@ seaf_repo_manager_update_folder_perms (SeafRepoManager *mgr,
                            type == FOLDER_PERM_TYPE_GROUP),
                           -1);
 
-    /* Update db. */
+
 
     pthread_mutex_lock (&mgr->priv->db_lock);
 
@@ -118,7 +118,7 @@ seaf_repo_manager_update_folder_perms (SeafRepoManager *mgr,
 
     pthread_mutex_unlock (&mgr->priv->db_lock);
 
-    /* Update in memory */
+
     GList *new, *old;
     new = folder_perm_list_copy (folder_perms);
     new = g_list_sort (new, comp_folder_perms);

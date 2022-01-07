@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct smscore_device_t {int (* sendrequest_handler ) (int /*<<< orphan*/ ,void*,size_t) ;int /*<<< orphan*/  context; } ;
+
+
+
+
+struct smscore_device_t {int (* sendrequest_handler ) (int ,void*,size_t) ;int context; } ;
 struct completion {int dummy; } ;
 
-/* Variables and functions */
- int EINVAL ; 
- int ETIME ; 
- int /*<<< orphan*/  SMS_PROTOCOL_MAX_RAOUNDTRIP_MS ; 
- int /*<<< orphan*/  init_completion (struct completion*) ; 
- int /*<<< orphan*/  msecs_to_jiffies (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pr_info (char*,int) ; 
- int stub1 (int /*<<< orphan*/ ,void*,size_t) ; 
- scalar_t__ wait_for_completion_timeout (struct completion*,int /*<<< orphan*/ ) ; 
+
+ int EINVAL ;
+ int ETIME ;
+ int SMS_PROTOCOL_MAX_RAOUNDTRIP_MS ;
+ int init_completion (struct completion*) ;
+ int msecs_to_jiffies (int ) ;
+ int pr_info (char*,int) ;
+ int stub1 (int ,void*,size_t) ;
+ scalar_t__ wait_for_completion_timeout (struct completion*,int ) ;
 
 __attribute__((used)) static int smscore_sendrequest_and_wait(struct smscore_device_t *coredev,
-		void *buffer, size_t size, struct completion *completion) {
-	int rc;
+  void *buffer, size_t size, struct completion *completion) {
+ int rc;
 
-	if (!completion)
-		return -EINVAL;
-	init_completion(completion);
+ if (!completion)
+  return -EINVAL;
+ init_completion(completion);
 
-	rc = coredev->sendrequest_handler(coredev->context, buffer, size);
-	if (rc < 0) {
-		pr_info("sendrequest returned error %d\n", rc);
-		return rc;
-	}
+ rc = coredev->sendrequest_handler(coredev->context, buffer, size);
+ if (rc < 0) {
+  pr_info("sendrequest returned error %d\n", rc);
+  return rc;
+ }
 
-	return wait_for_completion_timeout(completion,
-			msecs_to_jiffies(SMS_PROTOCOL_MAX_RAOUNDTRIP_MS)) ?
-			0 : -ETIME;
+ return wait_for_completion_timeout(completion,
+   msecs_to_jiffies(SMS_PROTOCOL_MAX_RAOUNDTRIP_MS)) ?
+   0 : -ETIME;
 }

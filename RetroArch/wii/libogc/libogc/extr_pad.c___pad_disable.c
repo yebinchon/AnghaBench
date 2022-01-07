@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PAD_ENABLEDMASK (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SI_DisablePolling (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SYS_SetWirelessID (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  _CPU_ISR_Disable (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  _CPU_ISR_Restore (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  __pad_checkingbits ; 
- int /*<<< orphan*/  __pad_enabledbits ; 
- int /*<<< orphan*/  __pad_pendingbits ; 
- int /*<<< orphan*/  __pad_waitingbits ; 
+
+
+
+typedef int u32 ;
+
+
+ int PAD_ENABLEDMASK (int ) ;
+ int SI_DisablePolling (int ) ;
+ int SYS_SetWirelessID (int ,int ) ;
+ int _CPU_ISR_Disable (int ) ;
+ int _CPU_ISR_Restore (int ) ;
+ int __pad_checkingbits ;
+ int __pad_enabledbits ;
+ int __pad_pendingbits ;
+ int __pad_waitingbits ;
 
 __attribute__((used)) static void __pad_disable(u32 chan)
 {
-	u32 level,mask;
-	_CPU_ISR_Disable(level);
-	mask = PAD_ENABLEDMASK(chan);
-	SI_DisablePolling(mask);
-	__pad_enabledbits &= ~mask;
-	__pad_waitingbits &= ~mask;
-	__pad_pendingbits &= ~mask;
-	__pad_checkingbits &= ~mask;
-	SYS_SetWirelessID(chan,0);
-	_CPU_ISR_Restore(level);
+ u32 level,mask;
+ _CPU_ISR_Disable(level);
+ mask = PAD_ENABLEDMASK(chan);
+ SI_DisablePolling(mask);
+ __pad_enabledbits &= ~mask;
+ __pad_waitingbits &= ~mask;
+ __pad_pendingbits &= ~mask;
+ __pad_checkingbits &= ~mask;
+ SYS_SetWirelessID(chan,0);
+ _CPU_ISR_Restore(level);
 }

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_stringbuf_t ;
-typedef  int /*<<< orphan*/  svn_stream_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  void* svn_boolean_t ;
-struct symlink_baton_t {void* at_eof; int /*<<< orphan*/  local_abspath; } ;
-typedef  int apr_size_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- void* FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- void* TRUE ; 
- int /*<<< orphan*/  svn_stringbuf_from_stream (int /*<<< orphan*/ **,int /*<<< orphan*/ *,int const,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_subst_read_specialfile (int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int svn_stringbuf_t ;
+typedef int svn_stream_t ;
+typedef int svn_error_t ;
+typedef void* svn_boolean_t ;
+struct symlink_baton_t {void* at_eof; int local_abspath; } ;
+typedef int apr_size_t ;
+typedef int apr_pool_t ;
+
+
+ void* FALSE ;
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ void* TRUE ;
+ int svn_stringbuf_from_stream (int **,int *,int const,int *) ;
+ int svn_subst_read_specialfile (int **,int ,int *,int *) ;
 
 __attribute__((used)) static svn_error_t *
 readline_symlink(void *baton, svn_stringbuf_t **line, const char **eol_str,
@@ -36,16 +36,16 @@ readline_symlink(void *baton, svn_stringbuf_t **line, const char **eol_str,
   if (eof)
     *eof = TRUE;
   if (eol_str)
-    *eol_str = NULL;
+    *eol_str = ((void*)0);
 
   if (sb->at_eof)
     {
-      *line = NULL;
+      *line = ((void*)0);
     }
   else
     {
       svn_stream_t *stream;
-      const apr_size_t len_hint = 64; /* arbitrary */
+      const apr_size_t len_hint = 64;
 
       SVN_ERR(svn_subst_read_specialfile(&stream, sb->local_abspath,
                                          scratch_pool, scratch_pool));

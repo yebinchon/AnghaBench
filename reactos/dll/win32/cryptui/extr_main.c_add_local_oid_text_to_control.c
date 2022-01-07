@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct OIDToString {int /*<<< orphan*/  id; } ;
-typedef  int /*<<< orphan*/  parFmt ;
-typedef  char WCHAR ;
-struct TYPE_3__ {int cbSize; int dxStartIndent; int /*<<< orphan*/  dwMask; } ;
-typedef  TYPE_1__ PARAFORMAT2 ;
-typedef  int /*<<< orphan*/  LPWSTR ;
-typedef  char* LPCSTR ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- char* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int LoadStringW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int MAX_STRING_LEN ; 
- int MY_INDENT ; 
- int /*<<< orphan*/  PFM_STARTINDENT ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  add_text_with_paraformat_to_control (int /*<<< orphan*/ ,char*,int,TYPE_1__*) ; 
- int /*<<< orphan*/  add_unformatted_text_to_control (int /*<<< orphan*/ ,char*,int) ; 
- struct OIDToString* findSupportedOID (char*) ; 
- int /*<<< orphan*/  hInstance ; 
- int /*<<< orphan*/  lstrcpynW (char*,char*,int) ; 
- int lstrlenW (char*) ; 
- int strlen (char*) ; 
- char* wmemchr (char*,char,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct OIDToString {int id; } ;
+typedef int parFmt ;
+typedef char WCHAR ;
+struct TYPE_3__ {int cbSize; int dxStartIndent; int dwMask; } ;
+typedef TYPE_1__ PARAFORMAT2 ;
+typedef int LPWSTR ;
+typedef char* LPCSTR ;
+typedef int HWND ;
+typedef scalar_t__ BOOL ;
+
+
+ scalar_t__ FALSE ;
+ int GetProcessHeap () ;
+ char* HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,char*) ;
+ int LoadStringW (int ,int ,int ,int ) ;
+ int MAX_STRING_LEN ;
+ int MY_INDENT ;
+ int PFM_STARTINDENT ;
+ scalar_t__ TRUE ;
+ int add_text_with_paraformat_to_control (int ,char*,int,TYPE_1__*) ;
+ int add_unformatted_text_to_control (int ,char*,int) ;
+ struct OIDToString* findSupportedOID (char*) ;
+ int hInstance ;
+ int lstrcpynW (char*,char*,int) ;
+ int lstrlenW (char*) ;
+ int strlen (char*) ;
+ char* wmemchr (char*,char,int) ;
 
 __attribute__((used)) static void add_local_oid_text_to_control(HWND text, LPCSTR oid)
 {
@@ -63,13 +63,13 @@ __attribute__((used)) static void add_local_oid_text_to_control(HWND text, LPCST
                 WCHAR copy[MAX_STRING_LEN];
 
                 multiline = TRUE;
-                /* The source string contains a newline, which the richedit
-                 * control won't find since it's interpreted as a paragraph
-                 * break.  Therefore copy up to the newline.  lstrcpynW always
-                 * NULL-terminates, so pass one more than the length of the
-                 * source line so the copy includes the entire line and the
-                 * NULL-terminator.
-                 */
+
+
+
+
+
+
+
                 lstrcpynW(copy, ptr, linebreak - ptr + 1);
                 add_text_with_paraformat_to_control(text, copy,
                  linebreak - ptr, &parFmt);
@@ -78,7 +78,7 @@ __attribute__((used)) static void add_local_oid_text_to_control(HWND text, LPCST
             }
             else if (multiline && *ptr)
             {
-                /* Add the last line */
+
                 add_text_with_paraformat_to_control(text, ptr,
                  len - (ptr - str), &parFmt);
                 add_unformatted_text_to_control(text, &nl, 1);

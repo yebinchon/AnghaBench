@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  BIO ;
 
-/* Variables and functions */
- int BIO_FLAGS_RWS ; 
- int BIO_FLAGS_SHOULD_RETRY ; 
- int /*<<< orphan*/  BIO_clear_flags (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * BIO_next (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BIO_set_flags (int /*<<< orphan*/ *,int) ; 
- int BIO_test_flags (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int BIO ;
+
+
+ int BIO_FLAGS_RWS ;
+ int BIO_FLAGS_SHOULD_RETRY ;
+ int BIO_clear_flags (int *,int) ;
+ int * BIO_next (int *) ;
+ int BIO_set_flags (int *,int) ;
+ int BIO_test_flags (int *,int) ;
 
 __attribute__((used)) static void copy_flags(BIO *bio)
 {

@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct timespec {int dummy; } ;
-typedef  int /*<<< orphan*/  s64 ;
-struct TYPE_2__ {struct timespec xtime; int /*<<< orphan*/  lock; } ;
+typedef int s64 ;
+struct TYPE_2__ {struct timespec xtime; int lock; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  WARN_ON (int /*<<< orphan*/ ) ; 
- scalar_t__ arch_gettimeoffset () ; 
- unsigned long read_seqbegin (int /*<<< orphan*/ *) ; 
- scalar_t__ read_seqretry (int /*<<< orphan*/ *,unsigned long) ; 
- TYPE_1__ timekeeper ; 
- int /*<<< orphan*/  timekeeping_get_ns () ; 
- int /*<<< orphan*/  timekeeping_suspended ; 
- int /*<<< orphan*/  timespec_add_ns (struct timespec*,int /*<<< orphan*/ ) ; 
+
+ int WARN_ON (int ) ;
+ scalar_t__ arch_gettimeoffset () ;
+ unsigned long read_seqbegin (int *) ;
+ scalar_t__ read_seqretry (int *,unsigned long) ;
+ TYPE_1__ timekeeper ;
+ int timekeeping_get_ns () ;
+ int timekeeping_suspended ;
+ int timespec_add_ns (struct timespec*,int ) ;
 
 void getnstimeofday(struct timespec *ts)
 {
-	unsigned long seq;
-	s64 nsecs;
+ unsigned long seq;
+ s64 nsecs;
 
-	WARN_ON(timekeeping_suspended);
+ WARN_ON(timekeeping_suspended);
 
-	do {
-		seq = read_seqbegin(&timekeeper.lock);
+ do {
+  seq = read_seqbegin(&timekeeper.lock);
 
-		*ts = timekeeper.xtime;
-		nsecs = timekeeping_get_ns();
+  *ts = timekeeper.xtime;
+  nsecs = timekeeping_get_ns();
 
-		/* If arch requires, add in gettimeoffset() */
-		nsecs += arch_gettimeoffset();
 
-	} while (read_seqretry(&timekeeper.lock, seq));
+  nsecs += arch_gettimeoffset();
 
-	timespec_add_ns(ts, nsecs);
+ } while (read_seqretry(&timekeeper.lock, seq));
+
+ timespec_add_ns(ts, nsecs);
 }

@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct dirent {int /*<<< orphan*/ * d_name; } ;
 
-/* Variables and functions */
- char tolower_simple (int /*<<< orphan*/ ) ; 
+
+
+
+struct dirent {int * d_name; } ;
+
+
+ char tolower_simple (int ) ;
 
 __attribute__((used)) static int dirent_seek_char(struct dirent **namelist, int len, int sel, char c)
 {
-	int i;
+ int i;
 
-	sel++;
-	for (i = sel + 1; ; i++) {
-		if (i >= len)
-			i = 1;
-		if (i == sel)
-			break;
+ sel++;
+ for (i = sel + 1; ; i++) {
+  if (i >= len)
+   i = 1;
+  if (i == sel)
+   break;
 
-		if (tolower_simple(namelist[i]->d_name[0]) == c)
-			break;
-	}
+  if (tolower_simple(namelist[i]->d_name[0]) == c)
+   break;
+ }
 
-	return i - 1;
+ return i - 1;
 }

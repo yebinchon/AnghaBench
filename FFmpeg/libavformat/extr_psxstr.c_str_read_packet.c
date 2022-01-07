@@ -1,65 +1,65 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_20__   TYPE_6__ ;
-typedef  struct TYPE_19__   TYPE_5__ ;
-typedef  struct TYPE_18__   TYPE_4__ ;
-typedef  struct TYPE_17__   TYPE_3__ ;
-typedef  struct TYPE_16__   TYPE_2__ ;
-typedef  struct TYPE_15__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_20__ {TYPE_3__* priv_data; int /*<<< orphan*/ * pb; } ;
-struct TYPE_19__ {int size; int pos; int duration; int /*<<< orphan*/  stream_index; int /*<<< orphan*/ * data; int /*<<< orphan*/ * buf; } ;
-struct TYPE_18__ {int /*<<< orphan*/  start_time; TYPE_1__* codecpar; int /*<<< orphan*/  index; } ;
+
+
+typedef struct TYPE_20__ TYPE_6__ ;
+typedef struct TYPE_19__ TYPE_5__ ;
+typedef struct TYPE_18__ TYPE_4__ ;
+typedef struct TYPE_17__ TYPE_3__ ;
+typedef struct TYPE_16__ TYPE_2__ ;
+typedef struct TYPE_15__ TYPE_1__ ;
+
+
+struct TYPE_20__ {TYPE_3__* priv_data; int * pb; } ;
+struct TYPE_19__ {int size; int pos; int duration; int stream_index; int * data; int * buf; } ;
+struct TYPE_18__ {int start_time; TYPE_1__* codecpar; int index; } ;
 struct TYPE_17__ {TYPE_2__* channels; } ;
-struct TYPE_16__ {int /*<<< orphan*/  audio_stream_index; int /*<<< orphan*/  video_stream_index; TYPE_5__ tmp_pkt; } ;
-struct TYPE_15__ {int channels; int sample_rate; int block_align; int /*<<< orphan*/  channel_layout; int /*<<< orphan*/  codec_tag; int /*<<< orphan*/  codec_id; int /*<<< orphan*/  codec_type; void* height; void* width; } ;
-typedef  TYPE_3__ StrDemuxContext ;
-typedef  TYPE_4__ AVStream ;
-typedef  TYPE_5__ AVPacket ;
-typedef  int /*<<< orphan*/  AVIOContext ;
-typedef  TYPE_6__ AVFormatContext ;
+struct TYPE_16__ {int audio_stream_index; int video_stream_index; TYPE_5__ tmp_pkt; } ;
+struct TYPE_15__ {int channels; int sample_rate; int block_align; int channel_layout; int codec_tag; int codec_id; int codec_type; void* height; void* width; } ;
+typedef TYPE_3__ StrDemuxContext ;
+typedef TYPE_4__ AVStream ;
+typedef TYPE_5__ AVPacket ;
+typedef int AVIOContext ;
+typedef TYPE_6__ AVFormatContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AVMEDIA_TYPE_AUDIO ; 
- int /*<<< orphan*/  AVMEDIA_TYPE_VIDEO ; 
- int /*<<< orphan*/  AV_CH_LAYOUT_MONO ; 
- int /*<<< orphan*/  AV_CH_LAYOUT_STEREO ; 
- int /*<<< orphan*/  AV_CODEC_ID_ADPCM_XA ; 
- int /*<<< orphan*/  AV_CODEC_ID_MDEC ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_LOG_WARNING ; 
- void* AV_RL16 (unsigned char*) ; 
- int AV_RL32 (unsigned char*) ; 
-#define  CDXA_TYPE_AUDIO 130 
-#define  CDXA_TYPE_DATA 129 
- unsigned char CDXA_TYPE_MASK ; 
-#define  CDXA_TYPE_VIDEO 128 
- int /*<<< orphan*/  EIO ; 
- int /*<<< orphan*/  ENOMEM ; 
- int RAW_CD_SECTOR_SIZE ; 
- int VIDEO_DATA_CHUNK_SIZE ; 
- int /*<<< orphan*/  VIDEO_DATA_HEADER_SIZE ; 
- int /*<<< orphan*/  av_log (TYPE_6__*,int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  av_new_packet (TYPE_5__*,int) ; 
- int /*<<< orphan*/  av_packet_unref (TYPE_5__*) ; 
- TYPE_4__* avformat_new_stream (TYPE_6__*,int /*<<< orphan*/ *) ; 
- scalar_t__ avio_feof (int /*<<< orphan*/ *) ; 
- int avio_read (int /*<<< orphan*/ *,unsigned char*,int) ; 
- int avio_tell (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  avpriv_set_pts_info (TYPE_4__*,int,int,int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,unsigned char*,int) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_INVALIDDATA ;
+ int AVMEDIA_TYPE_AUDIO ;
+ int AVMEDIA_TYPE_VIDEO ;
+ int AV_CH_LAYOUT_MONO ;
+ int AV_CH_LAYOUT_STEREO ;
+ int AV_CODEC_ID_ADPCM_XA ;
+ int AV_CODEC_ID_MDEC ;
+ int AV_LOG_ERROR ;
+ int AV_LOG_WARNING ;
+ void* AV_RL16 (unsigned char*) ;
+ int AV_RL32 (unsigned char*) ;
+
+
+ unsigned char CDXA_TYPE_MASK ;
+
+ int EIO ;
+ int ENOMEM ;
+ int RAW_CD_SECTOR_SIZE ;
+ int VIDEO_DATA_CHUNK_SIZE ;
+ int VIDEO_DATA_HEADER_SIZE ;
+ int av_log (TYPE_6__*,int ,char*,...) ;
+ int av_new_packet (TYPE_5__*,int) ;
+ int av_packet_unref (TYPE_5__*) ;
+ TYPE_4__* avformat_new_stream (TYPE_6__*,int *) ;
+ scalar_t__ avio_feof (int *) ;
+ int avio_read (int *,unsigned char*,int) ;
+ int avio_tell (int *) ;
+ int avpriv_set_pts_info (TYPE_4__*,int,int,int) ;
+ int memcpy (int *,unsigned char*,int) ;
+ int memset (int *,int ,int) ;
 
 __attribute__((used)) static int str_read_packet(AVFormatContext *s,
                            AVPacket *ret_pkt)
@@ -82,15 +82,15 @@ __attribute__((used)) static int str_read_packet(AVFormatContext *s,
 
         switch (sector[0x12] & CDXA_TYPE_MASK) {
 
-        case CDXA_TYPE_DATA:
-        case CDXA_TYPE_VIDEO:
+        case 129:
+        case 128:
             {
 
                 int current_sector = AV_RL16(&sector[0x1C]);
-                int sector_count   = AV_RL16(&sector[0x1E]);
+                int sector_count = AV_RL16(&sector[0x1E]);
                 int frame_size = AV_RL32(&sector[0x24]);
 
-                if(!(   frame_size>=0
+                if(!( frame_size>=0
                      && current_sector < sector_count
                      && sector_count*VIDEO_DATA_CHUNK_SIZE >=frame_size)){
                     av_log(s, AV_LOG_ERROR, "Invalid parameters %d %d %d\n", current_sector, sector_count, frame_size);
@@ -98,8 +98,8 @@ __attribute__((used)) static int str_read_packet(AVFormatContext *s,
                 }
 
                 if(str->channels[channel].video_stream_index < 0){
-                    /* allocate a new AVStream */
-                    st = avformat_new_stream(s, NULL);
+
+                    st = avformat_new_stream(s, ((void*)0));
                     if (!st)
                         return AVERROR(ENOMEM);
                     avpriv_set_pts_info(st, 64, 1, 15);
@@ -107,13 +107,13 @@ __attribute__((used)) static int str_read_packet(AVFormatContext *s,
                     str->channels[channel].video_stream_index = st->index;
 
                     st->codecpar->codec_type = AVMEDIA_TYPE_VIDEO;
-                    st->codecpar->codec_id   = AV_CODEC_ID_MDEC;
-                    st->codecpar->codec_tag  = 0;  /* no fourcc */
-                    st->codecpar->width      = AV_RL16(&sector[0x28]);
-                    st->codecpar->height     = AV_RL16(&sector[0x2A]);
+                    st->codecpar->codec_id = AV_CODEC_ID_MDEC;
+                    st->codecpar->codec_tag = 0;
+                    st->codecpar->width = AV_RL16(&sector[0x28]);
+                    st->codecpar->height = AV_RL16(&sector[0x2A]);
                 }
 
-                /* if this is the first sector of the frame, allocate a pkt */
+
                 pkt = &str->channels[channel].tmp_pkt;
 
                 if(pkt->size != sector_count*VIDEO_DATA_CHUNK_SIZE){
@@ -136,37 +136,37 @@ __attribute__((used)) static int str_read_packet(AVFormatContext *s,
                 if (current_sector == sector_count-1) {
                     pkt->size= frame_size;
                     *ret_pkt = *pkt;
-                    pkt->data= NULL;
+                    pkt->data= ((void*)0);
                     pkt->size= -1;
-                    pkt->buf = NULL;
+                    pkt->buf = ((void*)0);
                     return 0;
                 }
 
             }
             break;
 
-        case CDXA_TYPE_AUDIO:
+        case 130:
             if(str->channels[channel].audio_stream_index < 0){
                 int fmt = sector[0x13];
-                /* allocate a new AVStream */
-                st = avformat_new_stream(s, NULL);
+
+                st = avformat_new_stream(s, ((void*)0));
                 if (!st)
                     return AVERROR(ENOMEM);
 
                 str->channels[channel].audio_stream_index = st->index;
 
-                st->codecpar->codec_type  = AVMEDIA_TYPE_AUDIO;
-                st->codecpar->codec_id    = AV_CODEC_ID_ADPCM_XA;
-                st->codecpar->codec_tag   = 0;  /* no fourcc */
+                st->codecpar->codec_type = AVMEDIA_TYPE_AUDIO;
+                st->codecpar->codec_id = AV_CODEC_ID_ADPCM_XA;
+                st->codecpar->codec_tag = 0;
                 if (fmt & 1) {
-                    st->codecpar->channels       = 2;
+                    st->codecpar->channels = 2;
                     st->codecpar->channel_layout = AV_CH_LAYOUT_STEREO;
                 } else {
-                    st->codecpar->channels       = 1;
+                    st->codecpar->channels = 1;
                     st->codecpar->channel_layout = AV_CH_LAYOUT_MONO;
                 }
                 st->codecpar->sample_rate = (fmt&4)?18900:37800;
-            //    st->codecpar->bit_rate = 0; //FIXME;
+
                 st->codecpar->block_align = 128;
 
                 avpriv_set_pts_info(st, 64, 18 * 224 / st->codecpar->channels,
@@ -184,7 +184,7 @@ __attribute__((used)) static int str_read_packet(AVFormatContext *s,
             return 0;
         default:
             av_log(s, AV_LOG_WARNING, "Unknown sector type %02X\n", sector[0x12]);
-            /* drop the sector and move on */
+
             break;
         }
 

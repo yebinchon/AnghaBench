@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct wined3d_state {int /*<<< orphan*/ ** texture_states; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct wined3d_state {int ** texture_states; } ;
 struct wined3d_gl_info {int dummy; } ;
 struct wined3d_context {struct atifs_context_private_data* fragment_pipe_data; struct wined3d_gl_info* gl_info; } ;
 struct atifs_context_private_data {TYPE_1__* last_shader; } ;
 struct TYPE_2__ {scalar_t__* constants; } ;
-typedef  int DWORD ;
+typedef int DWORD ;
 
-/* Variables and functions */
- scalar_t__ ATIFS_CONSTANT_BUMP ; 
- int /*<<< orphan*/  ATIFS_CONST_BUMPMAT (int) ; 
- int /*<<< orphan*/  GL_EXTCALL (int /*<<< orphan*/ ) ; 
- int STATE_TEXTURESTAGE (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int WINED3D_HIGHEST_TEXTURE_STATE ; 
- size_t WINED3D_TSS_BUMPENV_MAT00 ; 
- size_t WINED3D_TSS_BUMPENV_MAT01 ; 
- size_t WINED3D_TSS_BUMPENV_MAT10 ; 
- size_t WINED3D_TSS_BUMPENV_MAT11 ; 
- int /*<<< orphan*/  checkGLcall (char*) ; 
- int /*<<< orphan*/  glSetFragmentShaderConstantATI (int /*<<< orphan*/ ,float*) ; 
+
+ scalar_t__ ATIFS_CONSTANT_BUMP ;
+ int ATIFS_CONST_BUMPMAT (int) ;
+ int GL_EXTCALL (int ) ;
+ int STATE_TEXTURESTAGE (int ,int ) ;
+ int WINED3D_HIGHEST_TEXTURE_STATE ;
+ size_t WINED3D_TSS_BUMPENV_MAT00 ;
+ size_t WINED3D_TSS_BUMPENV_MAT01 ;
+ size_t WINED3D_TSS_BUMPENV_MAT10 ;
+ size_t WINED3D_TSS_BUMPENV_MAT11 ;
+ int checkGLcall (char*) ;
+ int glSetFragmentShaderConstantATI (int ,float*) ;
 
 __attribute__((used)) static void set_bumpmat(struct wined3d_context *context, const struct wined3d_state *state, DWORD state_id)
 {
@@ -46,12 +46,12 @@ __attribute__((used)) static void set_bumpmat(struct wined3d_context *context, c
     mat[1][0] = *((float *)&state->texture_states[stage][WINED3D_TSS_BUMPENV_MAT01]);
     mat[0][1] = *((float *)&state->texture_states[stage][WINED3D_TSS_BUMPENV_MAT10]);
     mat[1][1] = *((float *)&state->texture_states[stage][WINED3D_TSS_BUMPENV_MAT11]);
-    /* GL_ATI_fragment_shader allows only constants from 0.0 to 1.0, but the bumpmat
-     * constants can be in any range. While they should stay between [-1.0 and 1.0] because
-     * Shader Model 1.x pixel shaders are clamped to that range negative values are used occasionally,
-     * for example by our d3d9 test. So to get negative values scale -1;1 to 0;1 and undo that in the
-     * shader(it is free). This might potentially reduce precision. However, if the hardware does
-     * support proper floats it shouldn't, and if it doesn't we can't get anything better anyway. */
+
+
+
+
+
+
     mat[0][0] = (mat[0][0] + 1.0f) * 0.5f;
     mat[1][0] = (mat[1][0] + 1.0f) * 0.5f;
     mat[0][1] = (mat[0][1] + 1.0f) * 0.5f;

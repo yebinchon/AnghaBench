@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  filename ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FD_CLOEXEC ; 
- int /*<<< orphan*/  F_SETFD ; 
- int O_CREAT ; 
- int O_EXCL ; 
- int O_RDWR ; 
- int O_TRUNC ; 
- int /*<<< orphan*/  assert (int) ; 
- char* cur_transaction_hash ; 
- scalar_t__ fcntl (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fd_close (int*) ; 
- int open (char*,int,int) ; 
- int snprintf (char*,int,char*,int,char*,char*) ; 
- scalar_t__ unlink (char*) ; 
- int /*<<< orphan*/  vkprintf (int,char*,...) ; 
+
+
+
+typedef int filename ;
+
+
+ int FD_CLOEXEC ;
+ int F_SETFD ;
+ int O_CREAT ;
+ int O_EXCL ;
+ int O_RDWR ;
+ int O_TRUNC ;
+ int assert (int) ;
+ char* cur_transaction_hash ;
+ scalar_t__ fcntl (int,int ,int ) ;
+ int fd_close (int*) ;
+ int open (char*,int,int) ;
+ int snprintf (char*,int,char*,int,char*,char*) ;
+ scalar_t__ unlink (char*) ;
+ int vkprintf (int,char*,...) ;
 
 __attribute__((used)) static int do_exec_create_output_file (int cmd_id, char *suffix) {
   char filename[128];

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct edgeport_port {TYPE_2__* port; } ;
-typedef  int /*<<< orphan*/  __u8 ;
+typedef int __u8 ;
 struct TYPE_4__ {int number; TYPE_1__* serial; } ;
-struct TYPE_3__ {int minor; int /*<<< orphan*/  dev; } ;
+struct TYPE_3__ {int minor; int dev; } ;
 
-/* Variables and functions */
- scalar_t__ UMPM_UART1_PORT ; 
- int send_cmd (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ UMPM_UART1_PORT ;
+ int send_cmd (int ,int,int ,int,int *,int ) ;
 
 __attribute__((used)) static int ti_do_config(struct edgeport_port *port, int feature, int on)
 {
-	int port_number = port->port->number - port->port->serial->minor;
-	on = !!on;	/* 1 or 0 not bitmask */
-	return send_cmd(port->port->serial->dev,
-			feature, (__u8)(UMPM_UART1_PORT + port_number),
-			on, NULL, 0);
+ int port_number = port->port->number - port->port->serial->minor;
+ on = !!on;
+ return send_cmd(port->port->serial->dev,
+   feature, (__u8)(UMPM_UART1_PORT + port_number),
+   on, ((void*)0), 0);
 }

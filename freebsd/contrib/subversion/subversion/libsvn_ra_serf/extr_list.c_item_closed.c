@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_9__ {char* data; } ;
-typedef  TYPE_1__ svn_string_t ;
-typedef  int /*<<< orphan*/  svn_ra_serf__xml_estate_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct TYPE_10__ {int /*<<< orphan*/ * last_author; int /*<<< orphan*/  time; int /*<<< orphan*/  created_rev; int /*<<< orphan*/  size; int /*<<< orphan*/  kind; int /*<<< orphan*/  has_props; int /*<<< orphan*/  member_0; } ;
-typedef  TYPE_2__ svn_dirent_t ;
-struct TYPE_11__ {int /*<<< orphan*/ * author; int /*<<< orphan*/  receiver_baton; int /*<<< orphan*/  (* receiver ) (char const*,TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ;TYPE_4__* author_buf; } ;
-typedef  TYPE_3__ list_context_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
-struct TYPE_12__ {int /*<<< orphan*/ * data; } ;
+typedef TYPE_1__ svn_string_t ;
+typedef int svn_ra_serf__xml_estate_t ;
+typedef int svn_error_t ;
+struct TYPE_10__ {int * last_author; int time; int created_rev; int size; int kind; int has_props; int member_0; } ;
+typedef TYPE_2__ svn_dirent_t ;
+struct TYPE_11__ {int * author; int receiver_baton; int (* receiver ) (char const*,TYPE_2__*,int ,int *) ;TYPE_4__* author_buf; } ;
+typedef TYPE_3__ list_context_t ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
+struct TYPE_12__ {int * data; } ;
 
-/* Variables and functions */
- int AUTHOR ; 
- int /*<<< orphan*/  FALSE ; 
- int ITEM ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_RA_DAV_MALFORMED_DATA ; 
- int /*<<< orphan*/  SVN_INVALID_FILESIZE ; 
- int /*<<< orphan*/  SVN_INVALID_REVNUM ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  _ (char*) ; 
- scalar_t__ strcmp (char const*,char*) ; 
- int /*<<< orphan*/  stub1 (char const*,TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- TYPE_1__* svn_base64_decode_string (TYPE_1__ const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_cstring_atoi64 (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/ * svn_error_createf (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  svn_hash__get_bool (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- char* svn_hash_gets (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  svn_node_kind_from_word (char const*) ; 
- int /*<<< orphan*/  svn_revnum_parse (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_stringbuf_set (TYPE_4__*,char*) ; 
- int /*<<< orphan*/  svn_time_from_cstring (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *) ; 
+
+ int AUTHOR ;
+ int FALSE ;
+ int ITEM ;
+ int SVN_ERR (int ) ;
+ int SVN_ERR_RA_DAV_MALFORMED_DATA ;
+ int SVN_INVALID_FILESIZE ;
+ int SVN_INVALID_REVNUM ;
+ int * SVN_NO_ERROR ;
+ int _ (char*) ;
+ scalar_t__ strcmp (char const*,char*) ;
+ int stub1 (char const*,TYPE_2__*,int ,int *) ;
+ TYPE_1__* svn_base64_decode_string (TYPE_1__ const*,int *) ;
+ int svn_cstring_atoi64 (int *,char const*) ;
+ int * svn_error_createf (int ,int *,int ,char const*) ;
+ int svn_hash__get_bool (int *,char*,int ) ;
+ char* svn_hash_gets (int *,char*) ;
+ int svn_node_kind_from_word (char const*) ;
+ int svn_revnum_parse (int *,char const*,int *) ;
+ int svn_stringbuf_set (TYPE_4__*,char*) ;
+ int svn_time_from_cstring (int *,char const*,int *) ;
 
 __attribute__((used)) static svn_error_t *
 item_closed(svn_ra_serf__xml_estate_t *xes,
@@ -60,20 +60,20 @@ item_closed(svn_ra_serf__xml_estate_t *xes,
 
   if (leaving_state == AUTHOR)
     {
-      /* For compatibility with liveprops, current servers will not use
-       * base64-encoding for "binary" user names bu simply drop the
-       * offending control chars.
-       *
-       * We might want to switch to revprop-style encoding, though,
-       * and this is the code to do that. */
+
+
+
+
+
+
       const char *encoding = svn_hash_gets(attrs, "encoding");
       if (encoding)
         {
-          /* Check for a known encoding type.  This is easy -- there's
-             only one.  */
+
+
           if (strcmp(encoding, "base64") != 0)
             {
-              return svn_error_createf(SVN_ERR_RA_DAV_MALFORMED_DATA, NULL,
+              return svn_error_createf(SVN_ERR_RA_DAV_MALFORMED_DATA, ((void*)0),
                                        _("Unsupported encoding '%s'"),
                                        encoding);
             }
@@ -81,7 +81,7 @@ item_closed(svn_ra_serf__xml_estate_t *xes,
           cdata = svn_base64_decode_string(cdata, scratch_pool);
         }
 
-      /* Remember until the next ITEM closing tag. */
+
       svn_stringbuf_set(list_ctx->author_buf, cdata->data);
       list_ctx->author = list_ctx->author_buf->data;
     }
@@ -98,7 +98,7 @@ item_closed(svn_ra_serf__xml_estate_t *xes,
       crev = svn_hash_gets(attrs, "created-rev");
       date = svn_hash_gets(attrs, "date");
 
-      /* Convert data. */
+
       dirent.kind = svn_node_kind_from_word(kind_word);
 
       if (size)
@@ -107,7 +107,7 @@ item_closed(svn_ra_serf__xml_estate_t *xes,
         dirent.size = SVN_INVALID_FILESIZE;
 
       if (crev)
-        SVN_ERR(svn_revnum_parse(&dirent.created_rev, crev, NULL));
+        SVN_ERR(svn_revnum_parse(&dirent.created_rev, crev, ((void*)0)));
       else
         dirent.created_rev = SVN_INVALID_REVNUM;
 
@@ -117,12 +117,12 @@ item_closed(svn_ra_serf__xml_estate_t *xes,
       if (list_ctx->author)
         dirent.last_author = list_ctx->author;
 
-      /* Invoke RECEIVER */
+
       SVN_ERR(list_ctx->receiver(dirent_path, &dirent,
                                  list_ctx->receiver_baton, scratch_pool));
 
-      /* Reset buffered info. */
-      list_ctx->author = NULL;
+
+      list_ctx->author = ((void*)0);
     }
 
   return SVN_NO_ERROR;

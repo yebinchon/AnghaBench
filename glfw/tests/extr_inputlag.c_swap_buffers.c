@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  GLint ;
-typedef  int /*<<< orphan*/  GLFWwindow ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GL_COLOR_BUFFER_BIT ; 
- int /*<<< orphan*/  GL_POINTS ; 
- int /*<<< orphan*/  GL_QUERY_RESULT ; 
- int /*<<< orphan*/  GL_RGBA ; 
- int /*<<< orphan*/  GL_SAMPLES_PASSED ; 
- int /*<<< orphan*/  GL_UNSIGNED_BYTE ; 
- int /*<<< orphan*/  glBegin (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glBeginQuery (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glClear (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glEnd () ; 
- int /*<<< orphan*/  glEndQuery (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glFinish () ; 
- int /*<<< orphan*/  glGenQueries (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  glGetQueryObjectiv (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  glReadPixels (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned char*) ; 
- int /*<<< orphan*/  glVertex2f (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glfwSwapBuffers (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  occlusion_query ; 
- scalar_t__ swap_clear ; 
- scalar_t__ swap_finish ; 
- scalar_t__ swap_occlusion_query ; 
- scalar_t__ swap_read_pixels ; 
+
+
+
+typedef int GLint ;
+typedef int GLFWwindow ;
+
+
+ int GL_COLOR_BUFFER_BIT ;
+ int GL_POINTS ;
+ int GL_QUERY_RESULT ;
+ int GL_RGBA ;
+ int GL_SAMPLES_PASSED ;
+ int GL_UNSIGNED_BYTE ;
+ int glBegin (int ) ;
+ int glBeginQuery (int ,int ) ;
+ int glClear (int ) ;
+ int glEnd () ;
+ int glEndQuery (int ) ;
+ int glFinish () ;
+ int glGenQueries (int,int *) ;
+ int glGetQueryObjectiv (int ,int ,int *) ;
+ int glReadPixels (int ,int ,int,int,int ,int ,unsigned char*) ;
+ int glVertex2f (int ,int ) ;
+ int glfwSwapBuffers (int *) ;
+ int occlusion_query ;
+ scalar_t__ swap_clear ;
+ scalar_t__ swap_finish ;
+ scalar_t__ swap_occlusion_query ;
+ scalar_t__ swap_read_pixels ;
 
 void swap_buffers(GLFWwindow* window)
 {

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int /*<<< orphan*/  hxxx_iterator_ctx_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int hxxx_annexb_iterate_next (int /*<<< orphan*/ *,int const**,size_t*) ; 
- int hxxx_iterate_next (int /*<<< orphan*/ *,int const**,size_t*) ; 
- int /*<<< orphan*/  hxxx_iterator_init (int /*<<< orphan*/ *,int const*,size_t,int) ; 
- scalar_t__ memcmp (int const*,int const*,size_t) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
 
-__attribute__((used)) static void test_iterators( const uint8_t *p_ab, size_t i_ab, /* AnnexB */
-                            const uint8_t **pp_prefix, size_t *pi_prefix /* Prefixed */ )
+
+
+typedef int uint8_t ;
+typedef int hxxx_iterator_ctx_t ;
+
+
+ int assert (int) ;
+ int hxxx_annexb_iterate_next (int *,int const**,size_t*) ;
+ int hxxx_iterate_next (int *,int const**,size_t*) ;
+ int hxxx_iterator_init (int *,int const*,size_t,int) ;
+ scalar_t__ memcmp (int const*,int const*,size_t) ;
+ int printf (char*,...) ;
+
+__attribute__((used)) static void test_iterators( const uint8_t *p_ab, size_t i_ab,
+                            const uint8_t **pp_prefix, size_t *pi_prefix )
 {
     printf("INPUT SET    : ");
     for(size_t j=0; j<i_ab; j++)
@@ -45,15 +45,15 @@ __attribute__((used)) static void test_iterators( const uint8_t *p_ab, size_t i_
         const uint8_t *p_start_ab; size_t i_size_ab;
         const uint8_t *p_start_prefix; size_t i_size_prefix;
 
-        bool b1 = true;
-        bool b2 = true;
+        bool b1 = 1;
+        bool b2 = 1;
 
         int i_nal = 0;
         while(b1 && b2)
         {
-            /* hxxx_*_iterate_next can potentially not set these pointers. */
-            p_start_ab = NULL;
-            p_start_prefix = NULL;
+
+            p_start_ab = ((void*)0);
+            p_start_prefix = ((void*)0);
 
             b1 = hxxx_annexb_iterate_next( &it_ab, &p_start_ab, &i_size_ab );
             b2 = hxxx_iterate_next( &it_prefix, &p_start_prefix, &i_size_prefix );

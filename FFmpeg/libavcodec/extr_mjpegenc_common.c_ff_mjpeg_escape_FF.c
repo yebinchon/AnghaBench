@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint32_t ;
+
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
 struct TYPE_7__ {int* buf; } ;
-typedef  TYPE_1__ PutBitContext ;
+typedef TYPE_1__ PutBitContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  av_assert1 (int) ; 
- int /*<<< orphan*/  flush_put_bits (TYPE_1__*) ; 
- int /*<<< orphan*/  put_bits (TYPE_1__*,int,int) ; 
- int put_bits_count (TYPE_1__*) ; 
- int /*<<< orphan*/  skip_put_bytes (TYPE_1__*,int) ; 
+
+ int av_assert1 (int) ;
+ int flush_put_bits (TYPE_1__*) ;
+ int put_bits (TYPE_1__*,int,int) ;
+ int put_bits_count (TYPE_1__*) ;
+ int skip_put_bytes (TYPE_1__*,int) ;
 
 void ff_mjpeg_escape_FF(PutBitContext *pb, int start)
 {

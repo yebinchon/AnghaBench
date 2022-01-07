@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char gchar ;
 
-/* Variables and functions */
- size_t fARCH_aarch64 ; 
- size_t fARCH_arm ; 
- size_t fARCH_i386 ; 
- size_t fARCH_x86_64 ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char const*) ; 
- scalar_t__ g_ascii_strncasecmp (char*,char*,int) ; 
- char* g_strstrip (char*) ; 
- int /*<<< orphan*/  replacestr (char*,char*,char*) ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ verbose ; 
+
+
+
+typedef char gchar ;
+
+
+ size_t fARCH_aarch64 ;
+ size_t fARCH_arm ;
+ size_t fARCH_i386 ;
+ size_t fARCH_x86_64 ;
+ int fprintf (int ,char*,char const*) ;
+ scalar_t__ g_ascii_strncasecmp (char*,char*,int) ;
+ char* g_strstrip (char*) ;
+ int replacestr (char*,char*,char*) ;
+ int stderr ;
+ scalar_t__ verbose ;
 
 void extract_arch_from_text(gchar *archname, const gchar* sourcename, bool* archs) {
     if (archname) {

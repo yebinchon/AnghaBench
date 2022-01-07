@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct request {int /*<<< orphan*/  bio; int /*<<< orphan*/  q; int /*<<< orphan*/  nr_phys_segments; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  __blk_recalc_rq_segments (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct request {int bio; int q; int nr_phys_segments; } ;
+
+
+ int __blk_recalc_rq_segments (int ,int ) ;
 
 void blk_recalc_rq_segments(struct request *rq)
 {
-	rq->nr_phys_segments = __blk_recalc_rq_segments(rq->q, rq->bio);
+ rq->nr_phys_segments = __blk_recalc_rq_segments(rq->q, rq->bio);
 }

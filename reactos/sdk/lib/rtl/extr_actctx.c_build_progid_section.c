@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct strsection_header {int size; unsigned int count; unsigned int global_offset; unsigned int global_len; unsigned int index_offset; int /*<<< orphan*/  magic; } ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct strsection_header {int size; unsigned int count; unsigned int global_offset; unsigned int global_len; unsigned int index_offset; int magic; } ;
 struct string_index {int dummy; } ;
-struct dll_redirect {int /*<<< orphan*/  entities; } ;
-struct assembly {unsigned int num_dlls; struct dll_redirect* dlls; int /*<<< orphan*/  entities; } ;
-typedef  unsigned int ULONG ;
+struct dll_redirect {int entities; } ;
+struct assembly {unsigned int num_dlls; struct dll_redirect* dlls; int entities; } ;
+typedef unsigned int ULONG ;
 struct TYPE_4__ {unsigned int num_assemblies; struct assembly* assemblies; } ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
-typedef  int /*<<< orphan*/  GUID ;
-typedef  int /*<<< orphan*/  BYTE ;
-typedef  TYPE_1__ ACTIVATION_CONTEXT ;
+typedef int NTSTATUS ;
+typedef int GUID ;
+typedef int BYTE ;
+typedef TYPE_1__ ACTIVATION_CONTEXT ;
 
-/* Variables and functions */
- struct strsection_header* RtlAllocateHeap (int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned int) ; 
- int /*<<< orphan*/  RtlGetProcessHeap () ; 
- int /*<<< orphan*/  STATUS_NO_MEMORY ; 
- int /*<<< orphan*/  STATUS_SUCCESS ; 
- int /*<<< orphan*/  STRSECTION_MAGIC ; 
- int /*<<< orphan*/  add_progid_record (TYPE_1__*,struct strsection_header*,int /*<<< orphan*/ *,struct string_index**,unsigned int*,unsigned int*,unsigned int) ; 
- int /*<<< orphan*/  get_progid_datalen (int /*<<< orphan*/ *,unsigned int*,unsigned int*) ; 
- int /*<<< orphan*/  memset (struct strsection_header*,int /*<<< orphan*/ ,int) ; 
+
+ struct strsection_header* RtlAllocateHeap (int ,int ,unsigned int) ;
+ int RtlGetProcessHeap () ;
+ int STATUS_NO_MEMORY ;
+ int STATUS_SUCCESS ;
+ int STRSECTION_MAGIC ;
+ int add_progid_record (TYPE_1__*,struct strsection_header*,int *,struct string_index**,unsigned int*,unsigned int*,unsigned int) ;
+ int get_progid_datalen (int *,unsigned int*,unsigned int*) ;
+ int memset (struct strsection_header*,int ,int) ;
 
 __attribute__((used)) static NTSTATUS build_progid_section(ACTIVATION_CONTEXT* actctx, struct strsection_header **section)
 {
@@ -39,7 +39,7 @@ __attribute__((used)) static NTSTATUS build_progid_section(ACTIVATION_CONTEXT* a
     ULONG data_offset, global_offset;
     struct string_index *index;
 
-    /* compute section length */
+
     for (i = 0; i < actctx->num_assemblies; i++)
     {
         struct assembly *assembly = &actctx->assemblies[i];
@@ -59,7 +59,7 @@ __attribute__((used)) static NTSTATUS build_progid_section(ACTIVATION_CONTEXT* a
 
     memset(header, 0, sizeof(*header));
     header->magic = STRSECTION_MAGIC;
-    header->size  = sizeof(*header);
+    header->size = sizeof(*header);
     header->count = count;
     header->global_offset = header->size;
     header->global_len = count*sizeof(GUID);

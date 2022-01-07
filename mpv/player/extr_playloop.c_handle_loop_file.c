@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct MPOpts {scalar_t__ loop_file; } ;
-struct MPContext {scalar_t__ stop_play; int /*<<< orphan*/  play_dir; scalar_t__ ab_loop_clip; struct MPOpts* opts; } ;
-typedef  enum seek_precision { ____Placeholder_seek_precision } seek_precision ;
+struct MPContext {scalar_t__ stop_play; int play_dir; scalar_t__ ab_loop_clip; struct MPOpts* opts; } ;
+typedef enum seek_precision { ____Placeholder_seek_precision } seek_precision ;
 
-/* Variables and functions */
- scalar_t__ AT_END_OF_FILE ; 
- scalar_t__ KEEP_PLAYING ; 
- int /*<<< orphan*/  MPSEEK_ABSOLUTE ; 
- int MPSEEK_DEFAULT ; 
- int MPSEEK_EXACT ; 
- int /*<<< orphan*/  MPSEEK_FLAG_NOFLUSH ; 
- double MP_NOPTS_VALUE ; 
- int /*<<< orphan*/  OSD_FFW ; 
- scalar_t__ get_ab_loop_times (struct MPContext*,double*) ; 
- double get_start_time (struct MPContext*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mark_seek (struct MPContext*) ; 
- int /*<<< orphan*/  queue_seek (struct MPContext*,int /*<<< orphan*/ ,double,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_osd_function (struct MPContext*,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ AT_END_OF_FILE ;
+ scalar_t__ KEEP_PLAYING ;
+ int MPSEEK_ABSOLUTE ;
+ int MPSEEK_DEFAULT ;
+ int MPSEEK_EXACT ;
+ int MPSEEK_FLAG_NOFLUSH ;
+ double MP_NOPTS_VALUE ;
+ int OSD_FFW ;
+ scalar_t__ get_ab_loop_times (struct MPContext*,double*) ;
+ double get_start_time (struct MPContext*,int ) ;
+ int mark_seek (struct MPContext*) ;
+ int queue_seek (struct MPContext*,int ,double,int,int ) ;
+ int set_osd_function (struct MPContext*,int ) ;
 
 __attribute__((used)) static void handle_loop_file(struct MPContext *mpctx)
 {
@@ -54,8 +54,8 @@ __attribute__((used)) static void handle_loop_file(struct MPContext *mpctx)
         set_osd_function(mpctx, OSD_FFW);
         mark_seek(mpctx);
 
-        // Assumes execute_queued_seek() happens before next audio/video is
-        // attempted to be decoded or filtered.
+
+
         queue_seek(mpctx, MPSEEK_ABSOLUTE, target, prec, MPSEEK_FLAG_NOFLUSH);
     }
 }

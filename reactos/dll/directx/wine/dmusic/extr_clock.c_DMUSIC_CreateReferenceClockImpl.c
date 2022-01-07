@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int /*<<< orphan*/ * lpVtbl; } ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int * lpVtbl; } ;
 struct TYPE_6__ {int dwSize; } ;
 struct TYPE_7__ {int ref; TYPE_3__ IReferenceClock_iface; TYPE_1__ pClockInfo; scalar_t__ rtTime; } ;
-typedef  int /*<<< orphan*/ * LPVOID ;
-typedef  int /*<<< orphan*/  LPUNKNOWN ;
-typedef  int /*<<< orphan*/  LPCGUID ;
-typedef  TYPE_2__ IReferenceClockImpl ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  DMUS_CLOCKINFO ;
+typedef int * LPVOID ;
+typedef int LPUNKNOWN ;
+typedef int LPCGUID ;
+typedef TYPE_2__ IReferenceClockImpl ;
+typedef int HRESULT ;
+typedef int DMUS_CLOCKINFO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DMUSIC_LockModule () ; 
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HEAP_ZERO_MEMORY ; 
- TYPE_2__* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  IReferenceClockImpl_QueryInterface (TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IReferenceClock_Release (TYPE_3__*) ; 
- int /*<<< orphan*/  ReferenceClock_Vtbl ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  debugstr_guid (int /*<<< orphan*/ ) ; 
+
+ int DMUSIC_LockModule () ;
+ int E_OUTOFMEMORY ;
+ int GetProcessHeap () ;
+ int HEAP_ZERO_MEMORY ;
+ TYPE_2__* HeapAlloc (int ,int ,int) ;
+ int IReferenceClockImpl_QueryInterface (TYPE_3__*,int ,int **) ;
+ int IReferenceClock_Release (TYPE_3__*) ;
+ int ReferenceClock_Vtbl ;
+ int TRACE (char*,int ,int **,int ) ;
+ int debugstr_guid (int ) ;
 
 HRESULT DMUSIC_CreateReferenceClockImpl(LPCGUID riid, LPVOID* ret_iface, LPUNKNOWN unkouter)
 {
@@ -44,7 +44,7 @@ HRESULT DMUSIC_CreateReferenceClockImpl(LPCGUID riid, LPVOID* ret_iface, LPUNKNO
 
     clock = HeapAlloc(GetProcessHeap(), HEAP_ZERO_MEMORY, sizeof(IReferenceClockImpl));
     if (!clock) {
-        *ret_iface = NULL;
+        *ret_iface = ((void*)0);
         return E_OUTOFMEMORY;
     }
 

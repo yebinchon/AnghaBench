@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ssize_t ;
-struct TYPE_3__ {int /*<<< orphan*/  time_ms; } ;
-typedef  TYPE_1__ arena_decay_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ATOMIC_RELAXED ; 
- int /*<<< orphan*/  atomic_load_zd (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int ssize_t ;
+struct TYPE_3__ {int time_ms; } ;
+typedef TYPE_1__ arena_decay_t ;
+
+
+ int ATOMIC_RELAXED ;
+ int atomic_load_zd (int *,int ) ;
 
 __attribute__((used)) static ssize_t
 arena_decay_ms_read(arena_decay_t *decay) {
-	return atomic_load_zd(&decay->time_ms, ATOMIC_RELAXED);
+ return atomic_load_zd(&decay->time_ms, ATOMIC_RELAXED);
 }

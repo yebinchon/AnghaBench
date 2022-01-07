@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  network_injection_queue ;
 
-/* Variables and functions */
- int /*<<< orphan*/  g_queue_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  network_injection_queue_reset (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int network_injection_queue ;
+
+
+ int g_queue_free (int *) ;
+ int network_injection_queue_reset (int *) ;
 
 void network_injection_queue_free(network_injection_queue *q) {
-	if (!q) return;
+ if (!q) return;
 
-	network_injection_queue_reset(q);
+ network_injection_queue_reset(q);
 
-	g_queue_free(q);
+ g_queue_free(q);
 }

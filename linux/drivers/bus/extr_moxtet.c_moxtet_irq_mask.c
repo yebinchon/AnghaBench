@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  masked; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int masked; } ;
 struct moxtet {TYPE_1__ irq; } ;
-struct irq_data {int /*<<< orphan*/  hwirq; } ;
+struct irq_data {int hwirq; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIT (int /*<<< orphan*/ ) ; 
- struct moxtet* irq_data_get_irq_chip_data (struct irq_data*) ; 
+
+ int BIT (int ) ;
+ struct moxtet* irq_data_get_irq_chip_data (struct irq_data*) ;
 
 __attribute__((used)) static void moxtet_irq_mask(struct irq_data *d)
 {
-	struct moxtet *moxtet = irq_data_get_irq_chip_data(d);
+ struct moxtet *moxtet = irq_data_get_irq_chip_data(d);
 
-	moxtet->irq.masked |= BIT(d->hwirq);
+ moxtet->irq.masked |= BIT(d->hwirq);
 }

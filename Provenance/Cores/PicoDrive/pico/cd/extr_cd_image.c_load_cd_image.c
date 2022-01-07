@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_9__ ;
-typedef  struct TYPE_16__   TYPE_5__ ;
-typedef  struct TYPE_15__   TYPE_4__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
-typedef  struct TYPE_11__   TYPE_10__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_17__ TYPE_9__ ;
+typedef struct TYPE_16__ TYPE_5__ ;
+typedef struct TYPE_15__ TYPE_4__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+typedef struct TYPE_11__ TYPE_10__ ;
+
+
 struct TYPE_14__ {int start; int end; int offset; TYPE_4__* fd; } ;
-typedef  TYPE_3__ track_t ;
-typedef  int /*<<< orphan*/  tmp_name ;
-typedef  int /*<<< orphan*/  tmp_ext ;
+typedef TYPE_3__ track_t ;
+typedef int tmp_name ;
+typedef int tmp_ext ;
 struct TYPE_15__ {int size; } ;
-typedef  TYPE_4__ pm_file ;
-typedef  int /*<<< orphan*/  exts ;
+typedef TYPE_4__ pm_file ;
+typedef int exts ;
 struct TYPE_16__ {int track_count; TYPE_2__* tracks; } ;
-typedef  TYPE_5__ cue_data_t ;
+typedef TYPE_5__ cue_data_t ;
 struct TYPE_12__ {int last; int end; TYPE_3__* tracks; } ;
 struct TYPE_17__ {TYPE_1__ toc; } ;
 struct TYPE_13__ {char* fname; int type; int sector_offset; int sector_xlength; scalar_t__ pregap; } ;
 struct TYPE_11__ {int cdda_type; } ;
 
-/* Variables and functions */
- int CT_ISO ; 
- int CT_MP3 ; 
- int CT_UNKNOWN ; 
- int /*<<< orphan*/  EL_STATUS ; 
- int /*<<< orphan*/  PicoCDLoadProgressCB (char const*,int) ; 
- TYPE_10__* Pico_mcd ; 
- TYPE_9__ cdd ; 
- int /*<<< orphan*/  cue_destroy (TYPE_5__*) ; 
- TYPE_5__* cue_parse (char const*) ; 
- int /*<<< orphan*/  elprintf (int /*<<< orphan*/ ,char*,...) ; 
- int handle_mp3 (char*,int) ; 
- int /*<<< orphan*/  memcpy (char*,char const*,int) ; 
- TYPE_4__* pm_open (char const*) ; 
- int /*<<< orphan*/  snprintf (char*,int,char const*,int) ; 
- int /*<<< orphan*/  sprintf_lba (char*,int,int) ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
- int strlen (char const*) ; 
- int /*<<< orphan*/  to_upper (char*,char*) ; 
+
+ int CT_ISO ;
+ int CT_MP3 ;
+ int CT_UNKNOWN ;
+ int EL_STATUS ;
+ int PicoCDLoadProgressCB (char const*,int) ;
+ TYPE_10__* Pico_mcd ;
+ TYPE_9__ cdd ;
+ int cue_destroy (TYPE_5__*) ;
+ TYPE_5__* cue_parse (char const*) ;
+ int elprintf (int ,char*,...) ;
+ int handle_mp3 (char*,int) ;
+ int memcpy (char*,char const*,int) ;
+ TYPE_4__* pm_open (char const*) ;
+ int snprintf (char*,int,char const*,int) ;
+ int sprintf_lba (char*,int,int) ;
+ int strcpy (char*,char*) ;
+ int strlen (char const*) ;
+ int to_upper (char*,char*) ;
 
 int load_cd_image(const char *cd_img_name, int *type)
 {
@@ -61,35 +61,35 @@ int load_cd_image(const char *cd_img_name, int *type)
   int iso_name_len, missed, cd_img_sectors;
   char tmp_name[256], tmp_ext[10], tmp_ext_u[10];
   track_t *tracks = cdd.toc.tracks;
-  cue_data_t *cue_data = NULL;
+  cue_data_t *cue_data = ((void*)0);
   pm_file *pmf;
 
-  if (PicoCDLoadProgressCB != NULL)
+  if (PicoCDLoadProgressCB != ((void*)0))
     PicoCDLoadProgressCB(cd_img_name, 1);
 
   Pico_mcd->cdda_type = CT_UNKNOWN;
 
-  /* is this a .cue? */
+
   cue_data = cue_parse(cd_img_name);
-  if (cue_data != NULL) {
+  if (cue_data != ((void*)0)) {
     cd_img_name = cue_data->tracks[1].fname;
     *type = cue_data->tracks[1].type;
   }
 
   pmf = pm_open(cd_img_name);
-  if (pmf == NULL)
+  if (pmf == ((void*)0))
   {
-    if (cue_data != NULL)
+    if (cue_data != ((void*)0))
       cue_destroy(cue_data);
     return -1;
   }
   tracks[0].fd = pmf;
 
   if (*type == CT_ISO)
-       cd_img_sectors = pmf->size >>= 11;  // size in sectors
+       cd_img_sectors = pmf->size >>= 11;
   else cd_img_sectors = pmf->size /= 2352;
 
-  // cdd.c operates with lba - 150
+
   tracks[0].start = 0;
   tracks[0].end = cd_img_sectors;
   tracks[0].offset = 0;
@@ -100,17 +100,17 @@ int load_cd_image(const char *cd_img_name, int *type)
 
   lba = cd_img_sectors;
 
-  if (cue_data != NULL)
+  if (cue_data != ((void*)0))
   {
-    if (cue_data->tracks[2].fname == NULL) {
-      // NULL fname means track2 is in same file as track1
+    if (cue_data->tracks[2].fname == ((void*)0)) {
+
       lba = tracks[0].end = cue_data->tracks[2].sector_offset;
     }
-    i = 100 / cue_data->track_count + 1; // progress display
+    i = 100 / cue_data->track_count + 1;
 
     for (n = 2; n <= cue_data->track_count; n++)
     {
-      if (PicoCDLoadProgressCB != NULL)
+      if (PicoCDLoadProgressCB != ((void*)0))
         PicoCDLoadProgressCB(cd_img_name, i * n);
 
       index = n - 1;
@@ -121,12 +121,12 @@ int load_cd_image(const char *cd_img_name, int *type)
           break;
         length = ret;
       }
-      else if (cue_data->tracks[n].fname != NULL)
+      else if (cue_data->tracks[n].fname != ((void*)0))
       {
         pm_file *f = pm_open(cue_data->tracks[n].fname);
-        if (f != NULL)
+        if (f != ((void*)0))
         {
-          // assume raw, ignore header for wav..
+
           tracks[index].fd = f;
           tracks[index].offset = cue_data->tracks[n].sector_offset;
           length = f->size / 2352;
@@ -150,7 +150,7 @@ int load_cd_image(const char *cd_img_name, int *type)
       }
 
       if (cue_data->tracks[n].sector_xlength != 0)
-        // overriden by custom cue command
+
         length = cue_data->tracks[n].sector_xlength;
 
       Pico_mcd->cdda_type = cue_data->tracks[n].type;
@@ -166,14 +166,14 @@ int load_cd_image(const char *cd_img_name, int *type)
     goto finish;
   }
 
-  /* mp3 track autosearch, Gens-like */
+
   iso_name_len = strlen(cd_img_name);
   if (iso_name_len >= sizeof(tmp_name))
     iso_name_len = sizeof(tmp_name) - 1;
 
   for (n = 2, i = 0, missed = 0; i < 100 && missed < 4; i++)
   {
-    if (PicoCDLoadProgressCB != NULL && i > 1)
+    if (PicoCDLoadProgressCB != ((void*)0) && i > 1)
       PicoCDLoadProgressCB(cd_img_name, i + (100-i)*missed/4);
 
     for (j = 0; j < sizeof(exts)/sizeof(char *); j++)
@@ -236,10 +236,10 @@ finish:
   sprintf_lba(tmp_ext, sizeof(tmp_ext), cdd.toc.end);
   elprintf(EL_STATUS, "End CD -  %s\n", tmp_ext);
 
-  if (PicoCDLoadProgressCB != NULL)
+  if (PicoCDLoadProgressCB != ((void*)0))
     PicoCDLoadProgressCB(cd_img_name, 100);
 
-  if (cue_data != NULL)
+  if (cue_data != ((void*)0))
     cue_destroy(cue_data);
 
   return 0;

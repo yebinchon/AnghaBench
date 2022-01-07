@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  jerryx_arg_t ;
-typedef  int /*<<< orphan*/  jerry_value_t ;
-typedef  int /*<<< orphan*/  jerry_length_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAY_SIZE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  JERRYX_ARG_COERCE ; 
- int /*<<< orphan*/  JERRYX_ARG_OPTIONAL ; 
- int /*<<< orphan*/  JERRY_UNUSED (int /*<<< orphan*/  const) ; 
- int /*<<< orphan*/  TEST_ASSERT (int) ; 
- int /*<<< orphan*/  jerry_create_undefined () ; 
- int /*<<< orphan*/  jerry_release_value (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jerry_value_is_error (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jerryx_arg_boolean (int*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jerryx_arg_ignore () ; 
- int /*<<< orphan*/  jerryx_arg_transform_this_and_args (int /*<<< orphan*/  const,int /*<<< orphan*/  const*,int /*<<< orphan*/  const,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int validator3_count ; 
+
+
+
+typedef int jerryx_arg_t ;
+typedef int jerry_value_t ;
+typedef int jerry_length_t ;
+
+
+ int ARRAY_SIZE (int *) ;
+ int JERRYX_ARG_COERCE ;
+ int JERRYX_ARG_OPTIONAL ;
+ int JERRY_UNUSED (int const) ;
+ int TEST_ASSERT (int) ;
+ int jerry_create_undefined () ;
+ int jerry_release_value (int ) ;
+ int jerry_value_is_error (int ) ;
+ int jerryx_arg_boolean (int*,int ,int ) ;
+ int jerryx_arg_ignore () ;
+ int jerryx_arg_transform_this_and_args (int const,int const*,int const,int *,int ) ;
+ int validator3_count ;
 
 __attribute__((used)) static jerry_value_t
-test_validator3_handler (const jerry_value_t func_obj_val, /**< function object */
-                         const jerry_value_t this_val, /**< this value */
-                         const jerry_value_t args_p[], /**< arguments list */
-                         const jerry_length_t args_cnt) /**< arguments length */
+test_validator3_handler (const jerry_value_t func_obj_val,
+                         const jerry_value_t this_val,
+                         const jerry_value_t args_p[],
+                         const jerry_length_t args_cnt)
 {
 
   JERRY_UNUSED (func_obj_val);
 
-  bool arg1 = false;
-  bool arg2 = false;
+  bool arg1 = 0;
+  bool arg2 = 0;
 
   jerryx_arg_t mapping[] =
   {
-    /* ignore this */
+
     jerryx_arg_ignore (),
-    /* 1th argument should be boolean, and it is optional */
+
     jerryx_arg_boolean (&arg1, JERRYX_ARG_COERCE, JERRYX_ARG_OPTIONAL),
-    /* 2nd argument should be boolean, and it is optional */
+
     jerryx_arg_boolean (&arg2, JERRYX_ARG_COERCE, JERRYX_ARG_OPTIONAL),
   };
 
@@ -66,23 +66,23 @@ test_validator3_handler (const jerry_value_t func_obj_val, /**< function object 
   {
     TEST_ASSERT (!jerry_value_is_error (is_ok));
     TEST_ASSERT (arg1);
-    /* arg2 must be unchanged */
+
     TEST_ASSERT (!arg2);
   }
   else if (validator3_count == 2)
   {
     TEST_ASSERT (!jerry_value_is_error (is_ok));
-    /* arg1 must be unchanged */
+
     TEST_ASSERT (!arg1);
-    /* arg2 must be unchanged */
+
     TEST_ASSERT (!arg2);
   }
   else if (validator3_count == 3)
   {
     TEST_ASSERT (!jerry_value_is_error (is_ok));
-    /* arg1 must be unchanged */
+
     TEST_ASSERT (!arg1);
-    /* arg2 must be unchanged */
+
     TEST_ASSERT (!arg2);
   }
 

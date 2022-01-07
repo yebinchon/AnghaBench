@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WPARAM ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int WPARAM ;
 struct TYPE_3__ {int styleOld; int styleNew; } ;
-typedef  TYPE_1__ STYLESTRUCT ;
-typedef  int /*<<< orphan*/  LRESULT ;
-typedef  int /*<<< orphan*/  DATETIME_INFO ;
+typedef TYPE_1__ STYLESTRUCT ;
+typedef int LRESULT ;
+typedef int DATETIME_INFO ;
 
-/* Variables and functions */
- int DTS_SHOWNONE ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ,int,int) ; 
+
+ int DTS_SHOWNONE ;
+ int TRACE (char*,int ,int,int) ;
 
 __attribute__((used)) static LRESULT
 DATETIME_StyleChanging(DATETIME_INFO *infoPtr, WPARAM wStyleType, STYLESTRUCT *lpss)
@@ -27,7 +27,7 @@ DATETIME_StyleChanging(DATETIME_INFO *infoPtr, WPARAM wStyleType, STYLESTRUCT *l
     TRACE("(styletype=%lx, styleOld=0x%08x, styleNew=0x%08x)\n",
           wStyleType, lpss->styleOld, lpss->styleNew);
 
-    /* block DTS_SHOWNONE change */
+
     if ((lpss->styleNew ^ lpss->styleOld) & DTS_SHOWNONE)
     {
         if (lpss->styleOld & DTS_SHOWNONE)

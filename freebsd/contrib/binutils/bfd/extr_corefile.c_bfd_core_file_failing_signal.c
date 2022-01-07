@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {scalar_t__ format; } ;
-typedef  TYPE_1__ bfd ;
+typedef TYPE_1__ bfd ;
 
-/* Variables and functions */
- int BFD_SEND (TYPE_1__*,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  _core_file_failing_signal ; 
- scalar_t__ bfd_core ; 
- int /*<<< orphan*/  bfd_error_invalid_operation ; 
- int /*<<< orphan*/  bfd_set_error (int /*<<< orphan*/ ) ; 
+
+ int BFD_SEND (TYPE_1__*,int ,TYPE_1__*) ;
+ int _core_file_failing_signal ;
+ scalar_t__ bfd_core ;
+ int bfd_error_invalid_operation ;
+ int bfd_set_error (int ) ;
 
 int
 bfd_core_file_failing_signal (bfd *abfd)

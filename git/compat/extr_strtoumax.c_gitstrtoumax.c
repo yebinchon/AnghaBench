@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uintmax_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  strtoul (char const*,char**,int) ; 
- int /*<<< orphan*/  strtoull (char const*,char**,int) ; 
+
+
+
+typedef int uintmax_t ;
+
+
+ int strtoul (char const*,char**,int) ;
+ int strtoull (char const*,char**,int) ;
 
 uintmax_t gitstrtoumax (const char *nptr, char **endptr, int base)
 {
-#if defined(NO_STRTOULL)
-	return strtoul(nptr, endptr, base);
-#else
-	return strtoull(nptr, endptr, base);
-#endif
+
+
+
+ return strtoull(nptr, endptr, base);
+
 }

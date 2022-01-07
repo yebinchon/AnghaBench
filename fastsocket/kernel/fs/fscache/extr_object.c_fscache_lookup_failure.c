@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct fscache_state {int dummy; } ;
-struct fscache_object {struct fscache_cookie* cookie; TYPE_2__* cache; scalar_t__ oob_event_mask; int /*<<< orphan*/  debug_id; } ;
-struct fscache_cookie {int /*<<< orphan*/  flags; } ;
+struct fscache_object {struct fscache_cookie* cookie; TYPE_2__* cache; scalar_t__ oob_event_mask; int debug_id; } ;
+struct fscache_cookie {int flags; } ;
 struct TYPE_4__ {TYPE_1__* ops; } ;
-struct TYPE_3__ {int /*<<< orphan*/  (* lookup_complete ) (struct fscache_object*) ;} ;
+struct TYPE_3__ {int (* lookup_complete ) (struct fscache_object*) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FSCACHE_COOKIE_LOOKING_UP ; 
- int /*<<< orphan*/  FSCACHE_COOKIE_UNAVAILABLE ; 
- int /*<<< orphan*/  KILL_OBJECT ; 
- int /*<<< orphan*/  _enter (char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  fscache_done_parent_op (struct fscache_object*) ; 
- int /*<<< orphan*/  fscache_n_cop_lookup_complete ; 
- int /*<<< orphan*/  fscache_stat (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fscache_stat_d (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  set_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub1 (struct fscache_object*) ; 
- scalar_t__ test_and_clear_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- struct fscache_state const* transit_to (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wake_up_bit (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int FSCACHE_COOKIE_LOOKING_UP ;
+ int FSCACHE_COOKIE_UNAVAILABLE ;
+ int KILL_OBJECT ;
+ int _enter (char*,int ,int) ;
+ int fscache_done_parent_op (struct fscache_object*) ;
+ int fscache_n_cop_lookup_complete ;
+ int fscache_stat (int *) ;
+ int fscache_stat_d (int *) ;
+ int set_bit (int ,int *) ;
+ int stub1 (struct fscache_object*) ;
+ scalar_t__ test_and_clear_bit (int ,int *) ;
+ struct fscache_state const* transit_to (int ) ;
+ int wake_up_bit (int *,int ) ;
 
 __attribute__((used)) static const struct fscache_state *fscache_lookup_failure(struct fscache_object *object,
-							  int event)
+         int event)
 {
-	struct fscache_cookie *cookie;
+ struct fscache_cookie *cookie;
 
-	_enter("{OBJ%x},%d", object->debug_id, event);
+ _enter("{OBJ%x},%d", object->debug_id, event);
 
-	object->oob_event_mask = 0;
+ object->oob_event_mask = 0;
 
-	fscache_stat(&fscache_n_cop_lookup_complete);
-	object->cache->ops->lookup_complete(object);
-	fscache_stat_d(&fscache_n_cop_lookup_complete);
+ fscache_stat(&fscache_n_cop_lookup_complete);
+ object->cache->ops->lookup_complete(object);
+ fscache_stat_d(&fscache_n_cop_lookup_complete);
 
-	cookie = object->cookie;
-	set_bit(FSCACHE_COOKIE_UNAVAILABLE, &cookie->flags);
-	if (test_and_clear_bit(FSCACHE_COOKIE_LOOKING_UP, &cookie->flags))
-		wake_up_bit(&cookie->flags, FSCACHE_COOKIE_LOOKING_UP);
+ cookie = object->cookie;
+ set_bit(FSCACHE_COOKIE_UNAVAILABLE, &cookie->flags);
+ if (test_and_clear_bit(FSCACHE_COOKIE_LOOKING_UP, &cookie->flags))
+  wake_up_bit(&cookie->flags, FSCACHE_COOKIE_LOOKING_UP);
 
-	fscache_done_parent_op(object);
-	return transit_to(KILL_OBJECT);
+ fscache_done_parent_op(object);
+ return transit_to(KILL_OBJECT);
 }

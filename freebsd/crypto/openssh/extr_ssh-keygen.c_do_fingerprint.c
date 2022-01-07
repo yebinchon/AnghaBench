@@ -1,137 +1,126 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u_long ;
+
+
+
+
+typedef int u_long ;
 struct sshkey {int dummy; } ;
 struct passwd {int dummy; } ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef int FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  __progname ; 
- int /*<<< orphan*/  ask_filename (struct passwd*,char*) ; 
- int /*<<< orphan*/  debug (char*,char const*,int) ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  exit (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fatal (char*,char const*,...) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fingerprint_one_key (struct sshkey*,char*) ; 
- int /*<<< orphan*/  fingerprint_private (char const*) ; 
- int /*<<< orphan*/ * fopen (char const*,char*) ; 
- int /*<<< orphan*/  free (char*) ; 
- int getline (char**,size_t*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  have_identity ; 
- char* identity_file ; 
- int /*<<< orphan*/  sshkey_free (struct sshkey*) ; 
- int /*<<< orphan*/ * stdin ; 
- scalar_t__ strcmp (char*,char*) ; 
- size_t strcspn (char*,char*) ; 
- int /*<<< orphan*/  strerror (int /*<<< orphan*/ ) ; 
- int strspn (char*,char*) ; 
- int /*<<< orphan*/ * strstr (char*,char*) ; 
- int strtol (char*,char**,int) ; 
- struct sshkey* try_read_key (char**) ; 
+
+ int __progname ;
+ int ask_filename (struct passwd*,char*) ;
+ int debug (char*,char const*,int) ;
+ int errno ;
+ int exit (int ) ;
+ int fatal (char*,char const*,...) ;
+ int fclose (int *) ;
+ int fingerprint_one_key (struct sshkey*,char*) ;
+ int fingerprint_private (char const*) ;
+ int * fopen (char const*,char*) ;
+ int free (char*) ;
+ int getline (char**,size_t*,int *) ;
+ int have_identity ;
+ char* identity_file ;
+ int sshkey_free (struct sshkey*) ;
+ int * stdin ;
+ scalar_t__ strcmp (char*,char*) ;
+ size_t strcspn (char*,char*) ;
+ int strerror (int ) ;
+ int strspn (char*,char*) ;
+ int * strstr (char*,char*) ;
+ int strtol (char*,char**,int) ;
+ struct sshkey* try_read_key (char**) ;
 
 __attribute__((used)) static void
 do_fingerprint(struct passwd *pw)
 {
-	FILE *f;
-	struct sshkey *public = NULL;
-	char *comment = NULL, *cp, *ep, *line = NULL;
-	size_t linesize = 0;
-	int i, invalid = 1;
-	const char *path;
-	u_long lnum = 0;
+ FILE *f;
+ struct sshkey *public = ((void*)0);
+ char *comment = ((void*)0), *cp, *ep, *line = ((void*)0);
+ size_t linesize = 0;
+ int i, invalid = 1;
+ const char *path;
+ u_long lnum = 0;
 
-	if (!have_identity)
-		ask_filename(pw, "Enter file in which the key is");
-	path = identity_file;
+ if (!have_identity)
+  ask_filename(pw, "Enter file in which the key is");
+ path = identity_file;
 
-	if (strcmp(identity_file, "-") == 0) {
-		f = stdin;
-		path = "(stdin)";
-	} else if ((f = fopen(path, "r")) == NULL)
-		fatal("%s: %s: %s", __progname, path, strerror(errno));
+ if (strcmp(identity_file, "-") == 0) {
+  f = stdin;
+  path = "(stdin)";
+ } else if ((f = fopen(path, "r")) == ((void*)0))
+  fatal("%s: %s: %s", __progname, path, strerror(errno));
 
-	while (getline(&line, &linesize, f) != -1) {
-		lnum++;
-		cp = line;
-		cp[strcspn(cp, "\n")] = '\0';
-		/* Trim leading space and comments */
-		cp = line + strspn(line, " \t");
-		if (*cp == '#' || *cp == '\0')
-			continue;
+ while (getline(&line, &linesize, f) != -1) {
+  lnum++;
+  cp = line;
+  cp[strcspn(cp, "\n")] = '\0';
 
-		/*
-		 * Input may be plain keys, private keys, authorized_keys
-		 * or known_hosts.
-		 */
+  cp = line + strspn(line, " \t");
+  if (*cp == '#' || *cp == '\0')
+   continue;
+  if (lnum == 1 && strcmp(identity_file, "-") != 0 &&
+      strstr(cp, "PRIVATE KEY") != ((void*)0)) {
+   free(line);
+   fclose(f);
+   fingerprint_private(path);
+   exit(0);
+  }
 
-		/*
-		 * Try private keys first. Assume a key is private if
-		 * "SSH PRIVATE KEY" appears on the first line and we're
-		 * not reading from stdin (XXX support private keys on stdin).
-		 */
-		if (lnum == 1 && strcmp(identity_file, "-") != 0 &&
-		    strstr(cp, "PRIVATE KEY") != NULL) {
-			free(line);
-			fclose(f);
-			fingerprint_private(path);
-			exit(0);
-		}
 
-		/*
-		 * If it's not a private key, then this must be prepared to
-		 * accept a public key prefixed with a hostname or options.
-		 * Try a bare key first, otherwise skip the leading stuff.
-		 */
-		if ((public = try_read_key(&cp)) == NULL) {
-			i = strtol(cp, &ep, 10);
-			if (i == 0 || ep == NULL ||
-			    (*ep != ' ' && *ep != '\t')) {
-				int quoted = 0;
 
-				comment = cp;
-				for (; *cp && (quoted || (*cp != ' ' &&
-				    *cp != '\t')); cp++) {
-					if (*cp == '\\' && cp[1] == '"')
-						cp++;	/* Skip both */
-					else if (*cp == '"')
-						quoted = !quoted;
-				}
-				if (!*cp)
-					continue;
-				*cp++ = '\0';
-			}
-		}
-		/* Retry after parsing leading hostname/key options */
-		if (public == NULL && (public = try_read_key(&cp)) == NULL) {
-			debug("%s:%lu: not a public key", path, lnum);
-			continue;
-		}
 
-		/* Find trailing comment, if any */
-		for (; *cp == ' ' || *cp == '\t'; cp++)
-			;
-		if (*cp != '\0' && *cp != '#')
-			comment = cp;
 
-		fingerprint_one_key(public, comment);
-		sshkey_free(public);
-		invalid = 0; /* One good key in the file is sufficient */
-	}
-	fclose(f);
-	free(line);
 
-	if (invalid)
-		fatal("%s is not a public key file.", path);
-	exit(0);
+  if ((public = try_read_key(&cp)) == ((void*)0)) {
+   i = strtol(cp, &ep, 10);
+   if (i == 0 || ep == ((void*)0) ||
+       (*ep != ' ' && *ep != '\t')) {
+    int quoted = 0;
+
+    comment = cp;
+    for (; *cp && (quoted || (*cp != ' ' &&
+        *cp != '\t')); cp++) {
+     if (*cp == '\\' && cp[1] == '"')
+      cp++;
+     else if (*cp == '"')
+      quoted = !quoted;
+    }
+    if (!*cp)
+     continue;
+    *cp++ = '\0';
+   }
+  }
+
+  if (public == ((void*)0) && (public = try_read_key(&cp)) == ((void*)0)) {
+   debug("%s:%lu: not a public key", path, lnum);
+   continue;
+  }
+
+
+  for (; *cp == ' ' || *cp == '\t'; cp++)
+   ;
+  if (*cp != '\0' && *cp != '#')
+   comment = cp;
+
+  fingerprint_one_key(public, comment);
+  sshkey_free(public);
+  invalid = 0;
+ }
+ fclose(f);
+ free(line);
+
+ if (invalid)
+  fatal("%s is not a public key file.", path);
+ exit(0);
 }

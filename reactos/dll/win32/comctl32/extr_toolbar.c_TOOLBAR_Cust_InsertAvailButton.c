@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {scalar_t__ idCommand; } ;
-struct TYPE_5__ {TYPE_1__ btn; int /*<<< orphan*/  text; } ;
-typedef  TYPE_2__* PCUSTOMBUTTON ;
-typedef  int /*<<< orphan*/  LPARAM ;
-typedef  int /*<<< orphan*/  HWND ;
+struct TYPE_5__ {TYPE_1__ btn; int text; } ;
+typedef TYPE_2__* PCUSTOMBUTTON ;
+typedef int LPARAM ;
+typedef int HWND ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetDlgItem (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IDC_AVAILBTN_LBOX ; 
- int /*<<< orphan*/  LB_ADDSTRING ; 
- int /*<<< orphan*/  LB_GETCOUNT ; 
- int /*<<< orphan*/  LB_GETITEMDATA ; 
- int /*<<< orphan*/  LB_INSERTSTRING ; 
- int /*<<< orphan*/  LB_SETITEMDATA ; 
- int SendMessageW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  debugstr_w (int /*<<< orphan*/ ) ; 
+
+ int GetDlgItem (int ,int ) ;
+ int IDC_AVAILBTN_LBOX ;
+ int LB_ADDSTRING ;
+ int LB_GETCOUNT ;
+ int LB_GETITEMDATA ;
+ int LB_INSERTSTRING ;
+ int LB_SETITEMDATA ;
+ int SendMessageW (int ,int ,int,int ) ;
+ int TRACE (char*,int ,scalar_t__) ;
+ int debugstr_w (int ) ;
 
 __attribute__((used)) static void TOOLBAR_Cust_InsertAvailButton(HWND hwnd, PCUSTOMBUTTON btnInfoNew)
 {
@@ -41,7 +41,7 @@ __attribute__((used)) static void TOOLBAR_Cust_InsertAvailButton(HWND hwnd, PCUS
 
     count = SendMessageW(hwndAvail, LB_GETCOUNT, 0, 0);
 
-    /* position 0 is always separator */
+
     for (i = 1; i < count; i++)
     {
         btnInfo = (PCUSTOMBUTTON)SendMessageW(hwndAvail, LB_GETITEMDATA, i, 0);
@@ -52,7 +52,7 @@ __attribute__((used)) static void TOOLBAR_Cust_InsertAvailButton(HWND hwnd, PCUS
             return;
         }
     }
-    /* id higher than all others add to end */
+
     i = SendMessageW(hwndAvail, LB_ADDSTRING, 0, 0);
     SendMessageW(hwndAvail, LB_SETITEMDATA, i, (LPARAM)btnInfoNew);
 }

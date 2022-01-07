@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int U64 ;
-typedef  size_t U32 ;
 
-/* Variables and functions */
- size_t ERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GENERIC ; 
+
+
+
+typedef int U64 ;
+typedef size_t U32 ;
+
+
+ size_t ERROR (int ) ;
+ int GENERIC ;
 
 __attribute__((used)) static size_t FSE_normalizeM2(short* norm, U32 tableLog, const unsigned* count, size_t total, U32 maxSymbolValue)
 {
@@ -24,7 +24,7 @@ __attribute__((used)) static size_t FSE_normalizeM2(short* norm, U32 tableLog, c
     U32 distributed = 0;
     U32 ToDistribute;
 
-    /* Init */
+
     U32 const lowThreshold = (U32)(total >> tableLog);
     U32 lowOne = (U32)((total * 3) >> (tableLog + 1));
 
@@ -54,7 +54,7 @@ __attribute__((used)) static size_t FSE_normalizeM2(short* norm, U32 tableLog, c
         return 0;
 
     if ((total / ToDistribute) > lowOne) {
-        /* risk of rounding to zero */
+
         lowOne = (U32)((total * 3) / (ToDistribute * 2));
         for (s=0; s<=maxSymbolValue; s++) {
             if ((norm[s] == NOT_YET_ASSIGNED) && (count[s] <= lowOne)) {
@@ -62,14 +62,14 @@ __attribute__((used)) static size_t FSE_normalizeM2(short* norm, U32 tableLog, c
                 distributed++;
                 total -= count[s];
                 continue;
-        }   }
+        } }
         ToDistribute = (1 << tableLog) - distributed;
     }
 
     if (distributed == maxSymbolValue+1) {
-        /* all values are pretty poor;
-           probably incompressible data (should have already been detected);
-           find max, then give all remaining points to max */
+
+
+
         U32 maxV = 0, maxC = 0;
         for (s=0; s<=maxSymbolValue; s++)
             if (count[s] > maxC) { maxV=s; maxC=count[s]; }
@@ -78,15 +78,15 @@ __attribute__((used)) static size_t FSE_normalizeM2(short* norm, U32 tableLog, c
     }
 
     if (total == 0) {
-        /* all of the symbols were low enough for the lowOne or lowThreshold */
+
         for (s=0; ToDistribute > 0; s = (s+1)%(maxSymbolValue+1))
             if (norm[s] > 0) { ToDistribute--; norm[s]++; }
         return 0;
     }
 
-    {   U64 const vStepLog = 62 - tableLog;
+    { U64 const vStepLog = 62 - tableLog;
         U64 const mid = (1ULL << (vStepLog-1)) - 1;
-        U64 const rStep = ((((U64)1<<vStepLog) * ToDistribute) + mid) / total;   /* scale on remaining */
+        U64 const rStep = ((((U64)1<<vStepLog) * ToDistribute) + mid) / total;
         U64 tmpTotal = mid;
         for (s=0; s<=maxSymbolValue; s++) {
             if (norm[s]==NOT_YET_ASSIGNED) {
@@ -98,7 +98,7 @@ __attribute__((used)) static size_t FSE_normalizeM2(short* norm, U32 tableLog, c
                     return ERROR(GENERIC);
                 norm[s] = (short)weight;
                 tmpTotal = end;
-    }   }   }
+    } } }
 
     return 0;
 }

@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- unsigned int crc_calc (unsigned char*,int) ; 
- int /*<<< orphan*/  memcpy (unsigned char*,char*,int) ; 
- int /*<<< orphan*/  memset (unsigned char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  zadecrypt (unsigned char*,int,unsigned char*,int) ; 
+ unsigned int crc_calc (unsigned char*,int) ;
+ int memcpy (unsigned char*,char*,int) ;
+ int memset (unsigned char*,int ,int) ;
+ int zadecrypt (unsigned char*,int,unsigned char*,int) ;
 
 __attribute__((used)) static unsigned
 generate_getL(unsigned char *out_buf, size_t out_buf_len, unsigned xrand)
@@ -27,7 +19,7 @@ generate_getL(unsigned char *out_buf, size_t out_buf_len, unsigned xrand)
         return 0;
     memset(buf, 0, 16);
 
-    memcpy(&buf[4], "Lteg", 4); /* "getL" */
+    memcpy(&buf[4], "Lteg", 4);
 
     buf[12] = (unsigned char)(xrand>>24);
     buf[13] = (unsigned char)(xrand>>16);

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct kissf_fftnd_state {int dummy; } ;
-typedef  TYPE_1__* kissf_fftnd_cfg ;
-typedef  int /*<<< orphan*/  kissf_fft_cpx ;
-typedef  int /*<<< orphan*/  kissf_fft_cfg ;
-struct TYPE_3__ {int dimprod; int ndims; int* dims; int /*<<< orphan*/ * states; int /*<<< orphan*/ * tmpbuf; } ;
+typedef TYPE_1__* kissf_fftnd_cfg ;
+typedef int kissf_fft_cpx ;
+typedef int kissf_fft_cfg ;
+struct TYPE_3__ {int dimprod; int ndims; int* dims; int * states; int * tmpbuf; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  kissf_fft_alloc (int const,int,char*,size_t*) ; 
- scalar_t__ malloc (size_t) ; 
- int /*<<< orphan*/  stderr ; 
+
+ int fprintf (int ,char*) ;
+ int kissf_fft_alloc (int const,int,char*,size_t*) ;
+ scalar_t__ malloc (size_t) ;
+ int stderr ;
 
 kissf_fftnd_cfg kissf_fftnd_alloc(const int *dims,int ndims,int inverse_fft,void*mem,size_t*lenmem)
 {
-    kissf_fftnd_cfg st = NULL;
+    kissf_fftnd_cfg st = ((void*)0);
     int i;
     int dimprod=1;
     size_t memneeded = sizeof(struct kissf_fftnd_state);
@@ -33,23 +33,23 @@ kissf_fftnd_cfg kissf_fftnd_alloc(const int *dims,int ndims,int inverse_fft,void
 
     for (i=0;i<ndims;++i) {
         size_t sublen=0;
-        kissf_fft_alloc (dims[i], inverse_fft, NULL, &sublen);
-        memneeded += sublen;   /* st->states[i] */
+        kissf_fft_alloc (dims[i], inverse_fft, ((void*)0), &sublen);
+        memneeded += sublen;
         dimprod *= dims[i];
     }
-    memneeded += sizeof(int) * ndims;/*  st->dims */
-    memneeded += sizeof(void*) * ndims;/* st->states  */
-    memneeded += sizeof(kissf_fft_cpx) * dimprod; /* st->tmpbuf */
+    memneeded += sizeof(int) * ndims;
+    memneeded += sizeof(void*) * ndims;
+    memneeded += sizeof(kissf_fft_cpx) * dimprod;
 
-    if (lenmem == NULL) {/* allocate for the caller*/
+    if (lenmem == ((void*)0)) {
         st = (kissf_fftnd_cfg) malloc (memneeded);
-    } else { /* initialize supplied buffer if big enough */
+    } else {
         if (*lenmem >= memneeded)
             st = (kissf_fftnd_cfg) mem;
-        *lenmem = memneeded; /*tell caller how big struct is (or would be) */
+        *lenmem = memneeded;
     }
     if (!st)
-        return NULL; /*malloc failed or buffer too small */
+        return ((void*)0);
 
     st->dimprod = dimprod;
     st->ndims = ndims;
@@ -67,23 +67,10 @@ kissf_fftnd_cfg kissf_fftnd_alloc(const int *dims,int ndims,int inverse_fft,void
     for (i=0;i<ndims;++i) {
         size_t len;
         st->dims[i] = dims[i];
-        kissf_fft_alloc (st->dims[i], inverse_fft, NULL, &len);
+        kissf_fft_alloc (st->dims[i], inverse_fft, ((void*)0), &len);
         st->states[i] = kissf_fft_alloc (st->dims[i], inverse_fft, ptr,&len);
         ptr += len;
     }
-    /*
-Hi there!
-
-If you're looking at this particular code, it probably means you've got a brain-dead bounds checker 
-that thinks the above code overwrites the end of the array.
-
-It doesn't.
-
--- Mark 
-
-P.S.
-The below code might give you some warm fuzzies and help convince you.
-       */
     if ( ptr - (char*)st != (int)memneeded ) {
         fprintf(stderr,
                 "################################################################################\n"

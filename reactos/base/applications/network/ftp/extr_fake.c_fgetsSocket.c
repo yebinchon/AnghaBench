@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int MAX_ASCII ; 
- int SOCKET_ERROR ; 
- int /*<<< orphan*/  checkRecv (int) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int recv (int,char*,int,int /*<<< orphan*/ ) ; 
+ int MAX_ASCII ;
+ int SOCKET_ERROR ;
+ int checkRecv (int) ;
+ int printf (char*,...) ;
+ int recv (int,char*,int,int ) ;
 
 char *fgetsSocket(int s, char *string)
 {
@@ -32,7 +24,7 @@ char *fgetsSocket(int s, char *string)
       if (count == SOCKET_ERROR)
       {
      printf("Error in fgetssocket");
-     return NULL;
+     return ((void*)0);
       }
 
       if (count == 1)
@@ -49,11 +41,11 @@ char *fgetsSocket(int s, char *string)
       else
       {
      if (i == 0)
-        return NULL;
+        return ((void*)0);
      else
      {
         string[i] = '\n';
-        string[i + 1] = '\0'; // This is risky
+        string[i + 1] = '\0';
         return string;
      }
 
@@ -62,8 +54,8 @@ char *fgetsSocket(int s, char *string)
    }
    string[i] = '\0';
 
-#ifdef DEBUG_IN
-   printf("%s", string);
-#endif
+
+
+
    return string;
 }

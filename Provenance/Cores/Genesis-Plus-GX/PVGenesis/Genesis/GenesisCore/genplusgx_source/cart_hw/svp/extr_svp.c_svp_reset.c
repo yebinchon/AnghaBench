@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_4__ {scalar_t__ rom; } ;
-struct TYPE_3__ {int /*<<< orphan*/  ssp1601; scalar_t__ iram_rom; } ;
+struct TYPE_3__ {int ssp1601; scalar_t__ iram_rom; } ;
 
-/* Variables and functions */
- TYPE_2__ cart ; 
- int /*<<< orphan*/  memcpy (scalar_t__,scalar_t__,int) ; 
- int /*<<< orphan*/  ssp1601_reset (int /*<<< orphan*/ *) ; 
- TYPE_1__* svp ; 
+
+ TYPE_2__ cart ;
+ int memcpy (scalar_t__,scalar_t__,int) ;
+ int ssp1601_reset (int *) ;
+ TYPE_1__* svp ;
 
 void svp_reset(void)
 {

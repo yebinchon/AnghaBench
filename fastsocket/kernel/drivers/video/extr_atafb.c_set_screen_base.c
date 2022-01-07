@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {unsigned char bas_hi; unsigned char bas_md; unsigned char bas_lo; } ;
 
-/* Variables and functions */
- TYPE_1__ shifter ; 
- unsigned long virt_to_phys (void*) ; 
+
+ TYPE_1__ shifter ;
+ unsigned long virt_to_phys (void*) ;
 
 __attribute__((used)) static void set_screen_base(void *s_base)
 {
-	unsigned long addr;
+ unsigned long addr;
 
-	addr = virt_to_phys(s_base);
-	/* Setup Screen Memory */
-	shifter.bas_hi = (unsigned char)((addr & 0xff0000) >> 16);
-	shifter.bas_md = (unsigned char)((addr & 0x00ff00) >> 8);
-	shifter.bas_lo = (unsigned char)(addr & 0x0000ff);
+ addr = virt_to_phys(s_base);
+
+ shifter.bas_hi = (unsigned char)((addr & 0xff0000) >> 16);
+ shifter.bas_md = (unsigned char)((addr & 0x00ff00) >> 8);
+ shifter.bas_lo = (unsigned char)(addr & 0x0000ff);
 }

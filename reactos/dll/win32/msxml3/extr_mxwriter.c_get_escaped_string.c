@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ltW ;
-typedef  int /*<<< orphan*/  gtW ;
-typedef  int /*<<< orphan*/  escape_mode ;
-typedef  int /*<<< orphan*/  equotW ;
-typedef  int /*<<< orphan*/  ampW ;
-typedef  char WCHAR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAY_SIZE (char const*) ; 
- int /*<<< orphan*/  EscapeValue ; 
- char* heap_alloc (int) ; 
- char* heap_realloc (char*,int) ; 
- int max (int,int const) ; 
- int /*<<< orphan*/  memcpy (char*,char const*,int) ; 
+
+
+
+typedef int ltW ;
+typedef int gtW ;
+typedef int escape_mode ;
+typedef int equotW ;
+typedef int ampW ;
+typedef char WCHAR ;
+
+
+ int ARRAY_SIZE (char const*) ;
+ int EscapeValue ;
+ char* heap_alloc (int) ;
+ char* heap_realloc (char*,int) ;
+ int max (int,int const) ;
+ int memcpy (char*,char const*,int) ;
 
 __attribute__((used)) static WCHAR *get_escaped_string(const WCHAR *str, escape_mode mode, int *len)
 {
-    static const WCHAR ltW[]    = {'&','l','t',';'};
-    static const WCHAR ampW[]   = {'&','a','m','p',';'};
+    static const WCHAR ltW[] = {'&','l','t',';'};
+    static const WCHAR ampW[] = {'&','a','m','p',';'};
     static const WCHAR equotW[] = {'&','q','u','o','t',';'};
-    static const WCHAR gtW[]    = {'&','g','t',';'};
+    static const WCHAR gtW[] = {'&','g','t',';'};
 
     const int default_alloc = 100;
     const int grow_thresh = 10;
     int p = *len, conv_len;
     WCHAR *ptr, *ret;
 
-    /* default buffer size to something if length is unknown */
+
     conv_len = max(2**len, default_alloc);
     ptr = ret = heap_alloc(conv_len*sizeof(WCHAR));
 
@@ -72,7 +72,7 @@ __attribute__((used)) static WCHAR *get_escaped_string(const WCHAR *str, escape_
                 ptr += ARRAY_SIZE(equotW);
                 break;
             }
-            /* fallthrough for text mode */
+
         default:
             *ptr++ = *str;
             break;

@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  scalar_t__ uint16_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef scalar_t__ uint16_t ;
 struct RTPHeader {int ve; int pt; void* cpart; void* tlen; void* ssrc; void* timestamp; void* sequnum; scalar_t__ ma; scalar_t__ cc; scalar_t__ xe; scalar_t__ pe; } ;
-typedef  int /*<<< orphan*/  rdata ;
-struct TYPE_3__ {int payload_type; scalar_t__ sequnum; int /*<<< orphan*/  friend_number; int /*<<< orphan*/  m; int /*<<< orphan*/  ssrc; } ;
-typedef  TYPE_1__ RTPSession ;
+typedef int rdata ;
+struct TYPE_3__ {int payload_type; scalar_t__ sequnum; int friend_number; int m; int ssrc; } ;
+typedef TYPE_1__ RTPSession ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOGGER_WARNING (char*,...) ; 
- scalar_t__ MAX_CRYPTO_DATA_SIZE ; 
- int /*<<< orphan*/  current_time_monotonic () ; 
- int /*<<< orphan*/  errno ; 
- void* htonl (int /*<<< orphan*/ ) ; 
- void* htons (scalar_t__) ; 
- int /*<<< orphan*/  memcpy (int*,int const*,scalar_t__) ; 
- int /*<<< orphan*/  memset (int*,int /*<<< orphan*/ ,int) ; 
- int send_custom_lossy_packet (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*,scalar_t__) ; 
- int /*<<< orphan*/  strerror (int /*<<< orphan*/ ) ; 
+
+ int LOGGER_WARNING (char*,...) ;
+ scalar_t__ MAX_CRYPTO_DATA_SIZE ;
+ int current_time_monotonic () ;
+ int errno ;
+ void* htonl (int ) ;
+ void* htons (scalar_t__) ;
+ int memcpy (int*,int const*,scalar_t__) ;
+ int memset (int*,int ,int) ;
+ int send_custom_lossy_packet (int ,int ,int*,scalar_t__) ;
+ int strerror (int ) ;
 
 int rtp_send_data (RTPSession *session, const uint8_t *data, uint16_t length)
 {
@@ -42,7 +42,7 @@ int rtp_send_data (RTPSession *session, const uint8_t *data, uint16_t length)
 
     rdata[0] = session->payload_type;
 
-    struct RTPHeader *header = (struct RTPHeader *)(rdata  + 1);
+    struct RTPHeader *header = (struct RTPHeader *)(rdata + 1);
 
     header->ve = 2;
     header->pe = 0;
@@ -61,10 +61,10 @@ int rtp_send_data (RTPSession *session, const uint8_t *data, uint16_t length)
 
     if (MAX_CRYPTO_DATA_SIZE > length + sizeof(struct RTPHeader) + 1) {
 
-        /**
-         * The lenght is lesser than the maximum allowed lenght (including header)
-         * Send the packet in single piece.
-         */
+
+
+
+
 
         memcpy(rdata + 1 + sizeof(struct RTPHeader), data, length);
 
@@ -72,10 +72,10 @@ int rtp_send_data (RTPSession *session, const uint8_t *data, uint16_t length)
             LOGGER_WARNING("RTP send failed (len: %d)! std error: %s", sizeof(rdata), strerror(errno));
     } else {
 
-        /**
-         * The lenght is greater than the maximum allowed lenght (including header)
-         * Send the packet in multiple pieces.
-         */
+
+
+
+
 
         uint16_t sent = 0;
         uint16_t piece = MAX_CRYPTO_DATA_SIZE - (sizeof(struct RTPHeader) + 1);
@@ -92,7 +92,7 @@ int rtp_send_data (RTPSession *session, const uint8_t *data, uint16_t length)
             header->cpart = htons(sent);
         }
 
-        /* Send remaining */
+
         piece = length - sent;
 
         if (piece) {

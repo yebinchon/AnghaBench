@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct acpi_button {int /*<<< orphan*/  handle; } ;
-typedef  int /*<<< orphan*/  ACPI_STATUS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACPI_BUTTON_NOTIFY_STATUS ; 
- int /*<<< orphan*/  ACPI_FUNCTION_TRACE (char*) ; 
- int /*<<< orphan*/  AE_BAD_PARAMETER ; 
- int /*<<< orphan*/  AE_OK ; 
- int /*<<< orphan*/  acpi_button_notify (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct acpi_button*) ; 
- int /*<<< orphan*/  return_ACPI_STATUS (int /*<<< orphan*/ ) ; 
+
+
+
+struct acpi_button {int handle; } ;
+typedef int ACPI_STATUS ;
+
+
+ int ACPI_BUTTON_NOTIFY_STATUS ;
+ int ACPI_FUNCTION_TRACE (char*) ;
+ int AE_BAD_PARAMETER ;
+ int AE_OK ;
+ int acpi_button_notify (int ,int ,struct acpi_button*) ;
+ int return_ACPI_STATUS (int ) ;
 
 ACPI_STATUS
 acpi_button_notify_fixed (
-	void			*data)
+ void *data)
 {
-	struct acpi_button	*button = (struct acpi_button *) data;
-	
-	ACPI_FUNCTION_TRACE("acpi_button_notify_fixed");
+ struct acpi_button *button = (struct acpi_button *) data;
 
-	if (!button)
-		return_ACPI_STATUS(AE_BAD_PARAMETER);
+ ACPI_FUNCTION_TRACE("acpi_button_notify_fixed");
 
-	acpi_button_notify(button->handle, ACPI_BUTTON_NOTIFY_STATUS, button);
+ if (!button)
+  return_ACPI_STATUS(AE_BAD_PARAMETER);
 
-	return_ACPI_STATUS(AE_OK);
+ acpi_button_notify(button->handle, ACPI_BUTTON_NOTIFY_STATUS, button);
+
+ return_ACPI_STATUS(AE_OK);
 }

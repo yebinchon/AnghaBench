@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
+
+
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_11__ {int granulepos; int b_o_s; unsigned int bytes; void* packet; scalar_t__ packetno; scalar_t__ e_o_s; } ;
-typedef  TYPE_3__ ogg_packet ;
-struct TYPE_9__ {int /*<<< orphan*/  i_rate; int /*<<< orphan*/  i_channels; } ;
-struct TYPE_10__ {int i_extra; TYPE_1__ audio; int /*<<< orphan*/ * p_extra; } ;
+typedef TYPE_3__ ogg_packet ;
+struct TYPE_9__ {int i_rate; int i_channels; } ;
+struct TYPE_10__ {int i_extra; TYPE_1__ audio; int * p_extra; } ;
 struct TYPE_12__ {TYPE_2__ fmt_in; } ;
-typedef  TYPE_4__ decoder_t ;
-typedef  int /*<<< orphan*/  OpusHeader ;
+typedef TYPE_4__ decoder_t ;
+typedef int OpusHeader ;
 
-/* Variables and functions */
- int ProcessInitialHeader (TYPE_4__*,TYPE_3__*) ; 
- int VLC_EGENERIC ; 
- int VLC_ENOMEM ; 
- int VLC_SUCCESS ; 
- int XIPH_MAX_HEADER_COUNT ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
- scalar_t__ memcmp (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  msg_Err (TYPE_4__*,char*) ; 
- int /*<<< orphan*/  opus_get_version_string () ; 
- int /*<<< orphan*/  opus_prepare_header (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ opus_write_header (int /*<<< orphan*/ **,int*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ xiph_SplitHeaders (unsigned int*,void const**,unsigned int*,int,int /*<<< orphan*/ *) ; 
+
+ int ProcessInitialHeader (TYPE_4__*,TYPE_3__*) ;
+ int VLC_EGENERIC ;
+ int VLC_ENOMEM ;
+ int VLC_SUCCESS ;
+ int XIPH_MAX_HEADER_COUNT ;
+ int free (int *) ;
+ scalar_t__ memcmp (int *,char*,int) ;
+ int msg_Err (TYPE_4__*,char*) ;
+ int opus_get_version_string () ;
+ int opus_prepare_header (int ,int ,int *) ;
+ scalar_t__ opus_write_header (int **,int*,int *,int ) ;
+ scalar_t__ xiph_SplitHeaders (unsigned int*,void const**,unsigned int*,int,int *) ;
 
 __attribute__((used)) static int ProcessHeaders( decoder_t *p_dec )
 {
@@ -48,10 +48,10 @@ __attribute__((used)) static int ProcessHeaders( decoder_t *p_dec )
     int i_extra = p_dec->fmt_in.i_extra;
     uint8_t *p_extra = p_dec->fmt_in.p_extra;
 
-    /* If we have no header (e.g. from RTP), make one. */
-    bool b_dummy_header = false;
+
+    bool b_dummy_header = 0;
     if( !i_extra ||
-        (i_extra > 10 && memcmp( &p_extra[2], "OpusHead", 8 )) ) /* Borked muxers */
+        (i_extra > 10 && memcmp( &p_extra[2], "OpusHead", 8 )) )
     {
         OpusHeader header;
         opus_prepare_header( p_dec->fmt_in.audio.i_channels,
@@ -59,7 +59,7 @@ __attribute__((used)) static int ProcessHeaders( decoder_t *p_dec )
         if( opus_write_header( &p_extra, &i_extra, &header,
                                opus_get_version_string() ) )
             return VLC_ENOMEM;
-        b_dummy_header = true;
+        b_dummy_header = 1;
     }
 
     if( xiph_SplitHeaders( pi_size, pp_data, &i_count,
@@ -81,9 +81,9 @@ __attribute__((used)) static int ProcessHeaders( decoder_t *p_dec )
     oggpacket.e_o_s = 0;
     oggpacket.packetno = 0;
 
-    /* Take care of the initial Opus header */
-    oggpacket.b_o_s = 1; /* yes this actually is a b_o_s packet :) */
-    oggpacket.bytes  = pi_size[0];
+
+    oggpacket.b_o_s = 1;
+    oggpacket.bytes = pi_size[0];
     oggpacket.packet = (void *)pp_data[0];
     int ret = ProcessInitialHeader( p_dec, &oggpacket );
 

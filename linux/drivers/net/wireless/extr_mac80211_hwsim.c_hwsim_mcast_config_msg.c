@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct sk_buff {int dummy; } ;
 struct genl_info {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  HWSIM_MCGRP_CONFIG ; 
- int /*<<< orphan*/  genl_notify (int /*<<< orphan*/ *,struct sk_buff*,struct genl_info*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  genlmsg_multicast (int /*<<< orphan*/ *,struct sk_buff*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hwsim_genl_family ; 
+
+ int GFP_KERNEL ;
+ int HWSIM_MCGRP_CONFIG ;
+ int genl_notify (int *,struct sk_buff*,struct genl_info*,int ,int ) ;
+ int genlmsg_multicast (int *,struct sk_buff*,int ,int ,int ) ;
+ int hwsim_genl_family ;
 
 __attribute__((used)) static void hwsim_mcast_config_msg(struct sk_buff *mcast_skb,
-				   struct genl_info *info)
+       struct genl_info *info)
 {
-	if (info)
-		genl_notify(&hwsim_genl_family, mcast_skb, info,
-			    HWSIM_MCGRP_CONFIG, GFP_KERNEL);
-	else
-		genlmsg_multicast(&hwsim_genl_family, mcast_skb, 0,
-				  HWSIM_MCGRP_CONFIG, GFP_KERNEL);
+ if (info)
+  genl_notify(&hwsim_genl_family, mcast_skb, info,
+       HWSIM_MCGRP_CONFIG, GFP_KERNEL);
+ else
+  genlmsg_multicast(&hwsim_genl_family, mcast_skb, 0,
+      HWSIM_MCGRP_CONFIG, GFP_KERNEL);
 }

@@ -1,36 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_9__ {char* name; } ;
-typedef  TYPE_1__ type_t ;
+typedef TYPE_1__ type_t ;
 struct sltg_typelib {int dummy; } ;
-
-/* Variables and functions */
-#define  TYPE_BASIC 134 
-#define  TYPE_COCLASS 133 
-#define  TYPE_ENUM 132 
-#define  TYPE_INTERFACE 131 
-#define  TYPE_POINTER 130 
-#define  TYPE_STRUCT 129 
-#define  TYPE_UNION 128 
- int /*<<< orphan*/  add_coclass_typeinfo (struct sltg_typelib*,TYPE_1__*) ; 
- int /*<<< orphan*/  add_enum_typeinfo (struct sltg_typelib*,TYPE_1__*) ; 
- int /*<<< orphan*/  add_interface_typeinfo (struct sltg_typelib*,TYPE_1__*) ; 
- int /*<<< orphan*/  add_structure_typeinfo (struct sltg_typelib*,TYPE_1__*) ; 
- int /*<<< orphan*/  add_union_typeinfo (struct sltg_typelib*,TYPE_1__*) ; 
- int /*<<< orphan*/  chat (char*,char*,int) ; 
- int /*<<< orphan*/  error (char*,int,char*) ; 
- int type_get_type (TYPE_1__*) ; 
+ int add_coclass_typeinfo (struct sltg_typelib*,TYPE_1__*) ;
+ int add_enum_typeinfo (struct sltg_typelib*,TYPE_1__*) ;
+ int add_interface_typeinfo (struct sltg_typelib*,TYPE_1__*) ;
+ int add_structure_typeinfo (struct sltg_typelib*,TYPE_1__*) ;
+ int add_union_typeinfo (struct sltg_typelib*,TYPE_1__*) ;
+ int chat (char*,char*,int) ;
+ int error (char*,int,char*) ;
+ int type_get_type (TYPE_1__*) ;
 
 __attribute__((used)) static void add_type_typeinfo(struct sltg_typelib *typelib, type_t *type)
 {
@@ -38,23 +29,23 @@ __attribute__((used)) static void add_type_typeinfo(struct sltg_typelib *typelib
 
     switch (type_get_type(type))
     {
-    case TYPE_INTERFACE:
+    case 131:
         add_interface_typeinfo(typelib, type);
         break;
-    case TYPE_STRUCT:
+    case 129:
         add_structure_typeinfo(typelib, type);
         break;
-    case TYPE_ENUM:
+    case 132:
         add_enum_typeinfo(typelib, type);
         break;
-    case TYPE_UNION:
+    case 128:
         add_union_typeinfo(typelib, type);
         break;
-    case TYPE_COCLASS:
+    case 133:
         add_coclass_typeinfo(typelib, type);
         break;
-    case TYPE_BASIC:
-    case TYPE_POINTER:
+    case 134:
+    case 130:
         break;
     default:
         error("add_type_typeinfo: unhandled type %d for %s\n", type_get_type(type), type->name);

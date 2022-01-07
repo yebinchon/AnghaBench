@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_5__ ;
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct repl_server_status {int flags; long long client_log_pos; long long client_log_wrpos; long buffer_file_pos; long long logrotate_pos; long wptr; long rptr; TYPE_5__* conn; TYPE_4__* binlog; scalar_t__ buffer_size; TYPE_2__* rb; int /*<<< orphan*/  buffer; } ;
+
+
+typedef struct TYPE_10__ TYPE_5__ ;
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct repl_server_status {int flags; long long client_log_pos; long long client_log_wrpos; long buffer_file_pos; long long logrotate_pos; long wptr; long rptr; TYPE_5__* conn; TYPE_4__* binlog; scalar_t__ buffer_size; TYPE_2__* rb; int buffer; } ;
 struct TYPE_6__ {scalar_t__ total_bytes; scalar_t__ unprocessed_bytes; } ;
 struct TYPE_10__ {TYPE_1__ Out; } ;
 struct TYPE_9__ {TYPE_3__* info; } ;
 struct TYPE_8__ {long long file_size; scalar_t__ log_pos; } ;
 struct TYPE_7__ {scalar_t__ slice_binlog_pos; } ;
 
-/* Variables and functions */
- int DIRTY_THRESHOLD_HIGH ; 
- long long DIRTY_THRESHOLD_LOW ; 
- scalar_t__ MAX_NET_OUT_QUEUE_BYTES ; 
- int MAX_UPDATE_SIZE ; 
- int RS_LOGROTATE ; 
- int RS_REPL_STARTED ; 
- int RS_ZIPPED ; 
- int /*<<< orphan*/  assert (int) ; 
- int check_last36_bytes (struct repl_server_status*) ; 
- long get_buffer_bytes (struct repl_server_status*) ; 
- int /*<<< orphan*/  load_data (struct repl_server_status*) ; 
- int send_update_packet (TYPE_5__*,struct repl_server_status*,int) ; 
+
+ int DIRTY_THRESHOLD_HIGH ;
+ long long DIRTY_THRESHOLD_LOW ;
+ scalar_t__ MAX_NET_OUT_QUEUE_BYTES ;
+ int MAX_UPDATE_SIZE ;
+ int RS_LOGROTATE ;
+ int RS_REPL_STARTED ;
+ int RS_ZIPPED ;
+ int assert (int) ;
+ int check_last36_bytes (struct repl_server_status*) ;
+ long get_buffer_bytes (struct repl_server_status*) ;
+ int load_data (struct repl_server_status*) ;
+ int send_update_packet (TYPE_5__*,struct repl_server_status*,int) ;
 
 int process_server (struct repl_server_status *S) {
   if (!(S->flags & RS_REPL_STARTED) || !S->buffer) {
@@ -105,6 +105,6 @@ int process_server (struct repl_server_status *S) {
   if (can_send > MAX_UPDATE_SIZE) {
     can_send = MAX_UPDATE_SIZE;
   }
-  // now send can_send bytes to client
+
   return send_update_packet (S->conn, S, can_send);
 }

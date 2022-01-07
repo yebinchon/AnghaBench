@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_24__   TYPE_7__ ;
-typedef  struct TYPE_23__   TYPE_6__ ;
-typedef  struct TYPE_22__   TYPE_5__ ;
-typedef  struct TYPE_21__   TYPE_4__ ;
-typedef  struct TYPE_20__   TYPE_3__ ;
-typedef  struct TYPE_19__   TYPE_2__ ;
-typedef  struct TYPE_18__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint64_t ;
-typedef  int uint32_t ;
-typedef  int int64_t ;
+
+
+typedef struct TYPE_24__ TYPE_7__ ;
+typedef struct TYPE_23__ TYPE_6__ ;
+typedef struct TYPE_22__ TYPE_5__ ;
+typedef struct TYPE_21__ TYPE_4__ ;
+typedef struct TYPE_20__ TYPE_3__ ;
+typedef struct TYPE_19__ TYPE_2__ ;
+typedef struct TYPE_18__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint64_t ;
+typedef int uint32_t ;
+typedef int int64_t ;
 struct TYPE_22__ {int index_size; int chunk_offs; int chunk_index; scalar_t__ sample_size; scalar_t__ index_offset; } ;
-typedef  TYPE_5__ VC_CONTAINER_TRACK_MODULE_T ;
+typedef TYPE_5__ VC_CONTAINER_TRACK_MODULE_T ;
 struct TYPE_23__ {TYPE_3__** tracks; TYPE_1__* priv; } ;
-typedef  TYPE_6__ VC_CONTAINER_T ;
-typedef  int /*<<< orphan*/  VC_CONTAINER_STATUS_T ;
+typedef TYPE_6__ VC_CONTAINER_T ;
+typedef int VC_CONTAINER_STATUS_T ;
 struct TYPE_21__ {scalar_t__ refcount; } ;
 struct TYPE_24__ {TYPE_4__ null_io; } ;
-typedef  TYPE_7__ VC_CONTAINER_MODULE_T ;
-typedef  int /*<<< orphan*/  VC_CONTAINER_FOURCC_T ;
+typedef TYPE_7__ VC_CONTAINER_MODULE_T ;
+typedef int VC_CONTAINER_FOURCC_T ;
 struct TYPE_20__ {TYPE_2__* priv; } ;
 struct TYPE_19__ {TYPE_5__* module; } ;
 struct TYPE_18__ {TYPE_7__* module; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AVI_END_CHUNK (TYPE_6__*) ; 
- int /*<<< orphan*/  AVI_INDEX_OF_INDEXES ; 
- scalar_t__ AVI_SUPER_INDEX_ENTRY_SIZE ; 
- int /*<<< orphan*/  STREAM_STATUS (TYPE_6__*) ; 
- int /*<<< orphan*/  VC_FOURCC (char,unsigned char,char,char) ; 
- int /*<<< orphan*/  WRITE_BYTES (TYPE_6__*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  WRITE_FOURCC (TYPE_6__*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  WRITE_U16 (TYPE_6__*,int,char*) ; 
- int /*<<< orphan*/  WRITE_U32 (TYPE_6__*,int,char*) ; 
- int /*<<< orphan*/  WRITE_U64 (TYPE_6__*,scalar_t__,char*) ; 
- int /*<<< orphan*/  WRITE_U8 (TYPE_6__*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  avi_chunk_id_from_track_num (TYPE_6__*,int /*<<< orphan*/ *,unsigned int) ; 
+
+ int AVI_END_CHUNK (TYPE_6__*) ;
+ int AVI_INDEX_OF_INDEXES ;
+ scalar_t__ AVI_SUPER_INDEX_ENTRY_SIZE ;
+ int STREAM_STATUS (TYPE_6__*) ;
+ int VC_FOURCC (char,unsigned char,char,char) ;
+ int WRITE_BYTES (TYPE_6__*,int *,int) ;
+ int WRITE_FOURCC (TYPE_6__*,int ,char*) ;
+ int WRITE_U16 (TYPE_6__*,int,char*) ;
+ int WRITE_U32 (TYPE_6__*,int,char*) ;
+ int WRITE_U64 (TYPE_6__*,scalar_t__,char*) ;
+ int WRITE_U8 (TYPE_6__*,int ,char*) ;
+ int avi_chunk_id_from_track_num (TYPE_6__*,int *,unsigned int) ;
 
 __attribute__((used)) static VC_CONTAINER_STATUS_T avi_write_super_index_chunk(VC_CONTAINER_T *p_ctx, unsigned int index_track_num,
    uint32_t index_size)
@@ -53,13 +53,13 @@ __attribute__((used)) static VC_CONTAINER_STATUS_T avi_write_super_index_chunk(V
    VC_CONTAINER_MODULE_T *module = p_ctx->priv->module;
    VC_CONTAINER_TRACK_MODULE_T *track_module = p_ctx->tracks[index_track_num]->priv->module;
    VC_CONTAINER_FOURCC_T chunk_id;
-   uint32_t num_indices = 1; /* FIXME: support for multiple RIFF chunks (AVIX) */
+   uint32_t num_indices = 1;
    unsigned int i;
 
    if(module->null_io.refcount)
    {
-      /* Assume that we're not actually writing the data, just want know the index chunk size */
-      WRITE_BYTES(p_ctx, NULL, 8 + 24 + num_indices * (int64_t)AVI_SUPER_INDEX_ENTRY_SIZE);
+
+      WRITE_BYTES(p_ctx, ((void*)0), 8 + 24 + num_indices * (int64_t)AVI_SUPER_INDEX_ENTRY_SIZE);
       return STREAM_STATUS(p_ctx);
    }
 

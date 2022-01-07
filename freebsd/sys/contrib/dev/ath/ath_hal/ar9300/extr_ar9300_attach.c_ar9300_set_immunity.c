@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u_int32_t ;
+
+
+
+
+typedef int u_int32_t ;
 struct ath_hal_9300 {int* ah_immunity_vals; scalar_t__ ah_immunity_on; } ;
 struct ath_hal {int dummy; } ;
-typedef  scalar_t__ HAL_BOOL ;
+typedef scalar_t__ HAL_BOOL ;
 
-/* Variables and functions */
- struct ath_hal_9300* AH9300 (struct ath_hal*) ; 
- int /*<<< orphan*/  AR_PHY_SFCORR ; 
- int /*<<< orphan*/  AR_PHY_SFCORR_EXT ; 
- int /*<<< orphan*/  AR_PHY_SFCORR_EXT_M1_THRESH ; 
- int /*<<< orphan*/  AR_PHY_SFCORR_EXT_M1_THRESH_LOW ; 
- int /*<<< orphan*/  AR_PHY_SFCORR_EXT_M2_THRESH ; 
- int /*<<< orphan*/  AR_PHY_SFCORR_EXT_M2_THRESH_LOW ; 
- int /*<<< orphan*/  AR_PHY_SFCORR_LOW ; 
- int /*<<< orphan*/  AR_PHY_SFCORR_LOW_M1_THRESH_LOW ; 
- int /*<<< orphan*/  AR_PHY_SFCORR_LOW_M2COUNT_THR_LOW ; 
- int /*<<< orphan*/  AR_PHY_SFCORR_LOW_M2_THRESH_LOW ; 
- int /*<<< orphan*/  AR_PHY_SFCORR_LOW_USE_SELF_CORR_LOW ; 
- int /*<<< orphan*/  AR_PHY_SFCORR_M1_THRESH ; 
- int /*<<< orphan*/  AR_PHY_SFCORR_M2COUNT_THR ; 
- int /*<<< orphan*/  AR_PHY_SFCORR_M2_THRESH ; 
- int /*<<< orphan*/  OS_REG_CLR_BIT (struct ath_hal*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OS_REG_RMW_FIELD (struct ath_hal*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  OS_REG_SET_BIT (struct ath_hal*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ struct ath_hal_9300* AH9300 (struct ath_hal*) ;
+ int AR_PHY_SFCORR ;
+ int AR_PHY_SFCORR_EXT ;
+ int AR_PHY_SFCORR_EXT_M1_THRESH ;
+ int AR_PHY_SFCORR_EXT_M1_THRESH_LOW ;
+ int AR_PHY_SFCORR_EXT_M2_THRESH ;
+ int AR_PHY_SFCORR_EXT_M2_THRESH_LOW ;
+ int AR_PHY_SFCORR_LOW ;
+ int AR_PHY_SFCORR_LOW_M1_THRESH_LOW ;
+ int AR_PHY_SFCORR_LOW_M2COUNT_THR_LOW ;
+ int AR_PHY_SFCORR_LOW_M2_THRESH_LOW ;
+ int AR_PHY_SFCORR_LOW_USE_SELF_CORR_LOW ;
+ int AR_PHY_SFCORR_M1_THRESH ;
+ int AR_PHY_SFCORR_M2COUNT_THR ;
+ int AR_PHY_SFCORR_M2_THRESH ;
+ int OS_REG_CLR_BIT (struct ath_hal*,int ,int ) ;
+ int OS_REG_RMW_FIELD (struct ath_hal*,int ,int ,int) ;
+ int OS_REG_SET_BIT (struct ath_hal*,int ,int ) ;
 
 void
 ar9300_set_immunity(struct ath_hal *ah, HAL_BOOL enable)

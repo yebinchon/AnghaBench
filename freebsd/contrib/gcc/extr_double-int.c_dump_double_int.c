@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  double_int ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  double_int_neg (int /*<<< orphan*/ ) ; 
- scalar_t__ double_int_negative_p (int /*<<< orphan*/ ) ; 
- unsigned int double_int_split_digit (int /*<<< orphan*/ *,int) ; 
- scalar_t__ double_int_zero_p (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*,...) ; 
+
+
+
+typedef int double_int ;
+typedef int FILE ;
+
+
+ int double_int_neg (int ) ;
+ scalar_t__ double_int_negative_p (int ) ;
+ unsigned int double_int_split_digit (int *,int) ;
+ scalar_t__ double_int_zero_p (int ) ;
+ int fprintf (int *,char*,...) ;
 
 void
 dump_double_int (FILE *file, double_int cst, bool uns)

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ Char ;
-typedef  int /*<<< orphan*/  CCRETVAL ;
 
-/* Variables and functions */
- int ActionFlag ; 
- int /*<<< orphan*/  CC_ERROR ; 
- int /*<<< orphan*/  CC_NORM ; 
- int /*<<< orphan*/  CC_REFRESH ; 
- scalar_t__* Cursor ; 
- scalar_t__* LastChar ; 
- int /*<<< orphan*/  RefCursor () ; 
- int TCSHOP_DELETE ; 
- int /*<<< orphan*/  c_delfini () ; 
+
+
+
+typedef scalar_t__ Char ;
+typedef int CCRETVAL ;
+
+
+ int ActionFlag ;
+ int CC_ERROR ;
+ int CC_NORM ;
+ int CC_REFRESH ;
+ scalar_t__* Cursor ;
+ scalar_t__* LastChar ;
+ int RefCursor () ;
+ int TCSHOP_DELETE ;
+ int c_delfini () ;
 
 __attribute__((used)) static CCRETVAL
 v_csearch_fwd(Char ch, int count, int tflag)
@@ -31,24 +31,24 @@ v_csearch_fwd(Char ch, int count, int tflag)
 
     cp = Cursor;
     while (count--) {
-	if(*cp == ch) 
-	    cp++;
-	while (cp < LastChar && *cp != ch) 
-	    cp++;
+ if(*cp == ch)
+     cp++;
+ while (cp < LastChar && *cp != ch)
+     cp++;
     }
 
     if (cp >= LastChar)
-	return(CC_ERROR);
+ return(CC_ERROR);
 
     if (*cp == ch && tflag)
-	cp--;
+ cp--;
 
     Cursor = cp;
 
     if (ActionFlag & TCSHOP_DELETE) {
-	Cursor++;
-	c_delfini();
-	return(CC_REFRESH);
+ Cursor++;
+ c_delfini();
+ return(CC_REFRESH);
     }
     RefCursor();
     return(CC_NORM);

@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct vscsibk_info {int /*<<< orphan*/  nr_unreplied_reqs; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  atomic_inc (int /*<<< orphan*/ *) ; 
+
+
+
+struct vscsibk_info {int nr_unreplied_reqs; } ;
+
+
+ int atomic_inc (int *) ;
 
 __attribute__((used)) static void scsiback_get(struct vscsibk_info *info)
 {
-	atomic_inc(&info->nr_unreplied_reqs);
+ atomic_inc(&info->nr_unreplied_reqs);
 }

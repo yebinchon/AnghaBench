@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u8_t ;
+
+
+
+
+typedef int u8_t ;
 struct bt_mesh_sg {int const* data; size_t len; } ;
-typedef  int /*<<< orphan*/  pad ;
-typedef  int /*<<< orphan*/  out ;
+typedef int pad ;
+typedef int out ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAY_SIZE (struct bt_mesh_sg*) ; 
- int /*<<< orphan*/  BT_DBG (char*,int,...) ; 
- int /*<<< orphan*/  bt_hex (int const*,int) ; 
- int bt_mesh_aes_cmac (int*,struct bt_mesh_sg*,int /*<<< orphan*/ ,int*) ; 
- int bt_mesh_aes_cmac_one (int*,int const*,int,int*) ; 
- int bt_mesh_s1 (char*,int*) ; 
- int /*<<< orphan*/  memcpy (int*,int*,int) ; 
+
+ int ARRAY_SIZE (struct bt_mesh_sg*) ;
+ int BT_DBG (char*,int,...) ;
+ int bt_hex (int const*,int) ;
+ int bt_mesh_aes_cmac (int*,struct bt_mesh_sg*,int ,int*) ;
+ int bt_mesh_aes_cmac_one (int*,int const*,int,int*) ;
+ int bt_mesh_s1 (char*,int*) ;
+ int memcpy (int*,int*,int) ;
 
 int bt_mesh_k2(const u8_t n[16], const u8_t *p, size_t p_len,
                u8_t net_id[1], u8_t enc_key[16], u8_t priv_key[16])
@@ -49,12 +49,12 @@ int bt_mesh_k2(const u8_t n[16], const u8_t *p, size_t p_len,
 
     pad = 0x01;
 
-    sg[0].data = NULL;
-    sg[0].len  = 0;
+    sg[0].data = ((void*)0);
+    sg[0].len = 0;
     sg[1].data = p;
-    sg[1].len  = p_len;
+    sg[1].len = p_len;
     sg[2].data = &pad;
-    sg[2].len  = sizeof(pad);
+    sg[2].len = sizeof(pad);
 
     err = bt_mesh_aes_cmac(t, sg, ARRAY_SIZE(sg), out);
     if (err) {
@@ -64,7 +64,7 @@ int bt_mesh_k2(const u8_t n[16], const u8_t *p, size_t p_len,
     net_id[0] = out[15] & 0x7f;
 
     sg[0].data = out;
-    sg[0].len  = sizeof(out);
+    sg[0].len = sizeof(out);
     pad = 0x02;
 
     err = bt_mesh_aes_cmac(t, sg, ARRAY_SIZE(sg), out);

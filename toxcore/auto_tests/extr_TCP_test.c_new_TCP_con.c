@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct sockaddr_in6 {int /*<<< orphan*/  sin6_addr; int /*<<< orphan*/  sin6_port; int /*<<< orphan*/  sin6_family; int /*<<< orphan*/  member_0; } ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct sockaddr_in6 {int sin6_addr; int sin6_port; int sin6_family; int member_0; } ;
 struct sockaddr {int dummy; } ;
-struct sec_TCP_con {int /*<<< orphan*/  sock; int /*<<< orphan*/ * recv_nonce; int /*<<< orphan*/  shared_key; int /*<<< orphan*/ * public_key; int /*<<< orphan*/ * sent_nonce; } ;
-typedef  int /*<<< orphan*/  sock_t ;
-typedef  int /*<<< orphan*/  addr6_loopback ;
-struct TYPE_4__ {int /*<<< orphan*/  public_key; } ;
-typedef  TYPE_1__ TCP_Server ;
+struct sec_TCP_con {int sock; int * recv_nonce; int shared_key; int * public_key; int * sent_nonce; } ;
+typedef int sock_t ;
+typedef int addr6_loopback ;
+struct TYPE_4__ {int public_key; } ;
+typedef TYPE_1__ TCP_Server ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_INET6 ; 
- int /*<<< orphan*/  IPPROTO_TCP ; 
- size_t NUM_PORTS ; 
- int /*<<< orphan*/  SOCK_STREAM ; 
- int TCP_CLIENT_HANDSHAKE_SIZE ; 
- int TCP_HANDSHAKE_PLAIN_SIZE ; 
- int TCP_SERVER_HANDSHAKE_SIZE ; 
- int /*<<< orphan*/  c_sleep (int) ; 
- int /*<<< orphan*/  ck_assert_msg (int,char*) ; 
- int connect (int /*<<< orphan*/ ,struct sockaddr*,int) ; 
- int crypto_box_BEFORENMBYTES ; 
- int crypto_box_NONCEBYTES ; 
- int crypto_box_PUBLICKEYBYTES ; 
- int crypto_box_SECRETKEYBYTES ; 
- int /*<<< orphan*/  crypto_box_keypair (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int decrypt_data (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  do_TCP_server (TYPE_1__*) ; 
- int encrypt_data (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  encrypt_precompute (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  htons (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  in6addr_loopback ; 
- struct sec_TCP_con* malloc (int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  new_nonce (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * ports ; 
- size_t rand () ; 
- int /*<<< orphan*/  random_nonce (int /*<<< orphan*/ *) ; 
- int recv (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int send (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  socket (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int AF_INET6 ;
+ int IPPROTO_TCP ;
+ size_t NUM_PORTS ;
+ int SOCK_STREAM ;
+ int TCP_CLIENT_HANDSHAKE_SIZE ;
+ int TCP_HANDSHAKE_PLAIN_SIZE ;
+ int TCP_SERVER_HANDSHAKE_SIZE ;
+ int c_sleep (int) ;
+ int ck_assert_msg (int,char*) ;
+ int connect (int ,struct sockaddr*,int) ;
+ int crypto_box_BEFORENMBYTES ;
+ int crypto_box_NONCEBYTES ;
+ int crypto_box_PUBLICKEYBYTES ;
+ int crypto_box_SECRETKEYBYTES ;
+ int crypto_box_keypair (int *,int *) ;
+ int decrypt_data (int ,int *,int *,int *,int,int *) ;
+ int do_TCP_server (TYPE_1__*) ;
+ int encrypt_data (int ,int *,int *,int *,int,int *) ;
+ int encrypt_precompute (int *,int *,int ) ;
+ int htons (int ) ;
+ int in6addr_loopback ;
+ struct sec_TCP_con* malloc (int) ;
+ int memcpy (int *,int *,int) ;
+ int new_nonce (int *) ;
+ int * ports ;
+ size_t rand () ;
+ int random_nonce (int *) ;
+ int recv (int ,int *,int,int ) ;
+ int send (int ,int *,int,int ) ;
+ int socket (int ,int ,int ) ;
 
 struct sec_TCP_con *new_TCP_con(TCP_Server *tcp_s)
 {

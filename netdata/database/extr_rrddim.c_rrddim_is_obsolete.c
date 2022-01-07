@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int /*<<< orphan*/  name; } ;
-struct TYPE_7__ {int /*<<< orphan*/  name; } ;
-typedef  TYPE_1__ RRDSET ;
-typedef  TYPE_2__ RRDDIM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D_RRD_CALLS ; 
- int /*<<< orphan*/  RRDDIM_FLAG_OBSOLETE ; 
- int /*<<< orphan*/  RRDSET_FLAG_OBSOLETE_DIMENSIONS ; 
- int /*<<< orphan*/  debug (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rrddim_flag_set (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rrdset_flag_set (TYPE_1__*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int name; } ;
+struct TYPE_7__ {int name; } ;
+typedef TYPE_1__ RRDSET ;
+typedef TYPE_2__ RRDDIM ;
+
+
+ int D_RRD_CALLS ;
+ int RRDDIM_FLAG_OBSOLETE ;
+ int RRDSET_FLAG_OBSOLETE_DIMENSIONS ;
+ int debug (int ,char*,int ,int ) ;
+ int rrddim_flag_set (TYPE_2__*,int ) ;
+ int rrdset_flag_set (TYPE_1__*,int ) ;
 
 inline void rrddim_is_obsolete(RRDSET *st, RRDDIM *rd) {
     debug(D_RRD_CALLS, "rrddim_is_obsolete() for chart %s, dimension %s", st->name, rd->name);

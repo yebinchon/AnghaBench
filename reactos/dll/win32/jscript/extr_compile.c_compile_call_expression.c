@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_6__ ;
-typedef  struct TYPE_13__   TYPE_5__ ;
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  jsop_t ;
-typedef  int /*<<< orphan*/  compiler_ctx_t ;
+
+
+typedef struct TYPE_14__ TYPE_6__ ;
+typedef struct TYPE_13__ TYPE_5__ ;
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int jsop_t ;
+typedef int compiler_ctx_t ;
 struct TYPE_11__ {TYPE_4__* argument_list; TYPE_6__* expression; } ;
-typedef  TYPE_3__ call_expression_t ;
+typedef TYPE_3__ call_expression_t ;
 struct TYPE_12__ {TYPE_6__* expr; struct TYPE_12__* next; } ;
-typedef  TYPE_4__ argument_t ;
-struct TYPE_14__ {int /*<<< orphan*/  type; } ;
+typedef TYPE_4__ argument_t ;
+struct TYPE_14__ {int type; } ;
 struct TYPE_10__ {TYPE_1__* arg; } ;
 struct TYPE_13__ {TYPE_2__ u; } ;
-struct TYPE_9__ {unsigned int uint; int /*<<< orphan*/  lng; } ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  BOOL ;
+struct TYPE_9__ {unsigned int uint; int lng; } ;
+typedef int HRESULT ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OP_call ; 
- int /*<<< orphan*/  OP_call_member ; 
- int /*<<< orphan*/  OP_pop ; 
- int /*<<< orphan*/  OP_push_acc ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  compile_expression (int /*<<< orphan*/ *,TYPE_6__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  compile_memberid_expression (int /*<<< orphan*/ *,TYPE_6__*,int /*<<< orphan*/ ) ; 
- TYPE_5__* instr_ptr (int /*<<< orphan*/ *,unsigned int) ; 
- scalar_t__ is_memberid_expr (int /*<<< orphan*/ ) ; 
- unsigned int push_instr (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  push_instr_uint (int /*<<< orphan*/ *,int /*<<< orphan*/ ,unsigned int) ; 
+
+ int E_OUTOFMEMORY ;
+ scalar_t__ FAILED (int ) ;
+ int OP_call ;
+ int OP_call_member ;
+ int OP_pop ;
+ int OP_push_acc ;
+ int S_OK ;
+ int TRUE ;
+ int compile_expression (int *,TYPE_6__*,int ) ;
+ int compile_memberid_expression (int *,TYPE_6__*,int ) ;
+ TYPE_5__* instr_ptr (int *,unsigned int) ;
+ scalar_t__ is_memberid_expr (int ) ;
+ unsigned int push_instr (int *,int ) ;
+ int push_instr_uint (int *,int ,unsigned int) ;
 
 __attribute__((used)) static HRESULT compile_call_expression(compiler_ctx_t *ctx, call_expression_t *expr, BOOL emit_ret)
 {

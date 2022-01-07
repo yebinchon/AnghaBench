@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int Flags; int Type; } ;
-typedef  TYPE_1__ ACPI_NAMESPACE_NODE ;
+typedef TYPE_1__ ACPI_NAMESPACE_NODE ;
 
-/* Variables and functions */
-#define  ACPI_TYPE_DEVICE 129 
-#define  ACPI_TYPE_THERMAL 128 
- int ANOBJ_METHOD_ARG ; 
- int ANOBJ_METHOD_LOCAL ; 
- int /*<<< orphan*/  AcpiDbDecodeInternalObject (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AcpiNsGetAttachedObject (TYPE_1__*) ; 
- int /*<<< orphan*/  AcpiOsPrintf (char*,...) ; 
- int /*<<< orphan*/  AcpiUtGetNodeName (TYPE_1__*) ; 
+
+
+
+ int ANOBJ_METHOD_ARG ;
+ int ANOBJ_METHOD_LOCAL ;
+ int AcpiDbDecodeInternalObject (int ) ;
+ int AcpiNsGetAttachedObject (TYPE_1__*) ;
+ int AcpiOsPrintf (char*,...) ;
+ int AcpiUtGetNodeName (TYPE_1__*) ;
 
 __attribute__((used)) static void
 AcpiDbDecodeNode (
-    ACPI_NAMESPACE_NODE     *Node)
+    ACPI_NAMESPACE_NODE *Node)
 {
 
     AcpiOsPrintf ("<Node>            Name %4.4s",
@@ -43,14 +43,14 @@ AcpiDbDecodeNode (
 
     switch (Node->Type)
     {
-    /* These types have no attached object */
 
-    case ACPI_TYPE_DEVICE:
+
+    case 129:
 
         AcpiOsPrintf (" Device");
         break;
 
-    case ACPI_TYPE_THERMAL:
+    case 128:
 
         AcpiOsPrintf (" Thermal Zone");
         break;

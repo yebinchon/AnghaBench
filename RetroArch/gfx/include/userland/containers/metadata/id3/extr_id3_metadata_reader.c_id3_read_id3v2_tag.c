@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  scalar_t__ uint32_t ;
-typedef  int /*<<< orphan*/  VC_CONTAINER_T ;
-typedef  int /*<<< orphan*/  VC_CONTAINER_STATUS_T ;
-typedef  int /*<<< orphan*/  VC_CONTAINER_FOURCC_T ;
 
-/* Variables and functions */
- scalar_t__ ID3_SYNC_SAFE (scalar_t__) ; 
- int /*<<< orphan*/  LOG_DEBUG (int /*<<< orphan*/ *,char*,...) ; 
- scalar_t__ MIN (scalar_t__,scalar_t__) ; 
- int PEEK_BYTES (int /*<<< orphan*/ *,int*,int) ; 
- int /*<<< orphan*/  READ_FOURCC (int /*<<< orphan*/ *,char*) ; 
- scalar_t__ READ_U32 (int /*<<< orphan*/ *,char*) ; 
- int READ_U8 (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  SKIP_BYTES (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  SKIP_STRING (int /*<<< orphan*/ *,int,char*) ; 
- int /*<<< orphan*/  SKIP_U8 (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  STREAM_STATUS (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  VC_CONTAINER_ERROR_FORMAT_INVALID ; 
- int /*<<< orphan*/  VC_CONTAINER_ERROR_FORMAT_NOT_SUPPORTED ; 
- int /*<<< orphan*/  VC_CONTAINER_SUCCESS ; 
- int /*<<< orphan*/  id3_read_id3v2_frame (int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__) ; 
+
+
+
+typedef int uint8_t ;
+typedef scalar_t__ uint32_t ;
+typedef int VC_CONTAINER_T ;
+typedef int VC_CONTAINER_STATUS_T ;
+typedef int VC_CONTAINER_FOURCC_T ;
+
+
+ scalar_t__ ID3_SYNC_SAFE (scalar_t__) ;
+ int LOG_DEBUG (int *,char*,...) ;
+ scalar_t__ MIN (scalar_t__,scalar_t__) ;
+ int PEEK_BYTES (int *,int*,int) ;
+ int READ_FOURCC (int *,char*) ;
+ scalar_t__ READ_U32 (int *,char*) ;
+ int READ_U8 (int *,char*) ;
+ int SKIP_BYTES (int *,scalar_t__) ;
+ int SKIP_STRING (int *,int,char*) ;
+ int SKIP_U8 (int *,char*) ;
+ int STREAM_STATUS (int *) ;
+ int VC_CONTAINER_ERROR_FORMAT_INVALID ;
+ int VC_CONTAINER_ERROR_FORMAT_NOT_SUPPORTED ;
+ int VC_CONTAINER_SUCCESS ;
+ int id3_read_id3v2_frame (int *,int ,scalar_t__) ;
 
 __attribute__((used)) static VC_CONTAINER_STATUS_T id3_read_id3v2_tag( VC_CONTAINER_T *p_ctx )
 {
@@ -48,23 +48,23 @@ __attribute__((used)) static VC_CONTAINER_STATUS_T id3_read_id3v2_tag( VC_CONTAI
    tag_size = ID3_SYNC_SAFE(tag_size);
    LOG_DEBUG(p_ctx, "ID3v2 tag size: %d", tag_size);
 
-   /* Check that we support this major version */
+
    if (!(maj_version == 4 || maj_version == 3 || maj_version == 2))
       return VC_CONTAINER_ERROR_FORMAT_NOT_SUPPORTED;
 
-   /* We can't currently handle unsynchronisation */
+
    if ((flags >> 7) & 1)
    {
       LOG_DEBUG(p_ctx, "skipping unsynchronised tag, not supported");
       return VC_CONTAINER_ERROR_FORMAT_NOT_SUPPORTED;
    }
 
-   /* FIXME: check for version 2.2 and extract iTunes gapless playback information */
+
    if (maj_version == 2) return VC_CONTAINER_ERROR_FORMAT_NOT_SUPPORTED;
 
    if ((flags >> 6) & 1)
    {
-      /* Skip extended header, we don't support it */
+
       uint32_t ext_hdr_size;
       LOG_DEBUG(p_ctx, "skipping ID3v2 extended header, not supported");
       ext_hdr_size = READ_U32(p_ctx, "ID3v2 syncsafe extended header size");
@@ -97,14 +97,14 @@ __attribute__((used)) static VC_CONTAINER_STATUS_T id3_read_id3v2_tag( VC_CONTAI
       if((status = STREAM_STATUS(p_ctx)) != VC_CONTAINER_SUCCESS || !frame_id)
          break;
 
-      /* Early exit if we detect an invalid tag size */
+
       if (size + frame_size > tag_size)
       {
          status = VC_CONTAINER_ERROR_FORMAT_INVALID;
          break;
       }
 
-      /* We can't currently handle unsynchronised frames */
+
       if ((format_flags >> 1) & 1)
       {
          LOG_DEBUG(p_ctx, "skipping unsynchronised frame, not supported");
@@ -121,7 +121,7 @@ __attribute__((used)) static VC_CONTAINER_STATUS_T id3_read_id3v2_tag( VC_CONTAI
       size += frame_size;
    }
 
-   /* Try to skip to end of tag in case we bailed out early */
+
    if (size < tag_size) SKIP_BYTES(p_ctx, tag_size - size);
 
    return status;

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tmp ;
 
-/* Variables and functions */
- int UV_ENOSPC ; 
- int UV__INET_ADDRSTRLEN ; 
- int snprintf (char*,int,char const*,unsigned char const,unsigned char const,unsigned char const,unsigned char const) ; 
- int /*<<< orphan*/  uv__strscpy (char*,char*,size_t) ; 
+
+
+
+typedef int tmp ;
+
+
+ int UV_ENOSPC ;
+ int UV__INET_ADDRSTRLEN ;
+ int snprintf (char*,int,char const*,unsigned char const,unsigned char const,unsigned char const,unsigned char const) ;
+ int uv__strscpy (char*,char*,size_t) ;
 
 __attribute__((used)) static int inet_ntop4(const unsigned char *src, char *dst, size_t size) {
   static const char fmt[] = "%u.%u.%u.%u";

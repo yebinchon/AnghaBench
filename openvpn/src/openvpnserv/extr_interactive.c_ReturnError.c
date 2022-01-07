@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  va_list ;
-typedef  int /*<<< orphan*/  VOID ;
-typedef  char* LPWSTR ;
-typedef  char* LPVOID ;
-typedef  int /*<<< orphan*/  LPHANDLE ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
-typedef  int /*<<< orphan*/  HANDLE ;
-typedef  scalar_t__ DWORD_PTR ;
-typedef  scalar_t__ DWORD ;
 
-/* Variables and functions */
- scalar_t__ ERROR_OPENVPN_STARTUP ; 
- int FORMAT_MESSAGE_ALLOCATE_BUFFER ; 
- int FORMAT_MESSAGE_ARGUMENT_ARRAY ; 
- int FORMAT_MESSAGE_FROM_STRING ; 
- int FORMAT_MESSAGE_FROM_SYSTEM ; 
- int FORMAT_MESSAGE_IGNORE_INSERTS ; 
- scalar_t__ FormatMessageW (int,char*,scalar_t__,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LocalFree (char*) ; 
- int /*<<< orphan*/  MSG_FLAGS_ERROR ; 
- int /*<<< orphan*/  MsgToEventLog (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  WritePipeAsync (int /*<<< orphan*/ ,char*,scalar_t__,scalar_t__,int /*<<< orphan*/ ) ; 
- int wcslen (char*) ; 
+
+
+
+typedef int va_list ;
+typedef int VOID ;
+typedef char* LPWSTR ;
+typedef char* LPVOID ;
+typedef int LPHANDLE ;
+typedef int LPCWSTR ;
+typedef int HANDLE ;
+typedef scalar_t__ DWORD_PTR ;
+typedef scalar_t__ DWORD ;
+
+
+ scalar_t__ ERROR_OPENVPN_STARTUP ;
+ int FORMAT_MESSAGE_ALLOCATE_BUFFER ;
+ int FORMAT_MESSAGE_ARGUMENT_ARRAY ;
+ int FORMAT_MESSAGE_FROM_STRING ;
+ int FORMAT_MESSAGE_FROM_SYSTEM ;
+ int FORMAT_MESSAGE_IGNORE_INSERTS ;
+ scalar_t__ FormatMessageW (int,char*,scalar_t__,int ,char*,int ,int *) ;
+ int LocalFree (char*) ;
+ int MSG_FLAGS_ERROR ;
+ int MsgToEventLog (int ,char*,...) ;
+ int WritePipeAsync (int ,char*,scalar_t__,scalar_t__,int ) ;
+ int wcslen (char*) ;
 
 __attribute__((used)) static VOID
 ReturnError(HANDLE pipe, DWORD error, LPCWSTR func, DWORD count, LPHANDLE events)
@@ -50,7 +50,7 @@ ReturnError(HANDLE pipe, DWORD error, LPCWSTR func, DWORD count, LPHANDLE events
         FormatMessageW(FORMAT_MESSAGE_FROM_SYSTEM
                        |FORMAT_MESSAGE_ALLOCATE_BUFFER
                        |FORMAT_MESSAGE_IGNORE_INSERTS,
-                       0, error, 0, (LPWSTR) &args[2], 0, NULL);
+                       0, error, 0, (LPWSTR) &args[2], 0, ((void*)0));
     }
 
     result_len = FormatMessageW(FORMAT_MESSAGE_FROM_STRING
@@ -60,11 +60,11 @@ ReturnError(HANDLE pipe, DWORD error, LPCWSTR func, DWORD count, LPHANDLE events
                                 (LPWSTR) &result, 0, (va_list *) args);
 
     WritePipeAsync(pipe, result, (DWORD)(wcslen(result) * 2), count, events);
-#ifdef UNICODE
-    MsgToEventLog(MSG_FLAGS_ERROR, result);
-#else
+
+
+
     MsgToEventLog(MSG_FLAGS_ERROR, "%S", result);
-#endif
+
 
     if (error != ERROR_OPENVPN_STARTUP)
     {

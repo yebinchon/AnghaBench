@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  CRYPTO_THREAD_cleanup_local (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CRYPTO_THREAD_init_local (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ctxkey ; 
- int /*<<< orphan*/  poolkey ; 
+ int CRYPTO_THREAD_cleanup_local (int *) ;
+ int CRYPTO_THREAD_init_local (int *,int *) ;
+ int ctxkey ;
+ int poolkey ;
 
 int async_init(void)
 {
-    if (!CRYPTO_THREAD_init_local(&ctxkey, NULL))
+    if (!CRYPTO_THREAD_init_local(&ctxkey, ((void*)0)))
         return 0;
 
-    if (!CRYPTO_THREAD_init_local(&poolkey, NULL)) {
+    if (!CRYPTO_THREAD_init_local(&poolkey, ((void*)0))) {
         CRYPTO_THREAD_cleanup_local(&ctxkey);
         return 0;
     }

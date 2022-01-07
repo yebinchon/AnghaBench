@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct sockaddr_in {int dummy; } ;
 struct ifaddrs {scalar_t__ ifa_netmask; scalar_t__ ifa_addr; scalar_t__ ifa_dstaddr; } ;
 
-/* Variables and functions */
- struct ifaddrs* buildEmptyIfa () ; 
- int /*<<< orphan*/  freeifaddrs (struct ifaddrs*) ; 
- scalar_t__ getAssignedAddress (struct sockaddr_in*) ; 
- scalar_t__ getAssignedSubnet (struct sockaddr_in*) ; 
- scalar_t__ getBroadcastAddress (struct sockaddr_in*,struct sockaddr_in*,struct sockaddr_in*) ; 
+
+ struct ifaddrs* buildEmptyIfa () ;
+ int freeifaddrs (struct ifaddrs*) ;
+ scalar_t__ getAssignedAddress (struct sockaddr_in*) ;
+ scalar_t__ getAssignedSubnet (struct sockaddr_in*) ;
+ scalar_t__ getBroadcastAddress (struct sockaddr_in*,struct sockaddr_in*,struct sockaddr_in*) ;
 
 __attribute__((used)) static struct ifaddrs *getWiiUInterfaceAddressData(void)
 {
@@ -39,5 +39,5 @@ __attribute__((used)) static struct ifaddrs *getWiiUInterfaceAddressData(void)
 
 error:
    freeifaddrs(result);
-   return NULL;
+   return ((void*)0);
 }

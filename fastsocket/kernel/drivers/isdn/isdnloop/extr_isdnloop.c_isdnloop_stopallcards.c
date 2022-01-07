@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {struct TYPE_4__* next; } ;
-typedef  TYPE_1__ isdnloop_card ;
+typedef TYPE_1__ isdnloop_card ;
 
-/* Variables and functions */
- TYPE_1__* cards ; 
- int /*<<< orphan*/  isdnloop_stopcard (TYPE_1__*) ; 
+
+ TYPE_1__* cards ;
+ int isdnloop_stopcard (TYPE_1__*) ;
 
 __attribute__((used)) static void
 isdnloop_stopallcards(void)
 {
-	isdnloop_card *p = cards;
+ isdnloop_card *p = cards;
 
-	while (p) {
-		isdnloop_stopcard(p);
-		p = p->next;
-	}
+ while (p) {
+  isdnloop_stopcard(p);
+  p = p->next;
+ }
 }

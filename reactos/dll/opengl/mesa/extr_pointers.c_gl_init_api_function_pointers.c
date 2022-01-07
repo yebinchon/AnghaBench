@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  Save; int /*<<< orphan*/  Exec; } ;
-typedef  TYPE_1__ GLcontext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  check_pointers (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  init_dlist_pointers (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  init_exec_pointers (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int Save; int Exec; } ;
+typedef TYPE_1__ GLcontext ;
+
+
+ int check_pointers (int *) ;
+ int init_dlist_pointers (int *) ;
+ int init_exec_pointers (int *) ;
 
 void gl_init_api_function_pointers( GLcontext *ctx )
 {
@@ -25,7 +25,7 @@ void gl_init_api_function_pointers( GLcontext *ctx )
 
    init_dlist_pointers( &ctx->Save );
 
-   /* make sure there's no NULL pointers */
+
    check_pointers( &ctx->Exec );
    check_pointers( &ctx->Save );
 }

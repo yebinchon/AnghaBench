@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_int64 ;
-struct TYPE_3__ {scalar_t__ zSegmentsTbl; scalar_t__ pSegments; int /*<<< orphan*/  zDb; int /*<<< orphan*/  db; int /*<<< orphan*/  zName; } ;
-typedef  TYPE_1__ Fts3Table ;
 
-/* Variables and functions */
- int FTS3_NODE_CHUNKSIZE ; 
- int FTS3_NODE_CHUNK_THRESHOLD ; 
- scalar_t__ FTS3_NODE_PADDING ; 
- int SQLITE_NOMEM ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  assert (int*) ; 
- int /*<<< orphan*/  memset (char*,int /*<<< orphan*/ ,scalar_t__) ; 
- int sqlite3_blob_bytes (scalar_t__) ; 
- int sqlite3_blob_open (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__*) ; 
- int sqlite3_blob_read (scalar_t__,char*,int,int /*<<< orphan*/ ) ; 
- int sqlite3_blob_reopen (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_free (char*) ; 
- char* sqlite3_malloc (scalar_t__) ; 
- scalar_t__ sqlite3_mprintf (char*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int sqlite3_int64 ;
+struct TYPE_3__ {scalar_t__ zSegmentsTbl; scalar_t__ pSegments; int zDb; int db; int zName; } ;
+typedef TYPE_1__ Fts3Table ;
+
+
+ int FTS3_NODE_CHUNKSIZE ;
+ int FTS3_NODE_CHUNK_THRESHOLD ;
+ scalar_t__ FTS3_NODE_PADDING ;
+ int SQLITE_NOMEM ;
+ int SQLITE_OK ;
+ int assert (int*) ;
+ int memset (char*,int ,scalar_t__) ;
+ int sqlite3_blob_bytes (scalar_t__) ;
+ int sqlite3_blob_open (int ,int ,scalar_t__,char*,int ,int ,scalar_t__*) ;
+ int sqlite3_blob_read (scalar_t__,char*,int,int ) ;
+ int sqlite3_blob_reopen (scalar_t__,int ) ;
+ int sqlite3_free (char*) ;
+ char* sqlite3_malloc (scalar_t__) ;
+ scalar_t__ sqlite3_mprintf (char*,int ) ;
 
 int sqlite3Fts3ReadBlock(
-  Fts3Table *p,                   /* FTS3 table handle */
-  sqlite3_int64 iBlockid,         /* Access the row with blockid=$iBlockid */
-  char **paBlob,                  /* OUT: Blob data in malloc'd buffer */
-  int *pnBlob,                    /* OUT: Size of blob data */
-  int *pnLoad                     /* OUT: Bytes actually loaded */
+  Fts3Table *p,
+  sqlite3_int64 iBlockid,
+  char **paBlob,
+  int *pnBlob,
+  int *pnLoad
 ){
-  int rc;                         /* Return code */
+  int rc;
 
-  /* pnBlob must be non-NULL. paBlob may be NULL or non-NULL. */
+
   assert( pnBlob );
 
   if( p->pSegments ){

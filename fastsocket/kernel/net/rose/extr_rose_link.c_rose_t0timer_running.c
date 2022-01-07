@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct rose_neigh {int /*<<< orphan*/  t0timer; } ;
 
-/* Variables and functions */
- int timer_pending (int /*<<< orphan*/ *) ; 
+
+
+
+struct rose_neigh {int t0timer; } ;
+
+
+ int timer_pending (int *) ;
 
 __attribute__((used)) static int rose_t0timer_running(struct rose_neigh *neigh)
 {
-	return timer_pending(&neigh->t0timer);
+ return timer_pending(&neigh->t0timer);
 }

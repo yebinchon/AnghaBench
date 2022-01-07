@@ -1,0 +1,108 @@
+; ModuleID = '/home/carl/AnghaBench/fastsocket/kernel/drivers/scsi/mpt3sas/extr_mpt3sas_config.c_mpt3sas_config_set_sas_iounit_pg1.c'
+source_filename = "/home/carl/AnghaBench/fastsocket/kernel/drivers/scsi/mpt3sas/extr_mpt3sas_config.c_mpt3sas_config_set_sas_iounit_pg1.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+%struct.MPT3SAS_ADAPTER = type { i32 (%struct.MPT3SAS_ADAPTER*, i32*)* }
+%struct.TYPE_6__ = type { i32, i32, %struct.TYPE_5__, i32, i32 }
+%struct.TYPE_5__ = type { i32, i32, i32 }
+
+@MPI2_FUNCTION_CONFIG = common dso_local global i32 0, align 4
+@MPI2_CONFIG_ACTION_PAGE_HEADER = common dso_local global i32 0, align 4
+@MPI2_CONFIG_PAGETYPE_EXTENDED = common dso_local global i32 0, align 4
+@MPI2_CONFIG_EXTPAGETYPE_SAS_IO_UNIT = common dso_local global i32 0, align 4
+@MPI2_SASIOUNITPAGE1_PAGEVERSION = common dso_local global i32 0, align 4
+@MPT3_CONFIG_PAGE_DEFAULT_TIMEOUT = common dso_local global i32 0, align 4
+@MPI2_CONFIG_ACTION_PAGE_WRITE_CURRENT = common dso_local global i32 0, align 4
+@MPI2_CONFIG_ACTION_PAGE_WRITE_NVRAM = common dso_local global i32 0, align 4
+
+; Function Attrs: noinline nounwind optnone uwtable
+define dso_local i32 @mpt3sas_config_set_sas_iounit_pg1(%struct.MPT3SAS_ADAPTER* %0, i32* %1, i32* %2, i32 %3) #0 {
+  %5 = alloca %struct.MPT3SAS_ADAPTER*, align 8
+  %6 = alloca i32*, align 8
+  %7 = alloca i32*, align 8
+  %8 = alloca i32, align 4
+  %9 = alloca %struct.TYPE_6__, align 4
+  %10 = alloca i32, align 4
+  store %struct.MPT3SAS_ADAPTER* %0, %struct.MPT3SAS_ADAPTER** %5, align 8
+  store i32* %1, i32** %6, align 8
+  store i32* %2, i32** %7, align 8
+  store i32 %3, i32* %8, align 4
+  %11 = call i32 @memset(%struct.TYPE_6__* %9, i32 0, i32 28)
+  %12 = load i32, i32* @MPI2_FUNCTION_CONFIG, align 4
+  %13 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %9, i32 0, i32 4
+  store i32 %12, i32* %13, align 4
+  %14 = load i32, i32* @MPI2_CONFIG_ACTION_PAGE_HEADER, align 4
+  %15 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %9, i32 0, i32 0
+  store i32 %14, i32* %15, align 4
+  %16 = load i32, i32* @MPI2_CONFIG_PAGETYPE_EXTENDED, align 4
+  %17 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %9, i32 0, i32 2
+  %18 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %17, i32 0, i32 2
+  store i32 %16, i32* %18, align 4
+  %19 = load i32, i32* @MPI2_CONFIG_EXTPAGETYPE_SAS_IO_UNIT, align 4
+  %20 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %9, i32 0, i32 3
+  store i32 %19, i32* %20, align 4
+  %21 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %9, i32 0, i32 2
+  %22 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %21, i32 0, i32 0
+  store i32 1, i32* %22, align 4
+  %23 = load i32, i32* @MPI2_SASIOUNITPAGE1_PAGEVERSION, align 4
+  %24 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %9, i32 0, i32 2
+  %25 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %24, i32 0, i32 1
+  store i32 %23, i32* %25, align 4
+  %26 = load %struct.MPT3SAS_ADAPTER*, %struct.MPT3SAS_ADAPTER** %5, align 8
+  %27 = getelementptr inbounds %struct.MPT3SAS_ADAPTER, %struct.MPT3SAS_ADAPTER* %26, i32 0, i32 0
+  %28 = load i32 (%struct.MPT3SAS_ADAPTER*, i32*)*, i32 (%struct.MPT3SAS_ADAPTER*, i32*)** %27, align 8
+  %29 = load %struct.MPT3SAS_ADAPTER*, %struct.MPT3SAS_ADAPTER** %5, align 8
+  %30 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %9, i32 0, i32 1
+  %31 = call i32 %28(%struct.MPT3SAS_ADAPTER* %29, i32* %30)
+  %32 = load %struct.MPT3SAS_ADAPTER*, %struct.MPT3SAS_ADAPTER** %5, align 8
+  %33 = load i32*, i32** %6, align 8
+  %34 = load i32, i32* @MPT3_CONFIG_PAGE_DEFAULT_TIMEOUT, align 4
+  %35 = call i32 @_config_request(%struct.MPT3SAS_ADAPTER* %32, %struct.TYPE_6__* %9, i32* %33, i32 %34, i32* null, i32 0)
+  store i32 %35, i32* %10, align 4
+  %36 = load i32, i32* %10, align 4
+  %37 = icmp ne i32 %36, 0
+  br i1 %37, label %38, label %39
+
+38:                                               ; preds = %4
+  br label %56
+
+39:                                               ; preds = %4
+  %40 = load i32, i32* @MPI2_CONFIG_ACTION_PAGE_WRITE_CURRENT, align 4
+  %41 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %9, i32 0, i32 0
+  store i32 %40, i32* %41, align 4
+  %42 = load %struct.MPT3SAS_ADAPTER*, %struct.MPT3SAS_ADAPTER** %5, align 8
+  %43 = load i32*, i32** %6, align 8
+  %44 = load i32, i32* @MPT3_CONFIG_PAGE_DEFAULT_TIMEOUT, align 4
+  %45 = load i32*, i32** %7, align 8
+  %46 = load i32, i32* %8, align 4
+  %47 = call i32 @_config_request(%struct.MPT3SAS_ADAPTER* %42, %struct.TYPE_6__* %9, i32* %43, i32 %44, i32* %45, i32 %46)
+  %48 = load i32, i32* @MPI2_CONFIG_ACTION_PAGE_WRITE_NVRAM, align 4
+  %49 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %9, i32 0, i32 0
+  store i32 %48, i32* %49, align 4
+  %50 = load %struct.MPT3SAS_ADAPTER*, %struct.MPT3SAS_ADAPTER** %5, align 8
+  %51 = load i32*, i32** %6, align 8
+  %52 = load i32, i32* @MPT3_CONFIG_PAGE_DEFAULT_TIMEOUT, align 4
+  %53 = load i32*, i32** %7, align 8
+  %54 = load i32, i32* %8, align 4
+  %55 = call i32 @_config_request(%struct.MPT3SAS_ADAPTER* %50, %struct.TYPE_6__* %9, i32* %51, i32 %52, i32* %53, i32 %54)
+  store i32 %55, i32* %10, align 4
+  br label %56
+
+56:                                               ; preds = %39, %38
+  %57 = load i32, i32* %10, align 4
+  ret i32 %57
+}
+
+declare dso_local i32 @memset(%struct.TYPE_6__*, i32, i32) #1
+
+declare dso_local i32 @_config_request(%struct.MPT3SAS_ADAPTER*, %struct.TYPE_6__*, i32*, i32, i32*, i32) #1
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

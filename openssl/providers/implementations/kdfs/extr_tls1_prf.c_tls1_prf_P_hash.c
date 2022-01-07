@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  OSSL_PARAM ;
-typedef  int /*<<< orphan*/  EVP_MAC_CTX ;
-typedef  int /*<<< orphan*/  Ai ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * EVP_MAC_CTX_dup (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EVP_MAC_CTX_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EVP_MAC_CTX_set_params (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EVP_MAC_final (int /*<<< orphan*/ *,unsigned char*,size_t*,size_t) ; 
- int /*<<< orphan*/  EVP_MAC_init (int /*<<< orphan*/ *) ; 
- size_t EVP_MAC_size (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EVP_MAC_update (int /*<<< orphan*/ *,unsigned char const*,size_t) ; 
- int EVP_MAX_MD_SIZE ; 
- int /*<<< orphan*/  OPENSSL_cleanse (unsigned char*,int) ; 
- int /*<<< orphan*/  OSSL_MAC_PARAM_KEY ; 
- int /*<<< orphan*/  OSSL_PARAM_construct_end () ; 
- int /*<<< orphan*/  OSSL_PARAM_construct_octet_string (int /*<<< orphan*/ ,void*,size_t) ; 
- int /*<<< orphan*/  memcpy (unsigned char*,unsigned char*,size_t) ; 
+
+
+
+typedef int OSSL_PARAM ;
+typedef int EVP_MAC_CTX ;
+typedef int Ai ;
+
+
+ int * EVP_MAC_CTX_dup (int *) ;
+ int EVP_MAC_CTX_free (int *) ;
+ int EVP_MAC_CTX_set_params (int *,int *) ;
+ int EVP_MAC_final (int *,unsigned char*,size_t*,size_t) ;
+ int EVP_MAC_init (int *) ;
+ size_t EVP_MAC_size (int *) ;
+ int EVP_MAC_update (int *,unsigned char const*,size_t) ;
+ int EVP_MAX_MD_SIZE ;
+ int OPENSSL_cleanse (unsigned char*,int) ;
+ int OSSL_MAC_PARAM_KEY ;
+ int OSSL_PARAM_construct_end () ;
+ int OSSL_PARAM_construct_octet_string (int ,void*,size_t) ;
+ int memcpy (unsigned char*,unsigned char*,size_t) ;
 
 __attribute__((used)) static int tls1_prf_P_hash(EVP_MAC_CTX *ctx_init,
                            const unsigned char *sec, size_t sec_len,
@@ -35,7 +35,7 @@ __attribute__((used)) static int tls1_prf_P_hash(EVP_MAC_CTX *ctx_init,
                            unsigned char *out, size_t olen)
 {
     size_t chunk;
-    EVP_MAC_CTX *ctx = NULL, *ctx_Ai = NULL;
+    EVP_MAC_CTX *ctx = ((void*)0), *ctx_Ai = ((void*)0);
     unsigned char Ai[EVP_MAX_MD_SIZE];
     size_t Ai_len;
     int ret = 0;
@@ -51,45 +51,45 @@ __attribute__((used)) static int tls1_prf_P_hash(EVP_MAC_CTX *ctx_init,
     chunk = EVP_MAC_size(ctx_init);
     if (chunk == 0)
         goto err;
-    /* A(0) = seed */
+
     ctx_Ai = EVP_MAC_CTX_dup(ctx_init);
-    if (ctx_Ai == NULL)
+    if (ctx_Ai == ((void*)0))
         goto err;
-    if (seed != NULL && !EVP_MAC_update(ctx_Ai, seed, seed_len))
+    if (seed != ((void*)0) && !EVP_MAC_update(ctx_Ai, seed, seed_len))
         goto err;
 
     for (;;) {
-        /* calc: A(i) = HMAC_<hash>(secret, A(i-1)) */
+
         if (!EVP_MAC_final(ctx_Ai, Ai, &Ai_len, sizeof(Ai)))
             goto err;
         EVP_MAC_CTX_free(ctx_Ai);
-        ctx_Ai = NULL;
+        ctx_Ai = ((void*)0);
 
-        /* calc next chunk: HMAC_<hash>(secret, A(i) + seed) */
+
         ctx = EVP_MAC_CTX_dup(ctx_init);
-        if (ctx == NULL)
+        if (ctx == ((void*)0))
             goto err;
         if (!EVP_MAC_update(ctx, Ai, Ai_len))
             goto err;
-        /* save state for calculating next A(i) value */
+
         if (olen > chunk) {
             ctx_Ai = EVP_MAC_CTX_dup(ctx);
-            if (ctx_Ai == NULL)
+            if (ctx_Ai == ((void*)0))
                 goto err;
         }
-        if (seed != NULL && !EVP_MAC_update(ctx, seed, seed_len))
+        if (seed != ((void*)0) && !EVP_MAC_update(ctx, seed, seed_len))
             goto err;
         if (olen <= chunk) {
-            /* last chunk - use Ai as temp bounce buffer */
+
             if (!EVP_MAC_final(ctx, Ai, &Ai_len, sizeof(Ai)))
                 goto err;
             memcpy(out, Ai, olen);
             break;
         }
-        if (!EVP_MAC_final(ctx, out, NULL, olen))
+        if (!EVP_MAC_final(ctx, out, ((void*)0), olen))
             goto err;
         EVP_MAC_CTX_free(ctx);
-        ctx = NULL;
+        ctx = ((void*)0);
         out += chunk;
         olen -= chunk;
     }

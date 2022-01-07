@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint16_t ;
-struct TYPE_10__ {int /*<<< orphan*/  avctx; } ;
-struct TYPE_9__ {int** s_indexmapped; int bs_num_env; size_t* bs_freq_res; int bs_num_noise; scalar_t__* t_env; scalar_t__* t_q; int* bs_add_harmonic; scalar_t__ bs_add_harmonic_flag; int /*<<< orphan*/ ** noise_facs; int /*<<< orphan*/ ** env_facs; } ;
-struct TYPE_8__ {unsigned int* n; int* f_tablehigh; int* f_tablelow; int* kx; int n_q; int* f_tablenoise; int** s_mapped; int /*<<< orphan*/ ** q_mapped; int /*<<< orphan*/ ** e_origmapped; } ;
-typedef  TYPE_1__ SpectralBandReplication ;
-typedef  TYPE_2__ SBRData ;
-typedef  TYPE_3__ AACContext ;
 
-/* Variables and functions */
- int AVERROR_BUG ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  memcpy (int*,int*,int) ; 
- int /*<<< orphan*/  memset (int*,int,int) ; 
- int /*<<< orphan*/  sbr_turnoff (TYPE_1__*) ; 
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int uint16_t ;
+struct TYPE_10__ {int avctx; } ;
+struct TYPE_9__ {int** s_indexmapped; int bs_num_env; size_t* bs_freq_res; int bs_num_noise; scalar_t__* t_env; scalar_t__* t_q; int* bs_add_harmonic; scalar_t__ bs_add_harmonic_flag; int ** noise_facs; int ** env_facs; } ;
+struct TYPE_8__ {unsigned int* n; int* f_tablehigh; int* f_tablelow; int* kx; int n_q; int* f_tablenoise; int** s_mapped; int ** q_mapped; int ** e_origmapped; } ;
+typedef TYPE_1__ SpectralBandReplication ;
+typedef TYPE_2__ SBRData ;
+typedef TYPE_3__ AACContext ;
+
+
+ int AVERROR_BUG ;
+ int AV_LOG_ERROR ;
+ int av_log (int ,int ,char*) ;
+ int memcpy (int*,int*,int) ;
+ int memset (int*,int,int) ;
+ int sbr_turnoff (TYPE_1__*) ;
 
 __attribute__((used)) static int sbr_mapping(AACContext *ac, SpectralBandReplication *sbr,
                         SBRData *ch_data, int e_a[2])
@@ -50,7 +50,7 @@ __attribute__((used)) static int sbr_mapping(AACContext *ac, SpectralBandReplica
             for (m = table[i]; m < table[i + 1]; m++)
                 sbr->e_origmapped[e][m - sbr->kx[1]] = ch_data->env_facs[e+1][i];
 
-        // ch_data->bs_num_noise > 1 => 2 noise floors
+
         k = (ch_data->bs_num_noise > 1) && (ch_data->t_env[e] >= ch_data->t_q[1]);
         for (i = 0; i < sbr->n_q; i++)
             for (m = sbr->f_tablenoise[i]; m < sbr->f_tablenoise[i + 1]; m++)

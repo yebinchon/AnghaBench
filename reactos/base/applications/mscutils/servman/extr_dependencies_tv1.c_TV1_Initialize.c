@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/ * hDependsImageList; int /*<<< orphan*/  hDependsTreeView1; int /*<<< orphan*/  hDependsWnd; } ;
-typedef  TYPE_1__* PDEPENDDATA ;
-typedef  int /*<<< orphan*/  LPWSTR ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GetDlgItem (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IDC_DEPEND_TREE1 ; 
- int /*<<< orphan*/  ImageList_Destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TV1_AddDependantsToTree (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TVSIL_NORMAL ; 
- int /*<<< orphan*/  TreeView_SetImageList (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int * hDependsImageList; int hDependsTreeView1; int hDependsWnd; } ;
+typedef TYPE_1__* PDEPENDDATA ;
+typedef int LPWSTR ;
+typedef int BOOL ;
+
+
+ int FALSE ;
+ int GetDlgItem (int ,int ) ;
+ int IDC_DEPEND_TREE1 ;
+ int ImageList_Destroy (int *) ;
+ int TV1_AddDependantsToTree (TYPE_1__*,int *,int ) ;
+ int TVSIL_NORMAL ;
+ int TreeView_SetImageList (int ,int *,int ) ;
 
 BOOL
 TV1_Initialize(PDEPENDDATA pDependData,
@@ -31,20 +31,20 @@ TV1_Initialize(PDEPENDDATA pDependData,
 {
     BOOL bRet = FALSE;
 
-    /* Associate the imagelist with TV1 */
+
     pDependData->hDependsTreeView1 = GetDlgItem(pDependData->hDependsWnd, IDC_DEPEND_TREE1);
     if (!pDependData->hDependsTreeView1)
     {
         ImageList_Destroy(pDependData->hDependsImageList);
-        pDependData->hDependsImageList = NULL;
+        pDependData->hDependsImageList = ((void*)0);
         return FALSE;
     }
     (void)TreeView_SetImageList(pDependData->hDependsTreeView1,
                                 pDependData->hDependsImageList,
                                 TVSIL_NORMAL);
 
-    /* Set the first items in the control */
-    TV1_AddDependantsToTree(pDependData, NULL, lpServiceName);
+
+    TV1_AddDependantsToTree(pDependData, ((void*)0), lpServiceName);
 
     return bRet;
 }

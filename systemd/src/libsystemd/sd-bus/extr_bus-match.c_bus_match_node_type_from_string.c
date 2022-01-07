@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  enum bus_match_node_type { ____Placeholder_bus_match_node_type } bus_match_node_type ;
 
-/* Variables and functions */
- int BUS_MATCH_ARG ; 
- int BUS_MATCH_ARG_HAS ; 
- int BUS_MATCH_ARG_HAS_LAST ; 
- int BUS_MATCH_ARG_LAST ; 
- int BUS_MATCH_ARG_NAMESPACE ; 
- int BUS_MATCH_ARG_NAMESPACE_LAST ; 
- int BUS_MATCH_ARG_PATH ; 
- int BUS_MATCH_ARG_PATH_LAST ; 
- int BUS_MATCH_DESTINATION ; 
- int BUS_MATCH_INTERFACE ; 
- int BUS_MATCH_MEMBER ; 
- int BUS_MATCH_MESSAGE_TYPE ; 
- int BUS_MATCH_PATH ; 
- int BUS_MATCH_PATH_NAMESPACE ; 
- int BUS_MATCH_SENDER ; 
- int EINVAL ; 
- int /*<<< orphan*/  assert (char const*) ; 
- scalar_t__ startswith (char const*,char*) ; 
- int undecchar (char const) ; 
+
+
+
+typedef enum bus_match_node_type { ____Placeholder_bus_match_node_type } bus_match_node_type ;
+
+
+ int BUS_MATCH_ARG ;
+ int BUS_MATCH_ARG_HAS ;
+ int BUS_MATCH_ARG_HAS_LAST ;
+ int BUS_MATCH_ARG_LAST ;
+ int BUS_MATCH_ARG_NAMESPACE ;
+ int BUS_MATCH_ARG_NAMESPACE_LAST ;
+ int BUS_MATCH_ARG_PATH ;
+ int BUS_MATCH_ARG_PATH_LAST ;
+ int BUS_MATCH_DESTINATION ;
+ int BUS_MATCH_INTERFACE ;
+ int BUS_MATCH_MEMBER ;
+ int BUS_MATCH_MESSAGE_TYPE ;
+ int BUS_MATCH_PATH ;
+ int BUS_MATCH_PATH_NAMESPACE ;
+ int BUS_MATCH_SENDER ;
+ int EINVAL ;
+ int assert (char const*) ;
+ scalar_t__ startswith (char const*,char*) ;
+ int undecchar (char const) ;
 
 enum bus_match_node_type bus_match_node_type_from_string(const char *k, size_t n) {
         assert(k);

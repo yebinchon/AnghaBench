@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  MMAL_STATUS_T ;
-typedef  int /*<<< orphan*/  MMAL_PORT_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  scheduler_port_flush (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int MMAL_STATUS_T ;
+typedef int MMAL_PORT_T ;
+
+
+ int scheduler_port_flush (int *) ;
 
 __attribute__((used)) static MMAL_STATUS_T scheduler_port_disable(MMAL_PORT_T *port)
 {
-   /* We just need to flush our internal queue */
+
    return scheduler_port_flush(port);
 }

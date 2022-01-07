@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buf ;
-typedef  int ULONG ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
-typedef  int /*<<< orphan*/  IInternetProtocol ;
-typedef  int /*<<< orphan*/  IClassFactory ;
-typedef  int HRESULT ;
-typedef  int /*<<< orphan*/  BYTE ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int E_FAIL ; 
- scalar_t__ FAILED (int) ; 
- int IClassFactory_CreateInstance (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IID_IInternetProtocol ; 
- int IInternetProtocol_LockRequest (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int IInternetProtocol_Read (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int*) ; 
- int IInternetProtocol_Release (int /*<<< orphan*/ *) ; 
- int IInternetProtocol_Terminate (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int IInternetProtocol_UnlockRequest (int /*<<< orphan*/ *) ; 
- int INET_E_DATA_NOT_AVAILABLE ; 
- scalar_t__ ITS_PROTOCOL ; 
- int S_FALSE ; 
- int S_OK ; 
- int /*<<< orphan*/  memcmp (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int protocol_start (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * read_protocol ; 
- scalar_t__ test_protocol ; 
+
+
+
+typedef int buf ;
+typedef int ULONG ;
+typedef int LPCWSTR ;
+typedef int IInternetProtocol ;
+typedef int IClassFactory ;
+typedef int HRESULT ;
+typedef int BYTE ;
+typedef int BOOL ;
+
+
+ int E_FAIL ;
+ scalar_t__ FAILED (int) ;
+ int IClassFactory_CreateInstance (int *,int *,int *,void**) ;
+ int IID_IInternetProtocol ;
+ int IInternetProtocol_LockRequest (int *,int ) ;
+ int IInternetProtocol_Read (int *,int *,int,int*) ;
+ int IInternetProtocol_Release (int *) ;
+ int IInternetProtocol_Terminate (int *,int ) ;
+ int IInternetProtocol_UnlockRequest (int *) ;
+ int INET_E_DATA_NOT_AVAILABLE ;
+ scalar_t__ ITS_PROTOCOL ;
+ int S_FALSE ;
+ int S_OK ;
+ int memcmp (int *,char*,int) ;
+ int ok (int,char*,...) ;
+ int protocol_start (int *,int ,int ) ;
+ int * read_protocol ;
+ scalar_t__ test_protocol ;
 
 __attribute__((used)) static void test_protocol_url(IClassFactory *factory, LPCWSTR url, BOOL expect_mime)
 {
@@ -46,7 +46,7 @@ __attribute__((used)) static void test_protocol_url(IClassFactory *factory, LPCW
     ULONG cb, ref;
     HRESULT hres;
 
-    hres = IClassFactory_CreateInstance(factory, NULL, &IID_IInternetProtocol, (void**)&protocol);
+    hres = IClassFactory_CreateInstance(factory, ((void*)0), &IID_IInternetProtocol, (void**)&protocol);
     ok(hres == S_OK, "Could not get IInternetProtocol: %08x\n", hres);
     if(FAILED(hres))
         return;
@@ -64,7 +64,7 @@ __attribute__((used)) static void test_protocol_url(IClassFactory *factory, LPCW
     ref = IInternetProtocol_Release(protocol);
     ok(!ref, "protocol ref=%d\n", ref);
 
-    hres = IClassFactory_CreateInstance(factory, NULL, &IID_IInternetProtocol, (void**)&protocol);
+    hres = IClassFactory_CreateInstance(factory, ((void*)0), &IID_IInternetProtocol, (void**)&protocol);
     ok(hres == S_OK, "Could not get IInternetProtocol: %08x\n", hres);
     if(FAILED(hres))
         return;
@@ -90,7 +90,7 @@ __attribute__((used)) static void test_protocol_url(IClassFactory *factory, LPCW
     ref = IInternetProtocol_Release(protocol);
     ok(!ref, "protocol ref=%d\n", ref);
 
-    hres = IClassFactory_CreateInstance(factory, NULL, &IID_IInternetProtocol, (void**)&protocol);
+    hres = IClassFactory_CreateInstance(factory, ((void*)0), &IID_IInternetProtocol, (void**)&protocol);
     ok(hres == S_OK, "Could not get IInternetProtocol: %08x\n", hres);
     if(FAILED(hres))
         return;
@@ -108,7 +108,7 @@ __attribute__((used)) static void test_protocol_url(IClassFactory *factory, LPCW
     ref = IInternetProtocol_Release(protocol);
     ok(!ref, "protocol ref=%d\n", ref);
 
-    hres = IClassFactory_CreateInstance(factory, NULL, &IID_IInternetProtocol, (void**)&protocol);
+    hres = IClassFactory_CreateInstance(factory, ((void*)0), &IID_IInternetProtocol, (void**)&protocol);
     ok(hres == S_OK, "Could not get IInternetProtocol: %08x\n", hres);
     if(FAILED(hres))
         return;
@@ -134,7 +134,7 @@ __attribute__((used)) static void test_protocol_url(IClassFactory *factory, LPCW
     ref = IInternetProtocol_Release(protocol);
     ok(!ref, "protocol ref=%d\n", ref);
 
-    hres = IClassFactory_CreateInstance(factory, NULL, &IID_IInternetProtocol, (void**)&read_protocol);
+    hres = IClassFactory_CreateInstance(factory, ((void*)0), &IID_IInternetProtocol, (void**)&read_protocol);
     ok(hres == S_OK, "Could not get IInternetProtocol: %08x\n", hres);
     if(FAILED(hres))
         return;
@@ -142,5 +142,5 @@ __attribute__((used)) static void test_protocol_url(IClassFactory *factory, LPCW
     protocol_start(read_protocol, url, expect_mime);
     ref = IInternetProtocol_Release(read_protocol);
     ok(!ref, "protocol ref=%d\n", ref);
-    read_protocol = NULL;
+    read_protocol = ((void*)0);
 }

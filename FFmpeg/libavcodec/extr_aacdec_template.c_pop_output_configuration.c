@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_8__ {TYPE_2__* oc; TYPE_1__* avctx; } ;
-struct TYPE_7__ {scalar_t__ status; int /*<<< orphan*/  layout_map_tags; int /*<<< orphan*/  layout_map; int /*<<< orphan*/  channel_layout; int /*<<< orphan*/  channels; } ;
-struct TYPE_6__ {int /*<<< orphan*/  channel_layout; int /*<<< orphan*/  channels; } ;
-typedef  TYPE_3__ AACContext ;
+struct TYPE_7__ {scalar_t__ status; int layout_map_tags; int layout_map; int channel_layout; int channels; } ;
+struct TYPE_6__ {int channel_layout; int channels; } ;
+typedef TYPE_3__ AACContext ;
 
-/* Variables and functions */
- scalar_t__ OC_LOCKED ; 
- scalar_t__ OC_NONE ; 
- int /*<<< orphan*/  output_configure (TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ OC_LOCKED ;
+ scalar_t__ OC_NONE ;
+ int output_configure (TYPE_3__*,int ,int ,scalar_t__,int ) ;
 
 __attribute__((used)) static void pop_output_configuration(AACContext *ac) {
     if (ac->oc[1].status != OC_LOCKED && ac->oc[0].status != OC_NONE) {

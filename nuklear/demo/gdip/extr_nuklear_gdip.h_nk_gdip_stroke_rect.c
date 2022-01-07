@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct nk_color {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/  pen; int /*<<< orphan*/  memory; } ;
-typedef  int /*<<< orphan*/  REAL ;
-typedef  short INT ;
+struct TYPE_2__ {int pen; int memory; } ;
+typedef int REAL ;
+typedef short INT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GdipDrawArcI (int /*<<< orphan*/ ,int /*<<< orphan*/ ,short,short,short,short,int,int) ; 
- int /*<<< orphan*/  GdipDrawLineI (int /*<<< orphan*/ ,int /*<<< orphan*/ ,short,short,short,short) ; 
- int /*<<< orphan*/  GdipDrawRectangleI (int /*<<< orphan*/ ,int /*<<< orphan*/ ,short,short,unsigned short,unsigned short) ; 
- int /*<<< orphan*/  GdipSetPenColor (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GdipSetPenWidth (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  convert_color (struct nk_color) ; 
- TYPE_1__ gdip ; 
+
+ int GdipDrawArcI (int ,int ,short,short,short,short,int,int) ;
+ int GdipDrawLineI (int ,int ,short,short,short,short) ;
+ int GdipDrawRectangleI (int ,int ,short,short,unsigned short,unsigned short) ;
+ int GdipSetPenColor (int ,int ) ;
+ int GdipSetPenWidth (int ,int ) ;
+ int convert_color (struct nk_color) ;
+ TYPE_1__ gdip ;
 
 __attribute__((used)) static void
 nk_gdip_stroke_rect(short x, short y, unsigned short w,

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct hfi1_devdata {int num_sdma; int /*<<< orphan*/ * per_sdma; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  sdma_event_e82_hw_unfreeze ; 
- int /*<<< orphan*/  sdma_process_event (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+struct hfi1_devdata {int num_sdma; int * per_sdma; } ;
+
+
+ int sdma_event_e82_hw_unfreeze ;
+ int sdma_process_event (int *,int ) ;
 
 void sdma_unfreeze(struct hfi1_devdata *dd)
 {
-	int i;
+ int i;
 
-	/* tell all engines start freeze clean up */
-	for (i = 0; i < dd->num_sdma; i++)
-		sdma_process_event(&dd->per_sdma[i],
-				   sdma_event_e82_hw_unfreeze);
+
+ for (i = 0; i < dd->num_sdma; i++)
+  sdma_process_event(&dd->per_sdma[i],
+       sdma_event_e82_hw_unfreeze);
 }

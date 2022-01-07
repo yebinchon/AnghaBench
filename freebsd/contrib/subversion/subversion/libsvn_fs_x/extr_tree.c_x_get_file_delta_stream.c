@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_txdelta_stream_t ;
-typedef  int /*<<< orphan*/  svn_fs_root_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  dag_node_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  svn_fs_x__dag_get_file_delta_stream (int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_fs_x__get_dag_node (int /*<<< orphan*/ **,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_fs_x__get_temp_dag_node (int /*<<< orphan*/ **,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_pool_create (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_pool_destroy (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int svn_txdelta_stream_t ;
+typedef int svn_fs_root_t ;
+typedef int svn_error_t ;
+typedef int dag_node_t ;
+typedef int apr_pool_t ;
+
+
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int svn_fs_x__dag_get_file_delta_stream (int **,int *,int *,int *,int *) ;
+ int svn_fs_x__get_dag_node (int **,int *,char const*,int *,int *) ;
+ int svn_fs_x__get_temp_dag_node (int **,int *,char const*,int *) ;
+ int * svn_pool_create (int *) ;
+ int svn_pool_destroy (int *) ;
 
 __attribute__((used)) static svn_error_t *
 x_get_file_delta_stream(svn_txdelta_stream_t **stream_p,
@@ -40,11 +40,11 @@ x_get_file_delta_stream(svn_txdelta_stream_t **stream_p,
     SVN_ERR(svn_fs_x__get_dag_node(&source_node, source_root, source_path,
                                    scratch_pool, scratch_pool));
   else
-    source_node = NULL;
+    source_node = ((void*)0);
   SVN_ERR(svn_fs_x__get_temp_dag_node(&target_node, target_root, target_path,
                                       scratch_pool));
 
-  /* Create a delta stream that turns the source into the target.  */
+
   SVN_ERR(svn_fs_x__dag_get_file_delta_stream(stream_p, source_node,
                                               target_node, pool,
                                               scratch_pool));

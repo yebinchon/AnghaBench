@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint64_t ;
-typedef  struct Range {int member_0; unsigned int begin; unsigned int end; int /*<<< orphan*/  member_1; } const Range ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOG (int /*<<< orphan*/ ,char*,unsigned int,unsigned int,unsigned int,unsigned int,int,int,int,int) ; 
- scalar_t__ isdigit (char const) ; 
- scalar_t__ isspace (char const) ; 
- int parse_ipv4 (char const*,unsigned int*,unsigned int,unsigned int*) ; 
- scalar_t__ strlen (char const*) ; 
+
+
+
+typedef int uint64_t ;
+typedef struct Range {int member_0; unsigned int begin; unsigned int end; int member_1; } const Range ;
+
+
+ int LOG (int ,char*,unsigned int,unsigned int,unsigned int,unsigned int,int,int,int,int) ;
+ scalar_t__ isdigit (char const) ;
+ scalar_t__ isspace (char const) ;
+ int parse_ipv4 (char const*,unsigned int*,unsigned int,unsigned int*) ;
+ scalar_t__ strlen (char const*) ;
 
 struct Range
 range_parse_ipv4(const char *line, unsigned *inout_offset, unsigned max)
@@ -28,10 +28,10 @@ range_parse_ipv4(const char *line, unsigned *inout_offset, unsigned max)
     static const struct Range badrange = {0xFFFFFFFF, 0};
     int err;
 
-    if (line == NULL)
+    if (line == ((void*)0))
         return badrange;
 
-    if (inout_offset == NULL) {
+    if (inout_offset == ((void*)0)) {
          inout_offset = &offset;
          offset = 0;
          max = (unsigned)strlen(line);
@@ -39,45 +39,45 @@ range_parse_ipv4(const char *line, unsigned *inout_offset, unsigned max)
         offset = *inout_offset;
 
 
-    /* trim whitespace */
+
     while (offset < max && isspace(line[offset]&0xFF))
         offset++;
 
-    /* get the first IP address */
+
     err = parse_ipv4(line, &offset, max, &result.begin);
     if (err) {
         return badrange;
     }
     result.end = result.begin;
 
-    /* trim whitespace */
+
     while (offset < max && isspace(line[offset]&0xFF))
         offset++;
 
-    /* If onely one IP address, return that */
+
     if (offset >= max)
         goto end;
 
-    /*
-     * Handle CIDR address of the form "10.0.0.0/8"
-     */
+
+
+
     if (line[offset] == '/') {
         uint64_t prefix = 0;
         uint64_t mask = 0;
         unsigned digits = 0;
 
-        /* skip slash */
+
         offset++;
 
         if (!isdigit(line[offset]&0xFF)) {
             return badrange;
         }
 
-        /* strip leading zeroes */
+
         while (offset<max && line[offset] == '0')
             offset++;
 
-        /* parse decimal integer */
+
         while (offset<max && isdigit(line[offset]&0xFF)) {
             prefix = prefix * 10 + (line[offset++] - '0');
             if (++digits > 2)
@@ -86,22 +86,22 @@ range_parse_ipv4(const char *line, unsigned *inout_offset, unsigned max)
         if (prefix > 32)
             return badrange;
 
-        /* Create the mask from the prefix */
+
         mask = 0xFFFFFFFF00000000ULL >> prefix;
 
-        /* Mask off any non-zero bits from the start
-         * TODO print warning */
+
+
         result.begin &= mask;
 
-        /* Set all suffix bits to 1, so that 192.168.1.0/24 has
-         * an ending address of 192.168.1.255. */
+
+
         result.end = result.begin | (unsigned)~mask;
         goto end;
     }
 
-    /*
-     * Handle a dashed range like "10.0.0.100-10.0.0.200"
-     */
+
+
+
     if (offset<max && line[offset] == '-') {
         unsigned ip;
 

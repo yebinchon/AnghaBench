@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct elf_backend_data {scalar_t__ (* elf_backend_section_from_bfd_section ) (int /*<<< orphan*/ *,struct bfd_section*,int*) ;} ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct elf_backend_data {scalar_t__ (* elf_backend_section_from_bfd_section ) (int *,struct bfd_section*,int*) ;} ;
 struct bfd_section {int dummy; } ;
-typedef  int /*<<< orphan*/  bfd ;
+typedef int bfd ;
 struct TYPE_2__ {scalar_t__ this_idx; } ;
 
-/* Variables and functions */
- int SHN_ABS ; 
- int SHN_COMMON ; 
- int SHN_UNDEF ; 
- int /*<<< orphan*/  bfd_error_nonrepresentable_section ; 
- scalar_t__ bfd_is_abs_section (struct bfd_section*) ; 
- scalar_t__ bfd_is_com_section (struct bfd_section*) ; 
- scalar_t__ bfd_is_und_section (struct bfd_section*) ; 
- int /*<<< orphan*/  bfd_set_error (int /*<<< orphan*/ ) ; 
- TYPE_1__* elf_section_data (struct bfd_section*) ; 
- struct elf_backend_data* get_elf_backend_data (int /*<<< orphan*/ *) ; 
- scalar_t__ stub1 (int /*<<< orphan*/ *,struct bfd_section*,int*) ; 
+
+ int SHN_ABS ;
+ int SHN_COMMON ;
+ int SHN_UNDEF ;
+ int bfd_error_nonrepresentable_section ;
+ scalar_t__ bfd_is_abs_section (struct bfd_section*) ;
+ scalar_t__ bfd_is_com_section (struct bfd_section*) ;
+ scalar_t__ bfd_is_und_section (struct bfd_section*) ;
+ int bfd_set_error (int ) ;
+ TYPE_1__* elf_section_data (struct bfd_section*) ;
+ struct elf_backend_data* get_elf_backend_data (int *) ;
+ scalar_t__ stub1 (int *,struct bfd_section*,int*) ;
 
 int
 _bfd_elf_section_from_bfd_section (bfd *abfd, struct bfd_section *asect)
@@ -35,7 +35,7 @@ _bfd_elf_section_from_bfd_section (bfd *abfd, struct bfd_section *asect)
   const struct elf_backend_data *bed;
   int index;
 
-  if (elf_section_data (asect) != NULL
+  if (elf_section_data (asect) != ((void*)0)
       && elf_section_data (asect)->this_idx != 0)
     return elf_section_data (asect)->this_idx;
 
@@ -54,7 +54,7 @@ _bfd_elf_section_from_bfd_section (bfd *abfd, struct bfd_section *asect)
       int retval = index;
 
       if ((*bed->elf_backend_section_from_bfd_section) (abfd, asect, &retval))
-	return retval;
+ return retval;
     }
 
   if (index == -1)

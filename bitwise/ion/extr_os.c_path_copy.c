@@ -1,20 +1,12 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int MAX_PATH ; 
- int /*<<< orphan*/  path_normalize (char*) ; 
- int /*<<< orphan*/  strncpy (char*,char const*,int) ; 
+ int MAX_PATH ;
+ int path_normalize (char*) ;
+ int strncpy (char*,char const*,int) ;
 
 void path_copy(char path[MAX_PATH], const char *src) {
     strncpy(path, src, MAX_PATH);

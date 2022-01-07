@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__* self_test_descriptor_index; } ;
-typedef  int /*<<< orphan*/  SATI_TRANSLATOR_SEQUENCE_T ;
-typedef  TYPE_1__ ATA_EXTENDED_SMART_SELF_TEST_LOG_T ;
+typedef int SATI_TRANSLATOR_SEQUENCE_T ;
+typedef TYPE_1__ ATA_EXTENDED_SMART_SELF_TEST_LOG_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  sati_get_self_test_results (int /*<<< orphan*/ *,void*,TYPE_1__*) ; 
- int /*<<< orphan*/  sati_self_test_log_header_construct (int /*<<< orphan*/ *,void*) ; 
- int /*<<< orphan*/  sati_set_parameters_to_zero (int /*<<< orphan*/ *,void*) ; 
+
+ int sati_get_self_test_results (int *,void*,TYPE_1__*) ;
+ int sati_self_test_log_header_construct (int *,void*) ;
+ int sati_set_parameters_to_zero (int *,void*) ;
 
 __attribute__((used)) static
 void sati_extended_self_test_log_page_construct(
-   SATI_TRANSLATOR_SEQUENCE_T  * sequence,
-   void                        * scsi_io,
-   void                        * ata_data
+   SATI_TRANSLATOR_SEQUENCE_T * sequence,
+   void * scsi_io,
+   void * ata_data
 )
 {
    ATA_EXTENDED_SMART_SELF_TEST_LOG_T * ata_log =
@@ -32,7 +32,7 @@ void sati_extended_self_test_log_page_construct(
 
    sati_self_test_log_header_construct(sequence, scsi_io);
 
-   //bytes 4-19
+
    if( (ata_log->self_test_descriptor_index[0] == 0) &&
        (ata_log->self_test_descriptor_index[1] == 0))
    {

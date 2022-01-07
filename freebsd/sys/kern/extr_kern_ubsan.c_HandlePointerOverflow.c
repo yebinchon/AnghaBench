@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct CPointerOverflowData {int /*<<< orphan*/  mLocation; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (struct CPointerOverflowData*) ; 
- int /*<<< orphan*/  DeserializeLocation (char*,int,int /*<<< orphan*/ *) ; 
- int LOCATION_MAXLEN ; 
- int /*<<< orphan*/  Report (int,char*,char*,unsigned long,unsigned long) ; 
- scalar_t__ isAlreadyReported (int /*<<< orphan*/ *) ; 
+
+
+
+struct CPointerOverflowData {int mLocation; } ;
+
+
+ int ASSERT (struct CPointerOverflowData*) ;
+ int DeserializeLocation (char*,int,int *) ;
+ int LOCATION_MAXLEN ;
+ int Report (int,char*,char*,unsigned long,unsigned long) ;
+ scalar_t__ isAlreadyReported (int *) ;
 
 __attribute__((used)) static void
 HandlePointerOverflow(bool isFatal, struct CPointerOverflowData *pData, unsigned long ulBase, unsigned long ulResult)
 {
-	char szLocation[LOCATION_MAXLEN];
+ char szLocation[LOCATION_MAXLEN];
 
-	ASSERT(pData);
+ ASSERT(pData);
 
-	if (isAlreadyReported(&pData->mLocation))
-		return;
+ if (isAlreadyReported(&pData->mLocation))
+  return;
 
-	DeserializeLocation(szLocation, LOCATION_MAXLEN, &pData->mLocation);
+ DeserializeLocation(szLocation, LOCATION_MAXLEN, &pData->mLocation);
 
-	Report(isFatal, "UBSan: Undefined Behavior in %s, pointer expression with base %#lx overflowed to %#lx\n",
-	       szLocation, ulBase, ulResult);
+ Report(isFatal, "UBSan: Undefined Behavior in %s, pointer expression with base %#lx overflowed to %#lx\n",
+        szLocation, ulBase, ulResult);
 }

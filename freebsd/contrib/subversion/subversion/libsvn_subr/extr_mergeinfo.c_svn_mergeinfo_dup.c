@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_rangelist_t ;
-typedef  int /*<<< orphan*/  svn_mergeinfo_t ;
-typedef  int /*<<< orphan*/  apr_ssize_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_index_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * apr_hash_first (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * apr_hash_next (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  apr_hash_set (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- char* apr_hash_this_key (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  apr_hash_this_key_len (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * apr_hash_this_val (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  apr_pstrmemdup (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_hash__make (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_rangelist_dup (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int svn_rangelist_t ;
+typedef int svn_mergeinfo_t ;
+typedef int apr_ssize_t ;
+typedef int apr_pool_t ;
+typedef int apr_hash_index_t ;
+
+
+ int * apr_hash_first (int *,int ) ;
+ int * apr_hash_next (int *) ;
+ int apr_hash_set (int ,int ,int ,int ) ;
+ char* apr_hash_this_key (int *) ;
+ int apr_hash_this_key_len (int *) ;
+ int * apr_hash_this_val (int *) ;
+ int apr_pstrmemdup (int *,char const*,int ) ;
+ int svn_hash__make (int *) ;
+ int svn_rangelist_dup (int *,int *) ;
 
 svn_mergeinfo_t
 svn_mergeinfo_dup(svn_mergeinfo_t mergeinfo, apr_pool_t *pool)

@@ -1,36 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  isalnum (char) ; 
+ int isalnum (char) ;
 
 __attribute__((used)) static char *
 ep_find_event_name_end (char *arg)
 {
   char *s = arg;
-  char *event_name_end = NULL;
+  char *event_name_end = ((void*)0);
 
-  /* If we could depend upon the presense of strrpbrk, we'd use that... */
-  if (arg == NULL)
-    return NULL;
 
-  /* We break out of the loop when we find a token delimiter.
-     Basically, we're looking for alphanumerics and underscores;
-     anything else delimites the token. */
+  if (arg == ((void*)0))
+    return ((void*)0);
+
+
+
+
   while (*s != '\0')
     {
       if (!isalnum (*s) && (*s != '_'))
-	break;
+ break;
       event_name_end = s;
       s++;
     }

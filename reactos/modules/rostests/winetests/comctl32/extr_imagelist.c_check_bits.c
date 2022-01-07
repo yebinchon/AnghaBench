@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  bits ;
-typedef  int /*<<< orphan*/  LPCSTR ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  int /*<<< orphan*/  HIMAGELIST ;
-typedef  int /*<<< orphan*/  HDC ;
-typedef  scalar_t__ COLORREF ;
-typedef  int BYTE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BitBlt (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- scalar_t__ GetPixel (int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  ReleaseDC (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SRCCOPY ; 
- int /*<<< orphan*/  dump_bits (int*,int const*,int) ; 
- scalar_t__ memcmp (int*,int const*,int) ; 
- int /*<<< orphan*/  memset (int*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ok (int,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  show_image (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  winetest_interactive ; 
+
+
+
+typedef int bits ;
+typedef int LPCSTR ;
+typedef int HWND ;
+typedef int HIMAGELIST ;
+typedef int HDC ;
+typedef scalar_t__ COLORREF ;
+typedef int BYTE ;
+
+
+ int BitBlt (int ,int ,int ,int,int,int ,int,int,int ) ;
+ int FALSE ;
+ scalar_t__ GetPixel (int ,int,int) ;
+ int ReleaseDC (int ,int ) ;
+ int SRCCOPY ;
+ int dump_bits (int*,int const*,int) ;
+ scalar_t__ memcmp (int*,int const*,int) ;
+ int memset (int*,int ,int) ;
+ int ok (int,char*,int ) ;
+ int show_image (int ,int ,int,int,int ,int ) ;
+ int winetest_interactive ;
 
 __attribute__((used)) static void check_bits(HWND hwnd, HIMAGELIST himl, int idx, int size,
                        const BYTE *checkbits, LPCSTR loc)

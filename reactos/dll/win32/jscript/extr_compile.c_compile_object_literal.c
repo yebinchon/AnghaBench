@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {TYPE_2__* property_list; } ;
-typedef  TYPE_1__ property_value_expression_t ;
-struct TYPE_5__ {int /*<<< orphan*/  type; int /*<<< orphan*/  value; int /*<<< orphan*/  name; struct TYPE_5__* next; } ;
-typedef  TYPE_2__ property_definition_t ;
-typedef  int /*<<< orphan*/  jsstr_t ;
-typedef  int /*<<< orphan*/  compiler_ctx_t ;
-typedef  int /*<<< orphan*/  HRESULT ;
+typedef TYPE_1__ property_value_expression_t ;
+struct TYPE_5__ {int type; int value; int name; struct TYPE_5__* next; } ;
+typedef TYPE_2__ property_definition_t ;
+typedef int jsstr_t ;
+typedef int compiler_ctx_t ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OP_new_obj ; 
- int /*<<< orphan*/  OP_obj_prop ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  compile_expression (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  literal_as_string (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  push_instr (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  push_instr_str_uint (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int E_OUTOFMEMORY ;
+ scalar_t__ FAILED (int ) ;
+ int OP_new_obj ;
+ int OP_obj_prop ;
+ int S_OK ;
+ int TRUE ;
+ int compile_expression (int *,int ,int ) ;
+ int literal_as_string (int *,int ,int **) ;
+ int push_instr (int *,int ) ;
+ int push_instr_str_uint (int *,int ,int *,int ) ;
 
 __attribute__((used)) static HRESULT compile_object_literal(compiler_ctx_t *ctx, property_value_expression_t *expr)
 {

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
-struct TYPE_6__ {int /*<<< orphan*/  cap; int /*<<< orphan*/ * L; } ;
-typedef  TYPE_1__ CapState ;
 
-/* Variables and functions */
- scalar_t__ Cfunction ; 
- scalar_t__ captype (int /*<<< orphan*/ ) ; 
- scalar_t__ isclosecap (int /*<<< orphan*/ ) ; 
- scalar_t__ isfullcap (int /*<<< orphan*/ ) ; 
- int luaL_error (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  lua_call (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  lua_insert (int /*<<< orphan*/ *,int) ; 
- int pushallcaptures (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int pushcapture (TYPE_1__*) ; 
- int /*<<< orphan*/  pushluaval (TYPE_1__*) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int lua_State ;
+struct TYPE_6__ {int cap; int * L; } ;
+typedef TYPE_1__ CapState ;
+
+
+ scalar_t__ Cfunction ;
+ scalar_t__ captype (int ) ;
+ scalar_t__ isclosecap (int ) ;
+ scalar_t__ isfullcap (int ) ;
+ int luaL_error (int *,char*) ;
+ int lua_call (int *,int,int) ;
+ int lua_insert (int *,int) ;
+ int pushallcaptures (TYPE_1__*,int ) ;
+ int pushcapture (TYPE_1__*) ;
+ int pushluaval (TYPE_1__*) ;
 
 __attribute__((used)) static int accumcap (CapState *cs) {
   lua_State *L = cs->L;
@@ -36,7 +36,7 @@ __attribute__((used)) static int accumcap (CapState *cs) {
     if (captype(cs->cap) != Cfunction)
       return luaL_error(L, "invalid (non function) capture to accumulate");
     pushluaval(cs);
-    lua_insert(L, -2);  /* put function before previous capture */
+    lua_insert(L, -2);
     n = pushallcaptures(cs, 0);
     lua_call(L, n + 1, 1);
   }

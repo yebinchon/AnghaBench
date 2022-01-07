@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct lev_proposal {int len; int /*<<< orphan*/  text; scalar_t__ user_id; int /*<<< orphan*/  type; } ;
 
-/* Variables and functions */
- scalar_t__* I ; 
- int* L ; 
- int /*<<< orphan*/  LEV_TARG_PROPOSAL ; 
- char** S ; 
- int /*<<< orphan*/  adj_rec ; 
- int /*<<< orphan*/  fits (scalar_t__) ; 
- size_t mp_category ; 
- size_t mp_id ; 
- size_t mp_question ; 
- int /*<<< orphan*/  strcpy (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ user_id ; 
- struct lev_proposal* write_alloc (int) ; 
+
+
+
+struct lev_proposal {int len; int text; scalar_t__ user_id; int type; } ;
+
+
+ scalar_t__* I ;
+ int* L ;
+ int LEV_TARG_PROPOSAL ;
+ char** S ;
+ int adj_rec ;
+ int fits (scalar_t__) ;
+ size_t mp_category ;
+ size_t mp_id ;
+ size_t mp_question ;
+ int strcpy (int ,char*) ;
+ scalar_t__ user_id ;
+ struct lev_proposal* write_alloc (int) ;
 
 void process_matches_row (void) {
   struct lev_proposal *E;

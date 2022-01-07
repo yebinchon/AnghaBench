@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_9__ {size_t size; TYPE_3__* sub_tables; } ;
-typedef  TYPE_2__ string_table_t ;
+typedef TYPE_2__ string_table_t ;
 struct TYPE_10__ {size_t long_string_count; size_t short_string_count; TYPE_4__* short_strings; TYPE_1__* long_strings; } ;
-typedef  TYPE_3__ string_sub_table_t ;
+typedef TYPE_3__ string_sub_table_t ;
 struct TYPE_11__ {size_t head_length; size_t tail_length; } ;
-typedef  TYPE_4__ string_header_t ;
-typedef  size_t apr_size_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+typedef TYPE_4__ string_header_t ;
+typedef size_t apr_size_t ;
+typedef int apr_pool_t ;
 struct TYPE_8__ {size_t len; char* data; } ;
 
-/* Variables and functions */
- size_t LONG_STRING_MASK ; 
- size_t PADDING ; 
- size_t STRING_INDEX_MASK ; 
- size_t TABLE_SHIFT ; 
- char* apr_palloc (int /*<<< orphan*/ *,size_t) ; 
- char const* apr_pstrmemdup (int /*<<< orphan*/ *,char*,size_t) ; 
- int /*<<< orphan*/  table_copy_string (char*,size_t,TYPE_3__*,TYPE_4__*) ; 
+
+ size_t LONG_STRING_MASK ;
+ size_t PADDING ;
+ size_t STRING_INDEX_MASK ;
+ size_t TABLE_SHIFT ;
+ char* apr_palloc (int *,size_t) ;
+ char const* apr_pstrmemdup (int *,char*,size_t) ;
+ int table_copy_string (char*,size_t,TYPE_3__*,TYPE_4__*) ;
 
 const char*
 svn_fs_x__string_table_get(const string_table_t *table,

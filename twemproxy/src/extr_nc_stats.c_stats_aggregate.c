@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint32_t ;
-struct stats_server {int /*<<< orphan*/  metric; } ;
-struct TYPE_3__ {int /*<<< orphan*/  elem; } ;
-struct stats_pool {TYPE_1__ server; int /*<<< orphan*/  metric; } ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint32_t ;
+struct stats_server {int metric; } ;
+struct TYPE_3__ {int elem; } ;
+struct stats_pool {TYPE_1__ server; int metric; } ;
 struct stats {scalar_t__ aggregate; TYPE_1__ sum; TYPE_1__ shadow; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOG_PVERB ; 
- void* array_get (TYPE_1__*,scalar_t__) ; 
- scalar_t__ array_n (TYPE_1__*) ; 
- int /*<<< orphan*/  log_debug (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stats_aggregate_metric (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int LOG_PVERB ;
+ void* array_get (TYPE_1__*,scalar_t__) ;
+ scalar_t__ array_n (TYPE_1__*) ;
+ int log_debug (int ,char*,int ,int ) ;
+ int stats_aggregate_metric (int *,int *) ;
 
 __attribute__((used)) static void
 stats_aggregate(struct stats *st)

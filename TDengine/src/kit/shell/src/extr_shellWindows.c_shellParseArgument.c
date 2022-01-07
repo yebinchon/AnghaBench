@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct arguments {char* host; int is_use_passwd; char* user; char* commands; int is_raw_time; char* database; char* timezone; int /*<<< orphan*/  file; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EXIT_FAILURE ; 
- int /*<<< orphan*/  atoi (char*) ; 
- int /*<<< orphan*/  configDir ; 
- int /*<<< orphan*/  exit (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  printHelp () ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ strcmp (char*,char*) ; 
- int /*<<< orphan*/  strcpy (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  tsMgmtShellPort ; 
+
+
+
+struct arguments {char* host; int is_use_passwd; char* user; char* commands; int is_raw_time; char* database; char* timezone; int file; } ;
+
+
+ int EXIT_FAILURE ;
+ int atoi (char*) ;
+ int configDir ;
+ int exit (int ) ;
+ int fprintf (int ,char*) ;
+ int printHelp () ;
+ int stderr ;
+ scalar_t__ strcmp (char*,char*) ;
+ int strcpy (int ,char*) ;
+ int tsMgmtShellPort ;
 
 void shellParseArgument(int argc, char *argv[], struct arguments *arguments) {
   for (int i = 1; i < argc; i++) {
-    // for host
+
     if (strcmp(argv[i], "-h") == 0) {
       if (i < argc - 1) {
         arguments->host = argv[++i];
@@ -35,11 +35,11 @@ void shellParseArgument(int argc, char *argv[], struct arguments *arguments) {
         exit(EXIT_FAILURE);
       }
     }
-    // for password
+
     else if (strcmp(argv[i], "-p") == 0) {
-      arguments->is_use_passwd = true;
+      arguments->is_use_passwd = 1;
     }
-    // for management port
+
     else if (strcmp(argv[i], "-P") == 0) {
       if (i < argc - 1) {
         tsMgmtShellPort = atoi(argv[++i]);
@@ -48,7 +48,7 @@ void shellParseArgument(int argc, char *argv[], struct arguments *arguments) {
         exit(EXIT_FAILURE);
       }
     }
-    // for user
+
     else if (strcmp(argv[i], "-u") == 0) {
       if (i < argc - 1) {
         arguments->user = argv[++i];
@@ -71,9 +71,9 @@ void shellParseArgument(int argc, char *argv[], struct arguments *arguments) {
         exit(EXIT_FAILURE);
       }
     } else if (strcmp(argv[i], "-r") == 0) {
-      arguments->is_raw_time = true;
+      arguments->is_raw_time = 1;
     }
-    // For temperory batch commands to run TODO
+
     else if (strcmp(argv[i], "-f") == 0) {
       if (i < argc - 1) {
         strcpy(arguments->file, argv[++i]);
@@ -82,7 +82,7 @@ void shellParseArgument(int argc, char *argv[], struct arguments *arguments) {
         exit(EXIT_FAILURE);
       }
     }
-    // for default database
+
     else if (strcmp(argv[i], "-d") == 0) {
       if (i < argc - 1) {
         arguments->database = argv[++i];
@@ -91,7 +91,7 @@ void shellParseArgument(int argc, char *argv[], struct arguments *arguments) {
         exit(EXIT_FAILURE);
       }
     }
-    // For time zone
+
     else if (strcmp(argv[i], "-t") == 0) {
       if (i < argc - 1) {
         arguments->timezone = argv[++i];
@@ -100,7 +100,7 @@ void shellParseArgument(int argc, char *argv[], struct arguments *arguments) {
         exit(EXIT_FAILURE);
       }
     }
-    // For temperory command TODO
+
     else if (strcmp(argv[i], "--help") == 0) {
       printHelp();
       exit(EXIT_FAILURE);

@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct usb_interface {int /*<<< orphan*/  dev; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct usb_interface {int dev; } ;
 struct at76_priv {TYPE_1__* hw; } ;
-struct TYPE_2__ {int /*<<< orphan*/  wiphy; } ;
+struct TYPE_2__ {int wiphy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  KERN_INFO ; 
- int /*<<< orphan*/  at76_delete_device (struct at76_priv*) ; 
- int /*<<< orphan*/  dev_printk (int /*<<< orphan*/ ,int /*<<< orphan*/ *,char*) ; 
- struct at76_priv* usb_get_intfdata (struct usb_interface*) ; 
- int /*<<< orphan*/  usb_set_intfdata (struct usb_interface*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  wiphy_info (int /*<<< orphan*/ ,char*) ; 
+
+ int KERN_INFO ;
+ int at76_delete_device (struct at76_priv*) ;
+ int dev_printk (int ,int *,char*) ;
+ struct at76_priv* usb_get_intfdata (struct usb_interface*) ;
+ int usb_set_intfdata (struct usb_interface*,int *) ;
+ int wiphy_info (int ,char*) ;
 
 __attribute__((used)) static void at76_disconnect(struct usb_interface *interface)
 {
-	struct at76_priv *priv;
+ struct at76_priv *priv;
 
-	priv = usb_get_intfdata(interface);
-	usb_set_intfdata(interface, NULL);
+ priv = usb_get_intfdata(interface);
+ usb_set_intfdata(interface, ((void*)0));
 
-	/* Disconnect after loading internal firmware */
-	if (!priv)
-		return;
 
-	wiphy_info(priv->hw->wiphy, "disconnecting\n");
-	at76_delete_device(priv);
-	dev_printk(KERN_INFO, &interface->dev, "disconnected\n");
+ if (!priv)
+  return;
+
+ wiphy_info(priv->hw->wiphy, "disconnecting\n");
+ at76_delete_device(priv);
+ dev_printk(KERN_INFO, &interface->dev, "disconnected\n");
 }

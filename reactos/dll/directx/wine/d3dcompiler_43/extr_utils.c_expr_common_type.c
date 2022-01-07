@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct source_location {int /*<<< orphan*/  col; int /*<<< orphan*/  line; int /*<<< orphan*/  file; } ;
+
+
+
+
+struct source_location {int col; int line; int file; } ;
 struct hlsl_type {scalar_t__ type; scalar_t__ base_type; int dimx; int dimy; } ;
-typedef  enum hlsl_type_class { ____Placeholder_hlsl_type_class } hlsl_type_class ;
-typedef  enum hlsl_base_type { ____Placeholder_hlsl_base_type } hlsl_base_type ;
+typedef enum hlsl_type_class { ____Placeholder_hlsl_type_class } hlsl_type_class ;
+typedef enum hlsl_base_type { ____Placeholder_hlsl_base_type } hlsl_base_type ;
 
-/* Variables and functions */
- scalar_t__ HLSL_CLASS_LAST_NUMERIC ; 
- scalar_t__ HLSL_CLASS_MATRIX ; 
- int HLSL_CLASS_VECTOR ; 
- int /*<<< orphan*/  HLSL_LEVEL_ERROR ; 
- scalar_t__ compare_hlsl_types (struct hlsl_type*,struct hlsl_type*) ; 
- int expr_common_base_type (int,int) ; 
- int /*<<< orphan*/  expr_compatible_data_types (struct hlsl_type*,struct hlsl_type*) ; 
- int /*<<< orphan*/  hlsl_report_message (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- unsigned int max (unsigned int,unsigned int) ; 
- unsigned int min (unsigned int,unsigned int) ; 
- struct hlsl_type* new_hlsl_type (int /*<<< orphan*/ *,int,int,unsigned int,unsigned int) ; 
+
+ scalar_t__ HLSL_CLASS_LAST_NUMERIC ;
+ scalar_t__ HLSL_CLASS_MATRIX ;
+ int HLSL_CLASS_VECTOR ;
+ int HLSL_LEVEL_ERROR ;
+ scalar_t__ compare_hlsl_types (struct hlsl_type*,struct hlsl_type*) ;
+ int expr_common_base_type (int,int) ;
+ int expr_compatible_data_types (struct hlsl_type*,struct hlsl_type*) ;
+ int hlsl_report_message (int ,int ,int ,int ,char*) ;
+ unsigned int max (unsigned int,unsigned int) ;
+ unsigned int min (unsigned int,unsigned int) ;
+ struct hlsl_type* new_hlsl_type (int *,int,int,unsigned int,unsigned int) ;
 
 __attribute__((used)) static struct hlsl_type *expr_common_type(struct hlsl_type *t1, struct hlsl_type *t2,
         struct source_location *loc)
@@ -39,7 +39,7 @@ __attribute__((used)) static struct hlsl_type *expr_common_type(struct hlsl_type
     {
         hlsl_report_message(loc->file, loc->line, loc->col, HLSL_LEVEL_ERROR,
                 "non scalar/vector/matrix data type in expression");
-        return NULL;
+        return ((void*)0);
     }
 
     if (compare_hlsl_types(t1, t2))
@@ -49,7 +49,7 @@ __attribute__((used)) static struct hlsl_type *expr_common_type(struct hlsl_type
     {
         hlsl_report_message(loc->file, loc->line, loc->col, HLSL_LEVEL_ERROR,
                 "expression data types are incompatible");
-        return NULL;
+        return ((void*)0);
     }
 
     if (t1->base_type == t2->base_type)
@@ -77,7 +77,7 @@ __attribute__((used)) static struct hlsl_type *expr_common_type(struct hlsl_type
     }
     else
     {
-        /* Two vectors or a vector and a matrix (matrix must be 1xn or nx1) */
+
         unsigned int max_dim_1, max_dim_2;
 
         max_dim_1 = max(t1->dimx, t1->dimy);
@@ -118,5 +118,5 @@ __attribute__((used)) static struct hlsl_type *expr_common_type(struct hlsl_type
         }
     }
 
-    return new_hlsl_type(NULL, type, base, dimx, dimy);
+    return new_hlsl_type(((void*)0), type, base, dimx, dimy);
 }

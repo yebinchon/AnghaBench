@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  lock; } ;
 
-/* Variables and functions */
- int ENODEV ; 
- int __rb4xx_cpld_change_cfg (TYPE_1__*,unsigned int,unsigned int) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
- TYPE_1__* rb4xx_cpld ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int lock; } ;
+
+
+ int ENODEV ;
+ int __rb4xx_cpld_change_cfg (TYPE_1__*,unsigned int,unsigned int) ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
+ TYPE_1__* rb4xx_cpld ;
 
 int rb4xx_cpld_change_cfg(unsigned mask, unsigned value)
 {
-	int ret;
+ int ret;
 
-	if (rb4xx_cpld == NULL)
-		return -ENODEV;
+ if (rb4xx_cpld == ((void*)0))
+  return -ENODEV;
 
-	mutex_lock(&rb4xx_cpld->lock);
-	ret = __rb4xx_cpld_change_cfg(rb4xx_cpld, mask, value);
-	mutex_unlock(&rb4xx_cpld->lock);
+ mutex_lock(&rb4xx_cpld->lock);
+ ret = __rb4xx_cpld_change_cfg(rb4xx_cpld, mask, value);
+ mutex_unlock(&rb4xx_cpld->lock);
 
-	return ret;
+ return ret;
 }

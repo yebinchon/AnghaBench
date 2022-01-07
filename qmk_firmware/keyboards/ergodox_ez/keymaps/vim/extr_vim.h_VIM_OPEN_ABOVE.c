@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  CMD (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  INSERT_MODE ; 
- int /*<<< orphan*/  KC_ENTER ; 
- int /*<<< orphan*/  KC_LEFT ; 
- int /*<<< orphan*/  KC_NO ; 
- int /*<<< orphan*/  KC_UP ; 
- int /*<<< orphan*/  TAP (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  VIM_LEADER (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  layer_on (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  print (char*) ; 
+ int CMD (int ) ;
+ int INSERT_MODE ;
+ int KC_ENTER ;
+ int KC_LEFT ;
+ int KC_NO ;
+ int KC_UP ;
+ int TAP (int ) ;
+ int VIM_LEADER (int ) ;
+ int layer_on (int ) ;
+ int print (char*) ;
 
 void VIM_OPEN_ABOVE(void) {
   print("\e[31mO\e[0m");

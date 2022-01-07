@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ozone_handle_t ;
-struct TYPE_3__ {uintptr_t tag; float* subject; float target_value; int /*<<< orphan*/ * cb; int /*<<< orphan*/ * userdata; int /*<<< orphan*/  duration; int /*<<< orphan*/  easing_enum; } ;
-typedef  TYPE_1__ menu_animation_ctx_entry_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ANIMATION_CURSOR_PULSE ; 
- int /*<<< orphan*/  EASING_OUT_QUAD ; 
- int /*<<< orphan*/  menu_animation_push (TYPE_1__*) ; 
- int /*<<< orphan*/ * ozone_cursor_animation_cb ; 
- int /*<<< orphan*/  ozone_default_theme ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int ozone_handle_t ;
+struct TYPE_3__ {uintptr_t tag; float* subject; float target_value; int * cb; int * userdata; int duration; int easing_enum; } ;
+typedef TYPE_1__ menu_animation_ctx_entry_t ;
+
+
+ int ANIMATION_CURSOR_PULSE ;
+ int EASING_OUT_QUAD ;
+ int menu_animation_push (TYPE_1__*) ;
+ int * ozone_cursor_animation_cb ;
+ int ozone_default_theme ;
 
 __attribute__((used)) static void ozone_animate_cursor(ozone_handle_t *ozone, float *dst, float *target)
 {
@@ -40,10 +40,10 @@ __attribute__((used)) static void ozone_animate_cursor(ozone_handle_t *ozone, fl
       if (i == 14)
          entry.cb = ozone_cursor_animation_cb;
       else
-         entry.cb = NULL;
+         entry.cb = ((void*)0);
 
-      entry.subject        = &dst[i];
-      entry.target_value   = target[i];
+      entry.subject = &dst[i];
+      entry.target_value = target[i];
 
       menu_animation_push(&entry);
    }

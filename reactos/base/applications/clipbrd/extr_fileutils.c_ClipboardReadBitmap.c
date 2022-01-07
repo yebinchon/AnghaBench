@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {struct TYPE_4__* bmBits; } ;
-typedef  TYPE_1__* LPBITMAP ;
-typedef  int /*<<< orphan*/  HGLOBAL ;
-typedef  int /*<<< orphan*/  HBITMAP ;
-typedef  int /*<<< orphan*/  HANDLE ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
-typedef  int /*<<< orphan*/  BITMAP ;
+typedef TYPE_1__* LPBITMAP ;
+typedef int HGLOBAL ;
+typedef int HBITMAP ;
+typedef int HANDLE ;
+typedef int DWORD ;
+typedef int BOOL ;
+typedef int BITMAP ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CF_BITMAP ; 
- int /*<<< orphan*/  ClipboardReadMemoryBlock (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CreateBitmapIndirect (TYPE_1__*) ; 
- int /*<<< orphan*/  DeleteObject (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ERROR_OUTOFMEMORY ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GlobalFree (int /*<<< orphan*/ ) ; 
- TYPE_1__* GlobalLock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GlobalUnlock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetClipboardData (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetLastError (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
+
+ int CF_BITMAP ;
+ int ClipboardReadMemoryBlock (int ,int ,int ) ;
+ int CreateBitmapIndirect (TYPE_1__*) ;
+ int DeleteObject (int ) ;
+ int ERROR_OUTOFMEMORY ;
+ int FALSE ;
+ int GlobalFree (int ) ;
+ TYPE_1__* GlobalLock (int ) ;
+ int GlobalUnlock (int ) ;
+ int SetClipboardData (int ,int ) ;
+ int SetLastError (int ) ;
+ int TRUE ;
 
 __attribute__((used)) static BOOL ClipboardReadBitmap(HANDLE hFile, DWORD dwOffset, DWORD dwLength)
 {

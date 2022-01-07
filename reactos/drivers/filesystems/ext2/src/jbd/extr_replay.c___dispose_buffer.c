@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  transaction_t ;
+
+
+
+
+typedef int transaction_t ;
 struct journal_head {scalar_t__ b_cp_transaction; } ;
 struct buffer_head {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BJ_Forget ; 
- int /*<<< orphan*/  JBUFFER_TRACE (struct journal_head*,char*) ; 
- int /*<<< orphan*/  __brelse (struct buffer_head*) ; 
- int /*<<< orphan*/  __journal_file_buffer (struct journal_head*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  __journal_unfile_buffer (struct journal_head*) ; 
- int /*<<< orphan*/  clear_buffer_jbddirty (struct buffer_head*) ; 
- struct buffer_head* jh2bh (struct journal_head*) ; 
- int /*<<< orphan*/  journal_remove_journal_head (struct buffer_head*) ; 
+
+ int BJ_Forget ;
+ int JBUFFER_TRACE (struct journal_head*,char*) ;
+ int __brelse (struct buffer_head*) ;
+ int __journal_file_buffer (struct journal_head*,int *,int ) ;
+ int __journal_unfile_buffer (struct journal_head*) ;
+ int clear_buffer_jbddirty (struct buffer_head*) ;
+ struct buffer_head* jh2bh (struct journal_head*) ;
+ int journal_remove_journal_head (struct buffer_head*) ;
 
 __attribute__((used)) static int __dispose_buffer(struct journal_head *jh, transaction_t *transaction)
 {

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct bwstring {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  sort_free (struct bwstring const*) ; 
+
+ int sort_free (struct bwstring const*) ;
 
 void
 bwsfree(const struct bwstring *s)
 {
 
-	if (s)
-		sort_free(s);
+ if (s)
+  sort_free(s);
 }

@@ -1,85 +1,85 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_26__   TYPE_6__ ;
-typedef  struct TYPE_25__   TYPE_5__ ;
-typedef  struct TYPE_24__   TYPE_4__ ;
-typedef  struct TYPE_23__   TYPE_2__ ;
-typedef  struct TYPE_22__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_23__ {int /*<<< orphan*/  kind; } ;
-typedef  TYPE_2__ svn_wc_notify_t ;
-typedef  int /*<<< orphan*/  (* svn_wc_notify_func2_t ) (struct notification_adjust_baton*,TYPE_2__*,int /*<<< orphan*/ *) ;
-typedef  int /*<<< orphan*/  svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_ra_session_t ;
-struct TYPE_22__ {int /*<<< orphan*/  number; } ;
-struct TYPE_24__ {TYPE_1__ value; int /*<<< orphan*/  kind; } ;
-typedef  TYPE_4__ svn_opt_revision_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct TYPE_25__ {struct notification_adjust_baton* notify_baton2; int /*<<< orphan*/  (* notify_func2 ) (struct notification_adjust_baton*,TYPE_2__*,int /*<<< orphan*/ *) ;int /*<<< orphan*/  wc_ctx; } ;
-typedef  TYPE_5__ svn_client_ctx_t ;
-struct TYPE_26__ {int /*<<< orphan*/  resolution_tree; } ;
-typedef  TYPE_6__ svn_client_conflict_t ;
-typedef  int /*<<< orphan*/  svn_client_conflict_option_t ;
-typedef  scalar_t__ svn_boolean_t ;
-struct notification_adjust_baton {char const* checkout_abspath; char const* final_abspath; struct notification_adjust_baton* inner_baton; int /*<<< orphan*/  (* inner_func ) (struct notification_adjust_baton*,TYPE_2__*,int /*<<< orphan*/ *) ;} ;
-struct find_added_rev_baton {char const* victim_abspath; scalar_t__ added_rev; int /*<<< orphan*/ * pool; int /*<<< orphan*/  parent_repos_relpath; int /*<<< orphan*/ * repos_relpath; TYPE_5__* ctx; int /*<<< orphan*/  member_0; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SVN_ERR_WC_CONFLICT_RESOLVER_FAILURE ; 
- scalar_t__ SVN_INVALID_REVNUM ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  find_added_rev ; 
- int /*<<< orphan*/ * merge_newly_added_dir (char const*,char const*,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,TYPE_5__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  notification_adjust_func (struct notification_adjust_baton*,TYPE_2__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  rev_below (scalar_t__) ; 
- int /*<<< orphan*/  stub1 (struct notification_adjust_baton*,TYPE_2__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub2 (struct notification_adjust_baton*,TYPE_2__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_client__checkout_internal (int /*<<< orphan*/ *,scalar_t__*,char const*,char const*,TYPE_4__*,TYPE_4__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,TYPE_5__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_client__open_ra_session_internal (int /*<<< orphan*/ **,char const**,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_5__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_client_conflict_get_incoming_new_repos_location (char const**,int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_6__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- char* svn_client_conflict_get_local_abspath (TYPE_6__*) ; 
- int /*<<< orphan*/ * svn_client_conflict_get_repos_info (char const**,int /*<<< orphan*/ *,TYPE_6__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_client_conflict_option_get_id (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_depth_infinity ; 
- int /*<<< orphan*/  svn_dirent_dirname (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_error_compose_create (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * svn_error_createf (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  svn_io_file_del_on_close ; 
- int /*<<< orphan*/ * svn_io_file_rename2 (char const*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_io_open_unique_file3 (int /*<<< orphan*/ *,char const**,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_io_sleep_for_timestamps (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_node_dir ; 
- int /*<<< orphan*/  svn_opt_revision_number ; 
- char* svn_path_url_add_component2 (char const*,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_ra_get_location_segments (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,struct find_added_rev_baton*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_ra_reparent (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_relpath_dirname (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_wc__acquire_write_lock (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_wc__acquire_write_lock_for_resolve (char const**,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_wc__del_tree_conflict (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_wc__get_tmpdir (char const**,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_wc__node_get_base (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const**,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__release_write_lock (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_wc_copy3 (int /*<<< orphan*/ ,char const*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- TYPE_2__* svn_wc_create_notify (char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_wc_delete4 (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/  (*) (struct notification_adjust_baton*,TYPE_2__*,int /*<<< orphan*/ *),struct notification_adjust_baton*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc_notify_add ; 
- int /*<<< orphan*/  svn_wc_notify_resolved_tree ; 
- int /*<<< orphan*/ * svn_wc_remove_from_revision_control2 (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_26__ TYPE_6__ ;
+typedef struct TYPE_25__ TYPE_5__ ;
+typedef struct TYPE_24__ TYPE_4__ ;
+typedef struct TYPE_23__ TYPE_2__ ;
+typedef struct TYPE_22__ TYPE_1__ ;
+
+
+struct TYPE_23__ {int kind; } ;
+typedef TYPE_2__ svn_wc_notify_t ;
+typedef int (* svn_wc_notify_func2_t ) (struct notification_adjust_baton*,TYPE_2__*,int *) ;
+typedef int svn_revnum_t ;
+typedef int svn_ra_session_t ;
+struct TYPE_22__ {int number; } ;
+struct TYPE_24__ {TYPE_1__ value; int kind; } ;
+typedef TYPE_4__ svn_opt_revision_t ;
+typedef int svn_error_t ;
+struct TYPE_25__ {struct notification_adjust_baton* notify_baton2; int (* notify_func2 ) (struct notification_adjust_baton*,TYPE_2__*,int *) ;int wc_ctx; } ;
+typedef TYPE_5__ svn_client_ctx_t ;
+struct TYPE_26__ {int resolution_tree; } ;
+typedef TYPE_6__ svn_client_conflict_t ;
+typedef int svn_client_conflict_option_t ;
+typedef scalar_t__ svn_boolean_t ;
+struct notification_adjust_baton {char const* checkout_abspath; char const* final_abspath; struct notification_adjust_baton* inner_baton; int (* inner_func ) (struct notification_adjust_baton*,TYPE_2__*,int *) ;} ;
+struct find_added_rev_baton {char const* victim_abspath; scalar_t__ added_rev; int * pool; int parent_repos_relpath; int * repos_relpath; TYPE_5__* ctx; int member_0; } ;
+typedef int apr_pool_t ;
+
+
+ int FALSE ;
+ int SVN_ERR (int *) ;
+ int SVN_ERR_WC_CONFLICT_RESOLVER_FAILURE ;
+ scalar_t__ SVN_INVALID_REVNUM ;
+ int * SVN_NO_ERROR ;
+ int TRUE ;
+ int _ (char*) ;
+ int find_added_rev ;
+ int * merge_newly_added_dir (char const*,char const*,int ,char const*,int ,char const*,int ,TYPE_5__*,int *,int *) ;
+ int notification_adjust_func (struct notification_adjust_baton*,TYPE_2__*,int *) ;
+ int rev_below (scalar_t__) ;
+ int stub1 (struct notification_adjust_baton*,TYPE_2__*,int *) ;
+ int stub2 (struct notification_adjust_baton*,TYPE_2__*,int *) ;
+ int * svn_client__checkout_internal (int *,scalar_t__*,char const*,char const*,TYPE_4__*,TYPE_4__*,int ,int ,int ,int *,TYPE_5__*,int *) ;
+ int * svn_client__open_ra_session_internal (int **,char const**,char const*,int *,int *,int ,int ,TYPE_5__*,int *,int *) ;
+ int * svn_client_conflict_get_incoming_new_repos_location (char const**,int *,int *,TYPE_6__*,int *,int *) ;
+ char* svn_client_conflict_get_local_abspath (TYPE_6__*) ;
+ int * svn_client_conflict_get_repos_info (char const**,int *,TYPE_6__*,int *,int *) ;
+ int svn_client_conflict_option_get_id (int *) ;
+ int svn_depth_infinity ;
+ int svn_dirent_dirname (char const*,int *) ;
+ int * svn_error_compose_create (int *,int ) ;
+ int * svn_error_createf (int ,int *,int ,char const*) ;
+ int svn_io_file_del_on_close ;
+ int * svn_io_file_rename2 (char const*,char const*,int ,int *) ;
+ int * svn_io_open_unique_file3 (int *,char const**,char const*,int ,int *,int *) ;
+ int svn_io_sleep_for_timestamps (char const*,int *) ;
+ int svn_node_dir ;
+ int svn_opt_revision_number ;
+ char* svn_path_url_add_component2 (char const*,char const*,int *) ;
+ int * svn_ra_get_location_segments (int *,char*,int ,int ,scalar_t__,int ,struct find_added_rev_baton*,int *) ;
+ int * svn_ra_reparent (int *,char const*,int *) ;
+ int svn_relpath_dirname (char const*,int *) ;
+ int * svn_wc__acquire_write_lock (int *,int ,char const*,int ,int *,int *) ;
+ int * svn_wc__acquire_write_lock_for_resolve (char const**,int ,int ,int *,int *) ;
+ int * svn_wc__del_tree_conflict (int ,char const*,int *) ;
+ int * svn_wc__get_tmpdir (char const**,int ,char const*,int *,int *) ;
+ int * svn_wc__node_get_base (int *,int *,char const**,int *,int *,int *,int ,char const*,int ,int *,int *) ;
+ int svn_wc__release_write_lock (int ,char const*,int *) ;
+ int * svn_wc_copy3 (int ,char const*,char const*,int ,int *,int *,int *,int *,int *) ;
+ TYPE_2__* svn_wc_create_notify (char const*,int ,int *) ;
+ int * svn_wc_delete4 (int ,char const*,int ,int ,int *,int *,int (*) (struct notification_adjust_baton*,TYPE_2__*,int *),struct notification_adjust_baton*,int *) ;
+ int svn_wc_notify_add ;
+ int svn_wc_notify_resolved_tree ;
+ int * svn_wc_remove_from_revision_control2 (int ,char const*,int ,int ,int *,int *,int *) ;
 
 __attribute__((used)) static svn_error_t *
 merge_incoming_added_dir_replace(svn_client_conflict_option_t *option,
@@ -107,39 +107,31 @@ merge_incoming_added_dir_replace(svn_client_conflict_option_t *option,
 
   local_abspath = svn_client_conflict_get_local_abspath(conflict);
 
-  /* Find the URL of the incoming added directory in the repository. */
+
   SVN_ERR(svn_client_conflict_get_incoming_new_repos_location(
             &incoming_new_repos_relpath, &incoming_new_pegrev,
-            NULL, conflict, scratch_pool,
+            ((void*)0), conflict, scratch_pool,
             scratch_pool));
-  SVN_ERR(svn_client_conflict_get_repos_info(&repos_root_url, NULL,
+  SVN_ERR(svn_client_conflict_get_repos_info(&repos_root_url, ((void*)0),
                                              conflict, scratch_pool,
                                              scratch_pool));
   url = svn_path_url_add_component2(repos_root_url, incoming_new_repos_relpath,
                                     scratch_pool);
   SVN_ERR(svn_client__open_ra_session_internal(&ra_session, &corrected_url,
-                                               url, NULL, NULL, FALSE, FALSE,
+                                               url, ((void*)0), ((void*)0), FALSE, FALSE,
                                                ctx, scratch_pool,
                                                scratch_pool));
   if (corrected_url)
     url = corrected_url;
 
 
-  /* Find a temporary location in which to check out the copy source. */
+
   SVN_ERR(svn_wc__get_tmpdir(&tmpdir_abspath, ctx->wc_ctx, local_abspath,
                              scratch_pool, scratch_pool));
 
-  SVN_ERR(svn_io_open_unique_file3(NULL, &tmp_abspath, tmpdir_abspath,
+  SVN_ERR(svn_io_open_unique_file3(((void*)0), &tmp_abspath, tmpdir_abspath,
                                    svn_io_file_del_on_close,
                                    scratch_pool, scratch_pool));
-
-  /* Make a new checkout of the requested source. While doing so,
-   * resolve copy_src_revnum to an actual revision number in case it
-   * was until now 'invalid' meaning 'head'.  Ask this function not to
-   * sleep for timestamps, by passing a sleep_needed output param.
-   * Send notifications for all nodes except the root node, and adjust
-   * them to refer to the destination rather than this temporary path. */
-
   nb.inner_func = ctx->notify_func2;
   nb.inner_baton = ctx->notify_baton2;
   nb.checkout_abspath = tmp_abspath;
@@ -155,8 +147,8 @@ merge_incoming_added_dir_replace(svn_client_conflict_option_t *option,
                                       &copy_src_peg_revision,
                                       &copy_src_peg_revision,
                                       svn_depth_infinity,
-                                      TRUE, /* we want to ignore externals */
-                                      FALSE, /* we don't allow obstructions */
+                                      TRUE,
+                                      FALSE,
                                       ra_session, ctx, scratch_pool);
 
   ctx->notify_func2 = old_notify_func2;
@@ -164,7 +156,7 @@ merge_incoming_added_dir_replace(svn_client_conflict_option_t *option,
 
   SVN_ERR(err);
 
-  /* ### The following WC modifications should be atomic. */
+
 
   SVN_ERR(svn_wc__acquire_write_lock_for_resolve(&lock_abspath, ctx->wc_ctx,
                                                  svn_dirent_dirname(
@@ -172,38 +164,38 @@ merge_incoming_added_dir_replace(svn_client_conflict_option_t *option,
                                                    scratch_pool),
                                                  scratch_pool, scratch_pool));
 
-  /* Remove the working directory. */
+
   err = svn_wc_delete4(ctx->wc_ctx, local_abspath, FALSE, FALSE,
-                       NULL, NULL, /* don't allow user to cancel here */
+                       ((void*)0), ((void*)0),
                        ctx->notify_func2, ctx->notify_baton2,
                        scratch_pool);
   if (err)
     goto unlock_wc;
 
-  /* Schedule dst_path for addition in parent, with copy history.
-     Don't send any notification here.
-     Then remove the temporary checkout's .svn dir in preparation for
-     moving the rest of it into the final destination. */
+
+
+
+
   err = svn_wc_copy3(ctx->wc_ctx, tmp_abspath, local_abspath,
-                     TRUE /* metadata_only */,
-                     NULL, NULL, /* don't allow user to cancel here */
-                     NULL, NULL, scratch_pool);
+                     TRUE ,
+                     ((void*)0), ((void*)0),
+                     ((void*)0), ((void*)0), scratch_pool);
   if (err)
     goto unlock_wc;
 
-  err = svn_wc__acquire_write_lock(NULL, ctx->wc_ctx, tmp_abspath,
+  err = svn_wc__acquire_write_lock(((void*)0), ctx->wc_ctx, tmp_abspath,
                                    FALSE, scratch_pool, scratch_pool);
   if (err)
     goto unlock_wc;
   err = svn_wc_remove_from_revision_control2(ctx->wc_ctx,
                                              tmp_abspath,
                                              FALSE, FALSE,
-                                             NULL, NULL, /* don't cancel */
+                                             ((void*)0), ((void*)0),
                                              scratch_pool);
   if (err)
     goto unlock_wc;
 
-  /* Move the temporary disk tree into place. */
+
   err = svn_io_file_rename2(tmp_abspath, local_abspath, FALSE, scratch_pool);
   if (err)
     goto unlock_wc;
@@ -217,8 +209,8 @@ merge_incoming_added_dir_replace(svn_client_conflict_option_t *option,
       ctx->notify_func2(ctx->notify_baton2, notify, scratch_pool);
     }
 
-  /* Resolve to current working copy state.
-   * svn_client__merge_locked() requires this. */
+
+
   err = svn_wc__del_tree_conflict(ctx->wc_ctx, local_abspath, scratch_pool);
   if (err)
     goto unlock_wc;
@@ -229,9 +221,9 @@ merge_incoming_added_dir_replace(svn_client_conflict_option_t *option,
       const char *base_repos_relpath;
       struct find_added_rev_baton b = { 0 };
 
-      /* Find the URL and revision of the directory we have just replaced. */
-      err = svn_wc__node_get_base(NULL, &base_revision, &base_repos_relpath,
-                                  NULL, NULL, NULL, ctx->wc_ctx, local_abspath,
+
+      err = svn_wc__node_get_base(((void*)0), &base_revision, &base_repos_relpath,
+                                  ((void*)0), ((void*)0), ((void*)0), ctx->wc_ctx, local_abspath,
                                   FALSE, scratch_pool, scratch_pool);
       if (err)
         goto unlock_wc;
@@ -239,14 +231,14 @@ merge_incoming_added_dir_replace(svn_client_conflict_option_t *option,
       url = svn_path_url_add_component2(repos_root_url, base_repos_relpath,
                                         scratch_pool);
 
-      /* Trace the replaced directory's history to its origin. */
+
       err = svn_ra_reparent(ra_session, url, scratch_pool);
       if (err)
         goto unlock_wc;
       b.victim_abspath = local_abspath;
       b.ctx = ctx;
       b.added_rev = SVN_INVALID_REVNUM;
-      b.repos_relpath = NULL;
+      b.repos_relpath = ((void*)0);
       b.parent_repos_relpath = svn_relpath_dirname(base_repos_relpath,
                                                    scratch_pool);
       b.pool = scratch_pool;
@@ -260,7 +252,7 @@ merge_incoming_added_dir_replace(svn_client_conflict_option_t *option,
 
       if (b.added_rev == SVN_INVALID_REVNUM)
         {
-          err = svn_error_createf(SVN_ERR_WC_CONFLICT_RESOLVER_FAILURE, NULL,
+          err = svn_error_createf(SVN_ERR_WC_CONFLICT_RESOLVER_FAILURE, ((void*)0),
                                   _("Could not determine the revision in "
                                     "which '^/%s' was added to the "
                                     "repository.\n"),
@@ -268,10 +260,10 @@ merge_incoming_added_dir_replace(svn_client_conflict_option_t *option,
           goto unlock_wc;
         }
 
-      /* Merge the replaced directory into the directory which replaced it.
-       * We do not need to consider a reverse-merge here since the source of
-       * this merge was part of the merge target working copy, not a branch
-       * in the repository. */
+
+
+
+
       err = merge_newly_added_dir(base_repos_relpath,
                                   url, rev_below(b.added_rev), url,
                                   base_revision, local_abspath, FALSE,

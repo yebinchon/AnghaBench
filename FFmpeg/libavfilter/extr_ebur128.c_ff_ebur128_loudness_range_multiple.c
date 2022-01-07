@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int mode; TYPE_1__* d; } ;
 struct TYPE_4__ {unsigned long* short_term_block_energy_histogram; } ;
-typedef  TYPE_2__ FFEBUR128State ;
+typedef TYPE_2__ FFEBUR128State ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EINVAL ; 
- int FF_EBUR128_MODE_LRA ; 
- double MINUS_20DB ; 
- double ebur128_energy_to_loudness (double) ; 
- size_t find_histogram_index (double) ; 
- double* histogram_energies ; 
- double* histogram_energy_boundaries ; 
+
+ int AVERROR (int ) ;
+ int EINVAL ;
+ int FF_EBUR128_MODE_LRA ;
+ double MINUS_20DB ;
+ double ebur128_energy_to_loudness (double) ;
+ size_t find_histogram_index (double) ;
+ double* histogram_energies ;
+ double* histogram_energy_boundaries ;
 
 int ff_ebur128_loudness_range_multiple(FFEBUR128State ** sts, size_t size,
                                        double *out)
@@ -32,7 +32,7 @@ int ff_ebur128_loudness_range_multiple(FFEBUR128State ** sts, size_t size,
     size_t i, j;
     size_t stl_size;
     double stl_power, stl_integrated;
-    /* High and low percentile energy */
+
     double h_en, l_en;
     unsigned long hist[1000] = { 0 };
     size_t percentile_low, percentile_high;

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct vo_frame {int /*<<< orphan*/  duration; int /*<<< orphan*/  pts; int /*<<< orphan*/  current; int /*<<< orphan*/  redraw; } ;
+
+
+
+
+struct vo_frame {int duration; int pts; int current; int redraw; } ;
 struct vo {struct vdpctx* priv; } ;
-struct vdpctx {struct mp_image* current_image; int /*<<< orphan*/  current_duration; int /*<<< orphan*/  current_pts; int /*<<< orphan*/  mpvdp; } ;
+struct vdpctx {struct mp_image* current_image; int current_duration; int current_pts; int mpvdp; } ;
 struct mp_image {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MP_ERR (struct vo*,char*) ; 
- int /*<<< orphan*/  check_preemption (struct vo*) ; 
- int /*<<< orphan*/  draw_osd (struct vo*) ; 
- struct mp_image* mp_vdpau_upload_video_surface (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ status_ok (struct vo*) ; 
- int /*<<< orphan*/  talloc_free (struct mp_image*) ; 
- int /*<<< orphan*/  video_to_output_surface (struct vo*,struct mp_image*) ; 
+
+ int MP_ERR (struct vo*,char*) ;
+ int check_preemption (struct vo*) ;
+ int draw_osd (struct vo*) ;
+ struct mp_image* mp_vdpau_upload_video_surface (int ,int ) ;
+ scalar_t__ status_ok (struct vo*) ;
+ int talloc_free (struct mp_image*) ;
+ int video_to_output_surface (struct vo*,struct mp_image*) ;
 
 __attribute__((used)) static void draw_frame(struct vo *vo, struct vo_frame *frame)
 {

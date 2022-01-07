@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/ * sval; int /*<<< orphan*/  column; } ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int * sval; int column; } ;
 struct expr {int type; TYPE_2__ u; } ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  UINT ;
-struct TYPE_7__ {int /*<<< orphan*/  rec_index; TYPE_1__* db; } ;
-struct TYPE_5__ {int /*<<< orphan*/  strings; } ;
-typedef  TYPE_3__ MSIWHEREVIEW ;
-typedef  int /*<<< orphan*/  MSIRECORD ;
+typedef int WCHAR ;
+typedef int UINT ;
+struct TYPE_7__ {int rec_index; TYPE_1__* db; } ;
+struct TYPE_5__ {int strings; } ;
+typedef TYPE_3__ MSIWHEREVIEW ;
+typedef int MSIRECORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*) ; 
- int /*<<< orphan*/  ERROR_FUNCTION_FAILED ; 
- int /*<<< orphan*/  ERROR_SUCCESS ; 
-#define  EXPR_COL_NUMBER_STRING 130 
-#define  EXPR_SVAL 129 
-#define  EXPR_WILDCARD 128 
- int /*<<< orphan*/ * MSI_RecordGetString (int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  expr_fetch_value (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * msi_string_lookup (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int ERR (char*) ;
+ int ERROR_FUNCTION_FAILED ;
+ int ERROR_SUCCESS ;
+
+
+
+ int * MSI_RecordGetString (int const*,int ) ;
+ int expr_fetch_value (int *,int const*,int *) ;
+ int * msi_string_lookup (int ,int ,int *) ;
 
 __attribute__((used)) static UINT STRING_evaluate( MSIWHEREVIEW *wv, const UINT rows[],
                                      const struct expr *expr,
@@ -42,26 +42,26 @@ __attribute__((used)) static UINT STRING_evaluate( MSIWHEREVIEW *wv, const UINT 
 
     switch( expr->type )
     {
-    case EXPR_COL_NUMBER_STRING:
+    case 130:
         r = expr_fetch_value(&expr->u.column, rows, &val);
         if (r == ERROR_SUCCESS)
-            *str =  msi_string_lookup(wv->db->strings, val, NULL);
+            *str = msi_string_lookup(wv->db->strings, val, ((void*)0));
         else
-            *str = NULL;
+            *str = ((void*)0);
         break;
 
-    case EXPR_SVAL:
+    case 129:
         *str = expr->u.sval;
         break;
 
-    case EXPR_WILDCARD:
+    case 128:
         *str = MSI_RecordGetString(record, ++wv->rec_index);
         break;
 
     default:
         ERR("Invalid expression type\n");
         r = ERROR_FUNCTION_FAILED;
-        *str = NULL;
+        *str = ((void*)0);
         break;
     }
     return r;

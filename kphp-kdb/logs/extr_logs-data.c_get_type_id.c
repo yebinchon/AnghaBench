@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/ * name; } ;
 
-/* Variables and functions */
- int MAX_TYPE ; 
- int /*<<< orphan*/  dl_strhash (char*) ; 
- int /*<<< orphan*/  is_name (char*) ; 
- int* map_ll_int_get (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  map_type_id ; 
- int /*<<< orphan*/  sscanf (char*,char*,int*,int*) ; 
- int strlen (char*) ; 
- TYPE_1__* types ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int * name; } ;
+
+
+ int MAX_TYPE ;
+ int dl_strhash (char*) ;
+ int is_name (char*) ;
+ int* map_ll_int_get (int *,int ) ;
+ int map_type_id ;
+ int sscanf (char*,char*,int*,int*) ;
+ int strlen (char*) ;
+ TYPE_1__* types ;
 
 int get_type_id (char *s) {
   int type_id;
@@ -37,7 +37,7 @@ int get_type_id (char *s) {
       return 0;
     }
 
-    if (types[type_id].name == NULL) {
+    if (types[type_id].name == ((void*)0)) {
       return 0;
     }
   } else {
@@ -46,7 +46,7 @@ int get_type_id (char *s) {
     }
 
     int *ptmp = map_ll_int_get (&map_type_id, dl_strhash (s));
-    if (ptmp == NULL) {
+    if (ptmp == ((void*)0)) {
       return 0;
     }
 

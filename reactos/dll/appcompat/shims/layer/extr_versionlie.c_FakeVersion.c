@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {scalar_t__ dwPlatformId; int /*<<< orphan*/  wServicePackMinor; int /*<<< orphan*/  wServicePackMajor; int /*<<< orphan*/  szCSDVersionW; int /*<<< orphan*/  szCSDVersionA; int /*<<< orphan*/  dwBuildNumber; int /*<<< orphan*/  dwMinorVersion; int /*<<< orphan*/  dwMajorVersion; } ;
-typedef  TYPE_1__ VersionLieInfo ;
-struct TYPE_8__ {int dwOSVersionInfoSize; scalar_t__ dwPlatformId; int /*<<< orphan*/  wServicePackMinor; int /*<<< orphan*/  wServicePackMajor; int /*<<< orphan*/  szCSDVersion; int /*<<< orphan*/  dwBuildNumber; int /*<<< orphan*/  dwMinorVersion; int /*<<< orphan*/  dwMajorVersion; } ;
-struct TYPE_7__ {int dwOSVersionInfoSize; int /*<<< orphan*/  wServicePackMinor; int /*<<< orphan*/  wServicePackMajor; int /*<<< orphan*/  szCSDVersion; } ;
-typedef  int /*<<< orphan*/  OSVERSIONINFOW ;
-typedef  int /*<<< orphan*/  OSVERSIONINFOEXW ;
-typedef  int /*<<< orphan*/  OSVERSIONINFOEXA ;
-typedef  int /*<<< orphan*/  OSVERSIONINFOA ;
-typedef  TYPE_2__* LPOSVERSIONINFOEXW ;
-typedef  TYPE_3__* LPOSVERSIONINFOEXA ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  StringCbCopyA (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  StringCbCopyW (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- scalar_t__ VER_PLATFORM_WIN32_WINDOWS ; 
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {scalar_t__ dwPlatformId; int wServicePackMinor; int wServicePackMajor; int szCSDVersionW; int szCSDVersionA; int dwBuildNumber; int dwMinorVersion; int dwMajorVersion; } ;
+typedef TYPE_1__ VersionLieInfo ;
+struct TYPE_8__ {int dwOSVersionInfoSize; scalar_t__ dwPlatformId; int wServicePackMinor; int wServicePackMajor; int szCSDVersion; int dwBuildNumber; int dwMinorVersion; int dwMajorVersion; } ;
+struct TYPE_7__ {int dwOSVersionInfoSize; int wServicePackMinor; int wServicePackMajor; int szCSDVersion; } ;
+typedef int OSVERSIONINFOW ;
+typedef int OSVERSIONINFOEXW ;
+typedef int OSVERSIONINFOEXA ;
+typedef int OSVERSIONINFOA ;
+typedef TYPE_2__* LPOSVERSIONINFOEXW ;
+typedef TYPE_3__* LPOSVERSIONINFOEXA ;
+typedef int BOOL ;
+
+
+ scalar_t__ FAILED (int ) ;
+ int FALSE ;
+ int StringCbCopyA (int ,int,int ) ;
+ int StringCbCopyW (int ,int,int ) ;
+ int TRUE ;
+ scalar_t__ VER_PLATFORM_WIN32_WINDOWS ;
 
 BOOL FakeVersion(LPOSVERSIONINFOEXA pResult, VersionLieInfo* pFake)
 {

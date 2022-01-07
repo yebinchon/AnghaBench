@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct Decorr {int delta; int value; int weightA; int weightB; int sumA; int sumB; int /*<<< orphan*/  samplesB; int /*<<< orphan*/  samplesA; int /*<<< orphan*/  member_0; } ;
-typedef  int /*<<< orphan*/  int32_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct Decorr {int delta; int value; int weightA; int weightB; int sumA; int sumB; int samplesB; int samplesA; int member_0; } ;
+typedef int int32_t ;
 struct TYPE_3__ {scalar_t__ gt16bit; struct Decorr* dps; } ;
-typedef  TYPE_1__ WavPackExtraInfo ;
+typedef TYPE_1__ WavPackExtraInfo ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLEAR (int /*<<< orphan*/ ) ; 
- int FFMIN (int,int) ; 
- int /*<<< orphan*/  decorr_stereo (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,struct Decorr*,int) ; 
- int /*<<< orphan*/  decorr_stereo_quick (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,struct Decorr*) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  reverse_decorr (struct Decorr*) ; 
+
+ int CLEAR (int ) ;
+ int FFMIN (int,int) ;
+ int decorr_stereo (int *,int *,int *,int *,int,struct Decorr*,int) ;
+ int decorr_stereo_quick (int *,int *,int *,int *,int,struct Decorr*) ;
+ int memcpy (int ,int ,int) ;
+ int reverse_decorr (struct Decorr*) ;
 
 __attribute__((used)) static void decorr_stereo_buffer(WavPackExtraInfo *info,
-                                 int32_t *in_left,  int32_t *in_right,
+                                 int32_t *in_left, int32_t *in_right,
                                  int32_t *out_left, int32_t *out_right,
                                  int nb_samples, int tindex)
 {

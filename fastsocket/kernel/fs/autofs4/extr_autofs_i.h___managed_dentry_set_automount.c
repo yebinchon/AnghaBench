@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct dentry {int /*<<< orphan*/  d_flags; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DCACHE_NEED_AUTOMOUNT ; 
+
+
+
+struct dentry {int d_flags; } ;
+
+
+ int DCACHE_NEED_AUTOMOUNT ;
 
 __attribute__((used)) static inline void __managed_dentry_set_automount(struct dentry *dentry)
 {
-	dentry->d_flags |= DCACHE_NEED_AUTOMOUNT;
+ dentry->d_flags |= DCACHE_NEED_AUTOMOUNT;
 }

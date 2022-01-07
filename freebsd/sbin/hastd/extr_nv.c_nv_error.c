@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct nv {int nv_error; } ;
 
-/* Variables and functions */
- int ENOMEM ; 
- int /*<<< orphan*/  NV_CHECK (struct nv const*) ; 
+
+ int ENOMEM ;
+ int NV_CHECK (struct nv const*) ;
 
 int
 nv_error(const struct nv *nv)
 {
 
-	if (nv == NULL)
-		return (ENOMEM);
+ if (nv == ((void*)0))
+  return (ENOMEM);
 
-	NV_CHECK(nv);
+ NV_CHECK(nv);
 
-	return (nv->nv_error);
+ return (nv->nv_error);
 }

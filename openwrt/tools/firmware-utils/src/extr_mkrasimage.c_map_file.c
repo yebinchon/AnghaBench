@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct stat {int /*<<< orphan*/  st_size; int /*<<< orphan*/  member_0; } ;
-struct file_info {int /*<<< orphan*/  name; int /*<<< orphan*/  data; int /*<<< orphan*/  size; } ;
-typedef  int /*<<< orphan*/  mode_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EXIT_FAILURE ; 
- int /*<<< orphan*/  MAP_FAILED ; 
- int /*<<< orphan*/  MAP_SHARED ; 
- int /*<<< orphan*/  O_RDONLY ; 
- int /*<<< orphan*/  PROT_READ ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  exit (int /*<<< orphan*/ ) ; 
- int fstat (int,struct stat*) ; 
- int /*<<< orphan*/  mmap (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int open (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct stat {int st_size; int member_0; } ;
+struct file_info {int name; int data; int size; } ;
+typedef int mode_t ;
+
+
+ int ERR (char*,int ) ;
+ int EXIT_FAILURE ;
+ int MAP_FAILED ;
+ int MAP_SHARED ;
+ int O_RDONLY ;
+ int PROT_READ ;
+ int close (int) ;
+ int exit (int ) ;
+ int fstat (int,struct stat*) ;
+ int mmap (int ,int ,int ,int ,int,int ) ;
+ int open (int ,int ,int ) ;
 
 void map_file(struct file_info *finfo)
 {

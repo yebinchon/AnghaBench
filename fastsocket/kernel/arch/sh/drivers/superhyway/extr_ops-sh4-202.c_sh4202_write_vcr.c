@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u64 ;
-typedef  int /*<<< orphan*/  u32 ;
+
+
+
+
+typedef int u64 ;
+typedef int u32 ;
 struct superhyway_vcr_info {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ctrl_outl (int,unsigned long) ; 
+
+ int ctrl_outl (int,unsigned long) ;
 
 __attribute__((used)) static int sh4202_write_vcr(unsigned long base, struct superhyway_vcr_info vcr)
 {
-	u64 tmp = *(u64 *)&vcr;
+ u64 tmp = *(u64 *)&vcr;
 
-	ctrl_outl((tmp >> 32) & 0xffffffff, base);
-	ctrl_outl(tmp & 0xffffffff, base + sizeof(u32));
+ ctrl_outl((tmp >> 32) & 0xffffffff, base);
+ ctrl_outl(tmp & 0xffffffff, base + sizeof(u32));
 
-	return 0;
+ return 0;
 }

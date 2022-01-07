@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  flag; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int flag; } ;
 struct PStack {TYPE_1__ l2; } ;
 struct FsmInst {struct PStack* userdata; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FLG_PEND_REL ; 
- int /*<<< orphan*/  test_and_set_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int FLG_PEND_REL ;
+ int test_and_set_bit (int ,int *) ;
 
 __attribute__((used)) static void
 l2_pend_rel(struct FsmInst *fi, int event, void *arg)
 {
-	struct PStack *st = fi->userdata;
+ struct PStack *st = fi->userdata;
 
-	test_and_set_bit(FLG_PEND_REL, &st->l2.flag);
+ test_and_set_bit(FLG_PEND_REL, &st->l2.flag);
 }

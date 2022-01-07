@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_13__ {int confidence; int /*<<< orphan*/  framesig; } ;
-struct TYPE_12__ {double meandist; int matchframes; int whole; struct TYPE_12__* next; TYPE_3__* second; TYPE_3__* first; int /*<<< orphan*/  offset; int /*<<< orphan*/  score; int /*<<< orphan*/  framerateratio; } ;
+
+
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+struct TYPE_13__ {int confidence; int framesig; } ;
+struct TYPE_12__ {double meandist; int matchframes; int whole; struct TYPE_12__* next; TYPE_3__* second; TYPE_3__* first; int offset; int score; int framerateratio; } ;
 struct TYPE_11__ {int thl1; int thdi; double thit; } ;
-typedef  TYPE_1__ SignatureContext ;
-typedef  TYPE_2__ MatchingInfo ;
-typedef  TYPE_3__ FineSignature ;
-typedef  int /*<<< orphan*/  AVFilterContext ;
+typedef TYPE_1__ SignatureContext ;
+typedef TYPE_2__ MatchingInfo ;
+typedef TYPE_3__ FineSignature ;
+typedef int AVFilterContext ;
 
-/* Variables and functions */
- int DIR_NEXT ; 
- int DIR_NEXT_END ; 
- int DIR_PREV ; 
- int DIR_PREV_END ; 
- double FFMAX (int,int) ; 
- int MODE_FAST ; 
- int STATUS_BEGIN_REACHED ; 
- int STATUS_END_REACHED ; 
- int STATUS_NULL ; 
- int get_l1dist (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int iterate_frame (int /*<<< orphan*/ ,TYPE_3__**,TYPE_3__**,int,int*,int) ; 
+
+ int DIR_NEXT ;
+ int DIR_NEXT_END ;
+ int DIR_PREV ;
+ int DIR_PREV_END ;
+ double FFMAX (int,int) ;
+ int MODE_FAST ;
+ int STATUS_BEGIN_REACHED ;
+ int STATUS_END_REACHED ;
+ int STATUS_NULL ;
+ int get_l1dist (int *,TYPE_1__*,int ,int ) ;
+ int iterate_frame (int ,TYPE_3__**,TYPE_3__**,int,int*,int) ;
 
 __attribute__((used)) static MatchingInfo evaluate_parameters(AVFilterContext *ctx, SignatureContext *sc, MatchingInfo *infos, MatchingInfo bestmatch, int mode)
 {
@@ -43,7 +43,7 @@ __attribute__((used)) static MatchingInfo evaluate_parameters(AVFilterContext *c
     FineSignature *a, *b, *aprev, *bprev;
     int status = STATUS_NULL;
 
-    for (; infos != NULL; infos = infos->next) {
+    for (; infos != ((void*)0); infos = infos->next) {
         a = infos->first;
         b = infos->second;
         while (1) {
@@ -51,7 +51,7 @@ __attribute__((used)) static MatchingInfo evaluate_parameters(AVFilterContext *c
 
             if (dist > sc->thl1) {
                 if (a->confidence >= 1 || b->confidence >= 1) {
-                    /* bad frame (because high different information) */
+
                     tolerancecount++;
                 }
 
@@ -59,7 +59,7 @@ __attribute__((used)) static MatchingInfo evaluate_parameters(AVFilterContext *c
                     a = aprev;
                     b = bprev;
                     if (dir == DIR_NEXT) {
-                        /* turn around */
+
                         a = infos->first;
                         b = infos->second;
                         dir = DIR_PREV;
@@ -68,7 +68,7 @@ __attribute__((used)) static MatchingInfo evaluate_parameters(AVFilterContext *c
                     }
                 }
             } else {
-                /* good frame */
+
                 distsum += dist;
                 goodfcount++;
                 tolerancecount=0;
@@ -96,12 +96,12 @@ __attribute__((used)) static MatchingInfo evaluate_parameters(AVFilterContext *c
             }
 
             if (sc->thdi != 0 && bcount >= sc->thdi) {
-                break; /* enough frames found */
+                break;
             }
         }
 
         if (bcount < sc->thdi)
-            continue; /* matching sequence is too short */
+            continue;
         if ((double) goodfcount / (double) fcount < sc->thit)
             continue;
         if ((double) goodfcount*0.5 < FFMAX(gooda, goodb))
@@ -113,7 +113,7 @@ __attribute__((used)) static MatchingInfo evaluate_parameters(AVFilterContext *c
                 status == STATUS_END_REACHED | STATUS_BEGIN_REACHED ||
                 mode == MODE_FAST){
             minmeandist = meandist;
-            /* bestcandidate in this iteration */
+
             bestmatch.meandist = meandist;
             bestmatch.matchframes = bcount;
             bestmatch.framerateratio = infos->framerateratio;
@@ -121,17 +121,17 @@ __attribute__((used)) static MatchingInfo evaluate_parameters(AVFilterContext *c
             bestmatch.offset = infos->offset;
             bestmatch.first = infos->first;
             bestmatch.second = infos->second;
-            bestmatch.whole = 0; /* will be set to true later */
-            bestmatch.next = NULL;
+            bestmatch.whole = 0;
+            bestmatch.next = ((void*)0);
         }
 
-        /* whole sequence is automatically best match */
+
         if (status == (STATUS_END_REACHED | STATUS_BEGIN_REACHED)) {
             bestmatch.whole = 1;
             break;
         }
 
-        /* first matching sequence is enough, finding the best one is not necessary */
+
         if (mode == MODE_FAST) {
             break;
         }

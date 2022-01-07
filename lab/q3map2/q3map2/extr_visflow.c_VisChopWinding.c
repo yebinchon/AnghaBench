@@ -1,135 +1,135 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_8__ {int* normal; int dist; } ;
-typedef  TYPE_1__ visPlane_t ;
-typedef  int vec_t ;
-typedef  int* vec3_t ;
-typedef  int /*<<< orphan*/  pstack_t ;
+typedef TYPE_1__ visPlane_t ;
+typedef int vec_t ;
+typedef int* vec3_t ;
+typedef int pstack_t ;
 struct TYPE_9__ {int numpoints; int** points; } ;
-typedef  TYPE_2__ fixedWinding_t ;
+typedef TYPE_2__ fixedWinding_t ;
 
-/* Variables and functions */
- TYPE_2__* AllocStackWinding (int /*<<< orphan*/ *) ; 
- int DotProduct (int*,int*) ; 
- int /*<<< orphan*/  FreeStackWinding (TYPE_2__*,int /*<<< orphan*/ *) ; 
- int MAX_POINTS_ON_FIXED_WINDING ; 
- int ON_EPSILON ; 
- int SIDE_BACK ; 
- int SIDE_FRONT ; 
- int SIDE_ON ; 
- int /*<<< orphan*/  VectorCopy (int*,int*) ; 
 
-fixedWinding_t  *VisChopWinding( fixedWinding_t *in, pstack_t *stack, visPlane_t *split ){
-	vec_t dists[128];
-	int sides[128];
-	int counts[3];
-	vec_t dot;
-	int i, j;
-	vec_t   *p1, *p2;
-	vec3_t mid;
-	fixedWinding_t  *neww;
+ TYPE_2__* AllocStackWinding (int *) ;
+ int DotProduct (int*,int*) ;
+ int FreeStackWinding (TYPE_2__*,int *) ;
+ int MAX_POINTS_ON_FIXED_WINDING ;
+ int ON_EPSILON ;
+ int SIDE_BACK ;
+ int SIDE_FRONT ;
+ int SIDE_ON ;
+ int VectorCopy (int*,int*) ;
 
-	counts[0] = counts[1] = counts[2] = 0;
+fixedWinding_t *VisChopWinding( fixedWinding_t *in, pstack_t *stack, visPlane_t *split ){
+ vec_t dists[128];
+ int sides[128];
+ int counts[3];
+ vec_t dot;
+ int i, j;
+ vec_t *p1, *p2;
+ vec3_t mid;
+ fixedWinding_t *neww;
 
-	// determine sides for each point
-	for ( i = 0 ; i < in->numpoints ; i++ )
-	{
-		dot = DotProduct( in->points[i], split->normal );
-		dot -= split->dist;
-		dists[i] = dot;
-		if ( dot > ON_EPSILON ) {
-			sides[i] = SIDE_FRONT;
-		}
-		else if ( dot < -ON_EPSILON ) {
-			sides[i] = SIDE_BACK;
-		}
-		else
-		{
-			sides[i] = SIDE_ON;
-		}
-		counts[sides[i]]++;
-	}
+ counts[0] = counts[1] = counts[2] = 0;
 
-	if ( !counts[1] ) {
-		return in;      // completely on front side
 
-	}
-	if ( !counts[0] ) {
-		FreeStackWinding( in, stack );
-		return NULL;
-	}
+ for ( i = 0 ; i < in->numpoints ; i++ )
+ {
+  dot = DotProduct( in->points[i], split->normal );
+  dot -= split->dist;
+  dists[i] = dot;
+  if ( dot > ON_EPSILON ) {
+   sides[i] = SIDE_FRONT;
+  }
+  else if ( dot < -ON_EPSILON ) {
+   sides[i] = SIDE_BACK;
+  }
+  else
+  {
+   sides[i] = SIDE_ON;
+  }
+  counts[sides[i]]++;
+ }
 
-	sides[i] = sides[0];
-	dists[i] = dists[0];
+ if ( !counts[1] ) {
+  return in;
 
-	neww = AllocStackWinding( stack );
+ }
+ if ( !counts[0] ) {
+  FreeStackWinding( in, stack );
+  return ((void*)0);
+ }
 
-	neww->numpoints = 0;
+ sides[i] = sides[0];
+ dists[i] = dists[0];
 
-	for ( i = 0 ; i < in->numpoints ; i++ )
-	{
-		p1 = in->points[i];
+ neww = AllocStackWinding( stack );
 
-		if ( neww->numpoints == MAX_POINTS_ON_FIXED_WINDING ) {
-			FreeStackWinding( neww, stack );
-			return in;      // can't chop -- fall back to original
-		}
+ neww->numpoints = 0;
 
-		if ( sides[i] == SIDE_ON ) {
-			VectorCopy( p1, neww->points[neww->numpoints] );
-			neww->numpoints++;
-			continue;
-		}
+ for ( i = 0 ; i < in->numpoints ; i++ )
+ {
+  p1 = in->points[i];
 
-		if ( sides[i] == SIDE_FRONT ) {
-			VectorCopy( p1, neww->points[neww->numpoints] );
-			neww->numpoints++;
-		}
+  if ( neww->numpoints == MAX_POINTS_ON_FIXED_WINDING ) {
+   FreeStackWinding( neww, stack );
+   return in;
+  }
 
-		if ( sides[i + 1] == SIDE_ON || sides[i + 1] == sides[i] ) {
-			continue;
-		}
+  if ( sides[i] == SIDE_ON ) {
+   VectorCopy( p1, neww->points[neww->numpoints] );
+   neww->numpoints++;
+   continue;
+  }
 
-		if ( neww->numpoints == MAX_POINTS_ON_FIXED_WINDING ) {
-			FreeStackWinding( neww, stack );
-			return in;      // can't chop -- fall back to original
-		}
+  if ( sides[i] == SIDE_FRONT ) {
+   VectorCopy( p1, neww->points[neww->numpoints] );
+   neww->numpoints++;
+  }
 
-		// generate a split point
-		p2 = in->points[( i + 1 ) % in->numpoints];
+  if ( sides[i + 1] == SIDE_ON || sides[i + 1] == sides[i] ) {
+   continue;
+  }
 
-		dot = dists[i] / ( dists[i] - dists[i + 1] );
-		for ( j = 0 ; j < 3 ; j++ )
-		{   // avoid round off error when possible
-			if ( split->normal[j] == 1 ) {
-				mid[j] = split->dist;
-			}
-			else if ( split->normal[j] == -1 ) {
-				mid[j] = -split->dist;
-			}
-			else{
-				mid[j] = p1[j] + dot * ( p2[j] - p1[j] );
-			}
-		}
+  if ( neww->numpoints == MAX_POINTS_ON_FIXED_WINDING ) {
+   FreeStackWinding( neww, stack );
+   return in;
+  }
 
-		VectorCopy( mid, neww->points[neww->numpoints] );
-		neww->numpoints++;
-	}
 
-	// free the original winding
-	FreeStackWinding( in, stack );
+  p2 = in->points[( i + 1 ) % in->numpoints];
 
-	return neww;
+  dot = dists[i] / ( dists[i] - dists[i + 1] );
+  for ( j = 0 ; j < 3 ; j++ )
+  {
+   if ( split->normal[j] == 1 ) {
+    mid[j] = split->dist;
+   }
+   else if ( split->normal[j] == -1 ) {
+    mid[j] = -split->dist;
+   }
+   else{
+    mid[j] = p1[j] + dot * ( p2[j] - p1[j] );
+   }
+  }
+
+  VectorCopy( mid, neww->points[neww->numpoints] );
+  neww->numpoints++;
+ }
+
+
+ FreeStackWinding( in, stack );
+
+ return neww;
 }

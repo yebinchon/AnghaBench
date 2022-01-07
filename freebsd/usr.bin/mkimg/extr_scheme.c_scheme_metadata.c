@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_int ;
-typedef  int /*<<< orphan*/  lba_t ;
-struct TYPE_2__ {int /*<<< orphan*/  (* metadata ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;} ;
 
-/* Variables and functions */
- TYPE_1__* scheme ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u_int ;
+typedef int lba_t ;
+struct TYPE_2__ {int (* metadata ) (int ,int ) ;} ;
+
+
+ TYPE_1__* scheme ;
+ int stub1 (int ,int ) ;
 
 lba_t
 scheme_metadata(u_int where, lba_t start)
 {
 
-	return ((scheme == NULL) ? start : scheme->metadata(where, start));
+ return ((scheme == ((void*)0)) ? start : scheme->metadata(where, start));
 }

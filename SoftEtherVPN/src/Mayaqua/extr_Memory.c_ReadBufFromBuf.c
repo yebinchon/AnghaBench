@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT ;
-typedef  int /*<<< orphan*/  UCHAR ;
-typedef  int /*<<< orphan*/  BUF ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * Malloc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * NewBuf () ; 
- int /*<<< orphan*/  ReadBuf (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SeekBuf (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WriteBuf (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int UINT ;
+typedef int UCHAR ;
+typedef int BUF ;
+
+
+ int Free (int *) ;
+ int * Malloc (int ) ;
+ int * NewBuf () ;
+ int ReadBuf (int *,int *,int ) ;
+ int SeekBuf (int *,int ,int ) ;
+ int WriteBuf (int *,int *,int ) ;
 
 BUF *ReadBufFromBuf(BUF *b, UINT size)
 {
-	BUF *ret;
-	UCHAR *data;
-	// Validate arguments
-	if (b == NULL)
-	{
-		return NULL;
-	}
+ BUF *ret;
+ UCHAR *data;
 
-	data = Malloc(size);
-	if (ReadBuf(b, data, size) != size)
-	{
-		Free(data);
-		return NULL;
-	}
+ if (b == ((void*)0))
+ {
+  return ((void*)0);
+ }
 
-	ret = NewBuf();
-	WriteBuf(ret, data, size);
-	SeekBuf(ret, 0, 0);
+ data = Malloc(size);
+ if (ReadBuf(b, data, size) != size)
+ {
+  Free(data);
+  return ((void*)0);
+ }
 
-	Free(data);
+ ret = NewBuf();
+ WriteBuf(ret, data, size);
+ SeekBuf(ret, 0, 0);
 
-	return ret;
+ Free(data);
+
+ return ret;
 }

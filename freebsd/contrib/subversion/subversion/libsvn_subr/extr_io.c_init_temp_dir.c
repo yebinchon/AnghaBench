@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  scalar_t__ apr_status_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  _ (char*) ; 
- scalar_t__ apr_temp_dir_get (char const**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cstring_to_utf8 (char const**,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_dirent_get_absolute (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *) ; 
- char* svn_dirent_internal_style (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_error_wrap_apr (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * svn_pool_create (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  temp_dir ; 
+
+
+
+typedef int svn_error_t ;
+typedef scalar_t__ apr_status_t ;
+typedef int apr_pool_t ;
+
+
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int _ (char*) ;
+ scalar_t__ apr_temp_dir_get (char const**,int *) ;
+ int cstring_to_utf8 (char const**,char const*,int *) ;
+ int svn_dirent_get_absolute (int *,char const*,int *) ;
+ char* svn_dirent_internal_style (char const*,int *) ;
+ int * svn_error_wrap_apr (scalar_t__,int ) ;
+ int * svn_pool_create (int *) ;
+ int temp_dir ;
 
 __attribute__((used)) static svn_error_t *
 init_temp_dir(void *baton, apr_pool_t *scratch_pool)
 {
-  /* Global pool for the temp path */
-  apr_pool_t *global_pool = svn_pool_create(NULL);
+
+  apr_pool_t *global_pool = svn_pool_create(((void*)0));
   const char *dir;
 
   apr_status_t apr_err = apr_temp_dir_get(&dir, scratch_pool);

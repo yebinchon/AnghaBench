@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct stat {int st_mode; } ;
 
-/* Variables and functions */
- scalar_t__ EINVAL ; 
- int /*<<< orphan*/  FILENAME_MAX ; 
- int S_IFDIR ; 
- int S_IFMT ; 
- scalar_t__ errno ; 
- int /*<<< orphan*/  error (char*,char*,char*,char*) ; 
- int /*<<< orphan*/  info (char*,char*) ; 
- int is_virtual_filesystem (char*,char**) ; 
- char* netdata_configured_host_prefix ; 
- int /*<<< orphan*/  snprintfz (char*,int /*<<< orphan*/ ,char*,char*) ; 
- int stat (char*,struct stat*) ; 
+
+ scalar_t__ EINVAL ;
+ int FILENAME_MAX ;
+ int S_IFDIR ;
+ int S_IFMT ;
+ scalar_t__ errno ;
+ int error (char*,char*,char*,char*) ;
+ int info (char*,char*) ;
+ int is_virtual_filesystem (char*,char**) ;
+ char* netdata_configured_host_prefix ;
+ int snprintfz (char*,int ,char*,char*) ;
+ int stat (char*,struct stat*) ;
 
 int verify_netdata_host_prefix() {
     if(!netdata_configured_host_prefix)

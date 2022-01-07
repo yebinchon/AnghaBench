@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_3__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {long private_charts_rrd_history_entries; scalar_t__ private_charts; scalar_t__ max_private_charts; scalar_t__ private_charts_hidden; int /*<<< orphan*/  private_charts_memory_mode; } ;
-struct TYPE_4__ {int /*<<< orphan*/  name; } ;
-typedef  TYPE_1__ STATSD_METRIC ;
-typedef  int /*<<< orphan*/  RRD_MEMORY_MODE ;
-typedef  int /*<<< orphan*/  RRDSET_TYPE ;
-typedef  int /*<<< orphan*/  RRDSET ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D_STATSD ; 
- int /*<<< orphan*/  PLUGIN_STATSD_NAME ; 
- int /*<<< orphan*/  RRDSET_FLAG_HIDDEN ; 
- int /*<<< orphan*/  RRDSET_FLAG_STORE_FIRST ; 
- int /*<<< orphan*/  RRD_MEMORY_MODE_NONE ; 
- int /*<<< orphan*/  debug (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  info (char*,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  localhost ; 
- int /*<<< orphan*/ * rrdset_create_custom (int /*<<< orphan*/ ,char const*,char const*,char const*,char const*,char const*,char const*,char const*,int /*<<< orphan*/ ,char*,long,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,long) ; 
- int /*<<< orphan*/  rrdset_flag_set (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- TYPE_3__ statsd ; 
- scalar_t__ unlikely (int) ; 
+
+typedef struct TYPE_5__ TYPE_3__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_5__ {long private_charts_rrd_history_entries; scalar_t__ private_charts; scalar_t__ max_private_charts; scalar_t__ private_charts_hidden; int private_charts_memory_mode; } ;
+struct TYPE_4__ {int name; } ;
+typedef TYPE_1__ STATSD_METRIC ;
+typedef int RRD_MEMORY_MODE ;
+typedef int RRDSET_TYPE ;
+typedef int RRDSET ;
+
+
+ int D_STATSD ;
+ int PLUGIN_STATSD_NAME ;
+ int RRDSET_FLAG_HIDDEN ;
+ int RRDSET_FLAG_STORE_FIRST ;
+ int RRD_MEMORY_MODE_NONE ;
+ int debug (int ,char*,int ) ;
+ int info (char*,int ,scalar_t__) ;
+ int localhost ;
+ int * rrdset_create_custom (int ,char const*,char const*,char const*,char const*,char const*,char const*,char const*,int ,char*,long,int,int ,int ,long) ;
+ int rrdset_flag_set (int *,int ) ;
+ TYPE_3__ statsd ;
+ scalar_t__ unlikely (int) ;
 
 __attribute__((used)) static inline RRDSET *statsd_private_rrdset_create(
         STATSD_METRIC *m
@@ -58,27 +58,27 @@ __attribute__((used)) static inline RRDSET *statsd_private_rrdset_create(
 
     statsd.private_charts++;
     RRDSET *st = rrdset_create_custom(
-            localhost         // host
-            , type            // type
-            , id              // id
-            , name            // name
-            , family          // family
-            , context         // context
-            , title           // title
-            , units           // units
-            , PLUGIN_STATSD_NAME // plugin
-            , "private_chart" // module
-            , priority        // priority
-            , update_every    // update every
-            , chart_type      // chart type
-            , memory_mode     // memory mode
-            , history         // history
+            localhost
+            , type
+            , id
+            , name
+            , family
+            , context
+            , title
+            , units
+            , PLUGIN_STATSD_NAME
+            , "private_chart"
+            , priority
+            , update_every
+            , chart_type
+            , memory_mode
+            , history
     );
     rrdset_flag_set(st, RRDSET_FLAG_STORE_FIRST);
 
     if(statsd.private_charts_hidden)
         rrdset_flag_set(st, RRDSET_FLAG_HIDDEN);
 
-    // rrdset_flag_set(st, RRDSET_FLAG_DEBUG);
+
     return st;
 }

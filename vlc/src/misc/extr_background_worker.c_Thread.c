@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ vlc_tick_t ;
-struct task {scalar_t__ timeout; int /*<<< orphan*/  entity; } ;
-struct TYPE_2__ {int /*<<< orphan*/  (* pf_stop ) (int /*<<< orphan*/ ,void*) ;scalar_t__ (* pf_probe ) (int /*<<< orphan*/ ,void*) ;scalar_t__ (* pf_start ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,void**) ;} ;
-struct background_worker {int /*<<< orphan*/  owner; TYPE_1__ conf; int /*<<< orphan*/  lock; } ;
-struct background_thread {int cancel; int probe; int /*<<< orphan*/  probe_cancel_wait; struct task* task; struct background_worker* owner; } ;
 
-/* Variables and functions */
- scalar_t__ INT64_MAX ; 
- struct task* QueueTake (struct background_worker*,int) ; 
- int /*<<< orphan*/  RemoveThread (struct background_thread*) ; 
- int /*<<< orphan*/  TerminateTask (struct background_thread*,struct task*) ; 
- scalar_t__ stub1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,void**) ; 
- scalar_t__ stub2 (int /*<<< orphan*/ ,void*) ; 
- int /*<<< orphan*/  stub3 (int /*<<< orphan*/ ,void*) ; 
- scalar_t__ vlc_cond_timedwait (int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  vlc_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_mutex_unlock (int /*<<< orphan*/ *) ; 
- scalar_t__ vlc_tick_now () ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef scalar_t__ vlc_tick_t ;
+struct task {scalar_t__ timeout; int entity; } ;
+struct TYPE_2__ {int (* pf_stop ) (int ,void*) ;scalar_t__ (* pf_probe ) (int ,void*) ;scalar_t__ (* pf_start ) (int ,int ,void**) ;} ;
+struct background_worker {int owner; TYPE_1__ conf; int lock; } ;
+struct background_thread {int cancel; int probe; int probe_cancel_wait; struct task* task; struct background_worker* owner; } ;
+
+
+ scalar_t__ INT64_MAX ;
+ struct task* QueueTake (struct background_worker*,int) ;
+ int RemoveThread (struct background_thread*) ;
+ int TerminateTask (struct background_thread*,struct task*) ;
+ scalar_t__ stub1 (int ,int ,void**) ;
+ scalar_t__ stub2 (int ,void*) ;
+ int stub3 (int ,void*) ;
+ scalar_t__ vlc_cond_timedwait (int *,int *,scalar_t__) ;
+ int vlc_mutex_lock (int *) ;
+ int vlc_mutex_unlock (int *) ;
+ scalar_t__ vlc_tick_now () ;
 
 __attribute__((used)) static void* Thread( void* data )
 {
@@ -42,18 +42,18 @@ __attribute__((used)) static void* Thread( void* data )
         if (!task)
         {
             vlc_mutex_unlock(&worker->lock);
-            /* terminate this thread */
+
             break;
         }
 
         thread->task = task;
-        thread->cancel = false;
-        thread->probe = false;
+        thread->cancel = 0;
+        thread->probe = 0;
         vlc_tick_t deadline;
         if (task->timeout > 0)
             deadline = vlc_tick_now() + task->timeout;
         else
-            deadline = INT64_MAX; /* no deadline */
+            deadline = INT64_MAX;
         vlc_mutex_unlock(&worker->lock);
 
         void *handle;
@@ -66,15 +66,15 @@ __attribute__((used)) static void* Thread( void* data )
         for (;;)
         {
             vlc_mutex_lock(&worker->lock);
-            bool timeout = false;
+            bool timeout = 0;
             while (!timeout && !thread->probe && !thread->cancel)
-                /* any non-zero return value means timeout */
+
                 timeout = vlc_cond_timedwait(&thread->probe_cancel_wait,
                                              &worker->lock, deadline) != 0;
 
             bool cancel = thread->cancel;
-            thread->cancel = false;
-            thread->probe = false;
+            thread->cancel = 0;
+            thread->probe = 0;
             vlc_mutex_unlock(&worker->lock);
 
             if (timeout || cancel
@@ -89,5 +89,5 @@ __attribute__((used)) static void* Thread( void* data )
 
     RemoveThread(thread);
 
-    return NULL;
+    return ((void*)0);
 }

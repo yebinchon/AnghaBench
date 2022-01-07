@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_9__ {int* linesize; int /*<<< orphan*/ ** data; } ;
-struct TYPE_8__ {int step; int* height; int* width; int edge; int nb_components; int /*<<< orphan*/ * blank; } ;
-typedef  TYPE_1__ DisplaceContext ;
-typedef  TYPE_2__ AVFrame ;
 
-/* Variables and functions */
-#define  EDGE_BLANK 131 
-#define  EDGE_MIRROR 130 
-#define  EDGE_SMEAR 129 
-#define  EDGE_WRAP 128 
- int av_clip (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int const) ; 
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_9__ {int* linesize; int ** data; } ;
+struct TYPE_8__ {int step; int* height; int* width; int edge; int nb_components; int * blank; } ;
+typedef TYPE_1__ DisplaceContext ;
+typedef TYPE_2__ AVFrame ;
+
+
+
+
+
+
+ int av_clip (int ,int ,int const) ;
 
 __attribute__((used)) static void displace_packed(DisplaceContext *s, const AVFrame *in,
                             const AVFrame *xpic, const AVFrame *ypic,
@@ -45,7 +45,7 @@ __attribute__((used)) static void displace_packed(DisplaceContext *s, const AVFr
 
     for (y = 0; y < h; y++) {
         switch (s->edge) {
-        case EDGE_BLANK:
+        case 131:
             for (x = 0; x < w; x++) {
                 for (c = 0; c < s->nb_components; c++) {
                     int Y = y + (ysrc[x * step + c] - 128);
@@ -58,7 +58,7 @@ __attribute__((used)) static void displace_packed(DisplaceContext *s, const AVFr
                 }
             }
             break;
-        case EDGE_SMEAR:
+        case 129:
             for (x = 0; x < w; x++) {
                 for (c = 0; c < s->nb_components; c++) {
                     int Y = av_clip(y + (ysrc[x * step + c] - 128), 0, h - 1);
@@ -68,7 +68,7 @@ __attribute__((used)) static void displace_packed(DisplaceContext *s, const AVFr
                 }
             }
             break;
-        case EDGE_WRAP:
+        case 128:
             for (x = 0; x < w; x++) {
                 for (c = 0; c < s->nb_components; c++) {
                     int Y = (y + (ysrc[x * step + c] - 128)) % h;
@@ -82,7 +82,7 @@ __attribute__((used)) static void displace_packed(DisplaceContext *s, const AVFr
                 }
             }
             break;
-        case EDGE_MIRROR:
+        case 130:
             for (x = 0; x < w; x++) {
                 for (c = 0; c < s->nb_components; c++) {
                     int Y = y + ysrc[x * step + c] - 128;
@@ -104,6 +104,6 @@ __attribute__((used)) static void displace_packed(DisplaceContext *s, const AVFr
 
         ysrc += ylinesize;
         xsrc += xlinesize;
-        dst  += dlinesize;
+        dst += dlinesize;
     }
 }

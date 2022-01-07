@@ -1,98 +1,98 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct tblock {int flag; int xflag; int /*<<< orphan*/  gcwait; } ;
-struct jfs_log {int cflag; int /*<<< orphan*/  gcrtc; int /*<<< orphan*/  flag; int /*<<< orphan*/  cqueue; } ;
 
-/* Variables and functions */
- int COMMIT_LAZY ; 
- int EIO ; 
- int /*<<< orphan*/  LOGGC_LOCK (struct jfs_log*) ; 
- int /*<<< orphan*/  LOGGC_UNLOCK (struct jfs_log*) ; 
- int /*<<< orphan*/  __SLEEP_COND (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jfs_info (char*,struct tblock*,int /*<<< orphan*/ ) ; 
- scalar_t__ jfs_tlocks_low ; 
- int /*<<< orphan*/  list_empty (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lmGCwrite (struct jfs_log*,int /*<<< orphan*/ ) ; 
- int logGC_PAGEOUT ; 
- int /*<<< orphan*/  log_FLUSH ; 
- int tblkGC_COMMITTED ; 
- int tblkGC_ERROR ; 
- int tblkGC_LAZY ; 
- int tblkGC_READY ; 
- scalar_t__ test_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+struct tblock {int flag; int xflag; int gcwait; } ;
+struct jfs_log {int cflag; int gcrtc; int flag; int cqueue; } ;
+
+
+ int COMMIT_LAZY ;
+ int EIO ;
+ int LOGGC_LOCK (struct jfs_log*) ;
+ int LOGGC_UNLOCK (struct jfs_log*) ;
+ int __SLEEP_COND (int ,int,int ,int ) ;
+ int jfs_info (char*,struct tblock*,int ) ;
+ scalar_t__ jfs_tlocks_low ;
+ int list_empty (int *) ;
+ int lmGCwrite (struct jfs_log*,int ) ;
+ int logGC_PAGEOUT ;
+ int log_FLUSH ;
+ int tblkGC_COMMITTED ;
+ int tblkGC_ERROR ;
+ int tblkGC_LAZY ;
+ int tblkGC_READY ;
+ scalar_t__ test_bit (int ,int *) ;
 
 int lmGroupCommit(struct jfs_log * log, struct tblock * tblk)
 {
-	int rc = 0;
+ int rc = 0;
 
-	LOGGC_LOCK(log);
+ LOGGC_LOCK(log);
 
-	/* group committed already ? */
-	if (tblk->flag & tblkGC_COMMITTED) {
-		if (tblk->flag & tblkGC_ERROR)
-			rc = -EIO;
 
-		LOGGC_UNLOCK(log);
-		return rc;
-	}
-	jfs_info("lmGroup Commit: tblk = 0x%p, gcrtc = %d", tblk, log->gcrtc);
+ if (tblk->flag & tblkGC_COMMITTED) {
+  if (tblk->flag & tblkGC_ERROR)
+   rc = -EIO;
 
-	if (tblk->xflag & COMMIT_LAZY)
-		tblk->flag |= tblkGC_LAZY;
+  LOGGC_UNLOCK(log);
+  return rc;
+ }
+ jfs_info("lmGroup Commit: tblk = 0x%p, gcrtc = %d", tblk, log->gcrtc);
 
-	if ((!(log->cflag & logGC_PAGEOUT)) && (!list_empty(&log->cqueue)) &&
-	    (!(tblk->xflag & COMMIT_LAZY) || test_bit(log_FLUSH, &log->flag)
-	     || jfs_tlocks_low)) {
-		/*
-		 * No pageout in progress
-		 *
-		 * start group commit as its group leader.
-		 */
-		log->cflag |= logGC_PAGEOUT;
+ if (tblk->xflag & COMMIT_LAZY)
+  tblk->flag |= tblkGC_LAZY;
 
-		lmGCwrite(log, 0);
-	}
+ if ((!(log->cflag & logGC_PAGEOUT)) && (!list_empty(&log->cqueue)) &&
+     (!(tblk->xflag & COMMIT_LAZY) || test_bit(log_FLUSH, &log->flag)
+      || jfs_tlocks_low)) {
 
-	if (tblk->xflag & COMMIT_LAZY) {
-		/*
-		 * Lazy transactions can leave now
-		 */
-		LOGGC_UNLOCK(log);
-		return 0;
-	}
 
-	/* lmGCwrite gives up LOGGC_LOCK, check again */
 
-	if (tblk->flag & tblkGC_COMMITTED) {
-		if (tblk->flag & tblkGC_ERROR)
-			rc = -EIO;
 
-		LOGGC_UNLOCK(log);
-		return rc;
-	}
 
-	/* upcount transaction waiting for completion
-	 */
-	log->gcrtc++;
-	tblk->flag |= tblkGC_READY;
+  log->cflag |= logGC_PAGEOUT;
 
-	__SLEEP_COND(tblk->gcwait, (tblk->flag & tblkGC_COMMITTED),
-		     LOGGC_LOCK(log), LOGGC_UNLOCK(log));
+  lmGCwrite(log, 0);
+ }
 
-	/* removed from commit queue */
-	if (tblk->flag & tblkGC_ERROR)
-		rc = -EIO;
+ if (tblk->xflag & COMMIT_LAZY) {
 
-	LOGGC_UNLOCK(log);
-	return rc;
+
+
+  LOGGC_UNLOCK(log);
+  return 0;
+ }
+
+
+
+ if (tblk->flag & tblkGC_COMMITTED) {
+  if (tblk->flag & tblkGC_ERROR)
+   rc = -EIO;
+
+  LOGGC_UNLOCK(log);
+  return rc;
+ }
+
+
+
+ log->gcrtc++;
+ tblk->flag |= tblkGC_READY;
+
+ __SLEEP_COND(tblk->gcwait, (tblk->flag & tblkGC_COMMITTED),
+       LOGGC_LOCK(log), LOGGC_UNLOCK(log));
+
+
+ if (tblk->flag & tblkGC_ERROR)
+  rc = -EIO;
+
+ LOGGC_UNLOCK(log);
+ return rc;
 }

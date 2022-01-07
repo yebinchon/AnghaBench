@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
-typedef  scalar_t__ uint64_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint8_t ;
+typedef scalar_t__ uint64_t ;
 struct TYPE_3__ {int linesize; int x_min; int mb_size; int x_max; int y_min; int y_max; scalar_t__ pred_y; scalar_t__ pred_x; scalar_t__* data_cur; scalar_t__* data_ref; } ;
-typedef  TYPE_1__ AVMotionEstContext ;
+typedef TYPE_1__ AVMotionEstContext ;
 
-/* Variables and functions */
- int COST_PRED_SCALE ; 
- int FFABS (scalar_t__) ; 
- int av_clip (int,int,int) ; 
+
+ int COST_PRED_SCALE ;
+ int FFABS (scalar_t__) ;
+ int av_clip (int,int,int) ;
 
 __attribute__((used)) static uint64_t get_sad_ob(AVMotionEstContext *me_ctx, int x, int y, int x_mv, int y_mv)
 {

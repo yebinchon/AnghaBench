@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  repo_mgr; } ;
-typedef  int /*<<< orphan*/  GError ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SEAFILE_DOMAIN ; 
- int /*<<< orphan*/  SEAF_ERR_BAD_ARGS ; 
- int /*<<< orphan*/  g_set_error (int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- TYPE_1__* seaf ; 
- char* seaf_repo_manager_get_server_property (int /*<<< orphan*/ ,char const*,char const*) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int repo_mgr; } ;
+typedef int GError ;
+
+
+ int SEAFILE_DOMAIN ;
+ int SEAF_ERR_BAD_ARGS ;
+ int g_set_error (int **,int ,int ,char*) ;
+ TYPE_1__* seaf ;
+ char* seaf_repo_manager_get_server_property (int ,char const*,char const*) ;
 
 char *
 seafile_get_server_property (const char *server_url, const char *key, GError **error)
@@ -27,7 +27,7 @@ seafile_get_server_property (const char *server_url, const char *key, GError **e
     if (!server_url || !key) {
         g_set_error (error, SEAFILE_DOMAIN, SEAF_ERR_BAD_ARGS,
                      "Argument should not be null");
-        return NULL;
+        return ((void*)0);
     }
 
     return seaf_repo_manager_get_server_property (seaf->repo_mgr,

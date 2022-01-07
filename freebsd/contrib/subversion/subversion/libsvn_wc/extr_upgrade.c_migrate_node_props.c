@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_sqlite__db_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_int64_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PROPS_SUBDIR ; 
- int /*<<< orphan*/  PROP_BASE_FOR_DIR ; 
- int /*<<< orphan*/  PROP_BASE_SUBDIR ; 
- int /*<<< orphan*/  PROP_REVERT_FOR_DIR ; 
- int /*<<< orphan*/  PROP_WORKING_FOR_DIR ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_VA_NULL ; 
- int /*<<< orphan*/  SVN_WC__BASE_EXT ; 
- int /*<<< orphan*/  SVN_WC__REVERT_EXT ; 
- int /*<<< orphan*/  SVN_WC__WORK_EXT ; 
- int /*<<< orphan*/  apr_pstrcat (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  read_propfile (int /*<<< orphan*/ **,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- char* svn_dirent_get_longest_ancestor (char const*,char const*,int /*<<< orphan*/ *) ; 
- char* svn_dirent_join (char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- char* svn_dirent_skip_ancestor (char const*,char const*) ; 
- int /*<<< orphan*/ * svn_error_trace (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_relpath_join (char const*,char const*,int /*<<< orphan*/ *) ; 
- char* svn_wc__adm_child (char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  upgrade_apply_props (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int svn_sqlite__db_t ;
+typedef int svn_error_t ;
+typedef int apr_pool_t ;
+typedef int apr_int64_t ;
+typedef int apr_hash_t ;
+
+
+ int PROPS_SUBDIR ;
+ int PROP_BASE_FOR_DIR ;
+ int PROP_BASE_SUBDIR ;
+ int PROP_REVERT_FOR_DIR ;
+ int PROP_WORKING_FOR_DIR ;
+ int SVN_ERR (int ) ;
+ int SVN_VA_NULL ;
+ int SVN_WC__BASE_EXT ;
+ int SVN_WC__REVERT_EXT ;
+ int SVN_WC__WORK_EXT ;
+ int apr_pstrcat (int *,char const*,int ,int ) ;
+ int read_propfile (int **,char const*,int *,int *) ;
+ char* svn_dirent_get_longest_ancestor (char const*,char const*,int *) ;
+ char* svn_dirent_join (char const*,int ,int *) ;
+ char* svn_dirent_skip_ancestor (char const*,char const*) ;
+ int * svn_error_trace (int ) ;
+ int svn_relpath_join (char const*,char const*,int *) ;
+ char* svn_wc__adm_child (char const*,int ,int *) ;
+ int upgrade_apply_props (int *,char const*,int ,int *,int *,int *,int,int ,int *) ;
 
 __attribute__((used)) static svn_error_t *
 migrate_node_props(const char *dir_abspath,
@@ -46,9 +46,9 @@ migrate_node_props(const char *dir_abspath,
                    apr_int64_t wc_id,
                    apr_pool_t *scratch_pool)
 {
-  const char *base_abspath;  /* old name. nowadays: "pristine"  */
-  const char *revert_abspath;  /* old name. nowadays: "BASE"  */
-  const char *working_abspath;  /* old name. nowadays: "ACTUAL"  */
+  const char *base_abspath;
+  const char *revert_abspath;
+  const char *working_abspath;
   apr_hash_t *base_props;
   apr_hash_t *revert_props;
   apr_hash_t *working_props;

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Vector ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int Vector ;
 struct TYPE_3__ {int len; int size; } ;
-typedef  TYPE_1__ Type ;
+typedef TYPE_1__ Type ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ast_init (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ast_inttype (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int strlen (char*) ; 
- int /*<<< orphan*/  type_char ; 
- int /*<<< orphan*/  vec_push (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int ast_init (int ,int ,int) ;
+ int ast_inttype (int ,int ) ;
+ int strlen (char*) ;
+ int type_char ;
+ int vec_push (int *,int ) ;
 
 __attribute__((used)) static void assign_string(Vector *inits, Type *ty, char *p, int off) {
     if (ty->len == -1)

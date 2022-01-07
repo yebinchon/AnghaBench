@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_6__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct js_event {size_t number; scalar_t__ value; int /*<<< orphan*/  type; } ;
-typedef  int /*<<< orphan*/  e ;
-struct TYPE_8__ {float* axes; float* buttons; float* name; float* path; int /*<<< orphan*/  present; int /*<<< orphan*/  fd; } ;
-typedef  TYPE_2__ _GLFWjoystickLinux ;
+
+
+typedef struct TYPE_9__ TYPE_6__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct js_event {size_t number; scalar_t__ value; int type; } ;
+typedef int e ;
+struct TYPE_8__ {float* axes; float* buttons; float* name; float* path; int present; int fd; } ;
+typedef TYPE_2__ _GLFWjoystickLinux ;
 struct TYPE_7__ {int js; } ;
 struct TYPE_9__ {TYPE_1__ linux_js; } ;
-typedef  int /*<<< orphan*/  GLFWbool ;
+typedef int GLFWbool ;
 
-/* Variables and functions */
- scalar_t__ ENODEV ; 
- int /*<<< orphan*/  GLFW_DISCONNECTED ; 
- int /*<<< orphan*/  GLFW_FALSE ; 
- float GLFW_PRESS ; 
- float GLFW_RELEASE ; 
- int /*<<< orphan*/  JS_EVENT_AXIS ; 
- int /*<<< orphan*/  JS_EVENT_BUTTON ; 
- int /*<<< orphan*/  JS_EVENT_INIT ; 
- TYPE_6__ _glfw ; 
- int /*<<< orphan*/  _glfwInputJoystickChange (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  _glfwPollJoystickEvents () ; 
- scalar_t__ errno ; 
- int /*<<< orphan*/  free (float*) ; 
- int /*<<< orphan*/  memset (TYPE_2__*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ read (int /*<<< orphan*/ ,struct js_event*,int) ; 
+
+ scalar_t__ ENODEV ;
+ int GLFW_DISCONNECTED ;
+ int GLFW_FALSE ;
+ float GLFW_PRESS ;
+ float GLFW_RELEASE ;
+ int JS_EVENT_AXIS ;
+ int JS_EVENT_BUTTON ;
+ int JS_EVENT_INIT ;
+ TYPE_6__ _glfw ;
+ int _glfwInputJoystickChange (TYPE_2__*,int ) ;
+ int _glfwPollJoystickEvents () ;
+ scalar_t__ errno ;
+ int free (float*) ;
+ int memset (TYPE_2__*,int ,int) ;
+ scalar_t__ read (int ,struct js_event*,int) ;
 
 __attribute__((used)) static GLFWbool pollJoystickEvents(_GLFWjoystickLinux* js)
 {
-#if defined(__linux__)
+
     _glfwPollJoystickEvents();
 
     if (!js->present)
         return GLFW_FALSE;
 
-    // Read all queued events (non-blocking)
+
     for (;;)
     {
         struct js_event e;
@@ -54,7 +54,7 @@ __attribute__((used)) static GLFWbool pollJoystickEvents(_GLFWjoystickLinux* js)
         errno = 0;
         if (read(js->fd, &e, sizeof(e)) < 0)
         {
-            // Reset the joystick slot if the device was disconnected
+
             if (errno == ENODEV)
             {
                 free(js->axes);
@@ -71,7 +71,7 @@ __attribute__((used)) static GLFWbool pollJoystickEvents(_GLFWjoystickLinux* js)
             break;
         }
 
-        // Clear the initial-state bit
+
         e.type &= ~JS_EVENT_INIT;
 
         if (e.type == JS_EVENT_AXIS)
@@ -79,6 +79,6 @@ __attribute__((used)) static GLFWbool pollJoystickEvents(_GLFWjoystickLinux* js)
         else if (e.type == JS_EVENT_BUTTON)
             js->buttons[e.number] = e.value ? GLFW_PRESS : GLFW_RELEASE;
     }
-#endif // __linux__
+
     return js->present;
 }

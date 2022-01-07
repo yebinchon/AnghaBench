@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct oxu_murb {int dummy; } ;
-struct oxu_hcd {int* murb_used; int /*<<< orphan*/  mem_lock; struct oxu_murb* murb_pool; } ;
+struct oxu_hcd {int* murb_used; int mem_lock; struct oxu_murb* murb_pool; } ;
 
-/* Variables and functions */
- int MURB_NUM ; 
- int /*<<< orphan*/  spin_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock (int /*<<< orphan*/ *) ; 
+
+ int MURB_NUM ;
+ int spin_lock (int *) ;
+ int spin_unlock (int *) ;
 
 __attribute__((used)) static struct oxu_murb *oxu_murb_alloc(struct oxu_hcd *oxu)
 
 {
-	int i;
-	struct oxu_murb *murb = NULL;
+ int i;
+ struct oxu_murb *murb = ((void*)0);
 
-	spin_lock(&oxu->mem_lock);
+ spin_lock(&oxu->mem_lock);
 
-	for (i = 0; i < MURB_NUM; i++)
-		if (!oxu->murb_used[i])
-			break;
+ for (i = 0; i < MURB_NUM; i++)
+  if (!oxu->murb_used[i])
+   break;
 
-	if (i < MURB_NUM) {
-		murb = &(oxu->murb_pool)[i];
+ if (i < MURB_NUM) {
+  murb = &(oxu->murb_pool)[i];
 
-		oxu->murb_used[i] = 1;
-	}
+  oxu->murb_used[i] = 1;
+ }
 
-	spin_unlock(&oxu->mem_lock);
+ spin_unlock(&oxu->mem_lock);
 
-	return murb;
+ return murb;
 }

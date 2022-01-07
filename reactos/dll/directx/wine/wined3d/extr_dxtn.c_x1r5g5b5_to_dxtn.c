@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int WORD ;
-typedef  int /*<<< orphan*/  GLenum ;
-typedef  unsigned int DWORD ;
-typedef  int /*<<< orphan*/  BYTE ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*) ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- unsigned int* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned int*) ; 
- int /*<<< orphan*/  TRACE (char*,unsigned int,unsigned int,unsigned int,unsigned int) ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  ptx_compress_dxtn (int,unsigned int,unsigned int,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,unsigned int) ; 
+
+
+
+typedef int WORD ;
+typedef int GLenum ;
+typedef unsigned int DWORD ;
+typedef int BYTE ;
+typedef scalar_t__ BOOL ;
+
+
+ int ERR (char*) ;
+ scalar_t__ FALSE ;
+ int GetProcessHeap () ;
+ unsigned int* HeapAlloc (int ,int ,unsigned int) ;
+ int HeapFree (int ,int ,unsigned int*) ;
+ int TRACE (char*,unsigned int,unsigned int,unsigned int,unsigned int) ;
+ scalar_t__ TRUE ;
+ int ptx_compress_dxtn (int,unsigned int,unsigned int,int *,int ,int *,unsigned int) ;
 
 __attribute__((used)) static inline BOOL x1r5g5b5_to_dxtn(const BYTE *src, BYTE *dst, DWORD pitch_in,
         DWORD pitch_out, unsigned int w, unsigned int h, GLenum destformat, BOOL alpha)

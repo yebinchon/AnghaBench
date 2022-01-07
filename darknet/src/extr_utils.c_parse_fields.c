@@ -1,20 +1,12 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- float* calloc (int,int) ; 
- float nan (char*) ; 
- float strtod (char*,char**) ; 
+ float* calloc (int,int) ;
+ float nan (char*) ;
+ float strtod (char*,char**) ;
 
 float *parse_fields(char *line, int n)
 {
@@ -28,7 +20,7 @@ float *parse_fields(char *line, int n)
             *c = '\0';
             field[count] = strtod(p, &end);
             if(p == c) field[count] = nan("");
-            if(end != c && (end != c-1 || *end != '\r')) field[count] = nan(""); //DOS file formats!
+            if(end != c && (end != c-1 || *end != '\r')) field[count] = nan("");
             p = c+1;
             ++count;
         }

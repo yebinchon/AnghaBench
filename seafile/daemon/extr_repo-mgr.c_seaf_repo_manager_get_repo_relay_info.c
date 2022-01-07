@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  SeafRepoManager ;
 
-/* Variables and functions */
- int /*<<< orphan*/  REPO_PROP_RELAY_ADDR ; 
- int /*<<< orphan*/  REPO_PROP_RELAY_PORT ; 
- char* load_repo_property (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int SeafRepoManager ;
+
+
+ int REPO_PROP_RELAY_ADDR ;
+ int REPO_PROP_RELAY_PORT ;
+ char* load_repo_property (int *,char const*,int ) ;
 
 void
 seaf_repo_manager_get_repo_relay_info (SeafRepoManager *mgr,

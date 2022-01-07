@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct RRange {int dummy; } ;
-typedef  int /*<<< orphan*/  mrb_value ;
-typedef  int /*<<< orphan*/  mrb_state ;
+typedef int mrb_value ;
+typedef int mrb_state ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RANGE_BEG (struct RRange*) ; 
- int /*<<< orphan*/  RANGE_END (struct RRange*) ; 
- scalar_t__ RANGE_EXCL (struct RRange*) ; 
- int /*<<< orphan*/  mrb_false_value () ; 
- int /*<<< orphan*/  mrb_get_args (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *) ; 
- struct RRange* mrb_range_ptr (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_true_value () ; 
- scalar_t__ r_le (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ r_lt (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int RANGE_BEG (struct RRange*) ;
+ int RANGE_END (struct RRange*) ;
+ scalar_t__ RANGE_EXCL (struct RRange*) ;
+ int mrb_false_value () ;
+ int mrb_get_args (int *,char*,int *) ;
+ struct RRange* mrb_range_ptr (int *,int ) ;
+ int mrb_true_value () ;
+ scalar_t__ r_le (int *,int ,int ) ;
+ scalar_t__ r_lt (int *,int ,int ) ;
 
 __attribute__((used)) static mrb_value
 range_cover(mrb_state *mrb, mrb_value range)

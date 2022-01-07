@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  OSSL_NAMEMAP ;
 
-/* Variables and functions */
- char* ALIAS1 ; 
- char* ALIAS1_UC ; 
- char* NAME1 ; 
- char* NAME2 ; 
- scalar_t__ TEST_int_eq (int,int) ; 
- scalar_t__ TEST_int_ne (int,int /*<<< orphan*/ ) ; 
- int ossl_namemap_add (int /*<<< orphan*/ *,int,char*) ; 
- int ossl_namemap_name2num (int /*<<< orphan*/ *,char*) ; 
+
+
+
+typedef int OSSL_NAMEMAP ;
+
+
+ char* ALIAS1 ;
+ char* ALIAS1_UC ;
+ char* NAME1 ;
+ char* NAME2 ;
+ scalar_t__ TEST_int_eq (int,int) ;
+ scalar_t__ TEST_int_ne (int,int ) ;
+ int ossl_namemap_add (int *,int,char*) ;
+ int ossl_namemap_name2num (int *,char*) ;
 
 __attribute__((used)) static int test_namemap(OSSL_NAMEMAP *nm)
 {

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int unitSize; int nUnits; int searchRange; int entrySelector; scalar_t__ rangeShift; } ;
-typedef  int /*<<< orphan*/  GXV_Validator ;
-typedef  TYPE_1__ GXV_BinSrchHeader ;
-typedef  int FT_UShort ;
+typedef int GXV_Validator ;
+typedef TYPE_1__ GXV_BinSrchHeader ;
+typedef int FT_UShort ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FT_INVALID_DATA ; 
- int /*<<< orphan*/  GXV_SET_ERR_IF_PARANOID (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GXV_TRACE (char*) ; 
+
+ int FT_INVALID_DATA ;
+ int GXV_SET_ERR_IF_PARANOID (int ) ;
+ int GXV_TRACE (char*) ;
 
 __attribute__((used)) static void
-  gxv_BinSrchHeader_check_consistency( GXV_BinSrchHeader*  binSrchHeader,
-                                       GXV_Validator       gxvalid )
+  gxv_BinSrchHeader_check_consistency( GXV_BinSrchHeader* binSrchHeader,
+                                       GXV_Validator gxvalid )
   {
-    FT_UShort  searchRange;
-    FT_UShort  entrySelector;
-    FT_UShort  rangeShift;
+    FT_UShort searchRange;
+    FT_UShort entrySelector;
+    FT_UShort rangeShift;
 
 
     if ( binSrchHeader->unitSize == 0 )
@@ -35,9 +35,9 @@ __attribute__((used)) static void
 
     if ( binSrchHeader->nUnits == 0 )
     {
-      if ( binSrchHeader->searchRange   == 0 &&
+      if ( binSrchHeader->searchRange == 0 &&
            binSrchHeader->entrySelector == 0 &&
-           binSrchHeader->rangeShift    == 0 )
+           binSrchHeader->rangeShift == 0 )
         return;
       else
         FT_INVALID_DATA;
@@ -51,12 +51,12 @@ __attribute__((used)) static void
 
     entrySelector--;
     searchRange = (FT_UShort)( searchRange * binSrchHeader->unitSize );
-    rangeShift  = (FT_UShort)( binSrchHeader->nUnits * binSrchHeader->unitSize
+    rangeShift = (FT_UShort)( binSrchHeader->nUnits * binSrchHeader->unitSize
                                - searchRange );
 
-    if ( searchRange   != binSrchHeader->searchRange   ||
+    if ( searchRange != binSrchHeader->searchRange ||
          entrySelector != binSrchHeader->entrySelector ||
-         rangeShift    != binSrchHeader->rangeShift    )
+         rangeShift != binSrchHeader->rangeShift )
     {
       GXV_TRACE(( "Inconsistency found in BinSrchHeader\n" ));
       GXV_TRACE(( "originally: unitSize=%d, nUnits=%d, "

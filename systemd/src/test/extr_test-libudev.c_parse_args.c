@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct option {char* member_0; char member_3; int /*<<< orphan*/ * member_2; int /*<<< orphan*/  const member_1; } ;
 
-/* Variables and functions */
- int EINVAL ; 
- char* GIT_VERSION ; 
- int /*<<< orphan*/  LOG_DEBUG ; 
- int arg_monitor ; 
- int /*<<< orphan*/  assert_not_reached (char*) ; 
- int getopt_long (int,char**,char*,struct option const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  log_set_max_level (int /*<<< orphan*/ ) ; 
-#define  no_argument 129 
- char* optarg ; 
- int /*<<< orphan*/  printf (char*,...) ; 
-#define  required_argument 128 
+
+
+
+struct option {char* member_0; char member_3; int * member_2; int const member_1; } ;
+
+
+ int EINVAL ;
+ char* GIT_VERSION ;
+ int LOG_DEBUG ;
+ int arg_monitor ;
+ int assert_not_reached (char*) ;
+ int getopt_long (int,char**,char*,struct option const*,int *) ;
+ int log_set_max_level (int ) ;
+
+ char* optarg ;
+ int printf (char*,...) ;
+
 
 __attribute__((used)) static int parse_args(int argc, char *argv[], const char **syspath, const char **subsystem) {
         static const struct option options[] = {
-                { "syspath",   required_argument, NULL, 'p' },
-                { "subsystem", required_argument, NULL, 's' },
-                { "debug",     no_argument,       NULL, 'd' },
-                { "help",      no_argument,       NULL, 'h' },
-                { "version",   no_argument,       NULL, 'V' },
-                { "monitor",   no_argument,       NULL, 'm' },
+                { "syspath", 128, ((void*)0), 'p' },
+                { "subsystem", 128, ((void*)0), 's' },
+                { "debug", 129, ((void*)0), 'd' },
+                { "help", 129, ((void*)0), 'h' },
+                { "version", 129, ((void*)0), 'V' },
+                { "monitor", 129, ((void*)0), 'm' },
                 {}
         };
         int c;
 
-        while ((c = getopt_long(argc, argv, "p:s:dhVm", options, NULL)) >= 0)
+        while ((c = getopt_long(argc, argv, "p:s:dhVm", options, ((void*)0))) >= 0)
                 switch (c) {
                 case 'p':
                         *syspath = optarg;
@@ -60,7 +60,7 @@ __attribute__((used)) static int parse_args(int argc, char *argv[], const char *
                         return 0;
 
                 case 'm':
-                        arg_monitor = true;
+                        arg_monitor = 1;
                         break;
 
                 case '?':

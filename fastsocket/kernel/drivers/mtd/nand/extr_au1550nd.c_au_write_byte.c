@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_char ;
-struct nand_chip {int /*<<< orphan*/  IO_ADDR_W; } ;
+
+
+
+
+typedef int u_char ;
+struct nand_chip {int IO_ADDR_W; } ;
 struct mtd_info {struct nand_chip* priv; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  au_sync () ; 
- int /*<<< orphan*/  writeb (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int au_sync () ;
+ int writeb (int ,int ) ;
 
 __attribute__((used)) static void au_write_byte(struct mtd_info *mtd, u_char byte)
 {
-	struct nand_chip *this = mtd->priv;
-	writeb(byte, this->IO_ADDR_W);
-	au_sync();
+ struct nand_chip *this = mtd->priv;
+ writeb(byte, this->IO_ADDR_W);
+ au_sync();
 }

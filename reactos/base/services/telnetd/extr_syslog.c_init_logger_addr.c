@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct hostent {int /*<<< orphan*/  h_length; int /*<<< orphan*/  h_addr; } ;
-typedef  int /*<<< orphan*/  host ;
-struct TYPE_5__ {int /*<<< orphan*/  S_addr; } ;
-struct TYPE_6__ {TYPE_1__ S_un; int /*<<< orphan*/  s_addr; } ;
-struct TYPE_7__ {void* sin_port; TYPE_2__ sin_addr; int /*<<< orphan*/  sin_family; } ;
-typedef  int /*<<< orphan*/  SOCKADDR_IN ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_INET ; 
- int FILENAME_MAX ; 
- unsigned short SYSLOG_PORT ; 
- char** __argv ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fgets (char*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- struct hostent* gethostbyname (char*) ; 
- int /*<<< orphan*/  htonl (int) ; 
- void* htons (unsigned short) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (TYPE_3__*,int /*<<< orphan*/ ,int) ; 
- TYPE_3__ sa_logger ; 
- int /*<<< orphan*/  strcat (char*,char*) ; 
- char* strchr (char*,char) ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
- int strlen (char*) ; 
- char* strrchr (char*,char) ; 
- scalar_t__ strtoul (char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- char* syslog_conf_dir ; 
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct hostent {int h_length; int h_addr; } ;
+typedef int host ;
+struct TYPE_5__ {int S_addr; } ;
+struct TYPE_6__ {TYPE_1__ S_un; int s_addr; } ;
+struct TYPE_7__ {void* sin_port; TYPE_2__ sin_addr; int sin_family; } ;
+typedef int SOCKADDR_IN ;
+typedef int FILE ;
+
+
+ int AF_INET ;
+ int FILENAME_MAX ;
+ unsigned short SYSLOG_PORT ;
+ char** __argv ;
+ int fclose (int *) ;
+ int * fgets (char*,int,int *) ;
+ int * fopen (char*,char*) ;
+ struct hostent* gethostbyname (char*) ;
+ int htonl (int) ;
+ void* htons (unsigned short) ;
+ int memcpy (int *,int ,int ) ;
+ int memset (TYPE_3__*,int ,int) ;
+ TYPE_3__ sa_logger ;
+ int strcat (char*,char*) ;
+ char* strchr (char*,char) ;
+ int strcpy (char*,char*) ;
+ int strlen (char*) ;
+ char* strrchr (char*,char) ;
+ scalar_t__ strtoul (char*,int *,int ) ;
+ char* syslog_conf_dir ;
 
 __attribute__((used)) static void init_logger_addr()
 {
@@ -56,12 +56,12 @@ __attribute__((used)) static void init_logger_addr()
 
     if( '\\' == syslog_conf_dir[0] || '/' == syslog_conf_dir[0] || ':' == syslog_conf_dir[1] )
     {
-        /* absolute path */
+
         strcpy( pathname, syslog_conf_dir );
     }
     else
     {
-        /* relative path */
+
         char *q;
 
         strcpy( pathname, __argv[0] );
@@ -82,12 +82,12 @@ __attribute__((used)) static void init_logger_addr()
     }
     strcpy( ++p, "syslog.host" );
 
-    /* read destination host name */
+
     fd = fopen( pathname, "r" );
     if( !fd )
         goto use_default;
 
-    if( NULL == fgets( host, sizeof(host), fd ) )
+    if( ((void*)0) == fgets( host, sizeof(host), fd ) )
         host[0] = 0;
     else
     {
@@ -111,7 +111,7 @@ __attribute__((used)) static void init_logger_addr()
     memcpy( &sa_logger.sin_addr.s_addr, phe->h_addr, phe->h_length );
 
     if( p )
-        sa_logger.sin_port = htons( (unsigned short) strtoul( p, NULL, 0 ) );
+        sa_logger.sin_port = htons( (unsigned short) strtoul( p, ((void*)0), 0 ) );
     else
         sa_logger.sin_port = htons( SYSLOG_PORT );
     return;

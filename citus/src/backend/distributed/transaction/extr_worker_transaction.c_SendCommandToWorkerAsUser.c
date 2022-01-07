@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint ;
-typedef  int /*<<< orphan*/  int32 ;
-typedef  int /*<<< orphan*/  MultiConnection ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BeginOrContinueCoordinatedTransaction () ; 
- int /*<<< orphan*/  CoordinatedTransactionUse2PC () ; 
- int /*<<< orphan*/  ExecuteCriticalRemoteCommand (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/ * GetNodeUserDatabaseConnection (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  MarkRemoteTransactionCritical (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RemoteTransactionBeginIfNecessary (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int uint ;
+typedef int int32 ;
+typedef int MultiConnection ;
+
+
+ int BeginOrContinueCoordinatedTransaction () ;
+ int CoordinatedTransactionUse2PC () ;
+ int ExecuteCriticalRemoteCommand (int *,char const*) ;
+ int * GetNodeUserDatabaseConnection (int ,char*,int ,char const*,int *) ;
+ int MarkRemoteTransactionCritical (int *) ;
+ int RemoteTransactionBeginIfNecessary (int *) ;
 
 void
 SendCommandToWorkerAsUser(char *nodeName, int32 nodePort, const char *nodeUser,
-						  const char *command)
+        const char *command)
 {
-	MultiConnection *transactionConnection = NULL;
-	uint connectionFlags = 0;
+ MultiConnection *transactionConnection = ((void*)0);
+ uint connectionFlags = 0;
 
-	BeginOrContinueCoordinatedTransaction();
-	CoordinatedTransactionUse2PC();
+ BeginOrContinueCoordinatedTransaction();
+ CoordinatedTransactionUse2PC();
 
-	transactionConnection = GetNodeUserDatabaseConnection(connectionFlags, nodeName,
-														  nodePort, nodeUser, NULL);
+ transactionConnection = GetNodeUserDatabaseConnection(connectionFlags, nodeName,
+                nodePort, nodeUser, ((void*)0));
 
-	MarkRemoteTransactionCritical(transactionConnection);
-	RemoteTransactionBeginIfNecessary(transactionConnection);
-	ExecuteCriticalRemoteCommand(transactionConnection, command);
+ MarkRemoteTransactionCritical(transactionConnection);
+ RemoteTransactionBeginIfNecessary(transactionConnection);
+ ExecuteCriticalRemoteCommand(transactionConnection, command);
 }

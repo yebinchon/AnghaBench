@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct xattr {int /*<<< orphan*/  value_len; int /*<<< orphan*/  value; int /*<<< orphan*/ * name; } ;
+
+
+
+
+struct xattr {int value_len; int value; int * name; } ;
 struct inode {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OCFS2_XATTR_INDEX_SECURITY ; 
- int /*<<< orphan*/  XATTR_CREATE ; 
- int ocfs2_xattr_set (struct inode*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int OCFS2_XATTR_INDEX_SECURITY ;
+ int XATTR_CREATE ;
+ int ocfs2_xattr_set (struct inode*,int ,int *,int ,int ,int ) ;
 
 __attribute__((used)) static int ocfs2_initxattrs(struct inode *inode, const struct xattr *xattr_array,
-		     void *fs_info)
+       void *fs_info)
 {
-	const struct xattr *xattr;
-	int err = 0;
+ const struct xattr *xattr;
+ int err = 0;
 
-	for (xattr = xattr_array; xattr->name != NULL; xattr++) {
-		err = ocfs2_xattr_set(inode, OCFS2_XATTR_INDEX_SECURITY,
-				      xattr->name, xattr->value,
-				      xattr->value_len, XATTR_CREATE);
-		if (err)
-			break;
-	}
-	return err;
+ for (xattr = xattr_array; xattr->name != ((void*)0); xattr++) {
+  err = ocfs2_xattr_set(inode, OCFS2_XATTR_INDEX_SECURITY,
+          xattr->name, xattr->value,
+          xattr->value_len, XATTR_CREATE);
+  if (err)
+   break;
+ }
+ return err;
 }

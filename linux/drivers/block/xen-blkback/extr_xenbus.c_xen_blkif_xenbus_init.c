@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  xen_blkbk_driver ; 
- int xenbus_register_backend (int /*<<< orphan*/ *) ; 
+ int xen_blkbk_driver ;
+ int xenbus_register_backend (int *) ;
 
 int xen_blkif_xenbus_init(void)
 {
-	return xenbus_register_backend(&xen_blkbk_driver);
+ return xenbus_register_backend(&xen_blkbk_driver);
 }

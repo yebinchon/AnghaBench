@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ u_int16_t ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ u_int16_t ;
 struct TYPE_3__ {int ath_hal_spur_mode; } ;
 struct ath_hal {TYPE_1__ ah_config; } ;
 struct TYPE_4__ {scalar_t__** ath_hal_spur_chans; } ;
 
-/* Variables and functions */
- TYPE_2__* AH9300 (struct ath_hal*) ; 
- int AR_EEPROM_MODAL_SPURS ; 
- scalar_t__ AR_NO_SPUR ; 
- int /*<<< orphan*/  HALDEBUG (struct ath_hal*,int /*<<< orphan*/ ,char*,scalar_t__) ; 
- int /*<<< orphan*/  HAL_DEBUG_ANI ; 
+
+ TYPE_2__* AH9300 (struct ath_hal*) ;
+ int AR_EEPROM_MODAL_SPURS ;
+ scalar_t__ AR_NO_SPUR ;
+ int HALDEBUG (struct ath_hal*,int ,char*,scalar_t__) ;
+ int HAL_DEBUG_ANI ;
 
 int
 ar9300_get_spur_info(struct ath_hal * ah, int *enable, int len, u_int16_t *freq)
 {
-//    struct ath_hal_private *ap = AH_PRIVATE(ah);
+
     int i, j;
 
     for (i = 0; i < len; i++) {
-        freq[i] =  0;
+        freq[i] = 0;
     }
 
     *enable = ah->ah_config.ath_hal_spur_mode;

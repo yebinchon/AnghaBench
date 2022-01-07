@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ CURLcode ;
-typedef  int /*<<< orphan*/  CURL ;
 
-/* Variables and functions */
- scalar_t__ CURLE_OK ; 
- int /*<<< orphan*/  CURLOPT_HEADER ; 
- int /*<<< orphan*/  CURLOPT_HEADERDATA ; 
- int /*<<< orphan*/  CURLOPT_HEADERFUNCTION ; 
- int /*<<< orphan*/  CURLOPT_NOPROGRESS ; 
- int /*<<< orphan*/  CURLOPT_NOSIGNAL ; 
- int /*<<< orphan*/  CURLOPT_SSLCERTTYPE ; 
- int /*<<< orphan*/  CURLOPT_SSLKEYTYPE ; 
- int /*<<< orphan*/  CURLOPT_SSL_CTX_FUNCTION ; 
- int /*<<< orphan*/  CURLOPT_SSL_VERIFYHOST ; 
- int /*<<< orphan*/  CURLOPT_SSL_VERIFYPEER ; 
- int /*<<< orphan*/  CURLOPT_URL ; 
- int /*<<< orphan*/  CURLOPT_VERBOSE ; 
- int /*<<< orphan*/  CURLOPT_WRITEDATA ; 
- int /*<<< orphan*/  CURLOPT_WRITEFUNCTION ; 
- int /*<<< orphan*/  CURL_GLOBAL_ALL ; 
- int /*<<< orphan*/  curl_easy_cleanup (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * curl_easy_init () ; 
- scalar_t__ curl_easy_perform (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  curl_easy_setopt (int /*<<< orphan*/ *,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  curl_global_cleanup () ; 
- int /*<<< orphan*/  curl_global_init (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printf (char*) ; 
- char** sslctx_function ; 
- char* stderr ; 
- char* stdout ; 
- char* writefunction ; 
+
+
+
+typedef scalar_t__ CURLcode ;
+typedef int CURL ;
+
+
+ scalar_t__ CURLE_OK ;
+ int CURLOPT_HEADER ;
+ int CURLOPT_HEADERDATA ;
+ int CURLOPT_HEADERFUNCTION ;
+ int CURLOPT_NOPROGRESS ;
+ int CURLOPT_NOSIGNAL ;
+ int CURLOPT_SSLCERTTYPE ;
+ int CURLOPT_SSLKEYTYPE ;
+ int CURLOPT_SSL_CTX_FUNCTION ;
+ int CURLOPT_SSL_VERIFYHOST ;
+ int CURLOPT_SSL_VERIFYPEER ;
+ int CURLOPT_URL ;
+ int CURLOPT_VERBOSE ;
+ int CURLOPT_WRITEDATA ;
+ int CURLOPT_WRITEFUNCTION ;
+ int CURL_GLOBAL_ALL ;
+ int curl_easy_cleanup (int *) ;
+ int * curl_easy_init () ;
+ scalar_t__ curl_easy_perform (int *) ;
+ int curl_easy_setopt (int *,int ,...) ;
+ int curl_global_cleanup () ;
+ int curl_global_init (int ) ;
+ int printf (char*) ;
+ char** sslctx_function ;
+ char* stderr ;
+ char* stdout ;
+ char* writefunction ;
 
 int main(void)
 {
@@ -59,16 +59,16 @@ int main(void)
   curl_easy_setopt(ch, CURLOPT_HEADERDATA, stderr);
   curl_easy_setopt(ch, CURLOPT_SSLCERTTYPE, "PEM");
 
-  /* both VERIFYPEER and VERIFYHOST are set to 0 in this case because there is
-     no CA certificate*/
+
+
 
   curl_easy_setopt(ch, CURLOPT_SSL_VERIFYPEER, 0L);
   curl_easy_setopt(ch, CURLOPT_SSL_VERIFYHOST, 0L);
   curl_easy_setopt(ch, CURLOPT_URL, "https://www.example.com/");
   curl_easy_setopt(ch, CURLOPT_SSLKEYTYPE, "PEM");
 
-  /* first try: retrieve page without user certificate and key -> will fail
-   */
+
+
   rv = curl_easy_perform(ch);
   if(rv == CURLE_OK) {
     printf("*** transfer succeeded ***\n");
@@ -77,10 +77,10 @@ int main(void)
     printf("*** transfer failed ***\n");
   }
 
-  /* second try: retrieve page using user certificate and key -> will succeed
-   * load the certificate and key by installing a function doing the necessary
-   * "modifications" to the SSL CONTEXT just before link init
-   */
+
+
+
+
   curl_easy_setopt(ch, CURLOPT_SSL_CTX_FUNCTION, *sslctx_function);
   rv = curl_easy_perform(ch);
   if(rv == CURLE_OK) {

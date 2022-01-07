@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_5__ ;
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  npy_longdouble ;
-typedef  int /*<<< orphan*/  npy_half ;
-typedef  int /*<<< orphan*/  npy_float ;
-typedef  int /*<<< orphan*/  npy_double ;
-typedef  int /*<<< orphan*/  TrimMode ;
-struct TYPE_14__ {int precision; int sign; int digits_left; int digits_right; int exp_digits; int /*<<< orphan*/  trim_mode; int /*<<< orphan*/  cutoff_mode; int /*<<< orphan*/  digit_mode; scalar_t__ scientific; } ;
-struct TYPE_13__ {int /*<<< orphan*/  obval; } ;
-struct TYPE_12__ {int /*<<< orphan*/  obval; } ;
-struct TYPE_11__ {int /*<<< orphan*/  obval; } ;
-struct TYPE_10__ {int /*<<< orphan*/  obval; } ;
-typedef  int /*<<< orphan*/  PyObject ;
-typedef  TYPE_1__ PyLongDoubleScalarObject ;
-typedef  TYPE_2__ PyHalfScalarObject ;
-typedef  TYPE_3__ PyFloatScalarObject ;
-typedef  TYPE_4__ PyDoubleScalarObject ;
-typedef  TYPE_5__ Dragon4_Options ;
-typedef  int /*<<< orphan*/  DigitMode ;
-typedef  int /*<<< orphan*/  CutoffMode ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Double ; 
- int /*<<< orphan*/ * Dragon4_Positional_Double_opt (int /*<<< orphan*/ *,TYPE_5__*) ; 
- int /*<<< orphan*/ * Dragon4_Positional_Float_opt (int /*<<< orphan*/ *,TYPE_5__*) ; 
- int /*<<< orphan*/ * Dragon4_Positional_Half_opt (int /*<<< orphan*/ *,TYPE_5__*) ; 
- int /*<<< orphan*/ * Dragon4_Positional_LongDouble_opt (int /*<<< orphan*/ *,TYPE_5__*) ; 
- int /*<<< orphan*/  Float ; 
- int /*<<< orphan*/  Half ; 
- int /*<<< orphan*/  LongDouble ; 
- scalar_t__ PyArray_IsScalar (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ PyErr_Occurred () ; 
- int /*<<< orphan*/  PyFloat_AsDouble (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_14__ TYPE_5__ ;
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int npy_longdouble ;
+typedef int npy_half ;
+typedef int npy_float ;
+typedef int npy_double ;
+typedef int TrimMode ;
+struct TYPE_14__ {int precision; int sign; int digits_left; int digits_right; int exp_digits; int trim_mode; int cutoff_mode; int digit_mode; scalar_t__ scientific; } ;
+struct TYPE_13__ {int obval; } ;
+struct TYPE_12__ {int obval; } ;
+struct TYPE_11__ {int obval; } ;
+struct TYPE_10__ {int obval; } ;
+typedef int PyObject ;
+typedef TYPE_1__ PyLongDoubleScalarObject ;
+typedef TYPE_2__ PyHalfScalarObject ;
+typedef TYPE_3__ PyFloatScalarObject ;
+typedef TYPE_4__ PyDoubleScalarObject ;
+typedef TYPE_5__ Dragon4_Options ;
+typedef int DigitMode ;
+typedef int CutoffMode ;
+
+
+ int Double ;
+ int * Dragon4_Positional_Double_opt (int *,TYPE_5__*) ;
+ int * Dragon4_Positional_Float_opt (int *,TYPE_5__*) ;
+ int * Dragon4_Positional_Half_opt (int *,TYPE_5__*) ;
+ int * Dragon4_Positional_LongDouble_opt (int *,TYPE_5__*) ;
+ int Float ;
+ int Half ;
+ int LongDouble ;
+ scalar_t__ PyArray_IsScalar (int *,int ) ;
+ scalar_t__ PyErr_Occurred () ;
+ int PyFloat_AsDouble (int *) ;
 
 PyObject *
 Dragon4_Positional(PyObject *obj, DigitMode digit_mode, CutoffMode cutoff_mode,
@@ -84,7 +84,7 @@ Dragon4_Positional(PyObject *obj, DigitMode digit_mode, CutoffMode cutoff_mode,
 
     val = PyFloat_AsDouble(obj);
     if (PyErr_Occurred()) {
-        return NULL;
+        return ((void*)0);
     }
     return Dragon4_Positional_Double_opt(&val, &opt);
 }

@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_6__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
+
+
+typedef struct TYPE_14__ TYPE_6__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+typedef int u32 ;
 struct TYPE_14__ {int mallocFailed; } ;
 struct TYPE_13__ {scalar_t__ nErr; TYPE_6__* db; scalar_t__ nSelect; } ;
-struct TYPE_12__ {int* addrOpenEphm; int /*<<< orphan*/ * pSrc; scalar_t__ pWinDefn; scalar_t__ pWin; scalar_t__ pWith; int /*<<< orphan*/ * pLimit; scalar_t__ pNext; scalar_t__ pPrior; int /*<<< orphan*/ * pOrderBy; int /*<<< orphan*/ * pHaving; int /*<<< orphan*/ * pGroupBy; int /*<<< orphan*/ * pWhere; scalar_t__ nSelectRow; scalar_t__ selId; scalar_t__ iOffset; scalar_t__ iLimit; int /*<<< orphan*/  selFlags; int /*<<< orphan*/  op; int /*<<< orphan*/ * pEList; } ;
-typedef  int /*<<< orphan*/  SrcList ;
-typedef  TYPE_1__ Select ;
-typedef  TYPE_2__ Parse ;
-typedef  int /*<<< orphan*/  ExprList ;
-typedef  int /*<<< orphan*/  Expr ;
+struct TYPE_12__ {int* addrOpenEphm; int * pSrc; scalar_t__ pWinDefn; scalar_t__ pWin; scalar_t__ pWith; int * pLimit; scalar_t__ pNext; scalar_t__ pPrior; int * pOrderBy; int * pHaving; int * pGroupBy; int * pWhere; scalar_t__ nSelectRow; scalar_t__ selId; scalar_t__ iOffset; scalar_t__ iLimit; int selFlags; int op; int * pEList; } ;
+typedef int SrcList ;
+typedef TYPE_1__ Select ;
+typedef TYPE_2__ Parse ;
+typedef int ExprList ;
+typedef int Expr ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TK_ASTERISK ; 
- int /*<<< orphan*/  TK_SELECT ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  clearSelect (TYPE_6__*,TYPE_1__*,int) ; 
- TYPE_1__* sqlite3DbMallocRawNN (TYPE_6__*,int) ; 
- int /*<<< orphan*/ * sqlite3DbMallocZero (TYPE_6__*,int) ; 
- int /*<<< orphan*/  sqlite3Expr (TYPE_6__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * sqlite3ExprListAppend (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int TK_ASTERISK ;
+ int TK_SELECT ;
+ int assert (int) ;
+ int clearSelect (TYPE_6__*,TYPE_1__*,int) ;
+ TYPE_1__* sqlite3DbMallocRawNN (TYPE_6__*,int) ;
+ int * sqlite3DbMallocZero (TYPE_6__*,int) ;
+ int sqlite3Expr (TYPE_6__*,int ,int ) ;
+ int * sqlite3ExprListAppend (TYPE_2__*,int ,int ) ;
 
 Select *sqlite3SelectNew(
-  Parse *pParse,        /* Parsing context */
-  ExprList *pEList,     /* which columns to include in the result */
-  SrcList *pSrc,        /* the FROM clause -- which tables to scan */
-  Expr *pWhere,         /* the WHERE clause */
-  ExprList *pGroupBy,   /* the GROUP BY clause */
-  Expr *pHaving,        /* the HAVING clause */
-  ExprList *pOrderBy,   /* the ORDER BY clause */
-  u32 selFlags,         /* Flag parameters, such as SF_Distinct */
-  Expr *pLimit          /* LIMIT value.  NULL means not used */
+  Parse *pParse,
+  ExprList *pEList,
+  SrcList *pSrc,
+  Expr *pWhere,
+  ExprList *pGroupBy,
+  Expr *pHaving,
+  ExprList *pOrderBy,
+  u32 selFlags,
+  Expr *pLimit
 ){
   Select *pNew;
   Select standin;
@@ -74,10 +74,10 @@ Select *sqlite3SelectNew(
   pNew->pNext = 0;
   pNew->pLimit = pLimit;
   pNew->pWith = 0;
-#ifndef SQLITE_OMIT_WINDOWFUNC
+
   pNew->pWin = 0;
   pNew->pWinDefn = 0;
-#endif
+
   if( pParse->db->mallocFailed ) {
     clearSelect(pParse->db, pNew, pNew!=&standin);
     pNew = 0;

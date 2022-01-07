@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct input_dev {int /*<<< orphan*/  event_lock; int /*<<< orphan*/  evbit; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EV_MAX ; 
- int /*<<< orphan*/  add_input_randomness (unsigned int,unsigned int,int) ; 
- int /*<<< orphan*/  input_handle_event (struct input_dev*,unsigned int,unsigned int,int) ; 
- scalar_t__ is_event_supported (unsigned int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
+
+
+
+struct input_dev {int event_lock; int evbit; } ;
+
+
+ int EV_MAX ;
+ int add_input_randomness (unsigned int,unsigned int,int) ;
+ int input_handle_event (struct input_dev*,unsigned int,unsigned int,int) ;
+ scalar_t__ is_event_supported (unsigned int,int ,int ) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
 
 void input_event(struct input_dev *dev,
-		 unsigned int type, unsigned int code, int value)
+   unsigned int type, unsigned int code, int value)
 {
-	unsigned long flags;
+ unsigned long flags;
 
-	if (is_event_supported(type, dev->evbit, EV_MAX)) {
+ if (is_event_supported(type, dev->evbit, EV_MAX)) {
 
-		spin_lock_irqsave(&dev->event_lock, flags);
-		add_input_randomness(type, code, value);
-		input_handle_event(dev, type, code, value);
-		spin_unlock_irqrestore(&dev->event_lock, flags);
-	}
+  spin_lock_irqsave(&dev->event_lock, flags);
+  add_input_randomness(type, code, value);
+  input_handle_event(dev, type, code, value);
+  spin_unlock_irqrestore(&dev->event_lock, flags);
+ }
 }

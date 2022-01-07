@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int num_bands; int num_windows; int* band_type; int* band_run_end; int /*<<< orphan*/  avctx; scalar_t__ is_long; } ;
-typedef  TYPE_1__ On2AVCContext ;
-typedef  int /*<<< orphan*/  GetBitContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int get_bits (int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int num_bands; int num_windows; int* band_type; int* band_run_end; int avctx; scalar_t__ is_long; } ;
+typedef TYPE_1__ On2AVCContext ;
+typedef int GetBitContext ;
+
+
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ int av_log (int ,int ,char*) ;
+ int get_bits (int *,int) ;
 
 __attribute__((used)) static int on2avc_decode_band_types(On2AVCContext *c, GetBitContext *gb)
 {
@@ -30,7 +30,7 @@ __attribute__((used)) static int on2avc_decode_band_types(On2AVCContext *c, GetB
 
     while (band < num_bands) {
         band_type = get_bits(gb, 4);
-        run_len   = 1;
+        run_len = 1;
         do {
             run = get_bits(gb, bits_per_sect);
             if (run > num_bands - band - run_len) {
@@ -40,7 +40,7 @@ __attribute__((used)) static int on2avc_decode_band_types(On2AVCContext *c, GetB
             run_len += run;
         } while (run == esc_val);
         for (i = band; i < band + run_len; i++) {
-            c->band_type[i]    = band_type;
+            c->band_type[i] = band_type;
             c->band_run_end[i] = band + run_len;
         }
         band += run_len;

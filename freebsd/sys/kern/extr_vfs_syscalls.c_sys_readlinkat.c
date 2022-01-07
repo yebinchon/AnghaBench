@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct thread {int dummy; } ;
-struct readlinkat_args {int /*<<< orphan*/  bufsize; int /*<<< orphan*/  buf; int /*<<< orphan*/  path; int /*<<< orphan*/  fd; } ;
+struct readlinkat_args {int bufsize; int buf; int path; int fd; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  UIO_USERSPACE ; 
- int kern_readlinkat (struct thread*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int UIO_USERSPACE ;
+ int kern_readlinkat (struct thread*,int ,int ,int ,int ,int ,int ) ;
 
 int
 sys_readlinkat(struct thread *td, struct readlinkat_args *uap)
 {
 
-	return (kern_readlinkat(td, uap->fd, uap->path, UIO_USERSPACE,
-	    uap->buf, UIO_USERSPACE, uap->bufsize));
+ return (kern_readlinkat(td, uap->fd, uap->path, UIO_USERSPACE,
+     uap->buf, UIO_USERSPACE, uap->bufsize));
 }

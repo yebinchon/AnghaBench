@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  os_sem_t ;
-typedef  int /*<<< orphan*/  LONG ;
-typedef  scalar_t__ HANDLE ;
 
-/* Variables and functions */
- scalar_t__ CreateSemaphore (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int os_sem_t ;
+typedef int LONG ;
+typedef scalar_t__ HANDLE ;
+
+
+ scalar_t__ CreateSemaphore (int *,int ,int,int *) ;
 
 int os_sem_init(os_sem_t **sem, int value)
 {
-	HANDLE handle = CreateSemaphore(NULL, (LONG)value, 0x7FFFFFFF, NULL);
-	if (!handle)
-		return -1;
+ HANDLE handle = CreateSemaphore(((void*)0), (LONG)value, 0x7FFFFFFF, ((void*)0));
+ if (!handle)
+  return -1;
 
-	*sem = (os_sem_t *)handle;
-	return 0;
+ *sem = (os_sem_t *)handle;
+ return 0;
 }

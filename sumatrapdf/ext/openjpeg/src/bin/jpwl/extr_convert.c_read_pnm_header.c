@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct pnm_header {int format; int width; int height; int depth; int maxval; int bw; int gray; int graya; int rgb; int rgba; int ok; } ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef int FILE ;
 
-/* Variables and functions */
- int atoi (char*) ; 
- int /*<<< orphan*/ * fgets (char*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- char* skip_idf (char*,char*) ; 
- char* skip_int (char*,int*) ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ strcmp (char*,char*) ; 
+
+ int atoi (char*) ;
+ int * fgets (char*,int,int *) ;
+ int fprintf (int ,char*,...) ;
+ char* skip_idf (char*,char*) ;
+ char* skip_int (char*,int*) ;
+ int stderr ;
+ scalar_t__ strcmp (char*,char*) ;
 
 __attribute__((used)) static void read_pnm_header(FILE *reader, struct pnm_header *ph)
 {
@@ -29,7 +29,7 @@ __attribute__((used)) static void read_pnm_header(FILE *reader, struct pnm_heade
     char idf[256], type[256];
     char line[256];
 
-    if (fgets(line, 250, reader) == NULL) {
+    if (fgets(line, 250, reader) == ((void*)0)) {
         fprintf(stderr, "\nWARNING: fgets return a NULL value");
         return;
     }
@@ -56,7 +56,7 @@ __attribute__((used)) static void read_pnm_header(FILE *reader, struct pnm_heade
         if (format == 7) {
             s = skip_idf(s, idf);
 
-            if (s == NULL || *s == 0) {
+            if (s == ((void*)0) || *s == 0) {
                 return;
             }
 
@@ -66,7 +66,7 @@ __attribute__((used)) static void read_pnm_header(FILE *reader, struct pnm_heade
             }
             if (strcmp(idf, "WIDTH") == 0) {
                 s = skip_int(s, &ph->width);
-                if (s == NULL || *s == 0) {
+                if (s == ((void*)0) || *s == 0) {
                     return;
                 }
 
@@ -74,7 +74,7 @@ __attribute__((used)) static void read_pnm_header(FILE *reader, struct pnm_heade
             }
             if (strcmp(idf, "HEIGHT") == 0) {
                 s = skip_int(s, &ph->height);
-                if (s == NULL || *s == 0) {
+                if (s == ((void*)0) || *s == 0) {
                     return;
                 }
 
@@ -82,7 +82,7 @@ __attribute__((used)) static void read_pnm_header(FILE *reader, struct pnm_heade
             }
             if (strcmp(idf, "DEPTH") == 0) {
                 s = skip_int(s, &ph->depth);
-                if (s == NULL || *s == 0) {
+                if (s == ((void*)0) || *s == 0) {
                     return;
                 }
 
@@ -90,7 +90,7 @@ __attribute__((used)) static void read_pnm_header(FILE *reader, struct pnm_heade
             }
             if (strcmp(idf, "MAXVAL") == 0) {
                 s = skip_int(s, &ph->maxval);
-                if (s == NULL || *s == 0) {
+                if (s == ((void*)0) || *s == 0) {
                     return;
                 }
 
@@ -98,7 +98,7 @@ __attribute__((used)) static void read_pnm_header(FILE *reader, struct pnm_heade
             }
             if (strcmp(idf, "TUPLTYPE") == 0) {
                 s = skip_idf(s, type);
-                if (s == NULL || *s == 0) {
+                if (s == ((void*)0) || *s == 0) {
                     return;
                 }
 
@@ -132,7 +132,7 @@ __attribute__((used)) static void read_pnm_header(FILE *reader, struct pnm_heade
             }
             fprintf(stderr, "read_pnm_header:unknown P7 idf %s\n", idf);
             return;
-        } /* if(format == 7) */
+        }
 
         if (!have_wh) {
             s = skip_int(s, &ph->width);
@@ -148,7 +148,7 @@ __attribute__((used)) static void read_pnm_header(FILE *reader, struct pnm_heade
             continue;
         }
         if (format == 2 || format == 3 || format == 5 || format == 6) {
-            /* P2, P3, P5, P6: */
+
             s = skip_int(s, &ph->maxval);
 
             if (ph->maxval > 65535) {
@@ -156,7 +156,7 @@ __attribute__((used)) static void read_pnm_header(FILE *reader, struct pnm_heade
             }
         }
         break;
-    }/* while(fgets( ) */
+    }
     if (format == 2 || format == 3 || format > 4) {
         if (ph->maxval < 1 || ph->maxval > 65535) {
             return;

@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  jit_State ;
-typedef  int /*<<< orphan*/  TValue ;
-typedef  int /*<<< orphan*/  TRef ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IRCONV_NUM_INT ; 
- int /*<<< orphan*/  IRTGI (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IRTN (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IR_CONV ; 
- int /*<<< orphan*/  IR_NEG ; 
- int /*<<< orphan*/  IR_SUBOV ; 
- int /*<<< orphan*/  LJ_KSIMD_NEG ; 
- int /*<<< orphan*/  conv_str_tonum (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  emitir (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lj_ir_kint (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lj_ir_ksimd (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ numberVint (int /*<<< orphan*/ *) ; 
- scalar_t__ tref_isinteger (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint32_t ;
+typedef int jit_State ;
+typedef int TValue ;
+typedef int TRef ;
+
+
+ int IRCONV_NUM_INT ;
+ int IRTGI (int ) ;
+ int IRTN (int ) ;
+ int IR_CONV ;
+ int IR_NEG ;
+ int IR_SUBOV ;
+ int LJ_KSIMD_NEG ;
+ int conv_str_tonum (int *,int ,int *) ;
+ int emitir (int ,int ,int ) ;
+ int lj_ir_kint (int *,int ) ;
+ int lj_ir_ksimd (int *,int ) ;
+ scalar_t__ numberVint (int *) ;
+ scalar_t__ tref_isinteger (int ) ;
 
 TRef lj_opt_narrow_unm(jit_State *J, TRef rc, TValue *vc)
 {

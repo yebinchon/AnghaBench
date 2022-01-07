@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {size_t return_size; unsigned int data_type; int /*<<< orphan*/ * data; } ;
-typedef  TYPE_1__ OSSL_PARAM ;
 
-/* Variables and functions */
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {size_t return_size; unsigned int data_type; int * data; } ;
+typedef TYPE_1__ OSSL_PARAM ;
+
+
 
 __attribute__((used)) static int set_ptr_internal(OSSL_PARAM *p, const void *val,
                             unsigned int type, size_t len)
@@ -22,7 +22,7 @@ __attribute__((used)) static int set_ptr_internal(OSSL_PARAM *p, const void *val
     p->return_size = len;
     if (p->data_type != type)
         return 0;
-    if (p->data != NULL)
+    if (p->data != ((void*)0))
         *(const void **)p->data = val;
     return 1;
 }

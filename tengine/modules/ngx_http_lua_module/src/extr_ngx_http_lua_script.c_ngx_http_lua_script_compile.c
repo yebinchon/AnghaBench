@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char u_char ;
-typedef  size_t ngx_uint_t ;
+
+
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef char u_char ;
+typedef size_t ngx_uint_t ;
 struct TYPE_10__ {size_t len; char* data; } ;
-typedef  TYPE_1__ ngx_str_t ;
-typedef  int /*<<< orphan*/  ngx_int_t ;
-struct TYPE_11__ {TYPE_1__* source; int /*<<< orphan*/  log; int /*<<< orphan*/  variables; } ;
-typedef  TYPE_2__ ngx_http_lua_script_compile_t ;
+typedef TYPE_1__ ngx_str_t ;
+typedef int ngx_int_t ;
+struct TYPE_11__ {TYPE_1__* source; int log; int variables; } ;
+typedef TYPE_2__ ngx_http_lua_script_compile_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NGX_ERROR ; 
- int /*<<< orphan*/  NGX_LOG_ERR ; 
- scalar_t__ NGX_OK ; 
- scalar_t__ ngx_http_lua_script_add_capture_code (TYPE_2__*,size_t) ; 
- scalar_t__ ngx_http_lua_script_add_copy_code (TYPE_2__*,TYPE_1__*,int) ; 
- int /*<<< orphan*/  ngx_http_lua_script_done (TYPE_2__*) ; 
- scalar_t__ ngx_http_lua_script_init_arrays (TYPE_2__*) ; 
- int /*<<< orphan*/  ngx_log_error (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,TYPE_1__*) ; 
+
+ int NGX_ERROR ;
+ int NGX_LOG_ERR ;
+ scalar_t__ NGX_OK ;
+ scalar_t__ ngx_http_lua_script_add_capture_code (TYPE_2__*,size_t) ;
+ scalar_t__ ngx_http_lua_script_add_copy_code (TYPE_2__*,TYPE_1__*,int) ;
+ int ngx_http_lua_script_done (TYPE_2__*) ;
+ scalar_t__ ngx_http_lua_script_init_arrays (TYPE_2__*) ;
+ int ngx_log_error (int ,int ,int ,char*,TYPE_1__*) ;
 
 __attribute__((used)) static ngx_int_t
 ngx_http_lua_script_compile(ngx_http_lua_script_compile_t *sc)
 {
-    u_char       ch;
-    ngx_str_t    name;
-    ngx_uint_t   i, bracket;
-    unsigned     num_var;
-    ngx_uint_t   n = 0;
+    u_char ch;
+    ngx_str_t name;
+    ngx_uint_t i, bracket;
+    unsigned num_var;
+    ngx_uint_t n = 0;
 
     if (ngx_http_lua_script_init_arrays(sc) != NGX_OK) {
         return NGX_ERROR;
     }
 
-    for (i = 0; i < sc->source->len; /* void */ ) {
+    for (i = 0; i < sc->source->len; ) {
 
         name.len = 0;
 
@@ -95,7 +95,7 @@ ngx_http_lua_script_compile(ngx_http_lua_script_compile_t *sc)
                 name.data = &sc->source->data[i];
             }
 
-            for ( /* void */ ; i < sc->source->len; i++, name.len++) {
+            for ( ; i < sc->source->len; i++, name.len++) {
                 ch = sc->source->data[i];
 
                 if (ch == '}' && bracket) {
@@ -113,7 +113,7 @@ ngx_http_lua_script_compile(ngx_http_lua_script_compile_t *sc)
                     break;
                 }
 
-                /* not a number variable like $1, $2, etc */
+
 
                 if ((ch >= 'A' && ch <= 'Z')
                     || (ch >= 'a' && ch <= 'z')

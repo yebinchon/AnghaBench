@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char uint8_t ;
-typedef  int /*<<< orphan*/  nvs_handle_t ;
-typedef  scalar_t__ esp_err_t ;
 
-/* Variables and functions */
- scalar_t__ ESP_ERR_NO_MEM ; 
- scalar_t__ ESP_ERR_NVS_TYPE_MISMATCH ; 
- int /*<<< orphan*/  ESP_LOGE (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ ESP_OK ; 
- int /*<<< orphan*/  TAG ; 
- int /*<<< orphan*/  free (char*) ; 
- scalar_t__ malloc (size_t) ; 
- scalar_t__ nvs_commit (int /*<<< orphan*/ ) ; 
- scalar_t__ nvs_set_blob (int /*<<< orphan*/ ,char const*,char*,size_t) ; 
- size_t strlen (char const*) ; 
+
+
+
+typedef char uint8_t ;
+typedef int nvs_handle_t ;
+typedef scalar_t__ esp_err_t ;
+
+
+ scalar_t__ ESP_ERR_NO_MEM ;
+ scalar_t__ ESP_ERR_NVS_TYPE_MISMATCH ;
+ int ESP_LOGE (int ,char*) ;
+ scalar_t__ ESP_OK ;
+ int TAG ;
+ int free (char*) ;
+ scalar_t__ malloc (size_t) ;
+ scalar_t__ nvs_commit (int ) ;
+ scalar_t__ nvs_set_blob (int ,char const*,char*,size_t) ;
+ size_t strlen (char const*) ;
 
 __attribute__((used)) static esp_err_t store_blob(nvs_handle_t nvs, const char *key, const char *str_values)
 {
@@ -38,7 +38,7 @@ __attribute__((used)) static esp_err_t store_blob(nvs_handle_t nvs, const char *
     }
 
     char *blob = (char *)malloc(blob_len);
-    if (blob == NULL) {
+    if (blob == ((void*)0)) {
         return ESP_ERR_NO_MEM;
     }
 

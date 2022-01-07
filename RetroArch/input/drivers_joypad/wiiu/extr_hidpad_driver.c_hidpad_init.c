@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  RARCH_ERR (char*) ; 
- int /*<<< orphan*/  hidpad_poll () ; 
- int hidpad_ready ; 
- int /*<<< orphan*/  init_hid_driver () ; 
+ int RARCH_ERR (char*) ;
+ int hidpad_poll () ;
+ int hidpad_ready ;
+ int init_hid_driver () ;
 
 __attribute__((used)) static bool hidpad_init(void *data)
 {
@@ -25,11 +17,11 @@ __attribute__((used)) static bool hidpad_init(void *data)
    if(!init_hid_driver())
    {
       RARCH_ERR("Failed to initialize HID driver.\n");
-      return false;
+      return 0;
    }
 
    hidpad_poll();
-   hidpad_ready = true;
+   hidpad_ready = 1;
 
-   return true;
+   return 1;
 }

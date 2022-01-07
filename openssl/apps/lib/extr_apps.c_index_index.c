@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_4__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  arg2; int /*<<< orphan*/  arg1; int /*<<< orphan*/  error; } ;
+
+
+typedef struct TYPE_7__ TYPE_4__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int arg2; int arg1; int error; } ;
 struct TYPE_5__ {scalar_t__ unique_subject; } ;
 struct TYPE_6__ {TYPE_4__* db; TYPE_1__ attributes; } ;
-typedef  TYPE_2__ CA_DB ;
+typedef TYPE_2__ CA_DB ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_printf (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DB_name ; 
- int /*<<< orphan*/  DB_serial ; 
- int /*<<< orphan*/  LHASH_COMP_FN (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LHASH_HASH_FN (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TXT_DB_create_index (TYPE_4__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bio_err ; 
- int /*<<< orphan*/  index_name ; 
- int /*<<< orphan*/ * index_name_qual ; 
- int /*<<< orphan*/  index_serial ; 
+
+ int BIO_printf (int ,char*,int ,int ,int ) ;
+ int DB_name ;
+ int DB_serial ;
+ int LHASH_COMP_FN (int ) ;
+ int LHASH_HASH_FN (int ) ;
+ int TXT_DB_create_index (TYPE_4__*,int ,int *,int ,int ) ;
+ int bio_err ;
+ int index_name ;
+ int * index_name_qual ;
+ int index_serial ;
 
 int index_index(CA_DB *db)
 {
-    if (!TXT_DB_create_index(db->db, DB_serial, NULL,
+    if (!TXT_DB_create_index(db->db, DB_serial, ((void*)0),
                              LHASH_HASH_FN(index_serial),
                              LHASH_COMP_FN(index_serial))) {
         BIO_printf(bio_err,

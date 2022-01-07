@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  unsigned int uint32_t ;
-struct TYPE_3__ {int key_bytes; int /*<<< orphan*/  key; } ;
-typedef  TYPE_1__ esp_aes_context ;
 
-/* Variables and functions */
- scalar_t__ AES_KEY_BASE ; 
- int /*<<< orphan*/  AES_MODE_REG ; 
- int ESP_AES_ENCRYPT ; 
- int /*<<< orphan*/  REG_WRITE (int /*<<< orphan*/ ,unsigned int) ; 
- int /*<<< orphan*/  memcpy (unsigned int*,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef unsigned int uint32_t ;
+struct TYPE_3__ {int key_bytes; int key; } ;
+typedef TYPE_1__ esp_aes_context ;
+
+
+ scalar_t__ AES_KEY_BASE ;
+ int AES_MODE_REG ;
+ int ESP_AES_ENCRYPT ;
+ int REG_WRITE (int ,unsigned int) ;
+ int memcpy (unsigned int*,int ,int) ;
 
 __attribute__((used)) static inline void esp_aes_setkey_hardware( esp_aes_context *ctx, int mode)
 {

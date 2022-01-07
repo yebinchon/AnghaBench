@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int int64_t ;
-struct TYPE_12__ {int /*<<< orphan*/  pb; int /*<<< orphan*/ * streams; TYPE_2__* priv_data; } ;
+
+
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int int64_t ;
+struct TYPE_12__ {int pb; int * streams; TYPE_2__* priv_data; } ;
 struct TYPE_11__ {int* data; int pts; int size; scalar_t__ stream_index; } ;
 struct TYPE_10__ {int curframe; int fcount; int lastframe; int curbits; int frames_noted; TYPE_1__* frames; } ;
 struct TYPE_9__ {int pos; int skip; int size; } ;
-typedef  TYPE_2__ MPCContext ;
-typedef  TYPE_3__ AVPacket ;
-typedef  TYPE_4__ AVFormatContext ;
+typedef TYPE_2__ MPCContext ;
+typedef TYPE_3__ AVPacket ;
+typedef TYPE_4__ AVFormatContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_EOF ; 
- int /*<<< orphan*/  AVINDEX_KEYFRAME ; 
- int /*<<< orphan*/  EIO ; 
- int /*<<< orphan*/  SEEK_CUR ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  av_add_index_entry (int /*<<< orphan*/ ,int,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int av_new_packet (TYPE_3__*,int) ; 
- int /*<<< orphan*/  av_packet_unref (TYPE_3__*) ; 
- int avio_read (int /*<<< orphan*/ ,int*,int) ; 
- int avio_rl32 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  avio_seek (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int avio_tell (int /*<<< orphan*/ ) ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_EOF ;
+ int AVINDEX_KEYFRAME ;
+ int EIO ;
+ int SEEK_CUR ;
+ int SEEK_SET ;
+ int av_add_index_entry (int ,int,int,int,int ,int ) ;
+ int av_new_packet (TYPE_3__*,int) ;
+ int av_packet_unref (TYPE_3__*) ;
+ int avio_read (int ,int*,int) ;
+ int avio_rl32 (int ) ;
+ int avio_seek (int ,int,int ) ;
+ int avio_tell (int ) ;
 
 __attribute__((used)) static int mpc_read_packet(AVFormatContext *s, AVPacket *pkt)
 {

@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_5__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_12__ {int /*<<< orphan*/  label; } ;
+
+
+typedef struct TYPE_12__ TYPE_5__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+struct TYPE_12__ {int label; } ;
 struct TYPE_10__ {int bufsize; scalar_t__* buffer; } ;
-struct TYPE_11__ {TYPE_5__* pThread; int /*<<< orphan*/  ipstr; int /*<<< orphan*/  fd; TYPE_1__ parser; } ;
-typedef  TYPE_1__ HttpParser ;
-typedef  TYPE_2__ HttpContext ;
+struct TYPE_11__ {TYPE_5__* pThread; int ipstr; int fd; TYPE_1__ parser; } ;
+typedef TYPE_1__ HttpParser ;
+typedef TYPE_2__ HttpContext ;
 
-/* Variables and functions */
- scalar_t__ EAGAIN ; 
- scalar_t__ EINTR ; 
- scalar_t__ EWOULDBLOCK ; 
- int HTTP_BUFFER_SIZE ; 
- int /*<<< orphan*/  HTTP_REQUSET_TOO_BIG ; 
- int HTTP_STEP_SIZE ; 
- scalar_t__ errno ; 
- int /*<<< orphan*/  httpError (char*,TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,...) ; 
- int /*<<< orphan*/  httpReadDirtyData (TYPE_2__*) ; 
- int /*<<< orphan*/  httpRemoveContextFromEpoll (TYPE_5__*,TYPE_2__*) ; 
- int /*<<< orphan*/  httpSendErrorResp (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  httpTrace (char*,TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,...) ; 
- scalar_t__ taosReadSocket (int /*<<< orphan*/ ,scalar_t__*,int) ; 
+
+ scalar_t__ EAGAIN ;
+ scalar_t__ EINTR ;
+ scalar_t__ EWOULDBLOCK ;
+ int HTTP_BUFFER_SIZE ;
+ int HTTP_REQUSET_TOO_BIG ;
+ int HTTP_STEP_SIZE ;
+ scalar_t__ errno ;
+ int httpError (char*,TYPE_2__*,int ,int ,scalar_t__,...) ;
+ int httpReadDirtyData (TYPE_2__*) ;
+ int httpRemoveContextFromEpoll (TYPE_5__*,TYPE_2__*) ;
+ int httpSendErrorResp (TYPE_2__*,int ) ;
+ int httpTrace (char*,TYPE_2__*,int ,int ,scalar_t__,...) ;
+ scalar_t__ taosReadSocket (int ,scalar_t__*,int) ;
 
 bool httpReadDataImp(HttpContext *pContext) {
   HttpParser *pParser = &pContext->parser;
@@ -50,7 +50,7 @@ bool httpReadDataImp(HttpContext *pContext) {
       } else {
         httpError("context:%p, fd:%d, ip:%s, read from socket error:%d, close connect",
                   pContext, pContext->fd, pContext->ipstr, errno);
-        return false;
+        return 0;
       }
     } else {
       pParser->bufsize += nread;
@@ -62,7 +62,7 @@ bool httpReadDataImp(HttpContext *pContext) {
                 pContext, pContext->fd, pContext->ipstr, pContext->pThread->label, HTTP_BUFFER_SIZE);
       httpRemoveContextFromEpoll(pContext->pThread, pContext);
       httpSendErrorResp(pContext, HTTP_REQUSET_TOO_BIG);
-      return false;
+      return 0;
     }
   }
 
@@ -70,5 +70,5 @@ bool httpReadDataImp(HttpContext *pContext) {
   httpTrace("context:%p, fd:%d, ip:%s, thread:%s, read size:%d",
             pContext, pContext->fd, pContext->ipstr, pContext->pThread->label, pParser->bufsize);
 
-  return true;
+  return 1;
 }

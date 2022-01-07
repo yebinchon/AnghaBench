@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_6__ {int naxis; int* naxisn; int bitpix; int data_min; int bzero; int bscale; int data_max; scalar_t__ rgb; int /*<<< orphan*/  data_max_found; int /*<<< orphan*/  data_min_found; scalar_t__ blank_found; } ;
-typedef  TYPE_1__ FITSHeader ;
-typedef  int /*<<< orphan*/  AVDictionary ;
-typedef  int /*<<< orphan*/  AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_LOG_WARNING ; 
- size_t SIZE_MAX ; 
- int /*<<< orphan*/  STATE_BITPIX ; 
- int abs (int) ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  avpriv_fits_header_init (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int avpriv_fits_header_parse_line (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/  const*,int /*<<< orphan*/ ***) ; 
- int fill_data_min_max (int /*<<< orphan*/  const*,TYPE_1__*,int /*<<< orphan*/  const*) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_6__ {int naxis; int* naxisn; int bitpix; int data_min; int bzero; int bscale; int data_max; scalar_t__ rgb; int data_max_found; int data_min_found; scalar_t__ blank_found; } ;
+typedef TYPE_1__ FITSHeader ;
+typedef int AVDictionary ;
+typedef int AVCodecContext ;
+
+
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ int AV_LOG_WARNING ;
+ size_t SIZE_MAX ;
+ int STATE_BITPIX ;
+ int abs (int) ;
+ int av_log (int *,int ,char*,...) ;
+ int avpriv_fits_header_init (TYPE_1__*,int ) ;
+ int avpriv_fits_header_parse_line (int *,TYPE_1__*,int const*,int ***) ;
+ int fill_data_min_max (int const*,TYPE_1__*,int const*) ;
 
 __attribute__((used)) static int fits_read_header(AVCodecContext *avctx, const uint8_t **ptr, FITSHeader *header,
                             const uint8_t *end, AVDictionary **metadata)
@@ -36,7 +36,7 @@ __attribute__((used)) static int fits_read_header(AVCodecContext *avctx, const u
     int lines_read, bytes_left, i, ret;
     size_t size;
 
-    lines_read = 1; // to account for first header line, SIMPLE or XTENSION which is not included in packet...
+    lines_read = 1;
     avpriv_fits_header_init(header, STATE_BITPIX);
     do {
         if (end - ptr8 < 80)
@@ -88,10 +88,10 @@ __attribute__((used)) static int fits_read_header(AVCodecContext *avctx, const u
             return ret;
         }
     } else {
-        /*
-         * instead of applying bscale and bzero to every element,
-         * we can do inverse transformation on data_min and data_max
-         */
+
+
+
+
         header->data_min = (header->data_min - header->bzero) / header->bscale;
         header->data_max = (header->data_max - header->bzero) / header->bscale;
     }

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  octx; int /*<<< orphan*/  ictx; } ;
-typedef  TYPE_1__ crypto_auth_hmacsha256_state ;
 
-/* Variables and functions */
- int /*<<< orphan*/  crypto_hash_sha256_final (int /*<<< orphan*/ *,unsigned char*) ; 
- int /*<<< orphan*/  crypto_hash_sha256_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  crypto_hash_sha256_update (int /*<<< orphan*/ *,unsigned char const*,int) ; 
- int /*<<< orphan*/  memset (unsigned char*,int,int) ; 
- int /*<<< orphan*/  sodium_memzero (void*,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int octx; int ictx; } ;
+typedef TYPE_1__ crypto_auth_hmacsha256_state ;
+
+
+ int crypto_hash_sha256_final (int *,unsigned char*) ;
+ int crypto_hash_sha256_init (int *) ;
+ int crypto_hash_sha256_update (int *,unsigned char const*,int) ;
+ int memset (unsigned char*,int,int) ;
+ int sodium_memzero (void*,int) ;
 
 int
 crypto_auth_hmacsha256_init(crypto_auth_hmacsha256_state *state,
@@ -27,13 +27,13 @@ crypto_auth_hmacsha256_init(crypto_auth_hmacsha256_state *state,
 {
     unsigned char pad[64];
     unsigned char khash[32];
-    size_t        i;
+    size_t i;
 
     if (keylen > 64) {
         crypto_hash_sha256_init(&state->ictx);
         crypto_hash_sha256_update(&state->ictx, key, keylen);
         crypto_hash_sha256_final(&state->ictx, khash);
-        key    = khash;
+        key = khash;
         keylen = 32;
     }
     crypto_hash_sha256_init(&state->ictx);

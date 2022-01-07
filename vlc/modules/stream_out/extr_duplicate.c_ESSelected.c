@@ -1,74 +1,64 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {scalar_t__ i_cat; int /*<<< orphan*/  i_group; int /*<<< orphan*/  i_id; } ;
-typedef  TYPE_1__ es_format_t ;
 
-/* Variables and functions */
- scalar_t__ AUDIO_ES ; 
- scalar_t__ NumInRange (char*,int /*<<< orphan*/ ) ; 
- scalar_t__ SPU_ES ; 
- scalar_t__ VIDEO_ES ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  stderr ; 
- char* strchr (char*,char) ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
- char* strdup (char*) ; 
- int /*<<< orphan*/  strlen (char*) ; 
- int /*<<< orphan*/  strncmp (char*,char*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {scalar_t__ i_cat; int i_group; int i_id; } ;
+typedef TYPE_1__ es_format_t ;
+
+
+ scalar_t__ AUDIO_ES ;
+ scalar_t__ NumInRange (char*,int ) ;
+ scalar_t__ SPU_ES ;
+ scalar_t__ VIDEO_ES ;
+ int fprintf (int ,char*,char*) ;
+ int free (char*) ;
+ int stderr ;
+ char* strchr (char*,char) ;
+ int strcmp (char*,char*) ;
+ char* strdup (char*) ;
+ int strlen (char*) ;
+ int strncmp (char*,char*,int ) ;
 
 __attribute__((used)) static bool ESSelected( const es_format_t *fmt, char *psz_select )
 {
-    char  *psz_dup;
-    char  *psz;
+    char *psz_dup;
+    char *psz;
 
-    /* We have tri-state variable : no tested (-1), failed(0), succeed(1) */
+
     int i_cat = -1;
-    int i_es  = -1;
+    int i_es = -1;
     int i_prgm= -1;
 
-    /* If empty all es are selected */
-    if( psz_select == NULL || *psz_select == '\0' )
+
+    if( psz_select == ((void*)0) || *psz_select == '\0' )
     {
-        return true;
+        return 1;
     }
     psz_dup = strdup( psz_select );
     if( !psz_dup )
-        return false;
+        return 0;
     psz = psz_dup;
-
-    /* If non empty, parse the selection:
-     * We have selection[,selection[,..]] where following selection are recognized:
-     *      (no(-))audio
-     *      (no(-))spu
-     *      (no(-))video
-     *      (no(-))es=[start]-[end] or es=num
-     *      (no(-))prgm=[start]-[end] or prgm=num (program works too)
-     *      if a negative test failed we exit directly
-     */
     while( psz && *psz )
     {
         char *p;
 
-        /* Skip space */
+
         while( *psz == ' ' || *psz == '\t' ) psz++;
 
-        /* Search end */
+
         p = strchr( psz, ',' );
         if( p == psz )
         {
-            /* Empty */
+
             psz = p + 1;
             continue;
         }
@@ -122,7 +112,7 @@ __attribute__((used)) static bool ESSelected( const es_format_t *fmt, char *psz_
                 i_cat = fmt->i_cat == SPU_ES ? 1 : 0;
             }
         }
-        else if( strchr( psz, '=' ) != NULL )
+        else if( strchr( psz, '=' ) != ((void*)0) )
         {
             char *psz_arg = strchr( psz, '=' );
             *psz_arg++ = '\0';
@@ -161,7 +151,7 @@ __attribute__((used)) static bool ESSelected( const es_format_t *fmt, char *psz_
         {
             fprintf( stderr, "unknown args (%s)\n", psz );
         }
-        /* Next */
+
         psz = p;
     }
 
@@ -169,7 +159,7 @@ __attribute__((used)) static bool ESSelected( const es_format_t *fmt, char *psz_
 
     if( i_cat == 1 || i_es == 1 || i_prgm == 1 )
     {
-        return true;
+        return 1;
     }
-    return false;
+    return 0;
 }

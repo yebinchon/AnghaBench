@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
 struct TYPE_10__ {TYPE_2__* jp2_cdef; } ;
-typedef  TYPE_1__ opj_jp2_color_t ;
+typedef TYPE_1__ opj_jp2_color_t ;
 struct TYPE_11__ {size_t n; size_t asoc; size_t cn; scalar_t__ typ; struct TYPE_11__* info; } ;
-typedef  TYPE_2__ opj_jp2_cdef_info_t ;
+typedef TYPE_2__ opj_jp2_cdef_info_t ;
 struct TYPE_12__ {size_t numcomps; TYPE_4__* comps; } ;
-typedef  TYPE_3__ opj_image_t ;
+typedef TYPE_3__ opj_image_t ;
 struct TYPE_13__ {scalar_t__ alpha; } ;
-typedef  TYPE_4__ opj_image_comp_t ;
-typedef  int /*<<< orphan*/  opj_event_mgr_t ;
-typedef  size_t OPJ_UINT16 ;
+typedef TYPE_4__ opj_image_comp_t ;
+typedef int opj_event_mgr_t ;
+typedef size_t OPJ_UINT16 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EVT_WARNING ; 
- int /*<<< orphan*/  memcpy (TYPE_4__*,TYPE_4__*,int) ; 
- int /*<<< orphan*/  opj_event_msg (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,size_t,size_t) ; 
- int /*<<< orphan*/  opj_free (TYPE_2__*) ; 
+
+ int EVT_WARNING ;
+ int memcpy (TYPE_4__*,TYPE_4__*,int) ;
+ int opj_event_msg (int *,int ,char*,size_t,size_t) ;
+ int opj_free (TYPE_2__*) ;
 
 __attribute__((used)) static void opj_jp2_apply_cdef(opj_image_t *image, opj_jp2_color_t *color,
                                opj_event_mgr_t *manager)
@@ -41,7 +41,7 @@ __attribute__((used)) static void opj_jp2_apply_cdef(opj_image_t *image, opj_jp2
     n = color->jp2_cdef->n;
 
     for (i = 0; i < n; ++i) {
-        /* WATCH: acn = asoc - 1 ! */
+
         asoc = info[i].asoc;
         cn = info[i].cn;
 
@@ -62,7 +62,7 @@ __attribute__((used)) static void opj_jp2_apply_cdef(opj_image_t *image, opj_jp2
             continue;
         }
 
-        /* Swap only if color channel */
+
         if ((cn != acn) && (info[i].typ == 0)) {
             opj_image_comp_t saved;
             OPJ_UINT16 j;
@@ -71,14 +71,14 @@ __attribute__((used)) static void opj_jp2_apply_cdef(opj_image_t *image, opj_jp2
             memcpy(&image->comps[cn], &image->comps[acn], sizeof(opj_image_comp_t));
             memcpy(&image->comps[acn], &saved, sizeof(opj_image_comp_t));
 
-            /* Swap channels in following channel definitions, don't bother with j <= i that are already processed */
+
             for (j = (OPJ_UINT16)(i + 1U); j < n ; ++j) {
                 if (info[j].cn == cn) {
                     info[j].cn = acn;
                 } else if (info[j].cn == acn) {
                     info[j].cn = cn;
                 }
-                /* asoc is related to color index. Do not update. */
+
             }
         }
 
@@ -90,6 +90,6 @@ __attribute__((used)) static void opj_jp2_apply_cdef(opj_image_t *image, opj_jp2
     }
 
     opj_free(color->jp2_cdef);
-    color->jp2_cdef = NULL;
+    color->jp2_cdef = ((void*)0);
 
 }

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct macro_table {int dummy; } ;
 struct macro_source_file {int dummy; } ;
-struct macro_key {int start_line; scalar_t__ end_file; struct macro_source_file* start_file; int /*<<< orphan*/  name; struct macro_table* table; } ;
+struct macro_key {int start_line; scalar_t__ end_file; struct macro_source_file* start_file; int name; struct macro_table* table; } ;
 
-/* Variables and functions */
- struct macro_key* macro_alloc (int,struct macro_table*) ; 
- int /*<<< orphan*/  macro_bcache_str (struct macro_table*,char const*) ; 
- int /*<<< orphan*/  memset (struct macro_key*,int /*<<< orphan*/ ,int) ; 
+
+ struct macro_key* macro_alloc (int,struct macro_table*) ;
+ int macro_bcache_str (struct macro_table*,char const*) ;
+ int memset (struct macro_key*,int ,int) ;
 
 __attribute__((used)) static struct macro_key *
 new_macro_key (struct macro_table *t,

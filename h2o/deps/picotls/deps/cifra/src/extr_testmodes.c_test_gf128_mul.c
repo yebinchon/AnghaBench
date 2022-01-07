@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  cf_gf128 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TEST_CHECK (int) ; 
- int /*<<< orphan*/  cf_gf128_frombytes_be (void const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cf_gf128_mul (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cf_gf128_tobytes_be (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ memcmp (void const*,int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int uint8_t ;
+typedef int cf_gf128 ;
+
+
+ int TEST_CHECK (int) ;
+ int cf_gf128_frombytes_be (void const*,int ) ;
+ int cf_gf128_mul (int ,int ,int ) ;
+ int cf_gf128_tobytes_be (int ,int *) ;
+ scalar_t__ memcmp (void const*,int *,int) ;
 
 __attribute__((used)) static void test_gf128_mul(void)
 {

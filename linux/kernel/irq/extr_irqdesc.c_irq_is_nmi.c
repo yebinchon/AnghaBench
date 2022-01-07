@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct irq_desc {int istate; } ;
 
-/* Variables and functions */
- int IRQS_NMI ; 
+
+ int IRQS_NMI ;
 
 __attribute__((used)) static bool irq_is_nmi(struct irq_desc *desc)
 {
-	return desc->istate & IRQS_NMI;
+ return desc->istate & IRQS_NMI;
 }

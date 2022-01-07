@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  parsed_acl_t ;
-struct TYPE_5__ {int /*<<< orphan*/ * parser_pool; int /*<<< orphan*/  rule_string_buffer; int /*<<< orphan*/  rule_path_buffer; int /*<<< orphan*/ * current_acl; int /*<<< orphan*/  parsed_acls; void* parsed_aliases; void* parsed_groups; void* parsed_rules; void* in_aliases; void* in_groups; void* parsing_groups; int /*<<< orphan*/ * section; void* sections; void* strings; TYPE_2__* authz; } ;
-typedef  TYPE_1__ ctor_baton_t ;
-struct TYPE_6__ {int /*<<< orphan*/ * pool; void* user_rights; int /*<<< orphan*/  authn_rights; int /*<<< orphan*/  anon_rights; } ;
-typedef  TYPE_2__ authz_full_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- void* FALSE ; 
- int /*<<< orphan*/  anon_access_token ; 
- int /*<<< orphan*/  apr_array_make (int /*<<< orphan*/ * const,int,int) ; 
- void* apr_pcalloc (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  authn_access_token ; 
- int /*<<< orphan*/  init_global_rights (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  insert_default_acl (TYPE_1__* const) ; 
- void* svn_hash__make (int /*<<< orphan*/ * const) ; 
- int /*<<< orphan*/  svn_membuf__create (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ * const) ; 
- int /*<<< orphan*/ * svn_pool_create (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_stringbuf_create_empty (int /*<<< orphan*/ * const) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int parsed_acl_t ;
+struct TYPE_5__ {int * parser_pool; int rule_string_buffer; int rule_path_buffer; int * current_acl; int parsed_acls; void* parsed_aliases; void* parsed_groups; void* parsed_rules; void* in_aliases; void* in_groups; void* parsing_groups; int * section; void* sections; void* strings; TYPE_2__* authz; } ;
+typedef TYPE_1__ ctor_baton_t ;
+struct TYPE_6__ {int * pool; void* user_rights; int authn_rights; int anon_rights; } ;
+typedef TYPE_2__ authz_full_t ;
+typedef int apr_pool_t ;
+
+
+ void* FALSE ;
+ int anon_access_token ;
+ int apr_array_make (int * const,int,int) ;
+ void* apr_pcalloc (int *,int) ;
+ int authn_access_token ;
+ int init_global_rights (int *,int ,int *) ;
+ int insert_default_acl (TYPE_1__* const) ;
+ void* svn_hash__make (int * const) ;
+ int svn_membuf__create (int *,int ,int * const) ;
+ int * svn_pool_create (int *) ;
+ int svn_stringbuf_create_empty (int * const) ;
 
 __attribute__((used)) static ctor_baton_t *
 create_ctor_baton(apr_pool_t *result_pool,
@@ -49,7 +49,7 @@ create_ctor_baton(apr_pool_t *result_pool,
   cb->strings = svn_hash__make(parser_pool);
 
   cb->sections = svn_hash__make(parser_pool);
-  cb->section = NULL;
+  cb->section = ((void*)0);
   cb->parsing_groups = FALSE;
   cb->in_groups = FALSE;
   cb->in_aliases = FALSE;
@@ -58,7 +58,7 @@ create_ctor_baton(apr_pool_t *result_pool,
   cb->parsed_groups = svn_hash__make(parser_pool);
   cb->parsed_aliases = svn_hash__make(parser_pool);
   cb->parsed_acls = apr_array_make(parser_pool, 64, sizeof(parsed_acl_t));
-  cb->current_acl = NULL;
+  cb->current_acl = ((void*)0);
 
   svn_membuf__create(&cb->rule_path_buffer, 0, parser_pool);
   cb->rule_string_buffer = svn_stringbuf_create_empty(parser_pool);

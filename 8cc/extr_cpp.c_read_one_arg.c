@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Vector ;
+
+
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef int Vector ;
 struct TYPE_11__ {scalar_t__ kind; int bol; int space; } ;
-typedef  TYPE_1__ Token ;
+typedef TYPE_1__ Token ;
 
-/* Variables and functions */
- scalar_t__ TEOF ; 
- scalar_t__ TNEWLINE ; 
- TYPE_1__* copy_token (TYPE_1__*) ; 
- int /*<<< orphan*/  errort (TYPE_1__*,char*) ; 
- scalar_t__ is_keyword (TYPE_1__*,char) ; 
- TYPE_1__* lex () ; 
- int /*<<< orphan*/ * make_vector () ; 
- int /*<<< orphan*/  read_directive (TYPE_1__*) ; 
- int /*<<< orphan*/  unget_token (TYPE_1__*) ; 
- int /*<<< orphan*/  vec_push (int /*<<< orphan*/ *,TYPE_1__*) ; 
+
+ scalar_t__ TEOF ;
+ scalar_t__ TNEWLINE ;
+ TYPE_1__* copy_token (TYPE_1__*) ;
+ int errort (TYPE_1__*,char*) ;
+ scalar_t__ is_keyword (TYPE_1__*,char) ;
+ TYPE_1__* lex () ;
+ int * make_vector () ;
+ int read_directive (TYPE_1__*) ;
+ int unget_token (TYPE_1__*) ;
+ int vec_push (int *,TYPE_1__*) ;
 
 __attribute__((used)) static Vector *read_one_arg(Token *ident, bool *end, bool readall) {
     Vector *r = make_vector();
@@ -42,7 +42,7 @@ __attribute__((used)) static Vector *read_one_arg(Token *ident, bool *end, bool 
         }
         if (level == 0 && is_keyword(tok, ')')) {
             unget_token(tok);
-            *end = true;
+            *end = 1;
             return r;
         }
         if (level == 0 && is_keyword(tok, ',') && !readall)
@@ -51,15 +51,15 @@ __attribute__((used)) static Vector *read_one_arg(Token *ident, bool *end, bool 
             level++;
         if (is_keyword(tok, ')'))
             level--;
-        // C11 6.10.3p10: Within the macro argument list,
-        // newline is considered a normal whitespace character.
-        // I don't know why the standard specifies such a minor detail,
-        // but the difference of newline and space is observable
-        // if you stringize tokens using #.
+
+
+
+
+
         if (tok->bol) {
             tok = copy_token(tok);
-            tok->bol = false;
-            tok->space = true;
+            tok->bol = 0;
+            tok->space = 1;
         }
         vec_push(r, tok);
     }

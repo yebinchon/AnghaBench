@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int /*<<< orphan*/  uint64_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int /*<<< orphan*/  u_char ;
+
+
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint64_t ;
+typedef int uint32_t ;
+typedef int u_char ;
 struct TYPE_9__ {TYPE_1__* connection; } ;
-typedef  TYPE_2__ ngx_rtmp_session_t ;
+typedef TYPE_2__ ngx_rtmp_session_t ;
 struct TYPE_10__ {void* duration; void* time_scale; } ;
-typedef  TYPE_3__ ngx_rtmp_mp4_track_t ;
+typedef TYPE_3__ ngx_rtmp_mp4_track_t ;
 struct TYPE_11__ {TYPE_3__* track; } ;
-typedef  TYPE_4__ ngx_rtmp_mp4_ctx_t ;
-typedef  int /*<<< orphan*/  ngx_int_t ;
-struct TYPE_8__ {int /*<<< orphan*/  log; } ;
+typedef TYPE_4__ ngx_rtmp_mp4_ctx_t ;
+typedef int ngx_int_t ;
+struct TYPE_8__ {int log; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NGX_ERROR ; 
- int /*<<< orphan*/  NGX_LOG_DEBUG_RTMP ; 
- int /*<<< orphan*/  NGX_OK ; 
- int /*<<< orphan*/  ngx_log_debug2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,void*,void*) ; 
- TYPE_4__* ngx_rtmp_get_module_ctx (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_rtmp_mp4_module ; 
- void* ngx_rtmp_r32 (int /*<<< orphan*/ ) ; 
- void* ngx_rtmp_r64 (int /*<<< orphan*/ ) ; 
+
+ int NGX_ERROR ;
+ int NGX_LOG_DEBUG_RTMP ;
+ int NGX_OK ;
+ int ngx_log_debug2 (int ,int ,int ,char*,void*,void*) ;
+ TYPE_4__* ngx_rtmp_get_module_ctx (TYPE_2__*,int ) ;
+ int ngx_rtmp_mp4_module ;
+ void* ngx_rtmp_r32 (int ) ;
+ void* ngx_rtmp_r64 (int ) ;
 
 __attribute__((used)) static ngx_int_t
 ngx_rtmp_mp4_parse_mdhd(ngx_rtmp_session_t *s, u_char *pos, u_char *last)
 {
-    ngx_rtmp_mp4_ctx_t         *ctx;
-    ngx_rtmp_mp4_track_t       *t;
-    uint8_t                     version;
+    ngx_rtmp_mp4_ctx_t *ctx;
+    ngx_rtmp_mp4_track_t *t;
+    uint8_t version;
 
     ctx = ngx_rtmp_get_module_ctx(s, ngx_rtmp_mp4_module);
 
-    if (ctx->track == NULL) {
+    if (ctx->track == ((void*)0)) {
         return NGX_OK;
     }
 

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int prev_dc_stride; int* prev_dc; int* qmat; int /*<<< orphan*/  sign_model; int /*<<< orphan*/  ac_model; int /*<<< orphan*/  dc_model; } ;
-typedef  int /*<<< orphan*/  RangeCoder ;
-typedef  TYPE_1__ DCTBlockCoder ;
 
-/* Variables and functions */
- scalar_t__ FFABS (int) ; 
- int decode_coeff (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int* ff_zigzag_direct ; 
- int /*<<< orphan*/  memset (int*,int /*<<< orphan*/ ,int) ; 
- int rac_get_bits (int /*<<< orphan*/ *,int) ; 
- int rac_get_model256_sym (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int rac_get_model2_sym (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int prev_dc_stride; int* prev_dc; int* qmat; int sign_model; int ac_model; int dc_model; } ;
+typedef int RangeCoder ;
+typedef TYPE_1__ DCTBlockCoder ;
+
+
+ scalar_t__ FFABS (int) ;
+ int decode_coeff (int *,int *) ;
+ int* ff_zigzag_direct ;
+ int memset (int*,int ,int) ;
+ int rac_get_bits (int *,int) ;
+ int rac_get_model256_sym (int *,int *) ;
+ int rac_get_model2_sym (int *,int *) ;
 
 __attribute__((used)) static int decode_dct(RangeCoder *c, DCTBlockCoder *bc, int *block,
                       int bx, int by)
@@ -37,9 +37,9 @@ __attribute__((used)) static int decode_dct(RangeCoder *c, DCTBlockCoder *bc, in
         if (bx) {
             int l, tl, t;
 
-            l  = bc->prev_dc[blk_pos - 1];
+            l = bc->prev_dc[blk_pos - 1];
             tl = bc->prev_dc[blk_pos - 1 - bc->prev_dc_stride];
-            t  = bc->prev_dc[blk_pos     - bc->prev_dc_stride];
+            t = bc->prev_dc[blk_pos - bc->prev_dc_stride];
 
             if (FFABS(t - tl) <= FFABS(l - tl))
                 dc += l;
@@ -52,7 +52,7 @@ __attribute__((used)) static int decode_dct(RangeCoder *c, DCTBlockCoder *bc, in
         dc += bc->prev_dc[bx - 1];
     }
     bc->prev_dc[blk_pos] = dc;
-    block[0]             = dc * bc->qmat[0];
+    block[0] = dc * bc->qmat[0];
 
     while (pos < 64) {
         val = rac_get_model256_sym(c, &bc->ac_model);
@@ -63,7 +63,7 @@ __attribute__((used)) static int decode_dct(RangeCoder *c, DCTBlockCoder *bc, in
             continue;
         }
         skip = val >> 4;
-        val  = val & 0xF;
+        val = val & 0xF;
         if (!val)
             return -1;
         pos += skip;

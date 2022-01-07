@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct eeprom_93xx46_dev {TYPE_1__* pdata; } ;
 struct TYPE_2__ {int quirks; } ;
 
-/* Variables and functions */
- int EEPROM_93XX46_QUIRK_SINGLE_WORD_READ ; 
+
+ int EEPROM_93XX46_QUIRK_SINGLE_WORD_READ ;
 
 __attribute__((used)) static inline bool has_quirk_single_word_read(struct eeprom_93xx46_dev *edev)
 {
-	return edev->pdata->quirks & EEPROM_93XX46_QUIRK_SINGLE_WORD_READ;
+ return edev->pdata->quirks & EEPROM_93XX46_QUIRK_SINGLE_WORD_READ;
 }

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ (* walk_parameter_dep_func ) (void*,struct d3dx_parameter*) ;
-struct d3dx_sampler {unsigned int state_count; int /*<<< orphan*/ * states; } ;
-struct d3dx_parameter {scalar_t__ class; unsigned int element_count; unsigned int member_count; TYPE_2__* members; struct d3dx_sampler* data; int /*<<< orphan*/  type; int /*<<< orphan*/  param_eval; TYPE_1__* top_level_param; } ;
-struct TYPE_4__ {int /*<<< orphan*/  param_eval; struct d3dx_sampler* data; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ (* walk_parameter_dep_func ) (void*,struct d3dx_parameter*) ;
+struct d3dx_sampler {unsigned int state_count; int * states; } ;
+struct d3dx_parameter {scalar_t__ class; unsigned int element_count; unsigned int member_count; TYPE_2__* members; struct d3dx_sampler* data; int type; int param_eval; TYPE_1__* top_level_param; } ;
+struct TYPE_4__ {int param_eval; struct d3dx_sampler* data; } ;
 struct TYPE_3__ {struct d3dx_parameter param; } ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef int BOOL ;
 
-/* Variables and functions */
- scalar_t__ D3DXPC_OBJECT ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
- scalar_t__ is_param_type_sampler (int /*<<< orphan*/ ) ; 
- unsigned int max (unsigned int,int) ; 
- scalar_t__ walk_param_eval_dep (int /*<<< orphan*/ ,scalar_t__ (*) (void*,struct d3dx_parameter*),void*) ; 
- scalar_t__ walk_state_dep (int /*<<< orphan*/ *,scalar_t__ (*) (void*,struct d3dx_parameter*),void*) ; 
+
+ scalar_t__ D3DXPC_OBJECT ;
+ int FALSE ;
+ int TRUE ;
+ scalar_t__ is_param_type_sampler (int ) ;
+ unsigned int max (unsigned int,int) ;
+ scalar_t__ walk_param_eval_dep (int ,scalar_t__ (*) (void*,struct d3dx_parameter*),void*) ;
+ scalar_t__ walk_state_dep (int *,scalar_t__ (*) (void*,struct d3dx_parameter*),void*) ;
 
 __attribute__((used)) static BOOL walk_parameter_dep(struct d3dx_parameter *param, walk_parameter_dep_func param_func,
         void *data)

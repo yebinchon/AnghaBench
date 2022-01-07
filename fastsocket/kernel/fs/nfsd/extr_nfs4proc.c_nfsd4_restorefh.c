@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct svc_rqst {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/  fh_dentry; } ;
-struct nfsd4_compound_state {TYPE_1__ save_fh; int /*<<< orphan*/  current_fh; } ;
-typedef  int /*<<< orphan*/  __be32 ;
+struct TYPE_2__ {int fh_dentry; } ;
+struct nfsd4_compound_state {TYPE_1__ save_fh; int current_fh; } ;
+typedef int __be32 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fh_dup2 (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  nfs_ok ; 
- int /*<<< orphan*/  nfserr_restorefh ; 
+
+ int fh_dup2 (int *,TYPE_1__*) ;
+ int nfs_ok ;
+ int nfserr_restorefh ;
 
 __attribute__((used)) static __be32
 nfsd4_restorefh(struct svc_rqst *rqstp, struct nfsd4_compound_state *cstate,
-		void *arg)
+  void *arg)
 {
-	if (!cstate->save_fh.fh_dentry)
-		return nfserr_restorefh;
+ if (!cstate->save_fh.fh_dentry)
+  return nfserr_restorefh;
 
-	fh_dup2(&cstate->current_fh, &cstate->save_fh);
-	return nfs_ok;
+ fh_dup2(&cstate->current_fh, &cstate->save_fh);
+ return nfs_ok;
 }

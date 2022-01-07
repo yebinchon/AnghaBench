@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char* sds ;
 
-/* Variables and functions */
- int DISQUE_CLI_DEFAULT_PIPE_TIMEOUT ; 
- char* cliVersion () ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*,int) ; 
- int /*<<< orphan*/  sdsfree (char*) ; 
- int /*<<< orphan*/  stderr ; 
+
+
+
+typedef char* sds ;
+
+
+ int DISQUE_CLI_DEFAULT_PIPE_TIMEOUT ;
+ char* cliVersion () ;
+ int exit (int) ;
+ int fprintf (int ,char*,char*,int) ;
+ int sdsfree (char*) ;
+ int stderr ;
 
 __attribute__((used)) static void usage(void) {
     sds version = cliVersion();

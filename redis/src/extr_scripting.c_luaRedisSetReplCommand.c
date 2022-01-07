@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int lua_State ;
 struct TYPE_2__ {scalar_t__ lua_replicate_commands; int lua_repl; } ;
 
-/* Variables and functions */
- int PROPAGATE_AOF ; 
- int PROPAGATE_REPL ; 
- int lua_error (int /*<<< orphan*/ *) ; 
- int lua_gettop (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_pushstring (int /*<<< orphan*/ *,char*) ; 
- int lua_tonumber (int /*<<< orphan*/ *,int) ; 
- TYPE_1__ server ; 
+
+ int PROPAGATE_AOF ;
+ int PROPAGATE_REPL ;
+ int lua_error (int *) ;
+ int lua_gettop (int *) ;
+ int lua_pushstring (int *,char*) ;
+ int lua_tonumber (int *,int) ;
+ TYPE_1__ server ;
 
 int luaRedisSetReplCommand(lua_State *lua) {
     int argc = lua_gettop(lua);

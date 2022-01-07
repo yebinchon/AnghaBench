@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct usb_interface {int /*<<< orphan*/  dev; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct usb_interface {int dev; } ;
 struct usb_device_id {int dummy; } ;
 struct usb_device {int dummy; } ;
-struct TYPE_3__ {int /*<<< orphan*/  bitrate; } ;
-struct TYPE_4__ {TYPE_1__ bittiming; int /*<<< orphan*/  state; } ;
-struct panda_inf_priv {int interface_num; struct net_device* netdev; TYPE_2__ can; int /*<<< orphan*/  tx_submitted; int /*<<< orphan*/  mcu_can_ifnum; struct panda_dev_priv* priv_dev; } ;
-struct panda_dev_priv {struct panda_inf_priv** interfaces; int /*<<< orphan*/  rx_submitted; int /*<<< orphan*/ * dev; struct usb_device* udev; } ;
-struct net_device {int /*<<< orphan*/  flags; int /*<<< orphan*/ * netdev_ops; } ;
+struct TYPE_3__ {int bitrate; } ;
+struct TYPE_4__ {TYPE_1__ bittiming; int state; } ;
+struct panda_inf_priv {int interface_num; struct net_device* netdev; TYPE_2__ can; int tx_submitted; int mcu_can_ifnum; struct panda_dev_priv* priv_dev; } ;
+struct panda_dev_priv {struct panda_inf_priv** interfaces; int rx_submitted; int * dev; struct usb_device* udev; } ;
+struct net_device {int flags; int * netdev_ops; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CAN_STATE_STOPPED ; 
- int ENOMEM ; 
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  IFF_ECHO ; 
- int /*<<< orphan*/  PANDA_BITRATE ; 
- int /*<<< orphan*/  PANDA_MAX_TX_URBS ; 
- int PANDA_NUM_CAN_INTERFACES ; 
- int /*<<< orphan*/  SET_NETDEV_DEV (struct net_device*,int /*<<< orphan*/ *) ; 
- struct net_device* alloc_candev (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * can_numbering ; 
- int /*<<< orphan*/  dev_err (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  dev_info (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  free_candev (struct net_device*) ; 
- int /*<<< orphan*/  init_usb_anchor (int /*<<< orphan*/ *) ; 
- struct usb_device* interface_to_usbdev (struct usb_interface*) ; 
- int /*<<< orphan*/  kfree (struct panda_dev_priv*) ; 
- struct panda_dev_priv* kzalloc (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  netdev_err (struct net_device*,char*,int) ; 
- struct panda_inf_priv* netdev_priv (struct net_device*) ; 
- int /*<<< orphan*/  panda_netdev_ops ; 
- int panda_set_output_enable (struct panda_inf_priv*,int) ; 
- int panda_usb_start (struct panda_dev_priv*) ; 
- int register_candev (struct net_device*) ; 
- int /*<<< orphan*/  unregister_candev (struct net_device*) ; 
- int /*<<< orphan*/  usb_set_intfdata (struct usb_interface*,struct panda_dev_priv*) ; 
+
+ int CAN_STATE_STOPPED ;
+ int ENOMEM ;
+ int GFP_KERNEL ;
+ int IFF_ECHO ;
+ int PANDA_BITRATE ;
+ int PANDA_MAX_TX_URBS ;
+ int PANDA_NUM_CAN_INTERFACES ;
+ int SET_NETDEV_DEV (struct net_device*,int *) ;
+ struct net_device* alloc_candev (int,int ) ;
+ int * can_numbering ;
+ int dev_err (int *,char*) ;
+ int dev_info (int *,char*) ;
+ int free_candev (struct net_device*) ;
+ int init_usb_anchor (int *) ;
+ struct usb_device* interface_to_usbdev (struct usb_interface*) ;
+ int kfree (struct panda_dev_priv*) ;
+ struct panda_dev_priv* kzalloc (int,int ) ;
+ int netdev_err (struct net_device*,char*,int) ;
+ struct panda_inf_priv* netdev_priv (struct net_device*) ;
+ int panda_netdev_ops ;
+ int panda_set_output_enable (struct panda_inf_priv*,int) ;
+ int panda_usb_start (struct panda_dev_priv*) ;
+ int register_candev (struct net_device*) ;
+ int unregister_candev (struct net_device*) ;
+ int usb_set_intfdata (struct usb_interface*,struct panda_dev_priv*) ;
 
 __attribute__((used)) static int panda_usb_probe(struct usb_interface *intf,
-			   const struct usb_device_id *id)
+      const struct usb_device_id *id)
 {
   struct net_device *netdev;
   struct panda_inf_priv *priv_inf;
@@ -67,7 +67,7 @@ __attribute__((used)) static int panda_usb_probe(struct usb_interface *intf,
   priv_dev->dev = &intf->dev;
   usb_set_intfdata(intf, priv_dev);
 
-  ////// Interface privs
+
   for(inf_num = 0; inf_num < PANDA_NUM_CAN_INTERFACES; inf_num++){
     netdev = alloc_candev(sizeof(struct panda_inf_priv), PANDA_MAX_TX_URBS);
     if (!netdev) {
@@ -75,7 +75,7 @@ __attribute__((used)) static int panda_usb_probe(struct usb_interface *intf,
       goto cleanup_candev;
     }
     netdev->netdev_ops = &panda_netdev_ops;
-    netdev->flags |= IFF_ECHO; /* we support local echo */
+    netdev->flags |= IFF_ECHO;
 
     priv_inf = netdev_priv(netdev);
     priv_inf->netdev = netdev;
@@ -86,7 +86,7 @@ __attribute__((used)) static int panda_usb_probe(struct usb_interface *intf,
     init_usb_anchor(&priv_dev->rx_submitted);
     init_usb_anchor(&priv_inf->tx_submitted);
 
-    /* Init CAN device */
+
     priv_inf->can.state = CAN_STATE_STOPPED;
     priv_inf->can.bittiming.bitrate = PANDA_BITRATE;
 
@@ -108,7 +108,7 @@ __attribute__((used)) static int panda_usb_probe(struct usb_interface *intf,
     goto cleanup_candev;
   }
 
-  err = panda_set_output_enable(priv_inf, true);
+  err = panda_set_output_enable(priv_inf, 1);
   if (err) {
     dev_info(&intf->dev, "Failed to initialize send enable message to Panda.\n");
     goto cleanup_candev;

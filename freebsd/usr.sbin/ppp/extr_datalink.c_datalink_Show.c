@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_22__   TYPE_9__ ;
-typedef  struct TYPE_21__   TYPE_8__ ;
-typedef  struct TYPE_20__   TYPE_7__ ;
-typedef  struct TYPE_19__   TYPE_6__ ;
-typedef  struct TYPE_18__   TYPE_5__ ;
-typedef  struct TYPE_17__   TYPE_4__ ;
-typedef  struct TYPE_16__   TYPE_3__ ;
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
-typedef  struct TYPE_13__   TYPE_11__ ;
-typedef  struct TYPE_12__   TYPE_10__ ;
 
-/* Type definitions */
-struct cmdargs {TYPE_11__* cx; int /*<<< orphan*/  prompt; } ;
+
+
+typedef struct TYPE_22__ TYPE_9__ ;
+typedef struct TYPE_21__ TYPE_8__ ;
+typedef struct TYPE_20__ TYPE_7__ ;
+typedef struct TYPE_19__ TYPE_6__ ;
+typedef struct TYPE_18__ TYPE_5__ ;
+typedef struct TYPE_17__ TYPE_4__ ;
+typedef struct TYPE_16__ TYPE_3__ ;
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+typedef struct TYPE_13__ TYPE_11__ ;
+typedef struct TYPE_12__ TYPE_10__ ;
+
+
+struct cmdargs {TYPE_11__* cx; int prompt; } ;
 struct TYPE_22__ {int opmask; char* msg; } ;
 struct TYPE_21__ {int type; } ;
 struct TYPE_20__ {char* max; char* timeout; } ;
 struct TYPE_19__ {char* max; char* next_timeout; char* timeout; } ;
 struct TYPE_18__ {char* list; } ;
-struct TYPE_16__ {int /*<<< orphan*/  len; int /*<<< orphan*/  address; int /*<<< orphan*/  class; } ;
+struct TYPE_16__ {int len; int address; int class; } ;
 struct TYPE_17__ {char* authname; TYPE_3__ enddisc; } ;
 struct TYPE_15__ {char* dial; char* login; char* logout; char* hangup; } ;
 struct TYPE_14__ {char* delay; char* phone; char* fsmretry; } ;
 struct TYPE_12__ {TYPE_2__ script; TYPE_1__ cbcp; TYPE_9__ callback; TYPE_7__ reconnect; TYPE_6__ dial; TYPE_5__ phone; } ;
 struct TYPE_13__ {char* name; scalar_t__ state; TYPE_10__ cfg; TYPE_8__* physical; TYPE_4__ peer; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CALLBACK_AUTH ; 
- int CALLBACK_BIT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CALLBACK_CBCP ; 
- int /*<<< orphan*/  CALLBACK_E164 ; 
- int /*<<< orphan*/  CALLBACK_NONE ; 
- scalar_t__ DATALINK_OPEN ; 
- int PHYS_DIRECT ; 
- char* datalink_State (TYPE_11__*) ; 
- char* mp_Enddisc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  prompt_Printf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
+
+ int CALLBACK_AUTH ;
+ int CALLBACK_BIT (int ) ;
+ int CALLBACK_CBCP ;
+ int CALLBACK_E164 ;
+ int CALLBACK_NONE ;
+ scalar_t__ DATALINK_OPEN ;
+ int PHYS_DIRECT ;
+ char* datalink_State (TYPE_11__*) ;
+ char* mp_Enddisc (int ,int ,int ) ;
+ int prompt_Printf (int ,char*,...) ;
+ int strcmp (char*,char*) ;
 
 int
 datalink_Show(struct cmdargs const *arg)
@@ -88,7 +88,7 @@ datalink_Show(struct cmdargs const *arg)
   else
     prompt_Printf(arg->prompt, "random\n");
   prompt_Printf(arg->prompt, " Callback %s ", arg->cx->physical->type ==
-                PHYS_DIRECT ?  "accepted: " : "requested:");
+                PHYS_DIRECT ? "accepted: " : "requested:");
   if (!arg->cx->cfg.callback.opmask)
     prompt_Printf(arg->prompt, "none\n");
   else {

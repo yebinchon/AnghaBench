@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  _wfopen_s (int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wconvert (char const*) ; 
- int /*<<< orphan*/  wfilename ; 
- int /*<<< orphan*/  wfree (char const*) ; 
- int /*<<< orphan*/  wmode ; 
+
+
+
+typedef int FILE ;
+
+
+ int _wfopen_s (int **,int ,int ) ;
+ int wconvert (char const*) ;
+ int wfilename ;
+ int wfree (char const*) ;
+ int wmode ;
 
 __attribute__((used)) static __inline FILE* fopenU(const char* filename, const char* mode)
 {
-	FILE* ret = NULL;
-	wconvert(filename);
-	wconvert(mode);
-	_wfopen_s(&ret, wfilename, wmode);
-	wfree(filename);
-	wfree(mode);
-	return ret;
+ FILE* ret = ((void*)0);
+ wconvert(filename);
+ wconvert(mode);
+ _wfopen_s(&ret, wfilename, wmode);
+ wfree(filename);
+ wfree(mode);
+ return ret;
 }

@@ -1,67 +1,67 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct zdap_ioctl {int addr; int value; unsigned char* data; int /*<<< orphan*/  cmd; } ;
-struct ifreq {char* ifr_data; int /*<<< orphan*/  ifr_name; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_INET ; 
- int /*<<< orphan*/  IPPROTO_RAW ; 
- int /*<<< orphan*/  SOCK_RAW ; 
- int /*<<< orphan*/  ZM_IOCTL_DMA_TEST ; 
- int /*<<< orphan*/  ZM_IOCTL_DURATION_MODE ; 
- int /*<<< orphan*/  ZM_IOCTL_ENCRYPTION_MODE ; 
- int /*<<< orphan*/  ZM_IOCTL_FRAG ; 
- int /*<<< orphan*/  ZM_IOCTL_GET_DEAGG_CNT ; 
- int /*<<< orphan*/  ZM_IOCTL_GET_TXCNT ; 
- int /*<<< orphan*/  ZM_IOCTL_KEY ; 
- int /*<<< orphan*/  ZM_IOCTL_MEM_DUMP ; 
- int /*<<< orphan*/  ZM_IOCTL_MEM_READ ; 
- int /*<<< orphan*/  ZM_IOCTL_MEM_WRITE ; 
- int /*<<< orphan*/  ZM_IOCTL_MIX_MODE ; 
- int /*<<< orphan*/  ZM_IOCTL_RATE ; 
- int /*<<< orphan*/  ZM_IOCTL_REG_DUMP ; 
- int /*<<< orphan*/  ZM_IOCTL_REG_READ ; 
- int /*<<< orphan*/  ZM_IOCTL_REG_TEST ; 
- int /*<<< orphan*/  ZM_IOCTL_REG_WRITE ; 
- int /*<<< orphan*/  ZM_IOCTL_RTS ; 
- int /*<<< orphan*/  ZM_IOCTL_RXD_DUMP ; 
- int /*<<< orphan*/  ZM_IOCTL_SCAN ; 
- int /*<<< orphan*/  ZM_IOCTL_SET_AES_KEY ; 
- int /*<<< orphan*/  ZM_IOCTL_SET_AES_MODE ; 
- int /*<<< orphan*/  ZM_IOCTL_SET_PIBSS_MODE ; 
- int /*<<< orphan*/  ZM_IOCTL_TALLY ; 
- int /*<<< orphan*/  ZM_IOCTL_TEST ; 
- int /*<<< orphan*/  ZM_IOCTL_TXD_DUMP ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- char* prgname ; 
- int /*<<< orphan*/  printf (char*) ; 
- int /*<<< orphan*/  set_ioctl (int,struct ifreq*) ; 
- int socket (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sscanf (char*,char*,...) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
- int /*<<< orphan*/  strcpy (int /*<<< orphan*/ ,char*) ; 
- char* strerror (int /*<<< orphan*/ ) ; 
- int strlen (char*) ; 
+
+
+
+struct zdap_ioctl {int addr; int value; unsigned char* data; int cmd; } ;
+struct ifreq {char* ifr_data; int ifr_name; } ;
+
+
+ int AF_INET ;
+ int IPPROTO_RAW ;
+ int SOCK_RAW ;
+ int ZM_IOCTL_DMA_TEST ;
+ int ZM_IOCTL_DURATION_MODE ;
+ int ZM_IOCTL_ENCRYPTION_MODE ;
+ int ZM_IOCTL_FRAG ;
+ int ZM_IOCTL_GET_DEAGG_CNT ;
+ int ZM_IOCTL_GET_TXCNT ;
+ int ZM_IOCTL_KEY ;
+ int ZM_IOCTL_MEM_DUMP ;
+ int ZM_IOCTL_MEM_READ ;
+ int ZM_IOCTL_MEM_WRITE ;
+ int ZM_IOCTL_MIX_MODE ;
+ int ZM_IOCTL_RATE ;
+ int ZM_IOCTL_REG_DUMP ;
+ int ZM_IOCTL_REG_READ ;
+ int ZM_IOCTL_REG_TEST ;
+ int ZM_IOCTL_REG_WRITE ;
+ int ZM_IOCTL_RTS ;
+ int ZM_IOCTL_RXD_DUMP ;
+ int ZM_IOCTL_SCAN ;
+ int ZM_IOCTL_SET_AES_KEY ;
+ int ZM_IOCTL_SET_AES_MODE ;
+ int ZM_IOCTL_SET_PIBSS_MODE ;
+ int ZM_IOCTL_TALLY ;
+ int ZM_IOCTL_TEST ;
+ int ZM_IOCTL_TXD_DUMP ;
+ int errno ;
+ int exit (int) ;
+ int fprintf (int ,char*,...) ;
+ char* prgname ;
+ int printf (char*) ;
+ int set_ioctl (int,struct ifreq*) ;
+ int socket (int ,int ,int ) ;
+ int sscanf (char*,char*,...) ;
+ int stderr ;
+ int strcmp (char*,char*) ;
+ int strcpy (int ,char*) ;
+ char* strerror (int ) ;
+ int strlen (char*) ;
 
 int main(int argc, char **argv)
 {
     int sock;
     int addr, value;
     struct ifreq req;
-    char *action = NULL;
+    char *action = ((void*)0);
     struct zdap_ioctl zdreq;
 
     prgname = argv[0];
@@ -95,7 +95,7 @@ int main(int argc, char **argv)
     zdreq.addr = 0;
     zdreq.value = 0;
 
-    /* a silly raw socket just for ioctl()ling it */
+
     sock = socket(AF_INET, SOCK_RAW, IPPROTO_RAW);
     if (sock < 0) {
         fprintf(stderr, "%s: socket(): %s\n", argv[0], strerror(errno));
@@ -334,7 +334,7 @@ int main(int argc, char **argv)
     }
     else
     {
-	    fprintf(stderr, "error action\n");
+     fprintf(stderr, "error action\n");
         exit(1);
     }
 

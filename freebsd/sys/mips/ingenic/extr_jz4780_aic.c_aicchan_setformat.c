@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
+
+
+
+
+typedef int uint32_t ;
 struct sc_pcminfo {int dummy; } ;
-struct sc_chinfo {int /*<<< orphan*/  format; struct sc_pcminfo* parent; } ;
-typedef  int /*<<< orphan*/  kobj_t ;
+struct sc_chinfo {int format; struct sc_pcminfo* parent; } ;
+typedef int kobj_t ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static int
 aicchan_setformat(kobj_t obj, void *data, uint32_t format)
 {
-	struct sc_pcminfo *scp;
-	struct sc_chinfo *ch;
+ struct sc_pcminfo *scp;
+ struct sc_chinfo *ch;
 
-	ch = data;
-	scp = ch->parent;
+ ch = data;
+ scp = ch->parent;
 
-	ch->format = format;
+ ch->format = format;
 
-	return (0);
+ return (0);
 }

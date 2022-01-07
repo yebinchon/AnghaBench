@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  strlen (char const*) ; 
- char* tomoyo_encode2 (char const*,int /*<<< orphan*/ ) ; 
+ int strlen (char const*) ;
+ char* tomoyo_encode2 (char const*,int ) ;
 
 char *tomoyo_encode(const char *str)
 {
-	return str ? tomoyo_encode2(str, strlen(str)) : NULL;
+ return str ? tomoyo_encode2(str, strlen(str)) : ((void*)0);
 }

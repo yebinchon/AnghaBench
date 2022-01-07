@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WRes ;
-typedef  scalar_t__ UInt32 ;
-typedef  int /*<<< orphan*/  LONG ;
-typedef  int /*<<< orphan*/  CSemaphore ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Semaphore_Release (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int WRes ;
+typedef scalar_t__ UInt32 ;
+typedef int LONG ;
+typedef int CSemaphore ;
+
+
+ int Semaphore_Release (int *,int ,int *) ;
 
 WRes Semaphore_ReleaseN(CSemaphore *p, UInt32 num)
-  { return Semaphore_Release(p, (LONG)num, NULL); }
+  { return Semaphore_Release(p, (LONG)num, ((void*)0)); }

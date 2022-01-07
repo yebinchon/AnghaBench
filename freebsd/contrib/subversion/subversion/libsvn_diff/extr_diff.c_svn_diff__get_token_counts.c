@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int svn_diff__token_index_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int svn_diff__token_index_t ;
 struct TYPE_3__ {size_t token_index; struct TYPE_3__* next; } ;
-typedef  TYPE_1__ svn_diff__position_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+typedef TYPE_1__ svn_diff__position_t ;
+typedef int apr_pool_t ;
 
-/* Variables and functions */
- int* apr_palloc (int /*<<< orphan*/ *,int) ; 
+
+ int* apr_palloc (int *,int) ;
 
 svn_diff__token_index_t*
 svn_diff__get_token_counts(svn_diff__position_t *loop_start,
@@ -33,7 +33,7 @@ svn_diff__get_token_counts(svn_diff__position_t *loop_start,
     token_counts[token_index] = 0;
 
   current = loop_start;
-  if (current != NULL)
+  if (current != ((void*)0))
     {
       do
         {

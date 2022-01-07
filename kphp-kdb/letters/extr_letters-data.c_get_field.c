@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int field_n ; 
- int /*<<< orphan*/ * field_name ; 
- int* field_name_len ; 
- int strlen (char const*) ; 
- int /*<<< orphan*/  strncmp (int /*<<< orphan*/ ,char const*,int) ; 
+ int field_n ;
+ int * field_name ;
+ int* field_name_len ;
+ int strlen (char const*) ;
+ int strncmp (int ,char const*,int) ;
 
 int get_field (const char *name) {
   int l = strlen (name), i;

@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint64_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int /*<<< orphan*/  dwtcoef ;
+
+
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint64_t ;
+typedef int uint32_t ;
+typedef int dwtcoef ;
 struct TYPE_7__ {int prefix_bytes; int wavelet_depth; int** qmagic_lut; int num_x; int num_y; int size_scaler; TYPE_1__* plane; scalar_t__** quant; } ;
-typedef  TYPE_2__ VC2EncContext ;
+typedef TYPE_2__ VC2EncContext ;
 struct TYPE_9__ {int* cache; int x; int y; TYPE_2__* ctx; } ;
-struct TYPE_8__ {int width; int height; int const stride; int /*<<< orphan*/ * buf; } ;
+struct TYPE_8__ {int width; int height; int const stride; int * buf; } ;
 struct TYPE_6__ {TYPE_3__** band; } ;
-typedef  TYPE_3__ SubBand ;
-typedef  TYPE_4__ SliceArgs ;
+typedef TYPE_3__ SubBand ;
+typedef TYPE_4__ SliceArgs ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FFABS (int /*<<< orphan*/ ) ; 
- int FFALIGN (int,int) ; 
- int FFMAX (scalar_t__,int /*<<< orphan*/ ) ; 
- int MAX_DWT_LEVELS ; 
- int /*<<< orphan*/  QUANT (int /*<<< orphan*/ ,int const,int const,int const) ; 
- int av_log2 (int /*<<< orphan*/ ) ; 
- scalar_t__ count_vc2_ue_uint (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * ff_dirac_qscale_tab ; 
+
+ int FFABS (int ) ;
+ int FFALIGN (int,int) ;
+ int FFMAX (scalar_t__,int ) ;
+ int MAX_DWT_LEVELS ;
+ int QUANT (int ,int const,int const,int const) ;
+ int av_log2 (int ) ;
+ scalar_t__ count_vc2_ue_uint (int ) ;
+ int * ff_dirac_qscale_tab ;
 
 __attribute__((used)) static int count_hq_slice(SliceArgs *slice, int quant_idx)
 {
@@ -47,7 +47,7 @@ __attribute__((used)) static int count_hq_slice(SliceArgs *slice, int quant_idx)
         return slice->cache[quant_idx];
 
     bits += 8*s->prefix_bytes;
-    bits += 8; /* quant_idx */
+    bits += 8;
 
     for (level = 0; level < s->wavelet_depth; level++)
         for (orientation = !!level; orientation < 4; orientation++)
@@ -66,9 +66,9 @@ __attribute__((used)) static int count_hq_slice(SliceArgs *slice, int quant_idx)
                 const uint64_t q_a = s->qmagic_lut[q_idx][1];
                 const int q_s = av_log2(ff_dirac_qscale_tab[q_idx]) + 32;
 
-                const int left   = b->width  * slice->x    / s->num_x;
-                const int right  = b->width  *(slice->x+1) / s->num_x;
-                const int top    = b->height * slice->y    / s->num_y;
+                const int left = b->width * slice->x / s->num_x;
+                const int right = b->width *(slice->x+1) / s->num_x;
+                const int top = b->height * slice->y / s->num_y;
                 const int bottom = b->height *(slice->y+1) / s->num_y;
 
                 dwtcoef *buf = b->buf + top * b->stride;

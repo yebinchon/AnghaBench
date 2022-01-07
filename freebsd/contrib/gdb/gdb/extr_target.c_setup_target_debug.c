@@ -1,78 +1,78 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  to_pid_to_exec_file; int /*<<< orphan*/  to_get_current_exception_event; int /*<<< orphan*/  to_enable_exception_callback; int /*<<< orphan*/  to_rcmd; int /*<<< orphan*/  to_xfer_partial; int /*<<< orphan*/  to_stop; int /*<<< orphan*/  to_find_new_threads; int /*<<< orphan*/  to_thread_alive; int /*<<< orphan*/  to_notice_signals; int /*<<< orphan*/  to_can_run; int /*<<< orphan*/  to_mourn_inferior; int /*<<< orphan*/  to_has_exited; int /*<<< orphan*/  to_reported_exec_events_per_exec_call; int /*<<< orphan*/  to_remove_exec_catchpoint; int /*<<< orphan*/  to_insert_exec_catchpoint; int /*<<< orphan*/  to_follow_fork; int /*<<< orphan*/  to_remove_vfork_catchpoint; int /*<<< orphan*/  to_insert_vfork_catchpoint; int /*<<< orphan*/  to_remove_fork_catchpoint; int /*<<< orphan*/  to_insert_fork_catchpoint; int /*<<< orphan*/  to_acknowledge_created_inferior; int /*<<< orphan*/  to_post_startup_inferior; int /*<<< orphan*/  to_create_inferior; int /*<<< orphan*/  to_lookup_symbol; int /*<<< orphan*/  to_load; int /*<<< orphan*/  to_kill; int /*<<< orphan*/  to_terminal_info; int /*<<< orphan*/  to_terminal_save_ours; int /*<<< orphan*/  to_terminal_ours; int /*<<< orphan*/  to_terminal_ours_for_output; int /*<<< orphan*/  to_terminal_inferior; int /*<<< orphan*/  to_terminal_init; int /*<<< orphan*/  to_region_size_ok_for_hw_watchpoint; int /*<<< orphan*/  to_stopped_data_address; int /*<<< orphan*/  to_stopped_by_watchpoint; int /*<<< orphan*/  to_remove_watchpoint; int /*<<< orphan*/  to_insert_watchpoint; int /*<<< orphan*/  to_remove_hw_breakpoint; int /*<<< orphan*/  to_insert_hw_breakpoint; int /*<<< orphan*/  to_can_use_hw_breakpoint; int /*<<< orphan*/  to_remove_breakpoint; int /*<<< orphan*/  to_insert_breakpoint; int /*<<< orphan*/  to_files_info; int /*<<< orphan*/  to_xfer_memory; int /*<<< orphan*/  to_prepare_to_store; int /*<<< orphan*/  to_store_registers; int /*<<< orphan*/  to_fetch_registers; int /*<<< orphan*/  to_post_wait; int /*<<< orphan*/  to_wait; int /*<<< orphan*/  to_resume; int /*<<< orphan*/  to_disconnect; int /*<<< orphan*/  to_detach; int /*<<< orphan*/  to_post_attach; int /*<<< orphan*/  to_attach; int /*<<< orphan*/  to_close; int /*<<< orphan*/  to_open; } ;
 
-/* Variables and functions */
- TYPE_1__ current_target ; 
- int /*<<< orphan*/  debug_target ; 
- int /*<<< orphan*/  debug_to_acknowledge_created_inferior ; 
- int /*<<< orphan*/  debug_to_attach ; 
- int /*<<< orphan*/  debug_to_can_run ; 
- int /*<<< orphan*/  debug_to_can_use_hw_breakpoint ; 
- int /*<<< orphan*/  debug_to_close ; 
- int /*<<< orphan*/  debug_to_create_inferior ; 
- int /*<<< orphan*/  debug_to_detach ; 
- int /*<<< orphan*/  debug_to_disconnect ; 
- int /*<<< orphan*/  debug_to_enable_exception_callback ; 
- int /*<<< orphan*/  debug_to_fetch_registers ; 
- int /*<<< orphan*/  debug_to_files_info ; 
- int /*<<< orphan*/  debug_to_find_new_threads ; 
- int /*<<< orphan*/  debug_to_follow_fork ; 
- int /*<<< orphan*/  debug_to_get_current_exception_event ; 
- int /*<<< orphan*/  debug_to_has_exited ; 
- int /*<<< orphan*/  debug_to_insert_breakpoint ; 
- int /*<<< orphan*/  debug_to_insert_exec_catchpoint ; 
- int /*<<< orphan*/  debug_to_insert_fork_catchpoint ; 
- int /*<<< orphan*/  debug_to_insert_hw_breakpoint ; 
- int /*<<< orphan*/  debug_to_insert_vfork_catchpoint ; 
- int /*<<< orphan*/  debug_to_insert_watchpoint ; 
- int /*<<< orphan*/  debug_to_kill ; 
- int /*<<< orphan*/  debug_to_load ; 
- int /*<<< orphan*/  debug_to_lookup_symbol ; 
- int /*<<< orphan*/  debug_to_mourn_inferior ; 
- int /*<<< orphan*/  debug_to_notice_signals ; 
- int /*<<< orphan*/  debug_to_open ; 
- int /*<<< orphan*/  debug_to_pid_to_exec_file ; 
- int /*<<< orphan*/  debug_to_post_attach ; 
- int /*<<< orphan*/  debug_to_post_startup_inferior ; 
- int /*<<< orphan*/  debug_to_post_wait ; 
- int /*<<< orphan*/  debug_to_prepare_to_store ; 
- int /*<<< orphan*/  debug_to_rcmd ; 
- int /*<<< orphan*/  debug_to_region_size_ok_for_hw_watchpoint ; 
- int /*<<< orphan*/  debug_to_remove_breakpoint ; 
- int /*<<< orphan*/  debug_to_remove_exec_catchpoint ; 
- int /*<<< orphan*/  debug_to_remove_fork_catchpoint ; 
- int /*<<< orphan*/  debug_to_remove_hw_breakpoint ; 
- int /*<<< orphan*/  debug_to_remove_vfork_catchpoint ; 
- int /*<<< orphan*/  debug_to_remove_watchpoint ; 
- int /*<<< orphan*/  debug_to_reported_exec_events_per_exec_call ; 
- int /*<<< orphan*/  debug_to_resume ; 
- int /*<<< orphan*/  debug_to_stop ; 
- int /*<<< orphan*/  debug_to_stopped_by_watchpoint ; 
- int /*<<< orphan*/  debug_to_stopped_data_address ; 
- int /*<<< orphan*/  debug_to_store_registers ; 
- int /*<<< orphan*/  debug_to_terminal_inferior ; 
- int /*<<< orphan*/  debug_to_terminal_info ; 
- int /*<<< orphan*/  debug_to_terminal_init ; 
- int /*<<< orphan*/  debug_to_terminal_ours ; 
- int /*<<< orphan*/  debug_to_terminal_ours_for_output ; 
- int /*<<< orphan*/  debug_to_terminal_save_ours ; 
- int /*<<< orphan*/  debug_to_thread_alive ; 
- int /*<<< orphan*/  debug_to_wait ; 
- int /*<<< orphan*/  debug_to_xfer_memory ; 
- int /*<<< orphan*/  debug_to_xfer_partial ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,TYPE_1__*,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int to_pid_to_exec_file; int to_get_current_exception_event; int to_enable_exception_callback; int to_rcmd; int to_xfer_partial; int to_stop; int to_find_new_threads; int to_thread_alive; int to_notice_signals; int to_can_run; int to_mourn_inferior; int to_has_exited; int to_reported_exec_events_per_exec_call; int to_remove_exec_catchpoint; int to_insert_exec_catchpoint; int to_follow_fork; int to_remove_vfork_catchpoint; int to_insert_vfork_catchpoint; int to_remove_fork_catchpoint; int to_insert_fork_catchpoint; int to_acknowledge_created_inferior; int to_post_startup_inferior; int to_create_inferior; int to_lookup_symbol; int to_load; int to_kill; int to_terminal_info; int to_terminal_save_ours; int to_terminal_ours; int to_terminal_ours_for_output; int to_terminal_inferior; int to_terminal_init; int to_region_size_ok_for_hw_watchpoint; int to_stopped_data_address; int to_stopped_by_watchpoint; int to_remove_watchpoint; int to_insert_watchpoint; int to_remove_hw_breakpoint; int to_insert_hw_breakpoint; int to_can_use_hw_breakpoint; int to_remove_breakpoint; int to_insert_breakpoint; int to_files_info; int to_xfer_memory; int to_prepare_to_store; int to_store_registers; int to_fetch_registers; int to_post_wait; int to_wait; int to_resume; int to_disconnect; int to_detach; int to_post_attach; int to_attach; int to_close; int to_open; } ;
+
+
+ TYPE_1__ current_target ;
+ int debug_target ;
+ int debug_to_acknowledge_created_inferior ;
+ int debug_to_attach ;
+ int debug_to_can_run ;
+ int debug_to_can_use_hw_breakpoint ;
+ int debug_to_close ;
+ int debug_to_create_inferior ;
+ int debug_to_detach ;
+ int debug_to_disconnect ;
+ int debug_to_enable_exception_callback ;
+ int debug_to_fetch_registers ;
+ int debug_to_files_info ;
+ int debug_to_find_new_threads ;
+ int debug_to_follow_fork ;
+ int debug_to_get_current_exception_event ;
+ int debug_to_has_exited ;
+ int debug_to_insert_breakpoint ;
+ int debug_to_insert_exec_catchpoint ;
+ int debug_to_insert_fork_catchpoint ;
+ int debug_to_insert_hw_breakpoint ;
+ int debug_to_insert_vfork_catchpoint ;
+ int debug_to_insert_watchpoint ;
+ int debug_to_kill ;
+ int debug_to_load ;
+ int debug_to_lookup_symbol ;
+ int debug_to_mourn_inferior ;
+ int debug_to_notice_signals ;
+ int debug_to_open ;
+ int debug_to_pid_to_exec_file ;
+ int debug_to_post_attach ;
+ int debug_to_post_startup_inferior ;
+ int debug_to_post_wait ;
+ int debug_to_prepare_to_store ;
+ int debug_to_rcmd ;
+ int debug_to_region_size_ok_for_hw_watchpoint ;
+ int debug_to_remove_breakpoint ;
+ int debug_to_remove_exec_catchpoint ;
+ int debug_to_remove_fork_catchpoint ;
+ int debug_to_remove_hw_breakpoint ;
+ int debug_to_remove_vfork_catchpoint ;
+ int debug_to_remove_watchpoint ;
+ int debug_to_reported_exec_events_per_exec_call ;
+ int debug_to_resume ;
+ int debug_to_stop ;
+ int debug_to_stopped_by_watchpoint ;
+ int debug_to_stopped_data_address ;
+ int debug_to_store_registers ;
+ int debug_to_terminal_inferior ;
+ int debug_to_terminal_info ;
+ int debug_to_terminal_init ;
+ int debug_to_terminal_ours ;
+ int debug_to_terminal_ours_for_output ;
+ int debug_to_terminal_save_ours ;
+ int debug_to_thread_alive ;
+ int debug_to_wait ;
+ int debug_to_xfer_memory ;
+ int debug_to_xfer_partial ;
+ int memcpy (int *,TYPE_1__*,int) ;
 
 __attribute__((used)) static void
 setup_target_debug (void)

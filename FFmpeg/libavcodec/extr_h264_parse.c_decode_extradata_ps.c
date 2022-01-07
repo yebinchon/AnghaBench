@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_6__ {int type; int /*<<< orphan*/  size_bits; int /*<<< orphan*/  gb; int /*<<< orphan*/  raw_size; int /*<<< orphan*/  raw_data; } ;
-struct TYPE_5__ {int nb_nals; TYPE_2__* nals; int /*<<< orphan*/  member_0; } ;
-typedef  int /*<<< orphan*/  H264ParamSets ;
-typedef  TYPE_1__ H2645Packet ;
-typedef  TYPE_2__ H2645NAL ;
-typedef  int /*<<< orphan*/  GetBitContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_CODEC_ID_H264 ; 
- int /*<<< orphan*/  AV_LOG_DEBUG ; 
- int /*<<< orphan*/  AV_LOG_VERBOSE ; 
-#define  H264_NAL_PPS 129 
-#define  H264_NAL_SPS 128 
- int /*<<< orphan*/  av_log (void*,int /*<<< orphan*/ ,char*,...) ; 
- int ff_h2645_packet_split (TYPE_1__*,int /*<<< orphan*/  const*,int,void*,int,int,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ff_h2645_packet_uninit (TYPE_1__*) ; 
- int ff_h264_decode_picture_parameter_set (int /*<<< orphan*/ *,void*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int ff_h264_decode_seq_parameter_set (int /*<<< orphan*/ *,void*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  init_get_bits8 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_6__ {int type; int size_bits; int gb; int raw_size; int raw_data; } ;
+struct TYPE_5__ {int nb_nals; TYPE_2__* nals; int member_0; } ;
+typedef int H264ParamSets ;
+typedef TYPE_1__ H2645Packet ;
+typedef TYPE_2__ H2645NAL ;
+typedef int GetBitContext ;
+
+
+ int AV_CODEC_ID_H264 ;
+ int AV_LOG_DEBUG ;
+ int AV_LOG_VERBOSE ;
+
+
+ int av_log (void*,int ,char*,...) ;
+ int ff_h2645_packet_split (TYPE_1__*,int const*,int,void*,int,int,int ,int,int ) ;
+ int ff_h2645_packet_uninit (TYPE_1__*) ;
+ int ff_h264_decode_picture_parameter_set (int *,void*,int *,int ) ;
+ int ff_h264_decode_seq_parameter_set (int *,void*,int *,int) ;
+ int init_get_bits8 (int *,int ,int ) ;
 
 __attribute__((used)) static int decode_extradata_ps(const uint8_t *data, int size, H264ParamSets *ps,
                                int is_avc, void *logctx)
@@ -48,7 +48,7 @@ __attribute__((used)) static int decode_extradata_ps(const uint8_t *data, int si
     for (i = 0; i < pkt.nb_nals; i++) {
         H2645NAL *nal = &pkt.nals[i];
         switch (nal->type) {
-        case H264_NAL_SPS: {
+        case 128: {
             GetBitContext tmp_gb = nal->gb;
             ret = ff_h264_decode_seq_parameter_set(&tmp_gb, logctx, ps, 0);
             if (ret >= 0)
@@ -64,7 +64,7 @@ __attribute__((used)) static int decode_extradata_ps(const uint8_t *data, int si
                 goto fail;
             break;
         }
-        case H264_NAL_PPS:
+        case 129:
             ret = ff_h264_decode_picture_parameter_set(&nal->gb, logctx, ps,
                                                        nal->size_bits);
             if (ret < 0)

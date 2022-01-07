@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {TYPE_2__* k; int /*<<< orphan*/  l30; } ;
-typedef  TYPE_1__ s ;
-struct TYPE_7__ {int f; scalar_t__ v; scalar_t__ p; unsigned long j; int /*<<< orphan*/  l34; int /*<<< orphan*/  l31; TYPE_1__* d; } ;
-typedef  TYPE_2__ e ;
 
-/* Variables and functions */
- int /*<<< orphan*/  i (TYPE_2__*,int,unsigned char) ; 
- scalar_t__ l198 (TYPE_2__*,int) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {TYPE_2__* k; int l30; } ;
+typedef TYPE_1__ s ;
+struct TYPE_7__ {int f; scalar_t__ v; scalar_t__ p; unsigned long j; int l34; int l31; TYPE_1__* d; } ;
+typedef TYPE_2__ e ;
+
+
+ int i (TYPE_2__*,int,unsigned char) ;
+ scalar_t__ l198 (TYPE_2__*,int) ;
 
 __attribute__((used)) static void
 l138(e*a){s*b=a->d;e*h;unsigned long l66;int c;{if(!(a->l31))goto l722

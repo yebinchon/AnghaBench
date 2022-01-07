@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
-typedef  int /*<<< orphan*/  uint16_t ;
-struct TYPE_5__ {int /*<<< orphan*/  family; } ;
-struct TYPE_6__ {TYPE_1__ ip; int /*<<< orphan*/  member_0; } ;
-typedef  TYPE_2__ IP_Port ;
 
-/* Variables and functions */
- scalar_t__ const NET_PACKET_ANNOUNCE_RESPONSE ; 
- scalar_t__ const NET_PACKET_ONION_DATA_RESPONSE ; 
- int /*<<< orphan*/  TCP_FAMILY ; 
- int handle_announce_response (void*,TYPE_2__,scalar_t__ const*,int /*<<< orphan*/ ) ; 
- int handle_data_response (void*,TYPE_2__,scalar_t__ const*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint8_t ;
+typedef int uint16_t ;
+struct TYPE_5__ {int family; } ;
+struct TYPE_6__ {TYPE_1__ ip; int member_0; } ;
+typedef TYPE_2__ IP_Port ;
+
+
+ scalar_t__ const NET_PACKET_ANNOUNCE_RESPONSE ;
+ scalar_t__ const NET_PACKET_ONION_DATA_RESPONSE ;
+ int TCP_FAMILY ;
+ int handle_announce_response (void*,TYPE_2__,scalar_t__ const*,int ) ;
+ int handle_data_response (void*,TYPE_2__,scalar_t__ const*,int ) ;
 
 __attribute__((used)) static int handle_tcp_onion(void *object, const uint8_t *data, uint16_t length)
 {

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_node_kind_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct check_url_kind_baton {int /*<<< orphan*/  session; int /*<<< orphan*/  pool; int /*<<< orphan*/  repos_root_url; int /*<<< orphan*/  ctx; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_client_open_ra_session2 (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_error_trace (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_ra_check_path (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_ra_get_repos_root2 (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_ra_reparent (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_uri__is_ancestor (int /*<<< orphan*/ ,char const*) ; 
+
+
+
+typedef int svn_revnum_t ;
+typedef int svn_node_kind_t ;
+typedef int svn_error_t ;
+struct check_url_kind_baton {int session; int pool; int repos_root_url; int ctx; } ;
+typedef int apr_pool_t ;
+
+
+ int SVN_ERR (int ) ;
+ int svn_client_open_ra_session2 (int *,char const*,int *,int ,int ,int *) ;
+ int * svn_error_trace (int ) ;
+ int svn_ra_check_path (int ,char*,int ,int *,int *) ;
+ int svn_ra_get_repos_root2 (int ,int *,int ) ;
+ int svn_ra_reparent (int ,char const*,int *) ;
+ int svn_uri__is_ancestor (int ,char const*) ;
 
 __attribute__((used)) static svn_error_t *
 check_url_kind(void *baton,
@@ -34,10 +34,10 @@ check_url_kind(void *baton,
 {
   struct check_url_kind_baton *cukb = baton;
 
-  /* If we don't have a session or can't use the session, get one */
+
   if (!cukb->session || !svn_uri__is_ancestor(cukb->repos_root_url, url))
     {
-      SVN_ERR(svn_client_open_ra_session2(&cukb->session, url, NULL, cukb->ctx,
+      SVN_ERR(svn_client_open_ra_session2(&cukb->session, url, ((void*)0), cukb->ctx,
                                           cukb->pool, scratch_pool));
       SVN_ERR(svn_ra_get_repos_root2(cukb->session, &cukb->repos_root_url,
                                      cukb->pool));

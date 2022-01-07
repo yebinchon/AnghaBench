@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {int writableSchema; char* zDestTable; int mode; int cMode; int /*<<< orphan*/  nErr; int /*<<< orphan*/  db; int /*<<< orphan*/  out; } ;
+
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_9__ {int writableSchema; char* zDestTable; int mode; int cMode; int nErr; int db; int out; } ;
 struct TYPE_8__ {char* z; } ;
-typedef  TYPE_1__ ShellText ;
-typedef  TYPE_2__ ShellState ;
+typedef TYPE_1__ ShellText ;
+typedef TYPE_2__ ShellState ;
 
-/* Variables and functions */
- int MODE_Insert ; 
- int SQLITE_CORRUPT ; 
- int /*<<< orphan*/  UNUSED_PARAMETER (char**) ; 
- int /*<<< orphan*/  appendText (TYPE_1__*,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  freeColumnList (char**) ; 
- int /*<<< orphan*/  freeText (TYPE_1__*) ; 
- int /*<<< orphan*/  initText (TYPE_1__*) ; 
- int /*<<< orphan*/  printSchemaLine (int /*<<< orphan*/ ,char const*,char*) ; 
- int /*<<< orphan*/  quoteChar (char const*) ; 
- int /*<<< orphan*/  raw_printf (int /*<<< orphan*/ ,char*) ; 
- int shell_exec (TYPE_2__*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_free (char*) ; 
- char* sqlite3_mprintf (char*,char const*,char const*,char const*) ; 
- scalar_t__ sqlite3_strglob (char*,char const*) ; 
- scalar_t__ strcmp (char const*,char*) ; 
- scalar_t__ strncmp (char const*,char*,int) ; 
- char** tableColumnList (TYPE_2__*,char const*) ; 
- int /*<<< orphan*/  toggleSelectOrder (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  utf8_printf (int /*<<< orphan*/ ,char*,char*) ; 
+
+ int MODE_Insert ;
+ int SQLITE_CORRUPT ;
+ int UNUSED_PARAMETER (char**) ;
+ int appendText (TYPE_1__*,char const*,int ) ;
+ int freeColumnList (char**) ;
+ int freeText (TYPE_1__*) ;
+ int initText (TYPE_1__*) ;
+ int printSchemaLine (int ,char const*,char*) ;
+ int quoteChar (char const*) ;
+ int raw_printf (int ,char*) ;
+ int shell_exec (TYPE_2__*,char*,int ) ;
+ int sqlite3_free (char*) ;
+ char* sqlite3_mprintf (char*,char const*,char const*,char const*) ;
+ scalar_t__ sqlite3_strglob (char*,char const*) ;
+ scalar_t__ strcmp (char const*,char*) ;
+ scalar_t__ strncmp (char const*,char*,int) ;
+ char** tableColumnList (TYPE_2__*,char const*) ;
+ int toggleSelectOrder (int ) ;
+ int utf8_printf (int ,char*,char*) ;
 
 __attribute__((used)) static int dump_callback(void *pArg, int nArg, char **azArg, char **azNotUsed){
   int rc;
@@ -88,14 +88,14 @@ __attribute__((used)) static int dump_callback(void *pArg, int nArg, char **azAr
       return 0;
     }
 
-    /* Always quote the table name, even if it appears to be pure ascii,
-    ** in case it is a keyword. Ex:  INSERT INTO "table" ... */
+
+
     initText(&sTable);
     appendText(&sTable, zTable, quoteChar(zTable));
-    /* If preserving the rowid, add a column list after the table name.
-    ** In other words:  "INSERT INTO tab(rowid,a,b,c,...) VALUES(...)"
-    ** instead of the usual "INSERT INTO tab VALUES(...)".
-    */
+
+
+
+
     if( azCol[0] ){
       appendText(&sTable, "(", 0);
       appendText(&sTable, azCol[0], 0);
@@ -106,7 +106,7 @@ __attribute__((used)) static int dump_callback(void *pArg, int nArg, char **azAr
       appendText(&sTable, ")", 0);
     }
 
-    /* Build an appropriate SELECT statement */
+
     initText(&sSelect);
     appendText(&sSelect, "SELECT ", 0);
     if( azCol[0] ){

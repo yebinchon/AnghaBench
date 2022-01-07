@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct scsi_dh_data {scalar_t__ buf; } ;
 struct scsi_device {TYPE_1__* request_queue; struct scsi_dh_data* scsi_dh_data; } ;
 struct alua_dh_data {scalar_t__ buff; scalar_t__ inq; } ;
-struct TYPE_2__ {int /*<<< orphan*/  queue_lock; } ;
+struct TYPE_2__ {int queue_lock; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ALUA_DH_NAME ; 
- int /*<<< orphan*/  KERN_NOTICE ; 
- int /*<<< orphan*/  THIS_MODULE ; 
- int /*<<< orphan*/  kfree (struct scsi_dh_data*) ; 
- int /*<<< orphan*/  module_put (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sdev_printk (int /*<<< orphan*/ ,struct scsi_device*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ ,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ ,unsigned long) ; 
+
+ int ALUA_DH_NAME ;
+ int KERN_NOTICE ;
+ int THIS_MODULE ;
+ int kfree (struct scsi_dh_data*) ;
+ int module_put (int ) ;
+ int sdev_printk (int ,struct scsi_device*,char*,int ) ;
+ int spin_lock_irqsave (int ,unsigned long) ;
+ int spin_unlock_irqrestore (int ,unsigned long) ;
 
 __attribute__((used)) static void alua_bus_detach(struct scsi_device *sdev)
 {
-	struct scsi_dh_data *scsi_dh_data;
-	struct alua_dh_data *h;
-	unsigned long flags;
+ struct scsi_dh_data *scsi_dh_data;
+ struct alua_dh_data *h;
+ unsigned long flags;
 
-	spin_lock_irqsave(sdev->request_queue->queue_lock, flags);
-	scsi_dh_data = sdev->scsi_dh_data;
-	sdev->scsi_dh_data = NULL;
-	spin_unlock_irqrestore(sdev->request_queue->queue_lock, flags);
+ spin_lock_irqsave(sdev->request_queue->queue_lock, flags);
+ scsi_dh_data = sdev->scsi_dh_data;
+ sdev->scsi_dh_data = ((void*)0);
+ spin_unlock_irqrestore(sdev->request_queue->queue_lock, flags);
 
-	h = (struct alua_dh_data *) scsi_dh_data->buf;
-	if (h->buff && h->inq != h->buff)
-		kfree(h->buff);
-	kfree(scsi_dh_data);
-	module_put(THIS_MODULE);
-	sdev_printk(KERN_NOTICE, sdev, "%s: Detached\n", ALUA_DH_NAME);
+ h = (struct alua_dh_data *) scsi_dh_data->buf;
+ if (h->buff && h->inq != h->buff)
+  kfree(h->buff);
+ kfree(scsi_dh_data);
+ module_put(THIS_MODULE);
+ sdev_printk(KERN_NOTICE, sdev, "%s: Detached\n", ALUA_DH_NAME);
 }

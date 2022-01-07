@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct connection {int /*<<< orphan*/  Out; } ;
 
-/* Variables and functions */
- char* error_text_pattern ; 
- char* http_get_error_msg_text (int*) ; 
- int /*<<< orphan*/  sprintf (char*,char*,int,char const*,int,char const*) ; 
- int /*<<< orphan*/  write_basic_http_header (struct connection*,int,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int write_out (int /*<<< orphan*/ *,char*,int) ; 
+
+
+
+struct connection {int Out; } ;
+
+
+ char* error_text_pattern ;
+ char* http_get_error_msg_text (int*) ;
+ int sprintf (char*,char*,int,char const*,int,char const*) ;
+ int write_basic_http_header (struct connection*,int,int ,int,int ,int ) ;
+ int write_out (int *,char*,int) ;
 
 int write_http_error (struct connection *c, int code) {
   if (code == 204) {

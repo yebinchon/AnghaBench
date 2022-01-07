@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ogg_stream_state ;
-struct TYPE_5__ {int /*<<< orphan*/  granulepos; int /*<<< orphan*/  e_o_s; int /*<<< orphan*/  bytes; int /*<<< orphan*/  packet; } ;
-typedef  TYPE_1__ ogg_packet ;
-struct TYPE_6__ {int /*<<< orphan*/  iov_len; int /*<<< orphan*/  iov_base; } ;
-typedef  TYPE_2__ ogg_iovec_t ;
 
-/* Variables and functions */
- int ogg_stream_iovecin (int /*<<< orphan*/ *,TYPE_2__*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int ogg_stream_state ;
+struct TYPE_5__ {int granulepos; int e_o_s; int bytes; int packet; } ;
+typedef TYPE_1__ ogg_packet ;
+struct TYPE_6__ {int iov_len; int iov_base; } ;
+typedef TYPE_2__ ogg_iovec_t ;
+
+
+ int ogg_stream_iovecin (int *,TYPE_2__*,int,int ,int ) ;
 
 int ogg_stream_packetin(ogg_stream_state *os,ogg_packet *op){
   ogg_iovec_t iov;

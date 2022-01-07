@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ftp_session_t ;
-typedef  int /*<<< orphan*/ * LPFILEPROPERTIESW ;
-typedef  int* LPDWORD ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
-typedef  int INT ;
-typedef  int /*<<< orphan*/  FILEPROPERTIESW ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERROR_NO_MORE_FILES ; 
- scalar_t__ FALSE ; 
- scalar_t__ FTP_ParseNextFile (int,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  INTERNET_SetLastError (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*) ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/ * heap_alloc_zero (int) ; 
- int /*<<< orphan*/  heap_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * heap_realloc (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * heap_realloc_zero (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int ftp_session_t ;
+typedef int * LPFILEPROPERTIESW ;
+typedef int* LPDWORD ;
+typedef int LPCWSTR ;
+typedef int INT ;
+typedef int FILEPROPERTIESW ;
+typedef scalar_t__ BOOL ;
+
+
+ int ERROR_NO_MORE_FILES ;
+ scalar_t__ FALSE ;
+ scalar_t__ FTP_ParseNextFile (int,int ,int *) ;
+ int INTERNET_SetLastError (int ) ;
+ int TRACE (char*) ;
+ scalar_t__ TRUE ;
+ int * heap_alloc_zero (int) ;
+ int heap_free (int *) ;
+ int * heap_realloc (int *,int) ;
+ int * heap_realloc_zero (int *,int) ;
 
 __attribute__((used)) static BOOL FTP_ParseDirectory(ftp_session_t *lpwfs, INT nSocket, LPCWSTR lpszSearchFile,
     LPFILEPROPERTIESW *lpafp, LPDWORD dwfp)
 {
     BOOL bSuccess = TRUE;
-    INT sizeFilePropArray = 500;/*20; */
+    INT sizeFilePropArray = 500;
     INT indexFilePropArray = -1;
 
     TRACE("\n");
 
-    /* Allocate initial file properties array */
+
     *lpafp = heap_alloc_zero(sizeof(FILEPROPERTIESW)*(sizeFilePropArray));
     if (!*lpafp)
         return FALSE;
@@ -48,10 +48,10 @@ __attribute__((used)) static BOOL FTP_ParseDirectory(ftp_session_t *lpwfs, INT n
         if (indexFilePropArray+1 >= sizeFilePropArray)
         {
             LPFILEPROPERTIESW tmpafp;
-            
+
             sizeFilePropArray *= 2;
             tmpafp = heap_realloc_zero(*lpafp, sizeof(FILEPROPERTIESW)*sizeFilePropArray);
-            if (NULL == tmpafp)
+            if (((void*)0) == tmpafp)
             {
                 bSuccess = FALSE;
                 break;
@@ -69,7 +69,7 @@ __attribute__((used)) static BOOL FTP_ParseDirectory(ftp_session_t *lpwfs, INT n
             LPFILEPROPERTIESW tmpafp;
 
             tmpafp = heap_realloc(*lpafp, sizeof(FILEPROPERTIESW)*indexFilePropArray);
-            if (NULL != tmpafp)
+            if (((void*)0) != tmpafp)
                 *lpafp = tmpafp;
         }
         *dwfp = indexFilePropArray;

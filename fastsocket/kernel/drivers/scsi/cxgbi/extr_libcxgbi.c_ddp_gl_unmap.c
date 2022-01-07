@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct pci_dev {int /*<<< orphan*/  dev; } ;
-struct cxgbi_gather_list {int nelem; int /*<<< orphan*/ * phys_addr; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PAGE_SIZE ; 
- int /*<<< orphan*/  PCI_DMA_FROMDEVICE ; 
- int /*<<< orphan*/  dma_unmap_page (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct pci_dev {int dev; } ;
+struct cxgbi_gather_list {int nelem; int * phys_addr; } ;
+
+
+ int PAGE_SIZE ;
+ int PCI_DMA_FROMDEVICE ;
+ int dma_unmap_page (int *,int ,int ,int ) ;
 
 __attribute__((used)) static inline void ddp_gl_unmap(struct pci_dev *pdev,
-					struct cxgbi_gather_list *gl)
+     struct cxgbi_gather_list *gl)
 {
-	int i;
+ int i;
 
-	for (i = 0; i < gl->nelem; i++)
-		dma_unmap_page(&pdev->dev, gl->phys_addr[i], PAGE_SIZE,
-				PCI_DMA_FROMDEVICE);
+ for (i = 0; i < gl->nelem; i++)
+  dma_unmap_page(&pdev->dev, gl->phys_addr[i], PAGE_SIZE,
+    PCI_DMA_FROMDEVICE);
 }

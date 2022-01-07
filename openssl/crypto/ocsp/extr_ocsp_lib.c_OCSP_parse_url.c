@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  ERR_R_MALLOC_FAILURE ; 
- int /*<<< orphan*/  OCSP_F_OCSP_PARSE_URL ; 
- int /*<<< orphan*/  OCSP_R_ERROR_PARSING_URL ; 
- int /*<<< orphan*/  OCSPerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OPENSSL_free (char*) ; 
- char* OPENSSL_strdup (char const*) ; 
- char* strchr (char*,char) ; 
- scalar_t__ strcmp (char*,char*) ; 
+ int ERR_R_MALLOC_FAILURE ;
+ int OCSP_F_OCSP_PARSE_URL ;
+ int OCSP_R_ERROR_PARSING_URL ;
+ int OCSPerr (int ,int ) ;
+ int OPENSSL_free (char*) ;
+ char* OPENSSL_strdup (char const*) ;
+ char* strchr (char*,char) ;
+ scalar_t__ strcmp (char*,char*) ;
 
 int OCSP_parse_url(const char *url, char **phost, char **pport, char **ppath,
                    int *pssl)
@@ -28,18 +20,18 @@ int OCSP_parse_url(const char *url, char **phost, char **pport, char **ppath,
 
     char *host, *port;
 
-    *phost = NULL;
-    *pport = NULL;
-    *ppath = NULL;
+    *phost = ((void*)0);
+    *pport = ((void*)0);
+    *ppath = ((void*)0);
 
-    /* dup the buffer since we are going to mess with it */
+
     buf = OPENSSL_strdup(url);
     if (!buf)
         goto mem_err;
 
-    /* Check for initial colon */
+
     p = strchr(buf, ':');
-    if (p == NULL)
+    if (p == ((void*)0))
         goto parse_err;
 
     *(p++) = '\0';
@@ -53,7 +45,7 @@ int OCSP_parse_url(const char *url, char **phost, char **pport, char **ppath,
     } else
         goto parse_err;
 
-    /* Check for double slash */
+
     if ((p[0] != '/') || (p[1] != '/'))
         goto parse_err;
 
@@ -61,43 +53,43 @@ int OCSP_parse_url(const char *url, char **phost, char **pport, char **ppath,
 
     host = p;
 
-    /* Check for trailing part of path */
+
     p = strchr(p, '/');
-    if (p == NULL)
+    if (p == ((void*)0))
         *ppath = OPENSSL_strdup("/");
     else {
         *ppath = OPENSSL_strdup(p);
-        /* Set start of path to 0 so hostname is valid */
+
         *p = '\0';
     }
 
-    if (*ppath == NULL)
+    if (*ppath == ((void*)0))
         goto mem_err;
 
     p = host;
     if (host[0] == '[') {
-        /* ipv6 literal */
+
         host++;
         p = strchr(host, ']');
-        if (p == NULL)
+        if (p == ((void*)0))
             goto parse_err;
         *p = '\0';
         p++;
     }
 
-    /* Look for optional ':' for port number */
+
     if ((p = strchr(p, ':'))) {
         *p = 0;
         port = p + 1;
     }
 
     *pport = OPENSSL_strdup(port);
-    if (*pport == NULL)
+    if (*pport == ((void*)0))
         goto mem_err;
 
     *phost = OPENSSL_strdup(host);
 
-    if (*phost == NULL)
+    if (*phost == ((void*)0))
         goto mem_err;
 
     OPENSSL_free(buf);
@@ -114,11 +106,11 @@ int OCSP_parse_url(const char *url, char **phost, char **pport, char **ppath,
  err:
     OPENSSL_free(buf);
     OPENSSL_free(*ppath);
-    *ppath = NULL;
+    *ppath = ((void*)0);
     OPENSSL_free(*pport);
-    *pport = NULL;
+    *pport = ((void*)0);
     OPENSSL_free(*phost);
-    *phost = NULL;
+    *phost = ((void*)0);
     return 0;
 
 }

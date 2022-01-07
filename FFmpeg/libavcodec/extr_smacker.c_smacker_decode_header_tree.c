@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-struct TYPE_11__ {scalar_t__ table; int /*<<< orphan*/  member_0; } ;
-typedef  TYPE_1__ VLC ;
+
+
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+struct TYPE_11__ {scalar_t__ table; int member_0; } ;
+typedef TYPE_1__ VLC ;
 struct TYPE_14__ {int* escapes; int* recode1; int* recode2; int* last; TYPE_1__* v2; TYPE_1__* v1; } ;
 struct TYPE_13__ {int length; int current; int* bits; int* lengths; int* values; scalar_t__ maxlength; } ;
-struct TYPE_12__ {int /*<<< orphan*/  avctx; } ;
-typedef  TYPE_2__ SmackVContext ;
-typedef  TYPE_3__ HuffContext ;
-typedef  int /*<<< orphan*/  GetBitContext ;
-typedef  TYPE_4__ DBCtx ;
+struct TYPE_12__ {int avctx; } ;
+typedef TYPE_2__ SmackVContext ;
+typedef TYPE_3__ HuffContext ;
+typedef int GetBitContext ;
+typedef TYPE_4__ DBCtx ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  INIT_VLC_LE ; 
- int /*<<< orphan*/  SMKTREE_BITS ; 
- int UINT_MAX ; 
- int /*<<< orphan*/  av_free (int*) ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- void* av_mallocz (int) ; 
- int* av_mallocz_array (int,int) ; 
- int /*<<< orphan*/  ff_free_vlc (TYPE_1__*) ; 
- int get_bits (int /*<<< orphan*/ *,int) ; 
- scalar_t__ get_bits1 (int /*<<< orphan*/ *) ; 
- int init_vlc (TYPE_1__*,int /*<<< orphan*/ ,int,int*,int,int,int*,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  skip_bits1 (int /*<<< orphan*/ *) ; 
- int smacker_decode_bigtree (int /*<<< orphan*/ *,TYPE_3__*,TYPE_4__*,int /*<<< orphan*/ ) ; 
- int smacker_decode_tree (int /*<<< orphan*/ *,TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ int ENOMEM ;
+ int INIT_VLC_LE ;
+ int SMKTREE_BITS ;
+ int UINT_MAX ;
+ int av_free (int*) ;
+ int av_log (int ,int ,char*) ;
+ void* av_mallocz (int) ;
+ int* av_mallocz_array (int,int) ;
+ int ff_free_vlc (TYPE_1__*) ;
+ int get_bits (int *,int) ;
+ scalar_t__ get_bits1 (int *) ;
+ int init_vlc (TYPE_1__*,int ,int,int*,int,int,int*,int,int,int ) ;
+ int skip_bits1 (int *) ;
+ int smacker_decode_bigtree (int *,TYPE_3__*,TYPE_4__*,int ) ;
+ int smacker_decode_tree (int *,TYPE_3__*,int ,int ) ;
 
 __attribute__((used)) static int smacker_decode_header_tree(SmackVContext *smk, GetBitContext *gb, int **recodes, int *last, int size)
 {
@@ -55,7 +55,7 @@ __attribute__((used)) static int smacker_decode_header_tree(SmackVContext *smk, 
     DBCtx ctx;
     int err = 0;
 
-    if(size >= UINT_MAX>>4){ // (((size + 3) >> 2) + 3) << 2 must not overflow
+    if(size >= UINT_MAX>>4){
         av_log(smk->avctx, AV_LOG_ERROR, "size too large\n");
         return AVERROR_INVALIDDATA;
     }
@@ -122,9 +122,9 @@ __attribute__((used)) static int smacker_decode_header_tree(SmackVContext *smk, 
         av_log(smk->avctx, AV_LOG_ERROR, "Skipping high bytes tree\n");
     }
 
-    escapes[0]  = get_bits(gb, 16);
-    escapes[1]  = get_bits(gb, 16);
-    escapes[2]  = get_bits(gb, 16);
+    escapes[0] = get_bits(gb, 16);
+    escapes[1] = get_bits(gb, 16);
+    escapes[2] = get_bits(gb, 16);
 
     last[0] = last[1] = last[2] = -1;
 

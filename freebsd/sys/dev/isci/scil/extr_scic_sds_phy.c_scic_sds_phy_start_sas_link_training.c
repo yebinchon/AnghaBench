@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  U32 ;
-struct TYPE_5__ {int /*<<< orphan*/  protocol; int /*<<< orphan*/  starting_substate_machine; } ;
-typedef  TYPE_1__ SCIC_SDS_PHY_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SATA_SPINUP_HOLD ; 
- int /*<<< orphan*/  SCIC_SDS_PHY_PROTOCOL_SAS ; 
- int /*<<< orphan*/  SCIC_SDS_PHY_STARTING_SUBSTATE_AWAIT_SAS_SPEED_EN ; 
- int /*<<< orphan*/  SCU_SAS_PCFG_GEN_BIT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SCU_SAS_PCFG_READ (TYPE_1__*) ; 
- int /*<<< orphan*/  SCU_SAS_PCFG_WRITE (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sci_base_state_machine_change_state (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int U32 ;
+struct TYPE_5__ {int protocol; int starting_substate_machine; } ;
+typedef TYPE_1__ SCIC_SDS_PHY_T ;
+
+
+ int SATA_SPINUP_HOLD ;
+ int SCIC_SDS_PHY_PROTOCOL_SAS ;
+ int SCIC_SDS_PHY_STARTING_SUBSTATE_AWAIT_SAS_SPEED_EN ;
+ int SCU_SAS_PCFG_GEN_BIT (int ) ;
+ int SCU_SAS_PCFG_READ (TYPE_1__*) ;
+ int SCU_SAS_PCFG_WRITE (TYPE_1__*,int ) ;
+ int sci_base_state_machine_change_state (int *,int ) ;
 
 __attribute__((used)) static
 void scic_sds_phy_start_sas_link_training(

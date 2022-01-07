@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {char* value; int length; } ;
-typedef  TYPE_1__ token_t ;
+typedef TYPE_1__ token_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- size_t strlen (char*) ; 
+
+ int assert (int) ;
+ size_t strlen (char*) ;
 
 __attribute__((used)) static size_t tokenize_command(char *command, token_t *tokens, const size_t max_tokens) {
     char *s, *e;
@@ -24,7 +24,7 @@ __attribute__((used)) static size_t tokenize_command(char *command, token_t *tok
     size_t len = strlen(command);
     unsigned int i = 0;
 
-    assert(command != NULL && tokens != NULL && max_tokens > 1);
+    assert(command != ((void*)0) && tokens != ((void*)0) && max_tokens > 1);
 
     s = e = command;
     for (i = 0; i < len; i++) {
@@ -36,7 +36,7 @@ __attribute__((used)) static size_t tokenize_command(char *command, token_t *tok
                 *e = '\0';
                 if (ntokens == max_tokens - 1) {
                     e++;
-                    s = e; /* so we don't add an extra token */
+                    s = e;
                     break;
                 }
             }
@@ -51,11 +51,11 @@ __attribute__((used)) static size_t tokenize_command(char *command, token_t *tok
         ntokens++;
     }
 
-    /*
-     * If we scanned the whole string, the terminal value pointer is null,
-     * otherwise it is the first unprocessed character.
-     */
-    tokens[ntokens].value =  *e == '\0' ? NULL : e;
+
+
+
+
+    tokens[ntokens].value = *e == '\0' ? ((void*)0) : e;
     tokens[ntokens].length = 0;
     ntokens++;
 

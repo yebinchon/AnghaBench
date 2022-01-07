@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  scalar_t__ int64_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+typedef scalar_t__ int64_t ;
 struct TYPE_2__ {scalar_t__ rtc_ticks_at_sleep_start; scalar_t__ sleep_time_adjustment; scalar_t__ sleep_duration; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  esp_clk_slowclk_cal_get () ; 
- int /*<<< orphan*/  rtc_sleep_set_wakeup_time (scalar_t__) ; 
- scalar_t__ rtc_time_us_to_slowclk (scalar_t__,int /*<<< orphan*/ ) ; 
- TYPE_1__ s_config ; 
+
+ int esp_clk_slowclk_cal_get () ;
+ int rtc_sleep_set_wakeup_time (scalar_t__) ;
+ scalar_t__ rtc_time_us_to_slowclk (scalar_t__,int ) ;
+ TYPE_1__ s_config ;
 
 __attribute__((used)) static void timer_wakeup_prepare(void)
 {

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mem_size_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mem_free (void*) ; 
- void* mem_malloc (int /*<<< orphan*/ ) ; 
- void* mem_realloc (void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (void*,void*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int mem_size_t ;
+
+
+ int mem_free (void*) ;
+ void* mem_malloc (int ) ;
+ void* mem_realloc (void*,int ) ;
+ int memcpy (void*,void*,int ) ;
 
 void *
 mem_reallocm(void *rmem, mem_size_t newsize)
 {
   void *nmem;
   nmem = mem_malloc(newsize);
-  if (nmem == NULL) {
+  if (nmem == ((void*)0)) {
     return mem_realloc(rmem, newsize);
   }
   memcpy(nmem, rmem, newsize);

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-struct wpa_sm {int /*<<< orphan*/  pmksa; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * pmksa_cache_get (int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,void const*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int u8 ;
+struct wpa_sm {int pmksa; } ;
+
+
+ int * pmksa_cache_get (int ,int const*,int *,void const*,int ) ;
 
 int wpa_sm_pmksa_exists(struct wpa_sm *sm, const u8 *bssid,
-			const void *network_ctx)
+   const void *network_ctx)
 {
-	return pmksa_cache_get(sm->pmksa, bssid, NULL, network_ctx, 0) != NULL;
+ return pmksa_cache_get(sm->pmksa, bssid, ((void*)0), network_ctx, 0) != ((void*)0);
 }

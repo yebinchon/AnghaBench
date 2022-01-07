@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct stab_section_list {struct stab_section_list* next; int /*<<< orphan*/ * section; } ;
-struct coff_symfile_info {struct stab_section_list* stabsects; int /*<<< orphan*/ * stabstrsect; int /*<<< orphan*/  textsize; int /*<<< orphan*/  textaddr; } ;
-typedef  int /*<<< orphan*/  bfd ;
-typedef  int /*<<< orphan*/  asection ;
 
-/* Variables and functions */
- scalar_t__ DEPRECATED_STREQ (char const*,char*) ; 
- char* bfd_get_section_name (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ bfd_section_size (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bfd_section_vma (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  isdigit (char const) ; 
- int /*<<< orphan*/  make_cleanup (int /*<<< orphan*/ ,struct stab_section_list*) ; 
- scalar_t__ strncmp (char const*,char*,int) ; 
- int /*<<< orphan*/  xfree ; 
- scalar_t__ xmalloc (int) ; 
+
+
+
+struct stab_section_list {struct stab_section_list* next; int * section; } ;
+struct coff_symfile_info {struct stab_section_list* stabsects; int * stabstrsect; int textsize; int textaddr; } ;
+typedef int bfd ;
+typedef int asection ;
+
+
+ scalar_t__ DEPRECATED_STREQ (char const*,char*) ;
+ char* bfd_get_section_name (int *,int *) ;
+ scalar_t__ bfd_section_size (int *,int *) ;
+ int bfd_section_vma (int *,int *) ;
+ int isdigit (char const) ;
+ int make_cleanup (int ,struct stab_section_list*) ;
+ scalar_t__ strncmp (char const*,char*,int) ;
+ int xfree ;
+ scalar_t__ xmalloc (int) ;
 
 __attribute__((used)) static void
 coff_locate_sections (bfd *abfd, asection *sectp, void *csip)
@@ -51,27 +51,27 @@ coff_locate_sections (bfd *abfd, asection *sectp, void *csip)
     {
       const char *s;
 
-      /* We can have multiple .stab sections if linked with
-         --split-by-reloc.  */
+
+
       for (s = name + sizeof ".stab" - 1; *s != '\0'; s++)
-	if (!isdigit (*s))
-	  break;
+ if (!isdigit (*s))
+   break;
       if (*s == '\0')
-	{
-	  struct stab_section_list *n, **pn;
+ {
+   struct stab_section_list *n, **pn;
 
-	  n = ((struct stab_section_list *)
-	       xmalloc (sizeof (struct stab_section_list)));
-	  n->section = sectp;
-	  n->next = NULL;
-	  for (pn = &csi->stabsects; *pn != NULL; pn = &(*pn)->next)
-	    ;
-	  *pn = n;
+   n = ((struct stab_section_list *)
+        xmalloc (sizeof (struct stab_section_list)));
+   n->section = sectp;
+   n->next = ((void*)0);
+   for (pn = &csi->stabsects; *pn != ((void*)0); pn = &(*pn)->next)
+     ;
+   *pn = n;
 
-	  /* This will be run after coffstab_build_psymtabs is called
-	     in coff_symfile_read, at which point we no longer need
-	     the information.  */
-	  make_cleanup (xfree, n);
-	}
+
+
+
+   make_cleanup (xfree, n);
+ }
     }
 }

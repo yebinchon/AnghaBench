@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {scalar_t__ waiting; int /*<<< orphan*/  scratch_pool; TYPE_3__* current; int /*<<< orphan*/  baton; int /*<<< orphan*/  (* cdata_cb ) (TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;} ;
-typedef  TYPE_1__ svn_ra_serf__xml_context_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  apr_size_t ;
-struct TYPE_7__ {int /*<<< orphan*/  state; int /*<<< orphan*/ * cdata; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  END_CALLBACK (TYPE_1__*) ; 
- int /*<<< orphan*/  START_CALLBACK (TYPE_1__*) ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  stub1 (TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_pool_clear (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_stringbuf_appendbytes (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {scalar_t__ waiting; int scratch_pool; TYPE_3__* current; int baton; int (* cdata_cb ) (TYPE_3__*,int ,int ,char const*,int ,int ) ;} ;
+typedef TYPE_1__ svn_ra_serf__xml_context_t ;
+typedef int svn_error_t ;
+typedef int apr_size_t ;
+struct TYPE_7__ {int state; int * cdata; } ;
+
+
+ int END_CALLBACK (TYPE_1__*) ;
+ int START_CALLBACK (TYPE_1__*) ;
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int stub1 (TYPE_3__*,int ,int ,char const*,int ,int ) ;
+ int svn_pool_clear (int ) ;
+ int svn_stringbuf_appendbytes (int *,char const*,int ) ;
 
 __attribute__((used)) static svn_error_t *
 xml_cb_cdata(svn_ra_serf__xml_context_t *xmlctx,
              const char *data,
              apr_size_t len)
 {
-  /* If we are waiting for a closing tag, then we are uninterested in
-     the cdata. Just return.  */
+
+
   if (xmlctx->waiting > 0)
     return SVN_NO_ERROR;
 
-  /* If the current state is collecting cdata, then copy the cdata.  */
-  if (xmlctx->current->cdata != NULL)
+
+  if (xmlctx->current->cdata != ((void*)0))
     {
       svn_stringbuf_appendbytes(xmlctx->current->cdata, data, len);
     }
-  /* ... else if a CDATA_CB has been supplied, then invoke it for
-     all states.  */
-  else if (xmlctx->cdata_cb != NULL)
+
+
+  else if (xmlctx->cdata_cb != ((void*)0))
     {
       START_CALLBACK(xmlctx);
       SVN_ERR(xmlctx->cdata_cb(xmlctx->current,

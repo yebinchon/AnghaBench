@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * sdlRestrictionIntPtr ;
-typedef  int /*<<< orphan*/  sdlRestrictionInt ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * malloc (int) ; 
+
+
+
+typedef int * sdlRestrictionIntPtr ;
+typedef int sdlRestrictionInt ;
+
+
+ int * malloc (int) ;
 
 __attribute__((used)) static void make_persistent_restriction_int(void *data)
 {
-	sdlRestrictionIntPtr *rest = (sdlRestrictionIntPtr *)data;
-	sdlRestrictionIntPtr prest = NULL;
+ sdlRestrictionIntPtr *rest = (sdlRestrictionIntPtr *)data;
+ sdlRestrictionIntPtr prest = ((void*)0);
 
-	prest = malloc(sizeof(sdlRestrictionInt));
-	*prest = **rest;
-	*rest = prest;
+ prest = malloc(sizeof(sdlRestrictionInt));
+ *prest = **rest;
+ *rest = prest;
 }

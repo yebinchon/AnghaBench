@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_14__ {int /*<<< orphan*/  metadata; } ;
+
+
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+struct TYPE_14__ {int metadata; } ;
 struct TYPE_13__ {int member_0; int member_1; } ;
-struct TYPE_12__ {TYPE_1__* data; int /*<<< orphan*/  tag; struct TYPE_12__* next; } ;
-struct TYPE_11__ {int /*<<< orphan*/  meta; int /*<<< orphan*/  element_id; int /*<<< orphan*/  end; int /*<<< orphan*/  start; } ;
-typedef  TYPE_1__ ID3v2ExtraMetaCHAP ;
-typedef  TYPE_2__ ID3v2ExtraMeta ;
-typedef  TYPE_3__ AVRational ;
-typedef  int /*<<< orphan*/  AVFormatContext ;
-typedef  TYPE_4__ AVChapter ;
+struct TYPE_12__ {TYPE_1__* data; int tag; struct TYPE_12__* next; } ;
+struct TYPE_11__ {int meta; int element_id; int end; int start; } ;
+typedef TYPE_1__ ID3v2ExtraMetaCHAP ;
+typedef TYPE_2__ ID3v2ExtraMeta ;
+typedef TYPE_3__ AVRational ;
+typedef int AVFormatContext ;
+typedef TYPE_4__ AVChapter ;
 
-/* Variables and functions */
- int av_dict_copy (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int av_dynarray_add_nofree (TYPE_1__***,int*,TYPE_1__*) ; 
- int /*<<< orphan*/  av_freep (TYPE_1__***) ; 
- TYPE_4__* avpriv_new_chapter (int /*<<< orphan*/ *,int,TYPE_3__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ strcmp (int /*<<< orphan*/ ,char*) ; 
+
+ int av_dict_copy (int *,int ,int ) ;
+ int av_dynarray_add_nofree (TYPE_1__***,int*,TYPE_1__*) ;
+ int av_freep (TYPE_1__***) ;
+ TYPE_4__* avpriv_new_chapter (int *,int,TYPE_3__,int ,int ,int ) ;
+ scalar_t__ strcmp (int ,char*) ;
 
 int ff_id3v2_parse_chapters(AVFormatContext *s, ID3v2ExtraMeta **extra_meta)
 {
     int ret = 0;
     ID3v2ExtraMeta *cur;
     AVRational time_base = {1, 1000};
-    ID3v2ExtraMetaCHAP **chapters = NULL;
+    ID3v2ExtraMetaCHAP **chapters = ((void*)0);
     int num_chapters = 0;
     int i;
 
-    // since extra_meta is a linked list where elements are prepended,
-    // we need to reverse the order of chapters
+
+
     for (cur = *extra_meta; cur; cur = cur->next) {
         ID3v2ExtraMetaCHAP *chap;
 

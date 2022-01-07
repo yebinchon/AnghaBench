@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct lev_copyexec_aux_transaction_cmd_kill {int signal; int transaction_id; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LEV_COPYEXEC_AUX_TRANSACTION_CMD_KILL ; 
- int SIGINT ; 
- int SIGKILL ; 
- int SIGTERM ; 
- int /*<<< orphan*/  T ; 
- int /*<<< orphan*/  kprintf (char*,...) ; 
- struct lev_copyexec_aux_transaction_cmd_kill* tb_alloc_logevent (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int transactions ; 
+
+ int LEV_COPYEXEC_AUX_TRANSACTION_CMD_KILL ;
+ int SIGINT ;
+ int SIGKILL ;
+ int SIGTERM ;
+ int T ;
+ int kprintf (char*,...) ;
+ struct lev_copyexec_aux_transaction_cmd_kill* tb_alloc_logevent (int *,int ,int) ;
+ int transactions ;
 
 __attribute__((used)) static int kill_transaction (int signal, int transaction_id) {
   if (transaction_id < 1) {

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tmp_storage ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int tmp_storage ;
 struct TYPE_3__ {unsigned char* session_id; int session_id_length; } ;
-typedef  TYPE_1__ SSL_SESSION ;
+typedef TYPE_1__ SSL_SESSION ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memcpy (unsigned char*,unsigned char*,int) ; 
- int /*<<< orphan*/  memset (unsigned char*,int /*<<< orphan*/ ,int) ; 
+
+ int memcpy (unsigned char*,unsigned char*,int) ;
+ int memset (unsigned char*,int ,int) ;
 
 __attribute__((used)) static unsigned long ssl_session_hash(const SSL_SESSION *a)
 {

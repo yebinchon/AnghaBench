@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct resource_data {int dummy; } ;
-struct TYPE_9__ {int /*<<< orphan*/  Size; int /*<<< orphan*/  CodePage; int /*<<< orphan*/  OffsetToData; } ;
-struct TYPE_8__ {scalar_t__ NumberOfNamedEntries; scalar_t__ NumberOfIdEntries; int /*<<< orphan*/  MinorVersion; int /*<<< orphan*/  MajorVersion; } ;
-struct TYPE_7__ {int OffsetToDirectory; int OffsetToData; int /*<<< orphan*/  Id; } ;
-typedef  int /*<<< orphan*/  QUEUEDUPDATES ;
-typedef  int /*<<< orphan*/  LPWSTR ;
-typedef  int /*<<< orphan*/  LANGID ;
-typedef  TYPE_1__ IMAGE_RESOURCE_DIRECTORY_ENTRY ;
-typedef  TYPE_2__ IMAGE_RESOURCE_DIRECTORY ;
-typedef  TYPE_3__ IMAGE_RESOURCE_DATA_ENTRY ;
-typedef  scalar_t__ DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
+struct TYPE_9__ {int Size; int CodePage; int OffsetToData; } ;
+struct TYPE_8__ {scalar_t__ NumberOfNamedEntries; scalar_t__ NumberOfIdEntries; int MinorVersion; int MajorVersion; } ;
+struct TYPE_7__ {int OffsetToDirectory; int OffsetToData; int Id; } ;
+typedef int QUEUEDUPDATES ;
+typedef int LPWSTR ;
+typedef int LANGID ;
+typedef TYPE_1__ IMAGE_RESOURCE_DIRECTORY_ENTRY ;
+typedef TYPE_2__ IMAGE_RESOURCE_DIRECTORY ;
+typedef TYPE_3__ IMAGE_RESOURCE_DATA_ENTRY ;
+typedef scalar_t__ DWORD ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct resource_data*) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  TRUE ; 
- void* address_from_rva (void*,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- struct resource_data* allocate_resource_data (int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  res_free_str (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  resource_dup_string (TYPE_2__ const*,TYPE_1__ const*) ; 
- int /*<<< orphan*/  update_add_resource (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct resource_data*,int /*<<< orphan*/ ) ; 
+
+ int FALSE ;
+ int GetProcessHeap () ;
+ int HeapFree (int ,int ,struct resource_data*) ;
+ int TRACE (char*,int ,int ,scalar_t__,scalar_t__) ;
+ int TRUE ;
+ void* address_from_rva (void*,scalar_t__,int ,int ) ;
+ struct resource_data* allocate_resource_data (int ,int ,void*,int ,int ) ;
+ int res_free_str (int ) ;
+ int resource_dup_string (TYPE_2__ const*,TYPE_1__ const*) ;
+ int update_add_resource (int *,int ,int ,int ,struct resource_data*,int ) ;
 
 __attribute__((used)) static BOOL enumerate_mapped_resources( QUEUEDUPDATES *updates,
                              void *base, DWORD mapping_size,

@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  _GLFWmonitor ;
-struct TYPE_4__ {int /*<<< orphan*/  context; } ;
-struct TYPE_5__ {int monitorsSize; int /*<<< orphan*/  compositor; int /*<<< orphan*/  cursorSurface; int /*<<< orphan*/  defaultCursor; int /*<<< orphan*/  cursorTheme; scalar_t__ shm; scalar_t__ pointer; int /*<<< orphan*/  display; TYPE_1__ xkb; int /*<<< orphan*/  monitors; int /*<<< orphan*/  registry; } ;
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int _GLFWmonitor ;
+struct TYPE_4__ {int context; } ;
+struct TYPE_5__ {int monitorsSize; int compositor; int cursorSurface; int defaultCursor; int cursorTheme; scalar_t__ shm; scalar_t__ pointer; int display; TYPE_1__ xkb; int monitors; int registry; } ;
 struct TYPE_6__ {TYPE_2__ wl; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GLFW_PLATFORM_ERROR ; 
- int GL_FALSE ; 
- int GL_TRUE ; 
- TYPE_3__ _glfw ; 
- int /*<<< orphan*/  _glfwInitContextAPI () ; 
- int /*<<< orphan*/  _glfwInitJoysticks () ; 
- int /*<<< orphan*/  _glfwInitTimer () ; 
- int /*<<< orphan*/  _glfwInputError (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  calloc (int,int) ; 
- int /*<<< orphan*/  registryListener ; 
- int /*<<< orphan*/  wl_compositor_create_surface (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wl_cursor_theme_get_cursor (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  wl_cursor_theme_load (int /*<<< orphan*/ *,int,scalar_t__) ; 
- int /*<<< orphan*/  wl_display_connect (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  wl_display_get_registry (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wl_display_roundtrip (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wl_registry_add_listener (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  xkb_context_new (int /*<<< orphan*/ ) ; 
+
+ int GLFW_PLATFORM_ERROR ;
+ int GL_FALSE ;
+ int GL_TRUE ;
+ TYPE_3__ _glfw ;
+ int _glfwInitContextAPI () ;
+ int _glfwInitJoysticks () ;
+ int _glfwInitTimer () ;
+ int _glfwInputError (int ,char*) ;
+ int calloc (int,int) ;
+ int registryListener ;
+ int wl_compositor_create_surface (int ) ;
+ int wl_cursor_theme_get_cursor (int ,char*) ;
+ int wl_cursor_theme_load (int *,int,scalar_t__) ;
+ int wl_display_connect (int *) ;
+ int wl_display_get_registry (int ) ;
+ int wl_display_roundtrip (int ) ;
+ int wl_registry_add_listener (int ,int *,int *) ;
+ int xkb_context_new (int ) ;
 
 int _glfwPlatformInit(void)
 {
-    _glfw.wl.display = wl_display_connect(NULL);
+    _glfw.wl.display = wl_display_connect(((void*)0));
     if (!_glfw.wl.display)
     {
         _glfwInputError(GLFW_PLATFORM_ERROR,
@@ -49,7 +49,7 @@ int _glfwPlatformInit(void)
     }
 
     _glfw.wl.registry = wl_display_get_registry(_glfw.wl.display);
-    wl_registry_add_listener(_glfw.wl.registry, &registryListener, NULL);
+    wl_registry_add_listener(_glfw.wl.registry, &registryListener, ((void*)0));
 
     _glfw.wl.monitors = calloc(4, sizeof(_GLFWmonitor*));
     _glfw.wl.monitorsSize = 4;
@@ -62,10 +62,10 @@ int _glfwPlatformInit(void)
         return GL_FALSE;
     }
 
-    // Sync so we got all registry objects
+
     wl_display_roundtrip(_glfw.wl.display);
 
-    // Sync so we got all initial output events
+
     wl_display_roundtrip(_glfw.wl.display);
 
     if (!_glfwInitContextAPI())
@@ -76,7 +76,7 @@ int _glfwPlatformInit(void)
 
     if (_glfw.wl.pointer && _glfw.wl.shm)
     {
-        _glfw.wl.cursorTheme = wl_cursor_theme_load(NULL, 32, _glfw.wl.shm);
+        _glfw.wl.cursorTheme = wl_cursor_theme_load(((void*)0), 32, _glfw.wl.shm);
         if (!_glfw.wl.cursorTheme)
         {
             _glfwInputError(GLFW_PLATFORM_ERROR,

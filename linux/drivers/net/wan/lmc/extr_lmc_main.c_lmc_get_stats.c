@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct net_device_stats {int rx_missed_errors; } ;
 struct net_device {int dummy; } ;
-struct TYPE_6__ {TYPE_1__* lmc_device; int /*<<< orphan*/  lmc_lock; } ;
-typedef  TYPE_2__ lmc_softc_t ;
+struct TYPE_6__ {TYPE_1__* lmc_device; int lmc_lock; } ;
+typedef TYPE_2__ lmc_softc_t ;
 struct TYPE_5__ {struct net_device_stats stats; } ;
 
-/* Variables and functions */
- int LMC_CSR_READ (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  csr_missed_frames ; 
- TYPE_2__* dev_to_sc (struct net_device*) ; 
- int /*<<< orphan*/  lmc_trace (struct net_device*,char*) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
+
+ int LMC_CSR_READ (TYPE_2__*,int ) ;
+ int csr_missed_frames ;
+ TYPE_2__* dev_to_sc (struct net_device*) ;
+ int lmc_trace (struct net_device*,char*) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
 
 __attribute__((used)) static struct net_device_stats *lmc_get_stats(struct net_device *dev)
 {

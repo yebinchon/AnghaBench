@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  yrmcds ;
-typedef  int uint16_t ;
 
-/* Variables and functions */
- scalar_t__ atoi (char*) ; 
- int /*<<< orphan*/  check_error (int /*<<< orphan*/ ) ; 
- char* getenv (char*) ; 
- int /*<<< orphan*/  yrmcds_connect (int /*<<< orphan*/ *,char const*,int) ; 
+
+
+
+typedef int yrmcds ;
+typedef int uint16_t ;
+
+
+ scalar_t__ atoi (char*) ;
+ int check_error (int ) ;
+ char* getenv (char*) ;
+ int yrmcds_connect (int *,char const*,int) ;
 
 __attribute__((used)) static yrmcds* get_yrmcds(yrmcds* c) {
     const char* host = getenv("YRMCDS_HOST");
-    if( host == NULL ) {
-        return NULL;
+    if( host == ((void*)0) ) {
+        return ((void*)0);
     }
     uint16_t port = 11211;
     if( getenv("YRMCDS_PORT") ) {

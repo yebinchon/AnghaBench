@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_3__ {int /*<<< orphan*/  base; } ;
-struct TYPE_4__ {int /*<<< orphan*/  total_out; scalar_t__ buffer; TYPE_1__ stream; int /*<<< orphan*/  hmac; } ;
-typedef  TYPE_2__ mz_stream_wzaes ;
-typedef  scalar_t__ int32_t ;
 
-/* Variables and functions */
- scalar_t__ MZ_PARAM_ERROR ; 
- int /*<<< orphan*/  memcpy (scalar_t__,int /*<<< orphan*/  const*,scalar_t__) ; 
- int /*<<< orphan*/  mz_crypt_hmac_update (int /*<<< orphan*/ ,scalar_t__,scalar_t__) ; 
- scalar_t__ mz_stream_write (int /*<<< orphan*/ ,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  mz_stream_wzaes_ctr_encrypt (void*,int /*<<< orphan*/ *,scalar_t__) ; 
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_3__ {int base; } ;
+struct TYPE_4__ {int total_out; scalar_t__ buffer; TYPE_1__ stream; int hmac; } ;
+typedef TYPE_2__ mz_stream_wzaes ;
+typedef scalar_t__ int32_t ;
+
+
+ scalar_t__ MZ_PARAM_ERROR ;
+ int memcpy (scalar_t__,int const*,scalar_t__) ;
+ int mz_crypt_hmac_update (int ,scalar_t__,scalar_t__) ;
+ scalar_t__ mz_stream_write (int ,scalar_t__,scalar_t__) ;
+ int mz_stream_wzaes_ctr_encrypt (void*,int *,scalar_t__) ;
 
 int32_t mz_stream_wzaes_write(void *stream, const void *buf, int32_t size)
 {

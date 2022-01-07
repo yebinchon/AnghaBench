@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GCRY_MD_SHA1 ; 
- int gnutls_hmac_vector (int /*<<< orphan*/ ,int /*<<< orphan*/  const*,size_t,size_t,int /*<<< orphan*/  const**,size_t const*,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int u8 ;
+
+
+ int GCRY_MD_SHA1 ;
+ int gnutls_hmac_vector (int ,int const*,size_t,size_t,int const**,size_t const*,int *) ;
 
 int hmac_sha1_vector(const u8 *key, size_t key_len, size_t num_elem,
-		     const u8 *addr[], const size_t *len, u8 *mac)
+       const u8 *addr[], const size_t *len, u8 *mac)
 {
-	return gnutls_hmac_vector(GCRY_MD_SHA1, key, key_len, num_elem, addr,
-				  len, mac);
+ return gnutls_hmac_vector(GCRY_MD_SHA1, key, key_len, num_elem, addr,
+      len, mac);
 }

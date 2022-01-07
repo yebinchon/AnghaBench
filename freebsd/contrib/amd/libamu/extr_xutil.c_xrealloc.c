@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ voidp ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D_MEM ; 
- int /*<<< orphan*/  XLOG_DEBUG ; 
- int /*<<< orphan*/  XLOG_FATAL ; 
- int /*<<< orphan*/  abort () ; 
- scalar_t__ amuDebug (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  going_down (int) ; 
- int /*<<< orphan*/  plog (int /*<<< orphan*/ ,char*,...) ; 
- scalar_t__ realloc (scalar_t__,unsigned int) ; 
- scalar_t__ xmalloc (unsigned int) ; 
+
+
+
+typedef scalar_t__ voidp ;
+
+
+ int D_MEM ;
+ int XLOG_DEBUG ;
+ int XLOG_FATAL ;
+ int abort () ;
+ scalar_t__ amuDebug (int ) ;
+ int going_down (int) ;
+ int plog (int ,char*,...) ;
+ scalar_t__ realloc (scalar_t__,unsigned int) ;
+ scalar_t__ xmalloc (unsigned int) ;
 
 voidp
 xrealloc(voidp ptr, int len)

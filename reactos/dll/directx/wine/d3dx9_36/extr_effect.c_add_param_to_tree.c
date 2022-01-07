@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct d3dx_parameter {char* full_name; char* name; int element_count; unsigned int member_count; struct d3dx_parameter* members; TYPE_1__* top_level_param; int /*<<< orphan*/  rb_entry; } ;
-struct d3dx9_base_effect {int /*<<< orphan*/  param_tree; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct d3dx_parameter {char* full_name; char* name; int element_count; unsigned int member_count; struct d3dx_parameter* members; TYPE_1__* top_level_param; int rb_entry; } ;
+struct d3dx9_base_effect {int param_tree; } ;
 struct TYPE_2__ {unsigned int annotation_count; struct d3dx_parameter* annotations; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*) ; 
- int /*<<< orphan*/  TRACE (char*,...) ; 
- int /*<<< orphan*/  debugstr_a (char*) ; 
- void* heap_alloc (unsigned int) ; 
- scalar_t__ is_top_level_parameter (struct d3dx_parameter*) ; 
- int /*<<< orphan*/  memcpy (char*,char const*,unsigned int) ; 
- int /*<<< orphan*/  sprintf (char*,char*,unsigned int) ; 
- int strlen (char const*) ; 
- int /*<<< orphan*/  wine_rb_put (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *) ; 
+
+ int ERR (char*) ;
+ int TRACE (char*,...) ;
+ int debugstr_a (char*) ;
+ void* heap_alloc (unsigned int) ;
+ scalar_t__ is_top_level_parameter (struct d3dx_parameter*) ;
+ int memcpy (char*,char const*,unsigned int) ;
+ int sprintf (char*,char*,unsigned int) ;
+ int strlen (char const*) ;
+ int wine_rb_put (int *,char*,int *) ;
 
 __attribute__((used)) static void add_param_to_tree(struct d3dx9_base_effect *base, struct d3dx_parameter *param,
         struct d3dx_parameter *parent, char separator, unsigned int element)
 {
-    const char *parent_name = parent ? parent->full_name : NULL;
+    const char *parent_name = parent ? parent->full_name : ((void*)0);
     unsigned int i;
 
     TRACE("Adding parameter %p (%s - parent %p, element %u) to the rbtree.\n",

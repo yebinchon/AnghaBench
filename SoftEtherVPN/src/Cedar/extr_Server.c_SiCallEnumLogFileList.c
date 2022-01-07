@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  SERVER ;
-typedef  int /*<<< orphan*/  RPC_ENUM_LOG_FILE ;
-typedef  int /*<<< orphan*/  PACK ;
-typedef  int /*<<< orphan*/  FARM_MEMBER ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FreePack (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FreeRpcEnumLogFile (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  InRpcEnumLogFile (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * NewPack () ; 
- int /*<<< orphan*/  OutRpcEnumLogFile (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PackAddStr (int /*<<< orphan*/ *,char*,char*) ; 
- int /*<<< orphan*/ * SiCallTask (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  Zero (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int SERVER ;
+typedef int RPC_ENUM_LOG_FILE ;
+typedef int PACK ;
+typedef int FARM_MEMBER ;
+
+
+ int FreePack (int *) ;
+ int FreeRpcEnumLogFile (int *) ;
+ int InRpcEnumLogFile (int *,int *) ;
+ int * NewPack () ;
+ int OutRpcEnumLogFile (int *,int *) ;
+ int PackAddStr (int *,char*,char*) ;
+ int * SiCallTask (int *,int *,char*) ;
+ int Zero (int *,int) ;
 
 bool SiCallEnumLogFileList(SERVER *s, FARM_MEMBER *f, RPC_ENUM_LOG_FILE *t, char *hubname)
 {
-	PACK *p;
-	// Validate arguments
-	if (s == NULL || f == NULL)
-	{
-		return false;
-	}
+ PACK *p;
 
-	p = NewPack();
-	OutRpcEnumLogFile(p, t);
-	FreeRpcEnumLogFile(t);
-	Zero(t, sizeof(RPC_ENUM_LOG_FILE));
+ if (s == ((void*)0) || f == ((void*)0))
+ {
+  return 0;
+ }
 
-	PackAddStr(p, "HubName", hubname);
+ p = NewPack();
+ OutRpcEnumLogFile(p, t);
+ FreeRpcEnumLogFile(t);
+ Zero(t, sizeof(RPC_ENUM_LOG_FILE));
 
-	p = SiCallTask(f, p, "enumlogfilelist");
+ PackAddStr(p, "HubName", hubname);
 
-	if (p == NULL)
-	{
-		return false;
-	}
+ p = SiCallTask(f, p, "enumlogfilelist");
 
-	InRpcEnumLogFile(t, p);
-	FreePack(p);
+ if (p == ((void*)0))
+ {
+  return 0;
+ }
 
-	return true;
+ InRpcEnumLogFile(t, p);
+ FreePack(p);
+
+ return 1;
 }

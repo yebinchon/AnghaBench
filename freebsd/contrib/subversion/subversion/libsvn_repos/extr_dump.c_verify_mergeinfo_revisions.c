@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_repos_notify_func_t ;
-typedef  int /*<<< orphan*/  svn_mergeinfo_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  _ (char*) ; 
- scalar_t__ apr_hash_count (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  notify_warning (int /*<<< orphan*/ *,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  svn_mergeinfo__filter_mergeinfo_by_ranges (int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_mergeinfo_parse (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_repos_notify_warning_found_old_mergeinfo ; 
+
+
+
+typedef scalar_t__ svn_revnum_t ;
+typedef int svn_repos_notify_func_t ;
+typedef int svn_mergeinfo_t ;
+typedef int svn_error_t ;
+typedef int svn_boolean_t ;
+typedef int apr_pool_t ;
+
+
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int TRUE ;
+ int _ (char*) ;
+ scalar_t__ apr_hash_count (int ) ;
+ int notify_warning (int *,int ,void*,int ,int ,scalar_t__) ;
+ int svn_mergeinfo__filter_mergeinfo_by_ranges (int *,int ,scalar_t__,int ,int ,int *,int *) ;
+ int svn_mergeinfo_parse (int *,char const*,int *) ;
+ int svn_repos_notify_warning_found_old_mergeinfo ;
 
 __attribute__((used)) static svn_error_t *
 verify_mergeinfo_revisions(svn_boolean_t *found_old_mergeinfo,

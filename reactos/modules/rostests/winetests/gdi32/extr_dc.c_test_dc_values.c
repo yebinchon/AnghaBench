@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * HDC ;
-typedef  int COLORREF ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * CreateDCA (char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DeleteDC (int /*<<< orphan*/ *) ; 
- int GetBkColor (int /*<<< orphan*/ *) ; 
- int GetTextCharacterExtra (int /*<<< orphan*/ *) ; 
- int GetTextColor (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  MM_LOMETRIC ; 
- int /*<<< orphan*/  MM_TEXT ; 
- int SetBkColor (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  SetMapMode (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetTextCharacterExtra (int /*<<< orphan*/ *,int) ; 
- int SetTextColor (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
+
+
+
+typedef int * HDC ;
+typedef int COLORREF ;
+
+
+ int * CreateDCA (char*,int *,int *,int *) ;
+ int DeleteDC (int *) ;
+ int GetBkColor (int *) ;
+ int GetTextCharacterExtra (int *) ;
+ int GetTextColor (int *) ;
+ int MM_LOMETRIC ;
+ int MM_TEXT ;
+ int SetBkColor (int *,int) ;
+ int SetMapMode (int *,int ) ;
+ int SetTextCharacterExtra (int *,int) ;
+ int SetTextColor (int *,int) ;
+ int ok (int,char*,...) ;
 
 __attribute__((used)) static void test_dc_values(void)
 {
-    HDC hdc = CreateDCA("DISPLAY", NULL, NULL, NULL);
+    HDC hdc = CreateDCA("DISPLAY", ((void*)0), ((void*)0), ((void*)0));
     COLORREF color;
     int extra;
 
-    ok( hdc != NULL, "CreateDC failed\n" );
+    ok( hdc != ((void*)0), "CreateDC failed\n" );
     color = SetBkColor( hdc, 0x12345678 );
     ok( color == 0xffffff, "initial color %08x\n", color );
     color = GetBkColor( hdc );

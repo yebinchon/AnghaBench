@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  SrcPos ;
-typedef  int /*<<< orphan*/  Expr ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TOKEN_LBRACKET ; 
- int /*<<< orphan*/  TOKEN_LPAREN ; 
- int /*<<< orphan*/  TOKEN_RBRACKET ; 
- int /*<<< orphan*/  TOKEN_RPAREN ; 
- int /*<<< orphan*/  expect_token (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  match_keyword (int /*<<< orphan*/ ) ; 
- scalar_t__ match_token (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * new_expr_new (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * parse_expr () ; 
- int /*<<< orphan*/  undef_keyword ; 
+
+
+
+typedef int SrcPos ;
+typedef int Expr ;
+
+
+ int TOKEN_LBRACKET ;
+ int TOKEN_LPAREN ;
+ int TOKEN_RBRACKET ;
+ int TOKEN_RPAREN ;
+ int expect_token (int ) ;
+ int match_keyword (int ) ;
+ scalar_t__ match_token (int ) ;
+ int * new_expr_new (int ,int *,int *,int *) ;
+ int * parse_expr () ;
+ int undef_keyword ;
 
 Expr *parse_expr_new(SrcPos pos) {
-    Expr *alloc = NULL;
+    Expr *alloc = ((void*)0);
     if (match_token(TOKEN_LPAREN)) {
         alloc = parse_expr();
         expect_token(TOKEN_RPAREN);
     }
-    Expr *len = NULL;
+    Expr *len = ((void*)0);
     if (match_token(TOKEN_LBRACKET)) {
         len = parse_expr();
         expect_token(TOKEN_RBRACKET);
     }
-    Expr *arg = NULL;
+    Expr *arg = ((void*)0);
     if (!match_keyword(undef_keyword)) {
         arg = parse_expr();
     }

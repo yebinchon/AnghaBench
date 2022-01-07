@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wchar_t ;
-typedef  int /*<<< orphan*/  UINT ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int wchar_t ;
+typedef int UINT ;
 struct TYPE_3__ {char* CommonName; char* Organization; char* Unit; char* State; char* Local; char* Country; } ;
-typedef  TYPE_1__ NAME ;
+typedef TYPE_1__ NAME ;
 
-/* Variables and functions */
- int /*<<< orphan*/  UniStrCpy (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
+
+ int UniStrCpy (int *,int ,char*) ;
 
 void GetPrintNameFromName(wchar_t *str, UINT size, NAME *name)
 {
-	// Validate arguments
-	if (str == NULL || name == NULL)
-	{
-		return;
-	}
 
-	if (name->CommonName != NULL)
-	{
-		UniStrCpy(str, size, name->CommonName);
-	}
-	else if (name->Organization != NULL)
-	{
-		UniStrCpy(str, size, name->Organization);
-	}
-	else if (name->Unit != NULL)
-	{
-		UniStrCpy(str, size, name->Unit);
-	}
-	else if (name->State != NULL)
-	{
-		UniStrCpy(str, size, name->State);
-	}
-	else if (name->Local != NULL)
-	{
-		UniStrCpy(str, size, name->Local);
-	}
-	else if (name->Country != NULL)
-	{
-		UniStrCpy(str, size, name->Country);
-	}
-	else
-	{
-		UniStrCpy(str, size, L"untitled");
-	}
+ if (str == ((void*)0) || name == ((void*)0))
+ {
+  return;
+ }
+
+ if (name->CommonName != ((void*)0))
+ {
+  UniStrCpy(str, size, name->CommonName);
+ }
+ else if (name->Organization != ((void*)0))
+ {
+  UniStrCpy(str, size, name->Organization);
+ }
+ else if (name->Unit != ((void*)0))
+ {
+  UniStrCpy(str, size, name->Unit);
+ }
+ else if (name->State != ((void*)0))
+ {
+  UniStrCpy(str, size, name->State);
+ }
+ else if (name->Local != ((void*)0))
+ {
+  UniStrCpy(str, size, name->Local);
+ }
+ else if (name->Country != ((void*)0))
+ {
+  UniStrCpy(str, size, name->Country);
+ }
+ else
+ {
+  UniStrCpy(str, size, L"untitled");
+ }
 }

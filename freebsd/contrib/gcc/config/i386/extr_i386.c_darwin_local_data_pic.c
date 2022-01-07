@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  rtx ;
 
-/* Variables and functions */
- scalar_t__ GET_CODE (int /*<<< orphan*/ ) ; 
- scalar_t__ LABEL_REF ; 
- scalar_t__ MINUS ; 
- scalar_t__ SYMBOL_REF ; 
- int /*<<< orphan*/  XEXP (int /*<<< orphan*/ ,int) ; 
- char* XSTR (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strcmp (char const*,char*) ; 
+
+
+
+typedef int rtx ;
+
+
+ scalar_t__ GET_CODE (int ) ;
+ scalar_t__ LABEL_REF ;
+ scalar_t__ MINUS ;
+ scalar_t__ SYMBOL_REF ;
+ int XEXP (int ,int) ;
+ char* XSTR (int ,int ) ;
+ int strcmp (char const*,char*) ;
 
 __attribute__((used)) static bool
 darwin_local_data_pic (rtx disp)
@@ -32,9 +32,9 @@ darwin_local_data_pic (rtx disp)
           {
             const char *sym_name = XSTR (XEXP (disp, 1), 0);
             if (! strcmp (sym_name, "<pic base>"))
-              return true;
+              return 1;
           }
     }
 
-  return false;
+  return 0;
 }

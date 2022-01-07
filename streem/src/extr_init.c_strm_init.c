@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  strm_state ;
 
-/* Variables and functions */
- int /*<<< orphan*/  strm_array_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strm_csv_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strm_graph_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strm_iter_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strm_kvs_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strm_latch_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strm_math_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strm_number_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strm_socket_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strm_string_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strm_time_init (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int strm_state ;
+
+
+ int strm_array_init (int *) ;
+ int strm_csv_init (int *) ;
+ int strm_graph_init (int *) ;
+ int strm_iter_init (int *) ;
+ int strm_kvs_init (int *) ;
+ int strm_latch_init (int *) ;
+ int strm_math_init (int *) ;
+ int strm_number_init (int *) ;
+ int strm_socket_init (int *) ;
+ int strm_string_init (int *) ;
+ int strm_time_init (int *) ;
 
 void
 strm_init(strm_state* state)

@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int UInt32 ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int UInt32 ;
 struct TYPE_2__ {int ip; int methodId; unsigned int delta; } ;
-typedef  int /*<<< orphan*/  SRes ;
-typedef  int /*<<< orphan*/  ISzAllocPtr ;
-typedef  TYPE_1__ CBraState ;
-typedef  scalar_t__ Byte ;
+typedef int SRes ;
+typedef int ISzAllocPtr ;
+typedef TYPE_1__ CBraState ;
+typedef scalar_t__ Byte ;
 
-/* Variables and functions */
- int GetUi32 (scalar_t__ const*) ; 
- int /*<<< orphan*/  SZ_ERROR_UNSUPPORTED ; 
- int /*<<< orphan*/  SZ_OK ; 
- int /*<<< orphan*/  UNUSED_VAR (int /*<<< orphan*/ ) ; 
-#define  XZ_ID_ARM 132 
-#define  XZ_ID_ARMT 131 
- int XZ_ID_Delta ; 
-#define  XZ_ID_IA64 130 
-#define  XZ_ID_PPC 129 
-#define  XZ_ID_SPARC 128 
+
+ int GetUi32 (scalar_t__ const*) ;
+ int SZ_ERROR_UNSUPPORTED ;
+ int SZ_OK ;
+ int UNUSED_VAR (int ) ;
+
+
+ int XZ_ID_Delta ;
+
+
+
 
 __attribute__((used)) static SRes BraState_SetProps(void *pp, const Byte *props, size_t propSize, ISzAllocPtr alloc)
 {
@@ -48,17 +48,17 @@ __attribute__((used)) static SRes BraState_SetProps(void *pp, const Byte *props,
       UInt32 v = GetUi32(props);
       switch (p->methodId)
       {
-        case XZ_ID_PPC:
-        case XZ_ID_ARM:
-        case XZ_ID_SPARC:
+        case 129:
+        case 132:
+        case 128:
           if ((v & 3) != 0)
             return SZ_ERROR_UNSUPPORTED;
           break;
-        case XZ_ID_ARMT:
+        case 131:
           if ((v & 1) != 0)
             return SZ_ERROR_UNSUPPORTED;
           break;
-        case XZ_ID_IA64:
+        case 130:
           if ((v & 0xF) != 0)
             return SZ_ERROR_UNSUPPORTED;
           break;

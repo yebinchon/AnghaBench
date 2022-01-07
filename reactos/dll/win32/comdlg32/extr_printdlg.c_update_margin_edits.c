@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  pagesetup_data ;
-typedef  scalar_t__ WORD ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  HWND ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SetDlgItemTextW (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ *) ; 
- scalar_t__ edt4 ; 
- scalar_t__ edt7 ; 
- int /*<<< orphan*/ * element_from_margin_id (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  pagesetup_get_margin_rect (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  size2str (int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int pagesetup_data ;
+typedef scalar_t__ WORD ;
+typedef int WCHAR ;
+typedef int HWND ;
+
+
+ int SetDlgItemTextW (int ,scalar_t__,int *) ;
+ scalar_t__ edt4 ;
+ scalar_t__ edt7 ;
+ int * element_from_margin_id (int ,scalar_t__) ;
+ int pagesetup_get_margin_rect (int const*) ;
+ int size2str (int const*,int ,int *) ;
 
 __attribute__((used)) static void update_margin_edits(HWND hDlg, const pagesetup_data *data, WORD id)
 {

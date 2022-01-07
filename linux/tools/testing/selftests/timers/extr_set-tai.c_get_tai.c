@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tx ;
+
+
+
+
+typedef int tx ;
 struct timex {int tai; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  adjtimex (struct timex*) ; 
- int /*<<< orphan*/  memset (struct timex*,int /*<<< orphan*/ ,int) ; 
+
+ int adjtimex (struct timex*) ;
+ int memset (struct timex*,int ,int) ;
 
 int get_tai(void)
 {
-	struct timex tx;
+ struct timex tx;
 
-	memset(&tx, 0, sizeof(tx));
+ memset(&tx, 0, sizeof(tx));
 
-	adjtimex(&tx);
-	return tx.tai;
+ adjtimex(&tx);
+ return tx.tai;
 }

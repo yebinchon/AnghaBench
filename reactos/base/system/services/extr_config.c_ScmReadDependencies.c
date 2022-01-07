@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int SIZE_T ;
-typedef  scalar_t__* LPWSTR ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  scalar_t__ DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPRINT (char*,...) ; 
- scalar_t__ ERROR_NOT_ENOUGH_MEMORY ; 
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HEAP_ZERO_MEMORY ; 
- scalar_t__* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__*) ; 
- scalar_t__ SC_GROUP_IDENTIFIERW ; 
- int /*<<< orphan*/  ScmReadString (int /*<<< orphan*/ ,char*,scalar_t__**) ; 
- int /*<<< orphan*/  memcpy (scalar_t__*,scalar_t__*,int) ; 
- int /*<<< orphan*/  wcscpy (scalar_t__*,scalar_t__*) ; 
- int wcslen (scalar_t__*) ; 
+
+
+
+typedef int WCHAR ;
+typedef int SIZE_T ;
+typedef scalar_t__* LPWSTR ;
+typedef int HKEY ;
+typedef scalar_t__ DWORD ;
+
+
+ int DPRINT (char*,...) ;
+ scalar_t__ ERROR_NOT_ENOUGH_MEMORY ;
+ scalar_t__ ERROR_SUCCESS ;
+ int GetProcessHeap () ;
+ int HEAP_ZERO_MEMORY ;
+ scalar_t__* HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,scalar_t__*) ;
+ scalar_t__ SC_GROUP_IDENTIFIERW ;
+ int ScmReadString (int ,char*,scalar_t__**) ;
+ int memcpy (scalar_t__*,scalar_t__*,int) ;
+ int wcscpy (scalar_t__*,scalar_t__*) ;
+ int wcslen (scalar_t__*) ;
 
 DWORD
 ScmReadDependencies(HKEY hServiceKey,
                     LPWSTR *lpDependencies,
                     DWORD *lpdwDependenciesLength)
 {
-    LPWSTR lpGroups = NULL;
-    LPWSTR lpServices = NULL;
+    LPWSTR lpGroups = ((void*)0);
+    LPWSTR lpServices = ((void*)0);
     SIZE_T cchGroupsLength = 0;
     SIZE_T cchServicesLength = 0;
     LPWSTR lpSrc;
@@ -44,10 +44,10 @@ ScmReadDependencies(HKEY hServiceKey,
     SIZE_T cchLength;
     SIZE_T cchTotalLength;
 
-    *lpDependencies = NULL;
+    *lpDependencies = ((void*)0);
     *lpdwDependenciesLength = 0;
 
-    /* Read the dependency values */
+
     ScmReadString(hServiceKey,
                   L"DependOnGroup",
                   &lpGroups);
@@ -56,11 +56,11 @@ ScmReadDependencies(HKEY hServiceKey,
                   L"DependOnService",
                   &lpServices);
 
-    /* Leave, if there are no dependencies */
-    if (lpGroups == NULL && lpServices == NULL)
+
+    if (lpGroups == ((void*)0) && lpServices == ((void*)0))
         return ERROR_SUCCESS;
 
-    /* Determine the total buffer size for the dependencies */
+
     if (lpGroups)
     {
         DPRINT("Groups:\n");
@@ -94,9 +94,9 @@ ScmReadDependencies(HKEY hServiceKey,
     cchTotalLength = cchGroupsLength + cchServicesLength + 1;
     DPRINT("cchTotalLength: %lu\n", cchTotalLength);
 
-    /* Allocate the common buffer for the dependencies */
+
     *lpDependencies = HeapAlloc(GetProcessHeap(), HEAP_ZERO_MEMORY, cchTotalLength * sizeof(WCHAR));
-    if (*lpDependencies == NULL)
+    if (*lpDependencies == ((void*)0))
     {
         if (lpGroups)
             HeapFree(GetProcessHeap(), 0, lpGroups);
@@ -107,10 +107,10 @@ ScmReadDependencies(HKEY hServiceKey,
         return ERROR_NOT_ENOUGH_MEMORY;
     }
 
-    /* Return the allocated buffer length in characters */
+
     *lpdwDependenciesLength = (DWORD)cchTotalLength;
 
-    /* Copy the service dependencies into the common buffer */
+
     lpDest = *lpDependencies;
     if (lpServices)
     {
@@ -121,7 +121,7 @@ ScmReadDependencies(HKEY hServiceKey,
         lpDest = lpDest + cchServicesLength;
     }
 
-    /* Copy the group dependencies into the common buffer */
+
     if (lpGroups)
     {
         lpSrc = lpGroups;
@@ -139,7 +139,7 @@ ScmReadDependencies(HKEY hServiceKey,
         }
     }
 
-    /* Free the temporary buffers */
+
     if (lpGroups)
         HeapFree(GetProcessHeap(), 0, lpGroups);
 

@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/ * gb; } ;
-struct TYPE_5__ {int high; int /*<<< orphan*/  get_number; int /*<<< orphan*/  get_model_sym; TYPE_1__ gbc; scalar_t__ overread; int /*<<< orphan*/  value; scalar_t__ low; } ;
-typedef  int /*<<< orphan*/  GetBitContext ;
-typedef  TYPE_2__ ArithCoder ;
 
-/* Variables and functions */
- int /*<<< orphan*/  arith_get_model_sym ; 
- int /*<<< orphan*/  arith_get_number ; 
- int /*<<< orphan*/  get_bits (int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int * gb; } ;
+struct TYPE_5__ {int high; int get_number; int get_model_sym; TYPE_1__ gbc; scalar_t__ overread; int value; scalar_t__ low; } ;
+typedef int GetBitContext ;
+typedef TYPE_2__ ArithCoder ;
+
+
+ int arith_get_model_sym ;
+ int arith_get_number ;
+ int get_bits (int *,int) ;
 
 __attribute__((used)) static void arith_init(ArithCoder *c, GetBitContext *gb)
 {
-    c->low           = 0;
-    c->high          = 0xFFFF;
-    c->value         = get_bits(gb, 16);
-    c->overread      = 0;
-    c->gbc.gb        = gb;
+    c->low = 0;
+    c->high = 0xFFFF;
+    c->value = get_bits(gb, 16);
+    c->overread = 0;
+    c->gbc.gb = gb;
     c->get_model_sym = arith_get_model_sym;
-    c->get_number    = arith_get_number;
+    c->get_number = arith_get_number;
 }

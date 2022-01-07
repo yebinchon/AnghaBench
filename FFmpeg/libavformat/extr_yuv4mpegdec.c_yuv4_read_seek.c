@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int int64_t ;
-struct TYPE_5__ {int packet_size; TYPE_1__* internal; int /*<<< orphan*/  pb; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int int64_t ;
+struct TYPE_5__ {int packet_size; TYPE_1__* internal; int pb; } ;
 struct TYPE_4__ {scalar_t__ data_offset; } ;
-typedef  TYPE_2__ AVFormatContext ;
+typedef TYPE_2__ AVFormatContext ;
 
-/* Variables and functions */
- int AVSEEK_FLAG_BACKWARD ; 
- int FFMAX (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  SEEK_SET ; 
- scalar_t__ avio_seek (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ) ; 
+
+ int AVSEEK_FLAG_BACKWARD ;
+ int FFMAX (int ,int) ;
+ int SEEK_SET ;
+ scalar_t__ avio_seek (int ,scalar_t__,int ) ;
 
 __attribute__((used)) static int yuv4_read_seek(AVFormatContext *s, int stream_index,
                           int64_t pts, int flags)

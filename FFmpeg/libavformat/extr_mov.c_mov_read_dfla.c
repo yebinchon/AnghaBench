@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_6__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint64_t ;
-typedef  int /*<<< orphan*/  buf ;
+
+
+typedef struct TYPE_11__ TYPE_6__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint64_t ;
+typedef int buf ;
 struct TYPE_11__ {int nb_streams; TYPE_3__** streams; } ;
-struct TYPE_10__ {int /*<<< orphan*/  codecpar; } ;
+struct TYPE_10__ {int codecpar; } ;
 struct TYPE_9__ {int size; } ;
 struct TYPE_8__ {TYPE_6__* fc; } ;
-typedef  TYPE_1__ MOVContext ;
-typedef  TYPE_2__ MOVAtom ;
-typedef  TYPE_3__ AVStream ;
-typedef  int /*<<< orphan*/  AVIOContext ;
+typedef TYPE_1__ MOVContext ;
+typedef TYPE_2__ MOVAtom ;
+typedef TYPE_3__ AVStream ;
+typedef int AVIOContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_LOG_WARNING ; 
- int FLAC_METADATA_TYPE_STREAMINFO ; 
- int FLAC_STREAMINFO_SIZE ; 
- int /*<<< orphan*/  av_log (TYPE_6__*,int /*<<< orphan*/ ,char*) ; 
- scalar_t__ avio_r8 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  avio_rb24 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  avio_read (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int ff_get_extradata (TYPE_6__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  flac_parse_block_header (int /*<<< orphan*/ *,int*,int*,int*) ; 
+
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ int AV_LOG_WARNING ;
+ int FLAC_METADATA_TYPE_STREAMINFO ;
+ int FLAC_STREAMINFO_SIZE ;
+ int av_log (TYPE_6__*,int ,char*) ;
+ scalar_t__ avio_r8 (int *) ;
+ int avio_rb24 (int *) ;
+ int avio_read (int *,int *,int) ;
+ int ff_get_extradata (TYPE_6__*,int ,int *,int) ;
+ int flac_parse_block_header (int *,int*,int*,int*) ;
 
 __attribute__((used)) static int mov_read_dfla(MOVContext *c, AVIOContext *pb, MOVAtom atom)
 {
@@ -52,11 +52,11 @@ __attribute__((used)) static int mov_read_dfla(MOVContext *c, AVIOContext *pb, M
     if ((uint64_t)atom.size > (1<<30) || atom.size < 42)
         return AVERROR_INVALIDDATA;
 
-    /* Check FlacSpecificBox version. */
+
     if (avio_r8(pb) != 0)
         return AVERROR_INVALIDDATA;
 
-    avio_rb24(pb); /* Flags */
+    avio_rb24(pb);
 
     avio_read(pb, buf, sizeof(buf));
     flac_parse_block_header(buf, &last, &type, &size);

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct mesh_path {int flags; int /*<<< orphan*/  exp_time; } ;
 
-/* Variables and functions */
- int MESH_PATH_ACTIVE ; 
- int MESH_PATH_FIXED ; 
- int /*<<< orphan*/  jiffies ; 
- scalar_t__ time_after (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct mesh_path {int flags; int exp_time; } ;
+
+
+ int MESH_PATH_ACTIVE ;
+ int MESH_PATH_FIXED ;
+ int jiffies ;
+ scalar_t__ time_after (int ,int ) ;
 
 __attribute__((used)) static inline bool mpath_expired(struct mesh_path *mpath)
 {
-	return (mpath->flags & MESH_PATH_ACTIVE) &&
-	       time_after(jiffies, mpath->exp_time) &&
-	       !(mpath->flags & MESH_PATH_FIXED);
+ return (mpath->flags & MESH_PATH_ACTIVE) &&
+        time_after(jiffies, mpath->exp_time) &&
+        !(mpath->flags & MESH_PATH_FIXED);
 }

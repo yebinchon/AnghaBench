@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uv_fs_t ;
-struct rrdengine_journalfile {int /*<<< orphan*/  file; } ;
-struct TYPE_2__ {int /*<<< orphan*/  fs_errors; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int uv_fs_t ;
+struct rrdengine_journalfile {int file; } ;
+struct TYPE_2__ {int fs_errors; } ;
 struct rrdengine_instance {TYPE_1__ stats; } ;
 struct rrdengine_datafile {struct rrdengine_instance* ctx; } ;
-typedef  int /*<<< orphan*/  path ;
+typedef int path ;
 
-/* Variables and functions */
- int RRDENG_PATH_MAX ; 
- int /*<<< orphan*/  error (char*,char*,char*) ; 
- int /*<<< orphan*/  generate_journalfilepath (struct rrdengine_datafile*,char*,int) ; 
- int /*<<< orphan*/  global_fs_errors ; 
- int /*<<< orphan*/  rrd_stat_atomic_add (int /*<<< orphan*/ *,int) ; 
- int uv_fs_close (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  uv_fs_req_cleanup (int /*<<< orphan*/ *) ; 
- char* uv_strerror (int) ; 
+
+ int RRDENG_PATH_MAX ;
+ int error (char*,char*,char*) ;
+ int generate_journalfilepath (struct rrdengine_datafile*,char*,int) ;
+ int global_fs_errors ;
+ int rrd_stat_atomic_add (int *,int) ;
+ int uv_fs_close (int *,int *,int ,int *) ;
+ int uv_fs_req_cleanup (int *) ;
+ char* uv_strerror (int) ;
 
 int close_journal_file(struct rrdengine_journalfile *journalfile, struct rrdengine_datafile *datafile)
 {
@@ -37,7 +37,7 @@ int close_journal_file(struct rrdengine_journalfile *journalfile, struct rrdengi
 
     generate_journalfilepath(datafile, path, sizeof(path));
 
-    ret = uv_fs_close(NULL, &req, journalfile->file, NULL);
+    ret = uv_fs_close(((void*)0), &req, journalfile->file, ((void*)0));
     if (ret < 0) {
         error("uv_fs_close(%s): %s", path, uv_strerror(ret));
         ++ctx->stats.fs_errors;

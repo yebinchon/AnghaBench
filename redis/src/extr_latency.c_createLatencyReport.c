@@ -1,62 +1,62 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct latencyTimeSeries {scalar_t__ max; } ;
 struct latencyStats {double samples; scalar_t__ period; scalar_t__ mad; scalar_t__ avg; } ;
-typedef  int /*<<< orphan*/  sds ;
-typedef  int /*<<< orphan*/  dictIterator ;
-typedef  int /*<<< orphan*/  dictEntry ;
-struct TYPE_2__ {int latency_monitor_threshold; int stat_fork_rate; int slowlog_log_slower_than; scalar_t__ aof_fsync; int hz; int /*<<< orphan*/  latency_events; } ;
+typedef int sds ;
+typedef int dictIterator ;
+typedef int dictEntry ;
+struct TYPE_2__ {int latency_monitor_threshold; int stat_fork_rate; int slowlog_log_slower_than; scalar_t__ aof_fsync; int hz; int latency_events; } ;
 
-/* Variables and functions */
- scalar_t__ AOF_FSYNC_ALWAYS ; 
- scalar_t__ THPGetAnonHugePagesSize () ; 
- int /*<<< orphan*/  analyzeLatencyForEvent (char*,struct latencyStats*) ; 
- char* dictGetKey (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * dictGetSafeIterator (int /*<<< orphan*/ ) ; 
- struct latencyTimeSeries* dictGetVal (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * dictNext (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  dictReleaseIterator (int /*<<< orphan*/ *) ; 
- scalar_t__ dictSize (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sdscat (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  sdscatlen (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  sdscatprintf (int /*<<< orphan*/ ,char*,unsigned long long,...) ; 
- int /*<<< orphan*/  sdsempty () ; 
- TYPE_1__ server ; 
- int /*<<< orphan*/  strcasecmp (char*,char*) ; 
+
+ scalar_t__ AOF_FSYNC_ALWAYS ;
+ scalar_t__ THPGetAnonHugePagesSize () ;
+ int analyzeLatencyForEvent (char*,struct latencyStats*) ;
+ char* dictGetKey (int *) ;
+ int * dictGetSafeIterator (int ) ;
+ struct latencyTimeSeries* dictGetVal (int *) ;
+ int * dictNext (int *) ;
+ int dictReleaseIterator (int *) ;
+ scalar_t__ dictSize (int ) ;
+ int sdscat (int ,char*) ;
+ int sdscatlen (int ,char*,int) ;
+ int sdscatprintf (int ,char*,unsigned long long,...) ;
+ int sdsempty () ;
+ TYPE_1__ server ;
+ int strcasecmp (char*,char*) ;
 
 sds createLatencyReport(void) {
     sds report = sdsempty();
-    int advise_better_vm = 0;       /* Better virtual machines. */
-    int advise_slowlog_enabled = 0; /* Enable slowlog. */
-    int advise_slowlog_tuning = 0;  /* Reconfigure slowlog. */
-    int advise_slowlog_inspect = 0; /* Check your slowlog. */
-    int advise_disk_contention = 0; /* Try to lower disk contention. */
-    int advise_scheduler = 0;       /* Intrinsic latency. */
-    int advise_data_writeback = 0;  /* data=writeback. */
-    int advise_no_appendfsync = 0;  /* don't fsync during rewrites. */
-    int advise_local_disk = 0;      /* Avoid remote disks. */
-    int advise_ssd = 0;             /* Use an SSD drive. */
-    int advise_write_load_info = 0; /* Print info about AOF and write load. */
-    int advise_hz = 0;              /* Use higher HZ. */
-    int advise_large_objects = 0;   /* Deletion of large objects. */
-    int advise_mass_eviction = 0;   /* Avoid mass eviction of keys. */
-    int advise_relax_fsync_policy = 0; /* appendfsync always is slow. */
-    int advise_disable_thp = 0;     /* AnonHugePages detected. */
+    int advise_better_vm = 0;
+    int advise_slowlog_enabled = 0;
+    int advise_slowlog_tuning = 0;
+    int advise_slowlog_inspect = 0;
+    int advise_disk_contention = 0;
+    int advise_scheduler = 0;
+    int advise_data_writeback = 0;
+    int advise_no_appendfsync = 0;
+    int advise_local_disk = 0;
+    int advise_ssd = 0;
+    int advise_write_load_info = 0;
+    int advise_hz = 0;
+    int advise_large_objects = 0;
+    int advise_mass_eviction = 0;
+    int advise_relax_fsync_policy = 0;
+    int advise_disable_thp = 0;
     int advices = 0;
 
-    /* Return ASAP if the latency engine is disabled and it looks like it
-     * was never enabled so far. */
+
+
     if (dictSize(server.latency_events) == 0 &&
         server.latency_monitor_threshold == 0)
     {
@@ -64,19 +64,19 @@ sds createLatencyReport(void) {
         return report;
     }
 
-    /* Show all the events stats and add for each event some event-related
-     * comment depending on the values. */
+
+
     dictIterator *di;
     dictEntry *de;
     int eventnum = 0;
 
     di = dictGetSafeIterator(server.latency_events);
-    while((de = dictNext(di)) != NULL) {
+    while((de = dictNext(di)) != ((void*)0)) {
         char *event = dictGetKey(de);
         struct latencyTimeSeries *ts = dictGetVal(de);
         struct latencyStats ls;
 
-        if (ts == NULL) continue;
+        if (ts == ((void*)0)) continue;
         eventnum++;
         if (eventnum == 1) {
             report = sdscat(report,"Dave, I have observed latency spikes in this Redis instance. You don't mind talking about it, do you Dave?\n\n");
@@ -92,7 +92,7 @@ sds createLatencyReport(void) {
             (double) ls.period/ls.samples,
             (unsigned long) ts->max);
 
-        /* Fork */
+
         if (!strcasecmp(event,"fork")) {
             char *fork_quality;
             if (server.stat_fork_rate < 10) {
@@ -113,7 +113,7 @@ sds createLatencyReport(void) {
                 fork_quality);
         }
 
-        /* Potentially commands. */
+
         if (!strcasecmp(event,"command")) {
             if (server.slowlog_log_slower_than < 0) {
                 advise_slowlog_enabled = 1;
@@ -129,13 +129,13 @@ sds createLatencyReport(void) {
             advices += 2;
         }
 
-        /* fast-command. */
+
         if (!strcasecmp(event,"fast-command")) {
             advise_scheduler = 1;
             advices++;
         }
 
-        /* AOF and I/O. */
+
         if (!strcasecmp(event,"aof-write-pending-fsync")) {
             advise_local_disk = 1;
             advise_disk_contention = 1;
@@ -179,14 +179,14 @@ sds createLatencyReport(void) {
             advices += 4;
         }
 
-        /* Expire cycle. */
+
         if (!strcasecmp(event,"expire-cycle")) {
             advise_hz = 1;
             advise_large_objects = 1;
             advices += 2;
         }
 
-        /* Eviction cycle. */
+
         if (!strcasecmp(event,"eviction-del")) {
             advise_large_objects = 1;
             advices++;
@@ -201,7 +201,7 @@ sds createLatencyReport(void) {
     }
     dictReleaseIterator(di);
 
-    /* Add non event based advices. */
+
     if (THPGetAnonHugePagesSize() > 0) {
         advise_disable_thp = 1;
         advices++;
@@ -212,15 +212,15 @@ sds createLatencyReport(void) {
     } else if (eventnum > 0 && advices == 0) {
         report = sdscat(report,"\nWhile there are latency events logged, I'm not able to suggest any easy fix. Please use the Redis community to get some help, providing this report in your help request.\n");
     } else {
-        /* Add all the suggestions accumulated so far. */
 
-        /* Better VM. */
+
+
         report = sdscat(report,"\nI have a few advices for you:\n\n");
         if (advise_better_vm) {
             report = sdscat(report,"- If you are using a virtual machine, consider upgrading it with a faster one using an hypervisior that provides less latency during fork() calls. Xen is known to have poor fork() performance. Even in the context of the same VM provider, certain kinds of instances can execute fork faster than others.\n");
         }
 
-        /* Slow log. */
+
         if (advise_slowlog_enabled) {
             report = sdscatprintf(report,"- There are latency issues with potentially slow commands you are using. Try to enable the Slow Log Redis feature using the command 'CONFIG SET slowlog-log-slower-than %llu'. If the Slow log is disabled Redis is not able to log slow commands execution for you.\n", (unsigned long long)server.latency_monitor_threshold*1000);
         }
@@ -233,7 +233,7 @@ sds createLatencyReport(void) {
             report = sdscat(report,"- Check your Slow Log to understand what are the commands you are running which are too slow to execute. Please check http://redis.io/commands/slowlog for more information.\n");
         }
 
-        /* Intrinsic latency. */
+
         if (advise_scheduler) {
             report = sdscat(report,"- The system is slow to execute Redis code paths not containing system calls. This usually means the system does not provide Redis CPU time to run for long periods. You should try to:\n"
             "  1) Lower the system load.\n"
@@ -243,7 +243,7 @@ sds createLatencyReport(void) {
             "  5) Check if the problem is allocator-related by recompiling Redis with MALLOC=libc, if you are using Jemalloc. However this may create fragmentation problems.\n");
         }
 
-        /* AOF / Disk latency. */
+
         if (advise_local_disk) {
             report = sdscat(report,"- It is strongly advised to use local disks for persistence, especially if you are using AOF. Remote disks provided by platform-as-a-service providers are known to be slow.\n");
         }

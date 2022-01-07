@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {scalar_t__ init; scalar_t__ flags; int /*<<< orphan*/ * ptr; scalar_t__ shutdown; } ;
-typedef  int /*<<< orphan*/  BIO_ACCEPT ;
-typedef  TYPE_1__ BIO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_ACCEPT_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  acpt_close_socket (TYPE_1__*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {scalar_t__ init; scalar_t__ flags; int * ptr; scalar_t__ shutdown; } ;
+typedef int BIO_ACCEPT ;
+typedef TYPE_1__ BIO ;
+
+
+ int BIO_ACCEPT_free (int *) ;
+ int acpt_close_socket (TYPE_1__*) ;
 
 __attribute__((used)) static int acpt_free(BIO *a)
 {
     BIO_ACCEPT *data;
 
-    if (a == NULL)
+    if (a == ((void*)0))
         return 0;
     data = (BIO_ACCEPT *)a->ptr;
 
     if (a->shutdown) {
         acpt_close_socket(a);
         BIO_ACCEPT_free(data);
-        a->ptr = NULL;
+        a->ptr = ((void*)0);
         a->flags = 0;
         a->init = 0;
     }

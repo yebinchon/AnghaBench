@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int /*<<< orphan*/  u32 ;
-typedef  int /*<<< orphan*/  jobject ;
-struct TYPE_3__ {int height; int width; int /*<<< orphan*/  stride; } ;
-typedef  int /*<<< orphan*/  JNIEnv ;
-typedef  TYPE_1__ AndroidBitmapInfo ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AndroidBitmap_getInfo (int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  AndroidBitmap_lockPixels (int /*<<< orphan*/ *,int /*<<< orphan*/ ,void**) ; 
- int /*<<< orphan*/  AndroidBitmap_unlockPixels (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * dispbuffer ; 
- int /*<<< orphan*/  g_buf_width ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+typedef int u32 ;
+typedef int jobject ;
+struct TYPE_3__ {int height; int width; int stride; } ;
+typedef int JNIEnv ;
+typedef TYPE_1__ AndroidBitmapInfo ;
+
+
+ int AndroidBitmap_getInfo (int *,int ,TYPE_1__*) ;
+ int AndroidBitmap_lockPixels (int *,int ,void**) ;
+ int AndroidBitmap_unlockPixels (int *,int ) ;
+ int * dispbuffer ;
+ int g_buf_width ;
 
 void
 Java_org_yabause_android_YabauseRunnable_screenshot( JNIEnv* env, jobject obj, jobject bitmap )

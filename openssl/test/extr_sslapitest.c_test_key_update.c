@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buf ;
-typedef  int /*<<< orphan*/  SSL_CTX ;
-typedef  int /*<<< orphan*/  SSL ;
 
-/* Variables and functions */
- int NUM_KEY_UPDATE_MESSAGES ; 
- int /*<<< orphan*/  SSL_CTX_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SSL_ERROR_NONE ; 
- int /*<<< orphan*/  SSL_KEY_UPDATE_NOT_REQUESTED ; 
- int /*<<< orphan*/  SSL_KEY_UPDATE_REQUESTED ; 
- int /*<<< orphan*/  SSL_do_handshake (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SSL_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SSL_key_update (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SSL_read (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  SSL_write (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_int_eq (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_true (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TLS1_3_VERSION ; 
- int /*<<< orphan*/  TLS_client_method () ; 
- int /*<<< orphan*/  TLS_server_method () ; 
- int /*<<< orphan*/  cert ; 
- int /*<<< orphan*/  create_ssl_connection (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  create_ssl_ctx_pair (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **,int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  create_ssl_objects (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  privkey ; 
- int /*<<< orphan*/  strlen (char*) ; 
+
+
+
+typedef int buf ;
+typedef int SSL_CTX ;
+typedef int SSL ;
+
+
+ int NUM_KEY_UPDATE_MESSAGES ;
+ int SSL_CTX_free (int *) ;
+ int SSL_ERROR_NONE ;
+ int SSL_KEY_UPDATE_NOT_REQUESTED ;
+ int SSL_KEY_UPDATE_REQUESTED ;
+ int SSL_do_handshake (int *) ;
+ int SSL_free (int *) ;
+ int SSL_key_update (int *,int ) ;
+ int SSL_read (int *,char*,int) ;
+ int SSL_write (int *,char*,int ) ;
+ int TEST_int_eq (int ,int ) ;
+ int TEST_true (int ) ;
+ int TLS1_3_VERSION ;
+ int TLS_client_method () ;
+ int TLS_server_method () ;
+ int cert ;
+ int create_ssl_connection (int *,int *,int ) ;
+ int create_ssl_ctx_pair (int ,int ,int ,int ,int **,int **,int ,int ) ;
+ int create_ssl_objects (int *,int *,int **,int **,int *,int *) ;
+ int privkey ;
+ int strlen (char*) ;
 
 __attribute__((used)) static int test_key_update(void)
 {
-    SSL_CTX *cctx = NULL, *sctx = NULL;
-    SSL *clientssl = NULL, *serverssl = NULL;
+    SSL_CTX *cctx = ((void*)0), *sctx = ((void*)0);
+    SSL *clientssl = ((void*)0), *serverssl = ((void*)0);
     int testresult = 0, i, j;
     char buf[20];
     static char *mess = "A test message";
@@ -51,13 +51,13 @@ __attribute__((used)) static int test_key_update(void)
                                        0,
                                        &sctx, &cctx, cert, privkey))
             || !TEST_true(create_ssl_objects(sctx, cctx, &serverssl, &clientssl,
-                                             NULL, NULL))
+                                             ((void*)0), ((void*)0)))
             || !TEST_true(create_ssl_connection(serverssl, clientssl,
                                                 SSL_ERROR_NONE)))
         goto end;
 
     for (j = 0; j < 2; j++) {
-        /* Send lots of KeyUpdate messages */
+
         for (i = 0; i < NUM_KEY_UPDATE_MESSAGES; i++) {
             if (!TEST_true(SSL_key_update(clientssl,
                                           (j == 0)
@@ -67,7 +67,7 @@ __attribute__((used)) static int test_key_update(void)
                 goto end;
         }
 
-        /* Check that sending and receiving app data is ok */
+
         if (!TEST_int_eq(SSL_write(clientssl, mess, strlen(mess)), strlen(mess))
                 || !TEST_int_eq(SSL_read(serverssl, buf, sizeof(buf)),
                                          strlen(mess)))

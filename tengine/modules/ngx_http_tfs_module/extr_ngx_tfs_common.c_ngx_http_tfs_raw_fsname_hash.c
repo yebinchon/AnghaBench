@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ u_char ;
-typedef  scalar_t__ int32_t ;
 
-/* Variables and functions */
+
+
+
+typedef scalar_t__ u_char ;
+typedef scalar_t__ int32_t ;
+
+
 
 int32_t
 ngx_http_tfs_raw_fsname_hash(const u_char *str, const int32_t len)
 {
-    int32_t  h, i;
+    int32_t h, i;
 
     h = 0;
 
-    if (str == NULL || len <=0) {
+    if (str == ((void*)0) || len <=0) {
         return 0;
     }
 

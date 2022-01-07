@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int ULONG ;
-typedef  int LONG ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  IOmNavigator ;
-typedef  int /*<<< orphan*/  IHTMLWindow2 ;
-typedef  int /*<<< orphan*/  IHTMLPluginsCollection ;
-typedef  int /*<<< orphan*/  IHTMLDocument2 ;
-typedef  int HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DIID_DispCPlugins ; 
- int IHTMLPluginsCollection_Release (int /*<<< orphan*/ *) ; 
- int IHTMLPluginsCollection_get_length (int /*<<< orphan*/ *,int*) ; 
- int IHTMLPluginsCollection_refresh (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IHTMLWindow2_Release (int /*<<< orphan*/ *) ; 
- int IHTMLWindow2_get_navigator (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IID_IHTMLPluginsCollection ; 
- int /*<<< orphan*/  IOmNavigator_Release (int /*<<< orphan*/ *) ; 
- int IOmNavigator_get_plugins (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int S_OK ; 
- int /*<<< orphan*/  VARIANT_FALSE ; 
- int /*<<< orphan*/  VARIANT_TRUE ; 
- int /*<<< orphan*/ * get_doc_window (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  iface_cmp (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  test_disp2 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*) ; 
+
+
+
+typedef int ULONG ;
+typedef int LONG ;
+typedef int IUnknown ;
+typedef int IOmNavigator ;
+typedef int IHTMLWindow2 ;
+typedef int IHTMLPluginsCollection ;
+typedef int IHTMLDocument2 ;
+typedef int HRESULT ;
+
+
+ int DIID_DispCPlugins ;
+ int IHTMLPluginsCollection_Release (int *) ;
+ int IHTMLPluginsCollection_get_length (int *,int*) ;
+ int IHTMLPluginsCollection_refresh (int *,int ) ;
+ int IHTMLWindow2_Release (int *) ;
+ int IHTMLWindow2_get_navigator (int *,int **) ;
+ int IID_IHTMLPluginsCollection ;
+ int IOmNavigator_Release (int *) ;
+ int IOmNavigator_get_plugins (int *,int **) ;
+ int S_OK ;
+ int VARIANT_FALSE ;
+ int VARIANT_TRUE ;
+ int * get_doc_window (int *) ;
+ int iface_cmp (int *,int *) ;
+ int ok (int,char*,...) ;
+ int test_disp2 (int *,int *,int *,char*) ;
 
 __attribute__((used)) static void test_plugins_col(IHTMLDocument2 *doc)
 {

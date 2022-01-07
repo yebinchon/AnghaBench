@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_ra_serf__xml_estate_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
+
+
+
+
+typedef int svn_ra_serf__xml_estate_t ;
+typedef int svn_error_t ;
 struct revision_report_t {struct replay_node_t* current_node; } ;
-struct replay_node_t {scalar_t__ stream; int /*<<< orphan*/  file; } ;
-typedef  scalar_t__ apr_size_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+struct replay_node_t {scalar_t__ stream; int file; } ;
+typedef scalar_t__ apr_size_t ;
+typedef int apr_pool_t ;
 
-/* Variables and functions */
- int REPLAY_APPLY_TEXTDELTA ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_STREAM_UNEXPECTED_EOF ; 
- int /*<<< orphan*/  SVN_ERR_XML_MALFORMED ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/ * _ (char*) ; 
- int /*<<< orphan*/ * svn_error_create (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_stream_write (scalar_t__,char const*,scalar_t__*) ; 
+
+ int REPLAY_APPLY_TEXTDELTA ;
+ int SVN_ERR (int ) ;
+ int SVN_ERR_STREAM_UNEXPECTED_EOF ;
+ int SVN_ERR_XML_MALFORMED ;
+ int * SVN_NO_ERROR ;
+ int * _ (char*) ;
+ int * svn_error_create (int ,int *,int *) ;
+ int svn_stream_write (scalar_t__,char const*,scalar_t__*) ;
 
 __attribute__((used)) static svn_error_t *
 replay_cdata(svn_ra_serf__xml_estate_t *xes,
@@ -42,7 +42,7 @@ replay_cdata(svn_ra_serf__xml_estate_t *xes,
       struct replay_node_t *node = ctx->current_node;
 
       if (! node || ! node->file)
-        return svn_error_create(SVN_ERR_XML_MALFORMED, NULL, NULL);
+        return svn_error_create(SVN_ERR_XML_MALFORMED, ((void*)0), ((void*)0));
 
       if (node->stream)
         {
@@ -50,7 +50,7 @@ replay_cdata(svn_ra_serf__xml_estate_t *xes,
 
           SVN_ERR(svn_stream_write(node->stream, data, &written));
           if (written != len)
-            return svn_error_create(SVN_ERR_STREAM_UNEXPECTED_EOF, NULL,
+            return svn_error_create(SVN_ERR_STREAM_UNEXPECTED_EOF, ((void*)0),
                                     _("Error writing stream: unexpected EOF"));
         }
     }

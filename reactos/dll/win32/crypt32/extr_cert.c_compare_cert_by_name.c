@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  dwCertEncodingType; TYPE_1__* pCertInfo; } ;
-struct TYPE_4__ {int /*<<< orphan*/  Issuer; int /*<<< orphan*/  Subject; } ;
-typedef  TYPE_2__* PCCERT_CONTEXT ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  CERT_NAME_BLOB ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int CERT_INFO_SUBJECT_FLAG ; 
- int /*<<< orphan*/  CertCompareCertificateName (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int dwCertEncodingType; TYPE_1__* pCertInfo; } ;
+struct TYPE_4__ {int Issuer; int Subject; } ;
+typedef TYPE_2__* PCCERT_CONTEXT ;
+typedef int DWORD ;
+typedef int CERT_NAME_BLOB ;
+typedef int BOOL ;
+
+
+ int CERT_INFO_SUBJECT_FLAG ;
+ int CertCompareCertificateName (int ,int *,int *) ;
 
 __attribute__((used)) static BOOL compare_cert_by_name(PCCERT_CONTEXT pCertContext, DWORD dwType,
  DWORD dwFlags, const void *pvPara)

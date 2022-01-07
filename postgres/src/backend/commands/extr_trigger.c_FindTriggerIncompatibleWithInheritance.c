@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int numtriggers; TYPE_2__* triggers; } ;
-typedef  TYPE_1__ TriggerDesc ;
-struct TYPE_5__ {char const* tgname; int /*<<< orphan*/ * tgnewtable; int /*<<< orphan*/ * tgoldtable; } ;
-typedef  TYPE_2__ Trigger ;
+typedef TYPE_1__ TriggerDesc ;
+struct TYPE_5__ {char const* tgname; int * tgnewtable; int * tgoldtable; } ;
+typedef TYPE_2__ Trigger ;
 
-/* Variables and functions */
+
 
 const char *
 FindTriggerIncompatibleWithInheritance(TriggerDesc *trigdesc)
 {
-	if (trigdesc != NULL)
-	{
-		int			i;
+ if (trigdesc != ((void*)0))
+ {
+  int i;
 
-		for (i = 0; i < trigdesc->numtriggers; ++i)
-		{
-			Trigger    *trigger = &trigdesc->triggers[i];
+  for (i = 0; i < trigdesc->numtriggers; ++i)
+  {
+   Trigger *trigger = &trigdesc->triggers[i];
 
-			if (trigger->tgoldtable != NULL || trigger->tgnewtable != NULL)
-				return trigger->tgname;
-		}
-	}
+   if (trigger->tgoldtable != ((void*)0) || trigger->tgnewtable != ((void*)0))
+    return trigger->tgname;
+  }
+ }
 
-	return NULL;
+ return ((void*)0);
 }

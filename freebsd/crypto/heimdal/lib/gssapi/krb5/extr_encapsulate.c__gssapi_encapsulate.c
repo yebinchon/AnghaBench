@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  length; int /*<<< orphan*/  data; } ;
-typedef  TYPE_1__ krb5_data ;
-typedef  TYPE_2__* gss_buffer_t ;
-typedef  int /*<<< orphan*/  gss_OID ;
-struct TYPE_6__ {size_t length; int /*<<< orphan*/ * value; } ;
-typedef  int /*<<< orphan*/  OM_uint32 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  GSS_S_COMPLETE ; 
- int /*<<< orphan*/  GSS_S_FAILURE ; 
- int /*<<< orphan*/  _gssapi_encap_length (int /*<<< orphan*/ ,size_t*,size_t*,int /*<<< orphan*/  const) ; 
- void* _gssapi_make_mech_header (int /*<<< orphan*/ *,size_t,int /*<<< orphan*/  const) ; 
- int /*<<< orphan*/ * malloc (size_t) ; 
- int /*<<< orphan*/  memcpy (void*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int length; int data; } ;
+typedef TYPE_1__ krb5_data ;
+typedef TYPE_2__* gss_buffer_t ;
+typedef int gss_OID ;
+struct TYPE_6__ {size_t length; int * value; } ;
+typedef int OM_uint32 ;
+
+
+ int ENOMEM ;
+ int GSS_S_COMPLETE ;
+ int GSS_S_FAILURE ;
+ int _gssapi_encap_length (int ,size_t*,size_t*,int const) ;
+ void* _gssapi_make_mech_header (int *,size_t,int const) ;
+ int * malloc (size_t) ;
+ int memcpy (void*,int ,int ) ;
 
 OM_uint32
 _gssapi_encapsulate(
@@ -42,10 +42,10 @@ _gssapi_encapsulate(
     _gssapi_encap_length (in_data->length, &len, &outer_len, mech);
 
     output_token->length = outer_len;
-    output_token->value  = malloc (outer_len);
-    if (output_token->value == NULL) {
-	*minor_status = ENOMEM;
-	return GSS_S_FAILURE;
+    output_token->value = malloc (outer_len);
+    if (output_token->value == ((void*)0)) {
+ *minor_status = ENOMEM;
+ return GSS_S_FAILURE;
     }
 
     p = _gssapi_make_mech_header (output_token->value, len, mech);

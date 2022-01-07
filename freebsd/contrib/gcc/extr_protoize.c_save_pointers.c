@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  clean_read_ptr ; 
- int /*<<< orphan*/  repl_write_ptr ; 
- int /*<<< orphan*/  saved_clean_read_ptr ; 
- int /*<<< orphan*/  saved_repl_write_ptr ; 
+ int clean_read_ptr ;
+ int repl_write_ptr ;
+ int saved_clean_read_ptr ;
+ int saved_repl_write_ptr ;
 
 __attribute__((used)) static void
 save_pointers (void)

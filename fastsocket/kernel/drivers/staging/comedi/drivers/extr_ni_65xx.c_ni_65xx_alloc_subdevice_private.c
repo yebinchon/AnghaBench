@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct ni_65xx_subdevice_private {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GFP_KERNEL ; 
- struct ni_65xx_subdevice_private* kzalloc (int,int /*<<< orphan*/ ) ; 
+
+ int GFP_KERNEL ;
+ struct ni_65xx_subdevice_private* kzalloc (int,int ) ;
 
 __attribute__((used)) static struct ni_65xx_subdevice_private *ni_65xx_alloc_subdevice_private(void)
 {
-	struct ni_65xx_subdevice_private *subdev_private =
-	    kzalloc(sizeof(struct ni_65xx_subdevice_private), GFP_KERNEL);
-	if (subdev_private == NULL)
-		return NULL;
-	return subdev_private;
+ struct ni_65xx_subdevice_private *subdev_private =
+     kzalloc(sizeof(struct ni_65xx_subdevice_private), GFP_KERNEL);
+ if (subdev_private == ((void*)0))
+  return ((void*)0);
+ return subdev_private;
 }

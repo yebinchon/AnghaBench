@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ ULONG ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef scalar_t__ ULONG ;
 struct TYPE_2__ {scalar_t__ dwCurrentState; } ;
-typedef  TYPE_1__ SERVICE_STATUS_PROCESS ;
-typedef  int /*<<< orphan*/  SC_HANDLE ;
-typedef  int /*<<< orphan*/  LPBYTE ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef TYPE_1__ SERVICE_STATUS_PROCESS ;
+typedef int SC_HANDLE ;
+typedef int LPBYTE ;
+typedef int DWORD ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GetLastError () ; 
- int /*<<< orphan*/  QueryServiceStatusEx (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SC_STATUS_PROCESS_INFO ; 
- scalar_t__ SERVICE_RUNNING ; 
- int /*<<< orphan*/  Sleep (int) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  logmsg (char*,int /*<<< orphan*/ ) ; 
+
+ int FALSE ;
+ int GetLastError () ;
+ int QueryServiceStatusEx (int ,int ,int ,int,int *) ;
+ int SC_STATUS_PROCESS_INFO ;
+ scalar_t__ SERVICE_RUNNING ;
+ int Sleep (int) ;
+ int TRUE ;
+ int logmsg (char*,int ) ;
 
 BOOL
 WaitForService(

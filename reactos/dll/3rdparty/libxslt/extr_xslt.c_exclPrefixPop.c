@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* xsltStylesheetPtr ;
-typedef  int /*<<< orphan*/  xmlChar ;
-struct TYPE_3__ {int exclPrefixNr; int /*<<< orphan*/ ** exclPrefixTab; int /*<<< orphan*/ * exclPrefix; } ;
 
-/* Variables and functions */
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef TYPE_1__* xsltStylesheetPtr ;
+typedef int xmlChar ;
+struct TYPE_3__ {int exclPrefixNr; int ** exclPrefixTab; int * exclPrefix; } ;
+
+
 
 __attribute__((used)) static xmlChar *
 exclPrefixPop(xsltStylesheetPtr style)
@@ -28,7 +28,7 @@ exclPrefixPop(xsltStylesheetPtr style)
     if (style->exclPrefixNr > 0)
         style->exclPrefix = style->exclPrefixTab[style->exclPrefixNr - 1];
     else
-        style->exclPrefix = NULL;
+        style->exclPrefix = ((void*)0);
     ret = style->exclPrefixTab[style->exclPrefixNr];
     style->exclPrefixTab[style->exclPrefixNr] = 0;
     return (ret);

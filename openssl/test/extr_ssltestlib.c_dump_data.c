@@ -1,44 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int DTLS1_HM_HEADER_LENGTH ; 
- int DTLS1_RT_HEADER_LENGTH ; 
- size_t MSG_FRAG_LEN_HI ; 
- size_t MSG_FRAG_LEN_LO ; 
- size_t MSG_FRAG_LEN_MID ; 
- size_t MSG_FRAG_OFF_HI ; 
- size_t MSG_FRAG_OFF_LO ; 
- size_t MSG_FRAG_OFF_MID ; 
- size_t MSG_LEN_HI ; 
- size_t MSG_LEN_LO ; 
- size_t MSG_LEN_MID ; 
- size_t MSG_SEQ_HI ; 
- size_t MSG_SEQ_LO ; 
- size_t MSG_TYPE ; 
- size_t RECORD_CONTENT_TYPE ; 
- size_t RECORD_EPOCH_HI ; 
- size_t RECORD_EPOCH_LO ; 
- size_t RECORD_LEN_HI ; 
- size_t RECORD_LEN_LO ; 
- int RECORD_SEQUENCE_END ; 
- int RECORD_SEQUENCE_START ; 
- size_t RECORD_VERSION_HI ; 
- size_t RECORD_VERSION_LO ; 
- int SSL3_RT_HANDSHAKE ; 
- int /*<<< orphan*/  fflush (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  stdout ; 
+ int DTLS1_HM_HEADER_LENGTH ;
+ int DTLS1_RT_HEADER_LENGTH ;
+ size_t MSG_FRAG_LEN_HI ;
+ size_t MSG_FRAG_LEN_LO ;
+ size_t MSG_FRAG_LEN_MID ;
+ size_t MSG_FRAG_OFF_HI ;
+ size_t MSG_FRAG_OFF_LO ;
+ size_t MSG_FRAG_OFF_MID ;
+ size_t MSG_LEN_HI ;
+ size_t MSG_LEN_LO ;
+ size_t MSG_LEN_MID ;
+ size_t MSG_SEQ_HI ;
+ size_t MSG_SEQ_LO ;
+ size_t MSG_TYPE ;
+ size_t RECORD_CONTENT_TYPE ;
+ size_t RECORD_EPOCH_HI ;
+ size_t RECORD_EPOCH_LO ;
+ size_t RECORD_LEN_HI ;
+ size_t RECORD_LEN_LO ;
+ int RECORD_SEQUENCE_END ;
+ int RECORD_SEQUENCE_START ;
+ size_t RECORD_VERSION_HI ;
+ size_t RECORD_VERSION_LO ;
+ int SSL3_RT_HANDSHAKE ;
+ int fflush (int ) ;
+ int printf (char*,...) ;
+ int stdout ;
 
 __attribute__((used)) static void dump_data(const char *data, int len)
 {
@@ -70,7 +62,7 @@ __attribute__((used)) static void dump_data(const char *data, int len)
         reclen = (rec[RECORD_LEN_HI] << 8) | rec[RECORD_LEN_LO];
         printf("\n** Record Length: %d\n", reclen);
 
-        /* Now look at message */
+
         rec += DTLS1_RT_HEADER_LENGTH;
         rem -= DTLS1_RT_HEADER_LENGTH;
         if (content == SSL3_RT_HANDSHAKE) {

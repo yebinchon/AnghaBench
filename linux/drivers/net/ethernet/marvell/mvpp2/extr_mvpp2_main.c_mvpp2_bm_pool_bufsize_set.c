@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
-struct mvpp2_bm_pool {int buf_size; int /*<<< orphan*/  id; } ;
+
+
+
+
+typedef int u32 ;
+struct mvpp2_bm_pool {int buf_size; int id; } ;
 struct mvpp2 {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ALIGN (int,int) ; 
- int MVPP2_POOL_BUF_SIZE_OFFSET ; 
- int /*<<< orphan*/  MVPP2_POOL_BUF_SIZE_REG (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mvpp2_write (struct mvpp2*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int ALIGN (int,int) ;
+ int MVPP2_POOL_BUF_SIZE_OFFSET ;
+ int MVPP2_POOL_BUF_SIZE_REG (int ) ;
+ int mvpp2_write (struct mvpp2*,int ,int ) ;
 
 __attribute__((used)) static void mvpp2_bm_pool_bufsize_set(struct mvpp2 *priv,
-				      struct mvpp2_bm_pool *bm_pool,
-				      int buf_size)
+          struct mvpp2_bm_pool *bm_pool,
+          int buf_size)
 {
-	u32 val;
+ u32 val;
 
-	bm_pool->buf_size = buf_size;
+ bm_pool->buf_size = buf_size;
 
-	val = ALIGN(buf_size, 1 << MVPP2_POOL_BUF_SIZE_OFFSET);
-	mvpp2_write(priv, MVPP2_POOL_BUF_SIZE_REG(bm_pool->id), val);
+ val = ALIGN(buf_size, 1 << MVPP2_POOL_BUF_SIZE_OFFSET);
+ mvpp2_write(priv, MVPP2_POOL_BUF_SIZE_REG(bm_pool->id), val);
 }

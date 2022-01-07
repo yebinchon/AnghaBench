@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_value ;
-typedef  int /*<<< orphan*/  sqlite3_context ;
-typedef  int /*<<< orphan*/  Fts3Cursor ;
 
-/* Variables and functions */
- scalar_t__ SQLITE_OK ; 
- int /*<<< orphan*/  SQLITE_STATIC ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ fts3CursorSeek (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ fts3FunctionArg (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  sqlite3Fts3Snippet (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*,char const*,char const*,int,int) ; 
- int /*<<< orphan*/  sqlite3_result_error (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  sqlite3_result_error_nomem (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_result_text (int /*<<< orphan*/ *,char*,int,int /*<<< orphan*/ ) ; 
- int sqlite3_value_int (int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3_value_text (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int sqlite3_value ;
+typedef int sqlite3_context ;
+typedef int Fts3Cursor ;
+
+
+ scalar_t__ SQLITE_OK ;
+ int SQLITE_STATIC ;
+ int assert (int) ;
+ scalar_t__ fts3CursorSeek (int *,int *) ;
+ scalar_t__ fts3FunctionArg (int *,char*,int *,int **) ;
+ int sqlite3Fts3Snippet (int *,int *,char const*,char const*,char const*,int,int) ;
+ int sqlite3_result_error (int *,char*,int) ;
+ int sqlite3_result_error_nomem (int *) ;
+ int sqlite3_result_text (int *,char*,int,int ) ;
+ int sqlite3_value_int (int *) ;
+ scalar_t__ sqlite3_value_text (int *) ;
 
 __attribute__((used)) static void fts3SnippetFunc(
-  sqlite3_context *pContext,      /* SQLite function call context */
-  int nVal,                       /* Size of apVal[] array */
-  sqlite3_value **apVal           /* Array of arguments */
+  sqlite3_context *pContext,
+  int nVal,
+  sqlite3_value **apVal
 ){
-  Fts3Cursor *pCsr;               /* Cursor handle passed through apVal[0] */
+  Fts3Cursor *pCsr;
   const char *zStart = "<b>";
   const char *zEnd = "</b>";
   const char *zEllipsis = "<b>...</b>";
   int iCol = -1;
-  int nToken = 15;                /* Default number of tokens in snippet */
+  int nToken = 15;
 
-  /* There must be at least one argument passed to this function (otherwise
-  ** the non-overloaded version would have been called instead of this one).
-  */
+
+
+
   assert( nVal>=1 );
 
   if( nVal>6 ){
-    sqlite3_result_error(pContext, 
+    sqlite3_result_error(pContext,
         "wrong number of arguments to function snippet()", -1);
     return;
   }

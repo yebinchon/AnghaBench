@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ UINT ;
-typedef  int /*<<< orphan*/  MSIHANDLE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DeleteFileA (int /*<<< orphan*/ ) ; 
- scalar_t__ ERROR_INSTALL_FAILURE ; 
- scalar_t__ ERROR_INSTALL_PACKAGE_REJECTED ; 
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  INSTALLUILEVEL_NONE ; 
- int /*<<< orphan*/  MsiCloseHandle (int /*<<< orphan*/ ) ; 
- scalar_t__ MsiDoActionA (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  MsiSetInternalUI (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ MsiSetPropertyA (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  add_launchcondition_entry (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  create_launchcondition_table (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  create_package_db () ; 
- int /*<<< orphan*/  msifile ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- scalar_t__ package_from_db (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  skip (char*) ; 
+
+
+
+typedef scalar_t__ UINT ;
+typedef int MSIHANDLE ;
+
+
+ int DeleteFileA (int ) ;
+ scalar_t__ ERROR_INSTALL_FAILURE ;
+ scalar_t__ ERROR_INSTALL_PACKAGE_REJECTED ;
+ scalar_t__ ERROR_SUCCESS ;
+ int INSTALLUILEVEL_NONE ;
+ int MsiCloseHandle (int ) ;
+ scalar_t__ MsiDoActionA (int ,char*) ;
+ int MsiSetInternalUI (int ,int *) ;
+ scalar_t__ MsiSetPropertyA (int ,char*,char*) ;
+ int add_launchcondition_entry (int ,char*) ;
+ int create_launchcondition_table (int ) ;
+ int create_package_db () ;
+ int msifile ;
+ int ok (int,char*,...) ;
+ scalar_t__ package_from_db (int ,int *) ;
+ int skip (char*) ;
 
 __attribute__((used)) static void test_launchconditions(void)
 {
@@ -37,7 +37,7 @@ __attribute__((used)) static void test_launchconditions(void)
     MSIHANDLE hdb;
     UINT r;
 
-    MsiSetInternalUI(INSTALLUILEVEL_NONE, NULL);
+    MsiSetInternalUI(INSTALLUILEVEL_NONE, ((void*)0));
 
     hdb = create_package_db();
     ok( hdb, "failed to create package database\n" );
@@ -46,7 +46,7 @@ __attribute__((used)) static void test_launchconditions(void)
 
     add_launchcondition_entry( hdb, "'X = \"1\"', 'one'" );
 
-    /* invalid condition */
+
     add_launchcondition_entry( hdb, "'X != \"1\"', 'one'" );
 
     r = package_from_db( hdb, &hpkg );
@@ -63,13 +63,13 @@ __attribute__((used)) static void test_launchconditions(void)
     r = MsiSetPropertyA( hpkg, "X", "1" );
     ok( r == ERROR_SUCCESS, "failed to set property\n" );
 
-    MsiSetInternalUI(INSTALLUILEVEL_NONE, NULL);
+    MsiSetInternalUI(INSTALLUILEVEL_NONE, ((void*)0));
 
-    /* invalid conditions are ignored */
+
     r = MsiDoActionA( hpkg, "LaunchConditions" );
     ok( r == ERROR_SUCCESS, "cost init failed\n" );
 
-    /* verify LaunchConditions still does some verification */
+
     r = MsiSetPropertyA( hpkg, "X", "2" );
     ok( r == ERROR_SUCCESS, "failed to set property\n" );
 

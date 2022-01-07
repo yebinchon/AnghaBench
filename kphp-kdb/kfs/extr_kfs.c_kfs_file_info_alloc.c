@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct stat {int /*<<< orphan*/  st_dev; int /*<<< orphan*/  st_ino; int /*<<< orphan*/  st_size; int /*<<< orphan*/  st_mtime; } ;
-struct kfs_file_info {int refcnt; char* filename; char* suffix; int flags; long long min_log_pos; long long max_log_pos; int /*<<< orphan*/  kfs_file_type; void* filename_len; int /*<<< orphan*/  device; int /*<<< orphan*/  inode; int /*<<< orphan*/  file_size; int /*<<< orphan*/  mtime; } ;
 
-/* Variables and functions */
- struct kfs_file_info* calloc (int,int) ; 
- int classify_suffix (char*,int,long long*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char const*) ; 
- int /*<<< orphan*/  kfs_binlog ; 
- int /*<<< orphan*/  kfs_partial ; 
- int /*<<< orphan*/  kfs_snapshot ; 
- scalar_t__ stat (char const*,struct stat*) ; 
- int /*<<< orphan*/  stderr ; 
- char* strchr (char*,char) ; 
- char* strdup (char const*) ; 
- void* strlen (char const*) ; 
- char* strrchr (char*,char) ; 
+
+
+
+struct stat {int st_dev; int st_ino; int st_size; int st_mtime; } ;
+struct kfs_file_info {int refcnt; char* filename; char* suffix; int flags; long long min_log_pos; long long max_log_pos; int kfs_file_type; void* filename_len; int device; int inode; int file_size; int mtime; } ;
+
+
+ struct kfs_file_info* calloc (int,int) ;
+ int classify_suffix (char*,int,long long*) ;
+ int fprintf (int ,char*,char const*) ;
+ int kfs_binlog ;
+ int kfs_partial ;
+ int kfs_snapshot ;
+ scalar_t__ stat (char const*,struct stat*) ;
+ int stderr ;
+ char* strchr (char*,char) ;
+ char* strdup (char const*) ;
+ void* strlen (char const*) ;
+ char* strrchr (char*,char) ;
 
 __attribute__((used)) static struct kfs_file_info *kfs_file_info_alloc (const char *filename, int cut_backup_suffix) {
   struct stat st;
   if (stat (filename, &st) < 0) {
     fprintf (stderr, "error: unable to stat %s: %m\n", filename);
-    return NULL;
+    return ((void*)0);
   }
 
   struct kfs_file_info *FI = calloc (sizeof (*FI), 1);
-  if (FI == NULL) {
-    return NULL;
+  if (FI == ((void*)0)) {
+    return ((void*)0);
   }
 
   FI->mtime = st.st_mtime;

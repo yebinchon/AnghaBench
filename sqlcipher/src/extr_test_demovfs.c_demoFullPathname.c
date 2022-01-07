@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  zDir ;
-typedef  int /*<<< orphan*/  sqlite3_vfs ;
 
-/* Variables and functions */
- int MAXPATHNAME ; 
- int SQLITE_IOERR ; 
- int SQLITE_OK ; 
- scalar_t__ getcwd (char*,int) ; 
- int /*<<< orphan*/  sqlite3_snprintf (int,char*,char*,char*,char const*) ; 
+
+
+
+typedef int zDir ;
+typedef int sqlite3_vfs ;
+
+
+ int MAXPATHNAME ;
+ int SQLITE_IOERR ;
+ int SQLITE_OK ;
+ scalar_t__ getcwd (char*,int) ;
+ int sqlite3_snprintf (int,char*,char*,char*,char const*) ;
 
 __attribute__((used)) static int demoFullPathname(
-  sqlite3_vfs *pVfs,              /* VFS */
-  const char *zPath,              /* Input path (possibly a relative path) */
-  int nPathOut,                   /* Size of output buffer in bytes */
-  char *zPathOut                  /* Pointer to output buffer */
+  sqlite3_vfs *pVfs,
+  const char *zPath,
+  int nPathOut,
+  char *zPathOut
 ){
   char zDir[MAXPATHNAME+1];
   if( zPath[0]=='/' ){

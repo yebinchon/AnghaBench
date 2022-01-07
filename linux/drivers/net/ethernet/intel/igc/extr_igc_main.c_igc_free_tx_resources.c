@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct igc_ring {int /*<<< orphan*/ * desc; int /*<<< orphan*/  dma; int /*<<< orphan*/  size; int /*<<< orphan*/  dev; int /*<<< orphan*/ * tx_buffer_info; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dma_free_coherent (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  igc_clean_tx_ring (struct igc_ring*) ; 
- int /*<<< orphan*/  vfree (int /*<<< orphan*/ *) ; 
+
+
+
+struct igc_ring {int * desc; int dma; int size; int dev; int * tx_buffer_info; } ;
+
+
+ int dma_free_coherent (int ,int ,int *,int ) ;
+ int igc_clean_tx_ring (struct igc_ring*) ;
+ int vfree (int *) ;
 
 void igc_free_tx_resources(struct igc_ring *tx_ring)
 {
-	igc_clean_tx_ring(tx_ring);
+ igc_clean_tx_ring(tx_ring);
 
-	vfree(tx_ring->tx_buffer_info);
-	tx_ring->tx_buffer_info = NULL;
+ vfree(tx_ring->tx_buffer_info);
+ tx_ring->tx_buffer_info = ((void*)0);
 
-	/* if not set, then don't free */
-	if (!tx_ring->desc)
-		return;
 
-	dma_free_coherent(tx_ring->dev, tx_ring->size,
-			  tx_ring->desc, tx_ring->dma);
+ if (!tx_ring->desc)
+  return;
 
-	tx_ring->desc = NULL;
+ dma_free_coherent(tx_ring->dev, tx_ring->size,
+     tx_ring->desc, tx_ring->dma);
+
+ tx_ring->desc = ((void*)0);
 }

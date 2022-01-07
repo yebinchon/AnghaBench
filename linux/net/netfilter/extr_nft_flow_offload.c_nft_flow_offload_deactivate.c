@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct nft_flow_offload {int /*<<< orphan*/  flowtable; } ;
+
+
+
+
+struct nft_flow_offload {int flowtable; } ;
 struct nft_expr {int dummy; } ;
 struct nft_ctx {int dummy; } ;
-typedef  enum nft_trans_phase { ____Placeholder_nft_trans_phase } nft_trans_phase ;
+typedef enum nft_trans_phase { ____Placeholder_nft_trans_phase } nft_trans_phase ;
 
-/* Variables and functions */
- int /*<<< orphan*/  nf_tables_deactivate_flowtable (struct nft_ctx const*,int /*<<< orphan*/ ,int) ; 
- struct nft_flow_offload* nft_expr_priv (struct nft_expr const*) ; 
+
+ int nf_tables_deactivate_flowtable (struct nft_ctx const*,int ,int) ;
+ struct nft_flow_offload* nft_expr_priv (struct nft_expr const*) ;
 
 __attribute__((used)) static void nft_flow_offload_deactivate(const struct nft_ctx *ctx,
-					const struct nft_expr *expr,
-					enum nft_trans_phase phase)
+     const struct nft_expr *expr,
+     enum nft_trans_phase phase)
 {
-	struct nft_flow_offload *priv = nft_expr_priv(expr);
+ struct nft_flow_offload *priv = nft_expr_priv(expr);
 
-	nf_tables_deactivate_flowtable(ctx, priv->flowtable, phase);
+ nf_tables_deactivate_flowtable(ctx, priv->flowtable, phase);
 }

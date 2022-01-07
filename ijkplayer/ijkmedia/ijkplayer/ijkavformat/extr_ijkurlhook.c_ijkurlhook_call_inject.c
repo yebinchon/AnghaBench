@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {TYPE_1__* prot; int /*<<< orphan*/  interrupt_callback; TYPE_3__* priv_data; } ;
-typedef  TYPE_2__ URLContext ;
-struct TYPE_11__ {int is_url_changed; int /*<<< orphan*/ * url; scalar_t__ is_handled; } ;
+
+
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_9__ {TYPE_1__* prot; int interrupt_callback; TYPE_3__* priv_data; } ;
+typedef TYPE_2__ URLContext ;
+struct TYPE_11__ {int is_url_changed; int * url; scalar_t__ is_handled; } ;
 struct TYPE_10__ {TYPE_4__ app_io_ctrl; scalar_t__ app_ctx; } ;
-struct TYPE_8__ {int /*<<< orphan*/  name; } ;
-typedef  TYPE_3__ Context ;
-typedef  TYPE_4__ AVAppIOControl ;
+struct TYPE_8__ {int name; } ;
+typedef TYPE_3__ Context ;
+typedef TYPE_4__ AVAppIOControl ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AVAPP_CTRL_WILL_HTTP_OPEN ; 
- int AVERROR_EXIT ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_LOG_INFO ; 
- int av_application_on_io_control (scalar_t__,int /*<<< orphan*/ ,TYPE_4__*) ; 
- int /*<<< orphan*/  av_log (TYPE_2__*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,char*) ; 
- scalar_t__ ff_check_interrupt (int /*<<< orphan*/ *) ; 
- scalar_t__ strcmp (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int AVAPP_CTRL_WILL_HTTP_OPEN ;
+ int AVERROR_EXIT ;
+ int AV_LOG_ERROR ;
+ int AV_LOG_INFO ;
+ int av_application_on_io_control (scalar_t__,int ,TYPE_4__*) ;
+ int av_log (TYPE_2__*,int ,char*,int ,int *,char*) ;
+ scalar_t__ ff_check_interrupt (int *) ;
+ scalar_t__ strcmp (int *,int *) ;
 
 __attribute__((used)) static int ijkurlhook_call_inject(URLContext *h)
 {
@@ -53,7 +53,7 @@ __attribute__((used)) static int ijkurlhook_call_inject(URLContext *h)
             goto fail;
         }
         if (!c->app_io_ctrl.is_url_changed && strcmp(control_data_backup.url, c->app_io_ctrl.url)) {
-            // force a url compare
+
             c->app_io_ctrl.is_url_changed = 1;
         }
 

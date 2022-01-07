@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VOID ;
-typedef  size_t ULONG ;
-typedef  int /*<<< orphan*/  UCHAR ;
-struct TYPE_3__ {int /*<<< orphan*/  Blue; int /*<<< orphan*/  Green; int /*<<< orphan*/  Red; } ;
-typedef  TYPE_1__* PPALETTE_ENTRY ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MachVideoSetPaletteColor (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MachVideoSync () ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int VOID ;
+typedef size_t ULONG ;
+typedef int UCHAR ;
+struct TYPE_3__ {int Blue; int Green; int Red; } ;
+typedef TYPE_1__* PPALETTE_ENTRY ;
+
+
+ int MachVideoSetPaletteColor (int ,int ,int ,int ) ;
+ int MachVideoSync () ;
 
 VOID VideoRestorePaletteState(PPALETTE_ENTRY Palette, ULONG ColorCount)
 {

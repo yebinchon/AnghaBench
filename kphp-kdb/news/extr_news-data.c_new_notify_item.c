@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  notify_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NOTIFY_MODE ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  items_kept ; 
- int /*<<< orphan*/  vkprintf (int,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * zmalloc0 (int) ; 
+
+
+
+typedef int notify_t ;
+
+
+ int NOTIFY_MODE ;
+ int assert (int ) ;
+ int items_kept ;
+ int vkprintf (int,char*,int *) ;
+ int * zmalloc0 (int) ;
 
 __attribute__((used)) static notify_t *new_notify_item (void) {
   assert (NOTIFY_MODE);

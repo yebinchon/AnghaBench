@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int size; int count; int /*<<< orphan*/ ** matches; } ;
-typedef  TYPE_1__ MatchCollection2 ;
-typedef  int /*<<< orphan*/  IMatchCollection2 ;
-typedef  int /*<<< orphan*/  IMatch2 ;
-typedef  int /*<<< orphan*/  IMatch ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- int /*<<< orphan*/  IMatch2_AddRef (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TRACE (char*,TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ ** heap_alloc (int) ; 
- int /*<<< orphan*/ ** heap_realloc (int /*<<< orphan*/ **,int) ; 
- TYPE_1__* impl_from_IMatchCollection2 (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int size; int count; int ** matches; } ;
+typedef TYPE_1__ MatchCollection2 ;
+typedef int IMatchCollection2 ;
+typedef int IMatch2 ;
+typedef int IMatch ;
+typedef int HRESULT ;
+
+
+ int E_OUTOFMEMORY ;
+ int IMatch2_AddRef (int *) ;
+ int S_OK ;
+ int TRACE (char*,TYPE_1__*,int *) ;
+ int ** heap_alloc (int) ;
+ int ** heap_realloc (int **,int) ;
+ TYPE_1__* impl_from_IMatchCollection2 (int *) ;
 
 __attribute__((used)) static HRESULT add_match(IMatchCollection2 *iface, IMatch2 *add)
 {

@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct imx_media_fim {int /*<<< orphan*/  ctrl_handler; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  v4l2_ctrl_handler_free (int /*<<< orphan*/ *) ; 
+
+
+
+struct imx_media_fim {int ctrl_handler; } ;
+
+
+ int v4l2_ctrl_handler_free (int *) ;
 
 void imx_media_fim_free(struct imx_media_fim *fim)
 {
-	v4l2_ctrl_handler_free(&fim->ctrl_handler);
+ v4l2_ctrl_handler_free(&fim->ctrl_handler);
 }

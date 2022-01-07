@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int val; scalar_t__* encoded; } ;
-typedef  size_t DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef size_t DWORD ;
+typedef int BOOL ;
 
-/* Variables and functions */
- size_t ARRAY_SIZE (TYPE_1__*) ; 
- int /*<<< orphan*/  GetLastError () ; 
- TYPE_1__* enumeratedTypes ; 
- TYPE_1__* enums ; 
- int /*<<< orphan*/  ok (int,char*,int,...) ; 
- int /*<<< orphan*/  pCryptDecodeObjectEx (size_t,TYPE_1__,scalar_t__*,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int*,size_t*) ; 
+
+ size_t ARRAY_SIZE (TYPE_1__*) ;
+ int GetLastError () ;
+ TYPE_1__* enumeratedTypes ;
+ TYPE_1__* enums ;
+ int ok (int,char*,int,...) ;
+ int pCryptDecodeObjectEx (size_t,TYPE_1__,scalar_t__*,scalar_t__,int ,int *,int*,size_t*) ;
 
 __attribute__((used)) static void test_decodeEnumerated(DWORD dwEncoding)
 {
@@ -36,7 +36,7 @@ __attribute__((used)) static void test_decodeEnumerated(DWORD dwEncoding)
             int val;
 
             ret = pCryptDecodeObjectEx(dwEncoding, enumeratedTypes[i],
-             enums[j].encoded, enums[j].encoded[1] + 2, 0, NULL,
+             enums[j].encoded, enums[j].encoded[1] + 2, 0, ((void*)0),
              &val, &bufSize);
             ok(ret, "CryptDecodeObjectEx failed: %08x\n", GetLastError());
             ok(bufSize == sizeof(int),

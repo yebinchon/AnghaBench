@@ -1,100 +1,100 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  NVGpaint ;
-typedef  int /*<<< orphan*/  NVGcontext ;
-typedef  int /*<<< orphan*/  FramebufferState ;
-typedef  int /*<<< orphan*/  EGLSurface ;
-typedef  int /*<<< orphan*/  EGLDisplay ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GL_BLEND ; 
- int GL_COLOR_BUFFER_BIT ; 
- scalar_t__ GL_NO_ERROR ; 
- int /*<<< orphan*/  GL_ONE_MINUS_SRC_ALPHA ; 
- int /*<<< orphan*/  GL_SRC_ALPHA ; 
- int GL_STENCIL_BUFFER_BIT ; 
- double M_PI ; 
- int NVG_ALIGN_CENTER ; 
- int NVG_ALIGN_TOP ; 
- int NVG_ANTIALIAS ; 
- int NVG_STENCIL_STROKES ; 
- int SPINTEXT_LENGTH ; 
- scalar_t__ _binary_img_spinner_comma_png_end ; 
- scalar_t__ _binary_img_spinner_comma_png_start ; 
- scalar_t__ _binary_img_spinner_track_png_end ; 
- scalar_t__ _binary_img_spinner_track_png_start ; 
- scalar_t__ _binary_opensans_semibold_ttf_end ; 
- scalar_t__ _binary_opensans_semibold_ttf_start ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ atoi (char*) ; 
- int /*<<< orphan*/  eglSwapBuffers (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fgets (char*,int,int /*<<< orphan*/ ) ; 
- float fmax (double,float) ; 
- float fmin (double,float) ; 
- int /*<<< orphan*/ * framebuffer_init (char*,int,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*,int*) ; 
- int /*<<< orphan*/  glBlendFunc (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glClear (int) ; 
- int /*<<< orphan*/  glClearColor (double,double,double,double) ; 
- int /*<<< orphan*/  glEnable (int /*<<< orphan*/ ) ; 
- scalar_t__ glGetError () ; 
- int /*<<< orphan*/  isdigit (char) ; 
- int /*<<< orphan*/  nvgBeginFrame (int /*<<< orphan*/ *,int,int,float) ; 
- int /*<<< orphan*/  nvgBeginPath (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nvgBoxGradient (int /*<<< orphan*/ *,int,int,int,int,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int nvgCreateFontMem (int /*<<< orphan*/ *,char*,unsigned char*,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * nvgCreateGLES3 (int) ; 
- int nvgCreateImageMem (int /*<<< orphan*/ *,int /*<<< orphan*/ ,unsigned char*,scalar_t__) ; 
- int /*<<< orphan*/  nvgEndFrame (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nvgFill (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nvgFillPaint (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nvgFontSize (int /*<<< orphan*/ *,float) ; 
- int /*<<< orphan*/  nvgImagePattern (int /*<<< orphan*/ *,int,int,int,int,int /*<<< orphan*/ ,int,float) ; 
- int /*<<< orphan*/  nvgLinearGradient (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nvgRGB (int,int,int) ; 
- int /*<<< orphan*/  nvgRGBA (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  nvgRect (int /*<<< orphan*/ *,int,int,int,int) ; 
- int /*<<< orphan*/  nvgRestore (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nvgRotate (int /*<<< orphan*/ *,double) ; 
- int /*<<< orphan*/  nvgRoundedRect (int /*<<< orphan*/ *,int,int,int,int,int) ; 
- int /*<<< orphan*/  nvgSave (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nvgText (int /*<<< orphan*/ *,int,int,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nvgTextAlign (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  nvgTranslate (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  stdin ; 
- scalar_t__ stdin_input_available () ; 
- size_t strcspn (char*,char*) ; 
- size_t strlen (char*) ; 
- int /*<<< orphan*/  strncpy (char*,char*,int) ; 
+
+
+
+typedef int NVGpaint ;
+typedef int NVGcontext ;
+typedef int FramebufferState ;
+typedef int EGLSurface ;
+typedef int EGLDisplay ;
+
+
+ int GL_BLEND ;
+ int GL_COLOR_BUFFER_BIT ;
+ scalar_t__ GL_NO_ERROR ;
+ int GL_ONE_MINUS_SRC_ALPHA ;
+ int GL_SRC_ALPHA ;
+ int GL_STENCIL_BUFFER_BIT ;
+ double M_PI ;
+ int NVG_ALIGN_CENTER ;
+ int NVG_ALIGN_TOP ;
+ int NVG_ANTIALIAS ;
+ int NVG_STENCIL_STROKES ;
+ int SPINTEXT_LENGTH ;
+ scalar_t__ _binary_img_spinner_comma_png_end ;
+ scalar_t__ _binary_img_spinner_comma_png_start ;
+ scalar_t__ _binary_img_spinner_track_png_end ;
+ scalar_t__ _binary_img_spinner_track_png_start ;
+ scalar_t__ _binary_opensans_semibold_ttf_end ;
+ scalar_t__ _binary_opensans_semibold_ttf_start ;
+ int assert (int) ;
+ scalar_t__ atoi (char*) ;
+ int eglSwapBuffers (int ,int ) ;
+ int fgets (char*,int,int ) ;
+ float fmax (double,float) ;
+ float fmin (double,float) ;
+ int * framebuffer_init (char*,int,int,int *,int *,int*,int*) ;
+ int glBlendFunc (int ,int ) ;
+ int glClear (int) ;
+ int glClearColor (double,double,double,double) ;
+ int glEnable (int ) ;
+ scalar_t__ glGetError () ;
+ int isdigit (char) ;
+ int nvgBeginFrame (int *,int,int,float) ;
+ int nvgBeginPath (int *) ;
+ int nvgBoxGradient (int *,int,int,int,int,int,int,int ,int ) ;
+ int nvgCreateFontMem (int *,char*,unsigned char*,scalar_t__,int ) ;
+ int * nvgCreateGLES3 (int) ;
+ int nvgCreateImageMem (int *,int ,unsigned char*,scalar_t__) ;
+ int nvgEndFrame (int *) ;
+ int nvgFill (int *) ;
+ int nvgFillPaint (int *,int ) ;
+ int nvgFontSize (int *,float) ;
+ int nvgImagePattern (int *,int,int,int,int,int ,int,float) ;
+ int nvgLinearGradient (int *,int,int ,int,int,int ,int ) ;
+ int nvgRGB (int,int,int) ;
+ int nvgRGBA (int ,int ,int ,int) ;
+ int nvgRect (int *,int,int,int,int) ;
+ int nvgRestore (int *) ;
+ int nvgRotate (int *,double) ;
+ int nvgRoundedRect (int *,int,int,int,int,int) ;
+ int nvgSave (int *) ;
+ int nvgText (int *,int,int,char*,int *) ;
+ int nvgTextAlign (int *,int) ;
+ int nvgTranslate (int *,int,int) ;
+ int stdin ;
+ scalar_t__ stdin_input_available () ;
+ size_t strcspn (char*,char*) ;
+ size_t strlen (char*) ;
+ int strncpy (char*,char*,int) ;
 
 int spin(int argc, char** argv) {
   int err;
 
-  bool draw_progress = false;
+  bool draw_progress = 0;
   float progress_val = 0.0;
 
   char spintext[SPINTEXT_LENGTH];
   spintext[0] = 0;
 
-  const char* spintext_arg = NULL;
+  const char* spintext_arg = ((void*)0);
   if (argc >= 2) {
     strncpy(spintext, argv[1], SPINTEXT_LENGTH);
   }
 
-  // spinner
+
   int fb_w, fb_h;
   EGLDisplay display;
   EGLSurface surface;
-  FramebufferState *fb = framebuffer_init("spinner", 0x00001000, false,
+  FramebufferState *fb = framebuffer_init("spinner", 0x00001000, 0,
                      &display, &surface, &fb_w, &fb_h);
   assert(fb);
 
@@ -115,17 +115,17 @@ int spin(int argc, char** argv) {
   assert(spinner_comma_img >= 0);
 
   for (int cnt = 0; ; cnt++) {
-    // Check stdin for new text
+
     if (stdin_input_available()){
       fgets(spintext, SPINTEXT_LENGTH, stdin);
       spintext[strcspn(spintext, "\n")] = 0;
 
-      // Check if number (update progress bar)
+
       size_t len = strlen(spintext);
       bool is_number = len > 0;
       for (int i = 0; i < len; i++){
         if (!isdigit(spintext[i])){
-          is_number = false;
+          is_number = 0;
           break;
         }
       }
@@ -145,7 +145,7 @@ int spin(int argc, char** argv) {
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     nvgBeginFrame(vg, fb_w, fb_h, 1.0f);
 
-    // background
+
     nvgBeginPath(vg);
     NVGpaint bg = nvgLinearGradient(vg, fb_w, 0, fb_w, fb_h,
     nvgRGBA(0, 0, 0, 175), nvgRGBA(0, 0, 0, 255));
@@ -153,7 +153,7 @@ int spin(int argc, char** argv) {
     nvgRect(vg, 0, 0, fb_w, fb_h);
     nvgFill(vg);
 
-    // spin track
+
     nvgSave(vg);
     nvgTranslate(vg, spinner_img_xc, spinner_img_yc);
     nvgRotate(vg, (3.75*M_PI * cnt/120.0));
@@ -166,7 +166,7 @@ int spin(int argc, char** argv) {
     nvgFill(vg);
     nvgRestore(vg);
 
-    // comma
+
     NVGpaint comma_imgPaint = nvgImagePattern(vg, spinner_img_x, spinner_img_y,
       spinner_img_s, spinner_img_s, 0, spinner_comma_img, 1.0f);
     nvgBeginPath(vg);
@@ -175,7 +175,7 @@ int spin(int argc, char** argv) {
     nvgFill(vg);
 
     if (draw_progress){
-      // draw progress bar
+
       int progress_width = 1000;
       int progress_x = fb_w/2-progress_width/2;
       int progress_y = 775;
@@ -203,10 +203,10 @@ int spin(int argc, char** argv) {
       nvgFillPaint(vg, paint);
       nvgFill(vg);
     } else {
-      // message
+
       nvgTextAlign(vg, NVG_ALIGN_CENTER | NVG_ALIGN_TOP);
       nvgFontSize(vg, 96.0f);
-      nvgText(vg, fb_w/2, (fb_h*2/3)+24, spintext, NULL);
+      nvgText(vg, fb_w/2, (fb_h*2/3)+24, spintext, ((void*)0));
     }
 
     nvgEndFrame(vg);

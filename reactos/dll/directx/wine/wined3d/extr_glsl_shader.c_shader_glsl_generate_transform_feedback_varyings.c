@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct wined3d_string_buffer {int dummy; } ;
 struct wined3d_stream_output_element {unsigned int output_slot; unsigned int component_count; scalar_t__ register_idx; scalar_t__ component_idx; scalar_t__ stream_idx; } ;
 struct wined3d_stream_output_desc {unsigned int element_count; scalar_t__ rasterizer_stream_idx; unsigned int buffer_stride_count; int* buffer_strides; struct wined3d_stream_output_element* elements; } ;
-typedef  scalar_t__ GLenum ;
+typedef scalar_t__ GLenum ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FIXME (char*,scalar_t__,...) ; 
- scalar_t__ GL_INTERLEAVED_ATTRIBS ; 
- unsigned int WINED3D_MAX_STREAM_OUTPUT_BUFFERS ; 
- scalar_t__ WINED3D_NO_RASTERIZER_STREAM ; 
- scalar_t__ WINED3D_STREAM_OUTPUT_GAP ; 
- int /*<<< orphan*/  append_transform_feedback_skip_components (char const**,unsigned int*,char**,unsigned int*,struct wined3d_string_buffer*,unsigned int) ; 
- int /*<<< orphan*/  append_transform_feedback_varying (char const**,unsigned int*,char**,unsigned int*,struct wined3d_string_buffer*) ; 
- unsigned int max (unsigned int,unsigned int) ; 
- int /*<<< orphan*/  string_buffer_sprintf (struct wined3d_string_buffer*,char*,...) ; 
+
+ int FIXME (char*,scalar_t__,...) ;
+ scalar_t__ GL_INTERLEAVED_ATTRIBS ;
+ unsigned int WINED3D_MAX_STREAM_OUTPUT_BUFFERS ;
+ scalar_t__ WINED3D_NO_RASTERIZER_STREAM ;
+ scalar_t__ WINED3D_STREAM_OUTPUT_GAP ;
+ int append_transform_feedback_skip_components (char const**,unsigned int*,char**,unsigned int*,struct wined3d_string_buffer*,unsigned int) ;
+ int append_transform_feedback_varying (char const**,unsigned int*,char**,unsigned int*,struct wined3d_string_buffer*) ;
+ unsigned int max (unsigned int,unsigned int) ;
+ int string_buffer_sprintf (struct wined3d_string_buffer*,char*,...) ;
 
 __attribute__((used)) static void shader_glsl_generate_transform_feedback_varyings(const struct wined3d_stream_output_desc *so_desc,
         struct wined3d_string_buffer *buffer, const char **varyings, unsigned int *varying_count,

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int PrivilegeCount; TYPE_1__* Privileges; } ;
-struct TYPE_4__ {int /*<<< orphan*/  Attributes; int /*<<< orphan*/  Luid; } ;
-typedef  TYPE_2__ TOKEN_PRIVILEGES ;
-typedef  int /*<<< orphan*/  LUID ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
-typedef  int /*<<< orphan*/  HANDLE ;
-typedef  scalar_t__ BOOL ;
+struct TYPE_4__ {int Attributes; int Luid; } ;
+typedef TYPE_2__ TOKEN_PRIVILEGES ;
+typedef int LUID ;
+typedef int LPCWSTR ;
+typedef int HANDLE ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- scalar_t__ AdjustTokenPrivileges (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CloseHandle (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GetCurrentProcess () ; 
- scalar_t__ LookupPrivilegeValueW (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ OpenProcessToken (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SE_PRIVILEGE_ENABLED ; 
- int TOKEN_ADJUST_PRIVILEGES ; 
- int TOKEN_QUERY ; 
+
+ scalar_t__ AdjustTokenPrivileges (int ,int ,TYPE_2__*,int ,int ,int ) ;
+ int CloseHandle (int ) ;
+ int FALSE ;
+ int GetCurrentProcess () ;
+ scalar_t__ LookupPrivilegeValueW (int *,int ,int *) ;
+ scalar_t__ OpenProcessToken (int ,int,int *) ;
+ int SE_PRIVILEGE_ENABLED ;
+ int TOKEN_ADJUST_PRIVILEGES ;
+ int TOKEN_QUERY ;
 
 BOOL EnableProcessPrivileges(LPCWSTR lpPrivilegeName, BOOL bEnable)
 {
@@ -42,9 +42,9 @@ BOOL EnableProcessPrivileges(LPCWSTR lpPrivilegeName, BOOL bEnable)
                            TOKEN_ADJUST_PRIVILEGES | TOKEN_QUERY,
                            &hToken);
     if (!Ret)
-        return Ret;     // failure
+        return Ret;
 
-    Ret = LookupPrivilegeValueW(NULL, lpPrivilegeName, &luid);
+    Ret = LookupPrivilegeValueW(((void*)0), lpPrivilegeName, &luid);
     if (Ret)
     {
         tokenPrivileges.PrivilegeCount = 1;

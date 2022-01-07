@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {scalar_t__ display; } ;
 
-/* Variables and functions */
- TYPE_1__ g_xstuff ; 
- int x11h_minimize () ; 
- int /*<<< orphan*/  xenv_update (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ TYPE_1__ g_xstuff ;
+ int x11h_minimize () ;
+ int xenv_update (int *,int *,int *,int *) ;
 
 int xenv_minimize(void)
 {
-	int ret;
+ int ret;
 
-	if (g_xstuff.display) {
-		xenv_update(NULL, NULL, NULL, NULL);
-		ret = x11h_minimize();
-		xenv_update(NULL, NULL, NULL, NULL);
-		return ret;
-	}
+ if (g_xstuff.display) {
+  xenv_update(((void*)0), ((void*)0), ((void*)0), ((void*)0));
+  ret = x11h_minimize();
+  xenv_update(((void*)0), ((void*)0), ((void*)0), ((void*)0));
+  return ret;
+ }
 
-	return -1;
+ return -1;
 }

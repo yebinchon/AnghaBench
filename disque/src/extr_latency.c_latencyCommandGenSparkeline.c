@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint32_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint32_t ;
 struct sequence {scalar_t__ length; } ;
 struct latencyTimeSeries {int idx; scalar_t__ max; TYPE_1__* samples; } ;
-typedef  int /*<<< orphan*/  sds ;
-typedef  int /*<<< orphan*/  buf ;
+typedef int sds ;
+typedef int buf ;
 struct TYPE_2__ {scalar_t__ time; scalar_t__ latency; } ;
 
-/* Variables and functions */
- int LATENCY_GRAPH_COLS ; 
- int LATENCY_TS_LEN ; 
- int /*<<< orphan*/  SPARKLINE_FILL ; 
- struct sequence* createSparklineSequence () ; 
- int /*<<< orphan*/  freeSparklineSequence (struct sequence*) ; 
- int /*<<< orphan*/  sdscatlen (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  sdscatprintf (int /*<<< orphan*/ ,char*,char*,unsigned long,unsigned long,unsigned long) ; 
- int /*<<< orphan*/  sdsempty () ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,int) ; 
- int /*<<< orphan*/  sparklineRender (int /*<<< orphan*/ ,struct sequence*,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sparklineSequenceAddSample (struct sequence*,scalar_t__,char*) ; 
- int time (int /*<<< orphan*/ *) ; 
- char* zstrdup (char*) ; 
+
+ int LATENCY_GRAPH_COLS ;
+ int LATENCY_TS_LEN ;
+ int SPARKLINE_FILL ;
+ struct sequence* createSparklineSequence () ;
+ int freeSparklineSequence (struct sequence*) ;
+ int sdscatlen (int ,char*,int) ;
+ int sdscatprintf (int ,char*,char*,unsigned long,unsigned long,unsigned long) ;
+ int sdsempty () ;
+ int snprintf (char*,int,char*,int) ;
+ int sparklineRender (int ,struct sequence*,int,int,int ) ;
+ int sparklineSequenceAddSample (struct sequence*,scalar_t__,char*) ;
+ int time (int *) ;
+ char* zstrdup (char*) ;
 
 sds latencyCommandGenSparkeline(char *event, struct latencyTimeSeries *ts) {
     int j;
@@ -46,16 +46,16 @@ sds latencyCommandGenSparkeline(char *event, struct latencyTimeSeries *ts) {
         char buf[64];
 
         if (ts->samples[i].time == 0) continue;
-        /* Update min and max. */
+
         if (seq->length == 0) {
             min = max = ts->samples[i].latency;
         } else {
             if (ts->samples[i].latency > max) max = ts->samples[i].latency;
             if (ts->samples[i].latency < min) min = ts->samples[i].latency;
         }
-        /* Use as label the number of seconds / minutes / hours / days
-         * ago the event happened. */
-        elapsed = time(NULL) - ts->samples[i].time;
+
+
+        elapsed = time(((void*)0)) - ts->samples[i].time;
         if (elapsed < 60)
             snprintf(buf,sizeof(buf),"%ds",elapsed);
         else if (elapsed < 3600)

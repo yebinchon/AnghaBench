@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  children; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int children; } ;
 struct bus_match_node {scalar_t__ type; TYPE_1__ compare; scalar_t__ child; } ;
 
-/* Variables and functions */
- scalar_t__ BUS_MATCH_IS_COMPARE (scalar_t__) ; 
- scalar_t__ BUS_MATCH_ROOT ; 
- int /*<<< orphan*/  assert (struct bus_match_node*) ; 
- int /*<<< orphan*/  bus_match_node_free (struct bus_match_node*) ; 
- int /*<<< orphan*/  hashmap_isempty (int /*<<< orphan*/ ) ; 
+
+ scalar_t__ BUS_MATCH_IS_COMPARE (scalar_t__) ;
+ scalar_t__ BUS_MATCH_ROOT ;
+ int assert (struct bus_match_node*) ;
+ int bus_match_node_free (struct bus_match_node*) ;
+ int hashmap_isempty (int ) ;
 
 __attribute__((used)) static bool bus_match_node_maybe_free(struct bus_match_node *node) {
         assert(node);
 
         if (node->type == BUS_MATCH_ROOT)
-                return false;
+                return 0;
 
         if (node->child)
-                return false;
+                return 0;
 
         if (BUS_MATCH_IS_COMPARE(node->type) && !hashmap_isempty(node->compare.children))
-                return true;
+                return 1;
 
         bus_match_node_free(node);
-        return true;
+        return 1;
 }

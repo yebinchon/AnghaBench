@@ -1,83 +1,66 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  enum AVCodecID { ____Placeholder_AVCodecID } AVCodecID ;
-typedef  int /*<<< orphan*/  UInt32 ;
 
-/* Variables and functions */
-#define  AV_CODEC_ID_AAC 142 
-#define  AV_CODEC_ID_AC3 141 
-#define  AV_CODEC_ID_ADPCM_IMA_QT 140 
-#define  AV_CODEC_ID_ALAC 139 
-#define  AV_CODEC_ID_AMR_NB 138 
-#define  AV_CODEC_ID_EAC3 137 
-#define  AV_CODEC_ID_GSM_MS 136 
-#define  AV_CODEC_ID_ILBC 135 
-#define  AV_CODEC_ID_MP1 134 
-#define  AV_CODEC_ID_MP2 133 
-#define  AV_CODEC_ID_MP3 132 
-#define  AV_CODEC_ID_PCM_ALAW 131 
-#define  AV_CODEC_ID_PCM_MULAW 130 
-#define  AV_CODEC_ID_QDM2 129 
-#define  AV_CODEC_ID_QDMC 128 
- int /*<<< orphan*/  av_assert0 (int) ; 
- int /*<<< orphan*/  kAudioFormatAC3 ; 
- int /*<<< orphan*/  kAudioFormatALaw ; 
- int /*<<< orphan*/  kAudioFormatAMR ; 
- int /*<<< orphan*/  kAudioFormatAppleIMA4 ; 
- int /*<<< orphan*/  kAudioFormatAppleLossless ; 
- int /*<<< orphan*/  kAudioFormatEnhancedAC3 ; 
- int /*<<< orphan*/  kAudioFormatMPEG4AAC ; 
- int /*<<< orphan*/  kAudioFormatMPEGLayer1 ; 
- int /*<<< orphan*/  kAudioFormatMPEGLayer2 ; 
- int /*<<< orphan*/  kAudioFormatMPEGLayer3 ; 
- int /*<<< orphan*/  kAudioFormatMicrosoftGSM ; 
- int /*<<< orphan*/  kAudioFormatQDesign ; 
- int /*<<< orphan*/  kAudioFormatQDesign2 ; 
- int /*<<< orphan*/  kAudioFormatULaw ; 
- int /*<<< orphan*/  kAudioFormatiLBC ; 
+
+
+
+typedef enum AVCodecID { ____Placeholder_AVCodecID } AVCodecID ;
+typedef int UInt32 ;
+ int av_assert0 (int) ;
+ int kAudioFormatAC3 ;
+ int kAudioFormatALaw ;
+ int kAudioFormatAMR ;
+ int kAudioFormatAppleIMA4 ;
+ int kAudioFormatAppleLossless ;
+ int kAudioFormatEnhancedAC3 ;
+ int kAudioFormatMPEG4AAC ;
+ int kAudioFormatMPEGLayer1 ;
+ int kAudioFormatMPEGLayer2 ;
+ int kAudioFormatMPEGLayer3 ;
+ int kAudioFormatMicrosoftGSM ;
+ int kAudioFormatQDesign ;
+ int kAudioFormatQDesign2 ;
+ int kAudioFormatULaw ;
+ int kAudioFormatiLBC ;
 
 __attribute__((used)) static UInt32 ffat_get_format_id(enum AVCodecID codec, int profile)
 {
     switch (codec) {
-    case AV_CODEC_ID_AAC:
+    case 142:
         return kAudioFormatMPEG4AAC;
-    case AV_CODEC_ID_AC3:
+    case 141:
         return kAudioFormatAC3;
-    case AV_CODEC_ID_ADPCM_IMA_QT:
+    case 140:
         return kAudioFormatAppleIMA4;
-    case AV_CODEC_ID_ALAC:
+    case 139:
         return kAudioFormatAppleLossless;
-    case AV_CODEC_ID_AMR_NB:
+    case 138:
         return kAudioFormatAMR;
-    case AV_CODEC_ID_EAC3:
+    case 137:
         return kAudioFormatEnhancedAC3;
-    case AV_CODEC_ID_GSM_MS:
+    case 136:
         return kAudioFormatMicrosoftGSM;
-    case AV_CODEC_ID_ILBC:
+    case 135:
         return kAudioFormatiLBC;
-    case AV_CODEC_ID_MP1:
+    case 134:
         return kAudioFormatMPEGLayer1;
-    case AV_CODEC_ID_MP2:
+    case 133:
         return kAudioFormatMPEGLayer2;
-    case AV_CODEC_ID_MP3:
+    case 132:
         return kAudioFormatMPEGLayer3;
-    case AV_CODEC_ID_PCM_ALAW:
+    case 131:
         return kAudioFormatALaw;
-    case AV_CODEC_ID_PCM_MULAW:
+    case 130:
         return kAudioFormatULaw;
-    case AV_CODEC_ID_QDMC:
+    case 128:
         return kAudioFormatQDesign;
-    case AV_CODEC_ID_QDM2:
+    case 129:
         return kAudioFormatQDesign2;
     default:
         av_assert0(!"Invalid codec ID!");

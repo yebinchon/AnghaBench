@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char GLubyte ;
-typedef  int GLint ;
 
-/* Variables and functions */
- int GLFW_OPENGL_API ; 
- int /*<<< orphan*/  GL_EXTENSIONS ; 
- int /*<<< orphan*/  GL_NUM_EXTENSIONS ; 
- char* get_api_name (int) ; 
- int /*<<< orphan*/  glGetIntegerv (int /*<<< orphan*/ ,int*) ; 
- char* glGetString (int /*<<< orphan*/ ) ; 
- scalar_t__ glGetStringi (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  printf (char*,char const*) ; 
- int /*<<< orphan*/  putchar (char const) ; 
+
+
+
+typedef char GLubyte ;
+typedef int GLint ;
+
+
+ int GLFW_OPENGL_API ;
+ int GL_EXTENSIONS ;
+ int GL_NUM_EXTENSIONS ;
+ char* get_api_name (int) ;
+ int glGetIntegerv (int ,int*) ;
+ char* glGetString (int ) ;
+ scalar_t__ glGetStringi (int ,int) ;
+ int printf (char*,char const*) ;
+ int putchar (char const) ;
 
 __attribute__((used)) static void list_context_extensions(int client, int major, int minor)
 {
@@ -33,7 +33,7 @@ __attribute__((used)) static void list_context_extensions(int client, int major,
         GLint count;
         glGetIntegerv(GL_NUM_EXTENSIONS, &count);
 
-        for (int i = 0;  i < count;  i++)
+        for (int i = 0; i < count; i++)
             printf(" %s\n", (const char*) glGetStringi(GL_EXTENSIONS, i));
     }
     else

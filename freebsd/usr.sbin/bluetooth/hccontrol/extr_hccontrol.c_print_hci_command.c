@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct hci_command {char* command; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  stdout ; 
+
+ int fprintf (int ,char*,char*) ;
+ int stdout ;
 
 __attribute__((used)) static void
 print_hci_command(struct hci_command *category)
 {
-	struct hci_command	*c = NULL;
+ struct hci_command *c = ((void*)0);
 
-	for (c = category; c->command != NULL; c++)
-		fprintf(stdout, "\t%s\n", c->command);
+ for (c = category; c->command != ((void*)0); c++)
+  fprintf(stdout, "\t%s\n", c->command);
 }

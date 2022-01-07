@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {struct TYPE_9__* Next; int /*<<< orphan*/  Id; int /*<<< orphan*/ * Key; } ;
-struct TYPE_8__ {int /*<<< orphan*/  Line; int /*<<< orphan*/  Section; int /*<<< orphan*/  Inf; } ;
-typedef  TYPE_1__* PINFCONTEXT ;
-typedef  int /*<<< orphan*/ * PINFCACHESECTION ;
-typedef  TYPE_2__* PINFCACHELINE ;
-typedef  scalar_t__* PCWSTR ;
-typedef  int /*<<< orphan*/  INFSTATUS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INF_STATUS_INVALID_PARAMETER ; 
- int /*<<< orphan*/  INF_STATUS_NOT_FOUND ; 
- int /*<<< orphan*/  INF_STATUS_SUCCESS ; 
- TYPE_2__* InfpGetLineForContext (TYPE_1__*) ; 
- int /*<<< orphan*/ * InfpGetSectionForContext (TYPE_1__*) ; 
- scalar_t__ strcmpiW (int /*<<< orphan*/ *,scalar_t__*) ; 
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_9__ {struct TYPE_9__* Next; int Id; int * Key; } ;
+struct TYPE_8__ {int Line; int Section; int Inf; } ;
+typedef TYPE_1__* PINFCONTEXT ;
+typedef int * PINFCACHESECTION ;
+typedef TYPE_2__* PINFCACHELINE ;
+typedef scalar_t__* PCWSTR ;
+typedef int INFSTATUS ;
+
+
+ int INF_STATUS_INVALID_PARAMETER ;
+ int INF_STATUS_NOT_FOUND ;
+ int INF_STATUS_SUCCESS ;
+ TYPE_2__* InfpGetLineForContext (TYPE_1__*) ;
+ int * InfpGetSectionForContext (TYPE_1__*) ;
+ scalar_t__ strcmpiW (int *,scalar_t__*) ;
 
 INFSTATUS
 InfpFindNextMatchLine(PINFCONTEXT ContextIn,
@@ -36,17 +36,17 @@ InfpFindNextMatchLine(PINFCONTEXT ContextIn,
   PINFCACHESECTION Section;
   PINFCACHELINE CacheLine;
 
-  if (ContextIn == NULL || ContextOut == NULL || Key == NULL || *Key == 0)
+  if (ContextIn == ((void*)0) || ContextOut == ((void*)0) || Key == ((void*)0) || *Key == 0)
     return INF_STATUS_INVALID_PARAMETER;
 
   Section = InfpGetSectionForContext(ContextIn);
-  if (Section == NULL)
+  if (Section == ((void*)0))
       return INF_STATUS_INVALID_PARAMETER;
 
   CacheLine = InfpGetLineForContext(ContextIn);
-  while (CacheLine != NULL)
+  while (CacheLine != ((void*)0))
     {
-      if (CacheLine->Key != NULL && strcmpiW (CacheLine->Key, Key) == 0)
+      if (CacheLine->Key != ((void*)0) && strcmpiW (CacheLine->Key, Key) == 0)
         {
 
           if (ContextIn != ContextOut)

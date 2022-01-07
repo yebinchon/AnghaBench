@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int cur_y; scalar_t__ cur; } ;
-typedef  TYPE_1__ iheap_en_t ;
+typedef TYPE_1__ iheap_en_t ;
 
-/* Variables and functions */
- TYPE_1__* IHE ; 
- int MAX_PRIORITY ; 
- int /*<<< orphan*/ * QT ; 
- int /*<<< orphan*/ * QW ; 
- int Q_min_priority ; 
- int Q_words ; 
- int /*<<< orphan*/  ihe_advance (TYPE_1__*) ; 
- int /*<<< orphan*/  ihe_init (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  intersect_lists () ; 
- int /*<<< orphan*/  store_res (scalar_t__,int) ; 
+
+ TYPE_1__* IHE ;
+ int MAX_PRIORITY ;
+ int * QT ;
+ int * QW ;
+ int Q_min_priority ;
+ int Q_words ;
+ int ihe_advance (TYPE_1__*) ;
+ int ihe_init (TYPE_1__*,int ,int ,int ) ;
+ int intersect_lists () ;
+ int store_res (scalar_t__,int) ;
 
 __attribute__((used)) static void fast_intersection_query (void) {
   int i;

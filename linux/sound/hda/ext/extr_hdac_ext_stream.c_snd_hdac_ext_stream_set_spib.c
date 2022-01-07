@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
-struct hdac_ext_stream {int /*<<< orphan*/  spib_addr; } ;
-struct hdac_bus {int /*<<< orphan*/  dev; int /*<<< orphan*/  spbcap; } ;
 
-/* Variables and functions */
- int EINVAL ; 
- int /*<<< orphan*/  dev_err (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  writel (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int u32 ;
+struct hdac_ext_stream {int spib_addr; } ;
+struct hdac_bus {int dev; int spbcap; } ;
+
+
+ int EINVAL ;
+ int dev_err (int ,char*) ;
+ int writel (int ,int ) ;
 
 int snd_hdac_ext_stream_set_spib(struct hdac_bus *bus,
-				 struct hdac_ext_stream *stream, u32 value)
+     struct hdac_ext_stream *stream, u32 value)
 {
 
-	if (!bus->spbcap) {
-		dev_err(bus->dev, "Address of SPB capability is NULL\n");
-		return -EINVAL;
-	}
+ if (!bus->spbcap) {
+  dev_err(bus->dev, "Address of SPB capability is NULL\n");
+  return -EINVAL;
+ }
 
-	writel(value, stream->spib_addr);
+ writel(value, stream->spib_addr);
 
-	return 0;
+ return 0;
 }

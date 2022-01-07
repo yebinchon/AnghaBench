@@ -1,86 +1,63 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_5__ ;
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* xmlNsPtr ;
-typedef  TYPE_2__* xmlNodePtr ;
-struct TYPE_9__ {int type; struct TYPE_9__* next; struct TYPE_9__* children; int /*<<< orphan*/  name; int /*<<< orphan*/  doc; int /*<<< orphan*/ * content; struct TYPE_9__* parent; } ;
-typedef  TYPE_2__ xmlNode ;
-typedef  TYPE_4__* xmlEntityPtr ;
-typedef  int /*<<< orphan*/ * xmlBufPtr ;
-typedef  TYPE_5__* xmlAttrPtr ;
+
+
+typedef struct TYPE_11__ TYPE_5__ ;
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef TYPE_1__* xmlNsPtr ;
+typedef TYPE_2__* xmlNodePtr ;
+struct TYPE_9__ {int type; struct TYPE_9__* next; struct TYPE_9__* children; int name; int doc; int * content; struct TYPE_9__* parent; } ;
+typedef TYPE_2__ xmlNode ;
+typedef TYPE_4__* xmlEntityPtr ;
+typedef int * xmlBufPtr ;
+typedef TYPE_5__* xmlAttrPtr ;
 struct TYPE_11__ {TYPE_2__* children; } ;
 struct TYPE_10__ {TYPE_2__* children; } ;
-struct TYPE_8__ {int /*<<< orphan*/ * href; } ;
-
-/* Variables and functions */
-#define  XML_ATTRIBUTE_DECL 148 
-#define  XML_ATTRIBUTE_NODE 147 
-#define  XML_CDATA_SECTION_NODE 146 
-#define  XML_COMMENT_NODE 145 
-#define  XML_DOCB_DOCUMENT_NODE 144 
-#define  XML_DOCUMENT_FRAG_NODE 143 
-#define  XML_DOCUMENT_NODE 142 
-#define  XML_DOCUMENT_TYPE_NODE 141 
-#define  XML_DTD_NODE 140 
-#define  XML_ELEMENT_DECL 139 
-#define  XML_ELEMENT_NODE 138 
-#define  XML_ENTITY_DECL 137 
-#define  XML_ENTITY_NODE 136 
-#define  XML_ENTITY_REF_NODE 135 
-#define  XML_HTML_DOCUMENT_NODE 134 
-#define  XML_NAMESPACE_DECL 133 
-#define  XML_NOTATION_NODE 132 
-#define  XML_PI_NODE 131 
-#define  XML_TEXT_NODE 130 
-#define  XML_XINCLUDE_END 129 
-#define  XML_XINCLUDE_START 128 
- int /*<<< orphan*/  xmlBufCat (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- TYPE_4__* xmlGetDocEntity (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+struct TYPE_8__ {int * href; } ;
+ int xmlBufCat (int *,int *) ;
+ TYPE_4__* xmlGetDocEntity (int ,int ) ;
 
 int
 xmlBufGetNodeContent(xmlBufPtr buf, const xmlNode *cur)
 {
-    if ((cur == NULL) || (buf == NULL)) return(-1);
+    if ((cur == ((void*)0)) || (buf == ((void*)0))) return(-1);
     switch (cur->type) {
-        case XML_CDATA_SECTION_NODE:
-        case XML_TEXT_NODE:
-	    xmlBufCat(buf, cur->content);
+        case 146:
+        case 130:
+     xmlBufCat(buf, cur->content);
             break;
-        case XML_DOCUMENT_FRAG_NODE:
-        case XML_ELEMENT_NODE:{
+        case 143:
+        case 138:{
                 const xmlNode *tmp = cur;
 
-                while (tmp != NULL) {
+                while (tmp != ((void*)0)) {
                     switch (tmp->type) {
-                        case XML_CDATA_SECTION_NODE:
-                        case XML_TEXT_NODE:
-                            if (tmp->content != NULL)
+                        case 146:
+                        case 130:
+                            if (tmp->content != ((void*)0))
                                 xmlBufCat(buf, tmp->content);
                             break;
-                        case XML_ENTITY_REF_NODE:
+                        case 135:
                             xmlBufGetNodeContent(buf, tmp);
                             break;
                         default:
                             break;
                     }
-                    /*
-                     * Skip to next node
-                     */
-                    if (tmp->children != NULL) {
-                        if (tmp->children->type != XML_ENTITY_DECL) {
+
+
+
+                    if (tmp->children != ((void*)0)) {
+                        if (tmp->children->type != 137) {
                             tmp = tmp->children;
                             continue;
                         }
@@ -88,93 +65,93 @@ xmlBufGetNodeContent(xmlBufPtr buf, const xmlNode *cur)
                     if (tmp == cur)
                         break;
 
-                    if (tmp->next != NULL) {
+                    if (tmp->next != ((void*)0)) {
                         tmp = tmp->next;
                         continue;
                     }
 
                     do {
                         tmp = tmp->parent;
-                        if (tmp == NULL)
+                        if (tmp == ((void*)0))
                             break;
                         if (tmp == cur) {
-                            tmp = NULL;
+                            tmp = ((void*)0);
                             break;
                         }
-                        if (tmp->next != NULL) {
+                        if (tmp->next != ((void*)0)) {
                             tmp = tmp->next;
                             break;
                         }
-                    } while (tmp != NULL);
+                    } while (tmp != ((void*)0));
                 }
-		break;
+  break;
             }
-        case XML_ATTRIBUTE_NODE:{
+        case 147:{
                 xmlAttrPtr attr = (xmlAttrPtr) cur;
-		xmlNodePtr tmp = attr->children;
+  xmlNodePtr tmp = attr->children;
 
-		while (tmp != NULL) {
-		    if (tmp->type == XML_TEXT_NODE)
-		        xmlBufCat(buf, tmp->content);
-		    else
-		        xmlBufGetNodeContent(buf, tmp);
-		    tmp = tmp->next;
-		}
+  while (tmp != ((void*)0)) {
+      if (tmp->type == 130)
+          xmlBufCat(buf, tmp->content);
+      else
+          xmlBufGetNodeContent(buf, tmp);
+      tmp = tmp->next;
+  }
                 break;
             }
-        case XML_COMMENT_NODE:
-        case XML_PI_NODE:
-	    xmlBufCat(buf, cur->content);
+        case 145:
+        case 131:
+     xmlBufCat(buf, cur->content);
             break;
-        case XML_ENTITY_REF_NODE:{
+        case 135:{
                 xmlEntityPtr ent;
                 xmlNodePtr tmp;
 
-                /* lookup entity declaration */
+
                 ent = xmlGetDocEntity(cur->doc, cur->name);
-                if (ent == NULL)
+                if (ent == ((void*)0))
                     return(-1);
 
-                /* an entity content can be any "well balanced chunk",
-                 * i.e. the result of the content [43] production:
-                 * http://www.w3.org/TR/REC-xml#NT-content
-                 * -> we iterate through child nodes and recursive call
-                 * xmlNodeGetContent() which handles all possible node types */
+
+
+
+
+
                 tmp = ent->children;
                 while (tmp) {
-		    xmlBufGetNodeContent(buf, tmp);
+      xmlBufGetNodeContent(buf, tmp);
                     tmp = tmp->next;
                 }
-		break;
+  break;
             }
-        case XML_ENTITY_NODE:
-        case XML_DOCUMENT_TYPE_NODE:
-        case XML_NOTATION_NODE:
-        case XML_DTD_NODE:
-        case XML_XINCLUDE_START:
-        case XML_XINCLUDE_END:
+        case 136:
+        case 141:
+        case 132:
+        case 140:
+        case 128:
+        case 129:
             break;
-        case XML_DOCUMENT_NODE:
-#ifdef LIBXML_DOCB_ENABLED
-        case XML_DOCB_DOCUMENT_NODE:
-#endif
-        case XML_HTML_DOCUMENT_NODE:
-	    cur = cur->children;
-	    while (cur!= NULL) {
-		if ((cur->type == XML_ELEMENT_NODE) ||
-		    (cur->type == XML_TEXT_NODE) ||
-		    (cur->type == XML_CDATA_SECTION_NODE)) {
-		    xmlBufGetNodeContent(buf, cur);
-		}
-		cur = cur->next;
-	    }
-	    break;
-        case XML_NAMESPACE_DECL:
-	    xmlBufCat(buf, ((xmlNsPtr) cur)->href);
-	    break;
-        case XML_ELEMENT_DECL:
-        case XML_ATTRIBUTE_DECL:
-        case XML_ENTITY_DECL:
+        case 142:
+
+
+
+        case 134:
+     cur = cur->children;
+     while (cur!= ((void*)0)) {
+  if ((cur->type == 138) ||
+      (cur->type == 130) ||
+      (cur->type == 146)) {
+      xmlBufGetNodeContent(buf, cur);
+  }
+  cur = cur->next;
+     }
+     break;
+        case 133:
+     xmlBufCat(buf, ((xmlNsPtr) cur)->href);
+     break;
+        case 139:
+        case 148:
+        case 137:
             break;
     }
     return(0);

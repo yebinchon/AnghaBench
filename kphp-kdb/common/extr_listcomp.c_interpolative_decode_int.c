@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct bitreader {int m; } ;
 struct list_decoder {int k; int K; int p; struct bitreader br; scalar_t__ data; } ;
 struct interpolative_decoder_stack_entry {int left_idx; int right_idx; void* middle_value; int right_value; int left_value; } ;
 
-/* Variables and functions */
- void* INTERPOLATIVE_DECODER_NOT_EVALUATED ; 
- scalar_t__ decode_cur_bit ; 
- int /*<<< orphan*/  decode_load_bit () ; 
+
+ void* INTERPOLATIVE_DECODER_NOT_EVALUATED ;
+ scalar_t__ decode_cur_bit ;
+ int decode_load_bit () ;
 
 __attribute__((used)) static int interpolative_decode_int (struct list_decoder *dec) {
   dec->k++;
-  if (dec->k > dec->K) {  /* by K.O.T. */
+  if (dec->k > dec->K) {
     return 0x7fffffff;
   }
   struct interpolative_decoder_stack_entry *data = (struct interpolative_decoder_stack_entry *) dec->data + dec->p;

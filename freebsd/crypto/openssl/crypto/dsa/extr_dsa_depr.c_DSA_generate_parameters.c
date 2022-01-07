@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  DSA ;
-typedef  int /*<<< orphan*/  BN_GENCB ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BN_GENCB_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BN_GENCB_new () ; 
- int /*<<< orphan*/  BN_GENCB_set_old (int /*<<< orphan*/ *,void (*) (int,int,void*),void*) ; 
- int /*<<< orphan*/  DSA_free (int /*<<< orphan*/ *) ; 
- scalar_t__ DSA_generate_parameters_ex (int /*<<< orphan*/ *,int,unsigned char*,int,int*,unsigned long*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * DSA_new () ; 
+
+
+
+typedef int DSA ;
+typedef int BN_GENCB ;
+
+
+ int BN_GENCB_free (int *) ;
+ int * BN_GENCB_new () ;
+ int BN_GENCB_set_old (int *,void (*) (int,int,void*),void*) ;
+ int DSA_free (int *) ;
+ scalar_t__ DSA_generate_parameters_ex (int *,int,unsigned char*,int,int*,unsigned long*,int *) ;
+ int * DSA_new () ;
 
 DSA *DSA_generate_parameters(int bits,
                              unsigned char *seed_in, int seed_len,
@@ -30,10 +30,10 @@ DSA *DSA_generate_parameters(int bits,
     BN_GENCB *cb;
     DSA *ret;
 
-    if ((ret = DSA_new()) == NULL)
-        return NULL;
+    if ((ret = DSA_new()) == ((void*)0))
+        return ((void*)0);
     cb = BN_GENCB_new();
-    if (cb == NULL)
+    if (cb == ((void*)0))
         goto err;
 
     BN_GENCB_set_old(cb, callback, cb_arg);
@@ -46,5 +46,5 @@ DSA *DSA_generate_parameters(int bits,
     BN_GENCB_free(cb);
 err:
     DSA_free(ret);
-    return NULL;
+    return ((void*)0);
 }

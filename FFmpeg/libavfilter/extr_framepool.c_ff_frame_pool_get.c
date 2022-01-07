@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_5__ ;
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  enum AVPixelFormat { ____Placeholder_AVPixelFormat } AVPixelFormat ;
-struct TYPE_15__ {int format; int nb_extended_buf; TYPE_2__** extended_buf; int /*<<< orphan*/ ** extended_data; TYPE_1__** buf; int /*<<< orphan*/ ** data; int /*<<< orphan*/ * linesize; int /*<<< orphan*/  channels; int /*<<< orphan*/  nb_samples; int /*<<< orphan*/  height; int /*<<< orphan*/  width; } ;
+
+
+typedef struct TYPE_15__ TYPE_5__ ;
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+typedef enum AVPixelFormat { ____Placeholder_AVPixelFormat } AVPixelFormat ;
+struct TYPE_15__ {int format; int nb_extended_buf; TYPE_2__** extended_buf; int ** extended_data; TYPE_1__** buf; int ** data; int * linesize; int channels; int nb_samples; int height; int width; } ;
 struct TYPE_14__ {int flags; } ;
-struct TYPE_13__ {int type; int format; int planes; int /*<<< orphan*/ * pools; int /*<<< orphan*/ * linesize; int /*<<< orphan*/  channels; int /*<<< orphan*/  nb_samples; int /*<<< orphan*/  height; int /*<<< orphan*/  width; } ;
-struct TYPE_12__ {int /*<<< orphan*/ * data; } ;
-struct TYPE_11__ {int /*<<< orphan*/ * data; } ;
-typedef  TYPE_3__ FFFramePool ;
-typedef  TYPE_4__ AVPixFmtDescriptor ;
-typedef  TYPE_5__ AVFrame ;
+struct TYPE_13__ {int type; int format; int planes; int * pools; int * linesize; int channels; int nb_samples; int height; int width; } ;
+struct TYPE_12__ {int * data; } ;
+struct TYPE_11__ {int * data; } ;
+typedef TYPE_3__ FFFramePool ;
+typedef TYPE_4__ AVPixFmtDescriptor ;
+typedef TYPE_5__ AVFrame ;
 
-/* Variables and functions */
-#define  AVMEDIA_TYPE_AUDIO 129 
-#define  AVMEDIA_TYPE_VIDEO 128 
- int AV_NUM_DATA_POINTERS ; 
- int AV_PIX_FMT_BGR8 ; 
- int AV_PIX_FMT_FLAG_PAL ; 
- int AV_PIX_FMT_PAL8 ; 
- int FFMIN (int,int) ; 
- int FF_PSEUDOPAL ; 
- int /*<<< orphan*/  av_assert0 (int) ; 
- void* av_buffer_pool_get (int /*<<< orphan*/ ) ; 
- TYPE_5__* av_frame_alloc () ; 
- int /*<<< orphan*/  av_frame_free (TYPE_5__**) ; 
- void* av_mallocz_array (int,int) ; 
- TYPE_4__* av_pix_fmt_desc_get (int) ; 
- int /*<<< orphan*/  avpriv_set_systematic_pal2 (int /*<<< orphan*/ *,int) ; 
+
+
+
+ int AV_NUM_DATA_POINTERS ;
+ int AV_PIX_FMT_BGR8 ;
+ int AV_PIX_FMT_FLAG_PAL ;
+ int AV_PIX_FMT_PAL8 ;
+ int FFMIN (int,int) ;
+ int FF_PSEUDOPAL ;
+ int av_assert0 (int) ;
+ void* av_buffer_pool_get (int ) ;
+ TYPE_5__* av_frame_alloc () ;
+ int av_frame_free (TYPE_5__**) ;
+ void* av_mallocz_array (int,int) ;
+ TYPE_4__* av_pix_fmt_desc_get (int) ;
+ int avpriv_set_systematic_pal2 (int *,int) ;
 
 AVFrame *ff_frame_pool_get(FFFramePool *pool)
 {
@@ -51,11 +51,11 @@ AVFrame *ff_frame_pool_get(FFFramePool *pool)
 
     frame = av_frame_alloc();
     if (!frame) {
-        return NULL;
+        return ((void*)0);
     }
 
     switch(pool->type) {
-    case AVMEDIA_TYPE_VIDEO:
+    case 128:
         desc = av_pix_fmt_desc_get(pool->format);
         if (!desc) {
             goto fail;
@@ -82,14 +82,14 @@ AVFrame *ff_frame_pool_get(FFFramePool *pool)
             enum AVPixelFormat format =
                 pool->format == AV_PIX_FMT_PAL8 ? AV_PIX_FMT_BGR8 : pool->format;
 
-            av_assert0(frame->data[1] != NULL);
+            av_assert0(frame->data[1] != ((void*)0));
             if (avpriv_set_systematic_pal2((uint32_t *)frame->data[1], format) < 0)
                 goto fail;
         }
 
         frame->extended_data = frame->data;
         break;
-    case AVMEDIA_TYPE_AUDIO:
+    case 129:
         frame->nb_samples = pool->nb_samples;
         frame->channels = pool->channels;
         frame->format = pool->format;
@@ -129,5 +129,5 @@ AVFrame *ff_frame_pool_get(FFFramePool *pool)
     return frame;
 fail:
     av_frame_free(&frame);
-    return NULL;
+    return ((void*)0);
 }

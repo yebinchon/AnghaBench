@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_int ;
+
+
+
+
+typedef int u_int ;
 struct stat {int st_mode; scalar_t__ st_uid; } ;
 
-/* Variables and functions */
- int EACCES ; 
- int EINVAL ; 
- int S_ISGID ; 
- int /*<<< orphan*/  S_ISREG (int) ; 
- int S_ISUID ; 
- int S_IWOTH ; 
- int S_IXUSR ; 
- int /*<<< orphan*/  XLOG_ERROR ; 
- int /*<<< orphan*/  dlog (char*) ; 
- int errno ; 
- int /*<<< orphan*/  plog (int /*<<< orphan*/ ,char*,char*,...) ; 
- scalar_t__ stat (char*,struct stat*) ; 
+
+ int EACCES ;
+ int EINVAL ;
+ int S_ISGID ;
+ int S_ISREG (int) ;
+ int S_ISUID ;
+ int S_IWOTH ;
+ int S_IXUSR ;
+ int XLOG_ERROR ;
+ int dlog (char*) ;
+ int errno ;
+ int plog (int ,char*,char*,...) ;
+ scalar_t__ stat (char*,struct stat*) ;
 
 __attribute__((used)) static int
 exec_check_perm(char *map)
 {
   struct stat sb;
 
-  /* sanity and permission checks */
+
   if (!map) {
     dlog("exec_check_permission got a NULL map");
     return EINVAL;
@@ -62,5 +62,5 @@ exec_check_perm(char *map)
     return EACCES;
   }
 
-  return 0;			/* all is well */
+  return 0;
 }

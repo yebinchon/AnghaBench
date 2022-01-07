@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct mp_log {int dummy; } ;
-struct TYPE_8__ {int /*<<< orphan*/ * priv_class; } ;
-struct TYPE_7__ {scalar_t__ type; int offset; int /*<<< orphan*/  help; int /*<<< orphan*/  name; } ;
-typedef  TYPE_1__ AVOption ;
-typedef  TYPE_2__ AVFilter ;
-typedef  int /*<<< orphan*/  AVClass ;
+struct TYPE_8__ {int * priv_class; } ;
+struct TYPE_7__ {scalar_t__ type; int offset; int help; int name; } ;
+typedef TYPE_1__ AVOption ;
+typedef TYPE_2__ AVFilter ;
+typedef int AVClass ;
 
-/* Variables and functions */
- scalar_t__ AV_OPT_TYPE_CONST ; 
- int /*<<< orphan*/  NSTR (int /*<<< orphan*/ ) ; 
- TYPE_1__* av_opt_next (int /*<<< orphan*/  const**,TYPE_1__ const*) ; 
- TYPE_2__* avfilter_get_by_name (char const*) ; 
- char* get_avopt_type_name (scalar_t__) ; 
- int /*<<< orphan*/  is_usable (TYPE_2__ const*,int) ; 
- int /*<<< orphan*/  mp_err (struct mp_log*,char*,char const*) ; 
- int /*<<< orphan*/  mp_info (struct mp_log*,char*,...) ; 
- char* mp_tprintf (int,char*,char const*) ; 
+
+ scalar_t__ AV_OPT_TYPE_CONST ;
+ int NSTR (int ) ;
+ TYPE_1__* av_opt_next (int const**,TYPE_1__ const*) ;
+ TYPE_2__* avfilter_get_by_name (char const*) ;
+ char* get_avopt_type_name (scalar_t__) ;
+ int is_usable (TYPE_2__ const*,int) ;
+ int mp_err (struct mp_log*,char*,char const*) ;
+ int mp_info (struct mp_log*,char*,...) ;
+ char* mp_tprintf (int,char*,char const*) ;
 
 void print_lavfi_help(struct mp_log *log, const char *name, int media_type)
 {
@@ -43,14 +43,14 @@ void print_lavfi_help(struct mp_log *log, const char *name, int media_type)
     }
     mp_info(log, "Options:\n\n");
     const AVClass *class = f->priv_class;
-    // av_opt_next() requires this for some retarded incomprehensible reason.
+
     const AVClass **c = &class;
     int offset= -1;
     int count = 0;
     for (const AVOption *o = av_opt_next(c, 0); o; o = av_opt_next(c, o)) {
-        // This is how libavfilter (at the time) decided to assign positional
-        // options (called "shorthand" in the libavfilter code). So we
-        // duplicate it exactly.
+
+
+
         if (o->type == AV_OPT_TYPE_CONST || o->offset == offset)
             continue;
         offset = o->offset;

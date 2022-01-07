@@ -1,60 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int UINT ;
-typedef  int /*<<< orphan*/  TRACKING_LIST ;
-typedef  int /*<<< orphan*/  CALLSTACK_DATA ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FreeCallStack (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * GetCallStack () ; 
- scalar_t__ OSMemoryAlloc (int) ; 
- void* OSNewLock () ; 
- int TRACKING_NUM_ARRAY ; 
- void* cs_lock ; 
- int do_not_get_callstack ; 
- int /*<<< orphan*/ ** hashlist ; 
- scalar_t__ obj_id ; 
- void* obj_id_lock ; 
- void* obj_lock ; 
+
+
+
+typedef int UINT ;
+typedef int TRACKING_LIST ;
+typedef int CALLSTACK_DATA ;
+
+
+ int FreeCallStack (int *) ;
+ int * GetCallStack () ;
+ scalar_t__ OSMemoryAlloc (int) ;
+ void* OSNewLock () ;
+ int TRACKING_NUM_ARRAY ;
+ void* cs_lock ;
+ int do_not_get_callstack ;
+ int ** hashlist ;
+ scalar_t__ obj_id ;
+ void* obj_id_lock ;
+ void* obj_lock ;
 
 void InitTracking()
 {
-	UINT i;
-	CALLSTACK_DATA *s;
+ UINT i;
+ CALLSTACK_DATA *s;
 
-	// Hash list initialization
-	hashlist = (TRACKING_LIST **)OSMemoryAlloc(sizeof(TRACKING_LIST *) * TRACKING_NUM_ARRAY);
 
-	for (i = 0;i < TRACKING_NUM_ARRAY;i++)
-	{
-		hashlist[i] = NULL;
-	}
+ hashlist = (TRACKING_LIST **)OSMemoryAlloc(sizeof(TRACKING_LIST *) * TRACKING_NUM_ARRAY);
 
-	obj_id = 0;
+ for (i = 0;i < TRACKING_NUM_ARRAY;i++)
+ {
+  hashlist[i] = ((void*)0);
+ }
 
-	// Create a lock
-	obj_lock = OSNewLock();
-	obj_id_lock = OSNewLock();
-	cs_lock = OSNewLock();
+ obj_id = 0;
 
-	s = GetCallStack();
-	if (s == NULL)
-	{
-		do_not_get_callstack = true;
-	}
-	else
-	{
-		do_not_get_callstack = false;
-		FreeCallStack(s);
-	}
+
+ obj_lock = OSNewLock();
+ obj_id_lock = OSNewLock();
+ cs_lock = OSNewLock();
+
+ s = GetCallStack();
+ if (s == ((void*)0))
+ {
+  do_not_get_callstack = 1;
+ }
+ else
+ {
+  do_not_get_callstack = 0;
+  FreeCallStack(s);
+ }
 }

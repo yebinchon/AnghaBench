@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct dictionary_stats {int dummy; } ;
-typedef  int /*<<< orphan*/  netdata_rwlock_t ;
-struct TYPE_3__ {int flags; int /*<<< orphan*/  values_index; void* rwlock; void* stats; } ;
-typedef  TYPE_1__ DICTIONARY ;
+typedef int netdata_rwlock_t ;
+struct TYPE_3__ {int flags; int values_index; void* rwlock; void* stats; } ;
+typedef TYPE_1__ DICTIONARY ;
 
-/* Variables and functions */
- int DICTIONARY_FLAG_SINGLE_THREADED ; 
- int DICTIONARY_FLAG_WITH_STATISTICS ; 
- int /*<<< orphan*/  D_DICTIONARY ; 
- int /*<<< orphan*/  avl_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- void* callocz (int,int) ; 
- int /*<<< orphan*/  debug (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  name_value_compare ; 
- int /*<<< orphan*/  netdata_rwlock_init (void*) ; 
+
+ int DICTIONARY_FLAG_SINGLE_THREADED ;
+ int DICTIONARY_FLAG_WITH_STATISTICS ;
+ int D_DICTIONARY ;
+ int avl_init (int *,int ) ;
+ void* callocz (int,int) ;
+ int debug (int ,char*) ;
+ int name_value_compare ;
+ int netdata_rwlock_init (void*) ;
 
 DICTIONARY *dictionary_create(uint8_t flags) {
     debug(D_DICTIONARY, "Creating dictionary.");

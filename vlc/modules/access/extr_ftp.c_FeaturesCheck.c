@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int b_unicode; int b_authtls; int b_mlst; } ;
-typedef  TYPE_1__ ftp_features_t ;
+typedef TYPE_1__ ftp_features_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * strcasestr (char const*,char*) ; 
+
+ int * strcasestr (char const*,char*) ;
 
 __attribute__((used)) static void FeaturesCheck( void *opaque, const char *feature )
 {
     ftp_features_t *features = opaque;
 
-    if( strcasestr( feature, "UTF8" ) != NULL )
-        features->b_unicode = true;
+    if( strcasestr( feature, "UTF8" ) != ((void*)0) )
+        features->b_unicode = 1;
     else
-    if( strcasestr( feature, "AUTH TLS" ) != NULL )
-        features->b_authtls = true;
+    if( strcasestr( feature, "AUTH TLS" ) != ((void*)0) )
+        features->b_authtls = 1;
 
-    if( strcasestr( feature, "MLST" ) != NULL )
-        features->b_mlst = true;
+    if( strcasestr( feature, "MLST" ) != ((void*)0) )
+        features->b_mlst = 1;
 }

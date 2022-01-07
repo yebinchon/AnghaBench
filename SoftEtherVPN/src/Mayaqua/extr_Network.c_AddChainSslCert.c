@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct ssl_ctx_st {int dummy; } ;
-struct TYPE_6__ {int do_not_free; int /*<<< orphan*/  x509; } ;
-typedef  TYPE_1__ X ;
+struct TYPE_6__ {int do_not_free; int x509; } ;
+typedef TYPE_1__ X ;
 
-/* Variables and functions */
- TYPE_1__* CloneX (TYPE_1__*) ; 
- int /*<<< orphan*/  FreeX (TYPE_1__*) ; 
- int /*<<< orphan*/  SSL_CTX_add_extra_chain_cert (struct ssl_ctx_st*,int /*<<< orphan*/ ) ; 
+
+ TYPE_1__* CloneX (TYPE_1__*) ;
+ int FreeX (TYPE_1__*) ;
+ int SSL_CTX_add_extra_chain_cert (struct ssl_ctx_st*,int ) ;
 
 bool AddChainSslCert(struct ssl_ctx_st *ctx, X *x)
 {
-	bool ret = false;
-	X *x_copy;
-	// Validate arguments
-	if (ctx == NULL || x == NULL)
-	{
-		return ret;
-	}
+ bool ret = 0;
+ X *x_copy;
 
-	x_copy = CloneX(x);
+ if (ctx == ((void*)0) || x == ((void*)0))
+ {
+  return ret;
+ }
 
-	if (x_copy != NULL)
-	{
-		SSL_CTX_add_extra_chain_cert(ctx, x_copy->x509);
-		x_copy->do_not_free = true;
+ x_copy = CloneX(x);
 
-		ret = true;
+ if (x_copy != ((void*)0))
+ {
+  SSL_CTX_add_extra_chain_cert(ctx, x_copy->x509);
+  x_copy->do_not_free = 1;
 
-		FreeX(x_copy);
-	}
+  ret = 1;
 
-	return ret;
+  FreeX(x_copy);
+ }
+
+ return ret;
 }

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  fd; int /*<<< orphan*/  id; } ;
-typedef  TYPE_1__ vlc_v4l2_ctrl_t ;
-struct v4l2_ext_controls {int count; struct v4l2_ext_control* controls; int /*<<< orphan*/  error_idx; int /*<<< orphan*/  ctrl_class; } ;
-struct v4l2_ext_control {char* string; int /*<<< orphan*/  size; int /*<<< orphan*/  id; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  V4L2_CTRL_ID2CLASS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  VIDIOC_S_EXT_CTRLS ; 
- int /*<<< orphan*/  strlen (char const*) ; 
- scalar_t__ v4l2_ioctl (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct v4l2_ext_controls*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int fd; int id; } ;
+typedef TYPE_1__ vlc_v4l2_ctrl_t ;
+struct v4l2_ext_controls {int count; struct v4l2_ext_control* controls; int error_idx; int ctrl_class; } ;
+struct v4l2_ext_control {char* string; int size; int id; } ;
+
+
+ int V4L2_CTRL_ID2CLASS (int ) ;
+ int VIDIOC_S_EXT_CTRLS ;
+ int strlen (char const*) ;
+ scalar_t__ v4l2_ioctl (int ,int ,struct v4l2_ext_controls*) ;
 
 __attribute__((used)) static int ControlSetStr (const vlc_v4l2_ctrl_t *c, const char *restrict value)
 {

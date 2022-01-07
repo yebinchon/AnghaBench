@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  BSTR ;
 
-/* Variables and functions */
- size_t ARRAY_SIZE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  alloc_str_from_narrow (char const*) ; 
- int /*<<< orphan*/ * alloced_bstrs ; 
- size_t alloced_bstrs_count ; 
- int /*<<< orphan*/  assert (int) ; 
+
+
+
+typedef int BSTR ;
+
+
+ size_t ARRAY_SIZE (int *) ;
+ int alloc_str_from_narrow (char const*) ;
+ int * alloced_bstrs ;
+ size_t alloced_bstrs_count ;
+ int assert (int) ;
 
 __attribute__((used)) static BSTR _bstr_(const char *str)
 {

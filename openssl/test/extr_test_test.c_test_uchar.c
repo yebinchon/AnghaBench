@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  TEST (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_uchar_eq (int,int) ; 
- int /*<<< orphan*/  TEST_uchar_ge (int,int) ; 
- int /*<<< orphan*/  TEST_uchar_gt (int,int) ; 
- int /*<<< orphan*/  TEST_uchar_le (int,int) ; 
- int /*<<< orphan*/  TEST_uchar_lt (int,int) ; 
- int /*<<< orphan*/  TEST_uchar_ne (int,int) ; 
+ int TEST (int,int ) ;
+ int TEST_uchar_eq (int,int) ;
+ int TEST_uchar_ge (int,int) ;
+ int TEST_uchar_gt (int,int) ;
+ int TEST_uchar_le (int,int) ;
+ int TEST_uchar_lt (int,int) ;
+ int TEST_uchar_ne (int,int) ;
 
 __attribute__((used)) static int test_uchar(void)
 {

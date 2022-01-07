@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct nvkm_devinit {int /*<<< orphan*/  subdev; } ;
 
-/* Variables and functions */
- int nvbios_post (int /*<<< orphan*/ *,int) ; 
+
+
+
+struct nvkm_devinit {int subdev; } ;
+
+
+ int nvbios_post (int *,int) ;
 
 int
 nv04_devinit_post(struct nvkm_devinit *init, bool execute)
 {
-	return nvbios_post(&init->subdev, execute);
+ return nvbios_post(&init->subdev, execute);
 }

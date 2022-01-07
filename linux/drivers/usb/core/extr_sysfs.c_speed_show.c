@@ -1,61 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct usb_device {int speed; } ;
 struct device_attribute {int dummy; } ;
 struct device {int dummy; } ;
-typedef  int /*<<< orphan*/  ssize_t ;
-
-/* Variables and functions */
-#define  USB_SPEED_FULL 134 
-#define  USB_SPEED_HIGH 133 
-#define  USB_SPEED_LOW 132 
-#define  USB_SPEED_SUPER 131 
-#define  USB_SPEED_SUPER_PLUS 130 
-#define  USB_SPEED_UNKNOWN 129 
-#define  USB_SPEED_WIRELESS 128 
- int /*<<< orphan*/  sprintf (char*,char*,char*) ; 
- struct usb_device* to_usb_device (struct device*) ; 
+typedef int ssize_t ;
+ int sprintf (char*,char*,char*) ;
+ struct usb_device* to_usb_device (struct device*) ;
 
 __attribute__((used)) static ssize_t speed_show(struct device *dev, struct device_attribute *attr,
-			  char *buf)
+     char *buf)
 {
-	struct usb_device *udev;
-	char *speed;
+ struct usb_device *udev;
+ char *speed;
 
-	udev = to_usb_device(dev);
+ udev = to_usb_device(dev);
 
-	switch (udev->speed) {
-	case USB_SPEED_LOW:
-		speed = "1.5";
-		break;
-	case USB_SPEED_UNKNOWN:
-	case USB_SPEED_FULL:
-		speed = "12";
-		break;
-	case USB_SPEED_HIGH:
-		speed = "480";
-		break;
-	case USB_SPEED_WIRELESS:
-		speed = "480";
-		break;
-	case USB_SPEED_SUPER:
-		speed = "5000";
-		break;
-	case USB_SPEED_SUPER_PLUS:
-		speed = "10000";
-		break;
-	default:
-		speed = "unknown";
-	}
-	return sprintf(buf, "%s\n", speed);
+ switch (udev->speed) {
+ case 132:
+  speed = "1.5";
+  break;
+ case 129:
+ case 134:
+  speed = "12";
+  break;
+ case 133:
+  speed = "480";
+  break;
+ case 128:
+  speed = "480";
+  break;
+ case 131:
+  speed = "5000";
+  break;
+ case 130:
+  speed = "10000";
+  break;
+ default:
+  speed = "unknown";
+ }
+ return sprintf(buf, "%s\n", speed);
 }

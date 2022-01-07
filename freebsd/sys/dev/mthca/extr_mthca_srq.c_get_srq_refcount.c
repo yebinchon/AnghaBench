@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct mthca_srq {int refcount; } ;
-struct TYPE_2__ {int /*<<< orphan*/  lock; } ;
+struct TYPE_2__ {int lock; } ;
 struct mthca_dev {TYPE_1__ srq_table; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  spin_lock_irq (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock_irq (int /*<<< orphan*/ *) ; 
+
+ int spin_lock_irq (int *) ;
+ int spin_unlock_irq (int *) ;
 
 __attribute__((used)) static inline int get_srq_refcount(struct mthca_dev *dev, struct mthca_srq *srq)
 {
-	int c;
+ int c;
 
-	spin_lock_irq(&dev->srq_table.lock);
-	c = srq->refcount;
-	spin_unlock_irq(&dev->srq_table.lock);
+ spin_lock_irq(&dev->srq_table.lock);
+ c = srq->refcount;
+ spin_unlock_irq(&dev->srq_table.lock);
 
-	return c;
+ return c;
 }

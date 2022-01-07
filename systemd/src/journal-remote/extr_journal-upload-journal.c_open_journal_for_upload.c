@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint64_t ;
-typedef  int /*<<< orphan*/  sd_journal ;
-struct TYPE_5__ {int timeout; int /*<<< orphan*/  input_event; int /*<<< orphan*/  events; int /*<<< orphan*/ * journal; } ;
-typedef  TYPE_1__ Uploader ;
 
-/* Variables and functions */
- int JOURNAL_UPLOAD_POLL_TIMEOUT ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  dispatch_journal_input ; 
- int /*<<< orphan*/  log_debug (char*,...) ; 
- int log_error_errno (int,char*,...) ; 
- int process_journal_input (TYPE_1__*,int) ; 
- int sd_event_add_io (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int sd_journal_get_events (int /*<<< orphan*/ *) ; 
- int sd_journal_get_fd (int /*<<< orphan*/ *) ; 
- int sd_journal_reliable_fd (int /*<<< orphan*/ *) ; 
- int sd_journal_seek_cursor (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  sd_journal_set_data_threshold (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint64_t ;
+typedef int sd_journal ;
+struct TYPE_5__ {int timeout; int input_event; int events; int * journal; } ;
+typedef TYPE_1__ Uploader ;
+
+
+ int JOURNAL_UPLOAD_POLL_TIMEOUT ;
+ int assert (int) ;
+ int dispatch_journal_input ;
+ int log_debug (char*,...) ;
+ int log_error_errno (int,char*,...) ;
+ int process_journal_input (TYPE_1__*,int) ;
+ int sd_event_add_io (int ,int *,int,int,int ,TYPE_1__*) ;
+ int sd_journal_get_events (int *) ;
+ int sd_journal_get_fd (int *) ;
+ int sd_journal_reliable_fd (int *) ;
+ int sd_journal_seek_cursor (int *,char const*) ;
+ int sd_journal_set_data_threshold (int *,int ) ;
 
 int open_journal_for_upload(Uploader *u,
                             sd_journal *j,

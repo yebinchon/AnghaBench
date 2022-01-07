@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ state; } ;
-typedef  TYPE_1__ retro_task_t ;
-typedef  int /*<<< orphan*/  nbio_handle_t ;
+typedef TYPE_1__ retro_task_t ;
+typedef int nbio_handle_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  task_image_cleanup (int /*<<< orphan*/ *) ; 
+
+ int free (int *) ;
+ int task_image_cleanup (int *) ;
 
 __attribute__((used)) static void task_image_load_free(retro_task_t *task)
 {
-   nbio_handle_t       *nbio  = task ? (nbio_handle_t*)task->state : NULL;
+   nbio_handle_t *nbio = task ? (nbio_handle_t*)task->state : ((void*)0);
 
    if (nbio)
    {

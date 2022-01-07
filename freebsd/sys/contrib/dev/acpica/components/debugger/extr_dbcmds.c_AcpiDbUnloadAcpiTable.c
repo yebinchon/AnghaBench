@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ACPI_STATUS ;
-typedef  char ACPI_NAMESPACE_NODE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACPI_CAST_PTR (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ACPI_HANDLE ; 
- scalar_t__ ACPI_SUCCESS (int /*<<< orphan*/ ) ; 
- char* AcpiDbConvertToNode (char*) ; 
- char* AcpiFormatException (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AcpiOsPrintf (char*,char*,char*) ; 
- int /*<<< orphan*/  AcpiUnloadParentTable (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int ACPI_STATUS ;
+typedef char ACPI_NAMESPACE_NODE ;
+
+
+ int ACPI_CAST_PTR (int ,char*) ;
+ int ACPI_HANDLE ;
+ scalar_t__ ACPI_SUCCESS (int ) ;
+ char* AcpiDbConvertToNode (char*) ;
+ char* AcpiFormatException (int ) ;
+ int AcpiOsPrintf (char*,char*,char*) ;
+ int AcpiUnloadParentTable (int ) ;
 
 void
 AcpiDbUnloadAcpiTable (
-    char                    *ObjectName)
+    char *ObjectName)
 {
-    ACPI_NAMESPACE_NODE     *Node;
-    ACPI_STATUS             Status;
+    ACPI_NAMESPACE_NODE *Node;
+    ACPI_STATUS Status;
 
 
-    /* Translate name to an Named object */
+
 
     Node = AcpiDbConvertToNode (ObjectName);
     if (!Node)

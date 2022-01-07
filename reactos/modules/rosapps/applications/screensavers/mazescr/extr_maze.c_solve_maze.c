@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int dir; size_t x; size_t y; } ;
-typedef  int /*<<< orphan*/  HWND ;
+typedef int HWND ;
 
-/* Variables and functions */
- int START_SQUARE ; 
- int WALL_TOP ; 
- int /*<<< orphan*/  draw_solid_square (int,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  enter_square (size_t,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hBrushDead ; 
- int /*<<< orphan*/  hBrushLiving ; 
- int /*<<< orphan*/  hDC ; 
- int** maze ; 
- TYPE_1__* path ; 
- size_t pathi ; 
 
-__attribute__((used)) static int solve_maze(HWND hWnd)                             /* solve it with graphical feedback */
+ int START_SQUARE ;
+ int WALL_TOP ;
+ int draw_solid_square (int,int,int,int ,int ) ;
+ int enter_square (size_t,int ,int ) ;
+ int hBrushDead ;
+ int hBrushLiving ;
+ int hDC ;
+ int** maze ;
+ TYPE_1__* path ;
+ size_t pathi ;
+
+__attribute__((used)) static int solve_maze(HWND hWnd)
 {
     int ret;
     int action_done;

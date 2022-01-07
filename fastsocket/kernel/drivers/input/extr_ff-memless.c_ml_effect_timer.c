@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct ml_device {int dummy; } ;
-struct input_dev {int /*<<< orphan*/  event_lock; TYPE_1__* ff; } ;
+struct input_dev {int event_lock; TYPE_1__* ff; } ;
 struct TYPE_2__ {struct ml_device* private; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  debug (char*) ; 
- int /*<<< orphan*/  ml_play_effects (struct ml_device*) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
+
+ int debug (char*) ;
+ int ml_play_effects (struct ml_device*) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
 
 __attribute__((used)) static void ml_effect_timer(unsigned long timer_data)
 {
-	struct input_dev *dev = (struct input_dev *)timer_data;
-	struct ml_device *ml = dev->ff->private;
-	unsigned long flags;
+ struct input_dev *dev = (struct input_dev *)timer_data;
+ struct ml_device *ml = dev->ff->private;
+ unsigned long flags;
 
-	debug("timer: updating effects");
+ debug("timer: updating effects");
 
-	spin_lock_irqsave(&dev->event_lock, flags);
-	ml_play_effects(ml);
-	spin_unlock_irqrestore(&dev->event_lock, flags);
+ spin_lock_irqsave(&dev->event_lock, flags);
+ ml_play_effects(ml);
+ spin_unlock_irqrestore(&dev->event_lock, flags);
 }

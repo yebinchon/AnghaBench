@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ int ADD_CNT (int ) ;
+ int END_TIMER (int ) ;
+ int START_TIMER (int ) ;
+ int buffer_clear (scalar_t__) ;
+ scalar_t__ buffer_create (int ) ;
+ int buffer_write_reserve (scalar_t__,int) ;
+ scalar_t__ outbuf ;
+ int store ;
 
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  ADD_CNT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  END_TIMER (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  START_TIMER (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  buffer_clear (scalar_t__) ; 
- scalar_t__ buffer_create (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  buffer_write_reserve (scalar_t__,int) ; 
- scalar_t__ outbuf ; 
- int /*<<< orphan*/  store ; 
-
-__attribute__((used)) static void do_rpc_clean (void) { /* {{{ */
+__attribute__((used)) static void do_rpc_clean (void) {
   ADD_CNT (store);
   START_TIMER (store);
   if (outbuf) {

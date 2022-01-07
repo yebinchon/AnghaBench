@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_6__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  nsresult ;
-typedef  int /*<<< orphan*/  nsIDOMEvent ;
-typedef  int /*<<< orphan*/  nsAString ;
-typedef  int eventid_t ;
+
+
+typedef struct TYPE_10__ TYPE_6__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int nsresult ;
+typedef int nsIDOMEvent ;
+typedef int nsAString ;
+typedef int eventid_t ;
 struct TYPE_10__ {size_t type; } ;
-struct TYPE_9__ {int /*<<< orphan*/  IHTMLDOMNode_iface; TYPE_1__* doc; } ;
-struct TYPE_8__ {TYPE_3__* target; int /*<<< orphan*/ * nsevent; TYPE_6__* type; } ;
-struct TYPE_7__ {int /*<<< orphan*/  nsdoc; } ;
-typedef  TYPE_2__ HTMLEventObj ;
-typedef  TYPE_3__ HTMLDOMNode ;
-typedef  int /*<<< orphan*/  HRESULT ;
+struct TYPE_9__ {int IHTMLDOMNode_iface; TYPE_1__* doc; } ;
+struct TYPE_8__ {TYPE_3__* target; int * nsevent; TYPE_6__* type; } ;
+struct TYPE_7__ {int nsdoc; } ;
+typedef TYPE_2__ HTMLEventObj ;
+typedef TYPE_3__ HTMLDOMNode ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  E_FAIL ; 
- int /*<<< orphan*/  IHTMLDOMNode_AddRef (int /*<<< orphan*/ *) ; 
- scalar_t__ NS_FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  S_OK ; 
- TYPE_6__* event_info ; 
- scalar_t__* event_types ; 
- int /*<<< orphan*/  nsAString_Finish (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsAString_InitDepend (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  nsIDOMEvent_AddRef (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsIDOMHTMLDocument_CreateEvent (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
+
+ int ERR (char*,int ) ;
+ int E_FAIL ;
+ int IHTMLDOMNode_AddRef (int *) ;
+ scalar_t__ NS_FAILED (int ) ;
+ int S_OK ;
+ TYPE_6__* event_info ;
+ scalar_t__* event_types ;
+ int nsAString_Finish (int *) ;
+ int nsAString_InitDepend (int *,scalar_t__) ;
+ int nsIDOMEvent_AddRef (int *) ;
+ int nsIDOMHTMLDocument_CreateEvent (int ,int *,int **) ;
 
 __attribute__((used)) static HRESULT set_event_info(HTMLEventObj *event, HTMLDOMNode *target, eventid_t eid, nsIDOMEvent *nsevent)
 {

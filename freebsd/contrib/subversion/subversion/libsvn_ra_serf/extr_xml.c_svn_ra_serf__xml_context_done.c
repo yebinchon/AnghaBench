@@ -1,61 +1,61 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {scalar_t__ from_state; int /*<<< orphan*/  name; int /*<<< orphan*/ * ns; } ;
-typedef  TYPE_3__ svn_ra_serf__xml_transition_t ;
-struct TYPE_9__ {int /*<<< orphan*/  scratch_pool; TYPE_3__* ttable; int /*<<< orphan*/  free_states; TYPE_2__* current; } ;
-typedef  TYPE_4__ svn_ra_serf__xml_context_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
+
+
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_8__ {scalar_t__ from_state; int name; int * ns; } ;
+typedef TYPE_3__ svn_ra_serf__xml_transition_t ;
+struct TYPE_9__ {int scratch_pool; TYPE_3__* ttable; int free_states; TYPE_2__* current; } ;
+typedef TYPE_4__ svn_ra_serf__xml_context_t ;
+typedef int svn_error_t ;
 struct TYPE_6__ {char const* name; } ;
 struct TYPE_7__ {TYPE_1__ tag; scalar_t__ prev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR_XML_MALFORMED ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- scalar_t__ XML_STATE_INITIAL ; 
- char* _ (char*) ; 
- char* apr_psprintf (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * svn_error_createf (int /*<<< orphan*/ ,int /*<<< orphan*/ *,char*,char const*) ; 
- int /*<<< orphan*/  svn_pool_destroy (int /*<<< orphan*/ ) ; 
+
+ int SVN_ERR_XML_MALFORMED ;
+ int * SVN_NO_ERROR ;
+ scalar_t__ XML_STATE_INITIAL ;
+ char* _ (char*) ;
+ char* apr_psprintf (int ,char*,int ) ;
+ int * svn_error_createf (int ,int *,char*,char const*) ;
+ int svn_pool_destroy (int ) ;
 
 svn_error_t *
 svn_ra_serf__xml_context_done(svn_ra_serf__xml_context_t *xmlctx)
 {
   if (xmlctx->current->prev)
     {
-      /* Probably unreachable as this would be an xml parser error */
-      return svn_error_createf(SVN_ERR_XML_MALFORMED, NULL,
+
+      return svn_error_createf(SVN_ERR_XML_MALFORMED, ((void*)0),
                                _("XML stream truncated: closing '%s' missing"),
                                xmlctx->current->tag.name);
     }
   else if (! xmlctx->free_states)
     {
-      /* If we have no items on the free_states list, we didn't push anything,
-         which tells us that we found an empty xml body */
+
+
       const svn_ra_serf__xml_transition_t *scan;
-      const svn_ra_serf__xml_transition_t *document = NULL;
+      const svn_ra_serf__xml_transition_t *document = ((void*)0);
       const char *msg;
 
-      for (scan = xmlctx->ttable; scan->ns != NULL; ++scan)
+      for (scan = xmlctx->ttable; scan->ns != ((void*)0); ++scan)
         {
           if (scan->from_state == XML_STATE_INITIAL)
             {
-              if (document != NULL)
+              if (document != ((void*)0))
                 {
-                  document = NULL; /* Multiple document elements defined */
+                  document = ((void*)0);
                   break;
                 }
               document = scan;
@@ -68,7 +68,7 @@ svn_ra_serf__xml_context_done(svn_ra_serf__xml_context_t *xmlctx)
       else
         msg = _("document element not found");
 
-      return svn_error_createf(SVN_ERR_XML_MALFORMED, NULL,
+      return svn_error_createf(SVN_ERR_XML_MALFORMED, ((void*)0),
                                _("XML stream truncated: %s"),
                                msg);
     }

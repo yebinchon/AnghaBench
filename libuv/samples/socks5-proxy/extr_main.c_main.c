@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  idle_timeout; int /*<<< orphan*/  bind_port; int /*<<< orphan*/  bind_host; } ;
-typedef  TYPE_1__ server_config ;
-typedef  int /*<<< orphan*/  config ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEFAULT_BIND_HOST ; 
- int /*<<< orphan*/  DEFAULT_BIND_PORT ; 
- int /*<<< orphan*/  DEFAULT_IDLE_TIMEOUT ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  parse_opts (TYPE_1__*,int,char**) ; 
- char* progname ; 
- int server_run (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  uv_default_loop () ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int idle_timeout; int bind_port; int bind_host; } ;
+typedef TYPE_1__ server_config ;
+typedef int config ;
+
+
+ int DEFAULT_BIND_HOST ;
+ int DEFAULT_BIND_PORT ;
+ int DEFAULT_IDLE_TIMEOUT ;
+ int exit (int) ;
+ int memset (TYPE_1__*,int ,int) ;
+ int parse_opts (TYPE_1__*,int,char**) ;
+ char* progname ;
+ int server_run (TYPE_1__*,int ) ;
+ int uv_default_loop () ;
 
 int main(int argc, char **argv) {
   server_config config;

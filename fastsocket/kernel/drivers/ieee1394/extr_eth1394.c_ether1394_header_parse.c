@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct sk_buff {TYPE_1__* dev; } ;
-struct TYPE_2__ {int /*<<< orphan*/  dev_addr; } ;
+struct TYPE_2__ {int dev_addr; } ;
 
-/* Variables and functions */
- int ETH1394_ALEN ; 
- int /*<<< orphan*/  memcpy (unsigned char*,int /*<<< orphan*/ ,int) ; 
+
+ int ETH1394_ALEN ;
+ int memcpy (unsigned char*,int ,int) ;
 
 __attribute__((used)) static int ether1394_header_parse(const struct sk_buff *skb,
-				  unsigned char *haddr)
+      unsigned char *haddr)
 {
-	memcpy(haddr, skb->dev->dev_addr, ETH1394_ALEN);
-	return ETH1394_ALEN;
+ memcpy(haddr, skb->dev->dev_addr, ETH1394_ALEN);
+ return ETH1394_ALEN;
 }

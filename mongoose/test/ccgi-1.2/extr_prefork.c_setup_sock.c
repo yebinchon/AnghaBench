@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {void* s_addr; } ;
-struct sockaddr_in {TYPE_1__ sin_addr; int /*<<< orphan*/  sin_port; int /*<<< orphan*/  sin_family; } ;
+struct sockaddr_in {TYPE_1__ sin_addr; int sin_port; int sin_family; } ;
 struct sockaddr {int dummy; } ;
-struct hostent {int /*<<< orphan*/  h_length; int /*<<< orphan*/ * h_addr_list; } ;
-typedef  int /*<<< orphan*/  local ;
+struct hostent {int h_length; int * h_addr_list; } ;
+typedef int local ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_INET ; 
- void* INADDR_ANY ; 
- int /*<<< orphan*/  SOCK_STREAM ; 
- scalar_t__ bind (int,struct sockaddr*,int) ; 
- int /*<<< orphan*/  close (int) ; 
- struct hostent* gethostbyname (char const*) ; 
- int /*<<< orphan*/  htons (int) ; 
- scalar_t__ inet_aton (char const*,TYPE_1__*) ; 
- int /*<<< orphan*/  isdigit (char const) ; 
- scalar_t__ listen (int,int) ; 
- int /*<<< orphan*/  memcpy (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (struct sockaddr_in*,int /*<<< orphan*/ ,int) ; 
- int socket (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int AF_INET ;
+ void* INADDR_ANY ;
+ int SOCK_STREAM ;
+ scalar_t__ bind (int,struct sockaddr*,int) ;
+ int close (int) ;
+ struct hostent* gethostbyname (char const*) ;
+ int htons (int) ;
+ scalar_t__ inet_aton (char const*,TYPE_1__*) ;
+ int isdigit (char const) ;
+ scalar_t__ listen (int,int) ;
+ int memcpy (TYPE_1__*,int ,int ) ;
+ int memset (struct sockaddr_in*,int ,int) ;
+ int socket (int ,int ,int ) ;
 
 __attribute__((used)) static int
 setup_sock(const char *host, int port) {

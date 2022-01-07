@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ ULONG ;
-typedef  int /*<<< orphan*/  IActiveScriptParse ;
-typedef  int /*<<< orphan*/  IActiveScript ;
-typedef  scalar_t__ HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ActiveScriptSite ; 
- int /*<<< orphan*/  CHECK_CALLED (int /*<<< orphan*/ ) ; 
- scalar_t__ E_UNEXPECTED ; 
- int /*<<< orphan*/  GetLCID ; 
- scalar_t__ IActiveScriptParse_InitNew (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IActiveScriptParse_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IActiveScript_Close (int /*<<< orphan*/ *) ; 
- scalar_t__ IActiveScript_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- scalar_t__ IActiveScript_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IActiveScript_SetScriptSite (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IID_IActiveScriptParse ; 
- int /*<<< orphan*/  OnStateChange_CLOSED ; 
- int /*<<< orphan*/  OnStateChange_INITIALIZED ; 
- int /*<<< orphan*/  SCRIPTSTATE_CLOSED ; 
- int /*<<< orphan*/  SCRIPTSTATE_UNINITIALIZED ; 
- int /*<<< orphan*/  SET_EXPECT (int /*<<< orphan*/ ) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/ * create_vbscript () ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
- int /*<<< orphan*/  test_state (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef scalar_t__ ULONG ;
+typedef int IActiveScriptParse ;
+typedef int IActiveScript ;
+typedef scalar_t__ HRESULT ;
+
+
+ int ActiveScriptSite ;
+ int CHECK_CALLED (int ) ;
+ scalar_t__ E_UNEXPECTED ;
+ int GetLCID ;
+ scalar_t__ IActiveScriptParse_InitNew (int *) ;
+ int IActiveScriptParse_Release (int *) ;
+ scalar_t__ IActiveScript_Close (int *) ;
+ scalar_t__ IActiveScript_QueryInterface (int *,int *,void**) ;
+ scalar_t__ IActiveScript_Release (int *) ;
+ scalar_t__ IActiveScript_SetScriptSite (int *,int *) ;
+ int IID_IActiveScriptParse ;
+ int OnStateChange_CLOSED ;
+ int OnStateChange_INITIALIZED ;
+ int SCRIPTSTATE_CLOSED ;
+ int SCRIPTSTATE_UNINITIALIZED ;
+ int SET_EXPECT (int ) ;
+ scalar_t__ S_OK ;
+ int * create_vbscript () ;
+ int ok (int,char*,scalar_t__) ;
+ int test_state (int *,int ) ;
 
 __attribute__((used)) static void test_vbscript_initializing(void)
 {

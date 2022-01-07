@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EIO ; 
- int EOF ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ *) ; 
- scalar_t__ errno ; 
- int errno_or_else (int /*<<< orphan*/ ) ; 
- scalar_t__ ferror (int /*<<< orphan*/ *) ; 
- int fgetc (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int FILE ;
+
+
+ int EIO ;
+ int EOF ;
+ int assert (int *) ;
+ scalar_t__ errno ;
+ int errno_or_else (int ) ;
+ scalar_t__ ferror (int *) ;
+ int fgetc (int *) ;
 
 int safe_fgetc(FILE *f, char *ret) {
         int k;
 
         assert(f);
 
-        /* A safer version of plain fgetc(): let's propagate the error that happened while reading as such, and
-         * separate the EOF condition from the byte read, to avoid those confusion signed/unsigned issues fgetc()
-         * has. */
+
+
+
 
         errno = 0;
         k = fgetc(f);

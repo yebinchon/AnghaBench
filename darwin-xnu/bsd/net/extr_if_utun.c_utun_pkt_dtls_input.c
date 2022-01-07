@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct utun_pcb {int dummy; } ;
-typedef  int /*<<< orphan*/  protocol_family_t ;
-typedef  int /*<<< orphan*/  mbuf_t ;
+typedef int protocol_family_t ;
+typedef int mbuf_t ;
 
-/* Variables and functions */
+
 
 int
 utun_pkt_dtls_input(struct utun_pcb *pcb, mbuf_t *pkt, protocol_family_t family)
@@ -22,5 +22,5 @@ utun_pkt_dtls_input(struct utun_pcb *pcb, mbuf_t *pkt, protocol_family_t family)
 #pragma unused(pcb)
 #pragma unused(pkt)
 #pragma unused(family)
-	return 0;
+ return 0;
 }

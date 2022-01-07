@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  name; scalar_t__ default_instance; } ;
-typedef  TYPE_1__ UnitFileInstallInfo ;
 
-/* Variables and functions */
- int ENOMEM ; 
- int /*<<< orphan*/  UNIT_NAME_TEMPLATE ; 
- int /*<<< orphan*/  assert (TYPE_1__ const*) ; 
- char* strdup (int /*<<< orphan*/ ) ; 
- scalar_t__ unit_name_is_valid (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int unit_name_replace_instance (int /*<<< orphan*/ ,scalar_t__,char**) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int name; scalar_t__ default_instance; } ;
+typedef TYPE_1__ UnitFileInstallInfo ;
+
+
+ int ENOMEM ;
+ int UNIT_NAME_TEMPLATE ;
+ int assert (TYPE_1__ const*) ;
+ char* strdup (int ) ;
+ scalar_t__ unit_name_is_valid (int ,int ) ;
+ int unit_name_replace_instance (int ,scalar_t__,char**) ;
 
 __attribute__((used)) static int specifier_name(char specifier, const void *data, const void *userdata, char **ret) {
         const UnitFileInstallInfo *i = userdata;

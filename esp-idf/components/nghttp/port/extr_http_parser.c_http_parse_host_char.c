@@ -1,108 +1,97 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  enum http_host_state { ____Placeholder_http_host_state } http_host_state ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IS_ALPHANUM (char const) ; 
- int /*<<< orphan*/  IS_HEX (char const) ; 
- int /*<<< orphan*/  IS_HOST_CHAR (char const) ; 
- int /*<<< orphan*/  IS_NUM (char const) ; 
- int /*<<< orphan*/  IS_USERINFO_CHAR (char const) ; 
-#define  s_http_host 138 
- int s_http_host_dead ; 
-#define  s_http_host_port 137 
-#define  s_http_host_port_start 136 
-#define  s_http_host_start 135 
-#define  s_http_host_v6 134 
-#define  s_http_host_v6_end 133 
-#define  s_http_host_v6_start 132 
-#define  s_http_host_v6_zone 131 
-#define  s_http_host_v6_zone_start 130 
-#define  s_http_userinfo 129 
-#define  s_http_userinfo_start 128 
 
+
+
+typedef enum http_host_state { ____Placeholder_http_host_state } http_host_state ;
+
+
+ int IS_ALPHANUM (char const) ;
+ int IS_HEX (char const) ;
+ int IS_HOST_CHAR (char const) ;
+ int IS_NUM (char const) ;
+ int IS_USERINFO_CHAR (char const) ;
+
+ int s_http_host_dead ;
 __attribute__((used)) static enum http_host_state
 http_parse_host_char(enum http_host_state s, const char ch) {
   switch(s) {
-    case s_http_userinfo:
-    case s_http_userinfo_start:
+    case 129:
+    case 128:
       if (ch == '@') {
-        return s_http_host_start;
+        return 135;
       }
 
       if (IS_USERINFO_CHAR(ch)) {
-        return s_http_userinfo;
+        return 129;
       }
       break;
 
-    case s_http_host_start:
+    case 135:
       if (ch == '[') {
-        return s_http_host_v6_start;
+        return 132;
       }
 
       if (IS_HOST_CHAR(ch)) {
-        return s_http_host;
+        return 138;
       }
 
       break;
 
-    case s_http_host:
+    case 138:
       if (IS_HOST_CHAR(ch)) {
-        return s_http_host;
+        return 138;
       }
 
-    /* FALLTHROUGH */
-    case s_http_host_v6_end:
+
+    case 133:
       if (ch == ':') {
-        return s_http_host_port_start;
+        return 136;
       }
 
       break;
 
-    case s_http_host_v6:
+    case 134:
       if (ch == ']') {
-        return s_http_host_v6_end;
+        return 133;
       }
 
-    /* FALLTHROUGH */
-    case s_http_host_v6_start:
+
+    case 132:
       if (IS_HEX(ch) || ch == ':' || ch == '.') {
-        return s_http_host_v6;
+        return 134;
       }
 
-      if (s == s_http_host_v6 && ch == '%') {
-        return s_http_host_v6_zone_start;
+      if (s == 134 && ch == '%') {
+        return 130;
       }
       break;
 
-    case s_http_host_v6_zone:
+    case 131:
       if (ch == ']') {
-        return s_http_host_v6_end;
+        return 133;
       }
 
-    /* FALLTHROUGH */
-    case s_http_host_v6_zone_start:
-      /* RFC 6874 Zone ID consists of 1*( unreserved / pct-encoded) */
+
+    case 130:
+
       if (IS_ALPHANUM(ch) || ch == '%' || ch == '.' || ch == '-' || ch == '_' ||
           ch == '~') {
-        return s_http_host_v6_zone;
+        return 131;
       }
       break;
 
-    case s_http_host_port:
-    case s_http_host_port_start:
+    case 137:
+    case 136:
       if (IS_NUM(ch)) {
-        return s_http_host_port;
+        return 137;
       }
 
       break;

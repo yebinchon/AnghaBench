@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  scalar_t__* PWSTR ;
-typedef  int PCWSTR ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- scalar_t__ NT_SUCCESS (int /*<<< orphan*/ ) ; 
- int SPACE_ONLY ; 
- int /*<<< orphan*/  STATUS_SUCCESS ; 
- int /*<<< orphan*/  StringCbCatNW (scalar_t__*,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  StringCbCatW (scalar_t__*,int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int WCHAR ;
+typedef scalar_t__* PWSTR ;
+typedef int PCWSTR ;
+typedef int NTSTATUS ;
+typedef int DWORD ;
+typedef scalar_t__ BOOL ;
+
+
+ scalar_t__ NT_SUCCESS (int ) ;
+ int SPACE_ONLY ;
+ int STATUS_SUCCESS ;
+ int StringCbCatNW (scalar_t__*,int ,int,int) ;
+ int StringCbCatW (scalar_t__*,int ,int) ;
 
 BOOL SdbpAppendLayer(PWSTR target, DWORD len, PCWSTR layer, PCWSTR end)
 {

@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_6__ ;
-typedef  struct TYPE_15__   TYPE_5__ ;
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_16__ TYPE_6__ ;
+typedef struct TYPE_15__ TYPE_5__ ;
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
 struct TYPE_16__ {TYPE_2__* filter; TYPE_3__* priv; } ;
-struct TYPE_15__ {int /*<<< orphan*/  format; void* h; void* w; TYPE_6__* dst; } ;
-struct TYPE_14__ {int /*<<< orphan*/  log2_chroma_h; int /*<<< orphan*/  log2_chroma_w; TYPE_1__* comp; } ;
-struct TYPE_13__ {int depth; int max; int nb_planes; int bpc; scalar_t__* mode; int* size; int /*<<< orphan*/ * filter; int /*<<< orphan*/  nb_threads; void** planeheight; void** planewidth; } ;
-struct TYPE_12__ {int /*<<< orphan*/  name; } ;
+struct TYPE_15__ {int format; void* h; void* w; TYPE_6__* dst; } ;
+struct TYPE_14__ {int log2_chroma_h; int log2_chroma_w; TYPE_1__* comp; } ;
+struct TYPE_13__ {int depth; int max; int nb_planes; int bpc; scalar_t__* mode; int* size; int * filter; int nb_threads; void** planeheight; void** planewidth; } ;
+struct TYPE_12__ {int name; } ;
 struct TYPE_11__ {int depth; } ;
-typedef  TYPE_3__ ConvolutionContext ;
-typedef  TYPE_4__ AVPixFmtDescriptor ;
-typedef  TYPE_5__ AVFilterLink ;
-typedef  TYPE_6__ AVFilterContext ;
+typedef TYPE_3__ ConvolutionContext ;
+typedef TYPE_4__ AVPixFmtDescriptor ;
+typedef TYPE_5__ AVFilterLink ;
+typedef TYPE_6__ AVFilterContext ;
 
-/* Variables and functions */
- void* AV_CEIL_RSHIFT (void*,int /*<<< orphan*/ ) ; 
- scalar_t__ MATRIX_COLUMN ; 
- scalar_t__ MATRIX_ROW ; 
- int av_pix_fmt_count_planes (int /*<<< orphan*/ ) ; 
- TYPE_4__* av_pix_fmt_desc_get (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ff_convolution_init_x86 (TYPE_3__*) ; 
- int /*<<< orphan*/  ff_filter_get_nb_threads (TYPE_6__*) ; 
- int /*<<< orphan*/  filter16_3x3 ; 
- int /*<<< orphan*/  filter16_5x5 ; 
- int /*<<< orphan*/  filter16_7x7 ; 
- int /*<<< orphan*/  filter16_column ; 
- int /*<<< orphan*/  filter16_prewitt ; 
- int /*<<< orphan*/  filter16_roberts ; 
- int /*<<< orphan*/  filter16_row ; 
- int /*<<< orphan*/  filter16_sobel ; 
- int /*<<< orphan*/  strcmp (int /*<<< orphan*/ ,char*) ; 
+
+ void* AV_CEIL_RSHIFT (void*,int ) ;
+ scalar_t__ MATRIX_COLUMN ;
+ scalar_t__ MATRIX_ROW ;
+ int av_pix_fmt_count_planes (int ) ;
+ TYPE_4__* av_pix_fmt_desc_get (int ) ;
+ int ff_convolution_init_x86 (TYPE_3__*) ;
+ int ff_filter_get_nb_threads (TYPE_6__*) ;
+ int filter16_3x3 ;
+ int filter16_5x5 ;
+ int filter16_7x7 ;
+ int filter16_column ;
+ int filter16_prewitt ;
+ int filter16_roberts ;
+ int filter16_row ;
+ int filter16_sobel ;
+ int strcmp (int ,char*) ;
 
 __attribute__((used)) static int config_input(AVFilterLink *inlink)
 {
@@ -79,9 +79,9 @@ __attribute__((used)) static int config_input(AVFilterLink *inlink)
                     s->filter[p] = filter16_7x7;
             }
         }
-#if CONFIG_CONVOLUTION_FILTER && ARCH_X86_64
-        ff_convolution_init_x86(s);
-#endif
+
+
+
     } else if (!strcmp(ctx->filter->name, "prewitt")) {
         if (s->depth > 8)
             for (p = 0; p < s->nb_planes; p++)

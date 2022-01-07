@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ceph_mds_client {int /*<<< orphan*/  snap_rwsem; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  __cleanup_empty_realms (struct ceph_mds_client*) ; 
- int /*<<< orphan*/  down_write (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  up_write (int /*<<< orphan*/ *) ; 
+
+
+
+struct ceph_mds_client {int snap_rwsem; } ;
+
+
+ int __cleanup_empty_realms (struct ceph_mds_client*) ;
+ int down_write (int *) ;
+ int up_write (int *) ;
 
 void ceph_cleanup_empty_realms(struct ceph_mds_client *mdsc)
 {
-	down_write(&mdsc->snap_rwsem);
-	__cleanup_empty_realms(mdsc);
-	up_write(&mdsc->snap_rwsem);
+ down_write(&mdsc->snap_rwsem);
+ __cleanup_empty_realms(mdsc);
+ up_write(&mdsc->snap_rwsem);
 }

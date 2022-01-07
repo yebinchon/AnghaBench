@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ isspace (char const) ; 
- double* powten ; 
+ scalar_t__ isspace (char const) ;
+ double* powten ;
 
 long double
 _strtold(const char *s, char **sret)
 {
-  double r;		/* result */
-  int e, ne;			/* exponent */
-  int sign;			/* +- 1.0 */
+  double r;
+  int e, ne;
+  int sign;
   int esign;
   int flags=0;
   int l2powm1;
@@ -93,7 +85,7 @@ _strtold(const char *s, char **sret)
   e = e - ne;
   if (e < -4096)
   {
-    /* possibly subnormal number, 10^e would overflow */
+
     r *= 1.0e-2048L;
     e += 2048;
   }
@@ -111,7 +103,7 @@ _strtold(const char *s, char **sret)
     while (e)
     {
       if (e & 1)
-	d *= powten[l2powm1];
+ d *= powten[l2powm1];
       e >>= 1;
       l2powm1++;
     }

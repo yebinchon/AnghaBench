@@ -1,59 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ CLIENT ; 
- scalar_t__ SERVER ; 
- char* TFTP_PORT ; 
- int /*<<< orphan*/  aes_load_pwd_file (int /*<<< orphan*/ ) ; 
- scalar_t__ change_user (char*) ; 
- scalar_t__ check_source_dirname () ; 
- int /*<<< orphan*/  compute_tmp_filename () ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  f_parse_option ; 
- int /*<<< orphan*/  init_dyn_data () ; 
- int /*<<< orphan*/  init_epoll () ; 
- int /*<<< orphan*/  init_msg_buffers (int /*<<< orphan*/ ) ; 
- char* input_filename ; 
- int /*<<< orphan*/  kprintf (char*,char*) ; 
- int /*<<< orphan*/  max_port ; 
- char* maxconn ; 
- int /*<<< orphan*/  min_port ; 
- scalar_t__ open_udp_server_socket (char*) ; 
- int optind ; 
- char* output_filename ; 
- int /*<<< orphan*/  parse_engine_options_long (int,char**,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  parse_option (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char,char*,...) ; 
- char* port ; 
- char* progname ; 
- scalar_t__ raise_file_rlimit (char*) ; 
- int /*<<< orphan*/  remove_parse_option (char) ; 
- int /*<<< orphan*/  required_argument ; 
- scalar_t__ server_sfd ; 
- int /*<<< orphan*/  signals_init () ; 
- char* source_dirname ; 
- int /*<<< orphan*/  start_server () ; 
- int /*<<< orphan*/  start_time ; 
- int /*<<< orphan*/  time (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  usage () ; 
- char* username ; 
- scalar_t__ working_mode ; 
+ scalar_t__ CLIENT ;
+ scalar_t__ SERVER ;
+ char* TFTP_PORT ;
+ int aes_load_pwd_file (int ) ;
+ scalar_t__ change_user (char*) ;
+ scalar_t__ check_source_dirname () ;
+ int compute_tmp_filename () ;
+ int exit (int) ;
+ int f_parse_option ;
+ int init_dyn_data () ;
+ int init_epoll () ;
+ int init_msg_buffers (int ) ;
+ char* input_filename ;
+ int kprintf (char*,char*) ;
+ int max_port ;
+ char* maxconn ;
+ int min_port ;
+ scalar_t__ open_udp_server_socket (char*) ;
+ int optind ;
+ char* output_filename ;
+ int parse_engine_options_long (int,char**,int ) ;
+ int parse_option (char*,int ,int ,char,char*,...) ;
+ char* port ;
+ char* progname ;
+ scalar_t__ raise_file_rlimit (char*) ;
+ int remove_parse_option (char) ;
+ int required_argument ;
+ scalar_t__ server_sfd ;
+ int signals_init () ;
+ char* source_dirname ;
+ int start_server () ;
+ int start_time ;
+ int time (int *) ;
+ int usage () ;
+ char* username ;
+ scalar_t__ working_mode ;
 
 int main (int argc, char *argv[]) {
   signals_init ();
   progname = argv[0];
 
-  remove_parse_option ('r'); //disable replica (no binlogs)
+  remove_parse_option ('r');
   remove_parse_option ('a');
   remove_parse_option ('B');
 
@@ -94,7 +86,7 @@ int main (int argc, char *argv[]) {
     exit (1);
   }
 
-  aes_load_pwd_file (0); //srand48
+  aes_load_pwd_file (0);
 
   if (change_user (username) < 0) {
     kprintf ("fatal: cannot change user to %s\n", username ? username : "(none)");
@@ -108,7 +100,7 @@ int main (int argc, char *argv[]) {
     }
   }
   init_msg_buffers (0);
-  start_time = time (NULL);
+  start_time = time (((void*)0));
   start_server ();
   return 0;
 }

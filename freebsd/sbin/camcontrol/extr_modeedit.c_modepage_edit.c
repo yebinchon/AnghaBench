@@ -1,103 +1,95 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char* DEFAULT_EDITOR ; 
- int /*<<< orphan*/  EX_CANTCREAT ; 
- int /*<<< orphan*/  EX_NOINPUT ; 
- int /*<<< orphan*/  EX_OSERR ; 
- int /*<<< orphan*/  EX_UNAVAILABLE ; 
- int /*<<< orphan*/  atexit (int /*<<< orphan*/  (*) ()) ; 
- int /*<<< orphan*/  cleanup_editfile () ; 
- int /*<<< orphan*/ * edit_file ; 
- char* edit_path ; 
- int /*<<< orphan*/  err (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  errx (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fdopen (int,char*) ; 
- int /*<<< orphan*/  fileno (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  free (char*) ; 
- char* getenv (char*) ; 
- int /*<<< orphan*/  isatty (int /*<<< orphan*/ ) ; 
- char* malloc (scalar_t__) ; 
- int mkstemp (char*) ; 
- int /*<<< orphan*/  modepage_read (int /*<<< orphan*/ *) ; 
- int modepage_write (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  sprintf (char*,char*,char const*,char*) ; 
- int /*<<< orphan*/ * stdin ; 
- scalar_t__ strlen (char const*) ; 
- int system (char*) ; 
- int /*<<< orphan*/  warnx (char*) ; 
+ char* DEFAULT_EDITOR ;
+ int EX_CANTCREAT ;
+ int EX_NOINPUT ;
+ int EX_OSERR ;
+ int EX_UNAVAILABLE ;
+ int atexit (int (*) ()) ;
+ int cleanup_editfile () ;
+ int * edit_file ;
+ char* edit_path ;
+ int err (int ,char*,...) ;
+ int errx (int ,char*) ;
+ int fclose (int *) ;
+ int * fdopen (int,char*) ;
+ int fileno (int *) ;
+ int * fopen (char*,char*) ;
+ int free (char*) ;
+ char* getenv (char*) ;
+ int isatty (int ) ;
+ char* malloc (scalar_t__) ;
+ int mkstemp (char*) ;
+ int modepage_read (int *) ;
+ int modepage_write (int *,int) ;
+ int sprintf (char*,char*,char const*,char*) ;
+ int * stdin ;
+ scalar_t__ strlen (char const*) ;
+ int system (char*) ;
+ int warnx (char*) ;
 
 __attribute__((used)) static void
 modepage_edit(void)
 {
-	const char *editor;
-	char *commandline;
-	int fd;
-	int written;
+ const char *editor;
+ char *commandline;
+ int fd;
+ int written;
 
-	if (!isatty(fileno(stdin))) {
-		/* Not a tty, read changes from stdin. */
-		modepage_read(stdin);
-		return;
-	}
+ if (!isatty(fileno(stdin))) {
 
-	/* Lookup editor to invoke. */
-	if ((editor = getenv("EDITOR")) == NULL)
-		editor = DEFAULT_EDITOR;
+  modepage_read(stdin);
+  return;
+ }
 
-	/* Create temp file for editor to modify. */
-	if ((fd = mkstemp(edit_path)) == -1)
-		errx(EX_CANTCREAT, "mkstemp failed");
 
-	atexit(cleanup_editfile);
+ if ((editor = getenv("EDITOR")) == ((void*)0))
+  editor = DEFAULT_EDITOR;
 
-	if ((edit_file = fdopen(fd, "w")) == NULL)
-		err(EX_NOINPUT, "%s", edit_path);
 
-	written = modepage_write(edit_file, 1);
+ if ((fd = mkstemp(edit_path)) == -1)
+  errx(EX_CANTCREAT, "mkstemp failed");
 
-	fclose(edit_file);
-	edit_file = NULL;
+ atexit(cleanup_editfile);
 
-	if (written == 0) {
-		warnx("no editable entries");
-		cleanup_editfile();
-		return;
-	}
+ if ((edit_file = fdopen(fd, "w")) == ((void*)0))
+  err(EX_NOINPUT, "%s", edit_path);
 
-	/*
-	 * Allocate memory to hold the command line (the 2 extra characters
-	 * are to hold the argument separator (a space), and the terminating
-	 * null character.
-	 */
-	commandline = malloc(strlen(editor) + strlen(edit_path) + 2);
-	if (commandline == NULL)
-		err(EX_OSERR, NULL);
-	sprintf(commandline, "%s %s", editor, edit_path);
+ written = modepage_write(edit_file, 1);
 
-	/* Invoke the editor on the temp file. */
-	if (system(commandline) == -1)
-		err(EX_UNAVAILABLE, "could not invoke %s", editor);
-	free(commandline);
+ fclose(edit_file);
+ edit_file = ((void*)0);
 
-	if ((edit_file = fopen(edit_path, "r")) == NULL)
-		err(EX_NOINPUT, "%s", edit_path);
+ if (written == 0) {
+  warnx("no editable entries");
+  cleanup_editfile();
+  return;
+ }
 
-	/* Read any changes made to the temp file. */
-	modepage_read(edit_file);
 
-	cleanup_editfile();
+
+
+
+
+ commandline = malloc(strlen(editor) + strlen(edit_path) + 2);
+ if (commandline == ((void*)0))
+  err(EX_OSERR, ((void*)0));
+ sprintf(commandline, "%s %s", editor, edit_path);
+
+
+ if (system(commandline) == -1)
+  err(EX_UNAVAILABLE, "could not invoke %s", editor);
+ free(commandline);
+
+ if ((edit_file = fopen(edit_path, "r")) == ((void*)0))
+  err(EX_NOINPUT, "%s", edit_path);
+
+
+ modepage_read(edit_file);
+
+ cleanup_editfile();
 }

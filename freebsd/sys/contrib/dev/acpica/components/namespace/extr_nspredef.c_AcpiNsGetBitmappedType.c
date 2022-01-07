@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT32 ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int UINT32 ;
 struct TYPE_4__ {int Type; } ;
 struct TYPE_5__ {TYPE_1__ Common; } ;
-typedef  TYPE_2__ ACPI_OPERAND_OBJECT ;
+typedef TYPE_2__ ACPI_OPERAND_OBJECT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACPI_RTYPE_ANY ; 
- int /*<<< orphan*/  ACPI_RTYPE_BUFFER ; 
- int /*<<< orphan*/  ACPI_RTYPE_INTEGER ; 
- int /*<<< orphan*/  ACPI_RTYPE_NONE ; 
- int /*<<< orphan*/  ACPI_RTYPE_PACKAGE ; 
- int /*<<< orphan*/  ACPI_RTYPE_REFERENCE ; 
- int /*<<< orphan*/  ACPI_RTYPE_STRING ; 
-#define  ACPI_TYPE_BUFFER 132 
-#define  ACPI_TYPE_INTEGER 131 
-#define  ACPI_TYPE_LOCAL_REFERENCE 130 
-#define  ACPI_TYPE_PACKAGE 129 
-#define  ACPI_TYPE_STRING 128 
+
+ int ACPI_RTYPE_ANY ;
+ int ACPI_RTYPE_BUFFER ;
+ int ACPI_RTYPE_INTEGER ;
+ int ACPI_RTYPE_NONE ;
+ int ACPI_RTYPE_PACKAGE ;
+ int ACPI_RTYPE_REFERENCE ;
+ int ACPI_RTYPE_STRING ;
+
+
+
+
+
 
 __attribute__((used)) static UINT32
 AcpiNsGetBitmappedType (
-    ACPI_OPERAND_OBJECT         *ReturnObject)
+    ACPI_OPERAND_OBJECT *ReturnObject)
 {
-    UINT32                      ReturnBtype;
+    UINT32 ReturnBtype;
 
 
     if (!ReturnObject)
@@ -43,38 +43,38 @@ AcpiNsGetBitmappedType (
         return (ACPI_RTYPE_NONE);
     }
 
-    /* Map ACPI_OBJECT_TYPE to internal bitmapped type */
+
 
     switch (ReturnObject->Common.Type)
     {
-    case ACPI_TYPE_INTEGER:
+    case 131:
 
         ReturnBtype = ACPI_RTYPE_INTEGER;
         break;
 
-    case ACPI_TYPE_BUFFER:
+    case 132:
 
         ReturnBtype = ACPI_RTYPE_BUFFER;
         break;
 
-    case ACPI_TYPE_STRING:
+    case 128:
 
         ReturnBtype = ACPI_RTYPE_STRING;
         break;
 
-    case ACPI_TYPE_PACKAGE:
+    case 129:
 
         ReturnBtype = ACPI_RTYPE_PACKAGE;
         break;
 
-    case ACPI_TYPE_LOCAL_REFERENCE:
+    case 130:
 
         ReturnBtype = ACPI_RTYPE_REFERENCE;
         break;
 
     default:
 
-        /* Not one of the supported objects, must be incorrect */
+
 
         ReturnBtype = ACPI_RTYPE_ANY;
         break;

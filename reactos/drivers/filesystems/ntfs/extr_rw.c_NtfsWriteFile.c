@@ -1,80 +1,80 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_33__   TYPE_8__ ;
-typedef  struct TYPE_32__   TYPE_5__ ;
-typedef  struct TYPE_31__   TYPE_4__ ;
-typedef  struct TYPE_30__   TYPE_3__ ;
-typedef  struct TYPE_29__   TYPE_2__ ;
-typedef  struct TYPE_28__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
+
+
+typedef struct TYPE_33__ TYPE_8__ ;
+typedef struct TYPE_32__ TYPE_5__ ;
+typedef struct TYPE_31__ TYPE_4__ ;
+typedef struct TYPE_30__ TYPE_3__ ;
+typedef struct TYPE_29__ TYPE_2__ ;
+typedef struct TYPE_28__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
 struct TYPE_28__ {int Length; int MaximumLength; scalar_t__ Buffer; } ;
-typedef  TYPE_1__ UNICODE_STRING ;
-typedef  scalar_t__ ULONG_PTR ;
-typedef  scalar_t__ ULONGLONG ;
-typedef  scalar_t__ ULONG ;
+typedef TYPE_1__ UNICODE_STRING ;
+typedef scalar_t__ ULONG_PTR ;
+typedef scalar_t__ ULONGLONG ;
+typedef scalar_t__ ULONG ;
 struct TYPE_33__ {scalar_t__ QuadPart; } ;
 struct TYPE_32__ {scalar_t__ FsContext; } ;
-struct TYPE_31__ {int /*<<< orphan*/  pRecord; } ;
+struct TYPE_31__ {int pRecord; } ;
 struct TYPE_30__ {scalar_t__ Type; int NameLength; scalar_t__ NameOffset; } ;
-struct TYPE_29__ {int Flags; scalar_t__ DirectoryFileReferenceNumber; int NameLength; int /*<<< orphan*/  FileRecLookasideList; int /*<<< orphan*/  Vcb; scalar_t__ Name; int /*<<< orphan*/  Stream; int /*<<< orphan*/  ObjectName; int /*<<< orphan*/  MFTIndex; int /*<<< orphan*/  PathName; } ;
-typedef  scalar_t__ PWCHAR ;
-typedef  scalar_t__* PULONG ;
-typedef  int /*<<< orphan*/ * PUCHAR ;
-typedef  TYPE_2__* PNTFS_FCB ;
-typedef  TYPE_3__* PNTFS_ATTR_RECORD ;
-typedef  TYPE_4__* PNTFS_ATTR_CONTEXT ;
-typedef  int /*<<< orphan*/ * PFILE_RECORD_HEADER ;
-typedef  TYPE_5__* PFILE_OBJECT ;
-typedef  TYPE_2__* PFILENAME_ATTRIBUTE ;
-typedef  TYPE_2__* PDEVICE_EXTENSION ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
-typedef  TYPE_8__ LARGE_INTEGER ;
-typedef  int /*<<< orphan*/  FIND_ATTR_CONTXT ;
-typedef  scalar_t__ BOOLEAN ;
+struct TYPE_29__ {int Flags; scalar_t__ DirectoryFileReferenceNumber; int NameLength; int FileRecLookasideList; int Vcb; scalar_t__ Name; int Stream; int ObjectName; int MFTIndex; int PathName; } ;
+typedef scalar_t__ PWCHAR ;
+typedef scalar_t__* PULONG ;
+typedef int * PUCHAR ;
+typedef TYPE_2__* PNTFS_FCB ;
+typedef TYPE_3__* PNTFS_ATTR_RECORD ;
+typedef TYPE_4__* PNTFS_ATTR_CONTEXT ;
+typedef int * PFILE_RECORD_HEADER ;
+typedef TYPE_5__* PFILE_OBJECT ;
+typedef TYPE_2__* PFILENAME_ATTRIBUTE ;
+typedef TYPE_2__* PDEVICE_EXTENSION ;
+typedef int NTSTATUS ;
+typedef TYPE_8__ LARGE_INTEGER ;
+typedef int FIND_ATTR_CONTXT ;
+typedef scalar_t__ BOOLEAN ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (TYPE_2__*) ; 
- scalar_t__ AttributeAllocatedLength (int /*<<< orphan*/ ) ; 
- scalar_t__ AttributeData ; 
- scalar_t__ AttributeDataLength (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DPRINT (char*,...) ; 
- int /*<<< orphan*/  DPRINT1 (char*,...) ; 
- int /*<<< orphan*/ * ExAllocateFromNPagedLookasideList (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ExFreeToNPagedLookasideList (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FALSE ; 
- int FCB_IS_VOLUME ; 
- int /*<<< orphan*/  FindAttribute (TYPE_2__*,int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_4__**,scalar_t__*) ; 
- int /*<<< orphan*/  FindCloseAttribute (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FindFirstAttribute (int /*<<< orphan*/ *,TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_3__**) ; 
- int /*<<< orphan*/  FindNextAttribute (int /*<<< orphan*/ *,TYPE_3__**) ; 
- TYPE_2__* GetBestFileNameFromRecord (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ IRP_PAGING_IO ; 
- scalar_t__ NTFS_MFT_MASK ; 
- scalar_t__ NT_SUCCESS (int /*<<< orphan*/ ) ; 
- scalar_t__ NtfsFCBIsCompressed (TYPE_2__*) ; 
- int /*<<< orphan*/  ReadFileRecord (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ReleaseAttributeContext (TYPE_4__*) ; 
- int /*<<< orphan*/  STATUS_ACCESS_DENIED ; 
- int /*<<< orphan*/  STATUS_INSUFFICIENT_RESOURCES ; 
- int /*<<< orphan*/  STATUS_INVALID_PARAMETER ; 
- int /*<<< orphan*/  STATUS_NOT_IMPLEMENTED ; 
- int /*<<< orphan*/  STATUS_SUCCESS ; 
- int /*<<< orphan*/  STATUS_UNEXPECTED_IO_ERROR ; 
- int /*<<< orphan*/  SetAttributeDataLength (TYPE_5__*,TYPE_2__*,TYPE_4__*,scalar_t__,int /*<<< orphan*/ *,TYPE_8__*) ; 
- int /*<<< orphan*/  UNIMPLEMENTED ; 
- int /*<<< orphan*/  UpdateFileNameRecord (int /*<<< orphan*/ ,scalar_t__,TYPE_1__*,int /*<<< orphan*/ ,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  WriteAttribute (TYPE_2__*,TYPE_4__*,scalar_t__,int /*<<< orphan*/ * const,scalar_t__,scalar_t__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  wcslen (int /*<<< orphan*/ ) ; 
+
+ int ASSERT (TYPE_2__*) ;
+ scalar_t__ AttributeAllocatedLength (int ) ;
+ scalar_t__ AttributeData ;
+ scalar_t__ AttributeDataLength (int ) ;
+ int DPRINT (char*,...) ;
+ int DPRINT1 (char*,...) ;
+ int * ExAllocateFromNPagedLookasideList (int *) ;
+ int ExFreeToNPagedLookasideList (int *,int *) ;
+ int FALSE ;
+ int FCB_IS_VOLUME ;
+ int FindAttribute (TYPE_2__*,int *,scalar_t__,int ,int ,TYPE_4__**,scalar_t__*) ;
+ int FindCloseAttribute (int *) ;
+ int FindFirstAttribute (int *,TYPE_2__*,int *,int ,TYPE_3__**) ;
+ int FindNextAttribute (int *,TYPE_3__**) ;
+ TYPE_2__* GetBestFileNameFromRecord (int ,int *) ;
+ scalar_t__ IRP_PAGING_IO ;
+ scalar_t__ NTFS_MFT_MASK ;
+ scalar_t__ NT_SUCCESS (int ) ;
+ scalar_t__ NtfsFCBIsCompressed (TYPE_2__*) ;
+ int ReadFileRecord (TYPE_2__*,int ,int *) ;
+ int ReleaseAttributeContext (TYPE_4__*) ;
+ int STATUS_ACCESS_DENIED ;
+ int STATUS_INSUFFICIENT_RESOURCES ;
+ int STATUS_INVALID_PARAMETER ;
+ int STATUS_NOT_IMPLEMENTED ;
+ int STATUS_SUCCESS ;
+ int STATUS_UNEXPECTED_IO_ERROR ;
+ int SetAttributeDataLength (TYPE_5__*,TYPE_2__*,TYPE_4__*,scalar_t__,int *,TYPE_8__*) ;
+ int UNIMPLEMENTED ;
+ int UpdateFileNameRecord (int ,scalar_t__,TYPE_1__*,int ,scalar_t__,scalar_t__,scalar_t__) ;
+ int WriteAttribute (TYPE_2__*,TYPE_4__*,scalar_t__,int * const,scalar_t__,scalar_t__*,int *) ;
+ int wcslen (int ) ;
 
 NTSTATUS NtfsWriteFile(PDEVICE_EXTENSION DeviceExt,
                        PFILE_OBJECT FileObject,
@@ -108,20 +108,20 @@ NTSTATUS NtfsWriteFile(PDEVICE_EXTENSION DeviceExt,
 
     if (Length == 0)
     {
-        if (Buffer == NULL)
+        if (Buffer == ((void*)0))
             return STATUS_SUCCESS;
         else
             return STATUS_INVALID_PARAMETER;
     }
 
-    // get the File control block
+
     Fcb = (PNTFS_FCB)FileObject->FsContext;
     ASSERT(Fcb);
 
     DPRINT("Fcb->PathName: %wS\n", Fcb->PathName);
     DPRINT("Fcb->ObjectName: %wS\n", Fcb->ObjectName);
 
-    // we don't yet handle compression
+
     if (NtfsFCBIsCompressed(Fcb))
     {
         DPRINT("Compressed file!\n");
@@ -129,20 +129,20 @@ NTSTATUS NtfsWriteFile(PDEVICE_EXTENSION DeviceExt,
         return STATUS_NOT_IMPLEMENTED;
     }
 
-    // allocate non-paged memory for the FILE_RECORD_HEADER
+
     FileRecord = ExAllocateFromNPagedLookasideList(&DeviceExt->FileRecLookasideList);
-    if (FileRecord == NULL)
+    if (FileRecord == ((void*)0))
     {
         DPRINT1("Not enough memory! Can't write %wS!\n", Fcb->PathName);
         return STATUS_INSUFFICIENT_RESOURCES;
     }
 
-    // read the FILE_RECORD_HEADER from the drive (or cache)
+
     DPRINT("Reading file record...\n");
     Status = ReadFileRecord(DeviceExt, Fcb->MFTIndex, FileRecord);
     if (!NT_SUCCESS(Status))
     {
-        // We couldn't get the file's record. Free the memory and return the error
+
         DPRINT1("Can't find record for %wS!\n", Fcb->ObjectName);
         ExFreeToNPagedLookasideList(&DeviceExt->FileRecLookasideList, FileRecord);
         return Status;
@@ -150,12 +150,12 @@ NTSTATUS NtfsWriteFile(PDEVICE_EXTENSION DeviceExt,
 
     DPRINT("Found record for %wS\n", Fcb->ObjectName);
 
-    // Find the attribute with the data stream for our file
+
     DPRINT("Finding Data Attribute...\n");
     Status = FindAttribute(DeviceExt, FileRecord, AttributeData, Fcb->Stream, wcslen(Fcb->Stream), &DataContext,
                            &AttributeOffset);
 
-    // Did we fail to find the attribute?
+
     if (!NT_SUCCESS(Status))
     {
         NTSTATUS BrowseStatus;
@@ -164,7 +164,7 @@ NTSTATUS NtfsWriteFile(PDEVICE_EXTENSION DeviceExt,
 
         DPRINT1("No '%S' data stream associated with file!\n", Fcb->Stream);
 
-        // Couldn't find the requested data stream; print a list of streams available
+
         BrowseStatus = FindFirstAttribute(&Context, DeviceExt, FileRecord, FALSE, &Attribute);
         while (NT_SUCCESS(BrowseStatus))
         {
@@ -187,15 +187,15 @@ NTSTATUS NtfsWriteFile(PDEVICE_EXTENSION DeviceExt,
         return Status;
     }
 
-    // Get the size of the stream on disk
+
     StreamSize = AttributeDataLength(DataContext->pRecord);
 
     DPRINT("WriteOffset: %lu\tStreamSize: %I64u\n", WriteOffset, StreamSize);
 
-    // Are we trying to write beyond the end of the stream?
+
     if (WriteOffset + Length > StreamSize)
     {
-        // is increasing the stream size allowed?
+
         if (!(Fcb->Flags & FCB_IS_VOLUME) &&
             !(IrpFlags & IRP_PAGING_IO))
         {
@@ -207,7 +207,7 @@ NTSTATUS NtfsWriteFile(PDEVICE_EXTENSION DeviceExt,
 
             DataSize.QuadPart = WriteOffset + Length;
 
-            // set the attribute data length
+
             Status = SetAttributeDataLength(FileObject, Fcb, DataContext, AttributeOffset, FileRecord, &DataSize);
             if (!NT_SUCCESS(Status))
             {
@@ -219,9 +219,9 @@ NTSTATUS NtfsWriteFile(PDEVICE_EXTENSION DeviceExt,
 
             AllocationSize = AttributeAllocatedLength(DataContext->pRecord);
 
-            // now we need to update this file's size in every directory index entry that references it
-            // TODO: put this code in its own function and adapt it to work with every filename / hardlink
-            // stored in the file record.
+
+
+
             fileNameAttribute = GetBestFileNameFromRecord(Fcb->Vcb, FileRecord);
             ASSERT(fileNameAttribute);
 
@@ -242,7 +242,7 @@ NTSTATUS NtfsWriteFile(PDEVICE_EXTENSION DeviceExt,
         }
         else
         {
-            // TODO - just fail for now
+
             ReleaseAttributeContext(DataContext);
             ExFreeToNPagedLookasideList(&DeviceExt->FileRecLookasideList, FileRecord);
             *LengthWritten = 0;
@@ -252,10 +252,10 @@ NTSTATUS NtfsWriteFile(PDEVICE_EXTENSION DeviceExt,
 
     DPRINT("Length: %lu\tWriteOffset: %lu\tStreamSize: %I64u\n", Length, WriteOffset, StreamSize);
 
-    // Write the data to the attribute
+
     Status = WriteAttribute(DeviceExt, DataContext, WriteOffset, Buffer, Length, LengthWritten, FileRecord);
 
-    // Did the write fail?
+
     if (!NT_SUCCESS(Status))
     {
         DPRINT1("Write failure!\n");
@@ -265,7 +265,7 @@ NTSTATUS NtfsWriteFile(PDEVICE_EXTENSION DeviceExt,
         return Status;
     }
 
-    // This should never happen:
+
     if (*LengthWritten != Length)
     {
         DPRINT1("\a\tNTFS DRIVER ERROR: length written (%lu) differs from requested (%lu), but no error was indicated!\n",

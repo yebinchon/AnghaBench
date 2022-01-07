@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct device_queue_manager_asic_ops {int /*<<< orphan*/  mqd_manager_init; int /*<<< orphan*/  init_sdma_vm; int /*<<< orphan*/  update_qpd; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  init_sdma_vm_v10 ; 
- int /*<<< orphan*/  mqd_manager_init_v10 ; 
- int /*<<< orphan*/  update_qpd_v10 ; 
+
+
+
+struct device_queue_manager_asic_ops {int mqd_manager_init; int init_sdma_vm; int update_qpd; } ;
+
+
+ int init_sdma_vm_v10 ;
+ int mqd_manager_init_v10 ;
+ int update_qpd_v10 ;
 
 void device_queue_manager_init_v10_navi10(
-	struct device_queue_manager_asic_ops *asic_ops)
+ struct device_queue_manager_asic_ops *asic_ops)
 {
-	asic_ops->update_qpd = update_qpd_v10;
-	asic_ops->init_sdma_vm = init_sdma_vm_v10;
-	asic_ops->mqd_manager_init = mqd_manager_init_v10;
+ asic_ops->update_qpd = update_qpd_v10;
+ asic_ops->init_sdma_vm = init_sdma_vm_v10;
+ asic_ops->mqd_manager_init = mqd_manager_init_v10;
 }

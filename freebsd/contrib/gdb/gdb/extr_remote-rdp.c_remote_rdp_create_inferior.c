@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ CORE_ADDR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TARGET_SIGNAL_DEFAULT ; 
- scalar_t__ bfd_get_start_address (scalar_t__) ; 
- int /*<<< orphan*/  error (char*) ; 
- scalar_t__ exec_bfd ; 
- int /*<<< orphan*/  inferior_ptid ; 
- int /*<<< orphan*/  init_wait_for_inferior () ; 
- int /*<<< orphan*/  insert_breakpoints () ; 
- int /*<<< orphan*/  pid_to_ptid (int) ; 
- int /*<<< orphan*/  proceed (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rdp_set_command_line (char*,char*) ; 
- int /*<<< orphan*/  remote_rdp_kill () ; 
- int /*<<< orphan*/  remove_breakpoints () ; 
+
+
+
+typedef scalar_t__ CORE_ADDR ;
+
+
+ int TARGET_SIGNAL_DEFAULT ;
+ scalar_t__ bfd_get_start_address (scalar_t__) ;
+ int error (char*) ;
+ scalar_t__ exec_bfd ;
+ int inferior_ptid ;
+ int init_wait_for_inferior () ;
+ int insert_breakpoints () ;
+ int pid_to_ptid (int) ;
+ int proceed (scalar_t__,int ,int ) ;
+ int rdp_set_command_line (char*,char*) ;
+ int remote_rdp_kill () ;
+ int remove_breakpoints () ;
 
 __attribute__((used)) static void
 remote_rdp_create_inferior (char *exec_file, char *allargs, char **env)
@@ -40,17 +40,17 @@ remote_rdp_create_inferior (char *exec_file, char *allargs, char **env)
   remove_breakpoints ();
   init_wait_for_inferior ();
 
-  /* This gives us a chance to set up the command line */
+
   rdp_set_command_line (exec_file, allargs);
 
   inferior_ptid = pid_to_ptid (42);
-  insert_breakpoints ();	/* Needed to get correct instruction in cache */
+  insert_breakpoints ();
 
-  /*
-     ** RDP targets don't provide any facility to set the top of memory,
-     ** so we don't bother to look for MEMSIZE in the environment.
-   */
 
-  /* Let's go! */
+
+
+
+
+
   proceed (entry_point, TARGET_SIGNAL_DEFAULT, 0);
 }

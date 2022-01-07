@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u8 ;
-typedef  int u32 ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u8 ;
+typedef int u32 ;
 struct TYPE_2__ {int vendor; int device; } ;
 struct usb_ftdi {int function; scalar_t__ enumerated; TYPE_1__ platform_data; } ;
 
-/* Variables and functions */
- int ENXIO ; 
- int /*<<< orphan*/  OHCI_QUIRK_AMD756 ; 
- int /*<<< orphan*/  OHCI_QUIRK_ZFMICRO ; 
- int PCI_VENDOR_ID_AL ; 
- int PCI_VENDOR_ID_AMD ; 
- int PCI_VENDOR_ID_ATT ; 
- int PCI_VENDOR_ID_COMPAQ ; 
- int PCI_VENDOR_ID_NEC ; 
- int PCI_VENDOR_ID_OPTI ; 
- int ftdi_elan_found_controller (struct usb_ftdi*,int,int /*<<< orphan*/ ) ; 
- int ftdi_elan_read_config (struct usb_ftdi*,int,int /*<<< orphan*/ ,int*) ; 
- int ftdi_elan_setup_controller (struct usb_ftdi*,int) ; 
+
+ int ENXIO ;
+ int OHCI_QUIRK_AMD756 ;
+ int OHCI_QUIRK_ZFMICRO ;
+ int PCI_VENDOR_ID_AL ;
+ int PCI_VENDOR_ID_AMD ;
+ int PCI_VENDOR_ID_ATT ;
+ int PCI_VENDOR_ID_COMPAQ ;
+ int PCI_VENDOR_ID_NEC ;
+ int PCI_VENDOR_ID_OPTI ;
+ int ftdi_elan_found_controller (struct usb_ftdi*,int,int ) ;
+ int ftdi_elan_read_config (struct usb_ftdi*,int,int ,int*) ;
+ int ftdi_elan_setup_controller (struct usb_ftdi*,int) ;
 
 __attribute__((used)) static int ftdi_elan_setupOHCI(struct usb_ftdi *ftdi)
 {

@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {unsigned int* s6_addr; } ;
 struct route_ipv6 {unsigned int netbits; TYPE_1__ network; } ;
 struct in6_addr {unsigned int* s6_addr; } ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static bool
 route_ipv6_match_host( const struct route_ipv6 *r6,
@@ -27,28 +27,28 @@ route_ipv6_match_host( const struct route_ipv6 *r6,
 
     if (bits>128)
     {
-        return false;
+        return 0;
     }
 
     for (i = 0; bits >= 8; i++, bits -= 8)
     {
         if (r6->network.s6_addr[i] != host->s6_addr[i])
         {
-            return false;
+            return 0;
         }
     }
 
     if (bits == 0)
     {
-        return true;
+        return 1;
     }
 
     mask = 0xff << (8-bits);
 
     if ( (r6->network.s6_addr[i] & mask) == (host->s6_addr[i] & mask ))
     {
-        return true;
+        return 1;
     }
 
-    return false;
+    return 0;
 }

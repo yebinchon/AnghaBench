@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
 
-/* Variables and functions */
- int WAITING_BUFFER_SIZE ; 
- int /*<<< orphan*/  debug (char*) ; 
- int /*<<< orphan*/  debug_dec (int) ; 
- int /*<<< orphan*/  debug_record (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * waiting_buffer ; 
- int waiting_buffer_head ; 
- int waiting_buffer_tail ; 
+
+
+
+typedef int uint8_t ;
+
+
+ int WAITING_BUFFER_SIZE ;
+ int debug (char*) ;
+ int debug_dec (int) ;
+ int debug_record (int ) ;
+ int * waiting_buffer ;
+ int waiting_buffer_head ;
+ int waiting_buffer_tail ;
 
 __attribute__((used)) static void debug_waiting_buffer(void) {
     debug("{ ");

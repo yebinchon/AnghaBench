@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uLongf ;
-typedef  scalar_t__ uLong ;
-typedef  int /*<<< orphan*/  sqlite3_value ;
-typedef  int /*<<< orphan*/  sqlite3_context ;
-typedef  int /*<<< orphan*/  Bytef ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SQLITE_TRANSIENT ; 
- scalar_t__ Z_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  sqlite3_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * sqlite3_malloc (scalar_t__) ; 
- int /*<<< orphan*/  sqlite3_result_blob (int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_result_error (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  sqlite3_result_value (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * sqlite3_value_blob (int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3_value_bytes (int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3_value_int (int /*<<< orphan*/ *) ; 
- scalar_t__ uncompress (int /*<<< orphan*/ *,scalar_t__*,int /*<<< orphan*/  const*,scalar_t__) ; 
+
+
+
+typedef scalar_t__ uLongf ;
+typedef scalar_t__ uLong ;
+typedef int sqlite3_value ;
+typedef int sqlite3_context ;
+typedef int Bytef ;
+
+
+ int SQLITE_TRANSIENT ;
+ scalar_t__ Z_OK ;
+ int assert (int) ;
+ int sqlite3_free (int *) ;
+ int * sqlite3_malloc (scalar_t__) ;
+ int sqlite3_result_blob (int *,int *,scalar_t__,int ) ;
+ int sqlite3_result_error (int *,char*,int) ;
+ int sqlite3_result_value (int *,int *) ;
+ int * sqlite3_value_blob (int *) ;
+ scalar_t__ sqlite3_value_bytes (int *) ;
+ scalar_t__ sqlite3_value_int (int *) ;
+ scalar_t__ uncompress (int *,scalar_t__*,int const*,scalar_t__) ;
 
 __attribute__((used)) static void sqlarUncompressFunc(
   sqlite3_context *context,

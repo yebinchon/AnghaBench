@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_stmt ;
-struct TYPE_7__ {int nRow; int idxNum; int nAlloc; TYPE_1__* a; int /*<<< orphan*/  nSearch; } ;
-typedef  TYPE_2__ spellfix1_cursor ;
-struct TYPE_8__ {int iScope; int rc; int nRun; char** azPrior; int iMaxDist; int /*<<< orphan*/  zPattern; int /*<<< orphan*/  pLang; scalar_t__ pMatchStr3; int /*<<< orphan*/ * pStmt; TYPE_2__* pCur; } ;
-struct TYPE_6__ {int iScore; char* zWord; int iRank; int iDistance; int iMatchlen; char* zHash; int /*<<< orphan*/  iRowid; } ;
-typedef  TYPE_3__ MatchQuery ;
 
-/* Variables and functions */
- int SPELLFIX_IDXNUM_DIST ; 
- int SPELLFIX_IDXNUM_TOP ; 
- int SPELLFIX_MX_HASH ; 
- int SPELLFIX_MX_RUN ; 
- scalar_t__ SQLITE_NOMEM ; 
- scalar_t__ SQLITE_ROW ; 
- int /*<<< orphan*/  SQLITE_STATIC ; 
- int /*<<< orphan*/  assert (int) ; 
- int editDist3Core (scalar_t__,char const*,int,int /*<<< orphan*/ ,int*) ; 
- int editdist1 (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (char*,char*,int) ; 
- scalar_t__ phoneticHash (unsigned char*,int) ; 
- int /*<<< orphan*/  spellfix1ResizeCursor (TYPE_2__*,int) ; 
- int spellfix1Score (int,int) ; 
- scalar_t__ sqlite3_bind_text (int /*<<< orphan*/ *,int,char*,int,int /*<<< orphan*/ ) ; 
- int sqlite3_column_bytes (int /*<<< orphan*/ *,int) ; 
- int sqlite3_column_int (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  sqlite3_column_int64 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ sqlite3_column_text (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  sqlite3_free (char*) ; 
- char* sqlite3_mprintf (char*,scalar_t__) ; 
- int sqlite3_reset (int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3_step (int /*<<< orphan*/ *) ; 
- scalar_t__ strcmp (char*,char*) ; 
- scalar_t__ strlen (char*) ; 
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int sqlite3_stmt ;
+struct TYPE_7__ {int nRow; int idxNum; int nAlloc; TYPE_1__* a; int nSearch; } ;
+typedef TYPE_2__ spellfix1_cursor ;
+struct TYPE_8__ {int iScope; int rc; int nRun; char** azPrior; int iMaxDist; int zPattern; int pLang; scalar_t__ pMatchStr3; int * pStmt; TYPE_2__* pCur; } ;
+struct TYPE_6__ {int iScore; char* zWord; int iRank; int iDistance; int iMatchlen; char* zHash; int iRowid; } ;
+typedef TYPE_3__ MatchQuery ;
+
+
+ int SPELLFIX_IDXNUM_DIST ;
+ int SPELLFIX_IDXNUM_TOP ;
+ int SPELLFIX_MX_HASH ;
+ int SPELLFIX_MX_RUN ;
+ scalar_t__ SQLITE_NOMEM ;
+ scalar_t__ SQLITE_ROW ;
+ int SQLITE_STATIC ;
+ int assert (int) ;
+ int editDist3Core (scalar_t__,char const*,int,int ,int*) ;
+ int editdist1 (int ,char const*,int ) ;
+ int memcpy (char*,char*,int) ;
+ scalar_t__ phoneticHash (unsigned char*,int) ;
+ int spellfix1ResizeCursor (TYPE_2__*,int) ;
+ int spellfix1Score (int,int) ;
+ scalar_t__ sqlite3_bind_text (int *,int,char*,int,int ) ;
+ int sqlite3_column_bytes (int *,int) ;
+ int sqlite3_column_int (int *,int) ;
+ int sqlite3_column_int64 (int *,int ) ;
+ scalar_t__ sqlite3_column_text (int *,int) ;
+ int sqlite3_free (char*) ;
+ char* sqlite3_mprintf (char*,scalar_t__) ;
+ int sqlite3_reset (int *) ;
+ scalar_t__ sqlite3_step (int *) ;
+ scalar_t__ strcmp (char*,char*) ;
+ scalar_t__ strlen (char*) ;
 
 __attribute__((used)) static void spellfix1RunQuery(MatchQuery *p, const char *zQuery, int nQuery){
   const char *zK1;
@@ -66,7 +66,7 @@ __attribute__((used)) static void spellfix1RunQuery(MatchQuery *p, const char *z
   int nClass;
   int rc;
 
-  if( pCur->a==0 || p->rc ) return;   /* Prior memory allocation failure */
+  if( pCur->a==0 || p->rc ) return;
   zClass = (char*)phoneticHash((unsigned char*)zQuery, nQuery);
   if( zClass==0 ){
     p->rc = SQLITE_NOMEM;
@@ -90,11 +90,11 @@ __attribute__((used)) static void spellfix1RunQuery(MatchQuery *p, const char *z
   memcpy(zHash2, zHash1, iScope);
   zHash2[iScope] = 'Z';
   zHash2[iScope+1] = 0;
-#if SPELLFIX_MX_RUN>1
-  for(i=0; i<p->nRun; i++){
-    if( strcmp(p->azPrior[i], zHash1)==0 ) return;
-  }
-#endif
+
+
+
+
+
   assert( p->nRun<SPELLFIX_MX_RUN );
   memcpy(p->azPrior[p->nRun++], zHash1, iScope+1);
   if( sqlite3_bind_text(pStmt, 1, zHash1, -1, SQLITE_STATIC)==SQLITE_NOMEM
@@ -103,14 +103,6 @@ __attribute__((used)) static void spellfix1RunQuery(MatchQuery *p, const char *z
     p->rc = SQLITE_NOMEM;
     return;
   }
-#if SPELLFIX_MX_RUN>1
-  for(i=0; i<pCur->nRow; i++){
-    if( pCur->a[i].iScore>iWorst ){
-      iWorst = pCur->a[i].iScore;
-      idxWorst = i;
-    }
-  }
-#endif
   while( sqlite3_step(pStmt)==SQLITE_ROW ){
     int iMatchlen = -1;
     iRank = sqlite3_column_int(pStmt, 2);
@@ -128,13 +120,13 @@ __attribute__((used)) static void spellfix1RunQuery(MatchQuery *p, const char *z
       break;
     }
     pCur->nSearch++;
-    
-    /* If there is a "distance < $dist" or "distance <= $dist" constraint,
-    ** check if this row meets it. If not, jump back up to the top of the
-    ** loop to process the next row. Otherwise, if the row does match the
-    ** distance constraint, check if the pCur->a[] array is already full.
-    ** If it is and no explicit "top = ?" constraint was present in the
-    ** query, grow the array to ensure there is room for the new entry. */
+
+
+
+
+
+
+
     assert( (p->iMaxDist>=0)==((pCur->idxNum & SPELLFIX_IDXNUM_DIST) ? 1 : 0) );
     if( p->iMaxDist>=0 ){
       if( iDist>p->iMaxDist ) continue;

@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  sysMsgTime; } ;
 
-/* Variables and functions */
- int K_AUX1 ; 
- int /*<<< orphan*/  MIDI_NoteOff (int) ; 
- int /*<<< orphan*/  SE_KEY ; 
- int /*<<< orphan*/  Sys_QueEvent (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- TYPE_1__ g_wv ; 
- int /*<<< orphan*/  qtrue ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int sysMsgTime; } ;
+
+
+ int K_AUX1 ;
+ int MIDI_NoteOff (int) ;
+ int SE_KEY ;
+ int Sys_QueEvent (int ,int ,int,int ,int ,int *) ;
+ TYPE_1__ g_wv ;
+ int qtrue ;
 
 __attribute__((used)) static void MIDI_NoteOn( int note, int velocity )
 {
-	int qkey;
+ int qkey;
 
-	if ( velocity == 0 )
-		MIDI_NoteOff( note );
+ if ( velocity == 0 )
+  MIDI_NoteOff( note );
 
-	qkey = note - 60 + K_AUX1;
+ qkey = note - 60 + K_AUX1;
 
-	if ( qkey > 255 || qkey < K_AUX1 )
-		return;
+ if ( qkey > 255 || qkey < K_AUX1 )
+  return;
 
-	Sys_QueEvent( g_wv.sysMsgTime, SE_KEY, qkey, qtrue, 0, NULL );
+ Sys_QueEvent( g_wv.sysMsgTime, SE_KEY, qkey, qtrue, 0, ((void*)0) );
 }

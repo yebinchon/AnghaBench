@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  size_t uint64_t ;
 
-/* Variables and functions */
+
+
+
+typedef size_t uint64_t ;
+
+
 
 __attribute__((used)) static uint64_t
 asn1_length(const unsigned char *px, uint64_t length, uint64_t *r_offset)
 {
     uint64_t result;
 
-    /* check for errors */
+
     if ( (*r_offset >= length)
         || ((px[*r_offset] & 0x80)
         && ((*r_offset) + (px[*r_offset]&0x7F) >= length))) {
@@ -27,7 +27,7 @@ asn1_length(const unsigned char *px, uint64_t length, uint64_t *r_offset)
         return 0xFFFFffff;
     }
 
-    /* grab the byte's value */
+
     result = px[(*r_offset)++];
 
 

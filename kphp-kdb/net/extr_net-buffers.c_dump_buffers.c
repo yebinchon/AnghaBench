@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {scalar_t__ state; int extra; int total_bytes; int unprocessed_bytes; struct TYPE_5__* next; } ;
-typedef  TYPE_1__ netbuffer_t ;
+typedef TYPE_1__ netbuffer_t ;
 
-/* Variables and functions */
- scalar_t__ NB_MAGIC_BUSYHEAD ; 
- scalar_t__ NB_MAGIC_HEAD ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ dump_buffer (TYPE_1__*,int,int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,TYPE_1__*,...) ; 
- int /*<<< orphan*/  stderr ; 
+
+ scalar_t__ NB_MAGIC_BUSYHEAD ;
+ scalar_t__ NB_MAGIC_HEAD ;
+ int assert (int) ;
+ scalar_t__ dump_buffer (TYPE_1__*,int,int) ;
+ int fprintf (int ,char*,TYPE_1__*,...) ;
+ int stderr ;
 
 void dump_buffers (netbuffer_t *H) {
   netbuffer_t *X;

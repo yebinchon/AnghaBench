@@ -1,63 +1,63 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_22__   TYPE_8__ ;
-typedef  struct TYPE_21__   TYPE_6__ ;
-typedef  struct TYPE_20__   TYPE_5__ ;
-typedef  struct TYPE_19__   TYPE_4__ ;
-typedef  struct TYPE_18__   TYPE_3__ ;
-typedef  struct TYPE_17__   TYPE_2__ ;
-typedef  struct TYPE_16__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_22__ TYPE_8__ ;
+typedef struct TYPE_21__ TYPE_6__ ;
+typedef struct TYPE_20__ TYPE_5__ ;
+typedef struct TYPE_19__ TYPE_4__ ;
+typedef struct TYPE_18__ TYPE_3__ ;
+typedef struct TYPE_17__ TYPE_2__ ;
+typedef struct TYPE_16__ TYPE_1__ ;
+
+
 struct TYPE_20__ {int user; int sys; int idle; int irq; scalar_t__ nice; } ;
 struct TYPE_19__ {int QuadPart; } ;
 struct TYPE_18__ {int QuadPart; } ;
 struct TYPE_17__ {int QuadPart; } ;
 struct TYPE_16__ {int QuadPart; } ;
 struct TYPE_21__ {int speed; struct TYPE_21__* model; TYPE_5__ cpu_times; TYPE_4__ InterruptTime; TYPE_3__ IdleTime; TYPE_2__ KernelTime; TYPE_1__ UserTime; } ;
-typedef  TYPE_6__ uv_cpu_info_t ;
-typedef  int /*<<< orphan*/  cpu_speed ;
-typedef  int /*<<< orphan*/  cpu_brand ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int ULONG ;
+typedef TYPE_6__ uv_cpu_info_t ;
+typedef int cpu_speed ;
+typedef int cpu_brand ;
+typedef int WCHAR ;
+typedef int ULONG ;
 struct TYPE_22__ {int dwNumberOfProcessors; } ;
-typedef  TYPE_6__ SYSTEM_PROCESSOR_PERFORMANCE_INFORMATION ;
-typedef  TYPE_8__ SYSTEM_INFO ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  BYTE ;
+typedef TYPE_6__ SYSTEM_PROCESSOR_PERFORMANCE_INFORMATION ;
+typedef TYPE_8__ SYSTEM_INFO ;
+typedef int NTSTATUS ;
+typedef int HKEY ;
+typedef int DWORD ;
+typedef int BYTE ;
 
-/* Variables and functions */
- size_t ARRAY_SIZE (int /*<<< orphan*/ *) ; 
- int ERROR_OUTOFMEMORY ; 
- int ERROR_SUCCESS ; 
- int /*<<< orphan*/  GetSystemInfo (TYPE_8__*) ; 
- int /*<<< orphan*/  HKEY_LOCAL_MACHINE ; 
- int /*<<< orphan*/  KEY_QUERY_VALUE ; 
- int /*<<< orphan*/  NT_SUCCESS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- int RegOpenKeyExW (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int RegQueryValueExW (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  SystemProcessorPerformanceInformation ; 
- size_t _snwprintf (int /*<<< orphan*/ *,size_t,char*,int) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  pNtQuerySystemInformation (int /*<<< orphan*/ ,TYPE_6__*,int,int*) ; 
- int pRtlNtStatusToDosError (int /*<<< orphan*/ ) ; 
- TYPE_6__* uv__calloc (int,int) ; 
- int /*<<< orphan*/  uv__convert_utf16_to_utf8 (int /*<<< orphan*/ *,int,TYPE_6__**) ; 
- int /*<<< orphan*/  uv__free (TYPE_6__*) ; 
- TYPE_6__* uv__malloc (int) ; 
- int /*<<< orphan*/  uv__once_init () ; 
- int uv_translate_sys_error (int) ; 
+
+ size_t ARRAY_SIZE (int *) ;
+ int ERROR_OUTOFMEMORY ;
+ int ERROR_SUCCESS ;
+ int GetSystemInfo (TYPE_8__*) ;
+ int HKEY_LOCAL_MACHINE ;
+ int KEY_QUERY_VALUE ;
+ int NT_SUCCESS (int ) ;
+ int RegCloseKey (int ) ;
+ int RegOpenKeyExW (int ,int *,int ,int ,int *) ;
+ int RegQueryValueExW (int ,char*,int *,int *,int *,int*) ;
+ int SystemProcessorPerformanceInformation ;
+ size_t _snwprintf (int *,size_t,char*,int) ;
+ int assert (int) ;
+ int pNtQuerySystemInformation (int ,TYPE_6__*,int,int*) ;
+ int pRtlNtStatusToDosError (int ) ;
+ TYPE_6__* uv__calloc (int,int) ;
+ int uv__convert_utf16_to_utf8 (int *,int,TYPE_6__**) ;
+ int uv__free (TYPE_6__*) ;
+ TYPE_6__* uv__malloc (int) ;
+ int uv__once_init () ;
+ int uv_translate_sys_error (int) ;
 
 int uv_cpu_info(uv_cpu_info_t** cpu_infos_ptr, int* cpu_count_ptr) {
   uv_cpu_info_t* cpu_infos;
@@ -70,9 +70,9 @@ int uv_cpu_info(uv_cpu_info_t** cpu_infos_ptr, int* cpu_count_ptr) {
   int err;
   uv_cpu_info_t* cpu_info;
 
-  cpu_infos = NULL;
+  cpu_infos = ((void*)0);
   cpu_count = 0;
-  sppi = NULL;
+  sppi = ((void*)0);
 
   uv__once_init();
 
@@ -80,14 +80,14 @@ int uv_cpu_info(uv_cpu_info_t** cpu_infos_ptr, int* cpu_count_ptr) {
   cpu_count = system_info.dwNumberOfProcessors;
 
   cpu_infos = uv__calloc(cpu_count, sizeof *cpu_infos);
-  if (cpu_infos == NULL) {
+  if (cpu_infos == ((void*)0)) {
     err = ERROR_OUTOFMEMORY;
     goto error;
   }
 
   sppi_size = cpu_count * sizeof(*sppi);
   sppi = uv__malloc(sppi_size);
-  if (sppi == NULL) {
+  if (sppi == ((void*)0)) {
     err = ERROR_OUTOFMEMORY;
     goto error;
   }
@@ -130,8 +130,8 @@ int uv_cpu_info(uv_cpu_info_t** cpu_infos_ptr, int* cpu_count_ptr) {
 
     err = RegQueryValueExW(processor_key,
                            L"~MHz",
-                           NULL,
-                           NULL,
+                           ((void*)0),
+                           ((void*)0),
                            (BYTE*)&cpu_speed,
                            &cpu_speed_size);
     if (err != ERROR_SUCCESS) {
@@ -141,8 +141,8 @@ int uv_cpu_info(uv_cpu_info_t** cpu_infos_ptr, int* cpu_count_ptr) {
 
     err = RegQueryValueExW(processor_key,
                            L"ProcessorNameString",
-                           NULL,
-                           NULL,
+                           ((void*)0),
+                           ((void*)0),
                            (BYTE*)&cpu_brand,
                            &cpu_brand_size);
     RegCloseKey(processor_key);
@@ -171,8 +171,8 @@ int uv_cpu_info(uv_cpu_info_t** cpu_infos_ptr, int* cpu_count_ptr) {
   return 0;
 
  error:
-  if (cpu_infos != NULL) {
-    /* This is safe because the cpu_infos array is zeroed on allocation. */
+  if (cpu_infos != ((void*)0)) {
+
     for (i = 0; i < cpu_count; i++)
       uv__free(cpu_infos[i].model);
   }

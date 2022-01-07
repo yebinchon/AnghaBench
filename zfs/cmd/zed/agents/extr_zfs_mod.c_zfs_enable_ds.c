@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  uap_zhp; } ;
-typedef  TYPE_1__ unavailpool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (TYPE_1__*) ; 
- int /*<<< orphan*/  zpool_close (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  zpool_enable_datasets (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int uap_zhp; } ;
+typedef TYPE_1__ unavailpool_t ;
+
+
+ int free (TYPE_1__*) ;
+ int zpool_close (int ) ;
+ int zpool_enable_datasets (int ,int *,int ) ;
 
 void
 zfs_enable_ds(void *arg)
 {
-	unavailpool_t *pool = (unavailpool_t *)arg;
+ unavailpool_t *pool = (unavailpool_t *)arg;
 
-	(void) zpool_enable_datasets(pool->uap_zhp, NULL, 0);
-	zpool_close(pool->uap_zhp);
-	free(pool);
+ (void) zpool_enable_datasets(pool->uap_zhp, ((void*)0), 0);
+ zpool_close(pool->uap_zhp);
+ free(pool);
 }

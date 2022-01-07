@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  str_val; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int str_val; } ;
 struct team_gsetter_ctx {TYPE_1__ data; } ;
 struct team {int dummy; } ;
-struct lb_priv {int /*<<< orphan*/  select_tx_port_func; } ;
-typedef  int /*<<< orphan*/  lb_select_tx_port_func_t ;
+struct lb_priv {int select_tx_port_func; } ;
+typedef int lb_select_tx_port_func_t ;
 
-/* Variables and functions */
- int EINVAL ; 
- struct lb_priv* get_lb_priv (struct team*) ; 
- int /*<<< orphan*/ * lb_select_tx_port_get_func (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rcu_assign_pointer (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int EINVAL ;
+ struct lb_priv* get_lb_priv (struct team*) ;
+ int * lb_select_tx_port_get_func (int ) ;
+ int rcu_assign_pointer (int ,int *) ;
 
 __attribute__((used)) static int lb_tx_method_set(struct team *team, struct team_gsetter_ctx *ctx)
 {
-	struct lb_priv *lb_priv = get_lb_priv(team);
-	lb_select_tx_port_func_t *func;
+ struct lb_priv *lb_priv = get_lb_priv(team);
+ lb_select_tx_port_func_t *func;
 
-	func = lb_select_tx_port_get_func(ctx->data.str_val);
-	if (!func)
-		return -EINVAL;
-	rcu_assign_pointer(lb_priv->select_tx_port_func, func);
-	return 0;
+ func = lb_select_tx_port_get_func(ctx->data.str_val);
+ if (!func)
+  return -EINVAL;
+ rcu_assign_pointer(lb_priv->select_tx_port_func, func);
+ return 0;
 }

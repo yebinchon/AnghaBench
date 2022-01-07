@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  dump_counts (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * map_fd ; 
- int /*<<< orphan*/  printf (char*) ; 
+ int dump_counts (int ) ;
+ int * map_fd ;
+ int printf (char*) ;
 
 __attribute__((used)) static void dump_all_counts(void)
 {
-	printf("Read 'Class : count'\n");
-	dump_counts(map_fd[0]);
-	printf("Write 'Class : count'\n");
-	dump_counts(map_fd[1]);
+ printf("Read 'Class : count'\n");
+ dump_counts(map_fd[0]);
+ printf("Write 'Class : count'\n");
+ dump_counts(map_fd[1]);
 }

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ box; scalar_t__ icon; scalar_t__ textbox; } ;
-typedef  TYPE_1__ _listview_row ;
-typedef  int /*<<< orphan*/  TextBoxFontType ;
+typedef TYPE_1__ _listview_row ;
+typedef int TextBoxFontType ;
 
-/* Variables and functions */
- int /*<<< orphan*/  WIDGET (scalar_t__) ; 
- int /*<<< orphan*/  listview_set_style (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  widget_queue_redraw (int /*<<< orphan*/ ) ; 
+
+ int WIDGET (scalar_t__) ;
+ int listview_set_style (int ,int ) ;
+ int widget_queue_redraw (int ) ;
 
 __attribute__((used)) static void listview_set_state ( _listview_row r, TextBoxFontType type )
 {
@@ -27,5 +27,5 @@ __attribute__((used)) static void listview_set_state ( _listview_row r, TextBoxF
     if ( r.icon ) {
         listview_set_style ( WIDGET(r.icon), type);
     }
-    widget_queue_redraw ( WIDGET( r.box  ) );
+    widget_queue_redraw ( WIDGET( r.box ) );
 }

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  hb_value_t ;
-typedef  int /*<<< orphan*/  hb_handle_t ;
-typedef  int /*<<< orphan*/  hb_dict_t ;
 
-/* Variables and functions */
- scalar_t__ HB_VALUE_TYPE_ARRAY ; 
- scalar_t__ HB_VALUE_TYPE_DICT ; 
- int RunQueueJob (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ die ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char const*) ; 
- int /*<<< orphan*/  hb_dict_get (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/ * hb_value_array_get (int /*<<< orphan*/ *,int) ; 
- int hb_value_array_len (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * hb_value_read_json (char const*) ; 
- scalar_t__ hb_value_type (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stderr ; 
+
+
+
+typedef int hb_value_t ;
+typedef int hb_handle_t ;
+typedef int hb_dict_t ;
+
+
+ scalar_t__ HB_VALUE_TYPE_ARRAY ;
+ scalar_t__ HB_VALUE_TYPE_DICT ;
+ int RunQueueJob (int *,int ) ;
+ scalar_t__ die ;
+ int fprintf (int ,char*,char const*) ;
+ int hb_dict_get (int *,char*) ;
+ int * hb_value_array_get (int *,int) ;
+ int hb_value_array_len (int *) ;
+ int * hb_value_read_json (char const*) ;
+ scalar_t__ hb_value_type (int *) ;
+ int stderr ;
 
 int RunQueue(hb_handle_t *h, const char *queue_import_name)
 {

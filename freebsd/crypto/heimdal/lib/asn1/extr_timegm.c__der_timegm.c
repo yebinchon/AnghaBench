@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int time_t ;
+
+
+
+
+typedef int time_t ;
 struct tm {int tm_year; int tm_mon; int tm_mday; int tm_hour; int tm_min; int tm_sec; } ;
 
-/* Variables and functions */
- int ASN1_MAX_YEAR ; 
- size_t is_leap (int) ; 
- scalar_t__** ndays ; 
+
+ int ASN1_MAX_YEAR ;
+ size_t is_leap (int) ;
+ scalar_t__** ndays ;
 
 time_t
 _der_timegm (struct tm *tm)
@@ -24,9 +24,9 @@ _der_timegm (struct tm *tm)
   time_t res = 0;
   int i;
 
-  /*
-   * See comment in _der_gmtime
-   */
+
+
+
   if (tm->tm_year > ASN1_MAX_YEAR)
       return 0;
 

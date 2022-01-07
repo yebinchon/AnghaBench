@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct fotg210_hcd {int /*<<< orphan*/  debug_dir; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  debugfs_remove_recursive (int /*<<< orphan*/ ) ; 
+
+
+
+struct fotg210_hcd {int debug_dir; } ;
+
+
+ int debugfs_remove_recursive (int ) ;
 
 __attribute__((used)) static inline void remove_debug_files(struct fotg210_hcd *fotg210)
 {
-	debugfs_remove_recursive(fotg210->debug_dir);
+ debugfs_remove_recursive(fotg210->debug_dir);
 }

@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct pci_device_id {int dummy; } ;
-struct pci_dev {int /*<<< orphan*/  dev; TYPE_1__* resource; int /*<<< orphan*/  irq; } ;
+struct pci_dev {int dev; TYPE_1__* resource; int irq; } ;
 struct net_device {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/  start; } ;
+struct TYPE_2__ {int start; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ATMEL_FW_TYPE_506 ; 
- int ENODEV ; 
- struct net_device* init_atmel_card (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pci_disable_device (struct pci_dev*) ; 
- scalar_t__ pci_enable_device (struct pci_dev*) ; 
- int /*<<< orphan*/  pci_set_drvdata (struct pci_dev*,struct net_device*) ; 
- int /*<<< orphan*/  pci_set_master (struct pci_dev*) ; 
+
+ int ATMEL_FW_TYPE_506 ;
+ int ENODEV ;
+ struct net_device* init_atmel_card (int ,int ,int ,int *,int *,int *) ;
+ int pci_disable_device (struct pci_dev*) ;
+ scalar_t__ pci_enable_device (struct pci_dev*) ;
+ int pci_set_drvdata (struct pci_dev*,struct net_device*) ;
+ int pci_set_master (struct pci_dev*) ;
 
 __attribute__((used)) static int atmel_pci_probe(struct pci_dev *pdev,
-				     const struct pci_device_id *pent)
+         const struct pci_device_id *pent)
 {
-	struct net_device *dev;
+ struct net_device *dev;
 
-	if (pci_enable_device(pdev))
-		return -ENODEV;
+ if (pci_enable_device(pdev))
+  return -ENODEV;
 
-	pci_set_master(pdev);
+ pci_set_master(pdev);
 
-	dev = init_atmel_card(pdev->irq, pdev->resource[1].start,
-			      ATMEL_FW_TYPE_506,
-			      &pdev->dev, NULL, NULL);
-	if (!dev) {
-		pci_disable_device(pdev);
-		return -ENODEV;
-	}
+ dev = init_atmel_card(pdev->irq, pdev->resource[1].start,
+         ATMEL_FW_TYPE_506,
+         &pdev->dev, ((void*)0), ((void*)0));
+ if (!dev) {
+  pci_disable_device(pdev);
+  return -ENODEV;
+ }
 
-	pci_set_drvdata(pdev, dev);
-	return 0;
+ pci_set_drvdata(pdev, dev);
+ return 0;
 }

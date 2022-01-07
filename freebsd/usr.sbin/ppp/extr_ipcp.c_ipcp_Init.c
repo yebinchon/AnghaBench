@@ -1,63 +1,63 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_7__ ;
-typedef  struct TYPE_13__   TYPE_6__ ;
-typedef  struct TYPE_12__   TYPE_5__ ;
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_14__ TYPE_7__ ;
+typedef struct TYPE_13__ TYPE_6__ ;
+typedef struct TYPE_12__ TYPE_5__ ;
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct link {int dummy; } ;
-struct TYPE_14__ {int writable; int /*<<< orphan*/ * resolv_nons; int /*<<< orphan*/ * resolv; } ;
-struct TYPE_12__ {int slotcomp; int neg; int /*<<< orphan*/  slots; } ;
-struct TYPE_11__ {void* maxtrm; void* maxreq; int /*<<< orphan*/  timeout; } ;
+struct TYPE_14__ {int writable; int * resolv_nons; int * resolv; } ;
+struct TYPE_12__ {int slotcomp; int neg; int slots; } ;
+struct TYPE_11__ {void* maxtrm; void* maxreq; int timeout; } ;
 struct TYPE_10__ {TYPE_2__* nbns; scalar_t__ dns_neg; TYPE_1__* dns; } ;
 struct in_addr {void* s_addr; } ;
-struct TYPE_13__ {TYPE_5__ vj; TYPE_4__ fsm; TYPE_3__ ns; scalar_t__ HaveTriggerAddress; int /*<<< orphan*/  peer_list; struct in_addr netmask; int /*<<< orphan*/  peer_range; int /*<<< orphan*/  my_range; } ;
-struct ipcp {int /*<<< orphan*/ * Queue; int /*<<< orphan*/  throughput; TYPE_7__ ns; int /*<<< orphan*/  vj; TYPE_6__ cfg; int /*<<< orphan*/  fsm; } ;
-struct hostent {scalar_t__ h_addrtype; int h_length; int /*<<< orphan*/  h_addr; } ;
+struct TYPE_13__ {TYPE_5__ vj; TYPE_4__ fsm; TYPE_3__ ns; scalar_t__ HaveTriggerAddress; int peer_list; struct in_addr netmask; int peer_range; int my_range; } ;
+struct ipcp {int * Queue; int throughput; TYPE_7__ ns; int vj; TYPE_6__ cfg; int fsm; } ;
+struct hostent {scalar_t__ h_addrtype; int h_length; int h_addr; } ;
 struct fsm_parent {int dummy; } ;
 struct bundle {int dummy; } ;
 struct TYPE_9__ {void* s_addr; } ;
 struct TYPE_8__ {void* s_addr; } ;
 
-/* Variables and functions */
- scalar_t__ AF_INET ; 
- int /*<<< orphan*/  DEF_FSMRETRY ; 
- void* DEF_FSMTRIES ; 
- int /*<<< orphan*/  DEF_VJ_STATES ; 
- void* INADDR_ANY ; 
- int /*<<< orphan*/  INADDR_LOOPBACK ; 
- void* INADDR_NONE ; 
- int /*<<< orphan*/  IPCP_MAXCODE ; 
- int /*<<< orphan*/  LogIPCP ; 
- int MAXHOSTNAMELEN ; 
- int NEG_ACCEPTED ; 
- int NEG_ENABLED ; 
- int /*<<< orphan*/  PROTO_IPCP ; 
- int /*<<< orphan*/  SAMPLE_PERIOD ; 
- int /*<<< orphan*/  fsm_Init (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct bundle*,struct link*,struct fsm_parent const*,int /*<<< orphan*/ *,char const* const*) ; 
- struct hostent* gethostbyname (char*) ; 
- scalar_t__ gethostname (char*,int) ; 
- void* htonl (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ipcp_Callbacks ; 
- int /*<<< orphan*/  ipcp_LoadDNS (struct ipcp*) ; 
- int /*<<< orphan*/  ipcp_Setup (struct ipcp*,void*) ; 
- int /*<<< orphan*/  iplist_setsrc (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  memcpy (void**,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,char,int) ; 
- int /*<<< orphan*/  ncprange_setip4 (int /*<<< orphan*/ *,struct in_addr,struct in_addr) ; 
- int /*<<< orphan*/  throughput_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ AF_INET ;
+ int DEF_FSMRETRY ;
+ void* DEF_FSMTRIES ;
+ int DEF_VJ_STATES ;
+ void* INADDR_ANY ;
+ int INADDR_LOOPBACK ;
+ void* INADDR_NONE ;
+ int IPCP_MAXCODE ;
+ int LogIPCP ;
+ int MAXHOSTNAMELEN ;
+ int NEG_ACCEPTED ;
+ int NEG_ENABLED ;
+ int PROTO_IPCP ;
+ int SAMPLE_PERIOD ;
+ int fsm_Init (int *,char*,int ,int,int ,int ,struct bundle*,struct link*,struct fsm_parent const*,int *,char const* const*) ;
+ struct hostent* gethostbyname (char*) ;
+ scalar_t__ gethostname (char*,int) ;
+ void* htonl (int ) ;
+ int ipcp_Callbacks ;
+ int ipcp_LoadDNS (struct ipcp*) ;
+ int ipcp_Setup (struct ipcp*,void*) ;
+ int iplist_setsrc (int *,char*) ;
+ int memcpy (void**,int ,int) ;
+ int memset (int *,char,int) ;
+ int ncprange_setip4 (int *,struct in_addr,struct in_addr) ;
+ int throughput_init (int *,int ) ;
 
 void
 ipcp_Init(struct ipcp *ipcp, struct bundle *bundle, struct link *l,
@@ -102,8 +102,8 @@ ipcp_Init(struct ipcp *ipcp, struct bundle *bundle, struct link *l,
 
   memset(&ipcp->vj, '\0', sizeof ipcp->vj);
 
-  ipcp->ns.resolv = NULL;
-  ipcp->ns.resolv_nons = NULL;
+  ipcp->ns.resolv = ((void*)0);
+  ipcp->ns.resolv_nons = ((void*)0);
   ipcp->ns.writable = 1;
   ipcp_LoadDNS(ipcp);
 

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct sockaddr {int dummy; } ;
-typedef  int /*<<< orphan*/  socklen_t ;
+typedef int socklen_t ;
 struct TYPE_5__ {TYPE_1__* conn; } ;
-typedef  TYPE_2__ lwIP_sock ;
-struct TYPE_4__ {scalar_t__ state; int /*<<< orphan*/  readbuf; } ;
+typedef TYPE_2__ lwIP_sock ;
+struct TYPE_4__ {scalar_t__ state; int readbuf; } ;
 
-/* Variables and functions */
- scalar_t__ NETCONN_STATE_ESTABLISHED ; 
- TYPE_2__* get_socket (int) ; 
- int /*<<< orphan*/  lwIP_ASSERT (void*) ; 
- size_t ringbuf_bytes_used (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ringbuf_memcpy_from (void*,int /*<<< orphan*/ ,size_t) ; 
+
+ scalar_t__ NETCONN_STATE_ESTABLISHED ;
+ TYPE_2__* get_socket (int) ;
+ int lwIP_ASSERT (void*) ;
+ size_t ringbuf_bytes_used (int ) ;
+ int ringbuf_memcpy_from (void*,int ,size_t) ;
 
 int lwip_recvfrom(int s, void *mem, size_t len, int flags, struct sockaddr *from, socklen_t *fromlen)
 {
-    lwIP_sock *sock = NULL;
+    lwIP_sock *sock = ((void*)0);
     size_t bytes_used = 0;
     int is_tcp = 0;
     lwIP_ASSERT(mem);
@@ -38,7 +38,7 @@ int lwip_recvfrom(int s, void *mem, size_t len, int flags, struct sockaddr *from
         return -1;
     }
 
-    if (sock->conn != NULL)
+    if (sock->conn != ((void*)0))
     {
         if (sock->conn->state == NETCONN_STATE_ESTABLISHED)
         {

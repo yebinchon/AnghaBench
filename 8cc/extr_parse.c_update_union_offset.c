@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Vector ;
-struct TYPE_4__ {scalar_t__ kind; scalar_t__ bitsize; scalar_t__ bitoff; scalar_t__ offset; int /*<<< orphan*/  align; int /*<<< orphan*/  size; } ;
-typedef  TYPE_1__ Type ;
-typedef  int /*<<< orphan*/  Dict ;
 
-/* Variables and functions */
- scalar_t__ KIND_STRUCT ; 
- int MAX (int,int /*<<< orphan*/ ) ; 
- int compute_padding (int,int) ; 
- int /*<<< orphan*/  dict_put (int /*<<< orphan*/ *,char*,TYPE_1__*) ; 
- int /*<<< orphan*/ * make_dict () ; 
- int /*<<< orphan*/  squash_unnamed_struct (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ ) ; 
- void** vec_get (int /*<<< orphan*/ *,int) ; 
- int vec_len (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int Vector ;
+struct TYPE_4__ {scalar_t__ kind; scalar_t__ bitsize; scalar_t__ bitoff; scalar_t__ offset; int align; int size; } ;
+typedef TYPE_1__ Type ;
+typedef int Dict ;
+
+
+ scalar_t__ KIND_STRUCT ;
+ int MAX (int,int ) ;
+ int compute_padding (int,int) ;
+ int dict_put (int *,char*,TYPE_1__*) ;
+ int * make_dict () ;
+ int squash_unnamed_struct (int *,TYPE_1__*,int ) ;
+ void** vec_get (int *,int) ;
+ int vec_len (int *) ;
 
 __attribute__((used)) static Dict *update_union_offset(int *rsize, int *align, Vector *fields) {
     int maxsize = 0;
@@ -35,7 +35,7 @@ __attribute__((used)) static Dict *update_union_offset(int *rsize, int *align, V
         Type *fieldtype = pair[1];
         maxsize = MAX(maxsize, fieldtype->size);
         *align = MAX(*align, fieldtype->align);
-        if (name == NULL && fieldtype->kind == KIND_STRUCT) {
+        if (name == ((void*)0) && fieldtype->kind == KIND_STRUCT) {
             squash_unnamed_struct(r, fieldtype, 0);
             continue;
         }

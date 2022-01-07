@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct bstp_state {int /*<<< orphan*/  (* bs_rtage_cb ) (int /*<<< orphan*/ ,int) ;} ;
-struct bstp_port {int bp_protover; int bp_desg_fdelay; int bp_active; scalar_t__ bp_fdbflush; int /*<<< orphan*/  bp_ifp; struct bstp_state* bp_bs; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BSTP_LOCK (struct bstp_state*) ; 
-#define  BSTP_PROTO_RSTP 129 
-#define  BSTP_PROTO_STP 128 
- int BSTP_TICK_VAL ; 
- int /*<<< orphan*/  BSTP_UNLOCK (struct bstp_state*) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,int) ; 
+
+
+
+struct bstp_state {int (* bs_rtage_cb ) (int ,int) ;} ;
+struct bstp_port {int bp_protover; int bp_desg_fdelay; int bp_active; scalar_t__ bp_fdbflush; int bp_ifp; struct bstp_state* bp_bs; } ;
+
+
+ int BSTP_LOCK (struct bstp_state*) ;
+
+
+ int BSTP_TICK_VAL ;
+ int BSTP_UNLOCK (struct bstp_state*) ;
+ int stub1 (int ,int) ;
 
 __attribute__((used)) static void
 bstp_notify_rtage(void *arg, int pending)
 {
-	struct bstp_port *bp = (struct bstp_port *)arg;
-	struct bstp_state *bs = bp->bp_bs;
-	int age = 0;
+ struct bstp_port *bp = (struct bstp_port *)arg;
+ struct bstp_state *bs = bp->bp_bs;
+ int age = 0;
 
-	BSTP_LOCK(bs);
-	switch (bp->bp_protover) {
-		case BSTP_PROTO_STP:
-			/* convert to seconds */
-			age = bp->bp_desg_fdelay / BSTP_TICK_VAL;
-			break;
+ BSTP_LOCK(bs);
+ switch (bp->bp_protover) {
+  case 128:
 
-		case BSTP_PROTO_RSTP:
-			age = 0;
-			break;
-	}
-	BSTP_UNLOCK(bs);
+   age = bp->bp_desg_fdelay / BSTP_TICK_VAL;
+   break;
 
-	if (bp->bp_active == 1 && bs->bs_rtage_cb != NULL)
-		(*bs->bs_rtage_cb)(bp->bp_ifp, age);
+  case 129:
+   age = 0;
+   break;
+ }
+ BSTP_UNLOCK(bs);
 
-	/* flush is complete */
-	BSTP_LOCK(bs);
-	bp->bp_fdbflush = 0;
-	BSTP_UNLOCK(bs);
+ if (bp->bp_active == 1 && bs->bs_rtage_cb != ((void*)0))
+  (*bs->bs_rtage_cb)(bp->bp_ifp, age);
+
+
+ BSTP_LOCK(bs);
+ bp->bp_fdbflush = 0;
+ BSTP_UNLOCK(bs);
 }

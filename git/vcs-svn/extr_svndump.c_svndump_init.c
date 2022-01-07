@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  REPORT_FILENO ; 
- scalar_t__ buffer_init (int /*<<< orphan*/ *,char const*) ; 
- int error_errno (char*,char const*) ; 
- int /*<<< orphan*/  init (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  input ; 
+ int REPORT_FILENO ;
+ scalar_t__ buffer_init (int *,char const*) ;
+ int error_errno (char*,char const*) ;
+ int init (int ) ;
+ int input ;
 
 int svndump_init(const char *filename)
 {
-	if (buffer_init(&input, filename))
-		return error_errno("cannot open %s", filename ? filename : "NULL");
-	init(REPORT_FILENO);
-	return 0;
+ if (buffer_init(&input, filename))
+  return error_errno("cannot open %s", filename ? filename : "NULL");
+ init(REPORT_FILENO);
+ return 0;
 }

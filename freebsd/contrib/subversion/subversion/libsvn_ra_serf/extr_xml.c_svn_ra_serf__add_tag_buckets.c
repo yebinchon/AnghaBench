@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  serf_bucket_t ;
-typedef  int /*<<< orphan*/  serf_bucket_alloc_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_VA_NULL ; 
- int /*<<< orphan*/  strlen (char const*) ; 
- int /*<<< orphan*/  svn_ra_serf__add_cdata_len_buckets (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_ra_serf__add_close_tag_buckets (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  svn_ra_serf__add_open_tag_buckets (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int serf_bucket_t ;
+typedef int serf_bucket_alloc_t ;
+
+
+ int SVN_VA_NULL ;
+ int strlen (char const*) ;
+ int svn_ra_serf__add_cdata_len_buckets (int *,int *,char const*,int ) ;
+ int svn_ra_serf__add_close_tag_buckets (int *,int *,char const*) ;
+ int svn_ra_serf__add_open_tag_buckets (int *,int *,char const*,int ) ;
 
 void svn_ra_serf__add_tag_buckets(serf_bucket_t *agg_bucket, const char *tag,
                                   const char *value,

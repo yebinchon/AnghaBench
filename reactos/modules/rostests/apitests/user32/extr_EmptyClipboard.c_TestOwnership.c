@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * HWND ;
-typedef  int BOOL ;
 
-/* Variables and functions */
- int CloseClipboard () ; 
- int /*<<< orphan*/ * CreateWindowW (char*,char*,int /*<<< orphan*/ ,int,int,int,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DestroyWindow (int /*<<< orphan*/ *) ; 
- int EmptyClipboard () ; 
- int /*<<< orphan*/ * GetClipboardOwner () ; 
- int OpenClipboard (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  WS_OVERLAPPEDWINDOW ; 
- int /*<<< orphan*/  ok (int,char*) ; 
+
+
+
+typedef int * HWND ;
+typedef int BOOL ;
+
+
+ int CloseClipboard () ;
+ int * CreateWindowW (char*,char*,int ,int,int,int,int,int *,int *,int ,int *) ;
+ int DestroyWindow (int *) ;
+ int EmptyClipboard () ;
+ int * GetClipboardOwner () ;
+ int OpenClipboard (int *) ;
+ int WS_OVERLAPPEDWINDOW ;
+ int ok (int,char*) ;
 
 void TestOwnership()
 {
     BOOL ret;
     HWND hWnd, hWndClipOwner;
 
-    ret = OpenClipboard(NULL);
+    ret = OpenClipboard(((void*)0));
     ok (ret, "OpenClipboard failed\n");
 
     ret = EmptyClipboard();
@@ -38,16 +38,16 @@ void TestOwnership()
     ok (ret, "CloseClipboard failed\n");
 
     hWndClipOwner = GetClipboardOwner();
-    ok (hWndClipOwner == NULL, "Expected NULL owner\n");
+    ok (hWndClipOwner == ((void*)0), "Expected NULL owner\n");
 
-    hWnd = CreateWindowW(L"static", L"static", WS_OVERLAPPEDWINDOW, 20, 20, 300, 300, NULL, NULL, 0, NULL);
+    hWnd = CreateWindowW(L"static", L"static", WS_OVERLAPPEDWINDOW, 20, 20, 300, 300, ((void*)0), ((void*)0), 0, ((void*)0));
     ok (hWnd != 0 , "CreateWindowW failed\n");
 
     ret = OpenClipboard(hWnd);
     ok (ret, "OpenClipboard failed\n");
 
     hWndClipOwner = GetClipboardOwner();
-    ok (hWndClipOwner == NULL, "Expected NULL owner\n");
+    ok (hWndClipOwner == ((void*)0), "Expected NULL owner\n");
 
     ret = EmptyClipboard();
     ok (ret, "EmptyClipboard failed\n");

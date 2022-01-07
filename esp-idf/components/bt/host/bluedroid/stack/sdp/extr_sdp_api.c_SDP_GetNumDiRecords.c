@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tSDP_DISC_REC ;
-typedef  int /*<<< orphan*/  tSDP_DISCOVERY_DB ;
-typedef  scalar_t__ UINT8 ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * SDP_FindServiceInDb (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  UUID_SERVCLASS_PNP_INFORMATION ; 
+
+
+
+typedef int tSDP_DISC_REC ;
+typedef int tSDP_DISCOVERY_DB ;
+typedef scalar_t__ UINT8 ;
+
+
+ int * SDP_FindServiceInDb (int *,int ,int *) ;
+ int UUID_SERVCLASS_PNP_INFORMATION ;
 
 UINT8 SDP_GetNumDiRecords( tSDP_DISCOVERY_DB *p_db )
 {
-#if SDP_CLIENT_ENABLED == TRUE
-    UINT8   num_records = 0;
-    tSDP_DISC_REC *p_curr_record = NULL;
+
+    UINT8 num_records = 0;
+    tSDP_DISC_REC *p_curr_record = ((void*)0);
 
     do {
         p_curr_record = SDP_FindServiceInDb( p_db, UUID_SERVCLASS_PNP_INFORMATION,
@@ -33,7 +33,7 @@ UINT8 SDP_GetNumDiRecords( tSDP_DISCOVERY_DB *p_db )
     } while ( p_curr_record );
 
     return num_records;
-#else
-    return 0;
-#endif
+
+
+
 }

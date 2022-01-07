@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int usec_t ;
-typedef  int /*<<< orphan*/  procfile ;
-typedef  unsigned long long collected_number ;
+
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int usec_t ;
+typedef int procfile ;
+typedef unsigned long long collected_number ;
 struct TYPE_7__ {int update_every; } ;
-typedef  TYPE_1__ RRDSET ;
-typedef  int /*<<< orphan*/  RRDDIM ;
+typedef TYPE_1__ RRDSET ;
+typedef int RRDDIM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CONFIG_SECTION_PLUGIN_PROC_LOADAVG ; 
- int /*<<< orphan*/  FILENAME_MAX ; 
- int MIN_LOADAVG_UPDATE_EVERY ; 
- int /*<<< orphan*/  NETDATA_CHART_PRIO_SYSTEM_ACTIVE_PROCESSES ; 
- int /*<<< orphan*/  NETDATA_CHART_PRIO_SYSTEM_LOAD ; 
- int /*<<< orphan*/  PLUGIN_PROC_MODULE_LOADAVG_NAME ; 
- int /*<<< orphan*/  PLUGIN_PROC_NAME ; 
- int /*<<< orphan*/  PROCFILE_FLAG_DEFAULT ; 
- int /*<<< orphan*/  RRDSET_TYPE_LINE ; 
- int /*<<< orphan*/  RRD_ALGORITHM_ABSOLUTE ; 
- int USEC_PER_SEC ; 
- int /*<<< orphan*/  config_get (int /*<<< orphan*/ ,char*,char*) ; 
- int config_get_boolean (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  error (char*) ; 
- scalar_t__ likely (int) ; 
- int /*<<< orphan*/  netdata_configured_host_prefix ; 
- int procfile_lines (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  procfile_lineword (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int procfile_linewords (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * procfile_open (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * procfile_readall (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * rrddim_add (TYPE_1__*,char*,int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rrddim_set_by_pointer (TYPE_1__*,int /*<<< orphan*/ *,unsigned long long) ; 
- TYPE_1__* rrdset_create_localhost (char*,char*,int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,char*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rrdset_done (TYPE_1__*) ; 
- int /*<<< orphan*/  rrdset_next (TYPE_1__*) ; 
- int /*<<< orphan*/  snprintfz (char*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,char*) ; 
- unsigned long long str2ull (int /*<<< orphan*/ ) ; 
- double strtod (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ unlikely (int) ; 
+
+ int CONFIG_SECTION_PLUGIN_PROC_LOADAVG ;
+ int FILENAME_MAX ;
+ int MIN_LOADAVG_UPDATE_EVERY ;
+ int NETDATA_CHART_PRIO_SYSTEM_ACTIVE_PROCESSES ;
+ int NETDATA_CHART_PRIO_SYSTEM_LOAD ;
+ int PLUGIN_PROC_MODULE_LOADAVG_NAME ;
+ int PLUGIN_PROC_NAME ;
+ int PROCFILE_FLAG_DEFAULT ;
+ int RRDSET_TYPE_LINE ;
+ int RRD_ALGORITHM_ABSOLUTE ;
+ int USEC_PER_SEC ;
+ int config_get (int ,char*,char*) ;
+ int config_get_boolean (int ,char*,int) ;
+ int error (char*) ;
+ scalar_t__ likely (int) ;
+ int netdata_configured_host_prefix ;
+ int procfile_lines (int *) ;
+ int procfile_lineword (int *,int ,int) ;
+ int procfile_linewords (int *,int ) ;
+ int * procfile_open (int ,char*,int ) ;
+ int * procfile_readall (int *) ;
+ int * rrddim_add (TYPE_1__*,char*,int *,int,int,int ) ;
+ int rrddim_set_by_pointer (TYPE_1__*,int *,unsigned long long) ;
+ TYPE_1__* rrdset_create_localhost (char*,char*,int *,char*,int *,char*,char*,int ,int ,int ,int,int ) ;
+ int rrdset_done (TYPE_1__*) ;
+ int rrdset_next (TYPE_1__*) ;
+ int snprintfz (char*,int ,char*,int ,char*) ;
+ unsigned long long str2ull (int ) ;
+ double strtod (int ,int *) ;
+ scalar_t__ unlikely (int) ;
 
 int do_proc_loadavg(int update_every, usec_t dt) {
-    static procfile *ff = NULL;
+    static procfile *ff = ((void*)0);
     static int do_loadavg = -1, do_all_processes = -1;
     static usec_t next_loadavg_dt = 0;
 
@@ -66,11 +66,11 @@ int do_proc_loadavg(int update_every, usec_t dt) {
 
     ff = procfile_readall(ff);
     if(unlikely(!ff))
-        return 0; // we return 0, so that we will retry to open it next time
+        return 0;
 
     if(unlikely(do_loadavg == -1)) {
-        do_loadavg          = config_get_boolean(CONFIG_SECTION_PLUGIN_PROC_LOADAVG, "enable load average", 1);
-        do_all_processes    = config_get_boolean(CONFIG_SECTION_PLUGIN_PROC_LOADAVG, "enable total processes", 1);
+        do_loadavg = config_get_boolean(CONFIG_SECTION_PLUGIN_PROC_LOADAVG, "enable load average", 1);
+        do_all_processes = config_get_boolean(CONFIG_SECTION_PLUGIN_PROC_LOADAVG, "enable total processes", 1);
     }
 
     if(unlikely(procfile_lines(ff) < 1)) {
@@ -82,29 +82,29 @@ int do_proc_loadavg(int update_every, usec_t dt) {
         return 1;
     }
 
-    double load1 = strtod(procfile_lineword(ff, 0, 0), NULL);
-    double load5 = strtod(procfile_lineword(ff, 0, 1), NULL);
-    double load15 = strtod(procfile_lineword(ff, 0, 2), NULL);
-
-    //unsigned long long running_processes  = str2ull(procfile_lineword(ff, 0, 3));
-    unsigned long long active_processes     = str2ull(procfile_lineword(ff, 0, 4));
-    //unsigned long long next_pid           = str2ull(procfile_lineword(ff, 0, 5));
+    double load1 = strtod(procfile_lineword(ff, 0, 0), ((void*)0));
+    double load5 = strtod(procfile_lineword(ff, 0, 1), ((void*)0));
+    double load15 = strtod(procfile_lineword(ff, 0, 2), ((void*)0));
 
 
-    // --------------------------------------------------------------------
+    unsigned long long active_processes = str2ull(procfile_lineword(ff, 0, 4));
+
+
+
+
 
     if(next_loadavg_dt <= dt) {
         if(likely(do_loadavg)) {
-            static RRDSET *load_chart = NULL;
-            static RRDDIM *rd_load1 = NULL, *rd_load5 = NULL, *rd_load15 = NULL;
+            static RRDSET *load_chart = ((void*)0);
+            static RRDDIM *rd_load1 = ((void*)0), *rd_load5 = ((void*)0), *rd_load15 = ((void*)0);
 
             if(unlikely(!load_chart)) {
                 load_chart = rrdset_create_localhost(
                         "system"
                         , "load"
-                        , NULL
+                        , ((void*)0)
                         , "load"
-                        , NULL
+                        , ((void*)0)
                         , "System Load Average"
                         , "load"
                         , PLUGIN_PROC_NAME
@@ -114,9 +114,9 @@ int do_proc_loadavg(int update_every, usec_t dt) {
                         , RRDSET_TYPE_LINE
                 );
 
-                rd_load1  = rrddim_add(load_chart, "load1",  NULL, 1, 1000, RRD_ALGORITHM_ABSOLUTE);
-                rd_load5  = rrddim_add(load_chart, "load5",  NULL, 1, 1000, RRD_ALGORITHM_ABSOLUTE);
-                rd_load15 = rrddim_add(load_chart, "load15", NULL, 1, 1000, RRD_ALGORITHM_ABSOLUTE);
+                rd_load1 = rrddim_add(load_chart, "load1", ((void*)0), 1, 1000, RRD_ALGORITHM_ABSOLUTE);
+                rd_load5 = rrddim_add(load_chart, "load5", ((void*)0), 1, 1000, RRD_ALGORITHM_ABSOLUTE);
+                rd_load15 = rrddim_add(load_chart, "load15", ((void*)0), 1, 1000, RRD_ALGORITHM_ABSOLUTE);
             }
             else
                 rrdset_next(load_chart);
@@ -128,23 +128,23 @@ int do_proc_loadavg(int update_every, usec_t dt) {
 
             next_loadavg_dt = load_chart->update_every * USEC_PER_SEC;
         }
-        else next_loadavg_dt =  MIN_LOADAVG_UPDATE_EVERY * USEC_PER_SEC;
+        else next_loadavg_dt = MIN_LOADAVG_UPDATE_EVERY * USEC_PER_SEC;
     }
     else next_loadavg_dt -= dt;
 
-    // --------------------------------------------------------------------
+
 
     if(likely(do_all_processes)) {
-        static RRDSET *processes_chart = NULL;
-        static RRDDIM *rd_active = NULL;
+        static RRDSET *processes_chart = ((void*)0);
+        static RRDDIM *rd_active = ((void*)0);
 
         if(unlikely(!processes_chart)) {
             processes_chart = rrdset_create_localhost(
                     "system"
                     , "active_processes"
-                    , NULL
+                    , ((void*)0)
                     , "processes"
-                    , NULL
+                    , ((void*)0)
                     , "System Active Processes"
                     , "processes"
                     , PLUGIN_PROC_NAME
@@ -154,7 +154,7 @@ int do_proc_loadavg(int update_every, usec_t dt) {
                     , RRDSET_TYPE_LINE
             );
 
-            rd_active = rrddim_add(processes_chart, "active", NULL, 1, 1, RRD_ALGORITHM_ABSOLUTE);
+            rd_active = rrddim_add(processes_chart, "active", ((void*)0), 1, 1, RRD_ALGORITHM_ABSOLUTE);
         }
         else rrdset_next(processes_chart);
 

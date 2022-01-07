@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int sign_id; int hash_id; int pkey_id; } ;
-typedef  TYPE_1__ nid_triple ;
+typedef TYPE_1__ nid_triple ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR_R_MALLOC_FAILURE ; 
- int /*<<< orphan*/  OBJ_F_OBJ_ADD_SIGID ; 
- int /*<<< orphan*/  OBJerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OPENSSL_free (TYPE_1__*) ; 
- TYPE_1__* OPENSSL_malloc (int) ; 
- int /*<<< orphan*/ * sig_app ; 
- int /*<<< orphan*/  sig_sk_cmp ; 
- int /*<<< orphan*/ * sigx_app ; 
- int /*<<< orphan*/  sigx_cmp ; 
- int /*<<< orphan*/ * sk_nid_triple_new (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sk_nid_triple_push (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  sk_nid_triple_sort (int /*<<< orphan*/ *) ; 
+
+ int ERR_R_MALLOC_FAILURE ;
+ int OBJ_F_OBJ_ADD_SIGID ;
+ int OBJerr (int ,int ) ;
+ int OPENSSL_free (TYPE_1__*) ;
+ TYPE_1__* OPENSSL_malloc (int) ;
+ int * sig_app ;
+ int sig_sk_cmp ;
+ int * sigx_app ;
+ int sigx_cmp ;
+ int * sk_nid_triple_new (int ) ;
+ int sk_nid_triple_push (int *,TYPE_1__*) ;
+ int sk_nid_triple_sort (int *) ;
 
 int OBJ_add_sigid(int signid, int dig_id, int pkey_id)
 {
     nid_triple *ntr;
-    if (sig_app == NULL)
+    if (sig_app == ((void*)0))
         sig_app = sk_nid_triple_new(sig_sk_cmp);
-    if (sig_app == NULL)
+    if (sig_app == ((void*)0))
         return 0;
-    if (sigx_app == NULL)
+    if (sigx_app == ((void*)0))
         sigx_app = sk_nid_triple_new(sigx_cmp);
-    if (sigx_app == NULL)
+    if (sigx_app == ((void*)0))
         return 0;
-    if ((ntr = OPENSSL_malloc(sizeof(*ntr))) == NULL) {
+    if ((ntr = OPENSSL_malloc(sizeof(*ntr))) == ((void*)0)) {
         OBJerr(OBJ_F_OBJ_ADD_SIGID, ERR_R_MALLOC_FAILURE);
         return 0;
     }

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
+
+
+
+
+typedef int u32 ;
 struct uasm_reloc {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  uasm_i_b (int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  uasm_r_mips_pc16 (struct uasm_reloc**,int /*<<< orphan*/ *,int) ; 
+
+ int uasm_i_b (int **,int ) ;
+ int uasm_r_mips_pc16 (struct uasm_reloc**,int *,int) ;
 
 void uasm_il_b(u32 **p, struct uasm_reloc **r, int lid)
 {
-	uasm_r_mips_pc16(r, *p, lid);
-	uasm_i_b(p, 0);
+ uasm_r_mips_pc16(r, *p, lid);
+ uasm_i_b(p, 0);
 }

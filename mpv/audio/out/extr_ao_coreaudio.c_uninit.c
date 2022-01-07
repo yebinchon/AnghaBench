@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {scalar_t__ mFormatID; } ;
-struct priv {TYPE_1__ original_asbd; int /*<<< orphan*/  original_asbd_stream; int /*<<< orphan*/  audio_unit; } ;
+struct priv {TYPE_1__ original_asbd; int original_asbd_stream; int audio_unit; } ;
 struct ao {struct priv* priv; } ;
-typedef  int /*<<< orphan*/  OSStatus ;
+typedef int OSStatus ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AudioComponentInstanceDispose (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AudioOutputUnitStop (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AudioUnitUninitialize (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CA_SET (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  CHECK_CA_WARN (char*) ; 
- int /*<<< orphan*/  kAudioStreamPropertyPhysicalFormat ; 
+
+ int AudioComponentInstanceDispose (int ) ;
+ int AudioOutputUnitStop (int ) ;
+ int AudioUnitUninitialize (int ) ;
+ int CA_SET (int ,int ,TYPE_1__*) ;
+ int CHECK_CA_WARN (char*) ;
+ int kAudioStreamPropertyPhysicalFormat ;
 
 __attribute__((used)) static void uninit(struct ao *ao)
 {

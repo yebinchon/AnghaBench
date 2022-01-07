@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {float ey; float fdx; float fx; float fdy; float sy; int direction; struct TYPE_4__* next; } ;
-typedef  TYPE_1__ stbtt__active_edge ;
+typedef TYPE_1__ stbtt__active_edge ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- float fabs (float) ; 
- int /*<<< orphan*/  stbtt__handle_clipped_edge (float*,int,TYPE_1__*,float,float,float,float) ; 
+
+ int assert (int) ;
+ float fabs (float) ;
+ int stbtt__handle_clipped_edge (float*,int,TYPE_1__*,float,float,float,float) ;
 
 __attribute__((used)) static void stbtt__fill_active_edges_new(float *scanline, float *scanline_fill,
       int len, stbtt__active_edge *e, float y_top)
@@ -26,9 +26,9 @@ __attribute__((used)) static void stbtt__fill_active_edges_new(float *scanline, 
 
    while (e)
    {
-      /* brute force every pixel */
 
-      /* compute intersection points with top & bottom */
+
+
       assert(e->ey >= y_top);
 
       if (e->fdx == 0) {
@@ -50,10 +50,10 @@ __attribute__((used)) static void stbtt__fill_active_edges_new(float *scanline, 
          float dy = e->fdy;
          assert(e->sy <= y_bottom && e->ey >= y_top);
 
-         /* compute endpoints of line segment clipped to this scanline (if the
-          * line segment starts on this scanline. x0 is the intersection of the
-          * line with y_top, but that may be off the line segment.
-          */
+
+
+
+
          if (e->sy > y_top) {
             x_top = x0 + dx * (e->sy - y_top);
             y0 = e->sy;
@@ -71,28 +71,28 @@ __attribute__((used)) static void stbtt__fill_active_edges_new(float *scanline, 
 
          if (x_top >= 0 && x_bottom >= 0 && x_top < len && x_bottom < len)
          {
-            /* from here on, we don't have to range check x values */
+
 
             if ((int) x_top == (int) x_bottom)
             {
-               /* simple case, only spans one pixel */
+
 
                float height;
                int x = (int) x_top;
                height = y1 - y0;
                assert(x >= 0 && x < len);
-               scanline[x] += e->direction * (1-((x_top - x) + (x_bottom-x))/2)  * height;
-               scanline_fill[x] += e->direction * height; /* everything right of this pixel is filled */
+               scanline[x] += e->direction * (1-((x_top - x) + (x_bottom-x))/2) * height;
+               scanline_fill[x] += e->direction * height;
             }
             else
             {
                int x,x1,x2;
                float y_crossing, step, sign, area;
 
-               /* covers 2+ pixels */
+
                if (x_top > x_bottom)
                {
-                  /* flip scanline vertically; signed area is the same */
+
                   float t;
                   y0 = y_bottom - (y0 - y_top);
                   y1 = y_bottom - (y1 - y_top);
@@ -111,13 +111,13 @@ __attribute__((used)) static void stbtt__fill_active_edges_new(float *scanline, 
 
                x1 = (int) x_top;
                x2 = (int) x_bottom;
-               /* compute intersection with y axis at x1+1 */
+
                y_crossing = (x1+1 - x0) * dy + y_top;
 
                sign = e->direction;
-               /* area of the rectangle covered from y0..y_crossing */
+
                area = sign * (y_crossing-y0);
-               /* area of the triangle (x_top,y0), (x+1,y0), (x+1,y_crossing) */
+
                scanline[x1] += area * (1-((x_top - x1)+(x1+1-x1))/2);
 
                step = sign * dy;
@@ -137,21 +137,21 @@ __attribute__((used)) static void stbtt__fill_active_edges_new(float *scanline, 
          }
          else
          {
-            /* if edge goes outside of box we're drawing, we require
-             * clipping logic. since this does not match the intended use
-             * of this library, we use a different, very slow brute
-             * force implementation
-             */
+
+
+
+
+
             int x;
 
             for (x=0; x < len; ++x)
             {
-               /* cases:
-                *
-                * there can be up to two intersections with the pixel. any intersection
-                * with left or right edges can be handled by splitting into two (or three)
-                * regions. intersections with top & bottom do not necessitate case-wise logic.
-                */
+
+
+
+
+
+
                float y0,y1;
                float y_cur = y_top, x_cur = x0;
 

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ opaque_t ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef scalar_t__ opaque_t ;
 struct TYPE_5__ {scalar_t__ al_refc; scalar_t__ al_mnt; } ;
-typedef  TYPE_1__ am_loc ;
+typedef TYPE_1__ am_loc ;
 
-/* Variables and functions */
- int /*<<< orphan*/  XLOG_ERROR ; 
- int /*<<< orphan*/  discard_loc (TYPE_1__*) ; 
- int /*<<< orphan*/  dlog (char*,TYPE_1__*) ; 
- int /*<<< orphan*/  free_mntfs (scalar_t__) ; 
- int /*<<< orphan*/  plog (int /*<<< orphan*/ ,char*,TYPE_1__*) ; 
+
+ int XLOG_ERROR ;
+ int discard_loc (TYPE_1__*) ;
+ int dlog (char*,TYPE_1__*) ;
+ int free_mntfs (scalar_t__) ;
+ int plog (int ,char*,TYPE_1__*) ;
 
 void
 free_loc(opaque_t arg)

@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  device_name ;
-typedef  int /*<<< orphan*/  attributes ;
-typedef  int /*<<< orphan*/  WCHAR ;
-struct TYPE_6__ {int Size; int /*<<< orphan*/  VersionNumber; int /*<<< orphan*/  ProductID; int /*<<< orphan*/  VendorID; } ;
-struct TYPE_5__ {int /*<<< orphan*/  Usage; int /*<<< orphan*/  UsagePage; } ;
-typedef  int /*<<< orphan*/  PHIDP_PREPARSED_DATA ;
-typedef  scalar_t__ NTSTATUS ;
-typedef  TYPE_1__ HIDP_CAPS ;
-typedef  TYPE_2__ HIDD_ATTRIBUTES ;
-typedef  int /*<<< orphan*/  HANDLE ;
-typedef  int BOOL ;
 
-/* Variables and functions */
- scalar_t__ GetLastError () ; 
- scalar_t__ HIDP_STATUS_SUCCESS ; 
- int HidD_FreePreparsedData (int /*<<< orphan*/ ) ; 
- int HidD_GetAttributes (int /*<<< orphan*/ ,TYPE_2__*) ; 
- int HidD_GetPreparsedData (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int HidD_GetProductString (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- scalar_t__ HidP_GetCaps (int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
- int /*<<< orphan*/  trace (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wine_dbgstr_w (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int device_name ;
+typedef int attributes ;
+typedef int WCHAR ;
+struct TYPE_6__ {int Size; int VersionNumber; int ProductID; int VendorID; } ;
+struct TYPE_5__ {int Usage; int UsagePage; } ;
+typedef int PHIDP_PREPARSED_DATA ;
+typedef scalar_t__ NTSTATUS ;
+typedef TYPE_1__ HIDP_CAPS ;
+typedef TYPE_2__ HIDD_ATTRIBUTES ;
+typedef int HANDLE ;
+typedef int BOOL ;
+
+
+ scalar_t__ GetLastError () ;
+ scalar_t__ HIDP_STATUS_SUCCESS ;
+ int HidD_FreePreparsedData (int ) ;
+ int HidD_GetAttributes (int ,TYPE_2__*) ;
+ int HidD_GetPreparsedData (int ,int *) ;
+ int HidD_GetProductString (int ,int *,int) ;
+ scalar_t__ HidP_GetCaps (int ,TYPE_1__*) ;
+ int ok (int,char*,scalar_t__) ;
+ int trace (char*,int ,int ,int ) ;
+ int wine_dbgstr_w (int *) ;
 
 __attribute__((used)) static void test_device_info(HANDLE device)
 {

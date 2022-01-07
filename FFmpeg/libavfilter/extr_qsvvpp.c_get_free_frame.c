@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {struct TYPE_5__* next; int /*<<< orphan*/  surface; } ;
-typedef  TYPE_1__ QSVFrame ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- TYPE_1__* av_mallocz (int) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {struct TYPE_5__* next; int surface; } ;
+typedef TYPE_1__ QSVFrame ;
+
+
+ int AV_LOG_ERROR ;
+ int av_log (int *,int ,char*) ;
+ TYPE_1__* av_mallocz (int) ;
 
 __attribute__((used)) static QSVFrame *get_free_frame(QSVFrame **list)
 {
@@ -31,11 +31,11 @@ __attribute__((used)) static QSVFrame *get_free_frame(QSVFrame **list)
     if (!out) {
         out = av_mallocz(sizeof(*out));
         if (!out) {
-            av_log(NULL, AV_LOG_ERROR, "Can't alloc new output frame.\n");
-            return NULL;
+            av_log(((void*)0), AV_LOG_ERROR, "Can't alloc new output frame.\n");
+            return ((void*)0);
         }
-        out->next  = *list;
-        *list      = out;
+        out->next = *list;
+        *list = out;
     }
 
     return out;

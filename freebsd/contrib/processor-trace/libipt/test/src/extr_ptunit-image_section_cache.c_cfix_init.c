@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct ptunit_result {int dummy; } ;
-struct iscache_fixture {int /*<<< orphan*/  iscache; } ;
+struct iscache_fixture {int iscache; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dfix_init ; 
- int pt_iscache_init (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ptu_int_eq (int,int /*<<< orphan*/ ) ; 
- struct ptunit_result ptu_passed () ; 
- int /*<<< orphan*/  ptu_test (int /*<<< orphan*/ ,struct iscache_fixture*) ; 
+
+ int dfix_init ;
+ int pt_iscache_init (int *,int *) ;
+ int ptu_int_eq (int,int ) ;
+ struct ptunit_result ptu_passed () ;
+ int ptu_test (int ,struct iscache_fixture*) ;
 
 __attribute__((used)) static struct ptunit_result cfix_init(struct iscache_fixture *cfix)
 {
-	int errcode;
+ int errcode;
 
-	ptu_test(dfix_init, cfix);
+ ptu_test(dfix_init, cfix);
 
-	errcode = pt_iscache_init(&cfix->iscache, NULL);
-	ptu_int_eq(errcode, 0);
+ errcode = pt_iscache_init(&cfix->iscache, ((void*)0));
+ ptu_int_eq(errcode, 0);
 
-	return ptu_passed();
+ return ptu_passed();
 }

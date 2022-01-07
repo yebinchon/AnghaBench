@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  IHTMLDocument2 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AddNamedItem ; 
- int /*<<< orphan*/  CHECK_CALLED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CHECK_CALLED_BROKEN (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Close ; 
- int /*<<< orphan*/  CreateInstance ; 
- int /*<<< orphan*/  GetInterfaceSafetyOptions ; 
- int /*<<< orphan*/  GetScriptState ; 
- int /*<<< orphan*/  IActiveScriptSite_Release (scalar_t__) ; 
- int /*<<< orphan*/  IDispatchEx_Release (scalar_t__) ; 
- int /*<<< orphan*/  IHTMLDocument2_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  InitNew ; 
- int /*<<< orphan*/  ParseScriptText_script ; 
- int /*<<< orphan*/  SET_EXPECT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetInterfaceSafetyOptions ; 
- int /*<<< orphan*/  SetProperty_ABBREVIATE_GLOBALNAME_RESOLUTION ; 
- int /*<<< orphan*/  SetProperty_HACK_TRIDENTEVENTSINK ; 
- int /*<<< orphan*/  SetProperty_INVOKEVERSIONING ; 
- int /*<<< orphan*/  SetScriptSite ; 
- int /*<<< orphan*/  SetScriptState_CONNECTED ; 
- int /*<<< orphan*/  SetScriptState_DISCONNECTED ; 
- int /*<<< orphan*/  SetScriptState_STARTED ; 
- int /*<<< orphan*/ * create_document () ; 
- int /*<<< orphan*/  load_doc (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  simple_script_str ; 
- scalar_t__ site ; 
- int /*<<< orphan*/  test_exec_script (int /*<<< orphan*/ *,char*,char*) ; 
- scalar_t__ window_dispex ; 
+
+
+
+typedef int IHTMLDocument2 ;
+
+
+ int AddNamedItem ;
+ int CHECK_CALLED (int ) ;
+ int CHECK_CALLED_BROKEN (int ) ;
+ int Close ;
+ int CreateInstance ;
+ int GetInterfaceSafetyOptions ;
+ int GetScriptState ;
+ int IActiveScriptSite_Release (scalar_t__) ;
+ int IDispatchEx_Release (scalar_t__) ;
+ int IHTMLDocument2_Release (int *) ;
+ int InitNew ;
+ int ParseScriptText_script ;
+ int SET_EXPECT (int ) ;
+ int SetInterfaceSafetyOptions ;
+ int SetProperty_ABBREVIATE_GLOBALNAME_RESOLUTION ;
+ int SetProperty_HACK_TRIDENTEVENTSINK ;
+ int SetProperty_INVOKEVERSIONING ;
+ int SetScriptSite ;
+ int SetScriptState_CONNECTED ;
+ int SetScriptState_DISCONNECTED ;
+ int SetScriptState_STARTED ;
+ int * create_document () ;
+ int load_doc (int *,int ) ;
+ int simple_script_str ;
+ scalar_t__ site ;
+ int test_exec_script (int *,char*,char*) ;
+ scalar_t__ window_dispex ;
 
 __attribute__((used)) static void test_simple_script(void)
 {
@@ -52,14 +52,14 @@ __attribute__((used)) static void test_simple_script(void)
     SET_EXPECT(CreateInstance);
     SET_EXPECT(GetInterfaceSafetyOptions);
     SET_EXPECT(SetInterfaceSafetyOptions);
-    SET_EXPECT(SetProperty_INVOKEVERSIONING); /* IE8 */
+    SET_EXPECT(SetProperty_INVOKEVERSIONING);
     SET_EXPECT(SetProperty_HACK_TRIDENTEVENTSINK);
     SET_EXPECT(InitNew);
     SET_EXPECT(SetScriptSite);
     SET_EXPECT(GetScriptState);
     SET_EXPECT(SetScriptState_STARTED);
     SET_EXPECT(AddNamedItem);
-    SET_EXPECT(SetProperty_ABBREVIATE_GLOBALNAME_RESOLUTION); /* IE8 */
+    SET_EXPECT(SetProperty_ABBREVIATE_GLOBALNAME_RESOLUTION);
     SET_EXPECT(ParseScriptText_script);
     SET_EXPECT(SetScriptState_CONNECTED);
 
@@ -68,14 +68,14 @@ __attribute__((used)) static void test_simple_script(void)
     CHECK_CALLED(CreateInstance);
     CHECK_CALLED(GetInterfaceSafetyOptions);
     CHECK_CALLED(SetInterfaceSafetyOptions);
-    CHECK_CALLED_BROKEN(SetProperty_INVOKEVERSIONING); /* IE8 */
+    CHECK_CALLED_BROKEN(SetProperty_INVOKEVERSIONING);
     CHECK_CALLED(SetProperty_HACK_TRIDENTEVENTSINK);
     CHECK_CALLED(InitNew);
     CHECK_CALLED(SetScriptSite);
     CHECK_CALLED(GetScriptState);
     CHECK_CALLED(SetScriptState_STARTED);
     CHECK_CALLED(AddNamedItem);
-    CHECK_CALLED_BROKEN(SetProperty_ABBREVIATE_GLOBALNAME_RESOLUTION); /* IE8 */
+    CHECK_CALLED_BROKEN(SetProperty_ABBREVIATE_GLOBALNAME_RESOLUTION);
     CHECK_CALLED(ParseScriptText_script);
     CHECK_CALLED(SetScriptState_CONNECTED);
 

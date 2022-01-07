@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint64_t ;
-typedef  int uint32_t ;
 
-/* Variables and functions */
+
+
+
+typedef int uint64_t ;
+typedef int uint32_t ;
+
+
 
 int
 aarch64_shrink_expanded_imm8 (uint64_t imm)
@@ -26,9 +26,9 @@ aarch64_shrink_expanded_imm8 (uint64_t imm)
     {
       byte = (imm >> (8 * i)) & 0xff;
       if (byte == 0xff)
-	ret |= 1 << i;
+ ret |= 1 << i;
       else if (byte != 0x00)
-	return -1;
+ return -1;
     }
   return ret;
 }

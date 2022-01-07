@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  REGKEY_HKCU ; 
- int /*<<< orphan*/  WriteIniKeyBool (char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WriteRegistryKeyBool (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * ini_file ; 
+
+
+
+typedef int BOOL ;
+
+
+ int REGKEY_HKCU ;
+ int WriteIniKeyBool (char const*,int ) ;
+ int WriteRegistryKeyBool (int ,char const*,int ) ;
+ int * ini_file ;
 
 __attribute__((used)) static __inline BOOL WriteSettingBool(const char* key, BOOL val) {
-	return (ini_file != NULL)?WriteIniKeyBool(key, val):WriteRegistryKeyBool(REGKEY_HKCU, key, val);
+ return (ini_file != ((void*)0))?WriteIniKeyBool(key, val):WriteRegistryKeyBool(REGKEY_HKCU, key, val);
 }

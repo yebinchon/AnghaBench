@@ -1,90 +1,90 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_23__   TYPE_7__ ;
-typedef  struct TYPE_22__   TYPE_6__ ;
-typedef  struct TYPE_21__   TYPE_5__ ;
-typedef  struct TYPE_20__   TYPE_4__ ;
-typedef  struct TYPE_19__   TYPE_3__ ;
-typedef  struct TYPE_18__   TYPE_2__ ;
-typedef  struct TYPE_17__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_23__ TYPE_7__ ;
+typedef struct TYPE_22__ TYPE_6__ ;
+typedef struct TYPE_21__ TYPE_5__ ;
+typedef struct TYPE_20__ TYPE_4__ ;
+typedef struct TYPE_19__ TYPE_3__ ;
+typedef struct TYPE_18__ TYPE_2__ ;
+typedef struct TYPE_17__ TYPE_1__ ;
+
+
 struct index_state {int dummy; } ;
-struct TYPE_17__ {int /*<<< orphan*/  sec; } ;
-struct cache_entry {int ce_flags; scalar_t__ ce_size; int /*<<< orphan*/  ce_mode; scalar_t__ modifier; int /*<<< orphan*/  sha1; TYPE_1__ ce_mtime; } ;
-typedef  scalar_t__ gint64 ;
-typedef  int /*<<< orphan*/  data ;
-struct TYPE_23__ {int /*<<< orphan*/  sync_mgr; } ;
-struct TYPE_22__ {scalar_t__ status; char const* sha1; scalar_t__ size; int /*<<< orphan*/  name; int /*<<< orphan*/  mode; int /*<<< orphan*/  modifier; int /*<<< orphan*/  mtime; } ;
-struct TYPE_21__ {int repo_version; int /*<<< orphan*/ * finished_tasks; int /*<<< orphan*/  conflict_head_id; TYPE_2__* http_task; int /*<<< orphan*/ * crypt; int /*<<< orphan*/  repo_id; } ;
+struct TYPE_17__ {int sec; } ;
+struct cache_entry {int ce_flags; scalar_t__ ce_size; int ce_mode; scalar_t__ modifier; int sha1; TYPE_1__ ce_mtime; } ;
+typedef scalar_t__ gint64 ;
+typedef int data ;
+struct TYPE_23__ {int sync_mgr; } ;
+struct TYPE_22__ {scalar_t__ status; char const* sha1; scalar_t__ size; int name; int mode; int modifier; int mtime; } ;
+struct TYPE_21__ {int repo_version; int * finished_tasks; int conflict_head_id; TYPE_2__* http_task; int * crypt; int repo_id; } ;
 struct TYPE_20__ {int result; struct cache_entry* ce; scalar_t__ new_ce; TYPE_6__* de; } ;
 struct TYPE_19__ {TYPE_6__* data; struct TYPE_19__* next; } ;
-struct TYPE_18__ {int /*<<< orphan*/  is_clone; int /*<<< orphan*/  all_stop; int /*<<< orphan*/  repo_name; } ;
-typedef  int /*<<< orphan*/  SyncStatus ;
-typedef  int /*<<< orphan*/  SeafileCrypt ;
-typedef  int /*<<< orphan*/  LockedFileSet ;
-typedef  TYPE_2__ HttpTxTask ;
-typedef  int /*<<< orphan*/  GThreadPool ;
-typedef  TYPE_3__ GList ;
-typedef  int /*<<< orphan*/  GHashTable ;
-typedef  int /*<<< orphan*/  GDestroyNotify ;
-typedef  int /*<<< orphan*/  GAsyncQueue ;
-typedef  TYPE_4__ FileTxTask ;
-typedef  TYPE_5__ FileTxData ;
-typedef  TYPE_6__ DiffEntry ;
+struct TYPE_18__ {int is_clone; int all_stop; int repo_name; } ;
+typedef int SyncStatus ;
+typedef int SeafileCrypt ;
+typedef int LockedFileSet ;
+typedef TYPE_2__ HttpTxTask ;
+typedef int GThreadPool ;
+typedef TYPE_3__ GList ;
+typedef int GHashTable ;
+typedef int GDestroyNotify ;
+typedef int GAsyncQueue ;
+typedef TYPE_4__ FileTxTask ;
+typedef TYPE_5__ FileTxData ;
+typedef TYPE_6__ DiffEntry ;
 
-/* Variables and functions */
- int ADD_CACHE_OK_TO_ADD ; 
- int ADD_CACHE_OK_TO_REPLACE ; 
- int CE_REMOVE ; 
- int /*<<< orphan*/  DEFAULT_DOWNLOAD_THREADS ; 
- scalar_t__ DIFF_STATUS_ADDED ; 
- scalar_t__ DIFF_STATUS_DIR_ADDED ; 
- scalar_t__ DIFF_STATUS_MODIFIED ; 
- int /*<<< orphan*/  FALSE ; 
- int FETCH_CHECKOUT_CANCELED ; 
- int FETCH_CHECKOUT_FAILED ; 
- int FETCH_CHECKOUT_SUCCESS ; 
- int FETCH_CHECKOUT_TRANSFER_ERROR ; 
- int /*<<< orphan*/  SYNC_STATUS_ERROR ; 
- int /*<<< orphan*/  SYNC_STATUS_SYNCED ; 
- int /*<<< orphan*/  TRUE ; 
- scalar_t__ UPDATE_CACHE_SIZE_LIMIT ; 
- int /*<<< orphan*/  add_index_entry (struct index_state*,struct cache_entry*,int) ; 
- int /*<<< orphan*/  cache_entry_free (struct cache_entry*) ; 
- int checkout_file_http (TYPE_5__*,TYPE_4__*,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  create_ce_mode (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fetch_file_thread_func ; 
- scalar_t__ file_tx_task_free ; 
- int /*<<< orphan*/ * g_async_queue_new () ; 
- TYPE_4__* g_async_queue_pop (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  g_async_queue_unref (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  g_free (scalar_t__) ; 
- int /*<<< orphan*/  g_hash_table_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * g_hash_table_new_full (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/  (*) (scalar_t__),int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  g_hash_table_remove (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ g_hash_table_size (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  g_str_equal ; 
- int /*<<< orphan*/  g_str_hash ; 
- scalar_t__ g_strdup (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  g_thread_pool_free (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * g_thread_pool_new (int /*<<< orphan*/ ,TYPE_5__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  handle_dir_added_de (char const*,int /*<<< orphan*/ ,char const*,struct index_state*,TYPE_6__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,char const*,int) ; 
- int /*<<< orphan*/  memset (TYPE_5__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  rawdata_to_hex (char const*,char*,int) ; 
- int schedule_file_fetch (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,char const*,struct index_state*,TYPE_6__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- TYPE_7__* seaf ; 
- int /*<<< orphan*/  seaf_sync_manager_update_active_path (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  update_index (struct index_state*,char const*) ; 
+
+ int ADD_CACHE_OK_TO_ADD ;
+ int ADD_CACHE_OK_TO_REPLACE ;
+ int CE_REMOVE ;
+ int DEFAULT_DOWNLOAD_THREADS ;
+ scalar_t__ DIFF_STATUS_ADDED ;
+ scalar_t__ DIFF_STATUS_DIR_ADDED ;
+ scalar_t__ DIFF_STATUS_MODIFIED ;
+ int FALSE ;
+ int FETCH_CHECKOUT_CANCELED ;
+ int FETCH_CHECKOUT_FAILED ;
+ int FETCH_CHECKOUT_SUCCESS ;
+ int FETCH_CHECKOUT_TRANSFER_ERROR ;
+ int SYNC_STATUS_ERROR ;
+ int SYNC_STATUS_SYNCED ;
+ int TRUE ;
+ scalar_t__ UPDATE_CACHE_SIZE_LIMIT ;
+ int add_index_entry (struct index_state*,struct cache_entry*,int) ;
+ int cache_entry_free (struct cache_entry*) ;
+ int checkout_file_http (TYPE_5__*,TYPE_4__*,char const*,int *,int *,char const*,int *) ;
+ int create_ce_mode (int ) ;
+ int fetch_file_thread_func ;
+ scalar_t__ file_tx_task_free ;
+ int * g_async_queue_new () ;
+ TYPE_4__* g_async_queue_pop (int *) ;
+ int g_async_queue_unref (int *) ;
+ int g_free (scalar_t__) ;
+ int g_hash_table_destroy (int *) ;
+ int * g_hash_table_new_full (int ,int ,int (*) (scalar_t__),int ) ;
+ int g_hash_table_remove (int *,int ) ;
+ scalar_t__ g_hash_table_size (int *) ;
+ int g_str_equal ;
+ int g_str_hash ;
+ scalar_t__ g_strdup (int ) ;
+ int g_thread_pool_free (int *,int ,int ) ;
+ int * g_thread_pool_new (int ,TYPE_5__*,int ,int ,int *) ;
+ int handle_dir_added_de (char const*,int ,char const*,struct index_state*,TYPE_6__*,int *,int *) ;
+ int memcpy (int ,char const*,int) ;
+ int memset (TYPE_5__*,int ,int) ;
+ int rawdata_to_hex (char const*,char*,int) ;
+ int schedule_file_fetch (int *,char const*,int ,char const*,struct index_state*,TYPE_6__*,int *,int *,int *) ;
+ TYPE_7__* seaf ;
+ int seaf_sync_manager_update_active_path (int ,char const*,int ,int ,int ) ;
+ int update_index (struct index_state*,char const*) ;
 
 __attribute__((used)) static int
 download_files_http (const char *repo_id,
@@ -122,12 +122,12 @@ download_files_http (const char *repo_id,
     data.finished_tasks = finished_tasks;
 
     tpool = g_thread_pool_new (fetch_file_thread_func, &data,
-                               DEFAULT_DOWNLOAD_THREADS, FALSE, NULL);
+                               DEFAULT_DOWNLOAD_THREADS, FALSE, ((void*)0));
 
     pending_tasks = g_hash_table_new_full (g_str_hash, g_str_equal,
                                            g_free, (GDestroyNotify)file_tx_task_free);
 
-    for (ptr = results; ptr != NULL; ptr = ptr->next) {
+    for (ptr = results; ptr != ((void*)0); ptr = ptr->next) {
         de = ptr->data;
 
         if (de->status == DIFF_STATUS_DIR_ADDED) {
@@ -148,21 +148,21 @@ download_files_http (const char *repo_id,
         }
     }
 
-    /* If there is no file need to be downloaded, return immediately. */
+
     if (g_hash_table_size(pending_tasks) == 0) {
-        if (results != NULL)
+        if (results != ((void*)0))
             update_index (istate, index_path);
         goto out;
     }
 
     char file_id[41];
-    while ((task = g_async_queue_pop (finished_tasks)) != NULL) {
+    while ((task = g_async_queue_pop (finished_tasks)) != ((void*)0)) {
         ce = task->ce;
         de = task->de;
 
         rawdata_to_hex (de->sha1, file_id, 20);
-        /* seaf_message ("Finished downloading file %s for repo %s\n", */
-        /*               de->name, repo_id); */
+
+
 
         if (task->result == FETCH_CHECKOUT_CANCELED ||
             task->result == FETCH_CHECKOUT_TRANSFER_ERROR) {
@@ -209,10 +209,10 @@ download_files_http (const char *repo_id,
         if (g_hash_table_size (pending_tasks) == 0)
             break;
 
-        /* Save index file to disk after checking out some size of files.
-         * This way we don't need to re-compare too many files if this
-         * checkout is interrupted.
-         */
+
+
+
+
         checkout_size += ce->ce_size;
         if (checkout_size >= UPDATE_CACHE_SIZE_LIMIT) {
             update_index (istate, index_path);
@@ -223,12 +223,12 @@ download_files_http (const char *repo_id,
     update_index (istate, index_path);
 
 out:
-    /* Wait until all threads exit.
-     * This is necessary when the download is canceled or encountered error.
-     */
+
+
+
     g_thread_pool_free (tpool, TRUE, TRUE);
 
-    /* Free all pending file task structs. */
+
     g_hash_table_destroy (pending_tasks);
 
     g_async_queue_unref (finished_tasks);

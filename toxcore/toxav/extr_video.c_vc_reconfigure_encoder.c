@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_18__   TYPE_4__ ;
-typedef  struct TYPE_17__   TYPE_3__ ;
-typedef  struct TYPE_16__   TYPE_2__ ;
-typedef  struct TYPE_15__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_18__ TYPE_4__ ;
+typedef struct TYPE_17__ TYPE_3__ ;
+typedef struct TYPE_16__ TYPE_2__ ;
+typedef struct TYPE_15__ TYPE_1__ ;
+
+
 struct TYPE_16__ {scalar_t__ rc_target_bitrate; scalar_t__ g_w; scalar_t__ g_h; } ;
-typedef  TYPE_2__ vpx_codec_enc_cfg_t ;
+typedef TYPE_2__ vpx_codec_enc_cfg_t ;
 struct TYPE_15__ {TYPE_2__* enc; } ;
 struct TYPE_17__ {TYPE_1__ config; } ;
-typedef  TYPE_3__ vpx_codec_ctx_t ;
-typedef  scalar_t__ uint32_t ;
-typedef  scalar_t__ uint16_t ;
-typedef  int /*<<< orphan*/  new_c ;
+typedef TYPE_3__ vpx_codec_ctx_t ;
+typedef scalar_t__ uint32_t ;
+typedef scalar_t__ uint16_t ;
+typedef int new_c ;
 struct TYPE_18__ {TYPE_3__* encoder; } ;
-typedef  TYPE_4__ VCSession ;
+typedef TYPE_4__ VCSession ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOGGER_DEBUG (char*,TYPE_4__*) ; 
- int /*<<< orphan*/  LOGGER_ERROR (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  VIDEO_CODEC_ENCODER_INTERFACE ; 
- int /*<<< orphan*/  VP8E_SET_CPUUSED ; 
- int VPX_CODEC_OK ; 
- int /*<<< orphan*/  memcpy (TYPE_3__*,TYPE_3__*,int) ; 
- int vpx_codec_control (TYPE_3__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  vpx_codec_destroy (TYPE_3__*) ; 
- int vpx_codec_enc_config_set (TYPE_3__*,TYPE_2__*) ; 
- int vpx_codec_enc_init (TYPE_3__*,int /*<<< orphan*/ ,TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vpx_codec_err_to_string (int) ; 
+
+ int LOGGER_DEBUG (char*,TYPE_4__*) ;
+ int LOGGER_ERROR (char*,int ) ;
+ int VIDEO_CODEC_ENCODER_INTERFACE ;
+ int VP8E_SET_CPUUSED ;
+ int VPX_CODEC_OK ;
+ int memcpy (TYPE_3__*,TYPE_3__*,int) ;
+ int vpx_codec_control (TYPE_3__*,int ,int) ;
+ int vpx_codec_destroy (TYPE_3__*) ;
+ int vpx_codec_enc_config_set (TYPE_3__*,TYPE_2__*) ;
+ int vpx_codec_enc_init (TYPE_3__*,int ,TYPE_2__*,int ) ;
+ int vpx_codec_err_to_string (int) ;
 
 int vc_reconfigure_encoder(VCSession *vc, uint32_t bit_rate, uint16_t width, uint16_t height)
 {
@@ -47,10 +47,10 @@ int vc_reconfigure_encoder(VCSession *vc, uint32_t bit_rate, uint16_t width, uin
     int rc;
 
     if (cfg.rc_target_bitrate == bit_rate && cfg.g_w == width && cfg.g_h == height)
-        return 0; /* Nothing changed */
+        return 0;
 
     if (cfg.g_w == width && cfg.g_h == height) {
-        /* Only bit rate changed */
+
         cfg.rc_target_bitrate = bit_rate;
 
         rc = vpx_codec_enc_config_set(vc->encoder, &cfg);
@@ -60,9 +60,9 @@ int vc_reconfigure_encoder(VCSession *vc, uint32_t bit_rate, uint16_t width, uin
             return -1;
         }
     } else {
-        /* Resolution is changed, must reinitialize encoder since libvpx v1.4 doesn't support
-         * reconfiguring encoder to use resolutions greater than initially set.
-         */
+
+
+
 
         LOGGER_DEBUG("Have to reinitialize vpx encoder on session %p", vc);
 

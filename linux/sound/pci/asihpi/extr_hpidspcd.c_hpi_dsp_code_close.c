@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct dsp_code {TYPE_1__* pvt; } ;
-struct TYPE_2__ {int /*<<< orphan*/  firmware; } ;
+struct TYPE_2__ {int firmware; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEBUG ; 
- int /*<<< orphan*/  HPI_DEBUG_LOG (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  kfree (TYPE_1__*) ; 
- int /*<<< orphan*/  release_firmware (int /*<<< orphan*/ ) ; 
+
+ int DEBUG ;
+ int HPI_DEBUG_LOG (int ,char*) ;
+ int kfree (TYPE_1__*) ;
+ int release_firmware (int ) ;
 
 void hpi_dsp_code_close(struct dsp_code *dsp_code)
 {
-	HPI_DEBUG_LOG(DEBUG, "dsp code closed\n");
-	release_firmware(dsp_code->pvt->firmware);
-	kfree(dsp_code->pvt);
+ HPI_DEBUG_LOG(DEBUG, "dsp code closed\n");
+ release_firmware(dsp_code->pvt->firmware);
+ kfree(dsp_code->pvt);
 }

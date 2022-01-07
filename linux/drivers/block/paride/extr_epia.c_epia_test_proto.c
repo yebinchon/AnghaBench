@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  mode; int /*<<< orphan*/  port; int /*<<< orphan*/  device; } ;
-typedef  TYPE_1__ PIA ;
 
-/* Variables and functions */
- int RR (int) ; 
- int /*<<< orphan*/  WR (int,int) ; 
- int /*<<< orphan*/  epia_connect (TYPE_1__*) ; 
- int /*<<< orphan*/  epia_disconnect (TYPE_1__*) ; 
- int /*<<< orphan*/  epia_read_block (TYPE_1__*,char*,int) ; 
- int /*<<< orphan*/  printk (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,int) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int mode; int port; int device; } ;
+typedef TYPE_1__ PIA ;
+
+
+ int RR (int) ;
+ int WR (int,int) ;
+ int epia_connect (TYPE_1__*) ;
+ int epia_disconnect (TYPE_1__*) ;
+ int epia_read_block (TYPE_1__*,char*,int) ;
+ int printk (char*,int ,int ,int ,int,int,int) ;
 
 __attribute__((used)) static int epia_test_proto( PIA *pi, char * scratch, int verbose )
 
-{       int     j, k, f;
-	int	e[2] = {0,0};
+{ int j, k, f;
+ int e[2] = {0,0};
 
         epia_connect(pi);
         for (j=0;j<2;j++) {
@@ -35,7 +35,7 @@ __attribute__((used)) static int epia_test_proto( PIA *pi, char * scratch, int v
                 WR(3,k^0x55);
                 if (RR(2) != (k^0xaa)) e[j]++;
                 }
-	    WR(2,1); WR(3,1);
+     WR(2,1); WR(3,1);
             }
         epia_disconnect(pi);
 
@@ -50,11 +50,11 @@ __attribute__((used)) static int epia_test_proto( PIA *pi, char * scratch, int v
         WR(0x84,0);
         epia_disconnect(pi);
 
-        if (verbose)  {
+        if (verbose) {
             printk("%s: epia: port 0x%x, mode %d, test=(%d,%d,%d)\n",
                    pi->device,pi->port,pi->mode,e[0],e[1],f);
         }
-        
+
         return (e[0] && e[1]) || f;
 
 }

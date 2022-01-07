@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char* OPENSSL_malloc (size_t) ; 
- int /*<<< orphan*/  TEST_ptr (char*) ; 
- char const* strcpy (char*,char const*) ; 
- scalar_t__ strlen (char const*) ; 
+ char* OPENSSL_malloc (size_t) ;
+ int TEST_ptr (char*) ;
+ char const* strcpy (char*,char const*) ;
+ scalar_t__ strlen (char const*) ;
 
 char *glue_strings(const char *list[], size_t *out_len)
 {
@@ -23,16 +15,16 @@ char *glue_strings(const char *list[], size_t *out_len)
     char *p, *ret;
     int i;
 
-    for (i = 0; list[i] != NULL; i++)
+    for (i = 0; list[i] != ((void*)0); i++)
         len += strlen(list[i]);
 
-    if (out_len != NULL)
+    if (out_len != ((void*)0))
         *out_len = len;
 
     if (!TEST_ptr(ret = p = OPENSSL_malloc(len + 1)))
-        return NULL;
+        return ((void*)0);
 
-    for (i = 0; list[i] != NULL; i++)
+    for (i = 0; list[i] != ((void*)0); i++)
         p += strlen(strcpy(p, list[i]));
 
     return ret;

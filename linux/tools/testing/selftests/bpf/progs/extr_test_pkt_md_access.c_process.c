@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct __sk_buff {int dummy; } ;
 
-/* Variables and functions */
- int TC_ACT_OK ; 
- int /*<<< orphan*/  TEST_FIELD (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  __u16 ; 
- int /*<<< orphan*/  __u32 ; 
- int /*<<< orphan*/  __u8 ; 
- int /*<<< orphan*/  hash ; 
- int /*<<< orphan*/  len ; 
- int /*<<< orphan*/  protocol ; 
+
+ int TC_ACT_OK ;
+ int TEST_FIELD (int ,int ,int) ;
+ int __u16 ;
+ int __u32 ;
+ int __u8 ;
+ int hash ;
+ int len ;
+ int protocol ;
 
 int process(struct __sk_buff *skb)
 {
-	TEST_FIELD(__u8,  len, 0xFF);
-	TEST_FIELD(__u16, len, 0xFFFF);
-	TEST_FIELD(__u32, len, 0xFFFFFFFF);
-	TEST_FIELD(__u16, protocol, 0xFFFF);
-	TEST_FIELD(__u32, protocol, 0xFFFFFFFF);
-	TEST_FIELD(__u8,  hash, 0xFF);
-	TEST_FIELD(__u16, hash, 0xFFFF);
-	TEST_FIELD(__u32, hash, 0xFFFFFFFF);
+ TEST_FIELD(__u8, len, 0xFF);
+ TEST_FIELD(__u16, len, 0xFFFF);
+ TEST_FIELD(__u32, len, 0xFFFFFFFF);
+ TEST_FIELD(__u16, protocol, 0xFFFF);
+ TEST_FIELD(__u32, protocol, 0xFFFFFFFF);
+ TEST_FIELD(__u8, hash, 0xFF);
+ TEST_FIELD(__u16, hash, 0xFFFF);
+ TEST_FIELD(__u32, hash, 0xFFFFFFFF);
 
-	return TC_ACT_OK;
+ return TC_ACT_OK;
 }

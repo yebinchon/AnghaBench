@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_9__ {scalar_t__ llmnr_support; } ;
-typedef  TYPE_1__ Manager ;
+typedef TYPE_1__ Manager ;
 
-/* Variables and functions */
- int EADDRINUSE ; 
- scalar_t__ RESOLVE_SUPPORT_NO ; 
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int /*<<< orphan*/  log_warning (char*) ; 
- int manager_llmnr_ipv4_tcp_fd (TYPE_1__*) ; 
- int manager_llmnr_ipv4_udp_fd (TYPE_1__*) ; 
- int manager_llmnr_ipv6_tcp_fd (TYPE_1__*) ; 
- int manager_llmnr_ipv6_udp_fd (TYPE_1__*) ; 
- int /*<<< orphan*/  manager_llmnr_stop (TYPE_1__*) ; 
- scalar_t__ socket_ipv6_is_supported () ; 
+
+ int EADDRINUSE ;
+ scalar_t__ RESOLVE_SUPPORT_NO ;
+ int assert (TYPE_1__*) ;
+ int log_warning (char*) ;
+ int manager_llmnr_ipv4_tcp_fd (TYPE_1__*) ;
+ int manager_llmnr_ipv4_udp_fd (TYPE_1__*) ;
+ int manager_llmnr_ipv6_tcp_fd (TYPE_1__*) ;
+ int manager_llmnr_ipv6_udp_fd (TYPE_1__*) ;
+ int manager_llmnr_stop (TYPE_1__*) ;
+ scalar_t__ socket_ipv6_is_supported () ;
 
 int manager_llmnr_start(Manager *m) {
         int r;

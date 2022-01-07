@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int profile; int flags; int /*<<< orphan*/  subtitle_header; int /*<<< orphan*/  subtitle_header_size; } ;
-typedef  TYPE_1__ AVCodecContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASS_DEFAULT_ALIGNMENT ; 
- int /*<<< orphan*/  ASS_DEFAULT_BACK_COLOR ; 
- int /*<<< orphan*/  ASS_DEFAULT_BOLD ; 
- int /*<<< orphan*/  ASS_DEFAULT_BORDERSTYLE ; 
- int /*<<< orphan*/  ASS_DEFAULT_COLOR ; 
- int /*<<< orphan*/  ASS_DEFAULT_FONT ; 
- int /*<<< orphan*/  ASS_DEFAULT_ITALIC ; 
- int /*<<< orphan*/  ASS_DEFAULT_UNDERLINE ; 
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AV_CODEC_FLAG_BITEXACT ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- char* AV_STRINGIFY (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  ENOMEM ; 
-#define  FF_PROFILE_ARIB_PROFILE_A 129 
-#define  FF_PROFILE_ARIB_PROFILE_C 128 
- int /*<<< orphan*/  LIBAVCODEC_VERSION ; 
- int /*<<< orphan*/  av_asprintf (char*,char*,unsigned int,unsigned int,int /*<<< orphan*/ ,unsigned int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_log (TYPE_1__*,int /*<<< orphan*/ ,char*) ; 
- unsigned int get_profile_font_size (int) ; 
- int /*<<< orphan*/  strlen (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int profile; int flags; int subtitle_header; int subtitle_header_size; } ;
+typedef TYPE_1__ AVCodecContext ;
+
+
+ int ASS_DEFAULT_ALIGNMENT ;
+ int ASS_DEFAULT_BACK_COLOR ;
+ int ASS_DEFAULT_BOLD ;
+ int ASS_DEFAULT_BORDERSTYLE ;
+ int ASS_DEFAULT_COLOR ;
+ int ASS_DEFAULT_FONT ;
+ int ASS_DEFAULT_ITALIC ;
+ int ASS_DEFAULT_UNDERLINE ;
+ int AVERROR (int ) ;
+ int AV_CODEC_FLAG_BITEXACT ;
+ int AV_LOG_ERROR ;
+ char* AV_STRINGIFY (int ) ;
+ int EINVAL ;
+ int ENOMEM ;
+
+
+ int LIBAVCODEC_VERSION ;
+ int av_asprintf (char*,char*,unsigned int,unsigned int,int ,unsigned int,int ,int ,int ,int ,int ,int ,int ,int ,int ) ;
+ int av_log (TYPE_1__*,int ,char*) ;
+ unsigned int get_profile_font_size (int) ;
+ int strlen (int ) ;
 
 __attribute__((used)) static int libaribb24_generate_ass_header(AVCodecContext *avctx)
 {
@@ -44,12 +44,12 @@ __attribute__((used)) static int libaribb24_generate_ass_header(AVCodecContext *
     unsigned int font_size = 0;
 
     switch (avctx->profile) {
-    case FF_PROFILE_ARIB_PROFILE_A:
+    case 129:
         plane_width = 960;
         plane_height = 540;
         font_size = get_profile_font_size(avctx->profile);
         break;
-    case FF_PROFILE_ARIB_PROFILE_C:
+    case 128:
         plane_width = 320;
         plane_height = 180;
         font_size = get_profile_font_size(avctx->profile);
@@ -68,7 +68,7 @@ __attribute__((used)) static int libaribb24_generate_ass_header(AVCodecContext *
              "\r\n"
              "[V4+ Styles]\r\n"
 
-             /* ASSv4 header */
+
              "Format: Name, "
              "Fontname, Fontsize, "
              "PrimaryColour, SecondaryColour, OutlineColour, BackColour, "
@@ -80,15 +80,15 @@ __attribute__((used)) static int libaribb24_generate_ass_header(AVCodecContext *
              "Encoding\r\n"
 
              "Style: "
-             "Default,"             /* Name */
-             "%s,%d,"               /* Font{name,size} */
-             "&H%x,&H%x,&H%x,&H%x," /* {Primary,Secondary,Outline,Back}Colour */
-             "%d,%d,%d,0,"          /* Bold, Italic, Underline, StrikeOut */
-             "100,100,"             /* Scale{X,Y} */
-             "0,0,"                 /* Spacing, Angle */
-             "%d,1,0,"              /* BorderStyle, Outline, Shadow */
-             "%d,10,10,10,"         /* Alignment, Margin[LRV] */
-             "0\r\n"                /* Encoding */
+             "Default,"
+             "%s,%d,"
+             "&H%x,&H%x,&H%x,&H%x,"
+             "%d,%d,%d,0,"
+             "100,100,"
+             "0,0,"
+             "%d,1,0,"
+             "%d,10,10,10,"
+             "0\r\n"
 
              "\r\n"
              "[Events]\r\n"

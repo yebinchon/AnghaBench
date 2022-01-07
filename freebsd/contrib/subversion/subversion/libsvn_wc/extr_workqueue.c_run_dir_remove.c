@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  work_item_baton_t ;
-typedef  int /*<<< orphan*/  svn_wc__db_t ;
-struct TYPE_12__ {scalar_t__ next; int /*<<< orphan*/  len; int /*<<< orphan*/  data; TYPE_1__* children; } ;
-typedef  TYPE_2__ svn_skel_t ;
-struct TYPE_13__ {int /*<<< orphan*/  apr_err; } ;
-typedef  TYPE_3__ svn_error_t ;
-typedef  int /*<<< orphan*/  svn_cancel_func_t ;
-typedef  int svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  scalar_t__ apr_int64_t ;
+
+
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef int work_item_baton_t ;
+typedef int svn_wc__db_t ;
+struct TYPE_12__ {scalar_t__ next; int len; int data; TYPE_1__* children; } ;
+typedef TYPE_2__ svn_skel_t ;
+struct TYPE_13__ {int apr_err; } ;
+typedef TYPE_3__ svn_error_t ;
+typedef int svn_cancel_func_t ;
+typedef int svn_boolean_t ;
+typedef int apr_pool_t ;
+typedef scalar_t__ apr_int64_t ;
 struct TYPE_11__ {TYPE_2__* next; } ;
 
-/* Variables and functions */
- scalar_t__ APR_STATUS_IS_ENOENT (int /*<<< orphan*/ ) ; 
- scalar_t__ APR_STATUS_IS_ENOTEMPTY (int /*<<< orphan*/ ) ; 
- int FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- scalar_t__ SVN__APR_STATUS_IS_ENOTDIR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- char* apr_pstrmemdup (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_error_clear (TYPE_3__*) ; 
- TYPE_3__* svn_error_trace (TYPE_3__*) ; 
- TYPE_3__* svn_io_dir_remove_nonrecursive (char const*,int /*<<< orphan*/ *) ; 
- TYPE_3__* svn_io_remove_dir2 (char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_skel__parse_int (scalar_t__*,scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__db_from_relpath (char const**,int /*<<< orphan*/ *,char const*,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ scalar_t__ APR_STATUS_IS_ENOENT (int ) ;
+ scalar_t__ APR_STATUS_IS_ENOTEMPTY (int ) ;
+ int FALSE ;
+ int SVN_ERR (int ) ;
+ scalar_t__ SVN__APR_STATUS_IS_ENOTDIR (int ) ;
+ int TRUE ;
+ char* apr_pstrmemdup (int *,int ,int ) ;
+ int svn_error_clear (TYPE_3__*) ;
+ TYPE_3__* svn_error_trace (TYPE_3__*) ;
+ TYPE_3__* svn_io_dir_remove_nonrecursive (char const*,int *) ;
+ TYPE_3__* svn_io_remove_dir2 (char const*,int ,int ,void*,int *) ;
+ int svn_skel__parse_int (scalar_t__*,scalar_t__,int *) ;
+ int svn_wc__db_from_relpath (char const**,int *,char const*,char const*,int *,int *) ;
 
 __attribute__((used)) static svn_error_t *
 run_dir_remove(work_item_baton_t *wqb,
@@ -67,7 +67,7 @@ run_dir_remove(work_item_baton_t *wqb,
       recursive = (val != 0);
     }
 
-  /* Remove the path, no worrying if it isn't there.  */
+
   if (recursive)
     return svn_error_trace(
                 svn_io_remove_dir2(local_abspath, TRUE,
@@ -84,7 +84,7 @@ run_dir_remove(work_item_baton_t *wqb,
                   || APR_STATUS_IS_ENOTEMPTY(err->apr_err)))
         {
           svn_error_clear(err);
-          err = NULL;
+          err = ((void*)0);
         }
 
       return svn_error_trace(err);

@@ -1,162 +1,141 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct type {int dummy; } ;
 struct objfile {int dummy; } ;
-
-/* Variables and functions */
-#define  FT_CHAR 146 
-#define  FT_DBL_PREC_FLOAT 145 
-#define  FT_EXT_PREC_FLOAT 144 
-#define  FT_FLOAT 143 
-#define  FT_INTEGER 142 
-#define  FT_LONG 141 
-#define  FT_LONG_LONG 140 
-#define  FT_SHORT 139 
-#define  FT_SIGNED_CHAR 138 
-#define  FT_SIGNED_INTEGER 137 
-#define  FT_SIGNED_LONG 136 
-#define  FT_SIGNED_LONG_LONG 135 
-#define  FT_SIGNED_SHORT 134 
-#define  FT_UNSIGNED_CHAR 133 
-#define  FT_UNSIGNED_INTEGER 132 
-#define  FT_UNSIGNED_LONG 131 
-#define  FT_UNSIGNED_LONG_LONG 130 
-#define  FT_UNSIGNED_SHORT 129 
-#define  FT_VOID 128 
- int TARGET_CHAR_BIT ; 
- int TARGET_DOUBLE_BIT ; 
- int TARGET_FLOAT_BIT ; 
- int TARGET_INT_BIT ; 
- int TARGET_LONG_BIT ; 
- int TARGET_LONG_DOUBLE_BIT ; 
- int TARGET_LONG_LONG_BIT ; 
- int TARGET_SHORT_BIT ; 
- int /*<<< orphan*/  TYPE_CODE_FLT ; 
- int /*<<< orphan*/  TYPE_CODE_INT ; 
- int /*<<< orphan*/  TYPE_CODE_VOID ; 
- int /*<<< orphan*/  TYPE_FLAG_UNSIGNED ; 
- struct type* init_type (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,char*,struct objfile*) ; 
- int /*<<< orphan*/  warning (char*,int) ; 
+ int TARGET_CHAR_BIT ;
+ int TARGET_DOUBLE_BIT ;
+ int TARGET_FLOAT_BIT ;
+ int TARGET_INT_BIT ;
+ int TARGET_LONG_BIT ;
+ int TARGET_LONG_DOUBLE_BIT ;
+ int TARGET_LONG_LONG_BIT ;
+ int TARGET_SHORT_BIT ;
+ int TYPE_CODE_FLT ;
+ int TYPE_CODE_INT ;
+ int TYPE_CODE_VOID ;
+ int TYPE_FLAG_UNSIGNED ;
+ struct type* init_type (int ,int,int ,char*,struct objfile*) ;
+ int warning (char*,int) ;
 
 __attribute__((used)) static struct type *
 ada_create_fundamental_type (struct objfile *objfile, int typeid)
 {
-  struct type *type = NULL;
+  struct type *type = ((void*)0);
 
   switch (typeid)
     {
     default:
-      /* FIXME:  For now, if we are asked to produce a type not in this
-         language, create the equivalent of a C integer type with the
-         name "<?type?>".  When all the dust settles from the type
-         reconstruction work, this should probably become an error. */
+
+
+
+
       type = init_type (TYPE_CODE_INT,
-			TARGET_INT_BIT / TARGET_CHAR_BIT,
-			0, "<?type?>", objfile);
+   TARGET_INT_BIT / TARGET_CHAR_BIT,
+   0, "<?type?>", objfile);
       warning ("internal error: no Ada fundamental type %d", typeid);
       break;
-    case FT_VOID:
+    case 128:
       type = init_type (TYPE_CODE_VOID,
-			TARGET_CHAR_BIT / TARGET_CHAR_BIT,
-			0, "void", objfile);
+   TARGET_CHAR_BIT / TARGET_CHAR_BIT,
+   0, "void", objfile);
       break;
-    case FT_CHAR:
+    case 146:
       type = init_type (TYPE_CODE_INT,
-			TARGET_CHAR_BIT / TARGET_CHAR_BIT,
-			0, "character", objfile);
+   TARGET_CHAR_BIT / TARGET_CHAR_BIT,
+   0, "character", objfile);
       break;
-    case FT_SIGNED_CHAR:
+    case 138:
       type = init_type (TYPE_CODE_INT,
-			TARGET_CHAR_BIT / TARGET_CHAR_BIT,
-			0, "signed char", objfile);
+   TARGET_CHAR_BIT / TARGET_CHAR_BIT,
+   0, "signed char", objfile);
       break;
-    case FT_UNSIGNED_CHAR:
+    case 133:
       type = init_type (TYPE_CODE_INT,
-			TARGET_CHAR_BIT / TARGET_CHAR_BIT,
-			TYPE_FLAG_UNSIGNED, "unsigned char", objfile);
+   TARGET_CHAR_BIT / TARGET_CHAR_BIT,
+   TYPE_FLAG_UNSIGNED, "unsigned char", objfile);
       break;
-    case FT_SHORT:
+    case 139:
       type = init_type (TYPE_CODE_INT,
-			TARGET_SHORT_BIT / TARGET_CHAR_BIT,
-			0, "short_integer", objfile);
+   TARGET_SHORT_BIT / TARGET_CHAR_BIT,
+   0, "short_integer", objfile);
       break;
-    case FT_SIGNED_SHORT:
+    case 134:
       type = init_type (TYPE_CODE_INT,
-			TARGET_SHORT_BIT / TARGET_CHAR_BIT,
-			0, "short_integer", objfile);
+   TARGET_SHORT_BIT / TARGET_CHAR_BIT,
+   0, "short_integer", objfile);
       break;
-    case FT_UNSIGNED_SHORT:
+    case 129:
       type = init_type (TYPE_CODE_INT,
-			TARGET_SHORT_BIT / TARGET_CHAR_BIT,
-			TYPE_FLAG_UNSIGNED, "unsigned short", objfile);
+   TARGET_SHORT_BIT / TARGET_CHAR_BIT,
+   TYPE_FLAG_UNSIGNED, "unsigned short", objfile);
       break;
-    case FT_INTEGER:
+    case 142:
       type = init_type (TYPE_CODE_INT,
-			TARGET_INT_BIT / TARGET_CHAR_BIT,
-			0, "integer", objfile);
+   TARGET_INT_BIT / TARGET_CHAR_BIT,
+   0, "integer", objfile);
       break;
-    case FT_SIGNED_INTEGER:
-      type = init_type (TYPE_CODE_INT, TARGET_INT_BIT / TARGET_CHAR_BIT, 0, "integer", objfile);	/* FIXME -fnf */
+    case 137:
+      type = init_type (TYPE_CODE_INT, TARGET_INT_BIT / TARGET_CHAR_BIT, 0, "integer", objfile);
       break;
-    case FT_UNSIGNED_INTEGER:
+    case 132:
       type = init_type (TYPE_CODE_INT,
-			TARGET_INT_BIT / TARGET_CHAR_BIT,
-			TYPE_FLAG_UNSIGNED, "unsigned int", objfile);
+   TARGET_INT_BIT / TARGET_CHAR_BIT,
+   TYPE_FLAG_UNSIGNED, "unsigned int", objfile);
       break;
-    case FT_LONG:
+    case 141:
       type = init_type (TYPE_CODE_INT,
-			TARGET_LONG_BIT / TARGET_CHAR_BIT,
-			0, "long_integer", objfile);
+   TARGET_LONG_BIT / TARGET_CHAR_BIT,
+   0, "long_integer", objfile);
       break;
-    case FT_SIGNED_LONG:
+    case 136:
       type = init_type (TYPE_CODE_INT,
-			TARGET_LONG_BIT / TARGET_CHAR_BIT,
-			0, "long_integer", objfile);
+   TARGET_LONG_BIT / TARGET_CHAR_BIT,
+   0, "long_integer", objfile);
       break;
-    case FT_UNSIGNED_LONG:
+    case 131:
       type = init_type (TYPE_CODE_INT,
-			TARGET_LONG_BIT / TARGET_CHAR_BIT,
-			TYPE_FLAG_UNSIGNED, "unsigned long", objfile);
+   TARGET_LONG_BIT / TARGET_CHAR_BIT,
+   TYPE_FLAG_UNSIGNED, "unsigned long", objfile);
       break;
-    case FT_LONG_LONG:
+    case 140:
       type = init_type (TYPE_CODE_INT,
-			TARGET_LONG_LONG_BIT / TARGET_CHAR_BIT,
-			0, "long_long_integer", objfile);
+   TARGET_LONG_LONG_BIT / TARGET_CHAR_BIT,
+   0, "long_long_integer", objfile);
       break;
-    case FT_SIGNED_LONG_LONG:
+    case 135:
       type = init_type (TYPE_CODE_INT,
-			TARGET_LONG_LONG_BIT / TARGET_CHAR_BIT,
-			0, "long_long_integer", objfile);
+   TARGET_LONG_LONG_BIT / TARGET_CHAR_BIT,
+   0, "long_long_integer", objfile);
       break;
-    case FT_UNSIGNED_LONG_LONG:
+    case 130:
       type = init_type (TYPE_CODE_INT,
-			TARGET_LONG_LONG_BIT / TARGET_CHAR_BIT,
-			TYPE_FLAG_UNSIGNED, "unsigned long long", objfile);
+   TARGET_LONG_LONG_BIT / TARGET_CHAR_BIT,
+   TYPE_FLAG_UNSIGNED, "unsigned long long", objfile);
       break;
-    case FT_FLOAT:
+    case 143:
       type = init_type (TYPE_CODE_FLT,
-			TARGET_FLOAT_BIT / TARGET_CHAR_BIT,
-			0, "float", objfile);
+   TARGET_FLOAT_BIT / TARGET_CHAR_BIT,
+   0, "float", objfile);
       break;
-    case FT_DBL_PREC_FLOAT:
+    case 145:
       type = init_type (TYPE_CODE_FLT,
-			TARGET_DOUBLE_BIT / TARGET_CHAR_BIT,
-			0, "long_float", objfile);
+   TARGET_DOUBLE_BIT / TARGET_CHAR_BIT,
+   0, "long_float", objfile);
       break;
-    case FT_EXT_PREC_FLOAT:
+    case 144:
       type = init_type (TYPE_CODE_FLT,
-			TARGET_LONG_DOUBLE_BIT / TARGET_CHAR_BIT,
-			0, "long_long_float", objfile);
+   TARGET_LONG_DOUBLE_BIT / TARGET_CHAR_BIT,
+   0, "long_long_float", objfile);
       break;
     }
   return (type);

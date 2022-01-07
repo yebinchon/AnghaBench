@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_11__ {int /*<<< orphan*/ ** bScalingLists8x8; int /*<<< orphan*/ ** bScalingLists4x4; } ;
+
+
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_11__ {int ** bScalingLists8x8; int ** bScalingLists4x4; } ;
 struct TYPE_8__ {TYPE_2__* pps; } ;
 struct TYPE_10__ {TYPE_1__ ps; } ;
-struct TYPE_9__ {int /*<<< orphan*/ ** scaling_matrix8; int /*<<< orphan*/ ** scaling_matrix4; } ;
-typedef  TYPE_2__ PPS ;
-typedef  TYPE_3__ H264Context ;
-typedef  TYPE_4__ DXVA_Qmatrix_H264 ;
-typedef  int /*<<< orphan*/  AVDXVAContext ;
-typedef  int /*<<< orphan*/  AVCodecContext ;
+struct TYPE_9__ {int ** scaling_matrix8; int ** scaling_matrix4; } ;
+typedef TYPE_2__ PPS ;
+typedef TYPE_3__ H264Context ;
+typedef TYPE_4__ DXVA_Qmatrix_H264 ;
+typedef int AVDXVAContext ;
+typedef int AVCodecContext ;
 
-/* Variables and functions */
- int DXVA_CONTEXT_WORKAROUND (int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int FF_DXVA2_WORKAROUND_SCALING_LIST_ZIGZAG ; 
- size_t* ff_zigzag_direct ; 
- size_t* ff_zigzag_scan ; 
- int /*<<< orphan*/  memset (TYPE_4__*,int /*<<< orphan*/ ,int) ; 
+
+ int DXVA_CONTEXT_WORKAROUND (int const*,int *) ;
+ int FF_DXVA2_WORKAROUND_SCALING_LIST_ZIGZAG ;
+ size_t* ff_zigzag_direct ;
+ size_t* ff_zigzag_scan ;
+ int memset (TYPE_4__*,int ,int) ;
 
 __attribute__((used)) static void fill_scaling_lists(const AVCodecContext *avctx, AVDXVAContext *ctx, const H264Context *h, DXVA_Qmatrix_H264 *qm)
 {

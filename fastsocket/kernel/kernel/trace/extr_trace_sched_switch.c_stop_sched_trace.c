@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct trace_array {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  tracing_stop_sched_switch_record () ; 
+
+ int tracing_stop_sched_switch_record () ;
 
 __attribute__((used)) static void stop_sched_trace(struct trace_array *tr)
 {
-	tracing_stop_sched_switch_record();
+ tracing_stop_sched_switch_record();
 }

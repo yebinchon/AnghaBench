@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-struct pmc_op_writelog {int /*<<< orphan*/  pm_userdata; } ;
 
-/* Variables and functions */
- int PMC_CALL (int /*<<< orphan*/ ,struct pmc_op_writelog*) ; 
- int /*<<< orphan*/  WRITELOG ; 
+
+
+
+typedef int uint32_t ;
+struct pmc_op_writelog {int pm_userdata; } ;
+
+
+ int PMC_CALL (int ,struct pmc_op_writelog*) ;
+ int WRITELOG ;
 
 int
 pmc_writelog(uint32_t userdata)
 {
-	struct pmc_op_writelog wl;
+ struct pmc_op_writelog wl;
 
-	wl.pm_userdata = userdata;
-	return (PMC_CALL(WRITELOG, &wl));
+ wl.pm_userdata = userdata;
+ return (PMC_CALL(WRITELOG, &wl));
 }

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  clearerr (int /*<<< orphan*/ *) ; 
- scalar_t__ ferror (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  luaL_argcheck (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,char*) ; 
- int luaL_argerror (int /*<<< orphan*/ *,int,char*) ; 
- int /*<<< orphan*/  luaL_checkstack (int /*<<< orphan*/ *,int,char*) ; 
- int lua_gettop (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_pop (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pushnil (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_tointeger (int /*<<< orphan*/ *,int) ; 
- char* lua_tostring (int /*<<< orphan*/ *,int) ; 
- int lua_type (int /*<<< orphan*/ *,int) ; 
- int pushresult (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int read_chars (int /*<<< orphan*/ *,int /*<<< orphan*/ *,size_t) ; 
- int read_line (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int read_number (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int test_eof (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int lua_State ;
+typedef int FILE ;
+
+
+ int clearerr (int *) ;
+ scalar_t__ ferror (int *) ;
+ int luaL_argcheck (int *,int ,int,char*) ;
+ int luaL_argerror (int *,int,char*) ;
+ int luaL_checkstack (int *,int,char*) ;
+ int lua_gettop (int *) ;
+ int lua_pop (int *,int) ;
+ int lua_pushnil (int *) ;
+ int lua_tointeger (int *,int) ;
+ char* lua_tostring (int *,int) ;
+ int lua_type (int *,int) ;
+ int pushresult (int *,int ,int *) ;
+ int read_chars (int *,int *,size_t) ;
+ int read_line (int *,int *) ;
+ int read_number (int *,int *) ;
+ int test_eof (int *,int *) ;
 
 __attribute__((used)) static int g_read(lua_State*L,FILE*f,int first){
 int nargs=lua_gettop(L)-1;
@@ -69,7 +69,7 @@ return luaL_argerror(L,n,"invalid format");
 }
 }
 if(ferror(f))
-return pushresult(L,0,NULL);
+return pushresult(L,0,((void*)0));
 if(!success){
 lua_pop(L,1);
 lua_pushnil(L);

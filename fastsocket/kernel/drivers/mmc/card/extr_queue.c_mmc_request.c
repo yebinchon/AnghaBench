@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct request_queue {struct mmc_queue* queuedata; } ;
-struct request {int /*<<< orphan*/  cmd_flags; } ;
-struct mmc_queue {int /*<<< orphan*/  thread; int /*<<< orphan*/  req; } ;
+struct request {int cmd_flags; } ;
+struct mmc_queue {int thread; int req; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EIO ; 
- int /*<<< orphan*/  REQ_QUIET ; 
- int /*<<< orphan*/  __blk_end_request_all (struct request*,int /*<<< orphan*/ ) ; 
- struct request* blk_fetch_request (struct request_queue*) ; 
- int /*<<< orphan*/  wake_up_process (int /*<<< orphan*/ ) ; 
+
+ int EIO ;
+ int REQ_QUIET ;
+ int __blk_end_request_all (struct request*,int ) ;
+ struct request* blk_fetch_request (struct request_queue*) ;
+ int wake_up_process (int ) ;
 
 __attribute__((used)) static void mmc_request(struct request_queue *q)
 {
-	struct mmc_queue *mq = q->queuedata;
-	struct request *req;
+ struct mmc_queue *mq = q->queuedata;
+ struct request *req;
 
-	if (!mq) {
-		while ((req = blk_fetch_request(q)) != NULL) {
-			req->cmd_flags |= REQ_QUIET;
-			__blk_end_request_all(req, -EIO);
-		}
-		return;
-	}
+ if (!mq) {
+  while ((req = blk_fetch_request(q)) != ((void*)0)) {
+   req->cmd_flags |= REQ_QUIET;
+   __blk_end_request_all(req, -EIO);
+  }
+  return;
+ }
 
-	if (!mq->req)
-		wake_up_process(mq->thread);
+ if (!mq->req)
+  wake_up_process(mq->thread);
 }

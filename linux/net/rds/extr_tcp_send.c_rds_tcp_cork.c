@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  val ;
+
+
+
+
+typedef int val ;
 struct socket {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SOL_TCP ; 
- int /*<<< orphan*/  TCP_CORK ; 
- int /*<<< orphan*/  kernel_setsockopt (struct socket*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*,int) ; 
+
+ int SOL_TCP ;
+ int TCP_CORK ;
+ int kernel_setsockopt (struct socket*,int ,int ,void*,int) ;
 
 __attribute__((used)) static void rds_tcp_cork(struct socket *sock, int val)
 {
-	kernel_setsockopt(sock, SOL_TCP, TCP_CORK, (void *)&val, sizeof(val));
+ kernel_setsockopt(sock, SOL_TCP, TCP_CORK, (void *)&val, sizeof(val));
 }

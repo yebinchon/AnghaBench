@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {scalar_t__ top; scalar_t__ bottom; } ;
-typedef  TYPE_1__ RECT ;
-typedef  int /*<<< orphan*/  INT ;
-typedef  int /*<<< orphan*/  HWND ;
+typedef TYPE_1__ RECT ;
+typedef int INT ;
+typedef int HWND ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetClientRect (int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  GetDlgItem (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IDC_BROWSE_REBAR ; 
- int /*<<< orphan*/  IDC_BROWSE_STATUSBAR ; 
- int /*<<< orphan*/  InflateRect (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ IsWindowVisible (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RB_GETBARHEIGHT ; 
- int /*<<< orphan*/  SendMessageW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int GetClientRect (int ,TYPE_1__*) ;
+ int GetDlgItem (int ,int ) ;
+ int IDC_BROWSE_REBAR ;
+ int IDC_BROWSE_STATUSBAR ;
+ int InflateRect (TYPE_1__*,int ,int ) ;
+ scalar_t__ IsWindowVisible (int ) ;
+ int RB_GETBARHEIGHT ;
+ int SendMessageW (int ,int ,int ,int ) ;
 
 __attribute__((used)) static void adjust_ie_docobj_rect(HWND frame, RECT* rc)
 {

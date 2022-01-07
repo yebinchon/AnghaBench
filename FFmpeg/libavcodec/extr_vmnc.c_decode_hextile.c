@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_3__ {int bpp2; int /*<<< orphan*/  avctx; int /*<<< orphan*/  bigendian; } ;
-typedef  TYPE_1__ VmncContext ;
-typedef  int /*<<< orphan*/  GetByteContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int HT_BKG ; 
- int HT_CLR ; 
- int HT_FG ; 
- int HT_RAW ; 
- int HT_SUB ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int bytestream2_get_byte (int /*<<< orphan*/ *) ; 
- int bytestream2_get_bytes_left (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  paint_raw (int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ *,int const,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  paint_rect (int /*<<< orphan*/ *,int,int,int,int,int,int const,int) ; 
- int vmnc_get_pixel (int /*<<< orphan*/ *,int const,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_3__ {int bpp2; int avctx; int bigendian; } ;
+typedef TYPE_1__ VmncContext ;
+typedef int GetByteContext ;
+
+
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ int HT_BKG ;
+ int HT_CLR ;
+ int HT_FG ;
+ int HT_RAW ;
+ int HT_SUB ;
+ int av_log (int ,int ,char*) ;
+ int bytestream2_get_byte (int *) ;
+ int bytestream2_get_bytes_left (int *) ;
+ int paint_raw (int *,int,int,int *,int const,int ,int) ;
+ int paint_rect (int *,int,int,int,int,int,int const,int) ;
+ int vmnc_get_pixel (int *,int const,int ) ;
 
 __attribute__((used)) static int decode_hextile(VmncContext *c, uint8_t* dst, GetByteContext *gb,
                           int w, int h, int stride)
@@ -42,7 +42,7 @@ __attribute__((used)) static int decode_hextile(VmncContext *c, uint8_t* dst, Ge
 
     for (j = 0; j < h; j += 16) {
         dst2 = dst;
-        bw   = 16;
+        bw = 16;
         if (j + 16 > h)
             bh = h - j;
         for (i = 0; i < w; i += 16, dst2 += 16 * bpp) {

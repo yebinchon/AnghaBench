@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct gspca_dev {int dummy; } ;
-typedef  int /*<<< orphan*/  s32 ;
+typedef int s32 ;
 
-/* Variables and functions */
- int EXPO_CHANGE ; 
- int LATENT_CHANGE ; 
- int /*<<< orphan*/  R00_PART_CONTROL ; 
- int /*<<< orphan*/  R1C_AD_EXPOSE_TIMEL ; 
- int /*<<< orphan*/  reg_w1 (struct gspca_dev*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  reg_w2 (struct gspca_dev*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int EXPO_CHANGE ;
+ int LATENT_CHANGE ;
+ int R00_PART_CONTROL ;
+ int R1C_AD_EXPOSE_TIMEL ;
+ int reg_w1 (struct gspca_dev*,int ,int) ;
+ int reg_w2 (struct gspca_dev*,int ,int ) ;
 
 __attribute__((used)) static void setexposure(struct gspca_dev *gspca_dev, s32 val)
 {
-	reg_w2(gspca_dev, R1C_AD_EXPOSE_TIMEL, val);
-	reg_w1(gspca_dev, R00_PART_CONTROL, LATENT_CHANGE | EXPO_CHANGE);
-						/* 0x84 */
+ reg_w2(gspca_dev, R1C_AD_EXPOSE_TIMEL, val);
+ reg_w1(gspca_dev, R00_PART_CONTROL, LATENT_CHANGE | EXPO_CHANGE);
+
 }

@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  umode_t ;
-typedef  int /*<<< orphan*/  uint64_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
-struct xfs_mount {int /*<<< orphan*/  m_super; } ;
-struct inode {int /*<<< orphan*/  i_rdev; int /*<<< orphan*/  i_mode; int /*<<< orphan*/  i_generation; int /*<<< orphan*/  i_nlink; } ;
-typedef  int /*<<< orphan*/  dev_t ;
 
-/* Variables and functions */
- int inode_init_always (int /*<<< orphan*/ ,struct inode*) ; 
- int /*<<< orphan*/  inode_peek_iversion (struct inode*) ; 
- int /*<<< orphan*/  inode_set_iversion_queried (struct inode*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_nlink (struct inode*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int umode_t ;
+typedef int uint64_t ;
+typedef int uint32_t ;
+struct xfs_mount {int m_super; } ;
+struct inode {int i_rdev; int i_mode; int i_generation; int i_nlink; } ;
+typedef int dev_t ;
+
+
+ int inode_init_always (int ,struct inode*) ;
+ int inode_peek_iversion (struct inode*) ;
+ int inode_set_iversion_queried (struct inode*,int ) ;
+ int set_nlink (struct inode*,int ) ;
 
 __attribute__((used)) static int
 xfs_reinit_inode(
-	struct xfs_mount	*mp,
-	struct inode		*inode)
+ struct xfs_mount *mp,
+ struct inode *inode)
 {
-	int		error;
-	uint32_t	nlink = inode->i_nlink;
-	uint32_t	generation = inode->i_generation;
-	uint64_t	version = inode_peek_iversion(inode);
-	umode_t		mode = inode->i_mode;
-	dev_t		dev = inode->i_rdev;
+ int error;
+ uint32_t nlink = inode->i_nlink;
+ uint32_t generation = inode->i_generation;
+ uint64_t version = inode_peek_iversion(inode);
+ umode_t mode = inode->i_mode;
+ dev_t dev = inode->i_rdev;
 
-	error = inode_init_always(mp->m_super, inode);
+ error = inode_init_always(mp->m_super, inode);
 
-	set_nlink(inode, nlink);
-	inode->i_generation = generation;
-	inode_set_iversion_queried(inode, version);
-	inode->i_mode = mode;
-	inode->i_rdev = dev;
-	return error;
+ set_nlink(inode, nlink);
+ inode->i_generation = generation;
+ inode_set_iversion_queried(inode, version);
+ inode->i_mode = mode;
+ inode->i_rdev = dev;
+ return error;
 }

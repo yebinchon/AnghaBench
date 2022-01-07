@@ -1,35 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int ACE4_ADD_FILE ; 
- int ACE4_ADD_SUBDIRECTORY ; 
- int ACE4_APPEND_DATA ; 
- int ACE4_DELETE ; 
- int ACE4_DELETE_CHILD ; 
- int ACE4_EXECUTE ; 
- int ACE4_LIST_DIRECTORY ; 
- int ACE4_READ_ACL ; 
- int ACE4_READ_ATTRIBUTES ; 
- int ACE4_READ_DATA ; 
- int ACE4_READ_NAMED_ATTRS ; 
- int ACE4_SYNCHRONIZE ; 
- int ACE4_WRITE_ACL ; 
- int ACE4_WRITE_ATTRIBUTES ; 
- int ACE4_WRITE_DATA ; 
- int ACE4_WRITE_NAMED_ATTRS ; 
- int ACE4_WRITE_OWNER ; 
- int /*<<< orphan*/  dprintf (int,char*,...) ; 
+ int ACE4_ADD_FILE ;
+ int ACE4_ADD_SUBDIRECTORY ;
+ int ACE4_APPEND_DATA ;
+ int ACE4_DELETE ;
+ int ACE4_DELETE_CHILD ;
+ int ACE4_EXECUTE ;
+ int ACE4_LIST_DIRECTORY ;
+ int ACE4_READ_ACL ;
+ int ACE4_READ_ATTRIBUTES ;
+ int ACE4_READ_DATA ;
+ int ACE4_READ_NAMED_ATTRS ;
+ int ACE4_SYNCHRONIZE ;
+ int ACE4_WRITE_ACL ;
+ int ACE4_WRITE_ATTRIBUTES ;
+ int ACE4_WRITE_DATA ;
+ int ACE4_WRITE_NAMED_ATTRS ;
+ int ACE4_WRITE_OWNER ;
+ int dprintf (int,char*,...) ;
 
 void print_nfs_access_mask(int on, int m)
 {

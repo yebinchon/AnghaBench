@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct usb_phy {int dummy; } ;
 
-/* Variables and functions */
- int ENODEV ; 
- int /*<<< orphan*/  ULPI_SCRATCH ; 
- int /*<<< orphan*/  pr_err (char*) ; 
- int /*<<< orphan*/  pr_info (char*) ; 
- int usb_phy_io_read (struct usb_phy*,int /*<<< orphan*/ ) ; 
- int usb_phy_io_write (struct usb_phy*,unsigned int,int /*<<< orphan*/ ) ; 
+
+ int ENODEV ;
+ int ULPI_SCRATCH ;
+ int pr_err (char*) ;
+ int pr_info (char*) ;
+ int usb_phy_io_read (struct usb_phy*,int ) ;
+ int usb_phy_io_write (struct usb_phy*,unsigned int,int ) ;
 
 __attribute__((used)) static int ulpi_check_integrity(struct usb_phy *phy)
 {
-	int ret, i;
-	unsigned int val = 0x55;
+ int ret, i;
+ unsigned int val = 0x55;
 
-	for (i = 0; i < 2; i++) {
-		ret = usb_phy_io_write(phy, val, ULPI_SCRATCH);
-		if (ret < 0)
-			return ret;
+ for (i = 0; i < 2; i++) {
+  ret = usb_phy_io_write(phy, val, ULPI_SCRATCH);
+  if (ret < 0)
+   return ret;
 
-		ret = usb_phy_io_read(phy, ULPI_SCRATCH);
-		if (ret < 0)
-			return ret;
+  ret = usb_phy_io_read(phy, ULPI_SCRATCH);
+  if (ret < 0)
+   return ret;
 
-		if (ret != val) {
-			pr_err("ULPI integrity check: failed!");
-			return -ENODEV;
-		}
-		val = val << 1;
-	}
+  if (ret != val) {
+   pr_err("ULPI integrity check: failed!");
+   return -ENODEV;
+  }
+  val = val << 1;
+ }
 
-	pr_info("ULPI integrity check: passed.\n");
+ pr_info("ULPI integrity check: passed.\n");
 
-	return 0;
+ return 0;
 }

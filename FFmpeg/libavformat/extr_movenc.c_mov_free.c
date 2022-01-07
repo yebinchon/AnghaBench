@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct eac3_info {scalar_t__ tag; int /*<<< orphan*/  cenc; struct eac3_info* vos_data; scalar_t__ vos_len; struct eac3_info* eac3_priv; int /*<<< orphan*/  pkt; int /*<<< orphan*/  cover_image; struct eac3_info* frag_info; struct eac3_info* cluster; struct eac3_info* par; struct eac3_info* extradata; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct eac3_info {scalar_t__ tag; int cenc; struct eac3_info* vos_data; scalar_t__ vos_len; struct eac3_info* eac3_priv; int pkt; int cover_image; struct eac3_info* frag_info; struct eac3_info* cluster; struct eac3_info* par; struct eac3_info* extradata; } ;
 struct TYPE_5__ {TYPE_1__* priv_data; } ;
 struct TYPE_4__ {int chapter_track; int nb_streams; struct eac3_info* tracks; scalar_t__ nb_meta_tmcd; } ;
-typedef  TYPE_1__ MOVMuxContext ;
-typedef  TYPE_2__ AVFormatContext ;
+typedef TYPE_1__ MOVMuxContext ;
+typedef TYPE_2__ AVFormatContext ;
 
-/* Variables and functions */
- scalar_t__ MKTAG (char,char,char,char) ; 
- int /*<<< orphan*/  av_freep (struct eac3_info**) ; 
- int /*<<< orphan*/  av_packet_unref (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ff_mov_cenc_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ff_mov_close_hinting (struct eac3_info*) ; 
+
+ scalar_t__ MKTAG (char,char,char,char) ;
+ int av_freep (struct eac3_info**) ;
+ int av_packet_unref (int *) ;
+ int ff_mov_cenc_free (int *) ;
+ int ff_mov_close_hinting (struct eac3_info*) ;
 
 __attribute__((used)) static void mov_free(AVFormatContext *s)
 {

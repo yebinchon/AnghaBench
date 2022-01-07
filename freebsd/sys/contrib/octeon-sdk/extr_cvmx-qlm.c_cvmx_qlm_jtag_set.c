@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint64_t ;
-typedef  int uint32_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint64_t ;
+typedef int uint32_t ;
 struct TYPE_3__ {int start_bit; int stop_bit; } ;
-typedef  TYPE_1__ __cvmx_qlm_jtag_field_t ;
+typedef TYPE_1__ __cvmx_qlm_jtag_field_t ;
 
-/* Variables and functions */
- int CVMX_QLM_JTAG_UINT32 ; 
- int** __cvmx_qlm_jtag_xor_ref ; 
- TYPE_1__* __cvmx_qlm_lookup_field (char const*) ; 
- int /*<<< orphan*/  cvmx_helper_qlm_jtag_capture (int) ; 
- int cvmx_helper_qlm_jtag_shift (int,int,int) ; 
- int /*<<< orphan*/  cvmx_helper_qlm_jtag_update (int) ; 
- int cvmx_qlm_get_lanes (int) ; 
- int cvmx_qlm_jtag_get_length () ; 
- int /*<<< orphan*/  cvmx_wait_usec (int) ; 
+
+ int CVMX_QLM_JTAG_UINT32 ;
+ int** __cvmx_qlm_jtag_xor_ref ;
+ TYPE_1__* __cvmx_qlm_lookup_field (char const*) ;
+ int cvmx_helper_qlm_jtag_capture (int) ;
+ int cvmx_helper_qlm_jtag_shift (int,int,int) ;
+ int cvmx_helper_qlm_jtag_update (int) ;
+ int cvmx_qlm_get_lanes (int) ;
+ int cvmx_qlm_jtag_get_length () ;
+ int cvmx_wait_usec (int) ;
 
 void cvmx_qlm_jtag_set(int qlm, int lane, const char *name, uint64_t value)
 {
@@ -40,12 +40,12 @@ void cvmx_qlm_jtag_set(int qlm, int lane, const char *name, uint64_t value)
     if (!field)
         return;
 
-    /* Get the current state */
+
     cvmx_helper_qlm_jtag_capture(qlm);
     for (i=0; i<CVMX_QLM_JTAG_UINT32; i++)
         shift_values[i] = cvmx_helper_qlm_jtag_shift(qlm, 32, 0);
 
-    /* Put new data in our local array */
+
     for (l=0; l<num_lanes; l++)
     {
         uint64_t new_value = value;
@@ -64,7 +64,7 @@ void cvmx_qlm_jtag_set(int qlm, int lane, const char *name, uint64_t value)
         }
     }
 
-    /* Shift out data and xor with reference */
+
     while (bits < total_length)
     {
         uint32_t shift = shift_values[bits/32] ^ __cvmx_qlm_jtag_xor_ref[qlm][bits/32];
@@ -75,10 +75,10 @@ void cvmx_qlm_jtag_set(int qlm, int lane, const char *name, uint64_t value)
         bits += 32;
     }
 
-    /* Update the new data */
+
     cvmx_helper_qlm_jtag_update(qlm);
-    /* Always give the QLM 1ms to settle after every update. This may not
-       always be needed, but some of the options make significant
-       electrical changes */
+
+
+
     cvmx_wait_usec(1000);
 }

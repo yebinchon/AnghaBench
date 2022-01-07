@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TDI_class ; 
- int /*<<< orphan*/ * dump_begin (int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  dump_class_hierarchy_1 (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dump_end (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int tree ;
+typedef int FILE ;
+
+
+ int TDI_class ;
+ int * dump_begin (int ,int*) ;
+ int dump_class_hierarchy_1 (int *,int,int ) ;
+ int dump_end (int ,int *) ;
 
 __attribute__((used)) static void
 dump_class_hierarchy (tree t)

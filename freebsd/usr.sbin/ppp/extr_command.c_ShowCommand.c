@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct cmdargs {scalar_t__ argc; scalar_t__ argn; int /*<<< orphan*/  prompt; int /*<<< orphan*/  cx; int /*<<< orphan*/  argv; int /*<<< orphan*/  bundle; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FindExec (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LogWARN ; 
- int /*<<< orphan*/  ShowCommands ; 
- int /*<<< orphan*/  log_Printf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  prompt_Printf (int /*<<< orphan*/ ,char*) ; 
+
+
+
+struct cmdargs {scalar_t__ argc; scalar_t__ argn; int prompt; int cx; int argv; int bundle; } ;
+
+
+ int FindExec (int ,int ,scalar_t__,scalar_t__,int ,int ,int ) ;
+ int LogWARN ;
+ int ShowCommands ;
+ int log_Printf (int ,char*) ;
+ int prompt_Printf (int ,char*) ;
 
 __attribute__((used)) static int
 ShowCommand(struct cmdargs const *arg)

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct gpio {int /*<<< orphan*/  en; int /*<<< orphan*/  id; int /*<<< orphan*/  service; } ;
-typedef  enum gpio_result { ____Placeholder_gpio_result } gpio_result ;
 
-/* Variables and functions */
- int dal_gpio_service_lock (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct gpio {int en; int id; int service; } ;
+typedef enum gpio_result { ____Placeholder_gpio_result } gpio_result ;
+
+
+ int dal_gpio_service_lock (int ,int ,int ) ;
 
 enum gpio_result dal_gpio_lock_pin(
-	struct gpio *gpio)
+ struct gpio *gpio)
 {
-	return dal_gpio_service_lock(gpio->service, gpio->id, gpio->en);
+ return dal_gpio_service_lock(gpio->service, gpio->id, gpio->en);
 }

@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sd_bus_message ;
 
-/* Variables and functions */
- scalar_t__ ARG_STDIO_DIRECT ; 
- scalar_t__ ARG_STDIO_NONE ; 
- int /*<<< orphan*/  STDERR_FILENO ; 
- int /*<<< orphan*/  STDIN_FILENO ; 
- int /*<<< orphan*/  STDOUT_FILENO ; 
- int /*<<< orphan*/  UNIT_SERVICE ; 
- int* arg_cmdline ; 
- int* arg_environment ; 
- int arg_exec_group ; 
- int arg_exec_user ; 
- int /*<<< orphan*/  arg_nice ; 
- scalar_t__ arg_nice_set ; 
- int /*<<< orphan*/  arg_property ; 
- int arg_remain_after_exit ; 
- int arg_service_type ; 
- scalar_t__ arg_stdio ; 
- scalar_t__ arg_wait ; 
- int arg_working_directory ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ *) ; 
- int bus_log_create_error (int) ; 
- char* getenv (char*) ; 
- scalar_t__ isatty (int /*<<< orphan*/ ) ; 
- int sd_bus_message_append (int /*<<< orphan*/ *,char*,...) ; 
- int sd_bus_message_append_strv (int /*<<< orphan*/ *,int*) ; 
- int sd_bus_message_close_container (int /*<<< orphan*/ *) ; 
- int sd_bus_message_open_container (int /*<<< orphan*/ *,char,char*) ; 
- char* strjoina (char*,char const*) ; 
- int /*<<< orphan*/  strv_isempty (int*) ; 
- int transient_cgroup_set_properties (int /*<<< orphan*/ *) ; 
- int transient_kill_set_properties (int /*<<< orphan*/ *) ; 
- int transient_unit_set_properties (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int sd_bus_message ;
+
+
+ scalar_t__ ARG_STDIO_DIRECT ;
+ scalar_t__ ARG_STDIO_NONE ;
+ int STDERR_FILENO ;
+ int STDIN_FILENO ;
+ int STDOUT_FILENO ;
+ int UNIT_SERVICE ;
+ int* arg_cmdline ;
+ int* arg_environment ;
+ int arg_exec_group ;
+ int arg_exec_user ;
+ int arg_nice ;
+ scalar_t__ arg_nice_set ;
+ int arg_property ;
+ int arg_remain_after_exit ;
+ int arg_service_type ;
+ scalar_t__ arg_stdio ;
+ scalar_t__ arg_wait ;
+ int arg_working_directory ;
+ int assert (int *) ;
+ int bus_log_create_error (int) ;
+ char* getenv (char*) ;
+ scalar_t__ isatty (int ) ;
+ int sd_bus_message_append (int *,char*,...) ;
+ int sd_bus_message_append_strv (int *,int*) ;
+ int sd_bus_message_close_container (int *) ;
+ int sd_bus_message_open_container (int *,char,char*) ;
+ char* strjoina (char*,char const*) ;
+ int strv_isempty (int*) ;
+ int transient_cgroup_set_properties (int *) ;
+ int transient_kill_set_properties (int *) ;
+ int transient_unit_set_properties (int *,int ,int ) ;
 
 __attribute__((used)) static int transient_service_set_properties(sd_bus_message *m, const char *pty_path) {
-        bool send_term = false;
+        bool send_term = 0;
         int r;
 
         assert(m);
@@ -115,7 +115,7 @@ __attribute__((used)) static int transient_service_set_properties(sd_bus_message
                 if (r < 0)
                         return bus_log_create_error(r);
 
-                send_term = true;
+                send_term = 1;
 
         } else if (arg_stdio == ARG_STDIO_DIRECT) {
                 r = sd_bus_message_append(m,
@@ -171,7 +171,7 @@ __attribute__((used)) static int transient_service_set_properties(sd_bus_message
                         return bus_log_create_error(r);
         }
 
-        /* Exec container */
+
         if (!strv_isempty(arg_cmdline)) {
                 r = sd_bus_message_open_container(m, 'r', "sv");
                 if (r < 0)
@@ -201,7 +201,7 @@ __attribute__((used)) static int transient_service_set_properties(sd_bus_message
                 if (r < 0)
                         return bus_log_create_error(r);
 
-                r = sd_bus_message_append(m, "b", false);
+                r = sd_bus_message_append(m, "b", 0);
                 if (r < 0)
                         return bus_log_create_error(r);
 

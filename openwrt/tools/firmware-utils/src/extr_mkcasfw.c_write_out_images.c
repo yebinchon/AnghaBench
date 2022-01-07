@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct image_desc {int dummy; } ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef int FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fs_image ; 
- int image_writeout (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  kernel_image ; 
+
+ int fs_image ;
+ int image_writeout (int *,int *) ;
+ int kernel_image ;
 
 int
 write_out_images(FILE *outfile)
 {
-	struct image_desc *desc;
-	int i, res;
+ struct image_desc *desc;
+ int i, res;
 
-	res = image_writeout(outfile, &kernel_image);
-	if (res)
-		return res;
+ res = image_writeout(outfile, &kernel_image);
+ if (res)
+  return res;
 
-	res = image_writeout(outfile, &fs_image);
-	if (res)
-		return res;
+ res = image_writeout(outfile, &fs_image);
+ if (res)
+  return res;
 
-	return 0;
+ return 0;
 }

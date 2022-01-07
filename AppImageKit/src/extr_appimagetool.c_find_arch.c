@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  gchar ;
-typedef  int /*<<< orphan*/  GDir ;
 
-/* Variables and functions */
- int /*<<< orphan*/  G_FILE_TEST_IS_DIR ; 
- int /*<<< orphan*/  G_FILE_TEST_IS_EXECUTABLE ; 
- int /*<<< orphan*/  G_FILE_TEST_IS_SYMLINK ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/ * g_build_filename (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  g_dir_close (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * g_dir_open (int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * g_dir_read_name (int /*<<< orphan*/ *) ; 
- scalar_t__ g_file_test (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ g_pattern_match_simple (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  g_strerror (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  g_warning (char*,int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  guess_arch_of_file (int /*<<< orphan*/ *,int*) ; 
+
+
+
+typedef int gchar ;
+typedef int GDir ;
+
+
+ int G_FILE_TEST_IS_DIR ;
+ int G_FILE_TEST_IS_EXECUTABLE ;
+ int G_FILE_TEST_IS_SYMLINK ;
+ int errno ;
+ int * g_build_filename (int const*,int const*,int *) ;
+ int g_dir_close (int *) ;
+ int * g_dir_open (int const*,int ,int *) ;
+ int * g_dir_read_name (int *) ;
+ scalar_t__ g_file_test (int *,int ) ;
+ scalar_t__ g_pattern_match_simple (int const*,int const*) ;
+ int g_strerror (int ) ;
+ int g_warning (char*,int const*,int ) ;
+ int guess_arch_of_file (int *,int*) ;
 
 void find_arch(const gchar *real_path, const gchar *pattern, bool* archs) {
     GDir *dir;
     gchar *full_name;
-    dir = g_dir_open(real_path, 0, NULL);
-    if (dir != NULL) {
+    dir = g_dir_open(real_path, 0, ((void*)0));
+    if (dir != ((void*)0)) {
         const gchar *entry;
-        while ((entry = g_dir_read_name(dir)) != NULL) {
-            full_name = g_build_filename(real_path, entry, NULL);
+        while ((entry = g_dir_read_name(dir)) != ((void*)0)) {
+            full_name = g_build_filename(real_path, entry, ((void*)0));
             if (g_file_test(full_name, G_FILE_TEST_IS_SYMLINK)) {
             } else if (g_file_test(full_name, G_FILE_TEST_IS_DIR)) {
                 find_arch(full_name, pattern, archs);

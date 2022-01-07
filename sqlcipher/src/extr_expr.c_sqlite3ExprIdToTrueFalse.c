@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  zToken; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int zToken; } ;
 struct TYPE_6__ {scalar_t__ op; TYPE_1__ u; } ;
-typedef  TYPE_2__ Expr ;
+typedef TYPE_2__ Expr ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EP_Quoted ; 
- int /*<<< orphan*/  ExprHasProperty (TYPE_2__*,int /*<<< orphan*/ ) ; 
- scalar_t__ TK_ID ; 
- scalar_t__ TK_STRING ; 
- scalar_t__ TK_TRUEFALSE ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ sqlite3StrICmp (int /*<<< orphan*/ ,char*) ; 
+
+ int EP_Quoted ;
+ int ExprHasProperty (TYPE_2__*,int ) ;
+ scalar_t__ TK_ID ;
+ scalar_t__ TK_STRING ;
+ scalar_t__ TK_TRUEFALSE ;
+ int assert (int) ;
+ scalar_t__ sqlite3StrICmp (int ,char*) ;
 
 int sqlite3ExprIdToTrueFalse(Expr *pExpr){
   assert( pExpr->op==TK_ID || pExpr->op==TK_STRING );

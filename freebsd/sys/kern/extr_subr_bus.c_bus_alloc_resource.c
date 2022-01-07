@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_int ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int u_int ;
 struct resource {int dummy; } ;
-typedef  int /*<<< orphan*/  rman_res_t ;
-typedef  TYPE_1__* device_t ;
-struct TYPE_4__ {int /*<<< orphan*/ * parent; } ;
+typedef int rman_res_t ;
+typedef TYPE_1__* device_t ;
+struct TYPE_4__ {int * parent; } ;
 
-/* Variables and functions */
- struct resource* BUS_ALLOC_RESOURCE (int /*<<< orphan*/ *,TYPE_1__*,int,int*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ struct resource* BUS_ALLOC_RESOURCE (int *,TYPE_1__*,int,int*,int ,int ,int ,int ) ;
 
 struct resource *
 bus_alloc_resource(device_t dev, int type, int *rid, rman_res_t start,
     rman_res_t end, rman_res_t count, u_int flags)
 {
-	struct resource *res;
+ struct resource *res;
 
-	if (dev->parent == NULL)
-		return (NULL);
-	res = BUS_ALLOC_RESOURCE(dev->parent, dev, type, rid, start, end,
-	    count, flags);
-	return (res);
+ if (dev->parent == ((void*)0))
+  return (((void*)0));
+ res = BUS_ALLOC_RESOURCE(dev->parent, dev, type, rid, start, end,
+     count, flags);
+ return (res);
 }

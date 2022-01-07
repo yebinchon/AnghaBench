@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ut8 ;
-typedef  int /*<<< orphan*/  ut64 ;
-struct TYPE_5__ {int /*<<< orphan*/  data; } ;
-typedef  TYPE_1__ RIODesc ;
-typedef  int /*<<< orphan*/  RIO ;
-typedef  int /*<<< orphan*/  RBuffer ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * RIOSPARSE_BUF (TYPE_1__*) ; 
- int /*<<< orphan*/  RIOSPARSE_OFF (TYPE_1__*) ; 
- int r_buf_write_at (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int ut8 ;
+typedef int ut64 ;
+struct TYPE_5__ {int data; } ;
+typedef TYPE_1__ RIODesc ;
+typedef int RIO ;
+typedef int RBuffer ;
+
+
+ int * RIOSPARSE_BUF (TYPE_1__*) ;
+ int RIOSPARSE_OFF (TYPE_1__*) ;
+ int r_buf_write_at (int *,int ,int const*,int) ;
 
 __attribute__((used)) static int __write(RIO *io, RIODesc *fd, const ut8 *buf, int count) {
-	ut64 o;
-	RBuffer *b;
-	if (!fd || !fd->data) {
-		return -1;
-	}
-	b = RIOSPARSE_BUF(fd);
-	o = RIOSPARSE_OFF(fd);
-	return r_buf_write_at (b, o, buf, count);
+ ut64 o;
+ RBuffer *b;
+ if (!fd || !fd->data) {
+  return -1;
+ }
+ b = RIOSPARSE_BUF(fd);
+ o = RIOSPARSE_OFF(fd);
+ return r_buf_write_at (b, o, buf, count);
 }

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct serio {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SERIO_RESCAN_PORT ; 
- int /*<<< orphan*/  serio_queue_event (struct serio*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int SERIO_RESCAN_PORT ;
+ int serio_queue_event (struct serio*,int *,int ) ;
 
 void serio_rescan(struct serio *serio)
 {
-	serio_queue_event(serio, NULL, SERIO_RESCAN_PORT);
+ serio_queue_event(serio, ((void*)0), SERIO_RESCAN_PORT);
 }

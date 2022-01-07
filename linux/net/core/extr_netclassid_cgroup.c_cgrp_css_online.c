@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct cgroup_subsys_state {struct cgroup_subsys_state* parent; } ;
-struct cgroup_cls_state {int /*<<< orphan*/  classid; } ;
+struct cgroup_cls_state {int classid; } ;
 
-/* Variables and functions */
- struct cgroup_cls_state* css_cls_state (struct cgroup_subsys_state*) ; 
+
+ struct cgroup_cls_state* css_cls_state (struct cgroup_subsys_state*) ;
 
 __attribute__((used)) static int cgrp_css_online(struct cgroup_subsys_state *css)
 {
-	struct cgroup_cls_state *cs = css_cls_state(css);
-	struct cgroup_cls_state *parent = css_cls_state(css->parent);
+ struct cgroup_cls_state *cs = css_cls_state(css);
+ struct cgroup_cls_state *parent = css_cls_state(css->parent);
 
-	if (parent)
-		cs->classid = parent->classid;
+ if (parent)
+  cs->classid = parent->classid;
 
-	return 0;
+ return 0;
 }

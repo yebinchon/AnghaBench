@@ -1,96 +1,96 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int gint ;
-typedef  scalar_t__ gdouble ;
-typedef  scalar_t__ gchar ;
-typedef  scalar_t__ gboolean ;
-typedef  int /*<<< orphan*/  GtkWidget ;
-typedef  int /*<<< orphan*/  GtkTreeModel ;
-typedef  int /*<<< orphan*/  GtkTreeIter ;
-typedef  int /*<<< orphan*/  GtkTextBuffer ;
-typedef  scalar_t__ GtkFileChooserAction ;
-typedef  int /*<<< orphan*/  GtkEntry ;
-typedef  int /*<<< orphan*/  GhbValue ;
-typedef  scalar_t__ GType ;
 
-/* Variables and functions */
- scalar_t__ FALSE ; 
- scalar_t__ GHB_ARRAY ; 
- scalar_t__ GHB_DICT ; 
- int /*<<< orphan*/  GTK_BIN (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GTK_CHECK_MENU_ITEM (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GTK_COMBO_BOX (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * GTK_ENTRY (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GTK_FILE_CHOOSER (int /*<<< orphan*/ *) ; 
- scalar_t__ GTK_FILE_CHOOSER_ACTION_CREATE_FOLDER ; 
- scalar_t__ GTK_FILE_CHOOSER_ACTION_SAVE ; 
- scalar_t__ GTK_FILE_CHOOSER_ACTION_SELECT_FOLDER ; 
- int /*<<< orphan*/  GTK_LABEL (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GTK_RANGE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GTK_SCALE_BUTTON (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GTK_SPIN_BUTTON (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GTK_TEXT_VIEW (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GTK_TOGGLE_BUTTON (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GTK_TOGGLE_TOOL_BUTTON (int /*<<< orphan*/ *) ; 
- scalar_t__ GTK_TYPE_CHECK_BUTTON ; 
- scalar_t__ GTK_TYPE_CHECK_MENU_ITEM ; 
- scalar_t__ GTK_TYPE_COMBO_BOX ; 
- scalar_t__ GTK_TYPE_ENTRY ; 
- scalar_t__ GTK_TYPE_FILE_CHOOSER_BUTTON ; 
- scalar_t__ GTK_TYPE_LABEL ; 
- scalar_t__ GTK_TYPE_RADIO_BUTTON ; 
- scalar_t__ GTK_TYPE_SCALE ; 
- scalar_t__ GTK_TYPE_SCALE_BUTTON ; 
- scalar_t__ GTK_TYPE_SPIN_BUTTON ; 
- scalar_t__ GTK_TYPE_TEXT_VIEW ; 
- scalar_t__ GTK_TYPE_TOGGLE_BUTTON ; 
- scalar_t__ GTK_TYPE_TOGGLE_TOOL_BUTTON ; 
- int /*<<< orphan*/  G_FILE_TEST_EXISTS ; 
- int /*<<< orphan*/  G_FILE_TEST_IS_DIR ; 
- scalar_t__ G_OBJECT_TYPE (int /*<<< orphan*/ *) ; 
- scalar_t__ TRUE ; 
- scalar_t__ g_file_test (scalar_t__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  g_free (scalar_t__*) ; 
- scalar_t__* g_path_get_dirname (scalar_t__*) ; 
- int /*<<< orphan*/  g_warning (char*,char const*) ; 
- int /*<<< orphan*/  ghb_editable_set_text (int /*<<< orphan*/ *,scalar_t__*) ; 
- char* ghb_get_setting_key (int /*<<< orphan*/ *) ; 
- scalar_t__ ghb_value_get_double (int /*<<< orphan*/  const*) ; 
- int ghb_value_get_int (int /*<<< orphan*/  const*) ; 
- scalar_t__* ghb_value_get_string_xform (int /*<<< orphan*/  const*) ; 
- scalar_t__ ghb_value_type (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  gtk_bin_get_child (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gtk_check_menu_item_set_active (int /*<<< orphan*/ ,int) ; 
- scalar_t__ gtk_combo_box_get_has_entry (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * gtk_combo_box_get_model (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gtk_combo_box_set_active (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gtk_combo_box_set_active_iter (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ gtk_file_chooser_get_action (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gtk_file_chooser_set_current_folder (int /*<<< orphan*/ ,scalar_t__*) ; 
- int /*<<< orphan*/  gtk_file_chooser_set_filename (int /*<<< orphan*/ ,scalar_t__*) ; 
- int /*<<< orphan*/  gtk_file_chooser_unselect_all (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gtk_label_set_markup (int /*<<< orphan*/ ,scalar_t__*) ; 
- int /*<<< orphan*/  gtk_range_set_value (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  gtk_scale_button_set_value (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  gtk_spin_button_set_value (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  gtk_text_buffer_set_text (int /*<<< orphan*/ *,scalar_t__*,int) ; 
- int /*<<< orphan*/ * gtk_text_view_get_buffer (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gtk_toggle_button_set_active (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  gtk_toggle_tool_button_set_active (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  gtk_tree_model_get (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,...) ; 
- scalar_t__ gtk_tree_model_get_iter_first (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ gtk_tree_model_iter_next (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ strcasecmp (scalar_t__*,scalar_t__*) ; 
+
+
+
+typedef int gint ;
+typedef scalar_t__ gdouble ;
+typedef scalar_t__ gchar ;
+typedef scalar_t__ gboolean ;
+typedef int GtkWidget ;
+typedef int GtkTreeModel ;
+typedef int GtkTreeIter ;
+typedef int GtkTextBuffer ;
+typedef scalar_t__ GtkFileChooserAction ;
+typedef int GtkEntry ;
+typedef int GhbValue ;
+typedef scalar_t__ GType ;
+
+
+ scalar_t__ FALSE ;
+ scalar_t__ GHB_ARRAY ;
+ scalar_t__ GHB_DICT ;
+ int GTK_BIN (int *) ;
+ int GTK_CHECK_MENU_ITEM (int *) ;
+ int GTK_COMBO_BOX (int *) ;
+ int * GTK_ENTRY (int ) ;
+ int GTK_FILE_CHOOSER (int *) ;
+ scalar_t__ GTK_FILE_CHOOSER_ACTION_CREATE_FOLDER ;
+ scalar_t__ GTK_FILE_CHOOSER_ACTION_SAVE ;
+ scalar_t__ GTK_FILE_CHOOSER_ACTION_SELECT_FOLDER ;
+ int GTK_LABEL (int *) ;
+ int GTK_RANGE (int *) ;
+ int GTK_SCALE_BUTTON (int *) ;
+ int GTK_SPIN_BUTTON (int *) ;
+ int GTK_TEXT_VIEW (int *) ;
+ int GTK_TOGGLE_BUTTON (int *) ;
+ int GTK_TOGGLE_TOOL_BUTTON (int *) ;
+ scalar_t__ GTK_TYPE_CHECK_BUTTON ;
+ scalar_t__ GTK_TYPE_CHECK_MENU_ITEM ;
+ scalar_t__ GTK_TYPE_COMBO_BOX ;
+ scalar_t__ GTK_TYPE_ENTRY ;
+ scalar_t__ GTK_TYPE_FILE_CHOOSER_BUTTON ;
+ scalar_t__ GTK_TYPE_LABEL ;
+ scalar_t__ GTK_TYPE_RADIO_BUTTON ;
+ scalar_t__ GTK_TYPE_SCALE ;
+ scalar_t__ GTK_TYPE_SCALE_BUTTON ;
+ scalar_t__ GTK_TYPE_SPIN_BUTTON ;
+ scalar_t__ GTK_TYPE_TEXT_VIEW ;
+ scalar_t__ GTK_TYPE_TOGGLE_BUTTON ;
+ scalar_t__ GTK_TYPE_TOGGLE_TOOL_BUTTON ;
+ int G_FILE_TEST_EXISTS ;
+ int G_FILE_TEST_IS_DIR ;
+ scalar_t__ G_OBJECT_TYPE (int *) ;
+ scalar_t__ TRUE ;
+ scalar_t__ g_file_test (scalar_t__*,int ) ;
+ int g_free (scalar_t__*) ;
+ scalar_t__* g_path_get_dirname (scalar_t__*) ;
+ int g_warning (char*,char const*) ;
+ int ghb_editable_set_text (int *,scalar_t__*) ;
+ char* ghb_get_setting_key (int *) ;
+ scalar_t__ ghb_value_get_double (int const*) ;
+ int ghb_value_get_int (int const*) ;
+ scalar_t__* ghb_value_get_string_xform (int const*) ;
+ scalar_t__ ghb_value_type (int const*) ;
+ int gtk_bin_get_child (int ) ;
+ int gtk_check_menu_item_set_active (int ,int) ;
+ scalar_t__ gtk_combo_box_get_has_entry (int ) ;
+ int * gtk_combo_box_get_model (int ) ;
+ int gtk_combo_box_set_active (int ,int ) ;
+ int gtk_combo_box_set_active_iter (int ,int *) ;
+ scalar_t__ gtk_file_chooser_get_action (int ) ;
+ int gtk_file_chooser_set_current_folder (int ,scalar_t__*) ;
+ int gtk_file_chooser_set_filename (int ,scalar_t__*) ;
+ int gtk_file_chooser_unselect_all (int ) ;
+ int gtk_label_set_markup (int ,scalar_t__*) ;
+ int gtk_range_set_value (int ,scalar_t__) ;
+ int gtk_scale_button_set_value (int ,scalar_t__) ;
+ int gtk_spin_button_set_value (int ,scalar_t__) ;
+ int gtk_text_buffer_set_text (int *,scalar_t__*,int) ;
+ int * gtk_text_view_get_buffer (int ) ;
+ int gtk_toggle_button_set_active (int ,int) ;
+ int gtk_toggle_tool_button_set_active (int ,int) ;
+ int gtk_tree_model_get (int *,int *,int,...) ;
+ scalar_t__ gtk_tree_model_get_iter_first (int *,int *) ;
+ scalar_t__ gtk_tree_model_iter_next (int *,int *) ;
+ scalar_t__ strcasecmp (scalar_t__*,scalar_t__*) ;
 
 void
 ghb_update_widget(GtkWidget *widget, const GhbValue *value)
@@ -104,13 +104,13 @@ ghb_update_widget(GtkWidget *widget, const GhbValue *value)
     type = ghb_value_type(value);
     if (type == GHB_ARRAY || type == GHB_DICT)
         return;
-    if (value == NULL) return;
+    if (value == ((void*)0)) return;
     str = tmp = ghb_value_get_string_xform(value);
     ival = ghb_value_get_int(value);
     dval = ghb_value_get_double(value);
     type = G_OBJECT_TYPE(widget);
 
-    if (str == NULL)
+    if (str == ((void*)0))
         str = "";
 
     if (type == GTK_TYPE_ENTRY)
@@ -232,7 +232,7 @@ ghb_update_widget(GtkWidget *widget, const GhbValue *value)
 
         if (str[0] == 0)
         {
-            // Do nothing
+
             ;
         }
         else if (act == GTK_FILE_CHOOSER_ACTION_SELECT_FOLDER ||

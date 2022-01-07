@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {TYPE_2__* weights; } ;
-typedef  TYPE_1__ user_t ;
+typedef TYPE_1__ user_t ;
 struct TYPE_5__ {int relaxation_time; int* values; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * TAT ; 
- TYPE_1__* get_user (int) ; 
- int targ_weights_last_update_time ; 
- TYPE_2__* targ_weights_vector_alloc () ; 
- int time_amortization_table_fast_exp (int /*<<< orphan*/ ,int const) ; 
- int weights_coords ; 
- int /*<<< orphan*/  weights_small_updates ; 
+
+ int * TAT ;
+ TYPE_1__* get_user (int) ;
+ int targ_weights_last_update_time ;
+ TYPE_2__* targ_weights_vector_alloc () ;
+ int time_amortization_table_fast_exp (int ,int const) ;
+ int weights_coords ;
+ int weights_small_updates ;
 
 int targ_weights_small_update (int vector_id, int coord_id, int relaxation_time, int value) {
-  if (coord_id < 0 || coord_id >= weights_coords || TAT == NULL) {
+  if (coord_id < 0 || coord_id >= weights_coords || TAT == ((void*)0)) {
     return -1;
   }
   user_t *U = get_user (vector_id);
-  if (U == NULL) {
+  if (U == ((void*)0)) {
     return -1;
   }
-  if (U->weights == NULL) {
+  if (U->weights == ((void*)0)) {
     U->weights = targ_weights_vector_alloc ();
   }
   const int dt = relaxation_time - U->weights->relaxation_time;

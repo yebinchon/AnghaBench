@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ra_hwdec_mapper {int /*<<< orphan*/ * tex; int /*<<< orphan*/  ra; struct priv* priv; } ;
+
+
+
+
+struct ra_hwdec_mapper {int * tex; int ra; struct priv* priv; } ;
 struct priv {scalar_t__ copy_tex; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ra_tex_free (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int ra_tex_free (int ,int *) ;
 
 __attribute__((used)) static void mapper_unmap(struct ra_hwdec_mapper *mapper)
 {

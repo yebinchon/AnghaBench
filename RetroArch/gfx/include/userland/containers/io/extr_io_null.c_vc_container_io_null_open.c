@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VC_CONTAINER_STATUS_T ;
-struct TYPE_3__ {int /*<<< orphan*/  pf_seek; int /*<<< orphan*/  pf_write; int /*<<< orphan*/  pf_read; int /*<<< orphan*/  pf_close; int /*<<< orphan*/  uri_parts; } ;
-typedef  TYPE_1__ VC_CONTAINER_IO_T ;
-typedef  char const* VC_CONTAINER_IO_MODE_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  VC_CONTAINER_ERROR_FORMAT_NOT_SUPPORTED ; 
- int /*<<< orphan*/  VC_CONTAINER_PARAM_UNUSED (char const*) ; 
- int /*<<< orphan*/  VC_CONTAINER_SUCCESS ; 
- int /*<<< orphan*/  io_null_close ; 
- int /*<<< orphan*/  io_null_read ; 
- int /*<<< orphan*/  io_null_seek ; 
- int /*<<< orphan*/  io_null_write ; 
- scalar_t__ strcasecmp (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  vc_uri_scheme (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int VC_CONTAINER_STATUS_T ;
+struct TYPE_3__ {int pf_seek; int pf_write; int pf_read; int pf_close; int uri_parts; } ;
+typedef TYPE_1__ VC_CONTAINER_IO_T ;
+typedef char const* VC_CONTAINER_IO_MODE_T ;
+
+
+ int VC_CONTAINER_ERROR_FORMAT_NOT_SUPPORTED ;
+ int VC_CONTAINER_PARAM_UNUSED (char const*) ;
+ int VC_CONTAINER_SUCCESS ;
+ int io_null_close ;
+ int io_null_read ;
+ int io_null_seek ;
+ int io_null_write ;
+ scalar_t__ strcasecmp (int ,char*) ;
+ int vc_uri_scheme (int ) ;
 
 VC_CONTAINER_STATUS_T vc_container_io_null_open( VC_CONTAINER_IO_T *p_ctx,
    const char *unused, VC_CONTAINER_IO_MODE_T mode )
@@ -33,7 +33,7 @@ VC_CONTAINER_STATUS_T vc_container_io_null_open( VC_CONTAINER_IO_T *p_ctx,
    VC_CONTAINER_PARAM_UNUSED(unused);
    VC_CONTAINER_PARAM_UNUSED(mode);
 
-   /* Check the URI */
+
    if (!vc_uri_scheme(p_ctx->uri_parts) ||
        (strcasecmp(vc_uri_scheme(p_ctx->uri_parts), "null") &&
         strcasecmp(vc_uri_scheme(p_ctx->uri_parts), "null")))

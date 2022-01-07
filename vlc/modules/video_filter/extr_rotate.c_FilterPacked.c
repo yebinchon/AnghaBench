@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_22__   TYPE_5__ ;
-typedef  struct TYPE_21__   TYPE_4__ ;
-typedef  struct TYPE_20__   TYPE_3__ ;
-typedef  struct TYPE_19__   TYPE_2__ ;
-typedef  struct TYPE_18__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-struct TYPE_18__ {int /*<<< orphan*/  i_chroma; } ;
+
+
+typedef struct TYPE_22__ TYPE_5__ ;
+typedef struct TYPE_21__ TYPE_4__ ;
+typedef struct TYPE_20__ TYPE_3__ ;
+typedef struct TYPE_19__ TYPE_2__ ;
+typedef struct TYPE_18__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_18__ {int i_chroma; } ;
 struct TYPE_20__ {TYPE_2__* p; TYPE_1__ format; } ;
-typedef  TYPE_3__ picture_t ;
+typedef TYPE_3__ picture_t ;
 struct TYPE_21__ {TYPE_5__* p_sys; } ;
-typedef  TYPE_4__ filter_t ;
-struct TYPE_22__ {int /*<<< orphan*/ * p_motion; } ;
-typedef  TYPE_5__ filter_sys_t ;
+typedef TYPE_4__ filter_t ;
+struct TYPE_22__ {int * p_motion; } ;
+typedef TYPE_5__ filter_sys_t ;
 struct TYPE_19__ {int i_visible_pitch; int i_visible_lines; int* p_pixels; int i_pitch; } ;
 
-/* Variables and functions */
- TYPE_3__* CopyInfoAndRelease (TYPE_3__*,TYPE_3__*) ; 
- scalar_t__ GetPackedYuvOffsets (int /*<<< orphan*/ ,int*,int*,int*) ; 
- scalar_t__ VLC_SUCCESS ; 
- int /*<<< orphan*/  fetch_trigo (TYPE_5__*,int*,int*) ; 
- TYPE_3__* filter_NewPicture (TYPE_4__*) ; 
- int motion_get_angle (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  msg_Warn (TYPE_4__*,char*,char*) ; 
- int /*<<< orphan*/  picture_Release (TYPE_3__*) ; 
- int /*<<< orphan*/  store_trigo (TYPE_5__*,int) ; 
+
+ TYPE_3__* CopyInfoAndRelease (TYPE_3__*,TYPE_3__*) ;
+ scalar_t__ GetPackedYuvOffsets (int ,int*,int*,int*) ;
+ scalar_t__ VLC_SUCCESS ;
+ int fetch_trigo (TYPE_5__*,int*,int*) ;
+ TYPE_3__* filter_NewPicture (TYPE_4__*) ;
+ int motion_get_angle (int *) ;
+ int msg_Warn (TYPE_4__*,char*,char*) ;
+ int picture_Release (TYPE_3__*) ;
+ int store_trigo (TYPE_5__*,int) ;
 
 __attribute__((used)) static picture_t *FilterPacked( filter_t *p_filter, picture_t *p_pic )
 {
     picture_t *p_outpic;
     filter_sys_t *p_sys = p_filter->p_sys;
 
-    if( !p_pic ) return NULL;
+    if( !p_pic ) return ((void*)0);
 
     int i_u_offset, i_v_offset, i_y_offset;
 
@@ -51,33 +51,33 @@ __attribute__((used)) static picture_t *FilterPacked( filter_t *p_filter, pictur
         msg_Warn( p_filter, "Unsupported input chroma (%4.4s)",
                   (char*)&(p_pic->format.i_chroma) );
         picture_Release( p_pic );
-        return NULL;
+        return ((void*)0);
     }
 
     p_outpic = filter_NewPicture( p_filter );
     if( !p_outpic )
     {
         picture_Release( p_pic );
-        return NULL;
+        return ((void*)0);
     }
 
-    const int i_visible_pitch = p_pic->p->i_visible_pitch>>1; /* In fact it's i_visible_pixels */
+    const int i_visible_pitch = p_pic->p->i_visible_pitch>>1;
     const int i_visible_lines = p_pic->p->i_visible_lines;
 
-    const uint8_t *p_in   = p_pic->p->p_pixels+i_y_offset;
+    const uint8_t *p_in = p_pic->p->p_pixels+i_y_offset;
     const uint8_t *p_in_u = p_pic->p->p_pixels+i_u_offset;
     const uint8_t *p_in_v = p_pic->p->p_pixels+i_v_offset;
-    const int i_in_pitch  = p_pic->p->i_pitch;
+    const int i_in_pitch = p_pic->p->i_pitch;
 
-    uint8_t *p_out   = p_outpic->p->p_pixels+i_y_offset;
+    uint8_t *p_out = p_outpic->p->p_pixels+i_y_offset;
     uint8_t *p_out_u = p_outpic->p->p_pixels+i_u_offset;
     uint8_t *p_out_v = p_outpic->p->p_pixels+i_v_offset;
     const int i_out_pitch = p_outpic->p->i_pitch;
 
     const int i_line_center = i_visible_lines>>1;
-    const int i_col_center  = i_visible_pitch>>1;
+    const int i_col_center = i_visible_pitch>>1;
 
-    if( p_sys->p_motion != NULL )
+    if( p_sys->p_motion != ((void*)0) )
     {
         int i_angle = motion_get_angle( p_sys->p_motion );
         store_trigo( p_sys, i_angle / 20.f );
@@ -92,7 +92,7 @@ __attribute__((used)) static picture_t *FilterPacked( filter_t *p_filter, pictur
         {
             int i_line_orig;
             int i_col_orig;
-            /* Handle "1st Y", U and V */
+
             i_line_orig = i_line_center +
                 ( ( i_sin * ( i_col - i_col_center )
                   + i_cos * ( i_line - i_line_center ) )>>12 );
@@ -114,7 +114,7 @@ __attribute__((used)) static picture_t *FilterPacked( filter_t *p_filter, pictur
                 p_out_v[i_line*i_out_pitch+2*i_col] = 0x80;
             }
 
-            /* Handle "2nd Y" */
+
             i_col++;
             if( i_col >= i_visible_pitch )
                 break;

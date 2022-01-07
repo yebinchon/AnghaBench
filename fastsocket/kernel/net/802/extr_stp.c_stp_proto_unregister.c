@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct stp_proto {size_t* group_address; } ;
 
-/* Variables and functions */
- size_t GARP_ADDR_MIN ; 
- int /*<<< orphan*/ * garp_protos ; 
- scalar_t__ is_zero_ether_addr (size_t*) ; 
- int /*<<< orphan*/  llc_sap_put (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  rcu_assign_pointer (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sap ; 
- scalar_t__ sap_registered ; 
- int /*<<< orphan*/  stp_proto ; 
- int /*<<< orphan*/  stp_proto_mutex ; 
- int /*<<< orphan*/  synchronize_rcu () ; 
+
+ size_t GARP_ADDR_MIN ;
+ int * garp_protos ;
+ scalar_t__ is_zero_ether_addr (size_t*) ;
+ int llc_sap_put (int ) ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
+ int rcu_assign_pointer (int ,int *) ;
+ int sap ;
+ scalar_t__ sap_registered ;
+ int stp_proto ;
+ int stp_proto_mutex ;
+ int synchronize_rcu () ;
 
 void stp_proto_unregister(const struct stp_proto *proto)
 {
-	mutex_lock(&stp_proto_mutex);
-	if (is_zero_ether_addr(proto->group_address))
-		rcu_assign_pointer(stp_proto, NULL);
-	else
-		rcu_assign_pointer(garp_protos[proto->group_address[5] -
-					       GARP_ADDR_MIN], NULL);
-	synchronize_rcu();
+ mutex_lock(&stp_proto_mutex);
+ if (is_zero_ether_addr(proto->group_address))
+  rcu_assign_pointer(stp_proto, ((void*)0));
+ else
+  rcu_assign_pointer(garp_protos[proto->group_address[5] -
+            GARP_ADDR_MIN], ((void*)0));
+ synchronize_rcu();
 
-	if (--sap_registered == 0)
-		llc_sap_put(sap);
-	mutex_unlock(&stp_proto_mutex);
+ if (--sap_registered == 0)
+  llc_sap_put(sap);
+ mutex_unlock(&stp_proto_mutex);
 }

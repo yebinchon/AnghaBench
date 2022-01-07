@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  xmlstr_t ;
-struct progids {int allocated; int num; int /*<<< orphan*/ ** progids; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int xmlstr_t ;
+struct progids {int allocated; int num; int ** progids; } ;
 struct TYPE_3__ {struct progids progids; } ;
 struct TYPE_4__ {TYPE_1__ comclass; } ;
 struct entity {TYPE_2__ u; } ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef int WCHAR ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/ ** RtlAllocateHeap (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  RtlGetProcessHeap () ; 
- int /*<<< orphan*/ ** RtlReAllocateHeap (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **,int) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/ * xmlstrdupW (int /*<<< orphan*/  const*) ; 
+
+ int FALSE ;
+ int ** RtlAllocateHeap (int ,int ,int) ;
+ int RtlGetProcessHeap () ;
+ int ** RtlReAllocateHeap (int ,int ,int **,int) ;
+ int TRUE ;
+ int * xmlstrdupW (int const*) ;
 
 __attribute__((used)) static BOOL com_class_add_progid(const xmlstr_t *progid, struct entity *entity)
 {

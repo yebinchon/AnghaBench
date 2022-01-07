@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint64_t ;
-typedef  scalar_t__ WebPInfoStatus ;
-struct TYPE_11__ {scalar_t__ frame_width_; scalar_t__ frame_height_; int seen_image_subchunk_; scalar_t__ canvas_width_; scalar_t__ canvas_height_; int has_alpha_; scalar_t__ parse_bitstream_; int /*<<< orphan*/  num_frames_; scalar_t__* chunk_counts_; scalar_t__ seen_alpha_subchunk_; int /*<<< orphan*/ * anmf_subchunk_counts_; scalar_t__ is_processing_anim_frame_; int /*<<< orphan*/  quiet_; } ;
-typedef  TYPE_1__ WebPInfo ;
+
+
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint64_t ;
+typedef scalar_t__ WebPInfoStatus ;
+struct TYPE_11__ {scalar_t__ frame_width_; scalar_t__ frame_height_; int seen_image_subchunk_; scalar_t__ canvas_width_; scalar_t__ canvas_height_; int has_alpha_; scalar_t__ parse_bitstream_; int num_frames_; scalar_t__* chunk_counts_; scalar_t__ seen_alpha_subchunk_; int * anmf_subchunk_counts_; scalar_t__ is_processing_anim_frame_; int quiet_; } ;
+typedef TYPE_1__ WebPInfo ;
 struct TYPE_12__ {int format; int width; int height; int has_alpha; int has_animation; } ;
-typedef  TYPE_2__ WebPBitstreamFeatures ;
-typedef  scalar_t__ VP8StatusCode ;
-struct TYPE_13__ {size_t id_; int /*<<< orphan*/  size_; int /*<<< orphan*/  payload_; } ;
-typedef  TYPE_3__ ChunkData ;
+typedef TYPE_2__ WebPBitstreamFeatures ;
+typedef scalar_t__ VP8StatusCode ;
+struct TYPE_13__ {size_t id_; int size_; int payload_; } ;
+typedef TYPE_3__ ChunkData ;
 
-/* Variables and functions */
- size_t CHUNK_ALPHA ; 
- size_t CHUNK_ANIM ; 
- size_t CHUNK_ANMF ; 
- int /*<<< orphan*/  CHUNK_HEADER_SIZE ; 
- size_t CHUNK_VP8 ; 
- size_t CHUNK_VP8L ; 
- size_t CHUNK_VP8X ; 
- int /*<<< orphan*/  LOG_ERROR (char*) ; 
- int /*<<< orphan*/  LOG_WARN (char*) ; 
- int MAX_CANVAS_SIZE ; 
- int MAX_IMAGE_AREA ; 
- scalar_t__ ParseLosslessHeader (TYPE_3__ const* const,TYPE_1__* const) ; 
- scalar_t__ ParseLossyHeader (TYPE_3__ const* const,TYPE_1__* const) ; 
- scalar_t__ const VP8_STATUS_OK ; 
- scalar_t__ WEBP_INFO_BITSTREAM_ERROR ; 
- scalar_t__ const WEBP_INFO_OK ; 
- scalar_t__ WEBP_INFO_PARSE_ERROR ; 
- scalar_t__ WebPGetFeatures (int /*<<< orphan*/  const*,int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  assert (int) ; 
- char** kFormats ; 
- int /*<<< orphan*/  printf (char*,int,int,int,int,char*,size_t) ; 
+
+ size_t CHUNK_ALPHA ;
+ size_t CHUNK_ANIM ;
+ size_t CHUNK_ANMF ;
+ int CHUNK_HEADER_SIZE ;
+ size_t CHUNK_VP8 ;
+ size_t CHUNK_VP8L ;
+ size_t CHUNK_VP8X ;
+ int LOG_ERROR (char*) ;
+ int LOG_WARN (char*) ;
+ int MAX_CANVAS_SIZE ;
+ int MAX_IMAGE_AREA ;
+ scalar_t__ ParseLosslessHeader (TYPE_3__ const* const,TYPE_1__* const) ;
+ scalar_t__ ParseLossyHeader (TYPE_3__ const* const,TYPE_1__* const) ;
+ scalar_t__ const VP8_STATUS_OK ;
+ scalar_t__ WEBP_INFO_BITSTREAM_ERROR ;
+ scalar_t__ const WEBP_INFO_OK ;
+ scalar_t__ WEBP_INFO_PARSE_ERROR ;
+ scalar_t__ WebPGetFeatures (int const*,int ,TYPE_2__*) ;
+ int assert (int) ;
+ char** kFormats ;
+ int printf (char*,int,int,int,int,char*,size_t) ;
 
 __attribute__((used)) static WebPInfoStatus ProcessImageChunk(const ChunkData* const chunk_data,
                                         WebPInfo* const webp_info) {

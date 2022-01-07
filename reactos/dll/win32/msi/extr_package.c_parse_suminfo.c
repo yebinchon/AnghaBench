@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ WCHAR ;
-typedef  int /*<<< orphan*/  UINT ;
-struct TYPE_3__ {int num_langids; int /*<<< orphan*/ * langids; void* platform; int /*<<< orphan*/  version; } ;
-typedef  int /*<<< orphan*/  MSISUMMARYINFO ;
-typedef  TYPE_1__ MSIPACKAGE ;
-typedef  int /*<<< orphan*/  LANGID ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERROR_INSTALL_PLATFORM_UNSUPPORTED ; 
- int /*<<< orphan*/  ERROR_OUTOFMEMORY ; 
- int /*<<< orphan*/  ERROR_PATCH_PACKAGE_INVALID ; 
- int /*<<< orphan*/  ERROR_SUCCESS ; 
- int /*<<< orphan*/  PID_PAGECOUNT ; 
- int /*<<< orphan*/  PID_TEMPLATE ; 
- void* PLATFORM_UNKNOWN ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WARN (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  atoiW (scalar_t__*) ; 
- int /*<<< orphan*/  debugstr_w (scalar_t__*) ; 
- int /*<<< orphan*/ * msi_alloc (int) ; 
- int /*<<< orphan*/  msi_free (scalar_t__*) ; 
- scalar_t__* msi_suminfo_dup_string (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  msi_suminfo_get_int32 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- void* parse_platform (scalar_t__*) ; 
- scalar_t__* strchrW (scalar_t__*,char) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ WCHAR ;
+typedef int UINT ;
+struct TYPE_3__ {int num_langids; int * langids; void* platform; int version; } ;
+typedef int MSISUMMARYINFO ;
+typedef TYPE_1__ MSIPACKAGE ;
+typedef int LANGID ;
+typedef int DWORD ;
+
+
+ int ERROR_INSTALL_PLATFORM_UNSUPPORTED ;
+ int ERROR_OUTOFMEMORY ;
+ int ERROR_PATCH_PACKAGE_INVALID ;
+ int ERROR_SUCCESS ;
+ int PID_PAGECOUNT ;
+ int PID_TEMPLATE ;
+ void* PLATFORM_UNKNOWN ;
+ int TRACE (char*,int ) ;
+ int WARN (char*,int ) ;
+ int atoiW (scalar_t__*) ;
+ int debugstr_w (scalar_t__*) ;
+ int * msi_alloc (int) ;
+ int msi_free (scalar_t__*) ;
+ scalar_t__* msi_suminfo_dup_string (int *,int ) ;
+ int msi_suminfo_get_int32 (int *,int ) ;
+ void* parse_platform (scalar_t__*) ;
+ scalar_t__* strchrW (scalar_t__*,char) ;
 
 __attribute__((used)) static UINT parse_suminfo( MSISUMMARYINFO *si, MSIPACKAGE *package )
 {
@@ -48,7 +48,7 @@ __attribute__((used)) static UINT parse_suminfo( MSISUMMARYINFO *si, MSIPACKAGE 
 
     template = msi_suminfo_dup_string( si, PID_TEMPLATE );
     if (!template)
-        return ERROR_SUCCESS; /* native accepts missing template property */
+        return ERROR_SUCCESS;
 
     TRACE("template: %s\n", debugstr_w(template));
 

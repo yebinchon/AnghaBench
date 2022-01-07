@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buf ;
 
-/* Variables and functions */
- int __FreeBSD_version ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,int) ; 
- char* uservers ; 
+
+
+
+typedef int buf ;
+
+
+ int __FreeBSD_version ;
+ int snprintf (char*,int,char*,int) ;
+ char* uservers ;
 
 __attribute__((used)) static void
 native_uservers(void)
 {
-	static char buf[128];
+ static char buf[128];
 
-	snprintf(buf, sizeof(buf), "%d", __FreeBSD_version);
-	uservers = buf;
+ snprintf(buf, sizeof(buf), "%d", __FreeBSD_version);
+ uservers = buf;
 }

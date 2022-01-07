@@ -1,88 +1,88 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
+
+
+
+
+typedef int uint32_t ;
 struct bxe_softc {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BLOGE (struct bxe_softc*,char*,int) ; 
-#define  BXE_RX_MODE_ALLMULTI 131 
-#define  BXE_RX_MODE_NONE 130 
-#define  BXE_RX_MODE_NORMAL 129 
-#define  BXE_RX_MODE_PROMISC 128 
- int /*<<< orphan*/  ECORE_ACCEPT_ALL_MULTICAST ; 
- int /*<<< orphan*/  ECORE_ACCEPT_ALL_UNICAST ; 
- int /*<<< orphan*/  ECORE_ACCEPT_ANY_VLAN ; 
- int /*<<< orphan*/  ECORE_ACCEPT_BROADCAST ; 
- int /*<<< orphan*/  ECORE_ACCEPT_MULTICAST ; 
- int /*<<< orphan*/  ECORE_ACCEPT_UNICAST ; 
- int /*<<< orphan*/  ECORE_ACCEPT_UNMATCHED ; 
- int /*<<< orphan*/  IS_MF_SI (struct bxe_softc*) ; 
- int /*<<< orphan*/  bxe_set_bit (int /*<<< orphan*/ ,unsigned long*) ; 
+
+ int BLOGE (struct bxe_softc*,char*,int) ;
+
+
+
+
+ int ECORE_ACCEPT_ALL_MULTICAST ;
+ int ECORE_ACCEPT_ALL_UNICAST ;
+ int ECORE_ACCEPT_ANY_VLAN ;
+ int ECORE_ACCEPT_BROADCAST ;
+ int ECORE_ACCEPT_MULTICAST ;
+ int ECORE_ACCEPT_UNICAST ;
+ int ECORE_ACCEPT_UNMATCHED ;
+ int IS_MF_SI (struct bxe_softc*) ;
+ int bxe_set_bit (int ,unsigned long*) ;
 
 __attribute__((used)) static int
 bxe_fill_accept_flags(struct bxe_softc *sc,
-                      uint32_t         rx_mode,
-                      unsigned long    *rx_accept_flags,
-                      unsigned long    *tx_accept_flags)
+                      uint32_t rx_mode,
+                      unsigned long *rx_accept_flags,
+                      unsigned long *tx_accept_flags)
 {
-    /* Clear the flags first */
+
     *rx_accept_flags = 0;
     *tx_accept_flags = 0;
 
     switch (rx_mode) {
-    case BXE_RX_MODE_NONE:
-        /*
-         * 'drop all' supersedes any accept flags that may have been
-         * passed to the function.
-         */
+    case 130:
+
+
+
+
         break;
 
-    case BXE_RX_MODE_NORMAL:
+    case 129:
         bxe_set_bit(ECORE_ACCEPT_UNICAST, rx_accept_flags);
         bxe_set_bit(ECORE_ACCEPT_MULTICAST, rx_accept_flags);
         bxe_set_bit(ECORE_ACCEPT_BROADCAST, rx_accept_flags);
 
-        /* internal switching mode */
+
         bxe_set_bit(ECORE_ACCEPT_UNICAST, tx_accept_flags);
         bxe_set_bit(ECORE_ACCEPT_MULTICAST, tx_accept_flags);
         bxe_set_bit(ECORE_ACCEPT_BROADCAST, tx_accept_flags);
 
         break;
 
-    case BXE_RX_MODE_ALLMULTI:
+    case 131:
         bxe_set_bit(ECORE_ACCEPT_UNICAST, rx_accept_flags);
         bxe_set_bit(ECORE_ACCEPT_ALL_MULTICAST, rx_accept_flags);
         bxe_set_bit(ECORE_ACCEPT_BROADCAST, rx_accept_flags);
 
-        /* internal switching mode */
+
         bxe_set_bit(ECORE_ACCEPT_UNICAST, tx_accept_flags);
         bxe_set_bit(ECORE_ACCEPT_ALL_MULTICAST, tx_accept_flags);
         bxe_set_bit(ECORE_ACCEPT_BROADCAST, tx_accept_flags);
 
         break;
 
-    case BXE_RX_MODE_PROMISC:
-        /*
-         * According to deffinition of SI mode, iface in promisc mode
-         * should receive matched and unmatched (in resolution of port)
-         * unicast packets.
-         */
+    case 128:
+
+
+
+
+
         bxe_set_bit(ECORE_ACCEPT_UNMATCHED, rx_accept_flags);
         bxe_set_bit(ECORE_ACCEPT_UNICAST, rx_accept_flags);
         bxe_set_bit(ECORE_ACCEPT_ALL_MULTICAST, rx_accept_flags);
         bxe_set_bit(ECORE_ACCEPT_BROADCAST, rx_accept_flags);
 
-        /* internal switching mode */
+
         bxe_set_bit(ECORE_ACCEPT_ALL_MULTICAST, tx_accept_flags);
         bxe_set_bit(ECORE_ACCEPT_BROADCAST, tx_accept_flags);
 
@@ -99,8 +99,8 @@ bxe_fill_accept_flags(struct bxe_softc *sc,
         return (-1);
     }
 
-    /* Set ACCEPT_ANY_VLAN as we do not enable filtering by VLAN */
-    if (rx_mode != BXE_RX_MODE_NONE) {
+
+    if (rx_mode != 130) {
         bxe_set_bit(ECORE_ACCEPT_ANY_VLAN, rx_accept_flags);
         bxe_set_bit(ECORE_ACCEPT_ANY_VLAN, tx_accept_flags);
     }

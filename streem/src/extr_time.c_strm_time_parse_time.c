@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int time_t ;
-struct tm {int /*<<< orphan*/  tm_year; int /*<<< orphan*/  member_0; } ;
-typedef  size_t strm_int ;
 
-/* Variables and functions */
- int TZ_FAIL ; 
- int TZ_NONE ; 
- double ceil (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  localtime_r (int*,struct tm*) ; 
- int /*<<< orphan*/  log10 (double) ; 
- char* malloc (size_t) ; 
- int /*<<< orphan*/  memcpy (char*,char const*,size_t) ; 
- int mktime (struct tm*) ; 
- int parse_tz (char const*,size_t) ; 
- double pow (double,double) ; 
- long scan_num (char const**,char const*) ; 
- char* strptime (char const*,char*,struct tm*) ; 
- int time (int /*<<< orphan*/ *) ; 
- int time_localoffset (int) ; 
+
+
+
+typedef int time_t ;
+struct tm {int tm_year; int member_0; } ;
+typedef size_t strm_int ;
+
+
+ int TZ_FAIL ;
+ int TZ_NONE ;
+ double ceil (int ) ;
+ int free (char*) ;
+ int localtime_r (int*,struct tm*) ;
+ int log10 (double) ;
+ char* malloc (size_t) ;
+ int memcpy (char*,char const*,size_t) ;
+ int mktime (struct tm*) ;
+ int parse_tz (char const*,size_t) ;
+ double pow (double,double) ;
+ long scan_num (char const**,char const*) ;
+ char* strptime (char const*,char*,struct tm*) ;
+ int time (int *) ;
+ int time_localoffset (int) ;
 
 int
 strm_time_parse_time(const char* p, strm_int len, long* sec, long* usec, int* offset)
@@ -50,34 +50,34 @@ strm_time_parse_time(const char* p, strm_int len, long* sec, long* usec, int* of
   }
   tend = s + len;
   *usec = 0;
-  t = strptime(s, "%Y.%m.%d", &tm);   /* Streem time literal */
-  if (t == NULL) {
-    t = strptime(s, "%Y-%m-%d", &tm); /* ISO8601 extended */
+  t = strptime(s, "%Y.%m.%d", &tm);
+  if (t == ((void*)0)) {
+    t = strptime(s, "%Y-%m-%d", &tm);
   }
-  if (t == NULL) {
+  if (t == ((void*)0)) {
     t = strptime(s, "%Y/%m/%d", &tm);
   }
-  if (t == NULL) {
-    t = strptime(s, "%Y%m%d", &tm);   /* ISO8601 basic */
+  if (t == ((void*)0)) {
+    t = strptime(s, "%Y%m%d", &tm);
     if (t && !(t[0] == 'T' || t[0] == ' ')) {
-      t = NULL;
+      t = ((void*)0);
     }
   }
-  if (t == NULL) {
+  if (t == ((void*)0)) {
     t = strptime(s, "%b %d %Y", &tm);
-    /* check year and hour confusion (Apr 14 20:00 is not year 20 AD) */
+
     if (t && t[0] == ':') {
-      t = NULL;
+      t = ((void*)0);
     }
   }
-  if (t == NULL) {
+  if (t == ((void*)0)) {
     struct tm tm2;
-    tt = time(NULL);
+    tt = time(((void*)0));
     localtime_r(&tt, &tm2);
     tm.tm_year = tm2.tm_year;
     t = strptime(s, "%b %d", &tm);
   }
-  if (t == NULL) goto bad;
+  if (t == ((void*)0)) goto bad;
   if (t == tend) {
     tt = mktime(&tm);
     tt += localoffset;
@@ -99,17 +99,17 @@ strm_time_parse_time(const char* p, strm_int len, long* sec, long* usec, int* of
   }
 
   t2 = strptime(t, "%H:%M:%S", &tm);
-  if (t2 == NULL) {
+  if (t2 == ((void*)0)) {
     t2 = strptime(t, "%H%M%S", &tm);
   }
-  if (t2 == NULL) {
+  if (t2 == ((void*)0)) {
     t2 = strptime(t, "%H:%M", &tm);
-    if (t2 == NULL)
+    if (t2 == ((void*)0))
       goto bad;
   }
   t = t2;
   tt = mktime(&tm);
-  if (t[0] == '.') {          /* frac */
+  if (t[0] == '.') {
     t++;
     long frac = scan_num(&t, tend);
     if (frac < 0) goto bad;
@@ -119,7 +119,7 @@ strm_time_parse_time(const char* p, strm_int len, long* sec, long* usec, int* of
       *usec = d * 1000000;
     }
   }
-  if (t[0] == 'Z') {          /* UTC zone */
+  if (t[0] == 'Z') {
     tt += localoffset;
     *offset = 0;
   }
@@ -129,7 +129,7 @@ strm_time_parse_time(const char* p, strm_int len, long* sec, long* usec, int* of
   else {
     int n;
 
-    switch (t[0]) {           /* offset zone */
+    switch (t[0]) {
     case '+':
     case '-':
       n = parse_tz(t, (strm_int)(tend-t));

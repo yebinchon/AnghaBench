@@ -1,19 +1,11 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int atoi (char*) ; 
- char* strchr (char*,char) ; 
+ int atoi (char*) ;
+ char* strchr (char*,char) ;
 
 __attribute__((used)) static int extract_port (char **phost)
 {
@@ -21,16 +13,16 @@ __attribute__((used)) static int extract_port (char **phost)
 
     if (host[0] == '[')
     {
-        host = ++*phost; /* skip '[' */
+        host = ++*phost;
         port = strchr (host, ']');
         if (port)
-            *port++ = '\0'; /* skip ']' */
+            *port++ = '\0';
     }
     else
         port = strchr (host, ':');
 
-    if (port == NULL)
+    if (port == ((void*)0))
         return 0;
-    *port++ = '\0'; /* skip ':' */
+    *port++ = '\0';
     return atoi (port);
 }

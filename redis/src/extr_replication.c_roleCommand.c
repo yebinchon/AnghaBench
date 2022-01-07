@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_5__ ;
-typedef  struct TYPE_16__   TYPE_3__ ;
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_17__ TYPE_5__ ;
+typedef struct TYPE_16__ TYPE_3__ ;
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
 struct TYPE_15__ {TYPE_3__* value; } ;
-typedef  TYPE_2__ listNode ;
-typedef  int /*<<< orphan*/  listIter ;
-typedef  int /*<<< orphan*/  ip ;
-struct TYPE_16__ {char* slave_ip; scalar_t__ replstate; int /*<<< orphan*/  repl_ack_off; int /*<<< orphan*/  slave_listening_port; int /*<<< orphan*/  conn; } ;
-typedef  TYPE_3__ client ;
-struct TYPE_17__ {char* masterhost; int master_repl_offset; int masterport; int repl_state; TYPE_1__* master; int /*<<< orphan*/  slaves; } ;
+typedef TYPE_2__ listNode ;
+typedef int listIter ;
+typedef int ip ;
+struct TYPE_16__ {char* slave_ip; scalar_t__ replstate; int repl_ack_off; int slave_listening_port; int conn; } ;
+typedef TYPE_3__ client ;
+struct TYPE_17__ {char* masterhost; int master_repl_offset; int masterport; int repl_state; TYPE_1__* master; int slaves; } ;
 struct TYPE_14__ {int reploff; } ;
 
-/* Variables and functions */
- int NET_IP_STR_LEN ; 
-#define  REPL_STATE_CONNECT 132 
-#define  REPL_STATE_CONNECTED 131 
-#define  REPL_STATE_CONNECTING 130 
-#define  REPL_STATE_NONE 129 
-#define  REPL_STATE_TRANSFER 128 
- scalar_t__ SLAVE_STATE_ONLINE ; 
- int /*<<< orphan*/  addReplyArrayLen (TYPE_3__*,int) ; 
- int /*<<< orphan*/  addReplyBulkCBuffer (TYPE_3__*,char*,int) ; 
- int /*<<< orphan*/  addReplyBulkCString (TYPE_3__*,char*) ; 
- int /*<<< orphan*/  addReplyBulkLongLong (TYPE_3__*,int /*<<< orphan*/ ) ; 
- void* addReplyDeferredLen (TYPE_3__*) ; 
- int /*<<< orphan*/  addReplyLongLong (TYPE_3__*,int) ; 
- int connPeerToString (int /*<<< orphan*/ ,char*,int,int /*<<< orphan*/ *) ; 
- TYPE_2__* listNext (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  listRewind (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- TYPE_5__ server ; 
- int /*<<< orphan*/  setDeferredArrayLen (TYPE_3__*,void*,int) ; 
- scalar_t__ slaveIsInHandshakeState () ; 
+
+ int NET_IP_STR_LEN ;
+
+
+
+
+
+ scalar_t__ SLAVE_STATE_ONLINE ;
+ int addReplyArrayLen (TYPE_3__*,int) ;
+ int addReplyBulkCBuffer (TYPE_3__*,char*,int) ;
+ int addReplyBulkCString (TYPE_3__*,char*) ;
+ int addReplyBulkLongLong (TYPE_3__*,int ) ;
+ void* addReplyDeferredLen (TYPE_3__*) ;
+ int addReplyLongLong (TYPE_3__*,int) ;
+ int connPeerToString (int ,char*,int,int *) ;
+ TYPE_2__* listNext (int *) ;
+ int listRewind (int ,int *) ;
+ TYPE_5__ server ;
+ int setDeferredArrayLen (TYPE_3__*,void*,int) ;
+ scalar_t__ slaveIsInHandshakeState () ;
 
 void roleCommand(client *c) {
-    if (server.masterhost == NULL) {
+    if (server.masterhost == ((void*)0)) {
         listIter li;
         listNode *ln;
         void *mbcount;
@@ -61,7 +61,7 @@ void roleCommand(client *c) {
             char ip[NET_IP_STR_LEN], *slaveip = slave->slave_ip;
 
             if (slaveip[0] == '\0') {
-                if (connPeerToString(slave->conn,ip,sizeof(ip),NULL) == -1)
+                if (connPeerToString(slave->conn,ip,sizeof(ip),((void*)0)) == -1)
                     continue;
                 slaveip = ip;
             }
@@ -74,7 +74,7 @@ void roleCommand(client *c) {
         }
         setDeferredArrayLen(c,mbcount,slaves);
     } else {
-        char *slavestate = NULL;
+        char *slavestate = ((void*)0);
 
         addReplyArrayLen(c,5);
         addReplyBulkCBuffer(c,"slave",5);
@@ -84,11 +84,11 @@ void roleCommand(client *c) {
             slavestate = "handshake";
         } else {
             switch(server.repl_state) {
-            case REPL_STATE_NONE: slavestate = "none"; break;
-            case REPL_STATE_CONNECT: slavestate = "connect"; break;
-            case REPL_STATE_CONNECTING: slavestate = "connecting"; break;
-            case REPL_STATE_TRANSFER: slavestate = "sync"; break;
-            case REPL_STATE_CONNECTED: slavestate = "connected"; break;
+            case 129: slavestate = "none"; break;
+            case 132: slavestate = "connect"; break;
+            case 130: slavestate = "connecting"; break;
+            case 128: slavestate = "sync"; break;
+            case 131: slavestate = "connected"; break;
             default: slavestate = "unknown"; break;
             }
         }

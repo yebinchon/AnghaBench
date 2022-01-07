@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_vtab ;
-typedef  int /*<<< orphan*/  sqlite3 ;
 
-/* Variables and functions */
- int SQLITE_NOMEM ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  UNUSED_PARAM (void*) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int sqlite3_declare_vtab (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/ * sqlite3_malloc (int) ; 
+
+
+
+typedef int sqlite3_vtab ;
+typedef int sqlite3 ;
+
+
+ int SQLITE_NOMEM ;
+ int SQLITE_OK ;
+ int UNUSED_PARAM (void*) ;
+ int memset (int *,int ,int) ;
+ int sqlite3_declare_vtab (int *,char*) ;
+ int * sqlite3_malloc (int) ;
 
 __attribute__((used)) static int jsonEachConnect(
   sqlite3 *db,
@@ -30,27 +30,11 @@ __attribute__((used)) static int jsonEachConnect(
 ){
   sqlite3_vtab *pNew;
   int rc;
-
-/* Column numbers */
-#define JEACH_KEY     0
-#define JEACH_VALUE   1
-#define JEACH_TYPE    2
-#define JEACH_ATOM    3
-#define JEACH_ID      4
-#define JEACH_PARENT  5
-#define JEACH_FULLKEY 6
-#define JEACH_PATH    7
-/* The xBestIndex method assumes that the JSON and ROOT columns are
-** the last two columns in the table.  Should this ever changes, be
-** sure to update the xBestIndex method. */
-#define JEACH_JSON    8
-#define JEACH_ROOT    9
-
   UNUSED_PARAM(pzErr);
   UNUSED_PARAM(argv);
   UNUSED_PARAM(argc);
   UNUSED_PARAM(pAux);
-  rc = sqlite3_declare_vtab(db, 
+  rc = sqlite3_declare_vtab(db,
      "CREATE TABLE x(key,value,type,atom,id,parent,fullkey,path,"
                     "json HIDDEN,root HIDDEN)");
   if( rc==SQLITE_OK ){

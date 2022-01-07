@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  add (unsigned int*,unsigned int*,unsigned int*) ; 
- int /*<<< orphan*/  mult (unsigned int*,unsigned int*,unsigned int*) ; 
- int /*<<< orphan*/  mult121665 (unsigned int*,unsigned int*) ; 
- int /*<<< orphan*/  select (unsigned int*,unsigned int*,unsigned int*,unsigned int*,unsigned int) ; 
- int /*<<< orphan*/  square (unsigned int*,unsigned int*) ; 
- int /*<<< orphan*/  sub (unsigned int*,unsigned int*,unsigned int*) ; 
+ int add (unsigned int*,unsigned int*,unsigned int*) ;
+ int mult (unsigned int*,unsigned int*,unsigned int*) ;
+ int mult121665 (unsigned int*,unsigned int*) ;
+ int select (unsigned int*,unsigned int*,unsigned int*,unsigned int*,unsigned int) ;
+ int square (unsigned int*,unsigned int*) ;
+ int sub (unsigned int*,unsigned int*,unsigned int*) ;
 
 __attribute__((used)) static void mainloop(unsigned int work[64],const unsigned char e[32])
 {

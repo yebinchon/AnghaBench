@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ int64_t ;
-struct TYPE_8__ {int /*<<< orphan*/  pb; int /*<<< orphan*/  level; int /*<<< orphan*/  s; } ;
-typedef  TYPE_1__ MP4DescrParseContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- scalar_t__ MAX_LEVEL ; 
-#define  MP4DecConfigDescrTag 132 
-#define  MP4ESDescrTag 131 
-#define  MP4IODescrTag 130 
-#define  MP4ODescrTag 129 
-#define  MP4SLDescrTag 128 
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  avio_seek (int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ ) ; 
- int ff_mp4_read_descr (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int*) ; 
- int parse_MP4DecConfigDescrTag (TYPE_1__*,scalar_t__,int) ; 
- int parse_MP4ESDescrTag (TYPE_1__*,scalar_t__,int) ; 
- int parse_MP4IODescrTag (TYPE_1__*,scalar_t__,int) ; 
- int parse_MP4ODescrTag (TYPE_1__*,scalar_t__,int) ; 
- int parse_MP4SLDescrTag (TYPE_1__*,scalar_t__,int) ; 
- int /*<<< orphan*/  update_offsets (int /*<<< orphan*/ *,scalar_t__*,int*) ; 
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef scalar_t__ int64_t ;
+struct TYPE_8__ {int pb; int level; int s; } ;
+typedef TYPE_1__ MP4DescrParseContext ;
+
+
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ scalar_t__ MAX_LEVEL ;
+
+
+
+
+
+ int SEEK_SET ;
+ int av_log (int ,int ,char*,...) ;
+ int avio_seek (int *,scalar_t__,int ) ;
+ int ff_mp4_read_descr (int ,int *,int*) ;
+ int parse_MP4DecConfigDescrTag (TYPE_1__*,scalar_t__,int) ;
+ int parse_MP4ESDescrTag (TYPE_1__*,scalar_t__,int) ;
+ int parse_MP4IODescrTag (TYPE_1__*,scalar_t__,int) ;
+ int parse_MP4ODescrTag (TYPE_1__*,scalar_t__,int) ;
+ int parse_MP4SLDescrTag (TYPE_1__*,scalar_t__,int) ;
+ int update_offsets (int *,scalar_t__*,int*) ;
 
 __attribute__((used)) static int parse_mp4_descr(MP4DescrParseContext *d, int64_t off, int len,
                            int target_tag)
@@ -64,19 +64,19 @@ __attribute__((used)) static int parse_mp4_descr(MP4DescrParseContext *d, int64_
     }
 
     switch (tag) {
-    case MP4IODescrTag:
+    case 130:
         ret = parse_MP4IODescrTag(d, off, len1);
         break;
-    case MP4ODescrTag:
+    case 129:
         ret = parse_MP4ODescrTag(d, off, len1);
         break;
-    case MP4ESDescrTag:
+    case 131:
         ret = parse_MP4ESDescrTag(d, off, len1);
         break;
-    case MP4DecConfigDescrTag:
+    case 132:
         ret = parse_MP4DecConfigDescrTag(d, off, len1);
         break;
-    case MP4SLDescrTag:
+    case 128:
         ret = parse_MP4SLDescrTag(d, off, len1);
         break;
     }

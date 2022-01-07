@@ -1,34 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int GRIDH ; 
- int GRIDW ; 
- double M_PI ; 
- double cos (double) ; 
- double** p ; 
- double sqrt (double) ; 
- double** vx ; 
- double** vy ; 
+ int GRIDH ;
+ int GRIDW ;
+ double M_PI ;
+ double cos (double) ;
+ double** p ;
+ double sqrt (double) ;
+ double** vx ;
+ double** vy ;
 
 void init_grid(void)
 {
     int x, y;
     double dx, dy, d;
 
-    for (y = 0; y < GRIDH;  y++)
+    for (y = 0; y < GRIDH; y++)
     {
-        for (x = 0; x < GRIDW;  x++)
+        for (x = 0; x < GRIDW; x++)
         {
             dx = (double) (x - GRIDW / 2);
             dy = (double) (y - GRIDH / 2);

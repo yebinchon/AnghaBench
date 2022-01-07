@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ipoib_dev_priv {int /*<<< orphan*/  poll_timer; } ;
+
+
+
+
+struct ipoib_dev_priv {int poll_timer; } ;
 struct ib_cq {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  jiffies ; 
- int /*<<< orphan*/  mod_timer (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int jiffies ;
+ int mod_timer (int *,int ) ;
 
 void ipoib_send_comp_handler(struct ib_cq *cq, void *dev_ptr)
 {
-	struct ipoib_dev_priv *priv = dev_ptr;
+ struct ipoib_dev_priv *priv = dev_ptr;
 
-	mod_timer(&priv->poll_timer, jiffies);
+ mod_timer(&priv->poll_timer, jiffies);
 }

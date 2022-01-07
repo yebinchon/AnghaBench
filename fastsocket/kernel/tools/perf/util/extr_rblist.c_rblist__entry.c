@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct rblist {int /*<<< orphan*/  entries; } ;
+
+
+
+
+struct rblist {int entries; } ;
 struct rb_node {int dummy; } ;
 
-/* Variables and functions */
- struct rb_node* rb_first (int /*<<< orphan*/ *) ; 
- struct rb_node* rb_next (struct rb_node*) ; 
+
+ struct rb_node* rb_first (int *) ;
+ struct rb_node* rb_next (struct rb_node*) ;
 
 struct rb_node *rblist__entry(const struct rblist *rblist, unsigned int idx)
 {
-	struct rb_node *node;
+ struct rb_node *node;
 
-	for (node = rb_first(&rblist->entries); node; node = rb_next(node)) {
-		if (!idx--)
-			return node;
-	}
+ for (node = rb_first(&rblist->entries); node; node = rb_next(node)) {
+  if (!idx--)
+   return node;
+ }
 
-	return NULL;
+ return ((void*)0);
 }

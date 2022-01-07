@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  IApplicationAssociationRegistration ;
-typedef  scalar_t__ HRESULT ;
 
-/* Variables and functions */
- scalar_t__ E_POINTER ; 
- scalar_t__ IApplicationAssociationRegistration_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IApplicationAssociationRegistration_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IID_IApplicationAssociationRegistration ; 
- int /*<<< orphan*/  IID_IUnknown ; 
- int /*<<< orphan*/  IUnknown_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ SUCCEEDED (scalar_t__) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
+
+
+
+typedef int IUnknown ;
+typedef int IApplicationAssociationRegistration ;
+typedef scalar_t__ HRESULT ;
+
+
+ scalar_t__ E_POINTER ;
+ scalar_t__ IApplicationAssociationRegistration_QueryInterface (int *,int *,void**) ;
+ int IApplicationAssociationRegistration_Release (int *) ;
+ int IID_IApplicationAssociationRegistration ;
+ int IID_IUnknown ;
+ int IUnknown_Release (int *) ;
+ scalar_t__ SUCCEEDED (scalar_t__) ;
+ scalar_t__ S_OK ;
+ int ok (int,char*,scalar_t__) ;
 
 __attribute__((used)) static void test_IApplicationAssociationRegistration_QueryInterface(IApplicationAssociationRegistration *appreg)
 {
@@ -44,6 +44,6 @@ __attribute__((used)) static void test_IApplicationAssociationRegistration_Query
         IUnknown_Release(unk);
     }
 
-    hr = IApplicationAssociationRegistration_QueryInterface(appreg, &IID_IUnknown, NULL);
+    hr = IApplicationAssociationRegistration_QueryInterface(appreg, &IID_IUnknown, ((void*)0));
     ok(hr == E_POINTER, "got 0x%x (expected E_POINTER)\n", hr);
 }

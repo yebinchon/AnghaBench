@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct internal_exec {int /*<<< orphan*/  a_info; } ;
-struct external_exec {int /*<<< orphan*/  e_info; } ;
-typedef  int /*<<< orphan*/  bfd_target ;
-typedef  scalar_t__ bfd_size_type ;
-typedef  int /*<<< orphan*/  bfd ;
 
-/* Variables and functions */
- scalar_t__ EXEC_BYTES_SIZE ; 
- int /*<<< orphan*/  H_GET_32 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ N_BADMAG (struct internal_exec) ; 
- int /*<<< orphan*/  const* aout_32_some_aout_object_p (int /*<<< orphan*/ *,struct internal_exec*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  b_out_callback ; 
- scalar_t__ bfd_bread (void*,scalar_t__,int /*<<< orphan*/ *) ; 
- scalar_t__ bfd_error_system_call ; 
- int /*<<< orphan*/  bfd_error_wrong_format ; 
- scalar_t__ bfd_get_error () ; 
- int /*<<< orphan*/  bfd_set_error (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bout_swap_exec_header_in (int /*<<< orphan*/ *,struct external_exec*,struct internal_exec*) ; 
+
+
+
+struct internal_exec {int a_info; } ;
+struct external_exec {int e_info; } ;
+typedef int bfd_target ;
+typedef scalar_t__ bfd_size_type ;
+typedef int bfd ;
+
+
+ scalar_t__ EXEC_BYTES_SIZE ;
+ int H_GET_32 (int *,int ) ;
+ scalar_t__ N_BADMAG (struct internal_exec) ;
+ int const* aout_32_some_aout_object_p (int *,struct internal_exec*,int ) ;
+ int b_out_callback ;
+ scalar_t__ bfd_bread (void*,scalar_t__,int *) ;
+ scalar_t__ bfd_error_system_call ;
+ int bfd_error_wrong_format ;
+ scalar_t__ bfd_get_error () ;
+ int bfd_set_error (int ) ;
+ int bout_swap_exec_header_in (int *,struct external_exec*,struct internal_exec*) ;
 
 __attribute__((used)) static const bfd_target *
 b_out_object_p (bfd *abfd)
@@ -39,7 +39,7 @@ b_out_object_p (bfd *abfd)
   if (bfd_bread ((void *) &exec_bytes, amt, abfd) != amt)
     {
       if (bfd_get_error () != bfd_error_system_call)
-	bfd_set_error (bfd_error_wrong_format);
+ bfd_set_error (bfd_error_wrong_format);
       return 0;
     }
 

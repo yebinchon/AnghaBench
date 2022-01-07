@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_5__ ;
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_2__* ws_t ;
-typedef  int /*<<< orphan*/  ws_status ;
-typedef  TYPE_3__* iwdp_t ;
-typedef  TYPE_4__* iwdp_private_t ;
-typedef  TYPE_5__* iwdp_iws_t ;
+
+
+typedef struct TYPE_15__ TYPE_5__ ;
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef TYPE_2__* ws_t ;
+typedef int ws_status ;
+typedef TYPE_3__* iwdp_t ;
+typedef TYPE_4__* iwdp_private_t ;
+typedef TYPE_5__* iwdp_iws_t ;
 struct TYPE_15__ {TYPE_1__* iport; } ;
 struct TYPE_14__ {char* frontend; } ;
-struct TYPE_13__ {TYPE_4__* private_state; int /*<<< orphan*/  (* on_error ) (TYPE_3__*,char*,char const*) ;} ;
-struct TYPE_12__ {int /*<<< orphan*/  state; } ;
+struct TYPE_13__ {TYPE_4__* private_state; int (* on_error ) (TYPE_3__*,char*,char const*) ;} ;
+struct TYPE_12__ {int state; } ;
 struct TYPE_11__ {TYPE_3__* self; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  iwdp_on_not_found (TYPE_2__*,int,char const*,char*) ; 
- int /*<<< orphan*/  iwdp_on_static_request_for_file (TYPE_2__*,int,char const*,char const*,int*) ; 
- int /*<<< orphan*/  iwdp_on_static_request_for_http (TYPE_2__*,int,char const*,int*) ; 
- int /*<<< orphan*/  strncasecmp (char const*,char*,int) ; 
- scalar_t__ strncmp (char const*,char*,int) ; 
- int /*<<< orphan*/  strstr (char const*,char*) ; 
- int /*<<< orphan*/  stub1 (TYPE_3__*,char*,char const*) ; 
+
+ int iwdp_on_not_found (TYPE_2__*,int,char const*,char*) ;
+ int iwdp_on_static_request_for_file (TYPE_2__*,int,char const*,char const*,int*) ;
+ int iwdp_on_static_request_for_http (TYPE_2__*,int,char const*,int*) ;
+ int strncasecmp (char const*,char*,int) ;
+ scalar_t__ strncmp (char const*,char*,int) ;
+ int strstr (char const*,char*) ;
+ int stub1 (TYPE_3__*,char*,char const*) ;
 
 ws_status iwdp_on_static_request(ws_t ws, bool is_head, const char *resource,
     bool *to_keep_alive) {

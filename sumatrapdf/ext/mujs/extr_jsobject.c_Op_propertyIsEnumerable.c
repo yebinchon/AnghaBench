@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  js_State ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int js_State ;
 struct TYPE_3__ {int atts; } ;
-typedef  TYPE_1__ js_Property ;
-typedef  int /*<<< orphan*/  js_Object ;
+typedef TYPE_1__ js_Property ;
+typedef int js_Object ;
 
-/* Variables and functions */
- int JS_DONTENUM ; 
- TYPE_1__* jsV_getownproperty (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  js_pushboolean (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * js_toobject (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- char* js_tostring (int /*<<< orphan*/ *,int) ; 
+
+ int JS_DONTENUM ;
+ TYPE_1__* jsV_getownproperty (int *,int *,char const*) ;
+ int js_pushboolean (int *,int ) ;
+ int * js_toobject (int *,int ) ;
+ char* js_tostring (int *,int) ;
 
 __attribute__((used)) static void Op_propertyIsEnumerable(js_State *J)
 {
-	js_Object *self = js_toobject(J, 0);
-	const char *name = js_tostring(J, 1);
-	js_Property *ref = jsV_getownproperty(J, self, name);
-	js_pushboolean(J, ref && !(ref->atts & JS_DONTENUM));
+ js_Object *self = js_toobject(J, 0);
+ const char *name = js_tostring(J, 1);
+ js_Property *ref = jsV_getownproperty(J, self, name);
+ js_pushboolean(J, ref && !(ref->atts & JS_DONTENUM));
 }

@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int cl; size_t sign; int* sig; scalar_t__ decimal; } ;
-typedef  TYPE_1__ REAL_VALUE_TYPE ;
+typedef TYPE_1__ REAL_VALUE_TYPE ;
 
-/* Variables and functions */
- int HOST_BITS_PER_LONG ; 
- int REAL_EXP (TYPE_1__ const*) ; 
- int SIGNIFICAND_BITS ; 
- int SIGSZ ; 
- int /*<<< orphan*/  gcc_assert (int) ; 
- int /*<<< orphan*/  gcc_unreachable () ; 
-#define  rvc_inf 131 
-#define  rvc_nan 130 
-#define  rvc_normal 129 
-#define  rvc_zero 128 
- int /*<<< orphan*/  sprintf (char*,char*,int) ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
- size_t strlen (char*) ; 
+
+ int HOST_BITS_PER_LONG ;
+ int REAL_EXP (TYPE_1__ const*) ;
+ int SIGNIFICAND_BITS ;
+ int SIGSZ ;
+ int gcc_assert (int) ;
+ int gcc_unreachable () ;
+
+
+
+
+ int sprintf (char*,char*,int) ;
+ int strcpy (char*,char*) ;
+ size_t strlen (char*) ;
 
 void
 real_to_hexadecimal (char *str, const REAL_VALUE_TYPE *r, size_t buf_size,
-		     size_t digits, int crop_trailing_zeros)
+       size_t digits, int crop_trailing_zeros)
 {
   int i, j, exp = REAL_EXP (r);
   char *p, *first;
@@ -40,16 +40,16 @@ real_to_hexadecimal (char *str, const REAL_VALUE_TYPE *r, size_t buf_size,
 
   switch (r->cl)
     {
-    case rvc_zero:
+    case 128:
       exp = 0;
       break;
-    case rvc_normal:
+    case 129:
       break;
-    case rvc_inf:
+    case 131:
       strcpy (str, (r->sign ? "-Inf" : "+Inf"));
       return;
-    case rvc_nan:
-      /* ??? Print the significand as well, if not canonical?  */
+    case 130:
+
       strcpy (str, (r->sign ? "-NaN" : "+NaN"));
       return;
     default:
@@ -58,7 +58,7 @@ real_to_hexadecimal (char *str, const REAL_VALUE_TYPE *r, size_t buf_size,
 
   if (r->decimal)
     {
-      /* Hexadecimal format for decimal floats is not interesting. */
+
       strcpy (str, "N/A");
       return;
     }
@@ -66,7 +66,7 @@ real_to_hexadecimal (char *str, const REAL_VALUE_TYPE *r, size_t buf_size,
   if (digits == 0)
     digits = SIGNIFICAND_BITS / 4;
 
-  /* Bound the number of digits printed by the size of the output buffer.  */
+
 
   sprintf (exp_buf, "p%+d", exp);
   max_digits = buf_size - strlen (exp_buf) - r->sign - 4 - 1;
@@ -86,9 +86,9 @@ real_to_hexadecimal (char *str, const REAL_VALUE_TYPE *r, size_t buf_size,
   for (i = SIGSZ - 1; i >= 0; --i)
     for (j = HOST_BITS_PER_LONG - 4; j >= 0; j -= 4)
       {
-	*p++ = "0123456789abcdef"[(r->sig[i] >> j) & 15];
-	if (--digits == 0)
-	  goto out;
+ *p++ = "0123456789abcdef"[(r->sig[i] >> j) & 15];
+ if (--digits == 0)
+   goto out;
       }
 
  out:

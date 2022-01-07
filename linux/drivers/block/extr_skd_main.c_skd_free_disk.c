@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {scalar_t__ tags; } ;
-struct skd_device {struct gendisk* disk; TYPE_1__ tag_set; int /*<<< orphan*/ * queue; } ;
-struct gendisk {int flags; int /*<<< orphan*/ * queue; } ;
+struct skd_device {struct gendisk* disk; TYPE_1__ tag_set; int * queue; } ;
+struct gendisk {int flags; int * queue; } ;
 
-/* Variables and functions */
- int GENHD_FL_UP ; 
- int /*<<< orphan*/  blk_cleanup_queue (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  blk_mq_free_tag_set (TYPE_1__*) ; 
- int /*<<< orphan*/  del_gendisk (struct gendisk*) ; 
- int /*<<< orphan*/  put_disk (struct gendisk*) ; 
+
+ int GENHD_FL_UP ;
+ int blk_cleanup_queue (int *) ;
+ int blk_mq_free_tag_set (TYPE_1__*) ;
+ int del_gendisk (struct gendisk*) ;
+ int put_disk (struct gendisk*) ;
 
 __attribute__((used)) static void skd_free_disk(struct skd_device *skdev)
 {
-	struct gendisk *disk = skdev->disk;
+ struct gendisk *disk = skdev->disk;
 
-	if (disk && (disk->flags & GENHD_FL_UP))
-		del_gendisk(disk);
+ if (disk && (disk->flags & GENHD_FL_UP))
+  del_gendisk(disk);
 
-	if (skdev->queue) {
-		blk_cleanup_queue(skdev->queue);
-		skdev->queue = NULL;
-		if (disk)
-			disk->queue = NULL;
-	}
+ if (skdev->queue) {
+  blk_cleanup_queue(skdev->queue);
+  skdev->queue = ((void*)0);
+  if (disk)
+   disk->queue = ((void*)0);
+ }
 
-	if (skdev->tag_set.tags)
-		blk_mq_free_tag_set(&skdev->tag_set);
+ if (skdev->tag_set.tags)
+  blk_mq_free_tag_set(&skdev->tag_set);
 
-	put_disk(disk);
-	skdev->disk = NULL;
+ put_disk(disk);
+ skdev->disk = ((void*)0);
 }

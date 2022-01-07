@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct cache_tree_sub {int /*<<< orphan*/  cache_tree; scalar_t__ used; } ;
+
+
+
+
+struct cache_tree_sub {int cache_tree; scalar_t__ used; } ;
 struct cache_tree {int subtree_nr; struct cache_tree_sub** down; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cache_tree_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (struct cache_tree_sub*) ; 
+
+ int cache_tree_free (int *) ;
+ int free (struct cache_tree_sub*) ;
 
 __attribute__((used)) static void discard_unused_subtrees(struct cache_tree *it)
 {

@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct vo_wayland_sync {int /*<<< orphan*/  member_3; int /*<<< orphan*/  member_2; int /*<<< orphan*/  member_1; int /*<<< orphan*/  member_0; } ;
+
+
+
+
+struct vo_wayland_sync {int member_3; int member_2; int member_1; int member_0; } ;
 struct vo_wayland_state {int sync_size; struct vo_wayland_sync* sync; } ;
 
-/* Variables and functions */
+
 
 void vo_wayland_sync_shift(struct vo_wayland_state *wl)
 {

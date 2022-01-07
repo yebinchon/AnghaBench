@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct connection {int /*<<< orphan*/  Out; int /*<<< orphan*/  flags; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  C_INTIMEOUT ; 
- int /*<<< orphan*/  assert (int) ; 
- int binlog_disabled ; 
- int /*<<< orphan*/  cmd_delete ; 
- int do_pmemcached_delete (char const*,int) ; 
- int do_pmemcached_preload (char const*,int,int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char const*) ; 
- int /*<<< orphan*/  memcache_wait (struct connection*) ; 
- scalar_t__ protected_mode ; 
- int /*<<< orphan*/  stderr ; 
- int verbosity ; 
- int /*<<< orphan*/  write_out (int /*<<< orphan*/ *,char*,int) ; 
+
+
+
+struct connection {int Out; int flags; } ;
+
+
+ int C_INTIMEOUT ;
+ int assert (int) ;
+ int binlog_disabled ;
+ int cmd_delete ;
+ int do_pmemcached_delete (char const*,int) ;
+ int do_pmemcached_preload (char const*,int,int) ;
+ int fprintf (int ,char*,char const*) ;
+ int memcache_wait (struct connection*) ;
+ scalar_t__ protected_mode ;
+ int stderr ;
+ int verbosity ;
+ int write_out (int *,char*,int) ;
 
 int memcache_delete (struct connection *c, const char *key, int key_len) {
   if (binlog_disabled == 1) {

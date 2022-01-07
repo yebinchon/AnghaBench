@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  pdf_obj ;
-typedef  int /*<<< orphan*/  pdf_document ;
-typedef  int /*<<< orphan*/  fz_context ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PDF_NAME (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Parent ; 
- int /*<<< orphan*/  pdf_array_push (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pdf_dict_put (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pdf_flatten_inheritable_page_items (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * pdf_lookup_page_obj (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int pdf_obj ;
+typedef int pdf_document ;
+typedef int fz_context ;
+
+
+ int PDF_NAME (int ) ;
+ int Parent ;
+ int pdf_array_push (int *,int *,int *) ;
+ int pdf_dict_put (int *,int *,int ,int *) ;
+ int pdf_flatten_inheritable_page_items (int *,int *) ;
+ int * pdf_lookup_page_obj (int *,int *,int) ;
 
 __attribute__((used)) static void retainpage(fz_context *ctx, pdf_document *doc, pdf_obj *parent, pdf_obj *kids, int page)
 {
-	pdf_obj *pageref = pdf_lookup_page_obj(ctx, doc, page-1);
+ pdf_obj *pageref = pdf_lookup_page_obj(ctx, doc, page-1);
 
-	pdf_flatten_inheritable_page_items(ctx, pageref);
+ pdf_flatten_inheritable_page_items(ctx, pageref);
 
-	pdf_dict_put(ctx, pageref, PDF_NAME(Parent), parent);
+ pdf_dict_put(ctx, pageref, PDF_NAME(Parent), parent);
 
-	/* Store page object in new kids array */
-	pdf_array_push(ctx, kids, pageref);
+
+ pdf_array_push(ctx, kids, pageref);
 }

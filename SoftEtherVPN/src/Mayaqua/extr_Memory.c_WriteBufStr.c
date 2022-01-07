@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ UINT ;
-typedef  int /*<<< orphan*/  BUF ;
 
-/* Variables and functions */
- scalar_t__ StrLen (char*) ; 
- int /*<<< orphan*/  WriteBuf (int /*<<< orphan*/ *,char*,scalar_t__) ; 
- int WriteBufInt (int /*<<< orphan*/ *,scalar_t__) ; 
+
+
+
+typedef scalar_t__ UINT ;
+typedef int BUF ;
+
+
+ scalar_t__ StrLen (char*) ;
+ int WriteBuf (int *,char*,scalar_t__) ;
+ int WriteBufInt (int *,scalar_t__) ;
 
 bool WriteBufStr(BUF *b, char *str)
 {
-	UINT len;
-	// Validate arguments
-	if (b == NULL || str == NULL)
-	{
-		return false;
-	}
+ UINT len;
 
-	// String length
-	len = StrLen(str);
-	if (WriteBufInt(b, len + 1) == false)
-	{
-		return false;
-	}
+ if (b == ((void*)0) || str == ((void*)0))
+ {
+  return 0;
+ }
 
-	// String body
-	WriteBuf(b, str, len);
 
-	return true;
+ len = StrLen(str);
+ if (WriteBufInt(b, len + 1) == 0)
+ {
+  return 0;
+ }
+
+
+ WriteBuf(b, str, len);
+
+ return 1;
 }

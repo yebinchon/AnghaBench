@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint16_t ;
 
-/* Variables and functions */
- int last_mod ; 
- int /*<<< orphan*/  register_code (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tap_code16 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tap_timer ; 
- int /*<<< orphan*/  timer_read () ; 
+
+
+
+typedef int uint16_t ;
+
+
+ int last_mod ;
+ int register_code (int ) ;
+ int tap_code16 (int ) ;
+ int tap_timer ;
+ int timer_read () ;
 
 void mod_press(uint16_t tap_code, uint16_t hold_code, int id) {
-    // this first if body makes double modified keys impossible, but stops the
-    // delay when modifying a tap key which would result in the tap key not
-    // getting modified.
+
+
+
     if (last_mod != id && last_mod != 10) {
         tap_code16(tap_code);
         last_mod = 10;

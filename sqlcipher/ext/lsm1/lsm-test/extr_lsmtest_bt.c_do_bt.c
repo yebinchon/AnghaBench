@@ -1,63 +1,63 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct Option   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ u32 ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct Option TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef scalar_t__ u32 ;
 struct TYPE_7__ {scalar_t__ p; } ;
 struct TYPE_6__ {int eType; TYPE_3__ output; scalar_t__ pgno; } ;
-typedef  TYPE_1__ bt_info ;
-typedef  int /*<<< orphan*/  bt_db ;
+typedef TYPE_1__ bt_info ;
+typedef int bt_db ;
 struct Option {char const* zName; int bPgno; int eOpt; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BT_CONTROL_INFO ; 
- int /*<<< orphan*/  BT_INFO_BLOCK_FREELIST ; 
- int /*<<< orphan*/  BT_INFO_FILENAME ; 
- int /*<<< orphan*/  BT_INFO_HDRDUMP ; 
- int /*<<< orphan*/  BT_INFO_PAGEDUMP ; 
- int /*<<< orphan*/  BT_INFO_PAGEDUMP_ASCII ; 
- int /*<<< orphan*/  BT_INFO_PAGE_FREELIST ; 
- int /*<<< orphan*/  BT_INFO_PAGE_LEAKS ; 
- int SQLITE4_OK ; 
- scalar_t__ atoi (char*) ; 
- int /*<<< orphan*/  printf (char*,char*) ; 
- int sqlite4BtControl (int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int sqlite4BtNew (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int sqlite4BtOpen (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  sqlite4_buffer_clear (TYPE_3__*) ; 
- int /*<<< orphan*/  sqlite4_buffer_init (TYPE_3__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite4_env_default () ; 
- int testArgSelect (TYPE_2__*,char*,char*,int*) ; 
- int /*<<< orphan*/  testPrintError (char*,int) ; 
- int /*<<< orphan*/  testPrintFUsage (char*,char*,char*) ; 
- int /*<<< orphan*/  testPrintUsage (char*) ; 
+
+ int BT_CONTROL_INFO ;
+ int BT_INFO_BLOCK_FREELIST ;
+ int BT_INFO_FILENAME ;
+ int BT_INFO_HDRDUMP ;
+ int BT_INFO_PAGEDUMP ;
+ int BT_INFO_PAGEDUMP_ASCII ;
+ int BT_INFO_PAGE_FREELIST ;
+ int BT_INFO_PAGE_LEAKS ;
+ int SQLITE4_OK ;
+ scalar_t__ atoi (char*) ;
+ int printf (char*,char*) ;
+ int sqlite4BtControl (int *,int ,TYPE_1__*) ;
+ int sqlite4BtNew (int ,int ,int **) ;
+ int sqlite4BtOpen (int *,char*) ;
+ int sqlite4_buffer_clear (TYPE_3__*) ;
+ int sqlite4_buffer_init (TYPE_3__*,int ) ;
+ int sqlite4_env_default () ;
+ int testArgSelect (TYPE_2__*,char*,char*,int*) ;
+ int testPrintError (char*,int) ;
+ int testPrintFUsage (char*,char*,char*) ;
+ int testPrintUsage (char*) ;
 
 int do_bt(int nArg, char **azArg){
   struct Option {
     const char *zName;
     int bPgno;
     int eOpt;
-  } aOpt [] = { 
-    { "dbhdr",          0, BT_INFO_HDRDUMP },
-    { "filename",       0, BT_INFO_FILENAME },
+  } aOpt [] = {
+    { "dbhdr", 0, BT_INFO_HDRDUMP },
+    { "filename", 0, BT_INFO_FILENAME },
     { "block_freelist", 0, BT_INFO_BLOCK_FREELIST },
-    { "page_freelist",  0, BT_INFO_PAGE_FREELIST },
-    { "filename",       0, BT_INFO_FILENAME },
-    { "page",           1, BT_INFO_PAGEDUMP },
-    { "page_ascii",     1, BT_INFO_PAGEDUMP_ASCII },
-    { "leaks",          0, BT_INFO_PAGE_LEAKS },
-    { 0, 0 } 
+    { "page_freelist", 0, BT_INFO_PAGE_FREELIST },
+    { "filename", 0, BT_INFO_FILENAME },
+    { "page", 1, BT_INFO_PAGEDUMP },
+    { "page_ascii", 1, BT_INFO_PAGEDUMP_ASCII },
+    { "leaks", 0, BT_INFO_PAGE_LEAKS },
+    { 0, 0 }
   };
   int iOpt;
   int rc;

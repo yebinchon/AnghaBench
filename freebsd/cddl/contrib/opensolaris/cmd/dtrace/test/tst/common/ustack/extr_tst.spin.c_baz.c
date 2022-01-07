@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int count ; 
- int /*<<< orphan*/  getpid () ; 
+ int count ;
+ int getpid () ;
 
 int
 baz(int a)
 {
-	(void) getpid();
-	while (count != -1) {
-		count++;
-		a++;
-	}
+ (void) getpid();
+ while (count != -1) {
+  count++;
+  a++;
+ }
 
-	return (a + 1);
+ return (a + 1);
 }

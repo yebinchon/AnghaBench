@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct mp_log {int dummy; } ;
-typedef  int int64_t ;
+typedef int int64_t ;
 
-/* Variables and functions */
- int O_CLOEXEC ; 
- int O_RDONLY ; 
- int /*<<< orphan*/  SEEK_END ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int SIZE_MAX ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  free (char*) ; 
- int lseek (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- char* malloc (int) ; 
- int /*<<< orphan*/  mp_verbose (struct mp_log*,char*,...) ; 
- int open (char const*,int) ; 
- int read (int,char*,int) ; 
+
+ int O_CLOEXEC ;
+ int O_RDONLY ;
+ int SEEK_END ;
+ int SEEK_SET ;
+ int SIZE_MAX ;
+ int close (int) ;
+ int free (char*) ;
+ int lseek (int,int ,int ) ;
+ char* malloc (int) ;
+ int mp_verbose (struct mp_log*,char*,...) ;
+ int open (char const*,int) ;
+ int read (int,char*,int) ;
 
 __attribute__((used)) static char *load_file(struct mp_log *log, const char *filename, int64_t * length)
 {
     int fd;
-    char *buffer = NULL;
+    char *buffer = ((void*)0);
 
     mp_verbose(log, "Loading cookie file: %s\n", filename);
 
@@ -71,5 +71,5 @@ __attribute__((used)) static char *load_file(struct mp_log *log, const char *fil
 err_out:
     if (fd != -1) close(fd);
     free(buffer);
-    return NULL;
+    return ((void*)0);
 }

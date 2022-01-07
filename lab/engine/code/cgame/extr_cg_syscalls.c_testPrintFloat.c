@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ int CG_TESTPRINTFLOAT ;
+ int PASSFLOAT (float) ;
+ int syscall (int ,char*,int ) ;
 
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  CG_TESTPRINTFLOAT ; 
- int /*<<< orphan*/  PASSFLOAT (float) ; 
- int /*<<< orphan*/  syscall (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
-
-void		testPrintFloat( char *string, float f ) {
-	syscall( CG_TESTPRINTFLOAT, string, PASSFLOAT(f) );
+void testPrintFloat( char *string, float f ) {
+ syscall( CG_TESTPRINTFLOAT, string, PASSFLOAT(f) );
 }

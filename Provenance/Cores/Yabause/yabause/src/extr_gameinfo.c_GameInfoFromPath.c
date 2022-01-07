@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  GameInfo ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CDCORE_ISO ; 
- int /*<<< orphan*/  Cs2DeInit () ; 
- int /*<<< orphan*/  Cs2GetIP (int) ; 
- int /*<<< orphan*/  Cs2Init (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * cdip ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int GameInfo ;
+
+
+ int CDCORE_ISO ;
+ int Cs2DeInit () ;
+ int Cs2GetIP (int) ;
+ int Cs2Init (int ,int ,char const*,int *,int *,int *) ;
+ int * cdip ;
+ int memcpy (int *,int *,int) ;
 
 int GameInfoFromPath(const char * filename, GameInfo * info)
 {
-   if (cdip != NULL) return 0;
+   if (cdip != ((void*)0)) return 0;
 
-   Cs2Init(0, CDCORE_ISO, filename, NULL, NULL, NULL);
+   Cs2Init(0, CDCORE_ISO, filename, ((void*)0), ((void*)0), ((void*)0));
    Cs2GetIP(1);
 
    memcpy(info, cdip, sizeof(GameInfo));

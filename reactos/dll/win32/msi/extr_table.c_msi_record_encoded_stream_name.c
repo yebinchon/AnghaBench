@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  size_t UINT ;
-struct TYPE_6__ {size_t num_cols; TYPE_1__* columns; int /*<<< orphan*/ * name; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
+typedef size_t UINT ;
+struct TYPE_6__ {size_t num_cols; TYPE_1__* columns; int * name; } ;
 struct TYPE_5__ {int type; } ;
-typedef  TYPE_2__ MSITABLEVIEW ;
-typedef  int /*<<< orphan*/  MSIRECORD ;
-typedef  int /*<<< orphan*/ * LPWSTR ;
-typedef  int DWORD ;
+typedef TYPE_2__ MSITABLEVIEW ;
+typedef int MSIRECORD ;
+typedef int * LPWSTR ;
+typedef int DWORD ;
 
-/* Variables and functions */
- size_t ERROR_OUTOFMEMORY ; 
- size_t ERROR_SUCCESS ; 
- int /*<<< orphan*/  FALSE ; 
- int MSITYPE_KEY ; 
- int /*<<< orphan*/  TRACE (char*,TYPE_2__ const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * encode_streamname (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lstrcatW (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lstrcpyW (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int lstrlenW (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * msi_alloc (int) ; 
- int /*<<< orphan*/ * msi_dup_record_field (int /*<<< orphan*/ *,size_t) ; 
- int /*<<< orphan*/  msi_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * msi_realloc (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * szDot ; 
+
+ size_t ERROR_OUTOFMEMORY ;
+ size_t ERROR_SUCCESS ;
+ int FALSE ;
+ int MSITYPE_KEY ;
+ int TRACE (char*,TYPE_2__ const*,int *) ;
+ int * encode_streamname (int ,int *) ;
+ int lstrcatW (int *,int *) ;
+ int lstrcpyW (int *,int *) ;
+ int lstrlenW (int *) ;
+ int * msi_alloc (int) ;
+ int * msi_dup_record_field (int *,size_t) ;
+ int msi_free (int *) ;
+ int * msi_realloc (int *,int) ;
+ int * szDot ;
 
 __attribute__((used)) static UINT msi_record_encoded_stream_name( const MSITABLEVIEW *tv, MSIRECORD *rec, LPWSTR *pstname )
 {
-    LPWSTR stname = NULL, sval, p;
+    LPWSTR stname = ((void*)0), sval, p;
     DWORD len;
     UINT i, r;
 
@@ -92,6 +92,6 @@ __attribute__((used)) static UINT msi_record_encoded_stream_name( const MSITABLE
 
 err:
     msi_free ( stname );
-    *pstname = NULL;
+    *pstname = ((void*)0);
     return r;
 }

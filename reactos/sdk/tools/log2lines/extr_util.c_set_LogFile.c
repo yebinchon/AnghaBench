@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (scalar_t__*,char*) ; 
- int /*<<< orphan*/  l2l_dbg (int,char*,scalar_t__*,...) ; 
- int /*<<< orphan*/  opt_buffered ; 
- scalar_t__* opt_logFile ; 
- char* opt_mod ; 
- int /*<<< orphan*/  setbuf (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ strcmp (scalar_t__*,char*) ; 
- int /*<<< orphan*/  strerror (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int FILE ;
+
+
+ int errno ;
+ int fclose (int *) ;
+ int * fopen (scalar_t__*,char*) ;
+ int l2l_dbg (int,char*,scalar_t__*,...) ;
+ int opt_buffered ;
+ scalar_t__* opt_logFile ;
+ char* opt_mod ;
+ int setbuf (int *,int *) ;
+ scalar_t__ strcmp (scalar_t__*,char*) ;
+ int strerror (int ) ;
 
 int
 set_LogFile(FILE **plogFile)
@@ -31,19 +31,19 @@ set_LogFile(FILE **plogFile)
     {
         if (*plogFile)
             fclose(*plogFile);
-        *plogFile = NULL;
+        *plogFile = ((void*)0);
 
         if (strcmp(opt_logFile,"none") == 0)
-            return 0; //just close
+            return 0;
 
         *plogFile = fopen(opt_logFile, opt_mod ? opt_mod : "a");
         if (*plogFile)
         {
-            // disable buffering so fflush is not needed
+
             if (!opt_buffered)
             {
                 l2l_dbg(1, "Disabling log buffering on %s\n", opt_logFile);
-                setbuf(*plogFile, NULL);
+                setbuf(*plogFile, ((void*)0));
             }
             else
                 l2l_dbg(1, "Enabling log buffering on %s\n", opt_logFile);

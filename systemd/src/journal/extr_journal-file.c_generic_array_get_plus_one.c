@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uint64_t ;
-typedef  int /*<<< orphan*/  Object ;
-typedef  int /*<<< orphan*/  JournalFile ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OBJECT_ENTRY ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ *) ; 
- int generic_array_get (int /*<<< orphan*/ *,scalar_t__,scalar_t__,int /*<<< orphan*/ **,scalar_t__*) ; 
- int journal_file_move_to_object (int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ **) ; 
+
+
+
+typedef scalar_t__ uint64_t ;
+typedef int Object ;
+typedef int JournalFile ;
+
+
+ int OBJECT_ENTRY ;
+ int assert (int *) ;
+ int generic_array_get (int *,scalar_t__,scalar_t__,int **,scalar_t__*) ;
+ int journal_file_move_to_object (int *,int ,scalar_t__,int **) ;
 
 __attribute__((used)) static int generic_array_get_plus_one(
                 JournalFile *f,

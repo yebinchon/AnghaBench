@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  global_State ;
-struct TYPE_6__ {int /*<<< orphan*/  sizeid; int /*<<< orphan*/  cbid; } ;
-struct TYPE_7__ {TYPE_1__ cb; int /*<<< orphan*/  sizetab; int /*<<< orphan*/  tab; } ;
-typedef  TYPE_2__ CTState ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CType ; 
- int /*<<< orphan*/  CTypeID1 ; 
- TYPE_2__* ctype_ctsG (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lj_ccallback_mcode_free (TYPE_2__*) ; 
- int /*<<< orphan*/  lj_mem_freet (int /*<<< orphan*/ *,TYPE_2__*) ; 
- int /*<<< orphan*/  lj_mem_freevec (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int global_State ;
+struct TYPE_6__ {int sizeid; int cbid; } ;
+struct TYPE_7__ {TYPE_1__ cb; int sizetab; int tab; } ;
+typedef TYPE_2__ CTState ;
+
+
+ int CType ;
+ int CTypeID1 ;
+ TYPE_2__* ctype_ctsG (int *) ;
+ int lj_ccallback_mcode_free (TYPE_2__*) ;
+ int lj_mem_freet (int *,TYPE_2__*) ;
+ int lj_mem_freevec (int *,int ,int ,int ) ;
 
 void lj_ctype_freestate(global_State *g)
 {

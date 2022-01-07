@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uint32_t ;
-typedef  int /*<<< orphan*/  VC_CONTAINER_T ;
-typedef  scalar_t__ VC_CONTAINER_STATUS_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AVI_END_CHUNK (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LOG_DEBUG (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  SEEK (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  SKIP_BYTES (int /*<<< orphan*/ *,scalar_t__) ; 
- scalar_t__ STREAM_POSITION (int /*<<< orphan*/ *) ; 
- scalar_t__ STREAM_SEEKABLE (int /*<<< orphan*/ *) ; 
- scalar_t__ STREAM_STATUS (int /*<<< orphan*/ *) ; 
- scalar_t__ VC_CONTAINER_ERROR_FAILED ; 
- scalar_t__ VC_CONTAINER_SUCCESS ; 
- int /*<<< orphan*/  WRITE_U32 (int /*<<< orphan*/ *,scalar_t__,char*) ; 
+
+
+
+typedef scalar_t__ uint32_t ;
+typedef int VC_CONTAINER_T ;
+typedef scalar_t__ VC_CONTAINER_STATUS_T ;
+
+
+ int AVI_END_CHUNK (int *) ;
+ int LOG_DEBUG (int *,char*) ;
+ int SEEK (int *,scalar_t__) ;
+ int SKIP_BYTES (int *,scalar_t__) ;
+ scalar_t__ STREAM_POSITION (int *) ;
+ scalar_t__ STREAM_SEEKABLE (int *) ;
+ scalar_t__ STREAM_STATUS (int *) ;
+ scalar_t__ VC_CONTAINER_ERROR_FAILED ;
+ scalar_t__ VC_CONTAINER_SUCCESS ;
+ int WRITE_U32 (int *,scalar_t__,char*) ;
 
 __attribute__((used)) static VC_CONTAINER_STATUS_T avi_finish_data_chunk( VC_CONTAINER_T *p_ctx, uint32_t chunk_size )
 {
@@ -32,7 +32,7 @@ __attribute__((used)) static VC_CONTAINER_STATUS_T avi_finish_data_chunk( VC_CON
 
    if (chunk_size)
    {
-      /* Rewrite the chunk size, this won't be efficient if it happens often */
+
       if (STREAM_SEEKABLE(p_ctx))
       {
          SEEK(p_ctx, STREAM_POSITION(p_ctx) - chunk_size - 4);

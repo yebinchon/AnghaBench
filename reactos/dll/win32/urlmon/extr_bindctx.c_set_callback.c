@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * serv_prov; int /*<<< orphan*/ * callback; } ;
-typedef  int /*<<< orphan*/  IServiceProvider ;
-typedef  int /*<<< orphan*/  IBindStatusCallback ;
-typedef  scalar_t__ HRESULT ;
-typedef  TYPE_1__ BindStatusCallback ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IBindStatusCallback_AddRef (int /*<<< orphan*/ *) ; 
- scalar_t__ IBindStatusCallback_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IBindStatusCallback_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IID_IServiceProvider ; 
- int /*<<< orphan*/  IServiceProvider_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ S_OK ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * serv_prov; int * callback; } ;
+typedef int IServiceProvider ;
+typedef int IBindStatusCallback ;
+typedef scalar_t__ HRESULT ;
+typedef TYPE_1__ BindStatusCallback ;
+
+
+ int IBindStatusCallback_AddRef (int *) ;
+ scalar_t__ IBindStatusCallback_QueryInterface (int *,int *,void**) ;
+ int IBindStatusCallback_Release (int *) ;
+ int IID_IServiceProvider ;
+ int IServiceProvider_Release (int *) ;
+ scalar_t__ S_OK ;
 
 __attribute__((used)) static void set_callback(BindStatusCallback *This, IBindStatusCallback *bsc)
 {
@@ -39,5 +39,5 @@ __attribute__((used)) static void set_callback(BindStatusCallback *This, IBindSt
     This->callback = bsc;
 
     hres = IBindStatusCallback_QueryInterface(bsc, &IID_IServiceProvider, (void**)&serv_prov);
-    This->serv_prov = hres == S_OK ? serv_prov : NULL;
+    This->serv_prov = hres == S_OK ? serv_prov : ((void*)0);
 }

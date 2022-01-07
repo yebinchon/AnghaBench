@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int const sigma; float amount; TYPE_1__* planes; } ;
 struct TYPE_4__ {int b; int nox; int noy; int buffer_linesize; float** buffer; } ;
-typedef  TYPE_1__ PlaneContext ;
-typedef  TYPE_2__ FFTdnoizContext ;
+typedef TYPE_1__ PlaneContext ;
+typedef TYPE_2__ FFTdnoizContext ;
 
-/* Variables and functions */
- size_t CURRENT ; 
- float FFMAX (float,float const) ; 
- float sqrtf (float) ; 
+
+ size_t CURRENT ;
+ float FFMAX (float,float const) ;
+ float sqrtf (float) ;
 
 __attribute__((used)) static void filter_plane3d2(FFTdnoizContext *s, int plane, float *pbuffer, float *nbuffer)
 {
@@ -47,13 +47,13 @@ __attribute__((used)) static void filter_plane3d2(FFTdnoizContext *s, int plane,
                     float sumr, sumi, difr, difi, mpr, mpi, mnr, mni;
                     float factor, power, sumpnr, sumpni;
 
-                    sumpnr = pbuff[2 * j    ] + nbuff[2 * j    ];
+                    sumpnr = pbuff[2 * j ] + nbuff[2 * j ];
                     sumpni = pbuff[2 * j + 1] + nbuff[2 * j + 1];
-                    sumr = cbuff[2 * j    ] + sumpnr;
+                    sumr = cbuff[2 * j ] + sumpnr;
                     sumi = cbuff[2 * j + 1] + sumpni;
-                    difr = cfactor * (nbuff[2 * j    ] - pbuff[2 * j    ]);
+                    difr = cfactor * (nbuff[2 * j ] - pbuff[2 * j ]);
                     difi = cfactor * (pbuff[2 * j + 1] - nbuff[2 * j + 1]);
-                    mpr = cbuff[2 * j    ] - 0.5f * sumpnr + difi;
+                    mpr = cbuff[2 * j ] - 0.5f * sumpnr + difi;
                     mnr = mpr - difi - difi;
                     mpi = cbuff[2 * j + 1] - 0.5f * sumpni + difr;
                     mni = mpi - difr - difr;
@@ -69,7 +69,7 @@ __attribute__((used)) static void filter_plane3d2(FFTdnoizContext *s, int plane,
                     factor = FFMAX((power - sigma) / power, limit);
                     mnr *= factor;
                     mni *= factor;
-                    cbuff[2 * j    ] = (sumr + mpr + mnr) * scale;
+                    cbuff[2 * j ] = (sumr + mpr + mnr) * scale;
                     cbuff[2 * j + 1] = (sumi + mpi + mni) * scale;
 
                 }

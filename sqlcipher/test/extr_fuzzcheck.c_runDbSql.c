@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_stmt ;
-typedef  int /*<<< orphan*/  sqlite3 ;
 
-/* Variables and functions */
-#define  SQLITE_BLOB 132 
- int SQLITE_DONE ; 
-#define  SQLITE_FLOAT 131 
-#define  SQLITE_INTEGER 130 
-#define  SQLITE_NULL 129 
- int SQLITE_OK ; 
- int SQLITE_ROW ; 
-#define  SQLITE_TEXT 128 
- int eVerbosity ; 
- int /*<<< orphan*/  fflush (int /*<<< orphan*/ ) ; 
- scalar_t__ isspace (char const) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  putchar (unsigned char const) ; 
- scalar_t__ sqlite3_column_blob (int /*<<< orphan*/ *,int) ; 
- int sqlite3_column_bytes (int /*<<< orphan*/ *,int) ; 
- int sqlite3_column_count (int /*<<< orphan*/ *) ; 
- char* sqlite3_column_text (int /*<<< orphan*/ *,int) ; 
- int sqlite3_column_type (int /*<<< orphan*/ *,int) ; 
- char* sqlite3_errmsg (int /*<<< orphan*/ *) ; 
- int sqlite3_finalize (int /*<<< orphan*/ *) ; 
- int sqlite3_prepare_v2 (int /*<<< orphan*/ *,char const*,int,int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
- int sqlite3_step (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stdout ; 
+
+
+
+typedef int sqlite3_stmt ;
+typedef int sqlite3 ;
+
+
+
+ int SQLITE_DONE ;
+
+
+
+ int SQLITE_OK ;
+ int SQLITE_ROW ;
+
+ int eVerbosity ;
+ int fflush (int ) ;
+ scalar_t__ isspace (char const) ;
+ int printf (char*,...) ;
+ int putchar (unsigned char const) ;
+ scalar_t__ sqlite3_column_blob (int *,int) ;
+ int sqlite3_column_bytes (int *,int) ;
+ int sqlite3_column_count (int *) ;
+ char* sqlite3_column_text (int *,int) ;
+ int sqlite3_column_type (int *,int) ;
+ char* sqlite3_errmsg (int *) ;
+ int sqlite3_finalize (int *) ;
+ int sqlite3_prepare_v2 (int *,char const*,int,int **,int ) ;
+ int sqlite3_step (int *) ;
+ int stdout ;
 
 __attribute__((used)) static int runDbSql(sqlite3 *db, const char *zSql){
   int rc;
@@ -55,16 +55,16 @@ __attribute__((used)) static int runDbSql(sqlite3 *db, const char *zSql){
         for(j=0; j<sqlite3_column_count(pStmt); j++){
           if( j ) printf(",");
           switch( sqlite3_column_type(pStmt, j) ){
-            case SQLITE_NULL: {
+            case 129: {
               printf("NULL");
               break;
             }
-            case SQLITE_INTEGER:
-            case SQLITE_FLOAT: {
+            case 130:
+            case 131: {
               printf("%s", sqlite3_column_text(pStmt, j));
               break;
             }
-            case SQLITE_BLOB: {
+            case 132: {
               int n = sqlite3_column_bytes(pStmt, j);
               int i;
               const unsigned char *a;
@@ -76,7 +76,7 @@ __attribute__((used)) static int runDbSql(sqlite3 *db, const char *zSql){
               printf("'");
               break;
             }
-            case SQLITE_TEXT: {
+            case 128: {
               int n = sqlite3_column_bytes(pStmt, j);
               int i;
               const unsigned char *a;
@@ -92,19 +92,19 @@ __attribute__((used)) static int runDbSql(sqlite3 *db, const char *zSql){
               printf("'");
               break;
             }
-          } /* End switch() */
-        } /* End for() */
+          }
+        }
         printf("\n");
         fflush(stdout);
-      } /* End if( eVerbosity>=5 ) */
-    } /* End while( SQLITE_ROW */
+      }
+    }
     if( rc!=SQLITE_DONE && eVerbosity>=4 ){
       printf("SQL-ERROR: (%d) %s\n", rc, sqlite3_errmsg(db));
       fflush(stdout);
     }
   }else if( eVerbosity>=4 ){
     printf("SQL-ERROR (%d): %s\n", rc, sqlite3_errmsg(db));
-    fflush(stdout);    
-  } /* End if( SQLITE_OK ) */
+    fflush(stdout);
+  }
   return sqlite3_finalize(pStmt);
 }

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  testing_pingedid; scalar_t__ testing_timestamp; int /*<<< orphan*/  testing_requests; int /*<<< orphan*/  send_nodes_pingedid; scalar_t__ send_nodes_timestamp; int /*<<< orphan*/  send_nodes_ok; int /*<<< orphan*/  routes_requests_pingedid; scalar_t__ routes_requests_timestamp; int /*<<< orphan*/  routes_requests_ok; } ;
-typedef  TYPE_1__ Hardening ;
 
-/* Variables and functions */
- int /*<<< orphan*/  print_client_id (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int testing_pingedid; scalar_t__ testing_timestamp; int testing_requests; int send_nodes_pingedid; scalar_t__ send_nodes_timestamp; int send_nodes_ok; int routes_requests_pingedid; scalar_t__ routes_requests_timestamp; int routes_requests_ok; } ;
+typedef TYPE_1__ Hardening ;
+
+
+ int print_client_id (int ) ;
+ int printf (char*,...) ;
 
 void print_hardening(Hardening *h)
 {

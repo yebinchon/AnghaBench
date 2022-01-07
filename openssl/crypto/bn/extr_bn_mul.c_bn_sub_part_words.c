@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int BN_ULONG ;
 
-/* Variables and functions */
- int BN_MASK2 ; 
- int /*<<< orphan*/  assert (int) ; 
- int bn_sub_words (int*,int const*,int const*,int) ; 
+
+
+
+typedef int BN_ULONG ;
+
+
+ int BN_MASK2 ;
+ int assert (int) ;
+ int bn_sub_words (int*,int const*,int const*,int) ;
 
 BN_ULONG bn_sub_part_words(BN_ULONG *r,
                            const BN_ULONG *a, const BN_ULONG *b,
@@ -108,12 +108,12 @@ BN_ULONG bn_sub_part_words(BN_ULONG *r,
                     r[1] = a[1];
                     if (--dl <= 0)
                         break;
-                    /* fall thru */
+
                 case 2:
                     r[2] = a[2];
                     if (--dl <= 0)
                         break;
-                    /* fall thru */
+
                 case 3:
                     r[3] = a[3];
                     if (--dl <= 0)

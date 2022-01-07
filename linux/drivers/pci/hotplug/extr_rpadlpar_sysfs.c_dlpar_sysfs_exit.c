@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  dlpar_attr_group ; 
- int /*<<< orphan*/  dlpar_kobj ; 
- int /*<<< orphan*/  kobject_put (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sysfs_remove_group (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+ int dlpar_attr_group ;
+ int dlpar_kobj ;
+ int kobject_put (int ) ;
+ int sysfs_remove_group (int ,int *) ;
 
 void dlpar_sysfs_exit(void)
 {
-	sysfs_remove_group(dlpar_kobj, &dlpar_attr_group);
-	kobject_put(dlpar_kobj);
+ sysfs_remove_group(dlpar_kobj, &dlpar_attr_group);
+ kobject_put(dlpar_kobj);
 }

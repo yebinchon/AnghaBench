@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {unsigned char channels; unsigned char channel_mapping; unsigned char nb_streams; unsigned char nb_coupled; unsigned char* stream_map; int /*<<< orphan*/  gain; int /*<<< orphan*/  input_sample_rate; int /*<<< orphan*/  preskip; } ;
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_8__ {unsigned char channels; unsigned char channel_mapping; unsigned char nb_streams; unsigned char nb_coupled; unsigned char* stream_map; int gain; int input_sample_rate; int preskip; } ;
 struct TYPE_7__ {unsigned char* data; int maxlen; int pos; } ;
-typedef  TYPE_1__ Packet ;
-typedef  TYPE_2__ OpusHeader ;
+typedef TYPE_1__ Packet ;
+typedef TYPE_2__ OpusHeader ;
 
-/* Variables and functions */
- int /*<<< orphan*/  write_chars (TYPE_1__*,unsigned char const*,int) ; 
- int /*<<< orphan*/  write_uint16 (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  write_uint32 (TYPE_1__*,int /*<<< orphan*/ ) ; 
+
+ int write_chars (TYPE_1__*,unsigned char const*,int) ;
+ int write_uint16 (TYPE_1__*,int ) ;
+ int write_uint32 (TYPE_1__*,int ) ;
 
 __attribute__((used)) static int opus_header_to_packet(const OpusHeader *h, unsigned char *packet, int len)
 {
@@ -33,7 +33,7 @@ __attribute__((used)) static int opus_header_to_packet(const OpusHeader *h, unsi
     if (len<19)return 0;
     if (!write_chars(&p, (const unsigned char*)"OpusHead", 8))
         return 0;
-    /* Version is 1 */
+
     ch = 1;
     if (!write_chars(&p, &ch, 1))
         return 0;
@@ -65,7 +65,7 @@ __attribute__((used)) static int opus_header_to_packet(const OpusHeader *h, unsi
         if (!write_chars(&p, &ch, 1))
             return 0;
 
-        /* Multi-stream support */
+
         for (int i=0;i<h->channels;i++)
         {
             if (!write_chars(&p, &h->stream_map[i], 1))

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  SCI_PORT_HANDLE_T ;
-typedef  int /*<<< orphan*/  SCI_PHY_HANDLE_T ;
-typedef  int /*<<< orphan*/  SCI_CONTROLLER_HANDLE_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SCIF_LOG_OBJECT_DOMAIN ; 
- int /*<<< orphan*/  SCIF_LOG_TRACE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sci_base_object_get_logger (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sci_object_get_association (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int SCI_PORT_HANDLE_T ;
+typedef int SCI_PHY_HANDLE_T ;
+typedef int SCI_CONTROLLER_HANDLE_T ;
+
+
+ int SCIF_LOG_OBJECT_DOMAIN ;
+ int SCIF_LOG_TRACE (int ) ;
+ int sci_base_object_get_logger (int ) ;
+ int sci_object_get_association (int ) ;
 
 void scic_cb_port_bc_expander_primitive_recieved(
-   SCI_CONTROLLER_HANDLE_T  controller,
-   SCI_PORT_HANDLE_T        port,
-   SCI_PHY_HANDLE_T         phy
+   SCI_CONTROLLER_HANDLE_T controller,
+   SCI_PORT_HANDLE_T port,
+   SCI_PHY_HANDLE_T phy
 )
 {
    SCIF_LOG_TRACE((

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct pixel_format_desc {scalar_t__ format; } ;
-typedef  scalar_t__ D3DFORMAT ;
+typedef scalar_t__ D3DFORMAT ;
 
-/* Variables and functions */
- scalar_t__ D3DFMT_UNKNOWN ; 
- int /*<<< orphan*/  FIXME (char*,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  debugstr_an (char const*,int) ; 
- struct pixel_format_desc const* formats ; 
+
+ scalar_t__ D3DFMT_UNKNOWN ;
+ int FIXME (char*,scalar_t__,int ) ;
+ int debugstr_an (char const*,int) ;
+ struct pixel_format_desc const* formats ;
 
 const struct pixel_format_desc *get_format_info(D3DFORMAT format)
 {

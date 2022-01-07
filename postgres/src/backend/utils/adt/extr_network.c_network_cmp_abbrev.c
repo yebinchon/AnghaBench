@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  SortSupport ;
-typedef  scalar_t__ Datum ;
 
-/* Variables and functions */
+
+
+
+typedef int SortSupport ;
+typedef scalar_t__ Datum ;
+
+
 
 __attribute__((used)) static int
 network_cmp_abbrev(Datum x, Datum y, SortSupport ssup)
 {
-	if (x > y)
-		return 1;
-	else if (x == y)
-		return 0;
-	else
-		return -1;
+ if (x > y)
+  return 1;
+ else if (x == y)
+  return 0;
+ else
+  return -1;
 }

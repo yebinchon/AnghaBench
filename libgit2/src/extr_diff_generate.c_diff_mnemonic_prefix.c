@@ -1,41 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int git_iterator_type_t ;
 
-/* Variables and functions */
-#define  GIT_ITERATOR_TYPE_EMPTY 132 
-#define  GIT_ITERATOR_TYPE_FS 131 
-#define  GIT_ITERATOR_TYPE_INDEX 130 
-#define  GIT_ITERATOR_TYPE_TREE 129 
-#define  GIT_ITERATOR_TYPE_WORKDIR 128 
 
+
+
+typedef int git_iterator_type_t ;
 __attribute__((used)) static const char *diff_mnemonic_prefix(
-	git_iterator_type_t type, bool left_side)
+ git_iterator_type_t type, bool left_side)
 {
-	const char *pfx = "";
+ const char *pfx = "";
 
-	switch (type) {
-	case GIT_ITERATOR_TYPE_EMPTY:   pfx = "c"; break;
-	case GIT_ITERATOR_TYPE_TREE:    pfx = "c"; break;
-	case GIT_ITERATOR_TYPE_INDEX:   pfx = "i"; break;
-	case GIT_ITERATOR_TYPE_WORKDIR: pfx = "w"; break;
-	case GIT_ITERATOR_TYPE_FS:      pfx = left_side ? "1" : "2"; break;
-	default: break;
-	}
+ switch (type) {
+ case 132: pfx = "c"; break;
+ case 129: pfx = "c"; break;
+ case 130: pfx = "i"; break;
+ case 128: pfx = "w"; break;
+ case 131: pfx = left_side ? "1" : "2"; break;
+ default: break;
+ }
 
-	/* note: without a deeper look at pathspecs, there is no easy way
-	 * to get the (o)bject / (w)ork tree mnemonics working...
-	 */
 
-	return pfx;
+
+
+
+ return pfx;
 }

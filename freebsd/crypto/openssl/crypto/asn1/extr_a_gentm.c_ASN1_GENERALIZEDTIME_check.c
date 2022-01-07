@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ASN1_GENERALIZEDTIME ;
 
-/* Variables and functions */
- int asn1_generalizedtime_to_tm (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
+
+
+
+typedef int ASN1_GENERALIZEDTIME ;
+
+
+ int asn1_generalizedtime_to_tm (int *,int const*) ;
 
 int ASN1_GENERALIZEDTIME_check(const ASN1_GENERALIZEDTIME *d)
 {
-    return asn1_generalizedtime_to_tm(NULL, d);
+    return asn1_generalizedtime_to_tm(((void*)0), d);
 }

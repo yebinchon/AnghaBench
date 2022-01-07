@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {scalar_t__ classId; int /*<<< orphan*/  objectId; } ;
-typedef  TYPE_1__ ObjectAddress ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CITUS_NAME ; 
- scalar_t__ ExtensionRelationId ; 
- int /*<<< orphan*/  NAMEDATALEN ; 
- char* get_extension_name (int /*<<< orphan*/ ) ; 
- scalar_t__ strncasecmp (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {scalar_t__ classId; int objectId; } ;
+typedef TYPE_1__ ObjectAddress ;
+
+
+ int CITUS_NAME ;
+ scalar_t__ ExtensionRelationId ;
+ int NAMEDATALEN ;
+ char* get_extension_name (int ) ;
+ scalar_t__ strncasecmp (char*,int ,int ) ;
 
 bool
 CitusExtensionObject(const ObjectAddress *objectAddress)
 {
-	char *extensionName = false;
+ char *extensionName = 0;
 
-	if (objectAddress->classId != ExtensionRelationId)
-	{
-		return false;
-	}
+ if (objectAddress->classId != ExtensionRelationId)
+ {
+  return 0;
+ }
 
-	extensionName = get_extension_name(objectAddress->objectId);
-	if (extensionName != NULL &&
-		strncasecmp(extensionName, CITUS_NAME, NAMEDATALEN) == 0)
-	{
-		return true;
-	}
+ extensionName = get_extension_name(objectAddress->objectId);
+ if (extensionName != ((void*)0) &&
+  strncasecmp(extensionName, CITUS_NAME, NAMEDATALEN) == 0)
+ {
+  return 1;
+ }
 
-	return false;
+ return 0;
 }

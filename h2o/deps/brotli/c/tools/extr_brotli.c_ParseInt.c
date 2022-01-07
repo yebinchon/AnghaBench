@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  BROTLI_BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BROTLI_FALSE ; 
- int /*<<< orphan*/  BROTLI_TRUE ; 
+
+
+
+typedef int BROTLI_BOOL ;
+
+
+ int BROTLI_FALSE ;
+ int BROTLI_TRUE ;
 
 __attribute__((used)) static BROTLI_BOOL ParseInt(const char* s, int low, int high, int* result) {
   int value = 0;

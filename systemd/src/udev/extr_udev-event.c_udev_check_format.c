@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ FormatSubstitutionType ;
 
-/* Variables and functions */
- int EINVAL ; 
- int /*<<< orphan*/  FORMAT_SUBST_ATTR ; 
- int /*<<< orphan*/  FORMAT_SUBST_ENV ; 
- scalar_t__ FORMAT_SUBST_RESULT ; 
- scalar_t__ IN_SET (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int UTIL_PATH_SIZE ; 
- int get_subst_type (char const**,int,scalar_t__*,char*) ; 
- scalar_t__ isempty (char*) ; 
- int safe_atou_optional_plus (char*,unsigned int*) ; 
+
+
+
+typedef scalar_t__ FormatSubstitutionType ;
+
+
+ int EINVAL ;
+ int FORMAT_SUBST_ATTR ;
+ int FORMAT_SUBST_ENV ;
+ scalar_t__ FORMAT_SUBST_RESULT ;
+ scalar_t__ IN_SET (scalar_t__,int ,int ) ;
+ int UTIL_PATH_SIZE ;
+ int get_subst_type (char const**,int,scalar_t__*,char*) ;
+ scalar_t__ isempty (char*) ;
+ int safe_atou_optional_plus (char*,unsigned int*) ;
 
 int udev_check_format(const char *value, size_t *offset, const char **hint) {
         FormatSubstitutionType type;
@@ -30,7 +30,7 @@ int udev_check_format(const char *value, size_t *offset, const char **hint) {
         int r;
 
         while (*s) {
-                r = get_subst_type(&s, true, &type, attr);
+                r = get_subst_type(&s, 1, &type, attr);
                 if (r < 0) {
                         if (offset)
                                 *offset = s - value;

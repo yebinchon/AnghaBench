@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  led_print (int,char*) ; 
+ int led_print (int,char*) ;
 
 void platform_heartbeat(void)
 {
-	static int i=0, t = 0;
+ static int i=0, t = 0;
 
-	if (--t < 0)
-	{
-		t = 59;
-		led_print(7, i ? ".": " ");
-		i ^= 1;
-	}
+ if (--t < 0)
+ {
+  t = 59;
+  led_print(7, i ? ".": " ");
+  i ^= 1;
+ }
 }

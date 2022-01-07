@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  size_t uint16_t ;
+
+
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+typedef size_t uint16_t ;
 struct TYPE_10__ {scalar_t__ statisticsMode; int numOfStatsFLRs; TYPE_2__* keyAndNextEngineParams; } ;
-typedef  TYPE_3__ t_FmPcdCcNode ;
-struct TYPE_11__ {void** frameLengthRangeCount; int /*<<< orphan*/  frameCount; void* byteCount; } ;
-typedef  TYPE_4__ t_FmPcdCcKeyStatistics ;
-typedef  int /*<<< orphan*/  t_Error ;
+typedef TYPE_3__ t_FmPcdCcNode ;
+struct TYPE_11__ {void** frameLengthRangeCount; int frameCount; void* byteCount; } ;
+typedef TYPE_4__ t_FmPcdCcKeyStatistics ;
+typedef int t_Error ;
 struct TYPE_9__ {TYPE_1__* p_StatsObj; } ;
 struct TYPE_8__ {int* h_StatsCounters; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT_COND (int*) ; 
- int /*<<< orphan*/  E_INVALID_STATE ; 
- int /*<<< orphan*/  E_OK ; 
- int /*<<< orphan*/  FM_PCD_CC_STATS_COUNTER_SIZE ; 
- void* GET_UINT32 (int) ; 
- int /*<<< orphan*/  MAJOR ; 
- int* PTR_MOVE (int*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RETURN_ERROR (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- scalar_t__ e_FM_PCD_CC_STATS_MODE_NONE ; 
- int /*<<< orphan*/  memset (TYPE_4__*,int /*<<< orphan*/ ,int) ; 
+
+ int ASSERT_COND (int*) ;
+ int E_INVALID_STATE ;
+ int E_OK ;
+ int FM_PCD_CC_STATS_COUNTER_SIZE ;
+ void* GET_UINT32 (int) ;
+ int MAJOR ;
+ int* PTR_MOVE (int*,int ) ;
+ int RETURN_ERROR (int ,int ,char*) ;
+ scalar_t__ e_FM_PCD_CC_STATS_MODE_NONE ;
+ int memset (TYPE_4__*,int ,int) ;
 
 __attribute__((used)) static t_Error MatchTableGetKeyStatistics(
         t_FmPcdCcNode *p_CcNode, uint16_t keyIndex,
@@ -65,10 +65,10 @@ __attribute__((used)) static t_Error MatchTableGetKeyStatistics(
 
         p_KeyStatistics->frameCount += GET_UINT32(*p_StatsCounters);
 
-#if (DPAA_VERSION >= 11)
-        p_KeyStatistics->frameLengthRangeCount[i - 1] =
-                GET_UINT32(*p_StatsCounters);
-#endif /* (DPAA_VERSION >= 11) */
+
+
+
+
     }
 
     return E_OK;

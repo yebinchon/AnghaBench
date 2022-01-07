@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int flags; scalar_t__ socket; } ;
-typedef  TYPE_2__ uv_udp_t ;
+typedef TYPE_2__ uv_udp_t ;
 struct sockaddr_storage {scalar_t__ ss_family; } ;
 struct sockaddr_in6 {scalar_t__ sin6_scope_id; } ;
-struct TYPE_4__ {int /*<<< orphan*/  s_addr; } ;
+struct TYPE_4__ {int s_addr; } ;
 struct sockaddr_in {TYPE_1__ sin_addr; } ;
 
-/* Variables and functions */
- scalar_t__ AF_INET ; 
- scalar_t__ AF_INET6 ; 
- int /*<<< orphan*/  INADDR_ANY ; 
- scalar_t__ INVALID_SOCKET ; 
- int /*<<< orphan*/  IPPROTO_IP ; 
- int /*<<< orphan*/  IPPROTO_IPV6 ; 
- int /*<<< orphan*/  IPV6_MULTICAST_IF ; 
- int /*<<< orphan*/  IP_MULTICAST_IF ; 
- scalar_t__ SOCKET_ERROR ; 
- int UV_EBADF ; 
- int UV_EINVAL ; 
- int UV_HANDLE_IPV6 ; 
- int /*<<< orphan*/  WSAGetLastError () ; 
- int /*<<< orphan*/  abort () ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  htonl (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (struct sockaddr_storage*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ setsockopt (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int) ; 
- scalar_t__ uv_ip4_addr (char const*,int /*<<< orphan*/ ,struct sockaddr_in*) ; 
- scalar_t__ uv_ip6_addr (char const*,int /*<<< orphan*/ ,struct sockaddr_in6*) ; 
- int uv_translate_sys_error (int /*<<< orphan*/ ) ; 
+
+ scalar_t__ AF_INET ;
+ scalar_t__ AF_INET6 ;
+ int INADDR_ANY ;
+ scalar_t__ INVALID_SOCKET ;
+ int IPPROTO_IP ;
+ int IPPROTO_IPV6 ;
+ int IPV6_MULTICAST_IF ;
+ int IP_MULTICAST_IF ;
+ scalar_t__ SOCKET_ERROR ;
+ int UV_EBADF ;
+ int UV_EINVAL ;
+ int UV_HANDLE_IPV6 ;
+ int WSAGetLastError () ;
+ int abort () ;
+ int assert (int) ;
+ int htonl (int ) ;
+ int memset (struct sockaddr_storage*,int ,int) ;
+ scalar_t__ setsockopt (scalar_t__,int ,int ,char*,int) ;
+ scalar_t__ uv_ip4_addr (char const*,int ,struct sockaddr_in*) ;
+ scalar_t__ uv_ip6_addr (char const*,int ,struct sockaddr_in6*) ;
+ int uv_translate_sys_error (int ) ;
 
 int uv_udp_set_multicast_interface(uv_udp_t* handle, const char* interface_addr) {
   struct sockaddr_storage addr_st;
@@ -60,9 +60,9 @@ int uv_udp_set_multicast_interface(uv_udp_t* handle, const char* interface_addr)
       addr4->sin_addr.s_addr = htonl(INADDR_ANY);
     }
   } else if (uv_ip4_addr(interface_addr, 0, addr4) == 0) {
-    /* nothing, address was parsed */
+
   } else if (uv_ip6_addr(interface_addr, 0, addr6) == 0) {
-    /* nothing, address was parsed */
+
   } else {
     return UV_EINVAL;
   }

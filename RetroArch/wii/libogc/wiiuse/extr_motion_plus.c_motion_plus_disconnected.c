@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct motion_plus_t {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  WIIUSE_DEBUG (char*) ; 
- int /*<<< orphan*/  memset (struct motion_plus_t*,int /*<<< orphan*/ ,int) ; 
+
+ int WIIUSE_DEBUG (char*) ;
+ int memset (struct motion_plus_t*,int ,int) ;
 
 void motion_plus_disconnected(struct motion_plus_t* mp)
 {
-	WIIUSE_DEBUG("Motion plus disconnected");
-	memset(mp, 0, sizeof(struct motion_plus_t));
+ WIIUSE_DEBUG("Motion plus disconnected");
+ memset(mp, 0, sizeof(struct motion_plus_t));
 }

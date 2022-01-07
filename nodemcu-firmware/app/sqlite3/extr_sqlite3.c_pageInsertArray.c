@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ u8 ;
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef scalar_t__ u8 ;
 struct TYPE_8__ {scalar_t__** apCell; } ;
 struct TYPE_7__ {scalar_t__ hdrOffset; scalar_t__* aData; } ;
-typedef  TYPE_1__ MemPage ;
-typedef  TYPE_2__ CellArray ;
+typedef TYPE_1__ MemPage ;
+typedef TYPE_2__ CellArray ;
 
-/* Variables and functions */
- scalar_t__ CORRUPT_DB ; 
- int /*<<< orphan*/  assert (int) ; 
- int cachedCellSize (TYPE_2__*,int) ; 
- int /*<<< orphan*/  memmove (scalar_t__*,scalar_t__*,int) ; 
- scalar_t__* pageFindSlot (TYPE_1__*,int,int*) ; 
- int /*<<< orphan*/  put2byte (scalar_t__*,int) ; 
+
+ scalar_t__ CORRUPT_DB ;
+ int assert (int) ;
+ int cachedCellSize (TYPE_2__*,int) ;
+ int memmove (scalar_t__*,scalar_t__*,int) ;
+ scalar_t__* pageFindSlot (TYPE_1__*,int,int*) ;
+ int put2byte (scalar_t__*,int) ;
 
 __attribute__((used)) static int pageInsertArray(
-  MemPage *pPg,                   /* Page to add cells to */
-  u8 *pBegin,                     /* End of cell-pointer array */
-  u8 **ppData,                    /* IN/OUT: Page content -area pointer */
-  u8 *pCellptr,                   /* Pointer to cell-pointer area */
-  int iFirst,                     /* Index of first cell to add */
-  int nCell,                      /* Number of cells to add to pPg */
-  CellArray *pCArray              /* Array of cells */
+  MemPage *pPg,
+  u8 *pBegin,
+  u8 **ppData,
+  u8 *pCellptr,
+  int iFirst,
+  int nCell,
+  CellArray *pCArray
 ){
   int i;
   u8 *aData = pPg->aData;
   u8 *pData = *ppData;
   int iEnd = iFirst + nCell;
-  assert( CORRUPT_DB || pPg->hdrOffset==0 );    /* Never called on page 1 */
+  assert( CORRUPT_DB || pPg->hdrOffset==0 );
   for(i=iFirst; i<iEnd; i++){
     int sz, rc;
     u8 *pSlot;
@@ -49,9 +49,9 @@ __attribute__((used)) static int pageInsertArray(
       pData -= sz;
       pSlot = pData;
     }
-    /* pSlot and pCArray->apCell[i] will never overlap on a well-formed
-    ** database.  But they might for a corrupt database.  Hence use memmove()
-    ** since memcpy() sends SIGABORT with overlapping buffers on OpenBSD */
+
+
+
     assert( (pSlot+sz)<=pCArray->apCell[i]
          || pSlot>=(pCArray->apCell[i]+sz)
          || CORRUPT_DB );

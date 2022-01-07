@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- scalar_t__ crypto_pwhash_scryptsalsa208sha256_str_verify (char*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (char*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printf (char*,unsigned int) ; 
- int /*<<< orphan*/  sodium_free (char*) ; 
- scalar_t__ sodium_malloc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strlen (char*) ; 
+ int assert (int ) ;
+ scalar_t__ crypto_pwhash_scryptsalsa208sha256_str_verify (char*,char*,int ) ;
+ int memcpy (char*,char*,int ) ;
+ int printf (char*,unsigned int) ;
+ int sodium_free (char*) ;
+ scalar_t__ sodium_malloc (int ) ;
+ int strlen (char*) ;
 
 __attribute__((used)) static void
 tv3(void)
@@ -70,7 +62,7 @@ tv3(void)
           "$7$A6....1....TrXs5Zk6s8sWHpQgWDIXTR8kUU3s6Jc3s.DtdS8M2i4$"
           "a4ik5hGDN7foMuHOW.cp.CtX01UyCeO0.JAG.AHPpx5" },
 
-        /* Invalid pwhash strings */
+
 
         { "Y0!?iQa9M%5ekffW(`",
           "$7$A6....1....$TrXs5Zk6s8sWHpQgWDIXTR8kUU3s6Jc3s.DtdS8M2i4"
@@ -138,10 +130,10 @@ tv3(void)
 
     do {
         out = (char *) sodium_malloc(strlen(tests[i].out) + 1U);
-        assert(out != NULL);
+        assert(out != ((void*)0));
         memcpy(out, tests[i].out, strlen(tests[i].out) + 1U);
         passwd = (char *) sodium_malloc(strlen(tests[i].passwd) + 1U);
-        assert(passwd != NULL);
+        assert(passwd != ((void*)0));
         memcpy(passwd, tests[i].passwd, strlen(tests[i].passwd) + 1U);
         if (crypto_pwhash_scryptsalsa208sha256_str_verify(
                 out, passwd, strlen(passwd)) != 0) {

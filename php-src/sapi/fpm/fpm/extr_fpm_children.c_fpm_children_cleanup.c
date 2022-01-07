@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ int free (int ) ;
+ int last_faults ;
 
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  last_faults ; 
-
-__attribute__((used)) static void fpm_children_cleanup(int which, void *arg) /* {{{ */
+__attribute__((used)) static void fpm_children_cleanup(int which, void *arg)
 {
-	free(last_faults);
+ free(last_faults);
 }

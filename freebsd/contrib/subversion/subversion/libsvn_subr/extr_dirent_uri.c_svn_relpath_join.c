@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ apr_size_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- char* apr_palloc (int /*<<< orphan*/ *,scalar_t__) ; 
- char* apr_pmemdup (int /*<<< orphan*/ *,char const*,scalar_t__) ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (char*,char const*,scalar_t__) ; 
- int /*<<< orphan*/  relpath_is_canonical (char const*) ; 
- scalar_t__ strlen (char const*) ; 
+
+
+
+typedef scalar_t__ apr_size_t ;
+typedef int apr_pool_t ;
+
+
+ char* apr_palloc (int *,scalar_t__) ;
+ char* apr_pmemdup (int *,char const*,scalar_t__) ;
+ int assert (int ) ;
+ int memcpy (char*,char const*,scalar_t__) ;
+ int relpath_is_canonical (char const*) ;
+ scalar_t__ strlen (char const*) ;
 
 char *
 svn_relpath_join(const char *base,
@@ -33,7 +33,7 @@ svn_relpath_join(const char *base,
   assert(relpath_is_canonical(base));
   assert(relpath_is_canonical(component));
 
-  /* If either is empty return the other */
+
   if (blen == 0)
     return apr_pmemdup(pool, component, clen + 1);
   if (clen == 0)

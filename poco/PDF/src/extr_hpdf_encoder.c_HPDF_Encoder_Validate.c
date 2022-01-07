@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ sig_bytes; } ;
-typedef  int /*<<< orphan*/  HPDF_STATUS ;
-typedef  TYPE_1__* HPDF_Encoder ;
+typedef int HPDF_STATUS ;
+typedef TYPE_1__* HPDF_Encoder ;
 
-/* Variables and functions */
- scalar_t__ HPDF_ENCODER_SIG_BYTES ; 
- int /*<<< orphan*/  HPDF_FALSE ; 
- int /*<<< orphan*/  HPDF_PTRACE (char*) ; 
- int /*<<< orphan*/  HPDF_TRUE ; 
+
+ scalar_t__ HPDF_ENCODER_SIG_BYTES ;
+ int HPDF_FALSE ;
+ int HPDF_PTRACE (char*) ;
+ int HPDF_TRUE ;
 
 HPDF_STATUS
-HPDF_Encoder_Validate  (HPDF_Encoder  encoder)
+HPDF_Encoder_Validate (HPDF_Encoder encoder)
 {
     HPDF_PTRACE ((" HPDF_Encoder_Validate\n"));
 

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint32_t ;
-typedef  int uint16_t ;
-typedef  int /*<<< orphan*/  buf ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- scalar_t__ fgets (char*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char const*,char*) ; 
- int /*<<< orphan*/  free (int*) ; 
- scalar_t__ isspace (char) ; 
- int* malloc (int) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- char* strstr (char*,char*) ; 
- int strtoul (char*,char**,int) ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef int uint16_t ;
+typedef int buf ;
+typedef int FILE ;
+
+
+ int fclose (int *) ;
+ scalar_t__ fgets (char*,int,int *) ;
+ int * fopen (char const*,char*) ;
+ int free (int*) ;
+ scalar_t__ isspace (char) ;
+ int* malloc (int) ;
+ int printf (char*,...) ;
+ char* strstr (char*,char*) ;
+ int strtoul (char*,char**,int) ;
 
 uint16_t*
 txt_get_wc_table(const char *file_path, uint16_t default_char, int is_dbcs)
@@ -44,19 +44,19 @@ txt_get_wc_table(const char *file_path, uint16_t default_char, int is_dbcs)
     if (!table)
     {
         printf("Memory allocation failure\n");
-        return NULL;
+        return ((void*)0);
     }
 
-    /* Set default value for all table items */
+
     for (index = 0; index <= 65535; index++)
     {
-        /* DBCS code page */
+
         if (is_dbcs)
         {
             uint16_t *tmp = (uint16_t*)table;
             tmp[index] = default_char;
         }
-        /* SBCS code page */
+
         else
         {
             uint8_t *tmp = (uint8_t*)table;
@@ -71,7 +71,7 @@ txt_get_wc_table(const char *file_path, uint16_t default_char, int is_dbcs)
         goto Cleanup;
     }
 
-    /* Find WCTABLE entry */
+
     found = 0;
     while (fgets(buf, sizeof(buf), file))
     {
@@ -82,7 +82,7 @@ txt_get_wc_table(const char *file_path, uint16_t default_char, int is_dbcs)
         {
             p += 7;
 
-            /* Skip spaces */
+
             while (isspace(*p)) ++p;
 
             count = strtoul(p, &p, 10);
@@ -103,7 +103,7 @@ txt_get_wc_table(const char *file_path, uint16_t default_char, int is_dbcs)
         goto Cleanup;
     }
 
-    /* Parse next line */
+
     while (fgets(buf, sizeof(buf), file) && count)
     {
         uint32_t cp_char;
@@ -113,7 +113,7 @@ txt_get_wc_table(const char *file_path, uint16_t default_char, int is_dbcs)
 
         p = buf;
 
-        /* Skip spaces */
+
         while (isspace(*p)) ++p;
 
         if (!*p || p[0] == ';')
@@ -126,7 +126,7 @@ txt_get_wc_table(const char *file_path, uint16_t default_char, int is_dbcs)
             goto Cleanup;
         }
 
-        /* Skip spaces */
+
         while (isspace(*p)) ++p;
 
         cp_char = strtoul(p, &p, 16);
@@ -136,13 +136,13 @@ txt_get_wc_table(const char *file_path, uint16_t default_char, int is_dbcs)
             goto Cleanup;
         }
 
-        /* DBCS code page */
+
         if (is_dbcs)
         {
             uint16_t *tmp = (uint16_t*)table;
             tmp[uni_char] = cp_char;
         }
-        /* SBCS code page */
+
         else
         {
             uint8_t *tmp = (uint8_t*)table;
@@ -158,7 +158,7 @@ Cleanup:
     if (!res)
     {
         free(table);
-        table = NULL;
+        table = ((void*)0);
     }
 
     fclose(file);

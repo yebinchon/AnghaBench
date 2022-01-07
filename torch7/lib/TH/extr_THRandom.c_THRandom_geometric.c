@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  THGenerator ;
 
-/* Variables and functions */
- int /*<<< orphan*/  THArgCheck (int,int,char*) ; 
- double __uniform__ (int /*<<< orphan*/ *) ; 
- int log (double) ; 
+
+
+
+typedef int THGenerator ;
+
+
+ int THArgCheck (int,int,char*) ;
+ double __uniform__ (int *) ;
+ int log (double) ;
 
 int THRandom_geometric(THGenerator *_generator, double p)
 {

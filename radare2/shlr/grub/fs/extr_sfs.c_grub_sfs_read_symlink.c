@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct grub_sfs_data {int /*<<< orphan*/  blocksize; int /*<<< orphan*/  disk; } ;
-typedef  TYPE_1__* grub_fshelp_node_t ;
-struct TYPE_3__ {int /*<<< orphan*/  block; struct grub_sfs_data* data; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  grub_disk_read (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- scalar_t__ grub_errno ; 
- int /*<<< orphan*/  grub_free (char*) ; 
- char* grub_malloc (int /*<<< orphan*/ ) ; 
- char* grub_strdup (char*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct grub_sfs_data {int blocksize; int disk; } ;
+typedef TYPE_1__* grub_fshelp_node_t ;
+struct TYPE_3__ {int block; struct grub_sfs_data* data; } ;
+
+
+ int grub_disk_read (int ,int ,int ,int ,char*) ;
+ scalar_t__ grub_errno ;
+ int grub_free (char*) ;
+ char* grub_malloc (int ) ;
+ char* grub_strdup (char*) ;
 
 __attribute__((used)) static char *
 grub_sfs_read_symlink (grub_fshelp_node_t node)
@@ -40,8 +40,8 @@ grub_sfs_read_symlink (grub_fshelp_node_t node)
       return 0;
     }
 
-  /* This is just a wild guess, but it always worked for me.  How the
-     SLNK block looks like is not documented in the SFS docs.  */
+
+
   symlink = grub_strdup (&block[24]);
   grub_free (block);
   if (!symlink)

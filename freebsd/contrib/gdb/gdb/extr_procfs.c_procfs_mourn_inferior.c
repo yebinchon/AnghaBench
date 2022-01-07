@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  procinfo ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PIDGET (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  destroy_procinfo (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * find_procinfo (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  generic_mourn_inferior () ; 
- int /*<<< orphan*/  inferior_ptid ; 
- int /*<<< orphan*/  null_ptid ; 
- int /*<<< orphan*/  procfs_ops ; 
- int /*<<< orphan*/  ptid_equal (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  unpush_target (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int procinfo ;
+
+
+ int PIDGET (int ) ;
+ int destroy_procinfo (int *) ;
+ int * find_procinfo (int ,int ) ;
+ int generic_mourn_inferior () ;
+ int inferior_ptid ;
+ int null_ptid ;
+ int procfs_ops ;
+ int ptid_equal (int ,int ) ;
+ int unpush_target (int *) ;
 
 __attribute__((used)) static void
 procfs_mourn_inferior (void)
@@ -30,10 +30,10 @@ procfs_mourn_inferior (void)
 
   if (!ptid_equal (inferior_ptid, null_ptid))
     {
-      /* Find procinfo for main process */
+
       pi = find_procinfo (PIDGET (inferior_ptid), 0);
       if (pi)
-	destroy_procinfo (pi);
+ destroy_procinfo (pi);
     }
   unpush_target (&procfs_ops);
   generic_mourn_inferior ();

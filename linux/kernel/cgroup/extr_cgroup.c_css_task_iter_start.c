@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct css_task_iter {unsigned int flags; int /*<<< orphan*/ * cset_pos; int /*<<< orphan*/ * cset_head; TYPE_1__* ss; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct css_task_iter {unsigned int flags; int * cset_pos; int * cset_head; TYPE_1__* ss; } ;
 struct cgroup_subsys_state {TYPE_2__* cgroup; TYPE_1__* ss; } ;
-struct TYPE_4__ {int /*<<< orphan*/  cset_links; int /*<<< orphan*/ * e_csets; } ;
+struct TYPE_4__ {int cset_links; int * e_csets; } ;
 struct TYPE_3__ {size_t id; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  WARN_ON_ONCE (int) ; 
- int /*<<< orphan*/  css_set_lock ; 
- int /*<<< orphan*/  css_task_iter_advance (struct css_task_iter*) ; 
- int /*<<< orphan*/  memset (struct css_task_iter*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  spin_lock_irq (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock_irq (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  use_task_css_set_links ; 
+
+ int WARN_ON_ONCE (int) ;
+ int css_set_lock ;
+ int css_task_iter_advance (struct css_task_iter*) ;
+ int memset (struct css_task_iter*,int ,int) ;
+ int spin_lock_irq (int *) ;
+ int spin_unlock_irq (int *) ;
+ int use_task_css_set_links ;
 
 void css_task_iter_start(struct cgroup_subsys_state *css, unsigned int flags,
-			 struct css_task_iter *it)
+    struct css_task_iter *it)
 {
-	/* no one should try to iterate before mounting cgroups */
-	WARN_ON_ONCE(!use_task_css_set_links);
 
-	memset(it, 0, sizeof(*it));
+ WARN_ON_ONCE(!use_task_css_set_links);
 
-	spin_lock_irq(&css_set_lock);
+ memset(it, 0, sizeof(*it));
 
-	it->ss = css->ss;
-	it->flags = flags;
+ spin_lock_irq(&css_set_lock);
 
-	if (it->ss)
-		it->cset_pos = &css->cgroup->e_csets[css->ss->id];
-	else
-		it->cset_pos = &css->cgroup->cset_links;
+ it->ss = css->ss;
+ it->flags = flags;
 
-	it->cset_head = it->cset_pos;
+ if (it->ss)
+  it->cset_pos = &css->cgroup->e_csets[css->ss->id];
+ else
+  it->cset_pos = &css->cgroup->cset_links;
 
-	css_task_iter_advance(it);
+ it->cset_head = it->cset_pos;
 
-	spin_unlock_irq(&css_set_lock);
+ css_task_iter_advance(it);
+
+ spin_unlock_irq(&css_set_lock);
 }

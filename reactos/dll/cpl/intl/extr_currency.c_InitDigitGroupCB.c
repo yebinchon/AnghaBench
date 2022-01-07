@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  VOID ;
-struct TYPE_8__ {int /*<<< orphan*/  nInteger; } ;
-struct TYPE_7__ {char* lpDecimalSep; char* lpCurrencySymbol; int /*<<< orphan*/  Grouping; scalar_t__ NegativeOrder; scalar_t__ PositiveOrder; int /*<<< orphan*/  lpThousandSep; scalar_t__ LeadingZero; scalar_t__ NumDigits; } ;
-struct TYPE_6__ {int nCurrGrouping; int /*<<< orphan*/  UserLCID; int /*<<< orphan*/  szCurrThousandSep; } ;
-typedef  TYPE_1__* PGLOBALDATA ;
-typedef  int /*<<< orphan*/  LPARAM ;
-typedef  size_t INT ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  TYPE_2__ CURRENCYFMTW ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CB_INSERTSTRING ; 
- int /*<<< orphan*/  CB_SETCURSEL ; 
- int /*<<< orphan*/  GetCurrencyFormatW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,TYPE_2__*,int /*<<< orphan*/ *,int) ; 
- TYPE_4__* GroupingFormats ; 
- int /*<<< orphan*/  IDC_CURRENCYGRPNUM ; 
- int MAX_FMT_SIZE ; 
- size_t MAX_GROUPINGFORMATS ; 
- int /*<<< orphan*/  SendDlgItemMessageW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
+typedef int VOID ;
+struct TYPE_8__ {int nInteger; } ;
+struct TYPE_7__ {char* lpDecimalSep; char* lpCurrencySymbol; int Grouping; scalar_t__ NegativeOrder; scalar_t__ PositiveOrder; int lpThousandSep; scalar_t__ LeadingZero; scalar_t__ NumDigits; } ;
+struct TYPE_6__ {int nCurrGrouping; int UserLCID; int szCurrThousandSep; } ;
+typedef TYPE_1__* PGLOBALDATA ;
+typedef int LPARAM ;
+typedef size_t INT ;
+typedef int HWND ;
+typedef TYPE_2__ CURRENCYFMTW ;
+
+
+ int CB_INSERTSTRING ;
+ int CB_SETCURSEL ;
+ int GetCurrencyFormatW (int ,int ,char*,TYPE_2__*,int *,int) ;
+ TYPE_4__* GroupingFormats ;
+ int IDC_CURRENCYGRPNUM ;
+ int MAX_FMT_SIZE ;
+ size_t MAX_GROUPINGFORMATS ;
+ int SendDlgItemMessageW (int ,int ,int ,int,int ) ;
 
 __attribute__((used)) static VOID
 InitDigitGroupCB(HWND hwndDlg, PGLOBALDATA pGlobalData)
@@ -41,7 +41,7 @@ InitDigitGroupCB(HWND hwndDlg, PGLOBALDATA pGlobalData)
     CURRENCYFMTW cyFmt;
     INT i;
 
-    /* Digit grouping */
+
     cyFmt.NumDigits = 0;
     cyFmt.LeadingZero = 0;
     cyFmt.lpDecimalSep = L"";

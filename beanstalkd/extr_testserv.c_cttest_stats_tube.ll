@@ -1,0 +1,247 @@
+; ModuleID = '/home/carl/AnghaBench/beanstalkd/extr_testserv.c_cttest_stats_tube.c'
+source_filename = "/home/carl/AnghaBench/beanstalkd/extr_testserv.c_cttest_stats_tube.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+@.str = private unnamed_addr constant [12 x i8] c"use tubea\0D\0A\00", align 1
+@.str.1 = private unnamed_addr constant [14 x i8] c"USING tubea\0D\0A\00", align 1
+@.str.2 = private unnamed_addr constant [14 x i8] c"put 0 0 0 1\0D\0A\00", align 1
+@.str.3 = private unnamed_addr constant [4 x i8] c"x\0D\0A\00", align 1
+@.str.4 = private unnamed_addr constant [13 x i8] c"INSERTED 1\0D\0A\00", align 1
+@.str.5 = private unnamed_addr constant [11 x i8] c"delete 1\0D\0A\00", align 1
+@.str.6 = private unnamed_addr constant [10 x i8] c"DELETED\0D\0A\00", align 1
+@.str.7 = private unnamed_addr constant [19 x i8] c"stats-tube tubea\0D\0A\00", align 1
+@.str.8 = private unnamed_addr constant [4 x i8] c"OK \00", align 1
+@.str.9 = private unnamed_addr constant [14 x i8] c"\0Aname: tubea\0A\00", align 1
+@.str.10 = private unnamed_addr constant [25 x i8] c"\0Acurrent-jobs-urgent: 0\0A\00", align 1
+@.str.11 = private unnamed_addr constant [24 x i8] c"\0Acurrent-jobs-ready: 0\0A\00", align 1
+@.str.12 = private unnamed_addr constant [27 x i8] c"\0Acurrent-jobs-reserved: 0\0A\00", align 1
+@.str.13 = private unnamed_addr constant [26 x i8] c"\0Acurrent-jobs-delayed: 0\0A\00", align 1
+@.str.14 = private unnamed_addr constant [25 x i8] c"\0Acurrent-jobs-buried: 0\0A\00", align 1
+@.str.15 = private unnamed_addr constant [16 x i8] c"\0Atotal-jobs: 1\0A\00", align 1
+@.str.16 = private unnamed_addr constant [19 x i8] c"\0Acurrent-using: 1\0A\00", align 1
+@.str.17 = private unnamed_addr constant [22 x i8] c"\0Acurrent-watching: 0\0A\00", align 1
+@.str.18 = private unnamed_addr constant [21 x i8] c"\0Acurrent-waiting: 0\0A\00", align 1
+@.str.19 = private unnamed_addr constant [16 x i8] c"\0Acmd-delete: 1\0A\00", align 1
+@.str.20 = private unnamed_addr constant [20 x i8] c"\0Acmd-pause-tube: 0\0A\00", align 1
+@.str.21 = private unnamed_addr constant [11 x i8] c"\0Apause: 0\0A\00", align 1
+@.str.22 = private unnamed_addr constant [21 x i8] c"\0Apause-time-left: 0\0A\00", align 1
+@.str.23 = private unnamed_addr constant [21 x i8] c"stats-tube default\0D\0A\00", align 1
+@.str.24 = private unnamed_addr constant [16 x i8] c"\0Aname: default\0A\00", align 1
+@.str.25 = private unnamed_addr constant [16 x i8] c"\0Atotal-jobs: 0\0A\00", align 1
+@.str.26 = private unnamed_addr constant [19 x i8] c"\0Acurrent-using: 0\0A\00", align 1
+@.str.27 = private unnamed_addr constant [22 x i8] c"\0Acurrent-watching: 1\0A\00", align 1
+@.str.28 = private unnamed_addr constant [16 x i8] c"\0Acmd-delete: 0\0A\00", align 1
+
+; Function Attrs: noinline nounwind optnone uwtable
+define dso_local void @cttest_stats_tube() #0 {
+  %1 = alloca i32, align 4
+  %2 = alloca i32, align 4
+  %3 = call i32 (...) @SERVER()
+  store i32 %3, i32* %1, align 4
+  %4 = load i32, i32* %1, align 4
+  %5 = call i32 @mustdiallocal(i32 %4)
+  store i32 %5, i32* %2, align 4
+  %6 = load i32, i32* %2, align 4
+  %7 = call i32 @mustsend(i32 %6, i8* getelementptr inbounds ([12 x i8], [12 x i8]* @.str, i64 0, i64 0))
+  %8 = load i32, i32* %2, align 4
+  %9 = call i32 @ckresp(i32 %8, i8* getelementptr inbounds ([14 x i8], [14 x i8]* @.str.1, i64 0, i64 0))
+  %10 = load i32, i32* %2, align 4
+  %11 = call i32 @mustsend(i32 %10, i8* getelementptr inbounds ([14 x i8], [14 x i8]* @.str.2, i64 0, i64 0))
+  %12 = load i32, i32* %2, align 4
+  %13 = call i32 @mustsend(i32 %12, i8* getelementptr inbounds ([4 x i8], [4 x i8]* @.str.3, i64 0, i64 0))
+  %14 = load i32, i32* %2, align 4
+  %15 = call i32 @ckresp(i32 %14, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.4, i64 0, i64 0))
+  %16 = load i32, i32* %2, align 4
+  %17 = call i32 @mustsend(i32 %16, i8* getelementptr inbounds ([11 x i8], [11 x i8]* @.str.5, i64 0, i64 0))
+  %18 = load i32, i32* %2, align 4
+  %19 = call i32 @ckresp(i32 %18, i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str.6, i64 0, i64 0))
+  %20 = load i32, i32* %2, align 4
+  %21 = call i32 @mustsend(i32 %20, i8* getelementptr inbounds ([19 x i8], [19 x i8]* @.str.7, i64 0, i64 0))
+  %22 = load i32, i32* %2, align 4
+  %23 = call i32 @ckrespsub(i32 %22, i8* getelementptr inbounds ([4 x i8], [4 x i8]* @.str.8, i64 0, i64 0))
+  %24 = load i32, i32* %2, align 4
+  %25 = call i32 @ckrespsub(i32 %24, i8* getelementptr inbounds ([14 x i8], [14 x i8]* @.str.9, i64 0, i64 0))
+  %26 = load i32, i32* %2, align 4
+  %27 = call i32 @mustsend(i32 %26, i8* getelementptr inbounds ([19 x i8], [19 x i8]* @.str.7, i64 0, i64 0))
+  %28 = load i32, i32* %2, align 4
+  %29 = call i32 @ckrespsub(i32 %28, i8* getelementptr inbounds ([4 x i8], [4 x i8]* @.str.8, i64 0, i64 0))
+  %30 = load i32, i32* %2, align 4
+  %31 = call i32 @ckrespsub(i32 %30, i8* getelementptr inbounds ([25 x i8], [25 x i8]* @.str.10, i64 0, i64 0))
+  %32 = load i32, i32* %2, align 4
+  %33 = call i32 @mustsend(i32 %32, i8* getelementptr inbounds ([19 x i8], [19 x i8]* @.str.7, i64 0, i64 0))
+  %34 = load i32, i32* %2, align 4
+  %35 = call i32 @ckrespsub(i32 %34, i8* getelementptr inbounds ([4 x i8], [4 x i8]* @.str.8, i64 0, i64 0))
+  %36 = load i32, i32* %2, align 4
+  %37 = call i32 @ckrespsub(i32 %36, i8* getelementptr inbounds ([24 x i8], [24 x i8]* @.str.11, i64 0, i64 0))
+  %38 = load i32, i32* %2, align 4
+  %39 = call i32 @mustsend(i32 %38, i8* getelementptr inbounds ([19 x i8], [19 x i8]* @.str.7, i64 0, i64 0))
+  %40 = load i32, i32* %2, align 4
+  %41 = call i32 @ckrespsub(i32 %40, i8* getelementptr inbounds ([4 x i8], [4 x i8]* @.str.8, i64 0, i64 0))
+  %42 = load i32, i32* %2, align 4
+  %43 = call i32 @ckrespsub(i32 %42, i8* getelementptr inbounds ([27 x i8], [27 x i8]* @.str.12, i64 0, i64 0))
+  %44 = load i32, i32* %2, align 4
+  %45 = call i32 @mustsend(i32 %44, i8* getelementptr inbounds ([19 x i8], [19 x i8]* @.str.7, i64 0, i64 0))
+  %46 = load i32, i32* %2, align 4
+  %47 = call i32 @ckrespsub(i32 %46, i8* getelementptr inbounds ([4 x i8], [4 x i8]* @.str.8, i64 0, i64 0))
+  %48 = load i32, i32* %2, align 4
+  %49 = call i32 @ckrespsub(i32 %48, i8* getelementptr inbounds ([26 x i8], [26 x i8]* @.str.13, i64 0, i64 0))
+  %50 = load i32, i32* %2, align 4
+  %51 = call i32 @mustsend(i32 %50, i8* getelementptr inbounds ([19 x i8], [19 x i8]* @.str.7, i64 0, i64 0))
+  %52 = load i32, i32* %2, align 4
+  %53 = call i32 @ckrespsub(i32 %52, i8* getelementptr inbounds ([4 x i8], [4 x i8]* @.str.8, i64 0, i64 0))
+  %54 = load i32, i32* %2, align 4
+  %55 = call i32 @ckrespsub(i32 %54, i8* getelementptr inbounds ([25 x i8], [25 x i8]* @.str.14, i64 0, i64 0))
+  %56 = load i32, i32* %2, align 4
+  %57 = call i32 @mustsend(i32 %56, i8* getelementptr inbounds ([19 x i8], [19 x i8]* @.str.7, i64 0, i64 0))
+  %58 = load i32, i32* %2, align 4
+  %59 = call i32 @ckrespsub(i32 %58, i8* getelementptr inbounds ([4 x i8], [4 x i8]* @.str.8, i64 0, i64 0))
+  %60 = load i32, i32* %2, align 4
+  %61 = call i32 @ckrespsub(i32 %60, i8* getelementptr inbounds ([16 x i8], [16 x i8]* @.str.15, i64 0, i64 0))
+  %62 = load i32, i32* %2, align 4
+  %63 = call i32 @mustsend(i32 %62, i8* getelementptr inbounds ([19 x i8], [19 x i8]* @.str.7, i64 0, i64 0))
+  %64 = load i32, i32* %2, align 4
+  %65 = call i32 @ckrespsub(i32 %64, i8* getelementptr inbounds ([4 x i8], [4 x i8]* @.str.8, i64 0, i64 0))
+  %66 = load i32, i32* %2, align 4
+  %67 = call i32 @ckrespsub(i32 %66, i8* getelementptr inbounds ([19 x i8], [19 x i8]* @.str.16, i64 0, i64 0))
+  %68 = load i32, i32* %2, align 4
+  %69 = call i32 @mustsend(i32 %68, i8* getelementptr inbounds ([19 x i8], [19 x i8]* @.str.7, i64 0, i64 0))
+  %70 = load i32, i32* %2, align 4
+  %71 = call i32 @ckrespsub(i32 %70, i8* getelementptr inbounds ([4 x i8], [4 x i8]* @.str.8, i64 0, i64 0))
+  %72 = load i32, i32* %2, align 4
+  %73 = call i32 @ckrespsub(i32 %72, i8* getelementptr inbounds ([22 x i8], [22 x i8]* @.str.17, i64 0, i64 0))
+  %74 = load i32, i32* %2, align 4
+  %75 = call i32 @mustsend(i32 %74, i8* getelementptr inbounds ([19 x i8], [19 x i8]* @.str.7, i64 0, i64 0))
+  %76 = load i32, i32* %2, align 4
+  %77 = call i32 @ckrespsub(i32 %76, i8* getelementptr inbounds ([4 x i8], [4 x i8]* @.str.8, i64 0, i64 0))
+  %78 = load i32, i32* %2, align 4
+  %79 = call i32 @ckrespsub(i32 %78, i8* getelementptr inbounds ([21 x i8], [21 x i8]* @.str.18, i64 0, i64 0))
+  %80 = load i32, i32* %2, align 4
+  %81 = call i32 @mustsend(i32 %80, i8* getelementptr inbounds ([19 x i8], [19 x i8]* @.str.7, i64 0, i64 0))
+  %82 = load i32, i32* %2, align 4
+  %83 = call i32 @ckrespsub(i32 %82, i8* getelementptr inbounds ([4 x i8], [4 x i8]* @.str.8, i64 0, i64 0))
+  %84 = load i32, i32* %2, align 4
+  %85 = call i32 @ckrespsub(i32 %84, i8* getelementptr inbounds ([16 x i8], [16 x i8]* @.str.19, i64 0, i64 0))
+  %86 = load i32, i32* %2, align 4
+  %87 = call i32 @mustsend(i32 %86, i8* getelementptr inbounds ([19 x i8], [19 x i8]* @.str.7, i64 0, i64 0))
+  %88 = load i32, i32* %2, align 4
+  %89 = call i32 @ckrespsub(i32 %88, i8* getelementptr inbounds ([4 x i8], [4 x i8]* @.str.8, i64 0, i64 0))
+  %90 = load i32, i32* %2, align 4
+  %91 = call i32 @ckrespsub(i32 %90, i8* getelementptr inbounds ([20 x i8], [20 x i8]* @.str.20, i64 0, i64 0))
+  %92 = load i32, i32* %2, align 4
+  %93 = call i32 @mustsend(i32 %92, i8* getelementptr inbounds ([19 x i8], [19 x i8]* @.str.7, i64 0, i64 0))
+  %94 = load i32, i32* %2, align 4
+  %95 = call i32 @ckrespsub(i32 %94, i8* getelementptr inbounds ([4 x i8], [4 x i8]* @.str.8, i64 0, i64 0))
+  %96 = load i32, i32* %2, align 4
+  %97 = call i32 @ckrespsub(i32 %96, i8* getelementptr inbounds ([11 x i8], [11 x i8]* @.str.21, i64 0, i64 0))
+  %98 = load i32, i32* %2, align 4
+  %99 = call i32 @mustsend(i32 %98, i8* getelementptr inbounds ([19 x i8], [19 x i8]* @.str.7, i64 0, i64 0))
+  %100 = load i32, i32* %2, align 4
+  %101 = call i32 @ckrespsub(i32 %100, i8* getelementptr inbounds ([4 x i8], [4 x i8]* @.str.8, i64 0, i64 0))
+  %102 = load i32, i32* %2, align 4
+  %103 = call i32 @ckrespsub(i32 %102, i8* getelementptr inbounds ([21 x i8], [21 x i8]* @.str.22, i64 0, i64 0))
+  %104 = load i32, i32* %2, align 4
+  %105 = call i32 @mustsend(i32 %104, i8* getelementptr inbounds ([21 x i8], [21 x i8]* @.str.23, i64 0, i64 0))
+  %106 = load i32, i32* %2, align 4
+  %107 = call i32 @ckrespsub(i32 %106, i8* getelementptr inbounds ([4 x i8], [4 x i8]* @.str.8, i64 0, i64 0))
+  %108 = load i32, i32* %2, align 4
+  %109 = call i32 @ckrespsub(i32 %108, i8* getelementptr inbounds ([16 x i8], [16 x i8]* @.str.24, i64 0, i64 0))
+  %110 = load i32, i32* %2, align 4
+  %111 = call i32 @mustsend(i32 %110, i8* getelementptr inbounds ([21 x i8], [21 x i8]* @.str.23, i64 0, i64 0))
+  %112 = load i32, i32* %2, align 4
+  %113 = call i32 @ckrespsub(i32 %112, i8* getelementptr inbounds ([4 x i8], [4 x i8]* @.str.8, i64 0, i64 0))
+  %114 = load i32, i32* %2, align 4
+  %115 = call i32 @ckrespsub(i32 %114, i8* getelementptr inbounds ([25 x i8], [25 x i8]* @.str.10, i64 0, i64 0))
+  %116 = load i32, i32* %2, align 4
+  %117 = call i32 @mustsend(i32 %116, i8* getelementptr inbounds ([21 x i8], [21 x i8]* @.str.23, i64 0, i64 0))
+  %118 = load i32, i32* %2, align 4
+  %119 = call i32 @ckrespsub(i32 %118, i8* getelementptr inbounds ([4 x i8], [4 x i8]* @.str.8, i64 0, i64 0))
+  %120 = load i32, i32* %2, align 4
+  %121 = call i32 @ckrespsub(i32 %120, i8* getelementptr inbounds ([24 x i8], [24 x i8]* @.str.11, i64 0, i64 0))
+  %122 = load i32, i32* %2, align 4
+  %123 = call i32 @mustsend(i32 %122, i8* getelementptr inbounds ([21 x i8], [21 x i8]* @.str.23, i64 0, i64 0))
+  %124 = load i32, i32* %2, align 4
+  %125 = call i32 @ckrespsub(i32 %124, i8* getelementptr inbounds ([4 x i8], [4 x i8]* @.str.8, i64 0, i64 0))
+  %126 = load i32, i32* %2, align 4
+  %127 = call i32 @ckrespsub(i32 %126, i8* getelementptr inbounds ([27 x i8], [27 x i8]* @.str.12, i64 0, i64 0))
+  %128 = load i32, i32* %2, align 4
+  %129 = call i32 @mustsend(i32 %128, i8* getelementptr inbounds ([21 x i8], [21 x i8]* @.str.23, i64 0, i64 0))
+  %130 = load i32, i32* %2, align 4
+  %131 = call i32 @ckrespsub(i32 %130, i8* getelementptr inbounds ([4 x i8], [4 x i8]* @.str.8, i64 0, i64 0))
+  %132 = load i32, i32* %2, align 4
+  %133 = call i32 @ckrespsub(i32 %132, i8* getelementptr inbounds ([26 x i8], [26 x i8]* @.str.13, i64 0, i64 0))
+  %134 = load i32, i32* %2, align 4
+  %135 = call i32 @mustsend(i32 %134, i8* getelementptr inbounds ([21 x i8], [21 x i8]* @.str.23, i64 0, i64 0))
+  %136 = load i32, i32* %2, align 4
+  %137 = call i32 @ckrespsub(i32 %136, i8* getelementptr inbounds ([4 x i8], [4 x i8]* @.str.8, i64 0, i64 0))
+  %138 = load i32, i32* %2, align 4
+  %139 = call i32 @ckrespsub(i32 %138, i8* getelementptr inbounds ([25 x i8], [25 x i8]* @.str.14, i64 0, i64 0))
+  %140 = load i32, i32* %2, align 4
+  %141 = call i32 @mustsend(i32 %140, i8* getelementptr inbounds ([21 x i8], [21 x i8]* @.str.23, i64 0, i64 0))
+  %142 = load i32, i32* %2, align 4
+  %143 = call i32 @ckrespsub(i32 %142, i8* getelementptr inbounds ([4 x i8], [4 x i8]* @.str.8, i64 0, i64 0))
+  %144 = load i32, i32* %2, align 4
+  %145 = call i32 @ckrespsub(i32 %144, i8* getelementptr inbounds ([16 x i8], [16 x i8]* @.str.25, i64 0, i64 0))
+  %146 = load i32, i32* %2, align 4
+  %147 = call i32 @mustsend(i32 %146, i8* getelementptr inbounds ([21 x i8], [21 x i8]* @.str.23, i64 0, i64 0))
+  %148 = load i32, i32* %2, align 4
+  %149 = call i32 @ckrespsub(i32 %148, i8* getelementptr inbounds ([4 x i8], [4 x i8]* @.str.8, i64 0, i64 0))
+  %150 = load i32, i32* %2, align 4
+  %151 = call i32 @ckrespsub(i32 %150, i8* getelementptr inbounds ([19 x i8], [19 x i8]* @.str.26, i64 0, i64 0))
+  %152 = load i32, i32* %2, align 4
+  %153 = call i32 @mustsend(i32 %152, i8* getelementptr inbounds ([21 x i8], [21 x i8]* @.str.23, i64 0, i64 0))
+  %154 = load i32, i32* %2, align 4
+  %155 = call i32 @ckrespsub(i32 %154, i8* getelementptr inbounds ([4 x i8], [4 x i8]* @.str.8, i64 0, i64 0))
+  %156 = load i32, i32* %2, align 4
+  %157 = call i32 @ckrespsub(i32 %156, i8* getelementptr inbounds ([22 x i8], [22 x i8]* @.str.27, i64 0, i64 0))
+  %158 = load i32, i32* %2, align 4
+  %159 = call i32 @mustsend(i32 %158, i8* getelementptr inbounds ([21 x i8], [21 x i8]* @.str.23, i64 0, i64 0))
+  %160 = load i32, i32* %2, align 4
+  %161 = call i32 @ckrespsub(i32 %160, i8* getelementptr inbounds ([4 x i8], [4 x i8]* @.str.8, i64 0, i64 0))
+  %162 = load i32, i32* %2, align 4
+  %163 = call i32 @ckrespsub(i32 %162, i8* getelementptr inbounds ([21 x i8], [21 x i8]* @.str.18, i64 0, i64 0))
+  %164 = load i32, i32* %2, align 4
+  %165 = call i32 @mustsend(i32 %164, i8* getelementptr inbounds ([21 x i8], [21 x i8]* @.str.23, i64 0, i64 0))
+  %166 = load i32, i32* %2, align 4
+  %167 = call i32 @ckrespsub(i32 %166, i8* getelementptr inbounds ([4 x i8], [4 x i8]* @.str.8, i64 0, i64 0))
+  %168 = load i32, i32* %2, align 4
+  %169 = call i32 @ckrespsub(i32 %168, i8* getelementptr inbounds ([16 x i8], [16 x i8]* @.str.28, i64 0, i64 0))
+  %170 = load i32, i32* %2, align 4
+  %171 = call i32 @mustsend(i32 %170, i8* getelementptr inbounds ([21 x i8], [21 x i8]* @.str.23, i64 0, i64 0))
+  %172 = load i32, i32* %2, align 4
+  %173 = call i32 @ckrespsub(i32 %172, i8* getelementptr inbounds ([4 x i8], [4 x i8]* @.str.8, i64 0, i64 0))
+  %174 = load i32, i32* %2, align 4
+  %175 = call i32 @ckrespsub(i32 %174, i8* getelementptr inbounds ([20 x i8], [20 x i8]* @.str.20, i64 0, i64 0))
+  %176 = load i32, i32* %2, align 4
+  %177 = call i32 @mustsend(i32 %176, i8* getelementptr inbounds ([21 x i8], [21 x i8]* @.str.23, i64 0, i64 0))
+  %178 = load i32, i32* %2, align 4
+  %179 = call i32 @ckrespsub(i32 %178, i8* getelementptr inbounds ([4 x i8], [4 x i8]* @.str.8, i64 0, i64 0))
+  %180 = load i32, i32* %2, align 4
+  %181 = call i32 @ckrespsub(i32 %180, i8* getelementptr inbounds ([11 x i8], [11 x i8]* @.str.21, i64 0, i64 0))
+  %182 = load i32, i32* %2, align 4
+  %183 = call i32 @mustsend(i32 %182, i8* getelementptr inbounds ([21 x i8], [21 x i8]* @.str.23, i64 0, i64 0))
+  %184 = load i32, i32* %2, align 4
+  %185 = call i32 @ckrespsub(i32 %184, i8* getelementptr inbounds ([4 x i8], [4 x i8]* @.str.8, i64 0, i64 0))
+  %186 = load i32, i32* %2, align 4
+  %187 = call i32 @ckrespsub(i32 %186, i8* getelementptr inbounds ([21 x i8], [21 x i8]* @.str.22, i64 0, i64 0))
+  ret void
+}
+
+declare dso_local i32 @SERVER(...) #1
+
+declare dso_local i32 @mustdiallocal(i32) #1
+
+declare dso_local i32 @mustsend(i32, i8*) #1
+
+declare dso_local i32 @ckresp(i32, i8*) #1
+
+declare dso_local i32 @ckrespsub(i32, i8*) #1
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

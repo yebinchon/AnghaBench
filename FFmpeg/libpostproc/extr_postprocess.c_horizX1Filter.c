@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint64_t ;
 
-/* Variables and functions */
- int BLOCK_SIZE ; 
- int FFABS (int) ; 
- int FFMAX (int,int /*<<< orphan*/ ) ; 
- int FFSIGN (int) ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint64_t ;
+
+
+ int BLOCK_SIZE ;
+ int FFABS (int) ;
+ int FFMAX (int,int ) ;
+ int FFSIGN (int) ;
 
 __attribute__((used)) static inline void horizX1Filter(uint8_t *src, int stride, int QP)
 {
@@ -29,15 +29,7 @@ __attribute__((used)) static inline void horizX1Filter(uint8_t *src, int stride,
         for(i=0; i<256; i++)
         {
             int v= i < 128 ? 2*i : 2*(i-256);
-/*
-//Simulate 112242211 9-Tap filter
-            uint64_t a= (v/16)  & 0xFF;
-            uint64_t b= (v/8)   & 0xFF;
-            uint64_t c= (v/4)   & 0xFF;
-            uint64_t d= (3*v/8) & 0xFF;
-*/
-//Simulate piecewise linear interpolation
-            uint64_t a= (v/16)   & 0xFF;
+            uint64_t a= (v/16) & 0xFF;
             uint64_t b= (v*3/16) & 0xFF;
             uint64_t c= (v*5/16) & 0xFF;
             uint64_t d= (7*v/16) & 0xFF;
@@ -46,9 +38,9 @@ __attribute__((used)) static inline void horizX1Filter(uint8_t *src, int stride,
             uint64_t C= (0x100 - c)&0xFF;
             uint64_t D= (0x100 - c)&0xFF;
 
-            lut[i]   = (a<<56) | (b<<48) | (c<<40) | (d<<32) |
-                       (D<<24) | (C<<16) | (B<<8)  | (A);
-            //lut[i] = (v<<32) | (v<<24);
+            lut[i] = (a<<56) | (b<<48) | (c<<40) | (d<<32) |
+                       (D<<24) | (C<<16) | (B<<8) | (A);
+
         }
     }
 

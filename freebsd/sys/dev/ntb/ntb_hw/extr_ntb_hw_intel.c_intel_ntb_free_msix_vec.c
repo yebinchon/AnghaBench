@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ntb_softc {int /*<<< orphan*/ * msix_vec; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  M_NTB ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+struct ntb_softc {int * msix_vec; } ;
+
+
+ int M_NTB ;
+ int free (int *,int ) ;
 
 __attribute__((used)) static void
 intel_ntb_free_msix_vec(struct ntb_softc *ntb)
 {
 
-	if (ntb->msix_vec == NULL)
-		return;
+ if (ntb->msix_vec == ((void*)0))
+  return;
 
-	free(ntb->msix_vec, M_NTB);
-	ntb->msix_vec = NULL;
+ free(ntb->msix_vec, M_NTB);
+ ntb->msix_vec = ((void*)0);
 }

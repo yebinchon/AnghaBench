@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  depths ;
-typedef  int /*<<< orphan*/  bm ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int depths ;
+typedef int bm ;
 struct TYPE_4__ {int bmType; int bmWidth; int bmHeight; int bmWidthBytes; int bmBitsPixel; int bmPlanes; int bmBits; } ;
-typedef  int INT ;
-typedef  scalar_t__ HDC ;
-typedef  scalar_t__ HBITMAP ;
-typedef  int DWORD ;
-typedef  TYPE_1__ BITMAP ;
+typedef int INT ;
+typedef scalar_t__ HDC ;
+typedef scalar_t__ HBITMAP ;
+typedef int DWORD ;
+typedef TYPE_1__ BITMAP ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BITSPIXEL ; 
- scalar_t__ CreateBitmap (int,int,int,int,int /*<<< orphan*/ *) ; 
- scalar_t__ CreateCompatibleBitmap (scalar_t__,int,int) ; 
- scalar_t__ CreateCompatibleDC (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DeleteDC (scalar_t__) ; 
- int /*<<< orphan*/  DeleteObject (scalar_t__) ; 
- scalar_t__ GetDC (int /*<<< orphan*/ ) ; 
- int GetDeviceCaps (scalar_t__,int /*<<< orphan*/ ) ; 
- int GetObjectW (scalar_t__,int,TYPE_1__*) ; 
- int /*<<< orphan*/  PLANES ; 
- int /*<<< orphan*/  ReleaseDC (int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__ SelectObject (scalar_t__,scalar_t__) ; 
- int get_bitmap_stride (int,int) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int,int) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
+
+ int BITSPIXEL ;
+ scalar_t__ CreateBitmap (int,int,int,int,int *) ;
+ scalar_t__ CreateCompatibleBitmap (scalar_t__,int,int) ;
+ scalar_t__ CreateCompatibleDC (int ) ;
+ int DeleteDC (scalar_t__) ;
+ int DeleteObject (scalar_t__) ;
+ scalar_t__ GetDC (int ) ;
+ int GetDeviceCaps (scalar_t__,int ) ;
+ int GetObjectW (scalar_t__,int,TYPE_1__*) ;
+ int PLANES ;
+ int ReleaseDC (int ,scalar_t__) ;
+ scalar_t__ SelectObject (scalar_t__,scalar_t__) ;
+ int get_bitmap_stride (int,int) ;
+ int memset (TYPE_1__*,int,int) ;
+ int ok (int,char*,...) ;
 
 __attribute__((used)) static void test_select_object(void)
 {
@@ -69,11 +69,11 @@ __attribute__((used)) static void test_select_object(void)
 
     DeleteObject(hbm);
 
-    /* test an 1-bpp bitmap */
+
     planes = GetDeviceCaps(hdc, PLANES);
     bpp = 1;
 
-    hbm = CreateBitmap(10, 10, planes, bpp, NULL);
+    hbm = CreateBitmap(10, 10, planes, bpp, ((void*)0));
     ok(hbm != 0, "CreateBitmap failed\n");
 
     hbm_old = SelectObject(hdc, hbm);
@@ -84,16 +84,16 @@ __attribute__((used)) static void test_select_object(void)
     DeleteObject(hbm);
 
     for(i = 0; i < sizeof(depths)/sizeof(depths[0]); i++) {
-        /* test a color bitmap to dc bpp matching */
+
         planes = GetDeviceCaps(hdc, PLANES);
         bpp = GetDeviceCaps(hdc, BITSPIXEL);
 
-        hbm = CreateBitmap(10, 10, planes, depths[i], NULL);
+        hbm = CreateBitmap(10, 10, planes, depths[i], ((void*)0));
         ok(hbm != 0, "CreateBitmap failed\n");
 
         hbm_old = SelectObject(hdc, hbm);
         if(depths[i] == bpp ||
-          (bpp == 16 && depths[i] == 15)        /* 16 and 15 bpp are compatible */
+          (bpp == 16 && depths[i] == 15)
           ) {
             ok(hbm_old != 0, "SelectObject failed, BITSPIXEL: %d, created depth: %d\n", bpp, depths[i]);
             SelectObject(hdc, hbm_old);

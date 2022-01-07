@@ -1,73 +1,61 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_5__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_fourcc_t ;
-typedef  int uint8_t ;
-struct TYPE_8__ {int nChannels; unsigned int nSamplingRate; unsigned int nBitPerSample; unsigned int nSampleRate; unsigned int nBitsPerSample; unsigned int nBitRate; int nFrameLength; unsigned int nBlockAlign; unsigned int nBitsPerFrame; unsigned int nMaxBitRate; int nQuality; void* bDownmix; void* bManaged; int /*<<< orphan*/  nAudioBandWidth; int /*<<< orphan*/  nMinBitRate; int /*<<< orphan*/  eFormat; int /*<<< orphan*/  nNumRegions; int /*<<< orphan*/  nCouplingStartRegion; int /*<<< orphan*/  nCouplingQuantBits; int /*<<< orphan*/  nSamplePerFrame; int /*<<< orphan*/  nSuperBlockAlign; int /*<<< orphan*/  nEncodeOptions; int /*<<< orphan*/  eProfile; void* eChannelMode; int /*<<< orphan*/  eAACStreamFormat; int /*<<< orphan*/  eAACProfile; int /*<<< orphan*/  nAACERtools; int /*<<< orphan*/  nAACtools; int /*<<< orphan*/  eBitType; void* bDTX; int /*<<< orphan*/  eG726Mode; void* bPostFilter; void* bHiPassFilter; int /*<<< orphan*/  eBitRate; int /*<<< orphan*/  eAMRFrameFormat; int /*<<< orphan*/  eAMRDTXMode; int /*<<< orphan*/  eAMRBandMode; int /*<<< orphan*/ * eChannelMapping; void* bInterleaved; int /*<<< orphan*/  eEndian; int /*<<< orphan*/  ePCMMode; int /*<<< orphan*/  eNumData; } ;
-struct TYPE_6__ {int /*<<< orphan*/  nPortIndex; } ;
+
+
+typedef struct TYPE_8__ TYPE_5__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int vlc_fourcc_t ;
+typedef int uint8_t ;
+struct TYPE_8__ {int nChannels; unsigned int nSamplingRate; unsigned int nBitPerSample; unsigned int nSampleRate; unsigned int nBitsPerSample; unsigned int nBitRate; int nFrameLength; unsigned int nBlockAlign; unsigned int nBitsPerFrame; unsigned int nMaxBitRate; int nQuality; void* bDownmix; void* bManaged; int nAudioBandWidth; int nMinBitRate; int eFormat; int nNumRegions; int nCouplingStartRegion; int nCouplingQuantBits; int nSamplePerFrame; int nSuperBlockAlign; int nEncodeOptions; int eProfile; void* eChannelMode; int eAACStreamFormat; int eAACProfile; int nAACERtools; int nAACtools; int eBitType; void* bDTX; int eG726Mode; void* bPostFilter; void* bHiPassFilter; int eBitRate; int eAMRFrameFormat; int eAMRDTXMode; int eAMRBandMode; int * eChannelMapping; void* bInterleaved; int eEndian; int ePCMMode; int eNumData; } ;
+struct TYPE_6__ {int nPortIndex; } ;
 struct TYPE_7__ {TYPE_1__ common; TYPE_5__ vorbis; TYPE_5__ ra; TYPE_5__ wma; TYPE_5__ mp3; TYPE_5__ aac; TYPE_5__ g729; TYPE_5__ g726; TYPE_5__ g723; TYPE_5__ amr; TYPE_5__ adpcm; TYPE_5__ pcm; } ;
-typedef  TYPE_2__ OmxFormatParam ;
-typedef  int /*<<< orphan*/  OMX_U32 ;
-typedef  int /*<<< orphan*/  OMX_INDEXTYPE ;
-typedef  int /*<<< orphan*/  OMX_HANDLETYPE ;
-typedef  int /*<<< orphan*/  OMX_ERRORTYPE ;
-typedef  int OMX_AUDIO_CODINGTYPE ;
+typedef TYPE_2__ OmxFormatParam ;
+typedef int OMX_U32 ;
+typedef int OMX_INDEXTYPE ;
+typedef int OMX_HANDLETYPE ;
+typedef int OMX_ERRORTYPE ;
+typedef int OMX_AUDIO_CODINGTYPE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetAudioParamFormatIndex (int) ; 
- int /*<<< orphan*/  OMX_AUDIO_AACERAll ; 
- int /*<<< orphan*/  OMX_AUDIO_AACObjectLC ; 
- int /*<<< orphan*/  OMX_AUDIO_AACStreamFormatMP4FF ; 
- int /*<<< orphan*/  OMX_AUDIO_AACToolAll ; 
- int /*<<< orphan*/  OMX_AUDIO_AMRBandModeNB0 ; 
- int /*<<< orphan*/  OMX_AUDIO_AMRBandModeWB0 ; 
- int /*<<< orphan*/  OMX_AUDIO_AMRDTXModeOff ; 
- int /*<<< orphan*/  OMX_AUDIO_AMRFrameFormatFSF ; 
- int /*<<< orphan*/  OMX_AUDIO_ChannelCF ; 
- int /*<<< orphan*/  OMX_AUDIO_ChannelLF ; 
- void* OMX_AUDIO_ChannelModeMono ; 
- void* OMX_AUDIO_ChannelModeStereo ; 
- int /*<<< orphan*/  OMX_AUDIO_ChannelRF ; 
-#define  OMX_AUDIO_CodingAAC 139 
-#define  OMX_AUDIO_CodingADPCM 138 
-#define  OMX_AUDIO_CodingAMR 137 
-#define  OMX_AUDIO_CodingG711 136 
-#define  OMX_AUDIO_CodingG723 135 
-#define  OMX_AUDIO_CodingG726 134 
-#define  OMX_AUDIO_CodingG729 133 
-#define  OMX_AUDIO_CodingMP3 132 
-#define  OMX_AUDIO_CodingPCM 131 
-#define  OMX_AUDIO_CodingRA 130 
-#define  OMX_AUDIO_CodingVORBIS 129 
-#define  OMX_AUDIO_CodingWMA 128 
- int /*<<< orphan*/  OMX_AUDIO_G723ModeUnused ; 
- int /*<<< orphan*/  OMX_AUDIO_G726ModeUnused ; 
- int /*<<< orphan*/  OMX_AUDIO_G729 ; 
- int /*<<< orphan*/  OMX_AUDIO_MP3StreamFormatMP1Layer3 ; 
- int /*<<< orphan*/  OMX_AUDIO_PCMModeLinear ; 
- int /*<<< orphan*/  OMX_AUDIO_RAFormatUnused ; 
- int /*<<< orphan*/  OMX_AUDIO_WMAFormatUnused ; 
- int /*<<< orphan*/  OMX_AUDIO_WMAProfileUnused ; 
- int /*<<< orphan*/  OMX_EndianLittle ; 
- int /*<<< orphan*/  OMX_ErrorBadParameter ; 
- void* OMX_FALSE ; 
- int /*<<< orphan*/  OMX_INIT_STRUCTURE (TYPE_5__) ; 
- int /*<<< orphan*/  OMX_NumericalDataSigned ; 
- int /*<<< orphan*/  OMX_SetParameter (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_2__*) ; 
- void* OMX_TRUE ; 
- int /*<<< orphan*/  VLC_CODEC_AMR_WB ; 
+
+ int GetAudioParamFormatIndex (int) ;
+ int OMX_AUDIO_AACERAll ;
+ int OMX_AUDIO_AACObjectLC ;
+ int OMX_AUDIO_AACStreamFormatMP4FF ;
+ int OMX_AUDIO_AACToolAll ;
+ int OMX_AUDIO_AMRBandModeNB0 ;
+ int OMX_AUDIO_AMRBandModeWB0 ;
+ int OMX_AUDIO_AMRDTXModeOff ;
+ int OMX_AUDIO_AMRFrameFormatFSF ;
+ int OMX_AUDIO_ChannelCF ;
+ int OMX_AUDIO_ChannelLF ;
+ void* OMX_AUDIO_ChannelModeMono ;
+ void* OMX_AUDIO_ChannelModeStereo ;
+ int OMX_AUDIO_ChannelRF ;
+ int OMX_AUDIO_G723ModeUnused ;
+ int OMX_AUDIO_G726ModeUnused ;
+ int OMX_AUDIO_G729 ;
+ int OMX_AUDIO_MP3StreamFormatMP1Layer3 ;
+ int OMX_AUDIO_PCMModeLinear ;
+ int OMX_AUDIO_RAFormatUnused ;
+ int OMX_AUDIO_WMAFormatUnused ;
+ int OMX_AUDIO_WMAProfileUnused ;
+ int OMX_EndianLittle ;
+ int OMX_ErrorBadParameter ;
+ void* OMX_FALSE ;
+ int OMX_INIT_STRUCTURE (TYPE_5__) ;
+ int OMX_NumericalDataSigned ;
+ int OMX_SetParameter (int ,int ,TYPE_2__*) ;
+ void* OMX_TRUE ;
+ int VLC_CODEC_AMR_WB ;
 
 OMX_ERRORTYPE SetAudioParameters(OMX_HANDLETYPE handle,
     OmxFormatParam *param, OMX_U32 i_port, OMX_AUDIO_CODINGTYPE encoding,
@@ -78,8 +66,8 @@ OMX_ERRORTYPE SetAudioParameters(OMX_HANDLETYPE handle,
 
     switch(encoding)
     {
-    case OMX_AUDIO_CodingPCM:
-    case OMX_AUDIO_CodingG711:
+    case 131:
+    case 136:
         OMX_INIT_STRUCTURE(param->pcm);
         param->pcm.nChannels = i_channels;
         param->pcm.nSamplingRate = i_samplerate;
@@ -95,13 +83,13 @@ OMX_ERRORTYPE SetAudioParameters(OMX_HANDLETYPE handle,
             param->pcm.eChannelMapping[1] = OMX_AUDIO_ChannelRF;
         }
         break;
-    case OMX_AUDIO_CodingADPCM:
+    case 138:
         OMX_INIT_STRUCTURE(param->adpcm);
         param->adpcm.nChannels = i_channels;
         param->adpcm.nSampleRate = i_samplerate;
         param->adpcm.nBitsPerSample = i_bps;
         break;
-    case OMX_AUDIO_CodingAMR:
+    case 137:
         OMX_INIT_STRUCTURE(param->amr);
         param->amr.nChannels = i_channels;
         param->amr.nBitRate = i_bitrate;
@@ -112,7 +100,7 @@ OMX_ERRORTYPE SetAudioParameters(OMX_HANDLETYPE handle,
         param->amr.eAMRDTXMode = OMX_AUDIO_AMRDTXModeOff;
         param->amr.eAMRFrameFormat = OMX_AUDIO_AMRFrameFormatFSF;
         break;
-    case OMX_AUDIO_CodingG723:
+    case 135:
         OMX_INIT_STRUCTURE(param->g723);
         param->g723.nChannels = i_channels;
         param->g723.bDTX = OMX_FALSE;
@@ -120,18 +108,18 @@ OMX_ERRORTYPE SetAudioParameters(OMX_HANDLETYPE handle,
         param->g723.bHiPassFilter = OMX_TRUE;
         param->g723.bPostFilter = OMX_TRUE;
         break;
-    case OMX_AUDIO_CodingG726:
+    case 134:
         OMX_INIT_STRUCTURE(param->g726);
         param->g726.nChannels = i_channels;
         param->g726.eG726Mode = OMX_AUDIO_G726ModeUnused;
         break;
-    case OMX_AUDIO_CodingG729:
+    case 133:
         OMX_INIT_STRUCTURE(param->g729);
         param->g729.nChannels = i_channels;
         param->g729.bDTX = OMX_FALSE;
         param->g729.eBitType = OMX_AUDIO_G729;
         break;
-    case OMX_AUDIO_CodingAAC:
+    case 139:
         OMX_INIT_STRUCTURE(param->aac);
         param->aac.nChannels = i_channels;
         param->aac.nSampleRate = i_samplerate;
@@ -145,7 +133,7 @@ OMX_ERRORTYPE SetAudioParameters(OMX_HANDLETYPE handle,
         param->aac.eChannelMode = i_channels > 1 ?
             OMX_AUDIO_ChannelModeStereo : OMX_AUDIO_ChannelModeMono;
         break;
-    case OMX_AUDIO_CodingMP3:
+    case 132:
         OMX_INIT_STRUCTURE(param->mp3);
         param->mp3.nChannels = i_channels;
         param->mp3.nSampleRate = i_samplerate;
@@ -154,7 +142,7 @@ OMX_ERRORTYPE SetAudioParameters(OMX_HANDLETYPE handle,
             OMX_AUDIO_ChannelModeStereo : OMX_AUDIO_ChannelModeMono;
         param->mp3.eFormat = OMX_AUDIO_MP3StreamFormatMP1Layer3;
         break;
-    case OMX_AUDIO_CodingWMA:
+    case 128:
         OMX_INIT_STRUCTURE(param->wma);
         param->wma.nChannels = i_channels;
         param->wma.nBitRate = i_bitrate;
@@ -165,7 +153,7 @@ OMX_ERRORTYPE SetAudioParameters(OMX_HANDLETYPE handle,
         param->wma.nEncodeOptions = 0;
         param->wma.nSuperBlockAlign = 0;
         break;
-    case OMX_AUDIO_CodingRA:
+    case 130:
         OMX_INIT_STRUCTURE(param->ra);
         param->ra.nChannels = i_channels;
         param->ra.nSamplingRate = i_samplerate;
@@ -176,7 +164,7 @@ OMX_ERRORTYPE SetAudioParameters(OMX_HANDLETYPE handle,
         param->ra.nNumRegions = 0;
         param->ra.eFormat = OMX_AUDIO_RAFormatUnused;
         break;
-    case OMX_AUDIO_CodingVORBIS:
+    case 129:
         OMX_INIT_STRUCTURE(param->vorbis);
         param->vorbis.nChannels = i_channels;
         param->vorbis.nBitRate = i_bitrate;

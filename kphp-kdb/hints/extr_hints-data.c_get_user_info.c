@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  flags; } ;
-typedef  TYPE_1__ user ;
 
-/* Variables and functions */
- int GET_USER_INFO (int /*<<< orphan*/ ) ; 
- int MEMORY_CHANGES_PERCENT ; 
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- TYPE_1__* conv_user_id (int) ; 
- int get_changes_memory () ; 
- int get_local_user_id (int) ; 
- int max_memory ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int flags; } ;
+typedef TYPE_1__ user ;
+
+
+ int GET_USER_INFO (int ) ;
+ int MEMORY_CHANGES_PERCENT ;
+ int assert (TYPE_1__*) ;
+ TYPE_1__* conv_user_id (int) ;
+ int get_changes_memory () ;
+ int get_local_user_id (int) ;
+ int max_memory ;
 
 int get_user_info (int user_id) {
   int local_user_id = get_local_user_id (user_id);

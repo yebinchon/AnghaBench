@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  search_query_heap_en_t ;
 
-/* Variables and functions */
- int LAST_SEARCH_QUERY_BUFF_SIZE ; 
- int /*<<< orphan*/  copy_key ; 
- scalar_t__* last_search_query ; 
- int /*<<< orphan*/  memcpy (scalar_t__*,char const*,int) ; 
- int perform_query () ; 
- int /*<<< orphan*/  search_query_end (int /*<<< orphan*/ *,int,void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  search_query_start (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strcpy (scalar_t__*,char*) ; 
- int /*<<< orphan*/  vkprintf (int,char*,int) ; 
+
+
+
+typedef int search_query_heap_en_t ;
+
+
+ int LAST_SEARCH_QUERY_BUFF_SIZE ;
+ int copy_key ;
+ scalar_t__* last_search_query ;
+ int memcpy (scalar_t__*,char const*,int) ;
+ int perform_query () ;
+ int search_query_end (int *,int,void*,int ) ;
+ int search_query_start (int *) ;
+ int strcpy (scalar_t__*,char*) ;
+ int vkprintf (int,char*,int) ;
 
 int do_perform_query (const char *key, int len) {
   if (len < LAST_SEARCH_QUERY_BUFF_SIZE) {

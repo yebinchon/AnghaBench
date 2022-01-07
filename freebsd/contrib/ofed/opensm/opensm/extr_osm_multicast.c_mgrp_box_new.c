@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint16_t ;
-struct TYPE_5__ {int /*<<< orphan*/  mgrp_list; int /*<<< orphan*/  mlid; } ;
-typedef  TYPE_1__ osm_mgrp_box_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cl_qlist_init (int /*<<< orphan*/ *) ; 
- TYPE_1__* malloc (int) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint16_t ;
+struct TYPE_5__ {int mgrp_list; int mlid; } ;
+typedef TYPE_1__ osm_mgrp_box_t ;
+
+
+ int cl_qlist_init (int *) ;
+ TYPE_1__* malloc (int) ;
+ int memset (TYPE_1__*,int ,int) ;
 
 __attribute__((used)) static osm_mgrp_box_t *mgrp_box_new(uint16_t mlid)
 {
-	osm_mgrp_box_t *mbox = malloc(sizeof(*mbox));
-	if (!mbox)
-		return NULL;
+ osm_mgrp_box_t *mbox = malloc(sizeof(*mbox));
+ if (!mbox)
+  return ((void*)0);
 
-	memset(mbox, 0, sizeof(*mbox));
-	mbox->mlid = mlid;
-	cl_qlist_init(&mbox->mgrp_list);
+ memset(mbox, 0, sizeof(*mbox));
+ mbox->mlid = mlid;
+ cl_qlist_init(&mbox->mgrp_list);
 
-	return mbox;
+ return mbox;
 }

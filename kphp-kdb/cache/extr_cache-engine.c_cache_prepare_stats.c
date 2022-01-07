@@ -1,92 +1,92 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_6__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_6__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct connection {int dummy; } ;
 struct TYPE_7__ {int pos; } ;
-typedef  TYPE_1__ stats_buffer_t ;
-struct TYPE_8__ {int /*<<< orphan*/  T; } ;
+typedef TYPE_1__ stats_buffer_t ;
+struct TYPE_8__ {int T; } ;
 
-/* Variables and functions */
- scalar_t__ AM_GET_MEMORY_USAGE_OVERALL ; 
- scalar_t__ AM_GET_MEMORY_USAGE_SELF ; 
- int CACHE_FEATURE_ACCESS_QUERIES ; 
- int CACHE_FEATURE_DETAILED_SERVER_STATS ; 
- int CACHE_FEATURE_FAST_BOTTOM_ACCESS ; 
- int CACHE_FEATURE_LONG_QUERIES ; 
- int CACHE_FEATURE_REPLAY_DELETE ; 
- int FullVersionStr ; 
- int /*<<< orphan*/  SB_BINLOG ; 
- int /*<<< orphan*/  SB_INDEX ; 
- int /*<<< orphan*/  SB_PRINT_I32 (int) ; 
- int /*<<< orphan*/  SB_PRINT_I64 (double) ; 
- int /*<<< orphan*/  SB_PRINT_QUERIES (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  STATS_BUFF_SIZE ; 
- TYPE_6__* TAT ; 
- double access_long_logevents ; 
- int /*<<< orphan*/  access_miss_counters ; 
- double access_misses ; 
- double access_short_logevents ; 
- int /*<<< orphan*/  access_success_counters ; 
- int acounter_uncached_bucket_id ; 
- int acounters_init_string ; 
- char* alloca (int) ; 
- int amortization_counter_types ; 
- int /*<<< orphan*/  bottom_stats_queries ; 
- int cache_features_mask ; 
- int cache_id ; 
- int /*<<< orphan*/  cache_stats_perf (char*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- double cached_uries ; 
- double cached_uries_knowns_size ; 
- int /*<<< orphan*/  convert_miss_counters ; 
- int /*<<< orphan*/  convert_success_counters ; 
- double cron_acounter_update_calls ; 
- int /*<<< orphan*/  delete_queries ; 
- int /*<<< orphan*/  delete_remote_disk_queries ; 
- int /*<<< orphan*/  delete_remote_server_queries ; 
- double deleted_uries ; 
- int /*<<< orphan*/  get_access_queries ; 
- int /*<<< orphan*/  get_acounter_queries ; 
- int /*<<< orphan*/  get_bottom_access_stat ; 
- int /*<<< orphan*/  get_bottom_disk_stat ; 
- int /*<<< orphan*/  get_convert_queries ; 
- int /*<<< orphan*/  get_local_copies_queries ; 
- int /*<<< orphan*/  get_queries ; 
- int /*<<< orphan*/  get_top_access_stat ; 
- int /*<<< orphan*/  get_top_disk_stat ; 
- double get_uri_f_calls ; 
- int /*<<< orphan*/  get_yellow_time_remaining_queries ; 
- double local_copies_bytes ; 
- int safe_div (double,double) ; 
- int /*<<< orphan*/  sb_memory (TYPE_1__*,scalar_t__) ; 
- int /*<<< orphan*/  sb_prepare (TYPE_1__*,struct connection*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sb_print_stat (TYPE_1__*,int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  sb_printf (TYPE_1__*,char*,...) ; 
- int /*<<< orphan*/  set_delete_local_copy_queries ; 
- int /*<<< orphan*/  set_file_size_queries ; 
- int /*<<< orphan*/  set_new_local_copy_queries ; 
- int /*<<< orphan*/  set_queries ; 
- int /*<<< orphan*/  set_yellow_time_remaining_queries ; 
- double skipped_access_logevents ; 
- int /*<<< orphan*/  stats_buff ; 
- double sum_all_cached_files_sizes ; 
- int /*<<< orphan*/  top_stats_queries ; 
- double uri2md5_extra_calls ; 
- double uri_bytes ; 
- double uri_cache_hits ; 
- int uri_hash_prime ; 
- double uri_reallocs ; 
- double uries ; 
+
+ scalar_t__ AM_GET_MEMORY_USAGE_OVERALL ;
+ scalar_t__ AM_GET_MEMORY_USAGE_SELF ;
+ int CACHE_FEATURE_ACCESS_QUERIES ;
+ int CACHE_FEATURE_DETAILED_SERVER_STATS ;
+ int CACHE_FEATURE_FAST_BOTTOM_ACCESS ;
+ int CACHE_FEATURE_LONG_QUERIES ;
+ int CACHE_FEATURE_REPLAY_DELETE ;
+ int FullVersionStr ;
+ int SB_BINLOG ;
+ int SB_INDEX ;
+ int SB_PRINT_I32 (int) ;
+ int SB_PRINT_I64 (double) ;
+ int SB_PRINT_QUERIES (int ) ;
+ int STATS_BUFF_SIZE ;
+ TYPE_6__* TAT ;
+ double access_long_logevents ;
+ int access_miss_counters ;
+ double access_misses ;
+ double access_short_logevents ;
+ int access_success_counters ;
+ int acounter_uncached_bucket_id ;
+ int acounters_init_string ;
+ char* alloca (int) ;
+ int amortization_counter_types ;
+ int bottom_stats_queries ;
+ int cache_features_mask ;
+ int cache_id ;
+ int cache_stats_perf (char*,int,int ,int ) ;
+ double cached_uries ;
+ double cached_uries_knowns_size ;
+ int convert_miss_counters ;
+ int convert_success_counters ;
+ double cron_acounter_update_calls ;
+ int delete_queries ;
+ int delete_remote_disk_queries ;
+ int delete_remote_server_queries ;
+ double deleted_uries ;
+ int get_access_queries ;
+ int get_acounter_queries ;
+ int get_bottom_access_stat ;
+ int get_bottom_disk_stat ;
+ int get_convert_queries ;
+ int get_local_copies_queries ;
+ int get_queries ;
+ int get_top_access_stat ;
+ int get_top_disk_stat ;
+ double get_uri_f_calls ;
+ int get_yellow_time_remaining_queries ;
+ double local_copies_bytes ;
+ int safe_div (double,double) ;
+ int sb_memory (TYPE_1__*,scalar_t__) ;
+ int sb_prepare (TYPE_1__*,struct connection*,int ,int ) ;
+ int sb_print_stat (TYPE_1__*,int *,char*) ;
+ int sb_printf (TYPE_1__*,char*,...) ;
+ int set_delete_local_copy_queries ;
+ int set_file_size_queries ;
+ int set_new_local_copy_queries ;
+ int set_queries ;
+ int set_yellow_time_remaining_queries ;
+ double skipped_access_logevents ;
+ int stats_buff ;
+ double sum_all_cached_files_sizes ;
+ int top_stats_queries ;
+ double uri2md5_extra_calls ;
+ double uri_bytes ;
+ double uri_cache_hits ;
+ int uri_hash_prime ;
+ double uri_reallocs ;
+ double uries ;
 
 int cache_prepare_stats (struct connection *c) {
   int i;
@@ -104,12 +104,12 @@ int cache_prepare_stats (struct connection *c) {
   SB_PRINT_QUERIES(set_yellow_time_remaining_queries);
   SB_PRINT_QUERIES(get_queries);
   SB_PRINT_QUERIES(get_access_queries);
-  //SB_PRINT_QUERIES(get_access_cached_queries);
-  //sb_printf (&sb, "get_access_cached_queries_all_disks_are_available_percent\t%.6lf\n", safe_div (100.0 * access_cached_queries, get_access_queries - access_misses));
+
+
   SB_PRINT_I64(access_misses);
   SB_PRINT_QUERIES(get_convert_queries);
-  //SB_PRINT_QUERIES(get_convert_successfull_queries);
-  //sb_printf (&sb, "get_convert_successfull_queries_percent\t%.6lf\n", safe_div (100.0 * get_convert_successfull_queries, get_convert_queries));
+
+
   SB_PRINT_QUERIES(get_local_copies_queries);
   SB_PRINT_QUERIES(get_acounter_queries);
   SB_PRINT_QUERIES(get_yellow_time_remaining_queries);

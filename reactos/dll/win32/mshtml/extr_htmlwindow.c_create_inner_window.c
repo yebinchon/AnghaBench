@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  IHTMLWindow2_iface; TYPE_3__* inner_window; int /*<<< orphan*/ * outer_window; } ;
-struct TYPE_6__ {int /*<<< orphan*/  dispex; } ;
-struct TYPE_8__ {int /*<<< orphan*/ * mon; int /*<<< orphan*/  task_magic; TYPE_2__ base; TYPE_1__ event_target; int /*<<< orphan*/  script_queue; int /*<<< orphan*/  bindings; int /*<<< orphan*/  script_hosts; } ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  IMoniker ;
-typedef  int /*<<< orphan*/  HTMLOuterWindow ;
-typedef  TYPE_3__ HTMLInnerWindow ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- int /*<<< orphan*/  HTMLWindow_dispex ; 
- int /*<<< orphan*/  IMoniker_AddRef (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  S_OK ; 
- TYPE_3__* alloc_window (int) ; 
- int /*<<< orphan*/  get_task_target_magic () ; 
- int /*<<< orphan*/  init_dispex (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  list_init (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int IHTMLWindow2_iface; TYPE_3__* inner_window; int * outer_window; } ;
+struct TYPE_6__ {int dispex; } ;
+struct TYPE_8__ {int * mon; int task_magic; TYPE_2__ base; TYPE_1__ event_target; int script_queue; int bindings; int script_hosts; } ;
+typedef int IUnknown ;
+typedef int IMoniker ;
+typedef int HTMLOuterWindow ;
+typedef TYPE_3__ HTMLInnerWindow ;
+typedef int HRESULT ;
+
+
+ int E_OUTOFMEMORY ;
+ int HTMLWindow_dispex ;
+ int IMoniker_AddRef (int *) ;
+ int S_OK ;
+ TYPE_3__* alloc_window (int) ;
+ int get_task_target_magic () ;
+ int init_dispex (int *,int *,int *) ;
+ int list_init (int *) ;
 
 __attribute__((used)) static HRESULT create_inner_window(HTMLOuterWindow *outer_window, IMoniker *mon, HTMLInnerWindow **ret)
 {

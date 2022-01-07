@@ -1,87 +1,87 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct lev_crc32 {int pos; int /*<<< orphan*/  crc32; int /*<<< orphan*/  timestamp; int /*<<< orphan*/  type; } ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct lev_crc32 {int pos; int crc32; int timestamp; int type; } ;
 struct TYPE_9__ {char* replica_prefix; } ;
 struct TYPE_8__ {TYPE_1__* info; } ;
-struct TYPE_7__ {char* filename; int /*<<< orphan*/  file_size; } ;
+struct TYPE_7__ {char* filename; int file_size; } ;
 
-/* Variables and functions */
- TYPE_2__* Binlog ; 
- int /*<<< orphan*/  LEV_CRC32 ; 
- int O_APPEND ; 
- int O_CREAT ; 
- int O_WRONLY ; 
- int /*<<< orphan*/  SEEK_END ; 
- int /*<<< orphan*/  SPLIT_FIRSTINT ; 
- int /*<<< orphan*/  SPLIT_LIKED ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int atoll (char*) ; 
- char* binlogname ; 
- scalar_t__ change_user (char*) ; 
- int /*<<< orphan*/  clear_log () ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  close_binlog (TYPE_2__*,int) ; 
- int /*<<< orphan*/  copy_mod ; 
- int /*<<< orphan*/  copy_rem ; 
- scalar_t__ engine_preload_filelist (char*,char*) ; 
- TYPE_3__* engine_replica ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fan_members_want_write ; 
- scalar_t__ fdatasync (int) ; 
- int filter_member_fan ; 
- int /*<<< orphan*/  flush_out () ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int getopt (int,char**,char*) ; 
- int immediate_exit ; 
- int /*<<< orphan*/  init_log_data (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int jump_log_pos ; 
- int keep_log_limit_pos ; 
- int /*<<< orphan*/  kprintf (char*) ; 
- int /*<<< orphan*/  last_timestamp ; 
- int /*<<< orphan*/  list_id_ints ; 
- int log_limit_pos ; 
- int log_readto_pos ; 
- scalar_t__ lseek (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  member_fans_want_write ; 
- int open (char*,int,int) ; 
- TYPE_2__* open_binlog (TYPE_3__*,int) ; 
- char* optarg ; 
- int optind ; 
- int /*<<< orphan*/  output_stats () ; 
- char* progname ; 
- int replay_log (int /*<<< orphan*/ ,int) ; 
- int skip_rotate ; 
- int /*<<< orphan*/  split_mode ; 
- int sscanf (char*,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  strncmp (char*,char*,int) ; 
- char* strrchr (char*,char) ; 
- int targ_existed ; 
- int targ_fd ; 
- char* targ_fname ; 
- scalar_t__ targ_orig_size ; 
- int /*<<< orphan*/  usage () ; 
- char* username ; 
- scalar_t__ verbosity ; 
- int /*<<< orphan*/  vkprintf (int,char*) ; 
- int /*<<< orphan*/  want_write ; 
- int wr_bytes ; 
- int /*<<< orphan*/  wr_crc32_complement ; 
- int /*<<< orphan*/  wr_rec ; 
- struct lev_crc32* write_alloc (int) ; 
+
+ TYPE_2__* Binlog ;
+ int LEV_CRC32 ;
+ int O_APPEND ;
+ int O_CREAT ;
+ int O_WRONLY ;
+ int SEEK_END ;
+ int SPLIT_FIRSTINT ;
+ int SPLIT_LIKED ;
+ int assert (int ) ;
+ int atoll (char*) ;
+ char* binlogname ;
+ scalar_t__ change_user (char*) ;
+ int clear_log () ;
+ int close (int) ;
+ int close_binlog (TYPE_2__*,int) ;
+ int copy_mod ;
+ int copy_rem ;
+ scalar_t__ engine_preload_filelist (char*,char*) ;
+ TYPE_3__* engine_replica ;
+ int exit (int) ;
+ int fan_members_want_write ;
+ scalar_t__ fdatasync (int) ;
+ int filter_member_fan ;
+ int flush_out () ;
+ int fprintf (int ,char*,...) ;
+ int getopt (int,char**,char*) ;
+ int immediate_exit ;
+ int init_log_data (int,int ,int ) ;
+ int jump_log_pos ;
+ int keep_log_limit_pos ;
+ int kprintf (char*) ;
+ int last_timestamp ;
+ int list_id_ints ;
+ int log_limit_pos ;
+ int log_readto_pos ;
+ scalar_t__ lseek (int,int ,int ) ;
+ int member_fans_want_write ;
+ int open (char*,int,int) ;
+ TYPE_2__* open_binlog (TYPE_3__*,int) ;
+ char* optarg ;
+ int optind ;
+ int output_stats () ;
+ char* progname ;
+ int replay_log (int ,int) ;
+ int skip_rotate ;
+ int split_mode ;
+ int sscanf (char*,char*,int *,int *) ;
+ int stderr ;
+ int strncmp (char*,char*,int) ;
+ char* strrchr (char*,char) ;
+ int targ_existed ;
+ int targ_fd ;
+ char* targ_fname ;
+ scalar_t__ targ_orig_size ;
+ int usage () ;
+ char* username ;
+ scalar_t__ verbosity ;
+ int vkprintf (int,char*) ;
+ int want_write ;
+ int wr_bytes ;
+ int wr_crc32_complement ;
+ int wr_rec ;
+ struct lev_crc32* write_alloc (int) ;
 
 int main (int argc, char *argv[]) {
   int i;
@@ -95,7 +95,7 @@ int main (int argc, char *argv[]) {
       verbosity += 1;
       break;
     case 'f':
-      // vkprintf(2, "setting skip_rotate\n");
+
       skip_rotate = 1;
       break;
     case 'h':
@@ -106,8 +106,8 @@ int main (int argc, char *argv[]) {
       break;
     case 'm':
       if (sscanf (optarg, "%d,%d", &copy_rem, &copy_mod) != 2 || copy_rem < 0 || copy_rem >= copy_mod) {
-	usage();
-	return 2;
+ usage();
+ return 2;
       }
       break;
     case 's':
@@ -140,7 +140,7 @@ int main (int argc, char *argv[]) {
   if (filter_member_fan) {
     vkprintf (1, "fix member_fans, fan_members mode\n");
     char *p = strrchr (argv[optind], '/');
-    p = (p == NULL) ? argv[optind] : (p + 1);
+    p = (p == ((void*)0)) ? argv[optind] : (p + 1);
     if (!strncmp (p, "member_fans", 11)) {
       want_write = member_fans_want_write;
     } else if (!strncmp (p, "fan_members", 11)) {

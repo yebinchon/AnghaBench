@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ vm_offset_t ;
-typedef  int /*<<< orphan*/  pmap_paddr_t ;
 
-/* Variables and functions */
- unsigned int ml_phys_read_data (int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef scalar_t__ vm_offset_t ;
+typedef int pmap_paddr_t ;
+
+
+ unsigned int ml_phys_read_data (int ,int) ;
 
 unsigned int ml_phys_read_byte(vm_offset_t paddr)
 {

@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  pdf_obj ;
-typedef  int /*<<< orphan*/  pdf_document ;
-typedef  int /*<<< orphan*/  fz_context ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Encoding ; 
- int /*<<< orphan*/  PDF_NAME (int /*<<< orphan*/ ) ; 
-#define  PDF_SIMPLE_ENCODING_CYRILLIC 130 
-#define  PDF_SIMPLE_ENCODING_GREEK 129 
-#define  PDF_SIMPLE_ENCODING_LATIN 128 
- int /*<<< orphan*/  WinAnsiEncoding ; 
- int /*<<< orphan*/  fz_glyph_name_from_iso8859_7 ; 
- int /*<<< orphan*/  fz_glyph_name_from_koi8u ; 
- int /*<<< orphan*/  pdf_add_simple_font_encoding_imp (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pdf_dict_put (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int pdf_obj ;
+typedef int pdf_document ;
+typedef int fz_context ;
+
+
+ int Encoding ;
+ int PDF_NAME (int ) ;
+
+
+
+ int WinAnsiEncoding ;
+ int fz_glyph_name_from_iso8859_7 ;
+ int fz_glyph_name_from_koi8u ;
+ int pdf_add_simple_font_encoding_imp (int *,int *,int *,int ) ;
+ int pdf_dict_put (int *,int *,int ,int ) ;
 
 __attribute__((used)) static void
 pdf_add_simple_font_encoding(fz_context *ctx, pdf_document *doc, pdf_obj *fobj, int encoding)
 {
-	switch (encoding)
-	{
-	default:
-	case PDF_SIMPLE_ENCODING_LATIN:
-		pdf_dict_put(ctx, fobj, PDF_NAME(Encoding), PDF_NAME(WinAnsiEncoding));
-		break;
-	case PDF_SIMPLE_ENCODING_GREEK:
-		pdf_add_simple_font_encoding_imp(ctx, doc, fobj, fz_glyph_name_from_iso8859_7);
-		break;
-	case PDF_SIMPLE_ENCODING_CYRILLIC:
-		pdf_add_simple_font_encoding_imp(ctx, doc, fobj, fz_glyph_name_from_koi8u);
-		break;
-	}
+ switch (encoding)
+ {
+ default:
+ case 128:
+  pdf_dict_put(ctx, fobj, PDF_NAME(Encoding), PDF_NAME(WinAnsiEncoding));
+  break;
+ case 129:
+  pdf_add_simple_font_encoding_imp(ctx, doc, fobj, fz_glyph_name_from_iso8859_7);
+  break;
+ case 130:
+  pdf_add_simple_font_encoding_imp(ctx, doc, fobj, fz_glyph_name_from_koi8u);
+  break;
+ }
 }

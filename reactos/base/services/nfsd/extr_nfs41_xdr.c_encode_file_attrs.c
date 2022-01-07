@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_6__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t uint32_t ;
+
+
+typedef struct TYPE_10__ TYPE_6__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef size_t uint32_t ;
 struct TYPE_7__ {size_t count; int* arr; } ;
-struct TYPE_8__ {char* owner; char* owner_group; TYPE_1__ attrmask; int /*<<< orphan*/  mode_mask; int /*<<< orphan*/  mode; int /*<<< orphan*/  time_delta; int /*<<< orphan*/  time_modify; int /*<<< orphan*/  time_create; int /*<<< orphan*/  time_access; int /*<<< orphan*/  system; int /*<<< orphan*/  hidden; int /*<<< orphan*/  archive; int /*<<< orphan*/  acl; int /*<<< orphan*/  size; } ;
-typedef  TYPE_2__ nfs41_file_info ;
+struct TYPE_8__ {char* owner; char* owner_group; TYPE_1__ attrmask; int mode_mask; int mode; int time_delta; int time_modify; int time_create; int time_access; int system; int hidden; int archive; int acl; int size; } ;
+typedef TYPE_2__ nfs41_file_info ;
 struct TYPE_10__ {size_t count; int* arr; } ;
-struct TYPE_9__ {int /*<<< orphan*/  attr_vals_len; TYPE_6__ attrmask; scalar_t__ attr_vals; } ;
-typedef  TYPE_3__ fattr4 ;
-typedef  int /*<<< orphan*/  bool_t ;
-typedef  int /*<<< orphan*/  bitmap4 ;
-typedef  int /*<<< orphan*/  XDR ;
+struct TYPE_9__ {int attr_vals_len; TYPE_6__ attrmask; scalar_t__ attr_vals; } ;
+typedef TYPE_3__ fattr4 ;
+typedef int bool_t ;
+typedef int bitmap4 ;
+typedef int XDR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int FATTR4_WORD0_ACL ; 
- int FATTR4_WORD0_ARCHIVE ; 
- int FATTR4_WORD0_HIDDEN ; 
- int FATTR4_WORD0_SIZE ; 
- int FATTR4_WORD1_MODE ; 
- int FATTR4_WORD1_OWNER ; 
- int FATTR4_WORD1_OWNER_GROUP ; 
- int FATTR4_WORD1_SYSTEM ; 
- int FATTR4_WORD1_TIME_ACCESS_SET ; 
- int FATTR4_WORD1_TIME_CREATE ; 
- int FATTR4_WORD1_TIME_MODIFY_SET ; 
- int FATTR4_WORD2_MODE_SET_MASKED ; 
- int /*<<< orphan*/  NFS4_OPAQUE_LIMIT ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  XDR_ENCODE ; 
- int /*<<< orphan*/  ZeroMemory (TYPE_6__*,int) ; 
- int /*<<< orphan*/  eprintf (char*,size_t,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  strlen (char*) ; 
- int /*<<< orphan*/  xdr_bool (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  xdr_bytes (int /*<<< orphan*/ *,char**,size_t*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xdr_getpos (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  xdr_nfsacl41 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xdr_nfstime4 (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  xdr_settime4 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xdr_u_hyper (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  xdr_u_int32_t (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  xdrmem_create (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int FALSE ;
+ int FATTR4_WORD0_ACL ;
+ int FATTR4_WORD0_ARCHIVE ;
+ int FATTR4_WORD0_HIDDEN ;
+ int FATTR4_WORD0_SIZE ;
+ int FATTR4_WORD1_MODE ;
+ int FATTR4_WORD1_OWNER ;
+ int FATTR4_WORD1_OWNER_GROUP ;
+ int FATTR4_WORD1_SYSTEM ;
+ int FATTR4_WORD1_TIME_ACCESS_SET ;
+ int FATTR4_WORD1_TIME_CREATE ;
+ int FATTR4_WORD1_TIME_MODIFY_SET ;
+ int FATTR4_WORD2_MODE_SET_MASKED ;
+ int NFS4_OPAQUE_LIMIT ;
+ int TRUE ;
+ int XDR_ENCODE ;
+ int ZeroMemory (TYPE_6__*,int) ;
+ int eprintf (char*,size_t,scalar_t__,scalar_t__) ;
+ int strlen (char*) ;
+ int xdr_bool (int *,int *) ;
+ int xdr_bytes (int *,char**,size_t*,int ) ;
+ int xdr_getpos (int *) ;
+ int xdr_nfsacl41 (int *,int ) ;
+ int xdr_nfstime4 (int *,int *) ;
+ int xdr_settime4 (int *,int *,int ) ;
+ int xdr_u_hyper (int *,int *) ;
+ int xdr_u_int32_t (int *,int *) ;
+ int xdrmem_create (int *,char*,int ,int ) ;
 
 __attribute__((used)) static bool_t encode_file_attrs(
     fattr4 *attrs,
@@ -119,7 +119,7 @@ __attribute__((used)) static bool_t encode_file_attrs(
         if (info->attrmask.arr[1] & FATTR4_WORD1_OWNER) {
             char *ptr = &info->owner[0];
             uint32_t owner_len = (uint32_t)strlen(info->owner);
-            if (!xdr_bytes(&localxdr, &ptr, &owner_len, 
+            if (!xdr_bytes(&localxdr, &ptr, &owner_len,
                             NFS4_OPAQUE_LIMIT))
                 return FALSE;
             attrs->attrmask.arr[1] |= FATTR4_WORD1_OWNER;
@@ -127,7 +127,7 @@ __attribute__((used)) static bool_t encode_file_attrs(
         if (info->attrmask.arr[1] & FATTR4_WORD1_OWNER_GROUP) {
             char *ptr = &info->owner_group[0];
             uint32_t owner_group_len = (uint32_t)strlen(info->owner_group);
-            if (!xdr_bytes(&localxdr, &ptr, &owner_group_len, 
+            if (!xdr_bytes(&localxdr, &ptr, &owner_group_len,
                             NFS4_OPAQUE_LIMIT))
                 return FALSE;
             attrs->attrmask.arr[1] |= FATTR4_WORD1_OWNER_GROUP;
@@ -143,7 +143,7 @@ __attribute__((used)) static bool_t encode_file_attrs(
         }
     }
 
-    /* warn if we try to set attributes that aren't handled */
+
     for (i = 0; i < info->attrmask.count; i++)
         if (attrs->attrmask.arr[i] != info->attrmask.arr[i])
             eprintf("encode_file_attrs() attempted to encode extra "

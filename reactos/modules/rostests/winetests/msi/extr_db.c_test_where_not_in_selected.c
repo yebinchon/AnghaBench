@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ UINT ;
-typedef  int /*<<< orphan*/  MSIHANDLE ;
-typedef  char* LPCSTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DeleteFileA (int /*<<< orphan*/ ) ; 
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  MsiCloseHandle (int /*<<< orphan*/ ) ; 
- scalar_t__ MsiDatabaseOpenViewA (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  MsiViewClose (int /*<<< orphan*/ ) ; 
- scalar_t__ MsiViewExecute (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ MsiViewFetch (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  check_record (int /*<<< orphan*/ ,int,char*) ; 
- int /*<<< orphan*/  create_db () ; 
- int /*<<< orphan*/  msifile ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- scalar_t__ run_query (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
+
+
+
+typedef scalar_t__ UINT ;
+typedef int MSIHANDLE ;
+typedef char* LPCSTR ;
+
+
+ int DeleteFileA (int ) ;
+ scalar_t__ ERROR_SUCCESS ;
+ int MsiCloseHandle (int ) ;
+ scalar_t__ MsiDatabaseOpenViewA (int ,char*,int *) ;
+ int MsiViewClose (int ) ;
+ scalar_t__ MsiViewExecute (int ,int ) ;
+ scalar_t__ MsiViewFetch (int ,int *) ;
+ scalar_t__ S_OK ;
+ int check_record (int ,int,char*) ;
+ int create_db () ;
+ int msifile ;
+ int ok (int,char*,...) ;
+ scalar_t__ run_query (int ,int ,char*) ;
 
 __attribute__((used)) static void test_where_not_in_selected(void)
 {

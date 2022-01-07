@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  FreeStrList (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * eth_offload_list ; 
+ int FreeStrList (int *) ;
+ int * eth_offload_list ;
 
 void FreeEth()
 {
-	if (eth_offload_list != NULL)
-	{
-		FreeStrList(eth_offload_list);
-		eth_offload_list = NULL;
-	}
+ if (eth_offload_list != ((void*)0))
+ {
+  FreeStrList(eth_offload_list);
+  eth_offload_list = ((void*)0);
+ }
 }

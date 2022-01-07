@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_config_t ;
-typedef  scalar_t__ svn_boolean_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_CONFIG_FALSE ; 
- int /*<<< orphan*/  SVN_CONFIG_TRUE ; 
- int /*<<< orphan*/  svn_config_set (int /*<<< orphan*/ *,char const*,char const*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int svn_config_t ;
+typedef scalar_t__ svn_boolean_t ;
+
+
+ int SVN_CONFIG_FALSE ;
+ int SVN_CONFIG_TRUE ;
+ int svn_config_set (int *,char const*,char const*,int ) ;
 
 void
 svn_config_set_bool(svn_config_t *cfg,

@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  LOG_ERR ; 
- int /*<<< orphan*/  NFS_PROGRAM ; 
- int /*<<< orphan*/  rpcb_unset (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  syslog (int /*<<< orphan*/ ,char*) ; 
+ int LOG_ERR ;
+ int NFS_PROGRAM ;
+ int rpcb_unset (int ,int,int *) ;
+ int syslog (int ,char*) ;
 
 __attribute__((used)) static void
 unregistration(void)
 {
-	if ((!rpcb_unset(NFS_PROGRAM, 2, NULL)) ||
-	    (!rpcb_unset(NFS_PROGRAM, 3, NULL)))
-		syslog(LOG_ERR, "rpcb_unset failed");
+ if ((!rpcb_unset(NFS_PROGRAM, 2, ((void*)0))) ||
+     (!rpcb_unset(NFS_PROGRAM, 3, ((void*)0))))
+  syslog(LOG_ERR, "rpcb_unset failed");
 }

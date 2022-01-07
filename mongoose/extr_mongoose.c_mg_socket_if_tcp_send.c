@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct mg_connection {int /*<<< orphan*/  sock; } ;
 
-/* Variables and functions */
- scalar_t__ MG_SEND_FUNC (int /*<<< orphan*/ ,void const*,size_t,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mg_is_error () ; 
+
+
+
+struct mg_connection {int sock; } ;
+
+
+ scalar_t__ MG_SEND_FUNC (int ,void const*,size_t,int ) ;
+ int mg_is_error () ;
 
 __attribute__((used)) static int mg_socket_if_tcp_send(struct mg_connection *nc, const void *buf,
                                  size_t len) {

@@ -1,0 +1,186 @@
+; ModuleID = '/home/carl/AnghaBench/freebsd/contrib/unbound/smallapp/extr_unbound-control.c_usage.c'
+source_filename = "/home/carl/AnghaBench/freebsd/contrib/unbound/smallapp/extr_unbound-control.c_usage.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+@.str = private unnamed_addr constant [48 x i8] c"Usage:\09local-unbound-control [options] command\0A\00", align 1
+@.str.1 = private unnamed_addr constant [45 x i8] c"\09Remote control utility for unbound server.\0A\00", align 1
+@.str.2 = private unnamed_addr constant [10 x i8] c"Options:\0A\00", align 1
+@.str.3 = private unnamed_addr constant [38 x i8] c"  -c file\09config file, default is %s\0A\00", align 1
+@CONFIGFILE = common dso_local global i8* null, align 8
+@.str.4 = private unnamed_addr constant [59 x i8] c"  -s ip[@port]\09server address, if omitted config is used.\0A\00", align 1
+@.str.5 = private unnamed_addr constant [52 x i8] c"  -q\09\09quiet (don't print anything if it works ok).\0A\00", align 1
+@.str.6 = private unnamed_addr constant [29 x i8] c"  -h\09\09show this usage help.\0A\00", align 1
+@.str.7 = private unnamed_addr constant [11 x i8] c"Commands:\0A\00", align 1
+@.str.8 = private unnamed_addr constant [42 x i8] c"  start\09\09\09\09start server; runs unbound(8)\0A\00", align 1
+@.str.9 = private unnamed_addr constant [28 x i8] c"  stop\09\09\09\09stops the server\0A\00", align 1
+@.str.10 = private unnamed_addr constant [31 x i8] c"  reload\09\09\09reloads the server\0A\00", align 1
+@.str.11 = private unnamed_addr constant [47 x i8] c"  \09\09\09\09(this flushes data, stats, requestlist)\0A\00", align 1
+@.str.12 = private unnamed_addr constant [29 x i8] c"  stats\09\09\09\09print statistics\0A\00", align 1
+@.str.13 = private unnamed_addr constant [38 x i8] c"  stats_noreset\09\09\09peek at statistics\0A\00", align 1
+@.str.14 = private unnamed_addr constant [37 x i8] c"  status\09\09\09display status of server\0A\00", align 1
+@.str.15 = private unnamed_addr constant [45 x i8] c"  verbosity <number>\09\09change logging detail\0A\00", align 1
+@.str.16 = private unnamed_addr constant [43 x i8] c"  log_reopen\09\09\09close and open the logfile\0A\00", align 1
+@.str.17 = private unnamed_addr constant [47 x i8] c"  local_zone <name> <type>\09add new local zone\0A\00", align 1
+@.str.18 = private unnamed_addr constant [63 x i8] c"  local_zone_remove <name>\09remove local zone and its contents\0A\00", align 1
+@.str.19 = private unnamed_addr constant [55 x i8] c"  local_data <RR data...>\09add local data, for example\0A\00", align 1
+@.str.20 = private unnamed_addr constant [44 x i8] c"\09\09\09\09local_data www.example.com A 192.0.2.1\0A\00", align 1
+@.str.21 = private unnamed_addr constant [59 x i8] c"  local_data_remove <name>\09remove local RR data from name\0A\00", align 1
+@.str.22 = private unnamed_addr constant [68 x i8] c"  local_zones, local_zones_remove, local_datas, local_datas_remove\0A\00", align 1
+@.str.23 = private unnamed_addr constant [38 x i8] c"  \09\09\09\09same, but read list from stdin\0A\00", align 1
+@.str.24 = private unnamed_addr constant [29 x i8] c"  \09\09\09\09(one entry per line).\0A\00", align 1
+@.str.25 = private unnamed_addr constant [38 x i8] c"  dump_cache\09\09\09print cache to stdout\0A\00", align 1
+@.str.26 = private unnamed_addr constant [38 x i8] c"  load_cache\09\09\09load cache from stdin\0A\00", align 1
+@.str.27 = private unnamed_addr constant [46 x i8] c"  lookup <name>\09\09\09print nameservers for name\0A\00", align 1
+@.str.28 = private unnamed_addr constant [59 x i8] c"  flush <name>\09\09\09flushes common types for name from cache\0A\00", align 1
+@.str.29 = private unnamed_addr constant [37 x i8] c"  \09\09\09\09types:  A, AAAA, MX, PTR, NS,\0A\00", align 1
+@.str.30 = private unnamed_addr constant [36 x i8] c"\09\09\09\09\09SOA, CNAME, DNAME, SRV, NAPTR\0A\00", align 1
+@.str.31 = private unnamed_addr constant [56 x i8] c"  flush_type <name> <type>\09flush name, type from cache\0A\00", align 1
+@.str.32 = private unnamed_addr constant [56 x i8] c"  flush_zone <name>\09\09flush everything at or under name\0A\00", align 1
+@.str.33 = private unnamed_addr constant [33 x i8] c"  \09\09\09\09from rr and dnssec caches\0A\00", align 1
+@.str.34 = private unnamed_addr constant [38 x i8] c"  flush_bogus\09\09\09flush all bogus data\0A\00", align 1
+@.str.35 = private unnamed_addr constant [43 x i8] c"  flush_negative\09\09flush all negative data\0A\00", align 1
+@.str.36 = private unnamed_addr constant [46 x i8] c"  flush_stats \09\09\09flush statistics, make zero\0A\00", align 1
+@.str.37 = private unnamed_addr constant [55 x i8] c"  flush_requestlist \09\09drop queries that are worked on\0A\00", align 1
+@.str.38 = private unnamed_addr constant [60 x i8] c"  dump_requestlist\09\09show what is worked on by first thread\0A\00", align 1
+@.str.39 = private unnamed_addr constant [63 x i8] c"  flush_infra [all | ip] \09remove ping, edns for one IP or all\0A\00", align 1
+@.str.40 = private unnamed_addr constant [43 x i8] c"  dump_infra\09\09\09show ping and edns entries\0A\00", align 1
+@.str.41 = private unnamed_addr constant [55 x i8] c"  set_option opt: val\09\09set option to value, no reload\0A\00", align 1
+@.str.42 = private unnamed_addr constant [36 x i8] c"  get_option opt\09\09get option value\0A\00", align 1
+@.str.43 = private unnamed_addr constant [54 x i8] c"  list_stubs\09\09\09list stub-zones and root hints in use\0A\00", align 1
+@.str.44 = private unnamed_addr constant [45 x i8] c"  list_forwards\09\09\09list forward-zones in use\0A\00", align 1
+@.str.45 = private unnamed_addr constant [46 x i8] c"  list_insecure\09\09\09list domain-insecure zones\0A\00", align 1
+@.str.46 = private unnamed_addr constant [45 x i8] c"  list_local_zones\09\09list local-zones in use\0A\00", align 1
+@.str.47 = private unnamed_addr constant [47 x i8] c"  list_local_data\09\09list local-data RRs in use\0A\00", align 1
+@.str.48 = private unnamed_addr constant [48 x i8] c"  insecure_add zone \09\09add domain-insecure zone\0A\00", align 1
+@.str.49 = private unnamed_addr constant [53 x i8] c"  insecure_remove zone\09\09remove domain-insecure zone\0A\00", align 1
+@.str.50 = private unnamed_addr constant [62 x i8] c"  forward_add [+i] zone addr..\09add forward-zone with servers\0A\00", align 1
+@.str.51 = private unnamed_addr constant [48 x i8] c"  forward_remove [+i] zone\09remove forward zone\0A\00", align 1
+@.str.52 = private unnamed_addr constant [57 x i8] c"  stub_add [+ip] zone addr..\09add stub-zone with servers\0A\00", align 1
+@.str.53 = private unnamed_addr constant [43 x i8] c"  stub_remove [+i] zone\09\09remove stub zone\0A\00", align 1
+@.str.54 = private unnamed_addr constant [37 x i8] c"\09\09+i\09\09also do dnssec insecure point\0A\00", align 1
+@.str.55 = private unnamed_addr constant [31 x i8] c"\09\09+p\09\09set stub to use priming\0A\00", align 1
+@.str.56 = private unnamed_addr constant [59 x i8] c"  forward [off | addr ...]\09without arg show forward setup\0A\00", align 1
+@.str.57 = private unnamed_addr constant [40 x i8] c"\09\09\09\09or off to turn off root forwarding\0A\00", align 1
+@.str.58 = private unnamed_addr constant [34 x i8] c"\09\09\09\09or give list of ip addresses\0A\00", align 1
+@.str.59 = private unnamed_addr constant [49 x i8] c"  ratelimit_list [+a]\09\09list ratelimited domains\0A\00", align 1
+@.str.60 = private unnamed_addr constant [56 x i8] c"  ip_ratelimit_list [+a]\09list ratelimited ip addresses\0A\00", align 1
+@.str.61 = private unnamed_addr constant [38 x i8] c"\09\09+a\09\09list all, also not ratelimited\0A\00", align 1
+@.str.62 = private unnamed_addr constant [36 x i8] c"  list_auth_zones\09\09list auth zones\0A\00", align 1
+@.str.63 = private unnamed_addr constant [57 x i8] c"  auth_zone_reload zone\09\09reload auth zone from zonefile\0A\00", align 1
+@.str.64 = private unnamed_addr constant [58 x i8] c"  auth_zone_transfer zone\09transfer auth zone from master\0A\00", align 1
+@.str.65 = private unnamed_addr constant [55 x i8] c"  view_list_local_zones\09view\09list local-zones in view\0A\00", align 1
+@.str.66 = private unnamed_addr constant [57 x i8] c"  view_list_local_data\09view\09list local-data RRs in view\0A\00", align 1
+@.str.67 = private unnamed_addr constant [59 x i8] c"  view_local_zone view name type  \09add local-zone in view\0A\00", align 1
+@.str.68 = private unnamed_addr constant [64 x i8] c"  view_local_zone_remove view name  \09remove local-zone in view\0A\00", align 1
+@.str.69 = private unnamed_addr constant [54 x i8] c"  view_local_data view RR...\09\09add local-data in view\0A\00", align 1
+@.str.70 = private unnamed_addr constant [58 x i8] c"  view_local_datas view \09\09add list of local-data to view\0A\00", align 1
+@.str.71 = private unnamed_addr constant [43 x i8] c"  \09\09\09\09\09one entry per line read from stdin\0A\00", align 1
+@.str.72 = private unnamed_addr constant [64 x i8] c"  view_local_data_remove view name  \09remove local-data in view\0A\00", align 1
+@.str.73 = private unnamed_addr constant [12 x i8] c"Version %s\0A\00", align 1
+@PACKAGE_VERSION = common dso_local global i8* null, align 8
+@.str.74 = private unnamed_addr constant [58 x i8] c"BSD licensed, see LICENSE in source package for details.\0A\00", align 1
+@.str.75 = private unnamed_addr constant [19 x i8] c"Report bugs to %s\0A\00", align 1
+@PACKAGE_BUGREPORT = common dso_local global i8* null, align 8
+@llvm.used = appending global [1 x i8*] [i8* bitcast (void ()* @usage to i8*)], section "llvm.metadata"
+
+; Function Attrs: noinline nounwind optnone uwtable
+define internal void @usage() #0 {
+  %1 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str, i64 0, i64 0))
+  %2 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([45 x i8], [45 x i8]* @.str.1, i64 0, i64 0))
+  %3 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str.2, i64 0, i64 0))
+  %4 = load i8*, i8** @CONFIGFILE, align 8
+  %5 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([38 x i8], [38 x i8]* @.str.3, i64 0, i64 0), i8* %4)
+  %6 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([59 x i8], [59 x i8]* @.str.4, i64 0, i64 0))
+  %7 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([52 x i8], [52 x i8]* @.str.5, i64 0, i64 0))
+  %8 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([29 x i8], [29 x i8]* @.str.6, i64 0, i64 0))
+  %9 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([11 x i8], [11 x i8]* @.str.7, i64 0, i64 0))
+  %10 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([42 x i8], [42 x i8]* @.str.8, i64 0, i64 0))
+  %11 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([28 x i8], [28 x i8]* @.str.9, i64 0, i64 0))
+  %12 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([31 x i8], [31 x i8]* @.str.10, i64 0, i64 0))
+  %13 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([47 x i8], [47 x i8]* @.str.11, i64 0, i64 0))
+  %14 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([29 x i8], [29 x i8]* @.str.12, i64 0, i64 0))
+  %15 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([38 x i8], [38 x i8]* @.str.13, i64 0, i64 0))
+  %16 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([37 x i8], [37 x i8]* @.str.14, i64 0, i64 0))
+  %17 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([45 x i8], [45 x i8]* @.str.15, i64 0, i64 0))
+  %18 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([43 x i8], [43 x i8]* @.str.16, i64 0, i64 0))
+  %19 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([47 x i8], [47 x i8]* @.str.17, i64 0, i64 0))
+  %20 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([63 x i8], [63 x i8]* @.str.18, i64 0, i64 0))
+  %21 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([55 x i8], [55 x i8]* @.str.19, i64 0, i64 0))
+  %22 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([44 x i8], [44 x i8]* @.str.20, i64 0, i64 0))
+  %23 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([59 x i8], [59 x i8]* @.str.21, i64 0, i64 0))
+  %24 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([68 x i8], [68 x i8]* @.str.22, i64 0, i64 0))
+  %25 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([38 x i8], [38 x i8]* @.str.23, i64 0, i64 0))
+  %26 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([29 x i8], [29 x i8]* @.str.24, i64 0, i64 0))
+  %27 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([38 x i8], [38 x i8]* @.str.25, i64 0, i64 0))
+  %28 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([38 x i8], [38 x i8]* @.str.26, i64 0, i64 0))
+  %29 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([46 x i8], [46 x i8]* @.str.27, i64 0, i64 0))
+  %30 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([59 x i8], [59 x i8]* @.str.28, i64 0, i64 0))
+  %31 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([37 x i8], [37 x i8]* @.str.29, i64 0, i64 0))
+  %32 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([36 x i8], [36 x i8]* @.str.30, i64 0, i64 0))
+  %33 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([56 x i8], [56 x i8]* @.str.31, i64 0, i64 0))
+  %34 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([56 x i8], [56 x i8]* @.str.32, i64 0, i64 0))
+  %35 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([33 x i8], [33 x i8]* @.str.33, i64 0, i64 0))
+  %36 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([38 x i8], [38 x i8]* @.str.34, i64 0, i64 0))
+  %37 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([43 x i8], [43 x i8]* @.str.35, i64 0, i64 0))
+  %38 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([46 x i8], [46 x i8]* @.str.36, i64 0, i64 0))
+  %39 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([55 x i8], [55 x i8]* @.str.37, i64 0, i64 0))
+  %40 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([60 x i8], [60 x i8]* @.str.38, i64 0, i64 0))
+  %41 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([63 x i8], [63 x i8]* @.str.39, i64 0, i64 0))
+  %42 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([43 x i8], [43 x i8]* @.str.40, i64 0, i64 0))
+  %43 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([55 x i8], [55 x i8]* @.str.41, i64 0, i64 0))
+  %44 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([36 x i8], [36 x i8]* @.str.42, i64 0, i64 0))
+  %45 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([54 x i8], [54 x i8]* @.str.43, i64 0, i64 0))
+  %46 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([45 x i8], [45 x i8]* @.str.44, i64 0, i64 0))
+  %47 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([46 x i8], [46 x i8]* @.str.45, i64 0, i64 0))
+  %48 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([45 x i8], [45 x i8]* @.str.46, i64 0, i64 0))
+  %49 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([47 x i8], [47 x i8]* @.str.47, i64 0, i64 0))
+  %50 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.48, i64 0, i64 0))
+  %51 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([53 x i8], [53 x i8]* @.str.49, i64 0, i64 0))
+  %52 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([62 x i8], [62 x i8]* @.str.50, i64 0, i64 0))
+  %53 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.51, i64 0, i64 0))
+  %54 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([57 x i8], [57 x i8]* @.str.52, i64 0, i64 0))
+  %55 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([43 x i8], [43 x i8]* @.str.53, i64 0, i64 0))
+  %56 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([37 x i8], [37 x i8]* @.str.54, i64 0, i64 0))
+  %57 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([31 x i8], [31 x i8]* @.str.55, i64 0, i64 0))
+  %58 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([59 x i8], [59 x i8]* @.str.56, i64 0, i64 0))
+  %59 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([40 x i8], [40 x i8]* @.str.57, i64 0, i64 0))
+  %60 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([34 x i8], [34 x i8]* @.str.58, i64 0, i64 0))
+  %61 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([49 x i8], [49 x i8]* @.str.59, i64 0, i64 0))
+  %62 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([56 x i8], [56 x i8]* @.str.60, i64 0, i64 0))
+  %63 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([38 x i8], [38 x i8]* @.str.61, i64 0, i64 0))
+  %64 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([36 x i8], [36 x i8]* @.str.62, i64 0, i64 0))
+  %65 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([57 x i8], [57 x i8]* @.str.63, i64 0, i64 0))
+  %66 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([58 x i8], [58 x i8]* @.str.64, i64 0, i64 0))
+  %67 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([55 x i8], [55 x i8]* @.str.65, i64 0, i64 0))
+  %68 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([57 x i8], [57 x i8]* @.str.66, i64 0, i64 0))
+  %69 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([59 x i8], [59 x i8]* @.str.67, i64 0, i64 0))
+  %70 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([64 x i8], [64 x i8]* @.str.68, i64 0, i64 0))
+  %71 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([54 x i8], [54 x i8]* @.str.69, i64 0, i64 0))
+  %72 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([58 x i8], [58 x i8]* @.str.70, i64 0, i64 0))
+  %73 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([43 x i8], [43 x i8]* @.str.71, i64 0, i64 0))
+  %74 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([64 x i8], [64 x i8]* @.str.72, i64 0, i64 0))
+  %75 = load i8*, i8** @PACKAGE_VERSION, align 8
+  %76 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([12 x i8], [12 x i8]* @.str.73, i64 0, i64 0), i8* %75)
+  %77 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([58 x i8], [58 x i8]* @.str.74, i64 0, i64 0))
+  %78 = load i8*, i8** @PACKAGE_BUGREPORT, align 8
+  %79 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([19 x i8], [19 x i8]* @.str.75, i64 0, i64 0), i8* %78)
+  %80 = call i32 @exit(i32 1) #3
+  unreachable
+}
+
+declare dso_local i32 @printf(i8*, ...) #1
+
+; Function Attrs: noreturn
+declare dso_local i32 @exit(i32) #2
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #2 = { noreturn "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #3 = { noreturn }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  GhbValue ;
 
-/* Variables and functions */
- int /*<<< orphan*/  g_free (char*) ; 
- char* ghb_dict_get_string_xform (int /*<<< orphan*/  const*,char const*) ; 
- int ghb_lookup_audio_samplerate_rate (char*) ; 
+
+
+
+typedef int GhbValue ;
+
+
+ int g_free (char*) ;
+ char* ghb_dict_get_string_xform (int const*,char const*) ;
+ int ghb_lookup_audio_samplerate_rate (char*) ;
 
 int
 ghb_settings_audio_samplerate_rate(const GhbValue *settings, const char *name)

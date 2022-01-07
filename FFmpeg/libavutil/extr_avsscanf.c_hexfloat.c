@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  FFFILE ;
 
-/* Variables and functions */
- int DBL_MANT_DIG ; 
- int DBL_MAX ; 
- int DBL_MIN ; 
- int /*<<< orphan*/  ERANGE ; 
- long long LLONG_MIN ; 
- double copysign (double,int) ; 
- int /*<<< orphan*/  errno ; 
- double scalbn (double,long long) ; 
- long long scanexp (int /*<<< orphan*/ *,int) ; 
- int shgetc (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  shlim (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  shunget (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int uint32_t ;
+typedef int FFFILE ;
+
+
+ int DBL_MANT_DIG ;
+ int DBL_MAX ;
+ int DBL_MIN ;
+ int ERANGE ;
+ long long LLONG_MIN ;
+ double copysign (double,int) ;
+ int errno ;
+ double scalbn (double,long long) ;
+ long long scanexp (int *,int) ;
+ int shgetc (int *) ;
+ int shlim (int *,int ) ;
+ int shunget (int *) ;
 
 __attribute__((used)) static double hexfloat(FFFILE *f, int bits, int emin, int sign, int pok)
 {
@@ -42,14 +42,14 @@ __attribute__((used)) static double hexfloat(FFFILE *f, int bits, int emin, int 
 
     c = shgetc(f);
 
-    /* Skip leading zeros */
+
     for (; c=='0'; c = shgetc(f))
         gotdig = 1;
 
     if (c=='.') {
         gotrad = 1;
         c = shgetc(f);
-        /* Count zeros after the radix point before significand */
+
         for (rp=0; c=='0'; c = shgetc(f), rp--) gotdig = 1;
     }
 

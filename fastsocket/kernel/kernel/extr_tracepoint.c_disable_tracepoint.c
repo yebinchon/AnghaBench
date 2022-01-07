@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct tracepoint {int /*<<< orphan*/  funcs; scalar_t__ state; int /*<<< orphan*/  (* unregfunc ) () ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  rcu_assign_pointer (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub1 () ; 
+
+
+
+struct tracepoint {int funcs; scalar_t__ state; int (* unregfunc ) () ;} ;
+
+
+ int rcu_assign_pointer (int ,int *) ;
+ int stub1 () ;
 
 __attribute__((used)) static void disable_tracepoint(struct tracepoint *elem)
 {
-	if (elem->unregfunc && elem->state)
-		elem->unregfunc();
+ if (elem->unregfunc && elem->state)
+  elem->unregfunc();
 
-	elem->state = 0;
-	rcu_assign_pointer(elem->funcs, NULL);
+ elem->state = 0;
+ rcu_assign_pointer(elem->funcs, ((void*)0));
 }

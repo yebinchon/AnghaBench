@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Table ;
-struct TYPE_6__ {int /*<<< orphan*/  end_of_table; } ;
-typedef  int /*<<< orphan*/  Statement ;
-typedef  int /*<<< orphan*/  Row ;
-typedef  int /*<<< orphan*/  ExecuteResult ;
-typedef  TYPE_1__ Cursor ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EXECUTE_SUCCESS ; 
- int /*<<< orphan*/  cursor_advance (TYPE_1__*) ; 
- int /*<<< orphan*/  cursor_value (TYPE_1__*) ; 
- int /*<<< orphan*/  deserialize_row (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (TYPE_1__*) ; 
- int /*<<< orphan*/  print_row (int /*<<< orphan*/ *) ; 
- TYPE_1__* table_start (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int Table ;
+struct TYPE_6__ {int end_of_table; } ;
+typedef int Statement ;
+typedef int Row ;
+typedef int ExecuteResult ;
+typedef TYPE_1__ Cursor ;
+
+
+ int EXECUTE_SUCCESS ;
+ int cursor_advance (TYPE_1__*) ;
+ int cursor_value (TYPE_1__*) ;
+ int deserialize_row (int ,int *) ;
+ int free (TYPE_1__*) ;
+ int print_row (int *) ;
+ TYPE_1__* table_start (int *) ;
 
 ExecuteResult execute_select(Statement* statement, Table* table) {
   Cursor* cursor = table_start(table);

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct osdpart {int change_id; int /*<<< orphan*/  texture; } ;
-struct TYPE_6__ {int d3d_in_scene; int /*<<< orphan*/ * d3d_backbuf; struct osdpart** osd; } ;
-typedef  TYPE_1__ d3d_priv ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IDirect3DSurface9_Release (int /*<<< orphan*/ *) ; 
- int MAX_OSD_PARTS ; 
- int /*<<< orphan*/  MP_VERBOSE (TYPE_1__*,char*) ; 
- int /*<<< orphan*/  d3d_destroy_video_objects (TYPE_1__*) ; 
- int /*<<< orphan*/  d3dtex_release (TYPE_1__*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct osdpart {int change_id; int texture; } ;
+struct TYPE_6__ {int d3d_in_scene; int * d3d_backbuf; struct osdpart** osd; } ;
+typedef TYPE_1__ d3d_priv ;
+
+
+ int IDirect3DSurface9_Release (int *) ;
+ int MAX_OSD_PARTS ;
+ int MP_VERBOSE (TYPE_1__*,char*) ;
+ int d3d_destroy_video_objects (TYPE_1__*) ;
+ int d3dtex_release (TYPE_1__*,int *) ;
 
 __attribute__((used)) static void destroy_d3d_surfaces(d3d_priv *priv)
 {
@@ -36,7 +36,7 @@ __attribute__((used)) static void destroy_d3d_surfaces(d3d_priv *priv)
 
     if (priv->d3d_backbuf)
         IDirect3DSurface9_Release(priv->d3d_backbuf);
-    priv->d3d_backbuf = NULL;
+    priv->d3d_backbuf = ((void*)0);
 
-    priv->d3d_in_scene = false;
+    priv->d3d_in_scene = 0;
 }

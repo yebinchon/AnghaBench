@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  cl_perf_timer ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int cl_perf_timer ;
+
+
+ int memset (int *,int ,int) ;
 
 void cl_perf_timer__init(cl_perf_timer *t)
 {
-	memset(t, 0, sizeof(cl_perf_timer));
+ memset(t, 0, sizeof(cl_perf_timer));
 }

@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_fs_x__revision_file_t ;
-struct TYPE_5__ {int size; scalar_t__ type; int /*<<< orphan*/  fnv1_checksum; int /*<<< orphan*/  offset; } ;
-typedef  TYPE_1__ svn_fs_x__p2l_entry_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int svn_fs_x__revision_file_t ;
+struct TYPE_5__ {int size; scalar_t__ type; int fnv1_checksum; int offset; } ;
+typedef TYPE_1__ svn_fs_x__p2l_entry_t ;
+typedef int svn_error_t ;
 struct TYPE_6__ {scalar_t__ digest; } ;
-typedef  TYPE_2__ svn_checksum_t ;
-typedef  int /*<<< orphan*/  svn_checksum_ctx_t ;
-typedef  int /*<<< orphan*/  buffer ;
-typedef  int /*<<< orphan*/  apr_uint32_t ;
-typedef  int apr_size_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int apr_off_t ;
+typedef TYPE_2__ svn_checksum_t ;
+typedef int svn_checksum_ctx_t ;
+typedef int buffer ;
+typedef int apr_uint32_t ;
+typedef int apr_size_t ;
+typedef int apr_pool_t ;
+typedef int apr_off_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- scalar_t__ SVN_FS_X__ITEM_TYPE_UNUSED ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  ntohl (int /*<<< orphan*/  const) ; 
- int /*<<< orphan*/ * svn_checksum_ctx_create (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_checksum_final (TYPE_2__**,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_checksum_fnv1a_32x4 ; 
- int /*<<< orphan*/  svn_checksum_update (int /*<<< orphan*/ *,unsigned char*,int) ; 
- int /*<<< orphan*/  svn_fs_x__rev_file_read (int /*<<< orphan*/ *,unsigned char*,int) ; 
- int /*<<< orphan*/  svn_fs_x__rev_file_seek (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int SVN_ERR (int ) ;
+ scalar_t__ SVN_FS_X__ITEM_TYPE_UNUSED ;
+ int * SVN_NO_ERROR ;
+ int ntohl (int const) ;
+ int * svn_checksum_ctx_create (int ,int *) ;
+ int svn_checksum_final (TYPE_2__**,int *,int *) ;
+ int svn_checksum_fnv1a_32x4 ;
+ int svn_checksum_update (int *,unsigned char*,int) ;
+ int svn_fs_x__rev_file_read (int *,unsigned char*,int) ;
+ int svn_fs_x__rev_file_seek (int *,int *,int ) ;
 
 __attribute__((used)) static svn_error_t *
 calc_fnv1(svn_fs_x__p2l_entry_t *entry,
@@ -48,17 +48,17 @@ calc_fnv1(svn_fs_x__p2l_entry_t *entry,
     = svn_checksum_ctx_create(svn_checksum_fnv1a_32x4, scratch_pool);
   apr_off_t size = entry->size;
 
-  /* Special rules apply to unused sections / items.  The data must be a
-   * sequence of NUL bytes (not checked here) and the checksum is fixed to 0.
-   */
+
+
+
   if (entry->type == SVN_FS_X__ITEM_TYPE_UNUSED)
     {
       entry->fnv1_checksum = 0;
       return SVN_NO_ERROR;
     }
 
-  /* Read the block and feed it to the checksum calculator. */
-  SVN_ERR(svn_fs_x__rev_file_seek(rev_file, NULL, entry->offset));
+
+  SVN_ERR(svn_fs_x__rev_file_seek(rev_file, ((void*)0), entry->offset));
   while (size > 0)
     {
       apr_size_t to_read = size > sizeof(buffer)
@@ -69,7 +69,7 @@ calc_fnv1(svn_fs_x__p2l_entry_t *entry,
       size -= to_read;
     }
 
-  /* Store final checksum in ENTRY. */
+
   SVN_ERR(svn_checksum_final(&checksum, context, scratch_pool));
   entry->fnv1_checksum = ntohl(*(const apr_uint32_t *)checksum->digest);
 

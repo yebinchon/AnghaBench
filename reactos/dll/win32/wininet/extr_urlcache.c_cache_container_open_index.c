@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  urlcache_header ;
-struct TYPE_4__ {scalar_t__ mapping; int /*<<< orphan*/  mutex; int /*<<< orphan*/  path; scalar_t__ file_size; } ;
-typedef  TYPE_1__ cache_container ;
-typedef  char WCHAR ;
-typedef  scalar_t__ HANDLE ;
-typedef  scalar_t__ DWORD ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CloseHandle (scalar_t__) ; 
- scalar_t__ CreateDirectoryW (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ CreateFileW (char*,int,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ERR (char*,scalar_t__) ; 
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  FILE_MAP_WRITE ; 
- int FILE_SHARE_READ ; 
- int FILE_SHARE_WRITE ; 
- scalar_t__ FILE_SIZE (scalar_t__) ; 
- int /*<<< orphan*/  FreeUrlCacheSpaceW (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int GENERIC_READ ; 
- int GENERIC_WRITE ; 
- scalar_t__ GetFileSize (scalar_t__,int /*<<< orphan*/ *) ; 
- scalar_t__ GetLastError () ; 
- int /*<<< orphan*/  INFINITE ; 
- scalar_t__ INVALID_FILE_SIZE ; 
- scalar_t__ INVALID_HANDLE_VALUE ; 
- scalar_t__ MAX_BLOCK_NO ; 
- int MAX_PATH ; 
- scalar_t__ MIN_BLOCK_NO ; 
- int /*<<< orphan*/ * MapViewOfFile (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OPEN_ALWAYS ; 
- int /*<<< orphan*/  ReleaseMutex (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  UnmapViewOfFile (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  WARN (char*) ; 
- int /*<<< orphan*/  WaitForSingleObject (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cache_container_is_valid (int /*<<< orphan*/ *,scalar_t__) ; 
- scalar_t__ cache_container_map_index (scalar_t__,int /*<<< orphan*/ ,scalar_t__,scalar_t__*) ; 
- scalar_t__ cache_container_set_size (TYPE_1__*,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  debugstr_w (char*) ; 
- int /*<<< orphan*/  strcatW (char*,char const*) ; 
- int /*<<< orphan*/  strcpyW (char*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int urlcache_header ;
+struct TYPE_4__ {scalar_t__ mapping; int mutex; int path; scalar_t__ file_size; } ;
+typedef TYPE_1__ cache_container ;
+typedef char WCHAR ;
+typedef scalar_t__ HANDLE ;
+typedef scalar_t__ DWORD ;
+typedef scalar_t__ BOOL ;
+
+
+ int CloseHandle (scalar_t__) ;
+ scalar_t__ CreateDirectoryW (int ,int ) ;
+ scalar_t__ CreateFileW (char*,int,int,int *,int ,int ,int *) ;
+ int ERR (char*,scalar_t__) ;
+ scalar_t__ ERROR_SUCCESS ;
+ int FILE_MAP_WRITE ;
+ int FILE_SHARE_READ ;
+ int FILE_SHARE_WRITE ;
+ scalar_t__ FILE_SIZE (scalar_t__) ;
+ int FreeUrlCacheSpaceW (int ,int,int ) ;
+ int GENERIC_READ ;
+ int GENERIC_WRITE ;
+ scalar_t__ GetFileSize (scalar_t__,int *) ;
+ scalar_t__ GetLastError () ;
+ int INFINITE ;
+ scalar_t__ INVALID_FILE_SIZE ;
+ scalar_t__ INVALID_HANDLE_VALUE ;
+ scalar_t__ MAX_BLOCK_NO ;
+ int MAX_PATH ;
+ scalar_t__ MIN_BLOCK_NO ;
+ int * MapViewOfFile (scalar_t__,int ,int ,int ,int ) ;
+ int OPEN_ALWAYS ;
+ int ReleaseMutex (int ) ;
+ int TRACE (char*,int ) ;
+ int UnmapViewOfFile (int *) ;
+ int WARN (char*) ;
+ int WaitForSingleObject (int ,int ) ;
+ int cache_container_is_valid (int *,scalar_t__) ;
+ scalar_t__ cache_container_map_index (scalar_t__,int ,scalar_t__,scalar_t__*) ;
+ scalar_t__ cache_container_set_size (TYPE_1__*,scalar_t__,scalar_t__) ;
+ int debugstr_w (char*) ;
+ int strcatW (char*,char const*) ;
+ int strcpyW (char*,int ) ;
 
 __attribute__((used)) static DWORD cache_container_open_index(cache_container *container, DWORD blocks_no)
 {
@@ -73,11 +73,11 @@ __attribute__((used)) static DWORD cache_container_open_index(cache_container *c
     strcpyW(index_path, container->path);
     strcatW(index_path, index_dat);
 
-    file = CreateFileW(index_path, GENERIC_READ|GENERIC_WRITE, FILE_SHARE_READ|FILE_SHARE_WRITE, NULL, OPEN_ALWAYS, 0, NULL);
+    file = CreateFileW(index_path, GENERIC_READ|GENERIC_WRITE, FILE_SHARE_READ|FILE_SHARE_WRITE, ((void*)0), OPEN_ALWAYS, 0, ((void*)0));
     if(file == INVALID_HANDLE_VALUE) {
-	/* Maybe the directory wasn't there? Try to create it */
-	if(CreateDirectoryW(container->path, 0))
-            file = CreateFileW(index_path, GENERIC_READ|GENERIC_WRITE, FILE_SHARE_READ|FILE_SHARE_WRITE, NULL, OPEN_ALWAYS, 0, NULL);
+
+ if(CreateDirectoryW(container->path, 0))
+            file = CreateFileW(index_path, GENERIC_READ|GENERIC_WRITE, FILE_SHARE_READ|FILE_SHARE_WRITE, ((void*)0), OPEN_ALWAYS, 0, ((void*)0));
     }
     if(file == INVALID_HANDLE_VALUE) {
         TRACE("Could not open or create cache index file \"%s\"\n", debugstr_w(index_path));
@@ -85,10 +85,10 @@ __attribute__((used)) static DWORD cache_container_open_index(cache_container *c
         return GetLastError();
     }
 
-    file_size = GetFileSize(file, NULL);
+    file_size = GetFileSize(file, ((void*)0));
     if(file_size == INVALID_FILE_SIZE) {
         CloseHandle(file);
-	ReleaseMutex(container->mutex);
+ ReleaseMutex(container->mutex);
         return GetLastError();
     }
 
@@ -118,7 +118,7 @@ __attribute__((used)) static DWORD cache_container_open_index(cache_container *c
             UnmapViewOfFile(header);
         }else {
             CloseHandle(container->mapping);
-            container->mapping = NULL;
+            container->mapping = ((void*)0);
         }
     }
 

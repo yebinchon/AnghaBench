@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct pt_regs {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/  (* machine_crash_shutdown ) (struct pt_regs*) ;} ;
+struct TYPE_2__ {int (* machine_crash_shutdown ) (struct pt_regs*) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  default_machine_crash_shutdown (struct pt_regs*) ; 
- TYPE_1__ ppc_md ; 
- int /*<<< orphan*/  stub1 (struct pt_regs*) ; 
+
+ int default_machine_crash_shutdown (struct pt_regs*) ;
+ TYPE_1__ ppc_md ;
+ int stub1 (struct pt_regs*) ;
 
 void machine_crash_shutdown(struct pt_regs *regs)
 {
-	if (ppc_md.machine_crash_shutdown)
-		ppc_md.machine_crash_shutdown(regs);
-	else
-		default_machine_crash_shutdown(regs);
+ if (ppc_md.machine_crash_shutdown)
+  ppc_md.machine_crash_shutdown(regs);
+ else
+  default_machine_crash_shutdown(regs);
 }

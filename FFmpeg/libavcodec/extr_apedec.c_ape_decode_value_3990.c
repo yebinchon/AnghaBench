@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int ksum; } ;
-typedef  TYPE_1__ APERice ;
-typedef  int /*<<< orphan*/  APEContext ;
+typedef TYPE_1__ APERice ;
+typedef int APEContext ;
 
-/* Variables and functions */
- int MODEL_ELEMENTS ; 
- int /*<<< orphan*/  counts_3980 ; 
- int /*<<< orphan*/  counts_diff_3980 ; 
- unsigned int range_decode_bits (int /*<<< orphan*/ *,int) ; 
- int range_decode_culfreq (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  range_decode_update (int /*<<< orphan*/ *,int,int) ; 
- unsigned int range_get_symbol (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  update_rice (TYPE_1__*,unsigned int) ; 
+
+ int MODEL_ELEMENTS ;
+ int counts_3980 ;
+ int counts_diff_3980 ;
+ unsigned int range_decode_bits (int *,int) ;
+ int range_decode_culfreq (int *,int) ;
+ int range_decode_update (int *,int,int) ;
+ unsigned int range_get_symbol (int *,int ,int ) ;
+ int update_rice (TYPE_1__*,unsigned int) ;
 
 __attribute__((used)) static inline int ape_decode_value_3990(APEContext *ctx, APERice *rice)
 {
@@ -37,7 +37,7 @@ __attribute__((used)) static inline int ape_decode_value_3990(APEContext *ctx, A
     overflow = range_get_symbol(ctx, counts_3980, counts_diff_3980);
 
     if (overflow == (MODEL_ELEMENTS - 1)) {
-        overflow  = (unsigned)range_decode_bits(ctx, 16) << 16;
+        overflow = (unsigned)range_decode_bits(ctx, 16) << 16;
         overflow |= range_decode_bits(ctx, 16);
     }
 
@@ -64,6 +64,6 @@ __attribute__((used)) static inline int ape_decode_value_3990(APEContext *ctx, A
 
     update_rice(rice, x);
 
-    /* Convert to signed */
+
     return ((x >> 1) ^ ((x & 1) - 1)) + 1;
 }

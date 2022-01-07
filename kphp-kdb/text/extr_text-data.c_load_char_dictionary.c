@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct char_dictionary {int dict_size; int* code_len; int max_bits; unsigned long long* first_codes; int** code_ptr; int* chars; int used_codes; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- struct char_dictionary* load_index_part (struct char_dictionary*,long long,int,int /*<<< orphan*/ ) ; 
+
+ int assert (int) ;
+ struct char_dictionary* load_index_part (struct char_dictionary*,long long,int,int ) ;
 
 struct char_dictionary *load_char_dictionary (struct char_dictionary *D, long long offset) {
   int i, j, k;
@@ -46,5 +46,5 @@ struct char_dictionary *load_char_dictionary (struct char_dictionary *D, long lo
   }
   D->used_codes = k;
   assert ((x == (1LL << 32) && k <= 256) || (!x && !k));
-  return D;        
+  return D;
 }

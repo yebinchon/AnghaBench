@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct vo_internal {int prev_vsync; int base_vsync; int drop_point; int* vsync_samples; int vsync_interval; int num_vsync_samples; int delayed_count; } ;
 struct vo {struct vo_internal* in; } ;
-typedef  int int64_t ;
+typedef int int64_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MP_STATS (struct vo*,char*) ; 
- int llabs (int) ; 
+
+ int MP_STATS (struct vo*,char*) ;
+ int llabs (int) ;
 
 __attribute__((used)) static void vsync_skip_detection(struct vo *vo)
 {
@@ -35,14 +35,14 @@ __attribute__((used)) static void vsync_skip_detection(struct vo *vo)
     if (in->drop_point > window * 2 &&
         llabs(desync - desync_early) >= in->vsync_interval * 3 / 4)
     {
-        // Assume a drop. An underflow can technically speaking not be a drop
-        // (it's up to the driver what this is supposed to mean), but no reason
-        // to treat it differently.
+
+
+
         in->base_vsync = in->prev_vsync;
         in->delayed_count += 1;
         in->drop_point = 0;
         MP_STATS(vo, "vo-delayed");
     }
     if (in->drop_point > 10)
-        in->base_vsync += desync / 10;  // smooth out drift
+        in->base_vsync += desync / 10;
 }

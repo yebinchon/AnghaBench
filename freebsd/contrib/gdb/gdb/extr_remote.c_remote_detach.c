@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct remote_state {int /*<<< orphan*/  remote_packet_size; } ;
 
-/* Variables and functions */
- char* alloca (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  error (char*) ; 
- struct remote_state* get_remote_state () ; 
- int /*<<< orphan*/  puts_filtered (char*) ; 
- int /*<<< orphan*/  remote_desc ; 
- int /*<<< orphan*/  remote_send (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  serial_async (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
- scalar_t__ target_is_async_p () ; 
- int /*<<< orphan*/  target_mourn_inferior () ; 
+
+
+
+struct remote_state {int remote_packet_size; } ;
+
+
+ char* alloca (int ) ;
+ int error (char*) ;
+ struct remote_state* get_remote_state () ;
+ int puts_filtered (char*) ;
+ int remote_desc ;
+ int remote_send (char*,int ) ;
+ int serial_async (int ,int *,int ) ;
+ int strcpy (char*,char*) ;
+ scalar_t__ target_is_async_p () ;
+ int target_mourn_inferior () ;
 
 __attribute__((used)) static void
 remote_detach (char *args, int from_tty)
@@ -33,13 +33,13 @@ remote_detach (char *args, int from_tty)
   if (args)
     error ("Argument given to \"detach\" when remotely debugging.");
 
-  /* Tell the remote target to detach.  */
+
   strcpy (buf, "D");
   remote_send (buf, (rs->remote_packet_size));
 
-  /* Unregister the file descriptor from the event loop. */
+
   if (target_is_async_p ())
-    serial_async (remote_desc, NULL, 0);
+    serial_async (remote_desc, ((void*)0), 0);
 
   target_mourn_inferior ();
   if (from_tty)

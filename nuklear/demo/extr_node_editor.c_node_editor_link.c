@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct node_link {int input_id; int input_slot; int output_id; int output_slot; } ;
 struct node_editor {scalar_t__ link_count; struct node_link* links; } ;
-typedef  scalar_t__ nk_size ;
+typedef scalar_t__ nk_size ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NK_ASSERT (int) ; 
- scalar_t__ NK_LEN (struct node_link*) ; 
+
+ int NK_ASSERT (int) ;
+ scalar_t__ NK_LEN (struct node_link*) ;
 
 __attribute__((used)) static void
 node_editor_link(struct node_editor *editor, int in_id, int in_slot,

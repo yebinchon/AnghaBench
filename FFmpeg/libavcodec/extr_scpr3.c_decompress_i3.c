@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
+
+
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
 struct TYPE_13__ {int width; int height; TYPE_3__* priv_data; } ;
-struct TYPE_12__ {TYPE_2__* run_model3; TYPE_1__* op_model3; int /*<<< orphan*/  rc; int /*<<< orphan*/  gb; } ;
-struct TYPE_11__ {int /*<<< orphan*/  dectab; int /*<<< orphan*/  cnts; int /*<<< orphan*/ * freqs; int /*<<< orphan*/  cntsum; } ;
-struct TYPE_10__ {int /*<<< orphan*/  dectab; int /*<<< orphan*/  cnts; int /*<<< orphan*/ * freqs; int /*<<< orphan*/  cntsum; } ;
-typedef  TYPE_3__ SCPRContext ;
-typedef  int /*<<< orphan*/  RangeCoder ;
-typedef  int /*<<< orphan*/  GetByteContext ;
-typedef  TYPE_4__ AVCodecContext ;
+struct TYPE_12__ {TYPE_2__* run_model3; TYPE_1__* op_model3; int rc; int gb; } ;
+struct TYPE_11__ {int dectab; int cnts; int * freqs; int cntsum; } ;
+struct TYPE_10__ {int dectab; int cnts; int * freqs; int cntsum; } ;
+typedef TYPE_3__ SCPRContext ;
+typedef int RangeCoder ;
+typedef int GetByteContext ;
+typedef TYPE_4__ AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  bytestream2_skip (int /*<<< orphan*/ *,int) ; 
- int decode_run_i (TYPE_4__*,int,int,int*,int*,int,int*,int,int*,int*,int,int,int*,int*) ; 
- int decode_units3 (TYPE_3__*,int*,int*,int*,int*,int*) ; 
- int decode_value3 (TYPE_3__*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  init_rangecoder3 (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  reinit_tables3 (TYPE_3__*) ; 
+
+ int AVERROR_INVALIDDATA ;
+ int bytestream2_skip (int *,int) ;
+ int decode_run_i (TYPE_4__*,int,int,int*,int*,int,int*,int,int*,int*,int,int,int*,int*) ;
+ int decode_units3 (TYPE_3__*,int*,int*,int*,int*,int*) ;
+ int decode_value3 (TYPE_3__*,int,int *,int ,int ,int ,int ,int*) ;
+ int init_rangecoder3 (int *,int *) ;
+ int reinit_tables3 (TYPE_3__*) ;
 
 __attribute__((used)) static int decompress_i3(AVCodecContext *avctx, uint32_t *dst, int linesize)
 {

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct ieee80211_device {int dummy; } ;
-struct TYPE_3__ {int bValid; int /*<<< orphan*/  Timer; } ;
-typedef  TYPE_1__* PBA_RECORD ;
+struct TYPE_3__ {int bValid; int Timer; } ;
+typedef TYPE_1__* PBA_RECORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  del_timer_sync (int /*<<< orphan*/ *) ; 
+
+ int del_timer_sync (int *) ;
 
 void DeActivateBAEntry( struct ieee80211_device* ieee, PBA_RECORD pBA)
 {
-	pBA->bValid = false;
-	del_timer_sync(&pBA->Timer);
+ pBA->bValid = 0;
+ del_timer_sync(&pBA->Timer);
 }

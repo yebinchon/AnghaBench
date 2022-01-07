@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  BN_CTX ;
-typedef  int /*<<< orphan*/  const BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BN_CTX_end (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  const* BN_CTX_get (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_CTX_start (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_F_BN_GF2M_MOD_SOLVE_QUAD_ARR ; 
- int /*<<< orphan*/  BN_GF2m_add (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*) ; 
- scalar_t__ BN_GF2m_cmp (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  BN_GF2m_mod_arr (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int const*) ; 
- int /*<<< orphan*/  BN_GF2m_mod_mul_arr (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_GF2m_mod_sqr_arr (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_RAND_BOTTOM_ANY ; 
- int /*<<< orphan*/  BN_RAND_TOP_ONE ; 
- int /*<<< orphan*/  BN_R_NO_SOLUTION ; 
- int /*<<< orphan*/  BN_R_TOO_MANY_ITERATIONS ; 
- int /*<<< orphan*/  BN_copy (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*) ; 
- scalar_t__ BN_is_zero (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  BN_priv_rand_ex (int /*<<< orphan*/  const*,int const,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_zero (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  BNerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int MAX_ITERATIONS ; 
- int /*<<< orphan*/  bn_check_top (int /*<<< orphan*/  const*) ; 
+
+
+
+typedef int BN_CTX ;
+typedef int const BIGNUM ;
+
+
+ int BN_CTX_end (int *) ;
+ int const* BN_CTX_get (int *) ;
+ int BN_CTX_start (int *) ;
+ int BN_F_BN_GF2M_MOD_SOLVE_QUAD_ARR ;
+ int BN_GF2m_add (int const*,int const*,int const*) ;
+ scalar_t__ BN_GF2m_cmp (int const*,int const*) ;
+ int BN_GF2m_mod_arr (int const*,int const*,int const*) ;
+ int BN_GF2m_mod_mul_arr (int const*,int const*,int const*,int const*,int *) ;
+ int BN_GF2m_mod_sqr_arr (int const*,int const*,int const*,int *) ;
+ int BN_RAND_BOTTOM_ANY ;
+ int BN_RAND_TOP_ONE ;
+ int BN_R_NO_SOLUTION ;
+ int BN_R_TOO_MANY_ITERATIONS ;
+ int BN_copy (int const*,int const*) ;
+ scalar_t__ BN_is_zero (int const*) ;
+ int BN_priv_rand_ex (int const*,int const,int ,int ,int *) ;
+ int BN_zero (int const*) ;
+ int BNerr (int ,int ) ;
+ int MAX_ITERATIONS ;
+ int bn_check_top (int const*) ;
 
 int BN_GF2m_mod_solve_quad_arr(BIGNUM *r, const BIGNUM *a_, const int p[],
                                BN_CTX *ctx)
@@ -44,7 +44,7 @@ int BN_GF2m_mod_solve_quad_arr(BIGNUM *r, const BIGNUM *a_, const int p[],
     bn_check_top(a_);
 
     if (p[0] == 0) {
-        /* reduction mod 1 => return 0 */
+
         BN_zero(r);
         return 1;
     }
@@ -53,7 +53,7 @@ int BN_GF2m_mod_solve_quad_arr(BIGNUM *r, const BIGNUM *a_, const int p[],
     a = BN_CTX_get(ctx);
     z = BN_CTX_get(ctx);
     w = BN_CTX_get(ctx);
-    if (w == NULL)
+    if (w == ((void*)0))
         goto err;
 
     if (!BN_GF2m_mod_arr(a, a_, p))
@@ -65,8 +65,8 @@ int BN_GF2m_mod_solve_quad_arr(BIGNUM *r, const BIGNUM *a_, const int p[],
         goto err;
     }
 
-    if (p[0] & 0x1) {           /* m is odd */
-        /* compute half-trace of a */
+    if (p[0] & 0x1) {
+
         if (!BN_copy(z, a))
             goto err;
         for (j = 1; j <= (p[0] - 1) / 2; j++) {
@@ -78,12 +78,12 @@ int BN_GF2m_mod_solve_quad_arr(BIGNUM *r, const BIGNUM *a_, const int p[],
                 goto err;
         }
 
-    } else {                    /* m is even */
+    } else {
 
         rho = BN_CTX_get(ctx);
         w2 = BN_CTX_get(ctx);
         tmp = BN_CTX_get(ctx);
-        if (tmp == NULL)
+        if (tmp == ((void*)0))
             goto err;
         do {
             if (!BN_priv_rand_ex(rho, p[0], BN_RAND_TOP_ONE, BN_RAND_BOTTOM_ANY,

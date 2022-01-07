@@ -1,40 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  db ; 
- int /*<<< orphan*/  db_enabled ; 
- int /*<<< orphan*/  db_worker_stop () ; 
- int /*<<< orphan*/  delete_sign_stmt ; 
- int /*<<< orphan*/  delete_signs_stmt ; 
- int /*<<< orphan*/  get_key_stmt ; 
- int /*<<< orphan*/  insert_block_stmt ; 
- int /*<<< orphan*/  insert_light_stmt ; 
- int /*<<< orphan*/  insert_sign_stmt ; 
- int /*<<< orphan*/  load_blocks_stmt ; 
- int /*<<< orphan*/  load_lights_stmt ; 
- int /*<<< orphan*/  load_signs_stmt ; 
- int /*<<< orphan*/  set_key_stmt ; 
- int /*<<< orphan*/  sqlite3_close (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_exec (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_finalize (int /*<<< orphan*/ ) ; 
+ int db ;
+ int db_enabled ;
+ int db_worker_stop () ;
+ int delete_sign_stmt ;
+ int delete_signs_stmt ;
+ int get_key_stmt ;
+ int insert_block_stmt ;
+ int insert_light_stmt ;
+ int insert_sign_stmt ;
+ int load_blocks_stmt ;
+ int load_lights_stmt ;
+ int load_signs_stmt ;
+ int set_key_stmt ;
+ int sqlite3_close (int ) ;
+ int sqlite3_exec (int ,char*,int *,int *,int *) ;
+ int sqlite3_finalize (int ) ;
 
 void db_close() {
     if (!db_enabled) {
         return;
     }
     db_worker_stop();
-    sqlite3_exec(db, "commit;", NULL, NULL, NULL);
+    sqlite3_exec(db, "commit;", ((void*)0), ((void*)0), ((void*)0));
     sqlite3_finalize(insert_block_stmt);
     sqlite3_finalize(insert_light_stmt);
     sqlite3_finalize(insert_sign_stmt);

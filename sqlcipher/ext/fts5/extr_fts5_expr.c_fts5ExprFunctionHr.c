@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_value ;
-typedef  int /*<<< orphan*/  sqlite3_context ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fts5ExprFunction (int /*<<< orphan*/ *,int,int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int sqlite3_value ;
+typedef int sqlite3_context ;
+
+
+ int fts5ExprFunction (int *,int,int **,int ) ;
 
 __attribute__((used)) static void fts5ExprFunctionHr(
-  sqlite3_context *pCtx,          /* Function call context */
-  int nArg,                       /* Number of args */
-  sqlite3_value **apVal           /* Function arguments */
+  sqlite3_context *pCtx,
+  int nArg,
+  sqlite3_value **apVal
 ){
   fts5ExprFunction(pCtx, nArg, apVal, 0);
 }

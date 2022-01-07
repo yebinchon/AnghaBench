@@ -1,41 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  CreateCurves () ; 
- int /*<<< orphan*/  DbgThread () ; 
- int /*<<< orphan*/  INTENT_ABSOLUTE_COLORIMETRIC ; 
- int /*<<< orphan*/  INTENT_PERCEPTUAL ; 
- int /*<<< orphan*/  INTENT_RELATIVE_COLORIMETRIC ; 
- int /*<<< orphan*/  SpeedTest16bits (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SpeedTest16bitsCMYK (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SpeedTest16bitsGray (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SpeedTest32bits (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SpeedTest32bitsCMYK (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SpeedTest32bitsGray (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SpeedTest8bits (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SpeedTest8bitsCMYK (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SpeedTest8bitsGray (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cmsOpenProfileFromFile (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  fflush (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printf (char*) ; 
- int /*<<< orphan*/  stdout ; 
+ int CreateCurves () ;
+ int DbgThread () ;
+ int INTENT_ABSOLUTE_COLORIMETRIC ;
+ int INTENT_PERCEPTUAL ;
+ int INTENT_RELATIVE_COLORIMETRIC ;
+ int SpeedTest16bits (char*,int ,int ,int ) ;
+ int SpeedTest16bitsCMYK (char*,int ,int ) ;
+ int SpeedTest16bitsGray (char*,int ,int ,int ) ;
+ int SpeedTest32bits (char*,int ,int ,int ) ;
+ int SpeedTest32bitsCMYK (char*,int ,int ) ;
+ int SpeedTest32bitsGray (char*,int ,int ,int ) ;
+ int SpeedTest8bits (char*,int ,int ,int ) ;
+ int SpeedTest8bitsCMYK (char*,int ,int ) ;
+ int SpeedTest8bitsGray (char*,int ,int ,int ) ;
+ int cmsOpenProfileFromFile (int ,char*,char*) ;
+ int fflush (int ) ;
+ int printf (char*) ;
+ int stdout ;
 
 __attribute__((used)) static
 void SpeedTest(void)
 {
     printf("\n\nP E R F O R M A N C E   T E S T S\n");
-    printf(    "=================================\n\n");
+    printf( "=================================\n\n");
     fflush(stdout);
 
     SpeedTest8bits("8 bits on CLUT profiles",
@@ -53,7 +45,7 @@ void SpeedTest(void)
 
     printf("\n");
 
-    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 
     SpeedTest8bits("8 bits on Matrix-Shaper profiles",
         cmsOpenProfileFromFile(DbgThread(), "test5.icc", "r"),
@@ -72,7 +64,7 @@ void SpeedTest(void)
 
     printf("\n");
 
-    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 
     SpeedTest8bits("8 bits on SAME Matrix-Shaper profiles",
         cmsOpenProfileFromFile(DbgThread(), "test5.icc", "r"),
@@ -91,7 +83,7 @@ void SpeedTest(void)
 
     printf("\n");
 
-    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 
     SpeedTest8bits("8 bits on Matrix-Shaper profiles (AbsCol)",
        cmsOpenProfileFromFile(DbgThread(), "test5.icc", "r"),
@@ -110,7 +102,7 @@ void SpeedTest(void)
 
     printf("\n");
 
-    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 
     SpeedTest8bits("8 bits on curves",
         CreateCurves(),
@@ -129,7 +121,7 @@ void SpeedTest(void)
 
     printf("\n");
 
-    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 
     SpeedTest8bitsCMYK("8 bits on CMYK profiles",
         cmsOpenProfileFromFile(DbgThread(), "test1.icc", "r"),
@@ -145,7 +137,7 @@ void SpeedTest(void)
 
     printf("\n");
 
-    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 
     SpeedTest8bitsGray("8 bits on gray-to gray",
         cmsOpenProfileFromFile(DbgThread(), "gray3lcms2.icc", "r"),
@@ -161,7 +153,7 @@ void SpeedTest(void)
 
     printf("\n");
 
-    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 
     SpeedTest8bitsGray("8 bits on gray-to-lab gray",
         cmsOpenProfileFromFile(DbgThread(), "graylcms2.icc", "r"),
@@ -177,7 +169,7 @@ void SpeedTest(void)
 
     printf("\n");
 
-    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 
     SpeedTest8bitsGray("8 bits on SAME gray-to-gray",
         cmsOpenProfileFromFile(DbgThread(), "graylcms2.icc", "r"),

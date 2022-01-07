@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sha1_context ;
-typedef  int /*<<< orphan*/  buf ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- scalar_t__ ferror (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- size_t fread (unsigned char*,int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  sha1_finish (int /*<<< orphan*/ *,unsigned char*) ; 
- int /*<<< orphan*/  sha1_starts (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sha1_update (int /*<<< orphan*/ *,unsigned char*,int) ; 
+
+
+
+typedef int sha1_context ;
+typedef int buf ;
+typedef int FILE ;
+
+
+ int fclose (int *) ;
+ scalar_t__ ferror (int *) ;
+ int * fopen (char*,char*) ;
+ size_t fread (unsigned char*,int,int,int *) ;
+ int memset (int *,int ,int) ;
+ int sha1_finish (int *,unsigned char*) ;
+ int sha1_starts (int *) ;
+ int sha1_update (int *,unsigned char*,int) ;
 
 int sha1_file( char *path, unsigned char output[20] )
 {
@@ -31,7 +31,7 @@ int sha1_file( char *path, unsigned char output[20] )
     sha1_context ctx;
     unsigned char buf[1024];
 
-    if( ( f = fopen( path, "rb" ) ) == NULL )
+    if( ( f = fopen( path, "rb" ) ) == ((void*)0) )
         return( 1 );
 
     sha1_starts( &ctx );

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-struct TYPE_3__ {int /*<<< orphan*/  pstrName; } ;
-typedef  TYPE_1__ PROPBAG2 ;
 
-/* Variables and functions */
- scalar_t__ lstrcmpW (int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
+struct TYPE_3__ {int pstrName; } ;
+typedef TYPE_1__ PROPBAG2 ;
+
+
+ scalar_t__ lstrcmpW (int const*,int ) ;
 
 __attribute__((used)) static int find_property_index(const WCHAR* name, PROPBAG2* all_props, int all_prop_cnt)
 {

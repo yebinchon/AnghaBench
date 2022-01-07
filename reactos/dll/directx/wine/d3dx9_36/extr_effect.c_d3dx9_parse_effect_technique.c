@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct d3dx_technique {int annotation_count; int pass_count; char* annotations; char* passes; char* name; } ;
 struct d3dx_object {int dummy; } ;
 struct d3dx9_base_effect {int dummy; } ;
-typedef  scalar_t__ HRESULT ;
-typedef  int DWORD ;
+typedef scalar_t__ HRESULT ;
+typedef int DWORD ;
 
-/* Variables and functions */
- scalar_t__ D3D_OK ; 
- int /*<<< orphan*/  ERR (char*) ; 
- scalar_t__ E_OUTOFMEMORY ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HEAP_ZERO_MEMORY ; 
- void* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  TRACE (char*,int) ; 
- int /*<<< orphan*/  WARN (char*,...) ; 
- scalar_t__ d3dx9_parse_effect_annotation (struct d3dx9_base_effect*,char*,char const*,char const**,struct d3dx_object*) ; 
- scalar_t__ d3dx9_parse_effect_pass (struct d3dx9_base_effect*,char*,char const*,char const**,struct d3dx_object*) ; 
- scalar_t__ d3dx9_parse_name (char**,char const*) ; 
- int /*<<< orphan*/  free_parameter (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free_pass (char*) ; 
- int /*<<< orphan*/  param_set_magic_number (char*) ; 
- int /*<<< orphan*/  read_dword (char const**,int*) ; 
+
+ scalar_t__ D3D_OK ;
+ int ERR (char*) ;
+ scalar_t__ E_OUTOFMEMORY ;
+ int FALSE ;
+ int GetProcessHeap () ;
+ int HEAP_ZERO_MEMORY ;
+ void* HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,char*) ;
+ int TRACE (char*,int) ;
+ int WARN (char*,...) ;
+ scalar_t__ d3dx9_parse_effect_annotation (struct d3dx9_base_effect*,char*,char const*,char const**,struct d3dx_object*) ;
+ scalar_t__ d3dx9_parse_effect_pass (struct d3dx9_base_effect*,char*,char const*,char const**,struct d3dx_object*) ;
+ scalar_t__ d3dx9_parse_name (char**,char const*) ;
+ int free_parameter (char*,int ,int ) ;
+ int free_pass (char*) ;
+ int param_set_magic_number (char*) ;
+ int read_dword (char const**,int*) ;
 
 __attribute__((used)) static HRESULT d3dx9_parse_effect_technique(struct d3dx9_base_effect *base, struct d3dx_technique *technique,
         const char *data, const char **ptr, struct d3dx_object *objects)
@@ -41,7 +41,7 @@ __attribute__((used)) static HRESULT d3dx9_parse_effect_technique(struct d3dx9_b
     DWORD offset;
     HRESULT hr;
     unsigned int i;
-    char *name = NULL;
+    char *name = ((void*)0);
 
     read_dword(ptr, &offset);
     TRACE("Technique name offset: %#x\n", offset);
@@ -114,7 +114,7 @@ err_out:
         for (i = 0; i < technique->pass_count; ++i)
             free_pass(&technique->passes[i]);
         HeapFree(GetProcessHeap(), 0, technique->passes);
-        technique->passes = NULL;
+        technique->passes = ((void*)0);
     }
 
     if (technique->annotations)
@@ -122,7 +122,7 @@ err_out:
         for (i = 0; i < technique->annotation_count; ++i)
             free_parameter(&technique->annotations[i], FALSE, FALSE);
         HeapFree(GetProcessHeap(), 0, technique->annotations);
-        technique->annotations = NULL;
+        technique->annotations = ((void*)0);
     }
 
     HeapFree(GetProcessHeap(), 0, name);

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct audio_monitor {int dummy; } ;
-typedef  int /*<<< orphan*/  obs_source_t ;
+typedef int obs_source_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  UNUSED_PARAMETER (int /*<<< orphan*/ *) ; 
+
+ int UNUSED_PARAMETER (int *) ;
 
 struct audio_monitor *audio_monitor_create(obs_source_t *source)
 {
-	UNUSED_PARAMETER(source);
-	return NULL;
+ UNUSED_PARAMETER(source);
+ return ((void*)0);
 }

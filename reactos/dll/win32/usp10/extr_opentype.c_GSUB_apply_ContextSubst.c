@@ -1,62 +1,62 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_24__   TYPE_9__ ;
-typedef  struct TYPE_23__   TYPE_8__ ;
-typedef  struct TYPE_22__   TYPE_7__ ;
-typedef  struct TYPE_21__   TYPE_6__ ;
-typedef  struct TYPE_20__   TYPE_5__ ;
-typedef  struct TYPE_19__   TYPE_4__ ;
-typedef  struct TYPE_18__   TYPE_3__ ;
-typedef  struct TYPE_17__   TYPE_2__ ;
-typedef  struct TYPE_16__   TYPE_1__ ;
-typedef  struct TYPE_15__   TYPE_11__ ;
-typedef  struct TYPE_14__   TYPE_10__ ;
 
-/* Type definitions */
-typedef  int WORD ;
-struct TYPE_24__ {int /*<<< orphan*/  SubstCount; int /*<<< orphan*/ * Class; int /*<<< orphan*/  GlyphCount; } ;
+
+
+typedef struct TYPE_24__ TYPE_9__ ;
+typedef struct TYPE_23__ TYPE_8__ ;
+typedef struct TYPE_22__ TYPE_7__ ;
+typedef struct TYPE_21__ TYPE_6__ ;
+typedef struct TYPE_20__ TYPE_5__ ;
+typedef struct TYPE_19__ TYPE_4__ ;
+typedef struct TYPE_18__ TYPE_3__ ;
+typedef struct TYPE_17__ TYPE_2__ ;
+typedef struct TYPE_16__ TYPE_1__ ;
+typedef struct TYPE_15__ TYPE_11__ ;
+typedef struct TYPE_14__ TYPE_10__ ;
+
+
+typedef int WORD ;
+struct TYPE_24__ {int SubstCount; int * Class; int GlyphCount; } ;
 struct TYPE_23__ {TYPE_1__* SubstLookupRecord; } ;
-struct TYPE_22__ {int /*<<< orphan*/ * SubClassRule; int /*<<< orphan*/  SubClassRuleCnt; } ;
-struct TYPE_21__ {int /*<<< orphan*/ * SubRule; int /*<<< orphan*/  SubRuleCount; } ;
-struct TYPE_20__ {int /*<<< orphan*/  SubstCount; int /*<<< orphan*/ * Input; int /*<<< orphan*/  GlyphCount; } ;
+struct TYPE_22__ {int * SubClassRule; int SubClassRuleCnt; } ;
+struct TYPE_21__ {int * SubRule; int SubRuleCount; } ;
+struct TYPE_20__ {int SubstCount; int * Input; int GlyphCount; } ;
 struct TYPE_19__ {TYPE_2__* SubstLookupRecord; } ;
-struct TYPE_18__ {int /*<<< orphan*/  SubTableCount; } ;
-struct TYPE_17__ {int /*<<< orphan*/  SequenceIndex; int /*<<< orphan*/  LookupListIndex; } ;
-struct TYPE_16__ {int /*<<< orphan*/  SequenceIndex; int /*<<< orphan*/  LookupListIndex; } ;
-struct TYPE_15__ {int /*<<< orphan*/  SubstFormat; int /*<<< orphan*/ * SubRuleSet; int /*<<< orphan*/  Coverage; } ;
-struct TYPE_14__ {int /*<<< orphan*/ * SubClassSet; int /*<<< orphan*/  ClassDef; int /*<<< orphan*/  Coverage; } ;
-typedef  TYPE_3__ OT_LookupTable ;
-typedef  int /*<<< orphan*/  OT_LookupList ;
-typedef  size_t INT ;
-typedef  TYPE_4__ GSUB_SubRule_2 ;
-typedef  TYPE_5__ GSUB_SubRule_1 ;
-typedef  TYPE_6__ GSUB_SubRuleSet ;
-typedef  TYPE_7__ GSUB_SubClassSet ;
-typedef  TYPE_8__ GSUB_SubClassRule_2 ;
-typedef  TYPE_9__ GSUB_SubClassRule_1 ;
-typedef  TYPE_10__ GSUB_ContextSubstFormat2 ;
-typedef  TYPE_11__ GSUB_ContextSubstFormat1 ;
-typedef  int /*<<< orphan*/  BYTE ;
+struct TYPE_18__ {int SubTableCount; } ;
+struct TYPE_17__ {int SequenceIndex; int LookupListIndex; } ;
+struct TYPE_16__ {int SequenceIndex; int LookupListIndex; } ;
+struct TYPE_15__ {int SubstFormat; int * SubRuleSet; int Coverage; } ;
+struct TYPE_14__ {int * SubClassSet; int ClassDef; int Coverage; } ;
+typedef TYPE_3__ OT_LookupTable ;
+typedef int OT_LookupList ;
+typedef size_t INT ;
+typedef TYPE_4__ GSUB_SubRule_2 ;
+typedef TYPE_5__ GSUB_SubRule_1 ;
+typedef TYPE_6__ GSUB_SubRuleSet ;
+typedef TYPE_7__ GSUB_SubClassSet ;
+typedef TYPE_8__ GSUB_SubClassRule_2 ;
+typedef TYPE_9__ GSUB_SubClassRule_1 ;
+typedef TYPE_10__ GSUB_ContextSubstFormat2 ;
+typedef TYPE_11__ GSUB_ContextSubstFormat1 ;
+typedef int BYTE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*) ; 
- int /*<<< orphan*/  FIXME (char*,int) ; 
- int GET_BE_WORD (int /*<<< orphan*/ ) ; 
- int GSUB_E_NOGLYPH ; 
- int GSUB_apply_lookup (int /*<<< orphan*/  const*,unsigned int,int*,unsigned int,size_t,size_t*) ; 
- scalar_t__ GSUB_get_subtable (TYPE_3__ const*,int) ; 
- int GSUB_is_glyph_covered (int /*<<< orphan*/  const*,int) ; 
- int OT_get_glyph_class (void const*,int) ; 
- int /*<<< orphan*/  TRACE (char*,...) ; 
- int /*<<< orphan*/  WARN (char*,unsigned int,size_t,size_t) ; 
+
+ int ERR (char*) ;
+ int FIXME (char*,int) ;
+ int GET_BE_WORD (int ) ;
+ int GSUB_E_NOGLYPH ;
+ int GSUB_apply_lookup (int const*,unsigned int,int*,unsigned int,size_t,size_t*) ;
+ scalar_t__ GSUB_get_subtable (TYPE_3__ const*,int) ;
+ int GSUB_is_glyph_covered (int const*,int) ;
+ int OT_get_glyph_class (void const*,int) ;
+ int TRACE (char*,...) ;
+ int WARN (char*,unsigned int,size_t,size_t) ;
 
 __attribute__((used)) static INT GSUB_apply_ContextSubst(const OT_LookupList* lookup, const OT_LookupTable *look, WORD *glyphs, INT glyph_index, INT write_dir, INT *glyph_count)
 {

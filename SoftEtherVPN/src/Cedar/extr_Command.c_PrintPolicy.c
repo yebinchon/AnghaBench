@@ -1,90 +1,90 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wchar_t ;
-typedef  int /*<<< orphan*/  value_str ;
-typedef  int /*<<< orphan*/  tmp2 ;
-typedef  int /*<<< orphan*/  name ;
-typedef  scalar_t__ UINT ;
-typedef  int /*<<< orphan*/  POLICY ;
-typedef  int /*<<< orphan*/  PACK ;
-typedef  int /*<<< orphan*/  CT ;
-typedef  int /*<<< orphan*/  CONSOLE ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * CopyStrToUni (scalar_t__) ; 
- int /*<<< orphan*/  CtFree (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CtInsert (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CtInsertColumn (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/ * CtNew () ; 
- int /*<<< orphan*/  Format (char*,int,char*,scalar_t__) ; 
- int /*<<< orphan*/  FormatPolicyValue (int /*<<< orphan*/ *,int,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  Free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FreePack (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * NewPack () ; 
- int /*<<< orphan*/  OutRpcPolicy (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ PackGetInt (int /*<<< orphan*/ *,char*) ; 
- scalar_t__ PolicyIdToStr (scalar_t__) ; 
- scalar_t__ PolicyIsSupportedForCascade (scalar_t__) ; 
- scalar_t__ PolicyNum () ; 
- int /*<<< orphan*/  _UU (char*) ; 
+
+
+
+typedef int wchar_t ;
+typedef int value_str ;
+typedef int tmp2 ;
+typedef int name ;
+typedef scalar_t__ UINT ;
+typedef int POLICY ;
+typedef int PACK ;
+typedef int CT ;
+typedef int CONSOLE ;
+
+
+ int * CopyStrToUni (scalar_t__) ;
+ int CtFree (int *,int *) ;
+ int CtInsert (int *,int *,int ,int *) ;
+ int CtInsertColumn (int *,int ,int) ;
+ int * CtNew () ;
+ int Format (char*,int,char*,scalar_t__) ;
+ int FormatPolicyValue (int *,int,scalar_t__,scalar_t__) ;
+ int Free (int *) ;
+ int FreePack (int *) ;
+ int * NewPack () ;
+ int OutRpcPolicy (int *,int *) ;
+ scalar_t__ PackGetInt (int *,char*) ;
+ scalar_t__ PolicyIdToStr (scalar_t__) ;
+ scalar_t__ PolicyIsSupportedForCascade (scalar_t__) ;
+ scalar_t__ PolicyNum () ;
+ int _UU (char*) ;
 
 void PrintPolicy(CONSOLE *c, POLICY *pol, bool cascade_mode)
 {
-	UINT i;
-	CT *ct;
-	PACK *p;
-	// Validate arguments
-	if (c == NULL || pol == NULL)
-	{
-		return;
-	}
+ UINT i;
+ CT *ct;
+ PACK *p;
 
-	ct = CtNew();
-	CtInsertColumn(ct, _UU("CMD_PolicyList_Column_1"), false);
-	CtInsertColumn(ct, _UU("CMD_PolicyList_Column_2"), false);
-	CtInsertColumn(ct, _UU("CMD_PolicyList_Column_3"), false);
+ if (c == ((void*)0) || pol == ((void*)0))
+ {
+  return;
+ }
 
-	p = NewPack();
-	OutRpcPolicy(p, pol);
+ ct = CtNew();
+ CtInsertColumn(ct, _UU("CMD_PolicyList_Column_1"), 0);
+ CtInsertColumn(ct, _UU("CMD_PolicyList_Column_2"), 0);
+ CtInsertColumn(ct, _UU("CMD_PolicyList_Column_3"), 0);
 
-	// Show the list of all policies
-	for (i = 0; i < PolicyNum();i++)
-	{
-		char name[64];
-		wchar_t *tmp;
+ p = NewPack();
+ OutRpcPolicy(p, pol);
 
-		if (cascade_mode == false || PolicyIsSupportedForCascade(i))
-		{
-			wchar_t value_str[256];
-			UINT value;
-			char tmp2[256];
 
-			Format(tmp2, sizeof(tmp2), "policy:%s", PolicyIdToStr(i));
-			value = PackGetInt(p, tmp2);
+ for (i = 0; i < PolicyNum();i++)
+ {
+  char name[64];
+  wchar_t *tmp;
 
-			tmp = CopyStrToUni(PolicyIdToStr(i));
+  if (cascade_mode == 0 || PolicyIsSupportedForCascade(i))
+  {
+   wchar_t value_str[256];
+   UINT value;
+   char tmp2[256];
 
-			FormatPolicyValue(value_str, sizeof(value_str),
-				i, value);
+   Format(tmp2, sizeof(tmp2), "policy:%s", PolicyIdToStr(i));
+   value = PackGetInt(p, tmp2);
 
-			Format(name, sizeof(name), "POL_%u", i);
-			CtInsert(ct, tmp, _UU(name), value_str);
+   tmp = CopyStrToUni(PolicyIdToStr(i));
 
-			Free(tmp);
-		}
-	}
+   FormatPolicyValue(value_str, sizeof(value_str),
+    i, value);
 
-	FreePack(p);
+   Format(name, sizeof(name), "POL_%u", i);
+   CtInsert(ct, tmp, _UU(name), value_str);
 
-	CtFree(ct, c);
+   Free(tmp);
+  }
+ }
+
+ FreePack(p);
+
+ CtFree(ct, c);
 }

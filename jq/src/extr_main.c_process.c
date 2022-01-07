@@ -1,63 +1,63 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  jv ;
-typedef  int /*<<< orphan*/  jq_state ;
 
-/* Variables and functions */
- int ASCII_OUTPUT ; 
- int EXIT_STATUS_EXACT ; 
- int JQ_ERROR_UNKNOWN ; 
- int JQ_OK ; 
- int JQ_OK_NO_OUTPUT ; 
- int JQ_OK_NULL_KIND ; 
- scalar_t__ JV_KIND_FALSE ; 
- scalar_t__ JV_KIND_NULL ; 
- scalar_t__ JV_KIND_NUMBER ; 
- scalar_t__ JV_KIND_STRING ; 
- int /*<<< orphan*/  JV_PRINT_ASCII ; 
- int JV_PRINT_ISATTY ; 
- int RAW_NO_LF ; 
- int RAW_OUTPUT ; 
- int SEQ ; 
- int UNBUFFERED_OUTPUT ; 
- int /*<<< orphan*/  fflush (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*,...) ; 
- int /*<<< orphan*/  fwrite (char*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jq_get_error_message (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jq_get_exit_code (int /*<<< orphan*/ *) ; 
- scalar_t__ jq_halted (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jq_next (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jq_start (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  jq_util_input_get_position (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jv_copy (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jv_dump (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  jv_dump_string (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jv_dumpf (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jv_free (int /*<<< orphan*/ ) ; 
- scalar_t__ jv_get_kind (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jv_invalid_get_msg (int /*<<< orphan*/ ) ; 
- scalar_t__ jv_invalid_has_msg (int /*<<< orphan*/ ) ; 
- scalar_t__ jv_is_valid (int /*<<< orphan*/ ) ; 
- int jv_number_value (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jv_string_length_bytes (int /*<<< orphan*/ ) ; 
- char* jv_string_value (int /*<<< orphan*/ ) ; 
- int options ; 
- int /*<<< orphan*/  priv_fwrite (char*,int,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  stdout ; 
+
+
+
+typedef int jv ;
+typedef int jq_state ;
+
+
+ int ASCII_OUTPUT ;
+ int EXIT_STATUS_EXACT ;
+ int JQ_ERROR_UNKNOWN ;
+ int JQ_OK ;
+ int JQ_OK_NO_OUTPUT ;
+ int JQ_OK_NULL_KIND ;
+ scalar_t__ JV_KIND_FALSE ;
+ scalar_t__ JV_KIND_NULL ;
+ scalar_t__ JV_KIND_NUMBER ;
+ scalar_t__ JV_KIND_STRING ;
+ int JV_PRINT_ASCII ;
+ int JV_PRINT_ISATTY ;
+ int RAW_NO_LF ;
+ int RAW_OUTPUT ;
+ int SEQ ;
+ int UNBUFFERED_OUTPUT ;
+ int fflush (int ) ;
+ int fprintf (int ,char*,char*,...) ;
+ int fwrite (char*,int,int ,int ) ;
+ int jq_get_error_message (int *) ;
+ int jq_get_exit_code (int *) ;
+ scalar_t__ jq_halted (int *) ;
+ int jq_next (int *) ;
+ int jq_start (int *,int ,int) ;
+ int jq_util_input_get_position (int *) ;
+ int jv_copy (int ) ;
+ int jv_dump (int ,int) ;
+ int jv_dump_string (int ,int ) ;
+ int jv_dumpf (int ,int ,int ) ;
+ int jv_free (int ) ;
+ scalar_t__ jv_get_kind (int ) ;
+ int jv_invalid_get_msg (int ) ;
+ scalar_t__ jv_invalid_has_msg (int ) ;
+ scalar_t__ jv_is_valid (int ) ;
+ int jv_number_value (int ) ;
+ int jv_string_length_bytes (int ) ;
+ char* jv_string_value (int ) ;
+ int options ;
+ int priv_fwrite (char*,int,int ,int) ;
+ int stderr ;
+ int stdout ;
 
 __attribute__((used)) static int process(jq_state *jq, jv value, int flags, int dumpopts) {
-  int ret = JQ_OK_NO_OUTPUT; // No valid results && -e -> exit(4)
+  int ret = JQ_OK_NO_OUTPUT;
   jq_start(jq, value, flags);
   jv result;
   while (jv_is_valid(result = jq_next(jq))) {
@@ -84,7 +84,7 @@ __attribute__((used)) static int process(jq_state *jq, jv value, int flags, int 
       fflush(stdout);
   }
   if (jq_halted(jq)) {
-    // jq program invoked `halt` or `halt_error`
+
     options |= EXIT_STATUS_EXACT;
     jv exit_code = jq_get_exit_code(jq);
     if (!jv_is_valid(exit_code))
@@ -98,15 +98,15 @@ __attribute__((used)) static int process(jq_state *jq, jv value, int flags, int 
     if (jv_get_kind(error_message) == JV_KIND_STRING) {
       fprintf(stderr, "jq: error: %s", jv_string_value(error_message));
     } else if (jv_get_kind(error_message) == JV_KIND_NULL) {
-      // Halt with no output
+
     } else if (jv_is_valid(error_message)) {
       error_message = jv_dump_string(jv_copy(error_message), 0);
       fprintf(stderr, "jq: error: %s\n", jv_string_value(error_message));
-    } // else no message on stderr; use --debug-trace to see a message
+    }
     fflush(stderr);
     jv_free(error_message);
   } else if (jv_invalid_has_msg(jv_copy(result))) {
-    // Uncaught jq exception
+
     jv msg = jv_invalid_get_msg(jv_copy(result));
     jv input_pos = jq_util_input_get_position(jq);
     if (jv_get_kind(msg) == JV_KIND_STRING) {

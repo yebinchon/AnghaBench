@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_8__ {scalar_t__ op; struct TYPE_8__* pLeft; struct TYPE_8__* pRight; } ;
-typedef  int /*<<< orphan*/  Parse ;
-typedef  TYPE_1__ Expr ;
+typedef int Parse ;
+typedef TYPE_1__ Expr ;
 
-/* Variables and functions */
- scalar_t__ TK_IS ; 
- scalar_t__ TK_ISNULL ; 
- scalar_t__ TK_NOTNULL ; 
- scalar_t__ TK_OR ; 
- scalar_t__ sqlite3ExprCompare (int /*<<< orphan*/ *,TYPE_1__*,TYPE_1__*,int) ; 
- TYPE_1__* sqlite3ExprSkipCollate (TYPE_1__*) ; 
- int /*<<< orphan*/  testcase (int) ; 
+
+ scalar_t__ TK_IS ;
+ scalar_t__ TK_ISNULL ;
+ scalar_t__ TK_NOTNULL ;
+ scalar_t__ TK_OR ;
+ scalar_t__ sqlite3ExprCompare (int *,TYPE_1__*,TYPE_1__*,int) ;
+ TYPE_1__* sqlite3ExprSkipCollate (TYPE_1__*) ;
+ int testcase (int) ;
 
 int sqlite3ExprImpliesExpr(Parse *pParse, Expr *pE1, Expr *pE2, int iTab){
   if( sqlite3ExprCompare(pParse, pE1, pE2, iTab)==0 ){

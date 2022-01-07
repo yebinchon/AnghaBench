@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_stream_t ;
-typedef  int /*<<< orphan*/  svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  scalar_t__ svn_diff_operation_kind_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  SVN_PROP_EXECUTABLE ; 
- int /*<<< orphan*/  SVN_PROP_SPECIAL ; 
- int /*<<< orphan*/  apr_psprintf (int /*<<< orphan*/ *,char*,char const*) ; 
- char* diff_label (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  maybe_print_mode_change (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  print_git_diff_header_added (int /*<<< orphan*/ *,char const*,char const*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  print_git_diff_header_copied (int /*<<< orphan*/ *,char const*,char const*,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  print_git_diff_header_deleted (int /*<<< orphan*/ *,char const*,char const*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  print_git_diff_header_modified (int /*<<< orphan*/ *,char const*,char const*,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  print_git_diff_header_renamed (int /*<<< orphan*/ *,char const*,char const*,char const*,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_diff_op_added ; 
- scalar_t__ svn_diff_op_copied ; 
- scalar_t__ svn_diff_op_deleted ; 
- scalar_t__ svn_diff_op_modified ; 
- scalar_t__ svn_diff_op_moved ; 
- int /*<<< orphan*/ * svn_prop_get_value (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int svn_stream_t ;
+typedef int svn_revnum_t ;
+typedef int svn_error_t ;
+typedef scalar_t__ svn_diff_operation_kind_t ;
+typedef int svn_boolean_t ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
+
+
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int SVN_PROP_EXECUTABLE ;
+ int SVN_PROP_SPECIAL ;
+ int apr_psprintf (int *,char*,char const*) ;
+ char* diff_label (int ,int ,int *) ;
+ int maybe_print_mode_change (int *,char const*,int ,int ,int ,int ,char const*,int *) ;
+ int print_git_diff_header_added (int *,char const*,char const*,char const*,int ,int ,int *) ;
+ int print_git_diff_header_copied (int *,char const*,char const*,int ,char const*,int *) ;
+ int print_git_diff_header_deleted (int *,char const*,char const*,char const*,int ,int ,int *) ;
+ int print_git_diff_header_modified (int *,char const*,char const*,char const*,int *) ;
+ int print_git_diff_header_renamed (int *,char const*,char const*,char const*,int *) ;
+ scalar_t__ svn_diff_op_added ;
+ scalar_t__ svn_diff_op_copied ;
+ scalar_t__ svn_diff_op_deleted ;
+ scalar_t__ svn_diff_op_modified ;
+ scalar_t__ svn_diff_op_moved ;
+ int * svn_prop_get_value (int *,int ) ;
 
 __attribute__((used)) static svn_error_t *
 print_git_diff_header(svn_stream_t *os,
@@ -55,13 +55,13 @@ print_git_diff_header(svn_stream_t *os,
                       apr_pool_t *scratch_pool)
 {
   svn_boolean_t exec_bit1 = (svn_prop_get_value(left_props,
-                                                SVN_PROP_EXECUTABLE) != NULL);
+                                                SVN_PROP_EXECUTABLE) != ((void*)0));
   svn_boolean_t exec_bit2 = (svn_prop_get_value(right_props,
-                                                SVN_PROP_EXECUTABLE) != NULL);
+                                                SVN_PROP_EXECUTABLE) != ((void*)0));
   svn_boolean_t symlink_bit1 = (svn_prop_get_value(left_props,
-                                                   SVN_PROP_SPECIAL) != NULL);
+                                                   SVN_PROP_SPECIAL) != ((void*)0));
   svn_boolean_t symlink_bit2 = (svn_prop_get_value(right_props,
-                                                   SVN_PROP_SPECIAL) != NULL);
+                                                   SVN_PROP_SPECIAL) != ((void*)0));
 
   if (operation == svn_diff_op_deleted)
     {

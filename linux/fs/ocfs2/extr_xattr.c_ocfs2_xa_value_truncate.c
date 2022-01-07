@@ -1,49 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u64 ;
+
+
+
+
+typedef int u64 ;
 struct ocfs2_xattr_value_buf {int dummy; } ;
-struct ocfs2_xattr_set_ctxt {int /*<<< orphan*/  handle; } ;
-struct ocfs2_xa_loc {int /*<<< orphan*/  xl_inode; } ;
+struct ocfs2_xattr_set_ctxt {int handle; } ;
+struct ocfs2_xa_loc {int xl_inode; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OCFS2_JOURNAL_ACCESS_WRITE ; 
- int /*<<< orphan*/  ocfs2_xa_fill_value_buf (struct ocfs2_xa_loc*,struct ocfs2_xattr_value_buf*) ; 
- int ocfs2_xa_journal_access (int /*<<< orphan*/ ,struct ocfs2_xa_loc*,int /*<<< orphan*/ ) ; 
- int ocfs2_xattr_value_truncate (int /*<<< orphan*/ ,struct ocfs2_xattr_value_buf*,int /*<<< orphan*/ ,struct ocfs2_xattr_set_ctxt*) ; 
+
+ int OCFS2_JOURNAL_ACCESS_WRITE ;
+ int ocfs2_xa_fill_value_buf (struct ocfs2_xa_loc*,struct ocfs2_xattr_value_buf*) ;
+ int ocfs2_xa_journal_access (int ,struct ocfs2_xa_loc*,int ) ;
+ int ocfs2_xattr_value_truncate (int ,struct ocfs2_xattr_value_buf*,int ,struct ocfs2_xattr_set_ctxt*) ;
 
 __attribute__((used)) static int ocfs2_xa_value_truncate(struct ocfs2_xa_loc *loc, u64 bytes,
-				   struct ocfs2_xattr_set_ctxt *ctxt)
+       struct ocfs2_xattr_set_ctxt *ctxt)
 {
-	int trunc_rc, access_rc;
-	struct ocfs2_xattr_value_buf vb;
+ int trunc_rc, access_rc;
+ struct ocfs2_xattr_value_buf vb;
 
-	ocfs2_xa_fill_value_buf(loc, &vb);
-	trunc_rc = ocfs2_xattr_value_truncate(loc->xl_inode, &vb, bytes,
-					      ctxt);
+ ocfs2_xa_fill_value_buf(loc, &vb);
+ trunc_rc = ocfs2_xattr_value_truncate(loc->xl_inode, &vb, bytes,
+           ctxt);
+ access_rc = ocfs2_xa_journal_access(ctxt->handle, loc,
+         OCFS2_JOURNAL_ACCESS_WRITE);
 
-	/*
-	 * The caller of ocfs2_xa_value_truncate() has already called
-	 * ocfs2_xa_journal_access on the loc.  However, The truncate code
-	 * calls ocfs2_extend_trans().  This may commit the previous
-	 * transaction and open a new one.  If this is a bucket, truncate
-	 * could leave only vb->vb_bh set up for journaling.  Meanwhile,
-	 * the caller is expecting to dirty the entire bucket.  So we must
-	 * reset the journal work.  We do this even if truncate has failed,
-	 * as it could have failed after committing the extend.
-	 */
-	access_rc = ocfs2_xa_journal_access(ctxt->handle, loc,
-					    OCFS2_JOURNAL_ACCESS_WRITE);
 
-	/* Errors in truncate take precedence */
-	return trunc_rc ? trunc_rc : access_rc;
+ return trunc_rc ? trunc_rc : access_rc;
 }

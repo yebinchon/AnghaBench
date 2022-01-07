@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int flags; } ;
-typedef  TYPE_1__ EVP_ENCODE_CTX ;
+typedef TYPE_1__ EVP_ENCODE_CTX ;
 
-/* Variables and functions */
- int EVP_ENCODE_CTX_USE_SRP_ALPHABET ; 
- char conv_bin2ascii (unsigned long,unsigned char const*) ; 
- unsigned char* data_bin2ascii ; 
- unsigned char* srpdata_bin2ascii ; 
+
+ int EVP_ENCODE_CTX_USE_SRP_ALPHABET ;
+ char conv_bin2ascii (unsigned long,unsigned char const*) ;
+ unsigned char* data_bin2ascii ;
+ unsigned char* srpdata_bin2ascii ;
 
 __attribute__((used)) static int evp_encodeblock_int(EVP_ENCODE_CTX *ctx, unsigned char *t,
                                const unsigned char *f, int dlen)
@@ -27,7 +27,7 @@ __attribute__((used)) static int evp_encodeblock_int(EVP_ENCODE_CTX *ctx, unsign
     unsigned long l;
     const unsigned char *table;
 
-    if (ctx != NULL && (ctx->flags & EVP_ENCODE_CTX_USE_SRP_ALPHABET) != 0)
+    if (ctx != ((void*)0) && (ctx->flags & EVP_ENCODE_CTX_USE_SRP_ALPHABET) != 0)
         table = srpdata_bin2ascii;
     else
         table = data_bin2ascii;

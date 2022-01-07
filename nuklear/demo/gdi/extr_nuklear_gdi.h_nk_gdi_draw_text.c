@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wchar_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int wchar_t ;
 struct nk_color {int dummy; } ;
-typedef  int /*<<< orphan*/  WCHAR ;
-struct TYPE_3__ {int /*<<< orphan*/  handle; } ;
-typedef  int /*<<< orphan*/  HDC ;
-typedef  TYPE_1__ GdiFont ;
+typedef int WCHAR ;
+struct TYPE_3__ {int handle; } ;
+typedef int HDC ;
+typedef TYPE_1__ GdiFont ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CP_UTF8 ; 
- int /*<<< orphan*/  ETO_OPAQUE ; 
- int /*<<< orphan*/  ExtTextOutW (int /*<<< orphan*/ ,short,short,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- int MultiByteToWideChar (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*,int,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  SelectObject (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetBkColor (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetTextColor (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ _alloca (int) ; 
- int /*<<< orphan*/  convert_color (struct nk_color) ; 
+
+ int CP_UTF8 ;
+ int ETO_OPAQUE ;
+ int ExtTextOutW (int ,short,short,int ,int *,int *,int,int *) ;
+ int MultiByteToWideChar (int ,int ,char const*,int,int *,int) ;
+ int SelectObject (int ,int ) ;
+ int SetBkColor (int ,int ) ;
+ int SetTextColor (int ,int ) ;
+ scalar_t__ _alloca (int) ;
+ int convert_color (struct nk_color) ;
 
 __attribute__((used)) static void
 nk_gdi_draw_text(HDC dc, short x, short y, unsigned short w, unsigned short h,
@@ -38,7 +38,7 @@ nk_gdi_draw_text(HDC dc, short x, short y, unsigned short w, unsigned short h,
 
     if(!text || !font || !len) return;
 
-    wsize = MultiByteToWideChar(CP_UTF8, 0, text, len, NULL, 0);
+    wsize = MultiByteToWideChar(CP_UTF8, 0, text, len, ((void*)0), 0);
     wstr = (WCHAR*)_alloca(wsize * sizeof(wchar_t));
     MultiByteToWideChar(CP_UTF8, 0, text, len, wstr, wsize);
 
@@ -46,5 +46,5 @@ nk_gdi_draw_text(HDC dc, short x, short y, unsigned short w, unsigned short h,
     SetTextColor(dc, convert_color(cfg));
 
     SelectObject(dc, font->handle);
-    ExtTextOutW(dc, x, y, ETO_OPAQUE, NULL, wstr, wsize, NULL);
+    ExtTextOutW(dc, x, y, ETO_OPAQUE, ((void*)0), wstr, wsize, ((void*)0));
 }

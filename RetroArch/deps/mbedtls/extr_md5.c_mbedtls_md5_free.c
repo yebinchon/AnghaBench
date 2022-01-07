@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mbedtls_md5_context ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mbedtls_zeroize (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int mbedtls_md5_context ;
+
+
+ int mbedtls_zeroize (int *,int) ;
 
 void mbedtls_md5_free( mbedtls_md5_context *ctx )
 {
-    if( ctx == NULL )
+    if( ctx == ((void*)0) )
         return;
 
     mbedtls_zeroize( ctx, sizeof( mbedtls_md5_context ) );

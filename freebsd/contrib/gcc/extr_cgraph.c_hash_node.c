@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct cgraph_node {int /*<<< orphan*/  decl; } ;
-typedef  int /*<<< orphan*/  hashval_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DECL_UID (int /*<<< orphan*/ ) ; 
+
+
+
+struct cgraph_node {int decl; } ;
+typedef int hashval_t ;
+
+
+ int DECL_UID (int ) ;
 
 __attribute__((used)) static hashval_t
 hash_node (const void *p)

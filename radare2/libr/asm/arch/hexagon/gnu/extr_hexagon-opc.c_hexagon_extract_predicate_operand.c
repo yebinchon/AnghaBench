@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  hexagon_operand ;
-typedef  int /*<<< orphan*/  hexagon_insn ;
 
-/* Variables and functions */
- int FALSE ; 
- int TRUE ; 
- int /*<<< orphan*/  hexagon_dis_operand (int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,char*,char**) ; 
- int /*<<< orphan*/  hexagon_extract_operand (int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int*,char**) ; 
+
+
+
+typedef int hexagon_operand ;
+typedef int hexagon_insn ;
+
+
+ int FALSE ;
+ int TRUE ;
+ int hexagon_dis_operand (int const*,int ,int ,int ,char*,char*,char**) ;
+ int hexagon_extract_operand (int const*,int ,int ,char*,int*,char**) ;
 
 int
 hexagon_extract_predicate_operand
@@ -27,11 +27,11 @@ hexagon_extract_predicate_operand
   char reg_name [100];
   int reg_num;
 
-  // Get the predicate register name from the instruction
+
   if (!hexagon_dis_operand (operand, insn, 0, 0, enc, reg_name, errmsg))
     return FALSE;
 
-  // Get the predicate register number
+
   if (!hexagon_extract_operand (operand, insn, 0, enc, &reg_num, errmsg))
     return FALSE;
 

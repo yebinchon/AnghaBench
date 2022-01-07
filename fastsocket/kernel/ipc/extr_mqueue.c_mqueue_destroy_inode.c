@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct inode {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MQUEUE_I (struct inode*) ; 
- int /*<<< orphan*/  kmem_cache_free (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mqueue_inode_cachep ; 
+
+ int MQUEUE_I (struct inode*) ;
+ int kmem_cache_free (int ,int ) ;
+ int mqueue_inode_cachep ;
 
 __attribute__((used)) static void mqueue_destroy_inode(struct inode *inode)
 {
-	kmem_cache_free(mqueue_inode_cachep, MQUEUE_I(inode));
+ kmem_cache_free(mqueue_inode_cachep, MQUEUE_I(inode));
 }

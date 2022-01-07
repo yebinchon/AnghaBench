@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct arm_arch_option_table {int /*<<< orphan*/ * name; int /*<<< orphan*/  default_fpu; int /*<<< orphan*/  value; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  _ (char*) ; 
- struct arm_arch_option_table* arm_archs ; 
- int arm_parse_extension (char*,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  as_bad (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/ * march_cpu_opt ; 
- int /*<<< orphan*/ * march_fpu_opt ; 
- int /*<<< orphan*/  selected_cpu_name ; 
- char* strchr (char*,char) ; 
- int /*<<< orphan*/  strcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int strlen (char*) ; 
- scalar_t__ strncmp (int /*<<< orphan*/ *,char*,int) ; 
+
+
+
+struct arm_arch_option_table {int * name; int default_fpu; int value; } ;
+
+
+ int _ (char*) ;
+ struct arm_arch_option_table* arm_archs ;
+ int arm_parse_extension (char*,int **) ;
+ int as_bad (int ,char*) ;
+ int * march_cpu_opt ;
+ int * march_fpu_opt ;
+ int selected_cpu_name ;
+ char* strchr (char*,char) ;
+ int strcpy (int ,int *) ;
+ int strlen (char*) ;
+ scalar_t__ strncmp (int *,char*,int) ;
 
 __attribute__((used)) static int
 arm_parse_arch (char * str)
@@ -32,7 +32,7 @@ arm_parse_arch (char * str)
   char *ext = strchr (str, '+');
   int optlen;
 
-  if (ext != NULL)
+  if (ext != ((void*)0))
     optlen = ext - str;
   else
     optlen = strlen (str);
@@ -43,17 +43,17 @@ arm_parse_arch (char * str)
       return 0;
     }
 
-  for (opt = arm_archs; opt->name != NULL; opt++)
+  for (opt = arm_archs; opt->name != ((void*)0); opt++)
     if (strncmp (opt->name, str, optlen) == 0)
       {
-	march_cpu_opt = &opt->value;
-	march_fpu_opt = &opt->default_fpu;
-	strcpy(selected_cpu_name, opt->name);
+ march_cpu_opt = &opt->value;
+ march_fpu_opt = &opt->default_fpu;
+ strcpy(selected_cpu_name, opt->name);
 
-	if (ext != NULL)
-	  return arm_parse_extension (ext, &march_cpu_opt);
+ if (ext != ((void*)0))
+   return arm_parse_extension (ext, &march_cpu_opt);
 
-	return 1;
+ return 1;
       }
 
   as_bad (_("unknown architecture `%s'\n"), str);

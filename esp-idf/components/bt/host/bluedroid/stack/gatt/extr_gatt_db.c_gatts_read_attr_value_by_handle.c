@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tGATT_TCB ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int tGATT_TCB ;
 struct TYPE_5__ {scalar_t__ p_attr_list; } ;
-typedef  TYPE_1__ tGATT_SVC_DB ;
-typedef  scalar_t__ tGATT_STATUS ;
-typedef  int /*<<< orphan*/  tGATT_SEC_FLAG ;
+typedef TYPE_1__ tGATT_SVC_DB ;
+typedef scalar_t__ tGATT_STATUS ;
+typedef int tGATT_SEC_FLAG ;
 struct TYPE_6__ {scalar_t__ handle; scalar_t__ p_next; } ;
-typedef  TYPE_2__ tGATT_ATTR16 ;
-typedef  scalar_t__ UINT8 ;
-typedef  int /*<<< orphan*/  UINT32 ;
-typedef  scalar_t__ UINT16 ;
-typedef  int BOOLEAN ;
+typedef TYPE_2__ tGATT_ATTR16 ;
+typedef scalar_t__ UINT8 ;
+typedef int UINT32 ;
+typedef scalar_t__ UINT16 ;
+typedef int BOOLEAN ;
 
-/* Variables and functions */
- scalar_t__ GATT_NOT_FOUND ; 
- scalar_t__ GATT_PENDING ; 
- scalar_t__ GATT_REQ_READ_BLOB ; 
- scalar_t__ GATT_STACK_RSP ; 
- scalar_t__ gatts_send_app_read_request (int /*<<< orphan*/ *,scalar_t__,scalar_t__,scalar_t__,int /*<<< orphan*/ ,int) ; 
- scalar_t__ read_attr_value (TYPE_2__*,scalar_t__,scalar_t__**,int,scalar_t__,scalar_t__*,int /*<<< orphan*/ ,scalar_t__) ; 
+
+ scalar_t__ GATT_NOT_FOUND ;
+ scalar_t__ GATT_PENDING ;
+ scalar_t__ GATT_REQ_READ_BLOB ;
+ scalar_t__ GATT_STACK_RSP ;
+ scalar_t__ gatts_send_app_read_request (int *,scalar_t__,scalar_t__,scalar_t__,int ,int) ;
+ scalar_t__ read_attr_value (TYPE_2__*,scalar_t__,scalar_t__**,int,scalar_t__,scalar_t__*,int ,scalar_t__) ;
 
 tGATT_STATUS gatts_read_attr_value_by_handle(tGATT_TCB *p_tcb,
         tGATT_SVC_DB *p_db,
@@ -43,8 +43,8 @@ tGATT_STATUS gatts_read_attr_value_by_handle(tGATT_TCB *p_tcb,
         UINT32 trans_id)
 {
     tGATT_STATUS status = GATT_NOT_FOUND;
-    tGATT_ATTR16  *p_attr;
-    UINT8       *pp = p_value;
+    tGATT_ATTR16 *p_attr;
+    UINT8 *pp = p_value;
 
     if (p_db && p_db->p_attr_list) {
         p_attr = (tGATT_ATTR16 *)p_db->p_attr_list;

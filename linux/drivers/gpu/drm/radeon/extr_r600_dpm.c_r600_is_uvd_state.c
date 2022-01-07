@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u32 ;
 
-/* Variables and functions */
- int ATOM_PPLIB_CLASSIFICATION2_MVC ; 
- int ATOM_PPLIB_CLASSIFICATION_HD2STATE ; 
- int ATOM_PPLIB_CLASSIFICATION_HDSTATE ; 
- int ATOM_PPLIB_CLASSIFICATION_SDSTATE ; 
- int ATOM_PPLIB_CLASSIFICATION_UVDSTATE ; 
+
+
+
+typedef int u32 ;
+
+
+ int ATOM_PPLIB_CLASSIFICATION2_MVC ;
+ int ATOM_PPLIB_CLASSIFICATION_HD2STATE ;
+ int ATOM_PPLIB_CLASSIFICATION_HDSTATE ;
+ int ATOM_PPLIB_CLASSIFICATION_SDSTATE ;
+ int ATOM_PPLIB_CLASSIFICATION_UVDSTATE ;
 
 bool r600_is_uvd_state(u32 class, u32 class2)
 {
-	if (class & ATOM_PPLIB_CLASSIFICATION_UVDSTATE)
-		return true;
-	if (class & ATOM_PPLIB_CLASSIFICATION_HD2STATE)
-		return true;
-	if (class & ATOM_PPLIB_CLASSIFICATION_HDSTATE)
-		return true;
-	if (class & ATOM_PPLIB_CLASSIFICATION_SDSTATE)
-		return true;
-	if (class2 & ATOM_PPLIB_CLASSIFICATION2_MVC)
-		return true;
-	return false;
+ if (class & ATOM_PPLIB_CLASSIFICATION_UVDSTATE)
+  return 1;
+ if (class & ATOM_PPLIB_CLASSIFICATION_HD2STATE)
+  return 1;
+ if (class & ATOM_PPLIB_CLASSIFICATION_HDSTATE)
+  return 1;
+ if (class & ATOM_PPLIB_CLASSIFICATION_SDSTATE)
+  return 1;
+ if (class2 & ATOM_PPLIB_CLASSIFICATION2_MVC)
+  return 1;
+ return 0;
 }

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int allocated_channels; int channels; int planes; scalar_t__ is_planar; } ;
-typedef  TYPE_1__ AudioData ;
+typedef TYPE_1__ AudioData ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVRESAMPLE_MAX_CHANNELS ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  calc_ptr_alignment (TYPE_1__*) ; 
+
+ int AVERROR (int ) ;
+ int AVRESAMPLE_MAX_CHANNELS ;
+ int EINVAL ;
+ int calc_ptr_alignment (TYPE_1__*) ;
 
 int ff_audio_data_set_channels(AudioData *a, int channels)
 {
@@ -26,8 +26,8 @@ int ff_audio_data_set_channels(AudioData *a, int channels)
         channels > a->allocated_channels)
         return AVERROR(EINVAL);
 
-    a->channels  = channels;
-    a->planes    = a->is_planar ? channels : 1;
+    a->channels = channels;
+    a->planes = a->is_planar ? channels : 1;
 
     calc_ptr_alignment(a);
 

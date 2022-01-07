@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  SCI_BASE_OBJECT_T ;
-typedef  int /*<<< orphan*/  SCIC_SDS_REMOTE_DEVICE_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SCIC_SDS_SMP_REMOTE_DEVICE_READY_SUBSTATE_IDLE ; 
- int /*<<< orphan*/  SET_STATE_HANDLER (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  scic_cb_remote_device_ready (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  scic_sds_remote_device_get_controller (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  scic_sds_smp_remote_device_ready_substate_handler_table ; 
+
+
+
+typedef int SCI_BASE_OBJECT_T ;
+typedef int SCIC_SDS_REMOTE_DEVICE_T ;
+
+
+ int SCIC_SDS_SMP_REMOTE_DEVICE_READY_SUBSTATE_IDLE ;
+ int SET_STATE_HANDLER (int *,int ,int ) ;
+ int scic_cb_remote_device_ready (int ,int *) ;
+ int scic_sds_remote_device_get_controller (int *) ;
+ int scic_sds_smp_remote_device_ready_substate_handler_table ;
 
 __attribute__((used)) static
 void scic_sds_smp_remote_device_ready_idle_substate_enter(

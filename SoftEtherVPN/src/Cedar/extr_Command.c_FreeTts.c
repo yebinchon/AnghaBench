@@ -1,61 +1,61 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT ;
-struct TYPE_4__ {int Halt; int /*<<< orphan*/  WorkerList; int /*<<< orphan*/  ErrorCode; int /*<<< orphan*/  Print; int /*<<< orphan*/  Param; int /*<<< orphan*/  Thread; int /*<<< orphan*/  ListenSocketV6; int /*<<< orphan*/  ListenSocket; } ;
-typedef  TYPE_1__ TTS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Disconnect (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ERR_INVALID_PARAMETER ; 
- int /*<<< orphan*/  Free (TYPE_1__*) ; 
- int /*<<< orphan*/  INFINITE ; 
- int /*<<< orphan*/  ReleaseList (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReleaseSock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReleaseThread (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TtPrint (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WaitThread (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  _UU (char*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int UINT ;
+struct TYPE_4__ {int Halt; int WorkerList; int ErrorCode; int Print; int Param; int Thread; int ListenSocketV6; int ListenSocket; } ;
+typedef TYPE_1__ TTS ;
+
+
+ int Disconnect (int ) ;
+ int ERR_INVALID_PARAMETER ;
+ int Free (TYPE_1__*) ;
+ int INFINITE ;
+ int ReleaseList (int ) ;
+ int ReleaseSock (int ) ;
+ int ReleaseThread (int ) ;
+ int TtPrint (int ,int ,int ) ;
+ int WaitThread (int ,int ) ;
+ int _UU (char*) ;
 
 UINT FreeTts(TTS *tts)
 {
-	UINT ret;
-	// Validate arguments
-	if (tts == NULL)
-	{
-		return ERR_INVALID_PARAMETER;
-	}
+ UINT ret;
 
-	TtPrint(tts->Param, tts->Print, _UU("TTS_STOP_INIT"));
+ if (tts == ((void*)0))
+ {
+  return ERR_INVALID_PARAMETER;
+ }
 
-	tts->Halt = true;
-	Disconnect(tts->ListenSocket);
-	ReleaseSock(tts->ListenSocket);
-	Disconnect(tts->ListenSocketV6);
-	ReleaseSock(tts->ListenSocketV6);
+ TtPrint(tts->Param, tts->Print, _UU("TTS_STOP_INIT"));
 
-	// Wait for the termination of the thread
-	WaitThread(tts->Thread, INFINITE);
+ tts->Halt = 1;
+ Disconnect(tts->ListenSocket);
+ ReleaseSock(tts->ListenSocket);
+ Disconnect(tts->ListenSocketV6);
+ ReleaseSock(tts->ListenSocketV6);
 
-	ReleaseThread(tts->Thread);
 
-	TtPrint(tts->Param, tts->Print, _UU("TTS_STOP_FINISHED"));
+ WaitThread(tts->Thread, INFINITE);
 
-	ret = tts->ErrorCode;
+ ReleaseThread(tts->Thread);
 
-	ReleaseList(tts->WorkerList);
+ TtPrint(tts->Param, tts->Print, _UU("TTS_STOP_FINISHED"));
 
-	Free(tts);
+ ret = tts->ErrorCode;
 
-	return ret;
+ ReleaseList(tts->WorkerList);
+
+ Free(tts);
+
+ return ret;
 }

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  void* uint32_t ;
-typedef  int /*<<< orphan*/  result ;
-typedef  int /*<<< orphan*/  msg ;
-struct TYPE_4__ {int /*<<< orphan*/  type; } ;
-struct TYPE_3__ {TYPE_2__ header; void* pid_hi; void* pid_lo; void* screen_or_stream_num; void* context_type; int /*<<< orphan*/  context; } ;
-typedef  TYPE_1__ WFC_IPC_MSG_CREATE_CONTEXT_T ;
-typedef  int /*<<< orphan*/  WFCContext ;
-typedef  scalar_t__ VCOS_STATUS_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  VCOS_FUNCTION ; 
- scalar_t__ VCOS_SUCCESS ; 
- int /*<<< orphan*/  WFC_IPC_MSG_CREATE_CONTEXT ; 
- int /*<<< orphan*/  vcos_log_trace (char*,int /*<<< orphan*/ ,scalar_t__,void*,...) ; 
- scalar_t__ wfc_client_ipc_sendwait (TYPE_2__*,int,void**,size_t*) ; 
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef void* uint32_t ;
+typedef int result ;
+typedef int msg ;
+struct TYPE_4__ {int type; } ;
+struct TYPE_3__ {TYPE_2__ header; void* pid_hi; void* pid_lo; void* screen_or_stream_num; void* context_type; int context; } ;
+typedef TYPE_1__ WFC_IPC_MSG_CREATE_CONTEXT_T ;
+typedef int WFCContext ;
+typedef scalar_t__ VCOS_STATUS_T ;
+
+
+ int VCOS_FUNCTION ;
+ scalar_t__ VCOS_SUCCESS ;
+ int WFC_IPC_MSG_CREATE_CONTEXT ;
+ int vcos_log_trace (char*,int ,scalar_t__,void*,...) ;
+ scalar_t__ wfc_client_ipc_sendwait (TYPE_2__*,int,void**,size_t*) ;
 
 uint32_t wfc_server_create_context(WFCContext context, uint32_t context_type,
    uint32_t screen_or_stream_num, uint32_t pid_lo, uint32_t pid_hi)

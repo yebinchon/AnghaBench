@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int sqlite3_int64 ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int sqlite3_int64 ;
 struct TYPE_6__ {int rc; TYPE_2__* pPhrase; } ;
-typedef  TYPE_1__ TokenCtx ;
+typedef TYPE_1__ TokenCtx ;
 struct TYPE_7__ {int nTerm; char* zTerm; struct TYPE_7__* aTerm; struct TYPE_7__* pSynonym; } ;
-typedef  TYPE_2__ Fts5ExprTerm ;
-typedef  TYPE_2__ Fts5ExprPhrase ;
-typedef  int /*<<< orphan*/  Fts5Buffer ;
+typedef TYPE_2__ Fts5ExprTerm ;
+typedef TYPE_2__ Fts5ExprPhrase ;
+typedef int Fts5Buffer ;
 
-/* Variables and functions */
- int FTS5_MAX_TOKEN_SIZE ; 
- int FTS5_TOKEN_COLOCATED ; 
- int SQLITE_NOMEM ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  UNUSED_PARAM2 (int,int) ; 
- int /*<<< orphan*/  memcpy (char*,char const*,int) ; 
- int /*<<< orphan*/  memset (TYPE_2__*,int /*<<< orphan*/ ,int) ; 
- char* sqlite3Fts5Strndup (int*,char const*,int) ; 
- scalar_t__ sqlite3_malloc64 (int) ; 
- scalar_t__ sqlite3_realloc64 (TYPE_2__*,int) ; 
+
+ int FTS5_MAX_TOKEN_SIZE ;
+ int FTS5_TOKEN_COLOCATED ;
+ int SQLITE_NOMEM ;
+ int SQLITE_OK ;
+ int UNUSED_PARAM2 (int,int) ;
+ int memcpy (char*,char const*,int) ;
+ int memset (TYPE_2__*,int ,int) ;
+ char* sqlite3Fts5Strndup (int*,char const*,int) ;
+ scalar_t__ sqlite3_malloc64 (int) ;
+ scalar_t__ sqlite3_realloc64 (TYPE_2__*,int) ;
 
 __attribute__((used)) static int fts5ParseTokenize(
-  void *pContext,                 /* Pointer to Fts5InsertCtx object */
-  int tflags,                     /* Mask of FTS5_TOKEN_* flags */
-  const char *pToken,             /* Buffer containing token */
-  int nToken,                     /* Size of token in bytes */
-  int iUnused1,                   /* Start offset of token */
-  int iUnused2                    /* End offset of token */
+  void *pContext,
+  int tflags,
+  const char *pToken,
+  int nToken,
+  int iUnused1,
+  int iUnused2
 ){
   int rc = SQLITE_OK;
   const int SZALLOC = 8;
@@ -47,7 +47,7 @@ __attribute__((used)) static int fts5ParseTokenize(
 
   UNUSED_PARAM2(iUnused1, iUnused2);
 
-  /* If an error has already occurred, this is a no-op */
+
   if( pCtx->rc!=SQLITE_OK ) return pCtx->rc;
   if( nToken>FTS5_MAX_TOKEN_SIZE ) nToken = FTS5_MAX_TOKEN_SIZE;
 
@@ -70,7 +70,7 @@ __attribute__((used)) static int fts5ParseTokenize(
       Fts5ExprPhrase *pNew;
       int nNew = SZALLOC + (pPhrase ? pPhrase->nTerm : 0);
 
-      pNew = (Fts5ExprPhrase*)sqlite3_realloc64(pPhrase, 
+      pNew = (Fts5ExprPhrase*)sqlite3_realloc64(pPhrase,
           sizeof(Fts5ExprPhrase) + sizeof(Fts5ExprTerm) * nNew
       );
       if( pNew==0 ){

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct hidp_session {int /*<<< orphan*/  intr_transmit; int /*<<< orphan*/  ctrl_transmit; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BT_DBG (char*,struct hidp_session*,unsigned char) ; 
- unsigned char HIDP_CTRL_VIRTUAL_CABLE_UNPLUG ; 
- int /*<<< orphan*/  hidp_session_terminate (struct hidp_session*) ; 
- int /*<<< orphan*/  skb_queue_purge (int /*<<< orphan*/ *) ; 
+
+
+
+struct hidp_session {int intr_transmit; int ctrl_transmit; } ;
+
+
+ int BT_DBG (char*,struct hidp_session*,unsigned char) ;
+ unsigned char HIDP_CTRL_VIRTUAL_CABLE_UNPLUG ;
+ int hidp_session_terminate (struct hidp_session*) ;
+ int skb_queue_purge (int *) ;
 
 __attribute__((used)) static void hidp_process_hid_control(struct hidp_session *session,
-					unsigned char param)
+     unsigned char param)
 {
-	BT_DBG("session %p param 0x%02x", session, param);
+ BT_DBG("session %p param 0x%02x", session, param);
 
-	if (param == HIDP_CTRL_VIRTUAL_CABLE_UNPLUG) {
-		/* Flush the transmit queues */
-		skb_queue_purge(&session->ctrl_transmit);
-		skb_queue_purge(&session->intr_transmit);
+ if (param == HIDP_CTRL_VIRTUAL_CABLE_UNPLUG) {
 
-		hidp_session_terminate(session);
-	}
+  skb_queue_purge(&session->ctrl_transmit);
+  skb_queue_purge(&session->intr_transmit);
+
+  hidp_session_terminate(session);
+ }
 }

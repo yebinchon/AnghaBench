@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_5__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_14__ {int /*<<< orphan*/  length; int /*<<< orphan*/ * data; } ;
-typedef  TYPE_2__ int16_t ;
-struct TYPE_16__ {int /*<<< orphan*/  userdata; TYPE_1__* g_c; int /*<<< orphan*/  (* audio_data ) (int /*<<< orphan*/ ,int,int,TYPE_2__*,int,int,unsigned int,int /*<<< orphan*/ ) ;} ;
-struct TYPE_15__ {int decoder_channels; int last_packet_samples; int /*<<< orphan*/ * audio_decoder; int /*<<< orphan*/  buffer; } ;
-struct TYPE_13__ {int /*<<< orphan*/  m; } ;
-typedef  TYPE_3__ Group_Peer_AV ;
-typedef  TYPE_2__ Group_Audio_Packet ;
-typedef  TYPE_5__ Group_AV ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOGGER_ERROR (char*,int /*<<< orphan*/ ) ; 
- int OPUS_INVALID_PACKET ; 
- int OPUS_OK ; 
- TYPE_2__* dequeue (int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  free (TYPE_2__*) ; 
- TYPE_2__* malloc (int) ; 
- int opus_decode (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_2__*,int,int) ; 
- int /*<<< orphan*/ * opus_decoder_create (unsigned int,int,int*) ; 
- int /*<<< orphan*/  opus_decoder_destroy (int /*<<< orphan*/ *) ; 
- int opus_decoder_get_nb_samples (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int opus_packet_get_nb_channels (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  opus_strerror (int) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,int,int,TYPE_2__*,int,int,unsigned int,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_16__ TYPE_5__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+struct TYPE_14__ {int length; int * data; } ;
+typedef TYPE_2__ int16_t ;
+struct TYPE_16__ {int userdata; TYPE_1__* g_c; int (* audio_data ) (int ,int,int,TYPE_2__*,int,int,unsigned int,int ) ;} ;
+struct TYPE_15__ {int decoder_channels; int last_packet_samples; int * audio_decoder; int buffer; } ;
+struct TYPE_13__ {int m; } ;
+typedef TYPE_3__ Group_Peer_AV ;
+typedef TYPE_2__ Group_Audio_Packet ;
+typedef TYPE_5__ Group_AV ;
+
+
+ int LOGGER_ERROR (char*,int ) ;
+ int OPUS_INVALID_PACKET ;
+ int OPUS_OK ;
+ TYPE_2__* dequeue (int ,int*) ;
+ int free (TYPE_2__*) ;
+ TYPE_2__* malloc (int) ;
+ int opus_decode (int *,int *,int ,TYPE_2__*,int,int) ;
+ int * opus_decoder_create (unsigned int,int,int*) ;
+ int opus_decoder_destroy (int *) ;
+ int opus_decoder_get_nb_samples (int *,int *,int ) ;
+ int opus_packet_get_nb_channels (int *) ;
+ int opus_strerror (int) ;
+ int stub1 (int ,int,int,TYPE_2__*,int,int,unsigned int,int ) ;
 
 __attribute__((used)) static int decode_audio_packet(Group_AV *group_av, Group_Peer_AV *peer_av, int groupnumber, int friendgroupnumber)
 {
@@ -49,7 +49,7 @@ __attribute__((used)) static int decode_audio_packet(Group_AV *group_av, Group_P
     if (success == 0)
         return -1;
 
-    int16_t *out_audio = NULL;
+    int16_t *out_audio = ((void*)0);
     int out_audio_samples = 0;
 
     unsigned int sample_rate = 48000;
@@ -70,7 +70,7 @@ __attribute__((used)) static int decode_audio_packet(Group_AV *group_av, Group_P
         if (channels != peer_av->decoder_channels) {
             if (peer_av->audio_decoder) {
                 opus_decoder_destroy(peer_av->audio_decoder);
-                peer_av->audio_decoder = NULL;
+                peer_av->audio_decoder = ((void*)0);
             }
 
             int rc;
@@ -115,7 +115,7 @@ __attribute__((used)) static int decode_audio_packet(Group_AV *group_av, Group_P
             return -1;
         }
 
-        out_audio_samples = opus_decode(peer_av->audio_decoder, NULL, 0, out_audio, peer_av->last_packet_samples, 1);
+        out_audio_samples = opus_decode(peer_av->audio_decoder, ((void*)0), 0, out_audio, peer_av->last_packet_samples, 1);
 
         if (out_audio_samples <= 0)
             return -1;

@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  OTV_Validator ;
-typedef  int FT_UInt ;
-typedef  int FT_Bytes ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FT_INVALID_FORMAT ; 
- int FT_NEXT_USHORT (int) ; 
- int /*<<< orphan*/  OTV_EXIT ; 
- int /*<<< orphan*/  OTV_LIMIT_CHECK (int) ; 
- int /*<<< orphan*/  OTV_NAME_ENTER (char*) ; 
- int /*<<< orphan*/  OTV_OPTIONAL_OFFSET (int) ; 
- int /*<<< orphan*/  OTV_OPTIONAL_TABLE (int) ; 
- int /*<<< orphan*/  OTV_SIZE_CHECK (int) ; 
- int /*<<< orphan*/  OTV_TRACE (char*) ; 
- int XDeviceTable ; 
- int YDeviceTable ; 
- int /*<<< orphan*/  otv_Device_validate (int,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int OTV_Validator ;
+typedef int FT_UInt ;
+typedef int FT_Bytes ;
+
+
+ int FT_INVALID_FORMAT ;
+ int FT_NEXT_USHORT (int) ;
+ int OTV_EXIT ;
+ int OTV_LIMIT_CHECK (int) ;
+ int OTV_NAME_ENTER (char*) ;
+ int OTV_OPTIONAL_OFFSET (int) ;
+ int OTV_OPTIONAL_TABLE (int) ;
+ int OTV_SIZE_CHECK (int) ;
+ int OTV_TRACE (char*) ;
+ int XDeviceTable ;
+ int YDeviceTable ;
+ int otv_Device_validate (int,int ) ;
 
 __attribute__((used)) static void
-  otv_Anchor_validate( FT_Bytes       table,
-                       OTV_Validator  otvalid )
+  otv_Anchor_validate( FT_Bytes table,
+                       OTV_Validator otvalid )
   {
-    FT_Bytes  p = table;
-    FT_UInt   AnchorFormat;
+    FT_Bytes p = table;
+    FT_UInt AnchorFormat;
 
 
     OTV_NAME_ENTER( "Anchor");
@@ -43,7 +43,7 @@ __attribute__((used)) static void
 
     OTV_TRACE(( " (format %d)\n", AnchorFormat ));
 
-    p += 4;     /* skip XCoordinate and YCoordinate */
+    p += 4;
 
     switch ( AnchorFormat )
     {
@@ -51,12 +51,12 @@ __attribute__((used)) static void
       break;
 
     case 2:
-      OTV_LIMIT_CHECK( 2 );  /* AnchorPoint */
+      OTV_LIMIT_CHECK( 2 );
       break;
 
     case 3:
       {
-        FT_UInt  table_size;
+        FT_UInt table_size;
 
         OTV_OPTIONAL_TABLE( XDeviceTable );
         OTV_OPTIONAL_TABLE( YDeviceTable );

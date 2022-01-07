@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct d3dx_parameter {scalar_t__ class; unsigned int columns; unsigned int rows; } ;
 struct d3dx_const_param_eval_output {unsigned int table; scalar_t__ constant_class; unsigned int register_count; struct d3dx_parameter* param; } ;
 struct const_upload_info {int transpose; unsigned int major; unsigned int minor; unsigned int major_stride; unsigned int major_count; unsigned int minor_remainder; unsigned int count; } ;
 
-/* Variables and functions */
- scalar_t__ D3DXPC_MATRIX_COLUMNS ; 
- scalar_t__ D3DXPC_MATRIX_ROWS ; 
- unsigned int get_offset_reg (unsigned int,unsigned int) ; 
- int get_reg_components (unsigned int) ; 
+
+ scalar_t__ D3DXPC_MATRIX_COLUMNS ;
+ scalar_t__ D3DXPC_MATRIX_ROWS ;
+ unsigned int get_offset_reg (unsigned int,unsigned int) ;
+ int get_reg_components (unsigned int) ;
 
 __attribute__((used)) static void get_const_upload_info(struct d3dx_const_param_eval_output *const_set,
         struct const_upload_info *info)

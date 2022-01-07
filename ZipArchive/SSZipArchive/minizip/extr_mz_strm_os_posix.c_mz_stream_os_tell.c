@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  error; int /*<<< orphan*/  handle; } ;
-typedef  TYPE_1__ mz_stream_posix ;
-typedef  int int64_t ;
 
-/* Variables and functions */
- int MZ_TELL_ERROR ; 
- int /*<<< orphan*/  errno ; 
- int ftello64 (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int error; int handle; } ;
+typedef TYPE_1__ mz_stream_posix ;
+typedef int int64_t ;
+
+
+ int MZ_TELL_ERROR ;
+ int errno ;
+ int ftello64 (int ) ;
 
 int64_t mz_stream_os_tell(void *stream)
 {

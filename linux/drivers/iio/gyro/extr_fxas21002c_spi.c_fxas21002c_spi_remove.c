@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct spi_device {int /*<<< orphan*/  dev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fxas21002c_core_remove (int /*<<< orphan*/ *) ; 
+
+
+
+struct spi_device {int dev; } ;
+
+
+ int fxas21002c_core_remove (int *) ;
 
 __attribute__((used)) static int fxas21002c_spi_remove(struct spi_device *spi)
 {
-	fxas21002c_core_remove(&spi->dev);
+ fxas21002c_core_remove(&spi->dev);
 
-	return 0;
+ return 0;
 }

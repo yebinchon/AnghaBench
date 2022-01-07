@@ -1,70 +1,70 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct ubifs_pnode {size_t iip; TYPE_2__* parent; int /*<<< orphan*/  flags; int /*<<< orphan*/ * cnext; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct ubifs_pnode {size_t iip; TYPE_2__* parent; int flags; int * cnext; } ;
 struct ubifs_info {int dirty_pn_cnt; } ;
 struct TYPE_4__ {TYPE_1__* nbranch; } ;
 struct TYPE_3__ {struct ubifs_pnode* pnode; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  COW_CNODE ; 
- int /*<<< orphan*/  DIRTY_CNODE ; 
- int /*<<< orphan*/  ENOMEM ; 
- struct ubifs_pnode* ERR_PTR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GFP_NOFS ; 
- int /*<<< orphan*/  OBSOLETE_CNODE ; 
- int /*<<< orphan*/  __clear_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  __set_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  add_pnode_dirt (struct ubifs_info*,struct ubifs_pnode*) ; 
- struct ubifs_pnode* kmalloc (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (struct ubifs_pnode*,struct ubifs_pnode*,int) ; 
- int /*<<< orphan*/  replace_cats (struct ubifs_info*,struct ubifs_pnode*,struct ubifs_pnode*) ; 
- int /*<<< orphan*/  test_and_set_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  test_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ubifs_assert (int) ; 
- scalar_t__ unlikely (int) ; 
+
+ int COW_CNODE ;
+ int DIRTY_CNODE ;
+ int ENOMEM ;
+ struct ubifs_pnode* ERR_PTR (int ) ;
+ int GFP_NOFS ;
+ int OBSOLETE_CNODE ;
+ int __clear_bit (int ,int *) ;
+ int __set_bit (int ,int *) ;
+ int add_pnode_dirt (struct ubifs_info*,struct ubifs_pnode*) ;
+ struct ubifs_pnode* kmalloc (int,int ) ;
+ int memcpy (struct ubifs_pnode*,struct ubifs_pnode*,int) ;
+ int replace_cats (struct ubifs_info*,struct ubifs_pnode*,struct ubifs_pnode*) ;
+ int test_and_set_bit (int ,int *) ;
+ int test_bit (int ,int *) ;
+ int ubifs_assert (int) ;
+ scalar_t__ unlikely (int) ;
 
 __attribute__((used)) static struct ubifs_pnode *dirty_cow_pnode(struct ubifs_info *c,
-					   struct ubifs_pnode *pnode)
+        struct ubifs_pnode *pnode)
 {
-	struct ubifs_pnode *p;
+ struct ubifs_pnode *p;
 
-	if (!test_bit(COW_CNODE, &pnode->flags)) {
-		/* pnode is not being committed */
-		if (!test_and_set_bit(DIRTY_CNODE, &pnode->flags)) {
-			c->dirty_pn_cnt += 1;
-			add_pnode_dirt(c, pnode);
-		}
-		return pnode;
-	}
+ if (!test_bit(COW_CNODE, &pnode->flags)) {
 
-	/* pnode is being committed, so copy it */
-	p = kmalloc(sizeof(struct ubifs_pnode), GFP_NOFS);
-	if (unlikely(!p))
-		return ERR_PTR(-ENOMEM);
+  if (!test_and_set_bit(DIRTY_CNODE, &pnode->flags)) {
+   c->dirty_pn_cnt += 1;
+   add_pnode_dirt(c, pnode);
+  }
+  return pnode;
+ }
 
-	memcpy(p, pnode, sizeof(struct ubifs_pnode));
-	p->cnext = NULL;
-	__set_bit(DIRTY_CNODE, &p->flags);
-	__clear_bit(COW_CNODE, &p->flags);
-	replace_cats(c, pnode, p);
 
-	ubifs_assert(!test_bit(OBSOLETE_CNODE, &pnode->flags));
-	__set_bit(OBSOLETE_CNODE, &pnode->flags);
+ p = kmalloc(sizeof(struct ubifs_pnode), GFP_NOFS);
+ if (unlikely(!p))
+  return ERR_PTR(-ENOMEM);
 
-	c->dirty_pn_cnt += 1;
-	add_pnode_dirt(c, pnode);
-	pnode->parent->nbranch[p->iip].pnode = p;
-	return p;
+ memcpy(p, pnode, sizeof(struct ubifs_pnode));
+ p->cnext = ((void*)0);
+ __set_bit(DIRTY_CNODE, &p->flags);
+ __clear_bit(COW_CNODE, &p->flags);
+ replace_cats(c, pnode, p);
+
+ ubifs_assert(!test_bit(OBSOLETE_CNODE, &pnode->flags));
+ __set_bit(OBSOLETE_CNODE, &pnode->flags);
+
+ c->dirty_pn_cnt += 1;
+ add_pnode_dirt(c, pnode);
+ pnode->parent->nbranch[p->iip].pnode = p;
+ return p;
 }

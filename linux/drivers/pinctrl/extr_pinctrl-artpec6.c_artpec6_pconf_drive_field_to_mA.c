@@ -1,39 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ unsigned int ARTPEC6_DRIVE_4mA ;
 
-/* Forward declarations */
+ unsigned int ARTPEC6_DRIVE_6mA ;
 
-/* Type definitions */
+ unsigned int ARTPEC6_DRIVE_8mA ;
 
-/* Variables and functions */
- unsigned int ARTPEC6_DRIVE_4mA ; 
-#define  ARTPEC6_DRIVE_4mA_SET 131 
- unsigned int ARTPEC6_DRIVE_6mA ; 
-#define  ARTPEC6_DRIVE_6mA_SET 130 
- unsigned int ARTPEC6_DRIVE_8mA ; 
-#define  ARTPEC6_DRIVE_8mA_SET 129 
- unsigned int ARTPEC6_DRIVE_9mA ; 
-#define  ARTPEC6_DRIVE_9mA_SET 128 
+ unsigned int ARTPEC6_DRIVE_9mA ;
+
 
 __attribute__((used)) static unsigned int artpec6_pconf_drive_field_to_mA(int field)
 {
-	switch (field) {
-	case ARTPEC6_DRIVE_4mA_SET:
-		return ARTPEC6_DRIVE_4mA;
-	case ARTPEC6_DRIVE_6mA_SET:
-		return ARTPEC6_DRIVE_6mA;
-	case ARTPEC6_DRIVE_8mA_SET:
-		return ARTPEC6_DRIVE_8mA;
-	case ARTPEC6_DRIVE_9mA_SET:
-		return ARTPEC6_DRIVE_9mA;
-	default:
-		/* Shouldn't happen */
-		return 0;
-	}
+ switch (field) {
+ case 131:
+  return ARTPEC6_DRIVE_4mA;
+ case 130:
+  return ARTPEC6_DRIVE_6mA;
+ case 129:
+  return ARTPEC6_DRIVE_8mA;
+ case 128:
+  return ARTPEC6_DRIVE_9mA;
+ default:
+
+  return 0;
+ }
 }

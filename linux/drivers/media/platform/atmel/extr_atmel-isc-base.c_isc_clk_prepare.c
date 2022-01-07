@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct isc_clk {scalar_t__ id; int /*<<< orphan*/  dev; } ;
+
+
+
+
+struct isc_clk {scalar_t__ id; int dev; } ;
 struct clk_hw {int dummy; } ;
 
-/* Variables and functions */
- scalar_t__ ISC_ISPCK ; 
- int isc_wait_clk_stable (struct clk_hw*) ; 
- int /*<<< orphan*/  pm_runtime_get_sync (int /*<<< orphan*/ ) ; 
- struct isc_clk* to_isc_clk (struct clk_hw*) ; 
+
+ scalar_t__ ISC_ISPCK ;
+ int isc_wait_clk_stable (struct clk_hw*) ;
+ int pm_runtime_get_sync (int ) ;
+ struct isc_clk* to_isc_clk (struct clk_hw*) ;
 
 __attribute__((used)) static int isc_clk_prepare(struct clk_hw *hw)
 {
-	struct isc_clk *isc_clk = to_isc_clk(hw);
+ struct isc_clk *isc_clk = to_isc_clk(hw);
 
-	if (isc_clk->id == ISC_ISPCK)
-		pm_runtime_get_sync(isc_clk->dev);
+ if (isc_clk->id == ISC_ISPCK)
+  pm_runtime_get_sync(isc_clk->dev);
 
-	return isc_wait_clk_stable(hw);
+ return isc_wait_clk_stable(hw);
 }

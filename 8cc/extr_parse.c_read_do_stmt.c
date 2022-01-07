@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Vector ;
-typedef  int /*<<< orphan*/  Token ;
-typedef  int /*<<< orphan*/  Node ;
 
-/* Variables and functions */
- int /*<<< orphan*/  KWHILE ; 
- int /*<<< orphan*/  RESTORE_JUMP_LABELS () ; 
- int /*<<< orphan*/  SET_JUMP_LABELS (char*,char*) ; 
- int /*<<< orphan*/ * ast_compound_stmt (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * ast_dest (char*) ; 
- int /*<<< orphan*/ * ast_if (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ast_jump (char*) ; 
- int /*<<< orphan*/  errort (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  expect (char) ; 
- int /*<<< orphan*/ * get () ; 
- int /*<<< orphan*/  is_keyword (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- char* make_label () ; 
- int /*<<< orphan*/ * make_vector () ; 
- int /*<<< orphan*/ * read_boolean_expr () ; 
- int /*<<< orphan*/ * read_stmt () ; 
- int /*<<< orphan*/  tok2s (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vec_push (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int Vector ;
+typedef int Token ;
+typedef int Node ;
+
+
+ int KWHILE ;
+ int RESTORE_JUMP_LABELS () ;
+ int SET_JUMP_LABELS (char*,char*) ;
+ int * ast_compound_stmt (int *) ;
+ int * ast_dest (char*) ;
+ int * ast_if (int *,int ,int *) ;
+ int ast_jump (char*) ;
+ int errort (int *,char*,int ) ;
+ int expect (char) ;
+ int * get () ;
+ int is_keyword (int *,int ) ;
+ char* make_label () ;
+ int * make_vector () ;
+ int * read_boolean_expr () ;
+ int * read_stmt () ;
+ int tok2s (int *) ;
+ int vec_push (int *,int *) ;
 
 __attribute__((used)) static Node *read_do_stmt() {
     char *beg = make_label();
@@ -51,7 +51,7 @@ __attribute__((used)) static Node *read_do_stmt() {
     vec_push(v, ast_dest(beg));
     if (body)
         vec_push(v, body);
-    vec_push(v, ast_if(cond, ast_jump(beg), NULL));
+    vec_push(v, ast_if(cond, ast_jump(beg), ((void*)0)));
     vec_push(v, ast_dest(end));
     return ast_compound_stmt(v);
 }

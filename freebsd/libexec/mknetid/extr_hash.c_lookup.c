@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct member_entry {struct member_entry* next; struct grouplist* groups; int /*<<< orphan*/  key; } ;
+
+
+
+
+struct member_entry {struct member_entry* next; struct grouplist* groups; int key; } ;
 struct grouplist {int dummy; } ;
 
-/* Variables and functions */
- size_t hashkey (char*) ; 
- int /*<<< orphan*/  strcmp (int /*<<< orphan*/ ,char*) ; 
+
+ size_t hashkey (char*) ;
+ int strcmp (int ,char*) ;
 
 struct grouplist *lookup(struct member_entry *table[], char *key)
 {
-	struct member_entry *cur;
+ struct member_entry *cur;
 
-	cur = table[hashkey(key)];
+ cur = table[hashkey(key)];
 
-	while (cur) {
-		if (!strcmp(cur->key, key))
-			return(cur->groups);
-		cur = cur->next;
-	}
+ while (cur) {
+  if (!strcmp(cur->key, key))
+   return(cur->groups);
+  cur = cur->next;
+ }
 
-	return(NULL);
+ return(((void*)0));
 }

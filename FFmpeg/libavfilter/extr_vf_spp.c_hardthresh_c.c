@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int int16_t ;
-typedef  int /*<<< orphan*/  dst ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memset (int*,int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int uint8_t ;
+typedef int int16_t ;
+typedef int dst ;
+
+
+ int memset (int*,int ,int) ;
 
 __attribute__((used)) static void hardthresh_c(int16_t dst[64], const int16_t src[64],
                          int qp, const uint8_t *permutation)
 {
     int i;
-    int bias = 0; // FIXME
+    int bias = 0;
 
     unsigned threshold1 = qp * ((1<<4) - bias) - 1;
     unsigned threshold2 = threshold1 << 1;

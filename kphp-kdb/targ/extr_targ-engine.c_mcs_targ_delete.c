@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct connection {int /*<<< orphan*/  Out; } ;
 
-/* Variables and functions */
- int do_delete_addresses (int) ; 
- int do_delete_education (int) ; 
- int do_delete_groups (int) ; 
- int do_delete_interests (int,int) ; 
- int do_delete_langs (int) ; 
- int do_delete_military (int) ; 
- int do_delete_negative_groups (int) ; 
- int do_delete_positive_groups (int) ; 
- int do_delete_proposal (int) ; 
- int do_delete_schools (int) ; 
- int do_delete_user (int) ; 
- int do_delete_user_group (int,int) ; 
- int do_delete_user_lang (int,int) ; 
- int do_delete_work (int) ; 
- int /*<<< orphan*/  free_tmp_buffers (struct connection*) ; 
- int sscanf (char const*,char*,int*,...) ; 
- int /*<<< orphan*/  vkprintf (int,char*,char const*) ; 
- int /*<<< orphan*/  write_out (int /*<<< orphan*/ *,char*,int) ; 
+
+
+
+struct connection {int Out; } ;
+
+
+ int do_delete_addresses (int) ;
+ int do_delete_education (int) ;
+ int do_delete_groups (int) ;
+ int do_delete_interests (int,int) ;
+ int do_delete_langs (int) ;
+ int do_delete_military (int) ;
+ int do_delete_negative_groups (int) ;
+ int do_delete_positive_groups (int) ;
+ int do_delete_proposal (int) ;
+ int do_delete_schools (int) ;
+ int do_delete_user (int) ;
+ int do_delete_user_group (int,int) ;
+ int do_delete_user_lang (int,int) ;
+ int do_delete_work (int) ;
+ int free_tmp_buffers (struct connection*) ;
+ int sscanf (char const*,char*,int*,...) ;
+ int vkprintf (int,char*,char const*) ;
+ int write_out (int *,char*,int) ;
 
 int mcs_targ_delete (struct connection *c, const char *str, int len) {
   int user_id = -1, group_id = 0, lang_id = -1, type = 0, res = 0;
 
   vkprintf (2, "delete \"%s\"\n", str);
   free_tmp_buffers (c);
-  
+
   switch (*str) {
   case 'a':
     if (sscanf (str, "address%d ", &user_id) == 1) {

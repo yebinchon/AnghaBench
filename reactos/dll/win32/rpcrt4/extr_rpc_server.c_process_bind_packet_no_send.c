@@ -1,71 +1,71 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_25__   TYPE_5__ ;
-typedef  struct TYPE_24__   TYPE_4__ ;
-typedef  struct TYPE_23__   TYPE_3__ ;
-typedef  struct TYPE_22__   TYPE_2__ ;
-typedef  struct TYPE_21__   TYPE_1__ ;
-typedef  struct TYPE_20__   TYPE_13__ ;
-typedef  struct TYPE_19__   TYPE_11__ ;
-typedef  struct TYPE_18__   TYPE_10__ ;
 
-/* Type definitions */
-typedef  scalar_t__ ULONG ;
+
+
+typedef struct TYPE_25__ TYPE_5__ ;
+typedef struct TYPE_24__ TYPE_4__ ;
+typedef struct TYPE_23__ TYPE_3__ ;
+typedef struct TYPE_22__ TYPE_2__ ;
+typedef struct TYPE_21__ TYPE_1__ ;
+typedef struct TYPE_20__ TYPE_13__ ;
+typedef struct TYPE_19__ TYPE_11__ ;
+typedef struct TYPE_18__ TYPE_10__ ;
+
+
+typedef scalar_t__ ULONG ;
 struct TYPE_25__ {int BufferLength; TYPE_3__* Buffer; } ;
-struct TYPE_19__ {int /*<<< orphan*/  SyntaxGUID; } ;
-struct TYPE_24__ {scalar_t__ MaxTransmissionSize; int /*<<< orphan*/  Endpoint; TYPE_13__* server_binding; int /*<<< orphan*/  NetworkOptions; int /*<<< orphan*/  NetworkAddr; TYPE_11__ ActiveInterface; } ;
-struct TYPE_23__ {size_t num_syntaxes; TYPE_11__ abstract_syntax; int /*<<< orphan*/ * transfer_syntaxes; } ;
-struct TYPE_22__ {unsigned int num_elements; scalar_t__ max_tsize; int /*<<< orphan*/  assoc_gid; } ;
-struct TYPE_21__ {int /*<<< orphan*/  transfer_syntax; int /*<<< orphan*/  reason; void* result; } ;
+struct TYPE_19__ {int SyntaxGUID; } ;
+struct TYPE_24__ {scalar_t__ MaxTransmissionSize; int Endpoint; TYPE_13__* server_binding; int NetworkOptions; int NetworkAddr; TYPE_11__ ActiveInterface; } ;
+struct TYPE_23__ {size_t num_syntaxes; TYPE_11__ abstract_syntax; int * transfer_syntaxes; } ;
+struct TYPE_22__ {unsigned int num_elements; scalar_t__ max_tsize; int assoc_gid; } ;
+struct TYPE_21__ {int transfer_syntax; int reason; void* result; } ;
 struct TYPE_20__ {TYPE_10__* Assoc; } ;
-struct TYPE_18__ {int /*<<< orphan*/  assoc_group_id; } ;
-typedef  int /*<<< orphan*/  RpcServerInterface ;
-typedef  TYPE_1__ RpcResult ;
-typedef  int /*<<< orphan*/  RpcPktHdr ;
-typedef  TYPE_2__ RpcPktBindHdr ;
-typedef  TYPE_3__ RpcContextElement ;
-typedef  TYPE_4__ RpcConnection ;
-typedef  int /*<<< orphan*/  RpcAuthVerifier ;
-typedef  scalar_t__ RPC_STATUS ;
-typedef  TYPE_5__ RPC_MESSAGE ;
+struct TYPE_18__ {int assoc_group_id; } ;
+typedef int RpcServerInterface ;
+typedef TYPE_1__ RpcResult ;
+typedef int RpcPktHdr ;
+typedef TYPE_2__ RpcPktBindHdr ;
+typedef TYPE_3__ RpcContextElement ;
+typedef TYPE_4__ RpcConnection ;
+typedef int RpcAuthVerifier ;
+typedef scalar_t__ RPC_STATUS ;
+typedef TYPE_5__ RPC_MESSAGE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*,int,unsigned int) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- TYPE_1__* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  NDR_LOCAL_DATA_REPRESENTATION ; 
- int /*<<< orphan*/  REASON_ABSTRACT_SYNTAX_NOT_SUPPORTED ; 
- int /*<<< orphan*/  REASON_NONE ; 
- int /*<<< orphan*/  REASON_TRANSFER_SYNTAXES_NOT_SUPPORTED ; 
- void* RESULT_ACCEPT ; 
- void* RESULT_PROVIDER_REJECTION ; 
- int /*<<< orphan*/ * RPCRT4_BuildBindAckHeader (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned int,TYPE_1__*) ; 
- scalar_t__ RPCRT4_MakeBinding (TYPE_13__**,TYPE_4__*) ; 
- scalar_t__ RPCRT4_ServerConnectionAuth (TYPE_4__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,scalar_t__,unsigned char**,scalar_t__*) ; 
- int /*<<< orphan*/ * RPCRT4_find_interface (int /*<<< orphan*/ *,TYPE_11__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RPCRT4_release_server_interface (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RPC_MAX_PACKET_SIZE ; 
- scalar_t__ RPC_MIN_PACKET_SIZE ; 
- scalar_t__ RPC_S_INVALID_BOUND ; 
- scalar_t__ RPC_S_OK ; 
- scalar_t__ RPC_S_OUT_OF_RESOURCES ; 
- scalar_t__ RpcServerAssoc_GetAssociation (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_10__**) ; 
- int /*<<< orphan*/  TRACE (char*,...) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  UuidIsNil (int /*<<< orphan*/ *,scalar_t__*) ; 
- int /*<<< orphan*/  debugstr_guid (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  rpcrt4_conn_get_name (TYPE_4__*) ; 
+
+ int ERR (char*,int,unsigned int) ;
+ int FALSE ;
+ int GetProcessHeap () ;
+ TYPE_1__* HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,TYPE_1__*) ;
+ int NDR_LOCAL_DATA_REPRESENTATION ;
+ int REASON_ABSTRACT_SYNTAX_NOT_SUPPORTED ;
+ int REASON_NONE ;
+ int REASON_TRANSFER_SYNTAXES_NOT_SUPPORTED ;
+ void* RESULT_ACCEPT ;
+ void* RESULT_PROVIDER_REJECTION ;
+ int * RPCRT4_BuildBindAckHeader (int ,int ,int ,int ,int ,unsigned int,TYPE_1__*) ;
+ scalar_t__ RPCRT4_MakeBinding (TYPE_13__**,TYPE_4__*) ;
+ scalar_t__ RPCRT4_ServerConnectionAuth (TYPE_4__*,int ,int *,scalar_t__,unsigned char**,scalar_t__*) ;
+ int * RPCRT4_find_interface (int *,TYPE_11__*,int *,int ) ;
+ int RPCRT4_release_server_interface (int *) ;
+ int RPC_MAX_PACKET_SIZE ;
+ scalar_t__ RPC_MIN_PACKET_SIZE ;
+ scalar_t__ RPC_S_INVALID_BOUND ;
+ scalar_t__ RPC_S_OK ;
+ scalar_t__ RPC_S_OUT_OF_RESOURCES ;
+ scalar_t__ RpcServerAssoc_GetAssociation (int ,int ,int ,int ,int ,TYPE_10__**) ;
+ int TRACE (char*,...) ;
+ int TRUE ;
+ int UuidIsNil (int *,scalar_t__*) ;
+ int debugstr_guid (int *) ;
+ int memset (int *,int ,int) ;
+ int rpcrt4_conn_get_name (TYPE_4__*) ;
 
 __attribute__((used)) static RPC_STATUS process_bind_packet_no_send(
     RpcConnection *conn, RpcPktBindHdr *hdr, RPC_MESSAGE *msg,
@@ -77,7 +77,7 @@ __attribute__((used)) static RPC_STATUS process_bind_packet_no_send(
   unsigned int i;
   RpcResult *results;
 
-  /* validate data */
+
   for (i = 0, ctxt_elem = msg->Buffer;
        i < hdr->num_elements;
        i++, ctxt_elem = (RpcContextElement *)&ctxt_elem->transfer_syntaxes[ctxt_elem->num_syntaxes])
@@ -109,12 +109,12 @@ __attribute__((used)) static RPC_STATUS process_bind_packet_no_send(
        i < hdr->num_elements;
        i++, ctxt_elem = (RpcContextElement *)&ctxt_elem->transfer_syntaxes[ctxt_elem->num_syntaxes])
   {
-      RpcServerInterface* sif = NULL;
+      RpcServerInterface* sif = ((void*)0);
       unsigned int j;
 
       for (j = 0; !sif && j < ctxt_elem->num_syntaxes; j++)
       {
-          sif = RPCRT4_find_interface(NULL, &ctxt_elem->abstract_syntax,
+          sif = RPCRT4_find_interface(((void*)0), &ctxt_elem->abstract_syntax,
                                       &ctxt_elem->transfer_syntaxes[j], FALSE);
           if (sif)
               break;
@@ -128,12 +128,12 @@ __attribute__((used)) static RPC_STATUS process_bind_packet_no_send(
           results[i].reason = REASON_NONE;
           results[i].transfer_syntax = ctxt_elem->transfer_syntaxes[j];
 
-          /* save the interface for later use */
-          /* FIXME: save linked list */
+
+
           conn->ActiveInterface = ctxt_elem->abstract_syntax;
       }
-      else if ((sif = RPCRT4_find_interface(NULL, &ctxt_elem->abstract_syntax,
-                                            NULL, FALSE)) != NULL)
+      else if ((sif = RPCRT4_find_interface(((void*)0), &ctxt_elem->abstract_syntax,
+                                            ((void*)0), FALSE)) != ((void*)0))
       {
           RPCRT4_release_server_interface(sif);
           TRACE("not accepting bind request on connection %p for %s - no transfer syntaxes supported\n",
@@ -152,7 +152,7 @@ __attribute__((used)) static RPC_STATUS process_bind_packet_no_send(
       }
   }
 
-  /* create temporary binding */
+
   status = RPCRT4_MakeBinding(&conn->server_binding, conn);
   if (status != RPC_S_OK)
   {

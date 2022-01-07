@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
 
-/* Variables and functions */
- int HLL_REGISTERS ; 
- scalar_t__ HLL_SPARSE_IS_XZERO (int /*<<< orphan*/ *) ; 
- scalar_t__ HLL_SPARSE_IS_ZERO (int /*<<< orphan*/ *) ; 
- int HLL_SPARSE_VAL_LEN (int /*<<< orphan*/ *) ; 
- int HLL_SPARSE_VAL_VALUE (int /*<<< orphan*/ *) ; 
- int HLL_SPARSE_XZERO_LEN (int /*<<< orphan*/ *) ; 
- int HLL_SPARSE_ZERO_LEN (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int uint8_t ;
+
+
+ int HLL_REGISTERS ;
+ scalar_t__ HLL_SPARSE_IS_XZERO (int *) ;
+ scalar_t__ HLL_SPARSE_IS_ZERO (int *) ;
+ int HLL_SPARSE_VAL_LEN (int *) ;
+ int HLL_SPARSE_VAL_VALUE (int *) ;
+ int HLL_SPARSE_XZERO_LEN (int *) ;
+ int HLL_SPARSE_ZERO_LEN (int *) ;
 
 void hllSparseRegHisto(uint8_t *sparse, int sparselen, int *invalid, int* reghisto) {
     int idx = 0, runlen, regval;

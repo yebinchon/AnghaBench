@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  unsigned int const sd_device ;
-typedef  int /*<<< orphan*/  codes ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (unsigned int const*) ; 
- int /*<<< orphan*/  log_device_debug (unsigned int const*,char*,char*) ; 
- int log_device_error_errno (unsigned int const*,int,char*) ; 
- int sd_device_get_parent_with_subsystem_devtype (unsigned int const*,char*,int /*<<< orphan*/ *,unsigned int const**) ; 
- int sd_device_get_sysattr_value (unsigned int const*,char*,char const**) ; 
- int sd_device_set_sysattr_value (unsigned int const*,char*,char*) ; 
- size_t strpcpy (char**,size_t,char const*) ; 
- size_t strpcpyf (char**,size_t,char*,unsigned int const) ; 
+
+
+
+typedef unsigned int const sd_device ;
+typedef int codes ;
+
+
+ int assert (unsigned int const*) ;
+ int log_device_debug (unsigned int const*,char*,char*) ;
+ int log_device_error_errno (unsigned int const*,int,char*) ;
+ int sd_device_get_parent_with_subsystem_devtype (unsigned int const*,char*,int *,unsigned int const**) ;
+ int sd_device_get_sysattr_value (unsigned int const*,char*,char const**) ;
+ int sd_device_set_sysattr_value (unsigned int const*,char*,char*) ;
+ size_t strpcpy (char**,size_t,char const*) ;
+ size_t strpcpyf (char**,size_t,char*,unsigned int const) ;
 
 __attribute__((used)) static int install_force_release(sd_device *dev, const unsigned *release, unsigned release_count) {
         sd_device *atkbd;
@@ -35,7 +35,7 @@ __attribute__((used)) static int install_force_release(sd_device *dev, const uns
         assert(dev);
         assert(release);
 
-        r = sd_device_get_parent_with_subsystem_devtype(dev, "serio", NULL, &atkbd);
+        r = sd_device_get_parent_with_subsystem_devtype(dev, "serio", ((void*)0), &atkbd);
         if (r < 0)
                 return log_device_error_errno(dev, r, "Failed to get serio parent: %m");
 
@@ -46,10 +46,10 @@ __attribute__((used)) static int install_force_release(sd_device *dev, const uns
         s = codes;
         l = sizeof(codes);
 
-        /* copy current content */
+
         l = strpcpy(&s, l, cur);
 
-        /* append new codes */
+
         for (i = 0; i < release_count; i++)
                 l = strpcpyf(&s, l, ",%u", release[i]);
 

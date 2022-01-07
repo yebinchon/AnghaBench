@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_4__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  features; int /*<<< orphan*/  name; } ;
+
+
+typedef struct TYPE_7__ TYPE_4__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int features; int name; } ;
 struct TYPE_6__ {TYPE_1__ api_register; } ;
-typedef  TYPE_2__ tBTA_HF_CLIENT_DATA ;
-struct TYPE_7__ {scalar_t__ sdp_handle; int /*<<< orphan*/  scn; } ;
+typedef TYPE_2__ tBTA_HF_CLIENT_DATA ;
+struct TYPE_7__ {scalar_t__ sdp_handle; int scn; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BTM_AllocateSCN () ; 
- scalar_t__ SDP_CreateRecord () ; 
- int /*<<< orphan*/  UUID_SERVCLASS_HF_HANDSFREE ; 
- int /*<<< orphan*/  bta_hf_client_add_record (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- TYPE_4__ bta_hf_client_cb ; 
- int /*<<< orphan*/  bta_sys_add_uuid (int /*<<< orphan*/ ) ; 
+
+ int BTM_AllocateSCN () ;
+ scalar_t__ SDP_CreateRecord () ;
+ int UUID_SERVCLASS_HF_HANDSFREE ;
+ int bta_hf_client_add_record (int ,int ,int ,scalar_t__) ;
+ TYPE_4__ bta_hf_client_cb ;
+ int bta_sys_add_uuid (int ) ;
 
 void bta_hf_client_create_record(tBTA_HF_CLIENT_DATA *p_data)
 {
-    /* add sdp record if not already registered */
+
     if (bta_hf_client_cb.sdp_handle == 0) {
         bta_hf_client_cb.sdp_handle = SDP_CreateRecord();
         bta_hf_client_cb.scn = BTM_AllocateSCN();

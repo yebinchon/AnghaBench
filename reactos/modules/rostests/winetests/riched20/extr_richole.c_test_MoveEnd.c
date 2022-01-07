@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int LPARAM ;
-typedef  int LONG ;
-typedef  int /*<<< orphan*/  ITextSelection ;
-typedef  int /*<<< orphan*/  ITextRange ;
-typedef  int /*<<< orphan*/  ITextDocument ;
-typedef  int /*<<< orphan*/  IRichEditOle ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  int HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHECK_RANGE (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  CHECK_SELECTION (int /*<<< orphan*/ *,int,int) ; 
- int CO_E_RELEASED ; 
- int /*<<< orphan*/  EM_SETSEL ; 
- int ITextDocument_Range (int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ **) ; 
- int ITextRange_MoveEnd (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int*) ; 
- int /*<<< orphan*/  ITextRange_Release (int /*<<< orphan*/ *) ; 
- int ITextSelection_MoveEnd (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int*) ; 
- int /*<<< orphan*/  ITextSelection_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RESET_RANGE (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  RESET_SELECTION (int /*<<< orphan*/ *,int,int) ; 
- int S_FALSE ; 
- int S_OK ; 
- int /*<<< orphan*/  SendMessageA (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  WM_SETTEXT ; 
- int /*<<< orphan*/  create_interfaces (int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ **,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  ok (int,char*,int) ; 
- int /*<<< orphan*/  release_interfaces (int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tomStory ; 
+
+
+
+typedef int LPARAM ;
+typedef int LONG ;
+typedef int ITextSelection ;
+typedef int ITextRange ;
+typedef int ITextDocument ;
+typedef int IRichEditOle ;
+typedef int HWND ;
+typedef int HRESULT ;
+
+
+ int CHECK_RANGE (int *,int,int) ;
+ int CHECK_SELECTION (int *,int,int) ;
+ int CO_E_RELEASED ;
+ int EM_SETSEL ;
+ int ITextDocument_Range (int *,int,int,int **) ;
+ int ITextRange_MoveEnd (int *,int ,int,int*) ;
+ int ITextRange_Release (int *) ;
+ int ITextSelection_MoveEnd (int *,int ,int,int*) ;
+ int ITextSelection_Release (int *) ;
+ int RESET_RANGE (int *,int,int) ;
+ int RESET_SELECTION (int *,int,int) ;
+ int S_FALSE ;
+ int S_OK ;
+ int SendMessageA (int ,int ,int,int) ;
+ int WM_SETTEXT ;
+ int create_interfaces (int *,int **,int **,int **) ;
+ int ok (int,char*,int) ;
+ int release_interfaces (int *,int **,int **,int *) ;
+ int tomStory ;
 
 __attribute__((used)) static void test_MoveEnd(void)
 {
   static const char test_text1[] = "Word1 Word2";
-  IRichEditOle *reole = NULL;
-  ITextDocument *doc = NULL;
+  IRichEditOle *reole = ((void*)0);
+  ITextDocument *doc = ((void*)0);
   ITextSelection *selection;
   ITextRange *range;
   LONG delta;
@@ -136,15 +136,15 @@ __attribute__((used)) static void test_MoveEnd(void)
   ok(delta == 0, "got %d\n", delta);
   CHECK_SELECTION(selection, 0, 0);
 
-  release_interfaces(&hwnd, &reole, &doc, NULL);
+  release_interfaces(&hwnd, &reole, &doc, ((void*)0));
 
-  hr = ITextRange_MoveEnd(range, tomStory, 1, NULL);
+  hr = ITextRange_MoveEnd(range, tomStory, 1, ((void*)0));
   ok(hr == CO_E_RELEASED, "got 0x%08x\n", hr);
 
   hr = ITextRange_MoveEnd(range, tomStory, 1, &delta);
   ok(hr == CO_E_RELEASED, "got 0x%08x\n", hr);
 
-  hr = ITextSelection_MoveEnd(selection, tomStory, 1, NULL);
+  hr = ITextSelection_MoveEnd(selection, tomStory, 1, ((void*)0));
   ok(hr == CO_E_RELEASED, "got 0x%08x\n", hr);
 
   hr = ITextSelection_MoveEnd(selection, tomStory, 1, &delta);

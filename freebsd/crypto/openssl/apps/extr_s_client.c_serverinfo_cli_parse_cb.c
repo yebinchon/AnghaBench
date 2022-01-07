@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  pem_name ;
-typedef  int /*<<< orphan*/  SSL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_snprintf (char*,int,char*,unsigned int) ; 
- int /*<<< orphan*/  PEM_write_bio (int /*<<< orphan*/ ,char*,char*,unsigned char*,int) ; 
- int /*<<< orphan*/  bio_c_out ; 
- int /*<<< orphan*/  memcpy (unsigned char*,unsigned char const*,size_t) ; 
+
+
+
+typedef int pem_name ;
+typedef int SSL ;
+
+
+ int BIO_snprintf (char*,int,char*,unsigned int) ;
+ int PEM_write_bio (int ,char*,char*,unsigned char*,int) ;
+ int bio_c_out ;
+ int memcpy (unsigned char*,unsigned char const*,size_t) ;
 
 __attribute__((used)) static int serverinfo_cli_parse_cb(SSL *s, unsigned int ext_type,
                                    const unsigned char *in, size_t inlen,
@@ -26,8 +26,8 @@ __attribute__((used)) static int serverinfo_cli_parse_cb(SSL *s, unsigned int ex
     char pem_name[100];
     unsigned char ext_buf[4 + 65536];
 
-    /* Reconstruct the type/len fields prior to extension data */
-    inlen &= 0xffff; /* for formal memcmpy correctness */
+
+    inlen &= 0xffff;
     ext_buf[0] = (unsigned char)(ext_type >> 8);
     ext_buf[1] = (unsigned char)(ext_type);
     ext_buf[2] = (unsigned char)(inlen >> 8);

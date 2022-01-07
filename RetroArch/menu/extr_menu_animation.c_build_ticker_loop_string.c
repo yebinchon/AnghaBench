@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tmp ;
 
-/* Variables and functions */
- int PATH_MAX_LENGTH ; 
- int /*<<< orphan*/  strlcat (char*,char*,size_t) ; 
- int /*<<< orphan*/  utf8cpy (char*,int,int /*<<< orphan*/ ,unsigned int) ; 
- int /*<<< orphan*/  utf8skip (char const*,unsigned int) ; 
+
+
+
+typedef int tmp ;
+
+
+ int PATH_MAX_LENGTH ;
+ int strlcat (char*,char*,size_t) ;
+ int utf8cpy (char*,int,int ,unsigned int) ;
+ int utf8skip (char const*,unsigned int) ;
 
 __attribute__((used)) static void build_ticker_loop_string(
       const char* src_str, const char *spacer,
@@ -30,7 +30,7 @@ __attribute__((used)) static void build_ticker_loop_string(
    tmp[0] = '\0';
    dest_str[0] = '\0';
 
-   /* Copy 'trailing' chunk of source string, if required */
+
    if (num_chars1 > 0)
    {
       utf8cpy(
@@ -38,7 +38,7 @@ __attribute__((used)) static void build_ticker_loop_string(
             utf8skip(src_str, char_offset1), num_chars1);
    }
 
-   /* Copy chunk of spacer string, if required */
+
    if (num_chars2 > 0)
    {
       utf8cpy(
@@ -48,7 +48,7 @@ __attribute__((used)) static void build_ticker_loop_string(
       strlcat(dest_str, tmp, dest_str_len);
    }
 
-   /* Copy 'leading' chunk of source string, if required */
+
    if (num_chars3 > 0)
    {
       utf8cpy(

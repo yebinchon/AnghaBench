@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
 
-/* Variables and functions */
- int HLL_BITS ; 
- int /*<<< orphan*/  HLL_DENSE_GET_REGISTER (unsigned long,int*,int) ; 
- int HLL_REGISTERS ; 
+
+
+
+typedef int uint8_t ;
+
+
+ int HLL_BITS ;
+ int HLL_DENSE_GET_REGISTER (unsigned long,int*,int) ;
+ int HLL_REGISTERS ;
 
 void hllDenseRegHisto(uint8_t *registers, int* reghisto) {
     int j;
 
-    /* Redis default is to use 16384 registers 6 bits each. The code works
-     * with other values by modifying the defines, but for our target value
-     * we take a faster path with unrolled loops. */
+
+
+
     if (HLL_REGISTERS == 16384 && HLL_BITS == 6) {
         uint8_t *r = registers;
         unsigned long r0, r1, r2, r3, r4, r5, r6, r7, r8, r9,
                       r10, r11, r12, r13, r14, r15;
         for (j = 0; j < 1024; j++) {
-            /* Handle 16 registers per iteration. */
+
             r0 = r[0] & 63;
             r1 = (r[0] >> 6 | r[1] << 2) & 63;
             r2 = (r[1] >> 4 | r[2] << 4) & 63;

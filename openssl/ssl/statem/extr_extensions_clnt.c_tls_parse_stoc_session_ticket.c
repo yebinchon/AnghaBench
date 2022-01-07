@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  X509 ;
-struct TYPE_7__ {int ticket_expected; int /*<<< orphan*/  session_ticket_cb_arg; int /*<<< orphan*/  (* session_ticket_cb ) (TYPE_2__*,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ) ;} ;
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int X509 ;
+struct TYPE_7__ {int ticket_expected; int session_ticket_cb_arg; int (* session_ticket_cb ) (TYPE_2__*,int ,scalar_t__,int ) ;} ;
 struct TYPE_8__ {TYPE_1__ ext; } ;
-typedef  TYPE_2__ SSL ;
-typedef  int /*<<< orphan*/  PACKET ;
+typedef TYPE_2__ SSL ;
+typedef int PACKET ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PACKET_data (int /*<<< orphan*/ *) ; 
- scalar_t__ PACKET_remaining (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SSL_AD_DECODE_ERROR ; 
- int /*<<< orphan*/  SSL_AD_HANDSHAKE_FAILURE ; 
- int /*<<< orphan*/  SSL_AD_UNSUPPORTED_EXTENSION ; 
- int /*<<< orphan*/  SSL_F_TLS_PARSE_STOC_SESSION_TICKET ; 
- int /*<<< orphan*/  SSL_R_BAD_EXTENSION ; 
- int /*<<< orphan*/  SSLfatal (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 (TYPE_2__*,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tls_use_ticket (TYPE_2__*) ; 
+
+ int PACKET_data (int *) ;
+ scalar_t__ PACKET_remaining (int *) ;
+ int SSL_AD_DECODE_ERROR ;
+ int SSL_AD_HANDSHAKE_FAILURE ;
+ int SSL_AD_UNSUPPORTED_EXTENSION ;
+ int SSL_F_TLS_PARSE_STOC_SESSION_TICKET ;
+ int SSL_R_BAD_EXTENSION ;
+ int SSLfatal (TYPE_2__*,int ,int ,int ) ;
+ int stub1 (TYPE_2__*,int ,scalar_t__,int ) ;
+ int tls_use_ticket (TYPE_2__*) ;
 
 int tls_parse_stoc_session_ticket(SSL *s, PACKET *pkt, unsigned int context,
                                   X509 *x, size_t chainidx)
 {
-    if (s->ext.session_ticket_cb != NULL &&
+    if (s->ext.session_ticket_cb != ((void*)0) &&
         !s->ext.session_ticket_cb(s, PACKET_data(pkt),
                               PACKET_remaining(pkt),
                               s->ext.session_ticket_cb_arg)) {

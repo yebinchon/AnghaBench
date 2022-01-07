@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  void* off64_t ;
-typedef  int /*<<< orphan*/  ar_stream ;
-typedef  int /*<<< orphan*/  ar_parse_entry_fn ;
-typedef  int /*<<< orphan*/  ar_get_global_comment_fn ;
-typedef  int /*<<< orphan*/  ar_entry_uncompress_fn ;
-typedef  int /*<<< orphan*/  ar_entry_get_name_fn ;
-typedef  int /*<<< orphan*/  ar_archive_close_fn ;
-struct TYPE_5__ {void* entry_offset_next; void* entry_offset_first; int /*<<< orphan*/ * stream; int /*<<< orphan*/  get_comment; int /*<<< orphan*/  uncompress; int /*<<< orphan*/  get_name; int /*<<< orphan*/  parse_entry; int /*<<< orphan*/  close; } ;
-typedef  TYPE_1__ ar_archive ;
 
-/* Variables and functions */
- TYPE_1__* malloc (size_t) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,size_t) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef void* off64_t ;
+typedef int ar_stream ;
+typedef int ar_parse_entry_fn ;
+typedef int ar_get_global_comment_fn ;
+typedef int ar_entry_uncompress_fn ;
+typedef int ar_entry_get_name_fn ;
+typedef int ar_archive_close_fn ;
+struct TYPE_5__ {void* entry_offset_next; void* entry_offset_first; int * stream; int get_comment; int uncompress; int get_name; int parse_entry; int close; } ;
+typedef TYPE_1__ ar_archive ;
+
+
+ TYPE_1__* malloc (size_t) ;
+ int memset (TYPE_1__*,int ,size_t) ;
 
 ar_archive *ar_open_archive(ar_stream *stream, size_t struct_size, ar_archive_close_fn close, ar_parse_entry_fn parse_entry,
                             ar_entry_get_name_fn get_name, ar_entry_uncompress_fn uncompress, ar_get_global_comment_fn get_comment,
@@ -31,7 +31,7 @@ ar_archive *ar_open_archive(ar_stream *stream, size_t struct_size, ar_archive_cl
 {
     ar_archive *ar = malloc(struct_size);
     if (!ar)
-        return NULL;
+        return ((void*)0);
     memset(ar, 0, struct_size);
     ar->close = close;
     ar->parse_entry = parse_entry;

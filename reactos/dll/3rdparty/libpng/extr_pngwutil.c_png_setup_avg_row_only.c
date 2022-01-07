@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t png_uint_32 ;
-typedef  TYPE_1__* png_structrp ;
-typedef  int /*<<< orphan*/ * png_bytep ;
-typedef  void* png_byte ;
-struct TYPE_3__ {int /*<<< orphan*/ * row_buf; int /*<<< orphan*/ * prev_row; int /*<<< orphan*/ * try_row; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PNG_FILTER_VALUE_AVG ; 
 
-__attribute__((used)) static void /* PRIVATE */
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef size_t png_uint_32 ;
+typedef TYPE_1__* png_structrp ;
+typedef int * png_bytep ;
+typedef void* png_byte ;
+struct TYPE_3__ {int * row_buf; int * prev_row; int * try_row; } ;
+
+
+ int PNG_FILTER_VALUE_AVG ;
+
+__attribute__((used)) static void
 png_setup_avg_row_only(png_structrp png_ptr, png_uint_32 bpp,
     size_t row_bytes)
 {

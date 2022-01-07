@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
 struct TYPE_10__ {int minor; } ;
-typedef  TYPE_1__ svn_version_t ;
-typedef  int /*<<< orphan*/  svn_mutex__t ;
-struct TYPE_11__ {scalar_t__ fsap_data; int /*<<< orphan*/  path; scalar_t__ config; } ;
-typedef  TYPE_2__ svn_fs_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
+typedef TYPE_1__ svn_version_t ;
+typedef int svn_mutex__t ;
+struct TYPE_11__ {scalar_t__ fsap_data; int path; scalar_t__ config; } ;
+typedef TYPE_2__ svn_fs_t ;
+typedef int svn_error_t ;
 struct TYPE_12__ {int format; } ;
-typedef  TYPE_3__ base_fs_data_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+typedef TYPE_3__ base_fs_data_t ;
+typedef int apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FORMAT_FILE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int SVN_FS_BASE__FORMAT_NUMBER ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  cleanup_fs (TYPE_2__*) ; 
- int /*<<< orphan*/ * open_databases (TYPE_2__*,int /*<<< orphan*/ ,int,char const*) ; 
- int /*<<< orphan*/  populate_opened_fs (TYPE_2__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_dirent_join (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_error_compose_create (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_error_trace (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_fs__compatible_version (TYPE_1__**,scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_fs_base__dag_init_fs (TYPE_2__*) ; 
- int /*<<< orphan*/ * svn_io_write_version_file (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
+
+ int FORMAT_FILE ;
+ int SVN_ERR (int ) ;
+ int SVN_FS_BASE__FORMAT_NUMBER ;
+ int * SVN_NO_ERROR ;
+ int TRUE ;
+ int cleanup_fs (TYPE_2__*) ;
+ int * open_databases (TYPE_2__*,int ,int,char const*) ;
+ int populate_opened_fs (TYPE_2__*,int *) ;
+ int svn_dirent_join (int ,int ,int *) ;
+ int * svn_error_compose_create (int *,int ) ;
+ int svn_error_trace (int ) ;
+ int svn_fs__compatible_version (TYPE_1__**,scalar_t__,int *) ;
+ int * svn_fs_base__dag_init_fs (TYPE_2__*) ;
+ int * svn_io_write_version_file (int ,int,int *) ;
 
 __attribute__((used)) static svn_error_t *
 base_create(svn_fs_t *fs,
@@ -49,14 +49,14 @@ base_create(svn_fs_t *fs,
   int format = SVN_FS_BASE__FORMAT_NUMBER;
   svn_error_t *svn_err;
 
-  /* See if compatibility with older versions was explicitly requested. */
+
   if (fs->config)
     {
       svn_version_t *compatible_version;
       SVN_ERR(svn_fs__compatible_version(&compatible_version, fs->config,
                                          scratch_pool));
 
-      /* select format number */
+
       switch(compatible_version->minor)
         {
           case 0:
@@ -75,15 +75,15 @@ base_create(svn_fs_t *fs,
         }
     }
 
-  /* Create the environment and databases. */
+
   svn_err = open_databases(fs, TRUE, format, path);
   if (svn_err) goto error;
 
-  /* Initialize the DAG subsystem. */
+
   svn_err = svn_fs_base__dag_init_fs(fs);
   if (svn_err) goto error;
 
-  /* This filesystem is ready.  Stamp it with a format number. */
+
   svn_err = svn_io_write_version_file(svn_dirent_join(fs->path, FORMAT_FILE,
                                                       scratch_pool),
                                       format, scratch_pool);

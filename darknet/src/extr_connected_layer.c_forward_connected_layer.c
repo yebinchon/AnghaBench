@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_7__ {float* input; } ;
-typedef  TYPE_1__ network ;
-struct TYPE_8__ {int outputs; int batch; float* output; int inputs; float* weights; int /*<<< orphan*/  activation; int /*<<< orphan*/  biases; scalar_t__ batch_normalize; } ;
-typedef  TYPE_2__ layer ;
+typedef TYPE_1__ network ;
+struct TYPE_8__ {int outputs; int batch; float* output; int inputs; float* weights; int activation; int biases; scalar_t__ batch_normalize; } ;
+typedef TYPE_2__ layer ;
 
-/* Variables and functions */
- int /*<<< orphan*/  activate_array (float*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  add_bias (float*,int /*<<< orphan*/ ,int,int,int) ; 
- int /*<<< orphan*/  fill_cpu (int,int /*<<< orphan*/ ,float*,int) ; 
- int /*<<< orphan*/  forward_batchnorm_layer (TYPE_2__,TYPE_1__) ; 
- int /*<<< orphan*/  gemm (int /*<<< orphan*/ ,int,int,int,int,int,float*,int,float*,int,int,float*,int) ; 
+
+ int activate_array (float*,int,int ) ;
+ int add_bias (float*,int ,int,int,int) ;
+ int fill_cpu (int,int ,float*,int) ;
+ int forward_batchnorm_layer (TYPE_2__,TYPE_1__) ;
+ int gemm (int ,int,int,int,int,int,float*,int,float*,int,int,float*,int) ;
 
 void forward_connected_layer(layer l, network net)
 {

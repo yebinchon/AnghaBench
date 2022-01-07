@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct gl_texture_object {size_t* Palette; int PaletteFormat; } ;
-typedef  size_t GLubyte ;
-typedef  int GLint ;
-
-/* Variables and functions */
-#define  GL_ALPHA 133 
-#define  GL_INTENSITY 132 
-#define  GL_LUMINANCE 131 
-#define  GL_LUMINANCE_ALPHA 130 
-#define  GL_RGB 129 
-#define  GL_RGBA 128 
- int /*<<< orphan*/  gl_problem (int /*<<< orphan*/ *,char*) ; 
+typedef size_t GLubyte ;
+typedef int GLint ;
+ int gl_problem (int *,char*) ;
 
 __attribute__((used)) static void palette_sample(const struct gl_texture_object *tObj,
                            GLubyte index, GLubyte *red, GLubyte *green,
@@ -33,29 +25,29 @@ __attribute__((used)) static void palette_sample(const struct gl_texture_object 
    palette = tObj->Palette;
 
    switch (tObj->PaletteFormat) {
-      case GL_ALPHA:
+      case 133:
          *alpha = tObj->Palette[index];
          return;
-      case GL_LUMINANCE:
-      case GL_INTENSITY:
+      case 131:
+      case 132:
          *red = palette[index];
          return;
-      case GL_LUMINANCE_ALPHA:
-         *red   = palette[(index << 1) + 0];
+      case 130:
+         *red = palette[(index << 1) + 0];
          *alpha = palette[(index << 1) + 1];
          return;
-      case GL_RGB:
-         *red   = palette[index * 3 + 0];
+      case 129:
+         *red = palette[index * 3 + 0];
          *green = palette[index * 3 + 1];
-         *blue  = palette[index * 3 + 2];
+         *blue = palette[index * 3 + 2];
          return;
-      case GL_RGBA:
-         *red   = palette[(i << 2) + 0];
+      case 128:
+         *red = palette[(i << 2) + 0];
          *green = palette[(i << 2) + 1];
-         *blue  = palette[(i << 2) + 2];
+         *blue = palette[(i << 2) + 2];
          *alpha = palette[(i << 2) + 3];
          return;
       default:
-         gl_problem(NULL, "Bad palette format in palette_sample");
+         gl_problem(((void*)0), "Bad palette format in palette_sample");
    }
 }

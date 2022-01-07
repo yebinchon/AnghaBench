@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  expdesc ;
+
+
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int expdesc ;
 struct TYPE_9__ {int token; } ;
-struct TYPE_10__ {int linenumber; int /*<<< orphan*/  fs; TYPE_1__ t; } ;
-typedef  TYPE_2__ LexState ;
+struct TYPE_10__ {int linenumber; int fs; TYPE_1__ t; } ;
+typedef TYPE_2__ LexState ;
 
-/* Variables and functions */
-#define  TK_NAME 128 
- int /*<<< orphan*/  check_match (TYPE_2__*,char,char,int) ; 
- int /*<<< orphan*/  expr (TYPE_2__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  luaK_dischargevars (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  luaX_next (TYPE_2__*) ; 
- int /*<<< orphan*/  luaX_syntaxerror (TYPE_2__*,char*) ; 
- int /*<<< orphan*/  singlevar (TYPE_2__*,int /*<<< orphan*/ *) ; 
+
+
+ int check_match (TYPE_2__*,char,char,int) ;
+ int expr (TYPE_2__*,int *) ;
+ int luaK_dischargevars (int ,int *) ;
+ int luaX_next (TYPE_2__*) ;
+ int luaX_syntaxerror (TYPE_2__*,char*) ;
+ int singlevar (TYPE_2__*,int *) ;
 
 __attribute__((used)) static void prefixexp (LexState *ls, expdesc *v) {
-  /* prefixexp -> NAME | '(' expr ')' */
+
   switch (ls->t.token) {
     case '(': {
       int line = ls->linenumber;
@@ -37,7 +37,7 @@ __attribute__((used)) static void prefixexp (LexState *ls, expdesc *v) {
       luaK_dischargevars(ls->fs, v);
       return;
     }
-    case TK_NAME: {
+    case 128: {
       singlevar(ls, v);
       return;
     }

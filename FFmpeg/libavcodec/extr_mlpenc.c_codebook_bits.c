@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  int32_t ;
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int int32_t ;
 struct TYPE_8__ {int bitcount; int max; int min; } ;
 struct TYPE_7__ {int max_codebook_search; } ;
-typedef  TYPE_1__ MLPEncodeContext ;
-typedef  TYPE_2__ BestOffset ;
+typedef TYPE_1__ MLPEncodeContext ;
+typedef TYPE_2__ BestOffset ;
 
-/* Variables and functions */
- int FFMAX (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int FFMIN (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HUFF_OFFSET_MAX ; 
- int /*<<< orphan*/  HUFF_OFFSET_MIN ; 
- int INT_MAX ; 
- int /*<<< orphan*/  codebook_bits_offset (TYPE_1__*,unsigned int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,TYPE_2__*) ; 
+
+ int FFMAX (int ,int ) ;
+ int FFMIN (int ,int ) ;
+ int HUFF_OFFSET_MAX ;
+ int HUFF_OFFSET_MIN ;
+ int INT_MAX ;
+ int codebook_bits_offset (TYPE_1__*,unsigned int,int,int ,int ,int,TYPE_2__*) ;
 
 __attribute__((used)) static inline void codebook_bits(MLPEncodeContext *ctx,
                                  unsigned int channel, int codebook,

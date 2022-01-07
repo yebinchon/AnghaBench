@@ -1,71 +1,62 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_31__   TYPE_6__ ;
-typedef  struct TYPE_30__   TYPE_5__ ;
-typedef  struct TYPE_29__   TYPE_4__ ;
-typedef  struct TYPE_28__   TYPE_3__ ;
-typedef  struct TYPE_27__   TYPE_2__ ;
-typedef  struct TYPE_26__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  enum ColorMode { ____Placeholder_ColorMode } ColorMode ;
-typedef  enum AVColorSpace { ____Placeholder_AVColorSpace } AVColorSpace ;
-struct TYPE_27__ {int /*<<< orphan*/  c7; int /*<<< orphan*/  c6; int /*<<< orphan*/  c5; int /*<<< orphan*/  c4; int /*<<< orphan*/  c3; int /*<<< orphan*/  c2; TYPE_4__* dst; TYPE_4__* src; int /*<<< orphan*/  member_0; } ;
-typedef  TYPE_2__ ThreadData ;
+
+
+typedef struct TYPE_31__ TYPE_6__ ;
+typedef struct TYPE_30__ TYPE_5__ ;
+typedef struct TYPE_29__ TYPE_4__ ;
+typedef struct TYPE_28__ TYPE_3__ ;
+typedef struct TYPE_27__ TYPE_2__ ;
+typedef struct TYPE_26__ TYPE_1__ ;
+
+
+typedef enum ColorMode { ____Placeholder_ColorMode } ColorMode ;
+typedef enum AVColorSpace { ____Placeholder_AVColorSpace } AVColorSpace ;
+struct TYPE_27__ {int c7; int c6; int c5; int c4; int c3; int c2; TYPE_4__* dst; TYPE_4__* src; int member_0; } ;
+typedef TYPE_2__ ThreadData ;
 struct TYPE_31__ {TYPE_1__* internal; TYPE_5__** outputs; TYPE_3__* priv; } ;
-struct TYPE_30__ {int /*<<< orphan*/  h; int /*<<< orphan*/  w; TYPE_6__* dst; } ;
+struct TYPE_30__ {int h; int w; TYPE_6__* dst; } ;
 struct TYPE_29__ {int colorspace; scalar_t__ format; int height; } ;
-struct TYPE_28__ {int source; int mode; int dest; int /*<<< orphan*/ *** yuv_convert; } ;
-struct TYPE_26__ {int /*<<< orphan*/  (* execute ) (TYPE_6__*,int /*<<< orphan*/ ,TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ;} ;
-typedef  TYPE_3__ ColorMatrixContext ;
-typedef  TYPE_4__ AVFrame ;
-typedef  TYPE_5__ AVFilterLink ;
-typedef  TYPE_6__ AVFilterContext ;
+struct TYPE_28__ {int source; int mode; int dest; int *** yuv_convert; } ;
+struct TYPE_26__ {int (* execute ) (TYPE_6__*,int ,TYPE_2__*,int *,int ) ;} ;
+typedef TYPE_3__ ColorMatrixContext ;
+typedef TYPE_4__ AVFrame ;
+typedef TYPE_5__ AVFilterLink ;
+typedef TYPE_6__ AVFilterContext ;
+ int AVERROR (int ) ;
+ int AV_LOG_ERROR ;
+ scalar_t__ AV_PIX_FMT_YUV420P ;
+ scalar_t__ AV_PIX_FMT_YUV422P ;
+ scalar_t__ AV_PIX_FMT_YUV444P ;
 
-/* Variables and functions */
-#define  AVCOL_SPC_BT2020_CL 139 
-#define  AVCOL_SPC_BT2020_NCL 138 
-#define  AVCOL_SPC_BT470BG 137 
-#define  AVCOL_SPC_BT709 136 
-#define  AVCOL_SPC_FCC 135 
-#define  AVCOL_SPC_SMPTE170M 134 
-#define  AVCOL_SPC_SMPTE240M 133 
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- scalar_t__ AV_PIX_FMT_YUV420P ; 
- scalar_t__ AV_PIX_FMT_YUV422P ; 
- scalar_t__ AV_PIX_FMT_YUV444P ; 
-#define  COLOR_MODE_BT2020 132 
-#define  COLOR_MODE_BT601 131 
-#define  COLOR_MODE_BT709 130 
-#define  COLOR_MODE_FCC 129 
- int COLOR_MODE_NONE ; 
-#define  COLOR_MODE_SMPTE240M 128 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  FFMIN (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_frame_copy_props (TYPE_4__*,TYPE_4__*) ; 
- int /*<<< orphan*/  av_frame_free (TYPE_4__**) ; 
- int /*<<< orphan*/  av_log (TYPE_6__*,int /*<<< orphan*/ ,char*) ; 
- int ff_filter_frame (TYPE_5__*,TYPE_4__*) ; 
- int /*<<< orphan*/  ff_filter_get_nb_threads (TYPE_6__*) ; 
- TYPE_4__* ff_get_video_buffer (TYPE_5__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  process_slice_uyvy422 ; 
- int /*<<< orphan*/  process_slice_yuv420p ; 
- int /*<<< orphan*/  process_slice_yuv422p ; 
- int /*<<< orphan*/  process_slice_yuv444p ; 
- int /*<<< orphan*/  stub1 (TYPE_6__*,int /*<<< orphan*/ ,TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub2 (TYPE_6__*,int /*<<< orphan*/ ,TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub3 (TYPE_6__*,int /*<<< orphan*/ ,TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub4 (TYPE_6__*,int /*<<< orphan*/ ,TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+ int COLOR_MODE_NONE ;
+
+ int EINVAL ;
+ int ENOMEM ;
+ int FFMIN (int,int ) ;
+ int av_frame_copy_props (TYPE_4__*,TYPE_4__*) ;
+ int av_frame_free (TYPE_4__**) ;
+ int av_log (TYPE_6__*,int ,char*) ;
+ int ff_filter_frame (TYPE_5__*,TYPE_4__*) ;
+ int ff_filter_get_nb_threads (TYPE_6__*) ;
+ TYPE_4__* ff_get_video_buffer (TYPE_5__*,int ,int ) ;
+ int process_slice_uyvy422 ;
+ int process_slice_yuv420p ;
+ int process_slice_yuv422p ;
+ int process_slice_yuv444p ;
+ int stub1 (TYPE_6__*,int ,TYPE_2__*,int *,int ) ;
+ int stub2 (TYPE_6__*,int ,TYPE_2__*,int *,int ) ;
+ int stub3 (TYPE_6__*,int ,TYPE_2__*,int *,int ) ;
+ int stub4 (TYPE_6__*,int ,TYPE_2__*,int *,int ) ;
 
 __attribute__((used)) static int filter_frame(AVFilterLink *link, AVFrame *in)
 {
@@ -87,13 +78,13 @@ __attribute__((used)) static int filter_frame(AVFilterLink *link, AVFrame *in)
         enum ColorMode source;
 
         switch(cs) {
-        case AVCOL_SPC_BT709     : source = COLOR_MODE_BT709     ; break;
-        case AVCOL_SPC_FCC       : source = COLOR_MODE_FCC       ; break;
-        case AVCOL_SPC_SMPTE240M : source = COLOR_MODE_SMPTE240M ; break;
-        case AVCOL_SPC_BT470BG   : source = COLOR_MODE_BT601     ; break;
-        case AVCOL_SPC_SMPTE170M : source = COLOR_MODE_BT601     ; break;
-        case AVCOL_SPC_BT2020_NCL: source = COLOR_MODE_BT2020    ; break;
-        case AVCOL_SPC_BT2020_CL : source = COLOR_MODE_BT2020    ; break;
+        case 136 : source = 130 ; break;
+        case 135 : source = 129 ; break;
+        case 133 : source = 128 ; break;
+        case 137 : source = 131 ; break;
+        case 134 : source = 131 ; break;
+        case 138: source = 132 ; break;
+        case 139 : source = 132 ; break;
         default :
             av_log(ctx, AV_LOG_ERROR, "Input frame does not specify a supported colorspace, and none has been specified as source either\n");
             av_frame_free(&out);
@@ -104,11 +95,11 @@ __attribute__((used)) static int filter_frame(AVFilterLink *link, AVFrame *in)
         color->mode = color->source * 5 + color->dest;
 
     switch(color->dest) {
-    case COLOR_MODE_BT709    : out->colorspace = AVCOL_SPC_BT709     ; break;
-    case COLOR_MODE_FCC      : out->colorspace = AVCOL_SPC_FCC       ; break;
-    case COLOR_MODE_SMPTE240M: out->colorspace = AVCOL_SPC_SMPTE240M ; break;
-    case COLOR_MODE_BT601    : out->colorspace = AVCOL_SPC_BT470BG   ; break;
-    case COLOR_MODE_BT2020   : out->colorspace = AVCOL_SPC_BT2020_NCL; break;
+    case 130 : out->colorspace = 136 ; break;
+    case 129 : out->colorspace = 135 ; break;
+    case 128: out->colorspace = 133 ; break;
+    case 131 : out->colorspace = 137 ; break;
+    case 132 : out->colorspace = 138; break;
     }
 
     td.src = in;
@@ -121,16 +112,16 @@ __attribute__((used)) static int filter_frame(AVFilterLink *link, AVFrame *in)
     td.c7 = color->yuv_convert[color->mode][2][2];
 
     if (in->format == AV_PIX_FMT_YUV444P)
-        ctx->internal->execute(ctx, process_slice_yuv444p, &td, NULL,
+        ctx->internal->execute(ctx, process_slice_yuv444p, &td, ((void*)0),
                                FFMIN(in->height, ff_filter_get_nb_threads(ctx)));
     else if (in->format == AV_PIX_FMT_YUV422P)
-        ctx->internal->execute(ctx, process_slice_yuv422p, &td, NULL,
+        ctx->internal->execute(ctx, process_slice_yuv422p, &td, ((void*)0),
                                FFMIN(in->height, ff_filter_get_nb_threads(ctx)));
     else if (in->format == AV_PIX_FMT_YUV420P)
-        ctx->internal->execute(ctx, process_slice_yuv420p, &td, NULL,
+        ctx->internal->execute(ctx, process_slice_yuv420p, &td, ((void*)0),
                                FFMIN(in->height / 2, ff_filter_get_nb_threads(ctx)));
     else
-        ctx->internal->execute(ctx, process_slice_uyvy422, &td, NULL,
+        ctx->internal->execute(ctx, process_slice_uyvy422, &td, ((void*)0),
                                FFMIN(in->height, ff_filter_get_nb_threads(ctx)));
 
     av_frame_free(&in);

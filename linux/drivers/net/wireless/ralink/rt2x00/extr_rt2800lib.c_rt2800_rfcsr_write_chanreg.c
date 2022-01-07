@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
+
+
+
+
+typedef int u8 ;
 struct rt2x00_dev {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  rt2800_rfcsr_write_bank (struct rt2x00_dev*,int,unsigned int const,int /*<<< orphan*/  const) ; 
+
+ int rt2800_rfcsr_write_bank (struct rt2x00_dev*,int,unsigned int const,int const) ;
 
 __attribute__((used)) static void rt2800_rfcsr_write_chanreg(struct rt2x00_dev *rt2x00dev,
-				       const unsigned int reg, const u8 value)
+           const unsigned int reg, const u8 value)
 {
-	rt2800_rfcsr_write_bank(rt2x00dev, 4, reg, value);
-	rt2800_rfcsr_write_bank(rt2x00dev, 6, reg, value);
+ rt2800_rfcsr_write_bank(rt2x00dev, 4, reg, value);
+ rt2800_rfcsr_write_bank(rt2x00dev, 6, reg, value);
 }

@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct fe_tx_dma {int /*<<< orphan*/  txd4; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MT7621_TX_DMA_FPORT ; 
+
+
+
+struct fe_tx_dma {int txd4; } ;
+
+
+ int MT7621_TX_DMA_FPORT ;
 
 __attribute__((used)) static void mt7621_tx_dma(struct fe_tx_dma *txd)
 {
-	txd->txd4 = MT7621_TX_DMA_FPORT;
+ txd->txd4 = MT7621_TX_DMA_FPORT;
 }

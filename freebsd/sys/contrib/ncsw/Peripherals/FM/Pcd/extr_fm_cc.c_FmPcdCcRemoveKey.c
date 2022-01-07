@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint16_t ;
-typedef  int /*<<< orphan*/  t_List ;
-typedef  scalar_t__ t_Handle ;
-typedef  int /*<<< orphan*/  t_FmPcdModifyCcKeyAdditionalParams ;
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint16_t ;
+typedef int t_List ;
+typedef scalar_t__ t_Handle ;
+typedef int t_FmPcdModifyCcKeyAdditionalParams ;
 struct TYPE_7__ {scalar_t__ numOfKeys; scalar_t__ h_FmPcd; scalar_t__ maxNumOfKeys; } ;
-typedef  TYPE_1__ t_FmPcdCcNode ;
-struct TYPE_8__ {int /*<<< orphan*/  shadowLock; int /*<<< orphan*/  h_ShadowSpinlock; } ;
-typedef  TYPE_2__ t_FmPcd ;
-typedef  scalar_t__ t_Error ;
+typedef TYPE_1__ t_FmPcdCcNode ;
+struct TYPE_8__ {int shadowLock; int h_ShadowSpinlock; } ;
+typedef TYPE_2__ t_FmPcd ;
+typedef scalar_t__ t_Error ;
 
-/* Variables and functions */
- scalar_t__ BuildNewNodeRemoveKey (TYPE_1__*,scalar_t__,int /*<<< orphan*/ *) ; 
- scalar_t__ DoDynamicChange (TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- scalar_t__ ERROR_CODE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  E_BUSY ; 
- scalar_t__ E_INVALID_STATE ; 
- scalar_t__ E_INVALID_VALUE ; 
- scalar_t__ E_OK ; 
- int FALSE ; 
- int /*<<< orphan*/  INIT_LIST (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  MAJOR ; 
- int /*<<< orphan*/ * ModifyNodeCommonPart (TYPE_1__*,scalar_t__,int /*<<< orphan*/ ,int,int,int) ; 
- char* NO_MSG ; 
- int /*<<< orphan*/  RELEASE_LOCK (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RETURN_ERROR (int /*<<< orphan*/ ,scalar_t__,char*) ; 
- int /*<<< orphan*/  ReleaseNewNodeCommonPart (int /*<<< orphan*/ *) ; 
- int TRUE ; 
- int /*<<< orphan*/  TRY_LOCK (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ UpdatePtrWhichPointOnCrntMdfNode (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  XX_Free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  e_MODIFY_STATE_REMOVE ; 
+
+ scalar_t__ BuildNewNodeRemoveKey (TYPE_1__*,scalar_t__,int *) ;
+ scalar_t__ DoDynamicChange (TYPE_2__*,int *,int *,int *,int) ;
+ scalar_t__ ERROR_CODE (int ) ;
+ int E_BUSY ;
+ scalar_t__ E_INVALID_STATE ;
+ scalar_t__ E_INVALID_VALUE ;
+ scalar_t__ E_OK ;
+ int FALSE ;
+ int INIT_LIST (int *) ;
+ int MAJOR ;
+ int * ModifyNodeCommonPart (TYPE_1__*,scalar_t__,int ,int,int,int) ;
+ char* NO_MSG ;
+ int RELEASE_LOCK (int ) ;
+ int RETURN_ERROR (int ,scalar_t__,char*) ;
+ int ReleaseNewNodeCommonPart (int *) ;
+ int TRUE ;
+ int TRY_LOCK (int ,int *) ;
+ scalar_t__ UpdatePtrWhichPointOnCrntMdfNode (TYPE_1__*,int *,int *,int *) ;
+ int XX_Free (int *) ;
+ int e_MODIFY_STATE_REMOVE ;
 
 t_Error FmPcdCcRemoveKey(t_Handle h_FmPcd, t_Handle h_FmPcdCcNode,
                          uint16_t keyIndex)

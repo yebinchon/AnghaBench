@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct vo {struct priv* priv; } ;
 struct priv {scalar_t__ display; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  destroy_overlays (struct vo*) ; 
- int /*<<< orphan*/  disable_renderer (struct vo*) ; 
- int /*<<< orphan*/  vc_dispmanx_display_close (scalar_t__) ; 
- int /*<<< orphan*/  vc_dispmanx_vsync_callback (scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int destroy_overlays (struct vo*) ;
+ int disable_renderer (struct vo*) ;
+ int vc_dispmanx_display_close (scalar_t__) ;
+ int vc_dispmanx_vsync_callback (scalar_t__,int *,int *) ;
 
 __attribute__((used)) static void destroy_dispmanx(struct vo *vo)
 {
@@ -27,7 +27,7 @@ __attribute__((used)) static void destroy_dispmanx(struct vo *vo)
     destroy_overlays(vo);
 
     if (p->display) {
-        vc_dispmanx_vsync_callback(p->display, NULL, NULL);
+        vc_dispmanx_vsync_callback(p->display, ((void*)0), ((void*)0));
         vc_dispmanx_display_close(p->display);
     }
     p->display = 0;

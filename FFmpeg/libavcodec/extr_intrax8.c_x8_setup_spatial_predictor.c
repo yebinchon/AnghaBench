@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-struct TYPE_6__ {int /*<<< orphan*/  (* setup_spatial_compensation ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*,int*,int) ;} ;
-struct TYPE_8__ {int edges; int orient; int chroma_orient; int quant_dc_chroma; int quant; int flat_dc; int predicted_dc; int raw_orient; TYPE_2__* frame; int /*<<< orphan*/  scratchpad; int /*<<< orphan*/ * dest; TYPE_1__ dsp; } ;
-struct TYPE_7__ {int /*<<< orphan*/ * linesize; } ;
-typedef  TYPE_3__ IntraX8Context ;
 
-/* Variables and functions */
- int /*<<< orphan*/  av_assert2 (int) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*,int*,int) ; 
- int x8_get_orient_vlc (TYPE_3__* const) ; 
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_6__ {int (* setup_spatial_compensation ) (int ,int ,int ,int*,int*,int) ;} ;
+struct TYPE_8__ {int edges; int orient; int chroma_orient; int quant_dc_chroma; int quant; int flat_dc; int predicted_dc; int raw_orient; TYPE_2__* frame; int scratchpad; int * dest; TYPE_1__ dsp; } ;
+struct TYPE_7__ {int * linesize; } ;
+typedef TYPE_3__ IntraX8Context ;
+
+
+ int av_assert2 (int) ;
+ int stub1 (int ,int ,int ,int*,int*,int) ;
+ int x8_get_orient_vlc (TYPE_3__* const) ;
 
 __attribute__((used)) static int x8_setup_spatial_predictor(IntraX8Context *const w, const int chroma)
 {
@@ -35,7 +35,7 @@ __attribute__((used)) static int x8_setup_spatial_predictor(IntraX8Context *cons
                                       &range, &sum, w->edges);
     if (chroma) {
         w->orient = w->chroma_orient;
-        quant     = w->quant_dc_chroma;
+        quant = w->quant_dc_chroma;
     } else {
         quant = w->quant;
     }
@@ -44,11 +44,11 @@ __attribute__((used)) static int x8_setup_spatial_predictor(IntraX8Context *cons
     if (range < quant || range < 3) {
         w->orient = 0;
 
-        // yep you read right, a +-1 idct error may break decoding!
+
         if (range < 3) {
-            w->flat_dc      = 1;
-            sum            += 9;
-            // ((1 << 17) + 9) / (8 + 8 + 1 + 2) = 6899
+            w->flat_dc = 1;
+            sum += 9;
+
             w->predicted_dc = sum * 6899 >> 17;
         }
     }

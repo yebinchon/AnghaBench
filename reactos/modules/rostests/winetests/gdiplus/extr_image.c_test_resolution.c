@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int REAL ;
-typedef  int /*<<< orphan*/  HDC ;
-typedef  int /*<<< orphan*/  GpStatus ;
-typedef  int /*<<< orphan*/  GpImage ;
-typedef  int /*<<< orphan*/  GpGraphics ;
-typedef  int /*<<< orphan*/  GpBitmap ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GdipBitmapSetResolution (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  GdipCreateBitmapFromScan0 (int,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GdipDeleteGraphics (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipDisposeImage (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipGetDpiX (int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  GdipGetDpiY (int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  GdipGetImageGraphicsContext (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GdipGetImageHorizontalResolution (int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  GdipGetImageVerticalResolution (int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  GetDC (int /*<<< orphan*/ ) ; 
- int GetDeviceCaps (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  InvalidParameter ; 
- int /*<<< orphan*/  LOGPIXELSX ; 
- int /*<<< orphan*/  LOGPIXELSY ; 
- int /*<<< orphan*/  Ok ; 
- int /*<<< orphan*/  PixelFormat24bppRGB ; 
- int /*<<< orphan*/  ReleaseDC (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  expect (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  expectf (int,int) ; 
+
+
+
+typedef int REAL ;
+typedef int HDC ;
+typedef int GpStatus ;
+typedef int GpImage ;
+typedef int GpGraphics ;
+typedef int GpBitmap ;
+
+
+ int GdipBitmapSetResolution (int *,int,int) ;
+ int GdipCreateBitmapFromScan0 (int,int,int,int ,int *,int **) ;
+ int GdipDeleteGraphics (int *) ;
+ int GdipDisposeImage (int *) ;
+ int GdipGetDpiX (int *,int*) ;
+ int GdipGetDpiY (int *,int*) ;
+ int GdipGetImageGraphicsContext (int *,int **) ;
+ int GdipGetImageHorizontalResolution (int *,int*) ;
+ int GdipGetImageVerticalResolution (int *,int*) ;
+ int GetDC (int ) ;
+ int GetDeviceCaps (int ,int ) ;
+ int InvalidParameter ;
+ int LOGPIXELSX ;
+ int LOGPIXELSY ;
+ int Ok ;
+ int PixelFormat24bppRGB ;
+ int ReleaseDC (int ,int ) ;
+ int expect (int ,int ) ;
+ int expectf (int,int) ;
 
 __attribute__((used)) static void test_resolution(void)
 {
@@ -47,30 +47,30 @@ __attribute__((used)) static void test_resolution(void)
     HDC screendc;
     int screenxres, screenyres;
 
-    /* create Bitmap */
-    stat = GdipCreateBitmapFromScan0(1, 1, 32, PixelFormat24bppRGB, NULL, &bitmap);
+
+    stat = GdipCreateBitmapFromScan0(1, 1, 32, PixelFormat24bppRGB, ((void*)0), &bitmap);
     expect(Ok, stat);
 
-    /* test invalid values */
-    stat = GdipGetImageHorizontalResolution(NULL, &res);
+
+    stat = GdipGetImageHorizontalResolution(((void*)0), &res);
     expect(InvalidParameter, stat);
 
-    stat = GdipGetImageHorizontalResolution((GpImage*)bitmap, NULL);
+    stat = GdipGetImageHorizontalResolution((GpImage*)bitmap, ((void*)0));
     expect(InvalidParameter, stat);
 
-    stat = GdipGetImageVerticalResolution(NULL, &res);
+    stat = GdipGetImageVerticalResolution(((void*)0), &res);
     expect(InvalidParameter, stat);
 
-    stat = GdipGetImageVerticalResolution((GpImage*)bitmap, NULL);
+    stat = GdipGetImageVerticalResolution((GpImage*)bitmap, ((void*)0));
     expect(InvalidParameter, stat);
 
-    stat = GdipBitmapSetResolution(NULL, 96.0, 96.0);
+    stat = GdipBitmapSetResolution(((void*)0), 96.0, 96.0);
     expect(InvalidParameter, stat);
 
     stat = GdipBitmapSetResolution(bitmap, 0.0, 0.0);
     expect(InvalidParameter, stat);
 
-    /* defaults to screen resolution */
+
     screendc = GetDC(0);
 
     screenxres = GetDeviceCaps(screendc, LOGPIXELSX);
@@ -95,7 +95,7 @@ __attribute__((used)) static void test_resolution(void)
     expect(Ok, stat);
     expectf((REAL)screenyres, res);
 
-    /* test changing the resolution */
+
     stat = GdipBitmapSetResolution(bitmap, screenxres*2.0, screenyres*3.0);
     expect(Ok, stat);
 

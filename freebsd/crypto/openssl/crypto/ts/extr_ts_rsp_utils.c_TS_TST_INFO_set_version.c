@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  version; } ;
-typedef  TYPE_1__ TS_TST_INFO ;
 
-/* Variables and functions */
- int ASN1_INTEGER_set (int /*<<< orphan*/ ,long) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int version; } ;
+typedef TYPE_1__ TS_TST_INFO ;
+
+
+ int ASN1_INTEGER_set (int ,long) ;
 
 int TS_TST_INFO_set_version(TS_TST_INFO *a, long version)
 {

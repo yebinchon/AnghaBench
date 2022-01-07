@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vout_thread_t ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int vout_thread_t ;
 struct TYPE_4__ {scalar_t__ b_bool; } ;
-typedef  TYPE_1__ vlc_value_t ;
-typedef  int /*<<< orphan*/  vlc_player_t ;
-typedef  int /*<<< orphan*/  vlc_object_t ;
+typedef TYPE_1__ vlc_value_t ;
+typedef int vlc_player_t ;
+typedef int vlc_object_t ;
 
-/* Variables and functions */
- int VLC_SUCCESS ; 
- int /*<<< orphan*/  on_fullscreen_changed ; 
- int /*<<< orphan*/  on_wallpaper_mode_changed ; 
- scalar_t__ strcmp (char const*,char*) ; 
- int /*<<< orphan*/  vlc_assert_unreachable () ; 
- int /*<<< orphan*/  vlc_player_vout_SendEvent (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,scalar_t__) ; 
+
+ int VLC_SUCCESS ;
+ int on_fullscreen_changed ;
+ int on_wallpaper_mode_changed ;
+ scalar_t__ strcmp (char const*,char*) ;
+ int vlc_assert_unreachable () ;
+ int vlc_player_vout_SendEvent (int *,int ,int *,scalar_t__) ;
 
 __attribute__((used)) static int
 vlc_player_VoutCallback(vlc_object_t *this, const char *var,

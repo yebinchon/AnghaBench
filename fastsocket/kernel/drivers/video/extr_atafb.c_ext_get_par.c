@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct atafb_par {int /*<<< orphan*/  screen_base; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  external_addr ; 
+
+
+
+struct atafb_par {int screen_base; } ;
+
+
+ int external_addr ;
 
 __attribute__((used)) static void ext_get_par(struct atafb_par *par)
 {
-	par->screen_base = external_addr;
+ par->screen_base = external_addr;
 }

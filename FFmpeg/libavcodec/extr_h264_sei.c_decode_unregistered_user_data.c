@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint8_t ;
 struct TYPE_3__ {int x264_build; } ;
-typedef  TYPE_1__ H264SEIUnregistered ;
-typedef  int /*<<< orphan*/  GetBitContext ;
+typedef TYPE_1__ H264SEIUnregistered ;
+typedef int GetBitContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  ENOMEM ; 
- int INT_MAX ; 
- int /*<<< orphan*/  av_free (scalar_t__*) ; 
- scalar_t__* av_malloc (int) ; 
- scalar_t__ get_bits (int /*<<< orphan*/ *,int) ; 
- int sscanf (scalar_t__*,char*,int*) ; 
- int /*<<< orphan*/  strncmp (scalar_t__*,char*,int) ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_INVALIDDATA ;
+ int ENOMEM ;
+ int INT_MAX ;
+ int av_free (scalar_t__*) ;
+ scalar_t__* av_malloc (int) ;
+ scalar_t__ get_bits (int *,int) ;
+ int sscanf (scalar_t__*,char*,int*) ;
+ int strncmp (scalar_t__*,char*,int) ;
 
 __attribute__((used)) static int decode_unregistered_user_data(H264SEIUnregistered *h, GetBitContext *gb,
                                          void *logctx, int size)

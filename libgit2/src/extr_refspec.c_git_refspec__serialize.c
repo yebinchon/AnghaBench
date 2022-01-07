@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {char* src; char* dst; scalar_t__ force; } ;
-typedef  TYPE_1__ git_refspec ;
-typedef  int /*<<< orphan*/  git_buf ;
+typedef TYPE_1__ git_refspec ;
+typedef int git_buf ;
 
-/* Variables and functions */
- int git_buf_oom (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  git_buf_printf (int /*<<< orphan*/ *,char*,char*,char*) ; 
- int /*<<< orphan*/  git_buf_putc (int /*<<< orphan*/ *,char) ; 
+
+ int git_buf_oom (int *) ;
+ int git_buf_printf (int *,char*,char*,char*) ;
+ int git_buf_putc (int *,char) ;
 
 int git_refspec__serialize(git_buf *out, const git_refspec *refspec)
 {
-	if (refspec->force)
-		git_buf_putc(out, '+');
+ if (refspec->force)
+  git_buf_putc(out, '+');
 
-	git_buf_printf(out, "%s:%s",
-		refspec->src != NULL ? refspec->src : "",
-		refspec->dst != NULL ? refspec->dst : "");
+ git_buf_printf(out, "%s:%s",
+  refspec->src != ((void*)0) ? refspec->src : "",
+  refspec->dst != ((void*)0) ? refspec->dst : "");
 
-	return git_buf_oom(out) == false;
+ return git_buf_oom(out) == 0;
 }

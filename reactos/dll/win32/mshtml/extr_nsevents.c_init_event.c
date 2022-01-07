@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  nsresult ;
-typedef  int /*<<< orphan*/  nsIDOMEventTarget ;
-typedef  int /*<<< orphan*/  nsIDOMEventListener ;
-typedef  int /*<<< orphan*/  nsAString ;
-typedef  int /*<<< orphan*/  PRUnichar ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- scalar_t__ NS_FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nsAString_Finish (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsAString_InitDepend (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  nsIDOMEventTarget_AddEventListener (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int nsresult ;
+typedef int nsIDOMEventTarget ;
+typedef int nsIDOMEventListener ;
+typedef int nsAString ;
+typedef int PRUnichar ;
+typedef int BOOL ;
+
+
+ int ERR (char*,int ) ;
+ int FALSE ;
+ scalar_t__ NS_FAILED (int ) ;
+ int nsAString_Finish (int *) ;
+ int nsAString_InitDepend (int *,int const*) ;
+ int nsIDOMEventTarget_AddEventListener (int *,int *,int *,int ,int ,int) ;
 
 __attribute__((used)) static void init_event(nsIDOMEventTarget *target, const PRUnichar *type,
         nsIDOMEventListener *listener, BOOL capture)

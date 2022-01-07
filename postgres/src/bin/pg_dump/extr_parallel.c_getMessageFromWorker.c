@@ -1,88 +1,77 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct timeval {int /*<<< orphan*/  member_1; int /*<<< orphan*/  member_0; } ;
-typedef  int /*<<< orphan*/  fd_set ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct timeval {int member_1; int member_0; } ;
+typedef int fd_set ;
 struct TYPE_5__ {int numWorkers; TYPE_1__* parallelSlot; } ;
 struct TYPE_4__ {scalar_t__ workerStatus; int pipeRead; } ;
-typedef  TYPE_2__ ParallelState ;
+typedef TYPE_2__ ParallelState ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Assert (int) ; 
- int /*<<< orphan*/  FD_ISSET (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FD_SET (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FD_ZERO (int /*<<< orphan*/ *) ; 
- scalar_t__ WRKR_TERMINATED ; 
- int /*<<< orphan*/  fatal (char*) ; 
- char* readMessageFromPipe (int) ; 
- int select (int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,struct timeval*) ; 
- int select_loop (int,int /*<<< orphan*/ *) ; 
+
+ int Assert (int) ;
+ int FD_ISSET (int,int *) ;
+ int FD_SET (int,int *) ;
+ int FD_ZERO (int *) ;
+ scalar_t__ WRKR_TERMINATED ;
+ int fatal (char*) ;
+ char* readMessageFromPipe (int) ;
+ int select (int,int *,int *,int *,struct timeval*) ;
+ int select_loop (int,int *) ;
 
 __attribute__((used)) static char *
 getMessageFromWorker(ParallelState *pstate, bool do_wait, int *worker)
 {
-	int			i;
-	fd_set		workerset;
-	int			maxFd = -1;
-	struct timeval nowait = {0, 0};
+ int i;
+ fd_set workerset;
+ int maxFd = -1;
+ struct timeval nowait = {0, 0};
 
-	/* construct bitmap of socket descriptors for select() */
-	FD_ZERO(&workerset);
-	for (i = 0; i < pstate->numWorkers; i++)
-	{
-		if (pstate->parallelSlot[i].workerStatus == WRKR_TERMINATED)
-			continue;
-		FD_SET(pstate->parallelSlot[i].pipeRead, &workerset);
-		if (pstate->parallelSlot[i].pipeRead > maxFd)
-			maxFd = pstate->parallelSlot[i].pipeRead;
-	}
 
-	if (do_wait)
-	{
-		i = select_loop(maxFd, &workerset);
-		Assert(i != 0);
-	}
-	else
-	{
-		if ((i = select(maxFd + 1, &workerset, NULL, NULL, &nowait)) == 0)
-			return NULL;
-	}
+ FD_ZERO(&workerset);
+ for (i = 0; i < pstate->numWorkers; i++)
+ {
+  if (pstate->parallelSlot[i].workerStatus == WRKR_TERMINATED)
+   continue;
+  FD_SET(pstate->parallelSlot[i].pipeRead, &workerset);
+  if (pstate->parallelSlot[i].pipeRead > maxFd)
+   maxFd = pstate->parallelSlot[i].pipeRead;
+ }
 
-	if (i < 0)
-		fatal("select() failed: %m");
+ if (do_wait)
+ {
+  i = select_loop(maxFd, &workerset);
+  Assert(i != 0);
+ }
+ else
+ {
+  if ((i = select(maxFd + 1, &workerset, ((void*)0), ((void*)0), &nowait)) == 0)
+   return ((void*)0);
+ }
 
-	for (i = 0; i < pstate->numWorkers; i++)
-	{
-		char	   *msg;
+ if (i < 0)
+  fatal("select() failed: %m");
 
-		if (!FD_ISSET(pstate->parallelSlot[i].pipeRead, &workerset))
-			continue;
+ for (i = 0; i < pstate->numWorkers; i++)
+ {
+  char *msg;
 
-		/*
-		 * Read the message if any.  If the socket is ready because of EOF,
-		 * we'll return NULL instead (and the socket will stay ready, so the
-		 * condition will persist).
-		 *
-		 * Note: because this is a blocking read, we'll wait if only part of
-		 * the message is available.  Waiting a long time would be bad, but
-		 * since worker status messages are short and are always sent in one
-		 * operation, it shouldn't be a problem in practice.
-		 */
-		msg = readMessageFromPipe(pstate->parallelSlot[i].pipeRead);
-		*worker = i;
-		return msg;
-	}
-	Assert(false);
-	return NULL;
+  if (!FD_ISSET(pstate->parallelSlot[i].pipeRead, &workerset))
+   continue;
+  msg = readMessageFromPipe(pstate->parallelSlot[i].pipeRead);
+  *worker = i;
+  return msg;
+ }
+ Assert(0);
+ return ((void*)0);
 }

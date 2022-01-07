@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {int /*<<< orphan*/  (* FillBufferDone ) (TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ;} ;
-struct TYPE_10__ {int /*<<< orphan*/  callback_state; TYPE_1__ callbacks; } ;
-typedef  TYPE_2__ VC_PRIVATE_COMPONENT_T ;
-struct TYPE_12__ {int /*<<< orphan*/  ilcs; } ;
+
+
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_9__ {int (* FillBufferDone ) (TYPE_3__*,int ,int *) ;} ;
+struct TYPE_10__ {int callback_state; TYPE_1__ callbacks; } ;
+typedef TYPE_2__ VC_PRIVATE_COMPONENT_T ;
+struct TYPE_12__ {int ilcs; } ;
 struct TYPE_11__ {scalar_t__ pComponentPrivate; } ;
-typedef  TYPE_3__ OMX_COMPONENTTYPE ;
-typedef  int /*<<< orphan*/  OMX_BUFFERHEADERTYPE ;
-typedef  TYPE_4__ ILCS_COMMON_T ;
+typedef TYPE_3__ OMX_COMPONENTTYPE ;
+typedef int OMX_BUFFERHEADERTYPE ;
+typedef TYPE_4__ ILCS_COMMON_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * ilcs_receive_buffer (int /*<<< orphan*/ ,void*,int,TYPE_3__**) ; 
- int /*<<< orphan*/  stub1 (TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vc_assert (int /*<<< orphan*/  (*) (TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *)) ; 
+
+ int * ilcs_receive_buffer (int ,void*,int,TYPE_3__**) ;
+ int stub1 (TYPE_3__*,int ,int *) ;
+ int vc_assert (int (*) (TYPE_3__*,int ,int *)) ;
 
 void vcil_out_fill_buffer_done(ILCS_COMMON_T *st, void *call, int clen, void *resp, int *rlen)
 {

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32 ;
-typedef  int /*<<< orphan*/  ConditionVariable ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ConditionVariableTimedSleep (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint32 ;
+typedef int ConditionVariable ;
+
+
+ int ConditionVariableTimedSleep (int *,int,int ) ;
 
 void
 ConditionVariableSleep(ConditionVariable *cv, uint32 wait_event_info)
 {
-	(void) ConditionVariableTimedSleep(cv, -1 /* no timeout */ ,
-									   wait_event_info);
+ (void) ConditionVariableTimedSleep(cv, -1 ,
+            wait_event_info);
 }

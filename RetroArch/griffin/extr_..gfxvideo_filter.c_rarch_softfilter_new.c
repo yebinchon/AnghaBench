@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct string_list {int dummy; } ;
-typedef  int /*<<< orphan*/  softfilter_simd_mask_t ;
-struct TYPE_6__ {int /*<<< orphan*/  conf; } ;
-typedef  TYPE_1__ rarch_softfilter_t ;
-typedef  int /*<<< orphan*/  ext_name ;
-typedef  enum retro_pixel_format { ____Placeholder_retro_pixel_format } retro_pixel_format ;
-typedef  int /*<<< orphan*/  basedir ;
+typedef int softfilter_simd_mask_t ;
+struct TYPE_6__ {int conf; } ;
+typedef TYPE_1__ rarch_softfilter_t ;
+typedef int ext_name ;
+typedef enum retro_pixel_format { ____Placeholder_retro_pixel_format } retro_pixel_format ;
+typedef int basedir ;
 
-/* Variables and functions */
- int PATH_MAX_LENGTH ; 
- int /*<<< orphan*/  RARCH_ERR (char*,...) ; 
- int /*<<< orphan*/  append_softfilter_plugs (TYPE_1__*,struct string_list*) ; 
- scalar_t__ calloc (int,int) ; 
- int /*<<< orphan*/  config_file_new_from_path_to_string (char const*) ; 
- int /*<<< orphan*/  cpu_features_get () ; 
- int /*<<< orphan*/  create_softfilter_graph (TYPE_1__*,int,unsigned int,unsigned int,int /*<<< orphan*/ ,unsigned int) ; 
- struct string_list* dir_list_new (char*,char*,int,int,int,int) ; 
- int /*<<< orphan*/  fill_pathname_basedir (char*,char const*,int) ; 
- int /*<<< orphan*/  frontend_driver_get_core_extension (char*,int) ; 
- int /*<<< orphan*/  rarch_softfilter_free (TYPE_1__*) ; 
- int /*<<< orphan*/  string_list_free (struct string_list*) ; 
+
+ int PATH_MAX_LENGTH ;
+ int RARCH_ERR (char*,...) ;
+ int append_softfilter_plugs (TYPE_1__*,struct string_list*) ;
+ scalar_t__ calloc (int,int) ;
+ int config_file_new_from_path_to_string (char const*) ;
+ int cpu_features_get () ;
+ int create_softfilter_graph (TYPE_1__*,int,unsigned int,unsigned int,int ,unsigned int) ;
+ struct string_list* dir_list_new (char*,char*,int,int,int,int) ;
+ int fill_pathname_basedir (char*,char const*,int) ;
+ int frontend_driver_get_core_extension (char*,int) ;
+ int rarch_softfilter_free (TYPE_1__*) ;
+ int string_list_free (struct string_list*) ;
 
 rarch_softfilter_t *rarch_softfilter_new(const char *filter_config,
       unsigned threads,
@@ -40,38 +40,23 @@ rarch_softfilter_t *rarch_softfilter_new(const char *filter_config,
 {
    softfilter_simd_mask_t cpu_features = (softfilter_simd_mask_t)cpu_features_get();
    char basedir[PATH_MAX_LENGTH];
-#ifdef HAVE_DYLIB
-   char ext_name[PATH_MAX_LENGTH];
-#endif
-   struct string_list *plugs     = NULL;
-   rarch_softfilter_t *filt      = NULL;
+
+
+
+   struct string_list *plugs = ((void*)0);
+   rarch_softfilter_t *filt = ((void*)0);
 
    (void)basedir;
 
    filt = (rarch_softfilter_t*)calloc(1, sizeof(*filt));
    if (!filt)
-      return NULL;
+      return ((void*)0);
 
    if (!(filt->conf = config_file_new_from_path_to_string(filter_config)))
    {
       RARCH_ERR("[SoftFilter]: Did not find config: %s\n", filter_config);
       goto error;
    }
-
-#if defined(HAVE_DYLIB)
-   fill_pathname_basedir(basedir, filter_config, sizeof(basedir));
-
-   if (!frontend_driver_get_core_extension(ext_name, sizeof(ext_name)))
-         goto error;
-
-   plugs = dir_list_new(basedir, ext_name, false, false, false, false);
-
-   if (!plugs)
-   {
-      RARCH_ERR("[SoftFilter]: Could not build up string list...\n");
-      goto error;
-   }
-#endif
    if (!append_softfilter_plugs(filt, plugs))
    {
       RARCH_ERR("[SoftFitler]: Failed to append softfilter plugins...\n");
@@ -80,7 +65,7 @@ rarch_softfilter_t *rarch_softfilter_new(const char *filter_config,
 
    if (plugs)
       string_list_free(plugs);
-   plugs = NULL;
+   plugs = ((void*)0);
 
    if (!create_softfilter_graph(filt, in_pixel_format,
             max_width, max_height, cpu_features, threads))
@@ -94,7 +79,7 @@ rarch_softfilter_t *rarch_softfilter_new(const char *filter_config,
 error:
    if (plugs)
       string_list_free(plugs);
-   plugs = NULL;
+   plugs = ((void*)0);
    rarch_softfilter_free(filt);
-   return NULL;
+   return ((void*)0);
 }

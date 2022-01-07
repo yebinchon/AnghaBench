@@ -1,42 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ int ENOENT ;
 
-/* Forward declarations */
 
-/* Type definitions */
 
-/* Variables and functions */
- int /*<<< orphan*/  ENOENT ; 
-#define  SSH_ERR_ALLOC_FAIL 130 
-#define  SSH_ERR_INTERNAL_ERROR 129 
-#define  SSH_ERR_SYSTEM_ERROR 128 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  error (char*,char const*,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fatal (char*,char const*,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ssh_err (int) ; 
+ int errno ;
+ int error (char*,char const*,char const*,int ) ;
+ int fatal (char*,char const*,char const*,int ) ;
+ int ssh_err (int) ;
 
 __attribute__((used)) static void
 check_load(int r, const char *path, const char *message)
 {
-	switch (r) {
-	case 0:
-		break;
-	case SSH_ERR_INTERNAL_ERROR:
-	case SSH_ERR_ALLOC_FAIL:
-		fatal("load %s \"%s\": %s", message, path, ssh_err(r));
-	case SSH_ERR_SYSTEM_ERROR:
-		/* Ignore missing files */
-		if (errno == ENOENT)
-			break;
-		/* FALLTHROUGH */
-	default:
-		error("load %s \"%s\": %s", message, path, ssh_err(r));
-		break;
-	}
+ switch (r) {
+ case 0:
+  break;
+ case 129:
+ case 130:
+  fatal("load %s \"%s\": %s", message, path, ssh_err(r));
+ case 128:
+
+  if (errno == ENOENT)
+   break;
+
+ default:
+  error("load %s \"%s\": %s", message, path, ssh_err(r));
+  break;
+ }
 }

@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_3__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  USHORT ;
-typedef  int ULONG ;
-struct TYPE_5__ {int /*<<< orphan*/  CurrentLocale; } ;
-struct TYPE_4__ {int /*<<< orphan*/  Language; scalar_t__ Name; scalar_t__ Type; } ;
-typedef  int /*<<< orphan*/  PVOID ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
-typedef  TYPE_1__ LDR_RESOURCE_INFO ;
-typedef  int /*<<< orphan*/  LCID ;
-typedef  void IMAGE_RESOURCE_DIRECTORY ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  IMAGE_DIRECTORY_ENTRY_RESOURCE ; 
- int /*<<< orphan*/  LANGIDFROMLCID (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LANG_ENGLISH ; 
- int /*<<< orphan*/  LANG_NEUTRAL ; 
- int /*<<< orphan*/  MAKELANGID (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ NT_SUCCESS (int /*<<< orphan*/ ) ; 
- TYPE_3__* NtCurrentTeb () ; 
- int /*<<< orphan*/  NtQueryDefaultLocale (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PRIMARYLANGID (int /*<<< orphan*/ ) ; 
- void* RtlImageDirectoryEntryToData (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  STATUS_INVALID_PARAMETER ; 
- int /*<<< orphan*/  STATUS_RESOURCE_DATA_NOT_FOUND ; 
- int /*<<< orphan*/  STATUS_RESOURCE_LANG_NOT_FOUND ; 
- int /*<<< orphan*/  STATUS_RESOURCE_NAME_NOT_FOUND ; 
- int /*<<< orphan*/  STATUS_RESOURCE_TYPE_NOT_FOUND ; 
- int /*<<< orphan*/  STATUS_SUCCESS ; 
- scalar_t__ SUBLANGID (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SUBLANG_DEFAULT ; 
- int /*<<< orphan*/  SUBLANG_NEUTRAL ; 
- scalar_t__ SUBLANG_SYS_DEFAULT ; 
- int /*<<< orphan*/  TRUE ; 
- void* find_entry_by_id (void*,int /*<<< orphan*/ ,void*,int) ; 
- void* find_entry_by_name (void*,int /*<<< orphan*/ ,void*,int) ; 
- void* find_first_entry (void*,void*,int) ; 
- int push_language (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_3__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int USHORT ;
+typedef int ULONG ;
+struct TYPE_5__ {int CurrentLocale; } ;
+struct TYPE_4__ {int Language; scalar_t__ Name; scalar_t__ Type; } ;
+typedef int PVOID ;
+typedef int NTSTATUS ;
+typedef int LPCWSTR ;
+typedef TYPE_1__ LDR_RESOURCE_INFO ;
+typedef int LCID ;
+typedef void IMAGE_RESOURCE_DIRECTORY ;
+
+
+ int FALSE ;
+ int IMAGE_DIRECTORY_ENTRY_RESOURCE ;
+ int LANGIDFROMLCID (int ) ;
+ int LANG_ENGLISH ;
+ int LANG_NEUTRAL ;
+ int MAKELANGID (int ,int ) ;
+ scalar_t__ NT_SUCCESS (int ) ;
+ TYPE_3__* NtCurrentTeb () ;
+ int NtQueryDefaultLocale (int ,int *) ;
+ int PRIMARYLANGID (int ) ;
+ void* RtlImageDirectoryEntryToData (int ,int ,int ,int*) ;
+ int STATUS_INVALID_PARAMETER ;
+ int STATUS_RESOURCE_DATA_NOT_FOUND ;
+ int STATUS_RESOURCE_LANG_NOT_FOUND ;
+ int STATUS_RESOURCE_NAME_NOT_FOUND ;
+ int STATUS_RESOURCE_TYPE_NOT_FOUND ;
+ int STATUS_SUCCESS ;
+ scalar_t__ SUBLANGID (int ) ;
+ int SUBLANG_DEFAULT ;
+ int SUBLANG_NEUTRAL ;
+ scalar_t__ SUBLANG_SYS_DEFAULT ;
+ int TRUE ;
+ void* find_entry_by_id (void*,int ,void*,int) ;
+ void* find_entry_by_name (void*,int ,void*,int) ;
+ void* find_first_entry (void*,void*,int) ;
+ int push_language (int *,int,int ) ;
 
 NTSTATUS find_entry( PVOID BaseAddress, LDR_RESOURCE_INFO *info,
                      ULONG level, void **ret, int want_dir )
@@ -57,7 +57,7 @@ NTSTATUS find_entry( PVOID BaseAddress, LDR_RESOURCE_INFO *info,
     ULONG size;
     void *root;
     IMAGE_RESOURCE_DIRECTORY *resdirptr;
-    USHORT list[9];  /* list of languages to try */
+    USHORT list[9];
     int i, pos = 0;
     LCID user_lcid, system_lcid;
 
@@ -75,48 +75,48 @@ NTSTATUS find_entry( PVOID BaseAddress, LDR_RESOURCE_INFO *info,
     if (!(*ret = find_entry_by_name( resdirptr, (LPCWSTR)info->Name, root, want_dir || level )))
         return STATUS_RESOURCE_NAME_NOT_FOUND;
     if (!level--) return STATUS_SUCCESS;
-    if (level) return STATUS_INVALID_PARAMETER;  /* level > 3 */
+    if (level) return STATUS_INVALID_PARAMETER;
 
-    /* 1. specified language */
+
     pos = push_language( list, pos, info->Language );
 
-    /* 2. specified language with neutral sublanguage */
+
     pos = push_language( list, pos, MAKELANGID( PRIMARYLANGID(info->Language), SUBLANG_NEUTRAL ) );
 
-    /* 3. neutral language with neutral sublanguage */
+
     pos = push_language( list, pos, MAKELANGID( LANG_NEUTRAL, SUBLANG_NEUTRAL ) );
 
-    /* if no explicitly specified language, try some defaults */
+
     if (PRIMARYLANGID(info->Language) == LANG_NEUTRAL)
     {
-        /* user defaults, unless SYS_DEFAULT sublanguage specified  */
+
         if (SUBLANGID(info->Language) != SUBLANG_SYS_DEFAULT)
         {
-            /* 4. current thread locale language */
+
             pos = push_language( list, pos, LANGIDFROMLCID(NtCurrentTeb()->CurrentLocale) );
 
             if (NT_SUCCESS(NtQueryDefaultLocale(TRUE, &user_lcid)))
             {
-                /* 5. user locale language */
+
                 pos = push_language( list, pos, LANGIDFROMLCID(user_lcid) );
 
-                /* 6. user locale language with neutral sublanguage  */
+
                 pos = push_language( list, pos, MAKELANGID( PRIMARYLANGID(user_lcid), SUBLANG_NEUTRAL ) );
             }
         }
 
-        /* now system defaults */
+
 
         if (NT_SUCCESS(NtQueryDefaultLocale(FALSE, &system_lcid)))
         {
-            /* 7. system locale language */
+
             pos = push_language( list, pos, LANGIDFROMLCID( system_lcid ) );
 
-            /* 8. system locale language with neutral sublanguage */
+
             pos = push_language( list, pos, MAKELANGID( PRIMARYLANGID(system_lcid), SUBLANG_NEUTRAL ) );
         }
 
-        /* 9. English */
+
         pos = push_language( list, pos, MAKELANGID( LANG_ENGLISH, SUBLANG_DEFAULT ) );
     }
 
@@ -124,7 +124,7 @@ NTSTATUS find_entry( PVOID BaseAddress, LDR_RESOURCE_INFO *info,
     for (i = 0; i < pos; i++)
         if ((*ret = find_entry_by_id( resdirptr, list[i], root, want_dir ))) return STATUS_SUCCESS;
 
-    /* if no explicitly specified language, return the first entry */
+
     if (PRIMARYLANGID(info->Language) == LANG_NEUTRAL)
     {
         if ((*ret = find_first_entry( resdirptr, root, want_dir ))) return STATUS_SUCCESS;

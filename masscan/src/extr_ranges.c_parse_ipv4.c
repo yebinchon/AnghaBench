@@ -1,18 +1,10 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ isdigit (char const) ; 
+ scalar_t__ isdigit (char const) ;
 
 __attribute__((used)) static int
 parse_ipv4(const char *line, unsigned *inout_offset, unsigned max, unsigned *ipv4)
@@ -30,11 +22,11 @@ parse_ipv4(const char *line, unsigned *inout_offset, unsigned max, unsigned *ipv
         if (!isdigit(line[offset]&0xFF))
             return -1;
 
-        /* clear leading zeros */
+
         while (offset < max && line[offset] == '0')
             offset++;
 
-        /* parse maximum of 3 digits */
+
         while (offset < max && isdigit(line[offset]&0xFF)) {
             x = x * 10 + (line[offset] - '0');
             offset++;
@@ -49,11 +41,11 @@ parse_ipv4(const char *line, unsigned *inout_offset, unsigned max, unsigned *ipv
 
         if (line[offset] != '.')
             return -3;
-        offset++; /* skip dot */
+        offset++;
     }
 
     *inout_offset = offset;
     *ipv4 = result;
 
-    return 0; /* parse ok */
+    return 0;
 }

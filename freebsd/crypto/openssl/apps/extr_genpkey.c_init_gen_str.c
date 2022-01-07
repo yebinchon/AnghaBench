@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  EVP_PKEY_CTX ;
-typedef  int /*<<< orphan*/  EVP_PKEY_ASN1_METHOD ;
-typedef  int /*<<< orphan*/  ENGINE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_printf (int /*<<< orphan*/ ,char*,char const*) ; 
- int /*<<< orphan*/  BIO_puts (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ENGINE_finish (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * ENGINE_get_pkey_asn1_meth_str (int /*<<< orphan*/ *,char const*,int) ; 
- int /*<<< orphan*/  ERR_clear_error () ; 
- int /*<<< orphan*/  ERR_print_errors (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EVP_PKEY_CTX_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * EVP_PKEY_CTX_new_id (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * EVP_PKEY_asn1_find_str (int /*<<< orphan*/ **,char const*,int) ; 
- int /*<<< orphan*/  EVP_PKEY_asn1_get0_info (int*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
- scalar_t__ EVP_PKEY_keygen_init (int /*<<< orphan*/ *) ; 
- scalar_t__ EVP_PKEY_paramgen_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bio_err ; 
+
+
+
+typedef int EVP_PKEY_CTX ;
+typedef int EVP_PKEY_ASN1_METHOD ;
+typedef int ENGINE ;
+
+
+ int BIO_printf (int ,char*,char const*) ;
+ int BIO_puts (int ,char*) ;
+ int ENGINE_finish (int *) ;
+ int * ENGINE_get_pkey_asn1_meth_str (int *,char const*,int) ;
+ int ERR_clear_error () ;
+ int ERR_print_errors (int ) ;
+ int EVP_PKEY_CTX_free (int *) ;
+ int * EVP_PKEY_CTX_new_id (int,int *) ;
+ int * EVP_PKEY_asn1_find_str (int **,char const*,int) ;
+ int EVP_PKEY_asn1_get0_info (int*,int *,int *,int *,int *,int const*) ;
+ scalar_t__ EVP_PKEY_keygen_init (int *) ;
+ scalar_t__ EVP_PKEY_paramgen_init (int *) ;
+ int bio_err ;
 
 int init_gen_str(EVP_PKEY_CTX **pctx,
                  const char *algname, ENGINE *e, int do_param)
 {
-    EVP_PKEY_CTX *ctx = NULL;
+    EVP_PKEY_CTX *ctx = ((void*)0);
     const EVP_PKEY_ASN1_METHOD *ameth;
-    ENGINE *tmpeng = NULL;
+    ENGINE *tmpeng = ((void*)0);
     int pkey_id;
 
     if (*pctx) {
@@ -44,10 +44,10 @@ int init_gen_str(EVP_PKEY_CTX **pctx,
 
     ameth = EVP_PKEY_asn1_find_str(&tmpeng, algname, -1);
 
-#ifndef OPENSSL_NO_ENGINE
+
     if (!ameth && e)
         ameth = ENGINE_get_pkey_asn1_meth_str(e, algname, -1);
-#endif
+
 
     if (!ameth) {
         BIO_printf(bio_err, "Algorithm %s not found\n", algname);
@@ -56,10 +56,10 @@ int init_gen_str(EVP_PKEY_CTX **pctx,
 
     ERR_clear_error();
 
-    EVP_PKEY_asn1_get0_info(&pkey_id, NULL, NULL, NULL, NULL, ameth);
-#ifndef OPENSSL_NO_ENGINE
+    EVP_PKEY_asn1_get0_info(&pkey_id, ((void*)0), ((void*)0), ((void*)0), ((void*)0), ameth);
+
     ENGINE_finish(tmpeng);
-#endif
+
     ctx = EVP_PKEY_CTX_new_id(pkey_id, e);
 
     if (!ctx)

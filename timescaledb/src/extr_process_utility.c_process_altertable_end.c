@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int relkind; } ;
-typedef  int /*<<< orphan*/  Node ;
-typedef  int /*<<< orphan*/  CollectedCommand ;
-typedef  TYPE_1__ AlterTableStmt ;
+typedef int Node ;
+typedef int CollectedCommand ;
+typedef TYPE_1__ AlterTableStmt ;
 
-/* Variables and functions */
-#define  OBJECT_INDEX 129 
-#define  OBJECT_TABLE 128 
- int /*<<< orphan*/  process_altertable_end_index (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  process_altertable_end_table (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+ int process_altertable_end_index (int *,int *) ;
+ int process_altertable_end_table (int *,int *) ;
 
 __attribute__((used)) static void
 process_altertable_end(Node *parsetree, CollectedCommand *cmd)
 {
-	AlterTableStmt *stmt = (AlterTableStmt *) parsetree;
+ AlterTableStmt *stmt = (AlterTableStmt *) parsetree;
 
-	switch (stmt->relkind)
-	{
-		case OBJECT_TABLE:
-			process_altertable_end_table(parsetree, cmd);
-			break;
-		case OBJECT_INDEX:
-			process_altertable_end_index(parsetree, cmd);
-			break;
-		default:
-			break;
-	}
+ switch (stmt->relkind)
+ {
+  case 128:
+   process_altertable_end_table(parsetree, cmd);
+   break;
+  case 129:
+   process_altertable_end_index(parsetree, cmd);
+   break;
+  default:
+   break;
+ }
 }

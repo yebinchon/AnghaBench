@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {TYPE_1__* protocol; int /*<<< orphan*/  clsid; int /*<<< orphan*/  callback; int /*<<< orphan*/  mime; } ;
-struct TYPE_6__ {int /*<<< orphan*/  IInternetProtocolEx_iface; } ;
-typedef  int /*<<< orphan*/ * LPWSTR ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  CLSID ;
-typedef  TYPE_2__ Binding ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BINDSTATUS_BEGINSYNCOPERATION ; 
- int /*<<< orphan*/  BINDSTATUS_CLASSIDAVAILABLE ; 
- int /*<<< orphan*/  BINDSTATUS_ENDSYNCOPERATION ; 
- int /*<<< orphan*/  CLSID_NULL ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FIXME (char*,...) ; 
- int /*<<< orphan*/  IBindStatusCallback_OnProgress (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IInternetProtocolEx_Terminate (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  REGDB_E_CLASSNOTREG ; 
- int /*<<< orphan*/  create_mime_object (TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  debugstr_w (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * get_mime_clsid (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  heap_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stop_binding (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {TYPE_1__* protocol; int clsid; int callback; int mime; } ;
+struct TYPE_6__ {int IInternetProtocolEx_iface; } ;
+typedef int * LPWSTR ;
+typedef int HRESULT ;
+typedef int CLSID ;
+typedef TYPE_2__ Binding ;
+
+
+ int BINDSTATUS_BEGINSYNCOPERATION ;
+ int BINDSTATUS_CLASSIDAVAILABLE ;
+ int BINDSTATUS_ENDSYNCOPERATION ;
+ int CLSID_NULL ;
+ scalar_t__ FAILED (int ) ;
+ int FIXME (char*,...) ;
+ int IBindStatusCallback_OnProgress (int ,int ,int ,int ,int *) ;
+ int IInternetProtocolEx_Terminate (int *,int ) ;
+ int REGDB_E_CLASSNOTREG ;
+ int create_mime_object (TYPE_2__*,int *,int *) ;
+ int debugstr_w (int ) ;
+ int * get_mime_clsid (int ,int *) ;
+ int heap_free (int *) ;
+ int stop_binding (TYPE_2__*,int ,int *) ;
 
 __attribute__((used)) static void create_object(Binding *binding)
 {
@@ -49,7 +49,7 @@ __attribute__((used)) static void create_object(Binding *binding)
     if((clsid_str = get_mime_clsid(binding->mime, &clsid)))
         IBindStatusCallback_OnProgress(binding->callback, 0, 0, BINDSTATUS_CLASSIDAVAILABLE, clsid_str);
 
-    IBindStatusCallback_OnProgress(binding->callback, 0, 0, BINDSTATUS_BEGINSYNCOPERATION, NULL);
+    IBindStatusCallback_OnProgress(binding->callback, 0, 0, BINDSTATUS_BEGINSYNCOPERATION, ((void*)0));
 
     if(clsid_str) {
         hres = create_mime_object(binding, &clsid, clsid_str);
@@ -59,10 +59,10 @@ __attribute__((used)) static void create_object(Binding *binding)
         hres = REGDB_E_CLASSNOTREG;
     }
 
-    IBindStatusCallback_OnProgress(binding->callback, 0, 0, BINDSTATUS_ENDSYNCOPERATION, NULL);
+    IBindStatusCallback_OnProgress(binding->callback, 0, 0, BINDSTATUS_ENDSYNCOPERATION, ((void*)0));
     binding->clsid = CLSID_NULL;
 
-    stop_binding(binding, hres, NULL);
+    stop_binding(binding, hres, ((void*)0));
     if(FAILED(hres))
         IInternetProtocolEx_Terminate(&binding->protocol->IInternetProtocolEx_iface, 0);
 }

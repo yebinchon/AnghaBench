@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint16_t ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint16_t ;
 struct TYPE_5__ {float fin_pad; float in_width; float in_pad; float in_height; int* in_cubemap_face_order; } ;
-typedef  TYPE_1__ V360Context ;
+typedef TYPE_1__ V360Context ;
 
-/* Variables and functions */
- int av_clip (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int const) ; 
- int ceilf (float const) ; 
- int floorf (float) ; 
- int /*<<< orphan*/  process_cube_coordinates (TYPE_1__ const*,float,float,int,float*,float*,int*) ; 
- int /*<<< orphan*/  roundf (float) ; 
- int /*<<< orphan*/  xyz_to_cube (TYPE_1__ const*,float const*,float*,float*,int*) ; 
+
+ int av_clip (int ,int ,int const) ;
+ int ceilf (float const) ;
+ int floorf (float) ;
+ int process_cube_coordinates (TYPE_1__ const*,float,float,int,float*,float*,int*) ;
+ int roundf (float) ;
+ int xyz_to_cube (TYPE_1__ const*,float const*,float*,float*,int*) ;
 
 __attribute__((used)) static void xyz_to_cube1x6(const V360Context *s,
                            const float *vec, int width, int height,
@@ -79,11 +79,11 @@ __attribute__((used)) static void xyz_to_cube1x6(const V360Context *s,
                 v_shift = ceilf(eh * face);
                 new_ehi = ceilf(eh * (face + 1)) - v_shift;
 
-                new_ui = av_clip(roundf(0.5f *     ewi * (uf + 1.f)), 0,     ewi - 1);
+                new_ui = av_clip(roundf(0.5f * ewi * (uf + 1.f)), 0, ewi - 1);
                 new_vi = av_clip(roundf(0.5f * new_ehi * (vf + 1.f)), 0, new_ehi - 1);
             }
 
-            us[i + 1][j + 1] =           new_ui;
+            us[i + 1][j + 1] = new_ui;
             vs[i + 1][j + 1] = v_shift + new_vi;
         }
     }

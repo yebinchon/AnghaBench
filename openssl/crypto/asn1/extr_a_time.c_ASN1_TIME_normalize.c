@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct tm {int dummy; } ;
-typedef  int /*<<< orphan*/  ASN1_TIME ;
+typedef int ASN1_TIME ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASN1_TIME_to_tm (int /*<<< orphan*/ *,struct tm*) ; 
- int /*<<< orphan*/  V_ASN1_UNDEF ; 
- int /*<<< orphan*/ * asn1_time_from_tm (int /*<<< orphan*/ *,struct tm*,int /*<<< orphan*/ ) ; 
+
+ int ASN1_TIME_to_tm (int *,struct tm*) ;
+ int V_ASN1_UNDEF ;
+ int * asn1_time_from_tm (int *,struct tm*,int ) ;
 
 int ASN1_TIME_normalize(ASN1_TIME *t)
 {
@@ -25,5 +25,5 @@ int ASN1_TIME_normalize(ASN1_TIME *t)
     if (!ASN1_TIME_to_tm(t, &tm))
         return 0;
 
-    return asn1_time_from_tm(t, &tm, V_ASN1_UNDEF) != NULL;
+    return asn1_time_from_tm(t, &tm, V_ASN1_UNDEF) != ((void*)0);
 }

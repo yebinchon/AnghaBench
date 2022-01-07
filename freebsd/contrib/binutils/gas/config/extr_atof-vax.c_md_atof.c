@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  LITTLENUM_TYPE ;
 
-/* Variables and functions */
- int MAXIMUM_NUMBER_OF_LITTLENUMS ; 
- char* _ (char*) ; 
- int /*<<< orphan*/  atof_vax (int /*<<< orphan*/ ,char,int /*<<< orphan*/ *) ; 
- unsigned int atof_vax_sizeof (char) ; 
- int /*<<< orphan*/  input_line_pointer ; 
- int /*<<< orphan*/  know (int) ; 
- int /*<<< orphan*/  md_number_to_chars (char*,int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int LITTLENUM_TYPE ;
+
+
+ int MAXIMUM_NUMBER_OF_LITTLENUMS ;
+ char* _ (char*) ;
+ int atof_vax (int ,char,int *) ;
+ unsigned int atof_vax_sizeof (char) ;
+ int input_line_pointer ;
+ int know (int) ;
+ int md_number_to_chars (char*,int ,int) ;
 
 char *
 md_atof (int what_statement_type,
-	 char *literalP,
-	 int *sizeP)
+  char *literalP,
+  int *sizeP)
 {
   LITTLENUM_TYPE words[MAXIMUM_NUMBER_OF_LITTLENUMS];
   char kind_of_float;
@@ -61,24 +61,24 @@ md_atof (int what_statement_type,
       LITTLENUM_TYPE *limit;
 
       input_line_pointer = atof_vax (input_line_pointer,
-				     kind_of_float,
-				     words);
-      /* The atof_vax() builds up 16-bit numbers.
-         Since the assembler may not be running on
-         a little-endian machine, be very careful about
-         converting words to chars.  */
+         kind_of_float,
+         words);
+
+
+
+
       number_of_chars = atof_vax_sizeof (kind_of_float);
       know (number_of_chars <= MAXIMUM_NUMBER_OF_LITTLENUMS * sizeof (LITTLENUM_TYPE));
       limit = words + (number_of_chars / sizeof (LITTLENUM_TYPE));
       for (littlenumP = words; littlenumP < limit; littlenumP++)
-	{
-	  md_number_to_chars (literalP, *littlenumP, sizeof (LITTLENUM_TYPE));
-	  literalP += sizeof (LITTLENUM_TYPE);
-	};
+ {
+   md_number_to_chars (literalP, *littlenumP, sizeof (LITTLENUM_TYPE));
+   literalP += sizeof (LITTLENUM_TYPE);
+ };
     }
   else
     number_of_chars = 0;
 
   *sizeP = number_of_chars;
-  return kind_of_float ? NULL : _("Bad call to md_atof()");
+  return kind_of_float ? ((void*)0) : _("Bad call to md_atof()");
 }

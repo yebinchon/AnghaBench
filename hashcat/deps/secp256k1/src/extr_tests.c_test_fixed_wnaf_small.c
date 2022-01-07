@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  secp256k1_scalar ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHECK (int) ; 
- int WNAF_SIZE (int) ; 
- int /*<<< orphan*/  secp256k1_scalar_set_int (int /*<<< orphan*/ *,int) ; 
- int secp256k1_wnaf_fixed (int*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  test_fixed_wnaf_small_helper (int*,int*,int) ; 
+
+
+
+typedef int secp256k1_scalar ;
+
+
+ int CHECK (int) ;
+ int WNAF_SIZE (int) ;
+ int secp256k1_scalar_set_int (int *,int) ;
+ int secp256k1_wnaf_fixed (int*,int *,int) ;
+ int test_fixed_wnaf_small_helper (int*,int*,int) ;
 
 void test_fixed_wnaf_small(void) {
     int w = 4;

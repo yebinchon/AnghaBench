@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_object_t ;
-struct vlclua_playlist {int /*<<< orphan*/ * L; int /*<<< orphan*/  filename; int /*<<< orphan*/ * access; int /*<<< orphan*/ * path; } ;
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int vlc_object_t ;
+struct vlclua_playlist {int * L; int filename; int * access; int * path; } ;
 struct TYPE_6__ {struct vlclua_playlist* p_sys; } ;
-typedef  TYPE_1__ stream_t ;
-typedef  int /*<<< orphan*/  luabatch_context_t ;
-typedef  int /*<<< orphan*/  lua_State ;
+typedef TYPE_1__ stream_t ;
+typedef int luabatch_context_t ;
+typedef int lua_State ;
 
-/* Variables and functions */
- int VLC_EGENERIC ; 
- int VLC_ENOMEM ; 
- int /*<<< orphan*/  VLC_OBJECT (TYPE_1__*) ; 
- int VLC_SUCCESS ; 
- int /*<<< orphan*/ * luaL_newstate () ; 
- int /*<<< orphan*/  luaL_openlibs (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  luaL_register_namespace (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_close (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_getglobal (int /*<<< orphan*/ *,char*) ; 
- scalar_t__ lua_gettop (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_isfunction (int /*<<< orphan*/ *,int) ; 
- scalar_t__ lua_pcall (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_pop (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pushnil (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_pushstring (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_setfield (int /*<<< orphan*/ *,int,char*) ; 
- scalar_t__ lua_toboolean (int /*<<< orphan*/ *,int) ; 
- char* lua_tostring (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  luaopen_msg (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  luaopen_stream (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  luaopen_strings (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  luaopen_variables (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  luaopen_xml (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  msg_Dbg (TYPE_1__*,char*,char const*) ; 
- int /*<<< orphan*/  msg_Warn (TYPE_1__*,char*,char const*,...) ; 
- int /*<<< orphan*/  p_reg ; 
- int /*<<< orphan*/  strdup (char const*) ; 
- scalar_t__ vlclua_add_modules_path (int /*<<< orphan*/ *,char const*) ; 
- scalar_t__ vlclua_dofile (int /*<<< orphan*/ ,int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  vlclua_set_this (int /*<<< orphan*/ *,TYPE_1__*) ; 
+
+ int VLC_EGENERIC ;
+ int VLC_ENOMEM ;
+ int VLC_OBJECT (TYPE_1__*) ;
+ int VLC_SUCCESS ;
+ int * luaL_newstate () ;
+ int luaL_openlibs (int *) ;
+ int luaL_register_namespace (int *,char*,int ) ;
+ int lua_close (int *) ;
+ int lua_getglobal (int *,char*) ;
+ scalar_t__ lua_gettop (int *) ;
+ int lua_isfunction (int *,int) ;
+ scalar_t__ lua_pcall (int *,int ,int,int ) ;
+ int lua_pop (int *,int) ;
+ int lua_pushnil (int *) ;
+ int lua_pushstring (int *,int *) ;
+ int lua_setfield (int *,int,char*) ;
+ scalar_t__ lua_toboolean (int *,int) ;
+ char* lua_tostring (int *,scalar_t__) ;
+ int luaopen_msg (int *) ;
+ int luaopen_stream (int *) ;
+ int luaopen_strings (int *) ;
+ int luaopen_variables (int *) ;
+ int luaopen_xml (int *) ;
+ int msg_Dbg (TYPE_1__*,char*,char const*) ;
+ int msg_Warn (TYPE_1__*,char*,char const*,...) ;
+ int p_reg ;
+ int strdup (char const*) ;
+ scalar_t__ vlclua_add_modules_path (int *,char const*) ;
+ scalar_t__ vlclua_dofile (int ,int *,char const*) ;
+ int vlclua_set_this (int *,TYPE_1__*) ;
 
 __attribute__((used)) static int probe_luascript(vlc_object_t *obj, const char *filename,
                            const luabatch_context_t *ctx)
@@ -56,15 +56,15 @@ __attribute__((used)) static int probe_luascript(vlc_object_t *obj, const char *
     stream_t *s = (stream_t *)obj;
     struct vlclua_playlist *sys = s->p_sys;
 
-    /* Initialise Lua state structure */
+
     lua_State *L = luaL_newstate();
     if( !L )
         return VLC_ENOMEM;
 
     sys->L = L;
 
-    /* Load Lua libraries */
-    luaL_openlibs( L ); /* FIXME: Don't open all the libs? */
+
+    luaL_openlibs( L );
 
     vlclua_set_this(L, s);
     luaL_register_namespace( L, "vlc", p_reg );
@@ -74,13 +74,13 @@ __attribute__((used)) static int probe_luascript(vlc_object_t *obj, const char *
     luaopen_variables( L );
     luaopen_xml( L );
 
-    if (sys->path != NULL)
+    if (sys->path != ((void*)0))
         lua_pushstring(L, sys->path);
     else
         lua_pushnil(L);
     lua_setfield( L, -2, "path" );
 
-    if (sys->access != NULL)
+    if (sys->access != ((void*)0))
         lua_pushstring(L, sys->access);
     else
         lua_pushnil(L);
@@ -88,14 +88,14 @@ __attribute__((used)) static int probe_luascript(vlc_object_t *obj, const char *
 
     lua_pop( L, 1 );
 
-    /* Setup the module search path */
+
     if (vlclua_add_modules_path(L, filename))
     {
         msg_Warn(s, "error setting the module search path for %s", filename);
         goto error;
     }
 
-    /* Load and run the script(s) */
+
     if (vlclua_dofile(VLC_OBJECT(s), L, filename))
     {
         msg_Warn(s, "error loading script %s: %s", filename,

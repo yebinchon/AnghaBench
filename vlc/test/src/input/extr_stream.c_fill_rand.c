@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  scalar_t__ ssize_t ;
 
-/* Variables and functions */
- size_t __MIN (size_t,int) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  vlc_rand_bytes (int /*<<< orphan*/ *,size_t) ; 
- scalar_t__ write (int,int /*<<< orphan*/ *,size_t) ; 
+
+
+
+typedef int uint8_t ;
+typedef scalar_t__ ssize_t ;
+
+
+ size_t __MIN (size_t,int) ;
+ int assert (int) ;
+ int vlc_rand_bytes (int *,size_t) ;
+ scalar_t__ write (int,int *,size_t) ;
 
 __attribute__((used)) static void
 fill_rand( int i_fd, size_t i_size )

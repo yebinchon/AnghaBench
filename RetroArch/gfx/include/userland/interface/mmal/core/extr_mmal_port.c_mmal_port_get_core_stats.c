@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_5__ ;
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_11__ {int dir; scalar_t__ reset; int /*<<< orphan*/  stats; } ;
-struct TYPE_7__ {int /*<<< orphan*/  tx; int /*<<< orphan*/  rx; } ;
-struct TYPE_10__ {int /*<<< orphan*/  stats_lock; TYPE_1__ stats; } ;
+
+
+typedef struct TYPE_11__ TYPE_5__ ;
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_11__ {int dir; scalar_t__ reset; int stats; } ;
+struct TYPE_7__ {int tx; int rx; } ;
+struct TYPE_10__ {int stats_lock; TYPE_1__ stats; } ;
 struct TYPE_9__ {TYPE_2__* priv; } ;
 struct TYPE_8__ {TYPE_4__* core; } ;
-typedef  int /*<<< orphan*/  MMAL_STATUS_T ;
-typedef  TYPE_3__ MMAL_PORT_T ;
-typedef  TYPE_4__ MMAL_PORT_PRIVATE_CORE_T ;
-typedef  int /*<<< orphan*/  MMAL_PARAMETER_HEADER_T ;
-typedef  TYPE_5__ MMAL_PARAMETER_CORE_STATISTICS_T ;
-typedef  int /*<<< orphan*/  MMAL_CORE_STATISTICS_T ;
+typedef int MMAL_STATUS_T ;
+typedef TYPE_3__ MMAL_PORT_T ;
+typedef TYPE_4__ MMAL_PORT_PRIVATE_CORE_T ;
+typedef int MMAL_PARAMETER_HEADER_T ;
+typedef TYPE_5__ MMAL_PARAMETER_CORE_STATISTICS_T ;
+typedef int MMAL_CORE_STATISTICS_T ;
 
-/* Variables and functions */
-#define  MMAL_CORE_STATS_RX 128 
- int /*<<< orphan*/  MMAL_SUCCESS ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  vcos_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vcos_mutex_unlock (int /*<<< orphan*/ *) ; 
+
+
+ int MMAL_SUCCESS ;
+ int memset (int *,int ,int) ;
+ int vcos_mutex_lock (int *) ;
+ int vcos_mutex_unlock (int *) ;
 
 __attribute__((used)) static MMAL_STATUS_T mmal_port_get_core_stats(MMAL_PORT_T *port, MMAL_PARAMETER_HEADER_T *param)
 {
@@ -43,7 +43,7 @@ __attribute__((used)) static MMAL_STATUS_T mmal_port_get_core_stats(MMAL_PORT_T 
    vcos_mutex_lock(&core->stats_lock);
    switch (stats_param->dir)
    {
-   case MMAL_CORE_STATS_RX:
+   case 128:
       src_stats = &port->priv->core->stats.rx;
       break;
    default:

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  statement_t ;
-typedef  int /*<<< orphan*/  parser_ctx_t ;
-typedef  int /*<<< orphan*/  member_expression_t ;
-typedef  int /*<<< orphan*/  expression_t ;
-struct TYPE_3__ {int /*<<< orphan*/  stat; int /*<<< orphan*/ * value_expr; int /*<<< orphan*/ * member_expr; } ;
-typedef  TYPE_1__ assign_statement_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  STAT_SET ; 
- TYPE_1__* new_statement (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int statement_t ;
+typedef int parser_ctx_t ;
+typedef int member_expression_t ;
+typedef int expression_t ;
+struct TYPE_3__ {int stat; int * value_expr; int * member_expr; } ;
+typedef TYPE_1__ assign_statement_t ;
+
+
+ int STAT_SET ;
+ TYPE_1__* new_statement (int *,int ,int) ;
 
 __attribute__((used)) static statement_t *new_set_statement(parser_ctx_t *ctx, member_expression_t *left, expression_t *right)
 {
@@ -28,7 +28,7 @@ __attribute__((used)) static statement_t *new_set_statement(parser_ctx_t *ctx, m
 
     stat = new_statement(ctx, STAT_SET, sizeof(*stat));
     if(!stat)
-        return NULL;
+        return ((void*)0);
 
     stat->member_expr = left;
     stat->value_expr = right;

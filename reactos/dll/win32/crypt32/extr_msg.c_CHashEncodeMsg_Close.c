@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_7__ {int open_flags; } ;
-struct TYPE_6__ {int /*<<< orphan*/  pbData; } ;
-struct TYPE_8__ {int /*<<< orphan*/  prov; TYPE_2__ base; int /*<<< orphan*/  hash; TYPE_1__ data; } ;
-typedef  TYPE_3__* HCRYPTMSG ;
-typedef  TYPE_3__ CHashEncodeMsg ;
+struct TYPE_6__ {int pbData; } ;
+struct TYPE_8__ {int prov; TYPE_2__ base; int hash; TYPE_1__ data; } ;
+typedef TYPE_3__* HCRYPTMSG ;
+typedef TYPE_3__ CHashEncodeMsg ;
 
-/* Variables and functions */
- int CMSG_CRYPT_RELEASE_CONTEXT_FLAG ; 
- int /*<<< orphan*/  CryptDestroyHash (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CryptMemFree (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CryptReleaseContext (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int CMSG_CRYPT_RELEASE_CONTEXT_FLAG ;
+ int CryptDestroyHash (int ) ;
+ int CryptMemFree (int ) ;
+ int CryptReleaseContext (int ,int ) ;
 
 __attribute__((used)) static void CHashEncodeMsg_Close(HCRYPTMSG hCryptMsg)
 {

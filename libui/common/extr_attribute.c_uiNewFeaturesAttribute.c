@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uiOpenTypeFeatures ;
-struct TYPE_5__ {int /*<<< orphan*/  features; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uiOpenTypeFeatures ;
+struct TYPE_5__ {int features; } ;
 struct TYPE_6__ {TYPE_1__ u; } ;
-typedef  TYPE_2__ uiAttribute ;
+typedef TYPE_2__ uiAttribute ;
 
-/* Variables and functions */
- TYPE_2__* newAttribute (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  uiAttributeTypeFeatures ; 
- int /*<<< orphan*/  uiOpenTypeFeaturesClone (int /*<<< orphan*/  const*) ; 
+
+ TYPE_2__* newAttribute (int ) ;
+ int uiAttributeTypeFeatures ;
+ int uiOpenTypeFeaturesClone (int const*) ;
 
 uiAttribute *uiNewFeaturesAttribute(const uiOpenTypeFeatures *otf)
 {
-	uiAttribute *a;
+ uiAttribute *a;
 
-	a = newAttribute(uiAttributeTypeFeatures);
-	a->u.features = uiOpenTypeFeaturesClone(otf);
-	return a;
+ a = newAttribute(uiAttributeTypeFeatures);
+ a->u.features = uiOpenTypeFeaturesClone(otf);
+ return a;
 }

@@ -1,44 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int ENODEV ; 
- int /*<<< orphan*/  bootverbose ; 
- int /*<<< orphan*/ * vesa_adp ; 
- int /*<<< orphan*/  vesa_bios_info (int /*<<< orphan*/ ) ; 
- int vesa_configure (int /*<<< orphan*/ ) ; 
- scalar_t__ vesa_init_done ; 
+ int ENODEV ;
+ int bootverbose ;
+ int * vesa_adp ;
+ int vesa_bios_info (int ) ;
+ int vesa_configure (int ) ;
+ scalar_t__ vesa_init_done ;
 
 __attribute__((used)) static int
 vesa_load(void)
 {
-	int error;
+ int error;
 
-	if (vesa_init_done)
-		return (0);
+ if (vesa_init_done)
+  return (0);
 
-	/* locate a VGA adapter */
-	vesa_adp = NULL;
-	error = vesa_configure(0);
 
-	if (error == 0)
-		vesa_bios_info(bootverbose);
+ vesa_adp = ((void*)0);
+ error = vesa_configure(0);
 
-	/* Don't return ENODEV, the upper layers will whine. */
-	if (error == ENODEV) {
-		error = 0;
-		vesa_adp = NULL;
-	}
+ if (error == 0)
+  vesa_bios_info(bootverbose);
 
-	return (error);
+
+ if (error == ENODEV) {
+  error = 0;
+  vesa_adp = ((void*)0);
+ }
+
+ return (error);
 }

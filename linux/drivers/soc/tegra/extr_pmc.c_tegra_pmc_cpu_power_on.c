@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  pmc ; 
- int tegra_get_cpu_powergate_id (int /*<<< orphan*/ ,unsigned int) ; 
- int tegra_powergate_set (int /*<<< orphan*/ ,int,int) ; 
+ int pmc ;
+ int tegra_get_cpu_powergate_id (int ,unsigned int) ;
+ int tegra_powergate_set (int ,int,int) ;
 
 int tegra_pmc_cpu_power_on(unsigned int cpuid)
 {
-	int id;
+ int id;
 
-	id = tegra_get_cpu_powergate_id(pmc, cpuid);
-	if (id < 0)
-		return id;
+ id = tegra_get_cpu_powergate_id(pmc, cpuid);
+ if (id < 0)
+  return id;
 
-	return tegra_powergate_set(pmc, id, true);
+ return tegra_powergate_set(pmc, id, 1);
 }

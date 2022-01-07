@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  scalar_t__ uint32_t ;
-typedef  int /*<<< orphan*/  AVFormatContext ;
 
-/* Variables and functions */
- scalar_t__ AV_RB32 (int const*) ; 
- scalar_t__ DIRAC_DATA_UNIT_HEADER_SIZE ; 
-#define  DIRAC_PCODE_AUX 132 
-#define  DIRAC_PCODE_END_SEQ 131 
-#define  DIRAC_PCODE_PAD 130 
-#define  DIRAC_PCODE_PICTURE_HQ 129 
-#define  DIRAC_PCODE_SEQ_HEADER 128 
- int /*<<< orphan*/  avpriv_report_missing_feature (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  send_packet (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int const*,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  send_picture (int /*<<< orphan*/ *,int const*,scalar_t__,int) ; 
+
+
+
+typedef int uint8_t ;
+typedef scalar_t__ uint32_t ;
+typedef int AVFormatContext ;
+
+
+ scalar_t__ AV_RB32 (int const*) ;
+ scalar_t__ DIRAC_DATA_UNIT_HEADER_SIZE ;
+
+
+
+
+
+ int avpriv_report_missing_feature (int *,char*,int) ;
+ int send_packet (int *,int,int ,int const*,scalar_t__,int ,int ,int ) ;
+ int send_picture (int *,int const*,scalar_t__,int) ;
 
 void ff_rtp_send_vc2hq(AVFormatContext *ctx, const uint8_t *frame_buf, int frame_size, int interlaced)
 {
@@ -38,19 +38,19 @@ void ff_rtp_send_vc2hq(AVFormatContext *ctx, const uint8_t *frame_buf, int frame
         unit_size = AV_RB32(&unit[5]);
 
         switch (parse_code) {
-        /* sequence header */
-        /* end of sequence */
-        case DIRAC_PCODE_SEQ_HEADER:
-        case DIRAC_PCODE_END_SEQ:
+
+
+        case 128:
+        case 131:
             send_packet(ctx, parse_code, 0, unit + DIRAC_DATA_UNIT_HEADER_SIZE, unit_size - DIRAC_DATA_UNIT_HEADER_SIZE, 0, 0, 0);
             break;
-        /* HQ picture */
-        case DIRAC_PCODE_PICTURE_HQ:
+
+        case 129:
             send_picture(ctx, unit + DIRAC_DATA_UNIT_HEADER_SIZE, unit_size - DIRAC_DATA_UNIT_HEADER_SIZE, interlaced);
             break;
-        /* parse codes without specification */
-        case DIRAC_PCODE_AUX:
-        case DIRAC_PCODE_PAD:
+
+        case 132:
+        case 130:
             break;
         default:
             avpriv_report_missing_feature(ctx, "VC-2 parse code %d", parse_code);

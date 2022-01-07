@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  hb_title_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int hb_title_t ;
 struct TYPE_3__ {int format; } ;
-typedef  TYPE_1__ hb_container_t ;
-typedef  scalar_t__ gint ;
-typedef  int /*<<< orphan*/  gchar ;
-typedef  int gboolean ;
-typedef  int /*<<< orphan*/  GtkWindow ;
-typedef  int /*<<< orphan*/  const GhbValue ;
+typedef TYPE_1__ hb_container_t ;
+typedef scalar_t__ gint ;
+typedef int gchar ;
+typedef int gboolean ;
+typedef int GtkWindow ;
+typedef int const GhbValue ;
 
-/* Variables and functions */
- int FALSE ; 
- int /*<<< orphan*/  GTK_MESSAGE_WARNING ; 
- int /*<<< orphan*/  G_FILE_TEST_IS_REGULAR ; 
- int HB_MUX_MASK_WEBM ; 
- int TRUE ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  g_file_test (int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  g_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  g_message (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * g_strdup_printf (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  const* ghb_array_get (int /*<<< orphan*/  const*,scalar_t__) ; 
- scalar_t__ ghb_array_len (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  const* ghb_dict_get (int /*<<< orphan*/  const*,char*) ; 
- scalar_t__ ghb_dict_get_bool (int /*<<< orphan*/  const*,char*) ; 
- scalar_t__ ghb_dict_get_int (int /*<<< orphan*/  const*,char*) ; 
- void* ghb_dict_get_string (int /*<<< orphan*/  const*,char*) ; 
- int /*<<< orphan*/  const* ghb_get_job_subtitle_list (int /*<<< orphan*/  const*) ; 
- TYPE_1__* ghb_lookup_container_by_name (char const*) ; 
- int /*<<< orphan*/ * ghb_lookup_title (scalar_t__,scalar_t__*) ; 
- int /*<<< orphan*/  ghb_message_dialog (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int FALSE ;
+ int GTK_MESSAGE_WARNING ;
+ int G_FILE_TEST_IS_REGULAR ;
+ int HB_MUX_MASK_WEBM ;
+ int TRUE ;
+ int _ (char*) ;
+ int g_file_test (int const*,int ) ;
+ int g_free (int *) ;
+ int g_message (int ) ;
+ int * g_strdup_printf (int ) ;
+ int const* ghb_array_get (int const*,scalar_t__) ;
+ scalar_t__ ghb_array_len (int const*) ;
+ int const* ghb_dict_get (int const*,char*) ;
+ scalar_t__ ghb_dict_get_bool (int const*,char*) ;
+ scalar_t__ ghb_dict_get_int (int const*,char*) ;
+ void* ghb_dict_get_string (int const*,char*) ;
+ int const* ghb_get_job_subtitle_list (int const*) ;
+ TYPE_1__* ghb_lookup_container_by_name (char const*) ;
+ int * ghb_lookup_title (scalar_t__,scalar_t__*) ;
+ int ghb_message_dialog (int *,int ,int *,int ,int ) ;
 
 gboolean
 ghb_validate_subtitles(GhbValue *settings, GtkWindow *parent)
@@ -51,9 +51,9 @@ ghb_validate_subtitles(GhbValue *settings, GtkWindow *parent)
 
     title_id = ghb_dict_get_int(settings, "title");
     title = ghb_lookup_title(title_id, &titleindex);
-    if (title == NULL)
+    if (title == ((void*)0))
     {
-        /* No valid title, stop right there */
+
         g_message(_("No title found.\n"));
         return FALSE;
     }
@@ -78,8 +78,8 @@ ghb_validate_subtitles(GhbValue *settings, GtkWindow *parent)
         burned = track != -1 && ghb_dict_get_bool(subtitle, "Burn");
         if (burned && one_burned)
         {
-            // MP4 can only handle burned vobsubs.  make sure there isn't
-            // already something burned in the list
+
+
             message = g_strdup_printf(
             _("Only one subtitle may be burned into the video.\n\n"
                 "You should change your subtitle selections.\n"
@@ -99,7 +99,7 @@ ghb_validate_subtitles(GhbValue *settings, GtkWindow *parent)
         }
         else if (mux->format & HB_MUX_MASK_WEBM)
         {
-            // WebM can only handle burned subs afaik. Their specs are ambiguous here
+
             message = g_strdup_printf(
             _("WebM in HandBrake only supports burned subtitles.\n\n"
                 "You should change your subtitle selections.\n"
@@ -113,7 +113,7 @@ ghb_validate_subtitles(GhbValue *settings, GtkWindow *parent)
             g_free(message);
             break;
         }
-        if (import != NULL)
+        if (import != ((void*)0))
         {
             const gchar *filename;
 

@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_guid_t ;
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  size_t uint16_t ;
-typedef  int /*<<< orphan*/  stream_t ;
-typedef  int ssize_t ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int vlc_guid_t ;
+typedef int uint8_t ;
+typedef size_t uint16_t ;
+typedef int stream_t ;
+typedef int ssize_t ;
 struct TYPE_5__ {scalar_t__ i_object_size; scalar_t__ exclusion_type; size_t i_stream_number_count; scalar_t__* pi_stream_numbers; } ;
 struct TYPE_4__ {TYPE_2__ bitrate_mutual_exclusion; } ;
-typedef  TYPE_1__ asf_object_t ;
-typedef  TYPE_2__ asf_object_bitrate_mutual_exclusion_t ;
+typedef TYPE_1__ asf_object_t ;
+typedef TYPE_2__ asf_object_bitrate_mutual_exclusion_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASF_HAVE (int) ; 
- scalar_t__ ASF_MAX_STREAMNUMBER ; 
- size_t ASF_OBJECT_COMMON_SIZE ; 
- void* ASF_READ2 () ; 
- int /*<<< orphan*/  ASF_SKIP (int) ; 
- scalar_t__ BITRATE ; 
- scalar_t__ INT32_MAX ; 
- scalar_t__ LANGUAGE ; 
- int VLC_EGENERIC ; 
- int VLC_ENOMEM ; 
- int VLC_SUCCESS ; 
- int /*<<< orphan*/  asf_guid_mutex_bitrate ; 
- int /*<<< orphan*/  asf_guid_mutex_language ; 
- scalar_t__* calloc (size_t,int) ; 
- int /*<<< orphan*/  free (scalar_t__*) ; 
- scalar_t__ guidcmp (int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  msg_Dbg (int /*<<< orphan*/ *,char*,char*) ; 
- int vlc_stream_Peek (int /*<<< orphan*/ *,int /*<<< orphan*/  const**,scalar_t__) ; 
+
+ int ASF_HAVE (int) ;
+ scalar_t__ ASF_MAX_STREAMNUMBER ;
+ size_t ASF_OBJECT_COMMON_SIZE ;
+ void* ASF_READ2 () ;
+ int ASF_SKIP (int) ;
+ scalar_t__ BITRATE ;
+ scalar_t__ INT32_MAX ;
+ scalar_t__ LANGUAGE ;
+ int VLC_EGENERIC ;
+ int VLC_ENOMEM ;
+ int VLC_SUCCESS ;
+ int asf_guid_mutex_bitrate ;
+ int asf_guid_mutex_language ;
+ scalar_t__* calloc (size_t,int) ;
+ int free (scalar_t__*) ;
+ scalar_t__ guidcmp (int const*,int *) ;
+ int msg_Dbg (int *,char*,char*) ;
+ int vlc_stream_Peek (int *,int const**,scalar_t__) ;
 
 __attribute__((used)) static int ASF_ReadObject_bitrate_mutual_exclusion( stream_t *s, asf_object_t *p_obj )
 {
@@ -56,7 +56,7 @@ __attribute__((used)) static int ASF_ReadObject_bitrate_mutual_exclusion( stream
 
     p_data = &p_peek[ASF_OBJECT_COMMON_SIZE];
 
-    if( !ASF_HAVE( 16 + 2 * sizeof(uint16_t) ) ) /* at least one entry */
+    if( !ASF_HAVE( 16 + 2 * sizeof(uint16_t) ) )
         return VLC_EGENERIC;
 
     if ( guidcmp( (const vlc_guid_t *) p_data, &asf_guid_mutex_language ) )
@@ -84,15 +84,5 @@ __attribute__((used)) static int ASF_ReadObject_bitrate_mutual_exclusion( stream
             return VLC_EGENERIC;
         }
     }
-
-#ifdef ASF_DEBUG
-    msg_Dbg( s, "read \"bitrate exclusion object\" type %s",
-             p_ex->exclusion_type == LANGUAGE ? "Language" :
-             ( p_ex->exclusion_type == BITRATE ) ? "Bitrate" : "Unknown"
-    );
-    for( uint16_t i = 0; i < p_ex->i_stream_number_count; i++ )
-        msg_Dbg( s, "  - stream=%u", p_ex->pi_stream_numbers[i] );
-#endif
-
     return VLC_SUCCESS;
 }

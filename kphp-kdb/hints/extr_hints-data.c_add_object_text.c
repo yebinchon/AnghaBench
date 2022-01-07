@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct lev_hints_add_object_text {char* text; scalar_t__ object_id; scalar_t__ object_type; int /*<<< orphan*/  text_len; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  changes_count ; 
- int /*<<< orphan*/  changes_memory ; 
- int /*<<< orphan*/  check_object_id (scalar_t__) ; 
- int /*<<< orphan*/  check_text_len (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  check_type (scalar_t__) ; 
- int /*<<< orphan*/  chg_list_add_string (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int,char*) ; 
- scalar_t__ dl_get_memory_used () ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  global_changes_en ; 
- int /*<<< orphan*/  global_changes_st ; 
- scalar_t__ no_changes ; 
- char* prepare_str (char*) ; 
- int /*<<< orphan*/ ** stat_global ; 
- int /*<<< orphan*/  stderr ; 
- int verbosity ; 
- scalar_t__ write_only ; 
+
+
+
+struct lev_hints_add_object_text {char* text; scalar_t__ object_id; scalar_t__ object_type; int text_len; } ;
+
+
+ int changes_count ;
+ int changes_memory ;
+ int check_object_id (scalar_t__) ;
+ int check_text_len (int ) ;
+ int check_type (scalar_t__) ;
+ int chg_list_add_string (int *,int *,int,int,char*) ;
+ scalar_t__ dl_get_memory_used () ;
+ int fprintf (int ,char*,char*) ;
+ int global_changes_en ;
+ int global_changes_st ;
+ scalar_t__ no_changes ;
+ char* prepare_str (char*) ;
+ int ** stat_global ;
+ int stderr ;
+ int verbosity ;
+ scalar_t__ write_only ;
 
 int add_object_text (struct lev_hints_add_object_text *E) {
   if (!check_type (E->object_type) || !check_object_id (E->object_id) || !check_text_len (E->text_len)) {
@@ -41,7 +41,7 @@ int add_object_text (struct lev_hints_add_object_text *E) {
   changes_memory -= dl_get_memory_used();
   char *clone = prepare_str (E->text);
   changes_memory += dl_get_memory_used();
-  if (clone == NULL) {
+  if (clone == ((void*)0)) {
     if (verbosity > 1) {
       fprintf (stderr, "botva %s\n", E->text);
     }

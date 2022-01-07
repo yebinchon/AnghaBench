@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  pa_mainloop_api ;
-typedef  int /*<<< orphan*/  pa_mainloop ;
-typedef  int /*<<< orphan*/  pa_context ;
-typedef  enum PulseAudioContextState { ____Placeholder_PulseAudioContextState } PulseAudioContextState ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_EXTERNAL ; 
- int /*<<< orphan*/  ENOMEM ; 
- int PULSE_CONTEXT_FINISHED ; 
- int PULSE_CONTEXT_INITIALIZING ; 
- int /*<<< orphan*/  av_assert0 (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  ff_pulse_audio_disconnect_context (int /*<<< orphan*/ **,int /*<<< orphan*/ **) ; 
- scalar_t__ pa_context_connect (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * pa_context_new (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  pa_context_set_state_callback (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/ * pa_mainloop_get_api (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pa_mainloop_iterate (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * pa_mainloop_new () ; 
- int /*<<< orphan*/  pa_state_cb ; 
+
+
+
+typedef int pa_mainloop_api ;
+typedef int pa_mainloop ;
+typedef int pa_context ;
+typedef enum PulseAudioContextState { ____Placeholder_PulseAudioContextState } PulseAudioContextState ;
+
+
+ int AVERROR (int ) ;
+ int AVERROR_EXTERNAL ;
+ int ENOMEM ;
+ int PULSE_CONTEXT_FINISHED ;
+ int PULSE_CONTEXT_INITIALIZING ;
+ int av_assert0 (int **) ;
+ int ff_pulse_audio_disconnect_context (int **,int **) ;
+ scalar_t__ pa_context_connect (int *,char const*,int ,int *) ;
+ int * pa_context_new (int *,char const*) ;
+ int pa_context_set_state_callback (int *,int ,int*) ;
+ int * pa_mainloop_get_api (int *) ;
+ int pa_mainloop_iterate (int *,int,int *) ;
+ int * pa_mainloop_new () ;
+ int pa_state_cb ;
 
 int ff_pulse_audio_connect_context(pa_mainloop **pa_ml, pa_context **pa_ctx,
                                    const char *server, const char *description)
 {
     int ret;
-    pa_mainloop_api *pa_mlapi = NULL;
+    pa_mainloop_api *pa_mlapi = ((void*)0);
     enum PulseAudioContextState context_state = PULSE_CONTEXT_INITIALIZING;
 
     av_assert0(pa_ml);
     av_assert0(pa_ctx);
 
-    *pa_ml = NULL;
-    *pa_ctx = NULL;
+    *pa_ml = ((void*)0);
+    *pa_ctx = ((void*)0);
 
     if (!(*pa_ml = pa_mainloop_new()))
         return AVERROR(ENOMEM);
@@ -55,13 +55,13 @@ int ff_pulse_audio_connect_context(pa_mainloop **pa_ml, pa_context **pa_ctx,
         goto fail;
     }
     pa_context_set_state_callback(*pa_ctx, pa_state_cb, &context_state);
-    if (pa_context_connect(*pa_ctx, server, 0, NULL) < 0) {
+    if (pa_context_connect(*pa_ctx, server, 0, ((void*)0)) < 0) {
         ret = AVERROR_EXTERNAL;
         goto fail;
     }
 
     while (context_state == PULSE_CONTEXT_INITIALIZING)
-        pa_mainloop_iterate(*pa_ml, 1, NULL);
+        pa_mainloop_iterate(*pa_ml, 1, ((void*)0));
     if (context_state == PULSE_CONTEXT_FINISHED) {
         ret = AVERROR_EXTERNAL;
         goto fail;

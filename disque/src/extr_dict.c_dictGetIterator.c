@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int index; int /*<<< orphan*/ * nextEntry; int /*<<< orphan*/ * entry; scalar_t__ safe; scalar_t__ table; int /*<<< orphan*/ * d; } ;
-typedef  TYPE_1__ dictIterator ;
-typedef  int /*<<< orphan*/  dict ;
 
-/* Variables and functions */
- TYPE_1__* zmalloc (int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int index; int * nextEntry; int * entry; scalar_t__ safe; scalar_t__ table; int * d; } ;
+typedef TYPE_1__ dictIterator ;
+typedef int dict ;
+
+
+ TYPE_1__* zmalloc (int) ;
 
 dictIterator *dictGetIterator(dict *d)
 {
@@ -26,7 +26,7 @@ dictIterator *dictGetIterator(dict *d)
     iter->table = 0;
     iter->index = -1;
     iter->safe = 0;
-    iter->entry = NULL;
-    iter->nextEntry = NULL;
+    iter->entry = ((void*)0);
+    iter->nextEntry = ((void*)0);
     return iter;
 }

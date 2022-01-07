@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int focus_item; int /*<<< orphan*/  self; int /*<<< orphan*/  horz_pos; scalar_t__ font; int /*<<< orphan*/  in_focus; int /*<<< orphan*/  caret_on; } ;
-typedef  int /*<<< orphan*/  RECT ;
-typedef  TYPE_1__ LB_DESCR ;
-typedef  scalar_t__ HFONT ;
-typedef  int /*<<< orphan*/  HDC ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  COLOR_GRAYTEXT ; 
- int /*<<< orphan*/  DCX_CACHE ; 
- int /*<<< orphan*/  GetDCEx (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetSysColor (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IsWindowEnabled (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IsWindowVisible (int /*<<< orphan*/ ) ; 
- int LISTBOX_GetItemRect (TYPE_1__*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LISTBOX_PaintItem (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ODA_FOCUS ; 
- int /*<<< orphan*/  ReleaseDC (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ SelectObject (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  SetTextColor (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetWindowOrgEx (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int focus_item; int self; int horz_pos; scalar_t__ font; int in_focus; int caret_on; } ;
+typedef int RECT ;
+typedef TYPE_1__ LB_DESCR ;
+typedef scalar_t__ HFONT ;
+typedef int HDC ;
+typedef int BOOL ;
+
+
+ int COLOR_GRAYTEXT ;
+ int DCX_CACHE ;
+ int GetDCEx (int ,int ,int ) ;
+ int GetSysColor (int ) ;
+ int IsWindowEnabled (int ) ;
+ int IsWindowVisible (int ) ;
+ int LISTBOX_GetItemRect (TYPE_1__*,int,int *) ;
+ int LISTBOX_PaintItem (TYPE_1__*,int ,int *,int,int ,int) ;
+ int ODA_FOCUS ;
+ int ReleaseDC (int ,int ) ;
+ scalar_t__ SelectObject (int ,scalar_t__) ;
+ int SetTextColor (int ,int ) ;
+ int SetWindowOrgEx (int ,int ,int ,int *) ;
 
 __attribute__((used)) static void LISTBOX_DrawFocusRect( LB_DESCR *descr, BOOL on )
 {
@@ -39,7 +39,7 @@ __attribute__((used)) static void LISTBOX_DrawFocusRect( LB_DESCR *descr, BOOL o
     RECT rect;
     HFONT oldFont = 0;
 
-    /* Do not repaint the item if the item is not visible */
+
     if (!IsWindowVisible(descr->self)) return;
 
     if (descr->focus_item == -1) return;
@@ -50,7 +50,7 @@ __attribute__((used)) static void LISTBOX_DrawFocusRect( LB_DESCR *descr, BOOL o
     if (descr->font) oldFont = SelectObject( hdc, descr->font );
     if (!IsWindowEnabled(descr->self))
         SetTextColor( hdc, GetSysColor( COLOR_GRAYTEXT ) );
-    SetWindowOrgEx( hdc, descr->horz_pos, 0, NULL );
+    SetWindowOrgEx( hdc, descr->horz_pos, 0, ((void*)0) );
     LISTBOX_PaintItem( descr, hdc, &rect, descr->focus_item, ODA_FOCUS, !on );
     if (oldFont) SelectObject( hdc, oldFont );
     ReleaseDC( descr->self, hdc );

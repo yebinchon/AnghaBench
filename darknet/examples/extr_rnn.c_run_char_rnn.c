@@ -1,31 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int find_arg (int,char**,char*) ; 
- char* find_char_arg (int,char**,char*,char*) ; 
- float find_float_arg (int,char**,char*,double) ; 
- int find_int_arg (int,char**,char*,int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*,char*) ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ strcmp (char*,char*) ; 
- int /*<<< orphan*/  test_char_rnn (char*,char*,int,char*,float,int,char*) ; 
- int /*<<< orphan*/  test_tactic_rnn (char*,char*,int,float,int,char*) ; 
- int time (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  train_char_rnn (char*,char*,char*,int,int) ; 
- int /*<<< orphan*/  valid_char_rnn (char*,char*,char*) ; 
- int /*<<< orphan*/  valid_tactic_rnn (char*,char*,char*) ; 
- int /*<<< orphan*/  vec_char_rnn (char*,char*,char*) ; 
+ int find_arg (int,char**,char*) ;
+ char* find_char_arg (int,char**,char*,char*) ;
+ float find_float_arg (int,char**,char*,double) ;
+ int find_int_arg (int,char**,char*,int) ;
+ int fprintf (int ,char*,char*,char*) ;
+ int stderr ;
+ scalar_t__ strcmp (char*,char*) ;
+ int test_char_rnn (char*,char*,int,char*,float,int,char*) ;
+ int test_tactic_rnn (char*,char*,int,float,int,char*) ;
+ int time (int ) ;
+ int train_char_rnn (char*,char*,char*,int,int) ;
+ int valid_char_rnn (char*,char*,char*) ;
+ int valid_tactic_rnn (char*,char*,char*) ;
+ int vec_char_rnn (char*,char*,char*) ;
 
 void run_char_rnn(int argc, char **argv)
 {

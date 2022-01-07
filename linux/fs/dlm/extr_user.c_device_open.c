@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct inode {int dummy; } ;
 struct file {struct dlm_user_proc* private_data; } ;
-struct dlm_user_proc {int /*<<< orphan*/  wait; int /*<<< orphan*/  locks_spin; int /*<<< orphan*/  asts_spin; int /*<<< orphan*/  unlocking; int /*<<< orphan*/  locks; int /*<<< orphan*/  asts; int /*<<< orphan*/  lockspace; } ;
-struct dlm_ls {int /*<<< orphan*/  ls_local_handle; } ;
+struct dlm_user_proc {int wait; int locks_spin; int asts_spin; int unlocking; int locks; int asts; int lockspace; } ;
+struct dlm_ls {int ls_local_handle; } ;
 
-/* Variables and functions */
- int ENOENT ; 
- int ENOMEM ; 
- int /*<<< orphan*/  GFP_NOFS ; 
- int /*<<< orphan*/  INIT_LIST_HEAD (int /*<<< orphan*/ *) ; 
- struct dlm_ls* dlm_find_lockspace_device (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dlm_put_lockspace (struct dlm_ls*) ; 
- int /*<<< orphan*/  iminor (struct inode*) ; 
- int /*<<< orphan*/  init_waitqueue_head (int /*<<< orphan*/ *) ; 
- struct dlm_user_proc* kzalloc (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  spin_lock_init (int /*<<< orphan*/ *) ; 
+
+ int ENOENT ;
+ int ENOMEM ;
+ int GFP_NOFS ;
+ int INIT_LIST_HEAD (int *) ;
+ struct dlm_ls* dlm_find_lockspace_device (int ) ;
+ int dlm_put_lockspace (struct dlm_ls*) ;
+ int iminor (struct inode*) ;
+ int init_waitqueue_head (int *) ;
+ struct dlm_user_proc* kzalloc (int,int ) ;
+ int spin_lock_init (int *) ;
 
 __attribute__((used)) static int device_open(struct inode *inode, struct file *file)
 {
-	struct dlm_user_proc *proc;
-	struct dlm_ls *ls;
+ struct dlm_user_proc *proc;
+ struct dlm_ls *ls;
 
-	ls = dlm_find_lockspace_device(iminor(inode));
-	if (!ls)
-		return -ENOENT;
+ ls = dlm_find_lockspace_device(iminor(inode));
+ if (!ls)
+  return -ENOENT;
 
-	proc = kzalloc(sizeof(struct dlm_user_proc), GFP_NOFS);
-	if (!proc) {
-		dlm_put_lockspace(ls);
-		return -ENOMEM;
-	}
+ proc = kzalloc(sizeof(struct dlm_user_proc), GFP_NOFS);
+ if (!proc) {
+  dlm_put_lockspace(ls);
+  return -ENOMEM;
+ }
 
-	proc->lockspace = ls->ls_local_handle;
-	INIT_LIST_HEAD(&proc->asts);
-	INIT_LIST_HEAD(&proc->locks);
-	INIT_LIST_HEAD(&proc->unlocking);
-	spin_lock_init(&proc->asts_spin);
-	spin_lock_init(&proc->locks_spin);
-	init_waitqueue_head(&proc->wait);
-	file->private_data = proc;
+ proc->lockspace = ls->ls_local_handle;
+ INIT_LIST_HEAD(&proc->asts);
+ INIT_LIST_HEAD(&proc->locks);
+ INIT_LIST_HEAD(&proc->unlocking);
+ spin_lock_init(&proc->asts_spin);
+ spin_lock_init(&proc->locks_spin);
+ init_waitqueue_head(&proc->wait);
+ file->private_data = proc;
 
-	return 0;
+ return 0;
 }

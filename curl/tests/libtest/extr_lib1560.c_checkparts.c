@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct part {char* member_1; int /*<<< orphan*/  part; scalar_t__ name; int /*<<< orphan*/  member_0; } ;
-typedef  int /*<<< orphan*/  buf ;
-typedef  scalar_t__ CURLUcode ;
-typedef  int /*<<< orphan*/  CURLU ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CURLUPART_FRAGMENT ; 
- int /*<<< orphan*/  CURLUPART_HOST ; 
- int /*<<< orphan*/  CURLUPART_OPTIONS ; 
- int /*<<< orphan*/  CURLUPART_PASSWORD ; 
- int /*<<< orphan*/  CURLUPART_PATH ; 
- int /*<<< orphan*/  CURLUPART_PORT ; 
- int /*<<< orphan*/  CURLUPART_QUERY ; 
- int /*<<< orphan*/  CURLUPART_SCHEME ; 
- int /*<<< orphan*/  CURLUPART_USER ; 
- int /*<<< orphan*/  curl_free (char*) ; 
- scalar_t__ curl_url_get (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char**,unsigned int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char const*,char const*,char*) ; 
- int /*<<< orphan*/  msnprintf (char*,size_t,char*,char*,...) ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ strcmp (char*,char const*) ; 
- size_t strlen (char*) ; 
+
+
+
+struct part {char* member_1; int part; scalar_t__ name; int member_0; } ;
+typedef int buf ;
+typedef scalar_t__ CURLUcode ;
+typedef int CURLU ;
+
+
+ int CURLUPART_FRAGMENT ;
+ int CURLUPART_HOST ;
+ int CURLUPART_OPTIONS ;
+ int CURLUPART_PASSWORD ;
+ int CURLUPART_PATH ;
+ int CURLUPART_PORT ;
+ int CURLUPART_QUERY ;
+ int CURLUPART_SCHEME ;
+ int CURLUPART_USER ;
+ int curl_free (char*) ;
+ scalar_t__ curl_url_get (int *,int ,char**,unsigned int) ;
+ int fprintf (int ,char*,char const*,char const*,char*) ;
+ int msnprintf (char*,size_t,char*,char*,...) ;
+ int stderr ;
+ scalar_t__ strcmp (char*,char const*) ;
+ size_t strlen (char*) ;
 
 __attribute__((used)) static int checkparts(CURLU *u, const char *in, const char *wanted,
                       unsigned int getflags)
@@ -51,12 +51,12 @@ __attribute__((used)) static int checkparts(CURLU *u, const char *in, const char
     {CURLUPART_PATH, "path"},
     {CURLUPART_QUERY, "query"},
     {CURLUPART_FRAGMENT, "fragment"},
-    {0, NULL}
+    {0, ((void*)0)}
   };
   buf[0] = 0;
 
   for(i = 0; parts[i].name; i++) {
-    char *p = NULL;
+    char *p = ((void*)0);
     size_t n;
     rc = curl_url_get(u, parts[i].part, &p, getflags);
     if(!rc && p) {

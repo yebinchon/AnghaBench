@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct video_data {int buffers; scalar_t__* buf_len; scalar_t__ frame_size; int /*<<< orphan*/ * buf_start; int /*<<< orphan*/  fd; } ;
-struct TYPE_5__ {int /*<<< orphan*/  offset; } ;
-struct v4l2_requestbuffers {int count; int index; scalar_t__ length; TYPE_1__ m; int /*<<< orphan*/  memory; int /*<<< orphan*/  type; } ;
-struct v4l2_buffer {int count; int index; scalar_t__ length; TYPE_1__ m; int /*<<< orphan*/  memory; int /*<<< orphan*/  type; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct video_data {int buffers; scalar_t__* buf_len; scalar_t__ frame_size; int * buf_start; int fd; } ;
+struct TYPE_5__ {int offset; } ;
+struct v4l2_requestbuffers {int count; int index; scalar_t__ length; TYPE_1__ m; int memory; int type; } ;
+struct v4l2_buffer {int count; int index; scalar_t__ length; TYPE_1__ m; int memory; int type; } ;
 struct TYPE_6__ {struct video_data* priv_data; } ;
-typedef  TYPE_2__ AVFormatContext ;
+typedef TYPE_2__ AVFormatContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  MAP_FAILED ; 
- int /*<<< orphan*/  MAP_SHARED ; 
- int PROT_READ ; 
- int PROT_WRITE ; 
- int /*<<< orphan*/  V4L2_BUF_TYPE_VIDEO_CAPTURE ; 
- int /*<<< orphan*/  V4L2_MEMORY_MMAP ; 
- int /*<<< orphan*/  VIDIOC_QUERYBUF ; 
- int /*<<< orphan*/  VIDIOC_REQBUFS ; 
- int /*<<< orphan*/  av_err2str (int) ; 
- int /*<<< orphan*/  av_freep (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  av_log (TYPE_2__*,int /*<<< orphan*/ ,char*,...) ; 
- void* av_malloc_array (int,int) ; 
- int desired_video_buffers ; 
- int /*<<< orphan*/  errno ; 
- scalar_t__ v4l2_ioctl (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct v4l2_requestbuffers*) ; 
- int /*<<< orphan*/  v4l2_mmap (int /*<<< orphan*/ *,scalar_t__,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int AVERROR (int ) ;
+ int AV_LOG_ERROR ;
+ int ENOMEM ;
+ int MAP_FAILED ;
+ int MAP_SHARED ;
+ int PROT_READ ;
+ int PROT_WRITE ;
+ int V4L2_BUF_TYPE_VIDEO_CAPTURE ;
+ int V4L2_MEMORY_MMAP ;
+ int VIDIOC_QUERYBUF ;
+ int VIDIOC_REQBUFS ;
+ int av_err2str (int) ;
+ int av_freep (int **) ;
+ int av_log (TYPE_2__*,int ,char*,...) ;
+ void* av_malloc_array (int,int) ;
+ int desired_video_buffers ;
+ int errno ;
+ scalar_t__ v4l2_ioctl (int ,int ,struct v4l2_requestbuffers*) ;
+ int v4l2_mmap (int *,scalar_t__,int,int ,int ,int ) ;
 
 __attribute__((used)) static int mmap_init(AVFormatContext *ctx)
 {
     int i, res;
     struct video_data *s = ctx->priv_data;
     struct v4l2_requestbuffers req = {
-        .type   = V4L2_BUF_TYPE_VIDEO_CAPTURE,
-        .count  = desired_video_buffers,
+        .type = V4L2_BUF_TYPE_VIDEO_CAPTURE,
+        .count = desired_video_buffers,
         .memory = V4L2_MEMORY_MMAP
     };
 
@@ -75,8 +75,8 @@ __attribute__((used)) static int mmap_init(AVFormatContext *ctx)
 
     for (i = 0; i < req.count; i++) {
         struct v4l2_buffer buf = {
-            .type   = V4L2_BUF_TYPE_VIDEO_CAPTURE,
-            .index  = i,
+            .type = V4L2_BUF_TYPE_VIDEO_CAPTURE,
+            .index = i,
             .memory = V4L2_MEMORY_MMAP
         };
         if (v4l2_ioctl(s->fd, VIDIOC_QUERYBUF, &buf) < 0) {
@@ -92,7 +92,7 @@ __attribute__((used)) static int mmap_init(AVFormatContext *ctx)
                    i, s->buf_len[i], s->frame_size);
             return AVERROR(ENOMEM);
         }
-        s->buf_start[i] = v4l2_mmap(NULL, buf.length,
+        s->buf_start[i] = v4l2_mmap(((void*)0), buf.length,
                                PROT_READ | PROT_WRITE, MAP_SHARED,
                                s->fd, buf.m.offset);
 

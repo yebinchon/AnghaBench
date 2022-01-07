@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int bottom; int top; int* err_flags; unsigned long* err_buffer; char** err_file; int* err_line; char** err_data; int* err_data_flags; } ;
-typedef  TYPE_1__ ERR_STATE ;
+typedef TYPE_1__ ERR_STATE ;
 
-/* Variables and functions */
- int ERR_FLAG_CLEAR ; 
- int ERR_NUM_ERRORS ; 
- unsigned long ERR_R_INTERNAL_ERROR ; 
- TYPE_1__* ERR_get_state () ; 
- int /*<<< orphan*/  err_clear (TYPE_1__*,int) ; 
- int /*<<< orphan*/  err_clear_data (TYPE_1__*,int) ; 
+
+ int ERR_FLAG_CLEAR ;
+ int ERR_NUM_ERRORS ;
+ unsigned long ERR_R_INTERNAL_ERROR ;
+ TYPE_1__* ERR_get_state () ;
+ int err_clear (TYPE_1__*,int) ;
+ int err_clear_data (TYPE_1__*,int) ;
 
 __attribute__((used)) static unsigned long get_error_values(int inc, int top, const char **file,
                                       int *line, const char **data,
@@ -31,7 +31,7 @@ __attribute__((used)) static unsigned long get_error_values(int inc, int top, co
     unsigned long ret;
 
     es = ERR_get_state();
-    if (es == NULL)
+    if (es == ((void*)0))
         return 0;
 
     if (inc && top) {
@@ -66,9 +66,9 @@ __attribute__((used)) static unsigned long get_error_values(int inc, int top, co
         return 0;
 
     if (top)
-        i = es->top;            /* last error */
+        i = es->top;
     else
-        i = (es->bottom + 1) % ERR_NUM_ERRORS; /* first error */
+        i = (es->bottom + 1) % ERR_NUM_ERRORS;
 
     ret = es->err_buffer[i];
     if (inc) {
@@ -76,8 +76,8 @@ __attribute__((used)) static unsigned long get_error_values(int inc, int top, co
         es->err_buffer[i] = 0;
     }
 
-    if (file != NULL && line != NULL) {
-        if (es->err_file[i] == NULL) {
+    if (file != ((void*)0) && line != ((void*)0)) {
+        if (es->err_file[i] == ((void*)0)) {
             *file = "NA";
             *line = 0;
         } else {
@@ -86,18 +86,18 @@ __attribute__((used)) static unsigned long get_error_values(int inc, int top, co
         }
     }
 
-    if (data == NULL) {
+    if (data == ((void*)0)) {
         if (inc) {
             err_clear_data(es, i);
         }
     } else {
-        if (es->err_data[i] == NULL) {
+        if (es->err_data[i] == ((void*)0)) {
             *data = "";
-            if (flags != NULL)
+            if (flags != ((void*)0))
                 *flags = 0;
         } else {
             *data = es->err_data[i];
-            if (flags != NULL)
+            if (flags != ((void*)0))
                 *flags = es->err_data_flags[i];
         }
     }

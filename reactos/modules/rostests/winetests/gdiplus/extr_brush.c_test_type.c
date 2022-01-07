@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  GpStatus ;
-typedef  int /*<<< orphan*/  GpSolidFill ;
-typedef  int /*<<< orphan*/  GpBrushType ;
-typedef  int /*<<< orphan*/  GpBrush ;
-typedef  int /*<<< orphan*/  ARGB ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BrushTypeSolidColor ; 
- int /*<<< orphan*/  GdipCreateSolidFill (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GdipDeleteBrush (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipGetBrushType (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Ok ; 
- int /*<<< orphan*/  expect (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int GpStatus ;
+typedef int GpSolidFill ;
+typedef int GpBrushType ;
+typedef int GpBrush ;
+typedef int ARGB ;
+
+
+ int BrushTypeSolidColor ;
+ int GdipCreateSolidFill (int ,int **) ;
+ int GdipDeleteBrush (int *) ;
+ int GdipGetBrushType (int *,int *) ;
+ int Ok ;
+ int expect (int ,int ) ;
 
 __attribute__((used)) static void test_type(void)
 {
     GpStatus status;
     GpBrushType bt;
-    GpSolidFill *brush = NULL;
+    GpSolidFill *brush = ((void*)0);
 
     GdipCreateSolidFill((ARGB)0xdeadbeef, &brush);
 

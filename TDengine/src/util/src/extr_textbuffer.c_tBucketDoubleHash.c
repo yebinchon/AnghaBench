@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int dMinVal; double dMaxVal; } ;
 struct TYPE_5__ {int nTotalSlots; int nSlotsOfSeg; TYPE_1__ nRange; } ;
-typedef  TYPE_2__ tMemBucket ;
-typedef  int int32_t ;
-typedef  int int16_t ;
+typedef TYPE_2__ tMemBucket ;
+typedef int int32_t ;
+typedef int int16_t ;
 
-/* Variables and functions */
- int DBL_MAX ; 
- int /*<<< orphan*/  pError (char*,int,int) ; 
+
+ int DBL_MAX ;
+ int pError (char*,int,int) ;
 
 void tBucketDoubleHash(tMemBucket *pBucket, void *value, int16_t *segIdx, int16_t *slotIdx) {
   double v = *(double *)value;
 
   if (pBucket->nRange.dMinVal == DBL_MAX) {
-    /*
-     * taking negative integer into consideration,
-     * there is only half of pBucket->segs available for non-negative integer
-     */
+
+
+
+
     double x = DBL_MAX / (pBucket->nTotalSlots >> 1);
     double posx = (v + DBL_MAX) / x;
     *segIdx = ((int32_t)posx) / pBucket->nSlotsOfSeg;
     *slotIdx = ((int32_t)posx) % pBucket->nSlotsOfSeg;
   } else {
-    // divide a range of [dMinVal, dMaxVal] into 1024 buckets
+
     double span = pBucket->nRange.dMaxVal - pBucket->nRange.dMinVal;
     if (span < pBucket->nTotalSlots) {
       int32_t delta = (int32_t)(v - pBucket->nRange.dMinVal);

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  menu_id ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int menu_id ;
 struct TYPE_4__ {int enabled; } ;
-typedef  TYPE_1__ menu_entry ;
+typedef TYPE_1__ menu_entry ;
 
-/* Variables and functions */
- int me_id2offset (TYPE_1__*,int /*<<< orphan*/ ) ; 
+
+ int me_id2offset (TYPE_1__*,int ) ;
 
 __attribute__((used)) static void me_enable(menu_entry *entries, menu_id id, int enable)
 {
-	int i = me_id2offset(entries, id);
-	entries[i].enabled = enable;
+ int i = me_id2offset(entries, id);
+ entries[i].enabled = enable;
 }

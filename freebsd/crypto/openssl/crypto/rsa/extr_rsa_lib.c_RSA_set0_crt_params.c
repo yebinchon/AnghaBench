@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * iqmp; int /*<<< orphan*/ * dmq1; int /*<<< orphan*/ * dmp1; } ;
-typedef  TYPE_1__ RSA ;
-typedef  int /*<<< orphan*/  BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BN_FLG_CONSTTIME ; 
- int /*<<< orphan*/  BN_clear_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_set_flags (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * iqmp; int * dmq1; int * dmp1; } ;
+typedef TYPE_1__ RSA ;
+typedef int BIGNUM ;
+
+
+ int BN_FLG_CONSTTIME ;
+ int BN_clear_free (int *) ;
+ int BN_set_flags (int *,int ) ;
 
 int RSA_set0_crt_params(RSA *r, BIGNUM *dmp1, BIGNUM *dmq1, BIGNUM *iqmp)
 {
-    /* If the fields dmp1, dmq1 and iqmp in r are NULL, the corresponding input
-     * parameters MUST be non-NULL.
-     */
-    if ((r->dmp1 == NULL && dmp1 == NULL)
-        || (r->dmq1 == NULL && dmq1 == NULL)
-        || (r->iqmp == NULL && iqmp == NULL))
+
+
+
+    if ((r->dmp1 == ((void*)0) && dmp1 == ((void*)0))
+        || (r->dmq1 == ((void*)0) && dmq1 == ((void*)0))
+        || (r->iqmp == ((void*)0) && iqmp == ((void*)0)))
         return 0;
 
-    if (dmp1 != NULL) {
+    if (dmp1 != ((void*)0)) {
         BN_clear_free(r->dmp1);
         r->dmp1 = dmp1;
         BN_set_flags(r->dmp1, BN_FLG_CONSTTIME);
     }
-    if (dmq1 != NULL) {
+    if (dmq1 != ((void*)0)) {
         BN_clear_free(r->dmq1);
         r->dmq1 = dmq1;
         BN_set_flags(r->dmq1, BN_FLG_CONSTTIME);
     }
-    if (iqmp != NULL) {
+    if (iqmp != ((void*)0)) {
         BN_clear_free(r->iqmp);
         r->iqmp = iqmp;
         BN_set_flags(r->iqmp, BN_FLG_CONSTTIME);

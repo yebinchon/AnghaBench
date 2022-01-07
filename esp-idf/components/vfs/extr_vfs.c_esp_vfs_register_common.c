@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {size_t path_prefix_len; size_t offset; void* ctx; int /*<<< orphan*/  vfs; int /*<<< orphan*/  path_prefix; } ;
-typedef  TYPE_1__ vfs_entry_t ;
-typedef  int /*<<< orphan*/  esp_vfs_t ;
-typedef  int /*<<< orphan*/  esp_err_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ESP_ERR_INVALID_ARG ; 
- int /*<<< orphan*/  ESP_ERR_NO_MEM ; 
- int /*<<< orphan*/  ESP_OK ; 
- size_t ESP_VFS_PATH_MAX ; 
- size_t LEN_PATH_PREFIX_IGNORED ; 
- size_t VFS_MAX_COUNT ; 
- int /*<<< orphan*/  bzero (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  free (TYPE_1__*) ; 
- scalar_t__ malloc (int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int) ; 
- TYPE_1__** s_vfs ; 
- size_t s_vfs_count ; 
- int /*<<< orphan*/  strcpy (int /*<<< orphan*/ ,char const*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {size_t path_prefix_len; size_t offset; void* ctx; int vfs; int path_prefix; } ;
+typedef TYPE_1__ vfs_entry_t ;
+typedef int esp_vfs_t ;
+typedef int esp_err_t ;
+
+
+ int ESP_ERR_INVALID_ARG ;
+ int ESP_ERR_NO_MEM ;
+ int ESP_OK ;
+ size_t ESP_VFS_PATH_MAX ;
+ size_t LEN_PATH_PREFIX_IGNORED ;
+ size_t VFS_MAX_COUNT ;
+ int bzero (int ,int) ;
+ int free (TYPE_1__*) ;
+ scalar_t__ malloc (int) ;
+ int memcpy (int *,int const*,int) ;
+ TYPE_1__** s_vfs ;
+ size_t s_vfs_count ;
+ int strcpy (int ,char const*) ;
 
 __attribute__((used)) static esp_err_t esp_vfs_register_common(const char* base_path, size_t len, const esp_vfs_t* vfs, void* ctx, int *vfs_index)
 {
@@ -42,12 +42,12 @@ __attribute__((used)) static esp_err_t esp_vfs_register_common(const char* base_
         }
     }
     vfs_entry_t *entry = (vfs_entry_t*) malloc(sizeof(vfs_entry_t));
-    if (entry == NULL) {
+    if (entry == ((void*)0)) {
         return ESP_ERR_NO_MEM;
     }
     size_t index;
     for (index = 0; index < s_vfs_count; ++index) {
-        if (s_vfs[index] == NULL) {
+        if (s_vfs[index] == ((void*)0)) {
             break;
         }
     }
@@ -60,7 +60,7 @@ __attribute__((used)) static esp_err_t esp_vfs_register_common(const char* base_
     }
     s_vfs[index] = entry;
     if (len != LEN_PATH_PREFIX_IGNORED) {
-        strcpy(entry->path_prefix, base_path); // we have already verified argument length
+        strcpy(entry->path_prefix, base_path);
     } else {
         bzero(entry->path_prefix, sizeof(entry->path_prefix));
     }

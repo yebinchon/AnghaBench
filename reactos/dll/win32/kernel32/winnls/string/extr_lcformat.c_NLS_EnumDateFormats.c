@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  (* callbackexex ) (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* callbackex ) (char*,int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* callback ) (char*) ;} ;
-struct enumdateformats_context {int flags; int type; int /*<<< orphan*/  lParam; TYPE_1__ u; scalar_t__ unicode; int /*<<< orphan*/  lcid; } ;
-typedef  int /*<<< orphan*/  cal_id ;
-typedef  char WCHAR ;
-typedef  char* LPWSTR ;
-typedef  int LCTYPE ;
-typedef  scalar_t__ INT ;
-typedef  int /*<<< orphan*/  CALID ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int ARRAY_SIZE (char*) ; 
-#define  CALLBACK_ENUMPROC 133 
-#define  CALLBACK_ENUMPROCEX 132 
-#define  CALLBACK_ENUMPROCEXEX 131 
-#define  DATE_LONGDATE 130 
-#define  DATE_SHORTDATE 129 
-#define  DATE_YEARMONTH 128 
- int /*<<< orphan*/  ERROR_INVALID_PARAMETER ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  FIXME (char*,int) ; 
- scalar_t__ GetLocaleInfoA (int /*<<< orphan*/ ,int,char*,int) ; 
- scalar_t__ GetLocaleInfoW (int /*<<< orphan*/ ,int,char*,int) ; 
- int LOCALE_ICALENDARTYPE ; 
- int LOCALE_RETURN_NUMBER ; 
- int LOCALE_SLONGDATE ; 
- int LOCALE_SSHORTDATE ; 
- int LOCALE_SYEARMONTH ; 
- int LOCALE_USE_CP_ACP ; 
- int /*<<< orphan*/  SetLastError (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  stub1 (char*) ; 
- int /*<<< orphan*/  stub2 (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub3 (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int (* callbackexex ) (char*,int ,int ) ;int (* callbackex ) (char*,int ) ;int (* callback ) (char*) ;} ;
+struct enumdateformats_context {int flags; int type; int lParam; TYPE_1__ u; scalar_t__ unicode; int lcid; } ;
+typedef int cal_id ;
+typedef char WCHAR ;
+typedef char* LPWSTR ;
+typedef int LCTYPE ;
+typedef scalar_t__ INT ;
+typedef int CALID ;
+typedef int BOOL ;
+
+
+ int ARRAY_SIZE (char*) ;
+
+
+
+
+
+
+ int ERROR_INVALID_PARAMETER ;
+ int FALSE ;
+ int FIXME (char*,int) ;
+ scalar_t__ GetLocaleInfoA (int ,int,char*,int) ;
+ scalar_t__ GetLocaleInfoW (int ,int,char*,int) ;
+ int LOCALE_ICALENDARTYPE ;
+ int LOCALE_RETURN_NUMBER ;
+ int LOCALE_SLONGDATE ;
+ int LOCALE_SSHORTDATE ;
+ int LOCALE_SYEARMONTH ;
+ int LOCALE_USE_CP_ACP ;
+ int SetLastError (int ) ;
+ int TRUE ;
+ int stub1 (char*) ;
+ int stub2 (char*,int ) ;
+ int stub3 (char*,int ,int ) ;
 
 __attribute__((used)) static BOOL NLS_EnumDateFormats(const struct enumdateformats_context *ctxt)
 {
@@ -66,13 +66,13 @@ __attribute__((used)) static BOOL NLS_EnumDateFormats(const struct enumdateforma
     switch (ctxt->flags & ~LOCALE_USE_CP_ACP)
     {
     case 0:
-    case DATE_SHORTDATE:
+    case 129:
         lctype = LOCALE_SSHORTDATE;
         break;
-    case DATE_LONGDATE:
+    case 130:
         lctype = LOCALE_SLONGDATE;
         break;
-    case DATE_YEARMONTH:
+    case 128:
         lctype = LOCALE_SYEARMONTH;
         break;
     default:
@@ -91,13 +91,13 @@ __attribute__((used)) static BOOL NLS_EnumDateFormats(const struct enumdateforma
     {
         switch (ctxt->type)
         {
-        case CALLBACK_ENUMPROC:
+        case 133:
             ctxt->u.callback(ctxt->unicode ? bufW : (WCHAR*)bufA);
             break;
-        case CALLBACK_ENUMPROCEX:
+        case 132:
             ctxt->u.callbackex(ctxt->unicode ? bufW : (WCHAR*)bufA, cal_id);
             break;
-        case CALLBACK_ENUMPROCEXEX:
+        case 131:
             ctxt->u.callbackexex(bufW, cal_id, ctxt->lParam);
             break;
         default:

@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  PyUFuncObject ;
-typedef  int /*<<< orphan*/  PyObject ;
-typedef  int /*<<< orphan*/  PyArrayObject ;
 
-/* Variables and functions */
- scalar_t__ PyArray_DESCR (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyErr_SetObject (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * Py_BuildValue (char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Py_DECREF (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  npy_cache_import (char*,char*,int /*<<< orphan*/ **) ; 
+
+
+
+typedef int PyUFuncObject ;
+typedef int PyObject ;
+typedef int PyArrayObject ;
+
+
+ scalar_t__ PyArray_DESCR (int *) ;
+ int PyErr_SetObject (int *,int *) ;
+ int * Py_BuildValue (char*,int *,int *,int *) ;
+ int Py_DECREF (int *) ;
+ int npy_cache_import (char*,char*,int **) ;
 
 __attribute__((used)) static int
 raise_binary_type_reso_error(PyUFuncObject *ufunc, PyArrayObject **operands) {
-    static PyObject *exc_type = NULL;
+    static PyObject *exc_type = ((void*)0);
     PyObject *exc_value;
 
     npy_cache_import(
         "numpy.core._exceptions", "_UFuncBinaryResolutionError",
         &exc_type);
-    if (exc_type == NULL) {
+    if (exc_type == ((void*)0)) {
         return -1;
     }
 
-    /* produce an error object */
+
     exc_value = Py_BuildValue(
         "O(OO)", ufunc,
         (PyObject *)PyArray_DESCR(operands[0]),
         (PyObject *)PyArray_DESCR(operands[1])
     );
-    if (exc_value == NULL){
+    if (exc_value == ((void*)0)){
         return -1;
     }
     PyErr_SetObject(exc_type, exc_value);

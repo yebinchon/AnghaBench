@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  MD_CTX ;
 
-/* Variables and functions */
- int MD ; 
- int /*<<< orphan*/  MDFinal (unsigned char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  MDInit (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  MDPrint (unsigned char*) ; 
- int /*<<< orphan*/  MDUpdate (int /*<<< orphan*/ *,unsigned char*,unsigned int) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- unsigned int strlen (char*) ; 
+
+
+
+typedef int MD_CTX ;
+
+
+ int MD ;
+ int MDFinal (unsigned char*,int *) ;
+ int MDInit (int *) ;
+ int MDPrint (unsigned char*) ;
+ int MDUpdate (int *,unsigned char*,unsigned int) ;
+ int printf (char*,...) ;
+ unsigned int strlen (char*) ;
 
 __attribute__((used)) static void MDString (char *string)
 {

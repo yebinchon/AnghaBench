@@ -1,0 +1,135 @@
+; ModuleID = '/home/carl/AnghaBench/freebsd/sys/dev/pbio/extr_pbio.c_pbioattach.c'
+source_filename = "/home/carl/AnghaBench/freebsd/sys/dev/pbio/extr_pbio.c_pbioattach.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+%struct.pbio_softc = type { i32, %struct.TYPE_2__*, i32*, i32, i32 }
+%struct.TYPE_2__ = type { i32 }
+
+@SYS_RES_IOPORT = common dso_local global i32 0, align 4
+@IO_PBIOSIZE = common dso_local global i32 0, align 4
+@RF_ACTIVE = common dso_local global i32 0, align 4
+@ENXIO = common dso_local global i32 0, align 4
+@PBIO_NPORTS = common dso_local global i32 0, align 4
+@pbio_cdevsw = common dso_local global i32 0, align 4
+@.str = private unnamed_addr constant [9 x i8] c"pbio%d%s\00", align 1
+@llvm.used = appending global [1 x i8*] [i8* bitcast (i32 (i32)* @pbioattach to i8*)], section "llvm.metadata"
+
+; Function Attrs: noinline nounwind optnone uwtable
+define internal i32 @pbioattach(i32 %0) #0 {
+  %2 = alloca i32, align 4
+  %3 = alloca i32, align 4
+  %4 = alloca i32, align 4
+  %5 = alloca i32, align 4
+  %6 = alloca i32, align 4
+  %7 = alloca %struct.pbio_softc*, align 8
+  store i32 %0, i32* %3, align 4
+  %8 = load i32, i32* %3, align 4
+  %9 = call %struct.pbio_softc* @device_get_softc(i32 %8)
+  store %struct.pbio_softc* %9, %struct.pbio_softc** %7, align 8
+  %10 = load i32, i32* %3, align 4
+  %11 = call i32 @device_get_unit(i32 %10)
+  store i32 %11, i32* %4, align 4
+  store i32 0, i32* %6, align 4
+  %12 = load i32, i32* %3, align 4
+  %13 = load i32, i32* @SYS_RES_IOPORT, align 4
+  %14 = load i32, i32* @IO_PBIOSIZE, align 4
+  %15 = load i32, i32* @RF_ACTIVE, align 4
+  %16 = call i32* @bus_alloc_resource_anywhere(i32 %12, i32 %13, i32* %6, i32 %14, i32 %15)
+  %17 = load %struct.pbio_softc*, %struct.pbio_softc** %7, align 8
+  %18 = getelementptr inbounds %struct.pbio_softc, %struct.pbio_softc* %17, i32 0, i32 2
+  store i32* %16, i32** %18, align 8
+  %19 = load %struct.pbio_softc*, %struct.pbio_softc** %7, align 8
+  %20 = getelementptr inbounds %struct.pbio_softc, %struct.pbio_softc* %19, i32 0, i32 2
+  %21 = load i32*, i32** %20, align 8
+  %22 = icmp eq i32* %21, null
+  br i1 %22, label %23, label %25
+
+23:                                               ; preds = %1
+  %24 = load i32, i32* @ENXIO, align 4
+  store i32 %24, i32* %2, align 4
+  br label %64
+
+25:                                               ; preds = %1
+  %26 = load %struct.pbio_softc*, %struct.pbio_softc** %7, align 8
+  %27 = getelementptr inbounds %struct.pbio_softc, %struct.pbio_softc* %26, i32 0, i32 2
+  %28 = load i32*, i32** %27, align 8
+  %29 = call i32 @rman_get_bustag(i32* %28)
+  %30 = load %struct.pbio_softc*, %struct.pbio_softc** %7, align 8
+  %31 = getelementptr inbounds %struct.pbio_softc, %struct.pbio_softc* %30, i32 0, i32 4
+  store i32 %29, i32* %31, align 4
+  %32 = load %struct.pbio_softc*, %struct.pbio_softc** %7, align 8
+  %33 = getelementptr inbounds %struct.pbio_softc, %struct.pbio_softc* %32, i32 0, i32 2
+  %34 = load i32*, i32** %33, align 8
+  %35 = call i32 @rman_get_bushandle(i32* %34)
+  %36 = load %struct.pbio_softc*, %struct.pbio_softc** %7, align 8
+  %37 = getelementptr inbounds %struct.pbio_softc, %struct.pbio_softc* %36, i32 0, i32 3
+  store i32 %35, i32* %37, align 8
+  %38 = load %struct.pbio_softc*, %struct.pbio_softc** %7, align 8
+  %39 = getelementptr inbounds %struct.pbio_softc, %struct.pbio_softc* %38, i32 0, i32 0
+  store i32 155, i32* %39, align 8
+  store i32 0, i32* %5, align 4
+  br label %40
+
+40:                                               ; preds = %60, %25
+  %41 = load i32, i32* %5, align 4
+  %42 = load i32, i32* @PBIO_NPORTS, align 4
+  %43 = icmp slt i32 %41, %42
+  br i1 %43, label %44, label %63
+
+44:                                               ; preds = %40
+  %45 = load i32, i32* %4, align 4
+  %46 = shl i32 %45, 2
+  %47 = load i32, i32* %5, align 4
+  %48 = add nsw i32 %46, %47
+  %49 = load i32, i32* %4, align 4
+  %50 = load i32, i32* %5, align 4
+  %51 = call i32 @PBIO_PNAME(i32 %50)
+  %52 = call i32 @make_dev(i32* @pbio_cdevsw, i32 %48, i32 0, i32 0, i32 384, i8* getelementptr inbounds ([9 x i8], [9 x i8]* @.str, i64 0, i64 0), i32 %49, i32 %51)
+  %53 = load %struct.pbio_softc*, %struct.pbio_softc** %7, align 8
+  %54 = getelementptr inbounds %struct.pbio_softc, %struct.pbio_softc* %53, i32 0, i32 1
+  %55 = load %struct.TYPE_2__*, %struct.TYPE_2__** %54, align 8
+  %56 = load i32, i32* %5, align 4
+  %57 = sext i32 %56 to i64
+  %58 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %55, i64 %57
+  %59 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %58, i32 0, i32 0
+  store i32 %52, i32* %59, align 4
+  br label %60
+
+60:                                               ; preds = %44
+  %61 = load i32, i32* %5, align 4
+  %62 = add nsw i32 %61, 1
+  store i32 %62, i32* %5, align 4
+  br label %40
+
+63:                                               ; preds = %40
+  store i32 0, i32* %2, align 4
+  br label %64
+
+64:                                               ; preds = %63, %23
+  %65 = load i32, i32* %2, align 4
+  ret i32 %65
+}
+
+declare dso_local %struct.pbio_softc* @device_get_softc(i32) #1
+
+declare dso_local i32 @device_get_unit(i32) #1
+
+declare dso_local i32* @bus_alloc_resource_anywhere(i32, i32, i32*, i32, i32) #1
+
+declare dso_local i32 @rman_get_bustag(i32*) #1
+
+declare dso_local i32 @rman_get_bushandle(i32*) #1
+
+declare dso_local i32 @make_dev(i32*, i32, i32, i32, i32, i8*, i32, i32) #1
+
+declare dso_local i32 @PBIO_PNAME(i32) #1
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

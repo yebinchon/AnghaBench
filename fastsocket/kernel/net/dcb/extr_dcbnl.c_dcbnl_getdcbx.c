@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
-typedef  int /*<<< orphan*/  u16 ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u32 ;
+typedef int u16 ;
 struct nlattr {int dummy; } ;
 struct net_device {TYPE_1__* dcbnl_ops; } ;
-struct TYPE_2__ {int /*<<< orphan*/  (* getdcbx ) (struct net_device*) ;} ;
+struct TYPE_2__ {int (* getdcbx ) (struct net_device*) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DCB_ATTR_DCBX ; 
- int /*<<< orphan*/  DCB_CMD_GDCBX ; 
- int EOPNOTSUPP ; 
- int /*<<< orphan*/  RTM_GETDCB ; 
- int dcbnl_reply (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 (struct net_device*) ; 
+
+ int DCB_ATTR_DCBX ;
+ int DCB_CMD_GDCBX ;
+ int EOPNOTSUPP ;
+ int RTM_GETDCB ;
+ int dcbnl_reply (int ,int ,int ,int ,int ,int ,int ) ;
+ int stub1 (struct net_device*) ;
 
 __attribute__((used)) static int dcbnl_getdcbx(struct net_device *netdev, struct nlattr **tb,
-			 u32 pid, u32 seq, u16 flags)
+    u32 pid, u32 seq, u16 flags)
 {
-	int ret;
+ int ret;
 
-	if (!netdev->dcbnl_ops->getdcbx)
-		return -EOPNOTSUPP;
+ if (!netdev->dcbnl_ops->getdcbx)
+  return -EOPNOTSUPP;
 
-	ret = dcbnl_reply(netdev->dcbnl_ops->getdcbx(netdev), RTM_GETDCB,
-			  DCB_CMD_GDCBX, DCB_ATTR_DCBX, pid, seq, flags);
+ ret = dcbnl_reply(netdev->dcbnl_ops->getdcbx(netdev), RTM_GETDCB,
+     DCB_CMD_GDCBX, DCB_ATTR_DCBX, pid, seq, flags);
 
-	return ret;
+ return ret;
 }

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  DWORD ;
 
-/* Variables and functions */
- int ___w64_mingwthr_add_key_dtor (int /*<<< orphan*/ ,void (*) (void*)) ; 
- int /*<<< orphan*/  __mingw_usemthread_dll ; 
+
+
+
+typedef int DWORD ;
+
+
+ int ___w64_mingwthr_add_key_dtor (int ,void (*) (void*)) ;
+ int __mingw_usemthread_dll ;
 
 int
 __mingwthr_key_dtor (DWORD key, void (*dtor)(void *))
 {
   if (dtor)
     {
-#ifndef _WIN64
+
       if (!__mingw_usemthread_dll)
-#endif
+
         return ___w64_mingwthr_add_key_dtor (key, dtor);
     }
   return 0;

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mchunkptr ;
 
-/* Variables and functions */
- size_t chunksize (int /*<<< orphan*/ ) ; 
- scalar_t__ cinuse (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mem2chunk (void*) ; 
- size_t overhead_for (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int mchunkptr ;
+
+
+ size_t chunksize (int ) ;
+ scalar_t__ cinuse (int ) ;
+ int mem2chunk (void*) ;
+ size_t overhead_for (int ) ;
 
 size_t mspace_usable_size(void* mem) {
   if (mem != 0) {

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT16 ;
-struct TYPE_3__ {int rdSize; int /*<<< orphan*/  rdParm; int /*<<< orphan*/  rdFunction; } ;
-typedef  int /*<<< orphan*/  PHYSDEV ;
-typedef  TYPE_1__ METARECORD ;
-typedef  int /*<<< orphan*/  LOGPEN16 ;
-typedef  int /*<<< orphan*/  HPEN ;
 
-/* Variables and functions */
- int /*<<< orphan*/  META_CREATEPENINDIRECT ; 
- int /*<<< orphan*/  MFDRV_AddHandle (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MFDRV_WriteRecord (int /*<<< orphan*/ ,TYPE_1__*,int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int UINT16 ;
+struct TYPE_3__ {int rdSize; int rdParm; int rdFunction; } ;
+typedef int PHYSDEV ;
+typedef TYPE_1__ METARECORD ;
+typedef int LOGPEN16 ;
+typedef int HPEN ;
+
+
+ int META_CREATEPENINDIRECT ;
+ int MFDRV_AddHandle (int ,int ) ;
+ int MFDRV_WriteRecord (int ,TYPE_1__*,int) ;
+ int memcpy (int *,int *,int) ;
 
 __attribute__((used)) static UINT16 MFDRV_CreatePenIndirect(PHYSDEV dev, HPEN hPen, LOGPEN16 *logpen)
 {

@@ -1,64 +1,64 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct table {int data; int num_rows; } ;
-struct record_datafile {int /*<<< orphan*/  name; int /*<<< orphan*/  version; } ;
+struct record_datafile {int name; int version; } ;
 struct expr {int dummy; } ;
 struct dirstack {int dummy; } ;
-typedef  enum fill_status { ____Placeholder_fill_status } fill_status ;
-struct TYPE_4__ {int dwFileAttributes; int /*<<< orphan*/  cFileName; } ;
-typedef  TYPE_1__ WIN32_FIND_DATAW ;
-typedef  char WCHAR ;
-typedef  int UINT ;
-typedef  int /*<<< orphan*/  HANDLE ;
-typedef  int DWORD ;
+typedef enum fill_status { ____Placeholder_fill_status } fill_status ;
+struct TYPE_4__ {int dwFileAttributes; int cFileName; } ;
+typedef TYPE_1__ WIN32_FIND_DATAW ;
+typedef char WCHAR ;
+typedef int UINT ;
+typedef int HANDLE ;
+typedef int DWORD ;
 
-/* Variables and functions */
- scalar_t__ DRIVE_FIXED ; 
- int FILE_ATTRIBUTE_DIRECTORY ; 
- int FILL_STATUS_FAILED ; 
- int FILL_STATUS_FILTERED ; 
- int FILL_STATUS_UNFILTERED ; 
- int /*<<< orphan*/  FindClose (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FindFirstFileW (char*,TYPE_1__*) ; 
- scalar_t__ FindNextFileW (int /*<<< orphan*/ ,TYPE_1__*) ; 
- scalar_t__ GetDriveTypeW (char*) ; 
- int GetLogicalDrives () ; 
- int /*<<< orphan*/  INVALID_HANDLE_VALUE ; 
- int /*<<< orphan*/  TRACE (char*,int) ; 
- struct dirstack* alloc_dirstack (int) ; 
- char* append_path (char*,int /*<<< orphan*/ ,int*) ; 
- char* build_glob (char,char*,int) ; 
- int /*<<< orphan*/  build_name (char,char*) ; 
- int /*<<< orphan*/  clear_dirstack (struct dirstack*) ; 
- int /*<<< orphan*/  free_dirstack (struct dirstack*) ; 
- int /*<<< orphan*/  free_row_values (struct table*,int) ; 
- int /*<<< orphan*/  get_file_version (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  heap_free (char*) ; 
- int /*<<< orphan*/  match_row (struct table*,int,struct expr const*,int*) ; 
- int /*<<< orphan*/  peek_dir (struct dirstack*) ; 
- char* pop_dir (struct dirstack*,int*) ; 
- scalar_t__ push_dir (struct dirstack*,char*,int) ; 
- int /*<<< orphan*/  resize_table (struct table*,int,int) ; 
- int /*<<< orphan*/  seed_dirs (struct dirstack*,struct expr const*,char,int*) ; 
- int /*<<< orphan*/  strcmpW (int /*<<< orphan*/ ,char const*) ; 
+
+ scalar_t__ DRIVE_FIXED ;
+ int FILE_ATTRIBUTE_DIRECTORY ;
+ int FILL_STATUS_FAILED ;
+ int FILL_STATUS_FILTERED ;
+ int FILL_STATUS_UNFILTERED ;
+ int FindClose (int ) ;
+ int FindFirstFileW (char*,TYPE_1__*) ;
+ scalar_t__ FindNextFileW (int ,TYPE_1__*) ;
+ scalar_t__ GetDriveTypeW (char*) ;
+ int GetLogicalDrives () ;
+ int INVALID_HANDLE_VALUE ;
+ int TRACE (char*,int) ;
+ struct dirstack* alloc_dirstack (int) ;
+ char* append_path (char*,int ,int*) ;
+ char* build_glob (char,char*,int) ;
+ int build_name (char,char*) ;
+ int clear_dirstack (struct dirstack*) ;
+ int free_dirstack (struct dirstack*) ;
+ int free_row_values (struct table*,int) ;
+ int get_file_version (int ) ;
+ int heap_free (char*) ;
+ int match_row (struct table*,int,struct expr const*,int*) ;
+ int peek_dir (struct dirstack*) ;
+ char* pop_dir (struct dirstack*,int*) ;
+ scalar_t__ push_dir (struct dirstack*,char*,int) ;
+ int resize_table (struct table*,int,int) ;
+ int seed_dirs (struct dirstack*,struct expr const*,char,int*) ;
+ int strcmpW (int ,char const*) ;
 
 __attribute__((used)) static enum fill_status fill_datafile( struct table *table, const struct expr *cond )
 {
     static const WCHAR dotW[] = {'.',0}, dotdotW[] = {'.','.',0};
     struct record_datafile *rec;
     UINT i, len, row = 0, offset = 0, num_expected_rows;
-    WCHAR *glob = NULL, *path = NULL, *new_path, root[] = {'A',':','\\',0};
+    WCHAR *glob = ((void*)0), *path = ((void*)0), *new_path, root[] = {'A',':','\\',0};
     DWORD drives = GetLogicalDrives();
     WIN32_FIND_DATAW data;
     HANDLE handle;
@@ -111,7 +111,7 @@ __attribute__((used)) static enum fill_status fill_datafile( struct table *table
                         goto done;
                     }
                     rec = (struct record_datafile *)(table->data + offset);
-                    rec->name    = build_name( root[0], new_path );
+                    rec->name = build_name( root[0], new_path );
                     rec->version = get_file_version( rec->name );
                     if (!match_row( table, row, cond, &status ))
                     {

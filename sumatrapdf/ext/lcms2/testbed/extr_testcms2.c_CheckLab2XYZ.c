@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int cmsInt32Number ;
-typedef  int cmsFloat64Number ;
-typedef  int /*<<< orphan*/  cmsCIEXYZ ;
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int cmsInt32Number ;
+typedef int cmsFloat64Number ;
+typedef int cmsCIEXYZ ;
 struct TYPE_6__ {int L; int a; int b; } ;
-typedef  TYPE_1__ cmsCIELab ;
+typedef TYPE_1__ cmsCIELab ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DbgThread () ; 
- int cmsDeltaE (int /*<<< orphan*/ ,TYPE_1__*,TYPE_1__*) ; 
- int /*<<< orphan*/  cmsLab2XYZ (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  cmsXYZ2Lab (int /*<<< orphan*/ ,int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ *) ; 
+
+ int DbgThread () ;
+ int cmsDeltaE (int ,TYPE_1__*,TYPE_1__*) ;
+ int cmsLab2XYZ (int ,int *,int *,TYPE_1__*) ;
+ int cmsXYZ2Lab (int ,int *,TYPE_1__*,int *) ;
 
 __attribute__((used)) static
 cmsInt32Number CheckLab2XYZ(void)
@@ -41,8 +41,8 @@ cmsInt32Number CheckLab2XYZ(void)
                 Lab.a = a;
                 Lab.b = b;
 
-                cmsLab2XYZ(DbgThread(), NULL, &XYZ, &Lab);
-                cmsXYZ2Lab(DbgThread(), NULL, &Lab2, &XYZ);
+                cmsLab2XYZ(DbgThread(), ((void*)0), &XYZ, &Lab);
+                cmsXYZ2Lab(DbgThread(), ((void*)0), &Lab2, &XYZ);
 
                 dist = cmsDeltaE(DbgThread(), &Lab, &Lab2);
                 if (dist > Max) Max = dist;

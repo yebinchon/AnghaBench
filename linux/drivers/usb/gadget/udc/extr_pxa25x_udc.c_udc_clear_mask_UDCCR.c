@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u32 ;
+
+
+
+
+typedef int u32 ;
 struct pxa25x_udc {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  UDCCR ; 
- int UDCCR_MASK_BITS ; 
- int udc_get_reg (struct pxa25x_udc*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  udc_set_reg (struct pxa25x_udc*,int,int /*<<< orphan*/ ) ; 
+
+ int UDCCR ;
+ int UDCCR_MASK_BITS ;
+ int udc_get_reg (struct pxa25x_udc*,int ) ;
+ int udc_set_reg (struct pxa25x_udc*,int,int ) ;
 
 __attribute__((used)) static inline void udc_clear_mask_UDCCR(struct pxa25x_udc *dev, int mask)
 {
-	u32 udccr = udc_get_reg(dev, UDCCR);
+ u32 udccr = udc_get_reg(dev, UDCCR);
 
-	udc_set_reg(dev, (udccr & UDCCR_MASK_BITS) & ~(mask & UDCCR_MASK_BITS), UDCCR);
+ udc_set_reg(dev, (udccr & UDCCR_MASK_BITS) & ~(mask & UDCCR_MASK_BITS), UDCCR);
 }

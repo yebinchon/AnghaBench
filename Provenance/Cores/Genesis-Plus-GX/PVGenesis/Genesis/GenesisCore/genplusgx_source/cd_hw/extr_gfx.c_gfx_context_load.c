@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8 ;
-typedef  scalar_t__ uint32 ;
-typedef  int /*<<< orphan*/  uint16 ;
-struct TYPE_4__ {int /*<<< orphan*/ * mapPtr; int /*<<< orphan*/ * tracePtr; scalar_t__ bufferStart; scalar_t__ bufferOffset; scalar_t__ mapShift; scalar_t__ stampShift; scalar_t__ dotMask; scalar_t__ cyclesPerLine; scalar_t__ cycles; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8 ;
+typedef scalar_t__ uint32 ;
+typedef int uint16 ;
+struct TYPE_4__ {int * mapPtr; int * tracePtr; scalar_t__ bufferStart; scalar_t__ bufferOffset; scalar_t__ mapShift; scalar_t__ stampShift; scalar_t__ dotMask; scalar_t__ cyclesPerLine; scalar_t__ cycles; } ;
 struct TYPE_3__ {scalar_t__ word_ram_2M; } ;
 
-/* Variables and functions */
- TYPE_2__ gfx ; 
- int /*<<< orphan*/  load_param (scalar_t__*,int) ; 
- TYPE_1__ scd ; 
+
+ TYPE_2__ gfx ;
+ int load_param (scalar_t__*,int) ;
+ TYPE_1__ scd ;
 
 int gfx_context_load(uint8 *state)
 {

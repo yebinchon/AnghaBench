@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int tracks; } ;
-struct ffmpeg_mux {int /*<<< orphan*/ * audio; int /*<<< orphan*/ * audio_header; TYPE_1__ params; int /*<<< orphan*/  video_header; int /*<<< orphan*/  output; scalar_t__ initialized; } ;
+struct ffmpeg_mux {int * audio; int * audio_header; TYPE_1__ params; int video_header; int output; scalar_t__ initialized; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  av_write_trailer (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free_avformat (struct ffmpeg_mux*) ; 
- int /*<<< orphan*/  header_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memset (struct ffmpeg_mux*,int /*<<< orphan*/ ,int) ; 
+
+ int av_write_trailer (int ) ;
+ int free (int *) ;
+ int free_avformat (struct ffmpeg_mux*) ;
+ int header_free (int *) ;
+ int memset (struct ffmpeg_mux*,int ,int) ;
 
 __attribute__((used)) static void ffmpeg_mux_free(struct ffmpeg_mux *ffm)
 {
-	if (ffm->initialized) {
-		av_write_trailer(ffm->output);
-	}
+ if (ffm->initialized) {
+  av_write_trailer(ffm->output);
+ }
 
-	free_avformat(ffm);
+ free_avformat(ffm);
 
-	header_free(&ffm->video_header);
+ header_free(&ffm->video_header);
 
-	if (ffm->audio_header) {
-		for (int i = 0; i < ffm->params.tracks; i++) {
-			header_free(&ffm->audio_header[i]);
-		}
+ if (ffm->audio_header) {
+  for (int i = 0; i < ffm->params.tracks; i++) {
+   header_free(&ffm->audio_header[i]);
+  }
 
-		free(ffm->audio_header);
-	}
+  free(ffm->audio_header);
+ }
 
-	if (ffm->audio) {
-		free(ffm->audio);
-	}
+ if (ffm->audio) {
+  free(ffm->audio);
+ }
 
-	memset(ffm, 0, sizeof(*ffm));
+ memset(ffm, 0, sizeof(*ffm));
 }

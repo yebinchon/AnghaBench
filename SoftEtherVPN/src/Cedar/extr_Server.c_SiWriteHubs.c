@@ -1,85 +1,85 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t UINT ;
-struct TYPE_11__ {int /*<<< orphan*/  HubList; } ;
-struct TYPE_10__ {int /*<<< orphan*/  lock; int /*<<< orphan*/  Name; int /*<<< orphan*/  ref; } ;
+
+
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef size_t UINT ;
+struct TYPE_11__ {int HubList; } ;
+struct TYPE_10__ {int lock; int Name; int ref; } ;
 struct TYPE_9__ {TYPE_3__* Cedar; } ;
-typedef  TYPE_1__ SERVER ;
-typedef  TYPE_2__ HUB ;
-typedef  int /*<<< orphan*/  FOLDER ;
-typedef  TYPE_3__ CEDAR ;
+typedef TYPE_1__ SERVER ;
+typedef TYPE_2__ HUB ;
+typedef int FOLDER ;
+typedef TYPE_3__ CEDAR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AddRef (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * CfgCreateFolder (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Free (TYPE_2__**) ; 
- size_t LIST_NUM (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Lock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LockList (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReleaseHub (TYPE_2__*) ; 
- int /*<<< orphan*/  SiWriteHubCfg (int /*<<< orphan*/ *,TYPE_2__*) ; 
- TYPE_2__** ToArray (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Unlock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  UnlockList (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  YieldCpu () ; 
+
+ int AddRef (int ) ;
+ int * CfgCreateFolder (int *,int ) ;
+ int Free (TYPE_2__**) ;
+ size_t LIST_NUM (int ) ;
+ int Lock (int ) ;
+ int LockList (int ) ;
+ int ReleaseHub (TYPE_2__*) ;
+ int SiWriteHubCfg (int *,TYPE_2__*) ;
+ TYPE_2__** ToArray (int ) ;
+ int Unlock (int ) ;
+ int UnlockList (int ) ;
+ int YieldCpu () ;
 
 void SiWriteHubs(FOLDER *f, SERVER *s)
 {
-	UINT i;
-	FOLDER *hub_folder;
-	CEDAR *c;
-	UINT num;
-	HUB **hubs;
-	// Validate arguments
-	if (f == NULL || s == NULL)
-	{
-		return;
-	}
-	c = s->Cedar;
+ UINT i;
+ FOLDER *hub_folder;
+ CEDAR *c;
+ UINT num;
+ HUB **hubs;
 
-	LockList(c->HubList);
-	{
-		hubs = ToArray(c->HubList);
-		num = LIST_NUM(c->HubList);
+ if (f == ((void*)0) || s == ((void*)0))
+ {
+  return;
+ }
+ c = s->Cedar;
 
-		for (i = 0;i < num;i++)
-		{
-			AddRef(hubs[i]->ref);
-		}
-	}
-	UnlockList(c->HubList);
+ LockList(c->HubList);
+ {
+  hubs = ToArray(c->HubList);
+  num = LIST_NUM(c->HubList);
 
-	for (i = 0;i < num;i++)
-	{
-		HUB *h = hubs[i];
+  for (i = 0;i < num;i++)
+  {
+   AddRef(hubs[i]->ref);
+  }
+ }
+ UnlockList(c->HubList);
 
-		Lock(h->lock);
-		{
-			hub_folder = CfgCreateFolder(f, h->Name);
-			SiWriteHubCfg(hub_folder, h);
-		}
-		Unlock(h->lock);
+ for (i = 0;i < num;i++)
+ {
+  HUB *h = hubs[i];
 
-		ReleaseHub(h);
+  Lock(h->lock);
+  {
+   hub_folder = CfgCreateFolder(f, h->Name);
+   SiWriteHubCfg(hub_folder, h);
+  }
+  Unlock(h->lock);
 
-		if ((i % 30) == 1)
-		{
-			YieldCpu();
-		}
-	}
+  ReleaseHub(h);
 
-	Free(hubs);
+  if ((i % 30) == 1)
+  {
+   YieldCpu();
+  }
+ }
+
+ Free(hubs);
 }

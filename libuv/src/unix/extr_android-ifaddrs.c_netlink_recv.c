@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct sockaddr_nl {int dummy; } ;
-struct msghdr {int msg_namelen; int msg_iovlen; int msg_flags; scalar_t__ msg_controllen; int /*<<< orphan*/ * msg_control; struct iovec* msg_iov; void* msg_name; } ;
+struct msghdr {int msg_namelen; int msg_iovlen; int msg_flags; scalar_t__ msg_controllen; int * msg_control; struct iovec* msg_iov; void* msg_name; } ;
 struct iovec {size_t iov_len; void* iov_base; } ;
-typedef  int /*<<< orphan*/  l_addr ;
+typedef int l_addr ;
 
-/* Variables and functions */
- scalar_t__ EINTR ; 
- int MSG_TRUNC ; 
- scalar_t__ errno ; 
- int recvmsg (int,struct msghdr*,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ EINTR ;
+ int MSG_TRUNC ;
+ scalar_t__ errno ;
+ int recvmsg (int,struct msghdr*,int ) ;
 
 __attribute__((used)) static int netlink_recv(int p_socket, void *p_buffer, size_t p_len)
 {
@@ -37,7 +37,7 @@ __attribute__((used)) static int netlink_recv(int p_socket, void *p_buffer, size
         l_msg.msg_namelen = sizeof(l_addr);
         l_msg.msg_iov = &l_iov;
         l_msg.msg_iovlen = 1;
-        l_msg.msg_control = NULL;
+        l_msg.msg_control = ((void*)0);
         l_msg.msg_controllen = 0;
         l_msg.msg_flags = 0;
         l_result = recvmsg(p_socket, &l_msg, 0);
@@ -51,7 +51,7 @@ __attribute__((used)) static int netlink_recv(int p_socket, void *p_buffer, size
             return -2;
         }
 
-        /* Buffer was too small */
+
         if(l_msg.msg_flags & MSG_TRUNC)
         {
             return -1;

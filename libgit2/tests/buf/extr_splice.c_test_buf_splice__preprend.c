@@ -1,30 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  _buf ; 
- int /*<<< orphan*/  cl_assert_equal_s (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cl_git_pass (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  git_buf_cstr (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  git_buf_sets (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  git_buf_splice (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strlen (char*) ; 
+ int _buf ;
+ int cl_assert_equal_s (char*,int ) ;
+ int cl_git_pass (int ) ;
+ int git_buf_cstr (int *) ;
+ int git_buf_sets (int *,char*) ;
+ int git_buf_splice (int *,int ,int ,char*,int ) ;
+ int strlen (char*) ;
 
 void test_buf_splice__preprend(void)
 {
-	git_buf_sets(&_buf, "world!");
+ git_buf_sets(&_buf, "world!");
 
-	cl_git_pass(git_buf_splice(&_buf, 0, 0, "Hello Dolly", strlen("Hello ")));
+ cl_git_pass(git_buf_splice(&_buf, 0, 0, "Hello Dolly", strlen("Hello ")));
 
-	cl_assert_equal_s("Hello world!", git_buf_cstr(&_buf));
+ cl_assert_equal_s("Hello world!", git_buf_cstr(&_buf));
 }

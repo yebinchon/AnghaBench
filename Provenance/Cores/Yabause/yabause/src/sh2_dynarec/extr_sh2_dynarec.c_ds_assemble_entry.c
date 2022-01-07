@@ -1,74 +1,63 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ pointer ;
-struct TYPE_15__ {scalar_t__* regmap_entry; scalar_t__* regmap; int /*<<< orphan*/  dirty; int /*<<< orphan*/  wasdirty; } ;
 
-/* Variables and functions */
-#define  ALU 145 
- scalar_t__ CCREG ; 
-#define  CJUMP 144 
-#define  COMPLEX 143 
-#define  EXT 142 
-#define  FLAGS 141 
- size_t HOST_CCREG ; 
-#define  IMM8 140 
-#define  LOAD 139 
- int /*<<< orphan*/  MMREG ; 
-#define  MOV 138 
-#define  MULTDIV 137 
-#define  PCREL 136 
-#define  RJUMP 135 
-#define  RMW 134 
-#define  SHIFTIMM 133 
-#define  SJUMP 132 
-#define  STORE 131 
-#define  SYSCALL 130 
-#define  SYSTEM 129 
-#define  UJUMP 128 
- int /*<<< orphan*/  add_to_linker (int,int,scalar_t__) ; 
- int /*<<< orphan*/  address_generation (int,TYPE_1__*,scalar_t__*) ; 
- int /*<<< orphan*/  alu_assemble (int,TYPE_1__*) ; 
- int /*<<< orphan*/  assem_debug (char*,...) ; 
- int /*<<< orphan*/  assert (scalar_t__) ; 
- int* ba ; 
- int /*<<< orphan*/  complex_assemble (int,TYPE_1__*) ; 
- int /*<<< orphan*/  emit_jmp (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ext_assemble (int,TYPE_1__*) ; 
- int /*<<< orphan*/  flags_assemble (int,TYPE_1__*) ; 
- int /*<<< orphan*/  imm8_assemble (int,TYPE_1__*) ; 
- scalar_t__* instr_addr ; 
- scalar_t__ internal_branch (int) ; 
- scalar_t__ is_delayslot ; 
- int* itype ; 
- int /*<<< orphan*/  load_assemble (int,TYPE_1__*) ; 
- int /*<<< orphan*/  load_regs (scalar_t__*,scalar_t__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  load_regs_bt (scalar_t__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  mov_assemble (int,TYPE_1__*) ; 
- int /*<<< orphan*/  multdiv_assemble (int,TYPE_1__*) ; 
- scalar_t__ out ; 
- int /*<<< orphan*/  pcrel_assemble (int,TYPE_1__*) ; 
- int /*<<< orphan*/  printf (char*) ; 
- TYPE_1__* regs ; 
- int /*<<< orphan*/  rmw_assemble (int,TYPE_1__*) ; 
- int /*<<< orphan*/ * rs1 ; 
- int /*<<< orphan*/ * rs2 ; 
- int /*<<< orphan*/ * rs3 ; 
- int /*<<< orphan*/  shiftimm_assemble (int,TYPE_1__*) ; 
- int start ; 
- int /*<<< orphan*/  store_assemble (int,TYPE_1__*) ; 
- int /*<<< orphan*/  store_regs_bt (scalar_t__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  wb_register (scalar_t__,scalar_t__*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_15__ TYPE_1__ ;
+
+
+typedef scalar_t__ pointer ;
+struct TYPE_15__ {scalar_t__* regmap_entry; scalar_t__* regmap; int dirty; int wasdirty; } ;
+
+
+
+ scalar_t__ CCREG ;
+
+
+
+
+ size_t HOST_CCREG ;
+
+
+ int MMREG ;
+ int add_to_linker (int,int,scalar_t__) ;
+ int address_generation (int,TYPE_1__*,scalar_t__*) ;
+ int alu_assemble (int,TYPE_1__*) ;
+ int assem_debug (char*,...) ;
+ int assert (scalar_t__) ;
+ int* ba ;
+ int complex_assemble (int,TYPE_1__*) ;
+ int emit_jmp (int ) ;
+ int ext_assemble (int,TYPE_1__*) ;
+ int flags_assemble (int,TYPE_1__*) ;
+ int imm8_assemble (int,TYPE_1__*) ;
+ scalar_t__* instr_addr ;
+ scalar_t__ internal_branch (int) ;
+ scalar_t__ is_delayslot ;
+ int* itype ;
+ int load_assemble (int,TYPE_1__*) ;
+ int load_regs (scalar_t__*,scalar_t__*,int ,int ,int ) ;
+ int load_regs_bt (scalar_t__*,int ,int) ;
+ int mov_assemble (int,TYPE_1__*) ;
+ int multdiv_assemble (int,TYPE_1__*) ;
+ scalar_t__ out ;
+ int pcrel_assemble (int,TYPE_1__*) ;
+ int printf (char*) ;
+ TYPE_1__* regs ;
+ int rmw_assemble (int,TYPE_1__*) ;
+ int * rs1 ;
+ int * rs2 ;
+ int * rs3 ;
+ int shiftimm_assemble (int,TYPE_1__*) ;
+ int start ;
+ int store_assemble (int,TYPE_1__*) ;
+ int store_regs_bt (scalar_t__*,int ,int) ;
+ int wb_register (scalar_t__,scalar_t__*,int ) ;
 
 void ds_assemble_entry(int i)
 {
@@ -80,40 +69,40 @@ void ds_assemble_entry(int i)
     wb_register(CCREG,regs[t].regmap_entry,regs[t].wasdirty);
   load_regs(regs[t].regmap_entry,regs[t].regmap,rs1[t],rs2[t],rs3[t]);
   address_generation(t,&regs[t],regs[t].regmap_entry);
-  if(itype[t]==LOAD||itype[t]==STORE)
+  if(itype[t]==139||itype[t]==131)
     load_regs(regs[t].regmap_entry,regs[t].regmap,MMREG,MMREG,MMREG);
   is_delayslot=0;
   switch(itype[t]) {
-    case ALU:
+    case 145:
       alu_assemble(t,&regs[t]);break;
-    case IMM8:
+    case 140:
       imm8_assemble(t,&regs[t]);break;
-    case SHIFTIMM:
+    case 133:
       shiftimm_assemble(t,&regs[t]);break;
-    case LOAD:
+    case 139:
       load_assemble(t,&regs[t]);break;
-    case STORE:
+    case 131:
       store_assemble(t,&regs[t]);break;
-    case RMW:
+    case 134:
       rmw_assemble(t,&regs[t]);break;
-    case PCREL:
+    case 136:
       pcrel_assemble(t,&regs[t]);break;
-    case MULTDIV:
+    case 137:
       multdiv_assemble(t,&regs[t]);break;
-    case MOV:
+    case 138:
       mov_assemble(t,&regs[t]);break;
-    case EXT:
+    case 142:
       ext_assemble(i,&regs[t]);break;
-    case FLAGS:
+    case 141:
       flags_assemble(i,&regs[t]);break;
-    case COMPLEX:
+    case 143:
       complex_assemble(i,&regs[t]);break;
-    case SYSTEM:
-    case SYSCALL:
-    case UJUMP:
-    case RJUMP:
-    case CJUMP:
-    case SJUMP:
+    case 129:
+    case 130:
+    case 128:
+    case 135:
+    case 144:
+    case 132:
       printf("Jump in the delay slot.  This is probably a bug.\n");
   }
   store_regs_bt(regs[t].regmap,regs[t].dirty,ba[i]+2);

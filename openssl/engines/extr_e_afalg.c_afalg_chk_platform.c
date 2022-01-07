@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct utsname {int /*<<< orphan*/ * release; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AFALG_F_AFALG_CHK_PLATFORM ; 
- int /*<<< orphan*/  AFALG_R_FAILED_TO_GET_PLATFORM_INFO ; 
- int /*<<< orphan*/  AFALG_R_KERNEL_DOES_NOT_SUPPORT_ASYNC_AFALG ; 
- int /*<<< orphan*/  AFALG_R_SOCKET_CREATE_FAILED ; 
- int /*<<< orphan*/  AFALGerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AF_ALG ; 
- int /*<<< orphan*/  ALG_ERR (char*,int,int,int) ; 
- scalar_t__ KERNEL_VERSION (int,int,int) ; 
- int K_MAJ ; 
- int K_MIN1 ; 
- int K_MIN2 ; 
- int /*<<< orphan*/  SOCK_SEQPACKET ; 
- int atoi (char*) ; 
- int /*<<< orphan*/  close (int) ; 
- int socket (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- char* strtok (int /*<<< orphan*/ *,char*) ; 
- int uname (struct utsname*) ; 
+
+
+
+struct utsname {int * release; } ;
+
+
+ int AFALG_F_AFALG_CHK_PLATFORM ;
+ int AFALG_R_FAILED_TO_GET_PLATFORM_INFO ;
+ int AFALG_R_KERNEL_DOES_NOT_SUPPORT_ASYNC_AFALG ;
+ int AFALG_R_SOCKET_CREATE_FAILED ;
+ int AFALGerr (int ,int ) ;
+ int AF_ALG ;
+ int ALG_ERR (char*,int,int,int) ;
+ scalar_t__ KERNEL_VERSION (int,int,int) ;
+ int K_MAJ ;
+ int K_MIN1 ;
+ int K_MIN2 ;
+ int SOCK_SEQPACKET ;
+ int atoi (char*) ;
+ int close (int) ;
+ int socket (int ,int ,int ) ;
+ char* strtok (int *,char*) ;
+ int uname (struct utsname*) ;
 
 __attribute__((used)) static int afalg_chk_platform(void)
 {
@@ -48,9 +48,9 @@ __attribute__((used)) static int afalg_chk_platform(void)
     }
 
     str = strtok(ut.release, ".");
-    for (i = 0; i < 3 && str != NULL; i++) {
+    for (i = 0; i < 3 && str != ((void*)0); i++) {
         kver[i] = atoi(str);
-        str = strtok(NULL, ".");
+        str = strtok(((void*)0), ".");
     }
 
     if (KERNEL_VERSION(kver[0], kver[1], kver[2])
@@ -64,7 +64,7 @@ __attribute__((used)) static int afalg_chk_platform(void)
         return 0;
     }
 
-    /* Test if we can actually create an AF_ALG socket */
+
     sock = socket(AF_ALG, SOCK_SEQPACKET, 0);
     if (sock == -1) {
         AFALGerr(AFALG_F_AFALG_CHK_PLATFORM, AFALG_R_SOCKET_CREATE_FAILED);

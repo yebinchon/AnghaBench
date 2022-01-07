@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct stratix10_rsu_priv {int /*<<< orphan*/  chan; } ;
+
+
+
+
+struct stratix10_rsu_priv {int chan; } ;
 struct platform_device {int dummy; } ;
 
-/* Variables and functions */
- struct stratix10_rsu_priv* platform_get_drvdata (struct platform_device*) ; 
- int /*<<< orphan*/  stratix10_svc_free_channel (int /*<<< orphan*/ ) ; 
+
+ struct stratix10_rsu_priv* platform_get_drvdata (struct platform_device*) ;
+ int stratix10_svc_free_channel (int ) ;
 
 __attribute__((used)) static int stratix10_rsu_remove(struct platform_device *pdev)
 {
-	struct stratix10_rsu_priv *priv = platform_get_drvdata(pdev);
+ struct stratix10_rsu_priv *priv = platform_get_drvdata(pdev);
 
-	stratix10_svc_free_channel(priv->chan);
-	return 0;
+ stratix10_svc_free_channel(priv->chan);
+ return 0;
 }

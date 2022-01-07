@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct vb2_dvb_frontends {int /*<<< orphan*/  lock; int /*<<< orphan*/  felist; } ;
-struct TYPE_2__ {int /*<<< orphan*/  lock; } ;
-struct vb2_dvb_frontend {int id; int /*<<< orphan*/  felist; TYPE_1__ dvb; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GFP_KERNEL ; 
- struct vb2_dvb_frontend* kzalloc (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  list_add_tail (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct vb2_dvb_frontends {int lock; int felist; } ;
+struct TYPE_2__ {int lock; } ;
+struct vb2_dvb_frontend {int id; int felist; TYPE_1__ dvb; } ;
+
+
+ int GFP_KERNEL ;
+ struct vb2_dvb_frontend* kzalloc (int,int ) ;
+ int list_add_tail (int *,int *) ;
+ int mutex_init (int *) ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
 
 struct vb2_dvb_frontend *vb2_dvb_alloc_frontend(
-	struct vb2_dvb_frontends *f, int id)
+ struct vb2_dvb_frontends *f, int id)
 {
-	struct vb2_dvb_frontend *fe;
+ struct vb2_dvb_frontend *fe;
 
-	fe = kzalloc(sizeof(struct vb2_dvb_frontend), GFP_KERNEL);
-	if (fe == NULL)
-		return NULL;
+ fe = kzalloc(sizeof(struct vb2_dvb_frontend), GFP_KERNEL);
+ if (fe == ((void*)0))
+  return ((void*)0);
 
-	fe->id = id;
-	mutex_init(&fe->dvb.lock);
+ fe->id = id;
+ mutex_init(&fe->dvb.lock);
 
-	mutex_lock(&f->lock);
-	list_add_tail(&fe->felist, &f->felist);
-	mutex_unlock(&f->lock);
-	return fe;
+ mutex_lock(&f->lock);
+ list_add_tail(&fe->felist, &f->felist);
+ mutex_unlock(&f->lock);
+ return fe;
 }

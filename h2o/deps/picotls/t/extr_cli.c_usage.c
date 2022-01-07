@@ -1,18 +1,10 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  printf (char*,char const*) ; 
+ int printf (char*,char const*) ;
 
 __attribute__((used)) static void usage(const char *cmd)
 {
@@ -41,15 +33,6 @@ __attribute__((used)) static void usage(const char *cmd)
            "  -h                   print this help\n"
            "\n"
            "Supported named groups: secp256r1"
-#if PTLS_OPENSSL_HAVE_SECP384R1
-           ", secp384r1"
-#endif
-#if PTLS_OPENSSL_HAVE_SECP521R1
-           ", secp521r1"
-#endif
-#if PTLS_OPENSSL_HAVE_X25519
-           ", X25519"
-#endif
            "\n\n",
            cmd);
 }

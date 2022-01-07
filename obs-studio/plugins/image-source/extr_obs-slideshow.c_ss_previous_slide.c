@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {scalar_t__ num; } ;
-struct slideshow {scalar_t__ cur_item; TYPE_1__ files; int /*<<< orphan*/  transition; } ;
+struct slideshow {scalar_t__ cur_item; TYPE_1__ files; int transition; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  do_transition (struct slideshow*,int) ; 
- float obs_transition_get_time (int /*<<< orphan*/ ) ; 
+
+ int do_transition (struct slideshow*,int) ;
+ float obs_transition_get_time (int ) ;
 
 __attribute__((used)) static void ss_previous_slide(void *data)
 {
-	struct slideshow *ss = data;
+ struct slideshow *ss = data;
 
-	if (!ss->files.num || obs_transition_get_time(ss->transition) < 1.0f)
-		return;
+ if (!ss->files.num || obs_transition_get_time(ss->transition) < 1.0f)
+  return;
 
-	if (ss->cur_item == 0)
-		ss->cur_item = ss->files.num - 1;
-	else
-		--ss->cur_item;
+ if (ss->cur_item == 0)
+  ss->cur_item = ss->files.num - 1;
+ else
+  --ss->cur_item;
 
-	do_transition(ss, false);
+ do_transition(ss, 0);
 }

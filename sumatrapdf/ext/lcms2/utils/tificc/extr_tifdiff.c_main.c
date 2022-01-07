@@ -1,64 +1,64 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_7__ {double Min; double Peak; scalar_t__ n; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AssureShortTagIs (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,char*) ; 
- scalar_t__ CGATSout ; 
- int /*<<< orphan*/  ClearStatistics (TYPE_1__*) ; 
- int /*<<< orphan*/  CmpImages (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- TYPE_1__* ColorantStat ; 
- TYPE_1__ ColorimetricStat ; 
- int /*<<< orphan*/  ConsoleErrorHandler ; 
- int /*<<< orphan*/  ConsoleWarningHandler ; 
- int /*<<< orphan*/  CreateCGATS (char*,char*) ; 
- int /*<<< orphan*/  EqualLongTag (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  EqualShortTag (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- TYPE_1__ EuclideanStat ; 
- int /*<<< orphan*/  FatalError (char*,...) ; 
- int /*<<< orphan*/  HandleSwitches (int,char**) ; 
- int /*<<< orphan*/  Help () ; 
- int /*<<< orphan*/  InitUtils (int /*<<< orphan*/ *,char*) ; 
- double Mean (TYPE_1__*) ; 
- int PLANARCONFIG_CONTIG ; 
- double Std (TYPE_1__*) ; 
- int /*<<< orphan*/  TIFFClose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * TIFFOpen (char*,char*) ; 
- int /*<<< orphan*/  TIFFSetErrorHandler (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TIFFSetWarningHandler (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TIFFTAG_BITSPERSAMPLE ; 
- int /*<<< orphan*/  TIFFTAG_IMAGELENGTH ; 
- int /*<<< orphan*/  TIFFTAG_IMAGEWIDTH ; 
- int /*<<< orphan*/  TIFFTAG_PLANARCONFIG ; 
- int /*<<< orphan*/  TIFFTAG_SAMPLESPERPIXEL ; 
- int /*<<< orphan*/ * Tiff1 ; 
- int /*<<< orphan*/ * Tiff2 ; 
- int /*<<< orphan*/ * TiffDiff ; 
- char* TiffDiffFilename ; 
- int /*<<< orphan*/  cmsCloseProfile (int /*<<< orphan*/ *,scalar_t__) ; 
- scalar_t__ cmsCreateLab4Profile (int /*<<< orphan*/ *) ; 
- scalar_t__ hLab ; 
- int /*<<< orphan*/  printf (char*,double,double,double,double,double) ; 
- int xoptind ; 
+
+ int AssureShortTagIs (int *,int *,int ,int,char*) ;
+ scalar_t__ CGATSout ;
+ int ClearStatistics (TYPE_1__*) ;
+ int CmpImages (int *,int *,int *) ;
+ TYPE_1__* ColorantStat ;
+ TYPE_1__ ColorimetricStat ;
+ int ConsoleErrorHandler ;
+ int ConsoleWarningHandler ;
+ int CreateCGATS (char*,char*) ;
+ int EqualLongTag (int *,int *,int ,char*) ;
+ int EqualShortTag (int *,int *,int ,char*) ;
+ TYPE_1__ EuclideanStat ;
+ int FatalError (char*,...) ;
+ int HandleSwitches (int,char**) ;
+ int Help () ;
+ int InitUtils (int *,char*) ;
+ double Mean (TYPE_1__*) ;
+ int PLANARCONFIG_CONTIG ;
+ double Std (TYPE_1__*) ;
+ int TIFFClose (int *) ;
+ int * TIFFOpen (char*,char*) ;
+ int TIFFSetErrorHandler (int ) ;
+ int TIFFSetWarningHandler (int ) ;
+ int TIFFTAG_BITSPERSAMPLE ;
+ int TIFFTAG_IMAGELENGTH ;
+ int TIFFTAG_IMAGEWIDTH ;
+ int TIFFTAG_PLANARCONFIG ;
+ int TIFFTAG_SAMPLESPERPIXEL ;
+ int * Tiff1 ;
+ int * Tiff2 ;
+ int * TiffDiff ;
+ char* TiffDiffFilename ;
+ int cmsCloseProfile (int *,scalar_t__) ;
+ scalar_t__ cmsCreateLab4Profile (int *) ;
+ scalar_t__ hLab ;
+ int printf (char*,double,double,double,double,double) ;
+ int xoptind ;
 
 int main(int argc, char* argv[])
 {
       int i;
 
-      Tiff1 = Tiff2 = TiffDiff = NULL;
+      Tiff1 = Tiff2 = TiffDiff = ((void*)0);
 
-      InitUtils(NULL, "tiffdiff");
+      InitUtils(((void*)0), "tiffdiff");
 
       HandleSwitches(argc, argv);
 
@@ -71,15 +71,15 @@ int main(int argc, char* argv[])
       TIFFSetWarningHandler(ConsoleWarningHandler);
 
       Tiff1 = TIFFOpen(argv[xoptind], "r");
-      if (Tiff1 == NULL) FatalError("Unable to open '%s'", argv[xoptind]);
+      if (Tiff1 == ((void*)0)) FatalError("Unable to open '%s'", argv[xoptind]);
 
       Tiff2 = TIFFOpen(argv[xoptind+1], "r");
-      if (Tiff2 == NULL) FatalError("Unable to open '%s'", argv[xoptind+1]);
+      if (Tiff2 == ((void*)0)) FatalError("Unable to open '%s'", argv[xoptind+1]);
 
       if (TiffDiffFilename) {
 
           TiffDiff = TIFFOpen(TiffDiffFilename, "w");
-          if (TiffDiff == NULL) FatalError("Unable to create '%s'", TiffDiffFilename);
+          if (TiffDiff == ((void*)0)) FatalError("Unable to create '%s'", TiffDiffFilename);
 
       }
 
@@ -87,13 +87,13 @@ int main(int argc, char* argv[])
       AssureShortTagIs(Tiff1, Tiff2, TIFFTAG_PLANARCONFIG, PLANARCONFIG_CONTIG, "Planar Config");
       AssureShortTagIs(Tiff1, Tiff2, TIFFTAG_BITSPERSAMPLE, 8, "8 bit per sample");
 
-      EqualLongTag(Tiff1, Tiff2, TIFFTAG_IMAGEWIDTH,  "Image width");
+      EqualLongTag(Tiff1, Tiff2, TIFFTAG_IMAGEWIDTH, "Image width");
       EqualLongTag(Tiff1, Tiff2, TIFFTAG_IMAGELENGTH, "Image length");
 
       EqualShortTag(Tiff1, Tiff2, TIFFTAG_SAMPLESPERPIXEL, "Samples per pixel");
 
 
-      hLab = cmsCreateLab4Profile(NULL);
+      hLab = cmsCreateLab4Profile(((void*)0));
 
       ClearStatistics(&EuclideanStat);
       for (i=0; i < 4; i++)
@@ -107,7 +107,7 @@ int main(int argc, char* argv[])
       }
       else {
 
-        double  Per100 = 100.0 * ((255.0 - Mean(&EuclideanStat)) / 255.0);
+        double Per100 = 100.0 * ((255.0 - Mean(&EuclideanStat)) / 255.0);
 
         printf("Digital counts  %g%% equal. mean %g, min %g, max %g, Std %g\n", Per100, Mean(&EuclideanStat),
                                                                                 EuclideanStat.Min,
@@ -126,9 +126,9 @@ int main(int argc, char* argv[])
 
       }
 
-      if (hLab)     cmsCloseProfile(NULL, hLab);
-      if (Tiff1)    TIFFClose(Tiff1);
-      if (Tiff2)    TIFFClose(Tiff2);
+      if (hLab) cmsCloseProfile(((void*)0), hLab);
+      if (Tiff1) TIFFClose(Tiff1);
+      if (Tiff2) TIFFClose(Tiff2);
       if (TiffDiff) TIFFClose(TiffDiff);
 
       return 0;

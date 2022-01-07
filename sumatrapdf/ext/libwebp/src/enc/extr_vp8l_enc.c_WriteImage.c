@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_6__ {int /*<<< orphan*/  (* writer ) (int /*<<< orphan*/  const*,int,TYPE_1__ const* const) ;} ;
-typedef  TYPE_1__ WebPPicture ;
-typedef  scalar_t__ WebPEncodingError ;
-typedef  int /*<<< orphan*/  VP8LBitWriter ;
 
-/* Variables and functions */
- size_t const CHUNK_HEADER_SIZE ; 
- size_t const TAG_SIZE ; 
- int /*<<< orphan*/ * VP8LBitWriterFinish (int /*<<< orphan*/ * const) ; 
- size_t VP8LBitWriterNumBytes (int /*<<< orphan*/ * const) ; 
- size_t const VP8L_SIGNATURE_SIZE ; 
- scalar_t__ VP8_ENC_ERROR_BAD_WRITE ; 
- scalar_t__ VP8_ENC_OK ; 
- scalar_t__ WriteRiffHeader (TYPE_1__ const* const,size_t const,size_t const) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/  const* const,size_t const,TYPE_1__ const* const) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/  const*,int,TYPE_1__ const* const) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_6__ {int (* writer ) (int const*,int,TYPE_1__ const* const) ;} ;
+typedef TYPE_1__ WebPPicture ;
+typedef scalar_t__ WebPEncodingError ;
+typedef int VP8LBitWriter ;
+
+
+ size_t const CHUNK_HEADER_SIZE ;
+ size_t const TAG_SIZE ;
+ int * VP8LBitWriterFinish (int * const) ;
+ size_t VP8LBitWriterNumBytes (int * const) ;
+ size_t const VP8L_SIGNATURE_SIZE ;
+ scalar_t__ VP8_ENC_ERROR_BAD_WRITE ;
+ scalar_t__ VP8_ENC_OK ;
+ scalar_t__ WriteRiffHeader (TYPE_1__ const* const,size_t const,size_t const) ;
+ int stub1 (int const* const,size_t const,TYPE_1__ const* const) ;
+ int stub2 (int const*,int,TYPE_1__ const* const) ;
 
 __attribute__((used)) static WebPEncodingError WriteImage(const WebPPicture* const pic,
                                     VP8LBitWriter* const bw,

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct edit_cert_data {int /*<<< orphan*/  cert; } ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  PCCERT_CONTEXT ;
-typedef  int /*<<< orphan*/  LPARAM ;
-typedef  int /*<<< orphan*/  HWND ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CERT_DESCRIPTION_PROP_ID ; 
- int /*<<< orphan*/  CERT_FRIENDLY_NAME_PROP_ID ; 
- int /*<<< orphan*/  GetDlgItem (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IDC_DESCRIPTION ; 
- int /*<<< orphan*/  IDC_FRIENDLY_NAME ; 
- int /*<<< orphan*/  SendMessageW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WM_SETTEXT ; 
- int /*<<< orphan*/ * get_cert_property_as_string (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  show_cert_usages (int /*<<< orphan*/ ,struct edit_cert_data*) ; 
+
+
+
+struct edit_cert_data {int cert; } ;
+typedef int WCHAR ;
+typedef int PCCERT_CONTEXT ;
+typedef int LPARAM ;
+typedef int HWND ;
+
+
+ int CERT_DESCRIPTION_PROP_ID ;
+ int CERT_FRIENDLY_NAME_PROP_ID ;
+ int GetDlgItem (int ,int ) ;
+ int GetProcessHeap () ;
+ int HeapFree (int ,int ,int *) ;
+ int IDC_DESCRIPTION ;
+ int IDC_FRIENDLY_NAME ;
+ int SendMessageW (int ,int ,int ,int ) ;
+ int WM_SETTEXT ;
+ int * get_cert_property_as_string (int ,int ) ;
+ int show_cert_usages (int ,struct edit_cert_data*) ;
 
 __attribute__((used)) static void set_general_cert_properties(HWND hwnd, struct edit_cert_data *data)
 {

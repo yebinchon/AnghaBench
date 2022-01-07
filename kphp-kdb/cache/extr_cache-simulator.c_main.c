@@ -1,63 +1,63 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {long long disk_size; long long default_file_size; long long download_speed; char* amortization_counters_initialization_string; int init_using_greedy_strategy; int /*<<< orphan*/  delay_between_priority_lists_requests; void* optimization; } ;
-struct TYPE_3__ {int /*<<< orphan*/  log_readto_pos; } ;
 
-/* Variables and functions */
- void* BACKLOG ; 
- int /*<<< orphan*/  CACHE_FEATURE_REPLAY_DELETE ; 
- scalar_t__ MAX_CONNECTIONS ; 
- int /*<<< orphan*/  aes_load_pwd_file (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert (int) ; 
- void* atoi (void*) ; 
- int /*<<< orphan*/  atoll (void*) ; 
- void* backlog ; 
- int binlog_disabled ; 
- char* binlogname ; 
- int /*<<< orphan*/  cache_clear_all_acounters () ; 
- int /*<<< orphan*/  cache_features_mask ; 
- int /*<<< orphan*/  cache_hashtable_init (int) ; 
- scalar_t__ cache_set_amortization_tables_initialization_string (char*) ; 
- int /*<<< orphan*/  cache_simulator_greedy_init_replay_logevent ; 
- int /*<<< orphan*/  cache_simulator_replay_logevent ; 
- scalar_t__ change_user (char*) ; 
- int daemonize ; 
- scalar_t__ engine_preload_filelist (char*,char*) ; 
- int /*<<< orphan*/  exit (int) ; 
- int getopt (int,char**,char*) ; 
- int /*<<< orphan*/  init_dyn_data () ; 
- int /*<<< orphan*/  kprintf (char*,char*) ; 
- int /*<<< orphan*/  log_readto_pos ; 
- void* logname ; 
- scalar_t__ maxconn ; 
- void* optarg ; 
- int optind ; 
- int /*<<< orphan*/  params () ; 
- int /*<<< orphan*/  play_binlog (char*) ; 
- int print_unknown_size_uries ; 
- scalar_t__ raise_file_rlimit (scalar_t__) ; 
- int /*<<< orphan*/  replay_logevent ; 
- int /*<<< orphan*/  set_debug_handlers () ; 
- TYPE_2__ simulation_params ; 
- TYPE_1__ simulation_stats ; 
- int sscanf (void*,char*,long long*,char*) ; 
- int /*<<< orphan*/  stats () ; 
- int /*<<< orphan*/  usage () ; 
- char* username ; 
- int /*<<< orphan*/  verbosity ; 
- int /*<<< orphan*/  vkprintf (int,char*) ; 
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_4__ {long long disk_size; long long default_file_size; long long download_speed; char* amortization_counters_initialization_string; int init_using_greedy_strategy; int delay_between_priority_lists_requests; void* optimization; } ;
+struct TYPE_3__ {int log_readto_pos; } ;
+
+
+ void* BACKLOG ;
+ int CACHE_FEATURE_REPLAY_DELETE ;
+ scalar_t__ MAX_CONNECTIONS ;
+ int aes_load_pwd_file (int ) ;
+ int assert (int) ;
+ void* atoi (void*) ;
+ int atoll (void*) ;
+ void* backlog ;
+ int binlog_disabled ;
+ char* binlogname ;
+ int cache_clear_all_acounters () ;
+ int cache_features_mask ;
+ int cache_hashtable_init (int) ;
+ scalar_t__ cache_set_amortization_tables_initialization_string (char*) ;
+ int cache_simulator_greedy_init_replay_logevent ;
+ int cache_simulator_replay_logevent ;
+ scalar_t__ change_user (char*) ;
+ int daemonize ;
+ scalar_t__ engine_preload_filelist (char*,char*) ;
+ int exit (int) ;
+ int getopt (int,char**,char*) ;
+ int init_dyn_data () ;
+ int kprintf (char*,char*) ;
+ int log_readto_pos ;
+ void* logname ;
+ scalar_t__ maxconn ;
+ void* optarg ;
+ int optind ;
+ int params () ;
+ int play_binlog (char*) ;
+ int print_unknown_size_uries ;
+ scalar_t__ raise_file_rlimit (scalar_t__) ;
+ int replay_logevent ;
+ int set_debug_handlers () ;
+ TYPE_2__ simulation_params ;
+ TYPE_1__ simulation_stats ;
+ int sscanf (void*,char*,long long*,char*) ;
+ int stats () ;
+ int usage () ;
+ char* username ;
+ int verbosity ;
+ int vkprintf (int,char*) ;
 
 int main (int argc, char *argv[]) {
   int i;
@@ -75,10 +75,10 @@ int main (int argc, char *argv[]) {
        c = 0;
        assert (sscanf (optarg, "%lld%c", &x, &c) >= 1);
        switch (c | 0x20) {
-         case 'k':  x <<= 10; break;
-         case 'm':  x <<= 20; break;
-         case 'g':  x <<= 30; break;
-         case 't':  x <<= 40; break;
+         case 'k': x <<= 10; break;
+         case 'm': x <<= 20; break;
+         case 'g': x <<= 30; break;
+         case 't': x <<= 40; break;
          default: assert (c == 0x20);
        }
        assert (x >= 0);
@@ -116,7 +116,7 @@ int main (int argc, char *argv[]) {
     case 'c':
       maxconn = atoi (optarg);
       if (maxconn <= 0 || maxconn > MAX_CONNECTIONS) {
-      	maxconn = MAX_CONNECTIONS;
+       maxconn = MAX_CONNECTIONS;
       }
       break;
     case 'd':

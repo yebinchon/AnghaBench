@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct ta_header {struct ta_ext_header* ext; } ;
 struct TYPE_2__ {struct TYPE_2__* prev; } ;
 struct ta_ext_header {TYPE_1__ children; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PTR_FROM_HEADER (TYPE_1__*) ; 
- struct ta_header* get_header (void*) ; 
- int /*<<< orphan*/  ta_free (int /*<<< orphan*/ ) ; 
+
+ int PTR_FROM_HEADER (TYPE_1__*) ;
+ struct ta_header* get_header (void*) ;
+ int ta_free (int ) ;
 
 void ta_free_children(void *ptr)
 {
     struct ta_header *h = get_header(ptr);
-    struct ta_ext_header *eh = h ? h->ext : NULL;
+    struct ta_ext_header *eh = h ? h->ext : ((void*)0);
     if (!eh)
         return;
     while (eh->children.prev != &eh->children)

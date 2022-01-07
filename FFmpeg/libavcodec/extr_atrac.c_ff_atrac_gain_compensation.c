@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_7__ {float* gain_tab1; int loc_scale; float* gain_tab2; int id2exp_offset; int loc_size; } ;
 struct TYPE_6__ {int num_points; size_t* lev_code; int* loc_code; } ;
-typedef  TYPE_1__ AtracGainInfo ;
-typedef  TYPE_2__ AtracGCContext ;
+typedef TYPE_1__ AtracGainInfo ;
+typedef TYPE_2__ AtracGCContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memcpy (float*,float*,int) ; 
+
+ int memcpy (float*,float*,int) ;
 
 void ff_atrac_gain_compensation(AtracGCContext *gctx, float *in, float *prev,
                                 AtracGainInfo *gc_now, AtracGainInfo *gc_next,
@@ -44,11 +44,11 @@ void ff_atrac_gain_compensation(AtracGCContext *gctx, float *in, float *prev,
                                                                    : gctx->id2exp_offset) -
                                        gc_now->lev_code[i] + 15];
 
-            /* apply constant gain level and overlap */
+
             for (; pos < lastpos; pos++)
                 out[pos] = (in[pos] * gc_scale + prev[pos]) * lev;
 
-            /* interpolate between two different gain levels */
+
             for (; pos < lastpos + gctx->loc_size; pos++) {
                 out[pos] = (in[pos] * gc_scale + prev[pos]) * lev;
                 lev *= gain_inc;
@@ -59,6 +59,6 @@ void ff_atrac_gain_compensation(AtracGCContext *gctx, float *in, float *prev,
             out[pos] = in[pos] * gc_scale + prev[pos];
     }
 
-    /* copy the overlapping part into the delay buffer */
+
     memcpy(prev, &in[num_samples], num_samples * sizeof(float));
 }

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct block {int dummy; } ;
 struct TYPE_2__ {char const* scope; } ;
 
-/* Variables and functions */
- TYPE_1__* BLOCK_NAMESPACE (struct block const*) ; 
- struct block* BLOCK_SUPERBLOCK (struct block const*) ; 
+
+ TYPE_1__* BLOCK_NAMESPACE (struct block const*) ;
+ struct block* BLOCK_SUPERBLOCK (struct block const*) ;
 
 const char *
 block_scope (const struct block *block)
 {
-  for (; block != NULL; block = BLOCK_SUPERBLOCK (block))
+  for (; block != ((void*)0); block = BLOCK_SUPERBLOCK (block))
     {
-      if (BLOCK_NAMESPACE (block) != NULL
-	  && BLOCK_NAMESPACE (block)->scope != NULL)
-	return BLOCK_NAMESPACE (block)->scope;
+      if (BLOCK_NAMESPACE (block) != ((void*)0)
+   && BLOCK_NAMESPACE (block)->scope != ((void*)0))
+ return BLOCK_NAMESPACE (block)->scope;
     }
 
   return "";

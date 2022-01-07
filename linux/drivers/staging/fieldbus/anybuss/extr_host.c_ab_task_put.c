@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ab_task {int /*<<< orphan*/  refcount; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  __ab_task_destroy ; 
- int /*<<< orphan*/  kref_put (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+struct ab_task {int refcount; } ;
+
+
+ int __ab_task_destroy ;
+ int kref_put (int *,int ) ;
 
 __attribute__((used)) static void ab_task_put(struct ab_task *t)
 {
-	kref_put(&t->refcount, __ab_task_destroy);
+ kref_put(&t->refcount, __ab_task_destroy);
 }

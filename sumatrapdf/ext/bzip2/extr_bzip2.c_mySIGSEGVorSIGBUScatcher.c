@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  IntNative ;
 
-/* Variables and functions */
- scalar_t__ OM_Z ; 
- int /*<<< orphan*/  cadvise () ; 
- int /*<<< orphan*/  cleanUpAndFail (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- scalar_t__ opMode ; 
- char* progName ; 
- int /*<<< orphan*/  showFileNames () ; 
- int /*<<< orphan*/  stderr ; 
 
-__attribute__((used)) static 
+
+
+typedef int IntNative ;
+
+
+ scalar_t__ OM_Z ;
+ int cadvise () ;
+ int cleanUpAndFail (int) ;
+ int fprintf (int ,char*,char*) ;
+ scalar_t__ opMode ;
+ char* progName ;
+ int showFileNames () ;
+ int stderr ;
+
+__attribute__((used)) static
 void mySIGSEGVorSIGBUScatcher ( IntNative n )
 {
    if (opMode == OM_Z)
-      fprintf ( 
+      fprintf (
       stderr,
       "\n%s: Caught a SIGSEGV or SIGBUS whilst compressing.\n"
       "\n"
@@ -47,7 +47,7 @@ void mySIGSEGVorSIGBUScatcher ( IntNative n )
       "\n",
       progName );
       else
-      fprintf ( 
+      fprintf (
       stderr,
       "\n%s: Caught a SIGSEGV or SIGBUS whilst decompressing.\n"
       "\n"

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct aspeed_p2a_ctrl {int /*<<< orphan*/  regmap; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SCU180 ; 
- int /*<<< orphan*/  SCU180_ENP2A ; 
- int /*<<< orphan*/  regmap_update_bits (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct aspeed_p2a_ctrl {int regmap; } ;
+
+
+ int SCU180 ;
+ int SCU180_ENP2A ;
+ int regmap_update_bits (int ,int ,int ,int ) ;
 
 __attribute__((used)) static void aspeed_p2a_enable_bridge(struct aspeed_p2a_ctrl *p2a_ctrl)
 {
-	regmap_update_bits(p2a_ctrl->regmap,
-		SCU180, SCU180_ENP2A, SCU180_ENP2A);
+ regmap_update_bits(p2a_ctrl->regmap,
+  SCU180, SCU180_ENP2A, SCU180_ENP2A);
 }

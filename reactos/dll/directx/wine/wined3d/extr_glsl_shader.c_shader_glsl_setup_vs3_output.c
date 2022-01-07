@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct wined3d_string_buffer {int /*<<< orphan*/  buffer; } ;
-struct wined3d_shader_signature_element {unsigned int register_idx; scalar_t__ semantic_idx; unsigned int mask; int /*<<< orphan*/  semantic_name; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct wined3d_string_buffer {int buffer; } ;
+struct wined3d_shader_signature_element {unsigned int register_idx; scalar_t__ semantic_idx; unsigned int mask; int semantic_name; } ;
 struct wined3d_shader_signature {unsigned int element_count; struct wined3d_shader_signature_element* elements; } ;
 struct TYPE_2__ {unsigned int* output_registers_mask; } ;
 struct wined3d_shader_reg_maps {unsigned int input_registers; unsigned int output_registers; TYPE_1__ u; } ;
 struct wined3d_gl_info {int dummy; } ;
-struct shader_glsl_priv {int /*<<< orphan*/  string_buffers; struct wined3d_string_buffer shader_buffer; } ;
-typedef  unsigned int DWORD ;
+struct shader_glsl_priv {int string_buffers; struct wined3d_string_buffer shader_buffer; } ;
+typedef unsigned int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FIXME (char*) ; 
- unsigned int WINED3DSP_WRITEMASK_0 ; 
- unsigned int WINED3DSP_WRITEMASK_1 ; 
- unsigned int WINED3DSP_WRITEMASK_2 ; 
- unsigned int WINED3DSP_WRITEMASK_3 ; 
- unsigned int WINED3DSP_WRITEMASK_ALL ; 
- unsigned int* heap_calloc (unsigned int,int) ; 
- int /*<<< orphan*/  heap_free (unsigned int*) ; 
- scalar_t__ needs_legacy_glsl_syntax (struct wined3d_gl_info const*) ; 
- int /*<<< orphan*/  shader_addline (struct wined3d_string_buffer*,char*,int /*<<< orphan*/ ,char*,...) ; 
- char* shader_glsl_shader_output_name (struct wined3d_gl_info const*) ; 
- int /*<<< orphan*/  shader_glsl_write_mask_to_str (unsigned int,char*) ; 
- scalar_t__ strcmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- struct wined3d_string_buffer* string_buffer_get (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  string_buffer_release (int /*<<< orphan*/ *,struct wined3d_string_buffer*) ; 
- int /*<<< orphan*/  string_buffer_sprintf (struct wined3d_string_buffer*,char*,...) ; 
- unsigned int vec4_varyings (int,struct wined3d_gl_info const*) ; 
+
+ int FIXME (char*) ;
+ unsigned int WINED3DSP_WRITEMASK_0 ;
+ unsigned int WINED3DSP_WRITEMASK_1 ;
+ unsigned int WINED3DSP_WRITEMASK_2 ;
+ unsigned int WINED3DSP_WRITEMASK_3 ;
+ unsigned int WINED3DSP_WRITEMASK_ALL ;
+ unsigned int* heap_calloc (unsigned int,int) ;
+ int heap_free (unsigned int*) ;
+ scalar_t__ needs_legacy_glsl_syntax (struct wined3d_gl_info const*) ;
+ int shader_addline (struct wined3d_string_buffer*,char*,int ,char*,...) ;
+ char* shader_glsl_shader_output_name (struct wined3d_gl_info const*) ;
+ int shader_glsl_write_mask_to_str (unsigned int,char*) ;
+ scalar_t__ strcmp (int ,int ) ;
+ struct wined3d_string_buffer* string_buffer_get (int *) ;
+ int string_buffer_release (int *,struct wined3d_string_buffer*) ;
+ int string_buffer_sprintf (struct wined3d_string_buffer*,char*,...) ;
+ unsigned int vec4_varyings (int,struct wined3d_gl_info const*) ;
 
 __attribute__((used)) static void shader_glsl_setup_vs3_output(struct shader_glsl_priv *priv,
         const struct wined3d_gl_info *gl_info, const DWORD *map,
@@ -51,7 +51,7 @@ __attribute__((used)) static void shader_glsl_setup_vs3_output(struct shader_gls
     struct wined3d_string_buffer *buffer = &priv->shader_buffer;
     unsigned int in_count = vec4_varyings(3, gl_info);
     unsigned int max_varyings = needs_legacy_glsl_syntax(gl_info) ? in_count + 2 : in_count;
-    DWORD in_idx, *set = NULL;
+    DWORD in_idx, *set = ((void*)0);
     unsigned int i, j;
     char reg_mask[6];
 
@@ -65,7 +65,7 @@ __attribute__((used)) static void shader_glsl_setup_vs3_output(struct shader_gls
             continue;
 
         in_idx = map[input->register_idx];
-        /* Declared, but not read register */
+
         if (in_idx == ~0u)
             continue;
         if (in_idx >= max_varyings)

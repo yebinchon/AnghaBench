@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  Cbuf_AddText (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Cvar_Set (char*,char*) ; 
- int /*<<< orphan*/  cl_reconnectArgs ; 
- int /*<<< orphan*/  strlen (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  va (char*,int /*<<< orphan*/ ) ; 
+ int Cbuf_AddText (int ) ;
+ int Cvar_Set (char*,char*) ;
+ int cl_reconnectArgs ;
+ int strlen (int ) ;
+ int va (char*,int ) ;
 
 void CL_Reconnect_f( void ) {
-	if ( !strlen( cl_reconnectArgs ) )
-		return;
-	Cvar_Set("ui_singlePlayerActive", "0");
-	Cbuf_AddText( va("connect %s\n", cl_reconnectArgs ) );
+ if ( !strlen( cl_reconnectArgs ) )
+  return;
+ Cvar_Set("ui_singlePlayerActive", "0");
+ Cbuf_AddText( va("connect %s\n", cl_reconnectArgs ) );
 }

@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  flush_data_cache_local (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  flush_instruction_cache_local (int /*<<< orphan*/ *) ; 
+ int flush_data_cache_local (int *) ;
+ int flush_instruction_cache_local (int *) ;
 
 void
 flush_cache_all_local(void)
 {
-	flush_instruction_cache_local(NULL);
-	flush_data_cache_local(NULL);
+ flush_instruction_cache_local(((void*)0));
+ flush_data_cache_local(((void*)0));
 }

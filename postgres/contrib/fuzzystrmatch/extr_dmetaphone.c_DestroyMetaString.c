@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {struct TYPE_4__* str; scalar_t__ free_string_on_destroy; } ;
-typedef  TYPE_1__ metastring ;
+typedef TYPE_1__ metastring ;
 
-/* Variables and functions */
- int /*<<< orphan*/  META_FREE (TYPE_1__*) ; 
+
+ int META_FREE (TYPE_1__*) ;
 
 __attribute__((used)) static void
 DestroyMetaString(metastring *s)
 {
-	if (s == NULL)
-		return;
+ if (s == ((void*)0))
+  return;
 
-	if (s->free_string_on_destroy && (s->str != NULL))
-		META_FREE(s->str);
+ if (s->free_string_on_destroy && (s->str != ((void*)0)))
+  META_FREE(s->str);
 
-	META_FREE(s);
+ META_FREE(s);
 }

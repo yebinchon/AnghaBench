@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct macvlan_port {int /*<<< orphan*/  flags; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MACVLAN_F_ADDRCHANGE ; 
+
+
+
+struct macvlan_port {int flags; } ;
+
+
+ int MACVLAN_F_ADDRCHANGE ;
 
 __attribute__((used)) static inline void macvlan_set_addr_change(struct macvlan_port *port)
 {
-	port->flags |= MACVLAN_F_ADDRCHANGE;
+ port->flags |= MACVLAN_F_ADDRCHANGE;
 }

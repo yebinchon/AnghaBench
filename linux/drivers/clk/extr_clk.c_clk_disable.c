@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct clk {int /*<<< orphan*/  core; } ;
 
-/* Variables and functions */
- scalar_t__ IS_ERR_OR_NULL (struct clk*) ; 
- int /*<<< orphan*/  clk_core_disable_lock (int /*<<< orphan*/ ) ; 
+
+
+
+struct clk {int core; } ;
+
+
+ scalar_t__ IS_ERR_OR_NULL (struct clk*) ;
+ int clk_core_disable_lock (int ) ;
 
 void clk_disable(struct clk *clk)
 {
-	if (IS_ERR_OR_NULL(clk))
-		return;
+ if (IS_ERR_OR_NULL(clk))
+  return;
 
-	clk_core_disable_lock(clk->core);
+ clk_core_disable_lock(clk->core);
 }

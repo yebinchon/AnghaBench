@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct vtcon_port {int vtcport_id; int /*<<< orphan*/  vtcport_mtx; int /*<<< orphan*/ * vtcport_outvq; int /*<<< orphan*/ * vtcport_invq; int /*<<< orphan*/ * vtcport_scport; int /*<<< orphan*/ * vtcport_sc; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  M_DEVBUF ; 
- int /*<<< orphan*/  free (struct vtcon_port*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mtx_destroy (int /*<<< orphan*/ *) ; 
+
+
+
+struct vtcon_port {int vtcport_id; int vtcport_mtx; int * vtcport_outvq; int * vtcport_invq; int * vtcport_scport; int * vtcport_sc; } ;
+
+
+ int M_DEVBUF ;
+ int free (struct vtcon_port*,int ) ;
+ int mtx_destroy (int *) ;
 
 __attribute__((used)) static void
 vtcon_port_destroy(struct vtcon_port *port)
 {
 
-	port->vtcport_sc = NULL;
-	port->vtcport_scport = NULL;
-	port->vtcport_invq = NULL;
-	port->vtcport_outvq = NULL;
-	port->vtcport_id = -1;
-	mtx_destroy(&port->vtcport_mtx);
-	free(port, M_DEVBUF);
+ port->vtcport_sc = ((void*)0);
+ port->vtcport_scport = ((void*)0);
+ port->vtcport_invq = ((void*)0);
+ port->vtcport_outvq = ((void*)0);
+ port->vtcport_id = -1;
+ mtx_destroy(&port->vtcport_mtx);
+ free(port, M_DEVBUF);
 }

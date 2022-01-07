@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_int ;
+
+
+
+
+typedef int u_int ;
 struct ifnet {struct epair_softc* if_softc; } ;
-struct epair_softc {int /*<<< orphan*/  cpuid; } ;
+struct epair_softc {int cpuid; } ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static u_int
 cpuid_from_ifp(struct ifnet *ifp)
 {
-	struct epair_softc *sc;
+ struct epair_softc *sc;
 
-	if (ifp == NULL)
-		return (0);
-	sc = ifp->if_softc;
+ if (ifp == ((void*)0))
+  return (0);
+ sc = ifp->if_softc;
 
-	return (sc->cpuid);
+ return (sc->cpuid);
 }

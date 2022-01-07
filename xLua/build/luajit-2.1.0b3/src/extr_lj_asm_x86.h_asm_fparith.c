@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_5__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  x86Op ;
-struct TYPE_7__ {int /*<<< orphan*/  r; } ;
+
+
+typedef struct TYPE_7__ TYPE_5__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int x86Op ;
+struct TYPE_7__ {int r; } ;
 struct TYPE_6__ {scalar_t__ op1; scalar_t__ op2; } ;
-typedef  int /*<<< orphan*/  RegSet ;
-typedef  int /*<<< orphan*/  Reg ;
-typedef  scalar_t__ IRRef ;
-typedef  TYPE_1__ IRIns ;
-typedef  int /*<<< orphan*/  ASMState ;
+typedef int RegSet ;
+typedef int Reg ;
+typedef scalar_t__ IRRef ;
+typedef TYPE_1__ IRIns ;
+typedef int ASMState ;
 
-/* Variables and functions */
- TYPE_5__* IR (scalar_t__) ; 
- int /*<<< orphan*/  RSET_FPR ; 
- int /*<<< orphan*/  asm_fuseload (int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ ) ; 
- scalar_t__ asm_swapops (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  emit_mrm (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ra_dest (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ ) ; 
- scalar_t__ ra_hasreg (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ra_left (int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__ ra_noreg (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ra_noweak (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rset_clear (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ TYPE_5__* IR (scalar_t__) ;
+ int RSET_FPR ;
+ int asm_fuseload (int *,scalar_t__,int ) ;
+ scalar_t__ asm_swapops (int *,TYPE_1__*) ;
+ int emit_mrm (int *,int ,int ,int ) ;
+ int ra_dest (int *,TYPE_1__*,int ) ;
+ scalar_t__ ra_hasreg (int ) ;
+ int ra_left (int *,int ,scalar_t__) ;
+ scalar_t__ ra_noreg (int ) ;
+ int ra_noweak (int *,int ) ;
+ int rset_clear (int ,int ) ;
 
 __attribute__((used)) static void asm_fparith(ASMState *as, IRIns *ir, x86Op xo)
 {

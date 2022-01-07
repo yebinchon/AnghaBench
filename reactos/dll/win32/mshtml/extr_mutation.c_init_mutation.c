@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  nsresult ;
-typedef  int /*<<< orphan*/  nsIFactory ;
-typedef  int /*<<< orphan*/  nsIComponentManager ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IID_nsIContentUtils ; 
- int /*<<< orphan*/  IID_nsIFactory ; 
- scalar_t__ NS_FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NS_ICONTENTUTILS_CID ; 
- int /*<<< orphan*/ * content_utils ; 
- int /*<<< orphan*/  nsIComponentManager_GetClassObject (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  nsIContentUtils_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsIFactory_CreateInstance (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  nsIFactory_Release (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int nsresult ;
+typedef int nsIFactory ;
+typedef int nsIComponentManager ;
+
+
+ int ERR (char*,int ) ;
+ int IID_nsIContentUtils ;
+ int IID_nsIFactory ;
+ scalar_t__ NS_FAILED (int ) ;
+ int NS_ICONTENTUTILS_CID ;
+ int * content_utils ;
+ int nsIComponentManager_GetClassObject (int *,int *,int *,void**) ;
+ int nsIContentUtils_Release (int *) ;
+ int nsIFactory_CreateInstance (int *,int *,int *,void**) ;
+ int nsIFactory_Release (int *) ;
 
 void init_mutation(nsIComponentManager *component_manager)
 {
@@ -34,7 +34,7 @@ void init_mutation(nsIComponentManager *component_manager)
     if(!component_manager) {
         if(content_utils) {
             nsIContentUtils_Release(content_utils);
-            content_utils = NULL;
+            content_utils = ((void*)0);
         }
         return;
     }
@@ -46,7 +46,7 @@ void init_mutation(nsIComponentManager *component_manager)
         return;
     }
 
-    nsres = nsIFactory_CreateInstance(factory, NULL, &IID_nsIContentUtils, (void**)&content_utils);
+    nsres = nsIFactory_CreateInstance(factory, ((void*)0), &IID_nsIContentUtils, (void**)&content_utils);
     nsIFactory_Release(factory);
     if(NS_FAILED(nsres))
         ERR("Could not create nsIContentUtils instance: %08x\n", nsres);

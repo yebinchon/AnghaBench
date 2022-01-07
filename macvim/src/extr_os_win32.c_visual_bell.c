@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int WORD ;
-struct TYPE_5__ {int /*<<< orphan*/  member_1; int /*<<< orphan*/  member_0; } ;
-typedef  int /*<<< orphan*/ * LPWORD ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  TYPE_1__ COORD ;
 
-/* Variables and functions */
- int Columns ; 
- int /*<<< orphan*/  FillConsoleOutputAttribute (int /*<<< orphan*/ ,int,int,TYPE_1__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ReadConsoleOutputAttribute (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,TYPE_1__,int /*<<< orphan*/ *) ; 
- int Rows ; 
- int /*<<< orphan*/  Sleep (int) ; 
- int /*<<< orphan*/  WriteConsoleOutputAttribute (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,TYPE_1__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  alloc (int) ; 
- int g_attrCurrent ; 
- int /*<<< orphan*/  g_hConOut ; 
- int /*<<< orphan*/  vim_free (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int WORD ;
+struct TYPE_5__ {int member_1; int member_0; } ;
+typedef int * LPWORD ;
+typedef int DWORD ;
+typedef TYPE_1__ COORD ;
+
+
+ int Columns ;
+ int FillConsoleOutputAttribute (int ,int,int,TYPE_1__,int *) ;
+ int ReadConsoleOutputAttribute (int ,int *,int,TYPE_1__,int *) ;
+ int Rows ;
+ int Sleep (int) ;
+ int WriteConsoleOutputAttribute (int ,int *,int,TYPE_1__,int *) ;
+ int alloc (int) ;
+ int g_attrCurrent ;
+ int g_hConOut ;
+ int vim_free (int *) ;
 
 __attribute__((used)) static void
 visual_bell(void)
 {
-    COORD   coordOrigin = {0, 0};
-    WORD    attrFlash = ~g_attrCurrent & 0xff;
+    COORD coordOrigin = {0, 0};
+    WORD attrFlash = ~g_attrCurrent & 0xff;
 
-    DWORD   dwDummy;
-    LPWORD  oldattrs = (LPWORD)alloc(Rows * Columns * sizeof(WORD));
+    DWORD dwDummy;
+    LPWORD oldattrs = (LPWORD)alloc(Rows * Columns * sizeof(WORD));
 
-    if (oldattrs == NULL)
-	return;
+    if (oldattrs == ((void*)0))
+ return;
     ReadConsoleOutputAttribute(g_hConOut, oldattrs, Rows * Columns,
-			       coordOrigin, &dwDummy);
+          coordOrigin, &dwDummy);
     FillConsoleOutputAttribute(g_hConOut, attrFlash, Rows * Columns,
-			       coordOrigin, &dwDummy);
+          coordOrigin, &dwDummy);
 
-    Sleep(15);	    /* wait for 15 msec */
+    Sleep(15);
     WriteConsoleOutputAttribute(g_hConOut, oldattrs, Rows * Columns,
-				coordOrigin, &dwDummy);
+    coordOrigin, &dwDummy);
     vim_free(oldattrs);
 }

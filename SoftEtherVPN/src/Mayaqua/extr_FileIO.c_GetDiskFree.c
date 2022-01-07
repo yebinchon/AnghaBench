@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT64 ;
 
-/* Variables and functions */
- int UnixGetDiskFree (char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int Win32GetDiskFree (char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int UINT64 ;
+
+
+ int UnixGetDiskFree (char*,int *,int *,int *) ;
+ int Win32GetDiskFree (char*,int *,int *,int *) ;
 
 bool GetDiskFree(char *path, UINT64 *free_size, UINT64 *used_size, UINT64 *total_size)
 {
-	bool ret;
-	// Validate arguments
-	if (path == NULL)
-	{
-		path = "./";
-	}
+ bool ret;
 
-#ifdef	OS_WIN32
-	ret = Win32GetDiskFree(path, free_size, used_size, total_size);
-#else	// OS_WIN32
-	ret = UnixGetDiskFree(path, free_size, used_size, total_size);
-#endif	// OS_WIN32
+ if (path == ((void*)0))
+ {
+  path = "./";
+ }
 
-	return ret;
+
+
+
+ ret = UnixGetDiskFree(path, free_size, used_size, total_size);
+
+
+ return ret;
 }

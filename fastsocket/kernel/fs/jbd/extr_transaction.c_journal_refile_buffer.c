@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct journal_head {int dummy; } ;
 struct buffer_head {int dummy; } ;
-struct TYPE_3__ {int /*<<< orphan*/  j_list_lock; } ;
-typedef  TYPE_1__ journal_t ;
+struct TYPE_3__ {int j_list_lock; } ;
+typedef TYPE_1__ journal_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  __brelse (struct buffer_head*) ; 
- int /*<<< orphan*/  __journal_refile_buffer (struct journal_head*) ; 
- int /*<<< orphan*/  jbd_lock_bh_state (struct buffer_head*) ; 
- int /*<<< orphan*/  jbd_unlock_bh_state (struct buffer_head*) ; 
- struct buffer_head* jh2bh (struct journal_head*) ; 
- int /*<<< orphan*/  journal_remove_journal_head (struct buffer_head*) ; 
- int /*<<< orphan*/  spin_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock (int /*<<< orphan*/ *) ; 
+
+ int __brelse (struct buffer_head*) ;
+ int __journal_refile_buffer (struct journal_head*) ;
+ int jbd_lock_bh_state (struct buffer_head*) ;
+ int jbd_unlock_bh_state (struct buffer_head*) ;
+ struct buffer_head* jh2bh (struct journal_head*) ;
+ int journal_remove_journal_head (struct buffer_head*) ;
+ int spin_lock (int *) ;
+ int spin_unlock (int *) ;
 
 void journal_refile_buffer(journal_t *journal, struct journal_head *jh)
 {
-	struct buffer_head *bh = jh2bh(jh);
+ struct buffer_head *bh = jh2bh(jh);
 
-	jbd_lock_bh_state(bh);
-	spin_lock(&journal->j_list_lock);
+ jbd_lock_bh_state(bh);
+ spin_lock(&journal->j_list_lock);
 
-	__journal_refile_buffer(jh);
-	jbd_unlock_bh_state(bh);
-	journal_remove_journal_head(bh);
+ __journal_refile_buffer(jh);
+ jbd_unlock_bh_state(bh);
+ journal_remove_journal_head(bh);
 
-	spin_unlock(&journal->j_list_lock);
-	__brelse(bh);
+ spin_unlock(&journal->j_list_lock);
+ __brelse(bh);
 }

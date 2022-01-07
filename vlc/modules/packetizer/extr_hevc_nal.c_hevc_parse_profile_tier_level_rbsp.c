@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
-struct TYPE_3__ {int sublayer_profile_present_flag; int sublayer_level_present_flag; void** sub_layer_level_idc; int /*<<< orphan*/ * sub_layer; void* general_level_idc; int /*<<< orphan*/  general; } ;
-typedef  TYPE_1__ hevc_profile_tier_level_t ;
-typedef  int /*<<< orphan*/  bs_t ;
 
-/* Variables and functions */
- void* bs_read (int /*<<< orphan*/ *,int) ; 
- scalar_t__ bs_read1 (int /*<<< orphan*/ *) ; 
- int bs_remain (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  hevc_parse_inner_profile_tier_level_rbsp (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint8_t ;
+struct TYPE_3__ {int sublayer_profile_present_flag; int sublayer_level_present_flag; void** sub_layer_level_idc; int * sub_layer; void* general_level_idc; int general; } ;
+typedef TYPE_1__ hevc_profile_tier_level_t ;
+typedef int bs_t ;
+
+
+ void* bs_read (int *,int) ;
+ scalar_t__ bs_read1 (int *) ;
+ int bs_remain (int *) ;
+ int hevc_parse_inner_profile_tier_level_rbsp (int *,int *) ;
 
 __attribute__((used)) static bool hevc_parse_profile_tier_level_rbsp( bs_t *p_bs, bool profile_present,
                                                 uint8_t max_num_sub_layers_minus1,
                                                 hevc_profile_tier_level_t *p_ptl )
 {
     if( profile_present && !hevc_parse_inner_profile_tier_level_rbsp( p_bs, &p_ptl->general ) )
-        return false;
+        return 0;
 
     if( bs_remain( p_bs ) < 8)
-        return false;
+        return 0;
 
     p_ptl->general_level_idc = bs_read( p_bs, 8 );
 
     if( max_num_sub_layers_minus1 > 0 )
     {
         if( bs_remain( p_bs ) < 16 )
-            return false;
+            return 0;
 
         for( uint8_t i=0; i< 8; i++ )
         {
@@ -56,16 +56,16 @@ __attribute__((used)) static bool hevc_parse_profile_tier_level_rbsp( bs_t *p_bs
         {
             if( ( p_ptl->sublayer_profile_present_flag & (0x80 >> i) ) &&
                 ! hevc_parse_inner_profile_tier_level_rbsp( p_bs, &p_ptl->sub_layer[i] ) )
-                return false;
+                return 0;
 
             if( p_ptl->sublayer_profile_present_flag & (0x80 >> i) )
             {
                 if( bs_remain( p_bs ) < 8 )
-                    return false;
+                    return 0;
                 p_ptl->sub_layer_level_idc[i] = bs_read( p_bs, 8 );
             }
         }
     }
 
-    return true;
+    return 1;
 }

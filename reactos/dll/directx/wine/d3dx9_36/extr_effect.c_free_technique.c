@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct d3dx_technique {unsigned int annotation_count; unsigned int pass_count; int /*<<< orphan*/ * name; int /*<<< orphan*/ * passes; int /*<<< orphan*/ * annotations; int /*<<< orphan*/ * saved_state; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IDirect3DStateBlock9_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TRACE (char*,struct d3dx_technique*) ; 
- int /*<<< orphan*/  free_parameter (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free_pass (int /*<<< orphan*/ *) ; 
+
+
+
+struct d3dx_technique {unsigned int annotation_count; unsigned int pass_count; int * name; int * passes; int * annotations; int * saved_state; } ;
+
+
+ int FALSE ;
+ int GetProcessHeap () ;
+ int HeapFree (int ,int ,int *) ;
+ int IDirect3DStateBlock9_Release (int *) ;
+ int TRACE (char*,struct d3dx_technique*) ;
+ int free_parameter (int *,int ,int ) ;
+ int free_pass (int *) ;
 
 __attribute__((used)) static void free_technique(struct d3dx_technique *technique)
 {
@@ -33,7 +33,7 @@ __attribute__((used)) static void free_technique(struct d3dx_technique *techniqu
     if (technique->saved_state)
     {
         IDirect3DStateBlock9_Release(technique->saved_state);
-        technique->saved_state = NULL;
+        technique->saved_state = ((void*)0);
     }
 
     if (technique->annotations)
@@ -41,7 +41,7 @@ __attribute__((used)) static void free_technique(struct d3dx_technique *techniqu
         for (i = 0; i < technique->annotation_count; ++i)
             free_parameter(&technique->annotations[i], FALSE, FALSE);
         HeapFree(GetProcessHeap(), 0, technique->annotations);
-        technique->annotations = NULL;
+        technique->annotations = ((void*)0);
     }
 
     if (technique->passes)
@@ -49,9 +49,9 @@ __attribute__((used)) static void free_technique(struct d3dx_technique *techniqu
         for (i = 0; i < technique->pass_count; ++i)
             free_pass(&technique->passes[i]);
         HeapFree(GetProcessHeap(), 0, technique->passes);
-        technique->passes = NULL;
+        technique->passes = ((void*)0);
     }
 
     HeapFree(GetProcessHeap(), 0, technique->name);
-    technique->name = NULL;
+    technique->name = ((void*)0);
 }

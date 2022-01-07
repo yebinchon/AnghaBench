@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  LPCSTR ;
-typedef  scalar_t__ HANDLE ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CREATE_ALWAYS ; 
- int /*<<< orphan*/  CloseHandle (scalar_t__) ; 
- scalar_t__ CreateFileA (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FILE_ATTRIBUTE_NORMAL ; 
- int FILE_SHARE_READ ; 
- int FILE_SHARE_WRITE ; 
- int /*<<< orphan*/  GENERIC_WRITE ; 
- int /*<<< orphan*/  GetLastError () ; 
- scalar_t__ INVALID_HANDLE_VALUE ; 
- int WriteFile (scalar_t__,void*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ok (int,char*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int LPCSTR ;
+typedef scalar_t__ HANDLE ;
+typedef int DWORD ;
+typedef int BOOL ;
+
+
+ int CREATE_ALWAYS ;
+ int CloseHandle (scalar_t__) ;
+ scalar_t__ CreateFileA (int ,int ,int,int *,int ,int ,int *) ;
+ int FILE_ATTRIBUTE_NORMAL ;
+ int FILE_SHARE_READ ;
+ int FILE_SHARE_WRITE ;
+ int GENERIC_WRITE ;
+ int GetLastError () ;
+ scalar_t__ INVALID_HANDLE_VALUE ;
+ int WriteFile (scalar_t__,void*,int ,int *,int *) ;
+ int ok (int,char*,int ) ;
 
 __attribute__((used)) static void create_and_write_file(LPCSTR filename, void *data, DWORD len)
 {
@@ -35,11 +35,11 @@ __attribute__((used)) static void create_and_write_file(LPCSTR filename, void *d
     BOOL ret;
 
     file = CreateFileA(filename, GENERIC_WRITE,
-                       FILE_SHARE_READ|FILE_SHARE_WRITE, NULL, CREATE_ALWAYS,
-                       FILE_ATTRIBUTE_NORMAL, NULL);
+                       FILE_SHARE_READ|FILE_SHARE_WRITE, ((void*)0), CREATE_ALWAYS,
+                       FILE_ATTRIBUTE_NORMAL, ((void*)0));
     ok(file != INVALID_HANDLE_VALUE, "CreateFileA failed with error %d\n", GetLastError());
 
-    ret = WriteFile(file, data, len, &written, NULL);
+    ret = WriteFile(file, data, len, &written, ((void*)0));
     ok(ret, "WriteFile failed with error %d\n", GetLastError());
 
     CloseHandle(file);

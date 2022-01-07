@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int int8_t ;
-struct TYPE_7__ {int /*<<< orphan*/  table; } ;
-struct TYPE_6__ {int /*<<< orphan*/  table; } ;
-struct TYPE_5__ {int /*<<< orphan*/  avctx; int /*<<< orphan*/  gb; } ;
-typedef  TYPE_1__ MpegEncContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  DC_VLC_BITS ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int get_bits (int /*<<< orphan*/ *,int) ; 
- scalar_t__ get_bits1 (int /*<<< orphan*/ *) ; 
- int get_vlc2 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- TYPE_3__ rv_dc_chrom ; 
- TYPE_2__ rv_dc_lum ; 
- int /*<<< orphan*/  skip_bits (int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int int8_t ;
+struct TYPE_7__ {int table; } ;
+struct TYPE_6__ {int table; } ;
+struct TYPE_5__ {int avctx; int gb; } ;
+typedef TYPE_1__ MpegEncContext ;
+
+
+ int AV_LOG_ERROR ;
+ int DC_VLC_BITS ;
+ int av_log (int ,int ,char*) ;
+ int get_bits (int *,int) ;
+ scalar_t__ get_bits1 (int *) ;
+ int get_vlc2 (int *,int ,int ,int) ;
+ TYPE_3__ rv_dc_chrom ;
+ TYPE_2__ rv_dc_lum ;
+ int skip_bits (int *,int) ;
 
 int ff_rv_decode_dc(MpegEncContext *s, int n)
 {
@@ -37,9 +37,9 @@ int ff_rv_decode_dc(MpegEncContext *s, int n)
     if (n < 4) {
         code = get_vlc2(&s->gb, rv_dc_lum.table, DC_VLC_BITS, 2);
         if (code < 0) {
-            /* XXX: I don't understand why they use LONGER codes than
-             * necessary. The following code would be completely useless
-             * if they had thought about it !!! */
+
+
+
             code = get_bits(&s->gb, 7);
             if (code == 0x7c) {
                 code = (int8_t) (get_bits(&s->gb, 7) + 1);
@@ -59,7 +59,7 @@ int ff_rv_decode_dc(MpegEncContext *s, int n)
         }
     } else {
         code = get_vlc2(&s->gb, rv_dc_chrom.table, DC_VLC_BITS, 2);
-        /* same remark */
+
         if (code < 0) {
             code = get_bits(&s->gb, 9);
             if (code == 0x1fc) {

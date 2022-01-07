@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
 struct AACISError {scalar_t__ error; scalar_t__ pass; } ;
 struct TYPE_13__ {size_t samplerate_index; } ;
-struct TYPE_12__ {int /*<<< orphan*/  common_window; TYPE_2__* ch; } ;
+struct TYPE_12__ {int common_window; TYPE_2__* ch; } ;
 struct TYPE_10__ {int const max_sfb; scalar_t__* window_sequence; int num_windows; int* group_len; int num_swb; int* prediction_used; int* swb_sizes; int predictor_present; } ;
 struct TYPE_11__ {float* pcoeffs; TYPE_1__ ics; } ;
-typedef  TYPE_2__ SingleChannelElement ;
-typedef  TYPE_3__ ChannelElement ;
-typedef  TYPE_4__ AACEncContext ;
+typedef TYPE_2__ SingleChannelElement ;
+typedef TYPE_3__ ChannelElement ;
+typedef TYPE_4__ AACEncContext ;
 
-/* Variables and functions */
- scalar_t__ EIGHT_SHORT_SEQUENCE ; 
- int FFMIN (int const,int const) ; 
- int PRED_SFB_START ; 
- int /*<<< orphan*/  RESTORE_PRED (TYPE_2__*,int) ; 
- struct AACISError ff_aac_is_encoding_err (TYPE_4__*,TYPE_3__*,int,int,int,float,float,float,int,int) ; 
- int const* ff_aac_pred_sfb_max ; 
+
+ scalar_t__ EIGHT_SHORT_SEQUENCE ;
+ int FFMIN (int const,int const) ;
+ int PRED_SFB_START ;
+ int RESTORE_PRED (TYPE_2__*,int) ;
+ struct AACISError ff_aac_is_encoding_err (TYPE_4__*,TYPE_3__*,int,int,int,float,float,float,int,int) ;
+ int const* ff_aac_pred_sfb_max ;
 
 void ff_aac_adjust_common_pred(AACEncContext *s, ChannelElement *cpe)
 {
@@ -38,7 +38,7 @@ void ff_aac_adjust_common_pred(AACEncContext *s, ChannelElement *cpe)
     SingleChannelElement *sce1 = &cpe->ch[1];
     const int pmax0 = FFMIN(sce0->ics.max_sfb, ff_aac_pred_sfb_max[s->samplerate_index]);
     const int pmax1 = FFMIN(sce1->ics.max_sfb, ff_aac_pred_sfb_max[s->samplerate_index]);
-    const int pmax  = FFMIN(pmax0, pmax1);
+    const int pmax = FFMIN(pmax0, pmax1);
 
     if (!cpe->common_window ||
         sce0->ics.window_sequence[0] == EIGHT_SHORT_SEQUENCE ||
@@ -62,8 +62,8 @@ void ff_aac_adjust_common_pred(AACEncContext *s, ChannelElement *cpe)
                 for (i = 0; i < sce0->ics.swb_sizes[g]; i++) {
                     float coef0 = sce0->pcoeffs[start+(w+w2)*128+i];
                     float coef1 = sce1->pcoeffs[start+(w+w2)*128+i];
-                    ener0  += coef0*coef0;
-                    ener1  += coef1*coef1;
+                    ener0 += coef0*coef0;
+                    ener1 += coef1*coef1;
                     ener01 += (coef0 + coef1)*(coef0 + coef1);
                 }
             }

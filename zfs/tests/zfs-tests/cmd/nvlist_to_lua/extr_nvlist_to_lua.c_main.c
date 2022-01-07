@@ -1,39 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  libzfs_core_fini () ; 
- int /*<<< orphan*/  libzfs_core_init () ; 
- char const* pool ; 
- int /*<<< orphan*/  printf (char*,char const*) ; 
- int /*<<< orphan*/  run_tests () ; 
- int unexpected_failures ; 
+ int exit (int) ;
+ int libzfs_core_fini () ;
+ int libzfs_core_init () ;
+ char const* pool ;
+ int printf (char*,char const*) ;
+ int run_tests () ;
+ int unexpected_failures ;
 
 int
 main(int argc, const char *argv[])
 {
-	(void) libzfs_core_init();
+ (void) libzfs_core_init();
 
-	if (argc != 2) {
-		(void) printf("usage: %s <pool>\n",
-		    argv[0]);
-		exit(2);
-	}
-	pool = argv[1];
+ if (argc != 2) {
+  (void) printf("usage: %s <pool>\n",
+      argv[0]);
+  exit(2);
+ }
+ pool = argv[1];
 
-	run_tests();
+ run_tests();
 
-	libzfs_core_fini();
-	return (unexpected_failures);
+ libzfs_core_fini();
+ return (unexpected_failures);
 }

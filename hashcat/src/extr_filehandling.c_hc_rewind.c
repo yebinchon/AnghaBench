@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  pfp; int /*<<< orphan*/  ufp; scalar_t__ is_zip; int /*<<< orphan*/  gfp; scalar_t__ is_gzip; } ;
-typedef  TYPE_1__ HCFILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  gzrewind (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rewind (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  unzGoToFirstFile (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int pfp; int ufp; scalar_t__ is_zip; int gfp; scalar_t__ is_gzip; } ;
+typedef TYPE_1__ HCFILE ;
+
+
+ int gzrewind (int ) ;
+ int rewind (int ) ;
+ int unzGoToFirstFile (int ) ;
 
 void hc_rewind (HCFILE *fp)
 {
-  if (fp == NULL) return;
+  if (fp == ((void*)0)) return;
 
   if (fp->is_gzip)
   {

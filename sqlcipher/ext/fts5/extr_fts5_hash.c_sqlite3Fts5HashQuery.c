@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-struct TYPE_9__ {TYPE_1__** aSlot; int /*<<< orphan*/  nSlot; } ;
+
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int u8 ;
+struct TYPE_9__ {TYPE_1__** aSlot; int nSlot; } ;
 struct TYPE_8__ {int nKey; int nData; struct TYPE_8__* pHashNext; } ;
-typedef  TYPE_1__ Fts5HashEntry ;
-typedef  TYPE_2__ Fts5Hash ;
+typedef TYPE_1__ Fts5HashEntry ;
+typedef TYPE_2__ Fts5Hash ;
 
-/* Variables and functions */
- int SQLITE_NOMEM ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- char* fts5EntryKey (TYPE_1__*) ; 
- scalar_t__ fts5HashAddPoslistSize (TYPE_2__*,TYPE_1__*,TYPE_1__*) ; 
- unsigned int fts5HashKey (int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int) ; 
- scalar_t__ memcmp (char*,char const*,int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- void* sqlite3_malloc64 (int) ; 
- scalar_t__ strlen (char*) ; 
+
+ int SQLITE_NOMEM ;
+ int SQLITE_OK ;
+ int assert (int) ;
+ char* fts5EntryKey (TYPE_1__*) ;
+ scalar_t__ fts5HashAddPoslistSize (TYPE_2__*,TYPE_1__*,TYPE_1__*) ;
+ unsigned int fts5HashKey (int ,int const*,int) ;
+ scalar_t__ memcmp (char*,char const*,int) ;
+ int memcpy (int *,int *,int) ;
+ void* sqlite3_malloc64 (int) ;
+ scalar_t__ strlen (char*) ;
 
 int sqlite3Fts5HashQuery(
-  Fts5Hash *pHash,                /* Hash table to query */
+  Fts5Hash *pHash,
   int nPre,
-  const char *pTerm, int nTerm,   /* Query term */
-  void **ppOut,                   /* OUT: Pointer to new object */
-  int *pnDoclist                  /* OUT: Size of doclist in bytes */
+  const char *pTerm, int nTerm,
+  void **ppOut,
+  int *pnDoclist
 ){
   unsigned int iHash = fts5HashKey(pHash->nSlot, (const u8*)pTerm, nTerm);
   char *zKey = 0;

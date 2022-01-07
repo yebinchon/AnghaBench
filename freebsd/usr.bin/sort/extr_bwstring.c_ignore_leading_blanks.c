@@ -1,75 +1,75 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wchar_t ;
-struct TYPE_2__ {unsigned char* cstr; int /*<<< orphan*/ * wstr; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int wchar_t ;
+struct TYPE_2__ {unsigned char* cstr; int * wstr; } ;
 struct bwstring {int len; TYPE_1__ data; } ;
 
-/* Variables and functions */
- int BWSLEN (struct bwstring*) ; 
- int MB_CUR_MAX ; 
- int /*<<< orphan*/  bws_setlen (struct bwstring*,size_t) ; 
- scalar_t__ isblank (unsigned char) ; 
- scalar_t__ iswblank (int /*<<< orphan*/ ) ; 
+
+ int BWSLEN (struct bwstring*) ;
+ int MB_CUR_MAX ;
+ int bws_setlen (struct bwstring*,size_t) ;
+ scalar_t__ isblank (unsigned char) ;
+ scalar_t__ iswblank (int ) ;
 
 struct bwstring *
 ignore_leading_blanks(struct bwstring *str)
 {
 
-	if (MB_CUR_MAX == 1) {
-		unsigned char *dst, *end, *src;
+ if (MB_CUR_MAX == 1) {
+  unsigned char *dst, *end, *src;
 
-		src = str->data.cstr;
-		dst = src;
-		end = src + str->len;
+  src = str->data.cstr;
+  dst = src;
+  end = src + str->len;
 
-		while (src < end && isblank(*src))
-			++src;
+  while (src < end && isblank(*src))
+   ++src;
 
-		if (src != dst) {
-			size_t newlen;
+  if (src != dst) {
+   size_t newlen;
 
-			newlen = BWSLEN(str) - (src - dst);
+   newlen = BWSLEN(str) - (src - dst);
 
-			while (src < end) {
-				*dst = *src;
-				++dst;
-				++src;
-			}
-			bws_setlen(str, newlen);
-		}
-	} else {
-		wchar_t *dst, *end, *src;
+   while (src < end) {
+    *dst = *src;
+    ++dst;
+    ++src;
+   }
+   bws_setlen(str, newlen);
+  }
+ } else {
+  wchar_t *dst, *end, *src;
 
-		src = str->data.wstr;
-		dst = src;
-		end = src + str->len;
+  src = str->data.wstr;
+  dst = src;
+  end = src + str->len;
 
-		while (src < end && iswblank(*src))
-			++src;
+  while (src < end && iswblank(*src))
+   ++src;
 
-		if (src != dst) {
+  if (src != dst) {
 
-			size_t newlen = BWSLEN(str) - (src - dst);
+   size_t newlen = BWSLEN(str) - (src - dst);
 
-			while (src < end) {
-				*dst = *src;
-				++dst;
-				++src;
-			}
-			bws_setlen(str, newlen);
+   while (src < end) {
+    *dst = *src;
+    ++dst;
+    ++src;
+   }
+   bws_setlen(str, newlen);
 
-		}
-	}
-	return (str);
+  }
+ }
+ return (str);
 }

@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_int32_t ;
-struct sc_info {int /*<<< orphan*/  sh; int /*<<< orphan*/  st; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  bus_space_read_4 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int u_int32_t ;
+struct sc_info {int sh; int st; } ;
+
+
+ int bus_space_read_4 (int ,int ,int) ;
 
 __attribute__((used)) static inline u_int32_t
 cs4281_rd(struct sc_info *sc, int regno)

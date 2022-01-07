@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
 struct TYPE_6__ {scalar_t__ dwCurrentState; } ;
-struct TYPE_7__ {int /*<<< orphan*/ * lpDisplayName; int /*<<< orphan*/ * lpServiceName; TYPE_1__ Status; } ;
-typedef  int /*<<< orphan*/  SERVICE_STATUS ;
-typedef  int /*<<< orphan*/  PVOID ;
-typedef  TYPE_2__* PSERVICE ;
-typedef  scalar_t__* LPDWORD ;
-typedef  int /*<<< orphan*/  LPBYTE ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  scalar_t__ DWORD ;
+struct TYPE_7__ {int * lpDisplayName; int * lpServiceName; TYPE_1__ Status; } ;
+typedef int SERVICE_STATUS ;
+typedef int PVOID ;
+typedef TYPE_2__* PSERVICE ;
+typedef scalar_t__* LPDWORD ;
+typedef int LPBYTE ;
+typedef int HKEY ;
+typedef scalar_t__ DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPRINT (char*) ; 
- scalar_t__ ERROR_NOT_FOUND ; 
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  KEY_READ ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- scalar_t__ RegEnumKeyExW (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ *,scalar_t__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ RegOpenKeyExW (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ RegQueryInfoKeyW (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ RegQueryValueExW (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__*) ; 
- scalar_t__ SERVICE_ACTIVE ; 
- scalar_t__ SERVICE_INACTIVE ; 
- scalar_t__ SERVICE_STATE_ALL ; 
- scalar_t__ SERVICE_STOPPED ; 
- TYPE_2__* ScmGetServiceEntryByName (int /*<<< orphan*/ *) ; 
- scalar_t__ _wcsicmp (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int wcslen (int /*<<< orphan*/ *) ; 
+
+ int DPRINT (char*) ;
+ scalar_t__ ERROR_NOT_FOUND ;
+ scalar_t__ ERROR_SUCCESS ;
+ int KEY_READ ;
+ int MAX_PATH ;
+ int RegCloseKey (int ) ;
+ scalar_t__ RegEnumKeyExW (int ,scalar_t__,int *,scalar_t__*,int *,int *,int *,int *) ;
+ scalar_t__ RegOpenKeyExW (int ,int *,int ,int ,int *) ;
+ scalar_t__ RegQueryInfoKeyW (int ,int *,int *,int *,scalar_t__*,int *,int *,int *,int *,int *,int *,int *) ;
+ scalar_t__ RegQueryValueExW (int ,char*,int *,int *,int ,scalar_t__*) ;
+ scalar_t__ SERVICE_ACTIVE ;
+ scalar_t__ SERVICE_INACTIVE ;
+ scalar_t__ SERVICE_STATE_ALL ;
+ scalar_t__ SERVICE_STOPPED ;
+ TYPE_2__* ScmGetServiceEntryByName (int *) ;
+ scalar_t__ _wcsicmp (int *,int *) ;
+ int wcslen (int *) ;
 
 __attribute__((used)) static DWORD
 Int_EnumDependentServicesW(HKEY hServicesKey,
@@ -64,26 +64,26 @@ Int_EnumDependentServicesW(HKEY hServicesKey,
     DWORD dwDependServiceStrPtr = 0;
     DWORD dwRequiredSize = 0;
 
-    /* Get the number of service keys */
+
     dwError = RegQueryInfoKeyW(hServicesKey,
-                               NULL,
-                               NULL,
-                               NULL,
+                               ((void*)0),
+                               ((void*)0),
+                               ((void*)0),
                                &dwNumSubKeys,
-                               NULL,
-                               NULL,
-                               NULL,
-                               NULL,
-                               NULL,
-                               NULL,
-                               NULL);
+                               ((void*)0),
+                               ((void*)0),
+                               ((void*)0),
+                               ((void*)0),
+                               ((void*)0),
+                               ((void*)0),
+                               ((void*)0));
     if (dwError != ERROR_SUCCESS)
     {
         DPRINT("ERROR! Unable to get number of services keys.\n");
         return dwError;
     }
 
-    /* Iterate the service keys to see if another service depends on the this service */
+
     for (dwIteration = 0; dwIteration < dwNumSubKeys; dwIteration++)
     {
         dwSize = MAX_PATH;
@@ -91,14 +91,14 @@ Int_EnumDependentServicesW(HKEY hServicesKey,
                                 dwIteration,
                                 lpszNameBuf,
                                 &dwSize,
-                                NULL,
-                                NULL,
-                                NULL,
-                                NULL);
+                                ((void*)0),
+                                ((void*)0),
+                                ((void*)0),
+                                ((void*)0));
         if (dwError != ERROR_SUCCESS)
             return dwError;
 
-        /* Open the Service key */
+
         dwError = RegOpenKeyExW(hServicesKey,
                                 lpszNameBuf,
                                 0,
@@ -109,60 +109,60 @@ Int_EnumDependentServicesW(HKEY hServicesKey,
 
         dwSize = MAX_PATH * sizeof(WCHAR);
 
-        /* Check for the DependOnService Value */
+
         dwError = RegQueryValueExW(hServiceEnumKey,
                                    L"DependOnService",
-                                   NULL,
-                                   NULL,
+                                   ((void*)0),
+                                   ((void*)0),
                                    (LPBYTE)lpszValueBuf,
                                    &dwSize);
 
-        /* FIXME: Handle load order. */
 
-        /* If the service found has a DependOnService value */
+
+
         if (dwError == ERROR_SUCCESS)
         {
             dwDependServiceStrPtr = 0;
 
-            /* Can be more than one Dependencies in the DependOnService string */
+
             while (wcslen(lpszValueBuf + dwDependServiceStrPtr) > 0)
             {
                 if (_wcsicmp(lpszValueBuf + dwDependServiceStrPtr, lpService->lpServiceName) == 0)
                 {
-                    /* Get the current enumed service pointer */
+
                     lpCurrentService = ScmGetServiceEntryByName(lpszNameBuf);
 
-                    /* Check for valid Service */
+
                     if (!lpCurrentService)
                     {
-                        /* This should never happen! */
+
                         DPRINT("This should not happen at this point, report to Developer\n");
                         return ERROR_NOT_FOUND;
                     }
 
-                    /* Determine state the service is in */
+
                     if (lpCurrentService->Status.dwCurrentState == SERVICE_STOPPED)
                         dwCurrentServiceState = SERVICE_INACTIVE;
 
-                    /* If the ServiceState matches that requested or searching for SERVICE_STATE_ALL */
+
                     if ((dwCurrentServiceState == dwServiceState) ||
                         (dwServiceState == SERVICE_STATE_ALL))
                     {
-                        /* Calculate the required size */
+
                         dwRequiredSize += sizeof(SERVICE_STATUS);
                         dwRequiredSize += (DWORD)((wcslen(lpCurrentService->lpServiceName) + 1) * sizeof(WCHAR));
                         dwRequiredSize += (DWORD)((wcslen(lpCurrentService->lpDisplayName) + 1) * sizeof(WCHAR));
 
-                        /* Add the size for service name and display name pointers */
+
                         dwRequiredSize += (2 * sizeof(PVOID));
 
-                        /* increase the BytesNeeded size */
+
                         *pcbBytesNeeded = *pcbBytesNeeded + dwRequiredSize;
 
-                        /* Don't fill callers buffer yet, as MSDN read that the last service with dependency
-                           comes first */
 
-                        /* Recursive call to check for its dependencies */
+
+
+
                         Int_EnumDependentServicesW(hServicesKey,
                                                    lpCurrentService,
                                                    dwServiceState,
@@ -170,7 +170,7 @@ Int_EnumDependentServicesW(HKEY hServicesKey,
                                                    pcbBytesNeeded,
                                                    lpServicesReturned);
 
-                        /* If the lpServices is valid set the service pointer */
+
                         if (lpServices)
                             lpServices[*lpServicesReturned] = lpCurrentService;
 

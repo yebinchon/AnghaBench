@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u8 ;
-typedef  int /*<<< orphan*/  u32 ;
-struct usb_ftdi {scalar_t__ disconnected; int command_next; int command_head; int /*<<< orphan*/  u132_lock; struct u132_command* command; } ;
-struct u132_command {int header; int length; int address; int width; int follows; int /*<<< orphan*/  value; int /*<<< orphan*/ * buffer; } ;
 
-/* Variables and functions */
- size_t COMMAND_MASK ; 
- int COMMAND_SIZE ; 
- int ENODEV ; 
- int cPCImemwr ; 
- int /*<<< orphan*/  ftdi_elan_kick_command_queue (struct usb_ftdi*) ; 
- int /*<<< orphan*/  msleep (int) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int u8 ;
+typedef int u32 ;
+struct usb_ftdi {scalar_t__ disconnected; int command_next; int command_head; int u132_lock; struct u132_command* command; } ;
+struct u132_command {int header; int length; int address; int width; int follows; int value; int * buffer; } ;
+
+
+ size_t COMMAND_MASK ;
+ int COMMAND_SIZE ;
+ int ENODEV ;
+ int cPCImemwr ;
+ int ftdi_elan_kick_command_queue (struct usb_ftdi*) ;
+ int msleep (int) ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
 
 __attribute__((used)) static int ftdi_elan_write_pcimem(struct usb_ftdi *ftdi, int mem_offset,
         u8 width, u32 data)

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct driver_data {int /*<<< orphan*/  workqueue; } ;
 
-/* Variables and functions */
- int bfin_spi_stop_queue (struct driver_data*) ; 
- int /*<<< orphan*/  destroy_workqueue (int /*<<< orphan*/ ) ; 
+
+
+
+struct driver_data {int workqueue; } ;
+
+
+ int bfin_spi_stop_queue (struct driver_data*) ;
+ int destroy_workqueue (int ) ;
 
 __attribute__((used)) static inline int bfin_spi_destroy_queue(struct driver_data *drv_data)
 {
-	int status;
+ int status;
 
-	status = bfin_spi_stop_queue(drv_data);
-	if (status != 0)
-		return status;
+ status = bfin_spi_stop_queue(drv_data);
+ if (status != 0)
+  return status;
 
-	destroy_workqueue(drv_data->workqueue);
+ destroy_workqueue(drv_data->workqueue);
 
-	return 0;
+ return 0;
 }

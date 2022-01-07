@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  void* ULONG ;
-typedef  int /*<<< orphan*/  UCHAR ;
-struct TYPE_2__ {int /*<<< orphan*/  Ttl; int /*<<< orphan*/  Flags; } ;
-typedef  int* PWSTR ;
-typedef  void* BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_INET ; 
- int /*<<< orphan*/  AF_INET6 ; 
- int /*<<< orphan*/  ConResPrintf (int /*<<< orphan*/ ,int /*<<< orphan*/ ,...) ; 
- void* DEFAULT_TIMEOUT ; 
- void* FALSE ; 
- int /*<<< orphan*/  Family ; 
- int /*<<< orphan*/  IDS_BAD_OPTION ; 
- int /*<<< orphan*/  IDS_BAD_PARAMETER ; 
- int /*<<< orphan*/  IDS_BAD_VALUE ; 
- int /*<<< orphan*/  IDS_MISSING_ADDRESS ; 
- int /*<<< orphan*/  IDS_MISSING_VALUE ; 
- int /*<<< orphan*/  IDS_USAGE ; 
- int /*<<< orphan*/  IDS_WRONG_FAMILY ; 
- int /*<<< orphan*/  IP_FLAG_DF ; 
- TYPE_1__ IpOptions ; 
- void* MAX_SEND_SIZE ; 
- void* PingCount ; 
- void* PingForever ; 
- void* RequestSize ; 
- void* ResolveAddress ; 
- int /*<<< orphan*/  StdErr ; 
- int /*<<< orphan*/  StdOut ; 
- void* TRUE ; 
- int* TargetName ; 
- void* Timeout ; 
- void* UCHAR_MAX ; 
- int /*<<< orphan*/  UINT_MAX ; 
- void* wcstoul (int*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef void* ULONG ;
+typedef int UCHAR ;
+struct TYPE_2__ {int Ttl; int Flags; } ;
+typedef int* PWSTR ;
+typedef void* BOOL ;
+
+
+ int AF_INET ;
+ int AF_INET6 ;
+ int ConResPrintf (int ,int ,...) ;
+ void* DEFAULT_TIMEOUT ;
+ void* FALSE ;
+ int Family ;
+ int IDS_BAD_OPTION ;
+ int IDS_BAD_PARAMETER ;
+ int IDS_BAD_VALUE ;
+ int IDS_MISSING_ADDRESS ;
+ int IDS_MISSING_VALUE ;
+ int IDS_USAGE ;
+ int IDS_WRONG_FAMILY ;
+ int IP_FLAG_DF ;
+ TYPE_1__ IpOptions ;
+ void* MAX_SEND_SIZE ;
+ void* PingCount ;
+ void* PingForever ;
+ void* RequestSize ;
+ void* ResolveAddress ;
+ int StdErr ;
+ int StdOut ;
+ void* TRUE ;
+ int* TargetName ;
+ void* Timeout ;
+ void* UCHAR_MAX ;
+ int UINT_MAX ;
+ void* wcstoul (int*,int *,int ) ;
 
 __attribute__((used)) static
 BOOL
@@ -78,7 +78,7 @@ ParseCmdLine(int argc, PWSTR argv[])
                 if (i + 1 < argc)
                 {
                     PingForever = FALSE;
-                    PingCount = wcstoul(argv[++i], NULL, 0);
+                    PingCount = wcstoul(argv[++i], ((void*)0), 0);
                     if (PingCount == 0)
                     {
                         ConResPrintf(StdErr, IDS_BAD_VALUE, argv[i - 1], 1, UINT_MAX);
@@ -97,7 +97,7 @@ ParseCmdLine(int argc, PWSTR argv[])
             {
                 if (i + 1 < argc)
                 {
-                    RequestSize = wcstoul(argv[++i], NULL, 0);
+                    RequestSize = wcstoul(argv[++i], ((void*)0), 0);
                     if (RequestSize > MAX_SEND_SIZE)
                     {
                         ConResPrintf(StdErr, IDS_BAD_VALUE, argv[i - 1], 0, MAX_SEND_SIZE);
@@ -129,7 +129,7 @@ ParseCmdLine(int argc, PWSTR argv[])
             {
                 if (i + 1 < argc)
                 {
-                    ULONG Ttl = wcstoul(argv[++i], NULL, 0);
+                    ULONG Ttl = wcstoul(argv[++i], ((void*)0), 0);
 
                     if ((Ttl == 0) || (Ttl > UCHAR_MAX))
                     {
@@ -159,7 +159,7 @@ ParseCmdLine(int argc, PWSTR argv[])
 
                 if (i + 1 < argc)
                 {
-                    /* This option has been deprecated. Don't do anything. */
+
                     i++;
                 }
                 else
@@ -175,7 +175,7 @@ ParseCmdLine(int argc, PWSTR argv[])
             {
                 if (i + 1 < argc)
                 {
-                    Timeout = wcstoul(argv[++i], NULL, 0);
+                    Timeout = wcstoul(argv[++i], ((void*)0), 0);
                     if (Timeout < DEFAULT_TIMEOUT)
                         Timeout = DEFAULT_TIMEOUT;
                 }
@@ -197,7 +197,7 @@ ParseCmdLine(int argc, PWSTR argv[])
 
                 Family = AF_INET6;
 
-                /* This option has been deprecated. Don't do anything. */
+
                 break;
             }
 
@@ -237,7 +237,7 @@ ParseCmdLine(int argc, PWSTR argv[])
         }
         else
         {
-            if (TargetName != NULL)
+            if (TargetName != ((void*)0))
             {
                 ConResPrintf(StdErr, IDS_BAD_PARAMETER, argv[i]);
                 return FALSE;
@@ -247,7 +247,7 @@ ParseCmdLine(int argc, PWSTR argv[])
         }
     }
 
-    if (TargetName == NULL)
+    if (TargetName == ((void*)0))
     {
         ConResPrintf(StdErr, IDS_MISSING_ADDRESS);
         return FALSE;

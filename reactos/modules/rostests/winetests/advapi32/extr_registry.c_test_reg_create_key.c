@@ -1,87 +1,87 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {char* ptstrName; int /*<<< orphan*/  TrusteeType; int /*<<< orphan*/  TrusteeForm; int /*<<< orphan*/  MultipleTrusteeOperation; int /*<<< orphan*/ * pMultipleTrustee; } ;
-struct TYPE_8__ {int grfAccessPermissions; TYPE_1__ Trustee; int /*<<< orphan*/  grfInheritance; int /*<<< orphan*/  grfAccessMode; } ;
-struct TYPE_7__ {int /*<<< orphan*/  member_0; } ;
-typedef  TYPE_2__ SID_IDENTIFIER_AUTHORITY ;
-typedef  int /*<<< orphan*/  SECURITY_DESCRIPTOR ;
-typedef  scalar_t__ PSID ;
-typedef  int /*<<< orphan*/  PACL ;
-typedef  scalar_t__ LONG ;
-typedef  int /*<<< orphan*/ * HKEY ;
-typedef  TYPE_3__ EXPLICIT_ACCESSA ;
-typedef  scalar_t__ DWORD ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- scalar_t__ AllocateAndInitializeSid (TYPE_2__*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__*) ; 
- int /*<<< orphan*/  DACL_SECURITY_INFORMATION ; 
- scalar_t__ ERROR_ACCESS_DENIED ; 
- scalar_t__ ERROR_BAD_PATHNAME ; 
- scalar_t__ ERROR_CHILD_MUST_BE_VOLATILE ; 
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  FreeSid (scalar_t__) ; 
- int GENERIC_ALL ; 
- int /*<<< orphan*/  GetLastError () ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int GetVersion () ; 
- int /*<<< orphan*/ * HKEY_LOCAL_MACHINE ; 
- int /*<<< orphan*/ * HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ InitializeSecurityDescriptor (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int KEY_ALL_ACCESS ; 
- int KEY_NOTIFY ; 
- int KEY_READ ; 
- int KEY_SET_VALUE ; 
- int KEY_WOW64_32KEY ; 
- int KEY_WOW64_64KEY ; 
- int /*<<< orphan*/  LocalFree (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NO_MULTIPLE_TRUSTEE ; 
- int /*<<< orphan*/  REG_OPTION_VOLATILE ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ *) ; 
- scalar_t__ RegCreateKeyExA (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RegDeleteKeyA (int /*<<< orphan*/ *,char*) ; 
- scalar_t__ RegSetKeySecurity (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SECURITY_DESCRIPTOR_MIN_LENGTH ; 
- int /*<<< orphan*/  SECURITY_DESCRIPTOR_REVISION ; 
- int /*<<< orphan*/  SECURITY_WORLD_RID ; 
- int /*<<< orphan*/  SECURITY_WORLD_SID_AUTHORITY ; 
- int /*<<< orphan*/  SET_ACCESS ; 
- int STANDARD_RIGHTS_ALL ; 
- int /*<<< orphan*/  SUB_CONTAINERS_AND_OBJECTS_INHERIT ; 
- scalar_t__ SetEntriesInAclA (int,TYPE_3__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ SetSecurityDescriptorDacl (int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  TRUSTEE_IS_SID ; 
- int /*<<< orphan*/  TRUSTEE_IS_WELL_KNOWN_GROUP ; 
- scalar_t__ broken (int) ; 
- int /*<<< orphan*/ * hkey_main ; 
- scalar_t__ limited_user ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__,...) ; 
- int /*<<< orphan*/  pIsWow64Process ; 
- int /*<<< orphan*/  skip (char*) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {char* ptstrName; int TrusteeType; int TrusteeForm; int MultipleTrusteeOperation; int * pMultipleTrustee; } ;
+struct TYPE_8__ {int grfAccessPermissions; TYPE_1__ Trustee; int grfInheritance; int grfAccessMode; } ;
+struct TYPE_7__ {int member_0; } ;
+typedef TYPE_2__ SID_IDENTIFIER_AUTHORITY ;
+typedef int SECURITY_DESCRIPTOR ;
+typedef scalar_t__ PSID ;
+typedef int PACL ;
+typedef scalar_t__ LONG ;
+typedef int * HKEY ;
+typedef TYPE_3__ EXPLICIT_ACCESSA ;
+typedef scalar_t__ DWORD ;
+typedef scalar_t__ BOOL ;
+
+
+ scalar_t__ AllocateAndInitializeSid (TYPE_2__*,int,int ,int ,int ,int ,int ,int ,int ,int ,scalar_t__*) ;
+ int DACL_SECURITY_INFORMATION ;
+ scalar_t__ ERROR_ACCESS_DENIED ;
+ scalar_t__ ERROR_BAD_PATHNAME ;
+ scalar_t__ ERROR_CHILD_MUST_BE_VOLATILE ;
+ scalar_t__ ERROR_SUCCESS ;
+ int FALSE ;
+ int FreeSid (scalar_t__) ;
+ int GENERIC_ALL ;
+ int GetLastError () ;
+ int GetProcessHeap () ;
+ int GetVersion () ;
+ int * HKEY_LOCAL_MACHINE ;
+ int * HeapAlloc (int ,int ,int ) ;
+ int HeapFree (int ,int ,int *) ;
+ scalar_t__ InitializeSecurityDescriptor (int *,int ) ;
+ int KEY_ALL_ACCESS ;
+ int KEY_NOTIFY ;
+ int KEY_READ ;
+ int KEY_SET_VALUE ;
+ int KEY_WOW64_32KEY ;
+ int KEY_WOW64_64KEY ;
+ int LocalFree (int ) ;
+ int NO_MULTIPLE_TRUSTEE ;
+ int REG_OPTION_VOLATILE ;
+ int RegCloseKey (int *) ;
+ scalar_t__ RegCreateKeyExA (int *,char*,int ,int *,int ,int,int *,int **,int *) ;
+ int RegDeleteKeyA (int *,char*) ;
+ scalar_t__ RegSetKeySecurity (int *,int ,int *) ;
+ int SECURITY_DESCRIPTOR_MIN_LENGTH ;
+ int SECURITY_DESCRIPTOR_REVISION ;
+ int SECURITY_WORLD_RID ;
+ int SECURITY_WORLD_SID_AUTHORITY ;
+ int SET_ACCESS ;
+ int STANDARD_RIGHTS_ALL ;
+ int SUB_CONTAINERS_AND_OBJECTS_INHERIT ;
+ scalar_t__ SetEntriesInAclA (int,TYPE_3__*,int *,int *) ;
+ scalar_t__ SetSecurityDescriptorDacl (int *,scalar_t__,int ,int ) ;
+ scalar_t__ TRUE ;
+ int TRUSTEE_IS_SID ;
+ int TRUSTEE_IS_WELL_KNOWN_GROUP ;
+ scalar_t__ broken (int) ;
+ int * hkey_main ;
+ scalar_t__ limited_user ;
+ int ok (int,char*,scalar_t__,...) ;
+ int pIsWow64Process ;
+ int skip (char*) ;
+ int win_skip (char*) ;
 
 __attribute__((used)) static void test_reg_create_key(void)
 {
     LONG ret;
     HKEY hkey1, hkey2;
-    HKEY hkRoot64 = NULL;
-    HKEY hkRoot32 = NULL;
+    HKEY hkRoot64 = ((void*)0);
+    HKEY hkRoot32 = ((void*)0);
     DWORD dwRet;
     BOOL bRet;
     SID_IDENTIFIER_AUTHORITY sid_authority = {SECURITY_WORLD_SID_AUTHORITY};
@@ -90,40 +90,40 @@ __attribute__((used)) static void test_reg_create_key(void)
     PACL key_acl;
     SECURITY_DESCRIPTOR *sd;
 
-    ret = RegCreateKeyExA(hkey_main, "Subkey1", 0, NULL, 0, KEY_NOTIFY, NULL, &hkey1, NULL);
-    ok(!ret, "RegCreateKeyExA failed with error %d\n", ret);
-    /* should succeed: all versions of Windows ignore the access rights
-     * to the parent handle */
-    ret = RegCreateKeyExA(hkey1, "Subkey2", 0, NULL, 0, KEY_SET_VALUE, NULL, &hkey2, NULL);
+    ret = RegCreateKeyExA(hkey_main, "Subkey1", 0, ((void*)0), 0, KEY_NOTIFY, ((void*)0), &hkey1, ((void*)0));
     ok(!ret, "RegCreateKeyExA failed with error %d\n", ret);
 
-    /* clean up */
+
+    ret = RegCreateKeyExA(hkey1, "Subkey2", 0, ((void*)0), 0, KEY_SET_VALUE, ((void*)0), &hkey2, ((void*)0));
+    ok(!ret, "RegCreateKeyExA failed with error %d\n", ret);
+
+
     RegDeleteKeyA(hkey2, "");
     RegDeleteKeyA(hkey1, "");
     RegCloseKey(hkey2);
     RegCloseKey(hkey1);
 
-    /* test creation of volatile keys */
-    ret = RegCreateKeyExA(hkey_main, "Volatile", 0, NULL, REG_OPTION_VOLATILE, KEY_ALL_ACCESS, NULL, &hkey1, NULL);
+
+    ret = RegCreateKeyExA(hkey_main, "Volatile", 0, ((void*)0), REG_OPTION_VOLATILE, KEY_ALL_ACCESS, ((void*)0), &hkey1, ((void*)0));
     ok(!ret, "RegCreateKeyExA failed with error %d\n", ret);
-    ret = RegCreateKeyExA(hkey1, "Subkey2", 0, NULL, 0, KEY_ALL_ACCESS, NULL, &hkey2, NULL);
+    ret = RegCreateKeyExA(hkey1, "Subkey2", 0, ((void*)0), 0, KEY_ALL_ACCESS, ((void*)0), &hkey2, ((void*)0));
     ok(ret == ERROR_CHILD_MUST_BE_VOLATILE, "RegCreateKeyExA failed with error %d\n", ret);
     if (!ret) RegCloseKey( hkey2 );
-    ret = RegCreateKeyExA(hkey1, "Subkey2", 0, NULL, REG_OPTION_VOLATILE, KEY_ALL_ACCESS, NULL, &hkey2, NULL);
+    ret = RegCreateKeyExA(hkey1, "Subkey2", 0, ((void*)0), REG_OPTION_VOLATILE, KEY_ALL_ACCESS, ((void*)0), &hkey2, ((void*)0));
     ok(!ret, "RegCreateKeyExA failed with error %d\n", ret);
     RegCloseKey(hkey2);
-    /* should succeed if the key already exists */
-    ret = RegCreateKeyExA(hkey1, "Subkey2", 0, NULL, 0, KEY_ALL_ACCESS, NULL, &hkey2, NULL);
+
+    ret = RegCreateKeyExA(hkey1, "Subkey2", 0, ((void*)0), 0, KEY_ALL_ACCESS, ((void*)0), &hkey2, ((void*)0));
     ok(!ret, "RegCreateKeyExA failed with error %d\n", ret);
 
-    /* clean up */
+
     RegDeleteKeyA(hkey2, "");
     RegDeleteKeyA(hkey1, "");
     RegCloseKey(hkey2);
     RegCloseKey(hkey1);
 
-    /*  beginning backslash character */
-    ret = RegCreateKeyExA(hkey_main, "\\Subkey3", 0, NULL, 0, KEY_NOTIFY, NULL, &hkey1, NULL);
+
+    ret = RegCreateKeyExA(hkey_main, "\\Subkey3", 0, ((void*)0), 0, KEY_NOTIFY, ((void*)0), &hkey1, ((void*)0));
     if (!(GetVersion() & 0x80000000))
         ok(ret == ERROR_BAD_PATHNAME, "expected ERROR_BAD_PATHNAME, got %d\n", ret);
     else {
@@ -132,58 +132,58 @@ __attribute__((used)) static void test_reg_create_key(void)
         RegCloseKey(hkey1);
     }
 
-    /* trailing backslash characters */
-    ret = RegCreateKeyExA(hkey_main, "Subkey4\\\\", 0, NULL, 0, KEY_NOTIFY, NULL, &hkey1, NULL);
+
+    ret = RegCreateKeyExA(hkey_main, "Subkey4\\\\", 0, ((void*)0), 0, KEY_NOTIFY, ((void*)0), &hkey1, ((void*)0));
     ok(ret == ERROR_SUCCESS, "RegCreateKeyExA failed with error %d\n", ret);
     RegDeleteKeyA(hkey1, "");
     RegCloseKey(hkey1);
 
-    /* System\CurrentControlSet\Control\Video should be non-volatile */
+
     ret = RegCreateKeyExA(HKEY_LOCAL_MACHINE, "System\\CurrentControlSet\\Control\\Video\\Wine",
-                          0, NULL, 0, KEY_NOTIFY, NULL, &hkey1, NULL);
+                          0, ((void*)0), 0, KEY_NOTIFY, ((void*)0), &hkey1, ((void*)0));
     ok(ret == ERROR_SUCCESS, "RegCreateKeyExA failed with error %d\n", ret);
     RegDeleteKeyA(hkey1, "");
     RegCloseKey(hkey1);
 
-    /* WOW64 flags - open an existing key */
-    hkey1 = NULL;
-    ret = RegCreateKeyExA(HKEY_LOCAL_MACHINE, "Software", 0, NULL, 0, KEY_READ|KEY_WOW64_32KEY, NULL, &hkey1, NULL);
-    ok((ret == ERROR_SUCCESS && hkey1 != NULL) || broken(ret == ERROR_ACCESS_DENIED /* NT4, win2k */),
+
+    hkey1 = ((void*)0);
+    ret = RegCreateKeyExA(HKEY_LOCAL_MACHINE, "Software", 0, ((void*)0), 0, KEY_READ|KEY_WOW64_32KEY, ((void*)0), &hkey1, ((void*)0));
+    ok((ret == ERROR_SUCCESS && hkey1 != ((void*)0)) || broken(ret == ERROR_ACCESS_DENIED ),
         "RegOpenKeyEx with KEY_WOW64_32KEY failed (err=%u)\n", ret);
     RegCloseKey(hkey1);
 
-    hkey1 = NULL;
-    ret = RegCreateKeyExA(HKEY_LOCAL_MACHINE, "Software", 0, NULL, 0, KEY_READ|KEY_WOW64_64KEY, NULL, &hkey1, NULL);
-    ok((ret == ERROR_SUCCESS && hkey1 != NULL) || broken(ret == ERROR_ACCESS_DENIED /* NT4, win2k */),
+    hkey1 = ((void*)0);
+    ret = RegCreateKeyExA(HKEY_LOCAL_MACHINE, "Software", 0, ((void*)0), 0, KEY_READ|KEY_WOW64_64KEY, ((void*)0), &hkey1, ((void*)0));
+    ok((ret == ERROR_SUCCESS && hkey1 != ((void*)0)) || broken(ret == ERROR_ACCESS_DENIED ),
         "RegOpenKeyEx with KEY_WOW64_64KEY failed (err=%u)\n", ret);
     RegCloseKey(hkey1);
 
-    /* Try using WOW64 flags when opening a key with a DACL set to verify that
-     * the registry access check is performed correctly. Redirection isn't
-     * being tested, so the tests don't care about whether the process is
-     * running under WOW64. */
+
+
+
+
     if (!pIsWow64Process)
     {
         win_skip("WOW64 flags are not recognized\n");
         return;
     }
 
-    ret = RegCreateKeyExA(HKEY_LOCAL_MACHINE, "Software\\Wine", 0, NULL, 0,
-                          KEY_WOW64_32KEY | KEY_ALL_ACCESS, NULL, &hkRoot32, NULL);
+    ret = RegCreateKeyExA(HKEY_LOCAL_MACHINE, "Software\\Wine", 0, ((void*)0), 0,
+                          KEY_WOW64_32KEY | KEY_ALL_ACCESS, ((void*)0), &hkRoot32, ((void*)0));
     if (limited_user)
-        ok(ret == ERROR_ACCESS_DENIED && hkRoot32 == NULL,
+        ok(ret == ERROR_ACCESS_DENIED && hkRoot32 == ((void*)0),
            "RegCreateKeyEx with KEY_WOW64_32KEY failed (err=%d)\n", ret);
     else
-        ok(ret == ERROR_SUCCESS && hkRoot32 != NULL,
+        ok(ret == ERROR_SUCCESS && hkRoot32 != ((void*)0),
            "RegCreateKeyEx with KEY_WOW64_32KEY failed (err=%d)\n", ret);
 
-    ret = RegCreateKeyExA(HKEY_LOCAL_MACHINE, "Software\\Wine", 0, NULL, 0,
-                          KEY_WOW64_64KEY | KEY_ALL_ACCESS, NULL, &hkRoot64, NULL);
+    ret = RegCreateKeyExA(HKEY_LOCAL_MACHINE, "Software\\Wine", 0, ((void*)0), 0,
+                          KEY_WOW64_64KEY | KEY_ALL_ACCESS, ((void*)0), &hkRoot64, ((void*)0));
     if (limited_user)
-        ok(ret == ERROR_ACCESS_DENIED && hkRoot64 == NULL,
+        ok(ret == ERROR_ACCESS_DENIED && hkRoot64 == ((void*)0),
            "RegCreateKeyEx with KEY_WOW64_64KEY failed (err=%d)\n", ret);
     else
-        ok(ret == ERROR_SUCCESS && hkRoot64 != NULL,
+        ok(ret == ERROR_SUCCESS && hkRoot64 != ((void*)0),
            "RegCreateKeyEx with KEY_WOW64_64KEY failed (err=%d)\n", ret);
 
     bRet = AllocateAndInitializeSid(&sid_authority, 1, SECURITY_WORLD_RID,
@@ -194,13 +194,13 @@ __attribute__((used)) static void test_reg_create_key(void)
     access.grfAccessPermissions = GENERIC_ALL | STANDARD_RIGHTS_ALL;
     access.grfAccessMode = SET_ACCESS;
     access.grfInheritance = SUB_CONTAINERS_AND_OBJECTS_INHERIT;
-    access.Trustee.pMultipleTrustee = NULL;
+    access.Trustee.pMultipleTrustee = ((void*)0);
     access.Trustee.MultipleTrusteeOperation = NO_MULTIPLE_TRUSTEE;
     access.Trustee.TrusteeForm = TRUSTEE_IS_SID;
     access.Trustee.TrusteeType = TRUSTEE_IS_WELL_KNOWN_GROUP;
     access.Trustee.ptstrName = (char *)world_sid;
 
-    dwRet = SetEntriesInAclA(1, &access, NULL, &key_acl);
+    dwRet = SetEntriesInAclA(1, &access, ((void*)0), &key_acl);
     ok(dwRet == ERROR_SUCCESS,
        "Expected SetEntriesInAclA to return ERROR_SUCCESS, got %u, last error %u\n", dwRet, GetLastError());
 
@@ -227,17 +227,17 @@ __attribute__((used)) static void test_reg_create_key(void)
         ok(ret == ERROR_SUCCESS,
            "Expected RegSetKeySecurity to return success, got error %u\n", ret);
 
-        hkey1 = NULL;
-        ret = RegCreateKeyExA(HKEY_LOCAL_MACHINE, "Software\\Wine", 0, NULL, 0,
-                              KEY_WOW64_64KEY | KEY_READ, NULL, &hkey1, NULL);
-        ok(ret == ERROR_SUCCESS && hkey1 != NULL,
+        hkey1 = ((void*)0);
+        ret = RegCreateKeyExA(HKEY_LOCAL_MACHINE, "Software\\Wine", 0, ((void*)0), 0,
+                              KEY_WOW64_64KEY | KEY_READ, ((void*)0), &hkey1, ((void*)0));
+        ok(ret == ERROR_SUCCESS && hkey1 != ((void*)0),
            "RegOpenKeyEx with KEY_WOW64_64KEY failed (err=%u)\n", ret);
         RegCloseKey(hkey1);
 
-        hkey1 = NULL;
-        ret = RegCreateKeyExA(HKEY_LOCAL_MACHINE, "Software\\Wine", 0, NULL, 0,
-                              KEY_WOW64_32KEY | KEY_READ, NULL, &hkey1, NULL);
-        ok(ret == ERROR_SUCCESS && hkey1 != NULL,
+        hkey1 = ((void*)0);
+        ret = RegCreateKeyExA(HKEY_LOCAL_MACHINE, "Software\\Wine", 0, ((void*)0), 0,
+                              KEY_WOW64_32KEY | KEY_READ, ((void*)0), &hkey1, ((void*)0));
+        ok(ret == ERROR_SUCCESS && hkey1 != ((void*)0),
            "RegOpenKeyEx with KEY_WOW64_32KEY failed (err=%u)\n", ret);
         RegCloseKey(hkey1);
     }

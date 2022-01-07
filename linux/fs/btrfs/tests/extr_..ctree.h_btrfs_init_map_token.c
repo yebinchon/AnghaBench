@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct extent_buffer {int dummy; } ;
-struct btrfs_map_token {int /*<<< orphan*/ * kaddr; struct extent_buffer* eb; } ;
+struct btrfs_map_token {int * kaddr; struct extent_buffer* eb; } ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static inline void btrfs_init_map_token(struct btrfs_map_token *token,
-					struct extent_buffer *eb)
+     struct extent_buffer *eb)
 {
-	token->eb = eb;
-	token->kaddr = NULL;
+ token->eb = eb;
+ token->kaddr = ((void*)0);
 }

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  quicly_decoded_packet_t ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int quicly_decoded_packet_t ;
 struct TYPE_4__ {size_t len; scalar_t__ base; } ;
 struct TYPE_5__ {TYPE_1__ data; } ;
-typedef  TYPE_2__ quicly_datagram_t ;
+typedef TYPE_2__ quicly_datagram_t ;
 
-/* Variables and functions */
- size_t SIZE_MAX ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  quic_ctx ; 
- size_t quicly_decode_packet (int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__,size_t) ; 
+
+ size_t SIZE_MAX ;
+ int assert (int) ;
+ int quic_ctx ;
+ size_t quicly_decode_packet (int *,int *,scalar_t__,size_t) ;
 
 size_t decode_packets(quicly_decoded_packet_t *decoded, quicly_datagram_t **raw, size_t cnt)
 {

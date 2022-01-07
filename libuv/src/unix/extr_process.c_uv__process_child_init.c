@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int flags; int /*<<< orphan*/  args; int /*<<< orphan*/  file; int /*<<< orphan*/ * env; int /*<<< orphan*/  uid; int /*<<< orphan*/  gid; int /*<<< orphan*/ * cwd; } ;
-typedef  TYPE_1__ uv_process_options_t ;
-typedef  int /*<<< orphan*/  sigset_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  F_DUPFD ; 
- int /*<<< orphan*/  O_RDONLY ; 
- int /*<<< orphan*/  O_RDWR ; 
- int /*<<< orphan*/  SAVE_ERRNO (int /*<<< orphan*/ ) ; 
- int SIGKILL ; 
- int SIGKILLTHR ; 
- int SIGSTOP ; 
- int /*<<< orphan*/  SIG_DFL ; 
- scalar_t__ SIG_ERR ; 
- int /*<<< orphan*/  SIG_SETMASK ; 
- int UV_PROCESS_DETACHED ; 
- int UV_PROCESS_SETGID ; 
- int UV_PROCESS_SETUID ; 
- int /*<<< orphan*/  UV__ERR (int) ; 
- int /*<<< orphan*/  _exit (int) ; 
- scalar_t__ chdir (int /*<<< orphan*/ *) ; 
- int dup2 (int,int) ; 
- int /*<<< orphan*/ * environ ; 
- int errno ; 
- int /*<<< orphan*/  execvp (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int fcntl (int,int /*<<< orphan*/ ,int) ; 
- int open (char*,int /*<<< orphan*/ ) ; 
- int pthread_sigmask (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ setgid (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  setgroups (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  setsid () ; 
- scalar_t__ setuid (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sigemptyset (int /*<<< orphan*/ *) ; 
- scalar_t__ signal (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  uv__cloexec_fcntl (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  uv__close (int) ; 
- int /*<<< orphan*/  uv__nonblock_fcntl (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  uv__write_int (int,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int flags; int args; int file; int * env; int uid; int gid; int * cwd; } ;
+typedef TYPE_1__ uv_process_options_t ;
+typedef int sigset_t ;
+
+
+ int F_DUPFD ;
+ int O_RDONLY ;
+ int O_RDWR ;
+ int SAVE_ERRNO (int ) ;
+ int SIGKILL ;
+ int SIGKILLTHR ;
+ int SIGSTOP ;
+ int SIG_DFL ;
+ scalar_t__ SIG_ERR ;
+ int SIG_SETMASK ;
+ int UV_PROCESS_DETACHED ;
+ int UV_PROCESS_SETGID ;
+ int UV_PROCESS_SETUID ;
+ int UV__ERR (int) ;
+ int _exit (int) ;
+ scalar_t__ chdir (int *) ;
+ int dup2 (int,int) ;
+ int * environ ;
+ int errno ;
+ int execvp (int ,int ) ;
+ int fcntl (int,int ,int) ;
+ int open (char*,int ) ;
+ int pthread_sigmask (int ,int *,int *) ;
+ scalar_t__ setgid (int ) ;
+ int setgroups (int ,int *) ;
+ int setsid () ;
+ scalar_t__ setuid (int ) ;
+ int sigemptyset (int *) ;
+ scalar_t__ signal (int,int ) ;
+ int uv__cloexec_fcntl (int,int ) ;
+ int uv__close (int) ;
+ int uv__nonblock_fcntl (int,int ) ;
+ int uv__write_int (int,int ) ;
 
 __attribute__((used)) static void uv__process_child_init(const uv_process_options_t* options,
                                    int stdio_count,
@@ -64,10 +64,10 @@ __attribute__((used)) static void uv__process_child_init(const uv_process_option
   if (options->flags & UV_PROCESS_DETACHED)
     setsid();
 
-  /* First duplicate low numbered fds, since it's not safe to duplicate them,
-   * they could get replaced. Example: swapping stdout and stderr; without
-   * this fd 2 (stderr) would be duplicated into fd 1, thus making both
-   * stdout and stderr go to the same fd, which was not the intention. */
+
+
+
+
   for (fd = 0; fd < stdio_count; fd++) {
     use_fd = pipes[fd][1];
     if (use_fd < 0 || use_fd >= fd)
@@ -87,9 +87,9 @@ __attribute__((used)) static void uv__process_child_init(const uv_process_option
       if (fd >= 3)
         continue;
       else {
-        /* redirect stdin, stdout and stderr to /dev/null even if UV_IGNORE is
-         * set
-         */
+
+
+
         use_fd = open("/dev/null", fd == 0 ? O_RDONLY : O_RDWR);
         close_fd = use_fd;
 
@@ -124,20 +124,20 @@ __attribute__((used)) static void uv__process_child_init(const uv_process_option
       uv__close(use_fd);
   }
 
-  if (options->cwd != NULL && chdir(options->cwd)) {
+  if (options->cwd != ((void*)0) && chdir(options->cwd)) {
     uv__write_int(error_fd, UV__ERR(errno));
     _exit(127);
   }
 
   if (options->flags & (UV_PROCESS_SETUID | UV_PROCESS_SETGID)) {
-    /* When dropping privileges from root, the `setgroups` call will
-     * remove any extraneous groups. If we don't call this, then
-     * even though our uid has dropped, we may still have groups
-     * that enable us to do super-user things. This will fail if we
-     * aren't root, so don't bother checking the return value, this
-     * is just done as an optimistic privilege dropping function.
-     */
-    SAVE_ERRNO(setgroups(0, NULL));
+
+
+
+
+
+
+
+    SAVE_ERRNO(setgroups(0, ((void*)0)));
   }
 
   if ((options->flags & UV_PROCESS_SETGID) && setgid(options->gid)) {
@@ -150,23 +150,23 @@ __attribute__((used)) static void uv__process_child_init(const uv_process_option
     _exit(127);
   }
 
-  if (options->env != NULL) {
+  if (options->env != ((void*)0)) {
     environ = options->env;
   }
 
-  /* Reset signal disposition.  Use a hard-coded limit because NSIG
-   * is not fixed on Linux: it's either 32, 34 or 64, depending on
-   * whether RT signals are enabled.  We are not allowed to touch
-   * RT signal handlers, glibc uses them internally.
-   */
+
+
+
+
+
   for (n = 1; n < 32; n += 1) {
     if (n == SIGKILL || n == SIGSTOP)
-      continue;  /* Can't be changed. */
+      continue;
 
-#if defined(__HAIKU__)
-    if (n == SIGKILLTHR)
-      continue;  /* Can't be changed. */
-#endif
+
+
+
+
 
     if (SIG_ERR != signal(n, SIG_DFL))
       continue;
@@ -175,9 +175,9 @@ __attribute__((used)) static void uv__process_child_init(const uv_process_option
     _exit(127);
   }
 
-  /* Reset signal mask. */
+
   sigemptyset(&set);
-  err = pthread_sigmask(SIG_SETMASK, &set, NULL);
+  err = pthread_sigmask(SIG_SETMASK, &set, ((void*)0));
 
   if (err != 0) {
     uv__write_int(error_fd, UV__ERR(err));

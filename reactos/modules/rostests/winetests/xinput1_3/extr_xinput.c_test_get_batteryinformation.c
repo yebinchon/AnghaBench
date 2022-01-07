@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {scalar_t__ BatteryLevel; } ;
-typedef  TYPE_1__ XINPUT_BATTERY_INFORMATION ;
-typedef  scalar_t__ DWORD ;
+typedef TYPE_1__ XINPUT_BATTERY_INFORMATION ;
+typedef scalar_t__ DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BATTERY_DEVTYPE_GAMEPAD ; 
- scalar_t__ BATTERY_TYPE_DISCONNECTED ; 
- scalar_t__ ERROR_BAD_ARGUMENTS ; 
- scalar_t__ ERROR_DEVICE_NOT_CONNECTED ; 
- scalar_t__ ERROR_SUCCESS ; 
- scalar_t__ XUSER_MAX_COUNT ; 
- int /*<<< orphan*/  ZeroMemory (TYPE_1__*,int) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- scalar_t__ pXInputGetBatteryInformation (scalar_t__,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  skip (char*,scalar_t__) ; 
+
+ int BATTERY_DEVTYPE_GAMEPAD ;
+ scalar_t__ BATTERY_TYPE_DISCONNECTED ;
+ scalar_t__ ERROR_BAD_ARGUMENTS ;
+ scalar_t__ ERROR_DEVICE_NOT_CONNECTED ;
+ scalar_t__ ERROR_SUCCESS ;
+ scalar_t__ XUSER_MAX_COUNT ;
+ int ZeroMemory (TYPE_1__*,int) ;
+ int ok (int,char*,...) ;
+ scalar_t__ pXInputGetBatteryInformation (scalar_t__,int ,TYPE_1__*) ;
+ int skip (char*,scalar_t__) ;
 
 __attribute__((used)) static void test_get_batteryinformation(void)
 {

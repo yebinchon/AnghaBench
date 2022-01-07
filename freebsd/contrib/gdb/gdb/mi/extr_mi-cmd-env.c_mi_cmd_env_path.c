@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct mi_opt {char* member_0; int member_1; int /*<<< orphan*/  member_2; } ;
-typedef  enum opt { ____Placeholder_opt } opt ;
-typedef  enum mi_cmd_result { ____Placeholder_mi_cmd_result } mi_cmd_result ;
 
-/* Variables and functions */
- int MI_CMD_DONE ; 
- int /*<<< orphan*/  dont_repeat () ; 
- int /*<<< orphan*/  env_execute_cli_command (char*,char*) ; 
- int /*<<< orphan*/  env_mod_path (char*,char**) ; 
- char* get_in_environ (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  inferior_environ ; 
- int mi_getopt (char*,int,char**,struct mi_opt*,int*,char**) ; 
- int mi_version (int /*<<< orphan*/ ) ; 
- char* orig_path ; 
- int /*<<< orphan*/  path_var_name ; 
- int /*<<< orphan*/  set_in_environ (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ui_out_field_string (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  uiout ; 
- int /*<<< orphan*/  xfree (char*) ; 
- char* xstrdup (char*) ; 
+
+
+
+struct mi_opt {char* member_0; int member_1; int member_2; } ;
+typedef enum opt { ____Placeholder_opt } opt ;
+typedef enum mi_cmd_result { ____Placeholder_mi_cmd_result } mi_cmd_result ;
+
+
+ int MI_CMD_DONE ;
+ int dont_repeat () ;
+ int env_execute_cli_command (char*,char*) ;
+ int env_mod_path (char*,char**) ;
+ char* get_in_environ (int ,int ) ;
+ int inferior_environ ;
+ int mi_getopt (char*,int,char**,struct mi_opt*,int*,char**) ;
+ int mi_version (int ) ;
+ char* orig_path ;
+ int path_var_name ;
+ int set_in_environ (int ,int ,char*) ;
+ int ui_out_field_string (int ,char*,char*) ;
+ int uiout ;
+ int xfree (char*) ;
+ char* xstrdup (char*) ;
 
 enum mi_cmd_result
 mi_cmd_env_path (char *command, char **argv, int argc)
@@ -55,11 +55,11 @@ mi_cmd_env_path (char *command, char **argv, int argc)
   if (mi_version (uiout) < 2)
     {
       for (i = argc - 1; i >= 0; --i)
-	env_execute_cli_command ("path", argv[i]);
+ env_execute_cli_command ("path", argv[i]);
       return MI_CMD_DONE;
     }
 
-  /* Otherwise the mi level is 2 or higher.  */
+
   while (1)
     {
       int opt = mi_getopt ("mi_cmd_env_path", argc, argv, opts,
@@ -79,15 +79,15 @@ mi_cmd_env_path (char *command, char **argv, int argc)
 
   if (reset)
     {
-      /* Reset implies resetting to original path first.  */
+
       exec_path = xstrdup (orig_path);
     }
   else
     {
-      /* Otherwise, get current path to modify.  */
+
       env = get_in_environ (inferior_environ, path_var_name);
 
-      /* Can be null if path is not set.  */
+
       if (!env)
         env = "";
       exec_path = xstrdup (env);

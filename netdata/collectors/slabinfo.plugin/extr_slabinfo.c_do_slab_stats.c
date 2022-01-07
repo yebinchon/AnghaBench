@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct slabinfo {char* name; int obj_filling; int /*<<< orphan*/  mem_waste; struct slabinfo* next; int /*<<< orphan*/  mem_usage; } ;
 
-/* Variables and functions */
- char* CHART_FAMILY ; 
- int CHART_PRIO ; 
- char* CHART_TYPE ; 
- char* PLUGIN_SLABINFO_NAME ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- struct slabinfo* read_file_slabinfo () ; 
- scalar_t__ running ; 
- int /*<<< orphan*/  sleep (int) ; 
- scalar_t__ unlikely (int) ; 
+
+
+
+struct slabinfo {char* name; int obj_filling; int mem_waste; struct slabinfo* next; int mem_usage; } ;
+
+
+ char* CHART_FAMILY ;
+ int CHART_PRIO ;
+ char* CHART_TYPE ;
+ char* PLUGIN_SLABINFO_NAME ;
+ int printf (char*,...) ;
+ struct slabinfo* read_file_slabinfo () ;
+ scalar_t__ running ;
+ int sleep (int) ;
+ scalar_t__ unlikely (int) ;
 
 unsigned int do_slab_stats(int update_every) {
 
     static unsigned int loops = 0;
-    struct slabinfo *sactive = NULL, *s = NULL;
+    struct slabinfo *sactive = ((void*)0), *s = ((void*)0);
 
-    // Main processing loop
+
     while (running) {
 
         sactive = read_file_slabinfo();
 
-        // Init Charts
+
         if (unlikely(loops == 0)) {
-            // Memory Usage
+
             printf("CHART %s.%s '' 'Memory Usage' 'B' '%s' '' line %d %d %s\n"
                 , CHART_TYPE
                 , "slabmemory"
@@ -48,7 +48,7 @@ unsigned int do_slab_stats(int update_every) {
                 printf("DIMENSION %s '' absolute 1 1\n", s->name);
             }
 
-            // Slab active usage (filling)
+
             printf("CHART %s.%s '' 'Object Filling' '%%' '%s' '' line %d %d %s\n"
                 , CHART_TYPE
                 , "slabfilling"
@@ -61,7 +61,7 @@ unsigned int do_slab_stats(int update_every) {
                 printf("DIMENSION %s '' absolute 1 1\n", s->name);
             }
 
-            // Memory waste
+
             printf("CHART %s.%s '' 'Memory waste' 'B' '%s' '' line %d %d %s\n"
                 , CHART_TYPE
                 , "slabwaste"
@@ -76,9 +76,9 @@ unsigned int do_slab_stats(int update_every) {
         }
 
 
-        //
-        // Memory usage
-        //
+
+
+
         printf("BEGIN %s.%s\n"
             , CHART_TYPE
             , "slabmemory"
@@ -91,9 +91,9 @@ unsigned int do_slab_stats(int update_every) {
         }
         printf("END\n");
 
-        //
-        // Slab active usage
-        //
+
+
+
         printf("BEGIN %s.%s\n"
             , CHART_TYPE
             , "slabfilling"
@@ -106,9 +106,9 @@ unsigned int do_slab_stats(int update_every) {
         }
         printf("END\n");
 
-        //
-        // Memory waste
-        //
+
+
+
         printf("BEGIN %s.%s\n"
             , CHART_TYPE
             , "slabwaste"

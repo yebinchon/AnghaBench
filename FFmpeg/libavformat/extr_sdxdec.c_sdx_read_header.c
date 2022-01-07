@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {int /*<<< orphan*/  pb; } ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_9__ {int pb; } ;
 struct TYPE_8__ {TYPE_1__* codecpar; } ;
-struct TYPE_7__ {int channels; int block_align; int /*<<< orphan*/  codec_id; int /*<<< orphan*/  sample_rate; int /*<<< orphan*/  codec_type; } ;
-typedef  TYPE_2__ AVStream ;
-typedef  TYPE_3__ AVFormatContext ;
+struct TYPE_7__ {int channels; int block_align; int codec_id; int sample_rate; int codec_type; } ;
+typedef TYPE_2__ AVStream ;
+typedef TYPE_3__ AVFormatContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AVMEDIA_TYPE_AUDIO ; 
- int /*<<< orphan*/  AV_CODEC_ID_PCM_U16LE ; 
- int /*<<< orphan*/  AV_CODEC_ID_PCM_U24LE ; 
- int /*<<< orphan*/  AV_CODEC_ID_PCM_U32LE ; 
- int /*<<< orphan*/  AV_CODEC_ID_PCM_U8 ; 
- int /*<<< orphan*/  ENOMEM ; 
- TYPE_2__* avformat_new_stream (TYPE_3__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  avio_feof (int /*<<< orphan*/ ) ; 
- int avio_r8 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  avio_rl32 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  avio_skip (int /*<<< orphan*/ ,int) ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_INVALIDDATA ;
+ int AVMEDIA_TYPE_AUDIO ;
+ int AV_CODEC_ID_PCM_U16LE ;
+ int AV_CODEC_ID_PCM_U24LE ;
+ int AV_CODEC_ID_PCM_U32LE ;
+ int AV_CODEC_ID_PCM_U8 ;
+ int ENOMEM ;
+ TYPE_2__* avformat_new_stream (TYPE_3__*,int *) ;
+ int avio_feof (int ) ;
+ int avio_r8 (int ) ;
+ int avio_rl32 (int ) ;
+ int avio_skip (int ,int) ;
 
 __attribute__((used)) static int sdx_read_header(AVFormatContext *s)
 {
@@ -51,7 +51,7 @@ __attribute__((used)) static int sdx_read_header(AVFormatContext *s)
     avio_skip(s->pb, 4);
     depth = avio_r8(s->pb);
 
-    st = avformat_new_stream(s, NULL);
+    st = avformat_new_stream(s, ((void*)0));
     if (!st)
         return AVERROR(ENOMEM);
 

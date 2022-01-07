@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  perms; int /*<<< orphan*/  gid; int /*<<< orphan*/  uid; } ;
-struct tty {int /*<<< orphan*/  lock; TYPE_1__ pty; } ;
-struct attr {int type; int /*<<< orphan*/  mode; int /*<<< orphan*/  gid; int /*<<< orphan*/  uid; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int perms; int gid; int uid; } ;
+struct tty {int lock; TYPE_1__ pty; } ;
+struct attr {int type; int mode; int gid; int uid; } ;
 struct TYPE_4__ {struct tty** ttys; } ;
 
-/* Variables and functions */
- int _EINVAL ; 
- int _EROFS ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
-#define  attr_gid 130 
-#define  attr_mode 129 
- int attr_size ; 
-#define  attr_uid 128 
- int /*<<< orphan*/  lock (int /*<<< orphan*/ *) ; 
- TYPE_2__ pty_slave ; 
- int /*<<< orphan*/  ttys_lock ; 
- int /*<<< orphan*/  unlock (int /*<<< orphan*/ *) ; 
+
+ int _EINVAL ;
+ int _EROFS ;
+ int assert (int ) ;
+
+
+ int attr_size ;
+
+ int lock (int *) ;
+ TYPE_2__ pty_slave ;
+ int ttys_lock ;
+ int unlock (int *) ;
 
 __attribute__((used)) static int devpts_setattr_num(int pty_num, struct attr attr) {
     if (pty_num == -1)
@@ -38,17 +38,17 @@ __attribute__((used)) static int devpts_setattr_num(int pty_num, struct attr att
 
     lock(&ttys_lock);
     struct tty *tty = pty_slave.ttys[pty_num];
-    assert(tty != NULL);
+    assert(tty != ((void*)0));
     lock(&tty->lock);
 
     switch (attr.type) {
-        case attr_uid:
+        case 128:
             tty->pty.uid = attr.uid;
             break;
-        case attr_gid:
+        case 130:
             tty->pty.gid = attr.gid;
             break;
-        case attr_mode:
+        case 129:
             tty->pty.perms = attr.mode;
             break;
     }

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int binlogs; TYPE_4__** B; int /*<<< orphan*/  volume_id; } ;
-typedef  TYPE_1__ volume_t ;
+
+
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int binlogs; TYPE_4__** B; int volume_id; } ;
+typedef TYPE_1__ volume_t ;
 struct TYPE_8__ {long long size; int prefix; int fd_rdonly; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  binlog_check (TYPE_4__*,TYPE_4__*) ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  cmp_storage_binlog_file ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  kprintf (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  qsort (TYPE_4__**,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  storage_open_binlogs (TYPE_1__*) ; 
+
+ int binlog_check (TYPE_4__*,TYPE_4__*) ;
+ int close (int) ;
+ int cmp_storage_binlog_file ;
+ int exit (int) ;
+ int kprintf (char*,int ) ;
+ int qsort (TYPE_4__**,int,int,int ) ;
+ int storage_open_binlogs (TYPE_1__*) ;
 
 void storage_reoder_binlog_files (volume_t *V) {
   int k;

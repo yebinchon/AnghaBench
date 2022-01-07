@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
-typedef  scalar_t__ matrix_row_t ;
 
-/* Variables and functions */
- scalar_t__ DEBOUNCE ; 
- scalar_t__ MATRIX_COLS ; 
- scalar_t__ MATRIX_ROWS ; 
- int /*<<< orphan*/  _delay_ms (int) ; 
- int /*<<< orphan*/  _delay_us (int) ; 
- scalar_t__ debouncing ; 
- scalar_t__* matrix ; 
- scalar_t__* matrix_debouncing ; 
- int /*<<< orphan*/  matrix_scan_quantum () ; 
- scalar_t__ scan_col () ; 
- int /*<<< orphan*/  select_col (scalar_t__) ; 
+
+
+
+typedef scalar_t__ uint8_t ;
+typedef scalar_t__ matrix_row_t ;
+
+
+ scalar_t__ DEBOUNCE ;
+ scalar_t__ MATRIX_COLS ;
+ scalar_t__ MATRIX_ROWS ;
+ int _delay_ms (int) ;
+ int _delay_us (int) ;
+ scalar_t__ debouncing ;
+ scalar_t__* matrix ;
+ scalar_t__* matrix_debouncing ;
+ int matrix_scan_quantum () ;
+ scalar_t__ scan_col () ;
+ int select_col (scalar_t__) ;
 
 uint8_t matrix_scan(void) {
     for (uint8_t col = 0; col < MATRIX_COLS; col++) {

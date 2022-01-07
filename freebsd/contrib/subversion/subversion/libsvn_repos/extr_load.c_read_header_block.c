@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {char* data; size_t len; } ;
-typedef  TYPE_1__ svn_stringbuf_t ;
-typedef  int /*<<< orphan*/  svn_stream_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  scalar_t__ svn_boolean_t ;
-typedef  size_t apr_size_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
+typedef TYPE_1__ svn_stringbuf_t ;
+typedef int svn_stream_t ;
+typedef int svn_error_t ;
+typedef scalar_t__ svn_boolean_t ;
+typedef size_t apr_size_t ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
 
-/* Variables and functions */
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_STREAM_MALFORMED_DATA ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/ * apr_hash_make (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * stream_ran_dry () ; 
- int /*<<< orphan*/ * svn_error_createf (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  svn_hash_sets (int /*<<< orphan*/ *,char const*,char const*) ; 
- int /*<<< orphan*/  svn_stream_readline (int /*<<< orphan*/ *,TYPE_1__**,char*,scalar_t__*,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_stringbuf_isempty (TYPE_1__*) ; 
+
+ scalar_t__ FALSE ;
+ int SVN_ERR (int ) ;
+ int SVN_ERR_STREAM_MALFORMED_DATA ;
+ int * SVN_NO_ERROR ;
+ int _ (char*) ;
+ int * apr_hash_make (int *) ;
+ int * stream_ran_dry () ;
+ int * svn_error_createf (int ,int *,int ,char*) ;
+ int svn_hash_sets (int *,char const*,char const*) ;
+ int svn_stream_readline (int *,TYPE_1__**,char*,scalar_t__*,int *) ;
+ scalar_t__ svn_stringbuf_isempty (TYPE_1__*) ;
 
 __attribute__((used)) static svn_error_t *
 read_header_block(svn_stream_t *stream,
@@ -48,48 +48,48 @@ read_header_block(svn_stream_t *stream,
       svn_boolean_t eof;
       apr_size_t i = 0;
 
-      if (first_header != NULL)
+      if (first_header != ((void*)0))
         {
           header_str = first_header;
-          first_header = NULL;  /* so we never visit this block again. */
+          first_header = ((void*)0);
           eof = FALSE;
         }
 
       else
-        /* Read the next line into a stringbuf. */
+
         SVN_ERR(svn_stream_readline(stream, &header_str, "\n", &eof, pool));
 
       if (svn_stringbuf_isempty(header_str))
-        break;    /* end of header block */
+        break;
       else if (eof)
         return stream_ran_dry();
 
-      /* Find the next colon in the stringbuf. */
+
       while (header_str->data[i] != ':')
         {
           if (header_str->data[i] == '\0')
-            return svn_error_createf(SVN_ERR_STREAM_MALFORMED_DATA, NULL,
+            return svn_error_createf(SVN_ERR_STREAM_MALFORMED_DATA, ((void*)0),
                                      _("Dump stream contains a malformed "
                                        "header (with no ':') at '%.20s'"),
                                      header_str->data);
           i++;
         }
-      /* Create a 'name' string and point to it. */
+
       header_str->data[i] = '\0';
       name = header_str->data;
 
-      /* Skip over the NULL byte and the space following it.  */
+
       i += 2;
       if (i > header_str->len)
-        return svn_error_createf(SVN_ERR_STREAM_MALFORMED_DATA, NULL,
+        return svn_error_createf(SVN_ERR_STREAM_MALFORMED_DATA, ((void*)0),
                                  _("Dump stream contains a malformed "
                                    "header (with no value) at '%.20s'"),
                                  header_str->data);
 
-      /* Point to the 'value' string. */
+
       value = header_str->data + i;
 
-      /* Store name/value in hash. */
+
       svn_hash_sets(*headers, name, value);
     }
 

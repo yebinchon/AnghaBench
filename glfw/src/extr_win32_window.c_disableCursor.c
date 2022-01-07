@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_9__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_12__ TYPE_9__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
 struct TYPE_11__ {scalar_t__ rawMouseMotion; } ;
-typedef  TYPE_2__ _GLFWwindow ;
-struct TYPE_10__ {int /*<<< orphan*/  restoreCursorPosY; int /*<<< orphan*/  restoreCursorPosX; TYPE_2__* disabledCursorWindow; } ;
+typedef TYPE_2__ _GLFWwindow ;
+struct TYPE_10__ {int restoreCursorPosY; int restoreCursorPosX; TYPE_2__* disabledCursorWindow; } ;
 struct TYPE_12__ {TYPE_1__ win32; } ;
 
-/* Variables and functions */
- TYPE_9__ _glfw ; 
- int /*<<< orphan*/  _glfwCenterCursorInContentArea (TYPE_2__*) ; 
- int /*<<< orphan*/  _glfwPlatformGetCursorPos (TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  enableRawMouseMotion (TYPE_2__*) ; 
- int /*<<< orphan*/  updateClipRect (TYPE_2__*) ; 
- int /*<<< orphan*/  updateCursorImage (TYPE_2__*) ; 
+
+ TYPE_9__ _glfw ;
+ int _glfwCenterCursorInContentArea (TYPE_2__*) ;
+ int _glfwPlatformGetCursorPos (TYPE_2__*,int *,int *) ;
+ int enableRawMouseMotion (TYPE_2__*) ;
+ int updateClipRect (TYPE_2__*) ;
+ int updateCursorImage (TYPE_2__*) ;
 
 __attribute__((used)) static void disableCursor(_GLFWwindow* window)
 {

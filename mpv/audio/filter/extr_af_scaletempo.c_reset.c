@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct priv {int /*<<< orphan*/  in; int /*<<< orphan*/  bytes_overlap; int /*<<< orphan*/  buf_overlap; scalar_t__ frames_stride_error; scalar_t__ bytes_to_slide; scalar_t__ bytes_queued; int /*<<< orphan*/  current_pts; } ;
+
+
+
+
+struct priv {int in; int bytes_overlap; int buf_overlap; scalar_t__ frames_stride_error; scalar_t__ bytes_to_slide; scalar_t__ bytes_queued; int current_pts; } ;
 struct mp_filter {struct priv* priv; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MP_NOPTS_VALUE ; 
- int /*<<< orphan*/  TA_FREEP (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int MP_NOPTS_VALUE ;
+ int TA_FREEP (int *) ;
+ int memset (int ,int ,int ) ;
 
 __attribute__((used)) static void reset(struct mp_filter *f)
 {

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct connectdata {struct Curl_easy* data; } ;
 struct Curl_easy {int dummy; } ;
-typedef  int /*<<< orphan*/  CURLcode ;
+typedef int CURLcode ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CURLE_FTP_WEIRD_PASS_REPLY ; 
- int /*<<< orphan*/  CURLE_OK ; 
- int /*<<< orphan*/  failf (struct Curl_easy*,char*,int) ; 
- int /*<<< orphan*/  ftp_state_loggedin (struct connectdata*) ; 
+
+ int CURLE_FTP_WEIRD_PASS_REPLY ;
+ int CURLE_OK ;
+ int failf (struct Curl_easy*,char*,int) ;
+ int ftp_state_loggedin (struct connectdata*) ;
 
 __attribute__((used)) static CURLcode ftp_state_acct_resp(struct connectdata *conn,
                                     int ftpcode)
@@ -27,7 +27,7 @@ __attribute__((used)) static CURLcode ftp_state_acct_resp(struct connectdata *co
   struct Curl_easy *data = conn->data;
   if(ftpcode != 230) {
     failf(data, "ACCT rejected by server: %03d", ftpcode);
-    result = CURLE_FTP_WEIRD_PASS_REPLY; /* FIX */
+    result = CURLE_FTP_WEIRD_PASS_REPLY;
   }
   else
     result = ftp_state_loggedin(conn);

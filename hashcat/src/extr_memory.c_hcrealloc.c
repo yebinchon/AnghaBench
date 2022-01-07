@@ -1,32 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char* MSG_ENOMEM ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  memset (char*,int /*<<< orphan*/ ,size_t const) ; 
- void* realloc (void*,size_t const) ; 
- int /*<<< orphan*/  stderr ; 
+ char* MSG_ENOMEM ;
+ int fprintf (int ,char*,char*) ;
+ int memset (char*,int ,size_t const) ;
+ void* realloc (void*,size_t const) ;
+ int stderr ;
 
 void *hcrealloc (void *ptr, const size_t oldsz, const size_t addsz)
 {
   void *p = realloc (ptr, oldsz + addsz);
 
-  if (p == NULL)
+  if (p == ((void*)0))
   {
     fprintf (stderr, "%s\n", MSG_ENOMEM);
 
-    return (NULL);
+    return (((void*)0));
   }
 
   memset ((char *) p + oldsz, 0, addsz);

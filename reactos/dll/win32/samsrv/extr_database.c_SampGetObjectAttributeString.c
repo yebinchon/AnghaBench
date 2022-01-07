@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  void* USHORT ;
-typedef  int ULONG ;
-struct TYPE_3__ {int /*<<< orphan*/ * Buffer; void* MaximumLength; void* Length; } ;
-typedef  int /*<<< orphan*/ * PVOID ;
-typedef  int /*<<< orphan*/  PSAM_DB_OBJECT ;
-typedef  TYPE_1__* PRPC_UNICODE_STRING ;
-typedef  int NTSTATUS ;
-typedef  int /*<<< orphan*/  LPWSTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NT_SUCCESS (int) ; 
- int STATUS_BUFFER_OVERFLOW ; 
- int STATUS_INSUFFICIENT_RESOURCES ; 
- int STATUS_SUCCESS ; 
- int SampGetObjectAttribute (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  TRACE (char*,int) ; 
- int /*<<< orphan*/ * midl_user_allocate (int) ; 
- int /*<<< orphan*/  midl_user_free (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
+typedef void* USHORT ;
+typedef int ULONG ;
+struct TYPE_3__ {int * Buffer; void* MaximumLength; void* Length; } ;
+typedef int * PVOID ;
+typedef int PSAM_DB_OBJECT ;
+typedef TYPE_1__* PRPC_UNICODE_STRING ;
+typedef int NTSTATUS ;
+typedef int LPWSTR ;
+
+
+ int NT_SUCCESS (int) ;
+ int STATUS_BUFFER_OVERFLOW ;
+ int STATUS_INSUFFICIENT_RESOURCES ;
+ int STATUS_SUCCESS ;
+ int SampGetObjectAttribute (int ,int ,int *,int *,int*) ;
+ int TRACE (char*,int) ;
+ int * midl_user_allocate (int) ;
+ int midl_user_free (int *) ;
 
 NTSTATUS
 SampGetObjectAttributeString(PSAM_DB_OBJECT DbObject,
@@ -41,8 +41,8 @@ SampGetObjectAttributeString(PSAM_DB_OBJECT DbObject,
 
     Status = SampGetObjectAttribute(DbObject,
                                     AttributeName,
-                                    NULL,
-                                    NULL,
+                                    ((void*)0),
+                                    ((void*)0),
                                     &Length);
     if (!NT_SUCCESS(Status) && Status != STATUS_BUFFER_OVERFLOW)
     {
@@ -54,7 +54,7 @@ SampGetObjectAttributeString(PSAM_DB_OBJECT DbObject,
     {
         String->Length = 0;
         String->MaximumLength = 0;
-        String->Buffer = NULL;
+        String->Buffer = ((void*)0);
 
         Status = STATUS_SUCCESS;
         goto done;
@@ -63,7 +63,7 @@ SampGetObjectAttributeString(PSAM_DB_OBJECT DbObject,
     String->Length = (USHORT)(Length - sizeof(WCHAR));
     String->MaximumLength = (USHORT)Length;
     String->Buffer = midl_user_allocate(Length);
-    if (String->Buffer == NULL)
+    if (String->Buffer == ((void*)0))
     {
         Status = STATUS_INSUFFICIENT_RESOURCES;
         goto done;
@@ -72,7 +72,7 @@ SampGetObjectAttributeString(PSAM_DB_OBJECT DbObject,
     TRACE("Length: %lu\n", Length);
     Status = SampGetObjectAttribute(DbObject,
                                     AttributeName,
-                                    NULL,
+                                    ((void*)0),
                                     (PVOID)String->Buffer,
                                     &Length);
     if (!NT_SUCCESS(Status))
@@ -84,10 +84,10 @@ SampGetObjectAttributeString(PSAM_DB_OBJECT DbObject,
 done:
     if (!NT_SUCCESS(Status))
     {
-        if (String->Buffer != NULL)
+        if (String->Buffer != ((void*)0))
         {
             midl_user_free(String->Buffer);
-            String->Buffer = NULL;
+            String->Buffer = ((void*)0);
         }
     }
 

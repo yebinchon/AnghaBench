@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  lock; int /*<<< orphan*/  thread; int /*<<< orphan*/  writer; } ;
-typedef  TYPE_1__ vlc_demux_chained_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (TYPE_1__*) ; 
- int /*<<< orphan*/  vlc_join (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_mutex_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_stream_fifo_Close (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int lock; int thread; int writer; } ;
+typedef TYPE_1__ vlc_demux_chained_t ;
+
+
+ int free (TYPE_1__*) ;
+ int vlc_join (int ,int *) ;
+ int vlc_mutex_destroy (int *) ;
+ int vlc_stream_fifo_Close (int ) ;
 
 void vlc_demux_chained_Delete(vlc_demux_chained_t *dc)
 {
     vlc_stream_fifo_Close(dc->writer);
-    vlc_join(dc->thread, NULL);
+    vlc_join(dc->thread, ((void*)0));
     vlc_mutex_destroy(&dc->lock);
     free(dc);
 }

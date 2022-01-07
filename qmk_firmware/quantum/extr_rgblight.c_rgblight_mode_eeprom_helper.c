@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint8_t ;
 struct TYPE_4__ {int restart; } ;
-struct TYPE_3__ {int /*<<< orphan*/  val; int /*<<< orphan*/  sat; int /*<<< orphan*/  hue; scalar_t__ mode; int /*<<< orphan*/  raw; int /*<<< orphan*/  enable; } ;
+struct TYPE_3__ {int val; int sat; int hue; scalar_t__ mode; int raw; int enable; } ;
 
-/* Variables and functions */
- scalar_t__ RGBLIGHT_MODES ; 
- scalar_t__ RGBLIGHT_MODE_STATIC_LIGHT ; 
- int /*<<< orphan*/  RGBLIGHT_SPLIT_SET_CHANGE_MODE ; 
- TYPE_2__ animation_status ; 
- int /*<<< orphan*/  dprintf (char*,scalar_t__) ; 
- int /*<<< orphan*/  eeconfig_update_rgblight (int /*<<< orphan*/ ) ; 
- scalar_t__ is_static_effect (scalar_t__) ; 
- TYPE_1__ rgblight_config ; 
- int /*<<< orphan*/  rgblight_sethsv_noeeprom (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rgblight_timer_disable () ; 
- int /*<<< orphan*/  rgblight_timer_enable () ; 
+
+ scalar_t__ RGBLIGHT_MODES ;
+ scalar_t__ RGBLIGHT_MODE_STATIC_LIGHT ;
+ int RGBLIGHT_SPLIT_SET_CHANGE_MODE ;
+ TYPE_2__ animation_status ;
+ int dprintf (char*,scalar_t__) ;
+ int eeconfig_update_rgblight (int ) ;
+ scalar_t__ is_static_effect (scalar_t__) ;
+ TYPE_1__ rgblight_config ;
+ int rgblight_sethsv_noeeprom (int ,int ,int ) ;
+ int rgblight_timer_disable () ;
+ int rgblight_timer_enable () ;
 
 void rgblight_mode_eeprom_helper(uint8_t mode, bool write_to_eeprom) {
     if (!rgblight_config.enable) {
@@ -48,16 +48,16 @@ void rgblight_mode_eeprom_helper(uint8_t mode, bool write_to_eeprom) {
         dprintf("rgblight mode [NOEEPROM]: %u\n", rgblight_config.mode);
     }
     if (is_static_effect(rgblight_config.mode)) {
-#ifdef RGBLIGHT_USE_TIMER
-        rgblight_timer_disable();
-#endif
+
+
+
     } else {
-#ifdef RGBLIGHT_USE_TIMER
-        rgblight_timer_enable();
-#endif
+
+
+
     }
-#ifdef RGBLIGHT_USE_TIMER
-    animation_status.restart = true;
-#endif
+
+
+
     rgblight_sethsv_noeeprom(rgblight_config.hue, rgblight_config.sat, rgblight_config.val);
 }

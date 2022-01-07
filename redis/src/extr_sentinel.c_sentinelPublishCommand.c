@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_7__ {TYPE_1__** argv; } ;
-typedef  TYPE_2__ client ;
-struct TYPE_6__ {int /*<<< orphan*/  ptr; } ;
+typedef TYPE_2__ client ;
+struct TYPE_6__ {int ptr; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SENTINEL_HELLO_CHANNEL ; 
- int /*<<< orphan*/  addReplyError (TYPE_2__*,char*) ; 
- int /*<<< orphan*/  addReplyLongLong (TYPE_2__*,int) ; 
- int /*<<< orphan*/  sdslen (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sentinelProcessHelloMessage (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ strcmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int SENTINEL_HELLO_CHANNEL ;
+ int addReplyError (TYPE_2__*,char*) ;
+ int addReplyLongLong (TYPE_2__*,int) ;
+ int sdslen (int ) ;
+ int sentinelProcessHelloMessage (int ,int ) ;
+ scalar_t__ strcmp (int ,int ) ;
 
 void sentinelPublishCommand(client *c) {
     if (strcmp(c->argv[1]->ptr,SENTINEL_HELLO_CHANNEL)) {

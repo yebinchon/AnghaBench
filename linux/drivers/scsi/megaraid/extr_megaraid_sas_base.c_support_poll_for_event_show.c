@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct device_driver {int dummy; } ;
-typedef  int /*<<< orphan*/  ssize_t ;
+typedef int ssize_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  sprintf (char*,char*,int) ; 
- int support_poll_for_event ; 
+
+ int sprintf (char*,char*,int) ;
+ int support_poll_for_event ;
 
 __attribute__((used)) static ssize_t support_poll_for_event_show(struct device_driver *dd, char *buf)
 {
-	return sprintf(buf, "%u\n", support_poll_for_event);
+ return sprintf(buf, "%u\n", support_poll_for_event);
 }

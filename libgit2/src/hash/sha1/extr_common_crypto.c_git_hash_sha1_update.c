@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  c; } ;
-typedef  TYPE_1__ git_hash_sha1_ctx ;
-typedef  size_t CC_LONG ;
 
-/* Variables and functions */
- size_t CC_LONG_MAX ; 
- int /*<<< orphan*/  CC_SHA1_Update (int /*<<< orphan*/ *,unsigned char const*,size_t) ; 
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int c; } ;
+typedef TYPE_1__ git_hash_sha1_ctx ;
+typedef size_t CC_LONG ;
+
+
+ size_t CC_LONG_MAX ;
+ int CC_SHA1_Update (int *,unsigned char const*,size_t) ;
+ int assert (TYPE_1__*) ;
 
 int git_hash_sha1_update(git_hash_sha1_ctx *ctx, const void *_data, size_t len)
 {
-	const unsigned char *data = _data;
+ const unsigned char *data = _data;
 
-	assert(ctx);
+ assert(ctx);
 
-	while (len > 0) {
-		CC_LONG chunk = (len > CC_LONG_MAX) ? CC_LONG_MAX : (CC_LONG)len;
+ while (len > 0) {
+  CC_LONG chunk = (len > CC_LONG_MAX) ? CC_LONG_MAX : (CC_LONG)len;
 
-		CC_SHA1_Update(&ctx->c, data, chunk);
+  CC_SHA1_Update(&ctx->c, data, chunk);
 
-		data += chunk;
-		len -= chunk;
-	}
+  data += chunk;
+  len -= chunk;
+ }
 
-	return 0;
+ return 0;
 }

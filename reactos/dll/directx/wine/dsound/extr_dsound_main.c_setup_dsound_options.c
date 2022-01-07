@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ HKEY ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- scalar_t__ DS_HW_ACCEL_BASIC ; 
- scalar_t__ DS_HW_ACCEL_EMULATION ; 
- scalar_t__ DS_HW_ACCEL_FULL ; 
- scalar_t__ DS_HW_ACCEL_STANDARD ; 
- int GetModuleFileNameA (int /*<<< orphan*/ ,char*,int) ; 
- scalar_t__ HKEY_CURRENT_USER ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  RegCloseKey (scalar_t__) ; 
- scalar_t__ RegOpenKeyA (scalar_t__,char*,scalar_t__*) ; 
- int /*<<< orphan*/  TRACE (char*,char*) ; 
- void* atoi (char*) ; 
- char* ds_default_bits_per_sample ; 
- void* ds_default_capture ; 
- char* ds_default_playback ; 
- char* ds_default_sample_rate ; 
- char* ds_emuldriver ; 
- char* ds_hel_buflen ; 
- scalar_t__ ds_hw_accel ; 
- char* ds_snd_queue_max ; 
- char* ds_snd_queue_min ; 
- char* ds_snd_shadow_maxsize ; 
- int /*<<< orphan*/  get_config_key (scalar_t__,scalar_t__,char*,char*,int) ; 
- int /*<<< orphan*/  strcat (char*,char*) ; 
- scalar_t__ strcmp (char*,char*) ; 
- char* strrchr (char*,char) ; 
+
+
+
+typedef scalar_t__ HKEY ;
+typedef int DWORD ;
+
+
+ scalar_t__ DS_HW_ACCEL_BASIC ;
+ scalar_t__ DS_HW_ACCEL_EMULATION ;
+ scalar_t__ DS_HW_ACCEL_FULL ;
+ scalar_t__ DS_HW_ACCEL_STANDARD ;
+ int GetModuleFileNameA (int ,char*,int) ;
+ scalar_t__ HKEY_CURRENT_USER ;
+ int MAX_PATH ;
+ int RegCloseKey (scalar_t__) ;
+ scalar_t__ RegOpenKeyA (scalar_t__,char*,scalar_t__*) ;
+ int TRACE (char*,char*) ;
+ void* atoi (char*) ;
+ char* ds_default_bits_per_sample ;
+ void* ds_default_capture ;
+ char* ds_default_playback ;
+ char* ds_default_sample_rate ;
+ char* ds_emuldriver ;
+ char* ds_hel_buflen ;
+ scalar_t__ ds_hw_accel ;
+ char* ds_snd_queue_max ;
+ char* ds_snd_queue_min ;
+ char* ds_snd_shadow_maxsize ;
+ int get_config_key (scalar_t__,scalar_t__,char*,char*,int) ;
+ int strcat (char*,char*) ;
+ scalar_t__ strcmp (char*,char*) ;
+ char* strrchr (char*,char) ;
 
 void setup_dsound_options(void)
 {
@@ -48,14 +48,14 @@ void setup_dsound_options(void)
 
     buffer[MAX_PATH]='\0';
 
-    /* @@ Wine registry key: HKCU\Software\Wine\DirectSound */
+
     if (RegOpenKeyA( HKEY_CURRENT_USER, "Software\\Wine\\DirectSound", &hkey )) hkey = 0;
 
     len = GetModuleFileNameA( 0, buffer, MAX_PATH );
     if (len && len < MAX_PATH)
     {
         HKEY tmpkey;
-        /* @@ Wine registry key: HKCU\Software\Wine\AppDefaults\app.exe\DirectSound */
+
         if (!RegOpenKeyA( HKEY_CURRENT_USER, "Software\\Wine\\AppDefaults", &tmpkey ))
         {
             char *p, *appname = buffer;
@@ -68,7 +68,7 @@ void setup_dsound_options(void)
         }
     }
 
-    /* get options */
+
 
     if (!get_config_key( hkey, appkey, "EmulDriver", buffer, MAX_PATH ))
         ds_emuldriver = strcmp(buffer, "N");
@@ -83,14 +83,14 @@ void setup_dsound_options(void)
         ds_snd_queue_min = atoi(buffer);
 
     if (!get_config_key( hkey, appkey, "HardwareAcceleration", buffer, MAX_PATH )) {
-	if (strcmp(buffer, "Full") == 0)
-	    ds_hw_accel = DS_HW_ACCEL_FULL;
-	else if (strcmp(buffer, "Standard") == 0)
-	    ds_hw_accel = DS_HW_ACCEL_STANDARD;
-	else if (strcmp(buffer, "Basic") == 0)
-	    ds_hw_accel = DS_HW_ACCEL_BASIC;
-	else if (strcmp(buffer, "Emulation") == 0)
-	    ds_hw_accel = DS_HW_ACCEL_EMULATION;
+ if (strcmp(buffer, "Full") == 0)
+     ds_hw_accel = DS_HW_ACCEL_FULL;
+ else if (strcmp(buffer, "Standard") == 0)
+     ds_hw_accel = DS_HW_ACCEL_STANDARD;
+ else if (strcmp(buffer, "Basic") == 0)
+     ds_hw_accel = DS_HW_ACCEL_BASIC;
+ else if (strcmp(buffer, "Emulation") == 0)
+     ds_hw_accel = DS_HW_ACCEL_EMULATION;
     }
 
     if (!get_config_key( hkey, appkey, "DefaultPlayback", buffer, MAX_PATH ))

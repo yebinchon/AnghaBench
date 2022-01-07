@@ -1,83 +1,83 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uuid ;
-typedef  int WORD ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int UINT ;
-struct TYPE_4__ {scalar_t__ typekind; int wTypeFlags; int /*<<< orphan*/  guid; } ;
-typedef  scalar_t__ TYPEKIND ;
-typedef  TYPE_1__ TYPEATTR ;
-typedef  int REGSAM ;
-typedef  int /*<<< orphan*/  LONG ;
-typedef  int /*<<< orphan*/  ITypeLib ;
-typedef  int /*<<< orphan*/  ITypeInfo ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  HREFTYPE ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAY_SIZE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CP_ACP ; 
- int /*<<< orphan*/  DeleteFileA (char const*) ; 
- int /*<<< orphan*/  ERROR_FILE_NOT_FOUND ; 
- int /*<<< orphan*/  ERROR_SUCCESS ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  GetCurrentProcess () ; 
- int /*<<< orphan*/  HKEY_CLASSES_ROOT ; 
- int /*<<< orphan*/  ITypeInfo_GetRefTypeInfo (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  ITypeInfo_GetRefTypeOfImplType (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ITypeInfo_GetTypeAttr (int /*<<< orphan*/ *,TYPE_1__**) ; 
- int /*<<< orphan*/  ITypeInfo_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ITypeInfo_ReleaseTypeAttr (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  ITypeLib_GetTypeInfo (int /*<<< orphan*/ *,int,int /*<<< orphan*/ **) ; 
- int ITypeLib_GetTypeInfoCount (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ITypeLib_Release (int /*<<< orphan*/ *) ; 
- int KEY_READ ; 
- int KEY_WOW64_32KEY ; 
- int KEY_WOW64_64KEY ; 
- int /*<<< orphan*/  LIBID_register_test ; 
- int /*<<< orphan*/  LOCALE_NEUTRAL ; 
- int /*<<< orphan*/  LoadTypeLibEx (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  MultiByteToWideChar (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*,int,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  REGKIND_NONE ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RegOpenKeyExA (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RegisterTypeLib (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SYS_WIN32 ; 
- int /*<<< orphan*/  SYS_WIN64 ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  StringFromGUID2 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ TKIND_DISPATCH ; 
- scalar_t__ TKIND_INTERFACE ; 
- scalar_t__ TKIND_RECORD ; 
- int TYPEFLAG_FDISPATCHABLE ; 
- int TYPEFLAG_FDUAL ; 
- int TYPEFLAG_FOLEAUTOMATION ; 
- int /*<<< orphan*/  TYPE_E_REGISTRYACCESS ; 
- int /*<<< orphan*/  UnRegisterTypeLib (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WideCharToMultiByte (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,char*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- char* create_test_typelib (int) ; 
- scalar_t__ is_win64 ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  pIsWow64Process (int /*<<< orphan*/ ,scalar_t__*) ; 
- int /*<<< orphan*/  pRegisterTypeLibForUser (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pUnRegisterTypeLibForUser (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sprintf (char*,char*,char*) ; 
- int /*<<< orphan*/  trace (char*,char*) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uuid ;
+typedef int WORD ;
+typedef int WCHAR ;
+typedef int UINT ;
+struct TYPE_4__ {scalar_t__ typekind; int wTypeFlags; int guid; } ;
+typedef scalar_t__ TYPEKIND ;
+typedef TYPE_1__ TYPEATTR ;
+typedef int REGSAM ;
+typedef int LONG ;
+typedef int ITypeLib ;
+typedef int ITypeInfo ;
+typedef int HRESULT ;
+typedef int HREFTYPE ;
+typedef int HKEY ;
+typedef scalar_t__ BOOL ;
+
+
+ int ARRAY_SIZE (int *) ;
+ int CP_ACP ;
+ int DeleteFileA (char const*) ;
+ int ERROR_FILE_NOT_FOUND ;
+ int ERROR_SUCCESS ;
+ scalar_t__ FALSE ;
+ int GetCurrentProcess () ;
+ int HKEY_CLASSES_ROOT ;
+ int ITypeInfo_GetRefTypeInfo (int *,int ,int **) ;
+ int ITypeInfo_GetRefTypeOfImplType (int *,int,int *) ;
+ int ITypeInfo_GetTypeAttr (int *,TYPE_1__**) ;
+ int ITypeInfo_Release (int *) ;
+ int ITypeInfo_ReleaseTypeAttr (int *,TYPE_1__*) ;
+ int ITypeLib_GetTypeInfo (int *,int,int **) ;
+ int ITypeLib_GetTypeInfoCount (int *) ;
+ int ITypeLib_Release (int *) ;
+ int KEY_READ ;
+ int KEY_WOW64_32KEY ;
+ int KEY_WOW64_64KEY ;
+ int LIBID_register_test ;
+ int LOCALE_NEUTRAL ;
+ int LoadTypeLibEx (int *,int ,int **) ;
+ int MAX_PATH ;
+ int MultiByteToWideChar (int ,int ,char const*,int,int *,int) ;
+ int REGKIND_NONE ;
+ int RegCloseKey (int ) ;
+ int RegOpenKeyExA (int ,char*,int ,int,int *) ;
+ int RegisterTypeLib (int *,int *,int *) ;
+ int SYS_WIN32 ;
+ int SYS_WIN64 ;
+ int S_OK ;
+ int StringFromGUID2 (int *,int *,int ) ;
+ scalar_t__ TKIND_DISPATCH ;
+ scalar_t__ TKIND_INTERFACE ;
+ scalar_t__ TKIND_RECORD ;
+ int TYPEFLAG_FDISPATCHABLE ;
+ int TYPEFLAG_FDUAL ;
+ int TYPEFLAG_FOLEAUTOMATION ;
+ int TYPE_E_REGISTRYACCESS ;
+ int UnRegisterTypeLib (int *,int,int ,int ,int ) ;
+ int WideCharToMultiByte (int ,int ,int *,int,char*,int,int *,int *) ;
+ char* create_test_typelib (int) ;
+ scalar_t__ is_win64 ;
+ int ok (int,char*,...) ;
+ int pIsWow64Process (int ,scalar_t__*) ;
+ int pRegisterTypeLibForUser (int *,int *,int *) ;
+ int pUnRegisterTypeLibForUser (int *,int,int ,int ,int ) ;
+ int sprintf (char*,char*,char*) ;
+ int trace (char*,char*) ;
+ int win_skip (char*) ;
 
 __attribute__((used)) static void test_register_typelib(BOOL system_registration)
 {
@@ -102,13 +102,13 @@ __attribute__((used)) static void test_register_typelib(BOOL system_registration
         { TKIND_INTERFACE, TYPEFLAG_FDISPATCHABLE },
         { TKIND_INTERFACE, TYPEFLAG_FOLEAUTOMATION },
         { TKIND_INTERFACE, TYPEFLAG_FDISPATCHABLE | TYPEFLAG_FOLEAUTOMATION },
-        { TKIND_DISPATCH,  TYPEFLAG_FDUAL },
-        { TKIND_DISPATCH,  TYPEFLAG_FDUAL },
-        { TKIND_DISPATCH,  TYPEFLAG_FDISPATCHABLE | TYPEFLAG_FDUAL },
-        { TKIND_DISPATCH,  TYPEFLAG_FDISPATCHABLE | TYPEFLAG_FDUAL },
-        { TKIND_DISPATCH,  TYPEFLAG_FDISPATCHABLE },
-        { TKIND_DISPATCH,  TYPEFLAG_FDISPATCHABLE },
-        { TKIND_DISPATCH,  TYPEFLAG_FDISPATCHABLE },
+        { TKIND_DISPATCH, TYPEFLAG_FDUAL },
+        { TKIND_DISPATCH, TYPEFLAG_FDUAL },
+        { TKIND_DISPATCH, TYPEFLAG_FDISPATCHABLE | TYPEFLAG_FDUAL },
+        { TKIND_DISPATCH, TYPEFLAG_FDISPATCHABLE | TYPEFLAG_FDUAL },
+        { TKIND_DISPATCH, TYPEFLAG_FDISPATCHABLE },
+        { TKIND_DISPATCH, TYPEFLAG_FDISPATCHABLE },
+        { TKIND_DISPATCH, TYPEFLAG_FDISPATCHABLE },
         { TKIND_INTERFACE, TYPEFLAG_FDISPATCHABLE },
         { TKIND_INTERFACE, TYPEFLAG_FDISPATCHABLE },
         { TKIND_RECORD, 0 }
@@ -133,9 +133,9 @@ __attribute__((used)) static void test_register_typelib(BOOL system_registration
     ok(hr == S_OK, "got %08x\n", hr);
 
     if (system_registration)
-        hr = RegisterTypeLib(typelib, filename, NULL);
+        hr = RegisterTypeLib(typelib, filename, ((void*)0));
     else
-        hr = pRegisterTypeLibForUser(typelib, filename, NULL);
+        hr = pRegisterTypeLibForUser(typelib, filename, ((void*)0));
     if (hr == TYPE_E_REGISTRYACCESS)
     {
         win_skip("Insufficient privileges to register typelib in the registry\n");
@@ -187,11 +187,11 @@ __attribute__((used)) static void test_register_typelib(BOOL system_registration
         }
 
         StringFromGUID2(&attr->guid, uuidW, ARRAY_SIZE(uuidW));
-        WideCharToMultiByte(CP_ACP, 0, uuidW, -1, uuid, sizeof(uuid), NULL, NULL);
+        WideCharToMultiByte(CP_ACP, 0, uuidW, -1, uuid, sizeof(uuid), ((void*)0), ((void*)0));
         sprintf(key_name, "Interface\\%s", uuid);
 
-        /* All dispinterfaces will be registered (this includes dual interfaces) as well
-           as oleautomation interfaces */
+
+
         if((attr->typekind == TKIND_INTERFACE && (attr->wTypeFlags & TYPEFLAG_FOLEAUTOMATION)) ||
            attr->typekind == TKIND_DISPATCH)
             expect_ret = ERROR_SUCCESS;
@@ -202,7 +202,7 @@ __attribute__((used)) static void test_register_typelib(BOOL system_registration
         ok(ret == expect_ret, "%d: got %d\n", i, ret);
         if(ret == ERROR_SUCCESS) RegCloseKey(hkey);
 
-        /* 32-bit typelibs should be registered into both registry bit modes */
+
         if (is_win64 || is_wow64)
         {
             ret = RegOpenKeyExA(HKEY_CLASSES_ROOT, key_name, 0, KEY_READ | opposite, &hkey);
@@ -235,7 +235,7 @@ __attribute__((used)) static void test_register_typelib(BOOL system_registration
            attr->typekind == TKIND_DISPATCH)
         {
             StringFromGUID2(&attr->guid, uuidW, ARRAY_SIZE(uuidW));
-            WideCharToMultiByte(CP_ACP, 0, uuidW, -1, uuid, sizeof(uuid), NULL, NULL);
+            WideCharToMultiByte(CP_ACP, 0, uuidW, -1, uuid, sizeof(uuid), ((void*)0), ((void*)0));
             sprintf(key_name, "Interface\\%s", uuid);
 
             ret = RegOpenKeyExA(HKEY_CLASSES_ROOT, key_name, 0, KEY_READ, &hkey);

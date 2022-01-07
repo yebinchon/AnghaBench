@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct node {int /*<<< orphan*/ * name; } ;
+
+
+
+
+struct node {int * name; } ;
 struct dt_info {int dummy; } ;
-struct check {int /*<<< orphan*/  data; } ;
+struct check {int data; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FAIL (struct check*,struct dt_info*,struct node*,char*,int /*<<< orphan*/ ) ; 
- int strlen (int /*<<< orphan*/ *) ; 
- int strspn (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int FAIL (struct check*,struct dt_info*,struct node*,char*,int ) ;
+ int strlen (int *) ;
+ int strspn (int *,int ) ;
 
 __attribute__((used)) static void check_node_name_chars(struct check *c, struct dt_info *dti,
-				  struct node *node)
+      struct node *node)
 {
-	int n = strspn(node->name, c->data);
+ int n = strspn(node->name, c->data);
 
-	if (n < strlen(node->name))
-		FAIL(c, dti, node, "Bad character '%c' in node name",
-		     node->name[n]);
+ if (n < strlen(node->name))
+  FAIL(c, dti, node, "Bad character '%c' in node name",
+       node->name[n]);
 }

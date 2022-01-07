@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  strsize_t ;
-typedef  int /*<<< orphan*/  lua_Writer ;
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  scalar_t__ lua_Number ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int strsize_t ;
+typedef int lua_Writer ;
+typedef int lua_State ;
+typedef scalar_t__ lua_Number ;
 struct TYPE_3__ {char little_endian; int sizeof_int; int sizeof_strsize_t; int sizeof_lua_Number; int lua_Number_integral; scalar_t__ is_arm_fpa; } ;
-typedef  int /*<<< orphan*/  Proto ;
-typedef  TYPE_1__ DumpTargetInfo ;
+typedef int Proto ;
+typedef TYPE_1__ DumpTargetInfo ;
 
-/* Variables and functions */
- int luaU_dump_crosscompile (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,void*,int,TYPE_1__) ; 
+
+ int luaU_dump_crosscompile (int *,int const*,int ,void*,int,TYPE_1__) ;
 
 int luaU_dump (lua_State* L, const Proto* f, lua_Writer w, void* data, int strip)
 {

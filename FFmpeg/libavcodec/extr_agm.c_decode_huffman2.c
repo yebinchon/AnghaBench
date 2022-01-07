@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_5__ ;
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-struct TYPE_9__ {int /*<<< orphan*/  bits; int /*<<< orphan*/  table; } ;
-struct TYPE_8__ {int /*<<< orphan*/  buffer; } ;
-struct TYPE_7__ {long long output_size; int* output; TYPE_5__ vlc; int /*<<< orphan*/  padded_output_size; TYPE_4__ gbyte; int /*<<< orphan*/  gb; } ;
+
+
+typedef struct TYPE_9__ TYPE_5__ ;
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_9__ {int bits; int table; } ;
+struct TYPE_8__ {int buffer; } ;
+struct TYPE_7__ {long long output_size; int* output; TYPE_5__ vlc; int padded_output_size; TYPE_4__ gbyte; int gb; } ;
 struct TYPE_6__ {long long width; long long height; TYPE_2__* priv_data; } ;
-typedef  int /*<<< orphan*/  GetBitContext ;
-typedef  TYPE_1__ AVCodecContext ;
-typedef  TYPE_2__ AGMContext ;
+typedef int GetBitContext ;
+typedef TYPE_1__ AVCodecContext ;
+typedef TYPE_2__ AGMContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  av_fast_padded_malloc (int**,int /*<<< orphan*/ *,long long) ; 
- int build_huff (int*,TYPE_5__*) ; 
- int /*<<< orphan*/  bytestream2_get_bytes_left (TYPE_4__*) ; 
- int get_bits (int /*<<< orphan*/ *,int) ; 
- scalar_t__ get_bits_left (int /*<<< orphan*/ *) ; 
- long long get_bits_long (int /*<<< orphan*/ *,int) ; 
- int get_vlc2 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int init_get_bits8 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_INVALIDDATA ;
+ int ENOMEM ;
+ int av_fast_padded_malloc (int**,int *,long long) ;
+ int build_huff (int*,TYPE_5__*) ;
+ int bytestream2_get_bytes_left (TYPE_4__*) ;
+ int get_bits (int *,int) ;
+ scalar_t__ get_bits_left (int *) ;
+ long long get_bits_long (int *,int) ;
+ int get_vlc2 (int *,int ,int ,int) ;
+ int init_get_bits8 (int *,int ,int ) ;
 
 __attribute__((used)) static int decode_huffman2(AVCodecContext *avctx, int header, int size)
 {

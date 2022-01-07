@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct hash_context {int /*<<< orphan*/  hHash; int /*<<< orphan*/  hCryptProv; } ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  int /*<<< orphan*/  BYTE ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- scalar_t__ CryptGetHashParam (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetLastError () ; 
- int /*<<< orphan*/  HP_HASHVAL ; 
- int /*<<< orphan*/  error (char*,void*,...) ; 
+
+
+
+struct hash_context {int hHash; int hCryptProv; } ;
+typedef int DWORD ;
+typedef int BYTE ;
+typedef scalar_t__ BOOL ;
+
+
+ scalar_t__ CryptGetHashParam (int ,int ,int *,int *,int ) ;
+ int GetLastError () ;
+ int HP_HASHVAL ;
+ int error (char*,void*,...) ;
 
 void
 rdssl_hash_complete(void* hash_info, char* data)
@@ -34,7 +34,7 @@ rdssl_hash_complete(void* hash_info, char* data)
     }
     ret = CryptGetHashParam(info->hHash,
                             HP_HASHVAL,
-                            NULL,
+                            ((void*)0),
                             &dwDataLen,
                             0);
     if (!ret)

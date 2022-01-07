@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  union uni_ieall {int dummy; } uni_ieall ;
+
+
+
+
+typedef union uni_ieall {int dummy; } uni_ieall ;
 struct unicx {int dummy; } ;
-struct uni_status {int /*<<< orphan*/  unrec; int /*<<< orphan*/  epstate; int /*<<< orphan*/  epref; int /*<<< orphan*/  cause; int /*<<< orphan*/  callstate; } ;
+struct uni_status {int unrec; int epstate; int epref; int cause; int callstate; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  UNI_IE_CALLSTATE ; 
- int /*<<< orphan*/  UNI_IE_CAUSE ; 
- int /*<<< orphan*/  UNI_IE_EPREF ; 
- int /*<<< orphan*/  UNI_IE_EPSTATE ; 
- int /*<<< orphan*/  UNI_IE_UNREC ; 
- int uni_check_ie (int /*<<< orphan*/ ,union uni_ieall*,struct unicx*) ; 
+
+ int UNI_IE_CALLSTATE ;
+ int UNI_IE_CAUSE ;
+ int UNI_IE_EPREF ;
+ int UNI_IE_EPSTATE ;
+ int UNI_IE_UNREC ;
+ int uni_check_ie (int ,union uni_ieall*,struct unicx*) ;
 
 __attribute__((used)) static int
 check_status(struct uni_status *m, struct unicx *cx)
 {
-	int ret = 0;
+ int ret = 0;
 
-	ret |= uni_check_ie(UNI_IE_CALLSTATE, (union uni_ieall *)&m->callstate, cx);
-	ret |= uni_check_ie(UNI_IE_CAUSE, (union uni_ieall *)&m->cause, cx);
-	ret |= uni_check_ie(UNI_IE_EPREF, (union uni_ieall *)&m->epref, cx);
-	ret |= uni_check_ie(UNI_IE_EPSTATE, (union uni_ieall *)&m->epstate, cx);
-	ret |= uni_check_ie(UNI_IE_UNREC, (union uni_ieall *)&m->unrec, cx);
+ ret |= uni_check_ie(UNI_IE_CALLSTATE, (union uni_ieall *)&m->callstate, cx);
+ ret |= uni_check_ie(UNI_IE_CAUSE, (union uni_ieall *)&m->cause, cx);
+ ret |= uni_check_ie(UNI_IE_EPREF, (union uni_ieall *)&m->epref, cx);
+ ret |= uni_check_ie(UNI_IE_EPSTATE, (union uni_ieall *)&m->epstate, cx);
+ ret |= uni_check_ie(UNI_IE_UNREC, (union uni_ieall *)&m->unrec, cx);
 
-	return ret;
+ return ret;
 }

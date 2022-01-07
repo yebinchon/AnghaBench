@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  revision; int /*<<< orphan*/  deleted; int /*<<< orphan*/  uuid; int /*<<< orphan*/  repos; int /*<<< orphan*/  has_props; int /*<<< orphan*/  depth; int /*<<< orphan*/  cmt_author; int /*<<< orphan*/  cmt_date; int /*<<< orphan*/  cmt_rev; } ;
-typedef  TYPE_1__ svn_wc_entry_t ;
-typedef  int /*<<< orphan*/  svn_wc__db_wcroot_t ;
-typedef  int /*<<< orphan*/  svn_wc__db_t ;
-typedef  scalar_t__ svn_wc__db_status_t ;
-typedef  int /*<<< orphan*/  svn_wc__db_lock_t ;
-typedef  int /*<<< orphan*/  svn_node_kind_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_checksum_t ;
-typedef  scalar_t__ svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_int64_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_ASSERT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_IS_VALID_REVNUM (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  TRUE ; 
- char* svn_relpath_dirname (char const*,int /*<<< orphan*/ *) ; 
- char* svn_relpath_join (char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_relpath_skip_ancestor (char const*,char const*) ; 
- int /*<<< orphan*/  svn_wc__db_base_get_info_internal (scalar_t__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const**,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/  const**,int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__db_fetch_repos_info (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__db_read_pristine_info (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/  const**,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__db_scan_addition_internal (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const**,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__db_scan_deletion_internal (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const**,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_wc__db_status_not_present ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int revision; int deleted; int uuid; int repos; int has_props; int depth; int cmt_author; int cmt_date; int cmt_rev; } ;
+typedef TYPE_1__ svn_wc_entry_t ;
+typedef int svn_wc__db_wcroot_t ;
+typedef int svn_wc__db_t ;
+typedef scalar_t__ svn_wc__db_status_t ;
+typedef int svn_wc__db_lock_t ;
+typedef int svn_node_kind_t ;
+typedef int svn_error_t ;
+typedef int svn_checksum_t ;
+typedef scalar_t__ svn_boolean_t ;
+typedef int apr_pool_t ;
+typedef int apr_int64_t ;
+
+
+ int SVN_ERR (int ) ;
+ int SVN_ERR_ASSERT (int ) ;
+ int SVN_IS_VALID_REVNUM (int ) ;
+ int * SVN_NO_ERROR ;
+ int TRUE ;
+ char* svn_relpath_dirname (char const*,int *) ;
+ char* svn_relpath_join (char const*,int ,int *) ;
+ int svn_relpath_skip_ancestor (char const*,char const*) ;
+ int svn_wc__db_base_get_info_internal (scalar_t__*,int *,int *,char const**,int *,int *,int *,int *,int *,int const**,int *,int **,int *,int *,int *,int *,char const*,int *,int *) ;
+ int svn_wc__db_fetch_repos_info (int *,int *,int *,int ,int *) ;
+ int svn_wc__db_read_pristine_info (int *,int *,int *,int *,int *,int *,int const**,int *,int *,int *,int *,char const*,int *,int *) ;
+ int svn_wc__db_scan_addition_internal (int *,int *,char const**,int *,int *,int *,int *,int *,char const*,int *,int *) ;
+ int svn_wc__db_scan_deletion_internal (int *,int *,char const**,int *,int *,char const*,int *,int *) ;
+ scalar_t__ svn_wc__db_status_not_present ;
 
 __attribute__((used)) static svn_error_t *
 get_info_for_deleted(svn_wc_entry_t *entry,
@@ -59,9 +59,9 @@ get_info_for_deleted(svn_wc_entry_t *entry,
   if (have_base && !have_more_work)
     {
       apr_int64_t repos_id;
-      /* This is the delete of a BASE node */
+
       SVN_ERR(svn_wc__db_base_get_info_internal(
-                                       NULL, kind,
+                                       ((void*)0), kind,
                                        &entry->revision,
                                        repos_relpath,
                                        &repos_id,
@@ -70,10 +70,10 @@ get_info_for_deleted(svn_wc_entry_t *entry,
                                        &entry->cmt_author,
                                        &entry->depth,
                                        checksum,
-                                       NULL,
+                                       ((void*)0),
                                        lock,
-                                       &entry->has_props, NULL,
-                                       NULL,
+                                       &entry->has_props, ((void*)0),
+                                       ((void*)0),
                                        wcroot, entry_relpath,
                                        result_pool,
                                        scratch_pool));
@@ -87,47 +87,47 @@ get_info_for_deleted(svn_wc_entry_t *entry,
       const char *parent_relpath;
       apr_int64_t repos_id;
 
-      /* This is a deleted child of a copy/move-here,
-         so we need to scan up the WORKING tree to find the root of
-         the deletion. Then examine its parent to discover its
-         future location in the repository.  */
-      SVN_ERR(svn_wc__db_read_pristine_info(NULL, kind,
+
+
+
+
+      SVN_ERR(svn_wc__db_read_pristine_info(((void*)0), kind,
                                             &entry->cmt_rev,
                                             &entry->cmt_date,
                                             &entry->cmt_author,
                                             &entry->depth,
                                             checksum,
-                                            NULL,
-                                            &entry->has_props, NULL,
+                                            ((void*)0),
+                                            &entry->has_props, ((void*)0),
                                             db,
                                             entry_abspath,
                                             result_pool,
                                             scratch_pool));
-      /* working_size and text_time unavailable */
+
 
      SVN_ERR(svn_wc__db_scan_deletion_internal(
-                                      NULL,
-                                      NULL,
-                                      &work_del_relpath, NULL,
+                                      ((void*)0),
+                                      ((void*)0),
+                                      &work_del_relpath, ((void*)0),
                                       wcroot, entry_relpath,
                                       scratch_pool, scratch_pool));
 
-      SVN_ERR_ASSERT(work_del_relpath != NULL);
+      SVN_ERR_ASSERT(work_del_relpath != ((void*)0));
       parent_relpath = svn_relpath_dirname(work_del_relpath, scratch_pool);
 
-      /* The parent directory of the delete root must be added, so we
-         can find the required information there */
+
+
       SVN_ERR(svn_wc__db_scan_addition_internal(
-                                       NULL, NULL,
+                                       ((void*)0), ((void*)0),
                                        &parent_repos_relpath,
                                        &repos_id,
-                                       NULL, NULL, NULL,
+                                       ((void*)0), ((void*)0), ((void*)0),
                                        wcroot, parent_relpath,
                                        result_pool, scratch_pool));
       SVN_ERR(svn_wc__db_fetch_repos_info(&entry->repos, &entry->uuid,
                                           wcroot, repos_id, result_pool));
 
-      /* Now glue it all together */
+
       *repos_relpath = svn_relpath_join(parent_repos_relpath,
                                         svn_relpath_skip_ancestor(
                                                             parent_relpath,
@@ -135,16 +135,16 @@ get_info_for_deleted(svn_wc_entry_t *entry,
                                         result_pool);
 
 
-      /* Even though this is the delete of a WORKING node, there might still
-         be a BASE node somewhere below with an interesting revision */
+
+
       if (have_base)
         {
           svn_wc__db_status_t status;
           SVN_ERR(svn_wc__db_base_get_info_internal(
-                                           &status, NULL, &entry->revision,
-                                           NULL, NULL, NULL, NULL, NULL, NULL,
-                                           NULL, NULL, lock, NULL, NULL,
-                                           NULL,
+                                           &status, ((void*)0), &entry->revision,
+                                           ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0),
+                                           ((void*)0), ((void*)0), lock, ((void*)0), ((void*)0),
+                                           ((void*)0),
                                            wcroot, entry_relpath,
                                            result_pool, scratch_pool));
 
@@ -153,11 +153,11 @@ get_info_for_deleted(svn_wc_entry_t *entry,
         }
     }
 
-  /* Do some extra work for the child nodes.  */
-  if (!SVN_IS_VALID_REVNUM(entry->revision) && parent_entry != NULL)
+
+  if (!SVN_IS_VALID_REVNUM(entry->revision) && parent_entry != ((void*)0))
     {
-      /* For child nodes without a revision, pick up the parent's
-         revision.  */
+
+
       entry->revision = parent_entry->revision;
     }
 

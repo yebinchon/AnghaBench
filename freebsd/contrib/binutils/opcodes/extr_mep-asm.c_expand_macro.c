@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {char* expansion; } ;
-typedef  TYPE_1__ macro ;
+typedef TYPE_1__ macro ;
 struct TYPE_6__ {char* start; int len; } ;
-typedef  TYPE_2__ arg ;
+typedef TYPE_2__ arg ;
 
-/* Variables and functions */
- char MAXARGS ; 
- char* expand_string (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (char*) ; 
- char* str_append (char*,char*,int) ; 
+
+ char MAXARGS ;
+ char* expand_string (char*,int ) ;
+ int free (char*) ;
+ char* str_append (char*,char*,int) ;
 
 __attribute__((used)) static char *
 expand_macro (arg *args, int narg, macro *mac)
@@ -31,21 +31,21 @@ expand_macro (arg *args, int narg, macro *mac)
   char *mark = e;
   int arg = 0;
 
-  /*  printf("expanding macro %s with %d args\n", mac->name, narg + 1); */
+
   while (*e)
     {
-      if (*e == '`' && 
-	  (*e+1) && 
-	  ((*(e + 1) - '1') <= MAXARGS) &&
-	  ((*(e + 1) - '1') <= narg))
-	{
-	  result = str_append (result, mark, e - mark);
-	  arg = (*(e + 1) - '1');
-	  /* printf("replacing `%d with %s\n", arg+1, args[arg].start); */
-	  result = str_append (result, args[arg].start, args[arg].len);
-	  ++e;
-	  mark = e+1;
-	}
+      if (*e == '`' &&
+   (*e+1) &&
+   ((*(e + 1) - '1') <= MAXARGS) &&
+   ((*(e + 1) - '1') <= narg))
+ {
+   result = str_append (result, mark, e - mark);
+   arg = (*(e + 1) - '1');
+
+   result = str_append (result, args[arg].start, args[arg].len);
+   ++e;
+   mark = e+1;
+ }
       ++e;
     }
 
@@ -58,6 +58,6 @@ expand_macro (arg *args, int narg, macro *mac)
       free (result);
       return rescanned_result;
     }
-  else 
+  else
     return result;
 }

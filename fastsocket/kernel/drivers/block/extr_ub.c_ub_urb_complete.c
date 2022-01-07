@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct urb {struct ub_dev* context; } ;
-struct ub_dev {int /*<<< orphan*/  tasklet; int /*<<< orphan*/  work_done; } ;
+struct ub_dev {int tasklet; int work_done; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  tasklet_schedule (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ub_complete (int /*<<< orphan*/ *) ; 
+
+ int tasklet_schedule (int *) ;
+ int ub_complete (int *) ;
 
 __attribute__((used)) static void ub_urb_complete(struct urb *urb)
 {
-	struct ub_dev *sc = urb->context;
+ struct ub_dev *sc = urb->context;
 
-	ub_complete(&sc->work_done);
-	tasklet_schedule(&sc->tasklet);
+ ub_complete(&sc->work_done);
+ tasklet_schedule(&sc->tasklet);
 }

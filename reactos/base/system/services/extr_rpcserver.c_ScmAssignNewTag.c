@@ -1,62 +1,62 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  pdwGroupTags ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int pdwGroupTags ;
 struct TYPE_9__ {struct TYPE_9__* Flink; } ;
-struct TYPE_8__ {scalar_t__ dwTag; int /*<<< orphan*/  lpServiceName; TYPE_1__* lpGroup; TYPE_3__ ServiceListEntry; } ;
-struct TYPE_7__ {int /*<<< orphan*/  szGroupName; } ;
-typedef  TYPE_2__* PSERVICE ;
-typedef  TYPE_3__* PLIST_ENTRY ;
-typedef  scalar_t__* PDWORD ;
-typedef  int /*<<< orphan*/ * LPBYTE ;
-typedef  int INT ;
-typedef  int /*<<< orphan*/ * HKEY ;
-typedef  scalar_t__ DWORD ;
-typedef  int /*<<< orphan*/  BOOLEAN ;
+struct TYPE_8__ {scalar_t__ dwTag; int lpServiceName; TYPE_1__* lpGroup; TYPE_3__ ServiceListEntry; } ;
+struct TYPE_7__ {int szGroupName; } ;
+typedef TYPE_2__* PSERVICE ;
+typedef TYPE_3__* PLIST_ENTRY ;
+typedef scalar_t__* PDWORD ;
+typedef int * LPBYTE ;
+typedef int INT ;
+typedef int * HKEY ;
+typedef scalar_t__ DWORD ;
+typedef int BOOLEAN ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int /*<<< orphan*/ ) ; 
- TYPE_2__* CONTAINING_RECORD (TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DPRINT (char*,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DPRINT1 (char*,int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__ ERROR_MORE_DATA ; 
- scalar_t__ ERROR_NOT_ENOUGH_MEMORY ; 
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HEAP_ZERO_MEMORY ; 
- int /*<<< orphan*/  HKEY_LOCAL_MACHINE ; 
- scalar_t__* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__*) ; 
- int /*<<< orphan*/  KEY_READ ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ *) ; 
- scalar_t__ RegOpenKeyExW (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- scalar_t__ RegQueryValueExW (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__*) ; 
- int /*<<< orphan*/  SERVICE ; 
- int /*<<< orphan*/  ServiceListEntry ; 
- int TAG_ARRAY_SIZE ; 
- int /*<<< orphan*/  TRUE ; 
- scalar_t__ min (scalar_t__,scalar_t__) ; 
+
+ int ASSERT (int ) ;
+ TYPE_2__* CONTAINING_RECORD (TYPE_3__*,int ,int ) ;
+ int DPRINT (char*,scalar_t__,int ,int ) ;
+ int DPRINT1 (char*,int ,scalar_t__) ;
+ scalar_t__ ERROR_MORE_DATA ;
+ scalar_t__ ERROR_NOT_ENOUGH_MEMORY ;
+ scalar_t__ ERROR_SUCCESS ;
+ int FALSE ;
+ int GetProcessHeap () ;
+ int HEAP_ZERO_MEMORY ;
+ int HKEY_LOCAL_MACHINE ;
+ scalar_t__* HeapAlloc (int ,int ,scalar_t__) ;
+ int HeapFree (int ,int ,scalar_t__*) ;
+ int KEY_READ ;
+ int RegCloseKey (int *) ;
+ scalar_t__ RegOpenKeyExW (int ,char*,int ,int ,int **) ;
+ scalar_t__ RegQueryValueExW (int *,int ,int *,int *,int *,scalar_t__*) ;
+ int SERVICE ;
+ int ServiceListEntry ;
+ int TAG_ARRAY_SIZE ;
+ int TRUE ;
+ scalar_t__ min (scalar_t__,scalar_t__) ;
 
 DWORD
 ScmAssignNewTag(PSERVICE lpService)
 {
-    HKEY hKey = NULL;
+    HKEY hKey = ((void*)0);
     DWORD dwError;
     DWORD dwGroupTagCount = 0;
-    PDWORD pdwGroupTags = NULL;
+    PDWORD pdwGroupTags = ((void*)0);
     DWORD dwFreeTag = 0;
     DWORD dwTagUsedBase = 1;
     BOOLEAN TagUsed[TAG_ARRAY_SIZE];
@@ -66,8 +66,8 @@ ScmAssignNewTag(PSERVICE lpService)
     PLIST_ENTRY ServiceEntry;
     PSERVICE CurrentService;
 
-    ASSERT(lpService != NULL);
-    ASSERT(lpService->lpGroup != NULL);
+    ASSERT(lpService != ((void*)0));
+    ASSERT(lpService->lpGroup != ((void*)0));
 
     dwError = RegOpenKeyExW(HKEY_LOCAL_MACHINE,
                             L"System\\CurrentControlSet\\Control\\GroupOrderList",
@@ -78,13 +78,13 @@ ScmAssignNewTag(PSERVICE lpService)
     if (dwError != ERROR_SUCCESS)
         goto findFreeTag;
 
-    /* query value length */
+
     cbDataSize = 0;
     dwError = RegQueryValueExW(hKey,
                                lpService->lpGroup->szGroupName,
-                               NULL,
-                               NULL,
-                               NULL,
+                               ((void*)0),
+                               ((void*)0),
+                               ((void*)0),
                                &cbDataSize);
 
     if (dwError != ERROR_SUCCESS && dwError != ERROR_MORE_DATA)
@@ -99,8 +99,8 @@ ScmAssignNewTag(PSERVICE lpService)
 
     dwError = RegQueryValueExW(hKey,
                                lpService->lpGroup->szGroupName,
-                               NULL,
-                               NULL,
+                               ((void*)0),
+                               ((void*)0),
                                (LPBYTE)pdwGroupTags,
                                &cbDataSize);
 
@@ -115,11 +115,11 @@ ScmAssignNewTag(PSERVICE lpService)
 findFreeTag:
     do
     {
-        /* mark all tags as unused */
+
         for (i = 0; i < TAG_ARRAY_SIZE; i++)
             TagUsed[i] = FALSE;
 
-        /* mark tags in GroupOrderList as used */
+
         for (i = 1; i <= dwGroupTagCount; i++)
         {
             nTagOffset = pdwGroupTags[i] - dwTagUsedBase;
@@ -127,11 +127,11 @@ findFreeTag:
                 TagUsed[nTagOffset] = TRUE;
         }
 
-        /* mark tags in service list as used */
+
         ServiceEntry = lpService->ServiceListEntry.Flink;
         while (ServiceEntry != &lpService->ServiceListEntry)
         {
-            ASSERT(ServiceEntry != NULL);
+            ASSERT(ServiceEntry != ((void*)0));
             CurrentService = CONTAINING_RECORD(ServiceEntry, SERVICE, ServiceListEntry);
             if (CurrentService->lpGroup == lpService->lpGroup)
             {
@@ -143,7 +143,7 @@ findFreeTag:
             ServiceEntry = ServiceEntry->Flink;
         }
 
-        /* find unused tag, if any */
+
         for (i = 0; i < TAG_ARRAY_SIZE; i++)
         {
             if (!TagUsed[i])

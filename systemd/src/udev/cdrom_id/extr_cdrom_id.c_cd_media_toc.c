@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  toc ;
+
+
+
+
+typedef int toc ;
 struct scsi_cmd {int dummy; } ;
-typedef  int /*<<< orphan*/  header ;
+typedef int header ;
 
-/* Variables and functions */
- unsigned long long cd_media_session_last_offset ; 
- int /*<<< orphan*/  cd_media_track_count_audio ; 
- int /*<<< orphan*/  cd_media_track_count_data ; 
- int /*<<< orphan*/  info_scsi_cmd_err (char*,int) ; 
- int /*<<< orphan*/  log_debug (char*,unsigned char,unsigned int,...) ; 
- int /*<<< orphan*/  scsi_cmd_init (struct scsi_cmd*) ; 
- int scsi_cmd_run (struct scsi_cmd*,int,unsigned char*,int) ; 
- int /*<<< orphan*/  scsi_cmd_set (struct scsi_cmd*,int,int) ; 
+
+ unsigned long long cd_media_session_last_offset ;
+ int cd_media_track_count_audio ;
+ int cd_media_track_count_data ;
+ int info_scsi_cmd_err (char*,int) ;
+ int log_debug (char*,unsigned char,unsigned int,...) ;
+ int scsi_cmd_init (struct scsi_cmd*) ;
+ int scsi_cmd_run (struct scsi_cmd*,int,unsigned char*,int) ;
+ int scsi_cmd_set (struct scsi_cmd*,int,int) ;
 
 __attribute__((used)) static int cd_media_toc(int fd) {
         struct scsi_cmd sc;
@@ -49,16 +49,16 @@ __attribute__((used)) static int cd_media_toc(int fd) {
                 return -1;
         if (len < 2)
                 return -1;
-        /* 2: first track, 3: last track */
+
         num_tracks = header[3] - header[2] + 1;
 
-        /* empty media has no tracks */
+
         if (len < 8)
                 return 0;
 
         scsi_cmd_init(&sc);
         scsi_cmd_set(&sc, 0, 0x43);
-        scsi_cmd_set(&sc, 6, header[2]); /* First Track/Session Number */
+        scsi_cmd_set(&sc, 6, header[2]);
         scsi_cmd_set(&sc, 7, (len >> 8) & 0xff);
         scsi_cmd_set(&sc, 8, len & 0xff);
         scsi_cmd_set(&sc, 9, 0);
@@ -68,9 +68,9 @@ __attribute__((used)) static int cd_media_toc(int fd) {
                 return -1;
         }
 
-        /* Take care to not iterate beyond the last valid track as specified in
-         * the TOC, but also avoid going beyond the TOC length, just in case
-         * the last track number is invalidly large */
+
+
+
         for (p = toc+4, i = 4; i < len-8 && num_tracks > 0; i += 8, p += 8, --num_tracks) {
                 unsigned block;
                 unsigned is_data_track;
@@ -89,7 +89,7 @@ __attribute__((used)) static int cd_media_toc(int fd) {
 
         scsi_cmd_init(&sc);
         scsi_cmd_set(&sc, 0, 0x43);
-        scsi_cmd_set(&sc, 2, 1); /* Session Info */
+        scsi_cmd_set(&sc, 2, 1);
         scsi_cmd_set(&sc, 8, sizeof(header));
         scsi_cmd_set(&sc, 9, 0);
         err = scsi_cmd_run(&sc, fd, header, sizeof(header));

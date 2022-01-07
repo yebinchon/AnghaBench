@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int member_0; int* member_1; } ;
-struct TYPE_5__ {char* member_0; TYPE_1__ member_2; int /*<<< orphan*/  member_1; } ;
-typedef  int /*<<< orphan*/ * PCERT_EXTENSION ;
-typedef  char CHAR ;
-typedef  TYPE_2__ CERT_EXTENSION ;
-typedef  int BYTE ;
+struct TYPE_5__ {char* member_0; TYPE_1__ member_2; int member_1; } ;
+typedef int * PCERT_EXTENSION ;
+typedef char CHAR ;
+typedef TYPE_2__ CERT_EXTENSION ;
+typedef int BYTE ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * CertFindExtension (char*,int,TYPE_2__*) ; 
- int ERROR_INVALID_PARAMETER ; 
- int GetLastError () ; 
- int /*<<< orphan*/  SetLastError (int) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
+
+ int * CertFindExtension (char*,int,TYPE_2__*) ;
+ int ERROR_INVALID_PARAMETER ;
+ int GetLastError () ;
+ int SetLastError (int) ;
+ int TRUE ;
+ int ok (int,char*,...) ;
 
 __attribute__((used)) static void test_findExtension(void)
 {
@@ -34,40 +34,40 @@ __attribute__((used)) static void test_findExtension(void)
     BYTE blobbin[] = {0x02,0x01,0x01};
     CERT_EXTENSION ext = { oid, TRUE, { sizeof blobbin, blobbin } };
 
-    /* returns NULL, last error not set */
+
     SetLastError(0xdeadbeef);
-    ret = CertFindExtension(NULL, 0, NULL);
-    ok(ret == NULL, "Expected failure\n");
+    ret = CertFindExtension(((void*)0), 0, ((void*)0));
+    ok(ret == ((void*)0), "Expected failure\n");
     ok(GetLastError() == 0xdeadbeef, "Last error was set to %08x\n",
      GetLastError());
     if (0)
     {
-        /* crashes */
+
         SetLastError(0xdeadbeef);
-        CertFindExtension(NULL, 1, NULL);
-        /* returns NULL, last error is ERROR_INVALID_PARAMETER
-         * crashes on Vista
-         */
+        CertFindExtension(((void*)0), 1, ((void*)0));
+
+
+
         SetLastError(0xdeadbeef);
-        ret = CertFindExtension(NULL, 1, &ext);
+        ret = CertFindExtension(((void*)0), 1, &ext);
         ok(!ret && GetLastError() == ERROR_INVALID_PARAMETER,
          "Expected ERROR_INVALID_PARAMETER, got %d (%08x)\n", GetLastError(),
          GetLastError());
     }
-    /* returns NULL, last error not set */
+
     SetLastError(0xdeadbeef);
     ret = CertFindExtension("bogus", 1, &ext);
-    ok(ret == NULL, "Expected failure\n");
+    ok(ret == ((void*)0), "Expected failure\n");
     ok(GetLastError() == 0xdeadbeef, "Last error was set to %08x\n",
      GetLastError());
-    /* returns NULL, last error not set */
+
     SetLastError(0xdeadbeef);
     ret = CertFindExtension("1.2.4", 1, &ext);
-    ok(ret == NULL, "Expected failure\n");
+    ok(ret == ((void*)0), "Expected failure\n");
     ok(GetLastError() == 0xdeadbeef, "Last error was set to %08x\n",
      GetLastError());
-    /* succeeds, last error not set */
+
     SetLastError(0xdeadbeef);
     ret = CertFindExtension("1.2.3", 1, &ext);
-    ok(ret != NULL, "CertFindExtension failed: %08x\n", GetLastError());
+    ok(ret != ((void*)0), "CertFindExtension failed: %08x\n", GetLastError());
 }

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t UdevBuiltinCommand ;
-struct TYPE_2__ {int /*<<< orphan*/  name; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  WHITESPACE ; 
- size_t _UDEV_BUILTIN_INVALID ; 
- size_t _UDEV_BUILTIN_MAX ; 
- int /*<<< orphan*/  assert (char const*) ; 
- TYPE_1__** builtins ; 
- size_t strcspn (char const*,int /*<<< orphan*/ ) ; 
- scalar_t__ strneq (int /*<<< orphan*/ ,char const*,size_t) ; 
- scalar_t__ strspn (char const*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef size_t UdevBuiltinCommand ;
+struct TYPE_2__ {int name; } ;
+
+
+ int WHITESPACE ;
+ size_t _UDEV_BUILTIN_INVALID ;
+ size_t _UDEV_BUILTIN_MAX ;
+ int assert (char const*) ;
+ TYPE_1__** builtins ;
+ size_t strcspn (char const*,int ) ;
+ scalar_t__ strneq (int ,char const*,size_t) ;
+ scalar_t__ strspn (char const*,int ) ;
 
 UdevBuiltinCommand udev_builtin_lookup(const char *command) {
         UdevBuiltinCommand i;

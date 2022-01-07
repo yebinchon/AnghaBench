@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ UNIT_FILE_SYSTEM ; 
- int /*<<< orphan*/  arg_ask_password ; 
- scalar_t__ arg_scope ; 
- int /*<<< orphan*/  arg_transport ; 
- int /*<<< orphan*/  polkit_agent_open_if_enabled (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ scalar_t__ UNIT_FILE_SYSTEM ;
+ int arg_ask_password ;
+ scalar_t__ arg_scope ;
+ int arg_transport ;
+ int polkit_agent_open_if_enabled (int ,int ) ;
 
 __attribute__((used)) static void polkit_agent_open_maybe(void) {
-        /* Open the polkit agent as a child process if necessary */
+
 
         if (arg_scope != UNIT_FILE_SYSTEM)
                 return;

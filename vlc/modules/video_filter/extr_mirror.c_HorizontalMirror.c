@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_6__ {TYPE_1__* p; } ;
-typedef  TYPE_2__ picture_t ;
-struct TYPE_5__ {int i_visible_lines; int i_pitch; int i_visible_pitch; int /*<<< orphan*/ * p_pixels; } ;
+typedef TYPE_2__ picture_t ;
+struct TYPE_5__ {int i_visible_lines; int i_pitch; int i_visible_pitch; int * p_pixels; } ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static void HorizontalMirror( picture_t *p_pic, picture_t *p_outpic, int i_plane,
                              bool b_top_to_bottom )
@@ -39,7 +39,7 @@ __attribute__((used)) static void HorizontalMirror( picture_t *p_pic, picture_t 
         while( p_in < p_line_end )
         {
             uint8_t *p_inverse_line;
-            /* are we in the upper part of the picture */
+
             if ( i_curr_line < i_max_lines/2 )
             {
                 if ( b_top_to_bottom )
@@ -48,7 +48,7 @@ __attribute__((used)) static void HorizontalMirror( picture_t *p_pic, picture_t 
                 }
                 else
                 {
-                    /* determines line inverse to current line */
+
                     p_inverse_line = p_pic->p[i_plane].p_pixels +
                         ( i_max_lines - i_curr_line - 1 ) * p_pic->p[i_plane].i_pitch;
                     *p_out = *( p_inverse_line + ( p_in - p_line_start ) );
@@ -58,7 +58,7 @@ __attribute__((used)) static void HorizontalMirror( picture_t *p_pic, picture_t 
             {
                 if ( b_top_to_bottom )
                 {
-                    /* determines line inverse to current line */
+
                     p_inverse_line = p_pic->p[i_plane].p_pixels +
                         ( i_max_lines - i_curr_line - 1 ) * p_pic->p[i_plane].i_pitch;
                     *p_out = *( p_inverse_line + ( p_in - p_line_start ) );

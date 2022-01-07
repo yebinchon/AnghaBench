@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct tcf_proto {struct tcf_proto* next; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  tcf_destroy (struct tcf_proto*) ; 
+
+ int tcf_destroy (struct tcf_proto*) ;
 
 void tcf_destroy_chain(struct tcf_proto **fl)
 {
-	struct tcf_proto *tp;
+ struct tcf_proto *tp;
 
-	while ((tp = *fl) != NULL) {
-		*fl = tp->next;
-		tcf_destroy(tp);
-	}
+ while ((tp = *fl) != ((void*)0)) {
+  *fl = tp->next;
+  tcf_destroy(tp);
+ }
 }

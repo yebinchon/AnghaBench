@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct nvkm_therm {int dummy; } ;
 struct nvkm_device {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  gf119_therm ; 
- int nvkm_therm_new_ (int /*<<< orphan*/ *,struct nvkm_device*,int,struct nvkm_therm**) ; 
+
+ int gf119_therm ;
+ int nvkm_therm_new_ (int *,struct nvkm_device*,int,struct nvkm_therm**) ;
 
 int
 gf119_therm_new(struct nvkm_device *device, int index,
-	       struct nvkm_therm **ptherm)
+        struct nvkm_therm **ptherm)
 {
-	return nvkm_therm_new_(&gf119_therm, device, index, ptherm);
+ return nvkm_therm_new_(&gf119_therm, device, index, ptherm);
 }

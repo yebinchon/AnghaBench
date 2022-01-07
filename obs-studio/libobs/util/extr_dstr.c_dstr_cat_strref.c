@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct strref {int /*<<< orphan*/  len; int /*<<< orphan*/  array; } ;
+
+
+
+
+struct strref {int len; int array; } ;
 struct dstr {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dstr_ncat (struct dstr*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int dstr_ncat (struct dstr*,int ,int ) ;
 
 void dstr_cat_strref(struct dstr *dst, const struct strref *str)
 {
-	dstr_ncat(dst, str->array, str->len);
+ dstr_ncat(dst, str->array, str->len);
 }

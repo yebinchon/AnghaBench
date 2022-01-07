@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  intfstream_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SEEK_SET ; 
- scalar_t__ intfstream_read (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  intfstream_seek (int /*<<< orphan*/ *,unsigned int,int /*<<< orphan*/ ) ; 
- scalar_t__ string_is_equal (char*,char*) ; 
+
+
+
+typedef int intfstream_t ;
+
+
+ int SEEK_SET ;
+ scalar_t__ intfstream_read (int *,char*,int) ;
+ int intfstream_seek (int *,unsigned int,int ) ;
+ scalar_t__ string_is_equal (char*,char*) ;
 
 int detect_psp_game(intfstream_t *fd, char *game_id)
 {
    unsigned pos;
-   bool rv   = false;
+   bool rv = 0;
 
    for (pos = 0; pos < 100000; pos++)
    {
@@ -62,13 +62,13 @@ int detect_psp_game(intfstream_t *fd, char *game_id)
                   intfstream_seek(fd, pos, SEEK_SET);
                   if (intfstream_read(fd, game_id, 10) > 0)
                   {
-#if 0
-                     game_id[4] = '-';
-                     game_id[8] = game_id[9];
-                     game_id[9] = game_id[10];
-#endif
+
+
+
+
+
                      game_id[10] = '\0';
-                     rv = true;
+                     rv = 1;
                   }
                   break;
                }

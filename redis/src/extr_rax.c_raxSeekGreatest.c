@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  raxNode ;
-struct TYPE_7__ {TYPE_2__* node; int /*<<< orphan*/  stack; } ;
-typedef  TYPE_1__ raxIterator ;
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int raxNode ;
+struct TYPE_7__ {TYPE_2__* node; int stack; } ;
+typedef TYPE_1__ raxIterator ;
 struct TYPE_8__ {int size; int data; scalar_t__ iscompr; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memcpy (TYPE_2__**,int /*<<< orphan*/ **,int) ; 
- int /*<<< orphan*/  raxIteratorAddChars (TYPE_1__*,int,int) ; 
- int /*<<< orphan*/ ** raxNodeLastChildPtr (TYPE_2__*) ; 
- int /*<<< orphan*/  raxStackPush (int /*<<< orphan*/ *,TYPE_2__*) ; 
+
+ int memcpy (TYPE_2__**,int **,int) ;
+ int raxIteratorAddChars (TYPE_1__*,int,int) ;
+ int ** raxNodeLastChildPtr (TYPE_2__*) ;
+ int raxStackPush (int *,TYPE_2__*) ;
 
 int raxSeekGreatest(raxIterator *it) {
     while(it->node->size) {

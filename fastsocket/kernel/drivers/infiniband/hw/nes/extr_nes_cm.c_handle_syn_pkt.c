@@ -1,112 +1,103 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
-struct tcphdr {int doff; int /*<<< orphan*/  seq; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int u32 ;
+struct tcphdr {int doff; int seq; } ;
 struct sk_buff {int dummy; } ;
-struct TYPE_3__ {int /*<<< orphan*/  rcv_nxt; } ;
-struct nes_cm_node {int state; int accept_pend; TYPE_2__* listener; int /*<<< orphan*/  send_entry; TYPE_1__ tcp_cntxt; } ;
-struct TYPE_4__ {int /*<<< orphan*/  pend_accepts_cnt; int /*<<< orphan*/  backlog; } ;
+struct TYPE_3__ {int rcv_nxt; } ;
+struct nes_cm_node {int state; int accept_pend; TYPE_2__* listener; int send_entry; TYPE_1__ tcp_cntxt; } ;
+struct TYPE_4__ {int pend_accepts_cnt; int backlog; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BUG_ON (int /*<<< orphan*/ ) ; 
-#define  NES_CM_STATE_CLOSED 139 
-#define  NES_CM_STATE_CLOSING 138 
-#define  NES_CM_STATE_ESTABLISHED 137 
-#define  NES_CM_STATE_FIN_WAIT1 136 
-#define  NES_CM_STATE_FIN_WAIT2 135 
-#define  NES_CM_STATE_LAST_ACK 134 
-#define  NES_CM_STATE_LISTENING 133 
-#define  NES_CM_STATE_MPAREQ_RCVD 132 
-#define  NES_CM_STATE_MPAREQ_SENT 131 
- int NES_CM_STATE_SYN_RCVD ; 
-#define  NES_CM_STATE_SYN_SENT 130 
-#define  NES_CM_STATE_TSA 129 
-#define  NES_CM_STATE_UNKNOWN 128 
- int /*<<< orphan*/  NES_DBG_CM ; 
- int /*<<< orphan*/  active_open_err (struct nes_cm_node*,struct sk_buff*,int) ; 
- int /*<<< orphan*/  add_ref_cm_node (struct nes_cm_node*) ; 
- int /*<<< orphan*/  atomic_inc (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  atomic_read (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cleanup_retrans_entry (struct nes_cm_node*) ; 
- int /*<<< orphan*/  cm_backlog_drops ; 
- int /*<<< orphan*/  drop_packet (struct sk_buff*) ; 
- int handle_tcp_options (struct nes_cm_node*,struct tcphdr*,struct sk_buff*,int,int) ; 
- int /*<<< orphan*/  nes_debug (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ntohl (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  passive_open_err (struct nes_cm_node*,struct sk_buff*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  send_reset (struct nes_cm_node*,struct sk_buff*) ; 
- int /*<<< orphan*/  send_syn (struct nes_cm_node*,int,struct sk_buff*) ; 
- int /*<<< orphan*/  skb_trim (struct sk_buff*,int /*<<< orphan*/ ) ; 
+
+ int BUG_ON (int ) ;
+ int NES_CM_STATE_SYN_RCVD ;
+
+
+
+ int NES_DBG_CM ;
+ int active_open_err (struct nes_cm_node*,struct sk_buff*,int) ;
+ int add_ref_cm_node (struct nes_cm_node*) ;
+ int atomic_inc (int *) ;
+ int atomic_read (int *) ;
+ int cleanup_retrans_entry (struct nes_cm_node*) ;
+ int cm_backlog_drops ;
+ int drop_packet (struct sk_buff*) ;
+ int handle_tcp_options (struct nes_cm_node*,struct tcphdr*,struct sk_buff*,int,int) ;
+ int nes_debug (int ,char*) ;
+ int ntohl (int ) ;
+ int passive_open_err (struct nes_cm_node*,struct sk_buff*,int ) ;
+ int send_reset (struct nes_cm_node*,struct sk_buff*) ;
+ int send_syn (struct nes_cm_node*,int,struct sk_buff*) ;
+ int skb_trim (struct sk_buff*,int ) ;
 
 __attribute__((used)) static void handle_syn_pkt(struct nes_cm_node *cm_node, struct sk_buff *skb,
-			   struct tcphdr *tcph)
+      struct tcphdr *tcph)
 {
-	int ret;
-	u32 inc_sequence;
-	int optionsize;
+ int ret;
+ u32 inc_sequence;
+ int optionsize;
 
-	optionsize = (tcph->doff << 2) - sizeof(struct tcphdr);
-	skb_trim(skb, 0);
-	inc_sequence = ntohl(tcph->seq);
+ optionsize = (tcph->doff << 2) - sizeof(struct tcphdr);
+ skb_trim(skb, 0);
+ inc_sequence = ntohl(tcph->seq);
 
-	switch (cm_node->state) {
-	case NES_CM_STATE_SYN_SENT:
-	case NES_CM_STATE_MPAREQ_SENT:
-		/* Rcvd syn on active open connection*/
-		active_open_err(cm_node, skb, 1);
-		break;
-	case NES_CM_STATE_LISTENING:
-		/* Passive OPEN */
-		if (atomic_read(&cm_node->listener->pend_accepts_cnt) >
-		    cm_node->listener->backlog) {
-			nes_debug(NES_DBG_CM, "drop syn due to backlog "
-				  "pressure \n");
-			cm_backlog_drops++;
-			passive_open_err(cm_node, skb, 0);
-			break;
-		}
-		ret = handle_tcp_options(cm_node, tcph, skb, optionsize,
-					 1);
-		if (ret) {
-			passive_open_err(cm_node, skb, 0);
-			/* drop pkt */
-			break;
-		}
-		cm_node->tcp_cntxt.rcv_nxt = inc_sequence + 1;
-		BUG_ON(cm_node->send_entry);
-		cm_node->accept_pend = 1;
-		atomic_inc(&cm_node->listener->pend_accepts_cnt);
+ switch (cm_node->state) {
+ case 130:
+ case 131:
 
-		cm_node->state = NES_CM_STATE_SYN_RCVD;
-		send_syn(cm_node, 1, skb);
-		break;
-	case NES_CM_STATE_CLOSED:
-		cleanup_retrans_entry(cm_node);
-		add_ref_cm_node(cm_node);
-		send_reset(cm_node, skb);
-		break;
-	case NES_CM_STATE_TSA:
-	case NES_CM_STATE_ESTABLISHED:
-	case NES_CM_STATE_FIN_WAIT1:
-	case NES_CM_STATE_FIN_WAIT2:
-	case NES_CM_STATE_MPAREQ_RCVD:
-	case NES_CM_STATE_LAST_ACK:
-	case NES_CM_STATE_CLOSING:
-	case NES_CM_STATE_UNKNOWN:
-	default:
-		drop_packet(skb);
-		break;
-	}
+  active_open_err(cm_node, skb, 1);
+  break;
+ case 133:
+
+  if (atomic_read(&cm_node->listener->pend_accepts_cnt) >
+      cm_node->listener->backlog) {
+   nes_debug(NES_DBG_CM, "drop syn due to backlog "
+      "pressure \n");
+   cm_backlog_drops++;
+   passive_open_err(cm_node, skb, 0);
+   break;
+  }
+  ret = handle_tcp_options(cm_node, tcph, skb, optionsize,
+      1);
+  if (ret) {
+   passive_open_err(cm_node, skb, 0);
+
+   break;
+  }
+  cm_node->tcp_cntxt.rcv_nxt = inc_sequence + 1;
+  BUG_ON(cm_node->send_entry);
+  cm_node->accept_pend = 1;
+  atomic_inc(&cm_node->listener->pend_accepts_cnt);
+
+  cm_node->state = NES_CM_STATE_SYN_RCVD;
+  send_syn(cm_node, 1, skb);
+  break;
+ case 139:
+  cleanup_retrans_entry(cm_node);
+  add_ref_cm_node(cm_node);
+  send_reset(cm_node, skb);
+  break;
+ case 129:
+ case 137:
+ case 136:
+ case 135:
+ case 132:
+ case 134:
+ case 138:
+ case 128:
+ default:
+  drop_packet(skb);
+  break;
+ }
 }

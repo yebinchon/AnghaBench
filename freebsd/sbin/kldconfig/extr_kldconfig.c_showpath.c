@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct pathhead {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  err (int,char*) ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  printf (char*,char*) ; 
- char* qstring (struct pathhead*) ; 
+
+ int ENOMEM ;
+ int err (int,char*) ;
+ int errno ;
+ int free (char*) ;
+ int printf (char*,char*) ;
+ char* qstring (struct pathhead*) ;
 
 __attribute__((used)) static void
 showpath(struct pathhead *pathq)
 {
-	char *s;
+ char *s;
 
-	if ((s = qstring(pathq)) == NULL) {
-		errno = ENOMEM;
-		err(1, "building path string");
-	}
-	printf("%s\n", s);
-	free(s);
+ if ((s = qstring(pathq)) == ((void*)0)) {
+  errno = ENOMEM;
+  err(1, "building path string");
+ }
+ printf("%s\n", s);
+ free(s);
 }

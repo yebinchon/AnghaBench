@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  Y; int /*<<< orphan*/  X; int /*<<< orphan*/  Z; } ;
-typedef  TYPE_1__ EC_POINT ;
-typedef  int /*<<< orphan*/  EC_GROUP ;
-typedef  int /*<<< orphan*/  BN_CTX ;
-typedef  int /*<<< orphan*/  BIGNUM ;
 
-/* Variables and functions */
- scalar_t__ BN_cmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BN_copy (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BN_set_negative (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BN_value_one () ; 
- int /*<<< orphan*/  EC_F_EC_GF2M_SIMPLE_POINT_GET_AFFINE_COORDINATES ; 
- scalar_t__ EC_POINT_is_at_infinity (int /*<<< orphan*/  const*,TYPE_1__ const*) ; 
- int /*<<< orphan*/  EC_R_POINT_AT_INFINITY ; 
- int /*<<< orphan*/  ECerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ERR_R_SHOULD_NOT_HAVE_BEEN_CALLED ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int Y; int X; int Z; } ;
+typedef TYPE_1__ EC_POINT ;
+typedef int EC_GROUP ;
+typedef int BN_CTX ;
+typedef int BIGNUM ;
+
+
+ scalar_t__ BN_cmp (int ,int ) ;
+ int BN_copy (int *,int ) ;
+ int BN_set_negative (int *,int ) ;
+ int BN_value_one () ;
+ int EC_F_EC_GF2M_SIMPLE_POINT_GET_AFFINE_COORDINATES ;
+ scalar_t__ EC_POINT_is_at_infinity (int const*,TYPE_1__ const*) ;
+ int EC_R_POINT_AT_INFINITY ;
+ int ECerr (int ,int ) ;
+ int ERR_R_SHOULD_NOT_HAVE_BEEN_CALLED ;
 
 int ec_GF2m_simple_point_get_affine_coordinates(const EC_GROUP *group,
                                                 const EC_POINT *point,
@@ -46,12 +46,12 @@ int ec_GF2m_simple_point_get_affine_coordinates(const EC_GROUP *group,
               ERR_R_SHOULD_NOT_HAVE_BEEN_CALLED);
         return 0;
     }
-    if (x != NULL) {
+    if (x != ((void*)0)) {
         if (!BN_copy(x, point->X))
             goto err;
         BN_set_negative(x, 0);
     }
-    if (y != NULL) {
+    if (y != ((void*)0)) {
         if (!BN_copy(y, point->Y))
             goto err;
         BN_set_negative(y, 0);

@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  network_mysqld_masterinfo_t ;
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  int /*<<< orphan*/  GString ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LUA_IMPORT_INT (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LUA_IMPORT_STR (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LUA_TTABLE ; 
- int /*<<< orphan*/  S (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  g_string_free (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * g_string_new (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  luaL_checktype (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_pushlstring (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  master_connect_retry ; 
- int /*<<< orphan*/  master_host ; 
- int /*<<< orphan*/  master_lines ; 
- int /*<<< orphan*/  master_log_file ; 
- int /*<<< orphan*/  master_log_pos ; 
- int /*<<< orphan*/  master_password ; 
- int /*<<< orphan*/  master_port ; 
- int /*<<< orphan*/  master_ssl ; 
- int /*<<< orphan*/  master_ssl_ca ; 
- int /*<<< orphan*/  master_ssl_capath ; 
- int /*<<< orphan*/  master_ssl_cert ; 
- int /*<<< orphan*/  master_ssl_cipher ; 
- int /*<<< orphan*/  master_ssl_key ; 
- int /*<<< orphan*/  master_ssl_verify_server_cert ; 
- int /*<<< orphan*/  master_user ; 
- int /*<<< orphan*/  network_mysqld_masterinfo_append (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  network_mysqld_masterinfo_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * network_mysqld_masterinfo_new () ; 
+
+
+
+typedef int network_mysqld_masterinfo_t ;
+typedef int lua_State ;
+typedef int GString ;
+
+
+ int LUA_IMPORT_INT (int *,int ) ;
+ int LUA_IMPORT_STR (int *,int ) ;
+ int LUA_TTABLE ;
+ int S (int *) ;
+ int TRUE ;
+ int g_string_free (int *,int ) ;
+ int * g_string_new (int *) ;
+ int luaL_checktype (int *,int,int ) ;
+ int lua_pushlstring (int *,int ) ;
+ int master_connect_retry ;
+ int master_host ;
+ int master_lines ;
+ int master_log_file ;
+ int master_log_pos ;
+ int master_password ;
+ int master_port ;
+ int master_ssl ;
+ int master_ssl_ca ;
+ int master_ssl_capath ;
+ int master_ssl_cert ;
+ int master_ssl_cipher ;
+ int master_ssl_key ;
+ int master_ssl_verify_server_cert ;
+ int master_user ;
+ int network_mysqld_masterinfo_append (int *,int *) ;
+ int network_mysqld_masterinfo_free (int *) ;
+ int * network_mysqld_masterinfo_new () ;
 
 __attribute__((used)) static int lua_proto_append_masterinfo_string (lua_State *L) {
         GString *packet;
@@ -67,7 +67,7 @@ __attribute__((used)) static int lua_proto_append_masterinfo_string (lua_State *
         LUA_IMPORT_STR(info, master_ssl_key);
         LUA_IMPORT_INT(info, master_ssl_verify_server_cert);
 
-        packet = g_string_new(NULL);
+        packet = g_string_new(((void*)0));
         network_mysqld_masterinfo_append(packet, info);
 
         network_mysqld_masterinfo_free(info);

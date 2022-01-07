@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  pthread_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  err (int,char*) ; 
- scalar_t__ pthread_create (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  pthread_self () ; 
- int /*<<< orphan*/  resolvloop ; 
+
+
+
+typedef int pthread_t ;
+
+
+ int err (int,char*) ;
+ scalar_t__ pthread_create (int *,int *,int ,int*) ;
+ int pthread_self () ;
+ int resolvloop ;
 
 __attribute__((used)) static void
 run(int *nhosts)
 {
-	pthread_t self = pthread_self();
-	if (pthread_create(&self, NULL, resolvloop, nhosts) != 0)
-		err(1, "pthread_create");
+ pthread_t self = pthread_self();
+ if (pthread_create(&self, ((void*)0), resolvloop, nhosts) != 0)
+  err(1, "pthread_create");
 }

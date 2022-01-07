@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct wmfw_id_hdr {int /*<<< orphan*/  ver; int /*<<< orphan*/  id; } ;
+
+
+
+
+struct wmfw_id_hdr {int ver; int id; } ;
 struct wm_adsp {int fw_id_version; void* fw_id; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  adsp_info (struct wm_adsp*,char*,void*,int,int,int,int) ; 
- void* be32_to_cpu (int /*<<< orphan*/ ) ; 
+
+ int adsp_info (struct wm_adsp*,char*,void*,int,int,int,int) ;
+ void* be32_to_cpu (int ) ;
 
 __attribute__((used)) static void wmfw_parse_id_header(struct wm_adsp *dsp,
-				 struct wmfw_id_hdr *fw, int nalgs)
+     struct wmfw_id_hdr *fw, int nalgs)
 {
-	dsp->fw_id = be32_to_cpu(fw->id);
-	dsp->fw_id_version = be32_to_cpu(fw->ver);
+ dsp->fw_id = be32_to_cpu(fw->id);
+ dsp->fw_id_version = be32_to_cpu(fw->ver);
 
-	adsp_info(dsp, "Firmware: %x v%d.%d.%d, %d algorithms\n",
-		  dsp->fw_id, (dsp->fw_id_version & 0xff0000) >> 16,
-		  (dsp->fw_id_version & 0xff00) >> 8, dsp->fw_id_version & 0xff,
-		  nalgs);
+ adsp_info(dsp, "Firmware: %x v%d.%d.%d, %d algorithms\n",
+    dsp->fw_id, (dsp->fw_id_version & 0xff0000) >> 16,
+    (dsp->fw_id_version & 0xff00) >> 8, dsp->fw_id_version & 0xff,
+    nalgs);
 }

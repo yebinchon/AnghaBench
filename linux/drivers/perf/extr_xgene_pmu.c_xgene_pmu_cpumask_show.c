@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct xgene_pmu_dev {TYPE_1__* parent; } ;
 struct device_attribute {int dummy; } ;
 struct device {int dummy; } ;
-typedef  int /*<<< orphan*/  ssize_t ;
-struct TYPE_2__ {int /*<<< orphan*/  cpu; } ;
+typedef int ssize_t ;
+struct TYPE_2__ {int cpu; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cpumap_print_to_pagebuf (int,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  dev_get_drvdata (struct device*) ; 
- struct xgene_pmu_dev* to_pmu_dev (int /*<<< orphan*/ ) ; 
+
+ int cpumap_print_to_pagebuf (int,char*,int *) ;
+ int dev_get_drvdata (struct device*) ;
+ struct xgene_pmu_dev* to_pmu_dev (int ) ;
 
 __attribute__((used)) static ssize_t xgene_pmu_cpumask_show(struct device *dev,
-				      struct device_attribute *attr, char *buf)
+          struct device_attribute *attr, char *buf)
 {
-	struct xgene_pmu_dev *pmu_dev = to_pmu_dev(dev_get_drvdata(dev));
+ struct xgene_pmu_dev *pmu_dev = to_pmu_dev(dev_get_drvdata(dev));
 
-	return cpumap_print_to_pagebuf(true, buf, &pmu_dev->parent->cpu);
+ return cpumap_print_to_pagebuf(1, buf, &pmu_dev->parent->cpu);
 }

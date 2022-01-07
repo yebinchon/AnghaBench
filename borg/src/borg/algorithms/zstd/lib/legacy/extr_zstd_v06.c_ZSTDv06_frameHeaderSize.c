@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  size_t U32 ;
-typedef  int BYTE ;
 
-/* Variables and functions */
- size_t ERROR (int /*<<< orphan*/ ) ; 
- size_t* ZSTDv06_fcs_fieldSize ; 
- size_t ZSTDv06_frameHeaderSize_min ; 
- int /*<<< orphan*/  srcSize_wrong ; 
+
+
+
+typedef size_t U32 ;
+typedef int BYTE ;
+
+
+ size_t ERROR (int ) ;
+ size_t* ZSTDv06_fcs_fieldSize ;
+ size_t ZSTDv06_frameHeaderSize_min ;
+ int srcSize_wrong ;
 
 __attribute__((used)) static size_t ZSTDv06_frameHeaderSize(const void* src, size_t srcSize)
 {

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_7__ {int size_ci; int stack; int stacksize; int top; int stack_last; int base; TYPE_1__* ci; TYPE_1__* base_ci; TYPE_1__* end_ci; } ;
-typedef  TYPE_2__ lua_State ;
+typedef TYPE_2__ lua_State ;
 struct TYPE_6__ {int func; int base; int top; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CallInfo ; 
- int /*<<< orphan*/  TValue ; 
- void* luaM_newvector (TYPE_2__*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  setnilvalue (int /*<<< orphan*/ ) ; 
+
+ int CallInfo ;
+ int TValue ;
+ void* luaM_newvector (TYPE_2__*,int,int ) ;
+ int setnilvalue (int ) ;
 
 __attribute__((used)) static void stack_init(lua_State*L1,lua_State*L){
 L1->base_ci=luaM_newvector(L,8,CallInfo);

@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_6__ ;
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ ngx_int_t ;
+
+
+typedef struct TYPE_11__ TYPE_6__ ;
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef scalar_t__ ngx_int_t ;
 struct TYPE_9__ {scalar_t__ rise_count; scalar_t__ fall_count; } ;
-typedef  TYPE_3__ ngx_http_upstream_check_srv_conf_t ;
+typedef TYPE_3__ ngx_http_upstream_check_srv_conf_t ;
 struct TYPE_10__ {TYPE_2__* shm; TYPE_1__* check_peer_addr; TYPE_3__* conf; } ;
-typedef  TYPE_4__ ngx_http_upstream_check_peer_t ;
-struct TYPE_11__ {int /*<<< orphan*/  log; } ;
-struct TYPE_8__ {scalar_t__ delete; scalar_t__ rise_count; scalar_t__ fall_count; int down; int /*<<< orphan*/  mutex; int /*<<< orphan*/  access_time; } ;
-struct TYPE_7__ {int /*<<< orphan*/  name; } ;
+typedef TYPE_4__ ngx_http_upstream_check_peer_t ;
+struct TYPE_11__ {int log; } ;
+struct TYPE_8__ {scalar_t__ delete; scalar_t__ rise_count; scalar_t__ fall_count; int down; int mutex; int access_time; } ;
+struct TYPE_7__ {int name; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NGX_LOG_ERR ; 
- scalar_t__ PEER_DELETED ; 
- int /*<<< orphan*/  ngx_current_msec ; 
- TYPE_6__* ngx_cycle ; 
- int /*<<< orphan*/  ngx_log_error (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ngx_shmtx_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ngx_shmtx_unlock (int /*<<< orphan*/ *) ; 
+
+ int NGX_LOG_ERR ;
+ scalar_t__ PEER_DELETED ;
+ int ngx_current_msec ;
+ TYPE_6__* ngx_cycle ;
+ int ngx_log_error (int ,int ,int ,char*,int *) ;
+ int ngx_shmtx_lock (int *) ;
+ int ngx_shmtx_unlock (int *) ;
 
 __attribute__((used)) static void
 ngx_http_upstream_check_status_update(ngx_http_upstream_check_peer_t *peer,
     ngx_int_t result)
 {
-    ngx_http_upstream_check_srv_conf_t  *ucscf;
+    ngx_http_upstream_check_srv_conf_t *ucscf;
 
     ucscf = peer->conf;
 

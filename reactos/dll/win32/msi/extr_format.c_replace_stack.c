@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_3__ ;
-typedef  struct TYPE_15__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_16__ TYPE_3__ ;
+typedef struct TYPE_15__ TYPE_1__ ;
+
+
 struct TYPE_15__ {int type; int n; int len; void* propfound; void* nonprop; } ;
-typedef  TYPE_1__ WCHAR ;
-typedef  int /*<<< orphan*/  UINT ;
+typedef TYPE_1__ WCHAR ;
+typedef int UINT ;
 struct TYPE_16__ {int n; } ;
-typedef  int /*<<< orphan*/  STACK ;
-typedef  TYPE_1__ FORMSTR ;
-typedef  TYPE_3__ FORMAT ;
-typedef  void* BOOL ;
+typedef int STACK ;
+typedef TYPE_1__ FORMSTR ;
+typedef TYPE_3__ FORMAT ;
+typedef void* BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERROR_SUCCESS ; 
- void* FALSE ; 
- int FORMAT_LBRACE ; 
- int FORMAT_LBRACK ; 
- int FORMAT_LITERAL ; 
- int FORMAT_NUMBER ; 
- void* TRUE ; 
- TYPE_1__* format_replace (TYPE_3__*,void*,void*,int,int,TYPE_1__*,int) ; 
- int /*<<< orphan*/  msi_free (TYPE_1__*) ; 
- TYPE_1__* replace_stack_group (TYPE_3__*,int /*<<< orphan*/ *,void**,void**,int*,int*,int*) ; 
- TYPE_1__* replace_stack_prop (TYPE_3__*,int /*<<< orphan*/ *,void**,void**,int*,int*,int*) ; 
- TYPE_1__* stack_peek (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stack_push (int /*<<< orphan*/ *,TYPE_1__*) ; 
+
+ int ERROR_SUCCESS ;
+ void* FALSE ;
+ int FORMAT_LBRACE ;
+ int FORMAT_LBRACK ;
+ int FORMAT_LITERAL ;
+ int FORMAT_NUMBER ;
+ void* TRUE ;
+ TYPE_1__* format_replace (TYPE_3__*,void*,void*,int,int,TYPE_1__*,int) ;
+ int msi_free (TYPE_1__*) ;
+ TYPE_1__* replace_stack_group (TYPE_3__*,int *,void**,void**,int*,int*,int*) ;
+ TYPE_1__* replace_stack_prop (TYPE_3__*,int *,void**,void**,int*,int*,int*) ;
+ TYPE_1__* stack_peek (int *) ;
+ int stack_push (int *,TYPE_1__*) ;
 
 __attribute__((used)) static UINT replace_stack(FORMAT *format, STACK *stack, STACK *values)
 {
-    WCHAR *replaced = NULL;
+    WCHAR *replaced = ((void*)0);
     FORMSTR *beg, *top, *node;
     BOOL propfound = FALSE, nonprop = FALSE, group = FALSE;
     int type, n, len = 0, oldsize = 0;

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_4__ {int skip_packets; } ;
-typedef  TYPE_1__ XMAParserContext ;
+typedef TYPE_1__ XMAParserContext ;
 struct TYPE_5__ {int duration; int key_frame; TYPE_1__* priv_data; } ;
-typedef  TYPE_2__ AVCodecParserContext ;
-typedef  int /*<<< orphan*/  AVCodecContext ;
+typedef TYPE_2__ AVCodecParserContext ;
+typedef int AVCodecContext ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static int xma_parse(AVCodecParserContext *s1, AVCodecContext *avctx,
                      const uint8_t **poutbuf, int *poutbuf_size,
@@ -42,9 +42,9 @@ __attribute__((used)) static int xma_parse(AVCodecParserContext *s1, AVCodecCont
         s1->key_frame = !!duration;
     }
 
-    /* always return the full packet. this parser isn't doing any splitting or
-       combining, only packet analysis */
-    *poutbuf      = buf;
+
+
+    *poutbuf = buf;
     *poutbuf_size = buf_size;
     return buf_size;
 }

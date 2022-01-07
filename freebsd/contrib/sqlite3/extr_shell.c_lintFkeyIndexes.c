@@ -1,93 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_stmt ;
-typedef  int /*<<< orphan*/  sqlite3 ;
-struct TYPE_3__ {int /*<<< orphan*/ * out; int /*<<< orphan*/ * db; } ;
-typedef  TYPE_1__ ShellState ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int SQLITE_ERROR ; 
- int SQLITE_OK ; 
- scalar_t__ SQLITE_ROW ; 
- int /*<<< orphan*/  SQLITE_UTF8 ; 
- int /*<<< orphan*/  raw_printf (int /*<<< orphan*/ *,char*,...) ; 
- int /*<<< orphan*/  shellFkeyCollateClause ; 
- int /*<<< orphan*/  sqlite3_bind_int (int /*<<< orphan*/ *,int,int) ; 
- scalar_t__ sqlite3_column_text (int /*<<< orphan*/ *,int) ; 
- int sqlite3_create_function (int /*<<< orphan*/ *,char*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- char const* sqlite3_errmsg (int /*<<< orphan*/ *) ; 
- int sqlite3_finalize (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_free (char*) ; 
- char* sqlite3_mprintf (char*,char const*) ; 
- int sqlite3_prepare_v2 (int /*<<< orphan*/ *,char const*,int,int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
- scalar_t__ sqlite3_step (int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3_strglob (char const*,char const*) ; 
- scalar_t__ sqlite3_stricmp (char const*,char*) ; 
- scalar_t__ sqlite3_strnicmp (char*,char*,int) ; 
- int /*<<< orphan*/ * stderr ; 
- int strlen30 (char*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int sqlite3_stmt ;
+typedef int sqlite3 ;
+struct TYPE_3__ {int * out; int * db; } ;
+typedef TYPE_1__ ShellState ;
+typedef int FILE ;
+
+
+ int SQLITE_ERROR ;
+ int SQLITE_OK ;
+ scalar_t__ SQLITE_ROW ;
+ int SQLITE_UTF8 ;
+ int raw_printf (int *,char*,...) ;
+ int shellFkeyCollateClause ;
+ int sqlite3_bind_int (int *,int,int) ;
+ scalar_t__ sqlite3_column_text (int *,int) ;
+ int sqlite3_create_function (int *,char*,int,int ,int ,int ,int ,int ) ;
+ char const* sqlite3_errmsg (int *) ;
+ int sqlite3_finalize (int *) ;
+ int sqlite3_free (char*) ;
+ char* sqlite3_mprintf (char*,char const*) ;
+ int sqlite3_prepare_v2 (int *,char const*,int,int **,int ) ;
+ scalar_t__ sqlite3_step (int *) ;
+ scalar_t__ sqlite3_strglob (char const*,char const*) ;
+ scalar_t__ sqlite3_stricmp (char const*,char*) ;
+ scalar_t__ sqlite3_strnicmp (char*,char*,int) ;
+ int * stderr ;
+ int strlen30 (char*) ;
 
 __attribute__((used)) static int lintFkeyIndexes(
-  ShellState *pState,             /* Current shell tool state */
-  char **azArg,                   /* Array of arguments passed to dot command */
-  int nArg                        /* Number of entries in azArg[] */
+  ShellState *pState,
+  char **azArg,
+  int nArg
 ){
-  sqlite3 *db = pState->db;       /* Database handle to query "main" db of */
-  FILE *out = pState->out;        /* Stream to write non-error output to */
-  int bVerbose = 0;               /* If -verbose is present */
-  int bGroupByParent = 0;         /* If -groupbyparent is present */
-  int i;                          /* To iterate through azArg[] */
-  const char *zIndent = "";       /* How much to indent CREATE INDEX by */
-  int rc;                         /* Return code */
-  sqlite3_stmt *pSql = 0;         /* Compiled version of SQL statement below */
-
-  /*
-  ** This SELECT statement returns one row for each foreign key constraint
-  ** in the schema of the main database. The column values are:
-  **
-  ** 0. The text of an SQL statement similar to:
-  **
-  **      "EXPLAIN QUERY PLAN SELECT 1 FROM child_table WHERE child_key=?"
-  **
-  **    This SELECT is similar to the one that the foreign keys implementation
-  **    needs to run internally on child tables. If there is an index that can
-  **    be used to optimize this query, then it can also be used by the FK
-  **    implementation to optimize DELETE or UPDATE statements on the parent
-  **    table.
-  **
-  ** 1. A GLOB pattern suitable for sqlite3_strglob(). If the plan output by
-  **    the EXPLAIN QUERY PLAN command matches this pattern, then the schema
-  **    contains an index that can be used to optimize the query.
-  **
-  ** 2. Human readable text that describes the child table and columns. e.g.
-  **
-  **       "child_table(child_key1, child_key2)"
-  **
-  ** 3. Human readable text that describes the parent table and columns. e.g.
-  **
-  **       "parent_table(parent_key1, parent_key2)"
-  **
-  ** 4. A full CREATE INDEX statement for an index that could be used to
-  **    optimize DELETE or UPDATE statements on the parent table. e.g.
-  **
-  **       "CREATE INDEX child_table_child_key ON child_table(child_key)"
-  **
-  ** 5. The name of the parent table.
-  **
-  ** These six values are used by the C logic below to generate the report.
-  */
+  sqlite3 *db = pState->db;
+  FILE *out = pState->out;
+  int bVerbose = 0;
+  int bGroupByParent = 0;
+  int i;
+  const char *zIndent = "";
+  int rc;
+  sqlite3_stmt *pSql = 0;
   const char *zSql =
   "SELECT "
     "     'EXPLAIN QUERY PLAN SELECT 1 FROM ' || quote(s.name) || ' WHERE '"
@@ -134,7 +98,7 @@ __attribute__((used)) static int lintFkeyIndexes(
     }
   }
 
-  /* Register the fkey_collate_clause() SQL function */
+
   rc = sqlite3_create_function(db, "fkey_collate_clause", 4, SQLITE_UTF8,
       0, shellFkeyCollateClause, 0, 0
   );

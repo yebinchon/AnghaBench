@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_7__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_11__ TYPE_7__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
 struct index_item {int extra; } ;
-struct TYPE_10__ {int extra; int mask; int /*<<< orphan*/  words; } ;
-typedef  TYPE_1__ item_t ;
-struct TYPE_11__ {int /*<<< orphan*/  freqs; int /*<<< orphan*/  word; } ;
+struct TYPE_10__ {int extra; int mask; int words; } ;
+typedef TYPE_1__ item_t ;
+struct TYPE_11__ {int freqs; int word; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ADD_NOT_FOUND_ITEM ; 
- int FLAG_DELETED ; 
- int /*<<< orphan*/  ONLY_FIND ; 
- TYPE_7__* Q ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  clear_cur_wordlist () ; 
- int /*<<< orphan*/  creation_date ; 
- int /*<<< orphan*/  cur_wordlist_head ; 
- int /*<<< orphan*/  del_items ; 
- int evaluate_uniq_words_count (TYPE_7__*,int) ; 
- int extract_words (char const*,int,int /*<<< orphan*/ ,TYPE_7__*,int,int /*<<< orphan*/ ,long long) ; 
- int /*<<< orphan*/  fits (long long) ; 
- struct index_item* get_idx_item (long long) ; 
- int /*<<< orphan*/ * get_index_item_words_ptr (struct index_item*,int /*<<< orphan*/ ) ; 
- TYPE_1__* get_item_f (long long,int /*<<< orphan*/ ) ; 
- scalar_t__ import_only_mode ; 
- int /*<<< orphan*/  item_add_word (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  item_clear_wordlist (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mod_items ; 
- int /*<<< orphan*/  move_item_rates (TYPE_1__*,struct index_item*) ; 
- int now ; 
- int /*<<< orphan*/  set_multiple_rates_item (TYPE_1__*,int,int*) ; 
- int /*<<< orphan*/  tag_owner ; 
- int /*<<< orphan*/  universal ; 
- int /*<<< orphan*/  vkprintf (int,char*,char const*,int,long long,int,int) ; 
- scalar_t__ wordfreqs_enabled ; 
+
+ int ADD_NOT_FOUND_ITEM ;
+ int FLAG_DELETED ;
+ int ONLY_FIND ;
+ TYPE_7__* Q ;
+ int assert (int) ;
+ int clear_cur_wordlist () ;
+ int creation_date ;
+ int cur_wordlist_head ;
+ int del_items ;
+ int evaluate_uniq_words_count (TYPE_7__*,int) ;
+ int extract_words (char const*,int,int ,TYPE_7__*,int,int ,long long) ;
+ int fits (long long) ;
+ struct index_item* get_idx_item (long long) ;
+ int * get_index_item_words_ptr (struct index_item*,int ) ;
+ TYPE_1__* get_item_f (long long,int ) ;
+ scalar_t__ import_only_mode ;
+ int item_add_word (TYPE_1__*,int ,int ) ;
+ int item_clear_wordlist (TYPE_1__*,int *) ;
+ int mod_items ;
+ int move_item_rates (TYPE_1__*,struct index_item*) ;
+ int now ;
+ int set_multiple_rates_item (TYPE_1__*,int,int*) ;
+ int tag_owner ;
+ int universal ;
+ int vkprintf (int,char*,char const*,int,long long,int,int) ;
+ scalar_t__ wordfreqs_enabled ;
 
 __attribute__((used)) static int change_item (const char *text, int len, long long item_id, int rate, int rate2) {
   item_t *I;

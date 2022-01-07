@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uint64_t ;
-typedef  scalar_t__ int64_t ;
-typedef  int /*<<< orphan*/  RFILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RETRO_VFS_FILE_ACCESS_HINT_NONE ; 
- int /*<<< orphan*/  RETRO_VFS_FILE_ACCESS_READ ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  filestream_close (int /*<<< orphan*/ *) ; 
- scalar_t__ filestream_get_size (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * filestream_open (char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ filestream_read (int /*<<< orphan*/ *,void*,scalar_t__) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char const*,char*) ; 
- int /*<<< orphan*/  free (void*) ; 
- void* malloc (size_t) ; 
- int /*<<< orphan*/  stderr ; 
- char* strerror (int /*<<< orphan*/ ) ; 
+
+
+
+typedef scalar_t__ uint64_t ;
+typedef scalar_t__ int64_t ;
+typedef int RFILE ;
+
+
+ int RETRO_VFS_FILE_ACCESS_HINT_NONE ;
+ int RETRO_VFS_FILE_ACCESS_READ ;
+ int errno ;
+ int filestream_close (int *) ;
+ scalar_t__ filestream_get_size (int *) ;
+ int * filestream_open (char const*,int ,int ) ;
+ scalar_t__ filestream_read (int *,void*,scalar_t__) ;
+ int fprintf (int ,char*,char const*,char*) ;
+ int free (void*) ;
+ void* malloc (size_t) ;
+ int stderr ;
+ char* strerror (int ) ;
 
 int64_t filestream_read_file(const char *path, void **buf, int64_t *len)
 {
-   int64_t ret              = 0;
+   int64_t ret = 0;
    int64_t content_buf_size = 0;
-   void *content_buf        = NULL;
-   RFILE *file              = filestream_open(path,
+   void *content_buf = ((void*)0);
+   RFILE *file = filestream_open(path,
          RETRO_VFS_FILE_ACCESS_READ,
          RETRO_VFS_FILE_ACCESS_HINT_NONE);
 
@@ -48,7 +48,7 @@ int64_t filestream_read_file(const char *path, void **buf, int64_t *len)
    if (content_buf_size < 0)
       goto error;
 
-   content_buf      = malloc((size_t)(content_buf_size + 1));
+   content_buf = malloc((size_t)(content_buf_size + 1));
 
    if (!content_buf)
       goto error;
@@ -64,10 +64,10 @@ int64_t filestream_read_file(const char *path, void **buf, int64_t *len)
 
    filestream_close(file);
 
-   *buf    = content_buf;
+   *buf = content_buf;
 
-   /* Allow for easy reading of strings to be safe.
-    * Will only work with sane character formatting (Unix). */
+
+
    ((char*)content_buf)[ret] = '\0';
 
    if (len)
@@ -82,6 +82,6 @@ error:
       free(content_buf);
    if (len)
       *len = -1;
-   *buf = NULL;
+   *buf = ((void*)0);
    return 0;
 }

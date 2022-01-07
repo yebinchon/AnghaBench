@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {scalar_t__ outBufSize; int /*<<< orphan*/ ** outBufs; int /*<<< orphan*/  alloc; } ;
-typedef  TYPE_1__ CLzma2Enc ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ISzAlloc_Free (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- unsigned int MTCODER__BLOCKS_MAX ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {scalar_t__ outBufSize; int ** outBufs; int alloc; } ;
+typedef TYPE_1__ CLzma2Enc ;
+
+
+ int ISzAlloc_Free (int ,int *) ;
+ unsigned int MTCODER__BLOCKS_MAX ;
 
 __attribute__((used)) static void Lzma2Enc_FreeOutBufs(CLzma2Enc *p)
 {
@@ -25,7 +25,7 @@ __attribute__((used)) static void Lzma2Enc_FreeOutBufs(CLzma2Enc *p)
     if (p->outBufs[i])
     {
       ISzAlloc_Free(p->alloc, p->outBufs[i]);
-      p->outBufs[i] = NULL;
+      p->outBufs[i] = ((void*)0);
     }
   p->outBufSize = 0;
 }

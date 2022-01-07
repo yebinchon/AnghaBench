@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct command_ctx {double last_seek_time; scalar_t__ last_seek_pts; } ;
 struct MPContext {struct command_ctx* command_ctx; } ;
 
-/* Variables and functions */
- scalar_t__ MP_NOPTS_VALUE ; 
- scalar_t__ get_current_time (struct MPContext*) ; 
- double mp_time_sec () ; 
+
+ scalar_t__ MP_NOPTS_VALUE ;
+ scalar_t__ get_current_time (struct MPContext*) ;
+ double mp_time_sec () ;
 
 void mark_seek(struct MPContext *mpctx)
 {

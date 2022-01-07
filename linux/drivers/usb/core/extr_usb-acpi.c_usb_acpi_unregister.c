@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  unregister_acpi_bus_type (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  usb_acpi_bus ; 
+ int unregister_acpi_bus_type (int *) ;
+ int usb_acpi_bus ;
 
 void usb_acpi_unregister(void)
 {
-	unregister_acpi_bus_type(&usb_acpi_bus);
+ unregister_acpi_bus_type(&usb_acpi_bus);
 }

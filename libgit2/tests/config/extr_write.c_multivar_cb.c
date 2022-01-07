@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  value; } ;
-typedef  TYPE_1__ git_config_entry ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cl_assert_equal_s (int /*<<< orphan*/ ,char*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int value; } ;
+typedef TYPE_1__ git_config_entry ;
+
+
+ int cl_assert_equal_s (int ,char*) ;
 
 __attribute__((used)) static int multivar_cb(const git_config_entry *entry, void *data)
 {
-	int *n = (int *)data;
+ int *n = (int *)data;
 
-	cl_assert_equal_s(entry->value, "newurl");
+ cl_assert_equal_s(entry->value, "newurl");
 
-	(*n)++;
+ (*n)++;
 
-	return 0;
+ return 0;
 }

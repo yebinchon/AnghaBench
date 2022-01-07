@@ -1,0 +1,403 @@
+; ModuleID = '/home/carl/AnghaBench/linux/drivers/input/extr_input.c_input_get_disposition.c'
+source_filename = "/home/carl/AnghaBench/linux/drivers/input/extr_input.c_input_get_disposition.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+%struct.input_dev = type { i32*, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32 }
+
+@INPUT_IGNORE_EVENT = common dso_local global i32 0, align 4
+@INPUT_PASS_TO_ALL = common dso_local global i32 0, align 4
+@INPUT_PASS_TO_HANDLERS = common dso_local global i32 0, align 4
+@INPUT_FLUSH = common dso_local global i32 0, align 4
+@KEY_MAX = common dso_local global i32 0, align 4
+@SW_MAX = common dso_local global i32 0, align 4
+@ABS_MAX = common dso_local global i32 0, align 4
+@REL_MAX = common dso_local global i32 0, align 4
+@MSC_MAX = common dso_local global i32 0, align 4
+@LED_MAX = common dso_local global i32 0, align 4
+@SND_MAX = common dso_local global i32 0, align 4
+@REP_MAX = common dso_local global i32 0, align 4
+@llvm.used = appending global [1 x i8*] [i8* bitcast (i32 (%struct.input_dev*, i32, i32, i32*)* @input_get_disposition to i8*)], section "llvm.metadata"
+
+; Function Attrs: noinline nounwind optnone uwtable
+define internal i32 @input_get_disposition(%struct.input_dev* %0, i32 %1, i32 %2, i32* %3) #0 {
+  %5 = alloca %struct.input_dev*, align 8
+  %6 = alloca i32, align 4
+  %7 = alloca i32, align 4
+  %8 = alloca i32*, align 8
+  %9 = alloca i32, align 4
+  %10 = alloca i32, align 4
+  store %struct.input_dev* %0, %struct.input_dev** %5, align 8
+  store i32 %1, i32* %6, align 4
+  store i32 %2, i32* %7, align 4
+  store i32* %3, i32** %8, align 8
+  %11 = load i32, i32* @INPUT_IGNORE_EVENT, align 4
+  store i32 %11, i32* %9, align 4
+  %12 = load i32*, i32** %8, align 8
+  %13 = load i32, i32* %12, align 4
+  store i32 %13, i32* %10, align 4
+  %14 = load i32, i32* %6, align 4
+  switch i32 %14, label %234 [
+    i32 131, label %15
+    i32 139, label %26
+    i32 132, label %64
+    i32 141, label %96
+    i32 135, label %109
+    i32 137, label %123
+    i32 138, label %134
+    i32 133, label %166
+    i32 134, label %199
+    i32 140, label %226
+    i32 136, label %232
+  ]
+
+15:                                               ; preds = %4
+  %16 = load i32, i32* %7, align 4
+  switch i32 %16, label %25 [
+    i32 130, label %17
+    i32 128, label %19
+    i32 129, label %23
+  ]
+
+17:                                               ; preds = %15
+  %18 = load i32, i32* @INPUT_PASS_TO_ALL, align 4
+  store i32 %18, i32* %9, align 4
+  br label %25
+
+19:                                               ; preds = %15
+  %20 = load i32, i32* @INPUT_PASS_TO_HANDLERS, align 4
+  %21 = load i32, i32* @INPUT_FLUSH, align 4
+  %22 = or i32 %20, %21
+  store i32 %22, i32* %9, align 4
+  br label %25
+
+23:                                               ; preds = %15
+  %24 = load i32, i32* @INPUT_PASS_TO_HANDLERS, align 4
+  store i32 %24, i32* %9, align 4
+  br label %25
+
+25:                                               ; preds = %15, %23, %19, %17
+  br label %234
+
+26:                                               ; preds = %4
+  %27 = load i32, i32* %7, align 4
+  %28 = load %struct.input_dev*, %struct.input_dev** %5, align 8
+  %29 = getelementptr inbounds %struct.input_dev, %struct.input_dev* %28, i32 0, i32 11
+  %30 = load i32, i32* %29, align 8
+  %31 = load i32, i32* @KEY_MAX, align 4
+  %32 = call i32 @is_event_supported(i32 %27, i32 %30, i32 %31)
+  %33 = icmp ne i32 %32, 0
+  br i1 %33, label %34, label %63
+
+34:                                               ; preds = %26
+  %35 = load i32, i32* %10, align 4
+  %36 = icmp eq i32 %35, 2
+  br i1 %36, label %37, label %39
+
+37:                                               ; preds = %34
+  %38 = load i32, i32* @INPUT_PASS_TO_HANDLERS, align 4
+  store i32 %38, i32* %9, align 4
+  br label %234
+
+39:                                               ; preds = %34
+  %40 = load i32, i32* %7, align 4
+  %41 = load %struct.input_dev*, %struct.input_dev** %5, align 8
+  %42 = getelementptr inbounds %struct.input_dev, %struct.input_dev* %41, i32 0, i32 10
+  %43 = load i32, i32* %42, align 4
+  %44 = call i32 @test_bit(i32 %40, i32 %43)
+  %45 = icmp ne i32 %44, 0
+  %46 = xor i1 %45, true
+  %47 = xor i1 %46, true
+  %48 = zext i1 %47 to i32
+  %49 = load i32, i32* %10, align 4
+  %50 = icmp ne i32 %49, 0
+  %51 = xor i1 %50, true
+  %52 = xor i1 %51, true
+  %53 = zext i1 %52 to i32
+  %54 = icmp ne i32 %48, %53
+  br i1 %54, label %55, label %62
+
+55:                                               ; preds = %39
+  %56 = load i32, i32* %7, align 4
+  %57 = load %struct.input_dev*, %struct.input_dev** %5, align 8
+  %58 = getelementptr inbounds %struct.input_dev, %struct.input_dev* %57, i32 0, i32 10
+  %59 = load i32, i32* %58, align 4
+  %60 = call i32 @__change_bit(i32 %56, i32 %59)
+  %61 = load i32, i32* @INPUT_PASS_TO_HANDLERS, align 4
+  store i32 %61, i32* %9, align 4
+  br label %62
+
+62:                                               ; preds = %55, %39
+  br label %63
+
+63:                                               ; preds = %62, %26
+  br label %234
+
+64:                                               ; preds = %4
+  %65 = load i32, i32* %7, align 4
+  %66 = load %struct.input_dev*, %struct.input_dev** %5, align 8
+  %67 = getelementptr inbounds %struct.input_dev, %struct.input_dev* %66, i32 0, i32 9
+  %68 = load i32, i32* %67, align 8
+  %69 = load i32, i32* @SW_MAX, align 4
+  %70 = call i32 @is_event_supported(i32 %65, i32 %68, i32 %69)
+  %71 = icmp ne i32 %70, 0
+  br i1 %71, label %72, label %95
+
+72:                                               ; preds = %64
+  %73 = load i32, i32* %7, align 4
+  %74 = load %struct.input_dev*, %struct.input_dev** %5, align 8
+  %75 = getelementptr inbounds %struct.input_dev, %struct.input_dev* %74, i32 0, i32 8
+  %76 = load i32, i32* %75, align 4
+  %77 = call i32 @test_bit(i32 %73, i32 %76)
+  %78 = icmp ne i32 %77, 0
+  %79 = xor i1 %78, true
+  %80 = xor i1 %79, true
+  %81 = zext i1 %80 to i32
+  %82 = load i32, i32* %10, align 4
+  %83 = icmp ne i32 %82, 0
+  %84 = xor i1 %83, true
+  %85 = xor i1 %84, true
+  %86 = zext i1 %85 to i32
+  %87 = icmp ne i32 %81, %86
+  br i1 %87, label %88, label %95
+
+88:                                               ; preds = %72
+  %89 = load i32, i32* %7, align 4
+  %90 = load %struct.input_dev*, %struct.input_dev** %5, align 8
+  %91 = getelementptr inbounds %struct.input_dev, %struct.input_dev* %90, i32 0, i32 8
+  %92 = load i32, i32* %91, align 4
+  %93 = call i32 @__change_bit(i32 %89, i32 %92)
+  %94 = load i32, i32* @INPUT_PASS_TO_HANDLERS, align 4
+  store i32 %94, i32* %9, align 4
+  br label %95
+
+95:                                               ; preds = %88, %72, %64
+  br label %234
+
+96:                                               ; preds = %4
+  %97 = load i32, i32* %7, align 4
+  %98 = load %struct.input_dev*, %struct.input_dev** %5, align 8
+  %99 = getelementptr inbounds %struct.input_dev, %struct.input_dev* %98, i32 0, i32 7
+  %100 = load i32, i32* %99, align 8
+  %101 = load i32, i32* @ABS_MAX, align 4
+  %102 = call i32 @is_event_supported(i32 %97, i32 %100, i32 %101)
+  %103 = icmp ne i32 %102, 0
+  br i1 %103, label %104, label %108
+
+104:                                              ; preds = %96
+  %105 = load %struct.input_dev*, %struct.input_dev** %5, align 8
+  %106 = load i32, i32* %7, align 4
+  %107 = call i32 @input_handle_abs_event(%struct.input_dev* %105, i32 %106, i32* %10)
+  store i32 %107, i32* %9, align 4
+  br label %108
+
+108:                                              ; preds = %104, %96
+  br label %234
+
+109:                                              ; preds = %4
+  %110 = load i32, i32* %7, align 4
+  %111 = load %struct.input_dev*, %struct.input_dev** %5, align 8
+  %112 = getelementptr inbounds %struct.input_dev, %struct.input_dev* %111, i32 0, i32 6
+  %113 = load i32, i32* %112, align 4
+  %114 = load i32, i32* @REL_MAX, align 4
+  %115 = call i32 @is_event_supported(i32 %110, i32 %113, i32 %114)
+  %116 = icmp ne i32 %115, 0
+  br i1 %116, label %117, label %122
+
+117:                                              ; preds = %109
+  %118 = load i32, i32* %10, align 4
+  %119 = icmp ne i32 %118, 0
+  br i1 %119, label %120, label %122
+
+120:                                              ; preds = %117
+  %121 = load i32, i32* @INPUT_PASS_TO_HANDLERS, align 4
+  store i32 %121, i32* %9, align 4
+  br label %122
+
+122:                                              ; preds = %120, %117, %109
+  br label %234
+
+123:                                              ; preds = %4
+  %124 = load i32, i32* %7, align 4
+  %125 = load %struct.input_dev*, %struct.input_dev** %5, align 8
+  %126 = getelementptr inbounds %struct.input_dev, %struct.input_dev* %125, i32 0, i32 5
+  %127 = load i32, i32* %126, align 8
+  %128 = load i32, i32* @MSC_MAX, align 4
+  %129 = call i32 @is_event_supported(i32 %124, i32 %127, i32 %128)
+  %130 = icmp ne i32 %129, 0
+  br i1 %130, label %131, label %133
+
+131:                                              ; preds = %123
+  %132 = load i32, i32* @INPUT_PASS_TO_ALL, align 4
+  store i32 %132, i32* %9, align 4
+  br label %133
+
+133:                                              ; preds = %131, %123
+  br label %234
+
+134:                                              ; preds = %4
+  %135 = load i32, i32* %7, align 4
+  %136 = load %struct.input_dev*, %struct.input_dev** %5, align 8
+  %137 = getelementptr inbounds %struct.input_dev, %struct.input_dev* %136, i32 0, i32 4
+  %138 = load i32, i32* %137, align 4
+  %139 = load i32, i32* @LED_MAX, align 4
+  %140 = call i32 @is_event_supported(i32 %135, i32 %138, i32 %139)
+  %141 = icmp ne i32 %140, 0
+  br i1 %141, label %142, label %165
+
+142:                                              ; preds = %134
+  %143 = load i32, i32* %7, align 4
+  %144 = load %struct.input_dev*, %struct.input_dev** %5, align 8
+  %145 = getelementptr inbounds %struct.input_dev, %struct.input_dev* %144, i32 0, i32 3
+  %146 = load i32, i32* %145, align 8
+  %147 = call i32 @test_bit(i32 %143, i32 %146)
+  %148 = icmp ne i32 %147, 0
+  %149 = xor i1 %148, true
+  %150 = xor i1 %149, true
+  %151 = zext i1 %150 to i32
+  %152 = load i32, i32* %10, align 4
+  %153 = icmp ne i32 %152, 0
+  %154 = xor i1 %153, true
+  %155 = xor i1 %154, true
+  %156 = zext i1 %155 to i32
+  %157 = icmp ne i32 %151, %156
+  br i1 %157, label %158, label %165
+
+158:                                              ; preds = %142
+  %159 = load i32, i32* %7, align 4
+  %160 = load %struct.input_dev*, %struct.input_dev** %5, align 8
+  %161 = getelementptr inbounds %struct.input_dev, %struct.input_dev* %160, i32 0, i32 3
+  %162 = load i32, i32* %161, align 8
+  %163 = call i32 @__change_bit(i32 %159, i32 %162)
+  %164 = load i32, i32* @INPUT_PASS_TO_ALL, align 4
+  store i32 %164, i32* %9, align 4
+  br label %165
+
+165:                                              ; preds = %158, %142, %134
+  br label %234
+
+166:                                              ; preds = %4
+  %167 = load i32, i32* %7, align 4
+  %168 = load %struct.input_dev*, %struct.input_dev** %5, align 8
+  %169 = getelementptr inbounds %struct.input_dev, %struct.input_dev* %168, i32 0, i32 2
+  %170 = load i32, i32* %169, align 4
+  %171 = load i32, i32* @SND_MAX, align 4
+  %172 = call i32 @is_event_supported(i32 %167, i32 %170, i32 %171)
+  %173 = icmp ne i32 %172, 0
+  br i1 %173, label %174, label %198
+
+174:                                              ; preds = %166
+  %175 = load i32, i32* %7, align 4
+  %176 = load %struct.input_dev*, %struct.input_dev** %5, align 8
+  %177 = getelementptr inbounds %struct.input_dev, %struct.input_dev* %176, i32 0, i32 1
+  %178 = load i32, i32* %177, align 8
+  %179 = call i32 @test_bit(i32 %175, i32 %178)
+  %180 = icmp ne i32 %179, 0
+  %181 = xor i1 %180, true
+  %182 = xor i1 %181, true
+  %183 = zext i1 %182 to i32
+  %184 = load i32, i32* %10, align 4
+  %185 = icmp ne i32 %184, 0
+  %186 = xor i1 %185, true
+  %187 = xor i1 %186, true
+  %188 = zext i1 %187 to i32
+  %189 = icmp ne i32 %183, %188
+  br i1 %189, label %190, label %196
+
+190:                                              ; preds = %174
+  %191 = load i32, i32* %7, align 4
+  %192 = load %struct.input_dev*, %struct.input_dev** %5, align 8
+  %193 = getelementptr inbounds %struct.input_dev, %struct.input_dev* %192, i32 0, i32 1
+  %194 = load i32, i32* %193, align 8
+  %195 = call i32 @__change_bit(i32 %191, i32 %194)
+  br label %196
+
+196:                                              ; preds = %190, %174
+  %197 = load i32, i32* @INPUT_PASS_TO_ALL, align 4
+  store i32 %197, i32* %9, align 4
+  br label %198
+
+198:                                              ; preds = %196, %166
+  br label %234
+
+199:                                              ; preds = %4
+  %200 = load i32, i32* %7, align 4
+  %201 = load i32, i32* @REP_MAX, align 4
+  %202 = icmp ule i32 %200, %201
+  br i1 %202, label %203, label %225
+
+203:                                              ; preds = %199
+  %204 = load i32, i32* %10, align 4
+  %205 = icmp sge i32 %204, 0
+  br i1 %205, label %206, label %225
+
+206:                                              ; preds = %203
+  %207 = load %struct.input_dev*, %struct.input_dev** %5, align 8
+  %208 = getelementptr inbounds %struct.input_dev, %struct.input_dev* %207, i32 0, i32 0
+  %209 = load i32*, i32** %208, align 8
+  %210 = load i32, i32* %7, align 4
+  %211 = zext i32 %210 to i64
+  %212 = getelementptr inbounds i32, i32* %209, i64 %211
+  %213 = load i32, i32* %212, align 4
+  %214 = load i32, i32* %10, align 4
+  %215 = icmp ne i32 %213, %214
+  br i1 %215, label %216, label %225
+
+216:                                              ; preds = %206
+  %217 = load i32, i32* %10, align 4
+  %218 = load %struct.input_dev*, %struct.input_dev** %5, align 8
+  %219 = getelementptr inbounds %struct.input_dev, %struct.input_dev* %218, i32 0, i32 0
+  %220 = load i32*, i32** %219, align 8
+  %221 = load i32, i32* %7, align 4
+  %222 = zext i32 %221 to i64
+  %223 = getelementptr inbounds i32, i32* %220, i64 %222
+  store i32 %217, i32* %223, align 4
+  %224 = load i32, i32* @INPUT_PASS_TO_ALL, align 4
+  store i32 %224, i32* %9, align 4
+  br label %225
+
+225:                                              ; preds = %216, %206, %203, %199
+  br label %234
+
+226:                                              ; preds = %4
+  %227 = load i32, i32* %10, align 4
+  %228 = icmp sge i32 %227, 0
+  br i1 %228, label %229, label %231
+
+229:                                              ; preds = %226
+  %230 = load i32, i32* @INPUT_PASS_TO_ALL, align 4
+  store i32 %230, i32* %9, align 4
+  br label %231
+
+231:                                              ; preds = %229, %226
+  br label %234
+
+232:                                              ; preds = %4
+  %233 = load i32, i32* @INPUT_PASS_TO_ALL, align 4
+  store i32 %233, i32* %9, align 4
+  br label %234
+
+234:                                              ; preds = %4, %232, %231, %225, %198, %165, %133, %122, %108, %95, %63, %37, %25
+  %235 = load i32, i32* %10, align 4
+  %236 = load i32*, i32** %8, align 8
+  store i32 %235, i32* %236, align 4
+  %237 = load i32, i32* %9, align 4
+  ret i32 %237
+}
+
+declare dso_local i32 @is_event_supported(i32, i32, i32) #1
+
+declare dso_local i32 @test_bit(i32, i32) #1
+
+declare dso_local i32 @__change_bit(i32, i32) #1
+
+declare dso_local i32 @input_handle_abs_event(%struct.input_dev*, i32, i32*) #1
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

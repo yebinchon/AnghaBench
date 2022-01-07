@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  db; } ;
-typedef  TYPE_1__ svn_wc_context_t ;
-typedef  int /*<<< orphan*/  (* svn_wc__proplist_receiver_t ) (void*,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int svn_depth_t ;
-typedef  int /*<<< orphan*/  svn_cancel_func_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-struct propname_filter_baton_t {char const* propname; void* receiver_baton; int /*<<< orphan*/  (* receiver_func ) (void*,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ;} ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
-struct TYPE_8__ {int /*<<< orphan*/  nelts; } ;
-typedef  TYPE_2__ apr_array_header_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_ASSERT (int /*<<< orphan*/  (*) (void*,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *)) ; 
- int /*<<< orphan*/  SVN_ERR_MALFUNCTION () ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  apr_hash_count (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  propname_filter_receiver (void*,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
-#define  svn_depth_empty 131 
-#define  svn_depth_files 130 
-#define  svn_depth_immediates 129 
-#define  svn_depth_infinity 128 
- int /*<<< orphan*/  svn_hash_from_cstring_keys (int /*<<< orphan*/ **,TYPE_2__ const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__db_read_pristine_props (int /*<<< orphan*/ **,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__db_read_props (int /*<<< orphan*/ **,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__db_read_props_streamily (int /*<<< orphan*/ ,char const*,int,int /*<<< orphan*/ ,TYPE_2__ const*,int /*<<< orphan*/  (*) (void*,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *),void*,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__internal_changelist_match (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int db; } ;
+typedef TYPE_1__ svn_wc_context_t ;
+typedef int (* svn_wc__proplist_receiver_t ) (void*,char const*,int *,int *) ;
+typedef int svn_error_t ;
+typedef int svn_depth_t ;
+typedef int svn_cancel_func_t ;
+typedef int svn_boolean_t ;
+struct propname_filter_baton_t {char const* propname; void* receiver_baton; int (* receiver_func ) (void*,char const*,int *,int *) ;} ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
+struct TYPE_8__ {int nelts; } ;
+typedef TYPE_2__ apr_array_header_t ;
+
+
+ int SVN_ERR (int ) ;
+ int SVN_ERR_ASSERT (int (*) (void*,char const*,int *,int *)) ;
+ int SVN_ERR_MALFUNCTION () ;
+ int * SVN_NO_ERROR ;
+ int apr_hash_count (int *) ;
+ int propname_filter_receiver (void*,char const*,int *,int *) ;
+
+
+
+
+ int svn_hash_from_cstring_keys (int **,TYPE_2__ const*,int *) ;
+ int svn_wc__db_read_pristine_props (int **,int ,char const*,int *,int *) ;
+ int svn_wc__db_read_props (int **,int ,char const*,int *,int *) ;
+ int svn_wc__db_read_props_streamily (int ,char const*,int,int ,TYPE_2__ const*,int (*) (void*,char const*,int *,int *),void*,int ,void*,int *) ;
+ int svn_wc__internal_changelist_match (int ,char const*,int *,int *) ;
 
 svn_error_t *
 svn_wc__prop_list_recursive(svn_wc_context_t *wc_ctx,
@@ -73,10 +73,10 @@ svn_wc__prop_list_recursive(svn_wc_context_t *wc_ctx,
 
   switch (depth)
     {
-    case svn_depth_empty:
+    case 131:
       {
         apr_hash_t *props;
-        apr_hash_t *changelist_hash = NULL;
+        apr_hash_t *changelist_hash = ((void*)0);
 
         if (changelists && changelists->nelts)
           SVN_ERR(svn_hash_from_cstring_keys(&changelist_hash,
@@ -98,9 +98,9 @@ svn_wc__prop_list_recursive(svn_wc_context_t *wc_ctx,
           SVN_ERR(receiver(baton, local_abspath, props, scratch_pool));
       }
       break;
-    case svn_depth_files:
-    case svn_depth_immediates:
-    case svn_depth_infinity:
+    case 130:
+    case 129:
+    case 128:
       {
         SVN_ERR(svn_wc__db_read_props_streamily(wc_ctx->db, local_abspath,
                                                 depth, pristine,

@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct tmpl {int dummy; } ;
-typedef  int /*<<< orphan*/  mrb_value ;
-typedef  int /*<<< orphan*/  mrb_state ;
+typedef int mrb_value ;
+typedef int mrb_state ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_RUNTIME_ERROR ; 
-#define  PACK_DIR_BASE64 137 
-#define  PACK_DIR_CHAR 136 
-#define  PACK_DIR_DOUBLE 135 
-#define  PACK_DIR_FLOAT 134 
-#define  PACK_DIR_HEX 133 
- int PACK_DIR_INVALID ; 
-#define  PACK_DIR_LONG 132 
- int PACK_DIR_NUL ; 
-#define  PACK_DIR_QUAD 131 
-#define  PACK_DIR_SHORT 130 
-#define  PACK_DIR_STR 129 
-#define  PACK_DIR_UTF8 128 
- unsigned int PACK_FLAG_COUNT2 ; 
- scalar_t__ RARRAY_LEN (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * RARRAY_PTR (int /*<<< orphan*/ ) ; 
- scalar_t__ RSTRING_LEN (int /*<<< orphan*/ ) ; 
- scalar_t__ RSTRING_PTR (int /*<<< orphan*/ ) ; 
- scalar_t__ has_tmpl (struct tmpl*) ; 
- int /*<<< orphan*/  mrb_ary_new (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mrb_ary_push (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_nil_value () ; 
- int /*<<< orphan*/  mrb_raise (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  prepare_tmpl (int /*<<< orphan*/ *,struct tmpl*) ; 
- int /*<<< orphan*/  read_tmpl (int /*<<< orphan*/ *,struct tmpl*,int*,int*,int*,int*,unsigned int*) ; 
- int unpack_a (int /*<<< orphan*/ *,unsigned char const*,int,int /*<<< orphan*/ ,int,unsigned int) ; 
- int unpack_c (int /*<<< orphan*/ *,unsigned char const*,int,int /*<<< orphan*/ ,unsigned int) ; 
- int unpack_double (int /*<<< orphan*/ *,unsigned char const*,int,int /*<<< orphan*/ ,unsigned int) ; 
- int unpack_float (int /*<<< orphan*/ *,unsigned char const*,int,int /*<<< orphan*/ ,unsigned int) ; 
- int unpack_h (int /*<<< orphan*/ *,unsigned char const*,int,int /*<<< orphan*/ ,int,unsigned int) ; 
- int unpack_l (int /*<<< orphan*/ *,unsigned char const*,int,int /*<<< orphan*/ ,unsigned int) ; 
- int unpack_m (int /*<<< orphan*/ *,unsigned char const*,int,int /*<<< orphan*/ ,unsigned int) ; 
- int unpack_q (int /*<<< orphan*/ *,unsigned char const*,int,int /*<<< orphan*/ ,unsigned int) ; 
- int unpack_s (int /*<<< orphan*/ *,unsigned char const*,int,int /*<<< orphan*/ ,unsigned int) ; 
- int unpack_utf8 (int /*<<< orphan*/ *,unsigned char const*,int,int /*<<< orphan*/ ,unsigned int) ; 
- scalar_t__ unpack_x (int /*<<< orphan*/ *,unsigned char const*,int,int /*<<< orphan*/ ,int,unsigned int) ; 
+
+ int E_RUNTIME_ERROR ;
+
+
+
+
+
+ int PACK_DIR_INVALID ;
+
+ int PACK_DIR_NUL ;
+
+
+
+
+ unsigned int PACK_FLAG_COUNT2 ;
+ scalar_t__ RARRAY_LEN (int ) ;
+ int * RARRAY_PTR (int ) ;
+ scalar_t__ RSTRING_LEN (int ) ;
+ scalar_t__ RSTRING_PTR (int ) ;
+ scalar_t__ has_tmpl (struct tmpl*) ;
+ int mrb_ary_new (int *) ;
+ int mrb_ary_push (int *,int ,int ) ;
+ int mrb_nil_value () ;
+ int mrb_raise (int *,int ,char*) ;
+ int prepare_tmpl (int *,struct tmpl*) ;
+ int read_tmpl (int *,struct tmpl*,int*,int*,int*,int*,unsigned int*) ;
+ int unpack_a (int *,unsigned char const*,int,int ,int,unsigned int) ;
+ int unpack_c (int *,unsigned char const*,int,int ,unsigned int) ;
+ int unpack_double (int *,unsigned char const*,int,int ,unsigned int) ;
+ int unpack_float (int *,unsigned char const*,int,int ,unsigned int) ;
+ int unpack_h (int *,unsigned char const*,int,int ,int,unsigned int) ;
+ int unpack_l (int *,unsigned char const*,int,int ,unsigned int) ;
+ int unpack_m (int *,unsigned char const*,int,int ,unsigned int) ;
+ int unpack_q (int *,unsigned char const*,int,int ,unsigned int) ;
+ int unpack_s (int *,unsigned char const*,int,int ,unsigned int) ;
+ int unpack_utf8 (int *,unsigned char const*,int,int ,unsigned int) ;
+ scalar_t__ unpack_x (int *,unsigned char const*,int,int ,int,unsigned int) ;
 
 __attribute__((used)) static mrb_value
 pack_unpack(mrb_state *mrb, mrb_value str, int single)
@@ -82,13 +82,13 @@ pack_unpack(mrb_state *mrb, mrb_value str, int single)
     if (flags & PACK_FLAG_COUNT2) {
       sptr = (const unsigned char *)RSTRING_PTR(str) + srcidx;
       switch (dir) {
-      case PACK_DIR_HEX:
+      case 133:
         srcidx += unpack_h(mrb, sptr, srclen - srcidx, result, count, flags);
         break;
-      case PACK_DIR_STR:
+      case 129:
         srcidx += unpack_a(mrb, sptr, srclen - srcidx, result, count, flags);
         break;
-      case PACK_DIR_BASE64:
+      case 137:
         srcidx += unpack_m(mrb, sptr, srclen - srcidx, result, flags);
         break;
       }
@@ -105,27 +105,27 @@ pack_unpack(mrb_state *mrb, mrb_value str, int single)
 
       sptr = (const unsigned char*)RSTRING_PTR(str) + srcidx;
       switch (dir) {
-      case PACK_DIR_CHAR:
+      case 136:
         srcidx += unpack_c(mrb, sptr, srclen - srcidx, result, flags);
         break;
-      case PACK_DIR_SHORT:
+      case 130:
         srcidx += unpack_s(mrb, sptr, srclen - srcidx, result, flags);
         break;
-      case PACK_DIR_LONG:
+      case 132:
         srcidx += unpack_l(mrb, sptr, srclen - srcidx, result, flags);
         break;
-      case PACK_DIR_QUAD:
+      case 131:
         srcidx += unpack_q(mrb, sptr, srclen - srcidx, result, flags);
         break;
-#ifndef MRB_WITHOUT_FLOAT
-      case PACK_DIR_FLOAT:
+
+      case 134:
         srcidx += unpack_float(mrb, sptr, srclen - srcidx, result, flags);
         break;
-      case PACK_DIR_DOUBLE:
+      case 135:
         srcidx += unpack_double(mrb, sptr, srclen - srcidx, result, flags);
         break;
-#endif
-      case PACK_DIR_UTF8:
+
+      case 128:
         srcidx += unpack_utf8(mrb, sptr, srclen - srcidx, result, flags);
         break;
       default:

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  size_t uint32_t ;
-struct delta_frame {int /*<<< orphan*/ * simlated_input; int /*<<< orphan*/ * real_input; int /*<<< orphan*/ * resolved_input; int /*<<< orphan*/ * state; } ;
 
-/* Variables and functions */
- size_t MAX_INPUT_DEVICES ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free_input_state (int /*<<< orphan*/ *) ; 
+
+
+
+typedef size_t uint32_t ;
+struct delta_frame {int * simlated_input; int * real_input; int * resolved_input; int * state; } ;
+
+
+ size_t MAX_INPUT_DEVICES ;
+ int free (int *) ;
+ int free_input_state (int *) ;
 
 void netplay_delta_frame_free(struct delta_frame *delta)
 {
@@ -25,7 +25,7 @@ void netplay_delta_frame_free(struct delta_frame *delta)
    if (delta->state)
    {
       free(delta->state);
-      delta->state = NULL;
+      delta->state = ((void*)0);
    }
 
    for (i = 0; i < MAX_INPUT_DEVICES; i++)

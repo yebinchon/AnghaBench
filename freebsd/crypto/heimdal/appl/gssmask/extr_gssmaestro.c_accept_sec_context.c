@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct client {int dummy; } ;
-typedef  int /*<<< orphan*/  krb5_data ;
-typedef  int int32_t ;
+typedef int krb5_data ;
+typedef int int32_t ;
 
-/* Variables and functions */
- int eAcceptContext ; 
- int /*<<< orphan*/  krb5_data_zero (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  put32 (struct client*,int) ; 
- int /*<<< orphan*/  putdata (struct client*,int /*<<< orphan*/  const) ; 
- int /*<<< orphan*/  ret32 (struct client*,int) ; 
- int /*<<< orphan*/  retdata (struct client*,int /*<<< orphan*/ ) ; 
+
+ int eAcceptContext ;
+ int krb5_data_zero (int *) ;
+ int put32 (struct client*,int) ;
+ int putdata (struct client*,int const) ;
+ int ret32 (struct client*,int) ;
+ int retdata (struct client*,int ) ;
 
 __attribute__((used)) static int
 accept_sec_context(struct client *client,
-		   int32_t *hContext,
-		   int32_t flags,
-		   const krb5_data *itoken,
-		   krb5_data *otoken,
-		   int32_t *hDelegCred)
+     int32_t *hContext,
+     int32_t flags,
+     const krb5_data *itoken,
+     krb5_data *otoken,
+     int32_t *hDelegCred)
 {
     int32_t val;
     krb5_data_zero(otoken);

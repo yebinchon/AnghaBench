@@ -1,101 +1,75 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int JsonPathItemType ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERROR ; 
- int /*<<< orphan*/  elog (int /*<<< orphan*/ ,char*,int) ; 
-#define  jpiAbs 152 
-#define  jpiAdd 151 
-#define  jpiAnd 150 
-#define  jpiCeiling 149 
-#define  jpiDatetime 148 
-#define  jpiDiv 147 
-#define  jpiDouble 146 
-#define  jpiEqual 145 
-#define  jpiFloor 144 
-#define  jpiGreater 143 
-#define  jpiGreaterOrEqual 142 
-#define  jpiKeyValue 141 
-#define  jpiLess 140 
-#define  jpiLessOrEqual 139 
-#define  jpiLikeRegex 138 
-#define  jpiMinus 137 
-#define  jpiMod 136 
-#define  jpiMul 135 
-#define  jpiNotEqual 134 
-#define  jpiOr 133 
-#define  jpiPlus 132 
-#define  jpiSize 131 
-#define  jpiStartsWith 130 
-#define  jpiSub 129 
-#define  jpiType 128 
 
+
+
+typedef int JsonPathItemType ;
+
+
+ int ERROR ;
+ int elog (int ,char*,int) ;
 const char *
 jspOperationName(JsonPathItemType type)
 {
-	switch (type)
-	{
-		case jpiAnd:
-			return "&&";
-		case jpiOr:
-			return "||";
-		case jpiEqual:
-			return "==";
-		case jpiNotEqual:
-			return "!=";
-		case jpiLess:
-			return "<";
-		case jpiGreater:
-			return ">";
-		case jpiLessOrEqual:
-			return "<=";
-		case jpiGreaterOrEqual:
-			return ">=";
-		case jpiPlus:
-		case jpiAdd:
-			return "+";
-		case jpiMinus:
-		case jpiSub:
-			return "-";
-		case jpiMul:
-			return "*";
-		case jpiDiv:
-			return "/";
-		case jpiMod:
-			return "%";
-		case jpiStartsWith:
-			return "starts with";
-		case jpiLikeRegex:
-			return "like_regex";
-		case jpiType:
-			return "type";
-		case jpiSize:
-			return "size";
-		case jpiKeyValue:
-			return "keyvalue";
-		case jpiDouble:
-			return "double";
-		case jpiAbs:
-			return "abs";
-		case jpiFloor:
-			return "floor";
-		case jpiCeiling:
-			return "ceiling";
-		case jpiDatetime:
-			return "datetime";
-		default:
-			elog(ERROR, "unrecognized jsonpath item type: %d", type);
-			return NULL;
-	}
+ switch (type)
+ {
+  case 150:
+   return "&&";
+  case 133:
+   return "||";
+  case 145:
+   return "==";
+  case 134:
+   return "!=";
+  case 140:
+   return "<";
+  case 143:
+   return ">";
+  case 139:
+   return "<=";
+  case 142:
+   return ">=";
+  case 132:
+  case 151:
+   return "+";
+  case 137:
+  case 129:
+   return "-";
+  case 135:
+   return "*";
+  case 147:
+   return "/";
+  case 136:
+   return "%";
+  case 130:
+   return "starts with";
+  case 138:
+   return "like_regex";
+  case 128:
+   return "type";
+  case 131:
+   return "size";
+  case 141:
+   return "keyvalue";
+  case 146:
+   return "double";
+  case 152:
+   return "abs";
+  case 144:
+   return "floor";
+  case 149:
+   return "ceiling";
+  case 148:
+   return "datetime";
+  default:
+   elog(ERROR, "unrecognized jsonpath item type: %d", type);
+   return ((void*)0);
+ }
 }

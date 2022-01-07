@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct reliable_entry {int /*<<< orphan*/  buf; } ;
+
+
+
+
+struct reliable_entry {int buf; } ;
 struct reliable {int hold; int size; int offset; struct reliable_entry* array; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- int /*<<< orphan*/  CLEAR (struct reliable) ; 
- int RELIABLE_CAPACITY ; 
- int /*<<< orphan*/  alloc_buf (int) ; 
- int buf_init (int /*<<< orphan*/ *,int) ; 
+
+ int ASSERT (int) ;
+ int CLEAR (struct reliable) ;
+ int RELIABLE_CAPACITY ;
+ int alloc_buf (int) ;
+ int buf_init (int *,int) ;
 
 void
 reliable_init(struct reliable *rel, int buf_size, int offset, int array_size, bool hold)

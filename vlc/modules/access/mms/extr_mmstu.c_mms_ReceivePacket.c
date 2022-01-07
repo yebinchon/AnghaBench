@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_9__ {TYPE_2__* p_sys; } ;
-typedef  TYPE_1__ stream_t ;
+typedef TYPE_1__ stream_t ;
 struct TYPE_10__ {scalar_t__ i_buffer_tcp; scalar_t__ i_proto; int i_buffer_udp; int i_command; scalar_t__ buffer_udp; scalar_t__ buffer_tcp; } ;
-typedef  TYPE_2__ access_sys_t ;
+typedef TYPE_2__ access_sys_t ;
 
-/* Variables and functions */
- int GetDWLE (scalar_t__) ; 
- scalar_t__ GetWLE (scalar_t__) ; 
- size_t MMS_BUFFER_SIZE ; 
- scalar_t__ MMS_CMD_HEADERSIZE ; 
- int MMS_PACKET_CMD ; 
- scalar_t__ MMS_PROTO_UDP ; 
- scalar_t__ NetFillBuffer (TYPE_1__*) ; 
- int /*<<< orphan*/  memmove (scalar_t__,scalar_t__,size_t) ; 
- int /*<<< orphan*/  mms_CommandSend (TYPE_1__*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int mms_ParseCommand (TYPE_1__*,scalar_t__,scalar_t__,size_t*) ; 
- int mms_ParsePacket (TYPE_1__*,scalar_t__,scalar_t__,size_t*) ; 
- int /*<<< orphan*/  msg_Warn (TYPE_1__*,char*) ; 
+
+ int GetDWLE (scalar_t__) ;
+ scalar_t__ GetWLE (scalar_t__) ;
+ size_t MMS_BUFFER_SIZE ;
+ scalar_t__ MMS_CMD_HEADERSIZE ;
+ int MMS_PACKET_CMD ;
+ scalar_t__ MMS_PROTO_UDP ;
+ scalar_t__ NetFillBuffer (TYPE_1__*) ;
+ int memmove (scalar_t__,scalar_t__,size_t) ;
+ int mms_CommandSend (TYPE_1__*,int,int ,int ,int *,int ) ;
+ int mms_ParseCommand (TYPE_1__*,scalar_t__,scalar_t__,size_t*) ;
+ int mms_ParsePacket (TYPE_1__*,scalar_t__,scalar_t__,size_t*) ;
+ int msg_Warn (TYPE_1__*,char*) ;
 
 __attribute__((used)) static int mms_ReceivePacket( stream_t *p_access )
 {
@@ -39,28 +39,28 @@ __attribute__((used)) static int mms_ReceivePacket( stream_t *p_access )
 
     for( ;; )
     {
-        bool b_refill = true;
+        bool b_refill = 1;
 
-        /* first if we need to refill buffer */
+
         if( p_sys->i_buffer_tcp >= MMS_CMD_HEADERSIZE )
         {
-            if( GetDWLE( p_sys->buffer_tcp + 4 ) == 0xb00bface  )
+            if( GetDWLE( p_sys->buffer_tcp + 4 ) == 0xb00bface )
             {
                 if( GetDWLE( p_sys->buffer_tcp + 8 ) + 16 <=
                     (size_t)p_sys->i_buffer_tcp )
                 {
-                    b_refill = false;
+                    b_refill = 0;
                 }
             }
             else if( GetWLE( p_sys->buffer_tcp + 6 ) <= p_sys->i_buffer_tcp )
             {
-                b_refill = false;
+                b_refill = 0;
             }
         }
         if( p_sys->i_proto == MMS_PROTO_UDP && p_sys->i_buffer_udp >= 8 &&
             GetWLE( p_sys->buffer_udp + 6 ) <= p_sys->i_buffer_udp )
         {
-            b_refill = false;
+            b_refill = 0;
         }
 
         if( b_refill && NetFillBuffer( p_access ) < 0 )
@@ -114,7 +114,7 @@ __attribute__((used)) static int mms_ReceivePacket( stream_t *p_access )
 
         if( i_packet_tcp_type == MMS_PACKET_CMD && p_sys->i_command == 0x1b )
         {
-            mms_CommandSend( p_access, 0x1b, 0, 0, NULL, 0 );
+            mms_CommandSend( p_access, 0x1b, 0, 0, ((void*)0), 0 );
             i_packet_tcp_type = -1;
         }
 

@@ -1,60 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {struct TYPE_6__* nnext; } ;
-typedef  TYPE_1__ Node ;
-typedef  int /*<<< orphan*/  FILE ;
-typedef  int /*<<< orphan*/  Cell ;
+typedef TYPE_1__ Node ;
+typedef int FILE ;
+typedef int Cell ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FATAL (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * True ; 
- int /*<<< orphan*/ * execute (TYPE_1__*) ; 
- scalar_t__ ferror (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fflush (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  filename (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fputs (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  getpssval (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  getsval (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ofsloc ; 
- int /*<<< orphan*/  orsloc ; 
- int /*<<< orphan*/  ptoi (TYPE_1__*) ; 
- int /*<<< orphan*/ * redirect (int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/ * stdout ; 
- int /*<<< orphan*/  tempfree (int /*<<< orphan*/ *) ; 
 
-Cell *printstat(Node **a, int n)	/* print a[0] */
+ int FATAL (char*,int ) ;
+ int * True ;
+ int * execute (TYPE_1__*) ;
+ scalar_t__ ferror (int *) ;
+ int fflush (int *) ;
+ int filename (int *) ;
+ int fputs (int ,int *) ;
+ int getpssval (int *) ;
+ int getsval (int ) ;
+ int ofsloc ;
+ int orsloc ;
+ int ptoi (TYPE_1__*) ;
+ int * redirect (int ,TYPE_1__*) ;
+ int * stdout ;
+ int tempfree (int *) ;
+
+Cell *printstat(Node **a, int n)
 {
-	Node *x;
-	Cell *y;
-	FILE *fp;
+ Node *x;
+ Cell *y;
+ FILE *fp;
 
-	if (a[1] == NULL)	/* a[1] is redirection operator, a[2] is file */
-		fp = stdout;
-	else
-		fp = redirect(ptoi(a[1]), a[2]);
-	for (x = a[0]; x != NULL; x = x->nnext) {
-		y = execute(x);
-		fputs(getpssval(y), fp);
-		tempfree(y);
-		if (x->nnext == NULL)
-			fputs(getsval(orsloc), fp);
-		else
-			fputs(getsval(ofsloc), fp);
-	}
-	if (a[1] != NULL)
-		fflush(fp);
-	if (ferror(fp))
-		FATAL("write error on %s", filename(fp));
-	return(True);
+ if (a[1] == ((void*)0))
+  fp = stdout;
+ else
+  fp = redirect(ptoi(a[1]), a[2]);
+ for (x = a[0]; x != ((void*)0); x = x->nnext) {
+  y = execute(x);
+  fputs(getpssval(y), fp);
+  tempfree(y);
+  if (x->nnext == ((void*)0))
+   fputs(getsval(orsloc), fp);
+  else
+   fputs(getsval(ofsloc), fp);
+ }
+ if (a[1] != ((void*)0))
+  fflush(fp);
+ if (ferror(fp))
+  FATAL("write error on %s", filename(fp));
+ return(True);
 }

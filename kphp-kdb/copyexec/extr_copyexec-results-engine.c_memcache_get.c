@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct connection {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cmd_get ; 
- int copyexec_results_prepare_stats (struct connection*) ; 
- int do_set_enable (unsigned long long,int) ; 
- int /*<<< orphan*/  free (char*) ; 
- int get_at_prefix_length (char const*,int) ; 
- char* get_collisions_list () ; 
- char* get_dead_hosts_list (unsigned long long,int) ; 
- char* get_dead_hosts_list_full (unsigned long long,int) ; 
- char* get_disabled (unsigned long long) ; 
- char* get_hosts_list (unsigned long long,int,unsigned int,unsigned int) ; 
- char* get_hosts_list_by_status (unsigned long long,int,char*) ; 
- char* get_hosts_list_by_status_and_result (unsigned long long,int,char*,unsigned int) ; 
- char* get_results_freqs (unsigned long long,int) ; 
- char* get_status_freqs (unsigned long long,int) ; 
- char* get_status_results_freqs (unsigned long long,int) ; 
- char* get_volumes () ; 
- int /*<<< orphan*/  memcmp (char const*,char*,int) ; 
- int return_one_key (struct connection*,char const*,char*,int) ; 
- int sscanf (char const*,char*,unsigned long long*,...) ; 
- char* stats_buff ; 
- int strlen (char*) ; 
- int /*<<< orphan*/  strncmp (char const*,char*,int) ; 
+
+ int cmd_get ;
+ int copyexec_results_prepare_stats (struct connection*) ;
+ int do_set_enable (unsigned long long,int) ;
+ int free (char*) ;
+ int get_at_prefix_length (char const*,int) ;
+ char* get_collisions_list () ;
+ char* get_dead_hosts_list (unsigned long long,int) ;
+ char* get_dead_hosts_list_full (unsigned long long,int) ;
+ char* get_disabled (unsigned long long) ;
+ char* get_hosts_list (unsigned long long,int,unsigned int,unsigned int) ;
+ char* get_hosts_list_by_status (unsigned long long,int,char*) ;
+ char* get_hosts_list_by_status_and_result (unsigned long long,int,char*,unsigned int) ;
+ char* get_results_freqs (unsigned long long,int) ;
+ char* get_status_freqs (unsigned long long,int) ;
+ char* get_status_results_freqs (unsigned long long,int) ;
+ char* get_volumes () ;
+ int memcmp (char const*,char*,int) ;
+ int return_one_key (struct connection*,char const*,char*,int) ;
+ int sscanf (char const*,char*,unsigned long long*,...) ;
+ char* stats_buff ;
+ int strlen (char*) ;
+ int strncmp (char const*,char*,int) ;
 
 int memcache_get (struct connection *c, const char *key, int key_len) {
   cmd_get++;
@@ -172,7 +172,7 @@ int memcache_get (struct connection *c, const char *key, int key_len) {
 
   if (key_len >= 13 && !memcmp (key, "list_disabled", 13) && sscanf (key + 13, "%llu", &volume_id) == 1) {
     char *r = get_disabled (volume_id);
-    if (r != NULL) {
+    if (r != ((void*)0)) {
       return_one_key (c, key - dog_len, r, strlen (r));
       free (r);
       return 0;

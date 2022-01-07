@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buf ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int EBADF ; 
- int _pclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * _popen (char*,char*) ; 
- int errno ; 
- int /*<<< orphan*/  fgets (char*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- scalar_t__ p_set_errno ; 
- int /*<<< orphan*/  sprintf (char*,char*,char const*) ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
+
+
+
+typedef int buf ;
+typedef int FILE ;
+
+
+ int EBADF ;
+ int _pclose (int *) ;
+ int * _popen (char*,char*) ;
+ int errno ;
+ int fgets (char*,int,int *) ;
+ int ok (int,char*,...) ;
+ scalar_t__ p_set_errno ;
+ int sprintf (char*,char*,char const*) ;
+ int strcmp (char*,char*) ;
 
 __attribute__((used)) static void test__popen(const char *name)
 {
@@ -32,7 +32,7 @@ __attribute__((used)) static void test__popen(const char *name)
 
     sprintf(buf, "\"%s\" misc popen", name);
     pipe = _popen(buf, "r");
-    ok(pipe != NULL, "_popen failed with error: %d\n", errno);
+    ok(pipe != ((void*)0), "_popen failed with error: %d\n", errno);
 
     fgets(buf, sizeof(buf), pipe);
     ok(!strcmp(buf, "child output\n"), "buf = %s\n", buf);

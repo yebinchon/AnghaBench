@@ -1,88 +1,88 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UCHAR ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int UCHAR ;
 struct TYPE_4__ {int NumTokens; char** Token; } ;
-typedef  TYPE_1__ TOKEN_LIST ;
+typedef TYPE_1__ TOKEN_LIST ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Copy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  FreeToken (TYPE_1__*) ; 
- int IsEmptyStr (char*) ; 
- TYPE_1__* ParseToken (char*,char*) ; 
- int StrToMac (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  Trim (char*) ; 
- int /*<<< orphan*/  Zero (int /*<<< orphan*/ *,int) ; 
+
+ int Copy (int *,int *,int) ;
+ int FreeToken (TYPE_1__*) ;
+ int IsEmptyStr (char*) ;
+ TYPE_1__* ParseToken (char*,char*) ;
+ int StrToMac (int *,char*) ;
+ int Trim (char*) ;
+ int Zero (int *,int) ;
 
 bool ParseMacAddressAndMask(char *src, bool *check_mac, UCHAR *mac_bin, UCHAR *mask_bin)
 {
-	TOKEN_LIST *t;
-	char *macstr, *maskstr;
-	UCHAR mac[6], mask[6];
-	bool ok = false;
+ TOKEN_LIST *t;
+ char *macstr, *maskstr;
+ UCHAR mac[6], mask[6];
+ bool ok = 0;
 
-	// Validate arguments
-	if (src == NULL)
-	{
-		return false;
-	}
 
-	//Zero(mac, sizeof(mac));
-	//Zero(mask, sizeof(mask));
+ if (src == ((void*)0))
+ {
+  return 0;
+ }
 
-	if(check_mac != NULL && mac_bin != NULL && mask_bin != NULL)
-	{
-		ok = true;
-	}
-	if(IsEmptyStr(src) != false)
-	{
-		if(ok != false)
-		{
-			*check_mac = false;
-			Zero(mac_bin, 6);
-			Zero(mask_bin, 6);
-		}
-		return true;
-	}
 
-	t = ParseToken(src, "/");
-	if(t->NumTokens != 2)
-	{
-		FreeToken(t);
-		return false;
-	}
 
-	macstr = t->Token[0];
-	maskstr = t->Token[1];
 
-	Trim(macstr);
-	Trim(maskstr);
+ if(check_mac != ((void*)0) && mac_bin != ((void*)0) && mask_bin != ((void*)0))
+ {
+  ok = 1;
+ }
+ if(IsEmptyStr(src) != 0)
+ {
+  if(ok != 0)
+  {
+   *check_mac = 0;
+   Zero(mac_bin, 6);
+   Zero(mask_bin, 6);
+  }
+  return 1;
+ }
 
-	if(StrToMac(mac, macstr) == false || StrToMac(mask, maskstr) == false)
-	{
-		FreeToken(t);
-		return false;
-	}
-	else
-	{
-		if(ok != false)
-		{
-			Copy(mac_bin, mac, 6);
-			Copy(mask_bin, mask, 6);
-			*check_mac = true;
-		}
-	}
-	FreeToken(t);
+ t = ParseToken(src, "/");
+ if(t->NumTokens != 2)
+ {
+  FreeToken(t);
+  return 0;
+ }
 
-	return true;
+ macstr = t->Token[0];
+ maskstr = t->Token[1];
+
+ Trim(macstr);
+ Trim(maskstr);
+
+ if(StrToMac(mac, macstr) == 0 || StrToMac(mask, maskstr) == 0)
+ {
+  FreeToken(t);
+  return 0;
+ }
+ else
+ {
+  if(ok != 0)
+  {
+   Copy(mac_bin, mac, 6);
+   Copy(mask_bin, mask, 6);
+   *check_mac = 1;
+  }
+ }
+ FreeToken(t);
+
+ return 1;
 }

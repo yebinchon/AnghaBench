@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint8_t ;
 struct TYPE_4__ {scalar_t__ lower_bit_rate_constraint_flag; scalar_t__ one_picture_only_constraint_flag; scalar_t__ intra_constraint_flag; scalar_t__ max_monochrome_constraint_flag; scalar_t__ max_420chroma_constraint_flag; scalar_t__ max_422chroma_constraint_flag; scalar_t__ max_8bit_constraint_flag; scalar_t__ max_10bit_constraint_flag; scalar_t__ max_12bit_constraint_flag; scalar_t__ max_14bit_constraint_flag; } ;
 struct TYPE_5__ {TYPE_1__ idc4to7; } ;
-typedef  TYPE_2__ hevc_inner_profile_tier_level_t ;
+typedef TYPE_2__ hevc_inner_profile_tier_level_t ;
 
-/* Variables and functions */
- int ARRAY_SIZE (scalar_t__*) ; 
+
+ int ARRAY_SIZE (scalar_t__*) ;
 
 __attribute__((used)) static unsigned hevc_make_indication( const hevc_inner_profile_tier_level_t *p )
 {

@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct udc {scalar_t__ chiprev; TYPE_1__* regs; } ;
-struct TYPE_2__ {int /*<<< orphan*/  cfg; int /*<<< orphan*/  irqsts; int /*<<< orphan*/  ep_irqsts; } ;
+struct TYPE_2__ {int cfg; int irqsts; int ep_irqsts; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AMD_BIT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DBG (struct udc*,char*) ; 
- scalar_t__ UDC_BCM_REV ; 
- int /*<<< orphan*/  UDC_DEVCFG_SOFTRESET ; 
- int /*<<< orphan*/  UDC_DEV_MSK_DISABLE ; 
- int /*<<< orphan*/  UDC_EPINT_MSK_DISABLE_ALL ; 
- int /*<<< orphan*/  readl (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  udc_irq_spinlock ; 
- int /*<<< orphan*/  writel (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int AMD_BIT (int ) ;
+ int DBG (struct udc*,char*) ;
+ scalar_t__ UDC_BCM_REV ;
+ int UDC_DEVCFG_SOFTRESET ;
+ int UDC_DEV_MSK_DISABLE ;
+ int UDC_EPINT_MSK_DISABLE_ALL ;
+ int readl (int *) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
+ int udc_irq_spinlock ;
+ int writel (int ,int *) ;
 
 __attribute__((used)) static void udc_soft_reset(struct udc *dev)
 {
-	unsigned long	flags;
+ unsigned long flags;
 
-	DBG(dev, "Soft reset\n");
-	/*
-	 * reset possible waiting interrupts, because int.
-	 * status is lost after soft reset,
-	 * ep int. status reset
-	 */
-	writel(UDC_EPINT_MSK_DISABLE_ALL, &dev->regs->ep_irqsts);
-	/* device int. status reset */
-	writel(UDC_DEV_MSK_DISABLE, &dev->regs->irqsts);
+ DBG(dev, "Soft reset\n");
 
-	/* Don't do this for Broadcom UDC since this is a reserved
-	 * bit.
-	 */
-	if (dev->chiprev != UDC_BCM_REV) {
-		spin_lock_irqsave(&udc_irq_spinlock, flags);
-		writel(AMD_BIT(UDC_DEVCFG_SOFTRESET), &dev->regs->cfg);
-		readl(&dev->regs->cfg);
-		spin_unlock_irqrestore(&udc_irq_spinlock, flags);
-	}
+
+
+
+
+ writel(UDC_EPINT_MSK_DISABLE_ALL, &dev->regs->ep_irqsts);
+
+ writel(UDC_DEV_MSK_DISABLE, &dev->regs->irqsts);
+
+
+
+
+ if (dev->chiprev != UDC_BCM_REV) {
+  spin_lock_irqsave(&udc_irq_spinlock, flags);
+  writel(AMD_BIT(UDC_DEVCFG_SOFTRESET), &dev->regs->cfg);
+  readl(&dev->regs->cfg);
+  spin_unlock_irqrestore(&udc_irq_spinlock, flags);
+ }
 }

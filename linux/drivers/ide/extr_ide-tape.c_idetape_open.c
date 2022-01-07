@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct ide_tape_obj {int dummy; } ;
-struct block_device {int /*<<< orphan*/  bd_disk; } ;
-typedef  int /*<<< orphan*/  fmode_t ;
+struct block_device {int bd_disk; } ;
+typedef int fmode_t ;
 
-/* Variables and functions */
- int ENXIO ; 
- struct ide_tape_obj* ide_tape_get (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ide_tape_mutex ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
+
+ int ENXIO ;
+ struct ide_tape_obj* ide_tape_get (int ,int,int ) ;
+ int ide_tape_mutex ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
 
 __attribute__((used)) static int idetape_open(struct block_device *bdev, fmode_t mode)
 {
-	struct ide_tape_obj *tape;
+ struct ide_tape_obj *tape;
 
-	mutex_lock(&ide_tape_mutex);
-	tape = ide_tape_get(bdev->bd_disk, false, 0);
-	mutex_unlock(&ide_tape_mutex);
+ mutex_lock(&ide_tape_mutex);
+ tape = ide_tape_get(bdev->bd_disk, 0, 0);
+ mutex_unlock(&ide_tape_mutex);
 
-	if (!tape)
-		return -ENXIO;
+ if (!tape)
+  return -ENXIO;
 
-	return 0;
+ return 0;
 }

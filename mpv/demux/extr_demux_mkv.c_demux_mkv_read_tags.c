@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct mkv_demuxer {int /*<<< orphan*/  tags; } ;
-struct ebml_tags {int /*<<< orphan*/  member_0; } ;
-struct ebml_parse_ctx {int /*<<< orphan*/  talloc_ctx; int /*<<< orphan*/  member_0; } ;
-typedef  int /*<<< orphan*/  stream_t ;
-struct TYPE_3__ {int /*<<< orphan*/  log; int /*<<< orphan*/ * stream; struct mkv_demuxer* priv; } ;
-typedef  TYPE_1__ demuxer_t ;
 
-/* Variables and functions */
- scalar_t__ ebml_read_element (int /*<<< orphan*/ *,struct ebml_parse_ctx*,struct ebml_tags*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ebml_tags_desc ; 
- int /*<<< orphan*/  talloc_dup (struct mkv_demuxer*,struct ebml_tags*) ; 
- int /*<<< orphan*/  talloc_steal (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct mkv_demuxer {int tags; } ;
+struct ebml_tags {int member_0; } ;
+struct ebml_parse_ctx {int talloc_ctx; int member_0; } ;
+typedef int stream_t ;
+struct TYPE_3__ {int log; int * stream; struct mkv_demuxer* priv; } ;
+typedef TYPE_1__ demuxer_t ;
+
+
+ scalar_t__ ebml_read_element (int *,struct ebml_parse_ctx*,struct ebml_tags*,int *) ;
+ int ebml_tags_desc ;
+ int talloc_dup (struct mkv_demuxer*,struct ebml_tags*) ;
+ int talloc_steal (int ,int ) ;
 
 __attribute__((used)) static int demux_mkv_read_tags(demuxer_t *demuxer)
 {
@@ -30,7 +30,7 @@ __attribute__((used)) static int demux_mkv_read_tags(demuxer_t *demuxer)
     stream_t *s = demuxer->stream;
 
     struct ebml_parse_ctx parse_ctx = {demuxer->log};
-    struct ebml_tags           tags = {0};
+    struct ebml_tags tags = {0};
     if (ebml_read_element(s, &parse_ctx, &tags, &ebml_tags_desc) < 0)
         return -1;
 

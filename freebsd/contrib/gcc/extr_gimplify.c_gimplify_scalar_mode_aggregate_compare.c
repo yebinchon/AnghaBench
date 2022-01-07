@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
-typedef  enum gimplify_status { ____Placeholder_gimplify_status } gimplify_status ;
-struct TYPE_3__ {int /*<<< orphan*/  (* type_for_mode ) (int /*<<< orphan*/ ,int) ;} ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int tree ;
+typedef enum gimplify_status { ____Placeholder_gimplify_status } gimplify_status ;
+struct TYPE_3__ {int (* type_for_mode ) (int ,int) ;} ;
 struct TYPE_4__ {TYPE_1__ types; } ;
 
-/* Variables and functions */
- int GS_OK ; 
- int /*<<< orphan*/  TREE_CODE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TREE_OPERAND (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  TREE_TYPE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TYPE_MODE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  VIEW_CONVERT_EXPR ; 
- int /*<<< orphan*/  fold_build1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fold_build2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_2__ lang_hooks ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,int) ; 
+
+ int GS_OK ;
+ int TREE_CODE (int ) ;
+ int TREE_OPERAND (int ,int) ;
+ int TREE_TYPE (int ) ;
+ int TYPE_MODE (int ) ;
+ int VIEW_CONVERT_EXPR ;
+ int fold_build1 (int ,int ,int ) ;
+ int fold_build2 (int ,int ,int ,int ) ;
+ TYPE_2__ lang_hooks ;
+ int stub1 (int ,int) ;
 
 __attribute__((used)) static enum gimplify_status
 gimplify_scalar_mode_aggregate_compare (tree *expr_p)

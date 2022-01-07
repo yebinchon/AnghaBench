@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/ * insn; } ;
-struct kprobe {TYPE_1__ ainsn; int /*<<< orphan*/  addr; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free_insn_slot (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free_s390_insn_slot (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ is_kernel_addr (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int * insn; } ;
+struct kprobe {TYPE_1__ ainsn; int addr; } ;
+
+
+ int free_insn_slot (int *,int ) ;
+ int free_s390_insn_slot (int *,int ) ;
+ scalar_t__ is_kernel_addr (int ) ;
 
 __attribute__((used)) static void s390_free_insn_slot(struct kprobe *p)
 {
-	if (!p->ainsn.insn)
-		return;
-	if (is_kernel_addr(p->addr))
-		free_s390_insn_slot(p->ainsn.insn, 0);
-	else
-		free_insn_slot(p->ainsn.insn, 0);
-	p->ainsn.insn = NULL;
+ if (!p->ainsn.insn)
+  return;
+ if (is_kernel_addr(p->addr))
+  free_s390_insn_slot(p->ainsn.insn, 0);
+ else
+  free_insn_slot(p->ainsn.insn, 0);
+ p->ainsn.insn = ((void*)0);
 }

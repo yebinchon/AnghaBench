@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  i; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int i; } ;
 struct switch_val {TYPE_1__ value; } ;
 struct switch_dev {int dummy; } ;
 struct switch_attr {int dummy; } ;
-struct mvsw61xx_state {int /*<<< orphan*/  vlan_enabled; } ;
+struct mvsw61xx_state {int vlan_enabled; } ;
 
-/* Variables and functions */
- struct mvsw61xx_state* get_state (struct switch_dev*) ; 
+
+ struct mvsw61xx_state* get_state (struct switch_dev*) ;
 
 __attribute__((used)) static int mvsw61xx_get_enable_vlan(struct switch_dev *dev,
-		const struct switch_attr *attr, struct switch_val *val)
+  const struct switch_attr *attr, struct switch_val *val)
 {
-	struct mvsw61xx_state *state = get_state(dev);
+ struct mvsw61xx_state *state = get_state(dev);
 
-	val->value.i = state->vlan_enabled;
+ val->value.i = state->vlan_enabled;
 
-	return 0;
+ return 0;
 }

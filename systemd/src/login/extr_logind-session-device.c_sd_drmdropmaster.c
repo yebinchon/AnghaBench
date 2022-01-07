@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  DRM_IOCTL_DROP_MASTER ; 
- int /*<<< orphan*/  assert (int) ; 
- int errno ; 
- scalar_t__ ioctl (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int DRM_IOCTL_DROP_MASTER ;
+ int assert (int) ;
+ int errno ;
+ scalar_t__ ioctl (int,int ,int ) ;
 
 __attribute__((used)) static int sd_drmdropmaster(int fd) {
         assert(fd >= 0);

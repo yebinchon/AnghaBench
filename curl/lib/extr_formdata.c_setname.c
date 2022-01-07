@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  curl_mimepart ;
-typedef  int /*<<< orphan*/  CURLcode ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CURLE_OUT_OF_MEMORY ; 
- int /*<<< orphan*/  curl_mime_name (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  free (char*) ; 
- char* malloc (size_t) ; 
- int /*<<< orphan*/  memcpy (char*,char const*,size_t) ; 
+
+
+
+typedef int curl_mimepart ;
+typedef int CURLcode ;
+
+
+ int CURLE_OUT_OF_MEMORY ;
+ int curl_mime_name (int *,char const*) ;
+ int free (char*) ;
+ char* malloc (size_t) ;
+ int memcpy (char*,char const*,size_t) ;
 
 __attribute__((used)) static CURLcode setname(curl_mimepart *part, const char *name, size_t len)
 {

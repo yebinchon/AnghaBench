@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sum ;
-struct TYPE_5__ {TYPE_1__* md_info; int /*<<< orphan*/  md_ctx; int /*<<< orphan*/ * hmac_ctx; } ;
-typedef  TYPE_2__ mbedtls_md_context_t ;
-struct TYPE_4__ {size_t block_size; size_t size; int /*<<< orphan*/  (* update_func ) (int /*<<< orphan*/ ,unsigned char*,size_t) ;int /*<<< orphan*/  (* starts_func ) (int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* finish_func ) (int /*<<< orphan*/ ,unsigned char*) ;} ;
 
-/* Variables and functions */
- int MBEDTLS_ERR_MD_BAD_INPUT_DATA ; 
- int MBEDTLS_MD_MAX_SIZE ; 
- int /*<<< orphan*/  mbedtls_zeroize (unsigned char*,int) ; 
- int /*<<< orphan*/  memset (unsigned char*,int,size_t) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ ,unsigned char const*,size_t) ; 
- int /*<<< orphan*/  stub3 (int /*<<< orphan*/ ,unsigned char*) ; 
- int /*<<< orphan*/  stub4 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub5 (int /*<<< orphan*/ ,unsigned char*,size_t) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int sum ;
+struct TYPE_5__ {TYPE_1__* md_info; int md_ctx; int * hmac_ctx; } ;
+typedef TYPE_2__ mbedtls_md_context_t ;
+struct TYPE_4__ {size_t block_size; size_t size; int (* update_func ) (int ,unsigned char*,size_t) ;int (* starts_func ) (int ) ;int (* finish_func ) (int ,unsigned char*) ;} ;
+
+
+ int MBEDTLS_ERR_MD_BAD_INPUT_DATA ;
+ int MBEDTLS_MD_MAX_SIZE ;
+ int mbedtls_zeroize (unsigned char*,int) ;
+ int memset (unsigned char*,int,size_t) ;
+ int stub1 (int ) ;
+ int stub2 (int ,unsigned char const*,size_t) ;
+ int stub3 (int ,unsigned char*) ;
+ int stub4 (int ) ;
+ int stub5 (int ,unsigned char*,size_t) ;
 
 int mbedtls_md_hmac_starts( mbedtls_md_context_t *ctx, const unsigned char *key, size_t keylen )
 {
@@ -34,7 +34,7 @@ int mbedtls_md_hmac_starts( mbedtls_md_context_t *ctx, const unsigned char *key,
     unsigned char *ipad, *opad;
     size_t i;
 
-    if( ctx == NULL || ctx->md_info == NULL || ctx->hmac_ctx == NULL )
+    if( ctx == ((void*)0) || ctx->md_info == ((void*)0) || ctx->hmac_ctx == ((void*)0) )
         return( MBEDTLS_ERR_MD_BAD_INPUT_DATA );
 
     if( keylen > (size_t) ctx->md_info->block_size )

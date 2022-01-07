@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct tagMSIVIEW {int dummy; } ;
-typedef  int /*<<< orphan*/  UINT ;
-struct TYPE_3__ {int /*<<< orphan*/ * columns; int /*<<< orphan*/ * table; } ;
-typedef  TYPE_1__ MSITABLEVIEW ;
+typedef int UINT ;
+struct TYPE_3__ {int * columns; int * table; } ;
+typedef TYPE_1__ MSITABLEVIEW ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERROR_SUCCESS ; 
- int /*<<< orphan*/  TRACE (char*,struct tagMSIVIEW*) ; 
- int /*<<< orphan*/  msi_free (TYPE_1__*) ; 
+
+ int ERROR_SUCCESS ;
+ int TRACE (char*,struct tagMSIVIEW*) ;
+ int msi_free (TYPE_1__*) ;
 
 __attribute__((used)) static UINT TABLE_delete( struct tagMSIVIEW *view )
 {
@@ -27,8 +27,8 @@ __attribute__((used)) static UINT TABLE_delete( struct tagMSIVIEW *view )
 
     TRACE("%p\n", view );
 
-    tv->table = NULL;
-    tv->columns = NULL;
+    tv->table = ((void*)0);
+    tv->columns = ((void*)0);
 
     msi_free( tv );
 

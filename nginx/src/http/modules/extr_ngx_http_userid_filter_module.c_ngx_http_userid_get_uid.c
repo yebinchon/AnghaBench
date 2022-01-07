@@ -1,61 +1,61 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_28__   TYPE_7__ ;
-typedef  struct TYPE_27__   TYPE_6__ ;
-typedef  struct TYPE_26__   TYPE_5__ ;
-typedef  struct TYPE_25__   TYPE_4__ ;
-typedef  struct TYPE_24__   TYPE_3__ ;
-typedef  struct TYPE_23__   TYPE_2__ ;
-typedef  struct TYPE_22__   TYPE_1__ ;
-typedef  struct TYPE_21__   TYPE_15__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_char ;
-struct TYPE_24__ {int /*<<< orphan*/  value; } ;
-typedef  TYPE_3__ ngx_table_elt_t ;
-struct TYPE_25__ {int len; int /*<<< orphan*/ * data; } ;
-typedef  TYPE_4__ ngx_str_t ;
-typedef  size_t ngx_int_t ;
-struct TYPE_26__ {int /*<<< orphan*/ * uid_got; TYPE_4__ cookie; } ;
-typedef  TYPE_5__ ngx_http_userid_ctx_t ;
-struct TYPE_27__ {int /*<<< orphan*/  name; } ;
-typedef  TYPE_6__ ngx_http_userid_conf_t ;
+
+
+typedef struct TYPE_28__ TYPE_7__ ;
+typedef struct TYPE_27__ TYPE_6__ ;
+typedef struct TYPE_26__ TYPE_5__ ;
+typedef struct TYPE_25__ TYPE_4__ ;
+typedef struct TYPE_24__ TYPE_3__ ;
+typedef struct TYPE_23__ TYPE_2__ ;
+typedef struct TYPE_22__ TYPE_1__ ;
+typedef struct TYPE_21__ TYPE_15__ ;
+
+
+typedef int u_char ;
+struct TYPE_24__ {int value; } ;
+typedef TYPE_3__ ngx_table_elt_t ;
+struct TYPE_25__ {int len; int * data; } ;
+typedef TYPE_4__ ngx_str_t ;
+typedef size_t ngx_int_t ;
+struct TYPE_26__ {int * uid_got; TYPE_4__ cookie; } ;
+typedef TYPE_5__ ngx_http_userid_ctx_t ;
+struct TYPE_27__ {int name; } ;
+typedef TYPE_6__ ngx_http_userid_conf_t ;
 struct TYPE_21__ {TYPE_3__** elts; } ;
 struct TYPE_22__ {TYPE_15__ cookies; } ;
-struct TYPE_28__ {TYPE_2__* connection; TYPE_1__ headers_in; int /*<<< orphan*/  pool; } ;
-typedef  TYPE_7__ ngx_http_request_t ;
-struct TYPE_23__ {int /*<<< orphan*/  log; } ;
+struct TYPE_28__ {TYPE_2__* connection; TYPE_1__ headers_in; int pool; } ;
+typedef TYPE_7__ ngx_http_request_t ;
+struct TYPE_23__ {int log; } ;
 
-/* Variables and functions */
- size_t NGX_DECLINED ; 
- scalar_t__ NGX_ERROR ; 
- int /*<<< orphan*/  NGX_LOG_DEBUG_HTTP ; 
- int /*<<< orphan*/  NGX_LOG_ERR ; 
- scalar_t__ ngx_decode_base64 (TYPE_4__*,TYPE_4__*) ; 
- TYPE_5__* ngx_http_get_module_ctx (TYPE_7__*,int /*<<< orphan*/ ) ; 
- size_t ngx_http_parse_multi_header_lines (TYPE_15__*,int /*<<< orphan*/ *,TYPE_4__*) ; 
- int /*<<< orphan*/  ngx_http_set_ctx (TYPE_7__*,TYPE_5__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_http_userid_filter_module ; 
- int /*<<< orphan*/  ngx_log_debug1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,TYPE_4__*) ; 
- int /*<<< orphan*/  ngx_log_debug4 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_log_error (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *) ; 
- TYPE_5__* ngx_pcalloc (int /*<<< orphan*/ ,int) ; 
+
+ size_t NGX_DECLINED ;
+ scalar_t__ NGX_ERROR ;
+ int NGX_LOG_DEBUG_HTTP ;
+ int NGX_LOG_ERR ;
+ scalar_t__ ngx_decode_base64 (TYPE_4__*,TYPE_4__*) ;
+ TYPE_5__* ngx_http_get_module_ctx (TYPE_7__*,int ) ;
+ size_t ngx_http_parse_multi_header_lines (TYPE_15__*,int *,TYPE_4__*) ;
+ int ngx_http_set_ctx (TYPE_7__*,TYPE_5__*,int ) ;
+ int ngx_http_userid_filter_module ;
+ int ngx_log_debug1 (int ,int ,int ,char*,TYPE_4__*) ;
+ int ngx_log_debug4 (int ,int ,int ,char*,int ,int ,int ,int ) ;
+ int ngx_log_error (int ,int ,int ,char*,int *) ;
+ TYPE_5__* ngx_pcalloc (int ,int) ;
 
 __attribute__((used)) static ngx_http_userid_ctx_t *
 ngx_http_userid_get_uid(ngx_http_request_t *r, ngx_http_userid_conf_t *conf)
 {
-    ngx_int_t                n;
-    ngx_str_t                src, dst;
-    ngx_table_elt_t        **cookies;
-    ngx_http_userid_ctx_t   *ctx;
+    ngx_int_t n;
+    ngx_str_t src, dst;
+    ngx_table_elt_t **cookies;
+    ngx_http_userid_ctx_t *ctx;
 
     ctx = ngx_http_get_module_ctx(r, ngx_http_userid_filter_module);
 
@@ -63,10 +63,10 @@ ngx_http_userid_get_uid(ngx_http_request_t *r, ngx_http_userid_conf_t *conf)
         return ctx;
     }
 
-    if (ctx == NULL) {
+    if (ctx == ((void*)0)) {
         ctx = ngx_pcalloc(r->pool, sizeof(ngx_http_userid_ctx_t));
-        if (ctx == NULL) {
-            return NULL;
+        if (ctx == ((void*)0)) {
+            return ((void*)0);
         }
 
         ngx_http_set_ctx(r, ctx, ngx_http_userid_filter_module);
@@ -90,14 +90,6 @@ ngx_http_userid_get_uid(ngx_http_request_t *r, ngx_http_userid_conf_t *conf)
     }
 
     src = ctx->cookie;
-
-    /*
-     * we have to limit the encoded string to 22 characters because
-     *  1) cookie may be marked by "userid_mark",
-     *  2) and there are already the millions cookies with a garbage
-     *     instead of the correct base64 trail "=="
-     */
-
     src.len = 22;
 
     dst.data = (u_char *) ctx->uid_got;

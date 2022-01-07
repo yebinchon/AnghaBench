@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int codec; int muxers; } ;
-typedef  TYPE_1__ hb_encoder_t ;
-typedef  int guint32 ;
-typedef  int gint ;
+typedef TYPE_1__ hb_encoder_t ;
+typedef int guint32 ;
+typedef int gint ;
 
-/* Variables and functions */
- int HB_ACODEC_AUTO_PASS ; 
- int HB_ACODEC_PASS_FLAG ; 
- int HB_ACODEC_PASS_MASK ; 
- int hb_audio_encoder_get_default (int) ; 
- TYPE_1__* hb_audio_encoder_get_next (TYPE_1__ const*) ; 
- int hb_autopassthru_get_encoder (int,int,int,int) ; 
+
+ int HB_ACODEC_AUTO_PASS ;
+ int HB_ACODEC_PASS_FLAG ;
+ int HB_ACODEC_PASS_MASK ;
+ int hb_audio_encoder_get_default (int) ;
+ TYPE_1__* hb_audio_encoder_get_next (TYPE_1__ const*) ;
+ int hb_autopassthru_get_encoder (int,int,int,int) ;
 
 gint
 ghb_select_audio_codec(gint mux, guint32 in_codec, gint acodec, gint fallback, gint copy_mask)
@@ -32,9 +32,9 @@ ghb_select_audio_codec(gint mux, guint32 in_codec, gint acodec, gint fallback, g
         return hb_autopassthru_get_encoder(in_codec, copy_mask, fallback, mux);
     }
 
-    // Sanitize fallback
+
     const hb_encoder_t *enc;
-    for (enc = hb_audio_encoder_get_next(NULL); enc != NULL;
+    for (enc = hb_audio_encoder_get_next(((void*)0)); enc != ((void*)0);
          enc = hb_audio_encoder_get_next(enc))
     {
         if (enc->codec == fallback && !(enc->muxers & mux))
@@ -48,7 +48,7 @@ ghb_select_audio_codec(gint mux, guint32 in_codec, gint acodec, gint fallback, g
     {
         return fallback;
     }
-    for (enc = hb_audio_encoder_get_next(NULL); enc != NULL;
+    for (enc = hb_audio_encoder_get_next(((void*)0)); enc != ((void*)0);
          enc = hb_audio_encoder_get_next(enc))
     {
         if (enc->codec == acodec && !(enc->muxers & mux))

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT ;
 
-/* Variables and functions */
- void* NeoMalloc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NeoZero (void*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int UINT ;
+
+
+ void* NeoMalloc (int ) ;
+ int NeoZero (void*,int ) ;
 
 void *NeoZeroMalloc(UINT size)
 {
-	void *p = NeoMalloc(size);
-	if (p == NULL)
-	{
-		// Memory allocation failure
-		return NULL;
-	}
-	// Clear to zero
-	NeoZero(p, size);
-	return p;
+ void *p = NeoMalloc(size);
+ if (p == ((void*)0))
+ {
+
+  return ((void*)0);
+ }
+
+ NeoZero(p, size);
+ return p;
 }

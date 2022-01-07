@@ -1,63 +1,63 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_29__   TYPE_7__ ;
-typedef  struct TYPE_28__   TYPE_6__ ;
-typedef  struct TYPE_27__   TYPE_5__ ;
-typedef  struct TYPE_26__   TYPE_4__ ;
-typedef  struct TYPE_25__   TYPE_3__ ;
-typedef  struct TYPE_24__   TYPE_2__ ;
-typedef  struct TYPE_23__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_23__ {double learning_rate; double momentum; double decay; int n; int /*<<< orphan*/  h; int /*<<< orphan*/  w; TYPE_3__* layers; } ;
-typedef  TYPE_1__ network ;
+
+
+typedef struct TYPE_29__ TYPE_7__ ;
+typedef struct TYPE_28__ TYPE_6__ ;
+typedef struct TYPE_27__ TYPE_5__ ;
+typedef struct TYPE_26__ TYPE_4__ ;
+typedef struct TYPE_25__ TYPE_3__ ;
+typedef struct TYPE_24__ TYPE_2__ ;
+typedef struct TYPE_23__ TYPE_1__ ;
+
+
+struct TYPE_23__ {double learning_rate; double momentum; double decay; int n; int h; int w; TYPE_3__* layers; } ;
+typedef TYPE_1__ network ;
 struct TYPE_24__ {int size; } ;
-typedef  TYPE_2__ list ;
+typedef TYPE_2__ list ;
 struct TYPE_25__ {int classes; int side; int n; } ;
-typedef  TYPE_3__ layer ;
-struct TYPE_26__ {int /*<<< orphan*/  h; int /*<<< orphan*/  w; int /*<<< orphan*/  data; } ;
-typedef  TYPE_4__ image ;
-struct TYPE_27__ {float objectness; int /*<<< orphan*/  bbox; } ;
-typedef  TYPE_5__ detection ;
-struct TYPE_28__ {int /*<<< orphan*/  h; int /*<<< orphan*/  w; int /*<<< orphan*/  y; int /*<<< orphan*/  x; } ;
-typedef  TYPE_6__ box_label ;
-struct TYPE_29__ {int /*<<< orphan*/  member_3; int /*<<< orphan*/  member_2; int /*<<< orphan*/  member_1; int /*<<< orphan*/  member_0; } ;
-typedef  TYPE_7__ box ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef TYPE_3__ layer ;
+struct TYPE_26__ {int h; int w; int data; } ;
+typedef TYPE_4__ image ;
+struct TYPE_27__ {float objectness; int bbox; } ;
+typedef TYPE_5__ detection ;
+struct TYPE_28__ {int h; int w; int y; int x; } ;
+typedef TYPE_6__ box_label ;
+struct TYPE_29__ {int member_3; int member_2; int member_1; int member_0; } ;
+typedef TYPE_7__ box ;
+typedef int FILE ;
 
-/* Variables and functions */
- char* basecfg (char*) ; 
- float box_iou (int /*<<< orphan*/ ,TYPE_7__) ; 
- int /*<<< orphan*/ ** calloc (int,int) ; 
- int /*<<< orphan*/  do_nms_obj (TYPE_5__*,int,int,float) ; 
- int /*<<< orphan*/  find_replace (char*,char*,char*,char*) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,int,int,...) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  free_detections (TYPE_5__*,int) ; 
- int /*<<< orphan*/  free_image (TYPE_4__) ; 
- TYPE_5__* get_network_boxes (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,float,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int*) ; 
- TYPE_2__* get_paths (char*) ; 
- scalar_t__ list_to_array (TYPE_2__*) ; 
- TYPE_4__ load_image_color (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_1__* load_network (char*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  network_predict (TYPE_1__*,int /*<<< orphan*/ ) ; 
- TYPE_6__* read_boxes (char*,int*) ; 
- TYPE_4__ resize_image (TYPE_4__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_batch_network (TYPE_1__*,int) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  srand (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  time (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * voc_names ; 
+
+ char* basecfg (char*) ;
+ float box_iou (int ,TYPE_7__) ;
+ int ** calloc (int,int) ;
+ int do_nms_obj (TYPE_5__*,int,int,float) ;
+ int find_replace (char*,char*,char*,char*) ;
+ int * fopen (char*,char*) ;
+ int fprintf (int ,char*,int,int,int,...) ;
+ int free (char*) ;
+ int free_detections (TYPE_5__*,int) ;
+ int free_image (TYPE_4__) ;
+ TYPE_5__* get_network_boxes (TYPE_1__*,int ,int ,float,int ,int ,int,int*) ;
+ TYPE_2__* get_paths (char*) ;
+ scalar_t__ list_to_array (TYPE_2__*) ;
+ TYPE_4__ load_image_color (char*,int ,int ) ;
+ TYPE_1__* load_network (char*,char*,int ) ;
+ int network_predict (TYPE_1__*,int ) ;
+ TYPE_6__* read_boxes (char*,int*) ;
+ TYPE_4__ resize_image (TYPE_4__,int ,int ) ;
+ int set_batch_network (TYPE_1__*,int) ;
+ int snprintf (char*,int,char*,char*,int ) ;
+ int srand (int ) ;
+ int stderr ;
+ int time (int ) ;
+ int * voc_names ;
 
 void validate_yolo_recall(char *cfg, char *weights)
 {

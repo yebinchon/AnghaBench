@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  void* uint32_t ;
+
+
+
+
+typedef void* uint32_t ;
 struct fb_dmacopy {void* length; void* src; void* dst; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*,char const*,int,...) ; 
- int /*<<< orphan*/  FBIODMACOPY ; 
- int O_RDWR ; 
- int O_SYNC ; 
- int /*<<< orphan*/  close (int) ; 
- int errno ; 
- scalar_t__ ioctl (int,int /*<<< orphan*/ ,struct fb_dmacopy*) ; 
- int open (char const*,int) ; 
- int /*<<< orphan*/  strerror (int) ; 
+
+ int ERR (char*,char const*,int,...) ;
+ int FBIODMACOPY ;
+ int O_RDWR ;
+ int O_SYNC ;
+ int close (int) ;
+ int errno ;
+ scalar_t__ ioctl (int,int ,struct fb_dmacopy*) ;
+ int open (char const*,int) ;
+ int strerror (int) ;
 
 __attribute__((used)) static int vc_mem_copy(void *dst, uint32_t src, uint32_t length)
 {

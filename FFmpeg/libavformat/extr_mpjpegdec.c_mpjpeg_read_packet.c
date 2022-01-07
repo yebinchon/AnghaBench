@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_13__ {int /*<<< orphan*/  pb; TYPE_1__* priv_data; } ;
-struct TYPE_12__ {char* data; int size; int /*<<< orphan*/  pos; } ;
-struct TYPE_11__ {int searchstr_len; int /*<<< orphan*/ * searchstr; int /*<<< orphan*/ * boundary; scalar_t__ strict_mime_boundary; } ;
-typedef  TYPE_1__ MPJPEGDemuxContext ;
-typedef  TYPE_2__ AVPacket ;
-typedef  TYPE_3__ AVFormatContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_EOF ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  SEEK_CUR ; 
- int av_append_packet (int /*<<< orphan*/ ,TYPE_2__*,int const) ; 
- void* av_asprintf (char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  av_freep (int /*<<< orphan*/ **) ; 
- int av_get_packet (int /*<<< orphan*/ ,TYPE_2__*,int) ; 
- int /*<<< orphan*/  av_init_packet (TYPE_2__*) ; 
- int /*<<< orphan*/  av_packet_unref (TYPE_2__*) ; 
- void* av_strdup (char*) ; 
- int /*<<< orphan*/  avio_seek (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  avio_tell (int /*<<< orphan*/ ) ; 
- int ffio_ensure_seekback (int /*<<< orphan*/ ,int const) ; 
- int /*<<< orphan*/  memcmp (char*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * mpjpeg_get_boundary (int /*<<< orphan*/ ) ; 
- int parse_multipart_header (int /*<<< orphan*/ ,int*,int /*<<< orphan*/ *,TYPE_3__*) ; 
- int strlen (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_13__ {int pb; TYPE_1__* priv_data; } ;
+struct TYPE_12__ {char* data; int size; int pos; } ;
+struct TYPE_11__ {int searchstr_len; int * searchstr; int * boundary; scalar_t__ strict_mime_boundary; } ;
+typedef TYPE_1__ MPJPEGDemuxContext ;
+typedef TYPE_2__ AVPacket ;
+typedef TYPE_3__ AVFormatContext ;
+
+
+ int AVERROR (int ) ;
+ int AVERROR_EOF ;
+ int ENOMEM ;
+ int SEEK_CUR ;
+ int av_append_packet (int ,TYPE_2__*,int const) ;
+ void* av_asprintf (char*,int *) ;
+ int av_freep (int **) ;
+ int av_get_packet (int ,TYPE_2__*,int) ;
+ int av_init_packet (TYPE_2__*) ;
+ int av_packet_unref (TYPE_2__*) ;
+ void* av_strdup (char*) ;
+ int avio_seek (int ,int,int ) ;
+ int avio_tell (int ) ;
+ int ffio_ensure_seekback (int ,int const) ;
+ int memcmp (char*,int *,int) ;
+ int * mpjpeg_get_boundary (int ) ;
+ int parse_multipart_header (int ,int*,int *,TYPE_3__*) ;
+ int strlen (int *) ;
 
 __attribute__((used)) static int mpjpeg_read_packet(AVFormatContext *s, AVPacket *pkt)
 {
@@ -47,12 +47,12 @@ __attribute__((used)) static int mpjpeg_read_packet(AVFormatContext *s, AVPacket
     int ret;
 
     MPJPEGDemuxContext *mpjpeg = s->priv_data;
-    if (mpjpeg->boundary == NULL) {
-        uint8_t* boundary = NULL;
+    if (mpjpeg->boundary == ((void*)0)) {
+        uint8_t* boundary = ((void*)0);
         if (mpjpeg->strict_mime_boundary) {
             boundary = mpjpeg_get_boundary(s->pb);
         }
-        if (boundary != NULL) {
+        if (boundary != ((void*)0)) {
             mpjpeg->boundary = av_asprintf("--%s", boundary);
             mpjpeg->searchstr = av_asprintf("\r\n--%s\r\n", boundary);
             av_freep(&boundary);
@@ -75,28 +75,28 @@ __attribute__((used)) static int mpjpeg_read_packet(AVFormatContext *s, AVPacket
         return ret;
 
     if (size > 0) {
-        /* size has been provided to us in MIME header */
+
         ret = av_get_packet(s->pb, pkt, size);
     } else {
-        /* no size was given -- we read until the next boundary or end-of-file */
+
         int remaining = 0, len;
 
         const int read_chunk = 2048;
         av_init_packet(pkt);
-        pkt->data = NULL;
+        pkt->data = ((void*)0);
         pkt->size = 0;
-        pkt->pos  = avio_tell(s->pb);
+        pkt->pos = avio_tell(s->pb);
 
-        while ((ret = ffio_ensure_seekback(s->pb, read_chunk - remaining)) >= 0 && /* we may need to return as much as all we've read back to the buffer */
+        while ((ret = ffio_ensure_seekback(s->pb, read_chunk - remaining)) >= 0 &&
                (ret = av_append_packet(s->pb, pkt, read_chunk - remaining)) >= 0) {
-            /* scan the new data */
+
             char *start;
 
             len = ret + remaining;
             start = pkt->data + pkt->size - len;
             do {
                 if (!memcmp(start, mpjpeg->searchstr, mpjpeg->searchstr_len)) {
-                    // got the boundary! rewind the stream
+
                     avio_seek(s->pb, -len, SEEK_CUR);
                     pkt->size -= len;
                     return pkt->size;
@@ -107,7 +107,7 @@ __attribute__((used)) static int mpjpeg_read_packet(AVFormatContext *s, AVPacket
             remaining = len;
         }
 
-        /* error or EOF occurred */
+
         if (ret == AVERROR_EOF) {
             ret = pkt->size > 0 ? pkt->size : AVERROR_EOF;
         } else {

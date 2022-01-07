@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_6__ ;
-typedef  struct TYPE_14__   TYPE_5__ ;
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint64_t ;
-typedef  int /*<<< orphan*/  uint16_t ;
-struct TYPE_15__ {int* linesize; int /*<<< orphan*/ ** data; } ;
+
+
+typedef struct TYPE_15__ TYPE_6__ ;
+typedef struct TYPE_14__ TYPE_5__ ;
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint64_t ;
+typedef int uint16_t ;
+struct TYPE_15__ {int* linesize; int ** data; } ;
 struct TYPE_14__ {TYPE_2__* priv; } ;
-struct TYPE_13__ {int w; int h; int /*<<< orphan*/  format; TYPE_5__* dst; } ;
+struct TYPE_13__ {int w; int h; int format; TYPE_5__* dst; } ;
 struct TYPE_12__ {int log2_chroma_w; int log2_chroma_h; TYPE_1__* comp; } ;
-struct TYPE_11__ {int nb_planes; int* height; int* width; int depth; int max; int planes; scalar_t__ sum; scalar_t__ max_sum; TYPE_6__* empty; int /*<<< orphan*/  fill; int /*<<< orphan*/  getsum; int /*<<< orphan*/  maskfun; int /*<<< orphan*/  linesize; } ;
+struct TYPE_11__ {int nb_planes; int* height; int* width; int depth; int max; int planes; scalar_t__ sum; scalar_t__ max_sum; TYPE_6__* empty; int fill; int getsum; int maskfun; int linesize; } ;
 struct TYPE_10__ {int depth; } ;
-typedef  TYPE_2__ MaskFunContext ;
-typedef  TYPE_3__ AVPixFmtDescriptor ;
-typedef  TYPE_4__ AVFilterLink ;
-typedef  TYPE_5__ AVFilterContext ;
+typedef TYPE_2__ MaskFunContext ;
+typedef TYPE_3__ AVPixFmtDescriptor ;
+typedef TYPE_4__ AVFilterLink ;
+typedef TYPE_5__ AVFilterContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- void* AV_CEIL_RSHIFT (int,int) ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  FFMIN (int /*<<< orphan*/ ,int) ; 
- int av_image_fill_linesizes (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int av_pix_fmt_count_planes (int /*<<< orphan*/ ) ; 
- TYPE_3__* av_pix_fmt_desc_get (int /*<<< orphan*/ ) ; 
- TYPE_6__* ff_get_video_buffer (TYPE_4__*,int,int) ; 
- int /*<<< orphan*/  getsum16 ; 
- int /*<<< orphan*/  getsum8 ; 
- int /*<<< orphan*/  maskfun16 ; 
- int /*<<< orphan*/  maskfun8 ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
+
+ int AVERROR (int ) ;
+ void* AV_CEIL_RSHIFT (int,int) ;
+ int ENOMEM ;
+ int FFMIN (int ,int) ;
+ int av_image_fill_linesizes (int ,int ,int) ;
+ int av_pix_fmt_count_planes (int ) ;
+ TYPE_3__* av_pix_fmt_desc_get (int ) ;
+ TYPE_6__* ff_get_video_buffer (TYPE_4__*,int,int) ;
+ int getsum16 ;
+ int getsum8 ;
+ int maskfun16 ;
+ int maskfun8 ;
+ int memset (int *,int ,int) ;
 
 __attribute__((used)) static int config_input(AVFilterLink *inlink)
 {
@@ -61,8 +61,8 @@ __attribute__((used)) static int config_input(AVFilterLink *inlink)
     vsub = desc->log2_chroma_h;
     s->height[1] = s->height[2] = AV_CEIL_RSHIFT(inlink->h, vsub);
     s->height[0] = s->height[3] = inlink->h;
-    s->width[1]  = s->width[2]  = AV_CEIL_RSHIFT(inlink->w, hsub);
-    s->width[0]  = s->width[3]  = inlink->w;
+    s->width[1] = s->width[2] = AV_CEIL_RSHIFT(inlink->w, hsub);
+    s->width[0] = s->width[3] = inlink->w;
 
     s->depth = desc->comp[0].depth;
     s->max = (1 << s->depth) - 1;

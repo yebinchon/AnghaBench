@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
-struct nn_chunkref_chunk {int tag; int /*<<< orphan*/  chunk; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint8_t ;
+struct nn_chunkref_chunk {int tag; int chunk; } ;
 struct TYPE_2__ {scalar_t__* ref; } ;
 struct nn_chunkref {TYPE_1__ u; } ;
 
-/* Variables and functions */
- size_t NN_CHUNKREF_MAX ; 
- int /*<<< orphan*/  errno_assert (int) ; 
- int nn_chunk_alloc (size_t,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ size_t NN_CHUNKREF_MAX ;
+ int errno_assert (int) ;
+ int nn_chunk_alloc (size_t,int ,int *) ;
 
 void nn_chunkref_init (struct nn_chunkref *self, size_t size)
 {

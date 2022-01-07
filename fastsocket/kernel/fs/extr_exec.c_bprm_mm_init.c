@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct mm_struct {int dummy; } ;
 struct linux_binprm {struct mm_struct* mm; } ;
 
-/* Variables and functions */
- int ENOMEM ; 
- int __bprm_mm_init (struct linux_binprm*) ; 
- int /*<<< orphan*/  current ; 
- int init_new_context (int /*<<< orphan*/ ,struct mm_struct*) ; 
- struct mm_struct* mm_alloc () ; 
- int /*<<< orphan*/  mmdrop (struct mm_struct*) ; 
+
+ int ENOMEM ;
+ int __bprm_mm_init (struct linux_binprm*) ;
+ int current ;
+ int init_new_context (int ,struct mm_struct*) ;
+ struct mm_struct* mm_alloc () ;
+ int mmdrop (struct mm_struct*) ;
 
 int bprm_mm_init(struct linux_binprm *bprm)
 {
-	int err;
-	struct mm_struct *mm = NULL;
+ int err;
+ struct mm_struct *mm = ((void*)0);
 
-	bprm->mm = mm = mm_alloc();
-	err = -ENOMEM;
-	if (!mm)
-		goto err;
+ bprm->mm = mm = mm_alloc();
+ err = -ENOMEM;
+ if (!mm)
+  goto err;
 
-	err = init_new_context(current, mm);
-	if (err)
-		goto err;
+ err = init_new_context(current, mm);
+ if (err)
+  goto err;
 
-	err = __bprm_mm_init(bprm);
-	if (err)
-		goto err;
+ err = __bprm_mm_init(bprm);
+ if (err)
+  goto err;
 
-	return 0;
+ return 0;
 
 err:
-	if (mm) {
-		bprm->mm = NULL;
-		mmdrop(mm);
-	}
+ if (mm) {
+  bprm->mm = ((void*)0);
+  mmdrop(mm);
+ }
 
-	return err;
+ return err;
 }

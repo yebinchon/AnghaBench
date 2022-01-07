@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {size_t cnt; char* buf; int avail; scalar_t__ incr; scalar_t__ pos; } ;
-typedef  TYPE_1__ wl_data_t ;
+typedef TYPE_1__ wl_data_t ;
 struct TYPE_5__ {TYPE_1__* wl_data; } ;
-typedef  TYPE_2__ hashcat_ctx_t ;
-typedef  int /*<<< orphan*/  HCFILE ;
+typedef TYPE_2__ hashcat_ctx_t ;
+typedef int HCFILE ;
 
-/* Variables and functions */
- int const EOF ; 
- int /*<<< orphan*/  hc_feof (int /*<<< orphan*/ *) ; 
- int hc_fgetc (int /*<<< orphan*/ *) ; 
- size_t hc_fread (char*,int,scalar_t__,int /*<<< orphan*/ *) ; 
- scalar_t__ hcrealloc (char*,int,scalar_t__) ; 
+
+ int const EOF ;
+ int hc_feof (int *) ;
+ int hc_fgetc (int *) ;
+ size_t hc_fread (char*,int,scalar_t__,int *) ;
+ scalar_t__ hcrealloc (char*,int,scalar_t__) ;
 
 int load_segment (hashcat_ctx_t *hashcat_ctx, HCFILE *fp)
 {
   wl_data_t *wl_data = hashcat_ctx->wl_data;
 
-  // NOTE: use (never changing) ->incr here instead of ->avail otherwise the buffer gets bigger and bigger
+
 
   wl_data->pos = 0;
 
@@ -61,7 +61,7 @@ int load_segment (hashcat_ctx_t *hashcat_ctx, HCFILE *fp)
     if (c == '\n') break;
   }
 
-  // ensure stream ends with a newline
+
 
   if (wl_data->buf[wl_data->cnt - 1] != '\n')
   {

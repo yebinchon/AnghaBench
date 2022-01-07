@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct connection {int /*<<< orphan*/  Out; } ;
-struct TYPE_4__ {int /*<<< orphan*/  out_packet_num; } ;
-struct TYPE_3__ {int /*<<< orphan*/  (* flush_packet ) (struct connection*) ;} ;
 
-/* Variables and functions */
- int* P ; 
- TYPE_2__* RPCC_DATA (struct connection*) ; 
- TYPE_1__* RPCC_FUNC (struct connection*) ; 
- int RPC_INVOKE_REQ ; 
- int additional ; 
- int /*<<< orphan*/  auth_key_id ; 
- int compute_crc32 (int*,int) ; 
- int /*<<< orphan*/  dump_rpc_packet (int*) ; 
- scalar_t__ expect_input ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  memcpy (int*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  msg_id ; 
- int /*<<< orphan*/  req_id ; 
- int /*<<< orphan*/  session_id ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  stub1 (struct connection*) ; 
- int verbosity ; 
- int /*<<< orphan*/  write_out (int /*<<< orphan*/ *,int*,int) ; 
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct connection {int Out; } ;
+struct TYPE_4__ {int out_packet_num; } ;
+struct TYPE_3__ {int (* flush_packet ) (struct connection*) ;} ;
+
+
+ int* P ;
+ TYPE_2__* RPCC_DATA (struct connection*) ;
+ TYPE_1__* RPCC_FUNC (struct connection*) ;
+ int RPC_INVOKE_REQ ;
+ int additional ;
+ int auth_key_id ;
+ int compute_crc32 (int*,int) ;
+ int dump_rpc_packet (int*) ;
+ scalar_t__ expect_input ;
+ int fprintf (int ,char*) ;
+ int memcpy (int*,int *,int) ;
+ int msg_id ;
+ int req_id ;
+ int session_id ;
+ int stderr ;
+ int stub1 (struct connection*) ;
+ int verbosity ;
+ int write_out (int *,int*,int) ;
 
 int rpcc_send_query (struct connection *c, int r) {
   req_id++;

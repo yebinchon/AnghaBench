@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  PDWORD ;
-typedef  int /*<<< orphan*/  PBYTE ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
-typedef  int /*<<< orphan*/  IFInfo ;
-typedef  int /*<<< orphan*/  HANDLE ;
-typedef  int /*<<< orphan*/  DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FILE_READ_DATA ; 
- scalar_t__ NT_SUCCESS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  closeTcpFile (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  getInterfaceInfoByName (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  getInterfacePhysicalFromInfo (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  openTcpFile (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int PDWORD ;
+typedef int PBYTE ;
+typedef int NTSTATUS ;
+typedef int IFInfo ;
+typedef int HANDLE ;
+typedef int DWORD ;
+
+
+ int FILE_READ_DATA ;
+ scalar_t__ NT_SUCCESS (int ) ;
+ int closeTcpFile (int ) ;
+ int getInterfaceInfoByName (int ,char*,int *) ;
+ int getInterfacePhysicalFromInfo (int *,int ,int ,int ) ;
+ int openTcpFile (int *,int ) ;
 
 DWORD getInterfacePhysicalByName(const char *name, PDWORD len, PBYTE addr,
                                  PDWORD type)

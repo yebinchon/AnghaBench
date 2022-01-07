@@ -1,19 +1,11 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  assert (unsigned int*) ; 
- int utf8_encoded_valid_unichar (char const*,size_t) ; 
+ int assert (unsigned int*) ;
+ int utf8_encoded_valid_unichar (char const*,size_t) ;
 
 __attribute__((used)) static void inc_lines_columns(unsigned *line, unsigned *column, const char *s, size_t n) {
         assert(line);
@@ -24,15 +16,15 @@ __attribute__((used)) static void inc_lines_columns(unsigned *line, unsigned *co
                 if (*s == '\n') {
                         (*line)++;
                         *column = 1;
-                } else if ((signed char) *s >= 0 && *s < 127) /* Process ASCII chars quickly */
+                } else if ((signed char) *s >= 0 && *s < 127)
                         (*column)++;
                 else {
                         int w;
 
                         w = utf8_encoded_valid_unichar(s, n);
-                        if (w < 0) /* count invalid unichars as normal characters */
+                        if (w < 0)
                                 w = 1;
-                        else if ((size_t) w > n) /* never read more than the specified number of characters */
+                        else if ((size_t) w > n)
                                 w = (int) n;
 
                         (*column)++;

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  rtx ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GET_CODE (int /*<<< orphan*/ ) ; 
- char* GET_RTX_FORMAT (int /*<<< orphan*/ ) ; 
- int GET_RTX_LENGTH (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XEXP (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  XVECEXP (int /*<<< orphan*/ ,int,int) ; 
- int XVECLEN (int /*<<< orphan*/ ,int) ; 
- scalar_t__ rtx_equal_p (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int rtx ;
+
+
+ int GET_CODE (int ) ;
+ char* GET_RTX_FORMAT (int ) ;
+ int GET_RTX_LENGTH (int ) ;
+ int XEXP (int ,int) ;
+ int XVECEXP (int ,int,int) ;
+ int XVECLEN (int ,int) ;
+ scalar_t__ rtx_equal_p (int ,int ) ;
 
 __attribute__((used)) static int
 contained_in_p (rtx inner, rtx exp)
@@ -36,15 +36,15 @@ contained_in_p (rtx inner, rtx exp)
       {
       case 'e':
       case 'u':
-	if (contained_in_p (inner, XEXP (exp, i)))
-	  return 1;
-	break;
+ if (contained_in_p (inner, XEXP (exp, i)))
+   return 1;
+ break;
 
       case 'E':
-	for (j = 0; j < XVECLEN (exp, i); j++)
-	  if (contained_in_p (inner, XVECEXP (exp, i, j)))
-	    return 1;
-	break;
+ for (j = 0; j < XVECLEN (exp, i); j++)
+   if (contained_in_p (inner, XVECEXP (exp, i, j)))
+     return 1;
+ break;
       }
 
   return 0;

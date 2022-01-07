@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  TokenKind ;
-struct TYPE_4__ {int /*<<< orphan*/  right; int /*<<< orphan*/  left; int /*<<< orphan*/  op; } ;
-struct TYPE_5__ {scalar_t__ kind; TYPE_1__ binary; int /*<<< orphan*/  pos; } ;
-typedef  int /*<<< orphan*/  Operand ;
-typedef  TYPE_2__ Expr ;
 
-/* Variables and functions */
- scalar_t__ EXPR_BINARY ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  resolve_expr_binary_op (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  resolve_expr_rvalue (int /*<<< orphan*/ ) ; 
- char* token_kind_name (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int TokenKind ;
+struct TYPE_4__ {int right; int left; int op; } ;
+struct TYPE_5__ {scalar_t__ kind; TYPE_1__ binary; int pos; } ;
+typedef int Operand ;
+typedef TYPE_2__ Expr ;
+
+
+ scalar_t__ EXPR_BINARY ;
+ int assert (int) ;
+ int resolve_expr_binary_op (int ,char const*,int ,int ,int ,int ,int ) ;
+ int resolve_expr_rvalue (int ) ;
+ char* token_kind_name (int ) ;
 
 Operand resolve_expr_binary(Expr *expr) {
     assert(expr->kind == EXPR_BINARY);

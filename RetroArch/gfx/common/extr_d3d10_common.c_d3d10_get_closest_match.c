@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int UINT ;
-typedef  scalar_t__ DXGI_FORMAT ;
-typedef  int /*<<< orphan*/  D3D10Device ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D3D10CheckFormatSupport (int /*<<< orphan*/ ,scalar_t__,int*) ; 
- scalar_t__ DXGI_FORMAT_UNKNOWN ; 
- scalar_t__ SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert (scalar_t__) ; 
- scalar_t__* dxgi_get_format_fallback_list (scalar_t__) ; 
+
+
+
+typedef int UINT ;
+typedef scalar_t__ DXGI_FORMAT ;
+typedef int D3D10Device ;
+
+
+ int D3D10CheckFormatSupport (int ,scalar_t__,int*) ;
+ scalar_t__ DXGI_FORMAT_UNKNOWN ;
+ scalar_t__ SUCCEEDED (int ) ;
+ int assert (scalar_t__) ;
+ scalar_t__* dxgi_get_format_fallback_list (scalar_t__) ;
 
 DXGI_FORMAT
 d3d10_get_closest_match(D3D10Device device,

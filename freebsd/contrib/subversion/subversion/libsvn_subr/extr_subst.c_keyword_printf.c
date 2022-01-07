@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_stringbuf_t ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int svn_stringbuf_t ;
 struct TYPE_6__ {char const* data; } ;
-typedef  TYPE_1__ svn_string_t ;
-typedef  int /*<<< orphan*/  apr_time_t ;
-struct TYPE_7__ {int /*<<< orphan*/  tm_sec; int /*<<< orphan*/  tm_min; int /*<<< orphan*/  tm_hour; int /*<<< orphan*/  tm_mday; int /*<<< orphan*/  tm_mon; int /*<<< orphan*/  tm_year; } ;
-typedef  TYPE_2__ apr_time_exp_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+typedef TYPE_1__ svn_string_t ;
+typedef int apr_time_t ;
+struct TYPE_7__ {int tm_sec; int tm_min; int tm_hour; int tm_mday; int tm_mon; int tm_year; } ;
+typedef TYPE_2__ apr_time_exp_t ;
+typedef int apr_pool_t ;
 
-/* Variables and functions */
- char* apr_psprintf (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  apr_time_exp_gmt (TYPE_2__*,int /*<<< orphan*/ ) ; 
- TYPE_1__* svn_stringbuf__morph_into_string (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_stringbuf_appendbyte (int /*<<< orphan*/ *,char const) ; 
- int /*<<< orphan*/  svn_stringbuf_appendbytes (int /*<<< orphan*/ *,char const*,int) ; 
- int /*<<< orphan*/  svn_stringbuf_appendcstr (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/ * svn_stringbuf_create_empty (int /*<<< orphan*/ *) ; 
- char const* svn_time_to_human_cstring (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- char* svn_uri_basename (char const*,int /*<<< orphan*/ *) ; 
- char* svn_uri_skip_ancestor (char const*,char const*,int /*<<< orphan*/ *) ; 
+
+ char* apr_psprintf (int *,char*,int ,int ,int ,int ,int ,int ) ;
+ int apr_time_exp_gmt (TYPE_2__*,int ) ;
+ TYPE_1__* svn_stringbuf__morph_into_string (int *) ;
+ int svn_stringbuf_appendbyte (int *,char const) ;
+ int svn_stringbuf_appendbytes (int *,char const*,int) ;
+ int svn_stringbuf_appendcstr (int *,char const*) ;
+ int * svn_stringbuf_create_empty (int *) ;
+ char const* svn_time_to_human_cstring (int ,int *) ;
+ char* svn_uri_basename (char const*,int *) ;
+ char* svn_uri_skip_ancestor (char const*,char const*,int *) ;
 
 __attribute__((used)) static svn_string_t *
 keyword_printf(const char *fmt,
@@ -52,7 +52,7 @@ keyword_printf(const char *fmt,
       while (*cur != '\0' && *cur != '%')
         cur++;
 
-      if ((n = cur - fmt) > 0) /* Do we have an as-is string? */
+      if ((n = cur - fmt) > 0)
         svn_stringbuf_appendbytes(value, fmt, n);
 
       if (*cur == '\0')
@@ -60,18 +60,18 @@ keyword_printf(const char *fmt,
 
       switch (cur[1])
         {
-        case 'a': /* author of this revision */
+        case 'a':
           if (author)
             svn_stringbuf_appendcstr(value, author);
           break;
-        case 'b': /* basename of this file */
+        case 'b':
           if (url && *url)
             {
               const char *base_name = svn_uri_basename(url, pool);
               svn_stringbuf_appendcstr(value, base_name);
             }
           break;
-        case 'd': /* short format of date of this revision */
+        case 'd':
           if (date)
             {
               apr_time_exp_t exploded_time;
@@ -90,12 +90,12 @@ keyword_printf(const char *fmt,
               svn_stringbuf_appendcstr(value, human);
             }
           break;
-        case 'D': /* long format of date of this revision */
+        case 'D':
           if (date)
             svn_stringbuf_appendcstr(value,
                                      svn_time_to_human_cstring(date, pool));
           break;
-        case 'P': /* relative path of this file */
+        case 'P':
           if (repos_root_url && *repos_root_url != '\0' && url && *url != '\0')
             {
               const char *repos_relpath;
@@ -105,30 +105,30 @@ keyword_printf(const char *fmt,
                 svn_stringbuf_appendcstr(value, repos_relpath);
             }
           break;
-        case 'R': /* root of repos */
+        case 'R':
           if (repos_root_url && *repos_root_url != '\0')
             svn_stringbuf_appendcstr(value, repos_root_url);
           break;
-        case 'r': /* number of this revision */
+        case 'r':
           if (rev)
             svn_stringbuf_appendcstr(value, rev);
           break;
-        case 'u': /* URL of this file */
+        case 'u':
           if (url)
             svn_stringbuf_appendcstr(value, url);
           break;
-        case '_': /* '%_' => a space */
+        case '_':
           svn_stringbuf_appendbyte(value, ' ');
           break;
-        case '%': /* '%%' => a literal % */
+        case '%':
           svn_stringbuf_appendbyte(value, *cur);
           break;
-        case '\0': /* '%' as the last character of the string. */
+        case '\0':
           svn_stringbuf_appendbyte(value, *cur);
-          /* Now go back one character, since this was just a one character
-           * sequence, whereas all others are two characters, and we do not
-           * want to skip the null terminator entirely and carry on
-           * formatting random memory contents. */
+
+
+
+
           cur--;
           break;
         case 'H':
@@ -147,12 +147,12 @@ keyword_printf(const char *fmt,
             svn_stringbuf_appendcstr(value, s->data);
           }
           break;
-        default: /* Unrecognized code, just print it literally. */
+        default:
           svn_stringbuf_appendbytes(value, cur, 2);
           break;
         }
 
-      /* Format code is processed - skip it, and get ready for next chunk. */
+
       fmt = cur + 2;
     }
 

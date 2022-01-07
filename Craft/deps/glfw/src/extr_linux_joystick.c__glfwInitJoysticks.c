@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct dirent {char* d_name; } ;
-typedef  int /*<<< orphan*/  regmatch_t ;
-typedef  int /*<<< orphan*/  path ;
-struct TYPE_3__ {int inotify; int watch; int /*<<< orphan*/  regex; } ;
+typedef int regmatch_t ;
+typedef int path ;
+struct TYPE_3__ {int inotify; int watch; int regex; } ;
 struct TYPE_4__ {TYPE_1__ linux_js; } ;
-typedef  int /*<<< orphan*/  DIR ;
+typedef int DIR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GLFW_PLATFORM_ERROR ; 
- int GL_FALSE ; 
- int GL_TRUE ; 
- int IN_ATTRIB ; 
- int IN_CLOEXEC ; 
- int IN_CREATE ; 
- int IN_NONBLOCK ; 
- TYPE_2__ _glfw ; 
- int /*<<< orphan*/  _glfwInputError (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  closedir (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  errno ; 
- int inotify_add_watch (int,char const*,int) ; 
- int inotify_init1 (int) ; 
- int /*<<< orphan*/  openJoystickDevice (char*) ; 
- int /*<<< orphan*/ * opendir (char const*) ; 
- struct dirent* readdir (int /*<<< orphan*/ *) ; 
- scalar_t__ regcomp (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- scalar_t__ regexec (int /*<<< orphan*/ *,char*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,char const*,char*) ; 
- int /*<<< orphan*/  strerror (int /*<<< orphan*/ ) ; 
+
+ int GLFW_PLATFORM_ERROR ;
+ int GL_FALSE ;
+ int GL_TRUE ;
+ int IN_ATTRIB ;
+ int IN_CLOEXEC ;
+ int IN_CREATE ;
+ int IN_NONBLOCK ;
+ TYPE_2__ _glfw ;
+ int _glfwInputError (int ,char*,...) ;
+ int closedir (int *) ;
+ int errno ;
+ int inotify_add_watch (int,char const*,int) ;
+ int inotify_init1 (int) ;
+ int openJoystickDevice (char*) ;
+ int * opendir (char const*) ;
+ struct dirent* readdir (int *) ;
+ scalar_t__ regcomp (int *,char*,int ) ;
+ scalar_t__ regexec (int *,char*,int,int *,int ) ;
+ int snprintf (char*,int,char*,char const*,char*) ;
+ int strerror (int ) ;
 
 int _glfwInitJoysticks(void)
 {
-#if defined(__linux__)
+
     const char* dirname = "/dev/input";
     DIR* dir;
 
@@ -56,8 +56,8 @@ int _glfwInitJoysticks(void)
         return GL_FALSE;
     }
 
-    // HACK: Register for IN_ATTRIB as well to get notified when udev is done
-    //       This works well in practice but the true way is libudev
+
+
 
     _glfw.linux_js.watch = inotify_add_watch(_glfw.linux_js.inotify,
                                              dirname,
@@ -68,7 +68,7 @@ int _glfwInitJoysticks(void)
                         "Linux: Failed to watch for joystick connections in %s: %s",
                         dirname,
                         strerror(errno));
-        // Continue without device connection notifications
+
     }
 
     if (regcomp(&_glfw.linux_js.regex, "^js[0-9]\\+$", 0) != 0)
@@ -102,10 +102,10 @@ int _glfwInitJoysticks(void)
                         "Linux: Failed to open joystick device directory %s: %s",
                         dirname,
                         strerror(errno));
-        // Continue with no joysticks detected
+
     }
 
-#endif // __linux__
+
 
     return GL_TRUE;
 }

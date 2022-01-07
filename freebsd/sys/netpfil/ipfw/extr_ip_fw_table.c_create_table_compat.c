@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  xi ;
-typedef  int /*<<< orphan*/  uint16_t ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int xi ;
+typedef int uint16_t ;
 struct tid_info {int dummy; } ;
 struct ip_fw_chain {int dummy; } ;
-struct TYPE_4__ {int /*<<< orphan*/  vmask; } ;
-typedef  TYPE_1__ ipfw_xtable_info ;
+struct TYPE_4__ {int vmask; } ;
+typedef TYPE_1__ ipfw_xtable_info ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IPFW_VTYPE_LEGACY ; 
- int create_table_internal (struct ip_fw_chain*,struct tid_info*,int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
+
+ int IPFW_VTYPE_LEGACY ;
+ int create_table_internal (struct ip_fw_chain*,struct tid_info*,int *,TYPE_1__*,int *,int) ;
+ int memset (TYPE_1__*,int ,int) ;
 
 __attribute__((used)) static int
 create_table_compat(struct ip_fw_chain *ch, struct tid_info *ti,
     uint16_t *pkidx)
 {
-	ipfw_xtable_info xi;
-	int error;
+ ipfw_xtable_info xi;
+ int error;
 
-	memset(&xi, 0, sizeof(xi));
-	/* Set default value mask for legacy clients */
-	xi.vmask = IPFW_VTYPE_LEGACY;
+ memset(&xi, 0, sizeof(xi));
 
-	error = create_table_internal(ch, ti, NULL, &xi, pkidx, 1);
-	if (error != 0)
-		return (error);
+ xi.vmask = IPFW_VTYPE_LEGACY;
 
-	return (0);
+ error = create_table_internal(ch, ti, ((void*)0), &xi, pkidx, 1);
+ if (error != 0)
+  return (error);
+
+ return (0);
 }

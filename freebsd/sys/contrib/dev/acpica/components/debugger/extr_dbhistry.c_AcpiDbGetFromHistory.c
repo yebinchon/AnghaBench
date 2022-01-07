@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ UINT32 ;
 
-/* Variables and functions */
- char* AcpiDbGetHistoryByIndex (scalar_t__) ; 
- scalar_t__ AcpiGbl_NextCmdNum ; 
- scalar_t__ strtoul (char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef scalar_t__ UINT32 ;
+
+
+ char* AcpiDbGetHistoryByIndex (scalar_t__) ;
+ scalar_t__ AcpiGbl_NextCmdNum ;
+ scalar_t__ strtoul (char*,int *,int ) ;
 
 char *
 AcpiDbGetFromHistory (
-    char                    *CommandNumArg)
+    char *CommandNumArg)
 {
-    UINT32                  CmdNum;
+    UINT32 CmdNum;
 
 
-    if (CommandNumArg == NULL)
+    if (CommandNumArg == ((void*)0))
     {
         CmdNum = AcpiGbl_NextCmdNum - 1;
     }
 
     else
     {
-        CmdNum = strtoul (CommandNumArg, NULL, 0);
+        CmdNum = strtoul (CommandNumArg, ((void*)0), 0);
     }
 
     return (AcpiDbGetHistoryByIndex (CmdNum));

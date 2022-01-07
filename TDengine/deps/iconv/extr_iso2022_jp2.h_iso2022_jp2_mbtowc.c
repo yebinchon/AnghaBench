@@ -1,49 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int ucs4_t ;
-typedef  void* state_t ;
-typedef  TYPE_1__* conv_t ;
+
+
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef int ucs4_t ;
+typedef void* state_t ;
+typedef TYPE_1__* conv_t ;
 struct TYPE_11__ {void* istate; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  COMBINE_STATE ; 
- unsigned char ESC ; 
- int RET_ILSEQ ; 
- int RET_SHIFT_ILSEQ (int) ; 
- int RET_TOOFEW (int) ; 
- int /*<<< orphan*/  SPLIT_STATE ; 
-#define  STATE_ASCII 137 
-#define  STATE_G2_ISO8859_1 136 
-#define  STATE_G2_ISO8859_7 135 
-#define  STATE_G2_NONE 134 
-#define  STATE_GB2312 133 
-#define  STATE_JISX0201KATAKANA 132 
-#define  STATE_JISX0201ROMAN 131 
-#define  STATE_JISX0208 130 
-#define  STATE_JISX0212 129 
-#define  STATE_KSC5601 128 
- int /*<<< orphan*/  abort () ; 
- int ascii_mbtowc (TYPE_1__*,int*,unsigned char const*,int) ; 
- int gb2312_mbtowc (TYPE_1__*,int*,unsigned char const*,int) ; 
- int iso8859_1_mbtowc (TYPE_1__*,int*,unsigned char*,int) ; 
- int iso8859_7_mbtowc (TYPE_1__*,int*,unsigned char*,int) ; 
- int jisx0201_mbtowc (TYPE_1__*,int*,unsigned char const*,int) ; 
- int jisx0208_mbtowc (TYPE_1__*,int*,unsigned char const*,int) ; 
- int jisx0212_mbtowc (TYPE_1__*,int*,unsigned char const*,int) ; 
- int ksc5601_mbtowc (TYPE_1__*,int*,unsigned char const*,int) ; 
- int state1 ; 
- int state2 ; 
+
+ int COMBINE_STATE ;
+ unsigned char ESC ;
+ int RET_ILSEQ ;
+ int RET_SHIFT_ILSEQ (int) ;
+ int RET_TOOFEW (int) ;
+ int SPLIT_STATE ;
+ int abort () ;
+ int ascii_mbtowc (TYPE_1__*,int*,unsigned char const*,int) ;
+ int gb2312_mbtowc (TYPE_1__*,int*,unsigned char const*,int) ;
+ int iso8859_1_mbtowc (TYPE_1__*,int*,unsigned char*,int) ;
+ int iso8859_7_mbtowc (TYPE_1__*,int*,unsigned char*,int) ;
+ int jisx0201_mbtowc (TYPE_1__*,int*,unsigned char const*,int) ;
+ int jisx0208_mbtowc (TYPE_1__*,int*,unsigned char const*,int) ;
+ int jisx0212_mbtowc (TYPE_1__*,int*,unsigned char const*,int) ;
+ int ksc5601_mbtowc (TYPE_1__*,int*,unsigned char const*,int) ;
+ int state1 ;
+ int state2 ;
 
 __attribute__((used)) static int
 iso2022_jp2_mbtowc (conv_t conv, ucs4_t *pwc, const unsigned char *s, int n)
@@ -59,21 +49,21 @@ iso2022_jp2_mbtowc (conv_t conv, ucs4_t *pwc, const unsigned char *s, int n)
         goto none;
       if (s[1] == '(') {
         if (s[2] == 'B') {
-          state1 = STATE_ASCII;
+          state1 = 137;
           s += 3; count += 3;
           if (n < count+1)
             goto none;
           continue;
         }
         if (s[2] == 'J') {
-          state1 = STATE_JISX0201ROMAN;
+          state1 = 131;
           s += 3; count += 3;
           if (n < count+1)
             goto none;
           continue;
         }
         if (s[2] == 'I') {
-          state1 = STATE_JISX0201KATAKANA;
+          state1 = 132;
           s += 3; count += 3;
           if (n < count+1)
             goto none;
@@ -83,15 +73,15 @@ iso2022_jp2_mbtowc (conv_t conv, ucs4_t *pwc, const unsigned char *s, int n)
       }
       if (s[1] == '$') {
         if (s[2] == '@' || s[2] == 'B') {
-          /* We don't distinguish JIS X 0208-1978 and JIS X 0208-1983. */
-          state1 = STATE_JISX0208;
+
+          state1 = 130;
           s += 3; count += 3;
           if (n < count+1)
             goto none;
           continue;
         }
         if (s[2] == 'A') {
-          state1 = STATE_GB2312;
+          state1 = 133;
           s += 3; count += 3;
           if (n < count+1)
             goto none;
@@ -101,14 +91,14 @@ iso2022_jp2_mbtowc (conv_t conv, ucs4_t *pwc, const unsigned char *s, int n)
           if (n < count+4)
             goto none;
           if (s[3] == 'D') {
-            state1 = STATE_JISX0212;
+            state1 = 129;
             s += 4; count += 4;
             if (n < count+1)
               goto none;
             continue;
           }
           if (s[3] == 'C') {
-            state1 = STATE_KSC5601;
+            state1 = 128;
             s += 4; count += 4;
             if (n < count+1)
               goto none;
@@ -122,14 +112,14 @@ iso2022_jp2_mbtowc (conv_t conv, ucs4_t *pwc, const unsigned char *s, int n)
         if (n < count+3)
           goto none;
         if (s[2] == 'A') {
-          state2 = STATE_G2_ISO8859_1;
+          state2 = 136;
           s += 3; count += 3;
           if (n < count+1)
             goto none;
           continue;
         }
         if (s[2] == 'F') {
-          state2 = STATE_G2_ISO8859_7;
+          state2 = 135;
           s += 3; count += 3;
           if (n < count+1)
             goto none;
@@ -139,9 +129,9 @@ iso2022_jp2_mbtowc (conv_t conv, ucs4_t *pwc, const unsigned char *s, int n)
       }
       if (s[1] == 'N') {
         switch (state2) {
-          case STATE_G2_NONE:
+          case 134:
             goto ilseq;
-          case STATE_G2_ISO8859_1:
+          case 136:
             if (s[2] < 0x80) {
               unsigned char buf = s[2]+0x80;
               int ret = iso8859_1_mbtowc(conv,pwc,&buf,1);
@@ -153,7 +143,7 @@ iso2022_jp2_mbtowc (conv_t conv, ucs4_t *pwc, const unsigned char *s, int n)
               return count+3;
             } else
               goto ilseq;
-          case STATE_G2_ISO8859_7:
+          case 135:
             if (s[2] < 0x80) {
               unsigned char buf = s[2]+0x80;
               int ret = iso8859_7_mbtowc(conv,pwc,&buf,1);
@@ -173,33 +163,33 @@ iso2022_jp2_mbtowc (conv_t conv, ucs4_t *pwc, const unsigned char *s, int n)
     break;
   }
   switch (state1) {
-    case STATE_ASCII:
+    case 137:
       if (c < 0x80) {
         int ret = ascii_mbtowc(conv,pwc,s,1);
         if (ret == RET_ILSEQ)
           goto ilseq;
         if (ret != 1) abort();
         if (*pwc == 0x000a || *pwc == 0x000d)
-          state2 = STATE_G2_NONE;
+          state2 = 134;
         COMBINE_STATE;
         conv->istate = state;
         return count+1;
       } else
         goto ilseq;
-    case STATE_JISX0201ROMAN:
+    case 131:
       if (c < 0x80) {
         int ret = jisx0201_mbtowc(conv,pwc,s,1);
         if (ret == RET_ILSEQ)
           goto ilseq;
         if (ret != 1) abort();
         if (*pwc == 0x000a || *pwc == 0x000d)
-          state2 = STATE_G2_NONE;
+          state2 = 134;
         COMBINE_STATE;
         conv->istate = state;
         return count+1;
       } else
         goto ilseq;
-    case STATE_JISX0201KATAKANA:
+    case 132:
       if (c < 0x80) {
         unsigned char buf = c+0x80;
         int ret = jisx0201_mbtowc(conv,pwc,&buf,1);
@@ -211,7 +201,7 @@ iso2022_jp2_mbtowc (conv_t conv, ucs4_t *pwc, const unsigned char *s, int n)
         return count+1;
       } else
         goto ilseq;
-    case STATE_JISX0208:
+    case 130:
       if (n < count+2)
         goto none;
       if (s[0] < 0x80 && s[1] < 0x80) {
@@ -224,7 +214,7 @@ iso2022_jp2_mbtowc (conv_t conv, ucs4_t *pwc, const unsigned char *s, int n)
         return count+2;
       } else
         goto ilseq;
-    case STATE_JISX0212:
+    case 129:
       if (n < count+2)
         goto none;
       if (s[0] < 0x80 && s[1] < 0x80) {
@@ -237,7 +227,7 @@ iso2022_jp2_mbtowc (conv_t conv, ucs4_t *pwc, const unsigned char *s, int n)
         return count+2;
       } else
         goto ilseq;
-    case STATE_GB2312:
+    case 133:
       if (n < count+2)
         goto none;
       if (s[0] < 0x80 && s[1] < 0x80) {
@@ -250,7 +240,7 @@ iso2022_jp2_mbtowc (conv_t conv, ucs4_t *pwc, const unsigned char *s, int n)
         return count+2;
       } else
         goto ilseq;
-    case STATE_KSC5601:
+    case 128:
       if (n < count+2)
         goto none;
       if (s[0] < 0x80 && s[1] < 0x80) {

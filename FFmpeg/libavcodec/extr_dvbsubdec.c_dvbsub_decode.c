@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_21__   TYPE_4__ ;
-typedef  struct TYPE_20__   TYPE_3__ ;
-typedef  struct TYPE_19__   TYPE_2__ ;
-typedef  struct TYPE_18__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
+
+
+typedef struct TYPE_21__ TYPE_4__ ;
+typedef struct TYPE_20__ TYPE_3__ ;
+typedef struct TYPE_19__ TYPE_2__ ;
+typedef struct TYPE_18__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_21__ {int debug; int width; int height; TYPE_1__* priv_data; } ;
 struct TYPE_20__ {int* data; int size; } ;
-struct TYPE_19__ {int /*<<< orphan*/  pts; } ;
-struct TYPE_18__ {int composition_id; int ancillary_id; int compute_edt; int /*<<< orphan*/  prev_start; } ;
-typedef  TYPE_1__ DVBSubContext ;
-typedef  TYPE_2__ AVSubtitle ;
-typedef  TYPE_3__ AVPacket ;
-typedef  TYPE_4__ AVCodecContext ;
+struct TYPE_19__ {int pts; } ;
+struct TYPE_18__ {int composition_id; int ancillary_id; int compute_edt; int prev_start; } ;
+typedef TYPE_1__ DVBSubContext ;
+typedef TYPE_2__ AVSubtitle ;
+typedef TYPE_3__ AVPacket ;
+typedef TYPE_4__ AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_DEBUG ; 
- int AV_RB16 (int const*) ; 
-#define  DVBSUB_CLUT_SEGMENT 133 
-#define  DVBSUB_DISPLAYDEFINITION_SEGMENT 132 
-#define  DVBSUB_DISPLAY_SEGMENT 131 
-#define  DVBSUB_OBJECT_SEGMENT 130 
-#define  DVBSUB_PAGE_SEGMENT 129 
-#define  DVBSUB_REGION_SEGMENT 128 
- int /*<<< orphan*/  FFSWAP (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int FF_DEBUG_STARTCODE ; 
- int /*<<< orphan*/  av_log (TYPE_4__*,int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  avsubtitle_free (TYPE_2__*) ; 
- int dvbsub_display_end_segment (TYPE_4__*,int const*,int,TYPE_2__*,int*) ; 
- int dvbsub_parse_clut_segment (TYPE_4__*,int const*,int) ; 
- int dvbsub_parse_display_definition_segment (TYPE_4__*,int const*,int) ; 
- int dvbsub_parse_object_segment (TYPE_4__*,int const*,int) ; 
- int dvbsub_parse_page_segment (TYPE_4__*,int const*,int,TYPE_2__*,int*) ; 
- int dvbsub_parse_region_segment (TYPE_4__*,int const*,int) ; 
- int /*<<< orphan*/  ff_dlog (TYPE_4__*,char*,...) ; 
- int /*<<< orphan*/  int64_t ; 
+
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_DEBUG ;
+ int AV_RB16 (int const*) ;
+
+
+
+
+
+
+ int FFSWAP (int ,int ,int ) ;
+ int FF_DEBUG_STARTCODE ;
+ int av_log (TYPE_4__*,int ,char*,...) ;
+ int avsubtitle_free (TYPE_2__*) ;
+ int dvbsub_display_end_segment (TYPE_4__*,int const*,int,TYPE_2__*,int*) ;
+ int dvbsub_parse_clut_segment (TYPE_4__*,int const*,int) ;
+ int dvbsub_parse_display_definition_segment (TYPE_4__*,int const*,int) ;
+ int dvbsub_parse_object_segment (TYPE_4__*,int const*,int) ;
+ int dvbsub_parse_page_segment (TYPE_4__*,int const*,int,TYPE_2__*,int*) ;
+ int dvbsub_parse_region_segment (TYPE_4__*,int const*,int) ;
+ int ff_dlog (TYPE_4__*,char*,...) ;
+ int int64_t ;
 
 __attribute__((used)) static int dvbsub_decode(AVCodecContext *avctx,
                          void *data, int *data_size,
@@ -105,33 +105,33 @@ __attribute__((used)) static int dvbsub_decode(AVCodecContext *avctx,
             ctx->composition_id == -1 || ctx->ancillary_id == -1) {
             int ret = 0;
             switch (segment_type) {
-            case DVBSUB_PAGE_SEGMENT:
+            case 129:
                 ret = dvbsub_parse_page_segment(avctx, p, segment_length, sub, data_size);
                 got_segment |= 1;
                 break;
-            case DVBSUB_REGION_SEGMENT:
+            case 128:
                 ret = dvbsub_parse_region_segment(avctx, p, segment_length);
                 got_segment |= 2;
                 break;
-            case DVBSUB_CLUT_SEGMENT:
+            case 133:
                 ret = dvbsub_parse_clut_segment(avctx, p, segment_length);
                 if (ret < 0) goto end;
                 got_segment |= 4;
                 break;
-            case DVBSUB_OBJECT_SEGMENT:
+            case 130:
                 ret = dvbsub_parse_object_segment(avctx, p, segment_length);
                 got_segment |= 8;
                 break;
-            case DVBSUB_DISPLAYDEFINITION_SEGMENT:
+            case 132:
                 ret = dvbsub_parse_display_definition_segment(avctx, p,
                                                               segment_length);
                 got_dds = 1;
                 break;
-            case DVBSUB_DISPLAY_SEGMENT:
+            case 131:
                 ret = dvbsub_display_end_segment(avctx, p, segment_length, sub, data_size);
                 if (got_segment == 15 && !got_dds && !avctx->width && !avctx->height) {
-                    // Default from ETSI EN 300 743 V1.3.1 (7.2.1)
-                    avctx->width  = 720;
+
+                    avctx->width = 720;
                     avctx->height = 576;
                 }
                 got_segment |= 16;
@@ -147,8 +147,8 @@ __attribute__((used)) static int dvbsub_decode(AVCodecContext *avctx,
 
         p += segment_length;
     }
-    // Some streams do not send a display segment but if we have all the other
-    // segments then we need no further data.
+
+
     if (got_segment == 15) {
         av_log(avctx, AV_LOG_DEBUG, "Missing display_end_segment, emulating\n");
         dvbsub_display_end_segment(avctx, p, 0, sub, data_size);

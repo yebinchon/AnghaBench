@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct mpvk_ctx {int /*<<< orphan*/  pl_log; int /*<<< orphan*/  ctx; TYPE_1__* vkinst; int /*<<< orphan*/ * surface; } ;
-struct TYPE_3__ {int /*<<< orphan*/  instance; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TA_FREEP (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int /*<<< orphan*/  pl_context_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pl_vk_inst_destroy (TYPE_1__**) ; 
- int /*<<< orphan*/  vkDestroySurfaceKHR (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct mpvk_ctx {int pl_log; int ctx; TYPE_1__* vkinst; int * surface; } ;
+struct TYPE_3__ {int instance; } ;
+
+
+ int TA_FREEP (int *) ;
+ int assert (TYPE_1__*) ;
+ int pl_context_destroy (int *) ;
+ int pl_vk_inst_destroy (TYPE_1__**) ;
+ int vkDestroySurfaceKHR (int ,int *,int *) ;
 
 void mpvk_uninit(struct mpvk_ctx *vk)
 {
     if (vk->surface) {
         assert(vk->vkinst);
-        vkDestroySurfaceKHR(vk->vkinst->instance, vk->surface, NULL);
-        vk->surface = NULL;
+        vkDestroySurfaceKHR(vk->vkinst->instance, vk->surface, ((void*)0));
+        vk->surface = ((void*)0);
     }
 
     pl_vk_inst_destroy(&vk->vkinst);

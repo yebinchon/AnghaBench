@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {struct TYPE_5__ const* prev; } ;
-typedef  int Size ;
-typedef  TYPE_1__ const SHM_QUEUE ;
-typedef  int /*<<< orphan*/ * Pointer ;
+typedef int Size ;
+typedef TYPE_1__ const SHM_QUEUE ;
+typedef int * Pointer ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ShmemAddrIsValid (TYPE_1__ const*) ; 
+
+ int Assert (int ) ;
+ int ShmemAddrIsValid (TYPE_1__ const*) ;
 
 Pointer
 SHMQueuePrev(const SHM_QUEUE *queue, const SHM_QUEUE *curElem, Size linkOffset)
 {
-	SHM_QUEUE  *elemPtr = curElem->prev;
+ SHM_QUEUE *elemPtr = curElem->prev;
 
-	Assert(ShmemAddrIsValid(curElem));
+ Assert(ShmemAddrIsValid(curElem));
 
-	if (elemPtr == queue)		/* back to the queue head? */
-		return NULL;
+ if (elemPtr == queue)
+  return ((void*)0);
 
-	return (Pointer) (((char *) elemPtr) - linkOffset);
+ return (Pointer) (((char *) elemPtr) - linkOffset);
 }

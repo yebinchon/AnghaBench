@@ -1,18 +1,10 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ fabsf (float const) ; 
+ scalar_t__ fabsf (float const) ;
 
 __attribute__((used)) static void adaptive_gain_control(float *out, const float *in,
                                   const float *speech_synth,
@@ -23,7 +15,7 @@ __attribute__((used)) static void adaptive_gain_control(float *out, const float 
     float mem = *gain_mem;
 
     for (i = 0; i < size; i++) {
-        speech_energy     += fabsf(speech_synth[i]);
+        speech_energy += fabsf(speech_synth[i]);
         postfilter_energy += fabsf(in[i]);
     }
     gain_scale_factor = postfilter_energy == 0.0 ? 0.0 :

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct tm {size_t tm_mon; int tm_year; int /*<<< orphan*/  tm_sec; int /*<<< orphan*/  tm_min; int /*<<< orphan*/  tm_hour; int /*<<< orphan*/  tm_mday; } ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct tm {size_t tm_mon; int tm_year; int tm_sec; int tm_min; int tm_hour; int tm_mday; } ;
 struct TYPE_4__ {int length; scalar_t__ type; scalar_t__ data; } ;
-typedef  int /*<<< orphan*/  BIO ;
-typedef  TYPE_1__ ASN1_TIME ;
+typedef int BIO ;
+typedef TYPE_1__ ASN1_TIME ;
 
-/* Variables and functions */
- scalar_t__ BIO_printf (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,char*,...) ; 
- int /*<<< orphan*/  BIO_write (int /*<<< orphan*/ *,char*,int) ; 
- scalar_t__ V_ASN1_GENERALIZEDTIME ; 
- int /*<<< orphan*/ * _asn1_mon ; 
- scalar_t__ ascii_isdigit (char) ; 
- int /*<<< orphan*/  asn1_time_to_tm (struct tm*,TYPE_1__ const*) ; 
+
+ scalar_t__ BIO_printf (int *,char*,int ,int ,int ,int ,int ,int,char*,...) ;
+ int BIO_write (int *,char*,int) ;
+ scalar_t__ V_ASN1_GENERALIZEDTIME ;
+ int * _asn1_mon ;
+ scalar_t__ ascii_isdigit (char) ;
+ int asn1_time_to_tm (struct tm*,TYPE_1__ const*) ;
 
 int ASN1_TIME_print(BIO *bp, const ASN1_TIME *tm)
 {
@@ -32,7 +32,7 @@ int ASN1_TIME_print(BIO *bp, const ASN1_TIME *tm)
     const char upper_z = 0x5A, period = 0x2E;
 
     if (!asn1_time_to_tm(&stm, tm)) {
-        /* asn1_time_to_tm will check the time type */
+
         goto err;
     }
 
@@ -42,13 +42,13 @@ int ASN1_TIME_print(BIO *bp, const ASN1_TIME *tm)
         gmt = 1;
 
     if (tm->type == V_ASN1_GENERALIZEDTIME) {
-        char *f = NULL;
+        char *f = ((void*)0);
         int f_len = 0;
 
-        /*
-         * Try to parse fractional seconds. '14' is the place of
-         * 'fraction point' in a GeneralizedTime string.
-         */
+
+
+
+
         if (tm->length > 15 && v[14] == period) {
             f = &v[14];
             f_len = 1;

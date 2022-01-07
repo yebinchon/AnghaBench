@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct object {int /*<<< orphan*/  oid; } ;
 
-/* Variables and functions */
- unsigned int oidhash (int /*<<< orphan*/ *) ; 
+
+
+
+struct object {int oid; } ;
+
+
+ unsigned int oidhash (int *) ;
 
 __attribute__((used)) static unsigned int hash_obj(const struct object *obj, unsigned int n)
 {
-	return oidhash(&obj->oid) % n;
+ return oidhash(&obj->oid) % n;
 }

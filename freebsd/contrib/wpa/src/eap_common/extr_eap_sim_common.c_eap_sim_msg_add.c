@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u8 ;
-typedef  int /*<<< orphan*/  u16 ;
-struct eap_sim_msg {int /*<<< orphan*/  buf; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  os_memset (int*,int /*<<< orphan*/ ,int) ; 
- int* wpabuf_put (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  wpabuf_put_be16 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wpabuf_put_data (int /*<<< orphan*/ ,int const*,size_t) ; 
- int /*<<< orphan*/  wpabuf_put_u8 (int /*<<< orphan*/ ,int) ; 
- scalar_t__ wpabuf_resize (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int u8 ;
+typedef int u16 ;
+struct eap_sim_msg {int buf; } ;
+
+
+ int os_memset (int*,int ,int) ;
+ int* wpabuf_put (int ,int) ;
+ int wpabuf_put_be16 (int ,int ) ;
+ int wpabuf_put_data (int ,int const*,size_t) ;
+ int wpabuf_put_u8 (int ,int) ;
+ scalar_t__ wpabuf_resize (int *,int) ;
 
 u8 * eap_sim_msg_add(struct eap_sim_msg *msg, u8 attr, u16 value,
-		     const u8 *data, size_t len)
+       const u8 *data, size_t len)
 {
-	int attr_len = 4 + len;
-	int pad_len;
-	u8 *start;
+ int attr_len = 4 + len;
+ int pad_len;
+ u8 *start;
 
-	if (msg == NULL)
-		return NULL;
+ if (msg == ((void*)0))
+  return ((void*)0);
 
-	pad_len = (4 - attr_len % 4) % 4;
-	attr_len += pad_len;
-	if (wpabuf_resize(&msg->buf, attr_len))
-		return NULL;
-	start = wpabuf_put(msg->buf, 0);
-	wpabuf_put_u8(msg->buf, attr);
-	wpabuf_put_u8(msg->buf, attr_len / 4);
-	wpabuf_put_be16(msg->buf, value);
-	if (data)
-		wpabuf_put_data(msg->buf, data, len);
-	else
-		wpabuf_put(msg->buf, len);
-	if (pad_len)
-		os_memset(wpabuf_put(msg->buf, pad_len), 0, pad_len);
-	return start;
+ pad_len = (4 - attr_len % 4) % 4;
+ attr_len += pad_len;
+ if (wpabuf_resize(&msg->buf, attr_len))
+  return ((void*)0);
+ start = wpabuf_put(msg->buf, 0);
+ wpabuf_put_u8(msg->buf, attr);
+ wpabuf_put_u8(msg->buf, attr_len / 4);
+ wpabuf_put_be16(msg->buf, value);
+ if (data)
+  wpabuf_put_data(msg->buf, data, len);
+ else
+  wpabuf_put(msg->buf, len);
+ if (pad_len)
+  os_memset(wpabuf_put(msg->buf, pad_len), 0, pad_len);
+ return start;
 }

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct stackframe {int /*<<< orphan*/  pc; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  oprofile_add_trace (int /*<<< orphan*/ ) ; 
+
+
+
+struct stackframe {int pc; } ;
+
+
+ int oprofile_add_trace (int ) ;
 
 __attribute__((used)) static int report_trace(struct stackframe *frame, void *d)
 {
-	unsigned int *depth = d;
+ unsigned int *depth = d;
 
-	if (*depth) {
-		oprofile_add_trace(frame->pc);
-		(*depth)--;
-	}
+ if (*depth) {
+  oprofile_add_trace(frame->pc);
+  (*depth)--;
+ }
 
-	return *depth == 0;
+ return *depth == 0;
 }

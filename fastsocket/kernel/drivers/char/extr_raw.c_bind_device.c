@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct raw_config_request {int /*<<< orphan*/  raw_minor; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MKDEV (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RAW_MAJOR ; 
- int /*<<< orphan*/  device_create (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  device_destroy (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  raw_class ; 
+
+
+
+struct raw_config_request {int raw_minor; } ;
+
+
+ int MKDEV (int ,int ) ;
+ int RAW_MAJOR ;
+ int device_create (int ,int *,int ,int *,char*,int ) ;
+ int device_destroy (int ,int ) ;
+ int raw_class ;
 
 __attribute__((used)) static void bind_device(struct raw_config_request *rq)
 {
-	device_destroy(raw_class, MKDEV(RAW_MAJOR, rq->raw_minor));
-	device_create(raw_class, NULL, MKDEV(RAW_MAJOR, rq->raw_minor), NULL,
-		      "raw%d", rq->raw_minor);
+ device_destroy(raw_class, MKDEV(RAW_MAJOR, rq->raw_minor));
+ device_create(raw_class, ((void*)0), MKDEV(RAW_MAJOR, rq->raw_minor), ((void*)0),
+        "raw%d", rq->raw_minor);
 }

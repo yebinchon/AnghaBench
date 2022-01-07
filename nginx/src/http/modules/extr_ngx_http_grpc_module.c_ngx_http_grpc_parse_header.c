@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t u_char ;
-typedef  int ssize_t ;
-typedef  scalar_t__ ngx_int_t ;
+
+
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef size_t u_char ;
+typedef int ssize_t ;
+typedef scalar_t__ ngx_int_t ;
 struct TYPE_12__ {TYPE_1__* connection; } ;
-typedef  TYPE_2__ ngx_http_request_t ;
-struct TYPE_13__ {int frame_state; scalar_t__ type; int parsing_headers; int flags; size_t rest; int end_stream; size_t padding; scalar_t__ fragment_state; int /*<<< orphan*/  state; } ;
-typedef  TYPE_3__ ngx_http_grpc_ctx_t ;
+typedef TYPE_2__ ngx_http_request_t ;
+struct TYPE_13__ {int frame_state; scalar_t__ type; int parsing_headers; int flags; size_t rest; int end_stream; size_t padding; scalar_t__ fragment_state; int state; } ;
+typedef TYPE_3__ ngx_http_grpc_ctx_t ;
 struct TYPE_14__ {size_t* last; size_t* pos; } ;
-typedef  TYPE_4__ ngx_buf_t ;
-struct TYPE_11__ {int /*<<< orphan*/  log; } ;
+typedef TYPE_4__ ngx_buf_t ;
+struct TYPE_11__ {int log; } ;
 
-/* Variables and functions */
- scalar_t__ NGX_AGAIN ; 
- scalar_t__ NGX_ERROR ; 
- scalar_t__ NGX_HTTP_PARSE_HEADER_DONE ; 
- scalar_t__ NGX_HTTP_V2_CONTINUATION_FRAME ; 
- int NGX_HTTP_V2_END_HEADERS_FLAG ; 
- int NGX_HTTP_V2_END_STREAM_FLAG ; 
- scalar_t__ NGX_HTTP_V2_HEADERS_FRAME ; 
- int NGX_HTTP_V2_PADDED_FLAG ; 
- int NGX_HTTP_V2_PRIORITY_FLAG ; 
- int /*<<< orphan*/  NGX_LOG_DEBUG_HTTP ; 
- int /*<<< orphan*/  NGX_LOG_ERR ; 
- scalar_t__ NGX_OK ; 
- scalar_t__ ngx_http_grpc_parse_fragment (TYPE_2__*,TYPE_3__*,TYPE_4__*) ; 
- int /*<<< orphan*/  ngx_http_grpc_st_start ; 
- int /*<<< orphan*/  ngx_log_debug0 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ngx_log_debug2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,size_t,int) ; 
- int /*<<< orphan*/  ngx_log_error (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,...) ; 
+
+ scalar_t__ NGX_AGAIN ;
+ scalar_t__ NGX_ERROR ;
+ scalar_t__ NGX_HTTP_PARSE_HEADER_DONE ;
+ scalar_t__ NGX_HTTP_V2_CONTINUATION_FRAME ;
+ int NGX_HTTP_V2_END_HEADERS_FLAG ;
+ int NGX_HTTP_V2_END_STREAM_FLAG ;
+ scalar_t__ NGX_HTTP_V2_HEADERS_FRAME ;
+ int NGX_HTTP_V2_PADDED_FLAG ;
+ int NGX_HTTP_V2_PRIORITY_FLAG ;
+ int NGX_LOG_DEBUG_HTTP ;
+ int NGX_LOG_ERR ;
+ scalar_t__ NGX_OK ;
+ scalar_t__ ngx_http_grpc_parse_fragment (TYPE_2__*,TYPE_3__*,TYPE_4__*) ;
+ int ngx_http_grpc_st_start ;
+ int ngx_log_debug0 (int ,int ,int ,char*) ;
+ int ngx_log_debug2 (int ,int ,int ,char*,size_t,int) ;
+ int ngx_log_error (int ,int ,int ,char*,...) ;
 
 __attribute__((used)) static ngx_int_t
 ngx_http_grpc_parse_header(ngx_http_request_t *r, ngx_http_grpc_ctx_t *ctx,
     ngx_buf_t *b)
 {
-    u_char     ch, *p, *last;
-    size_t     min;
-    ngx_int_t  rc;
+    u_char ch, *p, *last;
+    size_t min;
+    ngx_int_t rc;
     enum {
         sw_start = 0,
         sw_padding_length,
@@ -118,28 +118,6 @@ ngx_http_grpc_parse_header(ngx_http_request_t *r, ngx_http_grpc_ctx_t *ctx,
 
         for (p = b->pos; p < last; p++) {
             ch = *p;
-
-#if 0
-            ngx_log_debug2(NGX_LOG_DEBUG_HTTP, r->connection->log, 0,
-                           "grpc header byte: %02Xd s:%d", ch, state);
-#endif
-
-            /*
-             * headers frame:
-             *
-             * +---------------+
-             * |Pad Length? (8)|
-             * +-+-------------+----------------------------------------------+
-             * |E|                 Stream Dependency? (31)                    |
-             * +-+-------------+----------------------------------------------+
-             * |  Weight? (8)  |
-             * +-+-------------+----------------------------------------------+
-             * |                   Header Block Fragment (*)                ...
-             * +--------------------------------------------------------------+
-             * |                           Padding (*)                      ...
-             * +--------------------------------------------------------------+
-             */
-
             switch (state) {
 
             case sw_padding_length:
@@ -172,7 +150,7 @@ ngx_http_grpc_parse_header(ngx_http_request_t *r, ngx_http_grpc_ctx_t *ctx,
             case sw_weight:
                 goto fragment;
 
-            /* suppress warning */
+
             case sw_start:
             case sw_fragment:
             case sw_padding:
@@ -220,7 +198,7 @@ ngx_http_grpc_parse_header(ngx_http_request_t *r, ngx_http_grpc_ctx_t *ctx,
             return NGX_OK;
         }
 
-        /* rc == NGX_DONE */
+
 
         state = sw_padding;
         ctx->frame_state = state;
@@ -257,7 +235,7 @@ ngx_http_grpc_parse_header(ngx_http_request_t *r, ngx_http_grpc_ctx_t *ctx,
         return NGX_AGAIN;
     }
 
-    /* unreachable */
+
 
     return NGX_ERROR;
 }

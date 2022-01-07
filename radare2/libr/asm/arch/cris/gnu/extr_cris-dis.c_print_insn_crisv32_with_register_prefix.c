@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  private_data; } ;
-typedef  TYPE_1__ disassemble_info ;
-typedef  int /*<<< orphan*/  bfd_vma ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  cris_dis_v32 ; 
- int /*<<< orphan*/  cris_parse_disassembler_options (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int print_insn_cris_generic (int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int private_data; } ;
+typedef TYPE_1__ disassemble_info ;
+typedef int bfd_vma ;
+
+
+ int TRUE ;
+ int cris_dis_v32 ;
+ int cris_parse_disassembler_options (TYPE_1__*,int ) ;
+ int print_insn_cris_generic (int ,TYPE_1__*,int ) ;
 
 int
 print_insn_crisv32_with_register_prefix (bfd_vma vma,
-					 disassemble_info *info)
+      disassemble_info *info)
 {
-	if (!info->private_data && !cris_parse_disassembler_options (info, cris_dis_v32)) {
-		return -1;
-	}
-	return print_insn_cris_generic (vma, info, TRUE);
+ if (!info->private_data && !cris_parse_disassembler_options (info, cris_dis_v32)) {
+  return -1;
+ }
+ return print_insn_cris_generic (vma, info, TRUE);
 }

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_char ;
-typedef  int /*<<< orphan*/  ngx_str_t ;
-typedef  int /*<<< orphan*/  ngx_int_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NGX_AGAIN ; 
- int /*<<< orphan*/  NGX_OK ; 
- scalar_t__ memcmp (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  ngx_str_set (int /*<<< orphan*/ *,char*) ; 
+
+
+
+typedef int u_char ;
+typedef int ngx_str_t ;
+typedef int ngx_int_t ;
+
+
+ int NGX_AGAIN ;
+ int NGX_OK ;
+ scalar_t__ memcmp (int *,char*,int) ;
+ int ngx_str_set (int *,char*) ;
 
 ngx_int_t
 ngx_http_tfs_get_content_type(u_char *data, ngx_str_t *type)

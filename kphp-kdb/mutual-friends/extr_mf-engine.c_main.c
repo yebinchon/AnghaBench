@@ -1,116 +1,108 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int MAX_CONNECTIONS ; 
- int /*<<< orphan*/  aes_load_pwd_file (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  backlog ; 
- int /*<<< orphan*/  binlog_disabled ; 
- char* binlog_fname_buff ; 
- int /*<<< orphan*/  binlog_load_time ; 
- scalar_t__ binlog_loaded_size ; 
- int binlog_readed ; 
- char* binlogname ; 
- scalar_t__ change_user (char*) ; 
- int /*<<< orphan*/  clear_log () ; 
- int /*<<< orphan*/  clear_read_log () ; 
- int /*<<< orphan*/  clear_write_log () ; 
- int /*<<< orphan*/  close (int) ; 
- scalar_t__ dyn_cur ; 
- scalar_t__ dyn_first ; 
- scalar_t__ dyn_last ; 
- int dynamic_data_buffer_size ; 
- int /*<<< orphan*/  exit (int) ; 
- int* fd ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  free_all () ; 
- scalar_t__* fsize ; 
- scalar_t__ geteuid () ; 
- int /*<<< orphan*/  index_load_time ; 
- int index_mode ; 
- char* indexname ; 
- int /*<<< orphan*/  init_all (char*) ; 
- int /*<<< orphan*/  init_dyn_data () ; 
- int /*<<< orphan*/  init_files (int) ; 
- int /*<<< orphan*/  interactive ; 
- int /*<<< orphan*/  jump_log_crc32 ; 
- int jump_log_pos ; 
- int /*<<< orphan*/  jump_log_ts ; 
- int /*<<< orphan*/  load_suggestions (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  log_pos ; 
- int /*<<< orphan*/  log_seek (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int log_ts_interval ; 
- int maxconn ; 
- int /*<<< orphan*/  mf_parse_option ; 
- int mf_prepare_stats () ; 
- int /*<<< orphan*/  mytime () ; 
- char* newindex_fname_buff ; 
- char* newindexname ; 
- int /*<<< orphan*/  no_argument ; 
- void* now ; 
- int /*<<< orphan*/  open_file (int,char*,int) ; 
- int optind ; 
- int /*<<< orphan*/  parse_engine_options_long (int,char**,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  parse_option (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,char,char*) ; 
- int port ; 
- char* progname ; 
- scalar_t__ raise_file_rlimit (int) ; 
- int /*<<< orphan*/  remove_parse_option (int) ; 
- int replay_log (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  required_argument ; 
- int /*<<< orphan*/  save_index (char*) ; 
- scalar_t__ server_socket (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_debug_handlers () ; 
- int /*<<< orphan*/  set_log_data (int,scalar_t__) ; 
- int /*<<< orphan*/  settings_addr ; 
- scalar_t__ sfd ; 
- int /*<<< orphan*/  sprintf (char*,char*,char*,char*) ; 
- int /*<<< orphan*/  start_server () ; 
- void* start_time ; 
- char* stats_buff ; 
- int /*<<< orphan*/  stderr ; 
- int strlen (char*) ; 
- int /*<<< orphan*/ * strstr (char*,char*) ; 
- int /*<<< orphan*/ * suggname ; 
- void* time (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  usage () ; 
- char* username ; 
- scalar_t__ verbosity ; 
+ int MAX_CONNECTIONS ;
+ int aes_load_pwd_file (int *) ;
+ int backlog ;
+ int binlog_disabled ;
+ char* binlog_fname_buff ;
+ int binlog_load_time ;
+ scalar_t__ binlog_loaded_size ;
+ int binlog_readed ;
+ char* binlogname ;
+ scalar_t__ change_user (char*) ;
+ int clear_log () ;
+ int clear_read_log () ;
+ int clear_write_log () ;
+ int close (int) ;
+ scalar_t__ dyn_cur ;
+ scalar_t__ dyn_first ;
+ scalar_t__ dyn_last ;
+ int dynamic_data_buffer_size ;
+ int exit (int) ;
+ int* fd ;
+ int fprintf (int ,char*,...) ;
+ int free_all () ;
+ scalar_t__* fsize ;
+ scalar_t__ geteuid () ;
+ int index_load_time ;
+ int index_mode ;
+ char* indexname ;
+ int init_all (char*) ;
+ int init_dyn_data () ;
+ int init_files (int) ;
+ int interactive ;
+ int jump_log_crc32 ;
+ int jump_log_pos ;
+ int jump_log_ts ;
+ int load_suggestions (int *) ;
+ int log_pos ;
+ int log_seek (int,int ,int ) ;
+ int log_ts_interval ;
+ int maxconn ;
+ int mf_parse_option ;
+ int mf_prepare_stats () ;
+ int mytime () ;
+ char* newindex_fname_buff ;
+ char* newindexname ;
+ int no_argument ;
+ void* now ;
+ int open_file (int,char*,int) ;
+ int optind ;
+ int parse_engine_options_long (int,char**,int ) ;
+ int parse_option (char*,int ,int *,char,char*) ;
+ int port ;
+ char* progname ;
+ scalar_t__ raise_file_rlimit (int) ;
+ int remove_parse_option (int) ;
+ int replay_log (int ,int) ;
+ int required_argument ;
+ int save_index (char*) ;
+ scalar_t__ server_socket (int,int ,int ,int ) ;
+ int set_debug_handlers () ;
+ int set_log_data (int,scalar_t__) ;
+ int settings_addr ;
+ scalar_t__ sfd ;
+ int sprintf (char*,char*,char*,char*) ;
+ int start_server () ;
+ void* start_time ;
+ char* stats_buff ;
+ int stderr ;
+ int strlen (char*) ;
+ int * strstr (char*,char*) ;
+ int * suggname ;
+ void* time (int *) ;
+ int usage () ;
+ char* username ;
+ scalar_t__ verbosity ;
 
 int main (int argc, char *argv[]) {
   int i;
 
   set_debug_handlers ();
   progname = argv[0];
-  now = time (NULL);
+  now = time (((void*)0));
 
   index_mode = 0;
-  if (strstr (progname, "mf-index") != NULL) {
+  if (strstr (progname, "mf-index") != ((void*)0)) {
     index_mode = 1;
   }
   binlog_readed = 0;
 
   remove_parse_option ('B');
   remove_parse_option (204);
-  parse_option ("memory-limit", required_argument, NULL, 'm', "<memory-limit> sets maximal size of used memory not including zmemory in mebibytes");
-  parse_option ("suggestions-file-name", required_argument, NULL, 's', "<suggestions-file-name> name of file with precalculated suggestions");
-  parse_option ("new-index-name", required_argument, NULL, 'w', "<new-index-name> new name for index");
-  parse_option ("disable-crc32", no_argument, NULL, 'D', "sets disable_crc32 to 3");
-  parse_option ("generate-dump", no_argument, NULL, 'e', "generate dump to use in mf-merge-files");
+  parse_option ("memory-limit", required_argument, ((void*)0), 'm', "<memory-limit> sets maximal size of used memory not including zmemory in mebibytes");
+  parse_option ("suggestions-file-name", required_argument, ((void*)0), 's', "<suggestions-file-name> name of file with precalculated suggestions");
+  parse_option ("new-index-name", required_argument, ((void*)0), 'w', "<new-index-name> new name for index");
+  parse_option ("disable-crc32", no_argument, ((void*)0), 'D', "sets disable_crc32 to 3");
+  parse_option ("generate-dump", no_argument, ((void*)0), 'e', "generate dump to use in mf-merge-files");
   if (!index_mode) {
-    parse_option ("index-mode", no_argument, NULL, 'i', "run in index mode");
+    parse_option ("index-mode", no_argument, ((void*)0), 'i', "run in index mode");
   }
-  parse_option ("lock-memory", no_argument, NULL, 'k', "lock paged memory");
+  parse_option ("lock-memory", no_argument, ((void*)0), 'k', "lock paged memory");
 
   parse_engine_options_long (argc, argv, mf_parse_option);
   if (argc != optind + 1) {
@@ -129,7 +121,7 @@ int main (int argc, char *argv[]) {
   init_dyn_data();
 
   if (!username && maxconn == MAX_CONNECTIONS && geteuid()) {
-    maxconn = 1000; //not for root
+    maxconn = 1000;
   }
 
   indexname = argv[optind];
@@ -151,7 +143,7 @@ int main (int argc, char *argv[]) {
     }
   }
 
-  aes_load_pwd_file (NULL);
+  aes_load_pwd_file (((void*)0));
 
   if (change_user (username) < 0 && !interactive) {
     fprintf (stderr, "fatal: cannot change user to %s\n", username ? username : "(none)");
@@ -251,9 +243,9 @@ int main (int argc, char *argv[]) {
 
 
   clear_write_log();
-  start_time = time (NULL);
+  start_time = time (((void*)0));
 
-  if (suggname != NULL) {
+  if (suggname != ((void*)0)) {
     load_suggestions (suggname);
   }
 

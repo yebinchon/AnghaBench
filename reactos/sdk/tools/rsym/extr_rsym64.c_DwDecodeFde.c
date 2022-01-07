@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int ULONG ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int ULONG ;
 struct TYPE_3__ {int Length; char* Next; char* CiePointer; int PcBegin; int PcRange; int AugLength; char* AugData; char* Instructions; } ;
-typedef  TYPE_1__* PDW2FDE ;
+typedef TYPE_1__* PDW2FDE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DwDecodeUleb128 (int*,char*) ; 
+
+ int DwDecodeUleb128 (int*,char*) ;
 
 unsigned long
 DwDecodeFde(PDW2FDE Fde, char *pc)

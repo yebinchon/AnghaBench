@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {float value; } ;
-typedef  TYPE_1__ libvar_t ;
+typedef TYPE_1__ libvar_t ;
 
-/* Variables and functions */
- TYPE_1__* LibVarGet (char const*) ; 
+
+ TYPE_1__* LibVarGet (char const*) ;
 
 float LibVarGetValue(const char *var_name)
 {
-	libvar_t *v;
+ libvar_t *v;
 
-	v = LibVarGet(var_name);
-	if (v)
-	{
-		return v->value;
-	} //end if
-	else
-	{
-		return 0;
-	} //end else
+ v = LibVarGet(var_name);
+ if (v)
+ {
+  return v->value;
+ }
+ else
+ {
+  return 0;
+ }
 }

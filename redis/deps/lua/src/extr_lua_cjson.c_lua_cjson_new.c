@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
-struct TYPE_3__ {char* member_0; int (* member_1 ) (int /*<<< orphan*/ *) ;} ;
-typedef  TYPE_1__ luaL_Reg ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CJSON_MODNAME ; 
- int /*<<< orphan*/  CJSON_VERSION ; 
- int /*<<< orphan*/  fpconv_init () ; 
- int json_cfg_decode_invalid_numbers (int /*<<< orphan*/ *) ; 
- int json_cfg_decode_max_depth (int /*<<< orphan*/ *) ; 
- int json_cfg_encode_invalid_numbers (int /*<<< orphan*/ *) ; 
- int json_cfg_encode_keep_buffer (int /*<<< orphan*/ *) ; 
- int json_cfg_encode_max_depth (int /*<<< orphan*/ *) ; 
- int json_cfg_encode_number_precision (int /*<<< orphan*/ *) ; 
- int json_cfg_encode_sparse_array (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  json_create_config (int /*<<< orphan*/ *) ; 
- int json_decode (int /*<<< orphan*/ *) ; 
- int json_encode (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  luaL_setfuncs (int /*<<< orphan*/ *,TYPE_1__*,int) ; 
- int /*<<< orphan*/  lua_newtable (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_pushlightuserdata (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_pushliteral (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_setfield (int /*<<< orphan*/ *,int,char*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int lua_State ;
+struct TYPE_3__ {char* member_0; int (* member_1 ) (int *) ;} ;
+typedef TYPE_1__ luaL_Reg ;
+
+
+ int CJSON_MODNAME ;
+ int CJSON_VERSION ;
+ int fpconv_init () ;
+ int json_cfg_decode_invalid_numbers (int *) ;
+ int json_cfg_decode_max_depth (int *) ;
+ int json_cfg_encode_invalid_numbers (int *) ;
+ int json_cfg_encode_keep_buffer (int *) ;
+ int json_cfg_encode_max_depth (int *) ;
+ int json_cfg_encode_number_precision (int *) ;
+ int json_cfg_encode_sparse_array (int *) ;
+ int json_create_config (int *) ;
+ int json_decode (int *) ;
+ int json_encode (int *) ;
+ int luaL_setfuncs (int *,TYPE_1__*,int) ;
+ int lua_newtable (int *) ;
+ int lua_pushlightuserdata (int *,int *) ;
+ int lua_pushliteral (int *,int ) ;
+ int lua_setfield (int *,int,char*) ;
 
 __attribute__((used)) static int lua_cjson_new(lua_State *l)
 {
@@ -48,24 +48,24 @@ __attribute__((used)) static int lua_cjson_new(lua_State *l)
         { "encode_invalid_numbers", json_cfg_encode_invalid_numbers },
         { "decode_invalid_numbers", json_cfg_decode_invalid_numbers },
         { "new", lua_cjson_new },
-        { NULL, NULL }
+        { ((void*)0), ((void*)0) }
     };
 
-    /* Initialise number conversions */
+
     fpconv_init();
 
-    /* cjson module table */
+
     lua_newtable(l);
 
-    /* Register functions with config data as upvalue */
+
     json_create_config(l);
     luaL_setfuncs(l, reg, 1);
 
-    /* Set cjson.null */
-    lua_pushlightuserdata(l, NULL);
+
+    lua_pushlightuserdata(l, ((void*)0));
     lua_setfield(l, -2, "null");
 
-    /* Set module name / version fields */
+
     lua_pushliteral(l, CJSON_MODNAME);
     lua_setfield(l, -2, "_NAME");
     lua_pushliteral(l, CJSON_VERSION);

@@ -1,51 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct table {TYPE_1__* columns; int /*<<< orphan*/ * data; } ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int UINT8 ;
-typedef  int UINT64 ;
-typedef  int UINT32 ;
-typedef  int UINT16 ;
-typedef  int UINT ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct table {TYPE_1__* columns; int * data; } ;
+typedef int WCHAR ;
+typedef int UINT8 ;
+typedef int UINT64 ;
+typedef int UINT32 ;
+typedef int UINT16 ;
+typedef int UINT ;
 struct TYPE_2__ {int type; } ;
-typedef  int LONGLONG ;
-typedef  int INT_PTR ;
-typedef  int INT8 ;
-typedef  int INT64 ;
-typedef  int INT32 ;
-typedef  int INT16 ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  BYTE ;
+typedef int LONGLONG ;
+typedef int INT_PTR ;
+typedef int INT8 ;
+typedef int INT64 ;
+typedef int INT32 ;
+typedef int INT16 ;
+typedef int HRESULT ;
+typedef int BYTE ;
 
-/* Variables and functions */
-#define  CIM_BOOLEAN 138 
-#define  CIM_DATETIME 137 
- int CIM_FLAG_ARRAY ; 
-#define  CIM_SINT16 136 
-#define  CIM_SINT32 135 
-#define  CIM_SINT64 134 
-#define  CIM_SINT8 133 
-#define  CIM_STRING 132 
-#define  CIM_UINT16 131 
-#define  CIM_UINT32 130 
-#define  CIM_UINT64 129 
-#define  CIM_UINT8 128 
- int COL_TYPE_MASK ; 
- int /*<<< orphan*/  ERR (char*,int) ; 
- int /*<<< orphan*/  S_OK ; 
- int get_column_offset (struct table const*,int) ; 
- int get_row_size (struct table const*) ; 
+
+
+
+ int CIM_FLAG_ARRAY ;
+ int COL_TYPE_MASK ;
+ int ERR (char*,int) ;
+ int S_OK ;
+ int get_column_offset (struct table const*,int) ;
+ int get_row_size (struct table const*) ;
 
 HRESULT get_value( const struct table *table, UINT row, UINT column, LONGLONG *val )
 {
@@ -63,35 +54,35 @@ HRESULT get_value( const struct table *table, UINT row, UINT column, LONGLONG *v
     }
     switch (table->columns[column].type & COL_TYPE_MASK)
     {
-    case CIM_BOOLEAN:
+    case 138:
         *val = *(const int *)ptr;
         break;
-    case CIM_DATETIME:
-    case CIM_STRING:
+    case 137:
+    case 132:
         *val = (INT_PTR)*(const WCHAR **)ptr;
         break;
-    case CIM_SINT8:
+    case 133:
         *val = *(const INT8 *)ptr;
         break;
-    case CIM_UINT8:
+    case 128:
         *val = *(const UINT8 *)ptr;
         break;
-    case CIM_SINT16:
+    case 136:
         *val = *(const INT16 *)ptr;
         break;
-    case CIM_UINT16:
+    case 131:
         *val = *(const UINT16 *)ptr;
         break;
-    case CIM_SINT32:
+    case 135:
         *val = *(const INT32 *)ptr;
         break;
-    case CIM_UINT32:
+    case 130:
         *val = *(const UINT32 *)ptr;
         break;
-    case CIM_SINT64:
+    case 134:
         *val = *(const INT64 *)ptr;
         break;
-    case CIM_UINT64:
+    case 129:
         *val = *(const UINT64 *)ptr;
         break;
     default:

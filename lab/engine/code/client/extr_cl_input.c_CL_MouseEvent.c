@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int* mouseDx; size_t mouseIndex; int* mouseDy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CG_MOUSE_EVENT ; 
- int KEYCATCH_CGAME ; 
- int KEYCATCH_UI ; 
- int Key_GetCatcher () ; 
- int /*<<< orphan*/  UI_MOUSE_EVENT ; 
- int /*<<< orphan*/  VM_Call (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  cgvm ; 
- TYPE_1__ cl ; 
- int /*<<< orphan*/  uivm ; 
+
+ int CG_MOUSE_EVENT ;
+ int KEYCATCH_CGAME ;
+ int KEYCATCH_UI ;
+ int Key_GetCatcher () ;
+ int UI_MOUSE_EVENT ;
+ int VM_Call (int ,int ,int,int) ;
+ int cgvm ;
+ TYPE_1__ cl ;
+ int uivm ;
 
 void CL_MouseEvent( int dx, int dy, int time ) {
-	if ( Key_GetCatcher( ) & KEYCATCH_UI ) {
-		VM_Call( uivm, UI_MOUSE_EVENT, dx, dy );
-	} else if (Key_GetCatcher( ) & KEYCATCH_CGAME) {
-		VM_Call (cgvm, CG_MOUSE_EVENT, dx, dy);
-	} else {
-		cl.mouseDx[cl.mouseIndex] += dx;
-		cl.mouseDy[cl.mouseIndex] += dy;
-	}
+ if ( Key_GetCatcher( ) & KEYCATCH_UI ) {
+  VM_Call( uivm, UI_MOUSE_EVENT, dx, dy );
+ } else if (Key_GetCatcher( ) & KEYCATCH_CGAME) {
+  VM_Call (cgvm, CG_MOUSE_EVENT, dx, dy);
+ } else {
+  cl.mouseDx[cl.mouseIndex] += dx;
+  cl.mouseDy[cl.mouseIndex] += dy;
+ }
 }

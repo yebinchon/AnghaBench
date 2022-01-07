@@ -1,19 +1,11 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  fts5_isdigit (char const) ; 
- int /*<<< orphan*/  sqlite3_strnicmp (char*,char const*,int) ; 
+ int fts5_isdigit (char const) ;
+ int sqlite3_strnicmp (char*,char const*,int) ;
 
 __attribute__((used)) static const char *fts5ConfigSkipLiteral(const char *pIn){
   const char *p = pIn;
@@ -30,9 +22,9 @@ __attribute__((used)) static const char *fts5ConfigSkipLiteral(const char *pIn){
       p++;
       if( *p=='\'' ){
         p++;
-        while( (*p>='a' && *p<='f') 
-            || (*p>='A' && *p<='F') 
-            || (*p>='0' && *p<='9') 
+        while( (*p>='a' && *p<='f')
+            || (*p>='A' && *p<='F')
+            || (*p>='0' && *p<='9')
             ){
           p++;
         }
@@ -59,13 +51,13 @@ __attribute__((used)) static const char *fts5ConfigSkipLiteral(const char *pIn){
       break;
 
     default:
-      /* maybe a number */
+
       if( *p=='+' || *p=='-' ) p++;
       while( fts5_isdigit(*p) ) p++;
 
-      /* At this point, if the literal was an integer, the parse is 
-      ** finished. Or, if it is a floating point value, it may continue
-      ** with either a decimal point or an 'E' character. */
+
+
+
       if( *p=='.' && fts5_isdigit(p[1]) ){
         p += 2;
         while( fts5_isdigit(*p) ) p++;

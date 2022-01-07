@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  orig_data3x3 ;
-typedef  int /*<<< orphan*/  data3x3 ;
-typedef  int /*<<< orphan*/  data ;
-typedef  int UINT ;
-typedef  int /*<<< orphan*/  IWICBitmap ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int BYTE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_INVALIDARG ; 
- int /*<<< orphan*/  GUID_WICPixelFormat24bppBGR ; 
- int /*<<< orphan*/  IWICBitmap_CopyPixels (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int,int*) ; 
- int /*<<< orphan*/  IWICBitmap_GetSize (int /*<<< orphan*/ *,int*,int*) ; 
- int /*<<< orphan*/  IWICBitmap_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IWICImagingFactory_CreateBitmapFromMemory (int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ *,int,int,int*,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  WINCODEC_ERR_INSUFFICIENTBUFFER ; 
- int /*<<< orphan*/  factory ; 
- int /*<<< orphan*/  memcpy (int*,int*,int) ; 
- int /*<<< orphan*/  memset (int*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ok (int,char*,int,...) ; 
+
+
+
+typedef int orig_data3x3 ;
+typedef int data3x3 ;
+typedef int data ;
+typedef int UINT ;
+typedef int IWICBitmap ;
+typedef int HRESULT ;
+typedef int BYTE ;
+
+
+ int E_INVALIDARG ;
+ int GUID_WICPixelFormat24bppBGR ;
+ int IWICBitmap_CopyPixels (int *,int *,int,int,int*) ;
+ int IWICBitmap_GetSize (int *,int*,int*) ;
+ int IWICBitmap_Release (int *) ;
+ int IWICImagingFactory_CreateBitmapFromMemory (int ,int,int,int *,int,int,int*,int **) ;
+ int S_OK ;
+ int WINCODEC_ERR_INSUFFICIENTBUFFER ;
+ int factory ;
+ int memcpy (int*,int*,int) ;
+ int memset (int*,int ,int) ;
+ int ok (int,char*,int,...) ;
 
 __attribute__((used)) static void test_CreateBitmapFromMemory(void)
 {
@@ -51,7 +51,7 @@ __attribute__((used)) static void test_CreateBitmapFromMemory(void)
     memcpy(data3x3, orig_data3x3, sizeof(data3x3));
 
     hr = IWICImagingFactory_CreateBitmapFromMemory(factory, 3, 3, &GUID_WICPixelFormat24bppBGR,
-                                                   0, 0, NULL, &bitmap);
+                                                   0, 0, ((void*)0), &bitmap);
     ok(hr == E_INVALIDARG, "expected E_INVALIDARG, got %#x\n", hr);
 
     hr = IWICImagingFactory_CreateBitmapFromMemory(factory, 3, 3, &GUID_WICPixelFormat24bppBGR,
@@ -82,7 +82,7 @@ __attribute__((used)) static void test_CreateBitmapFromMemory(void)
     data3x3[2] = 192;
 
     memset(data, 0, sizeof(data));
-    hr = IWICBitmap_CopyPixels(bitmap, NULL, 9, sizeof(data), data);
+    hr = IWICBitmap_CopyPixels(bitmap, ((void*)0), 9, sizeof(data), data);
     ok(hr == S_OK, "IWICBitmap_CopyPixels error %#x\n", hr);
     for (i = 0; i < sizeof(data); i++)
         ok(data[i] == orig_data3x3[i], "%u: expected %u, got %u\n", i, data[i], data3x3[i]);
@@ -99,7 +99,7 @@ __attribute__((used)) static void test_CreateBitmapFromMemory(void)
     ok(height == 2, "expected 2, got %u\n", height);
 
     memset(data, 0, sizeof(data));
-    hr = IWICBitmap_CopyPixels(bitmap, NULL, 13, sizeof(data), data);
+    hr = IWICBitmap_CopyPixels(bitmap, ((void*)0), 13, sizeof(data), data);
     ok(hr == S_OK, "IWICBitmap_CopyPixels error %#x\n", hr);
     for (i = 0; i < sizeof(data); i++)
         ok(data[i] == data3x2[i], "%u: expected %u, got %u\n", i, data3x2[i], data[i]);

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ l ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef scalar_t__ l ;
 struct TYPE_5__ {scalar_t__ neg; } ;
-typedef  TYPE_1__ BIGNUM ;
+typedef TYPE_1__ BIGNUM ;
 
-/* Variables and functions */
- int BN_bn2bin (TYPE_1__ const*,unsigned char*) ; 
- int BN_num_bits (TYPE_1__ const*) ; 
+
+ int BN_bn2bin (TYPE_1__ const*,unsigned char*) ;
+ int BN_num_bits (TYPE_1__ const*) ;
 
 int BN_bn2mpi(const BIGNUM *a, unsigned char *d)
 {
@@ -31,7 +31,7 @@ int BN_bn2mpi(const BIGNUM *a, unsigned char *d)
     if (bits > 0) {
         ext = ((bits & 0x07) == 0);
     }
-    if (d == NULL)
+    if (d == ((void*)0))
         return (num + 4 + ext);
 
     l = num + ext;

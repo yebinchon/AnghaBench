@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64_t ;
+
+
+
+
+typedef int uint64_t ;
 struct TemplatePacket {int dummy; } ;
-struct TCP_ConnectionTable {unsigned int timeout_connection; int timeout_hello; unsigned int count; unsigned int mask; struct Output* out; int /*<<< orphan*/  report_banner; int /*<<< orphan*/  banner1; int /*<<< orphan*/ * packet_buffers; int /*<<< orphan*/ * transmit_queue; struct TemplatePacket* pkt_template; int /*<<< orphan*/  timeouts; int /*<<< orphan*/ * entries; int /*<<< orphan*/  entropy; } ;
+struct TCP_ConnectionTable {unsigned int timeout_connection; int timeout_hello; unsigned int count; unsigned int mask; struct Output* out; int report_banner; int banner1; int * packet_buffers; int * transmit_queue; struct TemplatePacket* pkt_template; int timeouts; int * entries; int entropy; } ;
 struct Output {int dummy; } ;
-typedef  int /*<<< orphan*/  PACKET_QUEUE ;
-typedef  int /*<<< orphan*/  OUTPUT_REPORT_BANNER ;
+typedef int PACKET_QUEUE ;
+typedef int OUTPUT_REPORT_BANNER ;
 
-/* Variables and functions */
- struct TCP_ConnectionTable* CALLOC (int,int) ; 
- int /*<<< orphan*/  TICKS_FROM_SECS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  banner1_create () ; 
- int /*<<< orphan*/ * malloc (size_t) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/  time (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  timeouts_create (int /*<<< orphan*/ ) ; 
+
+ struct TCP_ConnectionTable* CALLOC (int,int) ;
+ int TICKS_FROM_SECS (int ) ;
+ int banner1_create () ;
+ int * malloc (size_t) ;
+ int memset (int *,int ,size_t) ;
+ int time (int ) ;
+ int timeouts_create (int ) ;
 
 struct TCP_ConnectionTable *
-tcpcon_create_table(    size_t entry_count,
+tcpcon_create_table( size_t entry_count,
                         PACKET_QUEUE *transmit_queue,
                         PACKET_QUEUE *packet_buffers,
                         struct TemplatePacket *pkt_template,
@@ -38,18 +38,18 @@ tcpcon_create_table(    size_t entry_count,
                         )
 {
     struct TCP_ConnectionTable *tcpcon;
-    //printf("\nsizeof(TCB) = %u\n\n", (unsigned)sizeof(struct TCP_Control_Block));
-    
-    
+
+
+
     tcpcon = CALLOC(1, sizeof(*tcpcon));
     tcpcon->timeout_connection = connection_timeout;
     if (tcpcon->timeout_connection == 0)
-        tcpcon->timeout_connection = 30; /* half a minute before destroying tcb */
+        tcpcon->timeout_connection = 30;
     tcpcon->timeout_hello = 2;
     tcpcon->entropy = entropy;
 
-    /* Find nearest power of 2 to the tcb count, but don't go
-     * over the number 16-million */
+
+
     {
         size_t new_entry_count;
         new_entry_count = 1;
@@ -67,22 +67,22 @@ tcpcon_create_table(    size_t entry_count,
         entry_count = new_entry_count;
     }
 
-    /* Create the table. If we can't allocate enough memory, then shrink
-     * the desired size of the table */
+
+
     while (tcpcon->entries == 0) {
         tcpcon->entries = malloc(entry_count * sizeof(*tcpcon->entries));
-        if (tcpcon->entries == NULL) {
+        if (tcpcon->entries == ((void*)0)) {
             entry_count >>= 1;
         }
     }
     memset(tcpcon->entries, 0, entry_count * sizeof(*tcpcon->entries));
 
 
-    /* fill in the table structure */
+
     tcpcon->count = (unsigned)entry_count;
     tcpcon->mask = (unsigned)(entry_count-1);
 
-    /* create an event/timeouts structure */
+
     tcpcon->timeouts = timeouts_create(TICKS_FROM_SECS(time(0)));
 
 

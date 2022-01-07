@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_5__ ;
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_17__ TYPE_5__ ;
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
 struct TYPE_17__ {TYPE_4__** outputs; TYPE_2__* priv; } ;
 struct TYPE_16__ {TYPE_5__* dst; } ;
-struct TYPE_15__ {int channels; int nb_samples; int /*<<< orphan*/  pts; scalar_t__* extended_data; } ;
-struct TYPE_14__ {float* ires; float* fsamples; int winlen; int tabsize; int /*<<< orphan*/  irdft; int /*<<< orphan*/  rdft; TYPE_1__* out; } ;
+struct TYPE_15__ {int channels; int nb_samples; int pts; scalar_t__* extended_data; } ;
+struct TYPE_14__ {float* ires; float* fsamples; int winlen; int tabsize; int irdft; int rdft; TYPE_1__* out; } ;
 struct TYPE_13__ {scalar_t__* extended_data; } ;
-typedef  TYPE_2__ SuperEqualizerContext ;
-typedef  TYPE_3__ AVFrame ;
-typedef  TYPE_4__ AVFilterLink ;
-typedef  TYPE_5__ AVFilterContext ;
+typedef TYPE_2__ SuperEqualizerContext ;
+typedef TYPE_3__ AVFrame ;
+typedef TYPE_4__ AVFilterLink ;
+typedef TYPE_5__ AVFilterContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  av_frame_free (TYPE_3__**) ; 
- int /*<<< orphan*/  av_rdft_calc (int /*<<< orphan*/ ,float*) ; 
- int ff_filter_frame (TYPE_4__*,TYPE_3__*) ; 
- TYPE_3__* ff_get_audio_buffer (TYPE_4__*,int) ; 
+
+ int AVERROR (int ) ;
+ int ENOMEM ;
+ int av_frame_free (TYPE_3__**) ;
+ int av_rdft_calc (int ,float*) ;
+ int ff_filter_frame (TYPE_4__*,TYPE_3__*) ;
+ TYPE_3__* ff_get_audio_buffer (TYPE_4__*,int) ;
 
 __attribute__((used)) static int filter_frame(AVFilterLink *inlink, AVFrame *in)
 {
@@ -67,10 +67,10 @@ __attribute__((used)) static int filter_frame(AVFilterLink *inlink, AVFrame *in)
         for (i = 1; i < s->tabsize / 2; i++) {
             float re, im;
 
-            re = ires[i*2  ] * fsamples[i*2] - ires[i*2+1] * fsamples[i*2+1];
-            im = ires[i*2+1] * fsamples[i*2] + ires[i*2  ] * fsamples[i*2+1];
+            re = ires[i*2 ] * fsamples[i*2] - ires[i*2+1] * fsamples[i*2+1];
+            im = ires[i*2+1] * fsamples[i*2] + ires[i*2 ] * fsamples[i*2+1];
 
-            fsamples[i*2  ] = re;
+            fsamples[i*2 ] = re;
             fsamples[i*2+1] = im;
         }
 
@@ -79,7 +79,7 @@ __attribute__((used)) static int filter_frame(AVFilterLink *inlink, AVFrame *in)
         for (i = 0; i < s->winlen; i++)
             dst[i] += fsamples[i] / s->tabsize * 2;
         for (i = s->winlen; i < s->tabsize; i++)
-            dst[i]  = fsamples[i] / s->tabsize * 2;
+            dst[i] = fsamples[i] / s->tabsize * 2;
         for (i = 0; i < s->winlen; i++)
             ptr[i] = dst[i];
         for (i = 0; i < s->winlen; i++)

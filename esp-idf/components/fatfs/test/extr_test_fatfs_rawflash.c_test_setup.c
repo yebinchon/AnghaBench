@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  spi_flash_mmap_handle_t ;
+
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int spi_flash_mmap_handle_t ;
 struct TYPE_8__ {int format_if_mount_failed; size_t max_files; } ;
-typedef  TYPE_1__ esp_vfs_fat_sdmmc_mount_config_t ;
+typedef TYPE_1__ esp_vfs_fat_sdmmc_mount_config_t ;
 struct TYPE_9__ {int size; } ;
-typedef  TYPE_2__ esp_partition_t ;
+typedef TYPE_2__ esp_partition_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ESP_ERROR_CHECK (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SPI_FLASH_MMAP_DATA ; 
- scalar_t__ SPI_FLASH_SEC_SIZE ; 
- int /*<<< orphan*/  TEST_ASSERT (int) ; 
- int /*<<< orphan*/  TEST_ESP_OK (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  esp_partition_erase_range (TYPE_2__ const*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  esp_partition_mmap (TYPE_2__ const*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,void const**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  esp_partition_write (TYPE_2__ const*,int,char const*,scalar_t__) ; 
- int /*<<< orphan*/  esp_vfs_fat_rawflash_mount (char*,char*,TYPE_1__*) ; 
- TYPE_2__* get_test_data_partition () ; 
- scalar_t__ memcmp (char const*,void const*,int) ; 
- int /*<<< orphan*/  printf (char*) ; 
- int /*<<< orphan*/  spi_flash_munmap (int /*<<< orphan*/ ) ; 
+
+ int ESP_ERROR_CHECK (int ) ;
+ int SPI_FLASH_MMAP_DATA ;
+ scalar_t__ SPI_FLASH_SEC_SIZE ;
+ int TEST_ASSERT (int) ;
+ int TEST_ESP_OK (int ) ;
+ int esp_partition_erase_range (TYPE_2__ const*,int ,int) ;
+ int esp_partition_mmap (TYPE_2__ const*,int ,int,int ,void const**,int *) ;
+ int esp_partition_write (TYPE_2__ const*,int,char const*,scalar_t__) ;
+ int esp_vfs_fat_rawflash_mount (char*,char*,TYPE_1__*) ;
+ TYPE_2__* get_test_data_partition () ;
+ scalar_t__ memcmp (char const*,void const*,int) ;
+ int printf (char*) ;
+ int spi_flash_munmap (int ) ;
 
 __attribute__((used)) static void test_setup(size_t max_files)
 {
     extern const char fatfs_start[] asm("_binary_fatfs_img_start");
-    extern const char fatfs_end[]   asm("_binary_fatfs_img_end");
+    extern const char fatfs_end[] asm("_binary_fatfs_img_end");
     esp_vfs_fat_sdmmc_mount_config_t mount_config = {
-        .format_if_mount_failed = false,
+        .format_if_mount_failed = 0,
         .max_files = max_files
     };
     const esp_partition_t* part = get_test_data_partition();

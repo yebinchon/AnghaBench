@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {scalar_t__ MipLevels; } ;
-struct TYPE_7__ {int /*<<< orphan*/  upload_buffer; int /*<<< orphan*/  handle; TYPE_4__* cpu_descriptor; scalar_t__ srv_heap; TYPE_1__ desc; } ;
-typedef  TYPE_2__ d3d12_texture_t ;
+struct TYPE_7__ {int upload_buffer; int handle; TYPE_4__* cpu_descriptor; scalar_t__ srv_heap; TYPE_1__ desc; } ;
+typedef TYPE_2__ d3d12_texture_t ;
 struct TYPE_8__ {scalar_t__ ptr; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Release (int /*<<< orphan*/ ) ; 
- scalar_t__ countof (TYPE_4__*) ; 
- int /*<<< orphan*/  d3d12_descriptor_heap_slot_free (scalar_t__,TYPE_4__) ; 
+
+ int Release (int ) ;
+ scalar_t__ countof (TYPE_4__*) ;
+ int d3d12_descriptor_heap_slot_free (scalar_t__,TYPE_4__) ;
 
 void d3d12_release_texture(d3d12_texture_t* texture)
 {

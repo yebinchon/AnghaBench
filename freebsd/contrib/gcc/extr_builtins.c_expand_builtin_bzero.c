@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
-typedef  int /*<<< orphan*/  rtx ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INTEGER_TYPE ; 
- int /*<<< orphan*/  NULL_RTX ; 
- int /*<<< orphan*/  NULL_TREE ; 
- int /*<<< orphan*/  POINTER_TYPE ; 
- int /*<<< orphan*/  TREE_CHAIN (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TREE_OPERAND (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  TREE_VALUE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  VOID_TYPE ; 
- int /*<<< orphan*/  VOIDmode ; 
- int /*<<< orphan*/  build_tree_list (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  const0_rtx ; 
- int /*<<< orphan*/  expand_builtin_memset (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fold_convert (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  integer_zero_node ; 
- int /*<<< orphan*/  sizetype ; 
- int /*<<< orphan*/  tree_cons (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  validate_arglist (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int tree ;
+typedef int rtx ;
+
+
+ int INTEGER_TYPE ;
+ int NULL_RTX ;
+ int NULL_TREE ;
+ int POINTER_TYPE ;
+ int TREE_CHAIN (int ) ;
+ int TREE_OPERAND (int ,int) ;
+ int TREE_VALUE (int ) ;
+ int VOID_TYPE ;
+ int VOIDmode ;
+ int build_tree_list (int ,int ) ;
+ int const0_rtx ;
+ int expand_builtin_memset (int ,int ,int ,int ) ;
+ int fold_convert (int ,int ) ;
+ int integer_zero_node ;
+ int sizetype ;
+ int tree_cons (int ,int ,int ) ;
+ int validate_arglist (int ,int ,int ,int ) ;
 
 __attribute__((used)) static rtx
 expand_builtin_bzero (tree exp)
@@ -44,10 +44,10 @@ expand_builtin_bzero (tree exp)
   dest = TREE_VALUE (arglist);
   size = TREE_VALUE (TREE_CHAIN (arglist));
 
-  /* New argument list transforming bzero(ptr x, int y) to
-     memset(ptr x, int 0, size_t y).   This is done this way
-     so that if it isn't expanded inline, we fallback to
-     calling bzero instead of memset.  */
+
+
+
+
 
   newarglist = build_tree_list (NULL_TREE, fold_convert (sizetype, size));
   newarglist = tree_cons (NULL_TREE, integer_zero_node, newarglist);

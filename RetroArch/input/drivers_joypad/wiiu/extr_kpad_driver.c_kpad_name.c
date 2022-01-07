@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int type; } ;
 
-/* Variables and functions */
- char const* PAD_NAME_CLASSIC ; 
- char const* PAD_NAME_NUNCHUK ; 
- char const* PAD_NAME_WIIMOTE ; 
- char const* PAD_NAME_WIIU_PRO ; 
- int /*<<< orphan*/  RARCH_LOG (char*,int) ; 
-#define  WIIMOTE_TYPE_CLASSIC 132 
-#define  WIIMOTE_TYPE_NONE 131 
-#define  WIIMOTE_TYPE_NUNCHUK 130 
-#define  WIIMOTE_TYPE_PRO 129 
-#define  WIIMOTE_TYPE_WIIPLUS 128 
- int to_wiimote_channel (unsigned int) ; 
- TYPE_1__* wiimotes ; 
+
+ char const* PAD_NAME_CLASSIC ;
+ char const* PAD_NAME_NUNCHUK ;
+ char const* PAD_NAME_WIIMOTE ;
+ char const* PAD_NAME_WIIU_PRO ;
+ int RARCH_LOG (char*,int) ;
+
+
+
+
+
+ int to_wiimote_channel (unsigned int) ;
+ TYPE_1__* wiimotes ;
 
 __attribute__((used)) static const char *kpad_name(unsigned pad)
 {
@@ -35,15 +35,15 @@ __attribute__((used)) static const char *kpad_name(unsigned pad)
 
    switch(wiimotes[channel].type)
    {
-      case WIIMOTE_TYPE_PRO:
+      case 129:
          return PAD_NAME_WIIU_PRO;
-      case WIIMOTE_TYPE_CLASSIC:
+      case 132:
          return PAD_NAME_CLASSIC;
-      case WIIMOTE_TYPE_NUNCHUK:
+      case 130:
          return PAD_NAME_NUNCHUK;
-      case WIIMOTE_TYPE_WIIPLUS:
+      case 128:
          return PAD_NAME_WIIMOTE;
-      case WIIMOTE_TYPE_NONE:
+      case 131:
       default:
          RARCH_LOG("[kpad]: Unknown pad type %d\n", wiimotes[pad].type);
          break;

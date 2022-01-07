@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  unsigned long long u64 ;
-typedef  int /*<<< orphan*/  hashcat_ctx_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  event_log_error (int /*<<< orphan*/ *,char*,int const) ; 
- int /*<<< orphan*/  hcfree (char*) ; 
- char* hcstrdup (char const*) ; 
- char* strtok_r (char*,char*,char**) ; 
- scalar_t__ strtol (char*,int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef unsigned long long u64 ;
+typedef int hashcat_ctx_t ;
+
+
+ int event_log_error (int *,char*,int const) ;
+ int hcfree (char*) ;
+ char* hcstrdup (char const*) ;
+ char* strtok_r (char*,char*,char**) ;
+ scalar_t__ strtol (char*,int *,int) ;
 
 __attribute__((used)) static bool setup_backend_devices_filter (hashcat_ctx_t *hashcat_ctx, const char *backend_devices, u64 *out)
 {
@@ -28,15 +28,15 @@ __attribute__((used)) static bool setup_backend_devices_filter (hashcat_ctx_t *h
   {
     char *devices = hcstrdup (backend_devices);
 
-    if (devices == NULL) return false;
+    if (devices == ((void*)0)) return 0;
 
-    char *saveptr = NULL;
+    char *saveptr = ((void*)0);
 
     char *next = strtok_r (devices, ",", &saveptr);
 
     do
     {
-      const int backend_device_id = (const int) strtol (next, NULL, 10);
+      const int backend_device_id = (const int) strtol (next, ((void*)0), 10);
 
       if ((backend_device_id <= 0) || (backend_device_id >= 64))
       {
@@ -44,12 +44,12 @@ __attribute__((used)) static bool setup_backend_devices_filter (hashcat_ctx_t *h
 
         hcfree (devices);
 
-        return false;
+        return 0;
       }
 
       backend_devices_filter |= 1ULL << (backend_device_id - 1);
 
-    } while ((next = strtok_r ((char *) NULL, ",", &saveptr)) != NULL);
+    } while ((next = strtok_r ((char *) ((void*)0), ",", &saveptr)) != ((void*)0));
 
     hcfree (devices);
   }
@@ -60,5 +60,5 @@ __attribute__((used)) static bool setup_backend_devices_filter (hashcat_ctx_t *h
 
   *out = backend_devices_filter;
 
-  return true;
+  return 1;
 }

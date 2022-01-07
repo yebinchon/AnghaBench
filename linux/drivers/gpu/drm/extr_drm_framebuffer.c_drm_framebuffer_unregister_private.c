@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct drm_framebuffer {int /*<<< orphan*/  base; struct drm_device* dev; } ;
+
+
+
+
+struct drm_framebuffer {int base; struct drm_device* dev; } ;
 struct drm_device {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  drm_mode_object_unregister (struct drm_device*,int /*<<< orphan*/ *) ; 
+
+ int drm_mode_object_unregister (struct drm_device*,int *) ;
 
 void drm_framebuffer_unregister_private(struct drm_framebuffer *fb)
 {
-	struct drm_device *dev;
+ struct drm_device *dev;
 
-	if (!fb)
-		return;
+ if (!fb)
+  return;
 
-	dev = fb->dev;
+ dev = fb->dev;
 
-	/* Mark fb as reaped and drop idr ref. */
-	drm_mode_object_unregister(dev, &fb->base);
+
+ drm_mode_object_unregister(dev, &fb->base);
 }

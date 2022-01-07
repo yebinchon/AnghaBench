@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_10__ {int nb_streams; TYPE_2__** streams; } ;
-struct TYPE_9__ {scalar_t__ id; int index; int /*<<< orphan*/  first_dts; } ;
-struct TYPE_8__ {int nb_rmst; int /*<<< orphan*/ * rmst; int /*<<< orphan*/  mlti_data_size; int /*<<< orphan*/  mlti_data; } ;
-typedef  TYPE_1__ PayloadContext ;
-typedef  TYPE_2__ AVStream ;
-typedef  TYPE_3__ AVFormatContext ;
+struct TYPE_9__ {scalar_t__ id; int index; int first_dts; } ;
+struct TYPE_8__ {int nb_rmst; int * rmst; int mlti_data_size; int mlti_data; } ;
+typedef TYPE_1__ PayloadContext ;
+typedef TYPE_2__ AVStream ;
+typedef TYPE_3__ AVFormatContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  atoi (char const*) ; 
- int av_reallocp (int /*<<< orphan*/ **,int) ; 
- scalar_t__ av_strstart (char const*,char*,char const**) ; 
- int /*<<< orphan*/  ff_rm_alloc_rmstream () ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  rdt_load_mdpr (TYPE_1__*,TYPE_2__*,int) ; 
- int /*<<< orphan*/  rdt_parse_b64buf (int /*<<< orphan*/ *,char const*) ; 
+
+ int AVERROR (int ) ;
+ int ENOMEM ;
+ int atoi (char const*) ;
+ int av_reallocp (int **,int) ;
+ scalar_t__ av_strstart (char const*,char*,char const**) ;
+ int ff_rm_alloc_rmstream () ;
+ int memset (int *,int ,int) ;
+ int rdt_load_mdpr (TYPE_1__*,TYPE_2__*,int) ;
+ int rdt_parse_b64buf (int *,char const*) ;
 
 __attribute__((used)) static int
 rdt_parse_sdp_line (AVFormatContext *s, int st_index,

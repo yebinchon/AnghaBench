@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tmp ;
-typedef  int /*<<< orphan*/  (* cbc128_f ) (unsigned char const*,unsigned char*,int,void const*,unsigned char*,int /*<<< orphan*/ ) ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memcpy (unsigned char*,unsigned char const*,int) ; 
- int /*<<< orphan*/  memset (unsigned char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  stub1 (unsigned char const*,unsigned char*,int,void const*,unsigned char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub2 (unsigned char const*,unsigned char*,int,void const*,unsigned char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub3 (unsigned char const*,unsigned char*,int,void const*,unsigned char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub4 (unsigned char const*,unsigned char*,int,void const*,unsigned char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub5 (unsigned char const*,unsigned char*,int,void const*,unsigned char*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int tmp ;
+typedef int (* cbc128_f ) (unsigned char const*,unsigned char*,int,void const*,unsigned char*,int ) ;
+
+
+ int memcpy (unsigned char*,unsigned char const*,int) ;
+ int memset (unsigned char*,int ,int) ;
+ int stub1 (unsigned char const*,unsigned char*,int,void const*,unsigned char*,int ) ;
+ int stub2 (unsigned char const*,unsigned char*,int,void const*,unsigned char*,int ) ;
+ int stub3 (unsigned char const*,unsigned char*,int,void const*,unsigned char*,int ) ;
+ int stub4 (unsigned char const*,unsigned char*,int,void const*,unsigned char*,int ) ;
+ int stub5 (unsigned char const*,unsigned char*,int,void const*,unsigned char*,int ) ;
 
 size_t CRYPTO_nistcts128_decrypt(const unsigned char *in, unsigned char *out,
                                  size_t len, const void *key,
@@ -51,17 +51,17 @@ size_t CRYPTO_nistcts128_decrypt(const unsigned char *in, unsigned char *out,
     }
 
     memset(tmp.c, 0, sizeof(tmp));
-    /*
-     * this places in[16] at &tmp.c[16] and decrypted block at &tmp.c[0]
-     */
+
+
+
     (*cbc) (in + residue, tmp.c, 16, key, tmp.c + 16, 0);
 
     memcpy(tmp.c, in, residue);
-#if defined(CBC_HANDLES_TRUNCATED_IO)
-    (*cbc) (tmp.c, out, 16 + residue, key, ivec, 0);
-#else
+
+
+
     (*cbc) (tmp.c, tmp.c, 32, key, ivec, 0);
     memcpy(out, tmp.c, 16 + residue);
-#endif
+
     return 16 + len + residue;
 }

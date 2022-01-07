@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_5__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct sbc_frame {scalar_t__ mode; int subbands; int blocks; int bitpool; int frequency; int channels; int codesize; int /*<<< orphan*/  crc_ctx; void* allocation; } ;
-struct TYPE_10__ {int position; int increment; int /*<<< orphan*/  X; } ;
+
+
+typedef struct TYPE_10__ TYPE_5__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct sbc_frame {scalar_t__ mode; int subbands; int blocks; int bitpool; int frequency; int channels; int codesize; int crc_ctx; void* allocation; } ;
+struct TYPE_10__ {int position; int increment; int X; } ;
 struct TYPE_9__ {scalar_t__ profile; int channels; int sample_rate; int frame_size; int global_quality; int bit_rate; TYPE_1__* codec; TYPE_2__* priv_data; } ;
 struct TYPE_8__ {int msbc; int max_delay; TYPE_5__ dsp; struct sbc_frame frame; } ;
 struct TYPE_7__ {scalar_t__* supported_samplerates; } ;
-typedef  TYPE_2__ SBCEncContext ;
-typedef  TYPE_3__ AVCodecContext ;
+typedef TYPE_2__ SBCEncContext ;
+typedef TYPE_3__ AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_CRC_8_EBU ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  EINVAL ; 
- scalar_t__ FF_PROFILE_SBC_MSBC ; 
- int FF_QP2LAMBDA ; 
- int MSBC_BLOCKS ; 
- void* SBC_AM_LOUDNESS ; 
- scalar_t__ SBC_MODE_DUAL_CHANNEL ; 
- scalar_t__ SBC_MODE_JOINT_STEREO ; 
- void* SBC_MODE_MONO ; 
- scalar_t__ SBC_MODE_STEREO ; 
- int SBC_X_BUFFER_SIZE ; 
- int av_clip (int,int,int) ; 
- int /*<<< orphan*/  av_crc_get_table (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_log (TYPE_3__*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ff_sbcdsp_init (TYPE_5__*) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
+
+ int AVERROR (int ) ;
+ int AV_CRC_8_EBU ;
+ int AV_LOG_ERROR ;
+ int EINVAL ;
+ scalar_t__ FF_PROFILE_SBC_MSBC ;
+ int FF_QP2LAMBDA ;
+ int MSBC_BLOCKS ;
+ void* SBC_AM_LOUDNESS ;
+ scalar_t__ SBC_MODE_DUAL_CHANNEL ;
+ scalar_t__ SBC_MODE_JOINT_STEREO ;
+ void* SBC_MODE_MONO ;
+ scalar_t__ SBC_MODE_STEREO ;
+ int SBC_X_BUFFER_SIZE ;
+ int av_clip (int,int,int) ;
+ int av_crc_get_table (int ) ;
+ int av_log (TYPE_3__*,int ,char*) ;
+ int ff_sbcdsp_init (TYPE_5__*) ;
+ int memset (int *,int ,int) ;
 
 __attribute__((used)) static int sbc_encode_init(AVCodecContext *avctx)
 {
@@ -92,7 +92,7 @@ __attribute__((used)) static int sbc_encode_init(AVCodecContext *avctx)
             else
                 frame->subbands = 8;
         }
-        /* sbc algorithmic delay is ((blocks + 10) * subbands - 2) / sample_rate */
+
         frame->blocks = av_clip(((sbc->max_delay * avctx->sample_rate + 2)
                                / (1000000 * frame->subbands)) - 10, 4, 16) & ~3;
 

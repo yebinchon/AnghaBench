@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  wc_id; int /*<<< orphan*/  sdb; } ;
-typedef  TYPE_1__ svn_wc__db_wcroot_t ;
-typedef  scalar_t__ svn_wc__db_status_t ;
-typedef  int /*<<< orphan*/  svn_sqlite__stmt_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  scalar_t__ svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  STMT_SELECT_NODE_PROPS ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_ASSERT (scalar_t__) ; 
- int /*<<< orphan*/  SVN_ERR_WC_PATH_NOT_FOUND ; 
- int /*<<< orphan*/  SVN_ERR_WC_PATH_UNEXPECTED_STATUS ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/ * apr_hash_make (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  path_for_error_message (TYPE_1__*,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  presence_map ; 
- int /*<<< orphan*/  svn_error_compose_create (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * svn_error_createf (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_sqlite__bindf (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/ * svn_sqlite__column_properties (int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_sqlite__column_token (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_sqlite__get_statement (int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_sqlite__reset (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_sqlite__step (scalar_t__*,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_wc__db_status_base_deleted ; 
- scalar_t__ svn_wc__db_status_incomplete ; 
- scalar_t__ svn_wc__db_status_normal ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int wc_id; int sdb; } ;
+typedef TYPE_1__ svn_wc__db_wcroot_t ;
+typedef scalar_t__ svn_wc__db_status_t ;
+typedef int svn_sqlite__stmt_t ;
+typedef int svn_error_t ;
+typedef scalar_t__ svn_boolean_t ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
+
+
+ int STMT_SELECT_NODE_PROPS ;
+ int SVN_ERR (int ) ;
+ int SVN_ERR_ASSERT (scalar_t__) ;
+ int SVN_ERR_WC_PATH_NOT_FOUND ;
+ int SVN_ERR_WC_PATH_UNEXPECTED_STATUS ;
+ int * SVN_NO_ERROR ;
+ int _ (char*) ;
+ int * apr_hash_make (int *) ;
+ int path_for_error_message (TYPE_1__*,char const*,int *) ;
+ int presence_map ;
+ int svn_error_compose_create (int *,int ) ;
+ int * svn_error_createf (int ,int ,int ,int ) ;
+ int svn_sqlite__bindf (int *,char*,int ,char const*) ;
+ int * svn_sqlite__column_properties (int **,int *,int ,int *,int *) ;
+ scalar_t__ svn_sqlite__column_token (int *,int,int ) ;
+ int svn_sqlite__get_statement (int **,int ,int ) ;
+ int svn_sqlite__reset (int *) ;
+ int svn_sqlite__step (scalar_t__*,int *) ;
+ scalar_t__ svn_wc__db_status_base_deleted ;
+ scalar_t__ svn_wc__db_status_incomplete ;
+ scalar_t__ svn_wc__db_status_normal ;
 
 __attribute__((used)) static svn_error_t *
 db_read_pristine_props(apr_hash_t **props,
@@ -71,11 +71,11 @@ db_read_pristine_props(apr_hash_t **props,
     }
 
 
-  /* Examine the presence: */
+
   presence = svn_sqlite__column_token(stmt, 1, presence_map);
 
-  /* For "base-deleted", it is obvious the pristine props are located
-     below the current node. Fetch the NODE from the next record. */
+
+
   if (presence == svn_wc__db_status_base_deleted && deleted_ok)
     {
       SVN_ERR(svn_sqlite__step(&have_row, stmt));
@@ -85,8 +85,8 @@ db_read_pristine_props(apr_hash_t **props,
       presence = svn_sqlite__column_token(stmt, 1, presence_map);
     }
 
-  /* normal or copied: Fetch properties (during update we want
-     properties for incomplete as well) */
+
+
   if (presence == svn_wc__db_status_normal
       || presence == svn_wc__db_status_incomplete)
     {

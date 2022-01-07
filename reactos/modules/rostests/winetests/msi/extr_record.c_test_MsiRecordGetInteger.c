@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int UINT ;
-typedef  scalar_t__ MSIHANDLE ;
-typedef  int INT ;
 
-/* Variables and functions */
- int ERROR_SUCCESS ; 
- int MSI_NULL_INTEGER ; 
- int /*<<< orphan*/  MsiCloseHandle (scalar_t__) ; 
- scalar_t__ MsiCreateRecord (int) ; 
- int MsiRecordGetInteger (scalar_t__,int) ; 
- int MsiRecordSetStringA (scalar_t__,int,char*) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
+
+
+
+typedef int UINT ;
+typedef scalar_t__ MSIHANDLE ;
+typedef int INT ;
+
+
+ int ERROR_SUCCESS ;
+ int MSI_NULL_INTEGER ;
+ int MsiCloseHandle (scalar_t__) ;
+ scalar_t__ MsiCreateRecord (int) ;
+ int MsiRecordGetInteger (scalar_t__,int) ;
+ int MsiRecordSetStringA (scalar_t__,int,char*) ;
+ int ok (int,char*,...) ;
 
 __attribute__((used)) static void test_MsiRecordGetInteger(void)
 {

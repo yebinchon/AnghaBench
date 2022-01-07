@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct sk_buff {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/  ui_queue; } ;
+struct TYPE_2__ {int ui_queue; } ;
 struct PStack {TYPE_1__ l2; } ;
 struct FsmInst {struct PStack* userdata; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  skb_queue_tail (int /*<<< orphan*/ *,struct sk_buff*) ; 
- int /*<<< orphan*/  tx_ui (struct PStack*) ; 
+
+ int skb_queue_tail (int *,struct sk_buff*) ;
+ int tx_ui (struct PStack*) ;
 
 __attribute__((used)) static void
 l2_send_ui(struct FsmInst *fi, int event, void *arg)
 {
-	struct PStack *st = fi->userdata;
-	struct sk_buff *skb = arg;
+ struct PStack *st = fi->userdata;
+ struct sk_buff *skb = arg;
 
-	skb_queue_tail(&st->l2.ui_queue, skb);
-	tx_ui(st);
+ skb_queue_tail(&st->l2.ui_queue, skb);
+ tx_ui(st);
 }

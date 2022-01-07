@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct testcase_t {int dummy; } ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static int
 cleanup_passthrough(const struct testcase_t *testcase, void *ptr)
 {
-	(void) ptr;
-	return 1;
+ (void) ptr;
+ return 1;
 }

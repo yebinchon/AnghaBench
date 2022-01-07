@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  a ;
-typedef  int /*<<< orphan*/  CURLcode ;
-typedef  int /*<<< orphan*/  CURL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CURLE_OK ; 
- int /*<<< orphan*/  CURL_GLOBAL_ALL ; 
- int TEST_ERR_MAJOR_BAD ; 
- int /*<<< orphan*/  curl_easy_cleanup (int /*<<< orphan*/ *) ; 
- char* curl_easy_escape (int /*<<< orphan*/ *,char const*,int) ; 
- int /*<<< orphan*/ * curl_easy_init () ; 
- int /*<<< orphan*/  curl_free (char*) ; 
- int /*<<< orphan*/  curl_global_cleanup () ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  global_init (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printf (char*,char*) ; 
- int /*<<< orphan*/  stderr ; 
+
+
+
+typedef int a ;
+typedef int CURLcode ;
+typedef int CURL ;
+
+
+ int CURLE_OK ;
+ int CURL_GLOBAL_ALL ;
+ int TEST_ERR_MAJOR_BAD ;
+ int curl_easy_cleanup (int *) ;
+ char* curl_easy_escape (int *,char const*,int) ;
+ int * curl_easy_init () ;
+ int curl_free (char*) ;
+ int curl_global_cleanup () ;
+ int fprintf (int ,char*) ;
+ int global_init (int ) ;
+ int printf (char*,char*) ;
+ int stderr ;
 
 int test(char *URL)
 {
   static const unsigned char a[] = {
       0x9c, 0x26, 0x4b, 0x3d, 0x49, 0x4, 0xa1, 0x1,
-      0xe0, 0xd8, 0x7c,  0x20, 0xb7, 0xef, 0x53, 0x29, 0xfa,
+      0xe0, 0xd8, 0x7c, 0x20, 0xb7, 0xef, 0x53, 0x29, 0xfa,
       0x1d, 0x57, 0xe1};
 
   CURL *easy;

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct page {int /*<<< orphan*/  rcu; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  call_rcu (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  page_rcu_free ; 
+
+
+
+struct page {int rcu; } ;
+
+
+ int call_rcu (int *,int ) ;
+ int page_rcu_free ;
 
 __attribute__((used)) static void page_free(struct page *p)
 {
-	call_rcu(&p->rcu, page_rcu_free);
+ call_rcu(&p->rcu, page_rcu_free);
 }

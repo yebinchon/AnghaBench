@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t ULONG ;
-struct TYPE_4__ {int DeviceId; int /*<<< orphan*/ * Specific; TYPE_1__* FuncTable; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef size_t ULONG ;
+struct TYPE_4__ {int DeviceId; int * Specific; TYPE_1__* FuncTable; } ;
 struct TYPE_3__ {scalar_t__ (* Close ) (size_t) ;} ;
-typedef  scalar_t__ ARC_STATUS ;
+typedef scalar_t__ ARC_STATUS ;
 
-/* Variables and functions */
- scalar_t__ EBADF ; 
- scalar_t__ ESUCCESS ; 
- TYPE_2__* FileData ; 
- size_t MAX_FDS ; 
- scalar_t__ stub1 (size_t) ; 
+
+ scalar_t__ EBADF ;
+ scalar_t__ ESUCCESS ;
+ TYPE_2__* FileData ;
+ size_t MAX_FDS ;
+ scalar_t__ stub1 (size_t) ;
 
 ARC_STATUS ArcClose(ULONG FileId)
 {
@@ -35,8 +35,8 @@ ARC_STATUS ArcClose(ULONG FileId)
 
     if (Status == ESUCCESS)
     {
-        FileData[FileId].FuncTable = NULL;
-        FileData[FileId].Specific = NULL;
+        FileData[FileId].FuncTable = ((void*)0);
+        FileData[FileId].Specific = ((void*)0);
         FileData[FileId].DeviceId = -1;
     }
     return Status;

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-struct TYPE_5__ {int nGroup; int nVal; int /*<<< orphan*/ ** apVal; TYPE_1__** apGroup; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int u8 ;
+struct TYPE_5__ {int nGroup; int nVal; int ** apVal; TYPE_1__** apGroup; } ;
 struct TYPE_4__ {int nCol; scalar_t__* aPK; } ;
-typedef  TYPE_1__ FuzzChangesetGroup ;
-typedef  TYPE_2__ FuzzChangeset ;
+typedef TYPE_1__ FuzzChangesetGroup ;
+typedef TYPE_2__ FuzzChangeset ;
 
-/* Variables and functions */
- int SQLITE_NOMEM ; 
- int SQLITE_OK ; 
- int fuzzChangeSize (int /*<<< orphan*/ *,int*) ; 
- int fuzzCorrupt () ; 
- scalar_t__ sqlite3_realloc (int /*<<< orphan*/ **,int) ; 
+
+ int SQLITE_NOMEM ;
+ int SQLITE_OK ;
+ int fuzzChangeSize (int *,int*) ;
+ int fuzzCorrupt () ;
+ scalar_t__ sqlite3_realloc (int **,int) ;
 
 __attribute__((used)) static int fuzzParseRecord(
-  u8 **ppRec,                     /* IN/OUT: Iterator */
-  u8 *pEnd,                       /* One byte after end of input data */
-  FuzzChangeset *pParse,          /* Changeset parse context */
-  int bPkOnly                     /* True if non-PK fields omitted */
+  u8 **ppRec,
+  u8 *pEnd,
+  FuzzChangeset *pParse,
+  int bPkOnly
 ){
   int rc = SQLITE_OK;
   FuzzChangesetGroup *pGrp = pParse->apGroup[pParse->nGroup-1];

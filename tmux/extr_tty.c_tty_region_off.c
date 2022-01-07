@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct tty {scalar_t__ sy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  tty_region (struct tty*,int /*<<< orphan*/ ,scalar_t__) ; 
+
+ int tty_region (struct tty*,int ,scalar_t__) ;
 
 void
 tty_region_off(struct tty *tty)
 {
-	tty_region(tty, 0, tty->sy - 1);
+ tty_region(tty, 0, tty->sy - 1);
 }

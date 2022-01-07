@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ ISSPACE (int) ; 
- int /*<<< orphan*/  irp ; 
- int /*<<< orphan*/  obstack_1grow (int /*<<< orphan*/ *,char const) ; 
- char* obstack_base (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  obstack_finish (int /*<<< orphan*/ *) ; 
+ scalar_t__ ISSPACE (int) ;
+ int irp ;
+ int obstack_1grow (int *,char const) ;
+ char* obstack_base (int *) ;
+ int obstack_finish (int *) ;
 
 __attribute__((used)) static char *
 next_sep_el (const char **pstr, int sep, int par_flag)
@@ -26,30 +18,30 @@ next_sep_el (const char **pstr, int sep, int par_flag)
   int pars_num;
   int n_spaces;
 
-  /* Remove leading whitespaces.  */
+
   while (ISSPACE ((int) **pstr))
     (*pstr)++;
 
   if (**pstr == '\0')
-    return NULL;
+    return ((void*)0);
 
   n_spaces = 0;
   for (pars_num = 0, p = *pstr; *p != '\0'; p++)
     {
       if (par_flag && *p == '(')
-	pars_num++;
+ pars_num++;
       else if (par_flag && *p == ')')
-	pars_num--;
+ pars_num--;
       else if (pars_num == 0 && *p == sep)
-	break;
+ break;
       if (pars_num == 0 && ISSPACE ((int) *p))
-	n_spaces++;
+ n_spaces++;
       else
-	{
-	  for (; n_spaces != 0; n_spaces--)
-	    obstack_1grow (&irp, p [-n_spaces]);
-	  obstack_1grow (&irp, *p);
-	}
+ {
+   for (; n_spaces != 0; n_spaces--)
+     obstack_1grow (&irp, p [-n_spaces]);
+   obstack_1grow (&irp, *p);
+ }
     }
   obstack_1grow (&irp, '\0');
   out_str = obstack_base (&irp);

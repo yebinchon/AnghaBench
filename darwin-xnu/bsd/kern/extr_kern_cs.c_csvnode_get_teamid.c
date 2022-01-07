@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct vnode {int dummy; } ;
 struct cs_blob {int dummy; } ;
-typedef  int /*<<< orphan*/  off_t ;
+typedef int off_t ;
 
-/* Variables and functions */
- char const* csblob_get_teamid (struct cs_blob*) ; 
- struct cs_blob* ubc_cs_blob_get (struct vnode*,int,int /*<<< orphan*/ ) ; 
+
+ char const* csblob_get_teamid (struct cs_blob*) ;
+ struct cs_blob* ubc_cs_blob_get (struct vnode*,int,int ) ;
 
 const char *
 csvnode_get_teamid(struct vnode *vp, off_t offset)
 {
-	struct cs_blob *csblob;
+ struct cs_blob *csblob;
 
-	if (vp == NULL)
-		return NULL;
+ if (vp == ((void*)0))
+  return ((void*)0);
 
-	csblob = ubc_cs_blob_get(vp, -1, offset);
-	if (csblob == NULL)
-	    return NULL;
+ csblob = ubc_cs_blob_get(vp, -1, offset);
+ if (csblob == ((void*)0))
+     return ((void*)0);
 
-	return csblob_get_teamid(csblob);
+ return csblob_get_teamid(csblob);
 }

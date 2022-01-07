@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {size_t rd_idx; size_t wr_idx; TYPE_2__* events; } ;
-typedef  TYPE_1__ winmm_midi_queue_t ;
-struct TYPE_6__ {unsigned int data_size; int /*<<< orphan*/  delta_time; int /*<<< orphan*/ * data; } ;
-typedef  TYPE_2__ midi_event_t ;
+typedef TYPE_1__ winmm_midi_queue_t ;
+struct TYPE_6__ {unsigned int data_size; int delta_time; int * data; } ;
+typedef TYPE_2__ midi_event_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RARCH_ERR (char*) ; 
- int WINMM_MIDI_BUF_LEN ; 
+
+ int RARCH_ERR (char*) ;
+ int WINMM_MIDI_BUF_LEN ;
 
 __attribute__((used)) static bool winmm_midi_queue_read(winmm_midi_queue_t *q, midi_event_t *ev)
 {
    unsigned i;
-   midi_event_t *src_ev = NULL;
+   midi_event_t *src_ev = ((void*)0);
 
    if (q->rd_idx == q->wr_idx)
-      return false;
+      return 0;
 
    if (ev->data_size < q->events[q->rd_idx].data_size)
    {
-#ifdef DEBUG
-      RARCH_ERR("[MIDI]: Input queue read failed (event data too small).\n");
-#endif
-      return false;
+
+
+
+      return 0;
    }
 
    src_ev = &q->events[q->rd_idx];
@@ -50,5 +50,5 @@ __attribute__((used)) static bool winmm_midi_queue_read(winmm_midi_queue_t *q, m
    else
       ++q->rd_idx;
 
-   return true;
+   return 1;
 }

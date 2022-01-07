@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  jv ;
 
-/* Variables and functions */
- scalar_t__ JV_KIND_INVALID ; 
- scalar_t__ JV_KIND_NULL ; 
- scalar_t__ JV_KIND_STRING ; 
- int /*<<< orphan*/  JV_PRINT_INVALID ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  jv_copy (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jv_dump_string (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jv_free (int /*<<< orphan*/ ) ; 
- scalar_t__ jv_get_kind (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jv_invalid_get_msg (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jv_invalid_has_msg (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jv_null () ; 
- int /*<<< orphan*/  jv_string_fmt (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jv_string_value (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stderr ; 
+
+
+
+typedef int jv ;
+
+
+ scalar_t__ JV_KIND_INVALID ;
+ scalar_t__ JV_KIND_NULL ;
+ scalar_t__ JV_KIND_STRING ;
+ int JV_PRINT_INVALID ;
+ int fprintf (int ,char*) ;
+ int jv_copy (int ) ;
+ int jv_dump_string (int ,int ) ;
+ int jv_free (int ) ;
+ scalar_t__ jv_get_kind (int ) ;
+ int jv_invalid_get_msg (int ) ;
+ int jv_invalid_has_msg (int ) ;
+ int jv_null () ;
+ int jv_string_fmt (char*,int ) ;
+ int jv_string_value (int ) ;
+ int stderr ;
 
 jv jq_format_error(jv msg) {
   if (jv_get_kind(msg) == JV_KIND_NULL ||
@@ -38,15 +38,15 @@ jv jq_format_error(jv msg) {
   }
 
   if (jv_get_kind(msg) == JV_KIND_STRING)
-    return msg;                         // expected to already be formatted
+    return msg;
 
   if (jv_get_kind(msg) == JV_KIND_INVALID)
     msg = jv_invalid_get_msg(msg);
 
   if (jv_get_kind(msg) == JV_KIND_NULL)
-    return jq_format_error(msg);        // ENOMEM
+    return jq_format_error(msg);
 
-  // Invalid with msg; prefix with "jq: error: "
+
 
   if (jv_get_kind(msg) != JV_KIND_INVALID) {
     if (jv_get_kind(msg) == JV_KIND_STRING)
@@ -55,9 +55,9 @@ jv jq_format_error(jv msg) {
     msg = jv_dump_string(msg, JV_PRINT_INVALID);
     if (jv_get_kind(msg) == JV_KIND_STRING)
       return jv_string_fmt("jq: error: %s", jv_string_value(msg));
-    return jq_format_error(jv_null());  // ENOMEM
+    return jq_format_error(jv_null());
   }
 
-  // An invalid inside an invalid!
+
   return jq_format_error(jv_invalid_get_msg(msg));
 }

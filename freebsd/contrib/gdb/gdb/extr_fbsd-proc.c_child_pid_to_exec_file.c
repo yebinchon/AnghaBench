@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  MAXPATHLEN ; 
- int /*<<< orphan*/  make_cleanup (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ readlink (char*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xasprintf (char**,char*,int) ; 
- char* xcalloc (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  xfree ; 
+ int MAXPATHLEN ;
+ int make_cleanup (int ,char*) ;
+ scalar_t__ readlink (char*,char*,int ) ;
+ int xasprintf (char**,char*,int) ;
+ char* xcalloc (int ,int) ;
+ int xfree ;
 
 char *
 child_pid_to_exec_file (int pid)
@@ -33,5 +25,5 @@ child_pid_to_exec_file (int pid)
   if (readlink (path, buf, MAXPATHLEN) > 0)
     return buf;
 
-  return NULL;
+  return ((void*)0);
 }

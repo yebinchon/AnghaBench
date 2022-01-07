@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ra_format {int ctype; int num_components; scalar_t__ storable; scalar_t__ renderable; scalar_t__ linear_filter; scalar_t__ luminance_alpha; int /*<<< orphan*/  pixel_size; int /*<<< orphan*/  name; int /*<<< orphan*/ * component_depth; int /*<<< orphan*/ * component_size; } ;
-struct ra {int num_formats; struct ra_format** formats; int /*<<< orphan*/  log; } ;
-typedef  int /*<<< orphan*/  cl ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MP_MSG (struct ra*,int,char*,...) ; 
-#define  RA_CTYPE_FLOAT 130 
-#define  RA_CTYPE_UINT 129 
-#define  RA_CTYPE_UNORM 128 
- int /*<<< orphan*/  mp_msg_test (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  mp_snprintf_cat (char*,int,char*,char*,...) ; 
+
+
+
+struct ra_format {int ctype; int num_components; scalar_t__ storable; scalar_t__ renderable; scalar_t__ linear_filter; scalar_t__ luminance_alpha; int pixel_size; int name; int * component_depth; int * component_size; } ;
+struct ra {int num_formats; struct ra_format** formats; int log; } ;
+typedef int cl ;
+
+
+ int MP_MSG (struct ra*,int,char*,...) ;
+
+
+
+ int mp_msg_test (int ,int) ;
+ int mp_snprintf_cat (char*,int,char*,char*,...) ;
 
 void ra_dump_tex_formats(struct ra *ra, int msgl)
 {
@@ -32,9 +32,9 @@ void ra_dump_tex_formats(struct ra *ra, int msgl)
         const struct ra_format *fmt = ra->formats[n];
         const char *ctype = "unknown";
         switch (fmt->ctype) {
-        case RA_CTYPE_UNORM:    ctype = "unorm";    break;
-        case RA_CTYPE_UINT:     ctype = "uint ";    break;
-        case RA_CTYPE_FLOAT:    ctype = "float";    break;
+        case 128: ctype = "unorm"; break;
+        case 129: ctype = "uint "; break;
+        case 130: ctype = "float"; break;
         }
         char cl[40] = "";
         for (int i = 0; i < fmt->num_components; i++) {

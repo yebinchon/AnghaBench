@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct pwm_device {int dummy; } ;
-struct pwm_chip {int /*<<< orphan*/  dev; } ;
+struct pwm_chip {int dev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  pca9685_pwm_disable (struct pwm_chip*,struct pwm_device*) ; 
- int /*<<< orphan*/  pm_runtime_put (int /*<<< orphan*/ ) ; 
+
+ int pca9685_pwm_disable (struct pwm_chip*,struct pwm_device*) ;
+ int pm_runtime_put (int ) ;
 
 __attribute__((used)) static void pca9685_pwm_free(struct pwm_chip *chip, struct pwm_device *pwm)
 {
-	pca9685_pwm_disable(chip, pwm);
-	pm_runtime_put(chip->dev);
+ pca9685_pwm_disable(chip, pwm);
+ pm_runtime_put(chip->dev);
 }

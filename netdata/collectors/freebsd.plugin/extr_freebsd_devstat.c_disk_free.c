@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct disk {struct disk* name; int /*<<< orphan*/  st_svctm; int /*<<< orphan*/  st_avagsz; int /*<<< orphan*/  st_await; int /*<<< orphan*/  st_iotime; int /*<<< orphan*/  st_util; int /*<<< orphan*/  st_qops; int /*<<< orphan*/  st_ops; int /*<<< orphan*/  st_io; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  disks_added ; 
- int /*<<< orphan*/  freez (struct disk*) ; 
- scalar_t__ likely (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rrdset_is_obsolete (int /*<<< orphan*/ ) ; 
+
+
+
+struct disk {struct disk* name; int st_svctm; int st_avagsz; int st_await; int st_iotime; int st_util; int st_qops; int st_ops; int st_io; } ;
+
+
+ int disks_added ;
+ int freez (struct disk*) ;
+ scalar_t__ likely (int ) ;
+ int rrdset_is_obsolete (int ) ;
 
 __attribute__((used)) static void disk_free(struct disk *dm) {
     if (likely(dm->st_io))

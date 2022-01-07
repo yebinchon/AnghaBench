@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct RString {int dummy; } ;
-typedef  int /*<<< orphan*/  mrb_value ;
-typedef  int /*<<< orphan*/  mrb_state ;
-typedef  int mrb_int ;
+typedef int mrb_value ;
+typedef int mrb_state ;
+typedef int mrb_int ;
 
-/* Variables and functions */
- scalar_t__ ISALNUM (unsigned char) ; 
- scalar_t__ RSTRING_LEN (int /*<<< orphan*/ ) ; 
- scalar_t__ RSTRING_PTR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (scalar_t__,scalar_t__,int) ; 
- int /*<<< orphan*/  mrb_str_cat (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  mrb_str_cat_cstr (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  mrb_str_cat_lit (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  mrb_str_modify (int /*<<< orphan*/ *,struct RString*) ; 
- int /*<<< orphan*/  mrb_str_new (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  mrb_str_new_lit (int /*<<< orphan*/ *,char*) ; 
- struct RString* mrb_str_ptr (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_str_resize (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
+
+ scalar_t__ ISALNUM (unsigned char) ;
+ scalar_t__ RSTRING_LEN (int ) ;
+ scalar_t__ RSTRING_PTR (int ) ;
+ int memcpy (scalar_t__,scalar_t__,int) ;
+ int mrb_str_cat (int *,int ,char*,int) ;
+ int mrb_str_cat_cstr (int *,int ,char const*) ;
+ int mrb_str_cat_lit (int *,int ,char*) ;
+ int mrb_str_modify (int *,struct RString*) ;
+ int mrb_str_new (int *,char*,int) ;
+ int mrb_str_new_lit (int *,char*) ;
+ struct RString* mrb_str_ptr (int ) ;
+ int mrb_str_resize (int *,int ,int) ;
 
 __attribute__((used)) static mrb_value
 mrb_str_succ_bang(mrb_state *mrb, mrb_value self)
@@ -47,7 +47,7 @@ mrb_str_succ_bang(mrb_state *mrb, mrb_value self)
   t = e = p + l;
   *(e--) = 0;
 
-  // find trailing ascii/number
+
   while (e >= b) {
     if (ISALNUM(*e))
       break;
@@ -58,7 +58,7 @@ mrb_str_succ_bang(mrb_state *mrb, mrb_value self)
     result = mrb_str_new_lit(mrb, "");
   }
   else {
-    // find leading letter of the ascii/number
+
     b = e;
     while (b > p) {
       if (!ISALNUM(*b) || (ISALNUM(*b) && *b != '9' && *b != 'z' && *b != 'Z'))
@@ -80,7 +80,7 @@ mrb_str_succ_bang(mrb_state *mrb, mrb_value self)
         (*e)++;
       break;
     }
-    prepend = NULL;
+    prepend = ((void*)0);
     if (*e == '9') {
       if (e == b) prepend = "1";
       *e = '0';

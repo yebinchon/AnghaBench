@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DNSCRYPT_SHARED_SECRET_KEY_LENGTH ; 
- int crypto_box_PUBLICKEYBYTES ; 
- int crypto_box_SECRETKEYBYTES ; 
- int /*<<< orphan*/  hashlittle (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+
+
+ int DNSCRYPT_SHARED_SECRET_KEY_LENGTH ;
+ int crypto_box_PUBLICKEYBYTES ;
+ int crypto_box_SECRETKEYBYTES ;
+ int hashlittle (int *,int ,int ) ;
+ int memcpy (int *,int *,int) ;
 
 __attribute__((used)) static uint32_t
 dnsc_shared_secrets_cache_key(uint8_t* key,

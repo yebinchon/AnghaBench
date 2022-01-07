@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  int16_t ;
-struct TYPE_4__ {int /*<<< orphan*/ * cur_dec; scalar_t__ data_end; } ;
-typedef  int /*<<< orphan*/  GetBitContext ;
-typedef  TYPE_1__ Bundle ;
-typedef  int /*<<< orphan*/  AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  CHECK_READ_VAL (int /*<<< orphan*/ *,TYPE_1__*,int) ; 
- int FFMIN (int,int) ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int) ; 
- int get_bits (int /*<<< orphan*/ *,int) ; 
- int get_bits1 (int /*<<< orphan*/ *) ; 
- int get_bits_left (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int int16_t ;
+struct TYPE_4__ {int * cur_dec; scalar_t__ data_end; } ;
+typedef int GetBitContext ;
+typedef TYPE_1__ Bundle ;
+typedef int AVCodecContext ;
+
+
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ int CHECK_READ_VAL (int *,TYPE_1__*,int) ;
+ int FFMIN (int,int) ;
+ int av_log (int *,int ,char*,int) ;
+ int get_bits (int *,int) ;
+ int get_bits1 (int *) ;
+ int get_bits_left (int *) ;
 
 __attribute__((used)) static int read_dcs(AVCodecContext *avctx, GetBitContext *gb, Bundle *b,
                     int start_bits, int has_sign)
 {
     int i, j, len, len2, bsize, sign, v, v2;
-    int16_t *dst     = (int16_t*)b->cur_dec;
+    int16_t *dst = (int16_t*)b->cur_dec;
     int16_t *dst_end = (int16_t*)b->data_end;
 
     CHECK_READ_VAL(gb, b, len);

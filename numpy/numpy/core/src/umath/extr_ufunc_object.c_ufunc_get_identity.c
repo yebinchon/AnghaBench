@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  npy_bool ;
-typedef  int /*<<< orphan*/  PyUFuncObject ;
-typedef  int /*<<< orphan*/  PyObject ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * _get_identity (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int npy_bool ;
+typedef int PyUFuncObject ;
+typedef int PyObject ;
+
+
+ int * _get_identity (int *,int *) ;
 
 __attribute__((used)) static PyObject *
 ufunc_get_identity(PyUFuncObject *ufunc)

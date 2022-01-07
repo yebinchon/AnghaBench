@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64_t ;
-struct ra_d3d11 {int /*<<< orphan*/  ctx; } ;
+
+
+
+
+typedef int uint64_t ;
+struct ra_d3d11 {int ctx; } ;
 struct ra {struct ra_d3d11* priv; } ;
-struct d3d_timer {int /*<<< orphan*/  result; scalar_t__ disjoint; scalar_t__ ts_end; } ;
-typedef  struct d3d_timer ra_timer ;
-typedef  int /*<<< orphan*/  ID3D11Asynchronous ;
+struct d3d_timer {int result; scalar_t__ disjoint; scalar_t__ ts_end; } ;
+typedef struct d3d_timer ra_timer ;
+typedef int ID3D11Asynchronous ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ID3D11DeviceContext_End (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int ID3D11DeviceContext_End (int ,int *) ;
 
 __attribute__((used)) static uint64_t timer_stop(struct ra *ra, ra_timer *ratimer)
 {

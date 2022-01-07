@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ collected_number ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef scalar_t__ collected_number ;
 struct TYPE_5__ {scalar_t__ unique; } ;
-struct TYPE_6__ {int reset; int options; scalar_t__ last; TYPE_1__ set; scalar_t__ count; int /*<<< orphan*/  name; } ;
-typedef  TYPE_2__ STATSD_METRIC ;
+struct TYPE_6__ {int reset; int options; scalar_t__ last; TYPE_1__ set; scalar_t__ count; int name; } ;
+typedef TYPE_2__ STATSD_METRIC ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D_STATSD ; 
- int STATSD_METRIC_OPTION_PRIVATE_CHART_ENABLED ; 
- int STATSD_METRIC_OPTION_SHOW_GAPS_WHEN_NOT_COLLECTED ; 
- int /*<<< orphan*/  debug (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  statsd_private_chart_set (TYPE_2__*) ; 
- scalar_t__ unlikely (int) ; 
+
+ int D_STATSD ;
+ int STATSD_METRIC_OPTION_PRIVATE_CHART_ENABLED ;
+ int STATSD_METRIC_OPTION_SHOW_GAPS_WHEN_NOT_COLLECTED ;
+ int debug (int ,char*,int ) ;
+ int statsd_private_chart_set (TYPE_2__*) ;
+ scalar_t__ unlikely (int) ;
 
 __attribute__((used)) static inline void statsd_flush_set(STATSD_METRIC *m) {
     debug(D_STATSD, "flushing set metric '%s'", m->name);

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int name_length; int arity; int /*<<< orphan*/  name; } ;
-typedef  TYPE_1__ icpl_combinator_t ;
 
-/* Variables and functions */
- TYPE_1__** COMBINATORS ; 
- unsigned char COMBINATORS_PRIME ; 
- int /*<<< orphan*/  assert (int) ; 
- double combinators ; 
- int /*<<< orphan*/  memcmp (char const*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,char const*,int) ; 
- int /*<<< orphan*/  zmalloc (int) ; 
- TYPE_1__* zmalloc0 (int) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int name_length; int arity; int name; } ;
+typedef TYPE_1__ icpl_combinator_t ;
+
+
+ TYPE_1__** COMBINATORS ;
+ unsigned char COMBINATORS_PRIME ;
+ int assert (int) ;
+ double combinators ;
+ int memcmp (char const*,int ,int) ;
+ int memcpy (int ,char const*,int) ;
+ int zmalloc (int) ;
+ TYPE_1__* zmalloc0 (int) ;
 
 icpl_combinator_t *get_combinator_f (const char *name, int length, int force) {
   unsigned char h1 = 0, h2 = 0;
@@ -43,7 +43,7 @@ icpl_combinator_t *get_combinator_f (const char *name, int length, int force) {
     }
   }
   if (!force) {
-    return NULL;
+    return ((void*)0);
   }
   combinators++;
   assert (combinators < (0.8 * COMBINATORS_PRIME));

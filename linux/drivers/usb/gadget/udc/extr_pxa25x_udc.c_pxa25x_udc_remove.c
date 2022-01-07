@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct pxa25x_udc {int /*<<< orphan*/ * transceiver; scalar_t__ pullup; int /*<<< orphan*/  gadget; scalar_t__ driver; } ;
+
+
+
+
+struct pxa25x_udc {int * transceiver; scalar_t__ pullup; int gadget; scalar_t__ driver; } ;
 struct platform_device {int dummy; } ;
 
-/* Variables and functions */
- int EBUSY ; 
- int /*<<< orphan*/  IS_ERR_OR_NULL (int /*<<< orphan*/ *) ; 
- struct pxa25x_udc* platform_get_drvdata (struct platform_device*) ; 
- int /*<<< orphan*/  pullup (struct pxa25x_udc*) ; 
- int /*<<< orphan*/  remove_debug_files (struct pxa25x_udc*) ; 
- int /*<<< orphan*/ * the_controller ; 
- int /*<<< orphan*/  usb_del_gadget_udc (int /*<<< orphan*/ *) ; 
+
+ int EBUSY ;
+ int IS_ERR_OR_NULL (int *) ;
+ struct pxa25x_udc* platform_get_drvdata (struct platform_device*) ;
+ int pullup (struct pxa25x_udc*) ;
+ int remove_debug_files (struct pxa25x_udc*) ;
+ int * the_controller ;
+ int usb_del_gadget_udc (int *) ;
 
 __attribute__((used)) static int pxa25x_udc_remove(struct platform_device *pdev)
 {
-	struct pxa25x_udc *dev = platform_get_drvdata(pdev);
+ struct pxa25x_udc *dev = platform_get_drvdata(pdev);
 
-	if (dev->driver)
-		return -EBUSY;
+ if (dev->driver)
+  return -EBUSY;
 
-	usb_del_gadget_udc(&dev->gadget);
-	dev->pullup = 0;
-	pullup(dev);
+ usb_del_gadget_udc(&dev->gadget);
+ dev->pullup = 0;
+ pullup(dev);
 
-	remove_debug_files(dev);
+ remove_debug_files(dev);
 
-	if (!IS_ERR_OR_NULL(dev->transceiver))
-		dev->transceiver = NULL;
+ if (!IS_ERR_OR_NULL(dev->transceiver))
+  dev->transceiver = ((void*)0);
 
-	the_controller = NULL;
-	return 0;
+ the_controller = ((void*)0);
+ return 0;
 }

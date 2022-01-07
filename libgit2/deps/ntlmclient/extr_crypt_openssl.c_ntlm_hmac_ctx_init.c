@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ntlm_hmac_ctx ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * HMAC_CTX_new () ; 
+
+
+
+typedef int ntlm_hmac_ctx ;
+
+
+ int * HMAC_CTX_new () ;
 
 ntlm_hmac_ctx *ntlm_hmac_ctx_init(void)
 {
-	return HMAC_CTX_new();
+ return HMAC_CTX_new();
 }

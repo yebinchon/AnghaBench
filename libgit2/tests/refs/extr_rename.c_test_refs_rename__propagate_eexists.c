@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  git_reference ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GIT_EEXISTS ; 
- int /*<<< orphan*/  cl_assert_equal_i (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cl_git_pass (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  g_repo ; 
- int /*<<< orphan*/  git_reference_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  git_reference_lookup (int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  git_reference_rename (int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  packed_head_name ; 
- int /*<<< orphan*/  packed_test_head_name ; 
+
+
+
+typedef int git_reference ;
+
+
+ int GIT_EEXISTS ;
+ int cl_assert_equal_i (int ,int ) ;
+ int cl_git_pass (int ) ;
+ int g_repo ;
+ int git_reference_free (int *) ;
+ int git_reference_lookup (int **,int ,int ) ;
+ int git_reference_rename (int **,int *,int ,int ,int *) ;
+ int packed_head_name ;
+ int packed_test_head_name ;
 
 void test_refs_rename__propagate_eexists(void)
 {
-	git_reference *ref, *new_ref;
+ git_reference *ref, *new_ref;
 
-	cl_git_pass(git_reference_lookup(&ref, g_repo, packed_head_name));
+ cl_git_pass(git_reference_lookup(&ref, g_repo, packed_head_name));
 
-	cl_assert_equal_i(GIT_EEXISTS, git_reference_rename(&new_ref, ref, packed_test_head_name, 0, NULL));
+ cl_assert_equal_i(GIT_EEXISTS, git_reference_rename(&new_ref, ref, packed_test_head_name, 0, ((void*)0)));
 
-	git_reference_free(ref);
+ git_reference_free(ref);
 }

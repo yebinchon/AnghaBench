@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {scalar_t__ static_chain_decl; } ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef int FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASM_GENERATE_INTERNAL_LABEL (char*,char*,int) ; 
- scalar_t__ NO_PROFILE_COUNTERS ; 
- int STATIC_CHAIN_REGNUM ; 
- scalar_t__ TARGET_AUTO_PIC ; 
- scalar_t__ TARGET_GNU_AS ; 
- int /*<<< orphan*/  TARGET_NO_PIC ; 
- int /*<<< orphan*/  assemble_name (int /*<<< orphan*/ *,char*) ; 
- TYPE_1__* cfun ; 
- int /*<<< orphan*/  fputs (char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  gcc_assert (int) ; 
+
+ int ASM_GENERATE_INTERNAL_LABEL (char*,char*,int) ;
+ scalar_t__ NO_PROFILE_COUNTERS ;
+ int STATIC_CHAIN_REGNUM ;
+ scalar_t__ TARGET_AUTO_PIC ;
+ scalar_t__ TARGET_GNU_AS ;
+ int TARGET_NO_PIC ;
+ int assemble_name (int *,char*) ;
+ TYPE_1__* cfun ;
+ int fputs (char*,int *) ;
+ int gcc_assert (int) ;
 
 void
 ia64_output_function_profiler (FILE *file, int labelno)
 {
   bool indirect_call;
 
-  /* If the function needs a static chain and the static chain
-     register is r15, we use an indirect call so as to bypass
-     the PLT stub in case the executable is dynamically linked,
-     because the stub clobbers r15 as per 5.3.6 of the psABI.
-     We don't need to do that in non canonical PIC mode.  */
+
+
+
+
+
 
   if (cfun->static_chain_decl && !TARGET_NO_PIC && !TARGET_AUTO_PIC)
     {
       gcc_assert (STATIC_CHAIN_REGNUM == 15);
-      indirect_call = true;
+      indirect_call = 1;
     }
   else
-    indirect_call = false;
+    indirect_call = 0;
 
   if (TARGET_GNU_AS)
     fputs ("\t.prologue 4, r40\n", file);
@@ -59,14 +59,14 @@ ia64_output_function_profiler (FILE *file, int labelno)
       ASM_GENERATE_INTERNAL_LABEL (buf, "LP", labelno);
 
       if (TARGET_AUTO_PIC)
-	fputs ("\tmovl out3 = @gprel(", file);
+ fputs ("\tmovl out3 = @gprel(", file);
       else
-	fputs ("\taddl out3 = @ltoff(", file);
+ fputs ("\taddl out3 = @ltoff(", file);
       assemble_name (file, buf);
       if (TARGET_AUTO_PIC)
-	fputs (")\n", file);
+ fputs (")\n", file);
       else
-	fputs ("), r1\n", file);
+ fputs ("), r1\n", file);
     }
 
   if (indirect_call)

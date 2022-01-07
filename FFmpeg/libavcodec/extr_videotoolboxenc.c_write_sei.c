@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int ssize_t ;
-struct TYPE_3__ {size_t size; int /*<<< orphan*/  data; } ;
-typedef  TYPE_1__ ExtraSEI ;
 
-/* Variables and functions */
- int AVERROR_BUFFER_TOO_SMALL ; 
- int copy_emulation_prev (int /*<<< orphan*/ ,size_t,int*,int,size_t) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int ssize_t ;
+struct TYPE_3__ {size_t size; int data; } ;
+typedef TYPE_1__ ExtraSEI ;
+
+
+ int AVERROR_BUFFER_TOO_SMALL ;
+ int copy_emulation_prev (int ,size_t,int*,int,size_t) ;
 
 __attribute__((used)) static int write_sei(const ExtraSEI *sei,
-                     int             sei_type,
-                     uint8_t        *dst,
-                     size_t          dst_size)
+                     int sei_type,
+                     uint8_t *dst,
+                     size_t dst_size)
 {
     uint8_t *sei_start = dst;
     size_t remaining_sei_size = sei->size;

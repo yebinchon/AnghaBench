@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  EVP_CIPHER ;
 
-/* Variables and functions */
- int /*<<< orphan*/  const* evp_get_cipherbyname_ex (int /*<<< orphan*/ *,char const*) ; 
+
+
+
+typedef int EVP_CIPHER ;
+
+
+ int const* evp_get_cipherbyname_ex (int *,char const*) ;
 
 const EVP_CIPHER *EVP_get_cipherbyname(const char *name)
 {
-    return evp_get_cipherbyname_ex(NULL, name);
+    return evp_get_cipherbyname_ex(((void*)0), name);
 }

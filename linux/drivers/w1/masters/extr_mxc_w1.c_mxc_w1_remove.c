@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct platform_device {int dummy; } ;
-struct mxc_w1_device {int /*<<< orphan*/  clk; int /*<<< orphan*/  bus_master; } ;
+struct mxc_w1_device {int clk; int bus_master; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  clk_disable_unprepare (int /*<<< orphan*/ ) ; 
- struct mxc_w1_device* platform_get_drvdata (struct platform_device*) ; 
- int /*<<< orphan*/  w1_remove_master_device (int /*<<< orphan*/ *) ; 
+
+ int clk_disable_unprepare (int ) ;
+ struct mxc_w1_device* platform_get_drvdata (struct platform_device*) ;
+ int w1_remove_master_device (int *) ;
 
 __attribute__((used)) static int mxc_w1_remove(struct platform_device *pdev)
 {
-	struct mxc_w1_device *mdev = platform_get_drvdata(pdev);
+ struct mxc_w1_device *mdev = platform_get_drvdata(pdev);
 
-	w1_remove_master_device(&mdev->bus_master);
+ w1_remove_master_device(&mdev->bus_master);
 
-	clk_disable_unprepare(mdev->clk);
+ clk_disable_unprepare(mdev->clk);
 
-	return 0;
+ return 0;
 }

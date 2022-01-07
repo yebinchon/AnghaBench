@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u32 ;
 struct TYPE_2__ {int context; } ;
 struct i915_request {TYPE_1__ fence; } ;
-struct hang {int /*<<< orphan*/ * seqno; } ;
+struct hang {int * seqno; } ;
 
-/* Variables and functions */
- int PAGE_SIZE ; 
- int /*<<< orphan*/  READ_ONCE (int /*<<< orphan*/ ) ; 
+
+ int PAGE_SIZE ;
+ int READ_ONCE (int ) ;
 
 __attribute__((used)) static u32 hws_seqno(const struct hang *h, const struct i915_request *rq)
 {
-	return READ_ONCE(h->seqno[rq->fence.context % (PAGE_SIZE/sizeof(u32))]);
+ return READ_ONCE(h->seqno[rq->fence.context % (PAGE_SIZE/sizeof(u32))]);
 }

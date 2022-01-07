@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sigset_t_ ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int sigset_t_ ;
 struct TYPE_4__ {TYPE_1__* sighand; } ;
-struct TYPE_3__ {int /*<<< orphan*/  lock; } ;
+struct TYPE_3__ {int lock; } ;
 
-/* Variables and functions */
- TYPE_2__* current ; 
- int /*<<< orphan*/  lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sigmask_set_temp_unlocked (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  unlock (int /*<<< orphan*/ *) ; 
+
+ TYPE_2__* current ;
+ int lock (int *) ;
+ int sigmask_set_temp_unlocked (int ) ;
+ int unlock (int *) ;
 
 void sigmask_set_temp(sigset_t_ mask) {
     lock(&current->sighand->lock);

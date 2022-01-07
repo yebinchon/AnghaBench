@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int* LPWSTR ;
-typedef  int INT ;
-typedef  void* BOOL ;
 
-/* Variables and functions */
- void* FALSE ; 
- void* ImageFile_ParseCmdline (int,int,int**) ; 
- void* PageHeap_ParseCmdline (int,int,int**) ; 
- void* TRUE ; 
- int UNICODE_NULL ; 
- void* UseImageFile ; 
- void* UsePageHeap ; 
- int /*<<< orphan*/  wprintf (char*,...) ; 
+
+
+
+typedef int* LPWSTR ;
+typedef int INT ;
+typedef void* BOOL ;
+
+
+ void* FALSE ;
+ void* ImageFile_ParseCmdline (int,int,int**) ;
+ void* PageHeap_ParseCmdline (int,int,int**) ;
+ void* TRUE ;
+ int UNICODE_NULL ;
+ void* UseImageFile ;
+ void* UsePageHeap ;
+ int wprintf (char*,...) ;
 
 __attribute__((used)) static BOOL ParseCmdline(int argc, LPWSTR argv[])
 {

@@ -1,65 +1,65 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_5__ ;
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_5__ ;
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_10__ {TYPE_3__* dev; } ;
-struct pgpath {TYPE_5__ path; int /*<<< orphan*/  fail_count; scalar_t__ is_active; TYPE_2__* pg; } ;
-struct multipath {int /*<<< orphan*/  lock; int /*<<< orphan*/  trigger_event; int /*<<< orphan*/  nr_valid_paths; int /*<<< orphan*/  ti; struct pgpath* current_pgpath; } ;
+struct pgpath {TYPE_5__ path; int fail_count; scalar_t__ is_active; TYPE_2__* pg; } ;
+struct multipath {int lock; int trigger_event; int nr_valid_paths; int ti; struct pgpath* current_pgpath; } ;
 struct TYPE_9__ {TYPE_1__* type; } ;
-struct TYPE_8__ {int /*<<< orphan*/  name; } ;
+struct TYPE_8__ {int name; } ;
 struct TYPE_7__ {TYPE_4__ ps; struct multipath* m; } ;
-struct TYPE_6__ {int /*<<< orphan*/  (* fail_path ) (TYPE_4__*,TYPE_5__*) ;} ;
+struct TYPE_6__ {int (* fail_path ) (TYPE_4__*,TYPE_5__*) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DMWARN (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DM_UEVENT_PATH_FAILED ; 
- int /*<<< orphan*/  dm_path_uevent (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  schedule_work (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  stub1 (TYPE_4__*,TYPE_5__*) ; 
+
+ int DMWARN (char*,int ) ;
+ int DM_UEVENT_PATH_FAILED ;
+ int dm_path_uevent (int ,int ,int ,int ) ;
+ int schedule_work (int *) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
+ int stub1 (TYPE_4__*,TYPE_5__*) ;
 
 __attribute__((used)) static int fail_path(struct pgpath *pgpath)
 {
-	unsigned long flags;
-	struct multipath *m = pgpath->pg->m;
+ unsigned long flags;
+ struct multipath *m = pgpath->pg->m;
 
-	spin_lock_irqsave(&m->lock, flags);
+ spin_lock_irqsave(&m->lock, flags);
 
-	if (!pgpath->is_active)
-		goto out;
+ if (!pgpath->is_active)
+  goto out;
 
-	DMWARN("Failing path %s.", pgpath->path.dev->name);
+ DMWARN("Failing path %s.", pgpath->path.dev->name);
 
-	pgpath->pg->ps.type->fail_path(&pgpath->pg->ps, &pgpath->path);
-	pgpath->is_active = 0;
-	pgpath->fail_count++;
+ pgpath->pg->ps.type->fail_path(&pgpath->pg->ps, &pgpath->path);
+ pgpath->is_active = 0;
+ pgpath->fail_count++;
 
-	m->nr_valid_paths--;
+ m->nr_valid_paths--;
 
-	if (pgpath == m->current_pgpath)
-		m->current_pgpath = NULL;
+ if (pgpath == m->current_pgpath)
+  m->current_pgpath = ((void*)0);
 
-	dm_path_uevent(DM_UEVENT_PATH_FAILED, m->ti,
-		      pgpath->path.dev->name, m->nr_valid_paths);
+ dm_path_uevent(DM_UEVENT_PATH_FAILED, m->ti,
+        pgpath->path.dev->name, m->nr_valid_paths);
 
-	schedule_work(&m->trigger_event);
+ schedule_work(&m->trigger_event);
 
 out:
-	spin_unlock_irqrestore(&m->lock, flags);
+ spin_unlock_irqrestore(&m->lock, flags);
 
-	return 0;
+ return 0;
 }

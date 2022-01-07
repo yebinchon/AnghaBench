@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct dds_pixel_format {int bpp; int rmask; int gmask; int /*<<< orphan*/  amask; int /*<<< orphan*/  bmask; } ;
-typedef  int /*<<< orphan*/  D3DFORMAT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D3DFMT_UNKNOWN ; 
- int /*<<< orphan*/  D3DFMT_V16U16 ; 
- int /*<<< orphan*/  D3DFMT_V8U8 ; 
- int /*<<< orphan*/  WARN (char*,int,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct dds_pixel_format {int bpp; int rmask; int gmask; int amask; int bmask; } ;
+typedef int D3DFORMAT ;
+
+
+ int D3DFMT_UNKNOWN ;
+ int D3DFMT_V16U16 ;
+ int D3DFMT_V8U8 ;
+ int WARN (char*,int,int,int,int ,int ) ;
 
 __attribute__((used)) static D3DFORMAT dds_bump_to_d3dformat(const struct dds_pixel_format *pixel_format)
 {

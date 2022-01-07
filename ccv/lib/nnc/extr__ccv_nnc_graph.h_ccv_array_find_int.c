@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int rnum; } ;
-typedef  TYPE_1__ ccv_array_t ;
+typedef TYPE_1__ ccv_array_t ;
 
-/* Variables and functions */
- scalar_t__ ccv_array_get (TYPE_1__*,int) ; 
+
+ scalar_t__ ccv_array_get (TYPE_1__*,int) ;
 
 __attribute__((used)) inline static int ccv_array_find_int(ccv_array_t* ints, const int idx)
 {
-	int i;
-	for (i = 0; i < ints->rnum; i++)
-		if (*(int*)ccv_array_get(ints, i) == idx)
-			return 1;
-	return 0;
+ int i;
+ for (i = 0; i < ints->rnum; i++)
+  if (*(int*)ccv_array_get(ints, i) == idx)
+   return 1;
+ return 0;
 }

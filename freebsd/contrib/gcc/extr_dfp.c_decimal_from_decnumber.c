@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  decimal128 ;
-typedef  int /*<<< orphan*/  decNumber ;
+
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int decimal128 ;
+typedef int decNumber ;
 struct TYPE_8__ {int status; scalar_t__ traps; } ;
-typedef  TYPE_1__ decContext ;
+typedef TYPE_1__ decContext ;
 struct TYPE_9__ {scalar_t__ cl; int sign; int decimal; scalar_t__ sig; } ;
-typedef  TYPE_2__ REAL_VALUE_TYPE ;
+typedef TYPE_2__ REAL_VALUE_TYPE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEC_INIT_DECIMAL128 ; 
- int DEC_Overflow ; 
- int /*<<< orphan*/  decContextDefault (TYPE_1__*,int /*<<< orphan*/ ) ; 
- scalar_t__ decNumberIsInfinite (int /*<<< orphan*/ *) ; 
- scalar_t__ decNumberIsNaN (int /*<<< orphan*/ *) ; 
- scalar_t__ decNumberIsNegative (int /*<<< orphan*/ *) ; 
- scalar_t__ decNumberIsZero (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  decimal128FromNumber (int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  memset (TYPE_2__*,int /*<<< orphan*/ ,int) ; 
- void* rvc_inf ; 
- scalar_t__ rvc_nan ; 
- scalar_t__ rvc_normal ; 
- scalar_t__ rvc_zero ; 
+
+ int DEC_INIT_DECIMAL128 ;
+ int DEC_Overflow ;
+ int decContextDefault (TYPE_1__*,int ) ;
+ scalar_t__ decNumberIsInfinite (int *) ;
+ scalar_t__ decNumberIsNaN (int *) ;
+ scalar_t__ decNumberIsNegative (int *) ;
+ scalar_t__ decNumberIsZero (int *) ;
+ int decimal128FromNumber (int *,int *,TYPE_1__*) ;
+ int memset (TYPE_2__*,int ,int) ;
+ void* rvc_inf ;
+ scalar_t__ rvc_nan ;
+ scalar_t__ rvc_normal ;
+ scalar_t__ rvc_zero ;
 
 __attribute__((used)) static void
 decimal_from_decnumber (REAL_VALUE_TYPE *r, decNumber *dn, decContext *context)

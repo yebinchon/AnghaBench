@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint64_t ;
-typedef  char intfstream_t ;
-struct TYPE_3__ {int /*<<< orphan*/  type; } ;
-typedef  TYPE_1__ intfstream_info_t ;
-typedef  scalar_t__ int64_t ;
 
-/* Variables and functions */
- int EINVAL ; 
- int /*<<< orphan*/  INTFSTREAM_FILE ; 
- scalar_t__ MAX_TOKEN_LEN ; 
- scalar_t__ PATH_MAX_LENGTH ; 
- int /*<<< orphan*/  RARCH_LOG (char*,char const*,...) ; 
- int /*<<< orphan*/  RETRO_VFS_FILE_ACCESS_HINT_NONE ; 
- int /*<<< orphan*/  RETRO_VFS_FILE_ACCESS_READ ; 
- int atoi (char*) ; 
- int errno ; 
- int /*<<< orphan*/  fill_pathname_basedir (char*,char const*,scalar_t__) ; 
- int /*<<< orphan*/  fill_pathname_join (char*,char*,char*,scalar_t__) ; 
- int /*<<< orphan*/  free (char*) ; 
- scalar_t__ get_token (char*,char*,scalar_t__) ; 
- int /*<<< orphan*/  intfstream_close (char*) ; 
- scalar_t__ intfstream_get_file_size (char*) ; 
- scalar_t__ intfstream_init (TYPE_1__*) ; 
- int /*<<< orphan*/  intfstream_open (char*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ malloc (scalar_t__) ; 
- int /*<<< orphan*/  strerror (int) ; 
- int /*<<< orphan*/  strlcpy (char*,char*,size_t) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint64_t ;
+typedef char intfstream_t ;
+struct TYPE_3__ {int type; } ;
+typedef TYPE_1__ intfstream_info_t ;
+typedef scalar_t__ int64_t ;
+
+
+ int EINVAL ;
+ int INTFSTREAM_FILE ;
+ scalar_t__ MAX_TOKEN_LEN ;
+ scalar_t__ PATH_MAX_LENGTH ;
+ int RARCH_LOG (char*,char const*,...) ;
+ int RETRO_VFS_FILE_ACCESS_HINT_NONE ;
+ int RETRO_VFS_FILE_ACCESS_READ ;
+ int atoi (char*) ;
+ int errno ;
+ int fill_pathname_basedir (char*,char const*,scalar_t__) ;
+ int fill_pathname_join (char*,char*,char*,scalar_t__) ;
+ int free (char*) ;
+ scalar_t__ get_token (char*,char*,scalar_t__) ;
+ int intfstream_close (char*) ;
+ scalar_t__ intfstream_get_file_size (char*) ;
+ scalar_t__ intfstream_init (TYPE_1__*) ;
+ int intfstream_open (char*,char const*,int ,int ) ;
+ scalar_t__ malloc (scalar_t__) ;
+ int strerror (int) ;
+ int strlcpy (char*,char*,size_t) ;
 
 int gdi_find_track(const char *gdi_path, bool first,
       char *track_path, uint64_t max_len)
 {
    int rv;
    intfstream_info_t info;
-   char *tmp_token   = (char*)malloc(MAX_TOKEN_LEN);
-   intfstream_t *fd  = NULL;
-   uint64_t largest  = 0;
-   int size          = -1;
-   int mode          = -1;
+   char *tmp_token = (char*)malloc(MAX_TOKEN_LEN);
+   intfstream_t *fd = ((void*)0);
+   uint64_t largest = 0;
+   int size = -1;
+   int mode = -1;
    int64_t file_size = -1;
 
-   info.type         = INTFSTREAM_FILE;
+   info.type = INTFSTREAM_FILE;
 
-   fd                = (intfstream_t*)intfstream_init(&info);
+   fd = (intfstream_t*)intfstream_init(&info);
 
    if (!fd)
       goto error;
@@ -72,20 +72,20 @@ int gdi_find_track(const char *gdi_path, bool first,
 
    rv = -EINVAL;
 
-   /* Skip track count */
+
    get_token(fd, tmp_token, MAX_TOKEN_LEN);
 
-   /* Track number */
+
    while (get_token(fd, tmp_token, MAX_TOKEN_LEN) > 0)
    {
-      /* Offset */
+
       if (get_token(fd, tmp_token, MAX_TOKEN_LEN) <= 0)
       {
          errno = EINVAL;
          goto error;
       }
 
-      /* Mode */
+
       if (get_token(fd, tmp_token, MAX_TOKEN_LEN) <= 0)
       {
          errno = EINVAL;
@@ -93,7 +93,7 @@ int gdi_find_track(const char *gdi_path, bool first,
       }
       mode = atoi(tmp_token);
 
-      /* Sector size */
+
       if (get_token(fd, tmp_token, MAX_TOKEN_LEN) <= 0)
       {
          errno = EINVAL;
@@ -101,20 +101,20 @@ int gdi_find_track(const char *gdi_path, bool first,
       }
       size = atoi(tmp_token);
 
-      /* File name */
+
       if (get_token(fd, tmp_token, MAX_TOKEN_LEN) <= 0)
       {
          errno = EINVAL;
          goto error;
       }
 
-      /* Check for data track */
+
       if (!(mode == 0 && size == 2352))
       {
-         char *last_file   = (char*)malloc(PATH_MAX_LENGTH + 1);
-         char *gdi_dir     = (char*)malloc(PATH_MAX_LENGTH);
+         char *last_file = (char*)malloc(PATH_MAX_LENGTH + 1);
+         char *gdi_dir = (char*)malloc(PATH_MAX_LENGTH);
 
-         gdi_dir[0]        = '\0';
+         gdi_dir[0] = '\0';
 
          fill_pathname_basedir(gdi_dir, gdi_path, PATH_MAX_LENGTH);
 
@@ -132,7 +132,7 @@ int gdi_find_track(const char *gdi_path, bool first,
          {
             strlcpy(track_path, last_file, (size_t)max_len);
 
-            rv      = 0;
+            rv = 0;
             largest = file_size;
 
             if (first)
@@ -146,7 +146,7 @@ int gdi_find_track(const char *gdi_path, bool first,
          free(last_file);
       }
 
-      /* Disc offset (not used?) */
+
       if (get_token(fd, tmp_token, MAX_TOKEN_LEN) <= 0)
       {
          errno = EINVAL;

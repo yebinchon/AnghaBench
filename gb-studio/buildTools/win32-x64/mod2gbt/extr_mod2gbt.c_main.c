@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u8 ;
-struct TYPE_5__ {int* name; int* pattern_table; int song_lenght; int /*<<< orphan*/ * pattern; TYPE_1__* sample; int /*<<< orphan*/  identifier; } ;
-typedef  TYPE_2__ mod_file_t ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int u8 ;
+struct TYPE_5__ {int* name; int* pattern_table; int song_lenght; int * pattern; TYPE_1__* sample; int identifier; } ;
+typedef TYPE_2__ mod_file_t ;
 struct TYPE_4__ {char* name; } ;
 
-/* Variables and functions */
- int DEFAULT_ROM_BANK ; 
- int /*<<< orphan*/  convert_pattern (int /*<<< orphan*/ *,int) ; 
- int current_output_bank ; 
- char* label_name ; 
- TYPE_2__* load_file (char*) ; 
- int /*<<< orphan*/  out_close () ; 
- int /*<<< orphan*/  out_open () ; 
- int /*<<< orphan*/  out_write_dec (int) ; 
- int /*<<< orphan*/  out_write_str (char*,char*) ; 
- int output_asm ; 
- int /*<<< orphan*/  print_usage () ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int sscanf (char*,char*,int*) ; 
- scalar_t__ strcmp (char*,char*) ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
- scalar_t__ strncmp (int /*<<< orphan*/ ,char*,int) ; 
+
+ int DEFAULT_ROM_BANK ;
+ int convert_pattern (int *,int) ;
+ int current_output_bank ;
+ char* label_name ;
+ TYPE_2__* load_file (char*) ;
+ int out_close () ;
+ int out_open () ;
+ int out_write_dec (int) ;
+ int out_write_str (char*,char*) ;
+ int output_asm ;
+ int print_usage () ;
+ int printf (char*,...) ;
+ int sscanf (char*,char*,int*) ;
+ scalar_t__ strcmp (char*,char*) ;
+ int strcpy (char*,char*) ;
+ scalar_t__ strncmp (int ,char*,int) ;
 
 int main(int argc, char * argv[])
 {
@@ -45,7 +45,7 @@ int main(int argc, char * argv[])
     printf("     | Copyright (C) 2009-2014 Antonio Nino Diaz |\n");
     printf("     |                      All rights reserved. |\n");
     printf("     |                                           |\n");
-	printf("     |                   antonio_nd@outlook.com  |\n");
+ printf("     |                   antonio_nd@outlook.com  |\n");
     printf("     |                                           |\n");
     printf("     +-------------------------------------------+\n");
 
@@ -91,7 +91,7 @@ int main(int argc, char * argv[])
 
     int i;
     mod_file_t * modfile = load_file(argv[1]);
-    if(modfile == NULL) return -2;
+    if(modfile == ((void*)0)) return -2;
 
     printf("\n%s loaded!\n",argv[1]);
     if(strncmp(modfile->identifier,"M.K.",4) == 0)

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  zval ;
-struct TYPE_3__ {int count; int /*<<< orphan*/ * redis; int /*<<< orphan*/ * hosts; } ;
-typedef  TYPE_1__ RedisArray ;
 
-/* Variables and functions */
- int ZSTR_LEN (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ZSTR_VAL (int /*<<< orphan*/ ) ; 
- scalar_t__ strcmp (int /*<<< orphan*/ ,char const*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int zval ;
+struct TYPE_3__ {int count; int * redis; int * hosts; } ;
+typedef TYPE_1__ RedisArray ;
+
+
+ int ZSTR_LEN (int ) ;
+ int ZSTR_VAL (int ) ;
+ scalar_t__ strcmp (int ,char const*) ;
 
 zval *
 ra_find_node_by_name(RedisArray *ra, const char *host, int host_len) {
@@ -29,5 +29,5 @@ ra_find_node_by_name(RedisArray *ra, const char *host, int host_len) {
             return &ra->redis[i];
         }
     }
-    return NULL;
+    return ((void*)0);
 }

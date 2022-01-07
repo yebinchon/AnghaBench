@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint16_t ;
-typedef  scalar_t__ int64_t ;
-typedef  int /*<<< orphan*/  URLContext ;
-struct TYPE_6__ {scalar_t__ last_feedback_time; scalar_t__ ssrc; int /*<<< orphan*/  dynamic_protocol_context; TYPE_1__* handler; } ;
-struct TYPE_5__ {int /*<<< orphan*/  (* need_keyframe ) (int /*<<< orphan*/ ) ;} ;
-typedef  TYPE_2__ RTPDemuxContext ;
-typedef  int /*<<< orphan*/  AVIOContext ;
 
-/* Variables and functions */
- scalar_t__ MIN_FEEDBACK_INTERVAL ; 
- int RTCP_PSFB ; 
- int RTCP_RTPFB ; 
- int RTP_VERSION ; 
- int /*<<< orphan*/  av_free (int /*<<< orphan*/ *) ; 
- scalar_t__ av_gettime_relative () ; 
- int avio_close_dyn_buf (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  avio_flush (int /*<<< orphan*/ *) ; 
- scalar_t__ avio_open_dyn_buf (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  avio_w8 (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  avio_wb16 (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  avio_wb32 (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  ffurl_write (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int find_missing_packets (TYPE_2__*,int*,int*) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint16_t ;
+typedef scalar_t__ int64_t ;
+typedef int URLContext ;
+struct TYPE_6__ {scalar_t__ last_feedback_time; scalar_t__ ssrc; int dynamic_protocol_context; TYPE_1__* handler; } ;
+struct TYPE_5__ {int (* need_keyframe ) (int ) ;} ;
+typedef TYPE_2__ RTPDemuxContext ;
+typedef int AVIOContext ;
+
+
+ scalar_t__ MIN_FEEDBACK_INTERVAL ;
+ int RTCP_PSFB ;
+ int RTCP_RTPFB ;
+ int RTP_VERSION ;
+ int av_free (int *) ;
+ scalar_t__ av_gettime_relative () ;
+ int avio_close_dyn_buf (int *,int **) ;
+ int avio_flush (int *) ;
+ scalar_t__ avio_open_dyn_buf (int **) ;
+ int avio_w8 (int *,int) ;
+ int avio_wb16 (int *,int) ;
+ int avio_wb32 (int *,scalar_t__) ;
+ int ffurl_write (int *,int *,int) ;
+ int find_missing_packets (TYPE_2__*,int*,int*) ;
+ int stub1 (int ) ;
 
 int ff_rtp_send_rtcp_feedback(RTPDemuxContext *s, URLContext *fd,
                               AVIOContext *avio)
@@ -57,8 +57,8 @@ int ff_rtp_send_rtcp_feedback(RTPDemuxContext *s, URLContext *fd,
     if (!need_keyframe && !missing_packets)
         return 0;
 
-    /* Send new feedback if enough time has elapsed since the last
-     * feedback packet. */
+
+
 
     now = av_gettime_relative();
     if (s->last_feedback_time &&
@@ -72,20 +72,20 @@ int ff_rtp_send_rtcp_feedback(RTPDemuxContext *s, URLContext *fd,
         return -1;
 
     if (need_keyframe) {
-        avio_w8(pb, (RTP_VERSION << 6) | 1); /* PLI */
+        avio_w8(pb, (RTP_VERSION << 6) | 1);
         avio_w8(pb, RTCP_PSFB);
-        avio_wb16(pb, 2); /* length in words - 1 */
-        // our own SSRC: we use the server's SSRC + 1 to avoid conflicts
+        avio_wb16(pb, 2);
+
         avio_wb32(pb, s->ssrc + 1);
-        avio_wb32(pb, s->ssrc); // server SSRC
+        avio_wb32(pb, s->ssrc);
     }
 
     if (missing_packets) {
-        avio_w8(pb, (RTP_VERSION << 6) | 1); /* NACK */
+        avio_w8(pb, (RTP_VERSION << 6) | 1);
         avio_w8(pb, RTCP_RTPFB);
-        avio_wb16(pb, 3); /* length in words - 1 */
+        avio_wb16(pb, 3);
         avio_wb32(pb, s->ssrc + 1);
-        avio_wb32(pb, s->ssrc); // server SSRC
+        avio_wb32(pb, s->ssrc);
 
         avio_wb16(pb, first_missing);
         avio_wb16(pb, missing_mask);

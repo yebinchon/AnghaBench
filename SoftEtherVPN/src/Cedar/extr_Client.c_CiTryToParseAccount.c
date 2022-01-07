@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  RPC_CLIENT_CREATE_ACCOUNT ;
-typedef  int /*<<< orphan*/  BUF ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * CiCfgToAccount (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CiFreeClientCreateAccount (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Free (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int RPC_CLIENT_CREATE_ACCOUNT ;
+typedef int BUF ;
+
+
+ int * CiCfgToAccount (int *) ;
+ int CiFreeClientCreateAccount (int *) ;
+ int Free (int *) ;
 
 bool CiTryToParseAccount(BUF *b)
 {
-	RPC_CLIENT_CREATE_ACCOUNT *a;
-	// Validate arguments
-	if (b == NULL)
-	{
-		return false;
-	}
+ RPC_CLIENT_CREATE_ACCOUNT *a;
 
-	a = CiCfgToAccount(b);
-	if (a != NULL)
-	{
-		CiFreeClientCreateAccount(a);
-		Free(a);
+ if (b == ((void*)0))
+ {
+  return 0;
+ }
 
-		return true;
-	}
-	else
-	{
-		return false;
-	}
+ a = CiCfgToAccount(b);
+ if (a != ((void*)0))
+ {
+  CiFreeClientCreateAccount(a);
+  Free(a);
+
+  return 1;
+ }
+ else
+ {
+  return 0;
+ }
 }

@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_5__ ;
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ u8 ;
-typedef  int /*<<< orphan*/  u64 ;
-typedef  int /*<<< orphan*/  pbtrfs_file_info ;
-struct TYPE_8__ {int /*<<< orphan*/  size; } ;
-struct TYPE_6__ {scalar_t__ position; int /*<<< orphan*/  inr; TYPE_4__ inode; } ;
-typedef  TYPE_1__ btrfs_file_info ;
-typedef  int /*<<< orphan*/  ULONG ;
-struct TYPE_7__ {int /*<<< orphan*/  root_dirid; } ;
+
+
+typedef struct TYPE_9__ TYPE_5__ ;
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef scalar_t__ u8 ;
+typedef int u64 ;
+typedef int pbtrfs_file_info ;
+struct TYPE_8__ {int size; } ;
+struct TYPE_6__ {scalar_t__ position; int inr; TYPE_4__ inode; } ;
+typedef TYPE_1__ btrfs_file_info ;
+typedef int ULONG ;
+struct TYPE_7__ {int root_dirid; } ;
 struct TYPE_9__ {TYPE_3__ FsRoot; } ;
-typedef  scalar_t__ OPENMODE ;
-typedef  int /*<<< orphan*/  CHAR ;
-typedef  int /*<<< orphan*/  ARC_STATUS ;
+typedef scalar_t__ OPENMODE ;
+typedef int CHAR ;
+typedef int ARC_STATUS ;
 
-/* Variables and functions */
- scalar_t__ BTRFS_FT_REG_FILE ; 
- TYPE_5__* BtrFsInfo ; 
- int /*<<< orphan*/  EACCES ; 
- int /*<<< orphan*/  EISDIR ; 
- int /*<<< orphan*/  ENOENT ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  ESUCCESS ; 
- int /*<<< orphan*/  FrLdrTempAlloc (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FsSetDeviceSpecific (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  INVALID_INODE ; 
- scalar_t__ OpenReadOnly ; 
- int /*<<< orphan*/  TAG_BTRFS_FILE ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  btrfs_lookup_path (TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,scalar_t__*,TYPE_4__*,int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,TYPE_1__*,int) ; 
+
+ scalar_t__ BTRFS_FT_REG_FILE ;
+ TYPE_5__* BtrFsInfo ;
+ int EACCES ;
+ int EISDIR ;
+ int ENOENT ;
+ int ENOMEM ;
+ int ESUCCESS ;
+ int FrLdrTempAlloc (int,int ) ;
+ int FsSetDeviceSpecific (int ,int ) ;
+ int INVALID_INODE ;
+ scalar_t__ OpenReadOnly ;
+ int TAG_BTRFS_FILE ;
+ int TRACE (char*,int ,...) ;
+ int btrfs_lookup_path (TYPE_3__*,int ,int *,scalar_t__*,TYPE_4__*,int) ;
+ int memcpy (int ,TYPE_1__*,int) ;
 
 ARC_STATUS BtrFsOpen(CHAR *Path, OPENMODE OpenMode, ULONG *FileId)
 {

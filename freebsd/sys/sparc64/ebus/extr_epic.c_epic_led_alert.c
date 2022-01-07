@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct epic_softc {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EPIC_FW_LED_WRITE (struct epic_softc*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EPIC_LED_ALERT_MASK ; 
- int /*<<< orphan*/  EPIC_LED_ALERT_OFF ; 
- int /*<<< orphan*/  EPIC_LED_ALERT_ON ; 
- int /*<<< orphan*/  EPIC_LED_STATE0 ; 
- int /*<<< orphan*/  EPIC_LOCK (struct epic_softc*) ; 
- int /*<<< orphan*/  EPIC_UNLOCK (struct epic_softc*) ; 
+
+ int EPIC_FW_LED_WRITE (struct epic_softc*,int ,int ,int ) ;
+ int EPIC_LED_ALERT_MASK ;
+ int EPIC_LED_ALERT_OFF ;
+ int EPIC_LED_ALERT_ON ;
+ int EPIC_LED_STATE0 ;
+ int EPIC_LOCK (struct epic_softc*) ;
+ int EPIC_UNLOCK (struct epic_softc*) ;
 
 __attribute__((used)) static void
 epic_led_alert(void *arg, int onoff)
 {
-	struct epic_softc *sc;
+ struct epic_softc *sc;
 
-	sc = (struct epic_softc *)arg;
+ sc = (struct epic_softc *)arg;
 
-	EPIC_LOCK(sc);
-	EPIC_FW_LED_WRITE(sc, EPIC_LED_STATE0, EPIC_LED_ALERT_MASK,
-	    onoff ? EPIC_LED_ALERT_ON : EPIC_LED_ALERT_OFF);
-	EPIC_UNLOCK(sc);
+ EPIC_LOCK(sc);
+ EPIC_FW_LED_WRITE(sc, EPIC_LED_STATE0, EPIC_LED_ALERT_MASK,
+     onoff ? EPIC_LED_ALERT_ON : EPIC_LED_ALERT_OFF);
+ EPIC_UNLOCK(sc);
 }

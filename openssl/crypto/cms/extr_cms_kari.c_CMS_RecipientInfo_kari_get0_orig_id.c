@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_7__ ;
-typedef  struct TYPE_14__   TYPE_6__ ;
-typedef  struct TYPE_13__   TYPE_5__ ;
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  X509_NAME ;
-typedef  int /*<<< orphan*/  X509_ALGOR ;
-struct TYPE_13__ {TYPE_4__* originatorKey; int /*<<< orphan*/ * subjectKeyIdentifier; TYPE_3__* issuerAndSerialNumber; } ;
+
+
+typedef struct TYPE_15__ TYPE_7__ ;
+typedef struct TYPE_14__ TYPE_6__ ;
+typedef struct TYPE_13__ TYPE_5__ ;
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int X509_NAME ;
+typedef int X509_ALGOR ;
+struct TYPE_13__ {TYPE_4__* originatorKey; int * subjectKeyIdentifier; TYPE_3__* issuerAndSerialNumber; } ;
 struct TYPE_15__ {scalar_t__ type; TYPE_5__ d; } ;
 struct TYPE_10__ {TYPE_1__* kari; } ;
 struct TYPE_14__ {scalar_t__ type; TYPE_2__ d; } ;
-struct TYPE_12__ {int /*<<< orphan*/ * publicKey; int /*<<< orphan*/ * algorithm; } ;
-struct TYPE_11__ {int /*<<< orphan*/ * serialNumber; int /*<<< orphan*/ * issuer; } ;
+struct TYPE_12__ {int * publicKey; int * algorithm; } ;
+struct TYPE_11__ {int * serialNumber; int * issuer; } ;
 struct TYPE_9__ {TYPE_7__* originator; } ;
-typedef  TYPE_6__ CMS_RecipientInfo ;
-typedef  TYPE_7__ CMS_OriginatorIdentifierOrKey ;
-typedef  int /*<<< orphan*/  ASN1_OCTET_STRING ;
-typedef  int /*<<< orphan*/  ASN1_INTEGER ;
-typedef  int /*<<< orphan*/  ASN1_BIT_STRING ;
+typedef TYPE_6__ CMS_RecipientInfo ;
+typedef TYPE_7__ CMS_OriginatorIdentifierOrKey ;
+typedef int ASN1_OCTET_STRING ;
+typedef int ASN1_INTEGER ;
+typedef int ASN1_BIT_STRING ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CMS_F_CMS_RECIPIENTINFO_KARI_GET0_ORIG_ID ; 
- scalar_t__ CMS_OIK_ISSUER_SERIAL ; 
- scalar_t__ CMS_OIK_KEYIDENTIFIER ; 
- scalar_t__ CMS_OIK_PUBKEY ; 
- scalar_t__ CMS_RECIPINFO_AGREE ; 
- int /*<<< orphan*/  CMS_R_NOT_KEY_AGREEMENT ; 
- int /*<<< orphan*/  CMSerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int CMS_F_CMS_RECIPIENTINFO_KARI_GET0_ORIG_ID ;
+ scalar_t__ CMS_OIK_ISSUER_SERIAL ;
+ scalar_t__ CMS_OIK_KEYIDENTIFIER ;
+ scalar_t__ CMS_OIK_PUBKEY ;
+ scalar_t__ CMS_RECIPINFO_AGREE ;
+ int CMS_R_NOT_KEY_AGREEMENT ;
+ int CMSerr (int ,int ) ;
 
 int CMS_RecipientInfo_kari_get0_orig_id(CMS_RecipientInfo *ri,
                                         X509_ALGOR **pubalg,
@@ -56,15 +56,15 @@ int CMS_RecipientInfo_kari_get0_orig_id(CMS_RecipientInfo *ri,
     }
     oik = ri->d.kari->originator;
     if (issuer)
-        *issuer = NULL;
+        *issuer = ((void*)0);
     if (sno)
-        *sno = NULL;
+        *sno = ((void*)0);
     if (keyid)
-        *keyid = NULL;
+        *keyid = ((void*)0);
     if (pubalg)
-        *pubalg = NULL;
+        *pubalg = ((void*)0);
     if (pubkey)
-        *pubkey = NULL;
+        *pubkey = ((void*)0);
     if (oik->type == CMS_OIK_ISSUER_SERIAL) {
         if (issuer)
             *issuer = oik->d.issuerAndSerialNumber->issuer;

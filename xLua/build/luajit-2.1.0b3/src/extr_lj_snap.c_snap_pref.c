@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  jit_State ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int jit_State ;
 struct TYPE_6__ {TYPE_1__* ir; } ;
-struct TYPE_5__ {int /*<<< orphan*/  t; int /*<<< orphan*/  prev; } ;
-typedef  scalar_t__ TRef ;
-typedef  int /*<<< orphan*/  SnapEntry ;
-typedef  int /*<<< orphan*/  MSize ;
-typedef  size_t IRRef ;
-typedef  TYPE_1__ IRIns ;
-typedef  TYPE_2__ GCtrace ;
-typedef  int /*<<< orphan*/  BloomFilter ;
+struct TYPE_5__ {int t; int prev; } ;
+typedef scalar_t__ TRef ;
+typedef int SnapEntry ;
+typedef int MSize ;
+typedef size_t IRRef ;
+typedef TYPE_1__ IRIns ;
+typedef TYPE_2__ GCtrace ;
+typedef int BloomFilter ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IRT (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IR_PVAL ; 
- size_t REF_BIAS ; 
- int /*<<< orphan*/  bloomtest (int /*<<< orphan*/ ,size_t) ; 
- scalar_t__ emitir (int /*<<< orphan*/ ,size_t,int /*<<< orphan*/ ) ; 
- scalar_t__ irref_isk (size_t) ; 
- int /*<<< orphan*/  irt_type (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  regsp_used (int /*<<< orphan*/ ) ; 
- scalar_t__ snap_dedup (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,size_t) ; 
- scalar_t__ snap_replay_const (int /*<<< orphan*/ *,TYPE_1__*) ; 
+
+ int IRT (int ,int ) ;
+ int IR_PVAL ;
+ size_t REF_BIAS ;
+ int bloomtest (int ,size_t) ;
+ scalar_t__ emitir (int ,size_t,int ) ;
+ scalar_t__ irref_isk (size_t) ;
+ int irt_type (int ) ;
+ int regsp_used (int ) ;
+ scalar_t__ snap_dedup (int *,int *,int ,size_t) ;
+ scalar_t__ snap_replay_const (int *,TYPE_1__*) ;
 
 __attribute__((used)) static TRef snap_pref(jit_State *J, GCtrace *T, SnapEntry *map, MSize nmax,
-		      BloomFilter seen, IRRef ref)
+        BloomFilter seen, IRRef ref)
 {
   IRIns *ir = &T->ir[ref];
   TRef tr;

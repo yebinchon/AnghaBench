@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  id; int /*<<< orphan*/  token; } ;
-typedef  int /*<<< orphan*/  SeafRepoManager ;
-typedef  TYPE_1__ SeafRepo ;
 
-/* Variables and functions */
- int /*<<< orphan*/  REPO_PROP_TOKEN ; 
- int /*<<< orphan*/  g_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  g_strdup (char const*) ; 
- int /*<<< orphan*/  save_repo_property (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int id; int token; } ;
+typedef int SeafRepoManager ;
+typedef TYPE_1__ SeafRepo ;
+
+
+ int REPO_PROP_TOKEN ;
+ int g_free (int ) ;
+ int g_strdup (char const*) ;
+ int save_repo_property (int *,int ,int ,char const*) ;
 
 int
-seaf_repo_manager_set_repo_token (SeafRepoManager *manager, 
+seaf_repo_manager_set_repo_token (SeafRepoManager *manager,
                                   SeafRepo *repo,
                                   const char *token)
 {

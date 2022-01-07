@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ renameType; } ;
-typedef  TYPE_1__ RenameStmt ;
+typedef TYPE_1__ RenameStmt ;
 
-/* Variables and functions */
- scalar_t__ OBJECT_INDEX ; 
+
+ scalar_t__ OBJECT_INDEX ;
 
 bool
 IsIndexRenameStmt(RenameStmt *renameStmt)
 {
-	bool isIndexRenameStmt = false;
+ bool isIndexRenameStmt = 0;
 
-	if (renameStmt->renameType == OBJECT_INDEX)
-	{
-		isIndexRenameStmt = true;
-	}
+ if (renameStmt->renameType == OBJECT_INDEX)
+ {
+  isIndexRenameStmt = 1;
+ }
 
-	return isIndexRenameStmt;
+ return isIndexRenameStmt;
 }

@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  base; } ;
-struct omap2_onenand {int (* setup ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;int /*<<< orphan*/  freq; TYPE_1__ onenand; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int base; } ;
+struct omap2_onenand {int (* setup ) (int ,int ) ;int freq; TYPE_1__ onenand; } ;
 struct device {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BUG_ON (int /*<<< orphan*/ ) ; 
- struct omap2_onenand* dev_get_drvdata (struct device*) ; 
- int stub1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int BUG_ON (int ) ;
+ struct omap2_onenand* dev_get_drvdata (struct device*) ;
+ int stub1 (int ,int ) ;
 
 __attribute__((used)) static int __adjust_timing(struct device *dev, void *data)
 {
-	int ret = 0;
-	struct omap2_onenand *c;
+ int ret = 0;
+ struct omap2_onenand *c;
 
-	c = dev_get_drvdata(dev);
+ c = dev_get_drvdata(dev);
 
-	BUG_ON(c->setup == NULL);
+ BUG_ON(c->setup == ((void*)0));
 
-	/* DMA is not in use so this is all that is needed */
-	/* Revisit for OMAP3! */
-	ret = c->setup(c->onenand.base, c->freq);
 
-	return ret;
+
+ ret = c->setup(c->onenand.base, c->freq);
+
+ return ret;
 }

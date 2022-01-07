@@ -1,73 +1,73 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
-typedef  int uint32_t ;
-struct TYPE_9__ {int /*<<< orphan*/  p_LowQmPortal; } ;
-typedef  TYPE_3__ t_QmPortal ;
-typedef  int /*<<< orphan*/  t_Error ;
-struct qman_fq {scalar_t__ state; int flags; int /*<<< orphan*/  fqid; } ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint8_t ;
+typedef int uint32_t ;
+struct TYPE_9__ {int p_LowQmPortal; } ;
+typedef TYPE_3__ t_QmPortal ;
+typedef int t_Error ;
+struct qman_fq {scalar_t__ state; int flags; int fqid; } ;
 struct TYPE_8__ {int fqs; } ;
 struct qm_mc_result {int verb; scalar_t__ result; TYPE_2__ alterfq; } ;
-struct TYPE_7__ {int /*<<< orphan*/  context_b; int /*<<< orphan*/  fqid; } ;
+struct TYPE_7__ {int context_b; int fqid; } ;
 struct qm_mc_command {TYPE_1__ alterfq; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT_COND (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  E_BUSY ; 
- int /*<<< orphan*/  E_INVALID_STATE ; 
- int /*<<< orphan*/  E_INVALID_VALUE ; 
- int /*<<< orphan*/  E_OK ; 
- int /*<<< orphan*/  FQLOCK (struct qman_fq*) ; 
- int /*<<< orphan*/  FQUNLOCK (struct qman_fq*) ; 
- int /*<<< orphan*/  NCSW_PLOCK (TYPE_3__*) ; 
- int /*<<< orphan*/  PUNLOCK (TYPE_3__*) ; 
- int QMAN_FQ_FLAG_NO_MODIFY ; 
- int QMAN_FQ_STATE_CHANGING ; 
- int QMAN_FQ_STATE_NE ; 
- int QMAN_FQ_STATE_ORL ; 
- scalar_t__ QM_MCC_VERB_ALTER_RETIRE ; 
- scalar_t__ QM_MCC_VERB_ALTER_RETIRE_CTXB ; 
- int QM_MCR_FQS_NOTEMPTY ; 
- int QM_MCR_FQS_ORLPRESENT ; 
- scalar_t__ QM_MCR_RESULT_OK ; 
- scalar_t__ QM_MCR_RESULT_PENDING ; 
- int /*<<< orphan*/  QM_MCR_VERB_ALTER_RETIRE ; 
- int /*<<< orphan*/  QM_MCR_VERB_ALTER_RETIRE_CTXB ; 
- int QM_MCR_VERB_MASK ; 
- int /*<<< orphan*/  SANITY_CHECK_RETURN_ERROR (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XX_Print (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  aligned_int_from_ptr (struct qman_fq*) ; 
- int /*<<< orphan*/  mcr_result_str (scalar_t__) ; 
- int /*<<< orphan*/  qm_mc_commit (int /*<<< orphan*/ ,scalar_t__) ; 
- struct qm_mc_result* qm_mc_result (int /*<<< orphan*/ ) ; 
- struct qm_mc_command* qm_mc_start (int /*<<< orphan*/ ) ; 
- scalar_t__ qman_fq_state_oos ; 
- scalar_t__ qman_fq_state_parked ; 
- scalar_t__ qman_fq_state_retired ; 
- scalar_t__ qman_fq_state_sched ; 
 
-__attribute__((used)) static t_Error qman_retire_fq(t_QmPortal        *p_QmPortal,
-                              struct qman_fq    *p_Fq,
-                              uint32_t          *p_Flags,
-                              bool              drain)
+ int ASSERT_COND (int ) ;
+ int E_BUSY ;
+ int E_INVALID_STATE ;
+ int E_INVALID_VALUE ;
+ int E_OK ;
+ int FQLOCK (struct qman_fq*) ;
+ int FQUNLOCK (struct qman_fq*) ;
+ int NCSW_PLOCK (TYPE_3__*) ;
+ int PUNLOCK (TYPE_3__*) ;
+ int QMAN_FQ_FLAG_NO_MODIFY ;
+ int QMAN_FQ_STATE_CHANGING ;
+ int QMAN_FQ_STATE_NE ;
+ int QMAN_FQ_STATE_ORL ;
+ scalar_t__ QM_MCC_VERB_ALTER_RETIRE ;
+ scalar_t__ QM_MCC_VERB_ALTER_RETIRE_CTXB ;
+ int QM_MCR_FQS_NOTEMPTY ;
+ int QM_MCR_FQS_ORLPRESENT ;
+ scalar_t__ QM_MCR_RESULT_OK ;
+ scalar_t__ QM_MCR_RESULT_PENDING ;
+ int QM_MCR_VERB_ALTER_RETIRE ;
+ int QM_MCR_VERB_ALTER_RETIRE_CTXB ;
+ int QM_MCR_VERB_MASK ;
+ int SANITY_CHECK_RETURN_ERROR (int,int ) ;
+ int XX_Print (char*,int ) ;
+ int aligned_int_from_ptr (struct qman_fq*) ;
+ int mcr_result_str (scalar_t__) ;
+ int qm_mc_commit (int ,scalar_t__) ;
+ struct qm_mc_result* qm_mc_result (int ) ;
+ struct qm_mc_command* qm_mc_start (int ) ;
+ scalar_t__ qman_fq_state_oos ;
+ scalar_t__ qman_fq_state_parked ;
+ scalar_t__ qman_fq_state_retired ;
+ scalar_t__ qman_fq_state_sched ;
+
+__attribute__((used)) static t_Error qman_retire_fq(t_QmPortal *p_QmPortal,
+                              struct qman_fq *p_Fq,
+                              uint32_t *p_Flags,
+                              bool drain)
 {
-    struct qm_mc_command    *p_Mcc;
-    struct qm_mc_result     *p_Mcr;
-    t_Error                 err = E_OK;
-    uint8_t                 res;
+    struct qm_mc_command *p_Mcc;
+    struct qm_mc_result *p_Mcr;
+    t_Error err = E_OK;
+    uint8_t res;
 
     SANITY_CHECK_RETURN_ERROR((p_Fq->state == qman_fq_state_parked) ||
                               (p_Fq->state == qman_fq_state_sched),
@@ -95,7 +95,7 @@ __attribute__((used)) static t_Error qman_retire_fq(t_QmPortal        *p_QmPorta
     res = p_Mcr->result;
     if (res == QM_MCR_RESULT_OK)
     {
-        /* Process 'fq' right away, we'll ignore FQRNI */
+
         if (p_Mcr->alterfq.fqs & QM_MCR_FQS_NOTEMPTY)
             p_Fq->flags |= QMAN_FQ_STATE_NE;
         if (p_Mcr->alterfq.fqs & QM_MCR_FQS_ORLPRESENT)

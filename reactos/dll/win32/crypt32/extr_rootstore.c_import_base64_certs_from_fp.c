@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct DynamicBuffer {int /*<<< orphan*/ * data; int /*<<< orphan*/  used; int /*<<< orphan*/ * member_2; int /*<<< orphan*/  member_1; int /*<<< orphan*/  member_0; } ;
-typedef  int /*<<< orphan*/  line ;
-typedef  int /*<<< orphan*/ * LPBYTE ;
-typedef  int /*<<< orphan*/  HCERTSTORE ;
-typedef  int /*<<< orphan*/  FILE ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CERT_STORE_ADD_NEW ; 
- int /*<<< orphan*/  CRYPT_STRING_BASE64 ; 
- scalar_t__ CertAddEncodedCertificateToStore (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * CryptMemAlloc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CryptMemFree (int /*<<< orphan*/ *) ; 
- scalar_t__ CryptStringToBinaryA (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int FALSE ; 
- int /*<<< orphan*/  TRACE (char*,...) ; 
- int TRUE ; 
- int /*<<< orphan*/  X509_ASN_ENCODING ; 
- int /*<<< orphan*/  add_line_to_buffer (struct DynamicBuffer*,char*) ; 
- scalar_t__ fgets (char*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  reset_buffer (struct DynamicBuffer*) ; 
- int /*<<< orphan*/  strlen (char const*) ; 
- int /*<<< orphan*/  strncmp (char*,char const*,int /*<<< orphan*/ ) ; 
+
+
+
+struct DynamicBuffer {int * data; int used; int * member_2; int member_1; int member_0; } ;
+typedef int line ;
+typedef int * LPBYTE ;
+typedef int HCERTSTORE ;
+typedef int FILE ;
+typedef int DWORD ;
+typedef int BOOL ;
+
+
+ int CERT_STORE_ADD_NEW ;
+ int CRYPT_STRING_BASE64 ;
+ scalar_t__ CertAddEncodedCertificateToStore (int ,int ,int *,int ,int ,int *) ;
+ int * CryptMemAlloc (int ) ;
+ int CryptMemFree (int *) ;
+ scalar_t__ CryptStringToBinaryA (char*,int ,int ,int *,int *,int *,int *) ;
+ int FALSE ;
+ int TRACE (char*,...) ;
+ int TRUE ;
+ int X509_ASN_ENCODING ;
+ int add_line_to_buffer (struct DynamicBuffer*,char*) ;
+ scalar_t__ fgets (char*,int,int *) ;
+ int reset_buffer (struct DynamicBuffer*) ;
+ int strlen (char const*) ;
+ int strncmp (char*,char const*,int ) ;
 
 __attribute__((used)) static BOOL import_base64_certs_from_fp(FILE *fp, HCERTSTORE store)
 {
     char line[1024];
     BOOL in_cert = FALSE;
-    struct DynamicBuffer saved_cert = { 0, 0, NULL };
+    struct DynamicBuffer saved_cert = { 0, 0, ((void*)0) };
     int num_certs = 0;
 
     TRACE("\n");
@@ -61,17 +61,17 @@ __attribute__((used)) static BOOL import_base64_certs_from_fp(FILE *fp, HCERTSTO
             TRACE("end of certificate, adding cert\n");
             in_cert = FALSE;
             if (CryptStringToBinaryA((char *)saved_cert.data, saved_cert.used,
-             CRYPT_STRING_BASE64, NULL, &size, NULL, NULL))
+             CRYPT_STRING_BASE64, ((void*)0), &size, ((void*)0), ((void*)0)))
             {
                 LPBYTE buf = CryptMemAlloc(size);
 
                 if (buf)
                 {
                     CryptStringToBinaryA((char *)saved_cert.data,
-                     saved_cert.used, CRYPT_STRING_BASE64, buf, &size, NULL,
-                     NULL);
+                     saved_cert.used, CRYPT_STRING_BASE64, buf, &size, ((void*)0),
+                     ((void*)0));
                     if (CertAddEncodedCertificateToStore(store,
-                     X509_ASN_ENCODING, buf, size, CERT_STORE_ADD_NEW, NULL))
+                     X509_ASN_ENCODING, buf, size, CERT_STORE_ADD_NEW, ((void*)0)))
                         num_certs++;
                     CryptMemFree(buf);
                 }

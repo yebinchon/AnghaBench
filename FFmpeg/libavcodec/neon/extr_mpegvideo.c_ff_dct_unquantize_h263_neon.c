@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint16x8_t ;
-typedef  int /*<<< orphan*/  uint16x4_t ;
-typedef  int /*<<< orphan*/  int16x8_t ;
-typedef  int /*<<< orphan*/  int16x4_t ;
-typedef  int /*<<< orphan*/  int16_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  vadd_s16 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vaddq_s16 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vbsl_s16 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vbslq_s16 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vceq_s16 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vceqq_s16 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vclt_s16 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vcltq_s16 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vdup_n_s16 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vdupq_n_s16 (int) ; 
- int /*<<< orphan*/  vget_high_s16 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vld1_s16 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vld1q_s16 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vmul_s16 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vmulq_s16 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vnegq_s16 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vreinterpret_s16_u16 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vreinterpret_u16_s16 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vreinterpretq_s16_u16 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vreinterpretq_u16_s16 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vst1_s16 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vst1q_s16 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint16x8_t ;
+typedef int uint16x4_t ;
+typedef int int16x8_t ;
+typedef int int16x4_t ;
+typedef int int16_t ;
+
+
+ int vadd_s16 (int ,int ) ;
+ int vaddq_s16 (int ,int ) ;
+ int vbsl_s16 (int ,int ,int ) ;
+ int vbslq_s16 (int ,int ,int ) ;
+ int vceq_s16 (int ,int ) ;
+ int vceqq_s16 (int ,int ) ;
+ int vclt_s16 (int ,int ) ;
+ int vcltq_s16 (int ,int ) ;
+ int vdup_n_s16 (int ) ;
+ int vdupq_n_s16 (int) ;
+ int vget_high_s16 (int ) ;
+ int vld1_s16 (int *) ;
+ int vld1q_s16 (int *) ;
+ int vmul_s16 (int ,int ) ;
+ int vmulq_s16 (int ,int ) ;
+ int vnegq_s16 (int ) ;
+ int vreinterpret_s16_u16 (int ) ;
+ int vreinterpret_u16_s16 (int ) ;
+ int vreinterpretq_s16_u16 (int ) ;
+ int vreinterpretq_u16_s16 (int ) ;
+ int vst1_s16 (int *,int ) ;
+ int vst1q_s16 (int *,int ) ;
 
 __attribute__((used)) static void inline ff_dct_unquantize_h263_neon(int qscale, int qadd, int nCoeffs,
                                                int16_t *block)

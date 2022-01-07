@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int pagesize; } ;
 
-/* Variables and functions */
- unsigned int decodeInt32 (unsigned char*) ; 
- unsigned char* fileRead (int,int) ; 
- TYPE_1__ g ; 
- int /*<<< orphan*/  print_decode_line (unsigned char*,int,int,char*) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  sprintf (char*,char*,int) ; 
- int /*<<< orphan*/  sqlite3_free (unsigned char*) ; 
+
+ unsigned int decodeInt32 (unsigned char*) ;
+ unsigned char* fileRead (int,int) ;
+ TYPE_1__ g ;
+ int print_decode_line (unsigned char*,int,int,char*) ;
+ int printf (char*,...) ;
+ int sprintf (char*,char*,int) ;
+ int sqlite3_free (unsigned char*) ;
 
 __attribute__((used)) static void decode_trunk_page(
-  int pgno,             /* The page number */
-  int detail,           /* Show leaf pages if true */
-  int recursive         /* Follow the trunk change if true */
+  int pgno,
+  int detail,
+  int recursive
 ){
   int n, i;
   unsigned char *a;

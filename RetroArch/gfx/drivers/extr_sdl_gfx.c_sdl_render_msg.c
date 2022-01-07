@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_6__ ;
-typedef  struct TYPE_15__   TYPE_5__ ;
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  unsigned int uint8_t ;
-typedef  unsigned int uint32_t ;
+
+
+typedef struct TYPE_16__ TYPE_6__ ;
+typedef struct TYPE_15__ TYPE_5__ ;
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef unsigned int uint8_t ;
+typedef unsigned int uint32_t ;
 struct font_glyph {int width; int height; int draw_offset_x; int draw_offset_y; int atlas_offset_x; int atlas_offset_y; scalar_t__ advance_y; scalar_t__ advance_x; } ;
 struct font_atlas {unsigned int* buffer; int width; } ;
 struct TYPE_11__ {unsigned int video_msg_pos_x; float video_msg_pos_y; } ;
 struct TYPE_13__ {TYPE_1__ floats; } ;
-typedef  TYPE_3__ settings_t ;
-struct TYPE_14__ {unsigned int font_r; unsigned int font_g; unsigned int font_b; int /*<<< orphan*/  font; TYPE_2__* font_driver; } ;
-typedef  TYPE_4__ sdl_video_t ;
+typedef TYPE_3__ settings_t ;
+struct TYPE_14__ {unsigned int font_r; unsigned int font_g; unsigned int font_b; int font; TYPE_2__* font_driver; } ;
+typedef TYPE_4__ sdl_video_t ;
 struct TYPE_16__ {unsigned int Rshift; unsigned int Gshift; unsigned int Bshift; } ;
 struct TYPE_15__ {int pitch; scalar_t__ pixels; } ;
-struct TYPE_12__ {struct font_glyph* (* get_glyph ) (int /*<<< orphan*/ ,unsigned int) ;struct font_atlas* (* get_atlas ) (int /*<<< orphan*/ ) ;} ;
-typedef  TYPE_5__ SDL_Surface ;
-typedef  TYPE_6__ SDL_PixelFormat ;
+struct TYPE_12__ {struct font_glyph* (* get_glyph ) (int ,unsigned int) ;struct font_atlas* (* get_atlas ) (int ) ;} ;
+typedef TYPE_5__ SDL_Surface ;
+typedef TYPE_6__ SDL_PixelFormat ;
 
-/* Variables and functions */
- TYPE_3__* config_get_ptr () ; 
- struct font_atlas* stub1 (int /*<<< orphan*/ ) ; 
- struct font_glyph* stub2 (int /*<<< orphan*/ ,unsigned int) ; 
+
+ TYPE_3__* config_get_ptr () ;
+ struct font_atlas* stub1 (int ) ;
+ struct font_glyph* stub2 (int ,unsigned int) ;
 
 __attribute__((used)) static void sdl_render_msg(sdl_video_t *vid, SDL_Surface *buffer,
       const char *msg, unsigned width, unsigned height, const SDL_PixelFormat *fmt)
 {
    int x, y, msg_base_x, msg_base_y;
    unsigned rshift, gshift, bshift;
-   const struct font_atlas *atlas = NULL;
+   const struct font_atlas *atlas = ((void*)0);
    settings_t *settings = config_get_ptr();
 
    if (!vid->font)
@@ -60,18 +60,18 @@ __attribute__((used)) static void sdl_render_msg(sdl_video_t *vid, SDL_Surface *
    {
       int glyph_width, glyph_height;
       int base_x, base_y, max_width, max_height;
-      uint32_t *out      = NULL;
-      const uint8_t *src = NULL;
+      uint32_t *out = ((void*)0);
+      const uint8_t *src = ((void*)0);
       const struct font_glyph *glyph = vid->font_driver->get_glyph(vid->font, (uint8_t)*msg);
       if (!glyph)
          continue;
 
-      glyph_width  = glyph->width;
+      glyph_width = glyph->width;
       glyph_height = glyph->height;
 
       base_x = msg_base_x + glyph->draw_offset_x;
       base_y = msg_base_y + glyph->draw_offset_y;
-      src    = atlas->buffer + glyph->atlas_offset_x
+      src = atlas->buffer + glyph->atlas_offset_x
          + glyph->atlas_offset_y * atlas->width;
 
       if (base_x < 0)
@@ -88,7 +88,7 @@ __attribute__((used)) static void sdl_render_msg(sdl_video_t *vid, SDL_Surface *
          base_y = 0;
       }
 
-      max_width  = width - base_x;
+      max_width = width - base_x;
       max_height = height - base_y;
 
       if (max_width <= 0 || max_height <= 0)

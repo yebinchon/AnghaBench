@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct stat {size_t st_size; } ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef int FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  _fileno (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char const*,char*) ; 
- int fread (void*,size_t,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (void*) ; 
- scalar_t__ fstat (int /*<<< orphan*/ ,struct stat*) ; 
- void* malloc (size_t) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
+
+ int _fileno (int *) ;
+ int fclose (int *) ;
+ int * fopen (char const*,char*) ;
+ int fread (void*,size_t,int,int *) ;
+ int free (void*) ;
+ scalar_t__ fstat (int ,struct stat*) ;
+ void* malloc (size_t) ;
+ int printf (char*,...) ;
 
 __attribute__((used)) static void *
 loadFile(const char *fileName, size_t *fileSize_)
@@ -31,30 +31,30 @@ loadFile(const char *fileName, size_t *fileSize_)
    size_t fileSize;
    void *p;
 
-   /* Open the file */
+
    f = fopen(fileName, "rb");
-   if (f == NULL)
+   if (f == ((void*)0))
    {
       printf("Couldn't open file %s for reading!\n", fileName);
-      return NULL;
+      return ((void*)0);
    }
 
-   /* Get file size */
+
    if (fstat(_fileno(f), &sb) < 0)
    {
       fclose(f);
       printf("Couldn't get size of file %s!\n", fileName);
-      return NULL;
+      return ((void*)0);
    }
    fileSize = sb.st_size;
 
-   /* Load file */
+
    p = malloc(fileSize);
-   if (p == NULL)
+   if (p == ((void*)0))
    {
       fclose(f);
       printf("Couldn't allocate %Id bytes for file %s!\n", fileSize, fileName);
-      return NULL;
+      return ((void*)0);
    }
 
    if (fread(p, fileSize, 1, f) != 1)
@@ -62,10 +62,10 @@ loadFile(const char *fileName, size_t *fileSize_)
       fclose(f);
       free(p);
       printf("Couldn't read file %s into memory!\n", fileName);
-      return NULL;
+      return ((void*)0);
    }
 
-   /* Close file */
+
    fclose(f);
 
    *fileSize_ = fileSize;

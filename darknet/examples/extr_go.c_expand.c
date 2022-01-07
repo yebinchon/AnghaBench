@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  network ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int network ;
 struct TYPE_3__ {float* board; float* mean; int* value; int total_count; float result; scalar_t__* prior; scalar_t__* visit_count; void* prob; void* children; } ;
-typedef  TYPE_1__ mcts_tree ;
+typedef TYPE_1__ mcts_tree ;
 
-/* Variables and functions */
- void* calloc (int,int) ; 
- int /*<<< orphan*/  copy_cpu (int,float*,int,scalar_t__*,int) ; 
- float* network_predict_rotations (int /*<<< orphan*/ *,float*) ; 
- scalar_t__ occupied (float*,int) ; 
+
+ void* calloc (int,int) ;
+ int copy_cpu (int,float*,int,scalar_t__*,int) ;
+ float* network_predict_rotations (int *,float*) ;
+ scalar_t__ occupied (float*,int) ;
 
 mcts_tree *expand(float *next, float *ko, network *net)
 {
@@ -47,6 +47,6 @@ mcts_tree *expand(float *next, float *ko, network *net)
             root->prior[i] = 0;
         }
     }
-    //print_board(stderr, next, flip?-1:1, 0);
+
     return root;
 }

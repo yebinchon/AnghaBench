@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-typedef  int /*<<< orphan*/  u16 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  bitrev16 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  crc16 (int,int /*<<< orphan*/  const*,size_t) ; 
+
+
+
+typedef int u8 ;
+typedef int u16 ;
+
+
+ int bitrev16 (int ) ;
+ int crc16 (int,int const*,size_t) ;
 
 __attribute__((used)) static u16 smsc_crc(const u8 *buffer, size_t len)
 {
-	return bitrev16(crc16(0xFFFF, buffer, len));
+ return bitrev16(crc16(0xFFFF, buffer, len));
 }

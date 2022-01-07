@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct playlist_entry {char* path; } ;
-typedef  int /*<<< orphan*/  playlist_t ;
-typedef  int /*<<< orphan*/  path ;
+typedef int playlist_t ;
+typedef int path ;
 
-/* Variables and functions */
- int PATH_MAX_LENGTH ; 
- int /*<<< orphan*/  PLAYLIST_LOAD ; 
- scalar_t__ calloc (int,int) ; 
- int /*<<< orphan*/  free (char*) ; 
- int path_is_valid (char*) ; 
- int /*<<< orphan*/  playlist_get_index (int /*<<< orphan*/ *,size_t,struct playlist_entry const**) ; 
- int /*<<< orphan*/  playlist_resolve_path (int /*<<< orphan*/ ,char*,int) ; 
- char* strdup (char*) ; 
- int /*<<< orphan*/  string_is_empty (char*) ; 
- int /*<<< orphan*/  strlcpy (char*,char*,int) ; 
- int strlen (char*) ; 
- char* strstr (char*,char*) ; 
- char tolower (unsigned char) ; 
+
+ int PATH_MAX_LENGTH ;
+ int PLAYLIST_LOAD ;
+ scalar_t__ calloc (int,int) ;
+ int free (char*) ;
+ int path_is_valid (char*) ;
+ int playlist_get_index (int *,size_t,struct playlist_entry const**) ;
+ int playlist_resolve_path (int ,char*,int) ;
+ char* strdup (char*) ;
+ int string_is_empty (char*) ;
+ int strlcpy (char*,char*,int) ;
+ int strlen (char*) ;
+ char* strstr (char*,char*) ;
+ char tolower (unsigned char) ;
 
 __attribute__((used)) static bool menu_content_playlist_load(playlist_t *playlist, size_t idx)
 {
    char path[PATH_MAX_LENGTH];
-   const struct playlist_entry *entry = NULL;
+   const struct playlist_entry *entry = ((void*)0);
 
    playlist_get_index(playlist, idx, &entry);
 
@@ -43,9 +43,9 @@ __attribute__((used)) static bool menu_content_playlist_load(playlist_t *playlis
    if (!string_is_empty(path))
    {
       unsigned i;
-      bool valid_path     = false;
-      char *path_check    = NULL;
-      char *path_tolower  = strdup(path);
+      bool valid_path = 0;
+      char *path_check = ((void*)0);
+      char *path_tolower = strdup(path);
 
       for (i = 0; i < strlen(path_tolower); ++i)
          path_tolower[i] = tolower((unsigned char)path_tolower[i]);
@@ -66,8 +66,8 @@ __attribute__((used)) static bool menu_content_playlist_load(playlist_t *playlis
       free(path_check);
 
       if (valid_path)
-         return true;
+         return 1;
    }
 
-   return false;
+   return 0;
 }

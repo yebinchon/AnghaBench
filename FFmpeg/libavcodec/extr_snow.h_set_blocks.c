@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int* color; int mx; int my; int ref; int type; int level; } ;
 struct TYPE_4__ {int b_width; int block_max_depth; TYPE_2__* block; } ;
-typedef  TYPE_1__ SnowContext ;
-typedef  TYPE_2__ BlockNode ;
+typedef TYPE_1__ SnowContext ;
+typedef TYPE_2__ BlockNode ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static inline void set_blocks(SnowContext *s, int level, int x, int y, int l, int cb, int cr, int mx, int my, int ref, int type){
     const int w= s->b_width << s->block_max_depth;
     const int rem_depth= s->block_max_depth - level;
     const int index= (x + y*w) << rem_depth;
     const int block_w= 1<<rem_depth;
-    const int block_h= 1<<rem_depth; //FIXME "w!=h"
+    const int block_h= 1<<rem_depth;
     BlockNode block;
     int i,j;
 

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  inter_hashes; int /*<<< orphan*/  uid; scalar_t__ name; struct interest* inter; } ;
-typedef  TYPE_1__ user_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int inter_hashes; int uid; scalar_t__ name; struct interest* inter; } ;
+typedef TYPE_1__ user_t ;
 struct interest {scalar_t__ text; struct interest* next; } ;
 
-/* Variables and functions */
- scalar_t__ Hc ; 
- int /*<<< orphan*/  add_user_hashlist (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  delete_user_hashlist (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  prepare_words_hashlist (scalar_t__,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  q_interests ; 
- int /*<<< orphan*/  save_words_hashlist (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ Hc ;
+ int add_user_hashlist (int ,int ) ;
+ int delete_user_hashlist (int ,int ) ;
+ int prepare_words_hashlist (scalar_t__,int,int,int ,int ) ;
+ int q_interests ;
+ int save_words_hashlist (int ,int,int ) ;
 
 __attribute__((used)) static void rehash_user_interests (user_t *U) {
   struct interest *I;

@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct macgpio_softc {int /*<<< orphan*/  sc_gpios; } ;
+
+
+
+
+typedef int uint8_t ;
+struct macgpio_softc {int sc_gpios; } ;
 struct macgpio_devinfo {scalar_t__ gpio_num; } ;
-typedef  int /*<<< orphan*/  device_t ;
+typedef int device_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  bus_write_1 (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ) ; 
- struct macgpio_devinfo* device_get_ivars (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  device_get_parent (int /*<<< orphan*/ ) ; 
- struct macgpio_softc* device_get_softc (int /*<<< orphan*/ ) ; 
+
+ int bus_write_1 (int ,scalar_t__,int ) ;
+ struct macgpio_devinfo* device_get_ivars (int ) ;
+ int device_get_parent (int ) ;
+ struct macgpio_softc* device_get_softc (int ) ;
 
 void
 macgpio_write(device_t dev, uint8_t val)
 {
-	struct macgpio_softc *sc;
-	struct macgpio_devinfo *dinfo;
+ struct macgpio_softc *sc;
+ struct macgpio_devinfo *dinfo;
 
-	sc = device_get_softc(device_get_parent(dev));
-	dinfo = device_get_ivars(dev);
+ sc = device_get_softc(device_get_parent(dev));
+ dinfo = device_get_ivars(dev);
 
-	if (dinfo->gpio_num < 0)
-		return;
+ if (dinfo->gpio_num < 0)
+  return;
 
-	bus_write_1(sc->sc_gpios,dinfo->gpio_num,val);
+ bus_write_1(sc->sc_gpios,dinfo->gpio_num,val);
 }

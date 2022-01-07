@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ tree ;
 
-/* Variables and functions */
- scalar_t__ FUNCTION_TYPE ; 
- int /*<<< orphan*/  NULL_TREE ; 
- scalar_t__ TREE_CHAIN (scalar_t__) ; 
- scalar_t__ TREE_CODE (scalar_t__) ; 
- int /*<<< orphan*/  TREE_TYPE (scalar_t__) ; 
- int /*<<< orphan*/  TREE_VALUE (scalar_t__) ; 
- scalar_t__ TYPE_ARG_TYPES (scalar_t__) ; 
- int /*<<< orphan*/  TYPE_RAISES_EXCEPTIONS (scalar_t__) ; 
- scalar_t__ build_exception_variant (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  build_function_type (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  error (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gcc_assert (int) ; 
- int /*<<< orphan*/  pedwarn (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ptr_type_node ; 
- int /*<<< orphan*/  same_type_p (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  size_type_node ; 
- scalar_t__ tree_cons (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__ void_list_node ; 
+
+
+
+typedef scalar_t__ tree ;
+
+
+ scalar_t__ FUNCTION_TYPE ;
+ int NULL_TREE ;
+ scalar_t__ TREE_CHAIN (scalar_t__) ;
+ scalar_t__ TREE_CODE (scalar_t__) ;
+ int TREE_TYPE (scalar_t__) ;
+ int TREE_VALUE (scalar_t__) ;
+ scalar_t__ TYPE_ARG_TYPES (scalar_t__) ;
+ int TYPE_RAISES_EXCEPTIONS (scalar_t__) ;
+ scalar_t__ build_exception_variant (int ,int ) ;
+ int build_function_type (int ,scalar_t__) ;
+ int error (char*,int ) ;
+ int gcc_assert (int) ;
+ int pedwarn (char*,int ) ;
+ int ptr_type_node ;
+ int same_type_p (int ,int ) ;
+ int size_type_node ;
+ scalar_t__ tree_cons (int ,int ,scalar_t__) ;
+ scalar_t__ void_list_node ;
 
 tree
 coerce_new_type (tree type)
@@ -51,20 +51,20 @@ coerce_new_type (tree type)
     {
       e = 2;
       if (args && args != void_list_node)
-	args = TREE_CHAIN (args);
+ args = TREE_CHAIN (args);
       pedwarn ("%<operator new%> takes type %<size_t%> (%qT) "
-	       "as first parameter", size_type_node);
+        "as first parameter", size_type_node);
     }
   switch (e)
   {
     case 2:
       args = tree_cons (NULL_TREE, size_type_node, args);
-      /* Fall through.  */
+
     case 1:
       type = build_exception_variant
-	      (build_function_type (ptr_type_node, args),
-	       TYPE_RAISES_EXCEPTIONS (type));
-      /* Fall through.  */
+       (build_function_type (ptr_type_node, args),
+        TYPE_RAISES_EXCEPTIONS (type));
+
     default:;
   }
   return type;

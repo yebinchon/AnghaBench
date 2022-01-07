@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  saved_ramps; } ;
-typedef  TYPE_1__ w32gdi_state_t ;
-typedef  int /*<<< orphan*/ * HDC ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- scalar_t__ FALSE ; 
- int /*<<< orphan*/ * GetDC (int /*<<< orphan*/ *) ; 
- int MAX_ATTEMPTS ; 
- int /*<<< orphan*/  ReleaseDC (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ SetDeviceGammaRamp (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  fputs (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stderr ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int saved_ramps; } ;
+typedef TYPE_1__ w32gdi_state_t ;
+typedef int * HDC ;
+typedef scalar_t__ BOOL ;
+
+
+ scalar_t__ FALSE ;
+ int * GetDC (int *) ;
+ int MAX_ATTEMPTS ;
+ int ReleaseDC (int *,int *) ;
+ scalar_t__ SetDeviceGammaRamp (int *,int ) ;
+ int _ (char*) ;
+ int fputs (int ,int ) ;
+ int stderr ;
 
 __attribute__((used)) static void
 w32gdi_restore(w32gdi_state_t *state)
 {
-	/* Open device context */
-	HDC hDC = GetDC(NULL);
-	if (hDC == NULL) {
-		fputs(_("Unable to open device context.\n"), stderr);
-		return;
-	}
 
-	/* Restore gamma ramps */
-	BOOL r = FALSE;
-	for (int i = 0; i < MAX_ATTEMPTS && !r; i++) {
-		/* We retry a few times before giving up because some
-		   buggy drivers fail on the first invocation of
-		   SetDeviceGammaRamp just to succeed on the second. */
-		r = SetDeviceGammaRamp(hDC, state->saved_ramps);
-	}
-	if (!r) fputs(_("Unable to restore gamma ramps.\n"), stderr);
+ HDC hDC = GetDC(((void*)0));
+ if (hDC == ((void*)0)) {
+  fputs(_("Unable to open device context.\n"), stderr);
+  return;
+ }
 
-	/* Release device context */
-	ReleaseDC(NULL, hDC);
+
+ BOOL r = FALSE;
+ for (int i = 0; i < MAX_ATTEMPTS && !r; i++) {
+
+
+
+  r = SetDeviceGammaRamp(hDC, state->saved_ramps);
+ }
+ if (!r) fputs(_("Unable to restore gamma ramps.\n"), stderr);
+
+
+ ReleaseDC(((void*)0), hDC);
 }

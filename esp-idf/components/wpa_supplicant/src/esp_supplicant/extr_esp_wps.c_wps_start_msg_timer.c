@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
-struct wps_sm {int /*<<< orphan*/  wps_msg_timeout_timer; TYPE_1__* wps; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+struct wps_sm {int wps_msg_timeout_timer; TYPE_1__* wps; } ;
 struct TYPE_2__ {scalar_t__ state; } ;
 
-/* Variables and functions */
- int ESP_FAIL ; 
- int /*<<< orphan*/  MSG_DEBUG ; 
- scalar_t__ RECV_M2 ; 
- scalar_t__ WPS_FINISHED ; 
- int /*<<< orphan*/  ets_timer_arm (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ets_timer_disarm (int /*<<< orphan*/ *) ; 
- struct wps_sm* gWpsSm ; 
- int /*<<< orphan*/  wpa_printf (int /*<<< orphan*/ ,char*,int) ; 
+
+ int ESP_FAIL ;
+ int MSG_DEBUG ;
+ scalar_t__ RECV_M2 ;
+ scalar_t__ WPS_FINISHED ;
+ int ets_timer_arm (int *,int,int ) ;
+ int ets_timer_disarm (int *) ;
+ struct wps_sm* gWpsSm ;
+ int wpa_printf (int ,char*,int) ;
 
 int wps_start_msg_timer(void)
 {

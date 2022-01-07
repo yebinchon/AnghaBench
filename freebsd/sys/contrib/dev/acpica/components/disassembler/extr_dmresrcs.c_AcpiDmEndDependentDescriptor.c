@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT32 ;
-typedef  int /*<<< orphan*/  AML_RESOURCE ;
-typedef  int /*<<< orphan*/  ACPI_OP_WALK_INFO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AcpiDmIndent (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AcpiOsPrintf (char*) ; 
+
+
+
+typedef int UINT32 ;
+typedef int AML_RESOURCE ;
+typedef int ACPI_OP_WALK_INFO ;
+
+
+ int AcpiDmIndent (int ) ;
+ int AcpiOsPrintf (char*) ;
 
 void
 AcpiDmEndDependentDescriptor (
-    ACPI_OP_WALK_INFO       *Info,
-    AML_RESOURCE            *Resource,
-    UINT32                  Length,
-    UINT32                  Level)
+    ACPI_OP_WALK_INFO *Info,
+    AML_RESOURCE *Resource,
+    UINT32 Length,
+    UINT32 Level)
 {
 
     AcpiDmIndent (Level);

@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  time_t ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int time_t ;
 struct tm {int dummy; } ;
-typedef  int int64_t ;
+typedef int int64_t ;
 struct TYPE_6__ {TYPE_1__* priv; } ;
 struct TYPE_5__ {double* var_values; } ;
-typedef  TYPE_1__ DrawTextContext ;
-typedef  TYPE_2__ AVFilterContext ;
-typedef  int /*<<< orphan*/  AVBPrint ;
+typedef TYPE_1__ DrawTextContext ;
+typedef TYPE_2__ AVFilterContext ;
+typedef int AVBPrint ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- double AV_TIME_BASE ; 
- int /*<<< orphan*/  EINVAL ; 
- size_t VAR_T ; 
- int /*<<< orphan*/  av_bprint_strftime (int /*<<< orphan*/ *,char const*,struct tm*) ; 
- int /*<<< orphan*/  av_bprintf (int /*<<< orphan*/ *,char*,...) ; 
- int /*<<< orphan*/  av_log (TYPE_2__*,int /*<<< orphan*/ ,char*,char const*) ; 
- int av_parse_time (int*,char*,int) ; 
- int /*<<< orphan*/  gmtime_r (int /*<<< orphan*/ *,struct tm*) ; 
- scalar_t__ isnan (double) ; 
- int llrint (double) ; 
- int /*<<< orphan*/  localtime_r (int /*<<< orphan*/ *,struct tm*) ; 
- int /*<<< orphan*/  strcmp (char const*,char*) ; 
+
+ int AVERROR (int ) ;
+ int AV_LOG_ERROR ;
+ double AV_TIME_BASE ;
+ int EINVAL ;
+ size_t VAR_T ;
+ int av_bprint_strftime (int *,char const*,struct tm*) ;
+ int av_bprintf (int *,char*,...) ;
+ int av_log (TYPE_2__*,int ,char*,char const*) ;
+ int av_parse_time (int*,char*,int) ;
+ int gmtime_r (int *,struct tm*) ;
+ scalar_t__ isnan (double) ;
+ int llrint (double) ;
+ int localtime_r (int *,struct tm*) ;
+ int strcmp (char const*,char*) ;
 
 __attribute__((used)) static int func_pts(AVFilterContext *ctx, AVBPrint *bp,
                     char *fct, unsigned argc, char **argv, int tag)

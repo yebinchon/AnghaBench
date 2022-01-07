@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_7__ {int MatrixMode; } ;
 struct TYPE_8__ {int* ModelViewMatrix; int* ProjectionMatrix; int* TextureMatrix; void* NewTextureMatrix; void* NewProjectionMatrix; void* NewModelViewMatrix; TYPE_1__ Transform; } ;
-typedef  int GLfloat ;
-typedef  TYPE_2__ GLcontext ;
+typedef int GLfloat ;
+typedef TYPE_2__ GLcontext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GL_INVALID_OPERATION ; 
-#define  GL_MODELVIEW 130 
-#define  GL_PROJECTION 129 
-#define  GL_TEXTURE 128 
- void* GL_TRUE ; 
- scalar_t__ INSIDE_BEGIN_END (TYPE_2__*) ; 
- int /*<<< orphan*/  gl_error (TYPE_2__*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  gl_problem (TYPE_2__*,char*) ; 
+
+ int GL_INVALID_OPERATION ;
+
+
+
+ void* GL_TRUE ;
+ scalar_t__ INSIDE_BEGIN_END (TYPE_2__*) ;
+ int gl_error (TYPE_2__*,int ,char*) ;
+ int gl_problem (TYPE_2__*,char*) ;
 
 void gl_Translatef( GLcontext *ctx, GLfloat x, GLfloat y, GLfloat z )
 {
@@ -35,25 +35,25 @@ void gl_Translatef( GLcontext *ctx, GLfloat x, GLfloat y, GLfloat z )
       return;
    }
    switch (ctx->Transform.MatrixMode) {
-      case GL_MODELVIEW:
+      case 130:
          m = ctx->ModelViewMatrix;
-	 ctx->NewModelViewMatrix = GL_TRUE;
-	 break;
-      case GL_PROJECTION:
+  ctx->NewModelViewMatrix = GL_TRUE;
+  break;
+      case 129:
          m = ctx->ProjectionMatrix;
-	 ctx->NewProjectionMatrix = GL_TRUE;
-	 break;
-      case GL_TEXTURE:
+  ctx->NewProjectionMatrix = GL_TRUE;
+  break;
+      case 128:
          m = ctx->TextureMatrix;
-	 ctx->NewTextureMatrix = GL_TRUE;
-	 break;
+  ctx->NewTextureMatrix = GL_TRUE;
+  break;
       default:
          gl_problem(ctx, "Bad matrix mode in gl_Translatef");
          return;
    }
 
-   m[12] = m[0] * x + m[4] * y + m[8]  * z + m[12];
-   m[13] = m[1] * x + m[5] * y + m[9]  * z + m[13];
+   m[12] = m[0] * x + m[4] * y + m[8] * z + m[12];
+   m[13] = m[1] * x + m[5] * y + m[9] * z + m[13];
    m[14] = m[2] * x + m[6] * y + m[10] * z + m[14];
    m[15] = m[3] * x + m[7] * y + m[11] * z + m[15];
 }

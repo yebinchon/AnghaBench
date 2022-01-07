@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct lev_seq_store_time {int type; int value_len; int /*<<< orphan*/  time; scalar_t__ data; } ;
 
-/* Variables and functions */
- int LEV_SEQ_STORE_TIME ; 
- int store (int,struct lev_seq_store_time*,int,scalar_t__,int,scalar_t__,int /*<<< orphan*/ ,int) ; 
+
+
+
+struct lev_seq_store_time {int type; int value_len; int time; scalar_t__ data; } ;
+
+
+ int LEV_SEQ_STORE_TIME ;
+ int store (int,struct lev_seq_store_time*,int,scalar_t__,int,scalar_t__,int ,int) ;
 
 int store_time (struct lev_seq_store_time *E) {
   int key_len = (E->type - LEV_SEQ_STORE_TIME) & 0xff;

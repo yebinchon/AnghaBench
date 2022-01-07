@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_6__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {TYPE_3__* pLevel; int /*<<< orphan*/ * pSeg; } ;
-struct TYPE_9__ {int nRight; int /*<<< orphan*/ * aRhs; } ;
+
+
+typedef struct TYPE_10__ TYPE_6__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_10__ {TYPE_3__* pLevel; int * pSeg; } ;
+struct TYPE_9__ {int nRight; int * aRhs; } ;
 struct TYPE_8__ {int nPtr; TYPE_6__* aPtr; TYPE_1__* pDb; } ;
-struct TYPE_7__ {int /*<<< orphan*/  pEnv; } ;
-typedef  int /*<<< orphan*/  SegmentPtr ;
-typedef  TYPE_2__ MultiCursor ;
-typedef  TYPE_3__ Level ;
+struct TYPE_7__ {int pEnv; } ;
+typedef int SegmentPtr ;
+typedef TYPE_2__ MultiCursor ;
+typedef TYPE_3__ Level ;
 
-/* Variables and functions */
- int LSM_NOMEM_BKPT ; 
- int LSM_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- TYPE_6__* lsmMallocZero (int /*<<< orphan*/ ,int) ; 
+
+ int LSM_NOMEM_BKPT ;
+ int LSM_OK ;
+ int assert (int) ;
+ TYPE_6__* lsmMallocZero (int ,int) ;
 
 __attribute__((used)) static int multiCursorAddRhs(MultiCursor *pCsr, Level *pLvl){
   int i;

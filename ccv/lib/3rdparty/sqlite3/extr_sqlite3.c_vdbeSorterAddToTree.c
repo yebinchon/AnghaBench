@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
 struct TYPE_12__ {TYPE_2__* pMerger; } ;
 struct TYPE_11__ {TYPE_1__* aReadr; } ;
 struct TYPE_10__ {TYPE_3__* pIncr; } ;
-typedef  int /*<<< orphan*/  SortSubtask ;
-typedef  TYPE_1__ PmaReader ;
-typedef  TYPE_2__ MergeEngine ;
-typedef  TYPE_3__ IncrMerger ;
+typedef int SortSubtask ;
+typedef TYPE_1__ PmaReader ;
+typedef TYPE_2__ MergeEngine ;
+typedef TYPE_3__ IncrMerger ;
 
-/* Variables and functions */
- int SORTER_MAX_MERGE_COUNT ; 
- int SQLITE_NOMEM_BKPT ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  vdbeIncrFree (TYPE_3__*) ; 
- int vdbeIncrMergerNew (int /*<<< orphan*/ *,TYPE_2__*,TYPE_3__**) ; 
- TYPE_2__* vdbeMergeEngineNew (int) ; 
+
+ int SORTER_MAX_MERGE_COUNT ;
+ int SQLITE_NOMEM_BKPT ;
+ int SQLITE_OK ;
+ int vdbeIncrFree (TYPE_3__*) ;
+ int vdbeIncrMergerNew (int *,TYPE_2__*,TYPE_3__**) ;
+ TYPE_2__* vdbeMergeEngineNew (int) ;
 
 __attribute__((used)) static int vdbeSorterAddToTree(
-  SortSubtask *pTask,             /* Task context */
-  int nDepth,                     /* Depth of tree according to TreeDepth() */
-  int iSeq,                       /* Sequence number of leaf within tree */
-  MergeEngine *pRoot,             /* Root of tree */
-  MergeEngine *pLeaf              /* Leaf to add to tree */
+  SortSubtask *pTask,
+  int nDepth,
+  int iSeq,
+  MergeEngine *pRoot,
+  MergeEngine *pLeaf
 ){
   int rc = SQLITE_OK;
   int nDiv = 1;

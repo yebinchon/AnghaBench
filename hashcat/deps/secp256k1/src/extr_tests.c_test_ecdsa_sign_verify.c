@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  secp256k1_scalar ;
-typedef  int /*<<< orphan*/  secp256k1_gej ;
-typedef  int /*<<< orphan*/  secp256k1_ge ;
-struct TYPE_2__ {int /*<<< orphan*/  ecmult_ctx; int /*<<< orphan*/  ecmult_gen_ctx; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHECK (int) ; 
- TYPE_1__* ctx ; 
- int /*<<< orphan*/  random_scalar_order_test (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  random_sign (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*) ; 
- int secp256k1_ecdsa_sig_verify (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  secp256k1_ecmult_gen (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  secp256k1_ge_set_gej (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int secp256k1_rand_bits (int) ; 
- int /*<<< orphan*/  secp256k1_scalar_add (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  secp256k1_scalar_set_int (int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int secp256k1_scalar ;
+typedef int secp256k1_gej ;
+typedef int secp256k1_ge ;
+struct TYPE_2__ {int ecmult_ctx; int ecmult_gen_ctx; } ;
+
+
+ int CHECK (int) ;
+ TYPE_1__* ctx ;
+ int random_scalar_order_test (int *) ;
+ int random_sign (int *,int *,int *,int *,int*) ;
+ int secp256k1_ecdsa_sig_verify (int *,int *,int *,int *,int *) ;
+ int secp256k1_ecmult_gen (int *,int *,int *) ;
+ int secp256k1_ge_set_gej (int *,int *) ;
+ int secp256k1_rand_bits (int) ;
+ int secp256k1_scalar_add (int *,int *,int *) ;
+ int secp256k1_scalar_set_int (int *,int) ;
 
 void test_ecdsa_sign_verify(void) {
     secp256k1_gej pubj;
@@ -41,7 +41,7 @@ void test_ecdsa_sign_verify(void) {
     secp256k1_ecmult_gen(&ctx->ecmult_gen_ctx, &pubj, &key);
     secp256k1_ge_set_gej(&pub, &pubj);
     getrec = secp256k1_rand_bits(1);
-    random_sign(&sigr, &sigs, &key, &msg, getrec?&recid:NULL);
+    random_sign(&sigr, &sigs, &key, &msg, getrec?&recid:((void*)0));
     if (getrec) {
         CHECK(recid >= 0 && recid < 4);
     }

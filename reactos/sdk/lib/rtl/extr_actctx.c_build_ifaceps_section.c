@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct guidsection_header {int size; unsigned int count; int index_offset; int /*<<< orphan*/  magic; } ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct guidsection_header {int size; unsigned int count; int index_offset; int magic; } ;
 struct guid_index {int dummy; } ;
-struct dll_redirect {int /*<<< orphan*/  entities; } ;
-struct assembly {unsigned int num_dlls; struct dll_redirect* dlls; int /*<<< orphan*/  entities; } ;
-typedef  unsigned int ULONG ;
+struct dll_redirect {int entities; } ;
+struct assembly {unsigned int num_dlls; struct dll_redirect* dlls; int entities; } ;
+typedef unsigned int ULONG ;
 struct TYPE_3__ {unsigned int num_assemblies; struct assembly* assemblies; } ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
-typedef  int /*<<< orphan*/  BYTE ;
-typedef  TYPE_1__ ACTIVATION_CONTEXT ;
+typedef int NTSTATUS ;
+typedef int BYTE ;
+typedef TYPE_1__ ACTIVATION_CONTEXT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GUIDSECTION_MAGIC ; 
- struct guidsection_header* RtlAllocateHeap (int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned int) ; 
- int /*<<< orphan*/  RtlGetProcessHeap () ; 
- int /*<<< orphan*/  STATUS_NO_MEMORY ; 
- int /*<<< orphan*/  STATUS_SUCCESS ; 
- int /*<<< orphan*/  add_ifaceps_record (struct guidsection_header*,int /*<<< orphan*/ *,struct guid_index**,unsigned int*,unsigned int) ; 
- int /*<<< orphan*/  get_ifaceps_datalen (int /*<<< orphan*/ *,unsigned int*,unsigned int*) ; 
- int /*<<< orphan*/  memset (struct guidsection_header*,int /*<<< orphan*/ ,int) ; 
+
+ int GUIDSECTION_MAGIC ;
+ struct guidsection_header* RtlAllocateHeap (int ,int ,unsigned int) ;
+ int RtlGetProcessHeap () ;
+ int STATUS_NO_MEMORY ;
+ int STATUS_SUCCESS ;
+ int add_ifaceps_record (struct guidsection_header*,int *,struct guid_index**,unsigned int*,unsigned int) ;
+ int get_ifaceps_datalen (int *,unsigned int*,unsigned int*) ;
+ int memset (struct guidsection_header*,int ,int) ;
 
 __attribute__((used)) static NTSTATUS build_ifaceps_section(ACTIVATION_CONTEXT* actctx, struct guidsection_header **section)
 {
@@ -38,7 +38,7 @@ __attribute__((used)) static NTSTATUS build_ifaceps_section(ACTIVATION_CONTEXT* 
     struct guid_index *index;
     ULONG data_offset;
 
-    /* compute section length */
+
     for (i = 0; i < actctx->num_assemblies; i++)
     {
         struct assembly *assembly = &actctx->assemblies[i];
@@ -58,7 +58,7 @@ __attribute__((used)) static NTSTATUS build_ifaceps_section(ACTIVATION_CONTEXT* 
 
     memset(header, 0, sizeof(*header));
     header->magic = GUIDSECTION_MAGIC;
-    header->size  = sizeof(*header);
+    header->size = sizeof(*header);
     header->count = count;
     header->index_offset = sizeof(*header);
     index = (struct guid_index*)((BYTE*)header + header->index_offset);

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct xmit_frame {int pg_num; int agg_num; scalar_t__ ack_report; int /*<<< orphan*/  frame_tag; int /*<<< orphan*/  attrib; int /*<<< orphan*/ * pxmitbuf; int /*<<< orphan*/ * buf_addr; } ;
+
+
+
+
+struct xmit_frame {int pg_num; int agg_num; scalar_t__ ack_report; int frame_tag; int attrib; int * pxmitbuf; int * buf_addr; } ;
 struct pkt_attrib {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DATA_FRAMETAG ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
+
+ int DATA_FRAMETAG ;
+ int memset (int *,int ,int) ;
 
 __attribute__((used)) static void rtw_init_xmitframe(struct xmit_frame *pxframe)
 {
-	if (pxframe) { /* default value setting */
-		pxframe->buf_addr = NULL;
-		pxframe->pxmitbuf = NULL;
+ if (pxframe) {
+  pxframe->buf_addr = ((void*)0);
+  pxframe->pxmitbuf = ((void*)0);
 
-		memset(&pxframe->attrib, 0, sizeof(struct pkt_attrib));
-		/* pxframe->attrib.psta = NULL; */
+  memset(&pxframe->attrib, 0, sizeof(struct pkt_attrib));
 
-		pxframe->frame_tag = DATA_FRAMETAG;
 
-		pxframe->pg_num = 1;
-		pxframe->agg_num = 1;
-		pxframe->ack_report = 0;
-	}
+  pxframe->frame_tag = DATA_FRAMETAG;
+
+  pxframe->pg_num = 1;
+  pxframe->agg_num = 1;
+  pxframe->ack_report = 0;
+ }
 }

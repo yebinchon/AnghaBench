@@ -1,32 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char* DOCBOOK ; 
- char* FUNCTION ; 
- char* KERNELDOC ; 
- int /*<<< orphan*/  exec_kernel_doc (char**) ; 
- scalar_t__ isspace (char) ; 
+ char* DOCBOOK ;
+ char* FUNCTION ;
+ char* KERNELDOC ;
+ int exec_kernel_doc (char**) ;
+ scalar_t__ isspace (char) ;
 
 __attribute__((used)) static void singfunc(char * filename, char * line)
 {
-	char *vec[200]; /* Enough for specific functions */
+ char *vec[200];
         int i, idx = 0;
         int startofsym = 1;
-	vec[idx++] = KERNELDOC;
-	vec[idx++] = DOCBOOK;
+ vec[idx++] = KERNELDOC;
+ vec[idx++] = DOCBOOK;
 
-        /* Split line up in individual parameters preceded by FUNCTION */
+
         for (i=0; line[i]; i++) {
                 if (isspace(line[i])) {
                         line[i] = '\0';
@@ -39,7 +31,7 @@ __attribute__((used)) static void singfunc(char * filename, char * line)
                         vec[idx++] = &line[i];
                 }
         }
-	vec[idx++] = filename;
-	vec[idx] = NULL;
-	exec_kernel_doc(vec);
+ vec[idx++] = filename;
+ vec[idx] = ((void*)0);
+ exec_kernel_doc(vec);
 }

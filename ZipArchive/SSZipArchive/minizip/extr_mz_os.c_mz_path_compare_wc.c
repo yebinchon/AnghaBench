@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  int32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MZ_EXIST_ERROR ; 
- int /*<<< orphan*/  MZ_OK ; 
- int /*<<< orphan*/  tolower (char const) ; 
+
+
+
+typedef int uint8_t ;
+typedef int int32_t ;
+
+
+ int MZ_EXIST_ERROR ;
+ int MZ_OK ;
+ int tolower (char const) ;
 
 int32_t mz_path_compare_wc(const char *path, const char *wildcard, uint8_t ignore_case)
 {
@@ -40,7 +40,7 @@ int32_t mz_path_compare_wc(const char *path, const char *wildcard, uint8_t ignor
             return MZ_EXIST_ERROR;
 
         default:
-            /* Ignore differences in path slashes on platforms */
+
             if ((*path == '\\' && *wildcard == '/') || (*path == '/' && *wildcard == '\\'))
                 break;
 

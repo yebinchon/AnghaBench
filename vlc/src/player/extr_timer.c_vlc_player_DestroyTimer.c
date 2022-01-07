@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  lock; TYPE_1__* sources; } ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int lock; TYPE_1__* sources; } ;
 struct TYPE_7__ {TYPE_2__ timer; } ;
-typedef  TYPE_3__ vlc_player_t ;
-struct TYPE_5__ {int /*<<< orphan*/  listeners; } ;
+typedef TYPE_3__ vlc_player_t ;
+struct TYPE_5__ {int listeners; } ;
 
-/* Variables and functions */
- size_t VLC_PLAYER_TIMER_TYPE_COUNT ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vlc_list_is_empty (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_mutex_destroy (int /*<<< orphan*/ *) ; 
+
+ size_t VLC_PLAYER_TIMER_TYPE_COUNT ;
+ int assert (int ) ;
+ int vlc_list_is_empty (int *) ;
+ int vlc_mutex_destroy (int *) ;
 
 void
 vlc_player_DestroyTimer(vlc_player_t *player)

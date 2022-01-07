@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_22__   TYPE_2__ ;
-typedef  struct TYPE_21__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int int64_t ;
-struct TYPE_22__ {int nb_samples; int /*<<< orphan*/ * linesize; } ;
+
+
+typedef struct TYPE_22__ TYPE_2__ ;
+typedef struct TYPE_21__ TYPE_1__ ;
+
+
+typedef int int64_t ;
+struct TYPE_22__ {int nb_samples; int * linesize; } ;
 struct TYPE_21__ {int in_sample_rate; scalar_t__ out_sample_rate; } ;
-typedef  TYPE_1__ SwrContext ;
-typedef  TYPE_2__ AVFrame ;
+typedef TYPE_1__ SwrContext ;
+typedef TYPE_2__ AVFrame ;
 
-/* Variables and functions */
- int av_frame_get_buffer (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int available_samples (TYPE_2__*) ; 
- int config_changed (TYPE_1__*,TYPE_2__*,TYPE_2__ const*) ; 
- int convert_frame (TYPE_1__*,TYPE_2__*,TYPE_2__ const*) ; 
- int /*<<< orphan*/  swr_close (TYPE_1__*) ; 
- int swr_config_frame (TYPE_1__*,TYPE_2__*,TYPE_2__ const*) ; 
- int swr_get_delay (TYPE_1__*,scalar_t__) ; 
- int swr_init (TYPE_1__*) ; 
- int /*<<< orphan*/  swr_is_initialized (TYPE_1__*) ; 
+
+ int av_frame_get_buffer (TYPE_2__*,int ) ;
+ int available_samples (TYPE_2__*) ;
+ int config_changed (TYPE_1__*,TYPE_2__*,TYPE_2__ const*) ;
+ int convert_frame (TYPE_1__*,TYPE_2__*,TYPE_2__ const*) ;
+ int swr_close (TYPE_1__*) ;
+ int swr_config_frame (TYPE_1__*,TYPE_2__*,TYPE_2__ const*) ;
+ int swr_get_delay (TYPE_1__*,scalar_t__) ;
+ int swr_init (TYPE_1__*) ;
+ int swr_is_initialized (TYPE_1__*) ;
 
 int swr_convert_frame(SwrContext *s,
                       AVFrame *out, const AVFrame *in)
@@ -41,7 +41,7 @@ int swr_convert_frame(SwrContext *s,
             return ret;
         setup = 1;
     } else {
-        // return as is or reconfigure for input changes?
+
         if ((ret = config_changed(s, out, in)))
             return ret;
     }

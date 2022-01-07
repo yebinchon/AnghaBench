@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {int i_type; TYPE_3__* subtitle; TYPE_2__* video; TYPE_1__* audio; int /*<<< orphan*/  i_original_fourcc; int /*<<< orphan*/  i_codec; int /*<<< orphan*/  i_id; } ;
-typedef  TYPE_4__ libvlc_media_track_t ;
-typedef  int /*<<< orphan*/  libvlc_media_t ;
-typedef  enum libvlc_meta_t { ____Placeholder_libvlc_meta_t } libvlc_meta_t ;
+
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_10__ {int i_type; TYPE_3__* subtitle; TYPE_2__* video; TYPE_1__* audio; int i_original_fourcc; int i_codec; int i_id; } ;
+typedef TYPE_4__ libvlc_media_track_t ;
+typedef int libvlc_media_t ;
+typedef enum libvlc_meta_t { ____Placeholder_libvlc_meta_t } libvlc_meta_t ;
 struct TYPE_9__ {char* psz_encoding; } ;
 struct TYPE_8__ {int i_width; int i_height; int i_sar_num; int i_sar_den; int i_frame_rate_num; int i_frame_rate_den; } ;
 struct TYPE_7__ {int i_channels; int i_rate; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (char*) ; 
- char* libvlc_media_get_meta (int /*<<< orphan*/ *,int) ; 
- unsigned int libvlc_media_tracks_get (int /*<<< orphan*/ *,TYPE_4__***) ; 
- int /*<<< orphan*/  libvlc_media_tracks_release (TYPE_4__**,unsigned int) ; 
- int libvlc_meta_DiscTotal ; 
- int libvlc_meta_Title ; 
-#define  libvlc_track_audio 131 
-#define  libvlc_track_text 130 
-#define  libvlc_track_unknown 129 
-#define  libvlc_track_video 128 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  test_log (char*,...) ; 
- int /*<<< orphan*/  vlc_assert_unreachable () ; 
+
+ int free (char*) ;
+ char* libvlc_media_get_meta (int *,int) ;
+ unsigned int libvlc_media_tracks_get (int *,TYPE_4__***) ;
+ int libvlc_media_tracks_release (TYPE_4__**,unsigned int) ;
+ int libvlc_meta_DiscTotal ;
+ int libvlc_meta_Title ;
+
+
+
+
+ int printf (char*,...) ;
+ int test_log (char*,...) ;
+ int vlc_assert_unreachable () ;
 
 __attribute__((used)) static void print_media(libvlc_media_t *media)
 {
@@ -51,20 +51,20 @@ __attribute__((used)) static void print_media(libvlc_media_t *media)
                 (const char *)&p_track->i_original_fourcc);
             switch (p_track->i_type)
             {
-            case libvlc_track_audio:
+            case 131:
                 printf("audio: channels: %u, rate: %u\n",
                        p_track->audio->i_channels, p_track->audio->i_rate);
                 break;
-            case libvlc_track_video:
+            case 128:
                 printf("video: %ux%u, sar: %u/%u, fps: %u/%u\n",
                        p_track->video->i_width, p_track->video->i_height,
                        p_track->video->i_sar_num, p_track->video->i_sar_den,
                        p_track->video->i_frame_rate_num, p_track->video->i_frame_rate_den);
                 break;
-            case libvlc_track_text:
+            case 130:
                 printf("text: %s\n", p_track->subtitle->psz_encoding);
                 break;
-            case libvlc_track_unknown:
+            case 129:
                 printf("unknown\n");
                 break;
             default:
@@ -80,7 +80,7 @@ __attribute__((used)) static void print_media(libvlc_media_t *media)
          i <= libvlc_meta_DiscTotal; ++i)
     {
         char *psz_meta = libvlc_media_get_meta(media, i);
-        if (psz_meta != NULL)
+        if (psz_meta != ((void*)0))
             test_log("\tmeta(%d): '%s'\n", i, psz_meta);
         free(psz_meta);
     }

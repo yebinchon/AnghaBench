@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  union cache_packed_local_copy_location {int dummy; } cache_packed_local_copy_location ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef union cache_packed_local_copy_location {int dummy; } cache_packed_local_copy_location ;
 struct cache_uri {int dummy; } ;
-struct TYPE_5__ {int flags; int /*<<< orphan*/  location; } ;
+struct TYPE_5__ {int flags; int location; } ;
 
-/* Variables and functions */
- int CACHE_LOCAL_COPY_FLAG_INT ; 
- int /*<<< orphan*/  CACHE_MAX_LOCAL_COPIES ; 
- TYPE_1__* LC ; 
- int cache_local_copy_get_flags (TYPE_1__*,union cache_packed_local_copy_location*) ; 
- int cache_local_copy_unpack (struct cache_uri*,TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cache_local_copy_unpack_location (struct cache_uri*,TYPE_1__*) ; 
- int lrand48 () ; 
- int /*<<< orphan*/  strcpy (char*,int /*<<< orphan*/ ) ; 
- int strlen (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vkprintf (int,char*,...) ; 
+
+ int CACHE_LOCAL_COPY_FLAG_INT ;
+ int CACHE_MAX_LOCAL_COPIES ;
+ TYPE_1__* LC ;
+ int cache_local_copy_get_flags (TYPE_1__*,union cache_packed_local_copy_location*) ;
+ int cache_local_copy_unpack (struct cache_uri*,TYPE_1__*,int ,int ,int *) ;
+ int cache_local_copy_unpack_location (struct cache_uri*,TYPE_1__*) ;
+ int lrand48 () ;
+ int strcpy (char*,int ) ;
+ int strlen (int ) ;
+ int vkprintf (int,char*,...) ;
 
 __attribute__((used)) static int cache_convert (struct cache_uri *U, char *output, int olen) {
-  int i, n = cache_local_copy_unpack (U, LC, CACHE_MAX_LOCAL_COPIES, 0, NULL);
+  int i, n = cache_local_copy_unpack (U, LC, CACHE_MAX_LOCAL_COPIES, 0, ((void*)0));
   if (n < 0) {
     vkprintf (1, "cache_convert: cache_local_copy_unpack failed.\n");
     return -1;

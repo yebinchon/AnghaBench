@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_5__ {TYPE_1__* o; } ;
 struct TYPE_4__ {scalar_t__ bin_obj; } ;
-typedef  TYPE_2__ RBinFile ;
-typedef  int /*<<< orphan*/  RBinAddr ;
+typedef TYPE_2__ RBinFile ;
+typedef int RBinAddr ;
 
-/* Variables and functions */
-#define  R_BIN_SYM_MAIN 128 
- int /*<<< orphan*/ * r_bin_mz_get_main_vaddr (scalar_t__) ; 
+
+
+ int * r_bin_mz_get_main_vaddr (scalar_t__) ;
 
 __attribute__((used)) static RBinAddr *binsym(RBinFile *bf, int type) {
-	RBinAddr *mzaddr = NULL;
-	if (bf && bf->o && bf->o->bin_obj) {
-		switch (type) {
-		case R_BIN_SYM_MAIN:
-			mzaddr = r_bin_mz_get_main_vaddr (bf->o->bin_obj);
-			break;
-		}
-	}
-	return mzaddr;
+ RBinAddr *mzaddr = ((void*)0);
+ if (bf && bf->o && bf->o->bin_obj) {
+  switch (type) {
+  case 128:
+   mzaddr = r_bin_mz_get_main_vaddr (bf->o->bin_obj);
+   break;
+  }
+ }
+ return mzaddr;
 }

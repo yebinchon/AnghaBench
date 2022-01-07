@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct request_queue {int dummy; } ;
-struct r5conf {TYPE_1__* disks; int /*<<< orphan*/  previous_raid_disks; int /*<<< orphan*/  raid_disks; } ;
+struct r5conf {TYPE_1__* disks; int previous_raid_disks; int raid_disks; } ;
 struct mddev {struct r5conf* private; } ;
-struct md_rdev {int /*<<< orphan*/  nr_pending; int /*<<< orphan*/  bdev; int /*<<< orphan*/  flags; } ;
-struct TYPE_2__ {int /*<<< orphan*/  rdev; } ;
+struct md_rdev {int nr_pending; int bdev; int flags; } ;
+struct TYPE_2__ {int rdev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Faulty ; 
- int /*<<< orphan*/  atomic_inc (int /*<<< orphan*/ *) ; 
- scalar_t__ atomic_read (int /*<<< orphan*/ *) ; 
- struct request_queue* bdev_get_queue (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  blk_unplug (struct request_queue*) ; 
- int max (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- struct md_rdev* rcu_dereference (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rcu_read_lock () ; 
- int /*<<< orphan*/  rcu_read_unlock () ; 
- int /*<<< orphan*/  rdev_dec_pending (struct md_rdev*,struct mddev*) ; 
- int /*<<< orphan*/  test_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int Faulty ;
+ int atomic_inc (int *) ;
+ scalar_t__ atomic_read (int *) ;
+ struct request_queue* bdev_get_queue (int ) ;
+ int blk_unplug (struct request_queue*) ;
+ int max (int ,int ) ;
+ struct md_rdev* rcu_dereference (int ) ;
+ int rcu_read_lock () ;
+ int rcu_read_unlock () ;
+ int rdev_dec_pending (struct md_rdev*,struct mddev*) ;
+ int test_bit (int ,int *) ;
 
 __attribute__((used)) static void unplug_slaves(struct mddev *mddev)
 {
-	struct r5conf *conf = mddev->private;
-	int i;
-	int devs = max(conf->raid_disks, conf->previous_raid_disks);
+ struct r5conf *conf = mddev->private;
+ int i;
+ int devs = max(conf->raid_disks, conf->previous_raid_disks);
 
-	rcu_read_lock();
-	for (i = 0; i < devs; i++) {
-		struct md_rdev *rdev = rcu_dereference(conf->disks[i].rdev);
-		if (rdev && !test_bit(Faulty, &rdev->flags) && atomic_read(&rdev->nr_pending)) {
-			struct request_queue *r_queue = bdev_get_queue(rdev->bdev);
+ rcu_read_lock();
+ for (i = 0; i < devs; i++) {
+  struct md_rdev *rdev = rcu_dereference(conf->disks[i].rdev);
+  if (rdev && !test_bit(Faulty, &rdev->flags) && atomic_read(&rdev->nr_pending)) {
+   struct request_queue *r_queue = bdev_get_queue(rdev->bdev);
 
-			atomic_inc(&rdev->nr_pending);
-			rcu_read_unlock();
+   atomic_inc(&rdev->nr_pending);
+   rcu_read_unlock();
 
-			blk_unplug(r_queue);
+   blk_unplug(r_queue);
 
-			rdev_dec_pending(rdev, mddev);
-			rcu_read_lock();
-		}
-	}
-	rcu_read_unlock();
+   rdev_dec_pending(rdev, mddev);
+   rcu_read_lock();
+  }
+ }
+ rcu_read_unlock();
 }

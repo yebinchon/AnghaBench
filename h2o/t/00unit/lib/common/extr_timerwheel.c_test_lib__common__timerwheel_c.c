@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  subtest (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_add_fixed_timers ; 
- int /*<<< orphan*/  test_add_rand_timers ; 
- int /*<<< orphan*/  test_del_timers ; 
- int /*<<< orphan*/  test_exhaustive ; 
- int /*<<< orphan*/  test_get_wake_at ; 
- int /*<<< orphan*/  test_invalid_timer ; 
- int /*<<< orphan*/  test_multiple_cascade_in_sparse_wheels ; 
- int /*<<< orphan*/  test_overflow ; 
- int /*<<< orphan*/  test_slot_calc ; 
+ int subtest (char*,int ) ;
+ int test_add_fixed_timers ;
+ int test_add_rand_timers ;
+ int test_del_timers ;
+ int test_exhaustive ;
+ int test_get_wake_at ;
+ int test_invalid_timer ;
+ int test_multiple_cascade_in_sparse_wheels ;
+ int test_overflow ;
+ int test_slot_calc ;
 
 void test_lib__common__timerwheel_c()
 {

@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int inited; int /*<<< orphan*/  ctx_j; void* print_level; int /*<<< orphan*/  sock; int /*<<< orphan*/  zctx; } ;
 
-/* Variables and functions */
- void* CLOUDLOG_DEBUG ; 
- void* CLOUDLOG_INFO ; 
- void* CLOUDLOG_WARNING ; 
- char* COMMA_VERSION ; 
- int /*<<< orphan*/  ZMQ_PUSH ; 
- int /*<<< orphan*/  cloudlog_bind_locked (char*,char*) ; 
- void* getenv (char*) ; 
- int /*<<< orphan*/  json_append_member (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  json_mkbool (int) ; 
- int /*<<< orphan*/  json_mkobject () ; 
- TYPE_1__ s ; 
- scalar_t__ strcmp (char const*,char*) ; 
- int /*<<< orphan*/  zmq_connect (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  zmq_ctx_new () ; 
- int /*<<< orphan*/  zmq_socket (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int inited; int ctx_j; void* print_level; int sock; int zctx; } ;
+
+
+ void* CLOUDLOG_DEBUG ;
+ void* CLOUDLOG_INFO ;
+ void* CLOUDLOG_WARNING ;
+ char* COMMA_VERSION ;
+ int ZMQ_PUSH ;
+ int cloudlog_bind_locked (char*,char*) ;
+ void* getenv (char*) ;
+ int json_append_member (int ,char*,int ) ;
+ int json_mkbool (int) ;
+ int json_mkobject () ;
+ TYPE_1__ s ;
+ scalar_t__ strcmp (char const*,char*) ;
+ int zmq_connect (int ,char*) ;
+ int zmq_ctx_new () ;
+ int zmq_socket (int ,int ) ;
 
 __attribute__((used)) static void cloudlog_init() {
   if (s.inited) return;
@@ -49,7 +49,7 @@ __attribute__((used)) static void cloudlog_init() {
     }
   }
 
-  // openpilot bindings
+
   char* dongle_id = getenv("DONGLE_ID");
   if (dongle_id) {
     cloudlog_bind_locked("dongle_id", dongle_id);
@@ -58,5 +58,5 @@ __attribute__((used)) static void cloudlog_init() {
   bool dirty = !getenv("CLEAN");
   json_append_member(s.ctx_j, "dirty", json_mkbool(dirty));
 
-  s.inited = true;
+  s.inited = 1;
 }

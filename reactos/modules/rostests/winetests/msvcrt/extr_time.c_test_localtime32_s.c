@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tm ;
+
+
+
+
+typedef int tm ;
 struct tm {int tm_sec; int tm_min; int tm_hour; int tm_mday; int tm_mon; int tm_year; int tm_wday; int tm_yday; int tm_isdst; } ;
-typedef  int /*<<< orphan*/  errno_t ;
-typedef  int __time32_t ;
+typedef int errno_t ;
+typedef int __time32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EBADF ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  memset (struct tm*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ok (int,char*,int,...) ; 
- int /*<<< orphan*/  p_localtime32_s (struct tm*,int*) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
+
+ int EBADF ;
+ int EINVAL ;
+ int errno ;
+ int memset (struct tm*,int ,int) ;
+ int ok (int,char*,int,...) ;
+ int p_localtime32_s (struct tm*,int*) ;
+ int win_skip (char*) ;
 
 __attribute__((used)) static void test_localtime32_s(void)
 {
@@ -37,19 +37,19 @@ __attribute__((used)) static void test_localtime32_s(void)
     }
 
     errno = EBADF;
-    err = p_localtime32_s(NULL, NULL);
+    err = p_localtime32_s(((void*)0), ((void*)0));
     ok(err == EINVAL, "Expected _localtime32_s to return EINVAL, got %d\n", err);
     ok(errno == EINVAL, "Expected errno to be EINVAL, got %d\n", errno);
 
     errno = EBADF;
     time = 0x12345678;
-    err = p_localtime32_s(NULL, &time);
+    err = p_localtime32_s(((void*)0), &time);
     ok(err == EINVAL, "Expected _localtime32_s to return EINVAL, got %d\n", err);
     ok(errno == EINVAL, "Expected errno to be EINVAL, got %d\n", errno);
 
     memset(&tm, 0, sizeof(tm));
     errno = EBADF;
-    err = p_localtime32_s(&tm, NULL);
+    err = p_localtime32_s(&tm, ((void*)0));
     ok(err == EINVAL, "Expected _localtime32_s to return EINVAL, got %d\n", err);
     ok(errno == EINVAL, "Expected errno to be EINVAL, got %d\n", errno);
     ok(tm.tm_sec == -1 && tm.tm_min == -1 && tm.tm_hour == -1 &&

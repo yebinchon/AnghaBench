@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_int ;
-struct encap_parms {int /*<<< orphan*/  arglen; int /*<<< orphan*/  args; } ;
-typedef  int /*<<< orphan*/  bool_t ;
-typedef  int /*<<< orphan*/  XDR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RPC_MAXDATASIZE ; 
- int /*<<< orphan*/  xdr_bytes (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int u_int ;
+struct encap_parms {int arglen; int args; } ;
+typedef int bool_t ;
+typedef int XDR ;
+
+
+ int RPC_MAXDATASIZE ;
+ int xdr_bytes (int *,int *,int *,int ) ;
 
 __attribute__((used)) static bool_t
 xdr_encap_parms(XDR *xdrs, struct encap_parms *epp)
 {
-	return (xdr_bytes(xdrs, &(epp->args), (u_int *) &(epp->arglen),
-	    RPC_MAXDATASIZE));
+ return (xdr_bytes(xdrs, &(epp->args), (u_int *) &(epp->arglen),
+     RPC_MAXDATASIZE));
 }

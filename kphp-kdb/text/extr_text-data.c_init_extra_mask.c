@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int MAX_EXTRA_MASK ; 
- int /*<<< orphan*/  assert (int) ; 
- int extra_ints ; 
- int extra_mask_intcount (int) ; 
- int /*<<< orphan*/  incore_messages ; 
- int index_extra_mask ; 
- int read_extra_mask ; 
- int text_shift ; 
- int /*<<< orphan*/  tree_nodes ; 
- int write_extra_mask ; 
+ int MAX_EXTRA_MASK ;
+ int assert (int) ;
+ int extra_ints ;
+ int extra_mask_intcount (int) ;
+ int incore_messages ;
+ int index_extra_mask ;
+ int read_extra_mask ;
+ int text_shift ;
+ int tree_nodes ;
+ int write_extra_mask ;
 
 __attribute__((used)) static void init_extra_mask (int value) {
   assert (!index_extra_mask && !tree_nodes && !incore_messages);

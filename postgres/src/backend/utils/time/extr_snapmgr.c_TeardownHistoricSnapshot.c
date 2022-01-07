@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/ * HistoricSnapshot ; 
- int /*<<< orphan*/ * tuplecid_data ; 
+ int * HistoricSnapshot ;
+ int * tuplecid_data ;
 
 void
 TeardownHistoricSnapshot(bool is_error)
 {
-	HistoricSnapshot = NULL;
-	tuplecid_data = NULL;
+ HistoricSnapshot = ((void*)0);
+ tuplecid_data = ((void*)0);
 }

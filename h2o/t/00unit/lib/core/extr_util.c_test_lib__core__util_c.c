@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  subtest (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_build_destination ; 
- int /*<<< orphan*/  test_build_destination_escaping ; 
- int /*<<< orphan*/  test_extract_push_path_from_link_header ; 
- int /*<<< orphan*/  test_parse_proxy_line ; 
+ int subtest (char*,int ) ;
+ int test_build_destination ;
+ int test_build_destination_escaping ;
+ int test_extract_push_path_from_link_header ;
+ int test_parse_proxy_line ;
 
 void test_lib__core__util_c()
 {

@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
+
+
+
+
+typedef int uint8_t ;
 struct dc_link {scalar_t__ sync_lt_in_progress; } ;
-typedef  int /*<<< orphan*/  state ;
+typedef int state ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DP_POWER_STATE_D0 ; 
- int /*<<< orphan*/  DP_POWER_STATE_D3 ; 
- int /*<<< orphan*/  DP_SET_POWER ; 
- int /*<<< orphan*/  core_link_write_dpcd (struct dc_link*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
+
+ int DP_POWER_STATE_D0 ;
+ int DP_POWER_STATE_D3 ;
+ int DP_SET_POWER ;
+ int core_link_write_dpcd (struct dc_link*,int ,int *,int) ;
 
 void dp_receiver_power_ctrl(struct dc_link *link, bool on)
 {
-	uint8_t state;
+ uint8_t state;
 
-	state = on ? DP_POWER_STATE_D0 : DP_POWER_STATE_D3;
+ state = on ? DP_POWER_STATE_D0 : DP_POWER_STATE_D3;
 
-	if (link->sync_lt_in_progress)
-		return;
+ if (link->sync_lt_in_progress)
+  return;
 
-	core_link_write_dpcd(link, DP_SET_POWER, &state,
-			sizeof(state));
+ core_link_write_dpcd(link, DP_SET_POWER, &state,
+   sizeof(state));
 }

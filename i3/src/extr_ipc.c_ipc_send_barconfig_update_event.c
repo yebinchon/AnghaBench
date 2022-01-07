@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ylength ;
-typedef  int /*<<< orphan*/  yajl_gen ;
-struct TYPE_4__ {int /*<<< orphan*/  id; } ;
-typedef  TYPE_1__ Barconfig ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DLOG (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  I3_IPC_EVENT_BARCONFIG_UPDATE ; 
- int /*<<< orphan*/  LC_NUMERIC ; 
- int /*<<< orphan*/  dump_bar_config (int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  free ; 
- int /*<<< orphan*/  get_buf ; 
- int /*<<< orphan*/  ipc_send_event (char*,int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  setlocale (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  y (int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  ygenalloc () ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int ylength ;
+typedef int yajl_gen ;
+struct TYPE_4__ {int id; } ;
+typedef TYPE_1__ Barconfig ;
+
+
+ int DLOG (char*,int ) ;
+ int I3_IPC_EVENT_BARCONFIG_UPDATE ;
+ int LC_NUMERIC ;
+ int dump_bar_config (int ,TYPE_1__*) ;
+ int free ;
+ int get_buf ;
+ int ipc_send_event (char*,int ,char const*) ;
+ int setlocale (int ,char*) ;
+ int y (int ,...) ;
+ int ygenalloc () ;
 
 void ipc_send_barconfig_update_event(Barconfig *barconfig) {
     DLOG("Issue barconfig_update event for id = %s\n", barconfig->id);

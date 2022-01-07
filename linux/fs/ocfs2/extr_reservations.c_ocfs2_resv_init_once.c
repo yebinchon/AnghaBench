@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ocfs2_alloc_reservation {int /*<<< orphan*/  r_lru; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INIT_LIST_HEAD (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memset (struct ocfs2_alloc_reservation*,int /*<<< orphan*/ ,int) ; 
+
+
+
+struct ocfs2_alloc_reservation {int r_lru; } ;
+
+
+ int INIT_LIST_HEAD (int *) ;
+ int memset (struct ocfs2_alloc_reservation*,int ,int) ;
 
 void ocfs2_resv_init_once(struct ocfs2_alloc_reservation *resv)
 {
-	memset(resv, 0, sizeof(*resv));
-	INIT_LIST_HEAD(&resv->r_lru);
+ memset(resv, 0, sizeof(*resv));
+ INIT_LIST_HEAD(&resv->r_lru);
 }

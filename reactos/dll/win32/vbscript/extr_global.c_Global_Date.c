@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vbdisp_t ;
-typedef  int /*<<< orphan*/  VARIANT ;
-struct TYPE_3__ {scalar_t__ wDayOfYear; int /*<<< orphan*/  st; } ;
-typedef  TYPE_1__ UDATE ;
-typedef  int /*<<< orphan*/  SYSTEMTIME ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  DATE ;
 
-/* Variables and functions */
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetLocalTime (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TRACE (char*) ; 
- int /*<<< orphan*/  VAR_DATEVALUEONLY ; 
- int /*<<< orphan*/  VarDateFromUdateEx (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  return_date (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int vbdisp_t ;
+typedef int VARIANT ;
+struct TYPE_3__ {scalar_t__ wDayOfYear; int st; } ;
+typedef TYPE_1__ UDATE ;
+typedef int SYSTEMTIME ;
+typedef int HRESULT ;
+typedef int DATE ;
+
+
+ scalar_t__ FAILED (int ) ;
+ int GetLocalTime (int *) ;
+ int TRACE (char*) ;
+ int VAR_DATEVALUEONLY ;
+ int VarDateFromUdateEx (TYPE_1__*,int ,int ,int *) ;
+ int return_date (int *,int ) ;
 
 __attribute__((used)) static HRESULT Global_Date(vbdisp_t *This, VARIANT *arg, unsigned args_cnt, VARIANT *res)
 {

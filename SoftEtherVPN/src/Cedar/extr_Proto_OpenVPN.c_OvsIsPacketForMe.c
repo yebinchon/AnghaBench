@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int UINT ;
-typedef  int UCHAR ;
 
-/* Variables and functions */
+
+
+
+typedef int UINT ;
+typedef int UCHAR ;
+
+
 
 bool OvsIsPacketForMe(const UCHAR *buf, const UINT size)
 {
-	if (buf == NULL || size != 2)
-	{
-		return false;
-	}
+ if (buf == ((void*)0) || size != 2)
+ {
+  return 0;
+ }
 
-	if (buf[0] == 0x00 && buf[1] == 0x0E)
-	{
-		return true;
-	}
+ if (buf[0] == 0x00 && buf[1] == 0x0E)
+ {
+  return 1;
+ }
 
-	return false;
+ return 0;
 }

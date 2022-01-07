@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {void* status; int /*<<< orphan*/  ssl; } ;
-typedef  TYPE_1__ PEER ;
 
-/* Variables and functions */
- void* PEER_ERROR ; 
- int /*<<< orphan*/  PEER_RETRY ; 
- void* PEER_SUCCESS ; 
- void* PEER_TEST_FAILURE ; 
- int SSL_ERROR_WANT_READ ; 
- int SSL_do_handshake (int /*<<< orphan*/ ) ; 
- int SSL_get_error (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  TEST_int_eq (void*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {void* status; int ssl; } ;
+typedef TYPE_1__ PEER ;
+
+
+ void* PEER_ERROR ;
+ int PEER_RETRY ;
+ void* PEER_SUCCESS ;
+ void* PEER_TEST_FAILURE ;
+ int SSL_ERROR_WANT_READ ;
+ int SSL_do_handshake (int ) ;
+ int SSL_get_error (int ,int) ;
+ int TEST_int_eq (void*,int ) ;
 
 __attribute__((used)) static void do_handshake_step(PEER *peer)
 {
@@ -37,7 +37,7 @@ __attribute__((used)) static void do_handshake_step(PEER *peer)
             peer->status = PEER_ERROR;
         } else {
             int error = SSL_get_error(peer->ssl, ret);
-            /* Memory bios should never block with SSL_ERROR_WANT_WRITE. */
+
             if (error != SSL_ERROR_WANT_READ)
                 peer->status = PEER_ERROR;
         }

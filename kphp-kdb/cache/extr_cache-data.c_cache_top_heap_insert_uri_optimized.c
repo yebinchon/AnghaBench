@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct cache_uri {int /*<<< orphan*/ * data; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct cache_uri {int * data; } ;
 struct amortization_counter {scalar_t__ value; } ;
 struct TYPE_2__ {int size; int max_size; struct cache_uri** H; } ;
 
-/* Variables and functions */
- scalar_t__ GET_HEAP_VALUE (int) ; 
- int /*<<< orphan*/  amortization_counter_update (int /*<<< orphan*/ ,struct amortization_counter*) ; 
- size_t heap_acounter_off ; 
- TYPE_1__* heap_foreach ; 
- int /*<<< orphan*/  tbl_foreach ; 
- scalar_t__ unlikely (int) ; 
+
+ scalar_t__ GET_HEAP_VALUE (int) ;
+ int amortization_counter_update (int ,struct amortization_counter*) ;
+ size_t heap_acounter_off ;
+ TYPE_1__* heap_foreach ;
+ int tbl_foreach ;
+ scalar_t__ unlikely (int) ;
 
 __attribute__((used)) static void cache_top_heap_insert_uri_optimized (struct cache_uri *U) {
   struct amortization_counter *C = ((struct amortization_counter *) &U->data[heap_acounter_off]);

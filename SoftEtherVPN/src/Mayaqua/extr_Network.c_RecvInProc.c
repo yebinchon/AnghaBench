@@ -1,153 +1,153 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ UINT64 ;
-typedef  scalar_t__ UINT ;
-typedef  int /*<<< orphan*/  UCHAR ;
-struct TYPE_12__ {int /*<<< orphan*/  Event; } ;
-struct TYPE_11__ {scalar_t__ Type; int Connected; int AsyncMode; TYPE_4__* RecvTube; int /*<<< orphan*/ * InProcRecvFifo; TYPE_4__* SendTube; scalar_t__ Disconnecting; } ;
+
+
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef scalar_t__ UINT64 ;
+typedef scalar_t__ UINT ;
+typedef int UCHAR ;
+struct TYPE_12__ {int Event; } ;
+struct TYPE_11__ {scalar_t__ Type; int Connected; int AsyncMode; TYPE_4__* RecvTube; int * InProcRecvFifo; TYPE_4__* SendTube; scalar_t__ Disconnecting; } ;
 struct TYPE_10__ {scalar_t__ DataSize; scalar_t__ Data; } ;
-typedef  TYPE_1__ TUBEDATA ;
-typedef  TYPE_2__ SOCK ;
-typedef  int /*<<< orphan*/  FIFO ;
+typedef TYPE_1__ TUBEDATA ;
+typedef TYPE_2__ SOCK ;
+typedef int FIFO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Copy (void*,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  Disconnect (TYPE_2__*) ; 
- int /*<<< orphan*/  FreeTubeData (TYPE_1__*) ; 
- scalar_t__ GetTimeout (TYPE_2__*) ; 
- int IsTubeConnected (TYPE_4__*) ; 
- scalar_t__ ReadFifo (int /*<<< orphan*/ *,void*,scalar_t__) ; 
- scalar_t__ SOCK_INPROC ; 
- scalar_t__ SOCK_LATER ; 
- scalar_t__ Tick64 () ; 
- TYPE_1__* TubeRecvAsync (TYPE_4__*) ; 
- int /*<<< orphan*/  Wait (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  WriteFifo (int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__) ; 
+
+ int Copy (void*,scalar_t__,scalar_t__) ;
+ int Disconnect (TYPE_2__*) ;
+ int FreeTubeData (TYPE_1__*) ;
+ scalar_t__ GetTimeout (TYPE_2__*) ;
+ int IsTubeConnected (TYPE_4__*) ;
+ scalar_t__ ReadFifo (int *,void*,scalar_t__) ;
+ scalar_t__ SOCK_INPROC ;
+ scalar_t__ SOCK_LATER ;
+ scalar_t__ Tick64 () ;
+ TYPE_1__* TubeRecvAsync (TYPE_4__*) ;
+ int Wait (int ,scalar_t__) ;
+ int WriteFifo (int *,int *,scalar_t__) ;
 
 UINT RecvInProc(SOCK *sock, void *data, UINT size)
 {
-	FIFO *f;
-	UINT ret;
-	UINT timeout;
-	UINT64 giveup_time;
-	TUBEDATA *d = NULL;
-	if (sock == NULL || sock->Type != SOCK_INPROC || sock->Disconnecting || sock->Connected == false)
-	{
-		return 0;
-	}
+ FIFO *f;
+ UINT ret;
+ UINT timeout;
+ UINT64 giveup_time;
+ TUBEDATA *d = ((void*)0);
+ if (sock == ((void*)0) || sock->Type != SOCK_INPROC || sock->Disconnecting || sock->Connected == 0)
+ {
+  return 0;
+ }
 
-	if (IsTubeConnected(sock->SendTube) == false)
-	{
-		return 0;
-	}
+ if (IsTubeConnected(sock->SendTube) == 0)
+ {
+  return 0;
+ }
 
-	f = sock->InProcRecvFifo;
-	if (f == NULL)
-	{
-		return 0;
-	}
+ f = sock->InProcRecvFifo;
+ if (f == ((void*)0))
+ {
+  return 0;
+ }
 
-	// If there is data in the FIFO, return it immediately
-	ret = ReadFifo(f, data, size);
-	if (ret != 0)
-	{
-		return ret;
-	}
 
-	timeout = GetTimeout(sock);
+ ret = ReadFifo(f, data, size);
+ if (ret != 0)
+ {
+  return ret;
+ }
 
-	giveup_time = Tick64() + (UINT)timeout;
+ timeout = GetTimeout(sock);
 
-	// When there is no data in the FIFO, read the next data from the tube
-	d = NULL;
+ giveup_time = Tick64() + (UINT)timeout;
 
-	while (true)
-	{
-		UINT64 now = 0;
-		UINT interval;
 
-		if (sock->AsyncMode == false)
-		{
-			now = Tick64();
+ d = ((void*)0);
 
-			if (now >= giveup_time)
-			{
-				break;
-			}
-		}
+ while (1)
+ {
+  UINT64 now = 0;
+  UINT interval;
 
-		d = TubeRecvAsync(sock->RecvTube);
+  if (sock->AsyncMode == 0)
+  {
+   now = Tick64();
 
-		if (d != NULL)
-		{
-			break;
-		}
+   if (now >= giveup_time)
+   {
+    break;
+   }
+  }
 
-		if (IsTubeConnected(sock->RecvTube) == false)
-		{
-			break;
-		}
+  d = TubeRecvAsync(sock->RecvTube);
 
-		if (sock->AsyncMode)
-		{
-			break;
-		}
+  if (d != ((void*)0))
+  {
+   break;
+  }
 
-		interval = (UINT)(giveup_time - now);
+  if (IsTubeConnected(sock->RecvTube) == 0)
+  {
+   break;
+  }
 
-		Wait(sock->RecvTube->Event, interval);
-	}
+  if (sock->AsyncMode)
+  {
+   break;
+  }
 
-	if (d == NULL)
-	{
-		if (IsTubeConnected(sock->RecvTube) == false)
-		{
-			return 0;
-		}
+  interval = (UINT)(giveup_time - now);
 
-		if (sock->AsyncMode == false)
-		{
-			// If a timeout occurs in synchronous mode, disconnect ir
-			Disconnect(sock);
+  Wait(sock->RecvTube->Event, interval);
+ }
 
-			return 0;
-		}
-		else
-		{
-			// If a timeout occurs in asynchronous mode, returns the blocking error 
-			return SOCK_LATER;
-		}
-	}
-	else
-	{
-		// If the received data is larger than the requested size, write the rest to FIFO
-		if (d->DataSize > size)
-		{
-			WriteFifo(f, ((UCHAR *)d->Data) + size, d->DataSize - size);
-			ret = size;
-		}
-		else
-		{
-			ret = d->DataSize;
-		}
+ if (d == ((void*)0))
+ {
+  if (IsTubeConnected(sock->RecvTube) == 0)
+  {
+   return 0;
+  }
 
-		Copy(data, d->Data, ret);
+  if (sock->AsyncMode == 0)
+  {
 
-		FreeTubeData(d);
+   Disconnect(sock);
 
-		return ret;
-	}
+   return 0;
+  }
+  else
+  {
+
+   return SOCK_LATER;
+  }
+ }
+ else
+ {
+
+  if (d->DataSize > size)
+  {
+   WriteFifo(f, ((UCHAR *)d->Data) + size, d->DataSize - size);
+   ret = size;
+  }
+  else
+  {
+   ret = d->DataSize;
+  }
+
+  Copy(data, d->Data, ret);
+
+  FreeTubeData(d);
+
+  return ret;
+ }
 }

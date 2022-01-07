@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct inode {int /*<<< orphan*/  i_ino; int /*<<< orphan*/  i_sb; scalar_t__ i_size; int /*<<< orphan*/  i_mode; int /*<<< orphan*/  i_data; } ;
 
-/* Variables and functions */
- scalar_t__ S_ISREG (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  clear_inode (struct inode*) ; 
- int /*<<< orphan*/  omfs_clear_range (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  omfs_shrink_inode (struct inode*) ; 
- int /*<<< orphan*/  truncate_inode_pages (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+struct inode {int i_ino; int i_sb; scalar_t__ i_size; int i_mode; int i_data; } ;
+
+
+ scalar_t__ S_ISREG (int ) ;
+ int clear_inode (struct inode*) ;
+ int omfs_clear_range (int ,int ,int) ;
+ int omfs_shrink_inode (struct inode*) ;
+ int truncate_inode_pages (int *,int ) ;
 
 __attribute__((used)) static void omfs_delete_inode(struct inode *inode)
 {
-	truncate_inode_pages(&inode->i_data, 0);
+ truncate_inode_pages(&inode->i_data, 0);
 
-	if (S_ISREG(inode->i_mode)) {
-		inode->i_size = 0;
-		omfs_shrink_inode(inode);
-	}
+ if (S_ISREG(inode->i_mode)) {
+  inode->i_size = 0;
+  omfs_shrink_inode(inode);
+ }
 
-	omfs_clear_range(inode->i_sb, inode->i_ino, 2);
-	clear_inode(inode);
+ omfs_clear_range(inode->i_sb, inode->i_ino, 2);
+ clear_inode(inode);
 }

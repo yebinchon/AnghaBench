@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  ADD_TEST (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_sanity_enum_size ; 
- int /*<<< orphan*/  test_sanity_memcmp ; 
- int /*<<< orphan*/  test_sanity_null_zero ; 
- int /*<<< orphan*/  test_sanity_range ; 
- int /*<<< orphan*/  test_sanity_sign ; 
- int /*<<< orphan*/  test_sanity_twos_complement ; 
- int /*<<< orphan*/  test_sanity_unsigned_conversion ; 
+ int ADD_TEST (int ) ;
+ int test_sanity_enum_size ;
+ int test_sanity_memcmp ;
+ int test_sanity_null_zero ;
+ int test_sanity_range ;
+ int test_sanity_sign ;
+ int test_sanity_twos_complement ;
+ int test_sanity_unsigned_conversion ;
 
 int setup_tests(void)
 {

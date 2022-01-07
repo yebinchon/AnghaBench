@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct xt_mtchk_param {struct ip6t_ipv6header_info* matchinfo; } ;
-struct ip6t_ipv6header_info {int invflags; int /*<<< orphan*/  modeflag; } ;
+struct ip6t_ipv6header_info {int invflags; int modeflag; } ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static bool ipv6header_mt6_check(const struct xt_mtchk_param *par)
 {
-	const struct ip6t_ipv6header_info *info = par->matchinfo;
+ const struct ip6t_ipv6header_info *info = par->matchinfo;
 
-	/* invflags is 0 or 0xff in hard mode */
-	if ((!info->modeflag) && info->invflags != 0x00 &&
-	    info->invflags != 0xFF)
-		return false;
 
-	return true;
+ if ((!info->modeflag) && info->invflags != 0x00 &&
+     info->invflags != 0xFF)
+  return 0;
+
+ return 1;
 }

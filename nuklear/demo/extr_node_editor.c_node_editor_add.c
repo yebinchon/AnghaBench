@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct node_editor {scalar_t__ node_count; struct node* node_buf; } ;
 struct nk_rect {int dummy; } ;
 struct nk_color {int dummy; } ;
-struct node {int input_count; int output_count; int /*<<< orphan*/  name; struct nk_rect bounds; struct nk_color color; scalar_t__ value; int /*<<< orphan*/  ID; } ;
-typedef  scalar_t__ nk_size ;
+struct node {int input_count; int output_count; int name; struct nk_rect bounds; struct nk_color color; scalar_t__ value; int ID; } ;
+typedef scalar_t__ nk_size ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NK_ASSERT (int) ; 
- scalar_t__ NK_LEN (struct node*) ; 
- struct nk_color nk_rgb (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  node_editor_push (struct node_editor*,struct node*) ; 
- int /*<<< orphan*/  strcpy (int /*<<< orphan*/ ,char const*) ; 
+
+ int NK_ASSERT (int) ;
+ scalar_t__ NK_LEN (struct node*) ;
+ struct nk_color nk_rgb (int,int ,int ) ;
+ int node_editor_push (struct node_editor*,struct node*) ;
+ int strcpy (int ,char const*) ;
 
 __attribute__((used)) static void
 node_editor_add(struct node_editor *editor, const char *name, struct nk_rect bounds,

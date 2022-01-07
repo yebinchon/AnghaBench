@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct type {int dummy; } ;
-typedef  int DIE_REF ;
+typedef int DIE_REF ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DIE_ID ; 
- int /*<<< orphan*/  DIE_NAME ; 
- int /*<<< orphan*/  FT_INTEGER ; 
- struct type* alloc_type (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bad_die_ref_complaint (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  complaint (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  current_objfile ; 
- int dbroff ; 
- struct type* dwarf_fundamental_type (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int numutypes ; 
- int /*<<< orphan*/  symfile_complaints ; 
- struct type** utypes ; 
+
+ int DIE_ID ;
+ int DIE_NAME ;
+ int FT_INTEGER ;
+ struct type* alloc_type (int ) ;
+ int bad_die_ref_complaint (int ,int ,int) ;
+ int complaint (int *,char*,int ,int ) ;
+ int current_objfile ;
+ int dbroff ;
+ struct type* dwarf_fundamental_type (int ,int ) ;
+ int numutypes ;
+ int symfile_complaints ;
+ struct type** utypes ;
 
 __attribute__((used)) static struct type *
 alloc_utype (DIE_REF die_ref, struct type *utypep)
@@ -40,19 +40,19 @@ alloc_utype (DIE_REF die_ref, struct type *utypep)
       utypep = dwarf_fundamental_type (current_objfile, FT_INTEGER);
       bad_die_ref_complaint (DIE_ID, DIE_NAME, die_ref);
     }
-  else if (*typep != NULL)
+  else if (*typep != ((void*)0))
     {
       utypep = *typep;
       complaint (&symfile_complaints,
-		 "DIE @ 0x%x \"%s\", internal error: duplicate user type allocation",
-		 DIE_ID, DIE_NAME);
+   "DIE @ 0x%x \"%s\", internal error: duplicate user type allocation",
+   DIE_ID, DIE_NAME);
     }
   else
     {
-      if (utypep == NULL)
-	{
-	  utypep = alloc_type (current_objfile);
-	}
+      if (utypep == ((void*)0))
+ {
+   utypep = alloc_type (current_objfile);
+ }
       *typep = utypep;
     }
   return (utypep);

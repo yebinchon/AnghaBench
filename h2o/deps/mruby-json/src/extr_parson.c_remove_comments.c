@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- size_t strlen (char const*) ; 
- scalar_t__ strncmp (char*,char const*,size_t) ; 
- char* strstr (char*,char const*) ; 
+ size_t strlen (char const*) ;
+ scalar_t__ strncmp (char*,char const*,size_t) ;
+ char* strstr (char*,char const*) ;
 
 __attribute__((used)) static void remove_comments(char *string, const char *start_token, const char *end_token) {
     int in_string = 0, escaped = 0;
     size_t i;
-    char *ptr = NULL, current_char;
+    char *ptr = ((void*)0), current_char;
     size_t start_token_len = strlen(start_token);
     size_t end_token_len = strlen(end_token);
     if (start_token_len == 0 || end_token_len == 0) {

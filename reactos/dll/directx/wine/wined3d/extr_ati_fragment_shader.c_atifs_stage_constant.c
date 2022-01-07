@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct wined3d_state {int /*<<< orphan*/ ** texture_states; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct wined3d_state {int ** texture_states; } ;
 struct wined3d_gl_info {int dummy; } ;
 struct wined3d_context {struct atifs_context_private_data* fragment_pipe_data; struct wined3d_gl_info* gl_info; } ;
-struct wined3d_color {int /*<<< orphan*/  r; } ;
+struct wined3d_color {int r; } ;
 struct atifs_context_private_data {TYPE_1__* last_shader; } ;
 struct TYPE_2__ {scalar_t__* constants; } ;
-typedef  int DWORD ;
+typedef int DWORD ;
 
-/* Variables and functions */
- scalar_t__ ATIFS_CONSTANT_STAGE ; 
- int /*<<< orphan*/  ATIFS_CONST_STAGE (int) ; 
- int /*<<< orphan*/  GL_EXTCALL (int /*<<< orphan*/ ) ; 
- int STATE_TEXTURESTAGE (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int WINED3D_HIGHEST_TEXTURE_STATE ; 
- size_t WINED3D_TSS_CONSTANT ; 
- int /*<<< orphan*/  checkGLcall (char*) ; 
- int /*<<< orphan*/  glSetFragmentShaderConstantATI (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  wined3d_color_from_d3dcolor (struct wined3d_color*,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ ATIFS_CONSTANT_STAGE ;
+ int ATIFS_CONST_STAGE (int) ;
+ int GL_EXTCALL (int ) ;
+ int STATE_TEXTURESTAGE (int ,int ) ;
+ int WINED3D_HIGHEST_TEXTURE_STATE ;
+ size_t WINED3D_TSS_CONSTANT ;
+ int checkGLcall (char*) ;
+ int glSetFragmentShaderConstantATI (int ,int *) ;
+ int wined3d_color_from_d3dcolor (struct wined3d_color*,int ) ;
 
 __attribute__((used)) static void atifs_stage_constant(struct wined3d_context *context, const struct wined3d_state *state, DWORD state_id)
 {

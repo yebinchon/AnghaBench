@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int numslaves; TYPE_2__** slaves; } ;
-typedef  TYPE_1__ clusterNode ;
+typedef TYPE_1__ clusterNode ;
 struct TYPE_6__ {long long repl_offset; TYPE_1__* slaveof; } ;
 
-/* Variables and functions */
- TYPE_2__* myself ; 
- int /*<<< orphan*/  nodeCantFailover (TYPE_2__*) ; 
- int /*<<< orphan*/  nodeIsSlave (TYPE_2__*) ; 
- long long replicationGetSlaveOffset () ; 
- int /*<<< orphan*/  serverAssert (int /*<<< orphan*/ ) ; 
+
+ TYPE_2__* myself ;
+ int nodeCantFailover (TYPE_2__*) ;
+ int nodeIsSlave (TYPE_2__*) ;
+ long long replicationGetSlaveOffset () ;
+ int serverAssert (int ) ;
 
 int clusterGetSlaveRank(void) {
     long long myoffset;
@@ -30,7 +30,7 @@ int clusterGetSlaveRank(void) {
 
     serverAssert(nodeIsSlave(myself));
     master = myself->slaveof;
-    if (master == NULL) return 0; /* Never called by slaves without master. */
+    if (master == ((void*)0)) return 0;
 
     myoffset = replicationGetSlaveOffset();
     for (j = 0; j < master->numslaves; j++)

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct Tracks {int /*<<< orphan*/  nb_tracks; int /*<<< orphan*/  member_0; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  clean_tracks (struct Tracks*) ; 
- scalar_t__ handle_file (struct Tracks*,char*) ; 
- int /*<<< orphan*/  output_mpd (struct Tracks*,char const*) ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
- int usage (char*,int) ; 
+
+
+
+struct Tracks {int nb_tracks; int member_0; } ;
+
+
+ int clean_tracks (struct Tracks*) ;
+ scalar_t__ handle_file (struct Tracks*,char*) ;
+ int output_mpd (struct Tracks*,char const*) ;
+ int strcmp (char*,char*) ;
+ int usage (char*,int) ;
 
 int main(int argc, char **argv)
 {
-    const char *out = NULL;
+    const char *out = ((void*)0);
     struct Tracks tracks = { 0 };
     int i;
 

@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u64 ;
-struct compress_ioctl {int /*<<< orphan*/  CompressionState; } ;
+
+
+
+
+typedef int u64 ;
+struct compress_ioctl {int CompressionState; } ;
 struct cifs_tcon {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CIFSMaxBufSize ; 
- int /*<<< orphan*/  COMPRESSION_FORMAT_DEFAULT ; 
- int /*<<< orphan*/  FSCTL_SET_COMPRESSION ; 
- int /*<<< orphan*/  FYI ; 
- int SMB2_ioctl (unsigned int const,struct cifs_tcon*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,char*,int,int /*<<< orphan*/ ,char**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cifs_dbg (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  cpu_to_le16 (int /*<<< orphan*/ ) ; 
+
+ int CIFSMaxBufSize ;
+ int COMPRESSION_FORMAT_DEFAULT ;
+ int FSCTL_SET_COMPRESSION ;
+ int FYI ;
+ int SMB2_ioctl (unsigned int const,struct cifs_tcon*,int ,int ,int ,int,char*,int,int ,char**,int *) ;
+ int cifs_dbg (int ,char*,int) ;
+ int cpu_to_le16 (int ) ;
 
 int
 SMB2_set_compression(const unsigned int xid, struct cifs_tcon *tcon,
-		     u64 persistent_fid, u64 volatile_fid)
+       u64 persistent_fid, u64 volatile_fid)
 {
-	int rc;
-	struct  compress_ioctl fsctl_input;
-	char *ret_data = NULL;
+ int rc;
+ struct compress_ioctl fsctl_input;
+ char *ret_data = ((void*)0);
 
-	fsctl_input.CompressionState =
-			cpu_to_le16(COMPRESSION_FORMAT_DEFAULT);
+ fsctl_input.CompressionState =
+   cpu_to_le16(COMPRESSION_FORMAT_DEFAULT);
 
-	rc = SMB2_ioctl(xid, tcon, persistent_fid, volatile_fid,
-			FSCTL_SET_COMPRESSION, true /* is_fsctl */,
-			(char *)&fsctl_input /* data input */,
-			2 /* in data len */, CIFSMaxBufSize /* max out data */,
-			&ret_data /* out data */, NULL);
+ rc = SMB2_ioctl(xid, tcon, persistent_fid, volatile_fid,
+   FSCTL_SET_COMPRESSION, 1 ,
+   (char *)&fsctl_input ,
+   2 , CIFSMaxBufSize ,
+   &ret_data , ((void*)0));
 
-	cifs_dbg(FYI, "set compression rc %d\n", rc);
+ cifs_dbg(FYI, "set compression rc %d\n", rc);
 
-	return rc;
+ return rc;
 }

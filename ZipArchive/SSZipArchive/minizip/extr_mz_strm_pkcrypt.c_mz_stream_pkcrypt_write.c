@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint16_t ;
-struct TYPE_3__ {int /*<<< orphan*/  base; } ;
-struct TYPE_4__ {int /*<<< orphan*/  total_out; int /*<<< orphan*/ * buffer; TYPE_1__ stream; } ;
-typedef  TYPE_2__ mz_stream_pkcrypt ;
-typedef  scalar_t__ int32_t ;
 
-/* Variables and functions */
- scalar_t__ MZ_PARAM_ERROR ; 
- int /*<<< orphan*/  mz_stream_pkcrypt_encode (void*,int /*<<< orphan*/  const,int /*<<< orphan*/ ) ; 
- scalar_t__ mz_stream_write (int /*<<< orphan*/ ,int /*<<< orphan*/ *,scalar_t__) ; 
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint16_t ;
+struct TYPE_3__ {int base; } ;
+struct TYPE_4__ {int total_out; int * buffer; TYPE_1__ stream; } ;
+typedef TYPE_2__ mz_stream_pkcrypt ;
+typedef scalar_t__ int32_t ;
+
+
+ scalar_t__ MZ_PARAM_ERROR ;
+ int mz_stream_pkcrypt_encode (void*,int const,int ) ;
+ scalar_t__ mz_stream_write (int ,int *,scalar_t__) ;
 
 int32_t mz_stream_pkcrypt_write(void *stream, const void *buf, int32_t size)
 {

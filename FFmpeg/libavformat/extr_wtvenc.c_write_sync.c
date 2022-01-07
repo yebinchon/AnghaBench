@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  int64_t ;
-struct TYPE_6__ {int /*<<< orphan*/  last_chunk_pos; int /*<<< orphan*/  serial; int /*<<< orphan*/  nb_sp_pairs; int /*<<< orphan*/  sp_pairs; int /*<<< orphan*/  last_timestamp_pos; int /*<<< orphan*/  first_index_pos; } ;
-typedef  TYPE_1__ WtvContext ;
-struct TYPE_7__ {TYPE_1__* priv_data; int /*<<< orphan*/ * pb; } ;
-typedef  int /*<<< orphan*/  AVIOContext ;
-typedef  TYPE_2__ AVFormatContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  add_serial_pair (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  avio_wl64 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ff_sync_guid ; 
- int /*<<< orphan*/  finish_chunk (TYPE_2__*) ; 
- int /*<<< orphan*/  write_chunk_header (TYPE_2__*,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int int64_t ;
+struct TYPE_6__ {int last_chunk_pos; int serial; int nb_sp_pairs; int sp_pairs; int last_timestamp_pos; int first_index_pos; } ;
+typedef TYPE_1__ WtvContext ;
+struct TYPE_7__ {TYPE_1__* priv_data; int * pb; } ;
+typedef int AVIOContext ;
+typedef TYPE_2__ AVFormatContext ;
+
+
+ int add_serial_pair (int *,int *,int ,int ) ;
+ int avio_wl64 (int *,int ) ;
+ int ff_sync_guid ;
+ int finish_chunk (TYPE_2__*) ;
+ int write_chunk_header (TYPE_2__*,int *,int,int ) ;
 
 __attribute__((used)) static void write_sync(AVFormatContext *s)
 {

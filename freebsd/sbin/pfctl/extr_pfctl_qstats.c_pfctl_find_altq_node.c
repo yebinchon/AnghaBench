@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  ifname; int /*<<< orphan*/  qname; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int ifname; int qname; } ;
 struct pf_altq_node {struct pf_altq_node* children; TYPE_1__ altq; struct pf_altq_node* next; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  strcmp (int /*<<< orphan*/ ,char const*) ; 
+
+ int strcmp (int ,char const*) ;
 
 struct pf_altq_node *
 pfctl_find_altq_node(struct pf_altq_node *root, const char *qname,
     const char *ifname)
 {
-	struct pf_altq_node	*node, *child;
+ struct pf_altq_node *node, *child;
 
-	for (node = root; node != NULL; node = node->next) {
-		if (!strcmp(node->altq.qname, qname)
-		    && !(strcmp(node->altq.ifname, ifname)))
-			return (node);
-		if (node->children != NULL) {
-			child = pfctl_find_altq_node(node->children, qname,
-			    ifname);
-			if (child != NULL)
-				return (child);
-		}
-	}
-	return (NULL);
+ for (node = root; node != ((void*)0); node = node->next) {
+  if (!strcmp(node->altq.qname, qname)
+      && !(strcmp(node->altq.ifname, ifname)))
+   return (node);
+  if (node->children != ((void*)0)) {
+   child = pfctl_find_altq_node(node->children, qname,
+       ifname);
+   if (child != ((void*)0))
+    return (child);
+  }
+ }
+ return (((void*)0));
 }

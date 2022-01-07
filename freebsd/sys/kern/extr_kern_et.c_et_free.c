@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct eventtimer {scalar_t__ et_active; } ;
 
-/* Variables and functions */
- int ENXIO ; 
+
+ int ENXIO ;
 
 int
 et_free(struct eventtimer *et)
 {
 
-	if (!et->et_active)
-		return (ENXIO);
+ if (!et->et_active)
+  return (ENXIO);
 
-	et->et_active = 0;
-	return (0);
+ et->et_active = 0;
+ return (0);
 }

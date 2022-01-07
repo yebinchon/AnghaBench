@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-struct TYPE_2__ {int /*<<< orphan*/  fd; } ;
-typedef  TYPE_1__ SFdObj ;
 
-/* Variables and functions */
- scalar_t__ send (int /*<<< orphan*/ ,char*,size_t,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+struct TYPE_2__ {int fd; } ;
+typedef TYPE_1__ SFdObj ;
+
+
+ scalar_t__ send (int ,char*,size_t,int ) ;
 
 int taosSendTcpServerData(uint32_t ip, short port, char *data, int len, void *chandle) {
   SFdObj *pFdObj = (SFdObj *)chandle;
 
-  if (chandle == NULL) return -1;
+  if (chandle == ((void*)0)) return -1;
 
   return (int)send(pFdObj->fd, data, (size_t)len, 0);
 }

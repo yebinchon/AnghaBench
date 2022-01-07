@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  unsigned int u_int32_t ;
+
+
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef unsigned int u_int32_t ;
 struct mqueue {scalar_t__ top; } ;
 struct mbuf {int dummy; } ;
 struct TYPE_6__ {scalar_t__ state; } ;
 struct TYPE_8__ {TYPE_2__ fsm; } ;
-struct link {int /*<<< orphan*/  name; TYPE_4__ ccp; } ;
+struct link {int name; TYPE_4__ ccp; } ;
 struct TYPE_5__ {scalar_t__ state; struct bundle* bundle; } ;
 struct ipv6cp {struct mqueue* Queue; TYPE_1__ fsm; } ;
-struct TYPE_7__ {int /*<<< orphan*/  alive; } ;
+struct TYPE_7__ {int alive; } ;
 struct bundle {TYPE_3__ filter; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_INET6 ; 
- int /*<<< orphan*/  FilterCheck (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,unsigned int*) ; 
- int IPV6CP_QUEUES (struct ipv6cp*) ; 
- int /*<<< orphan*/  LogPHASE ; 
- int /*<<< orphan*/  MBUF_CTOP (struct mbuf*) ; 
- int /*<<< orphan*/  PROTO_IPV6 ; 
- scalar_t__ ST_OPENED ; 
- int /*<<< orphan*/  bundle_StartIdleTimer (struct bundle*,unsigned int) ; 
- scalar_t__ ccp_Required (TYPE_4__*) ; 
- int /*<<< orphan*/  ipv6cp_AddOutOctets (struct ipv6cp*,int) ; 
- int /*<<< orphan*/  link_PushPacket (struct link*,struct mbuf*,struct bundle*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  log_Printf (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- struct mbuf* m_dequeue (struct mqueue*) ; 
- int m_length (struct mbuf*) ; 
- struct mbuf* m_pullup (struct mbuf*) ; 
- struct mbuf* mbuf_Read (struct mbuf*,unsigned int*,int) ; 
+
+ int AF_INET6 ;
+ int FilterCheck (int ,int ,int *,unsigned int*) ;
+ int IPV6CP_QUEUES (struct ipv6cp*) ;
+ int LogPHASE ;
+ int MBUF_CTOP (struct mbuf*) ;
+ int PROTO_IPV6 ;
+ scalar_t__ ST_OPENED ;
+ int bundle_StartIdleTimer (struct bundle*,unsigned int) ;
+ scalar_t__ ccp_Required (TYPE_4__*) ;
+ int ipv6cp_AddOutOctets (struct ipv6cp*,int) ;
+ int link_PushPacket (struct link*,struct mbuf*,struct bundle*,int ,int ) ;
+ int log_Printf (int ,char*,int ) ;
+ struct mbuf* m_dequeue (struct mqueue*) ;
+ int m_length (struct mbuf*) ;
+ struct mbuf* m_pullup (struct mbuf*) ;
+ struct mbuf* mbuf_Read (struct mbuf*,unsigned int*,int) ;
 
 int
 ipv6cp_PushPacket(struct ipv6cp *ipv6cp, struct link *l)
@@ -56,9 +56,9 @@ ipv6cp_PushPacket(struct ipv6cp *ipv6cp, struct link *l)
   if (ipv6cp->fsm.state != ST_OPENED)
     return 0;
 
-  /*
-   * If ccp is not open but is required, do nothing.
-   */
+
+
+
   if (l->ccp.fsm.state != ST_OPENED && ccp_Required(&l->ccp)) {
     log_Printf(LogPHASE, "%s: Not transmitting... waiting for CCP\n", l->name);
     return 0;

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  CURLM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CURL_GLOBAL_ALL ; 
- int /*<<< orphan*/  curl_global_cleanup () ; 
- int /*<<< orphan*/  curl_multi_cleanup (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  global_init (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  multi_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  printf (char*) ; 
+
+
+
+typedef int CURLM ;
+
+
+ int CURL_GLOBAL_ALL ;
+ int curl_global_cleanup () ;
+ int curl_multi_cleanup (int *) ;
+ int global_init (int ) ;
+ int multi_init (int *) ;
+ int printf (char*) ;
 
 int test(char *URL)
 {
   int res = 0;
-  CURLM *m = NULL;
+  CURLM *m = ((void*)0);
 
   (void)URL;
 
@@ -33,7 +33,7 @@ int test(char *URL)
 
 test_cleanup:
 
-  /* proper cleanup sequence - type PB */
+
 
   curl_multi_cleanup(m);
   curl_global_cleanup();

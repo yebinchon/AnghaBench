@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct aic7xxx_host {int features; int /*<<< orphan*/  pause; } ;
 
-/* Variables and functions */
- int AHC_ULTRA2 ; 
- int /*<<< orphan*/  CCSCBCTL ; 
- int /*<<< orphan*/  HCNTRL ; 
- int PAUSE ; 
- int aic_inb (struct aic7xxx_host*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  aic_outb (struct aic7xxx_host*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct aic7xxx_host {int features; int pause; } ;
+
+
+ int AHC_ULTRA2 ;
+ int CCSCBCTL ;
+ int HCNTRL ;
+ int PAUSE ;
+ int aic_inb (struct aic7xxx_host*,int ) ;
+ int aic_outb (struct aic7xxx_host*,int ,int ) ;
 
 __attribute__((used)) static void
 pause_sequencer(struct aic7xxx_host *p)

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  http_parser ;
-struct TYPE_2__ {int /*<<< orphan*/  should_keep_alive; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  http_should_keep_alive (int /*<<< orphan*/ *) ; 
- int message_complete_cb (int /*<<< orphan*/ *) ; 
- TYPE_1__* messages ; 
- size_t num_messages ; 
- int /*<<< orphan*/  parser ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int http_parser ;
+struct TYPE_2__ {int should_keep_alive; } ;
+
+
+ int http_should_keep_alive (int *) ;
+ int message_complete_cb (int *) ;
+ TYPE_1__* messages ;
+ size_t num_messages ;
+ int parser ;
 
 int
 connect_message_complete_cb (http_parser *p)

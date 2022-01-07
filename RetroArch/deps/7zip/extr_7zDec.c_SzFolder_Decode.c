@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint64_t ;
-typedef  int /*<<< orphan*/  SRes ;
-typedef  int /*<<< orphan*/  ISzAlloc ;
-typedef  int /*<<< orphan*/  ILookInStream ;
-typedef  int /*<<< orphan*/  CSzFolder ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IAlloc_Free (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SzFolder_Decode2 (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,size_t,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint64_t ;
+typedef int SRes ;
+typedef int ISzAlloc ;
+typedef int ILookInStream ;
+typedef int CSzFolder ;
+
+
+ int IAlloc_Free (int *,int *) ;
+ int SzFolder_Decode2 (int const*,int const*,int *,int ,int *,size_t,int *,int **) ;
 
 SRes SzFolder_Decode(const CSzFolder *folder, const uint64_t *packSizes,
     ILookInStream *inStream, uint64_t startPos,

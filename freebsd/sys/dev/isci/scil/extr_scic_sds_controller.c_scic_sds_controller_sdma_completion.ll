@@ -1,0 +1,125 @@
+; ModuleID = '/home/carl/AnghaBench/freebsd/sys/dev/isci/scil/extr_scic_sds_controller.c_scic_sds_controller_sdma_completion.c'
+source_filename = "/home/carl/AnghaBench/freebsd/sys/dev/isci/scil/extr_scic_sds_controller.c_scic_sds_controller_sdma_completion.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+%struct.TYPE_5__ = type { i32**, i32** }
+
+@SCIC_LOG_OBJECT_CONTROLLER = common dso_local global i32 0, align 4
+@SCIC_LOG_OBJECT_SMP_IO_REQUEST = common dso_local global i32 0, align 4
+@SCIC_LOG_OBJECT_SSP_IO_REQUEST = common dso_local global i32 0, align 4
+@SCIC_LOG_OBJECT_STP_IO_REQUEST = common dso_local global i32 0, align 4
+@.str = private unnamed_addr constant [52 x i8] c"SCIC SDS Completion type SDMA %x for io request %x\0A\00", align 1
+@SCIC_LOG_OBJECT_SSP_REMOTE_TARGET = common dso_local global i32 0, align 4
+@SCIC_LOG_OBJECT_SMP_REMOTE_TARGET = common dso_local global i32 0, align 4
+@SCIC_LOG_OBJECT_STP_REMOTE_TARGET = common dso_local global i32 0, align 4
+@.str.1 = private unnamed_addr constant [55 x i8] c"SCIC SDS Completion type SDMA %x for remote device %x\0A\00", align 1
+@.str.2 = private unnamed_addr constant [53 x i8] c"SCIC SDS Completion unknown SDMA completion type %x\0A\00", align 1
+@SCI_BASE_CONTROLLER_STATE_FAILED = common dso_local global i32 0, align 4
+@llvm.used = appending global [1 x i8*] [i8* bitcast (void (%struct.TYPE_5__*, i64)* @scic_sds_controller_sdma_completion to i8*)], section "llvm.metadata"
+
+; Function Attrs: noinline nounwind optnone uwtable
+define internal void @scic_sds_controller_sdma_completion(%struct.TYPE_5__* %0, i64 %1) #0 {
+  %3 = alloca %struct.TYPE_5__*, align 8
+  %4 = alloca i64, align 8
+  %5 = alloca i64, align 8
+  %6 = alloca i32*, align 8
+  %7 = alloca i32*, align 8
+  store %struct.TYPE_5__* %0, %struct.TYPE_5__** %3, align 8
+  store i64 %1, i64* %4, align 8
+  %8 = load i64, i64* %4, align 8
+  %9 = call i64 @SCU_GET_COMPLETION_INDEX(i64 %8)
+  store i64 %9, i64* %5, align 8
+  %10 = load i64, i64* %4, align 8
+  %11 = call i32 @scu_get_command_request_type(i64 %10)
+  switch i32 %11, label %52 [
+    i32 128, label %12
+    i32 131, label %12
+    i32 132, label %32
+    i32 130, label %32
+    i32 129, label %32
+  ]
+
+12:                                               ; preds = %2, %2
+  %13 = load %struct.TYPE_5__*, %struct.TYPE_5__** %3, align 8
+  %14 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %13, i32 0, i32 1
+  %15 = load i32**, i32*** %14, align 8
+  %16 = load i64, i64* %5, align 8
+  %17 = getelementptr inbounds i32*, i32** %15, i64 %16
+  %18 = load i32*, i32** %17, align 8
+  store i32* %18, i32** %6, align 8
+  %19 = load %struct.TYPE_5__*, %struct.TYPE_5__** %3, align 8
+  %20 = call i32 @sci_base_object_get_logger(%struct.TYPE_5__* %19)
+  %21 = load i32, i32* @SCIC_LOG_OBJECT_CONTROLLER, align 4
+  %22 = load i32, i32* @SCIC_LOG_OBJECT_SMP_IO_REQUEST, align 4
+  %23 = or i32 %21, %22
+  %24 = load i32, i32* @SCIC_LOG_OBJECT_SSP_IO_REQUEST, align 4
+  %25 = or i32 %23, %24
+  %26 = load i32, i32* @SCIC_LOG_OBJECT_STP_IO_REQUEST, align 4
+  %27 = or i32 %25, %26
+  %28 = load i64, i64* %4, align 8
+  %29 = load i32*, i32** %6, align 8
+  %30 = ptrtoint i32* %29 to i32
+  %31 = call i32 @SCIC_LOG_ERROR(i32 %30)
+  br label %59
+
+32:                                               ; preds = %2, %2, %2
+  %33 = load %struct.TYPE_5__*, %struct.TYPE_5__** %3, align 8
+  %34 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %33, i32 0, i32 0
+  %35 = load i32**, i32*** %34, align 8
+  %36 = load i64, i64* %5, align 8
+  %37 = getelementptr inbounds i32*, i32** %35, i64 %36
+  %38 = load i32*, i32** %37, align 8
+  store i32* %38, i32** %7, align 8
+  %39 = load %struct.TYPE_5__*, %struct.TYPE_5__** %3, align 8
+  %40 = call i32 @sci_base_object_get_logger(%struct.TYPE_5__* %39)
+  %41 = load i32, i32* @SCIC_LOG_OBJECT_CONTROLLER, align 4
+  %42 = load i32, i32* @SCIC_LOG_OBJECT_SSP_REMOTE_TARGET, align 4
+  %43 = or i32 %41, %42
+  %44 = load i32, i32* @SCIC_LOG_OBJECT_SMP_REMOTE_TARGET, align 4
+  %45 = or i32 %43, %44
+  %46 = load i32, i32* @SCIC_LOG_OBJECT_STP_REMOTE_TARGET, align 4
+  %47 = or i32 %45, %46
+  %48 = load i64, i64* %4, align 8
+  %49 = load i32*, i32** %7, align 8
+  %50 = ptrtoint i32* %49 to i32
+  %51 = call i32 @SCIC_LOG_ERROR(i32 %50)
+  br label %59
+
+52:                                               ; preds = %2
+  %53 = load %struct.TYPE_5__*, %struct.TYPE_5__** %3, align 8
+  %54 = call i32 @sci_base_object_get_logger(%struct.TYPE_5__* %53)
+  %55 = load i32, i32* @SCIC_LOG_OBJECT_CONTROLLER, align 4
+  %56 = load i64, i64* %4, align 8
+  %57 = trunc i64 %56 to i32
+  %58 = call i32 @SCIC_LOG_ERROR(i32 %57)
+  br label %59
+
+59:                                               ; preds = %52, %32, %12
+  %60 = load %struct.TYPE_5__*, %struct.TYPE_5__** %3, align 8
+  %61 = call i32 @scic_sds_controller_get_base_state_machine(%struct.TYPE_5__* %60)
+  %62 = load i32, i32* @SCI_BASE_CONTROLLER_STATE_FAILED, align 4
+  %63 = call i32 @sci_base_state_machine_change_state(i32 %61, i32 %62)
+  ret void
+}
+
+declare dso_local i64 @SCU_GET_COMPLETION_INDEX(i64) #1
+
+declare dso_local i32 @scu_get_command_request_type(i64) #1
+
+declare dso_local i32 @SCIC_LOG_ERROR(i32) #1
+
+declare dso_local i32 @sci_base_object_get_logger(%struct.TYPE_5__*) #1
+
+declare dso_local i32 @sci_base_state_machine_change_state(i32, i32) #1
+
+declare dso_local i32 @scic_sds_controller_get_base_state_machine(%struct.TYPE_5__*) #1
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

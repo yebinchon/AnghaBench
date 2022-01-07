@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct hns_roce_idx_que {int /*<<< orphan*/  bitmap; } ;
 
-/* Variables and functions */
- int ENOSPC ; 
- int /*<<< orphan*/  bitmap_full (int /*<<< orphan*/ ,unsigned long) ; 
- int /*<<< orphan*/  bitmap_set (int /*<<< orphan*/ ,int,int) ; 
- int find_first_zero_bit (int /*<<< orphan*/ ,unsigned long) ; 
- scalar_t__ unlikely (int /*<<< orphan*/ ) ; 
+
+
+
+struct hns_roce_idx_que {int bitmap; } ;
+
+
+ int ENOSPC ;
+ int bitmap_full (int ,unsigned long) ;
+ int bitmap_set (int ,int,int) ;
+ int find_first_zero_bit (int ,unsigned long) ;
+ scalar_t__ unlikely (int ) ;
 
 __attribute__((used)) static int find_empty_entry(struct hns_roce_idx_que *idx_que,
-			    unsigned long size)
+       unsigned long size)
 {
-	int wqe_idx;
+ int wqe_idx;
 
-	if (unlikely(bitmap_full(idx_que->bitmap, size)))
-		return -ENOSPC;
+ if (unlikely(bitmap_full(idx_que->bitmap, size)))
+  return -ENOSPC;
 
-	wqe_idx = find_first_zero_bit(idx_que->bitmap, size);
+ wqe_idx = find_first_zero_bit(idx_que->bitmap, size);
 
-	bitmap_set(idx_que->bitmap, wqe_idx, 1);
+ bitmap_set(idx_que->bitmap, wqe_idx, 1);
 
-	return wqe_idx;
+ return wqe_idx;
 }

@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct lwan_url_map {int flags; struct lwan_module const* module; void* handler; struct hash* data; } ;
-struct lwan_module {int flags; void* handle_request; struct hash* (* create_from_hash ) (char*,struct hash*) ;int /*<<< orphan*/  (* parse_conf ) (struct hash*,struct config*) ;} ;
-struct lwan {int /*<<< orphan*/  url_map_trie; } ;
+struct lwan_module {int flags; void* handle_request; struct hash* (* create_from_hash ) (char*,struct hash*) ;int (* parse_conf ) (struct hash*,struct config*) ;} ;
+struct lwan {int url_map_trie; } ;
 struct hash {int dummy; } ;
-struct config_line {int type; int /*<<< orphan*/  key; int /*<<< orphan*/  value; } ;
+struct config_line {int type; int key; int value; } ;
 struct config {int dummy; } ;
 
-/* Variables and functions */
-#define  CONFIG_LINE_TYPE_LINE 130 
-#define  CONFIG_LINE_TYPE_SECTION 129 
-#define  CONFIG_LINE_TYPE_SECTION_END 128 
- int HANDLER_DATA_IS_HASH_TABLE ; 
- int HANDLER_PARSE_MASK ; 
- scalar_t__ UNLIKELY (int) ; 
- int /*<<< orphan*/  add_url_map (int /*<<< orphan*/ *,char*,struct lwan_url_map*) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  config_close (struct config*) ; 
- int /*<<< orphan*/  config_error (struct config*,char*,...) ; 
- struct config* config_isolate_section (struct config*,struct config_line const*) ; 
- char* config_last_error (struct config*) ; 
- struct config_line* config_read_line (struct config*) ; 
- int /*<<< orphan*/  config_skip_section (struct config*,struct config_line const*) ; 
- int /*<<< orphan*/  free ; 
- int /*<<< orphan*/  hash_add (struct hash*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hash_free (struct hash*) ; 
- struct hash* hash_str_new (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  parse_listener_prefix_authorization (struct config*,struct config_line const*,struct lwan_url_map*) ; 
- int /*<<< orphan*/  strdup (int /*<<< orphan*/ ) ; 
- char* strdupa (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  streq (int /*<<< orphan*/ ,char*) ; 
- struct hash* stub1 (char*,struct hash*) ; 
- int /*<<< orphan*/  stub2 (struct hash*,struct config*) ; 
+
+
+
+
+ int HANDLER_DATA_IS_HASH_TABLE ;
+ int HANDLER_PARSE_MASK ;
+ scalar_t__ UNLIKELY (int) ;
+ int add_url_map (int *,char*,struct lwan_url_map*) ;
+ int assert (int) ;
+ int config_close (struct config*) ;
+ int config_error (struct config*,char*,...) ;
+ struct config* config_isolate_section (struct config*,struct config_line const*) ;
+ char* config_last_error (struct config*) ;
+ struct config_line* config_read_line (struct config*) ;
+ int config_skip_section (struct config*,struct config_line const*) ;
+ int free ;
+ int hash_add (struct hash*,int ,int ) ;
+ int hash_free (struct hash*) ;
+ struct hash* hash_str_new (int ,int ) ;
+ int parse_listener_prefix_authorization (struct config*,struct config_line const*,struct lwan_url_map*) ;
+ int strdup (int ) ;
+ char* strdupa (int ) ;
+ int streq (int ,char*) ;
+ struct hash* stub1 (char*,struct hash*) ;
+ int stub2 (struct hash*,struct config*) ;
 
 __attribute__((used)) static void parse_listener_prefix(struct config *c,
                                   const struct config_line *l,
@@ -62,11 +62,11 @@ __attribute__((used)) static void parse_listener_prefix(struct config *c,
 
     while ((l = config_read_line(c))) {
         switch (l->type) {
-        case CONFIG_LINE_TYPE_LINE:
+        case 130:
             hash_add(hash, strdup(l->key), strdup(l->value));
             break;
 
-        case CONFIG_LINE_TYPE_SECTION:
+        case 129:
             if (streq(l->key, "authorization")) {
                 parse_listener_prefix_authorization(c, l, &url_map);
             } else if (!config_skip_section(c, l)) {
@@ -75,7 +75,7 @@ __attribute__((used)) static void parse_listener_prefix(struct config *c,
             }
             break;
 
-        case CONFIG_LINE_TYPE_SECTION_END:
+        case 128:
             goto add_map;
         }
     }
@@ -90,9 +90,9 @@ add_map:
         url_map.handler = handler;
         url_map.flags |= HANDLER_PARSE_MASK | HANDLER_DATA_IS_HASH_TABLE;
         url_map.data = hash;
-        url_map.module = NULL;
+        url_map.module = ((void*)0);
 
-        hash = NULL;
+        hash = ((void*)0);
     } else if (module->create_from_hash && module->handle_request) {
         url_map.data = module->create_from_hash(prefix, hash);
         if (!url_map.data) {

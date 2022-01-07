@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  znode ;
-typedef  int /*<<< orphan*/  zend_ast ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ZEND_AST_ASSIGN ; 
- int /*<<< orphan*/ * zend_ast_create (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  zend_ast_create_znode (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  zend_compile_assign (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  zend_do_free (int /*<<< orphan*/ *) ; 
 
-__attribute__((used)) static inline void zend_emit_assign_znode(zend_ast *var_ast, znode *value_node) /* {{{ */
+
+
+typedef int znode ;
+typedef int zend_ast ;
+
+
+ int ZEND_AST_ASSIGN ;
+ int * zend_ast_create (int ,int *,int ) ;
+ int zend_ast_create_znode (int *) ;
+ int zend_compile_assign (int *,int *) ;
+ int zend_do_free (int *) ;
+
+__attribute__((used)) static inline void zend_emit_assign_znode(zend_ast *var_ast, znode *value_node)
 {
-	znode dummy_node;
-	zend_ast *assign_ast = zend_ast_create(ZEND_AST_ASSIGN, var_ast,
-		zend_ast_create_znode(value_node));
-	zend_compile_assign(&dummy_node, assign_ast);
-	zend_do_free(&dummy_node);
+ znode dummy_node;
+ zend_ast *assign_ast = zend_ast_create(ZEND_AST_ASSIGN, var_ast,
+  zend_ast_create_znode(value_node));
+ zend_compile_assign(&dummy_node, assign_ast);
+ zend_do_free(&dummy_node);
 }

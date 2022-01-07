@@ -1,66 +1,66 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int tq_nthreads; scalar_t__ tq_nalloc; int /*<<< orphan*/  tq_maxalloc_cv; int /*<<< orphan*/  tq_wait_cv; int /*<<< orphan*/  tq_dispatch_cv; int /*<<< orphan*/  tq_lock; int /*<<< orphan*/  tq_threadlock; struct TYPE_7__* tq_threadlist; int /*<<< orphan*/ * tq_freelist; scalar_t__ tq_minalloc; int /*<<< orphan*/  tq_flags; } ;
-typedef  TYPE_1__ taskq_t ;
-typedef  int /*<<< orphan*/  kthread_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  KM_SLEEP ; 
- int /*<<< orphan*/  TASKQ_ACTIVE ; 
- int /*<<< orphan*/  cv_broadcast (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cv_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cv_wait (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  kmem_free (TYPE_1__*,int) ; 
- int /*<<< orphan*/  mutex_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_enter (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_exit (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  rw_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  task_alloc (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  task_free (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  taskq_wait (TYPE_1__*) ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int tq_nthreads; scalar_t__ tq_nalloc; int tq_maxalloc_cv; int tq_wait_cv; int tq_dispatch_cv; int tq_lock; int tq_threadlock; struct TYPE_7__* tq_threadlist; int * tq_freelist; scalar_t__ tq_minalloc; int tq_flags; } ;
+typedef TYPE_1__ taskq_t ;
+typedef int kthread_t ;
+
+
+ int ASSERT (int ) ;
+ int KM_SLEEP ;
+ int TASKQ_ACTIVE ;
+ int cv_broadcast (int *) ;
+ int cv_destroy (int *) ;
+ int cv_wait (int *,int *) ;
+ int kmem_free (TYPE_1__*,int) ;
+ int mutex_destroy (int *) ;
+ int mutex_enter (int *) ;
+ int mutex_exit (int *) ;
+ int rw_destroy (int *) ;
+ int task_alloc (TYPE_1__*,int ) ;
+ int task_free (TYPE_1__*,int ) ;
+ int taskq_wait (TYPE_1__*) ;
 
 void
 taskq_destroy(taskq_t *tq)
 {
-	int nthreads = tq->tq_nthreads;
+ int nthreads = tq->tq_nthreads;
 
-	taskq_wait(tq);
+ taskq_wait(tq);
 
-	mutex_enter(&tq->tq_lock);
+ mutex_enter(&tq->tq_lock);
 
-	tq->tq_flags &= ~TASKQ_ACTIVE;
-	cv_broadcast(&tq->tq_dispatch_cv);
+ tq->tq_flags &= ~TASKQ_ACTIVE;
+ cv_broadcast(&tq->tq_dispatch_cv);
 
-	while (tq->tq_nthreads != 0)
-		cv_wait(&tq->tq_wait_cv, &tq->tq_lock);
+ while (tq->tq_nthreads != 0)
+  cv_wait(&tq->tq_wait_cv, &tq->tq_lock);
 
-	tq->tq_minalloc = 0;
-	while (tq->tq_nalloc != 0) {
-		ASSERT(tq->tq_freelist != NULL);
-		task_free(tq, task_alloc(tq, KM_SLEEP));
-	}
+ tq->tq_minalloc = 0;
+ while (tq->tq_nalloc != 0) {
+  ASSERT(tq->tq_freelist != ((void*)0));
+  task_free(tq, task_alloc(tq, KM_SLEEP));
+ }
 
-	mutex_exit(&tq->tq_lock);
+ mutex_exit(&tq->tq_lock);
 
-	kmem_free(tq->tq_threadlist, nthreads * sizeof (kthread_t *));
+ kmem_free(tq->tq_threadlist, nthreads * sizeof (kthread_t *));
 
-	rw_destroy(&tq->tq_threadlock);
-	mutex_destroy(&tq->tq_lock);
-	cv_destroy(&tq->tq_dispatch_cv);
-	cv_destroy(&tq->tq_wait_cv);
-	cv_destroy(&tq->tq_maxalloc_cv);
+ rw_destroy(&tq->tq_threadlock);
+ mutex_destroy(&tq->tq_lock);
+ cv_destroy(&tq->tq_dispatch_cv);
+ cv_destroy(&tq->tq_wait_cv);
+ cv_destroy(&tq->tq_maxalloc_cv);
 
-	kmem_free(tq, sizeof (taskq_t));
+ kmem_free(tq, sizeof (taskq_t));
 }

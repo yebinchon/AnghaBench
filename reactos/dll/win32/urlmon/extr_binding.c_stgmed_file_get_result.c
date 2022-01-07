@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  stgmed_obj_t ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int BINDF_ASYNCHRONOUS ; 
- int /*<<< orphan*/  MK_S_ASYNCHRONOUS ; 
- int /*<<< orphan*/  S_OK ; 
+
+
+
+typedef int stgmed_obj_t ;
+typedef int HRESULT ;
+typedef int DWORD ;
+
+
+ int BINDF_ASYNCHRONOUS ;
+ int MK_S_ASYNCHRONOUS ;
+ int S_OK ;
 
 __attribute__((used)) static HRESULT stgmed_file_get_result(stgmed_obj_t *obj, DWORD bindf, void **result)
 {

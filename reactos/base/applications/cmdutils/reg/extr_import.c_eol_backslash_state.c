@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct parser {int dummy; } ;
-typedef  char WCHAR ;
+typedef char WCHAR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HEX_MULTILINE ; 
- int /*<<< orphan*/  LINE_START ; 
- int /*<<< orphan*/  free_parser_data (struct parser*) ; 
- int /*<<< orphan*/  set_state (struct parser*,int /*<<< orphan*/ ) ; 
+
+ int HEX_MULTILINE ;
+ int LINE_START ;
+ int free_parser_data (struct parser*) ;
+ int set_state (struct parser*,int ) ;
 
 __attribute__((used)) static WCHAR *eol_backslash_state(struct parser *parser, WCHAR *pos)
 {

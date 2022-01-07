@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_11__ {struct TYPE_11__* name; int /*<<< orphan*/  marks_head; int /*<<< orphan*/  swallow_head; struct TYPE_11__* deco_render_params; } ;
-typedef  TYPE_1__ mark_t ;
-typedef  TYPE_1__ Match ;
-typedef  TYPE_1__ Con ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DLOG (char*,TYPE_1__*) ; 
- int /*<<< orphan*/  FREE (TYPE_1__*) ; 
- int /*<<< orphan*/  TAILQ_EMPTY (int /*<<< orphan*/ *) ; 
- TYPE_1__* TAILQ_FIRST (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TAILQ_REMOVE (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  all_cons ; 
- int /*<<< orphan*/  free (TYPE_1__*) ; 
- int /*<<< orphan*/  marks ; 
- int /*<<< orphan*/  match_free (TYPE_1__*) ; 
- int /*<<< orphan*/  matches ; 
+
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+struct TYPE_11__ {struct TYPE_11__* name; int marks_head; int swallow_head; struct TYPE_11__* deco_render_params; } ;
+typedef TYPE_1__ mark_t ;
+typedef TYPE_1__ Match ;
+typedef TYPE_1__ Con ;
+
+
+ int DLOG (char*,TYPE_1__*) ;
+ int FREE (TYPE_1__*) ;
+ int TAILQ_EMPTY (int *) ;
+ TYPE_1__* TAILQ_FIRST (int *) ;
+ int TAILQ_REMOVE (int *,TYPE_1__*,int ) ;
+ int all_cons ;
+ int free (TYPE_1__*) ;
+ int marks ;
+ int match_free (TYPE_1__*) ;
+ int matches ;
 
 void con_free(Con *con) {
     free(con->name);

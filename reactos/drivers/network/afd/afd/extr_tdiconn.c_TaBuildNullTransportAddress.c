@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT ;
-typedef  int /*<<< orphan*/ * PTRANSPORT_ADDRESS ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * ExAllocatePoolWithTag (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ExFreePoolWithTag (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NonPagedPool ; 
- scalar_t__ STATUS_SUCCESS ; 
- int /*<<< orphan*/  TAG_AFD_TRANSPORT_ADDRESS ; 
- int /*<<< orphan*/  TaLengthOfTransportAddressByType (int /*<<< orphan*/ ) ; 
- scalar_t__ TdiBuildNullTransportAddressInPlace (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int UINT ;
+typedef int * PTRANSPORT_ADDRESS ;
+
+
+ int * ExAllocatePoolWithTag (int ,int ,int ) ;
+ int ExFreePoolWithTag (int *,int ) ;
+ int NonPagedPool ;
+ scalar_t__ STATUS_SUCCESS ;
+ int TAG_AFD_TRANSPORT_ADDRESS ;
+ int TaLengthOfTransportAddressByType (int ) ;
+ scalar_t__ TdiBuildNullTransportAddressInPlace (int *,int ) ;
 
 PTRANSPORT_ADDRESS TaBuildNullTransportAddress(UINT AddressType)
 {
@@ -29,7 +29,7 @@ PTRANSPORT_ADDRESS TaBuildNullTransportAddress(UINT AddressType)
 
     AddrLen = TaLengthOfTransportAddressByType(AddressType);
     if (!AddrLen)
-        return NULL;
+        return ((void*)0);
 
     A = ExAllocatePoolWithTag(NonPagedPool, AddrLen, TAG_AFD_TRANSPORT_ADDRESS);
 
@@ -38,7 +38,7 @@ PTRANSPORT_ADDRESS TaBuildNullTransportAddress(UINT AddressType)
         if (TdiBuildNullTransportAddressInPlace(A, AddressType) != STATUS_SUCCESS)
         {
             ExFreePoolWithTag(A, TAG_AFD_TRANSPORT_ADDRESS);
-            return NULL;
+            return ((void*)0);
         }
     }
 

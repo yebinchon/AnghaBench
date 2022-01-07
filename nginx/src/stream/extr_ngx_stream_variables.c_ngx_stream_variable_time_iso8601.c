@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_6__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_char ;
-struct TYPE_8__ {int valid; int /*<<< orphan*/ * data; scalar_t__ not_found; scalar_t__ no_cacheable; int /*<<< orphan*/  len; } ;
-typedef  TYPE_2__ ngx_stream_variable_value_t ;
+
+
+typedef struct TYPE_10__ TYPE_6__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int u_char ;
+struct TYPE_8__ {int valid; int * data; scalar_t__ not_found; scalar_t__ no_cacheable; int len; } ;
+typedef TYPE_2__ ngx_stream_variable_value_t ;
 struct TYPE_9__ {TYPE_1__* connection; } ;
-typedef  TYPE_3__ ngx_stream_session_t ;
-typedef  int /*<<< orphan*/  ngx_int_t ;
-struct TYPE_10__ {int /*<<< orphan*/  len; int /*<<< orphan*/  data; } ;
-struct TYPE_7__ {int /*<<< orphan*/  pool; } ;
+typedef TYPE_3__ ngx_stream_session_t ;
+typedef int ngx_int_t ;
+struct TYPE_10__ {int len; int data; } ;
+struct TYPE_7__ {int pool; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NGX_ERROR ; 
- int /*<<< orphan*/  NGX_OK ; 
- TYPE_6__ ngx_cached_http_log_iso8601 ; 
- int /*<<< orphan*/  ngx_memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * ngx_pnalloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int NGX_ERROR ;
+ int NGX_OK ;
+ TYPE_6__ ngx_cached_http_log_iso8601 ;
+ int ngx_memcpy (int *,int ,int ) ;
+ int * ngx_pnalloc (int ,int ) ;
 
 __attribute__((used)) static ngx_int_t
 ngx_stream_variable_time_iso8601(ngx_stream_session_t *s,
     ngx_stream_variable_value_t *v, uintptr_t data)
 {
-    u_char  *p;
+    u_char *p;
 
     p = ngx_pnalloc(s->connection->pool, ngx_cached_http_log_iso8601.len);
-    if (p == NULL) {
+    if (p == ((void*)0)) {
         return NGX_ERROR;
     }
 

@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u_int32_t ;
-typedef  int u_int16_t ;
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int u_int32_t ;
+typedef int u_int16_t ;
 struct TYPE_4__ {scalar_t__ seq; } ;
 struct mp {TYPE_1__ out; scalar_t__ peer_is12bit; } ;
 struct mbuf {int dummy; } ;
 struct TYPE_5__ {scalar_t__ state; } ;
 struct TYPE_6__ {TYPE_2__ fsm; } ;
-struct link {int /*<<< orphan*/  name; TYPE_3__ ccp; } ;
+struct link {int name; TYPE_3__ ccp; } ;
 struct bundle {int dummy; } ;
 
-/* Variables and functions */
- scalar_t__ LINK_QUEUES (struct link*) ; 
- int /*<<< orphan*/  LogDEBUG ; 
- int /*<<< orphan*/  LogPHASE ; 
- int /*<<< orphan*/  PROTO_MP ; 
- scalar_t__ ST_OPENED ; 
- scalar_t__ ccp_Required (TYPE_3__*) ; 
- scalar_t__ inc_seq (scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  link_PushPacket (struct link*,struct mbuf*,struct bundle*,scalar_t__,int /*<<< orphan*/ ) ; 
- scalar_t__ log_IsKept (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  log_Printf (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  m_length (struct mbuf*) ; 
- struct mbuf* m_prepend (struct mbuf*,char*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ua_htonl (int*,char*) ; 
- int /*<<< orphan*/  ua_htons (int*,char*) ; 
+
+ scalar_t__ LINK_QUEUES (struct link*) ;
+ int LogDEBUG ;
+ int LogPHASE ;
+ int PROTO_MP ;
+ scalar_t__ ST_OPENED ;
+ scalar_t__ ccp_Required (TYPE_3__*) ;
+ scalar_t__ inc_seq (scalar_t__,scalar_t__) ;
+ int link_PushPacket (struct link*,struct mbuf*,struct bundle*,scalar_t__,int ) ;
+ scalar_t__ log_IsKept (int ) ;
+ int log_Printf (int ,char*,int ,...) ;
+ int m_length (struct mbuf*) ;
+ struct mbuf* m_prepend (struct mbuf*,char*,int,int ) ;
+ int ua_htonl (int*,char*) ;
+ int ua_htons (int*,char*) ;
 
 __attribute__((used)) static void
 mp_Output(struct mp *mp, struct bundle *bundle, struct link *l,
@@ -45,7 +45,7 @@ mp_Output(struct mp *mp, struct bundle *bundle, struct link *l,
 {
   char prepend[4];
 
-  /* Stuff an MP header on the front of our packet and send it */
+
 
   if (mp->peer_is12bit) {
     u_int16_t val;

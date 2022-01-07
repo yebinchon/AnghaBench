@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  LPKSPROPERTYSET ;
-typedef  int /*<<< orphan*/  IKsBufferPropertySetImpl ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- scalar_t__ IKsBufferPropertySetImpl_Release (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int LPKSPROPERTYSET ;
+typedef int IKsBufferPropertySetImpl ;
+typedef int HRESULT ;
+
+
+ scalar_t__ IKsBufferPropertySetImpl_Release (int ) ;
+ int S_OK ;
+ int TRACE (char*,int *) ;
 
 HRESULT IKsBufferPropertySetImpl_Destroy(
     IKsBufferPropertySetImpl *piks)

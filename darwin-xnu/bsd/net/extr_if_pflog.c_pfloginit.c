@@ -1,32 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  LIST_INIT (int /*<<< orphan*/ *) ; 
- int PFLOGIFS_MAX ; 
- int /*<<< orphan*/  if_clone_attach (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pflog_cloner ; 
- int /*<<< orphan*/  pflogif_list ; 
- int /*<<< orphan*/ ** pflogifs ; 
+ int LIST_INIT (int *) ;
+ int PFLOGIFS_MAX ;
+ int if_clone_attach (int *) ;
+ int pflog_cloner ;
+ int pflogif_list ;
+ int ** pflogifs ;
 
 void
 pfloginit(void)
 {
-	int i;
+ int i;
 
-	LIST_INIT(&pflogif_list);
-	for (i = 0; i < PFLOGIFS_MAX; i++)
-		pflogifs[i] = NULL;
+ LIST_INIT(&pflogif_list);
+ for (i = 0; i < PFLOGIFS_MAX; i++)
+  pflogifs[i] = ((void*)0);
 
-	(void) if_clone_attach(&pflog_cloner);
+ (void) if_clone_attach(&pflog_cloner);
 }

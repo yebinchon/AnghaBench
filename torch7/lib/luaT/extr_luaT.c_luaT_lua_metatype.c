@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LUA_REGISTRYINDEX ; 
- int /*<<< orphan*/  LUA_TTABLE ; 
- int /*<<< orphan*/  luaL_checkstring (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  luaL_checktype (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  luaL_error (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  luaT_cdataname (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int lua_gettop (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_pushvalue (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_rawset (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_tostring (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int lua_State ;
+
+
+ int LUA_REGISTRYINDEX ;
+ int LUA_TTABLE ;
+ int luaL_checkstring (int *,int) ;
+ int luaL_checktype (int *,int,int ) ;
+ int luaL_error (int *,char*) ;
+ int luaT_cdataname (int *,int,int ) ;
+ int lua_gettop (int *) ;
+ int lua_pushvalue (int *,int) ;
+ int lua_rawset (int *,int ) ;
+ int lua_tostring (int *,int) ;
 
 int luaT_lua_metatype(lua_State *L)
 {
@@ -38,12 +38,12 @@ int luaT_lua_metatype(lua_State *L)
       luaL_error(L, "could not register cdata type -- missing ffi library?");
   }
 
-  /* registry[name] = metatable */
+
   lua_pushvalue(L, 1);
   lua_pushvalue(L, 2);
   lua_rawset(L, LUA_REGISTRYINDEX);
 
-  /* registry[metatable] = tname */
+
   lua_pushvalue(L, 2);
   lua_pushvalue(L, 1);
   lua_rawset(L, LUA_REGISTRYINDEX);

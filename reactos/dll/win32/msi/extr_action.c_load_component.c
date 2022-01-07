@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT ;
-struct TYPE_9__ {int /*<<< orphan*/  assembly; void* ActionRequest; void* Action; void* Installed; void* KeyPath; void* Condition; int /*<<< orphan*/  Attributes; void* Directory; void* ComponentId; void* Component; int /*<<< orphan*/  entry; } ;
-struct TYPE_8__ {int /*<<< orphan*/  components; } ;
-typedef  int /*<<< orphan*/  MSIRECORD ;
-typedef  TYPE_1__ MSIPACKAGE ;
-typedef  TYPE_2__ MSICOMPONENT ;
-typedef  TYPE_1__* LPVOID ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERROR_FUNCTION_FAILED ; 
- int /*<<< orphan*/  ERROR_SUCCESS ; 
- void* INSTALLSTATE_UNKNOWN ; 
- int /*<<< orphan*/  MSI_RecordGetInteger (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  debugstr_w (void*) ; 
- int /*<<< orphan*/  list_add_tail (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- TYPE_2__* msi_alloc_zero (int) ; 
- void* msi_dup_record_field (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  msi_load_assembly (TYPE_1__*,TYPE_2__*) ; 
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int UINT ;
+struct TYPE_9__ {int assembly; void* ActionRequest; void* Action; void* Installed; void* KeyPath; void* Condition; int Attributes; void* Directory; void* ComponentId; void* Component; int entry; } ;
+struct TYPE_8__ {int components; } ;
+typedef int MSIRECORD ;
+typedef TYPE_1__ MSIPACKAGE ;
+typedef TYPE_2__ MSICOMPONENT ;
+typedef TYPE_1__* LPVOID ;
+
+
+ int ERROR_FUNCTION_FAILED ;
+ int ERROR_SUCCESS ;
+ void* INSTALLSTATE_UNKNOWN ;
+ int MSI_RecordGetInteger (int *,int) ;
+ int TRACE (char*,int ) ;
+ int debugstr_w (void*) ;
+ int list_add_tail (int *,int *) ;
+ TYPE_2__* msi_alloc_zero (int) ;
+ void* msi_dup_record_field (int *,int) ;
+ int msi_load_assembly (TYPE_1__*,TYPE_2__*) ;
 
 __attribute__((used)) static UINT load_component( MSIRECORD *row, LPVOID param )
 {
@@ -43,7 +43,7 @@ __attribute__((used)) static UINT load_component( MSIRECORD *row, LPVOID param )
 
     list_add_tail( &package->components, &comp->entry );
 
-    /* fill in the data */
+
     comp->Component = msi_dup_record_field( row, 1 );
 
     TRACE("Loading Component %s\n", debugstr_w(comp->Component));

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  h2o_socketpool_target_vector_t ;
-typedef  int /*<<< orphan*/  h2o_balancer_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free_targets (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  gen_targets (int) ; 
- int /*<<< orphan*/ * h2o_balancer_create_rr () ; 
- int /*<<< orphan*/  ok (int) ; 
- size_t selector (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*) ; 
+
+
+
+typedef int h2o_socketpool_target_vector_t ;
+typedef int h2o_balancer_t ;
+
+
+ int destroy (int *) ;
+ int free_targets (int *) ;
+ int gen_targets (int) ;
+ int * h2o_balancer_create_rr () ;
+ int ok (int) ;
+ size_t selector (int *,int *,char*) ;
 
 __attribute__((used)) static void test_when_backend_down(void)
 {

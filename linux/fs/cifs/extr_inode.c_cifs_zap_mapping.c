@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct inode {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/  flags; } ;
+struct TYPE_2__ {int flags; } ;
 
-/* Variables and functions */
- TYPE_1__* CIFS_I (struct inode*) ; 
- int /*<<< orphan*/  CIFS_INO_INVALID_MAPPING ; 
- int cifs_revalidate_mapping (struct inode*) ; 
- int /*<<< orphan*/  set_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ TYPE_1__* CIFS_I (struct inode*) ;
+ int CIFS_INO_INVALID_MAPPING ;
+ int cifs_revalidate_mapping (struct inode*) ;
+ int set_bit (int ,int *) ;
 
 int
 cifs_zap_mapping(struct inode *inode)
 {
-	set_bit(CIFS_INO_INVALID_MAPPING, &CIFS_I(inode)->flags);
-	return cifs_revalidate_mapping(inode);
+ set_bit(CIFS_INO_INVALID_MAPPING, &CIFS_I(inode)->flags);
+ return cifs_revalidate_mapping(inode);
 }

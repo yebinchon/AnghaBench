@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  BIO ;
-typedef  int /*<<< orphan*/  ASN1_VALUE ;
-typedef  int /*<<< orphan*/  ASN1_ITEM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASN1_F_I2D_ASN1_BIO_STREAM ; 
- int /*<<< orphan*/  ASN1_item_i2d_bio (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ASN1err (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BIO_flush (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BIO_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BIO_new_NDEF (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/ * BIO_pop (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ERR_R_MALLOC_FAILURE ; 
- int SMIME_STREAM ; 
- int /*<<< orphan*/  SMIME_crlf_copy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int BIO ;
+typedef int ASN1_VALUE ;
+typedef int ASN1_ITEM ;
+
+
+ int ASN1_F_I2D_ASN1_BIO_STREAM ;
+ int ASN1_item_i2d_bio (int const*,int *,int *) ;
+ int ASN1err (int ,int ) ;
+ int BIO_flush (int *) ;
+ int BIO_free (int *) ;
+ int * BIO_new_NDEF (int *,int *,int const*) ;
+ int * BIO_pop (int *) ;
+ int ERR_R_MALLOC_FAILURE ;
+ int SMIME_STREAM ;
+ int SMIME_crlf_copy (int *,int *,int) ;
 
 int i2d_ASN1_bio_stream(BIO *out, ASN1_VALUE *val, BIO *in, int flags,
                         const ASN1_ITEM *it)
 {
-    /* If streaming create stream BIO and copy all content through it */
+
     if (flags & SMIME_STREAM) {
         BIO *bio, *tbio;
         bio = BIO_new_NDEF(out, val, it);
@@ -39,17 +39,17 @@ int i2d_ASN1_bio_stream(BIO *out, ASN1_VALUE *val, BIO *in, int flags,
         }
         SMIME_crlf_copy(in, bio, flags);
         (void)BIO_flush(bio);
-        /* Free up successive BIOs until we hit the old output BIO */
+
         do {
             tbio = BIO_pop(bio);
             BIO_free(bio);
             bio = tbio;
         } while (bio != out);
     }
-    /*
-     * else just write out ASN1 structure which will have all content stored
-     * internally
-     */
+
+
+
+
     else
         ASN1_item_i2d_bio(it, out, val);
     return 1;

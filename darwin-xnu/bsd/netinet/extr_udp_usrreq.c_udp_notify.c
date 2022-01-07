@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct inpcb {TYPE_1__* inp_socket; } ;
 struct TYPE_3__ {int so_error; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  sorwakeup (TYPE_1__*) ; 
- int /*<<< orphan*/  sowwakeup (TYPE_1__*) ; 
+
+ int sorwakeup (TYPE_1__*) ;
+ int sowwakeup (TYPE_1__*) ;
 
 void
 udp_notify(struct inpcb *inp, int errno)
 {
-	inp->inp_socket->so_error = errno;
-	sorwakeup(inp->inp_socket);
-	sowwakeup(inp->inp_socket);
+ inp->inp_socket->so_error = errno;
+ sorwakeup(inp->inp_socket);
+ sowwakeup(inp->inp_socket);
 }

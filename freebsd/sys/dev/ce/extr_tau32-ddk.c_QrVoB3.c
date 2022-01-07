@@ -1,60 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_83__   TYPE_9__ ;
-typedef  struct TYPE_82__   TYPE_8__ ;
-typedef  struct TYPE_81__   TYPE_7__ ;
-typedef  struct TYPE_80__   TYPE_6__ ;
-typedef  struct TYPE_79__   TYPE_5__ ;
-typedef  struct TYPE_78__   TYPE_4__ ;
-typedef  struct TYPE_77__   TYPE_42__ ;
-typedef  struct TYPE_76__   TYPE_3__ ;
-typedef  struct TYPE_75__   TYPE_35__ ;
-typedef  struct TYPE_74__   TYPE_30__ ;
-typedef  struct TYPE_73__   TYPE_2__ ;
-typedef  struct TYPE_72__   TYPE_29__ ;
-typedef  struct TYPE_71__   TYPE_28__ ;
-typedef  struct TYPE_70__   TYPE_27__ ;
-typedef  struct TYPE_69__   TYPE_26__ ;
-typedef  struct TYPE_68__   TYPE_25__ ;
-typedef  struct TYPE_67__   TYPE_24__ ;
-typedef  struct TYPE_66__   TYPE_23__ ;
-typedef  struct TYPE_65__   TYPE_22__ ;
-typedef  struct TYPE_64__   TYPE_21__ ;
-typedef  struct TYPE_63__   TYPE_20__ ;
-typedef  struct TYPE_62__   TYPE_1__ ;
-typedef  struct TYPE_61__   TYPE_19__ ;
-typedef  struct TYPE_60__   TYPE_18__ ;
-typedef  struct TYPE_59__   TYPE_17__ ;
-typedef  struct TYPE_58__   TYPE_16__ ;
-typedef  struct TYPE_57__   TYPE_15__ ;
-typedef  struct TYPE_56__   TYPE_14__ ;
-typedef  struct TYPE_55__   TYPE_13__ ;
-typedef  struct TYPE_54__   TYPE_12__ ;
-typedef  struct TYPE_53__   TYPE_11__ ;
-typedef  struct TYPE_52__   TYPE_10__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_83__ TYPE_9__ ;
+typedef struct TYPE_82__ TYPE_8__ ;
+typedef struct TYPE_81__ TYPE_7__ ;
+typedef struct TYPE_80__ TYPE_6__ ;
+typedef struct TYPE_79__ TYPE_5__ ;
+typedef struct TYPE_78__ TYPE_4__ ;
+typedef struct TYPE_77__ TYPE_42__ ;
+typedef struct TYPE_76__ TYPE_3__ ;
+typedef struct TYPE_75__ TYPE_35__ ;
+typedef struct TYPE_74__ TYPE_30__ ;
+typedef struct TYPE_73__ TYPE_2__ ;
+typedef struct TYPE_72__ TYPE_29__ ;
+typedef struct TYPE_71__ TYPE_28__ ;
+typedef struct TYPE_70__ TYPE_27__ ;
+typedef struct TYPE_69__ TYPE_26__ ;
+typedef struct TYPE_68__ TYPE_25__ ;
+typedef struct TYPE_67__ TYPE_24__ ;
+typedef struct TYPE_66__ TYPE_23__ ;
+typedef struct TYPE_65__ TYPE_22__ ;
+typedef struct TYPE_64__ TYPE_21__ ;
+typedef struct TYPE_63__ TYPE_20__ ;
+typedef struct TYPE_62__ TYPE_1__ ;
+typedef struct TYPE_61__ TYPE_19__ ;
+typedef struct TYPE_60__ TYPE_18__ ;
+typedef struct TYPE_59__ TYPE_17__ ;
+typedef struct TYPE_58__ TYPE_16__ ;
+typedef struct TYPE_57__ TYPE_15__ ;
+typedef struct TYPE_56__ TYPE_14__ ;
+typedef struct TYPE_55__ TYPE_13__ ;
+typedef struct TYPE_54__ TYPE_12__ ;
+typedef struct TYPE_53__ TYPE_11__ ;
+typedef struct TYPE_52__ TYPE_10__ ;
+
+
 struct TYPE_83__ {int DEVTm4; } ;
 struct TYPE_52__ {TYPE_9__ V9ej93; } ;
 struct TYPE_53__ {TYPE_10__ _8WVQ2; } ;
-struct TYPE_82__ {int /*<<< orphan*/  eSf3B1; } ;
+struct TYPE_82__ {int eSf3B1; } ;
 struct TYPE_54__ {TYPE_11__ fbiOR4; TYPE_8__ zACHc3; } ;
-struct TYPE_70__ {TYPE_12__ _8WVQ2; struct TYPE_70__* Lrwko2; int /*<<< orphan*/  MDSlK2; } ;
-typedef  TYPE_27__ tJ1Kb4 ;
+struct TYPE_70__ {TYPE_12__ _8WVQ2; struct TYPE_70__* Lrwko2; int MDSlK2; } ;
+typedef TYPE_27__ tJ1Kb4 ;
 struct TYPE_77__ {TYPE_30__* pBSeu3; } ;
 struct TYPE_66__ {TYPE_24__* WHQ_F1; TYPE_22__* pBSeu3; } ;
-struct TYPE_71__ {scalar_t__ DL14H3; scalar_t__ jXwP42; TYPE_17__** eWAnF; TYPE_35__* pnKue2; TYPE_35__* _jfrJ1; TYPE_42__ Nlajt1; TYPE_23__ CUhqx4; int /*<<< orphan*/ * ikuha3; } ;
-typedef  TYPE_28__ kWMzp1 ;
-struct TYPE_79__ {int /*<<< orphan*/  eSf3B1; } ;
-struct TYPE_73__ {int /*<<< orphan*/  DEVTm4; } ;
+struct TYPE_71__ {scalar_t__ DL14H3; scalar_t__ jXwP42; TYPE_17__** eWAnF; TYPE_35__* pnKue2; TYPE_35__* _jfrJ1; TYPE_42__ Nlajt1; TYPE_23__ CUhqx4; int * ikuha3; } ;
+typedef TYPE_28__ kWMzp1 ;
+struct TYPE_79__ {int eSf3B1; } ;
+struct TYPE_73__ {int DEVTm4; } ;
 struct TYPE_76__ {TYPE_2__ V9ej93; } ;
 struct TYPE_78__ {TYPE_3__ _8WVQ2; } ;
 struct TYPE_80__ {TYPE_5__ zACHc3; TYPE_4__ fbiOR4; } ;
@@ -76,22 +76,22 @@ struct TYPE_55__ {TYPE_15__* OXCDa4; } ;
 struct TYPE_58__ {TYPE_13__ NpyOc1; } ;
 struct TYPE_56__ {TYPE_16__* neQ2f1; } ;
 struct TYPE_57__ {TYPE_14__ NpyOc1; } ;
-typedef  TYPE_29__ QDNE6 ;
-typedef  TYPE_30__ DCf0T2 ;
+typedef TYPE_29__ QDNE6 ;
+typedef TYPE_30__ DCf0T2 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BTL3a (TYPE_30__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  G7h9S3 (TYPE_28__*,TYPE_30__*) ; 
- int /*<<< orphan*/  LjWek1 (TYPE_28__*,TYPE_30__*,size_t) ; 
- int /*<<< orphan*/  YBrPF4 (TYPE_28__*) ; 
- scalar_t__ cFFDu1 (TYPE_42__*,TYPE_30__*) ; 
- int /*<<< orphan*/  fOVyT4 (TYPE_28__*,size_t,TYPE_27__*) ; 
- int /*<<< orphan*/  gYC_T3 (TYPE_28__*,size_t) ; 
- TYPE_27__* osQ5M (TYPE_28__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ppetC1 (TYPE_35__*,TYPE_30__*) ; 
- int /*<<< orphan*/  q0ypK (TYPE_28__*,size_t) ; 
- int /*<<< orphan*/  uKg3m2 (TYPE_28__*,TYPE_30__*) ; 
- int /*<<< orphan*/  yoLEn3 (TYPE_28__*) ; 
+
+ int BTL3a (TYPE_30__*,int *,int *) ;
+ int G7h9S3 (TYPE_28__*,TYPE_30__*) ;
+ int LjWek1 (TYPE_28__*,TYPE_30__*,size_t) ;
+ int YBrPF4 (TYPE_28__*) ;
+ scalar_t__ cFFDu1 (TYPE_42__*,TYPE_30__*) ;
+ int fOVyT4 (TYPE_28__*,size_t,TYPE_27__*) ;
+ int gYC_T3 (TYPE_28__*,size_t) ;
+ TYPE_27__* osQ5M (TYPE_28__*,int ) ;
+ int ppetC1 (TYPE_35__*,TYPE_30__*) ;
+ int q0ypK (TYPE_28__*,size_t) ;
+ int uKg3m2 (TYPE_28__*,TYPE_30__*) ;
+ int yoLEn3 (TYPE_28__*) ;
 
 __attribute__((used)) static int QrVoB3(kWMzp1*J7Iki4,QDNE6*a02Gz4,int pTM6S){DCf0T2*esWTk2
 ;esWTk2=(DCf0T2* )a02Gz4->bPudJ3;{if(!(!BTL3a(esWTk2,&J7Iki4->ikuha3

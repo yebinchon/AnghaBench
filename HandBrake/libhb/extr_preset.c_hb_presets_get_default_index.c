@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  hb_preset_index_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  hb_presets ; 
- int /*<<< orphan*/ * lookup_default_index (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int hb_preset_index_t ;
+
+
+ int hb_presets ;
+ int * lookup_default_index (int ) ;
 
 hb_preset_index_t * hb_presets_get_default_index(void)
 {

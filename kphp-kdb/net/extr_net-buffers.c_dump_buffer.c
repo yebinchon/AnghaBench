@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {scalar_t__ state; char* end; char* start; char* rptr; char* wptr; int /*<<< orphan*/  pptr; } ;
-typedef  TYPE_1__ netbuffer_t ;
 
-/* Variables and functions */
- scalar_t__ NB_MAGIC_BUSY ; 
- scalar_t__ NB_MAGIC_BUSYHEAD ; 
- scalar_t__ NB_MAGIC_HEAD ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,...) ; 
- int /*<<< orphan*/  fputc (char,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  putc (char,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stderr ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {scalar_t__ state; char* end; char* start; char* rptr; char* wptr; int pptr; } ;
+typedef TYPE_1__ netbuffer_t ;
+
+
+ scalar_t__ NB_MAGIC_BUSY ;
+ scalar_t__ NB_MAGIC_BUSYHEAD ;
+ scalar_t__ NB_MAGIC_HEAD ;
+ int assert (int) ;
+ int fprintf (int ,char*,int,...) ;
+ int fputc (char,int ) ;
+ int putc (char,int ) ;
+ int stderr ;
 
 int dump_buffer (netbuffer_t *X, int num, int offset) {
   char *ptr;
@@ -33,7 +33,7 @@ int dump_buffer (netbuffer_t *X, int num, int offset) {
   ptr = X->start;
   while (ptr < X->end) {
     s = X->end - ptr;
-    if (s > 16) { 
+    if (s > 16) {
       s = 16;
     }
     fprintf (stderr, "%08x", (int) (ptr - X->start + offset));
@@ -62,7 +62,7 @@ int dump_buffer (netbuffer_t *X, int num, int offset) {
       if (ptr + 16 == X->wptr) {
         c = (c == '[' ? '|' : ']');
       }
-      
+
     }
     fprintf (stderr, "%c  ", c);
     for (i = 0; i < s; i++) {

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct bundle {int unit; } ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef int FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * ID0fopen (char*,char*) ; 
- int /*<<< orphan*/  LogERROR ; 
- int PATH_MAX ; 
- char* _PATH_VARRUN ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*,int) ; 
- scalar_t__ getpid () ; 
- int /*<<< orphan*/  log_Printf (int /*<<< orphan*/ ,char*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,char*,int) ; 
- int /*<<< orphan*/  strerror (int /*<<< orphan*/ ) ; 
+
+ int * ID0fopen (char*,char*) ;
+ int LogERROR ;
+ int PATH_MAX ;
+ char* _PATH_VARRUN ;
+ int errno ;
+ int fclose (int *) ;
+ int fprintf (int *,char*,int) ;
+ scalar_t__ getpid () ;
+ int log_Printf (int ,char*,char*,int ) ;
+ int snprintf (char*,int,char*,char*,int) ;
+ int strerror (int ) ;
 
 void
 bundle_LockTun(struct bundle *bundle)
@@ -34,7 +34,7 @@ bundle_LockTun(struct bundle *bundle)
 
   snprintf(pidfile, sizeof pidfile, "%stun%d.pid", _PATH_VARRUN, bundle->unit);
   lockfile = ID0fopen(pidfile, "w");
-  if (lockfile != NULL) {
+  if (lockfile != ((void*)0)) {
     fprintf(lockfile, "%d\n", (int)getpid());
     fclose(lockfile);
   } else

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {size_t i_sid; } ;
-typedef  TYPE_1__ vlc_keystore_sys ;
+typedef TYPE_1__ vlc_keystore_sys ;
 struct TYPE_6__ {TYPE_1__* p_sys; } ;
-typedef  TYPE_2__ vlc_keystore ;
-typedef  int /*<<< orphan*/  DBusMessage ;
+typedef TYPE_2__ vlc_keystore ;
+typedef int DBusMessage ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * dbus_message_new_method_call (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  msg_Err (TYPE_2__*,char*) ; 
- int /*<<< orphan*/ * ppsz_sAddr ; 
- int /*<<< orphan*/ * ppsz_sPath ; 
- int /*<<< orphan*/  psz_kwallet_interface ; 
+
+ int * dbus_message_new_method_call (int ,int ,int ,char const*) ;
+ int msg_Err (TYPE_2__*,char*) ;
+ int * ppsz_sAddr ;
+ int * ppsz_sPath ;
+ int psz_kwallet_interface ;
 
 __attribute__((used)) static DBusMessage*
 vlc_dbus_new_method( vlc_keystore* p_keystore, const char* psz_method )
@@ -38,7 +38,7 @@ vlc_dbus_new_method( vlc_keystore* p_keystore, const char* psz_method )
     if ( !msg )
     {
         msg_Err( p_keystore, "vlc_dbus_new_method : Failed to create message" );
-        return NULL;
+        return ((void*)0);
     }
 
     return msg;

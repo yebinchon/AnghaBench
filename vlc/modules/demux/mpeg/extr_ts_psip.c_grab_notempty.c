@@ -1,25 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
-
 __attribute__((used)) static inline char *grab_notempty( char **ppsz )
 {
-    char *psz_ret = NULL;
+    char *psz_ret = ((void*)0);
     if( *ppsz && **ppsz )
     {
         psz_ret = *ppsz;
-        *ppsz = NULL;
+        *ppsz = ((void*)0);
     }
     return psz_ret;
 }

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetTempFileNameW (char*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetTempPathW (int,char*) ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  test_localPathA ; 
- int /*<<< orphan*/  test_localPathB ; 
- int /*<<< orphan*/  test_remotePathA ; 
- int /*<<< orphan*/  test_remotePathB ; 
+
+
+
+typedef char WCHAR ;
+
+
+ int GetTempFileNameW (char*,char*,int ,int ) ;
+ int GetTempPathW (int,char*) ;
+ int MAX_PATH ;
+ int test_localPathA ;
+ int test_localPathB ;
+ int test_remotePathA ;
+ int test_remotePathB ;
 
 __attribute__((used)) static void init_paths(void)
 {

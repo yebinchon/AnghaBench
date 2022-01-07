@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct taskqgroup {char const* tqg_name; TYPE_1__* tqg_queue; int /*<<< orphan*/  tqg_lock; } ;
-struct TYPE_2__ {int /*<<< orphan*/  tgc_tasks; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LIST_INIT (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  MTX_DEF ; 
- int /*<<< orphan*/  M_GTASKQUEUE ; 
- int M_WAITOK ; 
- int M_ZERO ; 
- struct taskqgroup* malloc (int,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  mtx_init (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct taskqgroup {char const* tqg_name; TYPE_1__* tqg_queue; int tqg_lock; } ;
+struct TYPE_2__ {int tgc_tasks; } ;
+
+
+ int LIST_INIT (int *) ;
+ int MTX_DEF ;
+ int M_GTASKQUEUE ;
+ int M_WAITOK ;
+ int M_ZERO ;
+ struct taskqgroup* malloc (int,int ,int) ;
+ int mtx_init (int *,char*,int *,int ) ;
 
 struct taskqgroup *
 taskqgroup_create(const char *name)
 {
-	struct taskqgroup *qgroup;
+ struct taskqgroup *qgroup;
 
-	qgroup = malloc(sizeof(*qgroup), M_GTASKQUEUE, M_WAITOK | M_ZERO);
-	mtx_init(&qgroup->tqg_lock, "taskqgroup", NULL, MTX_DEF);
-	qgroup->tqg_name = name;
-	LIST_INIT(&qgroup->tqg_queue[0].tgc_tasks);
+ qgroup = malloc(sizeof(*qgroup), M_GTASKQUEUE, M_WAITOK | M_ZERO);
+ mtx_init(&qgroup->tqg_lock, "taskqgroup", ((void*)0), MTX_DEF);
+ qgroup->tqg_name = name;
+ LIST_INIT(&qgroup->tqg_queue[0].tgc_tasks);
 
-	return (qgroup);
+ return (qgroup);
 }

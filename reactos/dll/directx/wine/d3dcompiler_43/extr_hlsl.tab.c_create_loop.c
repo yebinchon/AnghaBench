@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct source_location {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/  entry; struct source_location loc; int /*<<< orphan*/  type; } ;
+struct TYPE_2__ {int entry; struct source_location loc; int type; } ;
 struct list {struct list* body; TYPE_1__ node; } ;
-struct hlsl_ir_node {int /*<<< orphan*/  entry; } ;
+struct hlsl_ir_node {int entry; } ;
 struct hlsl_ir_loop {struct hlsl_ir_loop* body; TYPE_1__ node; } ;
 struct hlsl_ir_if {struct hlsl_ir_if* body; TYPE_1__ node; } ;
-typedef  enum loop_type { ____Placeholder_loop_type } loop_type ;
+typedef enum loop_type { ____Placeholder_loop_type } loop_type ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*) ; 
- int /*<<< orphan*/  HLSL_IR_LOOP ; 
- int LOOP_DO_WHILE ; 
- void* d3dcompiler_alloc (int) ; 
- int /*<<< orphan*/  d3dcompiler_free (struct list*) ; 
- int /*<<< orphan*/  free_instr (struct hlsl_ir_node*) ; 
- int /*<<< orphan*/  free_instr_list (struct list*) ; 
- int /*<<< orphan*/  list_add_tail (struct list*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  list_init (struct list*) ; 
- int /*<<< orphan*/  list_move_head (struct list*,struct list*) ; 
- int /*<<< orphan*/  list_move_tail (struct list*,struct list*) ; 
- struct list* loop_condition (struct list*) ; 
+
+ int ERR (char*) ;
+ int HLSL_IR_LOOP ;
+ int LOOP_DO_WHILE ;
+ void* d3dcompiler_alloc (int) ;
+ int d3dcompiler_free (struct list*) ;
+ int free_instr (struct hlsl_ir_node*) ;
+ int free_instr_list (struct list*) ;
+ int list_add_tail (struct list*,int *) ;
+ int list_init (struct list*) ;
+ int list_move_head (struct list*,struct list*) ;
+ int list_move_tail (struct list*,struct list*) ;
+ struct list* loop_condition (struct list*) ;
 
 __attribute__((used)) static struct list *create_loop(enum loop_type type, struct list *init, struct list *cond,
         struct hlsl_ir_node *iter, struct list *body, struct source_location *loc)
 {
-    struct list *list = NULL;
-    struct hlsl_ir_loop *loop = NULL;
-    struct hlsl_ir_if *cond_jump = NULL;
+    struct list *list = ((void*)0);
+    struct hlsl_ir_loop *loop = ((void*)0);
+    struct hlsl_ir_if *cond_jump = ((void*)0);
 
     list = d3dcompiler_alloc(sizeof(*list));
     if (!list)
@@ -90,5 +90,5 @@ oom:
     free_instr_list(cond);
     free_instr(iter);
     free_instr_list(body);
-    return NULL;
+    return ((void*)0);
 }

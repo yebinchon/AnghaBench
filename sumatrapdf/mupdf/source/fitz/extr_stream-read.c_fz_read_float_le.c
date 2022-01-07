@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  int32_t ;
-typedef  int /*<<< orphan*/  fz_stream ;
-typedef  int /*<<< orphan*/  fz_context ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fz_read_int32_le (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int int32_t ;
+typedef int fz_stream ;
+typedef int fz_context ;
+
+
+ int fz_read_int32_le (int *,int *) ;
 
 float
 fz_read_float_le(fz_context *ctx, fz_stream *stm)
 {
-	union {float f;int32_t i;} u;
+ union {float f;int32_t i;} u;
 
-	u.i = fz_read_int32_le(ctx, stm);
-	return u.f;
+ u.i = fz_read_int32_le(ctx, stm);
+ return u.f;
 }

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct mon_bus {int /*<<< orphan*/  dent_s; int /*<<< orphan*/  dent_t; int /*<<< orphan*/  dent_u; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  debugfs_remove (int /*<<< orphan*/ ) ; 
+
+
+
+struct mon_bus {int dent_s; int dent_t; int dent_u; } ;
+
+
+ int debugfs_remove (int ) ;
 
 void mon_text_del(struct mon_bus *mbus)
 {
-	debugfs_remove(mbus->dent_u);
-	debugfs_remove(mbus->dent_t);
-	debugfs_remove(mbus->dent_s);
+ debugfs_remove(mbus->dent_u);
+ debugfs_remove(mbus->dent_t);
+ debugfs_remove(mbus->dent_s);
 }

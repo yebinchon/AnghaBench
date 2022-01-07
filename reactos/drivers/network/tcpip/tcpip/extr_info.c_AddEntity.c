@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VOID ;
-typedef  size_t ULONG ;
-struct TYPE_2__ {size_t tei_entity; size_t tei_instance; size_t flags; int /*<<< orphan*/  context; } ;
-typedef  int /*<<< orphan*/  PVOID ;
-typedef  int /*<<< orphan*/  KIRQL ;
-typedef  scalar_t__ BOOLEAN ;
 
-/* Variables and functions */
- size_t EntityCount ; 
- TYPE_1__* EntityList ; 
- int /*<<< orphan*/  EntityListLock ; 
- scalar_t__ FALSE ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  TcpipAcquireSpinLock (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TcpipReleaseSpinLock (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int VOID ;
+typedef size_t ULONG ;
+struct TYPE_2__ {size_t tei_entity; size_t tei_instance; size_t flags; int context; } ;
+typedef int PVOID ;
+typedef int KIRQL ;
+typedef scalar_t__ BOOLEAN ;
+
+
+ size_t EntityCount ;
+ TYPE_1__* EntityList ;
+ int EntityListLock ;
+ scalar_t__ FALSE ;
+ scalar_t__ TRUE ;
+ int TcpipAcquireSpinLock (int *,int *) ;
+ int TcpipReleaseSpinLock (int *,int ) ;
 
 VOID AddEntity(ULONG EntityType, PVOID Context, ULONG Flags)
 {

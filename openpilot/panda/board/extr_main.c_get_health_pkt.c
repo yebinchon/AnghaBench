@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  void* uint8_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
-struct TYPE_2__ {scalar_t__ (* check_ignition ) () ;int /*<<< orphan*/  (* read_current ) () ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  adc_get_voltage () ; 
- int /*<<< orphan*/  can_fwd_errs ; 
- int /*<<< orphan*/  can_send_errs ; 
- void* car_harness_status ; 
- void* controls_allowed ; 
- TYPE_1__* current_board ; 
- scalar_t__ current_safety_mode ; 
- void* gas_interceptor_detected ; 
- int /*<<< orphan*/  gmlan_send_errs ; 
- scalar_t__ ignition_can ; 
- int /*<<< orphan*/  stub1 () ; 
- scalar_t__ stub2 () ; 
- void* usb_power_mode ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef void* uint8_t ;
+typedef int uint32_t ;
+struct TYPE_2__ {scalar_t__ (* check_ignition ) () ;int (* read_current ) () ;} ;
+
+
+ int adc_get_voltage () ;
+ int can_fwd_errs ;
+ int can_send_errs ;
+ void* car_harness_status ;
+ void* controls_allowed ;
+ TYPE_1__* current_board ;
+ scalar_t__ current_safety_mode ;
+ void* gas_interceptor_detected ;
+ int gmlan_send_errs ;
+ scalar_t__ ignition_can ;
+ int stub1 () ;
+ scalar_t__ stub2 () ;
+ void* usb_power_mode ;
 
 int get_health_pkt(void *dat) {
   struct __attribute__((packed)) {
@@ -49,7 +49,7 @@ int get_health_pkt(void *dat) {
   health->voltage_pkt = adc_get_voltage();
   health->current_pkt = current_board->read_current();
 
-  //Use the GPIO pin to determine ignition or use a CAN based logic
+
   health->ignition_line_pkt = (uint8_t)(current_board->check_ignition());
   health->ignition_can_pkt = (uint8_t)(ignition_can);
 

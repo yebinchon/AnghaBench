@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT8 ;
-typedef  scalar_t__ UINT32 ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int UINT8 ;
+typedef scalar_t__ UINT32 ;
 struct TYPE_5__ {int CompileFlags; scalar_t__ FinalAmlLength; } ;
 struct TYPE_6__ {TYPE_1__ Asl; } ;
-typedef  int /*<<< orphan*/  ACPI_STATUS ;
-typedef  TYPE_2__ ACPI_PARSE_OBJECT ;
+typedef int ACPI_STATUS ;
+typedef TYPE_2__ ACPI_PARSE_OBJECT ;
 
-/* Variables and functions */
- scalar_t__ ACPI_FAILURE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ACPI_TO_INTEGER (void*) ; 
- int /*<<< orphan*/  AE_OK ; 
- int /*<<< orphan*/  ASL_FILE_AML_OUTPUT ; 
- scalar_t__ ASL_FILE_ASM_INCLUDE_OUTPUT ; 
- scalar_t__ ASL_FILE_C_INCLUDE_OUTPUT ; 
- int /*<<< orphan*/  ASL_MSG_READ ; 
- int /*<<< orphan*/  AslAbort () ; 
- int /*<<< orphan*/  FlFileError (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FlReadFile (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  LsWriteListingHexBytes (int /*<<< orphan*/ *,int,scalar_t__) ; 
- int /*<<< orphan*/  LsWriteNodeToListing (TYPE_2__*,scalar_t__) ; 
- int OP_IS_RESOURCE_DATA ; 
+
+ scalar_t__ ACPI_FAILURE (int ) ;
+ int ACPI_TO_INTEGER (void*) ;
+ int AE_OK ;
+ int ASL_FILE_AML_OUTPUT ;
+ scalar_t__ ASL_FILE_ASM_INCLUDE_OUTPUT ;
+ scalar_t__ ASL_FILE_C_INCLUDE_OUTPUT ;
+ int ASL_MSG_READ ;
+ int AslAbort () ;
+ int FlFileError (int ,int ) ;
+ int FlReadFile (int ,int *,int) ;
+ int LsWriteListingHexBytes (int *,int,scalar_t__) ;
+ int LsWriteNodeToListing (TYPE_2__*,scalar_t__) ;
+ int OP_IS_RESOURCE_DATA ;
 
 __attribute__((used)) static ACPI_STATUS
 LsAmlListingWalk (
-    ACPI_PARSE_OBJECT       *Op,
-    UINT32                  Level,
-    void                    *Context)
+    ACPI_PARSE_OBJECT *Op,
+    UINT32 Level,
+    void *Context)
 {
-    UINT8                   FileByte;
-    UINT32                  i;
-    UINT32                  FileId = (UINT32) ACPI_TO_INTEGER (Context);
+    UINT8 FileByte;
+    UINT32 i;
+    UINT32 FileId = (UINT32) ACPI_TO_INTEGER (Context);
 
 
     LsWriteNodeToListing (Op, FileId);
 
     if (Op->Asl.CompileFlags & OP_IS_RESOURCE_DATA)
     {
-        /* Buffer is a resource template, don't dump the data all at once */
+
 
         return (AE_OK);
     }
@@ -60,7 +60,7 @@ LsAmlListingWalk (
         return (AE_OK);
     }
 
-    /* Write the hex bytes to the listing file(s) (if requested) */
+
 
     for (i = 0; i < Op->Asl.FinalAmlLength; i++)
     {

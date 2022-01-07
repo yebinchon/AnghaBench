@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * HGLRC ;
-typedef  int /*<<< orphan*/  HDC ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetLastError () ; 
- int /*<<< orphan*/  LOG_ERROR ; 
- int /*<<< orphan*/  blog (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * wglCreateContext (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wglDeleteContext (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  wgl_make_current (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int * HGLRC ;
+typedef int HDC ;
+
+
+ int GetLastError () ;
+ int LOG_ERROR ;
+ int blog (int ,char*,int ) ;
+ int * wglCreateContext (int ) ;
+ int wglDeleteContext (int *) ;
+ int wgl_make_current (int ,int *) ;
 
 __attribute__((used)) static inline HGLRC gl_init_basic_context(HDC hdc)
 {
-	HGLRC hglrc = wglCreateContext(hdc);
-	if (!hglrc) {
-		blog(LOG_ERROR, "wglCreateContext failed, %lu", GetLastError());
-		return NULL;
-	}
+ HGLRC hglrc = wglCreateContext(hdc);
+ if (!hglrc) {
+  blog(LOG_ERROR, "wglCreateContext failed, %lu", GetLastError());
+  return ((void*)0);
+ }
 
-	if (!wgl_make_current(hdc, hglrc)) {
-		wglDeleteContext(hglrc);
-		return NULL;
-	}
+ if (!wgl_make_current(hdc, hglrc)) {
+  wglDeleteContext(hglrc);
+  return ((void*)0);
+ }
 
-	return hglrc;
+ return hglrc;
 }

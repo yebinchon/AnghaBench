@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  slock; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int slock; } ;
 struct sock {TYPE_1__ sk_lock; } ;
 struct net {int dummy; } ;
 
-/* Variables and functions */
- struct sock* icmp_sk (struct net*) ; 
- int /*<<< orphan*/  local_bh_disable () ; 
- int /*<<< orphan*/  local_bh_enable () ; 
- int /*<<< orphan*/  spin_trylock (int /*<<< orphan*/ *) ; 
- scalar_t__ unlikely (int) ; 
+
+ struct sock* icmp_sk (struct net*) ;
+ int local_bh_disable () ;
+ int local_bh_enable () ;
+ int spin_trylock (int *) ;
+ scalar_t__ unlikely (int) ;
 
 __attribute__((used)) static inline struct sock *icmp_xmit_lock(struct net *net)
 {
-	struct sock *sk;
+ struct sock *sk;
 
-	local_bh_disable();
+ local_bh_disable();
 
-	sk = icmp_sk(net);
+ sk = icmp_sk(net);
 
-	if (unlikely(!spin_trylock(&sk->sk_lock.slock))) {
-		/* This can happen if the output path signals a
-		 * dst_link_failure() for an outgoing ICMP packet.
-		 */
-		local_bh_enable();
-		return NULL;
-	}
-	return sk;
+ if (unlikely(!spin_trylock(&sk->sk_lock.slock))) {
+
+
+
+  local_bh_enable();
+  return ((void*)0);
+ }
+ return sk;
 }

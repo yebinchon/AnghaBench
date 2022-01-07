@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {int /*<<< orphan*/  bound_leases; int /*<<< orphan*/  raw_option; int /*<<< orphan*/  leases_by_client_id; int /*<<< orphan*/  sip; int /*<<< orphan*/  ntp; int /*<<< orphan*/  dns; int /*<<< orphan*/  timezone; int /*<<< orphan*/  event; } ;
-typedef  TYPE_1__ sd_dhcp_server ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hashmap_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  log_dhcp_server (TYPE_1__*,char*) ; 
- TYPE_1__* mfree (TYPE_1__*) ; 
- int /*<<< orphan*/  ordered_hashmap_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sd_dhcp_server_stop (TYPE_1__*) ; 
- int /*<<< orphan*/  sd_event_unref (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_9__ {int bound_leases; int raw_option; int leases_by_client_id; int sip; int ntp; int dns; int timezone; int event; } ;
+typedef TYPE_1__ sd_dhcp_server ;
+
+
+ int assert (TYPE_1__*) ;
+ int free (int ) ;
+ int hashmap_free (int ) ;
+ int log_dhcp_server (TYPE_1__*,char*) ;
+ TYPE_1__* mfree (TYPE_1__*) ;
+ int ordered_hashmap_free (int ) ;
+ int sd_dhcp_server_stop (TYPE_1__*) ;
+ int sd_event_unref (int ) ;
 
 __attribute__((used)) static sd_dhcp_server *dhcp_server_free(sd_dhcp_server *server) {
         assert(server);

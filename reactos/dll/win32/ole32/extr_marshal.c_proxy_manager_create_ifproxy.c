@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct proxy_manager {int /*<<< orphan*/  cs; int /*<<< orphan*/  interfaces; int /*<<< orphan*/  IMultiQI_iface; } ;
-struct TYPE_3__ {int /*<<< orphan*/  cPublicRefs; int /*<<< orphan*/  ipid; } ;
-struct ifproxy {int /*<<< orphan*/  entry; int /*<<< orphan*/ * chan; int /*<<< orphan*/ * proxy; int /*<<< orphan*/ * iface; scalar_t__ refs; int /*<<< orphan*/  iid; TYPE_1__ stdobjref; struct proxy_manager* parent; } ;
-typedef  TYPE_1__ STDOBJREF ;
-typedef  int /*<<< orphan*/ * REFIID ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  IRpcChannelBuffer ;
-typedef  int /*<<< orphan*/  IPSFactoryBuffer ;
-typedef  scalar_t__ HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*,int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__ E_OUTOFMEMORY ; 
- int /*<<< orphan*/  EnterCriticalSection (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- struct ifproxy* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  IID_IUnknown ; 
- int /*<<< orphan*/  IMultiQI_AddRef (int /*<<< orphan*/ *) ; 
- scalar_t__ IPSFactoryBuffer_CreateProxy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IPSFactoryBuffer_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IRpcProxyBuffer_Connect (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ IsEqualIID (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LeaveCriticalSection (int /*<<< orphan*/ *) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  TRACE (char*,struct ifproxy*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  debugstr_guid (int /*<<< orphan*/ *) ; 
- scalar_t__ get_facbuf_for_iid (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  ifproxy_destroy (struct ifproxy*) ; 
- int /*<<< orphan*/  list_add_tail (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  list_init (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct proxy_manager {int cs; int interfaces; int IMultiQI_iface; } ;
+struct TYPE_3__ {int cPublicRefs; int ipid; } ;
+struct ifproxy {int entry; int * chan; int * proxy; int * iface; scalar_t__ refs; int iid; TYPE_1__ stdobjref; struct proxy_manager* parent; } ;
+typedef TYPE_1__ STDOBJREF ;
+typedef int * REFIID ;
+typedef int IUnknown ;
+typedef int IRpcChannelBuffer ;
+typedef int IPSFactoryBuffer ;
+typedef scalar_t__ HRESULT ;
+
+
+ int ERR (char*,int ,scalar_t__) ;
+ scalar_t__ E_OUTOFMEMORY ;
+ int EnterCriticalSection (int *) ;
+ int GetProcessHeap () ;
+ struct ifproxy* HeapAlloc (int ,int ,int) ;
+ int IID_IUnknown ;
+ int IMultiQI_AddRef (int *) ;
+ scalar_t__ IPSFactoryBuffer_CreateProxy (int *,int *,int *,int **,int **) ;
+ int IPSFactoryBuffer_Release (int *) ;
+ scalar_t__ IRpcProxyBuffer_Connect (int *,int *) ;
+ scalar_t__ IsEqualIID (int *,int *) ;
+ int LeaveCriticalSection (int *) ;
+ scalar_t__ S_OK ;
+ int TRACE (char*,struct ifproxy*,int ,int ,int ) ;
+ int assert (int *) ;
+ int debugstr_guid (int *) ;
+ scalar_t__ get_facbuf_for_iid (int *,int **) ;
+ int ifproxy_destroy (struct ifproxy*) ;
+ int list_add_tail (int *,int *) ;
+ int list_init (int *) ;
 
 __attribute__((used)) static HRESULT proxy_manager_create_ifproxy(
     struct proxy_manager * This, const STDOBJREF *stdobjref, REFIID riid,
@@ -58,13 +58,13 @@ __attribute__((used)) static HRESULT proxy_manager_create_ifproxy(
     ifproxy->stdobjref = *stdobjref;
     ifproxy->iid = *riid;
     ifproxy->refs = 0;
-    ifproxy->proxy = NULL;
+    ifproxy->proxy = ((void*)0);
 
     assert(channel);
-    ifproxy->chan = channel; /* FIXME: we should take the binding strings and construct the channel in this function */
+    ifproxy->chan = channel;
 
-    /* the IUnknown interface is special because it does not have a
-     * proxy associated with the ifproxy as we handle IUnknown ourselves */
+
+
     if (IsEqualIID(riid, &IID_IUnknown))
     {
         ifproxy->iface = &This->IMultiQI_iface;
@@ -76,10 +76,10 @@ __attribute__((used)) static HRESULT proxy_manager_create_ifproxy(
         hr = get_facbuf_for_iid(riid, &psfb);
         if (hr == S_OK)
         {
-            /* important note: the outer unknown is set to the proxy manager.
-             * This ensures the COM identity rules are not violated, by having a
-             * one-to-one mapping of objects on the proxy side to objects on the
-             * stub side, no matter which interface you view the object through */
+
+
+
+
             hr = IPSFactoryBuffer_CreateProxy(psfb, (IUnknown*)&This->IMultiQI_iface, riid,
                                               &ifproxy->proxy, &ifproxy->iface);
             IPSFactoryBuffer_Release(psfb);

@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  test_values ;
-typedef  int /*<<< orphan*/  jerry_value_t ;
-typedef  scalar_t__ jerry_error_t ;
-typedef  int /*<<< orphan*/  jerry_char_t ;
-typedef  int /*<<< orphan*/  errors ;
 
-/* Variables and functions */
- scalar_t__ JERRY_ERROR_COMMON ; 
- scalar_t__ JERRY_ERROR_EVAL ; 
- scalar_t__ JERRY_ERROR_NONE ; 
- scalar_t__ JERRY_ERROR_RANGE ; 
- scalar_t__ JERRY_ERROR_REFERENCE ; 
- scalar_t__ JERRY_ERROR_SYNTAX ; 
- scalar_t__ JERRY_ERROR_TYPE ; 
- scalar_t__ JERRY_ERROR_URI ; 
- int /*<<< orphan*/  JERRY_INIT_EMPTY ; 
- int /*<<< orphan*/  TEST_ASSERT (int) ; 
- int /*<<< orphan*/  TEST_INIT () ; 
- int /*<<< orphan*/  jerry_cleanup () ; 
- int /*<<< orphan*/  jerry_create_boolean (int) ; 
- int /*<<< orphan*/  jerry_create_error (scalar_t__,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  jerry_create_number (int) ; 
- int /*<<< orphan*/  jerry_create_object () ; 
- int /*<<< orphan*/  jerry_create_string (int /*<<< orphan*/  const*) ; 
- scalar_t__ jerry_get_error_type (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jerry_get_value_from_error (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  jerry_init (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jerry_release_value (int /*<<< orphan*/ ) ; 
- int jerry_value_is_error (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int test_values ;
+typedef int jerry_value_t ;
+typedef scalar_t__ jerry_error_t ;
+typedef int jerry_char_t ;
+typedef int errors ;
+
+
+ scalar_t__ JERRY_ERROR_COMMON ;
+ scalar_t__ JERRY_ERROR_EVAL ;
+ scalar_t__ JERRY_ERROR_NONE ;
+ scalar_t__ JERRY_ERROR_RANGE ;
+ scalar_t__ JERRY_ERROR_REFERENCE ;
+ scalar_t__ JERRY_ERROR_SYNTAX ;
+ scalar_t__ JERRY_ERROR_TYPE ;
+ scalar_t__ JERRY_ERROR_URI ;
+ int JERRY_INIT_EMPTY ;
+ int TEST_ASSERT (int) ;
+ int TEST_INIT () ;
+ int jerry_cleanup () ;
+ int jerry_create_boolean (int) ;
+ int jerry_create_error (scalar_t__,int const*) ;
+ int jerry_create_number (int) ;
+ int jerry_create_object () ;
+ int jerry_create_string (int const*) ;
+ scalar_t__ jerry_get_error_type (int ) ;
+ int jerry_get_value_from_error (int ,int) ;
+ int jerry_init (int ) ;
+ int jerry_release_value (int ) ;
+ int jerry_value_is_error (int ) ;
 
 int
 main (void)
@@ -64,7 +64,7 @@ main (void)
     TEST_ASSERT (jerry_value_is_error (error_obj));
     TEST_ASSERT (jerry_get_error_type (error_obj) == errors[idx]);
 
-    error_obj = jerry_get_value_from_error (error_obj, true);
+    error_obj = jerry_get_value_from_error (error_obj, 1);
 
     TEST_ASSERT (jerry_get_error_type (error_obj) == errors[idx]);
 
@@ -75,7 +75,7 @@ main (void)
   {
     jerry_create_number (11),
     jerry_create_string ((const jerry_char_t *) "message"),
-    jerry_create_boolean (true),
+    jerry_create_boolean (1),
     jerry_create_object (),
   };
 

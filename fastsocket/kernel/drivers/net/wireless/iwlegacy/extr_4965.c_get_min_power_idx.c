@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
-typedef  int s32 ;
 
-/* Variables and functions */
- int MIN_TX_GAIN_IDX ; 
- int MIN_TX_GAIN_IDX_52GHZ_EXT ; 
+
+
+
+typedef int u32 ;
+typedef int s32 ;
+
+
+ int MIN_TX_GAIN_IDX ;
+ int MIN_TX_GAIN_IDX_52GHZ_EXT ;
 
 __attribute__((used)) static s32
 get_min_power_idx(s32 rate_power_idx, u32 band)
 {
-	if (!band) {
-		if ((rate_power_idx & 7) <= 4)
-			return MIN_TX_GAIN_IDX_52GHZ_EXT;
-	}
-	return MIN_TX_GAIN_IDX;
+ if (!band) {
+  if ((rate_power_idx & 7) <= 4)
+   return MIN_TX_GAIN_IDX_52GHZ_EXT;
+ }
+ return MIN_TX_GAIN_IDX;
 }

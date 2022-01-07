@@ -1,18 +1,10 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int fromhex (char const) ; 
+ int fromhex (char const) ;
 
 int
 unhexify (char *bin, const char *hex, int count)
@@ -23,8 +15,8 @@ unhexify (char *bin, const char *hex, int count)
     {
       if (hex[0] == 0 || hex[1] == 0)
         {
-          /* Hex string is short, or of uneven length.
-             Return the count that has been converted so far. */
+
+
           return i;
         }
       *bin++ = fromhex (hex[0]) * 16 + fromhex (hex[1]);

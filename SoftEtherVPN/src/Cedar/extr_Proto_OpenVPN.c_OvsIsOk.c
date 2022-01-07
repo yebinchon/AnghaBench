@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int DisconnectCount; scalar_t__ SessionEstablishedCount; } ;
-typedef  TYPE_1__ OPENVPN_SERVER ;
+typedef TYPE_1__ OPENVPN_SERVER ;
 
-/* Variables and functions */
+
 
 bool OvsIsOk(void *param)
 {
-	OPENVPN_SERVER *s;
+ OPENVPN_SERVER *s;
 
-	if (param == NULL)
-	{
-		return false;
-	}
+ if (param == ((void*)0))
+ {
+  return 0;
+ }
 
-	s = param;
+ s = param;
 
-	return (s->DisconnectCount < 1) && (s->SessionEstablishedCount > 0);
+ return (s->DisconnectCount < 1) && (s->SessionEstablishedCount > 0);
 }

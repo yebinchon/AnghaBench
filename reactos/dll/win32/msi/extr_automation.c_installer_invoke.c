@@ -1,66 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WORD ;
-typedef  int /*<<< orphan*/  VARIANT ;
-typedef  int /*<<< orphan*/  UINT ;
-typedef  int /*<<< orphan*/  REFIID ;
-typedef  int /*<<< orphan*/  LCID ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  EXCEPINFO ;
-typedef  int /*<<< orphan*/  DISPPARAMS ;
-typedef  int DISPID ;
-typedef  int /*<<< orphan*/  AutomationObject ;
 
-/* Variables and functions */
-#define  DISPID_INSTALLER_CREATERECORD 146 
-#define  DISPID_INSTALLER_ENABLELOG 145 
-#define  DISPID_INSTALLER_ENVIRONMENT 144 
-#define  DISPID_INSTALLER_FILEATTRIBUTES 143 
-#define  DISPID_INSTALLER_FILESIZE 142 
-#define  DISPID_INSTALLER_FILEVERSION 141 
-#define  DISPID_INSTALLER_INSTALLPRODUCT 140 
-#define  DISPID_INSTALLER_LASTERRORRECORD 139 
-#define  DISPID_INSTALLER_OPENDATABASE 138 
-#define  DISPID_INSTALLER_OPENPACKAGE 137 
-#define  DISPID_INSTALLER_OPENPRODUCT 136 
-#define  DISPID_INSTALLER_PRODUCTINFO 135 
-#define  DISPID_INSTALLER_PRODUCTS 134 
-#define  DISPID_INSTALLER_PRODUCTSTATE 133 
-#define  DISPID_INSTALLER_REGISTRYVALUE 132 
-#define  DISPID_INSTALLER_RELATEDPRODUCTS 131 
-#define  DISPID_INSTALLER_SUMMARYINFORMATION 130 
-#define  DISPID_INSTALLER_UILEVEL 129 
-#define  DISPID_INSTALLER_VERSION 128 
- int /*<<< orphan*/  DISP_E_MEMBERNOTFOUND ; 
- int /*<<< orphan*/  InstallerImpl_CreateRecord (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  InstallerImpl_EnableLog (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  InstallerImpl_Environment (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  InstallerImpl_FileAttributes (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  InstallerImpl_FileSize (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  InstallerImpl_FileVersion (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  InstallerImpl_InstallProduct (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  InstallerImpl_LastErrorRecord (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  InstallerImpl_OpenDatabase (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  InstallerImpl_OpenPackage (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  InstallerImpl_OpenProduct (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  InstallerImpl_ProductInfo (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  InstallerImpl_ProductState (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  InstallerImpl_Products (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  InstallerImpl_RegistryValue (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  InstallerImpl_RelatedProducts (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  InstallerImpl_SummaryInformation (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  InstallerImpl_UILevel (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  InstallerImpl_Version (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int WORD ;
+typedef int VARIANT ;
+typedef int UINT ;
+typedef int REFIID ;
+typedef int LCID ;
+typedef int HRESULT ;
+typedef int EXCEPINFO ;
+typedef int DISPPARAMS ;
+typedef int DISPID ;
+typedef int AutomationObject ;
+ int DISP_E_MEMBERNOTFOUND ;
+ int InstallerImpl_CreateRecord (int ,int *,int *,int *,int *) ;
+ int InstallerImpl_EnableLog (int ,int *,int *,int *,int *) ;
+ int InstallerImpl_Environment (int ,int *,int *,int *,int *) ;
+ int InstallerImpl_FileAttributes (int ,int *,int *,int *,int *) ;
+ int InstallerImpl_FileSize (int ,int *,int *,int *,int *) ;
+ int InstallerImpl_FileVersion (int ,int *,int *,int *,int *) ;
+ int InstallerImpl_InstallProduct (int ,int *,int *,int *,int *) ;
+ int InstallerImpl_LastErrorRecord (int ,int *,int *,int *,int *) ;
+ int InstallerImpl_OpenDatabase (int ,int *,int *,int *,int *) ;
+ int InstallerImpl_OpenPackage (int *,int ,int *,int *,int *,int *) ;
+ int InstallerImpl_OpenProduct (int ,int *,int *,int *,int *) ;
+ int InstallerImpl_ProductInfo (int ,int *,int *,int *,int *) ;
+ int InstallerImpl_ProductState (int ,int *,int *,int *,int *) ;
+ int InstallerImpl_Products (int ,int *,int *,int *,int *) ;
+ int InstallerImpl_RegistryValue (int ,int *,int *,int *,int *) ;
+ int InstallerImpl_RelatedProducts (int ,int *,int *,int *,int *) ;
+ int InstallerImpl_SummaryInformation (int ,int *,int *,int *,int *) ;
+ int InstallerImpl_UILevel (int ,int *,int *,int *,int *) ;
+ int InstallerImpl_Version (int ,int *,int *,int *) ;
 
 __attribute__((used)) static HRESULT installer_invoke(
         AutomationObject* This,
@@ -75,84 +54,84 @@ __attribute__((used)) static HRESULT installer_invoke(
 {
     switch (dispIdMember)
     {
-        case DISPID_INSTALLER_CREATERECORD:
+        case 146:
             return InstallerImpl_CreateRecord(wFlags, pDispParams,
                                               pVarResult, pExcepInfo, puArgErr);
 
-        case DISPID_INSTALLER_OPENPACKAGE:
+        case 137:
             return InstallerImpl_OpenPackage(This, wFlags, pDispParams,
                                              pVarResult, pExcepInfo, puArgErr);
 
-        case DISPID_INSTALLER_OPENPRODUCT:
+        case 136:
             return InstallerImpl_OpenProduct(wFlags, pDispParams,
                                              pVarResult, pExcepInfo, puArgErr);
 
-        case DISPID_INSTALLER_OPENDATABASE:
+        case 138:
             return InstallerImpl_OpenDatabase(wFlags, pDispParams,
                                               pVarResult, pExcepInfo, puArgErr);
 
-        case DISPID_INSTALLER_SUMMARYINFORMATION:
+        case 130:
             return InstallerImpl_SummaryInformation(wFlags, pDispParams,
                                                     pVarResult, pExcepInfo,
                                                     puArgErr);
 
-        case DISPID_INSTALLER_UILEVEL:
+        case 129:
             return InstallerImpl_UILevel(wFlags, pDispParams,
                                          pVarResult, pExcepInfo, puArgErr);
 
-        case DISPID_INSTALLER_ENABLELOG:
+        case 145:
             return InstallerImpl_EnableLog(wFlags, pDispParams,
                                            pVarResult, pExcepInfo, puArgErr);
 
-        case DISPID_INSTALLER_INSTALLPRODUCT:
+        case 140:
             return InstallerImpl_InstallProduct(wFlags, pDispParams,
                                                 pVarResult, pExcepInfo,
                                                 puArgErr);
 
-        case DISPID_INSTALLER_VERSION:
+        case 128:
             return InstallerImpl_Version(wFlags, pVarResult,
                                          pExcepInfo, puArgErr);
 
-        case DISPID_INSTALLER_LASTERRORRECORD:
+        case 139:
             return InstallerImpl_LastErrorRecord(wFlags, pDispParams,
                                                  pVarResult, pExcepInfo,
                                                  puArgErr);
 
-        case DISPID_INSTALLER_REGISTRYVALUE:
+        case 132:
             return InstallerImpl_RegistryValue(wFlags, pDispParams,
                                                pVarResult, pExcepInfo,
                                                puArgErr);
 
-        case DISPID_INSTALLER_ENVIRONMENT:
+        case 144:
             return InstallerImpl_Environment(wFlags, pDispParams,
                                              pVarResult, pExcepInfo, puArgErr);
 
-        case DISPID_INSTALLER_FILEATTRIBUTES:
+        case 143:
             return InstallerImpl_FileAttributes(wFlags, pDispParams,
                                                 pVarResult, pExcepInfo,
                                                 puArgErr);
 
-        case DISPID_INSTALLER_FILESIZE:
+        case 142:
             return InstallerImpl_FileSize(wFlags, pDispParams,
                                           pVarResult, pExcepInfo, puArgErr);
 
-        case DISPID_INSTALLER_FILEVERSION:
+        case 141:
             return InstallerImpl_FileVersion(wFlags, pDispParams,
                                              pVarResult, pExcepInfo, puArgErr);
 
-        case DISPID_INSTALLER_PRODUCTSTATE:
+        case 133:
             return InstallerImpl_ProductState(wFlags, pDispParams,
                                               pVarResult, pExcepInfo, puArgErr);
 
-        case DISPID_INSTALLER_PRODUCTINFO:
+        case 135:
             return InstallerImpl_ProductInfo(wFlags, pDispParams,
                                              pVarResult, pExcepInfo, puArgErr);
 
-        case DISPID_INSTALLER_PRODUCTS:
+        case 134:
             return InstallerImpl_Products(wFlags, pDispParams,
                                           pVarResult, pExcepInfo, puArgErr);
 
-        case DISPID_INSTALLER_RELATEDPRODUCTS:
+        case 131:
             return InstallerImpl_RelatedProducts(wFlags, pDispParams,
                                                  pVarResult, pExcepInfo,
                                                  puArgErr);

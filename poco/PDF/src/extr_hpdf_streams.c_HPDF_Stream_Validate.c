@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ sig_bytes; } ;
-typedef  TYPE_1__* HPDF_Stream ;
-typedef  int /*<<< orphan*/  HPDF_STATUS ;
+typedef TYPE_1__* HPDF_Stream ;
+typedef int HPDF_STATUS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HPDF_FALSE ; 
- scalar_t__ HPDF_STREAM_SIG_BYTES ; 
- int /*<<< orphan*/  HPDF_TRUE ; 
+
+ int HPDF_FALSE ;
+ scalar_t__ HPDF_STREAM_SIG_BYTES ;
+ int HPDF_TRUE ;
 
 HPDF_STATUS
-HPDF_Stream_Validate  (HPDF_Stream  stream)
+HPDF_Stream_Validate (HPDF_Stream stream)
 {
     if (!stream || stream->sig_bytes != HPDF_STREAM_SIG_BYTES)
         return HPDF_FALSE;

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct sas_phy {int /*<<< orphan*/  dev; } ;
 
-/* Variables and functions */
- int device_add (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  transport_add_device (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  transport_configure_device (int /*<<< orphan*/ *) ; 
+
+
+
+struct sas_phy {int dev; } ;
+
+
+ int device_add (int *) ;
+ int transport_add_device (int *) ;
+ int transport_configure_device (int *) ;
 
 int sas_phy_add(struct sas_phy *phy)
 {
-	int error;
+ int error;
 
-	error = device_add(&phy->dev);
-	if (!error) {
-		transport_add_device(&phy->dev);
-		transport_configure_device(&phy->dev);
-	}
+ error = device_add(&phy->dev);
+ if (!error) {
+  transport_add_device(&phy->dev);
+  transport_configure_device(&phy->dev);
+ }
 
-	return error;
+ return error;
 }

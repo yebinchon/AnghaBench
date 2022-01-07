@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint32_t ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
 struct TYPE_5__ {scalar_t__ codec_id; scalar_t__ frame_number; TYPE_1__* priv_data; } ;
-struct TYPE_4__ {int sequence_number; int /*<<< orphan*/  const* bytestream; } ;
-typedef  TYPE_1__ PNGEncContext ;
-typedef  TYPE_2__ AVCodecContext ;
-typedef  int /*<<< orphan*/  AVCRC ;
+struct TYPE_4__ {int sequence_number; int const* bytestream; } ;
+typedef TYPE_1__ PNGEncContext ;
+typedef TYPE_2__ AVCodecContext ;
+typedef int AVCRC ;
 
-/* Variables and functions */
- scalar_t__ AV_CODEC_ID_PNG ; 
- int /*<<< orphan*/  AV_CRC_32_IEEE_LE ; 
- int MKBETAG (float,char,char,char) ; 
- int /*<<< orphan*/  MKTAG (char,char,char,char) ; 
- int av_crc (int /*<<< orphan*/  const*,int,int /*<<< orphan*/  const*,int) ; 
- int /*<<< orphan*/ * av_crc_get_table (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bytestream_put_be32 (int /*<<< orphan*/  const**,int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int) ; 
- int /*<<< orphan*/  png_write_chunk (int /*<<< orphan*/  const**,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int) ; 
+
+ scalar_t__ AV_CODEC_ID_PNG ;
+ int AV_CRC_32_IEEE_LE ;
+ int MKBETAG (float,char,char,char) ;
+ int MKTAG (char,char,char,char) ;
+ int av_crc (int const*,int,int const*,int) ;
+ int * av_crc_get_table (int ) ;
+ int bytestream_put_be32 (int const**,int) ;
+ int memcpy (int const*,int const*,int) ;
+ int png_write_chunk (int const**,int ,int const*,int) ;
 
 __attribute__((used)) static void png_write_image_data(AVCodecContext *avctx,
                                  const uint8_t *buf, int length)

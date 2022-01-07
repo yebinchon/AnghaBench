@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
+
+
+
+
+typedef int u32 ;
 struct kpc_dma_device {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetEngineControl (struct kpc_dma_device*) ; 
- int /*<<< orphan*/  WriteEngineControl (struct kpc_dma_device*,int /*<<< orphan*/ ) ; 
+
+ int GetEngineControl (struct kpc_dma_device*) ;
+ int WriteEngineControl (struct kpc_dma_device*,int ) ;
 
 __attribute__((used)) static inline
-void  SetClearEngineControl(struct kpc_dma_device *eng, u32 set_bits, u32 clear_bits)
+void SetClearEngineControl(struct kpc_dma_device *eng, u32 set_bits, u32 clear_bits)
 {
-	u32 val = GetEngineControl(eng);
+ u32 val = GetEngineControl(eng);
 
-	val |= set_bits;
-	val &= ~clear_bits;
-	WriteEngineControl(eng, val);
+ val |= set_bits;
+ val &= ~clear_bits;
+ WriteEngineControl(eng, val);
 }

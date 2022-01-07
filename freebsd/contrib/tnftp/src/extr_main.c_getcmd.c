@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct cmd {char* c_name; } ;
 
-/* Variables and functions */
- struct cmd* cmdtab ; 
+
+ struct cmd* cmdtab ;
 
 struct cmd *
 getcmd(const char *name)
 {
-	const char *p, *q;
-	struct cmd *c, *found;
-	int nmatches, longest;
+ const char *p, *q;
+ struct cmd *c, *found;
+ int nmatches, longest;
 
-	if (name == NULL)
-		return (0);
+ if (name == ((void*)0))
+  return (0);
 
-	longest = 0;
-	nmatches = 0;
-	found = 0;
-	for (c = cmdtab; (p = c->c_name) != NULL; c++) {
-		for (q = name; *q == *p++; q++)
-			if (*q == 0)		/* exact match? */
-				return (c);
-		if (!*q) {			/* the name was a prefix */
-			if (q - name > longest) {
-				longest = q - name;
-				nmatches = 1;
-				found = c;
-			} else if (q - name == longest)
-				nmatches++;
-		}
-	}
-	if (nmatches > 1)
-		return ((struct cmd *)-1);
-	return (found);
+ longest = 0;
+ nmatches = 0;
+ found = 0;
+ for (c = cmdtab; (p = c->c_name) != ((void*)0); c++) {
+  for (q = name; *q == *p++; q++)
+   if (*q == 0)
+    return (c);
+  if (!*q) {
+   if (q - name > longest) {
+    longest = q - name;
+    nmatches = 1;
+    found = c;
+   } else if (q - name == longest)
+    nmatches++;
+  }
+ }
+ if (nmatches > 1)
+  return ((struct cmd *)-1);
+ return (found);
 }

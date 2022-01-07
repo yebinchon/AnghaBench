@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct fpgamgr_softc {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DELAY (int) ; 
- int /*<<< orphan*/  FPGAMGR_DCLKCNT ; 
- int /*<<< orphan*/  FPGAMGR_DCLKSTAT ; 
- int READ4 (struct fpgamgr_softc*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WRITE4 (struct fpgamgr_softc*,int /*<<< orphan*/ ,int) ; 
+
+ int DELAY (int) ;
+ int FPGAMGR_DCLKCNT ;
+ int FPGAMGR_DCLKSTAT ;
+ int READ4 (struct fpgamgr_softc*,int ) ;
+ int WRITE4 (struct fpgamgr_softc*,int ,int) ;
 
 __attribute__((used)) static int
 fpga_wait_dclk_pulses(struct fpgamgr_softc *sc, int npulses)
 {
-	int tout;
+ int tout;
 
-	/* Clear done bit, if any */
-	if (READ4(sc, FPGAMGR_DCLKSTAT) != 0)
-		WRITE4(sc, FPGAMGR_DCLKSTAT, 0x1);
 
-	/* Request DCLK pulses */
-	WRITE4(sc, FPGAMGR_DCLKCNT, npulses);
+ if (READ4(sc, FPGAMGR_DCLKSTAT) != 0)
+  WRITE4(sc, FPGAMGR_DCLKSTAT, 0x1);
 
-	/* Wait finish */
-	tout = 1000;
-	while (tout > 0) {
-		if (READ4(sc, FPGAMGR_DCLKSTAT) == 1) {
-			WRITE4(sc, FPGAMGR_DCLKSTAT, 0x1);
-			break;
-		}
-		tout--;
-		DELAY(10);
-	}
-	if (tout == 0) {
-		return (1);
-	}
 
-	return (0);
+ WRITE4(sc, FPGAMGR_DCLKCNT, npulses);
+
+
+ tout = 1000;
+ while (tout > 0) {
+  if (READ4(sc, FPGAMGR_DCLKSTAT) == 1) {
+   WRITE4(sc, FPGAMGR_DCLKSTAT, 0x1);
+   break;
+  }
+  tout--;
+  DELAY(10);
+ }
+ if (tout == 0) {
+  return (1);
+ }
+
+ return (0);
 }

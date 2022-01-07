@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int l669; int l95; int l86; int l148; int l616; scalar_t__ l142; int /*<<< orphan*/  l621; scalar_t__* l184; scalar_t__ l122; TYPE_2__* d; } ;
-typedef  TYPE_1__ e ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int l669; int l95; int l86; int l148; int l616; scalar_t__ l142; int l621; scalar_t__* l184; scalar_t__ l122; TYPE_2__* d; } ;
+typedef TYPE_1__ e ;
 struct TYPE_7__ {int f; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  l (TYPE_2__*,int,int) ; 
- int /*<<< orphan*/  l68 (TYPE_1__*) ; 
- int u (TYPE_2__*,int) ; 
+
+ int l (TYPE_2__*,int,int) ;
+ int l68 (TYPE_1__*) ;
+ int u (TYPE_2__*,int) ;
 
 void cp_e3_timer(e*a){unsigned char l126;unsigned
 long l140;{if(!(a->d->f!=2))goto l815;return;l815:;}l(a->d,11,0);l140

@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
-struct mwifiex_private {int /*<<< orphan*/  data_rate; int /*<<< orphan*/  tx_htinfo; int /*<<< orphan*/  tx_rate; scalar_t__ is_data_rate_auto; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HostCmd_ACT_GEN_GET ; 
- int /*<<< orphan*/  HostCmd_CMD_802_11_TX_RATE_QUERY ; 
- int /*<<< orphan*/  mwifiex_index_to_data_rate (struct mwifiex_private*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int mwifiex_send_cmd (struct mwifiex_private*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int u32 ;
+struct mwifiex_private {int data_rate; int tx_htinfo; int tx_rate; scalar_t__ is_data_rate_auto; } ;
+
+
+ int HostCmd_ACT_GEN_GET ;
+ int HostCmd_CMD_802_11_TX_RATE_QUERY ;
+ int mwifiex_index_to_data_rate (struct mwifiex_private*,int ,int ) ;
+ int mwifiex_send_cmd (struct mwifiex_private*,int ,int ,int ,int *,int) ;
 
 int mwifiex_drv_get_data_rate(struct mwifiex_private *priv, u32 *rate)
 {
-	int ret;
+ int ret;
 
-	ret = mwifiex_send_cmd(priv, HostCmd_CMD_802_11_TX_RATE_QUERY,
-			       HostCmd_ACT_GEN_GET, 0, NULL, true);
+ ret = mwifiex_send_cmd(priv, HostCmd_CMD_802_11_TX_RATE_QUERY,
+          HostCmd_ACT_GEN_GET, 0, ((void*)0), 1);
 
-	if (!ret) {
-		if (priv->is_data_rate_auto)
-			*rate = mwifiex_index_to_data_rate(priv, priv->tx_rate,
-							   priv->tx_htinfo);
-		else
-			*rate = priv->data_rate;
-	}
+ if (!ret) {
+  if (priv->is_data_rate_auto)
+   *rate = mwifiex_index_to_data_rate(priv, priv->tx_rate,
+          priv->tx_htinfo);
+  else
+   *rate = priv->data_rate;
+ }
 
-	return ret;
+ return ret;
 }

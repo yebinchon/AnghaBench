@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* i2eBordStrPtr ;
-struct TYPE_3__ {int /*<<< orphan*/  i2eData; } ;
 
-/* Variables and functions */
- unsigned short inw (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef TYPE_1__* i2eBordStrPtr ;
+struct TYPE_3__ {int i2eData; } ;
+
+
+ unsigned short inw (int ) ;
 
 __attribute__((used)) static unsigned short
 iiReadWord16(i2eBordStrPtr pB)
 {
-	return inw(pB->i2eData);
+ return inw(pB->i2eData);
 }

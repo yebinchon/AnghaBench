@@ -1,109 +1,109 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wchar_t ;
-typedef  int /*<<< orphan*/  tmp ;
-typedef  int /*<<< orphan*/  t ;
-typedef  int /*<<< orphan*/  name ;
-typedef  int /*<<< orphan*/  datetime ;
-typedef  scalar_t__ UINT ;
-struct TYPE_9__ {int /*<<< orphan*/  Rpc; } ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int wchar_t ;
+typedef int tmp ;
+typedef int t ;
+typedef int name ;
+typedef int datetime ;
+typedef scalar_t__ UINT ;
+struct TYPE_9__ {int Rpc; } ;
 struct TYPE_8__ {scalar_t__ NumConnection; TYPE_1__* Connections; } ;
-struct TYPE_7__ {int /*<<< orphan*/  Type; int /*<<< orphan*/  ConnectedTime; int /*<<< orphan*/  Port; int /*<<< orphan*/  Hostname; int /*<<< orphan*/  Name; } ;
-typedef  TYPE_1__ RPC_ENUM_CONNECTION_ITEM ;
-typedef  TYPE_2__ RPC_ENUM_CONNECTION ;
-typedef  TYPE_3__ PS ;
-typedef  int /*<<< orphan*/  LIST ;
-typedef  int /*<<< orphan*/  CT ;
-typedef  int /*<<< orphan*/  CONSOLE ;
+struct TYPE_7__ {int Type; int ConnectedTime; int Port; int Hostname; int Name; } ;
+typedef TYPE_1__ RPC_ENUM_CONNECTION_ITEM ;
+typedef TYPE_2__ RPC_ENUM_CONNECTION ;
+typedef TYPE_3__ PS ;
+typedef int LIST ;
+typedef int CT ;
+typedef int CONSOLE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CmdPrintError (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  CtFree (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CtInsert (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CtInsertColumn (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/ * CtNew () ; 
- scalar_t__ ERR_INVALID_PARAMETER ; 
- scalar_t__ ERR_NO_ERROR ; 
- int /*<<< orphan*/  FreeParamValueList (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FreeRpcEnumConnection (TYPE_2__*) ; 
- int /*<<< orphan*/  GetConnectionTypeStr (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetDateTimeStrEx64 (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int MAX_SIZE ; 
- int /*<<< orphan*/ * ParseCommandList (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ ScEnumConnection (int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  StrToUni (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SystemToLocal64 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  UniFormat (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Zero (TYPE_2__*,int) ; 
- int /*<<< orphan*/  _UU (char*) ; 
+
+ int CmdPrintError (int *,scalar_t__) ;
+ int CtFree (int *,int *) ;
+ int CtInsert (int *,int *,int *,int *,int ) ;
+ int CtInsertColumn (int *,int ,int) ;
+ int * CtNew () ;
+ scalar_t__ ERR_INVALID_PARAMETER ;
+ scalar_t__ ERR_NO_ERROR ;
+ int FreeParamValueList (int *) ;
+ int FreeRpcEnumConnection (TYPE_2__*) ;
+ int GetConnectionTypeStr (int ) ;
+ int GetDateTimeStrEx64 (int *,int,int ,int *) ;
+ int MAX_SIZE ;
+ int * ParseCommandList (int *,char*,int *,int *,int ) ;
+ scalar_t__ ScEnumConnection (int ,TYPE_2__*) ;
+ int StrToUni (int *,int,int ) ;
+ int SystemToLocal64 (int ) ;
+ int UniFormat (int *,int,int ,int ,int ) ;
+ int Zero (TYPE_2__*,int) ;
+ int _UU (char*) ;
 
 UINT PsConnectionList(CONSOLE *c, char *cmd_name, wchar_t *str, void *param)
 {
-	LIST *o;
-	PS *ps = (PS *)param;
-	UINT ret = 0;
-	RPC_ENUM_CONNECTION t;
-	UINT i;
-	CT *ct;
+ LIST *o;
+ PS *ps = (PS *)param;
+ UINT ret = 0;
+ RPC_ENUM_CONNECTION t;
+ UINT i;
+ CT *ct;
 
-	o = ParseCommandList(c, cmd_name, str, NULL, 0);
-	if (o == NULL)
-	{
-		return ERR_INVALID_PARAMETER;
-	}
+ o = ParseCommandList(c, cmd_name, str, ((void*)0), 0);
+ if (o == ((void*)0))
+ {
+  return ERR_INVALID_PARAMETER;
+ }
 
-	Zero(&t, sizeof(t));
+ Zero(&t, sizeof(t));
 
-	// RPC call
-	ret = ScEnumConnection(ps->Rpc, &t);
 
-	if (ret != ERR_NO_ERROR)
-	{
-		// An error has occured
-		CmdPrintError(c, ret);
-		FreeParamValueList(o);
-		return ret;
-	}
+ ret = ScEnumConnection(ps->Rpc, &t);
 
-	ct = CtNew();
-	CtInsertColumn(ct, _UU("SM_CONN_COLUMN_1"), false);
-	CtInsertColumn(ct, _UU("SM_CONN_COLUMN_2"), false);
-	CtInsertColumn(ct, _UU("SM_CONN_COLUMN_3"), false);
-	CtInsertColumn(ct, _UU("SM_CONN_COLUMN_4"), false);
+ if (ret != ERR_NO_ERROR)
+ {
 
-	for (i = 0;i < t.NumConnection;i++)
-	{
-		wchar_t tmp[MAX_SIZE];
-		wchar_t name[MAX_SIZE];
-		wchar_t datetime[MAX_SIZE];
-		RPC_ENUM_CONNECTION_ITEM *e = &t.Connections[i];
+  CmdPrintError(c, ret);
+  FreeParamValueList(o);
+  return ret;
+ }
 
-		StrToUni(name, sizeof(name), e->Name);
-		UniFormat(tmp, sizeof(tmp), _UU("SM_HOSTNAME_AND_PORT"), e->Hostname, e->Port);
-		GetDateTimeStrEx64(datetime, sizeof(datetime), SystemToLocal64(e->ConnectedTime), NULL);
+ ct = CtNew();
+ CtInsertColumn(ct, _UU("SM_CONN_COLUMN_1"), 0);
+ CtInsertColumn(ct, _UU("SM_CONN_COLUMN_2"), 0);
+ CtInsertColumn(ct, _UU("SM_CONN_COLUMN_3"), 0);
+ CtInsertColumn(ct, _UU("SM_CONN_COLUMN_4"), 0);
 
-		CtInsert(ct, name, tmp, datetime,
-			GetConnectionTypeStr(e->Type));
-	}
+ for (i = 0;i < t.NumConnection;i++)
+ {
+  wchar_t tmp[MAX_SIZE];
+  wchar_t name[MAX_SIZE];
+  wchar_t datetime[MAX_SIZE];
+  RPC_ENUM_CONNECTION_ITEM *e = &t.Connections[i];
 
-	CtFree(ct, c);
+  StrToUni(name, sizeof(name), e->Name);
+  UniFormat(tmp, sizeof(tmp), _UU("SM_HOSTNAME_AND_PORT"), e->Hostname, e->Port);
+  GetDateTimeStrEx64(datetime, sizeof(datetime), SystemToLocal64(e->ConnectedTime), ((void*)0));
 
-	FreeRpcEnumConnection(&t);
+  CtInsert(ct, name, tmp, datetime,
+   GetConnectionTypeStr(e->Type));
+ }
 
-	FreeParamValueList(o);
+ CtFree(ct, c);
 
-	return 0;
+ FreeRpcEnumConnection(&t);
+
+ FreeParamValueList(o);
+
+ return 0;
 }

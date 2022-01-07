@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_11__ {TYPE_1__* internal; int /*<<< orphan*/ * pb; TYPE_2__* priv_data; } ;
-struct TYPE_10__ {int stream_index; int /*<<< orphan*/  pos; } ;
+
+
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_11__ {TYPE_1__* internal; int * pb; TYPE_2__* priv_data; } ;
+struct TYPE_10__ {int stream_index; int pos; } ;
 struct TYPE_9__ {int img_segment_size; int full_segment_size; } ;
 struct TYPE_8__ {int data_offset; } ;
-typedef  TYPE_2__ MTVDemuxContext ;
-typedef  TYPE_3__ AVPacket ;
-typedef  int /*<<< orphan*/  AVIOContext ;
-typedef  TYPE_4__ AVFormatContext ;
+typedef TYPE_2__ MTVDemuxContext ;
+typedef TYPE_3__ AVPacket ;
+typedef int AVIOContext ;
+typedef TYPE_4__ AVFormatContext ;
 
-/* Variables and functions */
- int MTV_ASUBCHUNK_DATA_SIZE ; 
- scalar_t__ MTV_AUDIO_PADDING_SIZE ; 
- int av_get_packet (int /*<<< orphan*/ *,TYPE_3__*,int) ; 
- int /*<<< orphan*/  avio_skip (int /*<<< orphan*/ *,scalar_t__) ; 
- int avio_tell (int /*<<< orphan*/ *) ; 
+
+ int MTV_ASUBCHUNK_DATA_SIZE ;
+ scalar_t__ MTV_AUDIO_PADDING_SIZE ;
+ int av_get_packet (int *,TYPE_3__*,int) ;
+ int avio_skip (int *,scalar_t__) ;
+ int avio_tell (int *) ;
 
 __attribute__((used)) static int mtv_read_packet(AVFormatContext *s, AVPacket *pkt)
 {

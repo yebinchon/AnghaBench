@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
 
-/* Variables and functions */
- scalar_t__ DEBUG_MANGLE ; 
- char* finish_mangling (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char const*) ; 
- int /*<<< orphan*/  get_identifier_nocopy (char const*) ; 
- int /*<<< orphan*/  start_mangling (int /*<<< orphan*/  const,int) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  write_string (char const*) ; 
- int /*<<< orphan*/  write_type (int /*<<< orphan*/  const) ; 
+
+
+
+typedef int tree ;
+
+
+ scalar_t__ DEBUG_MANGLE ;
+ char* finish_mangling (int) ;
+ int fprintf (int ,char*,char const*) ;
+ int get_identifier_nocopy (char const*) ;
+ int start_mangling (int const,int) ;
+ int stderr ;
+ int write_string (char const*) ;
+ int write_type (int const) ;
 
 __attribute__((used)) static tree
 mangle_special_for_type (const tree type, const char *code)
 {
   const char *result;
 
-  /* We don't have an actual decl here for the special component, so
-     we can't just process the <encoded-name>.  Instead, fake it.  */
-  start_mangling (type, /*ident_p=*/true);
 
-  /* Start the mangling.  */
+
+  start_mangling (type, 1);
+
+
   write_string ("_Z");
   write_string (code);
 
-  /* Add the type.  */
+
   write_type (type);
-  result = finish_mangling (/*warn=*/false);
+  result = finish_mangling ( 0);
 
   if (DEBUG_MANGLE)
     fprintf (stderr, "mangle_special_for_type = %s\n\n", result);

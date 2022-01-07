@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  AVOption ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  av_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  av_freep (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/ * av_malloc (int) ; 
- int hexchar2int (int /*<<< orphan*/ ) ; 
- int strlen (char const*) ; 
+
+
+
+typedef int uint8_t ;
+typedef int AVOption ;
+
+
+ int AVERROR (int ) ;
+ int EINVAL ;
+ int ENOMEM ;
+ int av_free (int *) ;
+ int av_freep (int **) ;
+ int * av_malloc (int) ;
+ int hexchar2int (int ) ;
+ int strlen (char const*) ;
 
 __attribute__((used)) static int set_string_binary(void *obj, const AVOption *o, const char *val, uint8_t **dst)
 {
@@ -51,7 +51,7 @@ __attribute__((used)) static int set_string_binary(void *obj, const AVOption *o,
         }
         *ptr++ = (a << 4) | b;
     }
-    *dst    = bin;
+    *dst = bin;
     *lendst = len;
 
     return 0;

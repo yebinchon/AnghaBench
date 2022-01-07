@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  printf (char*) ; 
- int /*<<< orphan*/  setup_values () ; 
- int /*<<< orphan*/  vTaskSuspend (int /*<<< orphan*/ *) ; 
+ int printf (char*) ;
+ int setup_values () ;
+ int vTaskSuspend (int *) ;
 
 __attribute__((used)) static void do_brownout(void)
 {
     setup_values();
     printf("Manual test: lower the supply voltage to cause brownout\n");
-    vTaskSuspend(NULL);
+    vTaskSuspend(((void*)0));
 }

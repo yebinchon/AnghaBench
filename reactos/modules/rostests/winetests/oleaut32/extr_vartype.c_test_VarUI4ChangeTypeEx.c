@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VARIANTARG ;
-typedef  int ULONG ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  COMMON_TYPETEST ; 
- int /*<<< orphan*/  INITIAL_TYPETEST (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  NEGATIVE_TYPETEST (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  VT_I4 ; 
- int /*<<< orphan*/  VT_UI4 ; 
- int /*<<< orphan*/  V_I4 ; 
- int /*<<< orphan*/  V_UI4 ; 
+
+
+
+typedef int VARIANTARG ;
+typedef int ULONG ;
+typedef int HRESULT ;
+
+
+ int COMMON_TYPETEST ;
+ int INITIAL_TYPETEST (int ,int ,char*) ;
+ int NEGATIVE_TYPETEST (int ,int ,char*,int ,int ) ;
+ int VT_I4 ;
+ int VT_UI4 ;
+ int V_I4 ;
+ int V_UI4 ;
 
 __attribute__((used)) static void test_VarUI4ChangeTypeEx(void)
 {

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct sfp {int attached; int state; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SFP_E_INSERT ; 
- int SFP_F_PRESENT ; 
- int /*<<< orphan*/  sfp_sm_event (struct sfp*,int /*<<< orphan*/ ) ; 
+
+ int SFP_E_INSERT ;
+ int SFP_F_PRESENT ;
+ int sfp_sm_event (struct sfp*,int ) ;
 
 __attribute__((used)) static void sfp_attach(struct sfp *sfp)
 {
-	sfp->attached = true;
-	if (sfp->state & SFP_F_PRESENT)
-		sfp_sm_event(sfp, SFP_E_INSERT);
+ sfp->attached = 1;
+ if (sfp->state & SFP_F_PRESENT)
+  sfp_sm_event(sfp, SFP_E_INSERT);
 }

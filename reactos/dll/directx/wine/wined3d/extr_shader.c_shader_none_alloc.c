@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct wined3d_vertex_pipe_ops {int /*<<< orphan*/  (* vp_free ) (struct wined3d_device*) ;void* (* vp_alloc ) (int /*<<< orphan*/ *,struct shader_none_priv*) ;} ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct wined3d_vertex_pipe_ops {int (* vp_free ) (struct wined3d_device*) ;void* (* vp_alloc ) (int *,struct shader_none_priv*) ;} ;
 struct wined3d_device {struct shader_none_priv* shader_priv; void* fragment_priv; void* vertex_priv; TYPE_1__* adapter; } ;
 struct shader_none_priv {int ffp_proj_control; struct fragment_pipeline const* fragment_pipe; struct wined3d_vertex_pipe_ops const* vertex_pipe; } ;
-struct fragment_pipeline {int /*<<< orphan*/  (* get_caps ) (int /*<<< orphan*/ *,struct fragment_caps*) ;void* (* alloc_private ) (int /*<<< orphan*/ *,struct shader_none_priv*) ;} ;
+struct fragment_pipeline {int (* get_caps ) (int *,struct fragment_caps*) ;void* (* alloc_private ) (int *,struct shader_none_priv*) ;} ;
 struct fragment_caps {int wined3d_caps; } ;
-struct TYPE_2__ {int /*<<< orphan*/  gl_info; } ;
-typedef  int /*<<< orphan*/  HRESULT ;
+struct TYPE_2__ {int gl_info; } ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*) ; 
- int /*<<< orphan*/  E_FAIL ; 
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- int WINED3D_FRAGMENT_CAP_PROJ_CONTROL ; 
- int /*<<< orphan*/  WINED3D_OK ; 
- struct shader_none_priv* heap_alloc (int) ; 
- int /*<<< orphan*/  heap_free (struct shader_none_priv*) ; 
- int /*<<< orphan*/  none_shader_backend ; 
- void* stub1 (int /*<<< orphan*/ *,struct shader_none_priv*) ; 
- void* stub2 (int /*<<< orphan*/ *,struct shader_none_priv*) ; 
- int /*<<< orphan*/  stub3 (struct wined3d_device*) ; 
- int /*<<< orphan*/  stub4 (int /*<<< orphan*/ *,struct fragment_caps*) ; 
+
+ int ERR (char*) ;
+ int E_FAIL ;
+ int E_OUTOFMEMORY ;
+ int WINED3D_FRAGMENT_CAP_PROJ_CONTROL ;
+ int WINED3D_OK ;
+ struct shader_none_priv* heap_alloc (int) ;
+ int heap_free (struct shader_none_priv*) ;
+ int none_shader_backend ;
+ void* stub1 (int *,struct shader_none_priv*) ;
+ void* stub2 (int *,struct shader_none_priv*) ;
+ int stub3 (struct wined3d_device*) ;
+ int stub4 (int *,struct fragment_caps*) ;
 
 __attribute__((used)) static HRESULT shader_none_alloc(struct wined3d_device *device, const struct wined3d_vertex_pipe_ops *vertex_pipe,
         const struct fragment_pipeline *fragment_pipe)

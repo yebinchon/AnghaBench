@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct hsi_controller {int /*<<< orphan*/  device; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  device_for_each_child (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  device_unregister (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  hsi_remove_port ; 
+
+
+
+struct hsi_controller {int device; } ;
+
+
+ int device_for_each_child (int *,int *,int ) ;
+ int device_unregister (int *) ;
+ int hsi_remove_port ;
 
 void hsi_unregister_controller(struct hsi_controller *hsi)
 {
-	device_for_each_child(&hsi->device, NULL, hsi_remove_port);
-	device_unregister(&hsi->device);
+ device_for_each_child(&hsi->device, ((void*)0), hsi_remove_port);
+ device_unregister(&hsi->device);
 }

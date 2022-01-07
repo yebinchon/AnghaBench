@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  UINT ;
-struct TYPE_3__ {char const* RemoteServerName; char const* LocalServer; char const* ServiceParameters; char const* DllSurrogate; scalar_t__ RunAsInteractiveUser; scalar_t__ ActivateAtStorage; int /*<<< orphan*/  AppID; } ;
-typedef  TYPE_1__ MSIAPPID ;
-typedef  char const* LPCWSTR ;
-typedef  int /*<<< orphan*/  HKEY ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERROR_SUCCESS ; 
- int /*<<< orphan*/  HKEY_CLASSES_ROOT ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RegCreateKeyW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  msi_reg_set_val_str (int /*<<< orphan*/ ,char const*,char const*) ; 
- int /*<<< orphan*/  szAppID ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef char WCHAR ;
+typedef int UINT ;
+struct TYPE_3__ {char const* RemoteServerName; char const* LocalServer; char const* ServiceParameters; char const* DllSurrogate; scalar_t__ RunAsInteractiveUser; scalar_t__ ActivateAtStorage; int AppID; } ;
+typedef TYPE_1__ MSIAPPID ;
+typedef char const* LPCWSTR ;
+typedef int HKEY ;
+
+
+ int ERROR_SUCCESS ;
+ int HKEY_CLASSES_ROOT ;
+ int RegCloseKey (int ) ;
+ int RegCreateKeyW (int ,int ,int *) ;
+ int msi_reg_set_val_str (int ,char const*,char const*) ;
+ int szAppID ;
 
 __attribute__((used)) static UINT register_appid(const MSIAPPID *appid, LPCWSTR app )
 {
@@ -40,7 +40,7 @@ __attribute__((used)) static UINT register_appid(const MSIAPPID *appid, LPCWSTR 
          {'A','c','t','i','v','a','t','e','A','s','S','t','o','r','a','g','e',0};
     static const WCHAR szY[] = {'Y',0};
     static const WCHAR szRunAs[] = {'R','u','n','A','s',0};
-    static const WCHAR szUser[] = 
+    static const WCHAR szUser[] =
          {'I','n','t','e','r','a','c','t','i','v','e',' ','U','s','e','r',0};
 
     HKEY hkey2,hkey3;
@@ -48,7 +48,7 @@ __attribute__((used)) static UINT register_appid(const MSIAPPID *appid, LPCWSTR 
     RegCreateKeyW(HKEY_CLASSES_ROOT,szAppID,&hkey2);
     RegCreateKeyW( hkey2, appid->AppID, &hkey3 );
     RegCloseKey(hkey2);
-    msi_reg_set_val_str( hkey3, NULL, app );
+    msi_reg_set_val_str( hkey3, ((void*)0), app );
 
     if (appid->RemoteServerName)
         msi_reg_set_val_str( hkey3, szRemoteServerName, appid->RemoteServerName );

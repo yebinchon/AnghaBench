@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  slots; } ;
-typedef  TYPE_1__ btstack_hid_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  btpad_set_inquiry_state (int) ; 
- int /*<<< orphan*/  btstack_set_poweron (int) ; 
- int /*<<< orphan*/  free (TYPE_1__*) ; 
- int /*<<< orphan*/  pad_connection_destroy (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int slots; } ;
+typedef TYPE_1__ btstack_hid_t ;
+
+
+ int btpad_set_inquiry_state (int) ;
+ int btstack_set_poweron (int) ;
+ int free (TYPE_1__*) ;
+ int pad_connection_destroy (int ) ;
 
 __attribute__((used)) static void btstack_hid_free(const void *data)
 {
@@ -28,8 +28,8 @@ __attribute__((used)) static void btstack_hid_free(const void *data)
       return;
 
    pad_connection_destroy(hid->slots);
-   btpad_set_inquiry_state(true);
-   btstack_set_poweron(false);
+   btpad_set_inquiry_state(1);
+   btstack_set_poweron(0);
 
    if (hid)
       free(hid);

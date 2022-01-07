@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint32_t ;
-struct TYPE_3__ {int* state; int /*<<< orphan*/ * buf; } ;
-typedef  TYPE_1__ SHA_CTX ;
 
-/* Variables and functions */
- int rol (int,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+struct TYPE_3__ {int* state; int * buf; } ;
+typedef TYPE_1__ SHA_CTX ;
+
+
+ int rol (int,int) ;
 
 __attribute__((used)) static void SHA1_Transform(SHA_CTX* ctx) {
     uint32_t W[80];
@@ -26,7 +26,7 @@ __attribute__((used)) static void SHA1_Transform(SHA_CTX* ctx) {
     int t;
 
     for(t = 0; t < 16; ++t) {
-        uint32_t tmp =  *p++ << 24;
+        uint32_t tmp = *p++ << 24;
         tmp |= *p++ << 16;
         tmp |= *p++ << 8;
         tmp |= *p++;

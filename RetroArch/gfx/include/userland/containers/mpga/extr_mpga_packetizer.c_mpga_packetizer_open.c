@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {TYPE_1__* priv; int /*<<< orphan*/  max_frame_size; TYPE_4__* in; int /*<<< orphan*/  out; } ;
-typedef  TYPE_2__ VC_PACKETIZER_T ;
-struct TYPE_10__ {int /*<<< orphan*/  pf_read_header; } ;
-typedef  TYPE_3__ VC_PACKETIZER_MODULE_T ;
-typedef  int /*<<< orphan*/  VC_CONTAINER_STATUS_T ;
+
+
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_9__ {TYPE_1__* priv; int max_frame_size; TYPE_4__* in; int out; } ;
+typedef TYPE_2__ VC_PACKETIZER_T ;
+struct TYPE_10__ {int pf_read_header; } ;
+typedef TYPE_3__ VC_PACKETIZER_MODULE_T ;
+typedef int VC_CONTAINER_STATUS_T ;
 struct TYPE_11__ {scalar_t__ codec; } ;
-struct TYPE_8__ {int /*<<< orphan*/  pf_reset; int /*<<< orphan*/  pf_packetize; int /*<<< orphan*/  pf_close; TYPE_3__* module; } ;
+struct TYPE_8__ {int pf_reset; int pf_packetize; int pf_close; TYPE_3__* module; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOG_DEBUG (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  MAX_FRAME_SIZE ; 
- scalar_t__ VC_CONTAINER_CODEC_MP4A ; 
- scalar_t__ VC_CONTAINER_CODEC_MPGA ; 
- int /*<<< orphan*/  VC_CONTAINER_ERROR_FORMAT_NOT_SUPPORTED ; 
- int /*<<< orphan*/  VC_CONTAINER_ERROR_OUT_OF_MEMORY ; 
- int /*<<< orphan*/  VC_CONTAINER_SUCCESS ; 
- int /*<<< orphan*/  adts_read_header ; 
- TYPE_3__* malloc (int) ; 
- int /*<<< orphan*/  memset (TYPE_3__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  mpga_packetizer_close ; 
- int /*<<< orphan*/  mpga_packetizer_packetize ; 
- int /*<<< orphan*/  mpga_packetizer_reset ; 
- int /*<<< orphan*/  mpga_read_header ; 
- int /*<<< orphan*/  vc_container_format_copy (int /*<<< orphan*/ ,TYPE_4__*,int /*<<< orphan*/ ) ; 
+
+ int LOG_DEBUG (int ,char*) ;
+ int MAX_FRAME_SIZE ;
+ scalar_t__ VC_CONTAINER_CODEC_MP4A ;
+ scalar_t__ VC_CONTAINER_CODEC_MPGA ;
+ int VC_CONTAINER_ERROR_FORMAT_NOT_SUPPORTED ;
+ int VC_CONTAINER_ERROR_OUT_OF_MEMORY ;
+ int VC_CONTAINER_SUCCESS ;
+ int adts_read_header ;
+ TYPE_3__* malloc (int) ;
+ int memset (TYPE_3__*,int ,int) ;
+ int mpga_packetizer_close ;
+ int mpga_packetizer_packetize ;
+ int mpga_packetizer_reset ;
+ int mpga_read_header ;
+ int vc_container_format_copy (int ,TYPE_4__*,int ) ;
 
 VC_CONTAINER_STATUS_T mpga_packetizer_open( VC_PACKETIZER_T *p_ctx )
 {

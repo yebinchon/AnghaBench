@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_10__ {scalar_t__ iType; } ;
 struct TYPE_9__ {scalar_t__ iType; } ;
-typedef  int /*<<< orphan*/  PLWriter ;
-typedef  int /*<<< orphan*/  PLReader ;
-typedef  TYPE_1__ DLWriter ;
-typedef  TYPE_2__ DLReader ;
+typedef int PLWriter ;
+typedef int PLReader ;
+typedef TYPE_1__ DLWriter ;
+typedef TYPE_2__ DLReader ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ dlrDocid (TYPE_2__*) ; 
- int /*<<< orphan*/  plrAtEnd (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  plrDestroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  plrInit (int /*<<< orphan*/ *,TYPE_2__*) ; 
- int /*<<< orphan*/  plrStep (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  plwCopy (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  plwDestroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  plwInit (int /*<<< orphan*/ *,TYPE_1__*,scalar_t__) ; 
- int /*<<< orphan*/  plwTerminate (int /*<<< orphan*/ *) ; 
- int posListCmp (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int assert (int) ;
+ scalar_t__ dlrDocid (TYPE_2__*) ;
+ int plrAtEnd (int *) ;
+ int plrDestroy (int *) ;
+ int plrInit (int *,TYPE_2__*) ;
+ int plrStep (int *) ;
+ int plwCopy (int *,int *) ;
+ int plwDestroy (int *) ;
+ int plwInit (int *,TYPE_1__*,scalar_t__) ;
+ int plwTerminate (int *) ;
+ int posListCmp (int *,int *) ;
 
 __attribute__((used)) static void posListUnion(DLReader *pLeft, DLReader *pRight, DLWriter *pOut){
   PLReader left, right;

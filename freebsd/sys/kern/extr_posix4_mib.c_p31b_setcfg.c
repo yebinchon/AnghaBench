@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ P31B_VALID (int) ; 
- int* facility ; 
- int* facility_initialized ; 
+ scalar_t__ P31B_VALID (int) ;
+ int* facility ;
+ int* facility_initialized ;
 
 void
 p31b_setcfg(int num, int value)
 {
 
-	if (P31B_VALID(num)) {
-		facility[num - 1] = value;
-		facility_initialized[num - 1] = 1;
-	}
+ if (P31B_VALID(num)) {
+  facility[num - 1] = value;
+  facility_initialized[num - 1] = 1;
+ }
 }

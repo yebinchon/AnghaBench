@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int /*<<< orphan*/  loop; } ;
-typedef  TYPE_1__ uv_stream_t ;
-struct TYPE_9__ {int /*<<< orphan*/  handle; } ;
-typedef  TYPE_2__ conn_rec ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- int /*<<< orphan*/  alloc_cb ; 
- TYPE_2__* malloc (int) ; 
- int /*<<< orphan*/  read_cb ; 
- int /*<<< orphan*/  tcp_server ; 
- int uv_accept (TYPE_1__*,TYPE_1__*) ; 
- int uv_read_start (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int uv_tcp_init (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int loop; } ;
+typedef TYPE_1__ uv_stream_t ;
+struct TYPE_9__ {int handle; } ;
+typedef TYPE_2__ conn_rec ;
+
+
+ int ASSERT (int) ;
+ int alloc_cb ;
+ TYPE_2__* malloc (int) ;
+ int read_cb ;
+ int tcp_server ;
+ int uv_accept (TYPE_1__*,TYPE_1__*) ;
+ int uv_read_start (TYPE_1__*,int ,int ) ;
+ int uv_tcp_init (int ,int *) ;
 
 __attribute__((used)) static void connection_cb(uv_stream_t* stream, int status) {
   conn_rec* conn;
@@ -35,7 +35,7 @@ __attribute__((used)) static void connection_cb(uv_stream_t* stream, int status)
   ASSERT(stream == (uv_stream_t*)&tcp_server);
 
   conn = malloc(sizeof *conn);
-  ASSERT(conn != NULL);
+  ASSERT(conn != ((void*)0));
 
   r = uv_tcp_init(stream->loop, &conn->handle);
   ASSERT(r == 0);

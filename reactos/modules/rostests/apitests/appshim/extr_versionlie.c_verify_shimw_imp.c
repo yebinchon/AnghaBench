@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  v2 ;
-typedef  int /*<<< orphan*/  v1 ;
-typedef  int /*<<< orphan*/  WCHAR ;
+
+
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int v2 ;
+typedef int v1 ;
+typedef int WCHAR ;
 struct TYPE_9__ {scalar_t__ dwMajorVersion; scalar_t__ dwMinorVersion; scalar_t__ dwBuildNumber; scalar_t__ dwPlatformId; scalar_t__ wServicePackMajor; int wFlags; scalar_t__ wServicePackMinor; } ;
-typedef  TYPE_1__ VersionLieInfo ;
-struct TYPE_11__ {int member_0; int dwOSVersionInfoSize; scalar_t__ dwMajorVersion; scalar_t__ dwMinorVersion; scalar_t__ dwBuildNumber; scalar_t__ dwPlatformId; scalar_t__ wServicePackMajor; scalar_t__ wServicePackMinor; scalar_t__ wSuiteMask; scalar_t__ wProductType; scalar_t__ wReserved; int /*<<< orphan*/ * szCSDVersion; int /*<<< orphan*/  member_1; } ;
-struct TYPE_10__ {scalar_t__ (* OriginalFunction ) (int /*<<< orphan*/ ) ;scalar_t__ ReplacementFunction; } ;
-typedef  TYPE_2__* PHOOKAPI ;
-typedef  int /*<<< orphan*/  PCSTR ;
-typedef  int /*<<< orphan*/  OSVERSIONINFOW ;
-typedef  TYPE_3__ OSVERSIONINFOEXW ;
-typedef  int /*<<< orphan*/  LPOSVERSIONINFOW ;
-typedef  scalar_t__ (* GETVERSIONEXWPROC ) (TYPE_3__*) ;
-typedef  scalar_t__ BOOL ;
+typedef TYPE_1__ VersionLieInfo ;
+struct TYPE_11__ {int member_0; int dwOSVersionInfoSize; scalar_t__ dwMajorVersion; scalar_t__ dwMinorVersion; scalar_t__ dwBuildNumber; scalar_t__ dwPlatformId; scalar_t__ wServicePackMajor; scalar_t__ wServicePackMinor; scalar_t__ wSuiteMask; scalar_t__ wProductType; scalar_t__ wReserved; int * szCSDVersion; int member_1; } ;
+struct TYPE_10__ {scalar_t__ (* OriginalFunction ) (int ) ;scalar_t__ ReplacementFunction; } ;
+typedef TYPE_2__* PHOOKAPI ;
+typedef int PCSTR ;
+typedef int OSVERSIONINFOW ;
+typedef TYPE_3__ OSVERSIONINFOEXW ;
+typedef int LPOSVERSIONINFOW ;
+typedef scalar_t__ (* GETVERSIONEXWPROC ) (TYPE_3__*) ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- scalar_t__ FALSE ; 
- int FLAG_BUGGY_ServicePackMajorMinor ; 
- scalar_t__ GetVersionExW (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  StringCchPrintfW (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,scalar_t__) ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  ZeroMemory (TYPE_3__*,int) ; 
- int /*<<< orphan*/  _countof (int /*<<< orphan*/ *) ; 
- scalar_t__ lstrcmpW (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  skip (char*,int,...) ; 
- scalar_t__ stub1 (TYPE_3__*) ; 
- scalar_t__ wine_dbgstr_w (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  winetest_ok (int,char*,scalar_t__,scalar_t__,int /*<<< orphan*/ ,...) ; 
+
+ scalar_t__ FALSE ;
+ int FLAG_BUGGY_ServicePackMajorMinor ;
+ scalar_t__ GetVersionExW (int ) ;
+ int StringCchPrintfW (int *,int ,char*,scalar_t__) ;
+ scalar_t__ TRUE ;
+ int ZeroMemory (TYPE_3__*,int) ;
+ int _countof (int *) ;
+ scalar_t__ lstrcmpW (int *,int *) ;
+ int skip (char*,int,...) ;
+ scalar_t__ stub1 (TYPE_3__*) ;
+ scalar_t__ wine_dbgstr_w (int *) ;
+ int winetest_ok (int,char*,scalar_t__,scalar_t__,int ,...) ;
 
 __attribute__((used)) static void verify_shimw_imp(PHOOKAPI hook, const VersionLieInfo* info, PCSTR shim, int same, int first_might_be_broken)
 {

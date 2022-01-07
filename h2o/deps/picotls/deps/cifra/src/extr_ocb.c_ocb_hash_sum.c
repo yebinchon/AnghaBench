@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_5__ {int /*<<< orphan*/  prpctx; TYPE_1__* prp; } ;
-typedef  TYPE_2__ ocb ;
-typedef  int /*<<< orphan*/  cf_gf128 ;
-struct TYPE_4__ {int /*<<< orphan*/  (* encrypt ) (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ;} ;
 
-/* Variables and functions */
- int BLOCK ; 
- int /*<<< orphan*/  cf_gf128_add (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cf_gf128_frombytes_be (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cf_gf128_tobytes_be (int /*<<< orphan*/  const,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  xor_bb (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_5__ {int prpctx; TYPE_1__* prp; } ;
+typedef TYPE_2__ ocb ;
+typedef int cf_gf128 ;
+struct TYPE_4__ {int (* encrypt ) (int ,int *,int *) ;} ;
+
+
+ int BLOCK ;
+ int cf_gf128_add (int ,int ,int ) ;
+ int cf_gf128_frombytes_be (int *,int ) ;
+ int cf_gf128_tobytes_be (int const,int *) ;
+ int stub1 (int ,int *,int *) ;
+ int xor_bb (int *,int const*,int *,int) ;
 
 __attribute__((used)) static void ocb_hash_sum(ocb *o, const uint8_t *block,
                          cf_gf128 sum, const cf_gf128 offset)

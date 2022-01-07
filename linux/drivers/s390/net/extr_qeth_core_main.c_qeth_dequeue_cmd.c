@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct qeth_cmd_buffer {int /*<<< orphan*/  list; } ;
-struct qeth_card {int /*<<< orphan*/  lock; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  list_del (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_lock_irq (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock_irq (int /*<<< orphan*/ *) ; 
+
+
+
+struct qeth_cmd_buffer {int list; } ;
+struct qeth_card {int lock; } ;
+
+
+ int list_del (int *) ;
+ int spin_lock_irq (int *) ;
+ int spin_unlock_irq (int *) ;
 
 __attribute__((used)) static void qeth_dequeue_cmd(struct qeth_card *card,
-			     struct qeth_cmd_buffer *iob)
+        struct qeth_cmd_buffer *iob)
 {
-	spin_lock_irq(&card->lock);
-	list_del(&iob->list);
-	spin_unlock_irq(&card->lock);
+ spin_lock_irq(&card->lock);
+ list_del(&iob->list);
+ spin_unlock_irq(&card->lock);
 }

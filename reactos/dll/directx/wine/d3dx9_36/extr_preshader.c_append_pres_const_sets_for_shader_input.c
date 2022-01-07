@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct d3dx_preshader {unsigned int ins_count; struct d3dx_pres_ins* ins; } ;
-struct d3dx_pres_reg {scalar_t__ table; int /*<<< orphan*/  offset; } ;
+struct d3dx_pres_reg {scalar_t__ table; int offset; } ;
 struct TYPE_2__ {struct d3dx_pres_reg reg; } ;
 struct d3dx_pres_ins {TYPE_1__ output; } ;
 struct d3dx_const_tab {int dummy; } ;
-struct d3dx_const_param_eval_output {int register_count; scalar_t__ table; int element_count; int /*<<< orphan*/  constant_class; int /*<<< orphan*/  register_index; int /*<<< orphan*/ * member_0; } ;
+struct d3dx_const_param_eval_output {int register_count; scalar_t__ table; int element_count; int constant_class; int register_index; int * member_0; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D3DXPC_FORCE_DWORD ; 
- scalar_t__ PRES_REGTAB_TEMP ; 
- int /*<<< orphan*/  append_const_set (struct d3dx_const_tab*,struct d3dx_const_param_eval_output*) ; 
- int /*<<< orphan*/  get_reg_offset (scalar_t__,int /*<<< orphan*/ ) ; 
+
+ int D3DXPC_FORCE_DWORD ;
+ scalar_t__ PRES_REGTAB_TEMP ;
+ int append_const_set (struct d3dx_const_tab*,struct d3dx_const_param_eval_output*) ;
+ int get_reg_offset (scalar_t__,int ) ;
 
 __attribute__((used)) static void append_pres_const_sets_for_shader_input(struct d3dx_const_tab *const_tab,
         struct d3dx_preshader *pres)
 {
     unsigned int i;
-    struct d3dx_const_param_eval_output const_set = {NULL};
+    struct d3dx_const_param_eval_output const_set = {((void*)0)};
 
     for (i = 0; i < pres->ins_count; ++i)
     {

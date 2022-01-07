@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_5__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int /*<<< orphan*/  urls_memory; } ;
-struct TYPE_7__ {char* url; int /*<<< orphan*/  links; scalar_t__ len; } ;
-typedef  TYPE_1__ REGISTRY_URL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D_REGISTRY ; 
- int /*<<< orphan*/  debug (int /*<<< orphan*/ ,char*,char*,...) ; 
- int /*<<< orphan*/  error (char*,char*,...) ; 
- int /*<<< orphan*/  freez (TYPE_1__*) ; 
- TYPE_5__ registry ; 
- TYPE_1__* registry_url_index_del (TYPE_1__*) ; 
+
+typedef struct TYPE_8__ TYPE_5__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int urls_memory; } ;
+struct TYPE_7__ {char* url; int links; scalar_t__ len; } ;
+typedef TYPE_1__ REGISTRY_URL ;
+
+
+ int D_REGISTRY ;
+ int debug (int ,char*,char*,...) ;
+ int error (char*,char*,...) ;
+ int freez (TYPE_1__*) ;
+ TYPE_5__ registry ;
+ TYPE_1__* registry_url_index_del (TYPE_1__*) ;
 
 void registry_url_unlink(REGISTRY_URL *u) {
     u->links--;
@@ -37,7 +37,7 @@ void registry_url_unlink(REGISTRY_URL *u) {
                 error("INTERNAL ERROR: registry_url_unlink('%s'): deleted different url '%s'", u->url, n->url);
             }
 
-            registry.urls_memory -= sizeof(REGISTRY_URL) + n->len; // no need for +1, 1 is already in REGISTRY_URL
+            registry.urls_memory -= sizeof(REGISTRY_URL) + n->len;
             freez(n);
         }
     }

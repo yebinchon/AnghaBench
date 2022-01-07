@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char WCHAR ;
-struct TYPE_14__ {TYPE_1__* editor; int /*<<< orphan*/  hDC; } ;
-struct TYPE_13__ {scalar_t__ nWidth; int /*<<< orphan*/  style; } ;
-struct TYPE_12__ {int styleFlags; int /*<<< orphan*/  texthost; scalar_t__ bEmulateVersion10; int /*<<< orphan*/  bHaveFocus; scalar_t__ bHideSelection; } ;
-typedef  int /*<<< orphan*/  RECT ;
-typedef  TYPE_2__ ME_Run ;
-typedef  TYPE_3__ ME_Context ;
-typedef  int /*<<< orphan*/ * HFONT ;
-typedef  int /*<<< orphan*/  HDC ;
-typedef  int /*<<< orphan*/  HBRUSH ;
-typedef  int /*<<< orphan*/  COLORREF ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  COLOR_HIGHLIGHT ; 
- int /*<<< orphan*/  CreateSolidBrush (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DSTINVERT ; 
- int /*<<< orphan*/  DeleteObject (int /*<<< orphan*/ ) ; 
- int ES_NOHIDESEL ; 
- int /*<<< orphan*/  ETO_OPAQUE ; 
- int /*<<< orphan*/  ExtTextOutW (int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,char const*,int,scalar_t__*) ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  FillRect (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ITextHost_TxGetSysColor (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * ME_SelectStyleFont (TYPE_3__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ME_UnselectStyleFont (TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PatBlt (int /*<<< orphan*/ ,int,int,scalar_t__,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetBkColor (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetRect (int /*<<< orphan*/ *,int,int,scalar_t__,int) ; 
- int /*<<< orphan*/  SetTextColor (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int calc_y_offset (TYPE_3__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  draw_underline (TYPE_3__*,TYPE_2__*,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  get_text_color (TYPE_3__*,int /*<<< orphan*/ ,scalar_t__) ; 
+
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+typedef char WCHAR ;
+struct TYPE_14__ {TYPE_1__* editor; int hDC; } ;
+struct TYPE_13__ {scalar_t__ nWidth; int style; } ;
+struct TYPE_12__ {int styleFlags; int texthost; scalar_t__ bEmulateVersion10; int bHaveFocus; scalar_t__ bHideSelection; } ;
+typedef int RECT ;
+typedef TYPE_2__ ME_Run ;
+typedef TYPE_3__ ME_Context ;
+typedef int * HFONT ;
+typedef int HDC ;
+typedef int HBRUSH ;
+typedef int COLORREF ;
+typedef scalar_t__ BOOL ;
+
+
+ int COLOR_HIGHLIGHT ;
+ int CreateSolidBrush (int ) ;
+ int DSTINVERT ;
+ int DeleteObject (int ) ;
+ int ES_NOHIDESEL ;
+ int ETO_OPAQUE ;
+ int ExtTextOutW (int ,int,int,int ,int *,char const*,int,scalar_t__*) ;
+ scalar_t__ FALSE ;
+ int FillRect (int ,int *,int ) ;
+ int ITextHost_TxGetSysColor (int ,int ) ;
+ int * ME_SelectStyleFont (TYPE_3__*,int ) ;
+ int ME_UnselectStyleFont (TYPE_3__*,int ,int *) ;
+ int PatBlt (int ,int,int,scalar_t__,int,int ) ;
+ int SetBkColor (int ,int ) ;
+ int SetRect (int *,int,int,scalar_t__,int) ;
+ int SetTextColor (int ,int ) ;
+ int calc_y_offset (TYPE_3__*,int ) ;
+ int draw_underline (TYPE_3__*,TYPE_2__*,int,int,int ) ;
+ int get_text_color (TYPE_3__*,int ,scalar_t__) ;
 
 __attribute__((used)) static void draw_space( ME_Context *c, ME_Run *run, int x, int y,
                         BOOL selected, BOOL actually_draw, int ymin, int cy )
@@ -72,7 +72,7 @@ __attribute__((used)) static void draw_space( ME_Context *c, ME_Run *run, int x,
     {
         COLORREF text_color = get_text_color( c, run->style, selected );
         COLORREF old_text, old_back;
-        HFONT old_font = NULL;
+        HFONT old_font = ((void*)0);
         int y_offset = calc_y_offset( c, run->style );
         static const WCHAR space[1] = {' '};
 

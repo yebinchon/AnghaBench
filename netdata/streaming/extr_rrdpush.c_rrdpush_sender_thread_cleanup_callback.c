@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int* rrdpush_sender_pipe; int /*<<< orphan*/  hostname; scalar_t__ rrdpush_sender_spawn; int /*<<< orphan*/  rrdpush_sender_join; int /*<<< orphan*/ * rrdpush_sender_buffer; } ;
-typedef  TYPE_1__ RRDHOST ;
 
-/* Variables and functions */
- size_t PIPE_READ ; 
- size_t PIPE_WRITE ; 
- int /*<<< orphan*/  buffer_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  info (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  netdata_thread_detach (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  netdata_thread_self () ; 
- int /*<<< orphan*/  rrdhost_unlock (TYPE_1__*) ; 
- int /*<<< orphan*/  rrdhost_wrlock (TYPE_1__*) ; 
- int /*<<< orphan*/  rrdpush_buffer_lock (TYPE_1__*) ; 
- int /*<<< orphan*/  rrdpush_buffer_unlock (TYPE_1__*) ; 
- int /*<<< orphan*/  rrdpush_sender_thread_close_socket (TYPE_1__*) ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int* rrdpush_sender_pipe; int hostname; scalar_t__ rrdpush_sender_spawn; int rrdpush_sender_join; int * rrdpush_sender_buffer; } ;
+typedef TYPE_1__ RRDHOST ;
+
+
+ size_t PIPE_READ ;
+ size_t PIPE_WRITE ;
+ int buffer_free (int *) ;
+ int close (int) ;
+ int info (char*,int ) ;
+ int netdata_thread_detach (int ) ;
+ int netdata_thread_self () ;
+ int rrdhost_unlock (TYPE_1__*) ;
+ int rrdhost_wrlock (TYPE_1__*) ;
+ int rrdpush_buffer_lock (TYPE_1__*) ;
+ int rrdpush_buffer_unlock (TYPE_1__*) ;
+ int rrdpush_sender_thread_close_socket (TYPE_1__*) ;
 
 __attribute__((used)) static void rrdpush_sender_thread_cleanup_callback(void *ptr) {
     RRDHOST *host = (RRDHOST *)ptr;
@@ -38,7 +38,7 @@ __attribute__((used)) static void rrdpush_sender_thread_cleanup_callback(void *p
 
     rrdpush_sender_thread_close_socket(host);
 
-    // close the pipe
+
     if(host->rrdpush_sender_pipe[PIPE_READ] != -1) {
         close(host->rrdpush_sender_pipe[PIPE_READ]);
         host->rrdpush_sender_pipe[PIPE_READ] = -1;
@@ -50,7 +50,7 @@ __attribute__((used)) static void rrdpush_sender_thread_cleanup_callback(void *p
     }
 
     buffer_free(host->rrdpush_sender_buffer);
-    host->rrdpush_sender_buffer = NULL;
+    host->rrdpush_sender_buffer = ((void*)0);
 
     if(!host->rrdpush_sender_join) {
         info("STREAM %s [send]: sending thread detaches itself.", host->hostname);

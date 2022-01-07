@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int APR_MD5_DIGESTSIZE ; 
- char* apr_palloc (int /*<<< orphan*/ *,int) ; 
- char int_to_hex (unsigned char const) ; 
+
+
+
+typedef int apr_pool_t ;
+
+
+ int APR_MD5_DIGESTSIZE ;
+ char* apr_palloc (int *,int) ;
+ char int_to_hex (unsigned char const) ;
 
 __attribute__((used)) static const char *
 hex_encode(const unsigned char *hashval,

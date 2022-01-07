@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  obuf ;
-typedef  int /*<<< orphan*/  RC4_KEY ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RC4 (int /*<<< orphan*/ *,int const,int /*<<< orphan*/ *,unsigned char*) ; 
- int /*<<< orphan*/  RC4_set_key (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int TEST_mem_eq (unsigned char*,int const,int /*<<< orphan*/ ,int const) ; 
- int /*<<< orphan*/ ** data ; 
- int const* data_len ; 
- int /*<<< orphan*/ ** keys ; 
- int /*<<< orphan*/  memset (unsigned char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/ * output ; 
+
+
+
+typedef int obuf ;
+typedef int RC4_KEY ;
+
+
+ int RC4 (int *,int const,int *,unsigned char*) ;
+ int RC4_set_key (int *,int ,int *) ;
+ int TEST_mem_eq (unsigned char*,int const,int ,int const) ;
+ int ** data ;
+ int const* data_len ;
+ int ** keys ;
+ int memset (unsigned char*,int ,int) ;
+ int * output ;
 
 __attribute__((used)) static int test_rc4_multi_call(const int i)
 {

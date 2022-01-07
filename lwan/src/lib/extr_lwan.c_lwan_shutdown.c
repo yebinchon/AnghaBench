@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  config_file_path; int /*<<< orphan*/  error_template; int /*<<< orphan*/  listener; } ;
-struct lwan {int /*<<< orphan*/  conns; int /*<<< orphan*/  url_map_trie; TYPE_1__ config; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lwan_fd_watch_shutdown (struct lwan*) ; 
- int /*<<< orphan*/  lwan_http_authorize_shutdown () ; 
- int /*<<< orphan*/  lwan_job_thread_shutdown () ; 
- int /*<<< orphan*/  lwan_readahead_shutdown () ; 
- int /*<<< orphan*/  lwan_response_shutdown (struct lwan*) ; 
- int /*<<< orphan*/  lwan_status_debug (char*) ; 
- int /*<<< orphan*/  lwan_status_info (char*) ; 
- int /*<<< orphan*/  lwan_status_shutdown (struct lwan*) ; 
- int /*<<< orphan*/  lwan_tables_shutdown () ; 
- int /*<<< orphan*/  lwan_thread_shutdown (struct lwan*) ; 
- int /*<<< orphan*/  lwan_trie_destroy (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int config_file_path; int error_template; int listener; } ;
+struct lwan {int conns; int url_map_trie; TYPE_1__ config; } ;
+
+
+ int free (int ) ;
+ int lwan_fd_watch_shutdown (struct lwan*) ;
+ int lwan_http_authorize_shutdown () ;
+ int lwan_job_thread_shutdown () ;
+ int lwan_readahead_shutdown () ;
+ int lwan_response_shutdown (struct lwan*) ;
+ int lwan_status_debug (char*) ;
+ int lwan_status_info (char*) ;
+ int lwan_status_shutdown (struct lwan*) ;
+ int lwan_tables_shutdown () ;
+ int lwan_thread_shutdown (struct lwan*) ;
+ int lwan_trie_destroy (int *) ;
 
 void lwan_shutdown(struct lwan *l)
 {

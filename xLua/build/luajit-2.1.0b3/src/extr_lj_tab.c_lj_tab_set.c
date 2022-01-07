@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  scalar_t__ lua_Number ;
-typedef  scalar_t__ int32_t ;
-typedef  int /*<<< orphan*/  cTValue ;
+
+
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef int lua_State ;
+typedef scalar_t__ lua_Number ;
+typedef scalar_t__ int32_t ;
+typedef int cTValue ;
 struct TYPE_12__ {scalar_t__ nomm; } ;
-struct TYPE_11__ {int /*<<< orphan*/  val; int /*<<< orphan*/  key; } ;
-typedef  int /*<<< orphan*/  TValue ;
-typedef  TYPE_1__ Node ;
-typedef  TYPE_2__ GCtab ;
+struct TYPE_11__ {int val; int key; } ;
+typedef int TValue ;
+typedef TYPE_1__ Node ;
+typedef TYPE_2__ GCtab ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LJ_ERR_NANIDX ; 
- int /*<<< orphan*/  LJ_ERR_NILIDX ; 
- TYPE_1__* hashkey (TYPE_2__*,int /*<<< orphan*/ *) ; 
- scalar_t__ intV (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lj_err_msg (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ lj_num2int (scalar_t__) ; 
- scalar_t__ lj_obj_equal (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * lj_tab_newkey (int /*<<< orphan*/ *,TYPE_2__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * lj_tab_setint (int /*<<< orphan*/ *,TYPE_2__*,scalar_t__) ; 
- int /*<<< orphan*/ * lj_tab_setstr (int /*<<< orphan*/ *,TYPE_2__*,int /*<<< orphan*/ ) ; 
- TYPE_1__* nextnode (TYPE_1__*) ; 
- scalar_t__ numV (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strV (int /*<<< orphan*/ *) ; 
- scalar_t__ tvisint (int /*<<< orphan*/ *) ; 
- scalar_t__ tvisnan (int /*<<< orphan*/ *) ; 
- scalar_t__ tvisnil (int /*<<< orphan*/ *) ; 
- scalar_t__ tvisnum (int /*<<< orphan*/ *) ; 
- scalar_t__ tvisstr (int /*<<< orphan*/ *) ; 
+
+ int LJ_ERR_NANIDX ;
+ int LJ_ERR_NILIDX ;
+ TYPE_1__* hashkey (TYPE_2__*,int *) ;
+ scalar_t__ intV (int *) ;
+ int lj_err_msg (int *,int ) ;
+ scalar_t__ lj_num2int (scalar_t__) ;
+ scalar_t__ lj_obj_equal (int *,int *) ;
+ int * lj_tab_newkey (int *,TYPE_2__*,int *) ;
+ int * lj_tab_setint (int *,TYPE_2__*,scalar_t__) ;
+ int * lj_tab_setstr (int *,TYPE_2__*,int ) ;
+ TYPE_1__* nextnode (TYPE_1__*) ;
+ scalar_t__ numV (int *) ;
+ int strV (int *) ;
+ scalar_t__ tvisint (int *) ;
+ scalar_t__ tvisnan (int *) ;
+ scalar_t__ tvisnil (int *) ;
+ scalar_t__ tvisnum (int *) ;
+ scalar_t__ tvisstr (int *) ;
 
 TValue *lj_tab_set(lua_State *L, GCtab *t, cTValue *key)
 {
   Node *n;
-  t->nomm = 0;  /* Invalidate negative metamethod cache. */
+  t->nomm = 0;
   if (tvisstr(key)) {
     return lj_tab_setstr(L, t, strV(key));
   } else if (tvisint(key)) {
@@ -57,7 +57,7 @@ TValue *lj_tab_set(lua_State *L, GCtab *t, cTValue *key)
       return lj_tab_setint(L, t, k);
     if (tvisnan(key))
       lj_err_msg(L, LJ_ERR_NANIDX);
-    /* Else use the generic lookup. */
+
   } else if (tvisnil(key)) {
     lj_err_msg(L, LJ_ERR_NILIDX);
   }

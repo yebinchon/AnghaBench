@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  STDIN_FILENO ; 
- int /*<<< orphan*/  STDOUT_FILENO ; 
- int /*<<< orphan*/  assert (int*) ; 
- scalar_t__ dup2 (int,int /*<<< orphan*/ ) ; 
- int errno ; 
- int /*<<< orphan*/  release_terminal () ; 
- int safe_close (int) ; 
+ int STDIN_FILENO ;
+ int STDOUT_FILENO ;
+ int assert (int*) ;
+ scalar_t__ dup2 (int,int ) ;
+ int errno ;
+ int release_terminal () ;
+ int safe_close (int) ;
 
 __attribute__((used)) static int restore_confirm_stdio(int *saved_stdin, int *saved_stdout) {
         int r = 0;

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_5__ {int /*<<< orphan*/  block; int /*<<< orphan*/  prpctx; TYPE_1__* prp; } ;
-typedef  TYPE_2__ cf_cbc ;
-struct TYPE_4__ {size_t blocksz; int /*<<< orphan*/  (* encrypt ) (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ;} ;
 
-/* Variables and functions */
- int CF_MAXBLOCK ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xor_bb (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,size_t) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_5__ {int block; int prpctx; TYPE_1__* prp; } ;
+typedef TYPE_2__ cf_cbc ;
+struct TYPE_4__ {size_t blocksz; int (* encrypt ) (int ,int *,int ) ;} ;
+
+
+ int CF_MAXBLOCK ;
+ int memcpy (int *,int ,size_t) ;
+ int stub1 (int ,int *,int ) ;
+ int xor_bb (int *,int const*,int ,size_t) ;
 
 void cf_cbc_encrypt(cf_cbc *ctx, const uint8_t *input, uint8_t *output, size_t blocks)
 {

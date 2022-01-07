@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- size_t CURL_ZERO_TERMINATED ; 
- int /*<<< orphan*/  isprint (unsigned char) ; 
- char* malloc (int) ; 
- int /*<<< orphan*/  msnprintf (char*,int,char*,unsigned int) ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
- size_t strlen (char const*) ; 
+ size_t CURL_ZERO_TERMINATED ;
+ int isprint (unsigned char) ;
+ char* malloc (int) ;
+ int msnprintf (char*,int,char*,unsigned int) ;
+ int strcpy (char*,char*) ;
+ size_t strlen (char const*) ;
 
 __attribute__((used)) static char *c_escape(const char *str, size_t len)
 {
@@ -28,14 +20,14 @@ __attribute__((used)) static char *c_escape(const char *str, size_t len)
   if(len == CURL_ZERO_TERMINATED)
     len = strlen(str);
 
-  /* Check for possible overflow. */
-  if(len > (~(size_t) 0) / 4)
-    return NULL;
 
-  /* Allocate space based on worst-case */
+  if(len > (~(size_t) 0) / 4)
+    return ((void*)0);
+
+
   escaped = malloc(4 * len + 1);
   if(!escaped)
-    return NULL;
+    return ((void*)0);
 
   e = escaped;
   for(s = str; (c = *s) != '\0'; s++) {

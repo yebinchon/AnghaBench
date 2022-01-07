@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_6__ ;
-typedef  struct TYPE_11__   TYPE_5__ ;
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_12__ TYPE_6__ ;
+typedef struct TYPE_11__ TYPE_5__ ;
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_12__ {char* mode; } ;
 struct TYPE_11__ {char* mode; } ;
 struct TYPE_10__ {char* mode; } ;
@@ -23,24 +23,24 @@ struct TYPE_9__ {char* mode; } ;
 struct TYPE_8__ {char* mode; } ;
 struct TYPE_7__ {char* mode; } ;
 
-/* Variables and functions */
- TYPE_6__* awb_map ; 
- int awb_map_size ; 
- int /*<<< orphan*/  cmdline_commands ; 
- int /*<<< orphan*/  cmdline_commands_size ; 
- TYPE_5__* drc_mode_map ; 
- int drc_mode_map_size ; 
- TYPE_4__* exposure_map ; 
- int exposure_map_size ; 
- TYPE_3__* flicker_avoid_map ; 
- int flicker_avoid_map_size ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- TYPE_2__* imagefx_map ; 
- int imagefx_map_size ; 
- TYPE_1__* metering_mode_map ; 
- int metering_mode_map_size ; 
- int /*<<< orphan*/  raspicli_display_help (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stdout ; 
+
+ TYPE_6__* awb_map ;
+ int awb_map_size ;
+ int cmdline_commands ;
+ int cmdline_commands_size ;
+ TYPE_5__* drc_mode_map ;
+ int drc_mode_map_size ;
+ TYPE_4__* exposure_map ;
+ int exposure_map_size ;
+ TYPE_3__* flicker_avoid_map ;
+ int flicker_avoid_map_size ;
+ int fprintf (int ,char*,...) ;
+ TYPE_2__* imagefx_map ;
+ int imagefx_map_size ;
+ TYPE_1__* metering_mode_map ;
+ int metering_mode_map_size ;
+ int raspicli_display_help (int ,int ) ;
+ int stdout ;
 
 void raspicamcontrol_display_help()
 {

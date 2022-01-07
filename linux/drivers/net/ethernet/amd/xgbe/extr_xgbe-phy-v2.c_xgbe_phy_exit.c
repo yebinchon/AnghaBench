@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct xgbe_prv_data {struct xgbe_phy_data* phy_data; } ;
-struct xgbe_phy_data {int /*<<< orphan*/  mii; } ;
+struct xgbe_phy_data {int mii; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mdiobus_unregister (int /*<<< orphan*/ ) ; 
+
+ int mdiobus_unregister (int ) ;
 
 __attribute__((used)) static void xgbe_phy_exit(struct xgbe_prv_data *pdata)
 {
-	struct xgbe_phy_data *phy_data = pdata->phy_data;
+ struct xgbe_phy_data *phy_data = pdata->phy_data;
 
-	/* Unregister for driving external PHYs */
-	mdiobus_unregister(phy_data->mii);
+
+ mdiobus_unregister(phy_data->mii);
 }

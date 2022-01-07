@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_9__ {int n; TYPE_2__* seq; } ;
-typedef  TYPE_3__ cmsSEQ ;
-typedef  int cmsInt32Number ;
-typedef  int /*<<< orphan*/  cmsHPROFILE ;
-struct TYPE_7__ {int /*<<< orphan*/  ID8; } ;
-struct TYPE_8__ {int /*<<< orphan*/  Description; TYPE_1__ ProfileID; } ;
+typedef TYPE_3__ cmsSEQ ;
+typedef int cmsInt32Number ;
+typedef int cmsHPROFILE ;
+struct TYPE_7__ {int ID8; } ;
+struct TYPE_8__ {int Description; TYPE_1__ ProfileID; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CheckOneStr (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  DbgThread () ; 
- int /*<<< orphan*/  SetOneStr (int /*<<< orphan*/ *,char*,char*) ; 
- TYPE_3__* cmsAllocProfileSequenceDescription (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  cmsFreeProfileSequenceDescription (int /*<<< orphan*/ ,TYPE_3__*) ; 
- scalar_t__ cmsReadTag (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cmsSigProfileSequenceIdTag ; 
- int /*<<< orphan*/  cmsWriteTag (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_3__*) ; 
- int /*<<< orphan*/  memcmp (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,char*,int) ; 
+
+ int CheckOneStr (int ,int) ;
+ int DbgThread () ;
+ int SetOneStr (int *,char*,char*) ;
+ TYPE_3__* cmsAllocProfileSequenceDescription (int ,int) ;
+ int cmsFreeProfileSequenceDescription (int ,TYPE_3__*) ;
+ scalar_t__ cmsReadTag (int ,int ,int ) ;
+ int cmsSigProfileSequenceIdTag ;
+ int cmsWriteTag (int ,int ,int ,TYPE_3__*) ;
+ int memcmp (int ,char*,int) ;
+ int memcpy (int ,char*,int) ;
 
 __attribute__((used)) static
-cmsInt32Number CheckProfileSequenceIDTag(cmsInt32Number Pass,  cmsHPROFILE hProfile)
+cmsInt32Number CheckProfileSequenceIDTag(cmsInt32Number Pass, cmsHPROFILE hProfile)
 {
     cmsSEQ* s;
     cmsInt32Number i;
@@ -43,7 +43,7 @@ cmsInt32Number CheckProfileSequenceIDTag(cmsInt32Number Pass,  cmsHPROFILE hProf
     case 1:
 
         s = cmsAllocProfileSequenceDescription(DbgThread(), 3);
-        if (s == NULL) return 0;
+        if (s == ((void*)0)) return 0;
 
         memcpy(s ->seq[0].ProfileID.ID8, "0123456789ABCDEF", 16);
         memcpy(s ->seq[1].ProfileID.ID8, "1111111111111111", 16);
@@ -61,7 +61,7 @@ cmsInt32Number CheckProfileSequenceIDTag(cmsInt32Number Pass,  cmsHPROFILE hProf
     case 2:
 
         s = (cmsSEQ *) cmsReadTag(DbgThread(), hProfile, cmsSigProfileSequenceIdTag);
-        if (s == NULL) return 0;
+        if (s == ((void*)0)) return 0;
 
         if (s ->n != 3) return 0;
 

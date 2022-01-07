@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct android_app {size_t savedStateSize; int /*<<< orphan*/  mutex; int /*<<< orphan*/ * savedState; int /*<<< orphan*/  cond; scalar_t__ stateSaved; } ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct android_app {size_t savedStateSize; int mutex; int * savedState; int cond; scalar_t__ stateSaved; } ;
 struct TYPE_4__ {scalar_t__ instance; } ;
-typedef  TYPE_1__ ANativeActivity ;
+typedef TYPE_1__ ANativeActivity ;
 
-/* Variables and functions */
- int /*<<< orphan*/  APP_CMD_SAVE_STATE ; 
- int /*<<< orphan*/  LOGV (char*,TYPE_1__*) ; 
- int /*<<< orphan*/  android_app_write_cmd (struct android_app*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pthread_cond_wait (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
+
+ int APP_CMD_SAVE_STATE ;
+ int LOGV (char*,TYPE_1__*) ;
+ int android_app_write_cmd (struct android_app*,int ) ;
+ int pthread_cond_wait (int *,int *) ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
 
 __attribute__((used)) static void* onSaveInstanceState(ANativeActivity* activity, size_t* outLen) {
     struct android_app* android_app = (struct android_app*)activity->instance;
-    void* savedState = NULL;
+    void* savedState = ((void*)0);
 
     LOGV("SaveInstanceState: %p\n", activity);
     pthread_mutex_lock(&android_app->mutex);
@@ -35,10 +35,10 @@ __attribute__((used)) static void* onSaveInstanceState(ANativeActivity* activity
         pthread_cond_wait(&android_app->cond, &android_app->mutex);
     }
 
-    if (android_app->savedState != NULL) {
+    if (android_app->savedState != ((void*)0)) {
         savedState = android_app->savedState;
         *outLen = android_app->savedStateSize;
-        android_app->savedState = NULL;
+        android_app->savedState = ((void*)0);
         android_app->savedStateSize = 0;
     }
 

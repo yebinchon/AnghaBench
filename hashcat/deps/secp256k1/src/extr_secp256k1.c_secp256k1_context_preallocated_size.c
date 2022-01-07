@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  secp256k1_context ;
 
-/* Variables and functions */
- scalar_t__ EXPECT (int,int /*<<< orphan*/ ) ; 
- size_t ROUND_TO_ALIGN (int) ; 
- scalar_t__ SECP256K1_ECMULT_CONTEXT_PREALLOCATED_SIZE ; 
- scalar_t__ SECP256K1_ECMULT_GEN_CONTEXT_PREALLOCATED_SIZE ; 
- unsigned int SECP256K1_FLAGS_BIT_CONTEXT_SIGN ; 
- unsigned int SECP256K1_FLAGS_BIT_CONTEXT_VERIFY ; 
- unsigned int SECP256K1_FLAGS_TYPE_CONTEXT ; 
- unsigned int SECP256K1_FLAGS_TYPE_MASK ; 
- int /*<<< orphan*/  default_illegal_callback ; 
- int /*<<< orphan*/  secp256k1_callback_call (int /*<<< orphan*/ *,char*) ; 
+
+
+
+typedef int secp256k1_context ;
+
+
+ scalar_t__ EXPECT (int,int ) ;
+ size_t ROUND_TO_ALIGN (int) ;
+ scalar_t__ SECP256K1_ECMULT_CONTEXT_PREALLOCATED_SIZE ;
+ scalar_t__ SECP256K1_ECMULT_GEN_CONTEXT_PREALLOCATED_SIZE ;
+ unsigned int SECP256K1_FLAGS_BIT_CONTEXT_SIGN ;
+ unsigned int SECP256K1_FLAGS_BIT_CONTEXT_VERIFY ;
+ unsigned int SECP256K1_FLAGS_TYPE_CONTEXT ;
+ unsigned int SECP256K1_FLAGS_TYPE_MASK ;
+ int default_illegal_callback ;
+ int secp256k1_callback_call (int *,char*) ;
 
 size_t secp256k1_context_preallocated_size(unsigned int flags) {
     size_t ret = ROUND_TO_ALIGN(sizeof(secp256k1_context));

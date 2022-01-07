@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  unsigned char uint8_t ;
-typedef  unsigned int uint32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int crypto_verify_16 (unsigned char*,unsigned char*) ; 
- unsigned int crypto_verify_16_bytes () ; 
- int crypto_verify_32 (unsigned char*,unsigned char*) ; 
- unsigned int crypto_verify_32_bytes () ; 
- int crypto_verify_64 (unsigned char*,unsigned char*) ; 
- unsigned int crypto_verify_64_bytes () ; 
- int /*<<< orphan*/  memcpy (unsigned char*,unsigned char*,int) ; 
- int /*<<< orphan*/  printf (char*) ; 
- int /*<<< orphan*/  randombytes_buf (unsigned char*,int) ; 
- unsigned int randombytes_random () ; 
- int /*<<< orphan*/  sodium_free (unsigned char*) ; 
- scalar_t__ sodium_malloc (int) ; 
- int sodium_memcmp (unsigned char*,unsigned char*,int) ; 
+
+
+
+typedef unsigned char uint8_t ;
+typedef unsigned int uint32_t ;
+
+
+ int assert (int) ;
+ int crypto_verify_16 (unsigned char*,unsigned char*) ;
+ unsigned int crypto_verify_16_bytes () ;
+ int crypto_verify_32 (unsigned char*,unsigned char*) ;
+ unsigned int crypto_verify_32_bytes () ;
+ int crypto_verify_64 (unsigned char*,unsigned char*) ;
+ unsigned int crypto_verify_64_bytes () ;
+ int memcpy (unsigned char*,unsigned char*,int) ;
+ int printf (char*) ;
+ int randombytes_buf (unsigned char*,int) ;
+ unsigned int randombytes_random () ;
+ int sodium_free (unsigned char*) ;
+ scalar_t__ sodium_malloc (int) ;
+ int sodium_memcmp (unsigned char*,unsigned char*,int) ;
 
 int
 main(void)
@@ -35,15 +35,15 @@ main(void)
     unsigned char *v16, *v16x;
     unsigned char *v32, *v32x;
     unsigned char *v64, *v64x;
-    uint32_t       r;
-    uint8_t        o;
-    int            i;
+    uint32_t r;
+    uint8_t o;
+    int i;
 
-    v16  = (unsigned char *) sodium_malloc(16);
+    v16 = (unsigned char *) sodium_malloc(16);
     v16x = (unsigned char *) sodium_malloc(16);
-    v32  = (unsigned char *) sodium_malloc(32);
+    v32 = (unsigned char *) sodium_malloc(32);
     v32x = (unsigned char *) sodium_malloc(32);
-    v64  = (unsigned char *) sodium_malloc(64);
+    v64 = (unsigned char *) sodium_malloc(64);
     v64x = (unsigned char *) sodium_malloc(64);
     for (i = 0; i < 10000; i++) {
         randombytes_buf(v16, 16);

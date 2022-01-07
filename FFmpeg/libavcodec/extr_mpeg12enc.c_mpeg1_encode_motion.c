@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  pb; } ;
-typedef  TYPE_1__ MpegEncContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  av_assert2 (int) ; 
- int** ff_mpeg12_mbMotionVectorTable ; 
- int /*<<< orphan*/  put_bits (int /*<<< orphan*/ *,int,int) ; 
- int sign_extend (int,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int pb; } ;
+typedef TYPE_1__ MpegEncContext ;
+
+
+ int av_assert2 (int) ;
+ int** ff_mpeg12_mbMotionVectorTable ;
+ int put_bits (int *,int,int) ;
+ int sign_extend (int,int) ;
 
 __attribute__((used)) static void mpeg1_encode_motion(MpegEncContext *s, int val, int f_or_b_code)
 {
     if (val == 0) {
-        /* zero vector */
+
         put_bits(&s->pb,
                  ff_mpeg12_mbMotionVectorTable[0][1],
                  ff_mpeg12_mbMotionVectorTable[0][0]);
     } else {
         int code, sign, bits;
         int bit_size = f_or_b_code - 1;
-        int range    = 1 << bit_size;
-        /* modulo encoding */
+        int range = 1 << bit_size;
+
         val = sign_extend(val, 5 + bit_size);
 
         if (val >= 0) {

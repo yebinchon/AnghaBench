@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__* plane_textures; scalar_t__ program; scalar_t__ fragment_shader; scalar_t__ vertex_shader; } ;
-typedef  TYPE_1__ IJK_GLES2_Renderer ;
+typedef TYPE_1__ IJK_GLES2_Renderer ;
 
-/* Variables and functions */
- int IJK_GLES2_MAX_PLANE ; 
- int /*<<< orphan*/  glDeleteProgram (scalar_t__) ; 
- int /*<<< orphan*/  glDeleteShader (scalar_t__) ; 
- int /*<<< orphan*/  glDeleteTextures (int,scalar_t__*) ; 
+
+ int IJK_GLES2_MAX_PLANE ;
+ int glDeleteProgram (scalar_t__) ;
+ int glDeleteShader (scalar_t__) ;
+ int glDeleteTextures (int,scalar_t__*) ;
 
 void IJK_GLES2_Renderer_reset(IJK_GLES2_Renderer *renderer)
 {
@@ -32,9 +32,9 @@ void IJK_GLES2_Renderer_reset(IJK_GLES2_Renderer *renderer)
     if (renderer->program)
         glDeleteProgram(renderer->program);
 
-    renderer->vertex_shader   = 0;
+    renderer->vertex_shader = 0;
     renderer->fragment_shader = 0;
-    renderer->program         = 0;
+    renderer->program = 0;
 
     for (int i = 0; i < IJK_GLES2_MAX_PLANE; ++i) {
         if (renderer->plane_textures[i]) {

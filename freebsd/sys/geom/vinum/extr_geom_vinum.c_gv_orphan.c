@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct gv_softc {int dummy; } ;
 struct gv_drive {int dummy; } ;
-struct g_geom {int /*<<< orphan*/  name; struct gv_softc* softc; } ;
+struct g_geom {int name; struct gv_softc* softc; } ;
 struct g_consumer {struct gv_drive* private; struct g_geom* geom; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GV_EVENT_DRIVE_LOST ; 
- int /*<<< orphan*/  G_T_TOPOLOGY ; 
- int /*<<< orphan*/  KASSERT (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  g_topology_assert () ; 
- int /*<<< orphan*/  g_trace (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gv_post_event (struct gv_softc*,int /*<<< orphan*/ ,struct gv_drive*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int GV_EVENT_DRIVE_LOST ;
+ int G_T_TOPOLOGY ;
+ int KASSERT (int ,char*) ;
+ int g_topology_assert () ;
+ int g_trace (int ,char*,int ) ;
+ int gv_post_event (struct gv_softc*,int ,struct gv_drive*,int *,int ,int ) ;
 
 __attribute__((used)) static void
 gv_orphan(struct g_consumer *cp)
 {
-	struct g_geom *gp;
-	struct gv_softc *sc;
-	struct gv_drive *d;
-	
-	g_topology_assert();
+ struct g_geom *gp;
+ struct gv_softc *sc;
+ struct gv_drive *d;
 
-	KASSERT(cp != NULL, ("gv_orphan: null cp"));
-	gp = cp->geom;
-	KASSERT(gp != NULL, ("gv_orphan: null gp"));
-	sc = gp->softc;
-	KASSERT(sc != NULL, ("gv_orphan: null sc"));
-	d = cp->private;
-	KASSERT(d != NULL, ("gv_orphan: null d"));
+ g_topology_assert();
 
-	g_trace(G_T_TOPOLOGY, "gv_orphan(%s)", gp->name);
+ KASSERT(cp != ((void*)0), ("gv_orphan: null cp"));
+ gp = cp->geom;
+ KASSERT(gp != ((void*)0), ("gv_orphan: null gp"));
+ sc = gp->softc;
+ KASSERT(sc != ((void*)0), ("gv_orphan: null sc"));
+ d = cp->private;
+ KASSERT(d != ((void*)0), ("gv_orphan: null d"));
 
-	gv_post_event(sc, GV_EVENT_DRIVE_LOST, d, NULL, 0, 0);
+ g_trace(G_T_TOPOLOGY, "gv_orphan(%s)", gp->name);
+
+ gv_post_event(sc, GV_EVENT_DRIVE_LOST, d, ((void*)0), 0, 0);
 }

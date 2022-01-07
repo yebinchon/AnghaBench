@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {unsigned int ps_flags; } ;
-typedef  TYPE_1__ PE_Scn ;
-typedef  scalar_t__ PE_Cmd ;
+typedef TYPE_1__ PE_Scn ;
+typedef scalar_t__ PE_Cmd ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EINVAL ; 
- scalar_t__ PE_C_CLR ; 
- scalar_t__ PE_C_SET ; 
- unsigned int PE_F_DIRTY ; 
- unsigned int PE_F_STRIP_SECTION ; 
- int /*<<< orphan*/  errno ; 
+
+ int EINVAL ;
+ scalar_t__ PE_C_CLR ;
+ scalar_t__ PE_C_SET ;
+ unsigned int PE_F_DIRTY ;
+ unsigned int PE_F_STRIP_SECTION ;
+ int errno ;
 
 int
 pe_flag_scn(PE_Scn *ps, PE_Cmd c, unsigned int flags)
 {
 
-	if (ps == NULL || (c != PE_C_SET && c != PE_C_CLR) ||
-	    (flags & ~(PE_F_DIRTY | PE_F_STRIP_SECTION)) == 0) {
-		errno = EINVAL;
-		return (-1);
-	}
+ if (ps == ((void*)0) || (c != PE_C_SET && c != PE_C_CLR) ||
+     (flags & ~(PE_F_DIRTY | PE_F_STRIP_SECTION)) == 0) {
+  errno = EINVAL;
+  return (-1);
+ }
 
-	if (c == PE_C_SET)
-		ps->ps_flags |= flags;
-	else
-		ps->ps_flags &= ~flags;
-	
-	return (0);
+ if (c == PE_C_SET)
+  ps->ps_flags |= flags;
+ else
+  ps->ps_flags &= ~flags;
+
+ return (0);
 }

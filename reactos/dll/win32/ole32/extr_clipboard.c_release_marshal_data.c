@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {scalar_t__ QuadPart; } ;
-typedef  TYPE_1__ ULARGE_INTEGER ;
+typedef TYPE_1__ ULARGE_INTEGER ;
 struct TYPE_6__ {scalar_t__ QuadPart; } ;
-typedef  TYPE_2__ LARGE_INTEGER ;
-typedef  int /*<<< orphan*/  IStream ;
+typedef TYPE_2__ LARGE_INTEGER ;
+typedef int IStream ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CoReleaseMarshalData (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IStream_Seek (int /*<<< orphan*/ *,TYPE_2__,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IStream_SetSize (int /*<<< orphan*/ *,TYPE_1__) ; 
- int /*<<< orphan*/  STREAM_SEEK_SET ; 
+
+ int CoReleaseMarshalData (int *) ;
+ int IStream_Seek (int *,TYPE_2__,int ,int *) ;
+ int IStream_SetSize (int *,TYPE_1__) ;
+ int STREAM_SEEK_SET ;
 
 __attribute__((used)) static inline void release_marshal_data(IStream *stm)
 {
@@ -30,8 +30,8 @@ __attribute__((used)) static inline void release_marshal_data(IStream *stm)
     ULARGE_INTEGER size;
     pos.QuadPart = size.QuadPart = 0;
 
-    IStream_Seek(stm, pos, STREAM_SEEK_SET, NULL);
+    IStream_Seek(stm, pos, STREAM_SEEK_SET, ((void*)0));
     CoReleaseMarshalData(stm);
-    IStream_Seek(stm, pos, STREAM_SEEK_SET, NULL);
+    IStream_Seek(stm, pos, STREAM_SEEK_SET, ((void*)0));
     IStream_SetSize(stm, size);
 }

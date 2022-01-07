@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UCHAR ;
+
+
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int UCHAR ;
 struct TYPE_9__ {int dwAddr; int dwMask; scalar_t__ dwBCastAddr; } ;
-struct TYPE_11__ {int /*<<< orphan*/  nameCache; TYPE_1__ ipr; int /*<<< orphan*/  nameQueryXID; } ;
+struct TYPE_11__ {int nameCache; TYPE_1__ ipr; int nameQueryXID; } ;
 struct TYPE_10__ {char* ncb_callname; } ;
-typedef  scalar_t__ SOCKET ;
-typedef  TYPE_2__* PNCB ;
-typedef  TYPE_3__ NetBTAdapter ;
-typedef  int /*<<< orphan*/  NBNameCacheEntry ;
-typedef  int DWORD ;
+typedef scalar_t__ SOCKET ;
+typedef TYPE_2__* PNCB ;
+typedef TYPE_3__ NetBTAdapter ;
+typedef int NBNameCacheEntry ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- scalar_t__ INVALID_SOCKET ; 
- int /*<<< orphan*/  IPPROTO_UDP ; 
- int /*<<< orphan*/ * NBNameCacheFindEntry (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  NRC_BADDR ; 
- int /*<<< orphan*/  NRC_GOODRET ; 
- int /*<<< orphan*/  NRC_NOWILD ; 
- int /*<<< orphan*/  NRC_OSRESNOTAV ; 
- int /*<<< orphan*/  NetBTNameWaitLoop (TYPE_3__*,scalar_t__,TYPE_2__*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  NetBTStoreCacheEntry (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  NetBTinetResolve (char*,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  PF_INET ; 
- int /*<<< orphan*/  SOCK_DGRAM ; 
- int /*<<< orphan*/  TRACE (char*,TYPE_3__*,...) ; 
- int /*<<< orphan*/  TRUE ; 
- scalar_t__ WSASocketA (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WSA_FLAG_OVERLAPPED ; 
- int /*<<< orphan*/  closesocket (scalar_t__) ; 
- int /*<<< orphan*/  gBCastQueries ; 
- int /*<<< orphan*/  gBCastQueryTimeout ; 
- int /*<<< orphan*/  gNameCache ; 
- int gNumWINSServers ; 
- int /*<<< orphan*/  gWINSQueries ; 
- int /*<<< orphan*/  gWINSQueryTimeout ; 
- int* gWINSServers ; 
+
+ int FALSE ;
+ scalar_t__ INVALID_SOCKET ;
+ int IPPROTO_UDP ;
+ int * NBNameCacheFindEntry (int ,char*) ;
+ int NRC_BADDR ;
+ int NRC_GOODRET ;
+ int NRC_NOWILD ;
+ int NRC_OSRESNOTAV ;
+ int NetBTNameWaitLoop (TYPE_3__*,scalar_t__,TYPE_2__*,int,int ,int ,int ,int **) ;
+ int NetBTStoreCacheEntry (int *,int *) ;
+ int NetBTinetResolve (char*,int **) ;
+ int PF_INET ;
+ int SOCK_DGRAM ;
+ int TRACE (char*,TYPE_3__*,...) ;
+ int TRUE ;
+ scalar_t__ WSASocketA (int ,int ,int ,int *,int ,int ) ;
+ int WSA_FLAG_OVERLAPPED ;
+ int closesocket (scalar_t__) ;
+ int gBCastQueries ;
+ int gBCastQueryTimeout ;
+ int gNameCache ;
+ int gNumWINSServers ;
+ int gWINSQueries ;
+ int gWINSQueryTimeout ;
+ int* gWINSServers ;
 
 __attribute__((used)) static UCHAR NetBTInternalFindName(NetBTAdapter *adapter, PNCB ncb,
  const NBNameCacheEntry **cacheEntry)
@@ -58,7 +58,7 @@ __attribute__((used)) static UCHAR NetBTInternalFindName(NetBTAdapter *adapter, 
     TRACE("adapter %p, ncb %p, cacheEntry %p\n", adapter, ncb, cacheEntry);
 
     if (!cacheEntry) return NRC_BADDR;
-    *cacheEntry = NULL;
+    *cacheEntry = ((void*)0);
 
     if (!adapter) return NRC_BADDR;
     if (!ncb) return NRC_BADDR;
@@ -73,18 +73,18 @@ __attribute__((used)) static UCHAR NetBTInternalFindName(NetBTAdapter *adapter, 
              ncb->ncb_callname);
         if (!*cacheEntry)
         {
-            NBNameCacheEntry *newEntry = NULL;
+            NBNameCacheEntry *newEntry = ((void*)0);
 
             ret = NetBTinetResolve(ncb->ncb_callname, &newEntry);
             if (ret == NRC_GOODRET && newEntry)
             {
                 ret = NetBTStoreCacheEntry(&gNameCache, newEntry);
                 if (ret != NRC_GOODRET)
-                    newEntry = NULL;
+                    newEntry = ((void*)0);
             }
             else
             {
-                SOCKET fd = WSASocketA(PF_INET, SOCK_DGRAM, IPPROTO_UDP, NULL,
+                SOCKET fd = WSASocketA(PF_INET, SOCK_DGRAM, IPPROTO_UDP, ((void*)0),
                  0, WSA_FLAG_OVERLAPPED);
 
                 if(fd == INVALID_SOCKET)
@@ -94,7 +94,7 @@ __attribute__((used)) static UCHAR NetBTInternalFindName(NetBTAdapter *adapter, 
                     int winsNdx;
 
                     adapter->nameQueryXID++;
-                    for (winsNdx = 0; ret == NRC_GOODRET && *cacheEntry == NULL
+                    for (winsNdx = 0; ret == NRC_GOODRET && *cacheEntry == ((void*)0)
                      && winsNdx < gNumWINSServers; winsNdx++)
                         ret = NetBTNameWaitLoop(adapter, fd, ncb,
                          gWINSServers[winsNdx], FALSE, gWINSQueryTimeout,
@@ -103,9 +103,9 @@ __attribute__((used)) static UCHAR NetBTInternalFindName(NetBTAdapter *adapter, 
                     {
                         ret = NetBTStoreCacheEntry(&gNameCache, newEntry);
                         if (ret != NRC_GOODRET)
-                            newEntry = NULL;
+                            newEntry = ((void*)0);
                     }
-                    if (ret == NRC_GOODRET && *cacheEntry == NULL)
+                    if (ret == NRC_GOODRET && *cacheEntry == ((void*)0))
                     {
                         DWORD bcastAddr =
                          adapter->ipr.dwAddr & adapter->ipr.dwMask;
@@ -119,7 +119,7 @@ __attribute__((used)) static UCHAR NetBTInternalFindName(NetBTAdapter *adapter, 
                             ret = NetBTStoreCacheEntry(&adapter->nameCache,
                              newEntry);
                             if (ret != NRC_GOODRET)
-                                newEntry = NULL;
+                                newEntry = ((void*)0);
                         }
                     }
                     closesocket(fd);

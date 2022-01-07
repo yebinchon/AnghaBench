@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int TokenKind ;
 
-/* Variables and functions */
-#define  TOKEN_ADD 131 
-#define  TOKEN_NEG 130 
-#define  TOKEN_NOT 129 
-#define  TOKEN_SUB 128 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int TokenKind ;
+
+
+
+
+
+
+ int assert (int ) ;
 
 long long eval_unary_op_ll(TokenKind op, long long val) {
     switch (op) {
-    case TOKEN_ADD:
+    case 131:
         return +val;
-    case TOKEN_SUB:
+    case 128:
         return -val;
-    case TOKEN_NEG:
+    case 130:
         return ~val;
-    case TOKEN_NOT:
+    case 129:
         return !val;
     default:
         assert(0);

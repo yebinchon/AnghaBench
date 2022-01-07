@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct nvdimm_drvdata {int dummy; } ;
 struct nd_namespace_label {int dummy; } ;
 
-/* Variables and functions */
- scalar_t__ to_namespace_index (struct nvdimm_drvdata*,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ to_namespace_index (struct nvdimm_drvdata*,int ) ;
 
 __attribute__((used)) static unsigned long nd_label_offset(struct nvdimm_drvdata *ndd,
-		struct nd_namespace_label *nd_label)
+  struct nd_namespace_label *nd_label)
 {
-	return (unsigned long) nd_label
-		- (unsigned long) to_namespace_index(ndd, 0);
+ return (unsigned long) nd_label
+  - (unsigned long) to_namespace_index(ndd, 0);
 }

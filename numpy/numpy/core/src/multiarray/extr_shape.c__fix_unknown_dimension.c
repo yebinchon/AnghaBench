@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int npy_intp ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int npy_intp ;
 struct TYPE_4__ {int* ptr; int len; } ;
-typedef  TYPE_1__ PyArray_Dims ;
-typedef  int /*<<< orphan*/  PyArrayObject ;
+typedef TYPE_1__ PyArray_Dims ;
+typedef int PyArrayObject ;
 
-/* Variables and functions */
- int PyArray_SIZE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyErr_SetString (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  PyExc_ValueError ; 
- scalar_t__ npy_mul_with_overflow_intp (int*,int,int) ; 
- int /*<<< orphan*/  raise_reshape_size_mismatch (TYPE_1__*,int /*<<< orphan*/ *) ; 
+
+ int PyArray_SIZE (int *) ;
+ int PyErr_SetString (int ,char*) ;
+ int PyExc_ValueError ;
+ scalar_t__ npy_mul_with_overflow_intp (int*,int,int) ;
+ int raise_reshape_size_mismatch (TYPE_1__*,int *) ;
 
 __attribute__((used)) static int
 _fix_unknown_dimension(PyArray_Dims *newshape, PyArrayObject *arr)

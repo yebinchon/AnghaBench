@@ -1,36 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ can_do_pal_halt ; 
- int /*<<< orphan*/  cpu_relax () ; 
- int /*<<< orphan*/  local_irq_disable () ; 
- int /*<<< orphan*/  local_irq_enable () ; 
- int /*<<< orphan*/  need_resched () ; 
- int /*<<< orphan*/  safe_halt () ; 
+ scalar_t__ can_do_pal_halt ;
+ int cpu_relax () ;
+ int local_irq_disable () ;
+ int local_irq_enable () ;
+ int need_resched () ;
+ int safe_halt () ;
 
 void
 default_idle (void)
 {
-	local_irq_enable();
-	while (!need_resched()) {
-		if (can_do_pal_halt) {
-			local_irq_disable();
-			if (!need_resched()) {
-				safe_halt();
-			}
-			local_irq_enable();
-		} else
-			cpu_relax();
-	}
+ local_irq_enable();
+ while (!need_resched()) {
+  if (can_do_pal_halt) {
+   local_irq_disable();
+   if (!need_resched()) {
+    safe_halt();
+   }
+   local_irq_enable();
+  } else
+   cpu_relax();
+ }
 }

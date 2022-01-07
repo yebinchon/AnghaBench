@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct dynamic_array {int capacity; void* items; } ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- void* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- void* HeapReAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*,int) ; 
- int /*<<< orphan*/  TRUE ; 
- int max (int,int) ; 
+
+ int FALSE ;
+ int GetProcessHeap () ;
+ void* HeapAlloc (int ,int ,int) ;
+ void* HeapReAlloc (int ,int ,void*,int) ;
+ int TRUE ;
+ int max (int,int) ;
 
 __attribute__((used)) static BOOL reserve(struct dynamic_array *array, int count, int itemsize)
 {

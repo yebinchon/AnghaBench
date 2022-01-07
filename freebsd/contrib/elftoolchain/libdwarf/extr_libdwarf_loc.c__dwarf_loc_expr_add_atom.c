@@ -1,428 +1,282 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint64_t ;
-typedef  int /*<<< orphan*/  buf ;
-struct TYPE_4__ {int dbg_pointer_size; int /*<<< orphan*/  (* write ) (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ;} ;
-typedef  int /*<<< orphan*/  Dwarf_Unsigned ;
-typedef  int Dwarf_Small ;
-typedef  int /*<<< orphan*/  Dwarf_Error ;
-typedef  TYPE_1__* Dwarf_Debug ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DWARF_SET_ERROR (TYPE_1__*,int /*<<< orphan*/ *,int) ; 
- int DW_DLE_LOC_EXPR_BAD ; 
- int DW_DLE_NONE ; 
-#define  DW_OP_GNU_push_tls_address 273 
-#define  DW_OP_abs 272 
-#define  DW_OP_addr 271 
-#define  DW_OP_and 270 
-#define  DW_OP_bra 269 
-#define  DW_OP_breg0 268 
-#define  DW_OP_breg1 267 
-#define  DW_OP_breg10 266 
-#define  DW_OP_breg11 265 
-#define  DW_OP_breg12 264 
-#define  DW_OP_breg13 263 
-#define  DW_OP_breg14 262 
-#define  DW_OP_breg15 261 
-#define  DW_OP_breg16 260 
-#define  DW_OP_breg17 259 
-#define  DW_OP_breg18 258 
-#define  DW_OP_breg19 257 
-#define  DW_OP_breg2 256 
-#define  DW_OP_breg20 255 
-#define  DW_OP_breg21 254 
-#define  DW_OP_breg22 253 
-#define  DW_OP_breg23 252 
-#define  DW_OP_breg24 251 
-#define  DW_OP_breg25 250 
-#define  DW_OP_breg26 249 
-#define  DW_OP_breg27 248 
-#define  DW_OP_breg28 247 
-#define  DW_OP_breg29 246 
-#define  DW_OP_breg3 245 
-#define  DW_OP_breg30 244 
-#define  DW_OP_breg31 243 
-#define  DW_OP_breg4 242 
-#define  DW_OP_breg5 241 
-#define  DW_OP_breg6 240 
-#define  DW_OP_breg7 239 
-#define  DW_OP_breg8 238 
-#define  DW_OP_breg9 237 
-#define  DW_OP_bregx 236 
-#define  DW_OP_const1s 235 
-#define  DW_OP_const1u 234 
-#define  DW_OP_const2s 233 
-#define  DW_OP_const2u 232 
-#define  DW_OP_const4s 231 
-#define  DW_OP_const4u 230 
-#define  DW_OP_const8s 229 
-#define  DW_OP_const8u 228 
-#define  DW_OP_consts 227 
-#define  DW_OP_constu 226 
-#define  DW_OP_deref 225 
-#define  DW_OP_deref_size 224 
-#define  DW_OP_div 223 
-#define  DW_OP_drop 222 
-#define  DW_OP_dup 221 
-#define  DW_OP_eq 220 
-#define  DW_OP_fbreg 219 
-#define  DW_OP_ge 218 
-#define  DW_OP_gt 217 
-#define  DW_OP_le 216 
-#define  DW_OP_lit0 215 
-#define  DW_OP_lit1 214 
-#define  DW_OP_lit10 213 
-#define  DW_OP_lit11 212 
-#define  DW_OP_lit12 211 
-#define  DW_OP_lit13 210 
-#define  DW_OP_lit14 209 
-#define  DW_OP_lit15 208 
-#define  DW_OP_lit16 207 
-#define  DW_OP_lit17 206 
-#define  DW_OP_lit18 205 
-#define  DW_OP_lit19 204 
-#define  DW_OP_lit2 203 
-#define  DW_OP_lit20 202 
-#define  DW_OP_lit21 201 
-#define  DW_OP_lit22 200 
-#define  DW_OP_lit23 199 
-#define  DW_OP_lit24 198 
-#define  DW_OP_lit25 197 
-#define  DW_OP_lit26 196 
-#define  DW_OP_lit27 195 
-#define  DW_OP_lit28 194 
-#define  DW_OP_lit29 193 
-#define  DW_OP_lit3 192 
-#define  DW_OP_lit30 191 
-#define  DW_OP_lit31 190 
-#define  DW_OP_lit4 189 
-#define  DW_OP_lit5 188 
-#define  DW_OP_lit6 187 
-#define  DW_OP_lit7 186 
-#define  DW_OP_lit8 185 
-#define  DW_OP_lit9 184 
-#define  DW_OP_lt 183 
-#define  DW_OP_minus 182 
-#define  DW_OP_mod 181 
-#define  DW_OP_mul 180 
-#define  DW_OP_ne 179 
-#define  DW_OP_neg 178 
-#define  DW_OP_nop 177 
-#define  DW_OP_not 176 
-#define  DW_OP_or 175 
-#define  DW_OP_over 174 
-#define  DW_OP_pick 173 
-#define  DW_OP_piece 172 
-#define  DW_OP_plus 171 
-#define  DW_OP_plus_uconst 170 
-#define  DW_OP_reg0 169 
-#define  DW_OP_reg1 168 
-#define  DW_OP_reg10 167 
-#define  DW_OP_reg11 166 
-#define  DW_OP_reg12 165 
-#define  DW_OP_reg13 164 
-#define  DW_OP_reg14 163 
-#define  DW_OP_reg15 162 
-#define  DW_OP_reg16 161 
-#define  DW_OP_reg17 160 
-#define  DW_OP_reg18 159 
-#define  DW_OP_reg19 158 
-#define  DW_OP_reg2 157 
-#define  DW_OP_reg20 156 
-#define  DW_OP_reg21 155 
-#define  DW_OP_reg22 154 
-#define  DW_OP_reg23 153 
-#define  DW_OP_reg24 152 
-#define  DW_OP_reg25 151 
-#define  DW_OP_reg26 150 
-#define  DW_OP_reg27 149 
-#define  DW_OP_reg28 148 
-#define  DW_OP_reg29 147 
-#define  DW_OP_reg3 146 
-#define  DW_OP_reg30 145 
-#define  DW_OP_reg31 144 
-#define  DW_OP_reg4 143 
-#define  DW_OP_reg5 142 
-#define  DW_OP_reg6 141 
-#define  DW_OP_reg7 140 
-#define  DW_OP_reg8 139 
-#define  DW_OP_reg9 138 
-#define  DW_OP_regx 137 
-#define  DW_OP_rot 136 
-#define  DW_OP_shl 135 
-#define  DW_OP_shr 134 
-#define  DW_OP_shra 133 
-#define  DW_OP_skip 132 
-#define  DW_OP_swap 131 
-#define  DW_OP_xderef 130 
-#define  DW_OP_xderef_size 129 
-#define  DW_OP_xor 128 
- int _dwarf_write_sleb128 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int _dwarf_write_uleb128 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  stub3 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  stub4 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint64_t ;
+typedef int buf ;
+struct TYPE_4__ {int dbg_pointer_size; int (* write ) (int *,int *,int ,int) ;} ;
+typedef int Dwarf_Unsigned ;
+typedef int Dwarf_Small ;
+typedef int Dwarf_Error ;
+typedef TYPE_1__* Dwarf_Debug ;
+
+
+ int DWARF_SET_ERROR (TYPE_1__*,int *,int) ;
+ int DW_DLE_LOC_EXPR_BAD ;
+ int DW_DLE_NONE ;
+ int _dwarf_write_sleb128 (int *,int *,int ) ;
+ int _dwarf_write_uleb128 (int *,int *,int ) ;
+ int assert (int) ;
+ int stub1 (int *,int *,int ,int) ;
+ int stub2 (int *,int *,int ,int) ;
+ int stub3 (int *,int *,int ,int) ;
+ int stub4 (int *,int *,int ,int) ;
 
 int
 _dwarf_loc_expr_add_atom(Dwarf_Debug dbg, uint8_t *out, uint8_t *end,
     Dwarf_Small atom, Dwarf_Unsigned operand1, Dwarf_Unsigned operand2,
     int *length, Dwarf_Error *error)
 {
-	uint8_t buf[64];
-	uint8_t *p, *pe;
-	uint64_t offset;
-	int len;
+ uint8_t buf[64];
+ uint8_t *p, *pe;
+ uint64_t offset;
+ int len;
 
-	if (out != NULL && end != NULL) {
-		p = out;
-		pe = end;
-	} else {
-		p = out = buf;
-		pe = &buf[sizeof(buf)];
-	}
+ if (out != ((void*)0) && end != ((void*)0)) {
+  p = out;
+  pe = end;
+ } else {
+  p = out = buf;
+  pe = &buf[sizeof(buf)];
+ }
 
-	switch (atom) {
-	/* Operations with no operands. */
-	case DW_OP_deref:
-	case DW_OP_reg0:
-	case DW_OP_reg1:
-	case DW_OP_reg2:
-	case DW_OP_reg3:
-	case DW_OP_reg4:
-	case DW_OP_reg5:
-	case DW_OP_reg6:
-	case DW_OP_reg7:
-	case DW_OP_reg8:
-	case DW_OP_reg9:
-	case DW_OP_reg10:
-	case DW_OP_reg11:
-	case DW_OP_reg12:
-	case DW_OP_reg13:
-	case DW_OP_reg14:
-	case DW_OP_reg15:
-	case DW_OP_reg16:
-	case DW_OP_reg17:
-	case DW_OP_reg18:
-	case DW_OP_reg19:
-	case DW_OP_reg20:
-	case DW_OP_reg21:
-	case DW_OP_reg22:
-	case DW_OP_reg23:
-	case DW_OP_reg24:
-	case DW_OP_reg25:
-	case DW_OP_reg26:
-	case DW_OP_reg27:
-	case DW_OP_reg28:
-	case DW_OP_reg29:
-	case DW_OP_reg30:
-	case DW_OP_reg31:
+ switch (atom) {
 
-	case DW_OP_lit0:
-	case DW_OP_lit1:
-	case DW_OP_lit2:
-	case DW_OP_lit3:
-	case DW_OP_lit4:
-	case DW_OP_lit5:
-	case DW_OP_lit6:
-	case DW_OP_lit7:
-	case DW_OP_lit8:
-	case DW_OP_lit9:
-	case DW_OP_lit10:
-	case DW_OP_lit11:
-	case DW_OP_lit12:
-	case DW_OP_lit13:
-	case DW_OP_lit14:
-	case DW_OP_lit15:
-	case DW_OP_lit16:
-	case DW_OP_lit17:
-	case DW_OP_lit18:
-	case DW_OP_lit19:
-	case DW_OP_lit20:
-	case DW_OP_lit21:
-	case DW_OP_lit22:
-	case DW_OP_lit23:
-	case DW_OP_lit24:
-	case DW_OP_lit25:
-	case DW_OP_lit26:
-	case DW_OP_lit27:
-	case DW_OP_lit28:
-	case DW_OP_lit29:
-	case DW_OP_lit30:
-	case DW_OP_lit31:
+ case 225:
+ case 169:
+ case 168:
+ case 157:
+ case 146:
+ case 143:
+ case 142:
+ case 141:
+ case 140:
+ case 139:
+ case 138:
+ case 167:
+ case 166:
+ case 165:
+ case 164:
+ case 163:
+ case 162:
+ case 161:
+ case 160:
+ case 159:
+ case 158:
+ case 156:
+ case 155:
+ case 154:
+ case 153:
+ case 152:
+ case 151:
+ case 150:
+ case 149:
+ case 148:
+ case 147:
+ case 145:
+ case 144:
 
-	case DW_OP_dup:
-	case DW_OP_drop:
+ case 215:
+ case 214:
+ case 203:
+ case 192:
+ case 189:
+ case 188:
+ case 187:
+ case 186:
+ case 185:
+ case 184:
+ case 213:
+ case 212:
+ case 211:
+ case 210:
+ case 209:
+ case 208:
+ case 207:
+ case 206:
+ case 205:
+ case 204:
+ case 202:
+ case 201:
+ case 200:
+ case 199:
+ case 198:
+ case 197:
+ case 196:
+ case 195:
+ case 194:
+ case 193:
+ case 191:
+ case 190:
 
-	case DW_OP_over:
+ case 221:
+ case 222:
 
-	case DW_OP_swap:
-	case DW_OP_rot:
-	case DW_OP_xderef:
+ case 174:
 
-	case DW_OP_abs:
-	case DW_OP_and:
-	case DW_OP_div:
-	case DW_OP_minus:
-	case DW_OP_mod:
-	case DW_OP_mul:
-	case DW_OP_neg:
-	case DW_OP_not:
-	case DW_OP_or:
-	case DW_OP_plus:
+ case 131:
+ case 136:
+ case 130:
 
-	case DW_OP_shl:
-	case DW_OP_shr:
-	case DW_OP_shra:
-	case DW_OP_xor:
+ case 272:
+ case 270:
+ case 223:
+ case 182:
+ case 181:
+ case 180:
+ case 178:
+ case 176:
+ case 175:
+ case 171:
 
-	case DW_OP_eq:
-	case DW_OP_ge:
-	case DW_OP_gt:
-	case DW_OP_le:
-	case DW_OP_lt:
-	case DW_OP_ne:
+ case 135:
+ case 134:
+ case 133:
+ case 128:
 
-	case DW_OP_nop:
-	case DW_OP_GNU_push_tls_address:
-		*p++ = atom;
-		break;
+ case 220:
+ case 218:
+ case 217:
+ case 216:
+ case 183:
+ case 179:
 
-	/* Operations with 1-byte operands. */
-	case DW_OP_const1u:
-	case DW_OP_const1s:
-	case DW_OP_pick:
-	case DW_OP_deref_size:
-	case DW_OP_xderef_size:
-		*p++ = atom;
-		*p++ = (uint8_t) operand1;
-		break;
+ case 177:
+ case 273:
+  *p++ = atom;
+  break;
 
-	/* Operations with 2-byte operands. */
-	case DW_OP_const2u:
-	case DW_OP_const2s:
-	case DW_OP_bra:
-	case DW_OP_skip:
-		*p++ = atom;
-		offset = 0;
-		dbg->write(p, &offset, operand1, 2);
-		p += 2;
-		break;
 
-	/* Operations with 4-byte operands. */
-	case DW_OP_const4u:
-	case DW_OP_const4s:
-		*p++ = atom;
-		offset = 0;
-		dbg->write(p, &offset, operand1, 4);
-		p += 4;
-		break;
+ case 234:
+ case 235:
+ case 173:
+ case 224:
+ case 129:
+  *p++ = atom;
+  *p++ = (uint8_t) operand1;
+  break;
 
-	/* Operations with 8-byte operands. */
-	case DW_OP_const8u:
-	case DW_OP_const8s:
-		*p++ = atom;
-		offset = 0;
-		dbg->write(p, &offset, operand1, 8);
-		p += 8;
-		break;
 
-	/* Operations with an unsigned LEB128 operand. */
-	case DW_OP_constu:
-	case DW_OP_plus_uconst:
-	case DW_OP_regx:
-	case DW_OP_piece:
-		*p++ = atom;
-		len = _dwarf_write_uleb128(p, pe, operand1);
-		assert(len > 0);
-		p += len;
-		break;
+ case 232:
+ case 233:
+ case 269:
+ case 132:
+  *p++ = atom;
+  offset = 0;
+  dbg->write(p, &offset, operand1, 2);
+  p += 2;
+  break;
 
-	/* Operations with a signed LEB128 operand. */
-	case DW_OP_consts:
-	case DW_OP_breg0:
-	case DW_OP_breg1:
-	case DW_OP_breg2:
-	case DW_OP_breg3:
-	case DW_OP_breg4:
-	case DW_OP_breg5:
-	case DW_OP_breg6:
-	case DW_OP_breg7:
-	case DW_OP_breg8:
-	case DW_OP_breg9:
-	case DW_OP_breg10:
-	case DW_OP_breg11:
-	case DW_OP_breg12:
-	case DW_OP_breg13:
-	case DW_OP_breg14:
-	case DW_OP_breg15:
-	case DW_OP_breg16:
-	case DW_OP_breg17:
-	case DW_OP_breg18:
-	case DW_OP_breg19:
-	case DW_OP_breg20:
-	case DW_OP_breg21:
-	case DW_OP_breg22:
-	case DW_OP_breg23:
-	case DW_OP_breg24:
-	case DW_OP_breg25:
-	case DW_OP_breg26:
-	case DW_OP_breg27:
-	case DW_OP_breg28:
-	case DW_OP_breg29:
-	case DW_OP_breg30:
-	case DW_OP_breg31:
-	case DW_OP_fbreg:
-		*p++ = atom;
-		len = _dwarf_write_sleb128(p, pe, operand1);
-		assert(len > 0);
-		p += len;
-		break;
 
-	/*
-	 * Operations with an unsigned LEB128 operand
-	 * followed by a signed LEB128 operand.
-	 */
-	case DW_OP_bregx:
-		*p++ = atom;
-		len = _dwarf_write_uleb128(p, pe, operand1);
-		assert(len > 0);
-		p += len;
-		len = _dwarf_write_sleb128(p, pe, operand2);
-		assert(len > 0);
-		p += len;
-		break;
+ case 230:
+ case 231:
+  *p++ = atom;
+  offset = 0;
+  dbg->write(p, &offset, operand1, 4);
+  p += 4;
+  break;
 
-	/* Target address size operand. */
-	case DW_OP_addr:
-		*p++ = atom;
-		offset = 0;
-		dbg->write(p, &offset, operand1, dbg->dbg_pointer_size);
-		p += dbg->dbg_pointer_size;
-		break;
 
-	/* All other operations cause an error. */
-	default:
-		DWARF_SET_ERROR(dbg, error, DW_DLE_LOC_EXPR_BAD);
-		return (DW_DLE_LOC_EXPR_BAD);
-	}
+ case 228:
+ case 229:
+  *p++ = atom;
+  offset = 0;
+  dbg->write(p, &offset, operand1, 8);
+  p += 8;
+  break;
 
-	if (length)
-		*length = p - out;
 
-	return (DW_DLE_NONE);
+ case 226:
+ case 170:
+ case 137:
+ case 172:
+  *p++ = atom;
+  len = _dwarf_write_uleb128(p, pe, operand1);
+  assert(len > 0);
+  p += len;
+  break;
+
+
+ case 227:
+ case 268:
+ case 267:
+ case 256:
+ case 245:
+ case 242:
+ case 241:
+ case 240:
+ case 239:
+ case 238:
+ case 237:
+ case 266:
+ case 265:
+ case 264:
+ case 263:
+ case 262:
+ case 261:
+ case 260:
+ case 259:
+ case 258:
+ case 257:
+ case 255:
+ case 254:
+ case 253:
+ case 252:
+ case 251:
+ case 250:
+ case 249:
+ case 248:
+ case 247:
+ case 246:
+ case 244:
+ case 243:
+ case 219:
+  *p++ = atom;
+  len = _dwarf_write_sleb128(p, pe, operand1);
+  assert(len > 0);
+  p += len;
+  break;
+
+
+
+
+
+ case 236:
+  *p++ = atom;
+  len = _dwarf_write_uleb128(p, pe, operand1);
+  assert(len > 0);
+  p += len;
+  len = _dwarf_write_sleb128(p, pe, operand2);
+  assert(len > 0);
+  p += len;
+  break;
+
+
+ case 271:
+  *p++ = atom;
+  offset = 0;
+  dbg->write(p, &offset, operand1, dbg->dbg_pointer_size);
+  p += dbg->dbg_pointer_size;
+  break;
+
+
+ default:
+  DWARF_SET_ERROR(dbg, error, DW_DLE_LOC_EXPR_BAD);
+  return (DW_DLE_LOC_EXPR_BAD);
+ }
+
+ if (length)
+  *length = p - out;
+
+ return (DW_DLE_NONE);
 }

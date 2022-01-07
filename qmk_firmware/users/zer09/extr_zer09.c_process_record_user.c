@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint16_t ;
-typedef  int /*<<< orphan*/  keyrecord_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  c_lyr ; 
- scalar_t__ led_brightness (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int process_record_keymap (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  rgblight_set () ; 
- int /*<<< orphan*/  set_key_led (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint16_t ;
+typedef int keyrecord_t ;
+
+
+ int c_lyr ;
+ scalar_t__ led_brightness (int ,int *) ;
+ int process_record_keymap (int ,int *) ;
+ int rgblight_set () ;
+ int set_key_led (int *,int ) ;
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   set_key_led(record, c_lyr);
 
   if (led_brightness(keycode, record)) {
     rgblight_set();
-    return false;
+    return 0;
   }
 
   rgblight_set();

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  IUri ;
-typedef  int /*<<< orphan*/  HTMLOuterWindow ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  int /*<<< orphan*/  BSTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CoInternetCombineUrlEx (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int,int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IUri_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SysFreeString (int /*<<< orphan*/ ) ; 
- int URL_DONT_ESCAPE_EXTRA_INFO ; 
- int URL_ESCAPE_SPACES_ONLY ; 
- int /*<<< orphan*/  create_uri (int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  navigate_uri (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  translate_uri (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
+
+
+
+typedef int WCHAR ;
+typedef int IUri ;
+typedef int HTMLOuterWindow ;
+typedef int HRESULT ;
+typedef int DWORD ;
+typedef int BSTR ;
+
+
+ int CoInternetCombineUrlEx (int *,int const*,int,int **,int ) ;
+ scalar_t__ FAILED (int ) ;
+ int IUri_Release (int *) ;
+ int SysFreeString (int ) ;
+ int URL_DONT_ESCAPE_EXTRA_INFO ;
+ int URL_ESCAPE_SPACES_ONLY ;
+ int create_uri (int const*,int ,int **) ;
+ int navigate_uri (int *,int *,int ,int *,int ) ;
+ int translate_uri (int *,int *,int *,int **) ;
 
 HRESULT navigate_url(HTMLOuterWindow *window, const WCHAR *new_url, IUri *base_uri, DWORD flags)
 {
@@ -47,7 +47,7 @@ HRESULT navigate_url(HTMLOuterWindow *window, const WCHAR *new_url, IUri *base_u
     if(FAILED(hres))
         return hres;
 
-    hres = navigate_uri(window, uri, display_uri, NULL, flags);
+    hres = navigate_uri(window, uri, display_uri, ((void*)0), flags);
     IUri_Release(uri);
     SysFreeString(display_uri);
     return hres;

@@ -1,69 +1,69 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_37__   TYPE_7__ ;
-typedef  struct TYPE_36__   TYPE_6__ ;
-typedef  struct TYPE_35__   TYPE_5__ ;
-typedef  struct TYPE_34__   TYPE_4__ ;
-typedef  struct TYPE_33__   TYPE_3__ ;
-typedef  struct TYPE_32__   TYPE_2__ ;
-typedef  struct TYPE_31__   TYPE_1__ ;
-typedef  struct TYPE_30__   TYPE_12__ ;
-typedef  struct TYPE_29__   TYPE_10__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_37__ TYPE_7__ ;
+typedef struct TYPE_36__ TYPE_6__ ;
+typedef struct TYPE_35__ TYPE_5__ ;
+typedef struct TYPE_34__ TYPE_4__ ;
+typedef struct TYPE_33__ TYPE_3__ ;
+typedef struct TYPE_32__ TYPE_2__ ;
+typedef struct TYPE_31__ TYPE_1__ ;
+typedef struct TYPE_30__ TYPE_12__ ;
+typedef struct TYPE_29__ TYPE_10__ ;
+
+
 struct TYPE_31__ {char* string; } ;
 struct TYPE_29__ {TYPE_1__ root; } ;
 struct elf_link_hash_entry {TYPE_10__ root; } ;
 struct bfd_link_info {TYPE_2__* callbacks; scalar_t__ relocatable; } ;
-struct TYPE_33__ {int /*<<< orphan*/  name; } ;
-typedef  TYPE_3__ reloc_howto_type ;
-typedef  int /*<<< orphan*/  bfd_vma ;
-typedef  int bfd_reloc_status_type ;
-typedef  int /*<<< orphan*/  bfd_byte ;
-typedef  int /*<<< orphan*/  bfd_boolean ;
-typedef  int /*<<< orphan*/  bfd ;
+struct TYPE_33__ {int name; } ;
+typedef TYPE_3__ reloc_howto_type ;
+typedef int bfd_vma ;
+typedef int bfd_reloc_status_type ;
+typedef int bfd_byte ;
+typedef int bfd_boolean ;
+typedef int bfd ;
 struct TYPE_34__ {int reloc_count; } ;
-typedef  TYPE_4__ asection ;
-struct TYPE_37__ {int /*<<< orphan*/  r_offset; int /*<<< orphan*/  r_addend; int /*<<< orphan*/  r_info; } ;
-struct TYPE_36__ {unsigned long sh_info; int /*<<< orphan*/  sh_link; } ;
-struct TYPE_35__ {int /*<<< orphan*/  st_name; } ;
-struct TYPE_32__ {int /*<<< orphan*/  (* warning ) (struct bfd_link_info*,char const*,char const*,int /*<<< orphan*/ *,TYPE_4__*,int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* undefined_symbol ) (struct bfd_link_info*,char const*,int /*<<< orphan*/ *,TYPE_4__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* reloc_overflow ) (struct bfd_link_info*,TYPE_10__*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,TYPE_4__*,int /*<<< orphan*/ ) ;} ;
+typedef TYPE_4__ asection ;
+struct TYPE_37__ {int r_offset; int r_addend; int r_info; } ;
+struct TYPE_36__ {unsigned long sh_info; int sh_link; } ;
+struct TYPE_35__ {int st_name; } ;
+struct TYPE_32__ {int (* warning ) (struct bfd_link_info*,char const*,char const*,int *,TYPE_4__*,int ) ;int (* undefined_symbol ) (struct bfd_link_info*,char const*,int *,TYPE_4__*,int ,int ) ;int (* reloc_overflow ) (struct bfd_link_info*,TYPE_10__*,char const*,int ,int ,int *,TYPE_4__*,int ) ;} ;
 struct TYPE_30__ {TYPE_6__ symtab_hdr; } ;
-typedef  TYPE_5__ Elf_Internal_Sym ;
-typedef  TYPE_6__ Elf_Internal_Shdr ;
-typedef  TYPE_7__ Elf_Internal_Rela ;
+typedef TYPE_5__ Elf_Internal_Sym ;
+typedef TYPE_6__ Elf_Internal_Shdr ;
+typedef TYPE_7__ Elf_Internal_Rela ;
 
-/* Variables and functions */
- unsigned long ELF32_R_SYM (int /*<<< orphan*/ ) ; 
- int ELF32_R_TYPE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  RELOC_FOR_GLOBAL_SYMBOL (struct bfd_link_info*,int /*<<< orphan*/ *,TYPE_4__*,TYPE_7__*,unsigned long,TYPE_6__*,struct elf_link_hash_entry**,struct elf_link_hash_entry*,TYPE_4__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- char* _ (char*) ; 
- int /*<<< orphan*/  _bfd_elf_rela_local_sym (int /*<<< orphan*/ *,TYPE_5__*,TYPE_4__**,TYPE_7__*) ; 
- char* bfd_elf_string_from_elf_section (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
-#define  bfd_reloc_dangerous 132 
-#define  bfd_reloc_notsupported 131 
- int bfd_reloc_ok ; 
-#define  bfd_reloc_outofrange 130 
-#define  bfd_reloc_overflow 129 
-#define  bfd_reloc_undefined 128 
- char* bfd_section_name (int /*<<< orphan*/ *,TYPE_4__*) ; 
- int cr16_elf_final_link_relocate (TYPE_3__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_4__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct bfd_link_info*,TYPE_4__*,int /*<<< orphan*/ ) ; 
- TYPE_3__* cr16_elf_howto_table ; 
- struct elf_link_hash_entry** elf_sym_hashes (int /*<<< orphan*/ *) ; 
- TYPE_12__* elf_tdata (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub1 (struct bfd_link_info*,TYPE_10__*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,TYPE_4__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub2 (struct bfd_link_info*,char const*,int /*<<< orphan*/ *,TYPE_4__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub3 (struct bfd_link_info*,char const*,char const*,int /*<<< orphan*/ *,TYPE_4__*,int /*<<< orphan*/ ) ; 
+
+ unsigned long ELF32_R_SYM (int ) ;
+ int ELF32_R_TYPE (int ) ;
+ int FALSE ;
+ int RELOC_FOR_GLOBAL_SYMBOL (struct bfd_link_info*,int *,TYPE_4__*,TYPE_7__*,unsigned long,TYPE_6__*,struct elf_link_hash_entry**,struct elf_link_hash_entry*,TYPE_4__*,int ,int ,int ) ;
+ int TRUE ;
+ char* _ (char*) ;
+ int _bfd_elf_rela_local_sym (int *,TYPE_5__*,TYPE_4__**,TYPE_7__*) ;
+ char* bfd_elf_string_from_elf_section (int *,int ,int ) ;
+
+
+ int bfd_reloc_ok ;
+
+
+
+ char* bfd_section_name (int *,TYPE_4__*) ;
+ int cr16_elf_final_link_relocate (TYPE_3__*,int *,int *,TYPE_4__*,int *,int ,int ,int ,struct bfd_link_info*,TYPE_4__*,int ) ;
+ TYPE_3__* cr16_elf_howto_table ;
+ struct elf_link_hash_entry** elf_sym_hashes (int *) ;
+ TYPE_12__* elf_tdata (int *) ;
+ int stub1 (struct bfd_link_info*,TYPE_10__*,char const*,int ,int ,int *,TYPE_4__*,int ) ;
+ int stub2 (struct bfd_link_info*,char const*,int *,TYPE_4__*,int ,int ) ;
+ int stub3 (struct bfd_link_info*,char const*,char const*,int *,TYPE_4__*,int ) ;
 
 __attribute__((used)) static bfd_boolean
 elf32_cr16_relocate_section (bfd *output_bfd, struct bfd_link_info *info,
@@ -99,9 +99,9 @@ elf32_cr16_relocate_section (bfd *output_bfd, struct bfd_link_info *info,
       r_type = ELF32_R_TYPE (rel->r_info);
       howto = cr16_elf_howto_table + (r_type);
 
-      h = NULL;
-      sym = NULL;
-      sec = NULL;
+      h = ((void*)0);
+      sym = ((void*)0);
+      sec = ((void*)0);
       if (r_symndx < symtab_hdr->sh_info)
         {
           sym = local_syms + r_symndx;
@@ -122,55 +122,55 @@ elf32_cr16_relocate_section (bfd *output_bfd, struct bfd_link_info *info,
                                         input_section,
                                         contents, rel->r_offset,
                                         relocation, rel->r_addend,
-                                        info, sec, h == NULL);
+                                        info, sec, h == ((void*)0));
 
       if (r != bfd_reloc_ok)
         {
           const char *name;
-          const char *msg = NULL;
+          const char *msg = ((void*)0);
 
-          if (h != NULL)
+          if (h != ((void*)0))
             name = h->root.root.string;
           else
             {
               name = (bfd_elf_string_from_elf_section
                       (input_bfd, symtab_hdr->sh_link, sym->st_name));
-              if (name == NULL || *name == '\0')
+              if (name == ((void*)0) || *name == '\0')
                 name = bfd_section_name (input_bfd, sec);
             }
 
           switch (r)
             {
-             case bfd_reloc_overflow:
+             case 129:
                if (!((*info->callbacks->reloc_overflow)
-                     (info, (h ? &h->root : NULL), name, howto->name,
+                     (info, (h ? &h->root : ((void*)0)), name, howto->name,
                       (bfd_vma) 0, input_bfd, input_section,
                       rel->r_offset)))
                  return FALSE;
                break;
 
-             case bfd_reloc_undefined:
+             case 128:
                if (!((*info->callbacks->undefined_symbol)
                      (info, name, input_bfd, input_section,
                       rel->r_offset, TRUE)))
                  return FALSE;
                break;
 
-             case bfd_reloc_outofrange:
+             case 130:
                msg = _("internal error: out of range error");
                goto common_error;
 
-             case bfd_reloc_notsupported:
+             case 131:
                msg = _("internal error: unsupported relocation error");
                goto common_error;
 
-             case bfd_reloc_dangerous:
+             case 132:
                msg = _("internal error: dangerous error");
                goto common_error;
 
              default:
                msg = _("internal error: unknown error");
-               /* Fall through.  */
+
 
              common_error:
                if (!((*info->callbacks->warning)

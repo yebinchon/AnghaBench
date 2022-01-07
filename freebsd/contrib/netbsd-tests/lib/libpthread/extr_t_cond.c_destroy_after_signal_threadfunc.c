@@ -1,36 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  PTHREAD_REQUIRE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cond ; 
- int /*<<< orphan*/  mutex ; 
- int /*<<< orphan*/  pthread_cond_broadcast (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_cond_wait (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
- int share ; 
+ int PTHREAD_REQUIRE (int ) ;
+ int cond ;
+ int mutex ;
+ int pthread_cond_broadcast (int *) ;
+ int pthread_cond_wait (int *,int *) ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
+ int share ;
 
 __attribute__((used)) static void *
 destroy_after_signal_threadfunc(void *arg)
 {
-	PTHREAD_REQUIRE(pthread_mutex_lock(&mutex));
+ PTHREAD_REQUIRE(pthread_mutex_lock(&mutex));
 
-	share = 1;
-	PTHREAD_REQUIRE(pthread_cond_broadcast(&cond));
-	PTHREAD_REQUIRE(pthread_cond_wait(&cond, &mutex));
+ share = 1;
+ PTHREAD_REQUIRE(pthread_cond_broadcast(&cond));
+ PTHREAD_REQUIRE(pthread_cond_wait(&cond, &mutex));
 
-	PTHREAD_REQUIRE(pthread_mutex_unlock(&mutex));
+ PTHREAD_REQUIRE(pthread_mutex_unlock(&mutex));
 
-	return NULL;
+ return ((void*)0);
 }

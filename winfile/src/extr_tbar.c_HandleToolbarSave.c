@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_6__ ;
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  item ;
-typedef  int /*<<< orphan*/  hdr ;
-typedef  void* WORD ;
-typedef  int /*<<< orphan*/  VOID ;
+
+
+typedef struct TYPE_11__ TYPE_6__ ;
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int item ;
+typedef int hdr ;
+typedef void* WORD ;
+typedef int VOID ;
 struct TYPE_11__ {scalar_t__ iStartBmp; scalar_t__ Delta; } ;
-struct TYPE_8__ {scalar_t__ dwData; int /*<<< orphan*/  fsStyle; int /*<<< orphan*/  fsState; scalar_t__ idCommand; scalar_t__ iBitmap; } ;
+struct TYPE_8__ {scalar_t__ dwData; int fsStyle; int fsState; scalar_t__ idCommand; scalar_t__ iBitmap; } ;
 struct TYPE_10__ {int iItem; int cButtons; scalar_t__* pCurrent; TYPE_1__ tbButton; scalar_t__ cbData; scalar_t__* pData; } ;
-struct TYPE_9__ {int cButtons; void* iExtP1; int /*<<< orphan*/  fsStyle; int /*<<< orphan*/  fsState; void* idCommand; void* iBitmap; int /*<<< orphan*/  version; int /*<<< orphan*/  magic; } ;
-typedef  TYPE_2__ TBSAVEITEM ;
-typedef  TYPE_2__ TBSAVEHDR ;
-typedef  TYPE_4__* LPNMTBSAVE ;
-typedef  size_t INT ;
-typedef  scalar_t__ DWORD ;
-typedef  int /*<<< orphan*/  BYTE ;
+struct TYPE_9__ {int cButtons; void* iExtP1; int fsStyle; int fsState; void* idCommand; void* iBitmap; int version; int magic; } ;
+typedef TYPE_2__ TBSAVEITEM ;
+typedef TYPE_2__ TBSAVEHDR ;
+typedef TYPE_4__* LPNMTBSAVE ;
+typedef size_t INT ;
+typedef scalar_t__ DWORD ;
+typedef int BYTE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LPTR ; 
- scalar_t__* LocalAlloc (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  TBHDR_MAGIC ; 
- int /*<<< orphan*/  TBHDR_VERSION ; 
- TYPE_6__* extensions ; 
- int /*<<< orphan*/  memcpy (scalar_t__*,TYPE_2__*,int) ; 
+
+ int LPTR ;
+ scalar_t__* LocalAlloc (int ,scalar_t__) ;
+ int TBHDR_MAGIC ;
+ int TBHDR_VERSION ;
+ TYPE_6__* extensions ;
+ int memcpy (scalar_t__*,TYPE_2__*,int) ;
 
 VOID
 HandleToolbarSave(LPNMTBSAVE lpnmtSave)
@@ -45,7 +45,7 @@ HandleToolbarSave(LPNMTBSAVE lpnmtSave)
         lpnmtSave->cbData = lpnmtSave->cbData + sizeof(TBSAVEHDR) + sizeof(TBSAVEITEM) * lpnmtSave->cButtons;
         lpnmtSave->pCurrent = lpnmtSave->pData = LocalAlloc(LPTR, lpnmtSave->cbData);
 
-        // save global values: magic number, version and cButtons
+
         TBSAVEHDR hdr;
         hdr.magic = TBHDR_MAGIC;
         hdr.version = TBHDR_VERSION;
@@ -59,7 +59,7 @@ HandleToolbarSave(LPNMTBSAVE lpnmtSave)
         DWORD baseId = 0;
         DWORD baseIbm = 0;
 
-        // for extension buttons, remove bias for both idCommand and iBitmap
+
         if (lpnmtSave->tbButton.dwData != 0)
         {
             INT iExt = lpnmtSave->tbButton.dwData - 1;

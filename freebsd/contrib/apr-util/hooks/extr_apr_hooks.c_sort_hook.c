@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_3__ ;
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  apr_pool_t ;
+
+
+typedef struct TYPE_16__ TYPE_3__ ;
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
+typedef int apr_pool_t ;
 struct TYPE_14__ {int nelts; scalar_t__ elts; } ;
-typedef  TYPE_1__ apr_array_header_t ;
-struct TYPE_16__ {int /*<<< orphan*/  pData; struct TYPE_16__* pNext; } ;
+typedef TYPE_1__ apr_array_header_t ;
+struct TYPE_16__ {int pData; struct TYPE_16__* pNext; } ;
 struct TYPE_15__ {char const* szName; } ;
-typedef  TYPE_2__ TSortData ;
-typedef  TYPE_3__ TSort ;
+typedef TYPE_2__ TSortData ;
+typedef TYPE_3__ TSort ;
 
-/* Variables and functions */
- TYPE_1__* apr_array_make (int /*<<< orphan*/ ,int,int) ; 
- TYPE_2__* apr_array_push (TYPE_1__*) ; 
- scalar_t__ apr_hook_debug_enabled ; 
- int /*<<< orphan*/  apr_hook_global_pool ; 
- int /*<<< orphan*/  apr_pool_create (int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  apr_pool_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  fputc (char,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (TYPE_2__*,int /*<<< orphan*/ ,int) ; 
- TYPE_3__* prepare (int /*<<< orphan*/ *,TYPE_2__*,int) ; 
- int /*<<< orphan*/  printf (char*,char const*) ; 
- int /*<<< orphan*/  stdout ; 
- TYPE_3__* tsort (TYPE_3__*,int) ; 
+
+ TYPE_1__* apr_array_make (int ,int,int) ;
+ TYPE_2__* apr_array_push (TYPE_1__*) ;
+ scalar_t__ apr_hook_debug_enabled ;
+ int apr_hook_global_pool ;
+ int apr_pool_create (int **,int ) ;
+ int apr_pool_destroy (int *) ;
+ int assert (int) ;
+ int fputc (char,int ) ;
+ int memcpy (TYPE_2__*,int ,int) ;
+ TYPE_3__* prepare (int *,TYPE_2__*,int) ;
+ int printf (char*,char const*) ;
+ int stdout ;
+ TYPE_3__* tsort (TYPE_3__*,int) ;
 
 __attribute__((used)) static apr_array_header_t *sort_hook(apr_array_header_t *pHooks,
                                      const char *szName)
@@ -61,7 +61,7 @@ __attribute__((used)) static apr_array_header_t *sort_hook(apr_array_header_t *p
     if(apr_hook_debug_enabled)
         fputc('\n',stdout);
 
-    /* destroy the pool - the sorted hooks were already copied */
+
     apr_pool_destroy(p);
 
     return pNew;

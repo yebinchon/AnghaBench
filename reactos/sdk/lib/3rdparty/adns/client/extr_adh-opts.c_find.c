@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct optioninfo {int dummy; } ;
-typedef  int /*<<< orphan*/  comparer_type ;
+typedef int comparer_type ;
 
-/* Variables and functions */
- scalar_t__ ads ; 
- struct optioninfo* find1 (char const**,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  global_options ; 
- int /*<<< orphan*/  perquery_options ; 
- int /*<<< orphan*/  usageerr (char*,char const*,char const*) ; 
+
+ scalar_t__ ads ;
+ struct optioninfo* find1 (char const**,int ,int *) ;
+ int global_options ;
+ int perquery_options ;
+ int usageerr (char*,char const*,char const*) ;
 
 __attribute__((used)) static const struct optioninfo *find(const char **optp,
-				     const char *prefix,
-				     comparer_type *comparer) {
+         const char *prefix,
+         comparer_type *comparer) {
   const struct optioninfo *oip;
   const char *opt;
 

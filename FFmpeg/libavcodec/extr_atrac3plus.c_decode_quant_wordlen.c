@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_6__ {int num_quant_units; int used_quant_units; TYPE_1__* channels; } ;
 struct TYPE_5__ {scalar_t__* qu_wordlen; } ;
-typedef  int /*<<< orphan*/  GetBitContext ;
-typedef  TYPE_2__ Atrac3pChanUnitCtx ;
-typedef  int /*<<< orphan*/  AVCodecContext ;
+typedef int GetBitContext ;
+typedef TYPE_2__ Atrac3pChanUnitCtx ;
+typedef int AVCodecContext ;
 
-/* Variables and functions */
- int decode_channel_wordlen (int /*<<< orphan*/ *,TYPE_2__*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memset (scalar_t__*,int /*<<< orphan*/ ,int) ; 
+
+ int decode_channel_wordlen (int *,TYPE_2__*,int,int *) ;
+ int memset (scalar_t__*,int ,int) ;
 
 __attribute__((used)) static int decode_quant_wordlen(GetBitContext *gb, Atrac3pChanUnitCtx *ctx,
                                 int num_channels, AVCodecContext *avctx)
@@ -35,8 +35,8 @@ __attribute__((used)) static int decode_quant_wordlen(GetBitContext *gb, Atrac3p
             return ret;
     }
 
-    /* scan for last non-zero coeff in both channels and
-     * set number of quant units having coded spectrum */
+
+
     for (i = ctx->num_quant_units - 1; i >= 0; i--)
         if (ctx->channels[0].qu_wordlen[i] ||
             (num_channels == 2 && ctx->channels[1].qu_wordlen[i]))

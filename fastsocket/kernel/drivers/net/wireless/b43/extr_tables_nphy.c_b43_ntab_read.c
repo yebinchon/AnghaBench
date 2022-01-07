@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u32 ;
+
+
+
+
+typedef int u32 ;
 struct b43_wldev {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  B43_NPHY_TABLE_ADDR ; 
- int /*<<< orphan*/  B43_NPHY_TABLE_DATAHI ; 
- int /*<<< orphan*/  B43_NPHY_TABLE_DATALO ; 
-#define  B43_NTAB_16BIT 130 
-#define  B43_NTAB_32BIT 129 
-#define  B43_NTAB_8BIT 128 
- int B43_NTAB_TYPEMASK ; 
- int /*<<< orphan*/  B43_WARN_ON (int) ; 
- int b43_phy_read (struct b43_wldev*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  b43_phy_write (struct b43_wldev*,int /*<<< orphan*/ ,int) ; 
+
+ int B43_NPHY_TABLE_ADDR ;
+ int B43_NPHY_TABLE_DATAHI ;
+ int B43_NPHY_TABLE_DATALO ;
+
+
+
+ int B43_NTAB_TYPEMASK ;
+ int B43_WARN_ON (int) ;
+ int b43_phy_read (struct b43_wldev*,int ) ;
+ int b43_phy_write (struct b43_wldev*,int ,int) ;
 
 u32 b43_ntab_read(struct b43_wldev *dev, u32 offset)
 {
-	u32 type, value;
+ u32 type, value;
 
-	type = offset & B43_NTAB_TYPEMASK;
-	offset &= ~B43_NTAB_TYPEMASK;
-	B43_WARN_ON(offset > 0xFFFF);
+ type = offset & B43_NTAB_TYPEMASK;
+ offset &= ~B43_NTAB_TYPEMASK;
+ B43_WARN_ON(offset > 0xFFFF);
 
-	switch (type) {
-	case B43_NTAB_8BIT:
-		b43_phy_write(dev, B43_NPHY_TABLE_ADDR, offset);
-		value = b43_phy_read(dev, B43_NPHY_TABLE_DATALO) & 0xFF;
-		break;
-	case B43_NTAB_16BIT:
-		b43_phy_write(dev, B43_NPHY_TABLE_ADDR, offset);
-		value = b43_phy_read(dev, B43_NPHY_TABLE_DATALO);
-		break;
-	case B43_NTAB_32BIT:
-		b43_phy_write(dev, B43_NPHY_TABLE_ADDR, offset);
-		value = b43_phy_read(dev, B43_NPHY_TABLE_DATALO);
-		value |= b43_phy_read(dev, B43_NPHY_TABLE_DATAHI) << 16;
-		break;
-	default:
-		B43_WARN_ON(1);
-		value = 0;
-	}
+ switch (type) {
+ case 128:
+  b43_phy_write(dev, B43_NPHY_TABLE_ADDR, offset);
+  value = b43_phy_read(dev, B43_NPHY_TABLE_DATALO) & 0xFF;
+  break;
+ case 130:
+  b43_phy_write(dev, B43_NPHY_TABLE_ADDR, offset);
+  value = b43_phy_read(dev, B43_NPHY_TABLE_DATALO);
+  break;
+ case 129:
+  b43_phy_write(dev, B43_NPHY_TABLE_ADDR, offset);
+  value = b43_phy_read(dev, B43_NPHY_TABLE_DATALO);
+  value |= b43_phy_read(dev, B43_NPHY_TABLE_DATAHI) << 16;
+  break;
+ default:
+  B43_WARN_ON(1);
+  value = 0;
+ }
 
-	return value;
+ return value;
 }

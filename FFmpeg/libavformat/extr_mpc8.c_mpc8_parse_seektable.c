@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int int64_t ;
-struct TYPE_6__ {scalar_t__ nb_streams; int /*<<< orphan*/ * streams; int /*<<< orphan*/  pb; TYPE_1__* priv_data; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int int64_t ;
+struct TYPE_6__ {scalar_t__ nb_streams; int * streams; int pb; TYPE_1__* priv_data; } ;
 struct TYPE_5__ {int samples; int header_pos; } ;
-typedef  TYPE_1__ MPCContext ;
-typedef  int /*<<< orphan*/  GetBitContext ;
-typedef  TYPE_2__ AVFormatContext ;
+typedef TYPE_1__ MPCContext ;
+typedef int GetBitContext ;
+typedef TYPE_2__ AVFormatContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AVINDEX_KEYFRAME ; 
- scalar_t__ AV_INPUT_BUFFER_PADDING_SIZE ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int INT_MAX ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int TAG_SEEKTABLE ; 
- int UINT_MAX ; 
- int /*<<< orphan*/  av_add_index_entry (int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  av_log (TYPE_2__*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/ * av_malloc (scalar_t__) ; 
- int avio_read (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  avio_seek (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int gb_get_v (int /*<<< orphan*/ *) ; 
- int get_bits (int /*<<< orphan*/ *,int) ; 
- int get_unary (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  init_get_bits (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  mpc8_get_chunk_header (int /*<<< orphan*/ ,int*,int*) ; 
+
+ int AVINDEX_KEYFRAME ;
+ scalar_t__ AV_INPUT_BUFFER_PADDING_SIZE ;
+ int AV_LOG_ERROR ;
+ int INT_MAX ;
+ int SEEK_SET ;
+ int TAG_SEEKTABLE ;
+ int UINT_MAX ;
+ int av_add_index_entry (int ,int,int,int ,int ,int ) ;
+ int av_free (int *) ;
+ int av_log (TYPE_2__*,int ,char*) ;
+ int * av_malloc (scalar_t__) ;
+ int avio_read (int ,int *,int) ;
+ int avio_seek (int ,int,int ) ;
+ int gb_get_v (int *) ;
+ int get_bits (int *,int) ;
+ int get_unary (int *,int,int) ;
+ int init_get_bits (int *,int *,int) ;
+ int memset (int *,int ,scalar_t__) ;
+ int mpc8_get_chunk_header (int ,int*,int*) ;
 
 __attribute__((used)) static void mpc8_parse_seektable(AVFormatContext *s, int64_t off)
 {

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  robj ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int robj ;
 struct TYPE_5__ {int resp; } ;
-typedef  TYPE_1__ client ;
-typedef  int /*<<< orphan*/  buf ;
+typedef TYPE_1__ client ;
+typedef int buf ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LD_STR_HUMAN ; 
- int MAX_LONG_DOUBLE_CHARS ; 
- int /*<<< orphan*/  addReplyBulk (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  addReplyProto (TYPE_1__*,char*,int) ; 
- int /*<<< orphan*/ * createStringObjectFromLongDouble (long double,int) ; 
- int /*<<< orphan*/  decrRefCount (int /*<<< orphan*/ *) ; 
- int ld2string (char*,int,long double,int /*<<< orphan*/ ) ; 
+
+ int LD_STR_HUMAN ;
+ int MAX_LONG_DOUBLE_CHARS ;
+ int addReplyBulk (TYPE_1__*,int *) ;
+ int addReplyProto (TYPE_1__*,char*,int) ;
+ int * createStringObjectFromLongDouble (long double,int) ;
+ int decrRefCount (int *) ;
+ int ld2string (char*,int,long double,int ) ;
 
 void addReplyHumanLongDouble(client *c, long double d) {
     if (c->resp == 2) {

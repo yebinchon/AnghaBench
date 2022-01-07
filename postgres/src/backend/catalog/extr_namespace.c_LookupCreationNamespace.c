@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Oid ;
-typedef  scalar_t__ AclResult ;
 
-/* Variables and functions */
- scalar_t__ ACLCHECK_OK ; 
- int /*<<< orphan*/  ACL_CREATE ; 
- int /*<<< orphan*/  AccessTempTableNamespace (int) ; 
- int /*<<< orphan*/  GetUserId () ; 
- int /*<<< orphan*/  OBJECT_SCHEMA ; 
- int /*<<< orphan*/  aclcheck_error (scalar_t__,int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  get_namespace_oid (char const*,int) ; 
- int /*<<< orphan*/  myTempNamespace ; 
- scalar_t__ pg_namespace_aclcheck (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ strcmp (char const*,char*) ; 
+
+
+
+typedef int Oid ;
+typedef scalar_t__ AclResult ;
+
+
+ scalar_t__ ACLCHECK_OK ;
+ int ACL_CREATE ;
+ int AccessTempTableNamespace (int) ;
+ int GetUserId () ;
+ int OBJECT_SCHEMA ;
+ int aclcheck_error (scalar_t__,int ,char const*) ;
+ int get_namespace_oid (char const*,int) ;
+ int myTempNamespace ;
+ scalar_t__ pg_namespace_aclcheck (int ,int ,int ) ;
+ scalar_t__ strcmp (char const*,char*) ;
 
 Oid
 LookupCreationNamespace(const char *nspname)
 {
-	Oid			namespaceId;
-	AclResult	aclresult;
+ Oid namespaceId;
+ AclResult aclresult;
 
-	/* check for pg_temp alias */
-	if (strcmp(nspname, "pg_temp") == 0)
-	{
-		/* Initialize temp namespace */
-		AccessTempTableNamespace(false);
-		return myTempNamespace;
-	}
 
-	namespaceId = get_namespace_oid(nspname, false);
+ if (strcmp(nspname, "pg_temp") == 0)
+ {
 
-	aclresult = pg_namespace_aclcheck(namespaceId, GetUserId(), ACL_CREATE);
-	if (aclresult != ACLCHECK_OK)
-		aclcheck_error(aclresult, OBJECT_SCHEMA,
-					   nspname);
+  AccessTempTableNamespace(0);
+  return myTempNamespace;
+ }
 
-	return namespaceId;
+ namespaceId = get_namespace_oid(nspname, 0);
+
+ aclresult = pg_namespace_aclcheck(namespaceId, GetUserId(), ACL_CREATE);
+ if (aclresult != ACLCHECK_OK)
+  aclcheck_error(aclresult, OBJECT_SCHEMA,
+        nspname);
+
+ return namespaceId;
 }

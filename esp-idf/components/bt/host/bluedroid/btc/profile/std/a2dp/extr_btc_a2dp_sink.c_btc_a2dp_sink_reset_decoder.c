@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  codec_info; } ;
-typedef  TYPE_1__ tBTC_MEDIA_SINK_CFG_UPDATE ;
-typedef  int /*<<< orphan*/  UINT8 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  APPL_TRACE_DEBUG (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  APPL_TRACE_ERROR (char*) ; 
- int /*<<< orphan*/  APPL_TRACE_EVENT (char*) ; 
- int /*<<< orphan*/  AVDT_CODEC_SIZE ; 
- int /*<<< orphan*/  BTC_MEDIA_AUDIO_SINK_CFG_UPDATE ; 
- int /*<<< orphan*/  btc_a2dp_sink_ctrl (int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- TYPE_1__* osi_malloc (int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int codec_info; } ;
+typedef TYPE_1__ tBTC_MEDIA_SINK_CFG_UPDATE ;
+typedef int UINT8 ;
+
+
+ int APPL_TRACE_DEBUG (char*,int ,int ,int ,int ,int ,int ) ;
+ int APPL_TRACE_ERROR (char*) ;
+ int APPL_TRACE_EVENT (char*) ;
+ int AVDT_CODEC_SIZE ;
+ int BTC_MEDIA_AUDIO_SINK_CFG_UPDATE ;
+ int btc_a2dp_sink_ctrl (int ,TYPE_1__*) ;
+ int memcpy (int ,int *,int ) ;
+ TYPE_1__* osi_malloc (int) ;
 
 void btc_a2dp_sink_reset_decoder(UINT8 *p_av)
 {
@@ -33,7 +33,7 @@ void btc_a2dp_sink_reset_decoder(UINT8 *p_av)
                      p_av[4], p_av[5], p_av[6]);
 
     tBTC_MEDIA_SINK_CFG_UPDATE *p_buf;
-    if (NULL == (p_buf = osi_malloc(sizeof(tBTC_MEDIA_SINK_CFG_UPDATE)))) {
+    if (((void*)0) == (p_buf = osi_malloc(sizeof(tBTC_MEDIA_SINK_CFG_UPDATE)))) {
         APPL_TRACE_ERROR("btc reset decoder No Buffer ");
         return;
     }

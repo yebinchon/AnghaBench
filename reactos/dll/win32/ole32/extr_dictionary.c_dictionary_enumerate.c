@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct dictionary_entry {int /*<<< orphan*/  value; int /*<<< orphan*/  key; struct dictionary_entry* next; } ;
-struct dictionary {int /*<<< orphan*/  extra; struct dictionary_entry* head; } ;
-typedef  int /*<<< orphan*/  (* enumeratefunc ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*) ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TRACE (char*,struct dictionary*,int /*<<< orphan*/  (*) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*),void*) ; 
+
+
+
+struct dictionary_entry {int value; int key; struct dictionary_entry* next; } ;
+struct dictionary {int extra; struct dictionary_entry* head; } ;
+typedef int (* enumeratefunc ) (int ,int ,int ,void*) ;
+
+
+ int TRACE (char*,struct dictionary*,int (*) (int ,int ,int ,void*),void*) ;
 
 void dictionary_enumerate(struct dictionary *d, enumeratefunc e, void *closure)
 {

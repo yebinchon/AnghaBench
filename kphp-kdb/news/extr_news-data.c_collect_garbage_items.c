@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_8__ {int tot_items; } ;
-typedef  TYPE_1__ user_t ;
+typedef TYPE_1__ user_t ;
 struct TYPE_9__ {int total_items; } ;
-typedef  TYPE_2__ recommend_user_t ;
+typedef TYPE_2__ recommend_user_t ;
 struct TYPE_10__ {int total_items; } ;
-typedef  TYPE_3__ notify_user_t ;
+typedef TYPE_3__ notify_user_t ;
 
-/* Variables and functions */
- int MAX_USERS ; 
- scalar_t__ NOTIFY_MODE ; 
- int RECOMMEND_MODE ; 
- scalar_t__ UG_MODE ; 
- TYPE_1__** User ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  delete_user_by_idx (int) ; 
- int /*<<< orphan*/  garbage_objects_collected ; 
- int garbage_uid ; 
- int /*<<< orphan*/  garbage_users_collected ; 
- int items_kept ; 
- int /*<<< orphan*/  remove_old_items (TYPE_1__*) ; 
- int /*<<< orphan*/  remove_old_notify_items (TYPE_3__*) ; 
- int /*<<< orphan*/  remove_old_recommend_items (TYPE_2__*) ; 
+
+ int MAX_USERS ;
+ scalar_t__ NOTIFY_MODE ;
+ int RECOMMEND_MODE ;
+ scalar_t__ UG_MODE ;
+ TYPE_1__** User ;
+ int assert (int) ;
+ int delete_user_by_idx (int) ;
+ int garbage_objects_collected ;
+ int garbage_uid ;
+ int garbage_users_collected ;
+ int items_kept ;
+ int remove_old_items (TYPE_1__*) ;
+ int remove_old_notify_items (TYPE_3__*) ;
+ int remove_old_recommend_items (TYPE_2__*) ;
 
 __attribute__((used)) static inline int collect_garbage_items (int steps) {
   assert (UG_MODE || NOTIFY_MODE || RECOMMEND_MODE);

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  err; int /*<<< orphan*/  func; } ;
-struct TYPE_6__ {int /*<<< orphan*/  param; int /*<<< orphan*/  index; TYPE_1__* reference; } ;
-struct TYPE_5__ {int /*<<< orphan*/  (* SetParameter ) (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;} ;
-typedef  TYPE_1__ OMX_COMPONENTTYPE ;
-typedef  TYPE_2__ IL_SET_EXECUTE_T ;
-typedef  TYPE_3__ IL_RESPONSE_HEADER_T ;
-typedef  int /*<<< orphan*/  ILCS_COMMON_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IL_SET_PARAMETER ; 
- int /*<<< orphan*/  stub1 (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int err; int func; } ;
+struct TYPE_6__ {int param; int index; TYPE_1__* reference; } ;
+struct TYPE_5__ {int (* SetParameter ) (TYPE_1__*,int ,int ) ;} ;
+typedef TYPE_1__ OMX_COMPONENTTYPE ;
+typedef TYPE_2__ IL_SET_EXECUTE_T ;
+typedef TYPE_3__ IL_RESPONSE_HEADER_T ;
+typedef int ILCS_COMMON_T ;
+
+
+ int IL_SET_PARAMETER ;
+ int stub1 (TYPE_1__*,int ,int ) ;
 
 void vcil_in_set_parameter(ILCS_COMMON_T *st, void *call, int clen, void *resp, int *rlen)
 {
    IL_SET_EXECUTE_T *exe = call;
    IL_RESPONSE_HEADER_T *ret = resp;
-   OMX_COMPONENTTYPE *pComp  = exe->reference;
+   OMX_COMPONENTTYPE *pComp = exe->reference;
 
    *rlen = sizeof(IL_RESPONSE_HEADER_T);
    ret->func = IL_SET_PARAMETER;

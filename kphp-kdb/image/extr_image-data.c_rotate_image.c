@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct forth_stack {int top; } ;
-typedef  int /*<<< orphan*/  Image ;
+typedef int Image ;
 
-/* Variables and functions */
- void* FORTH_FAIL ; 
- int /*<<< orphan*/  NEXT ; 
- void* failf (struct forth_stack*,char*) ; 
- int /*<<< orphan*/  free_stack (struct forth_stack*,int,int) ; 
- int /*<<< orphan*/ * gm_rotate_image (struct forth_stack*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  pop_image (struct forth_stack*,int /*<<< orphan*/ **,char*) ; 
- int /*<<< orphan*/  pop_int (struct forth_stack*,int*,char*) ; 
- int /*<<< orphan*/  push_image (struct forth_stack*,int /*<<< orphan*/ *) ; 
+
+ void* FORTH_FAIL ;
+ int NEXT ;
+ void* failf (struct forth_stack*,char*) ;
+ int free_stack (struct forth_stack*,int,int) ;
+ int * gm_rotate_image (struct forth_stack*,int *,int) ;
+ int pop_image (struct forth_stack*,int **,char*) ;
+ int pop_int (struct forth_stack*,int*,char*) ;
+ int push_image (struct forth_stack*,int *) ;
 
 __attribute__((used)) static void *rotate_image (void **IP, struct forth_stack *st) {
   Image *image;
@@ -43,7 +43,7 @@ __attribute__((used)) static void *rotate_image (void **IP, struct forth_stack *
     angle += 4;
   }
   Image *r = gm_rotate_image (st, image, 90 * angle);
-  if (r == NULL) {
+  if (r == ((void*)0)) {
     st->top = old_stack_top;
     return failf (st, "rotate_image: gm_rotate_image fail");
   }

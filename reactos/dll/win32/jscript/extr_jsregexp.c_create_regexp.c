@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  tmp_heap; } ;
-typedef  TYPE_1__ script_ctx_t ;
-typedef  int /*<<< orphan*/  jsstr_t ;
-typedef  int /*<<< orphan*/  jsdisp_t ;
-typedef  int /*<<< orphan*/  WCHAR ;
-struct TYPE_8__ {int /*<<< orphan*/  dispex; int /*<<< orphan*/  jsregexp; int /*<<< orphan*/ * str; int /*<<< orphan*/  last_index_val; } ;
-typedef  TYPE_2__ RegExpInstance ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_FAIL ; 
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WARN (char*) ; 
- int /*<<< orphan*/  alloc_regexp (TYPE_1__*,int /*<<< orphan*/ *,TYPE_2__**) ; 
- int /*<<< orphan*/  debugstr_wn (int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jsdisp_release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * jsstr_addref (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * jsstr_flatten (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jsstr_length (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jsval_number (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  regexp_new (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int tmp_heap; } ;
+typedef TYPE_1__ script_ctx_t ;
+typedef int jsstr_t ;
+typedef int jsdisp_t ;
+typedef int WCHAR ;
+struct TYPE_8__ {int dispex; int jsregexp; int * str; int last_index_val; } ;
+typedef TYPE_2__ RegExpInstance ;
+typedef int HRESULT ;
+typedef int DWORD ;
+
+
+ int E_FAIL ;
+ int E_OUTOFMEMORY ;
+ scalar_t__ FAILED (int ) ;
+ int FALSE ;
+ int S_OK ;
+ int TRACE (char*,int ,int ) ;
+ int WARN (char*) ;
+ int alloc_regexp (TYPE_1__*,int *,TYPE_2__**) ;
+ int debugstr_wn (int const*,int ) ;
+ int jsdisp_release (int *) ;
+ int * jsstr_addref (int *) ;
+ int * jsstr_flatten (int *) ;
+ int jsstr_length (int *) ;
+ int jsval_number (int ) ;
+ int regexp_new (TYPE_1__*,int *,int const*,int ,int ,int ) ;
 
 HRESULT create_regexp(script_ctx_t *ctx, jsstr_t *src, DWORD flags, jsdisp_t **ret)
 {
@@ -51,7 +51,7 @@ HRESULT create_regexp(script_ctx_t *ctx, jsstr_t *src, DWORD flags, jsdisp_t **r
 
     TRACE("%s %x\n", debugstr_wn(str, jsstr_length(src)), flags);
 
-    hres = alloc_regexp(ctx, NULL, &regexp);
+    hres = alloc_regexp(ctx, ((void*)0), &regexp);
     if(FAILED(hres))
         return hres;
 

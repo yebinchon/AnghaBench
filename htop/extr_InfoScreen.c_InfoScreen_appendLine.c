@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  display; int /*<<< orphan*/  inc; int /*<<< orphan*/  lines; } ;
-typedef  int /*<<< orphan*/  Object ;
-typedef  int /*<<< orphan*/  ListItem ;
-typedef  TYPE_1__ InfoScreen ;
 
-/* Variables and functions */
- char* IncSet_filter (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ListItem_append (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  Panel_add (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * Panel_get (int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__ Panel_size (int /*<<< orphan*/ ) ; 
- scalar_t__ String_contains_i (char const*,char const*) ; 
- scalar_t__ Vector_get (int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__ Vector_size (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int display; int inc; int lines; } ;
+typedef int Object ;
+typedef int ListItem ;
+typedef TYPE_1__ InfoScreen ;
+
+
+ char* IncSet_filter (int ) ;
+ int ListItem_append (int *,char const*) ;
+ int Panel_add (int ,int *) ;
+ int * Panel_get (int ,scalar_t__) ;
+ scalar_t__ Panel_size (int ) ;
+ scalar_t__ String_contains_i (char const*,char const*) ;
+ scalar_t__ Vector_get (int ,scalar_t__) ;
+ scalar_t__ Vector_size (int ) ;
 
 void InfoScreen_appendLine(InfoScreen* this, const char* line) {
    ListItem* last = (ListItem*)Vector_get(this->lines, Vector_size(this->lines)-1);

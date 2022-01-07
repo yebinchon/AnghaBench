@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ pid_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FILENAME_MAX ; 
- int /*<<< orphan*/  O_RDONLY ; 
- int /*<<< orphan*/  error (char*,char*) ; 
- int open (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  snprintfz (char*,int /*<<< orphan*/ ,char*,char const*,int,char const*) ; 
+
+
+
+typedef scalar_t__ pid_t ;
+
+
+ int FILENAME_MAX ;
+ int O_RDONLY ;
+ int error (char*,char*) ;
+ int open (char*,int ) ;
+ int snprintfz (char*,int ,char*,char const*,int,char const*) ;
 
 int proc_pid_fd(const char *prefix, const char *ns, pid_t pid) {
     if(!prefix) prefix = "";

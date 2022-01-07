@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  enum AVFrameSideDataType { ____Placeholder_AVFrameSideDataType } AVFrameSideDataType ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef enum AVFrameSideDataType { ____Placeholder_AVFrameSideDataType } AVFrameSideDataType ;
 struct TYPE_6__ {int nb_side_data; TYPE_1__** side_data; } ;
 struct TYPE_5__ {int type; } ;
-typedef  TYPE_1__ AVFrameSideData ;
-typedef  TYPE_2__ AVFrame ;
+typedef TYPE_1__ AVFrameSideData ;
+typedef TYPE_2__ AVFrame ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free_side_data (TYPE_1__**) ; 
+
+ int free_side_data (TYPE_1__**) ;
 
 void av_frame_remove_side_data(AVFrame *frame, enum AVFrameSideDataType type)
 {

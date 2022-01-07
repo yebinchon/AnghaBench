@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {int depth; int old_depth; int icon_size; int /*<<< orphan*/  textures_arrow_alpha; int /*<<< orphan*/  x; int /*<<< orphan*/  selection_ptr_old; int /*<<< orphan*/  selection_buf_old; } ;
-typedef  TYPE_1__ stripes_handle_t ;
-struct TYPE_10__ {int target_value; int tag; int /*<<< orphan*/ * subject; int /*<<< orphan*/ * cb; int /*<<< orphan*/  easing_enum; int /*<<< orphan*/  duration; } ;
-typedef  TYPE_2__ menu_animation_ctx_entry_t ;
-typedef  int /*<<< orphan*/  file_list_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EASING_OUT_QUAD ; 
- int /*<<< orphan*/  MENU_LIST_PLAIN ; 
- int /*<<< orphan*/  STRIPES_DELAY ; 
- int /*<<< orphan*/  menu_animation_push (TYPE_2__*) ; 
- int /*<<< orphan*/ * menu_entries_get_selection_buf_ptr (int /*<<< orphan*/ ) ; 
- size_t menu_navigation_get_selection () ; 
- scalar_t__ stripes_list_get_size (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stripes_list_open_horizontal_list (TYPE_1__*) ; 
- int /*<<< orphan*/  stripes_list_open_new (TYPE_1__*,int /*<<< orphan*/ *,int,size_t) ; 
- int /*<<< orphan*/  stripes_list_open_old (TYPE_1__*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_9__ {int depth; int old_depth; int icon_size; int textures_arrow_alpha; int x; int selection_ptr_old; int selection_buf_old; } ;
+typedef TYPE_1__ stripes_handle_t ;
+struct TYPE_10__ {int target_value; int tag; int * subject; int * cb; int easing_enum; int duration; } ;
+typedef TYPE_2__ menu_animation_ctx_entry_t ;
+typedef int file_list_t ;
+
+
+ int EASING_OUT_QUAD ;
+ int MENU_LIST_PLAIN ;
+ int STRIPES_DELAY ;
+ int menu_animation_push (TYPE_2__*) ;
+ int * menu_entries_get_selection_buf_ptr (int ) ;
+ size_t menu_navigation_get_selection () ;
+ scalar_t__ stripes_list_get_size (TYPE_1__*,int ) ;
+ int stripes_list_open_horizontal_list (TYPE_1__*) ;
+ int stripes_list_open_new (TYPE_1__*,int *,int,size_t) ;
+ int stripes_list_open_old (TYPE_1__*,int ,int,int ) ;
 
 __attribute__((used)) static void stripes_list_open(stripes_handle_t *stripes)
 {
    menu_animation_ctx_entry_t entry;
 
-   int                    dir = 0;
+   int dir = 0;
    file_list_t *selection_buf = menu_entries_get_selection_buf_ptr(0);
-   size_t selection           = menu_navigation_get_selection();
+   size_t selection = menu_navigation_get_selection();
 
    stripes->depth = (int)stripes_list_get_size(stripes, MENU_LIST_PLAIN);
 
@@ -52,13 +52,13 @@ __attribute__((used)) static void stripes_list_open(stripes_handle_t *stripes)
    stripes_list_open_new(stripes, selection_buf,
          dir, selection);
 
-   entry.duration     = STRIPES_DELAY;
+   entry.duration = STRIPES_DELAY;
    entry.target_value = stripes->icon_size * -(stripes->depth*2-2);
-   entry.subject      = &stripes->x;
-   entry.easing_enum  = EASING_OUT_QUAD;
-   /* TODO/FIXME - integer conversion resulted in change of sign */
-   entry.tag          = -1;
-   entry.cb           = NULL;
+   entry.subject = &stripes->x;
+   entry.easing_enum = EASING_OUT_QUAD;
+
+   entry.tag = -1;
+   entry.cb = ((void*)0);
 
    switch (stripes->depth)
    {
@@ -66,7 +66,7 @@ __attribute__((used)) static void stripes_list_open(stripes_handle_t *stripes)
          menu_animation_push(&entry);
 
          entry.target_value = 0;
-         entry.subject      = &stripes->textures_arrow_alpha;
+         entry.subject = &stripes->textures_arrow_alpha;
 
          menu_animation_push(&entry);
          break;
@@ -74,7 +74,7 @@ __attribute__((used)) static void stripes_list_open(stripes_handle_t *stripes)
          menu_animation_push(&entry);
 
          entry.target_value = 1;
-         entry.subject      = &stripes->textures_arrow_alpha;
+         entry.subject = &stripes->textures_arrow_alpha;
 
          menu_animation_push(&entry);
          break;

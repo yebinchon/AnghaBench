@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  GX_CopyDisp (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GX_DrawDone () ; 
- int /*<<< orphan*/  GX_FALSE ; 
- int /*<<< orphan*/  GX_Flush () ; 
- int /*<<< orphan*/  VIDEO_Flush () ; 
- int /*<<< orphan*/  VIDEO_SetNextFramebuffer (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  VIDEO_WaitVSync () ; 
- int /*<<< orphan*/  gx_input_UpdateMenu () ; 
- size_t whichfb ; 
- int /*<<< orphan*/ * xfb ; 
+ int GX_CopyDisp (int ,int ) ;
+ int GX_DrawDone () ;
+ int GX_FALSE ;
+ int GX_Flush () ;
+ int VIDEO_Flush () ;
+ int VIDEO_SetNextFramebuffer (int ) ;
+ int VIDEO_WaitVSync () ;
+ int gx_input_UpdateMenu () ;
+ size_t whichfb ;
+ int * xfb ;
 
 void gxSetScreen(void)
 {

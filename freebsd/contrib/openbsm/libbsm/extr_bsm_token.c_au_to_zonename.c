@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ u_int16_t ;
-typedef  int /*<<< orphan*/  u_char ;
-typedef  int /*<<< orphan*/  token_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ADD_STRING (int /*<<< orphan*/ *,char const*,scalar_t__) ; 
- int /*<<< orphan*/  ADD_U_CHAR (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ADD_U_INT16 (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  AUT_ZONENAME ; 
- int /*<<< orphan*/  GET_TOKEN_AREA (int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__) ; 
- scalar_t__ strlen (char const*) ; 
+
+
+
+typedef scalar_t__ u_int16_t ;
+typedef int u_char ;
+typedef int token_t ;
+
+
+ int ADD_STRING (int *,char const*,scalar_t__) ;
+ int ADD_U_CHAR (int *,int ) ;
+ int ADD_U_INT16 (int *,scalar_t__) ;
+ int AUT_ZONENAME ;
+ int GET_TOKEN_AREA (int *,int *,scalar_t__) ;
+ scalar_t__ strlen (char const*) ;
 
 token_t *
 au_to_zonename(const char *zonename)
 {
-	u_char *dptr = NULL;
-	u_int16_t textlen;
-	token_t *t;
+ u_char *dptr = ((void*)0);
+ u_int16_t textlen;
+ token_t *t;
 
-	textlen = strlen(zonename) + 1;
-	GET_TOKEN_AREA(t, dptr, sizeof(u_char) + sizeof(u_int16_t) + textlen);
-	if (t == NULL)
-		return (NULL);
+ textlen = strlen(zonename) + 1;
+ GET_TOKEN_AREA(t, dptr, sizeof(u_char) + sizeof(u_int16_t) + textlen);
+ if (t == ((void*)0))
+  return (((void*)0));
 
-	ADD_U_CHAR(dptr, AUT_ZONENAME);
-	ADD_U_INT16(dptr, textlen);
-	ADD_STRING(dptr, zonename, textlen);
-	return (t);
+ ADD_U_CHAR(dptr, AUT_ZONENAME);
+ ADD_U_INT16(dptr, textlen);
+ ADD_STRING(dptr, zonename, textlen);
+ return (t);
 }

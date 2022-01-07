@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_short ;
-struct TYPE_6__ {int /*<<< orphan*/  unknownproto; } ;
-struct TYPE_5__ {int /*<<< orphan*/  ifInDiscards; } ;
+
+
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int u_short ;
+struct TYPE_6__ {int unknownproto; } ;
+struct TYPE_5__ {int ifInDiscards; } ;
 struct TYPE_7__ {TYPE_2__ stats; TYPE_1__ lqm; } ;
 struct physical {TYPE_3__ hdlc; } ;
-struct mbuf {int /*<<< orphan*/  m_len; } ;
-struct link {int /*<<< orphan*/  lcp; } ;
+struct mbuf {int m_len; } ;
+struct link {int lcp; } ;
 struct bundle {int dummy; } ;
-struct TYPE_8__ {struct mbuf* (* fn ) (struct bundle*,struct link*,struct mbuf*) ;int /*<<< orphan*/  proto; } ;
+struct TYPE_8__ {struct mbuf* (* fn ) (struct bundle*,struct link*,struct mbuf*) ;int proto; } ;
 
-/* Variables and functions */
- unsigned int DSIZE ; 
- int /*<<< orphan*/  LogPHASE ; 
- int /*<<< orphan*/  MBUF_CTOP (struct mbuf*) ; 
- TYPE_4__* despatcher ; 
- int /*<<< orphan*/  hdlc_Protocol2Nam (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lcp_SendProtoRej (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- struct physical* link2physical (struct link*) ; 
- int /*<<< orphan*/  log_Printf (int /*<<< orphan*/ ,char*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  m_freem (struct mbuf*) ; 
- struct mbuf* m_pullup (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  proto_Prepend (struct mbuf*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- struct mbuf* stub1 (struct bundle*,struct link*,struct mbuf*) ; 
+
+ unsigned int DSIZE ;
+ int LogPHASE ;
+ int MBUF_CTOP (struct mbuf*) ;
+ TYPE_4__* despatcher ;
+ int hdlc_Protocol2Nam (int ) ;
+ int lcp_SendProtoRej (int *,int ,int ) ;
+ struct physical* link2physical (struct link*) ;
+ int log_Printf (int ,char*,char*,int ,int ) ;
+ int m_freem (struct mbuf*) ;
+ struct mbuf* m_pullup (int ) ;
+ int proto_Prepend (struct mbuf*,int ,int ,int ) ;
+ struct mbuf* stub1 (struct bundle*,struct link*,struct mbuf*) ;
 
 __attribute__((used)) static void
 Despatch(struct bundle *bundle, struct link *l, struct mbuf *bp, u_short proto)

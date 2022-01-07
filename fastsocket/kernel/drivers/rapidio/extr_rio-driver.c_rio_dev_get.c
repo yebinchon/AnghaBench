@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct rio_dev {int /*<<< orphan*/  dev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  get_device (int /*<<< orphan*/ *) ; 
+
+
+
+struct rio_dev {int dev; } ;
+
+
+ int get_device (int *) ;
 
 struct rio_dev *rio_dev_get(struct rio_dev *rdev)
 {
-	if (rdev)
-		get_device(&rdev->dev);
+ if (rdev)
+  get_device(&rdev->dev);
 
-	return rdev;
+ return rdev;
 }

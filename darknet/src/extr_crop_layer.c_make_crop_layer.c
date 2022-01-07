@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int batch; int h; int w; int c; float scale; int flip; float angle; float saturation; float exposure; int out_w; int out_h; int out_c; int inputs; int outputs; void* rand_gpu; int /*<<< orphan*/  output; void* output_gpu; int /*<<< orphan*/  backward_gpu; int /*<<< orphan*/  forward_gpu; int /*<<< orphan*/  backward; int /*<<< orphan*/  forward; int /*<<< orphan*/  type; int /*<<< orphan*/  member_0; } ;
-typedef  TYPE_1__ crop_layer ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CROP ; 
- int /*<<< orphan*/  backward_crop_layer ; 
- int /*<<< orphan*/  backward_crop_layer_gpu ; 
- int /*<<< orphan*/  calloc (int,int) ; 
- void* cuda_make_array (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  forward_crop_layer ; 
- int /*<<< orphan*/  forward_crop_layer_gpu ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,int,int,int,int) ; 
- int /*<<< orphan*/  stderr ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int batch; int h; int w; int c; float scale; int flip; float angle; float saturation; float exposure; int out_w; int out_h; int out_c; int inputs; int outputs; void* rand_gpu; int output; void* output_gpu; int backward_gpu; int forward_gpu; int backward; int forward; int type; int member_0; } ;
+typedef TYPE_1__ crop_layer ;
+
+
+ int CROP ;
+ int backward_crop_layer ;
+ int backward_crop_layer_gpu ;
+ int calloc (int,int) ;
+ void* cuda_make_array (int ,int) ;
+ int forward_crop_layer ;
+ int forward_crop_layer_gpu ;
+ int fprintf (int ,char*,int,int,int,int,int) ;
+ int stderr ;
 
 crop_layer make_crop_layer(int batch, int h, int w, int c, int crop_height, int crop_width, int flip, float angle, float saturation, float exposure)
 {
@@ -48,11 +48,11 @@ crop_layer make_crop_layer(int batch, int h, int w, int c, int crop_height, int 
     l.forward = forward_crop_layer;
     l.backward = backward_crop_layer;
 
-    #ifdef GPU
-    l.forward_gpu = forward_crop_layer_gpu;
-    l.backward_gpu = backward_crop_layer_gpu;
-    l.output_gpu = cuda_make_array(l.output, l.outputs*batch);
-    l.rand_gpu   = cuda_make_array(0, l.batch*8);
-    #endif
+
+
+
+
+
+
     return l;
 }

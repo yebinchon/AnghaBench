@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u8 ;
 
-/* Variables and functions */
- int EINVAL ; 
-#define  XFRM_POLICY_TYPE_MAIN 129 
-#define  XFRM_POLICY_TYPE_SUB 128 
+
+
+
+typedef int u8 ;
+
+
+ int EINVAL ;
+
+
 
 __attribute__((used)) static int verify_policy_type(u8 type)
 {
-	switch (type) {
-	case XFRM_POLICY_TYPE_MAIN:
-#ifdef CONFIG_XFRM_SUB_POLICY
-	case XFRM_POLICY_TYPE_SUB:
-#endif
-		break;
+ switch (type) {
+ case 129:
 
-	default:
-		return -EINVAL;
-	}
 
-	return 0;
+
+  break;
+
+ default:
+  return -EINVAL;
+ }
+
+ return 0;
 }

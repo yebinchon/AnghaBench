@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  hTreeWnd; } ;
-typedef  scalar_t__ LPCWSTR ;
-typedef  int /*<<< orphan*/  LPARAM ;
-typedef  int /*<<< orphan*/  HKEY ;
 
-/* Variables and functions */
- scalar_t__ GetItemPath (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SB_SETTEXTW ; 
- int /*<<< orphan*/  SendMessageW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_1__* g_pChildWnd ; 
- int /*<<< orphan*/  hStatusBar ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int hTreeWnd; } ;
+typedef scalar_t__ LPCWSTR ;
+typedef int LPARAM ;
+typedef int HKEY ;
+
+
+ scalar_t__ GetItemPath (int ,int ,int *) ;
+ int SB_SETTEXTW ;
+ int SendMessageW (int ,int ,int ,int ) ;
+ TYPE_1__* g_pChildWnd ;
+ int hStatusBar ;
 
 void UpdateStatusBar(void)
 {

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {unsigned char** l71; size_t l180; scalar_t__ g; } ;
-typedef  TYPE_1__ s ;
-typedef  int /*<<< orphan*/  l163 ;
+typedef TYPE_1__ s ;
+typedef int l163 ;
 
-/* Variables and functions */
- unsigned char l293 (int /*<<< orphan*/ *) ; 
- unsigned char* l295 ; 
- unsigned char* l451 ; 
- unsigned char* l527 ; 
- unsigned char* l565 ; 
- unsigned char* l649 ; 
- unsigned short l695 (int /*<<< orphan*/ *,unsigned char const*) ; 
+
+ unsigned char l293 (int *) ;
+ unsigned char* l295 ;
+ unsigned char* l451 ;
+ unsigned char* l527 ;
+ unsigned char* l565 ;
+ unsigned char* l649 ;
+ unsigned short l695 (int *,unsigned char const*) ;
 
 __attribute__((used)) static int l529(s*b){const unsigned char*
 l71=0;unsigned short w;unsigned short q;unsigned char r;l163 l37;int c

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  AVBPrint ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_BPRINT_SIZE_UNLIMITED ; 
- int /*<<< orphan*/  av_bprint_append_data (int /*<<< orphan*/ *,char const*,int) ; 
- scalar_t__ av_bprint_finalize (int /*<<< orphan*/ *,char**) ; 
- int /*<<< orphan*/  av_bprint_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_bprint_is_complete (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  av_bprintf (int /*<<< orphan*/ *,char*,char const*) ; 
+
+
+
+typedef int AVBPrint ;
+
+
+ int AV_BPRINT_SIZE_UNLIMITED ;
+ int av_bprint_append_data (int *,char const*,int) ;
+ scalar_t__ av_bprint_finalize (int *,char**) ;
+ int av_bprint_init (int *,int ,int ) ;
+ int av_bprint_is_complete (int *) ;
+ int av_bprintf (int *,char*,char const*) ;
 
 __attribute__((used)) static int replace_str_data_in_filename(char **s, const char *filename, char placeholder, const char *datastring)
 {
@@ -36,7 +36,7 @@ __attribute__((used)) static int replace_str_data_in_filename(char **s, const ch
         c = *p;
         if (c == '\0')
             break;
-        if (c == '%' && *(p+1) == '%')  // %%
+        if (c == '%' && *(p+1) == '%')
             addchar_count = 2;
         else if (c == '%' && *(p+1) == placeholder) {
             av_bprintf(&buf, "%s", datastring);
@@ -52,7 +52,7 @@ __attribute__((used)) static int replace_str_data_in_filename(char **s, const ch
         }
     }
     if (!av_bprint_is_complete(&buf)) {
-        av_bprint_finalize(&buf, NULL);
+        av_bprint_finalize(&buf, ((void*)0));
         return -1;
     }
     if (av_bprint_finalize(&buf, &new_filename) < 0 || !new_filename)

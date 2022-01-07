@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_fourcc_t ;
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  scalar_t__ uint64_t ;
-struct TYPE_3__ {int /*<<< orphan*/  s; } ;
-typedef  TYPE_1__ demux_t ;
 
-/* Variables and functions */
- scalar_t__ GetQWBE (int /*<<< orphan*/ *) ; 
- scalar_t__ INT64_MAX ; 
- int /*<<< orphan*/  ReadFOURCC (int /*<<< orphan*/ *) ; 
- scalar_t__ UINT64_C (int) ; 
- int VLC_EGENERIC ; 
- int /*<<< orphan*/  VLC_FOURCC (char,char,char,char) ; 
- int VLC_SUCCESS ; 
- scalar_t__ kCHUNK_SIZE_EOF ; 
- int vlc_stream_Read (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int vlc_fourcc_t ;
+typedef int uint8_t ;
+typedef scalar_t__ uint64_t ;
+struct TYPE_3__ {int s; } ;
+typedef TYPE_1__ demux_t ;
+
+
+ scalar_t__ GetQWBE (int *) ;
+ scalar_t__ INT64_MAX ;
+ int ReadFOURCC (int *) ;
+ scalar_t__ UINT64_C (int) ;
+ int VLC_EGENERIC ;
+ int VLC_FOURCC (char,char,char,char) ;
+ int VLC_SUCCESS ;
+ scalar_t__ kCHUNK_SIZE_EOF ;
+ int vlc_stream_Read (int ,int *,int) ;
 
 __attribute__((used)) static int NextChunk( demux_t *p_demux, vlc_fourcc_t *p_fcc, uint64_t *pi_size )
 {
@@ -38,7 +38,7 @@ __attribute__((used)) static int NextChunk( demux_t *p_demux, vlc_fourcc_t *p_fc
     *p_fcc = ReadFOURCC( p_read );
     uint64_t i_size = GetQWBE( p_read + 4 );
 
-    /* We accept no negativ sizes for chunks, except -1 for the data chunk. */
+
 
     if( i_size > INT64_MAX )
     {

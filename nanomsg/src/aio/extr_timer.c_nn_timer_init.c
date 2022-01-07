@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct nn_timer {int timeout; int /*<<< orphan*/  fsm; int /*<<< orphan*/  worker; int /*<<< orphan*/  done; int /*<<< orphan*/  wtimer; int /*<<< orphan*/  stop_task; int /*<<< orphan*/  start_task; int /*<<< orphan*/  state; } ;
+
+
+
+
+struct nn_timer {int timeout; int fsm; int worker; int done; int wtimer; int stop_task; int start_task; int state; } ;
 struct nn_fsm {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NN_TIMER_SRC_START_TASK ; 
- int /*<<< orphan*/  NN_TIMER_SRC_STOP_TASK ; 
- int /*<<< orphan*/  NN_TIMER_STATE_IDLE ; 
- int /*<<< orphan*/  nn_fsm_choose_worker (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nn_fsm_event_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nn_fsm_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,struct nn_timer*,struct nn_fsm*) ; 
- int /*<<< orphan*/  nn_timer_handler ; 
- int /*<<< orphan*/  nn_timer_shutdown ; 
- int /*<<< orphan*/  nn_worker_task_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nn_worker_timer_init (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int NN_TIMER_SRC_START_TASK ;
+ int NN_TIMER_SRC_STOP_TASK ;
+ int NN_TIMER_STATE_IDLE ;
+ int nn_fsm_choose_worker (int *) ;
+ int nn_fsm_event_init (int *) ;
+ int nn_fsm_init (int *,int ,int ,int,struct nn_timer*,struct nn_fsm*) ;
+ int nn_timer_handler ;
+ int nn_timer_shutdown ;
+ int nn_worker_task_init (int *,int ,int *) ;
+ int nn_worker_timer_init (int *,int *) ;
 
 void nn_timer_init (struct nn_timer *self, int src, struct nn_fsm *owner)
 {

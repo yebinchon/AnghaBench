@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {scalar_t__ state; int /*<<< orphan*/  use_fileserver_port; int /*<<< orphan*/  server_url; int /*<<< orphan*/  effective_url; int /*<<< orphan*/  http_protocol_version; } ;
-struct TYPE_7__ {int /*<<< orphan*/  error_code; int /*<<< orphan*/  version; int /*<<< orphan*/  not_supported; scalar_t__ check_success; } ;
-typedef  TYPE_1__ HttpProtocolVersion ;
-typedef  TYPE_2__ CloneTask ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLONE_STATE_CANCELED ; 
- scalar_t__ CLONE_STATE_CANCEL_PENDING ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  http_check_head_commit (TYPE_2__*) ; 
- int /*<<< orphan*/  http_fileserver_url (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  transition_state (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  transition_to_error (TYPE_2__*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_8__ {scalar_t__ state; int use_fileserver_port; int server_url; int effective_url; int http_protocol_version; } ;
+struct TYPE_7__ {int error_code; int version; int not_supported; scalar_t__ check_success; } ;
+typedef TYPE_1__ HttpProtocolVersion ;
+typedef TYPE_2__ CloneTask ;
+
+
+ int CLONE_STATE_CANCELED ;
+ scalar_t__ CLONE_STATE_CANCEL_PENDING ;
+ int TRUE ;
+ int http_check_head_commit (TYPE_2__*) ;
+ int http_fileserver_url (int ) ;
+ int transition_state (TYPE_2__*,int ) ;
+ int transition_to_error (TYPE_2__*,int ) ;
 
 __attribute__((used)) static void
 check_http_fileserver_protocol_done (HttpProtocolVersion *result, void *user_data)
@@ -42,7 +42,7 @@ check_http_fileserver_protocol_done (HttpProtocolVersion *result, void *user_dat
         task->use_fileserver_port = TRUE;
         http_check_head_commit (task);
     } else {
-        /* Wait for periodic retry. */
+
         transition_to_error (task, result->error_code);
     }
 }

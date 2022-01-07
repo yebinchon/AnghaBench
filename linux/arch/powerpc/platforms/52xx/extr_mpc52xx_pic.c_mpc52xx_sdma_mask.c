@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct irq_data {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/  IntMask; } ;
+struct TYPE_2__ {int IntMask; } ;
 
-/* Variables and functions */
- int MPC52xx_IRQ_L2_MASK ; 
- int /*<<< orphan*/  io_be_setbit (int /*<<< orphan*/ *,int) ; 
- int irqd_to_hwirq (struct irq_data*) ; 
- TYPE_1__* sdma ; 
+
+ int MPC52xx_IRQ_L2_MASK ;
+ int io_be_setbit (int *,int) ;
+ int irqd_to_hwirq (struct irq_data*) ;
+ TYPE_1__* sdma ;
 
 __attribute__((used)) static void mpc52xx_sdma_mask(struct irq_data *d)
 {
-	int l2irq = irqd_to_hwirq(d) & MPC52xx_IRQ_L2_MASK;
-	io_be_setbit(&sdma->IntMask, l2irq);
+ int l2irq = irqd_to_hwirq(d) & MPC52xx_IRQ_L2_MASK;
+ io_be_setbit(&sdma->IntMask, l2irq);
 }

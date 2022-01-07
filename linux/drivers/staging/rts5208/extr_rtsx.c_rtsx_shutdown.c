@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct rtsx_dev {int irq; struct rtsx_chip* chip; } ;
 struct rtsx_chip {scalar_t__ msi_en; } ;
 struct pci_dev {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PM_S1 ; 
- int /*<<< orphan*/  free_irq (int,void*) ; 
- int /*<<< orphan*/  pci_disable_device (struct pci_dev*) ; 
- int /*<<< orphan*/  pci_disable_msi (struct pci_dev*) ; 
- struct rtsx_dev* pci_get_drvdata (struct pci_dev*) ; 
- int /*<<< orphan*/  rtsx_do_before_power_down (struct rtsx_chip*,int /*<<< orphan*/ ) ; 
+
+ int PM_S1 ;
+ int free_irq (int,void*) ;
+ int pci_disable_device (struct pci_dev*) ;
+ int pci_disable_msi (struct pci_dev*) ;
+ struct rtsx_dev* pci_get_drvdata (struct pci_dev*) ;
+ int rtsx_do_before_power_down (struct rtsx_chip*,int ) ;
 
 __attribute__((used)) static void rtsx_shutdown(struct pci_dev *pci)
 {
-	struct rtsx_dev *dev = pci_get_drvdata(pci);
-	struct rtsx_chip *chip;
+ struct rtsx_dev *dev = pci_get_drvdata(pci);
+ struct rtsx_chip *chip;
 
-	if (!dev)
-		return;
+ if (!dev)
+  return;
 
-	chip = dev->chip;
+ chip = dev->chip;
 
-	rtsx_do_before_power_down(chip, PM_S1);
+ rtsx_do_before_power_down(chip, PM_S1);
 
-	if (dev->irq >= 0) {
-		free_irq(dev->irq, (void *)dev);
-		dev->irq = -1;
-	}
+ if (dev->irq >= 0) {
+  free_irq(dev->irq, (void *)dev);
+  dev->irq = -1;
+ }
 
-	if (chip->msi_en)
-		pci_disable_msi(pci);
+ if (chip->msi_en)
+  pci_disable_msi(pci);
 
-	pci_disable_device(pci);
+ pci_disable_device(pci);
 }

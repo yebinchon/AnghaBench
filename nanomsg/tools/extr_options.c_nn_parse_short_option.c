@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct nn_parse_context {scalar_t__* data; scalar_t__** last_option_usage; struct nn_option* options; } ;
-struct nn_option {scalar_t__ shortname; int /*<<< orphan*/  longname; } ;
+struct nn_option {scalar_t__ shortname; int longname; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  nn_error_unknown_short_option (struct nn_parse_context*) ; 
- scalar_t__ nn_get_arg (struct nn_parse_context*) ; 
- scalar_t__ nn_has_arg (struct nn_option*) ; 
- int /*<<< orphan*/  nn_option_error (char*,struct nn_parse_context*,int) ; 
- int /*<<< orphan*/  nn_process_option (struct nn_parse_context*,int,scalar_t__*) ; 
+
+ int nn_error_unknown_short_option (struct nn_parse_context*) ;
+ scalar_t__ nn_get_arg (struct nn_parse_context*) ;
+ scalar_t__ nn_has_arg (struct nn_option*) ;
+ int nn_option_error (char*,struct nn_parse_context*,int) ;
+ int nn_process_option (struct nn_parse_context*,int,scalar_t__*) ;
 
 __attribute__((used)) static void nn_parse_short_option (struct nn_parse_context *ctx)
 {
@@ -43,9 +43,9 @@ __attribute__((used)) static void nn_parse_short_option (struct nn_parse_context
                         nn_option_error ("requires an argument", ctx, i);
                     }
                 }
-                ctx->data = "";  /* end of short options anyway */
+                ctx->data = "";
             } else {
-                nn_process_option (ctx, i, NULL);
+                nn_process_option (ctx, i, ((void*)0));
                 ctx->data += 1;
             }
             return;

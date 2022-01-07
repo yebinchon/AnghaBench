@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  h2o_timerwheel_t ;
-typedef  int /*<<< orphan*/  h2o_timerwheel_entry_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DUMP_WHEEL (int /*<<< orphan*/ *) ; 
- int N ; 
- int /*<<< orphan*/ * h2o_timerwheel_create (int,int) ; 
- int /*<<< orphan*/  h2o_timerwheel_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  h2o_timerwheel_init_entry (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  h2o_timerwheel_link_abs (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int h2o_timerwheel_run (int /*<<< orphan*/ *,int) ; 
- int invokes ; 
- int lcg_rand () ; 
- int /*<<< orphan*/  my_callback ; 
- int /*<<< orphan*/  ok (int) ; 
+
+
+
+typedef int uint32_t ;
+typedef int h2o_timerwheel_t ;
+typedef int h2o_timerwheel_entry_t ;
+
+
+ int DUMP_WHEEL (int *) ;
+ int N ;
+ int * h2o_timerwheel_create (int,int) ;
+ int h2o_timerwheel_destroy (int *) ;
+ int h2o_timerwheel_init_entry (int *,int ) ;
+ int h2o_timerwheel_link_abs (int *,int *,int) ;
+ int h2o_timerwheel_run (int *,int) ;
+ int invokes ;
+ int lcg_rand () ;
+ int my_callback ;
+ int ok (int) ;
 
 void test_add_rand_timers()
 {
@@ -34,7 +34,7 @@ void test_add_rand_timers()
     h2o_timerwheel_entry_t timers[N];
     int i;
 
-    /* add timers */
+
     for (i = 0; i < N; i++) {
         uint32_t expiry = abs_wtime + lcg_rand() % N;
         h2o_timerwheel_init_entry(&timers[i], my_callback);
@@ -42,7 +42,7 @@ void test_add_rand_timers()
     }
 
     int start = invokes;
-    /* run the wheel: the timers has a max expiry N-1 + abs_wtime  */
+
     ok(h2o_timerwheel_run(testwheel, N - 1 + abs_wtime) == N);
     ok(invokes - start == N);
     DUMP_WHEEL(testwheel);

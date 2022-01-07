@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ULARGE_INTEGER ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int ULARGE_INTEGER ;
 struct TYPE_4__ {int QuadPart; } ;
 struct TYPE_5__ {TYPE_1__ cbSize; } ;
-typedef  TYPE_2__ STATSTG ;
-typedef  int /*<<< orphan*/  LPVOID ;
-typedef  int /*<<< orphan*/  IStream ;
-typedef  int /*<<< orphan*/  IStorage ;
-typedef  int /*<<< orphan*/  ILockBytes ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int DWORD ;
+typedef TYPE_2__ STATSTG ;
+typedef int LPVOID ;
+typedef int IStream ;
+typedef int IStorage ;
+typedef int ILockBytes ;
+typedef int HRESULT ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CreateILockBytesOnHGlobal (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  ERR (char*) ; 
- int /*<<< orphan*/  E_FAIL ; 
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ILockBytes_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ILockBytes_WriteAt (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int*) ; 
- int /*<<< orphan*/  IStream_Read (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int*) ; 
- int /*<<< orphan*/  IStream_Stat (int /*<<< orphan*/ *,TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  STATFLAG_NONAME ; 
- int STGM_READWRITE ; 
- int STGM_SHARE_DENY_NONE ; 
- int /*<<< orphan*/  StgOpenStorageOnILockBytes (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  ZeroMemory (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  msi_alloc (int) ; 
- int /*<<< orphan*/  msi_free (int /*<<< orphan*/ ) ; 
+
+ int CreateILockBytesOnHGlobal (int *,int ,int **) ;
+ int ERR (char*) ;
+ int E_FAIL ;
+ int E_OUTOFMEMORY ;
+ scalar_t__ FAILED (int ) ;
+ int ILockBytes_Release (int *) ;
+ int ILockBytes_WriteAt (int *,int ,int ,int,int*) ;
+ int IStream_Read (int *,int ,int,int*) ;
+ int IStream_Stat (int *,TYPE_2__*,int ) ;
+ int STATFLAG_NONAME ;
+ int STGM_READWRITE ;
+ int STGM_SHARE_DENY_NONE ;
+ int StgOpenStorageOnILockBytes (int *,int *,int,int *,int ,int **) ;
+ int TRUE ;
+ int ZeroMemory (int *,int) ;
+ int msi_alloc (int) ;
+ int msi_free (int ) ;
 
 __attribute__((used)) static HRESULT stream_to_storage(IStream *stm, IStorage **stg)
 {
-    ILockBytes *lockbytes = NULL;
+    ILockBytes *lockbytes = ((void*)0);
     STATSTG stat;
     LPVOID data;
     HRESULT hr;
@@ -70,7 +70,7 @@ __attribute__((used)) static HRESULT stream_to_storage(IStream *stm, IStorage **
     if (FAILED(hr) || read != size)
         goto done;
 
-    hr = CreateILockBytesOnHGlobal(NULL, TRUE, &lockbytes);
+    hr = CreateILockBytesOnHGlobal(((void*)0), TRUE, &lockbytes);
     if (FAILED(hr))
         goto done;
 
@@ -79,9 +79,9 @@ __attribute__((used)) static HRESULT stream_to_storage(IStream *stm, IStorage **
     if (FAILED(hr) || read != size)
         goto done;
 
-    hr = StgOpenStorageOnILockBytes(lockbytes, NULL,
+    hr = StgOpenStorageOnILockBytes(lockbytes, ((void*)0),
                                     STGM_READWRITE | STGM_SHARE_DENY_NONE,
-                                    NULL, 0, stg);
+                                    ((void*)0), 0, stg);
     if (FAILED(hr))
         goto done;
 

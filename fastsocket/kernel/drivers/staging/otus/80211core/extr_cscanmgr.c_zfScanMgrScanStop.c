@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  zdev_t ;
-typedef  int u8_t ;
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int zdev_t ;
+typedef int u8_t ;
 struct TYPE_4__ {void* currScanType; scalar_t__* scanReqs; } ;
 struct TYPE_5__ {TYPE_1__ scanMgr; scalar_t__ scanFrequency; void* bChannelScan; void* bScheduleScan; } ;
-struct TYPE_6__ {int /*<<< orphan*/  (* zfcbScanNotify ) (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ;TYPE_2__ sta; } ;
+struct TYPE_6__ {int (* zfcbScanNotify ) (int *,int *) ;TYPE_2__ sta; } ;
 
-/* Variables and functions */
- void* FALSE ; 
- int /*<<< orphan*/  ZM_EVENT_IN_SCAN ; 
- int /*<<< orphan*/  ZM_EVENT_SCAN ; 
- int /*<<< orphan*/  ZM_EVENT_TIMEOUT_SCAN ; 
-#define  ZM_SCAN_MGR_SCAN_EXTERNAL 129 
-#define  ZM_SCAN_MGR_SCAN_INTERNAL 128 
- void* ZM_SCAN_MGR_SCAN_NONE ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- TYPE_3__* wd ; 
- int /*<<< orphan*/  zfPowerSavingMgrIsSleeping (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  zfSendNullData (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ zfStaIsConnected (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  zfTimerCancel (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  zfTimerSchedule (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  zm_assert (int) ; 
- int /*<<< orphan*/  zm_debug_msg0 (char*) ; 
- int /*<<< orphan*/  zmw_declare_for_critical_section () ; 
- int /*<<< orphan*/  zmw_enter_critical_section (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  zmw_get_wlan_dev (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  zmw_leave_critical_section (int /*<<< orphan*/ *) ; 
+
+ void* FALSE ;
+ int ZM_EVENT_IN_SCAN ;
+ int ZM_EVENT_SCAN ;
+ int ZM_EVENT_TIMEOUT_SCAN ;
+
+
+ void* ZM_SCAN_MGR_SCAN_NONE ;
+ int stub1 (int *,int *) ;
+ TYPE_3__* wd ;
+ int zfPowerSavingMgrIsSleeping (int *) ;
+ int zfSendNullData (int *,int ) ;
+ scalar_t__ zfStaIsConnected (int *) ;
+ int zfTimerCancel (int *,int ) ;
+ int zfTimerSchedule (int *,int ,int) ;
+ int zm_assert (int) ;
+ int zm_debug_msg0 (char*) ;
+ int zmw_declare_for_critical_section () ;
+ int zmw_enter_critical_section (int *) ;
+ int zmw_get_wlan_dev (int *) ;
+ int zmw_leave_critical_section (int *) ;
 
 void zfScanMgrScanStop(zdev_t* dev, u8_t scanType)
 {
@@ -61,13 +61,13 @@ void zfScanMgrScanStop(zdev_t* dev, u8_t scanType)
 
     switch(scanType)
     {
-        case ZM_SCAN_MGR_SCAN_EXTERNAL:
+        case 129:
             scanNotifyRequired = 1;
-            theOtherScan = ZM_SCAN_MGR_SCAN_INTERNAL;
+            theOtherScan = 128;
             break;
 
-        case ZM_SCAN_MGR_SCAN_INTERNAL:
-            theOtherScan = ZM_SCAN_MGR_SCAN_EXTERNAL;
+        case 128:
+            theOtherScan = 129;
             break;
 
         default:
@@ -81,8 +81,8 @@ void zfScanMgrScanStop(zdev_t* dev, u8_t scanType)
 
     zfTimerCancel(dev, ZM_EVENT_SCAN);
 
-    /* Fix for WHQL sendrecv => we do not apply delay time in which the device
-       stop transmitting packet when we already connect to some AP  */
+
+
     wd->sta.bScheduleScan = FALSE;
 
     zfTimerCancel(dev, ZM_EVENT_TIMEOUT_SCAN);
@@ -95,7 +95,7 @@ void zfScanMgrScanStop(zdev_t* dev, u8_t scanType)
     {
         wd->sta.scanMgr.currScanType = theOtherScan;
 
-        // Schedule the other scan after 1 second later
+
         zfTimerSchedule(dev, ZM_EVENT_SCAN, 100);
     }
     else
@@ -108,7 +108,7 @@ stop_done:
 
     zmw_leave_critical_section(dev);
 
-    /* avoid lose receive packet when site survey */
+
     if ((zfStaIsConnected(dev)) && (!zfPowerSavingMgrIsSleeping(dev)))
     {
         zfSendNullData(dev, 0);
@@ -117,9 +117,9 @@ stop_done:
     if ( scanNotifyRequired )
     {
         zm_debug_msg0("Scan notify after reset");
-        if (wd->zfcbScanNotify != NULL)
+        if (wd->zfcbScanNotify != ((void*)0))
         {
-            wd->zfcbScanNotify(dev, NULL);
+            wd->zfcbScanNotify(dev, ((void*)0));
         }
     }
 

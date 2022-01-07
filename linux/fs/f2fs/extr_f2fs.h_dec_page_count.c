@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct f2fs_sb_info {int /*<<< orphan*/ * nr_pages; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  atomic_dec (int /*<<< orphan*/ *) ; 
+
+
+
+struct f2fs_sb_info {int * nr_pages; } ;
+
+
+ int atomic_dec (int *) ;
 
 __attribute__((used)) static inline void dec_page_count(struct f2fs_sb_info *sbi, int count_type)
 {
-	atomic_dec(&sbi->nr_pages[count_type]);
+ atomic_dec(&sbi->nr_pages[count_type]);
 }

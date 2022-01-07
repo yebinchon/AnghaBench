@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  ITaskFolder ;
-typedef  int /*<<< orphan*/  IRegisteredTask ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  BSTR ;
 
-/* Variables and functions */
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FIXME (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ITaskFolder_GetTask (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  ITaskFolder_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SysAllocString (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  SysFreeString (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * get_tasks_root_folder () ; 
+
+
+
+typedef int WCHAR ;
+typedef int ITaskFolder ;
+typedef int IRegisteredTask ;
+typedef int HRESULT ;
+typedef int BSTR ;
+
+
+ scalar_t__ FAILED (int ) ;
+ int FIXME (char*,int ) ;
+ int ITaskFolder_GetTask (int *,int ,int **) ;
+ int ITaskFolder_Release (int *) ;
+ int SysAllocString (int const*) ;
+ int SysFreeString (int ) ;
+ int * get_tasks_root_folder () ;
 
 __attribute__((used)) static IRegisteredTask *get_registered_task(const WCHAR *name)
 {
@@ -34,7 +34,7 @@ __attribute__((used)) static IRegisteredTask *get_registered_task(const WCHAR *n
 
     root = get_tasks_root_folder();
     if (!root)
-        return NULL;
+        return ((void*)0);
 
     str = SysAllocString(name);
     hres = ITaskFolder_GetTask(root, str, &registered_task);
@@ -42,7 +42,7 @@ __attribute__((used)) static IRegisteredTask *get_registered_task(const WCHAR *n
     ITaskFolder_Release(root);
     if (FAILED(hres)) {
         FIXME("GetTask failed: %08x\n", hres);
-        return NULL;
+        return ((void*)0);
     }
 
     return registered_task;

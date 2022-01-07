@@ -1,82 +1,82 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint32_t ;
-typedef  scalar_t__ time_t ;
-struct TYPE_8__ {int /*<<< orphan*/ * data; int /*<<< orphan*/  header; } ;
-struct web_client {TYPE_2__ response; int /*<<< orphan*/  id; } ;
-struct TYPE_7__ {int /*<<< orphan*/  tv_sec; } ;
-struct TYPE_9__ {TYPE_1__ last_updated; int /*<<< orphan*/  last_accessed_time; } ;
-typedef  TYPE_3__ RRDSET ;
-typedef  int /*<<< orphan*/  RRDHOST ;
-typedef  int /*<<< orphan*/  BUFFER ;
 
-/* Variables and functions */
- scalar_t__ DATASOURCE_DATATABLE_JSONP ; 
- scalar_t__ DATASOURCE_JSON ; 
- scalar_t__ DATASOURCE_JSONP ; 
- int /*<<< orphan*/  D_WEB_CLIENT ; 
- int /*<<< orphan*/  D_WEB_CLIENT_ACCESS ; 
- int HTTP_RESP_BAD_REQUEST ; 
- int HTTP_RESP_NOT_FOUND ; 
- int RRDR_GROUPING_AVERAGE ; 
- int /*<<< orphan*/ * buffer_create (int) ; 
- int /*<<< orphan*/  buffer_flush (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  buffer_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  buffer_sprintf (int /*<<< orphan*/ *,char*,...) ; 
- int /*<<< orphan*/  buffer_strcat (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  buffer_strcat_htmlescape (int /*<<< orphan*/ *,char*) ; 
- char* buffer_tostring (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  debug (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  fix_google_param (char*) ; 
- char* mystrsep (char**,char*) ; 
- int /*<<< orphan*/  now_realtime_sec () ; 
- int rrdset2anything_api_v1 (TYPE_3__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__,int,long long,long long,int,long,scalar_t__,scalar_t__*) ; 
- TYPE_3__* rrdset_find (int /*<<< orphan*/ *,char*) ; 
- TYPE_3__* rrdset_find_byname (int /*<<< orphan*/ *,char*) ; 
- int str2i (char*) ; 
- void* str2l (char*) ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
- scalar_t__ strtoul (char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ web_client_api_request_v1_data_format (char*) ; 
- scalar_t__ web_client_api_request_v1_data_google_format (char*) ; 
- int web_client_api_request_v1_data_group (char*,int) ; 
- scalar_t__ web_client_api_request_v1_data_options (char*) ; 
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint32_t ;
+typedef scalar_t__ time_t ;
+struct TYPE_8__ {int * data; int header; } ;
+struct web_client {TYPE_2__ response; int id; } ;
+struct TYPE_7__ {int tv_sec; } ;
+struct TYPE_9__ {TYPE_1__ last_updated; int last_accessed_time; } ;
+typedef TYPE_3__ RRDSET ;
+typedef int RRDHOST ;
+typedef int BUFFER ;
+
+
+ scalar_t__ DATASOURCE_DATATABLE_JSONP ;
+ scalar_t__ DATASOURCE_JSON ;
+ scalar_t__ DATASOURCE_JSONP ;
+ int D_WEB_CLIENT ;
+ int D_WEB_CLIENT_ACCESS ;
+ int HTTP_RESP_BAD_REQUEST ;
+ int HTTP_RESP_NOT_FOUND ;
+ int RRDR_GROUPING_AVERAGE ;
+ int * buffer_create (int) ;
+ int buffer_flush (int *) ;
+ int buffer_free (int *) ;
+ int buffer_sprintf (int *,char*,...) ;
+ int buffer_strcat (int *,char*) ;
+ int buffer_strcat_htmlescape (int *,char*) ;
+ char* buffer_tostring (int *) ;
+ int debug (int ,char*,int ,char*,...) ;
+ int fix_google_param (char*) ;
+ char* mystrsep (char**,char*) ;
+ int now_realtime_sec () ;
+ int rrdset2anything_api_v1 (TYPE_3__*,int *,int *,scalar_t__,int,long long,long long,int,long,scalar_t__,scalar_t__*) ;
+ TYPE_3__* rrdset_find (int *,char*) ;
+ TYPE_3__* rrdset_find_byname (int *,char*) ;
+ int str2i (char*) ;
+ void* str2l (char*) ;
+ int strcmp (char*,char*) ;
+ scalar_t__ strtoul (char*,int *,int ) ;
+ scalar_t__ web_client_api_request_v1_data_format (char*) ;
+ scalar_t__ web_client_api_request_v1_data_google_format (char*) ;
+ int web_client_api_request_v1_data_group (char*,int) ;
+ scalar_t__ web_client_api_request_v1_data_options (char*) ;
 
 inline int web_client_api_request_v1_data(RRDHOST *host, struct web_client *w, char *url) {
     debug(D_WEB_CLIENT, "%llu: API v1 data with URL '%s'", w->id, url);
 
     int ret = HTTP_RESP_BAD_REQUEST;
-    BUFFER *dimensions = NULL;
+    BUFFER *dimensions = ((void*)0);
 
     buffer_flush(w->response.data);
 
-    char    *google_version = "0.6",
+    char *google_version = "0.6",
             *google_reqId = "0",
             *google_sig = "0",
             *google_out = "json",
-            *responseHandler = NULL,
-            *outFileName = NULL;
+            *responseHandler = ((void*)0),
+            *outFileName = ((void*)0);
 
     time_t last_timestamp_in_data = 0, google_timestamp = 0;
 
-    char *chart = NULL
-    , *before_str = NULL
-    , *after_str = NULL
-    , *group_time_str = NULL
-    , *points_str = NULL;
+    char *chart = ((void*)0)
+    , *before_str = ((void*)0)
+    , *after_str = ((void*)0)
+    , *group_time_str = ((void*)0)
+    , *points_str = ((void*)0);
 
     int group = RRDR_GROUPING_AVERAGE;
     uint32_t format = DATASOURCE_JSON;
@@ -92,8 +92,8 @@ inline int web_client_api_request_v1_data(RRDHOST *host, struct web_client *w, c
 
         debug(D_WEB_CLIENT, "%llu: API v1 data query param '%s' with value '%s'", w->id, name, value);
 
-        // name and value are now the parameters
-        // they are not null and not empty
+
+
 
         if(!strcmp(name, "chart")) chart = value;
         else if(!strcmp(name, "dimension") || !strcmp(name, "dim") || !strcmp(name, "dimensions") || !strcmp(name, "dims")) {
@@ -121,8 +121,8 @@ inline int web_client_api_request_v1_data(RRDHOST *host, struct web_client *w, c
             outFileName = value;
         }
         else if(!strcmp(name, "tqx")) {
-            // parse Google Visualization API options
-            // https://developers.google.com/chart/interactive/docs/dev/implementing_data_source
+
+
             char *tqx_name, *tqx_value;
 
             while(value) {
@@ -139,7 +139,7 @@ inline int web_client_api_request_v1_data(RRDHOST *host, struct web_client *w, c
                     google_reqId = tqx_value;
                 else if(!strcmp(tqx_name, "sig")) {
                     google_sig = tqx_value;
-                    google_timestamp = strtoul(google_sig, NULL, 0);
+                    google_timestamp = strtoul(google_sig, ((void*)0), 0);
                 }
                 else if(!strcmp(tqx_name, "out")) {
                     google_out = tqx_value;
@@ -153,7 +153,7 @@ inline int web_client_api_request_v1_data(RRDHOST *host, struct web_client *w, c
         }
     }
 
-    // validate the google parameters given
+
     fix_google_param(google_out);
     fix_google_param(google_sig);
     fix_google_param(google_reqId);
@@ -177,9 +177,9 @@ inline int web_client_api_request_v1_data(RRDHOST *host, struct web_client *w, c
     st->last_accessed_time = now_realtime_sec();
 
     long long before = (before_str && *before_str)?str2l(before_str):0;
-    long long after  = (after_str  && *after_str) ?str2l(after_str):0;
-    int       points = (points_str && *points_str)?str2i(points_str):0;
-    long      group_time = (group_time_str && *group_time_str)?str2l(group_time_str):0;
+    long long after = (after_str && *after_str) ?str2l(after_str):0;
+    int points = (points_str && *points_str)?str2i(points_str):0;
+    long group_time = (group_time_str && *group_time_str)?str2l(group_time_str):0;
 
     debug(D_WEB_CLIENT, "%llu: API command 'data' for chart '%s', dimensions '%s', after '%lld', before '%lld', points '%d', group '%d', format '%u', options '0x%08x'"
           , w->id
@@ -199,7 +199,7 @@ inline int web_client_api_request_v1_data(RRDHOST *host, struct web_client *w, c
     }
 
     if(format == DATASOURCE_DATATABLE_JSONP) {
-        if(responseHandler == NULL)
+        if(responseHandler == ((void*)0))
             responseHandler = "google.visualization.Query.setResponse";
 
         debug(D_WEB_CLIENT_ACCESS, "%llu: GOOGLE JSON/JSONP: version = '%s', reqId = '%s', sig = '%s', out = '%s', responseHandler = '%s', outFileName = '%s'",
@@ -211,7 +211,7 @@ inline int web_client_api_request_v1_data(RRDHOST *host, struct web_client *w, c
                 responseHandler, google_version, google_reqId, st->last_updated.tv_sec);
     }
     else if(format == DATASOURCE_JSONP) {
-        if(responseHandler == NULL)
+        if(responseHandler == ((void*)0))
             responseHandler = "callback";
 
         buffer_strcat(w->response.data, responseHandler);
@@ -226,7 +226,7 @@ inline int web_client_api_request_v1_data(RRDHOST *host, struct web_client *w, c
             buffer_strcat(w->response.data, "});");
 
         else {
-            // the client already has the latest data
+
             buffer_flush(w->response.data);
             buffer_sprintf(w->response.data,
                     "%s({version:'%s',reqId:'%s',status:'error',errors:[{reason:'not_modified',message:'Data not modified'}]});",

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int type; int user_id; int date; int tag; int user; int group; int owner; int place; int item; struct TYPE_3__* gnext; } ;
-typedef  TYPE_1__ item_t ;
+typedef TYPE_1__ item_t ;
 
-/* Variables and functions */
- int TL_NEWS_FLAG_DATE ; 
- int TL_NEWS_FLAG_GROUP ; 
- int TL_NEWS_FLAG_ITEM ; 
- int TL_NEWS_FLAG_OWNER ; 
- int TL_NEWS_FLAG_PLACE ; 
- int TL_NEWS_FLAG_TAG ; 
- int TL_NEWS_FLAG_TYPE ; 
- int TL_NEWS_FLAG_USER ; 
- int TL_NEWS_FLAG_USER_ID ; 
- int* TypeFlags ; 
- int /*<<< orphan*/  assert (int) ; 
- int* tl_store_get_ptr (int) ; 
- int /*<<< orphan*/  tl_store_int (int) ; 
+
+ int TL_NEWS_FLAG_DATE ;
+ int TL_NEWS_FLAG_GROUP ;
+ int TL_NEWS_FLAG_ITEM ;
+ int TL_NEWS_FLAG_OWNER ;
+ int TL_NEWS_FLAG_PLACE ;
+ int TL_NEWS_FLAG_TAG ;
+ int TL_NEWS_FLAG_TYPE ;
+ int TL_NEWS_FLAG_USER ;
+ int TL_NEWS_FLAG_USER_ID ;
+ int* TypeFlags ;
+ int assert (int) ;
+ int* tl_store_get_ptr (int) ;
+ int tl_store_int (int) ;
 
 __attribute__((used)) static int serialize_item_group (item_t *A, int grouping, int ug_mode) {
   item_t *B;

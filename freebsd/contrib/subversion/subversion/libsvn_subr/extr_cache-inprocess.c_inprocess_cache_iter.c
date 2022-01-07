@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_iter_apr_hash_cb_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-struct cache_iter_baton {void* user_baton; int /*<<< orphan*/  user_cb; } ;
-struct TYPE_2__ {int /*<<< orphan*/  hash; int /*<<< orphan*/  mutex; } ;
-typedef  TYPE_1__ inprocess_cache_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_MUTEX__WITH_LOCK (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  iter_cb ; 
- int /*<<< orphan*/  svn_iter_apr_hash (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct cache_iter_baton*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int svn_iter_apr_hash_cb_t ;
+typedef int svn_error_t ;
+typedef int svn_boolean_t ;
+struct cache_iter_baton {void* user_baton; int user_cb; } ;
+struct TYPE_2__ {int hash; int mutex; } ;
+typedef TYPE_1__ inprocess_cache_t ;
+typedef int apr_pool_t ;
+
+
+ int SVN_MUTEX__WITH_LOCK (int ,int ) ;
+ int * SVN_NO_ERROR ;
+ int iter_cb ;
+ int svn_iter_apr_hash (int *,int ,int ,struct cache_iter_baton*,int *) ;
 
 __attribute__((used)) static svn_error_t *
 inprocess_cache_iter(svn_boolean_t *completed,

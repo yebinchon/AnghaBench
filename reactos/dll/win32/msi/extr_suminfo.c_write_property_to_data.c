@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT ;
-struct TYPE_4__ {int /*<<< orphan*/  pszVal; int /*<<< orphan*/  filetime; int /*<<< orphan*/  lVal; int /*<<< orphan*/  iVal; } ;
-struct TYPE_5__ {TYPE_1__ u; int /*<<< orphan*/  vt; } ;
-typedef  TYPE_2__ PROPVARIANT ;
-typedef  int /*<<< orphan*/  LPBYTE ;
-typedef  int /*<<< orphan*/  DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  VT_EMPTY ; 
-#define  VT_FILETIME 131 
-#define  VT_I2 130 
-#define  VT_I4 129 
-#define  VT_LPSTR 128 
- scalar_t__ write_dword (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  write_filetime (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  write_string (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int UINT ;
+struct TYPE_4__ {int pszVal; int filetime; int lVal; int iVal; } ;
+struct TYPE_5__ {TYPE_1__ u; int vt; } ;
+typedef TYPE_2__ PROPVARIANT ;
+typedef int LPBYTE ;
+typedef int DWORD ;
+
+
+ int VT_EMPTY ;
+
+
+
+
+ scalar_t__ write_dword (int ,int ,int ) ;
+ int write_filetime (int ,int ,int *) ;
+ int write_string (int ,int ,int ) ;
 
 __attribute__((used)) static UINT write_property_to_data( const PROPVARIANT *prop, LPBYTE data )
 {
@@ -36,20 +36,20 @@ __attribute__((used)) static UINT write_property_to_data( const PROPVARIANT *pro
     if( prop->vt == VT_EMPTY )
         return sz;
 
-    /* add the type */
+
     sz += write_dword( data, sz, prop->vt );
     switch( prop->vt )
     {
-    case VT_I2:
+    case 130:
         sz += write_dword( data, sz, prop->u.iVal );
         break;
-    case VT_I4:
+    case 129:
         sz += write_dword( data, sz, prop->u.lVal );
         break;
-    case VT_FILETIME:
+    case 131:
         sz += write_filetime( data, sz, &prop->u.filetime );
         break;
-    case VT_LPSTR:
+    case 128:
         sz += write_string( data, sz, prop->u.pszVal );
         break;
     }

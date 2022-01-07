@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_3__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  error; } ;
+
+
+typedef struct TYPE_5__ TYPE_3__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int error; } ;
 struct TYPE_4__ {TYPE_3__* db; } ;
-typedef  TYPE_1__ CA_DB ;
+typedef TYPE_1__ CA_DB ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_printf (int /*<<< orphan*/ ,char*,...) ; 
- int DB_NUMBER ; 
- int /*<<< orphan*/  OPENSSL_free (char**) ; 
- int /*<<< orphan*/  TXT_DB_insert (TYPE_3__*,char**) ; 
- char** app_malloc (int,char*) ; 
- int /*<<< orphan*/  bio_err ; 
+
+ int BIO_printf (int ,char*,...) ;
+ int DB_NUMBER ;
+ int OPENSSL_free (char**) ;
+ int TXT_DB_insert (TYPE_3__*,char**) ;
+ char** app_malloc (int,char*) ;
+ int bio_err ;
 
 __attribute__((used)) static int update_index(CA_DB *db, char **row)
 {
@@ -32,7 +32,7 @@ __attribute__((used)) static int update_index(CA_DB *db, char **row)
     irow = app_malloc(sizeof(*irow) * (DB_NUMBER + 1), "row pointers");
     for (i = 0; i < DB_NUMBER; i++)
         irow[i] = row[i];
-    irow[DB_NUMBER] = NULL;
+    irow[DB_NUMBER] = ((void*)0);
 
     if (!TXT_DB_insert(db->db, irow)) {
         BIO_printf(bio_err, "failed to update srpvfile\n");

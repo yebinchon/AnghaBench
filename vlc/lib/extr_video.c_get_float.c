@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {scalar_t__ type; int /*<<< orphan*/  name; } ;
-typedef  TYPE_1__ opt_t ;
-typedef  int /*<<< orphan*/  libvlc_media_player_t ;
 
-/* Variables and functions */
- scalar_t__ VLC_VAR_FLOAT ; 
- int /*<<< orphan*/  libvlc_printerr (char*,char const*,char*) ; 
- float var_GetFloat (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {scalar_t__ type; int name; } ;
+typedef TYPE_1__ opt_t ;
+typedef int libvlc_media_player_t ;
+
+
+ scalar_t__ VLC_VAR_FLOAT ;
+ int libvlc_printerr (char*,char const*,char*) ;
+ float var_GetFloat (int *,int ) ;
 
 __attribute__((used)) static float
 get_float( libvlc_media_player_t *p_mi, const char *restrict name,

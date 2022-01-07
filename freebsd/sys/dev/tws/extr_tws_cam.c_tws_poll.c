@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct tws_softc {int dummy; } ;
 struct cam_sim {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TWS_TRACE_DEBUG (struct tws_softc*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ cam_sim_softc (struct cam_sim*) ; 
- int /*<<< orphan*/  tws_intr (void*) ; 
+
+ int TWS_TRACE_DEBUG (struct tws_softc*,char*,int ,int ) ;
+ scalar_t__ cam_sim_softc (struct cam_sim*) ;
+ int tws_intr (void*) ;
 
 __attribute__((used)) static void
 tws_poll(struct cam_sim *sim)

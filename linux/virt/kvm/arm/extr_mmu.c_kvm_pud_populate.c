@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  pud_t ;
-typedef  int /*<<< orphan*/  pmd_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  WRITE_ONCE (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dsb (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ishst ; 
- int /*<<< orphan*/  kvm_mk_pud (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int pud_t ;
+typedef int pmd_t ;
+
+
+ int WRITE_ONCE (int ,int ) ;
+ int dsb (int ) ;
+ int ishst ;
+ int kvm_mk_pud (int *) ;
 
 __attribute__((used)) static inline void kvm_pud_populate(pud_t *pudp, pmd_t *pmdp)
 {
-	WRITE_ONCE(*pudp, kvm_mk_pud(pmdp));
-	dsb(ishst);
+ WRITE_ONCE(*pudp, kvm_mk_pud(pmdp));
+ dsb(ishst);
 }

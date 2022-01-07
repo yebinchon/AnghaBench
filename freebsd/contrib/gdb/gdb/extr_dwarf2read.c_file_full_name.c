@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct line_header {char** include_dirs; struct file_entry* file_names; } ;
 struct file_entry {char const* name; int dir_index; } ;
 
-/* Variables and functions */
- scalar_t__ IS_ABSOLUTE_PATH (char const*) ; 
- int /*<<< orphan*/  strcpy (char*,char const*) ; 
- int strlen (char const*) ; 
- char* xmalloc (int) ; 
- char* xstrdup (char const*) ; 
+
+ scalar_t__ IS_ABSOLUTE_PATH (char const*) ;
+ int strcpy (char*,char const*) ;
+ int strlen (char const*) ;
+ char* xmalloc (int) ;
+ char* xstrdup (char const*) ;
 
 __attribute__((used)) static char *
 file_full_name (int file, struct line_header *lh, const char *comp_dir)
 {
   struct file_entry *fe = &lh->file_names[file - 1];
-  
+
   if (IS_ABSOLUTE_PATH (fe->name))
     return xstrdup (fe->name);
   else

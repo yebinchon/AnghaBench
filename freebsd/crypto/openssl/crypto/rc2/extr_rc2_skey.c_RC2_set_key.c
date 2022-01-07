@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * data; } ;
-typedef  TYPE_1__ RC2_KEY ;
-typedef  int /*<<< orphan*/  RC2_INT ;
 
-/* Variables and functions */
- unsigned int* key_table ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * data; } ;
+typedef TYPE_1__ RC2_KEY ;
+typedef int RC2_INT ;
+
+
+ unsigned int* key_table ;
 
 void RC2_set_key(RC2_KEY *key, int len, const unsigned char *data, int bits)
 {
@@ -26,7 +26,7 @@ void RC2_set_key(RC2_KEY *key, int len, const unsigned char *data, int bits)
     unsigned int c, d;
 
     k = (unsigned char *)&(key->data[0]);
-    *k = 0;                     /* for if there is a zero length key */
+    *k = 0;
 
     if (len > 128)
         len = 128;
@@ -38,7 +38,7 @@ void RC2_set_key(RC2_KEY *key, int len, const unsigned char *data, int bits)
     for (i = 0; i < len; i++)
         k[i] = data[i];
 
-    /* expand table */
+
     d = k[len - 1];
     j = 0;
     for (i = len; i < 128; i++, j++) {
@@ -46,7 +46,7 @@ void RC2_set_key(RC2_KEY *key, int len, const unsigned char *data, int bits)
         k[i] = d;
     }
 
-    /* hmm.... key reduction to 'bits' bits */
+
 
     j = (bits + 7) >> 3;
     i = 128 - j;
@@ -59,7 +59,7 @@ void RC2_set_key(RC2_KEY *key, int len, const unsigned char *data, int bits)
         k[i] = d;
     }
 
-    /* copy from bytes into RC2_INT's */
+
     ki = &(key->data[63]);
     for (i = 127; i >= 0; i -= 2)
         *(ki--) = ((k[i] << 8) | k[i - 1]) & 0xffff;

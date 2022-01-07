@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {TYPE_1__* l; int /*<<< orphan*/ * next; } ;
-typedef  TYPE_2__ temp_letter ;
-struct TYPE_6__ {int /*<<< orphan*/  data; } ;
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_5__ {TYPE_1__* l; int * next; } ;
+typedef TYPE_2__ temp_letter ;
+struct TYPE_6__ {int data; } ;
 struct TYPE_4__ {char const* data; int data_len; } ;
 
-/* Variables and functions */
- int FIELDS_N ; 
- scalar_t__ MAX_LETTER_SIZE ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  delete_letter (long long) ; 
- int field_n ; 
- int /*<<< orphan*/ * field_names ; 
- char** field_value ; 
- int* field_value_len ; 
- int get_field (int /*<<< orphan*/ ) ; 
- int get_fields (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  id_to_letter ; 
- int /*<<< orphan*/  letter_add (int,int) ; 
- TYPE_3__* letter_buf ; 
- void** map_ll_vptr_get (int /*<<< orphan*/ *,long long) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,char const*,int) ; 
- int now ; 
- size_t sprintf (char*,char*,int,...) ; 
- scalar_t__ strlen (char const*) ; 
+
+ int FIELDS_N ;
+ scalar_t__ MAX_LETTER_SIZE ;
+ int assert (int) ;
+ int delete_letter (long long) ;
+ int field_n ;
+ int * field_names ;
+ char** field_value ;
+ int* field_value_len ;
+ int get_field (int ) ;
+ int get_fields (int ) ;
+ int id_to_letter ;
+ int letter_add (int,int) ;
+ TYPE_3__* letter_buf ;
+ void** map_ll_vptr_get (int *,long long) ;
+ int memcpy (int ,char const*,int) ;
+ int now ;
+ size_t sprintf (char*,char*,int,...) ;
+ scalar_t__ strlen (char const*) ;
 
 int add_letter_priority (long long id, int priority, int delay, const char *error) {
   if (strlen (error) >= MAX_LETTER_SIZE) {
@@ -44,9 +44,9 @@ int add_letter_priority (long long id, int priority, int delay, const char *erro
   }
 
   void **ptr = map_ll_vptr_get (&id_to_letter, id);
-  if (ptr != NULL) {
+  if (ptr != ((void*)0)) {
     temp_letter *l = (temp_letter *)*ptr;
-    assert (l != NULL && l->l != NULL && l->next != NULL);
+    assert (l != ((void*)0) && l->l != ((void*)0) && l->next != ((void*)0));
 
     int len = strlen (l->l->data);
     assert (len < l->l->data_len);

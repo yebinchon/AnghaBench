@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VOID ;
-typedef  int UINT ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int VOID ;
+typedef int UINT ;
 struct TYPE_2__ {int bCommand; } ;
-typedef  int /*<<< orphan*/  LPVOID ;
-typedef  int INT ;
-typedef  scalar_t__ DWORD ;
-typedef  TYPE_1__ D3DHAL_DP2COMMAND ;
+typedef int LPVOID ;
+typedef int INT ;
+typedef scalar_t__ DWORD ;
+typedef TYPE_1__ D3DHAL_DP2COMMAND ;
 
-/* Variables and functions */
- scalar_t__ D3DParseUnknownCommand (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  printf (char*,int,int) ; 
+
+ scalar_t__ D3DParseUnknownCommand (int ,int *) ;
+ int printf (char*,int,int) ;
 
 VOID BuildReturnCode(DWORD * ReturnCode)
 {

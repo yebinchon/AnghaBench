@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_5__ ;
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
-struct TYPE_14__ {int /*<<< orphan*/  is_enabled; } ;
-typedef  TYPE_2__ VC_CONTAINER_TRACK_T ;
+
+
+typedef struct TYPE_17__ TYPE_5__ ;
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+struct TYPE_14__ {int is_enabled; } ;
+typedef TYPE_2__ VC_CONTAINER_TRACK_T ;
 struct TYPE_15__ {void* duration; TYPE_2__** tracks; TYPE_1__* priv; } ;
-typedef  TYPE_3__ VC_CONTAINER_T ;
-typedef  scalar_t__ VC_CONTAINER_STATUS_T ;
-struct TYPE_16__ {scalar_t__ size; scalar_t__ pts; int /*<<< orphan*/  data; int /*<<< orphan*/  buffer_size; int /*<<< orphan*/  dts; int /*<<< orphan*/  flags; int /*<<< orphan*/  track; } ;
-typedef  TYPE_4__ VC_CONTAINER_PACKET_T ;
+typedef TYPE_3__ VC_CONTAINER_T ;
+typedef scalar_t__ VC_CONTAINER_STATUS_T ;
+struct TYPE_16__ {scalar_t__ size; scalar_t__ pts; int data; int buffer_size; int dts; int flags; int track; } ;
+typedef TYPE_4__ VC_CONTAINER_PACKET_T ;
 struct TYPE_17__ {scalar_t__ frame_data_left; int bitrate; int frame_bitrate; scalar_t__ frame_size; scalar_t__ frame_time_pos; scalar_t__ frame_index; scalar_t__ frame_offset; void* data_size; void* num_frames; } ;
-typedef  TYPE_5__ VC_CONTAINER_MODULE_T ;
+typedef TYPE_5__ VC_CONTAINER_MODULE_T ;
 struct TYPE_13__ {TYPE_5__* module; } ;
 
-/* Variables and functions */
- void* MAX (void*,scalar_t__) ; 
- scalar_t__ MIN (int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__ READ_BYTES (TYPE_3__*,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  SKIP_BYTES (TYPE_3__*,scalar_t__) ; 
- scalar_t__ STREAM_STATUS (TYPE_3__*) ; 
- scalar_t__ VC_CONTAINER_ERROR_CONTINUE ; 
- int /*<<< orphan*/  VC_CONTAINER_PACKET_FLAG_FRAME ; 
- int /*<<< orphan*/  VC_CONTAINER_PACKET_FLAG_FRAME_END ; 
- int VC_CONTAINER_READ_FLAG_INFO ; 
- int VC_CONTAINER_READ_FLAG_SKIP ; 
- scalar_t__ VC_CONTAINER_SUCCESS ; 
- int /*<<< orphan*/  VC_CONTAINER_TIME_UNKNOWN ; 
- scalar_t__ mpga_calculate_frame_time (TYPE_3__*) ; 
- scalar_t__ mpga_sync (TYPE_3__*) ; 
+
+ void* MAX (void*,scalar_t__) ;
+ scalar_t__ MIN (int ,scalar_t__) ;
+ scalar_t__ READ_BYTES (TYPE_3__*,int ,scalar_t__) ;
+ int SKIP_BYTES (TYPE_3__*,scalar_t__) ;
+ scalar_t__ STREAM_STATUS (TYPE_3__*) ;
+ scalar_t__ VC_CONTAINER_ERROR_CONTINUE ;
+ int VC_CONTAINER_PACKET_FLAG_FRAME ;
+ int VC_CONTAINER_PACKET_FLAG_FRAME_END ;
+ int VC_CONTAINER_READ_FLAG_INFO ;
+ int VC_CONTAINER_READ_FLAG_SKIP ;
+ scalar_t__ VC_CONTAINER_SUCCESS ;
+ int VC_CONTAINER_TIME_UNKNOWN ;
+ scalar_t__ mpga_calculate_frame_time (TYPE_3__*) ;
+ scalar_t__ mpga_sync (TYPE_3__*) ;
 
 __attribute__((used)) static VC_CONTAINER_STATUS_T mpga_reader_read( VC_CONTAINER_T *p_ctx,
    VC_CONTAINER_PACKET_T *p_packet, uint32_t flags )
@@ -58,7 +58,7 @@ __attribute__((used)) static VC_CONTAINER_STATUS_T mpga_reader_read( VC_CONTAINE
 
    if (module->bitrate)
    {
-      /* Simple moving average over bitrate values seen so far */
+
       module->bitrate = (module->bitrate * 31 + module->frame_bitrate) >> 5;
    }
    else
@@ -66,11 +66,11 @@ __attribute__((used)) static VC_CONTAINER_STATUS_T mpga_reader_read( VC_CONTAINE
       module->bitrate = module->frame_bitrate;
    }
 
-   /* Check if we can skip the frame straight-away */
+
    if (!track->is_enabled ||
        ((flags & VC_CONTAINER_READ_FLAG_SKIP) && !(flags & VC_CONTAINER_READ_FLAG_INFO)))
    {
-      /* Just skip the frame */
+
       SKIP_BYTES(p_ctx, module->frame_size);
       module->frame_data_left = 0;
       if(!track->is_enabled)
@@ -78,7 +78,7 @@ __attribute__((used)) static VC_CONTAINER_STATUS_T mpga_reader_read( VC_CONTAINE
       goto end;
    }
 
-   /* Fill in packet information */
+
    p_packet->flags = p_packet->track = 0;
    if (module->frame_data_left == module->frame_size)
       p_packet->flags |= VC_CONTAINER_PACKET_FLAG_FRAME;
@@ -111,11 +111,11 @@ __attribute__((used)) static VC_CONTAINER_STATUS_T mpga_reader_read( VC_CONTAINE
       module->frame_offset += module->frame_size;
       module->frame_time_pos = mpga_calculate_frame_time(p_ctx);
 
-#if 0 /* FIXME: is this useful e.g. progressive download? */
-      module->num_frames = MAX(module->num_frames, module->frame_index);
-      module->data_size = MAX(module->data_size, module->frame_offset);
-      p_ctx->duration = MAX(p_ctx->duration, mpga_calculate_frame_time(p_ctx));
-#endif
+
+
+
+
+
    }
 
    return status == VC_CONTAINER_SUCCESS ? STREAM_STATUS(p_ctx) : status;

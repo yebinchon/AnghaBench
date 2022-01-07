@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_wc_traversal_info_t ;
-typedef  int /*<<< orphan*/  svn_wc_notify_func2_t ;
-typedef  int /*<<< orphan*/  svn_wc_adm_access_t ;
-typedef  int /*<<< orphan*/  svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_delta_editor_t ;
-typedef  int /*<<< orphan*/  svn_cancel_func_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  SVN_DEPTH_INFINITY_OR_FILES (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * svn_wc_get_update_editor3 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/  const**,void**,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int svn_wc_traversal_info_t ;
+typedef int svn_wc_notify_func2_t ;
+typedef int svn_wc_adm_access_t ;
+typedef int svn_revnum_t ;
+typedef int svn_error_t ;
+typedef int svn_delta_editor_t ;
+typedef int svn_cancel_func_t ;
+typedef int svn_boolean_t ;
+typedef int apr_pool_t ;
+
+
+ int FALSE ;
+ int SVN_DEPTH_INFINITY_OR_FILES (int ) ;
+ int * svn_wc_get_update_editor3 (int *,int *,char const*,int ,int ,int ,int ,int ,void*,int ,void*,int *,int *,int *,int *,char const*,int *,int const**,void**,int *,int *) ;
 
 svn_error_t *
 svn_wc_get_update_editor2(svn_revnum_t *target_revision,
@@ -45,8 +45,8 @@ svn_wc_get_update_editor2(svn_revnum_t *target_revision,
                                    use_commit_times,
                                    SVN_DEPTH_INFINITY_OR_FILES(recurse), FALSE,
                                    FALSE, notify_func, notify_baton,
-                                   cancel_func, cancel_baton, NULL, NULL,
-                                   NULL, NULL,
-                                   diff3_cmd, NULL, editor, edit_baton,
+                                   cancel_func, cancel_baton, ((void*)0), ((void*)0),
+                                   ((void*)0), ((void*)0),
+                                   diff3_cmd, ((void*)0), editor, edit_baton,
                                    traversal_info, pool);
 }

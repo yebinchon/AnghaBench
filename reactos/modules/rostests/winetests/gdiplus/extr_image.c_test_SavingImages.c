@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  scalar_t__ UINT ;
-struct TYPE_5__ {int /*<<< orphan*/  Clsid; } ;
-typedef  double REAL ;
-typedef  TYPE_1__ ImageCodecInfo ;
-typedef  scalar_t__ GpStatus ;
-typedef  int /*<<< orphan*/  GpImage ;
-typedef  int /*<<< orphan*/  GpBitmap ;
-typedef  char CHAR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DeleteFileA (char const*) ; 
- TYPE_1__* GdipAlloc (scalar_t__) ; 
- scalar_t__ GdipCreateBitmapFromScan0 (double const,double const,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GdipDisposeImage (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipFree (TYPE_1__*) ; 
- scalar_t__ GdipGetImageDimension (int /*<<< orphan*/ *,double*,double*) ; 
- scalar_t__ GdipGetImageEncoders (scalar_t__,scalar_t__,TYPE_1__*) ; 
- scalar_t__ GdipGetImageEncodersSize (scalar_t__*,scalar_t__*) ; 
- scalar_t__ GdipLoadImageFromFile (char const*,int /*<<< orphan*/ **) ; 
- scalar_t__ GdipSaveImageToFile (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ InvalidParameter ; 
- scalar_t__ Ok ; 
- int /*<<< orphan*/  PixelFormat24bppRGB ; 
- int /*<<< orphan*/  expect (scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  expectf (double const,double) ; 
- int /*<<< orphan*/  ok (int /*<<< orphan*/ ,char*) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef char WCHAR ;
+typedef scalar_t__ UINT ;
+struct TYPE_5__ {int Clsid; } ;
+typedef double REAL ;
+typedef TYPE_1__ ImageCodecInfo ;
+typedef scalar_t__ GpStatus ;
+typedef int GpImage ;
+typedef int GpBitmap ;
+typedef char CHAR ;
+
+
+ int DeleteFileA (char const*) ;
+ TYPE_1__* GdipAlloc (scalar_t__) ;
+ scalar_t__ GdipCreateBitmapFromScan0 (double const,double const,int ,int ,int *,int **) ;
+ int GdipDisposeImage (int *) ;
+ int GdipFree (TYPE_1__*) ;
+ scalar_t__ GdipGetImageDimension (int *,double*,double*) ;
+ scalar_t__ GdipGetImageEncoders (scalar_t__,scalar_t__,TYPE_1__*) ;
+ scalar_t__ GdipGetImageEncodersSize (scalar_t__*,scalar_t__*) ;
+ scalar_t__ GdipLoadImageFromFile (char const*,int **) ;
+ scalar_t__ GdipSaveImageToFile (int *,char const*,int *,int ) ;
+ scalar_t__ InvalidParameter ;
+ scalar_t__ Ok ;
+ int PixelFormat24bppRGB ;
+ int expect (scalar_t__,scalar_t__) ;
+ int expectf (double const,double) ;
+ int ok (int ,char*) ;
 
 __attribute__((used)) static void test_SavingImages(void)
 {
@@ -51,25 +51,25 @@ __attribute__((used)) static void test_SavingImages(void)
     static const CHAR filenameA[] = "a.bmp";
     static const WCHAR filename[] = { 'a','.','b','m','p',0 };
 
-    codecs = NULL;
+    codecs = ((void*)0);
 
     stat = GdipSaveImageToFile(0, 0, 0, 0);
     expect(InvalidParameter, stat);
 
-    bm = NULL;
-    stat = GdipCreateBitmapFromScan0(WIDTH, HEIGHT, 0, PixelFormat24bppRGB, NULL, &bm);
+    bm = ((void*)0);
+    stat = GdipCreateBitmapFromScan0(WIDTH, HEIGHT, 0, PixelFormat24bppRGB, ((void*)0), &bm);
     expect(Ok, stat);
     if (!bm)
         return;
 
-    /* invalid params */
+
     stat = GdipSaveImageToFile((GpImage*)bm, 0, 0, 0);
     expect(InvalidParameter, stat);
 
     stat = GdipSaveImageToFile((GpImage*)bm, filename, 0, 0);
     expect(InvalidParameter, stat);
 
-    /* encoder tests should succeed -- already tested */
+
     stat = GdipGetImageEncodersSize(&n, &s);
     if (stat != Ok || n == 0) goto cleanup;
 
@@ -85,7 +85,7 @@ __attribute__((used)) static void test_SavingImages(void)
     GdipDisposeImage((GpImage*)bm);
     bm = 0;
 
-    /* re-load and check image stats */
+
     stat = GdipLoadImageFromFile(filename, (GpImage**)&bm);
     expect(Ok, stat);
     if (stat != Ok) goto cleanup;

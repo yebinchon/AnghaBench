@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_fs_root_t ;
+
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef scalar_t__ svn_revnum_t ;
+typedef int svn_fs_root_t ;
 struct TYPE_8__ {scalar_t__ apr_err; } ;
-typedef  TYPE_1__ svn_error_t ;
-struct edit_baton {int /*<<< orphan*/  fs; scalar_t__ current_rev; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
+typedef TYPE_1__ svn_error_t ;
+struct edit_baton {int fs; scalar_t__ current_rev; } ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- scalar_t__ SVN_ERR_FS_NOT_FOUND ; 
- int /*<<< orphan*/  SVN_IS_VALID_REVNUM (scalar_t__) ; 
- TYPE_1__* SVN_NO_ERROR ; 
- int /*<<< orphan*/ * apr_hash_make (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_error_clear (TYPE_1__*) ; 
- TYPE_1__* svn_error_trace (TYPE_1__*) ; 
- TYPE_1__* svn_fs_node_proplist (int /*<<< orphan*/ **,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_fs_revision_root (int /*<<< orphan*/ **,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ *) ; 
+
+ int SVN_ERR (int ) ;
+ scalar_t__ SVN_ERR_FS_NOT_FOUND ;
+ int SVN_IS_VALID_REVNUM (scalar_t__) ;
+ TYPE_1__* SVN_NO_ERROR ;
+ int * apr_hash_make (int *) ;
+ int svn_error_clear (TYPE_1__*) ;
+ TYPE_1__* svn_error_trace (TYPE_1__*) ;
+ TYPE_1__* svn_fs_node_proplist (int **,int *,char const*,int *) ;
+ int svn_fs_revision_root (int **,int ,scalar_t__,int *) ;
 
 __attribute__((used)) static svn_error_t *
 fetch_props_func(apr_hash_t **props,

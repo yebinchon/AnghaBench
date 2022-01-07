@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ctts ;
 
-/* Variables and functions */
- scalar_t__ strcasecompare (char const*,char const*) ; 
- size_t strlen (char const*) ; 
+
+
+
+typedef int ctts ;
+
+
+ scalar_t__ strcasecompare (char const*,char const*) ;
+ size_t strlen (char const*) ;
 
 const char *Curl_mime_contenttype(const char *filename)
 {
-  /*
-   * If no content type was specified, we scan through a few well-known
-   * extensions and pick the first we match!
-   */
+
+
+
+
   struct ContentType {
     const char *extension;
     const char *type;
   };
   static const struct ContentType ctts[] = {
-    {".gif",  "image/gif"},
-    {".jpg",  "image/jpeg"},
+    {".gif", "image/gif"},
+    {".jpg", "image/jpeg"},
     {".jpeg", "image/jpeg"},
-    {".png",  "image/png"},
-    {".svg",  "image/svg+xml"},
-    {".txt",  "text/plain"},
-    {".htm",  "text/html"},
+    {".png", "image/png"},
+    {".svg", "image/svg+xml"},
+    {".txt", "text/plain"},
+    {".htm", "text/html"},
     {".html", "text/html"},
-    {".pdf",  "application/pdf"},
-    {".xml",  "application/xml"}
+    {".pdf", "application/pdf"},
+    {".xml", "application/xml"}
   };
 
   if(filename) {
@@ -51,5 +51,5 @@ const char *Curl_mime_contenttype(const char *filename)
           return ctts[i].type;
     }
   }
-  return NULL;
+  return ((void*)0);
 }

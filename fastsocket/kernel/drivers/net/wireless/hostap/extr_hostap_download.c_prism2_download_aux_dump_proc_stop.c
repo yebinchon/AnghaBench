@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct seq_file {struct prism2_download_aux_dump* private; } ;
 struct prism2_download_aux_dump {TYPE_1__* local; } ;
-struct TYPE_2__ {int /*<<< orphan*/  dev; } ;
+struct TYPE_2__ {int dev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  prism2_enable_aux_port (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int prism2_enable_aux_port (int ,int ) ;
 
 __attribute__((used)) static void prism2_download_aux_dump_proc_stop(struct seq_file *m, void *v)
 {
-	struct prism2_download_aux_dump *ctx = m->private;
-	prism2_enable_aux_port(ctx->local->dev, 0);
+ struct prism2_download_aux_dump *ctx = m->private;
+ prism2_enable_aux_port(ctx->local->dev, 0);
 }

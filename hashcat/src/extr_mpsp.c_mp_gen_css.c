@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-typedef  int u32 ;
+
+
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+typedef int u8 ;
+typedef int u32 ;
 struct TYPE_12__ {int opts_type; } ;
-typedef  TYPE_1__ hashconfig_t ;
+typedef TYPE_1__ hashconfig_t ;
 struct TYPE_13__ {TYPE_1__* hashconfig; } ;
-typedef  TYPE_2__ hashcat_ctx_t ;
+typedef TYPE_2__ hashcat_ctx_t ;
 struct TYPE_14__ {int* cs_buf; int cs_len; } ;
-typedef  TYPE_3__ cs_t ;
+typedef TYPE_3__ cs_t ;
 
-/* Variables and functions */
- int OPTS_TYPE_PT_HEX ; 
- int /*<<< orphan*/  event_log_error (TYPE_2__*,char*,...) ; 
- scalar_t__ hex_convert (int /*<<< orphan*/ ) ; 
- int is_valid_hex_char (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (TYPE_3__*,int /*<<< orphan*/ ,int) ; 
- void* mp_add_cs_buf (TYPE_2__*,int*,int,TYPE_3__*,size_t) ; 
+
+ int OPTS_TYPE_PT_HEX ;
+ int event_log_error (TYPE_2__*,char*,...) ;
+ scalar_t__ hex_convert (int ) ;
+ int is_valid_hex_char (int ) ;
+ int memset (TYPE_3__*,int ,int) ;
+ void* mp_add_cs_buf (TYPE_2__*,int*,int,TYPE_3__*,size_t) ;
 
 __attribute__((used)) static int mp_gen_css (hashcat_ctx_t *hashcat_ctx, char *mask_buf, size_t mask_len, cs_t *mp_sys, cs_t *mp_usr, cs_t *css_buf, u32 *css_cnt)
 {
@@ -92,7 +92,7 @@ __attribute__((used)) static int mp_gen_css (hashcat_ctx_t *hashcat_ctx, char *m
                   break;
         case '?': rc = mp_add_cs_buf (hashcat_ctx, &chr, 1, css_buf, css_pos);
                   break;
-        default:  event_log_error (hashcat_ctx, "Syntax error in mask: %s", mask_buf);
+        default: event_log_error (hashcat_ctx, "Syntax error in mask: %s", mask_buf);
                   return -1;
       }
 
@@ -104,7 +104,7 @@ __attribute__((used)) static int mp_gen_css (hashcat_ctx_t *hashcat_ctx, char *m
       {
         mask_pos++;
 
-        // if there is no 2nd hex character, show an error:
+
 
         if (mask_pos == mask_len)
         {
@@ -115,9 +115,9 @@ __attribute__((used)) static int mp_gen_css (hashcat_ctx_t *hashcat_ctx, char *m
 
         char p1 = mask_buf[mask_pos];
 
-        // if they are not valid hex character, show an error:
 
-        if ((is_valid_hex_char ((u8) p0) == false) || (is_valid_hex_char ((u8) p1) == false))
+
+        if ((is_valid_hex_char ((u8) p0) == 0) || (is_valid_hex_char ((u8) p1) == 0))
         {
           event_log_error (hashcat_ctx, "Invalid hex character detected in mask %s", mask_buf);
 

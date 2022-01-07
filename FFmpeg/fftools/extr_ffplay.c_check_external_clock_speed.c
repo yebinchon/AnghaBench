@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_9__ {double speed; } ;
 struct TYPE_7__ {scalar_t__ nb_packets; } ;
 struct TYPE_6__ {scalar_t__ nb_packets; } ;
 struct TYPE_8__ {scalar_t__ video_stream; scalar_t__ audio_stream; TYPE_4__ extclk; TYPE_2__ audioq; TYPE_1__ videoq; } ;
-typedef  TYPE_3__ VideoState ;
+typedef TYPE_3__ VideoState ;
 
-/* Variables and functions */
- scalar_t__ EXTERNAL_CLOCK_MAX_FRAMES ; 
- scalar_t__ EXTERNAL_CLOCK_MIN_FRAMES ; 
- int /*<<< orphan*/  EXTERNAL_CLOCK_SPEED_MAX ; 
- int /*<<< orphan*/  EXTERNAL_CLOCK_SPEED_MIN ; 
- double EXTERNAL_CLOCK_SPEED_STEP ; 
- double FFMAX (int /*<<< orphan*/ ,double) ; 
- double FFMIN (int /*<<< orphan*/ ,double) ; 
- double fabs (double) ; 
- int /*<<< orphan*/  set_clock_speed (TYPE_4__*,double) ; 
+
+ scalar_t__ EXTERNAL_CLOCK_MAX_FRAMES ;
+ scalar_t__ EXTERNAL_CLOCK_MIN_FRAMES ;
+ int EXTERNAL_CLOCK_SPEED_MAX ;
+ int EXTERNAL_CLOCK_SPEED_MIN ;
+ double EXTERNAL_CLOCK_SPEED_STEP ;
+ double FFMAX (int ,double) ;
+ double FFMIN (int ,double) ;
+ double fabs (double) ;
+ int set_clock_speed (TYPE_4__*,double) ;
 
 __attribute__((used)) static void check_external_clock_speed(VideoState *is) {
    if (is->video_stream >= 0 && is->videoq.nb_packets <= EXTERNAL_CLOCK_MIN_FRAMES ||

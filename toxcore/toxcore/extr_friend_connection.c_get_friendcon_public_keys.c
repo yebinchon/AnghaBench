@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_3__ {int /*<<< orphan*/  dht_temp_pk; int /*<<< orphan*/  real_public_key; } ;
-typedef  int /*<<< orphan*/  Friend_Connections ;
-typedef  TYPE_1__ Friend_Conn ;
 
-/* Variables and functions */
- int /*<<< orphan*/  crypto_box_PUBLICKEYBYTES ; 
- TYPE_1__* get_conn (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_3__ {int dht_temp_pk; int real_public_key; } ;
+typedef int Friend_Connections ;
+typedef TYPE_1__ Friend_Conn ;
+
+
+ int crypto_box_PUBLICKEYBYTES ;
+ TYPE_1__* get_conn (int *,int) ;
+ int memcpy (int *,int ,int ) ;
 
 int get_friendcon_public_keys(uint8_t *real_pk, uint8_t *dht_temp_pk, Friend_Connections *fr_c, int friendcon_id)
 {

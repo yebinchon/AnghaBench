@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct metafile {int size; int flags; struct aio_connection* aio; scalar_t__ data; int /*<<< orphan*/  cnt; } ;
+
+
+
+
+struct metafile {int size; int flags; struct aio_connection* aio; scalar_t__ data; int cnt; } ;
 struct connection {int dummy; } ;
 struct aio_connection {scalar_t__ basic_type; scalar_t__ extra; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ ct_aio ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  onload_counter (scalar_t__,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  tot_aio_fails ; 
- int tot_aio_loaded_bytes ; 
- int tot_user_metafile_bytes ; 
- int /*<<< orphan*/  tot_user_metafiles ; 
- int verbosity ; 
- int /*<<< orphan*/  zzfree (scalar_t__,int) ; 
+
+ int assert (int) ;
+ scalar_t__ ct_aio ;
+ int fprintf (int ,char*,...) ;
+ int onload_counter (scalar_t__,int,int ,int ) ;
+ int stderr ;
+ int tot_aio_fails ;
+ int tot_aio_loaded_bytes ;
+ int tot_user_metafile_bytes ;
+ int tot_user_metafiles ;
+ int verbosity ;
+ int zzfree (scalar_t__,int) ;
 
 int onload_metafile (struct connection *c, int read_bytes) {
   if (verbosity > 2) {
@@ -36,7 +36,7 @@ int onload_metafile (struct connection *c, int read_bytes) {
   struct metafile *meta = (struct metafile *) a->extra;
 
   assert (a->basic_type == ct_aio);
-  assert (meta != NULL);          
+  assert (meta != ((void*)0));
 
   if (meta->aio != a) {
     fprintf (stderr, "assertion (meta->aio == a) will fail\n");
@@ -71,11 +71,11 @@ int onload_metafile (struct connection *c, int read_bytes) {
   zzfree(meta->data, meta->size);
   meta->data = 0;
 
-  meta->aio = NULL;
+  meta->aio = ((void*)0);
   meta->flags &= ~1;
-  
+
   tot_user_metafile_bytes += meta->size;
   tot_user_metafiles++;
-  
+
   return 1;
 }

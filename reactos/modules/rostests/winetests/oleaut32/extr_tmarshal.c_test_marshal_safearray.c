@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  SAFEARRAY ;
-typedef  int /*<<< orphan*/  IWidget ;
-typedef  int /*<<< orphan*/  IDispatch ;
-typedef  scalar_t__ HRESULT ;
 
-/* Variables and functions */
- scalar_t__ IWidget_safearray (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ **,int /*<<< orphan*/ **) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  SafeArrayDestroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  check_safearray (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * make_safearray (int) ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
+
+
+
+typedef int SAFEARRAY ;
+typedef int IWidget ;
+typedef int IDispatch ;
+typedef scalar_t__ HRESULT ;
+
+
+ scalar_t__ IWidget_safearray (int *,int *,int **,int **,int **) ;
+ scalar_t__ S_OK ;
+ int SafeArrayDestroy (int *) ;
+ int check_safearray (int *,int) ;
+ int * make_safearray (int) ;
+ int ok (int,char*,scalar_t__) ;
 
 __attribute__((used)) static void test_marshal_safearray(IWidget *widget, IDispatch *disp)
 {

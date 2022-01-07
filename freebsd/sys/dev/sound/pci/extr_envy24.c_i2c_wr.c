@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u_int8_t ;
-typedef  int u_int32_t ;
+
+
+
+
+typedef int u_int8_t ;
+typedef int u_int32_t ;
 struct envy24_delta_ak4524_codec {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  i2c_ack (struct envy24_delta_ak4524_codec*,void (*) (void*,unsigned int,unsigned int)) ; 
- int /*<<< orphan*/  i2c_start (struct envy24_delta_ak4524_codec*,void (*) (void*,unsigned int,unsigned int)) ; 
- int /*<<< orphan*/  i2c_stop (struct envy24_delta_ak4524_codec*,void (*) (void*,unsigned int,unsigned int)) ; 
- int /*<<< orphan*/  i2c_wrbit (struct envy24_delta_ak4524_codec*,void (*) (void*,unsigned int,unsigned int),int) ; 
+
+ int i2c_ack (struct envy24_delta_ak4524_codec*,void (*) (void*,unsigned int,unsigned int)) ;
+ int i2c_start (struct envy24_delta_ak4524_codec*,void (*) (void*,unsigned int,unsigned int)) ;
+ int i2c_stop (struct envy24_delta_ak4524_codec*,void (*) (void*,unsigned int,unsigned int)) ;
+ int i2c_wrbit (struct envy24_delta_ak4524_codec*,void (*) (void*,unsigned int,unsigned int),int) ;
 
 __attribute__((used)) static void
-i2c_wr(void *codec,  void (*ctrl)(void*, unsigned int, unsigned int), u_int32_t dev, int reg, u_int8_t val)
+i2c_wr(void *codec, void (*ctrl)(void*, unsigned int, unsigned int), u_int32_t dev, int reg, u_int8_t val)
 {
         struct envy24_delta_ak4524_codec *ptr = codec;
         int mask;

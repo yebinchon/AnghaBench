@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct udp_target {int send_num; int max_confirmed; scalar_t__ window_size; int flags; int /*<<< orphan*/  sent; int /*<<< orphan*/  last_ack; scalar_t__ resend_state; } ;
+
+
+
+
+struct udp_target {int send_num; int max_confirmed; scalar_t__ window_size; int flags; int sent; int last_ack; scalar_t__ resend_state; } ;
 struct udp_msg {int dummy; } ;
 
-/* Variables and functions */
- scalar_t__ START_WINDOW_SIZE ; 
- int UDP_WAIT ; 
- struct udp_target* __S ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  precise_now ; 
- int /*<<< orphan*/  start_tx_timer (struct udp_target*) ; 
- int /*<<< orphan*/  stop_tx_timer (struct udp_target*) ; 
- int /*<<< orphan*/  tree_delete_udp_msg (int /*<<< orphan*/ ,struct udp_msg*) ; 
- struct udp_msg** tree_lookup_value_udp_msg (int /*<<< orphan*/ ,void*) ; 
- int /*<<< orphan*/  udp_msg_confirm_free (struct udp_msg*) ; 
- int /*<<< orphan*/  udp_target_restart_send (struct udp_target*) ; 
- int /*<<< orphan*/  vkprintf (int,char*,int) ; 
+
+ scalar_t__ START_WINDOW_SIZE ;
+ int UDP_WAIT ;
+ struct udp_target* __S ;
+ int assert (int) ;
+ int precise_now ;
+ int start_tx_timer (struct udp_target*) ;
+ int stop_tx_timer (struct udp_target*) ;
+ int tree_delete_udp_msg (int ,struct udp_msg*) ;
+ struct udp_msg** tree_lookup_value_udp_msg (int ,void*) ;
+ int udp_msg_confirm_free (struct udp_msg*) ;
+ int udp_target_restart_send (struct udp_target*) ;
+ int vkprintf (int,char*,int) ;
 
 void udp_target_ack (struct udp_target *S, int x) {
   if (x >= S->send_num) {

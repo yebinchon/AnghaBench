@@ -1,61 +1,61 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {char* prefix; int type; int /*<<< orphan*/ * bio; } ;
-typedef  int /*<<< orphan*/  BIO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_ctrl (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  BIO_puts (int /*<<< orphan*/ *,char*) ; 
-#define  CALLBACK_CHANNEL 129 
- int /*<<< orphan*/  CRYPTO_THREAD_write_lock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OSSL_TRACE_CTRL_BEGIN ; 
-#define  SIMPLE_CHANNEL 128 
- int /*<<< orphan*/ * current_channel ; 
- int ossl_trace_get_category (int) ; 
- int /*<<< orphan*/  strlen (char*) ; 
- TYPE_1__* trace_channels ; 
- int /*<<< orphan*/  trace_lock ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {char* prefix; int type; int * bio; } ;
+typedef int BIO ;
+
+
+ int BIO_ctrl (int *,int ,int ,char*) ;
+ int BIO_puts (int *,char*) ;
+
+ int CRYPTO_THREAD_write_lock (int ) ;
+ int OSSL_TRACE_CTRL_BEGIN ;
+
+ int * current_channel ;
+ int ossl_trace_get_category (int) ;
+ int strlen (char*) ;
+ TYPE_1__* trace_channels ;
+ int trace_lock ;
 
 BIO *OSSL_trace_begin(int category)
 {
-    BIO *channel = NULL;
-#ifndef OPENSSL_NO_TRACE
-    char *prefix = NULL;
+    BIO *channel = ((void*)0);
+
+    char *prefix = ((void*)0);
 
     category = ossl_trace_get_category(category);
     if (category < 0)
-        return NULL;
+        return ((void*)0);
 
     channel = trace_channels[category].bio;
     prefix = trace_channels[category].prefix;
 
-    if (channel != NULL) {
+    if (channel != ((void*)0)) {
         CRYPTO_THREAD_write_lock(trace_lock);
         current_channel = channel;
         switch (trace_channels[category].type) {
-        case SIMPLE_CHANNEL:
-            if (prefix != NULL) {
+        case 128:
+            if (prefix != ((void*)0)) {
                 (void)BIO_puts(channel, prefix);
                 (void)BIO_puts(channel, "\n");
             }
             break;
-        case CALLBACK_CHANNEL:
+        case 129:
             (void)BIO_ctrl(channel, OSSL_TRACE_CTRL_BEGIN,
-                           prefix == NULL ? 0 : strlen(prefix), prefix);
+                           prefix == ((void*)0) ? 0 : strlen(prefix), prefix);
             break;
         }
     }
-#endif
+
     return channel;
 }

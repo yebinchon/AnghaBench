@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  FileNameW; } ;
-typedef  TYPE_1__ DIRENT ;
 
-/* Variables and functions */
- int UniStrCmpi (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int FileNameW; } ;
+typedef TYPE_1__ DIRENT ;
+
+
+ int UniStrCmpi (int ,int ) ;
 
 int CompareDirListByName(void *p1, void *p2)
 {
-	DIRENT *d1, *d2;
-	if (p1 == NULL || p2 == NULL)
-	{
-		return 0;
-	}
-	d1 = *(DIRENT **)p1;
-	d2 = *(DIRENT **)p2;
-	if (d1 == NULL || d2 == NULL)
-	{
-		return 0;
-	}
-	return UniStrCmpi(d1->FileNameW, d2->FileNameW);
+ DIRENT *d1, *d2;
+ if (p1 == ((void*)0) || p2 == ((void*)0))
+ {
+  return 0;
+ }
+ d1 = *(DIRENT **)p1;
+ d2 = *(DIRENT **)p2;
+ if (d1 == ((void*)0) || d2 == ((void*)0))
+ {
+  return 0;
+ }
+ return UniStrCmpi(d1->FileNameW, d2->FileNameW);
 }

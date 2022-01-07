@@ -1,77 +1,77 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buf ;
-typedef  int /*<<< orphan*/  SSL_CTX ;
-typedef  int /*<<< orphan*/  SSL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MSG1 ; 
- int /*<<< orphan*/  MSG2 ; 
- int /*<<< orphan*/  SSL_CTX_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SSL_EARLY_DATA_NOT_SENT ; 
- int /*<<< orphan*/  SSL_READ_EARLY_DATA_ERROR ; 
- int /*<<< orphan*/  SSL_READ_EARLY_DATA_FINISH ; 
- int /*<<< orphan*/  SSL_SESSION_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SSL_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SSL_get_early_data_status (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SSL_read_early_data (int /*<<< orphan*/ *,unsigned char*,int,size_t*) ; 
- int /*<<< orphan*/  SSL_read_ex (int /*<<< orphan*/ *,unsigned char*,int,size_t*) ; 
- int /*<<< orphan*/  SSL_set_connect_state (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SSL_set_max_proto_version (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SSL_write_ex (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,size_t*) ; 
- int /*<<< orphan*/  TEST_false (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_int_eq (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_mem_eq (unsigned char*,size_t,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_size_t_eq (size_t,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_true (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TLS1_2_VERSION ; 
- int /*<<< orphan*/ * clientpsk ; 
- int /*<<< orphan*/ * serverpsk ; 
- int /*<<< orphan*/  setupearly_data_test (int /*<<< orphan*/ **,int /*<<< orphan*/ **,int /*<<< orphan*/ **,int /*<<< orphan*/ **,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  strlen (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int buf ;
+typedef int SSL_CTX ;
+typedef int SSL ;
+
+
+ int MSG1 ;
+ int MSG2 ;
+ int SSL_CTX_free (int *) ;
+ int SSL_EARLY_DATA_NOT_SENT ;
+ int SSL_READ_EARLY_DATA_ERROR ;
+ int SSL_READ_EARLY_DATA_FINISH ;
+ int SSL_SESSION_free (int *) ;
+ int SSL_free (int *) ;
+ int SSL_get_early_data_status (int *) ;
+ int SSL_read_early_data (int *,unsigned char*,int,size_t*) ;
+ int SSL_read_ex (int *,unsigned char*,int,size_t*) ;
+ int SSL_set_connect_state (int *) ;
+ int SSL_set_max_proto_version (int *,int ) ;
+ int SSL_write_ex (int *,int ,int ,size_t*) ;
+ int TEST_false (int ) ;
+ int TEST_int_eq (int ,int ) ;
+ int TEST_mem_eq (unsigned char*,size_t,int ,int ) ;
+ int TEST_size_t_eq (size_t,int ) ;
+ int TEST_true (int ) ;
+ int TLS1_2_VERSION ;
+ int * clientpsk ;
+ int * serverpsk ;
+ int setupearly_data_test (int **,int **,int **,int **,int *,int) ;
+ int strlen (int ) ;
 
 __attribute__((used)) static int test_early_data_tls1_2(int idx)
 {
-    SSL_CTX *cctx = NULL, *sctx = NULL;
-    SSL *clientssl = NULL, *serverssl = NULL;
+    SSL_CTX *cctx = ((void*)0), *sctx = ((void*)0);
+    SSL *clientssl = ((void*)0), *serverssl = ((void*)0);
     int testresult = 0;
     unsigned char buf[20];
     size_t readbytes, written;
 
     if (!TEST_true(setupearly_data_test(&cctx, &sctx, &clientssl,
-                                        &serverssl, NULL, idx)))
+                                        &serverssl, ((void*)0), idx)))
         goto end;
 
-    /* Write some data - should block due to handshake with server */
+
     SSL_set_max_proto_version(clientssl, TLS1_2_VERSION);
     SSL_set_connect_state(clientssl);
     if (!TEST_false(SSL_write_ex(clientssl, MSG1, strlen(MSG1), &written)))
         goto end;
 
-    /*
-     * Server should do TLSv1.2 handshake. First it will block waiting for more
-     * messages from client after ServerDone. Then SSL_read_early_data should
-     * finish and detect that early data has not been sent
-     */
+
+
+
+
+
     if (!TEST_int_eq(SSL_read_early_data(serverssl, buf, sizeof(buf),
                                          &readbytes),
                      SSL_READ_EARLY_DATA_ERROR))
         goto end;
 
-    /*
-     * Continue writing the message we started earlier. Will still block waiting
-     * for the CCS/Finished from server
-     */
+
+
+
+
     if (!TEST_false(SSL_write_ex(clientssl, MSG1, strlen(MSG1), &written))
             || !TEST_int_eq(SSL_read_early_data(serverssl, buf, sizeof(buf),
                                                 &readbytes),
@@ -81,7 +81,7 @@ __attribute__((used)) static int test_early_data_tls1_2(int idx)
                             SSL_EARLY_DATA_NOT_SENT))
         goto end;
 
-    /* Continue writing the message we started earlier */
+
     if (!TEST_true(SSL_write_ex(clientssl, MSG1, strlen(MSG1), &written))
             || !TEST_size_t_eq(written, strlen(MSG1))
             || !TEST_int_eq(SSL_get_early_data_status(clientssl),
@@ -99,7 +99,7 @@ __attribute__((used)) static int test_early_data_tls1_2(int idx)
  end:
     SSL_SESSION_free(clientpsk);
     SSL_SESSION_free(serverpsk);
-    clientpsk = serverpsk = NULL;
+    clientpsk = serverpsk = ((void*)0);
     SSL_free(serverssl);
     SSL_free(clientssl);
     SSL_CTX_free(sctx);

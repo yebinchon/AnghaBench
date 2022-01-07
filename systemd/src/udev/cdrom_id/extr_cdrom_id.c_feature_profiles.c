@@ -1,35 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int cd_bd ; 
- int cd_bd_r ; 
- int cd_bd_re ; 
- int cd_cd_r ; 
- int cd_cd_rom ; 
- int cd_cd_rw ; 
- int cd_dvd_plus_r ; 
- int cd_dvd_plus_r_dl ; 
- int cd_dvd_plus_rw ; 
- int cd_dvd_plus_rw_dl ; 
- int cd_dvd_ram ; 
- int cd_dvd_rom ; 
- int cd_dvd_rw ; 
- int cd_hddvd ; 
- int cd_hddvd_r ; 
- int cd_hddvd_rw ; 
- int cd_mo ; 
- int /*<<< orphan*/  log_debug (char*,int) ; 
+ int cd_bd ;
+ int cd_bd_r ;
+ int cd_bd_re ;
+ int cd_cd_r ;
+ int cd_cd_rom ;
+ int cd_cd_rw ;
+ int cd_dvd_plus_r ;
+ int cd_dvd_plus_r_dl ;
+ int cd_dvd_plus_rw ;
+ int cd_dvd_plus_rw_dl ;
+ int cd_dvd_ram ;
+ int cd_dvd_rom ;
+ int cd_dvd_rw ;
+ int cd_hddvd ;
+ int cd_hddvd_r ;
+ int cd_hddvd_rw ;
+ int cd_mo ;
+ int log_debug (char*,int) ;
 
 __attribute__((used)) static int feature_profiles(const unsigned char *profiles, size_t size) {
         unsigned i;

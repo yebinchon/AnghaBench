@@ -1,18 +1,9 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
-
 __attribute__((used)) static void _ov_splice(float **pcm,float **lappcm,
                        int n1, int n2,
                        int ch1, int ch2,
@@ -26,7 +17,7 @@ __attribute__((used)) static void _ov_splice(float **pcm,float **lappcm,
     w=w2;
   }
 
-  /* splice */
+
   for(j=0;j<ch1 && j<ch2;j++){
     float *s=lappcm[j];
     float *d=pcm[j];
@@ -37,7 +28,7 @@ __attribute__((used)) static void _ov_splice(float **pcm,float **lappcm,
       d[i]=d[i]*wd + s[i]*ws;
     }
   }
-  /* window from zero */
+
   for(;j<ch2;j++){
     float *d=pcm[j];
     for(i=0;i<n;i++){

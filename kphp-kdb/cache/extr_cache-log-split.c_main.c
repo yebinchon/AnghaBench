@@ -1,71 +1,71 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int /*<<< orphan*/  replica_prefix; } ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int replica_prefix; } ;
 struct TYPE_7__ {TYPE_1__* info; } ;
-struct TYPE_6__ {char* filename; int /*<<< orphan*/  file_size; } ;
+struct TYPE_6__ {char* filename; int file_size; } ;
 
-/* Variables and functions */
- TYPE_2__* Binlog ; 
- int O_APPEND ; 
- int O_CREAT ; 
- int O_WRONLY ; 
- int /*<<< orphan*/  SEEK_END ; 
- void* atoi (char*) ; 
- scalar_t__ atoll (char*) ; 
- char* binlogname ; 
- scalar_t__ change_user (char*) ; 
- int /*<<< orphan*/  clear_log () ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  copy_mod ; 
- int /*<<< orphan*/  copy_rem ; 
- scalar_t__ engine_preload_filelist (char*,char*) ; 
- TYPE_3__* engine_replica ; 
- int /*<<< orphan*/  exit (int) ; 
- scalar_t__ fdatasync (int) ; 
- int /*<<< orphan*/  flush_out () ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char) ; 
- int getopt (int,char**,char*) ; 
- int /*<<< orphan*/  init_cache_data (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  init_log_data (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ jump_log_pos ; 
- int /*<<< orphan*/  kprintf (char*,...) ; 
- scalar_t__ log_limit_pos ; 
- scalar_t__ log_readto_pos ; 
- scalar_t__ lseek (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int open (char*,int,int) ; 
- TYPE_2__* open_binlog (TYPE_3__*,scalar_t__) ; 
- char* optarg ; 
- int optind ; 
- char* output_cache_id ; 
- int /*<<< orphan*/  output_stats () ; 
- char* progname ; 
- int replay_log (int /*<<< orphan*/ ,int) ; 
- int sscanf (char*,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- void* start_timestamp ; 
- int /*<<< orphan*/  stderr ; 
- int targ_existed ; 
- int targ_fd ; 
- char* targ_fname ; 
- scalar_t__ targ_orig_size ; 
- void* time (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  usage () ; 
- char* username ; 
- scalar_t__ verbosity ; 
- int /*<<< orphan*/  vkprintf (int,char*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  write_local_copies_logevents ; 
+
+ TYPE_2__* Binlog ;
+ int O_APPEND ;
+ int O_CREAT ;
+ int O_WRONLY ;
+ int SEEK_END ;
+ void* atoi (char*) ;
+ scalar_t__ atoll (char*) ;
+ char* binlogname ;
+ scalar_t__ change_user (char*) ;
+ int clear_log () ;
+ int close (int) ;
+ int copy_mod ;
+ int copy_rem ;
+ scalar_t__ engine_preload_filelist (char*,char*) ;
+ TYPE_3__* engine_replica ;
+ int exit (int) ;
+ scalar_t__ fdatasync (int) ;
+ int flush_out () ;
+ int fprintf (int ,char*,char) ;
+ int getopt (int,char**,char*) ;
+ int init_cache_data (int ) ;
+ int init_log_data (scalar_t__,int ,int ) ;
+ scalar_t__ jump_log_pos ;
+ int kprintf (char*,...) ;
+ scalar_t__ log_limit_pos ;
+ scalar_t__ log_readto_pos ;
+ scalar_t__ lseek (int,int ,int ) ;
+ int open (char*,int,int) ;
+ TYPE_2__* open_binlog (TYPE_3__*,scalar_t__) ;
+ char* optarg ;
+ int optind ;
+ char* output_cache_id ;
+ int output_stats () ;
+ char* progname ;
+ int replay_log (int ,int) ;
+ int sscanf (char*,char*,int *,int *) ;
+ void* start_timestamp ;
+ int stderr ;
+ int targ_existed ;
+ int targ_fd ;
+ char* targ_fname ;
+ scalar_t__ targ_orig_size ;
+ void* time (int *) ;
+ int usage () ;
+ char* username ;
+ scalar_t__ verbosity ;
+ int vkprintf (int,char*,char*,int ) ;
+ int write_local_copies_logevents ;
 
 int main (int argc, char *argv[]) {
   int i;
@@ -80,7 +80,7 @@ int main (int argc, char *argv[]) {
       break;
     case 'S':
       start_timestamp = atoi (optarg);
-      if (start_timestamp > time (NULL)) {
+      if (start_timestamp > time (((void*)0))) {
         kprintf ("start_timestamps could be after current time\n");
         exit (1);
       }
@@ -90,7 +90,7 @@ int main (int argc, char *argv[]) {
       return 2;
     case 'm':
       if (sscanf (optarg, "%d,%d", &copy_rem, &copy_mod) != 2 || copy_rem < 0 || copy_rem >= copy_mod) {
-	      usage();
+       usage();
       }
       break;
     case 's':

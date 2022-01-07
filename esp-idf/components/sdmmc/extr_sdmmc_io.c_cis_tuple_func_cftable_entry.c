@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint16_t ;
-typedef  int /*<<< orphan*/  esp_err_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint16_t ;
+typedef int esp_err_t ;
 struct TYPE_2__ {char* name; } ;
-typedef  TYPE_1__ cis_tuple_t ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef TYPE_1__ cis_tuple_t ;
+typedef int FILE ;
 
-/* Variables and functions */
- int BIT (int) ; 
- int /*<<< orphan*/  CIS_CHECK_SIZE (int,int) ; 
- int /*<<< orphan*/  CIS_CHECK_UNSUPPORTED (int) ; 
- int /*<<< orphan*/  ESP_OK ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*,...) ; 
+
+ int BIT (int) ;
+ int CIS_CHECK_SIZE (int,int) ;
+ int CIS_CHECK_UNSUPPORTED (int) ;
+ int ESP_OK ;
+ int fprintf (int *,char*,...) ;
 
 __attribute__((used)) static esp_err_t cis_tuple_func_cftable_entry(const void* p, uint8_t* data, FILE* fp)
 {
@@ -53,9 +53,9 @@ __attribute__((used)) static esp_err_t cis_tuple_func_cftable_entry(const void* 
     int power = data[0] & 3;
     fprintf(fp, "  FS: %02X, misc: %d, mem_space: %d, irq: %d, io_space: %d, timing: %d, power: %d\n", *(data++), misc, mem_space, irq, io_sp, timing, power);
 
-    CIS_CHECK_UNSUPPORTED(power == 0);  //power descriptor is not handled yet
-    CIS_CHECK_UNSUPPORTED(!timing);     //timing descriptor is not handled yet
-    CIS_CHECK_UNSUPPORTED(!io_sp);      //io space descriptor is not handled yet
+    CIS_CHECK_UNSUPPORTED(power == 0);
+    CIS_CHECK_UNSUPPORTED(!timing);
+    CIS_CHECK_UNSUPPORTED(!io_sp);
 
     if (irq) {
         CIS_CHECK_SIZE(size--, 1);
@@ -72,12 +72,12 @@ __attribute__((used)) static esp_err_t cis_tuple_func_cftable_entry(const void* 
     if (mem_space) {
         CIS_CHECK_SIZE(size, 2);
         size-=2;
-        CIS_CHECK_UNSUPPORTED(mem_space==1); //other cases not handled yet
+        CIS_CHECK_UNSUPPORTED(mem_space==1);
         int len = *(uint16_t*)data;
         fprintf(fp, "  LEN: %04X\n", len);
         data+=2;
     }
 
-    CIS_CHECK_UNSUPPORTED(misc==0);    //misc descriptor is not handled yet
+    CIS_CHECK_UNSUPPORTED(misc==0);
     return ESP_OK;
 }

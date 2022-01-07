@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int GLYPH ;
 
-/* Variables and functions */
- int GLYPH_REDRAW ; 
- int GlyphIntensity (int) ; 
+
+
+
+typedef int GLYPH ;
+
+
+ int GLYPH_REDRAW ;
+ int GlyphIntensity (int) ;
 
 GLYPH DarkenGlyph(GLYPH glyph)
 {
-	int intensity = GlyphIntensity(glyph);
+ int intensity = GlyphIntensity(glyph);
 
-	if(intensity > 0)
-		return GLYPH_REDRAW | ((intensity - 1) << 8) | (glyph & 0x00FF);
-	else
-		return glyph;
+ if(intensity > 0)
+  return GLYPH_REDRAW | ((intensity - 1) << 8) | (glyph & 0x00FF);
+ else
+  return glyph;
 }

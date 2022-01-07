@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct data {int len; int /*<<< orphan*/  val; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  xrealloc (int /*<<< orphan*/ ,int) ; 
+
+
+
+struct data {int len; int val; } ;
+
+
+ int xrealloc (int ,int) ;
 
 struct data data_grow_for(struct data d, int xlen)
 {
-	struct data nd;
-	int newsize;
+ struct data nd;
+ int newsize;
 
-	if (xlen == 0)
-		return d;
+ if (xlen == 0)
+  return d;
 
-	nd = d;
+ nd = d;
 
-	newsize = xlen;
+ newsize = xlen;
 
-	while ((d.len + xlen) > newsize)
-		newsize *= 2;
+ while ((d.len + xlen) > newsize)
+  newsize *= 2;
 
-	nd.val = xrealloc(d.val, newsize);
+ nd.val = xrealloc(d.val, newsize);
 
-	return nd;
+ return nd;
 }

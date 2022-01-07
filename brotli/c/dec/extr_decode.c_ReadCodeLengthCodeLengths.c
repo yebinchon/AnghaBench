@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t uint8_t ;
-typedef  size_t uint32_t ;
-struct TYPE_6__ {size_t repeat; unsigned int space; size_t sub_loop_counter; size_t* code_length_code_lengths; int /*<<< orphan*/ * code_length_histo; int /*<<< orphan*/  substate_huffman; } ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef size_t uint8_t ;
+typedef size_t uint32_t ;
+struct TYPE_6__ {size_t repeat; unsigned int space; size_t sub_loop_counter; size_t* code_length_code_lengths; int * code_length_histo; int substate_huffman; } ;
 struct TYPE_5__ {TYPE_2__ header; } ;
-struct TYPE_7__ {TYPE_1__ arena; int /*<<< orphan*/  br; } ;
-typedef  TYPE_2__ BrotliMetablockHeaderArena ;
-typedef  TYPE_3__ BrotliDecoderState ;
-typedef  int /*<<< orphan*/  BrotliDecoderErrorCode ;
-typedef  int /*<<< orphan*/  BrotliBitReader ;
+struct TYPE_7__ {TYPE_1__ arena; int br; } ;
+typedef TYPE_2__ BrotliMetablockHeaderArena ;
+typedef TYPE_3__ BrotliDecoderState ;
+typedef int BrotliDecoderErrorCode ;
+typedef int BrotliBitReader ;
 
-/* Variables and functions */
- size_t BROTLI_CODE_LENGTH_CODES ; 
- int /*<<< orphan*/  BROTLI_DECODER_ERROR_FORMAT_CL_SPACE ; 
- int /*<<< orphan*/  BROTLI_DECODER_NEEDS_MORE_INPUT ; 
- int /*<<< orphan*/  BROTLI_DECODER_SUCCESS ; 
- int /*<<< orphan*/  BROTLI_FAILURE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BROTLI_LOG_ARRAY_INDEX (size_t*,size_t const) ; 
- scalar_t__ BROTLI_PREDICT_FALSE (int) ; 
- int /*<<< orphan*/  BROTLI_STATE_HUFFMAN_COMPLEX ; 
- int /*<<< orphan*/  BrotliDropBits (int /*<<< orphan*/ *,size_t) ; 
- size_t BrotliGetAvailableBits (int /*<<< orphan*/ *) ; 
- int BrotliGetBitsUnmasked (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BrotliSafeGetBits (int /*<<< orphan*/ *,int,size_t*) ; 
- size_t* kCodeLengthCodeOrder ; 
- size_t* kCodeLengthPrefixLength ; 
- size_t* kCodeLengthPrefixValue ; 
+
+ size_t BROTLI_CODE_LENGTH_CODES ;
+ int BROTLI_DECODER_ERROR_FORMAT_CL_SPACE ;
+ int BROTLI_DECODER_NEEDS_MORE_INPUT ;
+ int BROTLI_DECODER_SUCCESS ;
+ int BROTLI_FAILURE (int ) ;
+ int BROTLI_LOG_ARRAY_INDEX (size_t*,size_t const) ;
+ scalar_t__ BROTLI_PREDICT_FALSE (int) ;
+ int BROTLI_STATE_HUFFMAN_COMPLEX ;
+ int BrotliDropBits (int *,size_t) ;
+ size_t BrotliGetAvailableBits (int *) ;
+ int BrotliGetBitsUnmasked (int *) ;
+ int BrotliSafeGetBits (int *,int,size_t*) ;
+ size_t* kCodeLengthCodeOrder ;
+ size_t* kCodeLengthPrefixLength ;
+ size_t* kCodeLengthPrefixValue ;
 
 __attribute__((used)) static BrotliDecoderErrorCode ReadCodeLengthCodeLengths(BrotliDecoderState* s) {
   BrotliBitReader* br = &s->br;
@@ -74,7 +74,7 @@ __attribute__((used)) static BrotliDecoderErrorCode ReadCodeLengthCodeLengths(Br
       ++num_codes;
       ++h->code_length_histo[v];
       if (space - 1U >= 32U) {
-        /* space is 0 or wrapped around. */
+
         break;
       }
     }

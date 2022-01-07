@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/ * lpVtbl; } ;
-struct ddraw_palette {int ref; int flags; int /*<<< orphan*/ * ifaceToRelease; struct ddraw* ddraw; int /*<<< orphan*/  wined3d_palette; TYPE_1__ IDirectDrawPalette_iface; } ;
-struct ddraw {int /*<<< orphan*/  IDirectDraw7_iface; int /*<<< orphan*/  wined3d_device; } ;
-typedef  int /*<<< orphan*/  PALETTEENTRY ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int HRESULT ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int DDERR_INVALIDPARAMS ; 
- int DDPCAPS_8BITENTRIES ; 
- int DDPCAPS_ALLOW256 ; 
- int DDPCAPS_ALPHA ; 
- int DD_OK ; 
- scalar_t__ FAILED (int) ; 
- int /*<<< orphan*/  IUnknown_AddRef (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  WARN (char*,int) ; 
- int WINED3D_PALETTE_8BIT_ENTRIES ; 
- int WINED3D_PALETTE_ALLOW_256 ; 
- int WINED3D_PALETTE_ALPHA ; 
- int /*<<< orphan*/  ddraw_palette_vtbl ; 
- unsigned int palette_size (int) ; 
- int wined3d_palette_create (int /*<<< orphan*/ ,int,unsigned int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int * lpVtbl; } ;
+struct ddraw_palette {int ref; int flags; int * ifaceToRelease; struct ddraw* ddraw; int wined3d_palette; TYPE_1__ IDirectDrawPalette_iface; } ;
+struct ddraw {int IDirectDraw7_iface; int wined3d_device; } ;
+typedef int PALETTEENTRY ;
+typedef int IUnknown ;
+typedef int HRESULT ;
+typedef int DWORD ;
+
+
+ int DDERR_INVALIDPARAMS ;
+ int DDPCAPS_8BITENTRIES ;
+ int DDPCAPS_ALLOW256 ;
+ int DDPCAPS_ALPHA ;
+ int DD_OK ;
+ scalar_t__ FAILED (int) ;
+ int IUnknown_AddRef (int *) ;
+ int WARN (char*,int) ;
+ int WINED3D_PALETTE_8BIT_ENTRIES ;
+ int WINED3D_PALETTE_ALLOW_256 ;
+ int WINED3D_PALETTE_ALPHA ;
+ int ddraw_palette_vtbl ;
+ unsigned int palette_size (int) ;
+ int wined3d_palette_create (int ,int,unsigned int,int *,int *) ;
 
 HRESULT ddraw_palette_init(struct ddraw_palette *palette,
         struct ddraw *ddraw, DWORD flags, PALETTEENTRY *entries)

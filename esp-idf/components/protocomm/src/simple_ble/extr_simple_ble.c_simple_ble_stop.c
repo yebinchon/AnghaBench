@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ esp_err_t ;
 
-/* Variables and functions */
- scalar_t__ ESP_FAIL ; 
- int /*<<< orphan*/  ESP_LOGD (int /*<<< orphan*/ ,char*,...) ; 
- scalar_t__ ESP_OK ; 
- int /*<<< orphan*/  TAG ; 
- scalar_t__ esp_bluedroid_deinit () ; 
- scalar_t__ esp_bluedroid_disable () ; 
- scalar_t__ esp_bt_controller_deinit () ; 
- scalar_t__ esp_bt_controller_disable () ; 
- int /*<<< orphan*/  esp_get_free_heap_size () ; 
+
+
+
+typedef scalar_t__ esp_err_t ;
+
+
+ scalar_t__ ESP_FAIL ;
+ int ESP_LOGD (int ,char*,...) ;
+ scalar_t__ ESP_OK ;
+ int TAG ;
+ scalar_t__ esp_bluedroid_deinit () ;
+ scalar_t__ esp_bluedroid_disable () ;
+ scalar_t__ esp_bt_controller_deinit () ;
+ scalar_t__ esp_bt_controller_disable () ;
+ int esp_get_free_heap_size () ;
 
 esp_err_t simple_ble_stop(void)
 {
@@ -42,9 +42,9 @@ esp_err_t simple_ble_stop(void)
         return ESP_FAIL;
     }
 
-    /* The API `esp_bt_controller_deinit` will have to be removed when we add support for
-     * `reset to provisioning`
-     */
+
+
+
     ESP_LOGD(TAG, "esp_bt_controller_disable called successfully");
     err = esp_bt_controller_deinit();
     if (err != ESP_OK) {

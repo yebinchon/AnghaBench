@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct pullup_field {int affinity; int breaks; TYPE_1__* prev; struct pullup_field* next; } ;
-struct pullup_context {scalar_t__ strict_breaks; int /*<<< orphan*/  strict_pairs; int /*<<< orphan*/  last; struct pullup_field* first; } ;
+struct pullup_context {scalar_t__ strict_breaks; int strict_pairs; int last; struct pullup_field* first; } ;
 struct TYPE_2__ {int breaks; } ;
 
-/* Variables and functions */
- int PULLUP_BREAK_LEFT ; 
- int PULLUP_BREAK_RIGHT ; 
- int pullup_find_first_break (struct pullup_field*,int) ; 
- int /*<<< orphan*/  pullup_foo (struct pullup_context*) ; 
- int pullup_queue_length (struct pullup_field*,int /*<<< orphan*/ ) ; 
+
+ int PULLUP_BREAK_LEFT ;
+ int PULLUP_BREAK_RIGHT ;
+ int pullup_find_first_break (struct pullup_field*,int) ;
+ int pullup_foo (struct pullup_context*) ;
+ int pullup_queue_length (struct pullup_field*,int ) ;
 
 __attribute__((used)) static int pullup_decide_frame_length( struct pullup_context * c )
 {
@@ -55,7 +55,7 @@ __attribute__((used)) static int pullup_decide_frame_length( struct pullup_conte
             }
 
         case 2:
-            /* FIXME: strictly speaking, f0->prev is no longer valid... :) */
+
             if( c->strict_pairs &&
                 (f0->prev->breaks & PULLUP_BREAK_RIGHT) &&
                 (f2->breaks & PULLUP_BREAK_LEFT) &&
@@ -83,18 +83,18 @@ __attribute__((used)) static int pullup_decide_frame_length( struct pullup_conte
             }
 
         default:
-            /* 9 possibilities covered before switch */
+
             if( f1->affinity == 1 )
             {
-                return 1; /* covers 6 */
+                return 1;
             }
             else if( f1->affinity == -1 )
             {
-                return 2; /* covers 6 */
+                return 2;
             }
             else if( f2->affinity == -1 )
             {
-                /* covers 2 */
+
                 if( f0->affinity == 1 )
                 {
                     return 3;
@@ -106,7 +106,7 @@ __attribute__((used)) static int pullup_decide_frame_length( struct pullup_conte
             }
             else
             {
-                return 2; /* the remaining 6 */
+                return 2;
             }
     }
 }

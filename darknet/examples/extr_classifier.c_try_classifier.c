@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_3__ ;
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_16__ TYPE_3__ ;
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
 struct TYPE_14__ {TYPE_2__* layers; } ;
-typedef  TYPE_1__ network ;
-typedef  int /*<<< orphan*/  list ;
-struct TYPE_15__ {int c; double* rolling_mean; double* rolling_variance; double* scales; double* output; int outputs; int /*<<< orphan*/  output_gpu; } ;
-typedef  TYPE_2__ layer ;
+typedef TYPE_1__ network ;
+typedef int list ;
+struct TYPE_15__ {int c; double* rolling_mean; double* rolling_variance; double* scales; double* output; int outputs; int output_gpu; } ;
+typedef TYPE_2__ layer ;
 struct TYPE_16__ {int w; int h; float* data; } ;
-typedef  TYPE_3__ image ;
-typedef  scalar_t__ clock_t ;
+typedef TYPE_3__ image ;
+typedef scalar_t__ clock_t ;
 
-/* Variables and functions */
- int* calloc (int,int) ; 
- scalar_t__ clock () ; 
- TYPE_3__ crop_image (TYPE_3__,int,int,int,int) ; 
- int /*<<< orphan*/  cuda_pull_array (int /*<<< orphan*/ ,double*,int) ; 
- int /*<<< orphan*/  fflush (int /*<<< orphan*/ ) ; 
- char* fgets (char*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free_image (TYPE_3__) ; 
- char** get_labels (char*) ; 
- TYPE_3__ load_image_color (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_1__* load_network (char*,char*,int /*<<< orphan*/ ) ; 
- float* network_predict (TYPE_1__*,float*) ; 
- int /*<<< orphan*/  normalize_cpu (float*,float*,float*,int,int,int) ; 
- int option_find_int (int /*<<< orphan*/ *,char*,int) ; 
- char* option_find_str (int /*<<< orphan*/ *,char*,char*) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/ * read_data_cfg (char*) ; 
- TYPE_3__ resize_min (TYPE_3__,int) ; 
- double sec (scalar_t__) ; 
- int /*<<< orphan*/  set_batch_network (TYPE_1__*,int) ; 
- int /*<<< orphan*/  srand (int) ; 
- int /*<<< orphan*/  stdin ; 
- int /*<<< orphan*/  stdout ; 
- int /*<<< orphan*/  strncpy (char*,char*,int) ; 
- int /*<<< orphan*/  strtok (char*,char*) ; 
- int /*<<< orphan*/  top_predictions (TYPE_1__*,int,int*) ; 
+
+ int* calloc (int,int) ;
+ scalar_t__ clock () ;
+ TYPE_3__ crop_image (TYPE_3__,int,int,int,int) ;
+ int cuda_pull_array (int ,double*,int) ;
+ int fflush (int ) ;
+ char* fgets (char*,int,int ) ;
+ int free_image (TYPE_3__) ;
+ char** get_labels (char*) ;
+ TYPE_3__ load_image_color (char*,int ,int ) ;
+ TYPE_1__* load_network (char*,char*,int ) ;
+ float* network_predict (TYPE_1__*,float*) ;
+ int normalize_cpu (float*,float*,float*,int,int,int) ;
+ int option_find_int (int *,char*,int) ;
+ char* option_find_str (int *,char*,char*) ;
+ int printf (char*,...) ;
+ int * read_data_cfg (char*) ;
+ TYPE_3__ resize_min (TYPE_3__,int) ;
+ double sec (scalar_t__) ;
+ int set_batch_network (TYPE_1__*,int) ;
+ int srand (int) ;
+ int stdin ;
+ int stdout ;
+ int strncpy (char*,char*,int) ;
+ int strtok (char*,char*) ;
+ int top_predictions (TYPE_1__*,int,int*) ;
 
 void try_classifier(char *datacfg, char *cfgfile, char *weightfile, char *filename, int layer_num)
 {
@@ -97,25 +97,12 @@ void try_classifier(char *datacfg, char *cfgfile, char *weightfile, char *filena
         for(i = 0; i < l.c; ++i){
             if(l.rolling_mean) printf("%f %f %f\n", l.rolling_mean[i], l.rolling_variance[i], l.scales[i]);
         }
-#ifdef GPU
-        cuda_pull_array(l.output_gpu, l.output, l.outputs);
-#endif
+
+
+
         for(i = 0; i < l.outputs; ++i){
             printf("%f\n", l.output[i]);
         }
-        /*
-
-           printf("\n\nWeights\n");
-           for(i = 0; i < l.n*l.size*l.size*l.c; ++i){
-           printf("%f\n", l.filters[i]);
-           }
-
-           printf("\n\nBiases\n");
-           for(i = 0; i < l.n; ++i){
-           printf("%f\n", l.biases[i]);
-           }
-         */
-
         top_predictions(net, top, indexes);
         printf("%s: Predicted in %f seconds.\n", input, sec(clock()-time));
         for(i = 0; i < top; ++i){

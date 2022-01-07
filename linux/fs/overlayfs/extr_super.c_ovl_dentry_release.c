@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct ovl_entry {int dummy; } ;
 struct dentry {struct ovl_entry* d_fsdata; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  kfree_rcu (struct ovl_entry*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ovl_entry_stack_free (struct ovl_entry*) ; 
- int /*<<< orphan*/  rcu ; 
+
+ int kfree_rcu (struct ovl_entry*,int ) ;
+ int ovl_entry_stack_free (struct ovl_entry*) ;
+ int rcu ;
 
 __attribute__((used)) static void ovl_dentry_release(struct dentry *dentry)
 {
-	struct ovl_entry *oe = dentry->d_fsdata;
+ struct ovl_entry *oe = dentry->d_fsdata;
 
-	if (oe) {
-		ovl_entry_stack_free(oe);
-		kfree_rcu(oe, rcu);
-	}
+ if (oe) {
+  ovl_entry_stack_free(oe);
+  kfree_rcu(oe, rcu);
+ }
 }

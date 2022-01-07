@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  network ;
 
-/* Variables and functions */
- float* calloc (int,int) ; 
- char* fgetl (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  flip_board (float*) ; 
- int /*<<< orphan*/  free (char*) ; 
- scalar_t__ inverted ; 
- int /*<<< orphan*/ * load_network (char*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  move_go (float*,int,int,int) ; 
- int nind ; 
- scalar_t__ noi ; 
- float predict_move2 (int /*<<< orphan*/ *,float*,float*,int) ; 
- int /*<<< orphan*/  print_board (int /*<<< orphan*/ ,float*,int,int*) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  set_batch_network (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  srand (int /*<<< orphan*/ ) ; 
- int sscanf (char*,char*,...) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  stdin ; 
- scalar_t__ strlen (char*) ; 
- int /*<<< orphan*/  time (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  top_k (float*,int,int,int*) ; 
+
+
+
+typedef int network ;
+
+
+ float* calloc (int,int) ;
+ char* fgetl (int ) ;
+ int flip_board (float*) ;
+ int free (char*) ;
+ scalar_t__ inverted ;
+ int * load_network (char*,char*,int ) ;
+ int move_go (float*,int,int,int) ;
+ int nind ;
+ scalar_t__ noi ;
+ float predict_move2 (int *,float*,float*,int) ;
+ int print_board (int ,float*,int,int*) ;
+ int printf (char*,...) ;
+ int set_batch_network (int *,int) ;
+ int srand (int ) ;
+ int sscanf (char*,char*,...) ;
+ int stderr ;
+ int stdin ;
+ scalar_t__ strlen (char*) ;
+ int time (int ) ;
+ int top_k (float*,int,int,int*) ;
 
 void test_go(char *cfg, char *weights, int multi)
 {
@@ -62,8 +62,8 @@ void test_go(char *cfg, char *weights, int multi)
                 printf("%d: %c %d, %.2f%%\n", i+1, col + 'A' + 1*(col > 7 && noi), (inverted)?19 - row : row+1, move[index]*100);
             }
         }
-        //if(color == 1) printf("\u25EF Enter move: ");
-        //else printf("\u25C9 Enter move: ");
+
+
         if(color == 1) printf("X Enter move: ");
         else printf("O Enter move: ");
 
@@ -90,7 +90,7 @@ void test_go(char *cfg, char *weights, int multi)
                 if (col > 7 && noi) col -= 1;
                 if (num == 2) move_go(board, 1, row, col);
             } else if (c == 'p') {
-                // Pass
+
             } else if(c=='b' || c == 'w'){
                 char g;
                 int num = sscanf(line, "%c %c %d", &g, &c, &row);

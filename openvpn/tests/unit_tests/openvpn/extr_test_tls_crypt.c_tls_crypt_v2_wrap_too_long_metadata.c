@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  encrypt; } ;
-struct test_tls_crypt_v2_context {int /*<<< orphan*/  gc; TYPE_1__ server_keys; int /*<<< orphan*/  metadata; int /*<<< orphan*/  client_key2; int /*<<< orphan*/  wkc; } ;
 
-/* Variables and functions */
- scalar_t__ TLS_CRYPT_V2_MAX_METADATA_LEN ; 
- int /*<<< orphan*/  assert_false (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert_true (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  buf_inc_len (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  tls_crypt_v2_wrap_client_key (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int encrypt; } ;
+struct test_tls_crypt_v2_context {int gc; TYPE_1__ server_keys; int metadata; int client_key2; int wkc; } ;
+
+
+ scalar_t__ TLS_CRYPT_V2_MAX_METADATA_LEN ;
+ int assert_false (int ) ;
+ int assert_true (int ) ;
+ int buf_inc_len (int *,scalar_t__) ;
+ int tls_crypt_v2_wrap_client_key (int *,int *,int *,int *,int *) ;
 
 __attribute__((used)) static void
 tls_crypt_v2_wrap_too_long_metadata(void **state) {

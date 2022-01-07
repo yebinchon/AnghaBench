@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  aval; struct record* sval; } ;
-struct record {size_t count; int type; struct record* fields; TYPE_1__ u; int /*<<< orphan*/  table; } ;
-typedef  size_t UINT ;
 
-/* Variables and functions */
- int CIM_DATETIME ; 
- int CIM_FLAG_ARRAY ; 
- int CIM_STRING ; 
- int CIM_TYPE_MASK ; 
- int /*<<< orphan*/  destroy_array (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  heap_free (struct record*) ; 
- int /*<<< orphan*/  release_table (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int aval; struct record* sval; } ;
+struct record {size_t count; int type; struct record* fields; TYPE_1__ u; int table; } ;
+typedef size_t UINT ;
+
+
+ int CIM_DATETIME ;
+ int CIM_FLAG_ARRAY ;
+ int CIM_STRING ;
+ int CIM_TYPE_MASK ;
+ int destroy_array (int ,int) ;
+ int heap_free (struct record*) ;
+ int release_table (int ) ;
 
 __attribute__((used)) static void destroy_record( struct record *record )
 {

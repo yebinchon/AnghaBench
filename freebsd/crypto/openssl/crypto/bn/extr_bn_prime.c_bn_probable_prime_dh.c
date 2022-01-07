@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int BN_ULONG ;
-typedef  int /*<<< orphan*/  BN_CTX ;
-typedef  int /*<<< orphan*/  BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BN_CTX_end (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BN_CTX_get (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_CTX_start (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_RAND_BOTTOM_ODD ; 
- int /*<<< orphan*/  BN_RAND_TOP_ONE ; 
- int /*<<< orphan*/  BN_add (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  BN_add_word (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  BN_mod (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int BN_mod_word (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  BN_rand (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BN_sub (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int NUMPRIMES ; 
- int /*<<< orphan*/  bn_check_top (int /*<<< orphan*/ *) ; 
- scalar_t__* primes ; 
+
+
+
+typedef int BN_ULONG ;
+typedef int BN_CTX ;
+typedef int BIGNUM ;
+
+
+ int BN_CTX_end (int *) ;
+ int * BN_CTX_get (int *) ;
+ int BN_CTX_start (int *) ;
+ int BN_RAND_BOTTOM_ODD ;
+ int BN_RAND_TOP_ONE ;
+ int BN_add (int *,int *,int const*) ;
+ int BN_add_word (int *,int) ;
+ int BN_mod (int *,int *,int const*,int *) ;
+ int BN_mod_word (int *,int) ;
+ int BN_rand (int *,int,int ,int ) ;
+ int BN_sub (int *,int *,int *) ;
+ int NUMPRIMES ;
+ int bn_check_top (int *) ;
+ scalar_t__* primes ;
 
 int bn_probable_prime_dh(BIGNUM *rnd, int bits,
                          const BIGNUM *add, const BIGNUM *rem, BN_CTX *ctx)
@@ -37,19 +37,19 @@ int bn_probable_prime_dh(BIGNUM *rnd, int bits,
     BIGNUM *t1;
 
     BN_CTX_start(ctx);
-    if ((t1 = BN_CTX_get(ctx)) == NULL)
+    if ((t1 = BN_CTX_get(ctx)) == ((void*)0))
         goto err;
 
     if (!BN_rand(rnd, bits, BN_RAND_TOP_ONE, BN_RAND_BOTTOM_ODD))
         goto err;
 
-    /* we need ((rnd-rem) % add) == 0 */
+
 
     if (!BN_mod(t1, rnd, add, ctx))
         goto err;
     if (!BN_sub(rnd, rnd, t1))
         goto err;
-    if (rem == NULL) {
+    if (rem == ((void*)0)) {
         if (!BN_add_word(rnd, 1))
             goto err;
     } else {
@@ -57,11 +57,11 @@ int bn_probable_prime_dh(BIGNUM *rnd, int bits,
             goto err;
     }
 
-    /* we now have a random number 'rand' to test. */
+
 
  loop:
     for (i = 1; i < NUMPRIMES; i++) {
-        /* check that rnd is a prime */
+
         BN_ULONG mod = BN_mod_word(rnd, (BN_ULONG)primes[i]);
         if (mod == (BN_ULONG)-1)
             goto err;

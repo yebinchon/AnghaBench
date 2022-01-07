@@ -1,0 +1,217 @@
+; ModuleID = '/home/carl/AnghaBench/linux/drivers/media/dvb-frontends/cxd2880/extr_cxd2880_tnrdmd_dvbt2.c_cxd2880_tnrdmd_dvbt2_check_ts_lock.c'
+source_filename = "/home/carl/AnghaBench/linux/drivers/media/dvb-frontends/cxd2880/extr_cxd2880_tnrdmd_dvbt2.c_cxd2880_tnrdmd_dvbt2_check_ts_lock.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+%struct.cxd2880_tnrdmd = type { i64, i64 }
+
+@EINVAL = common dso_local global i32 0, align 4
+@CXD2880_TNRDMD_DIVERMODE_SUB = common dso_local global i64 0, align 8
+@CXD2880_TNRDMD_STATE_ACTIVE = common dso_local global i64 0, align 8
+@CXD2880_TNRDMD_DIVERMODE_SINGLE = common dso_local global i64 0, align 8
+@CXD2880_TNRDMD_LOCK_RESULT_LOCKED = common dso_local global i32 0, align 4
+@CXD2880_TNRDMD_LOCK_RESULT_UNLOCKED = common dso_local global i32 0, align 4
+@CXD2880_TNRDMD_LOCK_RESULT_NOTDETECT = common dso_local global i32 0, align 4
+
+; Function Attrs: noinline nounwind optnone uwtable
+define dso_local i32 @cxd2880_tnrdmd_dvbt2_check_ts_lock(%struct.cxd2880_tnrdmd* %0, i32* %1) #0 {
+  %3 = alloca i32, align 4
+  %4 = alloca %struct.cxd2880_tnrdmd*, align 8
+  %5 = alloca i32*, align 8
+  %6 = alloca i32, align 4
+  %7 = alloca i64, align 8
+  %8 = alloca i64, align 8
+  %9 = alloca i64, align 8
+  %10 = alloca i64, align 8
+  store %struct.cxd2880_tnrdmd* %0, %struct.cxd2880_tnrdmd** %4, align 8
+  store i32* %1, i32** %5, align 8
+  store i64 0, i64* %7, align 8
+  store i64 0, i64* %8, align 8
+  store i64 0, i64* %9, align 8
+  store i64 0, i64* %10, align 8
+  %11 = load %struct.cxd2880_tnrdmd*, %struct.cxd2880_tnrdmd** %4, align 8
+  %12 = icmp ne %struct.cxd2880_tnrdmd* %11, null
+  br i1 %12, label %13, label %16
+
+13:                                               ; preds = %2
+  %14 = load i32*, i32** %5, align 8
+  %15 = icmp ne i32* %14, null
+  br i1 %15, label %19, label %16
+
+16:                                               ; preds = %13, %2
+  %17 = load i32, i32* @EINVAL, align 4
+  %18 = sub nsw i32 0, %17
+  store i32 %18, i32* %3, align 4
+  br label %104
+
+19:                                               ; preds = %13
+  %20 = load %struct.cxd2880_tnrdmd*, %struct.cxd2880_tnrdmd** %4, align 8
+  %21 = getelementptr inbounds %struct.cxd2880_tnrdmd, %struct.cxd2880_tnrdmd* %20, i32 0, i32 0
+  %22 = load i64, i64* %21, align 8
+  %23 = load i64, i64* @CXD2880_TNRDMD_DIVERMODE_SUB, align 8
+  %24 = icmp eq i64 %22, %23
+  br i1 %24, label %25, label %28
+
+25:                                               ; preds = %19
+  %26 = load i32, i32* @EINVAL, align 4
+  %27 = sub nsw i32 0, %26
+  store i32 %27, i32* %3, align 4
+  br label %104
+
+28:                                               ; preds = %19
+  %29 = load %struct.cxd2880_tnrdmd*, %struct.cxd2880_tnrdmd** %4, align 8
+  %30 = getelementptr inbounds %struct.cxd2880_tnrdmd, %struct.cxd2880_tnrdmd* %29, i32 0, i32 1
+  %31 = load i64, i64* %30, align 8
+  %32 = load i64, i64* @CXD2880_TNRDMD_STATE_ACTIVE, align 8
+  %33 = icmp ne i64 %31, %32
+  br i1 %33, label %34, label %37
+
+34:                                               ; preds = %28
+  %35 = load i32, i32* @EINVAL, align 4
+  %36 = sub nsw i32 0, %35
+  store i32 %36, i32* %3, align 4
+  br label %104
+
+37:                                               ; preds = %28
+  %38 = load %struct.cxd2880_tnrdmd*, %struct.cxd2880_tnrdmd** %4, align 8
+  %39 = call i32 @cxd2880_tnrdmd_dvbt2_mon_sync_stat(%struct.cxd2880_tnrdmd* %38, i64* %7, i64* %8, i64* %9)
+  store i32 %39, i32* %6, align 4
+  %40 = load i32, i32* %6, align 4
+  %41 = icmp ne i32 %40, 0
+  br i1 %41, label %42, label %44
+
+42:                                               ; preds = %37
+  %43 = load i32, i32* %6, align 4
+  store i32 %43, i32* %3, align 4
+  br label %104
+
+44:                                               ; preds = %37
+  %45 = load %struct.cxd2880_tnrdmd*, %struct.cxd2880_tnrdmd** %4, align 8
+  %46 = getelementptr inbounds %struct.cxd2880_tnrdmd, %struct.cxd2880_tnrdmd* %45, i32 0, i32 0
+  %47 = load i64, i64* %46, align 8
+  %48 = load i64, i64* @CXD2880_TNRDMD_DIVERMODE_SINGLE, align 8
+  %49 = icmp eq i64 %47, %48
+  br i1 %49, label %50, label %68
+
+50:                                               ; preds = %44
+  %51 = load i64, i64* %8, align 8
+  %52 = icmp ne i64 %51, 0
+  br i1 %52, label %53, label %56
+
+53:                                               ; preds = %50
+  %54 = load i32, i32* @CXD2880_TNRDMD_LOCK_RESULT_LOCKED, align 4
+  %55 = load i32*, i32** %5, align 8
+  store i32 %54, i32* %55, align 4
+  br label %66
+
+56:                                               ; preds = %50
+  %57 = load i64, i64* %9, align 8
+  %58 = icmp ne i64 %57, 0
+  br i1 %58, label %59, label %62
+
+59:                                               ; preds = %56
+  %60 = load i32, i32* @CXD2880_TNRDMD_LOCK_RESULT_UNLOCKED, align 4
+  %61 = load i32*, i32** %5, align 8
+  store i32 %60, i32* %61, align 4
+  br label %65
+
+62:                                               ; preds = %56
+  %63 = load i32, i32* @CXD2880_TNRDMD_LOCK_RESULT_NOTDETECT, align 4
+  %64 = load i32*, i32** %5, align 8
+  store i32 %63, i32* %64, align 4
+  br label %65
+
+65:                                               ; preds = %62, %59
+  br label %66
+
+66:                                               ; preds = %65, %53
+  %67 = load i32, i32* %6, align 4
+  store i32 %67, i32* %3, align 4
+  br label %104
+
+68:                                               ; preds = %44
+  %69 = load i64, i64* %8, align 8
+  %70 = icmp ne i64 %69, 0
+  br i1 %70, label %71, label %75
+
+71:                                               ; preds = %68
+  %72 = load i32, i32* @CXD2880_TNRDMD_LOCK_RESULT_LOCKED, align 4
+  %73 = load i32*, i32** %5, align 8
+  store i32 %72, i32* %73, align 4
+  %74 = load i32, i32* %6, align 4
+  store i32 %74, i32* %3, align 4
+  br label %104
+
+75:                                               ; preds = %68
+  %76 = load i64, i64* %9, align 8
+  %77 = icmp ne i64 %76, 0
+  br i1 %77, label %82, label %78
+
+78:                                               ; preds = %75
+  %79 = load i32, i32* @CXD2880_TNRDMD_LOCK_RESULT_NOTDETECT, align 4
+  %80 = load i32*, i32** %5, align 8
+  store i32 %79, i32* %80, align 4
+  %81 = load i32, i32* %6, align 4
+  store i32 %81, i32* %3, align 4
+  br label %104
+
+82:                                               ; preds = %75
+  br label %83
+
+83:                                               ; preds = %82
+  %84 = load %struct.cxd2880_tnrdmd*, %struct.cxd2880_tnrdmd** %4, align 8
+  %85 = call i32 @cxd2880_tnrdmd_dvbt2_mon_sync_stat_sub(%struct.cxd2880_tnrdmd* %84, i64* %7, i64* %10)
+  store i32 %85, i32* %6, align 4
+  %86 = load i32, i32* %6, align 4
+  %87 = icmp ne i32 %86, 0
+  br i1 %87, label %88, label %90
+
+88:                                               ; preds = %83
+  %89 = load i32, i32* %6, align 4
+  store i32 %89, i32* %3, align 4
+  br label %104
+
+90:                                               ; preds = %83
+  %91 = load i64, i64* %9, align 8
+  %92 = icmp ne i64 %91, 0
+  br i1 %92, label %93, label %99
+
+93:                                               ; preds = %90
+  %94 = load i64, i64* %10, align 8
+  %95 = icmp ne i64 %94, 0
+  br i1 %95, label %96, label %99
+
+96:                                               ; preds = %93
+  %97 = load i32, i32* @CXD2880_TNRDMD_LOCK_RESULT_UNLOCKED, align 4
+  %98 = load i32*, i32** %5, align 8
+  store i32 %97, i32* %98, align 4
+  br label %102
+
+99:                                               ; preds = %93, %90
+  %100 = load i32, i32* @CXD2880_TNRDMD_LOCK_RESULT_NOTDETECT, align 4
+  %101 = load i32*, i32** %5, align 8
+  store i32 %100, i32* %101, align 4
+  br label %102
+
+102:                                              ; preds = %99, %96
+  %103 = load i32, i32* %6, align 4
+  store i32 %103, i32* %3, align 4
+  br label %104
+
+104:                                              ; preds = %102, %88, %78, %71, %66, %42, %34, %25, %16
+  %105 = load i32, i32* %3, align 4
+  ret i32 %105
+}
+
+declare dso_local i32 @cxd2880_tnrdmd_dvbt2_mon_sync_stat(%struct.cxd2880_tnrdmd*, i64*, i64*, i64*) #1
+
+declare dso_local i32 @cxd2880_tnrdmd_dvbt2_mon_sync_stat_sub(%struct.cxd2880_tnrdmd*, i64*, i64*) #1
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

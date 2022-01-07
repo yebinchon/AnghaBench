@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  site; } ;
-typedef  TYPE_2__ script_ctx_t ;
-struct TYPE_6__ {int /*<<< orphan*/ * lpVtbl; } ;
-struct TYPE_8__ {int ref; TYPE_1__ IServiceProvider_iface; int /*<<< orphan*/ * sp; } ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  IServiceProvider ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  TYPE_3__ AXSite ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AXSiteVtbl ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IActiveScriptSite_QueryInterface (int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IID_IServiceProvider ; 
- int /*<<< orphan*/  IServiceProvider_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ) ; 
- TYPE_3__* heap_alloc (int) ; 
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int site; } ;
+typedef TYPE_2__ script_ctx_t ;
+struct TYPE_6__ {int * lpVtbl; } ;
+struct TYPE_8__ {int ref; TYPE_1__ IServiceProvider_iface; int * sp; } ;
+typedef int IUnknown ;
+typedef int IServiceProvider ;
+typedef int HRESULT ;
+typedef TYPE_3__ AXSite ;
+
+
+ int AXSiteVtbl ;
+ scalar_t__ FAILED (int ) ;
+ int IActiveScriptSite_QueryInterface (int ,int *,void**) ;
+ int IID_IServiceProvider ;
+ int IServiceProvider_Release (int *) ;
+ int TRACE (char*,int ) ;
+ TYPE_3__* heap_alloc (int) ;
 
 IUnknown *create_ax_site(script_ctx_t *ctx)
 {
-    IServiceProvider *sp = NULL;
+    IServiceProvider *sp = ((void*)0);
     AXSite *ret;
     HRESULT hres;
 
@@ -45,7 +45,7 @@ IUnknown *create_ax_site(script_ctx_t *ctx)
     ret = heap_alloc(sizeof(AXSite));
     if(!ret) {
         IServiceProvider_Release(sp);
-        return NULL;
+        return ((void*)0);
     }
 
     ret->IServiceProvider_iface.lpVtbl = &AXSiteVtbl;

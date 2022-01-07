@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  SockEvent; } ;
-typedef  TYPE_1__ VH ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int SockEvent; } ;
+typedef TYPE_1__ VH ;
 struct TYPE_6__ {int DisconnectNow; } ;
-typedef  TYPE_2__ NAT_ENTRY ;
+typedef TYPE_2__ NAT_ENTRY ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SetSockEvent (int /*<<< orphan*/ ) ; 
+
+ int SetSockEvent (int ) ;
 
 void DisconnectNatEntryNow(VH *v, NAT_ENTRY *e)
 {
-	// Validate arguments
-	if (v == NULL || e == NULL)
-	{
-		return;
-	}
 
-	if (e->DisconnectNow == false)
-	{
-		e->DisconnectNow = true;
+ if (v == ((void*)0) || e == ((void*)0))
+ {
+  return;
+ }
 
-		SetSockEvent(v->SockEvent);
-	}
+ if (e->DisconnectNow == 0)
+ {
+  e->DisconnectNow = 1;
+
+  SetSockEvent(v->SockEvent);
+ }
 }

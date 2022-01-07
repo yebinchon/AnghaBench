@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct mlx5_hugetlb_mem {int /*<<< orphan*/  shmid; int /*<<< orphan*/  shmaddr; int /*<<< orphan*/  bitmap; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IPC_RMID ; 
- int /*<<< orphan*/  MLX5_DBG_CONTIG ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  free (struct mlx5_hugetlb_mem*) ; 
- int /*<<< orphan*/  mlx5_bitmap_cleanup (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mlx5_dbg (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  shmctl (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int shmdt (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  strerror (int /*<<< orphan*/ ) ; 
+
+
+
+struct mlx5_hugetlb_mem {int shmid; int shmaddr; int bitmap; } ;
+
+
+ int IPC_RMID ;
+ int MLX5_DBG_CONTIG ;
+ int errno ;
+ int free (struct mlx5_hugetlb_mem*) ;
+ int mlx5_bitmap_cleanup (int *) ;
+ int mlx5_dbg (int ,int ,char*,int ) ;
+ int shmctl (int ,int ,int *) ;
+ int shmdt (int ) ;
+ int stderr ;
+ int strerror (int ) ;
 
 __attribute__((used)) static void free_huge_mem(struct mlx5_hugetlb_mem *hmem)
 {
-	mlx5_bitmap_cleanup(&hmem->bitmap);
-	if (shmdt(hmem->shmaddr) == -1)
-		mlx5_dbg(stderr, MLX5_DBG_CONTIG, "%s\n", strerror(errno));
-	shmctl(hmem->shmid, IPC_RMID, NULL);
-	free(hmem);
+ mlx5_bitmap_cleanup(&hmem->bitmap);
+ if (shmdt(hmem->shmaddr) == -1)
+  mlx5_dbg(stderr, MLX5_DBG_CONTIG, "%s\n", strerror(errno));
+ shmctl(hmem->shmid, IPC_RMID, ((void*)0));
+ free(hmem);
 }

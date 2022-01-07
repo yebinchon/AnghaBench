@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct tb_xdp_header {scalar_t__ type; } ;
 struct tb_xdp_error_response {int error; } ;
 
-/* Variables and functions */
- int EAGAIN ; 
- int EIO ; 
- int ENOTSUPP ; 
-#define  ERROR_NOT_READY 131 
-#define  ERROR_NOT_SUPPORTED 130 
- scalar_t__ ERROR_RESPONSE ; 
-#define  ERROR_UNKNOWN_DOMAIN 129 
-#define  ERROR_UNKNOWN_PACKET 128 
+
+ int EAGAIN ;
+ int EIO ;
+ int ENOTSUPP ;
+
+
+ scalar_t__ ERROR_RESPONSE ;
+
+
 
 __attribute__((used)) static int tb_xdp_handle_error(const struct tb_xdp_header *hdr)
 {
-	const struct tb_xdp_error_response *error;
+ const struct tb_xdp_error_response *error;
 
-	if (hdr->type != ERROR_RESPONSE)
-		return 0;
+ if (hdr->type != ERROR_RESPONSE)
+  return 0;
 
-	error = (const struct tb_xdp_error_response *)hdr;
+ error = (const struct tb_xdp_error_response *)hdr;
 
-	switch (error->error) {
-	case ERROR_UNKNOWN_PACKET:
-	case ERROR_UNKNOWN_DOMAIN:
-		return -EIO;
-	case ERROR_NOT_SUPPORTED:
-		return -ENOTSUPP;
-	case ERROR_NOT_READY:
-		return -EAGAIN;
-	default:
-		break;
-	}
+ switch (error->error) {
+ case 128:
+ case 129:
+  return -EIO;
+ case 130:
+  return -ENOTSUPP;
+ case 131:
+  return -EAGAIN;
+ default:
+  break;
+ }
 
-	return 0;
+ return 0;
 }

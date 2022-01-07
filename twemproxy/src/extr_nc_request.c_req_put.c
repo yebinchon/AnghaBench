@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct msg {int request; struct msg* peer; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- int /*<<< orphan*/  msg_put (struct msg*) ; 
- int /*<<< orphan*/  msg_tmo_delete (struct msg*) ; 
- int /*<<< orphan*/  req_log (struct msg*) ; 
- int /*<<< orphan*/  rsp_put (struct msg*) ; 
+
+ int ASSERT (int) ;
+ int msg_put (struct msg*) ;
+ int msg_tmo_delete (struct msg*) ;
+ int req_log (struct msg*) ;
+ int rsp_put (struct msg*) ;
 
 void
 req_put(struct msg *msg)
 {
-    struct msg *pmsg; /* peer message (response) */
+    struct msg *pmsg;
 
     ASSERT(msg->request);
 
     req_log(msg);
 
     pmsg = msg->peer;
-    if (pmsg != NULL) {
+    if (pmsg != ((void*)0)) {
         ASSERT(!pmsg->request && pmsg->peer == msg);
-        msg->peer = NULL;
-        pmsg->peer = NULL;
+        msg->peer = ((void*)0);
+        pmsg->peer = ((void*)0);
         rsp_put(pmsg);
     }
 

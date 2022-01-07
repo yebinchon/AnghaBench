@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ULONG ;
-struct TYPE_6__ {int /*<<< orphan*/ * lpVtbl; } ;
-struct TYPE_5__ {int ref; TYPE_2__ IEnumVARIANT_iface; int /*<<< orphan*/ * mc; int /*<<< orphan*/  count; int /*<<< orphan*/  pos; } ;
-typedef  TYPE_1__ MatchCollectionEnum ;
-typedef  int /*<<< orphan*/  IMatchCollection2 ;
-typedef  TYPE_2__ IEnumVARIANT ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- int /*<<< orphan*/  IMatchCollection2_AddRef (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IMatchCollection2_get_Count (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  MatchCollectionEnum_Vtbl ; 
- int /*<<< orphan*/  S_OK ; 
- TYPE_1__* heap_alloc_zero (int) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int ULONG ;
+struct TYPE_6__ {int * lpVtbl; } ;
+struct TYPE_5__ {int ref; TYPE_2__ IEnumVARIANT_iface; int * mc; int count; int pos; } ;
+typedef TYPE_1__ MatchCollectionEnum ;
+typedef int IMatchCollection2 ;
+typedef TYPE_2__ IEnumVARIANT ;
+typedef int HRESULT ;
+
+
+ int E_OUTOFMEMORY ;
+ int IMatchCollection2_AddRef (int *) ;
+ int IMatchCollection2_get_Count (int *,int *) ;
+ int MatchCollectionEnum_Vtbl ;
+ int S_OK ;
+ TYPE_1__* heap_alloc_zero (int) ;
 
 __attribute__((used)) static HRESULT create_enum_variant_mc2(IMatchCollection2 *mc, ULONG pos, IEnumVARIANT **enum_variant)
 {

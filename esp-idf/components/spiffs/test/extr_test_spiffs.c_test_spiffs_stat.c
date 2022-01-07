@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct stat {int st_mode; } ;
 
-/* Variables and functions */
- int S_IFDIR ; 
- int S_IFREG ; 
- int /*<<< orphan*/  TEST_ASSERT (int) ; 
- int /*<<< orphan*/  TEST_ASSERT_EQUAL (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_ASSERT_FALSE (int) ; 
- int /*<<< orphan*/  stat (char const*,struct stat*) ; 
- int /*<<< orphan*/  test_spiffs_create_file_with_text (char const*,char*) ; 
+
+ int S_IFDIR ;
+ int S_IFREG ;
+ int TEST_ASSERT (int) ;
+ int TEST_ASSERT_EQUAL (int ,int ) ;
+ int TEST_ASSERT_FALSE (int) ;
+ int stat (char const*,struct stat*) ;
+ int test_spiffs_create_file_with_text (char const*,char*) ;
 
 void test_spiffs_stat(const char* filename)
 {

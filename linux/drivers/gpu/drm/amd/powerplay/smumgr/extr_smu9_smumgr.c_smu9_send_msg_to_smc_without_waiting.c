@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint16_t ;
+
+
+
+
+typedef int uint16_t ;
 struct pp_hwmgr {struct amdgpu_device* adev; } ;
 struct amdgpu_device {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MP1 ; 
- int /*<<< orphan*/  WREG32_SOC15 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mmMP1_SMN_C2PMSG_66 ; 
+
+ int MP1 ;
+ int WREG32_SOC15 (int ,int ,int ,int ) ;
+ int mmMP1_SMN_C2PMSG_66 ;
 
 __attribute__((used)) static int smu9_send_msg_to_smc_without_waiting(struct pp_hwmgr *hwmgr,
-						uint16_t msg)
+      uint16_t msg)
 {
-	struct amdgpu_device *adev = hwmgr->adev;
+ struct amdgpu_device *adev = hwmgr->adev;
 
-	WREG32_SOC15(MP1, 0, mmMP1_SMN_C2PMSG_66, msg);
+ WREG32_SOC15(MP1, 0, mmMP1_SMN_C2PMSG_66, msg);
 
-	return 0;
+ return 0;
 }

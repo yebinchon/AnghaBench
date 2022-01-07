@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64_t ;
-typedef  scalar_t__ uint16_t ;
-typedef  int ptrdiff_t ;
 
-/* Variables and functions */
- scalar_t__ abs (scalar_t__ const) ; 
+
+
+
+typedef int uint64_t ;
+typedef scalar_t__ uint16_t ;
+typedef int ptrdiff_t ;
+
+
+ scalar_t__ abs (scalar_t__ const) ;
 
 __attribute__((used)) static uint64_t image_sad(const uint16_t *img1, const uint16_t *img2, int w,
                           int h, ptrdiff_t _img1_stride, ptrdiff_t _img2_stride)

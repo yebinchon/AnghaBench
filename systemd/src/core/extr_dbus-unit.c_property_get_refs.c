@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sd_bus_message ;
-typedef  int /*<<< orphan*/  sd_bus_error ;
-typedef  int /*<<< orphan*/  sd_bus ;
-struct TYPE_2__ {int /*<<< orphan*/  bus_track; } ;
-typedef  TYPE_1__ Unit ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int /*<<< orphan*/ *) ; 
- int sd_bus_message_append (int /*<<< orphan*/ *,char*,char const*) ; 
- int sd_bus_message_close_container (int /*<<< orphan*/ *) ; 
- int sd_bus_message_open_container (int /*<<< orphan*/ *,char,char*) ; 
- int sd_bus_track_count_name (int /*<<< orphan*/ ,char const*) ; 
- char* sd_bus_track_first (int /*<<< orphan*/ ) ; 
- char* sd_bus_track_next (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int sd_bus_message ;
+typedef int sd_bus_error ;
+typedef int sd_bus ;
+struct TYPE_2__ {int bus_track; } ;
+typedef TYPE_1__ Unit ;
+
+
+ int assert (int *) ;
+ int sd_bus_message_append (int *,char*,char const*) ;
+ int sd_bus_message_close_container (int *) ;
+ int sd_bus_message_open_container (int *,char,char*) ;
+ int sd_bus_track_count_name (int ,char const*) ;
+ char* sd_bus_track_first (int ) ;
+ char* sd_bus_track_next (int ) ;
 
 __attribute__((used)) static int property_get_refs(
                 sd_bus *bus,
@@ -53,7 +53,7 @@ __attribute__((used)) static int property_get_refs(
                 if (c < 0)
                         return c;
 
-                /* Add the item multiple times if the ref count for each is above 1 */
+
                 for (k = 0; k < c; k++) {
                         r = sd_bus_message_append(reply, "s", i);
                         if (r < 0)

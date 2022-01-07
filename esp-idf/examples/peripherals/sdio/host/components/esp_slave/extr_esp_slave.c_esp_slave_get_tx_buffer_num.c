@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint32_t ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
 struct TYPE_4__ {int tx_sent_buffers; } ;
-typedef  TYPE_1__ esp_slave_context_t ;
-typedef  scalar_t__ esp_err_t ;
+typedef TYPE_1__ esp_slave_context_t ;
+typedef scalar_t__ esp_err_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ESP_LOGV (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ ESP_OK ; 
- int /*<<< orphan*/  HOST_SLC0HOST_TOKEN_RDATA_REG ; 
- int /*<<< orphan*/  TAG ; 
- int TX_BUFFER_MASK ; 
- int TX_BUFFER_MAX ; 
- scalar_t__ esp_slave_read_bytes (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
+
+ int ESP_LOGV (int ,char*) ;
+ scalar_t__ ESP_OK ;
+ int HOST_SLC0HOST_TOKEN_RDATA_REG ;
+ int TAG ;
+ int TX_BUFFER_MASK ;
+ int TX_BUFFER_MAX ;
+ scalar_t__ esp_slave_read_bytes (TYPE_1__*,int ,int *,int) ;
 
 esp_err_t esp_slave_get_tx_buffer_num(esp_slave_context_t *context, uint32_t* tx_num)
 {

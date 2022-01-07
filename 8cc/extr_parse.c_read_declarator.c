@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Vector ;
-typedef  int /*<<< orphan*/  Type ;
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int Vector ;
+typedef int Type ;
 struct TYPE_6__ {scalar_t__ kind; char* sval; } ;
-typedef  TYPE_1__ Token ;
+typedef TYPE_1__ Token ;
 
-/* Variables and functions */
- int DECL_BODY ; 
- int DECL_CAST ; 
- int DECL_PARAM ; 
- scalar_t__ TIDENT ; 
- int /*<<< orphan*/  errort (TYPE_1__*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  expect (char) ; 
- TYPE_1__* get () ; 
- scalar_t__ is_type (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * make_ptr_type (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * make_stub_type () ; 
- scalar_t__ next_token (char) ; 
- int /*<<< orphan*/  peek () ; 
- int /*<<< orphan*/ * read_declarator_func (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * read_declarator_tail (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  skip_type_qualifiers () ; 
- int /*<<< orphan*/  tok2s (TYPE_1__*) ; 
- int /*<<< orphan*/  unget_token (TYPE_1__*) ; 
+
+ int DECL_BODY ;
+ int DECL_CAST ;
+ int DECL_PARAM ;
+ scalar_t__ TIDENT ;
+ int errort (TYPE_1__*,char*,int ) ;
+ int expect (char) ;
+ TYPE_1__* get () ;
+ scalar_t__ is_type (int ) ;
+ int * make_ptr_type (int *) ;
+ int * make_stub_type () ;
+ scalar_t__ next_token (char) ;
+ int peek () ;
+ int * read_declarator_func (int *,int *) ;
+ int * read_declarator_tail (int *,int *) ;
+ int skip_type_qualifiers () ;
+ int tok2s (TYPE_1__*) ;
+ int unget_token (TYPE_1__*) ;
 
 __attribute__((used)) static Type *read_declarator(char **rname, Type *basety, Vector *params, int ctx) {
     if (next_token('(')) {
-        // '(' is either beginning of grouping parentheses or of a function parameter list.
-        // If the next token is a type name, a parameter list must follow.
+
+
         if (is_type(peek()))
             return read_declarator_func(basety, params);
-        // If not, it's grouping. In that case we have to read from outside.
-        // For example, consider int (*)(), which is "pointer to function returning int".
-        // We have only read "int" so far. We don't want to pass "int" to
-        // a recursive call, or otherwise we would get "pointer to int".
-        // Here, we pass a dummy object to get "pointer to <something>" first,
-        // continue reading to get "function returning int", and then combine them.
+
+
+
+
+
+
         Type *stub = make_stub_type();
         Type *t = read_declarator(rname, stub, params, ctx);
         expect(')');

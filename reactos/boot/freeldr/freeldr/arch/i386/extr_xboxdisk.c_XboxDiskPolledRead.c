@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int ULONG_PTR ;
-typedef  int ULONG ;
-typedef  int UCHAR ;
-typedef  int* PVOID ;
-typedef  scalar_t__ BOOLEAN ;
 
-/* Variables and functions */
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  IDEReadBlock (int,int*,int) ; 
- int IDEReadStatus (int) ; 
- int /*<<< orphan*/  IDEWriteCommand (int,int) ; 
- int /*<<< orphan*/  IDEWriteCylinderHigh (int,int) ; 
- int /*<<< orphan*/  IDEWriteCylinderLow (int,int) ; 
- int /*<<< orphan*/  IDEWriteDriveControl (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IDEWriteDriveHead (int,int) ; 
- int /*<<< orphan*/  IDEWritePrecomp (int,int) ; 
- int /*<<< orphan*/  IDEWriteSectorCount (int,int) ; 
- int /*<<< orphan*/  IDEWriteSectorNum (int,int) ; 
- int /*<<< orphan*/  IDE_DC_nIEN ; 
- int IDE_DH_DRV1 ; 
- int IDE_DH_FIXED ; 
- int IDE_DH_LBA ; 
- int IDE_MAX_BUSY_RETRIES ; 
- int IDE_MAX_POLL_RETRIES ; 
- int IDE_SECTOR_BUF_SZ ; 
- int IDE_SR_BUSY ; 
- int IDE_SR_DRQ ; 
- int IDE_SR_ERR ; 
- int /*<<< orphan*/  StallExecutionProcessor (int) ; 
- int /*<<< orphan*/  TRACE (char*,...) ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  WARN (char*) ; 
+
+
+
+typedef int ULONG_PTR ;
+typedef int ULONG ;
+typedef int UCHAR ;
+typedef int* PVOID ;
+typedef scalar_t__ BOOLEAN ;
+
+
+ scalar_t__ FALSE ;
+ int IDEReadBlock (int,int*,int) ;
+ int IDEReadStatus (int) ;
+ int IDEWriteCommand (int,int) ;
+ int IDEWriteCylinderHigh (int,int) ;
+ int IDEWriteCylinderLow (int,int) ;
+ int IDEWriteDriveControl (int,int ) ;
+ int IDEWriteDriveHead (int,int) ;
+ int IDEWritePrecomp (int,int) ;
+ int IDEWriteSectorCount (int,int) ;
+ int IDEWriteSectorNum (int,int) ;
+ int IDE_DC_nIEN ;
+ int IDE_DH_DRV1 ;
+ int IDE_DH_FIXED ;
+ int IDE_DH_LBA ;
+ int IDE_MAX_BUSY_RETRIES ;
+ int IDE_MAX_POLL_RETRIES ;
+ int IDE_SECTOR_BUF_SZ ;
+ int IDE_SR_BUSY ;
+ int IDE_SR_DRQ ;
+ int IDE_SR_ERR ;
+ int StallExecutionProcessor (int) ;
+ int TRACE (char*,...) ;
+ scalar_t__ TRUE ;
+ int WARN (char*) ;
 
 __attribute__((used)) static BOOLEAN
 XboxDiskPolledRead(ULONG CommandPort,
@@ -60,7 +60,7 @@ XboxDiskPolledRead(ULONG CommandPort,
     BOOLEAN Junk = FALSE;
     UCHAR Status;
 
-    /* Wait for BUSY to clear */
+
     for (RetryCount = 0; RetryCount < IDE_MAX_BUSY_RETRIES; RetryCount++)
     {
         Status = IDEReadStatus(CommandPort);
@@ -77,15 +77,15 @@ XboxDiskPolledRead(ULONG CommandPort,
         return FALSE;
     }
 
-    /* Write Drive/Head to select drive */
+
     IDEWriteDriveHead(CommandPort, IDE_DH_FIXED | DrvHead);
     StallExecutionProcessor(500);
 
-    /* Disable interrupts */
+
     IDEWriteDriveControl(ControlPort, IDE_DC_nIEN);
     StallExecutionProcessor(500);
 
-    /* Issue command to drive */
+
     if (DrvHead & IDE_DH_LBA)
     {
         TRACE("READ:DRV=%d:LBA=1:BLK=%d:SC=0x%x:CM=0x%x\n",
@@ -106,7 +106,7 @@ XboxDiskPolledRead(ULONG CommandPort,
               Command);
     }
 
-    /* Setup command parameters */
+
     IDEWritePrecomp(CommandPort, PreComp);
     IDEWriteSectorCount(CommandPort, SectorCnt);
     IDEWriteSectorNum(CommandPort, SectorNum);
@@ -114,11 +114,11 @@ XboxDiskPolledRead(ULONG CommandPort,
     IDEWriteCylinderLow(CommandPort, CylinderLow);
     IDEWriteDriveHead(CommandPort, IDE_DH_FIXED | DrvHead);
 
-    /* Issue the command */
+
     IDEWriteCommand(CommandPort, Command);
     StallExecutionProcessor(50);
 
-    /* Wait for DRQ or error */
+
     for (RetryCount = 0; RetryCount < IDE_MAX_POLL_RETRIES; RetryCount++)
     {
         Status = IDEReadStatus(CommandPort);
@@ -147,7 +147,7 @@ XboxDiskPolledRead(ULONG CommandPort,
         StallExecutionProcessor(10);
     }
 
-    /* Timed out */
+
     if (RetryCount >= IDE_MAX_POLL_RETRIES)
     {
         IDEWriteDriveControl(ControlPort, 0);
@@ -158,7 +158,7 @@ XboxDiskPolledRead(ULONG CommandPort,
 
     while (1)
     {
-        /* Read data into buffer */
+
         if (Junk == FALSE)
         {
             IDEReadBlock(CommandPort, Buffer, IDE_SECTOR_BUF_SZ);
@@ -171,7 +171,7 @@ XboxDiskPolledRead(ULONG CommandPort,
         }
         SectorCount++;
 
-        /* Check for error or more sectors to read */
+
         for (RetryCount = 0; RetryCount < IDE_MAX_BUSY_RETRIES; RetryCount++)
         {
             Status = IDEReadStatus(CommandPort);

@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
 
-/* Variables and functions */
- int strtol (char const*,char**,int) ; 
+
+
+
+typedef int uint8_t ;
+
+
+ int strtol (char const*,char**,int) ;
 
 bool unity_util_convert_mac_from_string(const char* mac_str, uint8_t *mac_addr)
 {
@@ -28,8 +28,8 @@ bool unity_util_convert_mac_from_string(const char* mac_str, uint8_t *mac_addr)
         if (stop - start == 2 && (*stop == ':' || (*stop == 0 && loop == 5))) {
             mac_addr[loop] = tmp;
         } else {
-            return false;
+            return 0;
         }
     }
-    return true;
+    return 1;
 }

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct conf {int /*<<< orphan*/  pool; int /*<<< orphan*/  arg; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  array_deinit (int /*<<< orphan*/ *) ; 
- scalar_t__ array_n (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  array_pop (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  conf_pool_deinit (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  conf_pop_scalar (struct conf*) ; 
- int /*<<< orphan*/  nc_free (struct conf*) ; 
+
+
+
+struct conf {int pool; int arg; } ;
+
+
+ int array_deinit (int *) ;
+ scalar_t__ array_n (int *) ;
+ int array_pop (int *) ;
+ int conf_pool_deinit (int ) ;
+ int conf_pop_scalar (struct conf*) ;
+ int nc_free (struct conf*) ;
 
 void
 conf_destroy(struct conf *cf)

@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  append_byte (unsigned char*,size_t*,size_t,char const) ; 
- int /*<<< orphan*/  hexval (char const) ; 
- int /*<<< orphan*/  isodigit (char const) ; 
- int /*<<< orphan*/  isxdigit (char const) ; 
+ int append_byte (unsigned char*,size_t*,size_t,char const) ;
+ int hexval (char const) ;
+ int isodigit (char const) ;
+ int isxdigit (char const) ;
 
 __attribute__((used)) static const char *
 parse_c_string(unsigned char *buf, size_t *buf_length,

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  cpp_reader ;
-struct TYPE_2__ {int /*<<< orphan*/  warn_invalid_pch; int /*<<< orphan*/  preprocessed; } ;
 
-/* Variables and functions */
- int O_BINARY ; 
- int O_RDONLY ; 
- int /*<<< orphan*/  c_common_read_pch (int /*<<< orphan*/ *,char const*,int,char const*) ; 
- int c_common_valid_pch (int /*<<< orphan*/ *,char const*,int) ; 
- int /*<<< orphan*/  close (int) ; 
- TYPE_1__* cpp_get_options (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  error (char*) ; 
- int /*<<< orphan*/  fatal_error (char*,char const*) ; 
- int /*<<< orphan*/  inform (char*) ; 
- int open (char const*,int,int) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int cpp_reader ;
+struct TYPE_2__ {int warn_invalid_pch; int preprocessed; } ;
+
+
+ int O_BINARY ;
+ int O_RDONLY ;
+ int c_common_read_pch (int *,char const*,int,char const*) ;
+ int c_common_valid_pch (int *,char const*,int) ;
+ int close (int) ;
+ TYPE_1__* cpp_get_options (int *) ;
+ int error (char*) ;
+ int fatal_error (char*,char const*) ;
+ int inform (char*) ;
+ int open (char const*,int,int) ;
 
 void
 c_common_pch_pragma (cpp_reader *pfile, const char *name)
@@ -45,7 +45,7 @@ c_common_pch_pragma (cpp_reader *pfile, const char *name)
   if (c_common_valid_pch (pfile, name, fd) != 1)
     {
       if (!cpp_get_options (pfile)->warn_invalid_pch)
-	inform ("use -Winvalid-pch for more information");
+ inform ("use -Winvalid-pch for more information");
       fatal_error ("%s: PCH file was invalid", name);
     }
 

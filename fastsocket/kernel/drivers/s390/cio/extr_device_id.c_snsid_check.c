@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_5__ ;
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_5__ ;
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct senseid {int dummy; } ;
 struct cmd_scsw {int count; } ;
 struct ccw_device {TYPE_5__* private; } ;
@@ -24,32 +24,32 @@ struct TYPE_8__ {struct cmd_scsw cmd; } ;
 struct TYPE_9__ {TYPE_3__ scsw; } ;
 struct TYPE_10__ {TYPE_2__ flags; TYPE_1__ senseid; TYPE_4__ irb; } ;
 
-/* Variables and functions */
- int EAGAIN ; 
- int EOPNOTSUPP ; 
- int SENSE_ID_BASIC_LEN ; 
- int SENSE_ID_MIN_LEN ; 
- int /*<<< orphan*/  snsid_init (struct ccw_device*) ; 
+
+ int EAGAIN ;
+ int EOPNOTSUPP ;
+ int SENSE_ID_BASIC_LEN ;
+ int SENSE_ID_MIN_LEN ;
+ int snsid_init (struct ccw_device*) ;
 
 __attribute__((used)) static int snsid_check(struct ccw_device *cdev, void *data)
 {
-	struct cmd_scsw *scsw = &cdev->private->irb.scsw.cmd;
-	int len = sizeof(struct senseid) - scsw->count;
+ struct cmd_scsw *scsw = &cdev->private->irb.scsw.cmd;
+ int len = sizeof(struct senseid) - scsw->count;
 
-	/* Check for incomplete SENSE ID data. */
-	if (len < SENSE_ID_MIN_LEN)
-		goto out_restart;
-	if (cdev->private->senseid.cu_type == 0xffff)
-		goto out_restart;
-	/* Check for incompatible SENSE ID data. */
-	if (cdev->private->senseid.reserved != 0xff)
-		return -EOPNOTSUPP;
-	/* Check for extended-identification information. */
-	if (len > SENSE_ID_BASIC_LEN)
-		cdev->private->flags.esid = 1;
-	return 0;
+
+ if (len < SENSE_ID_MIN_LEN)
+  goto out_restart;
+ if (cdev->private->senseid.cu_type == 0xffff)
+  goto out_restart;
+
+ if (cdev->private->senseid.reserved != 0xff)
+  return -EOPNOTSUPP;
+
+ if (len > SENSE_ID_BASIC_LEN)
+  cdev->private->flags.esid = 1;
+ return 0;
 
 out_restart:
-	snsid_init(cdev);
-	return -EAGAIN;
+ snsid_init(cdev);
+ return -EAGAIN;
 }

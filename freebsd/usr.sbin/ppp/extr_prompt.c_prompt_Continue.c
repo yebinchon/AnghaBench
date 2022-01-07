@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct prompt {int nonewline; int /*<<< orphan*/  owner; } ;
-struct TYPE_4__ {char* name; struct prompt* arg; int /*<<< orphan*/  load; int /*<<< orphan*/  func; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SECTICKS ; 
- TYPE_1__ bgtimer ; 
- scalar_t__ getpgrp () ; 
- int /*<<< orphan*/  log_ActivatePrompt (struct prompt*) ; 
- int /*<<< orphan*/  prompt_Required (struct prompt*) ; 
- int /*<<< orphan*/  prompt_TimedContinue ; 
- int /*<<< orphan*/  prompt_TtyCommandMode (struct prompt*) ; 
- scalar_t__ prompt_pgrp (struct prompt*) ; 
- int /*<<< orphan*/  timer_Start (TYPE_1__*) ; 
- int /*<<< orphan*/  timer_Stop (TYPE_1__*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct prompt {int nonewline; int owner; } ;
+struct TYPE_4__ {char* name; struct prompt* arg; int load; int func; } ;
+
+
+ int SECTICKS ;
+ TYPE_1__ bgtimer ;
+ scalar_t__ getpgrp () ;
+ int log_ActivatePrompt (struct prompt*) ;
+ int prompt_Required (struct prompt*) ;
+ int prompt_TimedContinue ;
+ int prompt_TtyCommandMode (struct prompt*) ;
+ scalar_t__ prompt_pgrp (struct prompt*) ;
+ int timer_Start (TYPE_1__*) ;
+ int timer_Stop (TYPE_1__*) ;
 
 void
 prompt_Continue(struct prompt *p)

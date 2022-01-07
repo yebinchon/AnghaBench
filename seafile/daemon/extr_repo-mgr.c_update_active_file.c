@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_3__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_3__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct index_state {int dummy; } ;
 struct cache_entry {int dummy; } ;
-typedef  scalar_t__ gboolean ;
-struct TYPE_5__ {int /*<<< orphan*/  sync_mgr; } ;
-struct TYPE_4__ {int /*<<< orphan*/  id; int /*<<< orphan*/  is_readonly; } ;
-typedef  scalar_t__ SyncStatus ;
-typedef  int /*<<< orphan*/  SeafStat ;
-typedef  TYPE_1__ SeafRepo ;
+typedef scalar_t__ gboolean ;
+struct TYPE_5__ {int sync_mgr; } ;
+struct TYPE_4__ {int id; int is_readonly; } ;
+typedef scalar_t__ SyncStatus ;
+typedef int SeafStat ;
+typedef TYPE_1__ SeafRepo ;
 
-/* Variables and functions */
- scalar_t__ SYNC_STATUS_IGNORED ; 
- scalar_t__ SYNC_STATUS_SYNCED ; 
- scalar_t__ SYNC_STATUS_SYNCING ; 
- int /*<<< orphan*/  S_IFREG ; 
- scalar_t__ ie_match_stat (struct cache_entry*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- struct cache_entry* index_name_exists (struct index_state*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ is_path_writable (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*) ; 
- TYPE_3__* seaf ; 
- int /*<<< orphan*/  seaf_sync_manager_delete_active_path (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  seaf_sync_manager_update_active_path (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  strlen (char const*) ; 
+
+ scalar_t__ SYNC_STATUS_IGNORED ;
+ scalar_t__ SYNC_STATUS_SYNCED ;
+ scalar_t__ SYNC_STATUS_SYNCING ;
+ int S_IFREG ;
+ scalar_t__ ie_match_stat (struct cache_entry*,int *,int ) ;
+ struct cache_entry* index_name_exists (struct index_state*,char const*,int ,int ) ;
+ scalar_t__ is_path_writable (int ,int ,char const*) ;
+ TYPE_3__* seaf ;
+ int seaf_sync_manager_delete_active_path (int ,int ,char const*) ;
+ int seaf_sync_manager_update_active_path (int ,int ,char const*,int ,scalar_t__) ;
+ int strlen (char const*) ;
 
 __attribute__((used)) static void
 update_active_file (SeafRepo *repo,

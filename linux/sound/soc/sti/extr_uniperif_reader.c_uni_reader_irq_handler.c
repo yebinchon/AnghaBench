@@ -1,68 +1,68 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct uniperif {scalar_t__ state; int /*<<< orphan*/  irq_lock; int /*<<< orphan*/  substream; int /*<<< orphan*/  dev; } ;
-typedef  int /*<<< orphan*/  irqreturn_t ;
 
-/* Variables and functions */
- unsigned int GET_UNIPERIF_ITS (struct uniperif*) ; 
- int /*<<< orphan*/  IRQ_HANDLED ; 
- int /*<<< orphan*/  IRQ_NONE ; 
- int /*<<< orphan*/  SET_UNIPERIF_ITS_BCLR (struct uniperif*,unsigned int) ; 
- unsigned int UNIPERIF_ITS_FIFO_ERROR_MASK (struct uniperif*) ; 
- scalar_t__ UNIPERIF_STATE_STOPPED ; 
- int /*<<< orphan*/  dev_err (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  dev_warn (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  snd_pcm_stop_xrun (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  snd_pcm_stream_lock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  snd_pcm_stream_unlock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  spin_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock (int /*<<< orphan*/ *) ; 
- scalar_t__ unlikely (unsigned int) ; 
+
+
+
+struct uniperif {scalar_t__ state; int irq_lock; int substream; int dev; } ;
+typedef int irqreturn_t ;
+
+
+ unsigned int GET_UNIPERIF_ITS (struct uniperif*) ;
+ int IRQ_HANDLED ;
+ int IRQ_NONE ;
+ int SET_UNIPERIF_ITS_BCLR (struct uniperif*,unsigned int) ;
+ unsigned int UNIPERIF_ITS_FIFO_ERROR_MASK (struct uniperif*) ;
+ scalar_t__ UNIPERIF_STATE_STOPPED ;
+ int dev_err (int ,char*) ;
+ int dev_warn (int ,char*) ;
+ int snd_pcm_stop_xrun (int ) ;
+ int snd_pcm_stream_lock (int ) ;
+ int snd_pcm_stream_unlock (int ) ;
+ int spin_lock (int *) ;
+ int spin_unlock (int *) ;
+ scalar_t__ unlikely (unsigned int) ;
 
 __attribute__((used)) static irqreturn_t uni_reader_irq_handler(int irq, void *dev_id)
 {
-	irqreturn_t ret = IRQ_NONE;
-	struct uniperif *reader = dev_id;
-	unsigned int status;
+ irqreturn_t ret = IRQ_NONE;
+ struct uniperif *reader = dev_id;
+ unsigned int status;
 
-	spin_lock(&reader->irq_lock);
-	if (!reader->substream)
-		goto irq_spin_unlock;
+ spin_lock(&reader->irq_lock);
+ if (!reader->substream)
+  goto irq_spin_unlock;
 
-	snd_pcm_stream_lock(reader->substream);
-	if (reader->state == UNIPERIF_STATE_STOPPED) {
-		/* Unexpected IRQ: do nothing */
-		dev_warn(reader->dev, "unexpected IRQ\n");
-		goto stream_unlock;
-	}
+ snd_pcm_stream_lock(reader->substream);
+ if (reader->state == UNIPERIF_STATE_STOPPED) {
 
-	/* Get interrupt status & clear them immediately */
-	status = GET_UNIPERIF_ITS(reader);
-	SET_UNIPERIF_ITS_BCLR(reader, status);
+  dev_warn(reader->dev, "unexpected IRQ\n");
+  goto stream_unlock;
+ }
 
-	/* Check for fifo overflow error */
-	if (unlikely(status & UNIPERIF_ITS_FIFO_ERROR_MASK(reader))) {
-		dev_err(reader->dev, "FIFO error detected\n");
 
-		snd_pcm_stop_xrun(reader->substream);
+ status = GET_UNIPERIF_ITS(reader);
+ SET_UNIPERIF_ITS_BCLR(reader, status);
 
-		ret = IRQ_HANDLED;
-	}
+
+ if (unlikely(status & UNIPERIF_ITS_FIFO_ERROR_MASK(reader))) {
+  dev_err(reader->dev, "FIFO error detected\n");
+
+  snd_pcm_stop_xrun(reader->substream);
+
+  ret = IRQ_HANDLED;
+ }
 
 stream_unlock:
-	snd_pcm_stream_unlock(reader->substream);
+ snd_pcm_stream_unlock(reader->substream);
 irq_spin_unlock:
-	spin_unlock(&reader->irq_lock);
+ spin_unlock(&reader->irq_lock);
 
-	return ret;
+ return ret;
 }

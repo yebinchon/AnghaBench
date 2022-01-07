@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ UINT ;
-typedef  int /*<<< orphan*/  REGSAM ;
-typedef  int /*<<< orphan*/ * HKEY ;
-typedef  scalar_t__ DWORD ;
-typedef  char BOOL ;
 
-/* Variables and functions */
- scalar_t__ ERROR_ACCESS_DENIED ; 
- scalar_t__ ERROR_INVALID_PARAMETER ; 
- scalar_t__ ERROR_SUCCESS ; 
- char FALSE ; 
- int /*<<< orphan*/  HKEY_LOCAL_MACHINE ; 
- int /*<<< orphan*/  KEY_ALL_ACCESS ; 
- int /*<<< orphan*/  KEY_WOW64_64KEY ; 
- int /*<<< orphan*/  LocalFree (char*) ; 
- int MAX_PATH ; 
- scalar_t__ MsiEnumComponentsA (scalar_t__,char*) ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ *) ; 
- scalar_t__ RegCreateKeyExA (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
- char TRUE ; 
- int /*<<< orphan*/  create_test_guid (char*,char*) ; 
- int /*<<< orphan*/  delete_key (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- char* get_user_sid () ; 
- scalar_t__ is_wow64 ; 
- int /*<<< orphan*/  ok (char,char*,...) ; 
- int /*<<< orphan*/  skip (char*) ; 
- int /*<<< orphan*/  strcat (char*,char*) ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
+
+
+
+typedef scalar_t__ UINT ;
+typedef int REGSAM ;
+typedef int * HKEY ;
+typedef scalar_t__ DWORD ;
+typedef char BOOL ;
+
+
+ scalar_t__ ERROR_ACCESS_DENIED ;
+ scalar_t__ ERROR_INVALID_PARAMETER ;
+ scalar_t__ ERROR_SUCCESS ;
+ char FALSE ;
+ int HKEY_LOCAL_MACHINE ;
+ int KEY_ALL_ACCESS ;
+ int KEY_WOW64_64KEY ;
+ int LocalFree (char*) ;
+ int MAX_PATH ;
+ scalar_t__ MsiEnumComponentsA (scalar_t__,char*) ;
+ int RegCloseKey (int *) ;
+ scalar_t__ RegCreateKeyExA (int ,char*,int ,int *,int ,int ,int *,int **,int *) ;
+ char TRUE ;
+ int create_test_guid (char*,char*) ;
+ int delete_key (int *,char*,int ) ;
+ char* get_user_sid () ;
+ scalar_t__ is_wow64 ;
+ int ok (char,char*,...) ;
+ int skip (char*) ;
+ int strcat (char*,char*) ;
+ int strcmp (char*,char*) ;
+ int strcpy (char*,char*) ;
 
 __attribute__((used)) static void test_MsiEnumComponents(void)
 {
@@ -50,7 +50,7 @@ __attribute__((used)) static void test_MsiEnumComponents(void)
     char keypath1[MAX_PATH], keypath2[MAX_PATH];
     REGSAM access = KEY_ALL_ACCESS;
     char *usersid = get_user_sid();
-    HKEY key1 = NULL, key2 = NULL;
+    HKEY key1 = ((void*)0), key2 = ((void*)0);
 
     create_test_guid( comp1, comp_squashed1 );
     create_test_guid( comp2, comp_squashed2 );
@@ -61,7 +61,7 @@ __attribute__((used)) static void test_MsiEnumComponents(void)
     strcat( keypath1, "S-1-5-18\\Components\\" );
     strcat( keypath1, comp_squashed1 );
 
-    r = RegCreateKeyExA( HKEY_LOCAL_MACHINE, keypath1, 0, NULL, 0, access, NULL, &key1, NULL );
+    r = RegCreateKeyExA( HKEY_LOCAL_MACHINE, keypath1, 0, ((void*)0), 0, access, ((void*)0), &key1, ((void*)0) );
     if (r == ERROR_ACCESS_DENIED)
     {
         skip( "insufficient rights\n" );
@@ -74,14 +74,14 @@ __attribute__((used)) static void test_MsiEnumComponents(void)
     strcat( keypath2, "\\Components\\" );
     strcat( keypath2, comp_squashed2 );
 
-    r = RegCreateKeyExA( HKEY_LOCAL_MACHINE, keypath2, 0, NULL, 0, access, NULL, &key2, NULL );
+    r = RegCreateKeyExA( HKEY_LOCAL_MACHINE, keypath2, 0, ((void*)0), 0, access, ((void*)0), &key2, ((void*)0) );
     if (r == ERROR_ACCESS_DENIED)
     {
         skip( "insufficient rights\n" );
         goto done;
     }
 
-    r = MsiEnumComponentsA( 0, NULL );
+    r = MsiEnumComponentsA( 0, ((void*)0) );
     ok( r == ERROR_INVALID_PARAMETER, "got %u\n", r );
 
     index = 0;

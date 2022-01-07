@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  PACK ;
-typedef  int /*<<< orphan*/  BUF ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FreePack (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * NewPack () ; 
- int ReadPack (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int PACK ;
+typedef int BUF ;
+
+
+ int FreePack (int *) ;
+ int * NewPack () ;
+ int ReadPack (int *,int *) ;
 
 PACK *BufToPack(BUF *b)
 {
-	PACK *p;
-	// Validate arguments
-	if (b == NULL)
-	{
-		return NULL;
-	}
+ PACK *p;
 
-	p = NewPack();
-	if (ReadPack(b, p) == false)
-	{
-		FreePack(p);
-		return NULL;
-	}
+ if (b == ((void*)0))
+ {
+  return ((void*)0);
+ }
 
-	return p;
+ p = NewPack();
+ if (ReadPack(b, p) == 0)
+ {
+  FreePack(p);
+  return ((void*)0);
+ }
+
+ return p;
 }

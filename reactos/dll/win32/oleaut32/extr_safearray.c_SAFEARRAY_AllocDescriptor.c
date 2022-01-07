@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int ULONG ;
-typedef  int /*<<< orphan*/  SAFEARRAY ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- int SAFEARRAY_HIDDEN_SIZE ; 
- char* SAFEARRAY_Malloc (int) ; 
- int /*<<< orphan*/  S_OK ; 
+
+
+
+typedef int ULONG ;
+typedef int SAFEARRAY ;
+typedef int HRESULT ;
+
+
+ int E_OUTOFMEMORY ;
+ int SAFEARRAY_HIDDEN_SIZE ;
+ char* SAFEARRAY_Malloc (int) ;
+ int S_OK ;
 
 __attribute__((used)) static HRESULT SAFEARRAY_AllocDescriptor(ULONG ulSize, SAFEARRAY **ppsaOut)
 {
@@ -26,7 +26,7 @@ __attribute__((used)) static HRESULT SAFEARRAY_AllocDescriptor(ULONG ulSize, SAF
 
   if (!ptr)
   {
-      *ppsaOut = NULL;
+      *ppsaOut = ((void*)0);
       return E_OUTOFMEMORY;
   }
 

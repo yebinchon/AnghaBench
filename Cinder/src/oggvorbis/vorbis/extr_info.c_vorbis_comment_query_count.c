@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int comments; int /*<<< orphan*/ * user_comments; } ;
-typedef  TYPE_1__ vorbis_comment ;
 
-/* Variables and functions */
- char* alloca (int) ; 
- int /*<<< orphan*/  strcat (char*,char*) ; 
- int /*<<< orphan*/  strcpy (char*,char const*) ; 
- int strlen (char const*) ; 
- int /*<<< orphan*/  tagcompare (int /*<<< orphan*/ ,char*,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int comments; int * user_comments; } ;
+typedef TYPE_1__ vorbis_comment ;
+
+
+ char* alloca (int) ;
+ int strcat (char*,char*) ;
+ int strcpy (char*,char const*) ;
+ int strlen (char const*) ;
+ int tagcompare (int ,char*,int) ;
 
 int vorbis_comment_query_count(vorbis_comment *vc, const char *tag){
   int i,count=0;
-  int taglen = strlen(tag)+1; /* +1 for the = we append */
+  int taglen = strlen(tag)+1;
   char *fulltag = alloca(taglen+1);
   strcpy(fulltag,tag);
   strcat(fulltag, "=");

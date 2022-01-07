@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_7__ {TYPE_1__* state_handlers; } ;
-struct TYPE_6__ {int /*<<< orphan*/  (* consume_power_handler ) (TYPE_2__*) ;} ;
-typedef  int /*<<< orphan*/  SCI_STATUS ;
-typedef  TYPE_2__ SCIC_SDS_PHY_T ;
+struct TYPE_6__ {int (* consume_power_handler ) (TYPE_2__*) ;} ;
+typedef int SCI_STATUS ;
+typedef TYPE_2__ SCIC_SDS_PHY_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SCIC_LOG_OBJECT_PHY ; 
- int /*<<< orphan*/  SCIC_LOG_TRACE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sci_base_object_get_logger (TYPE_2__*) ; 
- int /*<<< orphan*/  stub1 (TYPE_2__*) ; 
+
+ int SCIC_LOG_OBJECT_PHY ;
+ int SCIC_LOG_TRACE (int ) ;
+ int sci_base_object_get_logger (TYPE_2__*) ;
+ int stub1 (TYPE_2__*) ;
 
 SCI_STATUS scic_sds_phy_consume_power_handler(
    SCIC_SDS_PHY_T *this_phy

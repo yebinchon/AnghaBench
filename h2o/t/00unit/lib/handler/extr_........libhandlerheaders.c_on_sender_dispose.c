@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct st_headers_early_hints_sender_t {int /*<<< orphan*/  deferred_timeout_entry; } ;
 
-/* Variables and functions */
- scalar_t__ h2o_timer_is_linked (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  h2o_timer_unlink (int /*<<< orphan*/ *) ; 
+
+
+
+struct st_headers_early_hints_sender_t {int deferred_timeout_entry; } ;
+
+
+ scalar_t__ h2o_timer_is_linked (int *) ;
+ int h2o_timer_unlink (int *) ;
 
 __attribute__((used)) static void on_sender_dispose(void *_sender)
 {

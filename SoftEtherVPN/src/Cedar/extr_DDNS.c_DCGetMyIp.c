@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ UINT ;
-typedef  int /*<<< orphan*/  IP ;
-typedef  int /*<<< orphan*/  DDNS_CLIENT ;
 
-/* Variables and functions */
- scalar_t__ DCGetMyIpMain (int /*<<< orphan*/ *,int,char*,scalar_t__,int,char*) ; 
- scalar_t__ ERR_INTERNAL_ERROR ; 
- scalar_t__ ERR_NO_ERROR ; 
- scalar_t__ IsIP4 (int /*<<< orphan*/ *) ; 
- scalar_t__ IsIP6 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SetCurrentGlobalIP (int /*<<< orphan*/ *,int) ; 
- scalar_t__ StrToIP (int /*<<< orphan*/ *,char*) ; 
+
+
+
+typedef scalar_t__ UINT ;
+typedef int IP ;
+typedef int DDNS_CLIENT ;
+
+
+ scalar_t__ DCGetMyIpMain (int *,int,char*,scalar_t__,int,char*) ;
+ scalar_t__ ERR_INTERNAL_ERROR ;
+ scalar_t__ ERR_NO_ERROR ;
+ scalar_t__ IsIP4 (int *) ;
+ scalar_t__ IsIP6 (int *) ;
+ int SetCurrentGlobalIP (int *,int) ;
+ scalar_t__ StrToIP (int *,char*) ;
 
 UINT DCGetMyIp(DDNS_CLIENT *c, bool ipv6, char *dst, UINT dst_size, char *replace_v6)
 {
-	UINT ret = ERR_INTERNAL_ERROR;
+ UINT ret = ERR_INTERNAL_ERROR;
 
-	ret = DCGetMyIpMain(c, ipv6, dst, dst_size, false, replace_v6);
+ ret = DCGetMyIpMain(c, ipv6, dst, dst_size, 0, replace_v6);
 
 
-	if (ret == ERR_NO_ERROR)
-	{
-		IP ip;
+ if (ret == ERR_NO_ERROR)
+ {
+  IP ip;
 
-		if (StrToIP(&ip, dst))
-		{
-			if (ipv6 == false && IsIP4(&ip))
-			{
-				SetCurrentGlobalIP(&ip, false);
-			}
-			else if (ipv6 && IsIP6(&ip))
-			{
-				SetCurrentGlobalIP(&ip, true);
-			}
-		}
-	}
+  if (StrToIP(&ip, dst))
+  {
+   if (ipv6 == 0 && IsIP4(&ip))
+   {
+    SetCurrentGlobalIP(&ip, 0);
+   }
+   else if (ipv6 && IsIP6(&ip))
+   {
+    SetCurrentGlobalIP(&ip, 1);
+   }
+  }
+ }
 
-	return ret;
+ return ret;
 }

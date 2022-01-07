@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_10__ {scalar_t__ status; int /*<<< orphan*/  recv_array; int /*<<< orphan*/  send_array; int /*<<< orphan*/  ip_portv6; int /*<<< orphan*/  ip_portv4; int /*<<< orphan*/  connection_number_tcp; } ;
-struct TYPE_9__ {int /*<<< orphan*/  connections_mutex; int /*<<< orphan*/  ip_port_list; int /*<<< orphan*/  tcp_mutex; int /*<<< orphan*/  tcp_c; int /*<<< orphan*/  connection_use_counter; } ;
-typedef  TYPE_1__ Net_Crypto ;
-typedef  TYPE_2__ Crypto_Connection ;
 
-/* Variables and functions */
- scalar_t__ CRYPTO_CONN_ESTABLISHED ; 
- int /*<<< orphan*/  bs_list_remove (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  clear_buffer (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  clear_temp_packet (TYPE_1__*,int) ; 
- TYPE_2__* get_crypto_connection (TYPE_1__*,int) ; 
- int /*<<< orphan*/  kill_tcp_connection_to (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  send_kill_packet (TYPE_1__*,int) ; 
- int wipe_crypto_connection (TYPE_1__*,int) ; 
+
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_10__ {scalar_t__ status; int recv_array; int send_array; int ip_portv6; int ip_portv4; int connection_number_tcp; } ;
+struct TYPE_9__ {int connections_mutex; int ip_port_list; int tcp_mutex; int tcp_c; int connection_use_counter; } ;
+typedef TYPE_1__ Net_Crypto ;
+typedef TYPE_2__ Crypto_Connection ;
+
+
+ scalar_t__ CRYPTO_CONN_ESTABLISHED ;
+ int bs_list_remove (int *,int *,int) ;
+ int clear_buffer (int *) ;
+ int clear_temp_packet (TYPE_1__*,int) ;
+ TYPE_2__* get_crypto_connection (TYPE_1__*,int) ;
+ int kill_tcp_connection_to (int ,int ) ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
+ int send_kill_packet (TYPE_1__*,int) ;
+ int wipe_crypto_connection (TYPE_1__*,int) ;
 
 int crypto_kill(Net_Crypto *c, int crypt_connection_id)
 {
-    while (1) { /* TODO: is this really the best way to do this? */
+    while (1) {
         pthread_mutex_lock(&c->connections_mutex);
 
         if (!c->connection_use_counter) {

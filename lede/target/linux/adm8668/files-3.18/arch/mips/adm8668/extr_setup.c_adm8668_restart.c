@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int ADM8668_CONFIG_REG ;
 
-/* Variables and functions */
+
+
+
+typedef int ADM8668_CONFIG_REG ;
+
+
 
 __attribute__((used)) static void adm8668_restart(char *cmd)
 {
-	int i;
+ int i;
 
-	/* the real deal */
-	for (i = 0; i < 1000; i++)
-		;
-	ADM8668_CONFIG_REG(ADM8668_CR1) = 1;
+
+ for (i = 0; i < 1000; i++)
+  ;
+ ADM8668_CONFIG_REG(ADM8668_CR1) = 1;
 }

@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
-typedef  scalar_t__ uint32_t ;
-typedef  scalar_t__ uint16_t ;
-typedef  int /*<<< orphan*/  t_List ;
-typedef  int /*<<< orphan*/ * t_Handle ;
-typedef  int /*<<< orphan*/  t_FmPcdModifyCcKeyAdditionalParams ;
-struct TYPE_2__ {int /*<<< orphan*/  h_Hc; } ;
-typedef  TYPE_1__ t_FmPcd ;
-typedef  scalar_t__ t_Error ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT_COND (int /*<<< orphan*/ *) ; 
- scalar_t__ E_INVALID_VALUE ; 
- scalar_t__ E_OK ; 
- scalar_t__ FmHcPcdCcDoDynamicChange (int /*<<< orphan*/ ,scalar_t__,scalar_t__) ; 
- scalar_t__ FmPcdCcGetNodeAddrOffsetFromNodeInfo (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ ILLEGAL_BASE ; 
- int /*<<< orphan*/  MAJOR ; 
- int /*<<< orphan*/ * NCSW_LIST_FIRST (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * NCSW_LIST_NEXT (int /*<<< orphan*/ *) ; 
- scalar_t__ NCSW_LIST_NumOfObjs (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RETURN_ERROR (int /*<<< orphan*/ ,scalar_t__,char*) ; 
- int /*<<< orphan*/  ReleaseModifiedDataStructure (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint8_t ;
+typedef scalar_t__ uint32_t ;
+typedef scalar_t__ uint16_t ;
+typedef int t_List ;
+typedef int * t_Handle ;
+typedef int t_FmPcdModifyCcKeyAdditionalParams ;
+struct TYPE_2__ {int h_Hc; } ;
+typedef TYPE_1__ t_FmPcd ;
+typedef scalar_t__ t_Error ;
+
+
+ int ASSERT_COND (int *) ;
+ scalar_t__ E_INVALID_VALUE ;
+ scalar_t__ E_OK ;
+ scalar_t__ FmHcPcdCcDoDynamicChange (int ,scalar_t__,scalar_t__) ;
+ scalar_t__ FmPcdCcGetNodeAddrOffsetFromNodeInfo (int *,int *) ;
+ scalar_t__ ILLEGAL_BASE ;
+ int MAJOR ;
+ int * NCSW_LIST_FIRST (int *) ;
+ int * NCSW_LIST_NEXT (int *) ;
+ scalar_t__ NCSW_LIST_NumOfObjs (int *) ;
+ int RETURN_ERROR (int ,scalar_t__,char*) ;
+ int ReleaseModifiedDataStructure (int *,int *,int *,int *,int) ;
 
 __attribute__((used)) static t_Error DynamicChangeHc(
         t_Handle h_FmPcd, t_List *h_OldPointersLst, t_List *h_NewPointersLst,
@@ -57,7 +57,7 @@ __attribute__((used)) static t_Error DynamicChangeHc(
         p_PosNew = NCSW_LIST_FIRST(h_NewPointersLst);
         p_PosOld = NCSW_LIST_FIRST(h_OldPointersLst);
 
-        /* Retrieve address of new AD */
+
         newAdAddrOffset = FmPcdCcGetNodeAddrOffsetFromNodeInfo(h_FmPcd,
                                                                p_PosNew);
         if (newAdAddrOffset == (uint32_t)ILLEGAL_BASE)
@@ -70,7 +70,7 @@ __attribute__((used)) static t_Error DynamicChangeHc(
 
         for (i = 0; i < numOfModifiedPtr; i++)
         {
-            /* Retrieve address of current AD */
+
             oldAdAddrOffset = FmPcdCcGetNodeAddrOffsetFromNodeInfo(h_FmPcd,
                                                                    p_PosOld);
             if (oldAdAddrOffset == (uint32_t)ILLEGAL_BASE)
@@ -82,7 +82,7 @@ __attribute__((used)) static t_Error DynamicChangeHc(
                 RETURN_ERROR(MAJOR, E_INVALID_VALUE, ("Old AD address"));
             }
 
-            /* Invoke host command to copy from new AD to old AD */
+
             err = FmHcPcdCcDoDynamicChange(((t_FmPcd *)h_FmPcd)->h_Hc,
                                            oldAdAddrOffset, newAdAddrOffset);
             if (err)

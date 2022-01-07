@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
 struct TYPE_10__ {int x; struct TYPE_10__* right; struct TYPE_10__* left; } ;
-typedef  TYPE_1__ tree_ext_t ;
+typedef TYPE_1__ tree_ext_t ;
 
-/* Variables and functions */
- TYPE_1__* NIL ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  free_tree_ext_node (TYPE_1__*) ; 
- TYPE_1__* tree_ext_merge (TYPE_1__*,TYPE_1__*) ; 
- int /*<<< orphan*/  tree_ext_relax (TYPE_1__*) ; 
+
+ TYPE_1__* NIL ;
+ int assert (int) ;
+ int free_tree_ext_node (TYPE_1__*) ;
+ TYPE_1__* tree_ext_merge (TYPE_1__*,TYPE_1__*) ;
+ int tree_ext_relax (TYPE_1__*) ;
 
 __attribute__((used)) static tree_ext_t *tree_ext_delete (tree_ext_t *T, int x) {
   assert (T != NIL);

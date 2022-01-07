@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_6__ {double nb_samples; scalar_t__* extended_data; } ;
-struct TYPE_5__ {int channels; double* dc_correction_value; int /*<<< orphan*/  fade_factors; int /*<<< orphan*/ * gain_history_original; } ;
-typedef  TYPE_1__ DynamicAudioNormalizerContext ;
-typedef  TYPE_2__ AVFrame ;
+struct TYPE_5__ {int channels; double* dc_correction_value; int fade_factors; int * gain_history_original; } ;
+typedef TYPE_1__ DynamicAudioNormalizerContext ;
+typedef TYPE_2__ AVFrame ;
 
-/* Variables and functions */
- int cqueue_empty (int /*<<< orphan*/ ) ; 
- scalar_t__ fade (double,double,int,int /*<<< orphan*/ ) ; 
- double update_value (double,double,double) ; 
+
+ int cqueue_empty (int ) ;
+ scalar_t__ fade (double,double,int,int ) ;
+ double update_value (double,double,double) ;
 
 __attribute__((used)) static void perform_dc_correction(DynamicAudioNormalizerContext *s, AVFrame *frame)
 {

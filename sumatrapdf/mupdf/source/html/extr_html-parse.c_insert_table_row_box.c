@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_9__ {scalar_t__ type; struct TYPE_9__* up; } ;
-typedef  TYPE_1__ fz_html_box ;
-typedef  int /*<<< orphan*/  fz_context ;
+typedef TYPE_1__ fz_html_box ;
+typedef int fz_context ;
 
-/* Variables and functions */
- scalar_t__ BOX_TABLE ; 
- int /*<<< orphan*/  BOX_TABLE_ROW ; 
- int /*<<< orphan*/  fz_warn (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  insert_block_box (int /*<<< orphan*/ *,TYPE_1__*,TYPE_1__*) ; 
- int /*<<< orphan*/  insert_box (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ ,TYPE_1__*) ; 
+
+ scalar_t__ BOX_TABLE ;
+ int BOX_TABLE_ROW ;
+ int fz_warn (int *,char*) ;
+ int insert_block_box (int *,TYPE_1__*,TYPE_1__*) ;
+ int insert_box (int *,TYPE_1__*,int ,TYPE_1__*) ;
 
 __attribute__((used)) static fz_html_box *insert_table_row_box(fz_context *ctx, fz_html_box *box, fz_html_box *top)
 {
-	fz_html_box *table = top;
-	while (table && table->type != BOX_TABLE)
-		table = table->up;
-	if (table)
-	{
-		insert_box(ctx, box, BOX_TABLE_ROW, table);
-		return table;
-	}
-	fz_warn(ctx, "table-row not inside table element");
-	insert_block_box(ctx, box, top);
-	return top;
+ fz_html_box *table = top;
+ while (table && table->type != BOX_TABLE)
+  table = table->up;
+ if (table)
+ {
+  insert_box(ctx, box, BOX_TABLE_ROW, table);
+  return table;
+ }
+ fz_warn(ctx, "table-row not inside table element");
+ insert_block_box(ctx, box, top);
+ return top;
 }

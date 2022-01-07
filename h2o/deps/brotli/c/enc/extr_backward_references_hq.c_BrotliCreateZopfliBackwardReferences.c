@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_5__ {int /*<<< orphan*/  lgwin; } ;
-typedef  int /*<<< orphan*/  MemoryManager ;
-typedef  int /*<<< orphan*/  HasherHandle ;
-typedef  int /*<<< orphan*/  Command ;
-typedef  TYPE_1__ BrotliEncoderParams ;
-typedef  int /*<<< orphan*/  BrotliDictionary ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BROTLI_ALLOC (int /*<<< orphan*/ *,int,size_t) ; 
- int /*<<< orphan*/  BROTLI_FREE (int /*<<< orphan*/ *,int) ; 
- scalar_t__ BROTLI_IS_OOM (int /*<<< orphan*/ *) ; 
- size_t BROTLI_MAX_BACKWARD_LIMIT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BrotliInitZopfliNodes (int,size_t) ; 
- scalar_t__ BrotliZopfliComputeShortestPath (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,size_t,size_t,int /*<<< orphan*/  const*,size_t,TYPE_1__ const*,size_t const,int*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  BrotliZopfliCreateCommands (size_t,size_t,size_t const,int,int*,size_t*,TYPE_1__ const*,int /*<<< orphan*/ *,size_t*) ; 
- int ZopfliNode ; 
- int nodes ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_5__ {int lgwin; } ;
+typedef int MemoryManager ;
+typedef int HasherHandle ;
+typedef int Command ;
+typedef TYPE_1__ BrotliEncoderParams ;
+typedef int BrotliDictionary ;
+
+
+ int BROTLI_ALLOC (int *,int,size_t) ;
+ int BROTLI_FREE (int *,int) ;
+ scalar_t__ BROTLI_IS_OOM (int *) ;
+ size_t BROTLI_MAX_BACKWARD_LIMIT (int ) ;
+ int BrotliInitZopfliNodes (int,size_t) ;
+ scalar_t__ BrotliZopfliComputeShortestPath (int *,int const*,size_t,size_t,int const*,size_t,TYPE_1__ const*,size_t const,int*,int ,int) ;
+ int BrotliZopfliCreateCommands (size_t,size_t,size_t const,int,int*,size_t*,TYPE_1__ const*,int *,size_t*) ;
+ int ZopfliNode ;
+ int nodes ;
 
 void BrotliCreateZopfliBackwardReferences(
     MemoryManager* m, const BrotliDictionary* dictionary, size_t num_bytes,

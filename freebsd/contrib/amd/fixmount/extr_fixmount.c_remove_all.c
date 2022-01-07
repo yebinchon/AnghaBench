@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct timeval {scalar_t__ tv_usec; int /*<<< orphan*/  tv_sec; } ;
-typedef  enum clnt_stat { ____Placeholder_clnt_stat } clnt_stat ;
-typedef  int /*<<< orphan*/  XDRPROC_T_TYPE ;
-typedef  int /*<<< orphan*/  CLIENT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CALL_TIMEOUT ; 
- int /*<<< orphan*/  MOUNTPROC_UMNTALL ; 
- int RPC_SUCCESS ; 
- int RPC_SYSTEMERROR ; 
- int clnt_call (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,char*,struct timeval) ; 
- int /*<<< orphan*/  clnt_perrno (int) ; 
- int /*<<< orphan*/  fflush (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  printf (char*,char*) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  stdout ; 
- scalar_t__ xdr_void ; 
+
+
+
+struct timeval {scalar_t__ tv_usec; int tv_sec; } ;
+typedef enum clnt_stat { ____Placeholder_clnt_stat } clnt_stat ;
+typedef int XDRPROC_T_TYPE ;
+typedef int CLIENT ;
+
+
+ int CALL_TIMEOUT ;
+ int MOUNTPROC_UMNTALL ;
+ int RPC_SUCCESS ;
+ int RPC_SYSTEMERROR ;
+ int clnt_call (int *,int ,int ,char*,int ,char*,struct timeval) ;
+ int clnt_perrno (int) ;
+ int fflush (int ) ;
+ int fprintf (int ,char*,char*) ;
+ int printf (char*,char*) ;
+ int stderr ;
+ int stdout ;
+ scalar_t__ xdr_void ;
 
 int
 remove_all(CLIENT *client, char *host)
@@ -42,15 +42,15 @@ remove_all(CLIENT *client, char *host)
   tv.tv_usec = 0;
 
   if ((estat = clnt_call(client,
-			 MOUNTPROC_UMNTALL,
-			 (XDRPROC_T_TYPE) xdr_void,
-			 (char *) NULL,
-			 (XDRPROC_T_TYPE) xdr_void,
-			 (char *) NULL,
-			 tv)) != RPC_SUCCESS) {
-    /*
-     * RPC_SYSTEMERROR is returned even if all went well
-     */
+    MOUNTPROC_UMNTALL,
+    (XDRPROC_T_TYPE) xdr_void,
+    (char *) ((void*)0),
+    (XDRPROC_T_TYPE) xdr_void,
+    (char *) ((void*)0),
+    tv)) != RPC_SUCCESS) {
+
+
+
     if (estat != RPC_SYSTEMERROR) {
       fprintf(stderr, "%s MOUNTPROC_UMNTALL: ", host);
       clnt_perrno(estat);

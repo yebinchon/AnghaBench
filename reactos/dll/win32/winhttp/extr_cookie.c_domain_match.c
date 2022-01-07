@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  const* name; } ;
-typedef  TYPE_1__ domain_t ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  debugstr_w (int /*<<< orphan*/  const*) ; 
- scalar_t__ strcmpW (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  strstrW (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int const* name; } ;
+typedef TYPE_1__ domain_t ;
+typedef int WCHAR ;
+typedef scalar_t__ BOOL ;
+
+
+ scalar_t__ FALSE ;
+ int TRACE (char*,int ,int ) ;
+ scalar_t__ TRUE ;
+ int debugstr_w (int const*) ;
+ scalar_t__ strcmpW (int const*,int const*) ;
+ int strstrW (int const*,int const*) ;
 
 __attribute__((used)) static BOOL domain_match( const WCHAR *name, domain_t *domain, BOOL partial )
 {

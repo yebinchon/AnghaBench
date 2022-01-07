@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/ * bivs ; 
- int /*<<< orphan*/  clear_iv_info () ; 
- int /*<<< orphan*/ * df ; 
- int /*<<< orphan*/  df_finish (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  htab_delete (int /*<<< orphan*/ *) ; 
+ int * bivs ;
+ int clear_iv_info () ;
+ int * df ;
+ int df_finish (int *) ;
+ int htab_delete (int *) ;
 
 void
 iv_analysis_done (void)
@@ -25,8 +17,8 @@ iv_analysis_done (void)
     {
       clear_iv_info ();
       df_finish (df);
-      df = NULL;
+      df = ((void*)0);
       htab_delete (bivs);
-      bivs = NULL;
+      bivs = ((void*)0);
     }
 }

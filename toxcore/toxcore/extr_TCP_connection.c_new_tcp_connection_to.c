@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_7__ {int id; int /*<<< orphan*/  public_key; int /*<<< orphan*/  status; } ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_7__ {int id; int public_key; int status; } ;
 struct TYPE_6__ {TYPE_2__* connections; } ;
-typedef  TYPE_1__ TCP_Connections ;
-typedef  TYPE_2__ TCP_Connection_to ;
+typedef TYPE_1__ TCP_Connections ;
+typedef TYPE_2__ TCP_Connection_to ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TCP_CONN_VALID ; 
- int create_connection (TYPE_1__*) ; 
- int /*<<< orphan*/  crypto_box_PUBLICKEYBYTES ; 
- int find_tcp_connection_to (TYPE_1__*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
+
+ int TCP_CONN_VALID ;
+ int create_connection (TYPE_1__*) ;
+ int crypto_box_PUBLICKEYBYTES ;
+ int find_tcp_connection_to (TYPE_1__*,int const*) ;
+ int memcpy (int ,int const*,int ) ;
 
 int new_tcp_connection_to(TCP_Connections *tcp_c, const uint8_t *public_key, int id)
 {

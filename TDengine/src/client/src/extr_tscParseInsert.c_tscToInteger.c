@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  int64_t ;
-typedef  scalar_t__ int32_t ;
-struct TYPE_4__ {int /*<<< orphan*/  z; } ;
-typedef  TYPE_1__ SSQLToken ;
 
-/* Variables and functions */
- scalar_t__ TK_BIN ; 
- scalar_t__ TK_HEX ; 
- scalar_t__ TK_ILLEGAL ; 
- scalar_t__ TK_OCT ; 
- scalar_t__ isValidNumber (TYPE_1__*) ; 
- int /*<<< orphan*/  strtoll (int /*<<< orphan*/ ,char**,scalar_t__) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int int64_t ;
+typedef scalar_t__ int32_t ;
+struct TYPE_4__ {int z; } ;
+typedef TYPE_1__ SSQLToken ;
+
+
+ scalar_t__ TK_BIN ;
+ scalar_t__ TK_HEX ;
+ scalar_t__ TK_ILLEGAL ;
+ scalar_t__ TK_OCT ;
+ scalar_t__ isValidNumber (TYPE_1__*) ;
+ int strtoll (int ,char**,scalar_t__) ;
 
 __attribute__((used)) static int32_t tscToInteger(SSQLToken *pToken, int64_t *value, char **endPtr) {
   int32_t numType = isValidNumber(pToken);

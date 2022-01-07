@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_6__ ;
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_11__ TYPE_6__ ;
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_7__ {int ppkg_num; int lpkg_num; } ;
-typedef  TYPE_1__ x86_pkg_t ;
+typedef TYPE_1__ x86_pkg_t ;
 struct TYPE_8__ {int cpu_num; int pnum; int master; int primary; int lnum; TYPE_1__* package; TYPE_3__* die; TYPE_4__* core; } ;
-typedef  TYPE_2__ x86_lcpu_t ;
+typedef TYPE_2__ x86_lcpu_t ;
 struct TYPE_9__ {int pdie_num; int ldie_num; } ;
-typedef  TYPE_3__ x86_die_t ;
+typedef TYPE_3__ x86_die_t ;
 struct TYPE_10__ {int pcore_num; int lcore_num; } ;
-typedef  TYPE_4__ x86_core_t ;
+typedef TYPE_4__ x86_core_t ;
 struct TYPE_11__ {int nLThreadsPerPackage; int nLThreadsPerCore; int nLCoresPerDie; int nLDiesPerPackage; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int master_cpu ; 
- TYPE_6__ topoParms ; 
+
+ int assert (int ) ;
+ int master_cpu ;
+ TYPE_6__ topoParms ;
 
 void
 x86_set_logical_topology(x86_lcpu_t *lcpu, int pnum, int lnum)
 {
-    x86_core_t	*core = lcpu->core;
-    x86_die_t	*die  = lcpu->die;
-    x86_pkg_t	*pkg  = lcpu->package;
-    
-    assert(core != NULL);
-    assert(die != NULL);
-    assert(pkg != NULL);
+    x86_core_t *core = lcpu->core;
+    x86_die_t *die = lcpu->die;
+    x86_pkg_t *pkg = lcpu->package;
+
+    assert(core != ((void*)0));
+    assert(die != ((void*)0));
+    assert(pkg != ((void*)0));
 
     lcpu->cpu_num = lnum;
     lcpu->pnum = pnum;

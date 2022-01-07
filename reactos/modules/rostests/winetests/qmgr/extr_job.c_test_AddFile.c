@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ HRESULT ;
 
-/* Variables and functions */
- scalar_t__ IBackgroundCopyJob_AddFile (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
- int /*<<< orphan*/  test_job ; 
- int /*<<< orphan*/  test_localPathA ; 
- int /*<<< orphan*/  test_localPathB ; 
- int /*<<< orphan*/  test_remotePathA ; 
- int /*<<< orphan*/  test_remotePathB ; 
+
+
+
+typedef scalar_t__ HRESULT ;
+
+
+ scalar_t__ IBackgroundCopyJob_AddFile (int ,int ,int ) ;
+ scalar_t__ S_OK ;
+ int ok (int,char*,scalar_t__) ;
+ int test_job ;
+ int test_localPathA ;
+ int test_localPathB ;
+ int test_remotePathA ;
+ int test_remotePathB ;
 
 __attribute__((used)) static void test_AddFile(void)
 {

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int stopped; scalar_t__ still_running; int /*<<< orphan*/  evbase; int /*<<< orphan*/  input; } ;
-typedef  TYPE_1__ GlobalInfo ;
 
-/* Variables and functions */
- long EOF ; 
- int /*<<< orphan*/  event_base_loopbreak (int /*<<< orphan*/ ) ; 
- long fscanf (int /*<<< orphan*/ ,char*,char*,int*) ; 
- int /*<<< orphan*/  new_conn (char*,void*) ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int stopped; scalar_t__ still_running; int evbase; int input; } ;
+typedef TYPE_1__ GlobalInfo ;
+
+
+ long EOF ;
+ int event_base_loopbreak (int ) ;
+ long fscanf (int ,char*,char*,int*) ;
+ int new_conn (char*,void*) ;
+ int strcmp (char*,char*) ;
 
 __attribute__((used)) static void fifo_cb(int fd, short event, void *arg)
 {
@@ -41,7 +41,7 @@ __attribute__((used)) static void fifo_cb(int fd, short event, void *arg)
           event_base_loopbreak(g->evbase);
       }
       else
-        new_conn(s, arg);  /* if we read a URL, go get it! */
+        new_conn(s, arg);
     }
     else
       break;

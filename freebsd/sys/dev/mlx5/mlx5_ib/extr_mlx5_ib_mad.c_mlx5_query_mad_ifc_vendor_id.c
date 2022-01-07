@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u32 ;
+
+
+
+
+typedef int u32 ;
 struct ib_smp {scalar_t__ data; } ;
 struct ib_device {int dummy; } ;
-typedef  int /*<<< orphan*/  __be32 ;
+typedef int __be32 ;
 
-/* Variables and functions */
- int ENOMEM ; 
- int /*<<< orphan*/  GFP_KERNEL ; 
- int be32_to_cpup (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  kfree (struct ib_smp*) ; 
- struct ib_smp* kmalloc (int,int /*<<< orphan*/ ) ; 
- int mlx5_query_mad_ifc_smp_attr_node_info (struct ib_device*,struct ib_smp*) ; 
+
+ int ENOMEM ;
+ int GFP_KERNEL ;
+ int be32_to_cpup (int *) ;
+ int kfree (struct ib_smp*) ;
+ struct ib_smp* kmalloc (int,int ) ;
+ int mlx5_query_mad_ifc_smp_attr_node_info (struct ib_device*,struct ib_smp*) ;
 
 int mlx5_query_mad_ifc_vendor_id(struct ib_device *ibdev,
-				 u32 *vendor_id)
+     u32 *vendor_id)
 {
-	struct ib_smp *out_mad = NULL;
-	int err = -ENOMEM;
+ struct ib_smp *out_mad = ((void*)0);
+ int err = -ENOMEM;
 
-	out_mad = kmalloc(sizeof(*out_mad), GFP_KERNEL);
-	if (!out_mad)
-		return -ENOMEM;
+ out_mad = kmalloc(sizeof(*out_mad), GFP_KERNEL);
+ if (!out_mad)
+  return -ENOMEM;
 
-	err = mlx5_query_mad_ifc_smp_attr_node_info(ibdev, out_mad);
-	if (err)
-		goto out;
+ err = mlx5_query_mad_ifc_smp_attr_node_info(ibdev, out_mad);
+ if (err)
+  goto out;
 
-	*vendor_id = be32_to_cpup((__be32 *)(out_mad->data + 36)) & 0xffff;
+ *vendor_id = be32_to_cpup((__be32 *)(out_mad->data + 36)) & 0xffff;
 
 out:
-	kfree(out_mad);
+ kfree(out_mad);
 
-	return err;
+ return err;
 }

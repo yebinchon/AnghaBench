@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  png_byte ;
-struct TYPE_2__ {int /*<<< orphan*/  name; } ;
 
-/* Variables and functions */
- int NINFO ; 
- TYPE_1__* chunk_info ; 
- scalar_t__ memcmp (int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int png_byte ;
+struct TYPE_2__ {int name; } ;
+
+
+ int NINFO ;
+ TYPE_1__* chunk_info ;
+ scalar_t__ memcmp (int ,int const*,int) ;
 
 __attribute__((used)) static int
 findb(const png_byte *name)

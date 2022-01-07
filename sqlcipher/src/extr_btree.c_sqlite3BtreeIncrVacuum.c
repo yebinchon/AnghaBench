@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_14__ {scalar_t__ inTransaction; int /*<<< orphan*/  nPage; TYPE_1__* pPage1; int /*<<< orphan*/  autoVacuum; } ;
+
+
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+struct TYPE_14__ {scalar_t__ inTransaction; int nPage; TYPE_1__* pPage1; int autoVacuum; } ;
 struct TYPE_13__ {scalar_t__ inTrans; TYPE_3__* pBt; } ;
-struct TYPE_12__ {int /*<<< orphan*/ * aData; int /*<<< orphan*/  pDbPage; } ;
-typedef  scalar_t__ Pgno ;
-typedef  TYPE_2__ Btree ;
-typedef  TYPE_3__ BtShared ;
+struct TYPE_12__ {int * aData; int pDbPage; } ;
+typedef scalar_t__ Pgno ;
+typedef TYPE_2__ Btree ;
+typedef TYPE_3__ BtShared ;
 
-/* Variables and functions */
- int SQLITE_CORRUPT_BKPT ; 
- int SQLITE_DONE ; 
- int SQLITE_OK ; 
- scalar_t__ TRANS_WRITE ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ btreePagecount (TYPE_3__*) ; 
- scalar_t__ finalDbSize (TYPE_3__*,scalar_t__,scalar_t__) ; 
- scalar_t__ get4byte (int /*<<< orphan*/ *) ; 
- int incrVacuumStep (TYPE_3__*,scalar_t__,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  invalidateAllOverflowCache (TYPE_3__*) ; 
- int /*<<< orphan*/  put4byte (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int saveAllCursors (TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3BtreeEnter (TYPE_2__*) ; 
- int /*<<< orphan*/  sqlite3BtreeLeave (TYPE_2__*) ; 
- int sqlite3PagerWrite (int /*<<< orphan*/ ) ; 
+
+ int SQLITE_CORRUPT_BKPT ;
+ int SQLITE_DONE ;
+ int SQLITE_OK ;
+ scalar_t__ TRANS_WRITE ;
+ int assert (int) ;
+ scalar_t__ btreePagecount (TYPE_3__*) ;
+ scalar_t__ finalDbSize (TYPE_3__*,scalar_t__,scalar_t__) ;
+ scalar_t__ get4byte (int *) ;
+ int incrVacuumStep (TYPE_3__*,scalar_t__,scalar_t__,int ) ;
+ int invalidateAllOverflowCache (TYPE_3__*) ;
+ int put4byte (int *,int ) ;
+ int saveAllCursors (TYPE_3__*,int ,int ) ;
+ int sqlite3BtreeEnter (TYPE_2__*) ;
+ int sqlite3BtreeLeave (TYPE_2__*) ;
+ int sqlite3PagerWrite (int ) ;
 
 int sqlite3BtreeIncrVacuum(Btree *p){
   int rc;

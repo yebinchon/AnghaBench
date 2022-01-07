@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct tty {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FREAD ; 
- int /*<<< orphan*/  TTY_LOCK_OWNED (struct tty*) ; 
- int /*<<< orphan*/  ttyflush (struct tty*,int /*<<< orphan*/ ) ; 
- int ttywait (struct tty*) ; 
+
+ int FREAD ;
+ int TTY_LOCK_OWNED (struct tty*) ;
+ int ttyflush (struct tty*,int ) ;
+ int ttywait (struct tty*) ;
 
 __attribute__((used)) static int
 ttywflush(struct tty *tp)
 {
-	int error;
+ int error;
 
-	TTY_LOCK_OWNED(tp);	/* debug assert */
+ TTY_LOCK_OWNED(tp);
 
-	if ((error = ttywait(tp)) == 0)
-		ttyflush(tp, FREAD);
-	return (error);
+ if ((error = ttywait(tp)) == 0)
+  ttyflush(tp, FREAD);
+ return (error);
 }

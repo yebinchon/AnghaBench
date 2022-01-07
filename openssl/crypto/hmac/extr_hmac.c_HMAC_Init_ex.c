@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  pad ;
-struct TYPE_3__ {int* key; int key_length; int /*<<< orphan*/  i_ctx; int /*<<< orphan*/  md_ctx; int /*<<< orphan*/  o_ctx; int /*<<< orphan*/  const* md; } ;
-typedef  TYPE_1__ HMAC_CTX ;
-typedef  int /*<<< orphan*/  const EVP_MD ;
-typedef  int /*<<< orphan*/  ENGINE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EVP_DigestFinal_ex (int /*<<< orphan*/ ,int*,int*) ; 
- int /*<<< orphan*/  EVP_DigestInit_ex (int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EVP_DigestUpdate (int /*<<< orphan*/ ,unsigned char*,int) ; 
- int /*<<< orphan*/  EVP_MD_CTX_copy_ex (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int EVP_MD_FLAG_XOF ; 
- int EVP_MD_block_size (int /*<<< orphan*/  const*) ; 
- int EVP_MD_flags (int /*<<< orphan*/  const*) ; 
- int HMAC_MAX_MD_CBLOCK_SIZE ; 
- int /*<<< orphan*/  OPENSSL_cleanse (unsigned char*,int) ; 
- int /*<<< orphan*/  memcpy (int*,void const*,int) ; 
- int /*<<< orphan*/  memset (int*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ossl_assert (int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int pad ;
+struct TYPE_3__ {int* key; int key_length; int i_ctx; int md_ctx; int o_ctx; int const* md; } ;
+typedef TYPE_1__ HMAC_CTX ;
+typedef int const EVP_MD ;
+typedef int ENGINE ;
+
+
+ int EVP_DigestFinal_ex (int ,int*,int*) ;
+ int EVP_DigestInit_ex (int ,int const*,int *) ;
+ int EVP_DigestUpdate (int ,unsigned char*,int) ;
+ int EVP_MD_CTX_copy_ex (int ,int ) ;
+ int EVP_MD_FLAG_XOF ;
+ int EVP_MD_block_size (int const*) ;
+ int EVP_MD_flags (int const*) ;
+ int HMAC_MAX_MD_CBLOCK_SIZE ;
+ int OPENSSL_cleanse (unsigned char*,int) ;
+ int memcpy (int*,void const*,int) ;
+ int memset (int*,int ,int) ;
+ int ossl_assert (int) ;
 
 int HMAC_Init_ex(HMAC_CTX *ctx, const void *key, int len,
                  const EVP_MD *md, ENGINE *impl)
@@ -38,11 +38,11 @@ int HMAC_Init_ex(HMAC_CTX *ctx, const void *key, int len,
     int i, j, reset = 0;
     unsigned char pad[HMAC_MAX_MD_CBLOCK_SIZE];
 
-    /* If we are changing MD then we must have a key */
-    if (md != NULL && md != ctx->md && (key == NULL || len < 0))
+
+    if (md != ((void*)0) && md != ctx->md && (key == ((void*)0) || len < 0))
         return 0;
 
-    if (md != NULL) {
+    if (md != ((void*)0)) {
         reset = 1;
         ctx->md = md;
     } else if (ctx->md) {
@@ -51,14 +51,14 @@ int HMAC_Init_ex(HMAC_CTX *ctx, const void *key, int len,
         return 0;
     }
 
-    /*
-     * The HMAC construction is not allowed to be used with the
-     * extendable-output functions (XOF) shake128 and shake256.
-     */
+
+
+
+
     if ((EVP_MD_flags(md) & EVP_MD_FLAG_XOF) != 0)
         return 0;
 
-    if (key != NULL) {
+    if (key != ((void*)0)) {
         reset = 1;
         j = EVP_MD_block_size(md);
         if (!ossl_assert(j <= (int)sizeof(ctx->key)))

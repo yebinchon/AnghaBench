@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_4__ {int ncounter; scalar_t__ nblock; scalar_t__ nonce; } ;
-typedef  TYPE_1__ cf_chacha20_ctx ;
+typedef TYPE_1__ cf_chacha20_ctx ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memcpy (scalar_t__,int /*<<< orphan*/  const*,int) ; 
- int /*<<< orphan*/  memset (scalar_t__,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  set_key (TYPE_1__*,int /*<<< orphan*/  const*,size_t) ; 
+
+ int memcpy (scalar_t__,int const*,int) ;
+ int memset (scalar_t__,int ,int) ;
+ int set_key (TYPE_1__*,int const*,size_t) ;
 
 void cf_chacha20_init(cf_chacha20_ctx *ctx, const uint8_t *key, size_t nkey, const uint8_t nonce[8])
 {

@@ -1,50 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ int LINUX_SLL_BROADCAST ;
+ int LINUX_SLL_HOST ;
+ int LINUX_SLL_MULTICAST ;
+ int LINUX_SLL_OTHERHOST ;
+ int LINUX_SLL_OUTGOING ;
 
-/* Forward declarations */
 
-/* Type definitions */
 
-/* Variables and functions */
- int /*<<< orphan*/  LINUX_SLL_BROADCAST ; 
- int /*<<< orphan*/  LINUX_SLL_HOST ; 
- int /*<<< orphan*/  LINUX_SLL_MULTICAST ; 
- int /*<<< orphan*/  LINUX_SLL_OTHERHOST ; 
- int /*<<< orphan*/  LINUX_SLL_OUTGOING ; 
-#define  PACKET_BROADCAST 132 
-#define  PACKET_HOST 131 
-#define  PACKET_MULTICAST 130 
-#define  PACKET_OTHERHOST 129 
-#define  PACKET_OUTGOING 128 
- short htons (int /*<<< orphan*/ ) ; 
+
+
+ short htons (int ) ;
 
 __attribute__((used)) static short int
 map_packet_type_to_sll_type(short int sll_pkttype)
 {
-	switch (sll_pkttype) {
+ switch (sll_pkttype) {
 
-	case PACKET_HOST:
-		return htons(LINUX_SLL_HOST);
+ case 131:
+  return htons(LINUX_SLL_HOST);
 
-	case PACKET_BROADCAST:
-		return htons(LINUX_SLL_BROADCAST);
+ case 132:
+  return htons(LINUX_SLL_BROADCAST);
 
-	case PACKET_MULTICAST:
-		return  htons(LINUX_SLL_MULTICAST);
+ case 130:
+  return htons(LINUX_SLL_MULTICAST);
 
-	case PACKET_OTHERHOST:
-		return htons(LINUX_SLL_OTHERHOST);
+ case 129:
+  return htons(LINUX_SLL_OTHERHOST);
 
-	case PACKET_OUTGOING:
-		return htons(LINUX_SLL_OUTGOING);
+ case 128:
+  return htons(LINUX_SLL_OUTGOING);
 
-	default:
-		return -1;
-	}
+ default:
+  return -1;
+ }
 }

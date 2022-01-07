@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct directory {int /*<<< orphan*/  di_name; struct directory* di_prev; } ;
-typedef  int /*<<< orphan*/  Char ;
 
-/* Variables and functions */
- int /*<<< orphan*/  STRdirstack ; 
- int /*<<< orphan*/ * Strsave (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  VAR_READWRITE ; 
- int /*<<< orphan*/ * adrof (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  blk_cleanup ; 
- int /*<<< orphan*/  cleanup_ignore (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  cleanup_push (int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cleanup_until (int /*<<< orphan*/ **) ; 
- struct directory dhead ; 
- int /*<<< orphan*/  setq (int /*<<< orphan*/ ,int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  shvhed ; 
- int /*<<< orphan*/ ** xmalloc (int) ; 
+
+
+
+struct directory {int di_name; struct directory* di_prev; } ;
+typedef int Char ;
+
+
+ int STRdirstack ;
+ int * Strsave (int ) ;
+ int VAR_READWRITE ;
+ int * adrof (int ) ;
+ int blk_cleanup ;
+ int cleanup_ignore (int **) ;
+ int cleanup_push (int **,int ) ;
+ int cleanup_until (int **) ;
+ struct directory dhead ;
+ int setq (int ,int **,int *,int ) ;
+ int shvhed ;
+ int ** xmalloc (int) ;
 
 __attribute__((used)) static void
 dgetstack(void)
@@ -34,15 +34,15 @@ dgetstack(void)
     Char **dblk, **dbp;
     struct directory *dn;
 
-    if (adrof(STRdirstack) == NULL) 
-    	return;
+    if (adrof(STRdirstack) == ((void*)0))
+     return;
 
     for (dn = dhead.di_prev; dn != &dhead; dn = dn->di_prev, i++)
-	continue;
+ continue;
     dbp = dblk = xmalloc((i + 1) * sizeof(Char *));
     for (dn = dhead.di_prev; dn != &dhead; dn = dn->di_prev, dbp++)
-	 *dbp = Strsave(dn->di_name);
-    *dbp = NULL;
+  *dbp = Strsave(dn->di_name);
+    *dbp = ((void*)0);
     cleanup_push(dblk, blk_cleanup);
     setq(STRdirstack, dblk, &shvhed, VAR_READWRITE);
     cleanup_ignore(dblk);

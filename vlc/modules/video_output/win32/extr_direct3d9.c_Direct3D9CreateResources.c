@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_19__   TYPE_6__ ;
-typedef  struct TYPE_18__   TYPE_5__ ;
-typedef  struct TYPE_17__   TYPE_4__ ;
-typedef  struct TYPE_16__   TYPE_3__ ;
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_19__ TYPE_6__ ;
+typedef struct TYPE_18__ TYPE_5__ ;
+typedef struct TYPE_17__ TYPE_4__ ;
+typedef struct TYPE_16__ TYPE_3__ ;
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
 struct TYPE_17__ {TYPE_5__* sys; } ;
-typedef  TYPE_4__ vout_display_t ;
-struct TYPE_15__ {int /*<<< orphan*/  dev; int /*<<< orphan*/  BufferFormat; } ;
-struct TYPE_14__ {int /*<<< orphan*/  obj; } ;
-struct TYPE_18__ {int /*<<< orphan*/  dx_render; TYPE_3__* sw_texture_fmt; TYPE_2__ d3d_dev; int /*<<< orphan*/  d3dregion_format; TYPE_1__ hd3d; } ;
-typedef  TYPE_5__ vout_display_sys_t ;
-struct TYPE_19__ {int /*<<< orphan*/  i_height; int /*<<< orphan*/  i_width; int /*<<< orphan*/  i_chroma; } ;
-typedef  TYPE_6__ video_format_t ;
-struct TYPE_16__ {int /*<<< orphan*/  format; } ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  D3DFORMAT ;
+typedef TYPE_4__ vout_display_t ;
+struct TYPE_15__ {int dev; int BufferFormat; } ;
+struct TYPE_14__ {int obj; } ;
+struct TYPE_18__ {int dx_render; TYPE_3__* sw_texture_fmt; TYPE_2__ d3d_dev; int d3dregion_format; TYPE_1__ hd3d; } ;
+typedef TYPE_5__ vout_display_sys_t ;
+struct TYPE_19__ {int i_height; int i_width; int i_chroma; } ;
+typedef TYPE_6__ video_format_t ;
+struct TYPE_16__ {int format; } ;
+typedef int HRESULT ;
+typedef int D3DFORMAT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D3DADAPTER_DEFAULT ; 
- int /*<<< orphan*/  D3DDEVTYPE_HAL ; 
- int /*<<< orphan*/  D3DFMT_A8B8G8R8 ; 
- int /*<<< orphan*/  D3DFMT_A8R8G8B8 ; 
- int /*<<< orphan*/  D3DFMT_UNKNOWN ; 
- int /*<<< orphan*/  D3DPOOL_DEFAULT ; 
- int /*<<< orphan*/  D3DRTYPE_TEXTURE ; 
- int /*<<< orphan*/  D3DUSAGE_DYNAMIC ; 
- scalar_t__ Direct3D9CreateScene (TYPE_4__*,TYPE_6__ const*) ; 
- scalar_t__ Direct3D9CreateShaders (TYPE_4__*) ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IDirect3D9_CheckDeviceFormat (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IDirect3DDevice9_CreateOffscreenPlainSurface (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ SUCCEEDED (int /*<<< orphan*/ ) ; 
- int VLC_EGENERIC ; 
- int VLC_SUCCESS ; 
- int /*<<< orphan*/  is_d3d9_opaque (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  msg_Err (TYPE_4__*,char*,...) ; 
- int /*<<< orphan*/  msg_Warn (TYPE_4__*,char*) ; 
+
+ int D3DADAPTER_DEFAULT ;
+ int D3DDEVTYPE_HAL ;
+ int D3DFMT_A8B8G8R8 ;
+ int D3DFMT_A8R8G8B8 ;
+ int D3DFMT_UNKNOWN ;
+ int D3DPOOL_DEFAULT ;
+ int D3DRTYPE_TEXTURE ;
+ int D3DUSAGE_DYNAMIC ;
+ scalar_t__ Direct3D9CreateScene (TYPE_4__*,TYPE_6__ const*) ;
+ scalar_t__ Direct3D9CreateShaders (TYPE_4__*) ;
+ scalar_t__ FAILED (int ) ;
+ int IDirect3D9_CheckDeviceFormat (int ,int ,int ,int ,int ,int ,int ) ;
+ int IDirect3DDevice9_CreateOffscreenPlainSurface (int ,int ,int ,int ,int ,int *,int *) ;
+ scalar_t__ SUCCEEDED (int ) ;
+ int VLC_EGENERIC ;
+ int VLC_SUCCESS ;
+ int is_d3d9_opaque (int ) ;
+ int msg_Err (TYPE_4__*,char*,...) ;
+ int msg_Warn (TYPE_4__*,char*) ;
 
 __attribute__((used)) static int Direct3D9CreateResources(vout_display_t *vd, const video_format_t *fmt)
 {
@@ -58,7 +58,7 @@ __attribute__((used)) static int Direct3D9CreateResources(vout_display_t *vd, co
         return VLC_EGENERIC;
     }
     if (Direct3D9CreateShaders(vd)) {
-        /* Failing to initialize shaders is not fatal. */
+
         msg_Warn(vd, "Direct3D shaders initialization failed !");
     }
 
@@ -85,7 +85,7 @@ __attribute__((used)) static int Direct3D9CreateResources(vout_display_t *vd, co
                                                           sys->sw_texture_fmt->format,
                                                           D3DPOOL_DEFAULT,
                                                           &sys->dx_render,
-                                                          NULL);
+                                                          ((void*)0));
         if (FAILED(hr)) {
            msg_Err(vd, "Failed to allocate offscreen surface (hr=0x%lX)", hr);
            return VLC_EGENERIC;

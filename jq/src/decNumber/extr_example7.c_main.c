@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  decQuad ;
-typedef  int /*<<< orphan*/  decContext ;
 
-/* Variables and functions */
- int DECQUAD_String ; 
- int /*<<< orphan*/  DEC_INIT_DECQUAD ; 
- int /*<<< orphan*/  decContextDefault (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  decContextTestEndian (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  decQuadAdd (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  decQuadFromString (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  decQuadToString (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
+
+
+
+typedef int decQuad ;
+typedef int decContext ;
+
+
+ int DECQUAD_String ;
+ int DEC_INIT_DECQUAD ;
+ int decContextDefault (int *,int ) ;
+ int decContextTestEndian (int ) ;
+ int decQuadAdd (int *,int *,int *,int *) ;
+ int decQuadFromString (int *,char*,int *) ;
+ int decQuadToString (int *,char*) ;
+ int printf (char*,...) ;
 
 int main(int argc, char *argv[]) {
-  decQuad a, b;                    // working decQuads
-  decContext set;                  // working context
-  char string[DECQUAD_String];     // number->string buffer
+  decQuad a, b;
+  decContext set;
+  char string[DECQUAD_String];
 
-  decContextTestEndian(0);         // warn if DECLITEND is wrong
+  decContextTestEndian(0);
 
-  if (argc<3) {                    // not enough words
+  if (argc<3) {
     printf("Please supply two numbers to add.\n");
     return 1;
     }
-  decContextDefault(&set, DEC_INIT_DECQUAD); // initialize
+  decContextDefault(&set, DEC_INIT_DECQUAD);
 
   decQuadFromString(&a, argv[1], &set);
   decQuadFromString(&b, argv[2], &set);
-  decQuadAdd(&a, &a, &b, &set);    // a=a+b
+  decQuadAdd(&a, &a, &b, &set);
   decQuadToString(&a, string);
 
   printf("%s + %s => %s\n", argv[1], argv[2], string);

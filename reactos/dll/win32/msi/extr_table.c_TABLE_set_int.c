@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int UINT ;
-struct TYPE_7__ {scalar_t__ offset; int /*<<< orphan*/ * hash_table; } ;
-struct TYPE_6__ {int num_cols; scalar_t__ row_size; TYPE_1__* table; TYPE_3__* columns; int /*<<< orphan*/  db; } ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int UINT ;
+struct TYPE_7__ {scalar_t__ offset; int * hash_table; } ;
+struct TYPE_6__ {int num_cols; scalar_t__ row_size; TYPE_1__* table; TYPE_3__* columns; int db; } ;
 struct TYPE_5__ {int row_count; int** data; } ;
-typedef  TYPE_2__ MSITABLEVIEW ;
+typedef TYPE_2__ MSITABLEVIEW ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*,...) ; 
- int ERROR_FUNCTION_FAILED ; 
- int ERROR_INVALID_PARAMETER ; 
- int ERROR_SUCCESS ; 
- int /*<<< orphan*/  LONG_STR_BYTES ; 
- int bytes_per_column (int /*<<< orphan*/ ,TYPE_3__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  msi_free (int /*<<< orphan*/ *) ; 
+
+ int ERR (char*,...) ;
+ int ERROR_FUNCTION_FAILED ;
+ int ERROR_INVALID_PARAMETER ;
+ int ERROR_SUCCESS ;
+ int LONG_STR_BYTES ;
+ int bytes_per_column (int ,TYPE_3__*,int ) ;
+ int msi_free (int *) ;
 
 __attribute__((used)) static UINT TABLE_set_int( MSITABLEVIEW *tv, UINT row, UINT col, UINT val )
 {
@@ -49,7 +49,7 @@ __attribute__((used)) static UINT TABLE_set_int( MSITABLEVIEW *tv, UINT row, UIN
     }
 
     msi_free( tv->columns[col-1].hash_table );
-    tv->columns[col-1].hash_table = NULL;
+    tv->columns[col-1].hash_table = ((void*)0);
 
     n = bytes_per_column( tv->db, &tv->columns[col - 1], LONG_STR_BYTES );
     if ( n != 2 && n != 3 && n != 4 )

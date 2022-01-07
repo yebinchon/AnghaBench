@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {struct TYPE_6__* Next; int /*<<< orphan*/  lpSource; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {struct TYPE_6__* Next; int lpSource; } ;
 struct TYPE_5__ {TYPE_2__* Data; } ;
-typedef  TYPE_1__* PALIAS_HEADER ;
-typedef  TYPE_2__* PALIAS_ENTRY ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
-typedef  scalar_t__ INT ;
+typedef TYPE_1__* PALIAS_HEADER ;
+typedef TYPE_2__* PALIAS_ENTRY ;
+typedef int LPCWSTR ;
+typedef scalar_t__ INT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPRINT (char*,int /*<<< orphan*/ ) ; 
- scalar_t__ _wcsicmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int DPRINT (char*,int ) ;
+ scalar_t__ _wcsicmp (int ,int ) ;
 
 PALIAS_ENTRY
 IntGetAliasEntry(PALIAS_HEADER Header, LPCWSTR lpSrcName)
 {
     PALIAS_ENTRY RootHeader;
 
-    if (Header == NULL) return NULL;
+    if (Header == ((void*)0)) return ((void*)0);
 
     RootHeader = Header->Data;
     while (RootHeader)
@@ -41,5 +41,5 @@ IntGetAliasEntry(PALIAS_HEADER Header, LPCWSTR lpSrcName)
 
         RootHeader = RootHeader->Next;
     }
-    return NULL;
+    return ((void*)0);
 }

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct hash_bucket {int dummy; } ;
-struct hash {unsigned int (* hash_value ) (void const*) ;int (* key_compare ) (void const*,void const*) ;void (* free_value ) (void*) ;void (* free_key ) (void*) ;scalar_t__ count; scalar_t__ n_buckets_mask; int /*<<< orphan*/ * buckets; } ;
+struct hash {unsigned int (* hash_value ) (void const*) ;int (* key_compare ) (void const*,void const*) ;void (* free_value ) (void*) ;void (* free_key ) (void*) ;scalar_t__ count; scalar_t__ n_buckets_mask; int * buckets; } ;
 
-/* Variables and functions */
- scalar_t__ MIN_BUCKETS ; 
- int /*<<< orphan*/ * calloc (scalar_t__,int) ; 
- int /*<<< orphan*/  free (struct hash*) ; 
- struct hash* malloc (int) ; 
+
+ scalar_t__ MIN_BUCKETS ;
+ int * calloc (scalar_t__,int) ;
+ int free (struct hash*) ;
+ struct hash* malloc (int) ;
 
 __attribute__((used)) static struct hash *
 hash_internal_new(unsigned int (*hash_value)(const void *key),
@@ -27,13 +27,13 @@ hash_internal_new(unsigned int (*hash_value)(const void *key),
 {
     struct hash *hash = malloc(sizeof(*hash));
 
-    if (hash == NULL)
-        return NULL;
+    if (hash == ((void*)0))
+        return ((void*)0);
 
     hash->buckets = calloc(MIN_BUCKETS, sizeof(struct hash_bucket));
-    if (hash->buckets == NULL) {
+    if (hash->buckets == ((void*)0)) {
         free(hash);
-        return NULL;
+        return ((void*)0);
     }
 
     hash->hash_value = hash_value;

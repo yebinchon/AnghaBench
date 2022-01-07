@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u_int ;
-typedef  int u_char ;
-struct TYPE_7__ {int /*<<< orphan*/  ndo_vflag; } ;
-typedef  TYPE_1__ netdissect_options ;
 
-/* Variables and functions */
- int const LACP_VERSION ; 
- int const MARKER_VERSION ; 
- int /*<<< orphan*/  ND_PRINT (TYPE_1__*) ; 
- int /*<<< orphan*/  ND_TCHECK (int const) ; 
-#define  SLOW_PROTO_LACP 130 
-#define  SLOW_PROTO_MARKER 129 
-#define  SLOW_PROTO_OAM 128 
- int /*<<< orphan*/  print_unknown_data (TYPE_1__*,int const*,char*,int) ; 
- int /*<<< orphan*/  slow_marker_lacp_print (TYPE_1__*,int const*,int,int) ; 
- int /*<<< orphan*/  slow_oam_print (TYPE_1__*,int const*,int) ; 
- int /*<<< orphan*/  slow_proto_values ; 
- int /*<<< orphan*/  tok2str (int /*<<< orphan*/ ,char*,int) ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int u_int ;
+typedef int u_char ;
+struct TYPE_7__ {int ndo_vflag; } ;
+typedef TYPE_1__ netdissect_options ;
+
+
+ int const LACP_VERSION ;
+ int const MARKER_VERSION ;
+ int ND_PRINT (TYPE_1__*) ;
+ int ND_TCHECK (int const) ;
+
+
+
+ int print_unknown_data (TYPE_1__*,int const*,char*,int) ;
+ int slow_marker_lacp_print (TYPE_1__*,int const*,int,int) ;
+ int slow_oam_print (TYPE_1__*,int const*,int) ;
+ int slow_proto_values ;
+ int tok2str (int ,char*,int) ;
 
 void
 slow_print(netdissect_options *ndo,
@@ -42,11 +42,11 @@ slow_print(netdissect_options *ndo,
     ND_TCHECK(*pptr);
     subtype = *pptr;
 
-    /*
-     * Sanity checking of the header.
-     */
+
+
+
     switch (subtype) {
-    case SLOW_PROTO_LACP:
+    case 130:
         if (len < 2)
             goto tooshort;
         ND_TCHECK(*(pptr+1));
@@ -57,7 +57,7 @@ slow_print(netdissect_options *ndo,
         print_version = 1;
         break;
 
-    case SLOW_PROTO_MARKER:
+    case 129:
         if (len < 2)
             goto tooshort;
         ND_TCHECK(*(pptr+1));
@@ -68,12 +68,12 @@ slow_print(netdissect_options *ndo,
         print_version = 1;
         break;
 
-    case SLOW_PROTO_OAM: /* fall through */
+    case 128:
         print_version = 0;
         break;
 
     default:
-        /* print basic information and exit */
+
         print_version = -1;
         break;
     }
@@ -84,13 +84,13 @@ slow_print(netdissect_options *ndo,
                *(pptr+1),
                len));
     } else {
-        /* some slow protos don't have a version number in the header */
+
         ND_PRINT((ndo, "%s, length %u",
                tok2str(slow_proto_values, "unknown (%u)", subtype),
                len));
     }
 
-    /* unrecognized subtype */
+
     if (print_version == -1) {
         print_unknown_data(ndo, pptr, "\n\t", len);
         return;
@@ -100,19 +100,19 @@ slow_print(netdissect_options *ndo,
         return;
 
     switch (subtype) {
-    default: /* should not happen */
+    default:
         break;
 
-    case SLOW_PROTO_OAM:
-        /* skip subtype */
+    case 128:
+
         len -= 1;
         pptr += 1;
         slow_oam_print(ndo, pptr, len);
         break;
 
-    case SLOW_PROTO_LACP:   /* LACP and MARKER share the same semantics */
-    case SLOW_PROTO_MARKER:
-        /* skip subtype and version */
+    case 130:
+    case 129:
+
         len -= 2;
         pptr += 2;
         slow_marker_lacp_print(ndo, pptr, len, subtype);

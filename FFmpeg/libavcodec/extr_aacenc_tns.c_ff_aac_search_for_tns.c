@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_7__ ;
-typedef  struct TYPE_15__   TYPE_6__ ;
-typedef  struct TYPE_14__   TYPE_5__ ;
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_13__ {int present; int* n_filt; int** direction; int** order; int** length; int /*<<< orphan*/ ** coef; int /*<<< orphan*/ ** coef_idx; } ;
-typedef  TYPE_4__ TemporalNoiseShaping ;
+
+
+typedef struct TYPE_16__ TYPE_7__ ;
+typedef struct TYPE_15__ TYPE_6__ ;
+typedef struct TYPE_14__ TYPE_5__ ;
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+struct TYPE_13__ {int present; int* n_filt; int** direction; int** order; int** length; int ** coef; int ** coef_idx; } ;
+typedef TYPE_4__ TemporalNoiseShaping ;
 struct TYPE_12__ {TYPE_2__* ch; } ;
-struct TYPE_16__ {size_t samplerate_index; scalar_t__ profile; size_t cur_channel; int /*<<< orphan*/  lpc; TYPE_3__ psy; } ;
+struct TYPE_16__ {size_t samplerate_index; scalar_t__ profile; size_t cur_channel; int lpc; TYPE_3__ psy; } ;
 struct TYPE_15__ {scalar_t__ energy; } ;
-struct TYPE_10__ {scalar_t__* window_sequence; int num_swb; int* swb_offset; int num_windows; int /*<<< orphan*/  max_sfb; int /*<<< orphan*/  tns_max_bands; } ;
-struct TYPE_14__ {TYPE_4__ tns; int /*<<< orphan*/ * coeffs; TYPE_1__ ics; } ;
+struct TYPE_10__ {scalar_t__* window_sequence; int num_swb; int* swb_offset; int num_windows; int max_sfb; int tns_max_bands; } ;
+struct TYPE_14__ {TYPE_4__ tns; int * coeffs; TYPE_1__ ics; } ;
 struct TYPE_11__ {TYPE_6__* psy_bands; } ;
-typedef  TYPE_5__ SingleChannelElement ;
-typedef  TYPE_6__ FFPsyBand ;
-typedef  TYPE_7__ AACEncContext ;
+typedef TYPE_5__ SingleChannelElement ;
+typedef TYPE_6__ FFPsyBand ;
+typedef TYPE_7__ AACEncContext ;
 
-/* Variables and functions */
- scalar_t__ EIGHT_SHORT_SEQUENCE ; 
- int FFMIN (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ FF_PROFILE_AAC_LOW ; 
- scalar_t__ LONG_START_SEQUENCE ; 
- scalar_t__ LONG_STOP_SEQUENCE ; 
- int MAX_LPC_ORDER ; 
- double TNS_GAIN_THRESHOLD_HIGH ; 
- double TNS_GAIN_THRESHOLD_LOW ; 
- int TNS_MAX_ORDER ; 
- int TNS_Q_BITS ; 
- int TNS_Q_BITS_IS8 ; 
- int av_clip (int,int /*<<< orphan*/ ,int const) ; 
- double ff_lpc_calc_ref_coefs_f (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int const,int const,double*) ; 
- int /*<<< orphan*/  isfinite (double) ; 
- int /*<<< orphan*/  quantize_coefs (double*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int const) ; 
- int** tns_min_sfb ; 
+
+ scalar_t__ EIGHT_SHORT_SEQUENCE ;
+ int FFMIN (int ,int ) ;
+ scalar_t__ FF_PROFILE_AAC_LOW ;
+ scalar_t__ LONG_START_SEQUENCE ;
+ scalar_t__ LONG_STOP_SEQUENCE ;
+ int MAX_LPC_ORDER ;
+ double TNS_GAIN_THRESHOLD_HIGH ;
+ double TNS_GAIN_THRESHOLD_LOW ;
+ int TNS_MAX_ORDER ;
+ int TNS_Q_BITS ;
+ int TNS_Q_BITS_IS8 ;
+ int av_clip (int,int ,int const) ;
+ double ff_lpc_calc_ref_coefs_f (int *,int *,int const,int const,double*) ;
+ int isfinite (double) ;
+ int quantize_coefs (double*,int ,int ,int,int const) ;
+ int** tns_min_sfb ;
 
 void ff_aac_search_for_tns(AACEncContext *s, SingleChannelElement *sce)
 {
@@ -56,9 +56,9 @@ void ff_aac_search_for_tns(AACEncContext *s, SingleChannelElement *sce)
     const int is8 = sce->ics.window_sequence[0] == EIGHT_SHORT_SEQUENCE;
     const int c_bits = is8 ? TNS_Q_BITS_IS8 == 4 : TNS_Q_BITS == 4;
     const int sfb_start = av_clip(tns_min_sfb[is8][s->samplerate_index], 0, mmm);
-    const int sfb_end   = av_clip(sce->ics.num_swb, 0, mmm);
+    const int sfb_end = av_clip(sce->ics.num_swb, 0, mmm);
     const int order = is8 ? 7 : s->profile == FF_PROFILE_AAC_LOW ? 12 : TNS_MAX_ORDER;
-    const int slant = sce->ics.window_sequence[0] == LONG_STOP_SEQUENCE  ? 1 :
+    const int slant = sce->ics.window_sequence[0] == LONG_STOP_SEQUENCE ? 1 :
                       sce->ics.window_sequence[0] == LONG_START_SEQUENCE ? 0 : 2;
     const int sfb_len = sfb_end - sfb_start;
     const int coef_len = sce->ics.swb_offset[sfb_end] - sce->ics.swb_offset[sfb_start];
@@ -81,7 +81,7 @@ void ff_aac_search_for_tns(AACEncContext *s, SingleChannelElement *sce)
                 en[0] += band->energy;
         }
 
-        /* LPC */
+
         gain = ff_lpc_calc_ref_coefs_f(&s->lpc, &sce->coeffs[w*128 + coef_start],
                                        coef_len, order, coefs);
 

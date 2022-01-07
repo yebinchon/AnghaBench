@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  s_addr; } ;
-struct sockaddr_in {TYPE_1__ sin_addr; int /*<<< orphan*/  sin_port; int /*<<< orphan*/  sin_family; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int s_addr; } ;
+struct sockaddr_in {TYPE_1__ sin_addr; int sin_port; int sin_family; } ;
 struct sockaddr {int dummy; } ;
-typedef  int /*<<< orphan*/  in_addr_t ;
-typedef  int /*<<< orphan*/  flags ;
-typedef  int /*<<< orphan*/  addr ;
+typedef int in_addr_t ;
+typedef int flags ;
+typedef int addr ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_INET ; 
- scalar_t__ EINPROGRESS ; 
- int /*<<< orphan*/  IPPROTO_TCP ; 
- int /*<<< orphan*/  IP_RECVERR ; 
- int SM_IPV6 ; 
- int SM_UDP ; 
- int /*<<< orphan*/  SOL_IP ; 
- int /*<<< orphan*/  SOL_SOCKET ; 
- int /*<<< orphan*/  SO_KEEPALIVE ; 
- int /*<<< orphan*/  SO_REUSEADDR ; 
- int /*<<< orphan*/  TCP_NODELAY ; 
- int /*<<< orphan*/  close (int) ; 
- int connect (int,struct sockaddr*,int) ; 
- scalar_t__ errno ; 
- int /*<<< orphan*/  htons (int) ; 
- int /*<<< orphan*/  maximize_rcvbuf (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  maximize_sndbuf (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (struct sockaddr_in*,int /*<<< orphan*/ ,int) ; 
- int new_socket (int,int) ; 
- int /*<<< orphan*/  perror (char*) ; 
- int /*<<< orphan*/  setsockopt (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*,int) ; 
- scalar_t__ tcp_maximize_buffers ; 
+
+ int AF_INET ;
+ scalar_t__ EINPROGRESS ;
+ int IPPROTO_TCP ;
+ int IP_RECVERR ;
+ int SM_IPV6 ;
+ int SM_UDP ;
+ int SOL_IP ;
+ int SOL_SOCKET ;
+ int SO_KEEPALIVE ;
+ int SO_REUSEADDR ;
+ int TCP_NODELAY ;
+ int close (int) ;
+ int connect (int,struct sockaddr*,int) ;
+ scalar_t__ errno ;
+ int htons (int) ;
+ int maximize_rcvbuf (int,int ) ;
+ int maximize_sndbuf (int,int ) ;
+ int memset (struct sockaddr_in*,int ,int) ;
+ int new_socket (int,int) ;
+ int perror (char*) ;
+ int setsockopt (int,int ,int ,int*,int) ;
+ scalar_t__ tcp_maximize_buffers ;
 
 int client_socket (in_addr_t in_addr, int port, int mode) {
   int sfd;
@@ -74,7 +74,7 @@ int client_socket (in_addr_t in_addr, int port, int mode) {
   addr.sin_family = AF_INET;
   addr.sin_port = htons (port);
   addr.sin_addr.s_addr = in_addr;
- 
+
   if (connect (sfd, (struct sockaddr *) &addr, sizeof (addr)) == -1 && errno != EINPROGRESS) {
     perror ("connect()");
     close (sfd);

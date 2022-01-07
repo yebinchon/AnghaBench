@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct rnorm_data {int dummy; } ;
-typedef  int /*<<< orphan*/  strm_value ;
+typedef int strm_value ;
 struct TYPE_5__ {struct rnorm_data* data; } ;
-typedef  TYPE_1__ strm_stream ;
+typedef TYPE_1__ strm_stream ;
 
-/* Variables and functions */
- int STRM_OK ; 
- double rand_normal (struct rnorm_data*) ; 
- int /*<<< orphan*/  strm_emit (TYPE_1__*,int /*<<< orphan*/ ,int (*) (TYPE_1__*,int /*<<< orphan*/ )) ; 
- int /*<<< orphan*/  strm_float_value (double) ; 
+
+ int STRM_OK ;
+ double rand_normal (struct rnorm_data*) ;
+ int strm_emit (TYPE_1__*,int ,int (*) (TYPE_1__*,int )) ;
+ int strm_float_value (double) ;
 
 __attribute__((used)) static int
 gen_rnorm(strm_stream* strm, strm_value data)

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int ref; int /*<<< orphan*/  state; int /*<<< orphan*/  control; int /*<<< orphan*/  update; int /*<<< orphan*/  get_param; int /*<<< orphan*/  close; int /*<<< orphan*/  stream_info; int /*<<< orphan*/  streamed; int /*<<< orphan*/  open_flags; } ;
-typedef  int /*<<< orphan*/ * PCMSG_STREAM_INFO ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  int /*<<< orphan*/  CryptMsgUpdateFunc ;
-typedef  int /*<<< orphan*/  CryptMsgGetParamFunc ;
-typedef  int /*<<< orphan*/  CryptMsgControlFunc ;
-typedef  int /*<<< orphan*/  CryptMsgCloseFunc ;
-typedef  TYPE_1__ CryptMsgBase ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  MsgStateInit ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int ref; int state; int control; int update; int get_param; int close; int stream_info; int streamed; int open_flags; } ;
+typedef int * PCMSG_STREAM_INFO ;
+typedef int DWORD ;
+typedef int CryptMsgUpdateFunc ;
+typedef int CryptMsgGetParamFunc ;
+typedef int CryptMsgControlFunc ;
+typedef int CryptMsgCloseFunc ;
+typedef TYPE_1__ CryptMsgBase ;
+
+
+ int FALSE ;
+ int MsgStateInit ;
+ int TRUE ;
+ int memset (int *,int ,int) ;
 
 __attribute__((used)) static inline void CryptMsgBase_Init(CryptMsgBase *msg, DWORD dwFlags,
  PCMSG_STREAM_INFO pStreamInfo, CryptMsgCloseFunc close,

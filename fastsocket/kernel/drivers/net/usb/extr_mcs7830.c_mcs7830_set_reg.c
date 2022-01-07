@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u16 ;
+
+
+
+
+typedef int u16 ;
 struct usbnet {struct usb_device* udev; } ;
 struct usb_device {int dummy; } ;
 
-/* Variables and functions */
- int ENOMEM ; 
- int /*<<< orphan*/  GFP_NOIO ; 
- int /*<<< orphan*/  MCS7830_CTRL_TIMEOUT ; 
- int /*<<< orphan*/  MCS7830_WR_BMREQ ; 
- int /*<<< orphan*/  MCS7830_WR_BREQ ; 
- int /*<<< orphan*/  kfree (void*) ; 
- void* kmalloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (void*,void*,int /*<<< orphan*/ ) ; 
- int usb_control_msg (struct usb_device*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  usb_sndctrlpipe (struct usb_device*,int /*<<< orphan*/ ) ; 
+
+ int ENOMEM ;
+ int GFP_NOIO ;
+ int MCS7830_CTRL_TIMEOUT ;
+ int MCS7830_WR_BMREQ ;
+ int MCS7830_WR_BREQ ;
+ int kfree (void*) ;
+ void* kmalloc (int ,int ) ;
+ int memcpy (void*,void*,int ) ;
+ int usb_control_msg (struct usb_device*,int ,int ,int ,int,int ,void*,int ,int ) ;
+ int usb_sndctrlpipe (struct usb_device*,int ) ;
 
 __attribute__((used)) static int mcs7830_set_reg(struct usbnet *dev, u16 index, u16 size, void *data)
 {
-	struct usb_device *xdev = dev->udev;
-	int ret;
-	void *buffer;
+ struct usb_device *xdev = dev->udev;
+ int ret;
+ void *buffer;
 
-	buffer = kmalloc(size, GFP_NOIO);
-	if (buffer == NULL)
-		return -ENOMEM;
+ buffer = kmalloc(size, GFP_NOIO);
+ if (buffer == ((void*)0))
+  return -ENOMEM;
 
-	memcpy(buffer, data, size);
+ memcpy(buffer, data, size);
 
-	ret = usb_control_msg(xdev, usb_sndctrlpipe(xdev, 0), MCS7830_WR_BREQ,
-			      MCS7830_WR_BMREQ, 0x0000, index, buffer,
-			      size, MCS7830_CTRL_TIMEOUT);
-	kfree(buffer);
-	return ret;
+ ret = usb_control_msg(xdev, usb_sndctrlpipe(xdev, 0), MCS7830_WR_BREQ,
+         MCS7830_WR_BMREQ, 0x0000, index, buffer,
+         size, MCS7830_CTRL_TIMEOUT);
+ kfree(buffer);
+ return ret;
 }

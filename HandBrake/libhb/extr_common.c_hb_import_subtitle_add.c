@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_5__ ;
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_12__ {char* native_name; char* eng_name; int /*<<< orphan*/  iso639_2; } ;
-typedef  TYPE_2__ iso639_lang_t ;
+
+
+typedef struct TYPE_15__ TYPE_5__ ;
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+struct TYPE_12__ {char* native_name; char* eng_name; int iso639_2; } ;
+typedef TYPE_2__ iso639_lang_t ;
 struct TYPE_14__ {scalar_t__* name; scalar_t__* src_filename; } ;
 struct TYPE_11__ {int num; int den; } ;
-struct TYPE_13__ {int id; int source; TYPE_4__ config; int /*<<< orphan*/  iso639_2; int /*<<< orphan*/  lang; TYPE_1__ timebase; int /*<<< orphan*/  codec; int /*<<< orphan*/  format; } ;
-typedef  TYPE_3__ hb_subtitle_t ;
-typedef  TYPE_4__ hb_subtitle_config_t ;
-struct TYPE_15__ {int /*<<< orphan*/  list_subtitle; } ;
-typedef  TYPE_5__ hb_job_t ;
+struct TYPE_13__ {int id; int source; TYPE_4__ config; int iso639_2; int lang; TYPE_1__ timebase; int codec; int format; } ;
+typedef TYPE_3__ hb_subtitle_t ;
+typedef TYPE_4__ hb_subtitle_config_t ;
+struct TYPE_15__ {int list_subtitle; } ;
+typedef TYPE_5__ hb_job_t ;
 
-/* Variables and functions */
- int HB_SUBTITLE_IMPORT_TAG ; 
- int IMPORTSRT ; 
- int /*<<< orphan*/  TEXTSUB ; 
- int /*<<< orphan*/  WORK_DECSRTSUB ; 
- int /*<<< orphan*/  WORK_DECSSASUB ; 
- TYPE_3__* calloc (int,int) ; 
- int /*<<< orphan*/  hb_error (char*) ; 
- int /*<<< orphan*/  hb_list_add (int /*<<< orphan*/ ,TYPE_3__*) ; 
- int hb_list_count (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hb_log (char*,char const*) ; 
- char* hb_subsource_name (int) ; 
- TYPE_2__* lang_for_code2 (char const*) ; 
- int /*<<< orphan*/  snprintf (int /*<<< orphan*/ ,int,char*,char*,char*) ; 
- int /*<<< orphan*/  strcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- void* strdup (scalar_t__*) ; 
- scalar_t__ strlen (char*) ; 
+
+ int HB_SUBTITLE_IMPORT_TAG ;
+ int IMPORTSRT ;
+ int TEXTSUB ;
+ int WORK_DECSRTSUB ;
+ int WORK_DECSSASUB ;
+ TYPE_3__* calloc (int,int) ;
+ int hb_error (char*) ;
+ int hb_list_add (int ,TYPE_3__*) ;
+ int hb_list_count (int ) ;
+ int hb_log (char*,char const*) ;
+ char* hb_subsource_name (int) ;
+ TYPE_2__* lang_for_code2 (char const*) ;
+ int snprintf (int ,int,char*,char*,char*) ;
+ int strcpy (int ,int ) ;
+ void* strdup (scalar_t__*) ;
+ scalar_t__ strlen (char*) ;
 
 int hb_import_subtitle_add( const hb_job_t * job,
                 const hb_subtitle_config_t * subtitlecfg,
                 const char *lang_code, int source )
 {
     hb_subtitle_t *subtitle;
-    iso639_lang_t *lang = NULL;
+    iso639_lang_t *lang = ((void*)0);
 
     subtitle = calloc( 1, sizeof( *subtitle ) );
-    if (subtitle == NULL)
+    if (subtitle == ((void*)0))
     {
         hb_error("hb_srt_add: malloc failed");
         return 0;
@@ -66,7 +66,7 @@ int hb_import_subtitle_add( const hb_job_t * job,
     subtitle->timebase.den = 90000;
 
     lang = lang_for_code2(lang_code);
-    if (lang == NULL)
+    if (lang == ((void*)0))
     {
         hb_log("hb_srt_add: unknown language code (%s)", lang_code);
         lang = lang_for_code2("und");
@@ -77,13 +77,13 @@ int hb_import_subtitle_add( const hb_job_t * job,
     strcpy(subtitle->iso639_2, lang->iso639_2);
 
     subtitle->config = *subtitlecfg;
-    if (subtitlecfg->name != NULL && subtitlecfg->name[0] != 0)
+    if (subtitlecfg->name != ((void*)0) && subtitlecfg->name[0] != 0)
     {
         subtitle->config.name = strdup(subtitlecfg->name);
     }
     else
     {
-        subtitle->config.name = NULL;
+        subtitle->config.name = ((void*)0);
     }
     subtitle->config.src_filename = strdup(subtitlecfg->src_filename);
     hb_list_add(job->list_subtitle, subtitle);

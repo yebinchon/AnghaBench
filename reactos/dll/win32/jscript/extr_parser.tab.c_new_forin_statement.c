@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  variable_declaration_t ;
-typedef  int /*<<< orphan*/  statement_t ;
-typedef  int /*<<< orphan*/  parser_ctx_t ;
-struct TYPE_3__ {int /*<<< orphan*/  stat; int /*<<< orphan*/ * statement; int /*<<< orphan*/ * in_expr; int /*<<< orphan*/ * expr; int /*<<< orphan*/ * variable; } ;
-typedef  TYPE_1__ forin_statement_t ;
-typedef  int /*<<< orphan*/  expression_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  STAT_FORIN ; 
- TYPE_1__* new_statement (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int variable_declaration_t ;
+typedef int statement_t ;
+typedef int parser_ctx_t ;
+struct TYPE_3__ {int stat; int * statement; int * in_expr; int * expr; int * variable; } ;
+typedef TYPE_1__ forin_statement_t ;
+typedef int expression_t ;
+
+
+ int STAT_FORIN ;
+ TYPE_1__* new_statement (int *,int ,int) ;
 
 __attribute__((used)) static statement_t *new_forin_statement(parser_ctx_t *ctx, variable_declaration_t *variable, expression_t *expr,
         expression_t *in_expr, statement_t *statement)
@@ -29,7 +29,7 @@ __attribute__((used)) static statement_t *new_forin_statement(parser_ctx_t *ctx,
 
     ret = new_statement(ctx, STAT_FORIN, sizeof(*ret));
     if(!ret)
-        return NULL;
+        return ((void*)0);
 
     ret->variable = variable;
     ret->expr = expr;

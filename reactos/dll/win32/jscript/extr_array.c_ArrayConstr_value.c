@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vdisp_t ;
-typedef  int /*<<< orphan*/  script_ctx_t ;
-typedef  int /*<<< orphan*/  jsval_t ;
-typedef  int /*<<< orphan*/  jsdisp_t ;
-typedef  int WORD ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  unsigned int DWORD ;
 
-/* Variables and functions */
-#define  DISPATCH_CONSTRUCT 129 
-#define  DISPATCH_METHOD 128 
- int /*<<< orphan*/  E_NOTIMPL ; 
- int /*<<< orphan*/  FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FIXME (char*,int) ; 
- int /*<<< orphan*/  JS_E_INVALID_LENGTH ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TRACE (char*) ; 
- int /*<<< orphan*/  create_array (int /*<<< orphan*/ *,unsigned int,int /*<<< orphan*/ **) ; 
- double get_number (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  is_int32 (double) ; 
- int /*<<< orphan*/  is_number (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jsdisp_propput_idx (int /*<<< orphan*/ *,unsigned int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jsdisp_release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jsval_obj (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  throw_range_error (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int vdisp_t ;
+typedef int script_ctx_t ;
+typedef int jsval_t ;
+typedef int jsdisp_t ;
+typedef int WORD ;
+typedef int HRESULT ;
+typedef unsigned int DWORD ;
+
+
+
+
+ int E_NOTIMPL ;
+ int FAILED (int ) ;
+ int FIXME (char*,int) ;
+ int JS_E_INVALID_LENGTH ;
+ int S_OK ;
+ int TRACE (char*) ;
+ int create_array (int *,unsigned int,int **) ;
+ double get_number (int ) ;
+ int is_int32 (double) ;
+ int is_number (int ) ;
+ int jsdisp_propput_idx (int *,unsigned int,int ) ;
+ int jsdisp_release (int *) ;
+ int jsval_obj (int *) ;
+ int throw_range_error (int *,int ,int *) ;
 
 __attribute__((used)) static HRESULT ArrayConstr_value(script_ctx_t *ctx, vdisp_t *vthis, WORD flags, unsigned argc, jsval_t *argv,
         jsval_t *r)
@@ -46,13 +46,13 @@ __attribute__((used)) static HRESULT ArrayConstr_value(script_ctx_t *ctx, vdisp_
     TRACE("\n");
 
     switch(flags) {
-    case DISPATCH_METHOD:
-    case DISPATCH_CONSTRUCT: {
+    case 128:
+    case 129: {
         if(argc == 1 && is_number(argv[0])) {
             double n = get_number(argv[0]);
 
             if(n < 0 || !is_int32(n))
-                return throw_range_error(ctx, JS_E_INVALID_LENGTH, NULL);
+                return throw_range_error(ctx, JS_E_INVALID_LENGTH, ((void*)0));
 
             hres = create_array(ctx, n, &obj);
             if(FAILED(hres))

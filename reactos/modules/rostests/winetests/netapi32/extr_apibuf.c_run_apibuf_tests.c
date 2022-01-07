@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VOID ;
-typedef  scalar_t__ NET_API_STATUS ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- scalar_t__ ERROR_INVALID_PARAMETER ; 
- int GetLastError () ; 
- scalar_t__ NERR_Success ; 
- int /*<<< orphan*/  SetLastError (int) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- scalar_t__ pNetApiBufferAllocate (int,int /*<<< orphan*/ **) ; 
- scalar_t__ pNetApiBufferFree (int /*<<< orphan*/ *) ; 
- scalar_t__ pNetApiBufferReallocate (int /*<<< orphan*/ *,int,int /*<<< orphan*/ **) ; 
- scalar_t__ pNetApiBufferSize (int /*<<< orphan*/ *,int*) ; 
+
+
+
+typedef int VOID ;
+typedef scalar_t__ NET_API_STATUS ;
+typedef int DWORD ;
+
+
+ scalar_t__ ERROR_INVALID_PARAMETER ;
+ int GetLastError () ;
+ scalar_t__ NERR_Success ;
+ int SetLastError (int) ;
+ int ok (int,char*,...) ;
+ scalar_t__ pNetApiBufferAllocate (int,int **) ;
+ scalar_t__ pNetApiBufferFree (int *) ;
+ scalar_t__ pNetApiBufferReallocate (int *,int,int **) ;
+ scalar_t__ pNetApiBufferSize (int *,int*) ;
 
 __attribute__((used)) static void run_apibuf_tests(void)
 {
@@ -31,7 +31,7 @@ __attribute__((used)) static void run_apibuf_tests(void)
     DWORD dwSize;
     NET_API_STATUS res;
 
-    /* test normal logic */
+
     ok(pNetApiBufferAllocate(1024, &p) == NERR_Success,
        "Reserved memory\n");
     ok(pNetApiBufferSize(p, &dwSize) == NERR_Success, "Got size\n");
@@ -44,34 +44,34 @@ __attribute__((used)) static void run_apibuf_tests(void)
 
     ok(pNetApiBufferFree(p) == NERR_Success, "Freed\n");
 
-    ok(pNetApiBufferSize(NULL, &dwSize) == ERROR_INVALID_PARAMETER, "Error for NULL pointer\n");
+    ok(pNetApiBufferSize(((void*)0), &dwSize) == ERROR_INVALID_PARAMETER, "Error for NULL pointer\n");
 
-    /* border reallocate cases */
+
     ok(pNetApiBufferReallocate(0, 1500, &p) == NERR_Success, "Reallocate with OldBuffer = NULL failed\n");
-    ok(p != NULL, "No memory got allocated\n");
+    ok(p != ((void*)0), "No memory got allocated\n");
     ok(pNetApiBufferFree(p) == NERR_Success, "NetApiBufferFree failed\n");
 
     ok(pNetApiBufferAllocate(1024, &p) == NERR_Success, "Memory not reserved\n");
     ok(pNetApiBufferReallocate(p, 0, &p) == NERR_Success, "Not freed\n");
-    ok(p == NULL, "Pointer not cleared\n");
+    ok(p == ((void*)0), "Pointer not cleared\n");
 
-    /* 0-length buffer */
+
     ok(pNetApiBufferAllocate(0, &p) == NERR_Success,
        "Reserved memory\n");
     ok(pNetApiBufferSize(p, &dwSize) == NERR_Success, "Got size\n");
     ok(dwSize < 0xFFFFFFFF, "The size of the 0-length buffer\n");
     ok(pNetApiBufferFree(p) == NERR_Success, "Freed\n");
 
-    /* NULL-Pointer */
-    /* NT: ERROR_INVALID_PARAMETER, lasterror is untouched) */
+
+
     SetLastError(0xdeadbeef);
-    res = pNetApiBufferAllocate(0, NULL);
+    res = pNetApiBufferAllocate(0, ((void*)0));
     ok( (res == ERROR_INVALID_PARAMETER) && (GetLastError() == 0xdeadbeef),
         "returned %d with 0x%x (expected ERROR_INVALID_PARAMETER with "
         "0xdeadbeef)\n", res, GetLastError());
 
     SetLastError(0xdeadbeef);
-    res = pNetApiBufferAllocate(1024, NULL);
+    res = pNetApiBufferAllocate(1024, ((void*)0));
     ok( (res == ERROR_INVALID_PARAMETER) && (GetLastError() == 0xdeadbeef),
         "returned %d with 0x%x (expected ERROR_INVALID_PARAMETER with "
         "0xdeadbeef)\n", res, GetLastError());

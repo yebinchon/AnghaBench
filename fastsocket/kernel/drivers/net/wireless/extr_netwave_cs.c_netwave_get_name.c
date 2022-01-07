@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-union iwreq_data {int /*<<< orphan*/  name; } ;
+
+
+
+
+union iwreq_data {int name; } ;
 struct net_device {int dummy; } ;
 struct iw_request_info {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  strcpy (int /*<<< orphan*/ ,char*) ; 
+
+ int strcpy (int ,char*) ;
 
 __attribute__((used)) static int netwave_get_name(struct net_device *dev,
-			    struct iw_request_info *info,
-			    union iwreq_data *wrqu,
-			    char *extra)
+       struct iw_request_info *info,
+       union iwreq_data *wrqu,
+       char *extra)
 {
-	strcpy(wrqu->name, "Netwave");
-	return 0;
+ strcpy(wrqu->name, "Netwave");
+ return 0;
 }

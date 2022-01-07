@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ UINT ;
-typedef  int /*<<< orphan*/  MSIHANDLE ;
-typedef  int /*<<< orphan*/  INSTALLUI_HANDLER_RECORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CURR_DIR ; 
- int /*<<< orphan*/  CoInitialize (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CoUninitialize () ; 
- int /*<<< orphan*/  DeleteFileA (char*) ; 
- scalar_t__ ERROR_INSTALL_USEREXIT ; 
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  INSTALLLOGMODE_SHOWDIALOG ; 
- int /*<<< orphan*/  INSTALLUILEVEL_FULL ; 
- int /*<<< orphan*/  MSITEST_INSTALLLOGMODE ; 
- int /*<<< orphan*/  MsiCloseHandle (int /*<<< orphan*/ ) ; 
- scalar_t__ MsiDatabaseImportA (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- scalar_t__ MsiDoActionA (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  MsiSetExternalUIA (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ MsiSetExternalUIRecord (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  MsiSetInternalUI (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  add_control_entry (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  add_controlevent_entry (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  add_custom_action_entry (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  add_dialog_entry (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  closehandle_sequence ; 
- int /*<<< orphan*/  controlevent_spawn2_sequence ; 
- int /*<<< orphan*/  controlevent_spawn_sequence ; 
- int /*<<< orphan*/  create_control_table (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  create_controlevent_table (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  create_custom_action_table (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  create_dialog_table (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  create_file_data (char*,char*) ; 
- int /*<<< orphan*/  create_package_db () ; 
- int /*<<< orphan*/  externalui_message_callback ; 
- int /*<<< orphan*/  externalui_message_string_callback ; 
- int /*<<< orphan*/  flush_sequence () ; 
- char* msifile ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  ok_sequence (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  openpackage_sequence ; 
- scalar_t__ package_from_db (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  skip (char*) ; 
- int /*<<< orphan*/  winetest_interactive ; 
+
+
+
+typedef scalar_t__ UINT ;
+typedef int MSIHANDLE ;
+typedef int INSTALLUI_HANDLER_RECORD ;
+
+
+ int CURR_DIR ;
+ int CoInitialize (int *) ;
+ int CoUninitialize () ;
+ int DeleteFileA (char*) ;
+ scalar_t__ ERROR_INSTALL_USEREXIT ;
+ scalar_t__ ERROR_SUCCESS ;
+ int FALSE ;
+ int INSTALLLOGMODE_SHOWDIALOG ;
+ int INSTALLUILEVEL_FULL ;
+ int MSITEST_INSTALLLOGMODE ;
+ int MsiCloseHandle (int ) ;
+ scalar_t__ MsiDatabaseImportA (int ,int ,char*) ;
+ scalar_t__ MsiDoActionA (int ,char*) ;
+ int MsiSetExternalUIA (int ,int ,int *) ;
+ scalar_t__ MsiSetExternalUIRecord (int ,int ,int *,int *) ;
+ int MsiSetInternalUI (int ,int *) ;
+ int add_control_entry (int ,char*) ;
+ int add_controlevent_entry (int ,char*) ;
+ int add_custom_action_entry (int ,char*) ;
+ int add_dialog_entry (int ,char*) ;
+ int closehandle_sequence ;
+ int controlevent_spawn2_sequence ;
+ int controlevent_spawn_sequence ;
+ int create_control_table (int ) ;
+ int create_controlevent_table (int ) ;
+ int create_custom_action_table (int ) ;
+ int create_dialog_table (int ) ;
+ int create_file_data (char*,char*) ;
+ int create_package_db () ;
+ int externalui_message_callback ;
+ int externalui_message_string_callback ;
+ int flush_sequence () ;
+ char* msifile ;
+ int ok (int,char*,...) ;
+ int ok_sequence (int ,char*,int ) ;
+ int openpackage_sequence ;
+ scalar_t__ package_from_db (int ,int *) ;
+ int skip (char*) ;
+ int winetest_interactive ;
 
 __attribute__((used)) static void test_controlevent(void)
 {
@@ -67,14 +67,14 @@ __attribute__((used)) static void test_controlevent(void)
         return;
     }
 
-    MsiSetInternalUI(INSTALLUILEVEL_FULL, NULL);
+    MsiSetInternalUI(INSTALLUILEVEL_FULL, ((void*)0));
 
-    MsiSetExternalUIA(externalui_message_string_callback, INSTALLLOGMODE_SHOWDIALOG, NULL);
-    r = MsiSetExternalUIRecord(externalui_message_callback, MSITEST_INSTALLLOGMODE, NULL, &prev);
+    MsiSetExternalUIA(externalui_message_string_callback, INSTALLLOGMODE_SHOWDIALOG, ((void*)0));
+    r = MsiSetExternalUIRecord(externalui_message_callback, MSITEST_INSTALLLOGMODE, ((void*)0), &prev);
 
     flush_sequence();
 
-    CoInitialize(NULL);
+    CoInitialize(((void*)0));
 
     hdb = create_package_db();
     ok(hdb, "failed to create database\n");
@@ -102,11 +102,11 @@ __attribute__((used)) static void test_controlevent(void)
     create_custom_action_table(hdb);
     add_custom_action_entry(hdb, "'custom', 51, 'dummy', 'dummy value'");
 
-    /* SpawnDialog and EndDialog should trigger after all other events */
+
     add_controlevent_entry(hdb, "'spawn', 'button', 'SpawnDialog', 'child1', 1, 1");
     add_controlevent_entry(hdb, "'spawn', 'button', 'DoAction', 'custom', 1, 2");
 
-    /* Multiple dialog events cause only the last one to be triggered */
+
     add_controlevent_entry(hdb, "'spawn2', 'button', 'SpawnDialog', 'child1', 1, 1");
     add_controlevent_entry(hdb, "'spawn2', 'button', 'SpawnDialog', 'child2', 1, 2");
     add_controlevent_entry(hdb, "'spawn2', 'button', 'DoAction', 'custom', 1, 3");

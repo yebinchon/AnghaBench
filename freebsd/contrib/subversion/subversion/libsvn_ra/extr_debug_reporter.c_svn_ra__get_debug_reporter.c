@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_stream_t ;
-struct TYPE_4__ {int /*<<< orphan*/  abort_report; int /*<<< orphan*/  finish_report; int /*<<< orphan*/  link_path; int /*<<< orphan*/  delete_path; int /*<<< orphan*/  set_path; } ;
-typedef  TYPE_1__ svn_ra_reporter3_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct report_baton {int /*<<< orphan*/ * out; void* wrapped_report_baton; TYPE_1__ const* wrapped_reporter; } ;
-typedef  scalar_t__ apr_status_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_file_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  abort_report ; 
- scalar_t__ apr_file_open_stderr (int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
- void* apr_palloc (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  delete_path ; 
- int /*<<< orphan*/  finish_report ; 
- int /*<<< orphan*/  link_path ; 
- int /*<<< orphan*/  set_path ; 
- int /*<<< orphan*/ * svn_error_wrap_apr (scalar_t__,char*) ; 
- int /*<<< orphan*/ * svn_stream_from_aprfile2 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int svn_stream_t ;
+struct TYPE_4__ {int abort_report; int finish_report; int link_path; int delete_path; int set_path; } ;
+typedef TYPE_1__ svn_ra_reporter3_t ;
+typedef int svn_error_t ;
+struct report_baton {int * out; void* wrapped_report_baton; TYPE_1__ const* wrapped_reporter; } ;
+typedef scalar_t__ apr_status_t ;
+typedef int apr_pool_t ;
+typedef int apr_file_t ;
+
+
+ int * SVN_NO_ERROR ;
+ int TRUE ;
+ int abort_report ;
+ scalar_t__ apr_file_open_stderr (int **,int *) ;
+ void* apr_palloc (int *,int) ;
+ int delete_path ;
+ int finish_report ;
+ int link_path ;
+ int set_path ;
+ int * svn_error_wrap_apr (scalar_t__,char*) ;
+ int * svn_stream_from_aprfile2 (int *,int ,int *) ;
 
 svn_error_t *
 svn_ra__get_debug_reporter(const svn_ra_reporter3_t **reporter,
@@ -51,7 +51,7 @@ svn_ra__get_debug_reporter(const svn_ra_reporter3_t **reporter,
 
   out = svn_stream_from_aprfile2(errfp, TRUE, pool);
 
-  /* ### svn_delta_default_editor() */
+
   tree_reporter = apr_palloc(pool, sizeof(*tree_reporter));
   rb = apr_palloc(pool, sizeof(*rb));
 

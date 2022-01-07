@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ U16 ;
-struct TYPE_2__ {scalar_t__* io_request_sequence; int /*<<< orphan*/  tci_pool; } ;
-typedef  int /*<<< orphan*/  SCI_STATUS ;
-typedef  scalar_t__ SCI_CONTROLLER_HANDLE_T ;
-typedef  TYPE_1__ SCIC_SDS_CONTROLLER_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- int /*<<< orphan*/  SCIC_LOG_OBJECT_CONTROLLER ; 
- int /*<<< orphan*/  SCIC_LOG_TRACE (int /*<<< orphan*/ ) ; 
- scalar_t__ SCI_CONTROLLER_INVALID_IO_TAG ; 
- int /*<<< orphan*/  SCI_FAILURE_INVALID_IO_TAG ; 
- int /*<<< orphan*/  SCI_SUCCESS ; 
- int /*<<< orphan*/  sci_base_object_get_logger (scalar_t__) ; 
- int /*<<< orphan*/  sci_pool_full (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sci_pool_put (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  scic_sds_io_sequence_increment (scalar_t__) ; 
- scalar_t__ scic_sds_io_tag_get_index (scalar_t__) ; 
- scalar_t__ scic_sds_io_tag_get_sequence (scalar_t__) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef scalar_t__ U16 ;
+struct TYPE_2__ {scalar_t__* io_request_sequence; int tci_pool; } ;
+typedef int SCI_STATUS ;
+typedef scalar_t__ SCI_CONTROLLER_HANDLE_T ;
+typedef TYPE_1__ SCIC_SDS_CONTROLLER_T ;
+
+
+ int ASSERT (int) ;
+ int SCIC_LOG_OBJECT_CONTROLLER ;
+ int SCIC_LOG_TRACE (int ) ;
+ scalar_t__ SCI_CONTROLLER_INVALID_IO_TAG ;
+ int SCI_FAILURE_INVALID_IO_TAG ;
+ int SCI_SUCCESS ;
+ int sci_base_object_get_logger (scalar_t__) ;
+ int sci_pool_full (int ) ;
+ int sci_pool_put (int ,scalar_t__) ;
+ int scic_sds_io_sequence_increment (scalar_t__) ;
+ scalar_t__ scic_sds_io_tag_get_index (scalar_t__) ;
+ scalar_t__ scic_sds_io_tag_get_sequence (scalar_t__) ;
 
 SCI_STATUS scic_controller_free_io_tag(
    SCI_CONTROLLER_HANDLE_T controller,
-   U16                     io_tag
+   U16 io_tag
 )
 {
    U16 sequence;
@@ -52,7 +52,7 @@ SCI_STATUS scic_controller_free_io_tag(
    ));
 
    sequence = scic_sds_io_tag_get_sequence(io_tag);
-   index    = scic_sds_io_tag_get_index(io_tag);
+   index = scic_sds_io_tag_get_index(io_tag);
 
    if (!sci_pool_full(this_controller->tci_pool))
    {

@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_47__   TYPE_3__ ;
-typedef  struct TYPE_46__   TYPE_2__ ;
-typedef  struct TYPE_45__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ i64 ;
-struct TYPE_47__ {int iNodeSize; int /*<<< orphan*/  iDepth; } ;
+
+
+typedef struct TYPE_47__ TYPE_3__ ;
+typedef struct TYPE_46__ TYPE_2__ ;
+typedef struct TYPE_45__ TYPE_1__ ;
+
+
+typedef scalar_t__ i64 ;
+struct TYPE_47__ {int iNodeSize; int iDepth; } ;
 struct TYPE_46__ {scalar_t__ iRowid; } ;
-struct TYPE_45__ {int iNode; int isDirty; int* zData; struct TYPE_45__* pParent; int /*<<< orphan*/  nRef; } ;
-typedef  TYPE_1__ RtreeNode ;
-typedef  TYPE_2__ RtreeCell ;
-typedef  TYPE_3__ Rtree ;
+struct TYPE_45__ {int iNode; int isDirty; int* zData; struct TYPE_45__* pParent; int nRef; } ;
+typedef TYPE_1__ RtreeNode ;
+typedef TYPE_2__ RtreeCell ;
+typedef TYPE_3__ Rtree ;
 
-/* Variables and functions */
- int AdjustTree (TYPE_3__*,TYPE_1__*,TYPE_2__*) ; 
- int NCELL (TYPE_1__*) ; 
- int SQLITE_NOMEM ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  memcpy (TYPE_2__*,TYPE_2__*,int) ; 
- int /*<<< orphan*/  memset (int*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  nodeGetCell (TYPE_3__*,TYPE_1__*,int,TYPE_2__*) ; 
- scalar_t__ nodeGetRowid (TYPE_3__*,TYPE_1__*,int) ; 
- TYPE_1__* nodeNew (TYPE_3__*,TYPE_1__*) ; 
- int /*<<< orphan*/  nodeOverwriteCell (TYPE_3__*,TYPE_1__*,TYPE_2__*,int) ; 
- int nodeParentIndex (TYPE_3__*,TYPE_1__*,int*) ; 
- int nodeRelease (TYPE_3__*,TYPE_1__*) ; 
- int nodeWrite (TYPE_3__*,TYPE_1__*) ; 
- int /*<<< orphan*/  nodeZero (TYPE_3__*,TYPE_1__*) ; 
- int rtreeInsertCell (TYPE_3__*,TYPE_1__*,TYPE_2__*,int) ; 
- int splitNodeStartree (TYPE_3__*,TYPE_2__*,int,TYPE_1__*,TYPE_1__*,TYPE_2__*,TYPE_2__*) ; 
- int /*<<< orphan*/  sqlite3_free (TYPE_2__*) ; 
- TYPE_2__* sqlite3_malloc64 (int) ; 
- int updateMapping (TYPE_3__*,scalar_t__,TYPE_1__*,int) ; 
- int /*<<< orphan*/  writeInt16 (int*,int /*<<< orphan*/ ) ; 
+
+ int AdjustTree (TYPE_3__*,TYPE_1__*,TYPE_2__*) ;
+ int NCELL (TYPE_1__*) ;
+ int SQLITE_NOMEM ;
+ int SQLITE_OK ;
+ int memcpy (TYPE_2__*,TYPE_2__*,int) ;
+ int memset (int*,int ,int) ;
+ int nodeGetCell (TYPE_3__*,TYPE_1__*,int,TYPE_2__*) ;
+ scalar_t__ nodeGetRowid (TYPE_3__*,TYPE_1__*,int) ;
+ TYPE_1__* nodeNew (TYPE_3__*,TYPE_1__*) ;
+ int nodeOverwriteCell (TYPE_3__*,TYPE_1__*,TYPE_2__*,int) ;
+ int nodeParentIndex (TYPE_3__*,TYPE_1__*,int*) ;
+ int nodeRelease (TYPE_3__*,TYPE_1__*) ;
+ int nodeWrite (TYPE_3__*,TYPE_1__*) ;
+ int nodeZero (TYPE_3__*,TYPE_1__*) ;
+ int rtreeInsertCell (TYPE_3__*,TYPE_1__*,TYPE_2__*,int) ;
+ int splitNodeStartree (TYPE_3__*,TYPE_2__*,int,TYPE_1__*,TYPE_1__*,TYPE_2__*,TYPE_2__*) ;
+ int sqlite3_free (TYPE_2__*) ;
+ TYPE_2__* sqlite3_malloc64 (int) ;
+ int updateMapping (TYPE_3__*,scalar_t__,TYPE_1__*,int) ;
+ int writeInt16 (int*,int ) ;
 
 __attribute__((used)) static int SplitNode(
   Rtree *pRtree,
@@ -63,9 +63,9 @@ __attribute__((used)) static int SplitNode(
   RtreeCell leftbbox;
   RtreeCell rightbbox;
 
-  /* Allocate an array and populate it with a copy of pCell and 
-  ** all cells from node pLeft. Then zero the original node.
-  */
+
+
+
   aCell = sqlite3_malloc64((sizeof(RtreeCell)+sizeof(int))*(nCell+1));
   if( !aCell ){
     rc = SQLITE_NOMEM;
@@ -106,11 +106,11 @@ __attribute__((used)) static int SplitNode(
     goto splitnode_out;
   }
 
-  /* Ensure both child nodes have node numbers assigned to them by calling
-  ** nodeWrite(). Node pRight always needs a node number, as it was created
-  ** by nodeNew() above. But node pLeft sometimes already has a node number.
-  ** In this case avoid the all to nodeWrite().
-  */
+
+
+
+
+
   if( SQLITE_OK!=(rc = nodeWrite(pRtree, pRight))
    || (0==pLeft->iNode && SQLITE_OK!=(rc = nodeWrite(pRtree, pLeft)))
   ){

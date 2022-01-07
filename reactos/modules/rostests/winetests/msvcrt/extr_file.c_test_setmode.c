@@ -1,35 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int EBADF ; 
- int EINVAL ; 
- int _O_BINARY ; 
- int _O_CREAT ; 
- int _O_TEXT ; 
- int _O_U16TEXT ; 
- int _O_U8TEXT ; 
- int _O_WRONLY ; 
- int _O_WTEXT ; 
- int /*<<< orphan*/  _S_IWRITE ; 
- int /*<<< orphan*/  _close (int) ; 
- int _open (char const*,int,int /*<<< orphan*/ ) ; 
- int _setmode (int,int) ; 
- int /*<<< orphan*/  _unlink (char const*) ; 
- int errno ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  p_fopen_s ; 
- int /*<<< orphan*/  win_skip (char*) ; 
+ int EBADF ;
+ int EINVAL ;
+ int _O_BINARY ;
+ int _O_CREAT ;
+ int _O_TEXT ;
+ int _O_U16TEXT ;
+ int _O_U8TEXT ;
+ int _O_WRONLY ;
+ int _O_WTEXT ;
+ int _S_IWRITE ;
+ int _close (int) ;
+ int _open (char const*,int,int ) ;
+ int _setmode (int,int) ;
+ int _unlink (char const*) ;
+ int errno ;
+ int ok (int,char*,...) ;
+ int p_fopen_s ;
+ int win_skip (char*) ;
 
 __attribute__((used)) static void test_setmode(void)
 {

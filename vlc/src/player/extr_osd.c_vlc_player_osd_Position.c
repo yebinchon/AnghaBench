@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vout_thread_t ;
-typedef  float vlc_tick_t ;
-typedef  int /*<<< orphan*/  vlc_player_t ;
+
+
+
+
+typedef int vout_thread_t ;
+typedef float vlc_tick_t ;
+typedef int vlc_player_t ;
 struct vlc_player_input {float length; } ;
-typedef  enum vlc_player_whence { ____Placeholder_vlc_player_whence } vlc_player_whence ;
+typedef enum vlc_player_whence { ____Placeholder_vlc_player_whence } vlc_player_whence ;
 
-/* Variables and functions */
- int MSTRTIME_MAX_SIZE ; 
- int /*<<< orphan*/  OSD_HOR_SLIDER ; 
- int /*<<< orphan*/  SEC_FROM_VLC_TICK (float) ; 
- int VLC_PLAYER_WHENCE_RELATIVE ; 
- float VLC_TICK_INVALID ; 
- int /*<<< orphan*/  secstotimestr (char*,int /*<<< orphan*/ ) ; 
- scalar_t__ vlc_player_input_GetPos (struct vlc_player_input*) ; 
- scalar_t__ vlc_player_input_GetTime (struct vlc_player_input*) ; 
- int /*<<< orphan*/ ** vlc_player_osd_HoldAll (int /*<<< orphan*/ *,size_t*) ; 
- int /*<<< orphan*/  vlc_player_osd_ReleaseAll (int /*<<< orphan*/ *,int /*<<< orphan*/ **,size_t) ; 
- scalar_t__ vlc_player_vout_IsFullscreen (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vouts_osd_Message (int /*<<< orphan*/ **,size_t,char*,char*,...) ; 
- int /*<<< orphan*/  vouts_osd_Slider (int /*<<< orphan*/ **,size_t,float,int /*<<< orphan*/ ) ; 
+
+ int MSTRTIME_MAX_SIZE ;
+ int OSD_HOR_SLIDER ;
+ int SEC_FROM_VLC_TICK (float) ;
+ int VLC_PLAYER_WHENCE_RELATIVE ;
+ float VLC_TICK_INVALID ;
+ int secstotimestr (char*,int ) ;
+ scalar_t__ vlc_player_input_GetPos (struct vlc_player_input*) ;
+ scalar_t__ vlc_player_input_GetTime (struct vlc_player_input*) ;
+ int ** vlc_player_osd_HoldAll (int *,size_t*) ;
+ int vlc_player_osd_ReleaseAll (int *,int **,size_t) ;
+ scalar_t__ vlc_player_vout_IsFullscreen (int *) ;
+ int vouts_osd_Message (int **,size_t,char*,char*,...) ;
+ int vouts_osd_Slider (int **,size_t,float,int ) ;
 
 void
 vlc_player_osd_Position(vlc_player_t *player,
@@ -51,7 +51,7 @@ vlc_player_osd_Position(vlc_player_t *player,
     {
         if (whence == VLC_PLAYER_WHENCE_RELATIVE)
         {
-            time += vlc_player_input_GetTime(input); /* XXX: TOCTOU */
+            time += vlc_player_input_GetTime(input);
             if (time < 0)
                 time = 0;
         }
@@ -72,7 +72,7 @@ vlc_player_osd_Position(vlc_player_t *player,
     {
         if (whence == VLC_PLAYER_WHENCE_RELATIVE)
         {
-            position += vlc_player_input_GetPos(input); /* XXX: TOCTOU */
+            position += vlc_player_input_GetPos(input);
             if (position < 0.f)
                 position = 0.f;
         }

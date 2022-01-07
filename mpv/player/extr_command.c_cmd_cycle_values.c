@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-union m_option_value {int /*<<< orphan*/  member_0; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+union m_option_value {int member_0; } ;
 struct mp_cmd_ctx {int num_args; int success; TYPE_2__* args; struct MPContext* mpctx; } ;
-struct m_option {int /*<<< orphan*/  member_0; } ;
-struct MPContext {int /*<<< orphan*/  log; } ;
+struct m_option {int member_0; } ;
+struct MPContext {int log; } ;
 struct TYPE_3__ {char* s; } ;
 struct TYPE_4__ {TYPE_1__ v; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MP_ERR (struct MPContext*,char*) ; 
- int /*<<< orphan*/  MP_VERBOSE (struct MPContext*,char*) ; 
- int /*<<< orphan*/  M_PROPERTY_GET ; 
- int /*<<< orphan*/  M_PROPERTY_GET_TYPE ; 
- int /*<<< orphan*/  M_PROPERTY_SET_STRING ; 
- int /*<<< orphan*/  bstr0 (char const*) ; 
- int /*<<< orphan*/  change_property_cmd (struct mp_cmd_ctx*,char const*,int /*<<< orphan*/ ,char const*) ; 
- scalar_t__ compare_values (union m_option_value*,union m_option_value*,union m_option_value*) ; 
- int /*<<< orphan*/  m_option_free (union m_option_value*,union m_option_value*) ; 
- scalar_t__ m_option_parse (int /*<<< orphan*/ ,union m_option_value*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,union m_option_value*) ; 
- int mp_property_do (char const*,int /*<<< orphan*/ ,union m_option_value*,struct MPContext*) ; 
- int /*<<< orphan*/  show_property_status (struct mp_cmd_ctx*,char const*,int) ; 
- scalar_t__ strcmp (char*,char*) ; 
+
+ int MP_ERR (struct MPContext*,char*) ;
+ int MP_VERBOSE (struct MPContext*,char*) ;
+ int M_PROPERTY_GET ;
+ int M_PROPERTY_GET_TYPE ;
+ int M_PROPERTY_SET_STRING ;
+ int bstr0 (char const*) ;
+ int change_property_cmd (struct mp_cmd_ctx*,char const*,int ,char const*) ;
+ scalar_t__ compare_values (union m_option_value*,union m_option_value*,union m_option_value*) ;
+ int m_option_free (union m_option_value*,union m_option_value*) ;
+ scalar_t__ m_option_parse (int ,union m_option_value*,int ,int ,union m_option_value*) ;
+ int mp_property_do (char const*,int ,union m_option_value*,struct MPContext*) ;
+ int show_property_status (struct mp_cmd_ctx*,char const*,int) ;
+ scalar_t__ strcmp (char*,char*) ;
 
 __attribute__((used)) static void cmd_cycle_values(void *p)
 {
@@ -50,7 +50,7 @@ __attribute__((used)) static void cmd_cycle_values(void *p)
 
     if (first >= cmd->num_args) {
         MP_ERR(mpctx, "cycle-values command does not have any value arguments.\n");
-        cmd->success = false;
+        cmd->success = 0;
         return;
     }
 
@@ -68,9 +68,9 @@ __attribute__((used)) static void cmd_cycle_values(void *p)
         return;
     }
 
-    // Find the current value. Note that we even though compare_values() uses
-    // strings internally, we need to convert the cycle-values arguments to
-    // native anyway to "normalize" the value for comparison.
+
+
+
     int current = -1;
     for (int n = first; n < cmd->num_args; n++) {
         union m_option_value val = {0};

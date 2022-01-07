@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  IXMLDOMParseError2 ;
-typedef  int /*<<< orphan*/  IXMLDOMParseError ;
-typedef  int /*<<< orphan*/  IXMLDOMDocument ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLSID_DOMDocument60 ; 
- int /*<<< orphan*/  EXPECT_HR (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  E_INVALIDARG ; 
- int /*<<< orphan*/  IID_IXMLDOMDocument ; 
- int /*<<< orphan*/  IID_IXMLDOMParseError2 ; 
- int /*<<< orphan*/  IXMLDOMDocument_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IXMLDOMDocument_get_parseError (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IXMLDOMParseError2_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IXMLDOMParseError_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IXMLDOMParseError_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IXMLDOMParseError_get_line (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IXMLDOMParseError_get_linepos (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IXMLDOMParseError_get_srcText (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/ * create_document (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * create_document_version (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  is_clsid_supported (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int IXMLDOMParseError2 ;
+typedef int IXMLDOMParseError ;
+typedef int IXMLDOMDocument ;
+typedef int HRESULT ;
+
+
+ int CLSID_DOMDocument60 ;
+ int EXPECT_HR (int ,int ) ;
+ int E_INVALIDARG ;
+ int IID_IXMLDOMDocument ;
+ int IID_IXMLDOMParseError2 ;
+ int IXMLDOMDocument_Release (int *) ;
+ int IXMLDOMDocument_get_parseError (int *,int **) ;
+ int IXMLDOMParseError2_Release (int *) ;
+ int IXMLDOMParseError_QueryInterface (int *,int *,void**) ;
+ int IXMLDOMParseError_Release (int *) ;
+ int IXMLDOMParseError_get_line (int *,int *) ;
+ int IXMLDOMParseError_get_linepos (int *,int *) ;
+ int IXMLDOMParseError_get_srcText (int *,int *) ;
+ int S_OK ;
+ int * create_document (int *) ;
+ int * create_document_version (int,int *) ;
+ int is_clsid_supported (int *,int *) ;
 
 __attribute__((used)) static void test_parseerror(void)
 {
@@ -46,13 +46,13 @@ __attribute__((used)) static void test_parseerror(void)
     hr = IXMLDOMDocument_get_parseError(doc, &error);
     EXPECT_HR(hr, S_OK);
 
-    hr = IXMLDOMParseError_get_line(error, NULL);
+    hr = IXMLDOMParseError_get_line(error, ((void*)0));
     EXPECT_HR(hr, E_INVALIDARG);
 
-    hr = IXMLDOMParseError_get_srcText(error, NULL);
+    hr = IXMLDOMParseError_get_srcText(error, ((void*)0));
     EXPECT_HR(hr, E_INVALIDARG);
 
-    hr = IXMLDOMParseError_get_linepos(error, NULL);
+    hr = IXMLDOMParseError_get_linepos(error, ((void*)0));
     EXPECT_HR(hr, E_INVALIDARG);
 
     IXMLDOMParseError_Release(error);

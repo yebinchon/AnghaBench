@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  BUFFER ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * buffer_create (int) ; 
- int /*<<< orphan*/  buffer_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  buffer_sprintf (int /*<<< orphan*/ *,char const*,char*,char*,char*,char*) ; 
- scalar_t__ buffer_strlen (int /*<<< orphan*/ *) ; 
- char* buffer_tostring (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  snprintfz (char*,int,char const*,char*,char*,char*,char*) ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ strcmp (char const*,char*) ; 
- scalar_t__ strlen (char*) ; 
+
+
+
+typedef int BUFFER ;
+
+
+ int * buffer_create (int) ;
+ int buffer_free (int *) ;
+ int buffer_sprintf (int *,char const*,char*,char*,char*,char*) ;
+ scalar_t__ buffer_strlen (int *) ;
+ char* buffer_tostring (int *) ;
+ int fprintf (int ,char*,...) ;
+ int snprintfz (char*,int,char const*,char*,char*,char*,char*) ;
+ int stderr ;
+ scalar_t__ strcmp (char const*,char*) ;
+ scalar_t__ strlen (char*) ;
 
 int unit_test_buffer() {
     BUFFER *wb = buffer_create(1);

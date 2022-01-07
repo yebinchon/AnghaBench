@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int /*<<< orphan*/  uid_t ;
 
-/* Variables and functions */
- int ENXIO ; 
- int /*<<< orphan*/  assert (char const*) ; 
- int /*<<< orphan*/  assert_cc (int) ; 
- int safe_atou32 (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  uid_is_valid (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint32_t ;
+typedef int uid_t ;
+
+
+ int ENXIO ;
+ int assert (char const*) ;
+ int assert_cc (int) ;
+ int safe_atou32 (char const*,int *) ;
+ int uid_is_valid (int ) ;
 
 int parse_uid(const char *s, uid_t *ret) {
         uint32_t uid = 0;
@@ -32,10 +32,10 @@ int parse_uid(const char *s, uid_t *ret) {
                 return r;
 
         if (!uid_is_valid(uid))
-                return -ENXIO; /* we return ENXIO instead of EINVAL
-                                * here, to make it easy to distinguish
-                                * invalid numeric uids from invalid
-                                * strings. */
+                return -ENXIO;
+
+
+
 
         if (ret)
                 *ret = uid;

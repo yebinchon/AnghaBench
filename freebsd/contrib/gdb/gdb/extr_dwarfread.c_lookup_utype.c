@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct type {int dummy; } ;
-typedef  int DIE_REF ;
+typedef int DIE_REF ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DIE_ID ; 
- int /*<<< orphan*/  DIE_NAME ; 
- int /*<<< orphan*/  bad_die_ref_complaint (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int dbroff ; 
- int numutypes ; 
- struct type** utypes ; 
+
+ int DIE_ID ;
+ int DIE_NAME ;
+ int bad_die_ref_complaint (int ,int ,int) ;
+ int dbroff ;
+ int numutypes ;
+ struct type** utypes ;
 
 __attribute__((used)) static struct type *
 lookup_utype (DIE_REF die_ref)
 {
-  struct type *type = NULL;
+  struct type *type = ((void*)0);
   int utypeidx;
 
   utypeidx = (die_ref - dbroff) / 4;

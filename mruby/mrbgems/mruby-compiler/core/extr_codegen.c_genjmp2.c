@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  scalar_t__ uint16_t ;
+
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef scalar_t__ uint16_t ;
 struct mrb_insn_data {scalar_t__ insn; scalar_t__ a; scalar_t__ b; } ;
-typedef  int /*<<< orphan*/  mrb_code ;
+typedef int mrb_code ;
 struct TYPE_7__ {scalar_t__ pc; scalar_t__ lastpc; } ;
-typedef  TYPE_1__ codegen_scope ;
+typedef TYPE_1__ codegen_scope ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OP_EXT1 ; 
- scalar_t__ OP_MOVE ; 
- int /*<<< orphan*/  gen_B (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_S (TYPE_1__*,int) ; 
- struct mrb_insn_data mrb_last_insn (TYPE_1__*) ; 
- int /*<<< orphan*/  no_peephole (TYPE_1__*) ; 
+
+ int OP_EXT1 ;
+ scalar_t__ OP_MOVE ;
+ int gen_B (TYPE_1__*,int ) ;
+ int gen_S (TYPE_1__*,int) ;
+ struct mrb_insn_data mrb_last_insn (TYPE_1__*) ;
+ int no_peephole (TYPE_1__*) ;
 
 __attribute__((used)) static uint16_t
 genjmp2(codegen_scope *s, mrb_code i, uint16_t a, int pc, int val)

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct vmstate {struct vmstate* phdr; } ;
 struct TYPE_3__ {struct vmstate* vmst; } ;
-typedef  TYPE_1__ kvm_t ;
+typedef TYPE_1__ kvm_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (struct vmstate*) ; 
+
+ int free (struct vmstate*) ;
 
 __attribute__((used)) static void
 _arm_freevtop(kvm_t *kd)
 {
-	struct vmstate *vm = kd->vmst;
+ struct vmstate *vm = kd->vmst;
 
-	free(vm->phdr);
-	free(vm);
-	kd->vmst = NULL;
+ free(vm->phdr);
+ free(vm);
+ kd->vmst = ((void*)0);
 }

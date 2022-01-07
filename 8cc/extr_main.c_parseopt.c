@@ -1,37 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  add_include_path (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  buf_printf (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cppdefs ; 
- int cpponly ; 
- int dontlink ; 
- int dumpasm ; 
- int /*<<< orphan*/  dumpast ; 
- int enable_warning ; 
- int /*<<< orphan*/  error (char*) ; 
- int getopt (int,char**,char*) ; 
- char* infile ; 
- int /*<<< orphan*/  make_buffer () ; 
- int /*<<< orphan*/  optarg ; 
- int optind ; 
- int /*<<< orphan*/  outfile ; 
- int /*<<< orphan*/  parse_f_arg (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  parse_m_arg (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  parse_warnings_arg (int /*<<< orphan*/ ) ; 
- char* strchr (int /*<<< orphan*/ ,char) ; 
- int /*<<< orphan*/  usage (int) ; 
+ int add_include_path (int ) ;
+ int buf_printf (int ,char*,int ) ;
+ int cppdefs ;
+ int cpponly ;
+ int dontlink ;
+ int dumpasm ;
+ int dumpast ;
+ int enable_warning ;
+ int error (char*) ;
+ int getopt (int,char**,char*) ;
+ char* infile ;
+ int make_buffer () ;
+ int optarg ;
+ int optind ;
+ int outfile ;
+ int parse_f_arg (int ) ;
+ int parse_m_arg (int ) ;
+ int parse_warnings_arg (int ) ;
+ char* strchr (int ,char) ;
+ int usage (int) ;
 
 __attribute__((used)) static void parseopt(int argc, char **argv) {
     cppdefs = make_buffer();
@@ -41,7 +33,7 @@ __attribute__((used)) static void parseopt(int argc, char **argv) {
             break;
         switch (opt) {
         case 'I': add_include_path(optarg); break;
-        case 'E': cpponly = true; break;
+        case 'E': cpponly = 1; break;
         case 'D': {
             char *p = strchr(optarg, '=');
             if (p)
@@ -50,17 +42,17 @@ __attribute__((used)) static void parseopt(int argc, char **argv) {
             break;
         }
         case 'O': break;
-        case 'S': dumpasm = true; break;
+        case 'S': dumpasm = 1; break;
         case 'U':
             buf_printf(cppdefs, "#undef %s\n", optarg);
             break;
         case 'W': parse_warnings_arg(optarg); break;
-        case 'c': dontlink = true; break;
+        case 'c': dontlink = 1; break;
         case 'f': parse_f_arg(optarg); break;
         case 'm': parse_m_arg(optarg); break;
         case 'g': break;
         case 'o': outfile = optarg; break;
-        case 'w': enable_warning = false; break;
+        case 'w': enable_warning = 0; break;
         case 'h':
             usage(0);
         default:

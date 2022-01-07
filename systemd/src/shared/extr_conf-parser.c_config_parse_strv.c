@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int ENOMEM ; 
- int EXTRACT_RETAIN_ESCAPE ; 
- int EXTRACT_UNQUOTE ; 
- int /*<<< orphan*/  LOG_ERR ; 
- int /*<<< orphan*/  assert (void*) ; 
- int extract_first_word (char const**,char**,int /*<<< orphan*/ *,int) ; 
- scalar_t__ isempty (char const*) ; 
- int log_oom () ; 
- int /*<<< orphan*/  log_syntax (char const*,int /*<<< orphan*/ ,char const*,unsigned int,int,char*,char const*) ; 
- int strv_consume (char***,char*) ; 
- char** strv_free (char**) ; 
+ int ENOMEM ;
+ int EXTRACT_RETAIN_ESCAPE ;
+ int EXTRACT_UNQUOTE ;
+ int LOG_ERR ;
+ int assert (void*) ;
+ int extract_first_word (char const**,char**,int *,int) ;
+ scalar_t__ isempty (char const*) ;
+ int log_oom () ;
+ int log_syntax (char const*,int ,char const*,unsigned int,int,char*,char const*) ;
+ int strv_consume (char***,char*) ;
+ char** strv_free (char**) ;
 
 int config_parse_strv(
                 const char *unit,
@@ -50,9 +42,9 @@ int config_parse_strv(
         }
 
         for (;;) {
-                char *word = NULL;
+                char *word = ((void*)0);
 
-                r = extract_first_word(&rvalue, &word, NULL, EXTRACT_UNQUOTE|EXTRACT_RETAIN_ESCAPE);
+                r = extract_first_word(&rvalue, &word, ((void*)0), EXTRACT_UNQUOTE|EXTRACT_RETAIN_ESCAPE);
                 if (r == 0)
                         break;
                 if (r == -ENOMEM)

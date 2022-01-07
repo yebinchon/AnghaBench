@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int rangeValid; void* minDate; void* maxDate; int /*<<< orphan*/  todaysDate; } ;
-typedef  void* SYSTEMTIME ;
-typedef  int SHORT ;
-typedef  TYPE_1__ MONTHCAL_INFO ;
-typedef  int /*<<< orphan*/  LRESULT ;
-typedef  int /*<<< orphan*/  FILETIME ;
 
-/* Variables and functions */
- scalar_t__ CompareFileTime (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FALSE ; 
- int GDTR_MAX ; 
- int GDTR_MIN ; 
- int /*<<< orphan*/  MONTHCAL_CopyTime (int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  MONTHCAL_ValidateDate (void**) ; 
- int /*<<< orphan*/  MONTHCAL_ValidateTime (void**) ; 
- int /*<<< orphan*/  SystemTimeToFileTime (void**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TRACE (char*,int,void**) ; 
- int /*<<< orphan*/  TRUE ; 
- void* st_null ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int rangeValid; void* minDate; void* maxDate; int todaysDate; } ;
+typedef void* SYSTEMTIME ;
+typedef int SHORT ;
+typedef TYPE_1__ MONTHCAL_INFO ;
+typedef int LRESULT ;
+typedef int FILETIME ;
+
+
+ scalar_t__ CompareFileTime (int *,int *) ;
+ int FALSE ;
+ int GDTR_MAX ;
+ int GDTR_MIN ;
+ int MONTHCAL_CopyTime (int *,void**) ;
+ int MONTHCAL_ValidateDate (void**) ;
+ int MONTHCAL_ValidateTime (void**) ;
+ int SystemTimeToFileTime (void**,int *) ;
+ int TRACE (char*,int,void**) ;
+ int TRUE ;
+ void* st_null ;
 
 __attribute__((used)) static LRESULT
 MONTHCAL_SetRange(MONTHCAL_INFO *infoPtr, SHORT limits, SYSTEMTIME *range)
@@ -62,7 +62,7 @@ MONTHCAL_SetRange(MONTHCAL_INFO *infoPtr, SHORT limits, SYSTEMTIME *range)
         infoPtr->rangeValid |= GDTR_MAX;
     }
 
-    /* Only one limit set - we are done */
+
     if ((infoPtr->rangeValid & (GDTR_MIN | GDTR_MAX)) != (GDTR_MIN | GDTR_MAX))
         return TRUE;
 
@@ -73,14 +73,14 @@ MONTHCAL_SetRange(MONTHCAL_INFO *infoPtr, SHORT limits, SYSTEMTIME *range)
     {
         if ((limits & (GDTR_MIN | GDTR_MAX)) == (GDTR_MIN | GDTR_MAX))
         {
-            /* Native swaps limits only when both limits are being set. */
+
             SYSTEMTIME st_tmp = infoPtr->minDate;
-            infoPtr->minDate  = infoPtr->maxDate;
-            infoPtr->maxDate  = st_tmp;
+            infoPtr->minDate = infoPtr->maxDate;
+            infoPtr->maxDate = st_tmp;
         }
         else
         {
-            /* reset the other limit */
+
             if (limits & GDTR_MIN) infoPtr->maxDate = st_null;
             if (limits & GDTR_MAX) infoPtr->minDate = st_null;
             infoPtr->rangeValid &= limits & GDTR_MIN ? ~GDTR_MAX : ~GDTR_MIN;

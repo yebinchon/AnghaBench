@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_object_t ;
-typedef  int uint8_t ;
 
-/* Variables and functions */
- int VLC_EGENERIC ; 
- int VLC_SUCCESS ; 
- int /*<<< orphan*/  memcpy (int*,char const*,int const) ; 
- int /*<<< orphan*/  msg_Dbg (int /*<<< orphan*/ *,char*,...) ; 
- int /*<<< orphan*/  msg_Err (int /*<<< orphan*/ *,char*,...) ; 
- int net_Read (int /*<<< orphan*/ *,int,int*,int) ; 
- int net_Write (int /*<<< orphan*/ *,int,int*,int) ; 
- int strlen (char const*) ; 
+
+
+
+typedef int vlc_object_t ;
+typedef int uint8_t ;
+
+
+ int VLC_EGENERIC ;
+ int VLC_SUCCESS ;
+ int memcpy (int*,char const*,int const) ;
+ int msg_Dbg (int *,char*,...) ;
+ int msg_Err (int *,char*,...) ;
+ int net_Read (int *,int,int*,int) ;
+ int net_Write (int *,int,int*,int) ;
+ int strlen (char const*) ;
 
 __attribute__((used)) static int SocksNegotiate( vlc_object_t *p_obj,
                            int fd, int i_socks_version,
@@ -30,25 +30,25 @@ __attribute__((used)) static int SocksNegotiate( vlc_object_t *p_obj,
 {
     uint8_t buffer[128+2*256];
     int i_len;
-    bool b_auth = false;
+    bool b_auth = 0;
 
     if( i_socks_version != 5 )
         return VLC_SUCCESS;
 
-    /* We negotiate authentication */
-    buffer[0] = i_socks_version;    /* SOCKS version */
-    if( psz_socks_user != NULL && psz_socks_passwd != NULL )
+
+    buffer[0] = i_socks_version;
+    if( psz_socks_user != ((void*)0) && psz_socks_passwd != ((void*)0) )
     {
-        buffer[1] = 2;                  /* Number of methods */
-        buffer[2] = 0x00;               /* - No auth required */
-        buffer[3] = 0x02;               /* - USer/Password */
+        buffer[1] = 2;
+        buffer[2] = 0x00;
+        buffer[3] = 0x02;
         i_len = 4;
-        b_auth = true;
+        b_auth = 1;
     }
     else
     {
-        buffer[1] = 1;                  /* Number of methods */
-        buffer[2] = 0x00;               /* - No auth required */
+        buffer[1] = 1;
+        buffer[2] = 0x00;
         i_len = 3;
     }
 
@@ -65,7 +65,7 @@ __attribute__((used)) static int SocksNegotiate( vlc_object_t *p_obj,
     }
     else if( buffer[1] == 0x02 )
     {
-        if( psz_socks_user == NULL || psz_socks_passwd == NULL )
+        if( psz_socks_user == ((void*)0) || psz_socks_passwd == ((void*)0) )
         {
             msg_Err( p_obj, "socks: server mandates authentication but "
                             "a username and/or password was not supplied" );
@@ -84,10 +84,10 @@ __attribute__((used)) static int SocksNegotiate( vlc_object_t *p_obj,
 
         msg_Dbg( p_obj, "socks: username/password authentication" );
 
-        buffer[0] = i_socks_version;        /* Version */
-        buffer[1] = i_user;                 /* User length */
+        buffer[0] = i_socks_version;
+        buffer[1] = i_user;
         memcpy( &buffer[2], psz_socks_user, i_user );
-        buffer[2+i_user] = i_pasw;          /* Password length */
+        buffer[2+i_user] = i_pasw;
         memcpy( &buffer[2+i_user+1], psz_socks_passwd, i_pasw );
 
         i_len = 3 + i_user + i_pasw;

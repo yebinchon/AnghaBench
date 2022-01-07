@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint64_t ;
-typedef  int uint32_t ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint64_t ;
+typedef int uint32_t ;
 struct TYPE_5__ {int num; scalar_t__* p; int pos; scalar_t__ base; int** buf; int L; } ;
-typedef  TYPE_1__ primegen ;
+typedef TYPE_1__ primegen ;
 
-/* Variables and functions */
- int B ; 
- int B32 ; 
- int* pop ; 
- int /*<<< orphan*/  primegen_fill (TYPE_1__*) ; 
- int /*<<< orphan*/  primegen_sieve (TYPE_1__*) ; 
+
+ int B ;
+ int B32 ;
+ int* pop ;
+ int primegen_fill (TYPE_1__*) ;
+ int primegen_sieve (TYPE_1__*) ;
 
 uint64_t primegen_count(primegen *pg,uint64_t to)
 {
   uint64_t count = 0;
-  
+
   for (;;) {
     register int pos;
     register int j;

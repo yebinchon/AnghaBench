@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct opal_i2c_softc {int /*<<< orphan*/ * iicbus; int /*<<< orphan*/  opal_id; int /*<<< orphan*/  dev; } ;
-typedef  int /*<<< orphan*/  device_t ;
 
-/* Variables and functions */
- int EINVAL ; 
- int /*<<< orphan*/  I2C_LOCK_INIT (struct opal_i2c_softc*) ; 
- int /*<<< orphan*/  OF_getencprop (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *,int) ; 
- int OF_getproplen (int /*<<< orphan*/ ,char*) ; 
- int bus_generic_attach (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * device_add_child (int /*<<< orphan*/ ,char*,int) ; 
- struct opal_i2c_softc* device_get_softc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  device_printf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ofw_bus_get_node (int /*<<< orphan*/ ) ; 
+
+
+
+struct opal_i2c_softc {int * iicbus; int opal_id; int dev; } ;
+typedef int device_t ;
+
+
+ int EINVAL ;
+ int I2C_LOCK_INIT (struct opal_i2c_softc*) ;
+ int OF_getencprop (int ,char*,int *,int) ;
+ int OF_getproplen (int ,char*) ;
+ int bus_generic_attach (int ) ;
+ int * device_add_child (int ,char*,int) ;
+ struct opal_i2c_softc* device_get_softc (int ) ;
+ int device_printf (int ,char*) ;
+ int ofw_bus_get_node (int ) ;
 
 __attribute__((used)) static int
 opal_i2c_attach(device_t dev)
 {
-	struct opal_i2c_softc *sc;
-	int len;
+ struct opal_i2c_softc *sc;
+ int len;
 
-	sc = device_get_softc(dev);
-	sc->dev = dev;
+ sc = device_get_softc(dev);
+ sc->dev = dev;
 
-	len = OF_getproplen(ofw_bus_get_node(dev), "ibm,opal-id");
-	if (len <= 0)
-		return (EINVAL);
-	OF_getencprop(ofw_bus_get_node(dev), "ibm,opal-id", &sc->opal_id, len);
+ len = OF_getproplen(ofw_bus_get_node(dev), "ibm,opal-id");
+ if (len <= 0)
+  return (EINVAL);
+ OF_getencprop(ofw_bus_get_node(dev), "ibm,opal-id", &sc->opal_id, len);
 
-	if ((sc->iicbus = device_add_child(dev, "iicbus", -1)) == NULL) {
-		device_printf(dev, "could not allocate iicbus instance\n");
-		return (EINVAL);
-	}
+ if ((sc->iicbus = device_add_child(dev, "iicbus", -1)) == ((void*)0)) {
+  device_printf(dev, "could not allocate iicbus instance\n");
+  return (EINVAL);
+ }
 
-	I2C_LOCK_INIT(sc);
+ I2C_LOCK_INIT(sc);
 
-	return (bus_generic_attach(dev));
+ return (bus_generic_attach(dev));
 }

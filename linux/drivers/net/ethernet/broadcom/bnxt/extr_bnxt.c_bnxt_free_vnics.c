@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct bnxt {scalar_t__ nr_vnics; int /*<<< orphan*/ * vnic_info; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  kfree (int /*<<< orphan*/ *) ; 
+
+
+
+struct bnxt {scalar_t__ nr_vnics; int * vnic_info; } ;
+
+
+ int kfree (int *) ;
 
 __attribute__((used)) static void bnxt_free_vnics(struct bnxt *bp)
 {
-	kfree(bp->vnic_info);
-	bp->vnic_info = NULL;
-	bp->nr_vnics = 0;
+ kfree(bp->vnic_info);
+ bp->vnic_info = ((void*)0);
+ bp->nr_vnics = 0;
 }

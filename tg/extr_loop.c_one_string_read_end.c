@@ -1,33 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  TLS ; 
- int /*<<< orphan*/  do_get_string (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fflush (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  one_string ; 
- int /*<<< orphan*/  one_string_cb (int /*<<< orphan*/ ,void*,int /*<<< orphan*/ ) ; 
- size_t one_string_num ; 
- int /*<<< orphan*/ * one_string_prompt ; 
- int /*<<< orphan*/ ** one_string_results ; 
- size_t one_string_total_args ; 
- int /*<<< orphan*/  printf (char*) ; 
- int /*<<< orphan*/  reactivate_readline () ; 
- scalar_t__ read_one_string ; 
- int /*<<< orphan*/  stdout ; 
- int /*<<< orphan*/  string_cb_arg ; 
- int /*<<< orphan*/  tfree_str (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * tstrdup (int /*<<< orphan*/ ) ; 
+ int TLS ;
+ int do_get_string (int ) ;
+ int fflush (int ) ;
+ int one_string ;
+ int one_string_cb (int ,void*,int ) ;
+ size_t one_string_num ;
+ int * one_string_prompt ;
+ int ** one_string_results ;
+ size_t one_string_total_args ;
+ int printf (char*) ;
+ int reactivate_readline () ;
+ scalar_t__ read_one_string ;
+ int stdout ;
+ int string_cb_arg ;
+ int tfree_str (int *) ;
+ int * tstrdup (int ) ;
 
 __attribute__((used)) static void one_string_read_end (void) {
   printf ("\n");
@@ -35,7 +27,7 @@ __attribute__((used)) static void one_string_read_end (void) {
 
   read_one_string = 0;
   tfree_str (one_string_prompt);
-  one_string_prompt = NULL;
+  one_string_prompt = ((void*)0);
   reactivate_readline ();
 
   one_string_results[one_string_num] = tstrdup (one_string);

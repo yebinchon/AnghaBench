@@ -1,57 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  FW_FEATURE_ISERIES ; 
- int /*<<< orphan*/ * __debugger ; 
- int /*<<< orphan*/ * __debugger_bpt ; 
- int /*<<< orphan*/ * __debugger_dabr_match ; 
- int /*<<< orphan*/ * __debugger_fault_handler ; 
- int /*<<< orphan*/ * __debugger_iabr_match ; 
- int /*<<< orphan*/ * __debugger_ipi ; 
- int /*<<< orphan*/ * __debugger_sstep ; 
- scalar_t__ firmware_has_feature (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * xmon ; 
- int /*<<< orphan*/ * xmon_bpt ; 
- int /*<<< orphan*/ * xmon_dabr_match ; 
- int /*<<< orphan*/ * xmon_fault_handler ; 
- int /*<<< orphan*/ * xmon_iabr_match ; 
- int /*<<< orphan*/ * xmon_ipi ; 
- int /*<<< orphan*/  xmon_map_scc () ; 
- int /*<<< orphan*/ * xmon_sstep ; 
+ int FW_FEATURE_ISERIES ;
+ int * __debugger ;
+ int * __debugger_bpt ;
+ int * __debugger_dabr_match ;
+ int * __debugger_fault_handler ;
+ int * __debugger_iabr_match ;
+ int * __debugger_ipi ;
+ int * __debugger_sstep ;
+ scalar_t__ firmware_has_feature (int ) ;
+ int * xmon ;
+ int * xmon_bpt ;
+ int * xmon_dabr_match ;
+ int * xmon_fault_handler ;
+ int * xmon_iabr_match ;
+ int * xmon_ipi ;
+ int xmon_map_scc () ;
+ int * xmon_sstep ;
 
 __attribute__((used)) static void xmon_init(int enable)
 {
-#ifdef CONFIG_PPC_ISERIES
-	if (firmware_has_feature(FW_FEATURE_ISERIES))
-		return;
-#endif
-	if (enable) {
-		__debugger = xmon;
-		__debugger_ipi = xmon_ipi;
-		__debugger_bpt = xmon_bpt;
-		__debugger_sstep = xmon_sstep;
-		__debugger_iabr_match = xmon_iabr_match;
-		__debugger_dabr_match = xmon_dabr_match;
-		__debugger_fault_handler = xmon_fault_handler;
-	} else {
-		__debugger = NULL;
-		__debugger_ipi = NULL;
-		__debugger_bpt = NULL;
-		__debugger_sstep = NULL;
-		__debugger_iabr_match = NULL;
-		__debugger_dabr_match = NULL;
-		__debugger_fault_handler = NULL;
-	}
-	xmon_map_scc();
+
+
+
+
+ if (enable) {
+  __debugger = xmon;
+  __debugger_ipi = xmon_ipi;
+  __debugger_bpt = xmon_bpt;
+  __debugger_sstep = xmon_sstep;
+  __debugger_iabr_match = xmon_iabr_match;
+  __debugger_dabr_match = xmon_dabr_match;
+  __debugger_fault_handler = xmon_fault_handler;
+ } else {
+  __debugger = ((void*)0);
+  __debugger_ipi = ((void*)0);
+  __debugger_bpt = ((void*)0);
+  __debugger_sstep = ((void*)0);
+  __debugger_iabr_match = ((void*)0);
+  __debugger_dabr_match = ((void*)0);
+  __debugger_fault_handler = ((void*)0);
+ }
+ xmon_map_scc();
 }

@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct inf_file {int size; void* content; int /*<<< orphan*/  sections; } ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct inf_file {int size; void* content; int sections; } ;
 struct TYPE_3__ {int QuadPart; } ;
-typedef  TYPE_1__ LARGE_INTEGER ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  scalar_t__ HANDLE ;
-typedef  int DWORD ;
+typedef TYPE_1__ LARGE_INTEGER ;
+typedef int HRESULT ;
+typedef scalar_t__ HANDLE ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CloseHandle (scalar_t__) ; 
- scalar_t__ CreateFileA (char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  E_FAIL ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FILE_ATTRIBUTE_NORMAL ; 
- int /*<<< orphan*/  GENERIC_READ ; 
- int /*<<< orphan*/  GetFileSizeEx (scalar_t__,TYPE_1__*) ; 
- scalar_t__ INVALID_HANDLE_VALUE ; 
- int /*<<< orphan*/  OPEN_EXISTING ; 
- int /*<<< orphan*/  ReadFile (scalar_t__,void*,int,int*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  S_OK ; 
- void* heap_alloc_zero (int) ; 
- int /*<<< orphan*/  inf_free (struct inf_file*) ; 
- int /*<<< orphan*/  inf_process_content (struct inf_file*) ; 
- int /*<<< orphan*/  list_init (int /*<<< orphan*/ *) ; 
+
+ int CloseHandle (scalar_t__) ;
+ scalar_t__ CreateFileA (char const*,int ,int ,int *,int ,int ,int *) ;
+ int E_FAIL ;
+ scalar_t__ FAILED (int ) ;
+ int FILE_ATTRIBUTE_NORMAL ;
+ int GENERIC_READ ;
+ int GetFileSizeEx (scalar_t__,TYPE_1__*) ;
+ scalar_t__ INVALID_HANDLE_VALUE ;
+ int OPEN_EXISTING ;
+ int ReadFile (scalar_t__,void*,int,int*,int *) ;
+ int S_OK ;
+ void* heap_alloc_zero (int) ;
+ int inf_free (struct inf_file*) ;
+ int inf_process_content (struct inf_file*) ;
+ int list_init (int *) ;
 
 HRESULT inf_load(const char *path, struct inf_file **inf_file)
 {
@@ -43,7 +43,7 @@ HRESULT inf_load(const char *path, struct inf_file **inf_file)
     HANDLE file;
     DWORD read;
 
-    file = CreateFileA(path, GENERIC_READ, 0, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
+    file = CreateFileA(path, GENERIC_READ, 0, ((void*)0), OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, ((void*)0));
     if (file == INVALID_HANDLE_VALUE) return E_FAIL;
 
     inf = heap_alloc_zero(sizeof(*inf));
@@ -59,7 +59,7 @@ HRESULT inf_load(const char *path, struct inf_file **inf_file)
 
     list_init(&inf->sections);
 
-    if (!ReadFile(file, inf->content, inf->size, &read, NULL) || read != inf->size)
+    if (!ReadFile(file, inf->content, inf->size, &read, ((void*)0)) || read != inf->size)
         goto error;
 
     hr = inf_process_content(inf);

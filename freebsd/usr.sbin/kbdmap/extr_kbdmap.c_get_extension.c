@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char* strrchr (char const*,char) ; 
+ char* strrchr (char const*,char) ;
 
 __attribute__((used)) static char *
 get_extension(const char *name)
 {
-	char *p;
+ char *p;
 
-	p = strrchr(name, '.');
+ p = strrchr(name, '.');
 
-	if (p != NULL && p[1] != '\0')
-		return p;
+ if (p != ((void*)0) && p[1] != '\0')
+  return p;
 
-	return NULL;
+ return ((void*)0);
 }

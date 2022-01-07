@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_11__ {int /*<<< orphan*/  weak; } ;
-typedef  TYPE_1__ global_State ;
-struct TYPE_12__ {int marked; int sizearray; int /*<<< orphan*/  node; int /*<<< orphan*/ * array; int /*<<< orphan*/  gclist; scalar_t__ metatable; } ;
-typedef  TYPE_2__ Table ;
-typedef  int /*<<< orphan*/  TValue ;
-typedef  int /*<<< orphan*/  Node ;
 
-/* Variables and functions */
- int KEYWEAK ; 
- int KEYWEAKBIT ; 
- scalar_t__ LUA_TDEADKEY ; 
- int /*<<< orphan*/  TM_MODE ; 
- int VALUEWEAK ; 
- int VALUEWEAKBIT ; 
- int cast_byte (int) ; 
- int /*<<< orphan*/ * gfasttm (TYPE_1__*,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * gkey (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * gnode (TYPE_2__*,int) ; 
- int /*<<< orphan*/ * gval (int /*<<< orphan*/ *) ; 
- scalar_t__ luaH_isdummy (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * luaO_nilobject ; 
- int /*<<< orphan*/  luaR_isrotable (scalar_t__) ; 
- int /*<<< orphan*/  lua_assert (int) ; 
- int /*<<< orphan*/  markobject (TYPE_1__*,scalar_t__) ; 
- int /*<<< orphan*/  markvalue (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  obj2gco (TYPE_2__*) ; 
- int /*<<< orphan*/  removeentry (int /*<<< orphan*/ *) ; 
- int sizenode (TYPE_2__*) ; 
- int /*<<< orphan*/ * strchr (int /*<<< orphan*/ ,char) ; 
- int /*<<< orphan*/  svalue (int /*<<< orphan*/  const*) ; 
- scalar_t__ ttisnil (int /*<<< orphan*/ *) ; 
- scalar_t__ ttisstring (int /*<<< orphan*/  const*) ; 
- scalar_t__ ttype (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+struct TYPE_11__ {int weak; } ;
+typedef TYPE_1__ global_State ;
+struct TYPE_12__ {int marked; int sizearray; int node; int * array; int gclist; scalar_t__ metatable; } ;
+typedef TYPE_2__ Table ;
+typedef int TValue ;
+typedef int Node ;
+
+
+ int KEYWEAK ;
+ int KEYWEAKBIT ;
+ scalar_t__ LUA_TDEADKEY ;
+ int TM_MODE ;
+ int VALUEWEAK ;
+ int VALUEWEAKBIT ;
+ int cast_byte (int) ;
+ int * gfasttm (TYPE_1__*,scalar_t__,int ) ;
+ int * gkey (int *) ;
+ int * gnode (TYPE_2__*,int) ;
+ int * gval (int *) ;
+ scalar_t__ luaH_isdummy (int ) ;
+ int * luaO_nilobject ;
+ int luaR_isrotable (scalar_t__) ;
+ int lua_assert (int) ;
+ int markobject (TYPE_1__*,scalar_t__) ;
+ int markvalue (TYPE_1__*,int *) ;
+ int obj2gco (TYPE_2__*) ;
+ int removeentry (int *) ;
+ int sizenode (TYPE_2__*) ;
+ int * strchr (int ,char) ;
+ int svalue (int const*) ;
+ scalar_t__ ttisnil (int *) ;
+ scalar_t__ ttisstring (int const*) ;
+ scalar_t__ ttype (int *) ;
 
 __attribute__((used)) static int traversetable (global_State *g, Table *h) {
   int i;
@@ -58,15 +58,15 @@ __attribute__((used)) static int traversetable (global_State *g, Table *h) {
     mode = gfasttm(g, h->metatable, TM_MODE);
   }
 
-  if (mode && ttisstring(mode)) {  /* is there a weak mode? */
-    weakkey = (strchr(svalue(mode), 'k') != NULL);
-    weakvalue = (strchr(svalue(mode), 'v') != NULL);
-    if (weakkey || weakvalue) {  /* is really weak? */
-      h->marked &= ~(KEYWEAK | VALUEWEAK);  /* clear bits */
+  if (mode && ttisstring(mode)) {
+    weakkey = (strchr(svalue(mode), 'k') != ((void*)0));
+    weakvalue = (strchr(svalue(mode), 'v') != ((void*)0));
+    if (weakkey || weakvalue) {
+      h->marked &= ~(KEYWEAK | VALUEWEAK);
       h->marked |= cast_byte((weakkey << KEYWEAKBIT) |
                              (weakvalue << VALUEWEAKBIT));
-      h->gclist = g->weak;  /* must be cleared after GC, ... */
-      g->weak = obj2gco(h);  /* ... so put in the appropriate list */
+      h->gclist = g->weak;
+      g->weak = obj2gco(h);
     }
   }
   if (weakkey && weakvalue) return 1;
@@ -82,7 +82,7 @@ __attribute__((used)) static int traversetable (global_State *g, Table *h) {
     Node *n = gnode(h, i);
     lua_assert(ttype(gkey(n)) != LUA_TDEADKEY || ttisnil(gval(n)));
     if (ttisnil(gval(n)))
-      removeentry(n);  /* remove empty entries */
+      removeentry(n);
     else {
       lua_assert(!ttisnil(gkey(n)));
       if (!weakkey) markvalue(g, gkey(n));

@@ -1,128 +1,128 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uiInitOptions ;
-struct TYPE_9__ {int /*<<< orphan*/  panel; int /*<<< orphan*/  name; } ;
-struct TYPE_8__ {int /*<<< orphan*/  KeyEvent; int /*<<< orphan*/  DragBroken; int /*<<< orphan*/  MouseCrossed; int /*<<< orphan*/  MouseEvent; int /*<<< orphan*/  Draw; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  area ; 
- int /*<<< orphan*/  box ; 
- int /*<<< orphan*/  exampleList ; 
- TYPE_2__** examples ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char const*) ; 
- TYPE_1__ handler ; 
- int /*<<< orphan*/  handlerDragBroken ; 
- int /*<<< orphan*/  handlerDraw ; 
- int /*<<< orphan*/  handlerKeyEvent ; 
- int /*<<< orphan*/  handlerMouseCrossed ; 
- int /*<<< orphan*/  handlerMouseEvent ; 
- int /*<<< orphan*/  mainwin ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- TYPE_2__* mkAttributesExample () ; 
- TYPE_2__* mkBasicExample () ; 
- TYPE_2__* mkEmptyStringExample () ; 
- TYPE_2__* mkHitTestExample () ; 
- int /*<<< orphan*/  onClosing ; 
- int /*<<< orphan*/  onExampleChanged (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  shouldQuit ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  uiBoxAppend (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  uiComboboxAppend (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  uiComboboxOnSelected (int /*<<< orphan*/ ,int /*<<< orphan*/  (*) (int /*<<< orphan*/ *,int /*<<< orphan*/ *),int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  uiComboboxSetSelected (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  uiControl (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  uiControlHide (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  uiControlShow (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  uiFreeInitError (char const*) ; 
- char* uiInit (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  uiMain () ; 
- int /*<<< orphan*/  uiNewArea (TYPE_1__*) ; 
- int /*<<< orphan*/  uiNewCombobox () ; 
- int /*<<< orphan*/  uiNewVerticalBox () ; 
- int /*<<< orphan*/  uiNewWindow (char*,int,int,int) ; 
- int /*<<< orphan*/  uiOnShouldQuit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  uiUninit () ; 
- int /*<<< orphan*/  uiWindowOnClosing (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  uiWindowSetChild (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int uiInitOptions ;
+struct TYPE_9__ {int panel; int name; } ;
+struct TYPE_8__ {int KeyEvent; int DragBroken; int MouseCrossed; int MouseEvent; int Draw; } ;
+
+
+ int area ;
+ int box ;
+ int exampleList ;
+ TYPE_2__** examples ;
+ int fprintf (int ,char*,char const*) ;
+ TYPE_1__ handler ;
+ int handlerDragBroken ;
+ int handlerDraw ;
+ int handlerKeyEvent ;
+ int handlerMouseCrossed ;
+ int handlerMouseEvent ;
+ int mainwin ;
+ int memset (int *,int ,int) ;
+ TYPE_2__* mkAttributesExample () ;
+ TYPE_2__* mkBasicExample () ;
+ TYPE_2__* mkEmptyStringExample () ;
+ TYPE_2__* mkHitTestExample () ;
+ int onClosing ;
+ int onExampleChanged (int *,int *) ;
+ int shouldQuit ;
+ int stderr ;
+ int uiBoxAppend (int ,int ,int) ;
+ int uiComboboxAppend (int ,int ) ;
+ int uiComboboxOnSelected (int ,int (*) (int *,int *),int *) ;
+ int uiComboboxSetSelected (int ,int ) ;
+ int uiControl (int ) ;
+ int uiControlHide (int ) ;
+ int uiControlShow (int ) ;
+ int uiFreeInitError (char const*) ;
+ char* uiInit (int *) ;
+ int uiMain () ;
+ int uiNewArea (TYPE_1__*) ;
+ int uiNewCombobox () ;
+ int uiNewVerticalBox () ;
+ int uiNewWindow (char*,int,int,int) ;
+ int uiOnShouldQuit (int ,int *) ;
+ int uiUninit () ;
+ int uiWindowOnClosing (int ,int ,int *) ;
+ int uiWindowSetChild (int ,int ) ;
 
 int main(void)
 {
-	uiInitOptions o;
-	const char *err;
-	int n;
+ uiInitOptions o;
+ const char *err;
+ int n;
 
-	handler.Draw = handlerDraw;
-	handler.MouseEvent = handlerMouseEvent;
-	handler.MouseCrossed = handlerMouseCrossed;
-	handler.DragBroken = handlerDragBroken;
-	handler.KeyEvent = handlerKeyEvent;
+ handler.Draw = handlerDraw;
+ handler.MouseEvent = handlerMouseEvent;
+ handler.MouseCrossed = handlerMouseCrossed;
+ handler.DragBroken = handlerDragBroken;
+ handler.KeyEvent = handlerKeyEvent;
 
-	memset(&o, 0, sizeof (uiInitOptions));
-	err = uiInit(&o);
-	if (err != NULL) {
-		fprintf(stderr, "error initializing ui: %s\n", err);
-		uiFreeInitError(err);
-		return 1;
-	}
+ memset(&o, 0, sizeof (uiInitOptions));
+ err = uiInit(&o);
+ if (err != ((void*)0)) {
+  fprintf(stderr, "error initializing ui: %s\n", err);
+  uiFreeInitError(err);
+  return 1;
+ }
 
-	uiOnShouldQuit(shouldQuit, NULL);
+ uiOnShouldQuit(shouldQuit, ((void*)0));
 
-	mainwin = uiNewWindow("libui Text-Drawing Example", 640, 480, 1);
-	uiWindowOnClosing(mainwin, onClosing, NULL);
+ mainwin = uiNewWindow("libui Text-Drawing Example", 640, 480, 1);
+ uiWindowOnClosing(mainwin, onClosing, ((void*)0));
 
-	box = uiNewVerticalBox();
-	uiWindowSetChild(mainwin, uiControl(box));
+ box = uiNewVerticalBox();
+ uiWindowSetChild(mainwin, uiControl(box));
 
-	exampleList = uiNewCombobox();
-	uiBoxAppend(box, uiControl(exampleList), 0);
+ exampleList = uiNewCombobox();
+ uiBoxAppend(box, uiControl(exampleList), 0);
 
-	area = uiNewArea(&handler);
-	uiBoxAppend(box, uiControl(area), 1);
+ area = uiNewArea(&handler);
+ uiBoxAppend(box, uiControl(area), 1);
 
-	n = 0;
-	examples[n] = mkBasicExample();
-	uiComboboxAppend(exampleList, examples[n]->name);
-	uiControlHide(examples[n]->panel);
-	uiBoxAppend(box, examples[n]->panel, 0);
-	n++;
-	examples[n] = mkHitTestExample();
-	uiComboboxAppend(exampleList, examples[n]->name);
-	uiControlHide(examples[n]->panel);
-	uiBoxAppend(box, examples[n]->panel, 0);
-	n++;
-	examples[n] = mkAttributesExample();
-	uiComboboxAppend(exampleList, examples[n]->name);
-	uiControlHide(examples[n]->panel);
-	uiBoxAppend(box, examples[n]->panel, 0);
-	n++;
-	examples[n] = mkEmptyStringExample();
-	uiComboboxAppend(exampleList, examples[n]->name);
-	uiControlHide(examples[n]->panel);
-	uiBoxAppend(box, examples[n]->panel, 0);
-	n++;
-	// and set things up for the initial state
-	uiComboboxSetSelected(exampleList, 0);
-	uiComboboxOnSelected(exampleList, onExampleChanged, NULL);
-	// and set up the first one
-	onExampleChanged(NULL, NULL);
+ n = 0;
+ examples[n] = mkBasicExample();
+ uiComboboxAppend(exampleList, examples[n]->name);
+ uiControlHide(examples[n]->panel);
+ uiBoxAppend(box, examples[n]->panel, 0);
+ n++;
+ examples[n] = mkHitTestExample();
+ uiComboboxAppend(exampleList, examples[n]->name);
+ uiControlHide(examples[n]->panel);
+ uiBoxAppend(box, examples[n]->panel, 0);
+ n++;
+ examples[n] = mkAttributesExample();
+ uiComboboxAppend(exampleList, examples[n]->name);
+ uiControlHide(examples[n]->panel);
+ uiBoxAppend(box, examples[n]->panel, 0);
+ n++;
+ examples[n] = mkEmptyStringExample();
+ uiComboboxAppend(exampleList, examples[n]->name);
+ uiControlHide(examples[n]->panel);
+ uiBoxAppend(box, examples[n]->panel, 0);
+ n++;
 
-	uiControlShow(uiControl(mainwin));
-	uiMain();
+ uiComboboxSetSelected(exampleList, 0);
+ uiComboboxOnSelected(exampleList, onExampleChanged, ((void*)0));
 
-	// TODO free examples
+ onExampleChanged(((void*)0), ((void*)0));
 
-	uiUninit();
-	return 0;
+ uiControlShow(uiControl(mainwin));
+ uiMain();
+
+
+
+ uiUninit();
+ return 0;
 }

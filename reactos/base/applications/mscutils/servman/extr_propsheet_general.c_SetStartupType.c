@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VOID ;
-typedef  scalar_t__ UINT ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int VOID ;
+typedef scalar_t__ UINT ;
 struct TYPE_4__ {int dwStartType; } ;
-typedef  scalar_t__ LPWSTR ;
-typedef  TYPE_1__* LPQUERY_SERVICE_CONFIG ;
-typedef  int /*<<< orphan*/  LPARAM ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  int DWORD ;
+typedef scalar_t__ LPWSTR ;
+typedef TYPE_1__* LPQUERY_SERVICE_CONFIG ;
+typedef int LPARAM ;
+typedef int HWND ;
+typedef int DWORD ;
 
-/* Variables and functions */
- scalar_t__ AllocAndLoadString (scalar_t__*,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  CB_ADDSTRING ; 
- int /*<<< orphan*/  CB_SETCURSEL ; 
- int /*<<< orphan*/  GetDlgItem (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_1__* GetServiceConfig (scalar_t__) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  IDC_START_TYPE ; 
- scalar_t__ IDS_SERVICES_AUTO ; 
- scalar_t__ IDS_SERVICES_DIS ; 
- int /*<<< orphan*/  LocalFree (scalar_t__) ; 
- int /*<<< orphan*/  ProcessHeap ; 
-#define  SERVICE_AUTO_START 130 
-#define  SERVICE_DEMAND_START 129 
-#define  SERVICE_DISABLED 128 
- int /*<<< orphan*/  SendMessageW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hInstance ; 
+
+ scalar_t__ AllocAndLoadString (scalar_t__*,int ,scalar_t__) ;
+ int CB_ADDSTRING ;
+ int CB_SETCURSEL ;
+ int GetDlgItem (int ,int ) ;
+ TYPE_1__* GetServiceConfig (scalar_t__) ;
+ int HeapFree (int ,int ,TYPE_1__*) ;
+ int IDC_START_TYPE ;
+ scalar_t__ IDS_SERVICES_AUTO ;
+ scalar_t__ IDS_SERVICES_DIS ;
+ int LocalFree (scalar_t__) ;
+ int ProcessHeap ;
+
+
+
+ int SendMessageW (int ,int ,int,int ) ;
+ int hInstance ;
 
 __attribute__((used)) static VOID
 SetStartupType(LPWSTR lpServiceName,
@@ -70,9 +70,9 @@ SetStartupType(LPWSTR lpServiceName,
     {
         switch (pServiceConfig->dwStartType)
         {
-            case SERVICE_AUTO_START:   StartUp = 0; break;
-            case SERVICE_DEMAND_START: StartUp = 1; break;
-            case SERVICE_DISABLED:     StartUp = 2; break;
+            case 130: StartUp = 0; break;
+            case 129: StartUp = 1; break;
+            case 128: StartUp = 2; break;
         }
 
         SendMessageW(hList,

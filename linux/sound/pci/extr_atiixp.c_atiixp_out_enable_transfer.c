@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct atiixp {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ATI_REG_CMD_SEND_EN ; 
- int /*<<< orphan*/  CMD ; 
- int /*<<< orphan*/  atiixp_update (struct atiixp*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int ATI_REG_CMD_SEND_EN ;
+ int CMD ;
+ int atiixp_update (struct atiixp*,int ,int ,int ) ;
 
 __attribute__((used)) static void atiixp_out_enable_transfer(struct atiixp *chip, int on)
 {
-	atiixp_update(chip, CMD, ATI_REG_CMD_SEND_EN,
-		      on ? ATI_REG_CMD_SEND_EN : 0);
+ atiixp_update(chip, CMD, ATI_REG_CMD_SEND_EN,
+        on ? ATI_REG_CMD_SEND_EN : 0);
 }

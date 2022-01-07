@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wl_fixed_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
+
+
+
+
+typedef int wl_fixed_t ;
+typedef int uint32_t ;
 struct wl_surface {int dummy; } ;
 struct wl_pointer {int dummy; } ;
-struct seat_data {int /*<<< orphan*/  cursor_serial; } ;
+struct seat_data {int cursor_serial; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  pointer_show (struct seat_data*,struct wl_pointer*) ; 
+
+ int pointer_show (struct seat_data*,struct wl_pointer*) ;
 
 __attribute__((used)) static void pointer_enter_cb(void *data, struct wl_pointer *pointer,
                              uint32_t serial, struct wl_surface *surface,

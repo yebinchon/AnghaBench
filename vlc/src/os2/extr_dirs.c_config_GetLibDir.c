@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char* FromLocaleDup (char const*) ; 
- int /*<<< orphan*/  PKGLIBDIR ; 
- char* config_GetRealDir (int /*<<< orphan*/ ) ; 
- char* getenv (char*) ; 
+ char* FromLocaleDup (char const*) ;
+ int PKGLIBDIR ;
+ char* config_GetRealDir (int ) ;
+ char* getenv (char*) ;
 
 char *config_GetLibDir( void )
 {

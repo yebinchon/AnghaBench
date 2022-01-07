@@ -1,31 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char* br_dirname (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * exe ; 
- char* strdup (char const*) ; 
+ char* br_dirname (int *) ;
+ int * exe ;
+ char* strdup (char const*) ;
 
 char *
 br_find_exe_dir (const char *default_dir)
 {
-	if (exe == NULL) {
-		/* BinReloc not initialized. */
-		if (default_dir != NULL)
-			return strdup (default_dir);
-		else
-			return NULL;
-	}
+ if (exe == ((void*)0)) {
 
-	return br_dirname (exe);
+  if (default_dir != ((void*)0))
+   return strdup (default_dir);
+  else
+   return ((void*)0);
+ }
+
+ return br_dirname (exe);
 }

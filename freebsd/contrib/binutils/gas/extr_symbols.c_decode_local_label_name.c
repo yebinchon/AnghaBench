@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char DOLLAR_LABEL_CHAR ; 
- scalar_t__ ISDIGIT (char) ; 
- char LOCAL_LABEL_CHAR ; 
- char LOCAL_LABEL_PREFIX ; 
- char* _ (char*) ; 
- int /*<<< orphan*/  notes ; 
- char* obstack_alloc (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  sprintf (char*,char const*,int,int,char*) ; 
- scalar_t__ strlen (char const*) ; 
+ char DOLLAR_LABEL_CHAR ;
+ scalar_t__ ISDIGIT (char) ;
+ char LOCAL_LABEL_CHAR ;
+ char LOCAL_LABEL_PREFIX ;
+ char* _ (char*) ;
+ int notes ;
+ char* obstack_alloc (int *,scalar_t__) ;
+ int sprintf (char*,char const*,int,int,char*) ;
+ scalar_t__ strlen (char const*) ;
 
 char *
 decode_local_label_name (char *s)
@@ -33,10 +25,10 @@ decode_local_label_name (char *s)
   const char *message_format;
   int index = 0;
 
-#ifdef LOCAL_LABEL_PREFIX
-  if (s[index] == LOCAL_LABEL_PREFIX)
-    ++index;
-#endif
+
+
+
+
 
   if (s[index] != 'L')
     return s;

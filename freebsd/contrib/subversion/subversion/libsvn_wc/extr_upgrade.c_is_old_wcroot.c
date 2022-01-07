@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ schedule; scalar_t__ depth; scalar_t__ deleted; scalar_t__ absent; } ;
-typedef  TYPE_1__ svn_wc_entry_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
+typedef TYPE_1__ svn_wc_entry_t ;
+typedef int svn_error_t ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR_WC_INVALID_OP_ON_CWD ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  strlen (char const*) ; 
- scalar_t__ svn_depth_exclude ; 
- scalar_t__ svn_dirent_is_root (char const*,int /*<<< orphan*/ ) ; 
- char* svn_dirent_join (char const*,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_dirent_local_style (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_dirent_split (char const**,char const**,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_error_clear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_error_createf (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,...) ; 
- TYPE_1__* svn_hash_gets (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/ * svn_wc__read_entries_old (int /*<<< orphan*/ **,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_wc_schedule_add ; 
+
+ int SVN_ERR_WC_INVALID_OP_ON_CWD ;
+ int * SVN_NO_ERROR ;
+ int _ (char*) ;
+ int strlen (char const*) ;
+ scalar_t__ svn_depth_exclude ;
+ scalar_t__ svn_dirent_is_root (char const*,int ) ;
+ char* svn_dirent_join (char const*,char const*,int *) ;
+ int svn_dirent_local_style (char const*,int *) ;
+ int svn_dirent_split (char const**,char const**,char const*,int *) ;
+ int svn_error_clear (int *) ;
+ int * svn_error_createf (int ,int *,int ,int ,...) ;
+ TYPE_1__* svn_hash_gets (int *,char const*) ;
+ int * svn_wc__read_entries_old (int **,char const*,int *,int *) ;
+ scalar_t__ svn_wc_schedule_add ;
 
 __attribute__((used)) static svn_error_t *
 is_old_wcroot(const char *local_abspath,
@@ -94,7 +94,7 @@ is_old_wcroot(const char *local_abspath,
     }
 
   return svn_error_createf(
-    SVN_ERR_WC_INVALID_OP_ON_CWD, NULL,
+    SVN_ERR_WC_INVALID_OP_ON_CWD, ((void*)0),
     _("Can't upgrade '%s' as it is not a working copy root,"
       " the root is '%s'"),
     svn_dirent_local_style(local_abspath, scratch_pool),

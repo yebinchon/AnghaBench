@@ -1,32 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  LOGTOD (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  clock_jitter ; 
- scalar_t__ clock_minstep ; 
- int freq_cnt ; 
- int /*<<< orphan*/  ntp_minpoll ; 
- int /*<<< orphan*/  sys_poll ; 
- int /*<<< orphan*/  sys_precision ; 
+ int LOGTOD (int ) ;
+ int clock_jitter ;
+ scalar_t__ clock_minstep ;
+ int freq_cnt ;
+ int ntp_minpoll ;
+ int sys_poll ;
+ int sys_precision ;
 
 void
 init_loopfilter(void)
 {
-	/*
-	 * Initialize state variables.
-	 */
-	sys_poll = ntp_minpoll;
-	clock_jitter = LOGTOD(sys_precision);
-	freq_cnt = (int)clock_minstep;
+
+
+
+ sys_poll = ntp_minpoll;
+ clock_jitter = LOGTOD(sys_precision);
+ freq_cnt = (int)clock_minstep;
 }

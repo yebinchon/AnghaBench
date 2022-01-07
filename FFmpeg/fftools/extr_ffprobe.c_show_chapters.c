@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WriterContext ;
-struct TYPE_7__ {int /*<<< orphan*/  metadata; int /*<<< orphan*/  time_base; int /*<<< orphan*/  end; int /*<<< orphan*/  start; int /*<<< orphan*/  id; } ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int WriterContext ;
+struct TYPE_7__ {int metadata; int time_base; int end; int start; int id; } ;
 struct TYPE_6__ {int nb_chapters; TYPE_3__** chapters; } ;
 struct TYPE_5__ {TYPE_2__* fmt_ctx; } ;
-typedef  TYPE_1__ InputFile ;
-typedef  TYPE_2__ AVFormatContext ;
-typedef  TYPE_3__ AVChapter ;
+typedef TYPE_1__ InputFile ;
+typedef TYPE_2__ AVFormatContext ;
+typedef TYPE_3__ AVChapter ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SECTION_ID_CHAPTER ; 
- int /*<<< orphan*/  SECTION_ID_CHAPTERS ; 
- int /*<<< orphan*/  SECTION_ID_CHAPTER_TAGS ; 
- scalar_t__ do_show_chapter_tags ; 
- int /*<<< orphan*/  print_int (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  print_q (char*,int /*<<< orphan*/ ,char) ; 
- int /*<<< orphan*/  print_time (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int show_tags (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  writer_print_section_footer (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  writer_print_section_header (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int SECTION_ID_CHAPTER ;
+ int SECTION_ID_CHAPTERS ;
+ int SECTION_ID_CHAPTER_TAGS ;
+ scalar_t__ do_show_chapter_tags ;
+ int print_int (char*,int ) ;
+ int print_q (char*,int ,char) ;
+ int print_time (char*,int ,int *) ;
+ int show_tags (int *,int ,int ) ;
+ int writer_print_section_footer (int *) ;
+ int writer_print_section_header (int *,int ) ;
 
 __attribute__((used)) static int show_chapters(WriterContext *w, InputFile *ifile)
 {
@@ -44,7 +44,7 @@ __attribute__((used)) static int show_chapters(WriterContext *w, InputFile *ifil
 
         writer_print_section_header(w, SECTION_ID_CHAPTER);
         print_int("id", chapter->id);
-        print_q  ("time_base", chapter->time_base, '/');
+        print_q ("time_base", chapter->time_base, '/');
         print_int("start", chapter->start);
         print_time("start_time", chapter->start, &chapter->time_base);
         print_int("end", chapter->end);

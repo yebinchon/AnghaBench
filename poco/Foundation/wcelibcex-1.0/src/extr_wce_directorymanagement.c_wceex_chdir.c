@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wchar_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CP_ACP ; 
- int /*<<< orphan*/  ENOENT ; 
- int /*<<< orphan*/  MultiByteToWideChar (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*,int,int /*<<< orphan*/ *,int) ; 
- int _MAX_PATH ; 
- int /*<<< orphan*/  errno ; 
- int wceex_wchdir (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int wchar_t ;
+
+
+ int CP_ACP ;
+ int ENOENT ;
+ int MultiByteToWideChar (int ,int ,char const*,int,int *,int) ;
+ int _MAX_PATH ;
+ int errno ;
+ int wceex_wchdir (int *) ;
 
 int wceex_chdir( const char *dirname )
 {
@@ -30,7 +30,7 @@ int wceex_chdir( const char *dirname )
     else
     {
         wchar_t wdirname[_MAX_PATH];
-	    if( !MultiByteToWideChar( CP_ACP, 0, dirname, -1, wdirname, _MAX_PATH ) )
+     if( !MultiByteToWideChar( CP_ACP, 0, dirname, -1, wdirname, _MAX_PATH ) )
         {
             errno = ENOENT;
             return -1;

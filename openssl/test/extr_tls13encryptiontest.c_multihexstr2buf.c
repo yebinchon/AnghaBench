@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  OPENSSL_free (unsigned char*) ; 
- int OPENSSL_hexchar2int (char const) ; 
- unsigned char* OPENSSL_malloc (size_t) ; 
- scalar_t__ strlen (char const*) ; 
+ int OPENSSL_free (unsigned char*) ;
+ int OPENSSL_hexchar2int (char const) ;
+ unsigned char* OPENSSL_malloc (size_t) ;
+ scalar_t__ strlen (char const*) ;
 
 __attribute__((used)) static unsigned char *multihexstr2buf(const char *str[3], size_t *len)
 {
@@ -23,17 +15,17 @@ __attribute__((used)) static unsigned char *multihexstr2buf(const char *str[3], 
     unsigned char *outbuf;
     size_t totlen = 0;
 
-    /* Check lengths of all input strings are even */
+
     for (outer = 0; outer < 3; outer++) {
         totlen += strlen(str[outer]);
         if ((totlen & 1) != 0)
-            return NULL;
+            return ((void*)0);
     }
 
     totlen /= 2;
     outbuf = OPENSSL_malloc(totlen);
-    if (outbuf == NULL)
-        return NULL;
+    if (outbuf == ((void*)0))
+        return ((void*)0);
 
     for (outer = 0; outer < 3; outer++) {
         for (inner = 0; str[outer][inner] != 0; inner += 2) {
@@ -44,7 +36,7 @@ __attribute__((used)) static unsigned char *multihexstr2buf(const char *str[3], 
 
             if (hi < 0 || lo < 0) {
                 OPENSSL_free(outbuf);
-                return NULL;
+                return ((void*)0);
             }
             outbuf[curr++] = (hi << 4) | lo;
         }

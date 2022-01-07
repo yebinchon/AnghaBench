@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct ucred {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MAC_CHECK_PROBE2 (int /*<<< orphan*/ ,int,struct ucred*,char*) ; 
- int /*<<< orphan*/  MAC_POLICY_CHECK_NOSLEEP (int /*<<< orphan*/ ,struct ucred*,char*) ; 
- int /*<<< orphan*/  kenv_check_unset ; 
+
+ int MAC_CHECK_PROBE2 (int ,int,struct ucred*,char*) ;
+ int MAC_POLICY_CHECK_NOSLEEP (int ,struct ucred*,char*) ;
+ int kenv_check_unset ;
 
 int
 mac_kenv_check_unset(struct ucred *cred, char *name)
 {
-	int error;
+ int error;
 
-	MAC_POLICY_CHECK_NOSLEEP(kenv_check_unset, cred, name);
-	MAC_CHECK_PROBE2(kenv_check_unset, error, cred, name);
+ MAC_POLICY_CHECK_NOSLEEP(kenv_check_unset, cred, name);
+ MAC_CHECK_PROBE2(kenv_check_unset, error, cred, name);
 
-	return (error);
+ return (error);
 }

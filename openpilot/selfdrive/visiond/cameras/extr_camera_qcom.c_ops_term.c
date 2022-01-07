@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  zsock_t ;
-typedef  int /*<<< orphan*/  msg ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int zsock_t ;
+typedef int msg ;
 struct TYPE_3__ {int type; } ;
-typedef  TYPE_1__ CameraMsg ;
+typedef TYPE_1__ CameraMsg ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ZMQ_DONTWAIT ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  zmq_send (int /*<<< orphan*/ ,TYPE_1__*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  zsock_destroy (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/ * zsock_new_push (char*) ; 
- int /*<<< orphan*/  zsock_resolve (int /*<<< orphan*/ *) ; 
+
+ int ZMQ_DONTWAIT ;
+ int assert (int *) ;
+ int zmq_send (int ,TYPE_1__*,int,int ) ;
+ int zsock_destroy (int **) ;
+ int * zsock_new_push (char*) ;
+ int zsock_resolve (int *) ;
 
 __attribute__((used)) static void ops_term() {
   zsock_t *ops_sock = zsock_new_push(">inproc://cameraops");

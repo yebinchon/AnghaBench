@@ -1,83 +1,83 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct al_udma_q_params {int /*<<< orphan*/ * desc_base; int /*<<< orphan*/  desc_phy_base_map; int /*<<< orphan*/  desc_phy_base_tag; } ;
-struct al_eth_ring {int sw_count; int /*<<< orphan*/  br_mtx; TYPE_1__* tx_buffer_info; int /*<<< orphan*/  dma_buf_tag; int /*<<< orphan*/ * br; int /*<<< orphan*/  enqueue_tq; int /*<<< orphan*/  enqueue_task; int /*<<< orphan*/  cmpl_tq; int /*<<< orphan*/  cmpl_task; struct al_udma_q_params q_params; } ;
-struct al_eth_adapter {int /*<<< orphan*/  netdev; struct al_eth_ring* tx_ring; } ;
-struct TYPE_2__ {int /*<<< orphan*/  dma_map; int /*<<< orphan*/ * m; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  M_DEVBUF ; 
- int /*<<< orphan*/  M_IFAL ; 
- int /*<<< orphan*/  al_dma_free_coherent (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  buf_ring_free (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bus_dma_tag_destroy (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bus_dmamap_destroy (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bus_dmamap_unload (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  drbr_flush (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  m_freem (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mtx_destroy (int /*<<< orphan*/ *) ; 
- scalar_t__ taskqueue_cancel (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  taskqueue_drain (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  taskqueue_free (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct al_udma_q_params {int * desc_base; int desc_phy_base_map; int desc_phy_base_tag; } ;
+struct al_eth_ring {int sw_count; int br_mtx; TYPE_1__* tx_buffer_info; int dma_buf_tag; int * br; int enqueue_tq; int enqueue_task; int cmpl_tq; int cmpl_task; struct al_udma_q_params q_params; } ;
+struct al_eth_adapter {int netdev; struct al_eth_ring* tx_ring; } ;
+struct TYPE_2__ {int dma_map; int * m; } ;
+
+
+ int M_DEVBUF ;
+ int M_IFAL ;
+ int al_dma_free_coherent (int ,int ,int *) ;
+ int buf_ring_free (int *,int ) ;
+ int bus_dma_tag_destroy (int ) ;
+ int bus_dmamap_destroy (int ,int ) ;
+ int bus_dmamap_unload (int ,int ) ;
+ int drbr_flush (int ,int *) ;
+ int free (TYPE_1__*,int ) ;
+ int m_freem (int *) ;
+ int mtx_destroy (int *) ;
+ scalar_t__ taskqueue_cancel (int ,int *,int *) ;
+ int taskqueue_drain (int ,int *) ;
+ int taskqueue_free (int ) ;
 
 __attribute__((used)) static void
 al_eth_free_tx_resources(struct al_eth_adapter *adapter, int qid)
 {
-	struct al_eth_ring *tx_ring = &adapter->tx_ring[qid];
-	struct al_udma_q_params *q_params = &tx_ring->q_params;
-	int size;
+ struct al_eth_ring *tx_ring = &adapter->tx_ring[qid];
+ struct al_udma_q_params *q_params = &tx_ring->q_params;
+ int size;
 
-	/* At this point interrupts' handlers must be deactivated */
-	while (taskqueue_cancel(tx_ring->cmpl_tq, &tx_ring->cmpl_task, NULL))
-		taskqueue_drain(tx_ring->cmpl_tq, &tx_ring->cmpl_task);
 
-	taskqueue_free(tx_ring->cmpl_tq);
-	while (taskqueue_cancel(tx_ring->enqueue_tq,
-	    &tx_ring->enqueue_task, NULL)) {
-		taskqueue_drain(tx_ring->enqueue_tq, &tx_ring->enqueue_task);
-	}
+ while (taskqueue_cancel(tx_ring->cmpl_tq, &tx_ring->cmpl_task, ((void*)0)))
+  taskqueue_drain(tx_ring->cmpl_tq, &tx_ring->cmpl_task);
 
-	taskqueue_free(tx_ring->enqueue_tq);
+ taskqueue_free(tx_ring->cmpl_tq);
+ while (taskqueue_cancel(tx_ring->enqueue_tq,
+     &tx_ring->enqueue_task, ((void*)0))) {
+  taskqueue_drain(tx_ring->enqueue_tq, &tx_ring->enqueue_task);
+ }
 
-	if (tx_ring->br != NULL) {
-		drbr_flush(adapter->netdev, tx_ring->br);
-		buf_ring_free(tx_ring->br, M_DEVBUF);
-	}
+ taskqueue_free(tx_ring->enqueue_tq);
 
-	for (size = 0; size < tx_ring->sw_count; size++) {
-		m_freem(tx_ring->tx_buffer_info[size].m);
-		tx_ring->tx_buffer_info[size].m = NULL;
+ if (tx_ring->br != ((void*)0)) {
+  drbr_flush(adapter->netdev, tx_ring->br);
+  buf_ring_free(tx_ring->br, M_DEVBUF);
+ }
 
-		bus_dmamap_unload(tx_ring->dma_buf_tag,
-		    tx_ring->tx_buffer_info[size].dma_map);
-		bus_dmamap_destroy(tx_ring->dma_buf_tag,
-		    tx_ring->tx_buffer_info[size].dma_map);
-	}
-	bus_dma_tag_destroy(tx_ring->dma_buf_tag);
+ for (size = 0; size < tx_ring->sw_count; size++) {
+  m_freem(tx_ring->tx_buffer_info[size].m);
+  tx_ring->tx_buffer_info[size].m = ((void*)0);
 
-	free(tx_ring->tx_buffer_info, M_IFAL);
-	tx_ring->tx_buffer_info = NULL;
+  bus_dmamap_unload(tx_ring->dma_buf_tag,
+      tx_ring->tx_buffer_info[size].dma_map);
+  bus_dmamap_destroy(tx_ring->dma_buf_tag,
+      tx_ring->tx_buffer_info[size].dma_map);
+ }
+ bus_dma_tag_destroy(tx_ring->dma_buf_tag);
 
-	mtx_destroy(&tx_ring->br_mtx);
+ free(tx_ring->tx_buffer_info, M_IFAL);
+ tx_ring->tx_buffer_info = ((void*)0);
 
-	/* if not set, then don't free */
-	if (q_params->desc_base == NULL)
-		return;
+ mtx_destroy(&tx_ring->br_mtx);
 
-	al_dma_free_coherent(q_params->desc_phy_base_tag,
-	    q_params->desc_phy_base_map, q_params->desc_base);
 
-	q_params->desc_base = NULL;
+ if (q_params->desc_base == ((void*)0))
+  return;
+
+ al_dma_free_coherent(q_params->desc_phy_base_tag,
+     q_params->desc_phy_base_map, q_params->desc_base);
+
+ q_params->desc_base = ((void*)0);
 }

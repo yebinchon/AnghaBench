@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct ssh {TYPE_1__* state; } ;
 struct TYPE_2__ {int after_authentication; } ;
 
-/* Variables and functions */
+
 
 void
 ssh_packet_set_authenticated(struct ssh *ssh)
 {
-	ssh->state->after_authentication = 1;
+ ssh->state->after_authentication = 1;
 }

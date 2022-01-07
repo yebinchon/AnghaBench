@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
 struct TYPE_12__ {TYPE_1__* aDb; } ;
-typedef  TYPE_2__ sqlite3 ;
-typedef  int /*<<< orphan*/  Table ;
+typedef TYPE_2__ sqlite3 ;
+typedef int Table ;
 struct TYPE_14__ {int nTab; int nMem; TYPE_2__* db; } ;
-struct TYPE_13__ {int /*<<< orphan*/  tblHash; } ;
+struct TYPE_13__ {int tblHash; } ;
 struct TYPE_11__ {TYPE_3__* pSchema; } ;
-typedef  TYPE_3__ Schema ;
-typedef  TYPE_4__ Parse ;
-typedef  int /*<<< orphan*/  HashElem ;
+typedef TYPE_3__ Schema ;
+typedef TYPE_4__ Parse ;
+typedef int HashElem ;
 
-/* Variables and functions */
- int /*<<< orphan*/  analyzeOneTable (TYPE_4__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int,int) ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  loadAnalysis (TYPE_4__*,int) ; 
- int /*<<< orphan*/  openStatTable (TYPE_4__*,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3BeginWriteOperation (TYPE_4__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  sqlite3SchemaMutexHeld (TYPE_2__*,int,int /*<<< orphan*/ ) ; 
- scalar_t__ sqliteHashData (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * sqliteHashFirst (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * sqliteHashNext (int /*<<< orphan*/ *) ; 
+
+ int analyzeOneTable (TYPE_4__*,int *,int ,int,int,int) ;
+ int assert (int ) ;
+ int loadAnalysis (TYPE_4__*,int) ;
+ int openStatTable (TYPE_4__*,int,int,int ,int ) ;
+ int sqlite3BeginWriteOperation (TYPE_4__*,int ,int) ;
+ int sqlite3SchemaMutexHeld (TYPE_2__*,int,int ) ;
+ scalar_t__ sqliteHashData (int *) ;
+ int * sqliteHashFirst (int *) ;
+ int * sqliteHashNext (int *) ;
 
 __attribute__((used)) static void analyzeDatabase(Parse *pParse, int iDb){
   sqlite3 *db = pParse->db;
-  Schema *pSchema = db->aDb[iDb].pSchema;    /* Schema of database iDb */
+  Schema *pSchema = db->aDb[iDb].pSchema;
   HashElem *k;
   int iStatCur;
   int iMem;

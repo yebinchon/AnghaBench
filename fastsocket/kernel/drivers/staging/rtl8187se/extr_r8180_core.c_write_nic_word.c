@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-typedef  int /*<<< orphan*/  u16 ;
+
+
+
+
+typedef int u8 ;
+typedef int u16 ;
 struct net_device {scalar_t__ mem_start; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  udelay (int) ; 
- int /*<<< orphan*/  writew (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int udelay (int) ;
+ int writew (int ,int *) ;
 
 void write_nic_word(struct net_device *dev, int x,u16 y)
 {
         writew(y,(u8*)dev->mem_start +x);
-	udelay(20);
+ udelay(20);
 }

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  info_len; int /*<<< orphan*/  info; int /*<<< orphan*/  key_len; int /*<<< orphan*/  key; int /*<<< orphan*/  salt; int /*<<< orphan*/  digest; } ;
-typedef  TYPE_1__ KDF_HKDF ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OPENSSL_cleanse (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OPENSSL_clear_free (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OPENSSL_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ossl_prov_digest_reset (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int info_len; int info; int key_len; int key; int salt; int digest; } ;
+typedef TYPE_1__ KDF_HKDF ;
+
+
+ int OPENSSL_cleanse (int ,int ) ;
+ int OPENSSL_clear_free (int ,int ) ;
+ int OPENSSL_free (int ) ;
+ int memset (TYPE_1__*,int ,int) ;
+ int ossl_prov_digest_reset (int *) ;
 
 __attribute__((used)) static void kdf_hkdf_reset(void *vctx)
 {

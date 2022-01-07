@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t UINT ;
-struct TYPE_3__ {int /*<<< orphan*/  LinkList; } ;
-typedef  int /*<<< orphan*/  LINK ;
-typedef  TYPE_1__ HUB ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DeleteAll (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Free (int /*<<< orphan*/ **) ; 
- size_t LIST_NUM (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LockList (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReleaseLink (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ ** ToArray (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  UnlockList (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef size_t UINT ;
+struct TYPE_3__ {int LinkList; } ;
+typedef int LINK ;
+typedef TYPE_1__ HUB ;
+
+
+ int DeleteAll (int ) ;
+ int Free (int **) ;
+ size_t LIST_NUM (int ) ;
+ int LockList (int ) ;
+ int ReleaseLink (int *) ;
+ int ** ToArray (int ) ;
+ int UnlockList (int ) ;
 
 void ReleaseAllLink(HUB *h)
 {
-	LINK **kk;
-	UINT num, i;
-	// Validate arguments
-	if (h == NULL)
-	{
-		return;
-	}
+ LINK **kk;
+ UINT num, i;
 
-	LockList(h->LinkList);
-	{
-		num = LIST_NUM(h->LinkList);
-		kk = ToArray(h->LinkList);
-		DeleteAll(h->LinkList);
-	}
-	UnlockList(h->LinkList);
+ if (h == ((void*)0))
+ {
+  return;
+ }
 
-	for (i = 0;i < num;i++)
-	{
-		LINK *k = kk[i];
+ LockList(h->LinkList);
+ {
+  num = LIST_NUM(h->LinkList);
+  kk = ToArray(h->LinkList);
+  DeleteAll(h->LinkList);
+ }
+ UnlockList(h->LinkList);
 
-		ReleaseLink(k);
-	}
+ for (i = 0;i < num;i++)
+ {
+  LINK *k = kk[i];
 
-	Free(kk);
+  ReleaseLink(k);
+ }
+
+ Free(kk);
 }

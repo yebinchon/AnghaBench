@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int BYTE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FIXME (char*,char*) ; 
- int /*<<< orphan*/  memset (char*,char,int) ; 
- unsigned int min (int,unsigned int) ; 
- int /*<<< orphan*/  sprintf (char*,char*,unsigned int) ; 
+
+
+
+typedef int BYTE ;
+
+
+ int FIXME (char*,char*) ;
+ int memset (char*,char,int) ;
+ unsigned int min (int,unsigned int) ;
+ int sprintf (char*,char*,unsigned int) ;
 
 __attribute__((used)) static void dump(const void* ptr, unsigned len)
 {
     unsigned int i, j;
-    char        msg[128];
+    char msg[128];
     const char* hexof = "0123456789abcdef";
     const BYTE* x = ptr;
 

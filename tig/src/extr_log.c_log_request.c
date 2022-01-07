@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct view {int /*<<< orphan*/  ref; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct view {int ref; } ;
 struct line {int dummy; } ;
-typedef  enum request { ____Placeholder_request } request ;
-struct TYPE_2__ {int /*<<< orphan*/  vid; } ;
+typedef enum request { ____Placeholder_request } request ;
+struct TYPE_2__ {int vid; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OPEN_SPLIT ; 
-#define  REQ_ENTER 129 
- int REQ_NONE ; 
-#define  REQ_REFRESH 128 
- TYPE_1__** display ; 
- int /*<<< orphan*/  load_refs (int) ; 
- int /*<<< orphan*/  open_diff_view (struct view*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  refresh_view (struct view*) ; 
- int /*<<< orphan*/  strcmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int OPEN_SPLIT ;
+
+ int REQ_NONE ;
+
+ TYPE_1__** display ;
+ int load_refs (int) ;
+ int open_diff_view (struct view*,int ) ;
+ int refresh_view (struct view*) ;
+ int strcmp (int ,int ) ;
 
 __attribute__((used)) static enum request
 log_request(struct view *view, enum request request, struct line *line)
 {
-	switch (request) {
-	case REQ_REFRESH:
-		load_refs(true);
-		refresh_view(view);
-		return REQ_NONE;
+ switch (request) {
+ case 128:
+  load_refs(1);
+  refresh_view(view);
+  return REQ_NONE;
 
-	case REQ_ENTER:
-		if (!display[1] || strcmp(display[1]->vid, view->ref))
-			open_diff_view(view, OPEN_SPLIT);
-		return REQ_NONE;
+ case 129:
+  if (!display[1] || strcmp(display[1]->vid, view->ref))
+   open_diff_view(view, OPEN_SPLIT);
+  return REQ_NONE;
 
-	default:
-		return request;
-	}
+ default:
+  return request;
+ }
 }

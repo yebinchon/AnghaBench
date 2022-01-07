@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  system_ids_t ;
-struct TYPE_10__ {size_t i_es_count; TYPE_3__* p_es; int /*<<< orphan*/  i_program_number; int /*<<< orphan*/  i_program_descriptors; int /*<<< orphan*/  p_program_descriptors; } ;
-typedef  TYPE_2__ en50221_capmt_info_t ;
-struct TYPE_11__ {int /*<<< orphan*/  i_descriptors; int /*<<< orphan*/  p_descriptors; } ;
-typedef  TYPE_3__ en50221_capmt_es_info_t ;
-struct TYPE_12__ {int /*<<< orphan*/  obj; TYPE_1__* p_sessions; } ;
-typedef  TYPE_4__ cam_t ;
+
+
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int system_ids_t ;
+struct TYPE_10__ {size_t i_es_count; TYPE_3__* p_es; int i_program_number; int i_program_descriptors; int p_program_descriptors; } ;
+typedef TYPE_2__ en50221_capmt_info_t ;
+struct TYPE_11__ {int i_descriptors; int p_descriptors; } ;
+typedef TYPE_3__ en50221_capmt_es_info_t ;
+struct TYPE_12__ {int obj; TYPE_1__* p_sessions; } ;
+typedef TYPE_4__ cam_t ;
 struct TYPE_9__ {scalar_t__ p_sys; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * CAPMTES (TYPE_3__ const*,int /*<<< orphan*/ *,size_t,size_t,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * CAPMTHeader (TYPE_2__ const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,size_t,int /*<<< orphan*/ ) ; 
- size_t GetCADSize (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  msg_Warn (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int) ; 
+
+ int * CAPMTES (TYPE_3__ const*,int *,size_t,size_t,int ,int *) ;
+ int * CAPMTHeader (TYPE_2__ const*,int *,int ,size_t,int ) ;
+ size_t GetCADSize (int *,int ,int ) ;
+ int msg_Warn (int ,char*,int ,int) ;
 
 __attribute__((used)) static uint8_t *CAPMTBuild( cam_t * p_cam, int i_session_id,
                             const en50221_capmt_info_t *p_info,
@@ -54,7 +54,7 @@ __attribute__((used)) static uint8_t *CAPMTBuild( cam_t * p_cam, int i_session_i
         msg_Warn( p_cam->obj,
                   "no compatible scrambling system for SID %d on session %d",
                   p_info->i_program_number, i_session_id );
-        return NULL;
+        return ((void*)0);
     }
 
     p_capmt = CAPMTHeader( p_info, p_ids, i_list_mgt,

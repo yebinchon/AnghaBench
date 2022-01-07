@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int* ref_count; } ;
-typedef  TYPE_1__ PPS ;
-typedef  int /*<<< orphan*/  GetBitContext ;
+typedef TYPE_1__ PPS ;
+typedef int GetBitContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_DEBUG ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int AV_PICTURE_TYPE_B ; 
- int AV_PICTURE_TYPE_I ; 
- int PICT_FRAME ; 
- int /*<<< orphan*/  av_log (void*,int /*<<< orphan*/ ,char*,int,unsigned int,...) ; 
- int get_bits1 (int /*<<< orphan*/ *) ; 
- int get_ue_golomb (int /*<<< orphan*/ *) ; 
+
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_DEBUG ;
+ int AV_LOG_ERROR ;
+ int AV_PICTURE_TYPE_B ;
+ int AV_PICTURE_TYPE_I ;
+ int PICT_FRAME ;
+ int av_log (void*,int ,char*,int,unsigned int,...) ;
+ int get_bits1 (int *) ;
+ int get_ue_golomb (int *) ;
 
 int ff_h264_parse_ref_count(int *plist_count, int ref_count[2],
                             GetBitContext *gb, const PPS *pps,
@@ -33,7 +33,7 @@ int ff_h264_parse_ref_count(int *plist_count, int ref_count[2],
     int list_count;
     int num_ref_idx_active_override_flag;
 
-    // set defaults, might be overridden a few lines later
+
     ref_count[0] = pps->ref_count[0];
     ref_count[1] = pps->ref_count[1];
 
@@ -48,7 +48,7 @@ int ff_h264_parse_ref_count(int *plist_count, int ref_count[2],
             if (slice_type_nos == AV_PICTURE_TYPE_B) {
                 ref_count[1] = get_ue_golomb(gb) + 1;
             } else
-                // full range is spec-ok in this case, even for frames
+
                 ref_count[1] = 1;
         }
 
@@ -70,7 +70,7 @@ int ff_h264_parse_ref_count(int *plist_count, int ref_count[2],
         }
 
     } else {
-        list_count   = 0;
+        list_count = 0;
         ref_count[0] = ref_count[1] = 0;
     }
 

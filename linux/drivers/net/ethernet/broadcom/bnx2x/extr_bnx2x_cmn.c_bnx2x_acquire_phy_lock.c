@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  phy_mutex; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int phy_mutex; } ;
 struct bnx2x {TYPE_1__ port; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HW_LOCK_RESOURCE_MDIO ; 
- int /*<<< orphan*/  bnx2x_acquire_hw_lock (struct bnx2x*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
+
+ int HW_LOCK_RESOURCE_MDIO ;
+ int bnx2x_acquire_hw_lock (struct bnx2x*,int ) ;
+ int mutex_lock (int *) ;
 
 void bnx2x_acquire_phy_lock(struct bnx2x *bp)
 {
-	mutex_lock(&bp->port.phy_mutex);
+ mutex_lock(&bp->port.phy_mutex);
 
-	bnx2x_acquire_hw_lock(bp, HW_LOCK_RESOURCE_MDIO);
+ bnx2x_acquire_hw_lock(bp, HW_LOCK_RESOURCE_MDIO);
 }

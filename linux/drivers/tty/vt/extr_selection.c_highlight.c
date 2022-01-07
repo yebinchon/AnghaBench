@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  invert_screen (int /*<<< orphan*/ ,int const,int const,int) ; 
- int /*<<< orphan*/  sel_cons ; 
+ int invert_screen (int ,int const,int const,int) ;
+ int sel_cons ;
 
 __attribute__((used)) static inline void highlight(const int s, const int e)
 {
-	invert_screen(sel_cons, s, e-s+2, 1);
+ invert_screen(sel_cons, s, e-s+2, 1);
 }

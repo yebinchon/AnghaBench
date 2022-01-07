@@ -1,61 +1,61 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  username2 ;
-typedef  int /*<<< orphan*/  domainname2 ;
-typedef  char UCHAR ;
-struct TYPE_5__ {int /*<<< orphan*/  Size; int /*<<< orphan*/  Buf; } ;
-typedef  TYPE_1__ BUF ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Copy (char*,char*,int) ; 
- int /*<<< orphan*/  FreeBuf (TYPE_1__*) ; 
- int IsEmptyStr (char*) ; 
- int MAX_SIZE ; 
- TYPE_1__* NewBuf () ; 
- int /*<<< orphan*/  ParseNtUsername (char*,char*,int,char*,int,int) ; 
- int SHA1_SIZE ; 
- int /*<<< orphan*/  Sha1 (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int StrLen (char*) ; 
- int /*<<< orphan*/  WriteBuf (TYPE_1__*,char*,int) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int username2 ;
+typedef int domainname2 ;
+typedef char UCHAR ;
+struct TYPE_5__ {int Size; int Buf; } ;
+typedef TYPE_1__ BUF ;
+
+
+ int Copy (char*,char*,int) ;
+ int FreeBuf (TYPE_1__*) ;
+ int IsEmptyStr (char*) ;
+ int MAX_SIZE ;
+ TYPE_1__* NewBuf () ;
+ int ParseNtUsername (char*,char*,int,char*,int,int) ;
+ int SHA1_SIZE ;
+ int Sha1 (char*,int ,int ) ;
+ int StrLen (char*) ;
+ int WriteBuf (TYPE_1__*,char*,int) ;
 
 void MsChapV2_GenerateChallenge8(UCHAR *dst, UCHAR *client_challenge, UCHAR *server_challenge, char *username)
 {
-	BUF *b;
-	UCHAR hash[SHA1_SIZE];
-	char username2[MAX_SIZE];
-	char domainname2[MAX_SIZE];
-	// Validate arguments
-	if (dst == NULL || client_challenge == NULL || server_challenge == NULL)
-	{
-		return;
-	}
+ BUF *b;
+ UCHAR hash[SHA1_SIZE];
+ char username2[MAX_SIZE];
+ char domainname2[MAX_SIZE];
 
-	b = NewBuf();
+ if (dst == ((void*)0) || client_challenge == ((void*)0) || server_challenge == ((void*)0))
+ {
+  return;
+ }
 
-	WriteBuf(b, client_challenge, 16);
-	WriteBuf(b, server_challenge, 16);
+ b = NewBuf();
 
-	ParseNtUsername(username, username2, sizeof(username2), domainname2, sizeof(domainname2), true);
+ WriteBuf(b, client_challenge, 16);
+ WriteBuf(b, server_challenge, 16);
 
-	if (IsEmptyStr(username2) == false)
-	{
-		WriteBuf(b, username2, StrLen(username2));
-	}
+ ParseNtUsername(username, username2, sizeof(username2), domainname2, sizeof(domainname2), 1);
 
-	Sha1(hash, b->Buf, b->Size);
+ if (IsEmptyStr(username2) == 0)
+ {
+  WriteBuf(b, username2, StrLen(username2));
+ }
 
-	FreeBuf(b);
+ Sha1(hash, b->Buf, b->Size);
 
-	Copy(dst, hash, 8);
+ FreeBuf(b);
+
+ Copy(dst, hash, 8);
 }

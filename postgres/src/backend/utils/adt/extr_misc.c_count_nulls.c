@@ -1,114 +1,106 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int int32 ;
-typedef  int bits8 ;
-struct TYPE_3__ {int /*<<< orphan*/  flinfo; } ;
-typedef  TYPE_1__* FunctionCallInfo ;
-typedef  int /*<<< orphan*/  ArrayType ;
 
-/* Variables and functions */
- int* ARR_DIMS (int /*<<< orphan*/ *) ; 
- int ARR_NDIM (int /*<<< orphan*/ *) ; 
- int* ARR_NULLBITMAP (int /*<<< orphan*/ *) ; 
- int ArrayGetNItems (int,int*) ; 
- int /*<<< orphan*/  Assert (int) ; 
- int OidIsValid (int /*<<< orphan*/ ) ; 
- scalar_t__ PG_ARGISNULL (int) ; 
- int /*<<< orphan*/ * PG_GETARG_ARRAYTYPE_P (int /*<<< orphan*/ ) ; 
- int PG_NARGS () ; 
- int /*<<< orphan*/  get_base_element_type (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  get_fn_expr_argtype (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ get_fn_expr_variadic (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int int32 ;
+typedef int bits8 ;
+struct TYPE_3__ {int flinfo; } ;
+typedef TYPE_1__* FunctionCallInfo ;
+typedef int ArrayType ;
+
+
+ int* ARR_DIMS (int *) ;
+ int ARR_NDIM (int *) ;
+ int* ARR_NULLBITMAP (int *) ;
+ int ArrayGetNItems (int,int*) ;
+ int Assert (int) ;
+ int OidIsValid (int ) ;
+ scalar_t__ PG_ARGISNULL (int) ;
+ int * PG_GETARG_ARRAYTYPE_P (int ) ;
+ int PG_NARGS () ;
+ int get_base_element_type (int ) ;
+ int get_fn_expr_argtype (int ,int ) ;
+ scalar_t__ get_fn_expr_variadic (int ) ;
 
 __attribute__((used)) static bool
 count_nulls(FunctionCallInfo fcinfo,
-			int32 *nargs, int32 *nulls)
+   int32 *nargs, int32 *nulls)
 {
-	int32		count = 0;
-	int			i;
+ int32 count = 0;
+ int i;
 
-	/* Did we get a VARIADIC array argument, or separate arguments? */
-	if (get_fn_expr_variadic(fcinfo->flinfo))
-	{
-		ArrayType  *arr;
-		int			ndims,
-					nitems,
-				   *dims;
-		bits8	   *bitmap;
 
-		Assert(PG_NARGS() == 1);
+ if (get_fn_expr_variadic(fcinfo->flinfo))
+ {
+  ArrayType *arr;
+  int ndims,
+     nitems,
+       *dims;
+  bits8 *bitmap;
 
-		/*
-		 * If we get a null as VARIADIC array argument, we can't say anything
-		 * useful about the number of elements, so return NULL.  This behavior
-		 * is consistent with other variadic functions - see concat_internal.
-		 */
-		if (PG_ARGISNULL(0))
-			return false;
+  Assert(PG_NARGS() == 1);
 
-		/*
-		 * Non-null argument had better be an array.  We assume that any call
-		 * context that could let get_fn_expr_variadic return true will have
-		 * checked that a VARIADIC-labeled parameter actually is an array.  So
-		 * it should be okay to just Assert that it's an array rather than
-		 * doing a full-fledged error check.
-		 */
-		Assert(OidIsValid(get_base_element_type(get_fn_expr_argtype(fcinfo->flinfo, 0))));
 
-		/* OK, safe to fetch the array value */
-		arr = PG_GETARG_ARRAYTYPE_P(0);
 
-		/* Count the array elements */
-		ndims = ARR_NDIM(arr);
-		dims = ARR_DIMS(arr);
-		nitems = ArrayGetNItems(ndims, dims);
 
-		/* Count those that are NULL */
-		bitmap = ARR_NULLBITMAP(arr);
-		if (bitmap)
-		{
-			int			bitmask = 1;
 
-			for (i = 0; i < nitems; i++)
-			{
-				if ((*bitmap & bitmask) == 0)
-					count++;
 
-				bitmask <<= 1;
-				if (bitmask == 0x100)
-				{
-					bitmap++;
-					bitmask = 1;
-				}
-			}
-		}
+  if (PG_ARGISNULL(0))
+   return 0;
+  Assert(OidIsValid(get_base_element_type(get_fn_expr_argtype(fcinfo->flinfo, 0))));
 
-		*nargs = nitems;
-		*nulls = count;
-	}
-	else
-	{
-		/* Separate arguments, so just count 'em */
-		for (i = 0; i < PG_NARGS(); i++)
-		{
-			if (PG_ARGISNULL(i))
-				count++;
-		}
 
-		*nargs = PG_NARGS();
-		*nulls = count;
-	}
+  arr = PG_GETARG_ARRAYTYPE_P(0);
 
-	return true;
+
+  ndims = ARR_NDIM(arr);
+  dims = ARR_DIMS(arr);
+  nitems = ArrayGetNItems(ndims, dims);
+
+
+  bitmap = ARR_NULLBITMAP(arr);
+  if (bitmap)
+  {
+   int bitmask = 1;
+
+   for (i = 0; i < nitems; i++)
+   {
+    if ((*bitmap & bitmask) == 0)
+     count++;
+
+    bitmask <<= 1;
+    if (bitmask == 0x100)
+    {
+     bitmap++;
+     bitmask = 1;
+    }
+   }
+  }
+
+  *nargs = nitems;
+  *nulls = count;
+ }
+ else
+ {
+
+  for (i = 0; i < PG_NARGS(); i++)
+  {
+   if (PG_ARGISNULL(i))
+    count++;
+  }
+
+  *nargs = PG_NARGS();
+  *nulls = count;
+ }
+
+ return 1;
 }

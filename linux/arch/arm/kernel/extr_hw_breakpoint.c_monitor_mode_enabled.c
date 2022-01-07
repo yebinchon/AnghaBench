@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u32 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARM_DBG_READ (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int ARM_DSCR_MDBGEN ; 
- int /*<<< orphan*/  c0 ; 
- int /*<<< orphan*/  c1 ; 
+
+
+
+typedef int u32 ;
+
+
+ int ARM_DBG_READ (int ,int ,int ,int) ;
+ int ARM_DSCR_MDBGEN ;
+ int c0 ;
+ int c1 ;
 
 __attribute__((used)) static int monitor_mode_enabled(void)
 {
-	u32 dscr;
-	ARM_DBG_READ(c0, c1, 0, dscr);
-	return !!(dscr & ARM_DSCR_MDBGEN);
+ u32 dscr;
+ ARM_DBG_READ(c0, c1, 0, dscr);
+ return !!(dscr & ARM_DSCR_MDBGEN);
 }

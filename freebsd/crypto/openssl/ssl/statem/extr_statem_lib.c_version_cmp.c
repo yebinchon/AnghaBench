@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  SSL ;
 
-/* Variables and functions */
- scalar_t__ DTLS_VERSION_LT (int,int) ; 
- int SSL_IS_DTLS (int /*<<< orphan*/  const*) ; 
+
+
+
+typedef int SSL ;
+
+
+ scalar_t__ DTLS_VERSION_LT (int,int) ;
+ int SSL_IS_DTLS (int const*) ;
 
 __attribute__((used)) static int version_cmp(const SSL *s, int a, int b)
 {

@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uchar ;
-struct TYPE_5__ {int esc_len; int /*<<< orphan*/  esc; } ;
-typedef  TYPE_1__ iso2022_esc_t ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uchar ;
+struct TYPE_5__ {int esc_len; int esc; } ;
+typedef TYPE_1__ iso2022_esc_t ;
 struct TYPE_6__ {scalar_t__ mode; } ;
-typedef  TYPE_2__ csconv_t ;
+typedef TYPE_2__ csconv_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E2BIG ; 
- size_t ISO2022JP_CS_ASCII ; 
- scalar_t__ ISO2022_MODE (size_t,scalar_t__) ; 
- size_t ISO2022_MODE_CS (scalar_t__) ; 
- scalar_t__ ISO2022_MODE_SHIFT (scalar_t__) ; 
- scalar_t__ ISO2022_SI ; 
- int /*<<< orphan*/  iso2022_SI_seq ; 
- TYPE_1__* iso2022jp_esc ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int seterror (int /*<<< orphan*/ ) ; 
+
+ int E2BIG ;
+ size_t ISO2022JP_CS_ASCII ;
+ scalar_t__ ISO2022_MODE (size_t,scalar_t__) ;
+ size_t ISO2022_MODE_CS (scalar_t__) ;
+ scalar_t__ ISO2022_MODE_SHIFT (scalar_t__) ;
+ scalar_t__ ISO2022_SI ;
+ int iso2022_SI_seq ;
+ TYPE_1__* iso2022jp_esc ;
+ int memcpy (int *,int ,int) ;
+ int seterror (int ) ;
 
 __attribute__((used)) static int
 iso2022jp_flush(csconv_t *cv, uchar *buf, int bufsize)

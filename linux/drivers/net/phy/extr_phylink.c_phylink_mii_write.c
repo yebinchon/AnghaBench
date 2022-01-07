@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct phylink {int link_an_mode; } ;
 
-/* Variables and functions */
- int EOPNOTSUPP ; 
-#define  MLO_AN_FIXED 130 
-#define  MLO_AN_INBAND 129 
-#define  MLO_AN_PHY 128 
+
+ int EOPNOTSUPP ;
+
+
+
 
 __attribute__((used)) static int phylink_mii_write(struct phylink *pl, unsigned int phy_id,
-			     unsigned int reg, unsigned int val)
+        unsigned int reg, unsigned int val)
 {
-	switch (pl->link_an_mode) {
-	case MLO_AN_FIXED:
-		break;
+ switch (pl->link_an_mode) {
+ case 130:
+  break;
 
-	case MLO_AN_PHY:
-		return -EOPNOTSUPP;
+ case 128:
+  return -EOPNOTSUPP;
 
-	case MLO_AN_INBAND:
-		break;
-	}
+ case 129:
+  break;
+ }
 
-	return 0;
+ return 0;
 }

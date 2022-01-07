@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {scalar_t__ direct_spatial_mv_pred; } ;
-typedef  TYPE_1__ H264SliceContext ;
-typedef  int /*<<< orphan*/  H264Context ;
+typedef TYPE_1__ H264SliceContext ;
+typedef int H264Context ;
 
-/* Variables and functions */
- int /*<<< orphan*/  pred_spatial_direct_motion (int /*<<< orphan*/  const* const,TYPE_1__*,int*) ; 
- int /*<<< orphan*/  pred_temp_direct_motion (int /*<<< orphan*/  const* const,TYPE_1__*,int*) ; 
+
+ int pred_spatial_direct_motion (int const* const,TYPE_1__*,int*) ;
+ int pred_temp_direct_motion (int const* const,TYPE_1__*,int*) ;
 
 void ff_h264_pred_direct_motion(const H264Context *const h, H264SliceContext *sl,
                                 int *mb_type)

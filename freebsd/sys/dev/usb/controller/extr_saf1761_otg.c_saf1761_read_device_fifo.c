@@ -1,68 +1,68 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
+
+
+
+
+typedef int uint32_t ;
 struct usb_page_search {int length; scalar_t__ buffer; } ;
-struct saf1761_otg_td {int offset; int remainder; int /*<<< orphan*/  pc; } ;
-struct saf1761_otg_softc {scalar_t__ sc_bounce_buffer; int /*<<< orphan*/  sc_io_hdl; int /*<<< orphan*/  sc_io_tag; } ;
+struct saf1761_otg_td {int offset; int remainder; int pc; } ;
+struct saf1761_otg_softc {scalar_t__ sc_bounce_buffer; int sc_io_hdl; int sc_io_tag; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SOTG_DATA_PORT ; 
- int /*<<< orphan*/  bus_space_read_multi_4 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,int) ; 
- int /*<<< orphan*/  usbd_copy_in (int /*<<< orphan*/ ,int,scalar_t__,int) ; 
- int /*<<< orphan*/  usbd_get_page (int /*<<< orphan*/ ,int,struct usb_page_search*) ; 
+
+ int SOTG_DATA_PORT ;
+ int bus_space_read_multi_4 (int ,int ,int ,scalar_t__,int) ;
+ int usbd_copy_in (int ,int,scalar_t__,int) ;
+ int usbd_get_page (int ,int,struct usb_page_search*) ;
 
 __attribute__((used)) static void
 saf1761_read_device_fifo(struct saf1761_otg_softc *sc,
     struct saf1761_otg_td *td, uint32_t len)
 {
-	struct usb_page_search buf_res;
-	uint32_t count;
+ struct usb_page_search buf_res;
+ uint32_t count;
 
-	/* optimised read first */
-	while (len > 0) {
-		usbd_get_page(td->pc, td->offset, &buf_res);
 
-		/* get correct length */
-		if (buf_res.length > len)
-			buf_res.length = len;
+ while (len > 0) {
+  usbd_get_page(td->pc, td->offset, &buf_res);
 
-		/* check buffer alignment */
-		if (((uintptr_t)buf_res.buffer) & 3)
-			break;
 
-		count = buf_res.length & ~3;
-		if (count == 0)
-			break;
+  if (buf_res.length > len)
+   buf_res.length = len;
 
-		bus_space_read_multi_4((sc)->sc_io_tag, (sc)->sc_io_hdl,
-		    SOTG_DATA_PORT, buf_res.buffer, count / 4);
 
-		len -= count;
+  if (((uintptr_t)buf_res.buffer) & 3)
+   break;
 
-		/* update remainder and offset */
-		td->remainder -= count;
-		td->offset += count;
-	}
+  count = buf_res.length & ~3;
+  if (count == 0)
+   break;
 
-	if (len > 0) {
-		/* use bounce buffer */
-		bus_space_read_multi_4((sc)->sc_io_tag, (sc)->sc_io_hdl,
-		    SOTG_DATA_PORT, sc->sc_bounce_buffer, (len + 3) / 4);
-		usbd_copy_in(td->pc, td->offset,
-		    sc->sc_bounce_buffer, len);
+  bus_space_read_multi_4((sc)->sc_io_tag, (sc)->sc_io_hdl,
+      SOTG_DATA_PORT, buf_res.buffer, count / 4);
 
-		/* update remainder and offset */
-		td->remainder -= len;
-		td->offset += len;
-	}
+  len -= count;
+
+
+  td->remainder -= count;
+  td->offset += count;
+ }
+
+ if (len > 0) {
+
+  bus_space_read_multi_4((sc)->sc_io_tag, (sc)->sc_io_hdl,
+      SOTG_DATA_PORT, sc->sc_bounce_buffer, (len + 3) / 4);
+  usbd_copy_in(td->pc, td->offset,
+      sc->sc_bounce_buffer, len);
+
+
+  td->remainder -= len;
+  td->offset += len;
+ }
 }

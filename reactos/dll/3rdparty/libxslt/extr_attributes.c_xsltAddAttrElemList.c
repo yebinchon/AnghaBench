@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* xsltAttrElemPtr ;
-typedef  int /*<<< orphan*/ * xmlNodePtr ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef TYPE_1__* xsltAttrElemPtr ;
+typedef int * xmlNodePtr ;
 struct TYPE_5__ {struct TYPE_5__* next; } ;
 
-/* Variables and functions */
- TYPE_1__* xsltNewAttrElem (int /*<<< orphan*/ *) ; 
+
+ TYPE_1__* xsltNewAttrElem (int *) ;
 
 __attribute__((used)) static xsltAttrElemPtr
 xsltAddAttrElemList(xsltAttrElemPtr list, xmlNodePtr attr) {
     xsltAttrElemPtr next, cur;
 
-    if (attr == NULL)
-	return(list);
-    if (list == NULL)
-	return(xsltNewAttrElem(attr));
+    if (attr == ((void*)0))
+ return(list);
+    if (list == ((void*)0))
+ return(xsltNewAttrElem(attr));
     cur = list;
-    while (cur != NULL) {
-	next = cur->next;
-	if (next == NULL) {
-	    cur->next = xsltNewAttrElem(attr);
-	    return(list);
-	}
-	cur = next;
+    while (cur != ((void*)0)) {
+ next = cur->next;
+ if (next == ((void*)0)) {
+     cur->next = xsltNewAttrElem(attr);
+     return(list);
+ }
+ cur = next;
     }
     return(list);
 }

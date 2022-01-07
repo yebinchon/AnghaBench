@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct mg_send_mqtt_handshake_opts {char const* will_topic; char const* will_message; char const* user_name; char const* password; int keep_alive; } ;
-struct mg_mqtt_proto_data {char const keep_alive; int /*<<< orphan*/  last_control_time; } ;
+struct mg_mqtt_proto_data {char const keep_alive; int last_control_time; } ;
 struct TYPE_2__ {char* buf; char const len; } ;
 struct mg_connection {TYPE_1__ send_mbuf; scalar_t__ proto_data; } ;
-typedef  int /*<<< orphan*/  opts ;
+typedef int opts ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT_EQ (char const,int) ; 
- int /*<<< orphan*/  ASSERT_GT (int /*<<< orphan*/ ,double) ; 
- int /*<<< orphan*/  ASSERT_STREQ_NZ (char const*,char*) ; 
- struct mg_connection* create_test_connection () ; 
- int /*<<< orphan*/  destroy_test_connection (struct mg_connection*) ; 
- int /*<<< orphan*/  mbuf_remove (TYPE_1__*,char const) ; 
- int /*<<< orphan*/  memset (struct mg_send_mqtt_handshake_opts*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  mg_send_mqtt_handshake (struct mg_connection*,char const*) ; 
- int /*<<< orphan*/  mg_send_mqtt_handshake_opt (struct mg_connection*,char const*,struct mg_send_mqtt_handshake_opts) ; 
- int /*<<< orphan*/  mg_set_protocol_mqtt (struct mg_connection*) ; 
- double mg_time () ; 
- int /*<<< orphan*/  msleep (int) ; 
- int strlen (char const*) ; 
- char const strncmp (char const*,char const*,int) ; 
+
+ int ASSERT_EQ (char const,int) ;
+ int ASSERT_GT (int ,double) ;
+ int ASSERT_STREQ_NZ (char const*,char*) ;
+ struct mg_connection* create_test_connection () ;
+ int destroy_test_connection (struct mg_connection*) ;
+ int mbuf_remove (TYPE_1__*,char const) ;
+ int memset (struct mg_send_mqtt_handshake_opts*,int ,int) ;
+ int mg_send_mqtt_handshake (struct mg_connection*,char const*) ;
+ int mg_send_mqtt_handshake_opt (struct mg_connection*,char const*,struct mg_send_mqtt_handshake_opts) ;
+ int mg_set_protocol_mqtt (struct mg_connection*) ;
+ double mg_time () ;
+ int msleep (int) ;
+ int strlen (char const*) ;
+ char const strncmp (char const*,char const*,int) ;
 
 __attribute__((used)) static const char *test_mqtt_handshake(void) {
   struct mg_send_mqtt_handshake_opts opts;
@@ -48,7 +48,7 @@ __attribute__((used)) static const char *test_mqtt_handshake(void) {
   mg_set_protocol_mqtt(nc);
   mg_send_mqtt_handshake(nc, client_id);
   got = nc->send_mbuf.buf;
-  /* handshake header + keepalive + client id len + client id */
+
   ASSERT_EQ(nc->send_mbuf.len,
             1 + 1 + 1 + 5 + 1 + 1 + 2 + 2 + strlen(client_id));
   ASSERT_EQ(got[0], 0x10);
@@ -57,7 +57,7 @@ __attribute__((used)) static const char *test_mqtt_handshake(void) {
   ASSERT_EQ(got[3], 4);
   ASSERT_STREQ_NZ(&got[4], "MQTT");
   ASSERT_EQ(got[8], 4);
-  ASSERT_EQ(got[9], 0); /* connect flags */
+  ASSERT_EQ(got[9], 0);
   ASSERT_EQ(got[10], 0);
   ASSERT_EQ(got[11], 60);
   ASSERT_EQ(got[12], 0);
@@ -78,7 +78,7 @@ __attribute__((used)) static const char *test_mqtt_handshake(void) {
   opts.keep_alive = 0x1234;
   mg_send_mqtt_handshake_opt(nc, client_id, opts);
   got = nc->send_mbuf.buf;
-  /* handshake header + keepalive + client id len + client id */
+
   ASSERT_EQ(nc->send_mbuf.len, 1 + 2 + 1 + 5 + 1 + 1 + 2 + 2 +
                                    strlen(client_id) + 2 + strlen(will_topic) +
                                    2 + strlen(will_message) + 2 +
@@ -90,7 +90,7 @@ __attribute__((used)) static const char *test_mqtt_handshake(void) {
   ASSERT_EQ(got[4], 4);
   ASSERT_STREQ_NZ(&got[5], "MQTT");
   ASSERT_EQ(got[9], 4);
-  ASSERT_EQ(((unsigned char *) got)[10], 0xc4); /* connect flags */
+  ASSERT_EQ(((unsigned char *) got)[10], 0xc4);
   ASSERT_EQ(got[11], 0x12);
   ASSERT_EQ(got[12], 0x34);
   ASSERT_EQ(got[13], 0);
@@ -102,5 +102,5 @@ __attribute__((used)) static const char *test_mqtt_handshake(void) {
   mbuf_remove(&nc->send_mbuf, nc->send_mbuf.len);
 
   destroy_test_connection(nc);
-  return NULL;
+  return ((void*)0);
 }

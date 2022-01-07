@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  time_t ;
+
+
+
+
+typedef int time_t ;
 struct tm {int dummy; } ;
-typedef  int /*<<< orphan*/  int32_t ;
+typedef int int32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MZ_INTERNAL_ERROR ; 
- int /*<<< orphan*/  MZ_OK ; 
- int /*<<< orphan*/  MZ_PARAM_ERROR ; 
- int /*<<< orphan*/ * localtime_r (int /*<<< orphan*/ *,struct tm*) ; 
- int /*<<< orphan*/  memcpy (struct tm*,struct tm*,int) ; 
- int /*<<< orphan*/  memset (struct tm*,int /*<<< orphan*/ ,int) ; 
+
+ int MZ_INTERNAL_ERROR ;
+ int MZ_OK ;
+ int MZ_PARAM_ERROR ;
+ int * localtime_r (int *,struct tm*) ;
+ int memcpy (struct tm*,struct tm*,int) ;
+ int memset (struct tm*,int ,int) ;
 
 int32_t mz_zip_time_t_to_tm(time_t unix_time, struct tm *ptm)
 {
     struct tm ltm;
-    if (ptm == NULL)
+    if (ptm == ((void*)0))
         return MZ_PARAM_ERROR;
-    if (localtime_r(&unix_time, &ltm) == NULL)  /* Returns a 1900-based year */
+    if (localtime_r(&unix_time, &ltm) == ((void*)0))
     {
-        /* Invalid date stored, so don't return it */
+
         memset(ptm, 0, sizeof(struct tm));
         return MZ_INTERNAL_ERROR;
     }

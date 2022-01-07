@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uv_stream_t ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uv_stream_t ;
 struct TYPE_4__ {scalar_t__ handle; } ;
-typedef  TYPE_1__ uv_connect_t ;
+typedef TYPE_1__ uv_connect_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  alloc_buffer ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  free (TYPE_1__*) ; 
- int /*<<< orphan*/  on_read ; 
- int /*<<< orphan*/  stderr ; 
- char* uv_err_name (int) ; 
- int /*<<< orphan*/  uv_read_start (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int alloc_buffer ;
+ int fprintf (int ,char*,char*) ;
+ int free (TYPE_1__*) ;
+ int on_read ;
+ int stderr ;
+ char* uv_err_name (int) ;
+ int uv_read_start (int *,int ,int ) ;
 
 void on_connect(uv_connect_t *req, int status) {
     if (status < 0) {

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_stringbuf_t ;
-typedef  int /*<<< orphan*/  svn_stream_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-typedef  int apr_size_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  SVN__LINE_CHUNK_SIZE ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  svn_stream_read_full (int /*<<< orphan*/ *,char*,int*) ; 
- int /*<<< orphan*/  svn_stringbuf_appendbyte (int /*<<< orphan*/ *,char) ; 
- int /*<<< orphan*/  svn_stringbuf_chop (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * svn_stringbuf_create_ensure (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int svn_stringbuf_t ;
+typedef int svn_stream_t ;
+typedef int svn_error_t ;
+typedef int svn_boolean_t ;
+typedef int apr_size_t ;
+typedef int apr_pool_t ;
+
+
+ int FALSE ;
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int SVN__LINE_CHUNK_SIZE ;
+ int TRUE ;
+ int svn_stream_read_full (int *,char*,int*) ;
+ int svn_stringbuf_appendbyte (int *,char) ;
+ int svn_stringbuf_chop (int *,int) ;
+ int * svn_stringbuf_create_ensure (int ,int *) ;
 
 __attribute__((used)) static svn_error_t *
 stream_readline_bytewise(svn_stringbuf_t **stringbuf,
@@ -40,13 +40,13 @@ stream_readline_bytewise(svn_stringbuf_t **stringbuf,
   const char *match;
   char c;
 
-  /* Since we're reading one character at a time, let's at least
-     optimize for the 90% case.  90% of the time, we can avoid the
-     stringbuf ever having to realloc() itself if we start it out at
-     80 chars.  */
+
+
+
+
   str = svn_stringbuf_create_ensure(SVN__LINE_CHUNK_SIZE, pool);
 
-  /* Read into STR up to and including the next EOL sequence. */
+
   match = eol;
   while (*match)
     {
@@ -54,7 +54,7 @@ stream_readline_bytewise(svn_stringbuf_t **stringbuf,
       SVN_ERR(svn_stream_read_full(stream, &c, &numbytes));
       if (numbytes != 1)
         {
-          /* a 'short' read means the stream has run out. */
+
           *eof = TRUE;
           *stringbuf = str;
           return SVN_NO_ERROR;

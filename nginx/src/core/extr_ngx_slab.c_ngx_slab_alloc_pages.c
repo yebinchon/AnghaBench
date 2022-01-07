@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t ngx_uint_t ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef size_t ngx_uint_t ;
 struct TYPE_7__ {size_t slab; uintptr_t prev; struct TYPE_7__* next; } ;
 struct TYPE_6__ {size_t pfree; scalar_t__ log_nomem; TYPE_2__ free; } ;
-typedef  TYPE_1__ ngx_slab_pool_t ;
-typedef  TYPE_2__ ngx_slab_page_t ;
+typedef TYPE_1__ ngx_slab_pool_t ;
+typedef TYPE_2__ ngx_slab_page_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NGX_LOG_CRIT ; 
- void* NGX_SLAB_PAGE ; 
- size_t NGX_SLAB_PAGE_BUSY ; 
- size_t NGX_SLAB_PAGE_START ; 
- int /*<<< orphan*/  ngx_slab_error (TYPE_1__*,int /*<<< orphan*/ ,char*) ; 
+
+ int NGX_LOG_CRIT ;
+ void* NGX_SLAB_PAGE ;
+ size_t NGX_SLAB_PAGE_BUSY ;
+ size_t NGX_SLAB_PAGE_START ;
+ int ngx_slab_error (TYPE_1__*,int ,char*) ;
 
 __attribute__((used)) static ngx_slab_page_t *
 ngx_slab_alloc_pages(ngx_slab_pool_t *pool, ngx_uint_t pages)
 {
-    ngx_slab_page_t  *page, *p;
+    ngx_slab_page_t *page, *p;
 
     for (page = pool->free.next; page != &pool->free; page = page->next) {
 
@@ -52,7 +52,7 @@ ngx_slab_alloc_pages(ngx_slab_pool_t *pool, ngx_uint_t pages)
             }
 
             page->slab = pages | NGX_SLAB_PAGE_START;
-            page->next = NULL;
+            page->next = ((void*)0);
             page->prev = NGX_SLAB_PAGE;
 
             pool->pfree -= pages;
@@ -63,7 +63,7 @@ ngx_slab_alloc_pages(ngx_slab_pool_t *pool, ngx_uint_t pages)
 
             for (p = page + 1; pages; pages--) {
                 p->slab = NGX_SLAB_PAGE_BUSY;
-                p->next = NULL;
+                p->next = ((void*)0);
                 p->prev = NGX_SLAB_PAGE;
                 p++;
             }
@@ -77,5 +77,5 @@ ngx_slab_alloc_pages(ngx_slab_pool_t *pool, ngx_uint_t pages)
                        "ngx_slab_alloc() failed: no memory");
     }
 
-    return NULL;
+    return ((void*)0);
 }

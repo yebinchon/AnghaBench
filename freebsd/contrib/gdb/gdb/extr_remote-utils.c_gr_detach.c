@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  error (char*) ; 
- int /*<<< orphan*/  gr_clear_all_breakpoints () ; 
- int /*<<< orphan*/  pop_target () ; 
- int /*<<< orphan*/  puts_filtered (char*) ; 
- scalar_t__ sr_is_open () ; 
+ int error (char*) ;
+ int gr_clear_all_breakpoints () ;
+ int pop_target () ;
+ int puts_filtered (char*) ;
+ scalar_t__ sr_is_open () ;
 
 void
 gr_detach (char *args, int from_tty)

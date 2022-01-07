@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/ * brain_server_dbs; } ;
-typedef  TYPE_1__ brain_server_dumper_options_t ;
-typedef  int /*<<< orphan*/  brain_server_dbs_t ;
 
-/* Variables and functions */
- int BRAIN_SERVER_DUMP_EVERY ; 
- int /*<<< orphan*/  brain_server_write_attack_dumps (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  brain_server_write_hash_dumps (int /*<<< orphan*/ *,char*) ; 
- int keep_running ; 
- int /*<<< orphan*/  sleep (int) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int * brain_server_dbs; } ;
+typedef TYPE_1__ brain_server_dumper_options_t ;
+typedef int brain_server_dbs_t ;
+
+
+ int BRAIN_SERVER_DUMP_EVERY ;
+ int brain_server_write_attack_dumps (int *,char*) ;
+ int brain_server_write_hash_dumps (int *,char*) ;
+ int keep_running ;
+ int sleep (int) ;
 
 void *brain_server_handle_dumps (void *p)
 {
@@ -30,11 +30,11 @@ void *brain_server_handle_dumps (void *p)
 
   int i = 0;
 
-  while (keep_running == true)
+  while (keep_running == 1)
   {
     if (i == BRAIN_SERVER_DUMP_EVERY)
     {
-      brain_server_write_hash_dumps   (brain_server_dbs, ".");
+      brain_server_write_hash_dumps (brain_server_dbs, ".");
       brain_server_write_attack_dumps (brain_server_dbs, ".");
 
       i = 0;
@@ -47,5 +47,5 @@ void *brain_server_handle_dumps (void *p)
     sleep (1);
   }
 
-  return NULL;
+  return ((void*)0);
 }

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  xmlParserInputBufferCreateFilenameFunc ;
-struct TYPE_2__ {int /*<<< orphan*/  xmlParserInputBufferCreateFilenameValue; } ;
 
-/* Variables and functions */
- scalar_t__ IS_MAIN_THREAD ; 
- TYPE_1__* xmlGetGlobalState () ; 
- int /*<<< orphan*/  xmlParserInputBufferCreateFilenameValue ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int xmlParserInputBufferCreateFilenameFunc ;
+struct TYPE_2__ {int xmlParserInputBufferCreateFilenameValue; } ;
+
+
+ scalar_t__ IS_MAIN_THREAD ;
+ TYPE_1__* xmlGetGlobalState () ;
+ int xmlParserInputBufferCreateFilenameValue ;
 
 xmlParserInputBufferCreateFilenameFunc *
 __xmlParserInputBufferCreateFilenameValue(void) {
     if (IS_MAIN_THREAD)
-	return (&xmlParserInputBufferCreateFilenameValue);
+ return (&xmlParserInputBufferCreateFilenameValue);
     else
-	return (&xmlGetGlobalState()->xmlParserInputBufferCreateFilenameValue);
+ return (&xmlGetGlobalState()->xmlParserInputBufferCreateFilenameValue);
 }

@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+
+
+ int AV_LOG_ERROR ;
+ int av_log (int *,int ,char*) ;
 
 int ff_huffyuv_generate_bits_table(uint32_t *dst, const uint8_t *len_table, int n)
 {
@@ -28,7 +28,7 @@ int ff_huffyuv_generate_bits_table(uint32_t *dst, const uint8_t *len_table, int 
                 dst[index] = bits++;
         }
         if (bits & 1) {
-            av_log(NULL, AV_LOG_ERROR, "Error generating huffman table\n");
+            av_log(((void*)0), AV_LOG_ERROR, "Error generating huffman table\n");
             return -1;
         }
         bits >>= 1;

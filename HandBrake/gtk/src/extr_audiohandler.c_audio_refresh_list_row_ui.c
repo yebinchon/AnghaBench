@@ -1,60 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_6__ ;
-typedef  struct TYPE_15__   TYPE_5__ ;
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_13__ {int /*<<< orphan*/  const* settings; } ;
-typedef  TYPE_3__ signal_user_data_t ;
-typedef  int /*<<< orphan*/  hb_title_t ;
+
+
+typedef struct TYPE_16__ TYPE_6__ ;
+typedef struct TYPE_15__ TYPE_5__ ;
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+struct TYPE_13__ {int const* settings; } ;
+typedef TYPE_3__ signal_user_data_t ;
+typedef int hb_title_t ;
 struct TYPE_14__ {char* name; } ;
-typedef  TYPE_4__ hb_mixdown_t ;
-struct TYPE_15__ {char* name; int /*<<< orphan*/  codec; } ;
-typedef  TYPE_5__ hb_encoder_t ;
+typedef TYPE_4__ hb_mixdown_t ;
+struct TYPE_15__ {char* name; int codec; } ;
+typedef TYPE_5__ hb_encoder_t ;
 struct TYPE_12__ {int samplerate; scalar_t__ bitrate; } ;
 struct TYPE_11__ {char* description; } ;
 struct TYPE_16__ {TYPE_2__ in; TYPE_1__ lang; } ;
-typedef  TYPE_6__ hb_audio_config_t ;
-typedef  double gdouble ;
-typedef  char gchar ;
-typedef  scalar_t__ gboolean ;
-typedef  int /*<<< orphan*/  GtkTreeModel ;
-typedef  int /*<<< orphan*/  GtkTreeIter ;
-typedef  int /*<<< orphan*/  GhbValue ;
+typedef TYPE_6__ hb_audio_config_t ;
+typedef double gdouble ;
+typedef char gchar ;
+typedef scalar_t__ gboolean ;
+typedef int GtkTreeModel ;
+typedef int GtkTreeIter ;
+typedef int GhbValue ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GTK_TREE_STORE (int /*<<< orphan*/ *) ; 
- double HB_INVALID_AUDIO_QUALITY ; 
- char* _ (char*) ; 
- int /*<<< orphan*/  g_free (char*) ; 
- char* g_strdup (char*) ; 
- char* g_strdup_printf (char*,...) ; 
- scalar_t__ ghb_audio_is_passthru (int /*<<< orphan*/ ) ; 
- scalar_t__ ghb_audio_quality_enabled (int /*<<< orphan*/  const*) ; 
- double ghb_dict_get_double (int /*<<< orphan*/  const*,char*) ; 
- int ghb_dict_get_int (int /*<<< orphan*/  const*,char*) ; 
- char* ghb_dict_get_string (int /*<<< orphan*/  const*,char*) ; 
- char* ghb_format_quality (char*,int /*<<< orphan*/ ,double) ; 
- TYPE_6__* ghb_get_audio_info (int /*<<< orphan*/  const*,int) ; 
- int /*<<< orphan*/ * ghb_lookup_title (int,int*) ; 
- TYPE_5__* ghb_settings_audio_encoder (int /*<<< orphan*/  const*,char*) ; 
- TYPE_4__* ghb_settings_mixdown (int /*<<< orphan*/  const*,char*) ; 
- scalar_t__ gtk_tree_model_iter_children (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  gtk_tree_store_append (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  gtk_tree_store_remove (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  gtk_tree_store_set (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int,char*,int,...) ; 
+
+ int GTK_TREE_STORE (int *) ;
+ double HB_INVALID_AUDIO_QUALITY ;
+ char* _ (char*) ;
+ int g_free (char*) ;
+ char* g_strdup (char*) ;
+ char* g_strdup_printf (char*,...) ;
+ scalar_t__ ghb_audio_is_passthru (int ) ;
+ scalar_t__ ghb_audio_quality_enabled (int const*) ;
+ double ghb_dict_get_double (int const*,char*) ;
+ int ghb_dict_get_int (int const*,char*) ;
+ char* ghb_dict_get_string (int const*,char*) ;
+ char* ghb_format_quality (char*,int ,double) ;
+ TYPE_6__* ghb_get_audio_info (int const*,int) ;
+ int * ghb_lookup_title (int,int*) ;
+ TYPE_5__* ghb_settings_audio_encoder (int const*,char*) ;
+ TYPE_4__* ghb_settings_mixdown (int const*,char*) ;
+ scalar_t__ gtk_tree_model_iter_children (int *,int *,int *) ;
+ int gtk_tree_store_append (int ,int *,int *) ;
+ int gtk_tree_store_remove (int ,int *) ;
+ int gtk_tree_store_set (int ,int *,int ,char*,int,char*,int,...) ;
 
 __attribute__((used)) static void
 audio_refresh_list_row_ui(
@@ -68,8 +68,8 @@ audio_refresh_list_row_ui(
     char *info_dst, *info_dst_2;
 
 
-    info_src_2 = NULL;
-    info_dst_2 = NULL;
+    info_src_2 = ((void*)0);
+    info_dst_2 = ((void*)0);
 
     const gchar *s_track, *s_track_name;
     gchar *s_drc, *s_gain, *s_br_quality, *s_sr;
@@ -84,7 +84,7 @@ audio_refresh_list_row_ui(
     title = ghb_lookup_title(title_id, &titleindex);
     track = ghb_dict_get_int(settings, "Track");
     aconfig = ghb_get_audio_info(title, track);
-    if (aconfig == NULL)
+    if (aconfig == ((void*)0))
     {
         return;
     }
@@ -93,9 +93,9 @@ audio_refresh_list_row_ui(
     s_track = aconfig->lang.description;
     encoder = ghb_settings_audio_encoder(settings, "Encoder");
 
-    gboolean qe      = ghb_audio_quality_enabled(settings);
-    double   quality = ghb_dict_get_double(settings, "Quality");
-    int      bitrate = ghb_dict_get_int(settings, "Bitrate");
+    gboolean qe = ghb_audio_quality_enabled(settings);
+    double quality = ghb_dict_get_double(settings, "Quality");
+    int bitrate = ghb_dict_get_int(settings, "Bitrate");
     if (qe && quality != HB_INVALID_AUDIO_QUALITY)
     {
         char *tmp = ghb_format_quality(_("Quality: "),
@@ -162,7 +162,7 @@ audio_refresh_list_row_ui(
         }
     }
     gtk_tree_store_set(GTK_TREE_STORE(tm), ti,
-        // These are displayed in list
+
         0, info_src,
         1, "-->",
         2, info_dst,
@@ -171,20 +171,20 @@ audio_refresh_list_row_ui(
         5, 0.5,
         -1);
 
-    if (info_src_2 != NULL || info_dst_2 != NULL)
+    if (info_src_2 != ((void*)0) || info_dst_2 != ((void*)0))
     {
-        if (info_src_2 == NULL)
+        if (info_src_2 == ((void*)0))
             info_src_2 = g_strdup("");
-        if (info_dst_2 == NULL)
+        if (info_dst_2 == ((void*)0))
             info_dst_2 = g_strdup("");
 
-        // Get the child of the selection
+
         if (!gtk_tree_model_iter_children(tm, &cti, ti))
         {
             gtk_tree_store_append(GTK_TREE_STORE(tm), &cti, ti);
         }
         gtk_tree_store_set(GTK_TREE_STORE(tm), &cti,
-            // These are displayed in list
+
             0, info_src_2,
             2, info_dst_2,
             5, 0.0,

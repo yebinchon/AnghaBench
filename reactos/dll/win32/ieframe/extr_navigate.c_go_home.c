@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wszPageName ;
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  LPBYTE ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  int /*<<< orphan*/  DocHost ;
-typedef  scalar_t__ DWORD ;
 
-/* Variables and functions */
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  HKEY_CURRENT_USER ; 
- int MAX_PATH ; 
- scalar_t__ REG_SZ ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- scalar_t__ RegOpenKeyW (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *) ; 
- scalar_t__ RegQueryValueExW (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *,scalar_t__*,int /*<<< orphan*/ ,scalar_t__*) ; 
- int /*<<< orphan*/  navigate_url (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int wszPageName ;
+typedef char WCHAR ;
+typedef int LPBYTE ;
+typedef int HRESULT ;
+typedef int HKEY ;
+typedef int DocHost ;
+typedef scalar_t__ DWORD ;
+
+
+ scalar_t__ ERROR_SUCCESS ;
+ int HKEY_CURRENT_USER ;
+ int MAX_PATH ;
+ scalar_t__ REG_SZ ;
+ int RegCloseKey (int ) ;
+ scalar_t__ RegOpenKeyW (int ,char const*,int *) ;
+ scalar_t__ RegQueryValueExW (int ,char const*,int *,scalar_t__*,int ,scalar_t__*) ;
+ int navigate_url (int *,char const*,int *,int *,int *,int *) ;
 
 HRESULT go_home(DocHost *This)
 {
@@ -42,13 +42,13 @@ HRESULT go_home(DocHost *This)
 
     res = RegOpenKeyW(HKEY_CURRENT_USER, wszSubKey, &hkey);
     if (res != ERROR_SUCCESS)
-        return navigate_url(This, wszAboutBlank, NULL, NULL, NULL, NULL);
+        return navigate_url(This, wszAboutBlank, ((void*)0), ((void*)0), ((void*)0), ((void*)0));
 
     size = sizeof(wszPageName);
-    res = RegQueryValueExW(hkey, wszStartPage, NULL, &type, (LPBYTE)wszPageName, &size);
+    res = RegQueryValueExW(hkey, wszStartPage, ((void*)0), &type, (LPBYTE)wszPageName, &size);
     RegCloseKey(hkey);
     if (res != ERROR_SUCCESS || type != REG_SZ)
-        return navigate_url(This, wszAboutBlank, NULL, NULL, NULL, NULL);
+        return navigate_url(This, wszAboutBlank, ((void*)0), ((void*)0), ((void*)0), ((void*)0));
 
-    return navigate_url(This, wszPageName, NULL, NULL, NULL, NULL);
+    return navigate_url(This, wszPageName, ((void*)0), ((void*)0), ((void*)0), ((void*)0));
 }

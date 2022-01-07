@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct ieee_info {int const* pend; } ;
-typedef  scalar_t__ ieee_record_enum_type ;
-typedef  int bfd_byte ;
-typedef  int /*<<< orphan*/  bfd_boolean ;
+typedef scalar_t__ ieee_record_enum_type ;
+typedef int bfd_byte ;
+typedef int bfd_boolean ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  ieee_eof (struct ieee_info*) ; 
- int /*<<< orphan*/  ieee_error (struct ieee_info*,int const*,int /*<<< orphan*/ ) ; 
- scalar_t__ ieee_extension_length_1_enum ; 
- scalar_t__ ieee_extension_length_2_enum ; 
+
+ int FALSE ;
+ int TRUE ;
+ int _ (char*) ;
+ int ieee_eof (struct ieee_info*) ;
+ int ieee_error (struct ieee_info*,int const*,int ) ;
+ scalar_t__ ieee_extension_length_1_enum ;
+ scalar_t__ ieee_extension_length_2_enum ;
 
 __attribute__((used)) static bfd_boolean
 ieee_read_optional_id (struct ieee_info *info, const bfd_byte **pp,
-		       const char **pname, unsigned long *pnamlen,
-		       bfd_boolean *ppresent)
+         const char **pname, unsigned long *pnamlen,
+         bfd_boolean *ppresent)
 {
   bfd_byte b;
   unsigned long len;
@@ -55,12 +55,12 @@ ieee_read_optional_id (struct ieee_info *info, const bfd_byte **pp,
     }
   else
     {
-      if (ppresent != NULL)
-	{
-	  --*pp;
-	  *ppresent = FALSE;
-	  return TRUE;
-	}
+      if (ppresent != ((void*)0))
+ {
+   --*pp;
+   *ppresent = FALSE;
+   return TRUE;
+ }
       ieee_error (info, *pp - 1, _("invalid string length"));
       return FALSE;
     }
@@ -75,7 +75,7 @@ ieee_read_optional_id (struct ieee_info *info, const bfd_byte **pp,
   *pnamlen = len;
   *pp += len;
 
-  if (ppresent != NULL)
+  if (ppresent != ((void*)0))
     *ppresent = TRUE;
 
   return TRUE;

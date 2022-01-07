@@ -1,75 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {int sizecode; int sizek; int nups; int sizep; int is_vararg; int /*<<< orphan*/ * code; TYPE_1__** p; int /*<<< orphan*/ * k; } ;
+
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_9__ {int sizecode; int sizek; int nups; int sizep; int is_vararg; int * code; TYPE_1__** p; int * k; } ;
 struct TYPE_8__ {int nups; } ;
-typedef  TYPE_2__ Proto ;
-typedef  int OpCode ;
-typedef  int /*<<< orphan*/  Instruction ;
+typedef TYPE_2__ Proto ;
+typedef int OpCode ;
+typedef int Instruction ;
 
-/* Variables and functions */
- int GETARG_A (int /*<<< orphan*/ ) ; 
- int GETARG_B (int /*<<< orphan*/ ) ; 
- int GETARG_Bx (int /*<<< orphan*/ ) ; 
- int GETARG_C (int /*<<< orphan*/ ) ; 
- int GETARG_sBx (int /*<<< orphan*/ ) ; 
- int GET_OPCODE (int /*<<< orphan*/ ) ; 
- int LUA_MULTRET ; 
- int NO_REG ; 
- int NUM_OPCODES ; 
-#define  OP_CALL 148 
-#define  OP_CLOSURE 147 
-#define  OP_CONCAT 146 
-#define  OP_FORLOOP 145 
-#define  OP_FORPREP 144 
-#define  OP_GETGLOBAL 143 
-#define  OP_GETUPVAL 142 
-#define  OP_JMP 141 
-#define  OP_LOADBOOL 140 
-#define  OP_LOADNIL 139 
- int OP_MOVE ; 
-#define  OP_RETURN 138 
-#define  OP_SELF 137 
-#define  OP_SETGLOBAL 136 
-#define  OP_SETLIST 135 
-#define  OP_SETUPVAL 134 
-#define  OP_TAILCALL 133 
-#define  OP_TFORLOOP 132 
-#define  OP_VARARG 131 
- int /*<<< orphan*/  OpArgK ; 
- int /*<<< orphan*/  OpArgR ; 
- int VARARG_ISVARARG ; 
- int VARARG_NEEDSARG ; 
- int /*<<< orphan*/  check (int) ; 
- int checkArgMode (TYPE_2__ const*,int,int /*<<< orphan*/ ) ; 
- int checkopenop (TYPE_2__ const*,int) ; 
- int /*<<< orphan*/  checkreg (TYPE_2__ const*,int) ; 
- int /*<<< orphan*/  getBMode (int) ; 
- int /*<<< orphan*/  getCMode (int) ; 
- int getOpMode (int) ; 
-#define  iABC 130 
-#define  iABx 129 
-#define  iAsBx 128 
- int precheck (TYPE_2__ const*) ; 
- scalar_t__ testAMode (int) ; 
- scalar_t__ testTMode (int) ; 
- int ttisstring (int /*<<< orphan*/ *) ; 
+
+ int GETARG_A (int ) ;
+ int GETARG_B (int ) ;
+ int GETARG_Bx (int ) ;
+ int GETARG_C (int ) ;
+ int GETARG_sBx (int ) ;
+ int GET_OPCODE (int ) ;
+ int LUA_MULTRET ;
+ int NO_REG ;
+ int NUM_OPCODES ;
+ int OP_MOVE ;
+ int OpArgK ;
+ int OpArgR ;
+ int VARARG_ISVARARG ;
+ int VARARG_NEEDSARG ;
+ int check (int) ;
+ int checkArgMode (TYPE_2__ const*,int,int ) ;
+ int checkopenop (TYPE_2__ const*,int) ;
+ int checkreg (TYPE_2__ const*,int) ;
+ int getBMode (int) ;
+ int getCMode (int) ;
+ int getOpMode (int) ;
+
+
+
+ int precheck (TYPE_2__ const*) ;
+ scalar_t__ testAMode (int) ;
+ scalar_t__ testTMode (int) ;
+ int ttisstring (int *) ;
 
 __attribute__((used)) static Instruction symbexec (const Proto *pt, int lastpc, int reg) {
   int pc;
-  int last;  /* stores position of last instruction that changed `reg' */
-  last = pt->sizecode-1;  /* points to final return (a `neutral' instruction) */
+  int last;
+  last = pt->sizecode-1;
   check(precheck(pt));
   for (pc = 0; pc < lastpc; pc++) {
     Instruction i = pt->code[pc];
@@ -80,35 +62,35 @@ __attribute__((used)) static Instruction symbexec (const Proto *pt, int lastpc, 
     check(op < NUM_OPCODES);
     checkreg(pt, a);
     switch (getOpMode(op)) {
-      case iABC: {
+      case 130: {
         b = GETARG_B(i);
         c = GETARG_C(i);
         check(checkArgMode(pt, b, getBMode(op)));
         check(checkArgMode(pt, c, getCMode(op)));
         break;
       }
-      case iABx: {
+      case 129: {
         b = GETARG_Bx(i);
         if (getBMode(op) == OpArgK) check(b < pt->sizek);
         break;
       }
-      case iAsBx: {
+      case 128: {
         b = GETARG_sBx(i);
         if (getBMode(op) == OpArgR) {
           int dest = pc+1+b;
           check(0 <= dest && dest < pt->sizecode);
           if (dest > 0) {
             int j;
-            /* check that it does not jump to a setlist count; this
-               is tricky, because the count from a previous setlist may
-               have the same value of an invalid setlist; so, we must
-               go all the way back to the first of them (if any) */
+
+
+
+
             for (j = 0; j < dest; j++) {
               Instruction d = pt->code[dest-1-j];
-              if (!(GET_OPCODE(d) == OP_SETLIST && GETARG_C(d) == 0)) break;
+              if (!(GET_OPCODE(d) == 135 && GETARG_C(d) == 0)) break;
             }
-            /* if 'j' is even, previous value is not a setlist (even if
-               it looks like one) */
+
+
             check((j&1) == 0);
           }
         }
@@ -116,82 +98,82 @@ __attribute__((used)) static Instruction symbexec (const Proto *pt, int lastpc, 
       }
     }
     if (testAMode(op)) {
-      if (a == reg) last = pc;  /* change register `a' */
+      if (a == reg) last = pc;
     }
     if (testTMode(op)) {
-      check(pc+2 < pt->sizecode);  /* check skip */
-      check(GET_OPCODE(pt->code[pc+1]) == OP_JMP);
+      check(pc+2 < pt->sizecode);
+      check(GET_OPCODE(pt->code[pc+1]) == 141);
     }
     switch (op) {
-      case OP_LOADBOOL: {
-        if (c == 1) {  /* does it jump? */
-          check(pc+2 < pt->sizecode);  /* check its jump */
-          check(GET_OPCODE(pt->code[pc+1]) != OP_SETLIST ||
+      case 140: {
+        if (c == 1) {
+          check(pc+2 < pt->sizecode);
+          check(GET_OPCODE(pt->code[pc+1]) != 135 ||
                 GETARG_C(pt->code[pc+1]) != 0);
         }
         break;
       }
-      case OP_LOADNIL: {
+      case 139: {
         if (a <= reg && reg <= b)
-          last = pc;  /* set registers from `a' to `b' */
+          last = pc;
         break;
       }
-      case OP_GETUPVAL:
-      case OP_SETUPVAL: {
+      case 142:
+      case 134: {
         check(b < pt->nups);
         break;
       }
-      case OP_GETGLOBAL:
-      case OP_SETGLOBAL: {
+      case 143:
+      case 136: {
         check(ttisstring(&pt->k[b]));
         break;
       }
-      case OP_SELF: {
+      case 137: {
         checkreg(pt, a+1);
         if (reg == a+1) last = pc;
         break;
       }
-      case OP_CONCAT: {
-        check(b < c);  /* at least two operands */
+      case 146: {
+        check(b < c);
         break;
       }
-      case OP_TFORLOOP: {
-        check(c >= 1);  /* at least one result (control variable) */
-        checkreg(pt, a+2+c);  /* space for results */
-        if (reg >= a+2) last = pc;  /* affect all regs above its base */
+      case 132: {
+        check(c >= 1);
+        checkreg(pt, a+2+c);
+        if (reg >= a+2) last = pc;
         break;
       }
-      case OP_FORLOOP:
-      case OP_FORPREP:
+      case 145:
+      case 144:
         checkreg(pt, a+3);
-        /* go through */
-      case OP_JMP: {
+
+      case 141: {
         int dest = pc+1+b;
-        /* not full check and jump is forward and do not skip `lastpc'? */
+
         if (reg != NO_REG && pc < dest && dest <= lastpc)
-          pc += b;  /* do the jump */
+          pc += b;
         break;
       }
-      case OP_CALL:
-      case OP_TAILCALL: {
+      case 148:
+      case 133: {
         if (b != 0) {
           checkreg(pt, a+b-1);
         }
-        c--;  /* c = num. returns */
+        c--;
         if (c == LUA_MULTRET) {
           check(checkopenop(pt, pc));
         }
         else if (c != 0)
           checkreg(pt, a+c-1);
-        if (reg >= a) last = pc;  /* affect all registers above base */
+        if (reg >= a) last = pc;
         break;
       }
-      case OP_RETURN: {
-        b--;  /* b = num. returns */
+      case 138: {
+        b--;
         if (b > 0) checkreg(pt, a+b-1);
         break;
       }
-      case OP_SETLIST: {
+      case 135: {
         if (b > 0) checkreg(pt, a + b);
         if (c == 0) {
           pc++;
@@ -199,20 +181,20 @@ __attribute__((used)) static Instruction symbexec (const Proto *pt, int lastpc, 
         }
         break;
       }
-      case OP_CLOSURE: {
+      case 147: {
         int nup, j;
         check(b < pt->sizep);
         nup = pt->p[b]->nups;
         check(pc + nup < pt->sizecode);
         for (j = 1; j <= nup; j++) {
           OpCode op1 = GET_OPCODE(pt->code[pc + j]);
-          check(op1 == OP_GETUPVAL || op1 == OP_MOVE);
+          check(op1 == 142 || op1 == OP_MOVE);
         }
-        if (reg != NO_REG)  /* tracing? */
-          pc += nup;  /* do not 'execute' these pseudo-instructions */
+        if (reg != NO_REG)
+          pc += nup;
         break;
       }
-      case OP_VARARG: {
+      case 131: {
         check((pt->is_vararg & VARARG_ISVARARG) &&
              !(pt->is_vararg & VARARG_NEEDSARG));
         b--;

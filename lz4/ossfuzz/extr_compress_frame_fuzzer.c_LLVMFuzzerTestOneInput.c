@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  LZ4F_preferences_t ;
-typedef  int /*<<< orphan*/  FUZZ_dataProducer_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FUZZ_ASSERT (char* const) ; 
- int /*<<< orphan*/  FUZZ_ASSERT_MSG (int,char*) ; 
- int /*<<< orphan*/ * FUZZ_dataProducer_create (int /*<<< orphan*/  const*,size_t) ; 
- int /*<<< orphan*/  FUZZ_dataProducer_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FUZZ_dataProducer_preferences (int /*<<< orphan*/ *) ; 
- size_t FUZZ_dataProducer_remainingBytes (int /*<<< orphan*/ *) ; 
- size_t FUZZ_dataProducer_retrieve32 (int /*<<< orphan*/ *) ; 
- size_t FUZZ_decompressFrame (char* const,size_t,char* const,size_t const) ; 
- size_t FUZZ_getRange_from_uint32 (size_t const,int /*<<< orphan*/ ,size_t const) ; 
- size_t LZ4F_compressFrame (char* const,size_t const,int /*<<< orphan*/  const*,size_t,int /*<<< orphan*/  const*) ; 
- size_t LZ4F_compressFrameBound (size_t,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  LZ4F_isError (size_t const) ; 
- int /*<<< orphan*/  free (char* const) ; 
- scalar_t__ malloc (size_t const) ; 
- int /*<<< orphan*/  memcmp (int /*<<< orphan*/  const*,char* const,size_t) ; 
+
+
+
+typedef int uint8_t ;
+typedef int LZ4F_preferences_t ;
+typedef int FUZZ_dataProducer_t ;
+
+
+ int FUZZ_ASSERT (char* const) ;
+ int FUZZ_ASSERT_MSG (int,char*) ;
+ int * FUZZ_dataProducer_create (int const*,size_t) ;
+ int FUZZ_dataProducer_free (int *) ;
+ int FUZZ_dataProducer_preferences (int *) ;
+ size_t FUZZ_dataProducer_remainingBytes (int *) ;
+ size_t FUZZ_dataProducer_retrieve32 (int *) ;
+ size_t FUZZ_decompressFrame (char* const,size_t,char* const,size_t const) ;
+ size_t FUZZ_getRange_from_uint32 (size_t const,int ,size_t const) ;
+ size_t LZ4F_compressFrame (char* const,size_t const,int const*,size_t,int const*) ;
+ size_t LZ4F_compressFrameBound (size_t,int const*) ;
+ int LZ4F_isError (size_t const) ;
+ int free (char* const) ;
+ scalar_t__ malloc (size_t const) ;
+ int memcmp (int const*,char* const,size_t) ;
 
 int LLVMFuzzerTestOneInput(const uint8_t *data, size_t size)
 {
@@ -47,7 +47,7 @@ int LLVMFuzzerTestOneInput(const uint8_t *data, size_t size)
     FUZZ_ASSERT(dst);
     FUZZ_ASSERT(rt);
 
-    /* If compression succeeds it must round trip correctly. */
+
     size_t const dstSize =
             LZ4F_compressFrame(dst, dstCapacity, data, size, &prefs);
     if (!LZ4F_isError(dstSize)) {

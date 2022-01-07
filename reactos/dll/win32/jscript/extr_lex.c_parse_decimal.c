@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  int LONGLONG ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_FAIL ; 
- int INT_MAX ; 
- int INT_MIN ; 
- int /*<<< orphan*/  JS_E_MISSING_SEMICOLON ; 
- int MAXLONGLONG ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  WARN (char*) ; 
- scalar_t__ is_identifier_char (char const) ; 
- scalar_t__ iswdigit (char const) ; 
- int pow (int,int) ; 
+
+
+
+typedef char WCHAR ;
+typedef int LONGLONG ;
+typedef int HRESULT ;
+
+
+ int E_FAIL ;
+ int INT_MAX ;
+ int INT_MIN ;
+ int JS_E_MISSING_SEMICOLON ;
+ int MAXLONGLONG ;
+ int S_OK ;
+ int WARN (char*) ;
+ scalar_t__ is_identifier_char (char const) ;
+ scalar_t__ iswdigit (char const) ;
+ int pow (int,int) ;
 
 HRESULT parse_decimal(const WCHAR **iter, const WCHAR *end, double *ret)
 {

@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_object_t ;
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_5__ {int /*<<< orphan*/  pf_control; int /*<<< orphan*/  s; int /*<<< orphan*/  pf_readdir; } ;
-typedef  TYPE_1__ stream_t ;
-typedef  int ssize_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHECK_FILE (TYPE_1__*) ; 
- int /*<<< orphan*/  ReadBR ; 
- char* StreamLocation (TYPE_1__*) ; 
- int VLC_EGENERIC ; 
- int VLC_SUCCESS ; 
- int /*<<< orphan*/  access_vaDirectoryControlHelper ; 
- scalar_t__ memcmp (int /*<<< orphan*/  const*,char const*,int) ; 
- int /*<<< orphan*/  stream_HasExtension (TYPE_1__*,char*) ; 
- size_t strlen (char const*) ; 
- int /*<<< orphan*/  strncasecmp (char const*,char*,int) ; 
- int vlc_stream_Peek (int /*<<< orphan*/ ,int /*<<< orphan*/  const**,int) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int vlc_object_t ;
+typedef int uint8_t ;
+struct TYPE_5__ {int pf_control; int s; int pf_readdir; } ;
+typedef TYPE_1__ stream_t ;
+typedef int ssize_t ;
+
+
+ int CHECK_FILE (TYPE_1__*) ;
+ int ReadBR ;
+ char* StreamLocation (TYPE_1__*) ;
+ int VLC_EGENERIC ;
+ int VLC_SUCCESS ;
+ int access_vaDirectoryControlHelper ;
+ scalar_t__ memcmp (int const*,char const*,int) ;
+ int stream_HasExtension (TYPE_1__*,char*) ;
+ size_t strlen (char const*) ;
+ int strncasecmp (char const*,char*,int) ;
+ int vlc_stream_Peek (int ,int const**,int) ;
 
 int Import_BDMV( vlc_object_t *p_this )
 {
@@ -40,7 +40,7 @@ int Import_BDMV( vlc_object_t *p_this )
         return VLC_EGENERIC;
 
     const char *psz_location = StreamLocation( p_stream );
-    if( psz_location == NULL )
+    if( psz_location == ((void*)0) )
         return VLC_EGENERIC;
 
     size_t len = strlen( psz_location );
@@ -49,9 +49,9 @@ int Import_BDMV( vlc_object_t *p_this )
 
     const char *psz_probe;
     const char *psz_file = &psz_location[len - 10];
-    /* Valid filenames are :
-     *  - INDEX.BDMV
-     */
+
+
+
     if( !strncasecmp( psz_file, "INDEX", 5 ) )
     {
         psz_probe = "INDX0200";

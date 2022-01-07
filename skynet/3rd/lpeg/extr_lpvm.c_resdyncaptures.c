@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  int lua_Integer ;
 
-/* Variables and functions */
- int /*<<< orphan*/  luaL_error (int /*<<< orphan*/ *,char*) ; 
- scalar_t__ lua_isboolean (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_remove (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_settop (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_toboolean (int /*<<< orphan*/ *,int) ; 
- int lua_tointeger (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int lua_State ;
+typedef int lua_Integer ;
+
+
+ int luaL_error (int *,char*) ;
+ scalar_t__ lua_isboolean (int *,int) ;
+ int lua_remove (int *,int) ;
+ int lua_settop (int *,int) ;
+ int lua_toboolean (int *,int) ;
+ int lua_tointeger (int *,int) ;
 
 __attribute__((used)) static int resdyncaptures (lua_State *L, int fr, int curr, int limit) {
   lua_Integer res;
-  if (!lua_toboolean(L, fr)) {  /* false value? */
-    lua_settop(L, fr - 1);  /* remove results */
-    return -1;  /* and fail */
+  if (!lua_toboolean(L, fr)) {
+    lua_settop(L, fr - 1);
+    return -1;
   }
-  else if (lua_isboolean(L, fr))  /* true? */
-    res = curr;  /* keep current position */
+  else if (lua_isboolean(L, fr))
+    res = curr;
   else {
-    res = lua_tointeger(L, fr) - 1;  /* new position */
+    res = lua_tointeger(L, fr) - 1;
     if (res < curr || res > limit)
       luaL_error(L, "invalid position returned by match-time capture");
   }
-  lua_remove(L, fr);  /* remove first result (offset) */
+  lua_remove(L, fr);
   return res;
 }

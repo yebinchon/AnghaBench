@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint64_t ;
-struct TYPE_2__ {char* sct_text_file; int /*<<< orphan*/  sct_dir; int /*<<< orphan*/  sct_list; } ;
-typedef  int /*<<< orphan*/  SCT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CT_LOG_ENTRY_TYPE_X509 ; 
- int /*<<< orphan*/  EXECUTE_CT_TEST () ; 
- int /*<<< orphan*/  SCT_VERSION_V1 ; 
- int /*<<< orphan*/ * SCT_new_from_base64 (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,int const,char const*,char const*) ; 
- int /*<<< orphan*/  SETUP_CT_TEST_FIXTURE () ; 
- int /*<<< orphan*/  TEST_ptr (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ct_dir ; 
- TYPE_1__* fixture ; 
- int result ; 
- int /*<<< orphan*/  sk_SCT_new_null () ; 
- int /*<<< orphan*/  sk_SCT_push (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int uint64_t ;
+struct TYPE_2__ {char* sct_text_file; int sct_dir; int sct_list; } ;
+typedef int SCT ;
+
+
+ int CT_LOG_ENTRY_TYPE_X509 ;
+ int EXECUTE_CT_TEST () ;
+ int SCT_VERSION_V1 ;
+ int * SCT_new_from_base64 (int ,char const*,int ,int const,char const*,char const*) ;
+ int SETUP_CT_TEST_FIXTURE () ;
+ int TEST_ptr (int *) ;
+ int ct_dir ;
+ TYPE_1__* fixture ;
+ int result ;
+ int sk_SCT_new_null () ;
+ int sk_SCT_push (int ,int *) ;
 
 __attribute__((used)) static int test_encode_tls_sct(void)
 {
@@ -35,10 +35,10 @@ __attribute__((used)) static int test_encode_tls_sct(void)
     const char extensions[] = "";
     const char signature[] = "BAMARzBAMiBIL2dRrzXbplQ2vh/WZA89v5pBQpSVkkUwKI+j5"
             "eI+BgIhAOTtwNs6xXKx4vXoq2poBlOYfc9BAn3+/6EFUZ2J7b8I";
-    SCT *sct = NULL;
+    SCT *sct = ((void*)0);
 
     SETUP_CT_TEST_FIXTURE();
-    if (fixture == NULL)
+    if (fixture == ((void*)0))
         return 0;
 
     fixture->sct_list = sk_SCT_new_null();

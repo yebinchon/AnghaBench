@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  AVIOContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_RB32 (int*) ; 
- int FFMIN (int /*<<< orphan*/ ,int) ; 
-#define  HEVC_NAL_PPS 130 
-#define  HEVC_NAL_SPS 129 
-#define  HEVC_NAL_VPS 128 
- int /*<<< orphan*/  av_free (int*) ; 
- int /*<<< orphan*/  avio_wb32 (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  avio_write (int /*<<< orphan*/ *,int*,int) ; 
- int ff_avc_parse_nal_units (int /*<<< orphan*/ *,int const*,int) ; 
- int ff_avc_parse_nal_units_buf (int const*,int**,int*) ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef int AVIOContext ;
+
+
+ int AV_RB32 (int*) ;
+ int FFMIN (int ,int) ;
+
+
+
+ int av_free (int*) ;
+ int avio_wb32 (int *,int) ;
+ int avio_write (int *,int*,int) ;
+ int ff_avc_parse_nal_units (int *,int const*,int) ;
+ int ff_avc_parse_nal_units_buf (int const*,int**,int*) ;
 
 int ff_hevc_annexb2mp4(AVIOContext *pb, const uint8_t *buf_in,
                        int size, int filter_ps, int *ps_count)
 {
     int num_ps = 0, ret = 0;
-    uint8_t *buf, *end, *start = NULL;
+    uint8_t *buf, *end, *start = ((void*)0);
 
     if (!filter_ps) {
         ret = ff_avc_parse_nal_units(pb, buf_in, size);
@@ -52,9 +52,9 @@ int ff_hevc_annexb2mp4(AVIOContext *pb, const uint8_t *buf_in,
         buf += 4;
 
         switch (type) {
-        case HEVC_NAL_VPS:
-        case HEVC_NAL_SPS:
-        case HEVC_NAL_PPS:
+        case 128:
+        case 129:
+        case 130:
             num_ps++;
             break;
         default:

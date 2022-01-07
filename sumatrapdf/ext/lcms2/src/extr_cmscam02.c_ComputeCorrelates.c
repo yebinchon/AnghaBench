@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int cmsFloat64Number ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int cmsFloat64Number ;
 struct TYPE_7__ {double A; } ;
 struct TYPE_8__ {double Nc; double Ncb; double c; double z; double FL; double n; TYPE_1__ adoptedWhite; } ;
-typedef  TYPE_2__ cmsCIECAM02 ;
+typedef TYPE_2__ cmsCIECAM02 ;
 struct TYPE_9__ {double* RGBpa; int h; int H; double J; double A; double Q; double C; double M; double s; } ;
-typedef  TYPE_3__ CAM02COLOR ;
+typedef TYPE_3__ CAM02COLOR ;
 
-/* Variables and functions */
- int atan (int) ; 
- double cos (int) ; 
- double pow (double,double) ; 
+
+ int atan (int) ;
+ double cos (int) ;
+ double pow (double,double) ;
 
 __attribute__((used)) static
 CAM02COLOR ComputeCorrelates(CAM02COLOR clr, cmsCIECAM02* pMod)
@@ -35,15 +35,15 @@ CAM02COLOR ComputeCorrelates(CAM02COLOR clr, cmsCIECAM02* pMod)
 
     r2d = (180.0 / 3.141592654);
     if (a == 0) {
-        if (b == 0)     clr.h = 0;
+        if (b == 0) clr.h = 0;
         else if (b > 0) clr.h = 90;
-        else            clr.h = 270;
+        else clr.h = 270;
     }
     else if (a > 0) {
         temp = b / a;
-        if (b > 0)       clr.h = (r2d * atan(temp));
+        if (b > 0) clr.h = (r2d * atan(temp));
         else if (b == 0) clr.h = 0;
-        else             clr.h = (r2d * atan(temp)) + 360;
+        else clr.h = (r2d * atan(temp)) + 360;
     }
     else {
         temp = b / a;

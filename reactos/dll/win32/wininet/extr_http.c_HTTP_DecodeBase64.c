@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  unsigned int UINT ;
-typedef  unsigned char* LPSTR ;
-typedef  size_t* LPCWSTR ;
 
-/* Variables and functions */
- size_t ARRAYSIZE (char*) ; 
- char* HTTP_Base64Dec ; 
- int /*<<< orphan*/  WARN (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  debugstr_w (size_t*) ; 
+
+
+
+typedef unsigned int UINT ;
+typedef unsigned char* LPSTR ;
+typedef size_t* LPCWSTR ;
+
+
+ size_t ARRAYSIZE (char*) ;
+ char* HTTP_Base64Dec ;
+ int WARN (char*,int ) ;
+ int debugstr_w (size_t*) ;
 
 __attribute__((used)) static UINT HTTP_DecodeBase64( LPCWSTR base64, LPSTR bin )
 {

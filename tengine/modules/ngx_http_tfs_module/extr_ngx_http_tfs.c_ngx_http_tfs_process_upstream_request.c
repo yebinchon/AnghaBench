@@ -1,72 +1,72 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_32__   TYPE_8__ ;
-typedef  struct TYPE_31__   TYPE_7__ ;
-typedef  struct TYPE_30__   TYPE_6__ ;
-typedef  struct TYPE_29__   TYPE_5__ ;
-typedef  struct TYPE_28__   TYPE_4__ ;
-typedef  struct TYPE_27__   TYPE_3__ ;
-typedef  struct TYPE_26__   TYPE_2__ ;
-typedef  struct TYPE_25__   TYPE_21__ ;
-typedef  struct TYPE_24__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ ngx_int_t ;
-struct TYPE_29__ {scalar_t__ parse_state; scalar_t__ (* process_request_body ) (TYPE_5__*) ;TYPE_3__* main_conf; TYPE_8__* recv_chain; int /*<<< orphan*/  request_sent; TYPE_6__* tfs_peer; } ;
-typedef  TYPE_5__ ngx_http_tfs_t ;
-struct TYPE_28__ {int /*<<< orphan*/  last; } ;
-struct TYPE_24__ {int /*<<< orphan*/  name; TYPE_7__* connection; } ;
-struct TYPE_30__ {TYPE_4__ body_buffer; int /*<<< orphan*/  peer_addr_text; TYPE_1__ peer; } ;
-typedef  TYPE_6__ ngx_http_tfs_peer_connection_t ;
-typedef  int /*<<< orphan*/  ngx_http_request_t ;
-struct TYPE_31__ {scalar_t__ (* recv_chain ) (TYPE_7__*,TYPE_8__*,int /*<<< orphan*/ ) ;int /*<<< orphan*/  log; TYPE_21__* read; } ;
-typedef  TYPE_7__ ngx_connection_t ;
+
+
+typedef struct TYPE_32__ TYPE_8__ ;
+typedef struct TYPE_31__ TYPE_7__ ;
+typedef struct TYPE_30__ TYPE_6__ ;
+typedef struct TYPE_29__ TYPE_5__ ;
+typedef struct TYPE_28__ TYPE_4__ ;
+typedef struct TYPE_27__ TYPE_3__ ;
+typedef struct TYPE_26__ TYPE_2__ ;
+typedef struct TYPE_25__ TYPE_21__ ;
+typedef struct TYPE_24__ TYPE_1__ ;
+
+
+typedef scalar_t__ ngx_int_t ;
+struct TYPE_29__ {scalar_t__ parse_state; scalar_t__ (* process_request_body ) (TYPE_5__*) ;TYPE_3__* main_conf; TYPE_8__* recv_chain; int request_sent; TYPE_6__* tfs_peer; } ;
+typedef TYPE_5__ ngx_http_tfs_t ;
+struct TYPE_28__ {int last; } ;
+struct TYPE_24__ {int name; TYPE_7__* connection; } ;
+struct TYPE_30__ {TYPE_4__ body_buffer; int peer_addr_text; TYPE_1__ peer; } ;
+typedef TYPE_6__ ngx_http_tfs_peer_connection_t ;
+typedef int ngx_http_request_t ;
+struct TYPE_31__ {scalar_t__ (* recv_chain ) (TYPE_7__*,TYPE_8__*,int ) ;int log; TYPE_21__* read; } ;
+typedef TYPE_7__ ngx_connection_t ;
 struct TYPE_32__ {TYPE_2__* buf; struct TYPE_32__* next; } ;
-typedef  TYPE_8__ ngx_chain_t ;
-struct TYPE_27__ {int /*<<< orphan*/  tfs_read_timeout; } ;
+typedef TYPE_8__ ngx_chain_t ;
+struct TYPE_27__ {int tfs_read_timeout; } ;
 struct TYPE_26__ {scalar_t__ last; scalar_t__ end; } ;
 struct TYPE_25__ {scalar_t__ timer_set; } ;
 
-/* Variables and functions */
- scalar_t__ NGX_AGAIN ; 
- scalar_t__ NGX_DONE ; 
- scalar_t__ NGX_ERROR ; 
- int /*<<< orphan*/  NGX_HTTP_INTERNAL_SERVER_ERROR ; 
- scalar_t__ NGX_HTTP_TFS_BODY ; 
- scalar_t__ NGX_HTTP_TFS_HEADER ; 
- int /*<<< orphan*/  NGX_LOG_DEBUG_HTTP ; 
- int /*<<< orphan*/  NGX_LOG_ERR ; 
- scalar_t__ NGX_OK ; 
- int /*<<< orphan*/  ngx_add_timer (TYPE_21__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_del_timer (TYPE_21__*) ; 
- scalar_t__ ngx_handle_read_event (TYPE_21__*,int /*<<< orphan*/ ) ; 
- scalar_t__ ngx_http_tfs_alloc_buf (TYPE_5__*) ; 
- int /*<<< orphan*/  ngx_http_tfs_finalize_request (int /*<<< orphan*/ *,TYPE_5__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_http_tfs_finalize_state (TYPE_5__*,scalar_t__) ; 
- int /*<<< orphan*/  ngx_http_tfs_handle_connection_failure (TYPE_5__*,TYPE_6__*) ; 
- int /*<<< orphan*/  ngx_http_tfs_process_buf_overflow (int /*<<< orphan*/ *,TYPE_5__*) ; 
- scalar_t__ ngx_http_tfs_process_header (TYPE_5__*,scalar_t__) ; 
- scalar_t__ ngx_http_tfs_test_connect (TYPE_7__*) ; 
- int /*<<< orphan*/  ngx_log_debug2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_log_error (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- scalar_t__ stub1 (TYPE_7__*,TYPE_8__*,int /*<<< orphan*/ ) ; 
- scalar_t__ stub2 (TYPE_5__*) ; 
+
+ scalar_t__ NGX_AGAIN ;
+ scalar_t__ NGX_DONE ;
+ scalar_t__ NGX_ERROR ;
+ int NGX_HTTP_INTERNAL_SERVER_ERROR ;
+ scalar_t__ NGX_HTTP_TFS_BODY ;
+ scalar_t__ NGX_HTTP_TFS_HEADER ;
+ int NGX_LOG_DEBUG_HTTP ;
+ int NGX_LOG_ERR ;
+ scalar_t__ NGX_OK ;
+ int ngx_add_timer (TYPE_21__*,int ) ;
+ int ngx_del_timer (TYPE_21__*) ;
+ scalar_t__ ngx_handle_read_event (TYPE_21__*,int ) ;
+ scalar_t__ ngx_http_tfs_alloc_buf (TYPE_5__*) ;
+ int ngx_http_tfs_finalize_request (int *,TYPE_5__*,int ) ;
+ int ngx_http_tfs_finalize_state (TYPE_5__*,scalar_t__) ;
+ int ngx_http_tfs_handle_connection_failure (TYPE_5__*,TYPE_6__*) ;
+ int ngx_http_tfs_process_buf_overflow (int *,TYPE_5__*) ;
+ scalar_t__ ngx_http_tfs_process_header (TYPE_5__*,scalar_t__) ;
+ scalar_t__ ngx_http_tfs_test_connect (TYPE_7__*) ;
+ int ngx_log_debug2 (int ,int ,int ,char*,int ,int ) ;
+ int ngx_log_error (int ,int ,int ,char*) ;
+ scalar_t__ stub1 (TYPE_7__*,TYPE_8__*,int ) ;
+ scalar_t__ stub2 (TYPE_5__*) ;
 
 __attribute__((used)) static void
 ngx_http_tfs_process_upstream_request(ngx_http_request_t *r, ngx_http_tfs_t *t)
 {
-    ngx_int_t                        n, rc;
-    ngx_chain_t                     *chain;
-    ngx_connection_t                *c;
-    ngx_http_tfs_peer_connection_t  *tp;
+    ngx_int_t n, rc;
+    ngx_chain_t *chain;
+    ngx_connection_t *c;
+    ngx_http_tfs_peer_connection_t *tp;
 
     tp = t->tfs_peer;
     c = tp->peer.connection;
@@ -76,11 +76,11 @@ ngx_http_tfs_process_upstream_request(ngx_http_request_t *r, ngx_http_tfs_t *t)
                    tp->peer.name,
                    tp->peer_addr_text);
 
-    /* for test ds retry */
-    //if (ngx_strncmp(p->name->data, ds_name.data, p->name->len) == 0) {
-    //    ngx_http_tfs_handle_connection_failure(t, tp);
-    //    return;
-    //}
+
+
+
+
+
 
     if (!t->request_sent && ngx_http_tfs_test_connect(c) != NGX_OK) {
         ngx_http_tfs_handle_connection_failure(t, tp);
@@ -107,8 +107,8 @@ ngx_http_tfs_process_upstream_request(ngx_http_request_t *r, ngx_http_tfs_t *t)
             }
         }
 
-        if (chain == NULL) {
-            /* need send data */
+        if (chain == ((void*)0)) {
+
             ngx_http_tfs_process_buf_overflow(r, t);
             return;
         }
@@ -171,6 +171,6 @@ ngx_http_tfs_process_upstream_request(ngx_http_request_t *r, ngx_http_tfs_t *t)
         break;
     }
 
-    /* rc == NGX_OK */
+
     ngx_http_tfs_finalize_state(t, rc);
 }

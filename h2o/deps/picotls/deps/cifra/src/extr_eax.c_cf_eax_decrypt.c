@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_5__ {size_t blocksz; } ;
-typedef  TYPE_1__ cf_prp ;
-typedef  int /*<<< orphan*/  cf_ctr ;
-typedef  int /*<<< orphan*/  cf_cmac_stream ;
+typedef TYPE_1__ cf_prp ;
+typedef int cf_ctr ;
+typedef int cf_cmac_stream ;
 
-/* Variables and functions */
- int CF_MAXBLOCK ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  cf_cmac_stream_init (int /*<<< orphan*/ *,TYPE_1__ const*,void*) ; 
- int /*<<< orphan*/  cf_ctr_cipher (int /*<<< orphan*/ *,int const*,int*,size_t) ; 
- int /*<<< orphan*/  cf_ctr_init (int /*<<< orphan*/ *,TYPE_1__ const*,void*,int*) ; 
- int /*<<< orphan*/  cmac_compute_n (int /*<<< orphan*/ *,int,int const*,size_t,int*) ; 
- int /*<<< orphan*/  mem_eq (int*,int const*,size_t) ; 
+
+ int CF_MAXBLOCK ;
+ int assert (int) ;
+ int cf_cmac_stream_init (int *,TYPE_1__ const*,void*) ;
+ int cf_ctr_cipher (int *,int const*,int*,size_t) ;
+ int cf_ctr_init (int *,TYPE_1__ const*,void*,int*) ;
+ int cmac_compute_n (int *,int,int const*,size_t,int*) ;
+ int mem_eq (int*,int const*,size_t) ;
 
 int cf_eax_decrypt(const cf_prp *prp, void *prpctx,
                    const uint8_t *cipher, size_t ncipher,
                    const uint8_t *header, size_t nheader,
                    const uint8_t *nonce, size_t nnonce,
                    const uint8_t *tag, size_t ntag,
-                   uint8_t *plain) /* the same size as ncipher */
+                   uint8_t *plain)
 {
   uint8_t NN[CF_MAXBLOCK],
           HH[CF_MAXBLOCK],
@@ -40,13 +40,13 @@ int cf_eax_decrypt(const cf_prp *prp, void *prpctx,
   cf_cmac_stream cmac;
   cf_cmac_stream_init(&cmac, prp, prpctx);
 
-  /* NN = OMAC_K^0(N) */
+
   cmac_compute_n(&cmac, 0, nonce, nnonce, NN);
 
-  /* HH = OMAC_K^1(H) */
+
   cmac_compute_n(&cmac, 1, header, nheader, HH);
 
-  /* CC = OMAC_K^2(C) */
+
   cmac_compute_n(&cmac, 2, cipher, ncipher, CC);
 
   uint8_t tt[CF_MAXBLOCK];

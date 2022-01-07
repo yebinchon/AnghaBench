@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint64_t ;
-typedef  scalar_t__ uint32_t ;
-typedef  scalar_t__ int64_t ;
-typedef  scalar_t__ int32_t ;
-struct TYPE_3__ {scalar_t__ i32; scalar_t__ i64; scalar_t__ u32; scalar_t__ u64; double d; int /*<<< orphan*/  size; int /*<<< orphan*/  ref; int /*<<< orphan*/  datum; int /*<<< orphan*/  param; int /*<<< orphan*/  valid_d; int /*<<< orphan*/  valid_u64; int /*<<< orphan*/  valid_u32; int /*<<< orphan*/  valid_i64; int /*<<< orphan*/  valid_i32; } ;
-typedef  TYPE_1__ PARAM_CONVERSION ;
 
-/* Variables and functions */
- int OSSL_PARAM_get_double (int /*<<< orphan*/ ,double*) ; 
- int OSSL_PARAM_get_int32 (int /*<<< orphan*/ ,scalar_t__*) ; 
- int OSSL_PARAM_get_int64 (int /*<<< orphan*/ ,scalar_t__*) ; 
- int OSSL_PARAM_get_uint32 (int /*<<< orphan*/ ,scalar_t__*) ; 
- int OSSL_PARAM_get_uint64 (int /*<<< orphan*/ ,scalar_t__*) ; 
- int OSSL_PARAM_set_double (int /*<<< orphan*/ ,double) ; 
- int OSSL_PARAM_set_int32 (int /*<<< orphan*/ ,scalar_t__) ; 
- int OSSL_PARAM_set_int64 (int /*<<< orphan*/ ,scalar_t__) ; 
- int OSSL_PARAM_set_uint32 (int /*<<< orphan*/ ,scalar_t__) ; 
- int OSSL_PARAM_set_uint64 (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  TEST_false (int) ; 
- int /*<<< orphan*/  TEST_mem_eq (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_note (char*,int) ; 
- int /*<<< orphan*/  TEST_true (int) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint64_t ;
+typedef scalar_t__ uint32_t ;
+typedef scalar_t__ int64_t ;
+typedef scalar_t__ int32_t ;
+struct TYPE_3__ {scalar_t__ i32; scalar_t__ i64; scalar_t__ u32; scalar_t__ u64; double d; int size; int ref; int datum; int param; int valid_d; int valid_u64; int valid_u32; int valid_i64; int valid_i32; } ;
+typedef TYPE_1__ PARAM_CONVERSION ;
+
+
+ int OSSL_PARAM_get_double (int ,double*) ;
+ int OSSL_PARAM_get_int32 (int ,scalar_t__*) ;
+ int OSSL_PARAM_get_int64 (int ,scalar_t__*) ;
+ int OSSL_PARAM_get_uint32 (int ,scalar_t__*) ;
+ int OSSL_PARAM_get_uint64 (int ,scalar_t__*) ;
+ int OSSL_PARAM_set_double (int ,double) ;
+ int OSSL_PARAM_set_int32 (int ,scalar_t__) ;
+ int OSSL_PARAM_set_int64 (int ,scalar_t__) ;
+ int OSSL_PARAM_set_uint32 (int ,scalar_t__) ;
+ int OSSL_PARAM_set_uint64 (int ,scalar_t__) ;
+ int TEST_false (int) ;
+ int TEST_mem_eq (int ,int ,int ,int ) ;
+ int TEST_note (char*,int) ;
+ int TEST_true (int) ;
+ int memset (int ,int,int ) ;
 
 __attribute__((used)) static int param_conversion_test(const PARAM_CONVERSION *pc, int line)
 {

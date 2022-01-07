@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {int (* xFullpath ) (TYPE_1__*,char const*,char*,int*) ;} ;
-typedef  TYPE_1__ lsm_env ;
+typedef TYPE_1__ lsm_env ;
 
-/* Variables and functions */
- int LSM_OK ; 
- int /*<<< orphan*/  lsmFree (TYPE_1__*,char*) ; 
- char* lsmReallocOrFreeRc (TYPE_1__*,char*,int,int*) ; 
- int stub1 (TYPE_1__*,char const*,char*,int*) ; 
+
+ int LSM_OK ;
+ int lsmFree (TYPE_1__*,char*) ;
+ char* lsmReallocOrFreeRc (TYPE_1__*,char*,int,int*) ;
+ int stub1 (TYPE_1__*,char const*,char*,int*) ;
 
 __attribute__((used)) static int getFullpathname(
-  lsm_env *pEnv, 
+  lsm_env *pEnv,
   const char *zRel,
   char **pzAbs
 ){

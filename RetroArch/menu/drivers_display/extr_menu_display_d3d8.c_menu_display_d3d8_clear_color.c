@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {scalar_t__ userdata; } ;
-typedef  TYPE_1__ video_frame_info_t ;
+typedef TYPE_1__ video_frame_info_t ;
 struct TYPE_7__ {float a; float r; float g; float b; } ;
-typedef  TYPE_2__ menu_display_ctx_clearcolor_t ;
-struct TYPE_8__ {int /*<<< orphan*/  dev; } ;
-typedef  TYPE_3__ d3d8_video_t ;
-typedef  int /*<<< orphan*/  DWORD ;
+typedef TYPE_2__ menu_display_ctx_clearcolor_t ;
+struct TYPE_8__ {int dev; } ;
+typedef TYPE_3__ d3d8_video_t ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BYTE_CLAMP (float) ; 
- int /*<<< orphan*/  D3DCOLOR_ARGB (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  D3D_COMM_CLEAR_TARGET ; 
- int /*<<< orphan*/  d3d8_clear (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int BYTE_CLAMP (float) ;
+ int D3DCOLOR_ARGB (int ,int ,int ,int ) ;
+ int D3D_COMM_CLEAR_TARGET ;
+ int d3d8_clear (int ,int ,int *,int ,int ,int ,int ) ;
 
 __attribute__((used)) static void menu_display_d3d8_clear_color(
       menu_display_ctx_clearcolor_t *clearcolor, video_frame_info_t *video_info)
 {
-   DWORD    clear_color  = 0;
-   d3d8_video_t     *d3d = (d3d8_video_t*)video_info->userdata;
+   DWORD clear_color = 0;
+   d3d8_video_t *d3d = (d3d8_video_t*)video_info->userdata;
 
    if (!d3d || !clearcolor)
       return;
 
    clear_color = D3DCOLOR_ARGB(
-         BYTE_CLAMP(clearcolor->a * 255.0f), /* A */
-         BYTE_CLAMP(clearcolor->r * 255.0f), /* R */
-         BYTE_CLAMP(clearcolor->g * 255.0f), /* G */
-         BYTE_CLAMP(clearcolor->b * 255.0f)  /* B */
+         BYTE_CLAMP(clearcolor->a * 255.0f),
+         BYTE_CLAMP(clearcolor->r * 255.0f),
+         BYTE_CLAMP(clearcolor->g * 255.0f),
+         BYTE_CLAMP(clearcolor->b * 255.0f)
          );
 
-   d3d8_clear(d3d->dev, 0, NULL, D3D_COMM_CLEAR_TARGET, clear_color, 0, 0);
+   d3d8_clear(d3d->dev, 0, ((void*)0), D3D_COMM_CLEAR_TARGET, clear_color, 0, 0);
 }

@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  db_hash_table_p ;
 
-/* Variables and functions */
- int /*<<< orphan*/  O_RDONLY ; 
- int /*<<< orphan*/  clear_db_hash_table (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  close (scalar_t__) ; 
- char* config_filename ; 
- int /*<<< orphan*/  config_reload_time ; 
- int /*<<< orphan*/  create_all_outbound_connections () ; 
- int /*<<< orphan*/  db_hash ; 
- int /*<<< orphan*/  db_hash_new ; 
- int /*<<< orphan*/  exit (int) ; 
- scalar_t__* fd ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int kdb_load_hosts () ; 
- scalar_t__ need_reload_config ; 
- int /*<<< orphan*/  now ; 
- scalar_t__ open (char*,int /*<<< orphan*/ ) ; 
- int parse_config (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ verbosity ; 
+
+
+
+typedef int db_hash_table_p ;
+
+
+ int O_RDONLY ;
+ int clear_db_hash_table (int ) ;
+ int close (scalar_t__) ;
+ char* config_filename ;
+ int config_reload_time ;
+ int create_all_outbound_connections () ;
+ int db_hash ;
+ int db_hash_new ;
+ int exit (int) ;
+ scalar_t__* fd ;
+ int fprintf (int ,char*,...) ;
+ int kdb_load_hosts () ;
+ scalar_t__ need_reload_config ;
+ int now ;
+ scalar_t__ open (char*,int ) ;
+ int parse_config (int ,int) ;
+ int stderr ;
+ scalar_t__ verbosity ;
 
 int do_reload_config (int create_conn) {
   int res;

@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct cmdnames {int cnt; TYPE_1__** names; } ;
-struct TYPE_2__ {int /*<<< orphan*/  name; } ;
+struct TYPE_2__ {int name; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (TYPE_1__*) ; 
- int /*<<< orphan*/  strcmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int free (TYPE_1__*) ;
+ int strcmp (int ,int ) ;
 
 __attribute__((used)) static void uniq(struct cmdnames *cmds)
 {
-	int i, j;
+ int i, j;
 
-	if (!cmds->cnt)
-		return;
+ if (!cmds->cnt)
+  return;
 
-	for (i = j = 1; i < cmds->cnt; i++) {
-		if (!strcmp(cmds->names[i]->name, cmds->names[j-1]->name))
-			free(cmds->names[i]);
-		else
-			cmds->names[j++] = cmds->names[i];
-	}
+ for (i = j = 1; i < cmds->cnt; i++) {
+  if (!strcmp(cmds->names[i]->name, cmds->names[j-1]->name))
+   free(cmds->names[i]);
+  else
+   cmds->names[j++] = cmds->names[i];
+ }
 
-	cmds->cnt = j;
+ cmds->cnt = j;
 }

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wchar_t ;
-typedef  int /*<<< orphan*/  HANDLE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  WriteConsoleW (int /*<<< orphan*/ ,int /*<<< orphan*/ *,size_t,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * mp_from_utf8 (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  talloc_free (int /*<<< orphan*/ *) ; 
- size_t wcslen (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int wchar_t ;
+typedef int HANDLE ;
+
+
+ int WriteConsoleW (int ,int *,size_t,int *,int *) ;
+ int * mp_from_utf8 (int *,char*) ;
+ int talloc_free (int *) ;
+ size_t wcslen (int *) ;
 
 __attribute__((used)) static void write_console_text(HANDLE wstream, char *buf)
 {
-    wchar_t *out = mp_from_utf8(NULL, buf);
+    wchar_t *out = mp_from_utf8(((void*)0), buf);
     size_t out_len = wcslen(out);
-    WriteConsoleW(wstream, out, out_len, NULL, NULL);
+    WriteConsoleW(wstream, out, out_len, ((void*)0), ((void*)0));
     talloc_free(out);
 }

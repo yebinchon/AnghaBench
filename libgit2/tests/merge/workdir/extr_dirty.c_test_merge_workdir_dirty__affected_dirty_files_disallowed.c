@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char*** affected ; 
- int /*<<< orphan*/  cl_git_fail (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  merge_dirty_files (char**) ; 
+ char*** affected ;
+ int cl_git_fail (int ) ;
+ int merge_dirty_files (char**) ;
 
 void test_merge_workdir_dirty__affected_dirty_files_disallowed(void)
 {
-	char **files;
-	size_t i;
+ char **files;
+ size_t i;
 
-	for (i = 0, files = affected[i]; files[0]; files = affected[++i])
-		cl_git_fail(merge_dirty_files(files));
+ for (i = 0, files = affected[i]; files[0]; files = affected[++i])
+  cl_git_fail(merge_dirty_files(files));
 }

@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
 struct TYPE_11__ {scalar_t__ send_sigkill; } ;
-struct TYPE_10__ {scalar_t__ result; TYPE_2__ kill_context; int /*<<< orphan*/  timeout_usec; int /*<<< orphan*/  control_pid; } ;
-typedef  int /*<<< orphan*/  SwapState ;
-typedef  scalar_t__ SwapResult ;
-typedef  TYPE_1__ Swap ;
+struct TYPE_10__ {scalar_t__ result; TYPE_2__ kill_context; int timeout_usec; int control_pid; } ;
+typedef int SwapState ;
+typedef scalar_t__ SwapResult ;
+typedef TYPE_1__ Swap ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLOCK_MONOTONIC ; 
- int /*<<< orphan*/  SWAP_DEACTIVATING_SIGKILL ; 
- int /*<<< orphan*/  SWAP_DEACTIVATING_SIGTERM ; 
- scalar_t__ SWAP_FAILURE_RESOURCES ; 
- scalar_t__ SWAP_SUCCESS ; 
- int /*<<< orphan*/  UNIT (TYPE_1__*) ; 
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int /*<<< orphan*/  log_unit_warning_errno (int /*<<< orphan*/ ,int,char*) ; 
- int /*<<< orphan*/  now (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  state_to_kill_operation (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int swap_arm_timer (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  swap_enter_dead_or_active (TYPE_1__*,scalar_t__) ; 
- int /*<<< orphan*/  swap_set_state (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int unit_kill_context (int /*<<< orphan*/ ,TYPE_2__*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  usec_add (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int CLOCK_MONOTONIC ;
+ int SWAP_DEACTIVATING_SIGKILL ;
+ int SWAP_DEACTIVATING_SIGTERM ;
+ scalar_t__ SWAP_FAILURE_RESOURCES ;
+ scalar_t__ SWAP_SUCCESS ;
+ int UNIT (TYPE_1__*) ;
+ int assert (TYPE_1__*) ;
+ int log_unit_warning_errno (int ,int,char*) ;
+ int now (int ) ;
+ int state_to_kill_operation (TYPE_1__*,int ) ;
+ int swap_arm_timer (TYPE_1__*,int ) ;
+ int swap_enter_dead_or_active (TYPE_1__*,scalar_t__) ;
+ int swap_set_state (TYPE_1__*,int ) ;
+ int unit_kill_context (int ,TYPE_2__*,int ,int,int ,int) ;
+ int usec_add (int ,int ) ;
 
 __attribute__((used)) static void swap_enter_signal(Swap *s, SwapState state, SwapResult f) {
         int r;
@@ -48,7 +48,7 @@ __attribute__((used)) static void swap_enter_signal(Swap *s, SwapState state, Sw
                               state_to_kill_operation(s, state),
                               -1,
                               s->control_pid,
-                              false);
+                              0);
         if (r < 0)
                 goto fail;
 

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int version_id; } ;
-typedef  int /*<<< orphan*/  CELTMode ;
-typedef  TYPE_1__ CELTHeader ;
+typedef int CELTMode ;
+typedef TYPE_1__ CELTHeader ;
 
-/* Variables and functions */
- int /*<<< orphan*/  celt_header_init (TYPE_1__*,int /*<<< orphan*/ *,int,int) ; 
+
+ int celt_header_init (TYPE_1__*,int *,int,int) ;
 
 __attribute__((used)) static int ff_celt_bitstream_version_hack(CELTMode *mode)
 {

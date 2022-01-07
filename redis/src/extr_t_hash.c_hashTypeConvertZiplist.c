@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sds ;
-struct TYPE_4__ {int encoding; int /*<<< orphan*/  ptr; } ;
-typedef  TYPE_1__ robj ;
-typedef  int /*<<< orphan*/  hashTypeIterator ;
 
-/* Variables and functions */
- scalar_t__ C_ERR ; 
- int DICT_OK ; 
- int /*<<< orphan*/  LL_WARNING ; 
- int OBJ_ENCODING_HT ; 
- int OBJ_ENCODING_ZIPLIST ; 
- int /*<<< orphan*/  OBJ_HASH_KEY ; 
- int /*<<< orphan*/  OBJ_HASH_VALUE ; 
- int dict ; 
- int dictAdd (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dictCreate (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  hashDictType ; 
- int /*<<< orphan*/  hashTypeCurrentObjectNewSds (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * hashTypeInitIterator (TYPE_1__*) ; 
- scalar_t__ hashTypeNext (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  hashTypeReleaseIterator (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  serverAssert (int) ; 
- int /*<<< orphan*/  serverLogHexDump (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  serverPanic (char*) ; 
- int /*<<< orphan*/  zfree (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ziplistBlobLen (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int sds ;
+struct TYPE_4__ {int encoding; int ptr; } ;
+typedef TYPE_1__ robj ;
+typedef int hashTypeIterator ;
+
+
+ scalar_t__ C_ERR ;
+ int DICT_OK ;
+ int LL_WARNING ;
+ int OBJ_ENCODING_HT ;
+ int OBJ_ENCODING_ZIPLIST ;
+ int OBJ_HASH_KEY ;
+ int OBJ_HASH_VALUE ;
+ int dict ;
+ int dictAdd (int,int ,int ) ;
+ int dictCreate (int *,int *) ;
+ int hashDictType ;
+ int hashTypeCurrentObjectNewSds (int *,int ) ;
+ int * hashTypeInitIterator (TYPE_1__*) ;
+ scalar_t__ hashTypeNext (int *) ;
+ int hashTypeReleaseIterator (int *) ;
+ int serverAssert (int) ;
+ int serverLogHexDump (int ,char*,int ,int ) ;
+ int serverPanic (char*) ;
+ int zfree (int ) ;
+ int ziplistBlobLen (int ) ;
 
 void hashTypeConvertZiplist(robj *o, int enc) {
     serverAssert(o->encoding == OBJ_ENCODING_ZIPLIST);
 
     if (enc == OBJ_ENCODING_ZIPLIST) {
-        /* Nothing to do... */
+
 
     } else if (enc == OBJ_ENCODING_HT) {
         hashTypeIterator *hi;
@@ -50,7 +50,7 @@ void hashTypeConvertZiplist(robj *o, int enc) {
         int ret;
 
         hi = hashTypeInitIterator(o);
-        dict = dictCreate(&hashDictType, NULL);
+        dict = dictCreate(&hashDictType, ((void*)0));
 
         while (hashTypeNext(hi) != C_ERR) {
             sds key, value;

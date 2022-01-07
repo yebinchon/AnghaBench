@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct stream_open_args {int flags; int /*<<< orphan*/  url; TYPE_1__* global; int /*<<< orphan*/  cancel; scalar_t__ sinfo; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct stream_open_args {int flags; int url; TYPE_1__* global; int cancel; scalar_t__ sinfo; } ;
 struct stream {int dummy; } ;
 struct mp_log {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/  log; } ;
+struct TYPE_2__ {int log; } ;
 
-/* Variables and functions */
- int STREAM_NO_MATCH ; 
- int STREAM_OK ; 
- int STREAM_SILENT ; 
- int STREAM_UNSAFE ; 
- int STREAM_UNSUPPORTED ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mp_cancel_test (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mp_err (struct mp_log*,char*,...) ; 
- struct mp_log* mp_log_new (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int stream_create_instance (scalar_t__,struct stream_open_args*,struct stream**) ; 
- scalar_t__* stream_list ; 
- int /*<<< orphan*/  talloc_free (struct mp_log*) ; 
+
+ int STREAM_NO_MATCH ;
+ int STREAM_OK ;
+ int STREAM_SILENT ;
+ int STREAM_UNSAFE ;
+ int STREAM_UNSUPPORTED ;
+ int assert (int ) ;
+ int mp_cancel_test (int ) ;
+ int mp_err (struct mp_log*,char*,...) ;
+ struct mp_log* mp_log_new (int *,int ,char*) ;
+ int stream_create_instance (scalar_t__,struct stream_open_args*,struct stream**) ;
+ scalar_t__* stream_list ;
+ int talloc_free (struct mp_log*) ;
 
 int stream_create_with_args(struct stream_open_args *args, struct stream **ret)
 
@@ -36,9 +36,9 @@ int stream_create_with_args(struct stream_open_args *args, struct stream **ret)
     assert(args->url);
 
     int r = STREAM_NO_MATCH;
-    *ret = NULL;
+    *ret = ((void*)0);
 
-    // Open stream proper
+
     if (args->sinfo) {
         r = stream_create_instance(args->sinfo, args, ret);
     } else {
@@ -56,7 +56,7 @@ int stream_create_with_args(struct stream_open_args *args, struct stream **ret)
 
     if (!*ret && !(args->flags & STREAM_SILENT) && !mp_cancel_test(args->cancel))
     {
-        struct mp_log *log = mp_log_new(NULL, args->global->log, "!stream");
+        struct mp_log *log = mp_log_new(((void*)0), args->global->log, "!stream");
 
         if (r == STREAM_UNSAFE) {
             mp_err(log, "\nRefusing to load potentially unsafe URL from a playlist.\n"

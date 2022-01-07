@@ -1,18 +1,10 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  printf (char*) ; 
+ int printf (char*) ;
 
 __attribute__((used)) static void
 print_cmd_line_help(void)
@@ -27,18 +19,18 @@ print_cmd_line_help(void)
     printf("    Install the Edit-with-Vim context menu entry\n");
     printf("-install-openwith\n");
     printf("    Add Vim to the \"Open With...\" context menu list\n");
-#ifdef WIN3264
-    printf("-add-start-menu");
-    printf("    Add Vim to the start menu\n");
-    printf("-install-icons");
-    printf("    Create icons for gVim executables on the desktop\n");
-#endif
+
+
+
+
+
+
     printf("-create-directories [vim|home]\n");
     printf("    Create runtime directories to drop plugins into; in the $VIM\n");
     printf("    or $HOME directory\n");
-#ifdef WIN3264
-    printf("-register-OLE");
-    printf("    Ignored\n");
-#endif
+
+
+
+
     printf("\n");
 }

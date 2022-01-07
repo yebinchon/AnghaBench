@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct parser {scalar_t__ backslash; } ;
-typedef  int /*<<< orphan*/  WCHAR ;
+typedef int WCHAR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EOL_BACKSLASH ; 
- int /*<<< orphan*/  LINE_START ; 
- int /*<<< orphan*/  SET_VALUE ; 
- int /*<<< orphan*/  convert_hex_csv_to_hex (struct parser*,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  free_parser_data (struct parser*) ; 
- int /*<<< orphan*/  prepare_hex_string_data (struct parser*) ; 
- int /*<<< orphan*/  set_state (struct parser*,int /*<<< orphan*/ ) ; 
+
+ int EOL_BACKSLASH ;
+ int LINE_START ;
+ int SET_VALUE ;
+ int convert_hex_csv_to_hex (struct parser*,int **) ;
+ int free_parser_data (struct parser*) ;
+ int prepare_hex_string_data (struct parser*) ;
+ int set_state (struct parser*,int ) ;
 
 __attribute__((used)) static WCHAR *hex_data_state(struct parser *parser, WCHAR *pos)
 {

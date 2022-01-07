@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_ra_svn_conn_t ;
-typedef  int /*<<< orphan*/  svn_ra_svn__list_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef scalar_t__ svn_revnum_t ;
+typedef int svn_ra_svn_conn_t ;
+typedef int svn_ra_svn__list_t ;
+typedef int svn_error_t ;
+typedef int svn_boolean_t ;
 struct TYPE_9__ {TYPE_1__* repository; } ;
-typedef  TYPE_2__ server_baton_t ;
-struct TYPE_10__ {int /*<<< orphan*/ * conn; TYPE_2__* server; } ;
-typedef  TYPE_3__ authz_baton_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
-struct TYPE_8__ {int /*<<< orphan*/  repos; } ;
+typedef TYPE_2__ server_baton_t ;
+struct TYPE_10__ {int * conn; TYPE_2__* server; } ;
+typedef TYPE_3__ authz_baton_t ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
+struct TYPE_8__ {int repos; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_CMD_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  authz_check_access_cb_func (TYPE_2__*) ; 
- int /*<<< orphan*/  replay_one_revision (int /*<<< orphan*/ *,TYPE_2__*,scalar_t__,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_pool_clear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_pool_create (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_pool_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_ra_svn__parse_tuple (int /*<<< orphan*/ *,char*,scalar_t__*,scalar_t__*,scalar_t__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_ra_svn__write_cmd_response (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  svn_ra_svn__write_proplist (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_ra_svn__write_tuple (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*,...) ; 
- int /*<<< orphan*/  svn_repos_fs_revision_proplist (int /*<<< orphan*/ **,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,TYPE_3__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  trivial_auth_request (int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_2__*) ; 
+
+ int SVN_CMD_ERR (int ) ;
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int authz_check_access_cb_func (TYPE_2__*) ;
+ int replay_one_revision (int *,TYPE_2__*,scalar_t__,scalar_t__,int ,int *) ;
+ int svn_pool_clear (int *) ;
+ int * svn_pool_create (int *) ;
+ int svn_pool_destroy (int *) ;
+ int svn_ra_svn__parse_tuple (int *,char*,scalar_t__*,scalar_t__*,scalar_t__*,int *) ;
+ int svn_ra_svn__write_cmd_response (int *,int *,char*) ;
+ int svn_ra_svn__write_proplist (int *,int *,int *) ;
+ int svn_ra_svn__write_tuple (int *,int *,char*,...) ;
+ int svn_repos_fs_revision_proplist (int **,int ,scalar_t__,int ,TYPE_3__*,int *) ;
+ int trivial_auth_request (int *,int *,TYPE_2__*) ;
 
 __attribute__((used)) static svn_error_t *
 replay_range(svn_ra_svn_conn_t *conn,

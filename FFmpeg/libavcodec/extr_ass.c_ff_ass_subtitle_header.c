@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int flags; int /*<<< orphan*/  subtitle_header; int /*<<< orphan*/  subtitle_header_size; } ;
-typedef  TYPE_1__ AVCodecContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASS_DEFAULT_PLAYRESX ; 
- int /*<<< orphan*/  ASS_DEFAULT_PLAYRESY ; 
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AV_CODEC_FLAG_BITEXACT ; 
- char* AV_STRINGIFY (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  LIBAVCODEC_VERSION ; 
- int /*<<< orphan*/  av_asprintf (char*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*,int,int,int,int,int,int,int,int,int,int) ; 
- int /*<<< orphan*/  strlen (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int flags; int subtitle_header; int subtitle_header_size; } ;
+typedef TYPE_1__ AVCodecContext ;
+
+
+ int ASS_DEFAULT_PLAYRESX ;
+ int ASS_DEFAULT_PLAYRESY ;
+ int AVERROR (int ) ;
+ int AV_CODEC_FLAG_BITEXACT ;
+ char* AV_STRINGIFY (int ) ;
+ int ENOMEM ;
+ int LIBAVCODEC_VERSION ;
+ int av_asprintf (char*,char*,int ,int ,char const*,int,int,int,int,int,int,int,int,int,int) ;
+ int strlen (int ) ;
 
 int ff_ass_subtitle_header(AVCodecContext *avctx,
                            const char *font, int font_size,
@@ -40,7 +40,7 @@ int ff_ass_subtitle_header(AVCodecContext *avctx,
              "\r\n"
              "[V4+ Styles]\r\n"
 
-             /* ASSv4 header */
+
              "Format: Name, "
              "Fontname, Fontsize, "
              "PrimaryColour, SecondaryColour, OutlineColour, BackColour, "
@@ -52,15 +52,15 @@ int ff_ass_subtitle_header(AVCodecContext *avctx,
              "Encoding\r\n"
 
              "Style: "
-             "Default,"             /* Name */
-             "%s,%d,"               /* Font{name,size} */
-             "&H%x,&H%x,&H%x,&H%x," /* {Primary,Secondary,Outline,Back}Colour */
-             "%d,%d,%d,0,"          /* Bold, Italic, Underline, StrikeOut */
-             "100,100,"             /* Scale{X,Y} */
-             "0,0,"                 /* Spacing, Angle */
-             "%d,1,0,"              /* BorderStyle, Outline, Shadow */
-             "%d,10,10,10,"         /* Alignment, Margin[LRV] */
-             "0\r\n"                /* Encoding */
+             "Default,"
+             "%s,%d,"
+             "&H%x,&H%x,&H%x,&H%x,"
+             "%d,%d,%d,0,"
+             "100,100,"
+             "0,0,"
+             "%d,1,0,"
+             "%d,10,10,10,"
+             "0\r\n"
 
              "\r\n"
              "[Events]\r\n"

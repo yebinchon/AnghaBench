@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct kfd_process_device {int /*<<< orphan*/  alloc_idr; } ;
 
-/* Variables and functions */
- void* idr_find (int /*<<< orphan*/ *,int) ; 
+
+
+
+struct kfd_process_device {int alloc_idr; } ;
+
+
+ void* idr_find (int *,int) ;
 
 void *kfd_process_device_translate_handle(struct kfd_process_device *pdd,
-					int handle)
+     int handle)
 {
-	if (handle < 0)
-		return NULL;
+ if (handle < 0)
+  return ((void*)0);
 
-	return idr_find(&pdd->alloc_idr, handle);
+ return idr_find(&pdd->alloc_idr, handle);
 }

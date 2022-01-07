@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  msg ;
-struct TYPE_8__ {int /*<<< orphan*/  type; } ;
+
+
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int msg ;
+struct TYPE_8__ {int type; } ;
 struct TYPE_6__ {void* ptr; } ;
-struct TYPE_5__ {int /*<<< orphan*/  (* ptr ) (void*) ;} ;
-struct TYPE_7__ {TYPE_4__ header; TYPE_2__ rects_change_data; TYPE_1__ rects_change_cb; int /*<<< orphan*/  stream; } ;
-typedef  TYPE_3__ WFC_IPC_MSG_SS_ON_RECTS_CHANGE_T ;
-typedef  int /*<<< orphan*/  (* WFC_CALLBACK_T ) (void*) ;
-typedef  int /*<<< orphan*/  WFCNativeStreamType ;
-typedef  scalar_t__ VCOS_STATUS_T ;
+struct TYPE_5__ {int (* ptr ) (void*) ;} ;
+struct TYPE_7__ {TYPE_4__ header; TYPE_2__ rects_change_data; TYPE_1__ rects_change_cb; int stream; } ;
+typedef TYPE_3__ WFC_IPC_MSG_SS_ON_RECTS_CHANGE_T ;
+typedef int (* WFC_CALLBACK_T ) (void*) ;
+typedef int WFCNativeStreamType ;
+typedef scalar_t__ VCOS_STATUS_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  VCOS_FUNCTION ; 
- scalar_t__ VCOS_SUCCESS ; 
- int /*<<< orphan*/  WFC_IPC_MSG_SS_ON_RECTS_CHANGE ; 
- int /*<<< orphan*/  stub1 (void*) ; 
- int /*<<< orphan*/  vcos_log_trace (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/  (*) (void*),void*) ; 
- int /*<<< orphan*/  vcos_verify (int) ; 
- scalar_t__ wfc_client_ipc_send (TYPE_4__*,int) ; 
+
+ int VCOS_FUNCTION ;
+ scalar_t__ VCOS_SUCCESS ;
+ int WFC_IPC_MSG_SS_ON_RECTS_CHANGE ;
+ int stub1 (void*) ;
+ int vcos_log_trace (char*,int ,int ,int (*) (void*),void*) ;
+ int vcos_verify (int) ;
+ scalar_t__ wfc_client_ipc_send (TYPE_4__*,int) ;
 
 void wfc_server_stream_on_rects_change(WFCNativeStreamType stream, WFC_CALLBACK_T rects_change_cb, void *rects_change_data)
 {

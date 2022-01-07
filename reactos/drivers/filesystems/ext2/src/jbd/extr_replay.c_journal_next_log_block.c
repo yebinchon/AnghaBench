@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int j_free; unsigned long j_head; unsigned long j_last; unsigned long j_first; int /*<<< orphan*/  j_state_lock; } ;
-typedef  TYPE_1__ journal_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  J_ASSERT (int) ; 
- int /*<<< orphan*/  jbd_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jbd_unlock (int /*<<< orphan*/ *) ; 
- int journal_bmap (TYPE_1__*,unsigned long,unsigned long*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int j_free; unsigned long j_head; unsigned long j_last; unsigned long j_first; int j_state_lock; } ;
+typedef TYPE_1__ journal_t ;
+
+
+ int J_ASSERT (int) ;
+ int jbd_lock (int *) ;
+ int jbd_unlock (int *) ;
+ int journal_bmap (TYPE_1__*,unsigned long,unsigned long*) ;
 
 int journal_next_log_block(journal_t *journal, unsigned long *retp)
 {

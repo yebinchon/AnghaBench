@@ -1,39 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ GLsizei ;
-typedef  scalar_t__ GLint ;
-typedef  int /*<<< orphan*/  GLenum ;
-typedef  int /*<<< orphan*/  GLcontext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GL_INVALID_ENUM ; 
- int /*<<< orphan*/  GL_INVALID_OPERATION ; 
- int /*<<< orphan*/  GL_INVALID_VALUE ; 
-#define  GL_LINES 137 
-#define  GL_LINE_LOOP 136 
-#define  GL_LINE_STRIP 135 
-#define  GL_POINTS 134 
-#define  GL_POLYGON 133 
-#define  GL_QUADS 132 
-#define  GL_QUAD_STRIP 131 
-#define  GL_TRIANGLES 130 
-#define  GL_TRIANGLE_FAN 129 
-#define  GL_TRIANGLE_STRIP 128 
- scalar_t__ INSIDE_BEGIN_END (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  gl_error (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  gl_save_ArrayElement (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  gl_save_Begin (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gl_save_End (int /*<<< orphan*/ *) ; 
+
+
+
+typedef scalar_t__ GLsizei ;
+typedef scalar_t__ GLint ;
+typedef int GLenum ;
+typedef int GLcontext ;
+
+
+ int GL_INVALID_ENUM ;
+ int GL_INVALID_OPERATION ;
+ int GL_INVALID_VALUE ;
+ scalar_t__ INSIDE_BEGIN_END (int *) ;
+ int gl_error (int *,int ,char*) ;
+ int gl_save_ArrayElement (int *,scalar_t__) ;
+ int gl_save_Begin (int *,int ) ;
+ int gl_save_End (int *) ;
 
 void gl_save_DrawArrays( GLcontext *ctx,
                          GLenum mode, GLint first, GLsizei count )
@@ -49,17 +39,17 @@ void gl_save_DrawArrays( GLcontext *ctx,
       return;
    }
    switch (mode) {
-      case GL_POINTS:
-      case GL_LINES:
-      case GL_LINE_STRIP:
-      case GL_LINE_LOOP:
-      case GL_TRIANGLES:
-      case GL_TRIANGLE_STRIP:
-      case GL_TRIANGLE_FAN:
-      case GL_QUADS:
-      case GL_QUAD_STRIP:
-      case GL_POLYGON:
-         /* OK */
+      case 134:
+      case 137:
+      case 135:
+      case 136:
+      case 130:
+      case 128:
+      case 129:
+      case 132:
+      case 131:
+      case 133:
+
          break;
       default:
          gl_error( ctx, GL_INVALID_ENUM, "glDrawArrays(mode)" );
@@ -67,7 +57,7 @@ void gl_save_DrawArrays( GLcontext *ctx,
    }
 
 
-   /* Note: this will do compile AND execute if needed */
+
    gl_save_Begin( ctx, mode );
    for (i=0;i<count;i++) {
       gl_save_ArrayElement( ctx, first+i );

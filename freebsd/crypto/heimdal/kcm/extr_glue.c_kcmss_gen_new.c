@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  krb5_error_code ;
-typedef  int /*<<< orphan*/  krb5_context ;
-typedef  int /*<<< orphan*/  krb5_ccache ;
 
-/* Variables and functions */
- int /*<<< orphan*/  KRB5_FCC_INTERNAL ; 
+
+
+
+typedef int krb5_error_code ;
+typedef int krb5_context ;
+typedef int krb5_ccache ;
+
+
+ int KRB5_FCC_INTERNAL ;
 
 __attribute__((used)) static krb5_error_code
 kcmss_gen_new(krb5_context context, krb5_ccache *id)

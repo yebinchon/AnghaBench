@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct vlc_http_stream {int dummy; } ;
 struct vlc_http_msg {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/ * tls; } ;
+struct TYPE_2__ {int * tls; } ;
 struct vlc_h1_conn {int active; scalar_t__ content_length; int connection_close; TYPE_1__ conn; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CO (struct vlc_h1_conn*) ; 
- scalar_t__ UINTMAX_MAX ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  free (char*) ; 
- scalar_t__ unlikely (int /*<<< orphan*/ ) ; 
- struct vlc_http_stream* vlc_chunked_open (struct vlc_http_stream*,int /*<<< orphan*/ *) ; 
- struct vlc_h1_conn* vlc_h1_stream_conn (struct vlc_http_stream*) ; 
- struct vlc_http_msg* vlc_h1_stream_fatal (struct vlc_h1_conn*) ; 
- int /*<<< orphan*/  vlc_http_dbg (int /*<<< orphan*/ ,char*,int,char*) ; 
- int vlc_http_minor (char*) ; 
- int /*<<< orphan*/  vlc_http_msg_attach (struct vlc_http_msg*,struct vlc_http_stream*) ; 
- int /*<<< orphan*/  vlc_http_msg_destroy (struct vlc_http_msg*) ; 
- scalar_t__ vlc_http_msg_get_size (struct vlc_http_msg*) ; 
- char* vlc_http_msg_get_token (struct vlc_http_msg*,char*,char*) ; 
- struct vlc_http_msg* vlc_http_msg_headers (char*) ; 
- int /*<<< orphan*/ * vlc_http_next_token (char const*) ; 
- char* vlc_https_headers_recv (int /*<<< orphan*/ *,size_t*) ; 
+
+ int CO (struct vlc_h1_conn*) ;
+ scalar_t__ UINTMAX_MAX ;
+ int assert (int) ;
+ int free (char*) ;
+ scalar_t__ unlikely (int ) ;
+ struct vlc_http_stream* vlc_chunked_open (struct vlc_http_stream*,int *) ;
+ struct vlc_h1_conn* vlc_h1_stream_conn (struct vlc_http_stream*) ;
+ struct vlc_http_msg* vlc_h1_stream_fatal (struct vlc_h1_conn*) ;
+ int vlc_http_dbg (int ,char*,int,char*) ;
+ int vlc_http_minor (char*) ;
+ int vlc_http_msg_attach (struct vlc_http_msg*,struct vlc_http_stream*) ;
+ int vlc_http_msg_destroy (struct vlc_http_msg*) ;
+ scalar_t__ vlc_http_msg_get_size (struct vlc_http_msg*) ;
+ char* vlc_http_msg_get_token (struct vlc_http_msg*,char*,char*) ;
+ struct vlc_http_msg* vlc_http_msg_headers (char*) ;
+ int * vlc_http_next_token (char const*) ;
+ char* vlc_https_headers_recv (int *,size_t*) ;
 
 __attribute__((used)) static struct vlc_http_msg *vlc_h1_stream_wait(struct vlc_http_stream *stream)
 {
@@ -45,11 +45,11 @@ __attribute__((used)) static struct vlc_http_msg *vlc_h1_stream_wait(struct vlc_
 
     assert(conn->active);
 
-    if (conn->conn.tls == NULL)
-        return NULL;
+    if (conn->conn.tls == ((void*)0))
+        return ((void*)0);
 
     char *payload = vlc_https_headers_recv(conn->conn.tls, &len);
-    if (payload == NULL)
+    if (payload == ((void*)0))
         return vlc_h1_stream_fatal(conn);
 
     vlc_http_dbg(CO(conn), "incoming response:\n%.*s", (int)len, payload);
@@ -58,31 +58,31 @@ __attribute__((used)) static struct vlc_http_msg *vlc_h1_stream_wait(struct vlc_
     minor = vlc_http_minor(payload);
     free(payload);
 
-    if (resp == NULL)
+    if (resp == ((void*)0))
         return vlc_h1_stream_fatal(conn);
 
     assert(minor >= 0);
 
     conn->content_length = vlc_http_msg_get_size(resp);
-    conn->connection_close = false;
+    conn->connection_close = 0;
 
     if (minor >= 1)
     {
-        if (vlc_http_msg_get_token(resp, "Connection", "close") != NULL)
-            conn->connection_close = true;
+        if (vlc_http_msg_get_token(resp, "Connection", "close") != ((void*)0))
+            conn->connection_close = 1;
 
         str = vlc_http_msg_get_token(resp, "Transfer-Encoding", "chunked");
-        if (str != NULL)
+        if (str != ((void*)0))
         {
-            if (vlc_http_next_token(str) != NULL)
+            if (vlc_http_next_token(str) != ((void*)0))
             {
                 vlc_http_msg_destroy(resp);
-                return vlc_h1_stream_fatal(conn); /* unsupported TE */
+                return vlc_h1_stream_fatal(conn);
             }
 
             assert(conn->content_length == UINTMAX_MAX);
             stream = vlc_chunked_open(stream, conn->conn.tls);
-            if (unlikely(stream == NULL))
+            if (unlikely(stream == ((void*)0)))
             {
                 vlc_http_msg_destroy(resp);
                 return vlc_h1_stream_fatal(conn);
@@ -90,7 +90,7 @@ __attribute__((used)) static struct vlc_http_msg *vlc_h1_stream_wait(struct vlc_
         }
     }
     else
-        conn->connection_close = true;
+        conn->connection_close = 1;
 
     vlc_http_msg_attach(resp, stream);
     return resp;

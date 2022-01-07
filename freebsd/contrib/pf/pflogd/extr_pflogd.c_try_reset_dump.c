@@ -1,132 +1,132 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct stat {scalar_t__ st_size; } ;
-struct pcap_file_header {int /*<<< orphan*/  linktype; scalar_t__ sigfigs; int /*<<< orphan*/  snaplen; int /*<<< orphan*/  thiszone; int /*<<< orphan*/  version_minor; int /*<<< orphan*/  version_major; int /*<<< orphan*/  magic; } ;
-typedef  int /*<<< orphan*/  hdr ;
-struct TYPE_2__ {int /*<<< orphan*/  linktype; int /*<<< orphan*/  snapshot; int /*<<< orphan*/  tzoff; } ;
-typedef  int /*<<< orphan*/  FILE ;
+struct pcap_file_header {int linktype; scalar_t__ sigfigs; int snaplen; int thiszone; int version_minor; int version_major; int magic; } ;
+typedef int hdr ;
+struct TYPE_2__ {int linktype; int snapshot; int tzoff; } ;
+typedef int FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOG_ERR ; 
- int /*<<< orphan*/  LOG_NOTICE ; 
- int /*<<< orphan*/  LOG_WARNING ; 
- int /*<<< orphan*/  PCAP_VERSION_MAJOR ; 
- int /*<<< orphan*/  PCAP_VERSION_MINOR ; 
- int /*<<< orphan*/  TCPDUMP_MAGIC ; 
- int /*<<< orphan*/  _IONBF ; 
- int /*<<< orphan*/  close (int) ; 
- scalar_t__ cur_snaplen ; 
- int /*<<< orphan*/ * dpcap ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fdopen (int,char*) ; 
- int /*<<< orphan*/  filename ; 
- int /*<<< orphan*/  fileno (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  flush_buffer (int /*<<< orphan*/ *) ; 
- int fstat (int /*<<< orphan*/ ,struct stat*) ; 
- int fwrite (char*,int,int,int /*<<< orphan*/ *) ; 
- TYPE_1__* hpcap ; 
- int /*<<< orphan*/  logmsg (int /*<<< orphan*/ ,char*,...) ; 
- scalar_t__ priv_move_log () ; 
- int priv_open_log () ; 
- scalar_t__ scan_dump (int /*<<< orphan*/ *,scalar_t__) ; 
- scalar_t__ set_snaplen (scalar_t__) ; 
- int /*<<< orphan*/  set_suspended (int /*<<< orphan*/ ) ; 
- scalar_t__ setvbuf (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ snaplen ; 
- int /*<<< orphan*/  strerror (int /*<<< orphan*/ ) ; 
+
+ int LOG_ERR ;
+ int LOG_NOTICE ;
+ int LOG_WARNING ;
+ int PCAP_VERSION_MAJOR ;
+ int PCAP_VERSION_MINOR ;
+ int TCPDUMP_MAGIC ;
+ int _IONBF ;
+ int close (int) ;
+ scalar_t__ cur_snaplen ;
+ int * dpcap ;
+ int errno ;
+ int fclose (int *) ;
+ int * fdopen (int,char*) ;
+ int filename ;
+ int fileno (int *) ;
+ int flush_buffer (int *) ;
+ int fstat (int ,struct stat*) ;
+ int fwrite (char*,int,int,int *) ;
+ TYPE_1__* hpcap ;
+ int logmsg (int ,char*,...) ;
+ scalar_t__ priv_move_log () ;
+ int priv_open_log () ;
+ scalar_t__ scan_dump (int *,scalar_t__) ;
+ scalar_t__ set_snaplen (scalar_t__) ;
+ int set_suspended (int ) ;
+ scalar_t__ setvbuf (int *,int *,int ,int ) ;
+ scalar_t__ snaplen ;
+ int strerror (int ) ;
 
 int
 try_reset_dump(int nomove)
 {
-	struct pcap_file_header hdr;
-	struct stat st;
-	int fd;
-	FILE *fp;
+ struct pcap_file_header hdr;
+ struct stat st;
+ int fd;
+ FILE *fp;
 
-	if (hpcap == NULL)
-		return (-1);
+ if (hpcap == ((void*)0))
+  return (-1);
 
-	if (dpcap) {
-		flush_buffer(dpcap);
-		fclose(dpcap);
-		dpcap = NULL;
-	}
+ if (dpcap) {
+  flush_buffer(dpcap);
+  fclose(dpcap);
+  dpcap = ((void*)0);
+ }
 
-	/*
-	 * Basically reimplement pcap_dump_open() because it truncates
-	 * files and duplicates headers and such.
-	 */
-	fd = priv_open_log();
-	if (fd < 0)
-		return (-1);
 
-	fp = fdopen(fd, "a+");
 
-	if (fp == NULL) {
-		logmsg(LOG_ERR, "Error: %s: %s", filename, strerror(errno));
-		close(fd);
-		return (-1);
-	}
-	if (fstat(fileno(fp), &st) == -1) {
-		logmsg(LOG_ERR, "Error: %s: %s", filename, strerror(errno));
-		fclose(fp);
-		return (-1);
-	}
 
-	/* set FILE unbuffered, we do our own buffering */
-	if (setvbuf(fp, NULL, _IONBF, 0)) {
-		logmsg(LOG_ERR, "Failed to set output buffers");
-		fclose(fp);
-		return (-1);
-	}
 
-#define TCPDUMP_MAGIC 0xa1b2c3d4
+ fd = priv_open_log();
+ if (fd < 0)
+  return (-1);
 
-	if (st.st_size == 0) {
-		if (snaplen != cur_snaplen) {
-			logmsg(LOG_NOTICE, "Using snaplen %d", snaplen);
-			if (set_snaplen(snaplen))
-				logmsg(LOG_WARNING,
-				    "Failed, using old settings");
-		}
-		hdr.magic = TCPDUMP_MAGIC;
-		hdr.version_major = PCAP_VERSION_MAJOR;
-		hdr.version_minor = PCAP_VERSION_MINOR;
-		hdr.thiszone = hpcap->tzoff;
-		hdr.snaplen = hpcap->snapshot;
-		hdr.sigfigs = 0;
-		hdr.linktype = hpcap->linktype;
+ fp = fdopen(fd, "a+");
 
-		if (fwrite((char *)&hdr, sizeof(hdr), 1, fp) != 1) {
-			fclose(fp);
-			return (-1);
-		}
-	} else if (scan_dump(fp, st.st_size)) {
-		fclose(fp);
-		if (nomove || priv_move_log()) {
-			logmsg(LOG_ERR,
-			    "Invalid/incompatible log file, move it away");
-			return (-1);
-		}
-		return (1);
-	}
+ if (fp == ((void*)0)) {
+  logmsg(LOG_ERR, "Error: %s: %s", filename, strerror(errno));
+  close(fd);
+  return (-1);
+ }
+ if (fstat(fileno(fp), &st) == -1) {
+  logmsg(LOG_ERR, "Error: %s: %s", filename, strerror(errno));
+  fclose(fp);
+  return (-1);
+ }
 
-	dpcap = fp;
 
-	set_suspended(0);
-	flush_buffer(fp);
+ if (setvbuf(fp, ((void*)0), _IONBF, 0)) {
+  logmsg(LOG_ERR, "Failed to set output buffers");
+  fclose(fp);
+  return (-1);
+ }
 
-	return (0);
+
+
+ if (st.st_size == 0) {
+  if (snaplen != cur_snaplen) {
+   logmsg(LOG_NOTICE, "Using snaplen %d", snaplen);
+   if (set_snaplen(snaplen))
+    logmsg(LOG_WARNING,
+        "Failed, using old settings");
+  }
+  hdr.magic = 0xa1b2c3d4;
+  hdr.version_major = PCAP_VERSION_MAJOR;
+  hdr.version_minor = PCAP_VERSION_MINOR;
+  hdr.thiszone = hpcap->tzoff;
+  hdr.snaplen = hpcap->snapshot;
+  hdr.sigfigs = 0;
+  hdr.linktype = hpcap->linktype;
+
+  if (fwrite((char *)&hdr, sizeof(hdr), 1, fp) != 1) {
+   fclose(fp);
+   return (-1);
+  }
+ } else if (scan_dump(fp, st.st_size)) {
+  fclose(fp);
+  if (nomove || priv_move_log()) {
+   logmsg(LOG_ERR,
+       "Invalid/incompatible log file, move it away");
+   return (-1);
+  }
+  return (1);
+ }
+
+ dpcap = fp;
+
+ set_suspended(0);
+ flush_buffer(fp);
+
+ return (0);
 }

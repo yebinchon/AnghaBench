@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/ * pDriverName; int /*<<< orphan*/ * pPrinterName; } ;
-typedef  TYPE_1__ PRINTER_INFO_2A ;
-typedef  int INT ;
-typedef  scalar_t__ HANDLE ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  BYTE ;
-typedef  int BOOL ;
 
-/* Variables and functions */
- int ClosePrinter (scalar_t__) ; 
- int ERROR_INSUFFICIENT_BUFFER ; 
- int ERROR_INVALID_LEVEL ; 
- int ERROR_NOT_SUPPORTED ; 
- int ERROR_SUCCESS ; 
- int GetLastError () ; 
- int GetPrinterA (scalar_t__,int,int /*<<< orphan*/ *,int,int*) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/ * HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int OpenPrinterA (int,scalar_t__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SetLastError (int) ; 
- int default_printer ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  on_win9x ; 
- int pGetPrinterW (scalar_t__,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  skip (char*,...) ; 
- int /*<<< orphan*/  trace (char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  win_skip (char*,int) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int * pDriverName; int * pPrinterName; } ;
+typedef TYPE_1__ PRINTER_INFO_2A ;
+typedef int INT ;
+typedef scalar_t__ HANDLE ;
+typedef int DWORD ;
+typedef int BYTE ;
+typedef int BOOL ;
+
+
+ int ClosePrinter (scalar_t__) ;
+ int ERROR_INSUFFICIENT_BUFFER ;
+ int ERROR_INVALID_LEVEL ;
+ int ERROR_NOT_SUPPORTED ;
+ int ERROR_SUCCESS ;
+ int GetLastError () ;
+ int GetPrinterA (scalar_t__,int,int *,int,int*) ;
+ int GetProcessHeap () ;
+ int * HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,int *) ;
+ int OpenPrinterA (int,scalar_t__*,int *) ;
+ int SetLastError (int) ;
+ int default_printer ;
+ int ok (int,char*,...) ;
+ int on_win9x ;
+ int pGetPrinterW (scalar_t__,int,int *,int ,int*) ;
+ int skip (char*,...) ;
+ int trace (char*,int *) ;
+ int win_skip (char*,int) ;
 
 __attribute__((used)) static void test_GetPrinter(void)
 {
@@ -55,7 +55,7 @@ __attribute__((used)) static void test_GetPrinter(void)
     }
 
     hprn = 0;
-    ret = OpenPrinterA(default_printer, &hprn, NULL);
+    ret = OpenPrinterA(default_printer, &hprn, ((void*)0));
     if (!ret)
     {
         skip("Unable to open the default printer (%s)\n", default_printer);
@@ -67,7 +67,7 @@ __attribute__((used)) static void test_GetPrinter(void)
     {
         SetLastError(0xdeadbeef);
         needed = (DWORD)-1;
-        ret = GetPrinterA(hprn, level, NULL, 0, &needed);
+        ret = GetPrinterA(hprn, level, ((void*)0), 0, &needed);
         if (ret)
         {
             win_skip("Level %d is not supported on Win9x/WinMe\n", level);
@@ -76,9 +76,9 @@ __attribute__((used)) static void test_GetPrinter(void)
             continue;
         }
         ok(!ret, "level %d: GetPrinter should fail\n", level);
-        /* Not all levels are supported on all Windows-Versions */
+
         if (GetLastError() == ERROR_INVALID_LEVEL ||
-            GetLastError() == ERROR_NOT_SUPPORTED /* Win9x/WinMe */)
+            GetLastError() == ERROR_NOT_SUPPORTED )
         {
             skip("Level %d not supported\n", level);
             continue;
@@ -86,11 +86,11 @@ __attribute__((used)) static void test_GetPrinter(void)
         ok(GetLastError() == ERROR_INSUFFICIENT_BUFFER, "wrong error %d\n", GetLastError());
         ok(needed > 0,"not expected needed buffer size %d\n", needed);
 
-        /* GetPrinterA returns the same number of bytes as GetPrinterW */
+
         if (!on_win9x && !ret && pGetPrinterW && level != 6 && level != 7)
         {
             DWORD double_needed;
-            ret = pGetPrinterW(hprn, level, NULL, 0, &double_needed);
+            ret = pGetPrinterW(hprn, level, ((void*)0), 0, &double_needed);
             ok(!ret, "level %d: GetPrinter error %d\n", level, GetLastError());
             ok(double_needed == needed, "level %d: GetPrinterA returned different size %d than GetPrinterW (%d)\n", level, needed, double_needed);
         }
@@ -107,8 +107,8 @@ __attribute__((used)) static void test_GetPrinter(void)
         {
             PRINTER_INFO_2A *pi_2 = (PRINTER_INFO_2A *)buf;
 
-            ok(pi_2->pPrinterName!= NULL, "not expected NULL ptr\n");
-            ok(pi_2->pDriverName!= NULL, "not expected NULL ptr\n");
+            ok(pi_2->pPrinterName!= ((void*)0), "not expected NULL ptr\n");
+            ok(pi_2->pDriverName!= ((void*)0), "not expected NULL ptr\n");
 
             trace("pPrinterName %s\n", pi_2->pPrinterName);
             trace("pDriverName %s\n", pi_2->pDriverName);

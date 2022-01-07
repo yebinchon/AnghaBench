@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ v8u16 ;
-typedef  int /*<<< orphan*/  v4u32 ;
-typedef  int /*<<< orphan*/  v4i32 ;
-typedef  scalar_t__ v16u8 ;
-typedef  int /*<<< orphan*/  v16i8 ;
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  int32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HADD_UB2_UH (scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  LD_UB2 (int /*<<< orphan*/  const*,int,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  ST_UB2 (scalar_t__,scalar_t__,int /*<<< orphan*/ *,int) ; 
- scalar_t__ __msa_hadd_u_d (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ __msa_hadd_u_w (scalar_t__,scalar_t__) ; 
- scalar_t__ __msa_pckev_w (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ __msa_splati_b (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ __msa_srari_w (int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef scalar_t__ v8u16 ;
+typedef int v4u32 ;
+typedef int v4i32 ;
+typedef scalar_t__ v16u8 ;
+typedef int v16i8 ;
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef int int32_t ;
+
+
+ int HADD_UB2_UH (scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ int LD_UB2 (int const*,int,scalar_t__,scalar_t__) ;
+ int ST_UB2 (scalar_t__,scalar_t__,int *,int) ;
+ scalar_t__ __msa_hadd_u_d (int ,int ) ;
+ scalar_t__ __msa_hadd_u_w (scalar_t__,scalar_t__) ;
+ scalar_t__ __msa_pckev_w (int ,int ) ;
+ scalar_t__ __msa_splati_b (int ,int ) ;
+ scalar_t__ __msa_srari_w (int ,int) ;
 
 __attribute__((used)) static void hevc_intra_pred_dc_32x32_msa(const uint8_t *src_top,
                                          const uint8_t *src_left,

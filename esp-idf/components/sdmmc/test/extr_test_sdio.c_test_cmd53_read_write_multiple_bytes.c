@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int /*<<< orphan*/  sdmmc_card_t ;
 
-/* Variables and functions */
- size_t DR_REG_SLCHOST_BASE ; 
- int /*<<< orphan*/  ESP_LOG_BUFFER_HEX (int /*<<< orphan*/ ,int /*<<< orphan*/ *,size_t) ; 
- int /*<<< orphan*/  MALLOC_CAP_DMA ; 
- size_t SLCHOST_CONF_W0 ; 
- int /*<<< orphan*/  TAG ; 
- int /*<<< orphan*/  TEST_ASSERT_EQUAL_UINT8_ARRAY (int /*<<< orphan*/ *,int /*<<< orphan*/ *,size_t) ; 
- int /*<<< orphan*/  TEST_ESP_OK (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * heap_caps_malloc (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printf (char*) ; 
- int /*<<< orphan*/  rand () ; 
- int /*<<< orphan*/  sdmmc_io_read_byte (int /*<<< orphan*/ *,int,size_t const,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sdmmc_io_read_bytes (int /*<<< orphan*/ *,int,size_t const,int /*<<< orphan*/ *,size_t) ; 
- int /*<<< orphan*/  sdmmc_io_write_bytes (int /*<<< orphan*/ *,int,size_t const,int /*<<< orphan*/ *,size_t) ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef int sdmmc_card_t ;
+
+
+ size_t DR_REG_SLCHOST_BASE ;
+ int ESP_LOG_BUFFER_HEX (int ,int *,size_t) ;
+ int MALLOC_CAP_DMA ;
+ size_t SLCHOST_CONF_W0 ;
+ int TAG ;
+ int TEST_ASSERT_EQUAL_UINT8_ARRAY (int *,int *,size_t) ;
+ int TEST_ESP_OK (int ) ;
+ int free (int *) ;
+ int * heap_caps_malloc (int,int ) ;
+ int printf (char*) ;
+ int rand () ;
+ int sdmmc_io_read_byte (int *,int,size_t const,int *) ;
+ int sdmmc_io_read_bytes (int *,int,size_t const,int *,size_t) ;
+ int sdmmc_io_write_bytes (int *,int,size_t const,int *,size_t) ;
 
 __attribute__((used)) static void test_cmd53_read_write_multiple_bytes(sdmmc_card_t* card, size_t n_bytes)
 {

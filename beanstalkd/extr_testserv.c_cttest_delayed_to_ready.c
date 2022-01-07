@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int SERVER () ; 
- int /*<<< orphan*/  ckresp (int,char*) ; 
- int /*<<< orphan*/  ckrespsub (int,char*) ; 
- int mustdiallocal (int) ; 
- int /*<<< orphan*/  mustsend (int,char*) ; 
- int /*<<< orphan*/  usleep (int) ; 
+ int SERVER () ;
+ int ckresp (int,char*) ;
+ int ckrespsub (int,char*) ;
+ int mustdiallocal (int) ;
+ int mustsend (int,char*) ;
+ int usleep (int) ;
 
 void
 cttest_delayed_to_ready()
@@ -40,9 +32,9 @@ cttest_delayed_to_ready()
     ckrespsub(fd, "OK ");
     ckrespsub(fd, "\ntotal-jobs: 1\n");
 
-    usleep(1010000); // 1.01 sec
+    usleep(1010000);
 
-    // check that after 1 sec the delayed job is ready again
+
 
     mustsend(fd, "stats-tube default\r\n");
     ckrespsub(fd, "OK ");

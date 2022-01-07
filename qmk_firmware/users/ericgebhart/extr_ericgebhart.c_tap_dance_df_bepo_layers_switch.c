@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int count; } ;
-typedef  TYPE_1__ qk_tap_dance_state_t ;
+typedef TYPE_1__ qk_tap_dance_state_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BEPO ; 
- int /*<<< orphan*/  DVORAK_ON_BEPO ; 
- int /*<<< orphan*/  LAYERS ; 
- int /*<<< orphan*/  layer_invert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  reset_tap_dance (TYPE_1__*) ; 
- int /*<<< orphan*/  switch_default_layer (int /*<<< orphan*/ ) ; 
+
+ int BEPO ;
+ int DVORAK_ON_BEPO ;
+ int LAYERS ;
+ int layer_invert (int ) ;
+ int reset_tap_dance (TYPE_1__*) ;
+ int switch_default_layer (int ) ;
 
 void tap_dance_df_bepo_layers_switch (qk_tap_dance_state_t *state, void *user_data) {
       switch(state->count){

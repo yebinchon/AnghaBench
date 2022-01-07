@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int MaximumLength; int Length; int /*<<< orphan*/  Buffer; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int MaximumLength; int Length; int Buffer; } ;
 struct TYPE_6__ {TYPE_1__ Str; } ;
-typedef  TYPE_2__* PSDB_TMP_STR ;
-typedef  int /*<<< orphan*/  PCWSTR ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef TYPE_2__* PSDB_TMP_STR ;
+typedef int PCWSTR ;
+typedef int DWORD ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GetLastError () ; 
- int GetLongPathNameW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  SHIM_ERR (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SdbpResizeTempStr (TYPE_2__*,int) ; 
- int /*<<< orphan*/  TRUE ; 
+
+ int FALSE ;
+ int GetLastError () ;
+ int GetLongPathNameW (int ,int ,int) ;
+ int SHIM_ERR (char*,int ) ;
+ int SdbpResizeTempStr (TYPE_2__*,int) ;
+ int TRUE ;
 
 BOOL SdbpGetLongPathName(PCWSTR wszPath, PSDB_TMP_STR Result)
 {

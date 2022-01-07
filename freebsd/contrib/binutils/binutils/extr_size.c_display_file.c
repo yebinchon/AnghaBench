@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  bfd ;
 
-/* Variables and functions */
- int /*<<< orphan*/  bfd_archive ; 
- scalar_t__ bfd_check_format (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bfd_close (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bfd_nonfatal (char*) ; 
- int /*<<< orphan*/ * bfd_openr (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  display_archive (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  display_bfd (int /*<<< orphan*/ *) ; 
- int get_file_size (char*) ; 
- int return_code ; 
- int /*<<< orphan*/  target ; 
+
+
+
+typedef int bfd ;
+
+
+ int bfd_archive ;
+ scalar_t__ bfd_check_format (int *,int ) ;
+ int bfd_close (int *) ;
+ int bfd_nonfatal (char*) ;
+ int * bfd_openr (char*,int ) ;
+ int display_archive (int *) ;
+ int display_bfd (int *) ;
+ int get_file_size (char*) ;
+ int return_code ;
+ int target ;
 
 __attribute__((used)) static void
 display_file (char *filename)
@@ -36,7 +36,7 @@ display_file (char *filename)
     }
 
   file = bfd_openr (filename, target);
-  if (file == NULL)
+  if (file == ((void*)0))
     {
       bfd_nonfatal (filename);
       return_code = 1;

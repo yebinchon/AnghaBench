@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  LONGEST ;
-typedef  int /*<<< orphan*/  CORE_ADDR ;
 
-/* Variables and functions */
- char* alloca (int) ; 
- int /*<<< orphan*/  store_signed_integer (char*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  write_memory (int /*<<< orphan*/ ,char*,int) ; 
+
+
+
+typedef int LONGEST ;
+typedef int CORE_ADDR ;
+
+
+ char* alloca (int) ;
+ int store_signed_integer (char*,int,int ) ;
+ int write_memory (int ,char*,int) ;
 
 void
 write_memory_signed_integer (CORE_ADDR addr, int len, LONGEST value)

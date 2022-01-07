@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct string_list {int size; TYPE_1__* elems; } ;
-typedef  int /*<<< orphan*/  elem1 ;
-typedef  int /*<<< orphan*/  elem0 ;
+typedef int elem1 ;
+typedef int elem0 ;
 struct TYPE_2__ {char* data; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MENU_ENUM_LABEL_ADD_TAB ; 
- int /*<<< orphan*/  MENU_ENUM_LABEL_FAVORITES_TAB ; 
- int /*<<< orphan*/  MENU_ENUM_LABEL_HISTORY_TAB ; 
- int /*<<< orphan*/  MENU_ENUM_LABEL_HORIZONTAL_MENU ; 
- int /*<<< orphan*/  MENU_ENUM_LABEL_IMAGES_TAB ; 
- int /*<<< orphan*/  MENU_ENUM_LABEL_MAIN_MENU ; 
- int /*<<< orphan*/  MENU_ENUM_LABEL_MUSIC_TAB ; 
- int /*<<< orphan*/  MENU_ENUM_LABEL_NETPLAY_TAB ; 
- int /*<<< orphan*/  MENU_ENUM_LABEL_PLAYLISTS_TAB ; 
- int /*<<< orphan*/  MENU_ENUM_LABEL_SETTINGS_TAB ; 
- int /*<<< orphan*/  MENU_ENUM_LABEL_VALUE_ADD_TAB ; 
- int /*<<< orphan*/  MENU_ENUM_LABEL_VALUE_FAVORITES_TAB ; 
- int /*<<< orphan*/  MENU_ENUM_LABEL_VALUE_HISTORY_TAB ; 
- int /*<<< orphan*/  MENU_ENUM_LABEL_VALUE_HORIZONTAL_MENU ; 
- int /*<<< orphan*/  MENU_ENUM_LABEL_VALUE_IMAGES_TAB ; 
- int /*<<< orphan*/  MENU_ENUM_LABEL_VALUE_MAIN_MENU ; 
- int /*<<< orphan*/  MENU_ENUM_LABEL_VALUE_MUSIC_TAB ; 
- int /*<<< orphan*/  MENU_ENUM_LABEL_VALUE_NETPLAY_TAB ; 
- int /*<<< orphan*/  MENU_ENUM_LABEL_VALUE_PLAYLISTS_TAB ; 
- int /*<<< orphan*/  MENU_ENUM_LABEL_VALUE_SETTINGS_TAB ; 
- int /*<<< orphan*/  MENU_ENUM_LABEL_VALUE_VIDEO_TAB ; 
- int /*<<< orphan*/  MENU_ENUM_LABEL_VIDEO_TAB ; 
- char* msg_hash_to_str (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  string_is_empty (char*) ; 
- scalar_t__ string_is_equal (char const*,char*) ; 
- int /*<<< orphan*/  string_list_free (struct string_list*) ; 
- struct string_list* string_split (char const*,char*) ; 
- int /*<<< orphan*/  strlcat (char*,char*,size_t) ; 
- int /*<<< orphan*/  strlcpy (char*,char*,size_t) ; 
+
+ int MENU_ENUM_LABEL_ADD_TAB ;
+ int MENU_ENUM_LABEL_FAVORITES_TAB ;
+ int MENU_ENUM_LABEL_HISTORY_TAB ;
+ int MENU_ENUM_LABEL_HORIZONTAL_MENU ;
+ int MENU_ENUM_LABEL_IMAGES_TAB ;
+ int MENU_ENUM_LABEL_MAIN_MENU ;
+ int MENU_ENUM_LABEL_MUSIC_TAB ;
+ int MENU_ENUM_LABEL_NETPLAY_TAB ;
+ int MENU_ENUM_LABEL_PLAYLISTS_TAB ;
+ int MENU_ENUM_LABEL_SETTINGS_TAB ;
+ int MENU_ENUM_LABEL_VALUE_ADD_TAB ;
+ int MENU_ENUM_LABEL_VALUE_FAVORITES_TAB ;
+ int MENU_ENUM_LABEL_VALUE_HISTORY_TAB ;
+ int MENU_ENUM_LABEL_VALUE_HORIZONTAL_MENU ;
+ int MENU_ENUM_LABEL_VALUE_IMAGES_TAB ;
+ int MENU_ENUM_LABEL_VALUE_MAIN_MENU ;
+ int MENU_ENUM_LABEL_VALUE_MUSIC_TAB ;
+ int MENU_ENUM_LABEL_VALUE_NETPLAY_TAB ;
+ int MENU_ENUM_LABEL_VALUE_PLAYLISTS_TAB ;
+ int MENU_ENUM_LABEL_VALUE_SETTINGS_TAB ;
+ int MENU_ENUM_LABEL_VALUE_VIDEO_TAB ;
+ int MENU_ENUM_LABEL_VIDEO_TAB ;
+ char* msg_hash_to_str (int ) ;
+ int string_is_empty (char*) ;
+ scalar_t__ string_is_equal (char const*,char*) ;
+ int string_list_free (struct string_list*) ;
+ struct string_list* string_split (char const*,char*) ;
+ int strlcat (char*,char*,size_t) ;
+ int strlcpy (char*,char*,size_t) ;
 
 __attribute__((used)) static int action_get_title_group_settings(const char *path, const char *label,
       unsigned menu_type, char *s, size_t len)

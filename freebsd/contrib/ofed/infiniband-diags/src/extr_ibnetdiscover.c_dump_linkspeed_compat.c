@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
 
-/* Variables and functions */
+
+
+
+typedef int uint32_t ;
+
+
 
 char *dump_linkspeed_compat(uint32_t speed)
 {
-	switch (speed) {
-	case 1:
-		return ("SDR");
-		break;
-	case 2:
-		return ("DDR");
-		break;
-	case 4:
-		return ("QDR");
-		break;
-	}
-	return ("???");
+ switch (speed) {
+ case 1:
+  return ("SDR");
+  break;
+ case 2:
+  return ("DDR");
+  break;
+ case 4:
+  return ("QDR");
+  break;
+ }
+ return ("???");
 }

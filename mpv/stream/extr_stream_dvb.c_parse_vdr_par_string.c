@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {char pol; int is_dvb_x2; int stream_id; int /*<<< orphan*/  mod; int /*<<< orphan*/  inv; } ;
-typedef  TYPE_1__ dvb_channel_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INVERSION_OFF ; 
- int /*<<< orphan*/  INVERSION_ON ; 
- int /*<<< orphan*/  errno ; 
- int mp_toupper (char const) ; 
- int /*<<< orphan*/  parse_vdr_modulation (char const**) ; 
- int strtol (char const*,char**,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {char pol; int is_dvb_x2; int stream_id; int mod; int inv; } ;
+typedef TYPE_1__ dvb_channel_t ;
+
+
+ int INVERSION_OFF ;
+ int INVERSION_ON ;
+ int errno ;
+ int mp_toupper (char const) ;
+ int parse_vdr_modulation (char const**) ;
+ int strtol (char const*,char**,int) ;
 
 __attribute__((used)) static void parse_vdr_par_string(const char *vdr_par_str, dvb_channel_t *ptr)
 {
-    //FIXME: There is more information in this parameter string, especially related
-    // to non-DVB-S reception.
+
+
     if (vdr_par_str[0]) {
         const char *vdr_par = &vdr_par_str[0];
         while (vdr_par && *vdr_par) {
@@ -41,15 +41,15 @@ __attribute__((used)) static void parse_vdr_par_string(const char *vdr_par_str, 
             case 'S':
                 vdr_par++;
                 if (*vdr_par == '1') {
-                    ptr->is_dvb_x2 = true;
+                    ptr->is_dvb_x2 = 1;
                 } else {
-                    ptr->is_dvb_x2 = false;
+                    ptr->is_dvb_x2 = 0;
                 }
                 vdr_par++;
                 break;
             case 'P':
                 vdr_par++;
-                char *endptr = NULL;
+                char *endptr = ((void*)0);
                 errno = 0;
                 int n = strtol(vdr_par, &endptr, 10);
                 if (!errno && endptr != vdr_par) {

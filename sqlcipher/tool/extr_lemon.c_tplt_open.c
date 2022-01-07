@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct lemon {char* filename; int /*<<< orphan*/  errorcnt; int /*<<< orphan*/  argv0; } ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- scalar_t__ access (char*,int) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  lemon_sprintf (char*,char*,...) ; 
- char* pathsearch (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stderr ; 
- char* strrchr (char*,char) ; 
- scalar_t__ user_templatename ; 
+
+
+
+struct lemon {char* filename; int errorcnt; int argv0; } ;
+typedef int FILE ;
+
+
+ scalar_t__ access (char*,int) ;
+ int * fopen (char*,char*) ;
+ int fprintf (int ,char*,char*) ;
+ int lemon_sprintf (char*,char*,...) ;
+ char* pathsearch (int ,char*,int ) ;
+ int stderr ;
+ char* strrchr (char*,char) ;
+ scalar_t__ user_templatename ;
 
 FILE *tplt_open(struct lemon *lemp)
 {
@@ -31,7 +31,7 @@ FILE *tplt_open(struct lemon *lemp)
   char *tpltname;
   char *cp;
 
-  /* first, see if user specified a template filename on the command line. */
+
   if (user_templatename != 0) {
     if( access(user_templatename,004)==-1 ){
       fprintf(stderr,"Can't find the parser driver template file \"%s\".\n",

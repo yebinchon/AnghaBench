@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int data_len; } ;
-struct entry {int key_len; TYPE_1__ data; int /*<<< orphan*/  key; } ;
+struct entry {int key_len; TYPE_1__ data; int key; } ;
 
-/* Variables and functions */
- long long HASH_TABLE_MASK ; 
- int HASH_TABLE_SIZE ; 
- int /*<<< orphan*/  add_cache_use (int) ; 
- int /*<<< orphan*/  assert (size_t) ; 
- struct entry* cache ; 
- size_t cache_free ; 
- int* cache_next ; 
- int* cache_prev ; 
- int* cache_stack ; 
- int /*<<< orphan*/  create_new_cache_item (struct entry*,char const*,int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  free_cache () ; 
- long long get_hash (char const*,int) ; 
- int /*<<< orphan*/  memcmp (char const*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  update_cache_use (int) ; 
- int verbosity ; 
+
+ long long HASH_TABLE_MASK ;
+ int HASH_TABLE_SIZE ;
+ int add_cache_use (int) ;
+ int assert (size_t) ;
+ struct entry* cache ;
+ size_t cache_free ;
+ int* cache_next ;
+ int* cache_prev ;
+ int* cache_stack ;
+ int create_new_cache_item (struct entry*,char const*,int) ;
+ int fprintf (int ,char*,...) ;
+ int free_cache () ;
+ long long get_hash (char const*,int) ;
+ int memcmp (char const*,int ,int) ;
+ int stderr ;
+ int update_cache_use (int) ;
+ int verbosity ;
 
 struct entry *get_cache_item (const char *key, int key_len) {
   if (verbosity >= 4) { fprintf (stderr, "get_cache_item\n"); }

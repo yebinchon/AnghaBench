@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_12__ {int dquant; int quant; int qsum; int loopfilter; int mb_x; int mb_y; int divide_quant_dc_luma; int quant_dc_chroma; int divide_quant_dc_chroma; int mb_height; int mb_width; int* dest; int /*<<< orphan*/  frame; int /*<<< orphan*/  avctx; int /*<<< orphan*/ * gb; int /*<<< orphan*/  use_quant_matrix; } ;
-struct TYPE_11__ {int* qscale_table; int /*<<< orphan*/  f; } ;
-typedef  TYPE_1__ Picture ;
-typedef  TYPE_2__ IntraX8Context ;
-typedef  int /*<<< orphan*/  GetBitContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PICT_FRAME ; 
- int /*<<< orphan*/  ff_draw_horiz_band (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  get_bits1 (int /*<<< orphan*/ *) ; 
- scalar_t__ x8_decode_intra_mb (TYPE_2__*,int) ; 
- int /*<<< orphan*/  x8_get_prediction (TYPE_2__*) ; 
- int /*<<< orphan*/  x8_get_prediction_chroma (TYPE_2__*) ; 
- int /*<<< orphan*/  x8_init_block_index (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  x8_reset_vlc_tables (TYPE_2__*) ; 
- scalar_t__ x8_setup_spatial_predictor (TYPE_2__*,int) ; 
+
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+struct TYPE_12__ {int dquant; int quant; int qsum; int loopfilter; int mb_x; int mb_y; int divide_quant_dc_luma; int quant_dc_chroma; int divide_quant_dc_chroma; int mb_height; int mb_width; int* dest; int frame; int avctx; int * gb; int use_quant_matrix; } ;
+struct TYPE_11__ {int* qscale_table; int f; } ;
+typedef TYPE_1__ Picture ;
+typedef TYPE_2__ IntraX8Context ;
+typedef int GetBitContext ;
+
+
+ int PICT_FRAME ;
+ int ff_draw_horiz_band (int ,int ,int ,int,int,int ,int ,int) ;
+ int get_bits1 (int *) ;
+ scalar_t__ x8_decode_intra_mb (TYPE_2__*,int) ;
+ int x8_get_prediction (TYPE_2__*) ;
+ int x8_get_prediction_chroma (TYPE_2__*) ;
+ int x8_init_block_index (TYPE_2__*,int ) ;
+ int x8_reset_vlc_tables (TYPE_2__*) ;
+ scalar_t__ x8_setup_spatial_predictor (TYPE_2__*,int) ;
 
 int ff_intrax8_decode_picture(IntraX8Context *w, Picture *pict,
                               GetBitContext *gb, int *mb_x, int *mb_y,
@@ -36,11 +36,11 @@ int ff_intrax8_decode_picture(IntraX8Context *w, Picture *pict,
 {
     int mb_xy;
 
-    w->gb     = gb;
+    w->gb = gb;
     w->dquant = dquant;
-    w->quant  = dquant >> 1;
-    w->qsum   = quant_offset;
-    w->frame  = pict->f;
+    w->quant = dquant >> 1;
+    w->qsum = quant_offset;
+    w->frame = pict->f;
     w->loopfilter = loopfilter;
     w->use_quant_matrix = get_bits1(w->gb);
 
@@ -49,10 +49,10 @@ int ff_intrax8_decode_picture(IntraX8Context *w, Picture *pict,
 
     w->divide_quant_dc_luma = ((1 << 16) + (w->quant >> 1)) / w->quant;
     if (w->quant < 5) {
-        w->quant_dc_chroma        = w->quant;
+        w->quant_dc_chroma = w->quant;
         w->divide_quant_dc_chroma = w->divide_quant_dc_luma;
     } else {
-        w->quant_dc_chroma        = w->quant + ((w->quant + 3) >> 3);
+        w->quant_dc_chroma = w->quant + ((w->quant + 3) >> 3);
         w->divide_quant_dc_chroma = ((1 << 16) + (w->quant_dc_chroma >> 1)) / w->quant_dc_chroma;
     }
     x8_reset_vlc_tables(w);
@@ -70,8 +70,8 @@ int ff_intrax8_decode_picture(IntraX8Context *w, Picture *pict,
             if (w->mb_x & w->mb_y & 1) {
                 x8_get_prediction_chroma(w);
 
-                /* when setting up chroma, no vlc is read,
-                 * so no error condition can be reached */
+
+
                 x8_setup_spatial_predictor(w, 1);
                 if (x8_decode_intra_mb(w, 1))
                     goto error;

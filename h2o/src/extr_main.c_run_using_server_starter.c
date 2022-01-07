@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int EX_CONFIG ; 
- char** build_server_starter_argv (char const*,char const*) ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  execvp (char*,char**) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*,char*) ; 
- int /*<<< orphan*/  setenv (char*,char*,int) ; 
- int /*<<< orphan*/  stderr ; 
- char* strerror (int /*<<< orphan*/ ) ; 
+ int EX_CONFIG ;
+ char** build_server_starter_argv (char const*,char const*) ;
+ int errno ;
+ int execvp (char*,char**) ;
+ int fprintf (int ,char*,char*,char*) ;
+ int setenv (char*,char*,int) ;
+ int stderr ;
+ char* strerror (int ) ;
 
 __attribute__((used)) static int run_using_server_starter(const char *h2o_cmd, const char *config_file)
 {

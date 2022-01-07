@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_7__ {scalar_t__ signum; int flags; scalar_t__ caught_signals; scalar_t__ dispatched_signals; } ;
-typedef  TYPE_1__ uv_signal_t ;
-typedef  int /*<<< orphan*/  sigset_t ;
+typedef TYPE_1__ uv_signal_t ;
+typedef int sigset_t ;
 
-/* Variables and functions */
- TYPE_1__* RB_REMOVE (int /*<<< orphan*/ ,int /*<<< orphan*/ *,TYPE_1__*) ; 
- int UV_SIGNAL_ONE_SHOT ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  uv__handle_stop (TYPE_1__*) ; 
- int /*<<< orphan*/  uv__signal_block_and_lock (int /*<<< orphan*/ *) ; 
- TYPE_1__* uv__signal_first_handle (scalar_t__) ; 
- int uv__signal_register_handler (scalar_t__,int) ; 
- int /*<<< orphan*/  uv__signal_tree ; 
- int /*<<< orphan*/  uv__signal_tree_s ; 
- int /*<<< orphan*/  uv__signal_unlock_and_unblock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  uv__signal_unregister_handler (scalar_t__) ; 
+
+ TYPE_1__* RB_REMOVE (int ,int *,TYPE_1__*) ;
+ int UV_SIGNAL_ONE_SHOT ;
+ int assert (int) ;
+ int uv__handle_stop (TYPE_1__*) ;
+ int uv__signal_block_and_lock (int *) ;
+ TYPE_1__* uv__signal_first_handle (scalar_t__) ;
+ int uv__signal_register_handler (scalar_t__,int) ;
+ int uv__signal_tree ;
+ int uv__signal_tree_s ;
+ int uv__signal_unlock_and_unblock (int *) ;
+ int uv__signal_unregister_handler (scalar_t__) ;
 
 __attribute__((used)) static void uv__signal_stop(uv_signal_t* handle) {
   uv_signal_t* removed_handle;
@@ -36,7 +36,7 @@ __attribute__((used)) static void uv__signal_stop(uv_signal_t* handle) {
   int first_oneshot;
   int ret;
 
-  /* If the watcher wasn't started, this is a no-op. */
+
   if (handle->signum == 0)
     return;
 
@@ -46,11 +46,11 @@ __attribute__((used)) static void uv__signal_stop(uv_signal_t* handle) {
   assert(removed_handle == handle);
   (void) removed_handle;
 
-  /* Check if there are other active signal watchers observing this signal. If
-   * not, unregister the signal handler.
-   */
+
+
+
   first_handle = uv__signal_first_handle(handle->signum);
-  if (first_handle == NULL) {
+  if (first_handle == ((void*)0)) {
     uv__signal_unregister_handler(handle->signum);
   } else {
     rem_oneshot = handle->flags & UV_SIGNAL_ONE_SHOT;

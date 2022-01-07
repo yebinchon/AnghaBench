@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct usb_ftdi {int /*<<< orphan*/  sw_lock; } ;
+
+
+
+
+struct usb_ftdi {int sw_lock; } ;
 struct inode {int dummy; } ;
 struct file {scalar_t__ private_data; } ;
 
-/* Variables and functions */
- int ENODEV ; 
- int /*<<< orphan*/  ftdi_elan_put_kref (struct usb_ftdi*) ; 
- int /*<<< orphan*/  up (int /*<<< orphan*/ *) ; 
+
+ int ENODEV ;
+ int ftdi_elan_put_kref (struct usb_ftdi*) ;
+ int up (int *) ;
 
 __attribute__((used)) static int ftdi_elan_release(struct inode *inode, struct file *file)
 {
         struct usb_ftdi *ftdi = (struct usb_ftdi *)file->private_data;
-        if (ftdi == NULL)
+        if (ftdi == ((void*)0))
                 return -ENODEV;
-        up(&ftdi->sw_lock);        /* decrement the count on our device */
+        up(&ftdi->sw_lock);
         ftdi_elan_put_kref(ftdi);
         return 0;
 }

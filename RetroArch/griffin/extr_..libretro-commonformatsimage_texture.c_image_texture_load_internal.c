@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
-struct texture_image {int /*<<< orphan*/  height; int /*<<< orphan*/  width; int /*<<< orphan*/  pixels; } ;
-typedef  enum image_type_enum { ____Placeholder_image_type_enum } image_type_enum ;
 
-/* Variables and functions */
- int IMAGE_PROCESS_ERROR ; 
- int IMAGE_PROCESS_ERROR_END ; 
- int IMAGE_PROCESS_NEXT ; 
- int /*<<< orphan*/  image_texture_color_convert (unsigned int,unsigned int,unsigned int,unsigned int,struct texture_image*) ; 
- int /*<<< orphan*/  image_texture_free (struct texture_image*) ; 
- int /*<<< orphan*/  image_texture_internal_gx_convert_texture32 (struct texture_image*) ; 
- int /*<<< orphan*/  image_transfer_free (void*,int) ; 
- int /*<<< orphan*/  image_transfer_is_valid (void*,int) ; 
- scalar_t__ image_transfer_iterate (void*,int) ; 
- void* image_transfer_new (int) ; 
- int image_transfer_process (void*,int,int /*<<< orphan*/ **,size_t,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  image_transfer_set_buffer_ptr (void*,int,int /*<<< orphan*/ *,size_t) ; 
- int /*<<< orphan*/  image_transfer_start (void*,int) ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+struct texture_image {int height; int width; int pixels; } ;
+typedef enum image_type_enum { ____Placeholder_image_type_enum } image_type_enum ;
+
+
+ int IMAGE_PROCESS_ERROR ;
+ int IMAGE_PROCESS_ERROR_END ;
+ int IMAGE_PROCESS_NEXT ;
+ int image_texture_color_convert (unsigned int,unsigned int,unsigned int,unsigned int,struct texture_image*) ;
+ int image_texture_free (struct texture_image*) ;
+ int image_texture_internal_gx_convert_texture32 (struct texture_image*) ;
+ int image_transfer_free (void*,int) ;
+ int image_transfer_is_valid (void*,int) ;
+ scalar_t__ image_transfer_iterate (void*,int) ;
+ void* image_transfer_new (int) ;
+ int image_transfer_process (void*,int,int **,size_t,int *,int *) ;
+ int image_transfer_set_buffer_ptr (void*,int,int *,size_t) ;
+ int image_transfer_start (void*,int) ;
 
 __attribute__((used)) static bool image_texture_load_internal(
       enum image_type_enum type,
@@ -39,8 +39,8 @@ __attribute__((used)) static bool image_texture_load_internal(
       unsigned g_shift, unsigned b_shift)
 {
    int ret;
-   bool success = false;
-   void *img    = image_transfer_new(type);
+   bool success = 0;
+   void *img = image_transfer_new(type);
 
    if (!img)
       goto end;
@@ -67,16 +67,7 @@ __attribute__((used)) static bool image_texture_load_internal(
 
    image_texture_color_convert(r_shift, g_shift, b_shift,
          a_shift, out_img);
-
-#ifdef GEKKO
-   if (!image_texture_internal_gx_convert_texture32(out_img))
-   {
-      image_texture_free(out_img);
-      goto end;
-   }
-#endif
-
-   success = true;
+   success = 1;
 
 end:
    if (img)

@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  mp_print_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mp_printf (int /*<<< orphan*/  const*,char*,int /*<<< orphan*/  const) ; 
+
+
+
+typedef int uint8_t ;
+typedef int mp_print_t ;
+
+
+ int mp_printf (int const*,char*,int const) ;
 
 __attribute__((used)) static void dump_hex_bytes(const mp_print_t *print, size_t len, const uint8_t *buf) {
     for (size_t i = 0; i < len; ++i) {

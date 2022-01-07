@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_7__ {TYPE_1__** inputs; TYPE_2__* priv; } ;
-struct TYPE_6__ {scalar_t__ dumpscale; int fir_len; int* analysis_buf; int rdft_len; int analysis_rdft_len; double* dump_buf; scalar_t__ min_phase; int /*<<< orphan*/  analysis_rdft; scalar_t__ zero_phase; } ;
+struct TYPE_6__ {scalar_t__ dumpscale; int fir_len; int* analysis_buf; int rdft_len; int analysis_rdft_len; double* dump_buf; scalar_t__ min_phase; int analysis_rdft; scalar_t__ zero_phase; } ;
 struct TYPE_5__ {int sample_rate; } ;
-typedef  TYPE_2__ FIREqualizerContext ;
-typedef  int /*<<< orphan*/  FILE ;
-typedef  TYPE_3__ AVFilterContext ;
+typedef TYPE_2__ FIREqualizerContext ;
+typedef int FILE ;
+typedef TYPE_3__ AVFilterContext ;
 
-/* Variables and functions */
- scalar_t__ SCALE_LINLOG ; 
- scalar_t__ SCALE_LOGLIN ; 
- scalar_t__ SCALE_LOGLOG ; 
- int /*<<< orphan*/  av_rdft_calc (int /*<<< orphan*/ ,int*) ; 
- double fabs (double) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*,...) ; 
- double hypotf (int,int) ; 
- double log10 (double) ; 
- double log2 (double) ; 
+
+ scalar_t__ SCALE_LINLOG ;
+ scalar_t__ SCALE_LOGLIN ;
+ scalar_t__ SCALE_LOGLOG ;
+ int av_rdft_calc (int ,int*) ;
+ double fabs (double) ;
+ int fprintf (int *,char*,...) ;
+ double hypotf (int,int) ;
+ double log10 (double) ;
+ double log2 (double) ;
 
 __attribute__((used)) static void dump_fir(AVFilterContext *ctx, FILE *fp, int ch)
 {

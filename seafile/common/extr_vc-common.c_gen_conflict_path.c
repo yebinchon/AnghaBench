@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  time_t ;
-typedef  int /*<<< orphan*/  gint64 ;
-typedef  int /*<<< orphan*/  GString ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  g_free (char*) ; 
- char* g_strdup (char const*) ; 
- char* g_string_free (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * g_string_new (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  g_string_printf (int /*<<< orphan*/ *,char*,char*,char const*,...) ; 
- int /*<<< orphan*/  localtime (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strftime (char*,int,char*,int /*<<< orphan*/ ) ; 
- char* strrchr (char*,char) ; 
+
+
+
+typedef int time_t ;
+typedef int gint64 ;
+typedef int GString ;
+
+
+ int FALSE ;
+ int g_free (char*) ;
+ char* g_strdup (char const*) ;
+ char* g_string_free (int *,int ) ;
+ int * g_string_new (int *) ;
+ int g_string_printf (int *,char*,char*,char const*,...) ;
+ int localtime (int *) ;
+ int strftime (char*,int,char*,int ) ;
+ char* strrchr (char*,char) ;
 
 char *
 gen_conflict_path (const char *origin_path,
@@ -33,14 +33,14 @@ gen_conflict_path (const char *origin_path,
     char time_buf[64];
     time_t t = (time_t)mtime;
     char *copy = g_strdup (origin_path);
-    GString *conflict_path = g_string_new (NULL);
+    GString *conflict_path = g_string_new (((void*)0));
     char *dot, *ext;
 
     strftime(time_buf, 64, "%Y-%m-%d-%H-%M-%S", localtime(&t));
 
     dot = strrchr (copy, '.');
 
-    if (dot != NULL) {
+    if (dot != ((void*)0)) {
         *dot = '\0';
         ext = dot + 1;
         if (modifier)

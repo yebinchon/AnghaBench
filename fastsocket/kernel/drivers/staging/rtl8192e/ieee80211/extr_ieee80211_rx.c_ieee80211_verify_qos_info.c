@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ieee80211_qos_information_element {int qui_subtype; scalar_t__ qui_type; scalar_t__ version; int /*<<< orphan*/  qui; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  QOS_OUI_LEN ; 
- scalar_t__ QOS_OUI_TYPE ; 
- scalar_t__ QOS_VERSION_1 ; 
- scalar_t__ memcmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  qos_oui ; 
+
+
+
+struct ieee80211_qos_information_element {int qui_subtype; scalar_t__ qui_type; scalar_t__ version; int qui; } ;
+
+
+ int QOS_OUI_LEN ;
+ scalar_t__ QOS_OUI_TYPE ;
+ scalar_t__ QOS_VERSION_1 ;
+ scalar_t__ memcmp (int ,int ,int ) ;
+ int qos_oui ;
 
 __attribute__((used)) static int ieee80211_verify_qos_info(struct ieee80211_qos_information_element
                                      *info_element, int sub_type)

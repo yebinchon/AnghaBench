@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {char* StrValue; } ;
-typedef  TYPE_1__ PARAM_VALUE ;
-typedef  int /*<<< orphan*/  LIST ;
+typedef TYPE_1__ PARAM_VALUE ;
+typedef int LIST ;
 
-/* Variables and functions */
- TYPE_1__* FindParamValue (int /*<<< orphan*/ *,char*) ; 
+
+ TYPE_1__* FindParamValue (int *,char*) ;
 
 char *GetParamStr(LIST *o, char *name)
 {
-	PARAM_VALUE *v;
-	// Validate arguments
-	if (o == NULL)
-	{
-		return NULL;
-	}
+ PARAM_VALUE *v;
 
-	v = FindParamValue(o, name);
-	if (v == NULL)
-	{
-		return NULL;
-	}
-	else
-	{
-		return v->StrValue;
-	}
+ if (o == ((void*)0))
+ {
+  return ((void*)0);
+ }
+
+ v = FindParamValue(o, name);
+ if (v == ((void*)0))
+ {
+  return ((void*)0);
+ }
+ else
+ {
+  return v->StrValue;
+ }
 }

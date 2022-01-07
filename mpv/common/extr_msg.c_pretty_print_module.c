@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*,...) ; 
- int /*<<< orphan*/  set_msg_color (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  set_term_color (int /*<<< orphan*/ *,int) ; 
- size_t strlen (char const*) ; 
+
+
+
+typedef int FILE ;
+
+
+ int fprintf (int *,char*,...) ;
+ int set_msg_color (int *,int) ;
+ int set_term_color (int *,int) ;
+ size_t strlen (char const*) ;
 
 __attribute__((used)) static void pretty_print_module(FILE* stream, const char *prefix, bool use_color, int lev)
 {
-    // Use random color based on the name of the module
+
     if (use_color) {
         size_t prefix_len = strlen(prefix);
         unsigned int mod = 0;

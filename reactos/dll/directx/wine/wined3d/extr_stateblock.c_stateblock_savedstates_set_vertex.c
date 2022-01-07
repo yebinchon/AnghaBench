@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct wined3d_saved_states {int vertexDecl; int vertexShader; unsigned int* renderState; int* textureState; unsigned int* samplerState; int vertexShaderConstantsB; int vertexShaderConstantsI; int /*<<< orphan*/  vs_consts_f; } ;
-typedef  unsigned int WORD ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- unsigned int ARRAY_SIZE (unsigned int*) ; 
- unsigned int MAX_COMBINED_SAMPLERS ; 
- unsigned int MAX_TEXTURES ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- unsigned int* vertex_states_render ; 
- unsigned int* vertex_states_sampler ; 
- unsigned int* vertex_states_texture ; 
+
+
+
+struct wined3d_saved_states {int vertexDecl; int vertexShader; unsigned int* renderState; int* textureState; unsigned int* samplerState; int vertexShaderConstantsB; int vertexShaderConstantsI; int vs_consts_f; } ;
+typedef unsigned int WORD ;
+typedef int DWORD ;
+typedef int BOOL ;
+
+
+ unsigned int ARRAY_SIZE (unsigned int*) ;
+ unsigned int MAX_COMBINED_SAMPLERS ;
+ unsigned int MAX_TEXTURES ;
+ int TRUE ;
+ int memset (int ,int ,int) ;
+ unsigned int* vertex_states_render ;
+ unsigned int* vertex_states_sampler ;
+ unsigned int* vertex_states_texture ;
 
 __attribute__((used)) static void stateblock_savedstates_set_vertex(struct wined3d_saved_states *states, const DWORD num_constants)
 {

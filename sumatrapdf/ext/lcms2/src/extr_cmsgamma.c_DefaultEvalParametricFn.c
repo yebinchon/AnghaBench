@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int cmsInt32Number ;
-typedef  int cmsFloat64Number ;
-typedef  int /*<<< orphan*/  cmsContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MATRIX_DET_TOLERANCE ; 
- int PLUS_INF ; 
- int /*<<< orphan*/  cmsUNUSED_PARAMETER (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fabs (int const) ; 
- int const log (int const) ; 
- int const log10 (int) ; 
- int const pow (int const,int const) ; 
+
+
+
+typedef int cmsInt32Number ;
+typedef int cmsFloat64Number ;
+typedef int cmsContext ;
+
+
+ int MATRIX_DET_TOLERANCE ;
+ int PLUS_INF ;
+ int cmsUNUSED_PARAMETER (int ) ;
+ int fabs (int const) ;
+ int const log (int const) ;
+ int const log10 (int) ;
+ int const pow (int const,int const) ;
 
 __attribute__((used)) static
 cmsFloat64Number DefaultEvalParametricFn(cmsContext ContextID, cmsInt32Number Type, const cmsFloat64Number Params[], cmsFloat64Number R)
@@ -31,7 +31,7 @@ cmsFloat64Number DefaultEvalParametricFn(cmsContext ContextID, cmsInt32Number Ty
 
     switch (Type) {
 
-   // X = Y ^ Gamma
+
     case 1:
         if (R < 0) {
 
@@ -44,7 +44,7 @@ cmsFloat64Number DefaultEvalParametricFn(cmsContext ContextID, cmsInt32Number Ty
             Val = pow(R, Params[0]);
         break;
 
-    // Type 1 Reversed: X = Y ^1/gamma
+
     case -1:
         if (R < 0) {
 
@@ -62,9 +62,9 @@ cmsFloat64Number DefaultEvalParametricFn(cmsContext ContextID, cmsInt32Number Ty
         }
         break;
 
-    // CIE 122-1966
-    // Y = (aX + b)^Gamma  | X >= -b/a
-    // Y = 0               | else
+
+
+
     case 2:
     {
 
@@ -91,8 +91,8 @@ cmsFloat64Number DefaultEvalParametricFn(cmsContext ContextID, cmsInt32Number Ty
     }
     break;
 
-     // Type 2 Reversed
-     // X = (Y ^1/g  - b) / a
+
+
      case -2:
      {
          if (fabs(Params[0]) < MATRIX_DET_TOLERANCE ||
@@ -114,9 +114,9 @@ cmsFloat64Number DefaultEvalParametricFn(cmsContext ContextID, cmsInt32Number Ty
      break;
 
 
-    // IEC 61966-3
-    // Y = (aX + b)^Gamma | X <= -b/a
-    // Y = c              | else
+
+
+
     case 3:
     {
         if (fabs(Params[1]) < MATRIX_DET_TOLERANCE)
@@ -145,9 +145,9 @@ cmsFloat64Number DefaultEvalParametricFn(cmsContext ContextID, cmsInt32Number Ty
     break;
 
 
-    // Type 3 reversed
-    // X=((Y-c)^1/g - b)/a      | (Y>=c)
-    // X=-b/a                   | (Y<c)
+
+
+
     case -3:
     {
         if (fabs(Params[1]) < MATRIX_DET_TOLERANCE)
@@ -173,9 +173,9 @@ cmsFloat64Number DefaultEvalParametricFn(cmsContext ContextID, cmsInt32Number Ty
     break;
 
 
-    // IEC 61966-2.1 (sRGB)
-    // Y = (aX + b)^Gamma | X >= d
-    // Y = cX             | X < d
+
+
+
     case 4:
         if (R >= Params[4]) {
 
@@ -190,9 +190,9 @@ cmsFloat64Number DefaultEvalParametricFn(cmsContext ContextID, cmsInt32Number Ty
             Val = R * Params[3];
         break;
 
-    // Type 4 reversed
-    // X=((Y^1/g-b)/a)    | Y >= (ad+b)^g
-    // X=Y/c              | Y< (ad+b)^g
+
+
+
     case -4:
     {
         if (fabs(Params[0]) < MATRIX_DET_TOLERANCE ||
@@ -221,8 +221,8 @@ cmsFloat64Number DefaultEvalParametricFn(cmsContext ContextID, cmsInt32Number Ty
     break;
 
 
-    // Y = (aX + b)^Gamma + e | X >= d
-    // Y = cX + f             | X < d
+
+
     case 5:
         if (R >= Params[4]) {
 
@@ -238,9 +238,9 @@ cmsFloat64Number DefaultEvalParametricFn(cmsContext ContextID, cmsInt32Number Ty
         break;
 
 
-    // Reversed type 5
-    // X=((Y-e)1/g-b)/a   | Y >=(ad+b)^g+e), cd+f
-    // X=(Y-f)/c          | else
+
+
+
     case -5:
     {
         if (fabs(Params[1]) < MATRIX_DET_TOLERANCE ||
@@ -267,10 +267,10 @@ cmsFloat64Number DefaultEvalParametricFn(cmsContext ContextID, cmsInt32Number Ty
     break;
 
 
-    // Types 6,7,8 comes from segmented curves as described in ICCSpecRevision_02_11_06_Float.pdf
-    // Type 6 is basically identical to type 5 without d
 
-    // Y = (a * X + b) ^ Gamma + c
+
+
+
     case 6:
         e = Params[1]*R + Params[2];
 
@@ -280,7 +280,7 @@ cmsFloat64Number DefaultEvalParametricFn(cmsContext ContextID, cmsInt32Number Ty
             Val = pow(e, Params[0]) + Params[3];
         break;
 
-    // ((Y - c) ^1/Gamma - b) / a
+
     case -6:
     {
         if (fabs(Params[1]) < MATRIX_DET_TOLERANCE)
@@ -299,7 +299,7 @@ cmsFloat64Number DefaultEvalParametricFn(cmsContext ContextID, cmsInt32Number Ty
     break;
 
 
-    // Y = a * log (b * X^Gamma + c) + d
+
     case 7:
 
        e = Params[2] * pow(R, Params[0]) + Params[3];
@@ -309,9 +309,9 @@ cmsFloat64Number DefaultEvalParametricFn(cmsContext ContextID, cmsInt32Number Ty
            Val = Params[1]*log10(e) + Params[4];
        break;
 
-    // (Y - d) / a = log(b * X ^Gamma + c)
-    // pow(10, (Y-d) / a) = b * X ^Gamma + c
-    // pow((pow(10, (Y-d) / a) - c) / b, 1/g) = X
+
+
+
     case -7:
     {
         if (fabs(Params[0]) < MATRIX_DET_TOLERANCE ||
@@ -328,14 +328,14 @@ cmsFloat64Number DefaultEvalParametricFn(cmsContext ContextID, cmsInt32Number Ty
     break;
 
 
-   //Y = a * b^(c*X+d) + e
+
    case 8:
        Val = (Params[0] * pow(Params[1], Params[2] * R + Params[3]) + Params[4]);
        break;
 
 
-   // Y = (log((y-e) / a) / log(b) - d ) / c
-   // a=0, b=1, c=2, d=3, e=4,
+
+
    case -8:
 
        disc = R - Params[4];
@@ -354,7 +354,7 @@ cmsFloat64Number DefaultEvalParametricFn(cmsContext ContextID, cmsInt32Number Ty
        }
        break;
 
-   // S-Shaped: (1 - (1-x)^1/g)^1/g
+
    case 108:
        if (fabs(Params[0]) < MATRIX_DET_TOLERANCE)
            Val = 0;
@@ -362,17 +362,17 @@ cmsFloat64Number DefaultEvalParametricFn(cmsContext ContextID, cmsInt32Number Ty
            Val = pow(1.0 - pow(1 - R, 1/Params[0]), 1/Params[0]);
       break;
 
-    // y = (1 - (1-x)^1/g)^1/g
-    // y^g = (1 - (1-x)^1/g)
-    // 1 - y^g = (1-x)^1/g
-    // (1 - y^g)^g = 1 - x
-    // 1 - (1 - y^g)^g
+
+
+
+
+
     case -108:
         Val = 1 - pow(1 - pow(R, Params[0]), Params[0]);
         break;
 
     default:
-        // Unsupported parametric curve. Should never reach here
+
         return 0;
     }
 

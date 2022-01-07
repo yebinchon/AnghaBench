@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8 ;
-struct TYPE_3__ {int style; int /*<<< orphan*/  yorigin; int /*<<< orphan*/  xorigin; int /*<<< orphan*/ * pattern; } ;
-typedef  TYPE_1__ BRUSH ;
 
-/* Variables and functions */
- int /*<<< orphan*/  False ; 
- int /*<<< orphan*/  cache_rect (int,int,int,int,int /*<<< orphan*/ ) ; 
- scalar_t__ contains_mouse (int,int,int,int) ; 
- int /*<<< orphan*/  draw_cursor_under (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fill_rect (int,int,int,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  is_pixel_on (int /*<<< orphan*/ *,int,int,int,int) ; 
- int /*<<< orphan*/  mousex ; 
- int /*<<< orphan*/  mousey ; 
- int /*<<< orphan*/  set_pixel (int,int,int,int /*<<< orphan*/ ) ; 
- scalar_t__ warp_coords (int*,int*,int*,int*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8 ;
+struct TYPE_3__ {int style; int yorigin; int xorigin; int * pattern; } ;
+typedef TYPE_1__ BRUSH ;
+
+
+ int False ;
+ int cache_rect (int,int,int,int,int ) ;
+ scalar_t__ contains_mouse (int,int,int,int) ;
+ int draw_cursor_under (int ,int ) ;
+ int fill_rect (int,int,int,int,int,int ) ;
+ int is_pixel_on (int *,int,int,int,int) ;
+ int mousex ;
+ int mousey ;
+ int set_pixel (int,int,int,int ) ;
+ scalar_t__ warp_coords (int*,int*,int*,int*,int *,int *) ;
 
 void ui_patblt(uint8 opcode, int x, int y, int cx, int cy,
                BRUSH * brush, int bgcolour, int fgcolour)
@@ -34,7 +34,7 @@ void ui_patblt(uint8 opcode, int x, int y, int cx, int cy,
   int j;
   uint8 ipattern[8];
 
-  if (warp_coords(&x, &y, &cx, &cy, NULL, NULL))
+  if (warp_coords(&x, &y, &cx, &cy, ((void*)0), ((void*)0)))
   {
     if (contains_mouse(x, y, cx, cy))
       draw_cursor_under(mousex, mousey);

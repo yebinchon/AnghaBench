@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  playerState_t ;
-typedef  int /*<<< orphan*/  byte ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int playerState_t ;
+typedef int byte ;
 struct TYPE_2__ {int gameClientSize; scalar_t__ gameClients; } ;
 
-/* Variables and functions */
- TYPE_1__ sv ; 
+
+ TYPE_1__ sv ;
 
 playerState_t *SV_GameClientNum( int num ) {
-	playerState_t	*ps;
+ playerState_t *ps;
 
-	ps = (playerState_t *)((byte *)sv.gameClients + sv.gameClientSize*(num));
+ ps = (playerState_t *)((byte *)sv.gameClients + sv.gameClientSize*(num));
 
-	return ps;
+ return ps;
 }

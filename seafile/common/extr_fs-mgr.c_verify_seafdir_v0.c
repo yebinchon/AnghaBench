@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  mode ;
-typedef  scalar_t__ guint32 ;
-typedef  int gsize ;
-typedef  scalar_t__ gboolean ;
-typedef  int /*<<< orphan*/  SeafdirOndisk ;
-typedef  int /*<<< orphan*/  GChecksum ;
 
-/* Variables and functions */
- scalar_t__ FALSE ; 
- scalar_t__ GUINT32_SWAP_LE_BE (scalar_t__) ; 
- scalar_t__ G_BIG_ENDIAN ; 
- scalar_t__ G_BYTE_ORDER ; 
- int /*<<< orphan*/  G_CHECKSUM_SHA1 ; 
- scalar_t__ MIN (scalar_t__,int) ; 
- int SEAF_DIR_NAME_LEN ; 
- scalar_t__ SEAF_METADATA_TYPE_DIR ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  g_checksum_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  g_checksum_get_digest (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/ * g_checksum_new (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  g_checksum_update (int /*<<< orphan*/ *,unsigned char*,int) ; 
- scalar_t__ get32bit (int /*<<< orphan*/  const**) ; 
- int /*<<< orphan*/  memcpy (char*,int /*<<< orphan*/  const*,scalar_t__) ; 
- int /*<<< orphan*/  rawdata_to_hex (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  seaf_warning (char*,...) ; 
- scalar_t__ strcmp (char*,char const*) ; 
+
+
+
+typedef int uint8_t ;
+typedef int mode ;
+typedef scalar_t__ guint32 ;
+typedef int gsize ;
+typedef scalar_t__ gboolean ;
+typedef int SeafdirOndisk ;
+typedef int GChecksum ;
+
+
+ scalar_t__ FALSE ;
+ scalar_t__ GUINT32_SWAP_LE_BE (scalar_t__) ;
+ scalar_t__ G_BIG_ENDIAN ;
+ scalar_t__ G_BYTE_ORDER ;
+ int G_CHECKSUM_SHA1 ;
+ scalar_t__ MIN (scalar_t__,int) ;
+ int SEAF_DIR_NAME_LEN ;
+ scalar_t__ SEAF_METADATA_TYPE_DIR ;
+ scalar_t__ TRUE ;
+ int g_checksum_free (int *) ;
+ int g_checksum_get_digest (int *,int *,int*) ;
+ int * g_checksum_new (int ) ;
+ int g_checksum_update (int *,unsigned char*,int) ;
+ scalar_t__ get32bit (int const**) ;
+ int memcpy (char*,int const*,scalar_t__) ;
+ int rawdata_to_hex (int *,char*,int) ;
+ int seaf_warning (char*,...) ;
+ scalar_t__ strcmp (char*,char const*) ;
 
 __attribute__((used)) static gboolean
 verify_seafdir_v0 (const char *dir_id, const uint8_t *data, int len,
@@ -92,7 +92,7 @@ verify_seafdir_v0 (const char *dir_id, const uint8_t *data, int len,
         }
 
         if (verify_id) {
-            /* Convert mode to little endian before compute. */
+
             if (G_BYTE_ORDER == G_BIG_ENDIAN)
                 mode = GUINT32_SWAP_LE_BE (mode);
 

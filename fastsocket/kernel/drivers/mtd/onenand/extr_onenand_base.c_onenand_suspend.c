@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct mtd_info {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FL_PM_SUSPENDED ; 
- int onenand_get_device (struct mtd_info*,int /*<<< orphan*/ ) ; 
+
+ int FL_PM_SUSPENDED ;
+ int onenand_get_device (struct mtd_info*,int ) ;
 
 __attribute__((used)) static int onenand_suspend(struct mtd_info *mtd)
 {
-	return onenand_get_device(mtd, FL_PM_SUSPENDED);
+ return onenand_get_device(mtd, FL_PM_SUSPENDED);
 }

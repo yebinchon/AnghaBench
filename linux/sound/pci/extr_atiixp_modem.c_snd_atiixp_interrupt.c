@@ -1,70 +1,70 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct atiixp_modem {unsigned int codec_not_ready_bits; int /*<<< orphan*/  reg_lock; int /*<<< orphan*/ * dmas; } ;
-typedef  int /*<<< orphan*/  irqreturn_t ;
 
-/* Variables and functions */
- size_t ATI_DMA_CAPTURE ; 
- size_t ATI_DMA_PLAYBACK ; 
- unsigned int ATI_REG_ISR_MODEM_IN_STATUS ; 
- unsigned int ATI_REG_ISR_MODEM_IN_XRUN ; 
- unsigned int ATI_REG_ISR_MODEM_OUT1_STATUS ; 
- unsigned int ATI_REG_ISR_MODEM_OUT1_XRUN ; 
- unsigned int CODEC_CHECK_BITS ; 
- int /*<<< orphan*/  IER ; 
- int /*<<< orphan*/  IRQ_HANDLED ; 
- int /*<<< orphan*/  IRQ_NONE ; 
- int /*<<< orphan*/  ISR ; 
- unsigned int atiixp_read (struct atiixp_modem*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  atiixp_update (struct atiixp_modem*,int /*<<< orphan*/ ,unsigned int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  atiixp_write (struct atiixp_modem*,int /*<<< orphan*/ ,unsigned int) ; 
- int /*<<< orphan*/  snd_atiixp_update_dma (struct atiixp_modem*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  snd_atiixp_xrun_dma (struct atiixp_modem*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock (int /*<<< orphan*/ *) ; 
+
+
+
+struct atiixp_modem {unsigned int codec_not_ready_bits; int reg_lock; int * dmas; } ;
+typedef int irqreturn_t ;
+
+
+ size_t ATI_DMA_CAPTURE ;
+ size_t ATI_DMA_PLAYBACK ;
+ unsigned int ATI_REG_ISR_MODEM_IN_STATUS ;
+ unsigned int ATI_REG_ISR_MODEM_IN_XRUN ;
+ unsigned int ATI_REG_ISR_MODEM_OUT1_STATUS ;
+ unsigned int ATI_REG_ISR_MODEM_OUT1_XRUN ;
+ unsigned int CODEC_CHECK_BITS ;
+ int IER ;
+ int IRQ_HANDLED ;
+ int IRQ_NONE ;
+ int ISR ;
+ unsigned int atiixp_read (struct atiixp_modem*,int ) ;
+ int atiixp_update (struct atiixp_modem*,int ,unsigned int,int ) ;
+ int atiixp_write (struct atiixp_modem*,int ,unsigned int) ;
+ int snd_atiixp_update_dma (struct atiixp_modem*,int *) ;
+ int snd_atiixp_xrun_dma (struct atiixp_modem*,int *) ;
+ int spin_lock (int *) ;
+ int spin_unlock (int *) ;
 
 __attribute__((used)) static irqreturn_t snd_atiixp_interrupt(int irq, void *dev_id)
 {
-	struct atiixp_modem *chip = dev_id;
-	unsigned int status;
+ struct atiixp_modem *chip = dev_id;
+ unsigned int status;
 
-	status = atiixp_read(chip, ISR);
+ status = atiixp_read(chip, ISR);
 
-	if (! status)
-		return IRQ_NONE;
+ if (! status)
+  return IRQ_NONE;
 
-	/* process audio DMA */
-	if (status & ATI_REG_ISR_MODEM_OUT1_XRUN)
-		snd_atiixp_xrun_dma(chip,  &chip->dmas[ATI_DMA_PLAYBACK]);
-	else if (status & ATI_REG_ISR_MODEM_OUT1_STATUS)
-		snd_atiixp_update_dma(chip, &chip->dmas[ATI_DMA_PLAYBACK]);
-	if (status & ATI_REG_ISR_MODEM_IN_XRUN)
-		snd_atiixp_xrun_dma(chip,  &chip->dmas[ATI_DMA_CAPTURE]);
-	else if (status & ATI_REG_ISR_MODEM_IN_STATUS)
-		snd_atiixp_update_dma(chip, &chip->dmas[ATI_DMA_CAPTURE]);
 
-	/* for codec detection */
-	if (status & CODEC_CHECK_BITS) {
-		unsigned int detected;
-		detected = status & CODEC_CHECK_BITS;
-		spin_lock(&chip->reg_lock);
-		chip->codec_not_ready_bits |= detected;
-		atiixp_update(chip, IER, detected, 0); /* disable the detected irqs */
-		spin_unlock(&chip->reg_lock);
-	}
+ if (status & ATI_REG_ISR_MODEM_OUT1_XRUN)
+  snd_atiixp_xrun_dma(chip, &chip->dmas[ATI_DMA_PLAYBACK]);
+ else if (status & ATI_REG_ISR_MODEM_OUT1_STATUS)
+  snd_atiixp_update_dma(chip, &chip->dmas[ATI_DMA_PLAYBACK]);
+ if (status & ATI_REG_ISR_MODEM_IN_XRUN)
+  snd_atiixp_xrun_dma(chip, &chip->dmas[ATI_DMA_CAPTURE]);
+ else if (status & ATI_REG_ISR_MODEM_IN_STATUS)
+  snd_atiixp_update_dma(chip, &chip->dmas[ATI_DMA_CAPTURE]);
 
-	/* ack */
-	atiixp_write(chip, ISR, status);
 
-	return IRQ_HANDLED;
+ if (status & CODEC_CHECK_BITS) {
+  unsigned int detected;
+  detected = status & CODEC_CHECK_BITS;
+  spin_lock(&chip->reg_lock);
+  chip->codec_not_ready_bits |= detected;
+  atiixp_update(chip, IER, detected, 0);
+  spin_unlock(&chip->reg_lock);
+ }
+
+
+ atiixp_write(chip, ISR, status);
+
+ return IRQ_HANDLED;
 }

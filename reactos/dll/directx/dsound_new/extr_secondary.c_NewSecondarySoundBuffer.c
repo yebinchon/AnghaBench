@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_6__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WAVEFORMATEX ;
-typedef  int ULONG ;
-struct TYPE_9__ {int cbSize; int wBitsPerSample; int /*<<< orphan*/  nSamplesPerSec; } ;
-struct TYPE_8__ {int dwBufferBytes; TYPE_6__* lpwfxFormat; int /*<<< orphan*/  dwFlags; } ;
-struct TYPE_7__ {int ref; int BufferSize; int /*<<< orphan*/ * lpVtbl; struct TYPE_7__* Format; scalar_t__ PrimaryBuffer; scalar_t__ Position; scalar_t__ Flags; int /*<<< orphan*/  VolumePan; int /*<<< orphan*/  Volume; int /*<<< orphan*/  State; int /*<<< orphan*/  dwFrequency; int /*<<< orphan*/  dwFlags; int /*<<< orphan*/  dwLevel; int /*<<< orphan*/  Filter; void* Buffer; } ;
-typedef  int /*<<< orphan*/  LPFILTERINFO ;
-typedef  scalar_t__ LPDIRECTSOUNDBUFFER8 ;
-typedef  TYPE_1__* LPCDirectSoundBuffer ;
-typedef  TYPE_2__* LPCDSBUFFERDESC ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  int /*<<< orphan*/  CDirectSoundBuffer ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- int /*<<< orphan*/  CopyMemory (TYPE_1__*,TYPE_6__*,int) ; 
- int /*<<< orphan*/  DSBPAN_CENTER ; 
- int /*<<< orphan*/  DSBVOLUME_MAX ; 
- int /*<<< orphan*/  DSERR_OUTOFMEMORY ; 
- int /*<<< orphan*/  DS_OK ; 
- int /*<<< orphan*/  FillMemory (void*,int,int) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HEAP_ZERO_MEMORY ; 
- void* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  KSSTATE_STOP ; 
- int /*<<< orphan*/  vt_DirectSoundBuffer8 ; 
+
+typedef struct TYPE_9__ TYPE_6__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int WAVEFORMATEX ;
+typedef int ULONG ;
+struct TYPE_9__ {int cbSize; int wBitsPerSample; int nSamplesPerSec; } ;
+struct TYPE_8__ {int dwBufferBytes; TYPE_6__* lpwfxFormat; int dwFlags; } ;
+struct TYPE_7__ {int ref; int BufferSize; int * lpVtbl; struct TYPE_7__* Format; scalar_t__ PrimaryBuffer; scalar_t__ Position; scalar_t__ Flags; int VolumePan; int Volume; int State; int dwFrequency; int dwFlags; int dwLevel; int Filter; void* Buffer; } ;
+typedef int LPFILTERINFO ;
+typedef scalar_t__ LPDIRECTSOUNDBUFFER8 ;
+typedef TYPE_1__* LPCDirectSoundBuffer ;
+typedef TYPE_2__* LPCDSBUFFERDESC ;
+typedef int HRESULT ;
+typedef int DWORD ;
+typedef int CDirectSoundBuffer ;
+
+
+ int ASSERT (int) ;
+ int CopyMemory (TYPE_1__*,TYPE_6__*,int) ;
+ int DSBPAN_CENTER ;
+ int DSBVOLUME_MAX ;
+ int DSERR_OUTOFMEMORY ;
+ int DS_OK ;
+ int FillMemory (void*,int,int) ;
+ int GetProcessHeap () ;
+ int HEAP_ZERO_MEMORY ;
+ void* HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,TYPE_1__*) ;
+ int KSSTATE_STOP ;
+ int vt_DirectSoundBuffer8 ;
 
 HRESULT
 NewSecondarySoundBuffer(
@@ -54,7 +54,7 @@ NewSecondarySoundBuffer(
 
     if (!This)
     {
-        /* not enough memory */
+
         return DSERR_OUTOFMEMORY;
     }
 
@@ -63,25 +63,25 @@ NewSecondarySoundBuffer(
     This->Format = HeapAlloc(GetProcessHeap(), 0, FormatSize);
     if (!This->Format)
     {
-        /* not enough memory */
+
         HeapFree(GetProcessHeap(), 0, This);
         return DSERR_OUTOFMEMORY;
     }
 
-    /* sanity check */
+
     ASSERT(lpcDSBufferDesc->dwBufferBytes);
 
-    /* allocate sound buffer */
+
     This->Buffer = HeapAlloc(GetProcessHeap(), 0, lpcDSBufferDesc->dwBufferBytes);
     if (!This->Buffer)
     {
-        /* not enough memory */
+
         HeapFree(GetProcessHeap(), 0, This->Format);
         HeapFree(GetProcessHeap(), 0, This);
         return DSERR_OUTOFMEMORY;
     }
 
-    /* fill buffer with silence */
+
     FillMemory(This->Buffer, lpcDSBufferDesc->dwBufferBytes, lpcDSBufferDesc->lpwfxFormat->wBitsPerSample == 8 ? 0x80 : 0);
 
     This->ref = 1;

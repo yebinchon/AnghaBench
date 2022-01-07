@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-struct TYPE_3__ {int /*<<< orphan*/  (* add_paeth_prediction ) (int*,int*,int*,int,int) ;int /*<<< orphan*/  (* add_bytes_l2 ) (int*,int*,int*,int) ;} ;
-typedef  TYPE_1__ PNGDSPContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OP_AVG ; 
- int /*<<< orphan*/  OP_SUB ; 
-#define  PNG_FILTER_VALUE_AVG 132 
-#define  PNG_FILTER_VALUE_NONE 131 
-#define  PNG_FILTER_VALUE_PAETH 130 
-#define  PNG_FILTER_VALUE_SUB 129 
-#define  PNG_FILTER_VALUE_UP 128 
- int /*<<< orphan*/  UNROLL_FILTER (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ff_add_png_paeth_prediction (int*,int*,int*,int,int) ; 
- int /*<<< orphan*/  memcpy (int*,int*,int) ; 
- int /*<<< orphan*/  stub1 (int*,int*,int*,int) ; 
- int /*<<< orphan*/  stub2 (int*,int*,int*,int,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_3__ {int (* add_paeth_prediction ) (int*,int*,int*,int,int) ;int (* add_bytes_l2 ) (int*,int*,int*,int) ;} ;
+typedef TYPE_1__ PNGDSPContext ;
+
+
+ int OP_AVG ;
+ int OP_SUB ;
+
+
+
+
+
+ int UNROLL_FILTER (int ) ;
+ int ff_add_png_paeth_prediction (int*,int*,int*,int,int) ;
+ int memcpy (int*,int*,int) ;
+ int stub1 (int*,int*,int*,int) ;
+ int stub2 (int*,int*,int*,int,int) ;
 
 __attribute__((used)) static void png_filter_row(PNGDSPContext *dsp, uint8_t *dst, int filter_type,
                            uint8_t *src, uint8_t *last, int size, int bpp)
@@ -35,10 +35,10 @@ __attribute__((used)) static void png_filter_row(PNGDSPContext *dsp, uint8_t *ds
     int i, p, r, g, b, a;
 
     switch (filter_type) {
-    case PNG_FILTER_VALUE_NONE:
+    case 131:
         memcpy(dst, src, size);
         break;
-    case PNG_FILTER_VALUE_SUB:
+    case 129:
         for (i = 0; i < bpp; i++)
             dst[i] = src[i];
         if (bpp == 4) {
@@ -49,29 +49,29 @@ __attribute__((used)) static void png_filter_row(PNGDSPContext *dsp, uint8_t *ds
                 *(int *)(dst + i) = p;
             }
         } else {
-#define OP_SUB(x, s, l) ((x) + (s))
+
             UNROLL_FILTER(OP_SUB);
         }
         break;
-    case PNG_FILTER_VALUE_UP:
+    case 128:
         dsp->add_bytes_l2(dst, src, last, size);
         break;
-    case PNG_FILTER_VALUE_AVG:
+    case 132:
         for (i = 0; i < bpp; i++) {
-            p      = (last[i] >> 1);
+            p = (last[i] >> 1);
             dst[i] = p + src[i];
         }
-#define OP_AVG(x, s, l) (((((x) + (l)) >> 1) + (s)) & 0xff)
+
         UNROLL_FILTER(OP_AVG);
         break;
-    case PNG_FILTER_VALUE_PAETH:
+    case 130:
         for (i = 0; i < bpp; i++) {
-            p      = last[i];
+            p = last[i];
             dst[i] = p + src[i];
         }
         if (bpp > 2 && size > 4) {
-            /* would write off the end of the array if we let it process
-             * the last pixel with bpp=3 */
+
+
             int w = (bpp & 3) ? size - 3 : size;
 
             if (w > i) {

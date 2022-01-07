@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  subpicture_t ;
-struct TYPE_4__ {int /*<<< orphan*/  p_dec; int /*<<< orphan*/  i_clock; } ;
-typedef  TYPE_1__ cea708_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * CEA708_BuildSubtitle (TYPE_1__*) ; 
- int /*<<< orphan*/  Debug (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MS_FROM_VLC_TICK (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  decoder_QueueSub (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  printf (char*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int subpicture_t ;
+struct TYPE_4__ {int p_dec; int i_clock; } ;
+typedef TYPE_1__ cea708_t ;
+
+
+ int * CEA708_BuildSubtitle (TYPE_1__*) ;
+ int Debug (int ) ;
+ int MS_FROM_VLC_TICK (int ) ;
+ int decoder_QueueSub (int ,int *) ;
+ int printf (char*,int ) ;
 
 __attribute__((used)) static void CEA708_Output( cea708_t *p_cea708 )
 {

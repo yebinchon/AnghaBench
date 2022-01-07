@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
 struct TYPE_11__ {TYPE_3__* cfg; } ;
-typedef  TYPE_1__ lfs1_t ;
-struct TYPE_12__ {int block; int /*<<< orphan*/  buffer; int /*<<< orphan*/  off; } ;
-typedef  TYPE_2__ lfs1_cache_t ;
-struct TYPE_13__ {int (* prog ) (TYPE_3__*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;int /*<<< orphan*/  prog_size; } ;
+typedef TYPE_1__ lfs1_t ;
+struct TYPE_12__ {int block; int buffer; int off; } ;
+typedef TYPE_2__ lfs1_cache_t ;
+struct TYPE_13__ {int (* prog ) (TYPE_3__*,int,int ,int ,int ) ;int prog_size; } ;
 
-/* Variables and functions */
- int LFS1_ERR_CORRUPT ; 
- int lfs1_cache_cmp (TYPE_1__*,TYPE_2__*,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lfs1_cache_zero (TYPE_1__*,TYPE_2__*) ; 
- int stub1 (TYPE_3__*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int LFS1_ERR_CORRUPT ;
+ int lfs1_cache_cmp (TYPE_1__*,TYPE_2__*,int *,int,int ,int ,int ) ;
+ int lfs1_cache_zero (TYPE_1__*,TYPE_2__*) ;
+ int stub1 (TYPE_3__*,int,int ,int ,int ) ;
 
 __attribute__((used)) static int lfs1_cache_flush(lfs1_t *lfs1,
         lfs1_cache_t *pcache, lfs1_cache_t *rcache) {
@@ -35,7 +35,7 @@ __attribute__((used)) static int lfs1_cache_flush(lfs1_t *lfs1,
         }
 
         if (rcache) {
-            int res = lfs1_cache_cmp(lfs1, rcache, NULL, pcache->block,
+            int res = lfs1_cache_cmp(lfs1, rcache, ((void*)0), pcache->block,
                     pcache->off, pcache->buffer, lfs1->cfg->prog_size);
             if (res < 0) {
                 return res;

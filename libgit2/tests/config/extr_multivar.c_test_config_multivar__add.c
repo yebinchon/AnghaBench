@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  git_config ;
 
-/* Variables and functions */
- int /*<<< orphan*/  _name ; 
- int /*<<< orphan*/  cb ; 
- int /*<<< orphan*/  cl_assert_equal_i (int,int) ; 
- int /*<<< orphan*/  cl_git_pass (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  git_config_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  git_config_get_multivar_foreach (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  git_config_open_ondisk (int /*<<< orphan*/ **,char*) ; 
- int /*<<< orphan*/  git_config_set_multivar (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,char*) ; 
+
+
+
+typedef int git_config ;
+
+
+ int _name ;
+ int cb ;
+ int cl_assert_equal_i (int,int) ;
+ int cl_git_pass (int ) ;
+ int git_config_free (int *) ;
+ int git_config_get_multivar_foreach (int *,int ,char*,int ,int*) ;
+ int git_config_open_ondisk (int **,char*) ;
+ int git_config_set_multivar (int *,int ,char*,char*) ;
 
 void test_config_multivar__add(void)
 {
-	git_config *cfg;
-	int n;
+ git_config *cfg;
+ int n;
 
-	cl_git_pass(git_config_open_ondisk(&cfg, "config/config11"));
-	cl_git_pass(git_config_set_multivar(cfg, _name, "nonexistant", "git://git.otherplace.org/libgit2"));
+ cl_git_pass(git_config_open_ondisk(&cfg, "config/config11"));
+ cl_git_pass(git_config_set_multivar(cfg, _name, "nonexistant", "git://git.otherplace.org/libgit2"));
 
-	n = 0;
-	cl_git_pass(git_config_get_multivar_foreach(cfg, _name, NULL, cb, &n));
-	cl_assert_equal_i(n, 3);
+ n = 0;
+ cl_git_pass(git_config_get_multivar_foreach(cfg, _name, ((void*)0), cb, &n));
+ cl_assert_equal_i(n, 3);
 
-	n = 0;
-	cl_git_pass(git_config_get_multivar_foreach(cfg, _name, "otherplace", cb, &n));
-	cl_assert_equal_i(n, 1);
+ n = 0;
+ cl_git_pass(git_config_get_multivar_foreach(cfg, _name, "otherplace", cb, &n));
+ cl_assert_equal_i(n, 1);
 
-	git_config_free(cfg);
+ git_config_free(cfg);
 
-	/* We know it works in memory, let's see if the file is written correctly */
 
-	cl_git_pass(git_config_open_ondisk(&cfg, "config/config11"));
 
-	n = 0;
-	cl_git_pass(git_config_get_multivar_foreach(cfg, _name, NULL, cb, &n));
-	cl_assert_equal_i(n, 3);
+ cl_git_pass(git_config_open_ondisk(&cfg, "config/config11"));
 
-	n = 0;
-	cl_git_pass(git_config_get_multivar_foreach(cfg, _name, "otherplace", cb, &n));
-	cl_assert_equal_i(n, 1);
+ n = 0;
+ cl_git_pass(git_config_get_multivar_foreach(cfg, _name, ((void*)0), cb, &n));
+ cl_assert_equal_i(n, 3);
 
-	git_config_free(cfg);
+ n = 0;
+ cl_git_pass(git_config_get_multivar_foreach(cfg, _name, "otherplace", cb, &n));
+ cl_assert_equal_i(n, 1);
+
+ git_config_free(cfg);
 }

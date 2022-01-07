@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {TYPE_2__* m; } ;
 struct s_smc {TYPE_1__ mib; } ;
 struct TYPE_4__ {int fddiMACRMTState; } ;
 
-/* Variables and functions */
- int AFLAG ; 
- int /*<<< orphan*/  DB_RMT (char*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- size_t MAC0 ; 
- int /*<<< orphan*/ * rmt_events ; 
- int /*<<< orphan*/  rmt_fsm (struct s_smc*,int) ; 
- int /*<<< orphan*/  rmt_state_change (struct s_smc*,int) ; 
- int /*<<< orphan*/ * rmt_states ; 
+
+ int AFLAG ;
+ int DB_RMT (char*,char*,int ,int ) ;
+ size_t MAC0 ;
+ int * rmt_events ;
+ int rmt_fsm (struct s_smc*,int) ;
+ int rmt_state_change (struct s_smc*,int) ;
+ int * rmt_states ;
 
 void rmt(struct s_smc *smc, int event)
 {
-	int	state ;
+ int state ;
 
-	do {
-		DB_RMT("RMT : state %s%s event %s",
-		       smc->mib.m[MAC0].fddiMACRMTState & AFLAG ? "ACTIONS " : "",
-		       rmt_states[smc->mib.m[MAC0].fddiMACRMTState & ~AFLAG],
-		       rmt_events[event]);
-		state = smc->mib.m[MAC0].fddiMACRMTState ;
-		rmt_fsm(smc,event) ;
-		event = 0 ;
-	} while (state != smc->mib.m[MAC0].fddiMACRMTState) ;
-	rmt_state_change(smc,(int)smc->mib.m[MAC0].fddiMACRMTState) ;
+ do {
+  DB_RMT("RMT : state %s%s event %s",
+         smc->mib.m[MAC0].fddiMACRMTState & AFLAG ? "ACTIONS " : "",
+         rmt_states[smc->mib.m[MAC0].fddiMACRMTState & ~AFLAG],
+         rmt_events[event]);
+  state = smc->mib.m[MAC0].fddiMACRMTState ;
+  rmt_fsm(smc,event) ;
+  event = 0 ;
+ } while (state != smc->mib.m[MAC0].fddiMACRMTState) ;
+ rmt_state_change(smc,(int)smc->mib.m[MAC0].fddiMACRMTState) ;
 }

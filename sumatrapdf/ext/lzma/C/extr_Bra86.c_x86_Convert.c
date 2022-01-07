@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int UInt32 ;
-typedef  int SizeT ;
-typedef  int Byte ;
 
-/* Variables and functions */
- scalar_t__ Test86MSByte (int) ; 
- int /*<<< orphan*/ * kMaskToAllowedStatus ; 
- int* kMaskToBitNumber ; 
+
+
+
+typedef int UInt32 ;
+typedef int SizeT ;
+typedef int Byte ;
+
+
+ scalar_t__ Test86MSByte (int) ;
+ int * kMaskToAllowedStatus ;
+ int* kMaskToBitNumber ;
 
 SizeT x86_Convert(Byte *data, SizeT size, UInt32 ip, UInt32 *state, int encoding)
 {

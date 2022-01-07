@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  HDC ;
-typedef  scalar_t__ COLORREF ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- scalar_t__ GetNearestColor (int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__ RGB (int,int,int) ; 
- int /*<<< orphan*/  TRUE ; 
+
+
+
+typedef int HDC ;
+typedef scalar_t__ COLORREF ;
+typedef int BOOL ;
+
+
+ int FALSE ;
+ scalar_t__ GetNearestColor (int ,scalar_t__) ;
+ scalar_t__ RGB (int,int,int) ;
+ int TRUE ;
 
 __attribute__((used)) static BOOL IsGDIDriver(HDC hDC)
 {

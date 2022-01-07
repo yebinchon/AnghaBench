@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  RedisModuleString ;
-typedef  int /*<<< orphan*/  RedisModuleCtx ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Keyspace ; 
- int /*<<< orphan*/ * RedisModule_DictGet (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int RedisModule_ReplyWithNull (int /*<<< orphan*/ *) ; 
- int RedisModule_ReplyWithString (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int RedisModule_WrongArity (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int RedisModuleString ;
+typedef int RedisModuleCtx ;
+
+
+ int Keyspace ;
+ int * RedisModule_DictGet (int ,int *,int *) ;
+ int RedisModule_ReplyWithNull (int *) ;
+ int RedisModule_ReplyWithString (int *,int *) ;
+ int RedisModule_WrongArity (int *) ;
 
 int cmd_GET(RedisModuleCtx *ctx, RedisModuleString **argv, int argc) {
     if (argc != 2) return RedisModule_WrongArity(ctx);
-    RedisModuleString *val = RedisModule_DictGet(Keyspace,argv[1],NULL);
-    if (val == NULL) {
+    RedisModuleString *val = RedisModule_DictGet(Keyspace,argv[1],((void*)0));
+    if (val == ((void*)0)) {
         return RedisModule_ReplyWithNull(ctx);
     } else {
         return RedisModule_ReplyWithString(ctx, val);

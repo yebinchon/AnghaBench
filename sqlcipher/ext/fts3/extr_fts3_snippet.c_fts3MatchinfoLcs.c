@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_8__ ;
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_17__ TYPE_8__ ;
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
 struct TYPE_17__ {TYPE_1__* pPhrase; } ;
-struct TYPE_16__ {int nPhrase; int /*<<< orphan*/  pExpr; } ;
+struct TYPE_16__ {int nPhrase; int pExpr; } ;
 struct TYPE_15__ {int iPosOffset; scalar_t__ pRead; scalar_t__ iPos; TYPE_8__* pExpr; } ;
 struct TYPE_14__ {int nPhrase; int nCol; int* aMatchinfo; } ;
 struct TYPE_13__ {scalar_t__ nToken; } ;
-typedef  TYPE_2__ MatchInfo ;
-typedef  TYPE_3__ LcsIterator ;
-typedef  TYPE_4__ Fts3Cursor ;
+typedef TYPE_2__ MatchInfo ;
+typedef TYPE_3__ LcsIterator ;
+typedef TYPE_4__ Fts3Cursor ;
 
-/* Variables and functions */
- int FTS_CORRUPT_VTAB ; 
- int SQLITE_NOMEM ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  fts3ExprIterate (int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*) ; 
- scalar_t__ fts3LcsIteratorAdvance (TYPE_3__*) ; 
- int /*<<< orphan*/  fts3MatchinfoLcsCb ; 
- int /*<<< orphan*/  memset (TYPE_3__*,int /*<<< orphan*/ ,int) ; 
- int sqlite3Fts3EvalPhrasePoslist (TYPE_4__*,TYPE_8__*,int,scalar_t__*) ; 
- int /*<<< orphan*/  sqlite3_free (TYPE_3__*) ; 
- TYPE_3__* sqlite3_malloc64 (int) ; 
+
+ int FTS_CORRUPT_VTAB ;
+ int SQLITE_NOMEM ;
+ int SQLITE_OK ;
+ int fts3ExprIterate (int ,int ,void*) ;
+ scalar_t__ fts3LcsIteratorAdvance (TYPE_3__*) ;
+ int fts3MatchinfoLcsCb ;
+ int memset (TYPE_3__*,int ,int) ;
+ int sqlite3Fts3EvalPhrasePoslist (TYPE_4__*,TYPE_8__*,int,scalar_t__*) ;
+ int sqlite3_free (TYPE_3__*) ;
+ TYPE_3__* sqlite3_malloc64 (int) ;
 
 __attribute__((used)) static int fts3MatchinfoLcs(Fts3Cursor *pCsr, MatchInfo *pInfo){
   LcsIterator *aIter;
@@ -43,9 +43,9 @@ __attribute__((used)) static int fts3MatchinfoLcs(Fts3Cursor *pCsr, MatchInfo *p
   int nToken = 0;
   int rc = SQLITE_OK;
 
-  /* Allocate and populate the array of LcsIterator objects. The array
-  ** contains one element for each matchable phrase in the query.
-  **/
+
+
+
   aIter = sqlite3_malloc64(sizeof(LcsIterator) * pCsr->nPhrase);
   if( !aIter ) return SQLITE_NOMEM;
   memset(aIter, 0, sizeof(LcsIterator) * pCsr->nPhrase);
@@ -58,8 +58,8 @@ __attribute__((used)) static int fts3MatchinfoLcs(Fts3Cursor *pCsr, MatchInfo *p
   }
 
   for(iCol=0; iCol<pInfo->nCol; iCol++){
-    int nLcs = 0;                 /* LCS value for this column */
-    int nLive = 0;                /* Number of iterators in aIter not at EOF */
+    int nLcs = 0;
+    int nLive = 0;
 
     for(i=0; i<pInfo->nPhrase; i++){
       LcsIterator *pIt = &aIter[i];
@@ -77,13 +77,13 @@ __attribute__((used)) static int fts3MatchinfoLcs(Fts3Cursor *pCsr, MatchInfo *p
     }
 
     while( nLive>0 ){
-      LcsIterator *pAdv = 0;      /* The iterator to advance by one position */
-      int nThisLcs = 0;           /* LCS for the current iterator positions */
+      LcsIterator *pAdv = 0;
+      int nThisLcs = 0;
 
       for(i=0; i<pInfo->nPhrase; i++){
         LcsIterator *pIter = &aIter[i];
         if( pIter->pRead==0 ){
-          /* This iterator is already at EOF for this column. */
+
           nThisLcs = 0;
         }else{
           if( pAdv==0 || pIter->iPos<pAdv->iPos ){

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * xmlParserInputBufferCreateFilenameFunc ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * __xmlParserInputBufferCreateFilename ; 
- int /*<<< orphan*/ * xmlParserInputBufferCreateFilenameValue ; 
+
+
+
+typedef int * xmlParserInputBufferCreateFilenameFunc ;
+
+
+ int * __xmlParserInputBufferCreateFilename ;
+ int * xmlParserInputBufferCreateFilenameValue ;
 
 xmlParserInputBufferCreateFilenameFunc
 xmlParserInputBufferCreateFilenameDefault(xmlParserInputBufferCreateFilenameFunc func)
 {
     xmlParserInputBufferCreateFilenameFunc old = xmlParserInputBufferCreateFilenameValue;
-    if (old == NULL) {
-		old = __xmlParserInputBufferCreateFilename;
-	}
+    if (old == ((void*)0)) {
+  old = __xmlParserInputBufferCreateFilename;
+ }
 
     xmlParserInputBufferCreateFilenameValue = func;
     return(old);

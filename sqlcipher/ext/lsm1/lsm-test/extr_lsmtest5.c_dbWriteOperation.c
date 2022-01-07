@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
-typedef  int /*<<< orphan*/  TestDb ;
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int u32 ;
+typedef int TestDb ;
 struct TYPE_6__ {int nKey; } ;
-typedef  TYPE_1__ DbParameters ;
+typedef TYPE_1__ DbParameters ;
 
-/* Variables and functions */
- int DB_KEY_BYTES ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  dbComputeCksum (TYPE_1__*,int /*<<< orphan*/ *,int,int,int*) ; 
- int /*<<< orphan*/  dbFormatCksumValue (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  dbFormatKey (TYPE_1__*,int,int,char*) ; 
- int dbMaxLevel (TYPE_1__*) ; 
- int tdb_begin (int /*<<< orphan*/ *,int) ; 
- scalar_t__ tdb_transaction_support (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  testCommit (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  testWriteStr (int /*<<< orphan*/ *,char*,char const*,int*) ; 
+
+ int DB_KEY_BYTES ;
+ int assert (int) ;
+ int dbComputeCksum (TYPE_1__*,int *,int,int,int*) ;
+ int dbFormatCksumValue (int ,char*) ;
+ int dbFormatKey (TYPE_1__*,int,int,char*) ;
+ int dbMaxLevel (TYPE_1__*) ;
+ int tdb_begin (int *,int) ;
+ scalar_t__ tdb_transaction_support (int *) ;
+ int testCommit (int *,int ,int*) ;
+ int testWriteStr (int *,char*,char const*,int*) ;
 
 __attribute__((used)) static int dbWriteOperation(
-  DbParameters *pParam,           /* Database parameters */
-  TestDb *pDb,                    /* Database connection handle */
-  int iKey,                       /* Key to write to */
-  const char *zValue,             /* Nul-terminated value to write */
-  int *pRc                        /* IN/OUT: Error code */
+  DbParameters *pParam,
+  TestDb *pDb,
+  int iKey,
+  const char *zValue,
+  int *pRc
 ){
   const int iMax = dbMaxLevel(pParam);
   char zKey[DB_KEY_BYTES];
@@ -43,7 +43,7 @@ __attribute__((used)) static int dbWriteOperation(
   assert( iKey>=0 && iKey<pParam->nKey );
   dbFormatKey(pParam, 0, iKey, zKey);
 
-  /* Open a write transaction. This may fail - SQLITE4_BUSY */
+
   if( *pRc==0 && tdb_transaction_support(pDb) ){
     rc = tdb_begin(pDb, 2);
     if( rc==5 ) return 0;

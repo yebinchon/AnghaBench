@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  const BIO_METHOD ;
 
-/* Variables and functions */
- int BIO_TYPE_FILTER ; 
- int BIO_TYPE_START ; 
- int /*<<< orphan*/  const* BIO_meth_new (int,char*) ; 
- int /*<<< orphan*/  BIO_meth_set_callback_ctrl (int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BIO_meth_set_create (int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BIO_meth_set_ctrl (int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BIO_meth_set_destroy (int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BIO_meth_set_gets (int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BIO_meth_set_puts (int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BIO_meth_set_read_ex (int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BIO_meth_set_write_ex (int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tap_callback_ctrl ; 
- int /*<<< orphan*/  tap_ctrl ; 
- int /*<<< orphan*/  tap_free ; 
- int /*<<< orphan*/  tap_gets ; 
- int /*<<< orphan*/  tap_new ; 
- int /*<<< orphan*/  tap_puts ; 
- int /*<<< orphan*/  tap_read_ex ; 
- int /*<<< orphan*/  tap_write_ex ; 
+
+
+
+typedef int const BIO_METHOD ;
+
+
+ int BIO_TYPE_FILTER ;
+ int BIO_TYPE_START ;
+ int const* BIO_meth_new (int,char*) ;
+ int BIO_meth_set_callback_ctrl (int const*,int ) ;
+ int BIO_meth_set_create (int const*,int ) ;
+ int BIO_meth_set_ctrl (int const*,int ) ;
+ int BIO_meth_set_destroy (int const*,int ) ;
+ int BIO_meth_set_gets (int const*,int ) ;
+ int BIO_meth_set_puts (int const*,int ) ;
+ int BIO_meth_set_read_ex (int const*,int ) ;
+ int BIO_meth_set_write_ex (int const*,int ) ;
+ int tap_callback_ctrl ;
+ int tap_ctrl ;
+ int tap_free ;
+ int tap_gets ;
+ int tap_new ;
+ int tap_puts ;
+ int tap_read_ex ;
+ int tap_write_ex ;
 
 const BIO_METHOD *BIO_f_tap(void)
 {
-    static BIO_METHOD *tap = NULL;
+    static BIO_METHOD *tap = ((void*)0);
 
-    if (tap == NULL) {
+    if (tap == ((void*)0)) {
         tap = BIO_meth_new(BIO_TYPE_START | BIO_TYPE_FILTER, "tap");
-        if (tap != NULL) {
+        if (tap != ((void*)0)) {
             BIO_meth_set_write_ex(tap, tap_write_ex);
             BIO_meth_set_read_ex(tap, tap_read_ex);
             BIO_meth_set_puts(tap, tap_puts);

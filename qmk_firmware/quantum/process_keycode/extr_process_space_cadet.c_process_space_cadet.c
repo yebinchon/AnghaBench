@@ -1,69 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint16_t ;
-struct TYPE_5__ {int /*<<< orphan*/  pressed; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint16_t ;
+struct TYPE_5__ {int pressed; } ;
 struct TYPE_6__ {TYPE_1__ event; } ;
-typedef  TYPE_2__ keyrecord_t ;
-
-/* Variables and functions */
-#define  KC_LAPO 134 
-#define  KC_LCPO 133 
-#define  KC_LSPO 132 
-#define  KC_RAPC 131 
-#define  KC_RCPC 130 
-#define  KC_RSPC 129 
-#define  KC_SFTENT 128 
- int /*<<< orphan*/  LAPO_KEYS ; 
- int /*<<< orphan*/  LCPO_KEYS ; 
- int /*<<< orphan*/  LSPO_KEYS ; 
- int /*<<< orphan*/  RAPC_KEYS ; 
- int /*<<< orphan*/  RCPC_KEYS ; 
- int /*<<< orphan*/  RSPC_KEYS ; 
- int /*<<< orphan*/  SFTENT_KEYS ; 
- int /*<<< orphan*/  perform_space_cadet (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sc_last ; 
+typedef TYPE_2__ keyrecord_t ;
+ int LAPO_KEYS ;
+ int LCPO_KEYS ;
+ int LSPO_KEYS ;
+ int RAPC_KEYS ;
+ int RCPC_KEYS ;
+ int RSPC_KEYS ;
+ int SFTENT_KEYS ;
+ int perform_space_cadet (TYPE_2__*,int ) ;
+ int sc_last ;
 
 bool process_space_cadet(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case KC_LSPO: {
+        case 132: {
             perform_space_cadet(record, LSPO_KEYS);
-            return false;
+            return 0;
         }
-        case KC_RSPC: {
+        case 129: {
             perform_space_cadet(record, RSPC_KEYS);
-            return false;
+            return 0;
         }
-        case KC_LCPO: {
+        case 133: {
             perform_space_cadet(record, LCPO_KEYS);
-            return false;
+            return 0;
         }
-        case KC_RCPC: {
+        case 130: {
             perform_space_cadet(record, RCPC_KEYS);
-            return false;
+            return 0;
         }
-        case KC_LAPO: {
+        case 134: {
             perform_space_cadet(record, LAPO_KEYS);
-            return false;
+            return 0;
         }
-        case KC_RAPC: {
+        case 131: {
             perform_space_cadet(record, RAPC_KEYS);
-            return false;
+            return 0;
         }
-        case KC_SFTENT: {
+        case 128: {
             perform_space_cadet(record, SFTENT_KEYS);
-            return false;
+            return 0;
         }
         default: {
             if (record->event.pressed) {
@@ -72,5 +63,5 @@ bool process_space_cadet(uint16_t keycode, keyrecord_t *record) {
             break;
         }
     }
-    return true;
+    return 1;
 }

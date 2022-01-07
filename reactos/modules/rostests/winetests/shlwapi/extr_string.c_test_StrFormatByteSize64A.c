@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  byte_size_64; scalar_t__ value; } ;
-typedef  TYPE_1__ StrFormatSizeResult ;
 
-/* Variables and functions */
- TYPE_1__* StrFormatSize_results ; 
- int /*<<< orphan*/  ok (int,char*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pStrFormatByteSize64A (scalar_t__,char*,int) ; 
- int /*<<< orphan*/  strcmp (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
- int /*<<< orphan*/  wine_dbgstr_longlong (scalar_t__) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int byte_size_64; scalar_t__ value; } ;
+typedef TYPE_1__ StrFormatSizeResult ;
+
+
+ TYPE_1__* StrFormatSize_results ;
+ int ok (int,char*,int ,char*,int ) ;
+ int pStrFormatByteSize64A (scalar_t__,char*,int) ;
+ int strcmp (int ,char*) ;
+ int win_skip (char*) ;
+ int wine_dbgstr_longlong (scalar_t__) ;
 
 __attribute__((used)) static void test_StrFormatByteSize64A(void)
 {

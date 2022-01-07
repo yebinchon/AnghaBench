@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int x; int y; int v; int h; } ;
 
-/* Variables and functions */
- scalar_t__ UINT8_MAX ; 
- int /*<<< orphan*/  last_timer ; 
- int mk_delay ; 
- int mk_interval ; 
- TYPE_1__ mouse_report ; 
- scalar_t__ mousekey_repeat ; 
- int /*<<< orphan*/  mousekey_send () ; 
- int move_unit () ; 
- int timer_elapsed (int /*<<< orphan*/ ) ; 
- void* times_inv_sqrt2 (int) ; 
- int wheel_unit () ; 
+
+ scalar_t__ UINT8_MAX ;
+ int last_timer ;
+ int mk_delay ;
+ int mk_interval ;
+ TYPE_1__ mouse_report ;
+ scalar_t__ mousekey_repeat ;
+ int mousekey_send () ;
+ int move_unit () ;
+ int timer_elapsed (int ) ;
+ void* times_inv_sqrt2 (int) ;
+ int wheel_unit () ;
 
 void mousekey_task(void) {
     if (timer_elapsed(last_timer) < (mousekey_repeat ? mk_interval : mk_delay * 10)) {
@@ -38,7 +38,7 @@ void mousekey_task(void) {
     if (mouse_report.x < 0) mouse_report.x = move_unit() * -1;
     if (mouse_report.y > 0) mouse_report.y = move_unit();
     if (mouse_report.y < 0) mouse_report.y = move_unit() * -1;
-    /* diagonal move [1/sqrt(2)] */
+
     if (mouse_report.x && mouse_report.y) {
         mouse_report.x = times_inv_sqrt2(mouse_report.x);
         if (mouse_report.x == 0) {

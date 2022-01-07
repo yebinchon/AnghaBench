@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * Widget ;
 
-/* Variables and functions */
- scalar_t__ True ; 
- int /*<<< orphan*/  XIconifyWindow (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XScreenNumberOfScreen (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XmNiconic ; 
- int /*<<< orphan*/  XtDisplay (int /*<<< orphan*/ *) ; 
- scalar_t__ XtIsObject (int /*<<< orphan*/ *) ; 
- scalar_t__ XtIsRealized (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  XtScreen (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  XtVaSetValues (int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  XtWindow (int /*<<< orphan*/ *) ; 
- scalar_t__ isMapped (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int * Widget ;
+
+
+ scalar_t__ True ;
+ int XIconifyWindow (int ,int ,int ) ;
+ int XScreenNumberOfScreen (int ) ;
+ int XmNiconic ;
+ int XtDisplay (int *) ;
+ scalar_t__ XtIsObject (int *) ;
+ scalar_t__ XtIsRealized (int *) ;
+ int XtScreen (int *) ;
+ int XtVaSetValues (int *,int ,scalar_t__,int *) ;
+ int XtWindow (int *) ;
+ scalar_t__ isMapped (int *) ;
 
 void
 workshop_minimize_shell(Widget shell)
 {
-	if (shell != NULL &&
-	    XtIsObject(shell) &&
-	    XtIsRealized(shell) == True) {
-		if (isMapped(shell) == True) {
-			XIconifyWindow(XtDisplay(shell), XtWindow(shell),
-			       XScreenNumberOfScreen(XtScreen(shell)));
-		}
-		XtVaSetValues(shell,
-			      XmNiconic, True,
-			      NULL);
-	}
+ if (shell != ((void*)0) &&
+     XtIsObject(shell) &&
+     XtIsRealized(shell) == True) {
+  if (isMapped(shell) == True) {
+   XIconifyWindow(XtDisplay(shell), XtWindow(shell),
+          XScreenNumberOfScreen(XtScreen(shell)));
+  }
+  XtVaSetValues(shell,
+         XmNiconic, True,
+         ((void*)0));
+ }
 }

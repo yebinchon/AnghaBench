@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct thermal_zone_device {int /*<<< orphan*/  devdata; } ;
 
-/* Variables and functions */
- int update_trip_temp (int /*<<< orphan*/ ,int,int) ; 
+
+
+
+struct thermal_zone_device {int devdata; } ;
+
+
+ int update_trip_temp (int ,int,int) ;
 
 __attribute__((used)) static inline int sys_set_trip_temp(struct thermal_zone_device *tzd, int trip,
-				int temp)
+    int temp)
 {
-	return update_trip_temp(tzd->devdata, trip, temp);
+ return update_trip_temp(tzd->devdata, trip, temp);
 }

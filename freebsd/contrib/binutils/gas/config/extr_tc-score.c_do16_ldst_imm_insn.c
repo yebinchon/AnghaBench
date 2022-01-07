@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {unsigned int instruction; int relax_inst; int relax_size; } ;
 
-/* Variables and functions */
- scalar_t__ FAIL ; 
- unsigned int LDST16_RI_MASK ; 
- int MAX_LITERAL_POOL_SIZE ; 
- int N16_LBUP ; 
- unsigned int N16_LHP ; 
- unsigned int N16_LIU ; 
- unsigned int N16_LWP ; 
- int N16_SBP ; 
- unsigned int N16_SHP ; 
- unsigned int N16_SWP ; 
- int /*<<< orphan*/  _IMM5 ; 
- int /*<<< orphan*/  _IMM5_RSHIFT_1 ; 
- int /*<<< orphan*/  _IMM5_RSHIFT_2 ; 
- int /*<<< orphan*/  _IMM8 ; 
- int end_of_line (char*) ; 
- int exp_ldst_offset (char**,int,int /*<<< orphan*/ ) ; 
- TYPE_1__ inst ; 
- int reglow_required_here (char**,int) ; 
- int skip_past_comma (char**) ; 
- int /*<<< orphan*/  skip_whitespace (char*) ; 
+
+ scalar_t__ FAIL ;
+ unsigned int LDST16_RI_MASK ;
+ int MAX_LITERAL_POOL_SIZE ;
+ int N16_LBUP ;
+ unsigned int N16_LHP ;
+ unsigned int N16_LIU ;
+ unsigned int N16_LWP ;
+ int N16_SBP ;
+ unsigned int N16_SHP ;
+ unsigned int N16_SWP ;
+ int _IMM5 ;
+ int _IMM5_RSHIFT_1 ;
+ int _IMM5_RSHIFT_2 ;
+ int _IMM8 ;
+ int end_of_line (char*) ;
+ int exp_ldst_offset (char**,int,int ) ;
+ TYPE_1__ inst ;
+ int reglow_required_here (char**,int) ;
+ int skip_past_comma (char**) ;
+ int skip_whitespace (char*) ;
 
 __attribute__((used)) static void
 do16_ldst_imm_insn (char *str)
 {
   char data_exp[MAX_LITERAL_POOL_SIZE];
   int reg_rd;
-  char *dataptr = NULL, *pp = NULL;
+  char *dataptr = ((void*)0), *pp = ((void*)0);
   int cnt = 0;
   int assign_data = (int) FAIL;
   unsigned int ldst_func;

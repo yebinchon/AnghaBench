@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BINFO_OFFSET (int /*<<< orphan*/  const) ; 
- int /*<<< orphan*/  const BINFO_TYPE (int /*<<< orphan*/  const) ; 
- scalar_t__ DEBUG_MANGLE ; 
- char* finish_mangling (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char const*) ; 
- int /*<<< orphan*/  get_identifier_nocopy (char const*) ; 
- int /*<<< orphan*/  start_mangling (int /*<<< orphan*/  const,int) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  write_char (char) ; 
- int /*<<< orphan*/  write_integer_cst (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  write_string (char*) ; 
- int /*<<< orphan*/  write_type (int /*<<< orphan*/  const) ; 
+
+
+
+typedef int tree ;
+
+
+ int BINFO_OFFSET (int const) ;
+ int const BINFO_TYPE (int const) ;
+ scalar_t__ DEBUG_MANGLE ;
+ char* finish_mangling (int) ;
+ int fprintf (int ,char*,char const*) ;
+ int get_identifier_nocopy (char const*) ;
+ int start_mangling (int const,int) ;
+ int stderr ;
+ int write_char (char) ;
+ int write_integer_cst (int ) ;
+ int write_string (char*) ;
+ int write_type (int const) ;
 
 tree
 mangle_ctor_vtbl_for_type (const tree type, const tree binfo)
 {
   const char *result;
 
-  start_mangling (type, /*ident_p=*/true);
+  start_mangling (type, 1);
 
   write_string ("_Z");
   write_string ("TC");
@@ -40,7 +40,7 @@ mangle_ctor_vtbl_for_type (const tree type, const tree binfo)
   write_char ('_');
   write_type (BINFO_TYPE (binfo));
 
-  result = finish_mangling (/*warn=*/false);
+  result = finish_mangling ( 0);
   if (DEBUG_MANGLE)
     fprintf (stderr, "mangle_ctor_vtbl_for_type = %s\n\n", result);
   return get_identifier_nocopy (result);

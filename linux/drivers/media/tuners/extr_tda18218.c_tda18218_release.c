@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct dvb_frontend {int /*<<< orphan*/ * tuner_priv; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  kfree (int /*<<< orphan*/ *) ; 
+
+
+
+struct dvb_frontend {int * tuner_priv; } ;
+
+
+ int kfree (int *) ;
 
 __attribute__((used)) static void tda18218_release(struct dvb_frontend *fe)
 {
-	kfree(fe->tuner_priv);
-	fe->tuner_priv = NULL;
+ kfree(fe->tuner_priv);
+ fe->tuner_priv = ((void*)0);
 }

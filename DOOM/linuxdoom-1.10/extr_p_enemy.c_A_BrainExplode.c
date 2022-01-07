@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int x; int y; int momz; int tics; } ;
-typedef  TYPE_1__ mobj_t ;
+typedef TYPE_1__ mobj_t ;
 
-/* Variables and functions */
- int FRACUNIT ; 
- int /*<<< orphan*/  MT_ROCKET ; 
- int P_Random () ; 
- int /*<<< orphan*/  P_SetMobjState (TYPE_1__*,int /*<<< orphan*/ ) ; 
- TYPE_1__* P_SpawnMobj (int,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  S_BRAINEXPLODE1 ; 
+
+ int FRACUNIT ;
+ int MT_ROCKET ;
+ int P_Random () ;
+ int P_SetMobjState (TYPE_1__*,int ) ;
+ TYPE_1__* P_SpawnMobj (int,int,int,int ) ;
+ int S_BRAINEXPLODE1 ;
 
 void A_BrainExplode (mobj_t* mo)
 {
-    int		x;
-    int		y;
-    int		z;
-    mobj_t*	th;
-	
+    int x;
+    int y;
+    int z;
+    mobj_t* th;
+
     x = mo->x + (P_Random () - P_Random ())*2048;
     y = mo->y;
     z = 128 + P_Random()*2*FRACUNIT;
@@ -39,5 +39,5 @@ void A_BrainExplode (mobj_t* mo)
 
     th->tics -= P_Random()&7;
     if (th->tics < 1)
-	th->tics = 1;
+ th->tics = 1;
 }

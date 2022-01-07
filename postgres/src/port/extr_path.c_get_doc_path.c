@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  DOCDIR ; 
- int /*<<< orphan*/  PGBINDIR ; 
- int /*<<< orphan*/  make_relative_path (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*) ; 
+ int DOCDIR ;
+ int PGBINDIR ;
+ int make_relative_path (char*,int ,int ,char const*) ;
 
 void
 get_doc_path(const char *my_exec_path, char *ret_path)
 {
-	make_relative_path(ret_path, DOCDIR, PGBINDIR, my_exec_path);
+ make_relative_path(ret_path, DOCDIR, PGBINDIR, my_exec_path);
 }

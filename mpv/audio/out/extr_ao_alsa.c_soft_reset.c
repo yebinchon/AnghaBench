@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct priv {int /*<<< orphan*/  alsa; } ;
+
+
+
+
+struct priv {int alsa; } ;
 struct ao {struct priv* priv; } ;
-typedef  int snd_pcm_sframes_t ;
+typedef int snd_pcm_sframes_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHECK_ALSA_WARN (char*) ; 
- scalar_t__ SND_PCM_STATE_RUNNING ; 
- int snd_pcm_rewind (int /*<<< orphan*/ ,int) ; 
- int snd_pcm_rewindable (int /*<<< orphan*/ ) ; 
- scalar_t__ snd_pcm_state (int /*<<< orphan*/ ) ; 
+
+ int CHECK_ALSA_WARN (char*) ;
+ scalar_t__ SND_PCM_STATE_RUNNING ;
+ int snd_pcm_rewind (int ,int) ;
+ int snd_pcm_rewindable (int ) ;
+ scalar_t__ snd_pcm_state (int ) ;
 
 __attribute__((used)) static void soft_reset(struct ao *ao)
 {

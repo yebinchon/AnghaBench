@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
+
+
+
+
+typedef int uint32_t ;
 struct pp_hwmgr {int dummy; } ;
 
-/* Variables and functions */
- int ENOMEM ; 
- int /*<<< orphan*/  GFP_KERNEL ; 
- int* kzalloc (int,int /*<<< orphan*/ ) ; 
- int le32_to_cpu (int const) ; 
+
+ int ENOMEM ;
+ int GFP_KERNEL ;
+ int* kzalloc (int,int ) ;
+ int le32_to_cpu (int const) ;
 
 int phm_copy_overdrive_settings_limits_array(
-	struct pp_hwmgr *hwmgr,
-	uint32_t **pptable_info_array,
-	const uint32_t *pptable_array,
-	uint32_t od_setting_count)
+ struct pp_hwmgr *hwmgr,
+ uint32_t **pptable_info_array,
+ const uint32_t *pptable_array,
+ uint32_t od_setting_count)
 {
-	uint32_t array_size, i;
-	uint32_t *table;
+ uint32_t array_size, i;
+ uint32_t *table;
 
-	array_size = sizeof(uint32_t) * od_setting_count;
-	table = kzalloc(array_size, GFP_KERNEL);
-	if (NULL == table)
-		return -ENOMEM;
+ array_size = sizeof(uint32_t) * od_setting_count;
+ table = kzalloc(array_size, GFP_KERNEL);
+ if (((void*)0) == table)
+  return -ENOMEM;
 
-	for (i = 0; i < od_setting_count; i++)
-		table[i] = le32_to_cpu(pptable_array[i]);
+ for (i = 0; i < od_setting_count; i++)
+  table[i] = le32_to_cpu(pptable_array[i]);
 
-	*pptable_info_array = table;
+ *pptable_info_array = table;
 
-	return 0;
+ return 0;
 }

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  smallfelem ;
-typedef  int /*<<< orphan*/  felem_bytearray ;
-typedef  int /*<<< orphan*/  b_out ;
-typedef  int /*<<< orphan*/  BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * BN_lebin2bn (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  smallfelem_to_bin32 (int /*<<< orphan*/ ,int /*<<< orphan*/  const) ; 
+
+
+
+typedef int smallfelem ;
+typedef int felem_bytearray ;
+typedef int b_out ;
+typedef int BIGNUM ;
+
+
+ int * BN_lebin2bn (int ,int,int *) ;
+ int smallfelem_to_bin32 (int ,int const) ;
 
 __attribute__((used)) static BIGNUM *smallfelem_to_BN(BIGNUM *out, const smallfelem in)
 {

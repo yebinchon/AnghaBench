@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  md ;
-typedef  int /*<<< orphan*/  expected ;
-typedef  int /*<<< orphan*/  buf ;
-typedef  int /*<<< orphan*/  SHA_CTX ;
-typedef  int /*<<< orphan*/  RC4_KEY ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RC4 (int /*<<< orphan*/ *,int,unsigned char*,unsigned char*) ; 
- int /*<<< orphan*/  RC4_set_key (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SHA1_Final (unsigned char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SHA1_Init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SHA1_Update (int /*<<< orphan*/ *,unsigned char*,int) ; 
- int SHA_DIGEST_LENGTH ; 
- int TEST_mem_eq (unsigned char*,int,unsigned char*,int) ; 
- int /*<<< orphan*/ ** keys ; 
- int /*<<< orphan*/  memset (unsigned char*,int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int md ;
+typedef int expected ;
+typedef int buf ;
+typedef int SHA_CTX ;
+typedef int RC4_KEY ;
+
+
+ int RC4 (int *,int,unsigned char*,unsigned char*) ;
+ int RC4_set_key (int *,int ,int *) ;
+ int SHA1_Final (unsigned char*,int *) ;
+ int SHA1_Init (int *) ;
+ int SHA1_Update (int *,unsigned char*,int) ;
+ int SHA_DIGEST_LENGTH ;
+ int TEST_mem_eq (unsigned char*,int,unsigned char*,int) ;
+ int ** keys ;
+ int memset (unsigned char*,int ,int) ;
 
 __attribute__((used)) static int test_rc_bulk(void)
 {

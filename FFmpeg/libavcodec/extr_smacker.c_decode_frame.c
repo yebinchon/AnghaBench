@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_5__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint32_t ;
-typedef  int uint16_t ;
-struct TYPE_12__ {int palette_has_changed; int key_frame; int* linesize; scalar_t__* data; int /*<<< orphan*/  pict_type; } ;
-struct TYPE_11__ {int width; int height; int /*<<< orphan*/  codec_tag; TYPE_1__* priv_data; } ;
+
+
+typedef struct TYPE_12__ TYPE_5__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef int uint16_t ;
+struct TYPE_12__ {int palette_has_changed; int key_frame; int* linesize; scalar_t__* data; int pict_type; } ;
+struct TYPE_11__ {int width; int height; int codec_tag; TYPE_1__* priv_data; } ;
 struct TYPE_10__ {int size; scalar_t__ data; } ;
-struct TYPE_9__ {TYPE_5__* pic; int /*<<< orphan*/  full_last; int /*<<< orphan*/  full_tbl; int /*<<< orphan*/  mmap_last; int /*<<< orphan*/  mmap_tbl; int /*<<< orphan*/  mclr_last; int /*<<< orphan*/  mclr_tbl; int /*<<< orphan*/  type_last; int /*<<< orphan*/  type_tbl; } ;
-typedef  TYPE_1__ SmackVContext ;
-typedef  int /*<<< orphan*/  GetByteContext ;
-typedef  int /*<<< orphan*/  GetBitContext ;
-typedef  TYPE_2__ AVPacket ;
-typedef  TYPE_3__ AVCodecContext ;
+struct TYPE_9__ {TYPE_5__* pic; int full_last; int full_tbl; int mmap_last; int mmap_tbl; int mclr_last; int mclr_tbl; int type_last; int type_tbl; } ;
+typedef TYPE_1__ SmackVContext ;
+typedef int GetByteContext ;
+typedef int GetBitContext ;
+typedef TYPE_2__ AVPacket ;
+typedef TYPE_3__ AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_PICTURE_TYPE_I ; 
- int /*<<< orphan*/  AV_PICTURE_TYPE_P ; 
- int /*<<< orphan*/  AV_WL16 (int*,int) ; 
- int /*<<< orphan*/  MKTAG (char,char,char,char) ; 
-#define  SMK_BLK_FILL 131 
-#define  SMK_BLK_FULL 130 
-#define  SMK_BLK_MONO 129 
-#define  SMK_BLK_SKIP 128 
- int av_frame_ref (void*,TYPE_5__*) ; 
- int* block_runs ; 
- int bytestream2_get_be24u (int /*<<< orphan*/ *) ; 
- int bytestream2_get_byteu (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bytestream2_init (int /*<<< orphan*/ *,scalar_t__,int) ; 
- int ff_reget_buffer (TYPE_3__*,TYPE_5__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  get_bits1 (int /*<<< orphan*/ *) ; 
- int init_get_bits8 (int /*<<< orphan*/ *,scalar_t__,int) ; 
- int /*<<< orphan*/  last_reset (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int smk_get_code (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int AVERROR_INVALIDDATA ;
+ int AV_PICTURE_TYPE_I ;
+ int AV_PICTURE_TYPE_P ;
+ int AV_WL16 (int*,int) ;
+ int MKTAG (char,char,char,char) ;
+
+
+
+
+ int av_frame_ref (void*,TYPE_5__*) ;
+ int* block_runs ;
+ int bytestream2_get_be24u (int *) ;
+ int bytestream2_get_byteu (int *) ;
+ int bytestream2_init (int *,scalar_t__,int) ;
+ int ff_reget_buffer (TYPE_3__*,TYPE_5__*,int ) ;
+ int get_bits1 (int *) ;
+ int init_get_bits8 (int *,scalar_t__,int) ;
+ int last_reset (int ,int ) ;
+ int smk_get_code (int *,int ,int ) ;
 
 __attribute__((used)) static int decode_frame(AVCodecContext *avctx, void *data, int *got_frame,
                         AVPacket *avpkt)
@@ -67,7 +67,7 @@ __attribute__((used)) static int decode_frame(AVCodecContext *avctx, void *data,
     if ((ret = ff_reget_buffer(avctx, smk->pic, 0)) < 0)
         return ret;
 
-    /* make the palette available on the way out */
+
     pal = (uint32_t*)smk->pic->data[1];
     bytestream2_init(&gb2, avpkt->data, avpkt->size);
     flags = bytestream2_get_byteu(&gb2);
@@ -100,7 +100,7 @@ __attribute__((used)) static int decode_frame(AVCodecContext *avctx, void *data,
         type = smk_get_code(&gb, smk->type_tbl, smk->type_last);
         run = block_runs[(type >> 2) & 0x3F];
         switch(type & 3){
-        case SMK_BLK_MONO:
+        case 129:
             while(run-- && blk < blocks){
                 int clr, map;
                 int hi, lo;
@@ -120,9 +120,9 @@ __attribute__((used)) static int decode_frame(AVCodecContext *avctx, void *data,
                 blk++;
             }
             break;
-        case SMK_BLK_FULL:
+        case 130:
             mode = 0;
-            if(avctx->codec_tag == MKTAG('S', 'M', 'K', '4')) { // In case of Smacker v4 we have three modes
+            if(avctx->codec_tag == MKTAG('S', 'M', 'K', '4')) {
                 if(get_bits1(&gb)) mode = 1;
                 else if(get_bits1(&gb)) mode = 2;
             }
@@ -170,11 +170,11 @@ __attribute__((used)) static int decode_frame(AVCodecContext *avctx, void *data,
                 blk++;
             }
             break;
-        case SMK_BLK_SKIP:
+        case 128:
             while(run-- && blk < blocks)
                 blk++;
             break;
-        case SMK_BLK_FILL:
+        case 131:
             mode = type >> 8;
             while(run-- && blk < blocks){
                 uint32_t col;
@@ -196,6 +196,6 @@ __attribute__((used)) static int decode_frame(AVCodecContext *avctx, void *data,
 
     *got_frame = 1;
 
-    /* always report that the buffer was completely consumed */
+
     return avpkt->size;
 }

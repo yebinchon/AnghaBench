@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  DES_key_schedule ;
-typedef  int /*<<< orphan*/  DES_cblock ;
 
-/* Variables and functions */
- int DATA_BUF_SIZE ; 
- int /*<<< orphan*/  DES_DECRYPT ; 
- int /*<<< orphan*/  DES_ENCRYPT ; 
- int /*<<< orphan*/  DES_ecb_encrypt (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DES_set_key_unchecked (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TEST_info (char*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_mem_eq (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/ * cipher_data ; 
- int /*<<< orphan*/ * key_data ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/ * plain_data ; 
- int /*<<< orphan*/  pt (int /*<<< orphan*/ ,char*) ; 
+
+
+
+typedef int DES_key_schedule ;
+typedef int DES_cblock ;
+
+
+ int DATA_BUF_SIZE ;
+ int DES_DECRYPT ;
+ int DES_ENCRYPT ;
+ int DES_ecb_encrypt (int *,int *,int *,int ) ;
+ int DES_set_key_unchecked (int *,int *) ;
+ int TEST_info (char*,int,int ,int ) ;
+ int TEST_mem_eq (int ,int,int ,int) ;
+ int * cipher_data ;
+ int * key_data ;
+ int memcpy (int ,int ,int) ;
+ int memset (int ,int ,int) ;
+ int * plain_data ;
+ int pt (int ,char*) ;
 
 __attribute__((used)) static int test_des_ecb(int i)
 {

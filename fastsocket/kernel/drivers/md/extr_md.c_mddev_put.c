@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct mddev {scalar_t__ ctime; int /*<<< orphan*/  del_work; scalar_t__ gendisk; struct bio_set* bio_set; int /*<<< orphan*/  all_mddevs; int /*<<< orphan*/  hold_active; int /*<<< orphan*/  disks; int /*<<< orphan*/  raid_disks; int /*<<< orphan*/  active; } ;
+
+
+
+
+struct mddev {scalar_t__ ctime; int del_work; scalar_t__ gendisk; struct bio_set* bio_set; int all_mddevs; int hold_active; int disks; int raid_disks; int active; } ;
 struct bio_set {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INIT_WORK (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  all_mddevs_lock ; 
- int /*<<< orphan*/  atomic_dec_and_lock (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bioset_free (struct bio_set*) ; 
- int /*<<< orphan*/  kfree (struct mddev*) ; 
- int /*<<< orphan*/  list_del_init (int /*<<< orphan*/ *) ; 
- scalar_t__ list_empty (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  md_misc_wq ; 
- int /*<<< orphan*/  mddev_delayed_delete ; 
- int /*<<< orphan*/  queue_work (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock (int /*<<< orphan*/ *) ; 
+
+ int INIT_WORK (int *,int ) ;
+ int all_mddevs_lock ;
+ int atomic_dec_and_lock (int *,int *) ;
+ int bioset_free (struct bio_set*) ;
+ int kfree (struct mddev*) ;
+ int list_del_init (int *) ;
+ scalar_t__ list_empty (int *) ;
+ int md_misc_wq ;
+ int mddev_delayed_delete ;
+ int queue_work (int ,int *) ;
+ int spin_unlock (int *) ;
 
 __attribute__((used)) static void mddev_put(struct mddev *mddev)
 {
-	struct bio_set *bs = NULL;
+ struct bio_set *bs = ((void*)0);
 
-	if (!atomic_dec_and_lock(&mddev->active, &all_mddevs_lock))
-		return;
-	if (!mddev->raid_disks && list_empty(&mddev->disks) &&
-	    mddev->ctime == 0 && !mddev->hold_active) {
-		/* Array is not configured at all, and not held active,
-		 * so destroy it */
-		list_del_init(&mddev->all_mddevs);
-		bs = mddev->bio_set;
-		mddev->bio_set = NULL;
-		if (mddev->gendisk) {
-			/* We did a probe so need to clean up.  Call
-			 * queue_work inside the spinlock so that
-			 * flush_workqueue() after mddev_find will
-			 * succeed in waiting for the work to be done.
-			 */
-			INIT_WORK(&mddev->del_work, mddev_delayed_delete);
-			queue_work(md_misc_wq, &mddev->del_work);
-		} else
-			kfree(mddev);
-	}
-	spin_unlock(&all_mddevs_lock);
-	if (bs)
-		bioset_free(bs);
+ if (!atomic_dec_and_lock(&mddev->active, &all_mddevs_lock))
+  return;
+ if (!mddev->raid_disks && list_empty(&mddev->disks) &&
+     mddev->ctime == 0 && !mddev->hold_active) {
+
+
+  list_del_init(&mddev->all_mddevs);
+  bs = mddev->bio_set;
+  mddev->bio_set = ((void*)0);
+  if (mddev->gendisk) {
+
+
+
+
+
+   INIT_WORK(&mddev->del_work, mddev_delayed_delete);
+   queue_work(md_misc_wq, &mddev->del_work);
+  } else
+   kfree(mddev);
+ }
+ spin_unlock(&all_mddevs_lock);
+ if (bs)
+  bioset_free(bs);
 }

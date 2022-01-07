@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
+
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int lua_State ;
 struct TYPE_7__ {scalar_t__ cb_dns_ref; scalar_t__ wait_dns; } ;
 struct TYPE_8__ {scalar_t__ self_ref; scalar_t__ type; TYPE_1__ client; scalar_t__ pcb; TYPE_4__* tcp_pcb; } ;
-typedef  TYPE_2__ lnet_userdata ;
+typedef TYPE_2__ lnet_userdata ;
 struct TYPE_9__ {int addr; } ;
-typedef  TYPE_3__ ip_addr_t ;
-struct TYPE_10__ {scalar_t__ state; int /*<<< orphan*/  remote_port; } ;
+typedef TYPE_3__ ip_addr_t ;
+struct TYPE_10__ {scalar_t__ state; int remote_port; } ;
 
-/* Variables and functions */
- scalar_t__ CLOSED ; 
- int /*<<< orphan*/  IP2STR (int*) ; 
- int /*<<< orphan*/  IPSTR ; 
- int /*<<< orphan*/  LUA_GCRESTART ; 
- int /*<<< orphan*/  LUA_GCSTOP ; 
- scalar_t__ LUA_NOREF ; 
- int /*<<< orphan*/  LUA_REGISTRYINDEX ; 
- scalar_t__ TYPE_TCP_CLIENT ; 
- int /*<<< orphan*/  bzero (char*,int) ; 
- int /*<<< orphan*/  ets_sprintf (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  luaL_unref (int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  lua_call (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_gc (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * lua_getstate () ; 
- int /*<<< orphan*/  lua_pushnil (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_pushstring (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  lua_rawgeti (int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  net_connected_cb ; 
- int /*<<< orphan*/  tcp_connect (TYPE_4__*,TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ CLOSED ;
+ int IP2STR (int*) ;
+ int IPSTR ;
+ int LUA_GCRESTART ;
+ int LUA_GCSTOP ;
+ scalar_t__ LUA_NOREF ;
+ int LUA_REGISTRYINDEX ;
+ scalar_t__ TYPE_TCP_CLIENT ;
+ int bzero (char*,int) ;
+ int ets_sprintf (char*,int ,int ) ;
+ int luaL_unref (int *,int ,scalar_t__) ;
+ int lua_call (int *,int,int ) ;
+ int lua_gc (int *,int ,int ) ;
+ int * lua_getstate () ;
+ int lua_pushnil (int *) ;
+ int lua_pushstring (int *,char*) ;
+ int lua_rawgeti (int *,int ,scalar_t__) ;
+ int net_connected_cb ;
+ int tcp_connect (TYPE_4__*,TYPE_3__*,int ,int ) ;
 
 __attribute__((used)) static void net_dns_cb(const char *name, ip_addr_t *ipaddr, void *arg) {
   ip_addr_t addr;
-  if (ipaddr != NULL) addr = *ipaddr;
+  if (ipaddr != ((void*)0)) addr = *ipaddr;
   else addr.addr = 0xFFFFFFFF;
   lnet_userdata *ud = (lnet_userdata*)arg;
   if (!ud) return;

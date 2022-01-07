@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u32 ;
+
+
+
+
+typedef int u32 ;
 struct iscsi_tpg_attrib {int t10_pi; } ;
-struct iscsi_portal_group {int /*<<< orphan*/  tpgt; struct iscsi_tpg_attrib tpg_attrib; } ;
+struct iscsi_portal_group {int tpgt; struct iscsi_tpg_attrib tpg_attrib; } ;
 
-/* Variables and functions */
- int EINVAL ; 
- int /*<<< orphan*/  pr_debug (char*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  pr_err (char*,int) ; 
+
+ int EINVAL ;
+ int pr_debug (char*,int ,char*) ;
+ int pr_err (char*,int) ;
 
 int iscsit_ta_t10_pi(
-	struct iscsi_portal_group *tpg,
-	u32 flag)
+ struct iscsi_portal_group *tpg,
+ u32 flag)
 {
-	struct iscsi_tpg_attrib *a = &tpg->tpg_attrib;
+ struct iscsi_tpg_attrib *a = &tpg->tpg_attrib;
 
-	if ((flag != 0) && (flag != 1)) {
-		pr_err("Illegal value %d\n", flag);
-		return -EINVAL;
-	}
+ if ((flag != 0) && (flag != 1)) {
+  pr_err("Illegal value %d\n", flag);
+  return -EINVAL;
+ }
 
-	a->t10_pi = flag;
-	pr_debug("iSCSI_TPG[%hu] - T10 Protection information bit:"
-		" %s\n", tpg->tpgt, (a->t10_pi) ?
-		"ON" : "OFF");
+ a->t10_pi = flag;
+ pr_debug("iSCSI_TPG[%hu] - T10 Protection information bit:"
+  " %s\n", tpg->tpgt, (a->t10_pi) ?
+  "ON" : "OFF");
 
-	return 0;
+ return 0;
 }

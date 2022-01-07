@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_str ;
-struct TYPE_3__ {int /*<<< orphan*/ * aLimit; } ;
-typedef  TYPE_1__ sqlite3 ;
 
-/* Variables and functions */
- size_t SQLITE_LIMIT_LENGTH ; 
- int /*<<< orphan*/  SQLITE_MAX_LENGTH ; 
- int /*<<< orphan*/  sqlite3OomStr ; 
- int /*<<< orphan*/  sqlite3StrAccumInit (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * sqlite3_malloc64 (int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int sqlite3_str ;
+struct TYPE_3__ {int * aLimit; } ;
+typedef TYPE_1__ sqlite3 ;
+
+
+ size_t SQLITE_LIMIT_LENGTH ;
+ int SQLITE_MAX_LENGTH ;
+ int sqlite3OomStr ;
+ int sqlite3StrAccumInit (int *,int ,int ,int ,int ) ;
+ int * sqlite3_malloc64 (int) ;
 
 sqlite3_str *sqlite3_str_new(sqlite3 *db){
   sqlite3_str *p = sqlite3_malloc64(sizeof(*p));

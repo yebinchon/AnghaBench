@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int symbol ;
+
+
+
+
+typedef int symbol ;
 struct among {int s_size; int* s; int (* function ) (struct SN_env*) ;int result; int substring_i; } ;
 struct SN_env {int c; int lb; int* p; } ;
 
-/* Variables and functions */
- int stub1 (struct SN_env*) ; 
+
+ int stub1 (struct SN_env*) ;
 
 extern int find_among_b(struct SN_env * z, const struct among * v, int v_size) {
 

@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int /*<<< orphan*/ * inputs; TYPE_1__* priv; } ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int * inputs; TYPE_1__* priv; } ;
 struct TYPE_7__ {TYPE_3__* src; } ;
-struct TYPE_6__ {scalar_t__ eof_left; scalar_t__ S; scalar_t__ K; int /*<<< orphan*/  H; int /*<<< orphan*/  fifo; } ;
-typedef  TYPE_1__ AudioNLMeansContext ;
-typedef  int /*<<< orphan*/  AVFrame ;
-typedef  TYPE_2__ AVFilterLink ;
-typedef  TYPE_3__ AVFilterContext ;
+struct TYPE_6__ {scalar_t__ eof_left; scalar_t__ S; scalar_t__ K; int H; int fifo; } ;
+typedef TYPE_1__ AudioNLMeansContext ;
+typedef int AVFrame ;
+typedef TYPE_2__ AVFilterLink ;
+typedef TYPE_3__ AVFilterContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_EOF ; 
- int /*<<< orphan*/  ENOMEM ; 
- scalar_t__ av_audio_fifo_size (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * ff_get_audio_buffer (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int ff_request_frame (int /*<<< orphan*/ ) ; 
- int filter_frame (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_EOF ;
+ int ENOMEM ;
+ scalar_t__ av_audio_fifo_size (int ) ;
+ int * ff_get_audio_buffer (TYPE_2__*,int ) ;
+ int ff_request_frame (int ) ;
+ int filter_frame (int ,int *) ;
 
 __attribute__((used)) static int request_frame(AVFilterLink *outlink)
 {

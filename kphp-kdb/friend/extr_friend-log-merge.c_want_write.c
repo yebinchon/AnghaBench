@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct lev_generic {scalar_t__ a; } ;
 
-/* Variables and functions */
- int LEV_TIMESTAMP ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,scalar_t__,scalar_t__,int /*<<< orphan*/ ) ; 
- int mode ; 
- int /*<<< orphan*/  rd_bytes ; 
- scalar_t__ skip_timestamps ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ t_cutoff ; 
- scalar_t__ t_now ; 
+
+ int LEV_TIMESTAMP ;
+ int fprintf (int ,char*,scalar_t__,scalar_t__,int ) ;
+ int mode ;
+ int rd_bytes ;
+ scalar_t__ skip_timestamps ;
+ int stderr ;
+ scalar_t__ t_cutoff ;
+ scalar_t__ t_now ;
 
 __attribute__((used)) static int want_write (int type, void *ptr) {
   struct lev_generic *E = ptr;

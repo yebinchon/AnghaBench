@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  SCI_BASE_OBJECT_T ;
-typedef  int /*<<< orphan*/  SCIF_SAS_DOMAIN_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SCIF_LOG_OBJECT_DOMAIN ; 
- int /*<<< orphan*/  SCIF_LOG_TRACE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SCI_BASE_DOMAIN_STATE_INITIAL ; 
- int /*<<< orphan*/  SET_STATE_HANDLER (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sci_base_object_get_logger (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  scif_sas_domain_state_handler_table ; 
+
+
+
+typedef int SCI_BASE_OBJECT_T ;
+typedef int SCIF_SAS_DOMAIN_T ;
+
+
+ int SCIF_LOG_OBJECT_DOMAIN ;
+ int SCIF_LOG_TRACE (int ) ;
+ int SCI_BASE_DOMAIN_STATE_INITIAL ;
+ int SET_STATE_HANDLER (int *,int ,int ) ;
+ int sci_base_object_get_logger (int *) ;
+ int scif_sas_domain_state_handler_table ;
 
 __attribute__((used)) static
 void scif_sas_domain_initial_state_enter(

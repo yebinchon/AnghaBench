@@ -1,60 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct nk_rect {int dummy; } ;
 struct nk_font_atlas {int dummy; } ;
 struct nk_context {int dummy; } ;
-typedef  int /*<<< orphan*/  GLFWwindow ;
+typedef int GLFWwindow ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EXIT_FAILURE ; 
- int /*<<< orphan*/  EXIT_SUCCESS ; 
- int /*<<< orphan*/  GLFW_SCALE_TO_MONITOR ; 
- int /*<<< orphan*/  GLFW_TRUE ; 
- int /*<<< orphan*/  GLFW_WIN32_KEYBOARD_MENU ; 
- int /*<<< orphan*/  GL_COLOR_BUFFER_BIT ; 
- int /*<<< orphan*/  NK_ANTI_ALIASING_ON ; 
- int /*<<< orphan*/  NK_GLFW3_INSTALL_CALLBACKS ; 
- int /*<<< orphan*/  NK_TEXT_LEFT ; 
- int /*<<< orphan*/  error_callback ; 
- int /*<<< orphan*/  exit (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glClear (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gladLoadGL (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * glfwCreateWindow (int,int,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  glfwGetProcAddress ; 
- float glfwGetWindowOpacity (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  glfwGetWindowSize (int /*<<< orphan*/ *,int*,int*) ; 
- int /*<<< orphan*/  glfwInit () ; 
- int /*<<< orphan*/  glfwMakeContextCurrent (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  glfwSetErrorCallback (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glfwSetWindowOpacity (int /*<<< orphan*/ *,float) ; 
- int /*<<< orphan*/  glfwSwapBuffers (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  glfwSwapInterval (int) ; 
- int /*<<< orphan*/  glfwTerminate () ; 
- int /*<<< orphan*/  glfwWaitEventsTimeout (double) ; 
- int /*<<< orphan*/  glfwWindowHint (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glfwWindowShouldClose (int /*<<< orphan*/ *) ; 
- scalar_t__ nk_begin (struct nk_context*,char*,struct nk_rect,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nk_end (struct nk_context*) ; 
- int /*<<< orphan*/  nk_glfw3_font_stash_begin (struct nk_font_atlas**) ; 
- int /*<<< orphan*/  nk_glfw3_font_stash_end () ; 
- struct nk_context* nk_glfw3_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nk_glfw3_new_frame () ; 
- int /*<<< orphan*/  nk_glfw3_render (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nk_glfw3_shutdown () ; 
- int /*<<< orphan*/  nk_labelf (struct nk_context*,int /*<<< orphan*/ ,char*,float) ; 
- int /*<<< orphan*/  nk_layout_row_dynamic (struct nk_context*,int,int) ; 
- struct nk_rect nk_rect (float,float,float,float) ; 
- scalar_t__ nk_slider_float (struct nk_context*,float,float*,float,float) ; 
+
+ int EXIT_FAILURE ;
+ int EXIT_SUCCESS ;
+ int GLFW_SCALE_TO_MONITOR ;
+ int GLFW_TRUE ;
+ int GLFW_WIN32_KEYBOARD_MENU ;
+ int GL_COLOR_BUFFER_BIT ;
+ int NK_ANTI_ALIASING_ON ;
+ int NK_GLFW3_INSTALL_CALLBACKS ;
+ int NK_TEXT_LEFT ;
+ int error_callback ;
+ int exit (int ) ;
+ int glClear (int ) ;
+ int gladLoadGL (int ) ;
+ int * glfwCreateWindow (int,int,char*,int *,int *) ;
+ int glfwGetProcAddress ;
+ float glfwGetWindowOpacity (int *) ;
+ int glfwGetWindowSize (int *,int*,int*) ;
+ int glfwInit () ;
+ int glfwMakeContextCurrent (int *) ;
+ int glfwSetErrorCallback (int ) ;
+ int glfwSetWindowOpacity (int *,float) ;
+ int glfwSwapBuffers (int *) ;
+ int glfwSwapInterval (int) ;
+ int glfwTerminate () ;
+ int glfwWaitEventsTimeout (double) ;
+ int glfwWindowHint (int ,int ) ;
+ int glfwWindowShouldClose (int *) ;
+ scalar_t__ nk_begin (struct nk_context*,char*,struct nk_rect,int ) ;
+ int nk_end (struct nk_context*) ;
+ int nk_glfw3_font_stash_begin (struct nk_font_atlas**) ;
+ int nk_glfw3_font_stash_end () ;
+ struct nk_context* nk_glfw3_init (int *,int ) ;
+ int nk_glfw3_new_frame () ;
+ int nk_glfw3_render (int ) ;
+ int nk_glfw3_shutdown () ;
+ int nk_labelf (struct nk_context*,int ,char*,float) ;
+ int nk_layout_row_dynamic (struct nk_context*,int,int) ;
+ struct nk_rect nk_rect (float,float,float,float) ;
+ scalar_t__ nk_slider_float (struct nk_context*,float,float*,float,float) ;
 
 int main(int argc, char** argv)
 {
@@ -70,7 +70,7 @@ int main(int argc, char** argv)
     glfwWindowHint(GLFW_SCALE_TO_MONITOR, GLFW_TRUE);
     glfwWindowHint(GLFW_WIN32_KEYBOARD_MENU, GLFW_TRUE);
 
-    window = glfwCreateWindow(400, 400, "Opacity", NULL, NULL);
+    window = glfwCreateWindow(400, 400, "Opacity", ((void*)0), ((void*)0));
     if (!window)
     {
         glfwTerminate();

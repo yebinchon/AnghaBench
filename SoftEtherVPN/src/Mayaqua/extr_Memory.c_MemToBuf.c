@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT ;
-typedef  int /*<<< orphan*/  BUF ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * NewBuf () ; 
- int /*<<< orphan*/  SeekBuf (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WriteBuf (int /*<<< orphan*/ *,void*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int UINT ;
+typedef int BUF ;
+
+
+ int * NewBuf () ;
+ int SeekBuf (int *,int ,int ) ;
+ int WriteBuf (int *,void*,int ) ;
 
 BUF *MemToBuf(void *data, UINT size)
 {
-	BUF *b;
-	// Validate arguments
-	if (data == NULL && size != 0)
-	{
-		return NULL;
-	}
+ BUF *b;
 
-	b = NewBuf();
-	WriteBuf(b, data, size);
-	SeekBuf(b, 0, 0);
+ if (data == ((void*)0) && size != 0)
+ {
+  return ((void*)0);
+ }
 
-	return b;
+ b = NewBuf();
+ WriteBuf(b, data, size);
+ SeekBuf(b, 0, 0);
+
+ return b;
 }

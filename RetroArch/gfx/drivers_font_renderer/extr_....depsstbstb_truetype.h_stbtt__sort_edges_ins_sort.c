@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  stbtt__edge ;
 
-/* Variables and functions */
- int STBTT__COMPARE (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int stbtt__edge ;
+
+
+ int STBTT__COMPARE (int *,int *) ;
 
 __attribute__((used)) static void stbtt__sort_edges_ins_sort(stbtt__edge *p, int n)
 {

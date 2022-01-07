@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct hxxx_bsfw_ep3b_ctx_s {int i_bytepos; int /*<<< orphan*/  i_prev; int /*<<< orphan*/  i_bytesize; } ;
-struct TYPE_3__ {int /*<<< orphan*/ * p_end; int /*<<< orphan*/ * p; int /*<<< orphan*/ * p_start; scalar_t__ p_priv; } ;
-typedef  TYPE_1__ bs_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * hxxx_ep3b_to_rbsp (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,size_t) ; 
- int /*<<< orphan*/  hxxx_ep3b_total_size (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct hxxx_bsfw_ep3b_ctx_s {int i_bytepos; int i_prev; int i_bytesize; } ;
+struct TYPE_3__ {int * p_end; int * p; int * p_start; scalar_t__ p_priv; } ;
+typedef TYPE_1__ bs_t ;
+
+
+ int * hxxx_ep3b_to_rbsp (int *,int *,int *,size_t) ;
+ int hxxx_ep3b_total_size (int *,int *) ;
 
 __attribute__((used)) static size_t hxxx_bsfw_byte_forward_ep3b( bs_t *s, size_t i_count )
 {
     struct hxxx_bsfw_ep3b_ctx_s *ctx = (struct hxxx_bsfw_ep3b_ctx_s *) s->p_priv;
-    if( s->p == NULL )
+    if( s->p == ((void*)0) )
     {
         ctx->i_bytesize = hxxx_ep3b_total_size( s->p_start, s->p_end );
         s->p = s->p_start;

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lfs2_t ;
-typedef  scalar_t__ lfs2_soff_t ;
-typedef  int /*<<< orphan*/  lfs2_file_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LFS2_SEEK_SET ; 
- int /*<<< orphan*/  LFS2_TRACE (char*,void*,...) ; 
- scalar_t__ lfs2_file_seek (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int lfs2_t ;
+typedef scalar_t__ lfs2_soff_t ;
+typedef int lfs2_file_t ;
+
+
+ int LFS2_SEEK_SET ;
+ int LFS2_TRACE (char*,void*,...) ;
+ scalar_t__ lfs2_file_seek (int *,int *,int ,int ) ;
 
 int lfs2_file_rewind(lfs2_t *lfs2, lfs2_file_t *file) {
     LFS2_TRACE("lfs2_file_rewind(%p, %p)", (void*)lfs2, (void*)file);

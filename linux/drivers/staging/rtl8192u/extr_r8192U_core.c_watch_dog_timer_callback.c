@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct timer_list {int dummy; } ;
-struct r8192_priv {int /*<<< orphan*/  watch_dog_timer; int /*<<< orphan*/  watch_dog_wq; } ;
+struct r8192_priv {int watch_dog_timer; int watch_dog_wq; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IEEE80211_WATCH_DOG_TIME ; 
- struct r8192_priv* from_timer (int /*<<< orphan*/ ,struct timer_list*,int /*<<< orphan*/ ) ; 
- scalar_t__ jiffies ; 
- int /*<<< orphan*/  mod_timer (int /*<<< orphan*/ *,scalar_t__) ; 
- scalar_t__ msecs_to_jiffies (int /*<<< orphan*/ ) ; 
- struct r8192_priv* priv ; 
- int /*<<< orphan*/  schedule_delayed_work (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  watch_dog_timer ; 
+
+ int IEEE80211_WATCH_DOG_TIME ;
+ struct r8192_priv* from_timer (int ,struct timer_list*,int ) ;
+ scalar_t__ jiffies ;
+ int mod_timer (int *,scalar_t__) ;
+ scalar_t__ msecs_to_jiffies (int ) ;
+ struct r8192_priv* priv ;
+ int schedule_delayed_work (int *,int ) ;
+ int watch_dog_timer ;
 
 __attribute__((used)) static void watch_dog_timer_callback(struct timer_list *t)
 {
-	struct r8192_priv *priv = from_timer(priv, t, watch_dog_timer);
+ struct r8192_priv *priv = from_timer(priv, t, watch_dog_timer);
 
-	schedule_delayed_work(&priv->watch_dog_wq, 0);
-	mod_timer(&priv->watch_dog_timer,
-		  jiffies + msecs_to_jiffies(IEEE80211_WATCH_DOG_TIME));
+ schedule_delayed_work(&priv->watch_dog_wq, 0);
+ mod_timer(&priv->watch_dog_timer,
+    jiffies + msecs_to_jiffies(IEEE80211_WATCH_DOG_TIME));
 }

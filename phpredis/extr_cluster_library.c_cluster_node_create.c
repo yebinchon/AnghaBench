@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  redisSlotRange ;
-struct TYPE_7__ {unsigned short slot; short slave; TYPE_3__* sock; int /*<<< orphan*/  slots; int /*<<< orphan*/ * slaves; } ;
-typedef  TYPE_1__ redisClusterNode ;
-struct TYPE_8__ {scalar_t__ auth; int /*<<< orphan*/  persistent; int /*<<< orphan*/  read_timeout; int /*<<< orphan*/  timeout; } ;
-typedef  TYPE_2__ redisCluster ;
-struct TYPE_9__ {int /*<<< orphan*/  auth; } ;
 
-/* Variables and functions */
- TYPE_1__* emalloc (int) ; 
- TYPE_3__* redis_sock_create (char*,size_t,unsigned short,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  zend_llist_init (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  zend_string_copy (scalar_t__) ; 
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int redisSlotRange ;
+struct TYPE_7__ {unsigned short slot; short slave; TYPE_3__* sock; int slots; int * slaves; } ;
+typedef TYPE_1__ redisClusterNode ;
+struct TYPE_8__ {scalar_t__ auth; int persistent; int read_timeout; int timeout; } ;
+typedef TYPE_2__ redisCluster ;
+struct TYPE_9__ {int auth; } ;
+
+
+ TYPE_1__* emalloc (int) ;
+ TYPE_3__* redis_sock_create (char*,size_t,unsigned short,int ,int ,int ,int *,int ) ;
+ int zend_llist_init (int *,int,int *,int ) ;
+ int zend_string_copy (scalar_t__) ;
 
 __attribute__((used)) static redisClusterNode*
 cluster_node_create(redisCluster *c, char *host, size_t host_len,
@@ -32,17 +32,17 @@ cluster_node_create(redisCluster *c, char *host, size_t host_len,
 {
     redisClusterNode *node = emalloc(sizeof(redisClusterNode));
 
-    // It lives in at least this slot, flag slave status
-    node->slot   = slot;
-    node->slave  = slave;
-    node->slaves = NULL;
 
-    /* Initialize our list of slot ranges */
-    zend_llist_init(&node->slots, sizeof(redisSlotRange), NULL, 0);
+    node->slot = slot;
+    node->slave = slave;
+    node->slaves = ((void*)0);
 
-    // Attach socket
+
+    zend_llist_init(&node->slots, sizeof(redisSlotRange), ((void*)0), 0);
+
+
     node->sock = redis_sock_create(host, host_len, port, c->timeout,
-        c->read_timeout, c->persistent, NULL, 0);
+        c->read_timeout, c->persistent, ((void*)0), 0);
 
     if (c->auth) {
         node->sock->auth = zend_string_copy(c->auth);

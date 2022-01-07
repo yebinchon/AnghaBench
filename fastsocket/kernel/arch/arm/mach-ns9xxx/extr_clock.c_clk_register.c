@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct clk {TYPE_1__* parent; int /*<<< orphan*/  node; } ;
-struct TYPE_2__ {int /*<<< orphan*/  refcount; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  clk_lock ; 
- int /*<<< orphan*/  clocks ; 
- int /*<<< orphan*/  list_add (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct clk {TYPE_1__* parent; int node; } ;
+struct TYPE_2__ {int refcount; } ;
+
+
+ int clk_lock ;
+ int clocks ;
+ int list_add (int *,int *) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
 
 int clk_register(struct clk *clk)
 {
-	unsigned long flags;
+ unsigned long flags;
 
-	spin_lock_irqsave(&clk_lock, flags);
+ spin_lock_irqsave(&clk_lock, flags);
 
-	list_add(&clk->node, &clocks);
+ list_add(&clk->node, &clocks);
 
-	if (clk->parent)
-		++clk->parent->refcount;
+ if (clk->parent)
+  ++clk->parent->refcount;
 
-	spin_unlock_irqrestore(&clk_lock, flags);
+ spin_unlock_irqrestore(&clk_lock, flags);
 
-	return 0;
+ return 0;
 }

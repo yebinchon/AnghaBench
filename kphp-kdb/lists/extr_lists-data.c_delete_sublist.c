@@ -1,71 +1,71 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct lev_generic {int /*<<< orphan*/  a; } ;
-struct lev_del_entry {int /*<<< orphan*/  type; } ;
-typedef  int /*<<< orphan*/  object_id_t ;
+
+
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct lev_generic {int a; } ;
+struct lev_del_entry {int type; } ;
+typedef int object_id_t ;
 struct TYPE_8__ {TYPE_1__* o_tree; } ;
-typedef  TYPE_2__ list_t ;
-typedef  int /*<<< orphan*/  list_id_t ;
-struct TYPE_9__ {scalar_t__ N; int /*<<< orphan*/  root; } ;
+typedef TYPE_2__ list_t ;
+typedef int list_id_t ;
+struct TYPE_9__ {scalar_t__ N; int root; } ;
 struct TYPE_7__ {int delta; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FIRST_INT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LEV_LI_DEL_ENTRY ; 
- int /*<<< orphan*/  MAXINT ; 
- int M_tot_entries ; 
- TYPE_4__ OTree ; 
- int /*<<< orphan*/  array_delete_sublist ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  check_metafile_loaded (int,int) ; 
- scalar_t__ conv_list_id (int /*<<< orphan*/ ) ; 
- scalar_t__ delete_entry (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct lev_generic*) ; 
- int delete_list (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int f_and_c ; 
- int f_cnt ; 
- int f_xor_c ; 
- TYPE_2__* get_list_m (int /*<<< orphan*/ ) ; 
- int get_list_metafile (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  in_array ; 
- int /*<<< orphan*/  in_tree ; 
- scalar_t__ lev_list_object_bytes ; 
- int /*<<< orphan*/  listree_delete_some_range_rec_large (int /*<<< orphan*/ ,TYPE_4__*,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mark_list_metafile (int /*<<< orphan*/ ) ; 
- scalar_t__ metafile_get_sublist_size (int) ; 
- int metafile_mode ; 
- int /*<<< orphan*/  postpone (int,struct lev_generic*) ; 
- int postponed_replay ; 
- int /*<<< orphan*/ * temp_object_buff ; 
- int temp_object_buff_size ; 
- int /*<<< orphan*/ * temp_object_list ; 
- int temp_object_list_size ; 
- int /*<<< orphan*/  tree_delete_sublist ; 
- int /*<<< orphan*/  unpack_metafile_pointers (TYPE_2__*) ; 
- int /*<<< orphan*/  upcopy_list_object_id (struct lev_del_entry*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vkprintf (int,char*) ; 
- int /*<<< orphan*/  zfree (struct lev_del_entry*,scalar_t__) ; 
- struct lev_del_entry* zmalloc (scalar_t__) ; 
- int /*<<< orphan*/  zzfree (int /*<<< orphan*/ *,long long) ; 
- int /*<<< orphan*/ * zzmalloc (long long) ; 
+
+ int FIRST_INT (int ) ;
+ int LEV_LI_DEL_ENTRY ;
+ int MAXINT ;
+ int M_tot_entries ;
+ TYPE_4__ OTree ;
+ int array_delete_sublist ;
+ int assert (int) ;
+ int check_metafile_loaded (int,int) ;
+ scalar_t__ conv_list_id (int ) ;
+ scalar_t__ delete_entry (int ,int ,int ,struct lev_generic*) ;
+ int delete_list (int ,int ) ;
+ int f_and_c ;
+ int f_cnt ;
+ int f_xor_c ;
+ TYPE_2__* get_list_m (int ) ;
+ int get_list_metafile (int ) ;
+ int in_array ;
+ int in_tree ;
+ scalar_t__ lev_list_object_bytes ;
+ int listree_delete_some_range_rec_large (int ,TYPE_4__*,int ,scalar_t__,int ) ;
+ int mark_list_metafile (int ) ;
+ scalar_t__ metafile_get_sublist_size (int) ;
+ int metafile_mode ;
+ int postpone (int,struct lev_generic*) ;
+ int postponed_replay ;
+ int * temp_object_buff ;
+ int temp_object_buff_size ;
+ int * temp_object_list ;
+ int temp_object_list_size ;
+ int tree_delete_sublist ;
+ int unpack_metafile_pointers (TYPE_2__*) ;
+ int upcopy_list_object_id (struct lev_del_entry*,int ,int ) ;
+ int vkprintf (int,char*) ;
+ int zfree (struct lev_del_entry*,scalar_t__) ;
+ struct lev_del_entry* zmalloc (scalar_t__) ;
+ int zzfree (int *,long long) ;
+ int * zzmalloc (long long) ;
 
 __attribute__((used)) static int delete_sublist (list_id_t list_id, int op, struct lev_generic *E) {
   vkprintf (4, "delete_sublist\n");
   if (metafile_mode) {
-    //int metafile_number = find_metafile (list_id);
-    //int metafile_number = get_list_m (list_id)->metafile_number;
+
+
     int metafile_number = get_list_metafile (list_id);
     if (metafile_number >= 0) {
       if (!check_metafile_loaded (metafile_number, -1)) {
@@ -126,7 +126,7 @@ __attribute__((used)) static int delete_sublist (list_id_t list_id, int op, stru
     for (i = 0; i < temp_object_list_size; i++) {
       ((struct lev_generic *)E)->a = FIRST_INT(list_id);
       upcopy_list_object_id (E, list_id, temp_object_list[i]);
-      assert (delete_entry (list_id, temp_object_list[i], 0, (struct lev_generic *)E) >= 0); 
+      assert (delete_entry (list_id, temp_object_list[i], 0, (struct lev_generic *)E) >= 0);
     }
     postponed_replay = t;
     zfree (E, sizeof (struct lev_del_entry) + lev_list_object_bytes);
@@ -136,7 +136,7 @@ __attribute__((used)) static int delete_sublist (list_id_t list_id, int op, stru
   }
 
   if (M_tot_entries + L->o_tree->delta == 0 && !(metafile_mode & 2)) {
-    assert (delete_list (list_id, 0)); //free unused structures
+    assert (delete_list (list_id, 0));
   }
 
   return f_cnt;

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ WCHAR ;
-typedef  int /*<<< orphan*/  REFIID ;
-typedef  int /*<<< orphan*/  ITypeLib ;
-typedef  int /*<<< orphan*/  ITypeInfo ;
-typedef  scalar_t__ HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAY_SIZE (scalar_t__*) ; 
- int /*<<< orphan*/  ERR (char*,int /*<<< orphan*/ ) ; 
- scalar_t__ FAILED (scalar_t__) ; 
- scalar_t__ ITypeLib_GetTypeInfoOfGuid (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  ITypeLib_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ LoadTypeLib (scalar_t__*,int /*<<< orphan*/ **) ; 
- int MAX_PATH ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  actctx_get_typelib_module (int /*<<< orphan*/ ,scalar_t__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  debugstr_guid (int /*<<< orphan*/ ) ; 
- scalar_t__ reg_get_typelib_module (int /*<<< orphan*/ ,scalar_t__*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef scalar_t__ WCHAR ;
+typedef int REFIID ;
+typedef int ITypeLib ;
+typedef int ITypeInfo ;
+typedef scalar_t__ HRESULT ;
+
+
+ int ARRAY_SIZE (scalar_t__*) ;
+ int ERR (char*,int ) ;
+ scalar_t__ FAILED (scalar_t__) ;
+ scalar_t__ ITypeLib_GetTypeInfoOfGuid (int *,int ,int **) ;
+ int ITypeLib_Release (int *) ;
+ scalar_t__ LoadTypeLib (scalar_t__*,int **) ;
+ int MAX_PATH ;
+ scalar_t__ S_OK ;
+ int actctx_get_typelib_module (int ,scalar_t__*,int ) ;
+ int debugstr_guid (int ) ;
+ scalar_t__ reg_get_typelib_module (int ,scalar_t__*,int ) ;
 
 __attribute__((used)) static HRESULT get_typeinfo_for_iid(REFIID iid, ITypeInfo **typeinfo)
 {
@@ -35,7 +35,7 @@ __attribute__((used)) static HRESULT get_typeinfo_for_iid(REFIID iid, ITypeInfo 
     ITypeLib *typelib;
     HRESULT hr;
 
-    *typeinfo = NULL;
+    *typeinfo = ((void*)0);
 
     module[0] = 0;
     if (!actctx_get_typelib_module(iid, module, ARRAY_SIZE(module)))

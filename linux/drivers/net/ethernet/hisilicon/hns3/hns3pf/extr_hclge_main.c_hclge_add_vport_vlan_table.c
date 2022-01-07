@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u16 ;
-struct hclge_vport_vlan_cfg {int hd_tbl_status; int /*<<< orphan*/  node; int /*<<< orphan*/  vlan_id; } ;
-struct hclge_vport {int /*<<< orphan*/  vlan_list; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GFP_KERNEL ; 
- struct hclge_vport_vlan_cfg* kzalloc (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  list_add_tail (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int u16 ;
+struct hclge_vport_vlan_cfg {int hd_tbl_status; int node; int vlan_id; } ;
+struct hclge_vport {int vlan_list; } ;
+
+
+ int GFP_KERNEL ;
+ struct hclge_vport_vlan_cfg* kzalloc (int,int ) ;
+ int list_add_tail (int *,int *) ;
 
 __attribute__((used)) static void hclge_add_vport_vlan_table(struct hclge_vport *vport, u16 vlan_id,
-				       bool writen_to_tbl)
+           bool writen_to_tbl)
 {
-	struct hclge_vport_vlan_cfg *vlan;
+ struct hclge_vport_vlan_cfg *vlan;
 
-	vlan = kzalloc(sizeof(*vlan), GFP_KERNEL);
-	if (!vlan)
-		return;
+ vlan = kzalloc(sizeof(*vlan), GFP_KERNEL);
+ if (!vlan)
+  return;
 
-	vlan->hd_tbl_status = writen_to_tbl;
-	vlan->vlan_id = vlan_id;
+ vlan->hd_tbl_status = writen_to_tbl;
+ vlan->vlan_id = vlan_id;
 
-	list_add_tail(&vlan->node, &vport->vlan_list);
+ list_add_tail(&vlan->node, &vport->vlan_list);
 }

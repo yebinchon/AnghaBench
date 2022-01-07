@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int UINT ;
 struct TYPE_5__ {void* m_hWnd; void* m_hParentWnd; } ;
-typedef  TYPE_1__ TGraphCtrl ;
-typedef  void* HWND ;
+typedef TYPE_1__ TGraphCtrl ;
+typedef void* HWND ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GraphCtrl_Init (TYPE_1__*) ; 
- int /*<<< orphan*/  GraphCtrl_Resize (TYPE_1__*) ; 
+
+ int GraphCtrl_Init (TYPE_1__*) ;
+ int GraphCtrl_Resize (TYPE_1__*) ;
 
 void GraphCtrl_Create(TGraphCtrl* this, HWND hWnd, HWND hParentWnd, UINT nID)
 {

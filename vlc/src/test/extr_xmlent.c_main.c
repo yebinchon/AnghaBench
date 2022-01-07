@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  _IONBF ; 
- int /*<<< orphan*/  decode (char*,char*) ; 
- int /*<<< orphan*/  encode (char*,char*) ; 
- int /*<<< orphan*/  setvbuf (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stdout ; 
+ int _IONBF ;
+ int decode (char*,char*) ;
+ int encode (char*,char*) ;
+ int setvbuf (int ,int *,int ,int ) ;
+ int stdout ;
 
 int main (void)
 {
-    (void)setvbuf (stdout, NULL, _IONBF, 0);
+    (void)setvbuf (stdout, ((void*)0), _IONBF, 0);
     decode ("This should not be modified 1234",
             "This should not be modified 1234");
 
@@ -35,7 +27,7 @@ int main (void)
 
     decode ("", "");
 
-    /* tests with invalid input */
+
     decode ("&<\"'", "&<\"'");
     decode ("&oelig", "&oelig");
 

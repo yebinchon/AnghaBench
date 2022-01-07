@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* pdabusb_t ;
-struct TYPE_6__ {int /*<<< orphan*/  dev; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef TYPE_1__* pdabusb_t ;
+struct TYPE_6__ {int dev; } ;
 struct TYPE_5__ {TYPE_2__* usbdev; } ;
 
-/* Variables and functions */
- int ENOMEM ; 
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  dev_err (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  kfree (unsigned char*) ; 
- unsigned char* kmalloc (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (unsigned char*,unsigned char const*,int) ; 
- int usb_control_msg (TYPE_2__*,int /*<<< orphan*/ ,int,int,int,int /*<<< orphan*/ ,unsigned char*,int,int) ; 
- int /*<<< orphan*/  usb_sndctrlpipe (TYPE_2__*,int /*<<< orphan*/ ) ; 
+
+ int ENOMEM ;
+ int GFP_KERNEL ;
+ int dev_err (int *,char*,int) ;
+ int kfree (unsigned char*) ;
+ unsigned char* kmalloc (int,int ) ;
+ int memcpy (unsigned char*,unsigned char const*,int) ;
+ int usb_control_msg (TYPE_2__*,int ,int,int,int,int ,unsigned char*,int,int) ;
+ int usb_sndctrlpipe (TYPE_2__*,int ) ;
 
 __attribute__((used)) static int dabusb_writemem (pdabusb_t s, int pos, const unsigned char *data,
-			    int len)
+       int len)
 {
-	int ret;
-	unsigned char *transfer_buffer =  kmalloc (len, GFP_KERNEL);
+ int ret;
+ unsigned char *transfer_buffer = kmalloc (len, GFP_KERNEL);
 
-	if (!transfer_buffer) {
-		dev_err(&s->usbdev->dev,
-			"dabusb_writemem: kmalloc(%d) failed.\n", len);
-		return -ENOMEM;
-	}
+ if (!transfer_buffer) {
+  dev_err(&s->usbdev->dev,
+   "dabusb_writemem: kmalloc(%d) failed.\n", len);
+  return -ENOMEM;
+ }
 
-	memcpy (transfer_buffer, data, len);
+ memcpy (transfer_buffer, data, len);
 
-	ret=usb_control_msg(s->usbdev, usb_sndctrlpipe( s->usbdev, 0 ), 0xa0, 0x40, pos, 0, transfer_buffer, len, 300);
+ ret=usb_control_msg(s->usbdev, usb_sndctrlpipe( s->usbdev, 0 ), 0xa0, 0x40, pos, 0, transfer_buffer, len, 300);
 
-	kfree (transfer_buffer);
-	return ret;
+ kfree (transfer_buffer);
+ return ret;
 }

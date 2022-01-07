@@ -1,32 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  RTLD_LAZY ; 
- int /*<<< orphan*/  dlclose (void*) ; 
- void* dlopen (void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  stderr ; 
+ int RTLD_LAZY ;
+ int dlclose (void*) ;
+ void* dlopen (void*,int ) ;
+ int exit (int) ;
+ int fprintf (int ,char*,char*) ;
+ int stderr ;
 
 __attribute__((used)) static void *
 init_fini_helper(void *arg)
 {
-	void *dso;
-	if ((dso = dlopen(arg, RTLD_LAZY)) == NULL) {
-		fprintf(stderr, "opening %s failed\n", (char *)arg);
-		exit(1);
-	}
-	dlclose(dso);
-	return NULL;
+ void *dso;
+ if ((dso = dlopen(arg, RTLD_LAZY)) == ((void*)0)) {
+  fprintf(stderr, "opening %s failed\n", (char *)arg);
+  exit(1);
+ }
+ dlclose(dso);
+ return ((void*)0);
 }

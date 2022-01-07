@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  path; int /*<<< orphan*/  fd; int /*<<< orphan*/ * inf; } ;
-typedef  TYPE_1__ FILEDESC ;
 
-/* Variables and functions */
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/ * fdopen (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  perror (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int path; int fd; int * inf; } ;
+typedef TYPE_1__ FILEDESC ;
+
+
+ int exit (int) ;
+ int * fdopen (int ,char*) ;
+ int perror (int ) ;
 
 __attribute__((used)) static void
 open_fp(FILEDESC *fp)
 {
-	if (fp->inf == NULL && (fp->inf = fdopen(fp->fd, "r")) == NULL) {
-		perror(fp->path);
-		exit(1);
-	}
+ if (fp->inf == ((void*)0) && (fp->inf = fdopen(fp->fd, "r")) == ((void*)0)) {
+  perror(fp->path);
+  exit(1);
+ }
 }

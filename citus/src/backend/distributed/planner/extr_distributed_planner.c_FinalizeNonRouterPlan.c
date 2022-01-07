@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  rtable; int /*<<< orphan*/  utilityStmt; int /*<<< orphan*/  queryId; } ;
-typedef  TYPE_1__ PlannedStmt ;
-typedef  int /*<<< orphan*/  DistributedPlan ;
-typedef  int /*<<< orphan*/  CustomScan ;
 
-/* Variables and functions */
- TYPE_1__* MasterNodeSelectPlan (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  list_concat (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int rtable; int utilityStmt; int queryId; } ;
+typedef TYPE_1__ PlannedStmt ;
+typedef int DistributedPlan ;
+typedef int CustomScan ;
+
+
+ TYPE_1__* MasterNodeSelectPlan (int *,int *) ;
+ int list_concat (int ,int ) ;
 
 __attribute__((used)) static PlannedStmt *
 FinalizeNonRouterPlan(PlannedStmt *localPlan, DistributedPlan *distributedPlan,
-					  CustomScan *customScan)
+       CustomScan *customScan)
 {
-	PlannedStmt *finalPlan = NULL;
+ PlannedStmt *finalPlan = ((void*)0);
 
-	finalPlan = MasterNodeSelectPlan(distributedPlan, customScan);
-	finalPlan->queryId = localPlan->queryId;
-	finalPlan->utilityStmt = localPlan->utilityStmt;
+ finalPlan = MasterNodeSelectPlan(distributedPlan, customScan);
+ finalPlan->queryId = localPlan->queryId;
+ finalPlan->utilityStmt = localPlan->utilityStmt;
 
-	/* add original range table list for access permission checks */
-	finalPlan->rtable = list_concat(finalPlan->rtable, localPlan->rtable);
 
-	return finalPlan;
+ finalPlan->rtable = list_concat(finalPlan->rtable, localPlan->rtable);
+
+ return finalPlan;
 }

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct cc_drvdata {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  drvdata_to_dev (struct cc_drvdata*) ; 
- int /*<<< orphan*/  pm_runtime_disable (int /*<<< orphan*/ ) ; 
+
+ int drvdata_to_dev (struct cc_drvdata*) ;
+ int pm_runtime_disable (int ) ;
 
 void cc_pm_fini(struct cc_drvdata *drvdata)
 {
-	pm_runtime_disable(drvdata_to_dev(drvdata));
+ pm_runtime_disable(drvdata_to_dev(drvdata));
 }

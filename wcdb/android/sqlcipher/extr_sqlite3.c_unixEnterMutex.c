@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_mutex_enter (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_mutex_notheld (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  unixBigLock ; 
+ int assert (int ) ;
+ int sqlite3_mutex_enter (int ) ;
+ int sqlite3_mutex_notheld (int ) ;
+ int unixBigLock ;
 
 __attribute__((used)) static void unixEnterMutex(void){
-  assert( sqlite3_mutex_notheld(unixBigLock) );  /* Not a recursive mutex */
+  assert( sqlite3_mutex_notheld(unixBigLock) );
   sqlite3_mutex_enter(unixBigLock);
 }

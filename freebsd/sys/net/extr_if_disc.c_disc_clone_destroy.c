@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct ifnet {struct disc_softc* if_softc; } ;
 struct disc_softc {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  M_DISC ; 
- int /*<<< orphan*/  bpfdetach (struct ifnet*) ; 
- int /*<<< orphan*/  free (struct disc_softc*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  if_detach (struct ifnet*) ; 
- int /*<<< orphan*/  if_free (struct ifnet*) ; 
+
+ int M_DISC ;
+ int bpfdetach (struct ifnet*) ;
+ int free (struct disc_softc*,int ) ;
+ int if_detach (struct ifnet*) ;
+ int if_free (struct ifnet*) ;
 
 __attribute__((used)) static void
 disc_clone_destroy(struct ifnet *ifp)
 {
-	struct disc_softc	*sc;
+ struct disc_softc *sc;
 
-	sc = ifp->if_softc;
+ sc = ifp->if_softc;
 
-	bpfdetach(ifp);
-	if_detach(ifp);
-	if_free(ifp);
+ bpfdetach(ifp);
+ if_detach(ifp);
+ if_free(ifp);
 
-	free(sc, M_DISC);
+ free(sc, M_DISC);
 }

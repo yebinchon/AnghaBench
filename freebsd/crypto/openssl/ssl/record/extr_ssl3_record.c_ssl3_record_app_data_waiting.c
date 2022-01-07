@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  rlayer; } ;
-typedef  int /*<<< orphan*/  SSL3_BUFFER ;
-typedef  TYPE_1__ SSL ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * RECORD_LAYER_get_rbuf (int /*<<< orphan*/ *) ; 
- unsigned char* SSL3_BUFFER_get_buf (int /*<<< orphan*/ *) ; 
- size_t SSL3_BUFFER_get_left (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SSL3_BUFFER_get_offset (int /*<<< orphan*/ *) ; 
- unsigned char SSL3_RT_APPLICATION_DATA ; 
- size_t SSL3_RT_HEADER_LENGTH ; 
- int /*<<< orphan*/  n2s (unsigned char*,size_t) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int rlayer; } ;
+typedef int SSL3_BUFFER ;
+typedef TYPE_1__ SSL ;
+
+
+ int * RECORD_LAYER_get_rbuf (int *) ;
+ unsigned char* SSL3_BUFFER_get_buf (int *) ;
+ size_t SSL3_BUFFER_get_left (int *) ;
+ int SSL3_BUFFER_get_offset (int *) ;
+ unsigned char SSL3_RT_APPLICATION_DATA ;
+ size_t SSL3_RT_HEADER_LENGTH ;
+ int n2s (unsigned char*,size_t) ;
 
 __attribute__((used)) static int ssl3_record_app_data_waiting(SSL *s)
 {
@@ -33,7 +33,7 @@ __attribute__((used)) static int ssl3_record_app_data_waiting(SSL *s)
     rbuf = RECORD_LAYER_get_rbuf(&s->rlayer);
 
     p = SSL3_BUFFER_get_buf(rbuf);
-    if (p == NULL)
+    if (p == ((void*)0))
         return 0;
 
     left = SSL3_BUFFER_get_left(rbuf);
@@ -43,10 +43,10 @@ __attribute__((used)) static int ssl3_record_app_data_waiting(SSL *s)
 
     p += SSL3_BUFFER_get_offset(rbuf);
 
-    /*
-     * We only check the type and record length, we will sanity check version
-     * etc later
-     */
+
+
+
+
     if (*p != SSL3_RT_APPLICATION_DATA)
         return 0;
 

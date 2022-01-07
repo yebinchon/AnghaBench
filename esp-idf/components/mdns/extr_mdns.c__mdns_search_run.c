@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint32_t ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint32_t ;
 struct TYPE_4__ {scalar_t__ state; scalar_t__ started_at; scalar_t__ timeout; scalar_t__ sent_at; struct TYPE_4__* next; } ;
-typedef  TYPE_1__ mdns_search_once_t ;
+typedef TYPE_1__ mdns_search_once_t ;
 struct TYPE_5__ {TYPE_1__* search_once; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACTION_SEARCH_END ; 
- int /*<<< orphan*/  ACTION_SEARCH_SEND ; 
- scalar_t__ ESP_OK ; 
- int /*<<< orphan*/  MDNS_SERVICE_LOCK () ; 
- int /*<<< orphan*/  MDNS_SERVICE_UNLOCK () ; 
- scalar_t__ SEARCH_INIT ; 
- scalar_t__ SEARCH_OFF ; 
- void* SEARCH_RUNNING ; 
- scalar_t__ _mdns_send_search_action (int /*<<< orphan*/ ,TYPE_1__*) ; 
- TYPE_2__* _mdns_server ; 
- scalar_t__ portTICK_PERIOD_MS ; 
- scalar_t__ xTaskGetTickCount () ; 
+
+ int ACTION_SEARCH_END ;
+ int ACTION_SEARCH_SEND ;
+ scalar_t__ ESP_OK ;
+ int MDNS_SERVICE_LOCK () ;
+ int MDNS_SERVICE_UNLOCK () ;
+ scalar_t__ SEARCH_INIT ;
+ scalar_t__ SEARCH_OFF ;
+ void* SEARCH_RUNNING ;
+ scalar_t__ _mdns_send_search_action (int ,TYPE_1__*) ;
+ TYPE_2__* _mdns_server ;
+ scalar_t__ portTICK_PERIOD_MS ;
+ scalar_t__ xTaskGetTickCount () ;
 
 __attribute__((used)) static void _mdns_search_run(void)
 {

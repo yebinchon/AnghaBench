@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_4__ {TYPE_1__* scratch; } ;
-typedef  TYPE_2__ TransactedSharedImpl ;
-struct TYPE_3__ {int /*<<< orphan*/  base; } ;
-typedef  int /*<<< orphan*/  StorageBaseImpl ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  DirRef ;
-typedef  int /*<<< orphan*/  DirEntry ;
+typedef TYPE_2__ TransactedSharedImpl ;
+struct TYPE_3__ {int base; } ;
+typedef int StorageBaseImpl ;
+typedef int HRESULT ;
+typedef int DirRef ;
+typedef int DirEntry ;
 
-/* Variables and functions */
- int /*<<< orphan*/  StorageBaseImpl_WriteDirEntry (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const*) ; 
+
+ int StorageBaseImpl_WriteDirEntry (int *,int ,int const*) ;
 
 __attribute__((used)) static HRESULT TransactedSharedImpl_WriteDirEntry(StorageBaseImpl *base,
   DirRef index, const DirEntry *data)

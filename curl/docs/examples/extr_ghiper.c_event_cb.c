@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ gpointer ;
-typedef  int /*<<< orphan*/  gboolean ;
-struct TYPE_3__ {scalar_t__ timer_event; scalar_t__ still_running; int /*<<< orphan*/  multi; } ;
-typedef  TYPE_1__ GlobalInfo ;
-typedef  int GIOCondition ;
-typedef  int /*<<< orphan*/  GIOChannel ;
-typedef  int /*<<< orphan*/  CURLMcode ;
 
-/* Variables and functions */
- int CURL_CSELECT_IN ; 
- int CURL_CSELECT_OUT ; 
- int /*<<< orphan*/  FALSE ; 
- int G_IO_IN ; 
- int G_IO_OUT ; 
- int /*<<< orphan*/  MSG_OUT (char*) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  check_multi_info (TYPE_1__*) ; 
- int /*<<< orphan*/  curl_multi_socket_action (int /*<<< orphan*/ ,int,int,scalar_t__*) ; 
- int g_io_channel_unix_get_fd (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  g_source_remove (scalar_t__) ; 
- int /*<<< orphan*/  mcode_or_die (char*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ gpointer ;
+typedef int gboolean ;
+struct TYPE_3__ {scalar_t__ timer_event; scalar_t__ still_running; int multi; } ;
+typedef TYPE_1__ GlobalInfo ;
+typedef int GIOCondition ;
+typedef int GIOChannel ;
+typedef int CURLMcode ;
+
+
+ int CURL_CSELECT_IN ;
+ int CURL_CSELECT_OUT ;
+ int FALSE ;
+ int G_IO_IN ;
+ int G_IO_OUT ;
+ int MSG_OUT (char*) ;
+ int TRUE ;
+ int check_multi_info (TYPE_1__*) ;
+ int curl_multi_socket_action (int ,int,int,scalar_t__*) ;
+ int g_io_channel_unix_get_fd (int *) ;
+ int g_source_remove (scalar_t__) ;
+ int mcode_or_die (char*,int ) ;
 
 __attribute__((used)) static gboolean event_cb(GIOChannel *ch, GIOCondition condition, gpointer data)
 {

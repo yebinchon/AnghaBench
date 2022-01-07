@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct net_device {int dummy; } ;
-struct ipg_nic_private {int /*<<< orphan*/  mii_mutex; int /*<<< orphan*/  mii_if; } ;
+struct ipg_nic_private {int mii_mutex; int mii_if; } ;
 struct ifreq {int dummy; } ;
 
-/* Variables and functions */
- int generic_mii_ioctl (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  if_mii (struct ifreq*) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
- struct ipg_nic_private* netdev_priv (struct net_device*) ; 
+
+ int generic_mii_ioctl (int *,int ,int,int *) ;
+ int if_mii (struct ifreq*) ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
+ struct ipg_nic_private* netdev_priv (struct net_device*) ;
 
 __attribute__((used)) static int ipg_ioctl(struct net_device *dev, struct ifreq *ifr, int cmd)
 {
-	struct ipg_nic_private *sp = netdev_priv(dev);
-	int rc;
+ struct ipg_nic_private *sp = netdev_priv(dev);
+ int rc;
 
-	mutex_lock(&sp->mii_mutex);
-	rc = generic_mii_ioctl(&sp->mii_if, if_mii(ifr), cmd, NULL);
-	mutex_unlock(&sp->mii_mutex);
+ mutex_lock(&sp->mii_mutex);
+ rc = generic_mii_ioctl(&sp->mii_if, if_mii(ifr), cmd, ((void*)0));
+ mutex_unlock(&sp->mii_mutex);
 
-	return rc;
+ return rc;
 }

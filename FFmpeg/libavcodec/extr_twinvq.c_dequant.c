@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int int16_t ;
-typedef  enum TwinVQFrameType { ____Placeholder_TwinVQFrameType } TwinVQFrameType ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int int16_t ;
+typedef enum TwinVQFrameType { ____Placeholder_TwinVQFrameType } TwinVQFrameType ;
 struct TYPE_3__ {int* n_div; int** length; int* length_change; int* bits_main_spec_change; int*** bits_main_spec; size_t** permut; } ;
-typedef  TYPE_1__ TwinVQContext ;
+typedef TYPE_1__ TwinVQContext ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static void dequant(TwinVQContext *tctx, const uint8_t *cb_bits, float *out,
                     enum TwinVQFrameType ftype,

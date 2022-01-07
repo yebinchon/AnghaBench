@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  SSL_CTX ;
-typedef  int /*<<< orphan*/  SSL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SSL_CTX_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * SSL_CTX_new (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SSL_CTX_set_cert_cb (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SSL_ERROR_NONE ; 
- int /*<<< orphan*/  SSL_free (int /*<<< orphan*/ *) ; 
- int SSL_set1_sigalgs_list (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  TEST_int_eq (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_true (int) ; 
- int /*<<< orphan*/  TLS1_VERSION ; 
- int /*<<< orphan*/  TLS_client_method () ; 
- int /*<<< orphan*/  TLS_server_method () ; 
- int /*<<< orphan*/  cert_cb ; 
- int cert_cb_cnt ; 
- int create_ssl_connection (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int create_ssl_ctx_pair (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ **,int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int create_ssl_objects (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int SSL_CTX ;
+typedef int SSL ;
+
+
+ int SSL_CTX_free (int *) ;
+ int * SSL_CTX_new (int ) ;
+ int SSL_CTX_set_cert_cb (int *,int ,int *) ;
+ int SSL_ERROR_NONE ;
+ int SSL_free (int *) ;
+ int SSL_set1_sigalgs_list (int *,char*) ;
+ int TEST_int_eq (int,int ) ;
+ int TEST_true (int) ;
+ int TLS1_VERSION ;
+ int TLS_client_method () ;
+ int TLS_server_method () ;
+ int cert_cb ;
+ int cert_cb_cnt ;
+ int create_ssl_connection (int *,int *,int ) ;
+ int create_ssl_ctx_pair (int ,int ,int ,int,int **,int **,int *,int *) ;
+ int create_ssl_objects (int *,int *,int **,int **,int *,int *) ;
 
 __attribute__((used)) static int test_cert_cb_int(int prot, int tst)
 {
-    SSL_CTX *cctx = NULL, *sctx = NULL, *snictx = NULL;
-    SSL *clientssl = NULL, *serverssl = NULL;
+    SSL_CTX *cctx = ((void*)0), *sctx = ((void*)0), *snictx = ((void*)0);
+    SSL *clientssl = ((void*)0), *serverssl = ((void*)0);
     int testresult = 0, ret;
 
-#ifdef OPENSSL_NO_EC
-    /* We use an EC cert in these tests, so we skip in a no-ec build */
-    if (tst >= 3)
-        return 1;
-#endif
+
+
+
+
+
 
     if (!TEST_true(create_ssl_ctx_pair(TLS_server_method(),
                                        TLS_client_method(),
                                        TLS1_VERSION,
                                        prot,
-                                       &sctx, &cctx, NULL, NULL)))
+                                       &sctx, &cctx, ((void*)0), ((void*)0))))
         goto end;
 
     if (tst == 0)
@@ -62,22 +62,22 @@ __attribute__((used)) static int test_cert_cb_int(int prot, int tst)
     SSL_CTX_set_cert_cb(sctx, cert_cb, snictx);
 
     if (!TEST_true(create_ssl_objects(sctx, cctx, &serverssl, &clientssl,
-                                      NULL, NULL)))
+                                      ((void*)0), ((void*)0))))
         goto end;
 
     if (tst == 4) {
-        /*
-         * We cause SSL_check_chain() to fail by specifying sig_algs that
-         * the chain doesn't meet (the root uses an RSA cert)
-         */
+
+
+
+
         if (!TEST_true(SSL_set1_sigalgs_list(clientssl,
                                              "ecdsa_secp256r1_sha256")))
             goto end;
     } else if (tst == 5) {
-        /*
-         * We cause SSL_check_chain() to fail by specifying sig_algs that
-         * the ee cert doesn't meet (the ee uses an ECDSA cert)
-         */
+
+
+
+
         if (!TEST_true(SSL_set1_sigalgs_list(clientssl,
                            "rsa_pss_rsae_sha256:rsa_pkcs1_sha256")))
             goto end;

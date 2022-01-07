@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_5__ ;
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint32_t ;
-struct TYPE_13__ {int /*<<< orphan*/ * pb; TYPE_2__* priv_data; } ;
-struct TYPE_12__ {int size; int /*<<< orphan*/ * data; } ;
+
+
+typedef struct TYPE_13__ TYPE_5__ ;
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+struct TYPE_13__ {int * pb; TYPE_2__* priv_data; } ;
+struct TYPE_12__ {int size; int * data; } ;
 struct TYPE_11__ {TYPE_1__* codecpar; } ;
 struct TYPE_10__ {int edit_units_count; } ;
 struct TYPE_9__ {int block_align; int channels; scalar_t__ codec_id; } ;
-typedef  TYPE_2__ MXFContext ;
-typedef  TYPE_3__ AVStream ;
-typedef  TYPE_4__ AVPacket ;
-typedef  int /*<<< orphan*/  AVIOContext ;
-typedef  TYPE_5__ AVFormatContext ;
+typedef TYPE_2__ MXFContext ;
+typedef TYPE_3__ AVStream ;
+typedef TYPE_4__ AVPacket ;
+typedef int AVIOContext ;
+typedef TYPE_5__ AVFormatContext ;
 
-/* Variables and functions */
- scalar_t__ AV_CODEC_ID_PCM_S24LE ; 
- int AV_RL16 (int /*<<< orphan*/ *) ; 
- int AV_RL24 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  avio_w8 (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  avio_wl16 (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  avio_wl32 (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  klv_encode_ber4_length (int /*<<< orphan*/ *,int) ; 
+
+ scalar_t__ AV_CODEC_ID_PCM_S24LE ;
+ int AV_RL16 (int *) ;
+ int AV_RL24 (int *) ;
+ int avio_w8 (int *,int) ;
+ int avio_wl16 (int *,int) ;
+ int avio_wl32 (int *,int) ;
+ int klv_encode_ber4_length (int *,int) ;
 
 __attribute__((used)) static void mxf_write_d10_audio_packet(AVFormatContext *s, AVStream *st, AVPacket *pkt)
 {

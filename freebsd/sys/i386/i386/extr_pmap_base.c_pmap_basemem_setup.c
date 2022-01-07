@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_int ;
-struct TYPE_2__ {int /*<<< orphan*/  (* pm_basemem_setup ) (int /*<<< orphan*/ ) ;} ;
 
-/* Variables and functions */
- TYPE_1__* pmap_methods_ptr ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u_int ;
+struct TYPE_2__ {int (* pm_basemem_setup ) (int ) ;} ;
+
+
+ TYPE_1__* pmap_methods_ptr ;
+ int stub1 (int ) ;
 
 void
 pmap_basemem_setup(u_int basemem)
 {
 
-	pmap_methods_ptr->pm_basemem_setup(basemem);
+ pmap_methods_ptr->pm_basemem_setup(basemem);
 }

@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  fileHandle_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  G_FS_READ ; 
- int /*<<< orphan*/  syscall (int /*<<< orphan*/ ,void*,int,int /*<<< orphan*/ ) ; 
 
-void	trap_FS_Read( void *buffer, int len, fileHandle_t f ) {
-	syscall( G_FS_READ, buffer, len, f );
+
+
+typedef int fileHandle_t ;
+
+
+ int G_FS_READ ;
+ int syscall (int ,void*,int,int ) ;
+
+void trap_FS_Read( void *buffer, int len, fileHandle_t f ) {
+ syscall( G_FS_READ, buffer, len, f );
 }

@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct priv {double speed; int /*<<< orphan*/  in_pin; int /*<<< orphan*/  out_pool; void* cur_format; TYPE_1__* opts; int /*<<< orphan*/  pitch; } ;
-struct mp_filter {int /*<<< orphan*/ * ppins; struct priv* priv; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct priv {double speed; int in_pin; int out_pool; void* cur_format; TYPE_1__* opts; int pitch; } ;
+struct mp_filter {int * ppins; struct priv* priv; } ;
 struct mp_autoconvert {TYPE_2__* f; } ;
-struct TYPE_4__ {int /*<<< orphan*/ * pins; } ;
-struct TYPE_3__ {int /*<<< orphan*/  scale; } ;
+struct TYPE_4__ {int * pins; } ;
+struct TYPE_3__ {int scale; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_FORMAT_FLOATP ; 
- int /*<<< orphan*/  MP_PIN_IN ; 
- int /*<<< orphan*/  MP_PIN_OUT ; 
- int /*<<< orphan*/  abort () ; 
- int /*<<< orphan*/  af_rubberband_filter ; 
- void* mp_aframe_create () ; 
- int /*<<< orphan*/  mp_aframe_pool_create (struct priv*) ; 
- int /*<<< orphan*/  mp_autoconvert_add_afmt (struct mp_autoconvert*,int /*<<< orphan*/ ) ; 
- struct mp_autoconvert* mp_autoconvert_create (struct mp_filter*) ; 
- int /*<<< orphan*/  mp_filter_add_pin (struct mp_filter*,int /*<<< orphan*/ ,char*) ; 
- struct mp_filter* mp_filter_create (struct mp_filter*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mp_pin_connect (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  talloc_free (void*) ; 
- void* talloc_steal (struct priv*,void*) ; 
+
+ int AF_FORMAT_FLOATP ;
+ int MP_PIN_IN ;
+ int MP_PIN_OUT ;
+ int abort () ;
+ int af_rubberband_filter ;
+ void* mp_aframe_create () ;
+ int mp_aframe_pool_create (struct priv*) ;
+ int mp_autoconvert_add_afmt (struct mp_autoconvert*,int ) ;
+ struct mp_autoconvert* mp_autoconvert_create (struct mp_filter*) ;
+ int mp_filter_add_pin (struct mp_filter*,int ,char*) ;
+ struct mp_filter* mp_filter_create (struct mp_filter*,int *) ;
+ int mp_pin_connect (int ,int ) ;
+ int talloc_free (void*) ;
+ void* talloc_steal (struct priv*,void*) ;
 
 __attribute__((used)) static struct mp_filter *af_rubberband_create(struct mp_filter *parent,
                                               void *options)
@@ -40,7 +40,7 @@ __attribute__((used)) static struct mp_filter *af_rubberband_create(struct mp_fi
     struct mp_filter *f = mp_filter_create(parent, &af_rubberband_filter);
     if (!f) {
         talloc_free(options);
-        return NULL;
+        return ((void*)0);
     }
 
     mp_filter_add_pin(f, MP_PIN_IN, "in");

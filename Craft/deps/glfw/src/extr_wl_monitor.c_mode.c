@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
+
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
 struct wl_output {int dummy; } ;
 struct TYPE_9__ {int modesCount; int modesSize; TYPE_4__* modes; } ;
 struct _GLFWmonitor {TYPE_3__ wl; } ;
-typedef  void* int32_t ;
+typedef void* int32_t ;
 struct TYPE_8__ {void* refreshRate; void* height; void* width; } ;
-struct TYPE_7__ {int /*<<< orphan*/  member_0; } ;
-struct TYPE_10__ {int /*<<< orphan*/  flags; TYPE_2__ base; TYPE_1__ member_0; } ;
-typedef  TYPE_4__ _GLFWvidmodeWayland ;
+struct TYPE_7__ {int member_0; } ;
+struct TYPE_10__ {int flags; TYPE_2__ base; TYPE_1__ member_0; } ;
+typedef TYPE_4__ _GLFWvidmodeWayland ;
 
-/* Variables and functions */
- TYPE_4__* realloc (TYPE_4__*,int) ; 
+
+ TYPE_4__* realloc (TYPE_4__*,int) ;
 
 __attribute__((used)) static void mode(void* data,
                  struct wl_output* output,

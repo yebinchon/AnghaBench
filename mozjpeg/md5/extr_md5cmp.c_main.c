@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char* MD5File (char*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  perror (char*) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  strcasecmp (char*,char*) ; 
- int strlen (char*) ; 
+ char* MD5File (char*,char*) ;
+ int fprintf (int ,char*,...) ;
+ int perror (char*) ;
+ int stderr ;
+ int strcasecmp (char*,char*) ;
+ int strlen (char*) ;
 
 int main(int argc, char *argv[])
 {
-  char *md5sum = NULL, buf[65];
+  char *md5sum = ((void*)0), buf[65];
 
   if (argc < 3) {
     fprintf(stderr, "USAGE: %s <correct MD5 sum> <file>\n", argv[0]);

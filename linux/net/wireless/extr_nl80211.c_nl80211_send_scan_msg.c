@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct sk_buff {int dummy; } ;
-struct cfg80211_registered_device {int /*<<< orphan*/  wiphy; } ;
+struct cfg80211_registered_device {int wiphy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  NL80211_MCGRP_SCAN ; 
- int /*<<< orphan*/  genlmsg_multicast_netns (int /*<<< orphan*/ *,int /*<<< orphan*/ ,struct sk_buff*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nl80211_fam ; 
- int /*<<< orphan*/  wiphy_net (int /*<<< orphan*/ *) ; 
+
+ int GFP_KERNEL ;
+ int NL80211_MCGRP_SCAN ;
+ int genlmsg_multicast_netns (int *,int ,struct sk_buff*,int ,int ,int ) ;
+ int nl80211_fam ;
+ int wiphy_net (int *) ;
 
 void nl80211_send_scan_msg(struct cfg80211_registered_device *rdev,
-			   struct sk_buff *msg)
+      struct sk_buff *msg)
 {
-	if (!msg)
-		return;
+ if (!msg)
+  return;
 
-	genlmsg_multicast_netns(&nl80211_fam, wiphy_net(&rdev->wiphy), msg, 0,
-				NL80211_MCGRP_SCAN, GFP_KERNEL);
+ genlmsg_multicast_netns(&nl80211_fam, wiphy_net(&rdev->wiphy), msg, 0,
+    NL80211_MCGRP_SCAN, GFP_KERNEL);
 }

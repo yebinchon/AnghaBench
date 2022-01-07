@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct constant_pool {int /*<<< orphan*/  insns; } ;
-typedef  int /*<<< orphan*/  rtx ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INSN_UID (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bitmap_set_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct constant_pool {int insns; } ;
+typedef int rtx ;
+
+
+ int INSN_UID (int ) ;
+ int bitmap_set_bit (int ,int ) ;
 
 __attribute__((used)) static void
 s390_add_pool_insn (struct constant_pool *pool, rtx insn)

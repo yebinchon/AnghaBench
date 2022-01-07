@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  EVP_PKEY_CTX ;
 
-/* Variables and functions */
- int EVP_PKEY_CTX_ctrl_str (int /*<<< orphan*/ *,char*,char*) ; 
- int /*<<< orphan*/  OPENSSL_free (char*) ; 
- char* OPENSSL_strdup (char const*) ; 
- char* strchr (char*,char) ; 
+
+
+
+typedef int EVP_PKEY_CTX ;
+
+
+ int EVP_PKEY_CTX_ctrl_str (int *,char*,char*) ;
+ int OPENSSL_free (char*) ;
+ char* OPENSSL_strdup (char const*) ;
+ char* strchr (char*,char) ;
 
 int pkey_ctrl_string(EVP_PKEY_CTX *ctx, const char *value)
 {
     int rv;
-    char *stmp, *vtmp = NULL;
+    char *stmp, *vtmp = ((void*)0);
     stmp = OPENSSL_strdup(value);
     if (!stmp)
         return -1;

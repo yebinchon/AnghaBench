@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct kvm_shadow_walk_iterator {int /*<<< orphan*/ * sptep; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  __shadow_walk_next (struct kvm_shadow_walk_iterator*,int /*<<< orphan*/ ) ; 
+
+
+
+struct kvm_shadow_walk_iterator {int * sptep; } ;
+
+
+ int __shadow_walk_next (struct kvm_shadow_walk_iterator*,int ) ;
 
 __attribute__((used)) static void shadow_walk_next(struct kvm_shadow_walk_iterator *iterator)
 {
-	__shadow_walk_next(iterator, *iterator->sptep);
+ __shadow_walk_next(iterator, *iterator->sptep);
 }

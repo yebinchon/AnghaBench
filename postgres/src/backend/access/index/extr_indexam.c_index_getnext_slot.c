@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  TupleTableSlot ;
-struct TYPE_5__ {int /*<<< orphan*/  xs_heaptid; int /*<<< orphan*/  xs_heap_continue; } ;
-typedef  int /*<<< orphan*/  ScanDirection ;
-typedef  int /*<<< orphan*/ * ItemPointer ;
-typedef  TYPE_1__* IndexScanDesc ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ItemPointerEquals (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ItemPointerIsValid (int /*<<< orphan*/ *) ; 
- scalar_t__ index_fetch_heap (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * index_getnext_tid (TYPE_1__*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int TupleTableSlot ;
+struct TYPE_5__ {int xs_heaptid; int xs_heap_continue; } ;
+typedef int ScanDirection ;
+typedef int * ItemPointer ;
+typedef TYPE_1__* IndexScanDesc ;
+
+
+ int Assert (int ) ;
+ int ItemPointerEquals (int *,int *) ;
+ int ItemPointerIsValid (int *) ;
+ scalar_t__ index_fetch_heap (TYPE_1__*,int *) ;
+ int * index_getnext_tid (TYPE_1__*,int ) ;
 
 bool
 index_getnext_slot(IndexScanDesc scan, ScanDirection direction, TupleTableSlot *slot)
 {
-	for (;;)
-	{
-		if (!scan->xs_heap_continue)
-		{
-			ItemPointer tid;
+ for (;;)
+ {
+  if (!scan->xs_heap_continue)
+  {
+   ItemPointer tid;
 
-			/* Time to fetch the next TID from the index */
-			tid = index_getnext_tid(scan, direction);
 
-			/* If we're out of index entries, we're done */
-			if (tid == NULL)
-				break;
+   tid = index_getnext_tid(scan, direction);
 
-			Assert(ItemPointerEquals(tid, &scan->xs_heaptid));
-		}
 
-		/*
-		 * Fetch the next (or only) visible heap tuple for this index entry.
-		 * If we don't find anything, loop around and grab the next TID from
-		 * the index.
-		 */
-		Assert(ItemPointerIsValid(&scan->xs_heaptid));
-		if (index_fetch_heap(scan, slot))
-			return true;
-	}
+   if (tid == ((void*)0))
+    break;
 
-	return false;
+   Assert(ItemPointerEquals(tid, &scan->xs_heaptid));
+  }
+
+
+
+
+
+
+  Assert(ItemPointerIsValid(&scan->xs_heaptid));
+  if (index_fetch_heap(scan, slot))
+   return 1;
+ }
+
+ return 0;
 }

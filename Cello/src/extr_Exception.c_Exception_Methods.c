@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct Method {char* member_0; char* member_1; char* member_2; } ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static struct Method* Exception_Methods(void) {
-  
+
   static struct Method methods[] = {
     {
-      "try", 
+      "try",
       "#define try",
       "Start an exception `try` block."
     }, {
-      "catch", 
+      "catch",
       "#define catch(...)",
       "Start an exception `catch` block, catching any objects listed in `...` "
       "as the first name given. To catch any exception object leave argument "
@@ -43,8 +43,8 @@ __attribute__((used)) static struct Method* Exception_Methods(void) {
       "exception_message",
       "void exception_message(void);\n",
       "Retrieve the current exception message."
-    }, {NULL, NULL, NULL}
+    }, {((void*)0), ((void*)0), ((void*)0)}
   };
-  
+
   return methods;
 }

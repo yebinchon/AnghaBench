@@ -1,82 +1,72 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  scalar_t__ uint32_t ;
-typedef  int uint16_t ;
-struct TYPE_10__ {int i_rmask; int i_gmask; int i_bmask; int /*<<< orphan*/  i_visible_height; int /*<<< orphan*/  i_visible_width; TYPE_1__* p_palette; } ;
-struct TYPE_11__ {int i_codec; scalar_t__ i_original_fourcc; size_t i_extra; TYPE_2__ video; int /*<<< orphan*/  p_extra; } ;
-typedef  TYPE_3__ es_format_t ;
-struct TYPE_12__ {int biClrUsed; int biSize; int biBitCount; int biPlanes; scalar_t__ biClrImportant; scalar_t__ biYPelsPerMeter; scalar_t__ biXPelsPerMeter; scalar_t__ biSizeImage; int /*<<< orphan*/  biHeight; int /*<<< orphan*/  biWidth; scalar_t__ biCompression; } ;
-typedef  TYPE_4__ VLC_BITMAPINFOHEADER ;
-struct TYPE_9__ {int i_entries; int /*<<< orphan*/ * palette; } ;
 
-/* Variables and functions */
- scalar_t__ BI_BITFIELDS ; 
- scalar_t__ BI_RGB ; 
- int /*<<< orphan*/  MatchBitmapRGBMasks (TYPE_3__ const*) ; 
- int /*<<< orphan*/  SetDWBE (int /*<<< orphan*/ *,int) ; 
-#define  VLC_CODEC_ARGB 137 
-#define  VLC_CODEC_BGRA 136 
-#define  VLC_CODEC_GREY 135 
-#define  VLC_CODEC_MP4V 134 
-#define  VLC_CODEC_RGB15 133 
-#define  VLC_CODEC_RGB16 132 
-#define  VLC_CODEC_RGB24 131 
-#define  VLC_CODEC_RGB32 130 
-#define  VLC_CODEC_RGBA 129 
-#define  VLC_CODEC_RGBP 128 
- scalar_t__ VLC_FOURCC (char,char,char,char) ; 
- TYPE_4__* malloc (int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef scalar_t__ uint32_t ;
+typedef int uint16_t ;
+struct TYPE_10__ {int i_rmask; int i_gmask; int i_bmask; int i_visible_height; int i_visible_width; TYPE_1__* p_palette; } ;
+struct TYPE_11__ {int i_codec; scalar_t__ i_original_fourcc; size_t i_extra; TYPE_2__ video; int p_extra; } ;
+typedef TYPE_3__ es_format_t ;
+struct TYPE_12__ {int biClrUsed; int biSize; int biBitCount; int biPlanes; scalar_t__ biClrImportant; scalar_t__ biYPelsPerMeter; scalar_t__ biXPelsPerMeter; scalar_t__ biSizeImage; int biHeight; int biWidth; scalar_t__ biCompression; } ;
+typedef TYPE_4__ VLC_BITMAPINFOHEADER ;
+struct TYPE_9__ {int i_entries; int * palette; } ;
+
+
+ scalar_t__ BI_BITFIELDS ;
+ scalar_t__ BI_RGB ;
+ int MatchBitmapRGBMasks (TYPE_3__ const*) ;
+ int SetDWBE (int *,int) ;
+ scalar_t__ VLC_FOURCC (char,char,char,char) ;
+ TYPE_4__* malloc (int) ;
+ int memcpy (int *,int ,int) ;
 
 __attribute__((used)) static inline VLC_BITMAPINFOHEADER * CreateBitmapInfoHeader( const es_format_t *fmt,
                                                              size_t *pi_total )
 {
     uint16_t biBitCount = 0;
     uint32_t biCompression = 0;
-    bool b_has_alpha = false;
+    bool b_has_alpha = 0;
     switch( fmt->i_codec )
     {
-        case VLC_CODEC_RGB32:
+        case 130:
             biBitCount = 32;
             biCompression = MatchBitmapRGBMasks( fmt ) ? BI_RGB : BI_BITFIELDS;
             break;
-        case VLC_CODEC_BGRA:
-        case VLC_CODEC_RGBA:
-        case VLC_CODEC_ARGB:
+        case 136:
+        case 129:
+        case 137:
             biBitCount = 32;
             biCompression = MatchBitmapRGBMasks( fmt ) ? BI_RGB : BI_BITFIELDS;
-            b_has_alpha = true;
+            b_has_alpha = 1;
             break;
-        case VLC_CODEC_RGB24:
+        case 131:
             biBitCount = 24;
             biCompression = BI_RGB;
             break;
-        case VLC_CODEC_RGB16:
-        case VLC_CODEC_RGB15:
+        case 132:
+        case 133:
             biBitCount = 16;
             biCompression = BI_BITFIELDS;
             break;
-        case VLC_CODEC_RGBP:
-        case VLC_CODEC_GREY:
+        case 128:
+        case 135:
             biBitCount = 8;
             biCompression = BI_RGB;
             break;
-        case VLC_CODEC_MP4V:
+        case 134:
             biCompression = VLC_FOURCC( 'X', 'V', 'I', 'D' );
             break;
         default:
@@ -89,15 +79,15 @@ __attribute__((used)) static inline VLC_BITMAPINFOHEADER * CreateBitmapInfoHeade
     size_t i_bmiColors = 0;
     if( biCompression == BI_BITFIELDS )
         i_bmiColors = (b_has_alpha) ? 16 : 12;
-    else if ( fmt->i_codec == VLC_CODEC_RGBP )
+    else if ( fmt->i_codec == 128 )
         i_bmiColors = fmt->video.p_palette ? (fmt->video.p_palette->i_entries * 4) : 0;
     else
         i_bih_extra = fmt->i_extra;
 
     VLC_BITMAPINFOHEADER *p_bih = malloc( sizeof(VLC_BITMAPINFOHEADER) +
-                                          i_bih_extra +  i_bmiColors );
-    if( p_bih == NULL )
-        return NULL;
+                                          i_bih_extra + i_bmiColors );
+    if( p_bih == ((void*)0) )
+        return ((void*)0);
 
     uint8_t *p_bih_extra = (uint8_t *) &p_bih[1];
     uint8_t *p_bmiColors = p_bih_extra + i_bih_extra;
@@ -114,7 +104,7 @@ __attribute__((used)) static inline VLC_BITMAPINFOHEADER * CreateBitmapInfoHeade
                                          fmt->video.i_bmask) );
         }
     }
-    else if( fmt->i_codec == VLC_CODEC_RGBP )
+    else if( fmt->i_codec == 128 )
     {
         for( int i = 0; i < fmt->video.p_palette->i_entries; i++ )
             memcpy( &p_bmiColors[i * 4], fmt->video.p_palette->palette[i], 4 );
@@ -136,6 +126,6 @@ __attribute__((used)) static inline VLC_BITMAPINFOHEADER * CreateBitmapInfoHeade
     p_bih->biYPelsPerMeter = 0;
     p_bih->biClrImportant = 0;
 
-    *pi_total = sizeof(VLC_BITMAPINFOHEADER) + i_bih_extra +  i_bmiColors;
+    *pi_total = sizeof(VLC_BITMAPINFOHEADER) + i_bih_extra + i_bmiColors;
     return p_bih;
 }

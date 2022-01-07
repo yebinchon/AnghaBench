@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UID ;
-struct TYPE_8__ {int packages_count; int /*<<< orphan*/ * packages_refs; } ;
-struct TYPE_7__ {int /*<<< orphan*/  package_uid; int /*<<< orphan*/  package_ul; } ;
-typedef  TYPE_1__ MXFPackage ;
-typedef  TYPE_2__ MXFContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SourcePackage ; 
- int /*<<< orphan*/  memcmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- TYPE_1__* mxf_resolve_strong_ref (TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int UID ;
+struct TYPE_8__ {int packages_count; int * packages_refs; } ;
+struct TYPE_7__ {int package_uid; int package_ul; } ;
+typedef TYPE_1__ MXFPackage ;
+typedef TYPE_2__ MXFContext ;
+
+
+ int SourcePackage ;
+ int memcmp (int ,int ,int) ;
+ TYPE_1__* mxf_resolve_strong_ref (TYPE_2__*,int *,int ) ;
 
 __attribute__((used)) static MXFPackage* mxf_resolve_source_package(MXFContext *mxf, UID package_ul, UID package_uid)
 {
-    MXFPackage *package = NULL;
+    MXFPackage *package = ((void*)0);
     int i;
 
     for (i = 0; i < mxf->packages_count; i++) {
@@ -36,5 +36,5 @@ __attribute__((used)) static MXFPackage* mxf_resolve_source_package(MXFContext *
         if (!memcmp(package->package_ul, package_ul, 16) && !memcmp(package->package_uid, package_uid, 16))
             return package;
     }
-    return NULL;
+    return ((void*)0);
 }

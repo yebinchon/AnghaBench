@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_2__ ;
-typedef  struct TYPE_16__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_wc_notify_func2_t ;
-struct TYPE_16__ {int /*<<< orphan*/ * db; } ;
-typedef  TYPE_1__ svn_wc_context_t ;
-typedef  int /*<<< orphan*/  svn_wc__db_t ;
-typedef  int svn_wc__db_status_t ;
-typedef  int /*<<< orphan*/  svn_skel_t ;
-typedef  scalar_t__ svn_node_kind_t ;
+
+
+typedef struct TYPE_17__ TYPE_2__ ;
+typedef struct TYPE_16__ TYPE_1__ ;
+
+
+typedef int svn_wc_notify_func2_t ;
+struct TYPE_16__ {int * db; } ;
+typedef TYPE_1__ svn_wc_context_t ;
+typedef int svn_wc__db_t ;
+typedef int svn_wc__db_status_t ;
+typedef int svn_skel_t ;
+typedef scalar_t__ svn_node_kind_t ;
 struct TYPE_17__ {scalar_t__ apr_err; } ;
-typedef  TYPE_2__ svn_error_t ;
-typedef  int /*<<< orphan*/  svn_cancel_func_t ;
-typedef  scalar_t__ svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+typedef TYPE_2__ svn_error_t ;
+typedef int svn_cancel_func_t ;
+typedef scalar_t__ svn_boolean_t ;
+typedef int apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  SVN_ERR (TYPE_2__*) ; 
- scalar_t__ SVN_ERR_WC_PATH_NOT_FOUND ; 
- scalar_t__ SVN_ERR_WC_PATH_UNEXPECTED_STATUS ; 
- TYPE_2__* SVN_NO_ERROR ; 
- int /*<<< orphan*/  _ (char*) ; 
- TYPE_2__* create_delete_wq_items (int /*<<< orphan*/ **,int /*<<< orphan*/ *,char const*,scalar_t__,scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- TYPE_2__* erase_unversioned_from_wc (char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_dirent_dirname (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_dirent_local_style (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_error_clear (TYPE_2__*) ; 
- TYPE_2__* svn_error_createf (scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ svn_node_dir ; 
- TYPE_2__* svn_wc__db_is_wcroot (scalar_t__*,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *) ; 
- TYPE_2__* svn_wc__db_op_delete (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *) ; 
- TYPE_2__* svn_wc__db_read_info (int*,scalar_t__*,int /*<<< orphan*/ *,char const**,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
-#define  svn_wc__db_status_excluded 129 
- int svn_wc__db_status_normal ; 
-#define  svn_wc__db_status_not_present 128 
- TYPE_2__* svn_wc__wq_run (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *) ; 
- TYPE_2__* svn_wc__write_check (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int FALSE ;
+ int SVN_ERR (TYPE_2__*) ;
+ scalar_t__ SVN_ERR_WC_PATH_NOT_FOUND ;
+ scalar_t__ SVN_ERR_WC_PATH_UNEXPECTED_STATUS ;
+ TYPE_2__* SVN_NO_ERROR ;
+ int _ (char*) ;
+ TYPE_2__* create_delete_wq_items (int **,int *,char const*,scalar_t__,scalar_t__,int *,int *) ;
+ TYPE_2__* erase_unversioned_from_wc (char const*,int ,int ,void*,int *) ;
+ int svn_dirent_dirname (char const*,int *) ;
+ int svn_dirent_local_style (char const*,int *) ;
+ int svn_error_clear (TYPE_2__*) ;
+ TYPE_2__* svn_error_createf (scalar_t__,int *,int ,int ) ;
+ scalar_t__ svn_node_dir ;
+ TYPE_2__* svn_wc__db_is_wcroot (scalar_t__*,int *,char const*,int *) ;
+ TYPE_2__* svn_wc__db_op_delete (int *,char const*,int *,int,int *,int *,int ,void*,int ,void*,int *) ;
+ TYPE_2__* svn_wc__db_read_info (int*,scalar_t__*,int *,char const**,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,scalar_t__*,int *,int *,int *,int *,int *,int *,int *,char const*,int *,int *) ;
+
+ int svn_wc__db_status_normal ;
+
+ TYPE_2__* svn_wc__wq_run (int *,char const*,int ,void*,int *) ;
+ TYPE_2__* svn_wc__write_check (int *,int ,int *) ;
 
 svn_error_t *
 svn_wc_delete4(svn_wc_context_t *wc_ctx,
@@ -65,17 +65,17 @@ svn_wc_delete4(svn_wc_context_t *wc_ctx,
   svn_wc__db_status_t status;
   svn_node_kind_t kind;
   svn_boolean_t conflicted;
-  svn_skel_t *work_items = NULL;
+  svn_skel_t *work_items = ((void*)0);
   const char *repos_relpath;
 
-  err = svn_wc__db_read_info(&status, &kind, NULL, &repos_relpath, NULL, NULL,
-                             NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-                             NULL, NULL, NULL, NULL, NULL, NULL, &conflicted,
-                             NULL, NULL, NULL, NULL, NULL, NULL,
+  err = svn_wc__db_read_info(&status, &kind, ((void*)0), &repos_relpath, ((void*)0), ((void*)0),
+                             ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0),
+                             ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0), &conflicted,
+                             ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0),
                              db, local_abspath, pool, pool);
 
   if (delete_unversioned_target &&
-      err != NULL && err->apr_err == SVN_ERR_WC_PATH_NOT_FOUND)
+      err != ((void*)0) && err->apr_err == SVN_ERR_WC_PATH_NOT_FOUND)
     {
       svn_error_clear(err);
 
@@ -90,14 +90,14 @@ svn_wc_delete4(svn_wc_context_t *wc_ctx,
 
   switch (status)
     {
-      /* svn_wc__db_status_server_excluded handled by svn_wc__db_op_delete */
-      case svn_wc__db_status_excluded:
-      case svn_wc__db_status_not_present:
-        return svn_error_createf(SVN_ERR_WC_PATH_NOT_FOUND, NULL,
+
+      case 129:
+      case 128:
+        return svn_error_createf(SVN_ERR_WC_PATH_NOT_FOUND, ((void*)0),
                                  _("'%s' cannot be deleted"),
                                  svn_dirent_local_style(local_abspath, pool));
 
-      /* Explicitly ignore other statii */
+
       default:
         break;
     }
@@ -109,23 +109,23 @@ svn_wc_delete4(svn_wc_context_t *wc_ctx,
       SVN_ERR(svn_wc__db_is_wcroot(&is_wcroot, db, local_abspath, pool));
 
       if (is_wcroot)
-        return svn_error_createf(SVN_ERR_WC_PATH_UNEXPECTED_STATUS, NULL,
+        return svn_error_createf(SVN_ERR_WC_PATH_UNEXPECTED_STATUS, ((void*)0),
                                  _("'%s' is the root of a working copy and "
                                    "cannot be deleted"),
                                  svn_dirent_local_style(local_abspath, pool));
     }
   if (repos_relpath && !repos_relpath[0])
-    return svn_error_createf(SVN_ERR_WC_PATH_UNEXPECTED_STATUS, NULL,
+    return svn_error_createf(SVN_ERR_WC_PATH_UNEXPECTED_STATUS, ((void*)0),
                              _("'%s' represents the repository root "
                                "and cannot be deleted"),
                                svn_dirent_local_style(local_abspath, pool));
 
-  /* Verify if we have a write lock on the parent of this node as we might
-     be changing the childlist of that directory. */
+
+
   SVN_ERR(svn_wc__write_check(db, svn_dirent_dirname(local_abspath, pool),
                               pool));
 
-  /* Prepare the on-disk delete */
+
       if (!keep_local)
         {
           SVN_ERR(create_delete_wq_items(&work_items, db, local_abspath, kind,
@@ -134,9 +134,9 @@ svn_wc_delete4(svn_wc_context_t *wc_ctx,
         }
 
   SVN_ERR(svn_wc__db_op_delete(db, local_abspath,
-                               NULL /*moved_to_abspath */,
-                               !keep_local /* delete_dir_externals */,
-                               NULL, work_items,
+                               ((void*)0) ,
+                               !keep_local ,
+                               ((void*)0), work_items,
                                cancel_func, cancel_baton,
                                notify_func, notify_baton,
                                pool));

@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_ra_svn_conn_t ;
-typedef  int /*<<< orphan*/  svn_ra_svn__list_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int svn_revnum_t ;
+typedef int svn_ra_svn_conn_t ;
+typedef int svn_ra_svn__list_t ;
+typedef int svn_error_t ;
 struct TYPE_8__ {TYPE_2__* repository; } ;
-typedef  TYPE_3__ server_baton_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-struct TYPE_7__ {int /*<<< orphan*/  fs; TYPE_1__* fs_path; } ;
-struct TYPE_6__ {int /*<<< orphan*/  data; } ;
+typedef TYPE_3__ server_baton_t ;
+typedef int apr_pool_t ;
+struct TYPE_7__ {int fs; TYPE_1__* fs_path; } ;
+struct TYPE_6__ {int data; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  log_command (TYPE_3__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*) ; 
- char* svn_fspath__join (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_ra_svn__parse_tuple (int /*<<< orphan*/ *,char*,char const**,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_ra_svn__write_cmd_response (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_relpath_canonicalize (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_repos_deleted_rev (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  trivial_auth_request (int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_3__*) ; 
+
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int log_command (TYPE_3__*,int *,int *,char*) ;
+ char* svn_fspath__join (int ,int ,int *) ;
+ int svn_ra_svn__parse_tuple (int *,char*,char const**,int *,int *) ;
+ int svn_ra_svn__write_cmd_response (int *,int *,char*,int ) ;
+ int svn_relpath_canonicalize (char const*,int *) ;
+ int svn_repos_deleted_rev (int ,char const*,int ,int ,int *,int *) ;
+ int trivial_auth_request (int *,int *,TYPE_3__*) ;
 
 __attribute__((used)) static svn_error_t *
 get_deleted_rev(svn_ra_svn_conn_t *conn,

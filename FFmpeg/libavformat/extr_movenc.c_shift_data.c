@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  scalar_t__ int64_t ;
-struct TYPE_10__ {int (* io_open ) (TYPE_2__*,int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ;int /*<<< orphan*/ * pb; int /*<<< orphan*/  url; TYPE_1__* priv_data; } ;
+
+
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef scalar_t__ int64_t ;
+struct TYPE_10__ {int (* io_open ) (TYPE_2__*,int **,int ,int ,int *) ;int * pb; int url; TYPE_1__* priv_data; } ;
 struct TYPE_9__ {int flags; scalar_t__ reserved_header_pos; } ;
-typedef  TYPE_1__ MOVMuxContext ;
-typedef  int /*<<< orphan*/  AVIOContext ;
-typedef  TYPE_2__ AVFormatContext ;
+typedef TYPE_1__ MOVMuxContext ;
+typedef int AVIOContext ;
+typedef TYPE_2__ AVFormatContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AVIO_FLAG_READ ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  ENOMEM ; 
- int FF_MOV_FLAG_FRAGMENT ; 
- int /*<<< orphan*/  READ_BLOCK ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  av_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  av_log (TYPE_2__*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * av_malloc (int) ; 
- int /*<<< orphan*/  avio_flush (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  avio_seek (int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ ) ; 
- scalar_t__ avio_tell (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  avio_write (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int compute_moov_size (TYPE_2__*) ; 
- int compute_sidx_size (TYPE_2__*) ; 
- int /*<<< orphan*/  ff_format_io_close (TYPE_2__*,int /*<<< orphan*/ **) ; 
- int stub1 (TYPE_2__*,int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int AVERROR (int ) ;
+ int AVIO_FLAG_READ ;
+ int AV_LOG_ERROR ;
+ int ENOMEM ;
+ int FF_MOV_FLAG_FRAGMENT ;
+ int READ_BLOCK ;
+ int SEEK_SET ;
+ int av_free (int *) ;
+ int av_log (TYPE_2__*,int ,char*,int ) ;
+ int * av_malloc (int) ;
+ int avio_flush (int *) ;
+ int avio_seek (int *,scalar_t__,int ) ;
+ scalar_t__ avio_tell (int *) ;
+ int avio_write (int *,int *,int) ;
+ int compute_moov_size (TYPE_2__*) ;
+ int compute_sidx_size (TYPE_2__*) ;
+ int ff_format_io_close (TYPE_2__*,int **) ;
+ int stub1 (TYPE_2__*,int **,int ,int ,int *) ;
 
 __attribute__((used)) static int shift_data(AVFormatContext *s)
 {
@@ -63,36 +63,36 @@ __attribute__((used)) static int shift_data(AVFormatContext *s)
     read_buf[0] = buf;
     read_buf[1] = buf + moov_size;
 
-    /* Shift the data: the AVIO context of the output can only be used for
-     * writing, so we re-open the same output, but for reading. It also avoids
-     * a read/seek/write/seek back and forth. */
+
+
+
     avio_flush(s->pb);
-    ret = s->io_open(s, &read_pb, s->url, AVIO_FLAG_READ, NULL);
+    ret = s->io_open(s, &read_pb, s->url, AVIO_FLAG_READ, ((void*)0));
     if (ret < 0) {
         av_log(s, AV_LOG_ERROR, "Unable to re-open %s output file for "
                "the second pass (faststart)\n", s->url);
         goto end;
     }
 
-    /* mark the end of the shift to up to the last data we wrote, and get ready
-     * for writing */
+
+
     pos_end = avio_tell(s->pb);
     avio_seek(s->pb, mov->reserved_header_pos + moov_size, SEEK_SET);
 
-    /* start reading at where the new moov will be placed */
+
     avio_seek(read_pb, mov->reserved_header_pos, SEEK_SET);
     pos = avio_tell(read_pb);
 
-#define READ_BLOCK do {                                                             \
-    read_size[read_buf_id] = avio_read(read_pb, read_buf[read_buf_id], moov_size);  \
-    read_buf_id ^= 1;                                                               \
-} while (0)
 
-    /* shift data by chunk of at most moov_size */
-    READ_BLOCK;
+
+
+
+
+
+    do { read_size[read_buf_id] = avio_read(read_pb, read_buf[read_buf_id], moov_size); read_buf_id ^= 1; } while (0);
     do {
         int n;
-        READ_BLOCK;
+        do { read_size[read_buf_id] = avio_read(read_pb, read_buf[read_buf_id], moov_size); read_buf_id ^= 1; } while (0);
         n = read_size[read_buf_id];
         if (n <= 0)
             break;

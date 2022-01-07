@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint64_t ;
-typedef  int int64_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  strlcpy (char*,char*,size_t) ; 
+
+
+
+typedef int uint64_t ;
+typedef int int64_t ;
+
+
+ int strlcpy (char*,char*,size_t) ;
 
 __attribute__((used)) static bool update_cand(int64_t *cand_index, int64_t *last_index,
                         uint64_t *largest, char *last_file, uint64_t *offset,
@@ -24,14 +24,14 @@ __attribute__((used)) static bool update_cand(int64_t *cand_index, int64_t *last
    {
       if ((uint64_t)(*last_index - *cand_index) > *largest)
       {
-         *largest    = *last_index - *cand_index;
+         *largest = *last_index - *cand_index;
          strlcpy(track_path, last_file, (size_t)max_len);
-         *offset     = *cand_index;
-         *size       = *largest;
+         *offset = *cand_index;
+         *size = *largest;
          *cand_index = -1;
-         return true;
+         return 1;
       }
       *cand_index = -1;
    }
-   return false;
+   return 0;
 }

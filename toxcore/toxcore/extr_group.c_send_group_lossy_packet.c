@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint16_t ;
-typedef  int /*<<< orphan*/  packet ;
-struct TYPE_3__ {int /*<<< orphan*/  lossy_message_number; int /*<<< orphan*/  peer_number; } ;
-typedef  TYPE_1__ Group_c ;
-typedef  int /*<<< orphan*/  Group_Chats ;
 
-/* Variables and functions */
- TYPE_1__* get_group_c (int /*<<< orphan*/  const*,int) ; 
- int htons (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (int*,int const*,int) ; 
- scalar_t__ send_lossy_all_close (int /*<<< orphan*/  const*,int,int*,int,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint16_t ;
+typedef int packet ;
+struct TYPE_3__ {int lossy_message_number; int peer_number; } ;
+typedef TYPE_1__ Group_c ;
+typedef int Group_Chats ;
+
+
+ TYPE_1__* get_group_c (int const*,int) ;
+ int htons (int ) ;
+ int memcpy (int*,int const*,int) ;
+ scalar_t__ send_lossy_all_close (int const*,int,int*,int,int) ;
 
 int send_group_lossy_packet(const Group_Chats *g_c, int groupnumber, const uint8_t *data, uint16_t length)
 {
-    //TODO: length check here?
+
     Group_c *g = get_group_c(g_c, groupnumber);
 
     if (!g)

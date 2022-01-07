@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t word ;
-typedef  int byte ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef size_t word ;
+typedef int byte ;
 struct TYPE_3__ {int* info; int length; } ;
-typedef  TYPE_1__ API_PARSE ;
+typedef TYPE_1__ API_PARSE ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static word api_parse(byte *msg, word length, byte *format, API_PARSE *parms)
 {
@@ -51,8 +51,8 @@ __attribute__((used)) static word api_parse(byte *msg, word length, byte *format
       break;
     }
 
-    if(p>length) return true;
+    if(p>length) return 1;
   }
-  if(parms) parms[i].info = NULL;
-  return false;
+  if(parms) parms[i].info = ((void*)0);
+  return 0;
 }

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  TCHAR ;
-typedef  int INT ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CONNECT_UPDATE_PROFILE ; 
- int /*<<< orphan*/  EndDialog (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GetDlgItem (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IDC_CONNECTEDDRIVELIST ; 
- int /*<<< orphan*/  ID_OK ; 
- int /*<<< orphan*/  LVNI_SELECTED ; 
- int /*<<< orphan*/  ListView_GetItemText (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int ListView_GetNextItem (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WNetCancelConnection2 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  _countof (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int TCHAR ;
+typedef int INT ;
+typedef int HWND ;
+typedef int HRESULT ;
+typedef int DWORD ;
+
+
+ int CONNECT_UPDATE_PROFILE ;
+ int EndDialog (int ,int ) ;
+ int FALSE ;
+ int GetDlgItem (int ,int ) ;
+ int IDC_CONNECTEDDRIVELIST ;
+ int ID_OK ;
+ int LVNI_SELECTED ;
+ int ListView_GetItemText (int ,int,int ,int *,int ) ;
+ int ListView_GetNextItem (int ,int,int ) ;
+ int WNetCancelConnection2 (int *,int ,int ) ;
+ int _countof (int *) ;
 
 DWORD DisconnectDriveExit(HWND hDlg)
 {

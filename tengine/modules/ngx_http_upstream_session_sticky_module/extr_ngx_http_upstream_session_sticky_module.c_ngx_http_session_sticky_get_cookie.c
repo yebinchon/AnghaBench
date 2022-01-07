@@ -1,76 +1,76 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_25__   TYPE_9__ ;
-typedef  struct TYPE_24__   TYPE_8__ ;
-typedef  struct TYPE_23__   TYPE_7__ ;
-typedef  struct TYPE_22__   TYPE_6__ ;
-typedef  struct TYPE_21__   TYPE_5__ ;
-typedef  struct TYPE_20__   TYPE_4__ ;
-typedef  struct TYPE_19__   TYPE_3__ ;
-typedef  struct TYPE_18__   TYPE_2__ ;
-typedef  struct TYPE_17__   TYPE_1__ ;
-typedef  struct TYPE_16__   TYPE_12__ ;
 
-/* Type definitions */
-typedef  char u_char ;
-typedef  void* time_t ;
-typedef  size_t ngx_uint_t ;
+
+
+typedef struct TYPE_25__ TYPE_9__ ;
+typedef struct TYPE_24__ TYPE_8__ ;
+typedef struct TYPE_23__ TYPE_7__ ;
+typedef struct TYPE_22__ TYPE_6__ ;
+typedef struct TYPE_21__ TYPE_5__ ;
+typedef struct TYPE_20__ TYPE_4__ ;
+typedef struct TYPE_19__ TYPE_3__ ;
+typedef struct TYPE_18__ TYPE_2__ ;
+typedef struct TYPE_17__ TYPE_1__ ;
+typedef struct TYPE_16__ TYPE_12__ ;
+
+
+typedef char u_char ;
+typedef void* time_t ;
+typedef size_t ngx_uint_t ;
 struct TYPE_22__ {char* data; int len; } ;
 struct TYPE_21__ {scalar_t__ hash; TYPE_6__ value; } ;
-typedef  TYPE_5__ ngx_table_elt_t ;
-typedef  TYPE_6__ ngx_str_t ;
-typedef  int ngx_int_t ;
+typedef TYPE_5__ ngx_table_elt_t ;
+typedef TYPE_6__ ngx_str_t ;
+typedef int ngx_int_t ;
 struct TYPE_20__ {int len; scalar_t__ data; } ;
 struct TYPE_23__ {int flag; scalar_t__ maxidle; int maxlife; TYPE_4__ cookie; } ;
-typedef  TYPE_7__ ngx_http_upstream_ss_srv_conf_t ;
+typedef TYPE_7__ ngx_http_upstream_ss_srv_conf_t ;
 struct TYPE_16__ {char* data; int len; } ;
 struct TYPE_24__ {int tries; int frist; void* firstseen; void* lastseen; TYPE_6__ sid; TYPE_12__ s_lastseen; TYPE_7__* sscf; TYPE_12__ s_firstseen; } ;
-typedef  TYPE_8__ ngx_http_ss_ctx_t ;
+typedef TYPE_8__ ngx_http_ss_ctx_t ;
 struct TYPE_17__ {size_t nelts; scalar_t__ elts; } ;
 struct TYPE_18__ {TYPE_1__ cookies; } ;
-struct TYPE_25__ {TYPE_3__* connection; int /*<<< orphan*/  pool; TYPE_2__ headers_in; } ;
-typedef  TYPE_9__ ngx_http_request_t ;
-struct TYPE_19__ {int /*<<< orphan*/  log; } ;
+struct TYPE_25__ {TYPE_3__* connection; int pool; TYPE_2__ headers_in; } ;
+typedef TYPE_9__ ngx_http_request_t ;
+struct TYPE_19__ {int log; } ;
 
-/* Variables and functions */
- scalar_t__ NGX_CONF_UNSET ; 
- int NGX_ERROR ; 
- char NGX_HTTP_SESSION_STICKY_DELIMITER ; 
- int NGX_HTTP_SESSION_STICKY_INDIRECT ; 
- int NGX_HTTP_SESSION_STICKY_INSERT ; 
- int NGX_HTTP_SESSION_STICKY_PREFIX ; 
- int /*<<< orphan*/  NGX_LOG_DEBUG_HTTP ; 
- int NGX_OK ; 
- int /*<<< orphan*/  is_space (char) ; 
- void* ngx_atotm (char*,int) ; 
- TYPE_8__* ngx_http_get_module_ctx (TYPE_9__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_http_session_sticky_tmtoa (TYPE_9__*,TYPE_12__*,void*) ; 
- int /*<<< orphan*/  ngx_http_upstream_session_sticky_module ; 
- int /*<<< orphan*/  ngx_log_debug0 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ngx_log_debug1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,TYPE_6__*) ; 
- int /*<<< orphan*/  ngx_memcpy (char*,char*,int) ; 
- void* ngx_pnalloc (int /*<<< orphan*/ ,int) ; 
- char* ngx_strnstr (char*,char*,int) ; 
- void* ngx_time () ; 
+
+ scalar_t__ NGX_CONF_UNSET ;
+ int NGX_ERROR ;
+ char NGX_HTTP_SESSION_STICKY_DELIMITER ;
+ int NGX_HTTP_SESSION_STICKY_INDIRECT ;
+ int NGX_HTTP_SESSION_STICKY_INSERT ;
+ int NGX_HTTP_SESSION_STICKY_PREFIX ;
+ int NGX_LOG_DEBUG_HTTP ;
+ int NGX_OK ;
+ int is_space (char) ;
+ void* ngx_atotm (char*,int) ;
+ TYPE_8__* ngx_http_get_module_ctx (TYPE_9__*,int ) ;
+ int ngx_http_session_sticky_tmtoa (TYPE_9__*,TYPE_12__*,void*) ;
+ int ngx_http_upstream_session_sticky_module ;
+ int ngx_log_debug0 (int ,int ,int ,char*) ;
+ int ngx_log_debug1 (int ,int ,int ,char*,TYPE_6__*) ;
+ int ngx_memcpy (char*,char*,int) ;
+ void* ngx_pnalloc (int ,int) ;
+ char* ngx_strnstr (char*,char*,int) ;
+ void* ngx_time () ;
 
 __attribute__((used)) static ngx_int_t
 ngx_http_session_sticky_get_cookie(ngx_http_request_t *r)
 {
-    time_t                           now;
-    u_char                          *p, *v, *vv, *st, *last, *end;
-    ngx_int_t                        diff, delimiter, legal;
-    ngx_str_t                       *cookie;
-    ngx_uint_t                       i;
-    ngx_table_elt_t                **cookies;
-    ngx_http_ss_ctx_t               *ctx;
+    time_t now;
+    u_char *p, *v, *vv, *st, *last, *end;
+    ngx_int_t diff, delimiter, legal;
+    ngx_str_t *cookie;
+    ngx_uint_t i;
+    ngx_table_elt_t **cookies;
+    ngx_http_ss_ctx_t *ctx;
     ngx_http_upstream_ss_srv_conf_t *sscf;
     enum {
         pre_key = 0,
@@ -85,14 +85,14 @@ ngx_http_session_sticky_get_cookie(ngx_http_request_t *r)
     sscf = ctx->sscf;
     ctx->tries = 1;
 
-    p = NULL;
-    cookie = NULL;
+    p = ((void*)0);
+    cookie = ((void*)0);
     now = ngx_time();
     cookies = (ngx_table_elt_t **) r->headers_in.cookies.elts;
     for (i = 0; i < r->headers_in.cookies.nelts; i++) {
         cookie = &cookies[i]->value;
         p = ngx_strnstr(cookie->data, (char *) sscf->cookie.data, cookie->len);
-        if (p == NULL) {
+        if (p == ((void*)0)) {
             continue;
         }
 
@@ -179,14 +179,14 @@ not_found:
                    "session sticky [firstseen]");
     ctx->frist = 1;
     ctx->sid.len = 0;
-    ctx->sid.data = NULL;
+    ctx->sid.data = ((void*)0);
     ctx->firstseen = now;
     ctx->lastseen = now;
 
     ngx_http_session_sticky_tmtoa(r, &ctx->s_lastseen, ctx->lastseen);
     ngx_http_session_sticky_tmtoa(r, &ctx->s_firstseen, ctx->firstseen);
 
-    if (ctx->s_lastseen.data == NULL || ctx->s_firstseen.data == NULL) {
+    if (ctx->s_lastseen.data == ((void*)0) || ctx->s_firstseen.data == ((void*)0)) {
         return NGX_ERROR;
     }
 
@@ -224,7 +224,7 @@ success:
                 if (delimiter == 1) {
                     ctx->sid.len = p - v;
                     ctx->sid.data = ngx_pnalloc(r->pool, ctx->sid.len);
-                    if (ctx->sid.data == NULL) {
+                    if (ctx->sid.data == ((void*)0)) {
                         return NGX_ERROR;
                     }
                     ngx_memcpy(ctx->sid.data, v, ctx->sid.len);
@@ -234,7 +234,7 @@ success:
                     ctx->s_lastseen.len = p - v;
                     ctx->s_lastseen.data = ngx_pnalloc(r->pool,
                                                        ctx->s_lastseen.len);
-                    if (ctx->s_lastseen.data == NULL) {
+                    if (ctx->s_lastseen.data == ((void*)0)) {
                         return NGX_ERROR;
                     }
                     ngx_memcpy(ctx->s_lastseen.data, v, ctx->s_lastseen.len);
@@ -256,7 +256,7 @@ success:
 
         ctx->s_firstseen.len = vv - v;
         ctx->s_firstseen.data = ngx_pnalloc(r->pool, ctx->s_firstseen.len);
-        if (ctx->s_firstseen.data == NULL) {
+        if (ctx->s_firstseen.data == ((void*)0)) {
             return NGX_ERROR;
         }
         ngx_memcpy(ctx->s_firstseen.data, v, ctx->s_firstseen.len);
@@ -288,7 +288,7 @@ success:
     } else {
         ctx->sid.len = vv - v;
         ctx->sid.data = ngx_pnalloc(r->pool, ctx->sid.len);
-        if (ctx->sid.data == NULL) {
+        if (ctx->sid.data == ((void*)0)) {
             return NGX_ERROR;
         }
         ngx_memcpy(ctx->sid.data, v, ctx->sid.len);

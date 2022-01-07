@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_value ;
-typedef  int /*<<< orphan*/  sqlite3_context ;
-typedef  int /*<<< orphan*/  Tcl_Interp ;
-typedef  int /*<<< orphan*/  Tcl_DString ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SQLITE_TRANSIENT ; 
- int /*<<< orphan*/  Tcl_DStringAppendElement (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  Tcl_DStringFree (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Tcl_DStringInit (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Tcl_DStringValue (int /*<<< orphan*/ *) ; 
- int Tcl_Eval (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Tcl_GetStringResult (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Tcl_ResetResult (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_result_error (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  sqlite3_result_text (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * sqlite3_user_data (int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3_value_text (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int sqlite3_value ;
+typedef int sqlite3_context ;
+typedef int Tcl_Interp ;
+typedef int Tcl_DString ;
+
+
+ int SQLITE_TRANSIENT ;
+ int Tcl_DStringAppendElement (int *,char*) ;
+ int Tcl_DStringFree (int *) ;
+ int Tcl_DStringInit (int *) ;
+ int Tcl_DStringValue (int *) ;
+ int Tcl_Eval (int *,int ) ;
+ int Tcl_GetStringResult (int *) ;
+ int Tcl_ResetResult (int *) ;
+ int sqlite3_result_error (int *,int ,int) ;
+ int sqlite3_result_text (int *,int ,int,int ) ;
+ int * sqlite3_user_data (int *) ;
+ scalar_t__ sqlite3_value_text (int *) ;
 
 __attribute__((used)) static void overloadedGlobFunction(
   sqlite3_context *pContext,

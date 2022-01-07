@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ts_relative ;
-typedef  int /*<<< orphan*/  ts_absolute ;
-struct TYPE_10__ {char const* type; char const* path; scalar_t__ usage; scalar_t__ usage_exclusive; scalar_t__ limit; scalar_t__ limit_exclusive; int /*<<< orphan*/  mtime; int /*<<< orphan*/  crtime; scalar_t__ read_only; scalar_t__ name; } ;
-typedef  TYPE_1__ sd_bus ;
-typedef  int /*<<< orphan*/  bs_exclusive ;
-typedef  int /*<<< orphan*/  bs ;
-typedef  TYPE_1__ ImageStatusInfo ;
 
-/* Variables and functions */
- int FORMAT_BYTES_MAX ; 
- int FORMAT_TIMESTAMP_MAX ; 
- int FORMAT_TIMESTAMP_RELATIVE_MAX ; 
- char* ansi_highlight_red () ; 
- char* ansi_normal () ; 
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- char* format_bytes (char*,int,scalar_t__) ; 
- char* format_timestamp (char*,int,int /*<<< orphan*/ ) ; 
- char* format_timestamp_relative (char*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fputs (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  print_image_hostname (TYPE_1__*,scalar_t__) ; 
- int /*<<< orphan*/  print_image_machine_id (TYPE_1__*,scalar_t__) ; 
- int /*<<< orphan*/  print_image_machine_info (TYPE_1__*,scalar_t__) ; 
- int /*<<< orphan*/  print_os_release (TYPE_1__*,char*,scalar_t__,char*) ; 
- int /*<<< orphan*/  printf (char*,char const*,...) ; 
- int /*<<< orphan*/  putchar (char) ; 
- int /*<<< orphan*/  stdout ; 
+
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int ts_relative ;
+typedef int ts_absolute ;
+struct TYPE_10__ {char const* type; char const* path; scalar_t__ usage; scalar_t__ usage_exclusive; scalar_t__ limit; scalar_t__ limit_exclusive; int mtime; int crtime; scalar_t__ read_only; scalar_t__ name; } ;
+typedef TYPE_1__ sd_bus ;
+typedef int bs_exclusive ;
+typedef int bs ;
+typedef TYPE_1__ ImageStatusInfo ;
+
+
+ int FORMAT_BYTES_MAX ;
+ int FORMAT_TIMESTAMP_MAX ;
+ int FORMAT_TIMESTAMP_RELATIVE_MAX ;
+ char* ansi_highlight_red () ;
+ char* ansi_normal () ;
+ int assert (TYPE_1__*) ;
+ char* format_bytes (char*,int,scalar_t__) ;
+ char* format_timestamp (char*,int,int ) ;
+ char* format_timestamp_relative (char*,int,int ) ;
+ int fputs (scalar_t__,int ) ;
+ int print_image_hostname (TYPE_1__*,scalar_t__) ;
+ int print_image_machine_id (TYPE_1__*,scalar_t__) ;
+ int print_image_machine_info (TYPE_1__*,scalar_t__) ;
+ int print_os_release (TYPE_1__*,char*,scalar_t__,char*) ;
+ int printf (char*,char const*,...) ;
+ int putchar (char) ;
+ int stdout ;
 
 __attribute__((used)) static void print_image_status_info(sd_bus *bus, ImageStatusInfo *i) {
         char ts_relative[FORMAT_TIMESTAMP_RELATIVE_MAX];
@@ -85,14 +85,14 @@ __attribute__((used)) static void print_image_status_info(sd_bus *bus, ImageStat
                 printf("\tModified: %s\n", s2);
 
         s3 = format_bytes(bs, sizeof(bs), i->usage);
-        s4 = i->usage_exclusive != i->usage ? format_bytes(bs_exclusive, sizeof(bs_exclusive), i->usage_exclusive) : NULL;
+        s4 = i->usage_exclusive != i->usage ? format_bytes(bs_exclusive, sizeof(bs_exclusive), i->usage_exclusive) : ((void*)0);
         if (s3 && s4)
                 printf("\t   Usage: %s (exclusive: %s)\n", s3, s4);
         else if (s3)
                 printf("\t   Usage: %s\n", s3);
 
         s3 = format_bytes(bs, sizeof(bs), i->limit);
-        s4 = i->limit_exclusive != i->limit ? format_bytes(bs_exclusive, sizeof(bs_exclusive), i->limit_exclusive) : NULL;
+        s4 = i->limit_exclusive != i->limit ? format_bytes(bs_exclusive, sizeof(bs_exclusive), i->limit_exclusive) : ((void*)0);
         if (s3 && s4)
                 printf("\t   Limit: %s (exclusive: %s)\n", s3, s4);
         else if (s3)

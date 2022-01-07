@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct udec3 {scalar_t__ x; scalar_t__ y; scalar_t__ z; scalar_t__ w; } ;
-typedef  scalar_t__ UINT ;
-typedef  int /*<<< orphan*/  FLOAT ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef scalar_t__ UINT ;
+typedef int FLOAT ;
+typedef int DWORD ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
- struct udec3 dword_to_udec3 (int /*<<< orphan*/ ) ; 
- scalar_t__ max (scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  memcpy (void*,void*,int) ; 
+
+ int FALSE ;
+ int TRUE ;
+ struct udec3 dword_to_udec3 (int ) ;
+ scalar_t__ max (scalar_t__,scalar_t__) ;
+ int memcpy (void*,void*,int) ;
 
 __attribute__((used)) static BOOL weld_udec3(void *to, void *from, FLOAT epsilon)
 {

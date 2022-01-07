@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct printer_dev {int /*<<< orphan*/  tx_reqs_active; int /*<<< orphan*/  tx_flush_wait; int /*<<< orphan*/  lock; int /*<<< orphan*/  tx_reqs; } ;
+
+
+
+
+struct printer_dev {int tx_reqs_active; int tx_flush_wait; int lock; int tx_reqs; } ;
 struct inode {int dummy; } ;
 struct file {struct printer_dev* private_data; } ;
-typedef  int /*<<< orphan*/  loff_t ;
+typedef int loff_t ;
 
-/* Variables and functions */
- struct inode* file_inode (struct file*) ; 
- int /*<<< orphan*/  inode_lock (struct inode*) ; 
- int /*<<< orphan*/  inode_unlock (struct inode*) ; 
- int likely (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  list_empty (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  wait_event_interruptible (int /*<<< orphan*/ ,int) ; 
+
+ struct inode* file_inode (struct file*) ;
+ int inode_lock (struct inode*) ;
+ int inode_unlock (struct inode*) ;
+ int likely (int ) ;
+ int list_empty (int *) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
+ int wait_event_interruptible (int ,int) ;
 
 __attribute__((used)) static int
 printer_fsync(struct file *fd, loff_t start, loff_t end, int datasync)
 {
-	struct printer_dev	*dev = fd->private_data;
-	struct inode *inode = file_inode(fd);
-	unsigned long		flags;
-	int			tx_list_empty;
+ struct printer_dev *dev = fd->private_data;
+ struct inode *inode = file_inode(fd);
+ unsigned long flags;
+ int tx_list_empty;
 
-	inode_lock(inode);
-	spin_lock_irqsave(&dev->lock, flags);
-	tx_list_empty = (likely(list_empty(&dev->tx_reqs)));
-	spin_unlock_irqrestore(&dev->lock, flags);
+ inode_lock(inode);
+ spin_lock_irqsave(&dev->lock, flags);
+ tx_list_empty = (likely(list_empty(&dev->tx_reqs)));
+ spin_unlock_irqrestore(&dev->lock, flags);
 
-	if (!tx_list_empty) {
-		/* Sleep until all data has been sent */
-		wait_event_interruptible(dev->tx_flush_wait,
-				(likely(list_empty(&dev->tx_reqs_active))));
-	}
-	inode_unlock(inode);
+ if (!tx_list_empty) {
 
-	return 0;
+  wait_event_interruptible(dev->tx_flush_wait,
+    (likely(list_empty(&dev->tx_reqs_active))));
+ }
+ inode_unlock(inode);
+
+ return 0;
 }

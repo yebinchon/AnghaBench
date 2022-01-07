@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct advert {long long ad_id; long long flags; long long price; long long users; long long views; long long l_clicked; long long click_money; long long l_clicked_old; long long l_views; long long g_clicked_old; long long g_views; int expected_gain; long long ext_users; long long g_clicked; int l_sump0; int l_sump1; int l_sump2; int g_sump0; int g_sump1; int g_sump2; int lambda; int delta; long long recent_views; long long recent_views_limit; int factor; long long domain; long long group; long long category; long long subcategory; } ;
 
-/* Variables and functions */
- struct advert* get_ad_f (int,int /*<<< orphan*/ ) ; 
- int sqrt (int) ; 
+
+ struct advert* get_ad_f (int,int ) ;
+ int sqrt (int) ;
 
 int compute_ad_info (int ad_id, long long *res) {
   struct advert *A = get_ad_f (ad_id, 0);

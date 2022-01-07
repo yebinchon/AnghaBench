@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int bitmapword ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int bitmapword ;
 struct TYPE_3__ {int nwords; int* words; } ;
-typedef  TYPE_1__ Bitmapset ;
+typedef TYPE_1__ Bitmapset ;
 
-/* Variables and functions */
- int BITNUM (int) ; 
- int /*<<< orphan*/  ERROR ; 
- int WORDNUM (int) ; 
- int /*<<< orphan*/  elog (int /*<<< orphan*/ ,char*) ; 
+
+ int BITNUM (int) ;
+ int ERROR ;
+ int WORDNUM (int) ;
+ int elog (int ,char*) ;
 
 bool
 bms_is_member(int x, const Bitmapset *a)
 {
-	int			wordnum,
-				bitnum;
+ int wordnum,
+    bitnum;
 
-	/* XXX better to just return false for x<0 ? */
-	if (x < 0)
-		elog(ERROR, "negative bitmapset member not allowed");
-	if (a == NULL)
-		return false;
-	wordnum = WORDNUM(x);
-	bitnum = BITNUM(x);
-	if (wordnum >= a->nwords)
-		return false;
-	if ((a->words[wordnum] & ((bitmapword) 1 << bitnum)) != 0)
-		return true;
-	return false;
+
+ if (x < 0)
+  elog(ERROR, "negative bitmapset member not allowed");
+ if (a == ((void*)0))
+  return 0;
+ wordnum = WORDNUM(x);
+ bitnum = BITNUM(x);
+ if (wordnum >= a->nwords)
+  return 0;
+ if ((a->words[wordnum] & ((bitmapword) 1 << bitnum)) != 0)
+  return 1;
+ return 0;
 }

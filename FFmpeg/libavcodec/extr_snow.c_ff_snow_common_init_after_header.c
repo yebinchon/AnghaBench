@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_7__ ;
-typedef  struct TYPE_15__   TYPE_6__ ;
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  x_and_coeff ;
-struct TYPE_16__ {scalar_t__ format; int /*<<< orphan*/ * linesize; } ;
+
+
+typedef struct TYPE_16__ TYPE_7__ ;
+typedef struct TYPE_15__ TYPE_6__ ;
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef int x_and_coeff ;
+struct TYPE_16__ {scalar_t__ format; int * linesize; } ;
 struct TYPE_15__ {int width; int height; } ;
 struct TYPE_14__ {int width; scalar_t__ pix_fmt; TYPE_3__* priv_data; } ;
-struct TYPE_13__ {int nb_planes; int spatial_decomposition_count; TYPE_1__* plane; scalar_t__ spatial_dwt_buffer; scalar_t__ spatial_idwt_buffer; int /*<<< orphan*/  chroma_v_shift; int /*<<< orphan*/  chroma_h_shift; TYPE_6__* avctx; TYPE_7__* mconly_picture; int /*<<< orphan*/  emu_edge_buffer; int /*<<< orphan*/  scratchbuf; } ;
-struct TYPE_12__ {int level; int stride; int width; int height; int stride_line; int buf_x_offset; int buf_y_offset; int /*<<< orphan*/  x_coeff; struct TYPE_12__* parent; scalar_t__ buf; scalar_t__ ibuf; } ;
+struct TYPE_13__ {int nb_planes; int spatial_decomposition_count; TYPE_1__* plane; scalar_t__ spatial_dwt_buffer; scalar_t__ spatial_idwt_buffer; int chroma_v_shift; int chroma_h_shift; TYPE_6__* avctx; TYPE_7__* mconly_picture; int emu_edge_buffer; int scratchbuf; } ;
+struct TYPE_12__ {int level; int stride; int width; int height; int stride_line; int buf_x_offset; int buf_y_offset; int x_coeff; struct TYPE_12__* parent; scalar_t__ buf; scalar_t__ ibuf; } ;
 struct TYPE_11__ {int width; int height; TYPE_2__** band; } ;
-typedef  TYPE_2__ SubBand ;
-typedef  TYPE_3__ SnowContext ;
-typedef  TYPE_4__ AVCodecContext ;
+typedef TYPE_2__ SubBand ;
+typedef TYPE_3__ SnowContext ;
+typedef TYPE_4__ AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_INVALIDDATA ; 
- int AV_CEIL_RSHIFT (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_GET_BUFFER_FLAG_REF ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  ENOMEM ; 
- int FFMAX (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  FF_ALLOCZ_ARRAY_OR_GOTO (TYPE_4__*,int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FF_ALLOC_OR_GOTO (TYPE_4__*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int HTAPS_MAX ; 
- int MB_SIZE ; 
- int /*<<< orphan*/  av_freep (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  av_log (TYPE_4__*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  av_mallocz_array (int,int) ; 
- int /*<<< orphan*/  fail ; 
- int ff_get_buffer (TYPE_6__*,TYPE_7__*,int /*<<< orphan*/ ) ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_INVALIDDATA ;
+ int AV_CEIL_RSHIFT (int,int ) ;
+ int AV_GET_BUFFER_FLAG_REF ;
+ int AV_LOG_ERROR ;
+ int ENOMEM ;
+ int FFMAX (int ,int) ;
+ int FF_ALLOCZ_ARRAY_OR_GOTO (TYPE_4__*,int ,int,int,int ) ;
+ int FF_ALLOC_OR_GOTO (TYPE_4__*,int ,int,int ) ;
+ int HTAPS_MAX ;
+ int MB_SIZE ;
+ int av_freep (int *) ;
+ int av_log (TYPE_4__*,int ,char*) ;
+ int av_mallocz_array (int,int) ;
+ int fail ;
+ int ff_get_buffer (TYPE_6__*,TYPE_7__*,int ) ;
 
 int ff_snow_common_init_after_header(AVCodecContext *avctx) {
     SnowContext *s = avctx->priv_data;
@@ -101,7 +101,7 @@ int ff_snow_common_init_after_header(AVCodecContext *avctx) {
 
                 if(level)
                     b->parent= &s->plane[plane_index].band[level-1][orientation];
-                //FIXME avoid this realloc
+
                 av_freep(&b->x_coeff);
                 b->x_coeff=av_mallocz_array(((b->width+1) * b->height+1), sizeof(x_and_coeff));
                 if (!b->x_coeff)

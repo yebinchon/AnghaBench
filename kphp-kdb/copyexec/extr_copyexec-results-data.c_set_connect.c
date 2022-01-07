@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct lev_copyexec_result_connect {int hostname_length; int /*<<< orphan*/  hostname; int /*<<< orphan*/  pid; int /*<<< orphan*/  ip; int /*<<< orphan*/  volume_id; int /*<<< orphan*/  random_tag; } ;
-struct TYPE_3__ {scalar_t__ hostname; int /*<<< orphan*/  last_action_time; int /*<<< orphan*/  pid; int /*<<< orphan*/  ip; int /*<<< orphan*/  volume_id; } ;
-typedef  TYPE_1__ host_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  exit (int) ; 
- TYPE_1__* get_host_by_random_tag (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  kprintf (char*,scalar_t__,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  log_cur_pos () ; 
- scalar_t__ memcmp (scalar_t__,int /*<<< orphan*/ ,int const) ; 
- int /*<<< orphan*/  memcpy (scalar_t__,int /*<<< orphan*/ ,int const) ; 
- int /*<<< orphan*/  now ; 
- scalar_t__ strlen (scalar_t__) ; 
- scalar_t__ zmalloc0 (int const) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct lev_copyexec_result_connect {int hostname_length; int hostname; int pid; int ip; int volume_id; int random_tag; } ;
+struct TYPE_3__ {scalar_t__ hostname; int last_action_time; int pid; int ip; int volume_id; } ;
+typedef TYPE_1__ host_t ;
+
+
+ int exit (int) ;
+ TYPE_1__* get_host_by_random_tag (int ,int) ;
+ int kprintf (char*,scalar_t__,int,int ,int ) ;
+ int log_cur_pos () ;
+ scalar_t__ memcmp (scalar_t__,int ,int const) ;
+ int memcpy (scalar_t__,int ,int const) ;
+ int now ;
+ scalar_t__ strlen (scalar_t__) ;
+ scalar_t__ zmalloc0 (int const) ;
 
 __attribute__((used)) static int set_connect (struct lev_copyexec_result_connect *E) {
   host_t *H = get_host_by_random_tag (E->random_tag, 1);

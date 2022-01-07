@@ -1,96 +1,64 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
-typedef  int /*<<< orphan*/ * optab ;
-typedef  enum tree_code { ____Placeholder_tree_code } tree_code ;
 
-/* Variables and functions */
-#define  ABS_EXPR 160 
-#define  BIT_AND_EXPR 159 
-#define  BIT_IOR_EXPR 158 
-#define  BIT_NOT_EXPR 157 
-#define  BIT_XOR_EXPR 156 
-#define  CEIL_DIV_EXPR 155 
-#define  CEIL_MOD_EXPR 154 
-#define  DOT_PROD_EXPR 153 
-#define  EXACT_DIV_EXPR 152 
-#define  FLOOR_DIV_EXPR 151 
-#define  FLOOR_MOD_EXPR 150 
- scalar_t__ INTEGRAL_TYPE_P (int /*<<< orphan*/ ) ; 
-#define  LROTATE_EXPR 149 
-#define  LSHIFT_EXPR 148 
-#define  MAX_EXPR 147 
-#define  MINUS_EXPR 146 
-#define  MIN_EXPR 145 
-#define  MULT_EXPR 144 
-#define  NEGATE_EXPR 143 
-#define  PLUS_EXPR 142 
-#define  RDIV_EXPR 141 
-#define  REALIGN_LOAD_EXPR 140 
-#define  REDUC_MAX_EXPR 139 
-#define  REDUC_MIN_EXPR 138 
-#define  REDUC_PLUS_EXPR 137 
-#define  ROUND_DIV_EXPR 136 
-#define  ROUND_MOD_EXPR 135 
-#define  RROTATE_EXPR 134 
-#define  RSHIFT_EXPR 133 
-#define  TRUNC_DIV_EXPR 132 
-#define  TRUNC_MOD_EXPR 131 
- scalar_t__ TYPE_OVERFLOW_TRAPS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TYPE_UNSIGNED (int /*<<< orphan*/ ) ; 
-#define  VEC_LSHIFT_EXPR 130 
-#define  VEC_RSHIFT_EXPR 129 
-#define  WIDEN_SUM_EXPR 128 
- int /*<<< orphan*/ * abs_optab ; 
- int /*<<< orphan*/ * absv_optab ; 
- int /*<<< orphan*/ * add_optab ; 
- int /*<<< orphan*/ * addv_optab ; 
- int /*<<< orphan*/ * and_optab ; 
- int /*<<< orphan*/ * ashl_optab ; 
- int /*<<< orphan*/ * ashr_optab ; 
- int /*<<< orphan*/ * ior_optab ; 
- int /*<<< orphan*/ * lshr_optab ; 
- int /*<<< orphan*/ * neg_optab ; 
- int /*<<< orphan*/ * negv_optab ; 
- int /*<<< orphan*/ * one_cmpl_optab ; 
- int /*<<< orphan*/ * reduc_smax_optab ; 
- int /*<<< orphan*/ * reduc_smin_optab ; 
- int /*<<< orphan*/ * reduc_splus_optab ; 
- int /*<<< orphan*/ * reduc_umax_optab ; 
- int /*<<< orphan*/ * reduc_umin_optab ; 
- int /*<<< orphan*/ * reduc_uplus_optab ; 
- int /*<<< orphan*/ * rotl_optab ; 
- int /*<<< orphan*/ * rotr_optab ; 
- int /*<<< orphan*/ * sdiv_optab ; 
- int /*<<< orphan*/ * sdot_prod_optab ; 
- int /*<<< orphan*/ * smax_optab ; 
- int /*<<< orphan*/ * smin_optab ; 
- int /*<<< orphan*/ * smod_optab ; 
- int /*<<< orphan*/ * smul_optab ; 
- int /*<<< orphan*/ * smulv_optab ; 
- int /*<<< orphan*/ * ssum_widen_optab ; 
- int /*<<< orphan*/ * sub_optab ; 
- int /*<<< orphan*/ * subv_optab ; 
- int /*<<< orphan*/ * udiv_optab ; 
- int /*<<< orphan*/ * udot_prod_optab ; 
- int /*<<< orphan*/ * umax_optab ; 
- int /*<<< orphan*/ * umin_optab ; 
- int /*<<< orphan*/ * umod_optab ; 
- int /*<<< orphan*/ * usum_widen_optab ; 
- int /*<<< orphan*/ * vec_realign_load_optab ; 
- int /*<<< orphan*/ * vec_shl_optab ; 
- int /*<<< orphan*/ * vec_shr_optab ; 
- int /*<<< orphan*/ * xor_optab ; 
+
+
+
+typedef int tree ;
+typedef int * optab ;
+typedef enum tree_code { ____Placeholder_tree_code } tree_code ;
+ scalar_t__ INTEGRAL_TYPE_P (int ) ;
+ scalar_t__ TYPE_OVERFLOW_TRAPS (int ) ;
+ int TYPE_UNSIGNED (int ) ;
+
+
+
+ int * abs_optab ;
+ int * absv_optab ;
+ int * add_optab ;
+ int * addv_optab ;
+ int * and_optab ;
+ int * ashl_optab ;
+ int * ashr_optab ;
+ int * ior_optab ;
+ int * lshr_optab ;
+ int * neg_optab ;
+ int * negv_optab ;
+ int * one_cmpl_optab ;
+ int * reduc_smax_optab ;
+ int * reduc_smin_optab ;
+ int * reduc_splus_optab ;
+ int * reduc_umax_optab ;
+ int * reduc_umin_optab ;
+ int * reduc_uplus_optab ;
+ int * rotl_optab ;
+ int * rotr_optab ;
+ int * sdiv_optab ;
+ int * sdot_prod_optab ;
+ int * smax_optab ;
+ int * smin_optab ;
+ int * smod_optab ;
+ int * smul_optab ;
+ int * smulv_optab ;
+ int * ssum_widen_optab ;
+ int * sub_optab ;
+ int * subv_optab ;
+ int * udiv_optab ;
+ int * udot_prod_optab ;
+ int * umax_optab ;
+ int * umin_optab ;
+ int * umod_optab ;
+ int * usum_widen_optab ;
+ int * vec_realign_load_optab ;
+ int * vec_shl_optab ;
+ int * vec_shr_optab ;
+ int * xor_optab ;
 
 optab
 optab_for_tree_code (enum tree_code code, tree type)
@@ -98,72 +66,72 @@ optab_for_tree_code (enum tree_code code, tree type)
   bool trapv;
   switch (code)
     {
-    case BIT_AND_EXPR:
+    case 159:
       return and_optab;
 
-    case BIT_IOR_EXPR:
+    case 158:
       return ior_optab;
 
-    case BIT_NOT_EXPR:
+    case 157:
       return one_cmpl_optab;
 
-    case BIT_XOR_EXPR:
+    case 156:
       return xor_optab;
 
-    case TRUNC_MOD_EXPR:
-    case CEIL_MOD_EXPR:
-    case FLOOR_MOD_EXPR:
-    case ROUND_MOD_EXPR:
+    case 131:
+    case 154:
+    case 150:
+    case 135:
       return TYPE_UNSIGNED (type) ? umod_optab : smod_optab;
 
-    case RDIV_EXPR:
-    case TRUNC_DIV_EXPR:
-    case CEIL_DIV_EXPR:
-    case FLOOR_DIV_EXPR:
-    case ROUND_DIV_EXPR:
-    case EXACT_DIV_EXPR:
+    case 141:
+    case 132:
+    case 155:
+    case 151:
+    case 136:
+    case 152:
       return TYPE_UNSIGNED (type) ? udiv_optab : sdiv_optab;
 
-    case LSHIFT_EXPR:
+    case 148:
       return ashl_optab;
 
-    case RSHIFT_EXPR:
+    case 133:
       return TYPE_UNSIGNED (type) ? lshr_optab : ashr_optab;
 
-    case LROTATE_EXPR:
+    case 149:
       return rotl_optab;
 
-    case RROTATE_EXPR:
+    case 134:
       return rotr_optab;
 
-    case MAX_EXPR:
+    case 147:
       return TYPE_UNSIGNED (type) ? umax_optab : smax_optab;
 
-    case MIN_EXPR:
+    case 145:
       return TYPE_UNSIGNED (type) ? umin_optab : smin_optab;
 
-    case REALIGN_LOAD_EXPR:
+    case 140:
       return vec_realign_load_optab;
 
-    case WIDEN_SUM_EXPR:
+    case 128:
       return TYPE_UNSIGNED (type) ? usum_widen_optab : ssum_widen_optab;
 
-    case DOT_PROD_EXPR:
+    case 153:
       return TYPE_UNSIGNED (type) ? udot_prod_optab : sdot_prod_optab;
 
-    case REDUC_MAX_EXPR:
+    case 139:
       return TYPE_UNSIGNED (type) ? reduc_umax_optab : reduc_smax_optab;
 
-    case REDUC_MIN_EXPR:
+    case 138:
       return TYPE_UNSIGNED (type) ? reduc_umin_optab : reduc_smin_optab;
 
-    case REDUC_PLUS_EXPR:
+    case 137:
       return TYPE_UNSIGNED (type) ? reduc_uplus_optab : reduc_splus_optab;
 
-    case VEC_LSHIFT_EXPR:
+    case 130:
       return vec_shl_optab;
 
-    case VEC_RSHIFT_EXPR:
+    case 129:
       return vec_shr_optab;
 
     default:
@@ -173,22 +141,22 @@ optab_for_tree_code (enum tree_code code, tree type)
   trapv = INTEGRAL_TYPE_P (type) && TYPE_OVERFLOW_TRAPS (type);
   switch (code)
     {
-    case PLUS_EXPR:
+    case 142:
       return trapv ? addv_optab : add_optab;
 
-    case MINUS_EXPR:
+    case 146:
       return trapv ? subv_optab : sub_optab;
 
-    case MULT_EXPR:
+    case 144:
       return trapv ? smulv_optab : smul_optab;
 
-    case NEGATE_EXPR:
+    case 143:
       return trapv ? negv_optab : neg_optab;
 
-    case ABS_EXPR:
+    case 160:
       return trapv ? absv_optab : abs_optab;
 
     default:
-      return NULL;
+      return ((void*)0);
     }
 }

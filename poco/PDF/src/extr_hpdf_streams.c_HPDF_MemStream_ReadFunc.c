@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_5__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_5__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_8__ {int count; } ;
-struct TYPE_7__ {int r_ptr_idx; scalar_t__ buf_siz; scalar_t__ r_pos; scalar_t__ w_pos; int /*<<< orphan*/ * r_ptr; TYPE_5__* buf; } ;
-struct TYPE_6__ {int /*<<< orphan*/  attr; } ;
-typedef  scalar_t__ HPDF_UINT ;
-typedef  TYPE_1__* HPDF_Stream ;
-typedef  int /*<<< orphan*/  HPDF_STATUS ;
-typedef  TYPE_2__* HPDF_MemStreamAttr ;
-typedef  int /*<<< orphan*/  HPDF_BYTE ;
+struct TYPE_7__ {int r_ptr_idx; scalar_t__ buf_siz; scalar_t__ r_pos; scalar_t__ w_pos; int * r_ptr; TYPE_5__* buf; } ;
+struct TYPE_6__ {int attr; } ;
+typedef scalar_t__ HPDF_UINT ;
+typedef TYPE_1__* HPDF_Stream ;
+typedef int HPDF_STATUS ;
+typedef TYPE_2__* HPDF_MemStreamAttr ;
+typedef int HPDF_BYTE ;
 
-/* Variables and functions */
- scalar_t__ HPDF_List_ItemAt (TYPE_5__*,int) ; 
- int /*<<< orphan*/ * HPDF_MemCpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/ * HPDF_MemStream_GetBufPtr (TYPE_1__*,int,scalar_t__*) ; 
- int /*<<< orphan*/  HPDF_OK ; 
- int /*<<< orphan*/  HPDF_PTRACE (char*) ; 
- int /*<<< orphan*/  HPDF_STREAM_EOF ; 
+
+ scalar_t__ HPDF_List_ItemAt (TYPE_5__*,int) ;
+ int * HPDF_MemCpy (int *,int *,scalar_t__) ;
+ int * HPDF_MemStream_GetBufPtr (TYPE_1__*,int,scalar_t__*) ;
+ int HPDF_OK ;
+ int HPDF_PTRACE (char*) ;
+ int HPDF_STREAM_EOF ;
 
 HPDF_STATUS
-HPDF_MemStream_ReadFunc  (HPDF_Stream  stream,
-                          HPDF_BYTE    *buf,
-                          HPDF_UINT    *size)
+HPDF_MemStream_ReadFunc (HPDF_Stream stream,
+                          HPDF_BYTE *buf,
+                          HPDF_UINT *size)
 {
     HPDF_MemStreamAttr attr = (HPDF_MemStreamAttr)stream->attr;
     HPDF_UINT buf_size;

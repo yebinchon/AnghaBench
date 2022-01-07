@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  PutBitContext ;
 
-/* Variables and functions */
- int av_log2 (int) ; 
- int /*<<< orphan*/  put_bits (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  put_sbits (int /*<<< orphan*/ *,unsigned int,int) ; 
+
+
+
+typedef int PutBitContext ;
+
+
+ int av_log2 (int) ;
+ int put_bits (int *,int,int) ;
+ int put_sbits (int *,unsigned int,int) ;
 
 __attribute__((used)) static inline void encode_vlc_codeword(PutBitContext *pb, unsigned codebook, int val)
 {
     unsigned int rice_order, exp_order, switch_bits, switch_val;
     int exponent;
 
-    /* number of prefix bits to switch between Rice and expGolomb */
-    switch_bits = (codebook & 3) + 1;
-    rice_order  =  codebook >> 5;       /* rice code order */
-    exp_order   = (codebook >> 2) & 7;  /* exp golomb code order */
 
-    switch_val  = switch_bits << rice_order;
+    switch_bits = (codebook & 3) + 1;
+    rice_order = codebook >> 5;
+    exp_order = (codebook >> 2) & 7;
+
+    switch_val = switch_bits << rice_order;
 
     if (val >= switch_val) {
         val -= switch_val - (1 << exp_order);

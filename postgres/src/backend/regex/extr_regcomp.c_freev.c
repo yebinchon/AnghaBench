@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct vars {scalar_t__ subs; scalar_t__ sub10; int err; int /*<<< orphan*/  nlacons; int /*<<< orphan*/ * lacons; int /*<<< orphan*/ * cv2; int /*<<< orphan*/ * cv; int /*<<< orphan*/ * treechain; int /*<<< orphan*/ * tree; int /*<<< orphan*/ * nfa; int /*<<< orphan*/ * re; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (int) ; 
- int /*<<< orphan*/  FREE (scalar_t__) ; 
- int /*<<< orphan*/  cleanst (struct vars*) ; 
- int /*<<< orphan*/  freecvec (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  freelacons (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  freenfa (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  freesubre (struct vars*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  rfree (int /*<<< orphan*/ *) ; 
+
+
+
+struct vars {scalar_t__ subs; scalar_t__ sub10; int err; int nlacons; int * lacons; int * cv2; int * cv; int * treechain; int * tree; int * nfa; int * re; } ;
+
+
+ int ERR (int) ;
+ int FREE (scalar_t__) ;
+ int cleanst (struct vars*) ;
+ int freecvec (int *) ;
+ int freelacons (int *,int ) ;
+ int freenfa (int *) ;
+ int freesubre (struct vars*,int *) ;
+ int rfree (int *) ;
 
 __attribute__((used)) static int
 freev(struct vars *v,
-	  int err)
+   int err)
 {
-	if (v->re != NULL)
-		rfree(v->re);
-	if (v->subs != v->sub10)
-		FREE(v->subs);
-	if (v->nfa != NULL)
-		freenfa(v->nfa);
-	if (v->tree != NULL)
-		freesubre(v, v->tree);
-	if (v->treechain != NULL)
-		cleanst(v);
-	if (v->cv != NULL)
-		freecvec(v->cv);
-	if (v->cv2 != NULL)
-		freecvec(v->cv2);
-	if (v->lacons != NULL)
-		freelacons(v->lacons, v->nlacons);
-	ERR(err);					/* nop if err==0 */
+ if (v->re != ((void*)0))
+  rfree(v->re);
+ if (v->subs != v->sub10)
+  FREE(v->subs);
+ if (v->nfa != ((void*)0))
+  freenfa(v->nfa);
+ if (v->tree != ((void*)0))
+  freesubre(v, v->tree);
+ if (v->treechain != ((void*)0))
+  cleanst(v);
+ if (v->cv != ((void*)0))
+  freecvec(v->cv);
+ if (v->cv2 != ((void*)0))
+  freecvec(v->cv2);
+ if (v->lacons != ((void*)0))
+  freelacons(v->lacons, v->nlacons);
+ ERR(err);
 
-	return v->err;
+ return v->err;
 }

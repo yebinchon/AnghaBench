@@ -1,112 +1,112 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  void* u64 ;
+
+
+
+
+typedef void* u64 ;
 struct thread_stat {int dummy; } ;
-struct perf_sample {int /*<<< orphan*/  time; int /*<<< orphan*/  tid; } ;
+struct perf_sample {int time; int tid; } ;
 struct perf_evsel {int dummy; } ;
-struct lock_stat {int discard; int /*<<< orphan*/  nr_acquire; int /*<<< orphan*/  nr_acquired; int /*<<< orphan*/  nr_readlock; int /*<<< orphan*/  nr_trylock; } ;
-struct lock_seq_stat {int state; int read_count; int /*<<< orphan*/  prev_event_time; int /*<<< orphan*/  list; } ;
+struct lock_stat {int discard; int nr_acquire; int nr_acquired; int nr_readlock; int nr_trylock; } ;
+struct lock_seq_stat {int state; int read_count; int prev_event_time; int list; } ;
 
-/* Variables and functions */
- size_t BROKEN_ACQUIRE ; 
- int /*<<< orphan*/  BUG_ON (char*) ; 
- int READ_LOCK ; 
-#define  SEQ_STATE_ACQUIRED 133 
-#define  SEQ_STATE_ACQUIRING 132 
-#define  SEQ_STATE_CONTENDED 131 
-#define  SEQ_STATE_READ_ACQUIRED 130 
-#define  SEQ_STATE_RELEASED 129 
-#define  SEQ_STATE_UNINITIALIZED 128 
- int TRY_LOCK ; 
- int /*<<< orphan*/ * bad_hist ; 
- int /*<<< orphan*/  free (struct lock_seq_stat*) ; 
- struct lock_seq_stat* get_seq (struct thread_stat*,void*) ; 
- int /*<<< orphan*/  list_del (int /*<<< orphan*/ *) ; 
- struct lock_stat* lock_stat_findnew (void*,char const*) ; 
- int /*<<< orphan*/  memcpy (void**,void**,int) ; 
- void* perf_evsel__intval (struct perf_evsel*,struct perf_sample*,char*) ; 
- char* perf_evsel__strval (struct perf_evsel*,struct perf_sample*,char*) ; 
- struct thread_stat* thread_stat_findnew (int /*<<< orphan*/ ) ; 
+
+ size_t BROKEN_ACQUIRE ;
+ int BUG_ON (char*) ;
+ int READ_LOCK ;
+
+
+
+
+
+
+ int TRY_LOCK ;
+ int * bad_hist ;
+ int free (struct lock_seq_stat*) ;
+ struct lock_seq_stat* get_seq (struct thread_stat*,void*) ;
+ int list_del (int *) ;
+ struct lock_stat* lock_stat_findnew (void*,char const*) ;
+ int memcpy (void**,void**,int) ;
+ void* perf_evsel__intval (struct perf_evsel*,struct perf_sample*,char*) ;
+ char* perf_evsel__strval (struct perf_evsel*,struct perf_sample*,char*) ;
+ struct thread_stat* thread_stat_findnew (int ) ;
 
 __attribute__((used)) static int report_lock_acquire_event(struct perf_evsel *evsel,
-				     struct perf_sample *sample)
+         struct perf_sample *sample)
 {
-	void *addr;
-	struct lock_stat *ls;
-	struct thread_stat *ts;
-	struct lock_seq_stat *seq;
-	const char *name = perf_evsel__strval(evsel, sample, "name");
-	u64 tmp = perf_evsel__intval(evsel, sample, "lockdep_addr");
-	int flag = perf_evsel__intval(evsel, sample, "flag");
+ void *addr;
+ struct lock_stat *ls;
+ struct thread_stat *ts;
+ struct lock_seq_stat *seq;
+ const char *name = perf_evsel__strval(evsel, sample, "name");
+ u64 tmp = perf_evsel__intval(evsel, sample, "lockdep_addr");
+ int flag = perf_evsel__intval(evsel, sample, "flag");
 
-	memcpy(&addr, &tmp, sizeof(void *));
+ memcpy(&addr, &tmp, sizeof(void *));
 
-	ls = lock_stat_findnew(addr, name);
-	if (!ls)
-		return -1;
-	if (ls->discard)
-		return 0;
+ ls = lock_stat_findnew(addr, name);
+ if (!ls)
+  return -1;
+ if (ls->discard)
+  return 0;
 
-	ts = thread_stat_findnew(sample->tid);
-	if (!ts)
-		return -1;
+ ts = thread_stat_findnew(sample->tid);
+ if (!ts)
+  return -1;
 
-	seq = get_seq(ts, addr);
-	if (!seq)
-		return -1;
+ seq = get_seq(ts, addr);
+ if (!seq)
+  return -1;
 
-	switch (seq->state) {
-	case SEQ_STATE_UNINITIALIZED:
-	case SEQ_STATE_RELEASED:
-		if (!flag) {
-			seq->state = SEQ_STATE_ACQUIRING;
-		} else {
-			if (flag & TRY_LOCK)
-				ls->nr_trylock++;
-			if (flag & READ_LOCK)
-				ls->nr_readlock++;
-			seq->state = SEQ_STATE_READ_ACQUIRED;
-			seq->read_count = 1;
-			ls->nr_acquired++;
-		}
-		break;
-	case SEQ_STATE_READ_ACQUIRED:
-		if (flag & READ_LOCK) {
-			seq->read_count++;
-			ls->nr_acquired++;
-			goto end;
-		} else {
-			goto broken;
-		}
-		break;
-	case SEQ_STATE_ACQUIRED:
-	case SEQ_STATE_ACQUIRING:
-	case SEQ_STATE_CONTENDED:
+ switch (seq->state) {
+ case 128:
+ case 129:
+  if (!flag) {
+   seq->state = 132;
+  } else {
+   if (flag & TRY_LOCK)
+    ls->nr_trylock++;
+   if (flag & READ_LOCK)
+    ls->nr_readlock++;
+   seq->state = 130;
+   seq->read_count = 1;
+   ls->nr_acquired++;
+  }
+  break;
+ case 130:
+  if (flag & READ_LOCK) {
+   seq->read_count++;
+   ls->nr_acquired++;
+   goto end;
+  } else {
+   goto broken;
+  }
+  break;
+ case 133:
+ case 132:
+ case 131:
 broken:
-		/* broken lock sequence, discard it */
-		ls->discard = 1;
-		bad_hist[BROKEN_ACQUIRE]++;
-		list_del(&seq->list);
-		free(seq);
-		goto end;
-		break;
-	default:
-		BUG_ON("Unknown state of lock sequence found!\n");
-		break;
-	}
 
-	ls->nr_acquire++;
-	seq->prev_event_time = sample->time;
+  ls->discard = 1;
+  bad_hist[BROKEN_ACQUIRE]++;
+  list_del(&seq->list);
+  free(seq);
+  goto end;
+  break;
+ default:
+  BUG_ON("Unknown state of lock sequence found!\n");
+  break;
+ }
+
+ ls->nr_acquire++;
+ seq->prev_event_time = sample->time;
 end:
-	return 0;
+ return 0;
 }

@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ u64 ;
+
+
+
+
+typedef scalar_t__ u64 ;
 struct device_node {int dummy; } ;
 struct device {int dummy; } ;
-typedef  int /*<<< orphan*/  __be32 ;
+typedef int __be32 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GFP_KERNEL ; 
- char* devm_kasprintf (struct device*,int /*<<< orphan*/ ,char*,unsigned long long,char const*) ; 
- int /*<<< orphan*/ * of_get_property (struct device_node*,char*,int /*<<< orphan*/ *) ; 
- scalar_t__ of_translate_address (struct device_node*,int /*<<< orphan*/  const*) ; 
+
+ int GFP_KERNEL ;
+ char* devm_kasprintf (struct device*,int ,char*,unsigned long long,char const*) ;
+ int * of_get_property (struct device_node*,char*,int *) ;
+ scalar_t__ of_translate_address (struct device_node*,int const*) ;
 
 char *ap_cp_unique_name(struct device *dev, struct device_node *np,
-			const char *name)
+   const char *name)
 {
-	const __be32 *reg;
-	u64 addr;
+ const __be32 *reg;
+ u64 addr;
 
-	/* Do not create a name if there is no clock */
-	if (!name)
-		return NULL;
 
-	reg = of_get_property(np, "reg", NULL);
-	addr = of_translate_address(np, reg);
-	return devm_kasprintf(dev, GFP_KERNEL, "%llx-%s",
-			      (unsigned long long)addr, name);
+ if (!name)
+  return ((void*)0);
+
+ reg = of_get_property(np, "reg", ((void*)0));
+ addr = of_translate_address(np, reg);
+ return devm_kasprintf(dev, GFP_KERNEL, "%llx-%s",
+         (unsigned long long)addr, name);
 }

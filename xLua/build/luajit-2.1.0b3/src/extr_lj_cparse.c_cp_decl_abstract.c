@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  mode; } ;
-typedef  int /*<<< orphan*/  CTypeID ;
-typedef  int /*<<< orphan*/  CPState ;
-typedef  TYPE_1__ CPDecl ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CPARSE_MODE_ABSTRACT ; 
- int /*<<< orphan*/  cp_decl_intern (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  cp_decl_spec (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cp_declarator (int /*<<< orphan*/ *,TYPE_1__*) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int mode; } ;
+typedef int CTypeID ;
+typedef int CPState ;
+typedef TYPE_1__ CPDecl ;
+
+
+ int CPARSE_MODE_ABSTRACT ;
+ int cp_decl_intern (int *,TYPE_1__*) ;
+ int cp_decl_spec (int *,TYPE_1__*,int ) ;
+ int cp_declarator (int *,TYPE_1__*) ;
 
 __attribute__((used)) static CTypeID cp_decl_abstract(CPState *cp)
 {

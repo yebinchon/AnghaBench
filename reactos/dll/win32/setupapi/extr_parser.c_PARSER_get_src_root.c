@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ WCHAR ;
-typedef  int /*<<< orphan*/  HINF ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetProcessHeap () ; 
- scalar_t__* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned int) ; 
- scalar_t__* get_inf_dir (int /*<<< orphan*/ ,unsigned int*) ; 
- int /*<<< orphan*/  memcpy (scalar_t__*,scalar_t__ const*,unsigned int) ; 
+
+
+
+typedef scalar_t__ WCHAR ;
+typedef int HINF ;
+
+
+ int GetProcessHeap () ;
+ scalar_t__* HeapAlloc (int ,int ,unsigned int) ;
+ scalar_t__* get_inf_dir (int ,unsigned int*) ;
+ int memcpy (scalar_t__*,scalar_t__ const*,unsigned int) ;
 
 WCHAR *PARSER_get_src_root( HINF hinf )
 {

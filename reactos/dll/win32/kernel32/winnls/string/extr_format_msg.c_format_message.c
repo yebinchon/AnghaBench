@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct format_args {int /*<<< orphan*/  list; int /*<<< orphan*/  args; } ;
-struct _format_message_data {int size; char* formatted; char* t; int width; int /*<<< orphan*/ * space; void* inspace; scalar_t__ w; } ;
-typedef  char WCHAR ;
-typedef  char* LPWSTR ;
-typedef  char* LPCWSTR ;
-typedef  int DWORD ;
-typedef  void* BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERROR_INVALID_PARAMETER ; 
- void* FALSE ; 
- int FORMAT_MESSAGE_ARGUMENT_ARRAY ; 
- int FORMAT_MESSAGE_IGNORE_INSERTS ; 
- int FORMAT_MESSAGE_MAX_WIDTH_MASK ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- char* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  SetLastError (int /*<<< orphan*/ ) ; 
- void* TRUE ; 
- int /*<<< orphan*/  format_add_char (struct _format_message_data*,char) ; 
- char* format_insert (void*,int,char*,int,struct format_args*,char**) ; 
+
+
+
+struct format_args {int list; int args; } ;
+struct _format_message_data {int size; char* formatted; char* t; int width; int * space; void* inspace; scalar_t__ w; } ;
+typedef char WCHAR ;
+typedef char* LPWSTR ;
+typedef char* LPCWSTR ;
+typedef int DWORD ;
+typedef void* BOOL ;
+
+
+ int ERROR_INVALID_PARAMETER ;
+ void* FALSE ;
+ int FORMAT_MESSAGE_ARGUMENT_ARRAY ;
+ int FORMAT_MESSAGE_IGNORE_INSERTS ;
+ int FORMAT_MESSAGE_MAX_WIDTH_MASK ;
+ int GetProcessHeap () ;
+ char* HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,char*) ;
+ int SetLastError (int ) ;
+ void* TRUE ;
+ int format_add_char (struct _format_message_data*,char) ;
+ char* format_insert (void*,int,char*,int,struct format_args*,char**) ;
 
 __attribute__((used)) static LPWSTR format_message( BOOL unicode_caller, DWORD dwFlags, LPCWSTR fmtstr,
                               struct format_args *format_args )
@@ -45,7 +45,7 @@ __attribute__((used)) static LPWSTR format_message( BOOL unicode_caller, DWORD d
     fmd.width = dwFlags & FORMAT_MESSAGE_MAX_WIDTH_MASK;
     fmd.w = 0;
     fmd.inspace = FALSE;
-    fmd.space = NULL;
+    fmd.space = ((void*)0);
     f = fmtstr;
     while (*f && !eos) {
         if (*f=='%') {
@@ -63,7 +63,7 @@ __attribute__((used)) static LPWSTR format_message( BOOL unicode_caller, DWORD d
                 {
                     SetLastError(ERROR_INVALID_PARAMETER);
                     HeapFree(GetProcessHeap(), 0, fmd.formatted);
-                    return NULL;
+                    return ((void*)0);
                 }
                 insertnr = *f-'0';
                 switch (f[1]) {
@@ -102,7 +102,7 @@ __attribute__((used)) static LPWSTR format_message( BOOL unicode_caller, DWORD d
             case '\0':
                 SetLastError(ERROR_INVALID_PARAMETER);
                 HeapFree(GetProcessHeap(), 0, fmd.formatted);
-                return NULL;
+                return ((void*)0);
             ignore_inserts:
             default:
                 if (dwFlags & FORMAT_MESSAGE_IGNORE_INSERTS)

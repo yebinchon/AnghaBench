@@ -1,80 +1,80 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ UINT ;
-struct TYPE_4__ {int /*<<< orphan*/  IPv4ReceivedQueue; int /*<<< orphan*/  ArpTable; int /*<<< orphan*/  Interrupt; int /*<<< orphan*/  Cedar; struct TYPE_4__* Policy; int /*<<< orphan*/  Sock; int /*<<< orphan*/  FlushList; } ;
-typedef  int /*<<< orphan*/  IPC_ARP ;
-typedef  TYPE_1__ IPC ;
-typedef  int /*<<< orphan*/  BLOCK ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Disconnect (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Free (TYPE_1__*) ; 
- int /*<<< orphan*/  FreeBlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FreeInterruptManager (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FreeTubeFlushList (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * GetNext (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IPCFreeARP (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * LIST_DATA (int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__ LIST_NUM (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReleaseCedar (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReleaseList (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReleaseQueue (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReleaseSock (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef scalar_t__ UINT ;
+struct TYPE_4__ {int IPv4ReceivedQueue; int ArpTable; int Interrupt; int Cedar; struct TYPE_4__* Policy; int Sock; int FlushList; } ;
+typedef int IPC_ARP ;
+typedef TYPE_1__ IPC ;
+typedef int BLOCK ;
+
+
+ int Disconnect (int ) ;
+ int Free (TYPE_1__*) ;
+ int FreeBlock (int *) ;
+ int FreeInterruptManager (int ) ;
+ int FreeTubeFlushList (int ) ;
+ int * GetNext (int ) ;
+ int IPCFreeARP (int *) ;
+ int * LIST_DATA (int ,scalar_t__) ;
+ scalar_t__ LIST_NUM (int ) ;
+ int ReleaseCedar (int ) ;
+ int ReleaseList (int ) ;
+ int ReleaseQueue (int ) ;
+ int ReleaseSock (int ) ;
 
 void FreeIPC(IPC *ipc)
 {
-	UINT i;
-	// Validate arguments
-	if (ipc == NULL)
-	{
-		return;
-	}
+ UINT i;
 
-	FreeTubeFlushList(ipc->FlushList);
+ if (ipc == ((void*)0))
+ {
+  return;
+ }
 
-	Disconnect(ipc->Sock);
-	ReleaseSock(ipc->Sock);
+ FreeTubeFlushList(ipc->FlushList);
 
-	if (ipc->Policy != NULL)
-	{
-		Free(ipc->Policy);
-	}
+ Disconnect(ipc->Sock);
+ ReleaseSock(ipc->Sock);
 
-	ReleaseCedar(ipc->Cedar);
+ if (ipc->Policy != ((void*)0))
+ {
+  Free(ipc->Policy);
+ }
 
-	FreeInterruptManager(ipc->Interrupt);
+ ReleaseCedar(ipc->Cedar);
 
-	for (i = 0;i < LIST_NUM(ipc->ArpTable);i++)
-	{
-		IPC_ARP *a = LIST_DATA(ipc->ArpTable, i);
-		IPCFreeARP(a);
-	}
+ FreeInterruptManager(ipc->Interrupt);
 
-	ReleaseList(ipc->ArpTable);
+ for (i = 0;i < LIST_NUM(ipc->ArpTable);i++)
+ {
+  IPC_ARP *a = LIST_DATA(ipc->ArpTable, i);
+  IPCFreeARP(a);
+ }
 
-	while (true)
-	{
-		BLOCK *b = GetNext(ipc->IPv4ReceivedQueue);
-		if (b == NULL)
-		{
-			break;
-		}
+ ReleaseList(ipc->ArpTable);
 
-		FreeBlock(b);
-	}
+ while (1)
+ {
+  BLOCK *b = GetNext(ipc->IPv4ReceivedQueue);
+  if (b == ((void*)0))
+  {
+   break;
+  }
 
-	ReleaseQueue(ipc->IPv4ReceivedQueue);
+  FreeBlock(b);
+ }
 
-	Free(ipc);
+ ReleaseQueue(ipc->IPv4ReceivedQueue);
+
+ Free(ipc);
 }

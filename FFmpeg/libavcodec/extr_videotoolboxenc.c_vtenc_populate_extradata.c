@@ -1,61 +1,61 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {scalar_t__ frame_ct_out; int /*<<< orphan*/ * session; } ;
-typedef  TYPE_2__ VTEncContext ;
-struct TYPE_8__ {int /*<<< orphan*/  den; } ;
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_9__ {scalar_t__ frame_ct_out; int * session; } ;
+typedef TYPE_2__ VTEncContext ;
+struct TYPE_8__ {int den; } ;
 struct TYPE_10__ {scalar_t__ extradata_size; scalar_t__ extradata; TYPE_1__ time_base; TYPE_2__* priv_data; } ;
-typedef  int /*<<< orphan*/ * CVPixelBufferRef ;
-typedef  int /*<<< orphan*/ * CVPixelBufferPoolRef ;
-typedef  int /*<<< orphan*/  CMVideoCodecType ;
-typedef  int /*<<< orphan*/  CMTime ;
-typedef  int /*<<< orphan*/ * CMSampleBufferRef ;
-typedef  int /*<<< orphan*/  CFStringRef ;
-typedef  int /*<<< orphan*/  CFNumberRef ;
-typedef  int /*<<< orphan*/  CFDictionaryRef ;
-typedef  TYPE_3__ AVCodecContext ;
+typedef int * CVPixelBufferRef ;
+typedef int * CVPixelBufferPoolRef ;
+typedef int CMVideoCodecType ;
+typedef int CMTime ;
+typedef int * CMSampleBufferRef ;
+typedef int CFStringRef ;
+typedef int CFNumberRef ;
+typedef int CFDictionaryRef ;
+typedef TYPE_3__ AVCodecContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  CFRelease (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CMTimeMake (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int CVPixelBufferPoolCreatePixelBuffer (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int VTCompressionSessionCompleteFrames (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int VTCompressionSessionEncodeFrame (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * VTCompressionSessionGetPixelBufferPool (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  av_assert0 (int) ; 
- int /*<<< orphan*/  av_log (TYPE_3__*,int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  kCMTimeIndefinite ; 
- int /*<<< orphan*/  kCMTimeInvalid ; 
- int kCVReturnSuccess ; 
- int vtenc_create_encoder (TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int vtenc_q_pop (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
 
-__attribute__((used)) static int vtenc_populate_extradata(AVCodecContext   *avctx,
+ int AV_LOG_ERROR ;
+ int CFRelease (int *) ;
+ int CMTimeMake (int ,int ) ;
+ int CVPixelBufferPoolCreatePixelBuffer (int *,int *,int **) ;
+ int VTCompressionSessionCompleteFrames (int *,int ) ;
+ int VTCompressionSessionEncodeFrame (int *,int *,int ,int ,int *,int *,int *) ;
+ int * VTCompressionSessionGetPixelBufferPool (int *) ;
+ int av_assert0 (int) ;
+ int av_log (TYPE_3__*,int ,char*,...) ;
+ int kCMTimeIndefinite ;
+ int kCMTimeInvalid ;
+ int kCVReturnSuccess ;
+ int vtenc_create_encoder (TYPE_3__*,int ,int ,int ,int ,int ,int **) ;
+ int vtenc_q_pop (TYPE_2__*,int ,int **,int *) ;
+
+__attribute__((used)) static int vtenc_populate_extradata(AVCodecContext *avctx,
                                     CMVideoCodecType codec_type,
-                                    CFStringRef      profile_level,
-                                    CFNumberRef      gamma_level,
-                                    CFDictionaryRef  enc_info,
-                                    CFDictionaryRef  pixel_buffer_info)
+                                    CFStringRef profile_level,
+                                    CFNumberRef gamma_level,
+                                    CFDictionaryRef enc_info,
+                                    CFDictionaryRef pixel_buffer_info)
 {
     VTEncContext *vtctx = avctx->priv_data;
     int status;
-    CVPixelBufferPoolRef pool = NULL;
-    CVPixelBufferRef pix_buf = NULL;
+    CVPixelBufferPoolRef pool = ((void*)0);
+    CVPixelBufferRef pix_buf = ((void*)0);
     CMTime time;
-    CMSampleBufferRef buf = NULL;
+    CMSampleBufferRef buf = ((void*)0);
 
     status = vtenc_create_encoder(avctx,
                                   codec_type,
@@ -73,7 +73,7 @@ __attribute__((used)) static int vtenc_populate_extradata(AVCodecContext   *avct
         goto pe_cleanup;
     }
 
-    status = CVPixelBufferPoolCreatePixelBuffer(NULL,
+    status = CVPixelBufferPoolCreatePixelBuffer(((void*)0),
                                                 pool,
                                                 &pix_buf);
 
@@ -87,9 +87,9 @@ __attribute__((used)) static int vtenc_populate_extradata(AVCodecContext   *avct
                                              pix_buf,
                                              time,
                                              kCMTimeInvalid,
-                                             NULL,
-                                             NULL,
-                                             NULL);
+                                             ((void*)0),
+                                             ((void*)0),
+                                             ((void*)0));
 
     if (status) {
         av_log(avctx,
@@ -100,14 +100,14 @@ __attribute__((used)) static int vtenc_populate_extradata(AVCodecContext   *avct
         goto pe_cleanup;
     }
 
-    //Populates extradata - output frames are flushed and param sets are available.
+
     status = VTCompressionSessionCompleteFrames(vtctx->session,
                                                 kCMTimeIndefinite);
 
     if (status)
         goto pe_cleanup;
 
-    status = vtenc_q_pop(vtctx, 0, &buf, NULL);
+    status = vtenc_q_pop(vtctx, 0, &buf, ((void*)0));
     if (status) {
         av_log(avctx, AV_LOG_ERROR, "popping: %d\n", status);
         goto pe_cleanup;
@@ -121,7 +121,7 @@ pe_cleanup:
     if(vtctx->session)
         CFRelease(vtctx->session);
 
-    vtctx->session = NULL;
+    vtctx->session = ((void*)0);
     vtctx->frame_ct_out = 0;
 
     av_assert0(status != 0 || (avctx->extradata && avctx->extradata_size > 0));

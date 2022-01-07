@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {scalar_t__ m_bytes_in_buffer; scalar_t__ (* m_write_fn ) (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ) ;int /*<<< orphan*/  m_stored_data; int /*<<< orphan*/  m_current_data; int /*<<< orphan*/  m_status; int /*<<< orphan*/  m_user_data; } ;
-typedef  TYPE_1__ opj_stream_private_t ;
-typedef  int /*<<< orphan*/  opj_event_mgr_t ;
-typedef  scalar_t__ OPJ_SIZE_T ;
-typedef  int /*<<< orphan*/  OPJ_BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EVT_INFO ; 
- int /*<<< orphan*/  OPJ_FALSE ; 
- int /*<<< orphan*/  OPJ_STREAM_STATUS_ERROR ; 
- int /*<<< orphan*/  OPJ_TRUE ; 
- int /*<<< orphan*/  opj_event_msg (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- scalar_t__ stub1 (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {scalar_t__ m_bytes_in_buffer; scalar_t__ (* m_write_fn ) (int ,scalar_t__,int ) ;int m_stored_data; int m_current_data; int m_status; int m_user_data; } ;
+typedef TYPE_1__ opj_stream_private_t ;
+typedef int opj_event_mgr_t ;
+typedef scalar_t__ OPJ_SIZE_T ;
+typedef int OPJ_BOOL ;
+
+
+ int EVT_INFO ;
+ int OPJ_FALSE ;
+ int OPJ_STREAM_STATUS_ERROR ;
+ int OPJ_TRUE ;
+ int opj_event_msg (int *,int ,char*) ;
+ scalar_t__ stub1 (int ,scalar_t__,int ) ;
 
 OPJ_BOOL opj_stream_flush(opj_stream_private_t * p_stream,
                           opj_event_mgr_t * p_event_mgr)
 {
-    /* the number of bytes written on the media. */
+
     OPJ_SIZE_T l_current_write_nb_bytes = 0;
 
     p_stream->m_current_data = p_stream->m_stored_data;
 
     while (p_stream->m_bytes_in_buffer) {
-        /* we should do an actual write on the media */
+
         l_current_write_nb_bytes = p_stream->m_write_fn(p_stream->m_current_data,
                                    p_stream->m_bytes_in_buffer,
                                    p_stream->m_user_data);

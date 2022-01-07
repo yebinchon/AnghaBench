@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct phy_device {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MII_BCM63XX_IR ; 
- int phy_read (struct phy_device*,int /*<<< orphan*/ ) ; 
+
+ int MII_BCM63XX_IR ;
+ int phy_read (struct phy_device*,int ) ;
 
 __attribute__((used)) static int bcm63xx_ack_interrupt(struct phy_device *phydev)
 {
-	int reg;
+ int reg;
 
-	/* Clear pending interrupts.  */
-	reg = phy_read(phydev, MII_BCM63XX_IR);
-	if (reg < 0)
-		return reg;
 
-	return 0;
+ reg = phy_read(phydev, MII_BCM63XX_IR);
+ if (reg < 0)
+  return reg;
+
+ return 0;
 }

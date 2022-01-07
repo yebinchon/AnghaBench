@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_13__ {TYPE_2__** data; int /*<<< orphan*/  setpos; int /*<<< orphan*/  less; } ;
-struct TYPE_11__ {int /*<<< orphan*/  id; int /*<<< orphan*/  pri; } ;
+
+
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+struct TYPE_13__ {TYPE_2__** data; int setpos; int less; } ;
+struct TYPE_11__ {int id; int pri; } ;
 struct TYPE_12__ {TYPE_1__ r; } ;
-typedef  TYPE_2__ Job ;
-typedef  TYPE_3__ Heap ;
+typedef TYPE_2__ Job ;
+typedef TYPE_3__ Heap ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (TYPE_2__*) ; 
- TYPE_2__** calloc (int,int) ; 
- int /*<<< orphan*/  ctresettimer () ; 
- int /*<<< orphan*/  ctstoptimer () ; 
- int /*<<< orphan*/  free (TYPE_2__**) ; 
- int /*<<< orphan*/  heapinsert (TYPE_3__*,TYPE_2__*) ; 
- int /*<<< orphan*/  heapremove (TYPE_3__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  job_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  job_pri_less ; 
- int /*<<< orphan*/  job_setpos ; 
- TYPE_2__* make_job (int,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int assert (TYPE_2__*) ;
+ TYPE_2__** calloc (int,int) ;
+ int ctresettimer () ;
+ int ctstoptimer () ;
+ int free (TYPE_2__**) ;
+ int heapinsert (TYPE_3__*,TYPE_2__*) ;
+ int heapremove (TYPE_3__*,int ) ;
+ int job_free (int ) ;
+ int job_pri_less ;
+ int job_setpos ;
+ TYPE_2__* make_job (int,int ,int,int ,int ) ;
 
 void
 ctbench_heap_insert(int n)

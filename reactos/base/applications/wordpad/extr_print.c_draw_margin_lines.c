@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_5__ ;
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_12__ TYPE_5__ ;
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_12__ {int left; int top; int right; int bottom; } ;
 struct TYPE_8__ {int cx; int cy; } ;
 struct TYPE_10__ {int left; int top; int right; int bottom; } ;
 struct TYPE_11__ {TYPE_1__ bmScaledSize; TYPE_3__ rcPage; } ;
 struct TYPE_9__ {void* cx; void* cy; } ;
-typedef  TYPE_2__ SIZE ;
-typedef  TYPE_3__ RECT ;
-typedef  int /*<<< orphan*/  HPEN ;
-typedef  int /*<<< orphan*/  HDC ;
+typedef TYPE_2__ SIZE ;
+typedef TYPE_3__ RECT ;
+typedef int HPEN ;
+typedef int HDC ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CreatePen (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DeleteObject (int /*<<< orphan*/ ) ; 
- void* GetDeviceCaps (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LOGPIXELSX ; 
- int /*<<< orphan*/  LOGPIXELSY ; 
- int /*<<< orphan*/  LineTo (int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  MoveToEx (int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  OffsetRect (TYPE_3__*,int,int) ; 
- int /*<<< orphan*/  PS_DOT ; 
- int /*<<< orphan*/  RGB (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SelectObject (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetRect (TYPE_3__*,int,int,int,int) ; 
- TYPE_5__ margins ; 
- TYPE_4__ preview ; 
- scalar_t__ twips_to_pixels (int,void*) ; 
+
+ int CreatePen (int ,int,int ) ;
+ int DeleteObject (int ) ;
+ void* GetDeviceCaps (int ,int ) ;
+ int LOGPIXELSX ;
+ int LOGPIXELSY ;
+ int LineTo (int ,int,int) ;
+ int MoveToEx (int ,int,int,int *) ;
+ int OffsetRect (TYPE_3__*,int,int) ;
+ int PS_DOT ;
+ int RGB (int ,int ,int ) ;
+ int SelectObject (int ,int ) ;
+ int SetRect (TYPE_3__*,int,int,int,int) ;
+ TYPE_5__ margins ;
+ TYPE_4__ preview ;
+ scalar_t__ twips_to_pixels (int,void*) ;
 
 __attribute__((used)) static void draw_margin_lines(HDC hdc, int x, int y, float ratio)
 {
@@ -64,14 +64,14 @@ __attribute__((used)) static void draw_margin_lines(HDC hdc, int x, int y, float
     hPen = CreatePen(PS_DOT, 1, RGB(0,0,0));
     oldPen = SelectObject(hdc, hPen);
 
-    MoveToEx(hdc, x, page_margin.top, NULL);
+    MoveToEx(hdc, x, page_margin.top, ((void*)0));
     LineTo(hdc, x + preview.bmScaledSize.cx, page_margin.top);
-    MoveToEx(hdc, x, page_margin.bottom, NULL);
+    MoveToEx(hdc, x, page_margin.bottom, ((void*)0));
     LineTo(hdc, x + preview.bmScaledSize.cx, page_margin.bottom);
 
-    MoveToEx(hdc, page_margin.left, y, NULL);
+    MoveToEx(hdc, page_margin.left, y, ((void*)0));
     LineTo(hdc, page_margin.left, y + preview.bmScaledSize.cy);
-    MoveToEx(hdc, page_margin.right, y, NULL);
+    MoveToEx(hdc, page_margin.right, y, ((void*)0));
     LineTo(hdc, page_margin.right, y + preview.bmScaledSize.cy);
 
     SelectObject(hdc, oldPen);

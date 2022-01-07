@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u8 ;
-struct TYPE_3__ {int* name; int* pattern_table; int song_length; int /*<<< orphan*/ * pattern; int /*<<< orphan*/  identifier; } ;
-typedef  TYPE_1__ mod_file_t ;
 
-/* Variables and functions */
- int DEFAULT_ROM_BANK ; 
- int /*<<< orphan*/  convert_pattern (int /*<<< orphan*/ *,int) ; 
- int current_output_bank ; 
- char* label_name ; 
- TYPE_1__* load_file (char*) ; 
- int /*<<< orphan*/  out_close () ; 
- int /*<<< orphan*/  out_open () ; 
- int /*<<< orphan*/  out_write_dec (int) ; 
- int /*<<< orphan*/  out_write_str (char*) ; 
- int /*<<< orphan*/  print_usage () ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int sscanf (char*,char*,int*) ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
- scalar_t__ strncmp (int /*<<< orphan*/ ,char*,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int u8 ;
+struct TYPE_3__ {int* name; int* pattern_table; int song_length; int * pattern; int identifier; } ;
+typedef TYPE_1__ mod_file_t ;
+
+
+ int DEFAULT_ROM_BANK ;
+ int convert_pattern (int *,int) ;
+ int current_output_bank ;
+ char* label_name ;
+ TYPE_1__* load_file (char*) ;
+ int out_close () ;
+ int out_open () ;
+ int out_write_dec (int) ;
+ int out_write_str (char*) ;
+ int print_usage () ;
+ int printf (char*,...) ;
+ int sscanf (char*,char*,int*) ;
+ int strcpy (char*,char*) ;
+ scalar_t__ strncmp (int ,char*,int) ;
 
 int main(int argc, char *argv[])
 {
@@ -67,7 +67,7 @@ int main(int argc, char *argv[])
 
     mod_file_t *modfile = load_file(argv[1]);
 
-    if (modfile == NULL)
+    if (modfile == ((void*)0))
         return -2;
 
     printf("%s loaded!\n", argv[1]);

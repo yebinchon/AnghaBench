@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  atf_error_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  atf_is_error (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  atf_no_error () ; 
- int /*<<< orphan*/  atf_no_memory_error () ; 
- int /*<<< orphan*/  free (char*) ; 
- char* strdup (char const*) ; 
- char* strtok_r (char*,char const*,char**) ; 
+
+
+
+typedef int atf_error_t ;
+
+
+ int atf_is_error (int ) ;
+ int atf_no_error () ;
+ int atf_no_memory_error () ;
+ int free (char*) ;
+ char* strdup (char const*) ;
+ char* strtok_r (char*,char const*,char**) ;
 
 atf_error_t
 atf_text_for_each_word(const char *instr, const char *sep,
@@ -29,16 +29,16 @@ atf_text_for_each_word(const char *instr, const char *sep,
     char *str, *str2, *last;
 
     str = strdup(instr);
-    if (str == NULL) {
+    if (str == ((void*)0)) {
         err = atf_no_memory_error();
         goto out;
     }
 
     err = atf_no_error();
     str2 = strtok_r(str, sep, &last);
-    while (str2 != NULL && !atf_is_error(err)) {
+    while (str2 != ((void*)0) && !atf_is_error(err)) {
         err = func(str2, data);
-        str2 = strtok_r(NULL, sep, &last);
+        str2 = strtok_r(((void*)0), sep, &last);
     }
 
     free(str);

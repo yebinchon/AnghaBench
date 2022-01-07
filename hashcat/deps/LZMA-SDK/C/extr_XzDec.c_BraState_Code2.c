@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {scalar_t__ bufPos; scalar_t__ bufConv; int bufTotal; int /*<<< orphan*/  const* buf; } ;
-typedef  scalar_t__ SizeT ;
-typedef  int /*<<< orphan*/  SRes ;
-typedef  int /*<<< orphan*/  ECoderStatus ;
-typedef  int /*<<< orphan*/  ECoderFinishMode ;
-typedef  TYPE_1__ CBraState ;
-typedef  int /*<<< orphan*/  const Byte ;
 
-/* Variables and functions */
- size_t BRA_BUF_SIZE ; 
- size_t BraState_Filter (void*,int /*<<< orphan*/  const*,scalar_t__) ; 
- int /*<<< orphan*/  CODER_STATUS_FINISHED_WITH_MARK ; 
- int /*<<< orphan*/  CODER_STATUS_NOT_FINISHED ; 
- int /*<<< orphan*/  SZ_OK ; 
- int /*<<< orphan*/  UNUSED_VAR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,size_t) ; 
- int /*<<< orphan*/  memmove (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {scalar_t__ bufPos; scalar_t__ bufConv; int bufTotal; int const* buf; } ;
+typedef scalar_t__ SizeT ;
+typedef int SRes ;
+typedef int ECoderStatus ;
+typedef int ECoderFinishMode ;
+typedef TYPE_1__ CBraState ;
+typedef int const Byte ;
+
+
+ size_t BRA_BUF_SIZE ;
+ size_t BraState_Filter (void*,int const*,scalar_t__) ;
+ int CODER_STATUS_FINISHED_WITH_MARK ;
+ int CODER_STATUS_NOT_FINISHED ;
+ int SZ_OK ;
+ int UNUSED_VAR (int ) ;
+ int memcpy (int const*,int const*,size_t) ;
+ int memmove (int const*,int const*,int) ;
 
 __attribute__((used)) static SRes BraState_Code2(void *pp,
     Byte *dest, SizeT *destLen,
     const Byte *src, SizeT *srcLen, int srcWasFinished,
     ECoderFinishMode finishMode,
-    // int *wasFinished
+
     ECoderStatus *status)
 {
   CBraState *p = ((CBraState *)pp);
@@ -43,9 +43,9 @@ __attribute__((used)) static SRes BraState_Code2(void *pp,
 
   *destLen = 0;
   *srcLen = 0;
-  // *wasFinished = False;
+
   *status = CODER_STATUS_NOT_FINISHED;
-  
+
   while (destRem > 0)
   {
     if (p->bufPos != p->bufConv)
@@ -60,7 +60,7 @@ __attribute__((used)) static SRes BraState_Code2(void *pp,
       destRem -= size;
       continue;
     }
-    
+
     p->bufTotal -= p->bufPos;
     memmove(p->buf, p->buf + p->bufPos, p->bufTotal);
     p->bufPos = 0;
@@ -77,7 +77,7 @@ __attribute__((used)) static SRes BraState_Code2(void *pp,
     }
     if (p->bufTotal == 0)
       break;
-    
+
     p->bufConv = BraState_Filter(pp, p->buf, p->bufTotal);
 
     if (p->bufConv == 0)
@@ -91,7 +91,7 @@ __attribute__((used)) static SRes BraState_Code2(void *pp,
   if (p->bufTotal == p->bufPos && srcRem == 0 && srcWasFinished)
   {
     *status = CODER_STATUS_FINISHED_WITH_MARK;
-    // *wasFinished = 1;
+
   }
 
   return SZ_OK;

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int nb_block_sizes; int /*<<< orphan*/  fdsp; int /*<<< orphan*/ * int_table; int /*<<< orphan*/ * level_table; int /*<<< orphan*/ * run_table; int /*<<< orphan*/ * coef_vlc; int /*<<< orphan*/  hgain_vlc; scalar_t__ use_noise_coding; int /*<<< orphan*/  exp_vlc; scalar_t__ use_exp_vlc; int /*<<< orphan*/ * mdct_ctx; } ;
-typedef  TYPE_1__ WMACodecContext ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int nb_block_sizes; int fdsp; int * int_table; int * level_table; int * run_table; int * coef_vlc; int hgain_vlc; scalar_t__ use_noise_coding; int exp_vlc; scalar_t__ use_exp_vlc; int * mdct_ctx; } ;
+typedef TYPE_1__ WMACodecContext ;
 struct TYPE_5__ {TYPE_1__* priv_data; } ;
-typedef  TYPE_2__ AVCodecContext ;
+typedef TYPE_2__ AVCodecContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  av_freep (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ff_free_vlc (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ff_mdct_end (int /*<<< orphan*/ *) ; 
+
+ int av_freep (int *) ;
+ int ff_free_vlc (int *) ;
+ int ff_mdct_end (int *) ;
 
 int ff_wma_end(AVCodecContext *avctx)
 {

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  ACR; } ;
-typedef  scalar_t__ FunctionalState ;
 
-/* Variables and functions */
- scalar_t__ DISABLE ; 
- TYPE_1__* FLASH ; 
- int /*<<< orphan*/  FLASH_ACR_DCEN ; 
- int /*<<< orphan*/  IS_FUNCTIONAL_STATE (scalar_t__) ; 
- int /*<<< orphan*/  assert_param (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int ACR; } ;
+typedef scalar_t__ FunctionalState ;
+
+
+ scalar_t__ DISABLE ;
+ TYPE_1__* FLASH ;
+ int FLASH_ACR_DCEN ;
+ int IS_FUNCTIONAL_STATE (scalar_t__) ;
+ int assert_param (int ) ;
 
 void FLASH_DataCacheCmd(FunctionalState NewState)
 {
-  /* Check the parameters */
+
   assert_param(IS_FUNCTIONAL_STATE(NewState));
-  
+
   if(NewState != DISABLE)
   {
     FLASH->ACR |= FLASH_ACR_DCEN;

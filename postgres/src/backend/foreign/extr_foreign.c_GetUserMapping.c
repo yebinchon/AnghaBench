@@ -1,87 +1,87 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  options; void* serverid; void* userid; int /*<<< orphan*/  umid; } ;
-typedef  TYPE_1__ UserMapping ;
-struct TYPE_5__ {int /*<<< orphan*/  oid; } ;
-typedef  void* Oid ;
-typedef  int /*<<< orphan*/  HeapTuple ;
-typedef  TYPE_2__* Form_pg_user_mapping ;
-typedef  int /*<<< orphan*/  Datum ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Anum_pg_user_mapping_umoptions ; 
- int /*<<< orphan*/  ERRCODE_UNDEFINED_OBJECT ; 
- int /*<<< orphan*/  ERROR ; 
- scalar_t__ GETSTRUCT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HeapTupleIsValid (int /*<<< orphan*/ ) ; 
- void* InvalidOid ; 
- int /*<<< orphan*/  MappingUserName (void*) ; 
- int /*<<< orphan*/  NIL ; 
- int /*<<< orphan*/  ObjectIdGetDatum (void*) ; 
- int /*<<< orphan*/  ReleaseSysCache (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SearchSysCache2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SysCacheGetAttr (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  USERMAPPINGUSERSERVER ; 
- int /*<<< orphan*/  ereport (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errcode (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errmsg (char*,int /*<<< orphan*/ ) ; 
- scalar_t__ palloc (int) ; 
- int /*<<< orphan*/  untransformRelOptions (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int options; void* serverid; void* userid; int umid; } ;
+typedef TYPE_1__ UserMapping ;
+struct TYPE_5__ {int oid; } ;
+typedef void* Oid ;
+typedef int HeapTuple ;
+typedef TYPE_2__* Form_pg_user_mapping ;
+typedef int Datum ;
+
+
+ int Anum_pg_user_mapping_umoptions ;
+ int ERRCODE_UNDEFINED_OBJECT ;
+ int ERROR ;
+ scalar_t__ GETSTRUCT (int ) ;
+ int HeapTupleIsValid (int ) ;
+ void* InvalidOid ;
+ int MappingUserName (void*) ;
+ int NIL ;
+ int ObjectIdGetDatum (void*) ;
+ int ReleaseSysCache (int ) ;
+ int SearchSysCache2 (int ,int ,int ) ;
+ int SysCacheGetAttr (int ,int ,int ,int*) ;
+ int USERMAPPINGUSERSERVER ;
+ int ereport (int ,int ) ;
+ int errcode (int ) ;
+ int errmsg (char*,int ) ;
+ scalar_t__ palloc (int) ;
+ int untransformRelOptions (int ) ;
 
 UserMapping *
 GetUserMapping(Oid userid, Oid serverid)
 {
-	Datum		datum;
-	HeapTuple	tp;
-	bool		isnull;
-	UserMapping *um;
+ Datum datum;
+ HeapTuple tp;
+ bool isnull;
+ UserMapping *um;
 
-	tp = SearchSysCache2(USERMAPPINGUSERSERVER,
-						 ObjectIdGetDatum(userid),
-						 ObjectIdGetDatum(serverid));
+ tp = SearchSysCache2(USERMAPPINGUSERSERVER,
+       ObjectIdGetDatum(userid),
+       ObjectIdGetDatum(serverid));
 
-	if (!HeapTupleIsValid(tp))
-	{
-		/* Not found for the specific user -- try PUBLIC */
-		tp = SearchSysCache2(USERMAPPINGUSERSERVER,
-							 ObjectIdGetDatum(InvalidOid),
-							 ObjectIdGetDatum(serverid));
-	}
+ if (!HeapTupleIsValid(tp))
+ {
 
-	if (!HeapTupleIsValid(tp))
-		ereport(ERROR,
-				(errcode(ERRCODE_UNDEFINED_OBJECT),
-				 errmsg("user mapping not found for \"%s\"",
-						MappingUserName(userid))));
+  tp = SearchSysCache2(USERMAPPINGUSERSERVER,
+        ObjectIdGetDatum(InvalidOid),
+        ObjectIdGetDatum(serverid));
+ }
 
-	um = (UserMapping *) palloc(sizeof(UserMapping));
-	um->umid = ((Form_pg_user_mapping) GETSTRUCT(tp))->oid;
-	um->userid = userid;
-	um->serverid = serverid;
+ if (!HeapTupleIsValid(tp))
+  ereport(ERROR,
+    (errcode(ERRCODE_UNDEFINED_OBJECT),
+     errmsg("user mapping not found for \"%s\"",
+      MappingUserName(userid))));
 
-	/* Extract the umoptions */
-	datum = SysCacheGetAttr(USERMAPPINGUSERSERVER,
-							tp,
-							Anum_pg_user_mapping_umoptions,
-							&isnull);
-	if (isnull)
-		um->options = NIL;
-	else
-		um->options = untransformRelOptions(datum);
+ um = (UserMapping *) palloc(sizeof(UserMapping));
+ um->umid = ((Form_pg_user_mapping) GETSTRUCT(tp))->oid;
+ um->userid = userid;
+ um->serverid = serverid;
 
-	ReleaseSysCache(tp);
 
-	return um;
+ datum = SysCacheGetAttr(USERMAPPINGUSERSERVER,
+       tp,
+       Anum_pg_user_mapping_umoptions,
+       &isnull);
+ if (isnull)
+  um->options = NIL;
+ else
+  um->options = untransformRelOptions(datum);
+
+ ReleaseSysCache(tp);
+
+ return um;
 }

@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct rpc_server {double timeout; int packet_num; int inbound_packet_num; char* error; int errnum; void* status; int /*<<< orphan*/  generation; int /*<<< orphan*/  sfd; int /*<<< orphan*/  port; int /*<<< orphan*/  host; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  active_net_connections ; 
- int errno ; 
- char* estrdup (char*) ; 
- int /*<<< orphan*/  global_generation ; 
- double precise_now ; 
- scalar_t__ rpc_make_handshake (struct rpc_server*,double) ; 
- int /*<<< orphan*/  rpc_server_deactivate (struct rpc_server*) ; 
- int /*<<< orphan*/  rpc_server_disconnect (struct rpc_server*) ; 
- int /*<<< orphan*/  rpc_server_seterror (struct rpc_server*,char*,int) ; 
- int /*<<< orphan*/  rpc_sock_connect (int /*<<< orphan*/ ,int /*<<< orphan*/ ,double) ; 
- void* rpc_status_connected ; 
- void* rpc_status_failed ; 
- char* strerror (int) ; 
- int /*<<< orphan*/  update_precise_now () ; 
 
-__attribute__((used)) static int _rpc_connect_open (struct rpc_server *server, char **error_string, int *errnum) { /* {{{ */
 
-  /* close open stream */
+
+struct rpc_server {double timeout; int packet_num; int inbound_packet_num; char* error; int errnum; void* status; int generation; int sfd; int port; int host; } ;
+
+
+ int active_net_connections ;
+ int errno ;
+ char* estrdup (char*) ;
+ int global_generation ;
+ double precise_now ;
+ scalar_t__ rpc_make_handshake (struct rpc_server*,double) ;
+ int rpc_server_deactivate (struct rpc_server*) ;
+ int rpc_server_disconnect (struct rpc_server*) ;
+ int rpc_server_seterror (struct rpc_server*,char*,int) ;
+ int rpc_sock_connect (int ,int ,double) ;
+ void* rpc_status_connected ;
+ void* rpc_status_failed ;
+ char* strerror (int) ;
+ int update_precise_now () ;
+
+__attribute__((used)) static int _rpc_connect_open (struct rpc_server *server, char **error_string, int *errnum) {
+
+
   if (server->sfd >= 0) {
     rpc_server_disconnect (server);
   }

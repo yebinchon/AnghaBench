@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct input_stats {int /*<<< orphan*/  lost_pictures; int /*<<< orphan*/  displayed_pictures; int /*<<< orphan*/  lost_abuffers; int /*<<< orphan*/  played_abuffers; int /*<<< orphan*/  decoded_video; int /*<<< orphan*/  decoded_audio; int /*<<< orphan*/  demux_discontinuity; int /*<<< orphan*/  demux_corrupted; int /*<<< orphan*/  demux_bitrate; int /*<<< orphan*/  input_bitrate; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  atomic_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  input_rate_Init (int /*<<< orphan*/ *) ; 
- struct input_stats* malloc (int) ; 
- scalar_t__ unlikely (int /*<<< orphan*/ ) ; 
+
+
+
+struct input_stats {int lost_pictures; int displayed_pictures; int lost_abuffers; int played_abuffers; int decoded_video; int decoded_audio; int demux_discontinuity; int demux_corrupted; int demux_bitrate; int input_bitrate; } ;
+
+
+ int atomic_init (int *,int ) ;
+ int input_rate_Init (int *) ;
+ struct input_stats* malloc (int) ;
+ scalar_t__ unlikely (int ) ;
 
 struct input_stats *input_stats_Create(void)
 {
     struct input_stats *stats = malloc(sizeof (*stats));
-    if (unlikely(stats == NULL))
-        return NULL;
+    if (unlikely(stats == ((void*)0)))
+        return ((void*)0);
 
     input_rate_Init(&stats->input_bitrate);
     input_rate_Init(&stats->demux_bitrate);

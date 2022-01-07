@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ UWORD ;
-typedef  int /*<<< orphan*/  UBYTE ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ UWORD ;
+typedef int UBYTE ;
 struct TYPE_3__ {size_t bank; scalar_t__ offset; } ;
-typedef  TYPE_1__ BANK_PTR ;
+typedef TYPE_1__ BANK_PTR ;
 
-/* Variables and functions */
- scalar_t__* bank_data_ptrs ; 
- int /*<<< orphan*/  initrand (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * ptr_div_reg ; 
- scalar_t__ script_ptr ; 
- size_t script_ptr_bank ; 
- scalar_t__ script_start_ptr ; 
+
+ scalar_t__* bank_data_ptrs ;
+ int initrand (int ) ;
+ int * ptr_div_reg ;
+ scalar_t__ script_ptr ;
+ size_t script_ptr_bank ;
+ scalar_t__ script_start_ptr ;
 
 void ScriptStart(BANK_PTR *events_ptr)
 {

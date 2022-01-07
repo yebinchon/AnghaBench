@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ UINTFLOAT ;
-typedef  int /*<<< orphan*/  INTFLOAT ;
 
-/* Variables and functions */
- scalar_t__ AAC_MADD28 (int /*<<< orphan*/  const,int /*<<< orphan*/  const,int /*<<< orphan*/  const,int /*<<< orphan*/  const) ; 
+
+
+
+typedef scalar_t__ UINTFLOAT ;
+typedef int INTFLOAT ;
+
+
+ scalar_t__ AAC_MADD28 (int const,int const,int const,int const) ;
 
 __attribute__((used)) static void ps_add_squares_c(INTFLOAT *dst, const INTFLOAT (*src)[2], int n)
 {

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  apr_xml_parser ;
-struct TYPE_3__ {int /*<<< orphan*/  root; } ;
-typedef  TYPE_1__ apr_xml_doc ;
-typedef  scalar_t__ apr_status_t ;
-typedef  int /*<<< orphan*/  apr_file_t ;
-typedef  int /*<<< orphan*/  abts_case ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ABTS_INT_EQUAL (int /*<<< orphan*/ *,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  ABTS_TRUE (int /*<<< orphan*/ *,int) ; 
- scalar_t__ APR_SUCCESS ; 
- scalar_t__ apr_file_close (int /*<<< orphan*/ *) ; 
- scalar_t__ apr_xml_parse_file (int /*<<< orphan*/ ,int /*<<< orphan*/ **,TYPE_1__**,int /*<<< orphan*/ *,int) ; 
- scalar_t__ create_dummy_file (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- scalar_t__ create_dummy_file_error (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  dump_xml (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  p ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int apr_xml_parser ;
+struct TYPE_3__ {int root; } ;
+typedef TYPE_1__ apr_xml_doc ;
+typedef scalar_t__ apr_status_t ;
+typedef int apr_file_t ;
+typedef int abts_case ;
+
+
+ int ABTS_INT_EQUAL (int *,scalar_t__,scalar_t__) ;
+ int ABTS_TRUE (int *,int) ;
+ scalar_t__ APR_SUCCESS ;
+ scalar_t__ apr_file_close (int *) ;
+ scalar_t__ apr_xml_parse_file (int ,int **,TYPE_1__**,int *,int) ;
+ scalar_t__ create_dummy_file (int *,int ,int **) ;
+ scalar_t__ create_dummy_file_error (int *,int ,int **) ;
+ int dump_xml (int *,int ,int ) ;
+ int p ;
 
 __attribute__((used)) static void test_xml_parser(abts_case *tc, void *data)
 {

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  heim_string_t ;
-typedef  int /*<<< orphan*/  heim_number_t ;
-typedef  int /*<<< orphan*/  heim_dict_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  heim_dict_add_value (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  heim_dict_create (int) ; 
- int /*<<< orphan*/  heim_dict_delete_key (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  heim_number_create (int) ; 
- int /*<<< orphan*/  heim_release (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  heim_string_create (char*) ; 
+
+
+
+typedef int heim_string_t ;
+typedef int heim_number_t ;
+typedef int heim_dict_t ;
+
+
+ int heim_dict_add_value (int ,int ,int ) ;
+ int heim_dict_create (int) ;
+ int heim_dict_delete_key (int ,int ) ;
+ int heim_number_create (int) ;
+ int heim_release (int ) ;
+ int heim_string_create (char*) ;
 
 __attribute__((used)) static int
 test_dict(void)

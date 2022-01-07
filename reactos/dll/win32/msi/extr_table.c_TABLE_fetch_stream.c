@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct tagMSIVIEW {TYPE_1__* ops; } ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  scalar_t__ UINT ;
-struct TYPE_5__ {int /*<<< orphan*/  db; } ;
-struct TYPE_4__ {int /*<<< orphan*/  fetch_int; } ;
-typedef  TYPE_2__ MSITABLEVIEW ;
-typedef  int /*<<< orphan*/  IStream ;
+typedef int WCHAR ;
+typedef scalar_t__ UINT ;
+struct TYPE_5__ {int db; } ;
+struct TYPE_4__ {int fetch_int; } ;
+typedef TYPE_2__ MSITABLEVIEW ;
+typedef int IStream ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*,scalar_t__,...) ; 
- scalar_t__ ERROR_INVALID_PARAMETER ; 
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  debugstr_w (int /*<<< orphan*/ *) ; 
- scalar_t__ get_stream_name (TYPE_2__*,scalar_t__,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  msi_free (int /*<<< orphan*/ *) ; 
- scalar_t__ msi_get_stream (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
+
+ int ERR (char*,scalar_t__,...) ;
+ scalar_t__ ERROR_INVALID_PARAMETER ;
+ scalar_t__ ERROR_SUCCESS ;
+ int debugstr_w (int *) ;
+ scalar_t__ get_stream_name (TYPE_2__*,scalar_t__,int **) ;
+ int msi_free (int *) ;
+ scalar_t__ msi_get_stream (int ,int *,int **) ;
 
 __attribute__((used)) static UINT TABLE_fetch_stream( struct tagMSIVIEW *view, UINT row, UINT col, IStream **stm )
 {

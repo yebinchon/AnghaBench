@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {scalar_t__ type; int /*<<< orphan*/  bzip2; scalar_t__ encoding; int /*<<< orphan*/  gzip; int /*<<< orphan*/  xz; } ;
-typedef  TYPE_1__ ImportCompress ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BZ2_bzCompressEnd (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BZ2_bzDecompressEnd (int /*<<< orphan*/ *) ; 
- scalar_t__ IMPORT_COMPRESS_BZIP2 ; 
- scalar_t__ IMPORT_COMPRESS_GZIP ; 
- scalar_t__ IMPORT_COMPRESS_UNKNOWN ; 
- scalar_t__ IMPORT_COMPRESS_XZ ; 
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int /*<<< orphan*/  deflateEnd (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  inflateEnd (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lzma_end (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {scalar_t__ type; int bzip2; scalar_t__ encoding; int gzip; int xz; } ;
+typedef TYPE_1__ ImportCompress ;
+
+
+ int BZ2_bzCompressEnd (int *) ;
+ int BZ2_bzDecompressEnd (int *) ;
+ scalar_t__ IMPORT_COMPRESS_BZIP2 ;
+ scalar_t__ IMPORT_COMPRESS_GZIP ;
+ scalar_t__ IMPORT_COMPRESS_UNKNOWN ;
+ scalar_t__ IMPORT_COMPRESS_XZ ;
+ int assert (TYPE_1__*) ;
+ int deflateEnd (int *) ;
+ int inflateEnd (int *) ;
+ int lzma_end (int *) ;
 
 void import_compress_free(ImportCompress *c) {
         assert(c);
@@ -36,13 +36,13 @@ void import_compress_free(ImportCompress *c) {
                         deflateEnd(&c->gzip);
                 else
                         inflateEnd(&c->gzip);
-#if HAVE_BZIP2
-        } else if (c->type == IMPORT_COMPRESS_BZIP2) {
-                if (c->encoding)
-                        BZ2_bzCompressEnd(&c->bzip2);
-                else
-                        BZ2_bzDecompressEnd(&c->bzip2);
-#endif
+
+
+
+
+
+
+
         }
 
         c->type = IMPORT_COMPRESS_UNKNOWN;

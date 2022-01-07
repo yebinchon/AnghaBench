@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct android_app {int /*<<< orphan*/  looper; int /*<<< orphan*/  sensorManager; int /*<<< orphan*/  sensorEventQueue; int /*<<< orphan*/  accelerometerSensor; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASENSOR_TYPE_ACCELEROMETER ; 
- int /*<<< orphan*/  ASensorManager_createEventQueue (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ASensorManager_getDefaultSensor (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ASensorManager_getInstance () ; 
- int /*<<< orphan*/  LOOPER_ID_USER ; 
+
+
+
+struct android_app {int looper; int sensorManager; int sensorEventQueue; int accelerometerSensor; } ;
+
+
+ int ASENSOR_TYPE_ACCELEROMETER ;
+ int ASensorManager_createEventQueue (int ,int ,int ,int *,int *) ;
+ int ASensorManager_getDefaultSensor (int ,int ) ;
+ int ASensorManager_getInstance () ;
+ int LOOPER_ID_USER ;
 
 __attribute__((used)) static void android_input_enable_sensor_manager(struct android_app *android_app)
 {
@@ -27,5 +27,5 @@ __attribute__((used)) static void android_input_enable_sensor_manager(struct and
          ASENSOR_TYPE_ACCELEROMETER);
    android_app->sensorEventQueue =
       ASensorManager_createEventQueue(android_app->sensorManager,
-         android_app->looper, LOOPER_ID_USER, NULL, NULL);
+         android_app->looper, LOOPER_ID_USER, ((void*)0), ((void*)0));
 }

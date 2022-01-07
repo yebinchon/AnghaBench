@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vio_event_handler_t ;
 
-/* Variables and functions */
- int EBUSY ; 
- int EINVAL ; 
- int VIOMAJOR_SUBTYPE_SHIFT ; 
- int VIO_MAX_SUBTYPES ; 
- int /*<<< orphan*/ ** vio_handler ; 
+
+
+
+typedef int vio_event_handler_t ;
+
+
+ int EBUSY ;
+ int EINVAL ;
+ int VIOMAJOR_SUBTYPE_SHIFT ;
+ int VIO_MAX_SUBTYPES ;
+ int ** vio_handler ;
 
 int vio_setHandler(int subtype, vio_event_handler_t *beh)
 {
-	subtype = subtype >> VIOMAJOR_SUBTYPE_SHIFT;
-	if ((subtype < 0) || (subtype >= VIO_MAX_SUBTYPES))
-		return -EINVAL;
-	if (vio_handler[subtype] != NULL)
-		return -EBUSY;
-	vio_handler[subtype] = beh;
-	return 0;
+ subtype = subtype >> VIOMAJOR_SUBTYPE_SHIFT;
+ if ((subtype < 0) || (subtype >= VIO_MAX_SUBTYPES))
+  return -EINVAL;
+ if (vio_handler[subtype] != ((void*)0))
+  return -EBUSY;
+ vio_handler[subtype] = beh;
+ return 0;
 }

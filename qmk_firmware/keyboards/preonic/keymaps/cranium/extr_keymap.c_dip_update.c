@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  _ADJUST ; 
- int /*<<< orphan*/  layer_off (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  layer_on (int /*<<< orphan*/ ) ; 
- int muse_mode ; 
+
+
+
+typedef int uint8_t ;
+
+
+ int _ADJUST ;
+ int layer_off (int ) ;
+ int layer_on (int ) ;
+ int muse_mode ;
 
 void dip_update(uint8_t index, bool active) {
   switch (index) {
@@ -29,9 +29,9 @@ void dip_update(uint8_t index, bool active) {
       break;
     case 1:
       if (active) {
-        muse_mode = true;
+        muse_mode = 1;
       } else {
-        muse_mode = false;
+        muse_mode = 0;
       }
    }
 }

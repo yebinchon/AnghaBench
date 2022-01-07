@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_6__ ;
-typedef  struct TYPE_12__   TYPE_5__ ;
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_13__ {int /*<<< orphan*/  devmgr; } ;
+
+
+typedef struct TYPE_13__ TYPE_6__ ;
+typedef struct TYPE_12__ TYPE_5__ ;
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_13__ {int devmgr; } ;
 struct TYPE_12__ {int nb_surfaces; scalar_t__ decoder_to_release; } ;
 struct TYPE_11__ {TYPE_2__* internal; TYPE_5__* hwctx; TYPE_1__* device_ctx; } ;
-struct TYPE_10__ {scalar_t__ device_handle; int /*<<< orphan*/ * service; scalar_t__* surfaces_internal; } ;
+struct TYPE_10__ {scalar_t__ device_handle; int * service; scalar_t__* surfaces_internal; } ;
 struct TYPE_9__ {TYPE_3__* priv; } ;
 struct TYPE_8__ {TYPE_6__* hwctx; } ;
-typedef  TYPE_3__ DXVA2FramesContext ;
-typedef  TYPE_4__ AVHWFramesContext ;
-typedef  TYPE_5__ AVDXVA2FramesContext ;
-typedef  TYPE_6__ AVDXVA2DeviceContext ;
+typedef TYPE_3__ DXVA2FramesContext ;
+typedef TYPE_4__ AVHWFramesContext ;
+typedef TYPE_5__ AVDXVA2FramesContext ;
+typedef TYPE_6__ AVDXVA2DeviceContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IDirect3DDeviceManager9_CloseDeviceHandle (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  IDirect3DSurface9_Release (scalar_t__) ; 
- int /*<<< orphan*/  IDirectXVideoAccelerationService_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IDirectXVideoDecoder_Release (scalar_t__) ; 
- scalar_t__ INVALID_HANDLE_VALUE ; 
- int /*<<< orphan*/  av_freep (scalar_t__**) ; 
+
+ int IDirect3DDeviceManager9_CloseDeviceHandle (int ,scalar_t__) ;
+ int IDirect3DSurface9_Release (scalar_t__) ;
+ int IDirectXVideoAccelerationService_Release (int *) ;
+ int IDirectXVideoDecoder_Release (scalar_t__) ;
+ scalar_t__ INVALID_HANDLE_VALUE ;
+ int av_freep (scalar_t__**) ;
 
 __attribute__((used)) static void dxva2_frames_uninit(AVHWFramesContext *ctx)
 {
@@ -55,7 +55,7 @@ __attribute__((used)) static void dxva2_frames_uninit(AVHWFramesContext *ctx)
 
     if (s->service) {
         IDirectXVideoAccelerationService_Release(s->service);
-        s->service = NULL;
+        s->service = ((void*)0);
     }
 
     if (s->device_handle != INVALID_HANDLE_VALUE) {

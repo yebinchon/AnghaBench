@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  size_t int8_t ;
-struct TYPE_7__ {size_t qscale; int linesize; int uvlinesize; int /*<<< orphan*/ ** dest; } ;
-struct TYPE_6__ {int* avail_cache; int intra_types_stride; int /*<<< orphan*/  chroma_vlc; int /*<<< orphan*/  luma_vlc; TYPE_2__ s; } ;
-typedef  TYPE_1__ RV34DecContext ;
-typedef  TYPE_2__ MpegEncContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fill_rectangle (int*,int,int,int,int /*<<< orphan*/ ,int) ; 
- int* ittrans ; 
- size_t** rv34_chroma_quant ; 
- int /*<<< orphan*/  rv34_pred_4x4_block (TYPE_1__*,int /*<<< orphan*/ *,int,int,int,int,int,int) ; 
- int /*<<< orphan*/  rv34_process_block (TYPE_1__*,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int,int,int) ; 
- int* rv34_qscale_tab ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef size_t int8_t ;
+struct TYPE_7__ {size_t qscale; int linesize; int uvlinesize; int ** dest; } ;
+struct TYPE_6__ {int* avail_cache; int intra_types_stride; int chroma_vlc; int luma_vlc; TYPE_2__ s; } ;
+typedef TYPE_1__ RV34DecContext ;
+typedef TYPE_2__ MpegEncContext ;
+
+
+ int fill_rectangle (int*,int,int,int,int ,int) ;
+ int* ittrans ;
+ size_t** rv34_chroma_quant ;
+ int rv34_pred_4x4_block (TYPE_1__*,int *,int,int,int,int,int,int) ;
+ int rv34_process_block (TYPE_1__*,int *,int,int ,int,int,int) ;
+ int* rv34_qscale_tab ;
 
 __attribute__((used)) static void rv34_output_intra(RV34DecContext *r, int8_t *intra_types, int cbp)
 {
-    MpegEncContext *s   = &r->s;
-    uint8_t        *dst = s->dest[0];
-    int      avail[6*8] = {0};
+    MpegEncContext *s = &r->s;
+    uint8_t *dst = s->dest[0];
+    int avail[6*8] = {0};
     int i, j, k;
     int idx, q_ac, q_dc;
 
-    // Set neighbour information.
+
     if(r->avail_cache[1])
         avail[0] = 1;
     if(r->avail_cache[2])

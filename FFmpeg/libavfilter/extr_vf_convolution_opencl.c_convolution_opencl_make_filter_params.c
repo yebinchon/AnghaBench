@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ cl_mem ;
-typedef  int cl_int ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef scalar_t__ cl_mem ;
+typedef int cl_int ;
 struct TYPE_8__ {TYPE_1__* hwctx; } ;
 struct TYPE_9__ {double* biases; char** matrix_str; int* matrix_sizes; int* dims; scalar_t__* matrix; TYPE_2__ ocf; struct TYPE_9__* priv; } ;
-struct TYPE_7__ {int /*<<< orphan*/  context; } ;
-typedef  TYPE_3__ ConvolutionOpenCLContext ;
-typedef  TYPE_3__ AVFilterContext ;
+struct TYPE_7__ {int context; } ;
+typedef TYPE_3__ ConvolutionOpenCLContext ;
+typedef TYPE_3__ AVFilterContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int CL_MEM_COPY_HOST_PTR ; 
- int CL_MEM_HOST_NO_ACCESS ; 
- int CL_MEM_READ_ONLY ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  EIO ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  av_freep (float**) ; 
- int /*<<< orphan*/  av_log (TYPE_3__*,int /*<<< orphan*/ ,char*,...) ; 
- float* av_malloc (size_t) ; 
- char* av_strtok (char*,char*,char**) ; 
- scalar_t__ clCreateBuffer (int /*<<< orphan*/ ,int,size_t,float*,int*) ; 
- int sscanf (char*,char*,float*) ; 
+
+ int AVERROR (int ) ;
+ int AV_LOG_ERROR ;
+ int CL_MEM_COPY_HOST_PTR ;
+ int CL_MEM_HOST_NO_ACCESS ;
+ int CL_MEM_READ_ONLY ;
+ int EINVAL ;
+ int EIO ;
+ int ENOMEM ;
+ int av_freep (float**) ;
+ int av_log (TYPE_3__*,int ,char*,...) ;
+ float* av_malloc (size_t) ;
+ char* av_strtok (char*,char*,char**) ;
+ scalar_t__ clCreateBuffer (int ,int,size_t,float*,int*) ;
+ int sscanf (char*,char*,float*) ;
 
 __attribute__((used)) static int convolution_opencl_make_filter_params(AVFilterContext *avctx)
 {
     ConvolutionOpenCLContext *ctx = avctx->priv;
-    float *matrix = NULL;
+    float *matrix = ((void*)0);
     size_t matrix_bytes;
     cl_mem buffer;
     cl_int cle;
     int i, j;
     int sscanf_err;
-    char *p, *arg, *saveptr = NULL;
+    char *p, *arg, *saveptr = ((void*)0);
     float input_matrix[4][49];
 
     for (i = 0; i < 4; i++) {
@@ -60,7 +60,7 @@ __attribute__((used)) static int convolution_opencl_make_filter_params(AVFilterC
             if (!arg) {
                 break;
             }
-            p = NULL;
+            p = ((void*)0);
             sscanf_err = sscanf(arg, "%f", &input_matrix[i][ctx->matrix_sizes[i]]);
             if (sscanf_err != 1) {
                 av_log(ctx, AV_LOG_ERROR, "Matrix is sequence of 9, 25 or 49 signed numbers\n");

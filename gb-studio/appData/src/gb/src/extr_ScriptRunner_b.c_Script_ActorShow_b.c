@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {void* enabled; } ;
 
-/* Variables and functions */
- void* TRUE ; 
- TYPE_1__* actors ; 
- size_t script_actor ; 
- scalar_t__ script_cmd_args_len ; 
- void* script_continue ; 
- int /*<<< orphan*/  script_ptr ; 
+
+ void* TRUE ;
+ TYPE_1__* actors ;
+ size_t script_actor ;
+ scalar_t__ script_cmd_args_len ;
+ void* script_continue ;
+ int script_ptr ;
 
 void Script_ActorShow_b()
 {

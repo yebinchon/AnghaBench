@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {scalar_t__ id; scalar_t__ name; } ;
-typedef  TYPE_1__ property_t ;
+typedef TYPE_1__ property_t ;
 
-/* Variables and functions */
- scalar_t__ ISPIDSTR (char const*) ; 
- scalar_t__ STRTOPID (char const*) ; 
- int /*<<< orphan*/  TRACE (char*,scalar_t__,scalar_t__) ; 
- TYPE_1__* default_props ; 
- int /*<<< orphan*/  lstrcmpiA (char const*,scalar_t__) ; 
+
+ scalar_t__ ISPIDSTR (char const*) ;
+ scalar_t__ STRTOPID (char const*) ;
+ int TRACE (char*,scalar_t__,scalar_t__) ;
+ TYPE_1__* default_props ;
+ int lstrcmpiA (char const*,scalar_t__) ;
 
 __attribute__((used)) static const property_t *find_default_prop(const char *name)
 {
-    const property_t *prop_def = NULL;
+    const property_t *prop_def = ((void*)0);
 
     for(prop_def = default_props; prop_def->name; prop_def++)
     {
@@ -43,7 +43,7 @@ __attribute__((used)) static const property_t *find_default_prop(const char *nam
     if(prop_def->id)
        TRACE("%s: found match with default property id %d\n", prop_def->name, prop_def->id);
     else
-       prop_def = NULL;
+       prop_def = ((void*)0);
 
     return prop_def;
 }

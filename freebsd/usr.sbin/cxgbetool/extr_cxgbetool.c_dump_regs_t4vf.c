@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-struct mod_regs {char* member_0; int /*<<< orphan*/  member_1; } ;
 
-/* Variables and functions */
- int dump_regs_table (int,char const**,int /*<<< orphan*/  const*,struct mod_regs*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nitems (struct mod_regs*) ; 
-#define  t4vf_cim_regs 132 
-#define  t4vf_mbdata_regs 131 
-#define  t4vf_mps_regs 130 
-#define  t4vf_pl_regs 129 
-#define  t4vf_sge_regs 128 
+
+
+
+typedef int uint32_t ;
+struct mod_regs {char* member_0; int member_1; } ;
+
+
+ int dump_regs_table (int,char const**,int const*,struct mod_regs*,int ) ;
+ int nitems (struct mod_regs*) ;
+
+
+
+
+
 
 __attribute__((used)) static int
 dump_regs_t4vf(int argc, const char *argv[], const uint32_t *regs)
 {
-	static struct mod_regs t4vf_mod[] = {
-		{ "sge", t4vf_sge_regs },
-		{ "mps", t4vf_mps_regs },
-		{ "pl", t4vf_pl_regs },
-		{ "mbdata", t4vf_mbdata_regs },
-		{ "cim", t4vf_cim_regs },
-	};
+ static struct mod_regs t4vf_mod[] = {
+  { "sge", 128 },
+  { "mps", 130 },
+  { "pl", 129 },
+  { "mbdata", 131 },
+  { "cim", 132 },
+ };
 
-	return dump_regs_table(argc, argv, regs, t4vf_mod, nitems(t4vf_mod));
+ return dump_regs_table(argc, argv, regs, t4vf_mod, nitems(t4vf_mod));
 }

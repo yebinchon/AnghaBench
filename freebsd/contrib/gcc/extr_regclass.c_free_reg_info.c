@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char reg_pref ;
+
+
+
+
+typedef char reg_pref ;
 struct reg_info_data {struct reg_info_data* next; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  VEC_free (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  heap ; 
- struct reg_info_data* reg_info_head ; 
- int /*<<< orphan*/  reg_info_p ; 
- scalar_t__ reg_n_info ; 
- scalar_t__ reg_n_max ; 
- char* reg_pref_buffer ; 
- scalar_t__ regno_allocated ; 
- short* renumber ; 
+
+ int VEC_free (int ,int ,scalar_t__) ;
+ int free (char*) ;
+ int heap ;
+ struct reg_info_data* reg_info_head ;
+ int reg_info_p ;
+ scalar_t__ reg_n_info ;
+ scalar_t__ reg_n_max ;
+ char* reg_pref_buffer ;
+ scalar_t__ regno_allocated ;
+ short* renumber ;
 
 void
 free_reg_info (void)
@@ -35,10 +35,10 @@ free_reg_info (void)
 
       VEC_free (reg_info_p, heap, reg_n_info);
       for (reg_data = reg_info_head; reg_data; reg_data = reg_next)
-	{
-	  reg_next = reg_data->next;
-	  free ((char *) reg_data);
-	}
+ {
+   reg_next = reg_data->next;
+   free ((char *) reg_data);
+ }
 
       free (reg_pref_buffer);
       reg_pref_buffer = (struct reg_pref *) 0;

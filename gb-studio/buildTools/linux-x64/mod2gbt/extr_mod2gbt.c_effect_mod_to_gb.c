@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u8 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  printf (char*,int,int,int,int,int) ; 
- int speed_mod_to_gb (int) ; 
+
+
+
+typedef int u8 ;
+
+
+ int printf (char*,int,int,int,int,int) ;
+ int speed_mod_to_gb (int) ;
 
 int effect_mod_to_gb(u8 pattern_number, u8 step_number, u8 channel,
                      u8 effectnum, u8 effectparams, u8 *converted_num,
@@ -22,36 +22,36 @@ int effect_mod_to_gb(u8 pattern_number, u8 step_number, u8 channel,
 {
     switch (effectnum)
     {
-        case 0x0: // Arpeggio
+        case 0x0:
         {
             *converted_num = 1;
             *converted_params = effectparams;
             return 1;
         }
-        case 0xB: // Jump
+        case 0xB:
         {
             *converted_num = 8;
             *converted_params = effectparams;
             return 1;
         }
-        case 0xC: // Volume -> Not handled here
+        case 0xC:
         {
             printf("Strange error at pattern %d, step %d, channel %d: "
                    "%01X%02X\n", pattern_number, step_number, channel,
                    effectnum, effectparams);
             return 0;
         }
-        case 0xD: // Break + Set step
+        case 0xD:
         {
-            *converted_num = 9; // Effect value is BCD, convert to integer
+            *converted_num = 9;
             *converted_params = (((effectparams & 0xF0) >> 4) * 10)
-                              +   (effectparams & 0x0F);
-            //*converted_params = effectparams; // ... or not?
+                              + (effectparams & 0x0F);
+
             return 1;
         }
         case 0xE:
         {
-            if ((effectparams & 0xF0) == 0x80) // Pan
+            if ((effectparams & 0xF0) == 0x80)
             {
                 u8 left = 0;
                 u8 right = 0;
@@ -75,16 +75,16 @@ int effect_mod_to_gb(u8 pattern_number, u8 step_number, u8 channel,
                 }
                 *converted_num = 0;
                 *converted_params = (left << (3 + channel))
-                                  | (right << (channel - 1)); // Channel 1-4
+                                  | (right << (channel - 1));
                 return 1;
             }
-            if ((effectparams & 0xF0) == 0xC0) // Cut note
+            if ((effectparams & 0xF0) == 0xC0)
             {
                 *converted_num = 2;
                 *converted_params = (effectparams & 0xF);
                 return 1;
             }
-            else // Error
+            else
             {
                 printf("Unsupported effect at pattern %d, step %d, channel %d: "
                        "%01X%02X\n", pattern_number, step_number, channel,
@@ -93,16 +93,16 @@ int effect_mod_to_gb(u8 pattern_number, u8 step_number, u8 channel,
             }
             break;
         }
-        case 0xF: // Speed
+        case 0xF:
         {
-            if (effectparams > 0x1F) // Nothing
+            if (effectparams > 0x1F)
             {
                 printf("Unsupported BPM speed effect at pattern %d, step %d, "
                        "channel %d: %01X%02X\n", pattern_number, step_number,
                        channel, effectnum, effectparams);
                 return 0;
             }
-            else // Speed
+            else
             {
                 *converted_num = 10;
                 *converted_params = speed_mod_to_gb(effectparams);
@@ -110,7 +110,7 @@ int effect_mod_to_gb(u8 pattern_number, u8 step_number, u8 channel,
             }
             break;
         }
-        default: // Nothing
+        default:
         {
             printf("Unsupported effect at pattern %d, step %d, channel %d: "
                    "%01X%02X\n", pattern_number, step_number, channel,

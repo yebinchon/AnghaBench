@@ -1,45 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ unsigned long AG_PATH_MAX ;
 
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- unsigned long AG_PATH_MAX ; 
-#define  NUL 128 
- unsigned int strlen (char const*) ; 
+ unsigned int strlen (char const*) ;
 
 __attribute__((used)) static char *
 extract_colon_unit(char * pzDir, char const * string, int * p_index)
 {
     char * pzDest = pzDir;
-    int    ix     = *p_index;
+    int ix = *p_index;
 
-    if (string == NULL)
-        return NULL;
+    if (string == ((void*)0))
+        return ((void*)0);
 
     if ((unsigned)ix >= strlen( string ))
-        return NULL;
+        return ((void*)0);
 
     {
         char const * pzSrc = string + ix;
 
-        while (*pzSrc == ':')  pzSrc++;
+        while (*pzSrc == ':') pzSrc++;
 
         for (;;) {
             char ch = (*(pzDest++) = *(pzSrc++));
             switch (ch) {
             case ':':
-                pzDest[-1] = NUL;
-                /* FALLTHROUGH */
-            case NUL:
+                pzDest[-1] = 128;
+
+            case 128:
                 goto copy_done;
             }
 
@@ -50,8 +42,8 @@ extract_colon_unit(char * pzDir, char const * string, int * p_index)
         ix = (int)(pzSrc - string);
     }
 
-    if (*pzDir == NUL)
-        return NULL;
+    if (*pzDir == 128)
+        return ((void*)0);
 
     *p_index = ix;
     return pzDir;

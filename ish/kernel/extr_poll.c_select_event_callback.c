@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-union poll_fd_info {int /*<<< orphan*/  fd; } ;
-struct select_context {int /*<<< orphan*/  exceptfds; int /*<<< orphan*/  writefds; int /*<<< orphan*/  readfds; } ;
 
-/* Variables and functions */
- int SELECT_EX ; 
- int SELECT_READ ; 
- int SELECT_WRITE ; 
- int /*<<< orphan*/  bit_set (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+union poll_fd_info {int fd; } ;
+struct select_context {int exceptfds; int writefds; int readfds; } ;
+
+
+ int SELECT_EX ;
+ int SELECT_READ ;
+ int SELECT_WRITE ;
+ int bit_set (int ,int ) ;
 
 __attribute__((used)) static int select_event_callback(void *context, int types, union poll_fd_info info) {
     struct select_context *c = context;

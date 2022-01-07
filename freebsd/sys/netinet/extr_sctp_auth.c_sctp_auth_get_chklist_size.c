@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {size_t num_chunks; } ;
-typedef  TYPE_1__ sctp_auth_chklist_t ;
+typedef TYPE_1__ sctp_auth_chklist_t ;
 
-/* Variables and functions */
+
 
 size_t
 sctp_auth_get_chklist_size(const sctp_auth_chklist_t *list)
 {
-	if (list == NULL)
-		return (0);
-	else
-		return (list->num_chunks);
+ if (list == ((void*)0))
+  return (0);
+ else
+  return (list->num_chunks);
 }

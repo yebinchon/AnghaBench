@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_5__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  void* UInt16 ;
-struct TYPE_13__ {unsigned int SummFreq; int NumStats; int /*<<< orphan*/  Stats; } ;
+
+
+typedef struct TYPE_13__ TYPE_5__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef void* UInt16 ;
+struct TYPE_13__ {unsigned int SummFreq; int NumStats; int Stats; } ;
 struct TYPE_12__ {scalar_t__ OrderFall; TYPE_5__* MinContext; TYPE_1__* FoundState; } ;
 struct TYPE_11__ {int Freq; } ;
-typedef  TYPE_1__ CPpmd_State ;
-typedef  TYPE_2__ CPpmd7 ;
-typedef  void* Byte ;
+typedef TYPE_1__ CPpmd_State ;
+typedef TYPE_2__ CPpmd7 ;
+typedef void* Byte ;
 
-/* Variables and functions */
- int /*<<< orphan*/  InsertNode (TYPE_2__*,TYPE_1__*,int /*<<< orphan*/ ) ; 
- TYPE_1__* ONE_STATE (TYPE_5__*) ; 
- void* STATS (TYPE_5__*) ; 
- int /*<<< orphan*/  STATS_REF (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ShrinkUnits (TYPE_2__*,TYPE_1__*,unsigned int,unsigned int) ; 
- int /*<<< orphan*/  U2I (unsigned int) ; 
+
+ int InsertNode (TYPE_2__*,TYPE_1__*,int ) ;
+ TYPE_1__* ONE_STATE (TYPE_5__*) ;
+ void* STATS (TYPE_5__*) ;
+ int STATS_REF (int ) ;
+ int ShrinkUnits (TYPE_2__*,TYPE_1__*,unsigned int,unsigned int) ;
+ int U2I (unsigned int) ;
 
 __attribute__((used)) static void Rescale(CPpmd7 *p)
 {
@@ -45,7 +45,7 @@ __attribute__((used)) static void Rescale(CPpmd7 *p)
   adder = (p->OrderFall != 0);
   s->Freq = (Byte)((s->Freq + adder) >> 1);
   sumFreq = s->Freq;
-  
+
   i = p->MinContext->NumStats - 1;
   do
   {
@@ -63,7 +63,7 @@ __attribute__((used)) static void Rescale(CPpmd7 *p)
     }
   }
   while (--i);
-  
+
   if (s->Freq == 0)
   {
     unsigned numStats = p->MinContext->NumStats;

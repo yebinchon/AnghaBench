@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  HMODULE ;
 
-/* Variables and functions */
- scalar_t__ GetProcAddress (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  LoadLibraryA (char*) ; 
- void* p___p__daylight ; 
- void* p___p__dstbias ; 
- void* p___p__timezone ; 
- void* p__daylight ; 
- void* p__dstbias ; 
- void* p_asctime ; 
- void* p_gmtime ; 
- void* p_gmtime32 ; 
- void* p_gmtime32_s ; 
- void* p_localtime32_s ; 
- void* p_localtime64_s ; 
- void* p_mkgmtime32 ; 
- void* p_strdate_s ; 
- void* p_strftime ; 
- void* p_strtime_s ; 
- void* p_wcsftime ; 
+
+
+
+typedef int HMODULE ;
+
+
+ scalar_t__ GetProcAddress (int ,char*) ;
+ int LoadLibraryA (char*) ;
+ void* p___p__daylight ;
+ void* p___p__dstbias ;
+ void* p___p__timezone ;
+ void* p__daylight ;
+ void* p__dstbias ;
+ void* p_asctime ;
+ void* p_gmtime ;
+ void* p_gmtime32 ;
+ void* p_gmtime32_s ;
+ void* p_localtime32_s ;
+ void* p_localtime64_s ;
+ void* p_mkgmtime32 ;
+ void* p_strdate_s ;
+ void* p_strftime ;
+ void* p_strtime_s ;
+ void* p_wcsftime ;
 
 __attribute__((used)) static void init(void)
 {

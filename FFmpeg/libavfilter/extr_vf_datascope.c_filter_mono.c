@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_6__ ;
-typedef  struct TYPE_13__   TYPE_5__ ;
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  text ;
-struct TYPE_10__ {int xoff; int yoff; int /*<<< orphan*/ * out; int /*<<< orphan*/ * in; } ;
-typedef  TYPE_2__ ThreadData ;
+
+
+typedef struct TYPE_14__ TYPE_6__ ;
+typedef struct TYPE_13__ TYPE_5__ ;
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int text ;
+struct TYPE_10__ {int xoff; int yoff; int * out; int * in; } ;
+typedef TYPE_2__ ThreadData ;
 struct TYPE_14__ {TYPE_5__** inputs; TYPE_5__** outputs; TYPE_4__* priv; } ;
 struct TYPE_13__ {int const w; int const h; } ;
-struct TYPE_12__ {int chars; scalar_t__ y; scalar_t__ x; int /*<<< orphan*/  white; int /*<<< orphan*/  draw; int /*<<< orphan*/  (* pick_color ) (int /*<<< orphan*/ *,TYPE_3__*,int /*<<< orphan*/ *,scalar_t__,scalar_t__,int*) ;int /*<<< orphan*/  nb_comps; int /*<<< orphan*/  nb_planes; } ;
-struct TYPE_9__ {int /*<<< orphan*/  member_0; } ;
+struct TYPE_12__ {int chars; scalar_t__ y; scalar_t__ x; int white; int draw; int (* pick_color ) (int *,TYPE_3__*,int *,scalar_t__,scalar_t__,int*) ;int nb_comps; int nb_planes; } ;
+struct TYPE_9__ {int member_0; } ;
 struct TYPE_11__ {TYPE_1__ member_0; } ;
-typedef  TYPE_3__ FFDrawColor ;
-typedef  TYPE_4__ DatascopeContext ;
-typedef  int /*<<< orphan*/  AVFrame ;
-typedef  TYPE_5__ AVFilterLink ;
-typedef  TYPE_6__ AVFilterContext ;
+typedef TYPE_3__ FFDrawColor ;
+typedef TYPE_4__ DatascopeContext ;
+typedef int AVFrame ;
+typedef TYPE_5__ AVFilterLink ;
+typedef TYPE_6__ AVFilterContext ;
 
-/* Variables and functions */
- int FFMAX (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  draw_text (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int const,int const,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  snprintf (char*,int,char const*,int) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ *,TYPE_3__*,int /*<<< orphan*/ *,scalar_t__,scalar_t__,int*) ; 
+
+ int FFMAX (int ,int ) ;
+ int draw_text (int *,int *,int *,int const,int const,char*,int ) ;
+ int snprintf (char*,int,char const*,int) ;
+ int stub1 (int *,TYPE_3__*,int *,scalar_t__,scalar_t__,int*) ;
 
 __attribute__((used)) static int filter_mono(AVFilterContext *ctx, void *arg, int jobnr, int nb_jobs)
 {

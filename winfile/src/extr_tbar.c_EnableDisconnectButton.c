@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VOID ;
-typedef  size_t INT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EnableMenuItem (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  GetMenu (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IDM_DISCONNECT ; 
- int /*<<< orphan*/  IsCDRomDrive (int /*<<< orphan*/ ) ; 
- scalar_t__ IsRemoteDrive (int /*<<< orphan*/ ) ; 
- int MF_BYCOMMAND ; 
- int MF_ENABLED ; 
- int MF_GRAYED ; 
- int /*<<< orphan*/  SendMessage (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  TB_ENABLEBUTTON ; 
- size_t cDrives ; 
- int /*<<< orphan*/  hwndFrame ; 
- int /*<<< orphan*/  hwndToolbar ; 
- int /*<<< orphan*/ * rgiDrive ; 
+
+
+
+typedef int VOID ;
+typedef size_t INT ;
+
+
+ int EnableMenuItem (int ,int ,int) ;
+ int GetMenu (int ) ;
+ int IDM_DISCONNECT ;
+ int IsCDRomDrive (int ) ;
+ scalar_t__ IsRemoteDrive (int ) ;
+ int MF_BYCOMMAND ;
+ int MF_ENABLED ;
+ int MF_GRAYED ;
+ int SendMessage (int ,int ,int ,int) ;
+ int TB_ENABLEBUTTON ;
+ size_t cDrives ;
+ int hwndFrame ;
+ int hwndToolbar ;
+ int * rgiDrive ;
 
 VOID
 EnableDisconnectButton(void)

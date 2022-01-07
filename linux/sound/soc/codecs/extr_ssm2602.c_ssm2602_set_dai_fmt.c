@@ -1,93 +1,93 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ssm2602_priv {int /*<<< orphan*/  regmap; } ;
-struct snd_soc_dai {int /*<<< orphan*/  component; } ;
 
-/* Variables and functions */
- int EINVAL ; 
-#define  SND_SOC_DAIFMT_CBM_CFM 138 
-#define  SND_SOC_DAIFMT_CBS_CFS 137 
-#define  SND_SOC_DAIFMT_DSP_A 136 
-#define  SND_SOC_DAIFMT_DSP_B 135 
- unsigned int SND_SOC_DAIFMT_FORMAT_MASK ; 
-#define  SND_SOC_DAIFMT_I2S 134 
-#define  SND_SOC_DAIFMT_IB_IF 133 
-#define  SND_SOC_DAIFMT_IB_NF 132 
- unsigned int SND_SOC_DAIFMT_INV_MASK ; 
-#define  SND_SOC_DAIFMT_LEFT_J 131 
- unsigned int SND_SOC_DAIFMT_MASTER_MASK ; 
-#define  SND_SOC_DAIFMT_NB_IF 130 
-#define  SND_SOC_DAIFMT_NB_NF 129 
-#define  SND_SOC_DAIFMT_RIGHT_J 128 
- int /*<<< orphan*/  SSM2602_IFACE ; 
- int /*<<< orphan*/  regmap_write (int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned int) ; 
- struct ssm2602_priv* snd_soc_component_get_drvdata (int /*<<< orphan*/ ) ; 
+
+
+
+struct ssm2602_priv {int regmap; } ;
+struct snd_soc_dai {int component; } ;
+
+
+ int EINVAL ;
+
+
+
+
+ unsigned int SND_SOC_DAIFMT_FORMAT_MASK ;
+
+
+
+ unsigned int SND_SOC_DAIFMT_INV_MASK ;
+
+ unsigned int SND_SOC_DAIFMT_MASTER_MASK ;
+
+
+
+ int SSM2602_IFACE ;
+ int regmap_write (int ,int ,unsigned int) ;
+ struct ssm2602_priv* snd_soc_component_get_drvdata (int ) ;
 
 __attribute__((used)) static int ssm2602_set_dai_fmt(struct snd_soc_dai *codec_dai,
-		unsigned int fmt)
+  unsigned int fmt)
 {
-	struct ssm2602_priv *ssm2602 = snd_soc_component_get_drvdata(codec_dai->component);
-	unsigned int iface = 0;
+ struct ssm2602_priv *ssm2602 = snd_soc_component_get_drvdata(codec_dai->component);
+ unsigned int iface = 0;
 
-	/* set master/slave audio interface */
-	switch (fmt & SND_SOC_DAIFMT_MASTER_MASK) {
-	case SND_SOC_DAIFMT_CBM_CFM:
-		iface |= 0x0040;
-		break;
-	case SND_SOC_DAIFMT_CBS_CFS:
-		break;
-	default:
-		return -EINVAL;
-	}
 
-	/* interface format */
-	switch (fmt & SND_SOC_DAIFMT_FORMAT_MASK) {
-	case SND_SOC_DAIFMT_I2S:
-		iface |= 0x0002;
-		break;
-	case SND_SOC_DAIFMT_RIGHT_J:
-		break;
-	case SND_SOC_DAIFMT_LEFT_J:
-		iface |= 0x0001;
-		break;
-	case SND_SOC_DAIFMT_DSP_A:
-		iface |= 0x0013;
-		break;
-	case SND_SOC_DAIFMT_DSP_B:
-		iface |= 0x0003;
-		break;
-	default:
-		return -EINVAL;
-	}
+ switch (fmt & SND_SOC_DAIFMT_MASTER_MASK) {
+ case 138:
+  iface |= 0x0040;
+  break;
+ case 137:
+  break;
+ default:
+  return -EINVAL;
+ }
 
-	/* clock inversion */
-	switch (fmt & SND_SOC_DAIFMT_INV_MASK) {
-	case SND_SOC_DAIFMT_NB_NF:
-		break;
-	case SND_SOC_DAIFMT_IB_IF:
-		iface |= 0x0090;
-		break;
-	case SND_SOC_DAIFMT_IB_NF:
-		iface |= 0x0080;
-		break;
-	case SND_SOC_DAIFMT_NB_IF:
-		iface |= 0x0010;
-		break;
-	default:
-		return -EINVAL;
-	}
 
-	/* set iface */
-	regmap_write(ssm2602->regmap, SSM2602_IFACE, iface);
-	return 0;
+ switch (fmt & SND_SOC_DAIFMT_FORMAT_MASK) {
+ case 134:
+  iface |= 0x0002;
+  break;
+ case 128:
+  break;
+ case 131:
+  iface |= 0x0001;
+  break;
+ case 136:
+  iface |= 0x0013;
+  break;
+ case 135:
+  iface |= 0x0003;
+  break;
+ default:
+  return -EINVAL;
+ }
+
+
+ switch (fmt & SND_SOC_DAIFMT_INV_MASK) {
+ case 129:
+  break;
+ case 133:
+  iface |= 0x0090;
+  break;
+ case 132:
+  iface |= 0x0080;
+  break;
+ case 130:
+  iface |= 0x0010;
+  break;
+ default:
+  return -EINVAL;
+ }
+
+
+ regmap_write(ssm2602->regmap, SSM2602_IFACE, iface);
+ return 0;
 }

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  v4i32 ;
-typedef  scalar_t__ v16u8 ;
-struct TYPE_4__ {int /*<<< orphan*/  member_0; } ;
-typedef  TYPE_1__ v16i8 ;
-typedef  int uint8_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int int32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AVER_UB2_UB (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  LD_UB2 (int const*,int,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  SLDI_B2_UB (TYPE_1__,scalar_t__,TYPE_1__,scalar_t__,int,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  SW (int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  __msa_copy_u_w (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int v4i32 ;
+typedef scalar_t__ v16u8 ;
+struct TYPE_4__ {int member_0; } ;
+typedef TYPE_1__ v16i8 ;
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef int int32_t ;
+
+
+ int AVER_UB2_UB (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ int LD_UB2 (int const*,int,scalar_t__,scalar_t__) ;
+ int SLDI_B2_UB (TYPE_1__,scalar_t__,TYPE_1__,scalar_t__,int,scalar_t__,scalar_t__) ;
+ int SW (int ,int*) ;
+ int __msa_copy_u_w (int ,int ) ;
 
 __attribute__((used)) static void common_hz_bil_4w_msa(const uint8_t *src, int32_t src_stride,
                                  uint8_t *dst, int32_t dst_stride,

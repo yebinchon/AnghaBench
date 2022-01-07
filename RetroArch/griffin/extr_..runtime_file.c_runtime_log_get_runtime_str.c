@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int hours; int minutes; int seconds; } ;
 struct TYPE_5__ {TYPE_1__ runtime; } ;
-typedef  TYPE_2__ runtime_log_t ;
+typedef TYPE_2__ runtime_log_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MENU_ENUM_LABEL_VALUE_PLAYLIST_SUBLABEL_RUNTIME ; 
- char* msg_hash_to_str (int /*<<< orphan*/ ) ; 
- int snprintf (char*,size_t,char*,char*,...) ; 
+
+ int MENU_ENUM_LABEL_VALUE_PLAYLIST_SUBLABEL_RUNTIME ;
+ char* msg_hash_to_str (int ) ;
+ int snprintf (char*,size_t,char*,char*,...) ;
 
 void runtime_log_get_runtime_str(runtime_log_t *runtime_log, char *str, size_t len)
 {
@@ -38,5 +38,5 @@ void runtime_log_get_runtime_str(runtime_log_t *runtime_log, char *str, size_t l
    }
 
    if ((n < 0) || (n >= 64))
-      n = 0; /* Silence GCC warnings... */
+      n = 0;
 }

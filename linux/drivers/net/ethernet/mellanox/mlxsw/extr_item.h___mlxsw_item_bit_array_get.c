@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char u8 ;
-typedef  size_t u16 ;
+
+
+
+
+typedef char u8 ;
+typedef size_t u16 ;
 struct mlxsw_item {scalar_t__ element_size; } ;
 
-/* Variables and functions */
- char GENMASK (scalar_t__,int /*<<< orphan*/ ) ; 
- size_t __mlxsw_item_bit_array_offset (struct mlxsw_item const*,size_t,char*) ; 
+
+ char GENMASK (scalar_t__,int ) ;
+ size_t __mlxsw_item_bit_array_offset (struct mlxsw_item const*,size_t,char*) ;
 
 __attribute__((used)) static inline u8 __mlxsw_item_bit_array_get(const char *buf,
-					    const struct mlxsw_item *item,
-					    u16 index)
+         const struct mlxsw_item *item,
+         u16 index)
 {
-	u8 shift, tmp;
-	u16 offset = __mlxsw_item_bit_array_offset(item, index, &shift);
+ u8 shift, tmp;
+ u16 offset = __mlxsw_item_bit_array_offset(item, index, &shift);
 
-	tmp = buf[offset];
-	tmp >>= shift;
-	tmp &= GENMASK(item->element_size - 1, 0);
-	return tmp;
+ tmp = buf[offset];
+ tmp >>= shift;
+ tmp &= GENMASK(item->element_size - 1, 0);
+ return tmp;
 }

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  parse_buffer ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- scalar_t__ TOKEN_CBRACKET ; 
- scalar_t__ TOKEN_OBRACKET ; 
- int /*<<< orphan*/  TRUE ; 
- scalar_t__ check_TOKEN (int /*<<< orphan*/ *) ; 
- scalar_t__ get_TOKEN (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  parse_template_members_list (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  parse_template_option_info (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int parse_buffer ;
+typedef int BOOL ;
+
+
+ int FALSE ;
+ scalar_t__ TOKEN_CBRACKET ;
+ scalar_t__ TOKEN_OBRACKET ;
+ int TRUE ;
+ scalar_t__ check_TOKEN (int *) ;
+ scalar_t__ get_TOKEN (int *) ;
+ int parse_template_members_list (int *) ;
+ int parse_template_option_info (int *) ;
 
 __attribute__((used)) static BOOL parse_template_parts(parse_buffer * buf)
 {

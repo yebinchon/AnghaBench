@@ -1,74 +1,74 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  oid; } ;
-typedef  int /*<<< orphan*/  SysScanDesc ;
-typedef  int /*<<< orphan*/  ScanKeyData ;
-typedef  int /*<<< orphan*/  Relation ;
-typedef  int /*<<< orphan*/  Oid ;
-typedef  int /*<<< orphan*/  List ;
-typedef  int /*<<< orphan*/  HeapTuple ;
-typedef  TYPE_1__* Form_pg_publication ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AccessShareLock ; 
- int /*<<< orphan*/  Anum_pg_publication_puballtables ; 
- int /*<<< orphan*/  BTEqualStrategyNumber ; 
- int /*<<< orphan*/  BoolGetDatum (int) ; 
- int /*<<< orphan*/  F_BOOLEQ ; 
- scalar_t__ GETSTRUCT (int /*<<< orphan*/ ) ; 
- scalar_t__ HeapTupleIsValid (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  InvalidOid ; 
- int /*<<< orphan*/ * NIL ; 
- int /*<<< orphan*/  PublicationRelationId ; 
- int /*<<< orphan*/  ScanKeyInit (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * lappend_oid (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  systable_beginscan (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  systable_endscan (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  systable_getnext (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  table_close (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  table_open (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int oid; } ;
+typedef int SysScanDesc ;
+typedef int ScanKeyData ;
+typedef int Relation ;
+typedef int Oid ;
+typedef int List ;
+typedef int HeapTuple ;
+typedef TYPE_1__* Form_pg_publication ;
+
+
+ int AccessShareLock ;
+ int Anum_pg_publication_puballtables ;
+ int BTEqualStrategyNumber ;
+ int BoolGetDatum (int) ;
+ int F_BOOLEQ ;
+ scalar_t__ GETSTRUCT (int ) ;
+ scalar_t__ HeapTupleIsValid (int ) ;
+ int InvalidOid ;
+ int * NIL ;
+ int PublicationRelationId ;
+ int ScanKeyInit (int *,int ,int ,int ,int ) ;
+ int * lappend_oid (int *,int ) ;
+ int systable_beginscan (int ,int ,int,int *,int,int *) ;
+ int systable_endscan (int ) ;
+ int systable_getnext (int ) ;
+ int table_close (int ,int ) ;
+ int table_open (int ,int ) ;
 
 List *
 GetAllTablesPublications(void)
 {
-	List	   *result;
-	Relation	rel;
-	ScanKeyData scankey;
-	SysScanDesc scan;
-	HeapTuple	tup;
+ List *result;
+ Relation rel;
+ ScanKeyData scankey;
+ SysScanDesc scan;
+ HeapTuple tup;
 
-	/* Find all publications that are marked as for all tables. */
-	rel = table_open(PublicationRelationId, AccessShareLock);
 
-	ScanKeyInit(&scankey,
-				Anum_pg_publication_puballtables,
-				BTEqualStrategyNumber, F_BOOLEQ,
-				BoolGetDatum(true));
+ rel = table_open(PublicationRelationId, AccessShareLock);
 
-	scan = systable_beginscan(rel, InvalidOid, false,
-							  NULL, 1, &scankey);
+ ScanKeyInit(&scankey,
+    Anum_pg_publication_puballtables,
+    BTEqualStrategyNumber, F_BOOLEQ,
+    BoolGetDatum(1));
 
-	result = NIL;
-	while (HeapTupleIsValid(tup = systable_getnext(scan)))
-	{
-		Oid			oid = ((Form_pg_publication) GETSTRUCT(tup))->oid;
+ scan = systable_beginscan(rel, InvalidOid, 0,
+         ((void*)0), 1, &scankey);
 
-		result = lappend_oid(result, oid);
-	}
+ result = NIL;
+ while (HeapTupleIsValid(tup = systable_getnext(scan)))
+ {
+  Oid oid = ((Form_pg_publication) GETSTRUCT(tup))->oid;
 
-	systable_endscan(scan);
-	table_close(rel, AccessShareLock);
+  result = lappend_oid(result, oid);
+ }
 
-	return result;
+ systable_endscan(scan);
+ table_close(rel, AccessShareLock);
+
+ return result;
 }

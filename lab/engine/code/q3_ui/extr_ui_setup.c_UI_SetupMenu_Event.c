@@ -1,78 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int id; } ;
-typedef  TYPE_1__ menucommon_s ;
-
-/* Variables and functions */
-#define  ID_BACK 134 
-#define  ID_CDKEY 133 
-#define  ID_CUSTOMIZECONTROLS 132 
-#define  ID_CUSTOMIZEPLAYER 131 
-#define  ID_DEFAULTS 130 
-#define  ID_GAME 129 
-#define  ID_SYSTEMCONFIG 128 
- int QM_ACTIVATED ; 
- int /*<<< orphan*/  Setup_ResetDefaults_Action ; 
- int /*<<< orphan*/  Setup_ResetDefaults_Draw ; 
- int /*<<< orphan*/  UI_CDKeyMenu () ; 
- int /*<<< orphan*/  UI_ConfirmMenu (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  UI_ControlsMenu () ; 
- int /*<<< orphan*/  UI_GraphicsOptionsMenu () ; 
- int /*<<< orphan*/  UI_PlayerSettingsMenu () ; 
- int /*<<< orphan*/  UI_PopMenu () ; 
- int /*<<< orphan*/  UI_PreferencesMenu () ; 
+typedef TYPE_1__ menucommon_s ;
+ int QM_ACTIVATED ;
+ int Setup_ResetDefaults_Action ;
+ int Setup_ResetDefaults_Draw ;
+ int UI_CDKeyMenu () ;
+ int UI_ConfirmMenu (char*,int ,int ) ;
+ int UI_ControlsMenu () ;
+ int UI_GraphicsOptionsMenu () ;
+ int UI_PlayerSettingsMenu () ;
+ int UI_PopMenu () ;
+ int UI_PreferencesMenu () ;
 
 __attribute__((used)) static void UI_SetupMenu_Event( void *ptr, int event ) {
-	if( event != QM_ACTIVATED ) {
-		return;
-	}
+ if( event != QM_ACTIVATED ) {
+  return;
+ }
 
-	switch( ((menucommon_s*)ptr)->id ) {
-	case ID_CUSTOMIZEPLAYER:
-		UI_PlayerSettingsMenu();
-		break;
+ switch( ((menucommon_s*)ptr)->id ) {
+ case 131:
+  UI_PlayerSettingsMenu();
+  break;
 
-	case ID_CUSTOMIZECONTROLS:
-		UI_ControlsMenu();
-		break;
+ case 132:
+  UI_ControlsMenu();
+  break;
 
-	case ID_SYSTEMCONFIG:
-		UI_GraphicsOptionsMenu();
-		break;
+ case 128:
+  UI_GraphicsOptionsMenu();
+  break;
 
-	case ID_GAME:
-		UI_PreferencesMenu();
-		break;
+ case 129:
+  UI_PreferencesMenu();
+  break;
 
-	case ID_CDKEY:
-		UI_CDKeyMenu();
-		break;
+ case 133:
+  UI_CDKeyMenu();
+  break;
+ case 130:
+  UI_ConfirmMenu( "SET TO DEFAULTS?", Setup_ResetDefaults_Draw, Setup_ResetDefaults_Action );
+  break;
 
-//	case ID_LOAD:
-//		UI_LoadConfigMenu();
-//		break;
-
-//	case ID_SAVE:
-//		UI_SaveConfigMenu();
-//		break;
-
-	case ID_DEFAULTS:
-		UI_ConfirmMenu( "SET TO DEFAULTS?", Setup_ResetDefaults_Draw, Setup_ResetDefaults_Action );
-		break;
-
-	case ID_BACK:
-		UI_PopMenu();
-		break;
-	}
+ case 134:
+  UI_PopMenu();
+  break;
+ }
 }

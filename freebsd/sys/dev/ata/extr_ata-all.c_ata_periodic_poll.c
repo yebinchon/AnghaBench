@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ata_channel {int /*<<< orphan*/  poll_callout; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ata_interrupt (struct ata_channel*) ; 
- int /*<<< orphan*/  callout_reset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,void (*) (void*),struct ata_channel*) ; 
- int /*<<< orphan*/  hz ; 
+
+
+
+struct ata_channel {int poll_callout; } ;
+
+
+ int ata_interrupt (struct ata_channel*) ;
+ int callout_reset (int *,int ,void (*) (void*),struct ata_channel*) ;
+ int hz ;
 
 __attribute__((used)) static void
 ata_periodic_poll(void *data)

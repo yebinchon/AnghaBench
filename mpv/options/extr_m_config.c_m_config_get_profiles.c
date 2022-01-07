@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct mpv_node {int dummy; } ;
 struct m_config {TYPE_1__* profiles; } ;
-struct TYPE_2__ {int num_opts; int /*<<< orphan*/ * opts; int /*<<< orphan*/  desc; int /*<<< orphan*/  name; struct TYPE_2__* next; } ;
-typedef  TYPE_1__ m_profile_t ;
+struct TYPE_2__ {int num_opts; int * opts; int desc; int name; struct TYPE_2__* next; } ;
+typedef TYPE_1__ m_profile_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MPV_FORMAT_NODE_ARRAY ; 
- int /*<<< orphan*/  MPV_FORMAT_NODE_MAP ; 
- struct mpv_node* node_array_add (struct mpv_node*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  node_init (struct mpv_node*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- struct mpv_node* node_map_add (struct mpv_node*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  node_map_add_string (struct mpv_node*,char*,int /*<<< orphan*/ ) ; 
+
+ int MPV_FORMAT_NODE_ARRAY ;
+ int MPV_FORMAT_NODE_MAP ;
+ struct mpv_node* node_array_add (struct mpv_node*,int ) ;
+ int node_init (struct mpv_node*,int ,int *) ;
+ struct mpv_node* node_map_add (struct mpv_node*,char*,int ) ;
+ int node_map_add_string (struct mpv_node*,char*,int ) ;
 
 struct mpv_node m_config_get_profiles(struct m_config *config)
 {
     struct mpv_node root;
-    node_init(&root, MPV_FORMAT_NODE_ARRAY, NULL);
+    node_init(&root, MPV_FORMAT_NODE_ARRAY, ((void*)0));
 
     for (m_profile_t *profile = config->profiles; profile; profile = profile->next)
     {

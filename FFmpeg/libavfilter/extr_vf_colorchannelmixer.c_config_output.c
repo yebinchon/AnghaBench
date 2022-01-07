@@ -1,80 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_5__ ;
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_12__ TYPE_5__ ;
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_12__ {TYPE_2__* priv; } ;
-struct TYPE_11__ {int /*<<< orphan*/  format; TYPE_5__* src; } ;
+struct TYPE_11__ {int format; TYPE_5__* src; } ;
 struct TYPE_10__ {TYPE_1__* comp; } ;
-struct TYPE_9__ {int* buffer; int*** lut; int rr; int rg; int rb; int ra; int gr; int gg; int gb; int ga; int br; int bg; int bb; int ba; int ar; int ag; int ab; int aa; int /*<<< orphan*/  filter_slice; int /*<<< orphan*/  rgba_map; } ;
+struct TYPE_9__ {int* buffer; int*** lut; int rr; int rg; int rb; int ra; int gr; int gg; int gb; int ga; int br; int bg; int bb; int ba; int ar; int ag; int ab; int aa; int filter_slice; int rgba_map; } ;
 struct TYPE_8__ {int depth; } ;
-typedef  TYPE_2__ ColorChannelMixerContext ;
-typedef  TYPE_3__ AVPixFmtDescriptor ;
-typedef  TYPE_4__ AVFilterLink ;
-typedef  TYPE_5__ AVFilterContext ;
+typedef TYPE_2__ ColorChannelMixerContext ;
+typedef TYPE_3__ AVPixFmtDescriptor ;
+typedef TYPE_4__ AVFilterLink ;
+typedef TYPE_5__ AVFilterContext ;
 
-/* Variables and functions */
- size_t A ; 
- int AVERROR (int /*<<< orphan*/ ) ; 
-#define  AV_PIX_FMT_0BGR 151 
-#define  AV_PIX_FMT_0RGB 150 
-#define  AV_PIX_FMT_ABGR 149 
-#define  AV_PIX_FMT_ARGB 148 
-#define  AV_PIX_FMT_BGR0 147 
-#define  AV_PIX_FMT_BGR24 146 
-#define  AV_PIX_FMT_BGR48 145 
-#define  AV_PIX_FMT_BGRA 144 
-#define  AV_PIX_FMT_BGRA64 143 
-#define  AV_PIX_FMT_GBRAP 142 
-#define  AV_PIX_FMT_GBRAP10 141 
-#define  AV_PIX_FMT_GBRAP12 140 
-#define  AV_PIX_FMT_GBRAP16 139 
-#define  AV_PIX_FMT_GBRP 138 
-#define  AV_PIX_FMT_GBRP10 137 
-#define  AV_PIX_FMT_GBRP12 136 
-#define  AV_PIX_FMT_GBRP14 135 
-#define  AV_PIX_FMT_GBRP16 134 
-#define  AV_PIX_FMT_GBRP9 133 
-#define  AV_PIX_FMT_RGB0 132 
-#define  AV_PIX_FMT_RGB24 131 
-#define  AV_PIX_FMT_RGB48 130 
-#define  AV_PIX_FMT_RGBA 129 
-#define  AV_PIX_FMT_RGBA64 128 
- size_t B ; 
- int /*<<< orphan*/  ENOMEM ; 
- size_t G ; 
- size_t R ; 
- int* av_malloc (int) ; 
- TYPE_3__* av_pix_fmt_desc_get (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ff_fill_rgba_map (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  filter_slice_gbrap ; 
- int /*<<< orphan*/  filter_slice_gbrap10 ; 
- int /*<<< orphan*/  filter_slice_gbrap12 ; 
- int /*<<< orphan*/  filter_slice_gbrap16 ; 
- int /*<<< orphan*/  filter_slice_gbrp ; 
- int /*<<< orphan*/  filter_slice_gbrp10 ; 
- int /*<<< orphan*/  filter_slice_gbrp12 ; 
- int /*<<< orphan*/  filter_slice_gbrp14 ; 
- int /*<<< orphan*/  filter_slice_gbrp16 ; 
- int /*<<< orphan*/  filter_slice_gbrp9 ; 
- int /*<<< orphan*/  filter_slice_rgb0 ; 
- int /*<<< orphan*/  filter_slice_rgb24 ; 
- int /*<<< orphan*/  filter_slice_rgb48 ; 
- int /*<<< orphan*/  filter_slice_rgba ; 
- int /*<<< orphan*/  filter_slice_rgba64 ; 
- void* lrint (int) ; 
+
+ size_t A ;
+ int AVERROR (int ) ;
+ size_t B ;
+ int ENOMEM ;
+ size_t G ;
+ size_t R ;
+ int* av_malloc (int) ;
+ TYPE_3__* av_pix_fmt_desc_get (int ) ;
+ int ff_fill_rgba_map (int ,int ) ;
+ int filter_slice_gbrap ;
+ int filter_slice_gbrap10 ;
+ int filter_slice_gbrap12 ;
+ int filter_slice_gbrap16 ;
+ int filter_slice_gbrp ;
+ int filter_slice_gbrp10 ;
+ int filter_slice_gbrp12 ;
+ int filter_slice_gbrp14 ;
+ int filter_slice_gbrp16 ;
+ int filter_slice_gbrp9 ;
+ int filter_slice_rgb0 ;
+ int filter_slice_rgb24 ;
+ int filter_slice_rgb48 ;
+ int filter_slice_rgba ;
+ int filter_slice_rgba64 ;
+ void* lrint (int) ;
 
 __attribute__((used)) static int config_output(AVFilterLink *outlink)
 {
@@ -120,58 +96,58 @@ __attribute__((used)) static int config_output(AVFilterLink *outlink)
     }
 
     switch (outlink->format) {
-    case AV_PIX_FMT_BGR24:
-    case AV_PIX_FMT_RGB24:
+    case 146:
+    case 131:
         s->filter_slice = filter_slice_rgb24;
         break;
-    case AV_PIX_FMT_0BGR:
-    case AV_PIX_FMT_0RGB:
-    case AV_PIX_FMT_BGR0:
-    case AV_PIX_FMT_RGB0:
+    case 151:
+    case 150:
+    case 147:
+    case 132:
         s->filter_slice = filter_slice_rgb0;
         break;
-    case AV_PIX_FMT_ABGR:
-    case AV_PIX_FMT_ARGB:
-    case AV_PIX_FMT_BGRA:
-    case AV_PIX_FMT_RGBA:
+    case 149:
+    case 148:
+    case 144:
+    case 129:
         s->filter_slice = filter_slice_rgba;
         break;
-    case AV_PIX_FMT_BGR48:
-    case AV_PIX_FMT_RGB48:
+    case 145:
+    case 130:
         s->filter_slice = filter_slice_rgb48;
         break;
-    case AV_PIX_FMT_BGRA64:
-    case AV_PIX_FMT_RGBA64:
+    case 143:
+    case 128:
         s->filter_slice = filter_slice_rgba64;
         break;
-    case AV_PIX_FMT_GBRP:
+    case 138:
         s->filter_slice = filter_slice_gbrp;
         break;
-    case AV_PIX_FMT_GBRAP:
+    case 142:
         s->filter_slice = filter_slice_gbrap;
         break;
-    case AV_PIX_FMT_GBRP9:
+    case 133:
         s->filter_slice = filter_slice_gbrp9;
         break;
-    case AV_PIX_FMT_GBRP10:
+    case 137:
         s->filter_slice = filter_slice_gbrp10;
         break;
-    case AV_PIX_FMT_GBRAP10:
+    case 141:
         s->filter_slice = filter_slice_gbrap10;
         break;
-    case AV_PIX_FMT_GBRP12:
+    case 136:
         s->filter_slice = filter_slice_gbrp12;
         break;
-    case AV_PIX_FMT_GBRAP12:
+    case 140:
         s->filter_slice = filter_slice_gbrap12;
         break;
-    case AV_PIX_FMT_GBRP14:
+    case 135:
         s->filter_slice = filter_slice_gbrp14;
         break;
-    case AV_PIX_FMT_GBRP16:
+    case 134:
         s->filter_slice = filter_slice_gbrp16;
         break;
-    case AV_PIX_FMT_GBRAP16:
+    case 139:
         s->filter_slice = filter_slice_gbrap16;
         break;
     }

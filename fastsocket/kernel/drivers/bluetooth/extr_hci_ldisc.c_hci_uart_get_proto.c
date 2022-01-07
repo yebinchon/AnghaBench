@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct hci_uart_proto {int dummy; } ;
 
-/* Variables and functions */
- unsigned int HCI_UART_MAX_PROTO ; 
- struct hci_uart_proto** hup ; 
+
+ unsigned int HCI_UART_MAX_PROTO ;
+ struct hci_uart_proto** hup ;
 
 __attribute__((used)) static struct hci_uart_proto *hci_uart_get_proto(unsigned int id)
 {
-	if (id >= HCI_UART_MAX_PROTO)
-		return NULL;
+ if (id >= HCI_UART_MAX_PROTO)
+  return ((void*)0);
 
-	return hup[id];
+ return hup[id];
 }

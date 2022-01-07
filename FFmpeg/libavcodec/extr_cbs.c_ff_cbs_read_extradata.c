@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_11__ {int /*<<< orphan*/  extradata_size; int /*<<< orphan*/  extradata; } ;
+
+
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_11__ {int extradata_size; int extradata; } ;
 struct TYPE_10__ {TYPE_1__* codec; } ;
-struct TYPE_9__ {int (* split_fragment ) (TYPE_2__*,int /*<<< orphan*/ *,int) ;} ;
-typedef  int /*<<< orphan*/  CodedBitstreamFragment ;
-typedef  TYPE_2__ CodedBitstreamContext ;
-typedef  TYPE_3__ AVCodecParameters ;
+struct TYPE_9__ {int (* split_fragment ) (TYPE_2__*,int *,int) ;} ;
+typedef int CodedBitstreamFragment ;
+typedef TYPE_2__ CodedBitstreamContext ;
+typedef TYPE_3__ AVCodecParameters ;
 
-/* Variables and functions */
- int cbs_fill_fragment_data (TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int cbs_read_fragment_content (TYPE_2__*,int /*<<< orphan*/ *) ; 
- int stub1 (TYPE_2__*,int /*<<< orphan*/ *,int) ; 
+
+ int cbs_fill_fragment_data (TYPE_2__*,int *,int ,int ) ;
+ int cbs_read_fragment_content (TYPE_2__*,int *) ;
+ int stub1 (TYPE_2__*,int *,int) ;
 
 int ff_cbs_read_extradata(CodedBitstreamContext *ctx,
                           CodedBitstreamFragment *frag,

@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_5__ ;
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ngx_uint_t ;
-typedef  scalar_t__ ngx_socket_t ;
-typedef  int ngx_int_t ;
-struct TYPE_16__ {scalar_t__ timer_set; int /*<<< orphan*/  ready; scalar_t__ active; int /*<<< orphan*/  delayed; scalar_t__ error; scalar_t__ eof; } ;
-typedef  TYPE_4__ ngx_event_t ;
-struct TYPE_17__ {scalar_t__ output_ctx; int /*<<< orphan*/  send_timeout; int /*<<< orphan*/  send_lowat; TYPE_3__* downstream; int /*<<< orphan*/  read_timeout; TYPE_2__* upstream; scalar_t__ upstream_blocked; scalar_t__ read; TYPE_1__* log; } ;
-typedef  TYPE_5__ ngx_event_pipe_t ;
+
+
+typedef struct TYPE_17__ TYPE_5__ ;
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+typedef int ngx_uint_t ;
+typedef scalar_t__ ngx_socket_t ;
+typedef int ngx_int_t ;
+struct TYPE_16__ {scalar_t__ timer_set; int ready; scalar_t__ active; int delayed; scalar_t__ error; scalar_t__ eof; } ;
+typedef TYPE_4__ ngx_event_t ;
+struct TYPE_17__ {scalar_t__ output_ctx; int send_timeout; int send_lowat; TYPE_3__* downstream; int read_timeout; TYPE_2__* upstream; scalar_t__ upstream_blocked; scalar_t__ read; TYPE_1__* log; } ;
+typedef TYPE_5__ ngx_event_pipe_t ;
 struct TYPE_15__ {scalar_t__ fd; scalar_t__ data; TYPE_4__* write; } ;
 struct TYPE_14__ {scalar_t__ fd; TYPE_4__* read; } ;
 struct TYPE_13__ {char* action; } ;
 
-/* Variables and functions */
- int NGX_ABORT ; 
- int NGX_BUSY ; 
- int /*<<< orphan*/  NGX_CLOSE_EVENT ; 
- int NGX_OK ; 
- int /*<<< orphan*/  ngx_add_timer (TYPE_4__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_del_timer (TYPE_4__*) ; 
- int ngx_event_pipe_read_upstream (TYPE_5__*) ; 
- int ngx_event_pipe_write_to_downstream (TYPE_5__*) ; 
- int ngx_handle_read_event (TYPE_4__*,int /*<<< orphan*/ ) ; 
- int ngx_handle_write_event (TYPE_4__*,int /*<<< orphan*/ ) ; 
+
+ int NGX_ABORT ;
+ int NGX_BUSY ;
+ int NGX_CLOSE_EVENT ;
+ int NGX_OK ;
+ int ngx_add_timer (TYPE_4__*,int ) ;
+ int ngx_del_timer (TYPE_4__*) ;
+ int ngx_event_pipe_read_upstream (TYPE_5__*) ;
+ int ngx_event_pipe_write_to_downstream (TYPE_5__*) ;
+ int ngx_handle_read_event (TYPE_4__*,int ) ;
+ int ngx_handle_write_event (TYPE_4__*,int ) ;
 
 ngx_int_t
 ngx_event_pipe(ngx_event_pipe_t *p, ngx_int_t do_write)
 {
-    ngx_int_t     rc;
-    ngx_uint_t    flags;
-    ngx_event_t  *rev, *wev;
+    ngx_int_t rc;
+    ngx_uint_t flags;
+    ngx_event_t *rev, *wev;
 
     for ( ;; ) {
         if (do_write) {

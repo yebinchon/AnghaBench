@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {struct TYPE_4__* Flink; } ;
-typedef  int /*<<< orphan*/ * PSIDTOUSERNAME ;
-typedef  TYPE_1__* PLIST_ENTRY ;
+typedef int * PSIDTOUSERNAME ;
+typedef TYPE_1__* PLIST_ENTRY ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * CONTAINING_RECORD (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DeleteCriticalSection (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FreeSid (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  List ; 
- int /*<<< orphan*/  PerfDataCriticalSection ; 
- int /*<<< orphan*/  SIDTOUSERNAME ; 
- TYPE_1__ SidToUserNameHead ; 
- int /*<<< orphan*/ * SystemProcessorTimeInfo ; 
- int /*<<< orphan*/ * SystemUserSid ; 
- int /*<<< orphan*/ * pPerfData ; 
+
+ int * CONTAINING_RECORD (TYPE_1__*,int ,int ) ;
+ int DeleteCriticalSection (int *) ;
+ int FreeSid (int *) ;
+ int GetProcessHeap () ;
+ int HeapFree (int ,int ,int *) ;
+ int List ;
+ int PerfDataCriticalSection ;
+ int SIDTOUSERNAME ;
+ TYPE_1__ SidToUserNameHead ;
+ int * SystemProcessorTimeInfo ;
+ int * SystemUserSid ;
+ int * pPerfData ;
 
 void PerfDataUninitialize(void)
 {
     PLIST_ENTRY pCur;
     PSIDTOUSERNAME pEntry;
 
-    if (pPerfData != NULL)
+    if (pPerfData != ((void*)0))
         HeapFree(GetProcessHeap(), 0, pPerfData);
 
     DeleteCriticalSection(&PerfDataCriticalSection);
 
-    if (SystemUserSid != NULL)
+    if (SystemUserSid != ((void*)0))
     {
         FreeSid(SystemUserSid);
-        SystemUserSid = NULL;
+        SystemUserSid = ((void*)0);
     }
 
-    /* Free user names cache list */
+
     pCur = SidToUserNameHead.Flink;
     while (pCur != &SidToUserNameHead)
     {

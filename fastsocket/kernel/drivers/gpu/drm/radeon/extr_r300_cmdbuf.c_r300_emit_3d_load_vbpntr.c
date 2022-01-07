@@ -1,98 +1,98 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u32 ;
-typedef  int /*<<< orphan*/  drm_radeon_private_t ;
-struct TYPE_3__ {int /*<<< orphan*/  buffer; } ;
-typedef  TYPE_1__ drm_radeon_kcmd_buffer_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ADVANCE_RING () ; 
- int /*<<< orphan*/  BEGIN_RING (int) ; 
- int /*<<< orphan*/  DRM_ERROR (char*,int,...) ; 
- int EINVAL ; 
- int MAX_ARRAY_PACKET ; 
- int /*<<< orphan*/  OUT_RING (int) ; 
- int /*<<< orphan*/  OUT_RING_DRM_BUFFER (int /*<<< orphan*/ ,int) ; 
- int RADEON_CP_PACKET_COUNT_MASK ; 
- int /*<<< orphan*/  RING_LOCALS ; 
- int /*<<< orphan*/  drm_buffer_advance (int /*<<< orphan*/ ,int) ; 
- int* drm_buffer_pointer_to_dword (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  radeon_check_offset (int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int u32 ;
+typedef int drm_radeon_private_t ;
+struct TYPE_3__ {int buffer; } ;
+typedef TYPE_1__ drm_radeon_kcmd_buffer_t ;
+
+
+ int ADVANCE_RING () ;
+ int BEGIN_RING (int) ;
+ int DRM_ERROR (char*,int,...) ;
+ int EINVAL ;
+ int MAX_ARRAY_PACKET ;
+ int OUT_RING (int) ;
+ int OUT_RING_DRM_BUFFER (int ,int) ;
+ int RADEON_CP_PACKET_COUNT_MASK ;
+ int RING_LOCALS ;
+ int drm_buffer_advance (int ,int) ;
+ int* drm_buffer_pointer_to_dword (int ,int) ;
+ int radeon_check_offset (int *,int) ;
 
 __attribute__((used)) static __inline__ int r300_emit_3d_load_vbpntr(drm_radeon_private_t *dev_priv,
-					       drm_radeon_kcmd_buffer_t *cmdbuf,
-					       u32 header)
+            drm_radeon_kcmd_buffer_t *cmdbuf,
+            u32 header)
 {
-	int count, i, k;
-#define MAX_ARRAY_PACKET  64
-	u32 *data;
-	u32 narrays;
-	RING_LOCALS;
+ int count, i, k;
 
-	count = (header & RADEON_CP_PACKET_COUNT_MASK) >> 16;
+ u32 *data;
+ u32 narrays;
+ RING_LOCALS;
 
-	if ((count + 1) > MAX_ARRAY_PACKET) {
-		DRM_ERROR("Too large payload in 3D_LOAD_VBPNTR (count=%d)\n",
-			  count);
-		return -EINVAL;
-	}
-	/* carefully check packet contents */
+ count = (header & RADEON_CP_PACKET_COUNT_MASK) >> 16;
 
-	/* We have already read the header so advance the buffer. */
-	drm_buffer_advance(cmdbuf->buffer, 4);
+ if ((count + 1) > 64) {
+  DRM_ERROR("Too large payload in 3D_LOAD_VBPNTR (count=%d)\n",
+     count);
+  return -EINVAL;
+ }
 
-	narrays = *(u32 *)drm_buffer_pointer_to_dword(cmdbuf->buffer, 0);
-	k = 0;
-	i = 1;
-	while ((k < narrays) && (i < (count + 1))) {
-		i++;		/* skip attribute field */
-		data = drm_buffer_pointer_to_dword(cmdbuf->buffer, i);
-		if (!radeon_check_offset(dev_priv, *data)) {
-			DRM_ERROR
-			    ("Offset failed range check (k=%d i=%d) while processing 3D_LOAD_VBPNTR packet.\n",
-			     k, i);
-			return -EINVAL;
-		}
-		k++;
-		i++;
-		if (k == narrays)
-			break;
-		/* have one more to process, they come in pairs */
-		data = drm_buffer_pointer_to_dword(cmdbuf->buffer, i);
-		if (!radeon_check_offset(dev_priv, *data)) {
-			DRM_ERROR
-			    ("Offset failed range check (k=%d i=%d) while processing 3D_LOAD_VBPNTR packet.\n",
-			     k, i);
-			return -EINVAL;
-		}
-		k++;
-		i++;
-	}
-	/* do the counts match what we expect ? */
-	if ((k != narrays) || (i != (count + 1))) {
-		DRM_ERROR
-		    ("Malformed 3D_LOAD_VBPNTR packet (k=%d i=%d narrays=%d count+1=%d).\n",
-		     k, i, narrays, count + 1);
-		return -EINVAL;
-	}
 
-	/* all clear, output packet */
 
-	BEGIN_RING(count + 2);
-	OUT_RING(header);
-	OUT_RING_DRM_BUFFER(cmdbuf->buffer, count + 1);
-	ADVANCE_RING();
+ drm_buffer_advance(cmdbuf->buffer, 4);
 
-	return 0;
+ narrays = *(u32 *)drm_buffer_pointer_to_dword(cmdbuf->buffer, 0);
+ k = 0;
+ i = 1;
+ while ((k < narrays) && (i < (count + 1))) {
+  i++;
+  data = drm_buffer_pointer_to_dword(cmdbuf->buffer, i);
+  if (!radeon_check_offset(dev_priv, *data)) {
+   DRM_ERROR
+       ("Offset failed range check (k=%d i=%d) while processing 3D_LOAD_VBPNTR packet.\n",
+        k, i);
+   return -EINVAL;
+  }
+  k++;
+  i++;
+  if (k == narrays)
+   break;
+
+  data = drm_buffer_pointer_to_dword(cmdbuf->buffer, i);
+  if (!radeon_check_offset(dev_priv, *data)) {
+   DRM_ERROR
+       ("Offset failed range check (k=%d i=%d) while processing 3D_LOAD_VBPNTR packet.\n",
+        k, i);
+   return -EINVAL;
+  }
+  k++;
+  i++;
+ }
+
+ if ((k != narrays) || (i != (count + 1))) {
+  DRM_ERROR
+      ("Malformed 3D_LOAD_VBPNTR packet (k=%d i=%d narrays=%d count+1=%d).\n",
+       k, i, narrays, count + 1);
+  return -EINVAL;
+ }
+
+
+
+ BEGIN_RING(count + 2);
+ OUT_RING(header);
+ OUT_RING_DRM_BUFFER(cmdbuf->buffer, count + 1);
+ ADVANCE_RING();
+
+ return 0;
 }

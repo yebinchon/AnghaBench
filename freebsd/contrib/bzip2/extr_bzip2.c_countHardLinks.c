@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct MY_STAT {scalar_t__ st_nlink; } ;
-typedef  scalar_t__ IntNative ;
-typedef  scalar_t__ Int32 ;
-typedef  int /*<<< orphan*/  Char ;
+typedef scalar_t__ IntNative ;
+typedef scalar_t__ Int32 ;
+typedef int Char ;
 
-/* Variables and functions */
- scalar_t__ MY_LSTAT (int /*<<< orphan*/ *,struct MY_STAT*) ; 
 
-__attribute__((used)) static 
+ scalar_t__ MY_LSTAT (int *,struct MY_STAT*) ;
+
+__attribute__((used)) static
 Int32 countHardLinks ( Char* name )
-{  
-   IntNative      i;
+{
+   IntNative i;
    struct MY_STAT statBuf;
 
    i = MY_LSTAT ( name, &statBuf );

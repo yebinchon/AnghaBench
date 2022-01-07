@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct lev_storage_file {long long secret; scalar_t__ type; int content_type; scalar_t__ local_id; int /*<<< orphan*/  mtime; int /*<<< orphan*/  size; scalar_t__ data; } ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct lev_storage_file {long long secret; scalar_t__ type; int content_type; scalar_t__ local_id; int mtime; int size; scalar_t__ data; } ;
 struct connection {int dummy; } ;
-struct TYPE_7__ {scalar_t__ local_id; TYPE_1__* B; int /*<<< orphan*/  offset; int /*<<< orphan*/ * data; scalar_t__ corrupted; scalar_t__ aio; int /*<<< orphan*/  refcnt; } ;
-typedef  TYPE_2__ metafile_t ;
-struct TYPE_6__ {int /*<<< orphan*/  volume_id; int /*<<< orphan*/  abs_filename; } ;
+struct TYPE_7__ {scalar_t__ local_id; TYPE_1__* B; int offset; int * data; scalar_t__ corrupted; scalar_t__ aio; int refcnt; } ;
+typedef TYPE_2__ metafile_t ;
+struct TYPE_6__ {int volume_id; int abs_filename; } ;
 
-/* Variables and functions */
- scalar_t__ LEV_STORAGE_FILE ; 
- long long STORAGE_SECRET_MASK ; 
- int ct_last ; 
- int http_try_x_accel_redirect (struct connection*,TYPE_2__*,long long,int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  redirect_retries_content_type ; 
- int /*<<< orphan*/  redirect_retries_corrupted ; 
- int /*<<< orphan*/  redirect_retries_local_id ; 
- int /*<<< orphan*/  redirect_retries_meta_aio ; 
- int /*<<< orphan*/  redirect_retries_secret ; 
- int /*<<< orphan*/  redirect_retries_type ; 
- int /*<<< orphan*/  update_binlog_read_stat (TYPE_2__*,int) ; 
- int /*<<< orphan*/  vkprintf (int,char*,...) ; 
- int /*<<< orphan*/  write_http_doc (struct connection*,void*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+ scalar_t__ LEV_STORAGE_FILE ;
+ long long STORAGE_SECRET_MASK ;
+ int ct_last ;
+ int http_try_x_accel_redirect (struct connection*,TYPE_2__*,long long,int,int,int *) ;
+ int redirect_retries_content_type ;
+ int redirect_retries_corrupted ;
+ int redirect_retries_local_id ;
+ int redirect_retries_meta_aio ;
+ int redirect_retries_secret ;
+ int redirect_retries_type ;
+ int update_binlog_read_stat (TYPE_2__*,int) ;
+ int vkprintf (int,char*,...) ;
+ int write_http_doc (struct connection*,void*,int ,int ,int) ;
 
 int http_return_file (struct connection *c, metafile_t *meta, long long secret, int content_type) {
-  if (meta == NULL) {
+  if (meta == ((void*)0)) {
     vkprintf (1, "http_return_file: meta == NULL\n");
     return -500;
   }

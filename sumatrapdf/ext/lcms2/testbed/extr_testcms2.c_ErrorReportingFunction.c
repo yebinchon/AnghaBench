@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  cmsUInt32Number ;
-typedef  int /*<<< orphan*/  cmsContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ReasonToFailBuffer ; 
- int /*<<< orphan*/  SimultaneousErrors ; 
- scalar_t__ TEXT_ERROR_BUFFER_SIZE ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  TrappedError ; 
- int /*<<< orphan*/  cmsUNUSED_PARAMETER (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strncpy (int /*<<< orphan*/ ,char const*,scalar_t__) ; 
+
+
+
+typedef int cmsUInt32Number ;
+typedef int cmsContext ;
+
+
+ int ReasonToFailBuffer ;
+ int SimultaneousErrors ;
+ scalar_t__ TEXT_ERROR_BUFFER_SIZE ;
+ int TRUE ;
+ int TrappedError ;
+ int cmsUNUSED_PARAMETER (int ) ;
+ int strncpy (int ,char const*,scalar_t__) ;
 
 __attribute__((used)) static
 void ErrorReportingFunction(cmsContext ContextID, cmsUInt32Number ErrorCode, const char *Text)

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  robj ;
-typedef  int /*<<< orphan*/  redisDb ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dbAdd (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  dbOverwrite (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  incrRefCount (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * lookupKeyWrite (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  removeExpire (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  signalModifiedKey (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int robj ;
+typedef int redisDb ;
+
+
+ int dbAdd (int *,int *,int *) ;
+ int dbOverwrite (int *,int *,int *) ;
+ int incrRefCount (int *) ;
+ int * lookupKeyWrite (int *,int *) ;
+ int removeExpire (int *,int *) ;
+ int signalModifiedKey (int *,int *) ;
 
 void setKey(redisDb *db, robj *key, robj *val) {
-    if (lookupKeyWrite(db,key) == NULL) {
+    if (lookupKeyWrite(db,key) == ((void*)0)) {
         dbAdd(db,key,val);
     } else {
         dbOverwrite(db,key,val);

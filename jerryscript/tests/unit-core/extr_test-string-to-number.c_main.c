@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  nums ;
-typedef  int /*<<< orphan*/  jerry_char_t ;
-typedef  scalar_t__ const ecma_number_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INFINITY ; 
- int /*<<< orphan*/  NAN ; 
- int /*<<< orphan*/  TEST_INIT () ; 
- int /*<<< orphan*/  ecma_number_is_nan (scalar_t__ const) ; 
- scalar_t__ ecma_utf8_string_to_number (int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lit_zt_utf8_string_size (int /*<<< orphan*/  const*) ; 
+
+
+
+typedef int uint32_t ;
+typedef int nums ;
+typedef int jerry_char_t ;
+typedef scalar_t__ const ecma_number_t ;
+
+
+ int INFINITY ;
+ int NAN ;
+ int TEST_INIT () ;
+ int ecma_number_is_nan (scalar_t__ const) ;
+ scalar_t__ ecma_utf8_string_to_number (int const*,int ) ;
+ int lit_zt_utf8_string_size (int const*) ;
 
 int
 main (void)

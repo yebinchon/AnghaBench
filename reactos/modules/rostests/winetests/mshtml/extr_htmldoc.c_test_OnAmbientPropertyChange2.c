@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  IOleControl ;
-typedef  int /*<<< orphan*/  IHTMLDocument2 ;
-typedef  scalar_t__ HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DISPID_AMBIENT_PALETTE ; 
- scalar_t__ FAILED (scalar_t__) ; 
- scalar_t__ IHTMLDocument2_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IID_IOleControl ; 
- scalar_t__ IOleControl_OnAmbientPropertyChange (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IOleControl_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
+
+
+
+typedef int IOleControl ;
+typedef int IHTMLDocument2 ;
+typedef scalar_t__ HRESULT ;
+
+
+ int DISPID_AMBIENT_PALETTE ;
+ scalar_t__ FAILED (scalar_t__) ;
+ scalar_t__ IHTMLDocument2_QueryInterface (int *,int *,void**) ;
+ int IID_IOleControl ;
+ scalar_t__ IOleControl_OnAmbientPropertyChange (int *,int ) ;
+ int IOleControl_Release (int *) ;
+ scalar_t__ S_OK ;
+ int ok (int,char*,scalar_t__) ;
 
 __attribute__((used)) static void test_OnAmbientPropertyChange2(IHTMLDocument2 *doc)
 {
-    IOleControl *control = NULL;
+    IOleControl *control = ((void*)0);
     HRESULT hres;
 
     hres = IHTMLDocument2_QueryInterface(doc, &IID_IOleControl, (void**)&control);

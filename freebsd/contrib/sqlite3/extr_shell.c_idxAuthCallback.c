@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {TYPE_2__* pWrite; TYPE_3__* pTable; } ;
-typedef  TYPE_1__ sqlite3expert ;
+typedef TYPE_1__ sqlite3expert ;
 struct TYPE_7__ {char* zName; struct TYPE_7__* pNext; } ;
 struct TYPE_6__ {int eOp; struct TYPE_6__* pNext; TYPE_3__* pTab; } ;
-typedef  TYPE_2__ IdxWrite ;
-typedef  TYPE_3__ IdxTable ;
+typedef TYPE_2__ IdxWrite ;
+typedef TYPE_3__ IdxTable ;
 
-/* Variables and functions */
- int SQLITE_DELETE ; 
- int SQLITE_INSERT ; 
- int SQLITE_OK ; 
- int SQLITE_UPDATE ; 
- TYPE_2__* idxMalloc (int*,int) ; 
- scalar_t__ sqlite3_stricmp (char const*,char*) ; 
+
+ int SQLITE_DELETE ;
+ int SQLITE_INSERT ;
+ int SQLITE_OK ;
+ int SQLITE_UPDATE ;
+ TYPE_2__* idxMalloc (int*,int) ;
+ scalar_t__ sqlite3_stricmp (char const*,char*) ;
 
 __attribute__((used)) static int idxAuthCallback(
   void *pCtx,

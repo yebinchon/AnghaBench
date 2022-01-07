@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_7__ ;
-typedef  struct TYPE_15__   TYPE_6__ ;
-typedef  struct TYPE_14__   TYPE_5__ ;
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int value ;
-typedef  int u32 ;
+
+
+typedef struct TYPE_16__ TYPE_7__ ;
+typedef struct TYPE_15__ TYPE_6__ ;
+typedef struct TYPE_14__ TYPE_5__ ;
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int value ;
+typedef int u32 ;
 struct TYPE_14__ {int H; int L; } ;
 struct TYPE_15__ {TYPE_5__ part; } ;
 struct TYPE_12__ {int H; int L; } ;
@@ -26,15 +26,15 @@ struct TYPE_13__ {TYPE_3__ part; } ;
 struct TYPE_10__ {int PR; int EP; int T0; int S; int Z; int C; int V; int E; int ES; int EX; int LE; int P; } ;
 struct TYPE_11__ {TYPE_1__ part; } ;
 struct TYPE_16__ {int TOP; int LOP; int* CT; int RA0; int WA0; int RX; int RY; TYPE_6__ AC; TYPE_4__ P; TYPE_2__ ProgControlPort; } ;
-typedef  TYPE_7__ scudspregs_struct ;
-typedef  int /*<<< orphan*/  YuiScudsp ;
+typedef TYPE_7__ scudspregs_struct ;
+typedef int YuiScudsp ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ScuDspGetRegisters (TYPE_7__*) ; 
- int /*<<< orphan*/  ScuDspSetRegisters (TYPE_7__*) ; 
+
+ int ScuDspGetRegisters (TYPE_7__*) ;
+ int ScuDspSetRegisters (TYPE_7__*) ;
 
 __attribute__((used)) static void scudspsetRegister( YuiScudsp *scudsp, int nReg, u32 value ) {
-  /* set register number <nReg> to value <value> in proc <scudsp> */
+
 
   scudspregs_struct scudspregs;
   ScuDspGetRegisters(&scudspregs);
@@ -54,7 +54,7 @@ __attribute__((used)) static void scudspsetRegister( YuiScudsp *scudsp, int nReg
   case 11: scudspregs.ProgControlPort.part.P = value; break;
   case 12: scudspregs.TOP = value; break;
   case 13: scudspregs.LOP = value; break;
-  case 14: 
+  case 14:
     scudspregs.CT[0] = (value>>24) & 0xff;
     scudspregs.CT[1] = (value>>16) & 0xff;
     scudspregs.CT[2] = (value>>8) & 0xff;

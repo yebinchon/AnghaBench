@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct rxrpc_connection {scalar_t__ active_chans; int /*<<< orphan*/  channel_lock; int /*<<< orphan*/  debug_id; } ;
 
-/* Variables and functions */
- scalar_t__ RXRPC_ACTIVE_CHANS_MASK ; 
- int /*<<< orphan*/  _enter (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  _leave (char*) ; 
- int /*<<< orphan*/  rxrpc_activate_channels_locked (struct rxrpc_connection*) ; 
- int /*<<< orphan*/  rxrpc_client_activate_chans ; 
- int /*<<< orphan*/  spin_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  trace_rxrpc_client (struct rxrpc_connection*,int,int /*<<< orphan*/ ) ; 
+
+
+
+struct rxrpc_connection {scalar_t__ active_chans; int channel_lock; int debug_id; } ;
+
+
+ scalar_t__ RXRPC_ACTIVE_CHANS_MASK ;
+ int _enter (char*,int ) ;
+ int _leave (char*) ;
+ int rxrpc_activate_channels_locked (struct rxrpc_connection*) ;
+ int rxrpc_client_activate_chans ;
+ int spin_lock (int *) ;
+ int spin_unlock (int *) ;
+ int trace_rxrpc_client (struct rxrpc_connection*,int,int ) ;
 
 __attribute__((used)) static void rxrpc_activate_channels(struct rxrpc_connection *conn)
 {
-	_enter("%d", conn->debug_id);
+ _enter("%d", conn->debug_id);
 
-	trace_rxrpc_client(conn, -1, rxrpc_client_activate_chans);
+ trace_rxrpc_client(conn, -1, rxrpc_client_activate_chans);
 
-	if (conn->active_chans == RXRPC_ACTIVE_CHANS_MASK)
-		return;
+ if (conn->active_chans == RXRPC_ACTIVE_CHANS_MASK)
+  return;
 
-	spin_lock(&conn->channel_lock);
-	rxrpc_activate_channels_locked(conn);
-	spin_unlock(&conn->channel_lock);
-	_leave("");
+ spin_lock(&conn->channel_lock);
+ rxrpc_activate_channels_locked(conn);
+ spin_unlock(&conn->channel_lock);
+ _leave("");
 }

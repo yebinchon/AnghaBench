@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  GhbValue ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * ghb_create_copy_mask (int /*<<< orphan*/ *) ; 
- int ghb_dict_get_int (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  ghb_dict_remove (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  ghb_dict_set (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * ghb_get_job_settings (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ghb_scan_handle () ; 
- int /*<<< orphan*/  hb_preset_job_add_audio (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int GhbValue ;
+
+
+ int * ghb_create_copy_mask (int *) ;
+ int ghb_dict_get_int (int *,char*) ;
+ int ghb_dict_remove (int *,char*) ;
+ int ghb_dict_set (int *,char*,int *) ;
+ int * ghb_get_job_settings (int *) ;
+ int ghb_scan_handle () ;
+ int hb_preset_job_add_audio (int ,int,int *,int *) ;
 
 void
 ghb_set_pref_audio_settings(GhbValue *settings)
 {
-    int       title_id;
+    int title_id;
     GhbValue *copy_mask;
 
     copy_mask = ghb_create_copy_mask(settings);

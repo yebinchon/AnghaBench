@@ -1,46 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ CGroupController ;
 
-/* Variables and functions */
- scalar_t__ IN_SET (char const,int /*<<< orphan*/ ,char,char) ; 
- scalar_t__ STR_IN_SET (char const*,char*,char*,char*) ; 
- scalar_t__ _CGROUP_CONTROLLER_MAX ; 
- char* cgroup_controller_to_string (scalar_t__) ; 
- scalar_t__ memcmp (char const*,char const*,size_t) ; 
- scalar_t__ startswith (char const*,char*) ; 
- char* strdup (char const*) ; 
- char* strjoin (char*,char const*) ; 
- size_t strlen (char const*) ; 
- char* strrchr (char const*,char) ; 
+
+
+
+typedef scalar_t__ CGroupController ;
+
+
+ scalar_t__ IN_SET (char const,int ,char,char) ;
+ scalar_t__ STR_IN_SET (char const*,char*,char*,char*) ;
+ scalar_t__ _CGROUP_CONTROLLER_MAX ;
+ char* cgroup_controller_to_string (scalar_t__) ;
+ scalar_t__ memcmp (char const*,char const*,size_t) ;
+ scalar_t__ startswith (char const*,char*) ;
+ char* strdup (char const*) ;
+ char* strjoin (char*,char const*) ;
+ size_t strlen (char const*) ;
+ char* strrchr (char const*,char) ;
 
 char *cg_escape(const char *p) {
-        bool need_prefix = false;
-
-        /* This implements very minimal escaping for names to be used
-         * as file names in the cgroup tree: any name which might
-         * conflict with a kernel name or is prefixed with '_' is
-         * prefixed with a '_'. That way, when reading cgroup names it
-         * is sufficient to remove a single prefixing underscore if
-         * there is one. */
-
-        /* The return value of this function (unlike cg_unescape())
-         * needs free()! */
-
+        bool need_prefix = 0;
         if (IN_SET(p[0], 0, '_', '.') ||
             STR_IN_SET(p, "notify_on_release", "release_agent", "tasks") ||
             startswith(p, "cgroup."))
-                need_prefix = true;
+                need_prefix = 1;
         else {
                 const char *dot;
 
@@ -60,7 +49,7 @@ char *cg_escape(const char *p) {
                                 if (memcmp(p, n, l) != 0)
                                         continue;
 
-                                need_prefix = true;
+                                need_prefix = 1;
                                 break;
                         }
                 }

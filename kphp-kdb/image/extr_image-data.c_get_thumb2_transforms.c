@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct thumb2 {int width; int max_height; int min_height; } ;
 struct TYPE_5__ {int width; int height; int x; int y; } ;
-typedef  TYPE_1__ RectangleInfo ;
+typedef TYPE_1__ RectangleInfo ;
 
-/* Variables and functions */
- int THUMB2_CROP_MASK ; 
- int THUMB2_RESIZE_MASK ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int resize_height (int,int,int) ; 
+
+ int THUMB2_CROP_MASK ;
+ int THUMB2_RESIZE_MASK ;
+ int assert (int) ;
+ int memset (TYPE_1__*,int ,int) ;
+ int resize_height (int,int,int) ;
 
 __attribute__((used)) static int get_thumb2_transforms (int width, int height, struct thumb2 *u, RectangleInfo *resize_rect, RectangleInfo *crop_rect) {
   memset (resize_rect, 0, sizeof (RectangleInfo));

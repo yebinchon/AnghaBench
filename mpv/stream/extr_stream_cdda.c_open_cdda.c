@@ -1,65 +1,65 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_27__   TYPE_4__ ;
-typedef  struct TYPE_26__   TYPE_3__ ;
-typedef  struct TYPE_25__   TYPE_2__ ;
-typedef  struct TYPE_24__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_25__ {char* path; int seekable; int streaming; char* demuxer; int /*<<< orphan*/  close; int /*<<< orphan*/  get_size; int /*<<< orphan*/  control; int /*<<< orphan*/  seek; int /*<<< orphan*/  fill_buffer; TYPE_4__* priv; int /*<<< orphan*/  global; } ;
-typedef  TYPE_2__ stream_t ;
+
+
+typedef struct TYPE_27__ TYPE_4__ ;
+typedef struct TYPE_26__ TYPE_3__ ;
+typedef struct TYPE_25__ TYPE_2__ ;
+typedef struct TYPE_24__ TYPE_1__ ;
+
+
+struct TYPE_25__ {char* path; int seekable; int streaming; char* demuxer; int close; int get_size; int control; int seek; int fill_buffer; TYPE_4__* priv; int global; } ;
+typedef TYPE_2__ stream_t ;
 struct TYPE_26__ {int tracks; TYPE_1__* disc_toc; scalar_t__ nsectors; } ;
-typedef  TYPE_3__ cdrom_drive_t ;
-struct TYPE_27__ {int paranoia_mode; int toc_offset; char* device; scalar_t__ speed; int* span; scalar_t__ search_overlap; scalar_t__ start_sector; scalar_t__ sector; int /*<<< orphan*/ * cdp; scalar_t__ skip; int /*<<< orphan*/  end_sector; scalar_t__ toc_bias; TYPE_3__* cd; scalar_t__ sector_size; } ;
-typedef  TYPE_4__ cdda_priv ;
+typedef TYPE_3__ cdrom_drive_t ;
+struct TYPE_27__ {int paranoia_mode; int toc_offset; char* device; scalar_t__ speed; int* span; scalar_t__ search_overlap; scalar_t__ start_sector; scalar_t__ sector; int * cdp; scalar_t__ skip; int end_sector; scalar_t__ toc_bias; TYPE_3__* cd; scalar_t__ sector_size; } ;
+typedef TYPE_4__ cdda_priv ;
 struct TYPE_24__ {int dwStartSector; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CDDA_MESSAGE_FORGETIT ; 
- char* DEFAULT_CDROM_DEVICE ; 
- int /*<<< orphan*/  MP_ERR (TYPE_2__*,char*) ; 
- int PARANOIA_MODE_DISABLE ; 
- int PARANOIA_MODE_FULL ; 
- int PARANOIA_MODE_NEVERSKIP ; 
- int PARANOIA_MODE_OVERLAP ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int STREAM_ERROR ; 
- int STREAM_OK ; 
- int /*<<< orphan*/  cdda_close (TYPE_3__*) ; 
- scalar_t__ cdda_disc_firstsector (TYPE_3__*) ; 
- int /*<<< orphan*/  cdda_disc_lastsector (TYPE_3__*) ; 
- TYPE_3__* cdda_identify (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- TYPE_3__* cdda_identify_scsi (char*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ cdda_open (TYPE_3__*) ; 
- int /*<<< orphan*/  cdda_speed_set (TYPE_3__*,scalar_t__) ; 
- scalar_t__ cdda_track_firstsector (TYPE_3__*,int) ; 
- int /*<<< orphan*/  cdda_track_lastsector (TYPE_3__*,int) ; 
- int cdda_tracks (TYPE_3__*) ; 
- int /*<<< orphan*/  cdda_verbose_set (TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  close_cdda ; 
- int /*<<< orphan*/  control ; 
- int /*<<< orphan*/  fill_buffer ; 
- int /*<<< orphan*/  free (TYPE_4__*) ; 
- int /*<<< orphan*/  get_size ; 
- int /*<<< orphan*/  m_option_type_string ; 
- TYPE_4__* mp_get_config_group (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mp_read_option_raw (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *,char**) ; 
- int /*<<< orphan*/ * paranoia_init (TYPE_3__*) ; 
- int /*<<< orphan*/  paranoia_modeset (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  paranoia_overlapset (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  paranoia_seek (int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  print_cdtext (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  seek ; 
- int /*<<< orphan*/  stream_cdda_conf ; 
- int /*<<< orphan*/  talloc_steal (TYPE_2__*,char*) ; 
+
+ int CDDA_MESSAGE_FORGETIT ;
+ char* DEFAULT_CDROM_DEVICE ;
+ int MP_ERR (TYPE_2__*,char*) ;
+ int PARANOIA_MODE_DISABLE ;
+ int PARANOIA_MODE_FULL ;
+ int PARANOIA_MODE_NEVERSKIP ;
+ int PARANOIA_MODE_OVERLAP ;
+ int SEEK_SET ;
+ int STREAM_ERROR ;
+ int STREAM_OK ;
+ int cdda_close (TYPE_3__*) ;
+ scalar_t__ cdda_disc_firstsector (TYPE_3__*) ;
+ int cdda_disc_lastsector (TYPE_3__*) ;
+ TYPE_3__* cdda_identify (char*,int ,int *) ;
+ TYPE_3__* cdda_identify_scsi (char*,char*,int ,int *) ;
+ scalar_t__ cdda_open (TYPE_3__*) ;
+ int cdda_speed_set (TYPE_3__*,scalar_t__) ;
+ scalar_t__ cdda_track_firstsector (TYPE_3__*,int) ;
+ int cdda_track_lastsector (TYPE_3__*,int) ;
+ int cdda_tracks (TYPE_3__*) ;
+ int cdda_verbose_set (TYPE_3__*,int ,int ) ;
+ int close_cdda ;
+ int control ;
+ int fill_buffer ;
+ int free (TYPE_4__*) ;
+ int get_size ;
+ int m_option_type_string ;
+ TYPE_4__* mp_get_config_group (TYPE_2__*,int ,int *) ;
+ int mp_read_option_raw (int ,char*,int *,char**) ;
+ int * paranoia_init (TYPE_3__*) ;
+ int paranoia_modeset (int *,int) ;
+ int paranoia_overlapset (int *,scalar_t__) ;
+ int paranoia_seek (int *,scalar_t__,int ) ;
+ int print_cdtext (TYPE_2__*,int ) ;
+ int seek ;
+ int stream_cdda_conf ;
+ int talloc_steal (TYPE_2__*,char*) ;
 
 __attribute__((used)) static int open_cdda(stream_t *st)
 {
@@ -68,7 +68,7 @@ __attribute__((used)) static int open_cdda(stream_t *st)
     cdda_priv *p = priv;
     int mode = p->paranoia_mode;
     int offset = p->toc_offset;
-    cdrom_drive_t *cdd = NULL;
+    cdrom_drive_t *cdd = ((void*)0);
     int last_track;
 
     char *global_device;
@@ -84,11 +84,11 @@ __attribute__((used)) static int open_cdda(stream_t *st)
         p->device = DEFAULT_CDROM_DEVICE;
     }
 
-#if defined(__NetBSD__)
-    cdd = cdda_identify_scsi(p->device, p->device, 0, NULL);
-#else
-    cdd = cdda_identify(p->device, 0, NULL);
-#endif
+
+
+
+    cdd = cdda_identify(p->device, 0, ((void*)0));
+
 
     if (!cdd) {
         MP_ERR(st, "Can't open CDDA device.\n");
@@ -137,7 +137,7 @@ __attribute__((used)) static int open_cdda(stream_t *st)
         priv->end_sector = cdda_disc_lastsector(cdd);
 
     priv->cdp = paranoia_init(cdd);
-    if (priv->cdp == NULL) {
+    if (priv->cdp == ((void*)0)) {
         cdda_close(cdd);
         free(priv);
         return STREAM_ERROR;
@@ -172,12 +172,12 @@ __attribute__((used)) static int open_cdda(stream_t *st)
 
     st->fill_buffer = fill_buffer;
     st->seek = seek;
-    st->seekable = true;
+    st->seekable = 1;
     st->control = control;
     st->get_size = get_size;
     st->close = close_cdda;
 
-    st->streaming = true;
+    st->streaming = 1;
 
     st->demuxer = "+disc";
 

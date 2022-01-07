@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int nFanout; } ;
-typedef  TYPE_1__ DbParameters ;
+typedef TYPE_1__ DbParameters ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DB_KEY_BYTES ; 
- int /*<<< orphan*/  snprintf (char*,int /*<<< orphan*/ ,char*,int,...) ; 
+
+ int DB_KEY_BYTES ;
+ int snprintf (char*,int ,char*,int,...) ;
 
 __attribute__((used)) static void dbFormatKey(
   DbParameters *pParam,
   int iLevel,
-  int iKey,                       /* Key value */
-  char *aBuf                      /* Write key string here */
+  int iKey,
+  char *aBuf
 ){
   if( iLevel==0 ){
     snprintf(aBuf, DB_KEY_BYTES, "k.%.10d", iKey);

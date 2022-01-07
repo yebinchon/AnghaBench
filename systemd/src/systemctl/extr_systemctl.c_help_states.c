@@ -1,62 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  AutomountState ; 
- int /*<<< orphan*/  DUMP_STRING_TABLE (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DeviceState ; 
- int /*<<< orphan*/  MountState ; 
- int /*<<< orphan*/  PathState ; 
- int /*<<< orphan*/  ScopeState ; 
- int /*<<< orphan*/  ServiceState ; 
- int /*<<< orphan*/  SliceState ; 
- int /*<<< orphan*/  SocketState ; 
- int /*<<< orphan*/  SwapState ; 
- int /*<<< orphan*/  TargetState ; 
- int /*<<< orphan*/  TimerState ; 
- int /*<<< orphan*/  UnitActiveState ; 
- int /*<<< orphan*/  UnitFileState ; 
- int /*<<< orphan*/  UnitLoadState ; 
- int /*<<< orphan*/  _AUTOMOUNT_STATE_MAX ; 
- int /*<<< orphan*/  _DEVICE_STATE_MAX ; 
- int /*<<< orphan*/  _MOUNT_STATE_MAX ; 
- int /*<<< orphan*/  _PATH_STATE_MAX ; 
- int /*<<< orphan*/  _SCOPE_STATE_MAX ; 
- int /*<<< orphan*/  _SERVICE_STATE_MAX ; 
- int /*<<< orphan*/  _SLICE_STATE_MAX ; 
- int /*<<< orphan*/  _SOCKET_STATE_MAX ; 
- int /*<<< orphan*/  _SWAP_STATE_MAX ; 
- int /*<<< orphan*/  _TARGET_STATE_MAX ; 
- int /*<<< orphan*/  _TIMER_STATE_MAX ; 
- int /*<<< orphan*/  _UNIT_ACTIVE_STATE_MAX ; 
- int /*<<< orphan*/  _UNIT_FILE_STATE_MAX ; 
- int /*<<< orphan*/  _UNIT_LOAD_STATE_MAX ; 
- int /*<<< orphan*/  arg_no_legend ; 
- int /*<<< orphan*/  automount_state ; 
- int /*<<< orphan*/  device_state ; 
- int /*<<< orphan*/  mount_state ; 
- int /*<<< orphan*/  path_state ; 
- int /*<<< orphan*/  puts (char*) ; 
- int /*<<< orphan*/  scope_state ; 
- int /*<<< orphan*/  service_state ; 
- int /*<<< orphan*/  slice_state ; 
- int /*<<< orphan*/  socket_state ; 
- int /*<<< orphan*/  swap_state ; 
- int /*<<< orphan*/  target_state ; 
- int /*<<< orphan*/  timer_state ; 
- int /*<<< orphan*/  unit_active_state ; 
- int /*<<< orphan*/  unit_file_state ; 
- int /*<<< orphan*/  unit_load_state ; 
+ int AutomountState ;
+ int DUMP_STRING_TABLE (int ,int ,int ) ;
+ int DeviceState ;
+ int MountState ;
+ int PathState ;
+ int ScopeState ;
+ int ServiceState ;
+ int SliceState ;
+ int SocketState ;
+ int SwapState ;
+ int TargetState ;
+ int TimerState ;
+ int UnitActiveState ;
+ int UnitFileState ;
+ int UnitLoadState ;
+ int _AUTOMOUNT_STATE_MAX ;
+ int _DEVICE_STATE_MAX ;
+ int _MOUNT_STATE_MAX ;
+ int _PATH_STATE_MAX ;
+ int _SCOPE_STATE_MAX ;
+ int _SERVICE_STATE_MAX ;
+ int _SLICE_STATE_MAX ;
+ int _SOCKET_STATE_MAX ;
+ int _SWAP_STATE_MAX ;
+ int _TARGET_STATE_MAX ;
+ int _TIMER_STATE_MAX ;
+ int _UNIT_ACTIVE_STATE_MAX ;
+ int _UNIT_FILE_STATE_MAX ;
+ int _UNIT_LOAD_STATE_MAX ;
+ int arg_no_legend ;
+ int automount_state ;
+ int device_state ;
+ int mount_state ;
+ int path_state ;
+ int puts (char*) ;
+ int scope_state ;
+ int service_state ;
+ int slice_state ;
+ int socket_state ;
+ int swap_state ;
+ int target_state ;
+ int timer_state ;
+ int unit_active_state ;
+ int unit_file_state ;
+ int unit_load_state ;
 
 __attribute__((used)) static void help_states(void) {
         if (!arg_no_legend)

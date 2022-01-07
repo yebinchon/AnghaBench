@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u32 ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u32 ;
 struct TYPE_2__ {int* pal; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EL_32X ; 
- int /*<<< orphan*/  EL_UIO ; 
- int PAHW_MCD ; 
- TYPE_1__* Pico32xMem ; 
- int PicoAHW ; 
- int PicoRead8_io (int) ; 
- int PicoRead8_mcd_io (int) ; 
- int /*<<< orphan*/  SekPc ; 
- int /*<<< orphan*/  elprintf (int /*<<< orphan*/ ,char*,int,int,...) ; 
- int p32x_reg_read16 (int) ; 
- int p32x_vdp_read16 (int) ; 
- int* str_mars ; 
+
+ int EL_32X ;
+ int EL_UIO ;
+ int PAHW_MCD ;
+ TYPE_1__* Pico32xMem ;
+ int PicoAHW ;
+ int PicoRead8_io (int) ;
+ int PicoRead8_mcd_io (int) ;
+ int SekPc ;
+ int elprintf (int ,char*,int,int,...) ;
+ int p32x_reg_read16 (int) ;
+ int p32x_vdp_read16 (int) ;
+ int* str_mars ;
 
 __attribute__((used)) static u32 PicoRead8_32x_on(u32 a)
 {
   u32 d = 0;
-  if ((a & 0xffc0) == 0x5100) { // a15100
+  if ((a & 0xffc0) == 0x5100) {
     d = p32x_reg_read16(a);
     goto out_16to8;
   }
@@ -43,17 +43,17 @@ __attribute__((used)) static u32 PicoRead8_32x_on(u32 a)
       return PicoRead8_io(a);
   }
 
-  if ((a & 0xfff0) == 0x5180) { // a15180
+  if ((a & 0xfff0) == 0x5180) {
     d = p32x_vdp_read16(a);
     goto out_16to8;
   }
 
-  if ((a & 0xfe00) == 0x5200) { // a15200
+  if ((a & 0xfe00) == 0x5200) {
     d = Pico32xMem->pal[(a & 0x1ff) / 2];
     goto out_16to8;
   }
 
-  if ((a & 0xfffc) == 0x30ec) { // a130ec
+  if ((a & 0xfffc) == 0x30ec) {
     d = str_mars[a & 3];
     goto out;
   }

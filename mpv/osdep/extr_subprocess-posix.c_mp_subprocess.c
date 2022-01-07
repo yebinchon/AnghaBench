@@ -1,62 +1,62 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  (* subprocess_read_cb ) (void*,char*,scalar_t__) ;
-struct pollfd {int fd; scalar_t__ revents; int /*<<< orphan*/  events; } ;
+
+
+
+
+typedef int (* subprocess_read_cb ) (void*,char*,scalar_t__) ;
+struct pollfd {int fd; scalar_t__ revents; int events; } ;
 struct mp_cancel {int dummy; } ;
-typedef  scalar_t__ ssize_t ;
-typedef  int /*<<< orphan*/  posix_spawn_file_actions_t ;
-typedef  int pid_t ;
-typedef  int /*<<< orphan*/  buf ;
+typedef scalar_t__ ssize_t ;
+typedef int posix_spawn_file_actions_t ;
+typedef int pid_t ;
+typedef int buf ;
 
-/* Variables and functions */
- scalar_t__ EINTR ; 
- int /*<<< orphan*/  MP_ARRAY_SIZE (struct pollfd*) ; 
- int MP_SUBPROCESS_EKILLED_BY_US ; 
- int O_CLOEXEC ; 
- int O_RDONLY ; 
- int /*<<< orphan*/  POLLIN ; 
- int /*<<< orphan*/  SAFE_CLOSE (int) ; 
- int /*<<< orphan*/  SIGKILL ; 
- int WEXITSTATUS (int) ; 
- scalar_t__ WIFEXITED (int) ; 
- int /*<<< orphan*/  environ ; 
- scalar_t__ errno ; 
- int /*<<< orphan*/  kill (int,int /*<<< orphan*/ ) ; 
- int mp_cancel_get_fd (struct mp_cancel*) ; 
- scalar_t__ mp_make_cloexec_pipe (int*) ; 
- int open (char*,int) ; 
- scalar_t__ posix_spawn_file_actions_adddup2 (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  posix_spawn_file_actions_destroy (int /*<<< orphan*/ *) ; 
- scalar_t__ posix_spawn_file_actions_init (int /*<<< orphan*/ *) ; 
- scalar_t__ posix_spawnp (int*,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char**,int /*<<< orphan*/ ) ; 
- scalar_t__ read (int,char*,int) ; 
- scalar_t__ sparse_poll (struct pollfd*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  stub1 (void*,char*,scalar_t__) ; 
- scalar_t__ waitpid (int,int*,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ EINTR ;
+ int MP_ARRAY_SIZE (struct pollfd*) ;
+ int MP_SUBPROCESS_EKILLED_BY_US ;
+ int O_CLOEXEC ;
+ int O_RDONLY ;
+ int POLLIN ;
+ int SAFE_CLOSE (int) ;
+ int SIGKILL ;
+ int WEXITSTATUS (int) ;
+ scalar_t__ WIFEXITED (int) ;
+ int environ ;
+ scalar_t__ errno ;
+ int kill (int,int ) ;
+ int mp_cancel_get_fd (struct mp_cancel*) ;
+ scalar_t__ mp_make_cloexec_pipe (int*) ;
+ int open (char*,int) ;
+ scalar_t__ posix_spawn_file_actions_adddup2 (int *,int,int) ;
+ int posix_spawn_file_actions_destroy (int *) ;
+ scalar_t__ posix_spawn_file_actions_init (int *) ;
+ scalar_t__ posix_spawnp (int*,char*,int *,int *,char**,int ) ;
+ scalar_t__ read (int,char*,int) ;
+ scalar_t__ sparse_poll (struct pollfd*,int ,int) ;
+ int stub1 (void*,char*,scalar_t__) ;
+ scalar_t__ waitpid (int,int*,int ) ;
 
 int mp_subprocess(char **args, struct mp_cancel *cancel, void *ctx,
                   subprocess_read_cb on_stdout, subprocess_read_cb on_stderr,
                   char **error)
 {
     posix_spawn_file_actions_t fa;
-    bool fa_destroy = false;
+    bool fa_destroy = 0;
     int status = -1;
     int p_stdout[2] = {-1, -1};
     int p_stderr[2] = {-1, -1};
     int devnull = -1;
     pid_t pid = -1;
-    bool spawned = false;
-    bool killed_by_us = false;
+    bool spawned = 0;
+    bool killed_by_us = 0;
 
     if (on_stdout && mp_make_cloexec_pipe(p_stdout) < 0)
         goto done;
@@ -69,8 +69,8 @@ int mp_subprocess(char **args, struct mp_cancel *cancel, void *ctx,
 
     if (posix_spawn_file_actions_init(&fa))
         goto done;
-    fa_destroy = true;
-    // redirect stdin/stdout/stderr
+    fa_destroy = 1;
+
     if (posix_spawn_file_actions_adddup2(&fa, devnull, 0))
         goto done;
     if (p_stdout[1] >= 0 && posix_spawn_file_actions_adddup2(&fa, p_stdout[1], 1))
@@ -78,11 +78,11 @@ int mp_subprocess(char **args, struct mp_cancel *cancel, void *ctx,
     if (p_stderr[1] >= 0 && posix_spawn_file_actions_adddup2(&fa, p_stderr[1], 2))
         goto done;
 
-    if (posix_spawnp(&pid, args[0], &fa, NULL, args, environ)) {
+    if (posix_spawnp(&pid, args[0], &fa, ((void*)0), args, environ)) {
         pid = -1;
         goto done;
     }
-    spawned = true;
+    spawned = 1;
 
     SAFE_CLOSE(p_stdout[1]);
     SAFE_CLOSE(p_stderr[1]);
@@ -113,15 +113,15 @@ int mp_subprocess(char **args, struct mp_cancel *cancel, void *ctx,
         }
         if (fds[2].revents) {
             kill(pid, SIGKILL);
-            killed_by_us = true;
+            killed_by_us = 1;
             break;
         }
     }
 
-    // Note: it can happen that a child process closes the pipe, but does not
-    //       terminate yet. In this case, we would have to run waitpid() in
-    //       a separate thread and use pthread_cancel(), or use other weird
-    //       and laborious tricks. So this isn't handled yet.
+
+
+
+
     while (waitpid(pid, &status, 0) < 0 && errno == EINTR) {}
 
 done:
@@ -137,7 +137,7 @@ done:
         *error = "init";
         status = -1;
     } else if (WIFEXITED(status)) {
-        *error = NULL;
+        *error = ((void*)0);
         status = WEXITSTATUS(status);
     } else {
         *error = "killed";

@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct platform_device {int /*<<< orphan*/  dev; } ;
-struct gpio_bank {int /*<<< orphan*/  dbck; scalar_t__ dbck_flag; int /*<<< orphan*/  chip; int /*<<< orphan*/  nb; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  clk_unprepare (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cpu_pm_unregister_notifier (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  gpiochip_remove (int /*<<< orphan*/ *) ; 
- struct gpio_bank* platform_get_drvdata (struct platform_device*) ; 
- int /*<<< orphan*/  pm_runtime_disable (int /*<<< orphan*/ *) ; 
+
+
+
+struct platform_device {int dev; } ;
+struct gpio_bank {int dbck; scalar_t__ dbck_flag; int chip; int nb; } ;
+
+
+ int clk_unprepare (int ) ;
+ int cpu_pm_unregister_notifier (int *) ;
+ int gpiochip_remove (int *) ;
+ struct gpio_bank* platform_get_drvdata (struct platform_device*) ;
+ int pm_runtime_disable (int *) ;
 
 __attribute__((used)) static int omap_gpio_remove(struct platform_device *pdev)
 {
-	struct gpio_bank *bank = platform_get_drvdata(pdev);
+ struct gpio_bank *bank = platform_get_drvdata(pdev);
 
-	cpu_pm_unregister_notifier(&bank->nb);
-	gpiochip_remove(&bank->chip);
-	pm_runtime_disable(&pdev->dev);
-	if (bank->dbck_flag)
-		clk_unprepare(bank->dbck);
+ cpu_pm_unregister_notifier(&bank->nb);
+ gpiochip_remove(&bank->chip);
+ pm_runtime_disable(&pdev->dev);
+ if (bank->dbck_flag)
+  clk_unprepare(bank->dbck);
 
-	return 0;
+ return 0;
 }

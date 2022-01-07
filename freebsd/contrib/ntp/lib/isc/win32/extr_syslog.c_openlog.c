@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  RegisterEventSource (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  hAppLog ; 
+ int RegisterEventSource (int *,char const*) ;
+ int hAppLog ;
 
 void
 openlog(const char *name, int flags, ...) {
-	/* Get a handle to the Application event log */
-	hAppLog = RegisterEventSource(NULL, name);
+
+ hAppLog = RegisterEventSource(((void*)0), name);
 }

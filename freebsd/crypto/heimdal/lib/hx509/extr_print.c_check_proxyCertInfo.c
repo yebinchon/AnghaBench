@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct cert_status {int isproxy; } ;
-typedef  int /*<<< orphan*/  hx509_validate_ctx ;
-typedef  enum critical_flag { ____Placeholder_critical_flag } critical_flag ;
-typedef  int /*<<< orphan*/  Extension ;
+typedef int hx509_validate_ctx ;
+typedef enum critical_flag { ____Placeholder_critical_flag } critical_flag ;
+typedef int Extension ;
 
-/* Variables and functions */
- int /*<<< orphan*/  check_Null (int /*<<< orphan*/ ,struct cert_status*,int,int /*<<< orphan*/  const*) ; 
+
+ int check_Null (int ,struct cert_status*,int,int const*) ;
 
 __attribute__((used)) static int
 check_proxyCertInfo(hx509_validate_ctx ctx,
-		    struct cert_status *status,
-		    enum critical_flag cf,
-		    const Extension *e)
+      struct cert_status *status,
+      enum critical_flag cf,
+      const Extension *e)
 {
     check_Null(ctx, status, cf, e);
     status->isproxy = 1;

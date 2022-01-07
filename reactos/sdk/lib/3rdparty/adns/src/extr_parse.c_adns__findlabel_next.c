@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int cbyte; int dglen; int max; int* dmend_r; scalar_t__ namelen; int /*<<< orphan*/  qu; int /*<<< orphan*/  serv; int /*<<< orphan*/  ads; scalar_t__ dgram; } ;
-typedef  TYPE_1__ findlabel_state ;
-typedef  int /*<<< orphan*/  adns_status ;
 
-/* Variables and functions */
- scalar_t__ DNS_MAXDOMAIN ; 
- int /*<<< orphan*/  GET_B (int,int) ; 
- int /*<<< orphan*/  adns__diag (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  adns_s_answerdomaintoolong ; 
- int /*<<< orphan*/  adns_s_invalidresponse ; 
- int /*<<< orphan*/  adns_s_ok ; 
- int /*<<< orphan*/  adns_s_unknownformat ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int cbyte; int dglen; int max; int* dmend_r; scalar_t__ namelen; int qu; int serv; int ads; scalar_t__ dgram; } ;
+typedef TYPE_1__ findlabel_state ;
+typedef int adns_status ;
+
+
+ scalar_t__ DNS_MAXDOMAIN ;
+ int GET_B (int,int) ;
+ int adns__diag (int ,int ,int ,char*) ;
+ int adns_s_answerdomaintoolong ;
+ int adns_s_invalidresponse ;
+ int adns_s_ok ;
+ int adns_s_unknownformat ;
 
 adns_status adns__findlabel_next(findlabel_state *fls,
-				 int *lablen_r, int *labstart_r) {
+     int *lablen_r, int *labstart_r) {
   int lablen, jumpto;
   const char *dgram;
 

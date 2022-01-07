@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int w; int adrmode0; int mode3; int reg0; } ;
 
-/* Variables and functions */
- int MODE_pAN ; 
- TYPE_1__ d ; 
- int /*<<< orphan*/  desa_ascii (char) ; 
- int /*<<< orphan*/  desa_char (char) ; 
- int /*<<< orphan*/  get_ea_2 (int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  get_movemreg (int,int) ; 
- int immW () ; 
+
+ int MODE_pAN ;
+ TYPE_1__ d ;
+ int desa_ascii (char) ;
+ int desa_char (char) ;
+ int get_ea_2 (int,int,int ) ;
+ int get_movemreg (int,int) ;
+ int immW () ;
 
 __attribute__((used)) static int check_desa_movem()
 {
@@ -42,14 +42,14 @@ __attribute__((used)) static int check_desa_movem()
   reg0 = d.reg0;
   regmsk = immW();
 
-  /*  -> reg */
+
   if(w&02000)
     {
       get_ea_2(mode3, reg0, 0);
       desa_char(',');
       get_movemreg(regmsk,0);
     }
-  /* -> mem */
+
   else
     {
       get_movemreg(regmsk, (mode3==MODE_pAN) ? 15 : 0);

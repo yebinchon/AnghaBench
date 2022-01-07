@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  CdioList_t ;
-typedef  int /*<<< orphan*/  CdioDataFree_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  _cdio_list_begin (int /*<<< orphan*/ *) ; 
- scalar_t__ _cdio_list_length (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  _cdio_list_node_free (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int CdioList_t ;
+typedef int CdioDataFree_t ;
+
+
+ int _cdio_list_begin (int *) ;
+ scalar_t__ _cdio_list_length (int *) ;
+ int _cdio_list_node_free (int ,int,int ) ;
+ int free (int *) ;
 
 void
 _cdio_list_free (CdioList_t *p_list, int free_data, CdioDataFree_t free_fn)

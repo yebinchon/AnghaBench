@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VARIANT ;
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int VARIANT ;
 struct TYPE_8__ {TYPE_1__* doc_obj; } ;
 struct TYPE_7__ {scalar_t__ nscontainer; } ;
-typedef  TYPE_2__ HTMLDocument ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  DWORD ;
+typedef TYPE_2__ HTMLDocument ;
+typedef int HRESULT ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FIXME (char*) ; 
- int /*<<< orphan*/  NSCMD_ITALIC ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TRACE (char*,TYPE_2__*) ; 
- int /*<<< orphan*/  UPDATE_UI ; 
- int /*<<< orphan*/  do_ns_command (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  update_doc (TYPE_2__*,int /*<<< orphan*/ ) ; 
+
+ int FIXME (char*) ;
+ int NSCMD_ITALIC ;
+ int S_OK ;
+ int TRACE (char*,TYPE_2__*) ;
+ int UPDATE_UI ;
+ int do_ns_command (TYPE_2__*,int ,int *) ;
+ int update_doc (TYPE_2__*,int ) ;
 
 __attribute__((used)) static HRESULT exec_italic(HTMLDocument *This, DWORD cmdexecopt, VARIANT *in, VARIANT *out)
 {
@@ -36,7 +36,7 @@ __attribute__((used)) static HRESULT exec_italic(HTMLDocument *This, DWORD cmdex
         FIXME("unsupported args\n");
 
     if(This->doc_obj->nscontainer)
-        do_ns_command(This, NSCMD_ITALIC, NULL);
+        do_ns_command(This, NSCMD_ITALIC, ((void*)0));
 
     update_doc(This, UPDATE_UI);
     return S_OK;

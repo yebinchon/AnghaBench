@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  smpActive; } ;
-struct TYPE_3__ {int /*<<< orphan*/  registered; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GLimp_FrontEndSleep () ; 
- int /*<<< orphan*/  R_IssueRenderCommands (int /*<<< orphan*/ ) ; 
- TYPE_2__ glConfig ; 
- int /*<<< orphan*/  qfalse ; 
- TYPE_1__ tr ; 
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int smpActive; } ;
+struct TYPE_3__ {int registered; } ;
+
+
+ int GLimp_FrontEndSleep () ;
+ int R_IssueRenderCommands (int ) ;
+ TYPE_2__ glConfig ;
+ int qfalse ;
+ TYPE_1__ tr ;
 
 void R_SyncRenderThread( void ) {
-	if ( !tr.registered ) {
-		return;
-	}
-	R_IssueRenderCommands( qfalse );
+ if ( !tr.registered ) {
+  return;
+ }
+ R_IssueRenderCommands( qfalse );
 
-	if ( !glConfig.smpActive ) {
-		return;
-	}
-	GLimp_FrontEndSleep();
+ if ( !glConfig.smpActive ) {
+  return;
+ }
+ GLimp_FrontEndSleep();
 }

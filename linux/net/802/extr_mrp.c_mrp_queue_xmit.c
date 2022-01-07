@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct sk_buff {int dummy; } ;
-struct mrp_applicant {int /*<<< orphan*/  queue; } ;
+struct mrp_applicant {int queue; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dev_queue_xmit (struct sk_buff*) ; 
- struct sk_buff* skb_dequeue (int /*<<< orphan*/ *) ; 
+
+ int dev_queue_xmit (struct sk_buff*) ;
+ struct sk_buff* skb_dequeue (int *) ;
 
 __attribute__((used)) static void mrp_queue_xmit(struct mrp_applicant *app)
 {
-	struct sk_buff *skb;
+ struct sk_buff *skb;
 
-	while ((skb = skb_dequeue(&app->queue)))
-		dev_queue_xmit(skb);
+ while ((skb = skb_dequeue(&app->queue)))
+  dev_queue_xmit(skb);
 }

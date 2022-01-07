@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT ;
-typedef  int /*<<< orphan*/  PACK ;
 
-/* Variables and functions */
- int PackGetStr (int /*<<< orphan*/ *,char*,char*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int UINT ;
+typedef int PACK ;
+
+
+ int PackGetStr (int *,char*,char*,int ) ;
 
 bool GetHubnameAndUsernameFromPack(PACK *p, char *username, UINT username_size,
-								   char *hubname, UINT hubname_size)
+           char *hubname, UINT hubname_size)
 {
-	// Validate arguments
-	if (p == NULL || username == NULL || hubname == NULL)
-	{
-		return false;
-	}
 
-	if (PackGetStr(p, "username", username, username_size) == false)
-	{
-		return false;
-	}
-	if (PackGetStr(p, "hubname", hubname, hubname_size) == false)
-	{
-		return false;
-	}
-	return true;
+ if (p == ((void*)0) || username == ((void*)0) || hubname == ((void*)0))
+ {
+  return 0;
+ }
+
+ if (PackGetStr(p, "username", username, username_size) == 0)
+ {
+  return 0;
+ }
+ if (PackGetStr(p, "hubname", hubname, hubname_size) == 0)
+ {
+  return 0;
+ }
+ return 1;
 }

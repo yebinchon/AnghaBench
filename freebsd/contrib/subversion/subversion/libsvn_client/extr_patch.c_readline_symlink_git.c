@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int len; int /*<<< orphan*/  data; } ;
-typedef  TYPE_1__ svn_stringbuf_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  readline_symlink (void*,TYPE_1__**,char const**,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strncmp (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  svn_stringbuf_remove (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int len; int data; } ;
+typedef TYPE_1__ svn_stringbuf_t ;
+typedef int svn_error_t ;
+typedef int svn_boolean_t ;
+typedef int apr_pool_t ;
+
+
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int readline_symlink (void*,TYPE_1__**,char const**,int *,int *,int *) ;
+ int strncmp (int ,char*,int) ;
+ int svn_stringbuf_remove (TYPE_1__*,int ,int) ;
 
 __attribute__((used)) static svn_error_t *
 readline_symlink_git(void *baton, svn_stringbuf_t **line, const char **eol_str,
@@ -33,7 +33,7 @@ readline_symlink_git(void *baton, svn_stringbuf_t **line, const char **eol_str,
                            result_pool, scratch_pool));
 
   if (*line && (*line)->len > 5 && !strncmp((*line)->data, "link ", 5))
-    svn_stringbuf_remove(*line, 0, 5); /* Skip "link " */
+    svn_stringbuf_remove(*line, 0, 5);
 
   return SVN_NO_ERROR;
 }

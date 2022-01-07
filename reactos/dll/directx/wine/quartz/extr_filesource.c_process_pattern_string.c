@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int ULONG ;
-typedef  char* LPCWSTR ;
-typedef  int /*<<< orphan*/  IAsyncReader ;
-typedef  scalar_t__ HRESULT ;
-typedef  int BYTE ;
 
-/* Variables and functions */
- scalar_t__ E_INVALIDARG ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HEAP_ZERO_MEMORY ; 
- int* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*) ; 
- scalar_t__ IAsyncReader_SyncRead (int /*<<< orphan*/ *,int,int,int*) ; 
- scalar_t__ S_FALSE ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ) ; 
- int byte_from_hex_char (char) ; 
- int /*<<< orphan*/  debugstr_w (char*) ; 
- scalar_t__ isxdigitW (char) ; 
- int /*<<< orphan*/  memset (int*,int,int) ; 
- char* strchrW (char*,char) ; 
- int strtolW (char*,int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int ULONG ;
+typedef char* LPCWSTR ;
+typedef int IAsyncReader ;
+typedef scalar_t__ HRESULT ;
+typedef int BYTE ;
+
+
+ scalar_t__ E_INVALIDARG ;
+ int GetProcessHeap () ;
+ int HEAP_ZERO_MEMORY ;
+ int* HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,int*) ;
+ scalar_t__ IAsyncReader_SyncRead (int *,int,int,int*) ;
+ scalar_t__ S_FALSE ;
+ scalar_t__ S_OK ;
+ int TRACE (char*,int ) ;
+ int byte_from_hex_char (char) ;
+ int debugstr_w (char*) ;
+ scalar_t__ isxdigitW (char) ;
+ int memset (int*,int,int) ;
+ char* strchrW (char*,char) ;
+ int strtolW (char*,int *,int) ;
 
 __attribute__((used)) static HRESULT process_pattern_string(LPCWSTR wszPatternString, IAsyncReader * pReader)
 {
@@ -44,23 +44,23 @@ __attribute__((used)) static HRESULT process_pattern_string(LPCWSTR wszPatternSt
     ULONG strpos;
 
     TRACE("\t\tPattern string: %s\n", debugstr_w(wszPatternString));
-    
-    /* format: "offset, bytestocompare, mask, value" */
 
-    ulOffset = strtolW(wszPatternString, NULL, 10);
+
+
+    ulOffset = strtolW(wszPatternString, ((void*)0), 10);
 
     if (!(wszPatternString = strchrW(wszPatternString, ',')))
         return E_INVALIDARG;
 
-    wszPatternString++; /* skip ',' */
+    wszPatternString++;
 
-    ulBytes = strtolW(wszPatternString, NULL, 10);
+    ulBytes = strtolW(wszPatternString, ((void*)0), 10);
 
     pbMask = HeapAlloc(GetProcessHeap(), 0, ulBytes);
     pbValue = HeapAlloc(GetProcessHeap(), HEAP_ZERO_MEMORY, ulBytes);
     pbFile = HeapAlloc(GetProcessHeap(), 0, ulBytes);
 
-    /* default mask is match everything */
+
     memset(pbMask, 0xFF, ulBytes);
 
     if (!(wszPatternString = strchrW(wszPatternString, ',')))
@@ -68,12 +68,12 @@ __attribute__((used)) static HRESULT process_pattern_string(LPCWSTR wszPatternSt
 
     if (hr == S_OK)
     {
-        wszPatternString++; /* skip ',' */
+        wszPatternString++;
         while (!isxdigitW(*wszPatternString) && (*wszPatternString != ',')) wszPatternString++;
 
         for (strpos = 0; isxdigitW(*wszPatternString) && (strpos/2 < ulBytes); wszPatternString++, strpos++)
         {
-            if ((strpos % 2) == 1) /* odd numbered position */
+            if ((strpos % 2) == 1)
                 pbMask[strpos / 2] |= byte_from_hex_char(*wszPatternString);
             else
                 pbMask[strpos / 2] = byte_from_hex_char(*wszPatternString) << 4;
@@ -82,7 +82,7 @@ __attribute__((used)) static HRESULT process_pattern_string(LPCWSTR wszPatternSt
         if (!(wszPatternString = strchrW(wszPatternString, ',')))
             hr = E_INVALIDARG;
         else
-            wszPatternString++; /* skip ',' */
+            wszPatternString++;
     }
 
     if (hr == S_OK)
@@ -92,7 +92,7 @@ __attribute__((used)) static HRESULT process_pattern_string(LPCWSTR wszPatternSt
 
         for (strpos = 0; isxdigitW(*wszPatternString) && (strpos/2 < ulBytes); wszPatternString++, strpos++)
         {
-            if ((strpos % 2) == 1) /* odd numbered position */
+            if ((strpos % 2) == 1)
                 pbValue[strpos / 2] |= byte_from_hex_char(*wszPatternString);
             else
                 pbValue[strpos / 2] = byte_from_hex_char(*wszPatternString) << 4;
@@ -117,8 +117,8 @@ __attribute__((used)) static HRESULT process_pattern_string(LPCWSTR wszPatternSt
     HeapFree(GetProcessHeap(), 0, pbValue);
     HeapFree(GetProcessHeap(), 0, pbFile);
 
-    /* if we encountered no errors with this string, and there is a following tuple, then we
-     * have to match that as well to succeed */
+
+
     if ((hr == S_OK) && (wszPatternString = strchrW(wszPatternString, ',')))
         return process_pattern_string(wszPatternString + 1, pReader);
     else

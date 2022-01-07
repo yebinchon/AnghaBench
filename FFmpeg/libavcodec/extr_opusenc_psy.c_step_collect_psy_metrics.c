@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_7__ ;
-typedef  struct TYPE_15__   TYPE_6__ ;
-typedef  struct TYPE_14__   TYPE_5__ ;
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_16__ {int /*<<< orphan*/  (* mdct ) (TYPE_7__*,float*,int /*<<< orphan*/ *,int) ;} ;
-struct TYPE_15__ {int nb_samples; int /*<<< orphan*/ * extended_data; } ;
+
+
+typedef struct TYPE_16__ TYPE_7__ ;
+typedef struct TYPE_15__ TYPE_6__ ;
+typedef struct TYPE_14__ TYPE_5__ ;
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+struct TYPE_16__ {int (* mdct ) (TYPE_7__*,float*,int *,int) ;} ;
+struct TYPE_15__ {int nb_samples; int * extended_data; } ;
 struct TYPE_14__ {float excitation; float excitation_init; float excitation_dist; } ;
-struct TYPE_13__ {int bsize_analysis; int /*<<< orphan*/ ** bfilter_hi; int /*<<< orphan*/ ** bfilter_lo; TYPE_5__** ex; TYPE_2__* avctx; int /*<<< orphan*/ * scratch; TYPE_7__** mdct; int /*<<< orphan*/ * window; TYPE_1__* dsp; int /*<<< orphan*/  bufqueue; TYPE_3__** steps; } ;
-struct TYPE_12__ {int index; float** coeffs; float*** bands; float** energy; int silence; float* stereo; float** change_amp; float total_change; int /*<<< orphan*/ ** tone; } ;
+struct TYPE_13__ {int bsize_analysis; int ** bfilter_hi; int ** bfilter_lo; TYPE_5__** ex; TYPE_2__* avctx; int * scratch; TYPE_7__** mdct; int * window; TYPE_1__* dsp; int bufqueue; TYPE_3__** steps; } ;
+struct TYPE_12__ {int index; float** coeffs; float*** bands; float** energy; int silence; float* stereo; float** change_amp; float total_change; int ** tone; } ;
 struct TYPE_11__ {int channels; } ;
-struct TYPE_10__ {int /*<<< orphan*/  (* vector_fmul ) (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ;} ;
-typedef  TYPE_3__ OpusPsyStep ;
-typedef  TYPE_4__ OpusPsyContext ;
-typedef  TYPE_5__ OpusBandExcitation ;
-typedef  TYPE_6__ AVFrame ;
+struct TYPE_10__ {int (* vector_fmul ) (int *,int *,int ,int) ;} ;
+typedef TYPE_3__ OpusPsyStep ;
+typedef TYPE_4__ OpusPsyContext ;
+typedef TYPE_5__ OpusBandExcitation ;
+typedef TYPE_6__ AVFrame ;
 
-/* Variables and functions */
- int CELT_MAX_BANDS ; 
- float FFMAX (float,float) ; 
- int FFMIN (int const,int) ; 
- int OPUS_BLOCK_SIZE (size_t) ; 
- scalar_t__ av_clipf (int,int,double) ; 
- float bessel_filter (int /*<<< orphan*/ *,float) ; 
- int expf (float) ; 
- TYPE_6__* ff_bufqueue_peek (int /*<<< orphan*/ ,int) ; 
- size_t* ff_celt_freq_bands ; 
- int* ff_celt_freq_range ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- float sqrtf (float) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  stub2 (TYPE_7__*,float*,int /*<<< orphan*/ *,int) ; 
+
+ int CELT_MAX_BANDS ;
+ float FFMAX (float,float) ;
+ int FFMIN (int const,int) ;
+ int OPUS_BLOCK_SIZE (size_t) ;
+ scalar_t__ av_clipf (int,int,double) ;
+ float bessel_filter (int *,float) ;
+ int expf (float) ;
+ TYPE_6__* ff_bufqueue_peek (int ,int) ;
+ size_t* ff_celt_freq_bands ;
+ int* ff_celt_freq_range ;
+ int memcpy (int *,int ,int) ;
+ float sqrtf (float) ;
+ int stub1 (int *,int *,int ,int) ;
+ int stub2 (TYPE_7__*,float*,int *,int) ;
 
 __attribute__((used)) static void step_collect_psy_metrics(OpusPsyContext *s, int index)
 {

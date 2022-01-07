@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_7__ {size_t dicBufSize; size_t dicPos; int /*<<< orphan*/ * dic; } ;
-typedef  scalar_t__ SRes ;
-typedef  int /*<<< orphan*/  ISzAlloc ;
-typedef  scalar_t__ ELzmaStatus ;
-typedef  int /*<<< orphan*/  ELzmaFinishMode ;
-typedef  TYPE_1__ CLzmaDec ;
 
-/* Variables and functions */
- scalar_t__ LZMA_STATUS_NEEDS_MORE_INPUT ; 
- scalar_t__ LzmaDec_AllocateProbs (TYPE_1__*,int /*<<< orphan*/  const*,unsigned int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LzmaDec_Construct (TYPE_1__*) ; 
- scalar_t__ LzmaDec_DecodeToDic (TYPE_1__*,size_t,int /*<<< orphan*/  const*,size_t*,int /*<<< orphan*/ ,scalar_t__*) ; 
- int /*<<< orphan*/  LzmaDec_FreeProbs (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LzmaDec_Init (TYPE_1__*) ; 
- size_t RC_INIT_SIZE ; 
- scalar_t__ SZ_ERROR_INPUT_EOF ; 
- scalar_t__ SZ_OK ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_7__ {size_t dicBufSize; size_t dicPos; int * dic; } ;
+typedef scalar_t__ SRes ;
+typedef int ISzAlloc ;
+typedef scalar_t__ ELzmaStatus ;
+typedef int ELzmaFinishMode ;
+typedef TYPE_1__ CLzmaDec ;
+
+
+ scalar_t__ LZMA_STATUS_NEEDS_MORE_INPUT ;
+ scalar_t__ LzmaDec_AllocateProbs (TYPE_1__*,int const*,unsigned int,int *) ;
+ int LzmaDec_Construct (TYPE_1__*) ;
+ scalar_t__ LzmaDec_DecodeToDic (TYPE_1__*,size_t,int const*,size_t*,int ,scalar_t__*) ;
+ int LzmaDec_FreeProbs (TYPE_1__*,int *) ;
+ int LzmaDec_Init (TYPE_1__*) ;
+ size_t RC_INIT_SIZE ;
+ scalar_t__ SZ_ERROR_INPUT_EOF ;
+ scalar_t__ SZ_OK ;
 
 SRes LzmaDecode(uint8_t *dest, size_t *destLen, const uint8_t *src, size_t *srcLen,
       const uint8_t *propData, unsigned propSize, ELzmaFinishMode finishMode,

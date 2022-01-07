@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  USHORT ;
-typedef  int /*<<< orphan*/  PVOID ;
-typedef  int /*<<< orphan*/  PTDI_CONNECTION_INFORMATION ;
-typedef  int /*<<< orphan*/  PLARGE_INTEGER ;
-typedef  int /*<<< orphan*/  PIRP ;
-typedef  int /*<<< orphan*/  PIO_COMPLETION_ROUTINE ;
-typedef  int /*<<< orphan*/  PFILE_OBJECT ;
-typedef  int /*<<< orphan*/  PDEVICE_OBJECT ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AFD_DbgPrint (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  IoGetRelatedDeviceObject (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MID_TRACE ; 
- int /*<<< orphan*/  MIN_TRACE ; 
- int /*<<< orphan*/  STATUS_INSUFFICIENT_RESOURCES ; 
- int /*<<< orphan*/  STATUS_INVALID_PARAMETER ; 
- int /*<<< orphan*/  STATUS_PENDING ; 
- int /*<<< orphan*/  TDI_DISCONNECT ; 
- int /*<<< orphan*/  TdiBuildDisconnect (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TdiBuildInternalDeviceControlIrp (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TdiCall (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int USHORT ;
+typedef int PVOID ;
+typedef int PTDI_CONNECTION_INFORMATION ;
+typedef int PLARGE_INTEGER ;
+typedef int PIRP ;
+typedef int PIO_COMPLETION_ROUTINE ;
+typedef int PFILE_OBJECT ;
+typedef int PDEVICE_OBJECT ;
+typedef int NTSTATUS ;
+
+
+ int AFD_DbgPrint (int ,char*) ;
+ int IoGetRelatedDeviceObject (int ) ;
+ int MID_TRACE ;
+ int MIN_TRACE ;
+ int STATUS_INSUFFICIENT_RESOURCES ;
+ int STATUS_INVALID_PARAMETER ;
+ int STATUS_PENDING ;
+ int TDI_DISCONNECT ;
+ int TdiBuildDisconnect (int ,int ,int ,int ,int ,int ,int ,int ,int ) ;
+ int TdiBuildInternalDeviceControlIrp (int ,int ,int ,int *,int *) ;
+ int TdiCall (int ,int ,int *,int *) ;
 
 NTSTATUS TdiDisconnect(
     PIRP *Irp,
@@ -57,28 +57,28 @@ NTSTATUS TdiDisconnect(
         return STATUS_INVALID_PARAMETER;
     }
 
-    *Irp = TdiBuildInternalDeviceControlIrp(TDI_DISCONNECT,          /* Sub function */
-                                            DeviceObject,            /* Device object */
-                                            TransportObject,         /* File object */
-                                            NULL,                    /* Event */
-                                            NULL);                   /* Status */
+    *Irp = TdiBuildInternalDeviceControlIrp(TDI_DISCONNECT,
+                                            DeviceObject,
+                                            TransportObject,
+                                            ((void*)0),
+                                            ((void*)0));
 
     if (!*Irp) {
         AFD_DbgPrint(MIN_TRACE, ("Insufficient resources.\n"));
         return STATUS_INSUFFICIENT_RESOURCES;
     }
 
-    TdiBuildDisconnect(*Irp,                   /* I/O Request Packet */
-                       DeviceObject,           /* Device object */
-                       TransportObject,        /* File object */
-                       CompletionRoutine,      /* Completion routine */
-                       CompletionContext,      /* Completion context */
-                       Time,                   /* Time */
-                       Flags,                  /* Disconnect flags */
-                       RequestConnectionInfo,  /* Indication of who to disconnect */
-                       ReturnConnectionInfo);  /* Indication of who disconnected */
+    TdiBuildDisconnect(*Irp,
+                       DeviceObject,
+                       TransportObject,
+                       CompletionRoutine,
+                       CompletionContext,
+                       Time,
+                       Flags,
+                       RequestConnectionInfo,
+                       ReturnConnectionInfo);
 
-    TdiCall(*Irp, DeviceObject, NULL, NULL);
+    TdiCall(*Irp, DeviceObject, ((void*)0), ((void*)0));
 
     return STATUS_PENDING;
 }

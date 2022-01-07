@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * HDSKSPC ;
 
-/* Variables and functions */
- int ERROR_INVALID_PARAMETER ; 
- int GetLastError () ; 
- unsigned int SPDSL_IGNORE_DISK ; 
- int /*<<< orphan*/  SetLastError (int) ; 
- int /*<<< orphan*/ * SetupCreateDiskSpaceListA (void*,int,unsigned int) ; 
- int /*<<< orphan*/  SetupDestroyDiskSpaceList (int /*<<< orphan*/ *) ; 
- scalar_t__ broken (int) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
+
+
+
+typedef int * HDSKSPC ;
+
+
+ int ERROR_INVALID_PARAMETER ;
+ int GetLastError () ;
+ unsigned int SPDSL_IGNORE_DISK ;
+ int SetLastError (int) ;
+ int * SetupCreateDiskSpaceListA (void*,int,unsigned int) ;
+ int SetupDestroyDiskSpaceList (int *) ;
+ scalar_t__ broken (int) ;
+ int ok (int,char*,...) ;
 
 __attribute__((used)) static void test_SetupCreateDiskSpaceListA(void)
 {
     HDSKSPC ret;
 
-    ret = SetupCreateDiskSpaceListA(NULL, 0, 0);
-    ok(ret != NULL,
+    ret = SetupCreateDiskSpaceListA(((void*)0), 0, 0);
+    ok(ret != ((void*)0),
        "Expected SetupCreateDiskSpaceListA to return a valid handle, got NULL\n");
 
     ok(SetupDestroyDiskSpaceList(ret), "Expected SetupDestroyDiskSpaceList to succeed\n");
 
-    ret = SetupCreateDiskSpaceListA(NULL, 0, SPDSL_IGNORE_DISK);
-    ok(ret != NULL,
+    ret = SetupCreateDiskSpaceListA(((void*)0), 0, SPDSL_IGNORE_DISK);
+    ok(ret != ((void*)0),
        "Expected SetupCreateDiskSpaceListA to return a valid handle, got NULL\n");
 
     ok(SetupDestroyDiskSpaceList(ret), "Expected SetupDestroyDiskSpaceList to succeed\n");
 
     SetLastError(0xdeadbeef);
-    ret = SetupCreateDiskSpaceListA(NULL, 0, ~0U);
-    ok(ret == NULL ||
-       broken(ret != NULL), /* NT4/Win9x/Win2k */
+    ret = SetupCreateDiskSpaceListA(((void*)0), 0, ~0U);
+    ok(ret == ((void*)0) ||
+       broken(ret != ((void*)0)),
        "Expected SetupCreateDiskSpaceListA to return NULL, got %p\n", ret);
     if (!ret)
         ok(GetLastError() == ERROR_INVALID_PARAMETER,
@@ -51,29 +51,29 @@ __attribute__((used)) static void test_SetupCreateDiskSpaceListA(void)
         ok(SetupDestroyDiskSpaceList(ret), "Expected SetupDestroyDiskSpaceList to succeed\n");
 
     SetLastError(0xdeadbeef);
-    ret = SetupCreateDiskSpaceListA(NULL, 0xdeadbeef, 0);
-    ok(ret == NULL,
+    ret = SetupCreateDiskSpaceListA(((void*)0), 0xdeadbeef, 0);
+    ok(ret == ((void*)0),
        "Expected SetupCreateDiskSpaceListA to return NULL, got %p\n", ret);
     ok(GetLastError() == ERROR_INVALID_PARAMETER ||
-       broken(GetLastError() == 0xdeadbeef), /* NT4/Win9x/Win2k */
+       broken(GetLastError() == 0xdeadbeef),
        "Expected GetLastError() to return ERROR_INVALID_PARAMETER, got %u\n",
        GetLastError());
 
     SetLastError(0xdeadbeef);
     ret = SetupCreateDiskSpaceListA((void *)0xdeadbeef, 0, 0);
-    ok(ret == NULL,
+    ok(ret == ((void*)0),
        "Expected SetupCreateDiskSpaceListA to return NULL, got %p\n", ret);
     ok(GetLastError() == ERROR_INVALID_PARAMETER ||
-       broken(GetLastError() == 0xdeadbeef), /* NT4/Win9x/Win2k */
+       broken(GetLastError() == 0xdeadbeef),
        "Expected GetLastError() to return ERROR_INVALID_PARAMETER, got %u\n",
        GetLastError());
 
     SetLastError(0xdeadbeef);
     ret = SetupCreateDiskSpaceListA((void *)0xdeadbeef, 0xdeadbeef, 0);
-    ok(ret == NULL,
+    ok(ret == ((void*)0),
        "Expected SetupCreateDiskSpaceListA to return NULL, got %p\n", ret);
     ok(GetLastError() == ERROR_INVALID_PARAMETER ||
-       broken(GetLastError() == 0xdeadbeef), /* NT4/Win9x/Win2k */
+       broken(GetLastError() == 0xdeadbeef),
        "Expected GetLastError() to return ERROR_INVALID_PARAMETER, got %u\n",
        GetLastError());
 }

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t uint32_t ;
-typedef  int int32_t ;
-struct TYPE_2__ {int* refcounts; scalar_t__* screens; int /*<<< orphan*/  lock; } ;
-typedef  scalar_t__ DISPMANX_DISPLAY_HANDLE_T ;
 
-/* Variables and functions */
- scalar_t__ DISPMANX_NO_HANDLE ; 
- int /*<<< orphan*/  GX_LOG (char*,size_t) ; 
- TYPE_1__ gx ; 
- scalar_t__ vc_dispmanx_display_open (size_t) ; 
- int /*<<< orphan*/  vcos_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vcos_mutex_unlock (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef size_t uint32_t ;
+typedef int int32_t ;
+struct TYPE_2__ {int* refcounts; scalar_t__* screens; int lock; } ;
+typedef scalar_t__ DISPMANX_DISPLAY_HANDLE_T ;
+
+
+ scalar_t__ DISPMANX_NO_HANDLE ;
+ int GX_LOG (char*,size_t) ;
+ TYPE_1__ gx ;
+ scalar_t__ vc_dispmanx_display_open (size_t) ;
+ int vcos_mutex_lock (int *) ;
+ int vcos_mutex_unlock (int *) ;
 
 __attribute__((used)) static
 int32_t gx_priv_open_screen(uint32_t index, DISPMANX_DISPLAY_HANDLE_T *pscreen)

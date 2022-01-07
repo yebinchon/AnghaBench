@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_vtab ;
-typedef  int /*<<< orphan*/  sqlite3 ;
-struct TYPE_4__ {struct TYPE_4__* zCostTable; int /*<<< orphan*/  pConfig3; struct TYPE_4__* zTableName; int /*<<< orphan*/  zDbName; int /*<<< orphan*/ * db; } ;
-typedef  TYPE_1__ spellfix1_vtab ;
 
-/* Variables and functions */
- int SQLITE_OK ; 
- int /*<<< orphan*/  editDist3ConfigDelete (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  spellfix1DbExec (int*,int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  sqlite3_free (TYPE_1__*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int sqlite3_vtab ;
+typedef int sqlite3 ;
+struct TYPE_4__ {struct TYPE_4__* zCostTable; int pConfig3; struct TYPE_4__* zTableName; int zDbName; int * db; } ;
+typedef TYPE_1__ spellfix1_vtab ;
+
+
+ int SQLITE_OK ;
+ int editDist3ConfigDelete (int ) ;
+ int spellfix1DbExec (int*,int *,char*,int ,TYPE_1__*) ;
+ int sqlite3_free (TYPE_1__*) ;
 
 __attribute__((used)) static int spellfix1Uninit(int isDestroy, sqlite3_vtab *pVTab){
   spellfix1_vtab *p = (spellfix1_vtab*)pVTab;

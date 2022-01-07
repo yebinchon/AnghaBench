@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CloseSecret (int /*<<< orphan*/ *) ; 
- int LINE_LEN ; 
- int /*<<< orphan*/  LogWARN ; 
- int MakeArgs (char*,char**,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * OpenSecret (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PARSE_REDUCE ; 
- int /*<<< orphan*/  SECRETFILE ; 
- int /*<<< orphan*/  VECSIZE (char**) ; 
- scalar_t__ fgets (char*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  log_Printf (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  memset (char**,char,int) ; 
- int /*<<< orphan*/  rewind (int /*<<< orphan*/ *) ; 
- scalar_t__ strcmp (char*,char const*) ; 
- int strlen (char*) ; 
- int /*<<< orphan*/  strncpy (char*,char*,int) ; 
- char* strrchr (char const*,char) ; 
+
+
+
+typedef int FILE ;
+
+
+ int CloseSecret (int *) ;
+ int LINE_LEN ;
+ int LogWARN ;
+ int MakeArgs (char*,char**,int ,int ) ;
+ int * OpenSecret (int ) ;
+ int PARSE_REDUCE ;
+ int SECRETFILE ;
+ int VECSIZE (char**) ;
+ scalar_t__ fgets (char*,int,int *) ;
+ int log_Printf (int ,char*,int ,int) ;
+ int memset (char**,char,int) ;
+ int rewind (int *) ;
+ scalar_t__ strcmp (char*,char const*) ;
+ int strlen (char*) ;
+ int strncpy (char*,char*,int) ;
+ char* strrchr (char const*,char) ;
 
 int
 auth_SetPhoneList(const char *name, char *phone, int phonelen)
@@ -39,7 +39,7 @@ auth_SetPhoneList(const char *name, char *phone, int phonelen)
   const char *slash;
 
   fp = OpenSecret(SECRETFILE);
-  if (fp != NULL) {
+  if (fp != ((void*)0)) {
 again:
     lineno = 0;
     while (fgets(buff, sizeof buff, fp)) {
@@ -58,12 +58,12 @@ again:
           return 0;
         strncpy(phone, vector[4], phonelen - 1);
         phone[phonelen - 1] = '\0';
-        return 1;		/* Valid */
+        return 1;
       }
     }
 
-    if ((slash = strrchr(name, '\\')) != NULL && slash[1]) {
-      /* Look for the name without the leading domain */
+    if ((slash = strrchr(name, '\\')) != ((void*)0) && slash[1]) {
+
       name = slash + 1;
       rewind(fp);
       goto again;

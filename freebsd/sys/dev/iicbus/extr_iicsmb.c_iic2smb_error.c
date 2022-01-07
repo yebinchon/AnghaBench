@@ -1,62 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
-#define  IIC_EBUSBSY 138 
-#define  IIC_EBUSERR 137 
-#define  IIC_ENOACK 136 
-#define  IIC_ENOADDR 135 
-#define  IIC_ENOTSUPP 134 
-#define  IIC_EOVERFLOW 133 
-#define  IIC_ERESOURCE 132 
-#define  IIC_ESTATUS 131 
-#define  IIC_ETIMEOUT 130 
-#define  IIC_EUNDERFLOW 129 
-#define  IIC_NOERR 128 
- int SMB_EBUSERR ; 
- int SMB_EBUSY ; 
- int SMB_ENOACK ; 
- int SMB_ENOERR ; 
- int SMB_ENOTSUPP ; 
- int SMB_ETIMEOUT ; 
+ int SMB_EBUSERR ;
+ int SMB_EBUSY ;
+ int SMB_ENOACK ;
+ int SMB_ENOERR ;
+ int SMB_ENOTSUPP ;
+ int SMB_ETIMEOUT ;
 
 __attribute__((used)) static int
 iic2smb_error(int error)
 {
-	switch (error) {
-	case IIC_NOERR:
-		return (SMB_ENOERR);
-	case IIC_EBUSERR:
-		return (SMB_EBUSERR);
-	case IIC_ENOACK:
-		return (SMB_ENOACK);
-	case IIC_ETIMEOUT:
-		return (SMB_ETIMEOUT);
-	case IIC_EBUSBSY:
-		return (SMB_EBUSY);
-	case IIC_ESTATUS:
-		return (SMB_EBUSERR);
-	case IIC_EUNDERFLOW:
-		return (SMB_EBUSERR);
-	case IIC_EOVERFLOW:
-		return (SMB_EBUSERR);
-	case IIC_ENOTSUPP:
-		return (SMB_ENOTSUPP);
-	case IIC_ENOADDR:
-		return (SMB_EBUSERR);
-	case IIC_ERESOURCE:
-		return (SMB_EBUSERR);
-	default:
-		return (SMB_EBUSERR);
-	}
+ switch (error) {
+ case 128:
+  return (SMB_ENOERR);
+ case 137:
+  return (SMB_EBUSERR);
+ case 136:
+  return (SMB_ENOACK);
+ case 130:
+  return (SMB_ETIMEOUT);
+ case 138:
+  return (SMB_EBUSY);
+ case 131:
+  return (SMB_EBUSERR);
+ case 129:
+  return (SMB_EBUSERR);
+ case 133:
+  return (SMB_EBUSERR);
+ case 134:
+  return (SMB_ENOTSUPP);
+ case 135:
+  return (SMB_EBUSERR);
+ case 132:
+  return (SMB_EBUSERR);
+ default:
+  return (SMB_EBUSERR);
+ }
 }

@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
 
-/* Variables and functions */
-#define  EventIDNotificationAdded 130 
-#define  EventIDNotificationModified 129 
-#define  EventIDNotificationRemoved 128 
+
+
+
+typedef int uint8_t ;
+
+
+
+
+
 
 char *EventID_to_String(uint8_t EventID)
 {
-    char *str = NULL;
+    char *str = ((void*)0);
     switch (EventID)
     {
-        case EventIDNotificationAdded:
+        case 130:
             str = "New message";
             break;
-        case EventIDNotificationModified:
+        case 129:
             str = "Modified message";
             break;
-        case EventIDNotificationRemoved:
+        case 128:
             str = "Removed message";
             break;
         default:

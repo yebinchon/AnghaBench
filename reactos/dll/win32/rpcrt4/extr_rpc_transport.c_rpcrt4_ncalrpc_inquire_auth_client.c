@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ ULONG ;
-typedef  int /*<<< orphan*/  RpcConnection ;
-typedef  int /*<<< orphan*/ * RPC_WSTR ;
-typedef  int /*<<< orphan*/  RPC_STATUS ;
-typedef  int /*<<< orphan*/ * RPC_AUTHZ_HANDLE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FIXME (char*,...) ; 
- scalar_t__ RPC_C_AUTHN_LEVEL_PKT_PRIVACY ; 
- scalar_t__ RPC_C_AUTHN_WINNT ; 
- scalar_t__ RPC_C_AUTHZ_NONE ; 
- int /*<<< orphan*/  RPC_S_OK ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ **,scalar_t__*,scalar_t__*,scalar_t__*,scalar_t__) ; 
+
+
+
+typedef scalar_t__ ULONG ;
+typedef int RpcConnection ;
+typedef int * RPC_WSTR ;
+typedef int RPC_STATUS ;
+typedef int * RPC_AUTHZ_HANDLE ;
+
+
+ int FIXME (char*,...) ;
+ scalar_t__ RPC_C_AUTHN_LEVEL_PKT_PRIVACY ;
+ scalar_t__ RPC_C_AUTHN_WINNT ;
+ scalar_t__ RPC_C_AUTHZ_NONE ;
+ int RPC_S_OK ;
+ int TRACE (char*,int *,int **,int **,scalar_t__*,scalar_t__*,scalar_t__*,scalar_t__) ;
 
 __attribute__((used)) static RPC_STATUS rpcrt4_ncalrpc_inquire_auth_client(
     RpcConnection *conn, RPC_AUTHZ_HANDLE *privs, RPC_WSTR *server_princ_name,
@@ -34,12 +34,12 @@ __attribute__((used)) static RPC_STATUS rpcrt4_ncalrpc_inquire_auth_client(
     if (privs)
     {
         FIXME("privs not implemented\n");
-        *privs = NULL;
+        *privs = ((void*)0);
     }
     if (server_princ_name)
     {
         FIXME("server_princ_name not implemented\n");
-        *server_princ_name = NULL;
+        *server_princ_name = ((void*)0);
     }
     if (authn_level) *authn_level = RPC_C_AUTHN_LEVEL_PKT_PRIVACY;
     if (authn_svc) *authn_svc = RPC_C_AUTHN_WINNT;

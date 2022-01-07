@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Vector ;
 
-/* Variables and functions */
- int /*<<< orphan*/  emit_toplevel (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  make_file_string (char*) ; 
- int /*<<< orphan*/ * read_toplevels () ; 
- int /*<<< orphan*/  stream_stash (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stream_unstash () ; 
- int /*<<< orphan*/  vec_get (int /*<<< orphan*/ *,int) ; 
- int vec_len (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int Vector ;
+
+
+ int emit_toplevel (int ) ;
+ int make_file_string (char*) ;
+ int * read_toplevels () ;
+ int stream_stash (int ) ;
+ int stream_unstash () ;
+ int vec_get (int *,int) ;
+ int vec_len (int *) ;
 
 void read_from_string(char *buf) {
     stream_stash(make_file_string(buf));

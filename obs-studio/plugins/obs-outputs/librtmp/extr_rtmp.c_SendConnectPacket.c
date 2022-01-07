@@ -1,65 +1,65 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_18__   TYPE_6__ ;
-typedef  struct TYPE_17__   TYPE_5__ ;
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  pbuf ;
+
+
+typedef struct TYPE_18__ TYPE_6__ ;
+typedef struct TYPE_17__ TYPE_5__ ;
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+typedef int pbuf ;
 struct TYPE_18__ {scalar_t__ av_len; } ;
 struct TYPE_17__ {scalar_t__ av_len; } ;
-struct TYPE_13__ {int o_num; int /*<<< orphan*/ * o_props; } ;
+struct TYPE_13__ {int o_num; int * o_props; } ;
 struct TYPE_14__ {int protocol; int lFlags; TYPE_1__ extras; TYPE_6__ auth; TYPE_5__ pageUrl; TYPE_5__ tcUrl; TYPE_5__ swfUrl; TYPE_5__ flashVer; TYPE_5__ app; } ;
-struct TYPE_16__ {double m_fAudioCodecs; double m_fVideoCodecs; double m_fEncoding; TYPE_2__ Link; scalar_t__ m_bSendEncoding; int /*<<< orphan*/  m_numInvokes; int /*<<< orphan*/  m_outChunkSize; scalar_t__ m_bSendChunkSizeInfo; } ;
-struct TYPE_15__ {int m_nChannel; char* m_body; int m_nBodySize; scalar_t__ m_hasAbsTimestamp; scalar_t__ m_nInfoField2; scalar_t__ m_nTimeStamp; int /*<<< orphan*/  m_packetType; void* m_headerType; } ;
-typedef  TYPE_3__ RTMPPacket ;
-typedef  TYPE_4__ RTMP ;
+struct TYPE_16__ {double m_fAudioCodecs; double m_fVideoCodecs; double m_fEncoding; TYPE_2__ Link; scalar_t__ m_bSendEncoding; int m_numInvokes; int m_outChunkSize; scalar_t__ m_bSendChunkSizeInfo; } ;
+struct TYPE_15__ {int m_nChannel; char* m_body; int m_nBodySize; scalar_t__ m_hasAbsTimestamp; scalar_t__ m_nInfoField2; scalar_t__ m_nTimeStamp; int m_packetType; void* m_headerType; } ;
+typedef TYPE_3__ RTMPPacket ;
+typedef TYPE_4__ RTMP ;
 
-/* Variables and functions */
- char* AMFProp_Encode (int /*<<< orphan*/ *,char*,char*) ; 
- char* AMF_EncodeBoolean (char*,char*,int) ; 
- int /*<<< orphan*/  AMF_EncodeInt32 (char*,char*,int /*<<< orphan*/ ) ; 
- char* AMF_EncodeNamedBoolean (char*,char*,int /*<<< orphan*/ *,int) ; 
- char* AMF_EncodeNamedNumber (char*,char*,int /*<<< orphan*/ *,double) ; 
- char* AMF_EncodeNamedString (char*,char*,int /*<<< orphan*/ *,TYPE_5__*) ; 
- char* AMF_EncodeNumber (char*,char*,int /*<<< orphan*/ ) ; 
- char* AMF_EncodeString (char*,char*,TYPE_6__*) ; 
- int /*<<< orphan*/  AMF_OBJECT ; 
- int /*<<< orphan*/  AMF_OBJECT_END ; 
- int FALSE ; 
- int RTMP_FEATURE_WRITE ; 
- int RTMP_LF_AUTH ; 
- int RTMP_MAX_HEADER_SIZE ; 
- void* RTMP_PACKET_SIZE_LARGE ; 
- int /*<<< orphan*/  RTMP_PACKET_TYPE_CHUNK_SIZE ; 
- int /*<<< orphan*/  RTMP_PACKET_TYPE_INVOKE ; 
- int RTMP_SendPacket (TYPE_4__*,TYPE_3__*,int) ; 
- int TRUE ; 
- int /*<<< orphan*/  av_app ; 
- int /*<<< orphan*/  av_audioCodecs ; 
- int /*<<< orphan*/  av_capabilities ; 
- TYPE_6__ av_connect ; 
- int /*<<< orphan*/  av_flashVer ; 
- int /*<<< orphan*/  av_fpad ; 
- TYPE_5__ av_nonprivate ; 
- int /*<<< orphan*/  av_objectEncoding ; 
- int /*<<< orphan*/  av_pageUrl ; 
- int /*<<< orphan*/  av_swfUrl ; 
- int /*<<< orphan*/  av_tcUrl ; 
- int /*<<< orphan*/  av_type ; 
- int /*<<< orphan*/  av_videoCodecs ; 
- int /*<<< orphan*/  av_videoFunction ; 
+
+ char* AMFProp_Encode (int *,char*,char*) ;
+ char* AMF_EncodeBoolean (char*,char*,int) ;
+ int AMF_EncodeInt32 (char*,char*,int ) ;
+ char* AMF_EncodeNamedBoolean (char*,char*,int *,int) ;
+ char* AMF_EncodeNamedNumber (char*,char*,int *,double) ;
+ char* AMF_EncodeNamedString (char*,char*,int *,TYPE_5__*) ;
+ char* AMF_EncodeNumber (char*,char*,int ) ;
+ char* AMF_EncodeString (char*,char*,TYPE_6__*) ;
+ int AMF_OBJECT ;
+ int AMF_OBJECT_END ;
+ int FALSE ;
+ int RTMP_FEATURE_WRITE ;
+ int RTMP_LF_AUTH ;
+ int RTMP_MAX_HEADER_SIZE ;
+ void* RTMP_PACKET_SIZE_LARGE ;
+ int RTMP_PACKET_TYPE_CHUNK_SIZE ;
+ int RTMP_PACKET_TYPE_INVOKE ;
+ int RTMP_SendPacket (TYPE_4__*,TYPE_3__*,int) ;
+ int TRUE ;
+ int av_app ;
+ int av_audioCodecs ;
+ int av_capabilities ;
+ TYPE_6__ av_connect ;
+ int av_flashVer ;
+ int av_fpad ;
+ TYPE_5__ av_nonprivate ;
+ int av_objectEncoding ;
+ int av_pageUrl ;
+ int av_swfUrl ;
+ int av_tcUrl ;
+ int av_type ;
+ int av_videoCodecs ;
+ int av_videoFunction ;
 
 __attribute__((used)) static int
 SendConnectPacket(RTMP *r, RTMPPacket *cp)
@@ -89,7 +89,7 @@ SendConnectPacket(RTMP *r, RTMPPacket *cp)
             return 0;
     }
 
-    packet.m_nChannel = 0x03;	/* control channel (invoke) */
+    packet.m_nChannel = 0x03;
     packet.m_headerType = RTMP_PACKET_SIZE_LARGE;
     packet.m_packetType = RTMP_PACKET_TYPE_INVOKE;
     packet.m_nTimeStamp = 0;
@@ -155,7 +155,7 @@ SendConnectPacket(RTMP *r, RTMPPacket *cp)
     }
     if (r->m_fEncoding != 0.0 || r->m_bSendEncoding)
     {
-        /* AMF0, AMF3 not fully supported yet */
+
         enc = AMF_EncodeNamedNumber(enc, pend, &av_objectEncoding, r->m_fEncoding);
         if (!enc)
             return FALSE;
@@ -163,10 +163,10 @@ SendConnectPacket(RTMP *r, RTMPPacket *cp)
     if (enc + 3 >= pend)
         return FALSE;
     *enc++ = 0;
-    *enc++ = 0;			/* end of object - 0x00 0x00 0x09 */
+    *enc++ = 0;
     *enc++ = AMF_OBJECT_END;
 
-    /* add auth string */
+
     if (r->Link.auth.av_len)
     {
         enc = AMF_EncodeBoolean(enc, pend, r->Link.lFlags & RTMP_LF_AUTH);

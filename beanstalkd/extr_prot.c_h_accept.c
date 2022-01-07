@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct sockaddr_storage {int dummy; } ;
 struct sockaddr {int dummy; } ;
-typedef  int socklen_t ;
+typedef int socklen_t ;
 struct TYPE_5__ {int fd; scalar_t__ f; TYPE_1__* x; } ;
-struct TYPE_4__ {TYPE_2__ sock; int /*<<< orphan*/ * srv; } ;
-typedef  int /*<<< orphan*/  Server ;
-typedef  scalar_t__ Handle ;
-typedef  TYPE_1__ Conn ;
+struct TYPE_4__ {TYPE_2__ sock; int * srv; } ;
+typedef int Server ;
+typedef scalar_t__ Handle ;
+typedef TYPE_1__ Conn ;
 
-/* Variables and functions */
- scalar_t__ EAGAIN ; 
- scalar_t__ EWOULDBLOCK ; 
- int /*<<< orphan*/  F_GETFL ; 
- int /*<<< orphan*/  F_SETFL ; 
- int O_NONBLOCK ; 
- int /*<<< orphan*/  STATE_WANT_COMMAND ; 
- int /*<<< orphan*/  UNUSED_PARAMETER (short const) ; 
- int accept (int const,struct sockaddr*,int*) ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  default_tube ; 
- int /*<<< orphan*/  epollq_apply () ; 
- scalar_t__ errno ; 
- int fcntl (int,int /*<<< orphan*/ ,int) ; 
- TYPE_1__* make_conn (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printf (char*,int) ; 
- scalar_t__ prothandle ; 
- int sockwant (TYPE_2__*,char) ; 
- int /*<<< orphan*/  twarn (char*) ; 
- int /*<<< orphan*/  twarnx (char*) ; 
- scalar_t__ verbose ; 
+
+ scalar_t__ EAGAIN ;
+ scalar_t__ EWOULDBLOCK ;
+ int F_GETFL ;
+ int F_SETFL ;
+ int O_NONBLOCK ;
+ int STATE_WANT_COMMAND ;
+ int UNUSED_PARAMETER (short const) ;
+ int accept (int const,struct sockaddr*,int*) ;
+ int close (int) ;
+ int default_tube ;
+ int epollq_apply () ;
+ scalar_t__ errno ;
+ int fcntl (int,int ,int) ;
+ TYPE_1__* make_conn (int,int ,int ,int ) ;
+ int printf (char*,int) ;
+ scalar_t__ prothandle ;
+ int sockwant (TYPE_2__*,char) ;
+ int twarn (char*) ;
+ int twarnx (char*) ;
+ scalar_t__ verbose ;
 
 void
 h_accept(const int fd, const short which, Server *s)

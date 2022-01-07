@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_9__ {int* linesize; int /*<<< orphan*/ ** data; } ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_9__ {int* linesize; int ** data; } ;
 struct TYPE_7__ {int row_step; } ;
 struct TYPE_8__ {int* pheight; int* pixstep; int* linesize; TYPE_1__ out; } ;
-typedef  TYPE_2__ Stereo3DContext ;
-typedef  TYPE_3__ AVFrame ;
+typedef TYPE_2__ Stereo3DContext ;
+typedef TYPE_3__ AVFrame ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_RB24 (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  AV_RB48 (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  AV_RN16 (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  AV_RN32 (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  AV_RN64 (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  AV_WB24 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_WB48 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_WN16 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_WN32 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_WN64 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int AV_RB24 (int const*) ;
+ int AV_RB48 (int const*) ;
+ int AV_RN16 (int const*) ;
+ int AV_RN32 (int const*) ;
+ int AV_RN64 (int const*) ;
+ int AV_WB24 (int *,int ) ;
+ int AV_WB48 (int *,int ) ;
+ int AV_WN16 (int *,int ) ;
+ int AV_WN32 (int *,int ) ;
+ int AV_WN64 (int *,int ) ;
 
 __attribute__((used)) static void interleave_cols_to_any(Stereo3DContext *s, int *out_off, int p, AVFrame *in, AVFrame *out, int d)
 {

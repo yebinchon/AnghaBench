@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint64_t ;
-typedef  int /*<<< orphan*/  int32_t ;
-typedef  int /*<<< orphan*/  DCAADPCMEncContext ;
 
-/* Variables and functions */
- int DCA_ADPCM_COEFFS ; 
- int /*<<< orphan*/  FFABS (int /*<<< orphan*/  const) ; 
- int av_log2 (int /*<<< orphan*/ ) ; 
- int calc_prediction_gain (int,int /*<<< orphan*/ *,int*,int) ; 
- int find_best_filter (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  norm__ (int /*<<< orphan*/  const,int) ; 
+
+
+
+typedef int uint64_t ;
+typedef int int32_t ;
+typedef int DCAADPCMEncContext ;
+
+
+ int DCA_ADPCM_COEFFS ;
+ int FFABS (int const) ;
+ int av_log2 (int ) ;
+ int calc_prediction_gain (int,int *,int*,int) ;
+ int find_best_filter (int const*,int *,int) ;
+ int norm__ (int const,int) ;
 
 int ff_dcaadpcm_subband_analysis(const DCAADPCMEncContext *s, const int32_t *in, int len, int *diff)
 {
@@ -35,7 +35,7 @@ int ff_dcaadpcm_subband_analysis(const DCAADPCMEncContext *s, const int32_t *in,
     for (i = 0; i < len + DCA_ADPCM_COEFFS; i++)
         max |= FFABS(in[i]);
 
-    // normalize input to simplify apply_filter
+
     shift_bits = av_log2(max) - 11;
 
     for (i = 0; i < len + DCA_ADPCM_COEFFS; i++) {
@@ -50,8 +50,8 @@ int ff_dcaadpcm_subband_analysis(const DCAADPCMEncContext *s, const int32_t *in,
 
     pg = calc_prediction_gain(pred_vq, input_buffer, diff, len);
 
-    // Greater than 10db (10*log(10)) prediction gain to use ADPCM.
-    // TODO: Tune it.
+
+
     if (pg < 10)
         return -1;
 

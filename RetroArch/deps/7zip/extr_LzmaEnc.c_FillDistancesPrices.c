@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
-struct TYPE_3__ {int posEncoders; int** posSlotPrices; int distTableSize; int** distancesPrices; scalar_t__ matchPriceCount; int /*<<< orphan*/  ProbPrices; int /*<<< orphan*/ ** posSlotEncoder; } ;
-typedef  int /*<<< orphan*/  CLzmaProb ;
-typedef  TYPE_1__ CLzmaEnc ;
 
-/* Variables and functions */
- size_t GetPosSlot1 (int) ; 
- int RcTree_GetPrice (int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int RcTree_ReverseGetPrice (int,int,int,int /*<<< orphan*/ ) ; 
- int kEndPosModelIndex ; 
- int kNumAlignBits ; 
- int kNumBitPriceShiftBits ; 
- int kNumFullDistances ; 
- int kNumLenToPosStates ; 
- int /*<<< orphan*/  kNumPosSlotBits ; 
- int kStartPosModelIndex ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+struct TYPE_3__ {int posEncoders; int** posSlotPrices; int distTableSize; int** distancesPrices; scalar_t__ matchPriceCount; int ProbPrices; int ** posSlotEncoder; } ;
+typedef int CLzmaProb ;
+typedef TYPE_1__ CLzmaEnc ;
+
+
+ size_t GetPosSlot1 (int) ;
+ int RcTree_GetPrice (int const*,int ,int,int ) ;
+ int RcTree_ReverseGetPrice (int,int,int,int ) ;
+ int kEndPosModelIndex ;
+ int kNumAlignBits ;
+ int kNumBitPriceShiftBits ;
+ int kNumFullDistances ;
+ int kNumLenToPosStates ;
+ int kNumPosSlotBits ;
+ int kStartPosModelIndex ;
 
 __attribute__((used)) static void FillDistancesPrices(CLzmaEnc *p)
 {

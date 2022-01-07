@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct connectbundle {int dummy; } ;
-struct conncache {int /*<<< orphan*/  hash; } ;
+struct conncache {int hash; } ;
 
-/* Variables and functions */
- void* Curl_hash_add (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,struct connectbundle*) ; 
- int FALSE ; 
- int TRUE ; 
- int /*<<< orphan*/  strlen (char*) ; 
+
+ void* Curl_hash_add (int *,char*,int ,struct connectbundle*) ;
+ int FALSE ;
+ int TRUE ;
+ int strlen (char*) ;
 
 __attribute__((used)) static bool conncache_add_bundle(struct conncache *connc,
                                  char *key,

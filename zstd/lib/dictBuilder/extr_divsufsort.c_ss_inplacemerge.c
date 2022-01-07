@@ -1,19 +1,11 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int ss_compare (unsigned char const*,int const*,int const*,int) ; 
- int /*<<< orphan*/  ss_rotate (int*,int*,int*) ; 
+ int ss_compare (unsigned char const*,int const*,int const*,int) ;
+ int ss_rotate (int*,int*,int*) ;
 
 __attribute__((used)) static
 void
@@ -28,7 +20,7 @@ ss_inplacemerge(const unsigned char *T, const int *PA,
 
   for(;;) {
     if(*(last - 1) < 0) { x = 1; p = PA + ~*(last - 1); }
-    else                { x = 0; p = PA +  *(last - 1); }
+    else { x = 0; p = PA + *(last - 1); }
     for(a = first, len = middle - first, half = len >> 1, r = -1;
         0 < len;
         len = half, half >>= 1) {

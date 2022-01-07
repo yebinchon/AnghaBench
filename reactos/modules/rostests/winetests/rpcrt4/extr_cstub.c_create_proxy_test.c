@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int ULONG ;
-struct TYPE_2__ {int ref; int /*<<< orphan*/  IUnknown_iface; } ;
-typedef  int /*<<< orphan*/  REFIID ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  IRpcProxyBuffer ;
-typedef  int /*<<< orphan*/  IPSFactoryBuffer ;
-typedef  int HRESULT ;
 
-/* Variables and functions */
- int IPSFactoryBuffer_CreateProxy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **,void**) ; 
- int IRpcProxyBuffer_Release (int /*<<< orphan*/ *) ; 
- int IUnknown_Release (int /*<<< orphan*/ *) ; 
- int S_OK ; 
- TYPE_1__ dummy_unknown ; 
- int /*<<< orphan*/  ok (int,char*,int,...) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int ULONG ;
+struct TYPE_2__ {int ref; int IUnknown_iface; } ;
+typedef int REFIID ;
+typedef int IUnknown ;
+typedef int IRpcProxyBuffer ;
+typedef int IPSFactoryBuffer ;
+typedef int HRESULT ;
+
+
+ int IPSFactoryBuffer_CreateProxy (int *,int *,int ,int **,void**) ;
+ int IRpcProxyBuffer_Release (int *) ;
+ int IUnknown_Release (int *) ;
+ int S_OK ;
+ TYPE_1__ dummy_unknown ;
+ int ok (int,char*,int,...) ;
 
 __attribute__((used)) static void create_proxy_test( IPSFactoryBuffer *ppsf, REFIID iid, const void *expected_vtbl )
 {
-    IRpcProxyBuffer *proxy = NULL;
-    IUnknown *iface = NULL;
+    IRpcProxyBuffer *proxy = ((void*)0);
+    IUnknown *iface = ((void*)0);
     HRESULT r;
     ULONG count;
 
-    r = IPSFactoryBuffer_CreateProxy(ppsf, NULL, iid, &proxy, (void **)&iface);
+    r = IPSFactoryBuffer_CreateProxy(ppsf, ((void*)0), iid, &proxy, (void **)&iface);
     ok( r == S_OK, "IPSFactoryBuffer_CreateProxy failed %x\n", r );
     ok( *(void **)iface == expected_vtbl, "wrong iface pointer %p/%p\n", *(void **)iface, expected_vtbl );
     count = IUnknown_Release( iface );

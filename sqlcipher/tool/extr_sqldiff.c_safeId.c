@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  isalpha (char) ; 
- scalar_t__ isdigit (char) ; 
- int /*<<< orphan*/  sqlite3_keyword_check (char const*,int) ; 
- char* sqlite3_mprintf (char*,...) ; 
+ int isalpha (char) ;
+ scalar_t__ isdigit (char) ;
+ int sqlite3_keyword_check (char const*,int) ;
+ char* sqlite3_mprintf (char*,...) ;
 
 __attribute__((used)) static char *safeId(const char *zId){
   int i, x;

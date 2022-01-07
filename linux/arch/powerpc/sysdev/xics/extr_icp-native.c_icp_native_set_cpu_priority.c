@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  icp_native_set_cppr (unsigned char) ; 
- int /*<<< orphan*/  iosync () ; 
- int /*<<< orphan*/  xics_set_base_cppr (unsigned char) ; 
+ int icp_native_set_cppr (unsigned char) ;
+ int iosync () ;
+ int xics_set_base_cppr (unsigned char) ;
 
 __attribute__((used)) static void icp_native_set_cpu_priority(unsigned char cppr)
 {
-	xics_set_base_cppr(cppr);
-	icp_native_set_cppr(cppr);
-	iosync();
+ xics_set_base_cppr(cppr);
+ icp_native_set_cppr(cppr);
+ iosync();
 }

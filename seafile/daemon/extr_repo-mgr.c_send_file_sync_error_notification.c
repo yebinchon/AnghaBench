@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_3__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  json_t ;
-struct TYPE_5__ {int /*<<< orphan*/  mq_mgr; int /*<<< orphan*/  sync_mgr; int /*<<< orphan*/  repo_mgr; } ;
+
+
+typedef struct TYPE_5__ TYPE_3__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int json_t ;
+struct TYPE_5__ {int mq_mgr; int sync_mgr; int repo_mgr; } ;
 struct TYPE_4__ {char* name; } ;
-typedef  TYPE_1__ SeafRepo ;
+typedef TYPE_1__ SeafRepo ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  json_decref (int /*<<< orphan*/ *) ; 
- char* json_dumps (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  json_integer (int) ; 
- int /*<<< orphan*/ * json_object () ; 
- int /*<<< orphan*/  json_object_set_new (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  json_string (char const*) ; 
- TYPE_3__* seaf ; 
- int /*<<< orphan*/  seaf_mq_manager_publish_notification (int /*<<< orphan*/ ,char*,char*) ; 
- TYPE_1__* seaf_repo_manager_get_repo (int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  seaf_repo_manager_record_sync_error (char const*,char const*,char const*,int) ; 
- int /*<<< orphan*/  seaf_sync_manager_set_task_error_code (int /*<<< orphan*/ ,char const*,int) ; 
+
+ int free (char*) ;
+ int json_decref (int *) ;
+ char* json_dumps (int *,int ) ;
+ int json_integer (int) ;
+ int * json_object () ;
+ int json_object_set_new (int *,char*,int ) ;
+ int json_string (char const*) ;
+ TYPE_3__* seaf ;
+ int seaf_mq_manager_publish_notification (int ,char*,char*) ;
+ TYPE_1__* seaf_repo_manager_get_repo (int ,char const*) ;
+ int seaf_repo_manager_record_sync_error (char const*,char const*,char const*,int) ;
+ int seaf_sync_manager_set_task_error_code (int ,char const*,int) ;
 
 void
 send_file_sync_error_notification (const char *repo_id,

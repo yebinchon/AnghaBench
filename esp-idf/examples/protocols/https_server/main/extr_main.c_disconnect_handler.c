@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  int32_t ;
-typedef  int /*<<< orphan*/ * httpd_handle_t ;
-typedef  int /*<<< orphan*/  esp_event_base_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  stop_webserver (int /*<<< orphan*/ *) ; 
 
-__attribute__((used)) static void disconnect_handler(void* arg, esp_event_base_t event_base, 
+
+
+typedef int int32_t ;
+typedef int * httpd_handle_t ;
+typedef int esp_event_base_t ;
+
+
+ int stop_webserver (int *) ;
+
+__attribute__((used)) static void disconnect_handler(void* arg, esp_event_base_t event_base,
                                int32_t event_id, void* event_data)
 {
     httpd_handle_t* server = (httpd_handle_t*) arg;
     if (*server) {
         stop_webserver(*server);
-        *server = NULL;
+        *server = ((void*)0);
     }
 }

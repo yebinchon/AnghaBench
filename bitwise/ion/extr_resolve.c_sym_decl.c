@@ -1,55 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int kind; int /*<<< orphan*/  name; } ;
-typedef  int /*<<< orphan*/  SymKind ;
-typedef  int /*<<< orphan*/  Sym ;
-typedef  TYPE_1__ Decl ;
 
-/* Variables and functions */
-#define  DECL_CONST 134 
-#define  DECL_ENUM 133 
-#define  DECL_FUNC 132 
-#define  DECL_STRUCT 131 
-#define  DECL_TYPEDEF 130 
-#define  DECL_UNION 129 
-#define  DECL_VAR 128 
- int /*<<< orphan*/  SYM_CONST ; 
- int /*<<< orphan*/  SYM_FUNC ; 
- int /*<<< orphan*/  SYM_NONE ; 
- int /*<<< orphan*/  SYM_TYPE ; 
- int /*<<< orphan*/  SYM_VAR ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  process_decl_notes (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  set_resolved_sym (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * sym_new (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int kind; int name; } ;
+typedef int SymKind ;
+typedef int Sym ;
+typedef TYPE_1__ Decl ;
+ int SYM_CONST ;
+ int SYM_FUNC ;
+ int SYM_NONE ;
+ int SYM_TYPE ;
+ int SYM_VAR ;
+ int assert (int ) ;
+ int process_decl_notes (TYPE_1__*,int *) ;
+ int set_resolved_sym (TYPE_1__*,int *) ;
+ int * sym_new (int ,int ,TYPE_1__*) ;
 
 Sym *sym_decl(Decl *decl) {
     SymKind kind = SYM_NONE;
     switch (decl->kind) {
-    case DECL_STRUCT:
-    case DECL_UNION:
-    case DECL_TYPEDEF:
-    case DECL_ENUM:
+    case 131:
+    case 129:
+    case 130:
+    case 133:
         kind = SYM_TYPE;
         break;
-    case DECL_VAR:
+    case 128:
         kind = SYM_VAR;
         break;
-    case DECL_CONST:
+    case 134:
         kind = SYM_CONST;
         break;
-    case DECL_FUNC:
+    case 132:
         kind = SYM_FUNC;
         break;
     default:

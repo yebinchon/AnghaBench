@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct tr2tls_thread_ctx {struct tr2tls_thread_ctx* array_us_start; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (struct tr2tls_thread_ctx*) ; 
- int /*<<< orphan*/  pthread_setspecific (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- struct tr2tls_thread_ctx* tr2tls_get_self () ; 
- int /*<<< orphan*/  tr2tls_key ; 
+
+ int free (struct tr2tls_thread_ctx*) ;
+ int pthread_setspecific (int ,int *) ;
+ struct tr2tls_thread_ctx* tr2tls_get_self () ;
+ int tr2tls_key ;
 
 void tr2tls_unset_self(void)
 {
-	struct tr2tls_thread_ctx *ctx;
+ struct tr2tls_thread_ctx *ctx;
 
-	ctx = tr2tls_get_self();
+ ctx = tr2tls_get_self();
 
-	pthread_setspecific(tr2tls_key, NULL);
+ pthread_setspecific(tr2tls_key, ((void*)0));
 
-	free(ctx->array_us_start);
-	free(ctx);
+ free(ctx->array_us_start);
+ free(ctx);
 }

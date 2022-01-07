@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_7__ {scalar_t__ extradata_size; scalar_t__ extradata; } ;
-struct TYPE_6__ {scalar_t__ data_size; int /*<<< orphan*/  data; } ;
-typedef  TYPE_1__ CodedBitstreamFragment ;
-typedef  int /*<<< orphan*/  CodedBitstreamContext ;
-typedef  TYPE_2__ AVCodecParameters ;
+struct TYPE_6__ {scalar_t__ data_size; int data; } ;
+typedef TYPE_1__ CodedBitstreamFragment ;
+typedef int CodedBitstreamContext ;
+typedef TYPE_2__ AVCodecParameters ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- scalar_t__ AV_INPUT_BUFFER_PADDING_SIZE ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  av_freep (scalar_t__*) ; 
- scalar_t__ av_malloc (scalar_t__) ; 
- int ff_cbs_write_fragment_data (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  memcpy (scalar_t__,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  memset (scalar_t__,int /*<<< orphan*/ ,scalar_t__) ; 
+
+ int AVERROR (int ) ;
+ scalar_t__ AV_INPUT_BUFFER_PADDING_SIZE ;
+ int ENOMEM ;
+ int av_freep (scalar_t__*) ;
+ scalar_t__ av_malloc (scalar_t__) ;
+ int ff_cbs_write_fragment_data (int *,TYPE_1__*) ;
+ int memcpy (scalar_t__,int ,scalar_t__) ;
+ int memset (scalar_t__,int ,scalar_t__) ;
 
 int ff_cbs_write_extradata(CodedBitstreamContext *ctx,
                            AVCodecParameters *par,

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  int8_t ;
-typedef  int int16_t ;
-struct TYPE_7__ {int num_chgroups; int* cur_sfb_offsets; int num_bands; int nb_channels; TYPE_2__* fdsp; int /*<<< orphan*/  subframe_len; TYPE_1__* chgroup; } ;
-typedef  TYPE_3__ WMAProDecodeCtx ;
-struct TYPE_6__ {int /*<<< orphan*/  (* vector_fmul_scalar ) (float*,float*,double,int) ;} ;
-struct TYPE_5__ {int num_channels; float** channel_data; float* decorrelation_matrix; int /*<<< orphan*/ * transform_band; scalar_t__ transform; } ;
 
-/* Variables and functions */
- int FFMIN (int,int /*<<< orphan*/ ) ; 
- int WMAPRO_MAX_CHANNELS ; 
- int /*<<< orphan*/  stub1 (float*,float*,double,int) ; 
- int /*<<< orphan*/  stub2 (float*,float*,double,int) ; 
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int int8_t ;
+typedef int int16_t ;
+struct TYPE_7__ {int num_chgroups; int* cur_sfb_offsets; int num_bands; int nb_channels; TYPE_2__* fdsp; int subframe_len; TYPE_1__* chgroup; } ;
+typedef TYPE_3__ WMAProDecodeCtx ;
+struct TYPE_6__ {int (* vector_fmul_scalar ) (float*,float*,double,int) ;} ;
+struct TYPE_5__ {int num_channels; float** channel_data; float* decorrelation_matrix; int * transform_band; scalar_t__ transform; } ;
+
+
+ int FFMIN (int,int ) ;
+ int WMAPRO_MAX_CHANNELS ;
+ int stub1 (float*,float*,double,int) ;
+ int stub2 (float*,float*,double,int) ;
 
 __attribute__((used)) static void inverse_channel_transform(WMAProDecodeCtx *s)
 {
@@ -39,12 +39,12 @@ __attribute__((used)) static void inverse_channel_transform(WMAProDecodeCtx *s)
             const int8_t* tb = s->chgroup[i].transform_band;
             int16_t* sfb;
 
-            /** multichannel decorrelation */
+
             for (sfb = s->cur_sfb_offsets;
                  sfb < s->cur_sfb_offsets + s->num_bands; sfb++) {
                 int y;
                 if (*tb++ == 1) {
-                    /** multiply values with the decorrelation_matrix */
+
                     for (y = sfb[0]; y < FFMIN(sfb[1], s->subframe_len); y++) {
                         const float* mat = s->chgroup[i].decorrelation_matrix;
                         const float* data_end = data + num_channels;

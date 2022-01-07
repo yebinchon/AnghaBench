@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int ANSWER_CAPACITY ; 
- scalar_t__ MAX_PATTERN_LEN ; 
- int SIMPLIFY_TYPE_COUNT ; 
- scalar_t__ STRING_PROCESS_BUF_SIZE ; 
- int /*<<< orphan*/  antispam_db_request ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  heap_pattern ; 
- int /*<<< orphan*/  new_trie_node (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * root ; 
- int /*<<< orphan*/  st_vec_create (int /*<<< orphan*/ ,int) ; 
+ int ANSWER_CAPACITY ;
+ scalar_t__ MAX_PATTERN_LEN ;
+ int SIMPLIFY_TYPE_COUNT ;
+ scalar_t__ STRING_PROCESS_BUF_SIZE ;
+ int antispam_db_request ;
+ int assert (int) ;
+ int heap_pattern ;
+ int new_trie_node (int ,int ) ;
+ int * root ;
+ int st_vec_create (int ,int) ;
 
 void antispam_init (void) {
   assert (MAX_PATTERN_LEN <= STRING_PROCESS_BUF_SIZE);

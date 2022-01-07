@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int drives; int insert_dot_dot; } ;
-struct TYPE_4__ {char const* entry; int /*<<< orphan*/ * wdir; TYPE_1__ u; } ;
-typedef  TYPE_2__ vlc_DIR ;
-struct _wdirent {int /*<<< orphan*/  d_name; } ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  DIR ;
+struct TYPE_4__ {char const* entry; int * wdir; TYPE_1__ u; } ;
+typedef TYPE_2__ vlc_DIR ;
+struct _wdirent {int d_name; } ;
+typedef int DWORD ;
+typedef int DIR ;
 
-/* Variables and functions */
- char const* FromWide (int /*<<< orphan*/ ) ; 
- struct _wdirent* _wreaddir (int /*<<< orphan*/ *) ; 
- int asprintf (char const**,char*,char) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  free (char const*) ; 
- char const* strdup (char*) ; 
+
+ char const* FromWide (int ) ;
+ struct _wdirent* _wreaddir (int *) ;
+ int asprintf (char const**,char*,char) ;
+ int assert (int) ;
+ int free (char const*) ;
+ char const* strdup (char*) ;
 
 const char *vlc_readdir (DIR *dir)
 {
@@ -33,15 +33,15 @@ const char *vlc_readdir (DIR *dir)
 
     free(p_dir->entry);
 
-#if !VLC_WINSTORE_APP
-    /* Drive letters mode */
-    if (p_dir->wdir == NULL)
+
+
+    if (p_dir->wdir == ((void*)0))
     {
         DWORD drives = p_dir->u.drives;
         if (drives == 0)
         {
-            p_dir->entry = NULL;
-            return NULL; /* end */
+            p_dir->entry = ((void*)0);
+            return ((void*)0);
         }
 
         unsigned int i;
@@ -51,20 +51,20 @@ const char *vlc_readdir (DIR *dir)
         assert (i < 26);
 
         if (asprintf (&p_dir->entry, "%c:\\", 'A' + i) == -1)
-            p_dir->entry = NULL;
+            p_dir->entry = ((void*)0);
     }
     else
-#endif
+
     if (p_dir->u.insert_dot_dot)
     {
-        /* Adds "..", gruik! */
-        p_dir->u.insert_dot_dot = false;
+
+        p_dir->u.insert_dot_dot = 0;
         p_dir->entry = strdup ("..");
     }
     else
     {
         struct _wdirent *ent = _wreaddir (p_dir->wdir);
-        p_dir->entry = (ent != NULL) ? FromWide (ent->d_name) : NULL;
+        p_dir->entry = (ent != ((void*)0)) ? FromWide (ent->d_name) : ((void*)0);
     }
     return p_dir->entry;
 }

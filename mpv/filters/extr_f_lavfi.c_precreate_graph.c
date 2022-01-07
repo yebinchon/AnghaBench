@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct lavfi {int failed; int num_all_pads; int /*<<< orphan*/  f; TYPE_1__** all_pads; int /*<<< orphan*/  graph_string; scalar_t__ graph; int /*<<< orphan*/  direct_filter_opts; int /*<<< orphan*/  log; scalar_t__ direct_filter; int /*<<< orphan*/  graph_opts; } ;
-struct TYPE_8__ {int /*<<< orphan*/  nb_outputs; int /*<<< orphan*/  output_pads; int /*<<< orphan*/  nb_inputs; int /*<<< orphan*/  input_pads; int /*<<< orphan*/  priv; } ;
-struct TYPE_7__ {int /*<<< orphan*/  filter; } ;
-typedef  int /*<<< orphan*/  AVFilterInOut ;
-typedef  TYPE_2__ AVFilterContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MP_FATAL (struct lavfi*,char*,...) ; 
- int /*<<< orphan*/  MP_PIN_IN ; 
- int /*<<< orphan*/  MP_PIN_OUT ; 
- int /*<<< orphan*/  abort () ; 
- int /*<<< orphan*/  add_pads (struct lavfi*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  add_pads_direct (struct lavfi*,int /*<<< orphan*/ ,TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  avfilter_get_by_name (int /*<<< orphan*/ ) ; 
- scalar_t__ avfilter_graph_alloc () ; 
- TYPE_2__* avfilter_graph_alloc_filter (scalar_t__,int /*<<< orphan*/ ,char*) ; 
- scalar_t__ avfilter_graph_parse2 (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ **,int /*<<< orphan*/ **) ; 
- scalar_t__ avfilter_init_str (TYPE_2__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  avfilter_inout_free (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  free_graph (struct lavfi*) ; 
- int /*<<< orphan*/  mp_filter_internal_mark_failed (int /*<<< orphan*/ ) ; 
- scalar_t__ mp_set_avopts (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ) ; 
- scalar_t__ mp_set_avopts_pos (int /*<<< orphan*/ ,TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct lavfi {int failed; int num_all_pads; int f; TYPE_1__** all_pads; int graph_string; scalar_t__ graph; int direct_filter_opts; int log; scalar_t__ direct_filter; int graph_opts; } ;
+struct TYPE_8__ {int nb_outputs; int output_pads; int nb_inputs; int input_pads; int priv; } ;
+struct TYPE_7__ {int filter; } ;
+typedef int AVFilterInOut ;
+typedef TYPE_2__ AVFilterContext ;
+
+
+ int MP_FATAL (struct lavfi*,char*,...) ;
+ int MP_PIN_IN ;
+ int MP_PIN_OUT ;
+ int abort () ;
+ int add_pads (struct lavfi*,int ,int *,int) ;
+ int add_pads_direct (struct lavfi*,int ,TYPE_2__*,int ,int ,int) ;
+ int assert (int) ;
+ int avfilter_get_by_name (int ) ;
+ scalar_t__ avfilter_graph_alloc () ;
+ TYPE_2__* avfilter_graph_alloc_filter (scalar_t__,int ,char*) ;
+ scalar_t__ avfilter_graph_parse2 (scalar_t__,int ,int **,int **) ;
+ scalar_t__ avfilter_init_str (TYPE_2__*,int *) ;
+ int avfilter_inout_free (int **) ;
+ int free_graph (struct lavfi*) ;
+ int mp_filter_internal_mark_failed (int ) ;
+ scalar_t__ mp_set_avopts (int ,scalar_t__,int ) ;
+ scalar_t__ mp_set_avopts_pos (int ,TYPE_2__*,int ,int ) ;
 
 __attribute__((used)) static void precreate_graph(struct lavfi *c, bool first_init)
 {
     assert(!c->graph);
 
-    c->failed = false;
+    c->failed = 0;
 
     c->graph = avfilter_graph_alloc();
     if (!c->graph)
@@ -63,7 +63,7 @@ __attribute__((used)) static void precreate_graph(struct lavfi *c, bool first_in
                               c->direct_filter_opts) < 0)
             goto error;
 
-        if (avfilter_init_str(filter, NULL) < 0) {
+        if (avfilter_init_str(filter, ((void*)0)) < 0) {
             MP_FATAL(c, "filter failed to initialize\n");
             goto error;
         }
@@ -73,7 +73,7 @@ __attribute__((used)) static void precreate_graph(struct lavfi *c, bool first_in
         add_pads_direct(c, MP_PIN_OUT, filter, filter->output_pads,
                         filter->nb_outputs, first_init);
     } else {
-        AVFilterInOut *in = NULL, *out = NULL;
+        AVFilterInOut *in = ((void*)0), *out = ((void*)0);
         if (avfilter_graph_parse2(c->graph, c->graph_string, &in, &out) < 0) {
             MP_FATAL(c, "parsing the filter graph failed\n");
             goto error;
@@ -94,7 +94,7 @@ __attribute__((used)) static void precreate_graph(struct lavfi *c, bool first_in
 
 error:
     free_graph(c);
-    c->failed = true;
+    c->failed = 1;
     mp_filter_internal_mark_failed(c->f);
     return;
 }

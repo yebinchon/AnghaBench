@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  RedisModuleString ;
-typedef  int /*<<< orphan*/  RedisModuleDictIter ;
-typedef  int /*<<< orphan*/  RedisModuleCtx ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Keyspace ; 
- scalar_t__ REDISMODULE_ERR ; 
- scalar_t__ REDISMODULE_OK ; 
- int /*<<< orphan*/  REDISMODULE_POSTPONED_ARRAY_LEN ; 
- scalar_t__ RedisModule_DictCompare (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * RedisModule_DictIteratorStart (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RedisModule_DictIteratorStop (int /*<<< orphan*/ *) ; 
- char* RedisModule_DictNextC (int /*<<< orphan*/ *,size_t*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RedisModule_ReplySetArrayLength (int /*<<< orphan*/ *,long long) ; 
- int /*<<< orphan*/  RedisModule_ReplyWithArray (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int RedisModule_ReplyWithError (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  RedisModule_ReplyWithStringBuffer (int /*<<< orphan*/ *,char*,size_t) ; 
- scalar_t__ RedisModule_StringToLongLong (int /*<<< orphan*/ *,long long*) ; 
- int RedisModule_WrongArity (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int RedisModuleString ;
+typedef int RedisModuleDictIter ;
+typedef int RedisModuleCtx ;
+
+
+ int Keyspace ;
+ scalar_t__ REDISMODULE_ERR ;
+ scalar_t__ REDISMODULE_OK ;
+ int REDISMODULE_POSTPONED_ARRAY_LEN ;
+ scalar_t__ RedisModule_DictCompare (int *,char*,int *) ;
+ int * RedisModule_DictIteratorStart (int ,char*,int *) ;
+ int RedisModule_DictIteratorStop (int *) ;
+ char* RedisModule_DictNextC (int *,size_t*,int *) ;
+ int RedisModule_ReplySetArrayLength (int *,long long) ;
+ int RedisModule_ReplyWithArray (int *,int ) ;
+ int RedisModule_ReplyWithError (int *,char*) ;
+ int RedisModule_ReplyWithStringBuffer (int *,char*,size_t) ;
+ scalar_t__ RedisModule_StringToLongLong (int *,long long*) ;
+ int RedisModule_WrongArity (int *) ;
 
 int cmd_KEYRANGE(RedisModuleCtx *ctx, RedisModuleString **argv, int argc) {
     if (argc != 4) return RedisModule_WrongArity(ctx);
 
-    /* Parse the count argument. */
+
     long long count;
     if (RedisModule_StringToLongLong(argv[3],&count) != REDISMODULE_OK) {
         return RedisModule_ReplyWithError(ctx,"ERR invalid count");
     }
 
-    /* Seek the iterator. */
+
     RedisModuleDictIter *iter = RedisModule_DictIteratorStart(
         Keyspace, ">=", argv[1]);
 
-    /* Reply with the matching items. */
+
     char *key;
     size_t keylen;
-    long long replylen = 0; /* Keep track of the amitted array len. */
+    long long replylen = 0;
     RedisModule_ReplyWithArray(ctx,REDISMODULE_POSTPONED_ARRAY_LEN);
-    while((key = RedisModule_DictNextC(iter,&keylen,NULL)) != NULL) {
+    while((key = RedisModule_DictNextC(iter,&keylen,((void*)0))) != ((void*)0)) {
         if (replylen >= count) break;
         if (RedisModule_DictCompare(iter,"<=",argv[2]) == REDISMODULE_ERR)
             break;
@@ -57,7 +57,7 @@ int cmd_KEYRANGE(RedisModuleCtx *ctx, RedisModuleString **argv, int argc) {
     }
     RedisModule_ReplySetArrayLength(ctx,replylen);
 
-    /* Cleanup. */
+
     RedisModule_DictIteratorStop(iter);
     return REDISMODULE_OK;
 }

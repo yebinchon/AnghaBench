@@ -1,40 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ check_number_printing () ; 
- scalar_t__ check_rrdcalc_comparisons () ; 
- scalar_t__ check_strdupz_path_subpath () ; 
- scalar_t__ run_test (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  test1 ; 
- int /*<<< orphan*/  test10 ; 
- int /*<<< orphan*/  test11 ; 
- int /*<<< orphan*/  test12 ; 
- int /*<<< orphan*/  test13 ; 
- int /*<<< orphan*/  test14 ; 
- int /*<<< orphan*/  test14b ; 
- int /*<<< orphan*/  test14c ; 
- int /*<<< orphan*/  test15 ; 
- int /*<<< orphan*/  test2 ; 
- int /*<<< orphan*/  test3 ; 
- int /*<<< orphan*/  test4 ; 
- int /*<<< orphan*/  test5 ; 
- int /*<<< orphan*/  test5b ; 
- int /*<<< orphan*/  test6 ; 
- int /*<<< orphan*/  test7 ; 
- int /*<<< orphan*/  test8 ; 
- int /*<<< orphan*/  test9 ; 
- int /*<<< orphan*/  test_variable_renames () ; 
+ scalar_t__ check_number_printing () ;
+ scalar_t__ check_rrdcalc_comparisons () ;
+ scalar_t__ check_strdupz_path_subpath () ;
+ scalar_t__ run_test (int *) ;
+ int test1 ;
+ int test10 ;
+ int test11 ;
+ int test12 ;
+ int test13 ;
+ int test14 ;
+ int test14b ;
+ int test14c ;
+ int test15 ;
+ int test2 ;
+ int test3 ;
+ int test4 ;
+ int test5 ;
+ int test5b ;
+ int test6 ;
+ int test7 ;
+ int test8 ;
+ int test9 ;
+ int test_variable_renames () ;
 
 int run_all_mockup_tests(void)
 {

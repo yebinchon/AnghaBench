@@ -1,48 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int RRDCALC_STATUS ;
 
-/* Variables and functions */
-#define  RRDCALC_STATUS_CLEAR 134 
-#define  RRDCALC_STATUS_CRITICAL 133 
-#define  RRDCALC_STATUS_RAISED 132 
-#define  RRDCALC_STATUS_REMOVED 131 
-#define  RRDCALC_STATUS_UNDEFINED 130 
-#define  RRDCALC_STATUS_UNINITIALIZED 129 
-#define  RRDCALC_STATUS_WARNING 128 
- int /*<<< orphan*/  error (char*,int) ; 
+
+
+
+typedef int RRDCALC_STATUS ;
+ int error (char*,int) ;
 
 inline const char *rrdcalc_status2string(RRDCALC_STATUS status) {
     switch(status) {
-        case RRDCALC_STATUS_REMOVED:
+        case 131:
             return "REMOVED";
 
-        case RRDCALC_STATUS_UNDEFINED:
+        case 130:
             return "UNDEFINED";
 
-        case RRDCALC_STATUS_UNINITIALIZED:
+        case 129:
             return "UNINITIALIZED";
 
-        case RRDCALC_STATUS_CLEAR:
+        case 134:
             return "CLEAR";
 
-        case RRDCALC_STATUS_RAISED:
+        case 132:
             return "RAISED";
 
-        case RRDCALC_STATUS_WARNING:
+        case 128:
             return "WARNING";
 
-        case RRDCALC_STATUS_CRITICAL:
+        case 133:
             return "CRITICAL";
 
         default:

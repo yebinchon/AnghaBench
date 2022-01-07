@@ -1,61 +1,61 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_5__ ;
-typedef  struct TYPE_15__   TYPE_4__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  desc ;
+
+
+typedef struct TYPE_16__ TYPE_5__ ;
+typedef struct TYPE_15__ TYPE_4__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+typedef int desc ;
 struct TYPE_13__ {int dwCaps; } ;
-struct TYPE_12__ {int dwSize; int dwRGBBitCount; int dwRBitMask; int dwGBitMask; int dwBBitMask; scalar_t__ dwRGBAlphaBitMask; int /*<<< orphan*/  dwFlags; } ;
-struct TYPE_16__ {int dwSize; int dwFlags; int dwHeight; int dwWidth; int member_0; int /*<<< orphan*/ * lpSurface; TYPE_2__ ddsCaps; TYPE_1__ ddpfPixelFormat; } ;
-struct TYPE_15__ {int /*<<< orphan*/ * lpVtbl; } ;
-struct TYPE_14__ {int ref; TYPE_4__ IDirectDrawStreamSample_iface; int /*<<< orphan*/  rect; int /*<<< orphan*/ * surface; int /*<<< orphan*/ * parent; } ;
-typedef  int /*<<< orphan*/  RECT ;
-typedef  int /*<<< orphan*/  IMediaStream ;
-typedef  int /*<<< orphan*/  IDirectDrawSurface ;
-typedef  TYPE_3__ IDirectDrawStreamSampleImpl ;
-typedef  TYPE_4__ IDirectDrawStreamSample ;
-typedef  int /*<<< orphan*/  IDirectDrawMediaStream ;
-typedef  int /*<<< orphan*/  IDirectDraw ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  TYPE_5__ DDSURFACEDESC ;
+struct TYPE_12__ {int dwSize; int dwRGBBitCount; int dwRBitMask; int dwGBitMask; int dwBBitMask; scalar_t__ dwRGBAlphaBitMask; int dwFlags; } ;
+struct TYPE_16__ {int dwSize; int dwFlags; int dwHeight; int dwWidth; int member_0; int * lpSurface; TYPE_2__ ddsCaps; TYPE_1__ ddpfPixelFormat; } ;
+struct TYPE_15__ {int * lpVtbl; } ;
+struct TYPE_14__ {int ref; TYPE_4__ IDirectDrawStreamSample_iface; int rect; int * surface; int * parent; } ;
+typedef int RECT ;
+typedef int IMediaStream ;
+typedef int IDirectDrawSurface ;
+typedef TYPE_3__ IDirectDrawStreamSampleImpl ;
+typedef TYPE_4__ IDirectDrawStreamSample ;
+typedef int IDirectDrawMediaStream ;
+typedef int IDirectDraw ;
+typedef int HRESULT ;
+typedef TYPE_5__ DDSURFACEDESC ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DDPF_RGB ; 
- int DDSCAPS_OFFSCREENPLAIN ; 
- int DDSCAPS_SYSTEMMEMORY ; 
- int DDSD_CAPS ; 
- int DDSD_HEIGHT ; 
- int DDSD_PIXELFORMAT ; 
- int DDSD_WIDTH ; 
- int /*<<< orphan*/  DirectDrawStreamSample_Vtbl ; 
- int /*<<< orphan*/  ERR (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HEAP_ZERO_MEMORY ; 
- TYPE_3__* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  IDirectDrawMediaStream_GetDirectDraw (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IDirectDrawStreamSample_Release (TYPE_4__*) ; 
- int /*<<< orphan*/  IDirectDrawSurface_AddRef (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IDirectDrawSurface_GetSurfaceDesc (int /*<<< orphan*/ *,TYPE_5__*) ; 
- int /*<<< orphan*/  IDirectDraw_CreateSurface (int /*<<< orphan*/ *,TYPE_5__*,int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IDirectDraw_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IMediaStream_AddRef (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  SetRect (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  TRACE (char*,TYPE_4__**) ; 
+
+ int DDPF_RGB ;
+ int DDSCAPS_OFFSCREENPLAIN ;
+ int DDSCAPS_SYSTEMMEMORY ;
+ int DDSD_CAPS ;
+ int DDSD_HEIGHT ;
+ int DDSD_PIXELFORMAT ;
+ int DDSD_WIDTH ;
+ int DirectDrawStreamSample_Vtbl ;
+ int ERR (char*,int ) ;
+ int E_OUTOFMEMORY ;
+ scalar_t__ FAILED (int ) ;
+ int GetProcessHeap () ;
+ int HEAP_ZERO_MEMORY ;
+ TYPE_3__* HeapAlloc (int ,int ,int) ;
+ int IDirectDrawMediaStream_GetDirectDraw (int *,int **) ;
+ int IDirectDrawStreamSample_Release (TYPE_4__*) ;
+ int IDirectDrawSurface_AddRef (int *) ;
+ int IDirectDrawSurface_GetSurfaceDesc (int *,TYPE_5__*) ;
+ int IDirectDraw_CreateSurface (int *,TYPE_5__*,int **,int *) ;
+ int IDirectDraw_Release (int *) ;
+ int IMediaStream_AddRef (int *) ;
+ int S_OK ;
+ int SetRect (int *,int ,int ,int,int) ;
+ int TRACE (char*,TYPE_4__**) ;
 
 __attribute__((used)) static HRESULT ddrawstreamsample_create(IDirectDrawMediaStream *parent, IDirectDrawSurface *surface,
     const RECT *rect, IDirectDrawStreamSample **ddraw_stream_sample)
@@ -103,9 +103,9 @@ __attribute__((used)) static HRESULT ddrawstreamsample_create(IDirectDrawMediaSt
         desc.ddpfPixelFormat.dwBBitMask = 0x0000ff;
         desc.ddpfPixelFormat.dwRGBAlphaBitMask = 0;
         desc.ddsCaps.dwCaps = DDSCAPS_SYSTEMMEMORY|DDSCAPS_OFFSCREENPLAIN;
-        desc.lpSurface = NULL;
+        desc.lpSurface = ((void*)0);
 
-        hr = IDirectDraw_CreateSurface(ddraw, &desc, &object->surface, NULL);
+        hr = IDirectDraw_CreateSurface(ddraw, &desc, &object->surface, ((void*)0));
         IDirectDraw_Release(ddraw);
         if (FAILED(hr))
         {

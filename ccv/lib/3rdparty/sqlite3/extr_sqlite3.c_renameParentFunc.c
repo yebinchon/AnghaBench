@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_value ;
-typedef  int /*<<< orphan*/  sqlite3_context ;
-typedef  int /*<<< orphan*/  sqlite3 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SQLITE_DYNAMIC ; 
- int TK_ILLEGAL ; 
- int TK_REFERENCES ; 
- int TK_SPACE ; 
- int /*<<< orphan*/  UNUSED_PARAMETER (int) ; 
- int /*<<< orphan*/  sqlite3DbFree (int /*<<< orphan*/ *,char*) ; 
- char* sqlite3DbStrNDup (int /*<<< orphan*/ *,char const*,int) ; 
- int /*<<< orphan*/  sqlite3Dequote (char*) ; 
- int sqlite3GetToken (unsigned char const*,int*) ; 
- char* sqlite3MPrintf (int /*<<< orphan*/ *,char*,char*,...) ; 
- scalar_t__ sqlite3StrICmp (char const*,char*) ; 
- int /*<<< orphan*/ * sqlite3_context_db_handle (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_result_text (int /*<<< orphan*/ *,char*,int,int /*<<< orphan*/ ) ; 
- unsigned char* sqlite3_value_text (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int sqlite3_value ;
+typedef int sqlite3_context ;
+typedef int sqlite3 ;
+
+
+ int SQLITE_DYNAMIC ;
+ int TK_ILLEGAL ;
+ int TK_REFERENCES ;
+ int TK_SPACE ;
+ int UNUSED_PARAMETER (int) ;
+ int sqlite3DbFree (int *,char*) ;
+ char* sqlite3DbStrNDup (int *,char const*,int) ;
+ int sqlite3Dequote (char*) ;
+ int sqlite3GetToken (unsigned char const*,int*) ;
+ char* sqlite3MPrintf (int *,char*,char*,...) ;
+ scalar_t__ sqlite3StrICmp (char const*,char*) ;
+ int * sqlite3_context_db_handle (int *) ;
+ int sqlite3_result_text (int *,char*,int,int ) ;
+ unsigned char* sqlite3_value_text (int *) ;
 
 __attribute__((used)) static void renameParentFunc(
   sqlite3_context *context,
@@ -42,9 +42,9 @@ __attribute__((used)) static void renameParentFunc(
   unsigned char const *zOld = sqlite3_value_text(argv[1]);
   unsigned char const *zNew = sqlite3_value_text(argv[2]);
 
-  unsigned const char *z;         /* Pointer to token */
-  int n;                          /* Length of token z */
-  int token;                      /* Type of token */
+  unsigned const char *z;
+  int n;
+  int token;
 
   UNUSED_PARAMETER(NotUsed);
   if( zInput==0 || zOld==0 ) return;
@@ -62,7 +62,7 @@ __attribute__((used)) static void renameParentFunc(
       if( zParent==0 ) break;
       sqlite3Dequote(zParent);
       if( 0==sqlite3StrICmp((const char *)zOld, zParent) ){
-        char *zOut = sqlite3MPrintf(db, "%s%.*s\"%w\"", 
+        char *zOut = sqlite3MPrintf(db, "%s%.*s\"%w\"",
             (zOutput?zOutput:""), (int)(z-zInput), zInput, (const char *)zNew
         );
         sqlite3DbFree(db, zOutput);
@@ -73,7 +73,7 @@ __attribute__((used)) static void renameParentFunc(
     }
   }
 
-  zResult = sqlite3MPrintf(db, "%s%s", (zOutput?zOutput:""), zInput), 
+  zResult = sqlite3MPrintf(db, "%s%s", (zOutput?zOutput:""), zInput),
   sqlite3_result_text(context, zResult, -1, SQLITE_DYNAMIC);
   sqlite3DbFree(db, zOutput);
 }

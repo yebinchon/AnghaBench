@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/ * LPXDTALINK ;
-typedef  long LPARAM ;
-typedef  long INT ;
-typedef  scalar_t__ HWND ;
-typedef  int EDIRABORT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  COUNTOF (int /*<<< orphan*/ *) ; 
- int EDIRABORT_READREQUEST ; 
- int EDIRABORT_WINDOWCLOSE ; 
- int /*<<< orphan*/  FILE_NOTIFY_CHANGE_FLAGS ; 
- int /*<<< orphan*/  FS_TESTEMPTY ; 
- int /*<<< orphan*/  FillDirList (scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GWLP_USERDATA ; 
- int /*<<< orphan*/  GWL_HDTA ; 
- int /*<<< orphan*/  GWL_HDTAABORT ; 
- int /*<<< orphan*/  GWL_IERROR ; 
- int /*<<< orphan*/  GWL_NEXTHWND ; 
- scalar_t__ GetDlgItem (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetMDIWindowText (scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ GetParent (scalar_t__) ; 
- scalar_t__ GetWindowLongPtr (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IDCW_LISTBOX ; 
- int /*<<< orphan*/  LB_DELETESTRING ; 
- int MAXPATHLEN ; 
- int /*<<< orphan*/  ModifyWatchList (scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SPC_SET_INVALID (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SendMessage (scalar_t__,int /*<<< orphan*/ ,long,long) ; 
- int /*<<< orphan*/  SetWindowLongPtr (scalar_t__,int /*<<< orphan*/ ,long) ; 
- int /*<<< orphan*/  StripFilespec (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  qFreeSpace ; 
+
+
+
+typedef int WCHAR ;
+typedef int * LPXDTALINK ;
+typedef long LPARAM ;
+typedef long INT ;
+typedef scalar_t__ HWND ;
+typedef int EDIRABORT ;
+
+
+ int COUNTOF (int *) ;
+ int EDIRABORT_READREQUEST ;
+ int EDIRABORT_WINDOWCLOSE ;
+ int FILE_NOTIFY_CHANGE_FLAGS ;
+ int FS_TESTEMPTY ;
+ int FillDirList (scalar_t__,int *) ;
+ int GWLP_USERDATA ;
+ int GWL_HDTA ;
+ int GWL_HDTAABORT ;
+ int GWL_IERROR ;
+ int GWL_NEXTHWND ;
+ scalar_t__ GetDlgItem (scalar_t__,int ) ;
+ int GetMDIWindowText (scalar_t__,int *,int ) ;
+ scalar_t__ GetParent (scalar_t__) ;
+ scalar_t__ GetWindowLongPtr (scalar_t__,int ) ;
+ int IDCW_LISTBOX ;
+ int LB_DELETESTRING ;
+ int MAXPATHLEN ;
+ int ModifyWatchList (scalar_t__,int *,int ) ;
+ int SPC_SET_INVALID (int ) ;
+ int SendMessage (scalar_t__,int ,long,long) ;
+ int SetWindowLongPtr (scalar_t__,int ,long) ;
+ int StripFilespec (int *) ;
+ int qFreeSpace ;
 
 LPXDTALINK
 DirReadDone(
@@ -59,16 +59,16 @@ DirReadDone(
 
    eDirAbort = (EDIRABORT)GetWindowLongPtr(hwndDir, GWL_HDTAABORT);
 
-   //
-   // Last chance check for abort
-   //
+
+
+
    if ((eDirAbort & (EDIRABORT_READREQUEST|EDIRABORT_WINDOWCLOSE)) ||
       GetWindowLongPtr(hwndDir, GWL_HDTA)) {
 
-      //
-      // We don't want it
-      //
-      return NULL;
+
+
+
+      return ((void*)0);
    }
 
    GetMDIWindowText(hwndParent, szPath, COUNTOF(szPath));
@@ -81,9 +81,9 @@ DirReadDone(
    SetWindowLongPtr(hwndDir, GWL_IERROR, iError);
    SetWindowLongPtr(hwndDir, GWL_HDTA, (LPARAM)lpStart);
 
-   //
-   // Remove the "reading" token
-   //
+
+
+
    SendMessage(hwndLB, LB_DELETESTRING, 0, 0);
 
    FillDirList(hwndDir, lpStart);
@@ -97,9 +97,9 @@ DirReadDone(
    }
    SetWindowLongPtr(hwndDir, GWL_NEXTHWND, 0L);
 
-   //
-   // Refresh display, but don't hit disk
-   //
+
+
+
    SPC_SET_INVALID(qFreeSpace);
 
    return lpStart;

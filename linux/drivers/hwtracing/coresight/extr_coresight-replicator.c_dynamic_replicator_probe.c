@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct amba_id {int dummy; } ;
-struct amba_device {int /*<<< orphan*/  res; int /*<<< orphan*/  dev; } ;
+struct amba_device {int res; int dev; } ;
 
-/* Variables and functions */
- int replicator_probe (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int replicator_probe (int *,int *) ;
 
 __attribute__((used)) static int dynamic_replicator_probe(struct amba_device *adev,
-				    const struct amba_id *id)
+        const struct amba_id *id)
 {
-	return replicator_probe(&adev->dev, &adev->res);
+ return replicator_probe(&adev->dev, &adev->res);
 }

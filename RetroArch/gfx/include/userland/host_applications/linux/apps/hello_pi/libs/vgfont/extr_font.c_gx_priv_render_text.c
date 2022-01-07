@@ -1,64 +1,64 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint32_t ;
-typedef  scalar_t__ int32_t ;
-typedef  scalar_t__ VGint ;
-typedef  scalar_t__ VGfloat ;
-typedef  int /*<<< orphan*/  VGPaint ;
-typedef  int /*<<< orphan*/  VGFT_FONT_T ;
-typedef  int /*<<< orphan*/  VCOS_STATUS_T ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint32_t ;
+typedef scalar_t__ int32_t ;
+typedef scalar_t__ VGint ;
+typedef scalar_t__ VGfloat ;
+typedef int VGPaint ;
+typedef int VGFT_FONT_T ;
+typedef int VCOS_STATUS_T ;
 struct TYPE_4__ {scalar_t__ width; scalar_t__ height; } ;
-typedef  int /*<<< orphan*/  GX_DISPLAY_T ;
-typedef  int /*<<< orphan*/  GX_CLIENT_STATE_T ;
-typedef  TYPE_1__* GRAPHICS_RESOURCE_HANDLE ;
+typedef int GX_DISPLAY_T ;
+typedef int GX_CLIENT_STATE_T ;
+typedef TYPE_1__* GRAPHICS_RESOURCE_HANDLE ;
 
-/* Variables and functions */
- scalar_t__ GRAPHICS_RESOURCE_HEIGHT ; 
- scalar_t__ GRAPHICS_RESOURCE_WIDTH ; 
- scalar_t__ GRAPHICS_TRANSPARENT_COLOUR ; 
- int /*<<< orphan*/  GX_LOG (char*,int,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  VCOS_ENOMEM ; 
- int /*<<< orphan*/  VCOS_SUCCESS ; 
- int /*<<< orphan*/  VG_CLEAR_COLOR ; 
- int /*<<< orphan*/  VG_FALSE ; 
- int /*<<< orphan*/  VG_FILL_PATH ; 
- int /*<<< orphan*/  VG_PAINT_COLOR ; 
- int /*<<< orphan*/  VG_PAINT_TYPE ; 
- int /*<<< orphan*/  VG_PAINT_TYPE_COLOR ; 
- int /*<<< orphan*/  VG_SCISSORING ; 
- int /*<<< orphan*/  VG_SCISSOR_RECTS ; 
- int /*<<< orphan*/  VG_TRUE ; 
- int /*<<< orphan*/ * find_font (char const*,scalar_t__) ; 
- int /*<<< orphan*/  gx_priv_colour_to_paint (scalar_t__,scalar_t__*) ; 
- int /*<<< orphan*/  gx_priv_restore (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  gx_priv_save (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  inited ; 
- int /*<<< orphan*/  vcos_assert (int) ; 
- int /*<<< orphan*/  vcos_demand (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vgClear (scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  vgCreatePaint () ; 
- int /*<<< orphan*/  vgDestroyPaint (int /*<<< orphan*/ ) ; 
- int vgGetError () ; 
- int /*<<< orphan*/  vgSetPaint (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vgSetParameterfv (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,scalar_t__*) ; 
- int /*<<< orphan*/  vgSetParameteri (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vgSetfv (int /*<<< orphan*/ ,int,scalar_t__*) ; 
- int /*<<< orphan*/  vgSeti (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vgSetiv (int /*<<< orphan*/ ,int,scalar_t__*) ; 
- scalar_t__ vgft_first_line_y_offset (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vgft_font_draw (int /*<<< orphan*/ *,scalar_t__,scalar_t__,char const*,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vgft_get_text_extents (int /*<<< orphan*/ *,char const*,scalar_t__,scalar_t__,scalar_t__,scalar_t__*,scalar_t__*) ; 
+
+ scalar_t__ GRAPHICS_RESOURCE_HEIGHT ;
+ scalar_t__ GRAPHICS_RESOURCE_WIDTH ;
+ scalar_t__ GRAPHICS_TRANSPARENT_COLOUR ;
+ int GX_LOG (char*,int,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ int VCOS_ENOMEM ;
+ int VCOS_SUCCESS ;
+ int VG_CLEAR_COLOR ;
+ int VG_FALSE ;
+ int VG_FILL_PATH ;
+ int VG_PAINT_COLOR ;
+ int VG_PAINT_TYPE ;
+ int VG_PAINT_TYPE_COLOR ;
+ int VG_SCISSORING ;
+ int VG_SCISSOR_RECTS ;
+ int VG_TRUE ;
+ int * find_font (char const*,scalar_t__) ;
+ int gx_priv_colour_to_paint (scalar_t__,scalar_t__*) ;
+ int gx_priv_restore (int *) ;
+ int gx_priv_save (int *,TYPE_1__*) ;
+ int inited ;
+ int vcos_assert (int) ;
+ int vcos_demand (int ) ;
+ int vgClear (scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ int vgCreatePaint () ;
+ int vgDestroyPaint (int ) ;
+ int vgGetError () ;
+ int vgSetPaint (int ,int ) ;
+ int vgSetParameterfv (int ,int ,int,scalar_t__*) ;
+ int vgSetParameteri (int ,int ,int ) ;
+ int vgSetfv (int ,int,scalar_t__*) ;
+ int vgSeti (int ,int ) ;
+ int vgSetiv (int ,int,scalar_t__*) ;
+ scalar_t__ vgft_first_line_y_offset (int *) ;
+ int vgft_font_draw (int *,scalar_t__,scalar_t__,char const*,scalar_t__,int ) ;
+ int vgft_get_text_extents (int *,char const*,scalar_t__,scalar_t__,scalar_t__,scalar_t__*,scalar_t__*) ;
 
 VCOS_STATUS_T gx_priv_render_text( GX_DISPLAY_T *disp,
                                    GRAPHICS_RESOURCE_HANDLE res,
@@ -79,7 +79,7 @@ VCOS_STATUS_T gx_priv_render_text( GX_DISPLAY_T *disp,
    VCOS_STATUS_T status = VCOS_SUCCESS;
    int clip = 1;
 
-   vcos_demand(inited); // has gx_font_init() been called?
+   vcos_demand(inited);
 
    gx_priv_save(&save, res);
 
@@ -98,7 +98,7 @@ VCOS_STATUS_T gx_priv_render_text( GX_DISPLAY_T *disp,
       goto finish;
    }
 
-   // setup the clipping rectangle
+
    if (clip)
    {
       VGint coords[] = {x,y,width,height};
@@ -106,23 +106,23 @@ VCOS_STATUS_T gx_priv_render_text( GX_DISPLAY_T *disp,
       vgSetiv(VG_SCISSOR_RECTS, 4, coords);
    }
 
-   // setup the background colour if needed
+
    if (bg_colour != GRAPHICS_TRANSPARENT_COLOUR)
    {
       int err;
       VGfloat rendered_w, rendered_h;
       VGfloat vg_bg_colour[4];
 
-      // setup the background colour...
+
       gx_priv_colour_to_paint(bg_colour, vg_bg_colour);
       vgSetfv(VG_CLEAR_COLOR, 4, vg_bg_colour);
 
-      // fill in a rectangle...
+
       vgft_get_text_extents(font, text, text_length, (VGfloat)x, (VGfloat)y, &rendered_w, &rendered_h);
 
       if ( ( 0 < (VGint)rendered_w ) && ( 0 < (VGint)rendered_h ) )
       {
-         // Have to compensate for the messed up y position of multiline text.
+
          VGfloat offset = vgft_first_line_y_offset(font);
          int32_t bottom = y + offset - rendered_h;
 
@@ -133,10 +133,10 @@ VCOS_STATUS_T gx_priv_render_text( GX_DISPLAY_T *disp,
             GX_LOG("Error %d clearing bg text %d %d %g %g",
                    err, x, y, rendered_w, rendered_h);
             vcos_assert(0);
-         } // if
-      } // if
-   } // if
-   // setup the foreground colour
+         }
+      }
+   }
+
    fg = vgCreatePaint();
    if (!fg)
    {
@@ -144,7 +144,7 @@ VCOS_STATUS_T gx_priv_render_text( GX_DISPLAY_T *disp,
       goto finish;
    }
 
-   // draw the foreground text
+
    vgSetParameteri(fg, VG_PAINT_TYPE, VG_PAINT_TYPE_COLOR);
    gx_priv_colour_to_paint(fg_colour, vg_colour);
    vgSetParameterfv(fg, VG_PAINT_COLOR, 4, vg_colour);

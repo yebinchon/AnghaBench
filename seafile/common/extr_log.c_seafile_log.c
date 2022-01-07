@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  time_t ;
+
+
+
+
+typedef int time_t ;
 struct tm {int dummy; } ;
-typedef  int /*<<< orphan*/  gpointer ;
-typedef  char gchar ;
-typedef  scalar_t__ GLogLevelFlags ;
+typedef int gpointer ;
+typedef char gchar ;
+typedef scalar_t__ GLogLevelFlags ;
 
-/* Variables and functions */
- scalar_t__ enable_syslog ; 
- int /*<<< orphan*/  fflush (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fputs (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  g_return_if_fail (int) ; 
- int /*<<< orphan*/  get_syslog_level (scalar_t__) ; 
- struct tm* localtime (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * logfp ; 
- int /*<<< orphan*/  printf (char*,char*,char const*) ; 
- scalar_t__ seafile_log_level ; 
- int strftime (char*,int,char*,struct tm*) ; 
- int /*<<< orphan*/  syslog (int /*<<< orphan*/ ,char*,char const*) ; 
- int /*<<< orphan*/  time (int /*<<< orphan*/ *) ; 
 
-__attribute__((used)) static void 
+ scalar_t__ enable_syslog ;
+ int fflush (int *) ;
+ int fputs (char const*,int *) ;
+ int g_return_if_fail (int) ;
+ int get_syslog_level (scalar_t__) ;
+ struct tm* localtime (int *) ;
+ int * logfp ;
+ int printf (char*,char*,char const*) ;
+ scalar_t__ seafile_log_level ;
+ int strftime (char*,int,char*,struct tm*) ;
+ int syslog (int ,char*,char const*) ;
+ int time (int *) ;
+
+__attribute__((used)) static void
 seafile_log (const gchar *log_domain, GLogLevelFlags log_level,
-             const gchar *message,    gpointer user_data)
+             const gchar *message, gpointer user_data)
 {
     time_t t;
     struct tm *tm;
@@ -42,22 +42,22 @@ seafile_log (const gchar *log_domain, GLogLevelFlags log_level,
     if (log_level > seafile_log_level)
         return;
 
-    t = time(NULL);
+    t = time(((void*)0));
     tm = localtime(&t);
     len = strftime (buf, 1024, "[%x %X] ", tm);
     g_return_if_fail (len < 1024);
-    if (logfp != NULL) {    
+    if (logfp != ((void*)0)) {
         fputs (buf, logfp);
         fputs (message, logfp);
         fflush (logfp);
-    } else { // log file not available
+    } else {
         printf("%s %s", buf, message);
     }
 
-#ifndef WIN32
-#ifdef SEAFILE_SERVER
-    if (enable_syslog)
-        syslog (get_syslog_level (log_level), "%s", message);
-#endif
-#endif
+
+
+
+
+
+
 }

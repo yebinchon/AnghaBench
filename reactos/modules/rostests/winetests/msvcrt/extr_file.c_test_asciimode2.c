@@ -1,40 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  obuf ;
-typedef  int /*<<< orphan*/  ibuf ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int fread (char*,int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fwrite (char const*,int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  getc (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memset (char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- scalar_t__ strncmp (char*,char const*,int) ; 
- int /*<<< orphan*/  unlink (char*) ; 
+
+
+
+typedef int obuf ;
+typedef int ibuf ;
+typedef int FILE ;
+
+
+ int fclose (int *) ;
+ int * fopen (char*,char*) ;
+ int fread (char*,int,int,int *) ;
+ int fwrite (char const*,int,int,int *) ;
+ int getc (int *) ;
+ int memset (char*,int ,int) ;
+ int ok (int,char*,...) ;
+ scalar_t__ strncmp (char*,char const*,int) ;
+ int unlink (char*) ;
 
 __attribute__((used)) static void test_asciimode2(void)
 {
-    /* Error sequence from one app was getchar followed by small fread
-     * with one \r removed had last byte of buffer filled with
-     * next byte of *unbuffered* data rather than next byte from buffer
-     * Test case is a short string of one byte followed by a newline
-     * followed by filler to fill out the sector, then a sector of
-     * some different byte.
-     */
-
     FILE *fp;
     char ibuf[4];
     int i;

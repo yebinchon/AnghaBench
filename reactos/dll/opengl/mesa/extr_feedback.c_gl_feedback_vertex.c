@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int Mask; } ;
 struct TYPE_6__ {TYPE_1__ Feedback; } ;
-typedef  int /*<<< orphan*/  const GLfloat ;
-typedef  TYPE_2__ GLcontext ;
+typedef int const GLfloat ;
+typedef TYPE_2__ GLcontext ;
 
-/* Variables and functions */
- int FB_3D ; 
- int FB_4D ; 
- int FB_COLOR ; 
- int FB_INDEX ; 
- int FB_TEXTURE ; 
- int /*<<< orphan*/  FEEDBACK_TOKEN (TYPE_2__*,int /*<<< orphan*/  const) ; 
+
+ int FB_3D ;
+ int FB_4D ;
+ int FB_COLOR ;
+ int FB_INDEX ;
+ int FB_TEXTURE ;
+ int FEEDBACK_TOKEN (TYPE_2__*,int const) ;
 
 void gl_feedback_vertex( GLcontext *ctx,
                          GLfloat x, GLfloat y, GLfloat z, GLfloat w,
-			 const GLfloat color[4], GLfloat index,
-			 const GLfloat texcoord[4] )
+    const GLfloat color[4], GLfloat index,
+    const GLfloat texcoord[4] )
 {
    FEEDBACK_TOKEN( ctx, x );
    FEEDBACK_TOKEN( ctx, y );

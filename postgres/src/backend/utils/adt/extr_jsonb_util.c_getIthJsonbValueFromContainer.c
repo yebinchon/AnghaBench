@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t uint32 ;
-struct TYPE_7__ {int /*<<< orphan*/ * children; } ;
-typedef  int /*<<< orphan*/  JsonbValue ;
-typedef  TYPE_1__ JsonbContainer ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERROR ; 
- int /*<<< orphan*/  JsonContainerIsArray (TYPE_1__*) ; 
- size_t JsonContainerSize (TYPE_1__*) ; 
- int /*<<< orphan*/  elog (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  fillJsonbValue (TYPE_1__*,size_t,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  getJsonbOffset (TYPE_1__*,size_t) ; 
- int /*<<< orphan*/ * palloc (int) ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef size_t uint32 ;
+struct TYPE_7__ {int * children; } ;
+typedef int JsonbValue ;
+typedef TYPE_1__ JsonbContainer ;
+
+
+ int ERROR ;
+ int JsonContainerIsArray (TYPE_1__*) ;
+ size_t JsonContainerSize (TYPE_1__*) ;
+ int elog (int ,char*) ;
+ int fillJsonbValue (TYPE_1__*,size_t,char*,int ,int *) ;
+ int getJsonbOffset (TYPE_1__*,size_t) ;
+ int * palloc (int) ;
 
 JsonbValue *
 getIthJsonbValueFromContainer(JsonbContainer *container, uint32 i)
 {
-	JsonbValue *result;
-	char	   *base_addr;
-	uint32		nelements;
+ JsonbValue *result;
+ char *base_addr;
+ uint32 nelements;
 
-	if (!JsonContainerIsArray(container))
-		elog(ERROR, "not a jsonb array");
+ if (!JsonContainerIsArray(container))
+  elog(ERROR, "not a jsonb array");
 
-	nelements = JsonContainerSize(container);
-	base_addr = (char *) &container->children[nelements];
+ nelements = JsonContainerSize(container);
+ base_addr = (char *) &container->children[nelements];
 
-	if (i >= nelements)
-		return NULL;
+ if (i >= nelements)
+  return ((void*)0);
 
-	result = palloc(sizeof(JsonbValue));
+ result = palloc(sizeof(JsonbValue));
 
-	fillJsonbValue(container, i, base_addr,
-				   getJsonbOffset(container, i),
-				   result);
+ fillJsonbValue(container, i, base_addr,
+       getJsonbOffset(container, i),
+       result);
 
-	return result;
+ return result;
 }

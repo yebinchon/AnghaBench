@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ngx_log_t ;
-typedef  int /*<<< orphan*/  ngx_int_t ;
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LUA_GCCOLLECT ; 
- int /*<<< orphan*/  NGX_ERROR ; 
- int /*<<< orphan*/  NGX_LOG_ERR ; 
- int /*<<< orphan*/  NGX_OK ; 
- int /*<<< orphan*/  lua_gc (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_isnil (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pop (int /*<<< orphan*/ *,int) ; 
- char* lua_tostring (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  ngx_log_error (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,char const*,char const*) ; 
+
+
+
+typedef int ngx_log_t ;
+typedef int ngx_int_t ;
+typedef int lua_State ;
+
+
+ int LUA_GCCOLLECT ;
+ int NGX_ERROR ;
+ int NGX_LOG_ERR ;
+ int NGX_OK ;
+ int lua_gc (int *,int ,int ) ;
+ int lua_isnil (int *,int) ;
+ int lua_pop (int *,int) ;
+ char* lua_tostring (int *,int) ;
+ int ngx_log_error (int ,int *,int ,char*,char const*,char const*) ;
 
 ngx_int_t
 ngx_http_lua_report(ngx_log_t *log, lua_State *L, int status,
     const char *prefix)
 {
-    const char      *msg;
+    const char *msg;
 
     if (status && !lua_isnil(L, -1)) {
         msg = lua_tostring(L, -1);
-        if (msg == NULL) {
+        if (msg == ((void*)0)) {
             msg = "unknown error";
         }
 
@@ -41,7 +41,7 @@ ngx_http_lua_report(ngx_log_t *log, lua_State *L, int status,
         lua_pop(L, 1);
     }
 
-    /* force a full garbage-collection cycle */
+
     lua_gc(L, LUA_GCCOLLECT, 0);
 
     return status == 0 ? NGX_OK : NGX_ERROR;

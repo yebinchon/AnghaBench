@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  xsltTransformContextPtr ;
-typedef  int /*<<< orphan*/  xsltStylesheetPtr ;
-typedef  TYPE_1__* xsltParserContextPtr ;
-typedef  int /*<<< orphan*/  xsltParserContext ;
-struct TYPE_4__ {int /*<<< orphan*/  ctxt; int /*<<< orphan*/  style; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ xmlMalloc (int) ; 
- int /*<<< orphan*/  xsltTransformError (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int xsltTransformContextPtr ;
+typedef int xsltStylesheetPtr ;
+typedef TYPE_1__* xsltParserContextPtr ;
+typedef int xsltParserContext ;
+struct TYPE_4__ {int ctxt; int style; } ;
+
+
+ int memset (TYPE_1__*,int ,int) ;
+ scalar_t__ xmlMalloc (int) ;
+ int xsltTransformError (int *,int *,int *,char*) ;
 
 __attribute__((used)) static xsltParserContextPtr
 xsltNewParserContext(xsltStylesheetPtr style, xsltTransformContextPtr ctxt) {
     xsltParserContextPtr cur;
 
     cur = (xsltParserContextPtr) xmlMalloc(sizeof(xsltParserContext));
-    if (cur == NULL) {
-	xsltTransformError(NULL, NULL, NULL,
-		"xsltNewParserContext : malloc failed\n");
-	return(NULL);
+    if (cur == ((void*)0)) {
+ xsltTransformError(((void*)0), ((void*)0), ((void*)0),
+  "xsltNewParserContext : malloc failed\n");
+ return(((void*)0));
     }
     memset(cur, 0, sizeof(xsltParserContext));
     cur->style = style;

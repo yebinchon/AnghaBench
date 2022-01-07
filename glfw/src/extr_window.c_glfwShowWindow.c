@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {scalar_t__ focusOnShow; scalar_t__ monitor; } ;
-typedef  TYPE_1__ _GLFWwindow ;
-typedef  int /*<<< orphan*/  GLFWwindow ;
+typedef TYPE_1__ _GLFWwindow ;
+typedef int GLFWwindow ;
 
-/* Variables and functions */
- int /*<<< orphan*/  _GLFW_REQUIRE_INIT () ; 
- int /*<<< orphan*/  _glfwPlatformFocusWindow (TYPE_1__*) ; 
- int /*<<< orphan*/  _glfwPlatformShowWindow (TYPE_1__*) ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
+
+ int _GLFW_REQUIRE_INIT () ;
+ int _glfwPlatformFocusWindow (TYPE_1__*) ;
+ int _glfwPlatformShowWindow (TYPE_1__*) ;
+ int assert (int ) ;
 
 void glfwShowWindow(GLFWwindow* handle)
 {
     _GLFWwindow* window = (_GLFWwindow*) handle;
-    assert(window != NULL);
+    assert(window != ((void*)0));
 
     _GLFW_REQUIRE_INIT();
 

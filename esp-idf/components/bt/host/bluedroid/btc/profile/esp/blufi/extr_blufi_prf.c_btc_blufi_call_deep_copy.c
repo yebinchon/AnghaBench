@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_6__ ;
-typedef  struct TYPE_13__   TYPE_5__ ;
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_12__ {int sta_ssid_len; int sta_passwd_len; int softap_ssid_len; int softap_passwd_len; int /*<<< orphan*/  softap_channel; int /*<<< orphan*/  softap_channel_set; int /*<<< orphan*/  softap_max_conn_num; int /*<<< orphan*/  softap_max_conn_num_set; int /*<<< orphan*/  softap_authmode; int /*<<< orphan*/  softap_authmode_set; int /*<<< orphan*/ * softap_passwd; int /*<<< orphan*/ * softap_ssid; int /*<<< orphan*/ * sta_passwd; int /*<<< orphan*/ * sta_ssid; int /*<<< orphan*/  sta_bssid_set; int /*<<< orphan*/ * sta_bssid; } ;
-typedef  TYPE_4__ esp_blufi_extra_info_t ;
-typedef  int /*<<< orphan*/  esp_blufi_ap_record_t ;
+
+
+typedef struct TYPE_14__ TYPE_6__ ;
+typedef struct TYPE_13__ TYPE_5__ ;
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_12__ {int sta_ssid_len; int sta_passwd_len; int softap_ssid_len; int softap_passwd_len; int softap_channel; int softap_channel_set; int softap_max_conn_num; int softap_max_conn_num_set; int softap_authmode; int softap_authmode_set; int * softap_passwd; int * softap_ssid; int * sta_passwd; int * sta_ssid; int sta_bssid_set; int * sta_bssid; } ;
+typedef TYPE_4__ esp_blufi_extra_info_t ;
+typedef int esp_blufi_ap_record_t ;
 struct TYPE_13__ {int act; } ;
-typedef  TYPE_5__ btc_msg_t ;
-struct TYPE_10__ {int data_len; int /*<<< orphan*/ * data; } ;
-struct TYPE_9__ {int apCount; int /*<<< orphan*/ * list; } ;
+typedef TYPE_5__ btc_msg_t ;
+struct TYPE_10__ {int data_len; int * data; } ;
+struct TYPE_9__ {int apCount; int * list; } ;
 struct TYPE_11__ {int extra_info_len; TYPE_4__* extra_info; } ;
 struct TYPE_14__ {TYPE_2__ custom_data; TYPE_1__ wifi_list; TYPE_3__ wifi_conn_report; } ;
-typedef  TYPE_6__ btc_blufi_args_t ;
+typedef TYPE_6__ btc_blufi_args_t ;
 
-/* Variables and functions */
-#define  BTC_BLUFI_ACT_SEND_CFG_REPORT 130 
-#define  BTC_BLUFI_ACT_SEND_CUSTOM_DATA 129 
-#define  BTC_BLUFI_ACT_SEND_WIFI_LIST 128 
- int /*<<< orphan*/  BTC_TRACE_ERROR (char*) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- TYPE_4__* osi_calloc (int) ; 
- void* osi_malloc (int) ; 
+
+
+
+
+ int BTC_TRACE_ERROR (char*) ;
+ int memcpy (int *,int *,int) ;
+ TYPE_4__* osi_calloc (int) ;
+ void* osi_malloc (int) ;
 
 void btc_blufi_call_deep_copy(btc_msg_t *msg, void *p_dest, void *p_src)
 {
@@ -43,17 +43,17 @@ void btc_blufi_call_deep_copy(btc_msg_t *msg, void *p_dest, void *p_src)
     btc_blufi_args_t *src = (btc_blufi_args_t *) p_src;
 
     switch (msg->act) {
-    case BTC_BLUFI_ACT_SEND_CFG_REPORT: {
+    case 130: {
         esp_blufi_extra_info_t *src_info = src->wifi_conn_report.extra_info;
         dst->wifi_conn_report.extra_info_len = 0;
-        dst->wifi_conn_report.extra_info = NULL;
+        dst->wifi_conn_report.extra_info = ((void*)0);
 
-        if (src_info == NULL) {
+        if (src_info == ((void*)0)) {
             return;
         }
 
         dst->wifi_conn_report.extra_info = osi_calloc(sizeof(esp_blufi_extra_info_t));
-        if (dst->wifi_conn_report.extra_info == NULL) {
+        if (dst->wifi_conn_report.extra_info == ((void*)0)) {
             return;
         }
 
@@ -111,27 +111,27 @@ void btc_blufi_call_deep_copy(btc_msg_t *msg, void *p_dest, void *p_src)
         }
         break;
     }
-    case BTC_BLUFI_ACT_SEND_WIFI_LIST:{
+    case 128:{
         esp_blufi_ap_record_t *list = src->wifi_list.list;
-        src->wifi_list.list = NULL;
-        if (list == NULL || src->wifi_list.apCount <= 0) {
+        src->wifi_list.list = ((void*)0);
+        if (list == ((void*)0) || src->wifi_list.apCount <= 0) {
             break;
         }
         dst->wifi_list.list = (esp_blufi_ap_record_t *)osi_malloc(sizeof(esp_blufi_ap_record_t) * src->wifi_list.apCount);
-        if (dst->wifi_list.list == NULL) {
+        if (dst->wifi_list.list == ((void*)0)) {
             break;
         }
         memcpy(dst->wifi_list.list, list, sizeof(esp_blufi_ap_record_t) * src->wifi_list.apCount);
         break;
     }
-    case BTC_BLUFI_ACT_SEND_CUSTOM_DATA:{
+    case 129:{
         uint8_t *data = src->custom_data.data;
-        if(data == NULL) {
+        if(data == ((void*)0)) {
             BTC_TRACE_ERROR("custom data is NULL\n");
             break;
         }
         dst->custom_data.data = osi_malloc(src->custom_data.data_len);
-        if(dst->custom_data.data == NULL) {
+        if(dst->custom_data.data == ((void*)0)) {
             BTC_TRACE_ERROR("custom data malloc error\n");
             break;
         }

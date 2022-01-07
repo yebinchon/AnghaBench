@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {TYPE_3__* tls; } ;
-typedef  TYPE_1__ transport_ssl_t ;
-typedef  int /*<<< orphan*/  esp_transport_handle_t ;
-struct TYPE_6__ {int /*<<< orphan*/  error_handle; } ;
+typedef TYPE_1__ transport_ssl_t ;
+typedef int esp_transport_handle_t ;
+struct TYPE_6__ {int error_handle; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ESP_LOGE (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TAG ; 
- int /*<<< orphan*/  errno ; 
- int esp_tls_conn_read (TYPE_3__*,unsigned char*,int) ; 
- scalar_t__ esp_tls_get_bytes_avail (TYPE_3__*) ; 
- TYPE_1__* esp_transport_get_context_data (int /*<<< orphan*/ ) ; 
- int esp_transport_poll_read (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  esp_transport_set_errors (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strerror (int /*<<< orphan*/ ) ; 
+
+ int ESP_LOGE (int ,char*,int ) ;
+ int TAG ;
+ int errno ;
+ int esp_tls_conn_read (TYPE_3__*,unsigned char*,int) ;
+ scalar_t__ esp_tls_get_bytes_avail (TYPE_3__*) ;
+ TYPE_1__* esp_transport_get_context_data (int ) ;
+ int esp_transport_poll_read (int ,int) ;
+ int esp_transport_set_errors (int ,int ) ;
+ int strerror (int ) ;
 
 __attribute__((used)) static int ssl_read(esp_transport_handle_t t, char *buffer, int len, int timeout_ms)
 {

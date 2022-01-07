@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct file_archive_file_backend {int (* archive_parse_file_iterate_step ) (TYPE_2__*,char const*,struct archive_extract_userdata*,int /*<<< orphan*/ ) ;} ;
-struct archive_extract_userdata {int /*<<< orphan*/ * context; int /*<<< orphan*/  archive_path; } ;
-struct TYPE_7__ {int type; int /*<<< orphan*/ * stream; TYPE_1__* backend; int /*<<< orphan*/ * handle; } ;
-typedef  TYPE_2__ file_archive_transfer_t ;
-typedef  int /*<<< orphan*/  file_archive_file_cb ;
-struct TYPE_6__ {int /*<<< orphan*/  (* stream_free ) (int /*<<< orphan*/ *) ;} ;
 
-/* Variables and functions */
-#define  ARCHIVE_TRANSFER_DEINIT 132 
-#define  ARCHIVE_TRANSFER_DEINIT_ERROR 131 
-#define  ARCHIVE_TRANSFER_INIT 130 
-#define  ARCHIVE_TRANSFER_ITERATE 129 
-#define  ARCHIVE_TRANSFER_NONE 128 
- int /*<<< orphan*/  file_archive_free (int /*<<< orphan*/ *) ; 
- struct file_archive_file_backend* file_archive_get_file_backend (char const*) ; 
- int /*<<< orphan*/  file_archive_parse_file_init (TYPE_2__*,char const*) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strlcpy (int /*<<< orphan*/ ,char const*,int) ; 
- int stub1 (TYPE_2__*,char const*,struct archive_extract_userdata*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct file_archive_file_backend {int (* archive_parse_file_iterate_step ) (TYPE_2__*,char const*,struct archive_extract_userdata*,int ) ;} ;
+struct archive_extract_userdata {int * context; int archive_path; } ;
+struct TYPE_7__ {int type; int * stream; TYPE_1__* backend; int * handle; } ;
+typedef TYPE_2__ file_archive_transfer_t ;
+typedef int file_archive_file_cb ;
+struct TYPE_6__ {int (* stream_free ) (int *) ;} ;
+
+
+
+
+
+
+
+ int file_archive_free (int *) ;
+ struct file_archive_file_backend* file_archive_get_file_backend (char const*) ;
+ int file_archive_parse_file_init (TYPE_2__*,char const*) ;
+ int free (int *) ;
+ int strlcpy (int ,char const*,int) ;
+ int stub1 (TYPE_2__*,char const*,struct archive_extract_userdata*,int ) ;
+ int stub2 (int *) ;
 
 int file_archive_parse_file_iterate(
       file_archive_transfer_t *state,
@@ -46,9 +46,9 @@ int file_archive_parse_file_iterate(
 
    switch (state->type)
    {
-      case ARCHIVE_TRANSFER_NONE:
+      case 128:
          break;
-      case ARCHIVE_TRANSFER_INIT:
+      case 130:
          if (file_archive_parse_file_init(state, file) == 0)
          {
             if (userdata)
@@ -57,36 +57,36 @@ int file_archive_parse_file_iterate(
                strlcpy(userdata->archive_path, file,
                      sizeof(userdata->archive_path));
             }
-            state->type = ARCHIVE_TRANSFER_ITERATE;
+            state->type = 129;
          }
          else
-            state->type = ARCHIVE_TRANSFER_DEINIT_ERROR;
+            state->type = 131;
          break;
-      case ARCHIVE_TRANSFER_ITERATE:
+      case 129:
          if (file_archive_get_file_backend(file))
          {
             const struct file_archive_file_backend *backend =
                file_archive_get_file_backend(file);
-            int ret                                         =
+            int ret =
                backend->archive_parse_file_iterate_step(state,
                   valid_exts, userdata, file_cb);
 
             if (ret != 1)
-               state->type = ARCHIVE_TRANSFER_DEINIT;
+               state->type = 132;
             if (ret == -1)
-               state->type = ARCHIVE_TRANSFER_DEINIT_ERROR;
+               state->type = 131;
 
-            /* early return to prevent deinit from never firing */
+
             return 0;
          }
          return -1;
-      case ARCHIVE_TRANSFER_DEINIT_ERROR:
-         *returnerr = false;
-      case ARCHIVE_TRANSFER_DEINIT:
+      case 131:
+         *returnerr = 0;
+      case 132:
          if (state->handle)
          {
             file_archive_free(state->handle);
-            state->handle = NULL;
+            state->handle = ((void*)0);
          }
 
          if (state->stream && state->backend)
@@ -97,16 +97,16 @@ int file_archive_parse_file_iterate(
             if (state->stream)
                free(state->stream);
 
-            state->stream = NULL;
+            state->stream = ((void*)0);
 
             if (userdata)
-               userdata->context = NULL;
+               userdata->context = ((void*)0);
          }
          break;
    }
 
-   if (  state->type == ARCHIVE_TRANSFER_DEINIT ||
-         state->type == ARCHIVE_TRANSFER_DEINIT_ERROR)
+   if ( state->type == 132 ||
+         state->type == 131)
       return -1;
 
    return 0;

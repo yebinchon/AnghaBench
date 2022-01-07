@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct fdtable {scalar_t__ refcount; unsigned int size; int /*<<< orphan*/  lock; struct fdtable* cloexec; struct fdtable* files; } ;
-typedef  scalar_t__ fd_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fdtable_close (struct fdtable*,scalar_t__) ; 
- int /*<<< orphan*/  free (struct fdtable*) ; 
- int /*<<< orphan*/  lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  unlock (int /*<<< orphan*/ *) ; 
+
+
+
+struct fdtable {scalar_t__ refcount; unsigned int size; int lock; struct fdtable* cloexec; struct fdtable* files; } ;
+typedef scalar_t__ fd_t ;
+
+
+ int fdtable_close (struct fdtable*,scalar_t__) ;
+ int free (struct fdtable*) ;
+ int lock (int *) ;
+ int unlock (int *) ;
 
 void fdtable_release(struct fdtable *table) {
     lock(&table->lock);

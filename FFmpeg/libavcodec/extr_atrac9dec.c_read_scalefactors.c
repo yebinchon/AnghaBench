@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_5__ ;
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-struct TYPE_10__ {int /*<<< orphan*/  table; } ;
-typedef  TYPE_2__ VLC ;
+
+
+typedef struct TYPE_13__ TYPE_5__ ;
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_10__ {int table; } ;
+typedef TYPE_2__ VLC ;
 struct TYPE_13__ {int band_ext_q_unit; int q_unit_cnt_prev; TYPE_1__* channel; } ;
 struct TYPE_12__ {int* scalefactors; int* scalefactors_prev; } ;
-struct TYPE_11__ {TYPE_2__** sf_vlc; int /*<<< orphan*/  avctx; } ;
+struct TYPE_11__ {TYPE_2__** sf_vlc; int avctx; } ;
 struct TYPE_9__ {int* scalefactors; } ;
-typedef  int /*<<< orphan*/  GetBitContext ;
-typedef  TYPE_3__ ATRAC9Context ;
-typedef  TYPE_4__ ATRAC9ChannelData ;
-typedef  TYPE_5__ ATRAC9BlockData ;
+typedef int GetBitContext ;
+typedef TYPE_3__ ATRAC9Context ;
+typedef TYPE_4__ ATRAC9ChannelData ;
+typedef TYPE_5__ ATRAC9BlockData ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int FFMIN (int,int const) ; 
- int** at9_tab_sf_weights ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int get_bits (int /*<<< orphan*/ *,int const) ; 
- int get_vlc2 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  memcpy (int*,int*,int) ; 
- int /*<<< orphan*/  memset (int*,int /*<<< orphan*/ ,int) ; 
+
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ int FFMIN (int,int const) ;
+ int** at9_tab_sf_weights ;
+ int av_log (int ,int ,char*) ;
+ int get_bits (int *,int const) ;
+ int get_vlc2 (int *,int ,int,int) ;
+ int memcpy (int*,int*,int) ;
+ int memset (int*,int ,int) ;
 
 __attribute__((used)) static inline int read_scalefactors(ATRAC9Context *s, ATRAC9BlockData *b,
                                     ATRAC9ChannelData *c, GetBitContext *gb,
@@ -53,7 +53,7 @@ __attribute__((used)) static inline int read_scalefactors(ATRAC9Context *s, ATRA
     }
 
     switch (mode) {
-    case 0: { /* VLC delta offset */
+    case 0: {
         const uint8_t *sf_weights = at9_tab_sf_weights[get_bits(gb, 3)];
         const int base = get_bits(gb, 5);
         const int len = get_bits(gb, 2) + 3;
@@ -71,7 +71,7 @@ __attribute__((used)) static inline int read_scalefactors(ATRAC9Context *s, ATRA
 
         break;
     }
-    case 1: { /* CLC offset */
+    case 1: {
         const int len = get_bits(gb, 2) + 2;
         const int base = len < 5 ? get_bits(gb, 5) : 0;
         for (int i = 0; i < b->band_ext_q_unit; i++)
@@ -79,7 +79,7 @@ __attribute__((used)) static inline int read_scalefactors(ATRAC9Context *s, ATRA
         break;
     }
     case 2:
-    case 4: { /* VLC dist to baseline */
+    case 4: {
         const int *baseline = mode == 4 ? c->scalefactors_prev :
                               channel_idx ? b->channel[0].scalefactors :
                               c->scalefactors_prev;
@@ -101,7 +101,7 @@ __attribute__((used)) static inline int read_scalefactors(ATRAC9Context *s, ATRA
 
         break;
     }
-    case 3: { /* VLC offset with baseline */
+    case 3: {
         const int *baseline = channel_idx ? b->channel[0].scalefactors :
                               c->scalefactors_prev;
         const int baseline_len = channel_idx ? b->band_ext_q_unit :

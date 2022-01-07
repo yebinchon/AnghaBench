@@ -1,126 +1,126 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_5__ ;
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wchar_t ;
-typedef  int /*<<< orphan*/  t ;
-typedef  int /*<<< orphan*/  args ;
-typedef  scalar_t__ UINT ;
-struct TYPE_14__ {char* member_0; int /*<<< orphan*/ * member_4; int /*<<< orphan*/  member_3; int /*<<< orphan*/  member_2; int /*<<< orphan*/  member_1; } ;
-struct TYPE_13__ {int /*<<< orphan*/  RemoteClient; } ;
+
+
+typedef struct TYPE_14__ TYPE_5__ ;
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int wchar_t ;
+typedef int t ;
+typedef int args ;
+typedef scalar_t__ UINT ;
+struct TYPE_14__ {char* member_0; int * member_4; int member_3; int member_2; int member_1; } ;
+struct TYPE_13__ {int RemoteClient; } ;
 struct TYPE_12__ {TYPE_2__* ClientAuth; TYPE_1__* ClientOption; } ;
-struct TYPE_11__ {int /*<<< orphan*/  Username; int /*<<< orphan*/  AuthType; } ;
-struct TYPE_10__ {int RetryInterval; int MaxConnection; int UseEncrypt; int AdditionalConnectionInterval; int /*<<< orphan*/  DeviceName; int /*<<< orphan*/  NumRetry; int /*<<< orphan*/  HubName; int /*<<< orphan*/  Hostname; scalar_t__ Port; int /*<<< orphan*/  AccountName; } ;
-typedef  TYPE_3__ RPC_CLIENT_CREATE_ACCOUNT ;
-typedef  TYPE_4__ PC ;
-typedef  TYPE_5__ PARAM ;
-typedef  int /*<<< orphan*/  LIST ;
-typedef  int /*<<< orphan*/  CONSOLE ;
-typedef  int /*<<< orphan*/  CLIENT_OPTION ;
-typedef  int /*<<< orphan*/  CLIENT_AUTH ;
+struct TYPE_11__ {int Username; int AuthType; } ;
+struct TYPE_10__ {int RetryInterval; int MaxConnection; int UseEncrypt; int AdditionalConnectionInterval; int DeviceName; int NumRetry; int HubName; int Hostname; scalar_t__ Port; int AccountName; } ;
+typedef TYPE_3__ RPC_CLIENT_CREATE_ACCOUNT ;
+typedef TYPE_4__ PC ;
+typedef TYPE_5__ PARAM ;
+typedef int LIST ;
+typedef int CONSOLE ;
+typedef int CLIENT_OPTION ;
+typedef int CLIENT_AUTH ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLIENT_AUTHTYPE_ANONYMOUS ; 
- scalar_t__ CcCreateAccount (int /*<<< orphan*/ ,TYPE_3__*) ; 
- int /*<<< orphan*/  CiFreeClientCreateAccount (TYPE_3__*) ; 
- int /*<<< orphan*/  CmdEvalHostAndPort ; 
- int /*<<< orphan*/  CmdEvalNotEmpty ; 
- int /*<<< orphan*/  CmdEvalSafe ; 
- int /*<<< orphan*/  CmdPrintError (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  CmdPrompt ; 
- scalar_t__ ERR_INVALID_PARAMETER ; 
- scalar_t__ ERR_NO_ERROR ; 
- int /*<<< orphan*/  Free (char*) ; 
- int /*<<< orphan*/  FreeParamValueList (int /*<<< orphan*/ *) ; 
- char* GetParamStr (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  GetParamUniStr (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  INFINITE ; 
- int /*<<< orphan*/ * ParseCommandList (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,TYPE_5__*,int) ; 
- int /*<<< orphan*/  ParseHostPort (char*,char**,scalar_t__*,int) ; 
- int /*<<< orphan*/  StrCpy (int /*<<< orphan*/ ,int,char*) ; 
- int /*<<< orphan*/  UniStrCpy (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Zero (TYPE_3__*,int) ; 
- void* ZeroMalloc (int) ; 
- int /*<<< orphan*/  _UU (char*) ; 
+
+ int CLIENT_AUTHTYPE_ANONYMOUS ;
+ scalar_t__ CcCreateAccount (int ,TYPE_3__*) ;
+ int CiFreeClientCreateAccount (TYPE_3__*) ;
+ int CmdEvalHostAndPort ;
+ int CmdEvalNotEmpty ;
+ int CmdEvalSafe ;
+ int CmdPrintError (int *,scalar_t__) ;
+ int CmdPrompt ;
+ scalar_t__ ERR_INVALID_PARAMETER ;
+ scalar_t__ ERR_NO_ERROR ;
+ int Free (char*) ;
+ int FreeParamValueList (int *) ;
+ char* GetParamStr (int *,char*) ;
+ int GetParamUniStr (int *,char*) ;
+ int INFINITE ;
+ int * ParseCommandList (int *,char*,int *,TYPE_5__*,int) ;
+ int ParseHostPort (char*,char**,scalar_t__*,int) ;
+ int StrCpy (int ,int,char*) ;
+ int UniStrCpy (int ,int,int ) ;
+ int Zero (TYPE_3__*,int) ;
+ void* ZeroMalloc (int) ;
+ int _UU (char*) ;
 
 UINT PcAccountCreate(CONSOLE *c, char *cmd_name, wchar_t *str, void *param)
 {
-	LIST *o;
-	PC *pc = (PC *)param;
-	UINT ret = ERR_NO_ERROR;
-	RPC_CLIENT_CREATE_ACCOUNT t;
-	UINT port = 443;
-	char *host = NULL;
-	// Parameter list that can be specified
-	PARAM args[] =
-	{
-		{"[name]", CmdPrompt, _UU("CMD_AccountCreate_Prompt_Name"), CmdEvalNotEmpty, NULL},
-		{"SERVER", CmdPrompt, _UU("CMD_AccountCreate_Prompt_Server"), CmdEvalHostAndPort, NULL},
-		{"HUB", CmdPrompt, _UU("CMD_AccountCreate_Prompt_Hub"), CmdEvalSafe, NULL},
-		{"USERNAME", CmdPrompt, _UU("CMD_AccountCreate_Prompt_Username"), CmdEvalNotEmpty, NULL},
-		{"NICNAME", CmdPrompt, _UU("CMD_AccountCreate_Prompt_Nicname"), CmdEvalNotEmpty, NULL},
-	};
+ LIST *o;
+ PC *pc = (PC *)param;
+ UINT ret = ERR_NO_ERROR;
+ RPC_CLIENT_CREATE_ACCOUNT t;
+ UINT port = 443;
+ char *host = ((void*)0);
 
-	// Get the parameter list
-	o = ParseCommandList(c, cmd_name, str, args, sizeof(args) / sizeof(args[0]));
-	if (o == NULL)
-	{
-		return ERR_INVALID_PARAMETER;
-	}
+ PARAM args[] =
+ {
+  {"[name]", CmdPrompt, _UU("CMD_AccountCreate_Prompt_Name"), CmdEvalNotEmpty, ((void*)0)},
+  {"SERVER", CmdPrompt, _UU("CMD_AccountCreate_Prompt_Server"), CmdEvalHostAndPort, ((void*)0)},
+  {"HUB", CmdPrompt, _UU("CMD_AccountCreate_Prompt_Hub"), CmdEvalSafe, ((void*)0)},
+  {"USERNAME", CmdPrompt, _UU("CMD_AccountCreate_Prompt_Username"), CmdEvalNotEmpty, ((void*)0)},
+  {"NICNAME", CmdPrompt, _UU("CMD_AccountCreate_Prompt_Nicname"), CmdEvalNotEmpty, ((void*)0)},
+ };
 
-	ParseHostPort(GetParamStr(o, "SERVER"), &host, &port, 443);
 
-	// RPC call
-	Zero(&t, sizeof(t));
+ o = ParseCommandList(c, cmd_name, str, args, sizeof(args) / sizeof(args[0]));
+ if (o == ((void*)0))
+ {
+  return ERR_INVALID_PARAMETER;
+ }
 
-	t.ClientOption = ZeroMalloc(sizeof(CLIENT_OPTION));
-	UniStrCpy(t.ClientOption->AccountName, sizeof(t.ClientOption->AccountName), GetParamUniStr(o, "[name]"));
-	t.ClientOption->Port = port;
-	StrCpy(t.ClientOption->Hostname, sizeof(t.ClientOption->Hostname), host);
-	StrCpy(t.ClientOption->HubName, sizeof(t.ClientOption->HubName), GetParamStr(o, "HUB"));
-	t.ClientOption->NumRetry = INFINITE;
-	t.ClientOption->RetryInterval = 15;
-	t.ClientOption->MaxConnection = 1;
-	t.ClientOption->UseEncrypt = true;
-	t.ClientOption->AdditionalConnectionInterval = 1;
-	StrCpy(t.ClientOption->DeviceName, sizeof(t.ClientOption->DeviceName), GetParamStr(o, "NICNAME"));
+ ParseHostPort(GetParamStr(o, "SERVER"), &host, &port, 443);
 
-	t.ClientAuth = ZeroMalloc(sizeof(CLIENT_AUTH));
-	t.ClientAuth->AuthType = CLIENT_AUTHTYPE_ANONYMOUS;
-	StrCpy(t.ClientAuth->Username, sizeof(t.ClientAuth->Username), GetParamStr(o, "USERNAME"));
 
-	Free(host);
+ Zero(&t, sizeof(t));
 
-	ret = CcCreateAccount(pc->RemoteClient, &t);
+ t.ClientOption = ZeroMalloc(sizeof(CLIENT_OPTION));
+ UniStrCpy(t.ClientOption->AccountName, sizeof(t.ClientOption->AccountName), GetParamUniStr(o, "[name]"));
+ t.ClientOption->Port = port;
+ StrCpy(t.ClientOption->Hostname, sizeof(t.ClientOption->Hostname), host);
+ StrCpy(t.ClientOption->HubName, sizeof(t.ClientOption->HubName), GetParamStr(o, "HUB"));
+ t.ClientOption->NumRetry = INFINITE;
+ t.ClientOption->RetryInterval = 15;
+ t.ClientOption->MaxConnection = 1;
+ t.ClientOption->UseEncrypt = 1;
+ t.ClientOption->AdditionalConnectionInterval = 1;
+ StrCpy(t.ClientOption->DeviceName, sizeof(t.ClientOption->DeviceName), GetParamStr(o, "NICNAME"));
 
-	if (ret == ERR_NO_ERROR)
-	{
-		// Success
-	}
+ t.ClientAuth = ZeroMalloc(sizeof(CLIENT_AUTH));
+ t.ClientAuth->AuthType = CLIENT_AUTHTYPE_ANONYMOUS;
+ StrCpy(t.ClientAuth->Username, sizeof(t.ClientAuth->Username), GetParamStr(o, "USERNAME"));
 
-	CiFreeClientCreateAccount(&t);
+ Free(host);
 
-	if (ret != ERR_NO_ERROR)
-	{
-		// Error has occurred
-		CmdPrintError(c, ret);
-	}
+ ret = CcCreateAccount(pc->RemoteClient, &t);
 
-	// Release of the parameter list
-	FreeParamValueList(o);
+ if (ret == ERR_NO_ERROR)
+ {
 
-	return ret;
+ }
+
+ CiFreeClientCreateAccount(&t);
+
+ if (ret != ERR_NO_ERROR)
+ {
+
+  CmdPrintError(c, ret);
+ }
+
+
+ FreeParamValueList(o);
+
+ return ret;
 }

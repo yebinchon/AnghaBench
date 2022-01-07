@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {char* data; } ;
-typedef  TYPE_1__ svn_stringbuf_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
+typedef TYPE_1__ svn_stringbuf_t ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
 
-/* Variables and functions */
- char* svn_hash_gets (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  svn_stringbuf_appendcstr (TYPE_1__*,char const*) ; 
- int /*<<< orphan*/  svn_stringbuf_chop (TYPE_1__*,int) ; 
- TYPE_1__* svn_stringbuf_create_empty (int /*<<< orphan*/ *) ; 
+
+ char* svn_hash_gets (int *,char*) ;
+ int svn_stringbuf_appendcstr (TYPE_1__*,char const*) ;
+ int svn_stringbuf_chop (TYPE_1__*,int) ;
+ TYPE_1__* svn_stringbuf_create_empty (int *) ;
 
 __attribute__((used)) static char *
 convert_organisation_to_str(apr_hash_t *org, apr_pool_t *pool)
@@ -70,7 +70,7 @@ convert_organisation_to_str(apr_hash_t *org, apr_pool_t *pool)
       svn_stringbuf_appendcstr(buf, ", ");
     }
 
-  /* Chop ', ' if any. */
+
   svn_stringbuf_chop(buf, 2);
 
   if (email)

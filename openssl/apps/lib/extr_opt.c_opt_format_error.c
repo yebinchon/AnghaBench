@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {unsigned long retval; scalar_t__ name; } ;
-typedef  TYPE_1__ OPT_PAIR ;
+typedef TYPE_1__ OPT_PAIR ;
 
-/* Variables and functions */
- unsigned long OPT_FMT_PEMDER ; 
- TYPE_1__* formats ; 
- int /*<<< orphan*/  opt_printf_stderr (char*,scalar_t__,...) ; 
- int /*<<< orphan*/  prog ; 
+
+ unsigned long OPT_FMT_PEMDER ;
+ TYPE_1__* formats ;
+ int opt_printf_stderr (char*,scalar_t__,...) ;
+ int prog ;
 
 int opt_format_error(const char *s, unsigned long flags)
 {

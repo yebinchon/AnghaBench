@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  time_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ctime (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  print (char*,...) ; 
- int /*<<< orphan*/  rcsid ; 
- int /*<<< orphan*/  time (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int time_t ;
+
+
+ int ctime (int *) ;
+ int print (char*,...) ;
+ int rcsid ;
+ int time (int *) ;
 
 __attribute__((used)) static void emitheader(void) {
-	time_t timer = time(NULL);
+ time_t timer = time(((void*)0));
 
-	print("/*\ngenerated at %sby %s\n*/\n", ctime(&timer), rcsid);
-	print("static void %Pkids(NODEPTR_TYPE, int, NODEPTR_TYPE[]);\n");
-	print("static void %Plabel(NODEPTR_TYPE);\n");
-	print("static int %Prule(void*, int);\n\n");
+ print("/*\ngenerated at %sby %s\n*/\n", ctime(&timer), rcsid);
+ print("static void %Pkids(NODEPTR_TYPE, int, NODEPTR_TYPE[]);\n");
+ print("static void %Plabel(NODEPTR_TYPE);\n");
+ print("static int %Prule(void*, int);\n\n");
 }

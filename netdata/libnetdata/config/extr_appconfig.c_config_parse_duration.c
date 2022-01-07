@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int calculated_number ;
 
-/* Variables and functions */
- scalar_t__ isdigit (char const) ; 
- scalar_t__ isspace (char const) ; 
- int str2ld (char const*,char**) ; 
- int /*<<< orphan*/  strcmp (char const*,char*) ; 
- scalar_t__ unlikely (int) ; 
+
+
+
+typedef int calculated_number ;
+
+
+ scalar_t__ isdigit (char const) ;
+ scalar_t__ isspace (char const) ;
+ int str2ld (char const*,char**) ;
+ int strcmp (char const*,char*) ;
+ scalar_t__ unlikely (int) ;
 
 int config_parse_duration(const char* string, int* result) {
     while(*string && isspace(*string)) string++;
@@ -25,15 +25,15 @@ int config_parse_duration(const char* string, int* result) {
     if(unlikely(!*string)) goto fallback;
 
     if(*string == 'n' && !strcmp(string, "never")) {
-        // this is a valid option
+
         *result = 0;
         return 1;
     }
 
-    // make sure it is a number
+
     if(!(isdigit(*string) || *string == '+' || *string == '-')) goto fallback;
 
-    char *e = NULL;
+    char *e = ((void*)0);
     calculated_number n = str2ld(string, &e);
     if(e && *e) {
         switch (*e) {

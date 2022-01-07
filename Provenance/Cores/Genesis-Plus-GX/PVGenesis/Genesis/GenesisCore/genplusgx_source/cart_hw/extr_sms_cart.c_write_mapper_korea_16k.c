@@ -1,19 +1,11 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  mapper_16k_w (unsigned int,unsigned char) ; 
- unsigned char** z80_writemap ; 
+ int mapper_16k_w (unsigned int,unsigned char) ;
+ unsigned char** z80_writemap ;
 
 __attribute__((used)) static void write_mapper_korea_16k(unsigned int address, unsigned char data)
 {
@@ -29,7 +21,7 @@ __attribute__((used)) static void write_mapper_korea_16k(unsigned int address, u
     return;
   }
 
-  /* SEGA mapper compatibility */
+
   if (address >= 0xFFFC)
   {
     mapper_16k_w(address & 3, data);

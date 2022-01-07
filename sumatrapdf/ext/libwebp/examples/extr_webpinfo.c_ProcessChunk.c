@@ -1,55 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_18__   TYPE_2__ ;
-typedef  struct TYPE_17__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WebPInfoStatus ;
-struct TYPE_17__ {scalar_t__ anim_frame_data_size_; scalar_t__ is_processing_anim_frame_; int /*<<< orphan*/  seen_image_subchunk_; int /*<<< orphan*/ * chunk_counts_; int /*<<< orphan*/  quiet_; } ;
-typedef  TYPE_1__ WebPInfo ;
+
+
+typedef struct TYPE_18__ TYPE_2__ ;
+typedef struct TYPE_17__ TYPE_1__ ;
+
+
+typedef int WebPInfoStatus ;
+struct TYPE_17__ {scalar_t__ anim_frame_data_size_; scalar_t__ is_processing_anim_frame_; int seen_image_subchunk_; int * chunk_counts_; int quiet_; } ;
+typedef TYPE_1__ WebPInfo ;
 struct TYPE_18__ {int id_; scalar_t__ size_; scalar_t__ offset_; } ;
-typedef  int ChunkID ;
-typedef  TYPE_2__ ChunkData ;
-
-/* Variables and functions */
-#define  CHUNK_ALPHA 137 
-#define  CHUNK_ANIM 136 
-#define  CHUNK_ANMF 135 
-#define  CHUNK_EXIF 134 
-#define  CHUNK_ICCP 133 
-#define  CHUNK_UNKNOWN 132 
-#define  CHUNK_VP8 131 
-#define  CHUNK_VP8L 130 
-#define  CHUNK_VP8X 129 
-#define  CHUNK_XMP 128 
- int /*<<< orphan*/  LOG_ERROR (char*) ; 
- int /*<<< orphan*/  LOG_WARN (char*) ; 
- int /*<<< orphan*/  ProcessALPHChunk (TYPE_2__ const* const,TYPE_1__* const) ; 
- int /*<<< orphan*/  ProcessANIMChunk (TYPE_2__ const* const,TYPE_1__* const) ; 
- int /*<<< orphan*/  ProcessANMFChunk (TYPE_2__ const* const,TYPE_1__* const) ; 
- int /*<<< orphan*/  ProcessICCPChunk (TYPE_2__ const* const,TYPE_1__* const) ; 
- int /*<<< orphan*/  ProcessImageChunk (TYPE_2__ const* const,TYPE_1__* const) ; 
- int /*<<< orphan*/  ProcessVP8XChunk (TYPE_2__ const* const,TYPE_1__* const) ; 
- int /*<<< orphan*/  WEBP_INFO_OK ; 
- int /*<<< orphan*/  WEBP_INFO_PARSE_ERROR ; 
- int /*<<< orphan*/  WEBP_INFO_TRUNCATED_DATA ; 
- char** kWebPChunkTags ; 
- int /*<<< orphan*/  printf (char*,char const,char const,char const,char const,int,int) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,int,int) ; 
+typedef int ChunkID ;
+typedef TYPE_2__ ChunkData ;
+ int LOG_ERROR (char*) ;
+ int LOG_WARN (char*) ;
+ int ProcessALPHChunk (TYPE_2__ const* const,TYPE_1__* const) ;
+ int ProcessANIMChunk (TYPE_2__ const* const,TYPE_1__* const) ;
+ int ProcessANMFChunk (TYPE_2__ const* const,TYPE_1__* const) ;
+ int ProcessICCPChunk (TYPE_2__ const* const,TYPE_1__* const) ;
+ int ProcessImageChunk (TYPE_2__ const* const,TYPE_1__* const) ;
+ int ProcessVP8XChunk (TYPE_2__ const* const,TYPE_1__* const) ;
+ int WEBP_INFO_OK ;
+ int WEBP_INFO_PARSE_ERROR ;
+ int WEBP_INFO_TRUNCATED_DATA ;
+ char** kWebPChunkTags ;
+ int printf (char*,char const,char const,char const,char const,int,int) ;
+ int snprintf (char*,int,char*,int,int) ;
 
 __attribute__((used)) static WebPInfoStatus ProcessChunk(const ChunkData* const chunk_data,
                                    WebPInfo* const webp_info) {
   WebPInfoStatus status = WEBP_INFO_OK;
   ChunkID id = chunk_data->id_;
-  if (chunk_data->id_ == CHUNK_UNKNOWN) {
+  if (chunk_data->id_ == 132) {
     char error_message[50];
     snprintf(error_message, 50, "Unknown chunk at offset %6d, length %6d",
             (int)chunk_data->offset_, (int)chunk_data->size_);
@@ -63,34 +51,34 @@ __attribute__((used)) static WebPInfoStatus ProcessChunk(const ChunkData* const 
     }
   }
   switch (id) {
-    case CHUNK_VP8:
-    case CHUNK_VP8L:
+    case 131:
+    case 130:
       status = ProcessImageChunk(chunk_data, webp_info);
       break;
-    case CHUNK_VP8X:
+    case 129:
       status = ProcessVP8XChunk(chunk_data, webp_info);
       break;
-    case CHUNK_ALPHA:
+    case 137:
       status = ProcessALPHChunk(chunk_data, webp_info);
       break;
-    case CHUNK_ANIM:
+    case 136:
       status = ProcessANIMChunk(chunk_data, webp_info);
       break;
-    case CHUNK_ANMF:
+    case 135:
       status = ProcessANMFChunk(chunk_data, webp_info);
       break;
-    case CHUNK_ICCP:
+    case 133:
       status = ProcessICCPChunk(chunk_data, webp_info);
       break;
-    case CHUNK_EXIF:
-    case CHUNK_XMP:
+    case 134:
+    case 128:
       ++webp_info->chunk_counts_[id];
       break;
-    case CHUNK_UNKNOWN:
+    case 132:
     default:
       break;
   }
-  if (webp_info->is_processing_anim_frame_ && id != CHUNK_ANMF) {
+  if (webp_info->is_processing_anim_frame_ && id != 135) {
     if (webp_info->anim_frame_data_size_ == chunk_data->size_) {
       if (!webp_info->seen_image_subchunk_) {
         LOG_ERROR("No VP8/VP8L chunk detected in an ANMF chunk.");

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  height; int /*<<< orphan*/  width; int /*<<< orphan*/  y; int /*<<< orphan*/  x; int /*<<< orphan*/  window; int /*<<< orphan*/  type; } ;
-struct TYPE_5__ {int /*<<< orphan*/  height; int /*<<< orphan*/  width; int /*<<< orphan*/  y; int /*<<< orphan*/  x; } ;
-struct TYPE_6__ {TYPE_1__ allocation; int /*<<< orphan*/  window; } ;
-typedef  TYPE_2__ GtkWidget ;
-typedef  int /*<<< orphan*/  GtkForm ;
-typedef  TYPE_3__ GdkEventConfigure ;
-typedef  int /*<<< orphan*/  GdkEvent ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GDK_CONFIGURE ; 
- TYPE_2__* GTK_WIDGET (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  gtk_main_do_event (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int height; int width; int y; int x; int window; int type; } ;
+struct TYPE_5__ {int height; int width; int y; int x; } ;
+struct TYPE_6__ {TYPE_1__ allocation; int window; } ;
+typedef TYPE_2__ GtkWidget ;
+typedef int GtkForm ;
+typedef TYPE_3__ GdkEventConfigure ;
+typedef int GdkEvent ;
+
+
+ int GDK_CONFIGURE ;
+ TYPE_2__* GTK_WIDGET (int *) ;
+ int gtk_main_do_event (int *) ;
 
 __attribute__((used)) static void
 gtk_form_send_configure(GtkForm *form)

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  chg_list_en; int /*<<< orphan*/  chg_list_st; } ;
-typedef  TYPE_1__ user ;
-typedef  int rating ;
 
-/* Variables and functions */
- int MAX_RATING_NUM ; 
- int /*<<< orphan*/  changes_count ; 
- int /*<<< orphan*/  check_object_id (long long) ; 
- int /*<<< orphan*/  check_rating (int) ; 
- int /*<<< orphan*/  check_rating_num (int) ; 
- int /*<<< orphan*/  check_type (unsigned char) ; 
- int /*<<< orphan*/  chg_list_add_rating (int /*<<< orphan*/ *,int /*<<< orphan*/ *,unsigned char,int,int) ; 
- scalar_t__ no_changes ; 
- int now ; 
- scalar_t__ write_only ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int chg_list_en; int chg_list_st; } ;
+typedef TYPE_1__ user ;
+typedef int rating ;
+
+
+ int MAX_RATING_NUM ;
+ int changes_count ;
+ int check_object_id (long long) ;
+ int check_rating (int) ;
+ int check_rating_num (int) ;
+ int check_type (unsigned char) ;
+ int chg_list_add_rating (int *,int *,unsigned char,int,int) ;
+ scalar_t__ no_changes ;
+ int now ;
+ scalar_t__ write_only ;
 
 int user_set_object_rating (user *u, unsigned char object_type, long long object_id, rating val, int num) {
   if (!check_rating (val) || !check_type (object_type) || !check_object_id (object_id) || !check_rating_num (num)) {

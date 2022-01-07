@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {size_t name_id; size_t offset; size_t length; } ;
-typedef  TYPE_1__ sfnt_name ;
-typedef  scalar_t__ WORD ;
-typedef  size_t WCHAR ;
-typedef  size_t USHORT ;
-typedef  int SIZE_T ;
-typedef  int LONG ;
-typedef  int /*<<< orphan*/  LCID ;
-typedef  int /*<<< orphan*/  HDC ;
-typedef  int /*<<< orphan*/  BYTE ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef TYPE_1__ sfnt_name ;
+typedef scalar_t__ WORD ;
+typedef size_t WCHAR ;
+typedef size_t USHORT ;
+typedef int SIZE_T ;
+typedef int LONG ;
+typedef int LCID ;
+typedef int HDC ;
+typedef int BYTE ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int GDI_ERROR ; 
- scalar_t__ GET_BE_WORD (size_t) ; 
- int GetFontData (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/ * HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  MS_NAME_TAG ; 
- int /*<<< orphan*/  TRUE ; 
- int match_name_table_language (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  trace (char*,int,...) ; 
+
+ int FALSE ;
+ int GDI_ERROR ;
+ scalar_t__ GET_BE_WORD (size_t) ;
+ int GetFontData (int ,int ,int ,int *,int) ;
+ int GetProcessHeap () ;
+ int * HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,int *) ;
+ int MS_NAME_TAG ;
+ int TRUE ;
+ int match_name_table_language (TYPE_1__*,int ) ;
+ int ok (int,char*,...) ;
+ int trace (char*,int,...) ;
 
 __attribute__((used)) static BOOL get_ttf_nametable_entry(HDC hdc, WORD name_id, WCHAR *out_buf, SIZE_T out_size, LCID language_id)
 {
@@ -54,7 +54,7 @@ __attribute__((used)) static BOOL get_ttf_nametable_entry(HDC hdc, WORD name_id,
     USHORT i;
     int res, best_lang = 0, best_index = -1;
 
-    size = GetFontData(hdc, MS_NAME_TAG, 0, NULL, 0);
+    size = GetFontData(hdc, MS_NAME_TAG, 0, ((void*)0), 0);
     ok(size != GDI_ERROR, "no name table found\n");
     if(size == GDI_ERROR) return FALSE;
 

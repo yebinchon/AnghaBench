@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct tree {scalar_t__ type; int len; long long* text; int /*<<< orphan*/  nc; } ;
-struct tl_combinator_tree {long long type_flags; int /*<<< orphan*/  type; int /*<<< orphan*/  act; } ;
 
-/* Variables and functions */
- struct tl_combinator_tree* L ; 
- int /*<<< orphan*/  TL_ERROR (char*) ; 
- int /*<<< orphan*/  TL_FAIL ; 
- int /*<<< orphan*/  TL_INIT (struct tl_combinator_tree*) ; 
- int /*<<< orphan*/  act_nat_const ; 
- struct tl_combinator_tree* alloc_ctree_node () ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ type_nat_const ; 
- int /*<<< orphan*/  type_num_value ; 
- int /*<<< orphan*/  vkprintf (int,char*,int,int,long long*) ; 
+
+
+
+struct tree {scalar_t__ type; int len; long long* text; int nc; } ;
+struct tl_combinator_tree {long long type_flags; int type; int act; } ;
+
+
+ struct tl_combinator_tree* L ;
+ int TL_ERROR (char*) ;
+ int TL_FAIL ;
+ int TL_INIT (struct tl_combinator_tree*) ;
+ int act_nat_const ;
+ struct tl_combinator_tree* alloc_ctree_node () ;
+ int assert (int) ;
+ scalar_t__ type_nat_const ;
+ int type_num_value ;
+ int vkprintf (int,char*,int,int,long long*) ;
 
 struct tl_combinator_tree *tl_parse_nat_const (struct tree *T, int s) {
   assert (T->type == type_nat_const);

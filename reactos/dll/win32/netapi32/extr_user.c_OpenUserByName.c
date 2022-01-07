@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ULONG ;
-typedef  int /*<<< orphan*/  SAM_HANDLE ;
-typedef  int /*<<< orphan*/  PUNICODE_STRING ;
-typedef  scalar_t__* PULONG ;
-typedef  scalar_t__* PSID_NAME_USE ;
-typedef  int /*<<< orphan*/  PSAM_HANDLE ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
-typedef  int /*<<< orphan*/  NET_API_STATUS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*,...) ; 
- int /*<<< orphan*/  NERR_GroupNotFound ; 
- int /*<<< orphan*/  NERR_Success ; 
- int /*<<< orphan*/  NT_SUCCESS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NetpNtStatusToApiStatus (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  STATUS_SUCCESS ; 
- int /*<<< orphan*/  SamFreeMemory (scalar_t__*) ; 
- int /*<<< orphan*/  SamLookupNamesInDomain (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,scalar_t__**,scalar_t__**) ; 
- int /*<<< orphan*/  SamOpenUser (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ) ; 
- scalar_t__ SidTypeUser ; 
+
+
+
+typedef int ULONG ;
+typedef int SAM_HANDLE ;
+typedef int PUNICODE_STRING ;
+typedef scalar_t__* PULONG ;
+typedef scalar_t__* PSID_NAME_USE ;
+typedef int PSAM_HANDLE ;
+typedef int NTSTATUS ;
+typedef int NET_API_STATUS ;
+
+
+ int ERR (char*,...) ;
+ int NERR_GroupNotFound ;
+ int NERR_Success ;
+ int NT_SUCCESS (int ) ;
+ int NetpNtStatusToApiStatus (int ) ;
+ int STATUS_SUCCESS ;
+ int SamFreeMemory (scalar_t__*) ;
+ int SamLookupNamesInDomain (int ,int,int ,scalar_t__**,scalar_t__**) ;
+ int SamOpenUser (int ,int ,scalar_t__,int ) ;
+ scalar_t__ SidTypeUser ;
 
 __attribute__((used)) static
 NET_API_STATUS
@@ -38,12 +38,12 @@ OpenUserByName(SAM_HANDLE DomainHandle,
                ULONG DesiredAccess,
                PSAM_HANDLE UserHandle)
 {
-    PULONG RelativeIds = NULL;
-    PSID_NAME_USE Use = NULL;
+    PULONG RelativeIds = ((void*)0);
+    PSID_NAME_USE Use = ((void*)0);
     NET_API_STATUS ApiStatus = NERR_Success;
     NTSTATUS Status = STATUS_SUCCESS;
 
-    /* Get the RID for the given user name */
+
     Status = SamLookupNamesInDomain(DomainHandle,
                                     1,
                                     UserName,
@@ -55,7 +55,7 @@ OpenUserByName(SAM_HANDLE DomainHandle,
         return NetpNtStatusToApiStatus(Status);
     }
 
-    /* Fail, if it is not an alias account */
+
     if (Use[0] != SidTypeUser)
     {
         ERR("Object is not a user!\n");
@@ -63,7 +63,7 @@ OpenUserByName(SAM_HANDLE DomainHandle,
         goto done;
     }
 
-    /* Open the alias account */
+
     Status = SamOpenUser(DomainHandle,
                          DesiredAccess,
                          RelativeIds[0],
@@ -76,10 +76,10 @@ OpenUserByName(SAM_HANDLE DomainHandle,
     }
 
 done:
-    if (RelativeIds != NULL)
+    if (RelativeIds != ((void*)0))
         SamFreeMemory(RelativeIds);
 
-    if (Use != NULL)
+    if (Use != ((void*)0))
         SamFreeMemory(Use);
 
     return ApiStatus;

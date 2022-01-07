@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int ULONG ;
-typedef  int /*<<< orphan*/ * PVOID ;
-typedef  int /*<<< orphan*/  PUNICODE_STRING ;
-typedef  int /*<<< orphan*/  BOOLEAN ;
 
-/* Variables and functions */
- int BufSize ; 
- int /*<<< orphan*/ * ExAllocatePool (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  FsRtlFindInTunnelCache (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PagedPool ; 
- int /*<<< orphan*/  T ; 
- int /*<<< orphan*/  ok (int /*<<< orphan*/ ,char*) ; 
+
+
+
+typedef int ULONG ;
+typedef int * PVOID ;
+typedef int PUNICODE_STRING ;
+typedef int BOOLEAN ;
+
+
+ int BufSize ;
+ int * ExAllocatePool (int ,int) ;
+ int FsRtlFindInTunnelCache (int ,int,int ,int ,int ,int*,int *) ;
+ int PagedPool ;
+ int T ;
+ int ok (int ,char*) ;
 
 BOOLEAN TestFsRtlFindInTunnelCache(ULONG DirectoryKey, PUNICODE_STRING name, PUNICODE_STRING s_name, PUNICODE_STRING l_name)
 {
-    // Allocate memory for the Buf
+
     ULONG BufsizeTemp = BufSize;
     PVOID Buf = ExAllocatePool(PagedPool, BufSize*2);
-    ok(Buf != NULL, "Buff in FsRtlFindInTunnelCache is NULL after allocated memory\n");
+    ok(Buf != ((void*)0), "Buff in FsRtlFindInTunnelCache is NULL after allocated memory\n");
 
-    return FsRtlFindInTunnelCache(T, DirectoryKey, name, s_name, l_name, &BufsizeTemp, Buf); 
+    return FsRtlFindInTunnelCache(T, DirectoryKey, name, s_name, l_name, &BufsizeTemp, Buf);
 }

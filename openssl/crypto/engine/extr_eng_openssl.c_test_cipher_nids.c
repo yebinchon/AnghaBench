@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  EVP_CIPHER ;
 
-/* Variables and functions */
- int EVP_CIPHER_nid (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/ * test_r4_40_cipher () ; 
- int /*<<< orphan*/ * test_r4_cipher () ; 
+
+
+
+typedef int EVP_CIPHER ;
+
+
+ int EVP_CIPHER_nid (int const*) ;
+ int * test_r4_40_cipher () ;
+ int * test_r4_cipher () ;
 
 __attribute__((used)) static int test_cipher_nids(const int **nids)
 {
@@ -25,9 +25,9 @@ __attribute__((used)) static int test_cipher_nids(const int **nids)
 
     if (!init) {
         const EVP_CIPHER *cipher;
-        if ((cipher = test_r4_cipher()) != NULL)
+        if ((cipher = test_r4_cipher()) != ((void*)0))
             cipher_nids[pos++] = EVP_CIPHER_nid(cipher);
-        if ((cipher = test_r4_40_cipher()) != NULL)
+        if ((cipher = test_r4_40_cipher()) != ((void*)0))
             cipher_nids[pos++] = EVP_CIPHER_nid(cipher);
         cipher_nids[pos] = 0;
         init = 1;

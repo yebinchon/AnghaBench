@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  top; } ;
-typedef  TYPE_1__ lua_State ;
-typedef  scalar_t__ lua_Number ;
-typedef  scalar_t__ int32_t ;
-typedef  int /*<<< orphan*/  cTValue ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- scalar_t__ LJ_DUALNUM ; 
- int /*<<< orphan*/  LUA_NUMBER_SCAN ; 
- int fscanf (int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__*) ; 
- scalar_t__ lj_num2int (scalar_t__) ; 
- int /*<<< orphan*/  setintV (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  setnilV (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  setnumV (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  tvismzero (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int top; } ;
+typedef TYPE_1__ lua_State ;
+typedef scalar_t__ lua_Number ;
+typedef scalar_t__ int32_t ;
+typedef int cTValue ;
+typedef int FILE ;
+
+
+ scalar_t__ LJ_DUALNUM ;
+ int LUA_NUMBER_SCAN ;
+ int fscanf (int *,int ,scalar_t__*) ;
+ scalar_t__ lj_num2int (scalar_t__) ;
+ int setintV (int ,scalar_t__) ;
+ int setnilV (int ) ;
+ int setnumV (int ,scalar_t__) ;
+ int tvismzero (int *) ;
 
 __attribute__((used)) static int io_file_readnum(lua_State *L, FILE *fp)
 {
@@ -35,8 +35,8 @@ __attribute__((used)) static int io_file_readnum(lua_State *L, FILE *fp)
     if (LJ_DUALNUM) {
       int32_t i = lj_num2int(d);
       if (d == (lua_Number)i && !tvismzero((cTValue *)&d)) {
-	setintV(L->top++, i);
-	return 1;
+ setintV(L->top++, i);
+ return 1;
       }
     }
     setnumV(L->top++, d);

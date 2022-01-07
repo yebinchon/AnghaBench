@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_7__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_14__ TYPE_7__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
 struct TYPE_14__ {TYPE_1__* codecpar; } ;
-struct TYPE_13__ {int /*<<< orphan*/ * value; int /*<<< orphan*/  key; } ;
-struct TYPE_12__ {int nb_streams; int flags; int /*<<< orphan*/  pb; int /*<<< orphan*/  metadata; TYPE_7__** streams; } ;
+struct TYPE_13__ {int * value; int key; } ;
+struct TYPE_12__ {int nb_streams; int flags; int pb; int metadata; TYPE_7__** streams; } ;
 struct TYPE_11__ {scalar_t__ codec_type; scalar_t__ codec_id; } ;
-typedef  TYPE_2__ AVFormatContext ;
-typedef  TYPE_3__ AVDictionaryEntry ;
+typedef TYPE_2__ AVFormatContext ;
+typedef TYPE_3__ AVDictionaryEntry ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVFMT_FLAG_BITEXACT ; 
- scalar_t__ AVMEDIA_TYPE_SUBTITLE ; 
- scalar_t__ AV_CODEC_ID_SUBRIP ; 
- scalar_t__ AV_CODEC_ID_TEXT ; 
- int /*<<< orphan*/  AV_DICT_IGNORE_SUFFIX ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/ * AV_STRINGIFY (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  LIBAVFORMAT_VERSION ; 
- TYPE_3__* av_dict_get (int /*<<< orphan*/ ,char*,TYPE_3__ const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_dict_set (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_log (TYPE_2__*,int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  avcodec_get_name (scalar_t__) ; 
- int /*<<< orphan*/  avio_printf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  avpriv_set_pts_info (TYPE_7__*,int,int,int) ; 
- int /*<<< orphan*/  ff_lrc_metadata_conv ; 
- int /*<<< orphan*/  ff_metadata_conv_ctx (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ff_standardize_creation_time (TYPE_2__*) ; 
- char* strchr (int /*<<< orphan*/ *,char) ; 
+
+ int AVERROR (int ) ;
+ int AVFMT_FLAG_BITEXACT ;
+ scalar_t__ AVMEDIA_TYPE_SUBTITLE ;
+ scalar_t__ AV_CODEC_ID_SUBRIP ;
+ scalar_t__ AV_CODEC_ID_TEXT ;
+ int AV_DICT_IGNORE_SUFFIX ;
+ int AV_LOG_ERROR ;
+ int * AV_STRINGIFY (int ) ;
+ int EINVAL ;
+ int LIBAVFORMAT_VERSION ;
+ TYPE_3__* av_dict_get (int ,char*,TYPE_3__ const*,int ) ;
+ int av_dict_set (int *,char*,int *,int ) ;
+ int av_log (TYPE_2__*,int ,char*,...) ;
+ int avcodec_get_name (scalar_t__) ;
+ int avio_printf (int ,char*,...) ;
+ int avpriv_set_pts_info (TYPE_7__*,int,int,int) ;
+ int ff_lrc_metadata_conv ;
+ int ff_metadata_conv_ctx (TYPE_2__*,int ,int *) ;
+ int ff_standardize_creation_time (TYPE_2__*) ;
+ char* strchr (int *,char) ;
 
 __attribute__((used)) static int lrc_write_header(AVFormatContext *s)
 {
@@ -62,17 +62,17 @@ __attribute__((used)) static int lrc_write_header(AVFormatContext *s)
     avpriv_set_pts_info(s->streams[0], 64, 1, 100);
 
     ff_standardize_creation_time(s);
-    ff_metadata_conv_ctx(s, ff_lrc_metadata_conv, NULL);
-    if(!(s->flags & AVFMT_FLAG_BITEXACT)) { // avoid breaking regression tests
-        /* LRC provides a metadata slot for specifying encoder version
-         * in addition to encoder name. We will store LIBAVFORMAT_VERSION
-         * to it.
-         */
+    ff_metadata_conv_ctx(s, ff_lrc_metadata_conv, ((void*)0));
+    if(!(s->flags & AVFMT_FLAG_BITEXACT)) {
+
+
+
+
         av_dict_set(&s->metadata, "ve", AV_STRINGIFY(LIBAVFORMAT_VERSION), 0);
     } else {
-        av_dict_set(&s->metadata, "ve", NULL, 0);
+        av_dict_set(&s->metadata, "ve", ((void*)0), 0);
     }
-    for(metadata_item = NULL;
+    for(metadata_item = ((void*)0);
        (metadata_item = av_dict_get(s->metadata, "", metadata_item,
                                     AV_DICT_IGNORE_SUFFIX));) {
         char *delim;

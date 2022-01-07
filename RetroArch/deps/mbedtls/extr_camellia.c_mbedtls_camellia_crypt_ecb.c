@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-struct TYPE_3__ {int nr; int /*<<< orphan*/ * rk; } ;
-typedef  TYPE_1__ mbedtls_camellia_context ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FL (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FLInv (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GET_UINT32_BE (int /*<<< orphan*/ ,unsigned char const*,int) ; 
- int /*<<< orphan*/  PUT_UINT32_BE (int /*<<< orphan*/ ,unsigned char*,int) ; 
- int /*<<< orphan*/  camellia_feistel (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+struct TYPE_3__ {int nr; int * rk; } ;
+typedef TYPE_1__ mbedtls_camellia_context ;
+
+
+ int FL (int ,int ,int ,int ) ;
+ int FLInv (int ,int ,int ,int ) ;
+ int GET_UINT32_BE (int ,unsigned char const*,int) ;
+ int PUT_UINT32_BE (int ,unsigned char*,int) ;
+ int camellia_feistel (int *,int *,int *) ;
 
 int mbedtls_camellia_crypt_ecb( mbedtls_camellia_context *ctx,
                     int mode,
@@ -35,9 +35,9 @@ int mbedtls_camellia_crypt_ecb( mbedtls_camellia_context *ctx,
     NR = ctx->nr;
     RK = ctx->rk;
 
-    GET_UINT32_BE( X[0], input,  0 );
-    GET_UINT32_BE( X[1], input,  4 );
-    GET_UINT32_BE( X[2], input,  8 );
+    GET_UINT32_BE( X[0], input, 0 );
+    GET_UINT32_BE( X[1], input, 4 );
+    GET_UINT32_BE( X[2], input, 8 );
     GET_UINT32_BE( X[3], input, 12 );
 
     X[0] ^= *RK++;
@@ -73,9 +73,9 @@ int mbedtls_camellia_crypt_ecb( mbedtls_camellia_context *ctx,
     X[0] ^= *RK++;
     X[1] ^= *RK++;
 
-    PUT_UINT32_BE( X[2], output,  0 );
-    PUT_UINT32_BE( X[3], output,  4 );
-    PUT_UINT32_BE( X[0], output,  8 );
+    PUT_UINT32_BE( X[2], output, 0 );
+    PUT_UINT32_BE( X[3], output, 4 );
+    PUT_UINT32_BE( X[0], output, 8 );
     PUT_UINT32_BE( X[1], output, 12 );
 
     return( 0 );

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  work ;
+
+
+
+
+typedef int work ;
 struct work_stuff {int options; } ;
 
-/* Variables and functions */
- scalar_t__ AUTO_DEMANGLING ; 
- int DMGL_STYLE_MASK ; 
- scalar_t__ GNAT_DEMANGLING ; 
- scalar_t__ GNU_V3_DEMANGLING ; 
- scalar_t__ JAVA_DEMANGLING ; 
- char* ada_demangle (char const*,int) ; 
- char* cplus_demangle_v3 (char const*,int) ; 
- scalar_t__ current_demangling_style ; 
- char* internal_cplus_demangle (struct work_stuff*,char const*) ; 
- char* java_demangle_v3 (char const*) ; 
- int /*<<< orphan*/  memset (char*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ no_demangling ; 
- int /*<<< orphan*/  squangle_mop_up (struct work_stuff*) ; 
- char* xstrdup (char const*) ; 
+
+ scalar_t__ AUTO_DEMANGLING ;
+ int DMGL_STYLE_MASK ;
+ scalar_t__ GNAT_DEMANGLING ;
+ scalar_t__ GNU_V3_DEMANGLING ;
+ scalar_t__ JAVA_DEMANGLING ;
+ char* ada_demangle (char const*,int) ;
+ char* cplus_demangle_v3 (char const*,int) ;
+ scalar_t__ current_demangling_style ;
+ char* internal_cplus_demangle (struct work_stuff*,char const*) ;
+ char* java_demangle_v3 (char const*) ;
+ int memset (char*,int ,int) ;
+ scalar_t__ no_demangling ;
+ int squangle_mop_up (struct work_stuff*) ;
+ char* xstrdup (char const*) ;
 
 char *
 cplus_demangle (const char *mangled, int options)
@@ -43,12 +43,12 @@ cplus_demangle (const char *mangled, int options)
   if ((work->options & DMGL_STYLE_MASK) == 0)
     work->options |= (int) current_demangling_style & DMGL_STYLE_MASK;
 
-  /* The V3 ABI demangling is implemented elsewhere.  */
+
   if (GNU_V3_DEMANGLING || AUTO_DEMANGLING)
     {
       ret = cplus_demangle_v3 (mangled, work->options);
       if (ret || GNU_V3_DEMANGLING)
-	return ret;
+ return ret;
     }
 
   if (JAVA_DEMANGLING)

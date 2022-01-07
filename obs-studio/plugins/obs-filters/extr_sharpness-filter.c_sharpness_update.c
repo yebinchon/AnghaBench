@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct sharpness_data {float sharpness; } ;
-typedef  int /*<<< orphan*/  obs_data_t ;
+typedef int obs_data_t ;
 
-/* Variables and functions */
- double obs_data_get_double (int /*<<< orphan*/ *,char*) ; 
+
+ double obs_data_get_double (int *,char*) ;
 
 __attribute__((used)) static void sharpness_update(void *data, obs_data_t *settings)
 {
-	struct sharpness_data *filter = data;
-	double sharpness = obs_data_get_double(settings, "sharpness");
+ struct sharpness_data *filter = data;
+ double sharpness = obs_data_get_double(settings, "sharpness");
 
-	filter->sharpness = (float)sharpness;
+ filter->sharpness = (float)sharpness;
 }

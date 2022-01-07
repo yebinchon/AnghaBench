@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_3__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_3__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {TYPE_3__* data; } ;
-typedef  TYPE_1__ stb_cfg ;
-struct TYPE_5__ {int /*<<< orphan*/  value; int /*<<< orphan*/  value_len; int /*<<< orphan*/  key; } ;
+typedef TYPE_1__ stb_cfg ;
+struct TYPE_5__ {int value; int value_len; int key; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memcpy (void*,int /*<<< orphan*/ ,int) ; 
- int stb_arr_len (TYPE_3__*) ; 
- int stb_min (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stb_stricmp (int /*<<< orphan*/ ,char*) ; 
+
+ int memcpy (void*,int ,int) ;
+ int stb_arr_len (TYPE_3__*) ;
+ int stb_min (int,int ) ;
+ int stb_stricmp (int ,char*) ;
 
 int stb_cfg_read(stb_cfg *z, char *key, void *value, int len)
 {

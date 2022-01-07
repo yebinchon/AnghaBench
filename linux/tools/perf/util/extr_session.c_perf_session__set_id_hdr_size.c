@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u16 ;
-struct perf_session {int /*<<< orphan*/  machines; int /*<<< orphan*/  evlist; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  machines__set_id_hdr_size (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  perf_evlist__id_hdr_size (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int u16 ;
+struct perf_session {int machines; int evlist; } ;
+
+
+ int machines__set_id_hdr_size (int *,int ) ;
+ int perf_evlist__id_hdr_size (int ) ;
 
 void perf_session__set_id_hdr_size(struct perf_session *session)
 {
-	u16 id_hdr_size = perf_evlist__id_hdr_size(session->evlist);
+ u16 id_hdr_size = perf_evlist__id_hdr_size(session->evlist);
 
-	machines__set_id_hdr_size(&session->machines, id_hdr_size);
+ machines__set_id_hdr_size(&session->machines, id_hdr_size);
 }

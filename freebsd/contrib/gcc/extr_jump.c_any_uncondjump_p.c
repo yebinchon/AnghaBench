@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  rtx ;
 
-/* Variables and functions */
- scalar_t__ GET_CODE (int /*<<< orphan*/ ) ; 
- scalar_t__ LABEL_REF ; 
- int /*<<< orphan*/  NULL_RTX ; 
- int /*<<< orphan*/  REG_NON_LOCAL_GOTO ; 
- int /*<<< orphan*/  SET_SRC (int /*<<< orphan*/ ) ; 
- scalar_t__ find_reg_note (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pc_set (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int rtx ;
+
+
+ scalar_t__ GET_CODE (int ) ;
+ scalar_t__ LABEL_REF ;
+ int NULL_RTX ;
+ int REG_NON_LOCAL_GOTO ;
+ int SET_SRC (int ) ;
+ scalar_t__ find_reg_note (int ,int ,int ) ;
+ int pc_set (int ) ;
 
 int
 any_uncondjump_p (rtx insn)

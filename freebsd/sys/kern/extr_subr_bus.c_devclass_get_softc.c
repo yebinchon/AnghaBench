@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  device_t ;
-typedef  int /*<<< orphan*/  devclass_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  devclass_get_device (int /*<<< orphan*/ ,int) ; 
- void* device_get_softc (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int device_t ;
+typedef int devclass_t ;
+
+
+ int devclass_get_device (int ,int) ;
+ void* device_get_softc (int ) ;
 
 void *
 devclass_get_softc(devclass_t dc, int unit)
 {
-	device_t dev;
+ device_t dev;
 
-	dev = devclass_get_device(dc, unit);
-	if (!dev)
-		return (NULL);
+ dev = devclass_get_device(dc, unit);
+ if (!dev)
+  return (((void*)0));
 
-	return (device_get_softc(dev));
+ return (device_get_softc(dev));
 }

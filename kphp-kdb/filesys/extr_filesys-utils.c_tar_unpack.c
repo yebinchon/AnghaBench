@@ -1,66 +1,66 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  void* uid_t ;
-typedef  void* time_t ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef void* uid_t ;
+typedef void* time_t ;
 struct TYPE_4__ {struct tar_unpack_dir_mtime_entry** e; } ;
-typedef  TYPE_1__ tar_unpack_dir_mtime_t ;
+typedef TYPE_1__ tar_unpack_dir_mtime_t ;
 struct stat {int st_mode; int st_size; void* st_mtime; void* st_atime; void* st_gid; void* st_uid; } ;
 struct tar_unpack_dir_mtime_entry {char* dirname; struct stat st; struct tar_unpack_dir_mtime_entry* next; } ;
-typedef  int off_t ;
-typedef  int mode_t ;
-typedef  int /*<<< orphan*/  gzFile ;
-typedef  void* gid_t ;
-typedef  int /*<<< orphan*/  dyn_mark_t ;
+typedef int off_t ;
+typedef int mode_t ;
+typedef int gzFile ;
+typedef void* gid_t ;
+typedef int dyn_mark_t ;
 
-/* Variables and functions */
- int MAX_DIR_DEPTH ; 
- int O_CREAT ; 
- int O_EXCL ; 
- int O_TRUNC ; 
- int O_WRONLY ; 
- int PATH_MAX ; 
- int S_ISDIR (int) ; 
- int S_ISLNK (int) ; 
- int TAR_UNPACK_ERR_COPY_ATTRS ; 
- int TAR_UNPACK_ERR_MKDIR ; 
- int TAR_UNPACK_ERR_OPEN ; 
- int TAR_UNPACK_ERR_SYMLINK ; 
- scalar_t__ Z_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  dyn_mark (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dyn_release (int /*<<< orphan*/ ) ; 
- void* get_oct (char*,int,int) ; 
- scalar_t__ gzclose (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gzdopen (int,char*) ; 
- int gzread (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  kprintf (char*,...) ; 
- int lcopy_attrs (char*,struct stat*) ; 
- int /*<<< orphan*/  memcmp (char*,char*,int) ; 
- int /*<<< orphan*/  memcpy (char*,char*,int) ; 
- int /*<<< orphan*/  mkdir (char*,int) ; 
- int open (char*,int,int) ; 
- int snprintf (char*,int,char*,char const* const,char*) ; 
- int /*<<< orphan*/  strcat (char*,char*) ; 
- int strlen (char*) ; 
- int /*<<< orphan*/  symlink (char*,char*) ; 
- int /*<<< orphan*/  tar_unpack_check_header (char*) ; 
- int /*<<< orphan*/  tar_unpack_dir_mtime_add (TYPE_1__*,char*,struct stat*) ; 
- int /*<<< orphan*/  tar_unpack_dir_mtime_init (TYPE_1__*) ; 
- int /*<<< orphan*/  vkprintf (int,char*,char*,int,void*,void*,long long,unsigned int,char) ; 
- int write (int,char*,int) ; 
- char* zmalloc (int) ; 
+
+ int MAX_DIR_DEPTH ;
+ int O_CREAT ;
+ int O_EXCL ;
+ int O_TRUNC ;
+ int O_WRONLY ;
+ int PATH_MAX ;
+ int S_ISDIR (int) ;
+ int S_ISLNK (int) ;
+ int TAR_UNPACK_ERR_COPY_ATTRS ;
+ int TAR_UNPACK_ERR_MKDIR ;
+ int TAR_UNPACK_ERR_OPEN ;
+ int TAR_UNPACK_ERR_SYMLINK ;
+ scalar_t__ Z_OK ;
+ int assert (int) ;
+ int close (int) ;
+ int dyn_mark (int ) ;
+ int dyn_release (int ) ;
+ void* get_oct (char*,int,int) ;
+ scalar_t__ gzclose (int ) ;
+ int gzdopen (int,char*) ;
+ int gzread (int ,char*,int) ;
+ int kprintf (char*,...) ;
+ int lcopy_attrs (char*,struct stat*) ;
+ int memcmp (char*,char*,int) ;
+ int memcpy (char*,char*,int) ;
+ int mkdir (char*,int) ;
+ int open (char*,int,int) ;
+ int snprintf (char*,int,char*,char const* const,char*) ;
+ int strcat (char*,char*) ;
+ int strlen (char*) ;
+ int symlink (char*,char*) ;
+ int tar_unpack_check_header (char*) ;
+ int tar_unpack_dir_mtime_add (TYPE_1__*,char*,struct stat*) ;
+ int tar_unpack_dir_mtime_init (TYPE_1__*) ;
+ int vkprintf (int,char*,char*,int,void*,void*,long long,unsigned int,char) ;
+ int write (int,char*,int) ;
+ char* zmalloc (int) ;
 
 int tar_unpack (int tar_gz_fd, const char *const path) {
   char full_filename[PATH_MAX], long_filename[PATH_MAX];
@@ -73,7 +73,7 @@ int tar_unpack (int tar_gz_fd, const char *const path) {
   char buf[512];
   int BUF_SIZE = 16 << 20;
   char *io_buff = zmalloc (BUF_SIZE);
-  assert (io_buff != NULL);
+  assert (io_buff != ((void*)0));
   int headers = 0;
   while (gzread (f, buf, 512) == 512) {
     int longlink = 0, longname = 0;
@@ -185,7 +185,7 @@ int tar_unpack (int tar_gz_fd, const char *const path) {
   if (!res) {
     for (i = MAX_DIR_DEPTH - 1; i >= 0; i--) {
       struct tar_unpack_dir_mtime_entry *p;
-      for (p = M.e[i]; p != NULL; p = p->next) {
+      for (p = M.e[i]; p != ((void*)0); p = p->next) {
         assert (snprintf (full_filename, PATH_MAX, "%s/%s", path, p->dirname) < PATH_MAX);
         int r = lcopy_attrs (full_filename, &p->st);
         if (r < 0) {

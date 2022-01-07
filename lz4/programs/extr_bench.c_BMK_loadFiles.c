@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  size_t U64 ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DISPLAYLEVEL (int,char*,char const*) ; 
- int /*<<< orphan*/  DISPLAYUPDATE (int,char*,char const*) ; 
- int /*<<< orphan*/  EXM_THROW (int,char*,...) ; 
- size_t UTIL_getFileSize (char const*) ; 
- scalar_t__ UTIL_isDirectory (char const*) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char const*,char*) ; 
- size_t fread (char*,int,size_t,int /*<<< orphan*/ *) ; 
+
+
+
+typedef size_t U64 ;
+typedef int FILE ;
+
+
+ int DISPLAYLEVEL (int,char*,char const*) ;
+ int DISPLAYUPDATE (int,char*,char const*) ;
+ int EXM_THROW (int,char*,...) ;
+ size_t UTIL_getFileSize (char const*) ;
+ scalar_t__ UTIL_isDirectory (char const*) ;
+ int fclose (int *) ;
+ int * fopen (char const*,char*) ;
+ size_t fread (char*,int,size_t,int *) ;
 
 __attribute__((used)) static void BMK_loadFiles(void* buffer, size_t bufferSize,
                           size_t* fileSizes,
@@ -38,9 +38,9 @@ __attribute__((used)) static void BMK_loadFiles(void* buffer, size_t bufferSize,
             continue;
         }
         f = fopen(fileNamesTable[n], "rb");
-        if (f==NULL) EXM_THROW(10, "impossible to open file %s", fileNamesTable[n]);
+        if (f==((void*)0)) EXM_THROW(10, "impossible to open file %s", fileNamesTable[n]);
         DISPLAYUPDATE(2, "Loading %s...       \r", fileNamesTable[n]);
-        if (fileSize > bufferSize-pos) { /* buffer too small - stop after this file */
+        if (fileSize > bufferSize-pos) {
             fileSize = bufferSize-pos;
             nbFiles=n;
         }

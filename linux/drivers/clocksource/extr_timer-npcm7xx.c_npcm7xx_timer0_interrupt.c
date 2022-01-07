@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct timer_of {int dummy; } ;
-struct clock_event_device {int /*<<< orphan*/  (* event_handler ) (struct clock_event_device*) ;} ;
-typedef  int /*<<< orphan*/  irqreturn_t ;
+struct clock_event_device {int (* event_handler ) (struct clock_event_device*) ;} ;
+typedef int irqreturn_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IRQ_HANDLED ; 
- scalar_t__ NPCM7XX_REG_TISR ; 
- int /*<<< orphan*/  NPCM7XX_T0_CLR_INT ; 
- int /*<<< orphan*/  stub1 (struct clock_event_device*) ; 
- scalar_t__ timer_of_base (struct timer_of*) ; 
- struct timer_of* to_timer_of (struct clock_event_device*) ; 
- int /*<<< orphan*/  writel (int /*<<< orphan*/ ,scalar_t__) ; 
+
+ int IRQ_HANDLED ;
+ scalar_t__ NPCM7XX_REG_TISR ;
+ int NPCM7XX_T0_CLR_INT ;
+ int stub1 (struct clock_event_device*) ;
+ scalar_t__ timer_of_base (struct timer_of*) ;
+ struct timer_of* to_timer_of (struct clock_event_device*) ;
+ int writel (int ,scalar_t__) ;
 
 __attribute__((used)) static irqreturn_t npcm7xx_timer0_interrupt(int irq, void *dev_id)
 {
-	struct clock_event_device *evt = (struct clock_event_device *)dev_id;
-	struct timer_of *to = to_timer_of(evt);
+ struct clock_event_device *evt = (struct clock_event_device *)dev_id;
+ struct timer_of *to = to_timer_of(evt);
 
-	writel(NPCM7XX_T0_CLR_INT, timer_of_base(to) + NPCM7XX_REG_TISR);
+ writel(NPCM7XX_T0_CLR_INT, timer_of_base(to) + NPCM7XX_REG_TISR);
 
-	evt->event_handler(evt);
+ evt->event_handler(evt);
 
-	return IRQ_HANDLED;
+ return IRQ_HANDLED;
 }

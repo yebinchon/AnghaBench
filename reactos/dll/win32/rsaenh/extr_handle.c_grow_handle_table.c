@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct handle_table_entry {unsigned int iNextFree; int /*<<< orphan*/ * pObject; } ;
+
+
+
+
+struct handle_table_entry {unsigned int iNextFree; int * pObject; } ;
 struct handle_table {unsigned int iEntries; struct handle_table_entry* paEntries; } ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- struct handle_table_entry* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct handle_table_entry*) ; 
- unsigned int TABLE_SIZE_INCREMENT ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  memcpy (struct handle_table_entry*,struct handle_table_entry*,int) ; 
+
+ int FALSE ;
+ int GetProcessHeap () ;
+ struct handle_table_entry* HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,struct handle_table_entry*) ;
+ unsigned int TABLE_SIZE_INCREMENT ;
+ int TRUE ;
+ int memcpy (struct handle_table_entry*,struct handle_table_entry*,int) ;
 
 __attribute__((used)) static BOOL grow_handle_table(struct handle_table *lpTable)
 {
@@ -42,7 +42,7 @@ __attribute__((used)) static BOOL grow_handle_table(struct handle_table *lpTable
 
     for (i=lpTable->iEntries; i<newIEntries; i++)
     {
-        newEntries[i].pObject = NULL;
+        newEntries[i].pObject = ((void*)0);
         newEntries[i].iNextFree = i+1;
     }
 

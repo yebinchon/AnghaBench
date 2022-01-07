@@ -1,60 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct nfs_server {int /*<<< orphan*/  uoc_rpcwaitq; int /*<<< orphan*/  lockowner_id; int /*<<< orphan*/  openowner_id; int /*<<< orphan*/  io_stats; int /*<<< orphan*/  active; int /*<<< orphan*/  ss_copies; int /*<<< orphan*/  state_owners_lru; int /*<<< orphan*/  layouts; int /*<<< orphan*/  delegations; int /*<<< orphan*/  master_link; int /*<<< orphan*/  client_link; int /*<<< orphan*/  client_acl; int /*<<< orphan*/  client; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  ERR_PTR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  INIT_LIST_HEAD (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  atomic_set (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ida_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  kfree (struct nfs_server*) ; 
- struct nfs_server* kzalloc (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nfs_alloc_iostats () ; 
- int /*<<< orphan*/  pnfs_init_server (struct nfs_server*) ; 
- int /*<<< orphan*/  rpc_init_wait_queue (int /*<<< orphan*/ *,char*) ; 
+
+
+
+struct nfs_server {int uoc_rpcwaitq; int lockowner_id; int openowner_id; int io_stats; int active; int ss_copies; int state_owners_lru; int layouts; int delegations; int master_link; int client_link; int client_acl; int client; } ;
+
+
+ int EINVAL ;
+ int ERR_PTR (int ) ;
+ int GFP_KERNEL ;
+ int INIT_LIST_HEAD (int *) ;
+ int atomic_set (int *,int ) ;
+ int ida_init (int *) ;
+ int kfree (struct nfs_server*) ;
+ struct nfs_server* kzalloc (int,int ) ;
+ int nfs_alloc_iostats () ;
+ int pnfs_init_server (struct nfs_server*) ;
+ int rpc_init_wait_queue (int *,char*) ;
 
 struct nfs_server *nfs_alloc_server(void)
 {
-	struct nfs_server *server;
+ struct nfs_server *server;
 
-	server = kzalloc(sizeof(struct nfs_server), GFP_KERNEL);
-	if (!server)
-		return NULL;
+ server = kzalloc(sizeof(struct nfs_server), GFP_KERNEL);
+ if (!server)
+  return ((void*)0);
 
-	server->client = server->client_acl = ERR_PTR(-EINVAL);
+ server->client = server->client_acl = ERR_PTR(-EINVAL);
 
-	/* Zero out the NFS state stuff */
-	INIT_LIST_HEAD(&server->client_link);
-	INIT_LIST_HEAD(&server->master_link);
-	INIT_LIST_HEAD(&server->delegations);
-	INIT_LIST_HEAD(&server->layouts);
-	INIT_LIST_HEAD(&server->state_owners_lru);
-	INIT_LIST_HEAD(&server->ss_copies);
 
-	atomic_set(&server->active, 0);
+ INIT_LIST_HEAD(&server->client_link);
+ INIT_LIST_HEAD(&server->master_link);
+ INIT_LIST_HEAD(&server->delegations);
+ INIT_LIST_HEAD(&server->layouts);
+ INIT_LIST_HEAD(&server->state_owners_lru);
+ INIT_LIST_HEAD(&server->ss_copies);
 
-	server->io_stats = nfs_alloc_iostats();
-	if (!server->io_stats) {
-		kfree(server);
-		return NULL;
-	}
+ atomic_set(&server->active, 0);
 
-	ida_init(&server->openowner_id);
-	ida_init(&server->lockowner_id);
-	pnfs_init_server(server);
-	rpc_init_wait_queue(&server->uoc_rpcwaitq, "NFS UOC");
+ server->io_stats = nfs_alloc_iostats();
+ if (!server->io_stats) {
+  kfree(server);
+  return ((void*)0);
+ }
 
-	return server;
+ ida_init(&server->openowner_id);
+ ida_init(&server->lockowner_id);
+ pnfs_init_server(server);
+ rpc_init_wait_queue(&server->uoc_rpcwaitq, "NFS UOC");
+
+ return server;
 }

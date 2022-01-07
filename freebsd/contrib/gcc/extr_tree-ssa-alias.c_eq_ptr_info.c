@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ptr_info_def {int /*<<< orphan*/  pt_vars; } ;
 
-/* Variables and functions */
- int bitmap_equal_p (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct ptr_info_def {int pt_vars; } ;
+
+
+ int bitmap_equal_p (int ,int ) ;
 
 __attribute__((used)) static int
 eq_ptr_info (const void *p1, const void *p2)

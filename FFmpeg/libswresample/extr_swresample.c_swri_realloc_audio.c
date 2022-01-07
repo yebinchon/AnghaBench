@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int bps; int ch_count; int count; int /*<<< orphan*/  data; scalar_t__* ch; scalar_t__ planar; } ;
-typedef  TYPE_1__ AudioData ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ALIGN ; 
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  ENOMEM ; 
- int FFALIGN (int,int /*<<< orphan*/ ) ; 
- int INT_MAX ; 
- int /*<<< orphan*/  av_assert0 (int) ; 
- int /*<<< orphan*/  av_freep (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  av_mallocz_array (int,int) ; 
- int /*<<< orphan*/  memcpy (scalar_t__,scalar_t__,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int bps; int ch_count; int count; int data; scalar_t__* ch; scalar_t__ planar; } ;
+typedef TYPE_1__ AudioData ;
+
+
+ int ALIGN ;
+ int AVERROR (int ) ;
+ int EINVAL ;
+ int ENOMEM ;
+ int FFALIGN (int,int ) ;
+ int INT_MAX ;
+ int av_assert0 (int) ;
+ int av_freep (int *) ;
+ int av_mallocz_array (int,int) ;
+ int memcpy (scalar_t__,scalar_t__,int) ;
 
 int swri_realloc_audio(AudioData *a, int count){
     int i, countb;

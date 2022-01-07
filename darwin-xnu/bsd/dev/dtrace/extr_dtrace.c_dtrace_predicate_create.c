@@ -1,61 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_7__ {int dtp_refcnt; scalar_t__ dtp_cacheid; TYPE_2__* dtp_difo; } ;
-typedef  TYPE_1__ dtrace_predicate_t ;
+typedef TYPE_1__ dtrace_predicate_t ;
 struct TYPE_8__ {scalar_t__ dtdo_refcnt; } ;
-typedef  TYPE_2__ dtrace_difo_t ;
+typedef TYPE_2__ dtrace_difo_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- scalar_t__ DTRACE_CACHEIDNONE ; 
- int /*<<< orphan*/  KM_SLEEP ; 
- int /*<<< orphan*/  LCK_MTX_ASSERT (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LCK_MTX_ASSERT_OWNED ; 
- int /*<<< orphan*/  dtrace_difo_cacheable (TYPE_2__*) ; 
- int /*<<< orphan*/  dtrace_lock ; 
- scalar_t__ dtrace_predcache_id ; 
- TYPE_1__* kmem_zalloc (int,int /*<<< orphan*/ ) ; 
+
+ int ASSERT (int) ;
+ scalar_t__ DTRACE_CACHEIDNONE ;
+ int KM_SLEEP ;
+ int LCK_MTX_ASSERT (int *,int ) ;
+ int LCK_MTX_ASSERT_OWNED ;
+ int dtrace_difo_cacheable (TYPE_2__*) ;
+ int dtrace_lock ;
+ scalar_t__ dtrace_predcache_id ;
+ TYPE_1__* kmem_zalloc (int,int ) ;
 
 __attribute__((used)) static dtrace_predicate_t *
 dtrace_predicate_create(dtrace_difo_t *dp)
 {
-	dtrace_predicate_t *pred;
+ dtrace_predicate_t *pred;
 
-	LCK_MTX_ASSERT(&dtrace_lock, LCK_MTX_ASSERT_OWNED);
-	ASSERT(dp->dtdo_refcnt != 0);
+ LCK_MTX_ASSERT(&dtrace_lock, LCK_MTX_ASSERT_OWNED);
+ ASSERT(dp->dtdo_refcnt != 0);
 
-	pred = kmem_zalloc(sizeof (dtrace_predicate_t), KM_SLEEP);
-	pred->dtp_difo = dp;
-	pred->dtp_refcnt = 1;
+ pred = kmem_zalloc(sizeof (dtrace_predicate_t), KM_SLEEP);
+ pred->dtp_difo = dp;
+ pred->dtp_refcnt = 1;
 
-	if (!dtrace_difo_cacheable(dp))
-		return (pred);
+ if (!dtrace_difo_cacheable(dp))
+  return (pred);
 
-	if (dtrace_predcache_id == DTRACE_CACHEIDNONE) {
-		/*
-		 * This is only theoretically possible -- we have had 2^32
-		 * cacheable predicates on this machine.  We cannot allow any
-		 * more predicates to become cacheable:  as unlikely as it is,
-		 * there may be a thread caching a (now stale) predicate cache
-		 * ID. (N.B.: the temptation is being successfully resisted to
-		 * have this cmn_err() "Holy shit -- we executed this code!")
-		 */
-		return (pred);
-	}
+ if (dtrace_predcache_id == DTRACE_CACHEIDNONE) {
+  return (pred);
+ }
 
-	pred->dtp_cacheid = dtrace_predcache_id++;
+ pred->dtp_cacheid = dtrace_predcache_id++;
 
-	return (pred);
+ return (pred);
 }

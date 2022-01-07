@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WORD ;
-struct TYPE_3__ {int /*<<< orphan*/  member_0; } ;
-typedef  TYPE_1__ FILETIME ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- scalar_t__ ERROR_INVALID_PARAMETER ; 
- scalar_t__ FileTimeToDosDateTime (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ GetLastError () ; 
- int /*<<< orphan*/  SetLastError (int) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int WORD ;
+struct TYPE_3__ {int member_0; } ;
+typedef TYPE_1__ FILETIME ;
+typedef scalar_t__ BOOL ;
+
+
+ scalar_t__ ERROR_INVALID_PARAMETER ;
+ scalar_t__ FileTimeToDosDateTime (TYPE_1__*,int *,int *) ;
+ scalar_t__ GetLastError () ;
+ int SetLastError (int) ;
+ int ok (int,char*,...) ;
 
 __attribute__((used)) static void test_FileTimeToDosDateTime(void)
 {
@@ -31,24 +31,24 @@ __attribute__((used)) static void test_FileTimeToDosDateTime(void)
 
     if (0)
     {
-        /* Crashes */
-        FileTimeToDosDateTime(NULL, NULL, NULL);
+
+        FileTimeToDosDateTime(((void*)0), ((void*)0), ((void*)0));
     }
-    /* Parameter checking */
+
     SetLastError(0xdeadbeef);
-    ret = FileTimeToDosDateTime(&ft, NULL, NULL);
+    ret = FileTimeToDosDateTime(&ft, ((void*)0), ((void*)0));
     ok(!ret, "expected failure\n");
     ok(GetLastError() == ERROR_INVALID_PARAMETER,
        "expected ERROR_INVALID_PARAMETER, got %d\n", GetLastError());
 
     SetLastError(0xdeadbeef);
-    ret = FileTimeToDosDateTime(&ft, &fatdate, NULL);
+    ret = FileTimeToDosDateTime(&ft, &fatdate, ((void*)0));
     ok(!ret, "expected failure\n");
     ok(GetLastError() == ERROR_INVALID_PARAMETER,
        "expected ERROR_INVALID_PARAMETER, got %d\n", GetLastError());
 
     SetLastError(0xdeadbeef);
-    ret = FileTimeToDosDateTime(&ft, NULL, &fattime);
+    ret = FileTimeToDosDateTime(&ft, ((void*)0), &fattime);
     ok(!ret, "expected failure\n");
     ok(GetLastError() == ERROR_INVALID_PARAMETER,
        "expected ERROR_INVALID_PARAMETER, got %d\n", GetLastError());

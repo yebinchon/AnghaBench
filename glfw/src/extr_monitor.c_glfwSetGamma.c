@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {unsigned int size; unsigned short* red; unsigned short* green; unsigned short* blue; } ;
-typedef  int /*<<< orphan*/  GLFWmonitor ;
-typedef  TYPE_1__ GLFWgammaramp ;
+typedef int GLFWmonitor ;
+typedef TYPE_1__ GLFWgammaramp ;
 
-/* Variables and functions */
- float FLT_MAX ; 
- int /*<<< orphan*/  GLFW_INVALID_VALUE ; 
- int /*<<< orphan*/  _GLFW_REQUIRE_INIT () ; 
- int /*<<< orphan*/  _glfwInputError (int /*<<< orphan*/ ,char*,float) ; 
- float _glfw_fminf (float,float) ; 
- int /*<<< orphan*/  assert (int) ; 
- unsigned short* calloc (unsigned int,int) ; 
- int /*<<< orphan*/  free (unsigned short*) ; 
- TYPE_1__* glfwGetGammaRamp (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  glfwSetGammaRamp (int /*<<< orphan*/ *,TYPE_1__*) ; 
- float powf (float,float) ; 
+
+ float FLT_MAX ;
+ int GLFW_INVALID_VALUE ;
+ int _GLFW_REQUIRE_INIT () ;
+ int _glfwInputError (int ,char*,float) ;
+ float _glfw_fminf (float,float) ;
+ int assert (int) ;
+ unsigned short* calloc (unsigned int,int) ;
+ int free (unsigned short*) ;
+ TYPE_1__* glfwGetGammaRamp (int *) ;
+ int glfwSetGammaRamp (int *,TYPE_1__*) ;
+ float powf (float,float) ;
 
 void glfwSetGamma(GLFWmonitor* handle, float gamma)
 {
@@ -34,7 +34,7 @@ void glfwSetGamma(GLFWmonitor* handle, float gamma)
     unsigned short* values;
     GLFWgammaramp ramp;
     const GLFWgammaramp* original;
-    assert(handle != NULL);
+    assert(handle != ((void*)0));
     assert(gamma > 0.f);
     assert(gamma <= FLT_MAX);
 
@@ -52,15 +52,15 @@ void glfwSetGamma(GLFWmonitor* handle, float gamma)
 
     values = calloc(original->size, sizeof(unsigned short));
 
-    for (i = 0;  i < original->size;  i++)
+    for (i = 0; i < original->size; i++)
     {
         float value;
 
-        // Calculate intensity
+
         value = i / (float) (original->size - 1);
-        // Apply gamma curve
+
         value = powf(value, 1.f / gamma) * 65535.f + 0.5f;
-        // Clamp to value range
+
         value = _glfw_fminf(value, 65535.f);
 
         values[i] = (unsigned short) value;

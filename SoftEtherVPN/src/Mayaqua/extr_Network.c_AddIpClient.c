@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {scalar_t__ NumConnections; int /*<<< orphan*/  IpAddress; } ;
-typedef  TYPE_1__ IP_CLIENT ;
-typedef  int /*<<< orphan*/  IP ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Add (int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  Copy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  LockList (int /*<<< orphan*/ ) ; 
- TYPE_1__* SearchIpClient (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  UnlockList (int /*<<< orphan*/ ) ; 
- TYPE_1__* ZeroMallocFast (int) ; 
- int /*<<< orphan*/  ip_clients ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {scalar_t__ NumConnections; int IpAddress; } ;
+typedef TYPE_1__ IP_CLIENT ;
+typedef int IP ;
+
+
+ int Add (int ,TYPE_1__*) ;
+ int Copy (int *,int *,int) ;
+ int LockList (int ) ;
+ TYPE_1__* SearchIpClient (int *) ;
+ int UnlockList (int ) ;
+ TYPE_1__* ZeroMallocFast (int) ;
+ int ip_clients ;
 
 void AddIpClient(IP *ip)
 {
-	IP_CLIENT *c;
-	// Validate arguments
-	if (ip == NULL)
-	{
-		return;
-	}
+ IP_CLIENT *c;
 
-	LockList(ip_clients);
-	{
-		c = SearchIpClient(ip);
+ if (ip == ((void*)0))
+ {
+  return;
+ }
 
-		if (c == NULL)
-		{
-			c = ZeroMallocFast(sizeof(IP_CLIENT));
-			Copy(&c->IpAddress, ip, sizeof(IP));
-			c->NumConnections = 0;
+ LockList(ip_clients);
+ {
+  c = SearchIpClient(ip);
 
-			Add(ip_clients, c);
-		}
+  if (c == ((void*)0))
+  {
+   c = ZeroMallocFast(sizeof(IP_CLIENT));
+   Copy(&c->IpAddress, ip, sizeof(IP));
+   c->NumConnections = 0;
 
-		c->NumConnections++;
-	}
-	UnlockList(ip_clients);
+   Add(ip_clients, c);
+  }
 
-	//Debug("AddIpClient: %r\n", ip);
+  c->NumConnections++;
+ }
+ UnlockList(ip_clients);
+
+
 }

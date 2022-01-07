@@ -1,53 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ caph_enter () ; 
- scalar_t__ caph_limit_stdio () ; 
- char* dirname (char*) ; 
- int /*<<< orphan*/  err (int,char*,...) ; 
- int /*<<< orphan*/  exit (int /*<<< orphan*/ ) ; 
- int getopt (int,char**,char*) ; 
- scalar_t__ optind ; 
- int /*<<< orphan*/  printf (char*,char*) ; 
- int /*<<< orphan*/  usage () ; 
+ scalar_t__ caph_enter () ;
+ scalar_t__ caph_limit_stdio () ;
+ char* dirname (char*) ;
+ int err (int,char*,...) ;
+ int exit (int ) ;
+ int getopt (int,char**,char*) ;
+ scalar_t__ optind ;
+ int printf (char*,char*) ;
+ int usage () ;
 
 int
 main(int argc, char **argv)
 {
-	char *p;
-	int ch;
+ char *p;
+ int ch;
 
-	if (caph_limit_stdio() < 0 || caph_enter() < 0)
-		err(1, "capsicum");
+ if (caph_limit_stdio() < 0 || caph_enter() < 0)
+  err(1, "capsicum");
 
-	while ((ch = getopt(argc, argv, "")) != -1)
-		switch(ch) {
-		case '?':
-		default:
-			usage();
-		}
-	argc -= optind;
-	argv += optind;
+ while ((ch = getopt(argc, argv, "")) != -1)
+  switch(ch) {
+  case '?':
+  default:
+   usage();
+  }
+ argc -= optind;
+ argv += optind;
 
-	if (argc < 1)
-		usage();
+ if (argc < 1)
+  usage();
 
-	while (argc--) {
-		if ((p = dirname(*argv)) == NULL)
-			err(1, "%s", *argv);
-		argv++;
-		(void)printf("%s\n", p);
-	}
-	exit(0);
+ while (argc--) {
+  if ((p = dirname(*argv)) == ((void*)0))
+   err(1, "%s", *argv);
+  argv++;
+  (void)printf("%s\n", p);
+ }
+ exit(0);
 }

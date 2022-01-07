@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int WCHAR ;
 
-/* Variables and functions */
- int C1_PUNCT ; 
- int C1_SPACE ; 
- int NORM_IGNORESYMBOLS ; 
- int const* collation_table ; 
- int get_char_typeW (int const) ; 
+
+
+
+typedef int WCHAR ;
+
+
+ int C1_PUNCT ;
+ int C1_SPACE ;
+ int NORM_IGNORESYMBOLS ;
+ int const* collation_table ;
+ int get_char_typeW (int const) ;
 
 __attribute__((used)) static inline int compare_case_weights(int flags, const WCHAR *str1, int len1,
                                        const WCHAR *str2, int len2)
@@ -25,16 +25,16 @@ __attribute__((used)) static inline int compare_case_weights(int flags, const WC
     unsigned int ce1, ce2;
     int ret;
 
-    /* 32-bit collation element table format:
-     * unicode weight - high 16 bit, diacritic weight - high 8 bit of low 16 bit,
-     * case weight - high 4 bit of low 8 bit.
-     */
+
+
+
+
     while (len1 > 0 && len2 > 0)
     {
         if (flags & NORM_IGNORESYMBOLS)
         {
             int skip = 0;
-            /* FIXME: not tested */
+
             if (get_char_typeW(*str1) & (C1_PUNCT | C1_SPACE))
             {
                 str1++;

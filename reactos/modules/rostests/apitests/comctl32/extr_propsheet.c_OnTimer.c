@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT ;
-typedef  int /*<<< orphan*/  HWND ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GetDlgItem (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetParent (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IDC_APPLY_BUTTON ; 
- int /*<<< orphan*/  IsWindowEnabled (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  KillTimer (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PSBTN_OK ; 
- int /*<<< orphan*/  PropSheet_Changed (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PropSheet_PressButton (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PropSheet_UnChanged (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  ok_int (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  s_bNotified ; 
+
+
+
+typedef int UINT ;
+typedef int HWND ;
+
+
+ int FALSE ;
+ int GetDlgItem (int ,int ) ;
+ int GetParent (int ) ;
+ int IDC_APPLY_BUTTON ;
+ int IsWindowEnabled (int ) ;
+ int KillTimer (int ,int ) ;
+ int PSBTN_OK ;
+ int PropSheet_Changed (int ,int ) ;
+ int PropSheet_PressButton (int ,int ) ;
+ int PropSheet_UnChanged (int ,int ) ;
+ int TRUE ;
+ int ok_int (int ,int ) ;
+ int s_bNotified ;
 
 __attribute__((used)) static void OnTimer(HWND hwnd, UINT id)
 {

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sd_lldp_neighbor ;
-typedef  int /*<<< orphan*/  sd_lldp ;
 
-/* Variables and functions */
- int EBADMSG ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ *) ; 
- int lldp_add_neighbor (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int lldp_neighbor_parse (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  log_lldp (char*) ; 
- int /*<<< orphan*/  log_lldp_errno (int,char*) ; 
+
+
+
+typedef int sd_lldp_neighbor ;
+typedef int sd_lldp ;
+
+
+ int EBADMSG ;
+ int assert (int *) ;
+ int lldp_add_neighbor (int *,int *) ;
+ int lldp_neighbor_parse (int *) ;
+ int log_lldp (char*) ;
+ int log_lldp_errno (int,char*) ;
 
 __attribute__((used)) static int lldp_handle_datagram(sd_lldp *lldp, sd_lldp_neighbor *n) {
         int r;
@@ -28,7 +28,7 @@ __attribute__((used)) static int lldp_handle_datagram(sd_lldp *lldp, sd_lldp_nei
         assert(n);
 
         r = lldp_neighbor_parse(n);
-        if (r == -EBADMSG) /* Ignore bad messages */
+        if (r == -EBADMSG)
                 return 0;
         if (r < 0)
                 return r;

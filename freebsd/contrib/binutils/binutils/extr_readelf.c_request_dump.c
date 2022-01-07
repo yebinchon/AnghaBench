@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  _ (char*) ; 
- char* calloc (unsigned int,int) ; 
- int* dump_sects ; 
- int /*<<< orphan*/  error (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (int*) ; 
- int /*<<< orphan*/  memcpy (char*,int*,unsigned int) ; 
- unsigned int num_dump_sects ; 
+ int _ (char*) ;
+ char* calloc (unsigned int,int) ;
+ int* dump_sects ;
+ int error (int ) ;
+ int free (int*) ;
+ int memcpy (char*,int*,unsigned int) ;
+ unsigned int num_dump_sects ;
 
 __attribute__((used)) static void
 request_dump (unsigned int section, int type)
@@ -29,18 +21,18 @@ request_dump (unsigned int section, int type)
 
       new_dump_sects = calloc (section + 1, 1);
 
-      if (new_dump_sects == NULL)
-	error (_("Out of memory allocating dump request table.\n"));
+      if (new_dump_sects == ((void*)0))
+ error (_("Out of memory allocating dump request table.\n"));
       else
-	{
-	  /* Copy current flag settings.  */
-	  memcpy (new_dump_sects, dump_sects, num_dump_sects);
+ {
 
-	  free (dump_sects);
+   memcpy (new_dump_sects, dump_sects, num_dump_sects);
 
-	  dump_sects = new_dump_sects;
-	  num_dump_sects = section + 1;
-	}
+   free (dump_sects);
+
+   dump_sects = new_dump_sects;
+   num_dump_sects = section + 1;
+ }
     }
 
   if (dump_sects)

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u8 ;
 
-/* Variables and functions */
+
+
+
+typedef int u8 ;
+
+
 
 __attribute__((used)) static void transform_netntlmv1_key (const u8 *nthash, u8 *key)
 {
-  key[0] =                    (nthash[0] >> 0);
+  key[0] = (nthash[0] >> 0);
   key[1] = (nthash[0] << 7) | (nthash[1] >> 1);
   key[2] = (nthash[1] << 6) | (nthash[2] >> 2);
   key[3] = (nthash[2] << 5) | (nthash[3] >> 3);

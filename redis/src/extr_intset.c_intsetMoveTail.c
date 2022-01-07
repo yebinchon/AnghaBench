@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint32_t ;
-struct TYPE_3__ {scalar_t__ contents; int /*<<< orphan*/  encoding; int /*<<< orphan*/  length; } ;
-typedef  TYPE_1__ intset ;
-typedef  int /*<<< orphan*/  int64_t ;
-typedef  int /*<<< orphan*/  int32_t ;
-typedef  int /*<<< orphan*/  int16_t ;
 
-/* Variables and functions */
- scalar_t__ INTSET_ENC_INT32 ; 
- scalar_t__ INTSET_ENC_INT64 ; 
- scalar_t__ intrev32ifbe (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memmove (void*,void*,scalar_t__) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint32_t ;
+struct TYPE_3__ {scalar_t__ contents; int encoding; int length; } ;
+typedef TYPE_1__ intset ;
+typedef int int64_t ;
+typedef int int32_t ;
+typedef int int16_t ;
+
+
+ scalar_t__ INTSET_ENC_INT32 ;
+ scalar_t__ INTSET_ENC_INT64 ;
+ scalar_t__ intrev32ifbe (int ) ;
+ int memmove (void*,void*,scalar_t__) ;
 
 __attribute__((used)) static void intsetMoveTail(intset *is, uint32_t from, uint32_t to) {
     void *src, *dst;

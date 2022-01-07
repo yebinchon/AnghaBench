@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {char const* data; int /*<<< orphan*/  len; } ;
-typedef  TYPE_1__ svn_string_t ;
-typedef  int /*<<< orphan*/  svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_repos_notify_t ;
-typedef  int /*<<< orphan*/  (* svn_repos_notify_func_t ) (void*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_int32_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  prefix_mergeinfo_paths (TYPE_1__**,TYPE_1__*,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  renumber_mergeinfo_revs (TYPE_1__**,TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strlen (char const*) ; 
- scalar_t__ strstr (char const*,char*) ; 
- int /*<<< orphan*/ * svn_repos_notify_create (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_repos_notify_load_normalized_mergeinfo ; 
- int /*<<< orphan*/  svn_subst_translate_cstring2 (char const*,char const**,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_8__ {char const* data; int len; } ;
+typedef TYPE_1__ svn_string_t ;
+typedef int svn_revnum_t ;
+typedef int svn_repos_notify_t ;
+typedef int (* svn_repos_notify_func_t ) (void*,int *,int *) ;
+typedef int svn_error_t ;
+typedef int apr_pool_t ;
+typedef int apr_int32_t ;
+typedef int apr_hash_t ;
+
+
+ int FALSE ;
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int prefix_mergeinfo_paths (TYPE_1__**,TYPE_1__*,char const*,int *) ;
+ int renumber_mergeinfo_revs (TYPE_1__**,TYPE_1__*,int *,int ,int ,int *) ;
+ int strlen (char const*) ;
+ scalar_t__ strstr (char const*,char*) ;
+ int * svn_repos_notify_create (int ,int *) ;
+ int svn_repos_notify_load_normalized_mergeinfo ;
+ int svn_subst_translate_cstring2 (char const*,char const**,char*,int ,int *,int ,int *) ;
 
 svn_error_t *
 svn_repos__adjust_mergeinfo_property(svn_string_t **new_value_p,
@@ -47,20 +47,20 @@ svn_repos__adjust_mergeinfo_property(svn_string_t **new_value_p,
 {
   svn_string_t prop_val = *old_value;
 
-  /* Tolerate mergeinfo with "\r\n" line endings because some
-     dumpstream sources might contain as much.  If so normalize
-     the line endings to '\n' and notify that we have made this
-     correction. */
+
+
+
+
   if (strstr(prop_val.data, "\r"))
     {
       const char *prop_eol_normalized;
 
       SVN_ERR(svn_subst_translate_cstring2(prop_val.data,
                                            &prop_eol_normalized,
-                                           "\n",  /* translate to LF */
-                                           FALSE, /* no repair */
-                                           NULL,  /* no keywords */
-                                           FALSE, /* no expansion */
+                                           "\n",
+                                           FALSE,
+                                           ((void*)0),
+                                           FALSE,
                                            result_pool));
       prop_val.data = prop_eol_normalized;
       prop_val.len = strlen(prop_eol_normalized);
@@ -76,7 +76,7 @@ svn_repos__adjust_mergeinfo_property(svn_string_t **new_value_p,
         }
     }
 
-  /* Renumber mergeinfo as appropriate. */
+
   SVN_ERR(renumber_mergeinfo_revs(new_value_p, &prop_val,
                                   rev_map, oldest_dumpstream_rev,
                                   older_revs_offset,
@@ -84,8 +84,8 @@ svn_repos__adjust_mergeinfo_property(svn_string_t **new_value_p,
 
   if (parent_dir)
     {
-      /* Prefix the merge source paths with PARENT_DIR. */
-      /* ASSUMPTION: All source paths are included in the dump stream. */
+
+
       SVN_ERR(prefix_mergeinfo_paths(new_value_p, *new_value_p,
                                      parent_dir, result_pool));
     }

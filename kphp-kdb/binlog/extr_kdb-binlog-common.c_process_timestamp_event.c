@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct lev_generic {scalar_t__ a; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,scalar_t__,scalar_t__,...) ; 
- int /*<<< orphan*/  log_cur_pos () ; 
- int /*<<< orphan*/  log_cutoff_pos ; 
- scalar_t__ log_first_ts ; 
- scalar_t__ log_last_ts ; 
- scalar_t__ log_read_until ; 
- int log_scan_mode ; 
- scalar_t__ log_set_now ; 
- scalar_t__ log_time_cutoff ; 
- scalar_t__ now ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ verbosity ; 
+
+ int fprintf (int ,char*,scalar_t__,scalar_t__,...) ;
+ int log_cur_pos () ;
+ int log_cutoff_pos ;
+ scalar_t__ log_first_ts ;
+ scalar_t__ log_last_ts ;
+ scalar_t__ log_read_until ;
+ int log_scan_mode ;
+ scalar_t__ log_set_now ;
+ scalar_t__ log_time_cutoff ;
+ scalar_t__ now ;
+ int stderr ;
+ scalar_t__ verbosity ;
 
 __attribute__((used)) static void process_timestamp_event (struct lev_generic *E) {
   if (!log_first_ts) {

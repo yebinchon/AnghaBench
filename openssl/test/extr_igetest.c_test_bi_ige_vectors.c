@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct bi_ige_test {int length; scalar_t__ encrypt; int keysize; int /*<<< orphan*/  in; int /*<<< orphan*/  iv; int /*<<< orphan*/  key2; int /*<<< orphan*/  key1; int /*<<< orphan*/  out; } ;
-typedef  int /*<<< orphan*/  AES_KEY ;
 
-/* Variables and functions */
- scalar_t__ AES_ENCRYPT ; 
- int /*<<< orphan*/  AES_bi_ige_encrypt (int /*<<< orphan*/ ,unsigned char*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  AES_set_decrypt_key (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  AES_set_encrypt_key (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- int MAX_VECTOR_SIZE ; 
- int /*<<< orphan*/  TEST_int_le (int,int) ; 
- int /*<<< orphan*/  TEST_mem_eq (int /*<<< orphan*/ ,int,unsigned char*,int) ; 
- struct bi_ige_test* bi_ige_test_vectors ; 
- int /*<<< orphan*/  test_output_memory (char*,int /*<<< orphan*/ ,int) ; 
+
+
+
+struct bi_ige_test {int length; scalar_t__ encrypt; int keysize; int in; int iv; int key2; int key1; int out; } ;
+typedef int AES_KEY ;
+
+
+ scalar_t__ AES_ENCRYPT ;
+ int AES_bi_ige_encrypt (int ,unsigned char*,int,int *,int *,int ,scalar_t__) ;
+ int AES_set_decrypt_key (int ,int,int *) ;
+ int AES_set_encrypt_key (int ,int,int *) ;
+ int MAX_VECTOR_SIZE ;
+ int TEST_int_le (int,int) ;
+ int TEST_mem_eq (int ,int,unsigned char*,int) ;
+ struct bi_ige_test* bi_ige_test_vectors ;
+ int test_output_memory (char*,int ,int) ;
 
 __attribute__((used)) static int test_bi_ige_vectors(int n)
 {

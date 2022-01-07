@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int wordcount_t ;
-typedef  scalar_t__ uECC_word_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EVEN (scalar_t__*) ; 
- scalar_t__ HIGH_BIT_SET ; 
- scalar_t__ uECC_vli_add (scalar_t__*,scalar_t__*,scalar_t__ const*,int) ; 
- int /*<<< orphan*/  uECC_vli_rshift1 (scalar_t__*,int) ; 
+
+
+
+typedef int wordcount_t ;
+typedef scalar_t__ uECC_word_t ;
+
+
+ int EVEN (scalar_t__*) ;
+ scalar_t__ HIGH_BIT_SET ;
+ scalar_t__ uECC_vli_add (scalar_t__*,scalar_t__*,scalar_t__ const*,int) ;
+ int uECC_vli_rshift1 (scalar_t__*,int) ;
 
 __attribute__((used)) static void vli_modInv_update(uECC_word_t *uv,
                               const uECC_word_t *mod,

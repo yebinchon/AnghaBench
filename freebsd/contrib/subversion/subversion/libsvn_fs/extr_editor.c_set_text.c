@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_stream_t ;
-typedef  int /*<<< orphan*/  svn_fs_root_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_checksum_t ;
-typedef  int /*<<< orphan*/  svn_cancel_func_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  svn_fs_apply_text (int /*<<< orphan*/ **,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_stream_copy3 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int svn_stream_t ;
+typedef int svn_fs_root_t ;
+typedef int svn_error_t ;
+typedef int svn_checksum_t ;
+typedef int svn_cancel_func_t ;
+typedef int apr_pool_t ;
+
+
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int svn_fs_apply_text (int **,int *,char const*,int *,int *) ;
+ int svn_stream_copy3 (int *,int *,int ,void*,int *) ;
 
 __attribute__((used)) static svn_error_t *
 set_text(svn_fs_root_t *root,
@@ -34,11 +34,11 @@ set_text(svn_fs_root_t *root,
 {
   svn_stream_t *fs_contents;
 
-  /* ### We probably don't have an MD5 checksum, so no digest is available
-     ### for svn_fs_apply_text() to validate. It would be nice to have an
-     ### FS API that takes our CHECKSUM/CONTENTS pair (and PROPS!).  */
+
+
+
   SVN_ERR(svn_fs_apply_text(&fs_contents, root, fspath,
-                            NULL /* result_checksum */,
+                            ((void*)0) ,
                             scratch_pool));
   SVN_ERR(svn_stream_copy3(contents, fs_contents,
                            cancel_func, cancel_baton,

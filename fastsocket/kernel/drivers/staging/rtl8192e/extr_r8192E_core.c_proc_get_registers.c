@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct net_device {int dummy; } ;
-typedef  int /*<<< orphan*/  off_t ;
+typedef int off_t ;
 
-/* Variables and functions */
- int read_nic_byte (struct net_device*,int) ; 
- scalar_t__ snprintf (char*,int,char*,...) ; 
+
+ int read_nic_byte (struct net_device*,int) ;
+ scalar_t__ snprintf (char*,int,char*,...) ;
 
 __attribute__((used)) static int proc_get_registers(char *page, char **start,
-			  off_t offset, int count,
-			  int *eof, void *data)
+     off_t offset, int count,
+     int *eof, void *data)
 {
-	struct net_device *dev = data;
-//	struct r8192_priv *priv = (struct r8192_priv *)ieee80211_priv(dev);
+ struct net_device *dev = data;
 
-	int len = 0;
-	int i,n;
 
-	int max=0xff;
+ int len = 0;
+ int i,n;
 
-	/* This dump the current register page */
-	len += snprintf(page + len, count - len,
+ int max=0xff;
+
+
+ len += snprintf(page + len, count - len,
                         "\n####################page 0##################\n ");
 
-	for(n=0;n<=max;)
-	{
-		//printk( "\nD: %2x> ", n);
-		len += snprintf(page + len, count - len,
-			"\nD:  %2x > ",n);
+ for(n=0;n<=max;)
+ {
 
-		for(i=0;i<16 && n<=max;i++,n++)
-		len += snprintf(page + len, count - len,
-			"%2x ",read_nic_byte(dev,n));
+  len += snprintf(page + len, count - len,
+   "\nD:  %2x > ",n);
 
-		//	printk("%2x ",read_nic_byte(dev,n));
-	}
-	len += snprintf(page + len, count - len,"\n");
-	len += snprintf(page + len, count - len,
+  for(i=0;i<16 && n<=max;i++,n++)
+  len += snprintf(page + len, count - len,
+   "%2x ",read_nic_byte(dev,n));
+
+
+ }
+ len += snprintf(page + len, count - len,"\n");
+ len += snprintf(page + len, count - len,
                         "\n####################page 1##################\n ");
         for(n=0;n<=max;)
         {
-                //printk( "\nD: %2x> ", n);
+
                 len += snprintf(page + len, count - len,
                         "\nD:  %2x > ",n);
 
@@ -58,14 +58,14 @@ __attribute__((used)) static int proc_get_registers(char *page, char **start,
                 len += snprintf(page + len, count - len,
                         "%2x ",read_nic_byte(dev,0x100|n));
 
-                //      printk("%2x ",read_nic_byte(dev,n));
+
         }
 
-	len += snprintf(page + len, count - len,
+ len += snprintf(page + len, count - len,
                         "\n####################page 3##################\n ");
         for(n=0;n<=max;)
         {
-                //printk( "\nD: %2x> ", n);
+
                 len += snprintf(page + len, count - len,
                         "\nD:  %2x > ",n);
 
@@ -73,11 +73,11 @@ __attribute__((used)) static int proc_get_registers(char *page, char **start,
                 len += snprintf(page + len, count - len,
                         "%2x ",read_nic_byte(dev,0x300|n));
 
-                //      printk("%2x ",read_nic_byte(dev,n));
+
         }
 
 
-	*eof = 1;
-	return len;
+ *eof = 1;
+ return len;
 
 }

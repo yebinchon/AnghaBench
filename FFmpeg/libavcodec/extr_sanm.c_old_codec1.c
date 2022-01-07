@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-struct TYPE_3__ {int pitch; scalar_t__ rotate_code; int /*<<< orphan*/  gb; scalar_t__ frm0; } ;
-typedef  TYPE_1__ SANMVideoContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int bytestream2_get_bytes_left (int /*<<< orphan*/ *) ; 
- int bytestream2_get_byteu (int /*<<< orphan*/ *) ; 
- int bytestream2_get_le16u (int /*<<< orphan*/ *) ; 
- int bytestream2_tell (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memset (int*,int,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_3__ {int pitch; scalar_t__ rotate_code; int gb; scalar_t__ frm0; } ;
+typedef TYPE_1__ SANMVideoContext ;
+
+
+ int AVERROR_INVALIDDATA ;
+ int bytestream2_get_bytes_left (int *) ;
+ int bytestream2_get_byteu (int *) ;
+ int bytestream2_get_le16u (int *) ;
+ int bytestream2_tell (int *) ;
+ int memset (int*,int,int) ;
 
 __attribute__((used)) static int old_codec1(SANMVideoContext *ctx, int top,
                       int left, int width, int height)

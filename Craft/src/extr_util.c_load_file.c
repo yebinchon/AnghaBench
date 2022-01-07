@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SEEK_END ; 
- char* calloc (int,int) ; 
- int errno ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char const*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char const*,int,char*) ; 
- int /*<<< orphan*/  fread (char*,int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fseek (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int ftell (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  rewind (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stderr ; 
- char* strerror (int) ; 
+
+
+
+typedef int FILE ;
+
+
+ int SEEK_END ;
+ char* calloc (int,int) ;
+ int errno ;
+ int exit (int) ;
+ int fclose (int *) ;
+ int * fopen (char const*,char*) ;
+ int fprintf (int ,char*,char const*,int,char*) ;
+ int fread (char*,int,int,int *) ;
+ int fseek (int *,int ,int ) ;
+ int ftell (int *) ;
+ int rewind (int *) ;
+ int stderr ;
+ char* strerror (int) ;
 
 char *load_file(const char *path) {
     FILE *file = fopen(path, "rb");

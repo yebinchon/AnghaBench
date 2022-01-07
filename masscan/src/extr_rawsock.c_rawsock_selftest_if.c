@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct Adapter {int dummy; } ;
-typedef  int /*<<< orphan*/  ifname2 ;
+typedef int ifname2 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOG (int,char*,char const*) ; 
- int /*<<< orphan*/  arp_resolve_sync (struct Adapter*,unsigned int,unsigned char*,unsigned int,unsigned char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- scalar_t__ memcmp (unsigned char*,char*,int) ; 
- int /*<<< orphan*/  memset (unsigned char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  rawsock_close_adapter (struct Adapter*) ; 
- unsigned int rawsock_get_adapter_ip (char const*) ; 
- int rawsock_get_adapter_mac (char const*,unsigned char*) ; 
- int rawsock_get_default_gateway (char const*,unsigned int*) ; 
- int rawsock_get_default_interface (char*,int) ; 
- struct Adapter* rawsock_init_adapter (char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stderr ; 
+
+ int LOG (int,char*,char const*) ;
+ int arp_resolve_sync (struct Adapter*,unsigned int,unsigned char*,unsigned int,unsigned char*) ;
+ int fprintf (int ,char*,...) ;
+ scalar_t__ memcmp (unsigned char*,char*,int) ;
+ int memset (unsigned char*,int ,int) ;
+ int printf (char*,...) ;
+ int rawsock_close_adapter (struct Adapter*) ;
+ unsigned int rawsock_get_adapter_ip (char const*) ;
+ int rawsock_get_adapter_mac (char const*,unsigned char*) ;
+ int rawsock_get_default_gateway (char const*,unsigned int*) ;
+ int rawsock_get_default_interface (char*,int) ;
+ struct Adapter* rawsock_init_adapter (char const*,int ,int ,int ,int ,int ,int ,int ) ;
+ int stderr ;
 
 int
 rawsock_selftest_if(const char *ifname)
@@ -38,7 +38,7 @@ rawsock_selftest_if(const char *ifname)
     struct Adapter *adapter;
     char ifname2[246];
 
-    if (ifname == NULL || ifname[0] == 0) {
+    if (ifname == ((void*)0) || ifname[0] == 0) {
         err = rawsock_get_default_interface(ifname2, sizeof(ifname2));
         if (err) {
             fprintf(stderr, "get-default-if: returned err %d\n", err);
@@ -47,10 +47,10 @@ rawsock_selftest_if(const char *ifname)
         ifname = ifname2;
     }
 
-    /* Name */
+
     printf("if = %s\n", ifname);
 
-    /* IP address */
+
     ipv4 = rawsock_get_adapter_ip(ifname);
     if (ipv4 == 0) {
         fprintf(stderr, "get-ip: returned err\n");
@@ -62,7 +62,7 @@ rawsock_selftest_if(const char *ifname)
             (unsigned char)(ipv4>>0));
     }
 
-    /* MAC address */
+
     err = rawsock_get_adapter_mac(ifname, mac);
     if (err) {
         fprintf(stderr, "get-adapter-mac: returned err=%d\n", err);
@@ -71,7 +71,7 @@ rawsock_selftest_if(const char *ifname)
             mac[0], mac[1], mac[2], mac[3], mac[4], mac[5]);
     }
 
-    /* Gateway IP */
+
     err = rawsock_get_default_gateway(ifname, &router_ipv4);
     if (err) {
         fprintf(stderr, "get-default-gateway: returned err=%d\n", err);

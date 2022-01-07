@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ WCHAR ;
-typedef  int UINT ;
-typedef  scalar_t__* LPWSTR ;
-typedef  int INT ;
-typedef  int /*<<< orphan*/  HRSRC ;
-typedef  int /*<<< orphan*/  HINSTANCE ;
-typedef  int /*<<< orphan*/  HGLOBAL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FindResourceW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__*) ; 
- int LOWORD (int) ; 
- int /*<<< orphan*/  LoadResource (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__* LockResource (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MAKEINTRESOURCEW (int) ; 
- scalar_t__ RT_STRING ; 
- int /*<<< orphan*/  memcpy (scalar_t__*,scalar_t__*,int) ; 
- int min (int,scalar_t__) ; 
+
+
+
+typedef scalar_t__ WCHAR ;
+typedef int UINT ;
+typedef scalar_t__* LPWSTR ;
+typedef int INT ;
+typedef int HRSRC ;
+typedef int HINSTANCE ;
+typedef int HGLOBAL ;
+
+
+ int FindResourceW (int ,int ,scalar_t__*) ;
+ int LOWORD (int) ;
+ int LoadResource (int ,int ) ;
+ scalar_t__* LockResource (int ) ;
+ int MAKEINTRESOURCEW (int) ;
+ scalar_t__ RT_STRING ;
+ int memcpy (scalar_t__*,scalar_t__*,int) ;
+ int min (int,scalar_t__) ;
 
 INT
 SampLoadString(HINSTANCE hInstance,
@@ -40,7 +40,7 @@ SampLoadString(HINSTANCE hInstance,
     int string_num;
     int i;
 
-    /* Use loword (incremented by 1) as resourceid */
+
     hrsrc = FindResourceW(hInstance,
                           MAKEINTRESOURCEW((LOWORD(uId) >> 4) + 1),
                           (LPWSTR)RT_STRING);

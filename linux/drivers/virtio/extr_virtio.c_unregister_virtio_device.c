@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct virtio_device {int index; int /*<<< orphan*/  dev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  device_unregister (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ida_simple_remove (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  virtio_index_ida ; 
+
+
+
+struct virtio_device {int index; int dev; } ;
+
+
+ int device_unregister (int *) ;
+ int ida_simple_remove (int *,int) ;
+ int virtio_index_ida ;
 
 void unregister_virtio_device(struct virtio_device *dev)
 {
-	int index = dev->index; /* save for after device release */
+ int index = dev->index;
 
-	device_unregister(&dev->dev);
-	ida_simple_remove(&virtio_index_ida, index);
+ device_unregister(&dev->dev);
+ ida_simple_remove(&virtio_index_ida, index);
 }

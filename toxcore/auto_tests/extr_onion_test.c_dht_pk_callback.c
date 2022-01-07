@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint16_t ;
-typedef  scalar_t__ int32_t ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint16_t ;
+typedef scalar_t__ int32_t ;
 struct TYPE_4__ {TYPE_1__* onion; } ;
-struct TYPE_3__ {int /*<<< orphan*/  dht; } ;
-typedef  TYPE_2__ Onions ;
+struct TYPE_3__ {int dht; } ;
+typedef TYPE_2__ Onions ;
 
-/* Variables and functions */
- int DHT_addfriend (int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,void*,scalar_t__,int*) ; 
- scalar_t__ NUM_FIRST ; 
- scalar_t__ NUM_LAST ; 
- int /*<<< orphan*/  ck_abort_msg (char*) ; 
- int /*<<< orphan*/  ck_assert_msg (int,char*,...) ; 
- int /*<<< orphan*/  crypto_box_PUBLICKEYBYTES ; 
- int /*<<< orphan*/  dht_ip_callback ; 
- int first ; 
- int /*<<< orphan*/  first_dht_pk ; 
- int last ; 
- int /*<<< orphan*/  last_dht_pk ; 
- scalar_t__ memcmp (int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int DHT_addfriend (int ,int const*,int *,void*,scalar_t__,int*) ;
+ scalar_t__ NUM_FIRST ;
+ scalar_t__ NUM_LAST ;
+ int ck_abort_msg (char*) ;
+ int ck_assert_msg (int,char*,...) ;
+ int crypto_box_PUBLICKEYBYTES ;
+ int dht_ip_callback ;
+ int first ;
+ int first_dht_pk ;
+ int last ;
+ int last_dht_pk ;
+ scalar_t__ memcmp (int const*,int ,int ) ;
 
 __attribute__((used)) static void dht_pk_callback(void *object, int32_t number, const uint8_t *dht_public_key)
 {

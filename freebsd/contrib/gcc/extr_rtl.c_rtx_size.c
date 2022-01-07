@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct block_symbol {int dummy; } ;
-typedef  int /*<<< orphan*/  rtx ;
+typedef int rtx ;
 
-/* Variables and functions */
- scalar_t__ GET_CODE (int /*<<< orphan*/ ) ; 
- unsigned int RTX_CODE_SIZE (scalar_t__) ; 
- unsigned int RTX_HDR_SIZE ; 
- scalar_t__ SYMBOL_REF ; 
- scalar_t__ SYMBOL_REF_HAS_BLOCK_INFO_P (int /*<<< orphan*/ ) ; 
+
+ scalar_t__ GET_CODE (int ) ;
+ unsigned int RTX_CODE_SIZE (scalar_t__) ;
+ unsigned int RTX_HDR_SIZE ;
+ scalar_t__ SYMBOL_REF ;
+ scalar_t__ SYMBOL_REF_HAS_BLOCK_INFO_P (int ) ;
 
 unsigned int
 rtx_size (rtx x)

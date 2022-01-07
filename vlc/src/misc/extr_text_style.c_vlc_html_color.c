@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
-struct TYPE_2__ {int i_value; int /*<<< orphan*/ * psz_name; } ;
 
-/* Variables and functions */
- scalar_t__ isspace (char) ; 
- TYPE_1__* p_html_colors ; 
- int sscanf (char const*,char*,unsigned int*,unsigned int*,unsigned int*,...) ; 
- int /*<<< orphan*/  strcasecmp (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strncmp (char*,char const*,int) ; 
- int /*<<< orphan*/  strtoul (char const*,char**,int) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+struct TYPE_2__ {int i_value; int * psz_name; } ;
+
+
+ scalar_t__ isspace (char) ;
+ TYPE_1__* p_html_colors ;
+ int sscanf (char const*,char*,unsigned int*,unsigned int*,unsigned int*,...) ;
+ int strcasecmp (char const*,int *) ;
+ int strncmp (char*,char const*,int) ;
+ int strtoul (char const*,char**,int) ;
 
 unsigned int vlc_html_color( const char *psz_value, bool* ok )
 {
     unsigned int color = 0;
     char* psz_end;
-    bool b_ret = false;
+    bool b_ret = 0;
 
     const char *psz_hex = (*psz_value == '#') ? psz_value + 1 : psz_value;
 
@@ -41,11 +41,11 @@ unsigned int vlc_html_color( const char *psz_value, bool* ok )
             {
                 case 8:
                     color = (i_value << 24) | (i_value >> 8);
-                    b_ret = true;
+                    b_ret = 1;
                     break;
                 case 6:
                     color = i_value | 0xFF000000;
-                    b_ret = true;
+                    b_ret = 1;
                     break;
                 default:
                     break;
@@ -66,19 +66,19 @@ unsigned int vlc_html_color( const char *psz_value, bool* ok )
 
     if( !b_ret && psz_hex == psz_value )
     {
-        for( int i = 0; p_html_colors[i].psz_name != NULL; i++ )
+        for( int i = 0; p_html_colors[i].psz_name != ((void*)0); i++ )
         {
             if( !strcasecmp( psz_value, p_html_colors[i].psz_name ) )
             {
-                // Assume opaque color since the table doesn't specify an alpha
+
                 color = p_html_colors[i].i_value | 0xFF000000;
-                b_ret = true;
+                b_ret = 1;
                 break;
             }
         }
     }
 
-    if ( ok != NULL )
+    if ( ok != ((void*)0) )
         *ok = b_ret;
 
     return color;

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int limb ;
 
-/* Variables and functions */
+
+
+
+typedef int limb ;
+
+
 
 __attribute__((used)) static void freduce_degree(limb *output) {
-  /* Each of these shifts and adds ends up multiplying the value by 19.
-   *
-   * For output[0..8], the absolute entry value is < 14*2^54 and we add, at
-   * most, 19*14*2^54 thus, on exit, |output[0..8]| < 280*2^54. */
+
+
+
+
   output[8] += output[18] << 4;
   output[8] += output[18] << 1;
   output[8] += output[18];

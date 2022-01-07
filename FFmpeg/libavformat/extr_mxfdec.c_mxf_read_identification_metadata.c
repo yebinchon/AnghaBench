@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64_t ;
-typedef  int /*<<< orphan*/  int64_t ;
-struct TYPE_5__ {int /*<<< orphan*/  member_0; } ;
-typedef  TYPE_1__ UID ;
-struct TYPE_6__ {int /*<<< orphan*/ * fc; } ;
-typedef  TYPE_2__ MXFContext ;
-typedef  int /*<<< orphan*/  AVIOContext ;
-typedef  int /*<<< orphan*/  AVFormatContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SET_STR_METADATA (int /*<<< orphan*/ *,char*,char*) ; 
- int /*<<< orphan*/  SET_TS_METADATA (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  SET_UID_METADATA (int /*<<< orphan*/ *,char*,TYPE_1__,char*) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint64_t ;
+typedef int int64_t ;
+struct TYPE_5__ {int member_0; } ;
+typedef TYPE_1__ UID ;
+struct TYPE_6__ {int * fc; } ;
+typedef TYPE_2__ MXFContext ;
+typedef int AVIOContext ;
+typedef int AVFormatContext ;
+
+
+ int SET_STR_METADATA (int *,char*,char*) ;
+ int SET_TS_METADATA (int *,char*,int ,char*) ;
+ int SET_UID_METADATA (int *,char*,TYPE_1__,char*) ;
 
 __attribute__((used)) static int mxf_read_identification_metadata(void *arg, AVIOContext *pb, int tag, int size, UID _uid, int64_t klv_offset)
 {
@@ -32,7 +32,7 @@ __attribute__((used)) static int mxf_read_identification_metadata(void *arg, AVI
     AVFormatContext *s = mxf->fc;
     int ret;
     UID uid = { 0 };
-    char *str = NULL;
+    char *str = ((void*)0);
     uint64_t ts;
     switch (tag) {
     case 0x3C01:

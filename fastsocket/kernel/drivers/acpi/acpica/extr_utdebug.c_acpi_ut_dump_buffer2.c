@@ -1,127 +1,127 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-typedef  int u32 ;
-typedef  size_t acpi_size ;
 
-/* Variables and functions */
- scalar_t__ ACPI_IS_PRINT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ACPI_MOVE_16_TO_32 (int*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ACPI_MOVE_32_TO_32 (int*,int /*<<< orphan*/ *) ; 
-#define  DB_BYTE_DISPLAY 131 
-#define  DB_DWORD_DISPLAY 130 
-#define  DB_QWORD_DISPLAY 129 
-#define  DB_WORD_DISPLAY 128 
- int /*<<< orphan*/  acpi_os_printf (char*,...) ; 
+
+
+
+typedef int u8 ;
+typedef int u32 ;
+typedef size_t acpi_size ;
+
+
+ scalar_t__ ACPI_IS_PRINT (int ) ;
+ int ACPI_MOVE_16_TO_32 (int*,int *) ;
+ int ACPI_MOVE_32_TO_32 (int*,int *) ;
+
+
+
+
+ int acpi_os_printf (char*,...) ;
 
 void acpi_ut_dump_buffer2(u8 * buffer, u32 count, u32 display)
 {
-	u32 i = 0;
-	u32 j;
-	u32 temp32;
-	u8 buf_char;
+ u32 i = 0;
+ u32 j;
+ u32 temp32;
+ u8 buf_char;
 
-	if (!buffer) {
-		acpi_os_printf("Null Buffer Pointer in DumpBuffer!\n");
-		return;
-	}
+ if (!buffer) {
+  acpi_os_printf("Null Buffer Pointer in DumpBuffer!\n");
+  return;
+ }
 
-	if ((count < 4) || (count & 0x01)) {
-		display = DB_BYTE_DISPLAY;
-	}
+ if ((count < 4) || (count & 0x01)) {
+  display = 131;
+ }
 
-	/* Nasty little dump buffer routine! */
 
-	while (i < count) {
 
-		/* Print current offset */
+ while (i < count) {
 
-		acpi_os_printf("%6.4X: ", i);
 
-		/* Print 16 hex chars */
 
-		for (j = 0; j < 16;) {
-			if (i + j >= count) {
+  acpi_os_printf("%6.4X: ", i);
 
-				/* Dump fill spaces */
 
-				acpi_os_printf("%*s", ((display * 2) + 1), " ");
-				j += display;
-				continue;
-			}
 
-			switch (display) {
-			case DB_BYTE_DISPLAY:
-			default:	/* Default is BYTE display */
+  for (j = 0; j < 16;) {
+   if (i + j >= count) {
 
-				acpi_os_printf("%02X ",
-					       buffer[(acpi_size) i + j]);
-				break;
 
-			case DB_WORD_DISPLAY:
 
-				ACPI_MOVE_16_TO_32(&temp32,
-						   &buffer[(acpi_size) i + j]);
-				acpi_os_printf("%04X ", temp32);
-				break;
+    acpi_os_printf("%*s", ((display * 2) + 1), " ");
+    j += display;
+    continue;
+   }
 
-			case DB_DWORD_DISPLAY:
+   switch (display) {
+   case 131:
+   default:
 
-				ACPI_MOVE_32_TO_32(&temp32,
-						   &buffer[(acpi_size) i + j]);
-				acpi_os_printf("%08X ", temp32);
-				break;
+    acpi_os_printf("%02X ",
+            buffer[(acpi_size) i + j]);
+    break;
 
-			case DB_QWORD_DISPLAY:
+   case 128:
 
-				ACPI_MOVE_32_TO_32(&temp32,
-						   &buffer[(acpi_size) i + j]);
-				acpi_os_printf("%08X", temp32);
+    ACPI_MOVE_16_TO_32(&temp32,
+         &buffer[(acpi_size) i + j]);
+    acpi_os_printf("%04X ", temp32);
+    break;
 
-				ACPI_MOVE_32_TO_32(&temp32,
-						   &buffer[(acpi_size) i + j +
-							   4]);
-				acpi_os_printf("%08X ", temp32);
-				break;
-			}
+   case 130:
 
-			j += display;
-		}
+    ACPI_MOVE_32_TO_32(&temp32,
+         &buffer[(acpi_size) i + j]);
+    acpi_os_printf("%08X ", temp32);
+    break;
 
-		/*
-		 * Print the ASCII equivalent characters but watch out for the bad
-		 * unprintable ones (printable chars are 0x20 through 0x7E)
-		 */
-		acpi_os_printf(" ");
-		for (j = 0; j < 16; j++) {
-			if (i + j >= count) {
-				acpi_os_printf("\n");
-				return;
-			}
+   case 129:
 
-			buf_char = buffer[(acpi_size) i + j];
-			if (ACPI_IS_PRINT(buf_char)) {
-				acpi_os_printf("%c", buf_char);
-			} else {
-				acpi_os_printf(".");
-			}
-		}
+    ACPI_MOVE_32_TO_32(&temp32,
+         &buffer[(acpi_size) i + j]);
+    acpi_os_printf("%08X", temp32);
 
-		/* Done with that line. */
+    ACPI_MOVE_32_TO_32(&temp32,
+         &buffer[(acpi_size) i + j +
+          4]);
+    acpi_os_printf("%08X ", temp32);
+    break;
+   }
 
-		acpi_os_printf("\n");
-		i += 16;
-	}
+   j += display;
+  }
 
-	return;
+
+
+
+
+  acpi_os_printf(" ");
+  for (j = 0; j < 16; j++) {
+   if (i + j >= count) {
+    acpi_os_printf("\n");
+    return;
+   }
+
+   buf_char = buffer[(acpi_size) i + j];
+   if (ACPI_IS_PRINT(buf_char)) {
+    acpi_os_printf("%c", buf_char);
+   } else {
+    acpi_os_printf(".");
+   }
+  }
+
+
+
+  acpi_os_printf("\n");
+  i += 16;
+ }
+
+ return;
 }

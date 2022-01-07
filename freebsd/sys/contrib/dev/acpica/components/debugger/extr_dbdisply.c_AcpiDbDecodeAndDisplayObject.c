@@ -1,62 +1,62 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int UINT32 ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int UINT32 ;
 struct TYPE_3__ {int Length; char* Pointer; } ;
-typedef  int /*<<< orphan*/  Buffer ;
-typedef  int /*<<< orphan*/  ACPI_STATUS ;
-typedef  int /*<<< orphan*/  ACPI_PARSE_OBJECT ;
-typedef  void ACPI_OPERAND_OBJECT ;
-typedef  void ACPI_NAMESPACE_NODE ;
-typedef  TYPE_1__ ACPI_BUFFER ;
+typedef int Buffer ;
+typedef int ACPI_STATUS ;
+typedef int ACPI_PARSE_OBJECT ;
+typedef void ACPI_OPERAND_OBJECT ;
+typedef void ACPI_NAMESPACE_NODE ;
+typedef TYPE_1__ ACPI_BUFFER ;
 
-/* Variables and functions */
-#define  ACPI_DESC_TYPE_NAMED 130 
-#define  ACPI_DESC_TYPE_OPERAND 129 
-#define  ACPI_DESC_TYPE_PARSER 128 
- scalar_t__ ACPI_FAILURE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ACPI_FULL_PATHNAME_NO_TRAILING ; 
- int const ACPI_GET_DESCRIPTOR_TYPE (void*) ; 
- int /*<<< orphan*/  ACPI_UINT32_MAX ; 
- int /*<<< orphan*/  AcpiDbDumpParserDescriptor (int /*<<< orphan*/ *) ; 
- void* AcpiDbGetPointer (char*) ; 
- void* AcpiDbLocalNsLookup (char*) ; 
- int /*<<< orphan*/  AcpiExDumpNamespaceNode (void*,int) ; 
- int /*<<< orphan*/  AcpiExDumpObjectDescriptor (void*,int) ; 
- int /*<<< orphan*/  AcpiGetName (void*,int /*<<< orphan*/ ,TYPE_1__*) ; 
- void* AcpiNsGetAttachedObject (void*) ; 
- int /*<<< orphan*/  AcpiOsPrintf (char*,...) ; 
- scalar_t__ AcpiOsReadable (void*,int) ; 
- int /*<<< orphan*/  AcpiUtDebugDumpBuffer (void*,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AcpiUtStrupr (char*) ; 
- int DB_BYTE_DISPLAY ; 
- int DB_DWORD_DISPLAY ; 
- int DB_QWORD_DISPLAY ; 
- int DB_WORD_DISPLAY ; 
+
+
+
+
+ scalar_t__ ACPI_FAILURE (int ) ;
+ int ACPI_FULL_PATHNAME_NO_TRAILING ;
+ int const ACPI_GET_DESCRIPTOR_TYPE (void*) ;
+ int ACPI_UINT32_MAX ;
+ int AcpiDbDumpParserDescriptor (int *) ;
+ void* AcpiDbGetPointer (char*) ;
+ void* AcpiDbLocalNsLookup (char*) ;
+ int AcpiExDumpNamespaceNode (void*,int) ;
+ int AcpiExDumpObjectDescriptor (void*,int) ;
+ int AcpiGetName (void*,int ,TYPE_1__*) ;
+ void* AcpiNsGetAttachedObject (void*) ;
+ int AcpiOsPrintf (char*,...) ;
+ scalar_t__ AcpiOsReadable (void*,int) ;
+ int AcpiUtDebugDumpBuffer (void*,int,int,int ) ;
+ int AcpiUtStrupr (char*) ;
+ int DB_BYTE_DISPLAY ;
+ int DB_DWORD_DISPLAY ;
+ int DB_QWORD_DISPLAY ;
+ int DB_WORD_DISPLAY ;
 
 void
 AcpiDbDecodeAndDisplayObject (
-    char                    *Target,
-    char                    *OutputType)
+    char *Target,
+    char *OutputType)
 {
-    void                    *ObjPtr;
-    ACPI_NAMESPACE_NODE     *Node;
-    ACPI_OPERAND_OBJECT     *ObjDesc;
-    UINT32                  Display = DB_BYTE_DISPLAY;
-    char                    Buffer[80];
-    ACPI_BUFFER             RetBuf;
-    ACPI_STATUS             Status;
-    UINT32                  Size;
+    void *ObjPtr;
+    ACPI_NAMESPACE_NODE *Node;
+    ACPI_OPERAND_OBJECT *ObjDesc;
+    UINT32 Display = DB_BYTE_DISPLAY;
+    char Buffer[80];
+    ACPI_BUFFER RetBuf;
+    ACPI_STATUS Status;
+    UINT32 Size;
 
 
     if (!Target)
@@ -64,7 +64,7 @@ AcpiDbDecodeAndDisplayObject (
         return;
     }
 
-    /* Decode the output type */
+
 
     if (OutputType)
     {
@@ -86,7 +86,7 @@ AcpiDbDecodeAndDisplayObject (
     RetBuf.Length = sizeof (Buffer);
     RetBuf.Pointer = Buffer;
 
-    /* Differentiate between a number and a name */
+
 
     if ((Target[0] >= 0x30) && (Target[0] <= 0x39))
     {
@@ -99,13 +99,13 @@ AcpiDbDecodeAndDisplayObject (
             return;
         }
 
-        /* Decode the object type */
+
 
         switch (ACPI_GET_DESCRIPTOR_TYPE (ObjPtr))
         {
-        case ACPI_DESC_TYPE_NAMED:
+        case 130:
 
-            /* This is a namespace Node */
+
 
             if (!AcpiOsReadable (ObjPtr, sizeof (ACPI_NAMESPACE_NODE)))
             {
@@ -118,9 +118,9 @@ AcpiDbDecodeAndDisplayObject (
             Node = ObjPtr;
             goto DumpNode;
 
-        case ACPI_DESC_TYPE_OPERAND:
+        case 129:
 
-            /* This is a ACPI OPERAND OBJECT */
+
 
             if (!AcpiOsReadable (ObjPtr, sizeof (ACPI_OPERAND_OBJECT)))
             {
@@ -135,9 +135,9 @@ AcpiDbDecodeAndDisplayObject (
             AcpiExDumpObjectDescriptor (ObjPtr, 1);
             break;
 
-        case ACPI_DESC_TYPE_PARSER:
+        case 128:
 
-            /* This is a Parser Op object */
+
 
             if (!AcpiOsReadable (ObjPtr, sizeof (ACPI_PARSE_OBJECT)))
             {
@@ -154,7 +154,7 @@ AcpiDbDecodeAndDisplayObject (
 
         default:
 
-            /* Is not a recognizable object */
+
 
             AcpiOsPrintf (
                 "Not a known ACPI internal object, descriptor type %2.2X\n",
@@ -166,7 +166,7 @@ AcpiDbDecodeAndDisplayObject (
                 Size = 64;
             }
 
-            /* Just dump some memory */
+
 
             AcpiUtDebugDumpBuffer (ObjPtr, Size, Display, ACPI_UINT32_MAX);
             break;
@@ -175,7 +175,7 @@ AcpiDbDecodeAndDisplayObject (
         return;
     }
 
-    /* The parameter is a name string that must be resolved to a Named obj */
+
 
     Node = AcpiDbLocalNsLookup (Target);
     if (!Node)
@@ -185,7 +185,7 @@ AcpiDbDecodeAndDisplayObject (
 
 
 DumpNode:
-    /* Now dump the NS node */
+
 
     Status = AcpiGetName (Node, ACPI_FULL_PATHNAME_NO_TRAILING, &RetBuf);
     if (ACPI_FAILURE (Status))
@@ -221,7 +221,7 @@ DumpNode:
         }
 
         if (ACPI_GET_DESCRIPTOR_TYPE (
-            ((ACPI_NAMESPACE_NODE *) ObjDesc)) == ACPI_DESC_TYPE_NAMED)
+            ((ACPI_NAMESPACE_NODE *) ObjDesc)) == 130)
         {
             AcpiOsPrintf (" Namespace Node - ");
             Status = AcpiGetName ((ACPI_NAMESPACE_NODE *) ObjDesc,

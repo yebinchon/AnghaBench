@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct tm {int dummy; } ;
-struct stat {int /*<<< orphan*/  st_mtime; } ;
+struct stat {int st_mtime; } ;
 
-/* Variables and functions */
- scalar_t__ g_stat (char const*,struct stat*) ; 
- struct tm* localtime (int /*<<< orphan*/ *) ; 
- scalar_t__ parse_datestring (char const*,struct tm*) ; 
- char* strdup (char*) ; 
- int /*<<< orphan*/  strftime (char*,int,char const*,struct tm*) ; 
- int strlen (char const*) ; 
+
+ scalar_t__ g_stat (char const*,struct stat*) ;
+ struct tm* localtime (int *) ;
+ scalar_t__ parse_datestring (char const*,struct tm*) ;
+ char* strdup (char*) ;
+ int strftime (char*,int,char const*,struct tm*) ;
+ int strlen (char const*) ;
 
 __attribute__((used)) static char*
 get_creation_date(const char *pattern, const char *metaValue, const char *file)
 {
     char date[11] = "";
-    if (metaValue != NULL && strlen(metaValue) > 1)
+    if (metaValue != ((void*)0) && strlen(metaValue) > 1)
     {
         struct tm tm;
         if (parse_datestring(metaValue, &tm))

@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_1__ ;
-typedef  struct TYPE_15__   TYPE_12__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  cmd ;
+
+
+typedef struct TYPE_16__ TYPE_1__ ;
+typedef struct TYPE_15__ TYPE_12__ ;
+
+
+typedef int cmd ;
 struct TYPE_16__ {char* buffer; char* command; } ;
 struct TYPE_15__ {unsigned int hend; unsigned int hstart; char** hist; } ;
-typedef  int /*<<< orphan*/  TAOS ;
-typedef  TYPE_1__ Command ;
+typedef int TAOS ;
+typedef TYPE_1__ Command ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MAX_COMMAND_SIZE ; 
- unsigned int MAX_HISTORY_SIZE ; 
- int /*<<< orphan*/  SIGINT ; 
- int /*<<< orphan*/  backspaceChar (TYPE_1__*) ; 
- scalar_t__ calloc (int,int /*<<< orphan*/ ) ; 
- int countPrefixOnes (char) ; 
- int /*<<< orphan*/  deleteChar (TYPE_1__*) ; 
- int /*<<< orphan*/  exitShell () ; 
- char getchar () ; 
- TYPE_12__ history ; 
- int /*<<< orphan*/  insertChar (TYPE_1__*,char*,int) ; 
- int /*<<< orphan*/  isReadyGo (TYPE_1__*) ; 
- int /*<<< orphan*/  kill (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  moveCursorLeft (TYPE_1__*) ; 
- int /*<<< orphan*/  moveCursorRight (TYPE_1__*) ; 
- int /*<<< orphan*/  positionCursorEnd (TYPE_1__*) ; 
- int /*<<< orphan*/  positionCursorHome (TYPE_1__*) ; 
- int /*<<< orphan*/  printf (char*) ; 
- int /*<<< orphan*/  resetCommand (TYPE_1__*,char*) ; 
- int /*<<< orphan*/  showOnScreen (TYPE_1__*) ; 
- int /*<<< orphan*/  sprintf (char*,char*,char*,char*) ; 
- int /*<<< orphan*/  system (char*) ; 
- int /*<<< orphan*/  taos_close (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tfree (char*) ; 
- int /*<<< orphan*/  updateBuffer (TYPE_1__*) ; 
- int /*<<< orphan*/  write_history () ; 
+
+ int MAX_COMMAND_SIZE ;
+ unsigned int MAX_HISTORY_SIZE ;
+ int SIGINT ;
+ int backspaceChar (TYPE_1__*) ;
+ scalar_t__ calloc (int,int ) ;
+ int countPrefixOnes (char) ;
+ int deleteChar (TYPE_1__*) ;
+ int exitShell () ;
+ char getchar () ;
+ TYPE_12__ history ;
+ int insertChar (TYPE_1__*,char*,int) ;
+ int isReadyGo (TYPE_1__*) ;
+ int kill (int ,int ) ;
+ int memset (TYPE_1__*,int ,int) ;
+ int moveCursorLeft (TYPE_1__*) ;
+ int moveCursorRight (TYPE_1__*) ;
+ int positionCursorEnd (TYPE_1__*) ;
+ int positionCursorHome (TYPE_1__*) ;
+ int printf (char*) ;
+ int resetCommand (TYPE_1__*,char*) ;
+ int showOnScreen (TYPE_1__*) ;
+ int sprintf (char*,char*,char*,char*) ;
+ int system (char*) ;
+ int taos_close (int *) ;
+ int tfree (char*) ;
+ int updateBuffer (TYPE_1__*) ;
+ int write_history () ;
 
 void shellReadCommand(TAOS *con, char *command) {
   unsigned hist_counter = history.hend;
@@ -56,12 +56,12 @@ void shellReadCommand(TAOS *con, char *command) {
   cmd.command = (char *)calloc(1, MAX_COMMAND_SIZE);
   showOnScreen(&cmd);
 
-  // Read input.
+
   char c;
   while (1) {
     c = getchar();
 
-    if (c < 0) {  // For UTF-8
+    if (c < 0) {
       int count = countPrefixOnes(c);
       utf8_array[0] = c;
       for (int k = 1; k < count; k++) {
@@ -70,9 +70,9 @@ void shellReadCommand(TAOS *con, char *command) {
       }
       insertChar(&cmd, utf8_array, count);
     } else if (c < '\033') {
-      // Ctrl keys.  TODO: Implement ctrl combinations
+
       switch (c) {
-        case 1:  // ctrl A
+        case 1:
           positionCursorHome(&cmd);
           break;
         case 3:
@@ -80,14 +80,14 @@ void shellReadCommand(TAOS *con, char *command) {
           resetCommand(&cmd, "");
           kill(0, SIGINT);
           break;
-        case 4:  // EOF or Ctrl+D
+        case 4:
           printf("\n");
           taos_close(con);
-          // write the history
+
           write_history();
           exitShell();
           break;
-        case 5:  // ctrl E
+        case 5:
           positionCursorEnd(&cmd);
           break;
         case 8:
@@ -105,7 +105,7 @@ void shellReadCommand(TAOS *con, char *command) {
             updateBuffer(&cmd);
           }
           break;
-        case 12:  // Ctrl + L;
+        case 12:
           system("clear");
           showOnScreen(&cmd);
           break;
@@ -116,76 +116,76 @@ void shellReadCommand(TAOS *con, char *command) {
         case '[':
           c = getchar();
           switch (c) {
-            case 'A':  // Up arrow
+            case 'A':
               if (hist_counter != history.hstart) {
                 hist_counter = (hist_counter + MAX_HISTORY_SIZE - 1) % MAX_HISTORY_SIZE;
-                resetCommand(&cmd, (history.hist[hist_counter] == NULL) ? "" : history.hist[hist_counter]);
+                resetCommand(&cmd, (history.hist[hist_counter] == ((void*)0)) ? "" : history.hist[hist_counter]);
               }
               break;
-            case 'B':  // Down arrow
+            case 'B':
               if (hist_counter != history.hend) {
                 int next_hist = (hist_counter + 1) % MAX_HISTORY_SIZE;
 
                 if (next_hist != history.hend) {
-                  resetCommand(&cmd, (history.hist[next_hist] == NULL) ? "" : history.hist[next_hist]);
+                  resetCommand(&cmd, (history.hist[next_hist] == ((void*)0)) ? "" : history.hist[next_hist]);
                 } else {
                   resetCommand(&cmd, "");
                 }
                 hist_counter = next_hist;
               }
               break;
-            case 'C':  // Right arrow
+            case 'C':
               moveCursorRight(&cmd);
               break;
-            case 'D':  // Left arrow
+            case 'D':
               moveCursorLeft(&cmd);
               break;
             case '1':
               if ((c = getchar()) == '~') {
-                // Home key
+
                 positionCursorHome(&cmd);
               }
               break;
             case '2':
               if ((c = getchar()) == '~') {
-                // Insert key
+
               }
               break;
             case '3':
               if ((c = getchar()) == '~') {
-                // Delete key
+
                 deleteChar(&cmd);
               }
               break;
             case '4':
               if ((c = getchar()) == '~') {
-                // End key
+
                 positionCursorEnd(&cmd);
               }
               break;
             case '5':
               if ((c = getchar()) == '~') {
-                // Page up key
+
               }
               break;
             case '6':
               if ((c = getchar()) == '~') {
-                // Page down key
+
               }
               break;
             case 72:
-              // Home key
+
               positionCursorHome(&cmd);
               break;
             case 70:
-              // End key
+
               positionCursorEnd(&cmd);
               break;
           }
           break;
       }
     } else if (c == 0x7f) {
-      // press delete key
+
       backspaceChar(&cmd);
     } else {
       insertChar(&cmd, &c, 1);

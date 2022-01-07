@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  replica_prefix; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  compression_level ; 
- TYPE_1__* engine_snapshot_replica ; 
- int /*<<< orphan*/  exit (int) ; 
- char* get_new_snapshot_name (TYPE_1__*,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kprintf (char*,...) ; 
- scalar_t__ last_snapshot_log_pos ; 
- scalar_t__ log_cur_pos () ; 
- int /*<<< orphan*/  print_snapshot_name (char*) ; 
- scalar_t__ rename_temporary_snapshot (char*) ; 
- int save_binlogpos () ; 
- int tar_pack (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  unlink (char*) ; 
- int /*<<< orphan*/  work_dir ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int replica_prefix; } ;
+
+
+ int compression_level ;
+ TYPE_1__* engine_snapshot_replica ;
+ int exit (int) ;
+ char* get_new_snapshot_name (TYPE_1__*,scalar_t__,int ) ;
+ int kprintf (char*,...) ;
+ scalar_t__ last_snapshot_log_pos ;
+ scalar_t__ log_cur_pos () ;
+ int print_snapshot_name (char*) ;
+ scalar_t__ rename_temporary_snapshot (char*) ;
+ int save_binlogpos () ;
+ int tar_pack (char*,int ,int ) ;
+ int unlink (char*) ;
+ int work_dir ;
 
 int save_index (void) {
-  char *newidxname = NULL;
+  char *newidxname = ((void*)0);
 
   if (log_cur_pos () == last_snapshot_log_pos) {
     kprintf ("skipping generation of new snapshot (snapshot for this position already exists)\n");
@@ -63,6 +63,6 @@ int save_index (void) {
 
   print_snapshot_name (newidxname);
 
-  last_snapshot_log_pos = log_cur_pos (); /* guard: don't save index twice for same_log_pos */
+  last_snapshot_log_pos = log_cur_pos ();
   return 0;
 }

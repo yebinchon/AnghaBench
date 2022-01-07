@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct table {int data; int num_rows; } ;
-struct record_cdromdrive {void* pnpdevice_id; int /*<<< orphan*/  name; int /*<<< orphan*/  mediatype; int /*<<< orphan*/  drive; void* device_id; } ;
+struct record_cdromdrive {void* pnpdevice_id; int name; int mediatype; int drive; void* device_id; } ;
 struct expr {int dummy; } ;
-typedef  enum fill_status { ____Placeholder_fill_status } fill_status ;
-typedef  char WCHAR ;
-typedef  int UINT ;
-typedef  int DWORD ;
+typedef enum fill_status { ____Placeholder_fill_status } fill_status ;
+typedef char WCHAR ;
+typedef int UINT ;
+typedef int DWORD ;
 
-/* Variables and functions */
- scalar_t__ DRIVE_CDROM ; 
- int FILL_STATUS_FAILED ; 
- int FILL_STATUS_UNFILTERED ; 
- scalar_t__ GetDriveTypeW (char*) ; 
- int GetLogicalDrives () ; 
- int /*<<< orphan*/  TRACE (char*,int) ; 
- int /*<<< orphan*/  cdromdrive_mediatypeW ; 
- int /*<<< orphan*/  cdromdrive_nameW ; 
- void* cdromdrive_pnpdeviceidW ; 
- int /*<<< orphan*/  free_row_values (struct table*,int) ; 
- int /*<<< orphan*/  heap_strdupW (char*) ; 
- int /*<<< orphan*/  match_row (struct table*,int,struct expr const*,int*) ; 
- int /*<<< orphan*/  resize_table (struct table*,int,int) ; 
- int /*<<< orphan*/  sprintfW (char*,char const*,char) ; 
+
+ scalar_t__ DRIVE_CDROM ;
+ int FILL_STATUS_FAILED ;
+ int FILL_STATUS_UNFILTERED ;
+ scalar_t__ GetDriveTypeW (char*) ;
+ int GetLogicalDrives () ;
+ int TRACE (char*,int) ;
+ int cdromdrive_mediatypeW ;
+ int cdromdrive_nameW ;
+ void* cdromdrive_pnpdeviceidW ;
+ int free_row_values (struct table*,int) ;
+ int heap_strdupW (char*) ;
+ int match_row (struct table*,int,struct expr const*,int*) ;
+ int resize_table (struct table*,int,int) ;
+ int sprintfW (char*,char const*,char) ;
 
 __attribute__((used)) static enum fill_status fill_cdromdrive( struct table *table, const struct expr *cond )
 {
@@ -56,11 +56,11 @@ __attribute__((used)) static enum fill_status fill_cdromdrive( struct table *tab
             if (!resize_table( table, row + 1, sizeof(*rec) )) return FILL_STATUS_FAILED;
 
             rec = (struct record_cdromdrive *)(table->data + offset);
-            rec->device_id    = cdromdrive_pnpdeviceidW;
+            rec->device_id = cdromdrive_pnpdeviceidW;
             sprintfW( drive, fmtW, 'A' + i );
-            rec->drive        = heap_strdupW( drive );
-            rec->mediatype    = cdromdrive_mediatypeW;
-            rec->name         = cdromdrive_nameW;
+            rec->drive = heap_strdupW( drive );
+            rec->mediatype = cdromdrive_mediatypeW;
+            rec->name = cdromdrive_nameW;
             rec->pnpdevice_id = cdromdrive_pnpdeviceidW;
             if (!match_row( table, row, cond, &status ))
             {

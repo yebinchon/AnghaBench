@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct eeepc_laptop {int dummy; } ;
-typedef  int /*<<< orphan*/  acpi_status ;
-typedef  int /*<<< orphan*/  acpi_handle ;
+typedef int acpi_status ;
+typedef int acpi_handle ;
 
-/* Variables and functions */
- scalar_t__ ACPI_FAILURE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ACPI_SYSTEM_NOTIFY ; 
- int /*<<< orphan*/  AE_OK ; 
- int /*<<< orphan*/  acpi_get_handle (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  acpi_remove_notify_handler (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  eeepc_rfkill_hotplug (struct eeepc_laptop*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  eeepc_rfkill_notify ; 
- int /*<<< orphan*/  pr_err (char*,char*) ; 
+
+ scalar_t__ ACPI_FAILURE (int ) ;
+ int ACPI_SYSTEM_NOTIFY ;
+ int AE_OK ;
+ int acpi_get_handle (int *,char*,int *) ;
+ int acpi_remove_notify_handler (int ,int ,int ) ;
+ int eeepc_rfkill_hotplug (struct eeepc_laptop*,int ) ;
+ int eeepc_rfkill_notify ;
+ int pr_err (char*,char*) ;
 
 __attribute__((used)) static void eeepc_unregister_rfkill_notifier(struct eeepc_laptop *eeepc,
-					     char *node)
+          char *node)
 {
-	acpi_status status = AE_OK;
-	acpi_handle handle;
+ acpi_status status = AE_OK;
+ acpi_handle handle;
 
-	status = acpi_get_handle(NULL, node, &handle);
+ status = acpi_get_handle(((void*)0), node, &handle);
 
-	if (ACPI_FAILURE(status))
-		return;
+ if (ACPI_FAILURE(status))
+  return;
 
-	status = acpi_remove_notify_handler(handle,
-					     ACPI_SYSTEM_NOTIFY,
-					     eeepc_rfkill_notify);
-	if (ACPI_FAILURE(status))
-		pr_err("Error removing rfkill notify handler %s\n",
-			node);
-		/*
-		 * Refresh pci hotplug in case the rfkill
-		 * state was changed after
-		 * eeepc_unregister_rfkill_notifier()
-		 */
-	eeepc_rfkill_hotplug(eeepc, handle);
+ status = acpi_remove_notify_handler(handle,
+          ACPI_SYSTEM_NOTIFY,
+          eeepc_rfkill_notify);
+ if (ACPI_FAILURE(status))
+  pr_err("Error removing rfkill notify handler %s\n",
+   node);
+
+
+
+
+
+ eeepc_rfkill_hotplug(eeepc, handle);
 }

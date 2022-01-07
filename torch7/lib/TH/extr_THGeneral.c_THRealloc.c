@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int ptrdiff_t ;
 
-/* Variables and functions */
- void* THAlloc (int) ; 
- int /*<<< orphan*/  THError (char*,...) ; 
- int /*<<< orphan*/  THFree (void*) ; 
- int /*<<< orphan*/  THHeapUpdate (int) ; 
- int getAllocSize (void*) ; 
- void* realloc (void*,int) ; 
- int /*<<< orphan*/  torchGCData ; 
- int /*<<< orphan*/  torchGCFunction (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int ptrdiff_t ;
+
+
+ void* THAlloc (int) ;
+ int THError (char*,...) ;
+ int THFree (void*) ;
+ int THHeapUpdate (int) ;
+ int getAllocSize (void*) ;
+ void* realloc (void*,int) ;
+ int torchGCData ;
+ int torchGCFunction (int ) ;
 
 void* THRealloc(void *ptr, ptrdiff_t size)
 {
@@ -30,7 +30,7 @@ void* THRealloc(void *ptr, ptrdiff_t size)
   if(size == 0)
   {
     THFree(ptr);
-    return NULL;
+    return ((void*)0);
   }
 
   if(size < 0)
@@ -47,7 +47,7 @@ void* THRealloc(void *ptr, ptrdiff_t size)
   if(!newptr)
     THError("$ Torch: not enough memory: you tried to reallocate %dGB. Buy new RAM!", size/1073741824);
 
-  // update heapSize only after successfully reallocated
+
   THHeapUpdate(oldSize + getAllocSize(newptr));
 
   return newptr;

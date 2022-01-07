@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mii ;
-typedef  int /*<<< orphan*/  buf ;
-typedef  char WCHAR ;
-typedef  int UINT ;
-struct TYPE_7__ {int nActiveChildren; scalar_t__ idFirstChild; scalar_t__* child; scalar_t__ hwndActiveChild; int /*<<< orphan*/  hFrameMenu; int /*<<< orphan*/  hWindowMenu; } ;
-struct TYPE_6__ {int cbSize; int fType; scalar_t__ wID; int /*<<< orphan*/  fMask; } ;
-typedef  TYPE_1__ MENUITEMINFOW ;
-typedef  TYPE_2__ MDICLIENTINFO ;
-typedef  int /*<<< orphan*/  LRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AppendMenuW (int /*<<< orphan*/ ,int,int,char*) ; 
- int /*<<< orphan*/  CheckMenuItem (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GWLP_ID ; 
- int /*<<< orphan*/  GWL_STYLE ; 
- int GetMenuItemCount (int /*<<< orphan*/ ) ; 
- scalar_t__ GetMenuItemInfoW (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int GetWindowLongPtrW (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IDS_MDI_MOREWINDOWS ; 
- int /*<<< orphan*/  InternalGetWindowText (scalar_t__,char*,int) ; 
- int /*<<< orphan*/  IsMenu (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LoadStringW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int) ; 
- int MDI_MAXTITLELENGTH ; 
- int MDI_MOREWINDOWSLIMIT ; 
- int /*<<< orphan*/  MF_BYPOSITION ; 
- int /*<<< orphan*/  MF_CHECKED ; 
- int MF_SEPARATOR ; 
- int MF_STRING ; 
- int /*<<< orphan*/  MIIM_ID ; 
- int /*<<< orphan*/  MIIM_TYPE ; 
- scalar_t__ RemoveMenu (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetWindowLongPtrW (scalar_t__,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  TRACE (char*,int,...) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  User32Instance ; 
- int /*<<< orphan*/  WARN (char*,int /*<<< orphan*/ ) ; 
- int WS_VISIBLE ; 
- int /*<<< orphan*/  debugstr_w (char*) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int mii ;
+typedef int buf ;
+typedef char WCHAR ;
+typedef int UINT ;
+struct TYPE_7__ {int nActiveChildren; scalar_t__ idFirstChild; scalar_t__* child; scalar_t__ hwndActiveChild; int hFrameMenu; int hWindowMenu; } ;
+struct TYPE_6__ {int cbSize; int fType; scalar_t__ wID; int fMask; } ;
+typedef TYPE_1__ MENUITEMINFOW ;
+typedef TYPE_2__ MDICLIENTINFO ;
+typedef int LRESULT ;
+
+
+ int AppendMenuW (int ,int,int,char*) ;
+ int CheckMenuItem (int ,int,int ) ;
+ int GWLP_ID ;
+ int GWL_STYLE ;
+ int GetMenuItemCount (int ) ;
+ scalar_t__ GetMenuItemInfoW (int ,int,int ,TYPE_1__*) ;
+ int GetWindowLongPtrW (scalar_t__,int ) ;
+ int IDS_MDI_MOREWINDOWS ;
+ int InternalGetWindowText (scalar_t__,char*,int) ;
+ int IsMenu (int ) ;
+ int LoadStringW (int ,int ,char*,int) ;
+ int MDI_MAXTITLELENGTH ;
+ int MDI_MOREWINDOWSLIMIT ;
+ int MF_BYPOSITION ;
+ int MF_CHECKED ;
+ int MF_SEPARATOR ;
+ int MF_STRING ;
+ int MIIM_ID ;
+ int MIIM_TYPE ;
+ scalar_t__ RemoveMenu (int ,int,int ) ;
+ int SetWindowLongPtrW (scalar_t__,int ,int) ;
+ int TRACE (char*,int,...) ;
+ int TRUE ;
+ int User32Instance ;
+ int WARN (char*,int ) ;
+ int WS_VISIBLE ;
+ int debugstr_w (char*) ;
+ int memset (TYPE_1__*,int ,int) ;
 
 __attribute__((used)) static LRESULT MDI_RefreshMenu(MDICLIENTINFO *ci)
 {
@@ -68,10 +68,10 @@ __attribute__((used)) static LRESULT MDI_RefreshMenu(MDICLIENTINFO *ci)
         return 0;
     }
 
-    /* Windows finds the last separator in the menu, and if after it
-     * there is a menu item with MDI magic ID removes all existing
-     * menu items after it, and then adds visible MDI children.
-     */
+
+
+
+
     count = GetMenuItemCount(ci->hWindowMenu);
     for (i = 0; i < count; i++)
     {
@@ -79,22 +79,22 @@ __attribute__((used)) static LRESULT MDI_RefreshMenu(MDICLIENTINFO *ci)
 
         memset(&mii, 0, sizeof(mii));
         mii.cbSize = sizeof(mii);
-        mii.fMask  = MIIM_TYPE;
+        mii.fMask = MIIM_TYPE;
         if (GetMenuItemInfoW(ci->hWindowMenu, i, TRUE, &mii))
         {
             if (mii.fType & MF_SEPARATOR)
             {
-                /* Windows checks only ID of the menu item */
+
                 memset(&mii, 0, sizeof(mii));
                 mii.cbSize = sizeof(mii);
-                mii.fMask  = MIIM_ID;
+                mii.fMask = MIIM_ID;
                 if (GetMenuItemInfoW(ci->hWindowMenu, i + 1, TRUE, &mii))
                 {
                     if (mii.wID == ci->idFirstChild)
                     {
                         TRACE("removing %u items including separator\n", count - i);
                         while (RemoveMenu(ci->hWindowMenu, i, MF_BYPOSITION))
-                            /* nothing */;
+                                         ;
 
                         break;
                     }
@@ -118,8 +118,8 @@ __attribute__((used)) static LRESULT MDI_RefreshMenu(MDICLIENTINFO *ci)
             }
 
             if (!visible)
-                /* Visio expects that separator has id 0 */
-                AppendMenuW(ci->hWindowMenu, MF_SEPARATOR, 0, NULL);
+
+                AppendMenuW(ci->hWindowMenu, MF_SEPARATOR, 0, ((void*)0));
 
             visible++;
 

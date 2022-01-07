@@ -1,73 +1,73 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT ;
-struct TYPE_2__ {int Halt; int /*<<< orphan*/  HaltEvent; int /*<<< orphan*/  IntervalLastOk; int /*<<< orphan*/  IntervalLastNg; int /*<<< orphan*/  Lock; int /*<<< orphan*/  Ip; int /*<<< orphan*/  Hostname; } ;
-typedef  int /*<<< orphan*/  THREAD ;
-typedef  TYPE_1__ QUERYIPTHREAD ;
-typedef  int /*<<< orphan*/  IP ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Copy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- scalar_t__ GetIP4Ex (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int*) ; 
- int IsZeroIP (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Lock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Unlock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Wait (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int UINT ;
+struct TYPE_2__ {int Halt; int HaltEvent; int IntervalLastOk; int IntervalLastNg; int Lock; int Ip; int Hostname; } ;
+typedef int THREAD ;
+typedef TYPE_1__ QUERYIPTHREAD ;
+typedef int IP ;
+
+
+ int Copy (int *,int *,int) ;
+ scalar_t__ GetIP4Ex (int *,int ,int,int*) ;
+ int IsZeroIP (int *) ;
+ int Lock (int ) ;
+ int Unlock (int ) ;
+ int Wait (int ,int ) ;
 
 void QueryIpThreadMain(THREAD *thread, void *param)
 {
-	QUERYIPTHREAD *t = (QUERYIPTHREAD *)param;
-	// Validate arguments
-	if (thread == NULL || param == NULL)
-	{
-		return;
-	}
+ QUERYIPTHREAD *t = (QUERYIPTHREAD *)param;
 
-	while (t->Halt == false)
-	{
-		UINT next_wait_time = 0;
-		IP ip;
-		bool ok = false;
+ if (thread == ((void*)0) || param == ((void*)0))
+ {
+  return;
+ }
 
-		if (GetIP4Ex(&ip, t->Hostname, 5000, &t->Halt))
-		{
-			if (IsZeroIP(&ip) == false)
-			{
-				Lock(t->Lock);
-				{
-					Copy(&t->Ip, &ip, sizeof(IP));
-				}
-				Unlock(t->Lock);
+ while (t->Halt == 0)
+ {
+  UINT next_wait_time = 0;
+  IP ip;
+  bool ok = 0;
 
-				ok = true;
-			}
-		}
+  if (GetIP4Ex(&ip, t->Hostname, 5000, &t->Halt))
+  {
+   if (IsZeroIP(&ip) == 0)
+   {
+    Lock(t->Lock);
+    {
+     Copy(&t->Ip, &ip, sizeof(IP));
+    }
+    Unlock(t->Lock);
 
-		if (ok == false)
-		{
-			next_wait_time = t->IntervalLastNg;
-		}
-		else
-		{
-			next_wait_time = t->IntervalLastOk;
-		}
+    ok = 1;
+   }
+  }
 
-		if (t->Halt)
-		{
-			break;
-		}
+  if (ok == 0)
+  {
+   next_wait_time = t->IntervalLastNg;
+  }
+  else
+  {
+   next_wait_time = t->IntervalLastOk;
+  }
 
-		Wait(t->HaltEvent, next_wait_time);
-	}
+  if (t->Halt)
+  {
+   break;
+  }
+
+  Wait(t->HaltEvent, next_wait_time);
+ }
 }

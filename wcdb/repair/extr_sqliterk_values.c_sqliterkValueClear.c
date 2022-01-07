@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int /*<<< orphan*/ * memory; TYPE_2__* binary; TYPE_1__* text; } ;
+
+
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int * memory; TYPE_2__* binary; TYPE_1__* text; } ;
 struct TYPE_9__ {int type; TYPE_3__ any; } ;
-typedef  TYPE_4__ sqliterk_value ;
-struct TYPE_7__ {int /*<<< orphan*/ * b; } ;
-struct TYPE_6__ {int /*<<< orphan*/ * t; } ;
+typedef TYPE_4__ sqliterk_value ;
+struct TYPE_7__ {int * b; } ;
+struct TYPE_6__ {int * t; } ;
 
-/* Variables and functions */
- int SQLITERK_MISUSE ; 
- int SQLITERK_OK ; 
- int /*<<< orphan*/  sqliterkOSFree (int /*<<< orphan*/ *) ; 
-#define  sqliterk_value_type_binary 129 
- int sqliterk_value_type_null ; 
-#define  sqliterk_value_type_text 128 
+
+ int SQLITERK_MISUSE ;
+ int SQLITERK_OK ;
+ int sqliterkOSFree (int *) ;
+
+ int sqliterk_value_type_null ;
+
 
 int sqliterkValueClear(sqliterk_value *value)
 {
@@ -35,23 +35,23 @@ int sqliterkValueClear(sqliterk_value *value)
     }
     if (value->any.memory) {
         switch (value->type) {
-            case sqliterk_value_type_text:
+            case 128:
                 if (value->any.text->t) {
                     sqliterkOSFree(value->any.text->t);
-                    value->any.text->t = NULL;
+                    value->any.text->t = ((void*)0);
                 }
                 break;
-            case sqliterk_value_type_binary:
+            case 129:
                 if (value->any.binary->b) {
                     sqliterkOSFree(value->any.binary->b);
-                    value->any.binary->b = NULL;
+                    value->any.binary->b = ((void*)0);
                 }
                 break;
             default:
                 break;
         }
         sqliterkOSFree(value->any.memory);
-        value->any.memory = NULL;
+        value->any.memory = ((void*)0);
     }
     value->type = sqliterk_value_type_null;
     return SQLITERK_OK;

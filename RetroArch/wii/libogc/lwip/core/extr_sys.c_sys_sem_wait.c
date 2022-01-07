@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ u32_t ;
-typedef  int /*<<< orphan*/  (* sys_timeout_handler ) (void*) ;
-typedef  int /*<<< orphan*/  sys_sem_t ;
+
+
+
+
+typedef scalar_t__ u32_t ;
+typedef int (* sys_timeout_handler ) (void*) ;
+typedef int sys_sem_t ;
 struct sys_timeouts {struct sys_timeout* next; } ;
-struct sys_timeout {scalar_t__ time; void* arg; int /*<<< orphan*/  (* h ) (void*) ;struct sys_timeout* next; } ;
+struct sys_timeout {scalar_t__ time; void* arg; int (* h ) (void*) ;struct sys_timeout* next; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LWIP_DEBUGF (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  MEMP_SYS_TIMEOUT ; 
- scalar_t__ SYS_ARCH_TIMEOUT ; 
- int /*<<< orphan*/  SYS_DEBUG ; 
- int /*<<< orphan*/  memp_free (int /*<<< orphan*/ ,struct sys_timeout*) ; 
- scalar_t__ sys_arch_sem_wait (int /*<<< orphan*/ ,scalar_t__) ; 
- struct sys_timeouts* sys_arch_timeouts () ; 
+
+ int LWIP_DEBUGF (int ,char*) ;
+ int MEMP_SYS_TIMEOUT ;
+ scalar_t__ SYS_ARCH_TIMEOUT ;
+ int SYS_DEBUG ;
+ int memp_free (int ,struct sys_timeout*) ;
+ scalar_t__ sys_arch_sem_wait (int ,scalar_t__) ;
+ struct sys_timeouts* sys_arch_timeouts () ;
 
 void
 sys_sem_wait(sys_sem_t sem)
@@ -34,8 +34,8 @@ sys_sem_wait(sys_sem_t sem)
   sys_timeout_handler h;
   void *arg;
 
-  /*  while (sys_arch_sem_wait(sem, 1000) == 0);
-      return;*/
+
+
 
  again:
 
@@ -51,25 +51,25 @@ sys_sem_wait(sys_sem_t sem)
     }
 
     if (time == SYS_ARCH_TIMEOUT) {
-      /* If time == SYS_ARCH_TIMEOUT, a timeout occured before a message
-   could be fetched. We should now call the timeout handler and
-   deallocate the memory allocated for the timeout. */
+
+
+
       tmptimeout = timeouts->next;
       timeouts->next = tmptimeout->next;
       h = tmptimeout->h;
       arg = tmptimeout->arg;
       memp_free(MEMP_SYS_TIMEOUT, tmptimeout);
-      if (h != NULL) {
+      if (h != ((void*)0)) {
         LWIP_DEBUGF(SYS_DEBUG, ("ssw h=%p(%p)\n", (void *)h, (void *)arg));
         h(arg);
       }
 
-      /* We try again to fetch a message from the mbox. */
+
       goto again;
     } else {
-      /* If time != SYS_ARCH_TIMEOUT, a message was received before the timeout
-   occured. The time variable is set to the number of
-   milliseconds we waited for the message. */
+
+
+
       if (time <= timeouts->next->time) {
   timeouts->next->time -= time;
       } else {

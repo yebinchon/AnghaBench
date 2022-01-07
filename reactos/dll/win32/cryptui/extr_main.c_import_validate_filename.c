@@ -1,62 +1,62 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ hCertStore; } ;
-struct TYPE_4__ {TYPE_1__ u; int /*<<< orphan*/  dwSubjectChoice; } ;
-struct ImportWizData {int /*<<< orphan*/ * pwszWizardTitle; int /*<<< orphan*/  dwFlags; void* freeSource; TYPE_2__ importSrc; int /*<<< orphan*/  contentType; } ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/ * LPWSTR ;
-typedef  int /*<<< orphan*/ * LPCWSTR ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  scalar_t__ HCERTSTORE ;
-typedef  scalar_t__ HANDLE ;
-typedef  void* BOOL ;
+struct TYPE_4__ {TYPE_1__ u; int dwSubjectChoice; } ;
+struct ImportWizData {int * pwszWizardTitle; int dwFlags; void* freeSource; TYPE_2__ importSrc; int contentType; } ;
+typedef int WCHAR ;
+typedef int * LPWSTR ;
+typedef int * LPCWSTR ;
+typedef int HWND ;
+typedef scalar_t__ HCERTSTORE ;
+typedef scalar_t__ HANDLE ;
+typedef void* BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAY_SIZE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CRYPTUI_WIZ_IMPORT_SUBJECT_CERT_STORE ; 
- int /*<<< orphan*/  CloseHandle (scalar_t__) ; 
- scalar_t__ CreateFileW (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- void* FALSE ; 
- int /*<<< orphan*/  FILE_SHARE_READ ; 
- int FORMAT_MESSAGE_ALLOCATE_BUFFER ; 
- int FORMAT_MESSAGE_FROM_SYSTEM ; 
- int /*<<< orphan*/  FormatMessageW (int,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GENERIC_READ ; 
- int /*<<< orphan*/  GetLastError () ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/ * HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int IDS_IMPORT_BAD_FORMAT ; 
- int /*<<< orphan*/  IDS_IMPORT_OPEN_FAILED ; 
- int IDS_IMPORT_TYPE_MISMATCH ; 
- int /*<<< orphan*/  IDS_IMPORT_WIZARD ; 
- scalar_t__ INVALID_HANDLE_VALUE ; 
- int /*<<< orphan*/  LoadStringW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LocalFree (int /*<<< orphan*/ *) ; 
- int MAX_STRING_LEN ; 
- int MB_ICONERROR ; 
- int MB_OK ; 
- int /*<<< orphan*/  MessageBoxW (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  OPEN_EXISTING ; 
- void* TRUE ; 
- int /*<<< orphan*/  check_store_context_type (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  hInstance ; 
- int /*<<< orphan*/  import_warning (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lstrcpyW (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int lstrlenW (int /*<<< orphan*/ *) ; 
- scalar_t__ open_store_from_file (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int ARRAY_SIZE (int *) ;
+ int CRYPTUI_WIZ_IMPORT_SUBJECT_CERT_STORE ;
+ int CloseHandle (scalar_t__) ;
+ scalar_t__ CreateFileW (int *,int ,int ,int *,int ,int ,int *) ;
+ void* FALSE ;
+ int FILE_SHARE_READ ;
+ int FORMAT_MESSAGE_ALLOCATE_BUFFER ;
+ int FORMAT_MESSAGE_FROM_SYSTEM ;
+ int FormatMessageW (int,int *,int ,int ,int *,int ,int *) ;
+ int GENERIC_READ ;
+ int GetLastError () ;
+ int GetProcessHeap () ;
+ int * HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,int *) ;
+ int IDS_IMPORT_BAD_FORMAT ;
+ int IDS_IMPORT_OPEN_FAILED ;
+ int IDS_IMPORT_TYPE_MISMATCH ;
+ int IDS_IMPORT_WIZARD ;
+ scalar_t__ INVALID_HANDLE_VALUE ;
+ int LoadStringW (int ,int ,int *,int ) ;
+ int LocalFree (int *) ;
+ int MAX_STRING_LEN ;
+ int MB_ICONERROR ;
+ int MB_OK ;
+ int MessageBoxW (int ,int *,int *,int) ;
+ int OPEN_EXISTING ;
+ void* TRUE ;
+ int check_store_context_type (int ,scalar_t__) ;
+ int hInstance ;
+ int import_warning (int ,int ,int *,int) ;
+ int lstrcpyW (int *,int *) ;
+ int lstrlenW (int *) ;
+ scalar_t__ open_store_from_file (int ,int *,int *) ;
 
 __attribute__((used)) static BOOL import_validate_filename(HWND hwnd, struct ImportWizData *data,
  LPCWSTR fileName)
@@ -64,8 +64,8 @@ __attribute__((used)) static BOOL import_validate_filename(HWND hwnd, struct Imp
     HANDLE file;
     BOOL ret = FALSE;
 
-    file = CreateFileW(fileName, GENERIC_READ, FILE_SHARE_READ, NULL,
-     OPEN_EXISTING, 0, NULL);
+    file = CreateFileW(fileName, GENERIC_READ, FILE_SHARE_READ, ((void*)0),
+     OPEN_EXISTING, 0, ((void*)0));
     if (file != INVALID_HANDLE_VALUE)
     {
         HCERTSTORE source = open_store_from_file(data->dwFlags, fileName,
@@ -106,8 +106,8 @@ __attribute__((used)) static BOOL import_validate_filename(HWND hwnd, struct Imp
         }
         LoadStringW(hInstance, IDS_IMPORT_OPEN_FAILED, error, ARRAY_SIZE(error));
         FormatMessageW(
-         FORMAT_MESSAGE_ALLOCATE_BUFFER | FORMAT_MESSAGE_FROM_SYSTEM, NULL,
-         GetLastError(), 0, (LPWSTR) &msgBuf, 0, NULL);
+         FORMAT_MESSAGE_ALLOCATE_BUFFER | FORMAT_MESSAGE_FROM_SYSTEM, ((void*)0),
+         GetLastError(), 0, (LPWSTR) &msgBuf, 0, ((void*)0));
         fullError = HeapAlloc(GetProcessHeap(), 0,
          (lstrlenW(error) + lstrlenW(fileName) + lstrlenW(msgBuf) + 3)
          * sizeof(WCHAR));

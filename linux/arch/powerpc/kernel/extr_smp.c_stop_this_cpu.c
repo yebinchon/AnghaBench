@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  hard_irq_disable () ; 
- int /*<<< orphan*/  spin_begin () ; 
- int /*<<< orphan*/  spin_cpu_relax () ; 
+ int hard_irq_disable () ;
+ int spin_begin () ;
+ int spin_cpu_relax () ;
 
 __attribute__((used)) static void stop_this_cpu(void *dummy)
 {
-	hard_irq_disable();
-	spin_begin();
-	while (1)
-		spin_cpu_relax();
+ hard_irq_disable();
+ spin_begin();
+ while (1)
+  spin_cpu_relax();
 }

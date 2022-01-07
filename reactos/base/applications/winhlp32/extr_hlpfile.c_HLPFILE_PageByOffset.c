@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int ULONG ;
-struct TYPE_6__ {int /*<<< orphan*/  lpszPath; TYPE_1__* first_page; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int ULONG ;
+struct TYPE_6__ {int lpszPath; TYPE_1__* first_page; } ;
 struct TYPE_5__ {int offset; struct TYPE_5__* next; } ;
-typedef  int LONG ;
-typedef  TYPE_1__ HLPFILE_PAGE ;
-typedef  TYPE_2__ HLPFILE ;
+typedef int LONG ;
+typedef TYPE_1__ HLPFILE_PAGE ;
+typedef TYPE_2__ HLPFILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  WINE_ERR (char*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WINE_TRACE (char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  debugstr_a (int /*<<< orphan*/ ) ; 
+
+ int WINE_ERR (char*,int,int ) ;
+ int WINE_TRACE (char*,int ,int) ;
+ int debugstr_a (int ) ;
 
 HLPFILE_PAGE *HLPFILE_PageByOffset(HLPFILE* hlpfile, LONG offset, ULONG* relative)
 {
-    HLPFILE_PAGE*       page;
-    HLPFILE_PAGE*       found;
+    HLPFILE_PAGE* page;
+    HLPFILE_PAGE* found;
 
     if (!hlpfile) return 0;
 
     WINE_TRACE("<%s>[%x]\n", debugstr_a(hlpfile->lpszPath), offset);
 
-    if (offset == 0xFFFFFFFF) return NULL;
-    page = NULL;
+    if (offset == 0xFFFFFFFF) return ((void*)0);
+    page = ((void*)0);
 
-    for (found = NULL, page = hlpfile->first_page; page; page = page->next)
+    for (found = ((void*)0), page = hlpfile->first_page; page; page = page->next)
     {
         if (page->offset <= offset && (!found || found->offset < page->offset))
         {

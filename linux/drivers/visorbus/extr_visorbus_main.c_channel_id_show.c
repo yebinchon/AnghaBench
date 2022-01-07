@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct visor_device {int /*<<< orphan*/  visorchannel; } ;
+
+
+
+
+struct visor_device {int visorchannel; } ;
 struct device_attribute {int dummy; } ;
 struct device {int dummy; } ;
-typedef  int ssize_t ;
+typedef int ssize_t ;
 
-/* Variables and functions */
- int strlen (char*) ; 
- struct visor_device* to_visor_device (struct device*) ; 
- int /*<<< orphan*/  visorchannel_id (int /*<<< orphan*/ ,char*) ; 
+
+ int strlen (char*) ;
+ struct visor_device* to_visor_device (struct device*) ;
+ int visorchannel_id (int ,char*) ;
 
 __attribute__((used)) static ssize_t channel_id_show(struct device *dev,
-			       struct device_attribute *attr, char *buf)
+          struct device_attribute *attr, char *buf)
 {
-	struct visor_device *vdev = to_visor_device(dev);
-	int len = 0;
+ struct visor_device *vdev = to_visor_device(dev);
+ int len = 0;
 
-	visorchannel_id(vdev->visorchannel, buf);
-	len = strlen(buf);
-	buf[len++] = '\n';
-	return len;
+ visorchannel_id(vdev->visorchannel, buf);
+ len = strlen(buf);
+ buf[len++] = '\n';
+ return len;
 }

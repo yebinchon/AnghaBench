@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * pbData; scalar_t__ cbData; } ;
-typedef  int /*<<< orphan*/  LPSTR ;
-typedef  int /*<<< orphan*/  LPCSTR ;
-typedef  TYPE_1__ DATA_BLOB ;
-typedef  int /*<<< orphan*/  BYTE ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * CryptMemAlloc (scalar_t__) ; 
- int /*<<< orphan*/  strcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ strlen (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * pbData; scalar_t__ cbData; } ;
+typedef int LPSTR ;
+typedef int LPCSTR ;
+typedef TYPE_1__ DATA_BLOB ;
+typedef int BYTE ;
+
+
+ int * CryptMemAlloc (scalar_t__) ;
+ int strcpy (int ,int ) ;
+ scalar_t__ strlen (int ) ;
 
 __attribute__((used)) static
 BYTE *convert_str_to_blob(LPCSTR str, DATA_BLOB *blob)
 {
-    if (!str || !blob) return NULL;
+    if (!str || !blob) return ((void*)0);
 
     blob->cbData=strlen(str)+1;
     if (!(blob->pbData=CryptMemAlloc(blob->cbData)))

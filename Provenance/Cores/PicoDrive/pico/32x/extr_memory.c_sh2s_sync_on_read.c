@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {scalar_t__ poll_cnt; scalar_t__ m68krcycles_done; } ;
-typedef  TYPE_1__ SH2 ;
+typedef TYPE_1__ SH2 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  p32x_sync_other_sh2 (TYPE_1__*,scalar_t__) ; 
- int sh2_cycles_done (TYPE_1__*) ; 
+
+ int p32x_sync_other_sh2 (TYPE_1__*,scalar_t__) ;
+ int sh2_cycles_done (TYPE_1__*) ;
 
 __attribute__((used)) static void sh2s_sync_on_read(SH2 *sh2)
 {

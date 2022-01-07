@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct reliable_entry {int /*<<< orphan*/  timeout; int /*<<< orphan*/  next_try; scalar_t__ active; } ;
-struct reliable {int hold; int size; int /*<<< orphan*/  initial_timeout; struct reliable_entry* array; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D_REL_DEBUG ; 
- int /*<<< orphan*/  dmsg (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  now ; 
+
+
+
+struct reliable_entry {int timeout; int next_try; scalar_t__ active; } ;
+struct reliable {int hold; int size; int initial_timeout; struct reliable_entry* array; } ;
+
+
+ int D_REL_DEBUG ;
+ int dmsg (int ,char*) ;
+ int now ;
 
 void
 reliable_schedule_now(struct reliable *rel)
 {
     int i;
     dmsg(D_REL_DEBUG, "ACK reliable_schedule_now");
-    rel->hold = false;
+    rel->hold = 0;
     for (i = 0; i < rel->size; ++i)
     {
         struct reliable_entry *e = &rel->array[i];

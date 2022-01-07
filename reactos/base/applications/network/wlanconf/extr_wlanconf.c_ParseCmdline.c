@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int WCHAR ;
-typedef  int INT ;
-typedef  void* BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ConResPuts (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- void* FALSE ; 
- int /*<<< orphan*/  IDS_USAGE ; 
- int /*<<< orphan*/  StdOut ; 
- void* TRUE ; 
- void* bAdhoc ; 
- void* bConnect ; 
- void* bDisconnect ; 
- void* bScan ; 
- int* sSsid ; 
- int* sWepKey ; 
+
+
+
+typedef int WCHAR ;
+typedef int INT ;
+typedef void* BOOL ;
+
+
+ int ConResPuts (int ,int ) ;
+ void* FALSE ;
+ int IDS_USAGE ;
+ int StdOut ;
+ void* TRUE ;
+ void* bAdhoc ;
+ void* bConnect ;
+ void* bDisconnect ;
+ void* bScan ;
+ int* sSsid ;
+ int* sWepKey ;
 
 BOOL ParseCmdline(int argc, WCHAR *argv[])
 {

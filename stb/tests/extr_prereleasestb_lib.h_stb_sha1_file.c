@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int stb_uint64 ;
-typedef  int stb_uint ;
-typedef  unsigned char stb_uchar ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int fread (unsigned char*,int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memset (unsigned char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/ * stb__fopen (char*,char*) ; 
- int /*<<< orphan*/  stb__sha1 (unsigned char*,int*) ; 
+
+
+
+typedef int stb_uint64 ;
+typedef int stb_uint ;
+typedef unsigned char stb_uchar ;
+typedef int FILE ;
+
+
+ int assert (int) ;
+ int fclose (int *) ;
+ int fread (unsigned char*,int,int,int *) ;
+ int memset (unsigned char*,int ,int) ;
+ int * stb__fopen (char*,char*) ;
+ int stb__sha1 (unsigned char*,int*) ;
 
 int stb_sha1_file(stb_uchar output[20], char *file)
 {
@@ -32,7 +32,7 @@ int stb_sha1_file(stb_uchar output[20], char *file)
    FILE *f = stb__fopen(file, "rb");
    stb_uint h[5];
 
-   if (f == NULL) return 0; // file not found
+   if (f == ((void*)0)) return 0;
 
    h[0] = 0x67452301;
    h[1] = 0xefcdab89;
@@ -52,11 +52,11 @@ int stb_sha1_file(stb_uchar output[20], char *file)
 
          buffer[n++] = 0x80;
 
-         // if there isn't enough room for the length, double the block
-         if (n + 8 > 64) 
+
+         if (n + 8 > 64)
             block = 128;
 
-         // pad to end
+
          memset(buffer+n, 0, block-8-n);
 
          i = block - 8;
@@ -66,8 +66,8 @@ int stb_sha1_file(stb_uchar output[20], char *file)
          buffer[i++] = (stb_uchar) (length >> 29);
          buffer[i++] = (stb_uchar) (length >> 21);
          buffer[i++] = (stb_uchar) (length >> 13);
-         buffer[i++] = (stb_uchar) (length >>  5);
-         buffer[i++] = (stb_uchar) (length <<  3);
+         buffer[i++] = (stb_uchar) (length >> 5);
+         buffer[i++] = (stb_uchar) (length << 3);
          assert(i == block);
          stb__sha1(buffer, h);
          if (block == 128)
@@ -82,8 +82,8 @@ int stb_sha1_file(stb_uchar output[20], char *file)
    for (i=0; i < 5; ++i) {
       output[i*4 + 0] = h[i] >> 24;
       output[i*4 + 1] = h[i] >> 16;
-      output[i*4 + 2] = h[i] >>  8;
-      output[i*4 + 3] = h[i] >>  0;
+      output[i*4 + 2] = h[i] >> 8;
+      output[i*4 + 3] = h[i] >> 0;
    }
 
    return 1;

@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  enum vfp_reg_pos { ____Placeholder_vfp_reg_pos } vfp_reg_pos ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef enum vfp_reg_pos { ____Placeholder_vfp_reg_pos } vfp_reg_pos ;
 struct TYPE_2__ {int instruction; } ;
 
-/* Variables and functions */
- scalar_t__ ARM_CPU_HAS_FEATURE (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ARM_MERGE_FEATURE_SETS (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
-#define  VFP_REG_Dd 133 
-#define  VFP_REG_Dm 132 
-#define  VFP_REG_Dn 131 
-#define  VFP_REG_Sd 130 
-#define  VFP_REG_Sm 129 
-#define  VFP_REG_Sn 128 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  abort () ; 
- int /*<<< orphan*/  arm_arch_used ; 
- int /*<<< orphan*/  cpu_variant ; 
- int /*<<< orphan*/  first_error (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fpu_vfp_ext_v3 ; 
- TYPE_1__ inst ; 
- int /*<<< orphan*/  thumb_arch_used ; 
- scalar_t__ thumb_mode ; 
+
+ scalar_t__ ARM_CPU_HAS_FEATURE (int ,int ) ;
+ int ARM_MERGE_FEATURE_SETS (int ,int ,int ) ;
+
+
+
+
+
+
+ int _ (char*) ;
+ int abort () ;
+ int arm_arch_used ;
+ int cpu_variant ;
+ int first_error (int ) ;
+ int fpu_vfp_ext_v3 ;
+ TYPE_1__ inst ;
+ int thumb_arch_used ;
+ scalar_t__ thumb_mode ;
 
 __attribute__((used)) static void
 encode_arm_vfp_reg (int reg, enum vfp_reg_pos pos)
 {
-  if ((pos == VFP_REG_Dd || pos == VFP_REG_Dn || pos == VFP_REG_Dm)
+  if ((pos == 133 || pos == 131 || pos == 132)
       && reg > 15)
     {
       if (ARM_CPU_HAS_FEATURE (cpu_variant, fpu_vfp_ext_v3))
@@ -57,27 +57,27 @@ encode_arm_vfp_reg (int reg, enum vfp_reg_pos pos)
 
   switch (pos)
     {
-    case VFP_REG_Sd:
+    case 130:
       inst.instruction |= ((reg >> 1) << 12) | ((reg & 1) << 22);
       break;
 
-    case VFP_REG_Sn:
+    case 128:
       inst.instruction |= ((reg >> 1) << 16) | ((reg & 1) << 7);
       break;
 
-    case VFP_REG_Sm:
+    case 129:
       inst.instruction |= ((reg >> 1) << 0) | ((reg & 1) << 5);
       break;
 
-    case VFP_REG_Dd:
+    case 133:
       inst.instruction |= ((reg & 15) << 12) | ((reg >> 4) << 22);
       break;
-    
-    case VFP_REG_Dn:
+
+    case 131:
       inst.instruction |= ((reg & 15) << 16) | ((reg >> 4) << 7);
       break;
-    
-    case VFP_REG_Dm:
+
+    case 132:
       inst.instruction |= (reg & 15) | ((reg >> 4) << 5);
       break;
 

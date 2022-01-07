@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  void* TCHAR ;
-typedef  void** LPTSTR ;
-typedef  void** LPCTSTR ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int CMDLINE_LENGTH ; 
- int /*<<< orphan*/  FALSE ; 
- scalar_t__ IsExistingFile (void**) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  TRUE ; 
- void* _T (char) ; 
- void** _tcschr (void**,void*) ; 
- int /*<<< orphan*/  _tcscpy (void**,void**) ; 
- int /*<<< orphan*/  _tcslen (void**) ; 
- int /*<<< orphan*/  _tcsncpy (void**,void**,size_t) ; 
- int /*<<< orphan*/  debugstr_aw (void**) ; 
+
+
+
+typedef void* TCHAR ;
+typedef void** LPTSTR ;
+typedef void** LPCTSTR ;
+typedef int BOOL ;
+
+
+ int CMDLINE_LENGTH ;
+ int FALSE ;
+ scalar_t__ IsExistingFile (void**) ;
+ int TRACE (char*,int ,...) ;
+ int TRUE ;
+ void* _T (char) ;
+ void** _tcschr (void**,void*) ;
+ int _tcscpy (void**,void**) ;
+ int _tcslen (void**) ;
+ int _tcsncpy (void**,void**,size_t) ;
+ int debugstr_aw (void**) ;
 
 BOOL
 SearchForExecutableSingle (LPCTSTR pFileName, LPTSTR pFullName, LPTSTR pPathExt, LPTSTR pDirectory)
 {
-    TCHAR  szPathBuffer[CMDLINE_LENGTH], *pszPathEnd;
+    TCHAR szPathBuffer[CMDLINE_LENGTH], *pszPathEnd;
     LPTSTR s,f;
-    /* initialize full name buffer */
+
     *pFullName = _T('\0');
 
     TRACE ("SearchForExecutableSingle: \'%s\' in dir: \'%s\'\n",
         debugstr_aw(pFileName), debugstr_aw(pDirectory));
 
     pszPathEnd = szPathBuffer;
-    if (pDirectory != NULL)
+    if (pDirectory != ((void*)0))
     {
         _tcscpy(szPathBuffer, pDirectory);
         pszPathEnd += _tcslen(pszPathEnd);
@@ -70,7 +70,7 @@ SearchForExecutableSingle (LPCTSTR pFileName, LPTSTR pFullName, LPTSTR pPathExt,
         else
         {
             _tcscpy (pszPathEnd, s);
-            s = NULL;
+            s = ((void*)0);
         }
 
         if (IsExistingFile (szPathBuffer))

@@ -1,60 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct message {scalar_t__ type; int status_cb_called; int message_begin_cb_called; int headers_complete_cb_called; int message_complete_cb_called; char* request_url; scalar_t__ method; int body_size; int num_chunks_complete; int num_chunks; int num_headers; int /*<<< orphan*/ ** headers; int /*<<< orphan*/  port; scalar_t__ userinfo; scalar_t__ host; } ;
-struct http_parser_url {int field_set; int /*<<< orphan*/  port; } ;
 
-/* Variables and functions */
- scalar_t__ HTTP_CONNECT ; 
- scalar_t__ HTTP_REQUEST ; 
- int MAX_CHUNKS ; 
- int /*<<< orphan*/  MESSAGE_CHECK_NUM_EQ (struct message const*,struct message*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MESSAGE_CHECK_STR_EQ (struct message const*,struct message*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MESSAGE_CHECK_URL_EQ (struct http_parser_url*,struct message const*,struct message*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  UF_FRAGMENT ; 
- int /*<<< orphan*/  UF_HOST ; 
- int /*<<< orphan*/  UF_PATH ; 
- int UF_PORT ; 
- int /*<<< orphan*/  UF_QUERY ; 
- int /*<<< orphan*/  UF_USERINFO ; 
- int /*<<< orphan*/  abort () ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  body ; 
- int /*<<< orphan*/  body_size ; 
- int /*<<< orphan*/  check_num_eq (struct message*,char*,int /*<<< orphan*/ ,int) ; 
- int check_str_eq (struct message const*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * chunk_lengths ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  fragment ; 
- int /*<<< orphan*/  host ; 
- int /*<<< orphan*/  http_major ; 
- int /*<<< orphan*/  http_minor ; 
- scalar_t__ http_parser_parse_url (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct http_parser_url*) ; 
- int /*<<< orphan*/  message_complete_on_eof ; 
- struct message* messages ; 
- int /*<<< orphan*/  method ; 
- int /*<<< orphan*/  num_chunks_complete ; 
- int /*<<< orphan*/  num_headers ; 
- int /*<<< orphan*/  port ; 
- int /*<<< orphan*/  query_string ; 
- int /*<<< orphan*/  request_path ; 
- int /*<<< orphan*/  request_url ; 
- int /*<<< orphan*/  response_status ; 
- int /*<<< orphan*/  should_keep_alive ; 
- int /*<<< orphan*/  status_code ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  strlen (char*) ; 
- int /*<<< orphan*/  upgrade ; 
- int /*<<< orphan*/  userinfo ; 
+
+
+
+struct message {scalar_t__ type; int status_cb_called; int message_begin_cb_called; int headers_complete_cb_called; int message_complete_cb_called; char* request_url; scalar_t__ method; int body_size; int num_chunks_complete; int num_chunks; int num_headers; int ** headers; int port; scalar_t__ userinfo; scalar_t__ host; } ;
+struct http_parser_url {int field_set; int port; } ;
+
+
+ scalar_t__ HTTP_CONNECT ;
+ scalar_t__ HTTP_REQUEST ;
+ int MAX_CHUNKS ;
+ int MESSAGE_CHECK_NUM_EQ (struct message const*,struct message*,int ) ;
+ int MESSAGE_CHECK_STR_EQ (struct message const*,struct message*,int ) ;
+ int MESSAGE_CHECK_URL_EQ (struct http_parser_url*,struct message const*,struct message*,int ,int ) ;
+ int UF_FRAGMENT ;
+ int UF_HOST ;
+ int UF_PATH ;
+ int UF_PORT ;
+ int UF_QUERY ;
+ int UF_USERINFO ;
+ int abort () ;
+ int assert (int) ;
+ int body ;
+ int body_size ;
+ int check_num_eq (struct message*,char*,int ,int) ;
+ int check_str_eq (struct message const*,char*,int ,int ) ;
+ int * chunk_lengths ;
+ int fprintf (int ,char*,char*) ;
+ int fragment ;
+ int host ;
+ int http_major ;
+ int http_minor ;
+ scalar_t__ http_parser_parse_url (char*,int ,int ,struct http_parser_url*) ;
+ int message_complete_on_eof ;
+ struct message* messages ;
+ int method ;
+ int num_chunks_complete ;
+ int num_headers ;
+ int port ;
+ int query_string ;
+ int request_path ;
+ int request_url ;
+ int response_status ;
+ int should_keep_alive ;
+ int status_code ;
+ int stderr ;
+ int strlen (char*) ;
+ int upgrade ;
+ int userinfo ;
 
 int
 message_eq (int index, int connect, const struct message *expected)
@@ -85,9 +85,9 @@ message_eq (int index, int connect, const struct message *expected)
 
   MESSAGE_CHECK_STR_EQ(expected, m, request_url);
 
-  /* Check URL components; we can't do this w/ CONNECT since it doesn't
-   * send us a well-formed URL.
-   */
+
+
+
   if (*m->request_url && m->method != HTTP_CONNECT) {
     struct http_parser_url u;
 

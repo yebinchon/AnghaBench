@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Unit ;
+
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int Unit ;
 struct TYPE_8__ {scalar_t__ state; } ;
-typedef  TYPE_1__ Mount ;
+typedef TYPE_1__ Mount ;
 
-/* Variables and functions */
- int EAGAIN ; 
- TYPE_1__* IN_SET (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,...) ; 
- TYPE_1__* MOUNT (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  MOUNT_CLEANING ; 
- int /*<<< orphan*/  MOUNT_DEAD ; 
- int /*<<< orphan*/  MOUNT_FAILED ; 
- int /*<<< orphan*/  MOUNT_FAILURE_START_LIMIT_HIT ; 
- scalar_t__ MOUNT_MOUNTING ; 
- int /*<<< orphan*/  MOUNT_UNMOUNTING ; 
- int /*<<< orphan*/  MOUNT_UNMOUNTING_SIGKILL ; 
- int /*<<< orphan*/  MOUNT_UNMOUNTING_SIGTERM ; 
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int /*<<< orphan*/  mount_cycle_clear (TYPE_1__*) ; 
- int /*<<< orphan*/  mount_enter_dead (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mount_enter_mounting (TYPE_1__*) ; 
- int unit_acquire_invocation_id (int /*<<< orphan*/ *) ; 
- int unit_test_start_limit (int /*<<< orphan*/ *) ; 
+
+ int EAGAIN ;
+ TYPE_1__* IN_SET (scalar_t__,int ,int ,...) ;
+ TYPE_1__* MOUNT (int *) ;
+ int MOUNT_CLEANING ;
+ int MOUNT_DEAD ;
+ int MOUNT_FAILED ;
+ int MOUNT_FAILURE_START_LIMIT_HIT ;
+ scalar_t__ MOUNT_MOUNTING ;
+ int MOUNT_UNMOUNTING ;
+ int MOUNT_UNMOUNTING_SIGKILL ;
+ int MOUNT_UNMOUNTING_SIGTERM ;
+ int assert (TYPE_1__*) ;
+ int mount_cycle_clear (TYPE_1__*) ;
+ int mount_enter_dead (TYPE_1__*,int ) ;
+ int mount_enter_mounting (TYPE_1__*) ;
+ int unit_acquire_invocation_id (int *) ;
+ int unit_test_start_limit (int *) ;
 
 __attribute__((used)) static int mount_start(Unit *u) {
         Mount *m = MOUNT(u);
@@ -40,8 +40,8 @@ __attribute__((used)) static int mount_start(Unit *u) {
 
         assert(m);
 
-        /* We cannot fulfill this request right now, try again later
-         * please! */
+
+
         if (IN_SET(m->state,
                    MOUNT_UNMOUNTING,
                    MOUNT_UNMOUNTING_SIGTERM,
@@ -49,7 +49,7 @@ __attribute__((used)) static int mount_start(Unit *u) {
                    MOUNT_CLEANING))
                 return -EAGAIN;
 
-        /* Already on it! */
+
         if (m->state == MOUNT_MOUNTING)
                 return 0;
 

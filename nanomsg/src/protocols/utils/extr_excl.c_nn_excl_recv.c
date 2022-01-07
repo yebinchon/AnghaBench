@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct nn_msg {int dummy; } ;
-struct nn_excl {int /*<<< orphan*/ * inpipe; } ;
+struct nn_excl {int * inpipe; } ;
 
-/* Variables and functions */
- int EAGAIN ; 
- int NN_PIPE_RELEASE ; 
- int /*<<< orphan*/  errnum_assert (int,int) ; 
- int nn_pipe_recv (int /*<<< orphan*/ *,struct nn_msg*) ; 
- scalar_t__ nn_slow (int) ; 
+
+ int EAGAIN ;
+ int NN_PIPE_RELEASE ;
+ int errnum_assert (int,int) ;
+ int nn_pipe_recv (int *,struct nn_msg*) ;
+ scalar_t__ nn_slow (int) ;
 
 int nn_excl_recv (struct nn_excl *self, struct nn_msg *msg)
 {
@@ -31,7 +31,7 @@ int nn_excl_recv (struct nn_excl *self, struct nn_msg *msg)
     errnum_assert (rc >= 0, -rc);
 
     if (rc & NN_PIPE_RELEASE)
-        self->inpipe = NULL;
+        self->inpipe = ((void*)0);
 
     return rc & ~NN_PIPE_RELEASE;
 }

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct filesys_inode {int /*<<< orphan*/  updates; } ;
-struct TYPE_5__ {unsigned int block_length; unsigned int block_offset; int /*<<< orphan*/ * data; } ;
-typedef  TYPE_1__ filesys_tree_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  filesys_dump_tree (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,TYPE_1__*) ; 
- int /*<<< orphan*/  fwrite (int /*<<< orphan*/ *,int,unsigned int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (char*,int /*<<< orphan*/ *,unsigned int) ; 
- int /*<<< orphan*/  stderr ; 
- TYPE_1__* tree_lowerbound (int /*<<< orphan*/ ,unsigned int) ; 
- TYPE_1__* tree_upperbound (int /*<<< orphan*/ ,unsigned int) ; 
- int verbosity ; 
- int /*<<< orphan*/  vkprintf (int,char*,unsigned int,...) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct filesys_inode {int updates; } ;
+struct TYPE_5__ {unsigned int block_length; unsigned int block_offset; int * data; } ;
+typedef TYPE_1__ filesys_tree_t ;
+
+
+ int assert (int) ;
+ int filesys_dump_tree (int ) ;
+ int fprintf (int ,char*,TYPE_1__*) ;
+ int fwrite (int *,int,unsigned int,int ) ;
+ int memcpy (char*,int *,unsigned int) ;
+ int stderr ;
+ TYPE_1__* tree_lowerbound (int ,unsigned int) ;
+ TYPE_1__* tree_upperbound (int ,unsigned int) ;
+ int verbosity ;
+ int vkprintf (int,char*,unsigned int,...) ;
 
 __attribute__((used)) static unsigned int copy_updates (struct filesys_inode *I, unsigned int offset, unsigned int length, char *data, unsigned int *blocksize) {
   const unsigned int right = offset + length;
@@ -42,7 +42,7 @@ __attribute__((used)) static unsigned int copy_updates (struct filesys_inode *I,
       fprintf (stderr, "copy_updates: T = %p\n", T);
       fwrite (T->data, 1, T->block_length, stderr);
     }
-    if (T != NULL) {
+    if (T != ((void*)0)) {
       unsigned int to = T->block_offset, tr = to + T->block_length;
 
       vkprintf (3, "copy_updates: tr = %d, to = %d\n", to, tr);
@@ -65,7 +65,7 @@ __attribute__((used)) static unsigned int copy_updates (struct filesys_inode *I,
   unsigned int l = offset;
   while (l < right) {
     filesys_tree_t *T = tree_lowerbound (I->updates, l);
-    if (T == NULL) {
+    if (T == ((void*)0)) {
       break;
     }
     l = T->block_offset;

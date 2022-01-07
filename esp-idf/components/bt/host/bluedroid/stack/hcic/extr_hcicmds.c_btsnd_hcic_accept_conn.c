@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ UINT8 ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef scalar_t__ UINT8 ;
 struct TYPE_4__ {scalar_t__ offset; scalar_t__ len; } ;
-typedef  TYPE_1__ BT_HDR ;
-typedef  int /*<<< orphan*/  BOOLEAN ;
-typedef  int /*<<< orphan*/  BD_ADDR ;
+typedef TYPE_1__ BT_HDR ;
+typedef int BOOLEAN ;
+typedef int BD_ADDR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BDADDR_TO_STREAM (scalar_t__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- scalar_t__ HCIC_PARAM_SIZE_ACCEPT_CONN ; 
- scalar_t__ HCIC_PREAMBLE_SIZE ; 
- int /*<<< orphan*/  HCI_ACCEPT_CONNECTION_REQUEST ; 
- TYPE_1__* HCI_GET_CMD_BUF (scalar_t__) ; 
- int /*<<< orphan*/  LOCAL_BR_EDR_CONTROLLER_ID ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  UINT16_TO_STREAM (scalar_t__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  UINT8_TO_STREAM (scalar_t__*,scalar_t__) ; 
- int /*<<< orphan*/  btu_hcif_send_cmd (int /*<<< orphan*/ ,TYPE_1__*) ; 
+
+ int BDADDR_TO_STREAM (scalar_t__*,int ) ;
+ int FALSE ;
+ scalar_t__ HCIC_PARAM_SIZE_ACCEPT_CONN ;
+ scalar_t__ HCIC_PREAMBLE_SIZE ;
+ int HCI_ACCEPT_CONNECTION_REQUEST ;
+ TYPE_1__* HCI_GET_CMD_BUF (scalar_t__) ;
+ int LOCAL_BR_EDR_CONTROLLER_ID ;
+ int TRUE ;
+ int UINT16_TO_STREAM (scalar_t__*,int ) ;
+ int UINT8_TO_STREAM (scalar_t__*,scalar_t__) ;
+ int btu_hcif_send_cmd (int ,TYPE_1__*) ;
 
 BOOLEAN btsnd_hcic_accept_conn (BD_ADDR dest, UINT8 role)
 {
     BT_HDR *p;
     UINT8 *pp;
 
-    if ((p = HCI_GET_CMD_BUF(HCIC_PARAM_SIZE_ACCEPT_CONN)) == NULL) {
+    if ((p = HCI_GET_CMD_BUF(HCIC_PARAM_SIZE_ACCEPT_CONN)) == ((void*)0)) {
         return (FALSE);
     }
 
     pp = (UINT8 *)(p + 1);
 
-    p->len    = HCIC_PREAMBLE_SIZE + HCIC_PARAM_SIZE_ACCEPT_CONN;
+    p->len = HCIC_PREAMBLE_SIZE + HCIC_PARAM_SIZE_ACCEPT_CONN;
     p->offset = 0;
 
     UINT16_TO_STREAM (pp, HCI_ACCEPT_CONNECTION_REQUEST);
-    UINT8_TO_STREAM  (pp, HCIC_PARAM_SIZE_ACCEPT_CONN);
+    UINT8_TO_STREAM (pp, HCIC_PARAM_SIZE_ACCEPT_CONN);
     BDADDR_TO_STREAM (pp, dest);
-    UINT8_TO_STREAM  (pp, role);
+    UINT8_TO_STREAM (pp, role);
 
-    //counter_add("hci.conn.accept", 1);
+
 
     btu_hcif_send_cmd (LOCAL_BR_EDR_CONTROLLER_ID, p);
     return (TRUE);

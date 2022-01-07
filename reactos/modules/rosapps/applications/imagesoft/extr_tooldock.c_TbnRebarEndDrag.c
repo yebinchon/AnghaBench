@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VOID ;
-struct TYPE_3__ {int /*<<< orphan*/  uBand; } ;
-typedef  int /*<<< orphan*/  PTOOLBAR_DOCKS ;
-typedef  int /*<<< orphan*/ * PDOCKBAR_ITEM ;
-typedef  TYPE_1__* LPNMREBAR ;
-typedef  int /*<<< orphan*/  DOCK_POSITION ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * TbnDockbarItemFromBandId (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int VOID ;
+struct TYPE_3__ {int uBand; } ;
+typedef int PTOOLBAR_DOCKS ;
+typedef int * PDOCKBAR_ITEM ;
+typedef TYPE_1__* LPNMREBAR ;
+typedef int DOCK_POSITION ;
+
+
+ int * TbnDockbarItemFromBandId (int ,int ,int ) ;
 
 __attribute__((used)) static VOID
 TbnRebarEndDrag(PTOOLBAR_DOCKS TbDocks,
@@ -32,8 +32,8 @@ TbnRebarEndDrag(PTOOLBAR_DOCKS TbDocks,
                                     Position,
                                     lpnmrb->uBand);
 
-    if (Item != NULL)
+    if (Item != ((void*)0))
     {
-        /* Nothing to do */
+
     }
 }

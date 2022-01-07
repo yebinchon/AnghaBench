@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  imldp ;
-struct TYPE_4__ {int y; int x; int /*<<< orphan*/  i; void* rgbFg; void* rgbBk; int /*<<< orphan*/  fStyle; scalar_t__ himl; int /*<<< orphan*/ * hdcDst; int /*<<< orphan*/  cbSize; } ;
-typedef  TYPE_1__ IMAGELISTDRAWPARAMS ;
-typedef  int /*<<< orphan*/  IImageList ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  scalar_t__ HRESULT ;
-typedef  scalar_t__ HIMAGELIST ;
-typedef  int /*<<< orphan*/ * HDC ;
-typedef  scalar_t__ HBITMAP ;
 
-/* Variables and functions */
- void* CLR_DEFAULT ; 
- scalar_t__ CreateBitmap (int,int,int,int,int /*<<< orphan*/ ) ; 
- int DeleteObject (scalar_t__) ; 
- int /*<<< orphan*/  DestroyWindow (int /*<<< orphan*/ ) ; 
- scalar_t__ E_INVALIDARG ; 
- int /*<<< orphan*/ * GetDC (int /*<<< orphan*/ ) ; 
- scalar_t__ IImageList_Add (int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ ,int*) ; 
- scalar_t__ IImageList_Draw (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  IImageList_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IImageList_Remove (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ IImageList_Replace (int /*<<< orphan*/ *,int,scalar_t__,int /*<<< orphan*/ ) ; 
- scalar_t__ IImageList_SetImageCount (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  ILC_COLOR16 ; 
- int /*<<< orphan*/  IMAGELISTDRAWPARAMS_V3_SIZE ; 
- int /*<<< orphan*/  ReleaseDC (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SRCCOPY ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  bitmap_bits ; 
- int /*<<< orphan*/  create_window () ; 
- int /*<<< orphan*/  force_redraw (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- scalar_t__ pImageList_Create (int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int imldp ;
+struct TYPE_4__ {int y; int x; int i; void* rgbFg; void* rgbBk; int fStyle; scalar_t__ himl; int * hdcDst; int cbSize; } ;
+typedef TYPE_1__ IMAGELISTDRAWPARAMS ;
+typedef int IImageList ;
+typedef int HWND ;
+typedef scalar_t__ HRESULT ;
+typedef scalar_t__ HIMAGELIST ;
+typedef int * HDC ;
+typedef scalar_t__ HBITMAP ;
+
+
+ void* CLR_DEFAULT ;
+ scalar_t__ CreateBitmap (int,int,int,int,int ) ;
+ int DeleteObject (scalar_t__) ;
+ int DestroyWindow (int ) ;
+ scalar_t__ E_INVALIDARG ;
+ int * GetDC (int ) ;
+ scalar_t__ IImageList_Add (int *,scalar_t__,int ,int*) ;
+ scalar_t__ IImageList_Draw (int *,TYPE_1__*) ;
+ int IImageList_Release (int *) ;
+ scalar_t__ IImageList_Remove (int *,int ) ;
+ scalar_t__ IImageList_Replace (int *,int,scalar_t__,int ) ;
+ scalar_t__ IImageList_SetImageCount (int *,int) ;
+ int ILC_COLOR16 ;
+ int IMAGELISTDRAWPARAMS_V3_SIZE ;
+ int ReleaseDC (int ,int *) ;
+ int SRCCOPY ;
+ scalar_t__ S_OK ;
+ int bitmap_bits ;
+ int create_window () ;
+ int force_redraw (int ) ;
+ int memset (TYPE_1__*,int ,int) ;
+ int ok (int,char*,...) ;
+ scalar_t__ pImageList_Create (int,int,int ,int ,int) ;
 
 __attribute__((used)) static void test_IImageList_Draw(void)
 {
@@ -63,15 +63,15 @@ __attribute__((used)) static void test_IImageList_Draw(void)
 
     hwndfortest = create_window();
     hdc = GetDC(hwndfortest);
-    ok(hdc!=NULL, "couldn't get DC\n");
+    ok(hdc!=((void*)0), "couldn't get DC\n");
 
-    /* create an imagelist to play with */
+
     himl = pImageList_Create(48, 48, ILC_COLOR16, 0, 3);
     ok(himl!=0,"failed to create imagelist\n");
 
     imgl = (IImageList *) himl;
 
-    /* load the icons to add to the image list */
+
     hbm1 = CreateBitmap(48, 48, 1, 1, bitmap_bits);
     ok(hbm1 != 0, "no bitmap 1\n");
     hbm2 = CreateBitmap(48, 48, 1, 1, bitmap_bits);
@@ -79,7 +79,7 @@ __attribute__((used)) static void test_IImageList_Draw(void)
     hbm3 = CreateBitmap(48, 48, 1, 1, bitmap_bits);
     ok(hbm3 != 0, "no bitmap 3\n");
 
-    /* add three */
+
     ret = -1;
     ok( IImageList_Add(imgl, hbm1, 0, &ret) == S_OK && (ret == 0), "failed to add bitmap 1\n");
     ret = -1;
@@ -90,8 +90,8 @@ __attribute__((used)) static void test_IImageList_Draw(void)
 
 if (0)
 {
-    /* crashes on native */
-    IImageList_Draw(imgl, NULL);
+
+    IImageList_Draw(imgl, ((void*)0));
 }
 
     memset(&imldp, 0, sizeof (imldp));
@@ -117,15 +117,15 @@ if (0)
     imldp.i ++;
     ok( IImageList_Draw(imgl, &imldp) == E_INVALIDARG, "should fail\n");
 
-    /* remove three */
+
     ok( IImageList_Remove(imgl, 0) == S_OK, "removing 1st bitmap\n");
     ok( IImageList_Remove(imgl, 0) == S_OK, "removing 2nd bitmap\n");
     ok( IImageList_Remove(imgl, 0) == S_OK, "removing 3rd bitmap\n");
 
-    /* destroy it */
+
     IImageList_Release(imgl);
 
-    /* bitmaps should not be deleted by the imagelist */
+
     ok(DeleteObject(hbm1),"bitmap 1 can't be deleted\n");
     ok(DeleteObject(hbm2),"bitmap 2 can't be deleted\n");
     ok(DeleteObject(hbm3),"bitmap 3 can't be deleted\n");

@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
-typedef  void* uint32_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint8_t ;
+typedef void* uint32_t ;
 struct data_buf {scalar_t__ flags; } ;
-struct TYPE_2__ {int state; size_t bwi; int /*<<< orphan*/  ps; struct data_buf* bufs; } ;
+struct TYPE_2__ {int state; size_t bwi; int ps; struct data_buf* bufs; } ;
 
-/* Variables and functions */
-#define  READ_DATA 132 
-#define  READ_ERROR 131 
-#define  READ_FLAGS 130 
- void* READ_PERI_REG (int /*<<< orphan*/ ) ; 
-#define  READ_UNESCAPE 129 
-#define  READ_WAIT_START 128 
- int /*<<< orphan*/  SET_PERI_REG_MASK (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  UART_FIFO_REG (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  UART_INT_CLR_REG (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  UART_INT_ENA_REG (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  UART_INT_ST_REG (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  UART_STATUS_REG (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WRITE_PERI_REG (int /*<<< orphan*/ ,void*) ; 
- int /*<<< orphan*/  add_byte (scalar_t__) ; 
- int /*<<< orphan*/  next_write_buf () ; 
- TYPE_1__ ub ; 
+
+
+
+
+ void* READ_PERI_REG (int ) ;
+
+
+ int SET_PERI_REG_MASK (int ,int ) ;
+ int UART_FIFO_REG (int ) ;
+ int UART_INT_CLR_REG (int ) ;
+ int UART_INT_ENA_REG (int ) ;
+ int UART_INT_ST_REG (int ) ;
+ int UART_STATUS_REG (int ) ;
+ int WRITE_PERI_REG (int ,void*) ;
+ int add_byte (scalar_t__) ;
+ int next_write_buf () ;
+ TYPE_1__ ub ;
 
 void uart_isr(void *arg) {
   uint32_t int_st = READ_PERI_REG(UART_INT_ST_REG(0));
@@ -41,53 +41,53 @@ void uart_isr(void *arg) {
     for (i = 0; i < fifo_len; i++) {
       uint8_t byte = READ_PERI_REG(UART_FIFO_REG(0));
       switch (ub.state) {
-        case READ_WAIT_START: {
+        case 128: {
           if (byte == 0xc0) {
-            ub.state = READ_FLAGS;
+            ub.state = 130;
             ub.ps = 0;
           }
           break;
         }
-        case READ_FLAGS:
-        case READ_DATA: {
+        case 130:
+        case 132: {
           struct data_buf *buf = &ub.bufs[ub.bwi];
           if (byte == 0xdb) {
-            ub.state = READ_UNESCAPE;
+            ub.state = 129;
           } else if (byte == 0xc0) {
             next_write_buf();
             if (ub.ps == 0) {
-              /* Empty packet, sender aborted. */
-              ub.state = READ_ERROR;
+
+              ub.state = 131;
               SET_PERI_REG_MASK(UART_INT_ENA_REG(0), 0);
               goto out;
             } else {
-              ub.state = READ_WAIT_START;
+              ub.state = 128;
             }
           } else {
-            if (ub.state == READ_FLAGS) {
+            if (ub.state == 130) {
               buf->flags = byte;
-              ub.state = READ_DATA;
+              ub.state = 132;
             } else {
               add_byte(byte);
             }
           }
           break;
         }
-        case READ_UNESCAPE: {
+        case 129: {
           if (byte == 0xdc) {
             byte = 0xc0;
           } else if (byte == 0xdd) {
             byte = 0xdb;
           } else {
-            ub.state = READ_ERROR;
+            ub.state = 131;
             SET_PERI_REG_MASK(UART_INT_ENA_REG(0), 0);
             goto out;
           }
           add_byte(byte);
-          ub.state = READ_DATA;
+          ub.state = 132;
           break;
         }
-        case READ_ERROR: {
+        case 131: {
           goto out;
         }
       }

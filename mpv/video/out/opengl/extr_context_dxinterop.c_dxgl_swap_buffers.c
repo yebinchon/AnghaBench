@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct ra_ctx {int /*<<< orphan*/  vo; struct priv* priv; } ;
-struct TYPE_2__ {int /*<<< orphan*/  (* DXLockObjectsNV ) (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ;int /*<<< orphan*/  (* DXUnlockObjectsNV ) (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ;} ;
-struct priv {int lost_device; int /*<<< orphan*/  rtarget_h; int /*<<< orphan*/  device_h; int /*<<< orphan*/  device; int /*<<< orphan*/  backbuffer; int /*<<< orphan*/  rtarget; TYPE_1__ gl; } ;
-typedef  int HRESULT ;
-typedef  TYPE_1__ GL ;
 
-/* Variables and functions */
-#define  D3DERR_DEVICEHUNG 129 
-#define  D3DERR_DEVICELOST 128 
- int /*<<< orphan*/  D3DTEXF_NONE ; 
- scalar_t__ FAILED (int) ; 
- int IDirect3DDevice9Ex_PresentEx (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int IDirect3DDevice9Ex_StretchRect (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MP_ERR (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MP_VERBOSE (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  dxgl_reset (struct ra_ctx*) ; 
- int /*<<< orphan*/  mp_HRESULT_to_str (int) ; 
- int /*<<< orphan*/  mp_LastError_to_str () ; 
- int /*<<< orphan*/  pump_message_loop () ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct ra_ctx {int vo; struct priv* priv; } ;
+struct TYPE_2__ {int (* DXLockObjectsNV ) (int ,int,int *) ;int (* DXUnlockObjectsNV ) (int ,int,int *) ;} ;
+struct priv {int lost_device; int rtarget_h; int device_h; int device; int backbuffer; int rtarget; TYPE_1__ gl; } ;
+typedef int HRESULT ;
+typedef TYPE_1__ GL ;
+
+
+
+
+ int D3DTEXF_NONE ;
+ scalar_t__ FAILED (int) ;
+ int IDirect3DDevice9Ex_PresentEx (int ,int *,int *,int *,int *,int ) ;
+ int IDirect3DDevice9Ex_StretchRect (int ,int ,int *,int ,int *,int ) ;
+ int MP_ERR (int ,char*,int ) ;
+ int MP_VERBOSE (int ,char*) ;
+ int dxgl_reset (struct ra_ctx*) ;
+ int mp_HRESULT_to_str (int) ;
+ int mp_LastError_to_str () ;
+ int pump_message_loop () ;
+ int stub1 (int ,int,int *) ;
+ int stub2 (int ,int,int *) ;
 
 __attribute__((used)) static void dxgl_swap_buffers(struct ra_ctx *ctx)
 {
@@ -41,7 +41,7 @@ __attribute__((used)) static void dxgl_swap_buffers(struct ra_ctx *ctx)
 
     pump_message_loop();
 
-    // If the device is still lost, try to reset it again
+
     if (p->lost_device)
         dxgl_reset(ctx);
     if (p->lost_device)
@@ -53,21 +53,21 @@ __attribute__((used)) static void dxgl_swap_buffers(struct ra_ctx *ctx)
         return;
     }
 
-    // Blit the OpenGL rendertarget to the backbuffer
-    hr = IDirect3DDevice9Ex_StretchRect(p->device, p->rtarget, NULL,
-                                        p->backbuffer, NULL, D3DTEXF_NONE);
+
+    hr = IDirect3DDevice9Ex_StretchRect(p->device, p->rtarget, ((void*)0),
+                                        p->backbuffer, ((void*)0), D3DTEXF_NONE);
     if (FAILED(hr)) {
         MP_ERR(ctx->vo, "Couldn't stretchrect for present: %s\n",
                mp_HRESULT_to_str(hr));
         return;
     }
 
-    hr = IDirect3DDevice9Ex_PresentEx(p->device, NULL, NULL, NULL, NULL, 0);
+    hr = IDirect3DDevice9Ex_PresentEx(p->device, ((void*)0), ((void*)0), ((void*)0), ((void*)0), 0);
     switch (hr) {
-    case D3DERR_DEVICELOST:
-    case D3DERR_DEVICEHUNG:
+    case 128:
+    case 129:
         MP_VERBOSE(ctx->vo, "Direct3D device lost! Resetting.\n");
-        p->lost_device = true;
+        p->lost_device = 1;
         dxgl_reset(ctx);
         return;
     default:

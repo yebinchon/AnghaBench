@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  int int32_t ;
-typedef  int byte ;
+
+
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+typedef int int32_t ;
+typedef int byte ;
 struct TYPE_8__ {int RANGELOW; TYPE_2__* ext_table; } ;
 struct TYPE_11__ {int flags; int PREFLEN; int RANGELEN; TYPE_1__ u; } ;
-struct TYPE_10__ {int offset_bits; int this_word; scalar_t__ offset_limit; scalar_t__ offset; int next_word; int /*<<< orphan*/  ctx; } ;
+struct TYPE_10__ {int offset_bits; int this_word; scalar_t__ offset_limit; scalar_t__ offset; int next_word; int ctx; } ;
 struct TYPE_9__ {int log_table_size; TYPE_4__* entries; } ;
-typedef  TYPE_2__ Jbig2HuffmanTable ;
-typedef  TYPE_3__ Jbig2HuffmanState ;
-typedef  TYPE_4__ Jbig2HuffmanEntry ;
+typedef TYPE_2__ Jbig2HuffmanTable ;
+typedef TYPE_3__ Jbig2HuffmanState ;
+typedef TYPE_4__ Jbig2HuffmanEntry ;
 
-/* Variables and functions */
- int JBIG2_HUFFMAN_FLAGS_ISEXT ; 
- int JBIG2_HUFFMAN_FLAGS_ISLOW ; 
- int JBIG2_HUFFMAN_FLAGS_ISOOB ; 
- int /*<<< orphan*/  JBIG2_SEVERITY_FATAL ; 
- int /*<<< orphan*/  JBIG2_SEVERITY_WARNING ; 
- int huff_get_next_word (TYPE_3__*,scalar_t__,int*) ; 
- int jbig2_error (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,char*,...) ; 
+
+ int JBIG2_HUFFMAN_FLAGS_ISEXT ;
+ int JBIG2_HUFFMAN_FLAGS_ISLOW ;
+ int JBIG2_HUFFMAN_FLAGS_ISOOB ;
+ int JBIG2_SEVERITY_FATAL ;
+ int JBIG2_SEVERITY_WARNING ;
+ int huff_get_next_word (TYPE_3__*,scalar_t__,int*) ;
+ int jbig2_error (int ,int ,int,char*,...) ;
 
 int32_t
 jbig2_huffman_get(Jbig2HuffmanState *hs, const Jbig2HuffmanTable *table, bool *oob)
@@ -56,7 +56,7 @@ jbig2_huffman_get(Jbig2HuffmanState *hs, const Jbig2HuffmanTable *table, bool *o
         int PREFLEN;
         int code;
 
-        /* SumatraPDF: shifting by the size of the operand is undefined */
+
         entry = &table->entries[log_table_size > 0 ? this_word >> (32 - log_table_size) : 0];
         flags = entry->flags;
         PREFLEN = entry->PREFLEN;
@@ -117,7 +117,7 @@ jbig2_huffman_get(Jbig2HuffmanState *hs, const Jbig2HuffmanTable *table, bool *o
     hs->this_word = this_word;
     hs->offset_bits = offset_bits;
 
-    if (oob != NULL)
+    if (oob != ((void*)0))
         *oob = (flags & JBIG2_HUFFMAN_FLAGS_ISOOB);
 
     return result;

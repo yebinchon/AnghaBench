@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ptrace_out ;
-typedef  int /*<<< orphan*/  ptrace_in ;
-struct TYPE_6__ {int status; int /*<<< orphan*/  errno_num; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int ptrace_out ;
+typedef int ptrace_in ;
+struct TYPE_6__ {int status; int errno_num; } ;
 struct TYPE_5__ {unsigned long pid; } ;
-typedef  TYPE_1__ Rptrace ;
-typedef  TYPE_2__ Ptrace_return ;
+typedef TYPE_1__ Rptrace ;
+typedef TYPE_2__ Ptrace_return ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PTRACE_ATTACH ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  error (char*) ; 
- int /*<<< orphan*/  error_no_arg (char*) ; 
- int /*<<< orphan*/  inferior_ptid ; 
- int /*<<< orphan*/  local_hex_string (unsigned long) ; 
- int /*<<< orphan*/  memset (char*,char,int) ; 
- int net_ptrace_clnt_call (int /*<<< orphan*/ ,TYPE_1__*,TYPE_2__*) ; 
- int /*<<< orphan*/  perror_with_name (char*) ; 
- int /*<<< orphan*/  pid_to_ptid (unsigned long) ; 
- int /*<<< orphan*/  printf_unfiltered (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  push_target (int /*<<< orphan*/ *) ; 
- char* rpcerr ; 
- unsigned long strtoul (char*,char**,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vx_run_ops ; 
- scalar_t__ vx_running ; 
- int /*<<< orphan*/  xfree (scalar_t__) ; 
+
+ int PTRACE_ATTACH ;
+ int errno ;
+ int error (char*) ;
+ int error_no_arg (char*) ;
+ int inferior_ptid ;
+ int local_hex_string (unsigned long) ;
+ int memset (char*,char,int) ;
+ int net_ptrace_clnt_call (int ,TYPE_1__*,TYPE_2__*) ;
+ int perror_with_name (char*) ;
+ int pid_to_ptid (unsigned long) ;
+ int printf_unfiltered (char*,int ) ;
+ int push_target (int *) ;
+ char* rpcerr ;
+ unsigned long strtoul (char*,char**,int ) ;
+ int vx_run_ops ;
+ scalar_t__ vx_running ;
+ int xfree (scalar_t__) ;
 
 __attribute__((used)) static void
 vx_attach (char *args, int from_tty)
@@ -56,7 +56,7 @@ vx_attach (char *args, int from_tty)
 
   if (from_tty)
     printf_unfiltered ("Attaching pid %s.\n",
-		       local_hex_string ((unsigned long) pid));
+         local_hex_string ((unsigned long) pid));
 
   memset ((char *) &ptrace_in, '\0', sizeof (ptrace_in));
   memset ((char *) &ptrace_out, '\0', sizeof (ptrace_out));
@@ -71,7 +71,7 @@ vx_attach (char *args, int from_tty)
       perror_with_name ("Attaching remote process");
     }
 
-  /* It worked... */
+
 
   inferior_ptid = pid_to_ptid (pid);
   push_target (&vx_run_ops);

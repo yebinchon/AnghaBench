@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint16_t ;
-struct TYPE_13__ {int bit_rate; int sample_rate; int channels; int frame_size; int /*<<< orphan*/  channel_layout; int /*<<< orphan*/  sample_fmt; } ;
-struct TYPE_12__ {int nb_samples; scalar_t__* data; int /*<<< orphan*/  channel_layout; int /*<<< orphan*/  format; } ;
-typedef  int /*<<< orphan*/  FILE ;
-typedef  int /*<<< orphan*/  AVPacket ;
-typedef  TYPE_1__ AVFrame ;
-typedef  TYPE_2__ AVCodecContext ;
-typedef  int /*<<< orphan*/  AVCodec ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_CODEC_ID_MP2 ; 
- int /*<<< orphan*/  AV_SAMPLE_FMT_S16 ; 
- int M_PI ; 
- TYPE_1__* av_frame_alloc () ; 
- int /*<<< orphan*/  av_frame_free (TYPE_1__**) ; 
- int av_frame_get_buffer (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int av_frame_make_writable (TYPE_1__*) ; 
- int av_get_channel_layout_nb_channels (int /*<<< orphan*/ ) ; 
- char* av_get_sample_fmt_name (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * av_packet_alloc () ; 
- int /*<<< orphan*/  av_packet_free (int /*<<< orphan*/ **) ; 
- TYPE_2__* avcodec_alloc_context3 (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/ * avcodec_find_encoder (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  avcodec_free_context (TYPE_2__**) ; 
- scalar_t__ avcodec_open2 (TYPE_2__*,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  check_sample_fmt (int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  encode (TYPE_2__*,TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char const*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  select_channel_layout (int /*<<< orphan*/  const*) ; 
- int select_sample_rate (int /*<<< orphan*/  const*) ; 
- int sin (float) ; 
- int /*<<< orphan*/  stderr ; 
+
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+typedef int uint16_t ;
+struct TYPE_13__ {int bit_rate; int sample_rate; int channels; int frame_size; int channel_layout; int sample_fmt; } ;
+struct TYPE_12__ {int nb_samples; scalar_t__* data; int channel_layout; int format; } ;
+typedef int FILE ;
+typedef int AVPacket ;
+typedef TYPE_1__ AVFrame ;
+typedef TYPE_2__ AVCodecContext ;
+typedef int AVCodec ;
+
+
+ int AV_CODEC_ID_MP2 ;
+ int AV_SAMPLE_FMT_S16 ;
+ int M_PI ;
+ TYPE_1__* av_frame_alloc () ;
+ int av_frame_free (TYPE_1__**) ;
+ int av_frame_get_buffer (TYPE_1__*,int ) ;
+ int av_frame_make_writable (TYPE_1__*) ;
+ int av_get_channel_layout_nb_channels (int ) ;
+ char* av_get_sample_fmt_name (int ) ;
+ int * av_packet_alloc () ;
+ int av_packet_free (int **) ;
+ TYPE_2__* avcodec_alloc_context3 (int const*) ;
+ int * avcodec_find_encoder (int ) ;
+ int avcodec_free_context (TYPE_2__**) ;
+ scalar_t__ avcodec_open2 (TYPE_2__*,int const*,int *) ;
+ int check_sample_fmt (int const*,int ) ;
+ int encode (TYPE_2__*,TYPE_1__*,int *,int *) ;
+ int exit (int) ;
+ int fclose (int *) ;
+ int * fopen (char const*,char*) ;
+ int fprintf (int ,char*,...) ;
+ int select_channel_layout (int const*) ;
+ int select_sample_rate (int const*) ;
+ int sin (float) ;
+ int stderr ;
 
 int main(int argc, char **argv)
 {
     const char *filename;
     const AVCodec *codec;
-    AVCodecContext *c= NULL;
+    AVCodecContext *c= ((void*)0);
     AVFrame *frame;
     AVPacket *pkt;
     int i, j, k, ret;
@@ -66,7 +66,7 @@ int main(int argc, char **argv)
     }
     filename = argv[1];
 
-    /* find the MP2 encoder */
+
     codec = avcodec_find_encoder(AV_CODEC_ID_MP2);
     if (!codec) {
         fprintf(stderr, "Codec not found\n");
@@ -79,10 +79,10 @@ int main(int argc, char **argv)
         exit(1);
     }
 
-    /* put sample parameters */
+
     c->bit_rate = 64000;
 
-    /* check that the encoder supports s16 pcm input */
+
     c->sample_fmt = AV_SAMPLE_FMT_S16;
     if (!check_sample_fmt(codec, c->sample_fmt)) {
         fprintf(stderr, "Encoder does not support sample format %s",
@@ -90,13 +90,13 @@ int main(int argc, char **argv)
         exit(1);
     }
 
-    /* select other audio parameters supported by the encoder */
-    c->sample_rate    = select_sample_rate(codec);
-    c->channel_layout = select_channel_layout(codec);
-    c->channels       = av_get_channel_layout_nb_channels(c->channel_layout);
 
-    /* open it */
-    if (avcodec_open2(c, codec, NULL) < 0) {
+    c->sample_rate = select_sample_rate(codec);
+    c->channel_layout = select_channel_layout(codec);
+    c->channels = av_get_channel_layout_nb_channels(c->channel_layout);
+
+
+    if (avcodec_open2(c, codec, ((void*)0)) < 0) {
         fprintf(stderr, "Could not open codec\n");
         exit(1);
     }
@@ -107,37 +107,37 @@ int main(int argc, char **argv)
         exit(1);
     }
 
-    /* packet for holding encoded output */
+
     pkt = av_packet_alloc();
     if (!pkt) {
         fprintf(stderr, "could not allocate the packet\n");
         exit(1);
     }
 
-    /* frame containing input raw audio */
+
     frame = av_frame_alloc();
     if (!frame) {
         fprintf(stderr, "Could not allocate audio frame\n");
         exit(1);
     }
 
-    frame->nb_samples     = c->frame_size;
-    frame->format         = c->sample_fmt;
+    frame->nb_samples = c->frame_size;
+    frame->format = c->sample_fmt;
     frame->channel_layout = c->channel_layout;
 
-    /* allocate the data buffers */
+
     ret = av_frame_get_buffer(frame, 0);
     if (ret < 0) {
         fprintf(stderr, "Could not allocate audio data buffers\n");
         exit(1);
     }
 
-    /* encode a single tone sound */
+
     t = 0;
     tincr = 2 * M_PI * 440.0 / c->sample_rate;
     for (i = 0; i < 200; i++) {
-        /* make sure the frame is writable -- makes a copy if the encoder
-         * kept a reference internally */
+
+
         ret = av_frame_make_writable(frame);
         if (ret < 0)
             exit(1);
@@ -153,8 +153,8 @@ int main(int argc, char **argv)
         encode(c, frame, pkt, f);
     }
 
-    /* flush the encoder */
-    encode(c, NULL, pkt, f);
+
+    encode(c, ((void*)0), pkt, f);
 
     fclose(f);
 

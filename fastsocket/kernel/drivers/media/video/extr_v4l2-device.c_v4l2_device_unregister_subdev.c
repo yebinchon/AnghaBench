@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct v4l2_subdev {int /*<<< orphan*/  owner; TYPE_1__* v4l2_dev; int /*<<< orphan*/  list; } ;
-struct TYPE_2__ {int /*<<< orphan*/  lock; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  list_del (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  module_put (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  spin_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct v4l2_subdev {int owner; TYPE_1__* v4l2_dev; int list; } ;
+struct TYPE_2__ {int lock; } ;
+
+
+ int list_del (int *) ;
+ int module_put (int ) ;
+ int spin_lock (int *) ;
+ int spin_unlock (int *) ;
 
 void v4l2_device_unregister_subdev(struct v4l2_subdev *sd)
 {
-	/* return if it isn't registered */
-	if (sd == NULL || sd->v4l2_dev == NULL)
-		return;
-	spin_lock(&sd->v4l2_dev->lock);
-	list_del(&sd->list);
-	spin_unlock(&sd->v4l2_dev->lock);
-	sd->v4l2_dev = NULL;
-	module_put(sd->owner);
+
+ if (sd == ((void*)0) || sd->v4l2_dev == ((void*)0))
+  return;
+ spin_lock(&sd->v4l2_dev->lock);
+ list_del(&sd->list);
+ spin_unlock(&sd->v4l2_dev->lock);
+ sd->v4l2_dev = ((void*)0);
+ module_put(sd->owner);
 }

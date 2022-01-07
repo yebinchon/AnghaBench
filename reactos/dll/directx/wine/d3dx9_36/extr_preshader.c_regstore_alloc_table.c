@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct d3dx_regstore {int /*<<< orphan*/ * tables; int /*<<< orphan*/ * table_sizes; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct d3dx_regstore {int * tables; int * table_sizes; } ;
 struct TYPE_2__ {unsigned int component_size; } ;
-typedef  int /*<<< orphan*/  HRESULT ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D3D_OK ; 
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HEAP_ZERO_MEMORY ; 
- int /*<<< orphan*/  HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned int) ; 
- unsigned int get_offset_reg (unsigned int,int /*<<< orphan*/ ) ; 
- TYPE_1__* table_info ; 
+
+ int D3D_OK ;
+ int E_OUTOFMEMORY ;
+ int GetProcessHeap () ;
+ int HEAP_ZERO_MEMORY ;
+ int HeapAlloc (int ,int ,unsigned int) ;
+ unsigned int get_offset_reg (unsigned int,int ) ;
+ TYPE_1__* table_info ;
 
 __attribute__((used)) static HRESULT regstore_alloc_table(struct d3dx_regstore *rs, unsigned int table)
 {

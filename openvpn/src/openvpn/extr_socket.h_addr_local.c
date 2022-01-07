@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct sockaddr_in6 {int /*<<< orphan*/  sin6_addr; } ;
-struct TYPE_2__ {int /*<<< orphan*/  s_addr; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct sockaddr_in6 {int sin6_addr; } ;
+struct TYPE_2__ {int s_addr; } ;
 struct sockaddr_in {TYPE_1__ sin_addr; } ;
 struct sockaddr {int sa_family; } ;
 
-/* Variables and functions */
-#define  AF_INET 129 
-#define  AF_INET6 128 
- int IN6_IS_ADDR_LOOPBACK (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  INADDR_LOOPBACK ; 
- int /*<<< orphan*/  htonl (int /*<<< orphan*/ ) ; 
+
+
+
+ int IN6_IS_ADDR_LOOPBACK (int *) ;
+ int INADDR_LOOPBACK ;
+ int htonl (int ) ;
 
 __attribute__((used)) static inline bool
 addr_local(const struct sockaddr *addr)
 {
     if (!addr)
     {
-        return false;
+        return 0;
     }
     switch (addr->sa_family)
     {
-        case AF_INET:
+        case 129:
             return ((const struct sockaddr_in *)addr)->sin_addr.s_addr == htonl(INADDR_LOOPBACK);
 
-        case AF_INET6:
+        case 128:
             return IN6_IS_ADDR_LOOPBACK(&((const struct sockaddr_in6 *)addr)->sin6_addr);
 
         default:
-            return false;
+            return 0;
     }
 }

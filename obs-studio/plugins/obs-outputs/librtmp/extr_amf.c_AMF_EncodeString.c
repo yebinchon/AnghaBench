@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int av_len; int /*<<< orphan*/  av_val; } ;
-typedef  TYPE_1__ AVal ;
 
-/* Variables and functions */
- char* AMF_EncodeInt16 (char*,char*,int) ; 
- char* AMF_EncodeInt32 (char*,char*,int) ; 
- int /*<<< orphan*/  AMF_LONG_STRING ; 
- int /*<<< orphan*/  AMF_STRING ; 
- int /*<<< orphan*/  memcpy (char*,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int av_len; int av_val; } ;
+typedef TYPE_1__ AVal ;
+
+
+ char* AMF_EncodeInt16 (char*,char*,int) ;
+ char* AMF_EncodeInt32 (char*,char*,int) ;
+ int AMF_LONG_STRING ;
+ int AMF_STRING ;
+ int memcpy (char*,int ,int) ;
 
 char *
 AMF_EncodeString(char *output, char *outend, const AVal *bv)
 {
     if ((bv->av_len < 65536 && output + 1 + 2 + bv->av_len > outend) ||
             output + 1 + 4 + bv->av_len > outend)
-        return NULL;
+        return ((void*)0);
 
     if (bv->av_len < 65536)
     {

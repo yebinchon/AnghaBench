@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct loops {unsigned int num; struct loop** parray; } ;
 struct loop {int dummy; } ;
 
-/* Variables and functions */
- unsigned int TODO_cleanup_cfg ; 
- int /*<<< orphan*/  UL_SINGLE_ITER ; 
- int canonicalize_loop_induction_variables (struct loops*,struct loop*,int,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  scev_reset () ; 
+
+ unsigned int TODO_cleanup_cfg ;
+ int UL_SINGLE_ITER ;
+ int canonicalize_loop_induction_variables (struct loops*,struct loop*,int,int ,int) ;
+ int scev_reset () ;
 
 unsigned int
 canonicalize_induction_variables (struct loops *loops)
 {
   unsigned i;
   struct loop *loop;
-  bool changed = false;
-  
+  bool changed = 0;
+
   for (i = 1; i < loops->num; i++)
     {
       loop = loops->parray[i];
 
       if (loop)
-	changed |= canonicalize_loop_induction_variables (loops, loop,
-							  true, UL_SINGLE_ITER,
-							  true);
+ changed |= canonicalize_loop_induction_variables (loops, loop,
+         1, UL_SINGLE_ITER,
+         1);
     }
 
-  /* Clean up the information about numbers of iterations, since brute force
-     evaluation could reveal new information.  */
+
+
   scev_reset ();
 
   if (changed)

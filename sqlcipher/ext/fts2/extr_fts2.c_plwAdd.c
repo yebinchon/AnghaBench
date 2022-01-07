@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int iPos; int iColumn; int iOffset; TYPE_1__* dlw; } ;
-struct TYPE_4__ {scalar_t__ iType; int /*<<< orphan*/  b; } ;
-typedef  TYPE_2__ PLWriter ;
+struct TYPE_4__ {scalar_t__ iType; int b; } ;
+typedef TYPE_2__ PLWriter ;
 
-/* Variables and functions */
- scalar_t__ DL_DOCIDS ; 
- scalar_t__ DL_POSITIONS_OFFSETS ; 
- int POS_BASE ; 
- int POS_COLUMN ; 
- int VARINT_MAX ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  dataBufferAppend (int /*<<< orphan*/ ,char*,int) ; 
- scalar_t__ putVarint (char*,int) ; 
+
+ scalar_t__ DL_DOCIDS ;
+ scalar_t__ DL_POSITIONS_OFFSETS ;
+ int POS_BASE ;
+ int POS_COLUMN ;
+ int VARINT_MAX ;
+ int assert (int) ;
+ int dataBufferAppend (int ,char*,int) ;
+ scalar_t__ putVarint (char*,int) ;
 
 __attribute__((used)) static void plwAdd(PLWriter *pWriter, int iColumn, int iPos,
                    int iStartOffset, int iEndOffset){
-  /* Worst-case space for POS_COLUMN, iColumn, iPosDelta,
-  ** iStartOffsetDelta, and iEndOffsetDelta.
-  */
+
+
+
   char c[5*VARINT_MAX];
   int n = 0;
 
-  /* Ban plwAdd() after plwTerminate(). */
+
   assert( pWriter->iPos!=-1 );
 
   if( pWriter->dlw->iType==DL_DOCIDS ) return;

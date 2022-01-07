@@ -1,57 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ crypto_box_curve25519xchacha20poly1305_BEFORENMBYTES ; 
- size_t crypto_box_curve25519xchacha20poly1305_MACBYTES ; 
- scalar_t__ crypto_box_curve25519xchacha20poly1305_MESSAGEBYTES_MAX ; 
- scalar_t__ crypto_box_curve25519xchacha20poly1305_NONCEBYTES ; 
- scalar_t__ crypto_box_curve25519xchacha20poly1305_PUBLICKEYBYTES ; 
- scalar_t__ crypto_box_curve25519xchacha20poly1305_SECRETKEYBYTES ; 
- size_t crypto_box_curve25519xchacha20poly1305_SEEDBYTES ; 
- int crypto_box_curve25519xchacha20poly1305_beforenm (unsigned char*,unsigned char*,unsigned char*) ; 
- scalar_t__ crypto_box_curve25519xchacha20poly1305_beforenmbytes () ; 
- scalar_t__ crypto_box_curve25519xchacha20poly1305_detached (unsigned char*,unsigned char*,unsigned char*,size_t,unsigned char*,unsigned char*,unsigned char*) ; 
- scalar_t__ crypto_box_curve25519xchacha20poly1305_detached_afternm (unsigned char*,unsigned char*,unsigned char*,size_t,unsigned char*,unsigned char*) ; 
- scalar_t__ crypto_box_curve25519xchacha20poly1305_easy (unsigned char*,unsigned char*,size_t,unsigned char*,unsigned char*,unsigned char*) ; 
- scalar_t__ crypto_box_curve25519xchacha20poly1305_easy_afternm (unsigned char*,unsigned char*,size_t,unsigned char*,unsigned char*) ; 
- scalar_t__ crypto_box_curve25519xchacha20poly1305_keypair (unsigned char*,unsigned char*) ; 
- size_t crypto_box_curve25519xchacha20poly1305_macbytes () ; 
- scalar_t__ crypto_box_curve25519xchacha20poly1305_messagebytes_max () ; 
- scalar_t__ crypto_box_curve25519xchacha20poly1305_noncebytes () ; 
- scalar_t__ crypto_box_curve25519xchacha20poly1305_open_detached (unsigned char*,unsigned char*,unsigned char*,size_t,unsigned char*,unsigned char*,unsigned char*) ; 
- scalar_t__ crypto_box_curve25519xchacha20poly1305_open_detached_afternm (unsigned char*,unsigned char*,unsigned char*,size_t,unsigned char*,unsigned char*) ; 
- int crypto_box_curve25519xchacha20poly1305_open_easy (unsigned char*,unsigned char*,size_t,unsigned char*,unsigned char*,unsigned char*) ; 
- int crypto_box_curve25519xchacha20poly1305_open_easy_afternm (unsigned char*,unsigned char*,size_t,unsigned char*,unsigned char*) ; 
- scalar_t__ crypto_box_curve25519xchacha20poly1305_publickeybytes () ; 
- scalar_t__ crypto_box_curve25519xchacha20poly1305_secretkeybytes () ; 
- int /*<<< orphan*/  crypto_box_curve25519xchacha20poly1305_seed_keypair (unsigned char*,unsigned char*,unsigned char*) ; 
- size_t crypto_box_curve25519xchacha20poly1305_seedbytes () ; 
- scalar_t__ memcmp (unsigned char*,unsigned char*,size_t) ; 
- int /*<<< orphan*/  printf (char*) ; 
- int /*<<< orphan*/  randombytes_buf (unsigned char*,size_t) ; 
- size_t randombytes_uniform (int) ; 
- unsigned char* small_order_p ; 
- int /*<<< orphan*/  sodium_bin2hex (char*,int,unsigned char*,scalar_t__) ; 
- int /*<<< orphan*/  sodium_free (unsigned char*) ; 
- scalar_t__ sodium_malloc (size_t) ; 
- scalar_t__ strcmp (char*,char*) ; 
+ int assert (int) ;
+ scalar_t__ crypto_box_curve25519xchacha20poly1305_BEFORENMBYTES ;
+ size_t crypto_box_curve25519xchacha20poly1305_MACBYTES ;
+ scalar_t__ crypto_box_curve25519xchacha20poly1305_MESSAGEBYTES_MAX ;
+ scalar_t__ crypto_box_curve25519xchacha20poly1305_NONCEBYTES ;
+ scalar_t__ crypto_box_curve25519xchacha20poly1305_PUBLICKEYBYTES ;
+ scalar_t__ crypto_box_curve25519xchacha20poly1305_SECRETKEYBYTES ;
+ size_t crypto_box_curve25519xchacha20poly1305_SEEDBYTES ;
+ int crypto_box_curve25519xchacha20poly1305_beforenm (unsigned char*,unsigned char*,unsigned char*) ;
+ scalar_t__ crypto_box_curve25519xchacha20poly1305_beforenmbytes () ;
+ scalar_t__ crypto_box_curve25519xchacha20poly1305_detached (unsigned char*,unsigned char*,unsigned char*,size_t,unsigned char*,unsigned char*,unsigned char*) ;
+ scalar_t__ crypto_box_curve25519xchacha20poly1305_detached_afternm (unsigned char*,unsigned char*,unsigned char*,size_t,unsigned char*,unsigned char*) ;
+ scalar_t__ crypto_box_curve25519xchacha20poly1305_easy (unsigned char*,unsigned char*,size_t,unsigned char*,unsigned char*,unsigned char*) ;
+ scalar_t__ crypto_box_curve25519xchacha20poly1305_easy_afternm (unsigned char*,unsigned char*,size_t,unsigned char*,unsigned char*) ;
+ scalar_t__ crypto_box_curve25519xchacha20poly1305_keypair (unsigned char*,unsigned char*) ;
+ size_t crypto_box_curve25519xchacha20poly1305_macbytes () ;
+ scalar_t__ crypto_box_curve25519xchacha20poly1305_messagebytes_max () ;
+ scalar_t__ crypto_box_curve25519xchacha20poly1305_noncebytes () ;
+ scalar_t__ crypto_box_curve25519xchacha20poly1305_open_detached (unsigned char*,unsigned char*,unsigned char*,size_t,unsigned char*,unsigned char*,unsigned char*) ;
+ scalar_t__ crypto_box_curve25519xchacha20poly1305_open_detached_afternm (unsigned char*,unsigned char*,unsigned char*,size_t,unsigned char*,unsigned char*) ;
+ int crypto_box_curve25519xchacha20poly1305_open_easy (unsigned char*,unsigned char*,size_t,unsigned char*,unsigned char*,unsigned char*) ;
+ int crypto_box_curve25519xchacha20poly1305_open_easy_afternm (unsigned char*,unsigned char*,size_t,unsigned char*,unsigned char*) ;
+ scalar_t__ crypto_box_curve25519xchacha20poly1305_publickeybytes () ;
+ scalar_t__ crypto_box_curve25519xchacha20poly1305_secretkeybytes () ;
+ int crypto_box_curve25519xchacha20poly1305_seed_keypair (unsigned char*,unsigned char*,unsigned char*) ;
+ size_t crypto_box_curve25519xchacha20poly1305_seedbytes () ;
+ scalar_t__ memcmp (unsigned char*,unsigned char*,size_t) ;
+ int printf (char*) ;
+ int randombytes_buf (unsigned char*,size_t) ;
+ size_t randombytes_uniform (int) ;
+ unsigned char* small_order_p ;
+ int sodium_bin2hex (char*,int,unsigned char*,scalar_t__) ;
+ int sodium_free (unsigned char*) ;
+ scalar_t__ sodium_malloc (size_t) ;
+ scalar_t__ strcmp (char*,char*) ;
 
 __attribute__((used)) static void
 tv_box_xchacha20poly1305(void)
 {
-    char           hex[65];
+    char hex[65];
     unsigned char *pk;
     unsigned char *sk;
     unsigned char *m;
@@ -61,8 +53,8 @@ tv_box_xchacha20poly1305(void)
     unsigned char *out;
     unsigned char *pc;
     unsigned char *seed;
-    size_t         m_len;
-    int            i;
+    size_t m_len;
+    int i;
 
     pk = (unsigned char *) sodium_malloc(crypto_box_curve25519xchacha20poly1305_PUBLICKEYBYTES);
     sk = (unsigned char *) sodium_malloc(crypto_box_curve25519xchacha20poly1305_SECRETKEYBYTES);
@@ -144,7 +136,7 @@ tv_box_xchacha20poly1305(void)
 
     seed = (unsigned char *) sodium_malloc
         (crypto_box_curve25519xchacha20poly1305_SEEDBYTES);
-    for (i = 0; i <(int)  crypto_box_curve25519xchacha20poly1305_SEEDBYTES; i++) {
+    for (i = 0; i <(int) crypto_box_curve25519xchacha20poly1305_SEEDBYTES; i++) {
         seed[i] = (unsigned char) i;
     }
     crypto_box_curve25519xchacha20poly1305_seed_keypair(pk, sk, seed);

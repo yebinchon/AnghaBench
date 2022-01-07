@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  key2 ;
-typedef  int /*<<< orphan*/  key1 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LCMAP_SORTKEY ; 
- int /*<<< orphan*/  LCMapStringA (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*,int,char*,int) ; 
- int strcmp (char*,char*) ; 
+
+
+
+typedef int key2 ;
+typedef int key1 ;
+
+
+ int LCMAP_SORTKEY ;
+ int LCMapStringA (int ,int ,char const*,int,char*,int) ;
+ int strcmp (char*,char*) ;
 
 __attribute__((used)) static int compare_string3(const void *e1, const void *e2)
 {

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {unsigned int byte_state; size_t byte_count; size_t byte_offset; int flags2; unsigned char unicode_char; } ;
 struct TYPE_4__ {TYPE_1__ smb1; } ;
 struct SMBSTUFF {TYPE_2__ hdr; } ;
 struct BannerOutput {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AUTO_LEN ; 
- int /*<<< orphan*/  PROTO_SMB ; 
- int /*<<< orphan*/  banout_append (struct BannerOutput*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  banout_append_char (struct BannerOutput*,int /*<<< orphan*/ ,unsigned char const) ; 
- int /*<<< orphan*/  banout_append_unicode (struct BannerOutput*,int /*<<< orphan*/ ,unsigned char const) ; 
+
+ int AUTO_LEN ;
+ int PROTO_SMB ;
+ int banout_append (struct BannerOutput*,int ,char*,int ) ;
+ int banout_append_char (struct BannerOutput*,int ,unsigned char const) ;
+ int banout_append_unicode (struct BannerOutput*,int ,unsigned char const) ;
 
 __attribute__((used)) static size_t
 smb1_parse_setup1(struct SMBSTUFF *smb, const unsigned char *px, size_t offset, size_t max, struct BannerOutput *banout)
@@ -38,7 +38,7 @@ smb1_parse_setup1(struct SMBSTUFF *smb, const unsigned char *px, size_t offset, 
         D_DOMAINA1,
         D_DOMAINA2,
         D_ENDA,
-        
+
         D_OSU1,
         D_OSU2,
         D_OSU3,
@@ -51,15 +51,15 @@ smb1_parse_setup1(struct SMBSTUFF *smb, const unsigned char *px, size_t offset, 
         D_DOMAIN2,
         D_DOMAIN3,
         D_DOMAIN4,
-        
+
         D_UNKNOWN,
     };
-    
+
     if (max > offset + (smb->hdr.smb1.byte_count - smb->hdr.smb1.byte_offset))
         max = offset + (smb->hdr.smb1.byte_count - smb->hdr.smb1.byte_offset);
-    
+
     for (;offset<max; offset++) {
-        
+
         switch (state) {
             case D_PADDING:
                 if (smb->hdr.smb1.flags2 & 0x8000) {
@@ -124,7 +124,7 @@ smb1_parse_setup1(struct SMBSTUFF *smb, const unsigned char *px, size_t offset, 
                 smb->hdr.smb1.unicode_char = px[offset];
                 state++;
                 break;
-                
+
             case D_OSU2:
                 smb->hdr.smb1.unicode_char |= px[offset]<<8;
                 if (smb->hdr.smb1.unicode_char == 0)
@@ -135,7 +135,7 @@ smb1_parse_setup1(struct SMBSTUFF *smb, const unsigned char *px, size_t offset, 
                     state = D_OSU3;
                 }
                 break;
-                
+
             case D_OSU4:
                 smb->hdr.smb1.unicode_char |= px[offset]<<8;
                 if (smb->hdr.smb1.unicode_char == 0)
@@ -145,7 +145,7 @@ smb1_parse_setup1(struct SMBSTUFF *smb, const unsigned char *px, size_t offset, 
                     state--;
                 }
                 break;
-                
+
 
             case D_VERSION2:
                 smb->hdr.smb1.unicode_char |= px[offset]<<8;
@@ -192,7 +192,7 @@ smb1_parse_setup1(struct SMBSTUFF *smb, const unsigned char *px, size_t offset, 
                 break;
         }
     }
-    
+
     smb->hdr.smb1.byte_state = (unsigned short)state;
     smb->hdr.smb1.byte_offset += (unsigned short)(offset - original_offset);
     return offset - original_offset;

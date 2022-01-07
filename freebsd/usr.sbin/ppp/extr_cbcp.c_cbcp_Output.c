@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_char ;
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int u_char ;
 struct mbuf {int dummy; } ;
-struct cbcp_header {int /*<<< orphan*/  length; int /*<<< orphan*/  id; int /*<<< orphan*/  code; } ;
+struct cbcp_header {int length; int id; int code; } ;
 struct cbcp_data {scalar_t__ length; } ;
-struct TYPE_4__ {int /*<<< orphan*/  id; } ;
+struct TYPE_4__ {int id; } ;
 struct cbcp {TYPE_3__* p; TYPE_1__ fsm; } ;
-struct TYPE_6__ {int /*<<< orphan*/  link; TYPE_2__* dl; } ;
-struct TYPE_5__ {int /*<<< orphan*/  bundle; } ;
+struct TYPE_6__ {int link; TYPE_2__* dl; } ;
+struct TYPE_5__ {int bundle; } ;
 
-/* Variables and functions */
- scalar_t__ LINK_QUEUES (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LogDEBUG ; 
- scalar_t__ MBUF_CTOP (struct mbuf*) ; 
- int /*<<< orphan*/  MB_CBCPOUT ; 
- int /*<<< orphan*/  PROTO_CBCP ; 
- int /*<<< orphan*/  htons (scalar_t__) ; 
- int /*<<< orphan*/  link_PushPacket (int /*<<< orphan*/ *,struct mbuf*,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  log_DumpBp (int /*<<< orphan*/ ,char*,struct mbuf*) ; 
- struct mbuf* m_get (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (scalar_t__,struct cbcp_data*,scalar_t__) ; 
+
+ scalar_t__ LINK_QUEUES (int *) ;
+ int LogDEBUG ;
+ scalar_t__ MBUF_CTOP (struct mbuf*) ;
+ int MB_CBCPOUT ;
+ int PROTO_CBCP ;
+ int htons (scalar_t__) ;
+ int link_PushPacket (int *,struct mbuf*,int ,scalar_t__,int ) ;
+ int log_DumpBp (int ,char*,struct mbuf*) ;
+ struct mbuf* m_get (scalar_t__,int ) ;
+ int memcpy (scalar_t__,struct cbcp_data*,scalar_t__) ;
 
 __attribute__((used)) static void
 cbcp_Output(struct cbcp *cbcp, u_char code, struct cbcp_data *data)

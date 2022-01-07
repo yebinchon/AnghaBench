@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {void* data; } ;
-typedef  TYPE_1__ uv_work_t ;
+typedef TYPE_1__ uv_work_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  UV_RUN_DEFAULT ; 
- int /*<<< orphan*/  after ; 
- int /*<<< orphan*/  async ; 
- int /*<<< orphan*/  fake_download ; 
- int /*<<< orphan*/  loop ; 
- int /*<<< orphan*/  print_progress ; 
- int /*<<< orphan*/  uv_async_init (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  uv_default_loop () ; 
- int /*<<< orphan*/  uv_queue_work (int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int uv_run (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int UV_RUN_DEFAULT ;
+ int after ;
+ int async ;
+ int fake_download ;
+ int loop ;
+ int print_progress ;
+ int uv_async_init (int ,int *,int ) ;
+ int uv_default_loop () ;
+ int uv_queue_work (int ,TYPE_1__*,int ,int ) ;
+ int uv_run (int ,int ) ;
 
 int main() {
     loop = uv_default_loop();

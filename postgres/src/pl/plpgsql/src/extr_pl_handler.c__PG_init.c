@@ -1,110 +1,110 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  PLpgSQL_plugin ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DefineCustomBoolVariable (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DefineCustomEnumVariable (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DefineCustomStringVariable (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EmitWarningsOnPlaceholders (char*) ; 
- int /*<<< orphan*/  GUC_LIST_INPUT ; 
- int /*<<< orphan*/  PGC_SUSET ; 
- int /*<<< orphan*/  PGC_USERSET ; 
- int /*<<< orphan*/  PLPGSQL_RESOLVE_ERROR ; 
- int /*<<< orphan*/  RegisterSubXactCallback (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RegisterXactCallback (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TEXTDOMAIN ; 
- scalar_t__ find_rendezvous_variable (char*) ; 
- int /*<<< orphan*/  gettext_noop (char*) ; 
- int /*<<< orphan*/  pg_bindtextdomain (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  plpgsql_HashTableInit () ; 
- int /*<<< orphan*/  plpgsql_check_asserts ; 
- int /*<<< orphan*/  plpgsql_extra_checks_check_hook ; 
- int /*<<< orphan*/  plpgsql_extra_errors_assign_hook ; 
- int /*<<< orphan*/  plpgsql_extra_errors_string ; 
- int /*<<< orphan*/  plpgsql_extra_warnings_assign_hook ; 
- int /*<<< orphan*/  plpgsql_extra_warnings_string ; 
- int /*<<< orphan*/ ** plpgsql_plugin_ptr ; 
- int /*<<< orphan*/  plpgsql_print_strict_params ; 
- int /*<<< orphan*/  plpgsql_subxact_cb ; 
- int /*<<< orphan*/  plpgsql_variable_conflict ; 
- int /*<<< orphan*/  plpgsql_xact_cb ; 
- int /*<<< orphan*/  variable_conflict_options ; 
+
+
+
+typedef int PLpgSQL_plugin ;
+
+
+ int DefineCustomBoolVariable (char*,int ,int *,int *,int,int ,int ,int *,int *,int *) ;
+ int DefineCustomEnumVariable (char*,int ,int *,int *,int ,int ,int ,int ,int *,int *,int *) ;
+ int DefineCustomStringVariable (char*,int ,int *,int *,char*,int ,int ,int ,int ,int *) ;
+ int EmitWarningsOnPlaceholders (char*) ;
+ int GUC_LIST_INPUT ;
+ int PGC_SUSET ;
+ int PGC_USERSET ;
+ int PLPGSQL_RESOLVE_ERROR ;
+ int RegisterSubXactCallback (int ,int *) ;
+ int RegisterXactCallback (int ,int *) ;
+ int TEXTDOMAIN ;
+ scalar_t__ find_rendezvous_variable (char*) ;
+ int gettext_noop (char*) ;
+ int pg_bindtextdomain (int ) ;
+ int plpgsql_HashTableInit () ;
+ int plpgsql_check_asserts ;
+ int plpgsql_extra_checks_check_hook ;
+ int plpgsql_extra_errors_assign_hook ;
+ int plpgsql_extra_errors_string ;
+ int plpgsql_extra_warnings_assign_hook ;
+ int plpgsql_extra_warnings_string ;
+ int ** plpgsql_plugin_ptr ;
+ int plpgsql_print_strict_params ;
+ int plpgsql_subxact_cb ;
+ int plpgsql_variable_conflict ;
+ int plpgsql_xact_cb ;
+ int variable_conflict_options ;
 
 void
 _PG_init(void)
 {
-	/* Be sure we do initialization only once (should be redundant now) */
-	static bool inited = false;
 
-	if (inited)
-		return;
+ static bool inited = 0;
 
-	pg_bindtextdomain(TEXTDOMAIN);
+ if (inited)
+  return;
 
-	DefineCustomEnumVariable("plpgsql.variable_conflict",
-							 gettext_noop("Sets handling of conflicts between PL/pgSQL variable names and table column names."),
-							 NULL,
-							 &plpgsql_variable_conflict,
-							 PLPGSQL_RESOLVE_ERROR,
-							 variable_conflict_options,
-							 PGC_SUSET, 0,
-							 NULL, NULL, NULL);
+ pg_bindtextdomain(TEXTDOMAIN);
 
-	DefineCustomBoolVariable("plpgsql.print_strict_params",
-							 gettext_noop("Print information about parameters in the DETAIL part of the error messages generated on INTO ... STRICT failures."),
-							 NULL,
-							 &plpgsql_print_strict_params,
-							 false,
-							 PGC_USERSET, 0,
-							 NULL, NULL, NULL);
+ DefineCustomEnumVariable("plpgsql.variable_conflict",
+        gettext_noop("Sets handling of conflicts between PL/pgSQL variable names and table column names."),
+        ((void*)0),
+        &plpgsql_variable_conflict,
+        PLPGSQL_RESOLVE_ERROR,
+        variable_conflict_options,
+        PGC_SUSET, 0,
+        ((void*)0), ((void*)0), ((void*)0));
 
-	DefineCustomBoolVariable("plpgsql.check_asserts",
-							 gettext_noop("Perform checks given in ASSERT statements."),
-							 NULL,
-							 &plpgsql_check_asserts,
-							 true,
-							 PGC_USERSET, 0,
-							 NULL, NULL, NULL);
+ DefineCustomBoolVariable("plpgsql.print_strict_params",
+        gettext_noop("Print information about parameters in the DETAIL part of the error messages generated on INTO ... STRICT failures."),
+        ((void*)0),
+        &plpgsql_print_strict_params,
+        0,
+        PGC_USERSET, 0,
+        ((void*)0), ((void*)0), ((void*)0));
 
-	DefineCustomStringVariable("plpgsql.extra_warnings",
-							   gettext_noop("List of programming constructs that should produce a warning."),
-							   NULL,
-							   &plpgsql_extra_warnings_string,
-							   "none",
-							   PGC_USERSET, GUC_LIST_INPUT,
-							   plpgsql_extra_checks_check_hook,
-							   plpgsql_extra_warnings_assign_hook,
-							   NULL);
+ DefineCustomBoolVariable("plpgsql.check_asserts",
+        gettext_noop("Perform checks given in ASSERT statements."),
+        ((void*)0),
+        &plpgsql_check_asserts,
+        1,
+        PGC_USERSET, 0,
+        ((void*)0), ((void*)0), ((void*)0));
 
-	DefineCustomStringVariable("plpgsql.extra_errors",
-							   gettext_noop("List of programming constructs that should produce an error."),
-							   NULL,
-							   &plpgsql_extra_errors_string,
-							   "none",
-							   PGC_USERSET, GUC_LIST_INPUT,
-							   plpgsql_extra_checks_check_hook,
-							   plpgsql_extra_errors_assign_hook,
-							   NULL);
+ DefineCustomStringVariable("plpgsql.extra_warnings",
+          gettext_noop("List of programming constructs that should produce a warning."),
+          ((void*)0),
+          &plpgsql_extra_warnings_string,
+          "none",
+          PGC_USERSET, GUC_LIST_INPUT,
+          plpgsql_extra_checks_check_hook,
+          plpgsql_extra_warnings_assign_hook,
+          ((void*)0));
 
-	EmitWarningsOnPlaceholders("plpgsql");
+ DefineCustomStringVariable("plpgsql.extra_errors",
+          gettext_noop("List of programming constructs that should produce an error."),
+          ((void*)0),
+          &plpgsql_extra_errors_string,
+          "none",
+          PGC_USERSET, GUC_LIST_INPUT,
+          plpgsql_extra_checks_check_hook,
+          plpgsql_extra_errors_assign_hook,
+          ((void*)0));
 
-	plpgsql_HashTableInit();
-	RegisterXactCallback(plpgsql_xact_cb, NULL);
-	RegisterSubXactCallback(plpgsql_subxact_cb, NULL);
+ EmitWarningsOnPlaceholders("plpgsql");
 
-	/* Set up a rendezvous point with optional instrumentation plugin */
-	plpgsql_plugin_ptr = (PLpgSQL_plugin **) find_rendezvous_variable("PLpgSQL_plugin");
+ plpgsql_HashTableInit();
+ RegisterXactCallback(plpgsql_xact_cb, ((void*)0));
+ RegisterSubXactCallback(plpgsql_subxact_cb, ((void*)0));
 
-	inited = true;
+
+ plpgsql_plugin_ptr = (PLpgSQL_plugin **) find_rendezvous_variable("PLpgSQL_plugin");
+
+ inited = 1;
 }

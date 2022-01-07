@@ -1,70 +1,70 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32 ;
-typedef  int /*<<< orphan*/  BufferDesc ;
-typedef  int Buffer ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Assert (int) ; 
- int BUF_STATE_GET_REFCOUNT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BufferDescriptorGetContentLock (int /*<<< orphan*/ *) ; 
- scalar_t__ BufferIsLocal (int) ; 
- int BufferIsValid (int) ; 
- int /*<<< orphan*/ * GetBufferDescriptor (int) ; 
- int GetPrivateRefCount (int) ; 
- int LWLockHeldByMeInMode (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LW_EXCLUSIVE ; 
- int* LocalRefCount ; 
- int /*<<< orphan*/  LockBufHdr (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  UnlockBufHdr (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint32 ;
+typedef int BufferDesc ;
+typedef int Buffer ;
+
+
+ int Assert (int) ;
+ int BUF_STATE_GET_REFCOUNT (int ) ;
+ int BufferDescriptorGetContentLock (int *) ;
+ scalar_t__ BufferIsLocal (int) ;
+ int BufferIsValid (int) ;
+ int * GetBufferDescriptor (int) ;
+ int GetPrivateRefCount (int) ;
+ int LWLockHeldByMeInMode (int ,int ) ;
+ int LW_EXCLUSIVE ;
+ int* LocalRefCount ;
+ int LockBufHdr (int *) ;
+ int UnlockBufHdr (int *,int ) ;
 
 bool
 IsBufferCleanupOK(Buffer buffer)
 {
-	BufferDesc *bufHdr;
-	uint32		buf_state;
+ BufferDesc *bufHdr;
+ uint32 buf_state;
 
-	Assert(BufferIsValid(buffer));
+ Assert(BufferIsValid(buffer));
 
-	if (BufferIsLocal(buffer))
-	{
-		/* There should be exactly one pin */
-		if (LocalRefCount[-buffer - 1] != 1)
-			return false;
-		/* Nobody else to wait for */
-		return true;
-	}
+ if (BufferIsLocal(buffer))
+ {
 
-	/* There should be exactly one local pin */
-	if (GetPrivateRefCount(buffer) != 1)
-		return false;
+  if (LocalRefCount[-buffer - 1] != 1)
+   return 0;
 
-	bufHdr = GetBufferDescriptor(buffer - 1);
+  return 1;
+ }
 
-	/* caller must hold exclusive lock on buffer */
-	Assert(LWLockHeldByMeInMode(BufferDescriptorGetContentLock(bufHdr),
-								LW_EXCLUSIVE));
 
-	buf_state = LockBufHdr(bufHdr);
+ if (GetPrivateRefCount(buffer) != 1)
+  return 0;
 
-	Assert(BUF_STATE_GET_REFCOUNT(buf_state) > 0);
-	if (BUF_STATE_GET_REFCOUNT(buf_state) == 1)
-	{
-		/* pincount is OK. */
-		UnlockBufHdr(bufHdr, buf_state);
-		return true;
-	}
+ bufHdr = GetBufferDescriptor(buffer - 1);
 
-	UnlockBufHdr(bufHdr, buf_state);
-	return false;
+
+ Assert(LWLockHeldByMeInMode(BufferDescriptorGetContentLock(bufHdr),
+        LW_EXCLUSIVE));
+
+ buf_state = LockBufHdr(bufHdr);
+
+ Assert(BUF_STATE_GET_REFCOUNT(buf_state) > 0);
+ if (BUF_STATE_GET_REFCOUNT(buf_state) == 1)
+ {
+
+  UnlockBufHdr(bufHdr, buf_state);
+  return 1;
+ }
+
+ UnlockBufHdr(bufHdr, buf_state);
+ return 0;
 }

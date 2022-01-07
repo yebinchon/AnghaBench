@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
-typedef  int /*<<< orphan*/  ptls_buffer_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint8_t ;
+typedef int ptls_buffer_t ;
 struct TYPE_3__ {scalar_t__ status; int nbc; int nbo; int v; } ;
-typedef  TYPE_1__ ptls_base64_decode_state_t ;
+typedef TYPE_1__ ptls_base64_decode_state_t ;
 
-/* Variables and functions */
- scalar_t__ PTLS_BASE64_DECODE_DONE ; 
- void* PTLS_BASE64_DECODE_FAILED ; 
- scalar_t__ PTLS_BASE64_DECODE_IN_PROGRESS ; 
- int PTLS_ERROR_INCORRECT_BASE64 ; 
- int* ptls_base64_values ; 
- int ptls_buffer__do_pushv (int /*<<< orphan*/ *,scalar_t__*,int) ; 
+
+ scalar_t__ PTLS_BASE64_DECODE_DONE ;
+ void* PTLS_BASE64_DECODE_FAILED ;
+ scalar_t__ PTLS_BASE64_DECODE_IN_PROGRESS ;
+ int PTLS_ERROR_INCORRECT_BASE64 ;
+ int* ptls_base64_values ;
+ int ptls_buffer__do_pushv (int *,scalar_t__*,int) ;
 
 int ptls_base64_decode(const char *text, ptls_base64_decode_state_t *state, ptls_buffer_t *buf)
 {
@@ -32,7 +32,7 @@ int ptls_base64_decode(const char *text, ptls_base64_decode_state_t *state, ptls
     int c;
     signed char vc;
 
-    /* skip initial blanks */
+
     while (text[text_index] != 0) {
         c = text[text_index];
 
@@ -58,18 +58,18 @@ int ptls_base64_decode(const char *text, ptls_base64_decode_state_t *state, ptls
                 state->nbo = 2;
                 state->v <<= 6;
             } else {
-                /* Skip final blanks */
+
                 for (--text_index; text[text_index] != 0; ++text_index) {
                     c = text[text_index];
                     if (!(c == ' ' || c == '\t' || c == '\r' || c == '\n' || c == 0x0B || c == 0x0C))
                         break;
                 }
 
-                /* Should now be at end of buffer */
+
                 if (text[text_index] == 0) {
                     break;
                 } else {
-                    /* Not at end of buffer, signal a decoding error */
+
                     state->nbo = 0;
                     state->status = PTLS_BASE64_DECODE_FAILED;
                     ret = PTLS_ERROR_INCORRECT_BASE64;
@@ -82,7 +82,7 @@ int ptls_base64_decode(const char *text, ptls_base64_decode_state_t *state, ptls
         }
 
         if (ret == 0 && state->nbc == 4) {
-            /* Convert to up to 3 octets */
+
             for (int j = 0; j < state->nbo; j++) {
                 decoded[j] = (uint8_t)(state->v >> (8 * (2 - j)));
             }
@@ -90,9 +90,9 @@ int ptls_base64_decode(const char *text, ptls_base64_decode_state_t *state, ptls
             ret = ptls_buffer__do_pushv(buf, decoded, state->nbo);
 
             if (ret == 0) {
-                /* test for fin or continuation */
+
                 if (state->nbo < 3) {
-                    /* Check that there are only trainling blanks on this line */
+
                     while (text[text_index] != 0) {
                         c = text[text_index++];
 

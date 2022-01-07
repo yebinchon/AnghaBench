@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT ;
-typedef  int /*<<< orphan*/  IP ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IPToStr (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  UINTToIP (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int UINT ;
+typedef int IP ;
+
+
+ int IPToStr (char*,int ,int *) ;
+ int UINTToIP (int *,int ) ;
 
 void IPToStr32(char *str, UINT size, UINT ip)
 {
-	IP ip_st;
-	// Validate arguments
-	if (str == NULL)
-	{
-		return;
-	}
+ IP ip_st;
 
-	UINTToIP(&ip_st, ip);
-	IPToStr(str, size, &ip_st);
+ if (str == ((void*)0))
+ {
+  return;
+ }
+
+ UINTToIP(&ip_st, ip);
+ IPToStr(str, size, &ip_st);
 }

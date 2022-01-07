@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct ta_header {struct ta_header* ext; TYPE_2__* next; TYPE_1__* prev; int /*<<< orphan*/  (* destructor ) (void*) ;} ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct ta_header {struct ta_header* ext; TYPE_2__* next; TYPE_1__* prev; int (* destructor ) (void*) ;} ;
 struct TYPE_4__ {TYPE_1__* prev; } ;
 struct TYPE_3__ {TYPE_2__* next; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (struct ta_header*) ; 
- struct ta_header* get_header (void*) ; 
- int /*<<< orphan*/  stub1 (void*) ; 
- int /*<<< orphan*/  ta_dbg_remove (struct ta_header*) ; 
- int /*<<< orphan*/  ta_free_children (void*) ; 
+
+ int free (struct ta_header*) ;
+ struct ta_header* get_header (void*) ;
+ int stub1 (void*) ;
+ int ta_dbg_remove (struct ta_header*) ;
+ int ta_free_children (void*) ;
 
 void ta_free(void *ptr)
 {
@@ -32,7 +32,7 @@ void ta_free(void *ptr)
         h->ext->destructor(ptr);
     ta_free_children(ptr);
     if (h->next) {
-        // Unlink from sibling list
+
         h->next->prev = h->prev;
         h->prev->next = h->next;
     }

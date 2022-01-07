@@ -1,66 +1,66 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  IBindStatusCallback ;
-typedef  scalar_t__ HRESULT ;
-typedef  scalar_t__ DWORD ;
-typedef  int BOOL ;
 
-/* Variables and functions */
- int BINDTEST_EMULATE ; 
- int BINDTEST_FILEDWLAPI ; 
- int /*<<< orphan*/  BeginningTransaction ; 
- int /*<<< orphan*/  CHECK_CALLED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CLEAR_CALLED (int /*<<< orphan*/ ) ; 
- int DeleteFileA (int /*<<< orphan*/ ) ; 
- scalar_t__ FILE_TEST ; 
- int /*<<< orphan*/  GetBindInfo ; 
- scalar_t__ GetLastError () ; 
- int /*<<< orphan*/  GetRootSecurityId ; 
- scalar_t__ HTTPS_TEST ; 
- scalar_t__ HTTP_TEST ; 
- int /*<<< orphan*/  OnProgress_BEGINDOWNLOADDATA ; 
- int /*<<< orphan*/  OnProgress_CACHEFILENAMEAVAILABLE ; 
- int /*<<< orphan*/  OnProgress_CONNECTING ; 
- int /*<<< orphan*/  OnProgress_DOWNLOADINGDATA ; 
- int /*<<< orphan*/  OnProgress_ENDDOWNLOADDATA ; 
- int /*<<< orphan*/  OnProgress_MIMETYPEAVAILABLE ; 
- int /*<<< orphan*/  OnProgress_SENDINGREQUEST ; 
- int /*<<< orphan*/  OnResponse ; 
- int /*<<< orphan*/  OnStartBinding ; 
- int /*<<< orphan*/  OnStopBinding ; 
- int /*<<< orphan*/  QueryInterface_IHttpNegotiate ; 
- int /*<<< orphan*/  QueryInterface_IHttpNegotiate2 ; 
- int /*<<< orphan*/  QueryInterface_IInternetProtocol ; 
- int /*<<< orphan*/  QueryInterface_IServiceProvider ; 
- int /*<<< orphan*/  QueryInterface_IWindowForBindingUI ; 
- int /*<<< orphan*/  QueryService_IInternetProtocol ; 
- int /*<<< orphan*/  SET_EXPECT (int /*<<< orphan*/ ) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  SetPriority ; 
- int /*<<< orphan*/  Start ; 
- int /*<<< orphan*/  TYMED_FILE ; 
- scalar_t__ URLDownloadToFileW (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  UnlockRequest ; 
- int /*<<< orphan*/  bsc ; 
- int /*<<< orphan*/  current_url ; 
- int /*<<< orphan*/  dwl_htmlA ; 
- int /*<<< orphan*/  dwl_htmlW ; 
- scalar_t__ emulate_protocol ; 
- scalar_t__ have_IHttpNegotiate2 ; 
- int /*<<< orphan*/  init_bind_test (scalar_t__,int,int /*<<< orphan*/ ) ; 
- scalar_t__ is_urlmon_protocol (scalar_t__) ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
- scalar_t__ test_protocol ; 
+
+
+
+typedef int IBindStatusCallback ;
+typedef scalar_t__ HRESULT ;
+typedef scalar_t__ DWORD ;
+typedef int BOOL ;
+
+
+ int BINDTEST_EMULATE ;
+ int BINDTEST_FILEDWLAPI ;
+ int BeginningTransaction ;
+ int CHECK_CALLED (int ) ;
+ int CLEAR_CALLED (int ) ;
+ int DeleteFileA (int ) ;
+ scalar_t__ FILE_TEST ;
+ int GetBindInfo ;
+ scalar_t__ GetLastError () ;
+ int GetRootSecurityId ;
+ scalar_t__ HTTPS_TEST ;
+ scalar_t__ HTTP_TEST ;
+ int OnProgress_BEGINDOWNLOADDATA ;
+ int OnProgress_CACHEFILENAMEAVAILABLE ;
+ int OnProgress_CONNECTING ;
+ int OnProgress_DOWNLOADINGDATA ;
+ int OnProgress_ENDDOWNLOADDATA ;
+ int OnProgress_MIMETYPEAVAILABLE ;
+ int OnProgress_SENDINGREQUEST ;
+ int OnResponse ;
+ int OnStartBinding ;
+ int OnStopBinding ;
+ int QueryInterface_IHttpNegotiate ;
+ int QueryInterface_IHttpNegotiate2 ;
+ int QueryInterface_IInternetProtocol ;
+ int QueryInterface_IServiceProvider ;
+ int QueryInterface_IWindowForBindingUI ;
+ int QueryService_IInternetProtocol ;
+ int SET_EXPECT (int ) ;
+ scalar_t__ S_OK ;
+ int SetPriority ;
+ int Start ;
+ int TYMED_FILE ;
+ scalar_t__ URLDownloadToFileW (int *,int ,int ,int ,int *) ;
+ int UnlockRequest ;
+ int bsc ;
+ int current_url ;
+ int dwl_htmlA ;
+ int dwl_htmlW ;
+ scalar_t__ emulate_protocol ;
+ scalar_t__ have_IHttpNegotiate2 ;
+ int init_bind_test (scalar_t__,int,int ) ;
+ scalar_t__ is_urlmon_protocol (scalar_t__) ;
+ int ok (int,char*,scalar_t__) ;
+ scalar_t__ test_protocol ;
 
 __attribute__((used)) static void test_URLDownloadToFile(DWORD prot, BOOL emul)
 {
@@ -105,7 +105,7 @@ __attribute__((used)) static void test_URLDownloadToFile(DWORD prot, BOOL emul)
         SET_EXPECT(OnStopBinding);
     }
 
-    hres = URLDownloadToFileW(NULL, current_url, dwl_htmlW, 0, (IBindStatusCallback*)&bsc);
+    hres = URLDownloadToFileW(((void*)0), current_url, dwl_htmlW, 0, (IBindStatusCallback*)&bsc);
     ok(hres == S_OK, "URLDownloadToFile failed: %08x\n", hres);
 
     CHECK_CALLED(GetBindInfo);
@@ -119,7 +119,7 @@ __attribute__((used)) static void test_URLDownloadToFile(DWORD prot, BOOL emul)
     CHECK_CALLED(OnStartBinding);
     if(emulate_protocol) {
         if(is_urlmon_protocol(test_protocol))
-            CLEAR_CALLED(SetPriority); /* Not called by IE11 */
+            CLEAR_CALLED(SetPriority);
         CHECK_CALLED(Start);
         CHECK_CALLED(UnlockRequest);
     }else {
@@ -137,7 +137,7 @@ __attribute__((used)) static void test_URLDownloadToFile(DWORD prot, BOOL emul)
         if(test_protocol == FILE_TEST)
             CHECK_CALLED(OnProgress_SENDINGREQUEST);
         else if(test_protocol == HTTP_TEST || test_protocol == HTTPS_TEST)
-            CLEAR_CALLED(OnProgress_SENDINGREQUEST); /* not called by IE7 */
+            CLEAR_CALLED(OnProgress_SENDINGREQUEST);
         if(test_protocol == HTTP_TEST || test_protocol == HTTPS_TEST) {
             CLEAR_CALLED(QueryInterface_IHttpNegotiate);
             CHECK_CALLED(OnResponse);
@@ -158,7 +158,7 @@ __attribute__((used)) static void test_URLDownloadToFile(DWORD prot, BOOL emul)
     if(prot != FILE_TEST || emul)
         return;
 
-    hres = URLDownloadToFileW(NULL, current_url, dwl_htmlW, 0, NULL);
+    hres = URLDownloadToFileW(((void*)0), current_url, dwl_htmlW, 0, ((void*)0));
     ok(hres == S_OK, "URLDownloadToFile failed: %08x\n", hres);
 
     res = DeleteFileA(dwl_htmlA);

@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct tcp_rpc_nonce_packet {int crypto_schema; scalar_t__ crypto_ts; int /*<<< orphan*/  key_select; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct tcp_rpc_nonce_packet {int crypto_schema; scalar_t__ crypto_ts; int key_select; } ;
 struct tcp_rpc_data {int packet_num; scalar_t__ packet_type; int packet_len; int crypto_flags; scalar_t__ nonce_time; } ;
 struct raw_message {int dummy; } ;
 struct connection {int dummy; } ;
 struct TYPE_2__ {int (* rpc_init_crypto ) (struct connection*,struct tcp_rpc_nonce_packet*) ;} ;
 
-/* Variables and functions */
-#define  RPC_CRYPTO_AES 129 
-#define  RPC_CRYPTO_NONE 128 
- scalar_t__ RPC_NONCE ; 
- TYPE_1__* TCP_RPCS_FUNC (struct connection*) ; 
- struct tcp_rpc_data* TCP_RPC_DATA (struct connection*) ; 
- int abs (scalar_t__) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  get_crypto_key_id () ; 
- int rwm_fetch_data (struct raw_message*,struct tcp_rpc_nonce_packet*,int) ; 
- int stub1 (struct connection*,struct tcp_rpc_nonce_packet*) ; 
- scalar_t__ time (int /*<<< orphan*/ ) ; 
+
+
+
+ scalar_t__ RPC_NONCE ;
+ TYPE_1__* TCP_RPCS_FUNC (struct connection*) ;
+ struct tcp_rpc_data* TCP_RPC_DATA (struct connection*) ;
+ int abs (scalar_t__) ;
+ int assert (int) ;
+ int get_crypto_key_id () ;
+ int rwm_fetch_data (struct raw_message*,struct tcp_rpc_nonce_packet*,int) ;
+ int stub1 (struct connection*,struct tcp_rpc_nonce_packet*) ;
+ scalar_t__ time (int ) ;
 
 __attribute__((used)) static int tcp_rpcs_process_nonce_packet (struct connection *c, struct raw_message *msg) {
   struct tcp_rpc_data *D = TCP_RPC_DATA(c);
@@ -44,7 +44,7 @@ __attribute__((used)) static int tcp_rpcs_process_nonce_packet (struct connectio
 
   assert (rwm_fetch_data (msg, &P, D->packet_len) == D->packet_len);
   switch (P.crypto_schema) {
-  case RPC_CRYPTO_NONE:
+  case 128:
     if (P.key_select) {
       return -3;
     }
@@ -54,7 +54,7 @@ __attribute__((used)) static int tcp_rpcs_process_nonce_packet (struct connectio
       return -5;
     }
     break;
-  case RPC_CRYPTO_AES:
+  case 129:
     if (!P.key_select || P.key_select != get_crypto_key_id ()) {
       if (D->crypto_flags & 1) {
         D->crypto_flags = 1;
@@ -71,7 +71,7 @@ __attribute__((used)) static int tcp_rpcs_process_nonce_packet (struct connectio
     }
     D->nonce_time = time (0);
     if (abs (P.crypto_ts - D->nonce_time) > 30) {
-      return -6;        //less'om
+      return -6;
     }
     D->crypto_flags &= -2;
     break;

@@ -1,144 +1,134 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int OPTION_CHOICE ;
-typedef  int /*<<< orphan*/  ENGINE ;
-typedef  int /*<<< orphan*/  DSA ;
-typedef  int /*<<< orphan*/  BN_GENCB ;
-typedef  int /*<<< orphan*/  BIO ;
-typedef  int /*<<< orphan*/  BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BIO_free_all (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BIO_printf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  BN_GENCB_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BN_GENCB_new () ; 
- int /*<<< orphan*/  BN_GENCB_set (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int BN_num_bits (int /*<<< orphan*/  const*) ; 
- int BN_num_bytes (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  DSA_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DSA_generate_key (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DSA_generate_parameters_ex (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DSA_get0_pqg (int /*<<< orphan*/ *,int /*<<< orphan*/  const**,int /*<<< orphan*/  const**,int /*<<< orphan*/  const**) ; 
- int /*<<< orphan*/ * DSA_new () ; 
- int /*<<< orphan*/ * DSAparams_dup (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DSAparams_print (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ERR_print_errors (int /*<<< orphan*/ ) ; 
- int FORMAT_ASN1 ; 
- int FORMAT_PEM ; 
- int OPENSSL_DSA_MAX_MODULUS_BITS ; 
- int /*<<< orphan*/  OPENSSL_free (unsigned char*) ; 
-#define  OPT_C 141 
-#define  OPT_ENGINE 140 
-#define  OPT_EOF 139 
-#define  OPT_ERR 138 
- int /*<<< orphan*/  OPT_FMT_PEMDER ; 
-#define  OPT_GENKEY 137 
-#define  OPT_HELP 136 
-#define  OPT_IN 135 
-#define  OPT_INFORM 134 
-#define  OPT_NOOUT 133 
-#define  OPT_OUT 132 
-#define  OPT_OUTFORM 131 
-#define  OPT_R_CASES 130 
-#define  OPT_TEXT 129 
-#define  OPT_VERBOSE 128 
- int /*<<< orphan*/ * PEM_read_bio_DSAparams (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int PEM_write_bio_DSAPrivateKey (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int PEM_write_bio_DSAparams (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- unsigned char* app_malloc (int,char*) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  bio_err ; 
- int /*<<< orphan*/ * bio_open_default (char*,char,int) ; 
- int /*<<< orphan*/ * bio_open_owner (char*,int,int) ; 
- int /*<<< orphan*/  bio_out ; 
- int /*<<< orphan*/ * d2i_DSAparams_bio (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  dsa_cb ; 
- int /*<<< orphan*/  dsaparam_options ; 
- int i2d_DSAPrivateKey_bio (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int i2d_DSAparams_bio (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- char* opt_arg () ; 
- int /*<<< orphan*/  opt_format (char*,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  opt_help (int /*<<< orphan*/ ) ; 
- char* opt_init (int,char**,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  opt_int (char*,int*) ; 
- int opt_next () ; 
- int opt_num_rest () ; 
- int /*<<< orphan*/  opt_rand (int) ; 
- char** opt_rest () ; 
- int /*<<< orphan*/  print_bignum_var (int /*<<< orphan*/ ,int /*<<< orphan*/  const*,char*,int,unsigned char*) ; 
- int /*<<< orphan*/  release_engine (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * setup_engine (char*,int /*<<< orphan*/ ) ; 
- int verbose ; 
+
+
+
+typedef int OPTION_CHOICE ;
+typedef int ENGINE ;
+typedef int DSA ;
+typedef int BN_GENCB ;
+typedef int BIO ;
+typedef int BIGNUM ;
+
+
+ int BIO_free (int *) ;
+ int BIO_free_all (int *) ;
+ int BIO_printf (int ,char*,...) ;
+ int BN_GENCB_free (int *) ;
+ int * BN_GENCB_new () ;
+ int BN_GENCB_set (int *,int ,int ) ;
+ int BN_num_bits (int const*) ;
+ int BN_num_bytes (int const*) ;
+ int DSA_free (int *) ;
+ int DSA_generate_key (int *) ;
+ int DSA_generate_parameters_ex (int *,int,int *,int ,int *,int *,int *) ;
+ int DSA_get0_pqg (int *,int const**,int const**,int const**) ;
+ int * DSA_new () ;
+ int * DSAparams_dup (int *) ;
+ int DSAparams_print (int *,int *) ;
+ int ERR_print_errors (int ) ;
+ int FORMAT_ASN1 ;
+ int FORMAT_PEM ;
+ int OPENSSL_DSA_MAX_MODULUS_BITS ;
+ int OPENSSL_free (unsigned char*) ;
+
+
+
+
+ int OPT_FMT_PEMDER ;
+ int * PEM_read_bio_DSAparams (int *,int *,int *,int *) ;
+ int PEM_write_bio_DSAPrivateKey (int *,int *,int *,int *,int ,int *,int *) ;
+ int PEM_write_bio_DSAparams (int *,int *) ;
+ unsigned char* app_malloc (int,char*) ;
+ int assert (int) ;
+ int bio_err ;
+ int * bio_open_default (char*,char,int) ;
+ int * bio_open_owner (char*,int,int) ;
+ int bio_out ;
+ int * d2i_DSAparams_bio (int *,int *) ;
+ int dsa_cb ;
+ int dsaparam_options ;
+ int i2d_DSAPrivateKey_bio (int *,int *) ;
+ int i2d_DSAparams_bio (int *,int *) ;
+ char* opt_arg () ;
+ int opt_format (char*,int ,int*) ;
+ int opt_help (int ) ;
+ char* opt_init (int,char**,int ) ;
+ int opt_int (char*,int*) ;
+ int opt_next () ;
+ int opt_num_rest () ;
+ int opt_rand (int) ;
+ char** opt_rest () ;
+ int print_bignum_var (int ,int const*,char*,int,unsigned char*) ;
+ int release_engine (int *) ;
+ int * setup_engine (char*,int ) ;
+ int verbose ;
 
 int dsaparam_main(int argc, char **argv)
 {
-    ENGINE *e = NULL;
-    DSA *dsa = NULL;
-    BIO *in = NULL, *out = NULL;
-    BN_GENCB *cb = NULL;
+    ENGINE *e = ((void*)0);
+    DSA *dsa = ((void*)0);
+    BIO *in = ((void*)0), *out = ((void*)0);
+    BN_GENCB *cb = ((void*)0);
     int numbits = -1, num = 0, genkey = 0;
     int informat = FORMAT_PEM, outformat = FORMAT_PEM, noout = 0, C = 0;
     int ret = 1, i, text = 0, private = 0;
-    char *infile = NULL, *outfile = NULL, *prog;
+    char *infile = ((void*)0), *outfile = ((void*)0), *prog;
     OPTION_CHOICE o;
 
     prog = opt_init(argc, argv, dsaparam_options);
-    while ((o = opt_next()) != OPT_EOF) {
+    while ((o = opt_next()) != 139) {
         switch (o) {
-        case OPT_EOF:
-        case OPT_ERR:
+        case 139:
+        case 138:
  opthelp:
             BIO_printf(bio_err, "%s: Use -help for summary.\n", prog);
             goto end;
-        case OPT_HELP:
+        case 136:
             opt_help(dsaparam_options);
             ret = 0;
             goto end;
-        case OPT_INFORM:
+        case 134:
             if (!opt_format(opt_arg(), OPT_FMT_PEMDER, &informat))
                 goto opthelp;
             break;
-        case OPT_IN:
+        case 135:
             infile = opt_arg();
             break;
-        case OPT_OUTFORM:
+        case 131:
             if (!opt_format(opt_arg(), OPT_FMT_PEMDER, &outformat))
                 goto opthelp;
             break;
-        case OPT_OUT:
+        case 132:
             outfile = opt_arg();
             break;
-        case OPT_ENGINE:
+        case 140:
             e = setup_engine(opt_arg(), 0);
             break;
-        case OPT_TEXT:
+        case 129:
             text = 1;
             break;
-        case OPT_C:
+        case 141:
             C = 1;
             break;
-        case OPT_GENKEY:
+        case 137:
             genkey = 1;
             break;
-        case OPT_R_CASES:
+        case 130:
             if (!opt_rand(o))
                 goto end;
             break;
-        case OPT_NOOUT:
+        case 133:
             noout = 1;
             break;
-        case OPT_VERBOSE:
+        case 128:
             verbose = 1;
             break;
         }
@@ -149,16 +139,16 @@ int dsaparam_main(int argc, char **argv)
     if (argc == 1) {
         if (!opt_int(argv[0], &num) || num < 0)
             goto end;
-        /* generate a key */
+
         numbits = num;
     }
     private = genkey ? 1 : 0;
 
     in = bio_open_default(infile, 'r', informat);
-    if (in == NULL)
+    if (in == ((void*)0))
         goto end;
     out = bio_open_owner(outfile, outformat, private);
-    if (out == NULL)
+    if (out == ((void*)0))
         goto end;
 
     if (numbits > 0) {
@@ -169,13 +159,13 @@ int dsaparam_main(int argc, char **argv)
                        OPENSSL_DSA_MAX_MODULUS_BITS, numbits);
 
         cb = BN_GENCB_new();
-        if (cb == NULL) {
+        if (cb == ((void*)0)) {
             BIO_printf(bio_err, "Error allocating BN_GENCB object\n");
             goto end;
         }
         BN_GENCB_set(cb, dsa_cb, bio_err);
         dsa = DSA_new();
-        if (dsa == NULL) {
+        if (dsa == ((void*)0)) {
             BIO_printf(bio_err, "Error allocating DSA object\n");
             goto end;
         }
@@ -184,17 +174,17 @@ int dsaparam_main(int argc, char **argv)
                        num);
             BIO_printf(bio_err, "This could take some time\n");
         }
-        if (!DSA_generate_parameters_ex(dsa, num, NULL, 0, NULL, NULL, cb)) {
+        if (!DSA_generate_parameters_ex(dsa, num, ((void*)0), 0, ((void*)0), ((void*)0), cb)) {
             ERR_print_errors(bio_err);
             BIO_printf(bio_err, "Error, DSA key generation failed\n");
             goto end;
         }
     } else if (informat == FORMAT_ASN1) {
-        dsa = d2i_DSAparams_bio(in, NULL);
+        dsa = d2i_DSAparams_bio(in, ((void*)0));
     } else {
-        dsa = PEM_read_bio_DSAparams(in, NULL, NULL, NULL);
+        dsa = PEM_read_bio_DSAparams(in, ((void*)0), ((void*)0), ((void*)0));
     }
-    if (dsa == NULL) {
+    if (dsa == ((void*)0)) {
         BIO_printf(bio_err, "unable to load DSA parameters\n");
         ERR_print_errors(bio_err);
         goto end;
@@ -205,7 +195,7 @@ int dsaparam_main(int argc, char **argv)
     }
 
     if (C) {
-        const BIGNUM *p = NULL, *q = NULL, *g = NULL;
+        const BIGNUM *p = ((void*)0), *q = ((void*)0), *g = ((void*)0);
         unsigned char *data;
         int len, bits_p;
 
@@ -257,7 +247,7 @@ int dsaparam_main(int argc, char **argv)
     if (genkey) {
         DSA *dsakey;
 
-        if ((dsakey = DSAparams_dup(dsa)) == NULL)
+        if ((dsakey = DSAparams_dup(dsa)) == ((void*)0))
             goto end;
         if (!DSA_generate_key(dsakey)) {
             ERR_print_errors(bio_err);
@@ -268,8 +258,8 @@ int dsaparam_main(int argc, char **argv)
         if (outformat == FORMAT_ASN1)
             i = i2d_DSAPrivateKey_bio(out, dsakey);
         else
-            i = PEM_write_bio_DSAPrivateKey(out, dsakey, NULL, NULL, 0, NULL,
-                                            NULL);
+            i = PEM_write_bio_DSAPrivateKey(out, dsakey, ((void*)0), ((void*)0), 0, ((void*)0),
+                                            ((void*)0));
         DSA_free(dsakey);
     }
     ret = 0;

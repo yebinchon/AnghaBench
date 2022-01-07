@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  PyObject ;
-typedef  int /*<<< orphan*/ * PyMODINIT_FUNC ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEFAULT_CHECK_INTERVAL ; 
- int /*<<< orphan*/ * PyLong_FromLong (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PyModule_AddObject (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * PyModule_Create (int /*<<< orphan*/ *) ; 
- scalar_t__ PyType_Ready (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Py_INCREF (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Py_XDECREF (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ReaperType ; 
- int /*<<< orphan*/  creaper ; 
- int /*<<< orphan*/ * default_check_interval ; 
- int /*<<< orphan*/  import_capi (char*) ; 
- int /*<<< orphan*/  protocol_capi ; 
+
+
+
+typedef int PyObject ;
+typedef int * PyMODINIT_FUNC ;
+
+
+ int DEFAULT_CHECK_INTERVAL ;
+ int * PyLong_FromLong (int ) ;
+ int PyModule_AddObject (int *,char*,int *) ;
+ int * PyModule_Create (int *) ;
+ scalar_t__ PyType_Ready (int *) ;
+ int Py_INCREF (int *) ;
+ int Py_XDECREF (int *) ;
+ int ReaperType ;
+ int creaper ;
+ int * default_check_interval ;
+ int import_capi (char*) ;
+ int protocol_capi ;
 
 PyMODINIT_FUNC
 PyInit_creaper(void)
 {
-  PyObject* m = NULL;
-  default_check_interval = NULL;
+  PyObject* m = ((void*)0);
+  default_check_interval = ((void*)0);
 
   if (PyType_Ready(&ReaperType) < 0)
     goto error;
@@ -54,7 +54,7 @@ PyInit_creaper(void)
 
   error:
   Py_XDECREF(default_check_interval);
-  m = NULL;
+  m = ((void*)0);
 
   finally:
   return m;

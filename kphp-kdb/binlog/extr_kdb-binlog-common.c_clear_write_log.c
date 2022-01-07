@@ -1,38 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  LogBuffer ; 
- int /*<<< orphan*/  LogSlaveBuffer ; 
- int /*<<< orphan*/  SLOG_BUFFER_SIZE ; 
- int /*<<< orphan*/  ULOG_BUFFER_SIZE ; 
- int /*<<< orphan*/  W ; 
- int /*<<< orphan*/  aio_write_start ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ binlog_disabled ; 
- scalar_t__ binlog_write_active ; 
- int /*<<< orphan*/  clear_one_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  flush_binlog () ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  usleep (int) ; 
+ int LogBuffer ;
+ int LogSlaveBuffer ;
+ int SLOG_BUFFER_SIZE ;
+ int ULOG_BUFFER_SIZE ;
+ int W ;
+ int aio_write_start ;
+ int assert (int) ;
+ scalar_t__ binlog_disabled ;
+ scalar_t__ binlog_write_active ;
+ int clear_one_log (int *,int ,int ) ;
+ int exit (int) ;
+ int flush_binlog () ;
+ int fprintf (int ,char*,...) ;
+ int stderr ;
+ int usleep (int) ;
 
 void clear_write_log (void) {
   if (binlog_disabled) {
     clear_one_log (&W, LogSlaveBuffer, SLOG_BUFFER_SIZE);
   } else {
-    /* wait for pending aio_write termination */
+
     int cnt = 0;
     while (binlog_write_active) {
       flush_binlog ();

@@ -1,60 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u32 ;
+
+
+
+
+typedef int u32 ;
 struct xdr_stream {int dummy; } ;
 struct mountres {unsigned int* auth_count; void** auth_flavors; } ;
-typedef  void* rpc_authflavor_t ;
-typedef  int /*<<< orphan*/  entries ;
-typedef  int /*<<< orphan*/  __be32 ;
+typedef void* rpc_authflavor_t ;
+typedef int entries ;
+typedef int __be32 ;
 
-/* Variables and functions */
- int EIO ; 
- int NFS_MAX_SECFLAVORS ; 
- int /*<<< orphan*/  dprintk (char*,int,...) ; 
- void* ntohl (int /*<<< orphan*/ ) ; 
- scalar_t__ unlikely (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * xdr_inline_decode (struct xdr_stream*,int) ; 
+
+ int EIO ;
+ int NFS_MAX_SECFLAVORS ;
+ int dprintk (char*,int,...) ;
+ void* ntohl (int ) ;
+ scalar_t__ unlikely (int ) ;
+ int * xdr_inline_decode (struct xdr_stream*,int) ;
 
 __attribute__((used)) static int decode_auth_flavors(struct xdr_stream *xdr, struct mountres *res)
 {
-	rpc_authflavor_t *flavors = res->auth_flavors;
-	unsigned int *count = res->auth_count;
-	u32 entries, i;
-	__be32 *p;
+ rpc_authflavor_t *flavors = res->auth_flavors;
+ unsigned int *count = res->auth_count;
+ u32 entries, i;
+ __be32 *p;
 
-	if (*count == 0)
-		return 0;
+ if (*count == 0)
+  return 0;
 
-	p = xdr_inline_decode(xdr, sizeof(entries));
-	if (unlikely(p == NULL))
-		return -EIO;
-	entries = ntohl(*p);
-	dprintk("NFS: received %u auth flavors\n", entries);
-	if (entries > NFS_MAX_SECFLAVORS)
-		entries = NFS_MAX_SECFLAVORS;
+ p = xdr_inline_decode(xdr, sizeof(entries));
+ if (unlikely(p == ((void*)0)))
+  return -EIO;
+ entries = ntohl(*p);
+ dprintk("NFS: received %u auth flavors\n", entries);
+ if (entries > NFS_MAX_SECFLAVORS)
+  entries = NFS_MAX_SECFLAVORS;
 
-	p = xdr_inline_decode(xdr, sizeof(u32) * entries);
-	if (unlikely(p == NULL))
-		return -EIO;
+ p = xdr_inline_decode(xdr, sizeof(u32) * entries);
+ if (unlikely(p == ((void*)0)))
+  return -EIO;
 
-	if (entries > *count)
-		entries = *count;
+ if (entries > *count)
+  entries = *count;
 
-	for (i = 0; i < entries; i++) {
-		flavors[i] = ntohl(*p++);
-		dprintk("NFS:   auth flavor[%u]: %d\n", i, flavors[i]);
-	}
-	*count = i;
+ for (i = 0; i < entries; i++) {
+  flavors[i] = ntohl(*p++);
+  dprintk("NFS:   auth flavor[%u]: %d\n", i, flavors[i]);
+ }
+ *count = i;
 
-	return 0;
+ return 0;
 }

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int is_relative; size_t num_names; int import_all; size_t num_items; void* items; void* names; } ;
 struct TYPE_6__ {char const* name; TYPE_1__ import; } ;
-typedef  int /*<<< orphan*/  SrcPos ;
-typedef  char const* ImportItem ;
-typedef  TYPE_2__ Decl ;
+typedef int SrcPos ;
+typedef char const* ImportItem ;
+typedef TYPE_2__ Decl ;
 
-/* Variables and functions */
- void* AST_DUP (char const**) ; 
- int /*<<< orphan*/  DECL_IMPORT ; 
- TYPE_2__* new_decl (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ void* AST_DUP (char const**) ;
+ int DECL_IMPORT ;
+ TYPE_2__* new_decl (int ,int ,int *) ;
 
 Decl *new_decl_import(SrcPos pos, const char *rename_name, bool is_relative, const char **names, size_t num_names, bool import_all, ImportItem *items, size_t num_items) {
-    Decl *d = new_decl(DECL_IMPORT, pos, NULL);
+    Decl *d = new_decl(DECL_IMPORT, pos, ((void*)0));
     d->name = rename_name;
     d->import.is_relative = is_relative;
     d->import.names = AST_DUP(names);

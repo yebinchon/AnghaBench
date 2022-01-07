@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_11__ {scalar_t__ dir; } ;
-struct TYPE_9__ {int /*<<< orphan*/  IPin_iface; } ;
+struct TYPE_9__ {int IPin_iface; } ;
 struct TYPE_10__ {TYPE_1__ pin; } ;
-typedef  int /*<<< orphan*/  STOPPROCESSPROC ;
-typedef  int /*<<< orphan*/  SAMPLEPROC_PULL ;
-typedef  int /*<<< orphan*/  REQUESTPROC ;
-typedef  int /*<<< orphan*/  QUERYACCEPTPROC ;
-typedef  TYPE_2__ PullPin ;
-typedef  TYPE_3__ PIN_INFO ;
-typedef  int /*<<< orphan*/  LPVOID ;
-typedef  int /*<<< orphan*/  LPCRITICAL_SECTION ;
-typedef  int /*<<< orphan*/  IPinVtbl ;
-typedef  int /*<<< orphan*/  IPin ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  CLEANUPPROC ;
+typedef int STOPPROCESSPROC ;
+typedef int SAMPLEPROC_PULL ;
+typedef int REQUESTPROC ;
+typedef int QUERYACCEPTPROC ;
+typedef TYPE_2__ PullPin ;
+typedef TYPE_3__ PIN_INFO ;
+typedef int LPVOID ;
+typedef int LPCRITICAL_SECTION ;
+typedef int IPinVtbl ;
+typedef int IPin ;
+typedef int HRESULT ;
+typedef int CLEANUPPROC ;
 
-/* Variables and functions */
- TYPE_2__* CoTaskMemAlloc (int) ; 
- int /*<<< orphan*/  CoTaskMemFree (TYPE_2__*) ; 
- int /*<<< orphan*/  ERR (char*,scalar_t__) ; 
- int /*<<< orphan*/  E_FAIL ; 
- int /*<<< orphan*/  E_INVALIDARG ; 
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- scalar_t__ PINDIR_INPUT ; 
- int /*<<< orphan*/  PullPin_Init (int /*<<< orphan*/  const*,TYPE_3__ const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_2__*) ; 
- scalar_t__ SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  S_OK ; 
+
+ TYPE_2__* CoTaskMemAlloc (int) ;
+ int CoTaskMemFree (TYPE_2__*) ;
+ int ERR (char*,scalar_t__) ;
+ int E_FAIL ;
+ int E_INVALIDARG ;
+ int E_OUTOFMEMORY ;
+ scalar_t__ PINDIR_INPUT ;
+ int PullPin_Init (int const*,TYPE_3__ const*,int ,int ,int ,int ,int ,int ,int ,TYPE_2__*) ;
+ scalar_t__ SUCCEEDED (int ) ;
+ int S_OK ;
 
 HRESULT PullPin_Construct(const IPinVtbl *PullPin_Vtbl, const PIN_INFO * pPinInfo,
                           SAMPLEPROC_PULL pSampleProc, LPVOID pUserData, QUERYACCEPTPROC pQueryAccept,
@@ -48,7 +48,7 @@ HRESULT PullPin_Construct(const IPinVtbl *PullPin_Vtbl, const PIN_INFO * pPinInf
 {
     PullPin * pPinImpl;
 
-    *ppPin = NULL;
+    *ppPin = ((void*)0);
 
     if (pPinInfo->dir != PINDIR_INPUT)
     {

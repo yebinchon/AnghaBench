@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int /*<<< orphan*/  int32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  UINT32_MAX ; 
- int /*<<< orphan*/  abs (int /*<<< orphan*/ ) ; 
- scalar_t__ log2sample (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int uint32_t ;
+typedef int int32_t ;
+
+
+ int UINT32_MAX ;
+ int abs (int ) ;
+ scalar_t__ log2sample (int ,int,int *) ;
 
 __attribute__((used)) static uint32_t log2mono(int32_t *samples, int nb_samples, int limit)
 {

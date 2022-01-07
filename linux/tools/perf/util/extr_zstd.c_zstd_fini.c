@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct zstd_data {int /*<<< orphan*/ * cstream; int /*<<< orphan*/ * dstream; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ZSTD_freeCStream (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ZSTD_freeDStream (int /*<<< orphan*/ *) ; 
+
+
+
+struct zstd_data {int * cstream; int * dstream; } ;
+
+
+ int ZSTD_freeCStream (int *) ;
+ int ZSTD_freeDStream (int *) ;
 
 int zstd_fini(struct zstd_data *data)
 {
-	if (data->dstream) {
-		ZSTD_freeDStream(data->dstream);
-		data->dstream = NULL;
-	}
+ if (data->dstream) {
+  ZSTD_freeDStream(data->dstream);
+  data->dstream = ((void*)0);
+ }
 
-	if (data->cstream) {
-		ZSTD_freeCStream(data->cstream);
-		data->cstream = NULL;
-	}
+ if (data->cstream) {
+  ZSTD_freeCStream(data->cstream);
+  data->cstream = ((void*)0);
+ }
 
-	return 0;
+ return 0;
 }

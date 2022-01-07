@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct tty_ldisc {int /*<<< orphan*/  ops; } ;
 
-/* Variables and functions */
- scalar_t__ WARN_ON_ONCE (int) ; 
- int /*<<< orphan*/  kfree (struct tty_ldisc*) ; 
- int /*<<< orphan*/  put_ldops (int /*<<< orphan*/ ) ; 
+
+
+
+struct tty_ldisc {int ops; } ;
+
+
+ scalar_t__ WARN_ON_ONCE (int) ;
+ int kfree (struct tty_ldisc*) ;
+ int put_ldops (int ) ;
 
 __attribute__((used)) static void tty_ldisc_put(struct tty_ldisc *ld)
 {
-	if (WARN_ON_ONCE(!ld))
-		return;
+ if (WARN_ON_ONCE(!ld))
+  return;
 
-	put_ldops(ld->ops);
-	kfree(ld);
+ put_ldops(ld->ops);
+ kfree(ld);
 }

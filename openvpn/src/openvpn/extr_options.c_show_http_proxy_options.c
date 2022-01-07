@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct http_proxy_options {TYPE_1__* custom_headers; } ;
 struct TYPE_2__ {scalar_t__ name; scalar_t__ content; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D_SHOW_PARMS ; 
- int MAX_CUSTOM_HTTP_HEADER ; 
- int /*<<< orphan*/  SHOW_STR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  auth_file ; 
- int /*<<< orphan*/  auth_method_string ; 
- int /*<<< orphan*/  http_version ; 
- int /*<<< orphan*/  msg (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  port ; 
- int /*<<< orphan*/  server ; 
- int /*<<< orphan*/  user_agent ; 
+
+ int D_SHOW_PARMS ;
+ int MAX_CUSTOM_HTTP_HEADER ;
+ int SHOW_STR (int ) ;
+ int auth_file ;
+ int auth_method_string ;
+ int http_version ;
+ int msg (int ,char*,...) ;
+ int port ;
+ int server ;
+ int user_agent ;
 
 __attribute__((used)) static void
 show_http_proxy_options(const struct http_proxy_options *o)
@@ -37,7 +37,7 @@ show_http_proxy_options(const struct http_proxy_options *o)
     SHOW_STR(auth_file);
     SHOW_STR(http_version);
     SHOW_STR(user_agent);
-    for  (i = 0; i < MAX_CUSTOM_HTTP_HEADER && o->custom_headers[i].name; i++)
+    for (i = 0; i < MAX_CUSTOM_HTTP_HEADER && o->custom_headers[i].name; i++)
     {
         if (o->custom_headers[i].content)
         {

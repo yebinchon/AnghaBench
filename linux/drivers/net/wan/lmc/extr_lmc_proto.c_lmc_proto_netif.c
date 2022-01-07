@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct sk_buff {int dummy; } ;
-struct TYPE_3__ {int if_type; int /*<<< orphan*/  lmc_device; } ;
-typedef  TYPE_1__ lmc_softc_t ;
+struct TYPE_3__ {int if_type; int lmc_device; } ;
+typedef TYPE_1__ lmc_softc_t ;
 
-/* Variables and functions */
-#define  LMC_NET 130 
-#define  LMC_PPP 129 
-#define  LMC_RAW 128 
- int /*<<< orphan*/  lmc_trace (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  netif_rx (struct sk_buff*) ; 
 
-void lmc_proto_netif(lmc_softc_t *sc, struct sk_buff *skb) /*FOLD00*/
+
+
+
+ int lmc_trace (int ,char*) ;
+ int netif_rx (struct sk_buff*) ;
+
+void lmc_proto_netif(lmc_softc_t *sc, struct sk_buff *skb)
 {
     lmc_trace(sc->lmc_device, "lmc_proto_netif in");
     switch(sc->if_type){
-    case LMC_PPP:
-    case LMC_NET:
+    case 129:
+    case 130:
     default:
         netif_rx(skb);
         break;
-    case LMC_RAW:
+    case 128:
         break;
     }
     lmc_trace(sc->lmc_device, "lmc_proto_netif out");

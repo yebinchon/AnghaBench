@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mt19937_state ;
 
-/* Variables and functions */
- int MEXP ; 
- int /*<<< orphan*/  add_state (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ calloc (int,int) ; 
- int /*<<< orphan*/  copy_state (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  gen_next (int /*<<< orphan*/ *) ; 
- scalar_t__ get_coef (unsigned long*,int) ; 
+
+
+
+typedef int mt19937_state ;
+
+
+ int MEXP ;
+ int add_state (int *,int *) ;
+ scalar_t__ calloc (int,int) ;
+ int copy_state (int *,int *) ;
+ int free (int *) ;
+ int gen_next (int *) ;
+ scalar_t__ get_coef (unsigned long*,int) ;
 
 void horner1(unsigned long *pf, mt19937_state *state) {
   int i = MEXP - 1;

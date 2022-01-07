@@ -1,67 +1,67 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char WCHAR ;
+
+
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef char WCHAR ;
 struct TYPE_11__ {double member_0; double member_1; } ;
 struct TYPE_10__ {double member_0; double member_1; double member_2; double member_3; int X; int Y; int Width; int Height; } ;
-typedef  int /*<<< orphan*/  HDC ;
-typedef  int /*<<< orphan*/  GraphicsState ;
-typedef  int GpStatus ;
-typedef  int /*<<< orphan*/  GpSolidFill ;
-typedef  int /*<<< orphan*/  GpRegion ;
-typedef  TYPE_1__ GpRectF ;
-typedef  TYPE_2__ GpPointF ;
-typedef  int /*<<< orphan*/  GpMetafile ;
-typedef  int /*<<< orphan*/  GpImage ;
-typedef  int /*<<< orphan*/  GpGraphics ;
-typedef  int /*<<< orphan*/  GpBrush ;
-typedef  int /*<<< orphan*/  GpBitmap ;
-typedef  int ARGB ;
+typedef int HDC ;
+typedef int GraphicsState ;
+typedef int GpStatus ;
+typedef int GpSolidFill ;
+typedef int GpRegion ;
+typedef TYPE_1__ GpRectF ;
+typedef TYPE_2__ GpPointF ;
+typedef int GpMetafile ;
+typedef int GpImage ;
+typedef int GpGraphics ;
+typedef int GpBrush ;
+typedef int GpBitmap ;
+typedef int ARGB ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CombineModeIntersect ; 
- int /*<<< orphan*/  CombineModeReplace ; 
- int /*<<< orphan*/  CombineModeXor ; 
- int /*<<< orphan*/  CreateCompatibleDC (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DeleteDC (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EmfTypeEmfPlusOnly ; 
- int GdipBitmapGetPixel (int /*<<< orphan*/ *,int,int,int*) ; 
- int GdipCreateBitmapFromScan0 (int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int GdipCreateRegionRect (TYPE_1__*,int /*<<< orphan*/ **) ; 
- int GdipCreateSolidFill (int,int /*<<< orphan*/ **) ; 
- int GdipDeleteBrush (int /*<<< orphan*/ *) ; 
- int GdipDeleteGraphics (int /*<<< orphan*/ *) ; 
- int GdipDeleteRegion (int /*<<< orphan*/ *) ; 
- int GdipDisposeImage (int /*<<< orphan*/ *) ; 
- int GdipFillRectangle (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int,int,int) ; 
- int GdipGetImageGraphicsContext (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int GdipGetVisibleClipBounds (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int GdipRecordMetafile (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__ const*,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ **) ; 
- int GdipRestoreGraphics (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int GdipSaveGraphics (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int GdipSetClipRect (int /*<<< orphan*/ *,int,int,int,int,int /*<<< orphan*/ ) ; 
- int GdipSetClipRegion (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MetafileFrameUnitPixel ; 
- int Ok ; 
- int /*<<< orphan*/  PixelFormat32bppARGB ; 
- int /*<<< orphan*/  UnitPixel ; 
- int /*<<< orphan*/  check_metafile (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,TYPE_2__ const*,TYPE_1__ const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  clipping_records ; 
- int /*<<< orphan*/  expect (int,int) ; 
- int /*<<< orphan*/  ok (int,char*,int) ; 
- int /*<<< orphan*/  play_metafile (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,TYPE_2__ const*,TYPE_1__ const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sync_metafile (int /*<<< orphan*/ **,char*) ; 
+
+ int CombineModeIntersect ;
+ int CombineModeReplace ;
+ int CombineModeXor ;
+ int CreateCompatibleDC (int ) ;
+ int DeleteDC (int ) ;
+ int EmfTypeEmfPlusOnly ;
+ int GdipBitmapGetPixel (int *,int,int,int*) ;
+ int GdipCreateBitmapFromScan0 (int,int,int ,int ,int *,int **) ;
+ int GdipCreateRegionRect (TYPE_1__*,int **) ;
+ int GdipCreateSolidFill (int,int **) ;
+ int GdipDeleteBrush (int *) ;
+ int GdipDeleteGraphics (int *) ;
+ int GdipDeleteRegion (int *) ;
+ int GdipDisposeImage (int *) ;
+ int GdipFillRectangle (int *,int *,int,int,int,int) ;
+ int GdipGetImageGraphicsContext (int *,int **) ;
+ int GdipGetVisibleClipBounds (int *,TYPE_1__*) ;
+ int GdipRecordMetafile (int ,int ,TYPE_1__ const*,int ,char const*,int **) ;
+ int GdipRestoreGraphics (int *,int ) ;
+ int GdipSaveGraphics (int *,int *) ;
+ int GdipSetClipRect (int *,int,int,int,int,int ) ;
+ int GdipSetClipRegion (int *,int *,int ) ;
+ int MetafileFrameUnitPixel ;
+ int Ok ;
+ int PixelFormat32bppARGB ;
+ int UnitPixel ;
+ int check_metafile (int *,int ,char*,TYPE_2__ const*,TYPE_1__ const*,int ) ;
+ int clipping_records ;
+ int expect (int,int) ;
+ int ok (int,char*,int) ;
+ int play_metafile (int *,int *,int ,char*,TYPE_2__ const*,TYPE_1__ const*,int ) ;
+ int sync_metafile (int **,char*) ;
 
 __attribute__((used)) static void test_clipping(void)
 {
@@ -152,7 +152,7 @@ __attribute__((used)) static void test_clipping(void)
 
     sync_metafile(&metafile, "clipping.emf");
 
-    stat = GdipCreateBitmapFromScan0(100, 100, 0, PixelFormat32bppARGB, NULL, &bitmap);
+    stat = GdipCreateBitmapFromScan0(100, 100, 0, PixelFormat32bppARGB, ((void*)0), &bitmap);
     expect(Ok, stat);
 
     stat = GdipGetImageGraphicsContext((GpImage*)bitmap, &graphics);

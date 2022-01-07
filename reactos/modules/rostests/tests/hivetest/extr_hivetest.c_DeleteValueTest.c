@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UNICODE_STRING ;
-typedef  int /*<<< orphan*/  OBJECT_ATTRIBUTES ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
-typedef  int /*<<< orphan*/  HANDLE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  InitializeObjectAttributes (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  MAXIMUM_ALLOWED ; 
- int /*<<< orphan*/  NT_SUCCESS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NtClose (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NtDeleteValueKey (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  NtOpenKey (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  OBJ_CASE_INSENSITIVE ; 
- int /*<<< orphan*/  RTL_CONSTANT_STRING (char*) ; 
- int /*<<< orphan*/  dprintf (char*,...) ; 
+
+
+
+typedef int UNICODE_STRING ;
+typedef int OBJECT_ATTRIBUTES ;
+typedef int NTSTATUS ;
+typedef int HANDLE ;
+
+
+ int InitializeObjectAttributes (int *,int *,int ,int *,int *) ;
+ int MAXIMUM_ALLOWED ;
+ int NT_SUCCESS (int ) ;
+ int NtClose (int ) ;
+ int NtDeleteValueKey (int ,int *) ;
+ int NtOpenKey (int *,int ,int *) ;
+ int OBJ_CASE_INSENSITIVE ;
+ int RTL_CONSTANT_STRING (char*) ;
+ int dprintf (char*,...) ;
 
 void DeleteValueTest(void)
 {
@@ -37,13 +37,13 @@ void DeleteValueTest(void)
   dprintf("Open key '\\Registry\\Machine\\Software\\testkey':\n");
 
   InitializeObjectAttributes(&ObjectAttributes,
-			     &KeyName,
-			     OBJ_CASE_INSENSITIVE,
-			     NULL,
-			     NULL);
+        &KeyName,
+        OBJ_CASE_INSENSITIVE,
+        ((void*)0),
+        ((void*)0));
   Status=NtOpenKey(&KeyHandle,
-		   MAXIMUM_ALLOWED,
-		   &ObjectAttributes);
+     MAXIMUM_ALLOWED,
+     &ObjectAttributes);
   dprintf("  Status = %lx\n", Status);
   if (!NT_SUCCESS(Status))
     return;
@@ -52,7 +52,7 @@ void DeleteValueTest(void)
 
 
   Status = NtDeleteValueKey(KeyHandle,
-			    &ValueName);
+       &ValueName);
   dprintf("  Status = %lx\n", Status);
 
   dprintf("Close key:\n");

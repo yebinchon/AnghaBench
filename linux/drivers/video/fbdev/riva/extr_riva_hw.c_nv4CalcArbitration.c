@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int pclk_khz; int mclk_khz; int nvclk_khz; int mem_page_miss; int mem_latency; int memory_width; int enable_video; int gr_during_vid; int pix_bpp; int mem_aligned; int enable_mp; } ;
-typedef  TYPE_1__ nv4_sim_state ;
+typedef TYPE_1__ nv4_sim_state ;
 struct TYPE_6__ {int valid; int graphics_lwm; int graphics_burst_size; int video_lwm; int video_burst_size; } ;
-typedef  TYPE_2__ nv4_fifo_info ;
+typedef TYPE_2__ nv4_fifo_info ;
 
-/* Variables and functions */
 
-__attribute__((used)) static void nv4CalcArbitration 
+
+__attribute__((used)) static void nv4CalcArbitration
 (
     nv4_fifo_info *fifo,
     nv4_sim_state *arb
@@ -101,7 +101,7 @@ __attribute__((used)) static void nv4CalcArbitration
                 video_fill_us = vbs *1000*1000/ 16 / nvclk_freq ;
             else
                 video_fill_us = vbs*1000*1000 / (8 * width) / mclk_freq;
-            cpm_us = crtpagemiss  * pagemiss *1000*1000/ mclk_freq;
+            cpm_us = crtpagemiss * pagemiss *1000*1000/ mclk_freq;
             us_crt =
             us_video
             +video_fill_us
@@ -116,8 +116,8 @@ __attribute__((used)) static void nv4CalcArbitration
             crtc_drain_rate = pclk_freq * bpp/8;
             crtpagemiss = 2;
             crtpagemiss += 1;
-            cpm_us = crtpagemiss  * pagemiss *1000*1000/ mclk_freq;
-            us_crt =  cpm_us + us_m + us_n + us_p ;
+            cpm_us = crtpagemiss * pagemiss *1000*1000/ mclk_freq;
+            us_crt = cpm_us + us_m + us_n + us_p ;
             clwm = us_crt * crtc_drain_rate/(1000*1000);
             clwm++;
         }
@@ -128,7 +128,7 @@ __attribute__((used)) static void nv4CalcArbitration
         {
             fifo->valid = 0;
             found = 0;
-            if (mclk_extra ==0)   found = 1;
+            if (mclk_extra ==0) found = 1;
             mclk_extra--;
         }
         else if (video_enable)
@@ -137,7 +137,7 @@ __attribute__((used)) static void nv4CalcArbitration
             {
                 fifo->valid = 0;
                 found = 0;
-                if (mclk_extra ==0)   found = 1;
+                if (mclk_extra ==0) found = 1;
                 mclk_extra--;
             }
         }
@@ -147,7 +147,7 @@ __attribute__((used)) static void nv4CalcArbitration
             {
                 fifo->valid = 0;
                 found = 0;
-                if (mclk_extra ==0)   found = 1;
+                if (mclk_extra ==0) found = 1;
                 mclk_extra--;
             }
         }

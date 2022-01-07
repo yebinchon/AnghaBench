@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct constant {TYPE_1__* value; int /*<<< orphan*/  regnum; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct constant {TYPE_1__* value; int regnum; } ;
 struct bwriter_shader {int num_cb; struct constant** constB; } ;
-struct TYPE_2__ {int /*<<< orphan*/  b; } ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
+struct TYPE_2__ {int b; } ;
+typedef int DWORD ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
- void* d3dcompiler_alloc (int) ; 
- struct constant** d3dcompiler_realloc (struct constant**,int) ; 
+
+ int ERR (char*) ;
+ int FALSE ;
+ int TRUE ;
+ void* d3dcompiler_alloc (int) ;
+ struct constant** d3dcompiler_realloc (struct constant**,int) ;
 
 BOOL add_constB(struct bwriter_shader *shader, DWORD reg, BOOL x) {
     struct constant *newconst;

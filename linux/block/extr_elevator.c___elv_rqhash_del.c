@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct request {int /*<<< orphan*/  rq_flags; int /*<<< orphan*/  hash; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RQF_HASHED ; 
- int /*<<< orphan*/  hash_del (int /*<<< orphan*/ *) ; 
+
+
+
+struct request {int rq_flags; int hash; } ;
+
+
+ int RQF_HASHED ;
+ int hash_del (int *) ;
 
 __attribute__((used)) static inline void __elv_rqhash_del(struct request *rq)
 {
-	hash_del(&rq->hash);
-	rq->rq_flags &= ~RQF_HASHED;
+ hash_del(&rq->hash);
+ rq->rq_flags &= ~RQF_HASHED;
 }

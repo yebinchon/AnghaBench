@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u8 ;
+
+
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int u8 ;
 struct TYPE_10__ {int flags; TYPE_1__* db; } ;
-struct TYPE_9__ {int /*<<< orphan*/  mallocFailed; } ;
-typedef  TYPE_2__ Mem ;
+struct TYPE_9__ {int mallocFailed; } ;
+typedef TYPE_2__ Mem ;
 
-/* Variables and functions */
- int MEM_Blob ; 
- int MEM_Int ; 
- int MEM_Null ; 
- int MEM_Real ; 
- int MEM_Str ; 
- int MEM_TypeMask ; 
- int MEM_Zero ; 
- int /*<<< orphan*/  MemSetTypeFlag (TYPE_2__*,int) ; 
-#define  SQLITE_AFF_BLOB 131 
-#define  SQLITE_AFF_INTEGER 130 
-#define  SQLITE_AFF_NUMERIC 129 
-#define  SQLITE_AFF_REAL 128 
- int SQLITE_AFF_TEXT ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  sqlite3ValueApplyAffinity (TYPE_2__*,int,int) ; 
- int /*<<< orphan*/  sqlite3VdbeMemIntegerify (TYPE_2__*) ; 
- int /*<<< orphan*/  sqlite3VdbeMemNumerify (TYPE_2__*) ; 
- int /*<<< orphan*/  sqlite3VdbeMemRealify (TYPE_2__*) ; 
+
+ int MEM_Blob ;
+ int MEM_Int ;
+ int MEM_Null ;
+ int MEM_Real ;
+ int MEM_Str ;
+ int MEM_TypeMask ;
+ int MEM_Zero ;
+ int MemSetTypeFlag (TYPE_2__*,int) ;
+
+
+
+
+ int SQLITE_AFF_TEXT ;
+ int assert (int) ;
+ int sqlite3ValueApplyAffinity (TYPE_2__*,int,int) ;
+ int sqlite3VdbeMemIntegerify (TYPE_2__*) ;
+ int sqlite3VdbeMemNumerify (TYPE_2__*) ;
+ int sqlite3VdbeMemRealify (TYPE_2__*) ;
 
 void sqlite3VdbeMemCast(Mem *pMem, u8 aff, u8 encoding){
   if( pMem->flags & MEM_Null ) return;
   switch( aff ){
-    case SQLITE_AFF_BLOB: {   /* Really a cast to BLOB */
+    case 131: {
       if( (pMem->flags & MEM_Blob)==0 ){
         sqlite3ValueApplyAffinity(pMem, SQLITE_AFF_TEXT, encoding);
         assert( pMem->flags & MEM_Str || pMem->db->mallocFailed );
@@ -50,15 +50,15 @@ void sqlite3VdbeMemCast(Mem *pMem, u8 aff, u8 encoding){
       }
       break;
     }
-    case SQLITE_AFF_NUMERIC: {
+    case 129: {
       sqlite3VdbeMemNumerify(pMem);
       break;
     }
-    case SQLITE_AFF_INTEGER: {
+    case 130: {
       sqlite3VdbeMemIntegerify(pMem);
       break;
     }
-    case SQLITE_AFF_REAL: {
+    case 128: {
       sqlite3VdbeMemRealify(pMem);
       break;
     }

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ao_chain {int /*<<< orphan*/  ao; } ;
+
+
+
+
+struct ao_chain {int ao; } ;
 struct MPOpts {double softvol_volume; int softvol_mute; } ;
 struct MPContext {struct ao_chain* ao_chain; struct MPOpts* opts; } ;
 
-/* Variables and functions */
- float MPMAX (double,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ao_set_gain (int /*<<< orphan*/ ,float) ; 
- float compute_replaygain (struct MPContext*) ; 
- float pow (float,int) ; 
+
+ float MPMAX (double,int ) ;
+ int ao_set_gain (int ,float) ;
+ float compute_replaygain (struct MPContext*) ;
+ float pow (float,int) ;
 
 void audio_update_volume(struct MPContext *mpctx)
 {

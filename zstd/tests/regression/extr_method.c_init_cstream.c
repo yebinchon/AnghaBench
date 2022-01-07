@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
 struct TYPE_12__ {scalar_t__ use_dictionary; } ;
-typedef  TYPE_2__ config_t ;
-struct TYPE_11__ {int /*<<< orphan*/  size; int /*<<< orphan*/ * data; } ;
+typedef TYPE_2__ config_t ;
+struct TYPE_11__ {int size; int * data; } ;
 struct TYPE_13__ {TYPE_1__ dictionary; } ;
-typedef  TYPE_3__ buffer_state_t ;
-struct TYPE_14__ {int /*<<< orphan*/  fParams; int /*<<< orphan*/  cParams; } ;
-typedef  TYPE_4__ ZSTD_parameters ;
-typedef  int /*<<< orphan*/  ZSTD_CStream ;
-typedef  int /*<<< orphan*/  ZSTD_CDict ;
+typedef TYPE_3__ buffer_state_t ;
+struct TYPE_14__ {int fParams; int cParams; } ;
+typedef TYPE_4__ ZSTD_parameters ;
+typedef int ZSTD_CStream ;
+typedef int ZSTD_CDict ;
 
-/* Variables and functions */
- int const CONFIG_NO_LEVEL ; 
- int /*<<< orphan*/  ZSTD_CONTENTSIZE_UNKNOWN ; 
- int /*<<< orphan*/ * ZSTD_createCDict (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int const) ; 
- int /*<<< orphan*/ * ZSTD_createCDict_advanced (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ZSTD_dct_auto ; 
- int /*<<< orphan*/  ZSTD_defaultCMem ; 
- int /*<<< orphan*/  ZSTD_dlm_byRef ; 
- size_t ZSTD_initCStream (int /*<<< orphan*/ *,int const) ; 
- size_t ZSTD_initCStream_advanced (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_4__ const,int /*<<< orphan*/ ) ; 
- size_t ZSTD_initCStream_usingCDict (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- size_t ZSTD_initCStream_usingCDict_advanced (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- size_t ZSTD_initCStream_usingDict (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int const) ; 
- scalar_t__ ZSTD_isError (size_t) ; 
- int config_get_level (TYPE_2__ const*) ; 
- TYPE_4__ config_get_zstd_params (TYPE_2__ const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int const CONFIG_NO_LEVEL ;
+ int ZSTD_CONTENTSIZE_UNKNOWN ;
+ int * ZSTD_createCDict (int *,int ,int const) ;
+ int * ZSTD_createCDict_advanced (int *,int ,int ,int ,int ,int ) ;
+ int ZSTD_dct_auto ;
+ int ZSTD_defaultCMem ;
+ int ZSTD_dlm_byRef ;
+ size_t ZSTD_initCStream (int *,int const) ;
+ size_t ZSTD_initCStream_advanced (int *,int *,int ,TYPE_4__ const,int ) ;
+ size_t ZSTD_initCStream_usingCDict (int *,int *) ;
+ size_t ZSTD_initCStream_usingCDict_advanced (int *,int *,int ,int ) ;
+ size_t ZSTD_initCStream_usingDict (int *,int *,int ,int const) ;
+ scalar_t__ ZSTD_isError (size_t) ;
+ int config_get_level (TYPE_2__ const*) ;
+ TYPE_4__ config_get_zstd_params (TYPE_2__ const*,int ,int ) ;
 
 __attribute__((used)) static int init_cstream(
     buffer_state_t* state,
@@ -51,7 +51,7 @@ __attribute__((used)) static int init_cstream(
     size_t zret;
     if (advanced) {
         ZSTD_parameters const params = config_get_zstd_params(config, 0, 0);
-        ZSTD_CDict* dict = NULL;
+        ZSTD_CDict* dict = ((void*)0);
         if (cdict) {
             if (!config->use_dictionary)
               return 1;
@@ -70,7 +70,7 @@ __attribute__((used)) static int init_cstream(
         } else {
             zret = ZSTD_initCStream_advanced(
                 zcs,
-                config->use_dictionary ? state->dictionary.data : NULL,
+                config->use_dictionary ? state->dictionary.data : ((void*)0),
                 config->use_dictionary ? state->dictionary.size : 0,
                 params,
                 ZSTD_CONTENTSIZE_UNKNOWN);

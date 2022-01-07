@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct decoder_owner {int /*<<< orphan*/  p_fifo; int /*<<< orphan*/  wait_fifo; int /*<<< orphan*/  b_waiting; } ;
-typedef  int /*<<< orphan*/  decoder_t ;
-struct TYPE_4__ {int /*<<< orphan*/  i_flags; } ;
-typedef  TYPE_1__ block_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BLOCK_FLAG_DISCONTINUITY ; 
- int /*<<< orphan*/  block_ChainRelease (int /*<<< orphan*/ ) ; 
- struct decoder_owner* dec_get_owner (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  msg_Warn (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  vlc_fifo_DequeueAllUnlocked (int /*<<< orphan*/ ) ; 
- int vlc_fifo_GetBytes (int /*<<< orphan*/ ) ; 
- int vlc_fifo_GetCount (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vlc_fifo_Lock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vlc_fifo_QueueUnlocked (int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  vlc_fifo_Unlock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vlc_fifo_WaitCond (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct decoder_owner {int p_fifo; int wait_fifo; int b_waiting; } ;
+typedef int decoder_t ;
+struct TYPE_4__ {int i_flags; } ;
+typedef TYPE_1__ block_t ;
+
+
+ int BLOCK_FLAG_DISCONTINUITY ;
+ int block_ChainRelease (int ) ;
+ struct decoder_owner* dec_get_owner (int *) ;
+ int msg_Warn (int *,char*) ;
+ int vlc_fifo_DequeueAllUnlocked (int ) ;
+ int vlc_fifo_GetBytes (int ) ;
+ int vlc_fifo_GetCount (int ) ;
+ int vlc_fifo_Lock (int ) ;
+ int vlc_fifo_QueueUnlocked (int ,TYPE_1__*) ;
+ int vlc_fifo_Unlock (int ) ;
+ int vlc_fifo_WaitCond (int ,int *) ;
 
 void input_DecoderDecode( decoder_t *p_dec, block_t *p_block, bool b_do_pace )
 {
@@ -36,9 +36,9 @@ void input_DecoderDecode( decoder_t *p_dec, block_t *p_block, bool b_do_pace )
     vlc_fifo_Lock( p_owner->p_fifo );
     if( !b_do_pace )
     {
-        /* FIXME: ideally we would check the time amount of data
-         * in the FIFO instead of its size. */
-        /* 400 MiB, i.e. ~ 50mb/s for 60s */
+
+
+
         if( vlc_fifo_GetBytes( p_owner->p_fifo ) > 400*1024*1024 )
         {
             msg_Warn( p_dec, "decoder/packetizer fifo full (data not "
@@ -49,9 +49,9 @@ void input_DecoderDecode( decoder_t *p_dec, block_t *p_block, bool b_do_pace )
     }
     else
     if( !p_owner->b_waiting )
-    {   /* The FIFO is not consumed when waiting, so pacing would deadlock VLC.
-         * Locking is not necessary as b_waiting is only read, not written by
-         * the decoder thread. */
+    {
+
+
         while( vlc_fifo_GetCount( p_owner->p_fifo ) >= 10 )
             vlc_fifo_WaitCond( p_owner->p_fifo, &p_owner->wait_fifo );
     }

@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_6__ ;
-typedef  struct TYPE_15__   TYPE_5__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint32_t ;
-typedef  int /*<<< orphan*/  naf ;
-typedef  int UINT8 ;
-struct TYPE_16__ {int /*<<< orphan*/ * p; } ;
-struct TYPE_15__ {int /*<<< orphan*/ * p; } ;
+
+
+typedef struct TYPE_16__ TYPE_6__ ;
+typedef struct TYPE_15__ TYPE_5__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint32_t ;
+typedef int naf ;
+typedef int UINT8 ;
+struct TYPE_16__ {int * p; } ;
+struct TYPE_15__ {int * p; } ;
 struct TYPE_14__ {int* z; int* x; int* y; } ;
-typedef  TYPE_1__ Point ;
-typedef  int /*<<< orphan*/  DWORD ;
+typedef TYPE_1__ Point ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ECC_Add (TYPE_1__*,TYPE_1__*,TYPE_1__*,scalar_t__) ; 
- int /*<<< orphan*/  ECC_Double (TYPE_1__*,TYPE_1__*,scalar_t__) ; 
- int /*<<< orphan*/  ECC_NAF (int*,scalar_t__*,int /*<<< orphan*/ *,scalar_t__) ; 
- scalar_t__ KEY_LENGTH_DWORDS_P256 ; 
- TYPE_6__ curve ; 
- TYPE_5__ curve_p256 ; 
- int /*<<< orphan*/  memset (int*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  multiprecision_copy (int*,int*,scalar_t__) ; 
- int /*<<< orphan*/  multiprecision_init (int*,scalar_t__) ; 
- int /*<<< orphan*/  multiprecision_inv_mod (int*,int*,scalar_t__) ; 
- int /*<<< orphan*/  multiprecision_mersenns_mult_mod (int*,int*,int*,scalar_t__) ; 
- int /*<<< orphan*/  multiprecision_mersenns_squa_mod (int*,int*,scalar_t__) ; 
- int /*<<< orphan*/  multiprecision_sub (int*,int /*<<< orphan*/ *,int*,scalar_t__) ; 
- int /*<<< orphan*/  p_256_copy_point (TYPE_1__*,TYPE_1__*) ; 
- int /*<<< orphan*/  p_256_init_point (TYPE_1__*) ; 
+
+ int ECC_Add (TYPE_1__*,TYPE_1__*,TYPE_1__*,scalar_t__) ;
+ int ECC_Double (TYPE_1__*,TYPE_1__*,scalar_t__) ;
+ int ECC_NAF (int*,scalar_t__*,int *,scalar_t__) ;
+ scalar_t__ KEY_LENGTH_DWORDS_P256 ;
+ TYPE_6__ curve ;
+ TYPE_5__ curve_p256 ;
+ int memset (int*,int ,int) ;
+ int multiprecision_copy (int*,int*,scalar_t__) ;
+ int multiprecision_init (int*,scalar_t__) ;
+ int multiprecision_inv_mod (int*,int*,scalar_t__) ;
+ int multiprecision_mersenns_mult_mod (int*,int*,int*,scalar_t__) ;
+ int multiprecision_mersenns_squa_mod (int*,int*,scalar_t__) ;
+ int multiprecision_sub (int*,int *,int*,scalar_t__) ;
+ int p_256_copy_point (TYPE_1__*,TYPE_1__*) ;
+ int p_256_init_point (TYPE_1__*) ;
 
 void ECC_PointMult_Bin_NAF(Point *q, Point *p, DWORD *n, uint32_t keyLength)
 {
@@ -58,17 +58,17 @@ void ECC_PointMult_Bin_NAF(Point *q, Point *p, DWORD *n, uint32_t keyLength)
     multiprecision_init(p->z, keyLength);
     p->z[0] = 1;
 
-    // initialization
+
     p_256_init_point(q);
 
-    // -p
+
     multiprecision_copy(minus_p.x, p->x, keyLength);
     multiprecision_sub(minus_p.y, modp, p->y, keyLength);
 
     multiprecision_init(minus_p.z, keyLength);
     minus_p.z[0] = 1;
 
-    // NAF
+
     memset(naf, 0, sizeof(naf));
     ECC_NAF(naf, &NumNaf, n, keyLength);
 

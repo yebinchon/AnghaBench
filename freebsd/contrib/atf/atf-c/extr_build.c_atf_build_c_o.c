@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  atf_list_t ;
-typedef  int /*<<< orphan*/  atf_error_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ATF_BUILD_CC ; 
- int /*<<< orphan*/  ATF_BUILD_CFLAGS ; 
- int /*<<< orphan*/  ATF_BUILD_CPPFLAGS ; 
- int /*<<< orphan*/  append_config_var (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  append_optargs (char const* const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  append_src_out (char const*,char const*,int /*<<< orphan*/ *) ; 
- scalar_t__ atf_is_error (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  atf_list_fini (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  atf_list_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  list_to_array (int /*<<< orphan*/ *,char***) ; 
+
+
+
+typedef int atf_list_t ;
+typedef int atf_error_t ;
+
+
+ int ATF_BUILD_CC ;
+ int ATF_BUILD_CFLAGS ;
+ int ATF_BUILD_CPPFLAGS ;
+ int append_config_var (char*,int ,int *) ;
+ int append_optargs (char const* const*,int *) ;
+ int append_src_out (char const*,char const*,int *) ;
+ scalar_t__ atf_is_error (int ) ;
+ int atf_list_fini (int *) ;
+ int atf_list_init (int *) ;
+ int list_to_array (int *,char***) ;
 
 atf_error_t
 atf_build_c_o(const char *sfile,
@@ -51,7 +51,7 @@ atf_build_c_o(const char *sfile,
     if (atf_is_error(err))
         goto out_list;
 
-    if (optargs != NULL) {
+    if (optargs != ((void*)0)) {
         err = append_optargs(optargs, &argv_list);
         if (atf_is_error(err))
             goto out_list;

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint16_t ;
-typedef  unsigned int int16_t ;
-struct TYPE_5__ {int /*<<< orphan*/  (* clear_block ) (unsigned int*) ;} ;
-struct TYPE_6__ {unsigned int* last_dc; int /*<<< orphan*/  avctx; TYPE_1__ bdsp; } ;
-typedef  TYPE_2__ MJpegDecodeContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- unsigned int mjpeg_decode_dc (TYPE_2__*,int) ; 
- int /*<<< orphan*/  stub1 (unsigned int*) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint16_t ;
+typedef unsigned int int16_t ;
+struct TYPE_5__ {int (* clear_block ) (unsigned int*) ;} ;
+struct TYPE_6__ {unsigned int* last_dc; int avctx; TYPE_1__ bdsp; } ;
+typedef TYPE_2__ MJpegDecodeContext ;
+
+
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ int av_log (int ,int ,char*) ;
+ unsigned int mjpeg_decode_dc (TYPE_2__*,int) ;
+ int stub1 (unsigned int*) ;
 
 __attribute__((used)) static int decode_dc_progressive(MJpegDecodeContext *s, int16_t *block,
                                  int component, int dc_index,

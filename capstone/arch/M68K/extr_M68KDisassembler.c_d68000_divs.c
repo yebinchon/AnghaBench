@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  m68k_info ;
 
-/* Variables and functions */
- int /*<<< orphan*/  M68K_INS_DIVS ; 
- int /*<<< orphan*/  build_er_1 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int m68k_info ;
+
+
+ int M68K_INS_DIVS ;
+ int build_er_1 (int *,int ,int) ;
 
 __attribute__((used)) static void d68000_divs(m68k_info *info)
 {
-	build_er_1(info, M68K_INS_DIVS, 2);
+ build_er_1(info, M68K_INS_DIVS, 2);
 }

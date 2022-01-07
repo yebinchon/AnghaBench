@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct list_head {int dummy; } ;
 struct TYPE_2__ {int n_free_ioreq; } ;
-struct csio_scsim {TYPE_1__ stats; int /*<<< orphan*/  ioreq_freelist; } ;
+struct csio_scsim {TYPE_1__ stats; int ioreq_freelist; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  list_splice_init (struct list_head*,int /*<<< orphan*/ *) ; 
+
+ int list_splice_init (struct list_head*,int *) ;
 
 __attribute__((used)) static inline void
 csio_put_scsi_ioreq_list(struct csio_scsim *scm, struct list_head *reqlist,
-			 int n)
+    int n)
 {
-	list_splice_init(reqlist, &scm->ioreq_freelist);
-	scm->stats.n_free_ioreq += n;
+ list_splice_init(reqlist, &scm->ioreq_freelist);
+ scm->stats.n_free_ioreq += n;
 }

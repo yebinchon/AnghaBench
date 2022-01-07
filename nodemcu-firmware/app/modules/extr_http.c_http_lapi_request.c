@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LUA_REGISTRYINDEX ; 
- scalar_t__ LUA_TFUNCTION ; 
- scalar_t__ LUA_TLIGHTFUNCTION ; 
- int /*<<< orphan*/  http_callback ; 
- int /*<<< orphan*/  http_callback_registry ; 
- int /*<<< orphan*/  http_request (char const*,char const*,char const*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- char* luaL_checklstring (int /*<<< orphan*/ *,int,int*) ; 
- int luaL_error (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  luaL_ref (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  luaL_unref (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ lua_isstring (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pushvalue (int /*<<< orphan*/ *,int) ; 
- scalar_t__ lua_type (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int lua_State ;
+
+
+ int LUA_REGISTRYINDEX ;
+ scalar_t__ LUA_TFUNCTION ;
+ scalar_t__ LUA_TLIGHTFUNCTION ;
+ int http_callback ;
+ int http_callback_registry ;
+ int http_request (char const*,char const*,char const*,char const*,int ,int ) ;
+ char* luaL_checklstring (int *,int,int*) ;
+ int luaL_error (int *,char*) ;
+ int luaL_ref (int *,int ) ;
+ int luaL_unref (int *,int ,int ) ;
+ scalar_t__ lua_isstring (int *,int) ;
+ int lua_pushvalue (int *,int) ;
+ scalar_t__ lua_type (int *,int) ;
 
 __attribute__((used)) static int http_lapi_request( lua_State *L )
 {
   int length;
-  const char * url     = luaL_checklstring(L, 1, &length);
-  const char * method  = luaL_checklstring(L, 2, &length);
-  const char * headers = NULL;
-  const char * body    = NULL;
+  const char * url = luaL_checklstring(L, 1, &length);
+  const char * method = luaL_checklstring(L, 2, &length);
+  const char * headers = ((void*)0);
+  const char * body = ((void*)0);
 
-  // Check parameter
-  if ((url == NULL) || (method == NULL))
+
+  if ((url == ((void*)0)) || (method == ((void*)0)))
   {
     return luaL_error( L, "wrong arg type" );
   }
@@ -51,7 +51,7 @@ __attribute__((used)) static int http_lapi_request( lua_State *L )
   }
 
   if (lua_type(L, 5) == LUA_TFUNCTION || lua_type(L, 5) == LUA_TLIGHTFUNCTION) {
-    lua_pushvalue(L, 5);  // copy argument (func) to the top of stack
+    lua_pushvalue(L, 5);
     luaL_unref(L, LUA_REGISTRYINDEX, http_callback_registry);
     http_callback_registry = luaL_ref(L, LUA_REGISTRYINDEX);
   }

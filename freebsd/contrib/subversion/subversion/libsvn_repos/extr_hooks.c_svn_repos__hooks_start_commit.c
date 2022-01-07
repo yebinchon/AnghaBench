@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_repos_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  scalar_t__ svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
-typedef  int /*<<< orphan*/  apr_array_header_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  SVN_REPOS__HOOK_START_COMMIT ; 
- char* apr_pstrdup (int /*<<< orphan*/ *,char*) ; 
- char* check_hook_cmd (char const*,scalar_t__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * hook_symlink_error (char const*) ; 
- int /*<<< orphan*/  run_hook_cmd (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*,char const**,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- char* svn_cstring_join2 (int /*<<< orphan*/  const*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- char* svn_dirent_local_style (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_repos_path (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- char* svn_repos_start_commit_hook (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int svn_repos_t ;
+typedef int svn_error_t ;
+typedef scalar_t__ svn_boolean_t ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
+typedef int apr_array_header_t ;
+
+
+ int FALSE ;
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int SVN_REPOS__HOOK_START_COMMIT ;
+ char* apr_pstrdup (int *,char*) ;
+ char* check_hook_cmd (char const*,scalar_t__*,int *) ;
+ int * hook_symlink_error (char const*) ;
+ int run_hook_cmd (int *,int ,char const*,char const**,int *,int *,int *) ;
+ char* svn_cstring_join2 (int const*,char*,int ,int *) ;
+ char* svn_dirent_local_style (int ,int *) ;
+ int svn_repos_path (int *,int *) ;
+ char* svn_repos_start_commit_hook (int *,int *) ;
 
 svn_error_t *
 svn_repos__hooks_start_commit(svn_repos_t *repos,
@@ -66,10 +66,10 @@ svn_repos__hooks_start_commit(svn_repos_t *repos,
       args[2] = user ? user : "";
       args[3] = capabilities_string;
       args[4] = txn_name;
-      args[5] = NULL;
+      args[5] = ((void*)0);
 
-      SVN_ERR(run_hook_cmd(NULL, SVN_REPOS__HOOK_START_COMMIT, hook, args,
-                           hooks_env, NULL, pool));
+      SVN_ERR(run_hook_cmd(((void*)0), SVN_REPOS__HOOK_START_COMMIT, hook, args,
+                           hooks_env, ((void*)0), pool));
     }
 
   return SVN_NO_ERROR;

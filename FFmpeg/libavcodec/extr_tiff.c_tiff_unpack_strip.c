@@ -1,77 +1,77 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_25__   TYPE_3__ ;
-typedef  struct TYPE_24__   TYPE_2__ ;
-typedef  struct TYPE_23__   TYPE_1__ ;
-typedef  struct TYPE_22__   TYPE_16__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int /*<<< orphan*/  uint16_t ;
-typedef  int int8_t ;
-struct TYPE_23__ {int width; int bpp; int bppcount; int* subsampling; int* yuv_line; int yuv_line_size; int compr; int* deinvert_buf; scalar_t__ tiff_type; int strips; scalar_t__ fill_order; TYPE_16__* avctx; scalar_t__ is_bayer; int /*<<< orphan*/  gb; int /*<<< orphan*/  lzw; scalar_t__ planar; } ;
-typedef  TYPE_1__ TiffContext ;
+
+
+typedef struct TYPE_25__ TYPE_3__ ;
+typedef struct TYPE_24__ TYPE_2__ ;
+typedef struct TYPE_23__ TYPE_1__ ;
+typedef struct TYPE_22__ TYPE_16__ ;
+
+
+typedef int uint8_t ;
+typedef int uint16_t ;
+typedef int int8_t ;
+struct TYPE_23__ {int width; int bpp; int bppcount; int* subsampling; int* yuv_line; int yuv_line_size; int compr; int* deinvert_buf; scalar_t__ tiff_type; int strips; scalar_t__ fill_order; TYPE_16__* avctx; scalar_t__ is_bayer; int gb; int lzw; scalar_t__ planar; } ;
+typedef TYPE_1__ TiffContext ;
 struct TYPE_25__ {scalar_t__ format; } ;
 struct TYPE_24__ {int flags; int nb_components; } ;
 struct TYPE_22__ {scalar_t__ pix_fmt; } ;
-typedef  int /*<<< orphan*/  PutByteContext ;
-typedef  TYPE_2__ AVPixFmtDescriptor ;
-typedef  TYPE_3__ AVFrame ;
+typedef int PutByteContext ;
+typedef TYPE_2__ AVPixFmtDescriptor ;
+typedef TYPE_3__ AVFrame ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_INVALIDDATA ; 
- int AVERROR_PATCHWELCOME ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int AV_PIX_FMT_FLAG_PLANAR ; 
- int AV_PIX_FMT_FLAG_RGB ; 
- scalar_t__ AV_PIX_FMT_GRAY12 ; 
- scalar_t__ AV_PIX_FMT_PAL8 ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  ENOSYS ; 
- int /*<<< orphan*/  FF_LZW_TIFF ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int TIFF_ADOBE_DEFLATE ; 
- int TIFF_CCITT_RLE ; 
- int TIFF_DEFLATE ; 
- int TIFF_G3 ; 
- int TIFF_G4 ; 
- int TIFF_LZMA ; 
- int TIFF_LZW ; 
- int TIFF_NEWJPEG ; 
-#define  TIFF_PACKBITS 129 
-#define  TIFF_RAW 128 
- scalar_t__ TIFF_TYPE_CINEMADNG ; 
- scalar_t__ TIFF_TYPE_DNG ; 
- int /*<<< orphan*/  av_assert0 (int) ; 
- int /*<<< orphan*/  av_fast_padded_malloc (int**,int*,int) ; 
- int /*<<< orphan*/  av_log (TYPE_16__*,int /*<<< orphan*/ ,char*,...) ; 
- TYPE_2__* av_pix_fmt_desc_get (scalar_t__) ; 
- scalar_t__ bytestream2_get_bytes_left (int /*<<< orphan*/ *) ; 
- scalar_t__ bytestream2_get_eof (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bytestream2_init (int /*<<< orphan*/ *,int const*,int) ; 
- int /*<<< orphan*/  bytestream2_init_writer (int /*<<< orphan*/ *,int*,int) ; 
- int /*<<< orphan*/  bytestream2_seek_p (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int deinvert_buffer (TYPE_1__*,int const*,int) ; 
- int /*<<< orphan*/  dng_blit (TYPE_1__*,int*,int /*<<< orphan*/ ,int*,int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ ,int) ; 
- int dng_decode_strip (TYPE_16__*,TYPE_3__*) ; 
- int ff_lzw_decode (int /*<<< orphan*/ ,int*,int) ; 
- int ff_lzw_decode_init (int /*<<< orphan*/ ,int,int const*,int,int /*<<< orphan*/ ) ; 
- int* ff_reverse ; 
- int /*<<< orphan*/  horizontal_fill (TYPE_1__*,int,int*,int,int const*,int,int,int) ; 
- int tiff_unpack_fax (TYPE_1__*,int*,int,int const*,int,int,int) ; 
- int tiff_unpack_lzma (TYPE_1__*,TYPE_3__*,int*,int,int const*,int,int,int,int,int) ; 
- int tiff_unpack_zlib (TYPE_1__*,TYPE_3__*,int*,int,int const*,int,int,int,int,int) ; 
- int /*<<< orphan*/  unpack_gray (TYPE_1__*,TYPE_3__*,int*,int,int,int) ; 
- int /*<<< orphan*/  unpack_yuv (TYPE_1__*,TYPE_3__*,int*,int) ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_INVALIDDATA ;
+ int AVERROR_PATCHWELCOME ;
+ int AV_LOG_ERROR ;
+ int AV_PIX_FMT_FLAG_PLANAR ;
+ int AV_PIX_FMT_FLAG_RGB ;
+ scalar_t__ AV_PIX_FMT_GRAY12 ;
+ scalar_t__ AV_PIX_FMT_PAL8 ;
+ int ENOMEM ;
+ int ENOSYS ;
+ int FF_LZW_TIFF ;
+ int SEEK_SET ;
+ int TIFF_ADOBE_DEFLATE ;
+ int TIFF_CCITT_RLE ;
+ int TIFF_DEFLATE ;
+ int TIFF_G3 ;
+ int TIFF_G4 ;
+ int TIFF_LZMA ;
+ int TIFF_LZW ;
+ int TIFF_NEWJPEG ;
+
+
+ scalar_t__ TIFF_TYPE_CINEMADNG ;
+ scalar_t__ TIFF_TYPE_DNG ;
+ int av_assert0 (int) ;
+ int av_fast_padded_malloc (int**,int*,int) ;
+ int av_log (TYPE_16__*,int ,char*,...) ;
+ TYPE_2__* av_pix_fmt_desc_get (scalar_t__) ;
+ scalar_t__ bytestream2_get_bytes_left (int *) ;
+ scalar_t__ bytestream2_get_eof (int *) ;
+ int bytestream2_init (int *,int const*,int) ;
+ int bytestream2_init_writer (int *,int*,int) ;
+ int bytestream2_seek_p (int *,int,int ) ;
+ int deinvert_buffer (TYPE_1__*,int const*,int) ;
+ int dng_blit (TYPE_1__*,int*,int ,int*,int ,int,int,int ,int) ;
+ int dng_decode_strip (TYPE_16__*,TYPE_3__*) ;
+ int ff_lzw_decode (int ,int*,int) ;
+ int ff_lzw_decode_init (int ,int,int const*,int,int ) ;
+ int* ff_reverse ;
+ int horizontal_fill (TYPE_1__*,int,int*,int,int const*,int,int,int) ;
+ int tiff_unpack_fax (TYPE_1__*,int*,int,int const*,int,int,int) ;
+ int tiff_unpack_lzma (TYPE_1__*,TYPE_3__*,int*,int,int const*,int,int,int,int,int) ;
+ int tiff_unpack_zlib (TYPE_1__*,TYPE_3__*,int*,int,int const*,int,int,int,int,int) ;
+ int unpack_gray (TYPE_1__*,TYPE_3__*,int*,int,int,int) ;
+ int unpack_yuv (TYPE_1__*,TYPE_3__*,int*,int) ;
 
 __attribute__((used)) static int tiff_unpack_strip(TiffContext *s, AVFrame *p, uint8_t *dst, int stride,
                              const uint8_t *src, int size, int strip_start, int lines)
@@ -96,7 +96,7 @@ __attribute__((used)) static int tiff_unpack_strip(TiffContext *s, AVFrame *p, u
         int bytes_per_row = (((s->width - 1) / s->subsampling[0] + 1) * s->bpp *
                             s->subsampling[0] * s->subsampling[1] + 7) >> 3;
         av_fast_padded_malloc(&s->yuv_line, &s->yuv_line_size, bytes_per_row);
-        if (s->yuv_line == NULL) {
+        if (s->yuv_line == ((void*)0)) {
             av_log(s->avctx, AV_LOG_ERROR, "Not enough memory\n");
             return AVERROR(ENOMEM);
         }
@@ -113,7 +113,7 @@ __attribute__((used)) static int tiff_unpack_strip(TiffContext *s, AVFrame *p, u
     }
     if (p->format == AV_PIX_FMT_GRAY12) {
         av_fast_padded_malloc(&s->yuv_line, &s->yuv_line_size, width);
-        if (s->yuv_line == NULL) {
+        if (s->yuv_line == ((void*)0)) {
             av_log(s->avctx, AV_LOG_ERROR, "Not enough memory\n");
             return AVERROR(ENOMEM);
         }
@@ -122,25 +122,25 @@ __attribute__((used)) static int tiff_unpack_strip(TiffContext *s, AVFrame *p, u
     }
 
     if (s->compr == TIFF_DEFLATE || s->compr == TIFF_ADOBE_DEFLATE) {
-#if CONFIG_ZLIB
-        return tiff_unpack_zlib(s, p, dst, stride, src, size, width, lines,
-                                strip_start, is_yuv);
-#else
+
+
+
+
         av_log(s->avctx, AV_LOG_ERROR,
                "zlib support not enabled, "
                "deflate compression not supported\n");
         return AVERROR(ENOSYS);
-#endif
+
     }
     if (s->compr == TIFF_LZMA) {
-#if CONFIG_LZMA
-        return tiff_unpack_lzma(s, p, dst, stride, src, size, width, lines,
-                                strip_start, is_yuv);
-#else
+
+
+
+
         av_log(s->avctx, AV_LOG_ERROR,
                "LZMA support not enabled\n");
         return AVERROR(ENOSYS);
-#endif
+
     }
     if (s->compr == TIFF_LZW) {
         if (s->fill_order) {
@@ -175,7 +175,7 @@ __attribute__((used)) static int tiff_unpack_strip(TiffContext *s, AVFrame *p, u
         return 0;
     }
     if (s->compr == TIFF_CCITT_RLE ||
-        s->compr == TIFF_G3        ||
+        s->compr == TIFF_G3 ||
         s->compr == TIFF_G4) {
         if (is_yuv || p->format == AV_PIX_FMT_GRAY12)
             return AVERROR_INVALIDDATA;
@@ -188,7 +188,7 @@ __attribute__((used)) static int tiff_unpack_strip(TiffContext *s, AVFrame *p, u
 
     is_dng = (s->tiff_type == TIFF_TYPE_DNG || s->tiff_type == TIFF_TYPE_CINEMADNG);
 
-    /* Decode JPEG-encoded DNGs with strips */
+
     if (s->compr == TIFF_NEWJPEG && is_dng) {
         if (s->strips > 1) {
             av_log(s->avctx, AV_LOG_ERROR, "More than one DNG JPEG strips unsupported\n");
@@ -209,7 +209,7 @@ __attribute__((used)) static int tiff_unpack_strip(TiffContext *s, AVFrame *p, u
             break;
         bytestream2_seek_p(&pb, stride * line, SEEK_SET);
         switch (s->compr) {
-        case TIFF_RAW:
+        case 128:
             if (ssrc + size - src < width)
                 return AVERROR_INVALIDDATA;
 
@@ -222,7 +222,7 @@ __attribute__((used)) static int tiff_unpack_strip(TiffContext *s, AVFrame *p, u
                     dst[i] = ff_reverse[src[i]];
             }
 
-            /* Color processing for DNG images with uncompressed strips (non-tiled) */
+
             if (is_dng) {
                 int is_u16, pixel_size_bytes, pixel_size_bits;
 
@@ -232,18 +232,18 @@ __attribute__((used)) static int tiff_unpack_strip(TiffContext *s, AVFrame *p, u
 
                 dng_blit(s,
                          dst,
-                         0, // no stride, only 1 line
+                         0,
                          dst,
-                         0, // no stride, only 1 line
-                         width / pixel_size_bytes * pixel_size_bits / s->bpp * s->bppcount, // need to account for [1, 16] bpp
+                         0,
+                         width / pixel_size_bytes * pixel_size_bits / s->bpp * s->bppcount,
                          1,
-                         0, // single-component variation is only preset in JPEG-encoded DNGs
+                         0,
                          is_u16);
             }
 
             src += width;
             break;
-        case TIFF_PACKBITS:
+        case 129:
             for (pixels = 0; pixels < width;) {
                 if (ssrc + size - src < 2) {
                     av_log(s->avctx, AV_LOG_ERROR, "Read went out of bounds\n");
@@ -260,9 +260,9 @@ __attribute__((used)) static int tiff_unpack_strip(TiffContext *s, AVFrame *p, u
                     }
                     horizontal_fill(s, s->bpp * (s->avctx->pix_fmt == AV_PIX_FMT_PAL8),
                                     dst, 1, src, 0, code, pixels);
-                    src    += code;
+                    src += code;
                     pixels += code;
-                } else if (code != -128) { // -127..-1
+                } else if (code != -128) {
                     code = (-code) + 1;
                     if (pixels + code > width) {
                         av_log(s->avctx, AV_LOG_ERROR,
@@ -271,7 +271,7 @@ __attribute__((used)) static int tiff_unpack_strip(TiffContext *s, AVFrame *p, u
                     }
                     c = *src++;
                     horizontal_fill(s, s->bpp * (s->avctx->pix_fmt == AV_PIX_FMT_PAL8),
-                                    dst, 0, NULL, c, code, pixels);
+                                    dst, 0, ((void*)0), c, code, pixels);
                     pixels += code;
                 }
             }

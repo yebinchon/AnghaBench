@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int /*<<< orphan*/  tSuccess ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+typedef int tSuccess ;
 struct TYPE_5__ {size_t curOptIdx; size_t origArgCt; char** origArgVect; } ;
-typedef  TYPE_1__ tOptions ;
-struct TYPE_6__ {int optType; int /*<<< orphan*/ * pzOptArg; } ;
-typedef  TYPE_2__ tOptState ;
+typedef TYPE_1__ tOptions ;
+struct TYPE_6__ {int optType; int * pzOptArg; } ;
+typedef TYPE_2__ tOptState ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FAILURE ; 
- char NUL ; 
- int /*<<< orphan*/  PROBLEM ; 
- int /*<<< orphan*/  SUCCESS ; 
-#define  TOPT_LONG 129 
-#define  TOPT_SHORT 128 
+
+ int FAILURE ;
+ char NUL ;
+ int PROBLEM ;
+ int SUCCESS ;
+
+
 
 __attribute__((used)) static tSuccess
 maybe_arg(tOptions * opts, char * arg_txt, tOptState * pOS,
           char ** opt_txt, uint32_t * opt_idx)
 {
-    /*
-     *  An option argument is optional.
-     */
+
+
+
     switch (pOS->optType) {
-    case TOPT_SHORT:
-        /*
-         *  IF nothing is glued on after the current flag character,
-         *  THEN see if there is another argument.  If so and if it
-         *  does *NOT* start with a hyphen, then it is the option arg.
-         */
+    case 128:
+
+
+
+
+
         if (*arg_txt != NUL)
             return SUCCESS;
         break;
 
-    case TOPT_LONG:
-        /*
-         *  Look for an argument if we don't already have one (glued on
-         *  with a `=' character)
-         */
-        if (pOS->pzOptArg != NULL)
+    case 129:
+
+
+
+
+        if (pOS->pzOptArg != ((void*)0))
             return SUCCESS;
         break;
 

@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_5__ ;
-typedef  struct TYPE_15__   TYPE_4__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-struct TYPE_16__ {int /*<<< orphan*/  fr_c; } ;
-struct TYPE_15__ {scalar_t__ changed; unsigned int numpeers; int /*<<< orphan*/  identifier; TYPE_3__* closest_peers; TYPE_2__* close; TYPE_1__* group; } ;
-struct TYPE_14__ {int /*<<< orphan*/  temp_pk; int /*<<< orphan*/  real_pk; int /*<<< orphan*/  entry; } ;
-struct TYPE_13__ {scalar_t__ type; int /*<<< orphan*/  number; int /*<<< orphan*/  closest; } ;
-struct TYPE_12__ {int /*<<< orphan*/  temp_pk; int /*<<< orphan*/  real_pk; } ;
-typedef  TYPE_4__ Group_c ;
-typedef  TYPE_5__ Group_Chats ;
 
-/* Variables and functions */
- unsigned int DESIRED_CLOSE_CONNECTIONS ; 
- scalar_t__ FRIENDCONN_STATUS_CONNECTED ; 
- scalar_t__ GROUPCHAT_CLOSEST_NONE ; 
- scalar_t__ GROUPCHAT_CLOSEST_REMOVED ; 
- scalar_t__ GROUPCHAT_CLOSE_NONE ; 
- unsigned int MAX_GROUP_CONNECTIONS ; 
- int /*<<< orphan*/  add_conn_to_groupchat (TYPE_5__*,int,int,int,int) ; 
- int /*<<< orphan*/  add_to_closest (TYPE_5__*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int crypto_box_PUBLICKEYBYTES ; 
- scalar_t__ friend_con_connected (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  get_friendcon_public_keys (int*,int*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_4__* get_group_c (TYPE_5__*,int) ; 
- int getfriend_conn_id_pk (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kill_friend_connection (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int new_friend_connection (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pk_in_closest_peers (TYPE_4__*,int*) ; 
- int /*<<< orphan*/  send_packet_online (int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_dht_temp_pk (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_16__ TYPE_5__ ;
+typedef struct TYPE_15__ TYPE_4__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_16__ {int fr_c; } ;
+struct TYPE_15__ {scalar_t__ changed; unsigned int numpeers; int identifier; TYPE_3__* closest_peers; TYPE_2__* close; TYPE_1__* group; } ;
+struct TYPE_14__ {int temp_pk; int real_pk; int entry; } ;
+struct TYPE_13__ {scalar_t__ type; int number; int closest; } ;
+struct TYPE_12__ {int temp_pk; int real_pk; } ;
+typedef TYPE_4__ Group_c ;
+typedef TYPE_5__ Group_Chats ;
+
+
+ unsigned int DESIRED_CLOSE_CONNECTIONS ;
+ scalar_t__ FRIENDCONN_STATUS_CONNECTED ;
+ scalar_t__ GROUPCHAT_CLOSEST_NONE ;
+ scalar_t__ GROUPCHAT_CLOSEST_REMOVED ;
+ scalar_t__ GROUPCHAT_CLOSE_NONE ;
+ unsigned int MAX_GROUP_CONNECTIONS ;
+ int add_conn_to_groupchat (TYPE_5__*,int,int,int,int) ;
+ int add_to_closest (TYPE_5__*,int,int ,int ) ;
+ int crypto_box_PUBLICKEYBYTES ;
+ scalar_t__ friend_con_connected (int ,int) ;
+ int get_friendcon_public_keys (int*,int*,int ,int ) ;
+ TYPE_4__* get_group_c (TYPE_5__*,int) ;
+ int getfriend_conn_id_pk (int ,int ) ;
+ int kill_friend_connection (int ,int ) ;
+ int new_friend_connection (int ,int ) ;
+ int pk_in_closest_peers (TYPE_4__*,int*) ;
+ int send_packet_online (int ,int,int,int ) ;
+ int set_dht_temp_pk (int ,int,int ) ;
 
 __attribute__((used)) static int connect_to_closest(Group_Chats *g_c, int groupnumber)
 {

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  scalar_t__ uint64_t ;
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  Tox ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ck_abort_msg (char*) ; 
- int file_recv ; 
- scalar_t__ memcmp (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,size_t) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/  num ; 
- scalar_t__ size_recv ; 
+
+
+
+typedef int uint8_t ;
+typedef scalar_t__ uint64_t ;
+typedef int uint32_t ;
+typedef int Tox ;
+
+
+ int ck_abort_msg (char*) ;
+ int file_recv ;
+ scalar_t__ memcmp (int *,int const*,size_t) ;
+ int memset (int *,int ,size_t) ;
+ int num ;
+ scalar_t__ size_recv ;
 
 void write_file(Tox *tox, uint32_t friendnumber, uint32_t filenumber, uint64_t position, const uint8_t *data,
                 size_t length, void *user_data)

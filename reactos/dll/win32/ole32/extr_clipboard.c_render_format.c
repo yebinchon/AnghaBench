@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
 struct TYPE_10__ {scalar_t__ cfFormat; int tymed; } ;
-typedef  TYPE_1__* LPFORMATETC ;
-typedef  int /*<<< orphan*/  IDataObject ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  HBITMAP ;
-typedef  int /*<<< orphan*/ * HANDLE ;
+typedef TYPE_1__* LPFORMATETC ;
+typedef int IDataObject ;
+typedef int HRESULT ;
+typedef int HBITMAP ;
+typedef int * HANDLE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLIPBRD_E_CANT_SET ; 
- int /*<<< orphan*/  DV_E_FORMATETC ; 
- int /*<<< orphan*/  DeleteObject (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FIXME (char*,int) ; 
- int /*<<< orphan*/  GlobalFree (int /*<<< orphan*/ *) ; 
- scalar_t__ SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetClipboardData (scalar_t__,int /*<<< orphan*/ *) ; 
- int TYMED_ENHMF ; 
- int TYMED_GDI ; 
- int TYMED_HGLOBAL ; 
- int TYMED_ISTORAGE ; 
- int TYMED_ISTREAM ; 
- int TYMED_MFPICT ; 
- int /*<<< orphan*/  WARN (char*) ; 
- scalar_t__ embed_source_clipboard_format ; 
- int /*<<< orphan*/  free_metafilepict (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  get_data_from_bitmap (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  get_data_from_enhmetafile (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  get_data_from_global (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  get_data_from_metafilepict (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  get_data_from_storage (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  get_data_from_stream (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  render_embed_source_hack (int /*<<< orphan*/ *,TYPE_1__*) ; 
+
+ int CLIPBRD_E_CANT_SET ;
+ int DV_E_FORMATETC ;
+ int DeleteObject (int *) ;
+ int FIXME (char*,int) ;
+ int GlobalFree (int *) ;
+ scalar_t__ SUCCEEDED (int ) ;
+ int SetClipboardData (scalar_t__,int *) ;
+ int TYMED_ENHMF ;
+ int TYMED_GDI ;
+ int TYMED_HGLOBAL ;
+ int TYMED_ISTORAGE ;
+ int TYMED_ISTREAM ;
+ int TYMED_MFPICT ;
+ int WARN (char*) ;
+ scalar_t__ embed_source_clipboard_format ;
+ int free_metafilepict (int *) ;
+ int get_data_from_bitmap (int *,TYPE_1__*,int *) ;
+ int get_data_from_enhmetafile (int *,TYPE_1__*,int **) ;
+ int get_data_from_global (int *,TYPE_1__*,int **) ;
+ int get_data_from_metafilepict (int *,TYPE_1__*,int **) ;
+ int get_data_from_storage (int *,TYPE_1__*,int **) ;
+ int get_data_from_stream (int *,TYPE_1__*,int **) ;
+ int render_embed_source_hack (int *,TYPE_1__*) ;
 
 __attribute__((used)) static HRESULT render_format(IDataObject *data, LPFORMATETC fmt)
 {
-    HANDLE clip_data = NULL;  /* HGLOBAL unless otherwise specified */
+    HANDLE clip_data = ((void*)0);
     HRESULT hr;
 
-    /* Embed source hack */
+
     if(fmt->cfFormat == embed_source_clipboard_format)
     {
         return render_embed_source_hack(data, fmt);
@@ -72,12 +72,12 @@ __attribute__((used)) static HRESULT render_format(IDataObject *data, LPFORMATET
     }
     else if(fmt->tymed & TYMED_MFPICT)
     {
-        /* Returns global handle to METAFILEPICT, containing a copied HMETAFILE */
+
         hr = get_data_from_metafilepict(data, fmt, &clip_data);
     }
     else if(fmt->tymed & TYMED_GDI)
     {
-        /* Returns HBITMAP not HGLOBAL */
+
         hr = get_data_from_bitmap(data, fmt, (HBITMAP *)&clip_data);
     }
     else

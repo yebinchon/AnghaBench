@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct sockaddr_un {int sun_len; int /*<<< orphan*/  sun_path; int /*<<< orphan*/  sun_family; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct sockaddr_un {int sun_len; int sun_path; int sun_family; } ;
 struct sockaddr {int dummy; } ;
 struct bundle {int dummy; } ;
-typedef  scalar_t__ mode_t ;
-typedef  enum server_stat { ____Placeholder_server_stat } server_stat ;
+typedef scalar_t__ mode_t ;
+typedef enum server_stat { ____Placeholder_server_stat } server_stat ;
 struct TYPE_3__ {char* sockname; scalar_t__ mask; scalar_t__ port; } ;
 struct TYPE_4__ {int fd; TYPE_1__ cfg; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_LOCAL ; 
- int /*<<< orphan*/  LogERROR ; 
- int /*<<< orphan*/  LogPHASE ; 
- int /*<<< orphan*/  LogWARN ; 
- int /*<<< orphan*/  PF_LOCAL ; 
- int SERVER_FAILED ; 
- int SERVER_INVALID ; 
- int SERVER_OK ; 
- int /*<<< orphan*/  SOCK_STREAM ; 
- int /*<<< orphan*/  SOL_SOCKET ; 
- int /*<<< orphan*/  SO_REUSEADDR ; 
- scalar_t__ bind (int,struct sockaddr*,int) ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  errno ; 
- scalar_t__ listen (int,int) ; 
- int /*<<< orphan*/  log_Printf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  memset (struct sockaddr_un*,char,int) ; 
- TYPE_2__ server ; 
- int /*<<< orphan*/  server_Close (struct bundle*) ; 
- int /*<<< orphan*/  setsockopt (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*,int) ; 
- int socket (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strcmp (char*,char const*) ; 
- int /*<<< orphan*/  strcpy (int /*<<< orphan*/ ,char const*) ; 
- char const* strerror (int /*<<< orphan*/ ) ; 
- int strlen (char const*) ; 
- int /*<<< orphan*/  strncpy (char*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ umask (scalar_t__) ; 
- int /*<<< orphan*/  unlink (char const*) ; 
+
+ int AF_LOCAL ;
+ int LogERROR ;
+ int LogPHASE ;
+ int LogWARN ;
+ int PF_LOCAL ;
+ int SERVER_FAILED ;
+ int SERVER_INVALID ;
+ int SERVER_OK ;
+ int SOCK_STREAM ;
+ int SOL_SOCKET ;
+ int SO_REUSEADDR ;
+ scalar_t__ bind (int,struct sockaddr*,int) ;
+ int close (int) ;
+ int errno ;
+ scalar_t__ listen (int,int) ;
+ int log_Printf (int ,char*,...) ;
+ int memset (struct sockaddr_un*,char,int) ;
+ TYPE_2__ server ;
+ int server_Close (struct bundle*) ;
+ int setsockopt (int,int ,int ,int*,int) ;
+ int socket (int ,int ,int ) ;
+ int strcmp (char*,char const*) ;
+ int strcpy (int ,char const*) ;
+ char const* strerror (int ) ;
+ int strlen (char const*) ;
+ int strncpy (char*,int ,int) ;
+ scalar_t__ umask (scalar_t__) ;
+ int unlink (char const*) ;
 
 enum server_stat
 server_LocalOpen(struct bundle *bundle, const char *name, mode_t mask)
@@ -57,7 +57,7 @@ server_LocalOpen(struct bundle *bundle, const char *name, mode_t mask)
   mode_t oldmask;
   int s;
 
-  oldmask = (mode_t)-1;		/* Silence compiler */
+  oldmask = (mode_t)-1;
 
   if (server.cfg.sockname[0] != '\0' && !strcmp(server.cfg.sockname, name))
     server_Close(bundle);

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_28__   TYPE_9__ ;
-typedef  struct TYPE_27__   TYPE_8__ ;
-typedef  struct TYPE_26__   TYPE_7__ ;
-typedef  struct TYPE_25__   TYPE_6__ ;
-typedef  struct TYPE_24__   TYPE_5__ ;
-typedef  struct TYPE_23__   TYPE_4__ ;
-typedef  struct TYPE_22__   TYPE_3__ ;
-typedef  struct TYPE_21__   TYPE_2__ ;
-typedef  struct TYPE_20__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int UINT32 ;
-struct TYPE_28__ {int /*<<< orphan*/  Type; } ;
-struct TYPE_27__ {int Class; int /*<<< orphan*/  ObjectType; } ;
+
+
+typedef struct TYPE_28__ TYPE_9__ ;
+typedef struct TYPE_27__ TYPE_8__ ;
+typedef struct TYPE_26__ TYPE_7__ ;
+typedef struct TYPE_25__ TYPE_6__ ;
+typedef struct TYPE_24__ TYPE_5__ ;
+typedef struct TYPE_23__ TYPE_4__ ;
+typedef struct TYPE_22__ TYPE_3__ ;
+typedef struct TYPE_21__ TYPE_2__ ;
+typedef struct TYPE_20__ TYPE_1__ ;
+
+
+typedef int UINT32 ;
+struct TYPE_28__ {int Type; } ;
+struct TYPE_27__ {int Class; int ObjectType; } ;
 struct TYPE_24__ {TYPE_9__* Node; } ;
 struct TYPE_23__ {scalar_t__ AmlOpcode; } ;
 struct TYPE_26__ {TYPE_5__ Named; TYPE_4__ Common; } ;
@@ -29,45 +29,45 @@ struct TYPE_25__ {scalar_t__ Opcode; int WalkType; TYPE_8__* OpInfo; TYPE_3__* C
 struct TYPE_21__ {TYPE_7__* PredicateOp; } ;
 struct TYPE_20__ {scalar_t__ State; } ;
 struct TYPE_22__ {TYPE_2__ Control; TYPE_1__ Common; } ;
-typedef  TYPE_6__ ACPI_WALK_STATE ;
-typedef  int /*<<< orphan*/  ACPI_STATUS ;
-typedef  TYPE_7__ ACPI_PARSE_OBJECT ;
+typedef TYPE_6__ ACPI_WALK_STATE ;
+typedef int ACPI_STATUS ;
+typedef TYPE_7__ ACPI_PARSE_OBJECT ;
 
-/* Variables and functions */
- scalar_t__ ACPI_CONTROL_CONDITIONAL_EXECUTING ; 
- scalar_t__ ACPI_CONTROL_PREDICATE_EXECUTING ; 
- int /*<<< orphan*/  ACPI_DB_DISPATCH ; 
- int /*<<< orphan*/  ACPI_DB_EXEC ; 
- int /*<<< orphan*/  ACPI_DEBUG_PRINT (int /*<<< orphan*/ ) ; 
- scalar_t__ ACPI_FAILURE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ACPI_FUNCTION_TRACE_PTR (int /*<<< orphan*/ ,TYPE_6__*) ; 
- int ACPI_WALK_METHOD ; 
- int /*<<< orphan*/  AE_OK ; 
-#define  AML_CLASS_CONTROL 131 
-#define  AML_CLASS_CREATE 130 
-#define  AML_CLASS_EXECUTE 129 
-#define  AML_CLASS_NAMED_OBJECT 128 
- scalar_t__ AML_INT_NAMEPATH_OP ; 
- scalar_t__ AML_SCOPE_OP ; 
- int /*<<< orphan*/  AcpiDsExecBeginControlOp (TYPE_6__*,TYPE_7__*) ; 
- int /*<<< orphan*/  AcpiDsLoad2BeginOp (TYPE_6__*,TYPE_7__**) ; 
- int /*<<< orphan*/  AcpiDsMethodError (int /*<<< orphan*/ ,TYPE_6__*) ; 
- int /*<<< orphan*/  AcpiDsScopeStackPop (TYPE_6__*) ; 
- int /*<<< orphan*/  AcpiDsScopeStackPush (TYPE_9__*,int /*<<< orphan*/ ,TYPE_6__*) ; 
- scalar_t__ AcpiNsOpensScope (int /*<<< orphan*/ ) ; 
- TYPE_8__* AcpiPsGetOpcodeInfo (scalar_t__) ; 
- int /*<<< orphan*/  AcpiUtGetTypeName (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DsExecBeginOp ; 
- int /*<<< orphan*/  return_ACPI_STATUS (int /*<<< orphan*/ ) ; 
+
+ scalar_t__ ACPI_CONTROL_CONDITIONAL_EXECUTING ;
+ scalar_t__ ACPI_CONTROL_PREDICATE_EXECUTING ;
+ int ACPI_DB_DISPATCH ;
+ int ACPI_DB_EXEC ;
+ int ACPI_DEBUG_PRINT (int ) ;
+ scalar_t__ ACPI_FAILURE (int ) ;
+ int ACPI_FUNCTION_TRACE_PTR (int ,TYPE_6__*) ;
+ int ACPI_WALK_METHOD ;
+ int AE_OK ;
+
+
+
+
+ scalar_t__ AML_INT_NAMEPATH_OP ;
+ scalar_t__ AML_SCOPE_OP ;
+ int AcpiDsExecBeginControlOp (TYPE_6__*,TYPE_7__*) ;
+ int AcpiDsLoad2BeginOp (TYPE_6__*,TYPE_7__**) ;
+ int AcpiDsMethodError (int ,TYPE_6__*) ;
+ int AcpiDsScopeStackPop (TYPE_6__*) ;
+ int AcpiDsScopeStackPush (TYPE_9__*,int ,TYPE_6__*) ;
+ scalar_t__ AcpiNsOpensScope (int ) ;
+ TYPE_8__* AcpiPsGetOpcodeInfo (scalar_t__) ;
+ int AcpiUtGetTypeName (int ) ;
+ int DsExecBeginOp ;
+ int return_ACPI_STATUS (int ) ;
 
 ACPI_STATUS
 AcpiDsExecBeginOp (
-    ACPI_WALK_STATE         *WalkState,
-    ACPI_PARSE_OBJECT       **OutOp)
+    ACPI_WALK_STATE *WalkState,
+    ACPI_PARSE_OBJECT **OutOp)
 {
-    ACPI_PARSE_OBJECT       *Op;
-    ACPI_STATUS             Status = AE_OK;
-    UINT32                  OpcodeClass;
+    ACPI_PARSE_OBJECT *Op;
+    ACPI_STATUS Status = AE_OK;
+    UINT32 OpcodeClass;
 
 
     ACPI_FUNCTION_TRACE_PTR (DsExecBeginOp, WalkState);
@@ -111,11 +111,11 @@ AcpiDsExecBeginOp (
         return_ACPI_STATUS (AE_OK);
     }
 
-    /*
-     * If the previous opcode was a conditional, this opcode
-     * must be the beginning of the associated predicate.
-     * Save this knowledge in the current scope descriptor
-     */
+
+
+
+
+
     if ((WalkState->ControlState) &&
         (WalkState->ControlState->Common.State ==
             ACPI_CONTROL_CONDITIONAL_EXECUTING))
@@ -127,7 +127,7 @@ AcpiDsExecBeginOp (
         WalkState->ControlState->Common.State =
             ACPI_CONTROL_PREDICATE_EXECUTING;
 
-        /* Save start of predicate */
+
 
         WalkState->ControlState->Control.PredicateOp = Op;
     }
@@ -135,41 +135,30 @@ AcpiDsExecBeginOp (
 
     OpcodeClass = WalkState->OpInfo->Class;
 
-    /* We want to send namepaths to the load code */
+
 
     if (Op->Common.AmlOpcode == AML_INT_NAMEPATH_OP)
     {
-        OpcodeClass = AML_CLASS_NAMED_OBJECT;
+        OpcodeClass = 128;
     }
 
-    /*
-     * Handle the opcode based upon the opcode type
-     */
+
+
+
     switch (OpcodeClass)
     {
-    case AML_CLASS_CONTROL:
+    case 131:
 
         Status = AcpiDsExecBeginControlOp (WalkState, Op);
         break;
 
-    case AML_CLASS_NAMED_OBJECT:
+    case 128:
 
         if (WalkState->WalkType & ACPI_WALK_METHOD)
         {
-            /*
-             * Found a named object declaration during method execution;
-             * we must enter this object into the namespace. The created
-             * object is temporary and will be deleted upon completion of
-             * the execution of this method.
-             *
-             * Note 10/2010: Except for the Scope() op. This opcode does
-             * not actually create a new object, it refers to an existing
-             * object. However, for Scope(), we want to indeed open a
-             * new scope.
-             */
             if (Op->Common.AmlOpcode != AML_SCOPE_OP)
             {
-                Status = AcpiDsLoad2BeginOp (WalkState, NULL);
+                Status = AcpiDsLoad2BeginOp (WalkState, ((void*)0));
             }
             else
             {
@@ -183,8 +172,8 @@ AcpiDsExecBeginOp (
         }
         break;
 
-    case AML_CLASS_EXECUTE:
-    case AML_CLASS_CREATE:
+    case 129:
+    case 130:
 
         break;
 
@@ -193,7 +182,7 @@ AcpiDsExecBeginOp (
         break;
     }
 
-    /* Nothing to do here during method execution */
+
 
     return_ACPI_STATUS (Status);
 

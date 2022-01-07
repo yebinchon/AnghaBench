@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_5__ {TYPE_1__* next; scalar_t__ debugging; } ;
-typedef  TYPE_2__ list_info_type ;
+typedef TYPE_2__ list_info_type ;
 struct TYPE_4__ {scalar_t__ debugging; } ;
 
-/* Variables and functions */
- scalar_t__ ISSPACE (char const) ; 
- scalar_t__ strncmp (char const*,char*,int) ; 
+
+ scalar_t__ ISSPACE (char const) ;
+ scalar_t__ strncmp (char const*,char*,int) ;
 
 __attribute__((used)) static int
 debugging_pseudo (list_info_type *list, const char *line)
@@ -40,22 +40,6 @@ debugging_pseudo (list_info_type *list, const char *line)
 
   if (*line != '.')
     {
-#ifdef OBJ_ELF
-      /* The ELF compiler sometimes emits blank lines after switching
-         out of a debugging section.  If the next line drops us back
-         into debugging information, then don't print the blank line.
-         This is a hack for a particular compiler behaviour, not a
-         general case.  */
-      if (was_debug
-	  && *line == '\0'
-	  && list->next != NULL
-	  && list->next->debugging)
-	{
-	  in_debug = 1;
-	  return 1;
-	}
-#endif
-
       return 0;
     }
 

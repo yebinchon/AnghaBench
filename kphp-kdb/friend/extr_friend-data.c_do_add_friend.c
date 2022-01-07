@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct lev_generic {int dummy; } ;
 struct lev_del_friend {int friend_id; } ;
 struct lev_add_friend {int friend_id; int cat; } ;
 
-/* Variables and functions */
- scalar_t__ LEV_FR_ADDTO_CAT ; 
- scalar_t__ LEV_FR_ADD_FRIEND ; 
- scalar_t__ LEV_FR_EDIT_FRIEND ; 
- scalar_t__ LEV_FR_EDIT_FRIEND_AND ; 
- scalar_t__ LEV_FR_EDIT_FRIEND_OR ; 
- scalar_t__ LEV_FR_REMFROM_CAT ; 
- void* alloc_log_event (scalar_t__,int,int) ; 
- int /*<<< orphan*/  assert (int) ; 
- int b_log2 (int) ; 
- int change_friend_logevent (struct lev_generic*) ; 
- scalar_t__ conv_uid (int) ; 
- int get_friend_cat (int,int) ; 
- int /*<<< orphan*/  get_user (int) ; 
+
+ scalar_t__ LEV_FR_ADDTO_CAT ;
+ scalar_t__ LEV_FR_ADD_FRIEND ;
+ scalar_t__ LEV_FR_EDIT_FRIEND ;
+ scalar_t__ LEV_FR_EDIT_FRIEND_AND ;
+ scalar_t__ LEV_FR_EDIT_FRIEND_OR ;
+ scalar_t__ LEV_FR_REMFROM_CAT ;
+ void* alloc_log_event (scalar_t__,int,int) ;
+ int assert (int) ;
+ int b_log2 (int) ;
+ int change_friend_logevent (struct lev_generic*) ;
+ scalar_t__ conv_uid (int) ;
+ int get_friend_cat (int,int) ;
+ int get_user (int) ;
 
 int do_add_friend (int user_id, int friend_id, int cat_xor, int cat_and, int force) {
   if (conv_uid (user_id) < 0 || friend_id <= 0 || cat_xor < 0) {

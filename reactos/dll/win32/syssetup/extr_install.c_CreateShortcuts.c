@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
-typedef  int INT ;
-typedef  int /*<<< orphan*/  INFCONTEXT ;
-typedef  int /*<<< orphan*/  HINF ;
-typedef  int /*<<< orphan*/  HANDLE ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAYSIZE (int /*<<< orphan*/ *) ; 
- int CSIDL_FLAG_CREATE ; 
- int /*<<< orphan*/  CoInitialize (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CoUninitialize () ; 
- int /*<<< orphan*/  CreateShortcutsFromSection (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  SHGFP_TYPE_DEFAULT ; 
- int /*<<< orphan*/  SHGetFolderPathAndSubDirW (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SetupFindFirstLine (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ SetupFindNextLine (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int SetupGetFieldCount (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SetupGetIntField (int /*<<< orphan*/ *,int,int*) ; 
- int /*<<< orphan*/  SetupGetStringFieldW (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TRUE ; 
+
+
+
+typedef int WCHAR ;
+typedef int LPCWSTR ;
+typedef int INT ;
+typedef int INFCONTEXT ;
+typedef int HINF ;
+typedef int HANDLE ;
+typedef int BOOL ;
+
+
+ int ARRAYSIZE (int *) ;
+ int CSIDL_FLAG_CREATE ;
+ int CoInitialize (int *) ;
+ int CoUninitialize () ;
+ int CreateShortcutsFromSection (int ,int *,int *) ;
+ scalar_t__ FAILED (int ) ;
+ int FALSE ;
+ int MAX_PATH ;
+ int SHGFP_TYPE_DEFAULT ;
+ int SHGetFolderPathAndSubDirW (int *,int,int ,int ,int *,int *) ;
+ int SetupFindFirstLine (int ,int ,int *,int *) ;
+ scalar_t__ SetupFindNextLine (int *,int *) ;
+ int SetupGetFieldCount (int *) ;
+ int SetupGetIntField (int *,int,int*) ;
+ int SetupGetStringFieldW (int *,int,int *,int ,int *) ;
+ int TRUE ;
 
 __attribute__((used)) static BOOL CreateShortcuts(HINF hinf, LPCWSTR szSection)
 {
@@ -44,9 +44,9 @@ __attribute__((used)) static BOOL CreateShortcuts(HINF hinf, LPCWSTR szSection)
     WCHAR szFolderSection[MAX_PATH];
     INT csidl;
 
-    CoInitialize(NULL);
+    CoInitialize(((void*)0));
 
-    if (!SetupFindFirstLine(hinf, szSection, NULL, &Context))
+    if (!SetupFindFirstLine(hinf, szSection, ((void*)0), &Context))
         return FALSE;
 
     do
@@ -54,16 +54,16 @@ __attribute__((used)) static BOOL CreateShortcuts(HINF hinf, LPCWSTR szSection)
         if (SetupGetFieldCount(&Context) < 2)
             continue;
 
-        if (!SetupGetStringFieldW(&Context, 0, szFolderSection, ARRAYSIZE(szFolderSection), NULL))
+        if (!SetupGetStringFieldW(&Context, 0, szFolderSection, ARRAYSIZE(szFolderSection), ((void*)0)))
             continue;
 
         if (!SetupGetIntField(&Context, 1, &csidl))
             continue;
 
-        if (!SetupGetStringFieldW(&Context, 2, szFolder, ARRAYSIZE(szFolder), NULL))
+        if (!SetupGetStringFieldW(&Context, 2, szFolder, ARRAYSIZE(szFolder), ((void*)0)))
             continue;
 
-        if (FAILED(SHGetFolderPathAndSubDirW(NULL, csidl|CSIDL_FLAG_CREATE, (HANDLE)-1, SHGFP_TYPE_DEFAULT, szFolder, szPath)))
+        if (FAILED(SHGetFolderPathAndSubDirW(((void*)0), csidl|CSIDL_FLAG_CREATE, (HANDLE)-1, SHGFP_TYPE_DEFAULT, szFolder, szPath)))
             continue;
 
         CreateShortcutsFromSection(hinf, szFolderSection, szPath);

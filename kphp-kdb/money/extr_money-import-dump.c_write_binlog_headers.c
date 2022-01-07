@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  raw_size; int /*<<< orphan*/  data_size; int /*<<< orphan*/  data_crc32; scalar_t__ finished; int /*<<< orphan*/  header_seq_num; int /*<<< orphan*/  modified; } ;
 
-/* Variables and functions */
- TYPE_1__* KHDR ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  assert (int) ; 
- int binlog_headers ; 
- int /*<<< orphan*/  fix_kfs_header_crc32 (TYPE_1__*) ; 
- int /*<<< orphan*/  kfs_Hdr ; 
- scalar_t__ lseek (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  targ_fd ; 
- int /*<<< orphan*/  time (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tot_crc32 ; 
- scalar_t__ wr_bytes ; 
- int write (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int raw_size; int data_size; int data_crc32; scalar_t__ finished; int header_seq_num; int modified; } ;
+
+
+ TYPE_1__* KHDR ;
+ int SEEK_SET ;
+ int assert (int) ;
+ int binlog_headers ;
+ int fix_kfs_header_crc32 (TYPE_1__*) ;
+ int kfs_Hdr ;
+ scalar_t__ lseek (int ,int ,int ) ;
+ int targ_fd ;
+ int time (int ) ;
+ int tot_crc32 ;
+ scalar_t__ wr_bytes ;
+ int write (int ,int ,int) ;
 
 void write_binlog_headers (void) {
   int i;
@@ -33,7 +33,7 @@ void write_binlog_headers (void) {
   if (!KHDR) {
     return;
   }
- 
+
   KHDR->modified = time (0);
   ++KHDR->header_seq_num;
   KHDR->finished = 0;

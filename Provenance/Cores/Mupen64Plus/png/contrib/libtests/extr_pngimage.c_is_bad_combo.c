@@ -1,19 +1,11 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- unsigned int ARRAY_SIZE (int**) ; 
- int** known_bad_combos ; 
+ unsigned int ARRAY_SIZE (int**) ;
+ int** known_bad_combos ;
 
 __attribute__((used)) static int
 is_bad_combo(int transforms)
@@ -29,5 +21,5 @@ is_bad_combo(int transforms)
          return 1;
    }
 
-   return 0; /* combo is ok */
+   return 0;
 }

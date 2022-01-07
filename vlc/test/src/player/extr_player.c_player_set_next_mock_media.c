@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct media_params {int dummy; } ;
 struct TYPE_2__ {scalar_t__ size; } ;
-struct ctx {int /*<<< orphan*/  next_medias; TYPE_1__ played_medias; int /*<<< orphan*/  player; } ;
-typedef  int /*<<< orphan*/  input_item_t ;
+struct ctx {int next_medias; TYPE_1__ played_medias; int player; } ;
+typedef int input_item_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/ * create_mock_media (char const*,struct media_params const*) ; 
- int /*<<< orphan*/  player_set_current_mock_media (struct ctx*,char const*,struct media_params const*,int) ; 
- int /*<<< orphan*/ * vlc_player_GetCurrentMedia (int /*<<< orphan*/ ) ; 
- int vlc_vector_push (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int assert (int) ;
+ int * create_mock_media (char const*,struct media_params const*) ;
+ int player_set_current_mock_media (struct ctx*,char const*,struct media_params const*,int) ;
+ int * vlc_player_GetCurrentMedia (int ) ;
+ int vlc_vector_push (int *,int *) ;
 
 __attribute__((used)) static void
 player_set_next_mock_media(struct ctx *ctx, const char *name,
                            const struct media_params *params)
 {
-    if (vlc_player_GetCurrentMedia(ctx->player) == NULL)
+    if (vlc_player_GetCurrentMedia(ctx->player) == ((void*)0))
     {
         assert(ctx->played_medias.size == 0);
-        player_set_current_mock_media(ctx, name, params, false);
+        player_set_current_mock_media(ctx, name, params, 0);
     }
     else
     {

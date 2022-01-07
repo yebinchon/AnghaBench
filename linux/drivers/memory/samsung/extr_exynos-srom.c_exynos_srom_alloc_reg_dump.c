@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct exynos_srom_reg_dump {unsigned long offset; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GFP_KERNEL ; 
- struct exynos_srom_reg_dump* kcalloc (unsigned long,int,int /*<<< orphan*/ ) ; 
+
+ int GFP_KERNEL ;
+ struct exynos_srom_reg_dump* kcalloc (unsigned long,int,int ) ;
 
 __attribute__((used)) static struct exynos_srom_reg_dump *exynos_srom_alloc_reg_dump(
-		const unsigned long *rdump,
-		unsigned long nr_rdump)
+  const unsigned long *rdump,
+  unsigned long nr_rdump)
 {
-	struct exynos_srom_reg_dump *rd;
-	unsigned int i;
+ struct exynos_srom_reg_dump *rd;
+ unsigned int i;
 
-	rd = kcalloc(nr_rdump, sizeof(*rd), GFP_KERNEL);
-	if (!rd)
-		return NULL;
+ rd = kcalloc(nr_rdump, sizeof(*rd), GFP_KERNEL);
+ if (!rd)
+  return ((void*)0);
 
-	for (i = 0; i < nr_rdump; ++i)
-		rd[i].offset = rdump[i];
+ for (i = 0; i < nr_rdump; ++i)
+  rd[i].offset = rdump[i];
 
-	return rd;
+ return rd;
 }

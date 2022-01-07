@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tsd_t ;
 
-/* Variables and functions */
- int EAGAIN ; 
- scalar_t__ ctl_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ctl_initialized ; 
- int ctl_lookup (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *,size_t*,size_t*) ; 
- int /*<<< orphan*/  tsd_tsdn (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int tsd_t ;
+
+
+ int EAGAIN ;
+ scalar_t__ ctl_init (int *) ;
+ int ctl_initialized ;
+ int ctl_lookup (int ,char const*,int *,size_t*,size_t*) ;
+ int tsd_tsdn (int *) ;
 
 int
 ctl_nametomib(tsd_t *tsd, const char *name, size_t *mibp, size_t *miblenp) {
-	int ret;
+ int ret;
 
-	if (!ctl_initialized && ctl_init(tsd)) {
-		ret = EAGAIN;
-		goto label_return;
-	}
+ if (!ctl_initialized && ctl_init(tsd)) {
+  ret = EAGAIN;
+  goto label_return;
+ }
 
-	ret = ctl_lookup(tsd_tsdn(tsd), name, NULL, mibp, miblenp);
+ ret = ctl_lookup(tsd_tsdn(tsd), name, ((void*)0), mibp, miblenp);
 label_return:
-	return(ret);
+ return(ret);
 }

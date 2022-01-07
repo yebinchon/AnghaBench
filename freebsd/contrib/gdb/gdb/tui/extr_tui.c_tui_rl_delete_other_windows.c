@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  enum tui_register_display_type { ____Placeholder_tui_register_display_type } tui_register_display_type ;
-typedef  enum tui_layout_type { ____Placeholder_tui_layout_type } tui_layout_type ;
 
-/* Variables and functions */
-#define  DISASSEM_COMMAND 132 
-#define  DISASSEM_DATA_COMMAND 131 
-#define  SRC_COMMAND 130 
-#define  SRC_DATA_COMMAND 129 
-#define  SRC_DISASSEM_COMMAND 128 
- int TUI_UNDEFINED_REGS ; 
- scalar_t__ tui_active ; 
- int tui_current_layout () ; 
- int /*<<< orphan*/  tui_rl_switch_mode (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tui_set_layout (int,int) ; 
+
+
+
+typedef enum tui_register_display_type { ____Placeholder_tui_register_display_type } tui_register_display_type ;
+typedef enum tui_layout_type { ____Placeholder_tui_layout_type } tui_layout_type ;
+
+
+
+
+
+
+
+ int TUI_UNDEFINED_REGS ;
+ scalar_t__ tui_active ;
+ int tui_current_layout () ;
+ int tui_rl_switch_mode (int ,int ) ;
+ int tui_set_layout (int,int) ;
 
 __attribute__((used)) static int
 tui_rl_delete_other_windows (int notused1, int notused2)
 {
   if (!tui_active)
-    tui_rl_switch_mode (0/*notused*/, 0/*notused*/);
+    tui_rl_switch_mode (0 , 0 );
 
   if (tui_active)
     {
@@ -38,21 +38,21 @@ tui_rl_delete_other_windows (int notused1, int notused2)
 
       new_layout = tui_current_layout ();
 
-      /* Kill one window.  */
-      switch (new_layout)
-	{
-	case SRC_COMMAND:
-	case SRC_DATA_COMMAND:
-	case SRC_DISASSEM_COMMAND:
-	default:
-	  new_layout = SRC_COMMAND;
-	  break;
 
-	case DISASSEM_COMMAND:
-	case DISASSEM_DATA_COMMAND:
-	  new_layout = DISASSEM_COMMAND;
-	  break;
-	}
+      switch (new_layout)
+ {
+ case 130:
+ case 129:
+ case 128:
+ default:
+   new_layout = 130;
+   break;
+
+ case 132:
+ case 131:
+   new_layout = 132;
+   break;
+ }
       tui_set_layout (new_layout, regs_type);
     }
   return 0;

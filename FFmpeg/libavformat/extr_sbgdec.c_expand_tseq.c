@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {scalar_t__ t; } ;
-struct sbg_script_tseq {int /*<<< orphan*/  lock; int /*<<< orphan*/  fade; TYPE_1__ ts; int /*<<< orphan*/  name; int /*<<< orphan*/  name_len; } ;
-struct sbg_script_event {int elements; int nb_elements; int /*<<< orphan*/  fade; scalar_t__ ts; } ;
-struct sbg_script_definition {char type; int elements; int nb_elements; int /*<<< orphan*/  name; int /*<<< orphan*/  name_len; } ;
-struct sbg_script {int nb_def; int /*<<< orphan*/  nb_events; int /*<<< orphan*/  events; struct sbg_script_tseq* block_tseq; struct sbg_script_definition* def; } ;
-typedef  int /*<<< orphan*/  int64_t ;
+struct sbg_script_tseq {int lock; int fade; TYPE_1__ ts; int name; int name_len; } ;
+struct sbg_script_event {int elements; int nb_elements; int fade; scalar_t__ ts; } ;
+struct sbg_script_definition {char type; int elements; int nb_elements; int name; int name_len; } ;
+struct sbg_script {int nb_def; int nb_events; int events; struct sbg_script_tseq* block_tseq; struct sbg_script_definition* def; } ;
+typedef int int64_t ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  ENOMEM ; 
- struct sbg_script_event* alloc_array_elem (void**,int,int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  av_log (void*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int AVERROR (int ) ;
+ int AV_LOG_ERROR ;
+ int EINVAL ;
+ int ENOMEM ;
+ struct sbg_script_event* alloc_array_elem (void**,int,int *,int*) ;
+ int av_log (void*,int ,char*,int ,int ) ;
+ int memcmp (int ,int ,int ) ;
 
 __attribute__((used)) static int expand_tseq(void *log, struct sbg_script *s, int *nb_ev_max,
                        int64_t t0, struct sbg_script_tseq *tseq)
@@ -64,10 +64,10 @@ __attribute__((used)) static int expand_tseq(void *log, struct sbg_script *s, in
                               &s->nb_events, nb_ev_max);
         if (!ev)
             return AVERROR(ENOMEM);
-        ev->ts          = tseq->ts.t;
-        ev->elements    = def->elements;
+        ev->ts = tseq->ts.t;
+        ev->elements = def->elements;
         ev->nb_elements = def->nb_elements;
-        ev->fade        = tseq->fade;
+        ev->fade = tseq->fade;
     }
     tseq->lock--;
     return 0;

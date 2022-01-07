@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-struct wps_sm {int /*<<< orphan*/  wps; } ;
+
+
+
+
+typedef int u8 ;
+struct wps_sm {int wps; } ;
 struct wpabuf {int dummy; } ;
-typedef  enum wsc_op_code { ____Placeholder_wsc_op_code } wsc_op_code ;
+typedef enum wsc_op_code { ____Placeholder_wsc_op_code } wsc_op_code ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EAP_CODE_RESPONSE ; 
- int /*<<< orphan*/  EAP_VENDOR_WFA ; 
- int ESP_FAIL ; 
- int /*<<< orphan*/  ETH_P_EAPOL ; 
- int /*<<< orphan*/  IEEE802_1X_TYPE_EAP_PACKET ; 
- int /*<<< orphan*/  MSG_DEBUG ; 
- int /*<<< orphan*/  MSG_ERROR ; 
- struct wpabuf* eap_msg_alloc (int /*<<< orphan*/ ,int,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int esp_wifi_get_assoc_bssid_internal (int /*<<< orphan*/ *) ; 
- struct wps_sm* gWpsSm ; 
- int /*<<< orphan*/  wpa_printf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  wpabuf_free (struct wpabuf*) ; 
- int /*<<< orphan*/  wpabuf_head_u8 (struct wpabuf*) ; 
- scalar_t__ wpabuf_len (struct wpabuf*) ; 
- int /*<<< orphan*/  wpabuf_put_data (struct wpabuf*,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  wpabuf_put_u8 (struct wpabuf*,int) ; 
- scalar_t__ wps_enrollee_get_msg (int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/ * wps_sm_alloc_eapol (struct wps_sm*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,size_t*,int /*<<< orphan*/ *) ; 
- int wps_sm_ether_send (struct wps_sm*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  wps_sm_free_eapol (int /*<<< orphan*/ *) ; 
+
+ int EAP_CODE_RESPONSE ;
+ int EAP_VENDOR_WFA ;
+ int ESP_FAIL ;
+ int ETH_P_EAPOL ;
+ int IEEE802_1X_TYPE_EAP_PACKET ;
+ int MSG_DEBUG ;
+ int MSG_ERROR ;
+ struct wpabuf* eap_msg_alloc (int ,int,scalar_t__,int ,int ) ;
+ int esp_wifi_get_assoc_bssid_internal (int *) ;
+ struct wps_sm* gWpsSm ;
+ int wpa_printf (int ,char*) ;
+ int wpabuf_free (struct wpabuf*) ;
+ int wpabuf_head_u8 (struct wpabuf*) ;
+ scalar_t__ wpabuf_len (struct wpabuf*) ;
+ int wpabuf_put_data (struct wpabuf*,int ,scalar_t__) ;
+ int wpabuf_put_u8 (struct wpabuf*,int) ;
+ scalar_t__ wps_enrollee_get_msg (int ,int*) ;
+ int * wps_sm_alloc_eapol (struct wps_sm*,int ,int ,scalar_t__,size_t*,int *) ;
+ int wps_sm_ether_send (struct wps_sm*,int *,int ,int *,int) ;
+ int wps_sm_free_eapol (int *) ;
 
 int wps_send_wps_mX_rsp(u8 id)
 {
     struct wps_sm *sm = gWpsSm;
-    struct wpabuf *eap_buf = NULL;
-    struct wpabuf *wps_buf = NULL;
+    struct wpabuf *eap_buf = ((void*)0);
+    struct wpabuf *wps_buf = ((void*)0);
     u8 bssid[6];
     u8 *buf;
     int len;
@@ -73,13 +73,13 @@ int wps_send_wps_mX_rsp(u8 id)
     }
 
     wpabuf_put_u8(eap_buf, opcode);
-    wpabuf_put_u8(eap_buf, 0x00); /* flags */
+    wpabuf_put_u8(eap_buf, 0x00);
     wpabuf_put_data(eap_buf, wpabuf_head_u8(wps_buf), wpabuf_len(wps_buf));
 
 
     wpabuf_free(wps_buf);
 
-    buf = wps_sm_alloc_eapol(sm, IEEE802_1X_TYPE_EAP_PACKET, wpabuf_head_u8(eap_buf), wpabuf_len(eap_buf), (size_t *)&len, NULL);
+    buf = wps_sm_alloc_eapol(sm, IEEE802_1X_TYPE_EAP_PACKET, wpabuf_head_u8(eap_buf), wpabuf_len(eap_buf), (size_t *)&len, ((void*)0));
     if (!buf) {
         ret = ESP_FAIL;
         goto _err;

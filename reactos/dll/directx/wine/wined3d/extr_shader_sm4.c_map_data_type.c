@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  enum wined3d_data_type { ____Placeholder_wined3d_data_type } wined3d_data_type ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*,char) ; 
- int WINED3D_DATA_FLOAT ; 
- int WINED3D_DATA_INT ; 
- int WINED3D_DATA_OPAQUE ; 
- int WINED3D_DATA_RESOURCE ; 
- int WINED3D_DATA_SAMPLER ; 
- int WINED3D_DATA_UAV ; 
- int WINED3D_DATA_UINT ; 
+
+
+
+typedef enum wined3d_data_type { ____Placeholder_wined3d_data_type } wined3d_data_type ;
+
+
+ int ERR (char*,char) ;
+ int WINED3D_DATA_FLOAT ;
+ int WINED3D_DATA_INT ;
+ int WINED3D_DATA_OPAQUE ;
+ int WINED3D_DATA_RESOURCE ;
+ int WINED3D_DATA_SAMPLER ;
+ int WINED3D_DATA_UAV ;
+ int WINED3D_DATA_UINT ;
 
 __attribute__((used)) static enum wined3d_data_type map_data_type(char t)
 {

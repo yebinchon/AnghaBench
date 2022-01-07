@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64_t ;
+
+
+
+
+typedef int uint64_t ;
 struct cpufreq_dt_softc {size_t nopp; struct cpufreq_dt_opp const* opp; } ;
-struct cpufreq_dt_opp {int /*<<< orphan*/  freq; } ;
-typedef  size_t ssize_t ;
-typedef  int /*<<< orphan*/  device_t ;
+struct cpufreq_dt_opp {int freq; } ;
+typedef size_t ssize_t ;
+typedef int device_t ;
 
-/* Variables and functions */
- scalar_t__ CPUFREQ_CMP (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DEBUG (int /*<<< orphan*/ ,char*,...) ; 
- struct cpufreq_dt_softc* device_get_softc (int /*<<< orphan*/ ) ; 
+
+ scalar_t__ CPUFREQ_CMP (int ,int ) ;
+ int DEBUG (int ,char*,...) ;
+ struct cpufreq_dt_softc* device_get_softc (int ) ;
 
 __attribute__((used)) static const struct cpufreq_dt_opp *
 cpufreq_dt_find_opp(device_t dev, uint64_t freq)
 {
-	struct cpufreq_dt_softc *sc;
-	ssize_t n;
+ struct cpufreq_dt_softc *sc;
+ ssize_t n;
 
-	sc = device_get_softc(dev);
+ sc = device_get_softc(dev);
 
-	DEBUG(dev, "Looking for freq %ju\n", freq);
-	for (n = 0; n < sc->nopp; n++)
-		if (CPUFREQ_CMP(sc->opp[n].freq, freq))
-			return (&sc->opp[n]);
+ DEBUG(dev, "Looking for freq %ju\n", freq);
+ for (n = 0; n < sc->nopp; n++)
+  if (CPUFREQ_CMP(sc->opp[n].freq, freq))
+   return (&sc->opp[n]);
 
-	DEBUG(dev, "Couldn't find one\n");
-	return (NULL);
+ DEBUG(dev, "Couldn't find one\n");
+ return (((void*)0));
 }

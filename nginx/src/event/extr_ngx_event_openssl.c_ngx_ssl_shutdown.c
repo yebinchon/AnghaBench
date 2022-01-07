@@ -1,70 +1,70 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_6__ ;
-typedef  struct TYPE_10__   TYPE_5__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ ngx_int_t ;
-typedef  int /*<<< orphan*/  ngx_err_t ;
-struct TYPE_9__ {TYPE_1__* ssl; TYPE_6__* read; TYPE_5__* write; int /*<<< orphan*/  log; scalar_t__ timedout; } ;
-typedef  TYPE_2__ ngx_connection_t ;
+
+
+typedef struct TYPE_11__ TYPE_6__ ;
+typedef struct TYPE_10__ TYPE_5__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef scalar_t__ ngx_int_t ;
+typedef int ngx_err_t ;
+struct TYPE_9__ {TYPE_1__* ssl; TYPE_6__* read; TYPE_5__* write; int log; scalar_t__ timedout; } ;
+typedef TYPE_2__ ngx_connection_t ;
 struct TYPE_11__ {void* handler; } ;
 struct TYPE_10__ {void* handler; } ;
-struct TYPE_8__ {int /*<<< orphan*/  connection; scalar_t__ no_send_shutdown; scalar_t__ no_wait_shutdown; } ;
+struct TYPE_8__ {int connection; scalar_t__ no_send_shutdown; scalar_t__ no_wait_shutdown; } ;
 
-/* Variables and functions */
- scalar_t__ ERR_peek_error () ; 
- scalar_t__ NGX_AGAIN ; 
- scalar_t__ NGX_ERROR ; 
- int /*<<< orphan*/  NGX_LOG_DEBUG_EVENT ; 
- scalar_t__ NGX_OK ; 
- int SSL_ERROR_SYSCALL ; 
- int SSL_ERROR_WANT_READ ; 
- int SSL_ERROR_WANT_WRITE ; 
- int SSL_ERROR_ZERO_RETURN ; 
- int SSL_RECEIVED_SHUTDOWN ; 
- int SSL_SENT_SHUTDOWN ; 
- int /*<<< orphan*/  SSL_free (int /*<<< orphan*/ ) ; 
- int SSL_get_error (int /*<<< orphan*/ ,int) ; 
- int SSL_get_shutdown (int /*<<< orphan*/ ) ; 
- scalar_t__ SSL_in_init (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SSL_set_quiet_shutdown (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  SSL_set_shutdown (int /*<<< orphan*/ ,int) ; 
- int SSL_shutdown (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_add_timer (TYPE_6__*,int) ; 
- int /*<<< orphan*/  ngx_errno ; 
- scalar_t__ ngx_handle_read_event (TYPE_6__*,int /*<<< orphan*/ ) ; 
- scalar_t__ ngx_handle_write_event (TYPE_5__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_log_debug1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  ngx_ssl_clear_error (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_ssl_connection_error (TYPE_2__*,int,int /*<<< orphan*/ ,char*) ; 
- void* ngx_ssl_shutdown_handler ; 
+
+ scalar_t__ ERR_peek_error () ;
+ scalar_t__ NGX_AGAIN ;
+ scalar_t__ NGX_ERROR ;
+ int NGX_LOG_DEBUG_EVENT ;
+ scalar_t__ NGX_OK ;
+ int SSL_ERROR_SYSCALL ;
+ int SSL_ERROR_WANT_READ ;
+ int SSL_ERROR_WANT_WRITE ;
+ int SSL_ERROR_ZERO_RETURN ;
+ int SSL_RECEIVED_SHUTDOWN ;
+ int SSL_SENT_SHUTDOWN ;
+ int SSL_free (int ) ;
+ int SSL_get_error (int ,int) ;
+ int SSL_get_shutdown (int ) ;
+ scalar_t__ SSL_in_init (int ) ;
+ int SSL_set_quiet_shutdown (int ,int) ;
+ int SSL_set_shutdown (int ,int) ;
+ int SSL_shutdown (int ) ;
+ int ngx_add_timer (TYPE_6__*,int) ;
+ int ngx_errno ;
+ scalar_t__ ngx_handle_read_event (TYPE_6__*,int ) ;
+ scalar_t__ ngx_handle_write_event (TYPE_5__*,int ) ;
+ int ngx_log_debug1 (int ,int ,int ,char*,int) ;
+ int ngx_ssl_clear_error (int ) ;
+ int ngx_ssl_connection_error (TYPE_2__*,int,int ,char*) ;
+ void* ngx_ssl_shutdown_handler ;
 
 ngx_int_t
 ngx_ssl_shutdown(ngx_connection_t *c)
 {
-    int        n, sslerr, mode;
-    ngx_err_t  err;
+    int n, sslerr, mode;
+    ngx_err_t err;
 
     if (SSL_in_init(c->ssl->connection)) {
-        /*
-         * OpenSSL 1.0.2f complains if SSL_shutdown() is called during
-         * an SSL handshake, while previous versions always return 0.
-         * Avoid calling SSL_shutdown() if handshake wasn't completed.
-         */
+
+
+
+
+
 
         SSL_free(c->ssl->connection);
-        c->ssl = NULL;
+        c->ssl = ((void*)0);
 
         return NGX_OK;
     }
@@ -99,7 +99,7 @@ ngx_ssl_shutdown(ngx_connection_t *c)
 
     sslerr = 0;
 
-    /* before 0.9.8m SSL_shutdown() returned 0 instead of -1 on errors */
+
 
     if (n != 1 && ERR_peek_error()) {
         sslerr = SSL_get_error(c->ssl->connection, n);
@@ -110,7 +110,7 @@ ngx_ssl_shutdown(ngx_connection_t *c)
 
     if (n == 1 || sslerr == 0 || sslerr == SSL_ERROR_ZERO_RETURN) {
         SSL_free(c->ssl->connection);
-        c->ssl = NULL;
+        c->ssl = ((void*)0);
 
         return NGX_OK;
     }
@@ -139,7 +139,7 @@ ngx_ssl_shutdown(ngx_connection_t *c)
     ngx_ssl_connection_error(c, sslerr, err, "SSL_shutdown() failed");
 
     SSL_free(c->ssl->connection);
-    c->ssl = NULL;
+    c->ssl = ((void*)0);
 
     return NGX_ERROR;
 }

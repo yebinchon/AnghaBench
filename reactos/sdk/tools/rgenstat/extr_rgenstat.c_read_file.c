@@ -1,49 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  SEEK_END ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * file_buffer ; 
- int /*<<< orphan*/ * file_handle ; 
- scalar_t__ file_pointer ; 
- scalar_t__ file_size ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int fread (int /*<<< orphan*/ *,int,scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fseek (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ ftell (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * malloc (scalar_t__) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
+ int SEEK_END ;
+ int SEEK_SET ;
+ int exit (int) ;
+ int fclose (int *) ;
+ int * file_buffer ;
+ int * file_handle ;
+ scalar_t__ file_pointer ;
+ scalar_t__ file_size ;
+ int * fopen (char*,char*) ;
+ int fread (int *,int,scalar_t__,int *) ;
+ int fseek (int *,int ,int ) ;
+ scalar_t__ ftell (int *) ;
+ int * malloc (scalar_t__) ;
+ int printf (char*,...) ;
 
 __attribute__((used)) static void
 read_file(char *filename)
 {
   file_handle = fopen(filename, "rb");
-  if (file_handle == NULL)
+  if (file_handle == ((void*)0))
     {
       printf("Can't open %s\n", filename);
       exit(1);
     }
 
-  // Get the size of the file
+
   fseek(file_handle, 0, SEEK_END);
   file_size = ftell(file_handle);
 
-  // Load it all into memory
+
   file_buffer = malloc(file_size);
-  if (file_buffer == NULL)
+  if (file_buffer == ((void*)0))
     {
       fclose(file_handle);
       printf("Out of memory\n");

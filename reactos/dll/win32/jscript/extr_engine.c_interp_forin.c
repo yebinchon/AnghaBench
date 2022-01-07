@@ -1,72 +1,72 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  script_ctx_t ;
-typedef  int /*<<< orphan*/  jsstr_t ;
-struct TYPE_5__ {int /*<<< orphan*/  hres; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int script_ctx_t ;
+typedef int jsstr_t ;
+struct TYPE_5__ {int hres; } ;
 struct TYPE_6__ {TYPE_1__ u; } ;
-typedef  TYPE_2__ exprval_t ;
-typedef  int /*<<< orphan*/  IDispatchEx ;
-typedef  int /*<<< orphan*/  IDispatch ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  DISPID ;
-typedef  int /*<<< orphan*/ * BSTR ;
+typedef TYPE_2__ exprval_t ;
+typedef int IDispatchEx ;
+typedef int IDispatch ;
+typedef int HRESULT ;
+typedef int DISPID ;
+typedef int * BSTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_FAIL ; 
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FIXME (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IDispatchEx_GetMemberName (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IDispatchEx_GetNextDispID (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IDispatchEx_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IDispatch_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IID_IDispatchEx ; 
- scalar_t__ SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  SysFreeString (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SysStringLen (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TRACE (char*) ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  exprval_propput (int /*<<< orphan*/ *,TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fdexEnumDefault ; 
- int /*<<< orphan*/  get_number (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * get_object (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  get_op_uint (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  is_number (int /*<<< orphan*/ ) ; 
- scalar_t__ is_object_instance (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jmp_abs (int /*<<< orphan*/ *,int /*<<< orphan*/  const) ; 
- int /*<<< orphan*/  jmp_next (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * jsstr_alloc_len (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jsstr_release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jsval_number (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jsval_string (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stack_pop (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stack_popn (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  stack_push (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stack_top (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stack_topn (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  stack_topn_exprval (int /*<<< orphan*/ *,int,TYPE_2__*) ; 
+
+ int E_FAIL ;
+ int E_OUTOFMEMORY ;
+ scalar_t__ FAILED (int ) ;
+ int FIXME (char*,int ) ;
+ int IDispatchEx_GetMemberName (int *,int ,int **) ;
+ int IDispatchEx_GetNextDispID (int *,int ,int ,int *) ;
+ int IDispatchEx_Release (int *) ;
+ int IDispatch_QueryInterface (int *,int *,void**) ;
+ int IID_IDispatchEx ;
+ scalar_t__ SUCCEEDED (int ) ;
+ int S_OK ;
+ int SysFreeString (int *) ;
+ int SysStringLen (int *) ;
+ int TRACE (char*) ;
+ int assert (int ) ;
+ int exprval_propput (int *,TYPE_2__*,int ) ;
+ int fdexEnumDefault ;
+ int get_number (int ) ;
+ int * get_object (int ) ;
+ int get_op_uint (int *,int ) ;
+ int is_number (int ) ;
+ scalar_t__ is_object_instance (int ) ;
+ int jmp_abs (int *,int const) ;
+ int jmp_next (int *) ;
+ int * jsstr_alloc_len (int *,int ) ;
+ int jsstr_release (int *) ;
+ int jsval_number (int ) ;
+ int jsval_string (int *) ;
+ int stack_pop (int *) ;
+ int stack_popn (int *,int) ;
+ int stack_push (int *,int ) ;
+ int stack_top (int *) ;
+ int stack_topn (int *,int) ;
+ int stack_topn_exprval (int *,int,TYPE_2__*) ;
 
 __attribute__((used)) static HRESULT interp_forin(script_ctx_t *ctx)
 {
     const HRESULT arg = get_op_uint(ctx, 0);
-    IDispatch *obj = NULL;
+    IDispatch *obj = ((void*)0);
     IDispatchEx *dispex;
     exprval_t prop_ref;
     DISPID id;
-    BSTR name = NULL;
+    BSTR name = ((void*)0);
     HRESULT hres;
 
     TRACE("\n");
@@ -105,7 +105,7 @@ __attribute__((used)) static HRESULT interp_forin(script_ctx_t *ctx)
             return E_OUTOFMEMORY;
 
         stack_pop(ctx);
-        stack_push(ctx, jsval_number(id)); /* safe, just after pop() */
+        stack_push(ctx, jsval_number(id));
 
         hres = exprval_propput(ctx, &prop_ref, jsval_string(str));
         jsstr_release(str);

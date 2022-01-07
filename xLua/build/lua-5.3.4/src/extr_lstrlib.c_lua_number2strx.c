@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  int /*<<< orphan*/  lua_Number ;
 
-/* Variables and functions */
- size_t SIZELENMOD ; 
- int /*<<< orphan*/  luaL_error (int /*<<< orphan*/ *,char*) ; 
- int num2straux (char*,int,int /*<<< orphan*/ ) ; 
- char toupper (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  uchar (char) ; 
+
+
+
+typedef int lua_State ;
+typedef int lua_Number ;
+
+
+ size_t SIZELENMOD ;
+ int luaL_error (int *,char*) ;
+ int num2straux (char*,int,int ) ;
+ char toupper (int ) ;
+ int uchar (char) ;
 
 __attribute__((used)) static int lua_number2strx (lua_State *L, char *buff, int sz,
                             const char *fmt, lua_Number x) {

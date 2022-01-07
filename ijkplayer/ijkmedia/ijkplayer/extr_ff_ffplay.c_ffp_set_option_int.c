@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  int64_t ;
-typedef  int /*<<< orphan*/  FFPlayer ;
-typedef  int /*<<< orphan*/  AVDictionary ;
 
-/* Variables and functions */
- int /*<<< orphan*/  av_dict_set_int (int /*<<< orphan*/ **,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ ** ffp_get_opt_dict (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int int64_t ;
+typedef int FFPlayer ;
+typedef int AVDictionary ;
+
+
+ int av_dict_set_int (int **,char const*,int ,int ) ;
+ int ** ffp_get_opt_dict (int *,int) ;
 
 void ffp_set_option_int(FFPlayer *ffp, int opt_category, const char *name, int64_t value)
 {

@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Btree ;
 
-/* Variables and functions */
- int btreeCreateTable (int /*<<< orphan*/ *,int*,int) ; 
- int /*<<< orphan*/  sqlite3BtreeEnter (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3BtreeLeave (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int Btree ;
+
+
+ int btreeCreateTable (int *,int*,int) ;
+ int sqlite3BtreeEnter (int *) ;
+ int sqlite3BtreeLeave (int *) ;
 
 int sqlite3BtreeCreateTable(Btree *p, int *piTable, int flags){
   int rc;

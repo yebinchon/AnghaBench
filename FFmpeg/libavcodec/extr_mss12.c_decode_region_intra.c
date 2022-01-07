@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int ptrdiff_t ;
-struct TYPE_11__ {int (* get_model_sym ) (TYPE_3__*,int /*<<< orphan*/ *) ;} ;
-struct TYPE_10__ {int pal_stride; int rgb_stride; int* pal; int /*<<< orphan*/ * rgb_pic; int /*<<< orphan*/ * pal_pic; } ;
-struct TYPE_9__ {int /*<<< orphan*/  intra_pix_ctx; int /*<<< orphan*/  intra_region; TYPE_2__* c; } ;
-typedef  TYPE_1__ SliceContext ;
-typedef  TYPE_2__ MSS12Context ;
-typedef  TYPE_3__ ArithCoder ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_WB24 (int /*<<< orphan*/ *,int) ; 
- int decode_pixel (TYPE_3__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int decode_region (TYPE_3__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int,int,int,int,int,int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int,int) ; 
- int stub1 (TYPE_3__*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int ptrdiff_t ;
+struct TYPE_11__ {int (* get_model_sym ) (TYPE_3__*,int *) ;} ;
+struct TYPE_10__ {int pal_stride; int rgb_stride; int* pal; int * rgb_pic; int * pal_pic; } ;
+struct TYPE_9__ {int intra_pix_ctx; int intra_region; TYPE_2__* c; } ;
+typedef TYPE_1__ SliceContext ;
+typedef TYPE_2__ MSS12Context ;
+typedef TYPE_3__ ArithCoder ;
+
+
+ int AV_WB24 (int *,int) ;
+ int decode_pixel (TYPE_3__*,int *,int *,int ,int ) ;
+ int decode_region (TYPE_3__*,int *,int *,int,int,int,int,int,int,int *,int*) ;
+ int memset (int *,int,int) ;
+ int stub1 (TYPE_3__*,int *) ;
 
 __attribute__((used)) static int decode_region_intra(SliceContext *sc, ArithCoder *acoder,
                                int x, int y, int width, int height)
@@ -39,12 +39,12 @@ __attribute__((used)) static int decode_region_intra(SliceContext *sc, ArithCode
 
     if (!mode) {
         int i, j, pix, rgb_pix;
-        ptrdiff_t stride     = c->pal_stride;
+        ptrdiff_t stride = c->pal_stride;
         ptrdiff_t rgb_stride = c->rgb_stride;
-        uint8_t *dst     = c->pal_pic + x     + y * stride;
+        uint8_t *dst = c->pal_pic + x + y * stride;
         uint8_t *rgb_dst = c->rgb_pic + x * 3 + y * rgb_stride;
 
-        pix     = decode_pixel(acoder, &sc->intra_pix_ctx, NULL, 0, 0);
+        pix = decode_pixel(acoder, &sc->intra_pix_ctx, ((void*)0), 0, 0);
         if (pix < 0)
             return pix;
         rgb_pix = c->pal[pix];

@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint64_t ;
-typedef  int /*<<< orphan*/  k ;
 
-/* Variables and functions */
- int BIG_CONSTANT (int) ; 
- int /*<<< orphan*/  memcpy (int*,int const*,int) ; 
+
+
+
+typedef int uint64_t ;
+typedef int k ;
+
+
+ int BIG_CONSTANT (int) ;
+ int memcpy (int*,int const*,int) ;
 
 __attribute__((used)) static inline uint64_t MurmurHash64A ( const void * key, int len, uint64_t seed )
 {
@@ -32,10 +32,10 @@ __attribute__((used)) static inline uint64_t MurmurHash64A ( const void * key, i
     uint64_t k;
 
     if (!((uintptr_t)data & 0x7))
-	    k = *data++;
+     k = *data++;
     else {
-	    memcpy(&k, data, sizeof(k));
-	    data++;
+     memcpy(&k, data, sizeof(k));
+     data++;
     }
 
     k *= m;
@@ -51,17 +51,17 @@ __attribute__((used)) static inline uint64_t MurmurHash64A ( const void * key, i
   switch(len & 7)
   {
   case 7: h ^= (uint64_t)(data2[6]) << 48;
-  /* fall through */
+
   case 6: h ^= (uint64_t)(data2[5]) << 40;
-  /* fall through */
+
   case 5: h ^= (uint64_t)(data2[4]) << 32;
-  /* fall through */
+
   case 4: h ^= (uint64_t)(data2[3]) << 24;
-  /* fall through */
+
   case 3: h ^= (uint64_t)(data2[2]) << 16;
-  /* fall through */
+
   case 2: h ^= (uint64_t)(data2[1]) << 8;
-  /* fall through */
+
   case 1: h ^= (uint64_t)(data2[0]);
           h *= m;
   };

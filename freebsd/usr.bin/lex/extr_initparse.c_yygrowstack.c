@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  short YYSTYPE ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef short YYSTYPE ;
 struct TYPE_3__ {unsigned int stacksize; short* s_mark; short* s_base; short* l_base; short* l_mark; short* s_last; } ;
-typedef  TYPE_1__ YYSTACKDATA ;
+typedef TYPE_1__ YYSTACKDATA ;
 
-/* Variables and functions */
- unsigned int YYINITSTACKSIZE ; 
- unsigned int YYMAXDEPTH ; 
- scalar_t__ realloc (short*,unsigned int) ; 
+
+ unsigned int YYINITSTACKSIZE ;
+ unsigned int YYMAXDEPTH ;
+ scalar_t__ realloc (short*,unsigned int) ;
 
 __attribute__((used)) static int yygrowstack(YYSTACKDATA *data)
 {
@@ -36,14 +36,14 @@ __attribute__((used)) static int yygrowstack(YYSTACKDATA *data)
 
     i = data->s_mark - data->s_base;
     newss = (short *)realloc(data->s_base, newsize * sizeof(*newss));
-    if (newss == NULL)
+    if (newss == ((void*)0))
         return -1;
 
     data->s_base = newss;
     data->s_mark = newss + i;
 
     newvs = (YYSTYPE *)realloc(data->l_base, newsize * sizeof(*newvs));
-    if (newvs == NULL)
+    if (newvs == ((void*)0))
         return -1;
 
     data->l_base = newvs;

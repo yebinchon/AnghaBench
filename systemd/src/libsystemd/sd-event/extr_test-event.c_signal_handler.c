@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct signalfd_siginfo {int dummy; } ;
-typedef  int /*<<< orphan*/  sd_event_source ;
-typedef  scalar_t__ pid_t ;
+typedef int sd_event_source ;
+typedef scalar_t__ pid_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EXIT_SUCCESS ; 
- void* INT_TO_PTR (float) ; 
- int /*<<< orphan*/  PTR_TO_INT (void*) ; 
- int /*<<< orphan*/  SD_EVENT_ONESHOT ; 
- int /*<<< orphan*/  SIGCHLD ; 
- int /*<<< orphan*/  SIG_BLOCK ; 
- int /*<<< orphan*/  WEXITED ; 
- int /*<<< orphan*/  _exit (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert_se (int) ; 
- int /*<<< orphan*/  child_handler ; 
- scalar_t__ fork () ; 
- int /*<<< orphan*/  log_info (char*,int /*<<< orphan*/ ) ; 
- scalar_t__ sd_event_add_child (int /*<<< orphan*/ ,int /*<<< orphan*/ **,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*) ; 
- int /*<<< orphan*/  sd_event_source_get_event (int /*<<< orphan*/ *) ; 
- scalar_t__ sd_event_source_set_enabled (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sd_event_source_unref (int /*<<< orphan*/ *) ; 
- scalar_t__ sigprocmask_many (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
+
+ int EXIT_SUCCESS ;
+ void* INT_TO_PTR (float) ;
+ int PTR_TO_INT (void*) ;
+ int SD_EVENT_ONESHOT ;
+ int SIGCHLD ;
+ int SIG_BLOCK ;
+ int WEXITED ;
+ int _exit (int ) ;
+ int assert_se (int) ;
+ int child_handler ;
+ scalar_t__ fork () ;
+ int log_info (char*,int ) ;
+ scalar_t__ sd_event_add_child (int ,int **,scalar_t__,int ,int ,void*) ;
+ int sd_event_source_get_event (int *) ;
+ scalar_t__ sd_event_source_set_enabled (int *,int ) ;
+ int sd_event_source_unref (int *) ;
+ scalar_t__ sigprocmask_many (int ,int *,int ,int) ;
 
 __attribute__((used)) static int signal_handler(sd_event_source *s, const struct signalfd_siginfo *si, void *userdata) {
-        sd_event_source *p = NULL;
+        sd_event_source *p = ((void*)0);
         pid_t pid;
 
         assert_se(s);
@@ -44,7 +44,7 @@ __attribute__((used)) static int signal_handler(sd_event_source *s, const struct
 
         assert_se(userdata == INT_TO_PTR('e'));
 
-        assert_se(sigprocmask_many(SIG_BLOCK, NULL, SIGCHLD, -1) >= 0);
+        assert_se(sigprocmask_many(SIG_BLOCK, ((void*)0), SIGCHLD, -1) >= 0);
 
         pid = fork();
         assert_se(pid >= 0);

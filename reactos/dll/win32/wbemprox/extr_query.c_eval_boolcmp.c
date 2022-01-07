@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  scalar_t__ UINT ;
-typedef  int LONGLONG ;
-typedef  scalar_t__ INT_PTR ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- scalar_t__ CIM_STRING ; 
- int /*<<< orphan*/  ERR (char*,scalar_t__) ; 
-#define  OP_EQ 129 
-#define  OP_NE 128 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  WBEM_E_INVALID_QUERY ; 
- int /*<<< orphan*/  strcmpiW (char const*,char const*) ; 
+
+
+
+typedef char WCHAR ;
+typedef scalar_t__ UINT ;
+typedef int LONGLONG ;
+typedef scalar_t__ INT_PTR ;
+typedef int HRESULT ;
+
+
+ scalar_t__ CIM_STRING ;
+ int ERR (char*,scalar_t__) ;
+
+
+ int S_OK ;
+ int WBEM_E_INVALID_QUERY ;
+ int strcmpiW (char const*,char const*) ;
 
 __attribute__((used)) static HRESULT eval_boolcmp( UINT op, LONGLONG lval, LONGLONG rval, UINT ltype, UINT rtype, LONGLONG *val )
 {
@@ -34,10 +34,10 @@ __attribute__((used)) static HRESULT eval_boolcmp( UINT op, LONGLONG lval, LONGL
 
     switch (op)
     {
-    case OP_EQ:
+    case 129:
         *val = (lval == rval);
         break;
-    case OP_NE:
+    case 128:
         *val = (lval != rval);
         break;
     default:

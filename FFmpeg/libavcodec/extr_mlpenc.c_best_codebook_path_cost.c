@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_11__ {int bitcount; } ;
 struct TYPE_10__ {TYPE_3__*** best_offset; } ;
 struct TYPE_9__ {int bitcount; char* path; } ;
-typedef  TYPE_1__ PathCounter ;
-typedef  TYPE_2__ MLPEncodeContext ;
-typedef  TYPE_3__ BestOffset ;
+typedef TYPE_1__ PathCounter ;
+typedef TYPE_2__ MLPEncodeContext ;
+typedef TYPE_3__ BestOffset ;
 
-/* Variables and functions */
- scalar_t__ CODEBOOK_CHANGE_BITS ; 
- char ZERO_PATH ; 
- scalar_t__ compare_best_offset (TYPE_3__*,TYPE_3__*) ; 
- TYPE_3__* restart_best_offset ; 
+
+ scalar_t__ CODEBOOK_CHANGE_BITS ;
+ char ZERO_PATH ;
+ scalar_t__ compare_best_offset (TYPE_3__*,TYPE_3__*) ;
+ TYPE_3__* restart_best_offset ;
 
 __attribute__((used)) static int best_codebook_path_cost(MLPEncodeContext *ctx, unsigned int channel,
                                    PathCounter *src, int cur_codebook)

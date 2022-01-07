@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  wc_id; int /*<<< orphan*/  sdb; } ;
-typedef  TYPE_1__ svn_wc__db_wcroot_t ;
-typedef  scalar_t__ svn_wc__db_status_t ;
-typedef  int /*<<< orphan*/  svn_sqlite__stmt_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_int64_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  STMT_SELECT_NODE_INFO ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SVN_ERR_ASSERT (int) ; 
- int /*<<< orphan*/  SVN_ERR_WC_PATH_NOT_FOUND ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  path_for_error_message (TYPE_1__*,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  presence_map ; 
- int /*<<< orphan*/ * svn_error_createf (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * svn_error_trace (int /*<<< orphan*/ *) ; 
- char* svn_relpath_join (char const*,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_relpath_split (char const**,char const**,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_sqlite__bindf (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,char const*) ; 
- int svn_sqlite__column_int (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_sqlite__column_int64 (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  svn_sqlite__column_is_null (int /*<<< orphan*/ *,int) ; 
- char* svn_sqlite__column_text (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_sqlite__column_token (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * svn_sqlite__get_statement (int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * svn_sqlite__reset (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_sqlite__step (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_sqlite__step_row (int /*<<< orphan*/ *) ; 
- scalar_t__ svn_wc__db_status_base_deleted ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int wc_id; int sdb; } ;
+typedef TYPE_1__ svn_wc__db_wcroot_t ;
+typedef scalar_t__ svn_wc__db_status_t ;
+typedef int svn_sqlite__stmt_t ;
+typedef int svn_error_t ;
+typedef int svn_boolean_t ;
+typedef int apr_pool_t ;
+typedef int apr_int64_t ;
+
+
+ int STMT_SELECT_NODE_INFO ;
+ int SVN_ERR (int *) ;
+ int SVN_ERR_ASSERT (int) ;
+ int SVN_ERR_WC_PATH_NOT_FOUND ;
+ int * SVN_NO_ERROR ;
+ int _ (char*) ;
+ int path_for_error_message (TYPE_1__*,char const*,int *) ;
+ int presence_map ;
+ int * svn_error_createf (int ,int *,int ,int ) ;
+ int * svn_error_trace (int *) ;
+ char* svn_relpath_join (char const*,char const*,int *) ;
+ int svn_relpath_split (char const**,char const**,char const*,int *) ;
+ int * svn_sqlite__bindf (int *,char*,int ,char const*) ;
+ int svn_sqlite__column_int (int *,int ) ;
+ int svn_sqlite__column_int64 (int *,int) ;
+ int svn_sqlite__column_is_null (int *,int) ;
+ char* svn_sqlite__column_text (int *,int,int *) ;
+ scalar_t__ svn_sqlite__column_token (int *,int,int ) ;
+ int * svn_sqlite__get_statement (int **,int ,int ) ;
+ int * svn_sqlite__reset (int *) ;
+ int * svn_sqlite__step (int *,int *) ;
+ int * svn_sqlite__step_row (int *) ;
+ scalar_t__ svn_wc__db_status_base_deleted ;
 
 __attribute__((used)) static svn_error_t *
 determine_commit_repos_info(apr_int64_t *repos_id,
@@ -57,7 +57,7 @@ determine_commit_repos_info(apr_int64_t *repos_id,
   svn_boolean_t have_row;
   int op_depth;
 
-  /* Prefer the current node's repository information.  */
+
   SVN_ERR(svn_sqlite__get_statement(&stmt, wcroot->sdb,
                                     STMT_SELECT_NODE_INFO));
   SVN_ERR(svn_sqlite__bindf(stmt, "is", wcroot->wc_id, local_relpath));
@@ -79,7 +79,7 @@ determine_commit_repos_info(apr_int64_t *repos_id,
 
       if (presence == svn_wc__db_status_base_deleted)
         {
-          SVN_ERR(svn_sqlite__step_row(stmt)); /* There must be a row */
+          SVN_ERR(svn_sqlite__step_row(stmt));
           op_depth = svn_sqlite__column_int(stmt, 0);
         }
       else
@@ -89,14 +89,6 @@ determine_commit_repos_info(apr_int64_t *repos_id,
           const char *name;
 
           SVN_ERR(svn_sqlite__reset(stmt));
-
-          /* The repository relative path of an add/copy is based on its
-             ancestor, not on the shadowed base layer.
-
-             As this function is only used from the commit processing we know
-             the parent directory has only a BASE row, so we can just obtain
-             the information directly by recursing (once!)  */
-
           svn_relpath_split(&parent_relpath, &name, local_relpath,
                             scratch_pool);
 
@@ -111,7 +103,7 @@ determine_commit_repos_info(apr_int64_t *repos_id,
     }
 
 
-  SVN_ERR_ASSERT(op_depth == 0); /* And that row must be BASE */
+  SVN_ERR_ASSERT(op_depth == 0);
 
   SVN_ERR_ASSERT(!svn_sqlite__column_is_null(stmt, 1));
   SVN_ERR_ASSERT(!svn_sqlite__column_is_null(stmt, 2));

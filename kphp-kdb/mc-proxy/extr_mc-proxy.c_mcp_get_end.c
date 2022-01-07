@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct connection {int /*<<< orphan*/  last_query_sent_time; scalar_t__ Tmp; int /*<<< orphan*/  Out; int /*<<< orphan*/  status; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct connection {int last_query_sent_time; scalar_t__ Tmp; int Out; int status; } ;
 struct conn_query {int custom_type; } ;
 struct TYPE_4__ {scalar_t__ get_timeout; } ;
 struct TYPE_3__ {int custom_field; } ;
 
-/* Variables and functions */
- TYPE_2__* CC ; 
- int /*<<< orphan*/  accumulate_query_timeout (struct connection*,scalar_t__) ; 
- int /*<<< orphan*/  conn_wait_net ; 
- struct conn_query* create_query (struct connection*,struct connection*,scalar_t__) ; 
- int /*<<< orphan*/  flush_output (struct connection*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  free_tmp_buffers (struct connection*) ; 
- struct connection** get_connection ; 
- TYPE_1__** get_target ; 
- int get_targets ; 
- int /*<<< orphan*/  precise_now ; 
- int /*<<< orphan*/  set_connection_timeout (struct connection*,scalar_t__) ; 
- int /*<<< orphan*/  stderr ; 
- int verbosity ; 
- int /*<<< orphan*/  write_out (int /*<<< orphan*/ *,char*,int) ; 
+
+ TYPE_2__* CC ;
+ int accumulate_query_timeout (struct connection*,scalar_t__) ;
+ int conn_wait_net ;
+ struct conn_query* create_query (struct connection*,struct connection*,scalar_t__) ;
+ int flush_output (struct connection*) ;
+ int fprintf (int ,char*,int) ;
+ int free_tmp_buffers (struct connection*) ;
+ struct connection** get_connection ;
+ TYPE_1__** get_target ;
+ int get_targets ;
+ int precise_now ;
+ int set_connection_timeout (struct connection*,scalar_t__) ;
+ int stderr ;
+ int verbosity ;
+ int write_out (int *,char*,int) ;
 
 int mcp_get_end (struct connection *c, int key_count) {
   int i;
@@ -55,9 +55,9 @@ int mcp_get_end (struct connection *c, int key_count) {
     if (x > 0) {
       d = get_connection[i];
       write_out (&d->Out, "\r\n", 2);
-      /* create query structure related to c & d */
+
       Q = create_query (d, c, CC->get_timeout + 0.2);
-      if (/* !i && */ c->Tmp) {
+      if ( c->Tmp) {
         Q->custom_type |= 0x1000;
       }
       flush_output (d);

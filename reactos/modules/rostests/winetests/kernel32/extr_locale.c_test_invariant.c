@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct invariant_entry {int id; char const* expect; char const* expect2; scalar_t__ name; } ;
-typedef  int /*<<< orphan*/  buffer ;
+typedef int buffer ;
 
-/* Variables and functions */
- int BUFFER_SIZE ; 
- int /*<<< orphan*/  GetLastError () ; 
- int GetLocaleInfoA (int /*<<< orphan*/ ,int,char*,int) ; 
- int /*<<< orphan*/  GetSystemDefaultLCID () ; 
- int /*<<< orphan*/  GetThreadLocale () ; 
- scalar_t__ LANGIDFROMLCID (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LANG_ENGLISH ; 
- int /*<<< orphan*/  LOCALE_INVARIANT ; 
- int LOCALE_SCOUNTRY ; 
- int LOCALE_SLANGUAGE ; 
- int LOCALE_SNAME ; 
- int LOCALE_SSCRIPTS ; 
- int LOCALE_SSORTNAME ; 
- scalar_t__ MAKELANGID (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int NUO ; 
- int /*<<< orphan*/  SUBLANG_ENGLISH_US ; 
- struct invariant_entry* invariant_list ; 
- int lstrlenA (char const*) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  skip (char*) ; 
- int /*<<< orphan*/  strcmp (char*,char const*) ; 
- int strlen (char const*) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
+
+ int BUFFER_SIZE ;
+ int GetLastError () ;
+ int GetLocaleInfoA (int ,int,char*,int) ;
+ int GetSystemDefaultLCID () ;
+ int GetThreadLocale () ;
+ scalar_t__ LANGIDFROMLCID (int ) ;
+ int LANG_ENGLISH ;
+ int LOCALE_INVARIANT ;
+ int LOCALE_SCOUNTRY ;
+ int LOCALE_SLANGUAGE ;
+ int LOCALE_SNAME ;
+ int LOCALE_SSCRIPTS ;
+ int LOCALE_SSORTNAME ;
+ scalar_t__ MAKELANGID (int ,int ) ;
+ int NUO ;
+ int SUBLANG_ENGLISH_US ;
+ struct invariant_entry* invariant_list ;
+ int lstrlenA (char const*) ;
+ int ok (int,char*,...) ;
+ int skip (char*) ;
+ int strcmp (char*,char const*) ;
+ int strlen (char const*) ;
+ int win_skip (char*) ;
 
 __attribute__((used)) static void test_invariant(void)
 {
@@ -47,7 +47,7 @@ __attribute__((used)) static void test_invariant(void)
 
   if (!GetLocaleInfoA(LOCALE_INVARIANT, NUO|LOCALE_SLANGUAGE, buffer, sizeof(buffer)))
   {
-      win_skip("GetLocaleInfoA(LOCALE_INVARIANT) not supported\n"); /* win2k */
+      win_skip("GetLocaleInfoA(LOCALE_INVARIANT) not supported\n");
       return;
   }
 
@@ -55,10 +55,10 @@ __attribute__((used)) static void test_invariant(void)
   {
     ret = GetLocaleInfoA(LOCALE_INVARIANT, NUO|ptr->id, buffer, sizeof(buffer));
     if (!ret && (ptr->id == LOCALE_SNAME || ptr->id == LOCALE_SSCRIPTS))
-        win_skip("not supported\n"); /* winxp/win2k3 */
+        win_skip("not supported\n");
     else
     {
-        len = strlen(ptr->expect)+1; /* include \0 */
+        len = strlen(ptr->expect)+1;
         ok(ret == len || (ptr->expect2 && ret == strlen(ptr->expect2)+1),
            "For id %d, expected ret == %d, got %d, error %d\n",
             ptr->id, len, ret, GetLastError());
@@ -77,11 +77,11 @@ __attribute__((used)) static void test_invariant(void)
   }
   else
   {
-    /* some locales translate these */
-    static const char lang[]  = "Invariant Language (Invariant Country)";
+
+    static const char lang[] = "Invariant Language (Invariant Country)";
     static const char cntry[] = "Invariant Country";
     static const char sortm[] = "Math Alphanumerics";
-    static const char sortd[] = "Default"; /* win2k3 */
+    static const char sortd[] = "Default";
 
     ret = GetLocaleInfoA(LOCALE_INVARIANT, NUO|LOCALE_SLANGUAGE, buffer, sizeof(buffer));
     len = lstrlenA(lang) + 1;
@@ -96,7 +96,7 @@ __attribute__((used)) static void test_invariant(void)
     ret = GetLocaleInfoA(LOCALE_INVARIANT, NUO|LOCALE_SSORTNAME, buffer, sizeof(buffer));
     if (ret == lstrlenA(sortm)+1)
         ok(!strcmp(buffer, sortm), "Expected %s, got '%s'\n", sortm, buffer);
-    else if (ret == lstrlenA(sortd)+1) /* win2k3 */
+    else if (ret == lstrlenA(sortd)+1)
         ok(!strcmp(buffer, sortd), "Expected %s, got '%s'\n", sortd, buffer);
     else
         ok(0, "Expected ret == %d or %d, got %d, error %d\n",

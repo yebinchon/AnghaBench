@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VOID ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int VOID ;
 struct TYPE_6__ {int right; scalar_t__ bottom; scalar_t__ top; } ;
 struct TYPE_5__ {int left; int right; scalar_t__ bottom; scalar_t__ top; } ;
-typedef  TYPE_1__ RECT ;
-typedef  TYPE_2__* LPRECT ;
-typedef  int /*<<< orphan*/  HDC ;
-typedef  int /*<<< orphan*/  COLOR_SCHEME ;
-typedef  scalar_t__ BOOL ;
+typedef TYPE_1__ RECT ;
+typedef TYPE_2__* LPRECT ;
+typedef int HDC ;
+typedef int COLOR_SCHEME ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DFCS_CAPTIONCLOSE ; 
- int /*<<< orphan*/  DFCS_CAPTIONMAX ; 
- int /*<<< orphan*/  DFCS_CAPTIONMIN ; 
- int /*<<< orphan*/  DFC_CAPTION ; 
- int /*<<< orphan*/  MyDrawFrameControl (int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int DFCS_CAPTIONCLOSE ;
+ int DFCS_CAPTIONMAX ;
+ int DFCS_CAPTIONMIN ;
+ int DFC_CAPTION ;
+ int MyDrawFrameControl (int ,TYPE_1__*,int ,int ,int *) ;
 
 VOID
 MyDrawCaptionButtons(HDC hdc, LPRECT lpRect, BOOL bMinMax, int x, COLOR_SCHEME *scheme)

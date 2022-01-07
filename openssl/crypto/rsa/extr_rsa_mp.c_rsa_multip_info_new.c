@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/ * pp; int /*<<< orphan*/ * t; int /*<<< orphan*/ * d; int /*<<< orphan*/ * r; } ;
-typedef  TYPE_1__ RSA_PRIME_INFO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BN_free (int /*<<< orphan*/ *) ; 
- void* BN_secure_new () ; 
- int /*<<< orphan*/  ERR_R_MALLOC_FAILURE ; 
- int /*<<< orphan*/  OPENSSL_free (TYPE_1__*) ; 
- TYPE_1__* OPENSSL_zalloc (int) ; 
- int /*<<< orphan*/  RSA_F_RSA_MULTIP_INFO_NEW ; 
- int /*<<< orphan*/  RSAerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int * pp; int * t; int * d; int * r; } ;
+typedef TYPE_1__ RSA_PRIME_INFO ;
+
+
+ int BN_free (int *) ;
+ void* BN_secure_new () ;
+ int ERR_R_MALLOC_FAILURE ;
+ int OPENSSL_free (TYPE_1__*) ;
+ TYPE_1__* OPENSSL_zalloc (int) ;
+ int RSA_F_RSA_MULTIP_INFO_NEW ;
+ int RSAerr (int ,int ) ;
 
 RSA_PRIME_INFO *rsa_multip_info_new(void)
 {
     RSA_PRIME_INFO *pinfo;
 
-    /* create a RSA_PRIME_INFO structure */
-    if ((pinfo = OPENSSL_zalloc(sizeof(RSA_PRIME_INFO))) == NULL) {
+
+    if ((pinfo = OPENSSL_zalloc(sizeof(RSA_PRIME_INFO))) == ((void*)0)) {
         RSAerr(RSA_F_RSA_MULTIP_INFO_NEW, ERR_R_MALLOC_FAILURE);
-        return NULL;
+        return ((void*)0);
     }
-    if ((pinfo->r = BN_secure_new()) == NULL)
+    if ((pinfo->r = BN_secure_new()) == ((void*)0))
         goto err;
-    if ((pinfo->d = BN_secure_new()) == NULL)
+    if ((pinfo->d = BN_secure_new()) == ((void*)0))
         goto err;
-    if ((pinfo->t = BN_secure_new()) == NULL)
+    if ((pinfo->t = BN_secure_new()) == ((void*)0))
         goto err;
-    if ((pinfo->pp = BN_secure_new()) == NULL)
+    if ((pinfo->pp = BN_secure_new()) == ((void*)0))
         goto err;
 
     return pinfo;
@@ -49,5 +49,5 @@ RSA_PRIME_INFO *rsa_multip_info_new(void)
     BN_free(pinfo->t);
     BN_free(pinfo->pp);
     OPENSSL_free(pinfo);
-    return NULL;
+    return ((void*)0);
 }

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  _tmp_string_t ;
-typedef  scalar_t__ Py_ssize_t ;
-typedef  int /*<<< orphan*/  PyObject ;
 
-/* Variables and functions */
- scalar_t__ PyBytes_AsStringAndSize (int /*<<< orphan*/ *,char**,scalar_t__*) ; 
- int /*<<< orphan*/  PyErr_Clear () ; 
- int /*<<< orphan*/  PyErr_SetString (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  PyExc_ValueError ; 
- int /*<<< orphan*/ * PyUnicode_AsUTF8String (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Py_INCREF (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Py_XDECREF (int /*<<< orphan*/ *) ; 
- scalar_t__ _append_char (int /*<<< orphan*/ *,char) ; 
+
+
+
+typedef int _tmp_string_t ;
+typedef scalar_t__ Py_ssize_t ;
+typedef int PyObject ;
+
+
+ scalar_t__ PyBytes_AsStringAndSize (int *,char**,scalar_t__*) ;
+ int PyErr_Clear () ;
+ int PyErr_SetString (int ,char*) ;
+ int PyExc_ValueError ;
+ int * PyUnicode_AsUTF8String (int *) ;
+ int Py_INCREF (int *) ;
+ int Py_XDECREF (int *) ;
+ scalar_t__ _append_char (int *,char) ;
 
 __attribute__((used)) static int
 _append_field_name(_tmp_string_t *str, PyObject *name)
@@ -31,14 +31,14 @@ _append_field_name(_tmp_string_t *str, PyObject *name)
     char *p;
     Py_ssize_t len;
     PyObject *tmp;
-#if defined(NPY_PY3K)
-    /* FIXME: XXX -- should it use UTF-8 here? */
-    tmp = PyUnicode_AsUTF8String(name);
-#else
+
+
+
+
     tmp = name;
     Py_INCREF(tmp);
-#endif
-    if (tmp == NULL || PyBytes_AsStringAndSize(tmp, &p, &len) < 0) {
+
+    if (tmp == ((void*)0) || PyBytes_AsStringAndSize(tmp, &p, &len) < 0) {
         PyErr_Clear();
         PyErr_SetString(PyExc_ValueError, "invalid field name");
         goto fail;

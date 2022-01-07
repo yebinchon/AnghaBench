@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct kev_netevent_clat46_data {int /*<<< orphan*/  euuid; int /*<<< orphan*/  epid; int /*<<< orphan*/  clat46_event_code; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EVENTHANDLER_INVOKE (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  in6_clat46_event ; 
- int /*<<< orphan*/  in6_clat46_evhdlr_ctxt ; 
+
+
+
+struct kev_netevent_clat46_data {int euuid; int epid; int clat46_event_code; } ;
+
+
+ int EVENTHANDLER_INVOKE (int *,int ,int ,int ,int ) ;
+ int in6_clat46_event ;
+ int in6_clat46_evhdlr_ctxt ;
 
 __attribute__((used)) static void
 in6_clat46_event_callback(void *arg)

@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ gint ;
-typedef  scalar_t__ gboolean ;
-typedef  int /*<<< orphan*/  GtkTreeModel ;
-typedef  int /*<<< orphan*/  GtkTreeIter ;
-typedef  int /*<<< orphan*/  GhbValue ;
-typedef  int /*<<< orphan*/  GString ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GTK_TREE_STORE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  g_free (char*) ; 
- char* g_strdup (char*) ; 
- char* g_strdup_printf (char*,scalar_t__) ; 
- int /*<<< orphan*/  g_string_append_printf (int /*<<< orphan*/ *,char*,...) ; 
- char* g_string_free (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * g_string_new (char*) ; 
- int /*<<< orphan*/ * ghb_dict_get (int /*<<< orphan*/ *,char*) ; 
- scalar_t__ ghb_dict_get_bool (int /*<<< orphan*/ *,char*) ; 
- scalar_t__ ghb_dict_get_int (int /*<<< orphan*/ *,char*) ; 
- scalar_t__ gtk_tree_model_iter_children (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  gtk_tree_store_append (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  gtk_tree_store_remove (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  gtk_tree_store_set (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int,char*,int,...) ; 
- char* subtitle_get_track_description (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef scalar_t__ gint ;
+typedef scalar_t__ gboolean ;
+typedef int GtkTreeModel ;
+typedef int GtkTreeIter ;
+typedef int GhbValue ;
+typedef int GString ;
+
+
+ int FALSE ;
+ int GTK_TREE_STORE (int *) ;
+ int g_free (char*) ;
+ char* g_strdup (char*) ;
+ char* g_strdup_printf (char*,scalar_t__) ;
+ int g_string_append_printf (int *,char*,...) ;
+ char* g_string_free (int *,int ) ;
+ int * g_string_new (char*) ;
+ int * ghb_dict_get (int *,char*) ;
+ scalar_t__ ghb_dict_get_bool (int *,char*) ;
+ scalar_t__ ghb_dict_get_int (int *,char*) ;
+ scalar_t__ gtk_tree_model_iter_children (int *,int *,int *) ;
+ int gtk_tree_store_append (int ,int *,int *) ;
+ int gtk_tree_store_remove (int ,int *) ;
+ int gtk_tree_store_set (int ,int *,int ,char*,int,char*,int,...) ;
+ char* subtitle_get_track_description (int *,int *) ;
 
 __attribute__((used)) static void
 subtitle_refresh_list_row_ui(
@@ -49,8 +49,8 @@ subtitle_refresh_list_row_ui(
     char *desc;
 
 
-    info_src_2 = NULL;
-    info_dst_2 = NULL;
+    info_src_2 = ((void*)0);
+    info_dst_2 = ((void*)0);
 
     forced = ghb_dict_get_bool(subsettings, "Forced");
     burned = ghb_dict_get_bool(subsettings, "Burn");
@@ -58,7 +58,7 @@ subtitle_refresh_list_row_ui(
     desc = subtitle_get_track_description(settings, subsettings);
     info_src = g_strdup_printf("<small>%s</small>", desc);
     g_free(desc);
-    if (ghb_dict_get(subsettings, "Import") != NULL)
+    if (ghb_dict_get(subsettings, "Import") != ((void*)0))
     {
         gint offset;
         offset = ghb_dict_get_int(subsettings, "Offset");
@@ -84,7 +84,7 @@ subtitle_refresh_list_row_ui(
     info_dst = g_string_free(str, FALSE);
 
     gtk_tree_store_set(GTK_TREE_STORE(tm), ti,
-        // These are displayed in list
+
         0, info_src,
         1, "-->",
         2, info_dst,
@@ -93,11 +93,11 @@ subtitle_refresh_list_row_ui(
         5, 0.5,
         -1);
 
-    if (info_src_2 != NULL || info_dst_2 != NULL)
+    if (info_src_2 != ((void*)0) || info_dst_2 != ((void*)0))
     {
-        if (info_src_2 == NULL)
+        if (info_src_2 == ((void*)0))
             info_src_2 = g_strdup("");
-        if (info_dst_2 == NULL)
+        if (info_dst_2 == ((void*)0))
             info_dst_2 = g_strdup("");
 
         if (!gtk_tree_model_iter_children(tm, &cti, ti))
@@ -105,7 +105,7 @@ subtitle_refresh_list_row_ui(
             gtk_tree_store_append(GTK_TREE_STORE(tm), &cti, ti);
         }
         gtk_tree_store_set(GTK_TREE_STORE(tm), &cti,
-            // These are displayed in list
+
             0, info_src_2,
             2, info_dst_2,
             5, 0.0,

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct hb_filter_private_s {int dummy; } ;
-struct TYPE_5__ {void* output; int /*<<< orphan*/ * hqdn3d_coef; void* input; } ;
-typedef  TYPE_1__ hb_filter_private_t ;
-struct TYPE_6__ {int /*<<< orphan*/  settings; TYPE_1__* private_data; } ;
-typedef  TYPE_2__ hb_filter_object_t ;
-typedef  void* hb_filter_init_t ;
+struct TYPE_5__ {void* output; int * hqdn3d_coef; void* input; } ;
+typedef TYPE_1__ hb_filter_private_t ;
+struct TYPE_6__ {int settings; TYPE_1__* private_data; } ;
+typedef TYPE_2__ hb_filter_object_t ;
+typedef void* hb_filter_init_t ;
 
-/* Variables and functions */
- double HQDN3D_SPATIAL_CHROMA_DEFAULT ; 
- double HQDN3D_SPATIAL_LUMA_DEFAULT ; 
- double HQDN3D_TEMPORAL_LUMA_DEFAULT ; 
- TYPE_1__* calloc (int,int) ; 
- int /*<<< orphan*/  hb_dict_extract_double (double*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  hqdn3d_precalc_coef (int /*<<< orphan*/ ,double) ; 
+
+ double HQDN3D_SPATIAL_CHROMA_DEFAULT ;
+ double HQDN3D_SPATIAL_LUMA_DEFAULT ;
+ double HQDN3D_TEMPORAL_LUMA_DEFAULT ;
+ TYPE_1__* calloc (int,int) ;
+ int hb_dict_extract_double (double*,int ,char*) ;
+ int hqdn3d_precalc_coef (int ,double) ;
 
 __attribute__((used)) static int hb_denoise_init( hb_filter_object_t * filter,
                             hb_filter_init_t * init )
@@ -39,20 +39,20 @@ __attribute__((used)) static int hb_denoise_init( hb_filter_object_t * filter,
     pv->input = *init;
     if (!hb_dict_extract_double(&spatial_luma, filter->settings, "y-spatial"))
     {
-        spatial_luma      = HQDN3D_SPATIAL_LUMA_DEFAULT;
+        spatial_luma = HQDN3D_SPATIAL_LUMA_DEFAULT;
     }
     if (!hb_dict_extract_double(&spatial_chroma_b, filter->settings, "cb-spatial"))
     {
-        spatial_chroma_b  = HQDN3D_SPATIAL_CHROMA_DEFAULT *
+        spatial_chroma_b = HQDN3D_SPATIAL_CHROMA_DEFAULT *
                             spatial_luma / HQDN3D_SPATIAL_LUMA_DEFAULT;
     }
     if (!hb_dict_extract_double(&spatial_chroma_r, filter->settings, "cr-spatial"))
     {
-        spatial_chroma_r  = spatial_chroma_b;
+        spatial_chroma_r = spatial_chroma_b;
     }
     if (!hb_dict_extract_double(&temporal_luma, filter->settings, "y-temporal"))
     {
-        temporal_luma     = HQDN3D_TEMPORAL_LUMA_DEFAULT *
+        temporal_luma = HQDN3D_TEMPORAL_LUMA_DEFAULT *
                             spatial_luma / HQDN3D_SPATIAL_LUMA_DEFAULT;
     }
     if (!hb_dict_extract_double(&temporal_chroma_b, filter->settings, "cb-temporal"))

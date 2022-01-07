@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct strm_string {char const* ptr; } ;
-typedef  int /*<<< orphan*/  strm_string ;
-typedef  size_t strm_int ;
+typedef int strm_string ;
+typedef size_t strm_int ;
 
-/* Variables and functions */
-#define  STRM_TAG_STRING_6 131 
-#define  STRM_TAG_STRING_F 130 
-#define  STRM_TAG_STRING_I 129 
-#define  STRM_TAG_STRING_O 128 
- size_t* VAL_PTR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (char*,size_t*,int) ; 
- int strm_value_tag (int /*<<< orphan*/ ) ; 
- scalar_t__ strm_value_vptr (int /*<<< orphan*/ ) ; 
+
+
+
+
+
+ size_t* VAL_PTR (int ) ;
+ int memcpy (char*,size_t*,int) ;
+ int strm_value_tag (int ) ;
+ scalar_t__ strm_value_vptr (int ) ;
 
 const char*
 strm_str_cstr(strm_string s, char buf[])
@@ -30,22 +30,22 @@ strm_str_cstr(strm_string s, char buf[])
   strm_int len;
 
   switch (strm_value_tag(s)) {
-  case STRM_TAG_STRING_I:
+  case 129:
     len = VAL_PTR(s)[0];
     memcpy(buf, VAL_PTR(s)+1, len);
     buf[len] = '\0';
     return buf;
-  case STRM_TAG_STRING_6:
+  case 131:
     memcpy(buf, VAL_PTR(s), 6);
     buf[6] = '\0';
     return buf;
-  case STRM_TAG_STRING_O:
-  case STRM_TAG_STRING_F:
+  case 128:
+  case 130:
     {
       struct strm_string* str = (struct strm_string*)strm_value_vptr(s);
       return str->ptr;
     }
   default:
-    return NULL;
+    return ((void*)0);
   }
 }

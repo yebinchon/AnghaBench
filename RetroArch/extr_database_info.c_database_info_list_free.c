@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {struct TYPE_5__* md5; struct TYPE_5__* sha1; struct TYPE_5__* bbfc_rating; struct TYPE_5__* esrb_rating; struct TYPE_5__* elspa_rating; struct TYPE_5__* enhancement_hw; struct TYPE_5__* pegi_rating; struct TYPE_5__* cero_rating; struct TYPE_5__* edge_magazine_review; struct TYPE_5__* franchise; struct TYPE_5__* origin; int /*<<< orphan*/ * developer; struct TYPE_5__* publisher; struct TYPE_5__* description; struct TYPE_5__* genre; struct TYPE_5__* serial; struct TYPE_5__* rom_name; struct TYPE_5__* name; } ;
-typedef  TYPE_1__ database_info_t ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {struct TYPE_5__* md5; struct TYPE_5__* sha1; struct TYPE_5__* bbfc_rating; struct TYPE_5__* esrb_rating; struct TYPE_5__* elspa_rating; struct TYPE_5__* enhancement_hw; struct TYPE_5__* pegi_rating; struct TYPE_5__* cero_rating; struct TYPE_5__* edge_magazine_review; struct TYPE_5__* franchise; struct TYPE_5__* origin; int * developer; struct TYPE_5__* publisher; struct TYPE_5__* description; struct TYPE_5__* genre; struct TYPE_5__* serial; struct TYPE_5__* rom_name; struct TYPE_5__* name; } ;
+typedef TYPE_1__ database_info_t ;
 struct TYPE_6__ {size_t count; TYPE_1__* list; } ;
-typedef  TYPE_2__ database_info_list_t ;
+typedef TYPE_2__ database_info_list_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (TYPE_1__*) ; 
- int /*<<< orphan*/  string_list_free (int /*<<< orphan*/ *) ; 
+
+ int free (TYPE_1__*) ;
+ int string_list_free (int *) ;
 
 void database_info_list_free(database_info_list_t *database_info_list)
 {
@@ -46,7 +46,7 @@ void database_info_list_free(database_info_list_t *database_info_list)
          free(info->publisher);
       if (info->developer)
          string_list_free(info->developer);
-      info->developer = NULL;
+      info->developer = ((void*)0);
       if (info->origin)
          free(info->origin);
       if (info->franchise)

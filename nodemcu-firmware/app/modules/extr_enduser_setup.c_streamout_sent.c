@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u16_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u16_t ;
 struct tcp_pcb {int dummy; } ;
-typedef  scalar_t__ err_t ;
+typedef scalar_t__ err_t ;
 struct TYPE_2__ {unsigned int http_payload_len; scalar_t__ http_payload_data; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ENDUSER_SETUP_DEBUG (char*) ; 
- scalar_t__ ERR_ABRT ; 
- scalar_t__ ERR_OK ; 
- int /*<<< orphan*/  deferred_close (struct tcp_pcb*) ; 
- TYPE_1__* state ; 
- int /*<<< orphan*/  tcp_abort (struct tcp_pcb*) ; 
- int /*<<< orphan*/  tcp_arg (struct tcp_pcb*,void*) ; 
- int /*<<< orphan*/  tcp_sent (struct tcp_pcb*,int /*<<< orphan*/ ) ; 
- unsigned int tcp_sndbuf (struct tcp_pcb*) ; 
- scalar_t__ tcp_write (struct tcp_pcb*,scalar_t__,unsigned int,int /*<<< orphan*/ ) ; 
+
+ int ENDUSER_SETUP_DEBUG (char*) ;
+ scalar_t__ ERR_ABRT ;
+ scalar_t__ ERR_OK ;
+ int deferred_close (struct tcp_pcb*) ;
+ TYPE_1__* state ;
+ int tcp_abort (struct tcp_pcb*) ;
+ int tcp_arg (struct tcp_pcb*,void*) ;
+ int tcp_sent (struct tcp_pcb*,int ) ;
+ unsigned int tcp_sndbuf (struct tcp_pcb*) ;
+ scalar_t__ tcp_write (struct tcp_pcb*,scalar_t__,unsigned int,int ) ;
 
 __attribute__((used)) static err_t streamout_sent (void *arg, struct tcp_pcb *pcb, u16_t len)
 {
@@ -46,7 +46,7 @@ __attribute__((used)) static err_t streamout_sent (void *arg, struct tcp_pcb *pc
   if (buf_free < wanted_len)
     wanted_len = buf_free;
 
-  /* no-copy write */
+
   err_t err = tcp_write (pcb, state->http_payload_data + offs, wanted_len, 0);
   if (err != ERR_OK)
   {

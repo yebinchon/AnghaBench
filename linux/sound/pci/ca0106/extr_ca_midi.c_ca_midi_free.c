@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct snd_ca_midi {int /*<<< orphan*/ * rmidi; int /*<<< orphan*/ * get_dev_id_port; int /*<<< orphan*/ * get_dev_id_card; int /*<<< orphan*/ * write; int /*<<< orphan*/ * read; int /*<<< orphan*/ * interrupt_disable; int /*<<< orphan*/ * interrupt_enable; int /*<<< orphan*/ * interrupt; } ;
 
-/* Variables and functions */
+
+
+
+struct snd_ca_midi {int * rmidi; int * get_dev_id_port; int * get_dev_id_card; int * write; int * read; int * interrupt_disable; int * interrupt_enable; int * interrupt; } ;
+
+
 
 __attribute__((used)) static void ca_midi_free(struct snd_ca_midi *midi)
 {
-	midi->interrupt = NULL;
-	midi->interrupt_enable = NULL;
-	midi->interrupt_disable = NULL;
-	midi->read = NULL;
-	midi->write = NULL;
-	midi->get_dev_id_card = NULL;
-	midi->get_dev_id_port = NULL;
-	midi->rmidi = NULL;
+ midi->interrupt = ((void*)0);
+ midi->interrupt_enable = ((void*)0);
+ midi->interrupt_disable = ((void*)0);
+ midi->read = ((void*)0);
+ midi->write = ((void*)0);
+ midi->get_dev_id_card = ((void*)0);
+ midi->get_dev_id_port = ((void*)0);
+ midi->rmidi = ((void*)0);
 }

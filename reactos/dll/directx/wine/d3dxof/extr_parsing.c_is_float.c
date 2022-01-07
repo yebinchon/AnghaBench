@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tmp ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int tmp ;
 struct TYPE_3__ {int rem_bytes; char* buffer; scalar_t__ value; } ;
-typedef  TYPE_1__ parse_buffer ;
-typedef  int DWORD ;
-typedef  scalar_t__ BOOL ;
+typedef TYPE_1__ parse_buffer ;
+typedef int DWORD ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  TRACE (char*,char*,float) ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  is_separator (char) ; 
- size_t min (int,int) ; 
- int /*<<< orphan*/  sscanf (char*,char*,float*) ; 
+
+ scalar_t__ FALSE ;
+ int TRACE (char*,char*,float) ;
+ scalar_t__ TRUE ;
+ int is_separator (char) ;
+ size_t min (int,int) ;
+ int sscanf (char*,char*,float*) ;
 
 __attribute__((used)) static BOOL is_float(parse_buffer* buf)
 {

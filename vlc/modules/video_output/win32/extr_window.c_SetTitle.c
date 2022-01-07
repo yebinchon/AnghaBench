@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {TYPE_2__* sys; } ;
-typedef  TYPE_1__ vout_window_t ;
-struct TYPE_6__ {char* psz_title; int /*<<< orphan*/  hwnd; int /*<<< orphan*/  lock; } ;
-typedef  TYPE_2__ vout_window_sys_t ;
+typedef TYPE_1__ vout_window_t ;
+struct TYPE_6__ {char* psz_title; int hwnd; int lock; } ;
+typedef TYPE_2__ vout_window_sys_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PostMessage (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WM_VLC_CHANGE_TEXT ; 
- int /*<<< orphan*/  free (char*) ; 
- char* strdup (char const*) ; 
- char* var_InheritString (TYPE_1__*,char*) ; 
- int /*<<< orphan*/  vlc_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_mutex_unlock (int /*<<< orphan*/ *) ; 
+
+ int PostMessage (int ,int ,int ,int ) ;
+ int WM_VLC_CHANGE_TEXT ;
+ int free (char*) ;
+ char* strdup (char const*) ;
+ char* var_InheritString (TYPE_1__*,char*) ;
+ int vlc_mutex_lock (int *) ;
+ int vlc_mutex_unlock (int *) ;
 
 __attribute__((used)) static void SetTitle(vout_window_t *wnd, const char *title)
 {

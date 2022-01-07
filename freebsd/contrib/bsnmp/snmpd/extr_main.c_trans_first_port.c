@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct transport {int /*<<< orphan*/  table; } ;
+
+
+
+
+struct transport {int table; } ;
 struct tport {int dummy; } ;
 
-/* Variables and functions */
- struct tport* TAILQ_FIRST (int /*<<< orphan*/ *) ; 
+
+ struct tport* TAILQ_FIRST (int *) ;
 
 struct tport *
 trans_first_port(struct transport *t)
 {
 
-	return (TAILQ_FIRST(&t->table));
+ return (TAILQ_FIRST(&t->table));
 }

@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct mp_log {int dummy; } ;
-typedef  int /*<<< orphan*/  UINT ;
-typedef  int /*<<< orphan*/  IDXGIAdapter1 ;
-typedef  int /*<<< orphan*/  IDXGIAdapter ;
-typedef  int /*<<< orphan*/  ID3D11Device ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  D3D_FEATURE_LEVEL ;
-typedef  int /*<<< orphan*/  D3D_DRIVER_TYPE ;
+typedef int UINT ;
+typedef int IDXGIAdapter1 ;
+typedef int IDXGIAdapter ;
+typedef int ID3D11Device ;
+typedef int HRESULT ;
+typedef int D3D_FEATURE_LEVEL ;
+typedef int D3D_DRIVER_TYPE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D3D11_CREATE_DEVICE_DEBUG ; 
- int /*<<< orphan*/  D3D11_SDK_VERSION ; 
- int /*<<< orphan*/  D3D_DRIVER_TYPE_HARDWARE ; 
- int /*<<< orphan*/  D3D_DRIVER_TYPE_UNKNOWN ; 
- int /*<<< orphan*/  D3D_DRIVER_TYPE_WARP ; 
- int /*<<< orphan*/  E_FAIL ; 
- int get_feature_levels (int,int,int /*<<< orphan*/  const**) ; 
- int /*<<< orphan*/  mp_fatal (struct mp_log*,char*) ; 
- int /*<<< orphan*/  pD3D11CreateDevice (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int D3D11_CREATE_DEVICE_DEBUG ;
+ int D3D11_SDK_VERSION ;
+ int D3D_DRIVER_TYPE_HARDWARE ;
+ int D3D_DRIVER_TYPE_UNKNOWN ;
+ int D3D_DRIVER_TYPE_WARP ;
+ int E_FAIL ;
+ int get_feature_levels (int,int,int const**) ;
+ int mp_fatal (struct mp_log*,char*) ;
+ int pD3D11CreateDevice (int *,int ,int *,int ,int const*,int,int ,int **,int *,int *) ;
 
 __attribute__((used)) static HRESULT create_device(struct mp_log *log, IDXGIAdapter1 *adapter,
                              bool warp, bool debug, int max_fl, int min_fl,
@@ -45,5 +45,5 @@ __attribute__((used)) static HRESULT create_device(struct mp_log *log, IDXGIAdap
                                 : D3D_DRIVER_TYPE_HARDWARE;
     UINT flags = debug ? D3D11_CREATE_DEVICE_DEBUG : 0;
     return pD3D11CreateDevice((IDXGIAdapter *)adapter, adapter ? D3D_DRIVER_TYPE_UNKNOWN : type,
-                              NULL, flags, levels, levels_len, D3D11_SDK_VERSION, dev, NULL, NULL);
+                              ((void*)0), flags, levels, levels_len, D3D11_SDK_VERSION, dev, ((void*)0), ((void*)0));
 }

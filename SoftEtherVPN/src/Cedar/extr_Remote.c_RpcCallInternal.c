@@ -1,101 +1,101 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_4__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int UINT ;
-struct TYPE_15__ {int /*<<< orphan*/  SecureMode; } ;
+
+
+typedef struct TYPE_15__ TYPE_4__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+typedef int UINT ;
+struct TYPE_15__ {int SecureMode; } ;
 struct TYPE_14__ {int Size; int* Buf; } ;
 struct TYPE_13__ {TYPE_4__* Sock; } ;
-typedef  TYPE_1__ RPC ;
-typedef  int /*<<< orphan*/  PACK ;
-typedef  TYPE_2__ BUF ;
+typedef TYPE_1__ RPC ;
+typedef int PACK ;
+typedef TYPE_2__ BUF ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * BufToPack (TYPE_2__*) ; 
- int Endian32 (int) ; 
- int /*<<< orphan*/  Free (void*) ; 
- int /*<<< orphan*/  FreeBuf (TYPE_2__*) ; 
- int MAX_PACK_SIZE ; 
- void* MallocEx (int,int) ; 
- TYPE_2__* NewBuf () ; 
- TYPE_2__* PackToBuf (int /*<<< orphan*/ *) ; 
- int RecvAll (TYPE_4__*,void*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SeekBuf (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SendAdd (TYPE_4__*,int*,int) ; 
- int SendNow (TYPE_4__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WriteBuf (TYPE_2__*,void*,int) ; 
+
+ int * BufToPack (TYPE_2__*) ;
+ int Endian32 (int) ;
+ int Free (void*) ;
+ int FreeBuf (TYPE_2__*) ;
+ int MAX_PACK_SIZE ;
+ void* MallocEx (int,int) ;
+ TYPE_2__* NewBuf () ;
+ TYPE_2__* PackToBuf (int *) ;
+ int RecvAll (TYPE_4__*,void*,int,int ) ;
+ int SeekBuf (TYPE_2__*,int ,int ) ;
+ int SendAdd (TYPE_4__*,int*,int) ;
+ int SendNow (TYPE_4__*,int ) ;
+ int WriteBuf (TYPE_2__*,void*,int) ;
 
 PACK *RpcCallInternal(RPC *r, PACK *p)
 {
-	BUF *b;
-	UINT size;
-	PACK *ret;
-	void *tmp;
-	// Validate arguments
-	if (r == NULL || p == NULL)
-	{
-		return NULL;
-	}
+ BUF *b;
+ UINT size;
+ PACK *ret;
+ void *tmp;
 
-	if (r->Sock == NULL)
-	{
-		return NULL;
-	}
+ if (r == ((void*)0) || p == ((void*)0))
+ {
+  return ((void*)0);
+ }
 
-	b = PackToBuf(p);
+ if (r->Sock == ((void*)0))
+ {
+  return ((void*)0);
+ }
 
-	size = Endian32(b->Size);
-	SendAdd(r->Sock, &size, sizeof(UINT));
-	SendAdd(r->Sock, b->Buf, b->Size);
-	FreeBuf(b);
+ b = PackToBuf(p);
 
-	if (SendNow(r->Sock, r->Sock->SecureMode) == false)
-	{
-		return NULL;
-	}
+ size = Endian32(b->Size);
+ SendAdd(r->Sock, &size, sizeof(UINT));
+ SendAdd(r->Sock, b->Buf, b->Size);
+ FreeBuf(b);
 
-	if (RecvAll(r->Sock, &size, sizeof(UINT), r->Sock->SecureMode) == false)
-	{
-		return NULL;
-	}
+ if (SendNow(r->Sock, r->Sock->SecureMode) == 0)
+ {
+  return ((void*)0);
+ }
 
-	size = Endian32(size);
-	if (size > MAX_PACK_SIZE)
-	{
-		return NULL;
-	}
+ if (RecvAll(r->Sock, &size, sizeof(UINT), r->Sock->SecureMode) == 0)
+ {
+  return ((void*)0);
+ }
 
-	tmp = MallocEx(size, true);
-	if (RecvAll(r->Sock, tmp, size, r->Sock->SecureMode) == false)
-	{
-		Free(tmp);
-		return NULL;
-	}
+ size = Endian32(size);
+ if (size > MAX_PACK_SIZE)
+ {
+  return ((void*)0);
+ }
 
-	b = NewBuf();
-	WriteBuf(b, tmp, size);
-	SeekBuf(b, 0, 0);
-	Free(tmp);
+ tmp = MallocEx(size, 1);
+ if (RecvAll(r->Sock, tmp, size, r->Sock->SecureMode) == 0)
+ {
+  Free(tmp);
+  return ((void*)0);
+ }
 
-	ret = BufToPack(b);
-	if (ret == NULL)
-	{
-		FreeBuf(b);
-		return NULL;
-	}
+ b = NewBuf();
+ WriteBuf(b, tmp, size);
+ SeekBuf(b, 0, 0);
+ Free(tmp);
 
-	FreeBuf(b);
+ ret = BufToPack(b);
+ if (ret == ((void*)0))
+ {
+  FreeBuf(b);
+  return ((void*)0);
+ }
 
-	return ret;
+ FreeBuf(b);
+
+ return ret;
 }

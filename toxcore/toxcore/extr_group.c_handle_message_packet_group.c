@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_18__   TYPE_4__ ;
-typedef  struct TYPE_17__   TYPE_3__ ;
-typedef  struct TYPE_16__   TYPE_2__ ;
-typedef  struct TYPE_15__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint32_t ;
-typedef  int uint16_t ;
-typedef  int /*<<< orphan*/  message_number ;
-struct TYPE_18__ {int /*<<< orphan*/  action_callback_userdata; int /*<<< orphan*/  m; int /*<<< orphan*/  (* action_callback ) (int /*<<< orphan*/ ,int,int,int*,int,int /*<<< orphan*/ ) ;int /*<<< orphan*/  message_callback_userdata; int /*<<< orphan*/  (* message_callback ) (int /*<<< orphan*/ ,int,int,int*,int,int /*<<< orphan*/ ) ;} ;
+
+
+typedef struct TYPE_18__ TYPE_4__ ;
+typedef struct TYPE_17__ TYPE_3__ ;
+typedef struct TYPE_16__ TYPE_2__ ;
+typedef struct TYPE_15__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef int uint16_t ;
+typedef int message_number ;
+struct TYPE_18__ {int action_callback_userdata; int m; int (* action_callback ) (int ,int,int,int*,int,int ) ;int message_callback_userdata; int (* message_callback ) (int ,int,int,int*,int,int ) ;} ;
 struct TYPE_17__ {TYPE_2__* group; TYPE_1__* close; } ;
-struct TYPE_16__ {scalar_t__ last_message_number; int /*<<< orphan*/  last_recv; } ;
-struct TYPE_15__ {int /*<<< orphan*/  group_number; int /*<<< orphan*/  number; } ;
-typedef  TYPE_3__ Group_c ;
-typedef  TYPE_4__ Group_Chats ;
+struct TYPE_16__ {scalar_t__ last_message_number; int last_recv; } ;
+struct TYPE_15__ {int group_number; int number; } ;
+typedef TYPE_3__ Group_c ;
+typedef TYPE_4__ Group_Chats ;
 
-/* Variables and functions */
-#define  GROUP_MESSAGE_KILL_PEER_ID 134 
- int GROUP_MESSAGE_KILL_PEER_LENGTH ; 
-#define  GROUP_MESSAGE_NAME_ID 133 
-#define  GROUP_MESSAGE_NEW_PEER_ID 132 
- int GROUP_MESSAGE_NEW_PEER_LENGTH ; 
-#define  GROUP_MESSAGE_PING_ID 131 
-#define  GROUP_MESSAGE_TITLE_ID 130 
-#define  PACKET_ID_ACTION 129 
-#define  PACKET_ID_MESSAGE 128 
- int /*<<< orphan*/  addpeer (TYPE_4__*,int,int const*,int const*,int) ; 
- int /*<<< orphan*/  crypto_box_PUBLICKEYBYTES ; 
- int /*<<< orphan*/  delpeer (TYPE_4__*,int,int) ; 
- TYPE_3__* get_group_c (TYPE_4__*,int) ; 
- int get_peer_index (TYPE_3__*,int) ; 
- int /*<<< orphan*/  memcpy (int*,int const*,int) ; 
- int ntohl (int) ; 
- int ntohs (int) ; 
- int /*<<< orphan*/  send_message_all_close (TYPE_4__*,int,int const*,int,int) ; 
- int /*<<< orphan*/  send_peer_query (TYPE_4__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int setnick (TYPE_4__*,int,int,int const*,int) ; 
- int settitle (TYPE_4__*,int,int,int const*,int) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,int,int,int*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ ,int,int,int*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  unix_time () ; 
+
+
+ int GROUP_MESSAGE_KILL_PEER_LENGTH ;
+
+
+ int GROUP_MESSAGE_NEW_PEER_LENGTH ;
+
+
+
+
+ int addpeer (TYPE_4__*,int,int const*,int const*,int) ;
+ int crypto_box_PUBLICKEYBYTES ;
+ int delpeer (TYPE_4__*,int,int) ;
+ TYPE_3__* get_group_c (TYPE_4__*,int) ;
+ int get_peer_index (TYPE_3__*,int) ;
+ int memcpy (int*,int const*,int) ;
+ int ntohl (int) ;
+ int ntohs (int) ;
+ int send_message_all_close (TYPE_4__*,int,int const*,int,int) ;
+ int send_peer_query (TYPE_4__*,int ,int ) ;
+ int setnick (TYPE_4__*,int,int,int const*,int) ;
+ int settitle (TYPE_4__*,int,int,int const*,int) ;
+ int stub1 (int ,int,int,int*,int,int ) ;
+ int stub2 (int ,int,int,int*,int,int ) ;
+ int unix_time () ;
 
 __attribute__((used)) static void handle_message_packet_group(Group_Chats *g_c, int groupnumber, const uint8_t *data, uint16_t length,
                                         int close_index)
@@ -69,8 +69,8 @@ __attribute__((used)) static void handle_message_packet_group(Group_Chats *g_c, 
     int index = get_peer_index(g, peer_number);
 
     if (index == -1) {
-        /* We don't know the peer this packet came from so we query the list of peers from that peer.
-          (They would not have relayed it if they didn't know the peer.) */
+
+
         send_peer_query(g_c, g->close[close_index].number, g->close[close_index].group_number);
         return;
     }
@@ -93,7 +93,7 @@ __attribute__((used)) static void handle_message_packet_group(Group_Chats *g_c, 
     uint16_t msg_data_len = length - (sizeof(uint16_t) + sizeof(message_number) + 1);
 
     switch (message_id) {
-        case GROUP_MESSAGE_PING_ID: {
+        case 131: {
             if (msg_data_len != 0)
                 return;
 
@@ -101,7 +101,7 @@ __attribute__((used)) static void handle_message_packet_group(Group_Chats *g_c, 
         }
         break;
 
-        case GROUP_MESSAGE_NEW_PEER_ID: {
+        case 132: {
             if (msg_data_len != GROUP_MESSAGE_NEW_PEER_LENGTH)
                 return;
 
@@ -113,7 +113,7 @@ __attribute__((used)) static void handle_message_packet_group(Group_Chats *g_c, 
         }
         break;
 
-        case GROUP_MESSAGE_KILL_PEER_ID: {
+        case 134: {
             if (msg_data_len != GROUP_MESSAGE_KILL_PEER_LENGTH)
                 return;
 
@@ -125,24 +125,24 @@ __attribute__((used)) static void handle_message_packet_group(Group_Chats *g_c, 
                 delpeer(g_c, groupnumber, index);
             } else {
                 return;
-                //TODO
+
             }
         }
         break;
 
-        case GROUP_MESSAGE_NAME_ID: {
+        case 133: {
             if (setnick(g_c, groupnumber, index, msg_data, msg_data_len) == -1)
                 return;
         }
         break;
 
-        case GROUP_MESSAGE_TITLE_ID: {
+        case 130: {
             if (settitle(g_c, groupnumber, index, msg_data, msg_data_len) == -1)
                 return;
         }
         break;
 
-        case PACKET_ID_MESSAGE: {
+        case 128: {
             if (msg_data_len == 0)
                 return;
 
@@ -150,14 +150,14 @@ __attribute__((used)) static void handle_message_packet_group(Group_Chats *g_c, 
             memcpy(newmsg, msg_data, msg_data_len);
             newmsg[msg_data_len] = 0;
 
-            //TODO
+
             if (g_c->message_callback)
                 g_c->message_callback(g_c->m, groupnumber, index, newmsg, msg_data_len, g_c->message_callback_userdata);
 
             break;
         }
 
-        case PACKET_ID_ACTION: {
+        case 129: {
             if (msg_data_len == 0)
                 return;
 
@@ -165,7 +165,7 @@ __attribute__((used)) static void handle_message_packet_group(Group_Chats *g_c, 
             memcpy(newmsg, msg_data, msg_data_len);
             newmsg[msg_data_len] = 0;
 
-            //TODO
+
             if (g_c->action_callback)
                 g_c->action_callback(g_c->m, groupnumber, index, newmsg, msg_data_len, g_c->action_callback_userdata);
 
@@ -176,5 +176,5 @@ __attribute__((used)) static void handle_message_packet_group(Group_Chats *g_c, 
             return;
     }
 
-    send_message_all_close(g_c, groupnumber, data, length, -1/*TODO close_index*/);
+    send_message_all_close(g_c, groupnumber, data, length, -1 );
 }

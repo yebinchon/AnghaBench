@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- char* buff ; 
- int parse_pos ; 
- int sscanf (char*,char*,unsigned int*,unsigned int*,unsigned int*,unsigned int*,unsigned int*,int*) ; 
+ int assert (int) ;
+ char* buff ;
+ int parse_pos ;
+ int sscanf (char*,char*,unsigned int*,unsigned int*,unsigned int*,unsigned int*,unsigned int*,int*) ;
 
 void parse_ip_mask (unsigned *s, unsigned *f) {
   int x;
@@ -31,7 +23,7 @@ void parse_ip_mask (unsigned *s, unsigned *f) {
   assert (!buff[parse_pos] || buff[parse_pos] == ',');
   *s = (a << 24) + (b << 16) + (c << 8) + d;
   m = (1 << m) - 1;
-  //fprintf (stderr, "%x %x\n", *s, m);
+
   assert (!(*s & m));
   *f = *s + m;
 }

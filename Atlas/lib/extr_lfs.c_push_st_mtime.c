@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct stat {int /*<<< orphan*/  st_mtime; } ;
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- int /*<<< orphan*/  lua_pushnumber (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+struct stat {int st_mtime; } ;
+typedef int lua_State ;
+
+
+ int lua_pushnumber (int *,int ) ;
 
 __attribute__((used)) static void push_st_mtime (lua_State *L, struct stat *info) {
-	lua_pushnumber (L, info->st_mtime);
+ lua_pushnumber (L, info->st_mtime);
 }

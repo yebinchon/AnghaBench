@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct batadv_tt_req_node {int /*<<< orphan*/  refcount; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  batadv_tt_req_node_release ; 
- int /*<<< orphan*/  kref_put (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+struct batadv_tt_req_node {int refcount; } ;
+
+
+ int batadv_tt_req_node_release ;
+ int kref_put (int *,int ) ;
 
 __attribute__((used)) static void batadv_tt_req_node_put(struct batadv_tt_req_node *tt_req_node)
 {
-	kref_put(&tt_req_node->refcount, batadv_tt_req_node_release);
+ kref_put(&tt_req_node->refcount, batadv_tt_req_node_release);
 }

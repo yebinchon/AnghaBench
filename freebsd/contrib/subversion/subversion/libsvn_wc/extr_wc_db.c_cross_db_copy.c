@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_wc__db_wcroot_t ;
-typedef  scalar_t__ svn_wc__db_status_t ;
-typedef  void* svn_revnum_t ;
-typedef  scalar_t__ svn_node_kind_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_depth_t ;
-typedef  int /*<<< orphan*/  svn_checksum_t ;
-struct TYPE_4__ {char const* changed_author; char const* original_repos_relpath; int op_depth; int not_present_op_depth; int /*<<< orphan*/  depth; int /*<<< orphan*/  const* children; int /*<<< orphan*/  const* checksum; int /*<<< orphan*/  moved_here; void* original_revnum; int /*<<< orphan*/  original_repos_id; int /*<<< orphan*/  changed_date; void* changed_rev; int /*<<< orphan*/ * props; scalar_t__ kind; scalar_t__ presence; } ;
-typedef  TYPE_1__ insert_working_baton_t ;
-typedef  int /*<<< orphan*/  apr_time_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_int64_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
-typedef  int /*<<< orphan*/  apr_array_header_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_ASSERT (int) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  blank_iwb (TYPE_1__*) ; 
- int /*<<< orphan*/  copy_actual (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  db_read_pristine_props (int /*<<< orphan*/ **,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  insert_working_node (TYPE_1__*,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  read_info (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**,int /*<<< orphan*/ *,char const**,int /*<<< orphan*/ *,int /*<<< orphan*/  const**,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_node_dir ; 
- scalar_t__ svn_node_file ; 
- scalar_t__ svn_wc__db_status_excluded ; 
- scalar_t__ svn_wc__db_status_not_present ; 
- scalar_t__ svn_wc__db_status_server_excluded ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int svn_wc__db_wcroot_t ;
+typedef scalar_t__ svn_wc__db_status_t ;
+typedef void* svn_revnum_t ;
+typedef scalar_t__ svn_node_kind_t ;
+typedef int svn_error_t ;
+typedef int svn_depth_t ;
+typedef int svn_checksum_t ;
+struct TYPE_4__ {char const* changed_author; char const* original_repos_relpath; int op_depth; int not_present_op_depth; int depth; int const* children; int const* checksum; int moved_here; void* original_revnum; int original_repos_id; int changed_date; void* changed_rev; int * props; scalar_t__ kind; scalar_t__ presence; } ;
+typedef TYPE_1__ insert_working_baton_t ;
+typedef int apr_time_t ;
+typedef int apr_pool_t ;
+typedef int apr_int64_t ;
+typedef int apr_hash_t ;
+typedef int apr_array_header_t ;
+
+
+ int FALSE ;
+ int SVN_ERR (int ) ;
+ int SVN_ERR_ASSERT (int) ;
+ int * SVN_NO_ERROR ;
+ int blank_iwb (TYPE_1__*) ;
+ int copy_actual (int *,char const*,int *,char const*,int *) ;
+ int db_read_pristine_props (int **,int *,char const*,int ,int *,int *) ;
+ int insert_working_node (TYPE_1__*,int *,char const*,int *) ;
+ int read_info (int *,int *,int *,int *,int *,void**,int *,char const**,int *,int const**,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,char const*,int *,int *) ;
+ scalar_t__ svn_node_dir ;
+ scalar_t__ svn_node_file ;
+ scalar_t__ svn_wc__db_status_excluded ;
+ scalar_t__ svn_wc__db_status_not_present ;
+ scalar_t__ svn_wc__db_status_server_excluded ;
 
 __attribute__((used)) static svn_error_t *
 cross_db_copy(svn_wc__db_wcroot_t *src_wcroot,
@@ -69,10 +69,10 @@ cross_db_copy(svn_wc__db_wcroot_t *src_wcroot,
                  || kind == svn_node_dir
                  );
 
-  SVN_ERR(read_info(NULL, NULL, NULL, NULL, NULL,
+  SVN_ERR(read_info(((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0),
                     &changed_rev, &changed_date, &changed_author, &depth,
-                    &checksum, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-                    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+                    &checksum, ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0),
+                    ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0),
                     src_wcroot, src_relpath, scratch_pool, scratch_pool));
 
   if (dst_status != svn_wc__db_status_not_present
@@ -83,7 +83,7 @@ cross_db_copy(svn_wc__db_wcroot_t *src_wcroot,
                                      scratch_pool, scratch_pool));
     }
   else
-    props = NULL;
+    props = ((void*)0);
 
   blank_iwb(&iwb);
   iwb.presence = dst_status;

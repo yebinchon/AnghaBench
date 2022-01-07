@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ENGINE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  digest_table ; 
- int /*<<< orphan*/ * engine_table_select (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int ENGINE ;
+
+
+ int digest_table ;
+ int * engine_table_select (int *,int) ;
 
 ENGINE *ENGINE_get_digest_engine(int nid)
 {

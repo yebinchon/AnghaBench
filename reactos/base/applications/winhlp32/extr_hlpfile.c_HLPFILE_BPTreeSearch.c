@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int (* HLPFILE_BPTreeCompare ) (void*,void const*,int,void**) ;
-typedef  void BYTE ;
 
-/* Variables and functions */
- int GET_SHORT (void*,int) ; 
- unsigned int GET_USHORT (void*,int) ; 
- int /*<<< orphan*/  WINE_ERR (char*,unsigned int) ; 
+
+
+
+typedef int (* HLPFILE_BPTreeCompare ) (void*,void const*,int,void**) ;
+typedef void BYTE ;
+
+
+ int GET_SHORT (void*,int) ;
+ unsigned int GET_USHORT (void*,int) ;
+ int WINE_ERR (char*,unsigned int) ;
 
 __attribute__((used)) static void* HLPFILE_BPTreeSearch(BYTE* buf, const void* key,
                            HLPFILE_BPTreeCompare comp)
@@ -33,12 +33,12 @@ __attribute__((used)) static void* HLPFILE_BPTreeSearch(BYTE* buf, const void* k
     if (magic != 0x293B)
     {
         WINE_ERR("Invalid magic in B+ tree: 0x%x\n", magic);
-        return NULL;
+        return ((void*)0);
     }
     page_size = GET_USHORT(buf, 9+4);
-    cur_page  = GET_USHORT(buf, 9+26);
-    level     = GET_USHORT(buf, 9+32);
-    pages     = buf + 9 + 38;
+    cur_page = GET_USHORT(buf, 9+26);
+    level = GET_USHORT(buf, 9+32);
+    pages = buf + 9 + 38;
     while (--level > 0)
     {
         ptr = pages + cur_page*page_size;
@@ -58,8 +58,8 @@ __attribute__((used)) static void* HLPFILE_BPTreeSearch(BYTE* buf, const void* k
     {
         ret = comp(ptr, key, 1, (void **)&newptr);
         if (ret == 0) return ptr;
-        if (ret > 0) return NULL;
+        if (ret > 0) return ((void*)0);
         ptr = newptr;
     }
-    return NULL;
+    return ((void*)0);
 }

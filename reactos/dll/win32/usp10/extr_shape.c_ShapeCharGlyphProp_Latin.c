@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WORD ;
-typedef  int /*<<< orphan*/  WCHAR ;
-struct TYPE_5__ {int /*<<< orphan*/  uJustification; scalar_t__ fZeroWidth; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int WORD ;
+typedef int WCHAR ;
+struct TYPE_5__ {int uJustification; scalar_t__ fZeroWidth; } ;
 struct TYPE_6__ {TYPE_1__ sva; } ;
-typedef  int /*<<< orphan*/  ScriptCache ;
-typedef  TYPE_2__ SCRIPT_GLYPHPROP ;
-typedef  int /*<<< orphan*/  SCRIPT_CHARPROP ;
-typedef  int /*<<< orphan*/  SCRIPT_ANALYSIS ;
-typedef  int INT ;
-typedef  int /*<<< orphan*/  HDC ;
+typedef int ScriptCache ;
+typedef TYPE_2__ SCRIPT_GLYPHPROP ;
+typedef int SCRIPT_CHARPROP ;
+typedef int SCRIPT_ANALYSIS ;
+typedef int INT ;
+typedef int HDC ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SCRIPT_JUSTIFY_NONE ; 
- int /*<<< orphan*/  ShapeCharGlyphProp_Default (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int const,int /*<<< orphan*/  const*,int const,int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_2__*) ; 
+
+ int SCRIPT_JUSTIFY_NONE ;
+ int ShapeCharGlyphProp_Default (int *,int *,int const*,int const,int const*,int const,int *,int *,TYPE_2__*) ;
 
 __attribute__((used)) static void ShapeCharGlyphProp_Latin( HDC hdc, ScriptCache *psc, SCRIPT_ANALYSIS *psa, const WCHAR* pwcChars, const INT cChars, const WORD* pwGlyphs, const INT cGlyphs, WORD *pwLogClust, SCRIPT_CHARPROP *pCharProp, SCRIPT_GLYPHPROP *pGlyphProp )
 {

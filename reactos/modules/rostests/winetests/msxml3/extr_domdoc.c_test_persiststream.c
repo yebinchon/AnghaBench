@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  clsid ;
-typedef  int /*<<< orphan*/  ULARGE_INTEGER ;
-typedef  int /*<<< orphan*/  IXMLDOMDocument ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  IPersistStreamInit ;
-typedef  int /*<<< orphan*/  IPersistStream ;
-typedef  int /*<<< orphan*/  IPersist ;
-typedef  scalar_t__ HRESULT ;
-typedef  int /*<<< orphan*/  CLSID ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLSID_DOMDocument2 ; 
- scalar_t__ E_NOINTERFACE ; 
- scalar_t__ E_NOTIMPL ; 
- scalar_t__ E_POINTER ; 
- int /*<<< orphan*/  IID_IPersist ; 
- int /*<<< orphan*/  IID_IPersistStream ; 
- int /*<<< orphan*/  IID_IPersistStreamInit ; 
- int /*<<< orphan*/  IID_IXMLDOMDocument ; 
- scalar_t__ IPersistStreamInit_GetClassID (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ IPersistStreamInit_GetSizeMax (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ IPersistStreamInit_InitNew (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IPersistStreamInit_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IPersistStream_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IPersistStream_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IXMLDOMDocument_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IXMLDOMDocument_Release (int /*<<< orphan*/ *) ; 
- int IsEqualGUID (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/ * create_document (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__,...) ; 
- scalar_t__ wine_dbgstr_guid (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int clsid ;
+typedef int ULARGE_INTEGER ;
+typedef int IXMLDOMDocument ;
+typedef int IUnknown ;
+typedef int IPersistStreamInit ;
+typedef int IPersistStream ;
+typedef int IPersist ;
+typedef scalar_t__ HRESULT ;
+typedef int CLSID ;
+
+
+ int CLSID_DOMDocument2 ;
+ scalar_t__ E_NOINTERFACE ;
+ scalar_t__ E_NOTIMPL ;
+ scalar_t__ E_POINTER ;
+ int IID_IPersist ;
+ int IID_IPersistStream ;
+ int IID_IPersistStreamInit ;
+ int IID_IXMLDOMDocument ;
+ scalar_t__ IPersistStreamInit_GetClassID (int *,int *) ;
+ scalar_t__ IPersistStreamInit_GetSizeMax (int *,int *) ;
+ scalar_t__ IPersistStreamInit_InitNew (int *) ;
+ int IPersistStreamInit_Release (int *) ;
+ scalar_t__ IPersistStream_QueryInterface (int *,int *,void**) ;
+ int IPersistStream_Release (int *) ;
+ scalar_t__ IXMLDOMDocument_QueryInterface (int *,int *,void**) ;
+ int IXMLDOMDocument_Release (int *) ;
+ int IsEqualGUID (int *,int *) ;
+ scalar_t__ S_OK ;
+ int * create_document (int *) ;
+ int memset (int *,int ,int) ;
+ int ok (int,char*,scalar_t__,...) ;
+ scalar_t__ wine_dbgstr_guid (int *) ;
 
 __attribute__((used)) static void test_persiststream(void)
 {
@@ -75,7 +75,7 @@ __attribute__((used)) static void test_persiststream(void)
     hr = IXMLDOMDocument_QueryInterface(doc, &IID_IPersist, (void **)&persist);
     ok(hr == E_NOINTERFACE, "got 0x%08x\n", hr);
 
-    hr = IPersistStreamInit_GetClassID(streaminit, NULL);
+    hr = IPersistStreamInit_GetClassID(streaminit, ((void*)0));
     ok(hr == E_POINTER, "got 0x%08x\n", hr);
 
     memset(&clsid, 0, sizeof(clsid));

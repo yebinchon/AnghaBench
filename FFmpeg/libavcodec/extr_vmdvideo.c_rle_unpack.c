@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint16_t ;
-typedef  int /*<<< orphan*/  GetByteContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_WN16 (unsigned char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bytestream2_get_bufferu (int /*<<< orphan*/ *,unsigned char*,int) ; 
- int bytestream2_get_bytes_left (int /*<<< orphan*/ *) ; 
- void* bytestream2_get_byteu (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bytestream2_get_ne16 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bytestream2_init (int /*<<< orphan*/ *,unsigned char const*,int) ; 
- int bytestream2_tell (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int uint16_t ;
+typedef int GetByteContext ;
+
+
+ int AV_WN16 (unsigned char*,int ) ;
+ int bytestream2_get_bufferu (int *,unsigned char*,int) ;
+ int bytestream2_get_bytes_left (int *) ;
+ void* bytestream2_get_byteu (int *) ;
+ int bytestream2_get_ne16 (int *) ;
+ int bytestream2_init (int *,unsigned char const*,int) ;
+ int bytestream2_tell (int *) ;
 
 __attribute__((used)) static int rle_unpack(const unsigned char *src, unsigned char *dest,
                       int src_count, int src_size, int dest_len)

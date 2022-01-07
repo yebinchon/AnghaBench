@@ -1,93 +1,82 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct mp_log {int dummy; } ;
-typedef  int /*<<< orphan*/  optbuf ;
-struct TYPE_4__ {int flags; int type; char* unit; char* name; int /*<<< orphan*/  help; } ;
-typedef  TYPE_1__ AVOption ;
-
-/* Variables and functions */
-#define  AV_OPT_TYPE_BINARY 136 
-#define  AV_OPT_TYPE_CONST 135 
-#define  AV_OPT_TYPE_DOUBLE 134 
-#define  AV_OPT_TYPE_FLAGS 133 
-#define  AV_OPT_TYPE_FLOAT 132 
-#define  AV_OPT_TYPE_INT 131 
-#define  AV_OPT_TYPE_INT64 130 
-#define  AV_OPT_TYPE_RATIONAL 129 
-#define  AV_OPT_TYPE_STRING 128 
- TYPE_1__* av_opt_next (void const*,TYPE_1__ const*) ; 
- int /*<<< orphan*/  mp_info (struct mp_log*,char*,...) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,char*) ; 
- scalar_t__ strcmp (char const*,char*) ; 
+typedef int optbuf ;
+struct TYPE_4__ {int flags; int type; char* unit; char* name; int help; } ;
+typedef TYPE_1__ AVOption ;
+ TYPE_1__* av_opt_next (void const*,TYPE_1__ const*) ;
+ int mp_info (struct mp_log*,char*,...) ;
+ int snprintf (char*,int,char*,char*) ;
+ scalar_t__ strcmp (char const*,char*) ;
 
 __attribute__((used)) static void encode_lavc_printoptions(struct mp_log *log, const void *obj,
                                      const char *indent, const char *subindent,
                                      const char *unit, int filter_and,
                                      int filter_eq)
 {
-    const AVOption *opt = NULL;
+    const AVOption *opt = ((void*)0);
     char optbuf[32];
     while ((opt = av_opt_next(obj, opt))) {
-        // if flags are 0, it simply hasn't been filled in yet and may be
-        // potentially useful
+
+
         if (opt->flags)
             if ((opt->flags & filter_and) != filter_eq)
                 continue;
-        /* Don't print CONST's on level one.
-         * Don't print anything but CONST's on level two.
-         * Only print items from the requested unit.
-         */
-        if (!unit && opt->type == AV_OPT_TYPE_CONST) {
+
+
+
+
+        if (!unit && opt->type == 135) {
             continue;
-        } else if (unit && opt->type != AV_OPT_TYPE_CONST) {
+        } else if (unit && opt->type != 135) {
             continue;
-        } else if (unit && opt->type == AV_OPT_TYPE_CONST
+        } else if (unit && opt->type == 135
                  && strcmp(unit, opt->unit))
         {
             continue;
-        } else if (unit && opt->type == AV_OPT_TYPE_CONST) {
+        } else if (unit && opt->type == 135) {
             mp_info(log, "%s", subindent);
         } else {
             mp_info(log, "%s", indent);
         }
 
         switch (opt->type) {
-        case AV_OPT_TYPE_FLAGS:
+        case 133:
             snprintf(optbuf, sizeof(optbuf), "%s=<flags>", opt->name);
             break;
-        case AV_OPT_TYPE_INT:
+        case 131:
             snprintf(optbuf, sizeof(optbuf), "%s=<int>", opt->name);
             break;
-        case AV_OPT_TYPE_INT64:
+        case 130:
             snprintf(optbuf, sizeof(optbuf), "%s=<int64>", opt->name);
             break;
-        case AV_OPT_TYPE_DOUBLE:
+        case 134:
             snprintf(optbuf, sizeof(optbuf), "%s=<double>", opt->name);
             break;
-        case AV_OPT_TYPE_FLOAT:
+        case 132:
             snprintf(optbuf, sizeof(optbuf), "%s=<float>", opt->name);
             break;
-        case AV_OPT_TYPE_STRING:
+        case 128:
             snprintf(optbuf, sizeof(optbuf), "%s=<string>", opt->name);
             break;
-        case AV_OPT_TYPE_RATIONAL:
+        case 129:
             snprintf(optbuf, sizeof(optbuf), "%s=<rational>", opt->name);
             break;
-        case AV_OPT_TYPE_BINARY:
+        case 136:
             snprintf(optbuf, sizeof(optbuf), "%s=<binary>", opt->name);
             break;
-        case AV_OPT_TYPE_CONST:
+        case 135:
             snprintf(optbuf, sizeof(optbuf), "  [+-]%s", opt->name);
             break;
         default:
@@ -99,7 +88,7 @@ __attribute__((used)) static void encode_lavc_printoptions(struct mp_log *log, c
         if (opt->help)
             mp_info(log, " %s", opt->help);
         mp_info(log, "\n");
-        if (opt->unit && opt->type != AV_OPT_TYPE_CONST)
+        if (opt->unit && opt->type != 135)
             encode_lavc_printoptions(log, obj, indent, subindent, opt->unit,
                                      filter_and, filter_eq);
     }

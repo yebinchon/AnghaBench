@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {int /*<<< orphan*/  response_baton; int /*<<< orphan*/  response_handler; int /*<<< orphan*/  xmlctx; int /*<<< orphan*/ * pool; TYPE_3__* handler; int /*<<< orphan*/  items; } ;
-typedef  TYPE_2__ svn_ra_serf__server_error_t ;
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_9__ {int response_baton; int response_handler; int xmlctx; int * pool; TYPE_3__* handler; int items; } ;
+typedef TYPE_2__ svn_ra_serf__server_error_t ;
 struct TYPE_8__ {int code; } ;
-struct TYPE_10__ {int /*<<< orphan*/  response_baton; int /*<<< orphan*/  response_handler; TYPE_1__ sline; int /*<<< orphan*/  session; } ;
-typedef  TYPE_3__ svn_ra_serf__handler_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-typedef  int /*<<< orphan*/  expected_status ;
-typedef  int /*<<< orphan*/  error_item_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+struct TYPE_10__ {int response_baton; int response_handler; TYPE_1__ sline; int session; } ;
+typedef TYPE_3__ svn_ra_serf__handler_t ;
+typedef int svn_error_t ;
+typedef int svn_boolean_t ;
+typedef int expected_status ;
+typedef int error_item_t ;
+typedef int apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  apr_array_make (int /*<<< orphan*/ *,int,int) ; 
- void* apr_pcalloc (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  multistatus_closed ; 
- int /*<<< orphan*/  multistatus_opened ; 
- int /*<<< orphan*/  multistatus_ttable ; 
- TYPE_3__* svn_ra_serf__create_expat_handler (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_ra_serf__xml_context_create (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,TYPE_2__*,int /*<<< orphan*/ *) ; 
+
+ int * SVN_NO_ERROR ;
+ int apr_array_make (int *,int,int) ;
+ void* apr_pcalloc (int *,int) ;
+ int multistatus_closed ;
+ int multistatus_opened ;
+ int multistatus_ttable ;
+ TYPE_3__* svn_ra_serf__create_expat_handler (int ,int ,int*,int *) ;
+ int svn_ra_serf__xml_context_create (int ,int ,int ,int *,TYPE_2__*,int *) ;
 
 svn_error_t *
 svn_ra_serf__setup_error_parsing(svn_ra_serf__server_error_t **server_err,
@@ -58,7 +58,7 @@ svn_ra_serf__setup_error_parsing(svn_ra_serf__server_error_t **server_err,
   ms_baton->xmlctx = svn_ra_serf__xml_context_create(multistatus_ttable,
                                                      multistatus_opened,
                                                      multistatus_closed,
-                                                     NULL,
+                                                     ((void*)0),
                                                      ms_baton,
                                                      ms_baton->pool);
 
@@ -67,7 +67,7 @@ svn_ra_serf__setup_error_parsing(svn_ra_serf__server_error_t **server_err,
                                                   expected_status,
                                                   result_pool);
 
-  /* Ugly way to obtain expat_handler() */
+
   tmp_handler->sline = handler->sline;
   ms_baton->response_handler = tmp_handler->response_handler;
   ms_baton->response_baton = tmp_handler->response_baton;

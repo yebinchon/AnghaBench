@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_3__ {int /*<<< orphan*/  gb; } ;
-typedef  TYPE_1__ SANMVideoContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  bytestream2_get_bufferu (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int bytestream2_get_byte (int /*<<< orphan*/ *) ; 
- int bytestream2_get_bytes_left (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_3__ {int gb; } ;
+typedef TYPE_1__ SANMVideoContext ;
+
+
+ int AVERROR_INVALIDDATA ;
+ int bytestream2_get_bufferu (int *,int *,int) ;
+ int bytestream2_get_byte (int *) ;
+ int bytestream2_get_bytes_left (int *) ;
+ int memset (int *,int,int) ;
 
 __attribute__((used)) static int rle_decode(SANMVideoContext *ctx, uint8_t *dst, const int out_size)
 {
@@ -41,7 +41,7 @@ __attribute__((used)) static int rle_decode(SANMVideoContext *ctx, uint8_t *dst,
             bytestream2_get_bufferu(&ctx->gb, dst, run_len);
         }
 
-        dst  += run_len;
+        dst += run_len;
         left -= run_len;
     }
 

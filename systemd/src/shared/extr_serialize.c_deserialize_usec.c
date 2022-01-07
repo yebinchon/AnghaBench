@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  usec_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (char const*) ; 
- int log_debug_errno (int,char*,char const*) ; 
- int safe_atou64 (char const*,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int usec_t ;
+
+
+ int assert (char const*) ;
+ int log_debug_errno (int,char*,char const*) ;
+ int safe_atou64 (char const*,int *) ;
 
 int deserialize_usec(const char *value, usec_t *ret) {
         int r;

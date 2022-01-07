@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  context; TYPE_1__* env_c_api; } ;
-struct TYPE_3__ {int (* action_discrete_count ) (int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* action_discrete_name ) (int /*<<< orphan*/ ,int) ;int /*<<< orphan*/  (* action_discrete_bounds ) (int /*<<< orphan*/ ,int,int*,int*) ;} ;
-typedef  int /*<<< orphan*/  PyObject ;
-typedef  TYPE_2__ LabObject ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PyErr_NoMemory () ; 
- int /*<<< orphan*/  PyErr_SetString (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  PyExc_RuntimeError ; 
- int /*<<< orphan*/ * PyList_New (int) ; 
- scalar_t__ PyList_SetItem (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Py_BuildValue (char*,char*,int,char*,int,char*,int /*<<< orphan*/ ) ; 
- int stub1 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ ,int,int*,int*) ; 
- int /*<<< orphan*/  stub3 (int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int context; TYPE_1__* env_c_api; } ;
+struct TYPE_3__ {int (* action_discrete_count ) (int ) ;int (* action_discrete_name ) (int ,int) ;int (* action_discrete_bounds ) (int ,int,int*,int*) ;} ;
+typedef int PyObject ;
+typedef TYPE_2__ LabObject ;
+
+
+ int PyErr_NoMemory () ;
+ int PyErr_SetString (int ,char*) ;
+ int PyExc_RuntimeError ;
+ int * PyList_New (int) ;
+ scalar_t__ PyList_SetItem (int *,int,int ) ;
+ int Py_BuildValue (char*,char*,int,char*,int,char*,int ) ;
+ int stub1 (int ) ;
+ int stub2 (int ,int,int*,int*) ;
+ int stub3 (int ,int) ;
 
 __attribute__((used)) static PyObject* Lab_action_spec(PyObject* pself, PyObject* no_arg) {
   LabObject* self = (LabObject*)pself;
@@ -34,9 +34,9 @@ __attribute__((used)) static PyObject* Lab_action_spec(PyObject* pself, PyObject
 
   int count = self->env_c_api->action_discrete_count(self->context);
   discrete = PyList_New(count);
-  if (discrete == NULL) {
+  if (discrete == ((void*)0)) {
     PyErr_NoMemory();
-    return NULL;
+    return ((void*)0);
   }
   int min_discrete, max_discrete;
   for (int i = 0; i < count; ++i) {
@@ -48,7 +48,7 @@ __attribute__((used)) static PyObject* Lab_action_spec(PyObject* pself, PyObject
                                      self->env_c_api->action_discrete_name(
                                          self->context, i))) != 0) {
       PyErr_SetString(PyExc_RuntimeError, "Unable to populate list");
-      return NULL;
+      return ((void*)0);
     }
   }
 

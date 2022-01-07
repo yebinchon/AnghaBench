@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct isight {scalar_t__ audio_base; int /*<<< orphan*/  unit; } ;
-typedef  int /*<<< orphan*/  __be32 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TCODE_WRITE_QUADLET_REQUEST ; 
- int snd_fw_transaction (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
+
+
+
+struct isight {scalar_t__ audio_base; int unit; } ;
+typedef int __be32 ;
+
+
+ int TCODE_WRITE_QUADLET_REQUEST ;
+ int snd_fw_transaction (int ,int ,scalar_t__,int *,int,int ) ;
 
 __attribute__((used)) static int reg_write(struct isight *isight, int offset, __be32 value)
 {
-	return snd_fw_transaction(isight->unit, TCODE_WRITE_QUADLET_REQUEST,
-				  isight->audio_base + offset, &value, 4, 0);
+ return snd_fw_transaction(isight->unit, TCODE_WRITE_QUADLET_REQUEST,
+      isight->audio_base + offset, &value, 4, 0);
 }

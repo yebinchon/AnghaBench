@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  void* time_t ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef void* time_t ;
 struct TYPE_5__ {void* weeks; void* seconds; void* minutes; void* hours; void* days; void* months; void* years; } ;
-typedef  TYPE_1__ ldns_duration_type ;
+typedef TYPE_1__ ldns_duration_type ;
 
-/* Variables and functions */
- scalar_t__ atoi (char const*) ; 
- int /*<<< orphan*/  ldns_duration_cleanup (TYPE_1__*) ; 
- TYPE_1__* ldns_duration_create () ; 
- char* strchr (char const*,char) ; 
- char* strrchr (char const*,char) ; 
+
+ scalar_t__ atoi (char const*) ;
+ int ldns_duration_cleanup (TYPE_1__*) ;
+ TYPE_1__* ldns_duration_create () ;
+ char* strchr (char const*,char) ;
+ char* strrchr (char const*,char) ;
 
 ldns_duration_type*
 ldns_duration_create_from_string(const char* str)
@@ -30,7 +30,7 @@ ldns_duration_create_from_string(const char* str)
     int not_weeks = 0;
 
     if (!duration) {
-        return NULL;
+        return ((void*)0);
     }
     if (!str) {
         return duration;
@@ -38,8 +38,8 @@ ldns_duration_create_from_string(const char* str)
 
     P = strchr(str, 'P');
     if (!P) {
-	ldns_duration_cleanup(duration);
-        return NULL;
+ ldns_duration_cleanup(duration);
+        return ((void*)0);
     }
 
     T = strchr(str, 'T');
@@ -88,7 +88,7 @@ ldns_duration_create_from_string(const char* str)
     if (W) {
         if (not_weeks) {
             ldns_duration_cleanup(duration);
-            return NULL;
+            return ((void*)0);
         } else {
             duration->weeks = (time_t) atoi(str+1);
             str = W;

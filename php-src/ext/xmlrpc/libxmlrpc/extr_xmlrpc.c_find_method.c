@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  name; } ;
-typedef  TYPE_1__ server_method ;
-typedef  scalar_t__ q_iter ;
-typedef  TYPE_2__* XMLRPC_SERVER ;
-struct TYPE_7__ {int /*<<< orphan*/  methodlist; } ;
 
-/* Variables and functions */
- TYPE_1__* Q_Iter_Get_F (scalar_t__) ; 
- scalar_t__ Q_Iter_Head_F (int /*<<< orphan*/ *) ; 
- scalar_t__ Q_Iter_Next_F (scalar_t__) ; 
- int /*<<< orphan*/  strcmp (int /*<<< orphan*/ ,char const*) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int name; } ;
+typedef TYPE_1__ server_method ;
+typedef scalar_t__ q_iter ;
+typedef TYPE_2__* XMLRPC_SERVER ;
+struct TYPE_7__ {int methodlist; } ;
+
+
+ TYPE_1__* Q_Iter_Get_F (scalar_t__) ;
+ scalar_t__ Q_Iter_Head_F (int *) ;
+ scalar_t__ Q_Iter_Next_F (scalar_t__) ;
+ int strcmp (int ,char const*) ;
 
 server_method* find_method(XMLRPC_SERVER server, const char* name) {
    server_method* sm;
@@ -36,5 +36,5 @@ server_method* find_method(XMLRPC_SERVER server, const char* name) {
       }
       qi = Q_Iter_Next_F(qi);
    }
-   return NULL;
+   return ((void*)0);
 }

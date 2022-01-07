@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  VARIANT ;
-typedef  int /*<<< orphan*/  IWbemServices ;
-typedef  int /*<<< orphan*/  IWbemClassObject ;
-typedef  int /*<<< orphan*/  IEnumWbemClassObject ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int DWORD ;
-typedef  int CIMTYPE ;
-typedef  int /*<<< orphan*/  BSTR ;
 
-/* Variables and functions */
- int ARRAY_SIZE (char*) ; 
- int CIM_STRING ; 
- int /*<<< orphan*/  GetComputerNameW (char*,int*) ; 
- int /*<<< orphan*/  GetUserNameW (char*,int*) ; 
- int /*<<< orphan*/  IEnumWbemClassObject_Next (int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ **,int*) ; 
- int /*<<< orphan*/  IEnumWbemClassObject_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IWbemClassObject_Get (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IWbemClassObject_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IWbemServices_ExecQuery (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  MAX_COMPUTERNAME_LENGTH ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  SysAllocString (char const*) ; 
- int /*<<< orphan*/  SysFreeString (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  VT_BSTR ; 
- char* V_BSTR (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  V_VT (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  VariantClear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  VariantInit (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  WBEM_E_NOT_FOUND ; 
- int /*<<< orphan*/  lstrcatW (char*,char const*) ; 
- int /*<<< orphan*/  lstrcmpiW (char*,char*) ; 
- int /*<<< orphan*/  lstrcpyW (char*,char*) ; 
- int lstrlenW (char*) ; 
- int /*<<< orphan*/  ok (int,char*,int,...) ; 
- int /*<<< orphan*/  skip (char*) ; 
- int /*<<< orphan*/  trace (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
- int /*<<< orphan*/  wine_dbgstr_w (char*) ; 
- char const* wqlW ; 
+
+
+
+typedef char WCHAR ;
+typedef int VARIANT ;
+typedef int IWbemServices ;
+typedef int IWbemClassObject ;
+typedef int IEnumWbemClassObject ;
+typedef int HRESULT ;
+typedef int DWORD ;
+typedef int CIMTYPE ;
+typedef int BSTR ;
+
+
+ int ARRAY_SIZE (char*) ;
+ int CIM_STRING ;
+ int GetComputerNameW (char*,int*) ;
+ int GetUserNameW (char*,int*) ;
+ int IEnumWbemClassObject_Next (int *,int,int,int **,int*) ;
+ int IEnumWbemClassObject_Release (int *) ;
+ int IWbemClassObject_Get (int *,char const*,int ,int *,int*,int *) ;
+ int IWbemClassObject_Release (int *) ;
+ int IWbemServices_ExecQuery (int *,int ,int ,int ,int *,int **) ;
+ int MAX_COMPUTERNAME_LENGTH ;
+ int S_OK ;
+ int SysAllocString (char const*) ;
+ int SysFreeString (int ) ;
+ int VT_BSTR ;
+ char* V_BSTR (int *) ;
+ int V_VT (int *) ;
+ int VariantClear (int *) ;
+ int VariantInit (int *) ;
+ int WBEM_E_NOT_FOUND ;
+ int lstrcatW (char*,char const*) ;
+ int lstrcmpiW (char*,char*) ;
+ int lstrcpyW (char*,char*) ;
+ int lstrlenW (char*) ;
+ int ok (int,char*,int,...) ;
+ int skip (char*) ;
+ int trace (char*,int ) ;
+ int win_skip (char*) ;
+ int wine_dbgstr_w (char*) ;
+ char const* wqlW ;
 
 __attribute__((used)) static void test_Win32_ComputerSystem( IWbemServices *services )
 {
@@ -87,7 +87,7 @@ __attribute__((used)) static void test_Win32_ComputerSystem( IWbemServices *serv
         goto out;
     }
 
-    hr = IWbemServices_ExecQuery( services, wql, query, 0, NULL, &result );
+    hr = IWbemServices_ExecQuery( services, wql, query, 0, ((void*)0), &result );
     if (hr != S_OK)
     {
         win_skip( "Win32_ComputerSystem not available\n" );
@@ -99,12 +99,12 @@ __attribute__((used)) static void test_Win32_ComputerSystem( IWbemServices *serv
 
     type = 0xdeadbeef;
     VariantInit( &value );
-    hr = IWbemClassObject_Get( service, memorytypeW, 0, &value, &type, NULL );
+    hr = IWbemClassObject_Get( service, memorytypeW, 0, &value, &type, ((void*)0) );
     ok( hr == WBEM_E_NOT_FOUND, "got %08x\n", hr );
 
     type = 0xdeadbeef;
     VariantInit( &value );
-    hr = IWbemClassObject_Get( service, modelW, 0, &value, &type, NULL );
+    hr = IWbemClassObject_Get( service, modelW, 0, &value, &type, ((void*)0) );
     ok( hr == S_OK, "failed to get model %08x\n", hr );
     ok( V_VT( &value ) == VT_BSTR, "unexpected variant type 0x%x\n", V_VT( &value ) );
     ok( type == CIM_STRING, "unexpected type 0x%x\n", type );
@@ -113,7 +113,7 @@ __attribute__((used)) static void test_Win32_ComputerSystem( IWbemServices *serv
 
     type = 0xdeadbeef;
     VariantInit( &value );
-    hr = IWbemClassObject_Get( service, nameW, 0, &value, &type, NULL );
+    hr = IWbemClassObject_Get( service, nameW, 0, &value, &type, ((void*)0) );
     ok( hr == S_OK, "failed to get computer name %08x\n", hr );
     ok( V_VT( &value ) == VT_BSTR, "unexpected variant type 0x%x\n", V_VT( &value ) );
     ok( type == CIM_STRING, "unexpected type 0x%x\n", type );
@@ -122,7 +122,7 @@ __attribute__((used)) static void test_Win32_ComputerSystem( IWbemServices *serv
 
     type = 0xdeadbeef;
     VariantInit( &value );
-    hr = IWbemClassObject_Get( service, usernameW, 0, &value, &type, NULL );
+    hr = IWbemClassObject_Get( service, usernameW, 0, &value, &type, ((void*)0) );
     ok( hr == S_OK, "failed to get computer name %08x\n", hr );
     ok( V_VT( &value ) == VT_BSTR, "unexpected variant type 0x%x\n", V_VT( &value ) );
     ok( type == CIM_STRING, "unexpected type 0x%x\n", type );

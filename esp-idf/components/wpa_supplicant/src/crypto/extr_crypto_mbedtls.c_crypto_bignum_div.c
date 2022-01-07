@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct crypto_bignum {int dummy; } ;
-typedef  int /*<<< orphan*/  mbedtls_mpi ;
+typedef int mbedtls_mpi ;
 
-/* Variables and functions */
- scalar_t__ mbedtls_mpi_div_mpi (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*) ; 
+
+ scalar_t__ mbedtls_mpi_div_mpi (int *,int *,int const*,int const*) ;
 
 int crypto_bignum_div(const struct crypto_bignum *a,
                       const struct crypto_bignum *b,
                       struct crypto_bignum *c)
 {
-    return mbedtls_mpi_div_mpi((mbedtls_mpi *) c, NULL, (const mbedtls_mpi *) a, (const mbedtls_mpi *) b) ?
+    return mbedtls_mpi_div_mpi((mbedtls_mpi *) c, ((void*)0), (const mbedtls_mpi *) a, (const mbedtls_mpi *) b) ?
            -1 : 0;
 }

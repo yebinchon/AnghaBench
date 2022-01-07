@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct targ_index_ads_directory_entry {int ad_id; int ad_info_offset; } ;
 struct advert {int flags; int ad_id; } ;
 
-/* Variables and functions */
- int ADF_ANCIENT ; 
- int ADF_NEWANCIENT ; 
- int MAX_ADS ; 
- struct targ_index_ads_directory_entry* NewFreshAdsDir ; 
- int /*<<< orphan*/  assert (int) ; 
- struct advert* get_ad (int) ; 
- struct targ_index_ads_directory_entry* malloc (int) ; 
- int new_fresh_addir_size ; 
- int new_fresh_ads ; 
+
+ int ADF_ANCIENT ;
+ int ADF_NEWANCIENT ;
+ int MAX_ADS ;
+ struct targ_index_ads_directory_entry* NewFreshAdsDir ;
+ int assert (int) ;
+ struct advert* get_ad (int) ;
+ struct targ_index_ads_directory_entry* malloc (int) ;
+ int new_fresh_addir_size ;
+ int new_fresh_ads ;
 
 void init_new_fresh_ads_directory (void) {
   int i;

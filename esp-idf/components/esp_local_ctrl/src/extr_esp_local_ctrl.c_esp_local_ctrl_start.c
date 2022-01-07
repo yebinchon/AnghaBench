@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_6__ ;
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint16_t ;
+
+
+typedef struct TYPE_13__ TYPE_6__ ;
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int uint16_t ;
 struct inst_ctx {int dummy; } ;
-typedef  int /*<<< orphan*/  esp_local_ctrl_prop_t ;
-struct TYPE_9__ {int /*<<< orphan*/  set_prop_values; int /*<<< orphan*/  get_prop_values; } ;
-struct TYPE_11__ {scalar_t__ max_properties; TYPE_2__* transport; int /*<<< orphan*/  transport_config; TYPE_1__ handlers; } ;
-typedef  TYPE_3__ esp_local_ctrl_config_t ;
-typedef  scalar_t__ esp_err_t ;
-struct TYPE_12__ {int max_properties; int /*<<< orphan*/  transport_config; } ;
-struct TYPE_13__ {int /*<<< orphan*/  pc; TYPE_4__ config; void* props; } ;
-struct TYPE_10__ {scalar_t__ (* copy_config ) (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ;scalar_t__ (* declare_ep ) (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ;scalar_t__ (* start_service ) (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ;} ;
+typedef int esp_local_ctrl_prop_t ;
+struct TYPE_9__ {int set_prop_values; int get_prop_values; } ;
+struct TYPE_11__ {scalar_t__ max_properties; TYPE_2__* transport; int transport_config; TYPE_1__ handlers; } ;
+typedef TYPE_3__ esp_local_ctrl_config_t ;
+typedef scalar_t__ esp_err_t ;
+struct TYPE_12__ {int max_properties; int transport_config; } ;
+struct TYPE_13__ {int pc; TYPE_4__ config; void* props; } ;
+struct TYPE_10__ {scalar_t__ (* copy_config ) (int *,int *) ;scalar_t__ (* declare_ep ) (int *,char*,int ) ;scalar_t__ (* start_service ) (int ,int *) ;} ;
 
-/* Variables and functions */
- scalar_t__ ESP_ERR_INVALID_ARG ; 
- scalar_t__ ESP_ERR_INVALID_STATE ; 
- scalar_t__ ESP_ERR_NO_MEM ; 
- scalar_t__ ESP_FAIL ; 
- int /*<<< orphan*/  ESP_LOCAL_CTRL_VERSION ; 
- int /*<<< orphan*/  ESP_LOGE (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ESP_LOGW (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ ESP_OK ; 
- int /*<<< orphan*/  TAG ; 
- void* calloc (int,int) ; 
- int /*<<< orphan*/  esp_local_ctrl_data_handler ; 
- int /*<<< orphan*/  esp_local_ctrl_stop () ; 
- int /*<<< orphan*/  free (TYPE_6__*) ; 
- TYPE_6__* local_ctrl_inst_ctx ; 
- int /*<<< orphan*/  memcpy (TYPE_4__*,TYPE_3__ const*,int) ; 
- scalar_t__ protocomm_add_endpoint (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  protocomm_new () ; 
- int /*<<< orphan*/  protocomm_security0 ; 
- scalar_t__ protocomm_set_security (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ protocomm_set_version (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- scalar_t__ stub1 (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ stub2 (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- scalar_t__ stub3 (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- scalar_t__ stub4 (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- scalar_t__ stub5 (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ scalar_t__ ESP_ERR_INVALID_ARG ;
+ scalar_t__ ESP_ERR_INVALID_STATE ;
+ scalar_t__ ESP_ERR_NO_MEM ;
+ scalar_t__ ESP_FAIL ;
+ int ESP_LOCAL_CTRL_VERSION ;
+ int ESP_LOGE (int ,char*) ;
+ int ESP_LOGW (int ,char*) ;
+ scalar_t__ ESP_OK ;
+ int TAG ;
+ void* calloc (int,int) ;
+ int esp_local_ctrl_data_handler ;
+ int esp_local_ctrl_stop () ;
+ int free (TYPE_6__*) ;
+ TYPE_6__* local_ctrl_inst_ctx ;
+ int memcpy (TYPE_4__*,TYPE_3__ const*,int) ;
+ scalar_t__ protocomm_add_endpoint (int ,char*,int ,int *) ;
+ int protocomm_new () ;
+ int protocomm_security0 ;
+ scalar_t__ protocomm_set_security (int ,char*,int *,int *) ;
+ scalar_t__ protocomm_set_version (int ,char*,int ) ;
+ scalar_t__ stub1 (int *,int *) ;
+ scalar_t__ stub2 (int *,char*,int ) ;
+ scalar_t__ stub3 (int *,char*,int ) ;
+ scalar_t__ stub4 (int *,char*,int ) ;
+ scalar_t__ stub5 (int ,int *) ;
 
 esp_err_t esp_local_ctrl_start(const esp_local_ctrl_config_t *config)
 {
@@ -95,14 +95,14 @@ esp_err_t esp_local_ctrl_start(const esp_local_ctrl_config_t *config)
     if (!local_ctrl_inst_ctx->props) {
         ESP_LOGE(TAG, "Failed to allocate memory for properties");
         free(local_ctrl_inst_ctx);
-        local_ctrl_inst_ctx = NULL;
+        local_ctrl_inst_ctx = ((void*)0);
         return ESP_ERR_NO_MEM;
     }
 
-    /* Since the config structure will be different for different transport modes, each transport may
-     * implement a `copy_config()` function, which accepts a configuration structure as input and
-     * creates a copy of that, which can be kept in the context structure of the `esp_local_ctrl` instance.
-     * This copy can be later be freed using `free_config()` */
+
+
+
+
     if (config->transport->copy_config) {
         ret = config->transport->copy_config(&local_ctrl_inst_ctx->config.transport_config,
                                              &config->transport_config);
@@ -112,14 +112,14 @@ esp_err_t esp_local_ctrl_start(const esp_local_ctrl_config_t *config)
         }
     }
 
-    /* For a selected transport mode, endpoints may need to be declared prior to starting the
-     * `esp_local_ctrl` service, e.g. in case of BLE. By declaration it means that the transport layer
-     * allocates some resources for an endpoint, and later, after service has started, a handler
-     * is assigned for that endpoint */
+
+
+
+
     if (config->transport->declare_ep) {
-        /* UUIDs are 16bit unique IDs for each endpoint. This may or may not be relevant for
-         * a chosen transport. We reserve all values from FF50 to FFFF for the internal endpoints.
-         * The remaining endpoints can be used by the application for its own custom endpoints */
+
+
+
         uint16_t start_uuid = 0xFF50;
         ret = config->transport->declare_ep(&local_ctrl_inst_ctx->config.transport_config,
                                             "esp_local_ctrl/version", start_uuid++);
@@ -166,7 +166,7 @@ esp_err_t esp_local_ctrl_start(const esp_local_ctrl_config_t *config)
     }
 
     ret = protocomm_set_security(local_ctrl_inst_ctx->pc, "esp_local_ctrl/session",
-                                 &protocomm_security0, NULL);
+                                 &protocomm_security0, ((void*)0));
     if (ret != ESP_OK) {
         ESP_LOGE(TAG, "Failed to set session endpoint");
         esp_local_ctrl_stop();
@@ -174,7 +174,7 @@ esp_err_t esp_local_ctrl_start(const esp_local_ctrl_config_t *config)
     }
 
     ret = protocomm_add_endpoint(local_ctrl_inst_ctx->pc, "esp_local_ctrl/control",
-                                 esp_local_ctrl_data_handler, NULL);
+                                 esp_local_ctrl_data_handler, ((void*)0));
     if (ret != ESP_OK) {
         ESP_LOGE(TAG, "Failed to set control endpoint");
         esp_local_ctrl_stop();

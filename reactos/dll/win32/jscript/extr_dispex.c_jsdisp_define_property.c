@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_5__ ;
-typedef  struct TYPE_15__   TYPE_4__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_14__ {int flags; int mask; int /*<<< orphan*/ * setter; scalar_t__ explicit_setter; int /*<<< orphan*/ * getter; scalar_t__ explicit_getter; int /*<<< orphan*/  value; scalar_t__ explicit_value; } ;
-typedef  TYPE_3__ property_desc_t ;
-struct TYPE_15__ {int /*<<< orphan*/  ctx; } ;
-typedef  TYPE_4__ jsdisp_t ;
-struct TYPE_12__ {int /*<<< orphan*/ * setter; int /*<<< orphan*/ * getter; } ;
+
+
+typedef struct TYPE_16__ TYPE_5__ ;
+typedef struct TYPE_15__ TYPE_4__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+struct TYPE_14__ {int flags; int mask; int * setter; scalar_t__ explicit_setter; int * getter; scalar_t__ explicit_getter; int value; scalar_t__ explicit_value; } ;
+typedef TYPE_3__ property_desc_t ;
+struct TYPE_15__ {int ctx; } ;
+typedef TYPE_4__ jsdisp_t ;
+struct TYPE_12__ {int * setter; int * getter; } ;
 struct TYPE_13__ {TYPE_1__ accessor; void* val; } ;
 struct TYPE_16__ {scalar_t__ type; int flags; TYPE_2__ u; } ;
-typedef  TYPE_5__ dispex_prop_t ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef TYPE_5__ dispex_prop_t ;
+typedef int WCHAR ;
+typedef int HRESULT ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FIXME (char*,scalar_t__) ; 
- int /*<<< orphan*/  JS_E_NONCONFIGURABLE_REDEFINED ; 
- int /*<<< orphan*/  JS_E_NONWRITABLE_MODIFIED ; 
- int PROPF_CONFIGURABLE ; 
- int PROPF_ENUMERABLE ; 
- int PROPF_WRITABLE ; 
- scalar_t__ PROP_ACCESSOR ; 
- scalar_t__ PROP_DELETED ; 
- scalar_t__ PROP_JSVAL ; 
- scalar_t__ PROP_PROTREF ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ,int,...) ; 
- TYPE_5__* alloc_prop (TYPE_4__*,int /*<<< orphan*/  const*,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  debugstr_jsval (void*) ; 
- int /*<<< orphan*/  debugstr_w (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  find_prop_name (TYPE_4__*,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,TYPE_5__**) ; 
- int /*<<< orphan*/ * jsdisp_addref (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jsdisp_release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jsval_copy (int /*<<< orphan*/ ,void**) ; 
- int /*<<< orphan*/  jsval_release (void*) ; 
- int /*<<< orphan*/  jsval_strict_equal (int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *) ; 
- void* jsval_undefined () ; 
- int /*<<< orphan*/  string_hash (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  throw_type_error (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/  const*) ; 
+
+ int E_OUTOFMEMORY ;
+ scalar_t__ FAILED (int ) ;
+ int FIXME (char*,scalar_t__) ;
+ int JS_E_NONCONFIGURABLE_REDEFINED ;
+ int JS_E_NONWRITABLE_MODIFIED ;
+ int PROPF_CONFIGURABLE ;
+ int PROPF_ENUMERABLE ;
+ int PROPF_WRITABLE ;
+ scalar_t__ PROP_ACCESSOR ;
+ scalar_t__ PROP_DELETED ;
+ scalar_t__ PROP_JSVAL ;
+ scalar_t__ PROP_PROTREF ;
+ int S_OK ;
+ int TRACE (char*,int ,int,...) ;
+ TYPE_5__* alloc_prop (TYPE_4__*,int const*,scalar_t__,int ) ;
+ int debugstr_jsval (void*) ;
+ int debugstr_w (int const*) ;
+ int find_prop_name (TYPE_4__*,int ,int const*,TYPE_5__**) ;
+ int * jsdisp_addref (int *) ;
+ int jsdisp_release (int *) ;
+ int jsval_copy (int ,void**) ;
+ int jsval_release (void*) ;
+ int jsval_strict_equal (int ,void*,int *) ;
+ void* jsval_undefined () ;
+ int string_hash (int const*) ;
+ int throw_type_error (int ,int ,int const*) ;
 
 HRESULT jsdisp_define_property(jsdisp_t *obj, const WCHAR *name, property_desc_t *desc)
 {
@@ -71,8 +71,8 @@ HRESULT jsdisp_define_property(jsdisp_t *obj, const WCHAR *name, property_desc_t
         prop->flags = desc->flags;
         if(desc->explicit_getter || desc->explicit_setter) {
             prop->type = PROP_ACCESSOR;
-            prop->u.accessor.getter = desc->getter ? jsdisp_addref(desc->getter) : NULL;
-            prop->u.accessor.setter = desc->setter ? jsdisp_addref(desc->setter) : NULL;
+            prop->u.accessor.getter = desc->getter ? jsdisp_addref(desc->getter) : ((void*)0);
+            prop->u.accessor.setter = desc->setter ? jsdisp_addref(desc->setter) : ((void*)0);
             TRACE("%s = accessor { get: %p set: %p }\n", debugstr_w(name),
                   prop->u.accessor.getter, prop->u.accessor.setter);
         }else {
@@ -150,7 +150,7 @@ HRESULT jsdisp_define_property(jsdisp_t *obj, const WCHAR *name, property_desc_t
             if(prop->type == PROP_JSVAL)
                 jsval_release(prop->u.val);
             prop->type = PROP_ACCESSOR;
-            prop->u.accessor.getter = prop->u.accessor.setter = NULL;
+            prop->u.accessor.getter = prop->u.accessor.setter = ((void*)0);
         }else if(!(prop->flags & PROPF_CONFIGURABLE)) {
             if((desc->explicit_getter && desc->getter != prop->u.accessor.getter)
                || (desc->explicit_setter && desc->setter != prop->u.accessor.setter))
@@ -160,7 +160,7 @@ HRESULT jsdisp_define_property(jsdisp_t *obj, const WCHAR *name, property_desc_t
         if(desc->explicit_getter) {
             if(prop->u.accessor.getter) {
                 jsdisp_release(prop->u.accessor.getter);
-                prop->u.accessor.getter = NULL;
+                prop->u.accessor.getter = ((void*)0);
             }
             if(desc->getter)
                 prop->u.accessor.getter = jsdisp_addref(desc->getter);
@@ -168,7 +168,7 @@ HRESULT jsdisp_define_property(jsdisp_t *obj, const WCHAR *name, property_desc_t
         if(desc->explicit_setter) {
             if(prop->u.accessor.setter) {
                 jsdisp_release(prop->u.accessor.setter);
-                prop->u.accessor.setter = NULL;
+                prop->u.accessor.setter = ((void*)0);
             }
             if(desc->setter)
                 prop->u.accessor.setter = jsdisp_addref(desc->setter);

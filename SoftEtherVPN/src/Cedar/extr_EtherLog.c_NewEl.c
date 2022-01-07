@@ -1,60 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  AutoDeleteCheckDiskFreeSpaceMin; int /*<<< orphan*/  Eraser; int /*<<< orphan*/  LicenseStatus; int /*<<< orphan*/  LicenseSystem; int /*<<< orphan*/  Cedar; int /*<<< orphan*/  ref; int /*<<< orphan*/  lock; } ;
-typedef  TYPE_1__ EL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ElInitConfig (TYPE_1__*) ; 
- int /*<<< orphan*/  ElParseCurrentLicenseStatus (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ElStartListener (TYPE_1__*) ; 
- int /*<<< orphan*/  InitEth () ; 
- int /*<<< orphan*/  NewCedar (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  NewEraser (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NewLock () ; 
- int /*<<< orphan*/  NewRef () ; 
- int /*<<< orphan*/  RegistWindowsFirewallAll () ; 
- TYPE_1__* ZeroMalloc (int) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int AutoDeleteCheckDiskFreeSpaceMin; int Eraser; int LicenseStatus; int LicenseSystem; int Cedar; int ref; int lock; } ;
+typedef TYPE_1__ EL ;
+
+
+ int ElInitConfig (TYPE_1__*) ;
+ int ElParseCurrentLicenseStatus (int ,int ) ;
+ int ElStartListener (TYPE_1__*) ;
+ int InitEth () ;
+ int NewCedar (int *,int *) ;
+ int NewEraser (int *,int ) ;
+ int NewLock () ;
+ int NewRef () ;
+ int RegistWindowsFirewallAll () ;
+ TYPE_1__* ZeroMalloc (int) ;
 
 EL *NewEl()
 {
-	EL *e;
-
-#ifdef OS_WIN32
-	RegistWindowsFirewallAll();
-#endif
-
-	e = ZeroMalloc(sizeof(EL));
-	e->lock = NewLock();
-	e->ref = NewRef();
-
-	e->Cedar = NewCedar(NULL, NULL);
+ EL *e;
 
 
-	// Ethernet initialization
-	InitEth();
 
-	// Setting initialization
-	ElInitConfig(e);
 
-	// Listener start
-	ElStartListener(e);
 
-	// Initialize the license status
-	ElParseCurrentLicenseStatus(e->LicenseSystem, e->LicenseStatus);
+ e = ZeroMalloc(sizeof(EL));
+ e->lock = NewLock();
+ e->ref = NewRef();
 
-	// Eraser start
-	e->Eraser = NewEraser(NULL, e->AutoDeleteCheckDiskFreeSpaceMin);
+ e->Cedar = NewCedar(((void*)0), ((void*)0));
 
-	return e;
+
+
+ InitEth();
+
+
+ ElInitConfig(e);
+
+
+ ElStartListener(e);
+
+
+ ElParseCurrentLicenseStatus(e->LicenseSystem, e->LicenseStatus);
+
+
+ e->Eraser = NewEraser(((void*)0), e->AutoDeleteCheckDiskFreeSpaceMin);
+
+ return e;
 }

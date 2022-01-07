@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {size_t envtop; int /*<<< orphan*/ * envstack; int /*<<< orphan*/  E; } ;
-typedef  TYPE_1__ js_State ;
 
-/* Variables and functions */
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {size_t envtop; int * envstack; int E; } ;
+typedef TYPE_1__ js_State ;
+
+
 
 __attribute__((used)) static void jsR_restorescope(js_State *J)
 {
-	J->E = J->envstack[--J->envtop];
+ J->E = J->envstack[--J->envtop];
 }

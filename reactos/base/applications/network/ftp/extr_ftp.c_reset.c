@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  fd_set ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FD_ZERO (int /*<<< orphan*/ *) ; 
- int code ; 
- int empty (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  getreply (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lostpeer () ; 
- int /*<<< orphan*/  perror (char*) ; 
+
+
+
+typedef int fd_set ;
+
+
+ int FD_ZERO (int *) ;
+ int code ;
+ int empty (int *,int ) ;
+ int getreply (int ) ;
+ int lostpeer () ;
+ int perror (char*) ;
 
 void reset(int argc, const char *argv[])
 {
-//	struct
-	fd_set mask;
-	int nfnd = 1;
 
-	FD_ZERO(&mask);
-	while (nfnd > 0) {
-//		FD_SET(fileno(cin), &mask); // Chris
-		if ((nfnd = empty(&mask,0)) < 0) {
-			perror("reset");
-			code = -1;
-			lostpeer();
-		}
-		else if (nfnd) {
-			(void) getreply(0);
-		}
-	}
+ fd_set mask;
+ int nfnd = 1;
+
+ FD_ZERO(&mask);
+ while (nfnd > 0) {
+
+  if ((nfnd = empty(&mask,0)) < 0) {
+   perror("reset");
+   code = -1;
+   lostpeer();
+  }
+  else if (nfnd) {
+   (void) getreply(0);
+  }
+ }
 }

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  pos; int /*<<< orphan*/  name; int /*<<< orphan*/  fd; } ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int pos; int name; int fd; } ;
 struct TYPE_7__ {TYPE_2__* netascii; TYPE_1__ file; } ;
-typedef  TYPE_3__ tftp_connection_t ;
-typedef  scalar_t__ ssize_t ;
+typedef TYPE_3__ tftp_connection_t ;
+typedef scalar_t__ ssize_t ;
 struct TYPE_6__ {int unflushed_char; scalar_t__ rptr; scalar_t__ size; unsigned char* iobuff; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TFTP_IOBUFF_SIZE ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ read (int /*<<< orphan*/ ,unsigned char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vkprintf (int,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int TFTP_IOBUFF_SIZE ;
+ int assert (int) ;
+ scalar_t__ read (int ,unsigned char*,int ) ;
+ int vkprintf (int,char*,int ,int ) ;
 
 __attribute__((used)) static int tftp_netascii_getc (tftp_connection_t *c) {
   unsigned char d;
@@ -42,7 +42,7 @@ __attribute__((used)) static int tftp_netascii_getc (tftp_connection_t *c) {
     c->netascii->size = r;
     c->netascii->rptr = 0;
     if (!r) {
-      return -1; /* EOF */
+      return -1;
     }
   }
   assert (c->netascii->rptr < c->netascii->size);

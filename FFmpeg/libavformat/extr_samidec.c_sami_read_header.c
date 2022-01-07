@@ -1,62 +1,62 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_25__   TYPE_5__ ;
-typedef  struct TYPE_24__   TYPE_4__ ;
-typedef  struct TYPE_23__   TYPE_3__ ;
-typedef  struct TYPE_22__   TYPE_2__ ;
-typedef  struct TYPE_21__   TYPE_1__ ;
-typedef  struct TYPE_20__   TYPE_11__ ;
 
-/* Type definitions */
-typedef  scalar_t__ int64_t ;
-struct TYPE_25__ {int /*<<< orphan*/  str; int /*<<< orphan*/  len; } ;
-struct TYPE_24__ {int /*<<< orphan*/  pb; TYPE_1__* priv_data; } ;
-struct TYPE_23__ {int duration; int /*<<< orphan*/  pts; scalar_t__ pos; } ;
+
+
+typedef struct TYPE_25__ TYPE_5__ ;
+typedef struct TYPE_24__ TYPE_4__ ;
+typedef struct TYPE_23__ TYPE_3__ ;
+typedef struct TYPE_22__ TYPE_2__ ;
+typedef struct TYPE_21__ TYPE_1__ ;
+typedef struct TYPE_20__ TYPE_11__ ;
+
+
+typedef scalar_t__ int64_t ;
+struct TYPE_25__ {int str; int len; } ;
+struct TYPE_24__ {int pb; TYPE_1__* priv_data; } ;
+struct TYPE_23__ {int duration; int pts; scalar_t__ pos; } ;
 struct TYPE_22__ {TYPE_11__* codecpar; } ;
-struct TYPE_21__ {int /*<<< orphan*/  q; } ;
-struct TYPE_20__ {int /*<<< orphan*/  codec_id; int /*<<< orphan*/  codec_type; } ;
-typedef  TYPE_1__ SAMIContext ;
-typedef  int /*<<< orphan*/  FFTextReader ;
-typedef  TYPE_2__ AVStream ;
-typedef  TYPE_3__ AVPacket ;
-typedef  TYPE_4__ AVFormatContext ;
-typedef  TYPE_5__ AVBPrint ;
+struct TYPE_21__ {int q; } ;
+struct TYPE_20__ {int codec_id; int codec_type; } ;
+typedef TYPE_1__ SAMIContext ;
+typedef int FFTextReader ;
+typedef TYPE_2__ AVStream ;
+typedef TYPE_3__ AVPacket ;
+typedef TYPE_4__ AVFormatContext ;
+typedef TYPE_5__ AVBPrint ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AVMEDIA_TYPE_SUBTITLE ; 
- int /*<<< orphan*/  AV_BPRINT_SIZE_UNLIMITED ; 
- int /*<<< orphan*/  AV_CODEC_ID_SAMI ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  av_bprint_clear (TYPE_5__*) ; 
- int /*<<< orphan*/  av_bprint_finalize (TYPE_5__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  av_bprint_init (TYPE_5__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_bprintf (TYPE_5__*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_strncasecmp (int /*<<< orphan*/ ,char*,int) ; 
- TYPE_2__* avformat_new_stream (TYPE_4__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  avpriv_set_pts_info (TYPE_2__*,int,int,int) ; 
- int ff_bprint_to_codecpar_extradata (TYPE_11__*,TYPE_5__*) ; 
- int ff_smil_extract_next_text_chunk (int /*<<< orphan*/ *,TYPE_5__*,char*) ; 
- char* ff_smil_get_attr_ptr (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ff_subtitles_queue_finalize (TYPE_4__*,int /*<<< orphan*/ *) ; 
- TYPE_3__* ff_subtitles_queue_insert (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ff_text_eof (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ff_text_init_avio (TYPE_4__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ ff_text_pos (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strtol (char const*,int /*<<< orphan*/ *,int) ; 
+
+ int AVERROR (int ) ;
+ int AVMEDIA_TYPE_SUBTITLE ;
+ int AV_BPRINT_SIZE_UNLIMITED ;
+ int AV_CODEC_ID_SAMI ;
+ int ENOMEM ;
+ int av_bprint_clear (TYPE_5__*) ;
+ int av_bprint_finalize (TYPE_5__*,int *) ;
+ int av_bprint_init (TYPE_5__*,int ,int ) ;
+ int av_bprintf (TYPE_5__*,char*,int ) ;
+ int av_strncasecmp (int ,char*,int) ;
+ TYPE_2__* avformat_new_stream (TYPE_4__*,int *) ;
+ int avpriv_set_pts_info (TYPE_2__*,int,int,int) ;
+ int ff_bprint_to_codecpar_extradata (TYPE_11__*,TYPE_5__*) ;
+ int ff_smil_extract_next_text_chunk (int *,TYPE_5__*,char*) ;
+ char* ff_smil_get_attr_ptr (int ,char*) ;
+ int ff_subtitles_queue_finalize (TYPE_4__*,int *) ;
+ TYPE_3__* ff_subtitles_queue_insert (int *,int ,int ,int) ;
+ int ff_text_eof (int *) ;
+ int ff_text_init_avio (TYPE_4__*,int *,int ) ;
+ scalar_t__ ff_text_pos (int *) ;
+ int strtol (char const*,int *,int) ;
 
 __attribute__((used)) static int sami_read_header(AVFormatContext *s)
 {
     SAMIContext *sami = s->priv_data;
-    AVStream *st = avformat_new_stream(s, NULL);
+    AVStream *st = avformat_new_stream(s, ((void*)0));
     AVBPrint buf, hdr_buf;
     char c = 0;
     int res = 0, got_first_sync_point = 0;
@@ -67,9 +67,9 @@ __attribute__((used)) static int sami_read_header(AVFormatContext *s)
         return AVERROR(ENOMEM);
     avpriv_set_pts_info(st, 64, 1, 1000);
     st->codecpar->codec_type = AVMEDIA_TYPE_SUBTITLE;
-    st->codecpar->codec_id   = AV_CODEC_ID_SAMI;
+    st->codecpar->codec_id = AV_CODEC_ID_SAMI;
 
-    av_bprint_init(&buf,     0, AV_BPRINT_SIZE_UNLIMITED);
+    av_bprint_init(&buf, 0, AV_BPRINT_SIZE_UNLIMITED);
     av_bprint_init(&hdr_buf, 0, AV_BPRINT_SIZE_UNLIMITED);
 
     while (!ff_text_eof(&tr)) {
@@ -100,8 +100,8 @@ __attribute__((used)) static int sami_read_header(AVFormatContext *s)
             }
             if (is_sync) {
                 const char *p = ff_smil_get_attr_ptr(buf.str, "Start");
-                sub->pos      = pos;
-                sub->pts      = p ? strtol(p, NULL, 10) : 0;
+                sub->pos = pos;
+                sub->pts = p ? strtol(p, ((void*)0), 10) : 0;
                 sub->duration = -1;
             }
         }
@@ -115,6 +115,6 @@ __attribute__((used)) static int sami_read_header(AVFormatContext *s)
     ff_subtitles_queue_finalize(s, &sami->q);
 
 end:
-    av_bprint_finalize(&buf, NULL);
+    av_bprint_finalize(&buf, ((void*)0));
     return res;
 }

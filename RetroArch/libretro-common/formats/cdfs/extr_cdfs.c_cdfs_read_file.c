@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t uint64_t ;
-typedef  size_t int64_t ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef size_t uint64_t ;
+typedef size_t int64_t ;
 struct TYPE_4__ {scalar_t__ first_sector; size_t size; size_t pos; int sector_buffer_valid; int current_sector_offset; void* sector_buffer; scalar_t__ current_sector; TYPE_2__* track; } ;
-typedef  TYPE_1__ cdfs_file_t ;
-struct TYPE_5__ {int /*<<< orphan*/  stream; } ;
+typedef TYPE_1__ cdfs_file_t ;
+struct TYPE_5__ {int stream; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cdfs_seek_track_sector (TYPE_2__*,scalar_t__) ; 
- int /*<<< orphan*/  intfstream_read (int /*<<< orphan*/ ,void*,int) ; 
- int /*<<< orphan*/  memcpy (void*,void*,size_t) ; 
+
+ int cdfs_seek_track_sector (TYPE_2__*,scalar_t__) ;
+ int intfstream_read (int ,void*,int) ;
+ int memcpy (void*,void*,size_t) ;
 
 int64_t cdfs_read_file(cdfs_file_t* file, void* buffer, uint64_t len)
 {
@@ -84,7 +84,7 @@ int64_t cdfs_read_file(cdfs_file_t* file, void* buffer, uint64_t len)
       intfstream_read(file->track->stream, file->sector_buffer, 2048);
       memcpy(buffer, file->sector_buffer, len);
       file->current_sector_offset = len;
-      file->sector_buffer_valid   = 1;
+      file->sector_buffer_valid = 1;
 
       bytes_read += len;
    }

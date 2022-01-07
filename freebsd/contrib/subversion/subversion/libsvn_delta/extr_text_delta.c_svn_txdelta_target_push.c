@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_txdelta_window_handler_t ;
-typedef  int /*<<< orphan*/  svn_stream_t ;
-struct tpush_baton {scalar_t__ target_len; int /*<<< orphan*/  source_done; scalar_t__ source_len; scalar_t__ source_offset; void* buf; int /*<<< orphan*/ * pool; void* whb; int /*<<< orphan*/  wh; int /*<<< orphan*/ * source; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int SVN_DELTA_WINDOW_SIZE ; 
- void* apr_palloc (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * svn_stream_create (struct tpush_baton*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_stream_set_close (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_stream_set_write (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tpush_close_handler ; 
- int /*<<< orphan*/  tpush_write_handler ; 
+
+
+
+typedef int svn_txdelta_window_handler_t ;
+typedef int svn_stream_t ;
+struct tpush_baton {scalar_t__ target_len; int source_done; scalar_t__ source_len; scalar_t__ source_offset; void* buf; int * pool; void* whb; int wh; int * source; } ;
+typedef int apr_pool_t ;
+
+
+ int FALSE ;
+ int SVN_DELTA_WINDOW_SIZE ;
+ void* apr_palloc (int *,int) ;
+ int * svn_stream_create (struct tpush_baton*,int *) ;
+ int svn_stream_set_close (int *,int ) ;
+ int svn_stream_set_write (int *,int ) ;
+ int tpush_close_handler ;
+ int tpush_write_handler ;
 
 svn_stream_t *
 svn_txdelta_target_push(svn_txdelta_window_handler_t handler,
@@ -33,7 +33,7 @@ svn_txdelta_target_push(svn_txdelta_window_handler_t handler,
   struct tpush_baton *tb;
   svn_stream_t *stream;
 
-  /* Initialize baton. */
+
   tb = apr_palloc(pool, sizeof(*tb));
   tb->source = source;
   tb->wh = handler;
@@ -45,7 +45,7 @@ svn_txdelta_target_push(svn_txdelta_window_handler_t handler,
   tb->source_done = FALSE;
   tb->target_len = 0;
 
-  /* Create and return writable stream. */
+
   stream = svn_stream_create(tb, pool);
   svn_stream_set_write(stream, tpush_write_handler);
   svn_stream_set_close(stream, tpush_close_handler);

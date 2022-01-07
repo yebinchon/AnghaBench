@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct symtab {int /*<<< orphan*/  hash; struct symtab* next; } ;
+
+
+
+
+struct symtab {int hash; struct symtab* next; } ;
 struct parser {struct symtab* symtab; } ;
 struct lwan_var_descriptor {int dummy; } ;
 
-/* Variables and functions */
- struct lwan_var_descriptor* hash_find (int /*<<< orphan*/ ,char const*) ; 
+
+ struct lwan_var_descriptor* hash_find (int ,char const*) ;
 
 __attribute__((used)) static struct lwan_var_descriptor *symtab_lookup(struct parser *parser,
                                                  const char *var_name)
@@ -26,5 +26,5 @@ __attribute__((used)) static struct lwan_var_descriptor *symtab_lookup(struct pa
             return var;
     }
 
-    return NULL;
+    return ((void*)0);
 }

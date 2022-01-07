@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_11__ {int next_event_id; char const* chart; char* name; char const* exec; char const* recipient; char const* source; char const* units; char const* info; TYPE_3__* critical; TYPE_2__* warning; TYPE_1__* calculation; int /*<<< orphan*/  options; int /*<<< orphan*/  update_every; int /*<<< orphan*/  before; int /*<<< orphan*/  after; int /*<<< orphan*/  group; int /*<<< orphan*/  crit_repeat_every; int /*<<< orphan*/  warn_repeat_every; scalar_t__ last_repeat; int /*<<< orphan*/  delay_multiplier; int /*<<< orphan*/  delay_max_duration; int /*<<< orphan*/  delay_down_duration; int /*<<< orphan*/  delay_up_duration; void* old_value; void* value; int /*<<< orphan*/  red; int /*<<< orphan*/  green; scalar_t__ foreachcounter; int /*<<< orphan*/ * foreachdim; void* dimensions; void* hash_chart; void* hash; int /*<<< orphan*/  id; } ;
-struct TYPE_10__ {int /*<<< orphan*/  source; } ;
-struct TYPE_9__ {int /*<<< orphan*/  source; } ;
-struct TYPE_8__ {int /*<<< orphan*/  source; } ;
-typedef  int /*<<< orphan*/  RRDHOST ;
-typedef  TYPE_4__ RRDCALC ;
 
-/* Variables and functions */
- void* NAN ; 
- TYPE_4__* callocz (int,int) ; 
- int /*<<< orphan*/  error (char*,char const*,char const*,int /*<<< orphan*/ ) ; 
- void* expression_parse (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  rrdcalc_get_unique_id (int /*<<< orphan*/ *,char const*,char const*,int*) ; 
- void* simple_hash (char const*) ; 
- void* strdupz (char const*) ; 
+
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_11__ {int next_event_id; char const* chart; char* name; char const* exec; char const* recipient; char const* source; char const* units; char const* info; TYPE_3__* critical; TYPE_2__* warning; TYPE_1__* calculation; int options; int update_every; int before; int after; int group; int crit_repeat_every; int warn_repeat_every; scalar_t__ last_repeat; int delay_multiplier; int delay_max_duration; int delay_down_duration; int delay_up_duration; void* old_value; void* value; int red; int green; scalar_t__ foreachcounter; int * foreachdim; void* dimensions; void* hash_chart; void* hash; int id; } ;
+struct TYPE_10__ {int source; } ;
+struct TYPE_9__ {int source; } ;
+struct TYPE_8__ {int source; } ;
+typedef int RRDHOST ;
+typedef TYPE_4__ RRDCALC ;
+
+
+ void* NAN ;
+ TYPE_4__* callocz (int,int) ;
+ int error (char*,char const*,char const*,int ) ;
+ void* expression_parse (int ,int *,int *) ;
+ int rrdcalc_get_unique_id (int *,char const*,char const*,int*) ;
+ void* simple_hash (char const*) ;
+ void* strdupz (char const*) ;
 
 inline RRDCALC *rrdcalc_create_from_rrdcalc(RRDCALC *rc, RRDHOST *host, const char *name, const char *dimension) {
     RRDCALC *newrc = callocz(1, sizeof(RRDCALC));
@@ -41,7 +41,7 @@ inline RRDCALC *rrdcalc_create_from_rrdcalc(RRDCALC *rc, RRDHOST *host, const ch
     newrc->hash_chart = simple_hash(rc->chart);
 
     newrc->dimensions = strdupz(dimension);
-    newrc->foreachdim = NULL;
+    newrc->foreachdim = ((void*)0);
     rc->foreachcounter++;
     newrc->foreachcounter = rc->foreachcounter;
 
@@ -72,19 +72,19 @@ inline RRDCALC *rrdcalc_create_from_rrdcalc(RRDCALC *rc, RRDHOST *host, const ch
     if(rc->info) newrc->info = strdupz(rc->info);
 
     if(rc->calculation) {
-        newrc->calculation = expression_parse(rc->calculation->source, NULL, NULL);
+        newrc->calculation = expression_parse(rc->calculation->source, ((void*)0), ((void*)0));
         if(!newrc->calculation)
             error("Health alarm '%s.%s': failed to parse calculation expression '%s'", rc->chart, rc->name, rc->calculation->source);
     }
 
     if(rc->warning) {
-        newrc->warning = expression_parse(rc->warning->source, NULL, NULL);
+        newrc->warning = expression_parse(rc->warning->source, ((void*)0), ((void*)0));
         if(!newrc->warning)
             error("Health alarm '%s.%s': failed to re-parse warning expression '%s'", rc->chart, rc->name, rc->warning->source);
     }
 
     if(rc->critical) {
-        newrc->critical = expression_parse(rc->critical->source, NULL, NULL);
+        newrc->critical = expression_parse(rc->critical->source, ((void*)0), ((void*)0));
         if(!newrc->critical)
             error("Health alarm '%s.%s': failed to re-parse critical expression '%s'", rc->chart, rc->name, rc->critical->source);
     }

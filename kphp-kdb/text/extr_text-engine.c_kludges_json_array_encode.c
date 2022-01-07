@@ -1,19 +1,11 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int utf8_json_encode (char*,int,char*,int) ; 
+ int assert (int) ;
+ int utf8_json_encode (char*,int,char*,int) ;
 
 int kludges_json_array_encode (char *to, int to_size, char *from, int from_size, int flags) {
   char *from_end = from + from_size, *to_end = to + to_size - 8, *to_start = to;
@@ -32,7 +24,7 @@ int kludges_json_array_encode (char *to, int to_size, char *from, int from_size,
     char *p = from, *q = 0;
     while (p < from_end && *p != '\t') {
       if (*p == ' ' && !q) {
-	q = p;
+ q = p;
       }
       p++;
     }

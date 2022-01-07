@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct proc {int p_flag; } ;
-typedef  int /*<<< orphan*/  pid_t ;
+typedef int pid_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PROC_UNLOCK (struct proc*) ; 
- int P_WEXIT ; 
- int /*<<< orphan*/  _PHOLD (struct proc*) ; 
- struct proc* pfind (int /*<<< orphan*/ ) ; 
+
+ int PROC_UNLOCK (struct proc*) ;
+ int P_WEXIT ;
+ int _PHOLD (struct proc*) ;
+ struct proc* pfind (int ) ;
 
 __attribute__((used)) static int
 pfs_lookup_proc(pid_t pid, struct proc **p)
 {
-	struct proc *proc;
+ struct proc *proc;
 
-	proc = pfind(pid);
-	if (proc == NULL)
-		return (0);
-	if ((proc->p_flag & P_WEXIT) != 0) {
-		PROC_UNLOCK(proc);
-		return (0);
-	}
-	_PHOLD(proc);
-	PROC_UNLOCK(proc);
-	*p = proc;
-	return (1);
+ proc = pfind(pid);
+ if (proc == ((void*)0))
+  return (0);
+ if ((proc->p_flag & P_WEXIT) != 0) {
+  PROC_UNLOCK(proc);
+  return (0);
+ }
+ _PHOLD(proc);
+ PROC_UNLOCK(proc);
+ *p = proc;
+ return (1);
 }

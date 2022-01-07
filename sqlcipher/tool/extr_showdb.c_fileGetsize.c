@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct stat {scalar_t__ st_size; } ;
-typedef  scalar_t__ sqlite3_int64 ;
-struct TYPE_6__ {scalar_t__ bRaw; int /*<<< orphan*/  dbfd; TYPE_2__* pFd; } ;
+typedef scalar_t__ sqlite3_int64 ;
+struct TYPE_6__ {scalar_t__ bRaw; int dbfd; TYPE_2__* pFd; } ;
 struct TYPE_5__ {TYPE_1__* pMethods; } ;
 struct TYPE_4__ {int (* xFileSize ) (TYPE_2__*,scalar_t__*) ;} ;
 
-/* Variables and functions */
- int SQLITE_OK ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  fstat (int /*<<< orphan*/ ,struct stat*) ; 
- TYPE_3__ g ; 
- int /*<<< orphan*/  stderr ; 
- int stub1 (TYPE_2__*,scalar_t__*) ; 
+
+ int SQLITE_OK ;
+ int exit (int) ;
+ int fprintf (int ,char*,int) ;
+ int fstat (int ,struct stat*) ;
+ TYPE_3__ g ;
+ int stderr ;
+ int stub1 (TYPE_2__*,scalar_t__*) ;
 
 __attribute__((used)) static sqlite3_int64 fileGetsize(void){
   sqlite3_int64 res = 0;

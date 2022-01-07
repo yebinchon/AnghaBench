@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct vmw_private {int /*<<< orphan*/  num_fifo_resources; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  atomic_inc (int /*<<< orphan*/ *) ; 
+
+
+
+struct vmw_private {int num_fifo_resources; } ;
+
+
+ int atomic_inc (int *) ;
 
 __attribute__((used)) static inline void vmw_fifo_resource_inc(struct vmw_private *dev_priv)
 {
-	atomic_inc(&dev_priv->num_fifo_resources);
+ atomic_inc(&dev_priv->num_fifo_resources);
 }

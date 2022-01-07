@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_5__ ;
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_5__ ;
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct worker_stats {int dummy; } ;
 struct related_binlog_status {int dummy; } ;
 struct related_binlog {int dummy; } ;
@@ -22,94 +22,94 @@ struct TYPE_9__ {scalar_t__ port; } ;
 struct TYPE_8__ {int status; TYPE_1__* binlog; } ;
 struct TYPE_7__ {int flags; } ;
 
-/* Variables and functions */
- int BACKLOG ; 
- TYPE_2__* LR ; 
- int MAP_ANONYMOUS ; 
- int MAP_SHARED ; 
- scalar_t__ MAX_CONNECTIONS ; 
- TYPE_5__ PID ; 
- int /*<<< orphan*/  PING_INTERVAL ; 
- scalar_t__ PRIVILEGED_TCP_PORTS ; 
- int PROT_READ ; 
- int PROT_WRITE ; 
- int RBStats ; 
- int /*<<< orphan*/  SM_IPV6 ; 
- int WStats ; 
- int /*<<< orphan*/  aes_load_pwd_file (void*) ; 
- void* aes_pwd_file ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  atof (void*) ; 
- int atoi (void*) ; 
- int backlog ; 
- int /*<<< orphan*/  binlog_disabled ; 
- scalar_t__ change_user (char*) ; 
- int check_all_locations ; 
- scalar_t__ check_binlog_files () ; 
- int /*<<< orphan*/  close (int /*<<< orphan*/ ) ; 
- char* config_filename ; 
- int daemonize ; 
- TYPE_4__ default_ct ; 
- scalar_t__ default_target_port ; 
- int /*<<< orphan*/  detect_hostname () ; 
- int double_send_recv ; 
- long long dynamic_data_buffer_size ; 
- int /*<<< orphan*/  enable_ipv6 ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/ * fd ; 
- int fork () ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int getopt (int,char**,char*) ; 
- int getppid () ; 
- char* hostname ; 
- int /*<<< orphan*/  hostname_len ; 
- int /*<<< orphan*/  init_common_data (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  init_dyn_data () ; 
- int /*<<< orphan*/  init_monitor (int) ; 
- int /*<<< orphan*/  kdb_hosts_loaded ; 
- int /*<<< orphan*/  kdb_load_hosts () ; 
- int /*<<< orphan*/  kprintf_multiprocessing_mode_enable () ; 
- void* last_handshake_id ; 
- void* last_session_id ; 
- int local_rbs ; 
- void* logname ; 
- void* lrand48 () ; 
- scalar_t__ maxconn ; 
- int /*<<< orphan*/  memcpy (TYPE_2__*,TYPE_2__*,int) ; 
- int mmap (int /*<<< orphan*/ ,int,int,int,int,int /*<<< orphan*/ ) ; 
- int monitor_priority ; 
- int /*<<< orphan*/  open_file (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- void* optarg ; 
- int optind ; 
- int orig_local_rbs ; 
- int parent_pid ; 
- int parse_config (int /*<<< orphan*/ ) ; 
- int* pids ; 
- int /*<<< orphan*/  ping_interval ; 
- scalar_t__ port ; 
- char* progname ; 
- scalar_t__ raise_file_rlimit (scalar_t__) ; 
- int /*<<< orphan*/  rdtsc () ; 
- int /*<<< orphan*/  rescan_pid_table () ; 
- scalar_t__ server_socket (scalar_t__,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_debug_handlers () ; 
- int /*<<< orphan*/  setsid () ; 
- int /*<<< orphan*/  settings_addr ; 
- scalar_t__ sfd ; 
- int slave_mode ; 
- int /*<<< orphan*/  srand48 (int /*<<< orphan*/ ) ; 
- int sscanf (void*,char*,long long*,char*) ; 
- int /*<<< orphan*/  start_server () ; 
- int /*<<< orphan*/  start_time ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  strlen (char*) ; 
- int /*<<< orphan*/  time (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  usage () ; 
- char* username ; 
- scalar_t__ verbosity ; 
- int /*<<< orphan*/  vkprintf (int /*<<< orphan*/ ,char*,int) ; 
- int worker_id ; 
- int workers ; 
+
+ int BACKLOG ;
+ TYPE_2__* LR ;
+ int MAP_ANONYMOUS ;
+ int MAP_SHARED ;
+ scalar_t__ MAX_CONNECTIONS ;
+ TYPE_5__ PID ;
+ int PING_INTERVAL ;
+ scalar_t__ PRIVILEGED_TCP_PORTS ;
+ int PROT_READ ;
+ int PROT_WRITE ;
+ int RBStats ;
+ int SM_IPV6 ;
+ int WStats ;
+ int aes_load_pwd_file (void*) ;
+ void* aes_pwd_file ;
+ int assert (int) ;
+ int atof (void*) ;
+ int atoi (void*) ;
+ int backlog ;
+ int binlog_disabled ;
+ scalar_t__ change_user (char*) ;
+ int check_all_locations ;
+ scalar_t__ check_binlog_files () ;
+ int close (int ) ;
+ char* config_filename ;
+ int daemonize ;
+ TYPE_4__ default_ct ;
+ scalar_t__ default_target_port ;
+ int detect_hostname () ;
+ int double_send_recv ;
+ long long dynamic_data_buffer_size ;
+ int enable_ipv6 ;
+ int exit (int) ;
+ int * fd ;
+ int fork () ;
+ int fprintf (int ,char*,...) ;
+ int getopt (int,char**,char*) ;
+ int getppid () ;
+ char* hostname ;
+ int hostname_len ;
+ int init_common_data (int ,int ) ;
+ int init_dyn_data () ;
+ int init_monitor (int) ;
+ int kdb_hosts_loaded ;
+ int kdb_load_hosts () ;
+ int kprintf_multiprocessing_mode_enable () ;
+ void* last_handshake_id ;
+ void* last_session_id ;
+ int local_rbs ;
+ void* logname ;
+ void* lrand48 () ;
+ scalar_t__ maxconn ;
+ int memcpy (TYPE_2__*,TYPE_2__*,int) ;
+ int mmap (int ,int,int,int,int,int ) ;
+ int monitor_priority ;
+ int open_file (int ,char*,int ) ;
+ void* optarg ;
+ int optind ;
+ int orig_local_rbs ;
+ int parent_pid ;
+ int parse_config (int ) ;
+ int* pids ;
+ int ping_interval ;
+ scalar_t__ port ;
+ char* progname ;
+ scalar_t__ raise_file_rlimit (scalar_t__) ;
+ int rdtsc () ;
+ int rescan_pid_table () ;
+ scalar_t__ server_socket (scalar_t__,int ,int,int ) ;
+ int set_debug_handlers () ;
+ int setsid () ;
+ int settings_addr ;
+ scalar_t__ sfd ;
+ int slave_mode ;
+ int srand48 (int ) ;
+ int sscanf (void*,char*,long long*,char*) ;
+ int start_server () ;
+ int start_time ;
+ int stderr ;
+ int strlen (char*) ;
+ int time (int ) ;
+ int usage () ;
+ char* username ;
+ scalar_t__ verbosity ;
+ int vkprintf (int ,char*,int) ;
+ int worker_id ;
+ int workers ;
 
 int main (int argc, char *argv[]) {
   int i, syntax_check = 0;
@@ -140,7 +140,7 @@ int main (int argc, char *argv[]) {
     case 'b':
       backlog = atoi (optarg);
       if (backlog <= 0) {
-	backlog = BACKLOG;
+ backlog = BACKLOG;
       }
       break;
     case 'c':
@@ -178,10 +178,10 @@ int main (int argc, char *argv[]) {
       c = 0;
       assert (sscanf (optarg, "%lld%c", &x, &c) >= 1);
       switch (c | 0x20) {
-      case 'k':  x <<= 10; break;
-      case 'm':  x <<= 20; break;
-      case 'g':  x <<= 30; break;
-      case 't':  x <<= 40; break;
+      case 'k': x <<= 10; break;
+      case 'm': x <<= 20; break;
+      case 'g': x <<= 30; break;
+      case 't': x <<= 40; break;
       default: assert (c == 0x20);
       }
       if (x >= (1LL << 20) && x <= (sizeof(long) == 4 ? (3LL << 30) : (100LL << 30))) {

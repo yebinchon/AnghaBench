@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct svc_rqst {struct nfsd3_commitres* rq_resp; struct nfsd3_commitargs* rq_argp; } ;
-struct nfsd3_commitres {int /*<<< orphan*/  fh; } ;
-struct nfsd3_commitargs {scalar_t__ offset; int /*<<< orphan*/  count; int /*<<< orphan*/  fh; } ;
-typedef  int /*<<< orphan*/  __be32 ;
+struct nfsd3_commitres {int fh; } ;
+struct nfsd3_commitargs {scalar_t__ offset; int count; int fh; } ;
+typedef int __be32 ;
 
-/* Variables and functions */
- scalar_t__ NFS_OFFSET_MAX ; 
- int /*<<< orphan*/  RETURN_STATUS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVCFH_fmt (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  dprintk (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned long long) ; 
- int /*<<< orphan*/  fh_copy (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nfsd_commit (struct svc_rqst*,int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nfserr_inval ; 
+
+ scalar_t__ NFS_OFFSET_MAX ;
+ int RETURN_STATUS (int ) ;
+ int SVCFH_fmt (int *) ;
+ int dprintk (char*,int ,int ,unsigned long long) ;
+ int fh_copy (int *,int *) ;
+ int nfsd_commit (struct svc_rqst*,int *,scalar_t__,int ) ;
+ int nfserr_inval ;
 
 __attribute__((used)) static __be32
 nfsd3_proc_commit(struct svc_rqst *rqstp)
 {
-	struct nfsd3_commitargs *argp = rqstp->rq_argp;
-	struct nfsd3_commitres *resp = rqstp->rq_resp;
-	__be32	nfserr;
+ struct nfsd3_commitargs *argp = rqstp->rq_argp;
+ struct nfsd3_commitres *resp = rqstp->rq_resp;
+ __be32 nfserr;
 
-	dprintk("nfsd: COMMIT(3)   %s %u@%Lu\n",
-				SVCFH_fmt(&argp->fh),
-				argp->count,
-				(unsigned long long) argp->offset);
+ dprintk("nfsd: COMMIT(3)   %s %u@%Lu\n",
+    SVCFH_fmt(&argp->fh),
+    argp->count,
+    (unsigned long long) argp->offset);
 
-	if (argp->offset > NFS_OFFSET_MAX)
-		RETURN_STATUS(nfserr_inval);
+ if (argp->offset > NFS_OFFSET_MAX)
+  RETURN_STATUS(nfserr_inval);
 
-	fh_copy(&resp->fh, &argp->fh);
-	nfserr = nfsd_commit(rqstp, &resp->fh, argp->offset, argp->count);
+ fh_copy(&resp->fh, &argp->fh);
+ nfserr = nfsd_commit(rqstp, &resp->fh, argp->offset, argp->count);
 
-	RETURN_STATUS(nfserr);
+ RETURN_STATUS(nfserr);
 }

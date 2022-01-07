@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ ULONG ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  IDispatchEx ;
-typedef  int /*<<< orphan*/  IActiveScriptParse ;
-typedef  int /*<<< orphan*/  IActiveScript ;
-typedef  scalar_t__ HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ActiveScriptSite ; 
- int /*<<< orphan*/  CHECK_CALLED (int /*<<< orphan*/ ) ; 
- scalar_t__ E_POINTER ; 
- scalar_t__ E_UNEXPECTED ; 
- int /*<<< orphan*/  GetLCID ; 
- scalar_t__ IActiveScriptParse_InitNew (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IActiveScriptParse_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IActiveScript_Close (int /*<<< orphan*/ *) ; 
- scalar_t__ IActiveScript_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- scalar_t__ IActiveScript_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IActiveScript_SetScriptSite (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ IActiveScript_SetScriptState (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IDispatchEx_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IID_IActiveScriptParse ; 
- int /*<<< orphan*/  OnStateChange_CLOSED ; 
- int /*<<< orphan*/  OnStateChange_INITIALIZED ; 
- int /*<<< orphan*/  OnStateChange_STARTED ; 
- int /*<<< orphan*/  SCRIPTSTATE_CLOSED ; 
- int /*<<< orphan*/  SCRIPTSTATE_INITIALIZED ; 
- int /*<<< orphan*/  SCRIPTSTATE_STARTED ; 
- int /*<<< orphan*/  SCRIPTSTATE_UNINITIALIZED ; 
- int /*<<< orphan*/  SET_EXPECT (int /*<<< orphan*/ ) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/ * create_jscript () ; 
- int /*<<< orphan*/ * get_script_dispatch (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
- int /*<<< orphan*/  test_invoke_versioning (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  test_no_script_dispatch (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  test_safety (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  test_script_dispatch (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  test_state (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef scalar_t__ ULONG ;
+typedef int IUnknown ;
+typedef int IDispatchEx ;
+typedef int IActiveScriptParse ;
+typedef int IActiveScript ;
+typedef scalar_t__ HRESULT ;
+
+
+ int ActiveScriptSite ;
+ int CHECK_CALLED (int ) ;
+ scalar_t__ E_POINTER ;
+ scalar_t__ E_UNEXPECTED ;
+ int GetLCID ;
+ scalar_t__ IActiveScriptParse_InitNew (int *) ;
+ int IActiveScriptParse_Release (int *) ;
+ scalar_t__ IActiveScript_Close (int *) ;
+ scalar_t__ IActiveScript_QueryInterface (int *,int *,void**) ;
+ scalar_t__ IActiveScript_Release (int *) ;
+ scalar_t__ IActiveScript_SetScriptSite (int *,int *) ;
+ scalar_t__ IActiveScript_SetScriptState (int *,int ) ;
+ int IDispatchEx_Release (int *) ;
+ int IID_IActiveScriptParse ;
+ int OnStateChange_CLOSED ;
+ int OnStateChange_INITIALIZED ;
+ int OnStateChange_STARTED ;
+ int SCRIPTSTATE_CLOSED ;
+ int SCRIPTSTATE_INITIALIZED ;
+ int SCRIPTSTATE_STARTED ;
+ int SCRIPTSTATE_UNINITIALIZED ;
+ int SET_EXPECT (int ) ;
+ scalar_t__ S_OK ;
+ int * create_jscript () ;
+ int * get_script_dispatch (int *) ;
+ int ok (int,char*,scalar_t__) ;
+ int test_invoke_versioning (int *) ;
+ int test_no_script_dispatch (int *) ;
+ int test_safety (int *) ;
+ int test_script_dispatch (int *) ;
+ int test_state (int *,int ) ;
 
 __attribute__((used)) static void test_jscript(void)
 {
@@ -73,7 +73,7 @@ __attribute__((used)) static void test_jscript(void)
     hres = IActiveScriptParse_InitNew(parse);
     ok(hres == E_UNEXPECTED, "InitNew failed: %08x, expected E_UNEXPECTED\n", hres);
 
-    hres = IActiveScript_SetScriptSite(script, NULL);
+    hres = IActiveScript_SetScriptSite(script, ((void*)0));
     ok(hres == E_POINTER, "SetScriptSite failed: %08x, expected E_POINTER\n", hres);
 
     test_state(script, SCRIPTSTATE_UNINITIALIZED);

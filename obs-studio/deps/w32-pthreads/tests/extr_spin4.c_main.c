@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  pthread_t ;
-typedef  int /*<<< orphan*/  PTW32_STRUCT_TIMEB ;
 
-/* Variables and functions */
- int GetDurationMilliSecs (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PTW32_FTIME (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  currSysTimeStart ; 
- int /*<<< orphan*/  exit (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  func ; 
- int /*<<< orphan*/  lock ; 
- int /*<<< orphan*/  printf (char*) ; 
- scalar_t__ pthread_create (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ pthread_join (int /*<<< orphan*/ ,void**) ; 
- int pthread_num_processors_np () ; 
- scalar_t__ pthread_spin_destroy (int /*<<< orphan*/ *) ; 
- scalar_t__ pthread_spin_lock (int /*<<< orphan*/ *) ; 
- scalar_t__ pthread_spin_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sched_yield () ; 
- int washere ; 
+
+
+
+typedef int pthread_t ;
+typedef int PTW32_STRUCT_TIMEB ;
+
+
+ int GetDurationMilliSecs (int ,int ) ;
+ int PTW32_FTIME (int *) ;
+ int assert (int) ;
+ int currSysTimeStart ;
+ int exit (int ) ;
+ int func ;
+ int lock ;
+ int printf (char*) ;
+ scalar_t__ pthread_create (int *,int *,int ,int *) ;
+ scalar_t__ pthread_join (int ,void**) ;
+ int pthread_num_processors_np () ;
+ scalar_t__ pthread_spin_destroy (int *) ;
+ scalar_t__ pthread_spin_lock (int *) ;
+ scalar_t__ pthread_spin_unlock (int *) ;
+ int sched_yield () ;
+ int washere ;
 
 int
 main()
@@ -42,12 +42,12 @@ main()
   if ((CPUs = pthread_num_processors_np()) == 1)
     {
       printf("Test not run - it requires multiple CPUs.\n");
-	exit(0);
+ exit(0);
     }
 
   assert(pthread_spin_lock(&lock) == 0);
 
-  assert(pthread_create(&t, NULL, func, NULL) == 0);
+  assert(pthread_create(&t, ((void*)0), func, ((void*)0)) == 0);
 
   while (washere == 0)
     {

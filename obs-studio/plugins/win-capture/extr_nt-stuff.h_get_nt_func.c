@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * HANDLE ;
-typedef  int /*<<< orphan*/  FARPROC ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * GetModuleHandleW (char*) ; 
- int /*<<< orphan*/  GetProcAddress (int /*<<< orphan*/ *,char const*) ; 
+
+
+
+typedef int * HANDLE ;
+typedef int FARPROC ;
+
+
+ int * GetModuleHandleW (char*) ;
+ int GetProcAddress (int *,char const*) ;
 
 __attribute__((used)) static FARPROC get_nt_func(const char *name)
 {
-	static bool initialized = false;
-	static HANDLE ntdll = NULL;
-	if (!initialized) {
-		ntdll = GetModuleHandleW(L"ntdll");
-		initialized = true;
-	}
+ static bool initialized = 0;
+ static HANDLE ntdll = ((void*)0);
+ if (!initialized) {
+  ntdll = GetModuleHandleW(L"ntdll");
+  initialized = 1;
+ }
 
-	return GetProcAddress(ntdll, name);
+ return GetProcAddress(ntdll, name);
 }

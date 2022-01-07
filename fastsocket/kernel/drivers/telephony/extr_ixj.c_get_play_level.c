@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int high; int low; } ;
 struct TYPE_6__ {TYPE_1__ ssr; } ;
-typedef  TYPE_2__ IXJ ;
+typedef TYPE_2__ IXJ ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ixj_WriteDSPCommand (int,TYPE_2__*) ; 
+
+ int ixj_WriteDSPCommand (int,TYPE_2__*) ;
 
 __attribute__((used)) static inline int get_play_level(IXJ *j)
 {
-	int retval;
+ int retval;
 
-	ixj_WriteDSPCommand(0xCF8F, j); /* 8022 Reference page 9-38 */
-	return j->ssr.high << 8 | j->ssr.low;
-	retval = j->ssr.high << 8 | j->ssr.low;
-	retval = (retval * 256) / 240;
-	return retval;
+ ixj_WriteDSPCommand(0xCF8F, j);
+ return j->ssr.high << 8 | j->ssr.low;
+ retval = j->ssr.high << 8 | j->ssr.low;
+ retval = (retval * 256) / 240;
+ return retval;
 }

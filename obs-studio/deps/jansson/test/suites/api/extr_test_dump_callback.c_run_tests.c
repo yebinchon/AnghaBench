@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct my_sink {int off; char* buf; int /*<<< orphan*/  cap; } ;
-typedef  int /*<<< orphan*/  json_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fail (char*) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  json_decref (int /*<<< orphan*/ *) ; 
- int json_dump_callback (int /*<<< orphan*/ *,int /*<<< orphan*/ ,struct my_sink*,int /*<<< orphan*/ ) ; 
- char* json_dumps (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * json_loads (char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- char* malloc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  my_writer ; 
- int /*<<< orphan*/  strlen (char*) ; 
- scalar_t__ strncmp (char*,char*,int) ; 
+
+
+
+struct my_sink {int off; char* buf; int cap; } ;
+typedef int json_t ;
+
+
+ int fail (char*) ;
+ int free (char*) ;
+ int json_decref (int *) ;
+ int json_dump_callback (int *,int ,struct my_sink*,int ) ;
+ char* json_dumps (int *,int ) ;
+ int * json_loads (char const*,int ,int *) ;
+ char* malloc (int ) ;
+ int my_writer ;
+ int strlen (char*) ;
+ scalar_t__ strncmp (char*,char*,int) ;
 
 __attribute__((used)) static void run_tests()
 {
@@ -32,7 +32,7 @@ __attribute__((used)) static void run_tests()
     const char str[] = "[\"A\", {\"B\": \"C\", \"e\": false}, 1, null, \"foo\"]";
     char *dumped_to_string;
 
-    json = json_loads(str, 0, NULL);
+    json = json_loads(str, 0, ((void*)0));
     if(!json) {
         fail("json_loads failed");
     }

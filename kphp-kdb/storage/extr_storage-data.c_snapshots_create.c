@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_4__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_4__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int binlogs; TYPE_2__** B; } ;
-typedef  TYPE_1__ volume_t ;
+typedef TYPE_1__ volume_t ;
 struct TYPE_6__ {scalar_t__ fd_rdonly; scalar_t__ fd_wronly; size_t dir_id; } ;
-typedef  TYPE_2__ storage_binlog_file_t ;
+typedef TYPE_2__ storage_binlog_file_t ;
 struct TYPE_7__ {char* path; } ;
 
-/* Variables and functions */
- TYPE_4__* Dirs ; 
- int O_CREAT ; 
- int O_EXCL ; 
- int O_TRUNC ; 
- int O_WRONLY ; 
- int /*<<< orphan*/  assert (int) ; 
- char** filename_newidx ; 
- scalar_t__* newidx_fd ; 
- size_t newidx_fds ; 
- scalar_t__ open (char*,int,int) ; 
- int sprintf (char*,char*,char*,char*) ; 
- int strlen (char*) ; 
- char* strrchr (char*,char) ; 
- char* tszmalloc (int) ; 
+
+ TYPE_4__* Dirs ;
+ int O_CREAT ;
+ int O_EXCL ;
+ int O_TRUNC ;
+ int O_WRONLY ;
+ int assert (int) ;
+ char** filename_newidx ;
+ scalar_t__* newidx_fd ;
+ size_t newidx_fds ;
+ scalar_t__ open (char*,int,int) ;
+ int sprintf (char*,char*,char*,char*) ;
+ int strlen (char*) ;
+ char* strrchr (char*,char) ;
+ char* tszmalloc (int) ;
 
 __attribute__((used)) static int snapshots_create (volume_t *V, char *newidxname) {
   int k, ok = 0;
   char *p = strrchr (newidxname, '/');
-  if (p == NULL) {
+  if (p == ((void*)0)) {
     p = newidxname;
   } else {
     p++;

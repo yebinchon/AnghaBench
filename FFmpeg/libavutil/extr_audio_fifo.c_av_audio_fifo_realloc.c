@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int nb_buffers; int allocated_samples; int /*<<< orphan*/ * buf; int /*<<< orphan*/  sample_fmt; int /*<<< orphan*/  channels; } ;
-typedef  TYPE_1__ AVAudioFifo ;
 
-/* Variables and functions */
- int av_fifo_realloc2 (int /*<<< orphan*/ ,int) ; 
- int av_samples_get_buffer_size (int*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int nb_buffers; int allocated_samples; int * buf; int sample_fmt; int channels; } ;
+typedef TYPE_1__ AVAudioFifo ;
+
+
+ int av_fifo_realloc2 (int ,int) ;
+ int av_samples_get_buffer_size (int*,int ,int,int ,int) ;
 
 int av_audio_fifo_realloc(AVAudioFifo *af, int nb_samples)
 {

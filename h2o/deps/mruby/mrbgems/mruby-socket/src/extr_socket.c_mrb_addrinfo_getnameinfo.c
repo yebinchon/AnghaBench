@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct sockaddr {int dummy; } ;
-typedef  int /*<<< orphan*/  socklen_t ;
-typedef  int /*<<< orphan*/  mrb_value ;
-typedef  int /*<<< orphan*/  mrb_state ;
-typedef  scalar_t__ mrb_int ;
+typedef int socklen_t ;
+typedef int mrb_value ;
+typedef int mrb_state ;
+typedef scalar_t__ mrb_int ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_SOCKET_ERROR ; 
- int /*<<< orphan*/  NI_MAXHOST ; 
- int /*<<< orphan*/  NI_MAXSERV ; 
- scalar_t__ RSTRING_LEN (int /*<<< orphan*/ ) ; 
- scalar_t__ RSTRING_PTR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gai_strerror (int) ; 
- int getnameinfo (struct sockaddr*,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  mrb_ary_new_capa (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  mrb_ary_push (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_get_args (int /*<<< orphan*/ *,char*,scalar_t__*) ; 
- int /*<<< orphan*/  mrb_intern_lit (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  mrb_iv_get (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_raise (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  mrb_raisef (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_str_buf_new (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_str_new_cstr (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_str_resize (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_string_p (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strlen (scalar_t__) ; 
+
+ int E_SOCKET_ERROR ;
+ int NI_MAXHOST ;
+ int NI_MAXSERV ;
+ scalar_t__ RSTRING_LEN (int ) ;
+ scalar_t__ RSTRING_PTR (int ) ;
+ int gai_strerror (int) ;
+ int getnameinfo (struct sockaddr*,int ,scalar_t__,int ,scalar_t__,int ,int) ;
+ int mrb_ary_new_capa (int *,int) ;
+ int mrb_ary_push (int *,int ,int ) ;
+ int mrb_get_args (int *,char*,scalar_t__*) ;
+ int mrb_intern_lit (int *,char*) ;
+ int mrb_iv_get (int *,int ,int ) ;
+ int mrb_raise (int *,int ,char*) ;
+ int mrb_raisef (int *,int ,char*,int ) ;
+ int mrb_str_buf_new (int *,int ) ;
+ int mrb_str_new_cstr (int *,int ) ;
+ int mrb_str_resize (int *,int ,int ) ;
+ int mrb_string_p (int ) ;
+ int strlen (scalar_t__) ;
 
 __attribute__((used)) static mrb_value
 mrb_addrinfo_getnameinfo(mrb_state *mrb, mrb_value self)

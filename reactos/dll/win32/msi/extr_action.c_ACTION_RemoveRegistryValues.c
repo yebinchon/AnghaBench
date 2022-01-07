@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  scalar_t__ UINT ;
-struct TYPE_8__ {int /*<<< orphan*/  db; } ;
-struct TYPE_7__ {int /*<<< orphan*/  hdr; } ;
-typedef  TYPE_1__ MSIQUERY ;
-typedef  TYPE_2__ MSIPACKAGE ;
 
-/* Variables and functions */
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  ITERATE_RemoveRegistryValuesOnInstall ; 
- int /*<<< orphan*/  ITERATE_RemoveRegistryValuesOnUninstall ; 
- scalar_t__ MSI_DatabaseOpenViewW (int /*<<< orphan*/ ,char const*,TYPE_1__**) ; 
- scalar_t__ MSI_IterateRecords (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  msiobj_release (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef char WCHAR ;
+typedef scalar_t__ UINT ;
+struct TYPE_8__ {int db; } ;
+struct TYPE_7__ {int hdr; } ;
+typedef TYPE_1__ MSIQUERY ;
+typedef TYPE_2__ MSIPACKAGE ;
+
+
+ scalar_t__ ERROR_SUCCESS ;
+ int ITERATE_RemoveRegistryValuesOnInstall ;
+ int ITERATE_RemoveRegistryValuesOnUninstall ;
+ scalar_t__ MSI_DatabaseOpenViewW (int ,char const*,TYPE_1__**) ;
+ scalar_t__ MSI_IterateRecords (TYPE_1__*,int *,int ,TYPE_2__*) ;
+ int msiobj_release (int *) ;
 
 __attribute__((used)) static UINT ACTION_RemoveRegistryValues( MSIPACKAGE *package )
 {
@@ -41,7 +41,7 @@ __attribute__((used)) static UINT ACTION_RemoveRegistryValues( MSIPACKAGE *packa
     rc = MSI_DatabaseOpenViewW( package->db, registry_query, &view );
     if (rc == ERROR_SUCCESS)
     {
-        rc = MSI_IterateRecords( view, NULL, ITERATE_RemoveRegistryValuesOnUninstall, package );
+        rc = MSI_IterateRecords( view, ((void*)0), ITERATE_RemoveRegistryValuesOnUninstall, package );
         msiobj_release( &view->hdr );
         if (rc != ERROR_SUCCESS)
             return rc;
@@ -49,7 +49,7 @@ __attribute__((used)) static UINT ACTION_RemoveRegistryValues( MSIPACKAGE *packa
     rc = MSI_DatabaseOpenViewW( package->db, remove_registry_query, &view );
     if (rc == ERROR_SUCCESS)
     {
-        rc = MSI_IterateRecords( view, NULL, ITERATE_RemoveRegistryValuesOnInstall, package );
+        rc = MSI_IterateRecords( view, ((void*)0), ITERATE_RemoveRegistryValuesOnInstall, package );
         msiobj_release( &view->hdr );
         if (rc != ERROR_SUCCESS)
             return rc;

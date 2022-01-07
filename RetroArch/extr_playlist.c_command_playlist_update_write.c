@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct playlist_entry {int dummy; } ;
-typedef  int /*<<< orphan*/  playlist_t ;
+typedef int playlist_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * playlist_get_cached () ; 
- int /*<<< orphan*/  playlist_update (int /*<<< orphan*/ *,size_t,struct playlist_entry const*) ; 
- int /*<<< orphan*/  playlist_write_file (int /*<<< orphan*/ *) ; 
+
+ int * playlist_get_cached () ;
+ int playlist_update (int *,size_t,struct playlist_entry const*) ;
+ int playlist_write_file (int *) ;
 
 void command_playlist_update_write(
       playlist_t *plist,

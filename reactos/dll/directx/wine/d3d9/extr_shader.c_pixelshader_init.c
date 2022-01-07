@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_8__ {scalar_t__ element_count; } ;
 struct TYPE_7__ {scalar_t__ element_count; } ;
 struct TYPE_6__ {scalar_t__ element_count; } ;
-struct wined3d_shader_desc {size_t byte_code_size; int max_version; TYPE_4__ patch_constant_signature; TYPE_3__ output_signature; TYPE_2__ input_signature; int /*<<< orphan*/  format; int /*<<< orphan*/  const* byte_code; } ;
-struct TYPE_5__ {int /*<<< orphan*/ * lpVtbl; } ;
-struct d3d9_pixelshader {int refcount; int /*<<< orphan*/ * parent_device; int /*<<< orphan*/  wined3d_shader; TYPE_1__ IDirect3DPixelShader9_iface; } ;
-struct d3d9_device {int /*<<< orphan*/  IDirect3DDevice9Ex_iface; int /*<<< orphan*/  wined3d_device; } ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  DWORD ;
+struct wined3d_shader_desc {size_t byte_code_size; int max_version; TYPE_4__ patch_constant_signature; TYPE_3__ output_signature; TYPE_2__ input_signature; int format; int const* byte_code; } ;
+struct TYPE_5__ {int * lpVtbl; } ;
+struct d3d9_pixelshader {int refcount; int * parent_device; int wined3d_shader; TYPE_1__ IDirect3DPixelShader9_iface; } ;
+struct d3d9_device {int IDirect3DDevice9Ex_iface; int wined3d_device; } ;
+typedef int HRESULT ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D3D_OK ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IDirect3DDevice9Ex_AddRef (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  WARN (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WINED3D_SHADER_BYTE_CODE_FORMAT_SM1 ; 
- int /*<<< orphan*/  d3d9_pixelshader_vtbl ; 
- int /*<<< orphan*/  d3d9_pixelshader_wined3d_parent_ops ; 
- int /*<<< orphan*/  wined3d_mutex_lock () ; 
- int /*<<< orphan*/  wined3d_mutex_unlock () ; 
- int /*<<< orphan*/  wined3d_shader_create_ps (int /*<<< orphan*/ ,struct wined3d_shader_desc*,struct d3d9_pixelshader*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int D3D_OK ;
+ scalar_t__ FAILED (int ) ;
+ int IDirect3DDevice9Ex_AddRef (int *) ;
+ int WARN (char*,int ) ;
+ int WINED3D_SHADER_BYTE_CODE_FORMAT_SM1 ;
+ int d3d9_pixelshader_vtbl ;
+ int d3d9_pixelshader_wined3d_parent_ops ;
+ int wined3d_mutex_lock () ;
+ int wined3d_mutex_unlock () ;
+ int wined3d_shader_create_ps (int ,struct wined3d_shader_desc*,struct d3d9_pixelshader*,int *,int *) ;
 
 HRESULT pixelshader_init(struct d3d9_pixelshader *shader, struct d3d9_device *device, const DWORD *byte_code)
 {

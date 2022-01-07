@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int EXIT_FAILURE ; 
- int EXIT_SUCCESS ; 
- int load_and_print () ; 
- int /*<<< orphan*/  log_error (char*) ; 
- int /*<<< orphan*/  log_error_errno (int,char*) ; 
- int /*<<< orphan*/  log_open () ; 
- int /*<<< orphan*/  log_parse_environment () ; 
+ int EXIT_FAILURE ;
+ int EXIT_SUCCESS ;
+ int load_and_print () ;
+ int log_error (char*) ;
+ int log_error_errno (int,char*) ;
+ int log_open () ;
+ int log_parse_environment () ;
 
 int main(int argc, char *argv[]) {
         int r;

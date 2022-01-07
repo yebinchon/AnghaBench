@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_7__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_11__ TYPE_7__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_11__ {TYPE_2__* data; } ;
 struct TYPE_9__ {TYPE_2__* data; } ;
-struct TYPE_10__ {int /*<<< orphan*/  multi; int /*<<< orphan*/  loop; TYPE_1__ fifo_event; TYPE_7__ timer_event; } ;
-typedef  TYPE_2__ GlobalInfo ;
+struct TYPE_10__ {int multi; int loop; TYPE_1__ fifo_event; TYPE_7__ timer_event; } ;
+typedef TYPE_2__ GlobalInfo ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CURLMOPT_SOCKETDATA ; 
- int /*<<< orphan*/  CURLMOPT_SOCKETFUNCTION ; 
- int /*<<< orphan*/  CURLMOPT_TIMERDATA ; 
- int /*<<< orphan*/  CURLMOPT_TIMERFUNCTION ; 
- int /*<<< orphan*/  curl_multi_cleanup (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  curl_multi_init () ; 
- int /*<<< orphan*/  curl_multi_setopt (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  ev_default_loop (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ev_loop (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ev_timer_init (TYPE_7__*,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  init_fifo (TYPE_2__*) ; 
- int /*<<< orphan*/  memset (TYPE_2__*,int /*<<< orphan*/ ,int) ; 
- TYPE_2__* multi_timer_cb ; 
- TYPE_2__* sock_cb ; 
- int /*<<< orphan*/  timer_cb ; 
+
+ int CURLMOPT_SOCKETDATA ;
+ int CURLMOPT_SOCKETFUNCTION ;
+ int CURLMOPT_TIMERDATA ;
+ int CURLMOPT_TIMERFUNCTION ;
+ int curl_multi_cleanup (int ) ;
+ int curl_multi_init () ;
+ int curl_multi_setopt (int ,int ,TYPE_2__*) ;
+ int ev_default_loop (int ) ;
+ int ev_loop (int ,int ) ;
+ int ev_timer_init (TYPE_7__*,int ,int,int) ;
+ int init_fifo (TYPE_2__*) ;
+ int memset (TYPE_2__*,int ,int) ;
+ TYPE_2__* multi_timer_cb ;
+ TYPE_2__* sock_cb ;
+ int timer_cb ;
 
 int main(int argc, char **argv)
 {
@@ -55,8 +55,8 @@ int main(int argc, char **argv)
   curl_multi_setopt(g.multi, CURLMOPT_TIMERFUNCTION, multi_timer_cb);
   curl_multi_setopt(g.multi, CURLMOPT_TIMERDATA, &g);
 
-  /* we don't call any curl_multi_socket*() function yet as we have no handles
-     added! */
+
+
 
   ev_loop(g.loop, 0);
   curl_multi_cleanup(g.multi);

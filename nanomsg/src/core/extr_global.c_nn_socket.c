@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int flags; int /*<<< orphan*/  lock; } ;
 
-/* Variables and functions */
- int ETERM ; 
- int NN_CTX_FLAG_TERM ; 
- int errno ; 
- int /*<<< orphan*/  nn_do_once (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int nn_global_create_socket (int,int) ; 
- int /*<<< orphan*/  nn_global_init () ; 
- int /*<<< orphan*/  nn_global_term () ; 
- int /*<<< orphan*/  nn_lib_init ; 
- int /*<<< orphan*/  nn_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nn_mutex_unlock (int /*<<< orphan*/ *) ; 
- scalar_t__ nn_slow (int) ; 
- int /*<<< orphan*/  once ; 
- TYPE_1__ self ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int flags; int lock; } ;
+
+
+ int ETERM ;
+ int NN_CTX_FLAG_TERM ;
+ int errno ;
+ int nn_do_once (int *,int ) ;
+ int nn_global_create_socket (int,int) ;
+ int nn_global_init () ;
+ int nn_global_term () ;
+ int nn_lib_init ;
+ int nn_mutex_lock (int *) ;
+ int nn_mutex_unlock (int *) ;
+ scalar_t__ nn_slow (int) ;
+ int once ;
+ TYPE_1__ self ;
 
 int nn_socket (int domain, int protocol)
 {
@@ -36,14 +36,14 @@ int nn_socket (int domain, int protocol)
 
     nn_mutex_lock (&self.lock);
 
-    /*  If nn_term() was already called, return ETERM. */
+
     if (nn_slow (self.flags & NN_CTX_FLAG_TERM)) {
         nn_mutex_unlock (&self.lock);
         errno = ETERM;
         return -1;
     }
 
-    /*  Make sure that global state is initialised. */
+
     nn_global_init ();
 
     rc = nn_global_create_socket (domain, protocol);

@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
 struct TYPE_11__ {TYPE_1__* connection; } ;
-typedef  TYPE_2__ ngx_rtmp_session_t ;
-typedef  int /*<<< orphan*/  ngx_rtmp_dash_ctx_t ;
-struct TYPE_12__ {int /*<<< orphan*/  dash; } ;
-typedef  TYPE_3__ ngx_rtmp_dash_app_conf_t ;
-typedef  int /*<<< orphan*/  ngx_rtmp_close_stream_t ;
-typedef  int /*<<< orphan*/  ngx_int_t ;
-struct TYPE_10__ {int /*<<< orphan*/  log; } ;
+typedef TYPE_2__ ngx_rtmp_session_t ;
+typedef int ngx_rtmp_dash_ctx_t ;
+struct TYPE_12__ {int dash; } ;
+typedef TYPE_3__ ngx_rtmp_dash_app_conf_t ;
+typedef int ngx_rtmp_close_stream_t ;
+typedef int ngx_int_t ;
+struct TYPE_10__ {int log; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NGX_LOG_DEBUG_RTMP ; 
- int /*<<< orphan*/  next_close_stream (TYPE_2__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ngx_log_debug0 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ngx_rtmp_dash_close_fragments (TYPE_2__*) ; 
- int /*<<< orphan*/  ngx_rtmp_dash_module ; 
- TYPE_3__* ngx_rtmp_get_module_app_conf (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * ngx_rtmp_get_module_ctx (TYPE_2__*,int /*<<< orphan*/ ) ; 
+
+ int NGX_LOG_DEBUG_RTMP ;
+ int next_close_stream (TYPE_2__*,int *) ;
+ int ngx_log_debug0 (int ,int ,int ,char*) ;
+ int ngx_rtmp_dash_close_fragments (TYPE_2__*) ;
+ int ngx_rtmp_dash_module ;
+ TYPE_3__* ngx_rtmp_get_module_app_conf (TYPE_2__*,int ) ;
+ int * ngx_rtmp_get_module_ctx (TYPE_2__*,int ) ;
 
 __attribute__((used)) static ngx_int_t
 ngx_rtmp_dash_close_stream(ngx_rtmp_session_t *s, ngx_rtmp_close_stream_t *v)
 {
-    ngx_rtmp_dash_ctx_t       *ctx;
-    ngx_rtmp_dash_app_conf_t  *dacf;
+    ngx_rtmp_dash_ctx_t *ctx;
+    ngx_rtmp_dash_app_conf_t *dacf;
 
     dacf = ngx_rtmp_get_module_app_conf(s, ngx_rtmp_dash_module);
 
     ctx = ngx_rtmp_get_module_ctx(s, ngx_rtmp_dash_module);
 
-    if (dacf == NULL || !dacf->dash || ctx == NULL) {
+    if (dacf == ((void*)0) || !dacf->dash || ctx == ((void*)0)) {
         goto next;
     }
 

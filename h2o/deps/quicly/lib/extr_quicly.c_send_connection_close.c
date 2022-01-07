@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
+
+
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_12__ {size_t dst; } ;
-typedef  TYPE_3__ quicly_send_context_t ;
-struct TYPE_10__ {size_t frame_type; size_t error_code; int /*<<< orphan*/ * reason_phrase; } ;
+typedef TYPE_3__ quicly_send_context_t ;
+struct TYPE_10__ {size_t frame_type; size_t error_code; int * reason_phrase; } ;
 struct TYPE_11__ {TYPE_1__ connection_close; } ;
 struct TYPE_13__ {TYPE_2__ egress; } ;
-typedef  TYPE_4__ quicly_conn_t ;
+typedef TYPE_4__ quicly_conn_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  APPLICATION_CLOSE_SEND ; 
- int /*<<< orphan*/  QUICLY_FRAME_TYPE_APPLICATION_CLOSE ; 
- int /*<<< orphan*/  QUICLY_FRAME_TYPE_TRANSPORT_CLOSE ; 
- int /*<<< orphan*/  QUICLY_PROBE (int /*<<< orphan*/ ,TYPE_4__*,int /*<<< orphan*/ ,size_t,size_t,...) ; 
- int /*<<< orphan*/  TRANSPORT_CLOSE_SEND ; 
- size_t UINT64_MAX ; 
- int allocate_frame (TYPE_4__*,TYPE_3__*,int) ; 
- int /*<<< orphan*/  memcpy (size_t,int /*<<< orphan*/ *,size_t) ; 
- int /*<<< orphan*/  probe_now () ; 
- int /*<<< orphan*/ * quicly_encodev (int /*<<< orphan*/ *,size_t) ; 
- size_t strlen (int /*<<< orphan*/ *) ; 
+
+ int APPLICATION_CLOSE_SEND ;
+ int QUICLY_FRAME_TYPE_APPLICATION_CLOSE ;
+ int QUICLY_FRAME_TYPE_TRANSPORT_CLOSE ;
+ int QUICLY_PROBE (int ,TYPE_4__*,int ,size_t,size_t,...) ;
+ int TRANSPORT_CLOSE_SEND ;
+ size_t UINT64_MAX ;
+ int allocate_frame (TYPE_4__*,TYPE_3__*,int) ;
+ int memcpy (size_t,int *,size_t) ;
+ int probe_now () ;
+ int * quicly_encodev (int *,size_t) ;
+ size_t strlen (int *) ;
 
 __attribute__((used)) static int send_connection_close(quicly_conn_t *conn, quicly_send_context_t *s)
 {
@@ -41,7 +41,7 @@ __attribute__((used)) static int send_connection_close(quicly_conn_t *conn, quic
     size_t reason_phrase_len = strlen(conn->egress.connection_close.reason_phrase);
     int ret;
 
-    /* build the frame excluding the reason_phrase */
+
     p = frame_header_buf;
     *p++ = conn->egress.connection_close.frame_type != UINT64_MAX ? QUICLY_FRAME_TYPE_TRANSPORT_CLOSE
                                                                   : QUICLY_FRAME_TYPE_APPLICATION_CLOSE;
@@ -50,7 +50,7 @@ __attribute__((used)) static int send_connection_close(quicly_conn_t *conn, quic
         p = quicly_encodev(p, conn->egress.connection_close.frame_type);
     p = quicly_encodev(p, reason_phrase_len);
 
-    /* allocate and write the frame */
+
     if ((ret = allocate_frame(conn, s, p - frame_header_buf + reason_phrase_len)) != 0)
         return ret;
     memcpy(s->dst, frame_header_buf, p - frame_header_buf);

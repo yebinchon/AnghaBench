@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  fd; } ;
-typedef  TYPE_2__ redisContext ;
-struct TYPE_6__ {TYPE_4__* data; int /*<<< orphan*/  cleanup; int /*<<< orphan*/  delWrite; int /*<<< orphan*/  addWrite; int /*<<< orphan*/  delRead; int /*<<< orphan*/  addRead; } ;
+
+
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int fd; } ;
+typedef TYPE_2__ redisContext ;
+struct TYPE_6__ {TYPE_4__* data; int cleanup; int delWrite; int addWrite; int delRead; int addRead; } ;
 struct TYPE_8__ {TYPE_1__ ev; TYPE_2__ c; } ;
-typedef  TYPE_3__ redisAsyncContext ;
-struct TYPE_9__ {scalar_t__ writing; scalar_t__ reading; int /*<<< orphan*/  fd; int /*<<< orphan*/ * loop; TYPE_3__* context; } ;
-typedef  TYPE_4__ redisAeEvents ;
-typedef  int /*<<< orphan*/  aeEventLoop ;
+typedef TYPE_3__ redisAsyncContext ;
+struct TYPE_9__ {scalar_t__ writing; scalar_t__ reading; int fd; int * loop; TYPE_3__* context; } ;
+typedef TYPE_4__ redisAeEvents ;
+typedef int aeEventLoop ;
 
-/* Variables and functions */
- int C_ERR ; 
- int C_OK ; 
- int /*<<< orphan*/  redisAeAddRead ; 
- int /*<<< orphan*/  redisAeAddWrite ; 
- int /*<<< orphan*/  redisAeCleanup ; 
- int /*<<< orphan*/  redisAeDelRead ; 
- int /*<<< orphan*/  redisAeDelWrite ; 
- scalar_t__ zmalloc (int) ; 
+
+ int C_ERR ;
+ int C_OK ;
+ int redisAeAddRead ;
+ int redisAeAddWrite ;
+ int redisAeCleanup ;
+ int redisAeDelRead ;
+ int redisAeDelWrite ;
+ scalar_t__ zmalloc (int) ;
 
 __attribute__((used)) static int redisAeAttach(aeEventLoop *loop, redisAsyncContext *ac) {
     redisContext *c = &(ac->c);
     redisAeEvents *e;
 
-    /* Nothing should be attached when something is already attached */
-    if (ac->ev.data != NULL)
+
+    if (ac->ev.data != ((void*)0))
         return C_ERR;
 
-    /* Create container for context and r/w events */
+
     e = (redisAeEvents*)zmalloc(sizeof(*e));
     e->context = ac;
     e->loop = loop;
     e->fd = c->fd;
     e->reading = e->writing = 0;
 
-    /* Register functions to start/stop listening for events */
+
     ac->ev.addRead = redisAeAddRead;
     ac->ev.delRead = redisAeDelRead;
     ac->ev.addWrite = redisAeAddWrite;

@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {scalar_t__ json_pretty_print; } ;
-typedef  int /*<<< orphan*/  GLog ;
-typedef  int /*<<< orphan*/  GHolder ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef int GLog ;
+typedef int GHolder ;
+typedef int FILE ;
 
-/* Variables and functions */
- int DATE_TIME ; 
- int /*<<< orphan*/  FATAL (char*,int /*<<< orphan*/ ) ; 
- TYPE_1__ conf ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char const*,char*) ; 
- int /*<<< orphan*/  generate_time () ; 
- int nlines ; 
- int /*<<< orphan*/  now_tm ; 
- int /*<<< orphan*/  print_conn_def (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  print_html_body (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  print_html_footer (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  print_html_header (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  print_json_data (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  print_json_defs (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  set_json_nlines (int) ; 
- int /*<<< orphan*/ * stdout ; 
- int /*<<< orphan*/  strerror (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strftime (char*,int,char*,int /*<<< orphan*/ ) ; 
+
+ int DATE_TIME ;
+ int FATAL (char*,int ) ;
+ TYPE_1__ conf ;
+ int errno ;
+ int fclose (int *) ;
+ int * fopen (char const*,char*) ;
+ int generate_time () ;
+ int nlines ;
+ int now_tm ;
+ int print_conn_def (int *) ;
+ int print_html_body (int *,char*) ;
+ int print_html_footer (int *) ;
+ int print_html_header (int *) ;
+ int print_json_data (int *,int *,int *) ;
+ int print_json_defs (int *) ;
+ int set_json_nlines (int) ;
+ int * stdout ;
+ int strerror (int ) ;
+ int strftime (char*,int,char*,int ) ;
 
 void
 output_html (GLog * glog, GHolder * holder, const char *filename)
@@ -43,7 +43,7 @@ output_html (GLog * glog, GHolder * holder, const char *filename)
   FILE *fp;
   char now[DATE_TIME];
 
-  if (filename != NULL)
+  if (filename != ((void*)0))
     fp = fopen (filename, "w");
   else
     fp = stdout;
@@ -51,7 +51,7 @@ output_html (GLog * glog, GHolder * holder, const char *filename)
   if (!fp)
     FATAL ("Unable to open HTML file: %s.", strerror (errno));
 
-  /* use new lines to prettify output */
+
   if (conf.json_pretty_print)
     nlines = 1;
   set_json_nlines (nlines);

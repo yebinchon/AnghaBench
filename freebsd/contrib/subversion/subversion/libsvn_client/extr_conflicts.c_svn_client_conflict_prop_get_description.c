@@ -1,39 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_client_conflict_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR_ASSERT (int) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- char* _ (char*) ; 
- char* apr_psprintf (int /*<<< orphan*/ *,char*,char const*,...) ; 
- int /*<<< orphan*/  map_conflict_action ; 
- int /*<<< orphan*/  map_conflict_reason ; 
- int /*<<< orphan*/  operation_str (int /*<<< orphan*/ ) ; 
- int svn_client_conflict_get_incoming_change (int /*<<< orphan*/ *) ; 
- int svn_client_conflict_get_local_change (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_client_conflict_get_operation (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_token__to_word (int /*<<< orphan*/ ,int) ; 
-#define  svn_wc_conflict_action_add 134 
-#define  svn_wc_conflict_action_delete 133 
-#define  svn_wc_conflict_action_edit 132 
-#define  svn_wc_conflict_reason_added 131 
-#define  svn_wc_conflict_reason_deleted 130 
-#define  svn_wc_conflict_reason_edited 129 
-#define  svn_wc_conflict_reason_obstructed 128 
 
+
+
+typedef int svn_error_t ;
+typedef int svn_client_conflict_t ;
+typedef int apr_pool_t ;
+
+
+ int SVN_ERR_ASSERT (int) ;
+ int * SVN_NO_ERROR ;
+ char* _ (char*) ;
+ char* apr_psprintf (int *,char*,char const*,...) ;
+ int map_conflict_action ;
+ int map_conflict_reason ;
+ int operation_str (int ) ;
+ int svn_client_conflict_get_incoming_change (int *) ;
+ int svn_client_conflict_get_local_change (int *) ;
+ int svn_client_conflict_get_operation (int *) ;
+ int svn_token__to_word (int ,int) ;
 svn_error_t *
 svn_client_conflict_prop_get_description(const char **description,
                                          svn_client_conflict_t *conflict,
@@ -42,20 +34,20 @@ svn_client_conflict_prop_get_description(const char **description,
 {
   const char *reason_str, *action_str;
 
-  /* We provide separately translatable strings for the values that we
-   * know about, and a fall-back in case any other values occur. */
+
+
   switch (svn_client_conflict_get_local_change(conflict))
     {
-      case svn_wc_conflict_reason_edited:
+      case 129:
         reason_str = _("local edit");
         break;
-      case svn_wc_conflict_reason_added:
+      case 131:
         reason_str = _("local add");
         break;
-      case svn_wc_conflict_reason_deleted:
+      case 130:
         reason_str = _("local delete");
         break;
-      case svn_wc_conflict_reason_obstructed:
+      case 128:
         reason_str = _("local obstruction");
         break;
       default:
@@ -68,13 +60,13 @@ svn_client_conflict_prop_get_description(const char **description,
     }
   switch (svn_client_conflict_get_incoming_change(conflict))
     {
-      case svn_wc_conflict_action_edit:
+      case 132:
         action_str = _("incoming edit");
         break;
-      case svn_wc_conflict_action_add:
+      case 134:
         action_str = _("incoming add");
         break;
-      case svn_wc_conflict_action_delete:
+      case 133:
         action_str = _("incoming delete");
         break;
       default:

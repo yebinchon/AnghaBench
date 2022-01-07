@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int p_get_pgmptr (char**) ; 
+ int ok (int,char*,...) ;
+ int p_get_pgmptr (char**) ;
 
 __attribute__((used)) static void test_get_pgmptr(void)
 {
-    char *pgm = NULL;
+    char *pgm = ((void*)0);
     int res;
 
     if (!p_get_pgmptr)
@@ -26,5 +18,5 @@ __attribute__((used)) static void test_get_pgmptr(void)
     res = p_get_pgmptr(&pgm);
 
     ok( res == 0, "Wrong _get_pgmptr return value %d expected 0\n", res);
-    ok( pgm != NULL, "_get_pgmptr returned a NULL pointer\n" );
+    ok( pgm != ((void*)0), "_get_pgmptr returned a NULL pointer\n" );
 }

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ULONG ;
-typedef  scalar_t__ PINFO ;
-typedef  int /*<<< orphan*/  LPWSTR ;
-typedef  scalar_t__ LPSTR ;
-typedef  int /*<<< orphan*/  INFO ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CP_ACP ; 
- int /*<<< orphan*/  DestroyConnection () ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- scalar_t__ HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__ InitConnection (scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  ReceiveData (scalar_t__) ; 
- scalar_t__ SendData (scalar_t__) ; 
- scalar_t__ WideCharToMultiByte (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,scalar_t__,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int wcslen (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int ULONG ;
+typedef scalar_t__ PINFO ;
+typedef int LPWSTR ;
+typedef scalar_t__ LPSTR ;
+typedef int INFO ;
+typedef int DWORD ;
+
+
+ int CP_ACP ;
+ int DestroyConnection () ;
+ int GetProcessHeap () ;
+ scalar_t__ HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,scalar_t__) ;
+ scalar_t__ InitConnection (scalar_t__,scalar_t__) ;
+ int ReceiveData (scalar_t__) ;
+ scalar_t__ SendData (scalar_t__) ;
+ scalar_t__ WideCharToMultiByte (int ,int ,int ,int,scalar_t__,int,int *,int *) ;
+ int wcslen (int ) ;
 
 ULONG
 GetServerTime(LPWSTR lpAddress)
@@ -52,8 +52,8 @@ GetServerTime(LPWSTR lpAddress)
                                 -1,
                                 lpAddr,
                                 dwSize,
-                                NULL,
-                                NULL))
+                                ((void*)0),
+                                ((void*)0)))
         {
             if (InitConnection(pInfo, lpAddr))
             {

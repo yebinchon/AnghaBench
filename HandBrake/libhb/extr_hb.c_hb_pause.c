@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  state; } ;
-struct TYPE_5__ {int paused; int /*<<< orphan*/  state_lock; TYPE_1__ state; int /*<<< orphan*/  pause_date; int /*<<< orphan*/  pause_lock; } ;
-typedef  TYPE_2__ hb_handle_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HB_STATE_PAUSED ; 
- int /*<<< orphan*/  hb_get_date () ; 
- int /*<<< orphan*/  hb_lock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hb_unlock (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int state; } ;
+struct TYPE_5__ {int paused; int state_lock; TYPE_1__ state; int pause_date; int pause_lock; } ;
+typedef TYPE_2__ hb_handle_t ;
+
+
+ int HB_STATE_PAUSED ;
+ int hb_get_date () ;
+ int hb_lock (int ) ;
+ int hb_unlock (int ) ;
 
 void hb_pause( hb_handle_t * h )
 {

@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  int64_t ;
-typedef  int /*<<< orphan*/  UID ;
-struct TYPE_13__ {int /*<<< orphan*/ * oformat; TYPE_2__* priv_data; int /*<<< orphan*/ * pb; } ;
+
+
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int int64_t ;
+typedef int UID ;
+struct TYPE_13__ {int * oformat; TYPE_2__* priv_data; int * pb; } ;
 struct TYPE_12__ {TYPE_1__* codecpar; } ;
-struct TYPE_11__ {int body_offset; int edit_unit_byte_count; int channel_count; int /*<<< orphan*/  footer_partition_offset; } ;
-struct TYPE_10__ {int sample_rate; int channels; int /*<<< orphan*/  codec_id; } ;
-typedef  TYPE_2__ MXFContext ;
-typedef  TYPE_3__ AVStream ;
-typedef  int /*<<< orphan*/  AVIOContext ;
-typedef  TYPE_4__ AVFormatContext ;
+struct TYPE_11__ {int body_offset; int edit_unit_byte_count; int channel_count; int footer_partition_offset; } ;
+struct TYPE_10__ {int sample_rate; int channels; int codec_id; } ;
+typedef TYPE_2__ MXFContext ;
+typedef TYPE_3__ AVStream ;
+typedef int AVIOContext ;
+typedef TYPE_4__ AVFormatContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_LOG_WARNING ; 
- int av_get_bits_per_sample (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_log (TYPE_4__*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  avio_w8 (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  avio_wb32 (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  avio_wb64 (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  ff_mxf_d10_muxer ; 
- int /*<<< orphan*/  ff_mxf_opatom_muxer ; 
- int /*<<< orphan*/  mxf_write_generic_desc (TYPE_4__*,TYPE_3__*,int /*<<< orphan*/  const) ; 
- int /*<<< orphan*/  mxf_write_local_tag (int /*<<< orphan*/ *,int,int) ; 
+
+ int AV_LOG_WARNING ;
+ int av_get_bits_per_sample (int ) ;
+ int av_log (TYPE_4__*,int ,char*) ;
+ int avio_w8 (int *,int) ;
+ int avio_wb32 (int *,int) ;
+ int avio_wb64 (int *,int) ;
+ int ff_mxf_d10_muxer ;
+ int ff_mxf_opatom_muxer ;
+ int mxf_write_generic_desc (TYPE_4__*,TYPE_3__*,int const) ;
+ int mxf_write_local_tag (int *,int,int) ;
 
 __attribute__((used)) static int64_t mxf_write_generic_sound_common(AVFormatContext *s, AVStream *st, const UID key)
 {
@@ -49,11 +49,11 @@ __attribute__((used)) static int64_t mxf_write_generic_sound_common(AVFormatCont
         avio_wb64(pb, mxf->body_offset / mxf->edit_unit_byte_count);
     }
 
-    // audio locked
+
     mxf_write_local_tag(pb, 1, 0x3D02);
     avio_w8(pb, 1);
 
-    // write audio sampling rate
+
     mxf_write_local_tag(pb, 8, 0x3D03);
     avio_wb32(pb, st->codecpar->sample_rate);
     avio_wb32(pb, 1);

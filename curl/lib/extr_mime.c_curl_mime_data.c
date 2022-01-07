@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {char* data; size_t datasize; int /*<<< orphan*/  kind; int /*<<< orphan*/  freefunc; int /*<<< orphan*/  seekfunc; int /*<<< orphan*/  readfunc; } ;
-typedef  TYPE_1__ curl_mimepart ;
-typedef  int /*<<< orphan*/  CURLcode ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CURLE_BAD_FUNCTION_ARGUMENT ; 
- int /*<<< orphan*/  CURLE_OK ; 
- int /*<<< orphan*/  CURLE_OUT_OF_MEMORY ; 
- size_t CURL_ZERO_TERMINATED ; 
- int /*<<< orphan*/  MIMEKIND_DATA ; 
- int /*<<< orphan*/  cleanup_part_content (TYPE_1__*) ; 
- char* malloc (size_t) ; 
- int /*<<< orphan*/  memcpy (char*,char const*,size_t) ; 
- int /*<<< orphan*/  mime_mem_free ; 
- int /*<<< orphan*/  mime_mem_read ; 
- int /*<<< orphan*/  mime_mem_seek ; 
- size_t strlen (char const*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {char* data; size_t datasize; int kind; int freefunc; int seekfunc; int readfunc; } ;
+typedef TYPE_1__ curl_mimepart ;
+typedef int CURLcode ;
+
+
+ int CURLE_BAD_FUNCTION_ARGUMENT ;
+ int CURLE_OK ;
+ int CURLE_OUT_OF_MEMORY ;
+ size_t CURL_ZERO_TERMINATED ;
+ int MIMEKIND_DATA ;
+ int cleanup_part_content (TYPE_1__*) ;
+ char* malloc (size_t) ;
+ int memcpy (char*,char const*,size_t) ;
+ int mime_mem_free ;
+ int mime_mem_read ;
+ int mime_mem_seek ;
+ size_t strlen (char const*) ;
 
 CURLcode curl_mime_data(curl_mimepart *part,
                         const char *data, size_t datasize)
@@ -49,7 +49,7 @@ CURLcode curl_mime_data(curl_mimepart *part,
 
     if(datasize)
       memcpy(part->data, data, datasize);
-    part->data[datasize] = '\0';    /* Set a nul terminator as sentinel. */
+    part->data[datasize] = '\0';
 
     part->readfunc = mime_mem_read;
     part->seekfunc = mime_mem_seek;

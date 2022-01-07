@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ npy_intp ;
-typedef  int npy_bool ;
-typedef  int /*<<< orphan*/  PyObject ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PyErr_SetString (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  PyExc_ValueError ; 
- long PyInt_AsLong (int /*<<< orphan*/ *) ; 
- scalar_t__ PyInt_Check (int /*<<< orphan*/ *) ; 
- scalar_t__ PyLong_Check (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * PySequence_Fast (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/ * PySequence_Fast_GET_ITEM (int /*<<< orphan*/ *,scalar_t__) ; 
- scalar_t__ PySequence_Size (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Py_DECREF (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * Py_Ellipsis ; 
+
+
+
+typedef scalar_t__ npy_intp ;
+typedef int npy_bool ;
+typedef int PyObject ;
+
+
+ int PyErr_SetString (int ,char*) ;
+ int PyExc_ValueError ;
+ long PyInt_AsLong (int *) ;
+ scalar_t__ PyInt_Check (int *) ;
+ scalar_t__ PyLong_Check (int *) ;
+ int * PySequence_Fast (int *,char*) ;
+ int * PySequence_Fast_GET_ITEM (int *,scalar_t__) ;
+ scalar_t__ PySequence_Size (int *) ;
+ int Py_DECREF (int *) ;
+ int * Py_Ellipsis ;
 
 __attribute__((used)) static int
 einsum_list_to_subscripts(PyObject *obj, char *subscripts, int subsize)
@@ -35,7 +35,7 @@ einsum_list_to_subscripts(PyObject *obj, char *subscripts, int subsize)
 
     obj = PySequence_Fast(obj, "the subscripts for each operand must "
                                "be a list or a tuple");
-    if (obj == NULL) {
+    if (obj == ((void*)0)) {
         return -1;
     }
     size = PySequence_Size(obj);
@@ -43,7 +43,7 @@ einsum_list_to_subscripts(PyObject *obj, char *subscripts, int subsize)
 
     for (i = 0; i < size; ++i) {
         item = PySequence_Fast_GET_ITEM(obj, i);
-        /* Ellipsis */
+
         if (item == Py_Ellipsis) {
             if (ellipsis) {
                 PyErr_SetString(PyExc_ValueError,
@@ -62,7 +62,7 @@ einsum_list_to_subscripts(PyObject *obj, char *subscripts, int subsize)
             subscripts[subindex++] = '.';
             ellipsis = 1;
         }
-        /* Subscript */
+
         else if (PyInt_Check(item) || PyLong_Check(item)) {
             long s = PyInt_AsLong(item);
             npy_bool bad_input = 0;
@@ -94,7 +94,7 @@ einsum_list_to_subscripts(PyObject *obj, char *subscripts, int subsize)
                 return -1;
             }
         }
-        /* Invalid */
+
         else {
             PyErr_SetString(PyExc_ValueError,
                     "each subscript must be either an integer "

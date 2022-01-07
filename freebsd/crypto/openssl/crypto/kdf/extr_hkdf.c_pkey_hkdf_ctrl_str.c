@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  EVP_PKEY_CTX ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EVP_PKEY_CTRL_HKDF_INFO ; 
- int /*<<< orphan*/  EVP_PKEY_CTRL_HKDF_KEY ; 
- int /*<<< orphan*/  EVP_PKEY_CTRL_HKDF_MD ; 
- int /*<<< orphan*/  EVP_PKEY_CTRL_HKDF_SALT ; 
- int EVP_PKEY_CTX_hex2ctrl (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*) ; 
- int EVP_PKEY_CTX_hkdf_mode (int /*<<< orphan*/ *,int) ; 
- int EVP_PKEY_CTX_md (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*) ; 
- int EVP_PKEY_CTX_str2ctrl (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*) ; 
- int EVP_PKEY_HKDEF_MODE_EXPAND_ONLY ; 
- int EVP_PKEY_HKDEF_MODE_EXTRACT_AND_EXPAND ; 
- int EVP_PKEY_HKDEF_MODE_EXTRACT_ONLY ; 
- int /*<<< orphan*/  EVP_PKEY_OP_DERIVE ; 
- int /*<<< orphan*/  KDF_F_PKEY_HKDF_CTRL_STR ; 
- int /*<<< orphan*/  KDF_R_UNKNOWN_PARAMETER_TYPE ; 
- int /*<<< orphan*/  KDFerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ strcmp (char const*,char*) ; 
+
+
+
+typedef int EVP_PKEY_CTX ;
+
+
+ int EVP_PKEY_CTRL_HKDF_INFO ;
+ int EVP_PKEY_CTRL_HKDF_KEY ;
+ int EVP_PKEY_CTRL_HKDF_MD ;
+ int EVP_PKEY_CTRL_HKDF_SALT ;
+ int EVP_PKEY_CTX_hex2ctrl (int *,int ,char const*) ;
+ int EVP_PKEY_CTX_hkdf_mode (int *,int) ;
+ int EVP_PKEY_CTX_md (int *,int ,int ,char const*) ;
+ int EVP_PKEY_CTX_str2ctrl (int *,int ,char const*) ;
+ int EVP_PKEY_HKDEF_MODE_EXPAND_ONLY ;
+ int EVP_PKEY_HKDEF_MODE_EXTRACT_AND_EXPAND ;
+ int EVP_PKEY_HKDEF_MODE_EXTRACT_ONLY ;
+ int EVP_PKEY_OP_DERIVE ;
+ int KDF_F_PKEY_HKDF_CTRL_STR ;
+ int KDF_R_UNKNOWN_PARAMETER_TYPE ;
+ int KDFerr (int ,int ) ;
+ scalar_t__ strcmp (char const*,char*) ;
 
 __attribute__((used)) static int pkey_hkdf_ctrl_str(EVP_PKEY_CTX *ctx, const char *type,
                               const char *value)

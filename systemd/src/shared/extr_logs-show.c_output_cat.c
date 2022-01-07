@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sd_journal ;
-typedef  int /*<<< orphan*/  Set ;
-typedef  int /*<<< orphan*/  OutputMode ;
-typedef  int OutputFlags ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- char* ANSI_HIGHLIGHT_RED ; 
- char* ANSI_NORMAL ; 
- int EBADMSG ; 
- int ENOENT ; 
- int OUTPUT_COLOR ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  fputc (char,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fwrite (char const*,int,size_t const,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  log_debug_errno (int,char*) ; 
- int log_error_errno (int,char*) ; 
- int sd_journal_get_data (int /*<<< orphan*/ *,char*,void const**,size_t*) ; 
- int /*<<< orphan*/  sd_journal_set_data_threshold (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- size_t strlen (char const*) ; 
+
+
+
+typedef int sd_journal ;
+typedef int Set ;
+typedef int OutputMode ;
+typedef int OutputFlags ;
+typedef int FILE ;
+
+
+ char* ANSI_HIGHLIGHT_RED ;
+ char* ANSI_NORMAL ;
+ int EBADMSG ;
+ int ENOENT ;
+ int OUTPUT_COLOR ;
+ int assert (int) ;
+ int fputc (char,int *) ;
+ int fwrite (char const*,int,size_t const,int *) ;
+ int log_debug_errno (int,char*) ;
+ int log_error_errno (int,char*) ;
+ int sd_journal_get_data (int *,char*,void const**,size_t*) ;
+ int sd_journal_set_data_threshold (int *,int ) ;
+ size_t strlen (char const*) ;
 
 __attribute__((used)) static int output_cat(
                 FILE *f,
@@ -61,7 +61,7 @@ __attribute__((used)) static int output_cat(
                 return 0;
         }
         if (r < 0) {
-                /* An entry without MESSAGE=? */
+
                 if (r == -ENOENT)
                         return 0;
 

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  device_t ;
 
-/* Variables and functions */
+
+
+
+typedef int device_t ;
+
+
 
 __attribute__((used)) static int
 rk_gpio_pin_max(device_t dev, int *maxpin)
 {
 
-	/* Each bank have always 32 pins */
-	/* XXX not true*/
-	*maxpin = 32;
-	return (0);
+
+
+ *maxpin = 32;
+ return (0);
 }

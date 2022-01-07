@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  errno_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  MSVCRT_CHECK_PMT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * _errno () ; 
- unsigned int _osplatform ; 
+
+
+
+typedef int errno_t ;
+
+
+ int EINVAL ;
+ int MSVCRT_CHECK_PMT (int ) ;
+ int * _errno () ;
+ unsigned int _osplatform ;
 
 errno_t _get_osplatform(unsigned int *pValue)
 {
-    if (!MSVCRT_CHECK_PMT(pValue != NULL)) {
+    if (!MSVCRT_CHECK_PMT(pValue != ((void*)0))) {
         *_errno() = EINVAL;
         return EINVAL;
     }

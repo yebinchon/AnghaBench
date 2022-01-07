@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct xfrm_usersa_flush {int /*<<< orphan*/  proto; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct xfrm_usersa_flush {int proto; } ;
 struct sk_buff {int dummy; } ;
 struct nlmsghdr {int dummy; } ;
 struct net {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/  proto; } ;
-struct km_event {TYPE_1__ data; int /*<<< orphan*/  seq; int /*<<< orphan*/  portid; struct net* net; } ;
+struct TYPE_2__ {int proto; } ;
+struct km_event {TYPE_1__ data; int seq; int portid; struct net* net; } ;
 
-/* Variables and functions */
- int EMSGSIZE ; 
- int ENOMEM ; 
- int /*<<< orphan*/  GFP_ATOMIC ; 
- int NLMSG_ALIGN (int) ; 
- int /*<<< orphan*/  XFRMNLGRP_SA ; 
- int /*<<< orphan*/  XFRM_MSG_FLUSHSA ; 
- int /*<<< orphan*/  kfree_skb (struct sk_buff*) ; 
- struct xfrm_usersa_flush* nlmsg_data (struct nlmsghdr*) ; 
- int /*<<< orphan*/  nlmsg_end (struct sk_buff*,struct nlmsghdr*) ; 
- struct sk_buff* nlmsg_new (int,int /*<<< orphan*/ ) ; 
- struct nlmsghdr* nlmsg_put (struct sk_buff*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int xfrm_nlmsg_multicast (struct net*,struct sk_buff*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int EMSGSIZE ;
+ int ENOMEM ;
+ int GFP_ATOMIC ;
+ int NLMSG_ALIGN (int) ;
+ int XFRMNLGRP_SA ;
+ int XFRM_MSG_FLUSHSA ;
+ int kfree_skb (struct sk_buff*) ;
+ struct xfrm_usersa_flush* nlmsg_data (struct nlmsghdr*) ;
+ int nlmsg_end (struct sk_buff*,struct nlmsghdr*) ;
+ struct sk_buff* nlmsg_new (int,int ) ;
+ struct nlmsghdr* nlmsg_put (struct sk_buff*,int ,int ,int ,int,int ) ;
+ int xfrm_nlmsg_multicast (struct net*,struct sk_buff*,int ,int ) ;
 
 __attribute__((used)) static int xfrm_notify_sa_flush(const struct km_event *c)
 {
-	struct net *net = c->net;
-	struct xfrm_usersa_flush *p;
-	struct nlmsghdr *nlh;
-	struct sk_buff *skb;
-	int len = NLMSG_ALIGN(sizeof(struct xfrm_usersa_flush));
+ struct net *net = c->net;
+ struct xfrm_usersa_flush *p;
+ struct nlmsghdr *nlh;
+ struct sk_buff *skb;
+ int len = NLMSG_ALIGN(sizeof(struct xfrm_usersa_flush));
 
-	skb = nlmsg_new(len, GFP_ATOMIC);
-	if (skb == NULL)
-		return -ENOMEM;
+ skb = nlmsg_new(len, GFP_ATOMIC);
+ if (skb == ((void*)0))
+  return -ENOMEM;
 
-	nlh = nlmsg_put(skb, c->portid, c->seq, XFRM_MSG_FLUSHSA, sizeof(*p), 0);
-	if (nlh == NULL) {
-		kfree_skb(skb);
-		return -EMSGSIZE;
-	}
+ nlh = nlmsg_put(skb, c->portid, c->seq, XFRM_MSG_FLUSHSA, sizeof(*p), 0);
+ if (nlh == ((void*)0)) {
+  kfree_skb(skb);
+  return -EMSGSIZE;
+ }
 
-	p = nlmsg_data(nlh);
-	p->proto = c->data.proto;
+ p = nlmsg_data(nlh);
+ p->proto = c->data.proto;
 
-	nlmsg_end(skb, nlh);
+ nlmsg_end(skb, nlh);
 
-	return xfrm_nlmsg_multicast(net, skb, 0, XFRMNLGRP_SA);
+ return xfrm_nlmsg_multicast(net, skb, 0, XFRMNLGRP_SA);
 }

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * xmlParserCtxtPtr ;
-typedef  int /*<<< orphan*/ * xmlDocPtr ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * xmlCreateURLParserCtxt (char const*,int) ; 
- int /*<<< orphan*/ * xmlDoRead (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xmlInitParser () ; 
+
+
+
+typedef int * xmlParserCtxtPtr ;
+typedef int * xmlDocPtr ;
+
+
+ int * xmlCreateURLParserCtxt (char const*,int) ;
+ int * xmlDoRead (int *,int *,char const*,int,int ) ;
+ int xmlInitParser () ;
 
 xmlDocPtr
 xmlReadFile(const char *filename, const char *encoding, int options)
@@ -25,7 +25,7 @@ xmlReadFile(const char *filename, const char *encoding, int options)
 
     xmlInitParser();
     ctxt = xmlCreateURLParserCtxt(filename, options);
-    if (ctxt == NULL)
-        return (NULL);
-    return (xmlDoRead(ctxt, NULL, encoding, options, 0));
+    if (ctxt == ((void*)0))
+        return (((void*)0));
+    return (xmlDoRead(ctxt, ((void*)0), encoding, options, 0));
 }

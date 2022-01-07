@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  scalar_t__ uint16_t ;
-typedef  int /*<<< orphan*/  sock_t ;
 
-/* Variables and functions */
- int crypto_box_MACBYTES ; 
- int decrypt_data_symmetric (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  increment_nonce (int /*<<< orphan*/ *) ; 
- scalar_t__ read_TCP_length (int /*<<< orphan*/ ) ; 
- int read_TCP_packet (int /*<<< orphan*/ ,int /*<<< orphan*/ *,scalar_t__) ; 
+
+
+
+typedef int uint8_t ;
+typedef scalar_t__ uint16_t ;
+typedef int sock_t ;
+
+
+ int crypto_box_MACBYTES ;
+ int decrypt_data_symmetric (int const*,int *,int *,int,int *) ;
+ int increment_nonce (int *) ;
+ scalar_t__ read_TCP_length (int ) ;
+ int read_TCP_packet (int ,int *,scalar_t__) ;
 
 int read_packet_TCP_secure_connection(sock_t sock, uint16_t *next_packet_length, const uint8_t *shared_key,
                                       uint8_t *recv_nonce, uint8_t *data, uint16_t max_len)

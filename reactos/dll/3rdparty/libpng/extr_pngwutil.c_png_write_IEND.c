@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* png_structrp ;
-struct TYPE_4__ {int /*<<< orphan*/  mode; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PNG_HAVE_IEND ; 
- int /*<<< orphan*/  png_IEND ; 
- int /*<<< orphan*/  png_debug (int,char*) ; 
- int /*<<< orphan*/  png_write_complete_chunk (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
 
-void /* PRIVATE */
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef TYPE_1__* png_structrp ;
+struct TYPE_4__ {int mode; } ;
+
+
+ int PNG_HAVE_IEND ;
+ int png_IEND ;
+ int png_debug (int,char*) ;
+ int png_write_complete_chunk (TYPE_1__*,int ,int *,int ) ;
+
+void
 png_write_IEND(png_structrp png_ptr)
 {
    png_debug(1, "in png_write_IEND");
 
-   png_write_complete_chunk(png_ptr, png_IEND, NULL, 0);
+   png_write_complete_chunk(png_ptr, png_IEND, ((void*)0), 0);
    png_ptr->mode |= PNG_HAVE_IEND;
 }

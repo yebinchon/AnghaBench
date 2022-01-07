@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct syscon {int dummy; } ;
 struct simple_mfd_softc {struct syscon* syscon; } ;
-typedef  int /*<<< orphan*/  device_t ;
+typedef int device_t ;
 
-/* Variables and functions */
- int ENODEV ; 
- struct simple_mfd_softc* device_get_softc (int /*<<< orphan*/ ) ; 
+
+ int ENODEV ;
+ struct simple_mfd_softc* device_get_softc (int ) ;
 
 __attribute__((used)) static int
 simple_mfd_syscon_get_handle(device_t dev, struct syscon **syscon)
 {
-	struct simple_mfd_softc *sc;
+ struct simple_mfd_softc *sc;
 
-	sc = device_get_softc(dev);
-	*syscon = sc->syscon;
-	if (*syscon == NULL)
-		return (ENODEV);
-	return (0);
+ sc = device_get_softc(dev);
+ *syscon = sc->syscon;
+ if (*syscon == ((void*)0))
+  return (ENODEV);
+ return (0);
 }

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  LPVOID ;
-typedef  int /*<<< orphan*/  IQueryAssociations ;
-typedef  scalar_t__ HRESULT ;
 
-/* Variables and functions */
- scalar_t__ CLASS_E_CLASSNOTAVAILABLE ; 
- int /*<<< orphan*/  CLSID_QueryAssociations ; 
- scalar_t__ E_INVALIDARG ; 
- scalar_t__ E_NOINTERFACE ; 
- scalar_t__ E_NOTIMPL ; 
- int /*<<< orphan*/  IID_IQueryAssociations ; 
- int /*<<< orphan*/  IID_IUnknown ; 
- int /*<<< orphan*/  IID_NULL ; 
- int /*<<< orphan*/  IQueryAssociations_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
- scalar_t__ pAssocCreate (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
+
+
+
+typedef int LPVOID ;
+typedef int IQueryAssociations ;
+typedef scalar_t__ HRESULT ;
+
+
+ scalar_t__ CLASS_E_CLASSNOTAVAILABLE ;
+ int CLSID_QueryAssociations ;
+ scalar_t__ E_INVALIDARG ;
+ scalar_t__ E_NOINTERFACE ;
+ scalar_t__ E_NOTIMPL ;
+ int IID_IQueryAssociations ;
+ int IID_IUnknown ;
+ int IID_NULL ;
+ int IQueryAssociations_Release (int *) ;
+ scalar_t__ S_OK ;
+ int ok (int,char*,scalar_t__) ;
+ scalar_t__ pAssocCreate (int ,int *,int *) ;
+ int win_skip (char*) ;
 
 __attribute__((used)) static void test_assoc_create(void)
 {
@@ -40,7 +40,7 @@ __attribute__((used)) static void test_assoc_create(void)
         return;
     }
 
-    hr = pAssocCreate(IID_NULL, &IID_NULL, NULL);
+    hr = pAssocCreate(IID_NULL, &IID_NULL, ((void*)0));
     ok(hr == E_INVALIDARG, "Unexpected result : %08x\n", hr);
 
     hr = pAssocCreate(CLSID_QueryAssociations, &IID_NULL, (LPVOID*)&pqa);
@@ -52,7 +52,7 @@ __attribute__((used)) static void test_assoc_create(void)
         , "Unexpected result : %08x\n", hr);
 
     hr = pAssocCreate(CLSID_QueryAssociations, &IID_IQueryAssociations, (LPVOID*)&pqa);
-    ok(hr == S_OK  || hr == E_NOTIMPL /* win98 */
+    ok(hr == S_OK || hr == E_NOTIMPL
         , "Unexpected result : %08x\n", hr);
     if(hr == S_OK)
     {
@@ -60,7 +60,7 @@ __attribute__((used)) static void test_assoc_create(void)
     }
 
     hr = pAssocCreate(CLSID_QueryAssociations, &IID_IUnknown, (LPVOID*)&pqa);
-    ok(hr == S_OK  || hr == E_NOTIMPL /* win98 */
+    ok(hr == S_OK || hr == E_NOTIMPL
         , "Unexpected result : %08x\n", hr);
     if(hr == S_OK)
     {

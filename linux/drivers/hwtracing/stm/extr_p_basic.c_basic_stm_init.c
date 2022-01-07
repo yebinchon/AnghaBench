@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  basic_pdrv ; 
- int stm_register_protocol (int /*<<< orphan*/ *) ; 
+ int basic_pdrv ;
+ int stm_register_protocol (int *) ;
 
 __attribute__((used)) static int basic_stm_init(void)
 {
-	return stm_register_protocol(&basic_pdrv);
+ return stm_register_protocol(&basic_pdrv);
 }

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SLEEP_MODE_PWR_DOWN ; 
- int /*<<< orphan*/  WD_IRQ ; 
- int /*<<< orphan*/  WD_OFF ; 
- int /*<<< orphan*/  WD_SET (int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  cli () ; 
- int /*<<< orphan*/  sei () ; 
- int /*<<< orphan*/  set_sleep_mode (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sleep_bod_disable () ; 
- int /*<<< orphan*/  sleep_cpu () ; 
- int /*<<< orphan*/  sleep_disable () ; 
- int /*<<< orphan*/  sleep_enable () ; 
+
+
+
+typedef int uint8_t ;
+
+
+ int SLEEP_MODE_PWR_DOWN ;
+ int WD_IRQ ;
+ int WD_OFF ;
+ int WD_SET (int ,...) ;
+ int cli () ;
+ int sei () ;
+ int set_sleep_mode (int ) ;
+ int sleep_bod_disable () ;
+ int sleep_cpu () ;
+ int sleep_disable () ;
+ int sleep_enable () ;
 
 __attribute__((used)) static void sleep(uint8_t term) {
     WD_SET(WD_IRQ, term);

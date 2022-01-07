@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  int64_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MAX_DATA_SIZE ; 
- int MAX_NUM_DATATYPE ; 
- int /*<<< orphan*/  memset (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int rand () ; 
- int /*<<< orphan*/  rand_string (char*,int) ; 
- int /*<<< orphan*/  sprintf (char*,char*,...) ; 
- scalar_t__ strcasecmp (char*,char*) ; 
+
+
+
+typedef int int64_t ;
+
+
+ int MAX_DATA_SIZE ;
+ int MAX_NUM_DATATYPE ;
+ int memset (char*,int ,int ) ;
+ int rand () ;
+ int rand_string (char*,int) ;
+ int sprintf (char*,char*,...) ;
+ scalar_t__ strcasecmp (char*,char*) ;
 
 void generateData(char *res, char **data_type, int num_of_cols, int64_t timestamp, int len_of_binary) {
   memset(res, 0, MAX_DATA_SIZE);
@@ -39,7 +39,7 @@ void generateData(char *res, char **data_type, int num_of_cols, int64_t timestam
     } else if (strcasecmp(data_type[i % c], "smallint") == 0) {
       pstr += sprintf(pstr, ", %d", (int)(rand() % 32767));
     } else if (strcasecmp(data_type[i % c], "int") == 0) {
-      pstr += sprintf(pstr, ", %d", (int)(rand() % 10)); 
+      pstr += sprintf(pstr, ", %d", (int)(rand() % 10));
     } else if (strcasecmp(data_type[i % c], "bigint") == 0) {
       pstr += sprintf(pstr, ", %ld", rand() % 2147483648);
     } else if (strcasecmp(data_type[i % c], "float") == 0) {

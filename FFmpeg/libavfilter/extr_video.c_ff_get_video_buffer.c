@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_8__ {TYPE_1__* dstpad; } ;
-struct TYPE_7__ {int /*<<< orphan*/ * (* get_video_buffer ) (TYPE_2__*,int,int) ;} ;
-typedef  int /*<<< orphan*/  AVFrame ;
-typedef  TYPE_2__ AVFilterLink ;
+struct TYPE_7__ {int * (* get_video_buffer ) (TYPE_2__*,int,int) ;} ;
+typedef int AVFrame ;
+typedef TYPE_2__ AVFilterLink ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FF_TPRINTF_START (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * ff_default_get_video_buffer (TYPE_2__*,int,int) ; 
- int /*<<< orphan*/  ff_tlog_link (int /*<<< orphan*/ *,TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  get_video_buffer ; 
- int /*<<< orphan*/ * stub1 (TYPE_2__*,int,int) ; 
+
+ int FF_TPRINTF_START (int *,int ) ;
+ int * ff_default_get_video_buffer (TYPE_2__*,int,int) ;
+ int ff_tlog_link (int *,TYPE_2__*,int ) ;
+ int get_video_buffer ;
+ int * stub1 (TYPE_2__*,int,int) ;
 
 AVFrame *ff_get_video_buffer(AVFilterLink *link, int w, int h)
 {
-    AVFrame *ret = NULL;
+    AVFrame *ret = ((void*)0);
 
-    FF_TPRINTF_START(NULL, get_video_buffer); ff_tlog_link(NULL, link, 0);
+    FF_TPRINTF_START(((void*)0), get_video_buffer); ff_tlog_link(((void*)0), link, 0);
 
     if (link->dstpad->get_video_buffer)
         ret = link->dstpad->get_video_buffer(link, w, h);

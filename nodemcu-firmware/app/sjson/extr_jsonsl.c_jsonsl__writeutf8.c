@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ADD_OUTPUT (int) ; 
+
+
+
+typedef int uint32_t ;
+
+
+ int ADD_OUTPUT (int) ;
 
 __attribute__((used)) static char *
 jsonsl__writeutf8(uint32_t pt, char *out)
 {
-    #define ADD_OUTPUT(c) *out = (char)(c); out++;
+
 
     if (pt < 0x80) {
-        ADD_OUTPUT(pt);
+        *out = (char)(pt); out++;;
     } else if (pt < 0x800) {
-        ADD_OUTPUT((pt >> 6) | 0xC0);
-        ADD_OUTPUT((pt & 0x3F) | 0x80);
+        *out = (char)((pt >> 6) | 0xC0); out++;;
+        *out = (char)((pt & 0x3F) | 0x80); out++;;
     } else if (pt < 0x10000) {
-        ADD_OUTPUT((pt >> 12) | 0xE0);
-        ADD_OUTPUT(((pt >> 6) & 0x3F) | 0x80);
-        ADD_OUTPUT((pt & 0x3F) | 0x80);
+        *out = (char)((pt >> 12) | 0xE0); out++;;
+        *out = (char)(((pt >> 6) & 0x3F) | 0x80); out++;;
+        *out = (char)((pt & 0x3F) | 0x80); out++;;
     } else {
-        ADD_OUTPUT((pt >> 18) | 0xF0);
-        ADD_OUTPUT(((pt >> 12) & 0x3F) | 0x80);
-        ADD_OUTPUT(((pt >> 6) & 0x3F) | 0x80);
-        ADD_OUTPUT((pt & 0x3F) | 0x80);
+        *out = (char)((pt >> 18) | 0xF0); out++;;
+        *out = (char)(((pt >> 12) & 0x3F) | 0x80); out++;;
+        *out = (char)(((pt >> 6) & 0x3F) | 0x80); out++;;
+        *out = (char)((pt & 0x3F) | 0x80); out++;;
     }
     return out;
-    #undef ADD_OUTPUT
+
 }

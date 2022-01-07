@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
-struct stat {int /*<<< orphan*/  st_mode; } ;
-typedef  int /*<<< orphan*/  peek ;
 
-/* Variables and functions */
- int O_NONBLOCK ; 
- int O_RDONLY ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  S_ISBLK (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  S_ISREG (int /*<<< orphan*/ ) ; 
- int VLC_EGENERIC ; 
- int VLC_SUCCESS ; 
- int decode_descriptor_tag (scalar_t__*) ; 
- int fstat (int,struct stat*) ; 
- int lseek (int,int,int /*<<< orphan*/ ) ; 
- int read (int,scalar_t__*,int) ; 
- int /*<<< orphan*/  vlc_close (int) ; 
- int vlc_open (char const*,int) ; 
+
+
+
+typedef scalar_t__ uint8_t ;
+struct stat {int st_mode; } ;
+typedef int peek ;
+
+
+ int O_NONBLOCK ;
+ int O_RDONLY ;
+ int SEEK_SET ;
+ int S_ISBLK (int ) ;
+ int S_ISREG (int ) ;
+ int VLC_EGENERIC ;
+ int VLC_SUCCESS ;
+ int decode_descriptor_tag (scalar_t__*) ;
+ int fstat (int,struct stat*) ;
+ int lseek (int,int,int ) ;
+ int read (int,scalar_t__*,int) ;
+ int vlc_close (int) ;
+ int vlc_open (char const*,int) ;
 
 __attribute__((used)) static int probeFile(const char *psz_name)
 {
@@ -49,7 +49,7 @@ __attribute__((used)) static int probeFile(const char *psz_name)
         goto bailout;
     }
 
-    /* first sector should be filled with zeros */
+
     if (read(fd, peek, sizeof(peek)) != sizeof(peek)) {
         goto bailout;
     }
@@ -59,7 +59,7 @@ __attribute__((used)) static int probeFile(const char *psz_name)
         }
     }
 
-    /* Check AVDP tag checksum */
+
     if (lseek(fd, 256 * 2048, SEEK_SET) == -1 ||
         read(fd, peek, 16) != 16 ||
         decode_descriptor_tag(peek) != 2) {

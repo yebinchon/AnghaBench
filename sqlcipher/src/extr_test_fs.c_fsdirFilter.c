@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_vtab_cursor ;
-typedef  int /*<<< orphan*/  sqlite3_value ;
-struct TYPE_2__ {int /*<<< orphan*/  zDir; scalar_t__ pDir; scalar_t__ iRowid; } ;
-typedef  TYPE_1__ FsdirCsr ;
 
-/* Variables and functions */
- int SQLITE_ERROR ; 
- int SQLITE_NOMEM ; 
- int /*<<< orphan*/  closedir (scalar_t__) ; 
- int fsdirNext (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,char const*,int) ; 
- scalar_t__ opendir (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_malloc (int) ; 
- int sqlite3_value_bytes (int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3_value_text (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int sqlite3_vtab_cursor ;
+typedef int sqlite3_value ;
+struct TYPE_2__ {int zDir; scalar_t__ pDir; scalar_t__ iRowid; } ;
+typedef TYPE_1__ FsdirCsr ;
+
+
+ int SQLITE_ERROR ;
+ int SQLITE_NOMEM ;
+ int closedir (scalar_t__) ;
+ int fsdirNext (int *) ;
+ int memcpy (int ,char const*,int) ;
+ scalar_t__ opendir (int ) ;
+ int sqlite3_free (int ) ;
+ int sqlite3_malloc (int) ;
+ int sqlite3_value_bytes (int *) ;
+ scalar_t__ sqlite3_value_text (int *) ;
 
 __attribute__((used)) static int fsdirFilter(
-  sqlite3_vtab_cursor *pVtabCursor, 
+  sqlite3_vtab_cursor *pVtabCursor,
   int idxNum, const char *idxStr,
   int argc, sqlite3_value **argv
 ){
@@ -56,5 +56,5 @@ __attribute__((used)) static int fsdirFilter(
   memcpy(pCsr->zDir, zDir, nDir+1);
 
   pCsr->pDir = opendir(pCsr->zDir);
-  return fsdirNext(pVtabCursor); 
+  return fsdirNext(pVtabCursor);
 }

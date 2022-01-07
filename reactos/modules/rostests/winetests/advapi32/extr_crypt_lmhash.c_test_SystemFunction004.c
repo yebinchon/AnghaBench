@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct ustring {unsigned char* Buffer; int Length; int MaximumLength; } ;
 
-/* Variables and functions */
- int STATUS_BUFFER_TOO_SMALL ; 
- int STATUS_INVALID_PARAMETER_2 ; 
- int STATUS_SUCCESS ; 
- int /*<<< orphan*/  memcmp (unsigned char*,unsigned char*,int) ; 
- int /*<<< orphan*/  memset (unsigned char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ok (int,char*) ; 
- int pSystemFunction002 (unsigned char*,unsigned char*,unsigned char*) ; 
- int pSystemFunction004 (struct ustring*,struct ustring*,struct ustring*) ; 
+
+ int STATUS_BUFFER_TOO_SMALL ;
+ int STATUS_INVALID_PARAMETER_2 ;
+ int STATUS_SUCCESS ;
+ int memcmp (unsigned char*,unsigned char*,int) ;
+ int memset (unsigned char*,int ,int) ;
+ int ok (int,char*) ;
+ int pSystemFunction002 (unsigned char*,unsigned char*,unsigned char*) ;
+ int pSystemFunction004 (struct ustring*,struct ustring*,struct ustring*) ;
 
 __attribute__((used)) static void test_SystemFunction004(void)
 {
@@ -29,22 +29,22 @@ __attribute__((used)) static void test_SystemFunction004(void)
     int r;
     struct ustring in, key, out;
 
-    /* crash 
-    r = pSystemFunction004(NULL, NULL, NULL);
-    ok(r == STATUS_UNSUCCESSFUL, "function failed\n");
-    */
+
+
+
+
 
     memset(inbuf, 0, sizeof inbuf);
     memset(keybuf, 0, sizeof keybuf);
     memset(resbuf, 0, sizeof resbuf);
 
-    in.Buffer = NULL;
+    in.Buffer = ((void*)0);
     in.Length = in.MaximumLength = 0;
 
-    key.Buffer = NULL;
+    key.Buffer = ((void*)0);
     key.Length = key.MaximumLength = 0;
 
-    out.Buffer = NULL;
+    out.Buffer = ((void*)0);
     out.Length = out.MaximumLength = 0;
 
     r = pSystemFunction004(&in, &key, &out);
@@ -61,7 +61,7 @@ __attribute__((used)) static void test_SystemFunction004(void)
     in.Length = 0x0c;
     in.MaximumLength = 0;
 
-    /* add two identical blocks... */
+
     inbuf[0] = 1;
     inbuf[1] = 2;
     inbuf[2] = 3;
@@ -72,7 +72,7 @@ __attribute__((used)) static void test_SystemFunction004(void)
     inbuf[10] = 3;
     inbuf[11] = 4;
 
-    /* check that the Length field is really obeyed */
+
     keybuf[6] = 1;
 
     key.Buffer = keybuf;

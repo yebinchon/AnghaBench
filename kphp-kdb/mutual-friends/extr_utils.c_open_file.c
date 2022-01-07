@@ -1,41 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int O_CREAT ; 
- int O_RDONLY ; 
- int O_RDWR ; 
- int O_TRUNC ; 
- int /*<<< orphan*/  SEEK_END ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  exit (int) ; 
- int f_inited ; 
- int* fd ; 
- char** fnames ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*,...) ; 
- scalar_t__* fsize ; 
- scalar_t__ lseek (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int open (char*,int,int) ; 
- char* progname ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ verbosity ; 
+ int O_CREAT ;
+ int O_RDONLY ;
+ int O_RDWR ;
+ int O_TRUNC ;
+ int SEEK_END ;
+ int SEEK_SET ;
+ int assert (int) ;
+ int exit (int) ;
+ int f_inited ;
+ int* fd ;
+ char** fnames ;
+ int fprintf (int ,char*,char*,...) ;
+ scalar_t__* fsize ;
+ scalar_t__ lseek (int,int ,int ) ;
+ int open (char*,int,int) ;
+ char* progname ;
+ int stderr ;
+ scalar_t__ verbosity ;
 
 int open_file (int x, char *fname, int creat) {
   assert (f_inited);
   assert (0 <= x && x < f_inited);
 
-  //fprintf (stderr, "open %d %s %d\n", x, fname, creat);
+
 
   fnames[x] = fname;
   int options;

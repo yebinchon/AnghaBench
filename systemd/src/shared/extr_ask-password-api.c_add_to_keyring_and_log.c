@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  AskPasswordFlags ;
 
-/* Variables and functions */
- int add_to_keyring (char const*,int /*<<< orphan*/ ,char**) ; 
- int /*<<< orphan*/  assert (char const*) ; 
- int log_debug_errno (int,char*) ; 
+
+
+
+typedef int AskPasswordFlags ;
+
+
+ int add_to_keyring (char const*,int ,char**) ;
+ int assert (char const*) ;
+ int log_debug_errno (int,char*) ;
 
 __attribute__((used)) static int add_to_keyring_and_log(const char *keyname, AskPasswordFlags flags, char **passwords) {
         int r;

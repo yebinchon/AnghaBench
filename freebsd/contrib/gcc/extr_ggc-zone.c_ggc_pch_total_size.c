@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {size_t* type_totals; size_t total; } ;
 struct ggc_pch_data {size_t alloc_size; TYPE_1__ d; } ;
-typedef  enum gt_types_enum { ____Placeholder_gt_types_enum } gt_types_enum ;
+typedef enum gt_types_enum { ____Placeholder_gt_types_enum } gt_types_enum ;
 
-/* Variables and functions */
- int BYTES_PER_ALLOC_BIT ; 
- size_t CEIL (size_t,int) ; 
- int /*<<< orphan*/  GGC_PAGE_SIZE ; 
- int /*<<< orphan*/  MAX_ALIGNMENT ; 
- int NUM_PCH_BUCKETS ; 
- void* ROUND_UP (size_t,int /*<<< orphan*/ ) ; 
+
+ int BYTES_PER_ALLOC_BIT ;
+ size_t CEIL (size_t,int) ;
+ int GGC_PAGE_SIZE ;
+ int MAX_ALIGNMENT ;
+ int NUM_PCH_BUCKETS ;
+ void* ROUND_UP (size_t,int ) ;
 
 size_t
 ggc_pch_total_size (struct ggc_pch_data *d)
@@ -37,7 +37,7 @@ ggc_pch_total_size (struct ggc_pch_data *d)
     }
   d->d.total = total_size;
 
-  /* Include the size of the allocation bitmap.  */
+
   alloc_size = CEIL (d->d.total, BYTES_PER_ALLOC_BIT * 8);
   alloc_size = ROUND_UP (alloc_size, MAX_ALIGNMENT);
   d->alloc_size = alloc_size;

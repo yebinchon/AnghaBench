@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {scalar_t__ timeout_ms; scalar_t__ error; int /*<<< orphan*/ * response; int /*<<< orphan*/  opcode; int /*<<< orphan*/  datalen; int /*<<< orphan*/  blklen; int /*<<< orphan*/  data; int /*<<< orphan*/  flags; int /*<<< orphan*/  arg; } ;
-typedef  TYPE_2__ sdmmc_command_t ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_8__ {scalar_t__ timeout_ms; scalar_t__ error; int * response; int opcode; int datalen; int blklen; int data; int flags; int arg; } ;
+typedef TYPE_2__ sdmmc_command_t ;
 struct TYPE_7__ {scalar_t__ command_timeout_ms; int slot; scalar_t__ (* do_transaction ) (int,TYPE_2__*) ;} ;
 struct TYPE_9__ {TYPE_1__ host; } ;
-typedef  TYPE_3__ sdmmc_card_t ;
-typedef  scalar_t__ esp_err_t ;
+typedef TYPE_3__ sdmmc_card_t ;
+typedef scalar_t__ esp_err_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ESP_LOGD (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  ESP_LOGV (int /*<<< orphan*/ ,char*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,int,...) ; 
- int MMC_R1_CURRENT_STATE (int /*<<< orphan*/ *) ; 
- scalar_t__ SDMMC_DEFAULT_CMD_TIMEOUT_MS ; 
- int /*<<< orphan*/  TAG ; 
- scalar_t__ stub1 (int,TYPE_2__*) ; 
+
+ int ESP_LOGD (int ,char*,int ,scalar_t__) ;
+ int ESP_LOGV (int ,char*,int,int ,int ,int ,scalar_t__,int,...) ;
+ int MMC_R1_CURRENT_STATE (int *) ;
+ scalar_t__ SDMMC_DEFAULT_CMD_TIMEOUT_MS ;
+ int TAG ;
+ scalar_t__ stub1 (int,TYPE_2__*) ;
 
 esp_err_t sdmmc_send_cmd(sdmmc_card_t* card, sdmmc_command_t* cmd)
 {

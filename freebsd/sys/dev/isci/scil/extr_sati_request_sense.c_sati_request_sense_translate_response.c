@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  U8 ;
-typedef  int /*<<< orphan*/  U32 ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int U8 ;
+typedef int U32 ;
 struct TYPE_5__ {int type; } ;
-typedef  TYPE_1__ SATI_TRANSLATOR_SEQUENCE_T ;
-typedef  int /*<<< orphan*/  SATI_STATUS ;
+typedef TYPE_1__ SATI_TRANSLATOR_SEQUENCE_T ;
+typedef int SATI_STATUS ;
 
-/* Variables and functions */
-#define  ATA_ACTIVE_POWER_MODE 132 
- int /*<<< orphan*/  ATA_HIGH_REGISTER_THRESHOLD_EXCEEDED ; 
-#define  ATA_IDLE_POWER_MODE 131 
- int /*<<< orphan*/  ATA_MID_REGISTER_THRESHOLD_EXCEEDED ; 
-#define  ATA_STANDBY_POWER_MODE 130 
- int ATA_STATUS_REG_ERROR_BIT ; 
- int /*<<< orphan*/  SATI_COMPLETE ; 
- int /*<<< orphan*/  SATI_FAILURE ; 
- int /*<<< orphan*/  SATI_FAILURE_CHECK_RESPONSE_DATA ; 
-#define  SATI_SEQUENCE_REQUEST_SENSE_CHECK_POWER_MODE 129 
-#define  SATI_SEQUENCE_REQUEST_SENSE_SMART_RETURN_STATUS 128 
- int /*<<< orphan*/  SCSI_ASCQ_GENERAL_HARD_DRIVE_FAILURE ; 
- int /*<<< orphan*/  SCSI_ASCQ_NO_ADDITIONAL_SENSE ; 
- int /*<<< orphan*/  SCSI_ASCQ_POWER_STATE_CHANGE_TO_IDLE ; 
- int /*<<< orphan*/  SCSI_ASCQ_POWER_STATE_CHANGE_TO_STANDBY ; 
- int /*<<< orphan*/  SCSI_ASC_HARDWARE_IMPENDING_FAILURE ; 
- int /*<<< orphan*/  SCSI_ASC_NO_ADDITIONAL_SENSE ; 
- int /*<<< orphan*/  SCSI_ASC_POWER_STATE_CHANGE ; 
- int /*<<< orphan*/  SCSI_SENSE_ABORTED_COMMAND ; 
- int /*<<< orphan*/  SCSI_SENSE_NO_SENSE ; 
- int /*<<< orphan*/  SCSI_STATUS_CHECK_CONDITION ; 
- int /*<<< orphan*/ * sati_cb_get_d2h_register_fis_address (void*) ; 
- int /*<<< orphan*/  sati_get_ata_lba_high (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sati_get_ata_lba_mid (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sati_get_ata_sector_count (int /*<<< orphan*/ *) ; 
- int sati_get_ata_status (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sati_request_sense_data_response_construct (TYPE_1__*,void*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sati_scsi_sense_data_construct (TYPE_1__*,void*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+ int ATA_HIGH_REGISTER_THRESHOLD_EXCEEDED ;
+
+ int ATA_MID_REGISTER_THRESHOLD_EXCEEDED ;
+
+ int ATA_STATUS_REG_ERROR_BIT ;
+ int SATI_COMPLETE ;
+ int SATI_FAILURE ;
+ int SATI_FAILURE_CHECK_RESPONSE_DATA ;
+
+
+ int SCSI_ASCQ_GENERAL_HARD_DRIVE_FAILURE ;
+ int SCSI_ASCQ_NO_ADDITIONAL_SENSE ;
+ int SCSI_ASCQ_POWER_STATE_CHANGE_TO_IDLE ;
+ int SCSI_ASCQ_POWER_STATE_CHANGE_TO_STANDBY ;
+ int SCSI_ASC_HARDWARE_IMPENDING_FAILURE ;
+ int SCSI_ASC_NO_ADDITIONAL_SENSE ;
+ int SCSI_ASC_POWER_STATE_CHANGE ;
+ int SCSI_SENSE_ABORTED_COMMAND ;
+ int SCSI_SENSE_NO_SENSE ;
+ int SCSI_STATUS_CHECK_CONDITION ;
+ int * sati_cb_get_d2h_register_fis_address (void*) ;
+ int sati_get_ata_lba_high (int *) ;
+ int sati_get_ata_lba_mid (int *) ;
+ int sati_get_ata_sector_count (int *) ;
+ int sati_get_ata_status (int *) ;
+ int sati_request_sense_data_response_construct (TYPE_1__*,void*,int ,int ,int ) ;
+ int sati_scsi_sense_data_construct (TYPE_1__*,void*,int ,int ,int ,int ) ;
 
 SATI_STATUS sati_request_sense_translate_response(
    SATI_TRANSLATOR_SEQUENCE_T * sequence,
-   void                       * scsi_io,
-   void                       * ata_io
+   void * scsi_io,
+   void * ata_io
 )
 {
    U8 * register_fis = sati_cb_get_d2h_register_fis_address(ata_io);
@@ -75,7 +75,7 @@ SATI_STATUS sati_request_sense_translate_response(
    {
       switch(sequence->type)
       {
-         case SATI_SEQUENCE_REQUEST_SENSE_SMART_RETURN_STATUS:
+         case 128:
 
             mid_register = sati_get_ata_lba_mid(register_fis);
             high_register = sati_get_ata_lba_high(register_fis);
@@ -104,13 +104,13 @@ SATI_STATUS sati_request_sense_translate_response(
             }
          break;
 
-         case SATI_SEQUENCE_REQUEST_SENSE_CHECK_POWER_MODE:
+         case 129:
 
             sector_count = sati_get_ata_sector_count(register_fis);
 
             switch(sector_count)
             {
-                case ATA_STANDBY_POWER_MODE:
+                case 130:
                    sati_request_sense_data_response_construct(
                       sequence,
                       scsi_io,
@@ -121,7 +121,7 @@ SATI_STATUS sati_request_sense_translate_response(
                    status = SATI_COMPLETE;
                 break;
 
-                case ATA_IDLE_POWER_MODE:
+                case 131:
                    sati_request_sense_data_response_construct(
                       sequence,
                       scsi_io,
@@ -132,7 +132,7 @@ SATI_STATUS sati_request_sense_translate_response(
                    status = SATI_COMPLETE;
                 break;
 
-                case ATA_ACTIVE_POWER_MODE:
+                case 132:
                    sati_request_sense_data_response_construct(
                       sequence,
                       scsi_io,

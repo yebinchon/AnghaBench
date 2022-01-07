@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {unsigned int update_cycles; } ;
-struct TYPE_4__ {int pcm_regs_dirty; int* s68k_regs; TYPE_1__ pcm; scalar_t__ pcm_mixpos; scalar_t__ pcm_mixbuf_dirty; int /*<<< orphan*/  pcm_mixbuf; } ;
+struct TYPE_4__ {int pcm_regs_dirty; int* s68k_regs; TYPE_1__ pcm; scalar_t__ pcm_mixpos; scalar_t__ pcm_mixbuf_dirty; int pcm_mixbuf; } ;
 
-/* Variables and functions */
- size_t PCD_EVENT_CDC ; 
- size_t PCD_EVENT_TIMER3 ; 
- TYPE_2__* Pico_mcd ; 
- int /*<<< orphan*/  SekCycleAim ; 
- unsigned int SekCycleAimS68k ; 
- unsigned int SekCycleCntS68k ; 
- scalar_t__ event_time_next ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- unsigned int pcd_cycles_m68k_to_s68k (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pcd_event_schedule (unsigned int,size_t,int) ; 
- scalar_t__* pcd_event_times ; 
- int /*<<< orphan*/  pcd_run_events (unsigned int) ; 
- int /*<<< orphan*/  pcd_set_cycle_mult () ; 
- int /*<<< orphan*/  pcd_state_loaded_mem () ; 
+
+ size_t PCD_EVENT_CDC ;
+ size_t PCD_EVENT_TIMER3 ;
+ TYPE_2__* Pico_mcd ;
+ int SekCycleAim ;
+ unsigned int SekCycleAimS68k ;
+ unsigned int SekCycleCntS68k ;
+ scalar_t__ event_time_next ;
+ int memset (int ,int ,int) ;
+ unsigned int pcd_cycles_m68k_to_s68k (int ) ;
+ int pcd_event_schedule (unsigned int,size_t,int) ;
+ scalar_t__* pcd_event_times ;
+ int pcd_run_events (unsigned int) ;
+ int pcd_set_cycle_mult () ;
+ int pcd_state_loaded_mem () ;
 
 void pcd_state_loaded(void)
 {
@@ -44,7 +44,7 @@ void pcd_state_loaded(void)
   Pico_mcd->pcm_mixpos = 0;
   Pico_mcd->pcm_regs_dirty = 1;
 
-  // old savestates..
+
   cycles = pcd_cycles_m68k_to_s68k(SekCycleAim);
   diff = cycles - SekCycleAimS68k;
   if (diff < -1000 || diff > 1000) {
@@ -62,7 +62,7 @@ void pcd_state_loaded(void)
   if ((unsigned int)diff > 12500000/50)
     Pico_mcd->pcm.update_cycles = cycles;
 
-  // reschedule
+
   event_time_next = 0;
   pcd_run_events(SekCycleCntS68k);
 }

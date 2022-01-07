@@ -1,66 +1,66 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  (* json_scalar_action ) (int /*<<< orphan*/ ,char*,int) ;
-struct TYPE_3__ {int /*<<< orphan*/  semstate; int /*<<< orphan*/  (* scalar ) (int /*<<< orphan*/ ,char*,int) ;} ;
-typedef  int JsonTokenType ;
-typedef  TYPE_1__ JsonSemAction ;
-typedef  int /*<<< orphan*/  JsonLexContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  JSON_PARSE_VALUE ; 
-#define  JSON_TOKEN_FALSE 132 
-#define  JSON_TOKEN_NULL 131 
-#define  JSON_TOKEN_NUMBER 130 
-#define  JSON_TOKEN_STRING 129 
-#define  JSON_TOKEN_TRUE 128 
- int /*<<< orphan*/  lex_accept (int /*<<< orphan*/ *,int const,char**) ; 
- int lex_peek (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  report_parse_error (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,char*,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int (* json_scalar_action ) (int ,char*,int) ;
+struct TYPE_3__ {int semstate; int (* scalar ) (int ,char*,int) ;} ;
+typedef int JsonTokenType ;
+typedef TYPE_1__ JsonSemAction ;
+typedef int JsonLexContext ;
+
+
+ int JSON_PARSE_VALUE ;
+
+
+
+
+
+ int lex_accept (int *,int const,char**) ;
+ int lex_peek (int *) ;
+ int report_parse_error (int ,int *) ;
+ int stub1 (int ,char*,int) ;
 
 __attribute__((used)) static inline void
 parse_scalar(JsonLexContext *lex, JsonSemAction *sem)
 {
-	char	   *val = NULL;
-	json_scalar_action sfunc = sem->scalar;
-	char	  **valaddr;
-	JsonTokenType tok = lex_peek(lex);
+ char *val = ((void*)0);
+ json_scalar_action sfunc = sem->scalar;
+ char **valaddr;
+ JsonTokenType tok = lex_peek(lex);
 
-	valaddr = sfunc == NULL ? NULL : &val;
+ valaddr = sfunc == ((void*)0) ? ((void*)0) : &val;
 
-	/* a scalar must be a string, a number, true, false, or null */
-	switch (tok)
-	{
-		case JSON_TOKEN_TRUE:
-			lex_accept(lex, JSON_TOKEN_TRUE, valaddr);
-			break;
-		case JSON_TOKEN_FALSE:
-			lex_accept(lex, JSON_TOKEN_FALSE, valaddr);
-			break;
-		case JSON_TOKEN_NULL:
-			lex_accept(lex, JSON_TOKEN_NULL, valaddr);
-			break;
-		case JSON_TOKEN_NUMBER:
-			lex_accept(lex, JSON_TOKEN_NUMBER, valaddr);
-			break;
-		case JSON_TOKEN_STRING:
-			lex_accept(lex, JSON_TOKEN_STRING, valaddr);
-			break;
-		default:
-			report_parse_error(JSON_PARSE_VALUE, lex);
-	}
 
-	if (sfunc != NULL)
-		(*sfunc) (sem->semstate, val, tok);
+ switch (tok)
+ {
+  case 128:
+   lex_accept(lex, 128, valaddr);
+   break;
+  case 132:
+   lex_accept(lex, 132, valaddr);
+   break;
+  case 131:
+   lex_accept(lex, 131, valaddr);
+   break;
+  case 130:
+   lex_accept(lex, 130, valaddr);
+   break;
+  case 129:
+   lex_accept(lex, 129, valaddr);
+   break;
+  default:
+   report_parse_error(JSON_PARSE_VALUE, lex);
+ }
+
+ if (sfunc != ((void*)0))
+  (*sfunc) (sem->semstate, val, tok);
 }

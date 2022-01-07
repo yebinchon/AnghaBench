@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int szSlot; int nSlot; int nFreeSlot; int nReserve; void* pEnd; TYPE_1__* pFree; scalar_t__ bUnderPressure; void* pStart; scalar_t__ isInit; } ;
 struct TYPE_3__ {struct TYPE_3__* pNext; } ;
-typedef  TYPE_1__ PgFreeslot ;
+typedef TYPE_1__ PgFreeslot ;
 
-/* Variables and functions */
- int ROUNDDOWN8 (int) ; 
- TYPE_2__ pcache1 ; 
+
+ int ROUNDDOWN8 (int) ;
+ TYPE_2__ pcache1 ;
 
 void sqlite3PCacheBufferSetup(void *pBuf, int sz, int n){
   if( pcache1.isInit ){

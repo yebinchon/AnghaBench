@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_7__ ;
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {TYPE_4__* monitor; int /*<<< orphan*/  videoMode; } ;
-typedef  TYPE_2__ _GLFWwindow ;
-struct TYPE_8__ {int /*<<< orphan*/  acquiredMonitorCount; int /*<<< orphan*/  mouseTrailSize; } ;
+
+
+typedef struct TYPE_11__ TYPE_7__ ;
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_9__ {TYPE_4__* monitor; int videoMode; } ;
+typedef TYPE_2__ _GLFWwindow ;
+struct TYPE_8__ {int acquiredMonitorCount; int mouseTrailSize; } ;
 struct TYPE_11__ {TYPE_1__ win32; } ;
-struct TYPE_10__ {int /*<<< orphan*/  window; } ;
+struct TYPE_10__ {int window; } ;
 
-/* Variables and functions */
- int ES_CONTINUOUS ; 
- int ES_DISPLAY_REQUIRED ; 
- scalar_t__ IsWindowsXPOrGreater () ; 
- int /*<<< orphan*/  SPI_GETMOUSETRAILS ; 
- int /*<<< orphan*/  SPI_SETMOUSETRAILS ; 
- int /*<<< orphan*/  SetThreadExecutionState (int) ; 
- int /*<<< orphan*/  SystemParametersInfo (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- TYPE_7__ _glfw ; 
- int /*<<< orphan*/  _glfwInputMonitorWindow (TYPE_4__*,TYPE_2__*) ; 
- int /*<<< orphan*/  _glfwSetVideoModeWin32 (TYPE_4__*,int /*<<< orphan*/ *) ; 
+
+ int ES_CONTINUOUS ;
+ int ES_DISPLAY_REQUIRED ;
+ scalar_t__ IsWindowsXPOrGreater () ;
+ int SPI_GETMOUSETRAILS ;
+ int SPI_SETMOUSETRAILS ;
+ int SetThreadExecutionState (int) ;
+ int SystemParametersInfo (int ,int ,int *,int ) ;
+ TYPE_7__ _glfw ;
+ int _glfwInputMonitorWindow (TYPE_4__*,TYPE_2__*) ;
+ int _glfwSetVideoModeWin32 (TYPE_4__*,int *) ;
 
 __attribute__((used)) static void acquireMonitor(_GLFWwindow* window)
 {
@@ -38,8 +38,8 @@ __attribute__((used)) static void acquireMonitor(_GLFWwindow* window)
     {
         SetThreadExecutionState(ES_CONTINUOUS | ES_DISPLAY_REQUIRED);
 
-        // HACK: When mouse trails are enabled the cursor becomes invisible when
-        //       the OpenGL ICD switches to page flipping
+
+
         if (IsWindowsXPOrGreater())
         {
             SystemParametersInfo(SPI_GETMOUSETRAILS, 0, &_glfw.win32.mouseTrailSize, 0);

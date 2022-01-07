@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  (* block128_f ) (unsigned char*,unsigned char*,void const*) ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ctr128_inc (unsigned char*) ; 
- int /*<<< orphan*/  ctr128_inc_aligned (unsigned char*) ; 
- int /*<<< orphan*/  stub1 (unsigned char*,unsigned char*,void const*) ; 
- int /*<<< orphan*/  stub2 (unsigned char*,unsigned char*,void const*) ; 
- int /*<<< orphan*/  stub3 (unsigned char*,unsigned char*,void const*) ; 
+
+
+
+typedef int (* block128_f ) (unsigned char*,unsigned char*,void const*) ;
+
+
+ int ctr128_inc (unsigned char*) ;
+ int ctr128_inc_aligned (unsigned char*) ;
+ int stub1 (unsigned char*,unsigned char*,void const*) ;
+ int stub2 (unsigned char*,unsigned char*,void const*) ;
+ int stub3 (unsigned char*,unsigned char*,void const*) ;
 
 void CRYPTO_ctr128_encrypt(const unsigned char *in, unsigned char *out,
                            size_t len, const void *key,
@@ -30,8 +30,8 @@ void CRYPTO_ctr128_encrypt(const unsigned char *in, unsigned char *out,
 
     n = *num;
 
-#if !defined(OPENSSL_SMALL_FOOTPRINT)
-    if (16 % sizeof(size_t) == 0) { /* always true actually */
+
+    if (16 % sizeof(size_t) == 0) {
         do {
             while (n && len) {
                 *(out++) = *(in++) ^ ecount_buf[n];
@@ -39,11 +39,11 @@ void CRYPTO_ctr128_encrypt(const unsigned char *in, unsigned char *out,
                 n = (n + 1) % 16;
             }
 
-# if defined(STRICT_ALIGNMENT)
-            if (((size_t)in | (size_t)out | (size_t)ecount_buf)
-                % sizeof(size_t) != 0)
-                break;
-# endif
+
+
+
+
+
             while (len >= 16) {
                 (*block) (ivec, ecount_buf, key);
                 ctr128_inc_aligned(ivec);
@@ -67,8 +67,8 @@ void CRYPTO_ctr128_encrypt(const unsigned char *in, unsigned char *out,
             return;
         } while (0);
     }
-    /* the rest would be commonly eliminated by x86* compiler */
-#endif
+
+
     while (l < len) {
         if (n == 0) {
             (*block) (ivec, ecount_buf, key);

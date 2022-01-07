@@ -1,34 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  cond_incl () ; 
- int /*<<< orphan*/  const_expr () ; 
- int /*<<< orphan*/  counter () ; 
- int /*<<< orphan*/  defined () ; 
- int /*<<< orphan*/  empty () ; 
- int /*<<< orphan*/  funclike () ; 
- int /*<<< orphan*/  gnuext () ; 
- int /*<<< orphan*/  ifdef () ; 
- int /*<<< orphan*/  include () ; 
- int /*<<< orphan*/  loop () ; 
- int /*<<< orphan*/  noarg () ; 
- int /*<<< orphan*/  null () ; 
- int /*<<< orphan*/  predefined () ; 
- int /*<<< orphan*/  print (char*) ; 
- int /*<<< orphan*/  simple () ; 
- int /*<<< orphan*/  special () ; 
- int /*<<< orphan*/  undef () ; 
+ int cond_incl () ;
+ int const_expr () ;
+ int counter () ;
+ int defined () ;
+ int empty () ;
+ int funclike () ;
+ int gnuext () ;
+ int ifdef () ;
+ int include () ;
+ int loop () ;
+ int noarg () ;
+ int null () ;
+ int predefined () ;
+ int print (char*) ;
+ int simple () ;
+ int special () ;
+ int undef () ;
 
 void testmain() {
     print("macros");

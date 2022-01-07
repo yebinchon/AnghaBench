@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * decoder; } ;
-typedef  TYPE_1__ flac_decoder ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FLAC__stream_decoder_delete (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * decoder; } ;
+typedef TYPE_1__ flac_decoder ;
+
+
+ int FLAC__stream_decoder_delete (int *) ;
 
 void flac_decoder_free(flac_decoder* decoder)
 {
-	if ((decoder != NULL) && (decoder->decoder != NULL))
-		FLAC__stream_decoder_delete(decoder->decoder);
+ if ((decoder != ((void*)0)) && (decoder->decoder != ((void*)0)))
+  FLAC__stream_decoder_delete(decoder->decoder);
 }

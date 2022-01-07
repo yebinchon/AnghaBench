@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CFLAG_CLEAR ; 
- int /*<<< orphan*/  CFLAG_SET ; 
- int DY ; 
- int /*<<< orphan*/  FLAG_C ; 
- int /*<<< orphan*/  FLAG_N ; 
- int FLAG_V ; 
- int /*<<< orphan*/  FLAG_X ; 
- int FLAG_Z ; 
- int MASK_OUT_ABOVE_8 (int) ; 
- int MASK_OUT_BELOW_8 (int) ; 
- int /*<<< orphan*/  NFLAG_8 (int) ; 
- int VFLAG_CLEAR ; 
- int XFLAG_AS_1 () ; 
- int /*<<< orphan*/  XFLAG_CLEAR ; 
- int /*<<< orphan*/  XFLAG_SET ; 
+
+
+
+typedef int uint ;
+
+
+ int CFLAG_CLEAR ;
+ int CFLAG_SET ;
+ int DY ;
+ int FLAG_C ;
+ int FLAG_N ;
+ int FLAG_V ;
+ int FLAG_X ;
+ int FLAG_Z ;
+ int MASK_OUT_ABOVE_8 (int) ;
+ int MASK_OUT_BELOW_8 (int) ;
+ int NFLAG_8 (int) ;
+ int VFLAG_CLEAR ;
+ int XFLAG_AS_1 () ;
+ int XFLAG_CLEAR ;
+ int XFLAG_SET ;
 
 __attribute__((used)) static void m68k_op_nbcd_8_d(void)
 {
@@ -37,14 +37,14 @@ __attribute__((used)) static void m68k_op_nbcd_8_d(void)
 
   if(res != 0x9a)
   {
-    FLAG_V = ~res; /* Undefined V behavior */
+    FLAG_V = ~res;
 
     if((res & 0x0f) == 0xa)
       res = (res & 0xf0) + 0x10;
 
     res = MASK_OUT_ABOVE_8(res);
 
-    FLAG_V &= res; /* Undefined V behavior part II */
+    FLAG_V &= res;
 
     *r_dst = MASK_OUT_BELOW_8(*r_dst) | res;
 
@@ -58,5 +58,5 @@ __attribute__((used)) static void m68k_op_nbcd_8_d(void)
     FLAG_C = CFLAG_CLEAR;
     FLAG_X = XFLAG_CLEAR;
   }
-  FLAG_N = NFLAG_8(res);  /* Undefined N behavior */
+  FLAG_N = NFLAG_8(res);
 }

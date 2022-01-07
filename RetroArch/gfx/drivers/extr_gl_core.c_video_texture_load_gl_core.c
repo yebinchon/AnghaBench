@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct texture_image {int /*<<< orphan*/  pixels; int /*<<< orphan*/  height; int /*<<< orphan*/  width; } ;
-typedef  enum texture_filter_type { ____Placeholder_texture_filter_type } texture_filter_type ;
-typedef  uintptr_t GLuint ;
-typedef  int /*<<< orphan*/  GLenum ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GL_BLUE ; 
- int /*<<< orphan*/  GL_CLAMP_TO_EDGE ; 
- int /*<<< orphan*/  GL_LINEAR ; 
- int /*<<< orphan*/  GL_LINEAR_MIPMAP_LINEAR ; 
- int /*<<< orphan*/  GL_LINEAR_MIPMAP_NEAREST ; 
- int /*<<< orphan*/  GL_NEAREST ; 
- int /*<<< orphan*/  GL_RED ; 
- int /*<<< orphan*/  GL_RGBA ; 
- int /*<<< orphan*/  GL_RGBA8 ; 
- int /*<<< orphan*/  GL_TEXTURE_2D ; 
- int /*<<< orphan*/  GL_TEXTURE_MAG_FILTER ; 
- int /*<<< orphan*/  GL_TEXTURE_MIN_FILTER ; 
- int /*<<< orphan*/  GL_TEXTURE_SWIZZLE_B ; 
- int /*<<< orphan*/  GL_TEXTURE_SWIZZLE_R ; 
- int /*<<< orphan*/  GL_TEXTURE_WRAP_S ; 
- int /*<<< orphan*/  GL_TEXTURE_WRAP_T ; 
- int /*<<< orphan*/  GL_UNPACK_ALIGNMENT ; 
- int /*<<< orphan*/  GL_UNPACK_ROW_LENGTH ; 
- int /*<<< orphan*/  GL_UNSIGNED_BYTE ; 
-#define  TEXTURE_FILTER_LINEAR 131 
-#define  TEXTURE_FILTER_MIPMAP_LINEAR 130 
-#define  TEXTURE_FILTER_MIPMAP_NEAREST 129 
-#define  TEXTURE_FILTER_NEAREST 128 
- int /*<<< orphan*/  glBindTexture (int /*<<< orphan*/ ,uintptr_t) ; 
- int /*<<< orphan*/  glGenTextures (int,uintptr_t*) ; 
- int /*<<< orphan*/  glGenerateMipmap (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glPixelStorei (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  glTexParameteri (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glTexStorage2D (int /*<<< orphan*/ ,unsigned int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glTexSubImage2D (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- unsigned int gl_core_num_miplevels (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct texture_image {int pixels; int height; int width; } ;
+typedef enum texture_filter_type { ____Placeholder_texture_filter_type } texture_filter_type ;
+typedef uintptr_t GLuint ;
+typedef int GLenum ;
+
+
+ int GL_BLUE ;
+ int GL_CLAMP_TO_EDGE ;
+ int GL_LINEAR ;
+ int GL_LINEAR_MIPMAP_LINEAR ;
+ int GL_LINEAR_MIPMAP_NEAREST ;
+ int GL_NEAREST ;
+ int GL_RED ;
+ int GL_RGBA ;
+ int GL_RGBA8 ;
+ int GL_TEXTURE_2D ;
+ int GL_TEXTURE_MAG_FILTER ;
+ int GL_TEXTURE_MIN_FILTER ;
+ int GL_TEXTURE_SWIZZLE_B ;
+ int GL_TEXTURE_SWIZZLE_R ;
+ int GL_TEXTURE_WRAP_S ;
+ int GL_TEXTURE_WRAP_T ;
+ int GL_UNPACK_ALIGNMENT ;
+ int GL_UNPACK_ROW_LENGTH ;
+ int GL_UNSIGNED_BYTE ;
+
+
+
+
+ int glBindTexture (int ,uintptr_t) ;
+ int glGenTextures (int,uintptr_t*) ;
+ int glGenerateMipmap (int ) ;
+ int glPixelStorei (int ,int) ;
+ int glTexParameteri (int ,int ,int ) ;
+ int glTexStorage2D (int ,unsigned int,int ,int ,int ) ;
+ int glTexSubImage2D (int ,int ,int ,int ,int ,int ,int ,int ,int ) ;
+ unsigned int gl_core_num_miplevels (int ,int ) ;
 
 __attribute__((used)) static void video_texture_load_gl_core(
       const struct texture_image *ti,
       enum texture_filter_type filter_type,
       uintptr_t *idptr)
 {
-   /* Generate the OpenGL texture object */
+
    GLuint id;
    unsigned levels;
    GLenum mag_filter, min_filter;
@@ -63,7 +63,7 @@ __attribute__((used)) static void video_texture_load_gl_core(
    glBindTexture(GL_TEXTURE_2D, id);
 
    levels = 1;
-   if (filter_type == TEXTURE_FILTER_MIPMAP_LINEAR || filter_type == TEXTURE_FILTER_MIPMAP_NEAREST)
+   if (filter_type == 130 || filter_type == 129)
       levels = gl_core_num_miplevels(ti->width, ti->height);
 
    glTexStorage2D(GL_TEXTURE_2D, levels, GL_RGBA8, ti->width, ti->height);
@@ -72,23 +72,23 @@ __attribute__((used)) static void video_texture_load_gl_core(
 
    switch (filter_type)
    {
-      case TEXTURE_FILTER_LINEAR:
+      case 131:
          mag_filter = GL_LINEAR;
          min_filter = GL_LINEAR;
          break;
 
-      case TEXTURE_FILTER_NEAREST:
+      case 128:
          mag_filter = GL_NEAREST;
          min_filter = GL_NEAREST;
          break;
 
-      case TEXTURE_FILTER_MIPMAP_NEAREST:
+      case 129:
          mag_filter = GL_LINEAR;
          min_filter = GL_LINEAR_MIPMAP_NEAREST;
          break;
 
-      case TEXTURE_FILTER_MIPMAP_LINEAR:
-	  default:
+      case 130:
+   default:
          mag_filter = GL_LINEAR;
          min_filter = GL_LINEAR_MIPMAP_LINEAR;
          break;

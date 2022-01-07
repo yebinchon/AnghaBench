@@ -1,60 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {char const* name; int /*<<< orphan*/  groups; int /*<<< orphan*/  brightness_set; } ;
-struct lm8323_pwm {int id; int running; int enabled; TYPE_1__ cdev; struct lm8323_chip* chip; int /*<<< orphan*/  lock; int /*<<< orphan*/  work; scalar_t__ desired_brightness; scalar_t__ brightness; scalar_t__ fade_time; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {char const* name; int groups; int brightness_set; } ;
+struct lm8323_pwm {int id; int running; int enabled; TYPE_1__ cdev; struct lm8323_chip* chip; int lock; int work; scalar_t__ desired_brightness; scalar_t__ brightness; scalar_t__ fade_time; } ;
 struct lm8323_chip {struct lm8323_pwm* pwm; } ;
 struct device {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BUG_ON (int) ; 
- int /*<<< orphan*/  INIT_WORK (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dev_err (struct device*,char*,int) ; 
- scalar_t__ led_classdev_register (struct device*,TYPE_1__*) ; 
- int /*<<< orphan*/  lm8323_pwm_groups ; 
- int /*<<< orphan*/  lm8323_pwm_set_brightness ; 
- int /*<<< orphan*/  lm8323_pwm_work ; 
- int /*<<< orphan*/  mutex_init (int /*<<< orphan*/ *) ; 
+
+ int BUG_ON (int) ;
+ int INIT_WORK (int *,int ) ;
+ int dev_err (struct device*,char*,int) ;
+ scalar_t__ led_classdev_register (struct device*,TYPE_1__*) ;
+ int lm8323_pwm_groups ;
+ int lm8323_pwm_set_brightness ;
+ int lm8323_pwm_work ;
+ int mutex_init (int *) ;
 
 __attribute__((used)) static int init_pwm(struct lm8323_chip *lm, int id, struct device *dev,
-		    const char *name)
+      const char *name)
 {
-	struct lm8323_pwm *pwm;
+ struct lm8323_pwm *pwm;
 
-	BUG_ON(id > 3);
+ BUG_ON(id > 3);
 
-	pwm = &lm->pwm[id - 1];
+ pwm = &lm->pwm[id - 1];
 
-	pwm->id = id;
-	pwm->fade_time = 0;
-	pwm->brightness = 0;
-	pwm->desired_brightness = 0;
-	pwm->running = false;
-	pwm->enabled = false;
-	INIT_WORK(&pwm->work, lm8323_pwm_work);
-	mutex_init(&pwm->lock);
-	pwm->chip = lm;
+ pwm->id = id;
+ pwm->fade_time = 0;
+ pwm->brightness = 0;
+ pwm->desired_brightness = 0;
+ pwm->running = 0;
+ pwm->enabled = 0;
+ INIT_WORK(&pwm->work, lm8323_pwm_work);
+ mutex_init(&pwm->lock);
+ pwm->chip = lm;
 
-	if (name) {
-		pwm->cdev.name = name;
-		pwm->cdev.brightness_set = lm8323_pwm_set_brightness;
-		pwm->cdev.groups = lm8323_pwm_groups;
-		if (led_classdev_register(dev, &pwm->cdev) < 0) {
-			dev_err(dev, "couldn't register PWM %d\n", id);
-			return -1;
-		}
-		pwm->enabled = true;
-	}
+ if (name) {
+  pwm->cdev.name = name;
+  pwm->cdev.brightness_set = lm8323_pwm_set_brightness;
+  pwm->cdev.groups = lm8323_pwm_groups;
+  if (led_classdev_register(dev, &pwm->cdev) < 0) {
+   dev_err(dev, "couldn't register PWM %d\n", id);
+   return -1;
+  }
+  pwm->enabled = 1;
+ }
 
-	return 0;
+ return 0;
 }

@@ -1,70 +1,70 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct snd_pcm_sw_params {int period_step; int avail_min; int start_threshold; int stop_threshold; int xfer_align; int boundary; scalar_t__ silence_threshold; scalar_t__ silence_size; int /*<<< orphan*/  tstamp_mode; int /*<<< orphan*/  flags; } ;
-struct snd_pcm_hw_params {int period_step; int avail_min; int start_threshold; int stop_threshold; int xfer_align; int boundary; scalar_t__ silence_threshold; scalar_t__ silence_size; int /*<<< orphan*/  tstamp_mode; int /*<<< orphan*/  flags; } ;
-struct pcm_config {int channels; int rate; int period_size; int period_count; int start_threshold; int stop_threshold; scalar_t__ silence_threshold; int /*<<< orphan*/  format; } ;
-struct pcm {int flags; int noirq_frames_per_msec; int buffer_size; scalar_t__ mmap_buffer; int boundary; int /*<<< orphan*/  fd; struct pcm_config config; } ;
-typedef  int /*<<< orphan*/  sparams ;
 
-/* Variables and functions */
- int EFAULT ; 
- int EINVAL ; 
- int INT_MAX ; 
- scalar_t__ MAP_FAILED ; 
- int MAP_FILE ; 
- int MAP_SHARED ; 
- int /*<<< orphan*/  PCM_FORMAT_S16_LE ; 
- int PCM_IN ; 
- int PCM_MMAP ; 
- int PCM_NOIRQ ; 
- int PROT_READ ; 
- int PROT_WRITE ; 
- int /*<<< orphan*/  RARCH_ERR (char*,...) ; 
- int /*<<< orphan*/  SNDRV_PCM_ACCESS_MMAP_INTERLEAVED ; 
- int /*<<< orphan*/  SNDRV_PCM_ACCESS_RW_INTERLEAVED ; 
- int /*<<< orphan*/  SNDRV_PCM_HW_PARAMS_NO_PERIOD_WAKEUP ; 
- int /*<<< orphan*/  SNDRV_PCM_HW_PARAM_ACCESS ; 
- int /*<<< orphan*/  SNDRV_PCM_HW_PARAM_CHANNELS ; 
- int /*<<< orphan*/  SNDRV_PCM_HW_PARAM_FORMAT ; 
- int /*<<< orphan*/  SNDRV_PCM_HW_PARAM_FRAME_BITS ; 
- int /*<<< orphan*/  SNDRV_PCM_HW_PARAM_PERIODS ; 
- int /*<<< orphan*/  SNDRV_PCM_HW_PARAM_PERIOD_SIZE ; 
- int /*<<< orphan*/  SNDRV_PCM_HW_PARAM_RATE ; 
- int /*<<< orphan*/  SNDRV_PCM_HW_PARAM_SAMPLE_BITS ; 
- int /*<<< orphan*/  SNDRV_PCM_HW_PARAM_SUBFORMAT ; 
- int /*<<< orphan*/  SNDRV_PCM_IOCTL_HW_PARAMS ; 
- int /*<<< orphan*/  SNDRV_PCM_IOCTL_SW_PARAMS ; 
- int /*<<< orphan*/  SNDRV_PCM_SUBFORMAT_STD ; 
- int /*<<< orphan*/  SNDRV_PCM_TSTAMP_ENABLE ; 
- int errno ; 
- scalar_t__ ioctl (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct snd_pcm_sw_params*) ; 
- int /*<<< orphan*/  memset (struct snd_pcm_sw_params*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ mmap (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- void* param_get_int (struct snd_pcm_sw_params*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  param_init (struct snd_pcm_sw_params*) ; 
- int /*<<< orphan*/  param_set_int (struct snd_pcm_sw_params*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  param_set_mask (struct snd_pcm_sw_params*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  param_set_min (struct snd_pcm_sw_params*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  pcm_format_to_alsa (int /*<<< orphan*/ ) ; 
- int pcm_format_to_bits (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pcm_frames_to_bytes (struct pcm*,int) ; 
+
+
+
+struct snd_pcm_sw_params {int period_step; int avail_min; int start_threshold; int stop_threshold; int xfer_align; int boundary; scalar_t__ silence_threshold; scalar_t__ silence_size; int tstamp_mode; int flags; } ;
+struct snd_pcm_hw_params {int period_step; int avail_min; int start_threshold; int stop_threshold; int xfer_align; int boundary; scalar_t__ silence_threshold; scalar_t__ silence_size; int tstamp_mode; int flags; } ;
+struct pcm_config {int channels; int rate; int period_size; int period_count; int start_threshold; int stop_threshold; scalar_t__ silence_threshold; int format; } ;
+struct pcm {int flags; int noirq_frames_per_msec; int buffer_size; scalar_t__ mmap_buffer; int boundary; int fd; struct pcm_config config; } ;
+typedef int sparams ;
+
+
+ int EFAULT ;
+ int EINVAL ;
+ int INT_MAX ;
+ scalar_t__ MAP_FAILED ;
+ int MAP_FILE ;
+ int MAP_SHARED ;
+ int PCM_FORMAT_S16_LE ;
+ int PCM_IN ;
+ int PCM_MMAP ;
+ int PCM_NOIRQ ;
+ int PROT_READ ;
+ int PROT_WRITE ;
+ int RARCH_ERR (char*,...) ;
+ int SNDRV_PCM_ACCESS_MMAP_INTERLEAVED ;
+ int SNDRV_PCM_ACCESS_RW_INTERLEAVED ;
+ int SNDRV_PCM_HW_PARAMS_NO_PERIOD_WAKEUP ;
+ int SNDRV_PCM_HW_PARAM_ACCESS ;
+ int SNDRV_PCM_HW_PARAM_CHANNELS ;
+ int SNDRV_PCM_HW_PARAM_FORMAT ;
+ int SNDRV_PCM_HW_PARAM_FRAME_BITS ;
+ int SNDRV_PCM_HW_PARAM_PERIODS ;
+ int SNDRV_PCM_HW_PARAM_PERIOD_SIZE ;
+ int SNDRV_PCM_HW_PARAM_RATE ;
+ int SNDRV_PCM_HW_PARAM_SAMPLE_BITS ;
+ int SNDRV_PCM_HW_PARAM_SUBFORMAT ;
+ int SNDRV_PCM_IOCTL_HW_PARAMS ;
+ int SNDRV_PCM_IOCTL_SW_PARAMS ;
+ int SNDRV_PCM_SUBFORMAT_STD ;
+ int SNDRV_PCM_TSTAMP_ENABLE ;
+ int errno ;
+ scalar_t__ ioctl (int ,int ,struct snd_pcm_sw_params*) ;
+ int memset (struct snd_pcm_sw_params*,int ,int) ;
+ scalar_t__ mmap (int *,int ,int,int,int ,int ) ;
+ void* param_get_int (struct snd_pcm_sw_params*,int ) ;
+ int param_init (struct snd_pcm_sw_params*) ;
+ int param_set_int (struct snd_pcm_sw_params*,int ,int) ;
+ int param_set_mask (struct snd_pcm_sw_params*,int ,int ) ;
+ int param_set_min (struct snd_pcm_sw_params*,int ,int) ;
+ int pcm_format_to_alsa (int ) ;
+ int pcm_format_to_bits (int ) ;
+ int pcm_frames_to_bytes (struct pcm*,int) ;
 
 __attribute__((used)) static int pcm_set_config(struct pcm *pcm, const struct pcm_config *config)
 {
     struct snd_pcm_sw_params sparams;
     struct snd_pcm_hw_params params;
 
-    if (pcm == NULL)
+    if (pcm == ((void*)0))
         return -EFAULT;
 
     if (config)
@@ -122,14 +122,14 @@ __attribute__((used)) static int pcm_set_config(struct pcm *pcm, const struct pc
         return -errno;
     }
 
-    /* get our refined hw_params */
+
     pcm->config.period_size = param_get_int(&params, SNDRV_PCM_HW_PARAM_PERIOD_SIZE);
     pcm->config.period_count = param_get_int(&params, SNDRV_PCM_HW_PARAM_PERIODS);
     pcm->buffer_size = config->period_count * config->period_size;
 
     if (pcm->flags & PCM_MMAP)
     {
-        pcm->mmap_buffer = mmap(NULL, pcm_frames_to_bytes(pcm, pcm->buffer_size),
+        pcm->mmap_buffer = mmap(((void*)0), pcm_frames_to_bytes(pcm, pcm->buffer_size),
                                 PROT_READ | PROT_WRITE, MAP_FILE | MAP_SHARED, pcm->fd, 0);
         if (pcm->mmap_buffer == MAP_FAILED)
         {
@@ -142,7 +142,7 @@ __attribute__((used)) static int pcm_set_config(struct pcm *pcm, const struct pc
     memset(&sparams, 0, sizeof(sparams));
     sparams.tstamp_mode = SNDRV_PCM_TSTAMP_ENABLE;
     sparams.period_step = 1;
-    sparams.avail_min   = 1;
+    sparams.avail_min = 1;
 
     if (!config->start_threshold)
     {
@@ -154,7 +154,7 @@ __attribute__((used)) static int pcm_set_config(struct pcm *pcm, const struct pc
     } else
         sparams.start_threshold = config->start_threshold;
 
-    /* pick a high stop threshold - todo: does this need further tuning */
+
     if (!config->stop_threshold)
     {
         if (pcm->flags & PCM_IN)
@@ -167,7 +167,7 @@ __attribute__((used)) static int pcm_set_config(struct pcm *pcm, const struct pc
     else
         sparams.stop_threshold = config->stop_threshold;
 
-    sparams.xfer_align = config->period_size / 2; /* needed for old kernels */
+    sparams.xfer_align = config->period_size / 2;
     sparams.silence_size = 0;
     sparams.silence_threshold = config->silence_threshold;
     pcm->boundary = sparams.boundary = pcm->buffer_size;

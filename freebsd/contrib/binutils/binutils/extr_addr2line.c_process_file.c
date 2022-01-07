@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  bfd ;
-typedef  int /*<<< orphan*/  asection ;
 
-/* Variables and functions */
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  bfd_archive ; 
- scalar_t__ bfd_check_format (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bfd_check_format_matches (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char***) ; 
- int /*<<< orphan*/  bfd_close (int /*<<< orphan*/ *) ; 
- scalar_t__ bfd_error_file_ambiguously_recognized ; 
- int /*<<< orphan*/  bfd_fatal (char const*) ; 
- scalar_t__ bfd_get_error () ; 
- int /*<<< orphan*/  bfd_get_filename (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * bfd_get_section_by_name (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  bfd_nonfatal (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bfd_object ; 
- int /*<<< orphan*/ * bfd_openr (char const*,char const*) ; 
- int /*<<< orphan*/  fatal (int /*<<< orphan*/ ,char const*,...) ; 
- int /*<<< orphan*/  free (char**) ; 
- int get_file_size (char const*) ; 
- int /*<<< orphan*/  list_matching_formats (char**) ; 
- int /*<<< orphan*/  slurp_symtab (int /*<<< orphan*/ *) ; 
- char** syms ; 
- int /*<<< orphan*/  translate_addresses (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  xexit (int) ; 
+
+
+
+typedef int bfd ;
+typedef int asection ;
+
+
+ int _ (char*) ;
+ int bfd_archive ;
+ scalar_t__ bfd_check_format (int *,int ) ;
+ int bfd_check_format_matches (int *,int ,char***) ;
+ int bfd_close (int *) ;
+ scalar_t__ bfd_error_file_ambiguously_recognized ;
+ int bfd_fatal (char const*) ;
+ scalar_t__ bfd_get_error () ;
+ int bfd_get_filename (int *) ;
+ int * bfd_get_section_by_name (int *,char const*) ;
+ int bfd_nonfatal (int ) ;
+ int bfd_object ;
+ int * bfd_openr (char const*,char const*) ;
+ int fatal (int ,char const*,...) ;
+ int free (char**) ;
+ int get_file_size (char const*) ;
+ int list_matching_formats (char**) ;
+ int slurp_symtab (int *) ;
+ char** syms ;
+ int translate_addresses (int *,int *) ;
+ int xexit (int) ;
 
 __attribute__((used)) static int
 process_file (const char *file_name, const char *section_name,
-	      const char *target)
+       const char *target)
 {
   bfd *abfd;
   asection *section;
@@ -48,7 +48,7 @@ process_file (const char *file_name, const char *section_name,
     return 1;
 
   abfd = bfd_openr (file_name, target);
-  if (abfd == NULL)
+  if (abfd == ((void*)0))
     bfd_fatal (file_name);
 
   if (bfd_check_format (abfd, bfd_archive))
@@ -58,30 +58,30 @@ process_file (const char *file_name, const char *section_name,
     {
       bfd_nonfatal (bfd_get_filename (abfd));
       if (bfd_get_error () == bfd_error_file_ambiguously_recognized)
-	{
-	  list_matching_formats (matching);
-	  free (matching);
-	}
+ {
+   list_matching_formats (matching);
+   free (matching);
+ }
       xexit (1);
     }
 
-  if (section_name != NULL)
+  if (section_name != ((void*)0))
     {
       section = bfd_get_section_by_name (abfd, section_name);
-      if (section == NULL)
-	fatal (_("%s: cannot find section %s"), file_name, section_name);
+      if (section == ((void*)0))
+ fatal (_("%s: cannot find section %s"), file_name, section_name);
     }
   else
-    section = NULL;
+    section = ((void*)0);
 
   slurp_symtab (abfd);
 
   translate_addresses (abfd, section);
 
-  if (syms != NULL)
+  if (syms != ((void*)0))
     {
       free (syms);
-      syms = NULL;
+      syms = ((void*)0);
     }
 
   bfd_close (abfd);

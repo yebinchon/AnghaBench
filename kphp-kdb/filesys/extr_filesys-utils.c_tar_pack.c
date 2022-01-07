@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct stat {int dummy; } ;
-typedef  int /*<<< orphan*/  gzFile ;
-typedef  int /*<<< orphan*/  dyn_mark_t ;
+typedef int gzFile ;
+typedef int dyn_mark_t ;
 
-/* Variables and functions */
- int O_CREAT ; 
- int O_EXCL ; 
- int O_TRUNC ; 
- int O_WRONLY ; 
- int TAR_PACK_ERR_DUP ; 
- int TAR_PACK_ERR_OPEN ; 
- scalar_t__ Z_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ close (int) ; 
- int dup (int) ; 
- int /*<<< orphan*/  dyn_mark (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dyn_release (int /*<<< orphan*/ ) ; 
- scalar_t__ fsync (int) ; 
- scalar_t__ gzclose (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gzdopen (int,char*) ; 
- int gzwrite (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  memset (char*,int /*<<< orphan*/ ,int) ; 
- int open (char const* const,int,int) ; 
- int rec_tar_pack (int /*<<< orphan*/ ,char const* const,char*,struct stat*) ; 
- int /*<<< orphan*/  sprintf (char*,char*,int) ; 
- scalar_t__ stat (char const* const,struct stat*) ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
+
+ int O_CREAT ;
+ int O_EXCL ;
+ int O_TRUNC ;
+ int O_WRONLY ;
+ int TAR_PACK_ERR_DUP ;
+ int TAR_PACK_ERR_OPEN ;
+ scalar_t__ Z_OK ;
+ int assert (int) ;
+ scalar_t__ close (int) ;
+ int dup (int) ;
+ int dyn_mark (int ) ;
+ int dyn_release (int ) ;
+ scalar_t__ fsync (int) ;
+ scalar_t__ gzclose (int ) ;
+ int gzdopen (int,char*) ;
+ int gzwrite (int ,char*,int) ;
+ int memset (char*,int ,int) ;
+ int open (char const* const,int,int) ;
+ int rec_tar_pack (int ,char const* const,char*,struct stat*) ;
+ int sprintf (char*,char*,int) ;
+ scalar_t__ stat (char const* const,struct stat*) ;
+ int strcpy (char*,char*) ;
 
 int tar_pack (const char *const tar_filename, const char *const path, int compression_level) {
   char mode[8];

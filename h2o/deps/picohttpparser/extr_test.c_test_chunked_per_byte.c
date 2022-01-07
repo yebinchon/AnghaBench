@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct phr_chunked_decoder {int consume_trailer; int /*<<< orphan*/  member_0; } ;
-typedef  int ssize_t ;
 
-/* Variables and functions */
- int bufis (char*,int,char const*) ; 
- int /*<<< orphan*/  free (char*) ; 
- char* malloc (int) ; 
- int /*<<< orphan*/  note (char*,int) ; 
- int /*<<< orphan*/  ok (int) ; 
- int phr_decode_chunked (struct phr_chunked_decoder*,char*,size_t*) ; 
- int /*<<< orphan*/  strcpy (char*,char const*) ; 
- size_t strlen (char const*) ; 
+
+
+
+struct phr_chunked_decoder {int consume_trailer; int member_0; } ;
+typedef int ssize_t ;
+
+
+ int bufis (char*,int,char const*) ;
+ int free (char*) ;
+ char* malloc (int) ;
+ int note (char*,int) ;
+ int ok (int) ;
+ int phr_decode_chunked (struct phr_chunked_decoder*,char*,size_t*) ;
+ int strcpy (char*,char const*) ;
+ size_t strlen (char const*) ;
 
 __attribute__((used)) static void test_chunked_per_byte(int line, int consume_trailer, const char *encoded, const char *decoded, ssize_t expected)
 {

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  IP ;
 
-/* Variables and functions */
- scalar_t__ IsIP6 (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int IP ;
+
+
+ scalar_t__ IsIP6 (int *) ;
 
 bool IsIP4(IP *ip)
 {
-	// Validate arguments
-	if (ip == NULL)
-	{
-		return false;
-	}
 
-	return (IsIP6(ip) ? false : true);
+ if (ip == ((void*)0))
+ {
+  return 0;
+ }
+
+ return (IsIP6(ip) ? 0 : 1);
 }

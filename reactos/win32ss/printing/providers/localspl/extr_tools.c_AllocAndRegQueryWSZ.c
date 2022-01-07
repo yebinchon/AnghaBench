@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * PWSTR ;
-typedef  int /*<<< orphan*/  PCWSTR ;
-typedef  int /*<<< orphan*/ * PBYTE ;
-typedef  scalar_t__ LONG ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  int /*<<< orphan*/  DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * DllAllocSplMem (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DllFreeSplMem (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ERR (char*,...) ; 
- scalar_t__ ERROR_SUCCESS ; 
- scalar_t__ RegQueryValueExW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int * PWSTR ;
+typedef int PCWSTR ;
+typedef int * PBYTE ;
+typedef scalar_t__ LONG ;
+typedef int HKEY ;
+typedef int DWORD ;
+
+
+ int * DllAllocSplMem (int ) ;
+ int DllFreeSplMem (int *) ;
+ int ERR (char*,...) ;
+ scalar_t__ ERROR_SUCCESS ;
+ scalar_t__ RegQueryValueExW (int ,int ,int *,int *,int *,int *) ;
 
 PWSTR
 AllocAndRegQueryWSZ(HKEY hKey, PCWSTR pwszValueName)
@@ -31,29 +31,29 @@ AllocAndRegQueryWSZ(HKEY hKey, PCWSTR pwszValueName)
     LONG lStatus;
     PWSTR pwszValue;
 
-    // Determine the size of the required buffer.
-    lStatus = RegQueryValueExW(hKey, pwszValueName, NULL, NULL, NULL, &cbNeeded);
+
+    lStatus = RegQueryValueExW(hKey, pwszValueName, ((void*)0), ((void*)0), ((void*)0), &cbNeeded);
     if (lStatus != ERROR_SUCCESS)
     {
         ERR("RegQueryValueExW failed with status %ld!\n", lStatus);
-        return NULL;
+        return ((void*)0);
     }
 
-    // Allocate it.
+
     pwszValue = DllAllocSplMem(cbNeeded);
     if (!pwszValue)
     {
         ERR("DllAllocSplMem failed!\n");
-        return NULL;
+        return ((void*)0);
     }
 
-    // Now get the actual value.
-    lStatus = RegQueryValueExW(hKey, pwszValueName, NULL, NULL, (PBYTE)pwszValue, &cbNeeded);
+
+    lStatus = RegQueryValueExW(hKey, pwszValueName, ((void*)0), ((void*)0), (PBYTE)pwszValue, &cbNeeded);
     if (lStatus != ERROR_SUCCESS)
     {
         ERR("RegQueryValueExW failed with status %ld!\n", lStatus);
         DllFreeSplMem(pwszValue);
-        return NULL;
+        return ((void*)0);
     }
 
     return pwszValue;

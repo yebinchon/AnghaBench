@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  CEC_SFTOption; int /*<<< orphan*/  CEC_BRDNoGen; int /*<<< orphan*/  CEC_LongBitPeriodError; int /*<<< orphan*/  CEC_BitRisingError; int /*<<< orphan*/  CEC_StopReception; int /*<<< orphan*/  CEC_RxTolerance; int /*<<< orphan*/  CEC_SignalFreeTime; } ;
-typedef  TYPE_1__ CEC_InitTypeDef ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CEC_BRDNoGen_Off ; 
- int /*<<< orphan*/  CEC_BitRisingError_Off ; 
- int /*<<< orphan*/  CEC_LongBitPeriodError_Off ; 
- int /*<<< orphan*/  CEC_RxTolerance_Standard ; 
- int /*<<< orphan*/  CEC_SFTOption_Off ; 
- int /*<<< orphan*/  CEC_SignalFreeTime_Standard ; 
- int /*<<< orphan*/  CEC_StopReception_Off ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int CEC_SFTOption; int CEC_BRDNoGen; int CEC_LongBitPeriodError; int CEC_BitRisingError; int CEC_StopReception; int CEC_RxTolerance; int CEC_SignalFreeTime; } ;
+typedef TYPE_1__ CEC_InitTypeDef ;
+
+
+ int CEC_BRDNoGen_Off ;
+ int CEC_BitRisingError_Off ;
+ int CEC_LongBitPeriodError_Off ;
+ int CEC_RxTolerance_Standard ;
+ int CEC_SFTOption_Off ;
+ int CEC_SignalFreeTime_Standard ;
+ int CEC_StopReception_Off ;
 
 void CEC_StructInit(CEC_InitTypeDef* CEC_InitStruct)
 {

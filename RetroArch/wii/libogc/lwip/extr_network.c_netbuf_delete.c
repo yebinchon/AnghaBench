@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct netbuf {int /*<<< orphan*/ * p; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MEMP_NETBUF ; 
- int /*<<< orphan*/  memp_free (int /*<<< orphan*/ ,struct netbuf*) ; 
- int /*<<< orphan*/  pbuf_free (int /*<<< orphan*/ *) ; 
+
+
+
+struct netbuf {int * p; } ;
+
+
+ int MEMP_NETBUF ;
+ int memp_free (int ,struct netbuf*) ;
+ int pbuf_free (int *) ;
 
 __attribute__((used)) static void netbuf_delete(struct netbuf *buf)
 {
-	if(buf!=NULL) {
-		if(buf->p!=NULL) pbuf_free(buf->p);
-		memp_free(MEMP_NETBUF,buf);
-	}
+ if(buf!=((void*)0)) {
+  if(buf->p!=((void*)0)) pbuf_free(buf->p);
+  memp_free(MEMP_NETBUF,buf);
+ }
 }

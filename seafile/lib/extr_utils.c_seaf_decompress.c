@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {int avail_in; int avail_out; unsigned char* next_out; int /*<<< orphan*/ * next_in; void* opaque; void* zfree; void* zalloc; } ;
-typedef  TYPE_1__ z_stream ;
-typedef  int /*<<< orphan*/  guint8 ;
+
+
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_9__ {int avail_in; int avail_out; unsigned char* next_out; int * next_in; void* opaque; void* zfree; void* zalloc; } ;
+typedef TYPE_1__ z_stream ;
+typedef int guint8 ;
 struct TYPE_10__ {int len; } ;
-typedef  TYPE_2__ GByteArray ;
+typedef TYPE_2__ GByteArray ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
- int ZLIB_BUF_SIZE ; 
- int /*<<< orphan*/  Z_NO_FLUSH ; 
- void* Z_NULL ; 
- int Z_OK ; 
- int Z_STREAM_END ; 
- int /*<<< orphan*/  g_byte_array_append (TYPE_2__*,unsigned char*,unsigned int) ; 
- int /*<<< orphan*/ * g_byte_array_free (TYPE_2__*,int /*<<< orphan*/ ) ; 
- TYPE_2__* g_byte_array_new () ; 
- int /*<<< orphan*/  g_warning (char*) ; 
- int inflate (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  inflateEnd (TYPE_1__*) ; 
- int inflateInit (TYPE_1__*) ; 
+
+ int FALSE ;
+ int TRUE ;
+ int ZLIB_BUF_SIZE ;
+ int Z_NO_FLUSH ;
+ void* Z_NULL ;
+ int Z_OK ;
+ int Z_STREAM_END ;
+ int g_byte_array_append (TYPE_2__*,unsigned char*,unsigned int) ;
+ int * g_byte_array_free (TYPE_2__*,int ) ;
+ TYPE_2__* g_byte_array_new () ;
+ int g_warning (char*) ;
+ int inflate (TYPE_1__*,int ) ;
+ int inflateEnd (TYPE_1__*) ;
+ int inflateInit (TYPE_1__*) ;
 
 int
 seaf_decompress (guint8 *input, int inlen, guint8 **output, int *outlen)
@@ -48,7 +48,7 @@ seaf_decompress (guint8 *input, int inlen, guint8 **output, int *outlen)
         return -1;
     }
 
-    /* allocate inflate state */
+
     strm.zalloc = Z_NULL;
     strm.zfree = Z_NULL;
     strm.opaque = Z_NULL;
@@ -77,7 +77,7 @@ seaf_decompress (guint8 *input, int inlen, guint8 **output, int *outlen)
     } while (ret != Z_STREAM_END);
 
 out:
-    /* clean up and return */
+
     (void)inflateEnd(&strm);
 
     if (ret == Z_STREAM_END) {

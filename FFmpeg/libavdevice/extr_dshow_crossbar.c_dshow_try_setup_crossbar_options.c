@@ -1,68 +1,68 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct dshow_ctx {scalar_t__ show_analog_tv_tuner_audio_dialog; scalar_t__ show_analog_tv_tuner_dialog; scalar_t__ show_audio_crossbar_connection_dialog; scalar_t__ show_video_crossbar_connection_dialog; } ;
-typedef  enum dshowDeviceType { ____Placeholder_dshowDeviceType } dshowDeviceType ;
+typedef enum dshowDeviceType { ____Placeholder_dshowDeviceType } dshowDeviceType ;
 struct TYPE_6__ {struct dshow_ctx* priv_data; } ;
-typedef  int /*<<< orphan*/  ICaptureGraphBuilder2 ;
-typedef  int /*<<< orphan*/  IBaseFilter ;
-typedef  int /*<<< orphan*/  IAMTVTuner ;
-typedef  int /*<<< orphan*/  IAMCrossbar ;
-typedef  int /*<<< orphan*/  IAMAudioInputMixer ;
-typedef  scalar_t__ HRESULT ;
-typedef  int /*<<< orphan*/  GUID ;
-typedef  TYPE_1__ AVFormatContext ;
+typedef int ICaptureGraphBuilder2 ;
+typedef int IBaseFilter ;
+typedef int IAMTVTuner ;
+typedef int IAMCrossbar ;
+typedef int IAMAudioInputMixer ;
+typedef scalar_t__ HRESULT ;
+typedef int GUID ;
+typedef TYPE_1__ AVFormatContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_LOG_WARNING ; 
- int AudioDevice ; 
- scalar_t__ IAMCrossbar_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IAMCrossbar_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IAMTVTuner_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IBaseFilter_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ ICaptureGraphBuilder2_FindInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IID_IAMCrossbar ; 
- int /*<<< orphan*/  IID_IAMTVAudio ; 
- int /*<<< orphan*/  IID_IAMTVTuner ; 
- int /*<<< orphan*/  IID_IBaseFilter ; 
- int /*<<< orphan*/  LOOK_UPSTREAM_ONLY ; 
- scalar_t__ S_OK ; 
- int VideoDevice ; 
- int /*<<< orphan*/  av_log (TYPE_1__*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  dshow_show_filter_properties (int /*<<< orphan*/ *,TYPE_1__*) ; 
- scalar_t__ setup_crossbar_options (int /*<<< orphan*/ *,int,TYPE_1__*) ; 
+
+ int AV_LOG_WARNING ;
+ int AudioDevice ;
+ scalar_t__ IAMCrossbar_QueryInterface (int *,int *,void**) ;
+ int IAMCrossbar_Release (int *) ;
+ int IAMTVTuner_Release (int *) ;
+ int IBaseFilter_Release (int *) ;
+ scalar_t__ ICaptureGraphBuilder2_FindInterface (int *,int *,int const*,int *,int *,void**) ;
+ int IID_IAMCrossbar ;
+ int IID_IAMTVAudio ;
+ int IID_IAMTVTuner ;
+ int IID_IBaseFilter ;
+ int LOOK_UPSTREAM_ONLY ;
+ scalar_t__ S_OK ;
+ int VideoDevice ;
+ int av_log (TYPE_1__*,int ,char*) ;
+ int dshow_show_filter_properties (int *,TYPE_1__*) ;
+ scalar_t__ setup_crossbar_options (int *,int,TYPE_1__*) ;
 
 HRESULT
 dshow_try_setup_crossbar_options(ICaptureGraphBuilder2 *graph_builder2,
     IBaseFilter *device_filter, enum dshowDeviceType devtype, AVFormatContext *avctx)
 {
     struct dshow_ctx *ctx = avctx->priv_data;
-    IAMCrossbar *cross_bar = NULL;
-    IBaseFilter *cross_bar_base_filter = NULL;
-    IAMTVTuner *tv_tuner_filter = NULL;
-    IBaseFilter *tv_tuner_base_filter = NULL;
-    IAMAudioInputMixer *tv_audio_filter = NULL;
-    IBaseFilter *tv_audio_base_filter = NULL;
+    IAMCrossbar *cross_bar = ((void*)0);
+    IBaseFilter *cross_bar_base_filter = ((void*)0);
+    IAMTVTuner *tv_tuner_filter = ((void*)0);
+    IBaseFilter *tv_tuner_base_filter = ((void*)0);
+    IAMAudioInputMixer *tv_audio_filter = ((void*)0);
+    IBaseFilter *tv_audio_base_filter = ((void*)0);
     HRESULT hr;
 
-    hr = ICaptureGraphBuilder2_FindInterface(graph_builder2, &LOOK_UPSTREAM_ONLY, (const GUID *) NULL,
+    hr = ICaptureGraphBuilder2_FindInterface(graph_builder2, &LOOK_UPSTREAM_ONLY, (const GUID *) ((void*)0),
             device_filter, &IID_IAMCrossbar, (void**) &cross_bar);
     if (hr != S_OK) {
-        /* no crossbar found */
+
         hr = S_OK;
         goto end;
     }
-    /* TODO some TV tuners apparently have multiple crossbars? */
+
 
     if (devtype == VideoDevice && ctx->show_video_crossbar_connection_dialog ||
         devtype == AudioDevice && ctx->show_audio_crossbar_connection_dialog) {
@@ -73,7 +73,7 @@ dshow_try_setup_crossbar_options(ICaptureGraphBuilder2 *graph_builder2,
     }
 
     if (devtype == VideoDevice && ctx->show_analog_tv_tuner_dialog) {
-        hr = ICaptureGraphBuilder2_FindInterface(graph_builder2, &LOOK_UPSTREAM_ONLY, NULL,
+        hr = ICaptureGraphBuilder2_FindInterface(graph_builder2, &LOOK_UPSTREAM_ONLY, ((void*)0),
              device_filter, &IID_IAMTVTuner, (void**) &tv_tuner_filter);
         if (hr == S_OK) {
             hr = IAMCrossbar_QueryInterface(tv_tuner_filter, &IID_IBaseFilter, (void **) &tv_tuner_base_filter);
@@ -85,7 +85,7 @@ dshow_try_setup_crossbar_options(ICaptureGraphBuilder2 *graph_builder2,
         }
     }
     if (devtype == AudioDevice && ctx->show_analog_tv_tuner_audio_dialog) {
-        hr = ICaptureGraphBuilder2_FindInterface(graph_builder2, &LOOK_UPSTREAM_ONLY, NULL,
+        hr = ICaptureGraphBuilder2_FindInterface(graph_builder2, &LOOK_UPSTREAM_ONLY, ((void*)0),
              device_filter, &IID_IAMTVAudio, (void**) &tv_audio_filter);
         if (hr == S_OK) {
             hr = IAMCrossbar_QueryInterface(tv_audio_filter, &IID_IBaseFilter, (void **) &tv_audio_base_filter);

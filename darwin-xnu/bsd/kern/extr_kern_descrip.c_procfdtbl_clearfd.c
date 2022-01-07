@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct proc {TYPE_1__* p_fd; } ;
-struct TYPE_2__ {int* fd_ofileflags; int /*<<< orphan*/ ** fd_ofiles; } ;
+struct TYPE_2__ {int* fd_ofileflags; int ** fd_ofiles; } ;
 
-/* Variables and functions */
- int UF_RESVWAIT ; 
- int /*<<< orphan*/  wakeup (TYPE_1__**) ; 
+
+ int UF_RESVWAIT ;
+ int wakeup (TYPE_1__**) ;
 
 void
 procfdtbl_clearfd(struct proc * p, int fd)
 {
-	int waiting;
+ int waiting;
 
-	waiting = (p->p_fd->fd_ofileflags[fd] & UF_RESVWAIT);
-	p->p_fd->fd_ofiles[fd] = NULL;
-	p->p_fd->fd_ofileflags[fd] = 0;
-	if ( waiting == UF_RESVWAIT) {
-		wakeup(&p->p_fd);
-	}
+ waiting = (p->p_fd->fd_ofileflags[fd] & UF_RESVWAIT);
+ p->p_fd->fd_ofiles[fd] = ((void*)0);
+ p->p_fd->fd_ofileflags[fd] = 0;
+ if ( waiting == UF_RESVWAIT) {
+  wakeup(&p->p_fd);
+ }
 }

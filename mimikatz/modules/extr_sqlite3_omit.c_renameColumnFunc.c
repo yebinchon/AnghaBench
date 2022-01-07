@@ -1,85 +1,85 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_51__   TYPE_8__ ;
-typedef  struct TYPE_50__   TYPE_7__ ;
-typedef  struct TYPE_49__   TYPE_6__ ;
-typedef  struct TYPE_48__   TYPE_5__ ;
-typedef  struct TYPE_47__   TYPE_4__ ;
-typedef  struct TYPE_46__   TYPE_3__ ;
-typedef  struct TYPE_45__   TYPE_2__ ;
-typedef  struct TYPE_44__   TYPE_25__ ;
-typedef  struct TYPE_43__   TYPE_1__ ;
-typedef  struct TYPE_42__   TYPE_12__ ;
-typedef  struct TYPE_41__   TYPE_11__ ;
-typedef  struct TYPE_40__   TYPE_10__ ;
 
-/* Type definitions */
-typedef  scalar_t__ sqlite3_xauth ;
-typedef  int /*<<< orphan*/  sqlite3_value ;
-typedef  int /*<<< orphan*/  sqlite3_context ;
+
+
+typedef struct TYPE_51__ TYPE_8__ ;
+typedef struct TYPE_50__ TYPE_7__ ;
+typedef struct TYPE_49__ TYPE_6__ ;
+typedef struct TYPE_48__ TYPE_5__ ;
+typedef struct TYPE_47__ TYPE_4__ ;
+typedef struct TYPE_46__ TYPE_3__ ;
+typedef struct TYPE_45__ TYPE_2__ ;
+typedef struct TYPE_44__ TYPE_25__ ;
+typedef struct TYPE_43__ TYPE_1__ ;
+typedef struct TYPE_42__ TYPE_12__ ;
+typedef struct TYPE_41__ TYPE_11__ ;
+typedef struct TYPE_40__ TYPE_10__ ;
+
+
+typedef scalar_t__ sqlite3_xauth ;
+typedef int sqlite3_value ;
+typedef int sqlite3_context ;
 struct TYPE_48__ {scalar_t__ xAuth; scalar_t__ mallocFailed; } ;
-typedef  TYPE_5__ sqlite3 ;
-typedef  int /*<<< orphan*/  sCtx ;
+typedef TYPE_5__ sqlite3 ;
+typedef int sCtx ;
 struct TYPE_46__ {TYPE_6__* pRename; } ;
-struct TYPE_49__ {int iCol; int /*<<< orphan*/  pList; TYPE_8__* pTab; TYPE_3__ u; int /*<<< orphan*/  xSelectCallback; int /*<<< orphan*/  xExprCallback; TYPE_10__* pParse; } ;
-typedef  TYPE_6__ Walker ;
-struct TYPE_50__ {int /*<<< orphan*/ * pExprList; int /*<<< orphan*/  pIdList; TYPE_2__* pUpsert; scalar_t__ zTarget; struct TYPE_50__* pNext; } ;
-typedef  TYPE_7__ TriggerStep ;
-struct TYPE_51__ {int nCol; int iPKey; char const* zName; TYPE_12__* pFKey; TYPE_11__* pIndex; int /*<<< orphan*/  pCheck; TYPE_4__* aCol; int /*<<< orphan*/ * pSelect; } ;
-typedef  TYPE_8__ Table ;
+struct TYPE_49__ {int iCol; int pList; TYPE_8__* pTab; TYPE_3__ u; int xSelectCallback; int xExprCallback; TYPE_10__* pParse; } ;
+typedef TYPE_6__ Walker ;
+struct TYPE_50__ {int * pExprList; int pIdList; TYPE_2__* pUpsert; scalar_t__ zTarget; struct TYPE_50__* pNext; } ;
+typedef TYPE_7__ TriggerStep ;
+struct TYPE_51__ {int nCol; int iPKey; char const* zName; TYPE_12__* pFKey; TYPE_11__* pIndex; int pCheck; TYPE_4__* aCol; int * pSelect; } ;
+typedef TYPE_8__ Table ;
 struct TYPE_47__ {char* zName; } ;
-struct TYPE_45__ {int /*<<< orphan*/ * pUpsertSet; } ;
-struct TYPE_44__ {int /*<<< orphan*/  pColumns; TYPE_7__* step_list; } ;
+struct TYPE_45__ {int * pUpsertSet; } ;
+struct TYPE_44__ {int pColumns; TYPE_7__* step_list; } ;
 struct TYPE_43__ {int iFrom; char const* zCol; } ;
 struct TYPE_42__ {int nCol; char const* zTo; TYPE_1__* aCol; struct TYPE_42__* pNextFrom; } ;
-struct TYPE_41__ {int /*<<< orphan*/  pPartIdxWhere; int /*<<< orphan*/  aColExpr; struct TYPE_41__* pNext; } ;
+struct TYPE_41__ {int pPartIdxWhere; int aColExpr; struct TYPE_41__* pNext; } ;
 struct TYPE_40__ {int rc; scalar_t__ zErrMsg; TYPE_25__* pNewTrigger; TYPE_8__* pTriggerTab; TYPE_11__* pNewIndex; TYPE_8__* pNewTable; } ;
-typedef  int /*<<< orphan*/  Select ;
-typedef  TYPE_6__ RenameCtx ;
-typedef  TYPE_10__ Parse ;
-typedef  TYPE_11__ Index ;
-typedef  TYPE_12__ FKey ;
-typedef  int /*<<< orphan*/  ExprList ;
+typedef int Select ;
+typedef TYPE_6__ RenameCtx ;
+typedef TYPE_10__ Parse ;
+typedef TYPE_11__ Index ;
+typedef TYPE_12__ FKey ;
+typedef int ExprList ;
 
-/* Variables and functions */
- int SQLITE_NOMEM ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  UNUSED_PARAMETER (int) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  memset (TYPE_6__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  renameColumnElistNames (TYPE_10__*,TYPE_6__*,int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  renameColumnExprCb ; 
- int /*<<< orphan*/  renameColumnIdlistNames (TYPE_10__*,TYPE_6__*,int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  renameColumnParseError (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_10__*) ; 
- int /*<<< orphan*/  renameColumnSelectCb ; 
- int renameEditSql (int /*<<< orphan*/ *,TYPE_6__*,char const*,char const*,int) ; 
- int /*<<< orphan*/  renameParseCleanup (TYPE_10__*) ; 
- int renameParseSql (TYPE_10__*,char const*,int /*<<< orphan*/ ,TYPE_5__*,char const*,int) ; 
- int renameResolveTrigger (TYPE_10__*,char const*) ; 
- int /*<<< orphan*/  renameTokenFind (TYPE_10__*,TYPE_6__*,void*) ; 
- int /*<<< orphan*/  renameTokenFree (TYPE_5__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  renameWalkTrigger (TYPE_6__*,TYPE_25__*) ; 
- int /*<<< orphan*/  sqlite3BtreeEnterAll (TYPE_5__*) ; 
- int /*<<< orphan*/  sqlite3BtreeLeaveAll (TYPE_5__*) ; 
- TYPE_8__* sqlite3FindTable (TYPE_5__*,char const*,char const*) ; 
- TYPE_8__* sqlite3LocateTable (TYPE_10__*,int /*<<< orphan*/ ,scalar_t__,char const*) ; 
- int /*<<< orphan*/  sqlite3SelectPrep (TYPE_10__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3WalkExpr (TYPE_6__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3WalkExprList (TYPE_6__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3WalkSelect (TYPE_6__*,int /*<<< orphan*/ *) ; 
- TYPE_5__* sqlite3_context_db_handle (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_result_error_code (int /*<<< orphan*/ *,int) ; 
- scalar_t__ sqlite3_stricmp (char const*,char const*) ; 
- int sqlite3_value_int (int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3_value_text (int /*<<< orphan*/ *) ; 
+
+ int SQLITE_NOMEM ;
+ int SQLITE_OK ;
+ int UNUSED_PARAMETER (int) ;
+ int assert (int) ;
+ int memset (TYPE_6__*,int ,int) ;
+ int renameColumnElistNames (TYPE_10__*,TYPE_6__*,int *,char const*) ;
+ int renameColumnExprCb ;
+ int renameColumnIdlistNames (TYPE_10__*,TYPE_6__*,int ,char const*) ;
+ int renameColumnParseError (int *,int ,int *,int *,TYPE_10__*) ;
+ int renameColumnSelectCb ;
+ int renameEditSql (int *,TYPE_6__*,char const*,char const*,int) ;
+ int renameParseCleanup (TYPE_10__*) ;
+ int renameParseSql (TYPE_10__*,char const*,int ,TYPE_5__*,char const*,int) ;
+ int renameResolveTrigger (TYPE_10__*,char const*) ;
+ int renameTokenFind (TYPE_10__*,TYPE_6__*,void*) ;
+ int renameTokenFree (TYPE_5__*,int ) ;
+ int renameWalkTrigger (TYPE_6__*,TYPE_25__*) ;
+ int sqlite3BtreeEnterAll (TYPE_5__*) ;
+ int sqlite3BtreeLeaveAll (TYPE_5__*) ;
+ TYPE_8__* sqlite3FindTable (TYPE_5__*,char const*,char const*) ;
+ TYPE_8__* sqlite3LocateTable (TYPE_10__*,int ,scalar_t__,char const*) ;
+ int sqlite3SelectPrep (TYPE_10__*,int *,int ) ;
+ int sqlite3WalkExpr (TYPE_6__*,int ) ;
+ int sqlite3WalkExprList (TYPE_6__*,int ) ;
+ int sqlite3WalkSelect (TYPE_6__*,int *) ;
+ TYPE_5__* sqlite3_context_db_handle (int *) ;
+ int sqlite3_result_error_code (int *,int) ;
+ scalar_t__ sqlite3_stricmp (char const*,char const*) ;
+ int sqlite3_value_int (int *) ;
+ scalar_t__ sqlite3_value_text (int *) ;
 
 __attribute__((used)) static void renameColumnFunc(
   sqlite3_context *context,
@@ -102,9 +102,9 @@ __attribute__((used)) static void renameColumnFunc(
   Index *pIdx;
   int i;
   Table *pTab;
-#ifndef SQLITE_OMIT_AUTHORIZATION
+
   sqlite3_xauth xAuth = db->xAuth;
-#endif
+
 
   UNUSED_PARAMETER(NotUsed);
   if( zSql==0 ) return;
@@ -121,12 +121,12 @@ __attribute__((used)) static void renameColumnFunc(
   memset(&sCtx, 0, sizeof(sCtx));
   sCtx.iCol = ((iCol==pTab->iPKey) ? -1 : iCol);
 
-#ifndef SQLITE_OMIT_AUTHORIZATION
+
   db->xAuth = 0;
-#endif
+
   rc = renameParseSql(&sParse, zDb, 0, db, zSql, bTemp);
 
-  /* Find tokens that need to be replaced. */
+
   memset(&sWalker, 0, sizeof(Walker));
   sWalker.pParse = &sParse;
   sWalker.xExprCallback = renameColumnExprCb;
@@ -146,7 +146,7 @@ __attribute__((used)) static void renameColumnFunc(
       }
       if( rc!=SQLITE_OK ) goto renameColumnFunc_done;
     }else{
-      /* A regular table */
+
       int bFKOnly = sqlite3_stricmp(zTable, sParse.pNewTable->zName);
       FKey *pFKey;
       assert( sParse.pNewTable->pSelect==0 );
@@ -184,13 +184,13 @@ __attribute__((used)) static void renameColumnFunc(
     sqlite3WalkExprList(&sWalker, sParse.pNewIndex->aColExpr);
     sqlite3WalkExpr(&sWalker, sParse.pNewIndex->pPartIdxWhere);
   }else{
-    /* A trigger */
+
     TriggerStep *pStep;
     rc = renameResolveTrigger(&sParse, (bTemp ? 0 : zDb));
     if( rc!=SQLITE_OK ) goto renameColumnFunc_done;
 
     for(pStep=sParse.pNewTrigger->step_list; pStep; pStep=pStep->pNext){
-      if( pStep->zTarget ){ 
+      if( pStep->zTarget ){
         Table *pTarget = sqlite3LocateTable(&sParse, 0, pStep->zTarget, zDb);
         if( pTarget==pTab ){
           if( pStep->pUpsert ){
@@ -204,12 +204,12 @@ __attribute__((used)) static void renameColumnFunc(
     }
 
 
-    /* Find tokens to edit in UPDATE OF clause */
+
     if( sParse.pTriggerTab==pTab ){
       renameColumnIdlistNames(&sParse, &sCtx,sParse.pNewTrigger->pColumns,zOld);
     }
 
-    /* Find tokens to edit in various expressions and selects */
+
     renameWalkTrigger(&sWalker, sParse.pNewTrigger);
   }
 
@@ -227,8 +227,8 @@ renameColumnFunc_done:
 
   renameParseCleanup(&sParse);
   renameTokenFree(db, sCtx.pList);
-#ifndef SQLITE_OMIT_AUTHORIZATION
+
   db->xAuth = xAuth;
-#endif
+
   sqlite3BtreeLeaveAll(db);
 }

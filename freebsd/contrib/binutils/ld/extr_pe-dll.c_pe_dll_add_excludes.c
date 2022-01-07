@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct exclude_list_struct {int type; struct exclude_list_struct* next; void* string; } ;
 
-/* Variables and functions */
- struct exclude_list_struct* excludes ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  strcpy (void*,char*) ; 
- int strlen (char*) ; 
- char* strtok (char*,char*) ; 
- void* xmalloc (int) ; 
- char* xstrdup (char const*) ; 
+
+ struct exclude_list_struct* excludes ;
+ int free (char*) ;
+ int strcpy (void*,char*) ;
+ int strlen (char*) ;
+ char* strtok (char*,char*) ;
+ void* xmalloc (int) ;
+ char* xstrdup (char const*) ;
 
 void
 pe_dll_add_excludes (const char *new_excludes, const int type)
@@ -30,7 +30,7 @@ pe_dll_add_excludes (const char *new_excludes, const int type)
   local_copy = xstrdup (new_excludes);
 
   exclude_string = strtok (local_copy, ",:");
-  for (; exclude_string; exclude_string = strtok (NULL, ",:"))
+  for (; exclude_string; exclude_string = strtok (((void*)0), ",:"))
     {
       struct exclude_list_struct *new_exclude;
 

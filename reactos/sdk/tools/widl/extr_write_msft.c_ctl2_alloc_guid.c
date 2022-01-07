@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_9__ {int* typelib_guidhash_segment; scalar_t__* typelib_segment_data; } ;
-typedef  TYPE_1__ msft_typelib_t ;
-struct TYPE_11__ {int /*<<< orphan*/ * Data4; int /*<<< orphan*/  Data3; int /*<<< orphan*/  Data2; int /*<<< orphan*/  Data1; } ;
+typedef TYPE_1__ msft_typelib_t ;
+struct TYPE_11__ {int * Data4; int Data3; int Data2; int Data1; } ;
 struct TYPE_10__ {int next_hash; TYPE_3__ guid; } ;
-typedef  TYPE_2__ MSFT_GuidEntry ;
+typedef TYPE_2__ MSFT_GuidEntry ;
 
-/* Variables and functions */
- size_t MSFT_SEG_GUID ; 
- int /*<<< orphan*/  chat (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int ctl2_alloc_segment (TYPE_1__*,size_t,int,int /*<<< orphan*/ ) ; 
- int ctl2_find_guid (TYPE_1__*,int,TYPE_3__*) ; 
- int ctl2_hash_guid (TYPE_3__*) ; 
- scalar_t__ is_warning_enabled (int) ; 
- int /*<<< orphan*/  warning (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ size_t MSFT_SEG_GUID ;
+ int chat (char*,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ) ;
+ int ctl2_alloc_segment (TYPE_1__*,size_t,int,int ) ;
+ int ctl2_find_guid (TYPE_1__*,int,TYPE_3__*) ;
+ int ctl2_hash_guid (TYPE_3__*) ;
+ scalar_t__ is_warning_enabled (int) ;
+ int warning (char*,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ) ;
 
 __attribute__((used)) static int ctl2_alloc_guid(
-	msft_typelib_t *typelib,   /* [I] The type library to allocate in. */
-	MSFT_GuidEntry *guid)      /* [I] The GUID to store. */
+ msft_typelib_t *typelib,
+ MSFT_GuidEntry *guid)
 {
     int offset;
     MSFT_GuidEntry *guid_space;

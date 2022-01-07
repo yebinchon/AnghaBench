@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  M_VMM_STAT ; 
- int /*<<< orphan*/  M_WAITOK ; 
- void* malloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vst_size ; 
+ int M_VMM_STAT ;
+ int M_WAITOK ;
+ void* malloc (int ,int ,int ) ;
+ int vst_size ;
 
 void *
 vmm_stat_alloc(void)
 {
 
-	return (malloc(vst_size, M_VMM_STAT, M_WAITOK));
+ return (malloc(vst_size, M_VMM_STAT, M_WAITOK));
 }

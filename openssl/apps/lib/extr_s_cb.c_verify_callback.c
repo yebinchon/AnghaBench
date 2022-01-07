@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  X509_STORE_CTX ;
-typedef  int /*<<< orphan*/  X509 ;
-struct TYPE_2__ {int depth; int error; int /*<<< orphan*/  quiet; int /*<<< orphan*/  return_error; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASN1_TIME_print (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BIO_printf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  BIO_puts (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  X509_NAME_print_ex (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * X509_STORE_CTX_get_current_cert (int /*<<< orphan*/ *) ; 
- int X509_STORE_CTX_get_error (int /*<<< orphan*/ *) ; 
- int X509_STORE_CTX_get_error_depth (int /*<<< orphan*/ *) ; 
- int X509_V_ERR_CERT_CHAIN_TOO_LONG ; 
-#define  X509_V_ERR_CERT_HAS_EXPIRED 133 
-#define  X509_V_ERR_CERT_NOT_YET_VALID 132 
-#define  X509_V_ERR_ERROR_IN_CERT_NOT_AFTER_FIELD 131 
-#define  X509_V_ERR_ERROR_IN_CERT_NOT_BEFORE_FIELD 130 
-#define  X509_V_ERR_NO_EXPLICIT_POLICY 129 
-#define  X509_V_ERR_UNABLE_TO_GET_ISSUER_CERT 128 
- int X509_V_OK ; 
- int /*<<< orphan*/  X509_get0_notAfter (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  X509_get0_notBefore (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  X509_get_issuer_name (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  X509_get_subject_name (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  X509_verify_cert_error_string (int) ; 
- int /*<<< orphan*/  bio_err ; 
- int /*<<< orphan*/  get_nameopt () ; 
- int /*<<< orphan*/  policies_print (int /*<<< orphan*/ *) ; 
- TYPE_1__ verify_args ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int X509_STORE_CTX ;
+typedef int X509 ;
+struct TYPE_2__ {int depth; int error; int quiet; int return_error; } ;
+
+
+ int ASN1_TIME_print (int ,int ) ;
+ int BIO_printf (int ,char*,...) ;
+ int BIO_puts (int ,char*) ;
+ int X509_NAME_print_ex (int ,int ,int ,int ) ;
+ int * X509_STORE_CTX_get_current_cert (int *) ;
+ int X509_STORE_CTX_get_error (int *) ;
+ int X509_STORE_CTX_get_error_depth (int *) ;
+ int X509_V_ERR_CERT_CHAIN_TOO_LONG ;
+
+
+
+
+
+
+ int X509_V_OK ;
+ int X509_get0_notAfter (int *) ;
+ int X509_get0_notBefore (int *) ;
+ int X509_get_issuer_name (int *) ;
+ int X509_get_subject_name (int *) ;
+ int X509_verify_cert_error_string (int) ;
+ int bio_err ;
+ int get_nameopt () ;
+ int policies_print (int *) ;
+ TYPE_1__ verify_args ;
 
 int verify_callback(int ok, X509_STORE_CTX *ctx)
 {
@@ -52,7 +52,7 @@ int verify_callback(int ok, X509_STORE_CTX *ctx)
 
     if (!verify_args.quiet || !ok) {
         BIO_printf(bio_err, "depth=%d ", depth);
-        if (err_cert != NULL) {
+        if (err_cert != ((void*)0)) {
             X509_NAME_print_ex(bio_err,
                                X509_get_subject_name(err_cert),
                                0, get_nameopt());
@@ -74,25 +74,25 @@ int verify_callback(int ok, X509_STORE_CTX *ctx)
         }
     }
     switch (err) {
-    case X509_V_ERR_UNABLE_TO_GET_ISSUER_CERT:
+    case 128:
         BIO_puts(bio_err, "issuer= ");
         X509_NAME_print_ex(bio_err, X509_get_issuer_name(err_cert),
                            0, get_nameopt());
         BIO_puts(bio_err, "\n");
         break;
-    case X509_V_ERR_CERT_NOT_YET_VALID:
-    case X509_V_ERR_ERROR_IN_CERT_NOT_BEFORE_FIELD:
+    case 132:
+    case 130:
         BIO_printf(bio_err, "notBefore=");
         ASN1_TIME_print(bio_err, X509_get0_notBefore(err_cert));
         BIO_printf(bio_err, "\n");
         break;
-    case X509_V_ERR_CERT_HAS_EXPIRED:
-    case X509_V_ERR_ERROR_IN_CERT_NOT_AFTER_FIELD:
+    case 133:
+    case 131:
         BIO_printf(bio_err, "notAfter=");
         ASN1_TIME_print(bio_err, X509_get0_notAfter(err_cert));
         BIO_printf(bio_err, "\n");
         break;
-    case X509_V_ERR_NO_EXPLICIT_POLICY:
+    case 129:
         if (!verify_args.quiet)
             policies_print(ctx);
         break;

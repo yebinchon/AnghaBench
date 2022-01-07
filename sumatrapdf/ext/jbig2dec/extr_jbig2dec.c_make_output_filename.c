@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ malloc (int) ; 
- int /*<<< orphan*/  stderr ; 
- int strlen (char const*) ; 
- int /*<<< orphan*/  strncpy (char*,char const*,int) ; 
- char* strrchr (char const*,char) ; 
+ int exit (int) ;
+ int fprintf (int ,char*) ;
+ scalar_t__ malloc (int) ;
+ int stderr ;
+ int strlen (char const*) ;
+ int strncpy (char*,char const*,int) ;
+ char* strrchr (char const*,char) ;
 
 __attribute__((used)) static char *
 make_output_filename(const char *input_filename, const char *extension)
@@ -27,37 +19,37 @@ make_output_filename(const char *input_filename, const char *extension)
     const char *c, *e;
     int len;
 
-    if (extension == NULL) {
+    if (extension == ((void*)0)) {
         fprintf(stderr, "no filename extension; cannot create output filename!\n");
         exit(1);
     }
 
-    if (input_filename == NULL)
+    if (input_filename == ((void*)0))
         c = "out";
     else {
-        /* strip any leading path */
-        c = strrchr(input_filename, '/');       /* *nix */
-        if (c == NULL)
-            c = strrchr(input_filename, '\\');  /* win32/dos */
-        if (c != NULL)
-            c++;                /* skip the path separator */
+
+        c = strrchr(input_filename, '/');
+        if (c == ((void*)0))
+            c = strrchr(input_filename, '\\');
+        if (c != ((void*)0))
+            c++;
         else
-            c = input_filename; /* no leading path */
+            c = input_filename;
     }
 
-    /* make sure we haven't just stripped the last character */
+
     if (*c == '\0')
         c = "out";
 
-    /* strip the extension */
+
     len = strlen(c);
     e = strrchr(c, '.');
-    if (e != NULL)
+    if (e != ((void*)0))
         len -= strlen(e);
 
-    /* allocate enough space for the base + ext */
+
     output_filename = (char *)malloc(len + strlen(extension) + 1);
-    if (output_filename == NULL) {
+    if (output_filename == ((void*)0)) {
         fprintf(stderr, "failed to allocate memory for output filename\n");
         exit(1);
     }
@@ -66,6 +58,6 @@ make_output_filename(const char *input_filename, const char *extension)
     strncpy(output_filename + len, extension, strlen(extension));
     *(output_filename + len + strlen(extension)) = '\0';
 
-    /* return the new string */
+
     return (output_filename);
 }

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  cmsToneCurve ;
-typedef  int cmsInt32Number ;
-typedef  double cmsFloat64Number ;
-typedef  double cmsFloat32Number ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CheckGammaEstimation (int /*<<< orphan*/ *,double) ; 
- int /*<<< orphan*/  DbgThread () ; 
- double MaxErr ; 
- int /*<<< orphan*/ * cmsBuildGamma (int /*<<< orphan*/ ,double) ; 
- double cmsEvalToneCurveFloat (int /*<<< orphan*/ ,int /*<<< orphan*/ *,double) ; 
- int /*<<< orphan*/  cmsFreeToneCurve (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- double fabs (double) ; 
- double pow (double,double) ; 
- int /*<<< orphan*/  printf (char*,double) ; 
+
+
+
+typedef int cmsToneCurve ;
+typedef int cmsInt32Number ;
+typedef double cmsFloat64Number ;
+typedef double cmsFloat32Number ;
+
+
+ int CheckGammaEstimation (int *,double) ;
+ int DbgThread () ;
+ double MaxErr ;
+ int * cmsBuildGamma (int ,double) ;
+ double cmsEvalToneCurveFloat (int ,int *,double) ;
+ int cmsFreeToneCurve (int ,int *) ;
+ double fabs (double) ;
+ double pow (double,double) ;
+ int printf (char*,double) ;
 
 __attribute__((used)) static
 cmsInt32Number CheckGammaFloat(cmsFloat64Number g)

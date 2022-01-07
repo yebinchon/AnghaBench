@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int lua_State ;
 struct TYPE_4__ {size_t len; } ;
 struct TYPE_3__ {size_t len; } ;
-typedef  int /*<<< orphan*/  StkId ;
+typedef int StkId ;
 
-/* Variables and functions */
- int /*<<< orphan*/  hvalue (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  index2adr (int /*<<< orphan*/ *,int) ; 
- size_t luaH_getn (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  luaV_tostring (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- TYPE_2__* tsvalue (int /*<<< orphan*/ ) ; 
- int ttype (int /*<<< orphan*/ ) ; 
- TYPE_1__* uvalue (int /*<<< orphan*/ ) ; 
+
+ int hvalue (int ) ;
+ int index2adr (int *,int) ;
+ size_t luaH_getn (int ) ;
+ int luaV_tostring (int *,int ) ;
+ TYPE_2__* tsvalue (int ) ;
+ int ttype (int ) ;
+ TYPE_1__* uvalue (int ) ;
 
 __attribute__((used)) static size_t lua_objlen(lua_State*L,int idx){
 StkId o=index2adr(L,idx);

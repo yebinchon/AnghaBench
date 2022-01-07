@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct stat {int /*<<< orphan*/  st_mode; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct stat {int st_mode; } ;
 struct pl_parser {TYPE_1__* s; } ;
 struct dirent {char* d_name; } ;
-struct TYPE_2__ {int /*<<< orphan*/  cancel; } ;
-typedef  int /*<<< orphan*/  DIR ;
+struct TYPE_2__ {int cancel; } ;
+typedef int DIR ;
 
-/* Variables and functions */
- int MAX_DIR_STACK ; 
- int /*<<< orphan*/  MP_ERR (struct pl_parser*,char*) ; 
- int /*<<< orphan*/  MP_TARRAY_APPEND (struct pl_parser*,char**,int,char*) ; 
- int /*<<< orphan*/  MP_VERBOSE (struct pl_parser*,char*,char*) ; 
- scalar_t__ S_ISDIR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  closedir (int /*<<< orphan*/ *) ; 
- scalar_t__ mp_cancel_test (int /*<<< orphan*/ ) ; 
- char* mp_path_join (struct pl_parser*,char*,char*) ; 
- int /*<<< orphan*/ * opendir (char*) ; 
- struct dirent* readdir (int /*<<< orphan*/ *) ; 
- scalar_t__ same_st (struct stat*,struct stat*) ; 
- scalar_t__ stat (char*,struct stat*) ; 
- int strlen (char*) ; 
+
+ int MAX_DIR_STACK ;
+ int MP_ERR (struct pl_parser*,char*) ;
+ int MP_TARRAY_APPEND (struct pl_parser*,char**,int,char*) ;
+ int MP_VERBOSE (struct pl_parser*,char*,char*) ;
+ scalar_t__ S_ISDIR (int ) ;
+ int closedir (int *) ;
+ scalar_t__ mp_cancel_test (int ) ;
+ char* mp_path_join (struct pl_parser*,char*,char*) ;
+ int * opendir (char*) ;
+ struct dirent* readdir (int *) ;
+ scalar_t__ same_st (struct stat*,struct stat*) ;
+ scalar_t__ stat (char*,struct stat*) ;
+ int strlen (char*) ;
 
 __attribute__((used)) static bool scan_dir(struct pl_parser *p, char *path,
                      struct stat *dir_stack, int num_dir_stack,
                      char ***files, int *num_files)
 {
     if (strlen(path) >= 8192 || num_dir_stack == MAX_DIR_STACK)
-        return false; // things like mount bind loops
+        return 0;
 
     DIR *dp = opendir(path);
     if (!dp) {
         MP_ERR(p, "Could not read directory.\n");
-        return false;
+        return 0;
     }
 
     struct dirent *ep;
@@ -74,5 +74,5 @@ __attribute__((used)) static bool scan_dir(struct pl_parser *p, char *path,
     }
 
     closedir(dp);
-    return true;
+    return 1;
 }

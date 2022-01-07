@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  init_finished_event; } ;
-typedef  TYPE_1__ THREAD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Set (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int init_finished_event; } ;
+typedef TYPE_1__ THREAD ;
+
+
+ int Set (int ) ;
 
 void NoticeThreadInit(THREAD *t)
 {
-	// Validate arguments
-	if (t == NULL)
-	{
-		return;
-	}
 
-	// Notification
-	Set(t->init_finished_event);
+ if (t == ((void*)0))
+ {
+  return;
+ }
+
+
+ Set(t->init_finished_event);
 }

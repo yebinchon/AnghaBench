@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int lua_State ;
 struct TYPE_3__ {int addr; } ;
-typedef  TYPE_1__ ip_addr_t ;
+typedef TYPE_1__ ip_addr_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IP2STR (int*) ; 
- char* IPSTR ; 
- int /*<<< orphan*/  LUA_REGISTRYINDEX ; 
- int /*<<< orphan*/  free (void*) ; 
- int /*<<< orphan*/  luaL_unref (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  lua_call (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * lua_getstate () ; 
- int /*<<< orphan*/  lua_pushlstring (int /*<<< orphan*/ *,char*,size_t) ; 
- int /*<<< orphan*/  lua_pushnil (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_rawgeti (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- size_t sprintf (char*,char*,int /*<<< orphan*/ ) ; 
+
+ int IP2STR (int*) ;
+ char* IPSTR ;
+ int LUA_REGISTRYINDEX ;
+ int free (void*) ;
+ int luaL_unref (int *,int ,int) ;
+ int lua_call (int *,int,int ) ;
+ int * lua_getstate () ;
+ int lua_pushlstring (int *,char*,size_t) ;
+ int lua_pushnil (int *) ;
+ int lua_rawgeti (int *,int ,int) ;
+ size_t sprintf (char*,char*,int ) ;
 
 __attribute__((used)) static void net_dns_static_cb(const char *name, ip_addr_t *ipaddr, void *callback_arg) {
   ip_addr_t addr;
-  if (ipaddr != NULL)
+  if (ipaddr != ((void*)0))
     addr = *ipaddr;
   else addr.addr = 0xFFFFFFFF;
   int cb_ref = ((int*)callback_arg)[0];

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct d3dx_const_tab {int const_set_count; int const_set_size; struct d3dx_const_param_eval_output* const_set; } ;
 struct d3dx_const_param_eval_output {int dummy; } ;
-typedef  int /*<<< orphan*/  HRESULT ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D3D_OK ; 
- int /*<<< orphan*/  ERR (char*) ; 
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- struct d3dx_const_param_eval_output* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- struct d3dx_const_param_eval_output* HeapReAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct d3dx_const_param_eval_output*,int) ; 
- unsigned int INITIAL_CONST_SET_SIZE ; 
+
+ int D3D_OK ;
+ int ERR (char*) ;
+ int E_OUTOFMEMORY ;
+ int GetProcessHeap () ;
+ struct d3dx_const_param_eval_output* HeapAlloc (int ,int ,int) ;
+ struct d3dx_const_param_eval_output* HeapReAlloc (int ,int ,struct d3dx_const_param_eval_output*,int) ;
+ unsigned int INITIAL_CONST_SET_SIZE ;
 
 __attribute__((used)) static HRESULT append_const_set(struct d3dx_const_tab *const_tab, struct d3dx_const_param_eval_output *set)
 {

@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  scalar_t__ UINT ;
-struct TYPE_8__ {int /*<<< orphan*/  CodePageName; } ;
-struct TYPE_7__ {int /*<<< orphan*/  Flags; struct TYPE_7__* NextItem; int /*<<< orphan*/ * Name; scalar_t__ CodePage; } ;
-typedef  int /*<<< orphan*/  PINT ;
-typedef  TYPE_1__* PCPAGE ;
-typedef  int /*<<< orphan*/  INFCONTEXT ;
-typedef  int /*<<< orphan*/  HINF ;
-typedef  TYPE_2__ CPINFOEX ;
-typedef  int /*<<< orphan*/  CPAGE ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CODEPAGE_NOT_REMOVEABLE ; 
- int /*<<< orphan*/  FALSE ; 
- scalar_t__ GetACP () ; 
- scalar_t__ GetCPInfoExW (scalar_t__,int /*<<< orphan*/ ,TYPE_2__*) ; 
- scalar_t__ GetOEMCP () ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- TYPE_1__* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int MAX_PATH ; 
- TYPE_1__* PCPage ; 
- int /*<<< orphan*/  SetupFindFirstLine (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SetupFindFirstLineW (int /*<<< orphan*/ ,int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SetupFindNextLine (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ SetupGetIntField (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetupGetStringFieldW (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  UNICODE_NULL ; 
- int /*<<< orphan*/  wcscpy (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ wcslen (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  wsprintf (int /*<<< orphan*/ *,char*,scalar_t__) ; 
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
+typedef scalar_t__ UINT ;
+struct TYPE_8__ {int CodePageName; } ;
+struct TYPE_7__ {int Flags; struct TYPE_7__* NextItem; int * Name; scalar_t__ CodePage; } ;
+typedef int PINT ;
+typedef TYPE_1__* PCPAGE ;
+typedef int INFCONTEXT ;
+typedef int HINF ;
+typedef TYPE_2__ CPINFOEX ;
+typedef int CPAGE ;
+typedef int BOOL ;
+
+
+ int CODEPAGE_NOT_REMOVEABLE ;
+ int FALSE ;
+ scalar_t__ GetACP () ;
+ scalar_t__ GetCPInfoExW (scalar_t__,int ,TYPE_2__*) ;
+ scalar_t__ GetOEMCP () ;
+ int GetProcessHeap () ;
+ TYPE_1__* HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,TYPE_1__*) ;
+ int MAX_PATH ;
+ TYPE_1__* PCPage ;
+ int SetupFindFirstLine (int ,char*,int *,int *) ;
+ int SetupFindFirstLineW (int ,int *,char*,int *) ;
+ int SetupFindNextLine (int *,int *) ;
+ scalar_t__ SetupGetIntField (int *,int ,int ) ;
+ int SetupGetStringFieldW (int *,int,int *,int,int *) ;
+ int TRUE ;
+ int UNICODE_NULL ;
+ int wcscpy (int *,int ) ;
+ scalar_t__ wcslen (int *) ;
+ int wsprintf (int *,char*,scalar_t__) ;
 
 __attribute__((used)) static BOOL
 GetSupportedCP(
@@ -58,7 +58,7 @@ GetSupportedCP(
 
     if (!SetupFindFirstLine(hInf,
                             L"CodePages",
-                            NULL,
+                            ((void*)0),
                             &Context))
         return FALSE;
 
@@ -67,7 +67,7 @@ GetSupportedCP(
         if (SetupGetIntField(&Context, 0, (PINT)&uiCodePage))
         {
             pCodePage = HeapAlloc(GetProcessHeap(), 0, sizeof(CPAGE));
-            if (pCodePage == NULL)
+            if (pCodePage == ((void*)0))
                 return FALSE;
 
             pCodePage->CodePage = uiCodePage;
@@ -80,7 +80,7 @@ GetSupportedCP(
             }
             else
             {
-                SetupGetStringFieldW(&Context, 1, pCodePage->Name, MAX_PATH, NULL);
+                SetupGetStringFieldW(&Context, 1, pCodePage->Name, MAX_PATH, ((void*)0));
             }
 
             if (wcslen(pCodePage->Name) != 0)

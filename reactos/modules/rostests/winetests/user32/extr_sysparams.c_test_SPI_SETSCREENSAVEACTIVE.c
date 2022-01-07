@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vals ;
-typedef  int const UINT ;
-typedef  int BOOL ;
 
-/* Variables and functions */
- int const FALSE ; 
- int const GetLastError () ; 
- int SPIF_SENDCHANGE ; 
- int SPIF_UPDATEINIFILE ; 
- int /*<<< orphan*/  SPI_GETSCREENSAVEACTIVE ; 
- int /*<<< orphan*/  SPI_SETSCREENSAVEACTIVE ; 
- int /*<<< orphan*/  SPI_SETSCREENSAVEACTIVE_REGKEY ; 
- int /*<<< orphan*/  SPI_SETSCREENSAVEACTIVE_VALNAME ; 
- int /*<<< orphan*/  SetLastError (int) ; 
- int SystemParametersInfoA (int /*<<< orphan*/ ,int const,int const*,int) ; 
- int const TRUE ; 
- scalar_t__ broken (int) ; 
- int /*<<< orphan*/  ok (int,char*,int const,int const,...) ; 
- int /*<<< orphan*/  test_change_message (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_error_msg (int,char*) ; 
- int /*<<< orphan*/  test_reg_key (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  trace (char*) ; 
 
-__attribute__((used)) static void test_SPI_SETSCREENSAVEACTIVE( void )       /*     17 */
+
+
+typedef int vals ;
+typedef int const UINT ;
+typedef int BOOL ;
+
+
+ int const FALSE ;
+ int const GetLastError () ;
+ int SPIF_SENDCHANGE ;
+ int SPIF_UPDATEINIFILE ;
+ int SPI_GETSCREENSAVEACTIVE ;
+ int SPI_SETSCREENSAVEACTIVE ;
+ int SPI_SETSCREENSAVEACTIVE_REGKEY ;
+ int SPI_SETSCREENSAVEACTIVE_VALNAME ;
+ int SetLastError (int) ;
+ int SystemParametersInfoA (int ,int const,int const*,int) ;
+ int const TRUE ;
+ scalar_t__ broken (int) ;
+ int ok (int,char*,int const,int const,...) ;
+ int test_change_message (int ,int ) ;
+ int test_error_msg (int,char*) ;
+ int test_reg_key (int ,int ,char*) ;
+ int trace (char*) ;
+
+__attribute__((used)) static void test_SPI_SETSCREENSAVEACTIVE( void )
 {
     BOOL rc;
     BOOL old_b;
@@ -61,7 +61,7 @@ __attribute__((used)) static void test_SPI_SETSCREENSAVEACTIVE( void )       /* 
 
         rc=SystemParametersInfoA( SPI_GETSCREENSAVEACTIVE, 0, &v, 0 );
         ok(rc, "%d: rc=%d err=%d\n", i, rc, GetLastError());
-        ok(v == vals[i] || broken(! v) /* Win 7 */,
+        ok(v == vals[i] || broken(! v) ,
            "SPI_{GET,SET}SCREENSAVEACTIVE: got %d instead of %d\n", v, vals[i]);
     }
 

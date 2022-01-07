@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct linenoiseState {char* prompt; int len; int cols; int oldpos; int maxrows; int ofd; char* buf; int pos; } ;
-struct abuf {int /*<<< orphan*/  len; int /*<<< orphan*/  b; } ;
+struct abuf {int len; int b; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  abAppend (struct abuf*,char*,int) ; 
- int /*<<< orphan*/  abFree (struct abuf*) ; 
- int /*<<< orphan*/  abInit (struct abuf*) ; 
- int /*<<< orphan*/  lndebug (char*,...) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,...) ; 
- int strlen (char*) ; 
- int write (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int abAppend (struct abuf*,char*,int) ;
+ int abFree (struct abuf*) ;
+ int abInit (struct abuf*) ;
+ int lndebug (char*,...) ;
+ int snprintf (char*,int,char*,...) ;
+ int strlen (char*) ;
+ int write (int,int ,int ) ;
 
 __attribute__((used)) static void refreshMultiLine(struct linenoiseState *l) {
     char seq[64];
     int plen = strlen(l->prompt);
-    int rows = (plen+l->len+l->cols-1)/l->cols; /* rows used by current buf. */
-    int rpos = (plen+l->oldpos+l->cols)/l->cols; /* cursor relative row. */
-    int rpos2; /* rpos after refresh. */
-    int col; /* colum position, zero-based. */
+    int rows = (plen+l->len+l->cols-1)/l->cols;
+    int rpos = (plen+l->oldpos+l->cols)/l->cols;
+    int rpos2;
+    int col;
     int old_rows = l->maxrows;
     int fd = l->ofd, j;
     struct abuf ab;
 
-    /* Update maxrows if needed. */
+
     if (rows > (int)l->maxrows) l->maxrows = rows;
 
-    /* First step: clear all the lines used before. To do so start by
-     * going to the last row. */
+
+
     abInit(&ab);
     if (old_rows-rpos > 0) {
         lndebug("go down %d", old_rows-rpos);
@@ -45,24 +45,24 @@ __attribute__((used)) static void refreshMultiLine(struct linenoiseState *l) {
         abAppend(&ab,seq,strlen(seq));
     }
 
-    /* Now for every row clear it, go up. */
+
     for (j = 0; j < old_rows-1; j++) {
         lndebug("clear+up");
         snprintf(seq,64,"\r\x1b[0K\x1b[1A");
         abAppend(&ab,seq,strlen(seq));
     }
 
-    /* Clean the top line. */
+
     lndebug("clear");
     snprintf(seq,64,"\r\x1b[0K");
     abAppend(&ab,seq,strlen(seq));
 
-    /* Write the prompt and the current buffer content */
+
     abAppend(&ab,l->prompt,strlen(l->prompt));
     abAppend(&ab,l->buf,l->len);
 
-    /* If we are at the very end of the screen with our prompt, we need to
-     * emit a newline and move the prompt to the first column. */
+
+
     if (l->pos &&
         l->pos == l->len &&
         (l->pos+plen) % l->cols == 0)
@@ -75,18 +75,18 @@ __attribute__((used)) static void refreshMultiLine(struct linenoiseState *l) {
         if (rows > (int)l->maxrows) l->maxrows = rows;
     }
 
-    /* Move cursor to right position. */
-    rpos2 = (plen+l->pos+l->cols)/l->cols; /* current cursor relative row. */
+
+    rpos2 = (plen+l->pos+l->cols)/l->cols;
     lndebug("rpos2 %d", rpos2);
 
-    /* Go up till we reach the expected positon. */
+
     if (rows-rpos2 > 0) {
         lndebug("go-up %d", rows-rpos2);
         snprintf(seq,64,"\x1b[%dA", rows-rpos2);
         abAppend(&ab,seq,strlen(seq));
     }
 
-    /* Set column. */
+
     col = (plen+(int)l->pos) % (int)l->cols;
     lndebug("set col %d", 1+col);
     if (col)
@@ -98,6 +98,6 @@ __attribute__((used)) static void refreshMultiLine(struct linenoiseState *l) {
     lndebug("\n");
     l->oldpos = l->pos;
 
-    if (write(fd,ab.b,ab.len) == -1) {} /* Can't recover from write error. */
+    if (write(fd,ab.b,ab.len) == -1) {}
     abFree(&ab);
 }

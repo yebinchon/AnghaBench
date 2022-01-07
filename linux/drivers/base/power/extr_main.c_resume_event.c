@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_8__ {int event; } ;
-typedef  TYPE_1__ pm_message_t ;
+typedef TYPE_1__ pm_message_t ;
 
-/* Variables and functions */
- TYPE_1__ PMSG_ON ; 
- TYPE_1__ PMSG_RECOVER ; 
- TYPE_1__ PMSG_RESTORE ; 
- TYPE_1__ PMSG_RESUME ; 
-#define  PM_EVENT_FREEZE 131 
-#define  PM_EVENT_HIBERNATE 130 
-#define  PM_EVENT_QUIESCE 129 
-#define  PM_EVENT_SUSPEND 128 
+
+ TYPE_1__ PMSG_ON ;
+ TYPE_1__ PMSG_RECOVER ;
+ TYPE_1__ PMSG_RESTORE ;
+ TYPE_1__ PMSG_RESUME ;
+
+
+
+
 
 __attribute__((used)) static pm_message_t resume_event(pm_message_t sleep_state)
 {
-	switch (sleep_state.event) {
-	case PM_EVENT_SUSPEND:
-		return PMSG_RESUME;
-	case PM_EVENT_FREEZE:
-	case PM_EVENT_QUIESCE:
-		return PMSG_RECOVER;
-	case PM_EVENT_HIBERNATE:
-		return PMSG_RESTORE;
-	}
-	return PMSG_ON;
+ switch (sleep_state.event) {
+ case 128:
+  return PMSG_RESUME;
+ case 131:
+ case 129:
+  return PMSG_RECOVER;
+ case 130:
+  return PMSG_RESTORE;
+ }
+ return PMSG_ON;
 }

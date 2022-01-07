@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SEEK_END ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char const*,char*) ; 
- long fread (unsigned char*,int,long,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fseek (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- long ftell (int /*<<< orphan*/ *) ; 
- unsigned char* malloc (long) ; 
+
+
+
+typedef int FILE ;
+
+
+ int SEEK_END ;
+ int SEEK_SET ;
+ int fclose (int *) ;
+ int * fopen (char const*,char*) ;
+ long fread (unsigned char*,int,long,int *) ;
+ int fseek (int *,int ,int ) ;
+ long ftell (int *) ;
+ unsigned char* malloc (long) ;
 
 int ReadFileMemory(const char* filename,long* plFileSize,unsigned char** pFilePtr)
 {
@@ -28,7 +28,7 @@ int ReadFileMemory(const char* filename,long* plFileSize,unsigned char** pFilePt
     unsigned char* ptr;
     int retVal=1;
     stream=fopen(filename, "rb");
-    if (stream==NULL)
+    if (stream==((void*)0))
         return 0;
 
     fseek(stream,0,SEEK_END);
@@ -36,7 +36,7 @@ int ReadFileMemory(const char* filename,long* plFileSize,unsigned char** pFilePt
     *plFileSize=ftell(stream);
     fseek(stream,0,SEEK_SET);
     ptr=malloc((*plFileSize)+1);
-    if (ptr==NULL)
+    if (ptr==((void*)0))
         retVal=0;
     else
     {

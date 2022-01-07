@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  opj_sparse_array_int32_t ;
-typedef  int OPJ_UINT32 ;
-typedef  int OPJ_INT32 ;
-typedef  int /*<<< orphan*/  OPJ_BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OPJ_TRUE ; 
- int /*<<< orphan*/  OPJ_UNUSED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  opj_sparse_array_int32_read (int /*<<< orphan*/ *,int,int,int,int,int*,int,int,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int opj_sparse_array_int32_t ;
+typedef int OPJ_UINT32 ;
+typedef int OPJ_INT32 ;
+typedef int OPJ_BOOL ;
+
+
+ int OPJ_TRUE ;
+ int OPJ_UNUSED (int ) ;
+ int assert (int ) ;
+ int opj_sparse_array_int32_read (int *,int,int,int,int,int*,int,int,int ) ;
 
 __attribute__((used)) static void opj_dwt_interleave_partial_v(OPJ_INT32 *dest,
         OPJ_INT32 cas,
@@ -33,7 +33,7 @@ __attribute__((used)) static void opj_dwt_interleave_partial_v(OPJ_INT32 *dest,
         OPJ_UINT32 win_h_y1)
 {
     OPJ_BOOL ret;
-    ret  = opj_sparse_array_int32_read(sa,
+    ret = opj_sparse_array_int32_read(sa,
                                        sa_col, win_l_y0,
                                        sa_col + nb_cols, win_l_y1,
                                        dest + cas * 4 + 2 * 4 * win_l_y0,

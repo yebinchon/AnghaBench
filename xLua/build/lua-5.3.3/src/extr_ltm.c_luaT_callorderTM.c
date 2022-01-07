@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  top; } ;
-typedef  TYPE_1__ lua_State ;
-typedef  int /*<<< orphan*/  TValue ;
-typedef  int /*<<< orphan*/  TMS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  l_isfalse (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  luaT_callbinTM (TYPE_1__*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int top; } ;
+typedef TYPE_1__ lua_State ;
+typedef int TValue ;
+typedef int TMS ;
+
+
+ int l_isfalse (int ) ;
+ int luaT_callbinTM (TYPE_1__*,int const*,int const*,int ,int ) ;
 
 int luaT_callorderTM (lua_State *L, const TValue *p1, const TValue *p2,
                       TMS event) {
   if (!luaT_callbinTM(L, p1, p2, L->top, event))
-    return -1;  /* no metamethod */
+    return -1;
   else
     return !l_isfalse(L->top);
 }

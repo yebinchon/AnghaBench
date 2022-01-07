@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct dds_header {int caps2; } ;
-typedef  scalar_t__ UINT ;
-struct TYPE_3__ {scalar_t__ ResourceType; scalar_t__ MipLevels; scalar_t__ Width; int /*<<< orphan*/  Format; } ;
-typedef  int /*<<< orphan*/  RECT ;
-typedef  int /*<<< orphan*/  PALETTEENTRY ;
-typedef  int /*<<< orphan*/  IDirect3DSurface9 ;
-typedef  int /*<<< orphan*/  IDirect3DCubeTexture9 ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  TYPE_1__ D3DXIMAGE_INFO ;
-typedef  int /*<<< orphan*/  BYTE ;
+typedef scalar_t__ UINT ;
+struct TYPE_3__ {scalar_t__ ResourceType; scalar_t__ MipLevels; scalar_t__ Width; int Format; } ;
+typedef int RECT ;
+typedef int PALETTEENTRY ;
+typedef int IDirect3DSurface9 ;
+typedef int IDirect3DCubeTexture9 ;
+typedef int HRESULT ;
+typedef int DWORD ;
+typedef TYPE_1__ D3DXIMAGE_INFO ;
+typedef int BYTE ;
 
-/* Variables and functions */
- int D3DCUBEMAP_FACE_NEGATIVE_Z ; 
- int D3DCUBEMAP_FACE_POSITIVE_X ; 
- scalar_t__ D3DRTYPE_CUBETEXTURE ; 
- int /*<<< orphan*/  D3DXERR_INVALIDDATA ; 
- int /*<<< orphan*/  D3DXLoadSurfaceFromMemory (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  D3D_OK ; 
- int DDS_CAPS2_CUBEMAP_ALL_FACES ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IDirect3DCubeTexture9_GetCubeMapSurface (int /*<<< orphan*/ *,int,scalar_t__,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IDirect3DCubeTexture9_GetLevelCount (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IDirect3DSurface9_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SetRect (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  WARN (char*) ; 
- int /*<<< orphan*/  calculate_dds_surface_size (int /*<<< orphan*/ ,scalar_t__,scalar_t__,scalar_t__*,scalar_t__*) ; 
- scalar_t__ max (int,scalar_t__) ; 
- scalar_t__ min (scalar_t__,int /*<<< orphan*/ ) ; 
+
+ int D3DCUBEMAP_FACE_NEGATIVE_Z ;
+ int D3DCUBEMAP_FACE_POSITIVE_X ;
+ scalar_t__ D3DRTYPE_CUBETEXTURE ;
+ int D3DXERR_INVALIDDATA ;
+ int D3DXLoadSurfaceFromMemory (int *,int const*,int *,int const*,int ,scalar_t__,int *,int *,int ,int ) ;
+ int D3D_OK ;
+ int DDS_CAPS2_CUBEMAP_ALL_FACES ;
+ scalar_t__ FAILED (int ) ;
+ int IDirect3DCubeTexture9_GetCubeMapSurface (int *,int,scalar_t__,int **) ;
+ int IDirect3DCubeTexture9_GetLevelCount (int *) ;
+ int IDirect3DSurface9_Release (int *) ;
+ int SetRect (int *,int ,int ,scalar_t__,scalar_t__) ;
+ int WARN (char*) ;
+ int calculate_dds_surface_size (int ,scalar_t__,scalar_t__,scalar_t__*,scalar_t__*) ;
+ scalar_t__ max (int,scalar_t__) ;
+ scalar_t__ min (scalar_t__,int ) ;
 
 HRESULT load_cube_texture_from_dds(IDirect3DCubeTexture9 *cube_texture, const void *src_data,
     const PALETTEENTRY *palette, DWORD filter, DWORD color_key, const D3DXIMAGE_INFO *src_info)
@@ -74,14 +74,14 @@ HRESULT load_cube_texture_from_dds(IDirect3DCubeTexture9 *cube_texture, const vo
             hr = calculate_dds_surface_size(src_info->Format, size, size, &src_pitch, &mip_level_size);
             if (FAILED(hr)) return hr;
 
-            /* if texture has fewer mip levels than DDS file, skip excessive mip levels */
+
             if (mip_level < mip_levels)
             {
                 SetRect(&src_rect, 0, 0, size, size);
 
                 IDirect3DCubeTexture9_GetCubeMapSurface(cube_texture, face, mip_level, &surface);
-                hr = D3DXLoadSurfaceFromMemory(surface, palette, NULL, pixels, src_info->Format, src_pitch,
-                    NULL, &src_rect, filter, color_key);
+                hr = D3DXLoadSurfaceFromMemory(surface, palette, ((void*)0), pixels, src_info->Format, src_pitch,
+                    ((void*)0), &src_rect, filter, color_key);
                 IDirect3DSurface9_Release(surface);
                 if (FAILED(hr)) return hr;
             }

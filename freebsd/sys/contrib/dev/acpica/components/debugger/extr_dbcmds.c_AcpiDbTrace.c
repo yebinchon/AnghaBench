@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT32 ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * ACPI_ALLOCATE (scalar_t__) ; 
- int /*<<< orphan*/  ACPI_EXECUTER ; 
- int /*<<< orphan*/  ACPI_FREE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ACPI_LV_TRACE_POINT ; 
- int /*<<< orphan*/  ACPI_TRACE_ENABLED ; 
- int /*<<< orphan*/  ACPI_TRACE_ONESHOT ; 
- int /*<<< orphan*/  ACPI_TRACE_OPCODE ; 
- int /*<<< orphan*/ * AcpiDbTraceMethodName ; 
- int /*<<< orphan*/  AcpiDbgLayer ; 
- int /*<<< orphan*/  AcpiDebugTrace (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AcpiGbl_DbConsoleDebugLevel ; 
- int /*<<< orphan*/  AcpiOsPrintf (char*,char*) ; 
- int /*<<< orphan*/  AcpiUtStrupr (char*) ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
- int /*<<< orphan*/  strcpy (int /*<<< orphan*/ *,char*) ; 
- scalar_t__ strlen (char*) ; 
+
+
+
+typedef int UINT32 ;
+
+
+ int * ACPI_ALLOCATE (scalar_t__) ;
+ int ACPI_EXECUTER ;
+ int ACPI_FREE (int *) ;
+ int ACPI_LV_TRACE_POINT ;
+ int ACPI_TRACE_ENABLED ;
+ int ACPI_TRACE_ONESHOT ;
+ int ACPI_TRACE_OPCODE ;
+ int * AcpiDbTraceMethodName ;
+ int AcpiDbgLayer ;
+ int AcpiDebugTrace (int *,int ,int ,int ) ;
+ int AcpiGbl_DbConsoleDebugLevel ;
+ int AcpiOsPrintf (char*,char*) ;
+ int AcpiUtStrupr (char*) ;
+ int strcmp (char*,char*) ;
+ int strcpy (int *,char*) ;
+ scalar_t__ strlen (char*) ;
 
 void
 AcpiDbTrace (
-    char                    *EnableArg,
-    char                    *MethodArg,
-    char                    *OnceArg)
+    char *EnableArg,
+    char *MethodArg,
+    char *OnceArg)
 {
-    UINT32                  DebugLevel = 0;
-    UINT32                  DebugLayer = 0;
-    UINT32                  Flags = 0;
+    UINT32 DebugLevel = 0;
+    UINT32 DebugLayer = 0;
+    UINT32 Flags = 0;
 
 
     AcpiUtStrupr (EnableArg);
@@ -49,7 +49,7 @@ AcpiDbTrace (
         if (AcpiDbTraceMethodName)
         {
             ACPI_FREE (AcpiDbTraceMethodName);
-            AcpiDbTraceMethodName = NULL;
+            AcpiDbTraceMethodName = ((void*)0);
         }
 
         AcpiDbTraceMethodName = ACPI_ALLOCATE (strlen (MethodArg) + 1);
@@ -69,14 +69,14 @@ AcpiDbTrace (
     {
         if (!strcmp (EnableArg, "ENABLE"))
         {
-            /* Inherit current console settings */
+
 
             DebugLevel = AcpiGbl_DbConsoleDebugLevel;
             DebugLayer = AcpiDbgLayer;
         }
         else
         {
-            /* Restrict console output to trace points only */
+
 
             DebugLevel = ACPI_LV_TRACE_POINT;
             DebugLayer = ACPI_EXECUTER;

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct pingpong {int /*<<< orphan*/ * cache; } ;
-typedef  int /*<<< orphan*/  CURLcode ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CURLE_OK ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
+
+
+
+struct pingpong {int * cache; } ;
+typedef int CURLcode ;
+
+
+ int CURLE_OK ;
+ int free (int *) ;
 
 CURLcode Curl_pp_disconnect(struct pingpong *pp)
 {
   free(pp->cache);
-  pp->cache = NULL;
+  pp->cache = ((void*)0);
   return CURLE_OK;
 }

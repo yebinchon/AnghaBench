@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct Tox_Options {int ipv6_enabled; int udp_enabled; int /*<<< orphan*/  proxy_type; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TOX_PROXY_TYPE_NONE ; 
- int /*<<< orphan*/  memset (struct Tox_Options*,int /*<<< orphan*/ ,int) ; 
+
+
+
+struct Tox_Options {int ipv6_enabled; int udp_enabled; int proxy_type; } ;
+
+
+ int TOX_PROXY_TYPE_NONE ;
+ int memset (struct Tox_Options*,int ,int) ;
 
 void tox_options_default(struct Tox_Options *options)
 {

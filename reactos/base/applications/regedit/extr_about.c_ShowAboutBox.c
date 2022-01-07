@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  HWND ;
 
-/* Variables and functions */
- int /*<<< orphan*/  COUNT_OF (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IDI_REGEDIT ; 
- int /*<<< orphan*/  IDS_APP_TITLE ; 
- int /*<<< orphan*/  LoadIconW (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LoadStringW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MAKEINTRESOURCEW (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ShellAboutW (int /*<<< orphan*/ ,int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hInst ; 
+
+
+
+typedef int WCHAR ;
+typedef int HWND ;
+
+
+ int COUNT_OF (int *) ;
+ int IDI_REGEDIT ;
+ int IDS_APP_TITLE ;
+ int LoadIconW (int ,int ) ;
+ int LoadStringW (int ,int ,int *,int ) ;
+ int MAKEINTRESOURCEW (int ) ;
+ int ShellAboutW (int ,int *,char*,int ) ;
+ int hInst ;
 
 void ShowAboutBox(HWND hWnd)
 {

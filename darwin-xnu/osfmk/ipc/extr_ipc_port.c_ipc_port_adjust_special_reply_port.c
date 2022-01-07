@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  ipc_port_t ;
-typedef  int /*<<< orphan*/  boolean_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ip_lock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ipc_port_adjust_special_reply_port_locked (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint8_t ;
+typedef int ipc_port_t ;
+typedef int boolean_t ;
+
+
+ int ip_lock (int ) ;
+ int ipc_port_adjust_special_reply_port_locked (int ,int *,int ,int ) ;
 
 void
 ipc_port_adjust_special_reply_port(
-	ipc_port_t special_reply_port,
-	uint8_t flags,
-	boolean_t get_turnstile)
+ ipc_port_t special_reply_port,
+ uint8_t flags,
+ boolean_t get_turnstile)
 {
-	ip_lock(special_reply_port);
-	ipc_port_adjust_special_reply_port_locked(special_reply_port, NULL, flags, get_turnstile);
-	/* special_reply_port unlocked */
+ ip_lock(special_reply_port);
+ ipc_port_adjust_special_reply_port_locked(special_reply_port, ((void*)0), flags, get_turnstile);
+
 }

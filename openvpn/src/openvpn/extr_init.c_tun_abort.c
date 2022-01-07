@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct context {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  do_close_tun (struct context*,int) ; 
- struct context* static_context ; 
+
+ int do_close_tun (struct context*,int) ;
+ struct context* static_context ;
 
 void
 tun_abort(void)
@@ -22,7 +22,7 @@ tun_abort(void)
     struct context *c = static_context;
     if (c)
     {
-        static_context = NULL;
-        do_close_tun(c, true);
+        static_context = ((void*)0);
+        do_close_tun(c, 1);
     }
 }

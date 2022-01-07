@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buf ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int buf ;
 struct TYPE_3__ {scalar_t__ QuadPart; } ;
-typedef  TYPE_1__ LARGE_INTEGER ;
-typedef  int /*<<< orphan*/  IStream ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int DWORD ;
+typedef TYPE_1__ LARGE_INTEGER ;
+typedef int IStream ;
+typedef int HRESULT ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CreateStreamOnHGlobal (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IStream_Read (int /*<<< orphan*/ *,unsigned char*,int,int*) ; 
- int /*<<< orphan*/  IStream_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IStream_Seek (int /*<<< orphan*/ *,TYPE_1__,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IStream_Write (int /*<<< orphan*/ *,unsigned char*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  STREAM_SEEK_SET ; 
- scalar_t__ SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TRUE ; 
- int hex_digit (unsigned char) ; 
+
+ int CreateStreamOnHGlobal (int *,int ,int **) ;
+ scalar_t__ FAILED (int ) ;
+ int IStream_Read (int *,unsigned char*,int,int*) ;
+ int IStream_Release (int *) ;
+ int IStream_Seek (int *,TYPE_1__,int ,int *) ;
+ int IStream_Write (int *,unsigned char*,int,int *) ;
+ int STREAM_SEEK_SET ;
+ scalar_t__ SUCCEEDED (int ) ;
+ int S_OK ;
+ int TRUE ;
+ int hex_digit (unsigned char) ;
 
 __attribute__((used)) static HRESULT decode_qp(IStream *input, IStream **ret_stream)
 {
@@ -43,11 +43,11 @@ __attribute__((used)) static HRESULT decode_qp(IStream *input, IStream **ret_str
     HRESULT hres;
 
     pos.QuadPart = 0;
-    hres = IStream_Seek(input, pos, STREAM_SEEK_SET, NULL);
+    hres = IStream_Seek(input, pos, STREAM_SEEK_SET, ((void*)0));
     if(FAILED(hres))
         return hres;
 
-    hres = CreateStreamOnHGlobal(NULL, TRUE, &output);
+    hres = CreateStreamOnHGlobal(((void*)0), TRUE, &output);
     if(FAILED(hres))
         return hres;
 
@@ -87,14 +87,14 @@ __attribute__((used)) static HRESULT decode_qp(IStream *input, IStream **ret_str
         }
 
         if(ret > buf) {
-            hres = IStream_Write(output, buf, ret - buf, NULL);
+            hres = IStream_Write(output, buf, ret - buf, ((void*)0));
             if(FAILED(hres))
                 break;
         }
     }
 
     if(SUCCEEDED(hres))
-        hres = IStream_Seek(output, pos, STREAM_SEEK_SET, NULL);
+        hres = IStream_Seek(output, pos, STREAM_SEEK_SET, ((void*)0));
     if(FAILED(hres)) {
         IStream_Release(output);
         return hres;

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {scalar_t__ inputs; int /*<<< orphan*/  h; int /*<<< orphan*/  w; int /*<<< orphan*/  batch; } ;
-typedef  TYPE_1__ size_params ;
-typedef  int /*<<< orphan*/  list ;
-struct TYPE_7__ {scalar_t__ outputs; float* biases; int /*<<< orphan*/  map; int /*<<< orphan*/  softmax_tree; void* bias_match; void* class_scale; void* mask_scale; void* noobject_scale; void* object_scale; void* coord_scale; void* random; void* absolute; void* classfix; void* thresh; void* rescore; void* jitter; void* max_boxes; void* background; void* softmax; void* sqrt; void* log; } ;
-typedef  TYPE_2__ layer ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- float atof (char*) ; 
- TYPE_2__ make_region_layer (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,int) ; 
- void* option_find_float (int /*<<< orphan*/ *,char*,int) ; 
- void* option_find_int (int /*<<< orphan*/ *,char*,int) ; 
- void* option_find_int_quiet (int /*<<< orphan*/ *,char*,int) ; 
- char* option_find_str (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  read_map (char*) ; 
- int /*<<< orphan*/  read_tree (char*) ; 
- char* strchr (char*,char) ; 
- int strlen (char*) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {scalar_t__ inputs; int h; int w; int batch; } ;
+typedef TYPE_1__ size_params ;
+typedef int list ;
+struct TYPE_7__ {scalar_t__ outputs; float* biases; int map; int softmax_tree; void* bias_match; void* class_scale; void* mask_scale; void* noobject_scale; void* object_scale; void* coord_scale; void* random; void* absolute; void* classfix; void* thresh; void* rescore; void* jitter; void* max_boxes; void* background; void* softmax; void* sqrt; void* log; } ;
+typedef TYPE_2__ layer ;
+
+
+ int assert (int) ;
+ float atof (char*) ;
+ TYPE_2__ make_region_layer (int ,int ,int ,int,int,int) ;
+ void* option_find_float (int *,char*,int) ;
+ void* option_find_int (int *,char*,int) ;
+ void* option_find_int_quiet (int *,char*,int) ;
+ char* option_find_str (int *,char*,int ) ;
+ int read_map (char*) ;
+ int read_tree (char*) ;
+ char* strchr (char*,char) ;
+ int strlen (char*) ;
 
 layer parse_region(list *options, size_params params)
 {

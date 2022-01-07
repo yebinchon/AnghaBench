@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ UINT ;
-struct TYPE_3__ {int AsyncMode; int /*<<< orphan*/  SendBuf; } ;
-typedef  TYPE_1__ SOCK ;
 
-/* Variables and functions */
- int /*<<< orphan*/  WriteBuf (int /*<<< orphan*/ ,void*,scalar_t__) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ UINT ;
+struct TYPE_3__ {int AsyncMode; int SendBuf; } ;
+typedef TYPE_1__ SOCK ;
+
+
+ int WriteBuf (int ,void*,scalar_t__) ;
 
 void SendAdd(SOCK *sock, void *data, UINT size)
 {
-	// Validate arguments
-	if (sock == NULL || data == NULL || size == 0 || sock->AsyncMode != false)
-	{
-		return;
-	}
 
-	WriteBuf(sock->SendBuf, data, size);
+ if (sock == ((void*)0) || data == ((void*)0) || size == 0 || sock->AsyncMode != 0)
+ {
+  return;
+ }
+
+ WriteBuf(sock->SendBuf, data, size);
 }

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct amixer {int /*<<< orphan*/ * sum; int /*<<< orphan*/ * input; int /*<<< orphan*/ * ops; int /*<<< orphan*/  rsc; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  amixer_setup (struct amixer*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  rsc_uninit (int /*<<< orphan*/ *) ; 
+
+
+
+struct amixer {int * sum; int * input; int * ops; int rsc; } ;
+
+
+ int amixer_setup (struct amixer*,int *,int ,int *) ;
+ int rsc_uninit (int *) ;
 
 __attribute__((used)) static int amixer_rsc_uninit(struct amixer *amixer)
 {
-	amixer_setup(amixer, NULL, 0, NULL);
-	rsc_uninit(&amixer->rsc);
-	amixer->ops = NULL;
-	amixer->input = NULL;
-	amixer->sum = NULL;
-	return 0;
+ amixer_setup(amixer, ((void*)0), 0, ((void*)0));
+ rsc_uninit(&amixer->rsc);
+ amixer->ops = ((void*)0);
+ amixer->input = ((void*)0);
+ amixer->sum = ((void*)0);
+ return 0;
 }

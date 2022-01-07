@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  esp_aes_context ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ESP_AES_ENCRYPT ; 
- int MBEDTLS_ERR_AES_BAD_INPUT_DATA ; 
- int MBEDTLS_ERR_AES_INVALID_KEY_LENGTH ; 
- int /*<<< orphan*/  esp_aes_acquire_hardware () ; 
- int /*<<< orphan*/  esp_aes_block (int /*<<< orphan*/ *,unsigned char*,unsigned char*) ; 
- int /*<<< orphan*/  esp_aes_release_hardware () ; 
- int /*<<< orphan*/  esp_aes_setkey_hardware (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  valid_key_length (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int esp_aes_context ;
+
+
+ int ESP_AES_ENCRYPT ;
+ int MBEDTLS_ERR_AES_BAD_INPUT_DATA ;
+ int MBEDTLS_ERR_AES_INVALID_KEY_LENGTH ;
+ int esp_aes_acquire_hardware () ;
+ int esp_aes_block (int *,unsigned char*,unsigned char*) ;
+ int esp_aes_release_hardware () ;
+ int esp_aes_setkey_hardware (int *,int ) ;
+ int valid_key_length (int *) ;
 
 int esp_aes_crypt_ofb( esp_aes_context *ctx,
                            size_t length,
@@ -32,8 +32,8 @@ int esp_aes_crypt_ofb( esp_aes_context *ctx,
     int ret = 0;
     size_t n;
 
-    if ( ctx == NULL || iv_off == NULL || iv == NULL ||
-        input == NULL || output == NULL ) {
+    if ( ctx == ((void*)0) || iv_off == ((void*)0) || iv == ((void*)0) ||
+        input == ((void*)0) || output == ((void*)0) ) {
             return MBEDTLS_ERR_AES_BAD_INPUT_DATA;
     }
 
@@ -55,7 +55,7 @@ int esp_aes_crypt_ofb( esp_aes_context *ctx,
         if( n == 0 ) {
             esp_aes_block(ctx, iv, iv);
         }
-        *output++ =  *input++ ^ iv[n];
+        *output++ = *input++ ^ iv[n];
 
         n = ( n + 1 ) & 0x0F;
     }

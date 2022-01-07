@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  nsICommandParams ;
-typedef  int /*<<< orphan*/  VARIANT ;
-typedef  int /*<<< orphan*/  HTMLDocument ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_NOTIMPL ; 
- int /*<<< orphan*/  FIXME (char*,...) ; 
- int /*<<< orphan*/  NSCMD_FONTCOLOR ; 
- int /*<<< orphan*/  NSSTATE_ATTRIBUTE ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  UPDATE_UI ; 
- scalar_t__ VT_I4 ; 
- int V_I4 (int /*<<< orphan*/ *) ; 
- scalar_t__ V_VT (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * create_nscommand_params () ; 
- int /*<<< orphan*/  debugstr_variant (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  do_ns_command (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsICommandParams_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsICommandParams_SetCStringValue (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  sprintf (char*,char*,int,int,int) ; 
- int /*<<< orphan*/  update_doc (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int nsICommandParams ;
+typedef int VARIANT ;
+typedef int HTMLDocument ;
+typedef int HRESULT ;
+typedef int DWORD ;
+
+
+ int E_NOTIMPL ;
+ int FIXME (char*,...) ;
+ int NSCMD_FONTCOLOR ;
+ int NSSTATE_ATTRIBUTE ;
+ int S_OK ;
+ int TRACE (char*,int *,int *,int *) ;
+ int UPDATE_UI ;
+ scalar_t__ VT_I4 ;
+ int V_I4 (int *) ;
+ scalar_t__ V_VT (int *) ;
+ int * create_nscommand_params () ;
+ int debugstr_variant (int *) ;
+ int do_ns_command (int *,int ,int *) ;
+ int nsICommandParams_Release (int *) ;
+ int nsICommandParams_SetCStringValue (int *,int ,char*) ;
+ int sprintf (char*,char*,int,int,int) ;
+ int update_doc (int *,int ) ;
 
 __attribute__((used)) static HRESULT exec_forecolor(HTMLDocument *This, DWORD cmdexecopt, VARIANT *in, VARIANT *out)
 {

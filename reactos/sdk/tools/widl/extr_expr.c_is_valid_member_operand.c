@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  type_t ;
 
-/* Variables and functions */
- int FALSE ; 
- int TRUE ; 
-#define  TYPE_ENUM 130 
-#define  TYPE_STRUCT 129 
-#define  TYPE_UNION 128 
- int type_get_type (int /*<<< orphan*/  const*) ; 
+
+
+
+typedef int type_t ;
+
+
+ int FALSE ;
+ int TRUE ;
+
+
+
+ int type_get_type (int const*) ;
 
 __attribute__((used)) static int is_valid_member_operand(const type_t *type)
 {
     switch (type_get_type(type))
     {
-    case TYPE_STRUCT:
-    case TYPE_UNION:
-    case TYPE_ENUM:
+    case 129:
+    case 128:
+    case 130:
         return TRUE;
     default:
         return FALSE;

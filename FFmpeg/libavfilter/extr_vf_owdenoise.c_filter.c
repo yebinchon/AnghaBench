@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint16_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint16_t ;
 struct TYPE_3__ {int depth; int pixel_depth; int*** plane; int linesize; } ;
-typedef  TYPE_1__ OWDenoiseContext ;
+typedef TYPE_1__ OWDenoiseContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  compose2D2 (double*,double**,double**,int,int,int,int) ; 
- int /*<<< orphan*/  decompose2D2 (int**,int*,int**,int,int,int,int) ; 
- double** dither ; 
+
+ int compose2D2 (double*,double**,double**,int,int,int,int) ;
+ int decompose2D2 (int**,int*,int**,int,int,int,int) ;
+ double** dither ;
 
 __attribute__((used)) static void filter(OWDenoiseContext *s,
-                   uint8_t       *dst, int dst_linesize,
+                   uint8_t *dst, int dst_linesize,
                    const uint8_t *src, int src_linesize,
                    int width, int height, double strength)
 {
@@ -52,9 +52,9 @@ __attribute__((used)) static void filter(OWDenoiseContext *s,
             for (y = 0; y < height; y++) {
                 for (x = 0; x < width; x++) {
                     double v = s->plane[i + 1][j][y*s->linesize + x];
-                    if      (v >  strength) v -= strength;
+                    if (v > strength) v -= strength;
                     else if (v < -strength) v += strength;
-                    else                    v  = 0;
+                    else v = 0;
                     s->plane[i + 1][j][x + y*s->linesize] = v;
                 }
             }
@@ -66,7 +66,7 @@ __attribute__((used)) static void filter(OWDenoiseContext *s,
     if (s->pixel_depth <= 8) {
         for (y = 0; y < height; y++) {
             for (x = 0; x < width; x++) {
-                i = s->plane[0][0][y*s->linesize + x] + dither[x&7][y&7]*(1.0/64) + 1.0/128; // yes the rounding is insane but optimal :)
+                i = s->plane[0][0][y*s->linesize + x] + dither[x&7][y&7]*(1.0/64) + 1.0/128;
                 if ((unsigned)i > 255U) i = ~(i >> 31);
                 dst[y*dst_linesize + x] = i;
             }

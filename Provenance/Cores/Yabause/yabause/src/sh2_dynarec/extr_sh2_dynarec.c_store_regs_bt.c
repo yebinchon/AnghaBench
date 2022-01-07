@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u32 ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u32 ;
 struct TYPE_2__ {char* regmap_entry; int dirty; } ;
 
-/* Variables and functions */
- char CCREG ; 
- int EXCLUDE_REG ; 
- int HOST_REGS ; 
- int /*<<< orphan*/  emit_storereg (char,int) ; 
- scalar_t__ internal_branch (int) ; 
- TYPE_1__* regs ; 
- int start ; 
- char* unneeded_reg ; 
- int /*<<< orphan*/  wb_dirtys (char*,int) ; 
+
+ char CCREG ;
+ int EXCLUDE_REG ;
+ int HOST_REGS ;
+ int emit_storereg (char,int) ;
+ scalar_t__ internal_branch (int) ;
+ TYPE_1__* regs ;
+ int start ;
+ char* unneeded_reg ;
+ int wb_dirtys (char*,int) ;
 
 void store_regs_bt(signed char i_regmap[],u32 i_dirty,int addr)
 {
@@ -47,7 +47,7 @@ void store_regs_bt(signed char i_regmap[],u32 i_dirty,int addr)
   }
   else
   {
-    // Branch out of this block, write out all dirty regs
+
     wb_dirtys(i_regmap,i_dirty);
   }
 }

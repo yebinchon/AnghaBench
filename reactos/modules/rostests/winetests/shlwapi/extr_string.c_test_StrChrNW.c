@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  char* LPWSTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ok (int,char*) ; 
- char* pStrChrNW (char const*,char,int) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
+
+
+
+typedef char WCHAR ;
+typedef char* LPWSTR ;
+
+
+ int ok (int,char*) ;
+ char* pStrChrNW (char const*,char,int) ;
+ int win_skip (char*) ;
 
 __attribute__((used)) static void test_StrChrNW(void)
 {
@@ -37,5 +37,5 @@ __attribute__((used)) static void test_StrChrNW(void)
     ok(*p=='S',"Found wrong 'S'\n");
 
     p = pStrChrNW(string,'r',10);
-    ok(p==NULL,"Should not have found 'r'\n");
+    ok(p==((void*)0),"Should not have found 'r'\n");
 }

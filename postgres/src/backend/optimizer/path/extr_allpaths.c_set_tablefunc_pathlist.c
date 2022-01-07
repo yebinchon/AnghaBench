@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  lateral_relids; } ;
-typedef  int /*<<< orphan*/  Relids ;
-typedef  TYPE_1__ RelOptInfo ;
-typedef  int /*<<< orphan*/  RangeTblEntry ;
-typedef  int /*<<< orphan*/  PlannerInfo ;
 
-/* Variables and functions */
- int /*<<< orphan*/  add_path (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  create_tablefuncscan_path (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int lateral_relids; } ;
+typedef int Relids ;
+typedef TYPE_1__ RelOptInfo ;
+typedef int RangeTblEntry ;
+typedef int PlannerInfo ;
+
+
+ int add_path (TYPE_1__*,int ) ;
+ int create_tablefuncscan_path (int *,TYPE_1__*,int ) ;
 
 __attribute__((used)) static void
 set_tablefunc_pathlist(PlannerInfo *root, RelOptInfo *rel, RangeTblEntry *rte)
 {
-	Relids		required_outer;
+ Relids required_outer;
 
-	/*
-	 * We don't support pushing join clauses into the quals of a tablefunc
-	 * scan, but it could still have required parameterization due to LATERAL
-	 * refs in the function expression.
-	 */
-	required_outer = rel->lateral_relids;
 
-	/* Generate appropriate path */
-	add_path(rel, create_tablefuncscan_path(root, rel,
-											required_outer));
+
+
+
+
+ required_outer = rel->lateral_relids;
+
+
+ add_path(rel, create_tablefuncscan_path(root, rel,
+           required_outer));
 }

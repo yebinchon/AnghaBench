@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  GFP_KERNEL ; 
- void* kmalloc (size_t,int /*<<< orphan*/ ) ; 
+ int GFP_KERNEL ;
+ void* kmalloc (size_t,int ) ;
 
 __attribute__((used)) static void *bch_alloc(size_t size, int *err)
 {
-	void *ptr;
+ void *ptr;
 
-	ptr = kmalloc(size, GFP_KERNEL);
-	if (ptr == NULL)
-		*err = 1;
-	return ptr;
+ ptr = kmalloc(size, GFP_KERNEL);
+ if (ptr == ((void*)0))
+  *err = 1;
+ return ptr;
 }

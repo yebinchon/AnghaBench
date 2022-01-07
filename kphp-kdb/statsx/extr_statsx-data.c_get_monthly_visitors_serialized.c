@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct counter {int type; scalar_t__ last_month_unique_visitors; int created_at; struct counter* prev; } ;
 
-/* Variables and functions */
- int COUNTER_TYPE_MONTH ; 
- scalar_t__ Q_raw ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,int,int) ; 
- struct counter* get_counter_f (long long,int /*<<< orphan*/ ) ; 
- int get_month (int) ; 
- int get_monthly_visitors_serialized_raw (char*,long long) ; 
- int get_year (int) ; 
- int load_counter (long long,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  sprintf (char*,char*,...) ; 
- int /*<<< orphan*/  stderr ; 
- int verbosity ; 
+
+ int COUNTER_TYPE_MONTH ;
+ scalar_t__ Q_raw ;
+ int fprintf (int ,char*,int,int,int) ;
+ struct counter* get_counter_f (long long,int ) ;
+ int get_month (int) ;
+ int get_monthly_visitors_serialized_raw (char*,long long) ;
+ int get_year (int) ;
+ int load_counter (long long,int ,int) ;
+ int sprintf (char*,char*,...) ;
+ int stderr ;
+ int verbosity ;
 
 int get_monthly_visitors_serialized (char *buffer, long long counter_id) {
   if (load_counter (counter_id, 0, 1) == -2) {
@@ -37,7 +37,7 @@ int get_monthly_visitors_serialized (char *buffer, long long counter_id) {
   int r = 0;
   int first = 1;
   while (C) {
-    //fprintf (stderr, ".%d %d\n", C->type & COUNTER_TYPE_MONTH, C->last_month_unique_visitors);
+
     if (first && !(C->type & COUNTER_TYPE_MONTH) && C->last_month_unique_visitors >= 0) {
       int m = get_month (C->created_at);
       int y = get_year (C->created_at);
@@ -69,15 +69,15 @@ int get_monthly_visitors_serialized (char *buffer, long long counter_id) {
       }
       int m = get_month (C->created_at);
       int y = get_year (C->created_at);
-      //m--;
+
       if (!m) {
         m = 12;
         y--;
       }
       ptr += sprintf (ptr, "%d,%d,%d", C->last_month_unique_visitors, m, y);
-      //fprintf (stderr, "%d\n", C->created_at);
-    }   
-    //fprintf (stderr, "%d,%d,%d\n", C->created_at, C->last_month_unique_visitors, C->type & COUNTER_TYPE_MONTH8);
+
+    }
+
     C = C->prev;
   }
   return ptr - buffer;

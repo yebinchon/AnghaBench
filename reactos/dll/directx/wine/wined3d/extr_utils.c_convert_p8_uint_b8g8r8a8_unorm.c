@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct wined3d_palette {TYPE_1__* colors; } ;
 struct wined3d_color_key {int dummy; } ;
 struct TYPE_2__ {int rgbRed; int rgbGreen; int rgbBlue; } ;
-typedef  int DWORD ;
-typedef  size_t BYTE ;
+typedef int DWORD ;
+typedef size_t BYTE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FIXME (char*) ; 
- int /*<<< orphan*/  memset (size_t*,int /*<<< orphan*/ ,unsigned int) ; 
+
+ int FIXME (char*) ;
+ int memset (size_t*,int ,unsigned int) ;
 
 __attribute__((used)) static void convert_p8_uint_b8g8r8a8_unorm(const BYTE *src, unsigned int src_pitch,
         BYTE *dst, unsigned int dst_pitch, unsigned int width, unsigned int height,
@@ -31,7 +31,7 @@ __attribute__((used)) static void convert_p8_uint_b8g8r8a8_unorm(const BYTE *src
 
     if (!palette)
     {
-        /* FIXME: This should probably use the system palette. */
+
         FIXME("P8 surface loaded without a palette.\n");
 
         for (y = 0; y < height; ++y)

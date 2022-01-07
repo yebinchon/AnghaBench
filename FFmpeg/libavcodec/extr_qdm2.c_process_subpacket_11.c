@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {int /*<<< orphan*/  cm_table_select; int /*<<< orphan*/  superblocktype_2_3; int /*<<< orphan*/  nb_channels; int /*<<< orphan*/  coding_method; int /*<<< orphan*/  tone_level_idx_temp; int /*<<< orphan*/  tone_level_idx; } ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_9__ {int cm_table_select; int superblocktype_2_3; int nb_channels; int coding_method; int tone_level_idx_temp; int tone_level_idx; } ;
 struct TYPE_8__ {TYPE_1__* packet; } ;
-struct TYPE_7__ {int size; int /*<<< orphan*/  data; } ;
-typedef  TYPE_2__ QDM2SubPNode ;
-typedef  TYPE_3__ QDM2Context ;
-typedef  int /*<<< orphan*/  GetBitContext ;
+struct TYPE_7__ {int size; int data; } ;
+typedef TYPE_2__ QDM2SubPNode ;
+typedef TYPE_3__ QDM2Context ;
+typedef int GetBitContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fill_coding_method_array (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int get_bits (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  init_get_bits (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  synthfilt_build_sb_samples (TYPE_3__*,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int) ; 
+
+ int fill_coding_method_array (int ,int ,int ,int ,int,int ,int ) ;
+ int get_bits (int *,int) ;
+ int init_get_bits (int *,int ,int) ;
+ int synthfilt_build_sb_samples (TYPE_3__*,int *,int,int ,int) ;
 
 __attribute__((used)) static void process_subpacket_11(QDM2Context *q, QDM2SubPNode *node)
 {

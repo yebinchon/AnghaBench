@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uint32_t ;
-typedef  scalar_t__ lua_Number ;
-typedef  int int32_t ;
-typedef  int /*<<< orphan*/  cTValue ;
 
-/* Variables and functions */
- scalar_t__ LJ_MAX_ASIZE ; 
- size_t lj_fls (scalar_t__) ; 
- int lj_num2int (scalar_t__) ; 
- int /*<<< orphan*/  lua_assert (int) ; 
- scalar_t__ numV (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tvisint (int /*<<< orphan*/ *) ; 
- scalar_t__ tvisnum (int /*<<< orphan*/ *) ; 
+
+
+
+typedef scalar_t__ uint32_t ;
+typedef scalar_t__ lua_Number ;
+typedef int int32_t ;
+typedef int cTValue ;
+
+
+ scalar_t__ LJ_MAX_ASIZE ;
+ size_t lj_fls (scalar_t__) ;
+ int lj_num2int (scalar_t__) ;
+ int lua_assert (int) ;
+ scalar_t__ numV (int *) ;
+ int tvisint (int *) ;
+ scalar_t__ tvisnum (int *) ;
 
 __attribute__((used)) static uint32_t countint(cTValue *key, uint32_t *bins)
 {

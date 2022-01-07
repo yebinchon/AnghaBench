@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct nvme_request {int dummy; } ;
-struct nvme_controller {int /*<<< orphan*/  adminq; } ;
+struct nvme_controller {int adminq; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  nvme_qpair_submit_request (int /*<<< orphan*/ *,struct nvme_request*) ; 
+
+ int nvme_qpair_submit_request (int *,struct nvme_request*) ;
 
 void
 nvme_ctrlr_submit_admin_request(struct nvme_controller *ctrlr,
     struct nvme_request *req)
 {
 
-	nvme_qpair_submit_request(&ctrlr->adminq, req);
+ nvme_qpair_submit_request(&ctrlr->adminq, req);
 }

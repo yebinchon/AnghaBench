@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8 ;
-typedef  int /*<<< orphan*/  PullFilter ;
-typedef  int /*<<< orphan*/  MBuf ;
 
-/* Variables and functions */
- int mbuf_grab (int /*<<< orphan*/ *,int,int /*<<< orphan*/ **) ; 
+
+
+
+typedef int uint8 ;
+typedef int PullFilter ;
+typedef int MBuf ;
+
+
+ int mbuf_grab (int *,int,int **) ;
 
 __attribute__((used)) static int
 pull_from_mbuf(void *arg, PullFilter *src, int len,
-			   uint8 **data_p, uint8 *buf, int buflen)
+      uint8 **data_p, uint8 *buf, int buflen)
 {
-	MBuf	   *mbuf = arg;
+ MBuf *mbuf = arg;
 
-	return mbuf_grab(mbuf, len, data_p);
+ return mbuf_grab(mbuf, len, data_p);
 }

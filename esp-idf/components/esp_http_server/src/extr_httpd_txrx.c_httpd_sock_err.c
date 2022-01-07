@@ -1,30 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
-#define  EAGAIN 133 
-#define  EBADF 132 
-#define  EFAULT 131 
-#define  EINTR 130 
-#define  EINVAL 129 
-#define  ENOTSOCK 128 
- int /*<<< orphan*/  ESP_LOGW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*,int) ; 
- int HTTPD_SOCK_ERR_FAIL ; 
- int HTTPD_SOCK_ERR_INVALID ; 
- int HTTPD_SOCK_ERR_TIMEOUT ; 
- int /*<<< orphan*/  LOG_FMT (char*) ; 
- int /*<<< orphan*/  TAG ; 
- int errno ; 
+ int ESP_LOGW (int ,int ,char const*,int) ;
+ int HTTPD_SOCK_ERR_FAIL ;
+ int HTTPD_SOCK_ERR_INVALID ;
+ int HTTPD_SOCK_ERR_TIMEOUT ;
+ int LOG_FMT (char*) ;
+ int TAG ;
+ int errno ;
 
 __attribute__((used)) static int httpd_sock_err(const char *ctx, int sockfd)
 {
@@ -32,14 +18,14 @@ __attribute__((used)) static int httpd_sock_err(const char *ctx, int sockfd)
     ESP_LOGW(TAG, LOG_FMT("error in %s : %d"), ctx, errno);
 
     switch(errno) {
-    case EAGAIN:
-    case EINTR:
+    case 133:
+    case 130:
         errval = HTTPD_SOCK_ERR_TIMEOUT;
         break;
-    case EINVAL:
-    case EBADF:
-    case EFAULT:
-    case ENOTSOCK:
+    case 129:
+    case 132:
+    case 131:
+    case 128:
         errval = HTTPD_SOCK_ERR_INVALID;
         break;
     default:

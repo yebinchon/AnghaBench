@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * exec; int /*<<< orphan*/ * conditions; int /*<<< orphan*/  listen; int /*<<< orphan*/  triggers; int /*<<< orphan*/  triggered_by; int /*<<< orphan*/  dropin_paths; int /*<<< orphan*/  documentation; } ;
-typedef  TYPE_1__ UnitStatusInfo ;
-typedef  int /*<<< orphan*/  UnitCondition ;
-typedef  int /*<<< orphan*/  ExecStatusInfo ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LIST_REMOVE (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  conditions ; 
- int /*<<< orphan*/  exec ; 
- int /*<<< orphan*/  exec_status_info_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strv_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  unit_condition_free (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * exec; int * conditions; int listen; int triggers; int triggered_by; int dropin_paths; int documentation; } ;
+typedef TYPE_1__ UnitStatusInfo ;
+typedef int UnitCondition ;
+typedef int ExecStatusInfo ;
+
+
+ int LIST_REMOVE (int ,int *,int *) ;
+ int conditions ;
+ int exec ;
+ int exec_status_info_free (int *) ;
+ int strv_free (int ) ;
+ int unit_condition_free (int *) ;
 
 __attribute__((used)) static void unit_status_info_free(UnitStatusInfo *info) {
         ExecStatusInfo *p;

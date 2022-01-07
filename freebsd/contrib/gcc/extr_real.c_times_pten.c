@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  REAL_VALUE_TYPE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  do_divide (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  do_multiply (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * real_digit (int) ; 
- int /*<<< orphan*/  ten_to_ptwo (int) ; 
+
+
+
+typedef int REAL_VALUE_TYPE ;
+
+
+ int do_divide (int *,int *,int *) ;
+ int do_multiply (int *,int *,int ) ;
+ int * real_digit (int) ;
+ int ten_to_ptwo (int) ;
 
 __attribute__((used)) static void
 times_pten (REAL_VALUE_TYPE *r, int exp)

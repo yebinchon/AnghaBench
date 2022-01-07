@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  s; } ;
-struct reader {int /*<<< orphan*/  p_data; TYPE_1__ u; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (struct reader*) ; 
- int /*<<< orphan*/  libvlc_release (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vlc_stream_Delete (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int s; } ;
+struct reader {int p_data; TYPE_1__ u; } ;
+
+
+ int free (struct reader*) ;
+ int libvlc_release (int ) ;
+ int vlc_stream_Delete (int ) ;
 
 __attribute__((used)) static void
 stream_close( struct reader *p_reader )

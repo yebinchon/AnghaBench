@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct tm {int dummy; } ;
-typedef  int /*<<< orphan*/  __time64_t ;
-typedef  int /*<<< orphan*/  __time32_t ;
+typedef int __time64_t ;
+typedef int __time32_t ;
 
-/* Variables and functions */
- struct tm* _gmtime64 (int /*<<< orphan*/ *) ; 
+
+ struct tm* _gmtime64 (int *) ;
 
 struct tm *
 _gmtime32(const __time32_t * ptime)
@@ -23,7 +23,7 @@ _gmtime32(const __time32_t * ptime)
     __time64_t time64;
 
     if (!ptime)
-        return NULL;
+        return ((void*)0);
     time64 = *ptime;
     return _gmtime64(&time64);
 }

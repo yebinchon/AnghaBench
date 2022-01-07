@@ -1,477 +1,317 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
-#define  DW_OP_GNU_push_tls_address 278 
-#define  DW_OP_GNU_uninit 277 
-#define  DW_OP_abs 276 
-#define  DW_OP_addr 275 
-#define  DW_OP_and 274 
-#define  DW_OP_bra 273 
-#define  DW_OP_breg0 272 
-#define  DW_OP_breg1 271 
-#define  DW_OP_breg10 270 
-#define  DW_OP_breg11 269 
-#define  DW_OP_breg12 268 
-#define  DW_OP_breg13 267 
-#define  DW_OP_breg14 266 
-#define  DW_OP_breg15 265 
-#define  DW_OP_breg16 264 
-#define  DW_OP_breg17 263 
-#define  DW_OP_breg18 262 
-#define  DW_OP_breg19 261 
-#define  DW_OP_breg2 260 
-#define  DW_OP_breg20 259 
-#define  DW_OP_breg21 258 
-#define  DW_OP_breg22 257 
-#define  DW_OP_breg23 256 
-#define  DW_OP_breg24 255 
-#define  DW_OP_breg25 254 
-#define  DW_OP_breg26 253 
-#define  DW_OP_breg27 252 
-#define  DW_OP_breg28 251 
-#define  DW_OP_breg29 250 
-#define  DW_OP_breg3 249 
-#define  DW_OP_breg30 248 
-#define  DW_OP_breg31 247 
-#define  DW_OP_breg4 246 
-#define  DW_OP_breg5 245 
-#define  DW_OP_breg6 244 
-#define  DW_OP_breg7 243 
-#define  DW_OP_breg8 242 
-#define  DW_OP_breg9 241 
-#define  DW_OP_bregx 240 
-#define  DW_OP_call2 239 
-#define  DW_OP_call4 238 
-#define  DW_OP_call_ref 237 
-#define  DW_OP_const1s 236 
-#define  DW_OP_const1u 235 
-#define  DW_OP_const2s 234 
-#define  DW_OP_const2u 233 
-#define  DW_OP_const4s 232 
-#define  DW_OP_const4u 231 
-#define  DW_OP_const8s 230 
-#define  DW_OP_const8u 229 
-#define  DW_OP_consts 228 
-#define  DW_OP_constu 227 
-#define  DW_OP_deref 226 
-#define  DW_OP_deref_size 225 
-#define  DW_OP_div 224 
-#define  DW_OP_drop 223 
-#define  DW_OP_dup 222 
-#define  DW_OP_eq 221 
-#define  DW_OP_fbreg 220 
-#define  DW_OP_ge 219 
-#define  DW_OP_gt 218 
-#define  DW_OP_le 217 
-#define  DW_OP_lit0 216 
-#define  DW_OP_lit1 215 
-#define  DW_OP_lit10 214 
-#define  DW_OP_lit11 213 
-#define  DW_OP_lit12 212 
-#define  DW_OP_lit13 211 
-#define  DW_OP_lit14 210 
-#define  DW_OP_lit15 209 
-#define  DW_OP_lit16 208 
-#define  DW_OP_lit17 207 
-#define  DW_OP_lit18 206 
-#define  DW_OP_lit19 205 
-#define  DW_OP_lit2 204 
-#define  DW_OP_lit20 203 
-#define  DW_OP_lit21 202 
-#define  DW_OP_lit22 201 
-#define  DW_OP_lit23 200 
-#define  DW_OP_lit24 199 
-#define  DW_OP_lit25 198 
-#define  DW_OP_lit26 197 
-#define  DW_OP_lit27 196 
-#define  DW_OP_lit28 195 
-#define  DW_OP_lit29 194 
-#define  DW_OP_lit3 193 
-#define  DW_OP_lit30 192 
-#define  DW_OP_lit31 191 
-#define  DW_OP_lit4 190 
-#define  DW_OP_lit5 189 
-#define  DW_OP_lit6 188 
-#define  DW_OP_lit7 187 
-#define  DW_OP_lit8 186 
-#define  DW_OP_lit9 185 
-#define  DW_OP_lt 184 
-#define  DW_OP_minus 183 
-#define  DW_OP_mod 182 
-#define  DW_OP_mul 181 
-#define  DW_OP_ne 180 
-#define  DW_OP_neg 179 
-#define  DW_OP_nop 178 
-#define  DW_OP_not 177 
-#define  DW_OP_or 176 
-#define  DW_OP_over 175 
-#define  DW_OP_pick 174 
-#define  DW_OP_piece 173 
-#define  DW_OP_plus 172 
-#define  DW_OP_plus_uconst 171 
-#define  DW_OP_push_object_address 170 
-#define  DW_OP_reg0 169 
-#define  DW_OP_reg1 168 
-#define  DW_OP_reg10 167 
-#define  DW_OP_reg11 166 
-#define  DW_OP_reg12 165 
-#define  DW_OP_reg13 164 
-#define  DW_OP_reg14 163 
-#define  DW_OP_reg15 162 
-#define  DW_OP_reg16 161 
-#define  DW_OP_reg17 160 
-#define  DW_OP_reg18 159 
-#define  DW_OP_reg19 158 
-#define  DW_OP_reg2 157 
-#define  DW_OP_reg20 156 
-#define  DW_OP_reg21 155 
-#define  DW_OP_reg22 154 
-#define  DW_OP_reg23 153 
-#define  DW_OP_reg24 152 
-#define  DW_OP_reg25 151 
-#define  DW_OP_reg26 150 
-#define  DW_OP_reg27 149 
-#define  DW_OP_reg28 148 
-#define  DW_OP_reg29 147 
-#define  DW_OP_reg3 146 
-#define  DW_OP_reg30 145 
-#define  DW_OP_reg31 144 
-#define  DW_OP_reg4 143 
-#define  DW_OP_reg5 142 
-#define  DW_OP_reg6 141 
-#define  DW_OP_reg7 140 
-#define  DW_OP_reg8 139 
-#define  DW_OP_reg9 138 
-#define  DW_OP_regx 137 
-#define  DW_OP_rot 136 
-#define  DW_OP_shl 135 
-#define  DW_OP_shr 134 
-#define  DW_OP_shra 133 
-#define  DW_OP_skip 132 
-#define  DW_OP_swap 131 
-#define  DW_OP_xderef 130 
-#define  DW_OP_xderef_size 129 
-#define  DW_OP_xor 128 
-
 __attribute__((used)) static char *
 dwarf_stack_op_name (unsigned op)
 {
   switch (op)
     {
-    case DW_OP_addr:
+    case 275:
       return "DW_OP_addr";
-    case DW_OP_deref:
+    case 226:
       return "DW_OP_deref";
-    case DW_OP_const1u:
+    case 235:
       return "DW_OP_const1u";
-    case DW_OP_const1s:
+    case 236:
       return "DW_OP_const1s";
-    case DW_OP_const2u:
+    case 233:
       return "DW_OP_const2u";
-    case DW_OP_const2s:
+    case 234:
       return "DW_OP_const2s";
-    case DW_OP_const4u:
+    case 231:
       return "DW_OP_const4u";
-    case DW_OP_const4s:
+    case 232:
       return "DW_OP_const4s";
-    case DW_OP_const8u:
+    case 229:
       return "DW_OP_const8u";
-    case DW_OP_const8s:
+    case 230:
       return "DW_OP_const8s";
-    case DW_OP_constu:
+    case 227:
       return "DW_OP_constu";
-    case DW_OP_consts:
+    case 228:
       return "DW_OP_consts";
-    case DW_OP_dup:
+    case 222:
       return "DW_OP_dup";
-    case DW_OP_drop:
+    case 223:
       return "DW_OP_drop";
-    case DW_OP_over:
+    case 175:
       return "DW_OP_over";
-    case DW_OP_pick:
+    case 174:
       return "DW_OP_pick";
-    case DW_OP_swap:
+    case 131:
       return "DW_OP_swap";
-    case DW_OP_rot:
+    case 136:
       return "DW_OP_rot";
-    case DW_OP_xderef:
+    case 130:
       return "DW_OP_xderef";
-    case DW_OP_abs:
+    case 276:
       return "DW_OP_abs";
-    case DW_OP_and:
+    case 274:
       return "DW_OP_and";
-    case DW_OP_div:
+    case 224:
       return "DW_OP_div";
-    case DW_OP_minus:
+    case 183:
       return "DW_OP_minus";
-    case DW_OP_mod:
+    case 182:
       return "DW_OP_mod";
-    case DW_OP_mul:
+    case 181:
       return "DW_OP_mul";
-    case DW_OP_neg:
+    case 179:
       return "DW_OP_neg";
-    case DW_OP_not:
+    case 177:
       return "DW_OP_not";
-    case DW_OP_or:
+    case 176:
       return "DW_OP_or";
-    case DW_OP_plus:
+    case 172:
       return "DW_OP_plus";
-    case DW_OP_plus_uconst:
+    case 171:
       return "DW_OP_plus_uconst";
-    case DW_OP_shl:
+    case 135:
       return "DW_OP_shl";
-    case DW_OP_shr:
+    case 134:
       return "DW_OP_shr";
-    case DW_OP_shra:
+    case 133:
       return "DW_OP_shra";
-    case DW_OP_xor:
+    case 128:
       return "DW_OP_xor";
-    case DW_OP_bra:
+    case 273:
       return "DW_OP_bra";
-    case DW_OP_eq:
+    case 221:
       return "DW_OP_eq";
-    case DW_OP_ge:
+    case 219:
       return "DW_OP_ge";
-    case DW_OP_gt:
+    case 218:
       return "DW_OP_gt";
-    case DW_OP_le:
+    case 217:
       return "DW_OP_le";
-    case DW_OP_lt:
+    case 184:
       return "DW_OP_lt";
-    case DW_OP_ne:
+    case 180:
       return "DW_OP_ne";
-    case DW_OP_skip:
+    case 132:
       return "DW_OP_skip";
-    case DW_OP_lit0:
+    case 216:
       return "DW_OP_lit0";
-    case DW_OP_lit1:
+    case 215:
       return "DW_OP_lit1";
-    case DW_OP_lit2:
+    case 204:
       return "DW_OP_lit2";
-    case DW_OP_lit3:
+    case 193:
       return "DW_OP_lit3";
-    case DW_OP_lit4:
+    case 190:
       return "DW_OP_lit4";
-    case DW_OP_lit5:
+    case 189:
       return "DW_OP_lit5";
-    case DW_OP_lit6:
+    case 188:
       return "DW_OP_lit6";
-    case DW_OP_lit7:
+    case 187:
       return "DW_OP_lit7";
-    case DW_OP_lit8:
+    case 186:
       return "DW_OP_lit8";
-    case DW_OP_lit9:
+    case 185:
       return "DW_OP_lit9";
-    case DW_OP_lit10:
+    case 214:
       return "DW_OP_lit10";
-    case DW_OP_lit11:
+    case 213:
       return "DW_OP_lit11";
-    case DW_OP_lit12:
+    case 212:
       return "DW_OP_lit12";
-    case DW_OP_lit13:
+    case 211:
       return "DW_OP_lit13";
-    case DW_OP_lit14:
+    case 210:
       return "DW_OP_lit14";
-    case DW_OP_lit15:
+    case 209:
       return "DW_OP_lit15";
-    case DW_OP_lit16:
+    case 208:
       return "DW_OP_lit16";
-    case DW_OP_lit17:
+    case 207:
       return "DW_OP_lit17";
-    case DW_OP_lit18:
+    case 206:
       return "DW_OP_lit18";
-    case DW_OP_lit19:
+    case 205:
       return "DW_OP_lit19";
-    case DW_OP_lit20:
+    case 203:
       return "DW_OP_lit20";
-    case DW_OP_lit21:
+    case 202:
       return "DW_OP_lit21";
-    case DW_OP_lit22:
+    case 201:
       return "DW_OP_lit22";
-    case DW_OP_lit23:
+    case 200:
       return "DW_OP_lit23";
-    case DW_OP_lit24:
+    case 199:
       return "DW_OP_lit24";
-    case DW_OP_lit25:
+    case 198:
       return "DW_OP_lit25";
-    case DW_OP_lit26:
+    case 197:
       return "DW_OP_lit26";
-    case DW_OP_lit27:
+    case 196:
       return "DW_OP_lit27";
-    case DW_OP_lit28:
+    case 195:
       return "DW_OP_lit28";
-    case DW_OP_lit29:
+    case 194:
       return "DW_OP_lit29";
-    case DW_OP_lit30:
+    case 192:
       return "DW_OP_lit30";
-    case DW_OP_lit31:
+    case 191:
       return "DW_OP_lit31";
-    case DW_OP_reg0:
+    case 169:
       return "DW_OP_reg0";
-    case DW_OP_reg1:
+    case 168:
       return "DW_OP_reg1";
-    case DW_OP_reg2:
+    case 157:
       return "DW_OP_reg2";
-    case DW_OP_reg3:
+    case 146:
       return "DW_OP_reg3";
-    case DW_OP_reg4:
+    case 143:
       return "DW_OP_reg4";
-    case DW_OP_reg5:
+    case 142:
       return "DW_OP_reg5";
-    case DW_OP_reg6:
+    case 141:
       return "DW_OP_reg6";
-    case DW_OP_reg7:
+    case 140:
       return "DW_OP_reg7";
-    case DW_OP_reg8:
+    case 139:
       return "DW_OP_reg8";
-    case DW_OP_reg9:
+    case 138:
       return "DW_OP_reg9";
-    case DW_OP_reg10:
+    case 167:
       return "DW_OP_reg10";
-    case DW_OP_reg11:
+    case 166:
       return "DW_OP_reg11";
-    case DW_OP_reg12:
+    case 165:
       return "DW_OP_reg12";
-    case DW_OP_reg13:
+    case 164:
       return "DW_OP_reg13";
-    case DW_OP_reg14:
+    case 163:
       return "DW_OP_reg14";
-    case DW_OP_reg15:
+    case 162:
       return "DW_OP_reg15";
-    case DW_OP_reg16:
+    case 161:
       return "DW_OP_reg16";
-    case DW_OP_reg17:
+    case 160:
       return "DW_OP_reg17";
-    case DW_OP_reg18:
+    case 159:
       return "DW_OP_reg18";
-    case DW_OP_reg19:
+    case 158:
       return "DW_OP_reg19";
-    case DW_OP_reg20:
+    case 156:
       return "DW_OP_reg20";
-    case DW_OP_reg21:
+    case 155:
       return "DW_OP_reg21";
-    case DW_OP_reg22:
+    case 154:
       return "DW_OP_reg22";
-    case DW_OP_reg23:
+    case 153:
       return "DW_OP_reg23";
-    case DW_OP_reg24:
+    case 152:
       return "DW_OP_reg24";
-    case DW_OP_reg25:
+    case 151:
       return "DW_OP_reg25";
-    case DW_OP_reg26:
+    case 150:
       return "DW_OP_reg26";
-    case DW_OP_reg27:
+    case 149:
       return "DW_OP_reg27";
-    case DW_OP_reg28:
+    case 148:
       return "DW_OP_reg28";
-    case DW_OP_reg29:
+    case 147:
       return "DW_OP_reg29";
-    case DW_OP_reg30:
+    case 145:
       return "DW_OP_reg30";
-    case DW_OP_reg31:
+    case 144:
       return "DW_OP_reg31";
-    case DW_OP_breg0:
+    case 272:
       return "DW_OP_breg0";
-    case DW_OP_breg1:
+    case 271:
       return "DW_OP_breg1";
-    case DW_OP_breg2:
+    case 260:
       return "DW_OP_breg2";
-    case DW_OP_breg3:
+    case 249:
       return "DW_OP_breg3";
-    case DW_OP_breg4:
+    case 246:
       return "DW_OP_breg4";
-    case DW_OP_breg5:
+    case 245:
       return "DW_OP_breg5";
-    case DW_OP_breg6:
+    case 244:
       return "DW_OP_breg6";
-    case DW_OP_breg7:
+    case 243:
       return "DW_OP_breg7";
-    case DW_OP_breg8:
+    case 242:
       return "DW_OP_breg8";
-    case DW_OP_breg9:
+    case 241:
       return "DW_OP_breg9";
-    case DW_OP_breg10:
+    case 270:
       return "DW_OP_breg10";
-    case DW_OP_breg11:
+    case 269:
       return "DW_OP_breg11";
-    case DW_OP_breg12:
+    case 268:
       return "DW_OP_breg12";
-    case DW_OP_breg13:
+    case 267:
       return "DW_OP_breg13";
-    case DW_OP_breg14:
+    case 266:
       return "DW_OP_breg14";
-    case DW_OP_breg15:
+    case 265:
       return "DW_OP_breg15";
-    case DW_OP_breg16:
+    case 264:
       return "DW_OP_breg16";
-    case DW_OP_breg17:
+    case 263:
       return "DW_OP_breg17";
-    case DW_OP_breg18:
+    case 262:
       return "DW_OP_breg18";
-    case DW_OP_breg19:
+    case 261:
       return "DW_OP_breg19";
-    case DW_OP_breg20:
+    case 259:
       return "DW_OP_breg20";
-    case DW_OP_breg21:
+    case 258:
       return "DW_OP_breg21";
-    case DW_OP_breg22:
+    case 257:
       return "DW_OP_breg22";
-    case DW_OP_breg23:
+    case 256:
       return "DW_OP_breg23";
-    case DW_OP_breg24:
+    case 255:
       return "DW_OP_breg24";
-    case DW_OP_breg25:
+    case 254:
       return "DW_OP_breg25";
-    case DW_OP_breg26:
+    case 253:
       return "DW_OP_breg26";
-    case DW_OP_breg27:
+    case 252:
       return "DW_OP_breg27";
-    case DW_OP_breg28:
+    case 251:
       return "DW_OP_breg28";
-    case DW_OP_breg29:
+    case 250:
       return "DW_OP_breg29";
-    case DW_OP_breg30:
+    case 248:
       return "DW_OP_breg30";
-    case DW_OP_breg31:
+    case 247:
       return "DW_OP_breg31";
-    case DW_OP_regx:
+    case 137:
       return "DW_OP_regx";
-    case DW_OP_fbreg:
+    case 220:
       return "DW_OP_fbreg";
-    case DW_OP_bregx:
+    case 240:
       return "DW_OP_bregx";
-    case DW_OP_piece:
+    case 173:
       return "DW_OP_piece";
-    case DW_OP_deref_size:
+    case 225:
       return "DW_OP_deref_size";
-    case DW_OP_xderef_size:
+    case 129:
       return "DW_OP_xderef_size";
-    case DW_OP_nop:
+    case 178:
       return "DW_OP_nop";
-      /* DWARF 3 extensions.  */
-    case DW_OP_push_object_address:
+
+    case 170:
       return "DW_OP_push_object_address";
-    case DW_OP_call2:
+    case 239:
       return "DW_OP_call2";
-    case DW_OP_call4:
+    case 238:
       return "DW_OP_call4";
-    case DW_OP_call_ref:
+    case 237:
       return "DW_OP_call_ref";
-      /* GNU extensions.  */
-    case DW_OP_GNU_push_tls_address:
+
+    case 278:
       return "DW_OP_GNU_push_tls_address";
-    case DW_OP_GNU_uninit:
+    case 277:
       return "DW_OP_GNU_uninit";
     default:
       return "OP_<unknown>";

@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int initialized; int /*<<< orphan*/  bdev; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int initialized; int bdev; } ;
 struct radeon_device {TYPE_1__ mman; scalar_t__ stolen_vga_memory; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DRM_INFO (char*) ; 
- int /*<<< orphan*/  TTM_PL_TT ; 
- int /*<<< orphan*/  TTM_PL_VRAM ; 
- int radeon_bo_reserve (scalar_t__,int) ; 
- int /*<<< orphan*/  radeon_bo_unpin (scalar_t__) ; 
- int /*<<< orphan*/  radeon_bo_unref (scalar_t__*) ; 
- int /*<<< orphan*/  radeon_bo_unreserve (scalar_t__) ; 
- int /*<<< orphan*/  radeon_gart_fini (struct radeon_device*) ; 
- int /*<<< orphan*/  radeon_ttm_debugfs_fini (struct radeon_device*) ; 
- int /*<<< orphan*/  ttm_bo_clean_mm (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ttm_bo_device_release (int /*<<< orphan*/ *) ; 
+
+ int DRM_INFO (char*) ;
+ int TTM_PL_TT ;
+ int TTM_PL_VRAM ;
+ int radeon_bo_reserve (scalar_t__,int) ;
+ int radeon_bo_unpin (scalar_t__) ;
+ int radeon_bo_unref (scalar_t__*) ;
+ int radeon_bo_unreserve (scalar_t__) ;
+ int radeon_gart_fini (struct radeon_device*) ;
+ int radeon_ttm_debugfs_fini (struct radeon_device*) ;
+ int ttm_bo_clean_mm (int *,int ) ;
+ int ttm_bo_device_release (int *) ;
 
 void radeon_ttm_fini(struct radeon_device *rdev)
 {
-	int r;
+ int r;
 
-	if (!rdev->mman.initialized)
-		return;
-	radeon_ttm_debugfs_fini(rdev);
-	if (rdev->stolen_vga_memory) {
-		r = radeon_bo_reserve(rdev->stolen_vga_memory, false);
-		if (r == 0) {
-			radeon_bo_unpin(rdev->stolen_vga_memory);
-			radeon_bo_unreserve(rdev->stolen_vga_memory);
-		}
-		radeon_bo_unref(&rdev->stolen_vga_memory);
-	}
-	ttm_bo_clean_mm(&rdev->mman.bdev, TTM_PL_VRAM);
-	ttm_bo_clean_mm(&rdev->mman.bdev, TTM_PL_TT);
-	ttm_bo_device_release(&rdev->mman.bdev);
-	radeon_gart_fini(rdev);
-	rdev->mman.initialized = false;
-	DRM_INFO("radeon: ttm finalized\n");
+ if (!rdev->mman.initialized)
+  return;
+ radeon_ttm_debugfs_fini(rdev);
+ if (rdev->stolen_vga_memory) {
+  r = radeon_bo_reserve(rdev->stolen_vga_memory, 0);
+  if (r == 0) {
+   radeon_bo_unpin(rdev->stolen_vga_memory);
+   radeon_bo_unreserve(rdev->stolen_vga_memory);
+  }
+  radeon_bo_unref(&rdev->stolen_vga_memory);
+ }
+ ttm_bo_clean_mm(&rdev->mman.bdev, TTM_PL_VRAM);
+ ttm_bo_clean_mm(&rdev->mman.bdev, TTM_PL_TT);
+ ttm_bo_device_release(&rdev->mman.bdev);
+ radeon_gart_fini(rdev);
+ rdev->mman.initialized = 0;
+ DRM_INFO("radeon: ttm finalized\n");
 }

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64_t ;
+
+
+
+
+typedef int uint64_t ;
 struct bgx {int dummy; } ;
 
-/* Variables and functions */
- scalar_t__ BGX_CMRX_TX_STAT0 ; 
- int MAX_BGX_PER_CN88XX ; 
- int /*<<< orphan*/  bgx_reg_read (struct bgx*,int,scalar_t__) ; 
- struct bgx** bgx_vnic ; 
+
+ scalar_t__ BGX_CMRX_TX_STAT0 ;
+ int MAX_BGX_PER_CN88XX ;
+ int bgx_reg_read (struct bgx*,int,scalar_t__) ;
+ struct bgx** bgx_vnic ;
 
 uint64_t
 bgx_get_tx_stats(int node, int bgx_idx, int lmac, int idx)
 {
-	struct bgx *bgx;
+ struct bgx *bgx;
 
-	bgx = bgx_vnic[(node * MAX_BGX_PER_CN88XX) + bgx_idx];
-	if (bgx == NULL)
-		return (0);
+ bgx = bgx_vnic[(node * MAX_BGX_PER_CN88XX) + bgx_idx];
+ if (bgx == ((void*)0))
+  return (0);
 
-	return (bgx_reg_read(bgx, lmac, BGX_CMRX_TX_STAT0 + (idx * 8)));
+ return (bgx_reg_read(bgx, lmac, BGX_CMRX_TX_STAT0 + (idx * 8)));
 }

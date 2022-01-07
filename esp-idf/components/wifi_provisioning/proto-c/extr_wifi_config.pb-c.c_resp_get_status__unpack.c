@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  RespGetStatus ;
-typedef  int /*<<< orphan*/  ProtobufCAllocator ;
 
-/* Variables and functions */
- scalar_t__ protobuf_c_message_unpack (int /*<<< orphan*/ *,int /*<<< orphan*/ *,size_t,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  resp_get_status__descriptor ; 
+
+
+
+typedef int uint8_t ;
+typedef int RespGetStatus ;
+typedef int ProtobufCAllocator ;
+
+
+ scalar_t__ protobuf_c_message_unpack (int *,int *,size_t,int const*) ;
+ int resp_get_status__descriptor ;
 
 RespGetStatus *
        resp_get_status__unpack
-                     (ProtobufCAllocator  *allocator,
-                      size_t               len,
-                      const uint8_t       *data)
+                     (ProtobufCAllocator *allocator,
+                      size_t len,
+                      const uint8_t *data)
 {
   return (RespGetStatus *)
      protobuf_c_message_unpack (&resp_get_status__descriptor,

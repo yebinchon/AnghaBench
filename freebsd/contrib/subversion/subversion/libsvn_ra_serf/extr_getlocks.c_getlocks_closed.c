@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int /*<<< orphan*/  data; } ;
-typedef  TYPE_1__ svn_string_t ;
-typedef  int /*<<< orphan*/  svn_ra_serf__xml_estate_t ;
-struct TYPE_9__ {char const* path; char const* token; int /*<<< orphan*/  expiration_date; int /*<<< orphan*/  creation_date; void* comment; void* owner; int /*<<< orphan*/  member_0; } ;
-typedef  TYPE_2__ svn_lock_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  scalar_t__ svn_boolean_t ;
-struct TYPE_10__ {scalar_t__ requested_depth; int /*<<< orphan*/  hash; int /*<<< orphan*/  pool; int /*<<< orphan*/  path; } ;
-typedef  TYPE_3__ lock_context_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
 
-/* Variables and functions */
- int COMMENT ; 
- int CREATION_DATE ; 
- int EXPIRATION_DATE ; 
- scalar_t__ FALSE ; 
- int LOCK ; 
- int OWNER ; 
- int PATH ; 
- char* SVN_DAV__CREATIONDATE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_ASSERT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_MALFUNCTION () ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int TOKEN ; 
- scalar_t__ TRUE ; 
- scalar_t__ strcmp (int /*<<< orphan*/ ,char const*) ; 
- scalar_t__ svn_depth_files ; 
- scalar_t__ svn_depth_immediates ; 
- scalar_t__ svn_depth_infinity ; 
- char* svn_fspath__skip_ancestor (int /*<<< orphan*/ ,char const*) ; 
- void* svn_hash_gets (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  svn_hash_sets (int /*<<< orphan*/ ,char const*,TYPE_2__*) ; 
- TYPE_2__* svn_lock_dup (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int svn_path_component_count (char const*) ; 
- int /*<<< orphan*/  svn_ra_serf__xml_note (int /*<<< orphan*/ *,int,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_time_from_cstring (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int data; } ;
+typedef TYPE_1__ svn_string_t ;
+typedef int svn_ra_serf__xml_estate_t ;
+struct TYPE_9__ {char const* path; char const* token; int expiration_date; int creation_date; void* comment; void* owner; int member_0; } ;
+typedef TYPE_2__ svn_lock_t ;
+typedef int svn_error_t ;
+typedef scalar_t__ svn_boolean_t ;
+struct TYPE_10__ {scalar_t__ requested_depth; int hash; int pool; int path; } ;
+typedef TYPE_3__ lock_context_t ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
+
+
+ int COMMENT ;
+ int CREATION_DATE ;
+ int EXPIRATION_DATE ;
+ scalar_t__ FALSE ;
+ int LOCK ;
+ int OWNER ;
+ int PATH ;
+ char* SVN_DAV__CREATIONDATE ;
+ int SVN_ERR (int ) ;
+ int SVN_ERR_ASSERT (int ) ;
+ int SVN_ERR_MALFUNCTION () ;
+ int * SVN_NO_ERROR ;
+ int TOKEN ;
+ scalar_t__ TRUE ;
+ scalar_t__ strcmp (int ,char const*) ;
+ scalar_t__ svn_depth_files ;
+ scalar_t__ svn_depth_immediates ;
+ scalar_t__ svn_depth_infinity ;
+ char* svn_fspath__skip_ancestor (int ,char const*) ;
+ void* svn_hash_gets (int *,char*) ;
+ int svn_hash_sets (int ,char const*,TYPE_2__*) ;
+ TYPE_2__* svn_lock_dup (TYPE_2__*,int ) ;
+ int svn_path_component_count (char const*) ;
+ int svn_ra_serf__xml_note (int *,int,char const*,int ) ;
+ int svn_time_from_cstring (int *,char const*,int *) ;
 
 __attribute__((used)) static svn_error_t *
 getlocks_closed(svn_ra_serf__xml_estate_t *xes,
@@ -67,21 +67,10 @@ getlocks_closed(svn_ra_serf__xml_estate_t *xes,
       const char *path = svn_hash_gets(attrs, "path");
       const char *token = svn_hash_gets(attrs, "token");
       svn_boolean_t save_lock = FALSE;
-
-      /* Filter out unwanted paths.  Since Subversion only allows
-         locks on files, we can treat depth=immediates the same as
-         depth=files for filtering purposes.  Meaning, we'll keep
-         this lock if:
-
-         a) its path is the very path we queried, or
-         b) we've asked for a fully recursive answer, or
-         c) we've asked for depth=files or depth=immediates, and this
-            lock is on an immediate child of our query path.
-      */
       if (! token)
         {
-          /* A lock without a token is not a lock; just an answer that there
-             is no lock on the node. */
+
+
           save_lock = FALSE;
         }
       if (strcmp(lock_ctx->path, path) == 0
@@ -100,14 +89,14 @@ getlocks_closed(svn_ra_serf__xml_estate_t *xes,
 
       if (save_lock)
         {
-          /* We get to put the structure on the stack rather than using
-             svn_lock_create(). Bwahahaha....   */
+
+
           svn_lock_t lock = { 0 };
           const char *date;
           svn_lock_t *result_lock;
 
-          /* Note: these "attributes" came from child elements. Some of
-             them may have not been sent, so the value will be NULL.  */
+
+
 
           lock.path = path;
           lock.token = token;
@@ -132,7 +121,7 @@ getlocks_closed(svn_ra_serf__xml_estate_t *xes,
     {
       const char *name;
 
-      SVN_ERR_ASSERT(cdata != NULL);
+      SVN_ERR_ASSERT(cdata != ((void*)0));
 
       if (leaving_state == PATH)
         name = "path";
@@ -149,7 +138,7 @@ getlocks_closed(svn_ra_serf__xml_estate_t *xes,
       else
         SVN_ERR_MALFUNCTION();
 
-      /* Store the lock information onto the LOCK elemstate.  */
+
       svn_ra_serf__xml_note(xes, LOCK, name, cdata->data);
     }
 

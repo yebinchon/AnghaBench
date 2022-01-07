@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  LPWSTR ;
-typedef  scalar_t__ HRESULT ;
-typedef  int DWORD ;
-typedef  char const CHAR ;
 
-/* Variables and functions */
- scalar_t__ E_POINTER ; 
- int /*<<< orphan*/  FreeWideString (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetWideString (char const*) ; 
- int INTERNET_MAX_URL_LENGTH ; 
- scalar_t__ S_OK ; 
- scalar_t__ lstrcmpW (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- scalar_t__ pUrlGetPartA (char const*,char const*,int*,int,int) ; 
- scalar_t__ pUrlGetPartW (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int*,int,int) ; 
- scalar_t__ strcmp (char const*,char const*) ; 
- int strlen (char const*) ; 
+
+
+
+typedef int WCHAR ;
+typedef int LPWSTR ;
+typedef scalar_t__ HRESULT ;
+typedef int DWORD ;
+typedef char const CHAR ;
+
+
+ scalar_t__ E_POINTER ;
+ int FreeWideString (int ) ;
+ int GetWideString (char const*) ;
+ int INTERNET_MAX_URL_LENGTH ;
+ scalar_t__ S_OK ;
+ scalar_t__ lstrcmpW (int *,int ) ;
+ int ok (int,char*,...) ;
+ scalar_t__ pUrlGetPartA (char const*,char const*,int*,int,int) ;
+ scalar_t__ pUrlGetPartW (int ,int *,int*,int,int) ;
+ scalar_t__ strcmp (char const*,char const*) ;
+ int strlen (char const*) ;
 
 __attribute__((used)) static void test_url_part(const char* szUrl, DWORD dwPart, DWORD dwFlags, const char* szExpected)
 {
@@ -66,8 +66,8 @@ __attribute__((used)) static void test_url_part(const char* szUrl, DWORD dwPart,
   }
   FreeWideString(wszUrl);
 
-  /* Note that v6.0 and later don't return '?' with the query */
+
   ok(strcmp(szPart,szExpected)==0 ||
      (*szExpected=='?' && !strcmp(szPart,szExpected+1)),
-	 "Expected %s, but got %s\n", szExpected, szPart);
+  "Expected %s, but got %s\n", szExpected, szPart);
 }

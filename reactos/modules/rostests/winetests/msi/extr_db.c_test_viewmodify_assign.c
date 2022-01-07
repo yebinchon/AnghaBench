@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int UINT ;
-typedef  scalar_t__ MSIHANDLE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DeleteFileA (int /*<<< orphan*/ ) ; 
- int ERROR_NO_MORE_ITEMS ; 
- int ERROR_SUCCESS ; 
- int /*<<< orphan*/  MSIDBOPEN_CREATE ; 
- int /*<<< orphan*/  MSIMODIFY_ASSIGN ; 
- int MsiCloseHandle (scalar_t__) ; 
- scalar_t__ MsiCreateRecord (int) ; 
- int MsiDatabaseOpenViewA (scalar_t__,char const*,scalar_t__*) ; 
- int MsiOpenDatabaseW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__*) ; 
- int MsiRecordGetInteger (scalar_t__,int) ; 
- int MsiRecordSetInteger (scalar_t__,int,int) ; 
- int MsiViewClose (scalar_t__) ; 
- int MsiViewExecute (scalar_t__,int /*<<< orphan*/ ) ; 
- int MsiViewFetch (scalar_t__,scalar_t__*) ; 
- int MsiViewModify (scalar_t__,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  msifile ; 
- int /*<<< orphan*/  msifileW ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int run_query (scalar_t__,int /*<<< orphan*/ ,char const*) ; 
+
+
+
+typedef int UINT ;
+typedef scalar_t__ MSIHANDLE ;
+
+
+ int DeleteFileA (int ) ;
+ int ERROR_NO_MORE_ITEMS ;
+ int ERROR_SUCCESS ;
+ int MSIDBOPEN_CREATE ;
+ int MSIMODIFY_ASSIGN ;
+ int MsiCloseHandle (scalar_t__) ;
+ scalar_t__ MsiCreateRecord (int) ;
+ int MsiDatabaseOpenViewA (scalar_t__,char const*,scalar_t__*) ;
+ int MsiOpenDatabaseW (int ,int ,scalar_t__*) ;
+ int MsiRecordGetInteger (scalar_t__,int) ;
+ int MsiRecordSetInteger (scalar_t__,int,int) ;
+ int MsiViewClose (scalar_t__) ;
+ int MsiViewExecute (scalar_t__,int ) ;
+ int MsiViewFetch (scalar_t__,scalar_t__*) ;
+ int MsiViewModify (scalar_t__,int ,scalar_t__) ;
+ int msifile ;
+ int msifileW ;
+ int ok (int,char*,...) ;
+ int run_query (scalar_t__,int ,char const*) ;
 
 __attribute__((used)) static void test_viewmodify_assign(void)
 {
@@ -40,7 +40,7 @@ __attribute__((used)) static void test_viewmodify_assign(void)
     const char *query;
     UINT r;
 
-    /* setup database */
+
     DeleteFileA(msifile);
 
     r = MsiOpenDatabaseW(msifileW, MSIDBOPEN_CREATE, &hdb);
@@ -50,7 +50,7 @@ __attribute__((used)) static void test_viewmodify_assign(void)
     r = run_query( hdb, 0, query );
     ok(r == ERROR_SUCCESS, "query failed\n");
 
-    /* assign to view, new primary key */
+
     query = "SELECT * FROM `table`";
     r = MsiDatabaseOpenViewA(hdb, query, &hview);
     ok(r == ERROR_SUCCESS, "MsiDatabaseOpenView failed\n");
@@ -100,7 +100,7 @@ __attribute__((used)) static void test_viewmodify_assign(void)
     r = MsiCloseHandle(hview);
     ok(r == ERROR_SUCCESS, "MsiCloseHandle failed\n");
 
-    /* assign to view, primary key matches */
+
     query = "SELECT * FROM `table`";
     r = MsiDatabaseOpenViewA(hdb, query, &hview);
     ok(r == ERROR_SUCCESS, "MsiDatabaseOpenView failed\n");
@@ -150,7 +150,7 @@ __attribute__((used)) static void test_viewmodify_assign(void)
     r = MsiCloseHandle(hview);
     ok(r == ERROR_SUCCESS, "MsiCloseHandle failed\n");
 
-    /* close database */
+
     r = MsiCloseHandle( hdb );
     ok(r == ERROR_SUCCESS, "MsiOpenDatabase close failed\n");
 }

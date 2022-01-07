@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  int16_t ;
+
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int int16_t ;
 struct TYPE_7__ {int buf; } ;
-typedef  TYPE_1__ PutBitContext ;
+typedef TYPE_1__ PutBitContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  encode_ac_coeffs (TYPE_1__*,int /*<<< orphan*/ *,int,int*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  encode_dc_coeffs (TYPE_1__*,int /*<<< orphan*/ *,int,int*) ; 
- int /*<<< orphan*/  flush_put_bits (TYPE_1__*) ; 
- int /*<<< orphan*/  init_put_bits (TYPE_1__*,int /*<<< orphan*/ *,unsigned int) ; 
- int put_bits_ptr (TYPE_1__*) ; 
+
+ int encode_ac_coeffs (TYPE_1__*,int *,int,int*,int const*) ;
+ int encode_dc_coeffs (TYPE_1__*,int *,int,int*) ;
+ int flush_put_bits (TYPE_1__*) ;
+ int init_put_bits (TYPE_1__*,int *,unsigned int) ;
+ int put_bits_ptr (TYPE_1__*) ;
 
 __attribute__((used)) static int encode_slice_plane(int16_t *blocks, int mb_count, uint8_t *buf, unsigned buf_size, int *qmat, int sub_sample_chroma,
                               const uint8_t ff_prores_scan[64])

@@ -1,19 +1,11 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int POLARSSL_ERR_BASE64_BUFFER_TOO_SMALL ; 
- void** base64_enc_map ; 
+ int POLARSSL_ERR_BASE64_BUFFER_TOO_SMALL ;
+ void** base64_enc_map ;
 
 int base64_encode( unsigned char *dst, size_t *dlen,
                    const unsigned char *src, size_t slen )
@@ -29,8 +21,8 @@ int base64_encode( unsigned char *dst, size_t *dlen,
 
     switch( (slen << 3) - (n * 6) )
     {
-        case  2: n += 3; break;
-        case  4: n += 2; break;
+        case 2: n += 3; break;
+        case 4: n += 2; break;
         default: break;
     }
 
@@ -49,7 +41,7 @@ int base64_encode( unsigned char *dst, size_t *dlen,
         C3 = *src++;
 
         *p++ = base64_enc_map[(C1 >> 2) & 0x3F];
-        *p++ = base64_enc_map[(((C1 &  3) << 4) + (C2 >> 4)) & 0x3F];
+        *p++ = base64_enc_map[(((C1 & 3) << 4) + (C2 >> 4)) & 0x3F];
         *p++ = base64_enc_map[(((C2 & 15) << 2) + (C3 >> 6)) & 0x3F];
         *p++ = base64_enc_map[C3 & 0x3F];
     }

@@ -1,69 +1,69 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  h ;
-typedef  int UINT ;
+
+
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef int h ;
+typedef int UINT ;
 struct TYPE_13__ {int Size; TYPE_2__* Buf; } ;
-struct TYPE_12__ {int SpiSize; int /*<<< orphan*/  ProtocolId; int /*<<< orphan*/  NumSpis; int /*<<< orphan*/  DoI; } ;
-struct TYPE_11__ {int /*<<< orphan*/  SpiList; int /*<<< orphan*/  ProtocolId; } ;
-typedef  TYPE_1__ IKE_PACKET_DELETE_PAYLOAD ;
-typedef  TYPE_2__ IKE_DELETE_HEADER ;
-typedef  TYPE_3__ BUF ;
+struct TYPE_12__ {int SpiSize; int ProtocolId; int NumSpis; int DoI; } ;
+struct TYPE_11__ {int SpiList; int ProtocolId; } ;
+typedef TYPE_1__ IKE_PACKET_DELETE_PAYLOAD ;
+typedef TYPE_2__ IKE_DELETE_HEADER ;
+typedef TYPE_3__ BUF ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Endian16 (int) ; 
- int /*<<< orphan*/  Endian32 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IKE_SA_DOI_IPSEC ; 
- TYPE_3__* LIST_DATA (int /*<<< orphan*/ ,int) ; 
- int LIST_NUM (int /*<<< orphan*/ ) ; 
- TYPE_3__* NewBuf () ; 
- int /*<<< orphan*/  WriteBuf (TYPE_3__*,TYPE_2__*,int) ; 
- int /*<<< orphan*/  Zero (TYPE_2__*,int) ; 
+
+ int Endian16 (int) ;
+ int Endian32 (int ) ;
+ int IKE_SA_DOI_IPSEC ;
+ TYPE_3__* LIST_DATA (int ,int) ;
+ int LIST_NUM (int ) ;
+ TYPE_3__* NewBuf () ;
+ int WriteBuf (TYPE_3__*,TYPE_2__*,int) ;
+ int Zero (TYPE_2__*,int) ;
 
 BUF *IkeBuildDeletePayload(IKE_PACKET_DELETE_PAYLOAD *t)
 {
-	IKE_DELETE_HEADER h;
-	BUF *ret;
-	UINT i;
-	// Validate arguments
-	if (t == NULL)
-	{
-		return NULL;
-	}
+ IKE_DELETE_HEADER h;
+ BUF *ret;
+ UINT i;
 
-	Zero(&h, sizeof(h));
-	h.DoI = Endian32(IKE_SA_DOI_IPSEC);
-	h.NumSpis = Endian16(LIST_NUM(t->SpiList));
-	h.ProtocolId = t->ProtocolId;
+ if (t == ((void*)0))
+ {
+  return ((void*)0);
+ }
 
-	if (LIST_NUM(t->SpiList) >= 1)
-	{
-		BUF *b = LIST_DATA(t->SpiList, 0);
+ Zero(&h, sizeof(h));
+ h.DoI = Endian32(IKE_SA_DOI_IPSEC);
+ h.NumSpis = Endian16(LIST_NUM(t->SpiList));
+ h.ProtocolId = t->ProtocolId;
 
-		h.SpiSize = b->Size;
-	}
+ if (LIST_NUM(t->SpiList) >= 1)
+ {
+  BUF *b = LIST_DATA(t->SpiList, 0);
 
-	ret = NewBuf();
-	WriteBuf(ret, &h, sizeof(h));
+  h.SpiSize = b->Size;
+ }
 
-	for (i = 0;i < LIST_NUM(t->SpiList);i++)
-	{
-		BUF *b = LIST_DATA(t->SpiList, i);
+ ret = NewBuf();
+ WriteBuf(ret, &h, sizeof(h));
 
-		WriteBuf(ret, b->Buf, b->Size);
-	}
+ for (i = 0;i < LIST_NUM(t->SpiList);i++)
+ {
+  BUF *b = LIST_DATA(t->SpiList, i);
 
-	return ret;
+  WriteBuf(ret, b->Buf, b->Size);
+ }
+
+ return ret;
 }

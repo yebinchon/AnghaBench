@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {scalar_t__ size; scalar_t__ entries; } ;
 struct st_gzip_context_t {TYPE_1__ bufs; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BUF_SIZE ; 
- int /*<<< orphan*/  h2o_mem_alloc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  h2o_sendvec_init_raw (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  h2o_vector_reserve (int /*<<< orphan*/ *,TYPE_1__*,scalar_t__) ; 
+
+ int BUF_SIZE ;
+ int h2o_mem_alloc (int ) ;
+ int h2o_sendvec_init_raw (scalar_t__,int ,int ) ;
+ int h2o_vector_reserve (int *,TYPE_1__*,scalar_t__) ;
 
 __attribute__((used)) static void expand_buf(struct st_gzip_context_t *self)
 {
-    h2o_vector_reserve(NULL, &self->bufs, self->bufs.size + 1);
+    h2o_vector_reserve(((void*)0), &self->bufs, self->bufs.size + 1);
     h2o_sendvec_init_raw(self->bufs.entries + self->bufs.size++, h2o_mem_alloc(BUF_SIZE), 0);
 }

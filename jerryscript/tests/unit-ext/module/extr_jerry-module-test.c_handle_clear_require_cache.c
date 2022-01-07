@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  jerry_value_t ;
-typedef  int jerry_length_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TEST_ASSERT (int) ; 
- int /*<<< orphan*/  jerryx_module_clear_cache (int /*<<< orphan*/  const,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  resolvers ; 
+
+
+
+typedef int jerry_value_t ;
+typedef int jerry_length_t ;
+
+
+ int TEST_ASSERT (int) ;
+ int jerryx_module_clear_cache (int const,int ,int) ;
+ int resolvers ;
 
 __attribute__((used)) static jerry_value_t
 handle_clear_require_cache (const jerry_value_t js_function,

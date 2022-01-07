@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct options {int /*<<< orphan*/  gc; } ;
+
+
+
+
+struct options {int gc; } ;
 struct env_set {int dummy; } ;
-typedef  int /*<<< orphan*/  line ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef int line ;
+typedef int FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLEAR (char**) ; 
- int /*<<< orphan*/  MAX_PARMS ; 
- int OPTION_LINE_SIZE ; 
- scalar_t__ SIZE (char**) ; 
- int /*<<< orphan*/  add_option (struct options*,char**,char const*,int,int,int const,unsigned int const,unsigned int*,struct env_set*) ; 
- int /*<<< orphan*/  bypass_doubledash (char**) ; 
- int /*<<< orphan*/  check_inline_file_via_fp (int /*<<< orphan*/ *,char**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- scalar_t__ fgets (char*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  msg (int const,char*,char const*,int const,...) ; 
- scalar_t__ parse_line (char*,char**,scalar_t__,char const*,int,int const,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * platform_fopen (char const*,char*) ; 
- int /*<<< orphan*/  secure_memzero (char*,int) ; 
- int /*<<< orphan*/ * stdin ; 
- scalar_t__ streq (char const*,char*) ; 
- int strlen (char*) ; 
- scalar_t__ strncmp (char*,char*,int) ; 
+
+ int CLEAR (char**) ;
+ int MAX_PARMS ;
+ int OPTION_LINE_SIZE ;
+ scalar_t__ SIZE (char**) ;
+ int add_option (struct options*,char**,char const*,int,int,int const,unsigned int const,unsigned int*,struct env_set*) ;
+ int bypass_doubledash (char**) ;
+ int check_inline_file_via_fp (int *,char**,int *) ;
+ int fclose (int *) ;
+ scalar_t__ fgets (char*,int,int *) ;
+ int msg (int const,char*,char const*,int const,...) ;
+ scalar_t__ parse_line (char*,char**,scalar_t__,char const*,int,int const,int *) ;
+ int * platform_fopen (char const*,char*) ;
+ int secure_memzero (char*,int) ;
+ int * stdin ;
+ scalar_t__ streq (char const*,char*) ;
+ int strlen (char*) ;
+ scalar_t__ strncmp (char*,char*,int) ;
 
 __attribute__((used)) static void
 read_config_file(struct options *options,
@@ -76,7 +76,7 @@ read_config_file(struct options *options,
                         file, line_num, OPTION_LINE_SIZE, line);
                 }
 
-                /* Ignore UTF-8 BOM at start of stream */
+
                 if (line_num == 1 && strncmp(line, "\xEF\xBB\xBF", 3) == 0)
                 {
                     offset = 3;

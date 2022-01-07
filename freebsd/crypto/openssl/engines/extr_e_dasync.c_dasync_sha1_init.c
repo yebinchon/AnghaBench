@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  EVP_MD_CTX ;
 
-/* Variables and functions */
- int SHA1_Init (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  data (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  dummy_pause_job () ; 
+
+
+
+typedef int EVP_MD_CTX ;
+
+
+ int SHA1_Init (int ) ;
+ int data (int *) ;
+ int dummy_pause_job () ;
 
 __attribute__((used)) static int dasync_sha1_init(EVP_MD_CTX *ctx)
 {

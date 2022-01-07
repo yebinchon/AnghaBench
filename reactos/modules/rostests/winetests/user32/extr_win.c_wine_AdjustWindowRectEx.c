@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int top; int left; int right; int bottom; } ;
-typedef  TYPE_1__ RECT ;
-typedef  int LONG ;
-typedef  scalar_t__ BOOL ;
+typedef TYPE_1__ RECT ;
+typedef int LONG ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- int GetSystemMetrics (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  InflateRect (TYPE_1__*,int,int) ; 
- int /*<<< orphan*/  SM_CXDLGFRAME ; 
- int /*<<< orphan*/  SM_CXEDGE ; 
- int /*<<< orphan*/  SM_CXFRAME ; 
- int /*<<< orphan*/  SM_CXVSCROLL ; 
- int /*<<< orphan*/  SM_CYCAPTION ; 
- int /*<<< orphan*/  SM_CYEDGE ; 
- int /*<<< orphan*/  SM_CYHSCROLL ; 
- int /*<<< orphan*/  SM_CYMENU ; 
- int /*<<< orphan*/  SM_CYSMCAPTION ; 
- int WS_BORDER ; 
- int WS_CAPTION ; 
- int WS_DLGFRAME ; 
- int WS_EX_CLIENTEDGE ; 
- int WS_EX_DLGMODALFRAME ; 
- int WS_EX_LEFTSCROLLBAR ; 
- int WS_EX_STATICEDGE ; 
- int WS_EX_TOOLWINDOW ; 
- int WS_HSCROLL ; 
- int WS_THICKFRAME ; 
- int WS_VSCROLL ; 
+
+ int GetSystemMetrics (int ) ;
+ int InflateRect (TYPE_1__*,int,int) ;
+ int SM_CXDLGFRAME ;
+ int SM_CXEDGE ;
+ int SM_CXFRAME ;
+ int SM_CXVSCROLL ;
+ int SM_CYCAPTION ;
+ int SM_CYEDGE ;
+ int SM_CYHSCROLL ;
+ int SM_CYMENU ;
+ int SM_CYSMCAPTION ;
+ int WS_BORDER ;
+ int WS_CAPTION ;
+ int WS_DLGFRAME ;
+ int WS_EX_CLIENTEDGE ;
+ int WS_EX_DLGMODALFRAME ;
+ int WS_EX_LEFTSCROLLBAR ;
+ int WS_EX_STATICEDGE ;
+ int WS_EX_TOOLWINDOW ;
+ int WS_HSCROLL ;
+ int WS_THICKFRAME ;
+ int WS_VSCROLL ;
 
 __attribute__((used)) static void wine_AdjustWindowRectEx( RECT *rect, LONG style, BOOL menu, LONG exStyle )
 {
@@ -47,19 +47,19 @@ __attribute__((used)) static void wine_AdjustWindowRectEx( RECT *rect, LONG styl
     if ((exStyle & (WS_EX_STATICEDGE|WS_EX_DLGMODALFRAME)) ==
         WS_EX_STATICEDGE)
     {
-        adjust = 1; /* for the outer frame always present */
+        adjust = 1;
     }
     else
     {
         adjust = 0;
         if ((exStyle & WS_EX_DLGMODALFRAME) ||
-            (style & (WS_THICKFRAME|WS_DLGFRAME))) adjust = 2; /* outer */
+            (style & (WS_THICKFRAME|WS_DLGFRAME))) adjust = 2;
     }
     if (style & WS_THICKFRAME)
-        adjust += GetSystemMetrics(SM_CXFRAME) - GetSystemMetrics(SM_CXDLGFRAME); /* The resize border */
+        adjust += GetSystemMetrics(SM_CXFRAME) - GetSystemMetrics(SM_CXDLGFRAME);
     if ((style & (WS_BORDER|WS_DLGFRAME)) ||
         (exStyle & WS_EX_DLGMODALFRAME))
-        adjust++; /* The other border */
+        adjust++;
 
     InflateRect (rect, adjust, adjust);
 
@@ -78,7 +78,7 @@ __attribute__((used)) static void wine_AdjustWindowRectEx( RECT *rect, LONG styl
     if (style & WS_VSCROLL)
     {
         if((exStyle & WS_EX_LEFTSCROLLBAR) != 0)
-            rect->left  -= GetSystemMetrics(SM_CXVSCROLL);
+            rect->left -= GetSystemMetrics(SM_CXVSCROLL);
         else
             rect->right += GetSystemMetrics(SM_CXVSCROLL);
     }

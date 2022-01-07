@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct scsi_cmnd {TYPE_2__* device; } ;
 struct TYPE_4__ {TYPE_1__* host; } ;
-struct TYPE_3__ {int /*<<< orphan*/  host_lock; } ;
+struct TYPE_3__ {int host_lock; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEVICE_RESET ; 
- int qla1280_error_action (struct scsi_cmnd*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  spin_lock_irq (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  spin_unlock_irq (int /*<<< orphan*/ ) ; 
+
+ int DEVICE_RESET ;
+ int qla1280_error_action (struct scsi_cmnd*,int ) ;
+ int spin_lock_irq (int ) ;
+ int spin_unlock_irq (int ) ;
 
 __attribute__((used)) static int
 qla1280_eh_device_reset(struct scsi_cmnd *cmd)
 {
-	int rc;
+ int rc;
 
-	spin_lock_irq(cmd->device->host->host_lock);
-	rc = qla1280_error_action(cmd, DEVICE_RESET);
-	spin_unlock_irq(cmd->device->host->host_lock);
+ spin_lock_irq(cmd->device->host->host_lock);
+ rc = qla1280_error_action(cmd, DEVICE_RESET);
+ spin_unlock_irq(cmd->device->host->host_lock);
 
-	return rc;
+ return rc;
 }

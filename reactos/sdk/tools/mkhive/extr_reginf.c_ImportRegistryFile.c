@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ULONG ;
-typedef  int /*<<< orphan*/  PWCHAR ;
-typedef  int /*<<< orphan*/  PCHAR ;
-typedef  int /*<<< orphan*/  HINF ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- scalar_t__ AddReg ; 
- int /*<<< orphan*/  DPRINT1 (char*,...) ; 
- scalar_t__ DelReg ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  InfHostCloseFile (int /*<<< orphan*/ ) ; 
- scalar_t__ InfHostOpenFile (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  registry_callback (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int ULONG ;
+typedef int PWCHAR ;
+typedef int PCHAR ;
+typedef int HINF ;
+typedef int BOOL ;
+
+
+ scalar_t__ AddReg ;
+ int DPRINT1 (char*,...) ;
+ scalar_t__ DelReg ;
+ int FALSE ;
+ int InfHostCloseFile (int ) ;
+ scalar_t__ InfHostOpenFile (int *,int ,int ,int *) ;
+ int TRUE ;
+ int registry_callback (int ,int ,int ) ;
 
 BOOL
 ImportRegistryFile(PCHAR FileName)
@@ -32,7 +32,7 @@ ImportRegistryFile(PCHAR FileName)
     HINF hInf;
     ULONG ErrorLine;
 
-    /* Load inf file from install media. */
+
     if (InfHostOpenFile(&hInf, FileName, 0, &ErrorLine) != 0)
     {
         DPRINT1("InfHostOpenFile(%s) failed\n", FileName);

@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_2__* kfs_file_handle_t ;
-struct TYPE_5__ {TYPE_1__* info; int /*<<< orphan*/  fd; } ;
-struct TYPE_4__ {int /*<<< orphan*/  filename; } ;
 
-/* Variables and functions */
- int O_CREAT ; 
- int O_TRUNC ; 
- int O_WRONLY ; 
- int RPC_PROXY_INDEX_MAGIC ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  binlog_disabled ; 
- int /*<<< orphan*/  close (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ ifd ; 
- int jump_log_crc32 ; 
- long long jump_log_pos ; 
- int jump_log_ts ; 
- scalar_t__ open (char*,int,...) ; 
- int read (int /*<<< orphan*/ ,int*,int) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,char const*) ; 
- int /*<<< orphan*/  stderr ; 
- int write (scalar_t__,int*,int) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef TYPE_2__* kfs_file_handle_t ;
+struct TYPE_5__ {TYPE_1__* info; int fd; } ;
+struct TYPE_4__ {int filename; } ;
+
+
+ int O_CREAT ;
+ int O_TRUNC ;
+ int O_WRONLY ;
+ int RPC_PROXY_INDEX_MAGIC ;
+ int assert (int) ;
+ int binlog_disabled ;
+ int close (int ) ;
+ int exit (int) ;
+ int fprintf (int ,char*) ;
+ scalar_t__ ifd ;
+ int jump_log_crc32 ;
+ long long jump_log_pos ;
+ int jump_log_ts ;
+ scalar_t__ open (char*,int,...) ;
+ int read (int ,int*,int) ;
+ int snprintf (char*,int,char*,char const*) ;
+ int stderr ;
+ int write (scalar_t__,int*,int) ;
 
 void load_index (kfs_file_handle_t index, const char *bname) {
   static int t[5];

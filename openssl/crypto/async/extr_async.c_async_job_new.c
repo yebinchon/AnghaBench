@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  status; } ;
-typedef  TYPE_1__ ASYNC_JOB ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASYNC_F_ASYNC_JOB_NEW ; 
- int /*<<< orphan*/  ASYNC_JOB_RUNNING ; 
- int /*<<< orphan*/  ASYNCerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ERR_R_MALLOC_FAILURE ; 
- TYPE_1__* OPENSSL_zalloc (int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int status; } ;
+typedef TYPE_1__ ASYNC_JOB ;
+
+
+ int ASYNC_F_ASYNC_JOB_NEW ;
+ int ASYNC_JOB_RUNNING ;
+ int ASYNCerr (int ,int ) ;
+ int ERR_R_MALLOC_FAILURE ;
+ TYPE_1__* OPENSSL_zalloc (int) ;
 
 __attribute__((used)) static ASYNC_JOB *async_job_new(void)
 {
-    ASYNC_JOB *job = NULL;
+    ASYNC_JOB *job = ((void*)0);
 
     job = OPENSSL_zalloc(sizeof(*job));
-    if (job == NULL) {
+    if (job == ((void*)0)) {
         ASYNCerr(ASYNC_F_ASYNC_JOB_NEW, ERR_R_MALLOC_FAILURE);
-        return NULL;
+        return ((void*)0);
     }
 
     job->status = ASYNC_JOB_RUNNING;

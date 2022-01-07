@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_4__ {scalar_t__ verbose; int num_threads; } ;
-struct TYPE_3__ {int /*<<< orphan*/  notify_send_fd; } ;
+struct TYPE_3__ {int notify_send_fd; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CRAWLER_WAIT ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ init_count ; 
- int /*<<< orphan*/  init_lock ; 
- int /*<<< orphan*/  logger_stop () ; 
- int /*<<< orphan*/  perror (char*) ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
- TYPE_2__ settings ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  stop_assoc_maintenance_thread () ; 
- int /*<<< orphan*/  stop_conn_timeout_thread () ; 
- int /*<<< orphan*/  stop_item_crawler_thread (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stop_lru_maintainer_thread () ; 
- int /*<<< orphan*/  stop_slab_maintenance_thread () ; 
- TYPE_1__* threads ; 
- int /*<<< orphan*/  wait_for_thread_registration (int) ; 
- int write (int /*<<< orphan*/ ,char*,int) ; 
+
+ int CRAWLER_WAIT ;
+ int fprintf (int ,char*) ;
+ scalar_t__ init_count ;
+ int init_lock ;
+ int logger_stop () ;
+ int perror (char*) ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
+ TYPE_2__ settings ;
+ int stderr ;
+ int stop_assoc_maintenance_thread () ;
+ int stop_conn_timeout_thread () ;
+ int stop_item_crawler_thread (int ) ;
+ int stop_lru_maintainer_thread () ;
+ int stop_slab_maintenance_thread () ;
+ TYPE_1__* threads ;
+ int wait_for_thread_registration (int) ;
+ int write (int ,char*,int) ;
 
 void stop_threads(void) {
     char buf[1];
     int i;
 
-    // assoc can call pause_threads(), so we have to stop it first.
+
     stop_assoc_maintenance_thread();
     if (settings.verbose > 0)
         fprintf(stderr, "stopped assoc\n");
@@ -52,7 +52,7 @@ void stop_threads(void) {
     for (i = 0; i < settings.num_threads; i++) {
         if (write(threads[i].notify_send_fd, buf, 1) != 1) {
             perror("Failed writing to notify pipe");
-            /* TODO: This is a fatal problem. Can it ever happen temporarily? */
+
         }
     }
     wait_for_thread_registration(settings.num_threads);
@@ -61,8 +61,8 @@ void stop_threads(void) {
     if (settings.verbose > 0)
         fprintf(stderr, "asking background threads to stop\n");
 
-    // stop each side thread.
-    // TODO: Verify these all work if the threads are already stopped
+
+
     stop_item_crawler_thread(CRAWLER_WAIT);
     if (settings.verbose > 0)
         fprintf(stderr, "stopped lru crawler\n");
@@ -82,5 +82,5 @@ void stop_threads(void) {
     if (settings.verbose > 0)
         fprintf(stderr, "all background threads stopped\n");
 
-    // At this point, every background thread must be stopped.
+
 }

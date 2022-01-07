@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_18__   TYPE_4__ ;
-typedef  struct TYPE_17__   TYPE_3__ ;
-typedef  struct TYPE_16__   TYPE_2__ ;
-typedef  struct TYPE_15__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint64_t ;
-typedef  scalar_t__ int64_t ;
+
+
+typedef struct TYPE_18__ TYPE_4__ ;
+typedef struct TYPE_17__ TYPE_3__ ;
+typedef struct TYPE_16__ TYPE_2__ ;
+typedef struct TYPE_15__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint64_t ;
+typedef scalar_t__ int64_t ;
 struct TYPE_18__ {int len; } ;
-struct TYPE_17__ {int /*<<< orphan*/  pb; TYPE_1__* priv_data; } ;
-struct TYPE_16__ {int size; int /*<<< orphan*/  pts; scalar_t__ data; int /*<<< orphan*/  flags; scalar_t__ stream_index; } ;
-struct TYPE_15__ {int /*<<< orphan*/  pts; scalar_t__ first_image; } ;
-typedef  int /*<<< orphan*/  FITSHeader ;
-typedef  TYPE_1__ FITSContext ;
-typedef  TYPE_2__ AVPacket ;
-typedef  TYPE_3__ AVFormatContext ;
-typedef  TYPE_4__ AVBPrint ;
+struct TYPE_17__ {int pb; TYPE_1__* priv_data; } ;
+struct TYPE_16__ {int size; int pts; scalar_t__ data; int flags; scalar_t__ stream_index; } ;
+struct TYPE_15__ {int pts; scalar_t__ first_image; } ;
+typedef int FITSHeader ;
+typedef TYPE_1__ FITSContext ;
+typedef TYPE_2__ AVPacket ;
+typedef TYPE_3__ AVFormatContext ;
+typedef TYPE_4__ AVBPrint ;
 
-/* Variables and functions */
- scalar_t__ AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_BPRINT_SIZE_UNLIMITED ; 
- int /*<<< orphan*/  AV_PKT_FLAG_KEY ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  FITS_BLOCK_SIZE ; 
- int /*<<< orphan*/  STATE_SIMPLE ; 
- int /*<<< orphan*/  STATE_XTENSION ; 
- scalar_t__ av_bprint_finalize (TYPE_4__*,char**) ; 
- int /*<<< orphan*/  av_bprint_init (TYPE_4__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_bprint_is_complete (TYPE_4__*) ; 
- int /*<<< orphan*/  av_freep (char**) ; 
- scalar_t__ av_new_packet (TYPE_2__*,scalar_t__) ; 
- int /*<<< orphan*/  av_packet_unref (TYPE_2__*) ; 
- scalar_t__ avio_read (int /*<<< orphan*/ ,scalar_t__,scalar_t__) ; 
- scalar_t__ avio_skip (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  avpriv_fits_header_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ is_image (TYPE_3__*,TYPE_1__*,int /*<<< orphan*/ *,TYPE_4__*,scalar_t__*) ; 
- int /*<<< orphan*/  memcpy (scalar_t__,char*,int) ; 
+
+ scalar_t__ AVERROR (int ) ;
+ int AV_BPRINT_SIZE_UNLIMITED ;
+ int AV_PKT_FLAG_KEY ;
+ int ENOMEM ;
+ int FITS_BLOCK_SIZE ;
+ int STATE_SIMPLE ;
+ int STATE_XTENSION ;
+ scalar_t__ av_bprint_finalize (TYPE_4__*,char**) ;
+ int av_bprint_init (TYPE_4__*,int ,int ) ;
+ int av_bprint_is_complete (TYPE_4__*) ;
+ int av_freep (char**) ;
+ scalar_t__ av_new_packet (TYPE_2__*,scalar_t__) ;
+ int av_packet_unref (TYPE_2__*) ;
+ scalar_t__ avio_read (int ,scalar_t__,scalar_t__) ;
+ scalar_t__ avio_skip (int ,scalar_t__) ;
+ int avpriv_fits_header_init (int *,int ) ;
+ scalar_t__ is_image (TYPE_3__*,TYPE_1__*,int *,TYPE_4__*,scalar_t__*) ;
+ int memcpy (scalar_t__,char*,int) ;
 
 __attribute__((used)) static int fits_read_packet(AVFormatContext *s, AVPacket *pkt)
 {
@@ -67,7 +67,7 @@ __attribute__((used)) static int fits_read_packet(AVFormatContext *s, AVPacket *
         if (pos < 0)
             return pos;
 
-        av_bprint_finalize(&avbuf, NULL);
+        av_bprint_finalize(&avbuf, ((void*)0));
         av_bprint_init(&avbuf, FITS_BLOCK_SIZE, AV_BPRINT_SIZE_UNLIMITED);
         avpriv_fits_header_init(&header, STATE_XTENSION);
     }
@@ -79,7 +79,7 @@ __attribute__((used)) static int fits_read_packet(AVFormatContext *s, AVPacket *
         goto fail;
     }
 
-    // Header is sent with the first line removed...
+
     ret = av_new_packet(pkt, avbuf.len - 80 + size);
     if (ret < 0)
         goto fail;
@@ -109,6 +109,6 @@ __attribute__((used)) static int fits_read_packet(AVFormatContext *s, AVPacket *
     return 0;
 
 fail:
-    av_bprint_finalize(&avbuf, NULL);
+    av_bprint_finalize(&avbuf, ((void*)0));
     return ret;
 }

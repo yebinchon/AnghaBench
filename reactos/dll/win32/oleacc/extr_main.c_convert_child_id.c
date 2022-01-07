@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VARIANT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FIXME (char*,int) ; 
-#define  VT_I4 128 
- int V_I4 (int /*<<< orphan*/ *) ; 
- int V_VT (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int VARIANT ;
+
+
+ int FIXME (char*,int) ;
+
+ int V_I4 (int *) ;
+ int V_VT (int *) ;
 
 int convert_child_id(VARIANT *v)
 {
     switch(V_VT(v)) {
-    case VT_I4:
+    case 128:
         return V_I4(v);
     default:
         FIXME("unhandled child ID variant type: %d\n", V_VT(v));

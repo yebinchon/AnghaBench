@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint32_t ;
-struct TYPE_3__ {int mode; int /*<<< orphan*/  val; int /*<<< orphan*/  enable; int /*<<< orphan*/  raw; } ;
-typedef  TYPE_1__ rgblight_config_t ;
-struct TYPE_4__ {int /*<<< orphan*/  octave; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LAYER_BASE ; 
- int /*<<< orphan*/  LAYER_CONTROL ; 
- int /*<<< orphan*/  LAYER_FUNCTION ; 
- int /*<<< orphan*/  LAYER_MEDIA ; 
- int /*<<< orphan*/  LAYER_MOUSE ; 
- int _CL ; 
- int _FL ; 
- int _ME ; 
- int _MI ; 
- int _ML ; 
- int /*<<< orphan*/  clueboard_set_led (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  clueboard_set_midi_led (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  eeconfig_read_rgblight () ; 
- int layer_state ; 
- TYPE_2__ midi_config ; 
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+struct TYPE_3__ {int mode; int val; int enable; int raw; } ;
+typedef TYPE_1__ rgblight_config_t ;
+struct TYPE_4__ {int octave; } ;
+
+
+ int LAYER_BASE ;
+ int LAYER_CONTROL ;
+ int LAYER_FUNCTION ;
+ int LAYER_MEDIA ;
+ int LAYER_MOUSE ;
+ int _CL ;
+ int _FL ;
+ int _ME ;
+ int _MI ;
+ int _ML ;
+ int clueboard_set_led (int ,int ) ;
+ int clueboard_set_midi_led (int ,int ) ;
+ int eeconfig_read_rgblight () ;
+ int layer_state ;
+ TYPE_2__ midi_config ;
 
 void matrix_scan_user(void) {
     rgblight_config_t rgblight_config;
@@ -54,10 +54,10 @@ void matrix_scan_user(void) {
       }
     } else if (layer & (1<<_ML)) {
       clueboard_set_led(LAYER_MOUSE, val);
-#if defined(MIDI_ENABLE)
-    } else if (layer & (1<<_MI)) {
-      clueboard_set_midi_led(midi_config.octave, val);
-#endif
+
+
+
+
     } else {
         clueboard_set_led(LAYER_BASE, val);
     }

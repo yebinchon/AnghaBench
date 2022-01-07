@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  (* put_pixels_clamped ) (int /*<<< orphan*/ *,scalar_t__,int) ;} ;
-struct TYPE_8__ {TYPE_2__* pic; int /*<<< orphan*/ * block; TYPE_1__ idsp; int /*<<< orphan*/  chroma_dc_quant; int /*<<< orphan*/ * left_dc; int /*<<< orphan*/ * top_dc; int /*<<< orphan*/  ac_quant; int /*<<< orphan*/  luma_dc_quant; int /*<<< orphan*/  gb; } ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int (* put_pixels_clamped ) (int *,scalar_t__,int) ;} ;
+struct TYPE_8__ {TYPE_2__* pic; int * block; TYPE_1__ idsp; int chroma_dc_quant; int * left_dc; int * top_dc; int ac_quant; int luma_dc_quant; int gb; } ;
 struct TYPE_7__ {int* linesize; scalar_t__* data; } ;
-typedef  TYPE_3__ CLVContext ;
+typedef TYPE_3__ CLVContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  clv_dct (int /*<<< orphan*/ *) ; 
- scalar_t__ decode_block (TYPE_3__*,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int get_bits1 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ *,scalar_t__,int) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ *,scalar_t__,int) ; 
+
+ int AVERROR_INVALIDDATA ;
+ int clv_dct (int *) ;
+ scalar_t__ decode_block (TYPE_3__*,int *,int,int ) ;
+ int get_bits1 (int *) ;
+ int stub1 (int *,scalar_t__,int) ;
+ int stub2 (int *,scalar_t__,int) ;
 
 __attribute__((used)) static int decode_mb(CLVContext *c, int x, int y)
 {
@@ -44,7 +44,7 @@ __attribute__((used)) static int decode_mb(CLVContext *c, int x, int y)
             c->block[0] += c->left_dc[(i & 2) >> 1];
         }
         c->left_dc[(i & 2) >> 1] = c->block[0];
-        c->block[0]             *= c->luma_dc_quant;
+        c->block[0] *= c->luma_dc_quant;
         clv_dct(c->block);
         if (i == 2)
             off += c->pic->linesize[0] * 8;
@@ -64,7 +64,7 @@ __attribute__((used)) static int decode_mb(CLVContext *c, int x, int y)
             c->block[0] += c->left_dc[i + 1];
         }
         c->left_dc[i + 1] = c->block[0];
-        c->block[0]      *= c->chroma_dc_quant;
+        c->block[0] *= c->chroma_dc_quant;
         clv_dct(c->block);
         c->idsp.put_pixels_clamped(c->block, c->pic->data[i] + off,
                                    c->pic->linesize[i]);

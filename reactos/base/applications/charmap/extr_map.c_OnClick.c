@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  void* WORD ;
-typedef  int /*<<< orphan*/  VOID ;
-struct TYPE_10__ {TYPE_1__* pActiveCell; int /*<<< orphan*/ * hLrgWnd; TYPE_1__** Cells; int /*<<< orphan*/  hMapWnd; } ;
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef void* WORD ;
+typedef int VOID ;
+struct TYPE_10__ {TYPE_1__* pActiveCell; int * hLrgWnd; TYPE_1__** Cells; int hMapWnd; } ;
 struct TYPE_9__ {void* y; void* x; } ;
-struct TYPE_8__ {void* bLarge; void* bActive; int /*<<< orphan*/  CellInt; } ;
-typedef  TYPE_2__ POINT ;
-typedef  TYPE_3__* PMAP ;
-typedef  size_t INT ;
+struct TYPE_8__ {void* bLarge; void* bActive; int CellInt; } ;
+typedef TYPE_2__ POINT ;
+typedef TYPE_3__* PMAP ;
+typedef size_t INT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CreateLargeCell (TYPE_3__*) ; 
- int /*<<< orphan*/  DestroyWindow (int /*<<< orphan*/ *) ; 
- void* FALSE ; 
- int /*<<< orphan*/  InvalidateRect (int /*<<< orphan*/ ,int /*<<< orphan*/ *,void*) ; 
- int /*<<< orphan*/  MoveLargeCell (TYPE_3__*) ; 
- scalar_t__ PtInRect (int /*<<< orphan*/ *,TYPE_2__) ; 
- void* TRUE ; 
- size_t XCELLS ; 
- size_t YCELLS ; 
+
+ int CreateLargeCell (TYPE_3__*) ;
+ int DestroyWindow (int *) ;
+ void* FALSE ;
+ int InvalidateRect (int ,int *,void*) ;
+ int MoveLargeCell (TYPE_3__*) ;
+ scalar_t__ PtInRect (int *,TYPE_2__) ;
+ void* TRUE ;
+ size_t XCELLS ;
+ size_t YCELLS ;
 
 __attribute__((used)) static
 VOID
@@ -51,14 +51,14 @@ OnClick(PMAP infoPtr,
         if (PtInRect(&infoPtr->Cells[y][x].CellInt,
                      pt))
         {
-            /* if the cell is not already active */
+
             if (!infoPtr->Cells[y][x].bActive)
             {
-                /* set previous active cell to inactive */
+
                 if (infoPtr->pActiveCell)
                 {
-                    /* invalidate normal cells, required when
-                     * moving a small active cell via keyboard */
+
+
                     if (!infoPtr->pActiveCell->bLarge)
                     {
                         InvalidateRect(infoPtr->hMapWnd,
@@ -70,7 +70,7 @@ OnClick(PMAP infoPtr,
                     infoPtr->pActiveCell->bLarge = FALSE;
                 }
 
-                /* set new cell to active */
+
                 infoPtr->pActiveCell = &infoPtr->Cells[y][x];
                 infoPtr->pActiveCell->bActive = TRUE;
                 infoPtr->pActiveCell->bLarge = TRUE;
@@ -81,11 +81,11 @@ OnClick(PMAP infoPtr,
             }
             else
             {
-                /* flick between large and small */
+
                 if (infoPtr->pActiveCell->bLarge)
                 {
                     DestroyWindow(infoPtr->hLrgWnd);
-                    infoPtr->hLrgWnd = NULL;
+                    infoPtr->hLrgWnd = ((void*)0);
                 }
                 else
                 {

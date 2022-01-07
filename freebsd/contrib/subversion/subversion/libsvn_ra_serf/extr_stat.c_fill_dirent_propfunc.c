@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_5__ {char const* data; scalar_t__ len; } ;
-typedef  TYPE_2__ svn_string_t ;
-typedef  scalar_t__ svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct fill_dirent_baton_t {int /*<<< orphan*/ * supports_deadprop_count; TYPE_1__* entry; int /*<<< orphan*/  result_pool; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  scalar_t__ apr_int64_t ;
-struct TYPE_4__ {scalar_t__ size; int has_props; int /*<<< orphan*/  kind; int /*<<< orphan*/  time; int /*<<< orphan*/  last_author; scalar_t__ created_rev; } ;
+typedef TYPE_2__ svn_string_t ;
+typedef scalar_t__ svn_revnum_t ;
+typedef int svn_error_t ;
+struct fill_dirent_baton_t {int * supports_deadprop_count; TYPE_1__* entry; int result_pool; } ;
+typedef int apr_pool_t ;
+typedef scalar_t__ apr_int64_t ;
+struct TYPE_4__ {scalar_t__ size; int has_props; int kind; int time; int last_author; scalar_t__ created_rev; } ;
 
-/* Variables and functions */
- char* SVN_DAV_PROP_NS_CUSTOM ; 
- char* SVN_DAV_PROP_NS_DAV ; 
- char* SVN_DAV_PROP_NS_SVN ; 
- char* SVN_DAV__CREATIONDATE ; 
- char* SVN_DAV__VERSION_NAME ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- void* TRUE ; 
- int /*<<< orphan*/  apr_pstrdup (int /*<<< orphan*/ ,char const*) ; 
- scalar_t__ strcmp (char const*,char*) ; 
- int /*<<< orphan*/  svn_cstring_atoi64 (scalar_t__*,char const*) ; 
- int /*<<< orphan*/  svn_node_dir ; 
- int /*<<< orphan*/  svn_node_file ; 
- int /*<<< orphan*/  svn_time_from_cstring (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_tristate_false ; 
- int /*<<< orphan*/  svn_tristate_true ; 
+
+ char* SVN_DAV_PROP_NS_CUSTOM ;
+ char* SVN_DAV_PROP_NS_DAV ;
+ char* SVN_DAV_PROP_NS_SVN ;
+ char* SVN_DAV__CREATIONDATE ;
+ char* SVN_DAV__VERSION_NAME ;
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ void* TRUE ;
+ int apr_pstrdup (int ,char const*) ;
+ scalar_t__ strcmp (char const*,char*) ;
+ int svn_cstring_atoi64 (scalar_t__*,char const*) ;
+ int svn_node_dir ;
+ int svn_node_file ;
+ int svn_time_from_cstring (int *,char const*,int ) ;
+ int svn_tristate_false ;
+ int svn_tristate_true ;
 
 __attribute__((used)) static svn_error_t *
 fill_dirent_propfunc(void *baton,
@@ -70,7 +70,7 @@ fill_dirent_propfunc(void *baton,
         }
       else if (strcmp(name, "getcontentlength") == 0)
         {
-          /* 'getcontentlength' property is empty for directories. */
+
           if (val->len)
             {
               SVN_ERR(svn_cstring_atoi64(&fdb->entry->size, val->data));
@@ -102,9 +102,9 @@ fill_dirent_propfunc(void *baton,
         {
           if (*val->data)
             {
-              /* Note: 1.8.x and earlier servers send the count proper; 1.9.0
-               * and newer send "1" if there are properties and "0" otherwise.
-               */
+
+
+
               apr_int64_t deadprop_count;
               SVN_ERR(svn_cstring_atoi64(&deadprop_count, val->data));
               fdb->entry->has_props = deadprop_count > 0;

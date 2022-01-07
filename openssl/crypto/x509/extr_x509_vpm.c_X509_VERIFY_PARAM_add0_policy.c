@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * policies; } ;
-typedef  TYPE_1__ X509_VERIFY_PARAM ;
-typedef  int /*<<< orphan*/  ASN1_OBJECT ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * sk_ASN1_OBJECT_new_null () ; 
- int /*<<< orphan*/  sk_ASN1_OBJECT_push (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * policies; } ;
+typedef TYPE_1__ X509_VERIFY_PARAM ;
+typedef int ASN1_OBJECT ;
+
+
+ int * sk_ASN1_OBJECT_new_null () ;
+ int sk_ASN1_OBJECT_push (int *,int *) ;
 
 int X509_VERIFY_PARAM_add0_policy(X509_VERIFY_PARAM *param,
                                   ASN1_OBJECT *policy)
 {
-    if (param->policies == NULL) {
+    if (param->policies == ((void*)0)) {
         param->policies = sk_ASN1_OBJECT_new_null();
-        if (param->policies == NULL)
+        if (param->policies == ((void*)0))
             return 0;
     }
     if (!sk_ASN1_OBJECT_push(param->policies, policy))

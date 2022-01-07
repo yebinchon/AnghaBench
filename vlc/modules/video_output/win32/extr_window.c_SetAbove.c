@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {TYPE_2__* sys; } ;
-typedef  TYPE_1__ vout_window_t ;
-struct TYPE_5__ {int /*<<< orphan*/  hwnd; } ;
-typedef  TYPE_2__ vout_window_sys_t ;
-typedef  enum vout_window_state { ____Placeholder_vout_window_state } vout_window_state ;
-typedef  int /*<<< orphan*/  HMENU ;
+typedef TYPE_1__ vout_window_t ;
+struct TYPE_5__ {int hwnd; } ;
+typedef TYPE_2__ vout_window_sys_t ;
+typedef enum vout_window_state { ____Placeholder_vout_window_state } vout_window_state ;
+typedef int HMENU ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CheckMenuItem (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GWL_EXSTYLE ; 
- int /*<<< orphan*/  GetSystemMenu (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int GetWindowLong (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HWND_BOTTOM ; 
- int /*<<< orphan*/  HWND_NOTOPMOST ; 
- int /*<<< orphan*/  HWND_TOPMOST ; 
- int /*<<< orphan*/  IDM_TOGGLE_ON_TOP ; 
- int MFS_CHECKED ; 
- int MFS_UNCHECKED ; 
- int MF_BYCOMMAND ; 
- int SWP_NOMOVE ; 
- int SWP_NOSIZE ; 
- int /*<<< orphan*/  SetWindowPos (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
-#define  VOUT_WINDOW_STATE_ABOVE 130 
-#define  VOUT_WINDOW_STATE_BELOW 129 
-#define  VOUT_WINDOW_STATE_NORMAL 128 
- int WS_EX_TOPMOST ; 
+
+ int CheckMenuItem (int ,int ,int) ;
+ int FALSE ;
+ int GWL_EXSTYLE ;
+ int GetSystemMenu (int ,int ) ;
+ int GetWindowLong (int ,int ) ;
+ int HWND_BOTTOM ;
+ int HWND_NOTOPMOST ;
+ int HWND_TOPMOST ;
+ int IDM_TOGGLE_ON_TOP ;
+ int MFS_CHECKED ;
+ int MFS_UNCHECKED ;
+ int MF_BYCOMMAND ;
+ int SWP_NOMOVE ;
+ int SWP_NOSIZE ;
+ int SetWindowPos (int ,int ,int ,int ,int ,int ,int) ;
+
+
+
+ int WS_EX_TOPMOST ;
 
 __attribute__((used)) static void SetAbove( vout_window_t *wnd, enum vout_window_state state )
 {
     vout_window_sys_t *sys = wnd->sys;
     switch (state) {
-    case VOUT_WINDOW_STATE_NORMAL:
+    case 128:
         if ((GetWindowLong(sys->hwnd, GWL_EXSTYLE) & WS_EX_TOPMOST))
         {
             HMENU hMenu = GetSystemMenu(sys->hwnd, FALSE);
@@ -52,7 +52,7 @@ __attribute__((used)) static void SetAbove( vout_window_t *wnd, enum vout_window
             SetWindowPos(sys->hwnd, HWND_NOTOPMOST, 0, 0, 0, 0, SWP_NOSIZE|SWP_NOMOVE);
         }
         break;
-    case VOUT_WINDOW_STATE_ABOVE:
+    case 130:
         if (!(GetWindowLong(sys->hwnd, GWL_EXSTYLE) & WS_EX_TOPMOST))
         {
             HMENU hMenu = GetSystemMenu(sys->hwnd, FALSE);
@@ -60,7 +60,7 @@ __attribute__((used)) static void SetAbove( vout_window_t *wnd, enum vout_window
             SetWindowPos(sys->hwnd, HWND_TOPMOST, 0, 0, 0, 0, SWP_NOSIZE | SWP_NOMOVE);
         }
         break;
-    case VOUT_WINDOW_STATE_BELOW:
+    case 129:
         SetWindowPos(sys->hwnd, HWND_BOTTOM, 0, 0, 0, 0, SWP_NOSIZE | SWP_NOMOVE);
         break;
 

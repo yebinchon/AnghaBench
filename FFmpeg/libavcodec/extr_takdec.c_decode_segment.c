@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct CParam {int init; unsigned int escape; unsigned int aescape; unsigned int scale; scalar_t__ bias; } ;
-typedef  int int8_t ;
-typedef  unsigned int int32_t ;
-struct TYPE_3__ {int /*<<< orphan*/  gb; } ;
-typedef  TYPE_1__ TAKDecContext ;
-typedef  int /*<<< orphan*/  GetBitContext ;
+typedef int int8_t ;
+typedef unsigned int int32_t ;
+struct TYPE_3__ {int gb; } ;
+typedef TYPE_1__ TAKDecContext ;
+typedef int GetBitContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int FF_ARRAY_ELEMS (struct CParam*) ; 
- int get_bits (int /*<<< orphan*/ *,int) ; 
- scalar_t__ get_bits1 (int /*<<< orphan*/ *) ; 
- int get_bits_long (int /*<<< orphan*/ *,int) ; 
- unsigned int get_unary (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  memset (unsigned int*,int /*<<< orphan*/ ,int) ; 
- struct CParam* xcodes ; 
+
+ int AVERROR_INVALIDDATA ;
+ int FF_ARRAY_ELEMS (struct CParam*) ;
+ int get_bits (int *,int) ;
+ scalar_t__ get_bits1 (int *) ;
+ int get_bits_long (int *,int) ;
+ unsigned int get_unary (int *,int,int) ;
+ int memset (unsigned int*,int ,int) ;
+ struct CParam* xcodes ;
 
 __attribute__((used)) static int decode_segment(TAKDecContext *s, int8_t mode, int32_t *decoded, int len)
 {
@@ -58,7 +58,7 @@ __attribute__((used)) static int decode_segment(TAKDecContext *s, int8_t mode, i
                                 return AVERROR_INVALIDDATA;
                         }
                         scale = get_bits_long(gb, scale_bits) + 1;
-                        x    += code.scale * scale;
+                        x += code.scale * scale;
                     }
                     x += code.bias;
                 } else

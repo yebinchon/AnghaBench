@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lexical_function ;
-typedef  int /*<<< orphan*/  WORD ;
-typedef  int /*<<< orphan*/  WCHAR ;
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int lexical_function ;
+typedef int WORD ;
+typedef int WCHAR ;
 struct TYPE_8__ {int start; int end; } ;
-struct TYPE_7__ {int /*<<< orphan*/  GSUB_Table; } ;
-typedef  TYPE_1__ ScriptCache ;
-typedef  int /*<<< orphan*/  SCRIPT_ANALYSIS ;
-typedef  int /*<<< orphan*/  LoadedFeature ;
-typedef  TYPE_2__ IndicSyllable ;
-typedef  int INT ;
-typedef  int /*<<< orphan*/  HDC ;
+struct TYPE_7__ {int GSUB_Table; } ;
+typedef TYPE_1__ ScriptCache ;
+typedef int SCRIPT_ANALYSIS ;
+typedef int LoadedFeature ;
+typedef TYPE_2__ IndicSyllable ;
+typedef int INT ;
+typedef int HDC ;
 
-/* Variables and functions */
- int GSUB_E_NOGLYPH ; 
- int GSUB_apply_feature_all_lookups (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int,int*) ; 
- int /*<<< orphan*/  UpdateClusters (int,int,int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  shift_syllable_glyph_indexs (TYPE_2__*,int,int) ; 
+
+ int GSUB_E_NOGLYPH ;
+ int GSUB_apply_feature_all_lookups (int ,int *,int *,int,int,int*) ;
+ int UpdateClusters (int,int,int,int,int *) ;
+ int shift_syllable_glyph_indexs (TYPE_2__*,int,int) ;
 
 __attribute__((used)) static void Apply_Indic_BasicForm(HDC hdc, ScriptCache *psc, SCRIPT_ANALYSIS *psa, WCHAR* pwChars, INT cChars, IndicSyllable *syllable, WORD *pwOutGlyphs, INT* pcGlyphs, WORD *pwLogClust, lexical_function lexical, IndicSyllable *glyph_index, LoadedFeature *feature )
 {

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  HDC ;
-typedef  int /*<<< orphan*/  HBRUSH ;
-typedef  int /*<<< orphan*/  COLORREF ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CreateSolidBrush (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DeleteObject (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PATCOPY ; 
- int /*<<< orphan*/  PatBlt (int /*<<< orphan*/ ,int,int,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SelectObject (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int HDC ;
+typedef int HBRUSH ;
+typedef int COLORREF ;
+
+
+ int CreateSolidBrush (int ) ;
+ int DeleteObject (int ) ;
+ int PATCOPY ;
+ int PatBlt (int ,int,int,int,int,int ) ;
+ int SelectObject (int ,int ) ;
 
 __attribute__((used)) static inline void solid_patblt( HDC hdc, int x, int y, int width, int height, COLORREF color )
 {

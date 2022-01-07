@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint64_t ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint64_t ;
 struct TYPE_6__ {TYPE_2__** freeBlocks; } ;
-typedef  TYPE_1__ t_MM ;
+typedef TYPE_1__ t_MM ;
 struct TYPE_7__ {scalar_t__ end; scalar_t__ base; struct TYPE_7__* p_Next; } ;
-typedef  TYPE_2__ t_FreeBlock ;
-typedef  int /*<<< orphan*/  t_Error ;
+typedef TYPE_2__ t_FreeBlock ;
+typedef int t_Error ;
 
-/* Variables and functions */
- TYPE_2__* CreateFreeBlock (scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  E_NO_MEMORY ; 
- int /*<<< orphan*/  E_OK ; 
- int /*<<< orphan*/  MAJOR ; 
- scalar_t__ MAKE_ALIGNED (scalar_t__,scalar_t__) ; 
- int MM_MAX_ALIGNMENT ; 
- int /*<<< orphan*/  NO_MSG ; 
- int /*<<< orphan*/  RETURN_ERROR (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XX_Free (TYPE_2__*) ; 
+
+ TYPE_2__* CreateFreeBlock (scalar_t__,scalar_t__) ;
+ int E_NO_MEMORY ;
+ int E_OK ;
+ int MAJOR ;
+ scalar_t__ MAKE_ALIGNED (scalar_t__,scalar_t__) ;
+ int MM_MAX_ALIGNMENT ;
+ int NO_MSG ;
+ int RETURN_ERROR (int ,int ,int ) ;
+ int XX_Free (TYPE_2__*) ;
 
 __attribute__((used)) static t_Error AddFree(t_MM *p_MM, uint64_t base, uint64_t end)
 {
     t_FreeBlock *p_PrevB, *p_CurrB, *p_NewB;
-    uint64_t    alignment;
-    uint64_t    alignBase;
-    int         i;
+    uint64_t alignment;
+    uint64_t alignBase;
+    int i;
 
-    /* Updates free lists to include  a just released block */
+
     for (i=0; i <= MM_MAX_ALIGNMENT; i++)
     {
         p_PrevB = p_NewB = 0;
@@ -46,11 +46,11 @@ __attribute__((used)) static t_Error AddFree(t_MM *p_MM, uint64_t base, uint64_t
         alignment = (uint64_t)(0x1 << i);
         alignBase = MAKE_ALIGNED(base, alignment);
 
-        /* Goes to the next free list if there is no block to free */
+
         if (alignBase >= end)
             continue;
 
-        /* Looks for a free block that should be updated */
+
         while ( p_CurrB )
         {
             if ( alignBase <= p_CurrB->end )
@@ -79,7 +79,7 @@ __attribute__((used)) static t_Error AddFree(t_MM *p_MM, uint64_t base, uint64_t
                 }
                 else if ( (end < p_CurrB->base) && ((end-alignBase) >= alignment) )
                 {
-                    if ((p_NewB = CreateFreeBlock(alignBase, end-alignBase)) == NULL)
+                    if ((p_NewB = CreateFreeBlock(alignBase, end-alignBase)) == ((void*)0))
                         RETURN_ERROR(MAJOR, E_NO_MEMORY, NO_MSG);
 
                     p_NewB->p_Next = p_CurrB;
@@ -95,8 +95,8 @@ __attribute__((used)) static t_Error AddFree(t_MM *p_MM, uint64_t base, uint64_t
                     p_CurrB->base = alignBase;
                 }
 
-                /* if size of the free block is less then alignment
-                 * deletes that free block from the free list. */
+
+
                 if ( (p_CurrB->end - p_CurrB->base) < alignment)
                 {
                     if ( p_PrevB )
@@ -104,7 +104,7 @@ __attribute__((used)) static t_Error AddFree(t_MM *p_MM, uint64_t base, uint64_t
                     else
                         p_MM->freeBlocks[i] = p_CurrB->p_Next;
                     XX_Free(p_CurrB);
-                    p_CurrB = NULL;
+                    p_CurrB = ((void*)0);
                 }
                 break;
             }
@@ -115,12 +115,12 @@ __attribute__((used)) static t_Error AddFree(t_MM *p_MM, uint64_t base, uint64_t
             }
         }
 
-        /* If no free block found to be updated, insert a new free block
-         * to the end of the free list.
-         */
+
+
+
         if ( !p_CurrB && ((((uint64_t)(end-base)) & ((uint64_t)(alignment-1))) == 0) )
         {
-            if ((p_NewB = CreateFreeBlock(alignBase, end-base)) == NULL)
+            if ((p_NewB = CreateFreeBlock(alignBase, end-base)) == ((void*)0))
                 RETURN_ERROR(MAJOR, E_NO_MEMORY, NO_MSG);
 
             if (p_PrevB)
@@ -129,7 +129,7 @@ __attribute__((used)) static t_Error AddFree(t_MM *p_MM, uint64_t base, uint64_t
                 p_MM->freeBlocks[i] = p_NewB;
         }
 
-        /* Update boundaries of the new free block */
+
         if ((alignment == 1) && !p_NewB)
         {
             if ( p_CurrB && base > p_CurrB->base )

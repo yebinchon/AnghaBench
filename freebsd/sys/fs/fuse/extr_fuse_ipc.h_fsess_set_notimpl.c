@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct mount {int dummy; } ;
 struct fuse_data {unsigned long long notimpl; } ;
 
-/* Variables and functions */
- struct fuse_data* fuse_get_mpdata (struct mount*) ; 
+
+ struct fuse_data* fuse_get_mpdata (struct mount*) ;
 
 __attribute__((used)) static inline void
 fsess_set_notimpl(struct mount *mp, int opcode)
 {
-	struct fuse_data *data = fuse_get_mpdata(mp);
+ struct fuse_data *data = fuse_get_mpdata(mp);
 
-	data->notimpl |= (1ULL << opcode);
+ data->notimpl |= (1ULL << opcode);
 }

@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  __saved_damlr ; 
- int /*<<< orphan*/  __saved_dampr ; 
- int /*<<< orphan*/  __set_DAMLR (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  __set_DAMPR (int,int /*<<< orphan*/ ) ; 
+ int __saved_damlr ;
+ int __saved_dampr ;
+ int __set_DAMLR (int,int ) ;
+ int __set_DAMPR (int,int ) ;
 
 __attribute__((used)) static inline void gdbstub_addr_unmap(void)
 {
-#ifdef CONFIG_MMU
-	__set_DAMPR(2, __saved_dampr);
-	__set_DAMLR(2, __saved_damlr);
-#endif
+
+
+
+
 }

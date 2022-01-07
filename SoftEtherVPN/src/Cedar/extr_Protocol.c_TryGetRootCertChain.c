@@ -1,172 +1,172 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_19__   TYPE_3__ ;
-typedef  struct TYPE_18__   TYPE_2__ ;
-typedef  struct TYPE_17__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char wchar_t ;
-typedef  int /*<<< orphan*/  tmp ;
-typedef  int /*<<< orphan*/  hex_a ;
-typedef  int /*<<< orphan*/  hex ;
-typedef  int /*<<< orphan*/  fn ;
-typedef  int /*<<< orphan*/  exedir ;
-typedef  int /*<<< orphan*/  dirname ;
-struct TYPE_17__ {scalar_t__ root_cert; int /*<<< orphan*/  subject_name; } ;
-typedef  TYPE_1__ X ;
-typedef  size_t UINT ;
-typedef  int /*<<< orphan*/  UCHAR ;
+
+
+typedef struct TYPE_19__ TYPE_3__ ;
+typedef struct TYPE_18__ TYPE_2__ ;
+typedef struct TYPE_17__ TYPE_1__ ;
+
+
+typedef char wchar_t ;
+typedef int tmp ;
+typedef int hex_a ;
+typedef int hex ;
+typedef int fn ;
+typedef int exedir ;
+typedef int dirname ;
+struct TYPE_17__ {scalar_t__ root_cert; int subject_name; } ;
+typedef TYPE_1__ X ;
+typedef size_t UINT ;
+typedef int UCHAR ;
 struct TYPE_19__ {int Folder; char* FileNameW; } ;
 struct TYPE_18__ {size_t NumFiles; TYPE_3__** File; } ;
-typedef  int /*<<< orphan*/  LIST ;
-typedef  TYPE_2__ DIRLIST ;
-typedef  TYPE_3__ DIRENT ;
-typedef  int /*<<< orphan*/  BUF ;
+typedef int LIST ;
+typedef TYPE_2__ DIRLIST ;
+typedef TYPE_3__ DIRENT ;
+typedef int BUF ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AUTO_DOWNLOAD_CERTS_PREFIX ; 
- int /*<<< orphan*/  AddAllChainCertsToCertList (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BinToStr (char*,int,int /*<<< orphan*/ *,int) ; 
- TYPE_1__* CloneX (TYPE_1__*) ; 
- int /*<<< orphan*/  CombinePathW (char*,int,char*,char*) ; 
- int CompareX (TYPE_1__*,TYPE_1__*) ; 
- int /*<<< orphan*/  Debug (char*,size_t,char*) ; 
- int /*<<< orphan*/  DumpBufW (int /*<<< orphan*/ *,char*) ; 
- TYPE_2__* EnumDirW (char*) ; 
- int /*<<< orphan*/  FileDeleteW (char*) ; 
- int /*<<< orphan*/  FreeBuf (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FreeCertList (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FreeDir (TYPE_2__*) ; 
- int /*<<< orphan*/  GetAllNameFromName (char*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetExeDirW (char*,int) ; 
- int /*<<< orphan*/  GetXDigest (TYPE_1__*,int /*<<< orphan*/ *,int) ; 
- int IsXInCertList (int /*<<< orphan*/ *,TYPE_1__*) ; 
- TYPE_1__* LIST_DATA (int /*<<< orphan*/ *,size_t) ; 
- size_t LIST_NUM (int /*<<< orphan*/ *) ; 
- int MAX_PATH ; 
- int MAX_SIZE ; 
- int /*<<< orphan*/  MakeDirExW (char*) ; 
- int /*<<< orphan*/ * NewCertList (int) ; 
- int SHA1_SIZE ; 
- int /*<<< orphan*/  StrToUni (char*,int,char*) ; 
- int TryGetParentCertFromCertList (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ *) ; 
- scalar_t__ UniStartWith (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  UniStrCat (char*,int,char*) ; 
- int /*<<< orphan*/  UniStrCpy (char*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * XToBuf (TYPE_1__*,int) ; 
+
+ int AUTO_DOWNLOAD_CERTS_PREFIX ;
+ int AddAllChainCertsToCertList (int *) ;
+ int BinToStr (char*,int,int *,int) ;
+ TYPE_1__* CloneX (TYPE_1__*) ;
+ int CombinePathW (char*,int,char*,char*) ;
+ int CompareX (TYPE_1__*,TYPE_1__*) ;
+ int Debug (char*,size_t,char*) ;
+ int DumpBufW (int *,char*) ;
+ TYPE_2__* EnumDirW (char*) ;
+ int FileDeleteW (char*) ;
+ int FreeBuf (int *) ;
+ int FreeCertList (int *) ;
+ int FreeDir (TYPE_2__*) ;
+ int GetAllNameFromName (char*,int,int ) ;
+ int GetExeDirW (char*,int) ;
+ int GetXDigest (TYPE_1__*,int *,int) ;
+ int IsXInCertList (int *,TYPE_1__*) ;
+ TYPE_1__* LIST_DATA (int *,size_t) ;
+ size_t LIST_NUM (int *) ;
+ int MAX_PATH ;
+ int MAX_SIZE ;
+ int MakeDirExW (char*) ;
+ int * NewCertList (int) ;
+ int SHA1_SIZE ;
+ int StrToUni (char*,int,char*) ;
+ int TryGetParentCertFromCertList (int *,TYPE_1__*,int *) ;
+ scalar_t__ UniStartWith (char*,int ) ;
+ int UniStrCat (char*,int,char*) ;
+ int UniStrCpy (char*,int,int ) ;
+ int * XToBuf (TYPE_1__*,int) ;
 
 bool TryGetRootCertChain(LIST *o, X *x, bool auto_save, X **found_root_x)
 {
-	bool ret = false;
-	LIST *chain = NULL;
-	LIST *current_chain_dir = NULL;
-	// Validate arguments
-	if (o == NULL || x == NULL)
-	{
-		return false;
-	}
+ bool ret = 0;
+ LIST *chain = ((void*)0);
+ LIST *current_chain_dir = ((void*)0);
 
-	chain = NewCertList(false);
+ if (o == ((void*)0) || x == ((void*)0))
+ {
+  return 0;
+ }
 
-	ret = TryGetParentCertFromCertList(o, x, chain);
+ chain = NewCertList(0);
 
-	if (ret)
-	{
-		UINT i;
-		DIRLIST *dir;
-		wchar_t dirname[MAX_SIZE];
-		wchar_t exedir[MAX_SIZE];
+ ret = TryGetParentCertFromCertList(o, x, chain);
 
-		GetExeDirW(exedir, sizeof(exedir));
-		CombinePathW(dirname, sizeof(dirname), exedir, L"chain_certs");
-		MakeDirExW(dirname);
+ if (ret)
+ {
+  UINT i;
+  DIRLIST *dir;
+  wchar_t dirname[MAX_SIZE];
+  wchar_t exedir[MAX_SIZE];
 
-		if (auto_save)
-		{
-			// delete the current auto_save files
-			dir = EnumDirW(dirname);
-			if (dir != NULL)
-			{
-				for (i = 0;i < dir->NumFiles;i++)
-				{
-					DIRENT *e = dir->File[i];
+  GetExeDirW(exedir, sizeof(exedir));
+  CombinePathW(dirname, sizeof(dirname), exedir, L"chain_certs");
+  MakeDirExW(dirname);
 
-					if (e->Folder == false)
-					{
-						if (UniStartWith(e->FileNameW, AUTO_DOWNLOAD_CERTS_PREFIX))
-						{
-							wchar_t tmp[MAX_SIZE];
+  if (auto_save)
+  {
 
-							CombinePathW(tmp, sizeof(tmp), dirname, e->FileNameW);
+   dir = EnumDirW(dirname);
+   if (dir != ((void*)0))
+   {
+    for (i = 0;i < dir->NumFiles;i++)
+    {
+     DIRENT *e = dir->File[i];
 
-							FileDeleteW(tmp);
-						}
-					}
-				}
+     if (e->Folder == 0)
+     {
+      if (UniStartWith(e->FileNameW, AUTO_DOWNLOAD_CERTS_PREFIX))
+      {
+       wchar_t tmp[MAX_SIZE];
 
-				FreeDir(dir);
-			}
-		}
+       CombinePathW(tmp, sizeof(tmp), dirname, e->FileNameW);
 
-		current_chain_dir = NewCertList(false);
-		AddAllChainCertsToCertList(current_chain_dir);
+       FileDeleteW(tmp);
+      }
+     }
+    }
 
-		for (i = 0;i < LIST_NUM(chain);i++)
-		{
-			wchar_t tmp[MAX_SIZE];
-			X *xx = LIST_DATA(chain, i);
+    FreeDir(dir);
+   }
+  }
 
-			GetAllNameFromName(tmp, sizeof(tmp), xx->subject_name);
+  current_chain_dir = NewCertList(0);
+  AddAllChainCertsToCertList(current_chain_dir);
 
-			Debug("depth = %u, subject = %S\n", i, tmp);
+  for (i = 0;i < LIST_NUM(chain);i++)
+  {
+   wchar_t tmp[MAX_SIZE];
+   X *xx = LIST_DATA(chain, i);
 
-			if (auto_save && CompareX(x, xx) == false && IsXInCertList(current_chain_dir, xx) == false)
-			{
-				wchar_t fn[MAX_PATH];
-				char hex_a[128];
-				wchar_t hex[128];
-				UCHAR hash[SHA1_SIZE];
-				wchar_t tmp[MAX_SIZE];
-				BUF *b;
+   GetAllNameFromName(tmp, sizeof(tmp), xx->subject_name);
 
-				GetXDigest(xx, hash, true);
-				BinToStr(hex_a, sizeof(hex_a), hash, SHA1_SIZE);
-				StrToUni(hex, sizeof(hex), hex_a);
+   Debug("depth = %u, subject = %S\n", i, tmp);
 
-				UniStrCpy(fn, sizeof(fn), AUTO_DOWNLOAD_CERTS_PREFIX);
-				UniStrCat(fn, sizeof(fn), hex);
-				UniStrCat(fn, sizeof(fn), L".cer");
+   if (auto_save && CompareX(x, xx) == 0 && IsXInCertList(current_chain_dir, xx) == 0)
+   {
+    wchar_t fn[MAX_PATH];
+    char hex_a[128];
+    wchar_t hex[128];
+    UCHAR hash[SHA1_SIZE];
+    wchar_t tmp[MAX_SIZE];
+    BUF *b;
 
-				CombinePathW(tmp, sizeof(tmp), dirname, fn);
+    GetXDigest(xx, hash, 1);
+    BinToStr(hex_a, sizeof(hex_a), hash, SHA1_SIZE);
+    StrToUni(hex, sizeof(hex), hex_a);
 
-				b = XToBuf(xx, true);
+    UniStrCpy(fn, sizeof(fn), AUTO_DOWNLOAD_CERTS_PREFIX);
+    UniStrCat(fn, sizeof(fn), hex);
+    UniStrCat(fn, sizeof(fn), L".cer");
 
-				DumpBufW(b, tmp);
+    CombinePathW(tmp, sizeof(tmp), dirname, fn);
 
-				FreeBuf(b);
-			}
+    b = XToBuf(xx, 1);
 
-			if (xx->root_cert)
-			{
-				if (found_root_x != NULL)
-				{
-					*found_root_x = CloneX(xx);
-				}
-			}
-		}
-	}
+    DumpBufW(b, tmp);
 
-	FreeCertList(chain);
+    FreeBuf(b);
+   }
 
-	FreeCertList(current_chain_dir);
+   if (xx->root_cert)
+   {
+    if (found_root_x != ((void*)0))
+    {
+     *found_root_x = CloneX(xx);
+    }
+   }
+  }
+ }
 
-	return ret;
+ FreeCertList(chain);
+
+ FreeCertList(current_chain_dir);
+
+ return ret;
 }

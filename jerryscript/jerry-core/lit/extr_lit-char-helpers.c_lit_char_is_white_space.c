@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ ecma_char_t ;
 
-/* Variables and functions */
- scalar_t__ LIT_CHAR_BOM ; 
- scalar_t__ LIT_CHAR_FF ; 
- scalar_t__ LIT_CHAR_NBSP ; 
- scalar_t__ LIT_CHAR_SP ; 
- scalar_t__ LIT_CHAR_TAB ; 
- scalar_t__ LIT_CHAR_VTAB ; 
- scalar_t__ LIT_UTF8_1_BYTE_CODE_POINT_MAX ; 
- int /*<<< orphan*/  NUM_OF_ELEMENTS (int /*<<< orphan*/ ) ; 
- scalar_t__* lit_unicode_separator_char_interval_lengths ; 
- scalar_t__* lit_unicode_separator_char_interval_sps ; 
- int /*<<< orphan*/  lit_unicode_separator_chars ; 
- scalar_t__ search_char_in_char_array (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef scalar_t__ ecma_char_t ;
+
+
+ scalar_t__ LIT_CHAR_BOM ;
+ scalar_t__ LIT_CHAR_FF ;
+ scalar_t__ LIT_CHAR_NBSP ;
+ scalar_t__ LIT_CHAR_SP ;
+ scalar_t__ LIT_CHAR_TAB ;
+ scalar_t__ LIT_CHAR_VTAB ;
+ scalar_t__ LIT_UTF8_1_BYTE_CODE_POINT_MAX ;
+ int NUM_OF_ELEMENTS (int ) ;
+ scalar_t__* lit_unicode_separator_char_interval_lengths ;
+ scalar_t__* lit_unicode_separator_char_interval_sps ;
+ int lit_unicode_separator_chars ;
+ scalar_t__ search_char_in_char_array (scalar_t__,int ,int ) ;
 
 bool
-lit_char_is_white_space (ecma_char_t c) /**< code unit */
+lit_char_is_white_space (ecma_char_t c)
 {
   if (c <= LIT_UTF8_1_BYTE_CODE_POINT_MAX)
   {

@@ -1,101 +1,101 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT ;
-struct TYPE_8__ {int Halt; int ShadowIPv6; scalar_t__ Protocol; int /*<<< orphan*/  Cedar; struct TYPE_8__* ShadowListener; int /*<<< orphan*/  Thread; int /*<<< orphan*/  Event; int /*<<< orphan*/  Port; int /*<<< orphan*/  lock; TYPE_1__* Sock; } ;
-struct TYPE_7__ {int /*<<< orphan*/  ref; } ;
-typedef  TYPE_1__ SOCK ;
-typedef  TYPE_2__ LISTENER ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AddRef (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Disconnect (TYPE_1__*) ; 
- int /*<<< orphan*/  INFINITE ; 
- scalar_t__ LISTENER_TCP ; 
- int /*<<< orphan*/  Lock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReleaseListener (TYPE_2__*) ; 
- int /*<<< orphan*/  ReleaseSock (TYPE_1__*) ; 
- int /*<<< orphan*/  SLog (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Set (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Unlock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WaitThread (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int UINT ;
+struct TYPE_8__ {int Halt; int ShadowIPv6; scalar_t__ Protocol; int Cedar; struct TYPE_8__* ShadowListener; int Thread; int Event; int Port; int lock; TYPE_1__* Sock; } ;
+struct TYPE_7__ {int ref; } ;
+typedef TYPE_1__ SOCK ;
+typedef TYPE_2__ LISTENER ;
+
+
+ int AddRef (int ) ;
+ int Disconnect (TYPE_1__*) ;
+ int INFINITE ;
+ scalar_t__ LISTENER_TCP ;
+ int Lock (int ) ;
+ int ReleaseListener (TYPE_2__*) ;
+ int ReleaseSock (TYPE_1__*) ;
+ int SLog (int ,char*,int ) ;
+ int Set (int ) ;
+ int Unlock (int ) ;
+ int WaitThread (int ,int ) ;
 
 void StopListener(LISTENER *r)
 {
-	UINT port;
-	SOCK *s = NULL;
-	// Validate arguments
-	if (r == NULL)
-	{
-		return;
-	}
+ UINT port;
+ SOCK *s = ((void*)0);
 
-	Lock(r->lock);
-	if (r->Halt)
-	{
-		Unlock(r->lock);
-		return;
-	}
+ if (r == ((void*)0))
+ {
+  return;
+ }
 
-	// Stop flag set
-	r->Halt = true;
+ Lock(r->lock);
+ if (r->Halt)
+ {
+  Unlock(r->lock);
+  return;
+ }
 
-	if (r->Sock != NULL)
-	{
-		s = r->Sock;
 
-		AddRef(s->ref);
-	}
+ r->Halt = 1;
 
-	Unlock(r->lock);
+ if (r->Sock != ((void*)0))
+ {
+  s = r->Sock;
 
-	port = r->Port;
+  AddRef(s->ref);
+ }
 
-	if (r->ShadowIPv6 == false && r->Protocol == LISTENER_TCP)
-	{
-		SLog(r->Cedar, "LS_LISTENER_STOP_1", port);
-	}
+ Unlock(r->lock);
 
-	// Close the socket
-	if (s != NULL)
-	{
-		Disconnect(s);
-		ReleaseSock(s);
-		s = NULL;
-	}
+ port = r->Port;
 
-	// Set the event
-	Set(r->Event);
+ if (r->ShadowIPv6 == 0 && r->Protocol == LISTENER_TCP)
+ {
+  SLog(r->Cedar, "LS_LISTENER_STOP_1", port);
+ }
 
-	// Wait for stopping the thread
-	WaitThread(r->Thread, INFINITE);
 
-	// Stop the shadow listener
-	if (r->ShadowIPv6 == false)
-	{
-		if (r->ShadowListener != NULL)
-		{
-			StopListener(r->ShadowListener);
+ if (s != ((void*)0))
+ {
+  Disconnect(s);
+  ReleaseSock(s);
+  s = ((void*)0);
+ }
 
-			ReleaseListener(r->ShadowListener);
 
-			r->ShadowListener = NULL;
-		}
-	}
+ Set(r->Event);
 
-	if (r->ShadowIPv6 == false && r->Protocol == LISTENER_TCP)
-	{
-		SLog(r->Cedar, "LS_LISTENER_STOP_2", port);
-	}
+
+ WaitThread(r->Thread, INFINITE);
+
+
+ if (r->ShadowIPv6 == 0)
+ {
+  if (r->ShadowListener != ((void*)0))
+  {
+   StopListener(r->ShadowListener);
+
+   ReleaseListener(r->ShadowListener);
+
+   r->ShadowListener = ((void*)0);
+  }
+ }
+
+ if (r->ShadowIPv6 == 0 && r->Protocol == LISTENER_TCP)
+ {
+  SLog(r->Cedar, "LS_LISTENER_STOP_2", port);
+ }
 }

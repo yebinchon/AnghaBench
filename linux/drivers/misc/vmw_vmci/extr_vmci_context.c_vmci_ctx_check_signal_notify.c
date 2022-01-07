@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct vmci_ctx {int /*<<< orphan*/  lock; scalar_t__ pending_datagrams; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ctx_signal_notify (struct vmci_ctx*) ; 
- int /*<<< orphan*/  spin_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock (int /*<<< orphan*/ *) ; 
+
+
+
+struct vmci_ctx {int lock; scalar_t__ pending_datagrams; } ;
+
+
+ int ctx_signal_notify (struct vmci_ctx*) ;
+ int spin_lock (int *) ;
+ int spin_unlock (int *) ;
 
 void vmci_ctx_check_signal_notify(struct vmci_ctx *context)
 {
-	spin_lock(&context->lock);
-	if (context->pending_datagrams)
-		ctx_signal_notify(context);
-	spin_unlock(&context->lock);
+ spin_lock(&context->lock);
+ if (context->pending_datagrams)
+  ctx_signal_notify(context);
+ spin_unlock(&context->lock);
 }

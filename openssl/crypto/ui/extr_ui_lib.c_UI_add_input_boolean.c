@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UI ;
 
-/* Variables and functions */
- int /*<<< orphan*/  UIT_BOOLEAN ; 
- int general_allocate_boolean (int /*<<< orphan*/ *,char const*,char const*,char const*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,char*) ; 
+
+
+
+typedef int UI ;
+
+
+ int UIT_BOOLEAN ;
+ int general_allocate_boolean (int *,char const*,char const*,char const*,char const*,int ,int ,int,char*) ;
 
 int UI_add_input_boolean(UI *ui, const char *prompt, const char *action_desc,
                          const char *ok_chars, const char *cancel_chars,

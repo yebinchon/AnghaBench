@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  szDosDeviceName ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  VOID ;
-typedef  int /*<<< orphan*/ * PWSTR ;
-typedef  int* PDWORD ;
-typedef  int /*<<< orphan*/  LPBYTE ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  scalar_t__ DWORD ;
 
-/* Variables and functions */
- scalar_t__ ARRAYSIZE (int /*<<< orphan*/ *) ; 
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  HKEY_LOCAL_MACHINE ; 
- int /*<<< orphan*/  KEY_READ ; 
- scalar_t__ REG_SZ ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- scalar_t__ RegEnumValueW (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ *,scalar_t__*,int /*<<< orphan*/ *,scalar_t__*,int /*<<< orphan*/ ,scalar_t__*) ; 
- scalar_t__ RegOpenKeyExW (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TRACE (char*,...) ; 
- scalar_t__ _wcsnicmp (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/ * wcschr (int /*<<< orphan*/ *,int) ; 
- int wcslen (char*) ; 
- scalar_t__ wcstoul (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int szDosDeviceName ;
+typedef int WCHAR ;
+typedef int VOID ;
+typedef int * PWSTR ;
+typedef int* PDWORD ;
+typedef int LPBYTE ;
+typedef int HKEY ;
+typedef scalar_t__ DWORD ;
+
+
+ scalar_t__ ARRAYSIZE (int *) ;
+ scalar_t__ ERROR_SUCCESS ;
+ int HKEY_LOCAL_MACHINE ;
+ int KEY_READ ;
+ scalar_t__ REG_SZ ;
+ int RegCloseKey (int ) ;
+ scalar_t__ RegEnumValueW (int ,scalar_t__,int *,scalar_t__*,int *,scalar_t__*,int ,scalar_t__*) ;
+ scalar_t__ RegOpenKeyExW (int ,char*,int ,int ,int *) ;
+ int TRACE (char*,...) ;
+ scalar_t__ _wcsnicmp (int *,char*,int) ;
+ int * wcschr (int *,int) ;
+ int wcslen (char*) ;
+ scalar_t__ wcstoul (int *,int *,int) ;
 
 __attribute__((used)) static
 VOID
@@ -64,7 +64,7 @@ GetUsedPorts(
                                     dwIndex,
                                     szDeviceName,
                                     &dwDeviceNameSize,
-                                    NULL,
+                                    ((void*)0),
                                     &dwType,
                                     (LPBYTE)szDosDeviceName,
                                     &dwDosDeviceNameSize);
@@ -77,10 +77,10 @@ GetUsedPorts(
                 if (_wcsnicmp(szDosDeviceName, L"\\DosDevices\\LPT", wcslen(L"\\DosDevices\\LPT")) == 0)
                 {
                      ptr = szDosDeviceName + wcslen(L"\\DosDevices\\LPT");
-                     if (wcschr(ptr, L'.') == NULL)
+                     if (wcschr(ptr, L'.') == ((void*)0))
                      {
                          TRACE("Device number %S\n", ptr);
-                         dwPortNumber = wcstoul(ptr, NULL, 10);
+                         dwPortNumber = wcstoul(ptr, ((void*)0), 10);
                          if (dwPortNumber != 0)
                          {
                              *pPortMap |=(1 << dwPortNumber);

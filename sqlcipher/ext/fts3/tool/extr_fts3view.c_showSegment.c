@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_stmt ;
-typedef  int /*<<< orphan*/  sqlite3 ;
 
-/* Variables and functions */
- scalar_t__ SQLITE_ROW ; 
- char** azExtra ; 
- int /*<<< orphan*/  decodeSegment (unsigned char const*,int) ; 
- scalar_t__ findOption (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * prepareToGetSegment (int /*<<< orphan*/ *,char const*,char*) ; 
- int /*<<< orphan*/  printBlob (unsigned char const*,int) ; 
- int /*<<< orphan*/  printf (char*,char*,int) ; 
- unsigned char* sqlite3_column_blob (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int sqlite3_column_bytes (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_finalize (int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3_step (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int sqlite3_stmt ;
+typedef int sqlite3 ;
+
+
+ scalar_t__ SQLITE_ROW ;
+ char** azExtra ;
+ int decodeSegment (unsigned char const*,int) ;
+ scalar_t__ findOption (char*,int ,int ) ;
+ int * prepareToGetSegment (int *,char const*,char*) ;
+ int printBlob (unsigned char const*,int) ;
+ int printf (char*,char*,int) ;
+ unsigned char* sqlite3_column_blob (int *,int ) ;
+ int sqlite3_column_bytes (int *,int ) ;
+ int sqlite3_finalize (int *) ;
+ scalar_t__ sqlite3_step (int *) ;
 
 __attribute__((used)) static void showSegment(sqlite3 *db, const char *zTab){
   const unsigned char *aData;

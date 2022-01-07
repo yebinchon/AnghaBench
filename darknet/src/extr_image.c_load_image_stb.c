@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {float* data; } ;
-typedef  TYPE_1__ image ;
+typedef TYPE_1__ image ;
 
-/* Variables and functions */
- int /*<<< orphan*/  exit (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*,char*) ; 
- int /*<<< orphan*/  free (unsigned char*) ; 
- TYPE_1__ make_image (int,int,int) ; 
- char* stbi_failure_reason () ; 
- unsigned char* stbi_load (char*,int*,int*,int*,int) ; 
- int /*<<< orphan*/  stderr ; 
+
+ int exit (int ) ;
+ int fprintf (int ,char*,char*,char*) ;
+ int free (unsigned char*) ;
+ TYPE_1__ make_image (int,int,int) ;
+ char* stbi_failure_reason () ;
+ unsigned char* stbi_load (char*,int*,int*,int*,int) ;
+ int stderr ;
 
 image load_image_stb(char *filename, int channels)
 {

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct tty_struct {struct ipoctal_channel* driver_data; } ;
-struct ipoctal_channel {int /*<<< orphan*/  tty_port; } ;
+struct ipoctal_channel {int tty_port; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ipoctal_reset_channel (struct ipoctal_channel*) ; 
- int /*<<< orphan*/  tty_port_set_initialized (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int ipoctal_reset_channel (struct ipoctal_channel*) ;
+ int tty_port_set_initialized (int *,int ) ;
 
 __attribute__((used)) static void ipoctal_shutdown(struct tty_struct *tty)
 {
-	struct ipoctal_channel *channel = tty->driver_data;
+ struct ipoctal_channel *channel = tty->driver_data;
 
-	if (channel == NULL)
-		return;
+ if (channel == ((void*)0))
+  return;
 
-	ipoctal_reset_channel(channel);
-	tty_port_set_initialized(&channel->tty_port, 0);
+ ipoctal_reset_channel(channel);
+ tty_port_set_initialized(&channel->tty_port, 0);
 }

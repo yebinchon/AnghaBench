@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct wined3d_gl_info {int selected_gl_version; int /*<<< orphan*/  (* p_wglCreateContextAttribsARB ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*) ;} ;
-typedef  int /*<<< orphan*/  HGLRC ;
-typedef  int /*<<< orphan*/  HDC ;
-typedef  int GLint ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetLastError () ; 
- int MAKEDWORD_VERSION (int,int) ; 
- int /*<<< orphan*/  WARN (char*,int /*<<< orphan*/ ) ; 
- int WGL_CONTEXT_DEBUG_BIT_ARB ; 
- int WGL_CONTEXT_FLAGS_ARB ; 
- int WGL_CONTEXT_FORWARD_COMPATIBLE_BIT_ARB ; 
- int WGL_CONTEXT_MAJOR_VERSION_ARB ; 
- int WGL_CONTEXT_MINOR_VERSION_ARB ; 
- scalar_t__ context_debug_output_enabled (struct wined3d_gl_info const*) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*) ; 
+
+
+
+struct wined3d_gl_info {int selected_gl_version; int (* p_wglCreateContextAttribsARB ) (int ,int ,int*) ;} ;
+typedef int HGLRC ;
+typedef int HDC ;
+typedef int GLint ;
+
+
+ int GetLastError () ;
+ int MAKEDWORD_VERSION (int,int) ;
+ int WARN (char*,int ) ;
+ int WGL_CONTEXT_DEBUG_BIT_ARB ;
+ int WGL_CONTEXT_FLAGS_ARB ;
+ int WGL_CONTEXT_FORWARD_COMPATIBLE_BIT_ARB ;
+ int WGL_CONTEXT_MAJOR_VERSION_ARB ;
+ int WGL_CONTEXT_MINOR_VERSION_ARB ;
+ scalar_t__ context_debug_output_enabled (struct wined3d_gl_info const*) ;
+ int stub1 (int ,int ,int*) ;
+ int stub2 (int ,int ,int*) ;
 
 HGLRC context_create_wgl_attribs(const struct wined3d_gl_info *gl_info, HDC hdc, HGLRC share_ctx)
 {

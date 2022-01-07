@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct vlclua_playlist {int /*<<< orphan*/  filename; int /*<<< orphan*/ * L; } ;
-struct TYPE_6__ {int /*<<< orphan*/ * psz_url; struct vlclua_playlist* p_sys; } ;
-typedef  TYPE_1__ stream_t ;
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  int /*<<< orphan*/  input_item_t ;
-typedef  int /*<<< orphan*/  input_item_node_t ;
 
-/* Variables and functions */
- int VLC_ENOITEM ; 
- int /*<<< orphan*/  VLC_OBJECT (TYPE_1__*) ; 
- int VLC_SUCCESS ; 
- int /*<<< orphan*/  free (char*) ; 
- char* input_item_GetURL (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  input_item_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  input_item_SetURL (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  input_item_node_AppendItem (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  luaL_register_namespace (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_getglobal (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  lua_gettop (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_isfunction (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_istable (int /*<<< orphan*/ *,int) ; 
- scalar_t__ lua_next (int /*<<< orphan*/ *,int) ; 
- scalar_t__ lua_pcall (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_pop (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pushnil (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_tostring (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  msg_Err (TYPE_1__*,char*) ; 
- int /*<<< orphan*/  msg_Warn (TYPE_1__*,char*,...) ; 
- int /*<<< orphan*/  p_reg_parse ; 
- int /*<<< orphan*/ * vlclua_read_input_item (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct vlclua_playlist {int filename; int * L; } ;
+struct TYPE_6__ {int * psz_url; struct vlclua_playlist* p_sys; } ;
+typedef TYPE_1__ stream_t ;
+typedef int lua_State ;
+typedef int input_item_t ;
+typedef int input_item_node_t ;
+
+
+ int VLC_ENOITEM ;
+ int VLC_OBJECT (TYPE_1__*) ;
+ int VLC_SUCCESS ;
+ int free (char*) ;
+ char* input_item_GetURL (int *) ;
+ int input_item_Release (int *) ;
+ int input_item_SetURL (int *,int *) ;
+ int input_item_node_AppendItem (int *,int *) ;
+ int luaL_register_namespace (int *,char*,int ) ;
+ int lua_getglobal (int *,char*) ;
+ int lua_gettop (int *) ;
+ int lua_isfunction (int *,int) ;
+ int lua_istable (int *,int) ;
+ scalar_t__ lua_next (int *,int) ;
+ scalar_t__ lua_pcall (int *,int ,int,int ) ;
+ int lua_pop (int *,int) ;
+ int lua_pushnil (int *) ;
+ int lua_tostring (int *,int ) ;
+ int msg_Err (TYPE_1__*,char*) ;
+ int msg_Warn (TYPE_1__*,char*,...) ;
+ int p_reg_parse ;
+ int * vlclua_read_input_item (int ,int *) ;
 
 __attribute__((used)) static int ReadDir(stream_t *s, input_item_node_t *node)
 {
@@ -79,26 +79,26 @@ __attribute__((used)) static int ReadDir(stream_t *s, input_item_node_t *node)
 
     lua_pushnil(L);
 
-    /* playlist nil */
+
     while (lua_next(L, -2))
     {
         input_item_t *item = vlclua_read_input_item(VLC_OBJECT(s), L);
-        if (item != NULL)
+        if (item != ((void*)0))
         {
-            /* copy the original URL to the meta data,
-             * if "URL" is still empty */
+
+
             char *url = input_item_GetURL(item);
-            if (url == NULL && s->psz_url != NULL)
+            if (url == ((void*)0) && s->psz_url != ((void*)0))
                 input_item_SetURL(item, s->psz_url);
             free(url);
 
             input_item_node_AppendItem(node, item);
             input_item_Release(item);
         }
-        /* pop the value, keep the key for the next lua_next() call */
+
         lua_pop(L, 1);
     }
-    /* playlist */
+
 
     return VLC_SUCCESS;
 }

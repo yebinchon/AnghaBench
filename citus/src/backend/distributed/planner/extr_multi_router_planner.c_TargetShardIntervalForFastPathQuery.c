@@ -1,62 +1,62 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_7__ {TYPE_1__* jointree; } ;
-struct TYPE_6__ {int /*<<< orphan*/ * quals; } ;
-typedef  TYPE_2__ Query ;
-typedef  int /*<<< orphan*/  Oid ;
-typedef  int /*<<< orphan*/  Node ;
-typedef  int /*<<< orphan*/  List ;
-typedef  int /*<<< orphan*/  Expr ;
-typedef  int /*<<< orphan*/  Const ;
+struct TYPE_6__ {int * quals; } ;
+typedef TYPE_2__ Query ;
+typedef int Oid ;
+typedef int Node ;
+typedef int List ;
+typedef int Expr ;
+typedef int Const ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ExtractFirstDistributedTableId (TYPE_2__*) ; 
- int /*<<< orphan*/  FastPathRouterQuery (TYPE_2__*) ; 
- int /*<<< orphan*/ * PruneShards (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int list_length (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  make_ands_implicit (int /*<<< orphan*/ *) ; 
+
+ int Assert (int ) ;
+ int ExtractFirstDistributedTableId (TYPE_2__*) ;
+ int FastPathRouterQuery (TYPE_2__*) ;
+ int * PruneShards (int ,int,int ,int **) ;
+ int list_length (int *) ;
+ int make_ands_implicit (int *) ;
 
 __attribute__((used)) static List *
 TargetShardIntervalForFastPathQuery(Query *query, Const **partitionValueConst,
-									bool *isMultiShardQuery)
+         bool *isMultiShardQuery)
 {
-	Const *queryPartitionValueConst = NULL;
+ Const *queryPartitionValueConst = ((void*)0);
 
-	Oid relationId = ExtractFirstDistributedTableId(query);
-	Node *quals = query->jointree->quals;
+ Oid relationId = ExtractFirstDistributedTableId(query);
+ Node *quals = query->jointree->quals;
 
-	int relationIndex = 1;
+ int relationIndex = 1;
 
-	List *prunedShardIntervalList =
-		PruneShards(relationId, relationIndex, make_ands_implicit((Expr *) quals),
-					&queryPartitionValueConst);
+ List *prunedShardIntervalList =
+  PruneShards(relationId, relationIndex, make_ands_implicit((Expr *) quals),
+     &queryPartitionValueConst);
 
-	/* we're only expecting single shard from a single table */
-	Assert(FastPathRouterQuery(query));
 
-	if (list_length(prunedShardIntervalList) > 1)
-	{
-		*isMultiShardQuery = true;
-	}
-	else if (list_length(prunedShardIntervalList) == 1 &&
-			 partitionValueConst != NULL)
-	{
-		/* set the outgoing partition column value if requested */
-		*partitionValueConst = queryPartitionValueConst;
-	}
+ Assert(FastPathRouterQuery(query));
 
-	return prunedShardIntervalList;
+ if (list_length(prunedShardIntervalList) > 1)
+ {
+  *isMultiShardQuery = 1;
+ }
+ else if (list_length(prunedShardIntervalList) == 1 &&
+    partitionValueConst != ((void*)0))
+ {
+
+  *partitionValueConst = queryPartitionValueConst;
+ }
+
+ return prunedShardIntervalList;
 }

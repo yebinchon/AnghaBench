@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int /*<<< orphan*/  sample_t ;
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- int /*<<< orphan*/  check_fifo_magic (int /*<<< orphan*/ *) ; 
- int extract_sample (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ lua_isnumber (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_tonumber (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  rtc_fifo_peek_sample (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint32_t ;
+typedef int sample_t ;
+typedef int lua_State ;
+
+
+ int check_fifo_magic (int *) ;
+ int extract_sample (int *,int *) ;
+ scalar_t__ lua_isnumber (int *,int) ;
+ int lua_tonumber (int *,int) ;
+ int rtc_fifo_peek_sample (int *,int ) ;
 
 __attribute__((used)) static int rtcfifo_peek (lua_State *L)
 {

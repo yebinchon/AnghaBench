@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_34__   TYPE_8__ ;
-typedef  struct TYPE_33__   TYPE_7__ ;
-typedef  struct TYPE_32__   TYPE_6__ ;
-typedef  struct TYPE_31__   TYPE_5__ ;
-typedef  struct TYPE_30__   TYPE_4__ ;
-typedef  struct TYPE_29__   TYPE_3__ ;
-typedef  struct TYPE_28__   TYPE_2__ ;
-typedef  struct TYPE_27__   TYPE_1__ ;
-typedef  struct TYPE_26__   TYPE_19__ ;
-typedef  struct TYPE_25__   TYPE_15__ ;
-typedef  struct TYPE_24__   TYPE_14__ ;
-typedef  struct TYPE_23__   TYPE_13__ ;
-typedef  struct TYPE_22__   TYPE_12__ ;
-typedef  struct TYPE_21__   TYPE_11__ ;
-typedef  struct TYPE_20__   TYPE_10__ ;
 
-/* Type definitions */
-typedef  int u32 ;
-typedef  scalar_t__ u16 ;
-typedef  int /*<<< orphan*/  Vdp2 ;
+
+
+typedef struct TYPE_34__ TYPE_8__ ;
+typedef struct TYPE_33__ TYPE_7__ ;
+typedef struct TYPE_32__ TYPE_6__ ;
+typedef struct TYPE_31__ TYPE_5__ ;
+typedef struct TYPE_30__ TYPE_4__ ;
+typedef struct TYPE_29__ TYPE_3__ ;
+typedef struct TYPE_28__ TYPE_2__ ;
+typedef struct TYPE_27__ TYPE_1__ ;
+typedef struct TYPE_26__ TYPE_19__ ;
+typedef struct TYPE_25__ TYPE_15__ ;
+typedef struct TYPE_24__ TYPE_14__ ;
+typedef struct TYPE_23__ TYPE_13__ ;
+typedef struct TYPE_22__ TYPE_12__ ;
+typedef struct TYPE_21__ TYPE_11__ ;
+typedef struct TYPE_20__ TYPE_10__ ;
+
+
+typedef int u32 ;
+typedef scalar_t__ u16 ;
+typedef int Vdp2 ;
 struct TYPE_30__ {int all; } ;
 struct TYPE_29__ {int all; } ;
 struct TYPE_28__ {int all; } ;
@@ -44,21 +44,21 @@ struct TYPE_22__ {scalar_t__ resd; } ;
 struct TYPE_21__ {int COMREG; } ;
 struct TYPE_20__ {int EDSR; int localX; int localY; int systemclipX2; int systemclipY2; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BiosInit () ; 
- TYPE_19__* Cs2Area ; 
- TYPE_14__* MSH2 ; 
- int MappedMemoryReadLong (int) ; 
- int /*<<< orphan*/  MappedMemoryWriteLong (int,int) ; 
- int /*<<< orphan*/  SH2GetRegisters (TYPE_14__*,TYPE_15__*) ; 
- int /*<<< orphan*/  SH2SetRegisters (TYPE_14__*,TYPE_15__*) ; 
- TYPE_13__* ScuRegs ; 
- TYPE_12__* SmpcInternalVars ; 
- TYPE_11__* SmpcRegs ; 
- TYPE_10__* Vdp1Regs ; 
- TYPE_8__* Vdp2Regs ; 
- int /*<<< orphan*/  memset (TYPE_8__*,int /*<<< orphan*/ ,int) ; 
- TYPE_7__ yabsys ; 
+
+ int BiosInit () ;
+ TYPE_19__* Cs2Area ;
+ TYPE_14__* MSH2 ;
+ int MappedMemoryReadLong (int) ;
+ int MappedMemoryWriteLong (int,int) ;
+ int SH2GetRegisters (TYPE_14__*,TYPE_15__*) ;
+ int SH2SetRegisters (TYPE_14__*,TYPE_15__*) ;
+ TYPE_13__* ScuRegs ;
+ TYPE_12__* SmpcInternalVars ;
+ TYPE_11__* SmpcRegs ;
+ TYPE_10__* Vdp1Regs ;
+ TYPE_8__* Vdp2Regs ;
+ int memset (TYPE_8__*,int ,int) ;
+ TYPE_7__ yabsys ;
 
 void YabauseSpeedySetup(void)
 {
@@ -69,28 +69,28 @@ void YabauseSpeedySetup(void)
       BiosInit();
    else
    {
-      // Setup the vector table area, etc.(all bioses have it at 0x00000600-0x00000810)
+
       for (i = 0; i < 0x210; i+=4)
       {
          data = MappedMemoryReadLong(0x00000600+i);
          MappedMemoryWriteLong(0x06000000+i, data);
       }
 
-      // Setup the bios function pointers, etc.(all bioses have it at 0x00000820-0x00001100)
+
       for (i = 0; i < 0x8E0; i+=4)
       {
          data = MappedMemoryReadLong(0x00000820+i);
          MappedMemoryWriteLong(0x06000220+i, data);
       }
 
-      // I'm not sure this is really needed
+
       for (i = 0; i < 0x700; i+=4)
       {
          data = MappedMemoryReadLong(0x00001100+i);
          MappedMemoryWriteLong(0x06001100+i, data);
       }
 
-      // Fix some spots in 0x06000210-0x0600032C area
+
       MappedMemoryWriteLong(0x06000234, 0x000002AC);
       MappedMemoryWriteLong(0x06000238, 0x000002BC);
       MappedMemoryWriteLong(0x0600023C, 0x00000350);
@@ -109,14 +109,14 @@ void YabauseSpeedySetup(void)
       MappedMemoryWriteLong(0x06000328, 0x000004C8);
       MappedMemoryWriteLong(0x0600032C, 0x00001800);
 
-      // Fix SCU interrupts
+
       for (i = 0; i < 0x80; i+=4)
          MappedMemoryWriteLong(0x06000A00+i, 0x0600083C);
    }
 
-   // Set the cpu's, etc. to sane states
 
-   // Set CD block to a sane state
+
+
    Cs2Area->reg.HIRQ = 0xFC1;
    Cs2Area->isdiskchanged = 0;
    Cs2Area->reg.CR1 = (Cs2Area->status << 8) | ((Cs2Area->options & 0xF) << 4) | (Cs2Area->repcnt & 0xF);
@@ -125,7 +125,7 @@ void YabauseSpeedySetup(void)
    Cs2Area->reg.CR4 = (u16) Cs2Area->FAD;
    Cs2Area->satauth = 4;
 
-   // Set Master SH2 registers accordingly
+
    SH2GetRegisters(MSH2, &MSH2->regs);
    for (i = 0; i < 15; i++)
       MSH2->regs.R[i] = 0x00000000;
@@ -138,7 +138,7 @@ void YabauseSpeedySetup(void)
    MSH2->regs.PR = 0x00000000;
    SH2SetRegisters(MSH2, &MSH2->regs);
 
-   // Set SCU registers to sane states
+
    ScuRegs->D1AD = ScuRegs->D2AD = 0;
    ScuRegs->D0EN = 0x101;
    ScuRegs->IST = 0x2006;
@@ -147,18 +147,18 @@ void YabauseSpeedySetup(void)
    ScuRegs->AREF = 0x1F;
    ScuRegs->RSEL = 0x1;
 
-   // Set SMPC registers to sane states
+
    SmpcRegs->COMREG = 0x10;
    SmpcInternalVars->resd = 0;
 
-   // Set VDP1 registers to sane states
+
    Vdp1Regs->EDSR = 3;
    Vdp1Regs->localX = 160;
    Vdp1Regs->localY = 112;
    Vdp1Regs->systemclipX2 = 319;
    Vdp1Regs->systemclipY2 = 223;
 
-   // Set VDP2 registers to sane states
+
    memset(Vdp2Regs, 0, sizeof(Vdp2));
    Vdp2Regs->TVMD = 0x8000;
    Vdp2Regs->TVSTAT = 0x020A;

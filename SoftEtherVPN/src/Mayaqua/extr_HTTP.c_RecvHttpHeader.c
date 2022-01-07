@@ -1,98 +1,98 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {int /*<<< orphan*/  Version; } ;
-struct TYPE_9__ {int NumTokens; int /*<<< orphan*/ * Token; } ;
-typedef  TYPE_1__ TOKEN_LIST ;
-typedef  int /*<<< orphan*/  SOCK ;
-typedef  TYPE_2__ HTTP_HEADER ;
 
-/* Variables and functions */
- int AddHttpValueStr (TYPE_2__*,char*) ; 
- int /*<<< orphan*/  FreeHttpHeader (TYPE_2__*) ; 
- int /*<<< orphan*/  FreeSafe (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FreeToken (TYPE_1__*) ; 
- int /*<<< orphan*/  HTTP_HEADER_LINE_MAX_SIZE ; 
- scalar_t__ IsEmptyStr (char*) ; 
- TYPE_2__* NewHttpHeader (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PTR_TO_PTR (char*) ; 
- TYPE_1__* ParseToken (char*,char*) ; 
- char* RecvLine (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ StrCmpi (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  Trim (char*) ; 
+
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_10__ {int Version; } ;
+struct TYPE_9__ {int NumTokens; int * Token; } ;
+typedef TYPE_1__ TOKEN_LIST ;
+typedef int SOCK ;
+typedef TYPE_2__ HTTP_HEADER ;
+
+
+ int AddHttpValueStr (TYPE_2__*,char*) ;
+ int FreeHttpHeader (TYPE_2__*) ;
+ int FreeSafe (int ) ;
+ int FreeToken (TYPE_1__*) ;
+ int HTTP_HEADER_LINE_MAX_SIZE ;
+ scalar_t__ IsEmptyStr (char*) ;
+ TYPE_2__* NewHttpHeader (int ,int ,int ) ;
+ int PTR_TO_PTR (char*) ;
+ TYPE_1__* ParseToken (char*,char*) ;
+ char* RecvLine (int *,int ) ;
+ scalar_t__ StrCmpi (int ,char*) ;
+ int Trim (char*) ;
 
 HTTP_HEADER *RecvHttpHeader(SOCK *s)
 {
-	TOKEN_LIST *token = NULL;
-	char *str = NULL;
-	HTTP_HEADER *header = NULL;
-	// Validate arguments
-	if (s == NULL)
-	{
-		return NULL;
-	}
+ TOKEN_LIST *token = ((void*)0);
+ char *str = ((void*)0);
+ HTTP_HEADER *header = ((void*)0);
 
-	// Get the first line
-	str = RecvLine(s, HTTP_HEADER_LINE_MAX_SIZE);
-	if (str == NULL)
-	{
-		return NULL;
-	}
+ if (s == ((void*)0))
+ {
+  return ((void*)0);
+ }
 
-	// Split into tokens
-	token = ParseToken(str, " ");
 
-	FreeSafe(PTR_TO_PTR(str));
+ str = RecvLine(s, HTTP_HEADER_LINE_MAX_SIZE);
+ if (str == ((void*)0))
+ {
+  return ((void*)0);
+ }
 
-	if (token->NumTokens < 3)
-	{
-		FreeToken(token);
-		return NULL;
-	}
 
-	// Creating a header object
-	header = NewHttpHeader(token->Token[0], token->Token[1], token->Token[2]);
-	FreeToken(token);
+ token = ParseToken(str, " ");
 
-	if (StrCmpi(header->Version, "HTTP/0.9") == 0)
-	{
-		// The header ends with this line
-		return header;
-	}
+ FreeSafe(PTR_TO_PTR(str));
 
-	// Get the subsequent lines
-	while (true)
-	{
-		str = RecvLine(s, HTTP_HEADER_LINE_MAX_SIZE);
-		Trim(str);
-		if (IsEmptyStr(str))
-		{
-			// End of header
-			FreeSafe(PTR_TO_PTR(str));
-			break;
-		}
+ if (token->NumTokens < 3)
+ {
+  FreeToken(token);
+  return ((void*)0);
+ }
 
-		if (AddHttpValueStr(header, str) == false)
-		{
-			FreeSafe(PTR_TO_PTR(str));
-			FreeHttpHeader(header);
-			header = NULL;
-			break;
-		}
 
-		FreeSafe(PTR_TO_PTR(str));
-	}
+ header = NewHttpHeader(token->Token[0], token->Token[1], token->Token[2]);
+ FreeToken(token);
 
-	return header;
+ if (StrCmpi(header->Version, "HTTP/0.9") == 0)
+ {
+
+  return header;
+ }
+
+
+ while (1)
+ {
+  str = RecvLine(s, HTTP_HEADER_LINE_MAX_SIZE);
+  Trim(str);
+  if (IsEmptyStr(str))
+  {
+
+   FreeSafe(PTR_TO_PTR(str));
+   break;
+  }
+
+  if (AddHttpValueStr(header, str) == 0)
+  {
+   FreeSafe(PTR_TO_PTR(str));
+   FreeHttpHeader(header);
+   header = ((void*)0);
+   break;
+  }
+
+  FreeSafe(PTR_TO_PTR(str));
+ }
+
+ return header;
 }

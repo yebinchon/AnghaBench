@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {size_t num_elseifs; void* else_block; int /*<<< orphan*/  elseifs; void* then_block; int /*<<< orphan*/ * cond; TYPE_2__* init; } ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {size_t num_elseifs; void* else_block; int elseifs; void* then_block; int * cond; TYPE_2__* init; } ;
 struct TYPE_7__ {TYPE_1__ if_stmt; } ;
-typedef  void* StmtList ;
-typedef  TYPE_2__ Stmt ;
-typedef  int /*<<< orphan*/  SrcPos ;
-typedef  int /*<<< orphan*/  Expr ;
-typedef  int /*<<< orphan*/  ElseIf ;
+typedef void* StmtList ;
+typedef TYPE_2__ Stmt ;
+typedef int SrcPos ;
+typedef int Expr ;
+typedef int ElseIf ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AST_DUP (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  STMT_IF ; 
- TYPE_2__* new_stmt (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int AST_DUP (int *) ;
+ int STMT_IF ;
+ TYPE_2__* new_stmt (int ,int ) ;
 
 Stmt *new_stmt_if(SrcPos pos, Stmt *init, Expr *cond, StmtList then_block, ElseIf *elseifs, size_t num_elseifs, StmtList else_block) {
     Stmt *s = new_stmt(STMT_IF, pos);

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {scalar_t__ handle; scalar_t__ ctx; struct TYPE_4__* res_buf; struct TYPE_4__* buffers; int /*<<< orphan*/  num_buffers; int /*<<< orphan*/  source; } ;
-typedef  TYPE_1__ al_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  alDeleteBuffers (int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  alDeleteSources (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  alSourceStop (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  alcCloseDevice (scalar_t__) ; 
- int /*<<< orphan*/  alcDestroyContext (scalar_t__) ; 
- int /*<<< orphan*/  alcMakeContextCurrent (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (TYPE_1__*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {scalar_t__ handle; scalar_t__ ctx; struct TYPE_4__* res_buf; struct TYPE_4__* buffers; int num_buffers; int source; } ;
+typedef TYPE_1__ al_t ;
+
+
+ int alDeleteBuffers (int ,TYPE_1__*) ;
+ int alDeleteSources (int,int *) ;
+ int alSourceStop (int ) ;
+ int alcCloseDevice (scalar_t__) ;
+ int alcDestroyContext (scalar_t__) ;
+ int alcMakeContextCurrent (int *) ;
+ int free (TYPE_1__*) ;
 
 __attribute__((used)) static void al_free(void *data)
 {
@@ -38,7 +38,7 @@ __attribute__((used)) static void al_free(void *data)
 
    free(al->buffers);
    free(al->res_buf);
-   alcMakeContextCurrent(NULL);
+   alcMakeContextCurrent(((void*)0));
 
    if (al->ctx)
       alcDestroyContext(al->ctx);

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  unsigned int sd_device ;
 
-/* Variables and functions */
- int EINVAL ; 
- int /*<<< orphan*/  assert (unsigned int*) ; 
- int /*<<< orphan*/  log_device_warning (unsigned int*,char*) ; 
- int log_device_warning_errno (unsigned int*,int,char*,...) ; 
- int safe_atou (char const*,unsigned int*) ; 
- int sd_device_get_sysattr_value (unsigned int*,char*,char const**) ; 
+
+
+
+typedef unsigned int sd_device ;
+
+
+ int EINVAL ;
+ int assert (unsigned int*) ;
+ int log_device_warning (unsigned int*,char*) ;
+ int log_device_warning_errno (unsigned int*,int,char*,...) ;
+ int safe_atou (char const*,unsigned int*) ;
+ int sd_device_get_sysattr_value (unsigned int*,char*,char const**) ;
 
 __attribute__((used)) static int get_max_brightness(sd_device *device, unsigned *ret) {
         const char *max_brightness_str;

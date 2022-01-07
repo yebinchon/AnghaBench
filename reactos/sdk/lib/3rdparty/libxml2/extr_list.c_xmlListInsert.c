@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * xmlListPtr ;
-typedef  TYPE_1__* xmlLinkPtr ;
-typedef  int /*<<< orphan*/  xmlLink ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int * xmlListPtr ;
+typedef TYPE_1__* xmlLinkPtr ;
+typedef int xmlLink ;
 struct TYPE_3__ {struct TYPE_3__* prev; struct TYPE_3__* next; void* data; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  xmlGenericError (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  xmlGenericErrorContext ; 
- TYPE_1__* xmlListLowerSearch (int /*<<< orphan*/ *,void*) ; 
- scalar_t__ xmlMalloc (int) ; 
+
+ int xmlGenericError (int ,char*) ;
+ int xmlGenericErrorContext ;
+ TYPE_1__* xmlListLowerSearch (int *,void*) ;
+ scalar_t__ xmlMalloc (int) ;
 
 int
 xmlListInsert(xmlListPtr l, void *data)
 {
     xmlLinkPtr lkPlace, lkNew;
 
-    if (l == NULL)
+    if (l == ((void*)0))
         return(1);
     lkPlace = xmlListLowerSearch(l, data);
-    /* Add the new link */
+
     lkNew = (xmlLinkPtr) xmlMalloc(sizeof(xmlLink));
-    if (lkNew == NULL) {
+    if (lkNew == ((void*)0)) {
         xmlGenericError(xmlGenericErrorContext,
-		        "Cannot initialize memory for new link");
+          "Cannot initialize memory for new link");
         return (1);
     }
     lkNew->data = data;

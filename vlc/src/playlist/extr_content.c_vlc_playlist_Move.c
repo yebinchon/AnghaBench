@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_7__ {size_t size; } ;
-struct TYPE_6__ {int /*<<< orphan*/  player; TYPE_2__ items; } ;
-typedef  TYPE_1__ vlc_playlist_t ;
+struct TYPE_6__ {int player; TYPE_2__ items; } ;
+typedef TYPE_1__ vlc_playlist_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  vlc_player_InvalidateNextMedia (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vlc_playlist_AssertLocked (TYPE_1__*) ; 
- int /*<<< orphan*/  vlc_playlist_ItemsMoved (TYPE_1__*,size_t,size_t,size_t) ; 
- int /*<<< orphan*/  vlc_vector_move_slice (TYPE_2__*,size_t,size_t,size_t) ; 
+
+ int assert (int) ;
+ int vlc_player_InvalidateNextMedia (int ) ;
+ int vlc_playlist_AssertLocked (TYPE_1__*) ;
+ int vlc_playlist_ItemsMoved (TYPE_1__*,size_t,size_t,size_t) ;
+ int vlc_vector_move_slice (TYPE_2__*,size_t,size_t,size_t) ;
 
 void
 vlc_playlist_Move(vlc_playlist_t *playlist, size_t index, size_t count,

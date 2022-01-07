@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_22__   TYPE_5__ ;
-typedef  struct TYPE_21__   TYPE_4__ ;
-typedef  struct TYPE_20__   TYPE_3__ ;
-typedef  struct TYPE_19__   TYPE_2__ ;
-typedef  struct TYPE_18__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_19__ {int /*<<< orphan*/  data; } ;
-typedef  TYPE_2__ svn_string_t ;
-struct TYPE_18__ {int /*<<< orphan*/  member_0; } ;
-struct TYPE_20__ {TYPE_1__ member_1; int /*<<< orphan*/  member_0; } ;
-typedef  TYPE_3__ svn_opt_revision_t ;
-typedef  int /*<<< orphan*/ * svn_mergeinfo_t ;
+
+
+typedef struct TYPE_22__ TYPE_5__ ;
+typedef struct TYPE_21__ TYPE_4__ ;
+typedef struct TYPE_20__ TYPE_3__ ;
+typedef struct TYPE_19__ TYPE_2__ ;
+typedef struct TYPE_18__ TYPE_1__ ;
+
+
+struct TYPE_19__ {int data; } ;
+typedef TYPE_2__ svn_string_t ;
+struct TYPE_18__ {int member_0; } ;
+struct TYPE_20__ {TYPE_1__ member_1; int member_0; } ;
+typedef TYPE_3__ svn_opt_revision_t ;
+typedef int * svn_mergeinfo_t ;
 struct TYPE_21__ {scalar_t__ apr_err; } ;
-typedef  TYPE_4__ svn_error_t ;
-typedef  int /*<<< orphan*/  svn_depth_t ;
-struct TYPE_22__ {int /*<<< orphan*/  wc_ctx; } ;
-typedef  TYPE_5__ svn_client_ctx_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
-typedef  int /*<<< orphan*/  apr_hash_index_t ;
+typedef TYPE_4__ svn_error_t ;
+typedef int svn_depth_t ;
+struct TYPE_22__ {int wc_ctx; } ;
+typedef TYPE_5__ svn_client_ctx_t ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
+typedef int apr_hash_index_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_CLIENT_INVALID_MERGEINFO_NO_MERGETRACKING ; 
- scalar_t__ SVN_ERR_MERGEINFO_PARSE_ERROR ; 
- TYPE_4__* SVN_NO_ERROR ; 
- int /*<<< orphan*/  SVN_PROP_MERGEINFO ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/ * apr_hash_first (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * apr_hash_next (int /*<<< orphan*/ *) ; 
- char* apr_hash_this_key (int /*<<< orphan*/ *) ; 
- TYPE_2__* apr_hash_this_val (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_client_propget5 (int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*,TYPE_3__*,TYPE_3__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,TYPE_5__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_dirent_local_style (char const*,int /*<<< orphan*/ *) ; 
- TYPE_4__* svn_error_createf (int /*<<< orphan*/ ,TYPE_4__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_4__* svn_error_trace (TYPE_4__*) ; 
- scalar_t__ svn_hash_gets (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  svn_hash_sets (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *) ; 
- TYPE_4__* svn_mergeinfo_parse (int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_opt_revision_working ; 
- int /*<<< orphan*/  svn_pool_clear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_pool_create (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_pool_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__externals_defined_below (int /*<<< orphan*/ **,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int SVN_ERR (int ) ;
+ int SVN_ERR_CLIENT_INVALID_MERGEINFO_NO_MERGETRACKING ;
+ scalar_t__ SVN_ERR_MERGEINFO_PARSE_ERROR ;
+ TYPE_4__* SVN_NO_ERROR ;
+ int SVN_PROP_MERGEINFO ;
+ int _ (char*) ;
+ int * apr_hash_first (int *,int *) ;
+ int * apr_hash_next (int *) ;
+ char* apr_hash_this_key (int *) ;
+ TYPE_2__* apr_hash_this_val (int *) ;
+ int svn_client_propget5 (int **,int *,int ,char const*,TYPE_3__*,TYPE_3__*,int *,int ,int *,TYPE_5__*,int *,int *) ;
+ int svn_dirent_local_style (char const*,int *) ;
+ TYPE_4__* svn_error_createf (int ,TYPE_4__*,int ,int ) ;
+ TYPE_4__* svn_error_trace (TYPE_4__*) ;
+ scalar_t__ svn_hash_gets (int *,char const*) ;
+ int svn_hash_sets (int *,char const*,int *) ;
+ TYPE_4__* svn_mergeinfo_parse (int **,int ,int *) ;
+ int svn_opt_revision_working ;
+ int svn_pool_clear (int *) ;
+ int * svn_pool_create (int *) ;
+ int svn_pool_destroy (int *) ;
+ int svn_wc__externals_defined_below (int **,int ,char const*,int *,int *) ;
 
 __attribute__((used)) static svn_error_t *
 get_wc_explicit_mergeinfo_catalog(apr_hash_t **subtrees_with_mergeinfo,
@@ -67,16 +67,16 @@ get_wc_explicit_mergeinfo_catalog(apr_hash_t **subtrees_with_mergeinfo,
   apr_hash_index_t *hi;
   apr_hash_t *externals;
 
-  SVN_ERR(svn_client_propget5(subtrees_with_mergeinfo, NULL,
+  SVN_ERR(svn_client_propget5(subtrees_with_mergeinfo, ((void*)0),
                               SVN_PROP_MERGEINFO, target_abspath,
-                              &working_revision, &working_revision, NULL,
-                              depth, NULL, ctx, result_pool, scratch_pool));
+                              &working_revision, &working_revision, ((void*)0),
+                              depth, ((void*)0), ctx, result_pool, scratch_pool));
 
   SVN_ERR(svn_wc__externals_defined_below(&externals, ctx->wc_ctx,
                                           target_abspath, scratch_pool,
                                           scratch_pool));
 
-  /* Convert property values to svn_mergeinfo_t. */
+
   for (hi = apr_hash_first(scratch_pool, *subtrees_with_mergeinfo);
        hi;
        hi = apr_hash_next(hi))
@@ -86,11 +86,11 @@ get_wc_explicit_mergeinfo_catalog(apr_hash_t **subtrees_with_mergeinfo,
       svn_mergeinfo_t mergeinfo;
       svn_error_t *err;
 
-      /* svn_client_propget5 picks up file externals with
-         mergeinfo, but we don't want those. */
+
+
       if (svn_hash_gets(externals, wc_path))
         {
-          svn_hash_sets(*subtrees_with_mergeinfo, wc_path, NULL);
+          svn_hash_sets(*subtrees_with_mergeinfo, wc_path, ((void*)0));
           continue;
         }
 

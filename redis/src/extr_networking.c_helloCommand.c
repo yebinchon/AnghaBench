@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_18__   TYPE_4__ ;
-typedef  struct TYPE_17__   TYPE_2__ ;
-typedef  struct TYPE_16__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_16__ {int argc; long long resp; int id; int /*<<< orphan*/  authenticated; TYPE_4__** argv; } ;
-typedef  TYPE_1__ client ;
+
+
+typedef struct TYPE_18__ TYPE_4__ ;
+typedef struct TYPE_17__ TYPE_2__ ;
+typedef struct TYPE_16__ TYPE_1__ ;
+
+
+struct TYPE_16__ {int argc; long long resp; int id; int authenticated; TYPE_4__** argv; } ;
+typedef TYPE_1__ client ;
 struct TYPE_18__ {char* ptr; } ;
 struct TYPE_17__ {scalar_t__ masterhost; scalar_t__ sentinel_mode; scalar_t__ cluster_enabled; } ;
 
-/* Variables and functions */
- scalar_t__ ACLAuthenticateUser (TYPE_1__*,TYPE_4__*,TYPE_4__*) ; 
- scalar_t__ C_ERR ; 
- scalar_t__ C_OK ; 
- char* REDIS_VERSION ; 
- int /*<<< orphan*/  addReplyBulkCString (TYPE_1__*,char*) ; 
- int /*<<< orphan*/  addReplyError (TYPE_1__*,char*) ; 
- int /*<<< orphan*/  addReplyErrorFormat (TYPE_1__*,char*,char const*) ; 
- int /*<<< orphan*/  addReplyLoadedModules (TYPE_1__*) ; 
- int /*<<< orphan*/  addReplyLongLong (TYPE_1__*,int) ; 
- int /*<<< orphan*/  addReplyMapLen (TYPE_1__*,int) ; 
- scalar_t__ clientSetNameOrReply (TYPE_1__*,TYPE_4__*) ; 
- scalar_t__ getLongLongFromObject (TYPE_4__*,long long*) ; 
- TYPE_2__ server ; 
- int /*<<< orphan*/  strcasecmp (char const*,char*) ; 
+
+ scalar_t__ ACLAuthenticateUser (TYPE_1__*,TYPE_4__*,TYPE_4__*) ;
+ scalar_t__ C_ERR ;
+ scalar_t__ C_OK ;
+ char* REDIS_VERSION ;
+ int addReplyBulkCString (TYPE_1__*,char*) ;
+ int addReplyError (TYPE_1__*,char*) ;
+ int addReplyErrorFormat (TYPE_1__*,char*,char const*) ;
+ int addReplyLoadedModules (TYPE_1__*) ;
+ int addReplyLongLong (TYPE_1__*,int) ;
+ int addReplyMapLen (TYPE_1__*,int) ;
+ scalar_t__ clientSetNameOrReply (TYPE_1__*,TYPE_4__*) ;
+ scalar_t__ getLongLongFromObject (TYPE_4__*,long long*) ;
+ TYPE_2__ server ;
+ int strcasecmp (char const*,char*) ;
 
 void helloCommand(client *c) {
     long long ver;
@@ -62,7 +62,7 @@ void helloCommand(client *c) {
         }
     }
 
-    /* At this point we need to be authenticated to continue. */
+
     if (!c->authenticated) {
         addReplyError(c,"-NOAUTH HELLO must be called with the client already "
                         "authenticated, otherwise the HELLO AUTH <user> <pass> "
@@ -71,7 +71,7 @@ void helloCommand(client *c) {
         return;
     }
 
-    /* Let's switch to the specified RESP mode. */
+
     c->resp = ver;
     addReplyMapLen(c,7);
 

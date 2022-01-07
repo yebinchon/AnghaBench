@@ -1,55 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  int /*<<< orphan*/  luaL_Buffer ;
 
-/* Variables and functions */
- int HTTP_STATUS_GENERIC_ERROR ; 
- scalar_t__ LUA_NOREF ; 
- int /*<<< orphan*/  LUA_REGISTRYINDEX ; 
- int /*<<< orphan*/  dbg_printf (char*,...) ; 
- int /*<<< orphan*/  free (char*) ; 
- scalar_t__ http_callback_registry ; 
- int /*<<< orphan*/  luaL_addchar (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  luaL_buffinit (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  luaL_pushresult (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  luaL_unref (int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  lua_call (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * lua_getstate () ; 
- int /*<<< orphan*/  lua_newtable (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_pushlstring (int /*<<< orphan*/ *,char const*,int) ; 
- int /*<<< orphan*/  lua_pushnil (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_pushnumber (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pushstring (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  lua_rawgeti (int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  lua_settable (int /*<<< orphan*/ *,int) ; 
- char* strlen (char const*) ; 
- int /*<<< orphan*/  tolower (unsigned char) ; 
+
+
+
+typedef int lua_State ;
+typedef int luaL_Buffer ;
+
+
+ int HTTP_STATUS_GENERIC_ERROR ;
+ scalar_t__ LUA_NOREF ;
+ int LUA_REGISTRYINDEX ;
+ int dbg_printf (char*,...) ;
+ int free (char*) ;
+ scalar_t__ http_callback_registry ;
+ int luaL_addchar (int *,int ) ;
+ int luaL_buffinit (int *,int *) ;
+ int luaL_pushresult (int *) ;
+ int luaL_unref (int *,int ,scalar_t__) ;
+ int lua_call (int *,int,int ) ;
+ int * lua_getstate () ;
+ int lua_newtable (int *) ;
+ int lua_pushlstring (int *,char const*,int) ;
+ int lua_pushnil (int *) ;
+ int lua_pushnumber (int *,int) ;
+ int lua_pushstring (int *,char*) ;
+ int lua_rawgeti (int *,int ,scalar_t__) ;
+ int lua_settable (int *,int) ;
+ char* strlen (char const*) ;
+ int tolower (unsigned char) ;
 
 __attribute__((used)) static void http_callback( char * response, int http_status, char ** full_response_p )
 {
-  const char *full_response = full_response_p ? *full_response_p : NULL;
-
-#if defined(HTTPCLIENT_DEBUG_ON)
-  dbg_printf( "http_status=%d\n", http_status );
-  if ( http_status != HTTP_STATUS_GENERIC_ERROR )
-  {
-    if (full_response != NULL) {
-      dbg_printf( "strlen(full_response)=%d\n", strlen( full_response ) );
-    }
-    dbg_printf( "response=%s<EOF>\n", response );
-  }
-#endif
+  const char *full_response = full_response_p ? *full_response_p : ((void*)0);
   if (http_callback_registry != LUA_NOREF)
   {
     lua_State *L = lua_getstate();
@@ -64,7 +53,7 @@ __attribute__((used)) static void http_callback( char * response, int http_statu
 
       const char *p = full_response;
 
-      // Need to skip the HTTP/1.1 header line
+
       while (*p && *p != '\n') {
         p++;
       }
@@ -117,12 +106,12 @@ __attribute__((used)) static void http_callback( char * response, int http_statu
 
     if (full_response_p && *full_response_p) {
       free(*full_response_p);
-      *full_response_p = NULL;
+      *full_response_p = ((void*)0);
     }
 
     luaL_unref(L, LUA_REGISTRYINDEX, http_callback_registry);
     http_callback_registry = LUA_NOREF;
 
-    lua_call(L, 3, 0); // With 3 arguments and 0 result
+    lua_call(L, 3, 0);
   }
 }

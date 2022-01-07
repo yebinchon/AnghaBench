@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_object_t ;
-struct TYPE_5__ {int /*<<< orphan*/  logger; } ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int vlc_object_t ;
+struct TYPE_5__ {int logger; } ;
 struct TYPE_6__ {TYPE_1__ obj; TYPE_3__* p_sys; } ;
-typedef  TYPE_2__ intf_thread_t ;
-struct TYPE_7__ {struct TYPE_7__* psz_filename; int /*<<< orphan*/  dtable; int /*<<< orphan*/  L; int /*<<< orphan*/  thread; } ;
-typedef  TYPE_3__ intf_sys_t ;
+typedef TYPE_2__ intf_thread_t ;
+struct TYPE_7__ {struct TYPE_7__* psz_filename; int dtable; int L; int thread; } ;
+typedef TYPE_3__ intf_sys_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (TYPE_3__*) ; 
- int /*<<< orphan*/  lua_close (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vlc_LogDestroy (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vlc_join (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlclua_fd_cleanup (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlclua_fd_interrupt (int /*<<< orphan*/ *) ; 
+
+ int free (TYPE_3__*) ;
+ int lua_close (int ) ;
+ int vlc_LogDestroy (int ) ;
+ int vlc_join (int ,int *) ;
+ int vlclua_fd_cleanup (int *) ;
+ int vlclua_fd_interrupt (int *) ;
 
 void Close_LuaIntf( vlc_object_t *p_this )
 {
@@ -34,7 +34,7 @@ void Close_LuaIntf( vlc_object_t *p_this )
     intf_sys_t *p_sys = p_intf->p_sys;
 
     vlclua_fd_interrupt( &p_sys->dtable );
-    vlc_join( p_sys->thread, NULL );
+    vlc_join( p_sys->thread, ((void*)0) );
 
     lua_close( p_sys->L );
     vlclua_fd_cleanup( &p_sys->dtable );

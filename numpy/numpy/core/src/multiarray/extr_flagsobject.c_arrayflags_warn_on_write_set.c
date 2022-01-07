@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ arr; } ;
-typedef  int /*<<< orphan*/  PyObject ;
-typedef  int /*<<< orphan*/  PyArrayObject ;
-typedef  TYPE_1__ PyArrayFlagsObject ;
+typedef int PyObject ;
+typedef int PyArrayObject ;
+typedef TYPE_1__ PyArrayFlagsObject ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NPY_ARRAY_WARN_ON_WRITE ; 
- int NPY_ARRAY_WRITEABLE ; 
- int /*<<< orphan*/  PyArray_ENABLEFLAGS (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int PyArray_FLAGS (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyErr_SetString (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  PyExc_AttributeError ; 
- int /*<<< orphan*/  PyExc_ValueError ; 
- int PyObject_IsTrue (int /*<<< orphan*/ *) ; 
+
+ int NPY_ARRAY_WARN_ON_WRITE ;
+ int NPY_ARRAY_WRITEABLE ;
+ int PyArray_ENABLEFLAGS (int *,int ) ;
+ int PyArray_FLAGS (int *) ;
+ int PyErr_SetString (int ,char*) ;
+ int PyExc_AttributeError ;
+ int PyExc_ValueError ;
+ int PyObject_IsTrue (int *) ;
 
 __attribute__((used)) static int
 arrayflags_warn_on_write_set(PyArrayFlagsObject *self, PyObject *obj)
 {
-    /*
-     * This code should go away in a future release, so do not mangle the
-     * array_setflags function with an extra kwarg
-     */
+
+
+
+
     int ret;
-    if (obj == NULL) {
+    if (obj == ((void*)0)) {
         PyErr_SetString(PyExc_AttributeError,
                 "Cannot delete flags _warn_on_write attribute");
         return -1;

@@ -1,149 +1,141 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct radeon_ring {int /*<<< orphan*/ * ring_obj; } ;
-struct TYPE_4__ {int /*<<< orphan*/ * ring_obj; } ;
-struct TYPE_3__ {int /*<<< orphan*/  atom_context; } ;
-struct radeon_device {int accel_working; int flags; int /*<<< orphan*/  mc_fw; int /*<<< orphan*/  dev; TYPE_2__ ih; struct radeon_ring* ring; int /*<<< orphan*/  ddev; TYPE_1__ mode_info; int /*<<< orphan*/  bios; int /*<<< orphan*/  is_atom_bios; } ;
 
-/* Variables and functions */
- scalar_t__ ASIC_IS_AVIVO (struct radeon_device*) ; 
- size_t CAYMAN_RING_TYPE_DMA1_INDEX ; 
- int /*<<< orphan*/  DRM_ERROR (char*) ; 
- int /*<<< orphan*/  DRM_INFO (char*) ; 
- int EINVAL ; 
- size_t R600_RING_TYPE_DMA_INDEX ; 
- int RADEON_IS_IGP ; 
- size_t RADEON_RING_TYPE_GFX_INDEX ; 
- int /*<<< orphan*/  atom_asic_init (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cayman_cp_fini (struct radeon_device*) ; 
- int /*<<< orphan*/  cayman_dma_fini (struct radeon_device*) ; 
- int /*<<< orphan*/  cayman_pcie_gart_fini (struct radeon_device*) ; 
- int cayman_startup (struct radeon_device*) ; 
- int /*<<< orphan*/  dev_err (int /*<<< orphan*/ ,char*) ; 
- int evergreen_mc_init (struct radeon_device*) ; 
- int /*<<< orphan*/  r600_ih_ring_init (struct radeon_device*,int) ; 
- int /*<<< orphan*/  r600_irq_fini (struct radeon_device*) ; 
- int r600_pcie_gart_init (struct radeon_device*) ; 
- int /*<<< orphan*/  r600_ring_init (struct radeon_device*,struct radeon_ring*,int) ; 
- int /*<<< orphan*/  r600_scratch_init (struct radeon_device*) ; 
- int radeon_atombios_init (struct radeon_device*) ; 
- int radeon_bo_init (struct radeon_device*) ; 
- int /*<<< orphan*/  radeon_card_posted (struct radeon_device*) ; 
- int radeon_fence_driver_init (struct radeon_device*) ; 
- int /*<<< orphan*/  radeon_get_bios (struct radeon_device*) ; 
- int /*<<< orphan*/  radeon_get_clock_info (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  radeon_ib_pool_fini (struct radeon_device*) ; 
- int /*<<< orphan*/  radeon_irq_kms_fini (struct radeon_device*) ; 
- int /*<<< orphan*/  radeon_surface_init (struct radeon_device*) ; 
- int /*<<< orphan*/  radeon_vm_manager_fini (struct radeon_device*) ; 
- int /*<<< orphan*/  radeon_wb_fini (struct radeon_device*) ; 
- int /*<<< orphan*/  si_rlc_fini (struct radeon_device*) ; 
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct radeon_ring {int * ring_obj; } ;
+struct TYPE_4__ {int * ring_obj; } ;
+struct TYPE_3__ {int atom_context; } ;
+struct radeon_device {int accel_working; int flags; int mc_fw; int dev; TYPE_2__ ih; struct radeon_ring* ring; int ddev; TYPE_1__ mode_info; int bios; int is_atom_bios; } ;
+
+
+ scalar_t__ ASIC_IS_AVIVO (struct radeon_device*) ;
+ size_t CAYMAN_RING_TYPE_DMA1_INDEX ;
+ int DRM_ERROR (char*) ;
+ int DRM_INFO (char*) ;
+ int EINVAL ;
+ size_t R600_RING_TYPE_DMA_INDEX ;
+ int RADEON_IS_IGP ;
+ size_t RADEON_RING_TYPE_GFX_INDEX ;
+ int atom_asic_init (int ) ;
+ int cayman_cp_fini (struct radeon_device*) ;
+ int cayman_dma_fini (struct radeon_device*) ;
+ int cayman_pcie_gart_fini (struct radeon_device*) ;
+ int cayman_startup (struct radeon_device*) ;
+ int dev_err (int ,char*) ;
+ int evergreen_mc_init (struct radeon_device*) ;
+ int r600_ih_ring_init (struct radeon_device*,int) ;
+ int r600_irq_fini (struct radeon_device*) ;
+ int r600_pcie_gart_init (struct radeon_device*) ;
+ int r600_ring_init (struct radeon_device*,struct radeon_ring*,int) ;
+ int r600_scratch_init (struct radeon_device*) ;
+ int radeon_atombios_init (struct radeon_device*) ;
+ int radeon_bo_init (struct radeon_device*) ;
+ int radeon_card_posted (struct radeon_device*) ;
+ int radeon_fence_driver_init (struct radeon_device*) ;
+ int radeon_get_bios (struct radeon_device*) ;
+ int radeon_get_clock_info (int ) ;
+ int radeon_ib_pool_fini (struct radeon_device*) ;
+ int radeon_irq_kms_fini (struct radeon_device*) ;
+ int radeon_surface_init (struct radeon_device*) ;
+ int radeon_vm_manager_fini (struct radeon_device*) ;
+ int radeon_wb_fini (struct radeon_device*) ;
+ int si_rlc_fini (struct radeon_device*) ;
 
 int cayman_init(struct radeon_device *rdev)
 {
-	struct radeon_ring *ring = &rdev->ring[RADEON_RING_TYPE_GFX_INDEX];
-	int r;
+ struct radeon_ring *ring = &rdev->ring[RADEON_RING_TYPE_GFX_INDEX];
+ int r;
 
-	/* Read BIOS */
-	if (!radeon_get_bios(rdev)) {
-		if (ASIC_IS_AVIVO(rdev))
-			return -EINVAL;
-	}
-	/* Must be an ATOMBIOS */
-	if (!rdev->is_atom_bios) {
-		dev_err(rdev->dev, "Expecting atombios for cayman GPU\n");
-		return -EINVAL;
-	}
-	r = radeon_atombios_init(rdev);
-	if (r)
-		return r;
 
-	/* Post card if necessary */
-	if (!radeon_card_posted(rdev)) {
-		if (!rdev->bios) {
-			dev_err(rdev->dev, "Card not posted and no BIOS - ignoring\n");
-			return -EINVAL;
-		}
-		DRM_INFO("GPU not posted. posting now...\n");
-		atom_asic_init(rdev->mode_info.atom_context);
-	}
-	/* Initialize scratch registers */
-	r600_scratch_init(rdev);
-	/* Initialize surface registers */
-	radeon_surface_init(rdev);
-	/* Initialize clocks */
-	radeon_get_clock_info(rdev->ddev);
-	/* Fence driver */
-	r = radeon_fence_driver_init(rdev);
-	if (r)
-		return r;
-	/* initialize memory controller */
-	r = evergreen_mc_init(rdev);
-	if (r)
-		return r;
-	/* Memory manager */
-	r = radeon_bo_init(rdev);
-	if (r)
-		return r;
+ if (!radeon_get_bios(rdev)) {
+  if (ASIC_IS_AVIVO(rdev))
+   return -EINVAL;
+ }
 
-	ring->ring_obj = NULL;
-	r600_ring_init(rdev, ring, 1024 * 1024);
+ if (!rdev->is_atom_bios) {
+  dev_err(rdev->dev, "Expecting atombios for cayman GPU\n");
+  return -EINVAL;
+ }
+ r = radeon_atombios_init(rdev);
+ if (r)
+  return r;
 
-	ring = &rdev->ring[R600_RING_TYPE_DMA_INDEX];
-	ring->ring_obj = NULL;
-	r600_ring_init(rdev, ring, 64 * 1024);
 
-	ring = &rdev->ring[CAYMAN_RING_TYPE_DMA1_INDEX];
-	ring->ring_obj = NULL;
-	r600_ring_init(rdev, ring, 64 * 1024);
+ if (!radeon_card_posted(rdev)) {
+  if (!rdev->bios) {
+   dev_err(rdev->dev, "Card not posted and no BIOS - ignoring\n");
+   return -EINVAL;
+  }
+  DRM_INFO("GPU not posted. posting now...\n");
+  atom_asic_init(rdev->mode_info.atom_context);
+ }
 
-	rdev->ih.ring_obj = NULL;
-	r600_ih_ring_init(rdev, 64 * 1024);
+ r600_scratch_init(rdev);
 
-	r = r600_pcie_gart_init(rdev);
-	if (r)
-		return r;
+ radeon_surface_init(rdev);
 
-	rdev->accel_working = true;
-	r = cayman_startup(rdev);
-	if (r) {
-		dev_err(rdev->dev, "disabling GPU acceleration\n");
-		cayman_cp_fini(rdev);
-		cayman_dma_fini(rdev);
-		r600_irq_fini(rdev);
-		if (rdev->flags & RADEON_IS_IGP)
-			si_rlc_fini(rdev);
-		radeon_wb_fini(rdev);
-		radeon_ib_pool_fini(rdev);
-		radeon_vm_manager_fini(rdev);
-		radeon_irq_kms_fini(rdev);
-		cayman_pcie_gart_fini(rdev);
-		rdev->accel_working = false;
-	}
+ radeon_get_clock_info(rdev->ddev);
 
-	/* Don't start up if the MC ucode is missing.
-	 * The default clocks and voltages before the MC ucode
-	 * is loaded are not suffient for advanced operations.
-	 *
-	 * We can skip this check for TN, because there is no MC
-	 * ucode.
-	 */
-	if (!rdev->mc_fw && !(rdev->flags & RADEON_IS_IGP)) {
-		DRM_ERROR("radeon: MC ucode required for NI+.\n");
-		return -EINVAL;
-	}
+ r = radeon_fence_driver_init(rdev);
+ if (r)
+  return r;
 
-	return 0;
+ r = evergreen_mc_init(rdev);
+ if (r)
+  return r;
+
+ r = radeon_bo_init(rdev);
+ if (r)
+  return r;
+
+ ring->ring_obj = ((void*)0);
+ r600_ring_init(rdev, ring, 1024 * 1024);
+
+ ring = &rdev->ring[R600_RING_TYPE_DMA_INDEX];
+ ring->ring_obj = ((void*)0);
+ r600_ring_init(rdev, ring, 64 * 1024);
+
+ ring = &rdev->ring[CAYMAN_RING_TYPE_DMA1_INDEX];
+ ring->ring_obj = ((void*)0);
+ r600_ring_init(rdev, ring, 64 * 1024);
+
+ rdev->ih.ring_obj = ((void*)0);
+ r600_ih_ring_init(rdev, 64 * 1024);
+
+ r = r600_pcie_gart_init(rdev);
+ if (r)
+  return r;
+
+ rdev->accel_working = 1;
+ r = cayman_startup(rdev);
+ if (r) {
+  dev_err(rdev->dev, "disabling GPU acceleration\n");
+  cayman_cp_fini(rdev);
+  cayman_dma_fini(rdev);
+  r600_irq_fini(rdev);
+  if (rdev->flags & RADEON_IS_IGP)
+   si_rlc_fini(rdev);
+  radeon_wb_fini(rdev);
+  radeon_ib_pool_fini(rdev);
+  radeon_vm_manager_fini(rdev);
+  radeon_irq_kms_fini(rdev);
+  cayman_pcie_gart_fini(rdev);
+  rdev->accel_working = 0;
+ }
+ if (!rdev->mc_fw && !(rdev->flags & RADEON_IS_IGP)) {
+  DRM_ERROR("radeon: MC ucode required for NI+.\n");
+  return -EINVAL;
+ }
+
+ return 0;
 }

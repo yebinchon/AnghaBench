@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {void* validation_status; int /*<<< orphan*/  sig_alg; void* hash_alg; } ;
-typedef  TYPE_1__ SCT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CT_F_SCT_SET_SIGNATURE_NID ; 
- int /*<<< orphan*/  CT_R_UNRECOGNIZED_SIGNATURE_NID ; 
- int /*<<< orphan*/  CTerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
-#define  NID_ecdsa_with_SHA256 129 
-#define  NID_sha256WithRSAEncryption 128 
- void* SCT_VALIDATION_STATUS_NOT_SET ; 
- void* TLSEXT_hash_sha256 ; 
- int /*<<< orphan*/  TLSEXT_signature_ecdsa ; 
- int /*<<< orphan*/  TLSEXT_signature_rsa ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {void* validation_status; int sig_alg; void* hash_alg; } ;
+typedef TYPE_1__ SCT ;
+
+
+ int CT_F_SCT_SET_SIGNATURE_NID ;
+ int CT_R_UNRECOGNIZED_SIGNATURE_NID ;
+ int CTerr (int ,int ) ;
+
+
+ void* SCT_VALIDATION_STATUS_NOT_SET ;
+ void* TLSEXT_hash_sha256 ;
+ int TLSEXT_signature_ecdsa ;
+ int TLSEXT_signature_rsa ;
 
 int SCT_set_signature_nid(SCT *sct, int nid)
 {
     switch (nid) {
-    case NID_sha256WithRSAEncryption:
+    case 128:
         sct->hash_alg = TLSEXT_hash_sha256;
         sct->sig_alg = TLSEXT_signature_rsa;
         sct->validation_status = SCT_VALIDATION_STATUS_NOT_SET;
         return 1;
-    case NID_ecdsa_with_SHA256:
+    case 129:
         sct->hash_alg = TLSEXT_hash_sha256;
         sct->sig_alg = TLSEXT_signature_ecdsa;
         sct->validation_status = SCT_VALIDATION_STATUS_NOT_SET;

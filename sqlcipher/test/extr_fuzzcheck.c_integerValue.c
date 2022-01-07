@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int sqlite3_int64 ;
-typedef  int /*<<< orphan*/  aMult ;
 
-/* Variables and functions */
- scalar_t__ ISDIGIT (char const) ; 
- int /*<<< orphan*/  fatalError (char*) ; 
- int hexDigitValue (char const) ; 
- scalar_t__ sqlite3_stricmp (char*,char const*) ; 
+
+
+
+typedef int sqlite3_int64 ;
+typedef int aMult ;
+
+
+ scalar_t__ ISDIGIT (char const) ;
+ int fatalError (char*) ;
+ int hexDigitValue (char const) ;
+ scalar_t__ sqlite3_stricmp (char*,char const*) ;
 
 __attribute__((used)) static int integerValue(const char *zArg){
   sqlite3_int64 v = 0;
@@ -25,12 +25,12 @@ __attribute__((used)) static int integerValue(const char *zArg){
     { "KiB", 1024 },
     { "MiB", 1024*1024 },
     { "GiB", 1024*1024*1024 },
-    { "KB",  1000 },
-    { "MB",  1000000 },
-    { "GB",  1000000000 },
-    { "K",   1000 },
-    { "M",   1000000 },
-    { "G",   1000000000 },
+    { "KB", 1000 },
+    { "MB", 1000000 },
+    { "GB", 1000000000 },
+    { "K", 1000 },
+    { "M", 1000000 },
+    { "G", 1000000000 },
   };
   int i;
   int isNeg = 0;

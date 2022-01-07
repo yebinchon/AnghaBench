@@ -1,31 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int CHAR_BIT ; 
- scalar_t__ SIZE_MAX ; 
- int /*<<< orphan*/  sodium_misuse () ; 
+ int CHAR_BIT ;
+ scalar_t__ SIZE_MAX ;
+ int sodium_misuse () ;
 
 int
 sodium_pad(size_t *padded_buflen_p, unsigned char *buf,
            size_t unpadded_buflen, size_t blocksize, size_t max_buflen)
 {
-    unsigned char          *tail;
-    size_t                  i;
-    size_t                  xpadlen;
-    size_t                  xpadded_len;
-    volatile unsigned char  mask;
-    unsigned char           barrier_mask;
+    unsigned char *tail;
+    size_t i;
+    size_t xpadlen;
+    size_t xpadded_len;
+    volatile unsigned char mask;
+    unsigned char barrier_mask;
 
     if (blocksize <= 0U) {
         return -1;
@@ -44,7 +36,7 @@ sodium_pad(size_t *padded_buflen_p, unsigned char *buf,
         return -1;
     }
     tail = &buf[xpadded_len];
-    if (padded_buflen_p != NULL) {
+    if (padded_buflen_p != ((void*)0)) {
         *padded_buflen_p = xpadded_len + 1U;
     }
     mask = 0U;

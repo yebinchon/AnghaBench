@@ -1,111 +1,111 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_6__ ;
-typedef  struct TYPE_16__   TYPE_5__ ;
-typedef  struct TYPE_15__   TYPE_4__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  dmlabRecordingContext ;
-struct TYPE_17__ {char* runfiles_path; int /*<<< orphan*/  optional_temp_folder; int /*<<< orphan*/  read_only_file_system; int /*<<< orphan*/  file_reader_override; int /*<<< orphan*/  level_cache_params; } ;
-struct TYPE_13__ {int /*<<< orphan*/  render_custom_view; int /*<<< orphan*/  is_map_loading; int /*<<< orphan*/  in_fov; int /*<<< orphan*/  raycast; int /*<<< orphan*/  update_rgba_texture; int /*<<< orphan*/  save_model; int /*<<< orphan*/  serialise_model; int /*<<< orphan*/  serialised_model_size; int /*<<< orphan*/  load_model; int /*<<< orphan*/  deserialise_model; int /*<<< orphan*/  total_time_seconds; int /*<<< orphan*/  total_engine_time_msec; int /*<<< orphan*/  engine_frame_period_msec; int /*<<< orphan*/  execute_console_command; int /*<<< orphan*/  add_bot; int /*<<< orphan*/  screen_shape; int /*<<< orphan*/  add_score; int /*<<< orphan*/  player_score; } ;
+
+
+typedef struct TYPE_17__ TYPE_6__ ;
+typedef struct TYPE_16__ TYPE_5__ ;
+typedef struct TYPE_15__ TYPE_4__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+typedef int dmlabRecordingContext ;
+struct TYPE_17__ {char* runfiles_path; int optional_temp_folder; int read_only_file_system; int file_reader_override; int level_cache_params; } ;
+struct TYPE_13__ {int render_custom_view; int is_map_loading; int in_fov; int raycast; int update_rgba_texture; int save_model; int serialise_model; int serialised_model_size; int load_model; int deserialise_model; int total_time_seconds; int total_engine_time_msec; int engine_frame_period_msec; int execute_console_command; int add_bot; int screen_shape; int add_score; int player_score; } ;
 struct TYPE_16__ {TYPE_3__* context; TYPE_2__ calls; } ;
-struct TYPE_15__ {int /*<<< orphan*/  release_context; int /*<<< orphan*/  advance; int /*<<< orphan*/  act_text; int /*<<< orphan*/  act_continuous; int /*<<< orphan*/  act_discrete; int /*<<< orphan*/  act; int /*<<< orphan*/  event; int /*<<< orphan*/  event_count; int /*<<< orphan*/  observation; int /*<<< orphan*/  fps; int /*<<< orphan*/  event_type_name; int /*<<< orphan*/  event_type_count; int /*<<< orphan*/  observation_spec; int /*<<< orphan*/  observation_name; int /*<<< orphan*/  observation_count; int /*<<< orphan*/  action_text_name; int /*<<< orphan*/  action_text_count; int /*<<< orphan*/  action_continuous_bounds; int /*<<< orphan*/  action_continuous_name; int /*<<< orphan*/  action_continuous_count; int /*<<< orphan*/  action_discrete_bounds; int /*<<< orphan*/  action_discrete_name; int /*<<< orphan*/  action_discrete_count; int /*<<< orphan*/  environment_name; int /*<<< orphan*/  error_message; int /*<<< orphan*/  start; int /*<<< orphan*/  list_property; int /*<<< orphan*/  read_property; int /*<<< orphan*/  write_property; int /*<<< orphan*/  init; int /*<<< orphan*/  setting; } ;
+struct TYPE_15__ {int release_context; int advance; int act_text; int act_continuous; int act_discrete; int act; int event; int event_count; int observation; int fps; int event_type_name; int event_type_count; int observation_spec; int observation_name; int observation_count; int action_text_name; int action_text_count; int action_continuous_bounds; int action_continuous_name; int action_continuous_count; int action_discrete_bounds; int action_discrete_name; int action_discrete_count; int environment_name; int error_message; int start; int list_property; int read_property; int write_property; int init; int setting; } ;
 struct TYPE_12__ {int enabled; } ;
-struct TYPE_14__ {int use_local_level_cache; int use_global_level_cache; int width; int height; int* map_frame_number_shape; TYPE_5__* dm_ctx; int /*<<< orphan*/  runfiles_path; TYPE_1__ pbos; scalar_t__ map_frame_number_observation; int /*<<< orphan*/ * recording_ctx; int /*<<< orphan*/  level_cache_params; } ;
-typedef  TYPE_3__ GameContext ;
-typedef  TYPE_4__ EnvCApi ;
-typedef  TYPE_5__ DeepmindContext ;
-typedef  TYPE_6__ DeepMindLabLaunchParams ;
+struct TYPE_14__ {int use_local_level_cache; int use_global_level_cache; int width; int height; int* map_frame_number_shape; TYPE_5__* dm_ctx; int runfiles_path; TYPE_1__ pbos; scalar_t__ map_frame_number_observation; int * recording_ctx; int level_cache_params; } ;
+typedef TYPE_3__ GameContext ;
+typedef TYPE_4__ EnvCApi ;
+typedef TYPE_5__ DeepmindContext ;
+typedef TYPE_6__ DeepMindLabLaunchParams ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Q_strncpyz (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  add_bot ; 
- int /*<<< orphan*/  call_add_score ; 
- void* calloc (int,int) ; 
- int /*<<< orphan*/  dmlab_act ; 
- int /*<<< orphan*/  dmlab_act_continuous ; 
- int /*<<< orphan*/  dmlab_act_discrete ; 
- int /*<<< orphan*/  dmlab_act_text ; 
- int /*<<< orphan*/  dmlab_action_continuous_bounds ; 
- int /*<<< orphan*/  dmlab_action_continuous_count ; 
- int /*<<< orphan*/  dmlab_action_continuous_name ; 
- int /*<<< orphan*/  dmlab_action_discrete_bounds ; 
- int /*<<< orphan*/  dmlab_action_discrete_count ; 
- int /*<<< orphan*/  dmlab_action_discrete_name ; 
- int /*<<< orphan*/  dmlab_action_text_count ; 
- int /*<<< orphan*/  dmlab_action_text_name ; 
- int /*<<< orphan*/  dmlab_advance ; 
- int dmlab_create_context (int /*<<< orphan*/ ,TYPE_5__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dmlab_deserialise_model ; 
- int /*<<< orphan*/  dmlab_destroy_context ; 
- int /*<<< orphan*/  dmlab_environment_name ; 
- int /*<<< orphan*/  dmlab_error_message ; 
- int /*<<< orphan*/  dmlab_event ; 
- int /*<<< orphan*/  dmlab_event_count ; 
- int /*<<< orphan*/  dmlab_event_type_count ; 
- int /*<<< orphan*/  dmlab_event_type_name ; 
- int /*<<< orphan*/  dmlab_fps ; 
- int /*<<< orphan*/  dmlab_in_fov ; 
- int /*<<< orphan*/  dmlab_init ; 
- int /*<<< orphan*/  dmlab_is_map_loading ; 
- int /*<<< orphan*/  dmlab_list_property ; 
- int /*<<< orphan*/  dmlab_load_model ; 
- int /*<<< orphan*/  dmlab_observation ; 
- int /*<<< orphan*/  dmlab_observation_count ; 
- int /*<<< orphan*/  dmlab_observation_name ; 
- int /*<<< orphan*/  dmlab_observation_spec ; 
- int /*<<< orphan*/  dmlab_raycast ; 
- int /*<<< orphan*/  dmlab_read_property ; 
- int /*<<< orphan*/  dmlab_render_custom_view ; 
- int /*<<< orphan*/  dmlab_save_model ; 
- int /*<<< orphan*/  dmlab_serialise_model ; 
- int /*<<< orphan*/  dmlab_serialised_model_size ; 
- int /*<<< orphan*/  dmlab_setting ; 
- int /*<<< orphan*/  dmlab_start ; 
- int /*<<< orphan*/  dmlab_update_rgba_texture ; 
- int /*<<< orphan*/  dmlab_write_property ; 
- int /*<<< orphan*/  engine_frame_period_msec ; 
- int /*<<< orphan*/  execute_console_command ; 
- TYPE_5__* get_context_once () ; 
- int /*<<< orphan*/  memset (TYPE_4__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  player_score ; 
- int /*<<< orphan*/  screen_shape ; 
- int /*<<< orphan*/  total_engine_time_msec ; 
- int /*<<< orphan*/  total_time_seconds ; 
+
+ int Q_strncpyz (int ,char*,int) ;
+ int add_bot ;
+ int call_add_score ;
+ void* calloc (int,int) ;
+ int dmlab_act ;
+ int dmlab_act_continuous ;
+ int dmlab_act_discrete ;
+ int dmlab_act_text ;
+ int dmlab_action_continuous_bounds ;
+ int dmlab_action_continuous_count ;
+ int dmlab_action_continuous_name ;
+ int dmlab_action_discrete_bounds ;
+ int dmlab_action_discrete_count ;
+ int dmlab_action_discrete_name ;
+ int dmlab_action_text_count ;
+ int dmlab_action_text_name ;
+ int dmlab_advance ;
+ int dmlab_create_context (int ,TYPE_5__*,int ,int ,int ) ;
+ int dmlab_deserialise_model ;
+ int dmlab_destroy_context ;
+ int dmlab_environment_name ;
+ int dmlab_error_message ;
+ int dmlab_event ;
+ int dmlab_event_count ;
+ int dmlab_event_type_count ;
+ int dmlab_event_type_name ;
+ int dmlab_fps ;
+ int dmlab_in_fov ;
+ int dmlab_init ;
+ int dmlab_is_map_loading ;
+ int dmlab_list_property ;
+ int dmlab_load_model ;
+ int dmlab_observation ;
+ int dmlab_observation_count ;
+ int dmlab_observation_name ;
+ int dmlab_observation_spec ;
+ int dmlab_raycast ;
+ int dmlab_read_property ;
+ int dmlab_render_custom_view ;
+ int dmlab_save_model ;
+ int dmlab_serialise_model ;
+ int dmlab_serialised_model_size ;
+ int dmlab_setting ;
+ int dmlab_start ;
+ int dmlab_update_rgba_texture ;
+ int dmlab_write_property ;
+ int engine_frame_period_msec ;
+ int execute_console_command ;
+ TYPE_5__* get_context_once () ;
+ int memset (TYPE_4__*,int ,int) ;
+ int player_score ;
+ int screen_shape ;
+ int total_engine_time_msec ;
+ int total_time_seconds ;
 
 int dmlab_connect(const DeepMindLabLaunchParams* params, EnvCApi* env_c_api,
                   void** context) {
   DeepmindContext* dm_ctx = get_context_once();
-  if (dm_ctx == NULL) {
+  if (dm_ctx == ((void*)0)) {
     return 1;
   }
 
   GameContext* gc = calloc(1, sizeof(GameContext));
-  if (gc == NULL) {
+  if (gc == ((void*)0)) {
     return 2;
   }
 
-  if (params == NULL) {
+  if (params == ((void*)0)) {
     return 3;
   }
 
-  if (params->runfiles_path == NULL || params->runfiles_path[0] == '\0') {
+  if (params->runfiles_path == ((void*)0) || params->runfiles_path[0] == '\0') {
     return 4;
   }
 
   dmlabRecordingContext* rcxt = calloc(1, sizeof(dmlabRecordingContext));
-  if (rcxt == NULL) {
+  if (rcxt == ((void*)0)) {
     return 1;
   }
 
@@ -114,9 +114,9 @@ int dmlab_connect(const DeepMindLabLaunchParams* params, EnvCApi* env_c_api,
   Q_strncpyz(gc->runfiles_path, params->runfiles_path,
              sizeof(gc->runfiles_path));
 
-  // Disable local level cache by default.
-  gc->use_local_level_cache = false;
-  gc->use_global_level_cache = true;
+
+  gc->use_local_level_cache = 0;
+  gc->use_global_level_cache = 1;
   gc->level_cache_params = params->level_cache_params;
   gc->width = 320;
   gc->height = 240;
@@ -124,7 +124,7 @@ int dmlab_connect(const DeepMindLabLaunchParams* params, EnvCApi* env_c_api,
   gc->recording_ctx = rcxt;
   gc->map_frame_number_shape[0] = 1;
   gc->map_frame_number_observation = 0;
-  gc->pbos.enabled = true;
+  gc->pbos.enabled = 1;
 
   memset(env_c_api, 0, sizeof(EnvCApi));
 

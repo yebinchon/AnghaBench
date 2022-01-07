@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct i915_vma {int /*<<< orphan*/  obj; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  i915_gem_object_put (int /*<<< orphan*/ ) ; 
+
+
+
+struct i915_vma {int obj; } ;
+
+
+ int i915_gem_object_put (int ) ;
 
 __attribute__((used)) static inline void i915_vma_put(struct i915_vma *vma)
 {
-	i915_gem_object_put(vma->obj);
+ i915_gem_object_put(vma->obj);
 }

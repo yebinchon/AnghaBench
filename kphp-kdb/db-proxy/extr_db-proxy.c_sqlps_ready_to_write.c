@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct connection {int fd; struct conn_query* first_query; } ;
 struct conn_query {TYPE_1__* cq_type; } ;
-struct TYPE_2__ {int /*<<< orphan*/  (* wakeup ) (struct conn_query*) ;} ;
+struct TYPE_2__ {int (* wakeup ) (struct conn_query*) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int) ; 
- TYPE_1__ proxy_watermark_query_type ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  stub1 (struct conn_query*) ; 
- int verbosity ; 
+
+ int assert (int) ;
+ int fprintf (int ,char*,int) ;
+ TYPE_1__ proxy_watermark_query_type ;
+ int stderr ;
+ int stub1 (struct conn_query*) ;
+ int verbosity ;
 
 int sqlps_ready_to_write (struct connection *c) {
   struct conn_query *q = c->first_query;

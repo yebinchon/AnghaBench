@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ptid_t ;
-typedef  int /*<<< orphan*/  LONGEST ;
 
-/* Variables and functions */
- int /*<<< orphan*/  inferior_ptid ; 
- scalar_t__ ptid_equal (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  read_signed_register (int) ; 
+
+
+
+typedef int ptid_t ;
+typedef int LONGEST ;
+
+
+ int inferior_ptid ;
+ scalar_t__ ptid_equal (int ,int ) ;
+ int read_signed_register (int) ;
 
 __attribute__((used)) static LONGEST
 read_signed_register_pid (int regnum, ptid_t ptid)

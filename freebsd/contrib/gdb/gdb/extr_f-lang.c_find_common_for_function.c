@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {struct TYPE_4__* next; int /*<<< orphan*/  owning_function; int /*<<< orphan*/  name; } ;
-typedef  TYPE_1__* SAVED_F77_COMMON_PTR ;
 
-/* Variables and functions */
- scalar_t__ DEPRECATED_STREQ (int /*<<< orphan*/ ,char*) ; 
- TYPE_1__* head_common_list ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {struct TYPE_4__* next; int owning_function; int name; } ;
+typedef TYPE_1__* SAVED_F77_COMMON_PTR ;
+
+
+ scalar_t__ DEPRECATED_STREQ (int ,char*) ;
+ TYPE_1__* head_common_list ;
 
 SAVED_F77_COMMON_PTR
 find_common_for_function (char *name, char *funcname)
@@ -26,13 +26,13 @@ find_common_for_function (char *name, char *funcname)
 
   tmp = head_common_list;
 
-  while (tmp != NULL)
+  while (tmp != ((void*)0))
     {
       if (DEPRECATED_STREQ (tmp->name, name)
-	  && DEPRECATED_STREQ (tmp->owning_function, funcname))
-	return (tmp);
+   && DEPRECATED_STREQ (tmp->owning_function, funcname))
+ return (tmp);
       else
-	tmp = tmp->next;
+ tmp = tmp->next;
     }
-  return (NULL);
+  return (((void*)0));
 }

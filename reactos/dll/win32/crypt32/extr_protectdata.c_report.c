@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_12__ {int /*<<< orphan*/  cbData; scalar_t__ pbData; } ;
-struct TYPE_11__ {int /*<<< orphan*/  szPrompt; struct TYPE_11__* hwndApp; struct TYPE_11__* dwPromptFlags; struct TYPE_11__* cbSize; } ;
-typedef  int /*<<< orphan*/  LPCSTR ;
-typedef  TYPE_1__* DWORD ;
-typedef  TYPE_2__ DATA_BLOB ;
-typedef  TYPE_1__ CRYPTPROTECT_PROMPTSTRUCT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TRACE (char*,TYPE_1__*,...) ; 
- int /*<<< orphan*/  TRACE_DATA_BLOB (TYPE_2__ const*) ; 
- TYPE_1__* debugstr_an (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- char* debugstr_w (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+struct TYPE_12__ {int cbData; scalar_t__ pbData; } ;
+struct TYPE_11__ {int szPrompt; struct TYPE_11__* hwndApp; struct TYPE_11__* dwPromptFlags; struct TYPE_11__* cbSize; } ;
+typedef int LPCSTR ;
+typedef TYPE_1__* DWORD ;
+typedef TYPE_2__ DATA_BLOB ;
+typedef TYPE_1__ CRYPTPROTECT_PROMPTSTRUCT ;
+
+
+ int TRACE (char*,TYPE_1__*,...) ;
+ int TRACE_DATA_BLOB (TYPE_2__ const*) ;
+ TYPE_1__* debugstr_an (int ,int ) ;
+ char* debugstr_w (int ) ;
 
 __attribute__((used)) static void
 report(const DATA_BLOB* pDataIn, const DATA_BLOB* pOptionalEntropy,

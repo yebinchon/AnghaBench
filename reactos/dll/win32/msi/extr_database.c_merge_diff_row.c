@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_26__   TYPE_5__ ;
-typedef  struct TYPE_25__   TYPE_4__ ;
-typedef  struct TYPE_24__   TYPE_3__ ;
-typedef  struct TYPE_23__   TYPE_2__ ;
-typedef  struct TYPE_22__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ UINT ;
-struct TYPE_26__ {int /*<<< orphan*/  db; int /*<<< orphan*/  curview; int /*<<< orphan*/  merge; TYPE_3__* curtable; } ;
-struct TYPE_25__ {int /*<<< orphan*/  entry; int /*<<< orphan*/  data; } ;
-struct TYPE_24__ {int /*<<< orphan*/  rows; int /*<<< orphan*/  numconflicts; int /*<<< orphan*/  name; } ;
-struct TYPE_23__ {int /*<<< orphan*/  hdr; } ;
-struct TYPE_22__ {int /*<<< orphan*/  hdr; } ;
-typedef  TYPE_1__ MSIRECORD ;
-typedef  TYPE_2__ MSIQUERY ;
-typedef  TYPE_3__ MERGETABLE ;
-typedef  TYPE_4__ MERGEROW ;
-typedef  TYPE_5__ MERGEDATA ;
-typedef  TYPE_4__* LPWSTR ;
-typedef  TYPE_5__* LPVOID ;
 
-/* Variables and functions */
- scalar_t__ ERROR_NO_MORE_ITEMS ; 
- scalar_t__ ERROR_OUTOFMEMORY ; 
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  MSI_CloneRecord (TYPE_1__*) ; 
- scalar_t__ MSI_DatabaseOpenViewW (int /*<<< orphan*/ ,TYPE_4__*,TYPE_2__**) ; 
- int /*<<< orphan*/  MSI_RecordsAreEqual (TYPE_1__*,TYPE_1__*) ; 
- scalar_t__ MSI_ViewExecute (TYPE_2__*,int /*<<< orphan*/ *) ; 
- scalar_t__ MSI_ViewFetch (TYPE_2__*,TYPE_1__**) ; 
- scalar_t__ TABLE_Exists (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_4__* create_diff_row_query (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  list_add_tail (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- TYPE_4__* msi_alloc (int) ; 
- int /*<<< orphan*/  msi_free (TYPE_4__*) ; 
- int /*<<< orphan*/  msiobj_release (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_26__ TYPE_5__ ;
+typedef struct TYPE_25__ TYPE_4__ ;
+typedef struct TYPE_24__ TYPE_3__ ;
+typedef struct TYPE_23__ TYPE_2__ ;
+typedef struct TYPE_22__ TYPE_1__ ;
+
+
+typedef scalar_t__ UINT ;
+struct TYPE_26__ {int db; int curview; int merge; TYPE_3__* curtable; } ;
+struct TYPE_25__ {int entry; int data; } ;
+struct TYPE_24__ {int rows; int numconflicts; int name; } ;
+struct TYPE_23__ {int hdr; } ;
+struct TYPE_22__ {int hdr; } ;
+typedef TYPE_1__ MSIRECORD ;
+typedef TYPE_2__ MSIQUERY ;
+typedef TYPE_3__ MERGETABLE ;
+typedef TYPE_4__ MERGEROW ;
+typedef TYPE_5__ MERGEDATA ;
+typedef TYPE_4__* LPWSTR ;
+typedef TYPE_5__* LPVOID ;
+
+
+ scalar_t__ ERROR_NO_MORE_ITEMS ;
+ scalar_t__ ERROR_OUTOFMEMORY ;
+ scalar_t__ ERROR_SUCCESS ;
+ int MSI_CloneRecord (TYPE_1__*) ;
+ scalar_t__ MSI_DatabaseOpenViewW (int ,TYPE_4__*,TYPE_2__**) ;
+ int MSI_RecordsAreEqual (TYPE_1__*,TYPE_1__*) ;
+ scalar_t__ MSI_ViewExecute (TYPE_2__*,int *) ;
+ scalar_t__ MSI_ViewFetch (TYPE_2__*,TYPE_1__**) ;
+ scalar_t__ TABLE_Exists (int ,int ) ;
+ TYPE_4__* create_diff_row_query (int ,int ,int ,TYPE_1__*) ;
+ int list_add_tail (int *,int *) ;
+ TYPE_4__* msi_alloc (int) ;
+ int msi_free (TYPE_4__*) ;
+ int msiobj_release (int *) ;
 
 __attribute__((used)) static UINT merge_diff_row(MSIRECORD *rec, LPVOID param)
 {
     MERGEDATA *data = param;
     MERGETABLE *table = data->curtable;
     MERGEROW *mergerow;
-    MSIQUERY *dbview = NULL;
-    MSIRECORD *row = NULL;
-    LPWSTR query = NULL;
+    MSIQUERY *dbview = ((void*)0);
+    MSIRECORD *row = ((void*)0);
+    LPWSTR query = ((void*)0);
     UINT r = ERROR_SUCCESS;
 
     if (TABLE_Exists(data->db, table->name))
@@ -65,7 +65,7 @@ __attribute__((used)) static UINT merge_diff_row(MSIRECORD *rec, LPVOID param)
         if (r != ERROR_SUCCESS)
             goto done;
 
-        r = MSI_ViewExecute(dbview, NULL);
+        r = MSI_ViewExecute(dbview, ((void*)0));
         if (r != ERROR_SUCCESS)
             goto done;
 

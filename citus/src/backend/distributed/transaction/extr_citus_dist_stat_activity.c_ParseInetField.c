@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  inet ;
-typedef  int /*<<< orphan*/  PGresult ;
-typedef  int /*<<< orphan*/  Datum ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CStringGetDatum (char*) ; 
- int /*<<< orphan*/ * DatumGetInetP (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DirectFunctionCall1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ PQgetisnull (int /*<<< orphan*/ *,int,int) ; 
- char* PQgetvalue (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  inet_in ; 
+
+
+
+typedef int inet ;
+typedef int PGresult ;
+typedef int Datum ;
+
+
+ int CStringGetDatum (char*) ;
+ int * DatumGetInetP (int ) ;
+ int DirectFunctionCall1 (int ,int ) ;
+ scalar_t__ PQgetisnull (int *,int,int) ;
+ char* PQgetvalue (int *,int,int) ;
+ int inet_in ;
 
 __attribute__((used)) static inet *
 ParseInetField(PGresult *result, int rowIndex, int colIndex)
 {
-	char *resultString = NULL;
-	Datum resultStringDatum = 0;
-	Datum inetDatum = 0;
+ char *resultString = ((void*)0);
+ Datum resultStringDatum = 0;
+ Datum inetDatum = 0;
 
-	if (PQgetisnull(result, rowIndex, colIndex))
-	{
-		return NULL;
-	}
+ if (PQgetisnull(result, rowIndex, colIndex))
+ {
+  return ((void*)0);
+ }
 
-	resultString = PQgetvalue(result, rowIndex, colIndex);
-	resultStringDatum = CStringGetDatum(resultString);
-	inetDatum = DirectFunctionCall1(inet_in, resultStringDatum);
+ resultString = PQgetvalue(result, rowIndex, colIndex);
+ resultStringDatum = CStringGetDatum(resultString);
+ inetDatum = DirectFunctionCall1(inet_in, resultStringDatum);
 
-	return DatumGetInetP(inetDatum);
+ return DatumGetInetP(inetDatum);
 }

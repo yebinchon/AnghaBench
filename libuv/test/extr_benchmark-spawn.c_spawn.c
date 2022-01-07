@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uv_stream_t ;
-struct TYPE_5__ {int /*<<< orphan*/ * stream; } ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uv_stream_t ;
+struct TYPE_5__ {int * stream; } ;
 struct TYPE_6__ {int flags; TYPE_1__ data; } ;
-typedef  TYPE_2__ uv_stdio_container_t ;
-struct TYPE_7__ {char** args; int stdio_count; TYPE_2__* stdio; int /*<<< orphan*/  exit_cb; void* file; } ;
+typedef TYPE_2__ uv_stdio_container_t ;
+struct TYPE_7__ {char** args; int stdio_count; TYPE_2__* stdio; int exit_cb; void* file; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- int UV_CREATE_PIPE ; 
- int UV_IGNORE ; 
- int UV_WRITABLE_PIPE ; 
- char** args ; 
- void* exepath ; 
- int /*<<< orphan*/  exit_cb ; 
- int /*<<< orphan*/  loop ; 
- int /*<<< orphan*/  on_alloc ; 
- int /*<<< orphan*/  on_read ; 
- TYPE_3__ options ; 
- int /*<<< orphan*/  out ; 
- scalar_t__ output_used ; 
- int pipe_open ; 
- int /*<<< orphan*/  process ; 
- int process_open ; 
- int /*<<< orphan*/  uv_pipe_init (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int uv_read_start (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int uv_spawn (int /*<<< orphan*/ ,int /*<<< orphan*/ *,TYPE_3__*) ; 
+
+ int ASSERT (int) ;
+ int UV_CREATE_PIPE ;
+ int UV_IGNORE ;
+ int UV_WRITABLE_PIPE ;
+ char** args ;
+ void* exepath ;
+ int exit_cb ;
+ int loop ;
+ int on_alloc ;
+ int on_read ;
+ TYPE_3__ options ;
+ int out ;
+ scalar_t__ output_used ;
+ int pipe_open ;
+ int process ;
+ int process_open ;
+ int uv_pipe_init (int ,int *,int ) ;
+ int uv_read_start (int *,int ,int ) ;
+ int uv_spawn (int ,int *,TYPE_3__*) ;
 
 __attribute__((used)) static void spawn(void) {
   uv_stdio_container_t stdio[2];
@@ -49,7 +49,7 @@ __attribute__((used)) static void spawn(void) {
 
   args[0] = exepath;
   args[1] = "spawn_helper";
-  args[2] = NULL;
+  args[2] = ((void*)0);
   options.file = exepath;
   options.args = args;
   options.exit_cb = exit_cb;

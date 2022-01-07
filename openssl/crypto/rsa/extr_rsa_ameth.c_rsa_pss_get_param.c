@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {scalar_t__ trailerField; scalar_t__ saltLength; int /*<<< orphan*/  maskHash; int /*<<< orphan*/  hashAlgorithm; } ;
-typedef  TYPE_1__ RSA_PSS_PARAMS ;
-typedef  int /*<<< orphan*/  EVP_MD ;
 
-/* Variables and functions */
- int ASN1_INTEGER_get (scalar_t__) ; 
- int /*<<< orphan*/  RSA_F_RSA_PSS_GET_PARAM ; 
- int /*<<< orphan*/  RSA_R_INVALID_SALT_LENGTH ; 
- int /*<<< orphan*/  RSA_R_INVALID_TRAILER ; 
- int /*<<< orphan*/  RSAerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * rsa_algor_to_md (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {scalar_t__ trailerField; scalar_t__ saltLength; int maskHash; int hashAlgorithm; } ;
+typedef TYPE_1__ RSA_PSS_PARAMS ;
+typedef int EVP_MD ;
+
+
+ int ASN1_INTEGER_get (scalar_t__) ;
+ int RSA_F_RSA_PSS_GET_PARAM ;
+ int RSA_R_INVALID_SALT_LENGTH ;
+ int RSA_R_INVALID_TRAILER ;
+ int RSAerr (int ,int ) ;
+ int * rsa_algor_to_md (int ) ;
 
 int rsa_pss_get_param(const RSA_PSS_PARAMS *pss, const EVP_MD **pmd,
                       const EVP_MD **pmgf1md, int *psaltlen)
 {
-    if (pss == NULL)
+    if (pss == ((void*)0))
         return 0;
     *pmd = rsa_algor_to_md(pss->hashAlgorithm);
-    if (*pmd == NULL)
+    if (*pmd == ((void*)0))
         return 0;
     *pmgf1md = rsa_algor_to_md(pss->maskHash);
-    if (*pmgf1md == NULL)
+    if (*pmgf1md == ((void*)0))
         return 0;
     if (pss->saltLength) {
         *psaltlen = ASN1_INTEGER_get(pss->saltLength);
@@ -44,10 +44,10 @@ int rsa_pss_get_param(const RSA_PSS_PARAMS *pss, const EVP_MD **pmd,
         *psaltlen = 20;
     }
 
-    /*
-     * low-level routines support only trailer field 0xbc (value 1) and
-     * PKCS#1 says we should reject any other value anyway.
-     */
+
+
+
+
     if (pss->trailerField && ASN1_INTEGER_get(pss->trailerField) != 1) {
         RSAerr(RSA_F_RSA_PSS_GET_PARAM, RSA_R_INVALID_TRAILER);
         return 0;

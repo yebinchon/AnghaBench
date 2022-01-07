@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct mlx4_dev {TYPE_1__* persist; } ;
-struct TYPE_2__ {int /*<<< orphan*/ * catas_wq; } ;
+struct TYPE_2__ {int * catas_wq; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  destroy_workqueue (int /*<<< orphan*/ *) ; 
+
+ int destroy_workqueue (int *) ;
 
 void mlx4_catas_end(struct mlx4_dev *dev)
 {
-	if (dev->persist->catas_wq) {
-		destroy_workqueue(dev->persist->catas_wq);
-		dev->persist->catas_wq = NULL;
-	}
+ if (dev->persist->catas_wq) {
+  destroy_workqueue(dev->persist->catas_wq);
+  dev->persist->catas_wq = ((void*)0);
+ }
 }

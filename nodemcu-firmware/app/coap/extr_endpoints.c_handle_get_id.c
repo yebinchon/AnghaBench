@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int /*<<< orphan*/  coap_rw_buffer_t ;
-struct TYPE_5__ {int /*<<< orphan*/  tok; } ;
-typedef  TYPE_1__ coap_packet_t ;
-typedef  int /*<<< orphan*/  coap_endpoint_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  COAP_CONTENTTYPE_TEXT_PLAIN ; 
- int /*<<< orphan*/  COAP_RSPCODE_CONTENT ; 
- int coap_make_response (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/  const*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  id ; 
- int /*<<< orphan*/  system_get_chip_id () ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef int coap_rw_buffer_t ;
+struct TYPE_5__ {int tok; } ;
+typedef TYPE_1__ coap_packet_t ;
+typedef int coap_endpoint_t ;
+
+
+ int COAP_CONTENTTYPE_TEXT_PLAIN ;
+ int COAP_RSPCODE_CONTENT ;
+ int coap_make_response (int *,TYPE_1__*,int const*,int,int ,int ,int *,int ,int ) ;
+ int id ;
+ int system_get_chip_id () ;
 
 __attribute__((used)) static int handle_get_id(const coap_endpoint_t *ep, coap_rw_buffer_t *scratch, const coap_packet_t *inpkt, coap_packet_t *outpkt, uint8_t id_hi, uint8_t id_lo)
 {

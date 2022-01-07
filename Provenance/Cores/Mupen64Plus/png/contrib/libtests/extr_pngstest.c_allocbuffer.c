@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ png_size_t ;
-struct TYPE_4__ {scalar_t__ bufsize; scalar_t__ allocsize; int /*<<< orphan*/ * buffer; int /*<<< orphan*/  stride; int /*<<< orphan*/  image; } ;
-typedef  TYPE_1__ Image ;
 
-/* Variables and functions */
- int BUFFER_INIT8 ; 
- scalar_t__ PNG_IMAGE_BUFFER_SIZE (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fflush (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,unsigned long) ; 
- int /*<<< orphan*/  freebuffer (TYPE_1__*) ; 
- int /*<<< orphan*/  malloc (scalar_t__) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int,scalar_t__) ; 
- int /*<<< orphan*/  png_bytep ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  stdout ; 
- int /*<<< orphan*/ * voidcast (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef scalar_t__ png_size_t ;
+struct TYPE_4__ {scalar_t__ bufsize; scalar_t__ allocsize; int * buffer; int stride; int image; } ;
+typedef TYPE_1__ Image ;
+
+
+ int BUFFER_INIT8 ;
+ scalar_t__ PNG_IMAGE_BUFFER_SIZE (int ,int ) ;
+ int exit (int) ;
+ int fflush (int ) ;
+ int fprintf (int ,char*,unsigned long) ;
+ int freebuffer (TYPE_1__*) ;
+ int malloc (scalar_t__) ;
+ int memset (int *,int,scalar_t__) ;
+ int png_bytep ;
+ int stderr ;
+ int stdout ;
+ int * voidcast (int ,int ) ;
 
 __attribute__((used)) static void
 allocbuffer(Image *image)
@@ -38,7 +38,7 @@ allocbuffer(Image *image)
    {
       freebuffer(image);
       image->buffer = voidcast(png_bytep, malloc(size+32));
-      if (image->buffer == NULL)
+      if (image->buffer == ((void*)0))
       {
          fflush(stdout);
          fprintf(stderr,

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct task_struct {int /*<<< orphan*/  mempolicy; } ;
-typedef  int /*<<< orphan*/  nodemask_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mpol_rebind_policy (int /*<<< orphan*/ ,int /*<<< orphan*/  const*) ; 
+
+
+
+struct task_struct {int mempolicy; } ;
+typedef int nodemask_t ;
+
+
+ int mpol_rebind_policy (int ,int const*) ;
 
 void mpol_rebind_task(struct task_struct *tsk, const nodemask_t *new)
 {
-	mpol_rebind_policy(tsk->mempolicy, new);
+ mpol_rebind_policy(tsk->mempolicy, new);
 }

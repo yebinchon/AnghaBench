@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int cmsInt32Number ;
-typedef  int cmsFloat64Number ;
-typedef  int /*<<< orphan*/  cmsCIExyY ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DbgThread () ; 
- int /*<<< orphan*/  cmsTempFromWhitePoint (int /*<<< orphan*/ ,int*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cmsWhitePointFromTemp (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int fabs (int) ; 
+
+
+
+typedef int cmsInt32Number ;
+typedef int cmsFloat64Number ;
+typedef int cmsCIExyY ;
+
+
+ int DbgThread () ;
+ int cmsTempFromWhitePoint (int ,int*,int *) ;
+ int cmsWhitePointFromTemp (int ,int *,int) ;
+ int fabs (int) ;
 
 __attribute__((used)) static
 cmsInt32Number CheckTemp2CHRM(void)
@@ -36,6 +36,6 @@ cmsInt32Number CheckTemp2CHRM(void)
         if (d > Max) Max = d;
     }
 
-    // 100 degree is the actual resolution
+
     return (Max < 100);
 }

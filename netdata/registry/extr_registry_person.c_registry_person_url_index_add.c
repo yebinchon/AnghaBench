@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  avl ;
-struct TYPE_9__ {int /*<<< orphan*/  guid; int /*<<< orphan*/  person_urls; } ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int avl ;
+struct TYPE_9__ {int guid; int person_urls; } ;
 struct TYPE_8__ {TYPE_1__* url; } ;
 struct TYPE_7__ {char* url; } ;
-typedef  TYPE_2__ REGISTRY_PERSON_URL ;
-typedef  TYPE_3__ REGISTRY_PERSON ;
+typedef TYPE_2__ REGISTRY_PERSON_URL ;
+typedef TYPE_3__ REGISTRY_PERSON ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D_REGISTRY ; 
- scalar_t__ avl_insert (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  debug (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  error (char*,int /*<<< orphan*/ ,char*,char*) ; 
+
+ int D_REGISTRY ;
+ scalar_t__ avl_insert (int *,int *) ;
+ int debug (int ,char*,int ,char*) ;
+ int error (char*,int ,char*,char*) ;
 
 inline REGISTRY_PERSON_URL *registry_person_url_index_add(REGISTRY_PERSON *p, REGISTRY_PERSON_URL *pu) {
     debug(D_REGISTRY, "Registry: registry_person_url_index_add('%s', '%s')", p->guid, pu->url->url);

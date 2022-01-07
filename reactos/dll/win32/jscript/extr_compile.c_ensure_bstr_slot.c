@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_5__ {TYPE_1__* code; } ;
-typedef  TYPE_2__ compiler_ctx_t ;
-struct TYPE_4__ {int bstr_pool_size; int bstr_cnt; int /*<<< orphan*/ * bstr_pool; } ;
-typedef  int /*<<< orphan*/  BSTR ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef TYPE_2__ compiler_ctx_t ;
+struct TYPE_4__ {int bstr_pool_size; int bstr_cnt; int * bstr_pool; } ;
+typedef int BSTR ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/ * heap_alloc (int) ; 
- int /*<<< orphan*/ * heap_realloc (int /*<<< orphan*/ *,int) ; 
+
+ int FALSE ;
+ int TRUE ;
+ int * heap_alloc (int) ;
+ int * heap_realloc (int *,int) ;
 
 __attribute__((used)) static BOOL ensure_bstr_slot(compiler_ctx_t *ctx)
 {

@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64_t ;
+
+
+
+
+typedef int uint64_t ;
 struct ether_addr {int* ether_addr_octet; } ;
-typedef  int /*<<< orphan*/  sd_device ;
-typedef  int /*<<< orphan*/  result ;
-typedef  scalar_t__ MACAddressPolicy ;
+typedef int sd_device ;
+typedef int result ;
+typedef scalar_t__ MACAddressPolicy ;
 
-/* Variables and functions */
- int ETH_ALEN ; 
- int /*<<< orphan*/  IN_SET (scalar_t__,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MAC_ADDRESS_POLICY_PERSISTENT ; 
- scalar_t__ MAC_ADDRESS_POLICY_RANDOM ; 
- int /*<<< orphan*/  NAMING_STABLE_VIRTUAL_MACS ; 
-#define  NET_ADDR_PERM 131 
-#define  NET_ADDR_RANDOM 130 
-#define  NET_ADDR_SET 129 
-#define  NET_ADDR_STOLEN 128 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert_cc (int) ; 
- int link_unsigned_attribute (int /*<<< orphan*/ *,char*,unsigned int*) ; 
- int log_device_debug (int /*<<< orphan*/ *,char*,...) ; 
- int log_device_warning (int /*<<< orphan*/ *,char*,unsigned int) ; 
- int log_device_warning_errno (int /*<<< orphan*/ *,int,char*) ; 
- int /*<<< orphan*/  mac_address_policy_to_string (scalar_t__) ; 
- int /*<<< orphan*/  memcpy (int*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  naming_scheme_has (int /*<<< orphan*/ ) ; 
- int net_get_unique_predictable_data (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  random_bytes (int*,int) ; 
+
+ int ETH_ALEN ;
+ int IN_SET (scalar_t__,scalar_t__,int ) ;
+ int MAC_ADDRESS_POLICY_PERSISTENT ;
+ scalar_t__ MAC_ADDRESS_POLICY_RANDOM ;
+ int NAMING_STABLE_VIRTUAL_MACS ;
+
+
+
+
+ int assert (int ) ;
+ int assert_cc (int) ;
+ int link_unsigned_attribute (int *,char*,unsigned int*) ;
+ int log_device_debug (int *,char*,...) ;
+ int log_device_warning (int *,char*,unsigned int) ;
+ int log_device_warning_errno (int *,int,char*) ;
+ int mac_address_policy_to_string (scalar_t__) ;
+ int memcpy (int*,int *,int) ;
+ int naming_scheme_has (int ) ;
+ int net_get_unique_predictable_data (int *,int ,int *) ;
+ int random_bytes (int*,int) ;
 
 __attribute__((used)) static int get_mac(sd_device *device, MACAddressPolicy policy, struct ether_addr *mac) {
         unsigned addr_type;
@@ -49,18 +49,18 @@ __attribute__((used)) static int get_mac(sd_device *device, MACAddressPolicy pol
         if (r < 0)
                 return r;
         switch (addr_type) {
-        case NET_ADDR_SET:
+        case 129:
                 return log_device_debug(device, "MAC on the device already set by userspace");
-        case NET_ADDR_STOLEN:
+        case 128:
                 return log_device_debug(device, "MAC on the device already set based on another device");
-        case NET_ADDR_RANDOM:
-        case NET_ADDR_PERM:
+        case 130:
+        case 131:
                 break;
         default:
                 return log_device_warning(device, "Unknown addr_assign_type %u, ignoring", addr_type);
         }
 
-        if (want_random == (addr_type == NET_ADDR_RANDOM))
+        if (want_random == (addr_type == 130))
                 return log_device_debug(device, "MAC on the device already matches policy *%s*",
                                         mac_address_policy_to_string(policy));
 
@@ -81,8 +81,8 @@ __attribute__((used)) static int get_mac(sd_device *device, MACAddressPolicy pol
                 memcpy(mac->ether_addr_octet, &result, ETH_ALEN);
         }
 
-        /* see eth_random_addr in the kernel */
-        mac->ether_addr_octet[0] &= 0xfe;  /* clear multicast bit */
-        mac->ether_addr_octet[0] |= 0x02;  /* set local assignment bit (IEEE802) */
+
+        mac->ether_addr_octet[0] &= 0xfe;
+        mac->ether_addr_octet[0] |= 0x02;
         return 1;
 }

@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * PCHAR ;
-typedef  int /*<<< orphan*/  LPBYTE ;
-typedef  scalar_t__ HKEY ;
-typedef  scalar_t__ DWORD ;
-typedef  int /*<<< orphan*/  CHAR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DH_DbgPrint (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  MID_TRACE ; 
- int /*<<< orphan*/  RegCloseKey (scalar_t__) ; 
- scalar_t__ RegOpenKey (scalar_t__,int /*<<< orphan*/ *,scalar_t__*) ; 
- scalar_t__ RegQueryValueEx (scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__*) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
- scalar_t__ malloc (scalar_t__) ; 
- scalar_t__ strlen (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int * PCHAR ;
+typedef int LPBYTE ;
+typedef scalar_t__ HKEY ;
+typedef scalar_t__ DWORD ;
+typedef int CHAR ;
+
+
+ int DH_DbgPrint (int ,char*) ;
+ scalar_t__ ERROR_SUCCESS ;
+ int MID_TRACE ;
+ int RegCloseKey (scalar_t__) ;
+ scalar_t__ RegOpenKey (scalar_t__,int *,scalar_t__*) ;
+ scalar_t__ RegQueryValueEx (scalar_t__,int *,int *,int *,int ,scalar_t__*) ;
+ int free (int *) ;
+ scalar_t__ malloc (scalar_t__) ;
+ scalar_t__ strlen (int *) ;
 
 PCHAR RegReadString( HKEY Root, PCHAR Subkey, PCHAR Value ) {
-    PCHAR SubOut = NULL;
+    PCHAR SubOut = ((void*)0);
     DWORD SubOutLen = 0, Error = 0;
-    HKEY  ValueKey = NULL;
+    HKEY ValueKey = ((void*)0);
 
     DH_DbgPrint(MID_TRACE,("Looking in %x:%s:%s\n", Root, Subkey, Value ));
 
@@ -41,7 +41,7 @@ PCHAR RegReadString( HKEY Root, PCHAR Subkey, PCHAR Value ) {
 
     DH_DbgPrint(MID_TRACE,("Got Key %x\n", ValueKey));
 
-    if( (Error = RegQueryValueEx( ValueKey, Value, NULL, NULL,
+    if( (Error = RegQueryValueEx( ValueKey, Value, ((void*)0), ((void*)0),
                                   (LPBYTE)SubOut, &SubOutLen )) != ERROR_SUCCESS )
         goto regerror;
 
@@ -50,7 +50,7 @@ PCHAR RegReadString( HKEY Root, PCHAR Subkey, PCHAR Value ) {
     if( !(SubOut = (CHAR*) malloc(SubOutLen)) )
         goto regerror;
 
-    if( (Error = RegQueryValueEx( ValueKey, Value, NULL, NULL,
+    if( (Error = RegQueryValueEx( ValueKey, Value, ((void*)0), ((void*)0),
                                   (LPBYTE)SubOut, &SubOutLen )) != ERROR_SUCCESS )
         goto regerror;
 
@@ -59,7 +59,7 @@ PCHAR RegReadString( HKEY Root, PCHAR Subkey, PCHAR Value ) {
     goto cleanup;
 
 regerror:
-    if( SubOut ) { free( SubOut ); SubOut = NULL; }
+    if( SubOut ) { free( SubOut ); SubOut = ((void*)0); }
 cleanup:
     if( ValueKey && ValueKey != Root ) {
         DH_DbgPrint(MID_TRACE,("Closing key %x\n", ValueKey));

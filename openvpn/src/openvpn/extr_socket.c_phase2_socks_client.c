@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_5__ ;
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_5__ ;
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct signal_info {scalar_t__ signal_received; } ;
 struct TYPE_10__ {TYPE_4__* lsa; } ;
-struct TYPE_6__ {int /*<<< orphan*/  dest; } ;
-struct link_socket {TYPE_5__ info; int /*<<< orphan*/  proxy_dest_port; int /*<<< orphan*/  remote_port; int /*<<< orphan*/  proxy_dest_host; int /*<<< orphan*/  remote_host; TYPE_1__ socks_relay; int /*<<< orphan*/  sd; int /*<<< orphan*/  ctrl_sd; int /*<<< orphan*/  socks_proxy; int /*<<< orphan*/  server_poll_timeout; } ;
-struct TYPE_7__ {int /*<<< orphan*/  dest; } ;
-struct TYPE_9__ {int /*<<< orphan*/ * remote_list; TYPE_3__* current_remote; TYPE_2__ actual; } ;
-struct TYPE_8__ {int /*<<< orphan*/  ai_addr; } ;
+struct TYPE_6__ {int dest; } ;
+struct link_socket {TYPE_5__ info; int proxy_dest_port; int remote_port; int proxy_dest_host; int remote_host; TYPE_1__ socks_relay; int sd; int ctrl_sd; int socks_proxy; int server_poll_timeout; } ;
+struct TYPE_7__ {int dest; } ;
+struct TYPE_9__ {int * remote_list; TYPE_3__* current_remote; TYPE_2__ actual; } ;
+struct TYPE_8__ {int ai_addr; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  addr_zero_host (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  establish_socks_proxy_udpassoc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,scalar_t__*) ; 
- int /*<<< orphan*/  freeaddrinfo (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  get_server_poll_remaining_time (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  resolve_remote (struct link_socket*,int,int /*<<< orphan*/ *,scalar_t__*) ; 
- int /*<<< orphan*/  socket_connect (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct signal_info*) ; 
+
+ int addr_zero_host (int *) ;
+ int establish_socks_proxy_udpassoc (int ,int ,int ,int *,scalar_t__*) ;
+ int freeaddrinfo (int *) ;
+ int get_server_poll_remaining_time (int ) ;
+ int resolve_remote (struct link_socket*,int,int *,scalar_t__*) ;
+ int socket_connect (int *,int ,int ,struct signal_info*) ;
 
 __attribute__((used)) static void
 phase2_socks_client(struct link_socket *sock, struct signal_info *sig_info)
@@ -62,9 +62,9 @@ phase2_socks_client(struct link_socket *sock, struct signal_info *sig_info)
     if (sock->info.lsa->remote_list)
     {
         freeaddrinfo(sock->info.lsa->remote_list);
-        sock->info.lsa->current_remote = NULL;
-        sock->info.lsa->remote_list = NULL;
+        sock->info.lsa->current_remote = ((void*)0);
+        sock->info.lsa->remote_list = ((void*)0);
     }
 
-    resolve_remote(sock, 1, NULL, &sig_info->signal_received);
+    resolve_remote(sock, 1, ((void*)0), &sig_info->signal_received);
 }

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct spk_synth {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SYNTH_CLEAR ; 
- int /*<<< orphan*/  outb_p (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  synth_port ; 
+
+ int SYNTH_CLEAR ;
+ int outb_p (int ,int ) ;
+ int synth_port ;
 
 __attribute__((used)) static void synth_flush(struct spk_synth *synth)
 {
-	outb_p(SYNTH_CLEAR, synth_port);
+ outb_p(SYNTH_CLEAR, synth_port);
 }

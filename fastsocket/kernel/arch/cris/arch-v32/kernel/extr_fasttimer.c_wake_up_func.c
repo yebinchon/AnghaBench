@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wait_queue_head_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  wake_up (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int wait_queue_head_t ;
+
+
+ int wake_up (int *) ;
 
 __attribute__((used)) static void wake_up_func(unsigned long data)
 {
-  wait_queue_head_t  *sleep_wait_p = (wait_queue_head_t*)data;
+  wait_queue_head_t *sleep_wait_p = (wait_queue_head_t*)data;
   wake_up(sleep_wait_p);
 }

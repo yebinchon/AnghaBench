@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct physical {int /*<<< orphan*/  handler; } ;
+
+
+
+
+struct physical {int handler; } ;
 struct etherdevice {int connected; } ;
 
-/* Variables and functions */
-#define  CARRIER_OK 129 
-#define  CARRIER_PENDING 128 
- struct etherdevice* device2ether (int /*<<< orphan*/ ) ; 
+
+
+
+ struct etherdevice* device2ether (int ) ;
 
 __attribute__((used)) static const char *
 ether_OpenInfo(struct physical *p)
@@ -24,9 +24,9 @@ ether_OpenInfo(struct physical *p)
   struct etherdevice *dev = device2ether(p->handler);
 
   switch (dev->connected) {
-    case CARRIER_PENDING:
+    case 128:
       return "negotiating";
-    case CARRIER_OK:
+    case 129:
       return "established";
   }
 

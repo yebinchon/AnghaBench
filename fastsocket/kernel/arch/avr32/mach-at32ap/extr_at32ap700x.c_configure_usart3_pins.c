@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u32 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AT32_GPIOF_PULLUP ; 
- int ATMEL_USART_CLK ; 
- int ATMEL_USART_CTS ; 
- int ATMEL_USART_RTS ; 
- int /*<<< orphan*/  PERIPH_B ; 
- int /*<<< orphan*/  PIOB ; 
- int /*<<< orphan*/  select_peripheral (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int u32 ;
+
+
+ int AT32_GPIOF_PULLUP ;
+ int ATMEL_USART_CLK ;
+ int ATMEL_USART_CTS ;
+ int ATMEL_USART_RTS ;
+ int PERIPH_B ;
+ int PIOB ;
+ int select_peripheral (int ,int,int ,int ) ;
 
 __attribute__((used)) static inline void configure_usart3_pins(int flags)
 {
-	u32 pin_mask = (1 << 18) | (1 << 17); /* RXD & TXD */
-	if (flags & ATMEL_USART_RTS)	pin_mask |= (1 << 16);
-	if (flags & ATMEL_USART_CTS)	pin_mask |= (1 << 15);
-	if (flags & ATMEL_USART_CLK)	pin_mask |= (1 << 19);
+ u32 pin_mask = (1 << 18) | (1 << 17);
+ if (flags & ATMEL_USART_RTS) pin_mask |= (1 << 16);
+ if (flags & ATMEL_USART_CTS) pin_mask |= (1 << 15);
+ if (flags & ATMEL_USART_CLK) pin_mask |= (1 << 19);
 
-	select_peripheral(PIOB, pin_mask, PERIPH_B, AT32_GPIOF_PULLUP);
+ select_peripheral(PIOB, pin_mask, PERIPH_B, AT32_GPIOF_PULLUP);
 }

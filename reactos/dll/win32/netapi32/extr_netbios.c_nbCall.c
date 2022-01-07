@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_5__ ;
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t UCHAR ;
-struct TYPE_10__ {int /*<<< orphan*/  data; } ;
-struct TYPE_13__ {size_t sessionsLen; TYPE_3__* sessions; TYPE_2__ impl; TYPE_1__* transport; int /*<<< orphan*/  cs; } ;
-struct TYPE_12__ {size_t ncb_lsn; int /*<<< orphan*/  ncb_callname; int /*<<< orphan*/  ncb_name; } ;
-struct TYPE_11__ {scalar_t__ state; scalar_t__ inUse; int /*<<< orphan*/  data; int /*<<< orphan*/  remote_name; int /*<<< orphan*/  local_name; } ;
-struct TYPE_9__ {size_t (* call ) (int /*<<< orphan*/ ,TYPE_4__*,int /*<<< orphan*/ *) ;} ;
-typedef  TYPE_4__* PNCB ;
-typedef  TYPE_5__ NetBIOSAdapter ;
 
-/* Variables and functions */
- scalar_t__ CALL_PENDING ; 
- int /*<<< orphan*/  EnterCriticalSection (int /*<<< orphan*/ *) ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  LeaveCriticalSection (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  NCBNAMSZ ; 
- size_t NRC_BRIDGE ; 
- size_t NRC_ENVNOTDEF ; 
- size_t NRC_GOODRET ; 
- size_t NRC_ILLCMD ; 
- size_t NRC_INVADDRESS ; 
- size_t NRC_LOCTFUL ; 
- scalar_t__ SESSION_ESTABLISHED ; 
- int /*<<< orphan*/  TRACE (char*,...) ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- size_t stub1 (int /*<<< orphan*/ ,TYPE_4__*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_13__ TYPE_5__ ;
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef size_t UCHAR ;
+struct TYPE_10__ {int data; } ;
+struct TYPE_13__ {size_t sessionsLen; TYPE_3__* sessions; TYPE_2__ impl; TYPE_1__* transport; int cs; } ;
+struct TYPE_12__ {size_t ncb_lsn; int ncb_callname; int ncb_name; } ;
+struct TYPE_11__ {scalar_t__ state; scalar_t__ inUse; int data; int remote_name; int local_name; } ;
+struct TYPE_9__ {size_t (* call ) (int ,TYPE_4__*,int *) ;} ;
+typedef TYPE_4__* PNCB ;
+typedef TYPE_5__ NetBIOSAdapter ;
+
+
+ scalar_t__ CALL_PENDING ;
+ int EnterCriticalSection (int *) ;
+ scalar_t__ FALSE ;
+ int LeaveCriticalSection (int *) ;
+ int NCBNAMSZ ;
+ size_t NRC_BRIDGE ;
+ size_t NRC_ENVNOTDEF ;
+ size_t NRC_GOODRET ;
+ size_t NRC_ILLCMD ;
+ size_t NRC_INVADDRESS ;
+ size_t NRC_LOCTFUL ;
+ scalar_t__ SESSION_ESTABLISHED ;
+ int TRACE (char*,...) ;
+ scalar_t__ TRUE ;
+ int memcpy (int ,int ,int ) ;
+ size_t stub1 (int ,TYPE_4__*,int *) ;
 
 __attribute__((used)) static UCHAR nbCall(NetBIOSAdapter *adapter, PNCB ncb)
 {

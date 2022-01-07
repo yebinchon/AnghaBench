@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  action_func ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int action_func ;
 struct TYPE_8__ {int active_thread_type; int thread_count; TYPE_1__* internal; } ;
-struct TYPE_7__ {int job_size; int* rets; int /*<<< orphan*/  mainfunc; int /*<<< orphan*/  thread; int /*<<< orphan*/ * func; void* args; } ;
+struct TYPE_7__ {int job_size; int* rets; int mainfunc; int thread; int * func; void* args; } ;
 struct TYPE_6__ {TYPE_2__* thread_ctx; } ;
-typedef  TYPE_2__ SliceThreadContext ;
-typedef  TYPE_3__ AVCodecContext ;
+typedef TYPE_2__ SliceThreadContext ;
+typedef TYPE_3__ AVCodecContext ;
 
-/* Variables and functions */
- int FF_THREAD_SLICE ; 
- int avcodec_default_execute (TYPE_3__*,int /*<<< orphan*/ *,void*,int*,int,int) ; 
- int /*<<< orphan*/  avpriv_slicethread_execute (int /*<<< orphan*/ ,int,int) ; 
+
+ int FF_THREAD_SLICE ;
+ int avcodec_default_execute (TYPE_3__*,int *,void*,int*,int,int) ;
+ int avpriv_slicethread_execute (int ,int,int) ;
 
 __attribute__((used)) static int thread_execute(AVCodecContext *avctx, action_func* func, void *arg, int *ret, int job_count, int job_size)
 {
@@ -40,6 +40,6 @@ __attribute__((used)) static int thread_execute(AVCodecContext *avctx, action_fu
     c->func = func;
     c->rets = ret;
 
-    avpriv_slicethread_execute(c->thread, job_count, !!c->mainfunc  );
+    avpriv_slicethread_execute(c->thread, job_count, !!c->mainfunc );
     return 0;
 }

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct nvkm_vmm {int /*<<< orphan*/  free; } ;
-struct nvkm_vma {int /*<<< orphan*/  tree; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  rb_erase (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+struct nvkm_vmm {int free; } ;
+struct nvkm_vma {int tree; } ;
+
+
+ int rb_erase (int *,int *) ;
 
 __attribute__((used)) static inline void
 nvkm_vmm_free_remove(struct nvkm_vmm *vmm, struct nvkm_vma *vma)
 {
-	rb_erase(&vma->tree, &vmm->free);
+ rb_erase(&vma->tree, &vmm->free);
 }

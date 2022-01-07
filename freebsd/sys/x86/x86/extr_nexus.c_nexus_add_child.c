@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_int ;
-struct nexus_device {int /*<<< orphan*/  nx_resources; } ;
-typedef  int /*<<< orphan*/  device_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  M_NEXUSDEV ; 
- int M_NOWAIT ; 
- int M_ZERO ; 
- int /*<<< orphan*/  device_add_child_ordered (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*,int) ; 
- int /*<<< orphan*/  device_set_ivars (int /*<<< orphan*/ ,struct nexus_device*) ; 
- struct nexus_device* malloc (int,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  resource_list_init (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int u_int ;
+struct nexus_device {int nx_resources; } ;
+typedef int device_t ;
+
+
+ int M_NEXUSDEV ;
+ int M_NOWAIT ;
+ int M_ZERO ;
+ int device_add_child_ordered (int ,int ,char const*,int) ;
+ int device_set_ivars (int ,struct nexus_device*) ;
+ struct nexus_device* malloc (int,int ,int) ;
+ int resource_list_init (int *) ;
 
 __attribute__((used)) static device_t
 nexus_add_child(device_t bus, u_int order, const char *name, int unit)
 {
-	device_t		child;
-	struct nexus_device	*ndev;
+ device_t child;
+ struct nexus_device *ndev;
 
-	ndev = malloc(sizeof(struct nexus_device), M_NEXUSDEV, M_NOWAIT|M_ZERO);
-	if (!ndev)
-		return(0);
-	resource_list_init(&ndev->nx_resources);
+ ndev = malloc(sizeof(struct nexus_device), M_NEXUSDEV, M_NOWAIT|M_ZERO);
+ if (!ndev)
+  return(0);
+ resource_list_init(&ndev->nx_resources);
 
-	child = device_add_child_ordered(bus, order, name, unit);
+ child = device_add_child_ordered(bus, order, name, unit);
 
-	/* should we free this in nexus_child_detached? */
-	device_set_ivars(child, ndev);
 
-	return(child);
+ device_set_ivars(child, ndev);
+
+ return(child);
 }

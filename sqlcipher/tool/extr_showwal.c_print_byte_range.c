@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ ISPRINT (unsigned char) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char const*,...) ; 
- int perLine ; 
- int /*<<< orphan*/  stdout ; 
+ scalar_t__ ISPRINT (unsigned char) ;
+ int fprintf (int ,char const*,...) ;
+ int perLine ;
+ int stdout ;
 
 __attribute__((used)) static void print_byte_range(
-  int ofst,              /* First byte in the range of bytes to print */
-  int nByte,             /* Number of bytes to print */
-  unsigned char *aData,  /* Content to print */
-  int printOfst          /* Add this amount to the index on the left column */
+  int ofst,
+  int nByte,
+  unsigned char *aData,
+  int printOfst
 ){
   int i, j;
   const char *zOfstFmt;

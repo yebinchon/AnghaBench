@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct internal_exec {int dummy; } ;
 struct external_exec {int dummy; } ;
-typedef  int /*<<< orphan*/  bfd_boolean ;
-typedef  int /*<<< orphan*/  bfd ;
-struct TYPE_2__ {int /*<<< orphan*/  exec_hdr_flags; } ;
+typedef int bfd_boolean ;
+typedef int bfd ;
+struct TYPE_2__ {int exec_hdr_flags; } ;
 
-/* Variables and functions */
- int DYNAMIC ; 
- int /*<<< orphan*/  M_386 ; 
- int /*<<< orphan*/  M_68010 ; 
- int /*<<< orphan*/  M_68020 ; 
- int /*<<< orphan*/  M_SPARC ; 
- int /*<<< orphan*/  M_SPARCLET ; 
- int /*<<< orphan*/  M_SPARCLITE_LE ; 
- int /*<<< orphan*/  M_UNKNOWN ; 
- int /*<<< orphan*/  N_SET_DYNAMIC (struct internal_exec,long) ; 
- int /*<<< orphan*/  N_SET_FLAGS (struct internal_exec,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  N_SET_MACHTYPE (struct internal_exec,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  WRITE_HEADERS (int /*<<< orphan*/ *,struct internal_exec*) ; 
- TYPE_1__* aout_backend_info (int /*<<< orphan*/ *) ; 
-#define  bfd_arch_i386 135 
-#define  bfd_arch_m68k 134 
-#define  bfd_arch_sparc 133 
- int bfd_get_arch (int /*<<< orphan*/ *) ; 
- int bfd_get_file_flags (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bfd_get_mach (int /*<<< orphan*/ *) ; 
-#define  bfd_mach_m68000 132 
-#define  bfd_mach_m68010 131 
-#define  bfd_mach_m68020 130 
-#define  bfd_mach_sparc_sparclet 129 
-#define  bfd_mach_sparc_sparclite_le 128 
- int /*<<< orphan*/  choose_reloc_size (int /*<<< orphan*/ *) ; 
- struct internal_exec* exec_hdr (int /*<<< orphan*/ *) ; 
+
+ int DYNAMIC ;
+ int M_386 ;
+ int M_68010 ;
+ int M_68020 ;
+ int M_SPARC ;
+ int M_SPARCLET ;
+ int M_SPARCLITE_LE ;
+ int M_UNKNOWN ;
+ int N_SET_DYNAMIC (struct internal_exec,long) ;
+ int N_SET_FLAGS (struct internal_exec,int ) ;
+ int N_SET_MACHTYPE (struct internal_exec,int ) ;
+ int TRUE ;
+ int WRITE_HEADERS (int *,struct internal_exec*) ;
+ TYPE_1__* aout_backend_info (int *) ;
+
+
+
+ int bfd_get_arch (int *) ;
+ int bfd_get_file_flags (int *) ;
+ int bfd_get_mach (int *) ;
+
+
+
+
+
+ int choose_reloc_size (int *) ;
+ struct internal_exec* exec_hdr (int *) ;
 
 __attribute__((used)) static bfd_boolean
 sunos_write_object_contents (bfd *abfd)
@@ -52,39 +52,39 @@ sunos_write_object_contents (bfd *abfd)
   struct external_exec exec_bytes;
   struct internal_exec *execp = exec_hdr (abfd);
 
-  /* Magic number, maestro, please!  */
+
   switch (bfd_get_arch (abfd))
     {
-    case bfd_arch_m68k:
+    case 134:
       switch (bfd_get_mach (abfd))
-	{
-	case bfd_mach_m68000:
-	  N_SET_MACHTYPE (*execp, M_UNKNOWN);
-	  break;
-	case bfd_mach_m68010:
-	  N_SET_MACHTYPE (*execp, M_68010);
-	  break;
-	default:
-	case bfd_mach_m68020:
-	  N_SET_MACHTYPE (*execp, M_68020);
-	  break;
-	}
+ {
+ case 132:
+   N_SET_MACHTYPE (*execp, M_UNKNOWN);
+   break;
+ case 131:
+   N_SET_MACHTYPE (*execp, M_68010);
+   break;
+ default:
+ case 130:
+   N_SET_MACHTYPE (*execp, M_68020);
+   break;
+ }
       break;
-    case bfd_arch_sparc:
+    case 133:
       switch (bfd_get_mach (abfd))
-	{
-	case bfd_mach_sparc_sparclet:
-	  N_SET_MACHTYPE (*execp, M_SPARCLET);
-	  break;
-	case bfd_mach_sparc_sparclite_le:
-	  N_SET_MACHTYPE (*execp, M_SPARCLITE_LE);
-	  break;
-	default:
-	  N_SET_MACHTYPE (*execp, M_SPARC);
-	  break;
-	}
+ {
+ case 129:
+   N_SET_MACHTYPE (*execp, M_SPARCLET);
+   break;
+ case 128:
+   N_SET_MACHTYPE (*execp, M_SPARCLITE_LE);
+   break;
+ default:
+   N_SET_MACHTYPE (*execp, M_SPARC);
+   break;
+ }
       break;
-    case bfd_arch_i386:
+    case 135:
       N_SET_MACHTYPE (*execp, M_386);
       break;
     default:

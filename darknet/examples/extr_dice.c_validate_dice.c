@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {int /*<<< orphan*/  h; int /*<<< orphan*/  w; } ;
-typedef  TYPE_1__ network ;
+
+
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_9__ {int h; int w; } ;
+typedef TYPE_1__ network ;
 struct TYPE_10__ {int size; } ;
-typedef  TYPE_2__ list ;
-typedef  int /*<<< orphan*/  data ;
+typedef TYPE_2__ list ;
+typedef int data ;
 
-/* Variables and functions */
- char** dice_labels ; 
- int /*<<< orphan*/  free_data (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free_list (TYPE_2__*) ; 
- TYPE_2__* get_paths (char*) ; 
- scalar_t__ list_to_array (TYPE_2__*) ; 
- int /*<<< orphan*/  load_data_old (char**,int,int /*<<< orphan*/ ,char**,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  load_weights (TYPE_1__*,char*) ; 
- float* network_accuracies (TYPE_1__,int /*<<< orphan*/ ,int) ; 
- TYPE_1__ parse_network_cfg (char*) ; 
- int /*<<< orphan*/  printf (char*,float,int) ; 
- int /*<<< orphan*/  srand (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  time (int /*<<< orphan*/ ) ; 
+
+ char** dice_labels ;
+ int free_data (int ) ;
+ int free_list (TYPE_2__*) ;
+ TYPE_2__* get_paths (char*) ;
+ scalar_t__ list_to_array (TYPE_2__*) ;
+ int load_data_old (char**,int,int ,char**,int,int ,int ) ;
+ int load_weights (TYPE_1__*,char*) ;
+ float* network_accuracies (TYPE_1__,int ,int) ;
+ TYPE_1__ parse_network_cfg (char*) ;
+ int printf (char*,float,int) ;
+ int srand (int ) ;
+ int time (int ) ;
 
 void validate_dice(char *filename, char *weightfile)
 {

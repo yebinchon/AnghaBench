@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  enum AVHWDeviceType { ____Placeholder_AVHWDeviceType } AVHWDeviceType ;
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef enum AVHWDeviceType { ____Placeholder_AVHWDeviceType } AVHWDeviceType ;
 struct TYPE_8__ {scalar_t__ data; } ;
 struct TYPE_7__ {int type; } ;
-typedef  TYPE_1__ AVHWDeviceContext ;
-typedef  TYPE_2__ AVBufferRef ;
+typedef TYPE_1__ AVHWDeviceContext ;
+typedef TYPE_2__ AVBufferRef ;
 
-/* Variables and functions */
- int AV_HWDEVICE_TYPE_NONE ; 
- int /*<<< orphan*/  av_buffer_unref (TYPE_2__**) ; 
- int av_hwdevice_ctx_create_derived (TYPE_2__**,int,TYPE_2__*,int /*<<< orphan*/ ) ; 
- char* av_hwdevice_get_type_name (int) ; 
- int av_hwdevice_iterate_types (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  stderr ; 
+
+ int AV_HWDEVICE_TYPE_NONE ;
+ int av_buffer_unref (TYPE_2__**) ;
+ int av_hwdevice_ctx_create_derived (TYPE_2__**,int,TYPE_2__*,int ) ;
+ char* av_hwdevice_get_type_name (int) ;
+ int av_hwdevice_iterate_types (int) ;
+ int fprintf (int ,char*,...) ;
+ int stderr ;
 
 __attribute__((used)) static int test_derivation(AVBufferRef *src_ref, const char *src_name)
 {
     enum AVHWDeviceType derived_type;
     const char *derived_name;
-    AVBufferRef *derived_ref = NULL, *back_ref = NULL;
+    AVBufferRef *derived_ref = ((void*)0), *back_ref = ((void*)0);
     AVHWDeviceContext *src_dev, *derived_dev;
     int err;
 

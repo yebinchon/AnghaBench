@@ -1,33 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  ADD_ALL_TESTS (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ADD_TEST (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OSSL_NELEM (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  raw_values ; 
- int /*<<< orphan*/  test_param_bignum ; 
- int /*<<< orphan*/  test_param_construct ; 
- int /*<<< orphan*/  test_param_int ; 
- int /*<<< orphan*/  test_param_int32 ; 
- int /*<<< orphan*/  test_param_int64 ; 
- int /*<<< orphan*/  test_param_long ; 
- int /*<<< orphan*/  test_param_real ; 
- int /*<<< orphan*/  test_param_size_t ; 
- int /*<<< orphan*/  test_param_uint ; 
- int /*<<< orphan*/  test_param_uint32 ; 
- int /*<<< orphan*/  test_param_uint64 ; 
- int /*<<< orphan*/  test_param_ulong ; 
+ int ADD_ALL_TESTS (int ,int ) ;
+ int ADD_TEST (int ) ;
+ int OSSL_NELEM (int ) ;
+ int raw_values ;
+ int test_param_bignum ;
+ int test_param_construct ;
+ int test_param_int ;
+ int test_param_int32 ;
+ int test_param_int64 ;
+ int test_param_long ;
+ int test_param_real ;
+ int test_param_size_t ;
+ int test_param_uint ;
+ int test_param_uint32 ;
+ int test_param_uint64 ;
+ int test_param_ulong ;
 
 int setup_tests(void)
 {

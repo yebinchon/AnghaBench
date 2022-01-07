@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  IDirect3DRMObject ;
-typedef  int /*<<< orphan*/  IDirect3DRMMesh ;
-typedef  int /*<<< orphan*/  IDirect3DRM ;
-typedef  scalar_t__ HRESULT ;
 
-/* Variables and functions */
- scalar_t__ D3DRM_OK ; 
- scalar_t__ Direct3DRMCreate (int /*<<< orphan*/ **) ; 
- scalar_t__ IDirect3DRMMesh_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IDirect3DRMMesh_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IDirect3DRM_CreateMesh (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IDirect3DRM_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IID_IDirect3DRMObject ; 
- int /*<<< orphan*/  IID_IDirect3DRMVisual ; 
- int /*<<< orphan*/  IUnknown_Release (int /*<<< orphan*/ *) ; 
- int SUCCEEDED (scalar_t__) ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
- int /*<<< orphan*/  test_class_name (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  test_object_name (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int IUnknown ;
+typedef int IDirect3DRMObject ;
+typedef int IDirect3DRMMesh ;
+typedef int IDirect3DRM ;
+typedef scalar_t__ HRESULT ;
+
+
+ scalar_t__ D3DRM_OK ;
+ scalar_t__ Direct3DRMCreate (int **) ;
+ scalar_t__ IDirect3DRMMesh_QueryInterface (int *,int *,void**) ;
+ int IDirect3DRMMesh_Release (int *) ;
+ scalar_t__ IDirect3DRM_CreateMesh (int *,int **) ;
+ int IDirect3DRM_Release (int *) ;
+ int IID_IDirect3DRMObject ;
+ int IID_IDirect3DRMVisual ;
+ int IUnknown_Release (int *) ;
+ int SUCCEEDED (scalar_t__) ;
+ int ok (int,char*,scalar_t__) ;
+ int test_class_name (int *,char*) ;
+ int test_object_name (int *) ;
 
 __attribute__((used)) static void test_Mesh(void)
 {

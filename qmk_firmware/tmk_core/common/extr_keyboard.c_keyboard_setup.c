@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  disable_jtag () ; 
- int /*<<< orphan*/  keyboard_pre_init_kb () ; 
- int /*<<< orphan*/  matrix_setup () ; 
+ int disable_jtag () ;
+ int keyboard_pre_init_kb () ;
+ int matrix_setup () ;
 
 void keyboard_setup(void) {
-#ifndef NO_JTAG_DISABLE
+
     disable_jtag();
-#endif
+
     matrix_setup();
     keyboard_pre_init_kb();
 }

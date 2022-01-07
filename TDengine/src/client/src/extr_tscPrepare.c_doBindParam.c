@@ -1,42 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_6__ {int type; int offset; scalar_t__ bytes; } ;
-struct TYPE_5__ {int buffer_type; int /*<<< orphan*/  buffer; scalar_t__* length; scalar_t__* is_null; } ;
-typedef  TYPE_1__ TAOS_BIND ;
-typedef  TYPE_2__ SParamInfo ;
+struct TYPE_5__ {int buffer_type; int buffer; scalar_t__* length; scalar_t__* is_null; } ;
+typedef TYPE_1__ TAOS_BIND ;
+typedef TYPE_2__ SParamInfo ;
 
-/* Variables and functions */
- int TSDB_CODE_INVALID_VALUE ; 
- int TSDB_CODE_SUCCESS ; 
-#define  TSDB_DATA_TYPE_BIGINT 137 
-#define  TSDB_DATA_TYPE_BINARY 136 
-#define  TSDB_DATA_TYPE_BOOL 135 
-#define  TSDB_DATA_TYPE_DOUBLE 134 
-#define  TSDB_DATA_TYPE_FLOAT 133 
-#define  TSDB_DATA_TYPE_INT 132 
-#define  TSDB_DATA_TYPE_NCHAR 131 
-#define  TSDB_DATA_TYPE_SMALLINT 130 
-#define  TSDB_DATA_TYPE_TIMESTAMP 129 
-#define  TSDB_DATA_TYPE_TINYINT 128 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  memcpy (char*,int /*<<< orphan*/ ,short) ; 
- int /*<<< orphan*/  setNull (char*,int,scalar_t__) ; 
- int /*<<< orphan*/  taosMbsToUcs4 (int /*<<< orphan*/ ,scalar_t__,char*,scalar_t__) ; 
+
+ int TSDB_CODE_INVALID_VALUE ;
+ int TSDB_CODE_SUCCESS ;
+ int assert (int) ;
+ int memcpy (char*,int ,short) ;
+ int setNull (char*,int,scalar_t__) ;
+ int taosMbsToUcs4 (int ,scalar_t__,char*,scalar_t__) ;
 
 __attribute__((used)) static int doBindParam(char* data, SParamInfo* param, TAOS_BIND* bind) {
-  if (bind->is_null != NULL && *(bind->is_null)) {
+  if (bind->is_null != ((void*)0) && *(bind->is_null)) {
     setNull(data, param->type, param->bytes);
     return TSDB_CODE_SUCCESS;
   }
@@ -47,41 +37,41 @@ __attribute__((used)) static int doBindParam(char* data, SParamInfo* param, TAOS
 
   short size = 0;
   switch(param->type) {
-    case TSDB_DATA_TYPE_BOOL:
-    case TSDB_DATA_TYPE_TINYINT:
+    case 135:
+    case 128:
       size = 1;
       break;
 
-    case TSDB_DATA_TYPE_SMALLINT:
+    case 130:
       size = 2;
       break;
 
-    case TSDB_DATA_TYPE_INT:
-    case TSDB_DATA_TYPE_FLOAT:
+    case 132:
+    case 133:
       size = 4;
       break;
 
-    case TSDB_DATA_TYPE_BIGINT:
-    case TSDB_DATA_TYPE_DOUBLE:
-    case TSDB_DATA_TYPE_TIMESTAMP:
+    case 137:
+    case 134:
+    case 129:
       size = 8;
       break;
 
-    case TSDB_DATA_TYPE_BINARY:
+    case 136:
       if ((*bind->length) > param->bytes) {
         return TSDB_CODE_INVALID_VALUE;
       }
       size = (short)*bind->length;
       break;
-    
-    case TSDB_DATA_TYPE_NCHAR:
+
+    case 131:
       if (!taosMbsToUcs4(bind->buffer, *bind->length, data + param->offset, param->bytes)) {
         return TSDB_CODE_INVALID_VALUE;
       }
       return TSDB_CODE_SUCCESS;
 
     default:
-      assert(false);
+      assert(0);
       return TSDB_CODE_INVALID_VALUE;
   }
 

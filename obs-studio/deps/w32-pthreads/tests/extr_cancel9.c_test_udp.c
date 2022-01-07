@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  s_addr; } ;
-struct sockaddr_in {int /*<<< orphan*/  sin_port; TYPE_1__ sin_addr; int /*<<< orphan*/  sin_family; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int s_addr; } ;
+struct sockaddr_in {int sin_port; TYPE_1__ sin_addr; int sin_family; } ;
 struct sockaddr {int dummy; } ;
-typedef  int /*<<< orphan*/  WSADATA ;
-typedef  int /*<<< orphan*/  WORD ;
-typedef  scalar_t__ SOCKET ;
+typedef int WSADATA ;
+typedef int WORD ;
+typedef scalar_t__ SOCKET ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_INET ; 
- int /*<<< orphan*/  INADDR_ANY ; 
- int /*<<< orphan*/  MAKEWORD (int,int) ; 
- int /*<<< orphan*/  PTHREAD_CANCEL_ASYNCHRONOUS ; 
- int /*<<< orphan*/  PTHREAD_CANCEL_ENABLE ; 
- int /*<<< orphan*/  SOCK_DGRAM ; 
- int /*<<< orphan*/  WSACleanup () ; 
- scalar_t__ WSAStartup (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ bind (scalar_t__,struct sockaddr*,int) ; 
- int /*<<< orphan*/  closesocket (scalar_t__) ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  htons (int) ; 
- int /*<<< orphan*/  printf (char*) ; 
- int /*<<< orphan*/  pthread_setcancelstate (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_setcanceltype (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int recvfrom (scalar_t__,char*,int,int /*<<< orphan*/ ,struct sockaddr*,int*) ; 
- scalar_t__ socket (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int AF_INET ;
+ int INADDR_ANY ;
+ int MAKEWORD (int,int) ;
+ int PTHREAD_CANCEL_ASYNCHRONOUS ;
+ int PTHREAD_CANCEL_ENABLE ;
+ int SOCK_DGRAM ;
+ int WSACleanup () ;
+ scalar_t__ WSAStartup (int ,int *) ;
+ scalar_t__ bind (scalar_t__,struct sockaddr*,int) ;
+ int closesocket (scalar_t__) ;
+ int exit (int) ;
+ int htons (int) ;
+ int printf (char*) ;
+ int pthread_setcancelstate (int ,int *) ;
+ int pthread_setcanceltype (int ,int *) ;
+ int recvfrom (scalar_t__,char*,int,int ,struct sockaddr*,int*) ;
+ scalar_t__ socket (int ,int ,int ) ;
 
 void *
 test_udp (void *arg)
@@ -49,12 +49,12 @@ test_udp (void *arg)
   WORD wsaVersion = MAKEWORD (2, 2);
   WSADATA wsaData;
 
-  pthread_setcancelstate (PTHREAD_CANCEL_ENABLE, NULL);
-  pthread_setcanceltype (PTHREAD_CANCEL_ASYNCHRONOUS, NULL);
+  pthread_setcancelstate (PTHREAD_CANCEL_ENABLE, ((void*)0));
+  pthread_setcanceltype (PTHREAD_CANCEL_ASYNCHRONOUS, ((void*)0));
 
   if (WSAStartup (wsaVersion, &wsaData) != 0)
     {
-      return NULL;
+      return ((void*)0);
     }
 
   UDPSocket = socket (AF_INET, SOCK_DGRAM, 0);
@@ -82,10 +82,10 @@ test_udp (void *arg)
 
   bytes =
     recvfrom (UDPSocket, (char *) buffer, nbyte, 0,
-	      (struct sockaddr *) &clientAddress, &addr_len);
+       (struct sockaddr *) &clientAddress, &addr_len);
 
   closesocket (UDPSocket);
   WSACleanup ();
 
-  return NULL;
+  return ((void*)0);
 }

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ITfInputProcessorProfileMgr ;
-typedef  int /*<<< orphan*/  IEnumTfInputProcessorProfiles ;
-typedef  scalar_t__ HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IEnumTfInputProcessorProfiles_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IID_ITfInputProcessorProfileMgr ; 
- scalar_t__ ITfInputProcessorProfileMgr_EnumProfiles (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  ITfInputProcessorProfileMgr_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ ITfInputProcessorProfiles_QueryInterface (int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  g_ipp ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
+
+
+
+typedef int ITfInputProcessorProfileMgr ;
+typedef int IEnumTfInputProcessorProfiles ;
+typedef scalar_t__ HRESULT ;
+
+
+ int IEnumTfInputProcessorProfiles_Release (int *) ;
+ int IID_ITfInputProcessorProfileMgr ;
+ scalar_t__ ITfInputProcessorProfileMgr_EnumProfiles (int *,int ,int **) ;
+ int ITfInputProcessorProfileMgr_Release (int *) ;
+ scalar_t__ ITfInputProcessorProfiles_QueryInterface (int ,int *,void**) ;
+ scalar_t__ S_OK ;
+ int g_ipp ;
+ int ok (int,char*,scalar_t__) ;
+ int win_skip (char*) ;
 
 __attribute__((used)) static void test_profile_mgr(void)
 {

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int cmsUInt32Number ;
-typedef  double cmsFloat64Number ;
-typedef  int /*<<< orphan*/  cmsContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OutputColorSpace ; 
- int /*<<< orphan*/ * OutputColorant ; 
- double OutputRange ; 
- scalar_t__ Verbose ; 
- int cmsChannelsOf (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int cmsMAX_PATH ; 
- int /*<<< orphan*/  cmsNamedColorInfo (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- double floor (double) ; 
- scalar_t__ lQuantize ; 
- int /*<<< orphan*/  lUnbounded ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  sprintf (char*,char*,int) ; 
+
+
+
+typedef int cmsUInt32Number ;
+typedef double cmsFloat64Number ;
+typedef int cmsContext ;
+
+
+ int OutputColorSpace ;
+ int * OutputColorant ;
+ double OutputRange ;
+ scalar_t__ Verbose ;
+ int cmsChannelsOf (int ,int ) ;
+ int cmsMAX_PATH ;
+ int cmsNamedColorInfo (int ,int *,int,char*,int *,int *,int *,int *) ;
+ double floor (double) ;
+ scalar_t__ lQuantize ;
+ int lUnbounded ;
+ int printf (char*,...) ;
+ int sprintf (char*,char*,int) ;
 
 __attribute__((used)) static
 void PrintFloatResults(cmsContext ContextID, cmsFloat64Number Value[])
@@ -38,9 +38,9 @@ void PrintFloatResults(cmsContext ContextID, cmsFloat64Number Value[])
     n = cmsChannelsOf(ContextID, OutputColorSpace);
     for (i=0; i < n; i++) {
 
-        if (OutputColorant != NULL) {
+        if (OutputColorant != ((void*)0)) {
 
-            cmsNamedColorInfo(ContextID, OutputColorant, i, ChannelName, NULL, NULL, NULL, NULL);
+            cmsNamedColorInfo(ContextID, OutputColorant, i, ChannelName, ((void*)0), ((void*)0), ((void*)0), ((void*)0));
         }
         else {
             OutputRange = 1;

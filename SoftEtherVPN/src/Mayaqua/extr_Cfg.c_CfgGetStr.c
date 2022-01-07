@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wchar_t ;
-typedef  int UINT ;
-typedef  int /*<<< orphan*/  FOLDER ;
 
-/* Variables and functions */
- int CfgGetUniStr (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  Free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * Malloc (int) ; 
- int /*<<< orphan*/  UniToStr (char*,int,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int wchar_t ;
+typedef int UINT ;
+typedef int FOLDER ;
+
+
+ int CfgGetUniStr (int *,char*,int *,int) ;
+ int Free (int *) ;
+ int * Malloc (int) ;
+ int UniToStr (char*,int,int *) ;
 
 bool CfgGetStr(FOLDER *f, char *name, char *str, UINT size)
 {
-	wchar_t *tmp;
-	UINT tmp_size;
-	// Validate arguments
-	if (f == NULL || name == NULL || str == NULL)
-	{
-		return false;
-	}
+ wchar_t *tmp;
+ UINT tmp_size;
 
-	str[0] = 0;
+ if (f == ((void*)0) || name == ((void*)0) || str == ((void*)0))
+ {
+  return 0;
+ }
 
-	// Get unicode string temporarily
-	tmp_size = size * 4 + 10; // Just to make sure, a quantity of this amount is secured.
-	tmp = Malloc(tmp_size);
-	if (CfgGetUniStr(f, name, tmp, tmp_size) == false)
-	{
-		// Failure
-		Free(tmp);
-		return false;
-	}
+ str[0] = 0;
 
-	// Copy to the ANSI string
-	UniToStr(str, size, tmp);
-	Free(tmp);
 
-	return true;
+ tmp_size = size * 4 + 10;
+ tmp = Malloc(tmp_size);
+ if (CfgGetUniStr(f, name, tmp, tmp_size) == 0)
+ {
+
+  Free(tmp);
+  return 0;
+ }
+
+
+ UniToStr(str, size, tmp);
+ Free(tmp);
+
+ return 1;
 }

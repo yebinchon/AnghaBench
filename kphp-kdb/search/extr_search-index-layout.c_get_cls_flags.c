@@ -1,31 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int FLAGS_CLS_CREATION_DATE ; 
- int FLAGS_CLS_ENABLE_ITEM_WORDS_FREQS ; 
- int FLAGS_CLS_ENABLE_UNIVERSE ; 
- int FLAGS_CLS_TAG_OWNER ; 
- int FLAGS_CLS_USE_STEMMER ; 
- int FLAGS_CLS_WORD_SPLIT_UTF8 ; 
- int FLAG_CLS_ENABLE_TAGS ; 
- scalar_t__ creation_date ; 
- scalar_t__ hashtags_enabled ; 
- scalar_t__ tag_owner ; 
- scalar_t__ universal ; 
- scalar_t__ use_stemmer ; 
- scalar_t__ word_split_utf8 ; 
- scalar_t__ wordfreqs_enabled ; 
+ int FLAGS_CLS_CREATION_DATE ;
+ int FLAGS_CLS_ENABLE_ITEM_WORDS_FREQS ;
+ int FLAGS_CLS_ENABLE_UNIVERSE ;
+ int FLAGS_CLS_TAG_OWNER ;
+ int FLAGS_CLS_USE_STEMMER ;
+ int FLAGS_CLS_WORD_SPLIT_UTF8 ;
+ int FLAG_CLS_ENABLE_TAGS ;
+ scalar_t__ creation_date ;
+ scalar_t__ hashtags_enabled ;
+ scalar_t__ tag_owner ;
+ scalar_t__ universal ;
+ scalar_t__ use_stemmer ;
+ scalar_t__ word_split_utf8 ;
+ scalar_t__ wordfreqs_enabled ;
 
 int get_cls_flags (void) {
   int r = 0;

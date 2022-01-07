@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  rsound_t ;
-typedef  enum rsd_format { ____Placeholder_rsd_format } rsd_format ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RSD_CHANNELS ; 
- int /*<<< orphan*/  RSD_FORMAT ; 
- int /*<<< orphan*/  RSD_HOST ; 
- int /*<<< orphan*/  RSD_IDENTITY ; 
- int /*<<< orphan*/  RSD_PORT ; 
- int /*<<< orphan*/  RSD_SAMPLERATE ; 
- int /*<<< orphan*/  rsd_free (int /*<<< orphan*/ *) ; 
- scalar_t__ rsd_init (int /*<<< orphan*/ **) ; 
- scalar_t__ rsd_set_param (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int*) ; 
- scalar_t__ rsd_start (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int rsound_t ;
+typedef enum rsd_format { ____Placeholder_rsd_format } rsd_format ;
+
+
+ int RSD_CHANNELS ;
+ int RSD_FORMAT ;
+ int RSD_HOST ;
+ int RSD_IDENTITY ;
+ int RSD_PORT ;
+ int RSD_SAMPLERATE ;
+ int rsd_free (int *) ;
+ scalar_t__ rsd_init (int **) ;
+ scalar_t__ rsd_set_param (int *,int ,int*) ;
+ scalar_t__ rsd_start (int *) ;
 
 int rsd_simple_start(rsound_t** rsound, const char* host, const char* port, const char* ident,
                      int rate, int channels, enum rsd_format format)
@@ -33,14 +33,14 @@ int rsd_simple_start(rsound_t** rsound, const char* host, const char* port, cons
 
    int fmt = format;
 
-   if ( host != NULL )
+   if ( host != ((void*)0) )
       rsd_set_param(*rsound, RSD_HOST, (void*)host);
-   if ( port != NULL )
+   if ( port != ((void*)0) )
       rsd_set_param(*rsound, RSD_PORT, (void*)port);
-   if ( ident != NULL )
+   if ( ident != ((void*)0) )
       rsd_set_param(*rsound, RSD_IDENTITY, (void*)ident);
 
-   if (  rsd_set_param(*rsound, RSD_SAMPLERATE, &rate) < 0 ||
+   if ( rsd_set_param(*rsound, RSD_SAMPLERATE, &rate) < 0 ||
          rsd_set_param(*rsound, RSD_CHANNELS, &channels) < 0 ||
          rsd_set_param(*rsound, RSD_FORMAT, &fmt) < 0 )
    {

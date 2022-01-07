@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
+
+
+
+
+typedef int uint32_t ;
 struct table_info {int dummy; } ;
-struct ifidx {int /*<<< orphan*/  value; } ;
+struct ifidx {int value; } ;
 
-/* Variables and functions */
- struct ifidx* ifidx_find (struct table_info*,void*) ; 
+
+ struct ifidx* ifidx_find (struct table_info*,void*) ;
 
 __attribute__((used)) static int
 ta_lookup_ifidx(struct table_info *ti, void *key, uint32_t keylen,
     uint32_t *val)
 {
-	struct ifidx *ifi;
+ struct ifidx *ifi;
 
-	ifi = ifidx_find(ti, key);
+ ifi = ifidx_find(ti, key);
 
-	if (ifi != NULL) {
-		*val = ifi->value;
-		return (1);
-	}
+ if (ifi != ((void*)0)) {
+  *val = ifi->value;
+  return (1);
+ }
 
-	return (0);
+ return (0);
 }

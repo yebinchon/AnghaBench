@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct journal_head {scalar_t__ b_jcount; int /*<<< orphan*/  b_transaction; } ;
+
+
+
+
+struct journal_head {scalar_t__ b_jcount; int b_transaction; } ;
 struct buffer_head {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  J_ASSERT_JH (struct journal_head*,int) ; 
- int /*<<< orphan*/  __brelse (struct buffer_head*) ; 
- int /*<<< orphan*/  __journal_remove_journal_head (struct buffer_head*) ; 
- int /*<<< orphan*/  jbd_lock_bh_journal_head (struct buffer_head*) ; 
- int /*<<< orphan*/  jbd_unlock_bh_journal_head (struct buffer_head*) ; 
- struct buffer_head* jh2bh (struct journal_head*) ; 
+
+ int J_ASSERT_JH (struct journal_head*,int) ;
+ int __brelse (struct buffer_head*) ;
+ int __journal_remove_journal_head (struct buffer_head*) ;
+ int jbd_lock_bh_journal_head (struct buffer_head*) ;
+ int jbd_unlock_bh_journal_head (struct buffer_head*) ;
+ struct buffer_head* jh2bh (struct journal_head*) ;
 
 void journal_put_journal_head(struct journal_head *jh)
 {

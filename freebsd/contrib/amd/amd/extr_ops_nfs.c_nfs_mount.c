@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {int /*<<< orphan*/  mf_info; int /*<<< orphan*/  mf_mount; scalar_t__ mf_private; int /*<<< orphan*/ * mf_mopts; TYPE_1__* mf_server; } ;
-typedef  TYPE_2__ mntfs ;
-struct TYPE_11__ {int /*<<< orphan*/ * mnt_opts; } ;
-typedef  TYPE_3__ mntent_t ;
-struct TYPE_12__ {int /*<<< orphan*/  am_flags; } ;
-typedef  TYPE_4__ am_node ;
-typedef  int /*<<< orphan*/  am_nfs_handle_t ;
+
+
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_10__ {int mf_info; int mf_mount; scalar_t__ mf_private; int * mf_mopts; TYPE_1__* mf_server; } ;
+typedef TYPE_2__ mntfs ;
+struct TYPE_11__ {int * mnt_opts; } ;
+typedef TYPE_3__ mntent_t ;
+struct TYPE_12__ {int am_flags; } ;
+typedef TYPE_4__ am_node ;
+typedef int am_nfs_handle_t ;
 struct TYPE_9__ {int fs_version; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AMF_SOFTLOOKUP ; 
- int EINVAL ; 
- int /*<<< orphan*/  XLOG_ERROR ; 
- scalar_t__ amu_hasmntopt (TYPE_3__*,char*) ; 
- int /*<<< orphan*/  dlog (char*) ; 
- int errno ; 
- int mount_nfs_fh (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  plog (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
+
+ int AMF_SOFTLOOKUP ;
+ int EINVAL ;
+ int XLOG_ERROR ;
+ scalar_t__ amu_hasmntopt (TYPE_3__*,char*) ;
+ int dlog (char*) ;
+ int errno ;
+ int mount_nfs_fh (int *,int ,int ,TYPE_2__*) ;
+ int plog (int ,char*,int ) ;
 
 __attribute__((used)) static int
 nfs_mount(am_node *am, mntfs *mf)
@@ -44,7 +44,7 @@ nfs_mount(am_node *am, mntfs *mf)
     return EINVAL;
   }
 
-  if (mf->mf_mopts == NULL) {
+  if (mf->mf_mopts == ((void*)0)) {
     plog(XLOG_ERROR, "Missing mount options for %s", mf->mf_info);
     return EINVAL;
   }
@@ -55,9 +55,9 @@ nfs_mount(am_node *am, mntfs *mf)
     am->am_flags |= AMF_SOFTLOOKUP;
 
   error = mount_nfs_fh((am_nfs_handle_t *) mf->mf_private,
-		       mf->mf_mount,
-		       mf->mf_info,
-		       mf);
+         mf->mf_mount,
+         mf->mf_info,
+         mf);
 
   if (error) {
     errno = error;

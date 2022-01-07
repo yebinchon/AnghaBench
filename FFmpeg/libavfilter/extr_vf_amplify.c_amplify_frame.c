@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint16_t ;
+
+
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint16_t ;
 struct TYPE_6__ {TYPE_3__* out; TYPE_3__** in; } ;
-typedef  TYPE_1__ ThreadData ;
+typedef TYPE_1__ ThreadData ;
 struct TYPE_9__ {TYPE_2__* priv; } ;
 struct TYPE_8__ {int** data; int const* linesize; } ;
 struct TYPE_7__ {int radius; int nb_inputs; float threshold; float tolerance; float factor; int llimit; int hlimit; int depth; int nb_planes; int* height; int planes; int* linesize; } ;
-typedef  TYPE_2__ AmplifyContext ;
-typedef  TYPE_3__ AVFrame ;
-typedef  TYPE_4__ AVFilterContext ;
+typedef TYPE_2__ AmplifyContext ;
+typedef TYPE_3__ AVFrame ;
+typedef TYPE_4__ AVFilterContext ;
 
-/* Variables and functions */
- int AV_RN16 (int*) ; 
- int /*<<< orphan*/  FFABS (float) ; 
- int FFMIN (int /*<<< orphan*/ ,int const) ; 
- int av_clip_uint8 (int) ; 
- int av_clip_uintp2_c (int,int const) ; 
- int /*<<< orphan*/  av_image_copy_plane (int*,int const,int*,int const,int,int const) ; 
- float const fabsf (float) ; 
+
+ int AV_RN16 (int*) ;
+ int FFABS (float) ;
+ int FFMIN (int ,int const) ;
+ int av_clip_uint8 (int) ;
+ int av_clip_uintp2_c (int,int const) ;
+ int av_image_copy_plane (int*,int const,int*,int const,int,int const) ;
+ float const fabsf (float) ;
 
 __attribute__((used)) static int amplify_frame(AVFilterContext *ctx, void *arg, int jobnr, int nb_jobs)
 {

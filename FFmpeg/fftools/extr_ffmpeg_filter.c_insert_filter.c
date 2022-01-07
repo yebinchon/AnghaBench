@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/ * graph; } ;
-typedef  int /*<<< orphan*/  AVFilterGraph ;
-typedef  TYPE_1__ AVFilterContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  avfilter_get_by_name (char const*) ; 
- int avfilter_graph_create_filter (TYPE_1__**,int /*<<< orphan*/ ,char const*,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int avfilter_link (TYPE_1__*,int,TYPE_1__*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int * graph; } ;
+typedef int AVFilterGraph ;
+typedef TYPE_1__ AVFilterContext ;
+
+
+ int avfilter_get_by_name (char const*) ;
+ int avfilter_graph_create_filter (TYPE_1__**,int ,char const*,char const*,int *,int *) ;
+ int avfilter_link (TYPE_1__*,int,TYPE_1__*,int ) ;
 
 __attribute__((used)) static int insert_filter(AVFilterContext **last_filter, int *pad_idx,
                          const char *filter_name, const char *args)
@@ -29,7 +29,7 @@ __attribute__((used)) static int insert_filter(AVFilterContext **last_filter, in
 
     ret = avfilter_graph_create_filter(&ctx,
                                        avfilter_get_by_name(filter_name),
-                                       filter_name, args, NULL, graph);
+                                       filter_name, args, ((void*)0), graph);
     if (ret < 0)
         return ret;
 
@@ -38,6 +38,6 @@ __attribute__((used)) static int insert_filter(AVFilterContext **last_filter, in
         return ret;
 
     *last_filter = ctx;
-    *pad_idx     = 0;
+    *pad_idx = 0;
     return 0;
 }

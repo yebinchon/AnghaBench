@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ EPIPE ; 
- int /*<<< orphan*/  SIGINFO_NIL ; 
- int /*<<< orphan*/  SIGPIPE_ ; 
- int /*<<< orphan*/  current ; 
- int err_map (scalar_t__) ; 
- scalar_t__ errno ; 
- int /*<<< orphan*/  send_signal (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ scalar_t__ EPIPE ;
+ int SIGINFO_NIL ;
+ int SIGPIPE_ ;
+ int current ;
+ int err_map (scalar_t__) ;
+ scalar_t__ errno ;
+ int send_signal (int ,int ,int ) ;
 
 int errno_map() {
     if (errno == EPIPE)

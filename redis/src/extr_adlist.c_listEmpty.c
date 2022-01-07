@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  value; struct TYPE_5__* next; } ;
-typedef  TYPE_1__ listNode ;
-struct TYPE_6__ {unsigned long len; int /*<<< orphan*/ * tail; TYPE_1__* head; int /*<<< orphan*/  (* free ) (int /*<<< orphan*/ ) ;} ;
-typedef  TYPE_2__ list ;
 
-/* Variables and functions */
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  zfree (TYPE_1__*) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int value; struct TYPE_5__* next; } ;
+typedef TYPE_1__ listNode ;
+struct TYPE_6__ {unsigned long len; int * tail; TYPE_1__* head; int (* free ) (int ) ;} ;
+typedef TYPE_2__ list ;
+
+
+ int stub1 (int ) ;
+ int zfree (TYPE_1__*) ;
 
 void listEmpty(list *list)
 {
@@ -34,6 +34,6 @@ void listEmpty(list *list)
         zfree(current);
         current = next;
     }
-    list->head = list->tail = NULL;
+    list->head = list->tail = ((void*)0);
     list->len = 0;
 }

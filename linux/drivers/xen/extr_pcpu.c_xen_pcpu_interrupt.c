@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  irqreturn_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IRQ_HANDLED ; 
- int /*<<< orphan*/  schedule_work (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  xen_pcpu_work ; 
+
+
+
+typedef int irqreturn_t ;
+
+
+ int IRQ_HANDLED ;
+ int schedule_work (int *) ;
+ int xen_pcpu_work ;
 
 __attribute__((used)) static irqreturn_t xen_pcpu_interrupt(int irq, void *dev_id)
 {
-	schedule_work(&xen_pcpu_work);
-	return IRQ_HANDLED;
+ schedule_work(&xen_pcpu_work);
+ return IRQ_HANDLED;
 }

@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u8 ;
-typedef  int u32 ;
-typedef  int u16 ;
+
+
+
+
+typedef int u8 ;
+typedef int u32 ;
+typedef int u16 ;
 struct adapter {int dummy; } ;
-typedef  int /*<<< orphan*/  __le32 ;
+typedef int __le32 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cpu_to_le32 (int) ; 
- int usbctrl_vendorreq (struct adapter*,int,int,int,int /*<<< orphan*/ *,int,int) ; 
+
+ int cpu_to_le32 (int) ;
+ int usbctrl_vendorreq (struct adapter*,int,int,int,int *,int,int) ;
 
 int usb_write16(struct adapter *adapter, u32 addr, u16 val)
 {
-	u8 request;
-	u8 requesttype;
-	u16 wvalue;
-	u16 index;
-	u16 len;
-	__le32 data;
+ u8 request;
+ u8 requesttype;
+ u16 wvalue;
+ u16 index;
+ u16 len;
+ __le32 data;
 
-	request = 0x05;
-	requesttype = 0x00;/* write_out */
-	index = 0;/* n/a */
+ request = 0x05;
+ requesttype = 0x00;
+ index = 0;
 
-	wvalue = (u16)(addr & 0x0000ffff);
-	len = 2;
+ wvalue = (u16)(addr & 0x0000ffff);
+ len = 2;
 
-	data = cpu_to_le32(val & 0x0000ffff);
+ data = cpu_to_le32(val & 0x0000ffff);
 
-	return usbctrl_vendorreq(adapter, request, wvalue,
-				 index, &data, len, requesttype);
+ return usbctrl_vendorreq(adapter, request, wvalue,
+     index, &data, len, requesttype);
 }

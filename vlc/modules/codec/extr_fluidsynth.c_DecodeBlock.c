@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_3__ ;
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
+
+
+typedef struct TYPE_16__ TYPE_3__ ;
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_14__ {TYPE_2__* p_sys; } ;
-typedef  TYPE_1__ decoder_t ;
-struct TYPE_15__ {int /*<<< orphan*/  synth; int /*<<< orphan*/  end_date; } ;
-typedef  TYPE_2__ decoder_sys_t ;
+typedef TYPE_1__ decoder_t ;
+struct TYPE_15__ {int synth; int end_date; } ;
+typedef TYPE_2__ decoder_sys_t ;
 struct TYPE_16__ {int i_flags; scalar_t__ i_pts; int i_buffer; int* p_buffer; int i_length; } ;
-typedef  TYPE_3__ block_t ;
+typedef TYPE_3__ block_t ;
 
-/* Variables and functions */
- int BLOCK_FLAG_CORRUPTED ; 
- int BLOCK_FLAG_DISCONTINUITY ; 
- int /*<<< orphan*/  Flush (TYPE_1__*) ; 
- int VLCDEC_SUCCESS ; 
- scalar_t__ VLC_TICK_INVALID ; 
- int /*<<< orphan*/  block_Release (TYPE_3__*) ; 
- int date_Get (int /*<<< orphan*/ *) ; 
- int date_Increment (int /*<<< orphan*/ *,unsigned int) ; 
- int /*<<< orphan*/  date_Set (int /*<<< orphan*/ *,scalar_t__) ; 
- TYPE_3__* decoder_NewAudioBuffer (TYPE_1__*,unsigned int) ; 
- int /*<<< orphan*/  decoder_QueueAudio (TYPE_1__*,TYPE_3__*) ; 
- scalar_t__ decoder_UpdateAudioFormat (TYPE_1__*) ; 
- int /*<<< orphan*/  fluid_synth_cc (int /*<<< orphan*/ ,int,int,int) ; 
- int /*<<< orphan*/  fluid_synth_channel_pressure (int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  fluid_synth_noteoff (int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  fluid_synth_noteon (int /*<<< orphan*/ ,int,int,int) ; 
- int /*<<< orphan*/  fluid_synth_pitch_bend (int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  fluid_synth_program_change (int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  fluid_synth_sysex (int /*<<< orphan*/ ,char*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fluid_synth_system_reset (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fluid_synth_write_float (int /*<<< orphan*/ ,unsigned int,int*,int /*<<< orphan*/ ,int,int*,int,int) ; 
- int /*<<< orphan*/  msg_Warn (TYPE_1__*,char*) ; 
+
+ int BLOCK_FLAG_CORRUPTED ;
+ int BLOCK_FLAG_DISCONTINUITY ;
+ int Flush (TYPE_1__*) ;
+ int VLCDEC_SUCCESS ;
+ scalar_t__ VLC_TICK_INVALID ;
+ int block_Release (TYPE_3__*) ;
+ int date_Get (int *) ;
+ int date_Increment (int *,unsigned int) ;
+ int date_Set (int *,scalar_t__) ;
+ TYPE_3__* decoder_NewAudioBuffer (TYPE_1__*,unsigned int) ;
+ int decoder_QueueAudio (TYPE_1__*,TYPE_3__*) ;
+ scalar_t__ decoder_UpdateAudioFormat (TYPE_1__*) ;
+ int fluid_synth_cc (int ,int,int,int) ;
+ int fluid_synth_channel_pressure (int ,int,int) ;
+ int fluid_synth_noteoff (int ,int,int) ;
+ int fluid_synth_noteon (int ,int,int,int) ;
+ int fluid_synth_pitch_bend (int ,int,int) ;
+ int fluid_synth_program_change (int ,int,int) ;
+ int fluid_synth_sysex (int ,char*,int,int *,int *,int *,int ) ;
+ int fluid_synth_system_reset (int ) ;
+ int fluid_synth_write_float (int ,unsigned int,int*,int ,int,int*,int,int) ;
+ int msg_Warn (TYPE_1__*,char*) ;
 
 __attribute__((used)) static int DecodeBlock (decoder_t *p_dec, block_t *p_block)
 {
     decoder_sys_t *p_sys = p_dec->p_sys;
-    block_t *p_out = NULL;
+    block_t *p_out = ((void*)0);
 
-    if (p_block == NULL) /* No Drain */
+    if (p_block == ((void*)0))
         return VLCDEC_SUCCESS;
 
     if (p_block->i_flags & (BLOCK_FLAG_DISCONTINUITY|BLOCK_FLAG_CORRUPTED))
@@ -91,7 +91,7 @@ __attribute__((used)) static int DecodeBlock (decoder_t *p_dec, block_t *p_block
                     goto drop;
                 }
                 fluid_synth_sysex (p_sys->synth, (char *)p_block->p_buffer + 1,
-                                   p_block->i_buffer - 2, NULL, NULL, NULL, 0);
+                                   p_block->i_buffer - 2, ((void*)0), ((void*)0), ((void*)0), 0);
                 break;
             case 0xF:
                 fluid_synth_system_reset (p_sys->synth);
@@ -109,7 +109,7 @@ __attribute__((used)) static int DecodeBlock (decoder_t *p_dec, block_t *p_block
         case 0x90:
             fluid_synth_noteon (p_sys->synth, channel, p1, p2);
             break;
-        /*case 0xA0: note aftertouch not implemented */
+
         case 0xB0:
             fluid_synth_cc (p_sys->synth, channel, p1, p2);
             break;
@@ -132,7 +132,7 @@ __attribute__((used)) static int DecodeBlock (decoder_t *p_dec, block_t *p_block
     if (decoder_UpdateAudioFormat (p_dec))
         goto drop;
     p_out = decoder_NewAudioBuffer (p_dec, samples);
-    if (p_out == NULL)
+    if (p_out == ((void*)0))
         goto drop;
 
     p_out->i_pts = date_Get (&p_sys->end_date );
@@ -142,7 +142,7 @@ __attribute__((used)) static int DecodeBlock (decoder_t *p_dec, block_t *p_block
                              p_out->p_buffer, 1, 2);
 drop:
     block_Release (p_block);
-    if (p_out != NULL)
+    if (p_out != ((void*)0))
         decoder_QueueAudio (p_dec, p_out);
     return VLCDEC_SUCCESS;
 }

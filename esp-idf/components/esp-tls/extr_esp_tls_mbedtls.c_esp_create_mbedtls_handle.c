@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int /*<<< orphan*/  fd; } ;
-struct TYPE_7__ {scalar_t__ role; TYPE_4__ server_fd; int /*<<< orphan*/  ssl; int /*<<< orphan*/  error_handle; int /*<<< orphan*/  conf; int /*<<< orphan*/  ctr_drbg; int /*<<< orphan*/  entropy; int /*<<< orphan*/  sockfd; } ;
-typedef  TYPE_1__ esp_tls_t ;
-typedef  int /*<<< orphan*/  esp_tls_cfg_t ;
-typedef  int /*<<< orphan*/  esp_tls_cfg_server_t ;
-typedef  scalar_t__ esp_err_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CONFIG_MBEDTLS_DEBUG_LEVEL ; 
- int /*<<< orphan*/  ERR_TYPE_MBEDTLS ; 
- scalar_t__ ESP_ERR_MBEDTLS_CTR_DRBG_SEED_FAILED ; 
- scalar_t__ ESP_ERR_MBEDTLS_SSL_SETUP_FAILED ; 
- scalar_t__ ESP_FAIL ; 
- int /*<<< orphan*/  ESP_INT_EVENT_TRACKER_CAPTURE (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ESP_LOGE (int /*<<< orphan*/ ,char*,...) ; 
- scalar_t__ ESP_OK ; 
- scalar_t__ ESP_TLS_CLIENT ; 
- scalar_t__ ESP_TLS_SERVER ; 
- int /*<<< orphan*/  TAG ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  esp_mbedtls_cleanup (TYPE_1__*) ; 
- int /*<<< orphan*/  mbedtls_ctr_drbg_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mbedtls_ctr_drbg_random ; 
- int mbedtls_ctr_drbg_seed (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mbedtls_entropy_func ; 
- int /*<<< orphan*/  mbedtls_entropy_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mbedtls_esp_enable_debug_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mbedtls_net_recv ; 
- int /*<<< orphan*/  mbedtls_net_send ; 
- int /*<<< orphan*/  mbedtls_ssl_conf_rng (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mbedtls_ssl_config_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mbedtls_ssl_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mbedtls_ssl_set_bio (int /*<<< orphan*/ *,TYPE_4__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int mbedtls_ssl_setup (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ set_client_config (char const*,size_t,int /*<<< orphan*/ *,TYPE_1__*) ; 
- scalar_t__ set_server_config (int /*<<< orphan*/ *,TYPE_1__*) ; 
+
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int fd; } ;
+struct TYPE_7__ {scalar_t__ role; TYPE_4__ server_fd; int ssl; int error_handle; int conf; int ctr_drbg; int entropy; int sockfd; } ;
+typedef TYPE_1__ esp_tls_t ;
+typedef int esp_tls_cfg_t ;
+typedef int esp_tls_cfg_server_t ;
+typedef scalar_t__ esp_err_t ;
+
+
+ int CONFIG_MBEDTLS_DEBUG_LEVEL ;
+ int ERR_TYPE_MBEDTLS ;
+ scalar_t__ ESP_ERR_MBEDTLS_CTR_DRBG_SEED_FAILED ;
+ scalar_t__ ESP_ERR_MBEDTLS_SSL_SETUP_FAILED ;
+ scalar_t__ ESP_FAIL ;
+ int ESP_INT_EVENT_TRACKER_CAPTURE (int ,int ,int) ;
+ int ESP_LOGE (int ,char*,...) ;
+ scalar_t__ ESP_OK ;
+ scalar_t__ ESP_TLS_CLIENT ;
+ scalar_t__ ESP_TLS_SERVER ;
+ int TAG ;
+ int assert (int ) ;
+ int esp_mbedtls_cleanup (TYPE_1__*) ;
+ int mbedtls_ctr_drbg_init (int *) ;
+ int mbedtls_ctr_drbg_random ;
+ int mbedtls_ctr_drbg_seed (int *,int ,int *,int *,int ) ;
+ int mbedtls_entropy_func ;
+ int mbedtls_entropy_init (int *) ;
+ int mbedtls_esp_enable_debug_log (int *,int ) ;
+ int mbedtls_net_recv ;
+ int mbedtls_net_send ;
+ int mbedtls_ssl_conf_rng (int *,int ,int *) ;
+ int mbedtls_ssl_config_init (int *) ;
+ int mbedtls_ssl_init (int *) ;
+ int mbedtls_ssl_set_bio (int *,TYPE_4__*,int ,int ,int *) ;
+ int mbedtls_ssl_setup (int *,int *) ;
+ scalar_t__ set_client_config (char const*,size_t,int *,TYPE_1__*) ;
+ scalar_t__ set_server_config (int *,TYPE_1__*) ;
 
 esp_err_t esp_create_mbedtls_handle(const char *hostname, size_t hostlen, const void *cfg, esp_tls_t *tls)
 {
-    assert(cfg != NULL);
-    assert(tls != NULL);
+    assert(cfg != ((void*)0));
+    assert(tls != ((void*)0));
     int ret;
     esp_err_t esp_ret = ESP_FAIL;
     tls->server_fd.fd = tls->sockfd;
@@ -68,20 +68,20 @@ esp_err_t esp_create_mbedtls_handle(const char *hostname, size_t hostlen, const 
             goto exit;
         }
     } else if (tls->role == ESP_TLS_SERVER) {
-#ifdef CONFIG_ESP_TLS_SERVER
-        esp_ret = set_server_config((esp_tls_cfg_server_t *) cfg, tls);
-        if (esp_ret != 0) {
-            ESP_LOGE(TAG, "Failed to set server configurations");
-            goto exit;
-        }
-#else
+
+
+
+
+
+
+
             ESP_LOGE(TAG, "ESP_TLS_SERVER Not enabled in Kconfig");
             goto exit;
-#endif
+
     }
 
     if ((ret = mbedtls_ctr_drbg_seed(&tls->ctr_drbg,
-                                     mbedtls_entropy_func, &tls->entropy, NULL, 0)) != 0) {
+                                     mbedtls_entropy_func, &tls->entropy, ((void*)0), 0)) != 0) {
         ESP_LOGE(TAG, "mbedtls_ctr_drbg_seed returned -0x%x", -ret);
         ESP_INT_EVENT_TRACKER_CAPTURE(tls->error_handle, ERR_TYPE_MBEDTLS, -ret);
         esp_ret = ESP_ERR_MBEDTLS_CTR_DRBG_SEED_FAILED;
@@ -90,9 +90,9 @@ esp_err_t esp_create_mbedtls_handle(const char *hostname, size_t hostlen, const 
 
     mbedtls_ssl_conf_rng(&tls->conf, mbedtls_ctr_drbg_random, &tls->ctr_drbg);
 
-#ifdef CONFIG_MBEDTLS_DEBUG
-    mbedtls_esp_enable_debug_log(&tls->conf, CONFIG_MBEDTLS_DEBUG_LEVEL);
-#endif
+
+
+
 
     if ((ret = mbedtls_ssl_setup(&tls->ssl, &tls->conf)) != 0) {
         ESP_LOGE(TAG, "mbedtls_ssl_setup returned -0x%x", -ret);
@@ -100,7 +100,7 @@ esp_err_t esp_create_mbedtls_handle(const char *hostname, size_t hostlen, const 
         esp_ret = ESP_ERR_MBEDTLS_SSL_SETUP_FAILED;
         goto exit;
     }
-    mbedtls_ssl_set_bio(&tls->ssl, &tls->server_fd, mbedtls_net_send, mbedtls_net_recv, NULL);
+    mbedtls_ssl_set_bio(&tls->ssl, &tls->server_fd, mbedtls_net_send, mbedtls_net_recv, ((void*)0));
 
     return ESP_OK;
 

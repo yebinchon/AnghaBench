@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_4__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int* regs; int /*<<< orphan*/  emu_flags; } ;
+
+
+typedef struct TYPE_6__ TYPE_4__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int* regs; int emu_flags; } ;
 struct TYPE_5__ {unsigned int m68krcycles_done; int state; } ;
 
-/* Variables and functions */
- scalar_t__ CYCLES_GE (unsigned int,unsigned int) ; 
- scalar_t__ CYCLES_GT (unsigned int,unsigned int) ; 
- int /*<<< orphan*/  EL_32X ; 
- int P32XS_nRES ; 
- TYPE_4__ Pico32x ; 
- int SH2_IDLE_STATES ; 
- int /*<<< orphan*/  elprintf (int /*<<< orphan*/ ,char*,unsigned int,...) ; 
- unsigned int event_time_next ; 
- TYPE_1__ msh2 ; 
- int /*<<< orphan*/  p32x_run_events (unsigned int) ; 
- int /*<<< orphan*/  p32x_timers_do (unsigned int) ; 
- int /*<<< orphan*/  run_sh2 (TYPE_1__*,int) ; 
- TYPE_1__ ssh2 ; 
+
+ scalar_t__ CYCLES_GE (unsigned int,unsigned int) ;
+ scalar_t__ CYCLES_GT (unsigned int,unsigned int) ;
+ int EL_32X ;
+ int P32XS_nRES ;
+ TYPE_4__ Pico32x ;
+ int SH2_IDLE_STATES ;
+ int elprintf (int ,char*,unsigned int,...) ;
+ unsigned int event_time_next ;
+ TYPE_1__ msh2 ;
+ int p32x_run_events (unsigned int) ;
+ int p32x_timers_do (unsigned int) ;
+ int run_sh2 (TYPE_1__*,int) ;
+ TYPE_1__ ssh2 ;
 
 void sync_sh2s_normal(unsigned int m68k_target)
 {
@@ -39,7 +39,7 @@ void sync_sh2s_normal(unsigned int m68k_target)
 
   if (!(Pico32x.regs[0] & P32XS_nRES)) {
     msh2.m68krcycles_done = ssh2.m68krcycles_done = m68k_target;
-    return; // rare
+    return;
   }
 
   now = msh2.m68krcycles_done;
@@ -97,7 +97,7 @@ void sync_sh2s_normal(unsigned int m68k_target)
     timer_cycles = now;
   }
 
-  // advance idle CPUs
+
   if (msh2.state & SH2_IDLE_STATES) {
     if (CYCLES_GT(m68k_target, msh2.m68krcycles_done))
       msh2.m68krcycles_done = m68k_target;

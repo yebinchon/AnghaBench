@@ -1,69 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
 struct TYPE_13__ {int rtfMajor; } ;
-typedef  TYPE_1__ RTF_Info ;
+typedef TYPE_1__ RTF_Info ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CharAttr (TYPE_1__*) ; 
- int /*<<< orphan*/  CharSet (TYPE_1__*) ; 
- int /*<<< orphan*/  DefFont (TYPE_1__*) ; 
- int /*<<< orphan*/  Destination (TYPE_1__*) ; 
- int /*<<< orphan*/  DocAttr (TYPE_1__*) ; 
- int /*<<< orphan*/  ME_RTFCharAttrHook (TYPE_1__*) ; 
- int /*<<< orphan*/  ME_RTFParAttrHook (TYPE_1__*) ; 
- int /*<<< orphan*/  ME_RTFSpecialCharHook (TYPE_1__*) ; 
- int /*<<< orphan*/  ME_RTFTblAttrHook (TYPE_1__*) ; 
- int /*<<< orphan*/  SpecialChar (TYPE_1__*) ; 
-#define  rtfCharAttr 135 
-#define  rtfCharSet 134 
-#define  rtfDefFont 133 
-#define  rtfDestination 132 
-#define  rtfDocAttr 131 
-#define  rtfParAttr 130 
-#define  rtfSpecialChar 129 
-#define  rtfTblAttr 128 
 
+ int CharAttr (TYPE_1__*) ;
+ int CharSet (TYPE_1__*) ;
+ int DefFont (TYPE_1__*) ;
+ int Destination (TYPE_1__*) ;
+ int DocAttr (TYPE_1__*) ;
+ int ME_RTFCharAttrHook (TYPE_1__*) ;
+ int ME_RTFParAttrHook (TYPE_1__*) ;
+ int ME_RTFSpecialCharHook (TYPE_1__*) ;
+ int ME_RTFTblAttrHook (TYPE_1__*) ;
+ int SpecialChar (TYPE_1__*) ;
 __attribute__((used)) static void
 ControlClass (RTF_Info *info)
 {
-	switch (info->rtfMajor)
-	{
-        case rtfCharAttr:
+ switch (info->rtfMajor)
+ {
+        case 135:
                 CharAttr(info);
                 ME_RTFCharAttrHook(info);
                 break;
-        case rtfParAttr:
+        case 130:
                 ME_RTFParAttrHook(info);
                 break;
-        case rtfTblAttr:
+        case 128:
                 ME_RTFTblAttrHook(info);
                 break;
-        case rtfCharSet:
+        case 134:
                 CharSet(info);
                 break;
-        case rtfDefFont:
+        case 133:
                 DefFont(info);
                 break;
-	case rtfDestination:
-		Destination (info);
-		break;
-        case rtfDocAttr:
+ case 132:
+  Destination (info);
+  break;
+        case 131:
                 DocAttr(info);
                 break;
-	case rtfSpecialChar:
+ case 129:
                 SpecialChar (info);
                 ME_RTFSpecialCharHook(info);
-		break;
-	}
+  break;
+ }
 }

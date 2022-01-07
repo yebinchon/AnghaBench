@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_24__   TYPE_7__ ;
-typedef  struct TYPE_23__   TYPE_6__ ;
-typedef  struct TYPE_22__   TYPE_5__ ;
-typedef  struct TYPE_21__   TYPE_4__ ;
-typedef  struct TYPE_20__   TYPE_3__ ;
-typedef  struct TYPE_19__   TYPE_2__ ;
-typedef  struct TYPE_18__   TYPE_1__ ;
-typedef  struct TYPE_17__   TYPE_13__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_24__ TYPE_7__ ;
+typedef struct TYPE_23__ TYPE_6__ ;
+typedef struct TYPE_22__ TYPE_5__ ;
+typedef struct TYPE_21__ TYPE_4__ ;
+typedef struct TYPE_20__ TYPE_3__ ;
+typedef struct TYPE_19__ TYPE_2__ ;
+typedef struct TYPE_18__ TYPE_1__ ;
+typedef struct TYPE_17__ TYPE_13__ ;
+
+
 struct TYPE_24__ {TYPE_2__* priv; } ;
 struct TYPE_23__ {TYPE_7__* dst; } ;
-struct TYPE_22__ {int /*<<< orphan*/ * data; int /*<<< orphan*/ * linesize; } ;
-struct TYPE_21__ {scalar_t__** mvs; int /*<<< orphan*/  sbad; } ;
-struct TYPE_20__ {TYPE_5__* avf; int /*<<< orphan*/  blocks; } ;
-struct TYPE_17__ {int /*<<< orphan*/  data_ref; int /*<<< orphan*/  data_cur; int /*<<< orphan*/  linesize; } ;
+struct TYPE_22__ {int * data; int * linesize; } ;
+struct TYPE_21__ {scalar_t__** mvs; int sbad; } ;
+struct TYPE_20__ {TYPE_5__* avf; int blocks; } ;
+struct TYPE_17__ {int data_ref; int data_cur; int linesize; } ;
 struct TYPE_19__ {scalar_t__ mi_mode; scalar_t__ me_method; int b_count; scalar_t__ me_mode; int b_height; int b_width; scalar_t__ mc_mode; int log2_mb_size; TYPE_1__* clusters; TYPE_4__* int_blocks; scalar_t__ vsbmc; TYPE_13__ me_ctx; TYPE_3__* frames; void** mv_table; } ;
 struct TYPE_18__ {int nb; scalar_t__* sum; } ;
-typedef  TYPE_2__ MIContext ;
-typedef  TYPE_3__ Frame ;
-typedef  TYPE_4__ Block ;
-typedef  TYPE_5__ AVFrame ;
-typedef  TYPE_6__ AVFilterLink ;
-typedef  TYPE_7__ AVFilterContext ;
+typedef TYPE_2__ MIContext ;
+typedef TYPE_3__ Frame ;
+typedef TYPE_4__ Block ;
+typedef TYPE_5__ AVFrame ;
+typedef TYPE_6__ AVFilterLink ;
+typedef TYPE_7__ AVFilterContext ;
 
-/* Variables and functions */
- scalar_t__ AV_ME_METHOD_EPZS ; 
- scalar_t__ MC_MODE_AOBMC ; 
- scalar_t__ ME_MODE_BIDIR ; 
- scalar_t__ ME_MODE_BILAT ; 
- scalar_t__ MI_MODE_MCI ; 
- int NB_CLUSTERS ; 
- int NB_FRAMES ; 
- int /*<<< orphan*/  av_frame_free (TYPE_5__**) ; 
- int /*<<< orphan*/  bilateral_me (TYPE_2__*) ; 
- int cluster_mvs (TYPE_2__*) ; 
- int /*<<< orphan*/  get_sbad (TYPE_13__*,int,int,scalar_t__,scalar_t__) ; 
- void* memcpy (void*,void*,int) ; 
- int /*<<< orphan*/  memmove (TYPE_3__*,TYPE_3__*,int) ; 
- int /*<<< orphan*/  search_mv (TYPE_2__*,int /*<<< orphan*/ ,int,int,int) ; 
+
+ scalar_t__ AV_ME_METHOD_EPZS ;
+ scalar_t__ MC_MODE_AOBMC ;
+ scalar_t__ ME_MODE_BIDIR ;
+ scalar_t__ ME_MODE_BILAT ;
+ scalar_t__ MI_MODE_MCI ;
+ int NB_CLUSTERS ;
+ int NB_FRAMES ;
+ int av_frame_free (TYPE_5__**) ;
+ int bilateral_me (TYPE_2__*) ;
+ int cluster_mvs (TYPE_2__*) ;
+ int get_sbad (TYPE_13__*,int,int,scalar_t__,scalar_t__) ;
+ void* memcpy (void*,void*,int) ;
+ int memmove (TYPE_3__*,TYPE_3__*,int) ;
+ int search_mv (TYPE_2__*,int ,int,int,int) ;
 
 __attribute__((used)) static int inject_frame(AVFilterLink *inlink, AVFrame *avf_in)
 {

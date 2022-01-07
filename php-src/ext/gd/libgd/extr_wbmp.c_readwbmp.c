@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int type; int width; int height; int* bitmap; } ;
-typedef  TYPE_1__ Wbmp ;
+typedef TYPE_1__ Wbmp ;
 
-/* Variables and functions */
- int WBMP_BLACK ; 
- int WBMP_WHITE ; 
- int /*<<< orphan*/  gdFree (TYPE_1__*) ; 
- scalar_t__ gdMalloc (int) ; 
- void* getmbi (int (*) (void*),void*) ; 
- scalar_t__ overflow2 (int,int) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- scalar_t__ safe_emalloc (size_t,int,int /*<<< orphan*/ ) ; 
- scalar_t__ skipheader (int (*) (void*),void*) ; 
+
+ int WBMP_BLACK ;
+ int WBMP_WHITE ;
+ int gdFree (TYPE_1__*) ;
+ scalar_t__ gdMalloc (int) ;
+ void* getmbi (int (*) (void*),void*) ;
+ scalar_t__ overflow2 (int,int) ;
+ int printf (char*,...) ;
+ scalar_t__ safe_emalloc (size_t,int,int ) ;
+ scalar_t__ skipheader (int (*) (void*),void*) ;
 
 int
 readwbmp (int (*getin) (void *in), void *in, Wbmp ** return_wbmp)
@@ -31,7 +31,7 @@ readwbmp (int (*getin) (void *in), void *in, Wbmp ** return_wbmp)
   int row, col, byte, pel, pos;
   Wbmp *wbmp;
 
-  if ((wbmp = (Wbmp *) gdMalloc (sizeof (Wbmp))) == NULL)
+  if ((wbmp = (Wbmp *) gdMalloc (sizeof (Wbmp))) == ((void*)0))
     return (-1);
 
   wbmp->type = getin (in);
@@ -62,9 +62,9 @@ readwbmp (int (*getin) (void *in), void *in, Wbmp ** return_wbmp)
       return (-1);
     }
 
-#ifdef __DEBUG
-  printf ("W: %d, H: %d\n", wbmp->width, wbmp->height);
-#endif
+
+
+
 
   if (overflow2(sizeof (int), wbmp->width) ||
     overflow2(sizeof (int) * wbmp->width, wbmp->height))
@@ -73,39 +73,39 @@ readwbmp (int (*getin) (void *in), void *in, Wbmp ** return_wbmp)
       return (-1);
     }
 
-  if ((wbmp->bitmap = (int *) safe_emalloc((size_t)wbmp->width * wbmp->height, sizeof(int), 0)) == NULL)
+  if ((wbmp->bitmap = (int *) safe_emalloc((size_t)wbmp->width * wbmp->height, sizeof(int), 0)) == ((void*)0))
     {
       gdFree (wbmp);
       return (-1);
     }
 
-#ifdef __DEBUG
-  printf ("DATA CONSTRUCTED\n");
-#endif
+
+
+
 
   pos = 0;
   for (row = 0; row < wbmp->height; row++)
     {
       for (col = 0; col < wbmp->width;)
-	{
-	  byte = getin (in);
+ {
+   byte = getin (in);
 
-	  for (pel = 7; pel >= 0; pel--)
-	    {
-	      if (col++ < wbmp->width)
-		{
-		  if (byte & 1 << pel)
-		    {
-		      wbmp->bitmap[pos] = WBMP_WHITE;
-		    }
-		  else
-		    {
-		      wbmp->bitmap[pos] = WBMP_BLACK;
-		    }
-		  pos++;
-		}
-	    }
-	}
+   for (pel = 7; pel >= 0; pel--)
+     {
+       if (col++ < wbmp->width)
+  {
+    if (byte & 1 << pel)
+      {
+        wbmp->bitmap[pos] = WBMP_WHITE;
+      }
+    else
+      {
+        wbmp->bitmap[pos] = WBMP_BLACK;
+      }
+    pos++;
+  }
+     }
+ }
     }
 
   *return_wbmp = wbmp;

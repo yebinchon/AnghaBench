@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char u8_t ;
-typedef  int /*<<< orphan*/  id6 ;
 
-/* Variables and functions */
- char BIT_MASK (int) ; 
- int bt_mesh_aes_cmac_one (char*,char const*,int,char*) ; 
- int bt_mesh_s1 (char*,char*) ; 
+
+
+
+typedef char u8_t ;
+typedef int id6 ;
+
+
+ char BIT_MASK (int) ;
+ int bt_mesh_aes_cmac_one (char*,char const*,int,char*) ;
+ int bt_mesh_s1 (char*,char*) ;
 
 int bt_mesh_k4(const u8_t n[16], u8_t out[1])
 {

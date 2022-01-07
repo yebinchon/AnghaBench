@@ -1,54 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u8 ;
+
+
+
+
+typedef int u8 ;
 struct ieee80211_hw {int dummy; } ;
-
-/* Variables and functions */
-#define  RATR_INX_WIRELESS_B 134 
-#define  RATR_INX_WIRELESS_G 133 
-#define  RATR_INX_WIRELESS_GB 132 
-#define  RATR_INX_WIRELESS_N 131 
-#define  RATR_INX_WIRELESS_NB 130 
-#define  RATR_INX_WIRELESS_NG 129 
-#define  RATR_INX_WIRELESS_NGB 128 
-
 __attribute__((used)) static u8 _rtl92ee_mrate_idx_to_arfr_id(struct ieee80211_hw *hw, u8 rate_index)
 {
-	u8 ret = 0;
+ u8 ret = 0;
 
-	switch (rate_index) {
-	case RATR_INX_WIRELESS_NGB:
-		ret = 0;
-		break;
-	case RATR_INX_WIRELESS_N:
-	case RATR_INX_WIRELESS_NG:
-		ret = 4;
-		break;
-	case RATR_INX_WIRELESS_NB:
-		ret = 2;
-		break;
-	case RATR_INX_WIRELESS_GB:
-		ret = 6;
-		break;
-	case RATR_INX_WIRELESS_G:
-		ret = 7;
-		break;
-	case RATR_INX_WIRELESS_B:
-		ret = 8;
-		break;
-	default:
-		ret = 0;
-		break;
-	}
-	return ret;
+ switch (rate_index) {
+ case 128:
+  ret = 0;
+  break;
+ case 131:
+ case 129:
+  ret = 4;
+  break;
+ case 130:
+  ret = 2;
+  break;
+ case 132:
+  ret = 6;
+  break;
+ case 133:
+  ret = 7;
+  break;
+ case 134:
+  ret = 8;
+  break;
+ default:
+  ret = 0;
+  break;
+ }
+ return ret;
 }

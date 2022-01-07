@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
 struct TYPE_12__ {scalar_t__ error; } ;
-struct TYPE_10__ {int video_frame_size; int audio_frame_size; int /*<<< orphan*/  pal_colors_count; void* audio_frame_type; void* video_frame_type; } ;
+struct TYPE_10__ {int video_frame_size; int audio_frame_size; int pal_colors_count; void* audio_frame_type; void* video_frame_type; } ;
 struct TYPE_11__ {TYPE_1__ frame_header; } ;
-typedef  TYPE_1__ CinFrameHeader ;
-typedef  TYPE_2__ CinDemuxContext ;
-typedef  TYPE_3__ AVIOContext ;
+typedef TYPE_1__ CinFrameHeader ;
+typedef TYPE_2__ CinDemuxContext ;
+typedef TYPE_3__ AVIOContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  EIO ; 
- scalar_t__ avio_feof (TYPE_3__*) ; 
- void* avio_r8 (TYPE_3__*) ; 
- int /*<<< orphan*/  avio_rl16 (TYPE_3__*) ; 
- int avio_rl32 (TYPE_3__*) ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_INVALIDDATA ;
+ int EIO ;
+ scalar_t__ avio_feof (TYPE_3__*) ;
+ void* avio_r8 (TYPE_3__*) ;
+ int avio_rl16 (TYPE_3__*) ;
+ int avio_rl32 (TYPE_3__*) ;
 
 __attribute__((used)) static int cin_read_frame_header(CinDemuxContext *cin, AVIOContext *pb) {
     CinFrameHeader *hdr = &cin->frame_header;

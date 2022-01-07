@@ -1,60 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct aom_image {int d_w; int w; scalar_t__ d_h; scalar_t__ h; int fmt; int bit_depth; int /*<<< orphan*/  stride; scalar_t__ planes; } ;
-struct TYPE_16__ {int /*<<< orphan*/  decoder; } ;
-struct TYPE_15__ {int width; int height; int /*<<< orphan*/  pix_fmt; TYPE_4__* priv_data; } ;
-struct TYPE_14__ {int /*<<< orphan*/  linesize; int /*<<< orphan*/  data; } ;
-struct TYPE_13__ {int size; int /*<<< orphan*/  data; } ;
-typedef  TYPE_1__ AVPacket ;
-typedef  TYPE_2__ AVFrame ;
-typedef  TYPE_3__ AVCodecContext ;
-typedef  TYPE_4__ AV1DecodeContext ;
 
-/* Variables and functions */
- scalar_t__ AOM_CODEC_OK ; 
- int AOM_IMG_FMT_HIGHBITDEPTH ; 
- int AVERROR_EXTERNAL ; 
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_LOG_INFO ; 
- scalar_t__ aom_codec_decode (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- char* aom_codec_error (int /*<<< orphan*/ *) ; 
- char* aom_codec_error_detail (int /*<<< orphan*/ *) ; 
- struct aom_image* aom_codec_get_frame (int /*<<< orphan*/ *,void const**) ; 
- int /*<<< orphan*/  av_image_copy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/  const**,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  av_log (TYPE_3__*,int /*<<< orphan*/ ,char*,...) ; 
- int ff_get_buffer (TYPE_3__*,TYPE_2__*,int /*<<< orphan*/ ) ; 
- int ff_set_dimensions (TYPE_3__*,int,int) ; 
- int /*<<< orphan*/  image_copy_16_to_8 (TYPE_2__*,struct aom_image*) ; 
- int set_pix_fmt (TYPE_3__*,struct aom_image*) ; 
+
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct aom_image {int d_w; int w; scalar_t__ d_h; scalar_t__ h; int fmt; int bit_depth; int stride; scalar_t__ planes; } ;
+struct TYPE_16__ {int decoder; } ;
+struct TYPE_15__ {int width; int height; int pix_fmt; TYPE_4__* priv_data; } ;
+struct TYPE_14__ {int linesize; int data; } ;
+struct TYPE_13__ {int size; int data; } ;
+typedef TYPE_1__ AVPacket ;
+typedef TYPE_2__ AVFrame ;
+typedef TYPE_3__ AVCodecContext ;
+typedef TYPE_4__ AV1DecodeContext ;
+
+
+ scalar_t__ AOM_CODEC_OK ;
+ int AOM_IMG_FMT_HIGHBITDEPTH ;
+ int AVERROR_EXTERNAL ;
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ int AV_LOG_INFO ;
+ scalar_t__ aom_codec_decode (int *,int ,int,int *) ;
+ char* aom_codec_error (int *) ;
+ char* aom_codec_error_detail (int *) ;
+ struct aom_image* aom_codec_get_frame (int *,void const**) ;
+ int av_image_copy (int ,int ,int const**,int ,int ,int,int) ;
+ int av_log (TYPE_3__*,int ,char*,...) ;
+ int ff_get_buffer (TYPE_3__*,TYPE_2__*,int ) ;
+ int ff_set_dimensions (TYPE_3__*,int,int) ;
+ int image_copy_16_to_8 (TYPE_2__*,struct aom_image*) ;
+ int set_pix_fmt (TYPE_3__*,struct aom_image*) ;
 
 __attribute__((used)) static int aom_decode(AVCodecContext *avctx, void *data, int *got_frame,
                       AVPacket *avpkt)
 {
     AV1DecodeContext *ctx = avctx->priv_data;
-    AVFrame *picture      = data;
-    const void *iter      = NULL;
+    AVFrame *picture = data;
+    const void *iter = ((void*)0);
     struct aom_image *img;
     int ret;
 
-    if (aom_codec_decode(&ctx->decoder, avpkt->data, avpkt->size, NULL) !=
+    if (aom_codec_decode(&ctx->decoder, avpkt->data, avpkt->size, ((void*)0)) !=
         AOM_CODEC_OK) {
-        const char *error  = aom_codec_error(&ctx->decoder);
+        const char *error = aom_codec_error(&ctx->decoder);
         const char *detail = aom_codec_error_detail(&ctx->decoder);
 
         av_log(avctx, AV_LOG_ERROR, "Failed to decode frame: %s\n", error);

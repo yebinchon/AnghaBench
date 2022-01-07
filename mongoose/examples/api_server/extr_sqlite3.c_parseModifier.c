@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t u8 ;
-typedef  int /*<<< orphan*/  tx ;
-typedef  int sqlite3_int64 ;
-typedef  int /*<<< orphan*/  sqlite3_context ;
-typedef  int i64 ;
-struct TYPE_10__ {int iJD; int validHMS; double s; int D; int M; int Y; int /*<<< orphan*/  validJD; int /*<<< orphan*/  validTZ; int /*<<< orphan*/  m; int /*<<< orphan*/  h; } ;
-typedef  TYPE_1__ DateTime ;
 
-/* Variables and functions */
- int ArraySize (char*) ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  SQLITE_UTF8 ; 
- int /*<<< orphan*/  clearYMD_HMS_TZ (TYPE_1__*) ; 
- int /*<<< orphan*/  computeJD (TYPE_1__*) ; 
- int /*<<< orphan*/  computeYMD (TYPE_1__*) ; 
- int /*<<< orphan*/  computeYMD_HMS (TYPE_1__*) ; 
- int localtimeOffset (TYPE_1__*,int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  parseHhMmSs (char const*,TYPE_1__*) ; 
- int /*<<< orphan*/  sqlite3AtoF (char*,double*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3Isdigit (char const) ; 
- int /*<<< orphan*/  sqlite3Isspace (char) ; 
- int sqlite3Strlen30 (char*) ; 
- scalar_t__* sqlite3UpperToLower ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
- int /*<<< orphan*/  strncmp (char*,char*,int) ; 
+
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef size_t u8 ;
+typedef int tx ;
+typedef int sqlite3_int64 ;
+typedef int sqlite3_context ;
+typedef int i64 ;
+struct TYPE_10__ {int iJD; int validHMS; double s; int D; int M; int Y; int validJD; int validTZ; int m; int h; } ;
+typedef TYPE_1__ DateTime ;
+
+
+ int ArraySize (char*) ;
+ int SQLITE_OK ;
+ int SQLITE_UTF8 ;
+ int clearYMD_HMS_TZ (TYPE_1__*) ;
+ int computeJD (TYPE_1__*) ;
+ int computeYMD (TYPE_1__*) ;
+ int computeYMD_HMS (TYPE_1__*) ;
+ int localtimeOffset (TYPE_1__*,int *,int*) ;
+ int memset (TYPE_1__*,int ,int) ;
+ int parseHhMmSs (char const*,TYPE_1__*) ;
+ int sqlite3AtoF (char*,double*,int,int ) ;
+ int sqlite3Isdigit (char const) ;
+ int sqlite3Isspace (char) ;
+ int sqlite3Strlen30 (char*) ;
+ scalar_t__* sqlite3UpperToLower ;
+ int strcmp (char*,char*) ;
+ int strncmp (char*,char*,int) ;
 
 __attribute__((used)) static int parseModifier(sqlite3_context *pCtx, const char *zMod, DateTime *p){
   int rc = 1;
@@ -49,13 +49,13 @@ __attribute__((used)) static int parseModifier(sqlite3_context *pCtx, const char
   }
   z[n] = 0;
   switch( z[0] ){
-#ifndef SQLITE_OMIT_LOCALTIME
+
     case 'l': {
-      /*    localtime
-      **
-      ** Assuming the current time value is UTC (a.k.a. GMT), shift it to
-      ** show local time.
-      */
+
+
+
+
+
       if( strcmp(z, "localtime")==0 ){
         computeJD(p);
         p->iJD += localtimeOffset(p, pCtx, &rc);
@@ -63,20 +63,20 @@ __attribute__((used)) static int parseModifier(sqlite3_context *pCtx, const char
       }
       break;
     }
-#endif
+
     case 'u': {
-      /*
-      **    unixepoch
-      **
-      ** Treat the current value of p->iJD as the number of
-      ** seconds since 1970.  Convert to a real julian day number.
-      */
+
+
+
+
+
+
       if( strcmp(z, "unixepoch")==0 && p->validJD ){
         p->iJD = (p->iJD + 43200)/86400 + 21086676*(i64)10000000;
         clearYMD_HMS_TZ(p);
         rc = 0;
       }
-#ifndef SQLITE_OMIT_LOCALTIME
+
       else if( strcmp(z, "utc")==0 ){
         sqlite3_int64 c1;
         computeJD(p);
@@ -87,17 +87,17 @@ __attribute__((used)) static int parseModifier(sqlite3_context *pCtx, const char
           p->iJD += c1 - localtimeOffset(p, pCtx, &rc);
         }
       }
-#endif
+
       break;
     }
     case 'w': {
-      /*
-      **    weekday N
-      **
-      ** Move the date to the same time on the next occurrence of
-      ** weekday N where 0==Sunday, 1==Monday, and so forth.  If the
-      ** date is already on the appropriate weekday, this is a no-op.
-      */
+
+
+
+
+
+
+
       if( strncmp(z, "weekday ", 8)==0
                && sqlite3AtoF(&z[8], &r, sqlite3Strlen30(&z[8]), SQLITE_UTF8)
                && (n=(int)r)==r && n>=0 && r<7 ){
@@ -115,12 +115,12 @@ __attribute__((used)) static int parseModifier(sqlite3_context *pCtx, const char
       break;
     }
     case 's': {
-      /*
-      **    start of TTTTT
-      **
-      ** Move the date backwards to the beginning of the current day,
-      ** or month or year.
-      */
+
+
+
+
+
+
       if( strncmp(z, "start of ", 9)!=0 ) break;
       z += 9;
       computeYMD(p);
@@ -161,11 +161,11 @@ __attribute__((used)) static int parseModifier(sqlite3_context *pCtx, const char
         break;
       }
       if( z[n]==':' ){
-        /* A modifier of the form (+|-)HH:MM:SS.FFF adds (or subtracts) the
-        ** specified number of hours, minutes, seconds, and fractional seconds
-        ** to the time.  The ".FFF" may be omitted.  The ":SS.FFF" may be
-        ** omitted.
-        */
+
+
+
+
+
         const char *z2 = z;
         DateTime tx;
         sqlite3_int64 day;

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* xsltTransformContextPtr ;
-typedef  int /*<<< orphan*/ * xmlXPathFunction ;
-typedef  int /*<<< orphan*/  xmlChar ;
-struct TYPE_3__ {int /*<<< orphan*/ * extFunctions; int /*<<< orphan*/ * xpathCtxt; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  XML_CAST_FPTR (int /*<<< orphan*/ *) ; 
- int xmlHashAddEntry2 (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * xmlHashCreate (int) ; 
- int /*<<< orphan*/  xmlXPathRegisterFuncNS (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef TYPE_1__* xsltTransformContextPtr ;
+typedef int * xmlXPathFunction ;
+typedef int xmlChar ;
+struct TYPE_3__ {int * extFunctions; int * xpathCtxt; } ;
+
+
+ int XML_CAST_FPTR (int *) ;
+ int xmlHashAddEntry2 (int *,int const*,int const*,int ) ;
+ int * xmlHashCreate (int) ;
+ int xmlXPathRegisterFuncNS (int *,int const*,int const*,int *) ;
 
 int
 xsltRegisterExtFunction(xsltTransformContextPtr ctxt, const xmlChar * name,
@@ -28,15 +28,15 @@ xsltRegisterExtFunction(xsltTransformContextPtr ctxt, const xmlChar * name,
 {
     int ret;
 
-    if ((ctxt == NULL) || (name == NULL) ||
-        (URI == NULL) || (function == NULL))
+    if ((ctxt == ((void*)0)) || (name == ((void*)0)) ||
+        (URI == ((void*)0)) || (function == ((void*)0)))
         return (-1);
-    if (ctxt->xpathCtxt != NULL) {
+    if (ctxt->xpathCtxt != ((void*)0)) {
         xmlXPathRegisterFuncNS(ctxt->xpathCtxt, name, URI, function);
     }
-    if (ctxt->extFunctions == NULL)
+    if (ctxt->extFunctions == ((void*)0))
         ctxt->extFunctions = xmlHashCreate(10);
-    if (ctxt->extFunctions == NULL)
+    if (ctxt->extFunctions == ((void*)0))
         return (-1);
 
     ret = xmlHashAddEntry2(ctxt->extFunctions, name, URI,

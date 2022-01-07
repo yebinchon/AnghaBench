@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  heim_bool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HEIM_TID_BOOL ; 
- int /*<<< orphan*/  heim_base_make_tagged_object (int,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int heim_bool_t ;
+
+
+ int HEIM_TID_BOOL ;
+ int heim_base_make_tagged_object (int,int ) ;
 
 heim_bool_t
 heim_bool_create(int val)

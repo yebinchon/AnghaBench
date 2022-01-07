@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int /*<<< orphan*/  advertisement ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert_se (int) ; 
- int /*<<< orphan*/  printf (char*,int) ; 
- int /*<<< orphan*/ * test_fd ; 
- scalar_t__ verbose ; 
- int write (int /*<<< orphan*/ ,int*,int) ; 
+
+
+
+typedef int uint8_t ;
+typedef int advertisement ;
+
+
+ int assert_se (int) ;
+ int printf (char*,int) ;
+ int * test_fd ;
+ scalar_t__ verbose ;
+ int write (int ,int*,int) ;
 
 __attribute__((used)) static int send_ra(uint8_t flags) {
         uint8_t advertisement[] = {

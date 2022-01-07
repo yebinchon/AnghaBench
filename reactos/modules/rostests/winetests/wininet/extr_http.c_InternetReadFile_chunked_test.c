@@ -1,63 +1,63 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int HINTERNET ;
-typedef  size_t DWORD ;
-typedef  char CHAR ;
-typedef  int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERROR_HTTP_HEADER_NOT_FOUND ; 
- int /*<<< orphan*/  ERROR_INTERNET_NAME_NOT_RESOLVED ; 
- int /*<<< orphan*/  GetLastError () ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HTTP_QUERY_CONTENT_LENGTH ; 
- int /*<<< orphan*/  HTTP_QUERY_CONTENT_TYPE ; 
- int /*<<< orphan*/  HTTP_QUERY_TRANSFER_ENCODING ; 
- char* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int HttpOpenRequestA (int,char*,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const**,int,int) ; 
- int HttpQueryInfoA (int,int /*<<< orphan*/ ,...) ; 
- int HttpSendRequestA (int,char*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int INTERNET_FLAG_KEEP_CONNECTION ; 
- int INTERNET_FLAG_RELOAD ; 
- int /*<<< orphan*/  INTERNET_INVALID_PORT_NUMBER ; 
- int /*<<< orphan*/  INTERNET_OPEN_TYPE_PRECONFIG ; 
- int /*<<< orphan*/  INTERNET_SERVICE_HTTP ; 
- int InternetCloseHandle (int) ; 
- int InternetConnectA (int,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int) ; 
- int InternetOpenA (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int InternetQueryDataAvailable (int,size_t*,int,int) ; 
- int InternetReadFile (int,char*,int,size_t*) ; 
- int /*<<< orphan*/  SetLastError (int) ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- scalar_t__ proxy_active () ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
- int /*<<< orphan*/  test_request_flags (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  trace (char*,...) ; 
+
+
+
+typedef int HINTERNET ;
+typedef size_t DWORD ;
+typedef char CHAR ;
+typedef int BOOL ;
+
+
+ int ERROR_HTTP_HEADER_NOT_FOUND ;
+ int ERROR_INTERNET_NAME_NOT_RESOLVED ;
+ int GetLastError () ;
+ int GetProcessHeap () ;
+ int HTTP_QUERY_CONTENT_LENGTH ;
+ int HTTP_QUERY_CONTENT_TYPE ;
+ int HTTP_QUERY_TRANSFER_ENCODING ;
+ char* HeapAlloc (int ,int ,int ) ;
+ int HeapFree (int ,int ,char*) ;
+ int HttpOpenRequestA (int,char*,char*,int *,int *,char const**,int,int) ;
+ int HttpQueryInfoA (int,int ,...) ;
+ int HttpSendRequestA (int,char*,int,int *,int ) ;
+ int INTERNET_FLAG_KEEP_CONNECTION ;
+ int INTERNET_FLAG_RELOAD ;
+ int INTERNET_INVALID_PORT_NUMBER ;
+ int INTERNET_OPEN_TYPE_PRECONFIG ;
+ int INTERNET_SERVICE_HTTP ;
+ int InternetCloseHandle (int) ;
+ int InternetConnectA (int,char*,int ,int *,int *,int ,int,int) ;
+ int InternetOpenA (char*,int ,int *,int *,int ) ;
+ int InternetQueryDataAvailable (int,size_t*,int,int) ;
+ int InternetReadFile (int,char*,int,size_t*) ;
+ int SetLastError (int) ;
+ scalar_t__ TRUE ;
+ int ok (int,char*,...) ;
+ scalar_t__ proxy_active () ;
+ int strcmp (char*,char*) ;
+ int test_request_flags (int,int ) ;
+ int trace (char*,...) ;
 
 __attribute__((used)) static void InternetReadFile_chunked_test(void)
 {
     BOOL res;
     CHAR buffer[4000];
     DWORD length, got;
-    const char *types[2] = { "*", NULL };
+    const char *types[2] = { "*", ((void*)0) };
     HINTERNET hi, hic = 0, hor = 0;
 
     trace("Starting InternetReadFile chunked test\n");
 
     trace("InternetOpenA <--\n");
-    hi = InternetOpenA("", INTERNET_OPEN_TYPE_PRECONFIG, NULL, NULL, 0);
+    hi = InternetOpenA("", INTERNET_OPEN_TYPE_PRECONFIG, ((void*)0), ((void*)0), 0);
     ok((hi != 0x0),"InternetOpen failed with error %u\n", GetLastError());
     trace("InternetOpenA -->\n");
 
@@ -65,24 +65,24 @@ __attribute__((used)) static void InternetReadFile_chunked_test(void)
 
     trace("InternetConnectA <--\n");
     hic=InternetConnectA(hi, "test.winehq.org", INTERNET_INVALID_PORT_NUMBER,
-                         NULL, NULL, INTERNET_SERVICE_HTTP, 0x0, 0xdeadbeef);
+                         ((void*)0), ((void*)0), INTERNET_SERVICE_HTTP, 0x0, 0xdeadbeef);
     ok((hic != 0x0),"InternetConnect failed with error %u\n", GetLastError());
     trace("InternetConnectA -->\n");
 
     if (hic == 0x0) goto abort;
 
     trace("HttpOpenRequestA <--\n");
-    hor = HttpOpenRequestA(hic, "GET", "/tests/chunked", NULL, NULL, types,
+    hor = HttpOpenRequestA(hic, "GET", "/tests/chunked", ((void*)0), ((void*)0), types,
                            INTERNET_FLAG_KEEP_CONNECTION | INTERNET_FLAG_RELOAD,
                            0xdeadbead);
     if (hor == 0x0 && GetLastError() == ERROR_INTERNET_NAME_NOT_RESOLVED) {
-        /*
-         * If the internet name can't be resolved we are probably behind
-         * a firewall or in some other way not directly connected to the
-         * Internet. Not enough reason to fail the test. Just ignore and
-         * abort.
-         */
-    } else  {
+
+
+
+
+
+
+    } else {
         ok((hor != 0x0),"HttpOpenRequest failed with error %u\n", GetLastError());
     }
     trace("HttpOpenRequestA -->\n");
@@ -91,7 +91,7 @@ __attribute__((used)) static void InternetReadFile_chunked_test(void)
 
     trace("HttpSendRequestA -->\n");
     SetLastError(0xdeadbeef);
-    res = HttpSendRequestA(hor, "", -1, NULL, 0);
+    res = HttpSendRequestA(hor, "", -1, ((void*)0), 0);
     ok(res || (GetLastError() == ERROR_INTERNET_NAME_NOT_RESOLVED),
        "Synchronous HttpSendRequest returning 0, error %u\n", GetLastError());
     trace("HttpSendRequestA <--\n");

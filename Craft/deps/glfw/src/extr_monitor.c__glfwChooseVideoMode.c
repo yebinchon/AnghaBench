@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_7__ {int modeCount; TYPE_2__* modes; } ;
-typedef  TYPE_1__ _GLFWmonitor ;
+typedef TYPE_1__ _GLFWmonitor ;
 struct TYPE_8__ {scalar_t__ redBits; scalar_t__ greenBits; scalar_t__ blueBits; int width; int height; scalar_t__ refreshRate; } ;
-typedef  TYPE_2__ GLFWvidmode ;
+typedef TYPE_2__ GLFWvidmode ;
 
-/* Variables and functions */
- scalar_t__ GLFW_DONT_CARE ; 
- unsigned int UINT_MAX ; 
- unsigned int abs (int) ; 
- int /*<<< orphan*/  refreshVideoModes (TYPE_1__*) ; 
+
+ scalar_t__ GLFW_DONT_CARE ;
+ unsigned int UINT_MAX ;
+ unsigned int abs (int) ;
+ int refreshVideoModes (TYPE_1__*) ;
 
 const GLFWvidmode* _glfwChooseVideoMode(_GLFWmonitor* monitor,
                                         const GLFWvidmode* desired)
@@ -31,12 +31,12 @@ const GLFWvidmode* _glfwChooseVideoMode(_GLFWmonitor* monitor,
     unsigned int rateDiff, leastRateDiff = UINT_MAX;
     unsigned int colorDiff, leastColorDiff = UINT_MAX;
     const GLFWvidmode* current;
-    const GLFWvidmode* closest = NULL;
+    const GLFWvidmode* closest = ((void*)0);
 
     if (!refreshVideoModes(monitor))
-        return NULL;
+        return ((void*)0);
 
-    for (i = 0;  i < monitor->modeCount;  i++)
+    for (i = 0; i < monitor->modeCount; i++)
     {
         current = monitor->modes + i;
 

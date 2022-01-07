@@ -1,82 +1,74 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ int Args_per_line ;
+ int F_WRLCK ;
+ scalar_t__ GA ;
+ scalar_t__ GB ;
+ scalar_t__ GC ;
+ scalar_t__ GS ;
+ scalar_t__ GT ;
+ int Gc ;
+ int Gd ;
+ int MAX_GROUPS ;
+ int MONEY_SCHEMA_V1 ;
+ int O_CREAT ;
+ int O_EXCL ;
+ int O_RDONLY ;
+ int O_RDWR ;
+ int O_WRONLY ;
+ int SEEK_END ;
+ int SEEK_SET ;
 
-/* Forward declarations */
 
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  Args_per_line ; 
- int /*<<< orphan*/  F_WRLCK ; 
- scalar_t__ GA ; 
- scalar_t__ GB ; 
- scalar_t__ GC ; 
- scalar_t__ GS ; 
- scalar_t__ GT ; 
- int Gc ; 
- int Gd ; 
- int MAX_GROUPS ; 
- int /*<<< orphan*/  MONEY_SCHEMA_V1 ; 
- int O_CREAT ; 
- int O_EXCL ; 
- int /*<<< orphan*/  O_RDONLY ; 
- int /*<<< orphan*/  O_RDWR ; 
- int O_WRONLY ; 
- int /*<<< orphan*/  SEEK_END ; 
- int /*<<< orphan*/  SEEK_SET ; 
-#define  TF_ACCOUNTS 129 
-#define  TF_ACCTYPES 128 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  at_END ; 
- int /*<<< orphan*/  atol (char*) ; 
- scalar_t__ change_user (char*) ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  flush_out () ; 
- char* fname_last (char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- scalar_t__ fsync (int) ; 
- int /*<<< orphan*/  ftruncate (int,int /*<<< orphan*/ ) ; 
- int get_dump_format (char*) ; 
- int getopt (int,char**,char*) ; 
- char* groups_fname ; 
- char* groups_fname2 ; 
- scalar_t__ load_binlog_headers (int) ; 
- scalar_t__ lock_whole_file (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lseek (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ open (char*,int,...) ; 
- char* optarg ; 
- int optind ; 
- int /*<<< orphan*/  output_format ; 
- int /*<<< orphan*/  output_stats () ; 
- int /*<<< orphan*/  process_account_types_row () ; 
- char* progname ; 
- int /*<<< orphan*/  randomize () ; 
- int read (scalar_t__,scalar_t__,int) ; 
- int /*<<< orphan*/  read_record () ; 
- scalar_t__ split_max ; 
- scalar_t__ split_min ; 
- int split_mod ; 
- scalar_t__ split_rem ; 
- scalar_t__ src_fd ; 
- char* src_fname ; 
- int sscanf (char*,char*,scalar_t__*,int*) ; 
- int /*<<< orphan*/  start_binlog (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  stderr ; 
- int stdout_mode ; 
- int table_format ; 
- int targ_fd ; 
- char* targ_fname ; 
- int /*<<< orphan*/  usage () ; 
- char* username ; 
- scalar_t__ verbosity ; 
- int /*<<< orphan*/  write_binlog_headers () ; 
+ int assert (int) ;
+ int at_END ;
+ int atol (char*) ;
+ scalar_t__ change_user (char*) ;
+ int close (int) ;
+ int exit (int) ;
+ int flush_out () ;
+ char* fname_last (char*) ;
+ int fprintf (int ,char*,...) ;
+ scalar_t__ fsync (int) ;
+ int ftruncate (int,int ) ;
+ int get_dump_format (char*) ;
+ int getopt (int,char**,char*) ;
+ char* groups_fname ;
+ char* groups_fname2 ;
+ scalar_t__ load_binlog_headers (int) ;
+ scalar_t__ lock_whole_file (int,int ) ;
+ int lseek (int,int ,int ) ;
+ scalar_t__ open (char*,int,...) ;
+ char* optarg ;
+ int optind ;
+ int output_format ;
+ int output_stats () ;
+ int process_account_types_row () ;
+ char* progname ;
+ int randomize () ;
+ int read (scalar_t__,scalar_t__,int) ;
+ int read_record () ;
+ scalar_t__ split_max ;
+ scalar_t__ split_min ;
+ int split_mod ;
+ scalar_t__ split_rem ;
+ scalar_t__ src_fd ;
+ char* src_fname ;
+ int sscanf (char*,char*,scalar_t__*,int*) ;
+ int start_binlog (int ,char*) ;
+ int stderr ;
+ int stdout_mode ;
+ int table_format ;
+ int targ_fd ;
+ char* targ_fname ;
+ int usage () ;
+ char* username ;
+ scalar_t__ verbosity ;
+ int write_binlog_headers () ;
 
 int main (int argc, char *argv[]) {
   int i;
@@ -96,8 +88,8 @@ int main (int argc, char *argv[]) {
     case 'f':
       table_format = get_dump_format(optarg);
       if (!table_format) {
-	fprintf (stderr, "fatal: unsupported table dump format: %s\n", optarg);
-	return 2;
+ fprintf (stderr, "fatal: unsupported table dump format: %s\n", optarg);
+ return 2;
       }
       break;
     case 'o':
@@ -205,14 +197,14 @@ int main (int argc, char *argv[]) {
   randomize ();
 
   switch (table_format) {
-  case TF_ACCTYPES:
+  case 128:
     start_binlog(MONEY_SCHEMA_V1, "money");
     Args_per_line = at_END;
     while (read_record() > 0) {
       process_account_types_row();
     }
     break;
-  case TF_ACCOUNTS:
+  case 129:
   default:
     fprintf (stderr, "unknown table type\n");
     exit(1);

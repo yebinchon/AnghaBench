@@ -1,60 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_5__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint32_t ;
+
+
+typedef struct TYPE_9__ TYPE_5__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
 struct TYPE_9__ {int nb_streams; TYPE_3__** streams; } ;
 struct TYPE_8__ {TYPE_1__* codecpar; } ;
 struct TYPE_7__ {TYPE_5__* fc; } ;
-struct TYPE_6__ {scalar_t__ sample_rate; int frame_size; int channel_layout; int /*<<< orphan*/  channels; void* bits_per_coded_sample; void* bit_rate; } ;
-typedef  TYPE_2__ MOVContext ;
-typedef  int /*<<< orphan*/  MOVAtom ;
-typedef  int /*<<< orphan*/  GetBitContext ;
-typedef  TYPE_3__ AVStream ;
-typedef  int /*<<< orphan*/  AVIOContext ;
+struct TYPE_6__ {scalar_t__ sample_rate; int frame_size; int channel_layout; int channels; void* bits_per_coded_sample; void* bit_rate; } ;
+typedef TYPE_2__ MOVContext ;
+typedef int MOVAtom ;
+typedef int GetBitContext ;
+typedef TYPE_3__ AVStream ;
+typedef int AVIOContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_INVALIDDATA ; 
- int AV_CH_FRONT_CENTER ; 
- int AV_CH_FRONT_LEFT ; 
- int AV_CH_FRONT_RIGHT ; 
- int AV_CH_LOW_FREQUENCY ; 
- int AV_CH_SIDE_LEFT ; 
- int AV_CH_SIDE_RIGHT ; 
- scalar_t__ AV_INPUT_BUFFER_PADDING_SIZE ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_LOG_WARNING ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  av_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  av_get_channel_layout_nb_channels (int) ; 
- int /*<<< orphan*/  av_log (TYPE_5__*,int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/ * av_malloc (scalar_t__) ; 
- int const avio_read (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int const) ; 
- void* get_bits (int /*<<< orphan*/ *,int) ; 
- void* get_bits_long (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  init_get_bits (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  skip_bits (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  skip_bits_long (int /*<<< orphan*/ *,int) ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_INVALIDDATA ;
+ int AV_CH_FRONT_CENTER ;
+ int AV_CH_FRONT_LEFT ;
+ int AV_CH_FRONT_RIGHT ;
+ int AV_CH_LOW_FREQUENCY ;
+ int AV_CH_SIDE_LEFT ;
+ int AV_CH_SIDE_RIGHT ;
+ scalar_t__ AV_INPUT_BUFFER_PADDING_SIZE ;
+ int AV_LOG_ERROR ;
+ int AV_LOG_WARNING ;
+ int ENOMEM ;
+ int av_free (int *) ;
+ int av_get_channel_layout_nb_channels (int) ;
+ int av_log (TYPE_5__*,int ,char*,...) ;
+ int * av_malloc (scalar_t__) ;
+ int const avio_read (int *,int *,int const) ;
+ void* get_bits (int *,int) ;
+ void* get_bits_long (int *,int) ;
+ int init_get_bits (int *,int *,int) ;
+ int skip_bits (int *,int) ;
+ int skip_bits_long (int *,int) ;
 
 __attribute__((used)) static int mov_read_ddts(MOVContext *c, AVIOContext *pb, MOVAtom atom)
 {
     const uint32_t ddts_size = 20;
-    AVStream *st = NULL;
-    uint8_t *buf = NULL;
+    AVStream *st = ((void*)0);
+    uint8_t *buf = ((void*)0);
     uint32_t frame_duration_code = 0;
     uint32_t channel_layout_code = 0;
     GetBitContext gb;
@@ -82,11 +82,11 @@ __attribute__((used)) static int mov_read_ddts(MOVContext *c, AVIOContext *pb, M
         av_free(buf);
         return AVERROR_INVALIDDATA;
     }
-    skip_bits_long(&gb, 32); /* max bitrate */
+    skip_bits_long(&gb, 32);
     st->codecpar->bit_rate = get_bits_long(&gb, 32);
     st->codecpar->bits_per_coded_sample = get_bits(&gb, 8);
     frame_duration_code = get_bits(&gb, 2);
-    skip_bits(&gb, 30); /* various fields */
+    skip_bits(&gb, 30);
     channel_layout_code = get_bits(&gb, 16);
 
     st->codecpar->frame_size =

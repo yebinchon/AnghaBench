@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  classesW ;
-struct TYPE_7__ {char member_0; char member_1; char member_2; char member_3; char member_4; char member_5; char member_6; char member_7; char member_8; char member_9; char member_10; char member_11; char member_12; char member_13; char member_14; char member_15; char member_16; char member_17; int /*<<< orphan*/  member_18; } ;
-typedef  TYPE_1__ WCHAR ;
-typedef  TYPE_1__ const* LPCWSTR ;
 
-/* Variables and functions */
- int strcmpiW (TYPE_1__ const*,TYPE_1__ const*) ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int classesW ;
+struct TYPE_7__ {char member_0; char member_1; char member_2; char member_3; char member_4; char member_5; char member_6; char member_7; char member_8; char member_9; char member_10; char member_11; char member_12; char member_13; char member_14; char member_15; char member_16; char member_17; int member_18; } ;
+typedef TYPE_1__ WCHAR ;
+typedef TYPE_1__ const* LPCWSTR ;
+
+
+ int strcmpiW (TYPE_1__ const*,TYPE_1__ const*) ;
 
 LPCWSTR is_comctl32_class( const WCHAR *name )
 {
@@ -53,5 +53,5 @@ LPCWSTR is_comctl32_class( const WCHAR *name )
         if (res < 0) max = pos - 1;
         else min = pos + 1;
     }
-    return NULL;
+    return ((void*)0);
 }

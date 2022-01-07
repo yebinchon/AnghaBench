@@ -1,51 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int EIO ; 
- int rpcrouter_need_len ; 
- int /*<<< orphan*/  rpcrouter_wake_lock ; 
- int /*<<< orphan*/  smd_channel ; 
- int /*<<< orphan*/  smd_lock ; 
- int smd_read (int /*<<< orphan*/ ,void*,int) ; 
- int smd_read_avail (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  smd_wait ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  wait_event (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  wake_unlock (int /*<<< orphan*/ *) ; 
+ int EIO ;
+ int rpcrouter_need_len ;
+ int rpcrouter_wake_lock ;
+ int smd_channel ;
+ int smd_lock ;
+ int smd_read (int ,void*,int) ;
+ int smd_read_avail (int ) ;
+ int smd_wait ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
+ int wait_event (int ,int) ;
+ int wake_unlock (int *) ;
 
 __attribute__((used)) static int rr_read(void *data, int len)
 {
-	int rc;
-	unsigned long flags;
-//	printk("rr_read() %d\n", len);
-	for(;;) {
-		spin_lock_irqsave(&smd_lock, flags);
-		if (smd_read_avail(smd_channel) >= len) {
-			rc = smd_read(smd_channel, data, len);
-			spin_unlock_irqrestore(&smd_lock, flags);
-			if (rc == len)
-				return 0;
-			else
-				return -EIO;
-		}
-		rpcrouter_need_len = len;
-		wake_unlock(&rpcrouter_wake_lock);
-		spin_unlock_irqrestore(&smd_lock, flags);
+ int rc;
+ unsigned long flags;
 
-//		printk("rr_read: waiting (%d)\n", len);
-		wait_event(smd_wait, smd_read_avail(smd_channel) >= len);
-	}
-	return 0;
+ for(;;) {
+  spin_lock_irqsave(&smd_lock, flags);
+  if (smd_read_avail(smd_channel) >= len) {
+   rc = smd_read(smd_channel, data, len);
+   spin_unlock_irqrestore(&smd_lock, flags);
+   if (rc == len)
+    return 0;
+   else
+    return -EIO;
+  }
+  rpcrouter_need_len = len;
+  wake_unlock(&rpcrouter_wake_lock);
+  spin_unlock_irqrestore(&smd_lock, flags);
+
+
+  wait_event(smd_wait, smd_read_avail(smd_channel) >= len);
+ }
+ return 0;
 }

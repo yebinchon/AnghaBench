@@ -1,87 +1,74 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_18__   TYPE_6__ ;
-typedef  struct TYPE_17__   TYPE_3__ ;
-typedef  struct TYPE_16__   TYPE_2__ ;
-typedef  struct TYPE_15__   TYPE_1__ ;
-typedef  struct TYPE_14__   TYPE_11__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_int ;
-typedef  size_t ngx_uint_t ;
-typedef  scalar_t__ ngx_socket_t ;
-typedef  int /*<<< orphan*/  ngx_queue_t ;
-typedef  scalar_t__ ngx_msec_t ;
-typedef  int /*<<< orphan*/  ngx_int_t ;
+
+
+typedef struct TYPE_18__ TYPE_6__ ;
+typedef struct TYPE_17__ TYPE_3__ ;
+typedef struct TYPE_16__ TYPE_2__ ;
+typedef struct TYPE_15__ TYPE_1__ ;
+typedef struct TYPE_14__ TYPE_11__ ;
+
+
+typedef int u_int ;
+typedef size_t ngx_uint_t ;
+typedef scalar_t__ ngx_socket_t ;
+typedef int ngx_queue_t ;
+typedef scalar_t__ ngx_msec_t ;
+typedef int ngx_int_t ;
 struct TYPE_15__ {int ready; int available; scalar_t__ active; scalar_t__ accept; } ;
-typedef  TYPE_1__ ngx_event_t ;
-typedef  int ngx_err_t ;
+typedef TYPE_1__ ngx_event_t ;
+typedef int ngx_err_t ;
 struct TYPE_16__ {TYPE_6__* log; } ;
-typedef  TYPE_2__ ngx_cycle_t ;
+typedef TYPE_2__ ngx_cycle_t ;
 struct TYPE_17__ {scalar_t__ fd; TYPE_1__* write; TYPE_1__* read; } ;
-typedef  TYPE_3__ ngx_connection_t ;
+typedef TYPE_3__ ngx_connection_t ;
 struct TYPE_18__ {int log_level; } ;
-struct TYPE_14__ {scalar_t__ fd; int revents; int /*<<< orphan*/  events; } ;
+struct TYPE_14__ {scalar_t__ fd; int revents; int events; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NGX_ERROR ; 
- int /*<<< orphan*/  NGX_LOG_ALERT ; 
- int NGX_LOG_DEBUG_ALL ; 
- int /*<<< orphan*/  NGX_LOG_DEBUG_EVENT ; 
- int /*<<< orphan*/  NGX_OK ; 
- scalar_t__ NGX_TIMER_INFINITE ; 
- size_t NGX_UPDATE_TIME ; 
- int POLLERR ; 
- int POLLHUP ; 
- int POLLIN ; 
- int POLLNVAL ; 
- int POLLOUT ; 
- int WSAPoll (TYPE_11__*,int /*<<< orphan*/ ,int) ; 
- TYPE_3__** event_index ; 
- TYPE_11__* event_list ; 
- size_t nevents ; 
- int ngx_errno ; 
- scalar_t__ ngx_event_timer_alarm ; 
- int /*<<< orphan*/  ngx_log_debug1 (int /*<<< orphan*/ ,TYPE_6__*,int /*<<< orphan*/ ,char*,scalar_t__) ; 
- int /*<<< orphan*/  ngx_log_debug2 (int /*<<< orphan*/ ,TYPE_6__*,int /*<<< orphan*/ ,char*,int,size_t) ; 
- int /*<<< orphan*/  ngx_log_debug3 (int /*<<< orphan*/ ,TYPE_6__*,int /*<<< orphan*/ ,char*,size_t,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_log_debug4 (int /*<<< orphan*/ ,TYPE_6__*,int /*<<< orphan*/ ,char*,size_t,scalar_t__,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ngx_log_error (int /*<<< orphan*/ ,TYPE_6__*,int,char*,...) ; 
- int /*<<< orphan*/  ngx_post_event (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ngx_posted_accept_events ; 
- int /*<<< orphan*/  ngx_posted_events ; 
- int /*<<< orphan*/  ngx_time_update () ; 
+
+ int NGX_ERROR ;
+ int NGX_LOG_ALERT ;
+ int NGX_LOG_DEBUG_ALL ;
+ int NGX_LOG_DEBUG_EVENT ;
+ int NGX_OK ;
+ scalar_t__ NGX_TIMER_INFINITE ;
+ size_t NGX_UPDATE_TIME ;
+ int POLLERR ;
+ int POLLHUP ;
+ int POLLIN ;
+ int POLLNVAL ;
+ int POLLOUT ;
+ int WSAPoll (TYPE_11__*,int ,int) ;
+ TYPE_3__** event_index ;
+ TYPE_11__* event_list ;
+ size_t nevents ;
+ int ngx_errno ;
+ scalar_t__ ngx_event_timer_alarm ;
+ int ngx_log_debug1 (int ,TYPE_6__*,int ,char*,scalar_t__) ;
+ int ngx_log_debug2 (int ,TYPE_6__*,int ,char*,int,size_t) ;
+ int ngx_log_debug3 (int ,TYPE_6__*,int ,char*,size_t,scalar_t__,int ) ;
+ int ngx_log_debug4 (int ,TYPE_6__*,int ,char*,size_t,scalar_t__,int ,int) ;
+ int ngx_log_error (int ,TYPE_6__*,int,char*,...) ;
+ int ngx_post_event (TYPE_1__*,int *) ;
+ int ngx_posted_accept_events ;
+ int ngx_posted_events ;
+ int ngx_time_update () ;
 
 __attribute__((used)) static ngx_int_t
 ngx_poll_process_events(ngx_cycle_t *cycle, ngx_msec_t timer, ngx_uint_t flags)
 {
-    int                 ready, revents;
-    ngx_err_t           err;
-    ngx_uint_t          i, found;
-    ngx_event_t        *ev;
-    ngx_queue_t        *queue;
-    ngx_connection_t   *c;
-
-    /* NGX_TIMER_INFINITE == INFTIM */
-
-#if (NGX_DEBUG0)
-    if (cycle->log->log_level & NGX_LOG_DEBUG_ALL) {
-        for (i = 0; i < nevents; i++) {
-            ngx_log_debug3(NGX_LOG_DEBUG_EVENT, cycle->log, 0,
-                           "poll: %ui: fd:%d ev:%04Xd",
-                           i, event_list[i].fd, event_list[i].events);
-        }
-    }
-#endif
-
+    int ready, revents;
+    ngx_err_t err;
+    ngx_uint_t i, found;
+    ngx_event_t *ev;
+    ngx_queue_t *queue;
+    ngx_connection_t *c;
     ngx_log_debug1(NGX_LOG_DEBUG_EVENT, cycle->log, 0, "poll timer: %M", timer);
 
     ready = WSAPoll(event_list, (u_int) nevents, (int) timer);
@@ -114,18 +101,10 @@ ngx_poll_process_events(ngx_cycle_t *cycle, ngx_msec_t timer, ngx_uint_t flags)
 
         revents = event_list[i].revents;
 
-#if 1
+
         ngx_log_debug4(NGX_LOG_DEBUG_EVENT, cycle->log, 0,
                        "poll: %ui: fd:%d ev:%04Xd rev:%04Xd",
                        i, event_list[i].fd, event_list[i].events, revents);
-#else
-        if (revents) {
-            ngx_log_debug4(NGX_LOG_DEBUG_EVENT, cycle->log, 0,
-                           "poll: %ui: fd:%d ev:%04Xd rev:%04Xd",
-                           i, event_list[i].fd, event_list[i].events, revents);
-        }
-#endif
-
         if (revents & POLLNVAL) {
             ngx_log_error(NGX_LOG_ALERT, cycle->log, 0,
                           "poll() error fd:%d ev:%04Xd rev:%04Xd",
@@ -139,10 +118,10 @@ ngx_poll_process_events(ngx_cycle_t *cycle, ngx_msec_t timer, ngx_uint_t flags)
         }
 
         if (event_list[i].fd == (ngx_socket_t) -1) {
-            /*
-             * the disabled event, a workaround for our possible bug,
-             * see the comment below
-             */
+
+
+
+
             continue;
         }
 
@@ -151,10 +130,10 @@ ngx_poll_process_events(ngx_cycle_t *cycle, ngx_msec_t timer, ngx_uint_t flags)
         if (c->fd == (ngx_socket_t) -1) {
             ngx_log_error(NGX_LOG_ALERT, cycle->log, 0, "unexpected event");
 
-            /*
-             * it is certainly our fault and it should be investigated,
-             * in the meantime we disable this event to avoid a CPU spinning
-             */
+
+
+
+
 
             if (i == nevents - 1) {
                 nevents--;
@@ -167,10 +146,10 @@ ngx_poll_process_events(ngx_cycle_t *cycle, ngx_msec_t timer, ngx_uint_t flags)
 
         if (revents & (POLLERR|POLLHUP|POLLNVAL)) {
 
-            /*
-             * if the error events were returned, add POLLIN and POLLOUT
-             * to handle the events at least in one active handler
-             */
+
+
+
+
 
             revents |= POLLIN|POLLOUT;
         }

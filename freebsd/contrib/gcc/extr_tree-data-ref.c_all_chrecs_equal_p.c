@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TREE_VEC_ELT (int /*<<< orphan*/ ,int) ; 
- int TREE_VEC_LENGTH (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  eq_evolutions_p (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
 
-__attribute__((used)) static bool 
+
+
+typedef int tree ;
+
+
+ int TREE_VEC_ELT (int ,int) ;
+ int TREE_VEC_LENGTH (int ) ;
+ int eq_evolutions_p (int ,int ) ;
+
+__attribute__((used)) static bool
 all_chrecs_equal_p (tree chrec)
 {
   int j;
 
   for (j = 0; j < TREE_VEC_LENGTH (chrec) - 1; j++)
     if (!eq_evolutions_p (TREE_VEC_ELT (chrec, j),
-			  TREE_VEC_ELT (chrec, j + 1)))
-      return false;
+     TREE_VEC_ELT (chrec, j + 1)))
+      return 0;
 
-  return true;
+  return 1;
 }

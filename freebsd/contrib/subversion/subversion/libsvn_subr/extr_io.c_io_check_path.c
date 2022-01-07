@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_node_kind_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  scalar_t__ svn_boolean_t ;
-typedef  scalar_t__ apr_status_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int apr_int32_t ;
-typedef  int /*<<< orphan*/  apr_finfo_t ;
 
-/* Variables and functions */
- int APR_FINFO_LINK ; 
- int APR_FINFO_MIN ; 
- scalar_t__ APR_STATUS_IS_ENOENT (scalar_t__) ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- scalar_t__ SVN__APR_STATUS_IS_ENOTDIR (scalar_t__) ; 
- int /*<<< orphan*/  _ (char*) ; 
- scalar_t__ apr_stat (int /*<<< orphan*/ *,char const*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cstring_from_utf8 (char const**,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  map_apr_finfo_to_node_kind (int /*<<< orphan*/ *,scalar_t__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_dirent_local_style (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_error_wrap_apr (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_node_none ; 
+
+
+
+typedef int svn_node_kind_t ;
+typedef int svn_error_t ;
+typedef scalar_t__ svn_boolean_t ;
+typedef scalar_t__ apr_status_t ;
+typedef int apr_pool_t ;
+typedef int apr_int32_t ;
+typedef int apr_finfo_t ;
+
+
+ int APR_FINFO_LINK ;
+ int APR_FINFO_MIN ;
+ scalar_t__ APR_STATUS_IS_ENOENT (scalar_t__) ;
+ scalar_t__ FALSE ;
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ scalar_t__ SVN__APR_STATUS_IS_ENOTDIR (scalar_t__) ;
+ int _ (char*) ;
+ scalar_t__ apr_stat (int *,char const*,int,int *) ;
+ int cstring_from_utf8 (char const**,char const*,int *) ;
+ int map_apr_finfo_to_node_kind (int *,scalar_t__*,int *) ;
+ int svn_dirent_local_style (char const*,int *) ;
+ int * svn_error_wrap_apr (scalar_t__,int ,int ) ;
+ int svn_node_none ;
 
 __attribute__((used)) static svn_error_t *
 io_check_path(const char *path,
@@ -50,8 +50,8 @@ io_check_path(const char *path,
   if (path[0] == '\0')
     path = ".";
 
-  /* Not using svn_io_stat() here because we want to check the
-     apr_err return explicitly. */
+
+
   SVN_ERR(cstring_from_utf8(&path_apr, path, pool));
 
   flags = resolve_symlinks ? APR_FINFO_MIN : (APR_FINFO_MIN | APR_FINFO_LINK);

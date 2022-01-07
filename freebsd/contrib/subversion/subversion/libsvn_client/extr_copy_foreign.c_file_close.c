@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_checksum_t ;
-struct file_baton_t {int /*<<< orphan*/  pool; int /*<<< orphan*/  properties; int /*<<< orphan*/  local_abspath; int /*<<< orphan*/  digest; struct dir_baton_t* pb; struct edit_baton_t* eb; } ;
-struct edit_baton_t {int /*<<< orphan*/  notify_baton; int /*<<< orphan*/  notify_func; int /*<<< orphan*/  wc_ctx; } ;
+
+
+
+
+typedef int svn_error_t ;
+typedef int svn_checksum_t ;
+struct file_baton_t {int pool; int properties; int local_abspath; int digest; struct dir_baton_t* pb; struct edit_baton_t* eb; } ;
+struct edit_baton_t {int notify_baton; int notify_func; int wc_ctx; } ;
 struct dir_baton_t {int dummy; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+typedef int apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  ensure_added (struct dir_baton_t*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  maybe_done (struct dir_baton_t*) ; 
- int /*<<< orphan*/ * svn_checksum__from_digest_md5 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_checksum_match (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_checksum_md5 ; 
- int /*<<< orphan*/  svn_checksum_mismatch_err (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_checksum_parse_hex (int /*<<< orphan*/ **,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_dirent_local_style (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * svn_error_trace (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_pool_destroy (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_wc_add_from_disk3 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int TRUE ;
+ int _ (char*) ;
+ int ensure_added (struct dir_baton_t*,int ) ;
+ int maybe_done (struct dir_baton_t*) ;
+ int * svn_checksum__from_digest_md5 (int ,int ) ;
+ int svn_checksum_match (int *,int *) ;
+ int svn_checksum_md5 ;
+ int svn_checksum_mismatch_err (int *,int *,int ,int ,int ) ;
+ int svn_checksum_parse_hex (int **,int ,char const*,int ) ;
+ int svn_dirent_local_style (int ,int ) ;
+ int * svn_error_trace (int ) ;
+ int svn_pool_destroy (int ) ;
+ int svn_wc_add_from_disk3 (int ,int ,int ,int ,int ,int ,int ) ;
 
 __attribute__((used)) static svn_error_t *
 file_close(void *file_baton,
@@ -66,7 +66,7 @@ file_close(void *file_baton,
     }
 
   SVN_ERR(svn_wc_add_from_disk3(eb->wc_ctx, fb->local_abspath, fb->properties,
-                                TRUE /* skip checks */,
+                                TRUE ,
                                 eb->notify_func, eb->notify_baton,
                                 fb->pool));
 

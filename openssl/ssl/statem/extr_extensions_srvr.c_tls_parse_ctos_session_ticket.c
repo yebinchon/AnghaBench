@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  X509 ;
-struct TYPE_6__ {int /*<<< orphan*/  session_ticket_cb_arg; int /*<<< orphan*/  (* session_ticket_cb ) (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;} ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int X509 ;
+struct TYPE_6__ {int session_ticket_cb_arg; int (* session_ticket_cb ) (TYPE_2__*,int ,int ,int ) ;} ;
 struct TYPE_7__ {TYPE_1__ ext; } ;
-typedef  TYPE_2__ SSL ;
-typedef  int /*<<< orphan*/  PACKET ;
+typedef TYPE_2__ SSL ;
+typedef int PACKET ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR_R_INTERNAL_ERROR ; 
- int /*<<< orphan*/  PACKET_data (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PACKET_remaining (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SSL_AD_INTERNAL_ERROR ; 
- int /*<<< orphan*/  SSL_F_TLS_PARSE_CTOS_SESSION_TICKET ; 
- int /*<<< orphan*/  SSLfatal (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int ERR_R_INTERNAL_ERROR ;
+ int PACKET_data (int *) ;
+ int PACKET_remaining (int *) ;
+ int SSL_AD_INTERNAL_ERROR ;
+ int SSL_F_TLS_PARSE_CTOS_SESSION_TICKET ;
+ int SSLfatal (TYPE_2__*,int ,int ,int ) ;
+ int stub1 (TYPE_2__*,int ,int ,int ) ;
 
 int tls_parse_ctos_session_ticket(SSL *s, PACKET *pkt, unsigned int context,
                                   X509 *x, size_t chainidx)

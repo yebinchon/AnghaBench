@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ EACCES ; 
- scalar_t__ EINVAL ; 
- scalar_t__ ENOENT ; 
- scalar_t__ EPERM ; 
- int PATH_MAX ; 
- scalar_t__ errno ; 
- int /*<<< orphan*/ * getcwd (char*,int) ; 
- char* memccpy (char*,char const*,char,int) ; 
- int /*<<< orphan*/ * realpath (char const*,char*) ; 
- int strlen (char*) ; 
- scalar_t__ strncmp (char*,char*,int) ; 
+ scalar_t__ EACCES ;
+ scalar_t__ EINVAL ;
+ scalar_t__ ENOENT ;
+ scalar_t__ EPERM ;
+ int PATH_MAX ;
+ scalar_t__ errno ;
+ int * getcwd (char*,int) ;
+ char* memccpy (char*,char const*,char,int) ;
+ int * realpath (char const*,char*) ;
+ int strlen (char*) ;
+ scalar_t__ strncmp (char*,char*,int) ;
 
 __attribute__((used)) static int lsapi_check_path(const char *p, char *final, int max_len)
 {
@@ -31,7 +23,7 @@ __attribute__((used)) static int lsapi_check_path(const char *p, char *final, in
     char *end;
     if (*p != '/')
     {
-        if (getcwd(final, max_len) == NULL)
+        if (getcwd(final, max_len) == ((void*)0))
             return -1;
         len = strlen(final);
         *(final + len) = '/';
@@ -44,7 +36,7 @@ __attribute__((used)) static int lsapi_check_path(const char *p, char *final, in
         return -1;
     }
     p = final;
-    if (realpath(p, resolved_path) == NULL
+    if (realpath(p, resolved_path) == ((void*)0)
         && errno != ENOENT && errno != EACCES)
         return -1;
     if (strncmp(resolved_path, "/etc/", 5) == 0)

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_5__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
+
+
+typedef struct TYPE_8__ TYPE_5__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_6__ {int num; int den; } ;
 struct TYPE_8__ {TYPE_1__ sample_aspect_ratio; } ;
-struct TYPE_7__ {int transparent_color_index; int color_resolution; int has_global_palette; int bits_per_pixel; int background_color_index; int /*<<< orphan*/ * global_palette; int /*<<< orphan*/  bg_color; int /*<<< orphan*/  gb; void* screen_height; void* screen_width; TYPE_5__* avctx; } ;
-typedef  TYPE_2__ GifState ;
+struct TYPE_7__ {int transparent_color_index; int color_resolution; int has_global_palette; int bits_per_pixel; int background_color_index; int * global_palette; int bg_color; int gb; void* screen_height; void* screen_width; TYPE_5__* avctx; } ;
+typedef TYPE_2__ GifState ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  bytestream2_get_bufferu (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int bytestream2_get_bytes_left (int /*<<< orphan*/ *) ; 
- int bytestream2_get_byteu (int /*<<< orphan*/ *) ; 
- void* bytestream2_get_le16u (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ff_dlog (TYPE_5__*,char*,void*,void*,int,int) ; 
- int /*<<< orphan*/  gif87a_sig ; 
- int /*<<< orphan*/  gif89a_sig ; 
- int /*<<< orphan*/  gif_read_palette (TYPE_2__*,int /*<<< orphan*/ *,int) ; 
- scalar_t__ memcmp (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
+
+ int AVERROR_INVALIDDATA ;
+ int bytestream2_get_bufferu (int *,int *,int) ;
+ int bytestream2_get_bytes_left (int *) ;
+ int bytestream2_get_byteu (int *) ;
+ void* bytestream2_get_le16u (int *) ;
+ int ff_dlog (TYPE_5__*,char*,void*,void*,int,int) ;
+ int gif87a_sig ;
+ int gif89a_sig ;
+ int gif_read_palette (TYPE_2__*,int *,int) ;
+ scalar_t__ memcmp (int *,int ,int) ;
 
 __attribute__((used)) static int gif_read_header1(GifState *s)
 {
@@ -40,15 +40,15 @@ __attribute__((used)) static int gif_read_header1(GifState *s)
     if (bytestream2_get_bytes_left(&s->gb) < 13)
         return AVERROR_INVALIDDATA;
 
-    /* read gif signature */
+
     bytestream2_get_bufferu(&s->gb, sig, 6);
     if (memcmp(sig, gif87a_sig, 6) &&
         memcmp(sig, gif89a_sig, 6))
         return AVERROR_INVALIDDATA;
 
-    /* read screen header */
+
     s->transparent_color_index = -1;
-    s->screen_width  = bytestream2_get_le16u(&s->gb);
+    s->screen_width = bytestream2_get_le16u(&s->gb);
     s->screen_height = bytestream2_get_le16u(&s->gb);
 
     v = bytestream2_get_byteu(&s->gb);

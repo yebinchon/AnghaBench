@@ -1,60 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct esas2r_adapter {TYPE_1__* pcid; } ;
 struct TYPE_2__ {int subsystem_device; } ;
-
-/* Variables and functions */
-#define  ATTO_ESAS_R608 136 
-#define  ATTO_ESAS_R60F 135 
-#define  ATTO_ESAS_R644 134 
-#define  ATTO_ESAS_R648 133 
-#define  ATTO_ESAS_R680 132 
-#define  ATTO_ESAS_R6F0 131 
-#define  ATTO_TLSH_1068 130 
-#define  ATTO_TSSC_3808 129 
-#define  ATTO_TSSC_3808E 128 
-
 const char *esas2r_get_model_name_short(struct esas2r_adapter *a)
 {
-	switch (a->pcid->subsystem_device) {
-	case ATTO_ESAS_R680:
-		return "R680";
+ switch (a->pcid->subsystem_device) {
+ case 132:
+  return "R680";
 
-	case ATTO_ESAS_R608:
-		return "R608";
+ case 136:
+  return "R608";
 
-	case ATTO_ESAS_R60F:
-		return "R60F";
+ case 135:
+  return "R60F";
 
-	case ATTO_ESAS_R6F0:
-		return "R6F0";
+ case 131:
+  return "R6F0";
 
-	case ATTO_ESAS_R644:
-		return "R644";
+ case 134:
+  return "R644";
 
-	case ATTO_ESAS_R648:
-		return "R648";
+ case 133:
+  return "R648";
 
-	case ATTO_TSSC_3808:
-		return "SC 3808D";
+ case 129:
+  return "SC 3808D";
 
-	case ATTO_TSSC_3808E:
-		return "SC 3808E";
+ case 128:
+  return "SC 3808E";
 
-	case ATTO_TLSH_1068:
-		return "SH 1068";
-	}
+ case 130:
+  return "SH 1068";
+ }
 
-	return "unknown";
+ return "unknown";
 }

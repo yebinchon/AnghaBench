@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ CURLMcode ;
-typedef  int /*<<< orphan*/  CURLM ;
-typedef  int /*<<< orphan*/  CURL ;
 
-/* Variables and functions */
- scalar_t__ CURLM_OK ; 
- int /*<<< orphan*/  CURLOPT_INFILESIZE ; 
- int /*<<< orphan*/  CURLOPT_SSH_PRIVATE_KEYFILE ; 
- int /*<<< orphan*/  CURLOPT_SSH_PUBLIC_KEYFILE ; 
- int /*<<< orphan*/  CURLOPT_UPLOAD ; 
- int /*<<< orphan*/  CURLOPT_URL ; 
- int /*<<< orphan*/  CURLOPT_USERPWD ; 
- int /*<<< orphan*/  CURLOPT_VERBOSE ; 
- int /*<<< orphan*/  CURL_GLOBAL_ALL ; 
- int /*<<< orphan*/  curl_easy_cleanup (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  curl_global_cleanup () ; 
- int /*<<< orphan*/  curl_multi_cleanup (int /*<<< orphan*/ *) ; 
- scalar_t__ curl_multi_remove_handle (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  easy_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  easy_setopt (int /*<<< orphan*/ *,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  global_init (int /*<<< orphan*/ ) ; 
- long libtest_arg2 ; 
- int /*<<< orphan*/  multi_add_handle (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  multi_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  multi_perform (int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  stderr ; 
+
+
+
+typedef scalar_t__ CURLMcode ;
+typedef int CURLM ;
+typedef int CURL ;
+
+
+ scalar_t__ CURLM_OK ;
+ int CURLOPT_INFILESIZE ;
+ int CURLOPT_SSH_PRIVATE_KEYFILE ;
+ int CURLOPT_SSH_PUBLIC_KEYFILE ;
+ int CURLOPT_UPLOAD ;
+ int CURLOPT_URL ;
+ int CURLOPT_USERPWD ;
+ int CURLOPT_VERBOSE ;
+ int CURL_GLOBAL_ALL ;
+ int curl_easy_cleanup (int *) ;
+ int curl_global_cleanup () ;
+ int curl_multi_cleanup (int *) ;
+ scalar_t__ curl_multi_remove_handle (int *,int *) ;
+ int easy_init (int *) ;
+ int easy_setopt (int *,int ,...) ;
+ int fprintf (int ,char*,...) ;
+ int global_init (int ) ;
+ long libtest_arg2 ;
+ int multi_add_handle (int *,int *) ;
+ int multi_init (int *) ;
+ int multi_perform (int *,int*) ;
+ int stderr ;
 
 int test(char *URL)
 {
   int stillRunning;
-  CURLM *multiHandle = NULL;
-  CURL *curl = NULL;
+  CURLM *multiHandle = ((void*)0);
+  CURL *curl = ((void*)0);
   CURLMcode res = CURLM_OK;
 
   global_init(CURL_GLOBAL_ALL);
@@ -63,8 +63,8 @@ int test(char *URL)
 
   multi_add_handle(multiHandle, curl);
 
-  /* this tests if removing an easy handle immediately after multi
-     perform has been called succeeds or not. */
+
+
 
   fprintf(stderr, "curl_multi_perform()...\n");
 
@@ -82,7 +82,7 @@ int test(char *URL)
 
 test_cleanup:
 
-  /* undocumented cleanup sequence - type UB */
+
 
   curl_easy_cleanup(curl);
   curl_multi_cleanup(multiHandle);

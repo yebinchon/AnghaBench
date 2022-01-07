@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buffer ;
-typedef  int /*<<< orphan*/  buff2 ;
-typedef  int /*<<< orphan*/  WCHAR ;
-struct TYPE_7__ {int MaximumLength; int /*<<< orphan*/ * Buffer; } ;
-typedef  TYPE_1__ UNICODE_STRING ;
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int buffer ;
+typedef int buff2 ;
+typedef int WCHAR ;
+struct TYPE_7__ {int MaximumLength; int * Buffer; } ;
+typedef TYPE_1__ UNICODE_STRING ;
 struct TYPE_8__ {char* Buffer; int Length; int MaximumLength; } ;
-typedef  TYPE_2__ OEM_STRING ;
-typedef  scalar_t__ BOOLEAN ;
+typedef TYPE_2__ OEM_STRING ;
+typedef scalar_t__ BOOLEAN ;
 
-/* Variables and functions */
-#define  FALSE 129 
-#define  TRUE 128 
- char* lstrlenA (char const*) ; 
- int /*<<< orphan*/  memcmp (char*,char*,scalar_t__) ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__,char*,char*) ; 
- scalar_t__ pRtlIsNameLegalDOS8Dot3 (TYPE_1__*,TYPE_2__*,scalar_t__*) ; 
- int /*<<< orphan*/  pRtlOemStringToUnicodeString (TYPE_1__*,TYPE_2__*,int const) ; 
- int /*<<< orphan*/  strcpy (char*,char const*) ; 
- int strlen (char const*) ; 
- char toupper (char) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
+
+
+
+ char* lstrlenA (char const*) ;
+ int memcmp (char*,char*,scalar_t__) ;
+ int ok (int,char*,scalar_t__,char*,char*) ;
+ scalar_t__ pRtlIsNameLegalDOS8Dot3 (TYPE_1__*,TYPE_2__*,scalar_t__*) ;
+ int pRtlOemStringToUnicodeString (TYPE_1__*,TYPE_2__*,int const) ;
+ int strcpy (char*,char const*) ;
+ int strlen (char const*) ;
+ char toupper (char) ;
+ int win_skip (char*) ;
 
 __attribute__((used)) static void test_RtlIsNameLegalDOS8Dot3(void)
 {
@@ -45,28 +45,28 @@ __attribute__((used)) static void test_RtlIsNameLegalDOS8Dot3(void)
 
     static const struct test tests[] =
     {
-        { "12345678",     TRUE,  FALSE },
-        { "123 5678",     TRUE,  TRUE  },
-        { "12345678.",    FALSE, 2 /*not set*/ },
-        { "1234 678.",    FALSE, 2 /*not set*/ },
-        { "12345678.a",   TRUE,  FALSE },
-        { "12345678.a ",  FALSE, 2 /*not set*/ },
-        { "12345678.a c", TRUE,  TRUE  },
-        { " 2345678.a ",  FALSE, 2 /*not set*/ },
-        { "1 345678.abc", TRUE,  TRUE },
-        { "1      8.a c", TRUE,  TRUE },
-        { "1 3 5 7 .abc", FALSE, 2 /*not set*/ },
-        { "12345678.  c", TRUE,  TRUE },
-        { "123456789.a",  FALSE, 2 /*not set*/ },
-        { "12345.abcd",   FALSE, 2 /*not set*/ },
-        { "12345.ab d",   FALSE, 2 /*not set*/ },
-        { ".abc",         FALSE, 2 /*not set*/ },
-        { "12.abc.d",     FALSE, 2 /*not set*/ },
-        { ".",            TRUE,  FALSE },
-        { "..",           TRUE,  FALSE },
-        { "...",          FALSE, 2 /*not set*/ },
-        { "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", FALSE, 2 /*not set*/ },
-        { NULL, 0 }
+        { "12345678", 128, 129 },
+        { "123 5678", 128, 128 },
+        { "12345678.", 129, 2 },
+        { "1234 678.", 129, 2 },
+        { "12345678.a", 128, 129 },
+        { "12345678.a ", 129, 2 },
+        { "12345678.a c", 128, 128 },
+        { " 2345678.a ", 129, 2 },
+        { "1 345678.abc", 128, 128 },
+        { "1      8.a c", 128, 128 },
+        { "1 3 5 7 .abc", 129, 2 },
+        { "12345678.  c", 128, 128 },
+        { "123456789.a", 129, 2 },
+        { "12345.abcd", 129, 2 },
+        { "12345.ab d", 129, 2 },
+        { ".abc", 129, 2 },
+        { "12.abc.d", 129, 2 },
+        { ".", 128, 129 },
+        { "..", 128, 129 },
+        { "...", 129, 2 },
+        { "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", 129, 2 },
+        { ((void*)0), 0 }
     };
 
     const struct test *test;
@@ -91,7 +91,7 @@ __attribute__((used)) static void test_RtlIsNameLegalDOS8Dot3(void)
         oem.Buffer = path;
         oem.Length = strlen(test->path);
         oem.MaximumLength = oem.Length + 1;
-        pRtlOemStringToUnicodeString( &ustr, &oem, FALSE );
+        pRtlOemStringToUnicodeString( &ustr, &oem, 129 );
         spaces = 2;
         oem_ret.Length = oem_ret.MaximumLength = sizeof(buff2);
         oem_ret.Buffer = buff2;

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
+
+
+
+
+typedef int u32 ;
 struct meson_gpio_irq_controller {scalar_t__ base; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  readl_relaxed (scalar_t__) ; 
- int /*<<< orphan*/  writel_relaxed (int /*<<< orphan*/ ,scalar_t__) ; 
+
+ int readl_relaxed (scalar_t__) ;
+ int writel_relaxed (int ,scalar_t__) ;
 
 __attribute__((used)) static void meson_gpio_irq_update_bits(struct meson_gpio_irq_controller *ctl,
-				       unsigned int reg, u32 mask, u32 val)
+           unsigned int reg, u32 mask, u32 val)
 {
-	u32 tmp;
+ u32 tmp;
 
-	tmp = readl_relaxed(ctl->base + reg);
-	tmp &= ~mask;
-	tmp |= val;
-	writel_relaxed(tmp, ctl->base + reg);
+ tmp = readl_relaxed(ctl->base + reg);
+ tmp &= ~mask;
+ tmp |= val;
+ writel_relaxed(tmp, ctl->base + reg);
 }

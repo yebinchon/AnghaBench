@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ExecCommandFlags ;
 
-/* Variables and functions */
- int EINVAL ; 
- int /*<<< orphan*/  EXEC_COMMAND_AMBIENT_MAGIC ; 
- int /*<<< orphan*/  EXEC_COMMAND_FULLY_PRIVILEGED ; 
- int /*<<< orphan*/  EXEC_COMMAND_IGNORE_FAILURE ; 
- int /*<<< orphan*/  EXEC_COMMAND_NO_ENV_EXPAND ; 
- int /*<<< orphan*/  EXEC_COMMAND_NO_SETUID ; 
- int FLAGS_SET (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- char** STRV_MAKE (char*,char*,char*,...) ; 
- int /*<<< orphan*/  assert_se (int) ; 
- int exec_command_flags_from_strv (char**,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int ExecCommandFlags ;
+
+
+ int EINVAL ;
+ int EXEC_COMMAND_AMBIENT_MAGIC ;
+ int EXEC_COMMAND_FULLY_PRIVILEGED ;
+ int EXEC_COMMAND_IGNORE_FAILURE ;
+ int EXEC_COMMAND_NO_ENV_EXPAND ;
+ int EXEC_COMMAND_NO_SETUID ;
+ int FLAGS_SET (int ,int ) ;
+ char** STRV_MAKE (char*,char*,char*,...) ;
+ int assert_se (int) ;
+ int exec_command_flags_from_strv (char**,int *) ;
 
 __attribute__((used)) static void test_exec_command_flags_from_strv(void) {
         ExecCommandFlags flags = 0;

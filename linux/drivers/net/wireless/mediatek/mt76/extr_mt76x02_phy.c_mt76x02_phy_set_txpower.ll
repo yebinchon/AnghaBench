@@ -1,0 +1,233 @@
+; ModuleID = '/home/carl/AnghaBench/linux/drivers/net/wireless/mediatek/mt76/extr_mt76x02_phy.c_mt76x02_phy_set_txpower.c'
+source_filename = "/home/carl/AnghaBench/linux/drivers/net/wireless/mediatek/mt76/extr_mt76x02_phy.c_mt76x02_phy_set_txpower.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+%struct.mt76x02_dev = type { %struct.TYPE_2__ }
+%struct.TYPE_2__ = type { %struct.mt76_rate_power }
+%struct.mt76_rate_power = type { i32*, i32*, i32*, i32*, i32* }
+
+@MT_TX_ALC_CFG_0 = common dso_local global i32 0, align 4
+@MT_TX_ALC_CFG_0_CH_INIT_0 = common dso_local global i32 0, align 4
+@MT_TX_ALC_CFG_0_CH_INIT_1 = common dso_local global i32 0, align 4
+@MT_TX_PWR_CFG_0 = common dso_local global i32 0, align 4
+@MT_TX_PWR_CFG_1 = common dso_local global i32 0, align 4
+@MT_TX_PWR_CFG_2 = common dso_local global i32 0, align 4
+@MT_TX_PWR_CFG_3 = common dso_local global i32 0, align 4
+@MT_TX_PWR_CFG_4 = common dso_local global i32 0, align 4
+@MT_TX_PWR_CFG_7 = common dso_local global i32 0, align 4
+@MT_TX_PWR_CFG_8 = common dso_local global i32 0, align 4
+@MT_TX_PWR_CFG_9 = common dso_local global i32 0, align 4
+
+; Function Attrs: noinline nounwind optnone uwtable
+define dso_local void @mt76x02_phy_set_txpower(%struct.mt76x02_dev* %0, i32 %1, i32 %2) #0 {
+  %4 = alloca %struct.mt76x02_dev*, align 8
+  %5 = alloca i32, align 4
+  %6 = alloca i32, align 4
+  %7 = alloca %struct.mt76_rate_power*, align 8
+  store %struct.mt76x02_dev* %0, %struct.mt76x02_dev** %4, align 8
+  store i32 %1, i32* %5, align 4
+  store i32 %2, i32* %6, align 4
+  %8 = load %struct.mt76x02_dev*, %struct.mt76x02_dev** %4, align 8
+  %9 = getelementptr inbounds %struct.mt76x02_dev, %struct.mt76x02_dev* %8, i32 0, i32 0
+  %10 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %9, i32 0, i32 0
+  store %struct.mt76_rate_power* %10, %struct.mt76_rate_power** %7, align 8
+  %11 = load %struct.mt76x02_dev*, %struct.mt76x02_dev** %4, align 8
+  %12 = load i32, i32* @MT_TX_ALC_CFG_0, align 4
+  %13 = load i32, i32* @MT_TX_ALC_CFG_0_CH_INIT_0, align 4
+  %14 = load i32, i32* %5, align 4
+  %15 = call i32 @mt76_rmw_field(%struct.mt76x02_dev* %11, i32 %12, i32 %13, i32 %14)
+  %16 = load %struct.mt76x02_dev*, %struct.mt76x02_dev** %4, align 8
+  %17 = load i32, i32* @MT_TX_ALC_CFG_0, align 4
+  %18 = load i32, i32* @MT_TX_ALC_CFG_0_CH_INIT_1, align 4
+  %19 = load i32, i32* %6, align 4
+  %20 = call i32 @mt76_rmw_field(%struct.mt76x02_dev* %16, i32 %17, i32 %18, i32 %19)
+  %21 = load %struct.mt76x02_dev*, %struct.mt76x02_dev** %4, align 8
+  %22 = load i32, i32* @MT_TX_PWR_CFG_0, align 4
+  %23 = load %struct.mt76_rate_power*, %struct.mt76_rate_power** %7, align 8
+  %24 = getelementptr inbounds %struct.mt76_rate_power, %struct.mt76_rate_power* %23, i32 0, i32 4
+  %25 = load i32*, i32** %24, align 8
+  %26 = getelementptr inbounds i32, i32* %25, i64 0
+  %27 = load i32, i32* %26, align 4
+  %28 = load %struct.mt76_rate_power*, %struct.mt76_rate_power** %7, align 8
+  %29 = getelementptr inbounds %struct.mt76_rate_power, %struct.mt76_rate_power* %28, i32 0, i32 4
+  %30 = load i32*, i32** %29, align 8
+  %31 = getelementptr inbounds i32, i32* %30, i64 2
+  %32 = load i32, i32* %31, align 4
+  %33 = load %struct.mt76_rate_power*, %struct.mt76_rate_power** %7, align 8
+  %34 = getelementptr inbounds %struct.mt76_rate_power, %struct.mt76_rate_power* %33, i32 0, i32 3
+  %35 = load i32*, i32** %34, align 8
+  %36 = getelementptr inbounds i32, i32* %35, i64 0
+  %37 = load i32, i32* %36, align 4
+  %38 = load %struct.mt76_rate_power*, %struct.mt76_rate_power** %7, align 8
+  %39 = getelementptr inbounds %struct.mt76_rate_power, %struct.mt76_rate_power* %38, i32 0, i32 3
+  %40 = load i32*, i32** %39, align 8
+  %41 = getelementptr inbounds i32, i32* %40, i64 2
+  %42 = load i32, i32* %41, align 4
+  %43 = call i32 @mt76x02_tx_power_mask(i32 %27, i32 %32, i32 %37, i32 %42)
+  %44 = call i32 @mt76_wr(%struct.mt76x02_dev* %21, i32 %22, i32 %43)
+  %45 = load %struct.mt76x02_dev*, %struct.mt76x02_dev** %4, align 8
+  %46 = load i32, i32* @MT_TX_PWR_CFG_1, align 4
+  %47 = load %struct.mt76_rate_power*, %struct.mt76_rate_power** %7, align 8
+  %48 = getelementptr inbounds %struct.mt76_rate_power, %struct.mt76_rate_power* %47, i32 0, i32 3
+  %49 = load i32*, i32** %48, align 8
+  %50 = getelementptr inbounds i32, i32* %49, i64 4
+  %51 = load i32, i32* %50, align 4
+  %52 = load %struct.mt76_rate_power*, %struct.mt76_rate_power** %7, align 8
+  %53 = getelementptr inbounds %struct.mt76_rate_power, %struct.mt76_rate_power* %52, i32 0, i32 3
+  %54 = load i32*, i32** %53, align 8
+  %55 = getelementptr inbounds i32, i32* %54, i64 6
+  %56 = load i32, i32* %55, align 4
+  %57 = load %struct.mt76_rate_power*, %struct.mt76_rate_power** %7, align 8
+  %58 = getelementptr inbounds %struct.mt76_rate_power, %struct.mt76_rate_power* %57, i32 0, i32 1
+  %59 = load i32*, i32** %58, align 8
+  %60 = getelementptr inbounds i32, i32* %59, i64 0
+  %61 = load i32, i32* %60, align 4
+  %62 = load %struct.mt76_rate_power*, %struct.mt76_rate_power** %7, align 8
+  %63 = getelementptr inbounds %struct.mt76_rate_power, %struct.mt76_rate_power* %62, i32 0, i32 1
+  %64 = load i32*, i32** %63, align 8
+  %65 = getelementptr inbounds i32, i32* %64, i64 2
+  %66 = load i32, i32* %65, align 4
+  %67 = call i32 @mt76x02_tx_power_mask(i32 %51, i32 %56, i32 %61, i32 %66)
+  %68 = call i32 @mt76_wr(%struct.mt76x02_dev* %45, i32 %46, i32 %67)
+  %69 = load %struct.mt76x02_dev*, %struct.mt76x02_dev** %4, align 8
+  %70 = load i32, i32* @MT_TX_PWR_CFG_2, align 4
+  %71 = load %struct.mt76_rate_power*, %struct.mt76_rate_power** %7, align 8
+  %72 = getelementptr inbounds %struct.mt76_rate_power, %struct.mt76_rate_power* %71, i32 0, i32 1
+  %73 = load i32*, i32** %72, align 8
+  %74 = getelementptr inbounds i32, i32* %73, i64 4
+  %75 = load i32, i32* %74, align 4
+  %76 = load %struct.mt76_rate_power*, %struct.mt76_rate_power** %7, align 8
+  %77 = getelementptr inbounds %struct.mt76_rate_power, %struct.mt76_rate_power* %76, i32 0, i32 1
+  %78 = load i32*, i32** %77, align 8
+  %79 = getelementptr inbounds i32, i32* %78, i64 6
+  %80 = load i32, i32* %79, align 4
+  %81 = load %struct.mt76_rate_power*, %struct.mt76_rate_power** %7, align 8
+  %82 = getelementptr inbounds %struct.mt76_rate_power, %struct.mt76_rate_power* %81, i32 0, i32 1
+  %83 = load i32*, i32** %82, align 8
+  %84 = getelementptr inbounds i32, i32* %83, i64 8
+  %85 = load i32, i32* %84, align 4
+  %86 = load %struct.mt76_rate_power*, %struct.mt76_rate_power** %7, align 8
+  %87 = getelementptr inbounds %struct.mt76_rate_power, %struct.mt76_rate_power* %86, i32 0, i32 1
+  %88 = load i32*, i32** %87, align 8
+  %89 = getelementptr inbounds i32, i32* %88, i64 10
+  %90 = load i32, i32* %89, align 4
+  %91 = call i32 @mt76x02_tx_power_mask(i32 %75, i32 %80, i32 %85, i32 %90)
+  %92 = call i32 @mt76_wr(%struct.mt76x02_dev* %69, i32 %70, i32 %91)
+  %93 = load %struct.mt76x02_dev*, %struct.mt76x02_dev** %4, align 8
+  %94 = load i32, i32* @MT_TX_PWR_CFG_3, align 4
+  %95 = load %struct.mt76_rate_power*, %struct.mt76_rate_power** %7, align 8
+  %96 = getelementptr inbounds %struct.mt76_rate_power, %struct.mt76_rate_power* %95, i32 0, i32 1
+  %97 = load i32*, i32** %96, align 8
+  %98 = getelementptr inbounds i32, i32* %97, i64 12
+  %99 = load i32, i32* %98, align 4
+  %100 = load %struct.mt76_rate_power*, %struct.mt76_rate_power** %7, align 8
+  %101 = getelementptr inbounds %struct.mt76_rate_power, %struct.mt76_rate_power* %100, i32 0, i32 1
+  %102 = load i32*, i32** %101, align 8
+  %103 = getelementptr inbounds i32, i32* %102, i64 14
+  %104 = load i32, i32* %103, align 4
+  %105 = load %struct.mt76_rate_power*, %struct.mt76_rate_power** %7, align 8
+  %106 = getelementptr inbounds %struct.mt76_rate_power, %struct.mt76_rate_power* %105, i32 0, i32 0
+  %107 = load i32*, i32** %106, align 8
+  %108 = getelementptr inbounds i32, i32* %107, i64 0
+  %109 = load i32, i32* %108, align 4
+  %110 = load %struct.mt76_rate_power*, %struct.mt76_rate_power** %7, align 8
+  %111 = getelementptr inbounds %struct.mt76_rate_power, %struct.mt76_rate_power* %110, i32 0, i32 0
+  %112 = load i32*, i32** %111, align 8
+  %113 = getelementptr inbounds i32, i32* %112, i64 2
+  %114 = load i32, i32* %113, align 4
+  %115 = call i32 @mt76x02_tx_power_mask(i32 %99, i32 %104, i32 %109, i32 %114)
+  %116 = call i32 @mt76_wr(%struct.mt76x02_dev* %93, i32 %94, i32 %115)
+  %117 = load %struct.mt76x02_dev*, %struct.mt76x02_dev** %4, align 8
+  %118 = load i32, i32* @MT_TX_PWR_CFG_4, align 4
+  %119 = load %struct.mt76_rate_power*, %struct.mt76_rate_power** %7, align 8
+  %120 = getelementptr inbounds %struct.mt76_rate_power, %struct.mt76_rate_power* %119, i32 0, i32 0
+  %121 = load i32*, i32** %120, align 8
+  %122 = getelementptr inbounds i32, i32* %121, i64 4
+  %123 = load i32, i32* %122, align 4
+  %124 = load %struct.mt76_rate_power*, %struct.mt76_rate_power** %7, align 8
+  %125 = getelementptr inbounds %struct.mt76_rate_power, %struct.mt76_rate_power* %124, i32 0, i32 0
+  %126 = load i32*, i32** %125, align 8
+  %127 = getelementptr inbounds i32, i32* %126, i64 6
+  %128 = load i32, i32* %127, align 4
+  %129 = call i32 @mt76x02_tx_power_mask(i32 %123, i32 %128, i32 0, i32 0)
+  %130 = call i32 @mt76_wr(%struct.mt76x02_dev* %117, i32 %118, i32 %129)
+  %131 = load %struct.mt76x02_dev*, %struct.mt76x02_dev** %4, align 8
+  %132 = load i32, i32* @MT_TX_PWR_CFG_7, align 4
+  %133 = load %struct.mt76_rate_power*, %struct.mt76_rate_power** %7, align 8
+  %134 = getelementptr inbounds %struct.mt76_rate_power, %struct.mt76_rate_power* %133, i32 0, i32 3
+  %135 = load i32*, i32** %134, align 8
+  %136 = getelementptr inbounds i32, i32* %135, i64 7
+  %137 = load i32, i32* %136, align 4
+  %138 = load %struct.mt76_rate_power*, %struct.mt76_rate_power** %7, align 8
+  %139 = getelementptr inbounds %struct.mt76_rate_power, %struct.mt76_rate_power* %138, i32 0, i32 2
+  %140 = load i32*, i32** %139, align 8
+  %141 = getelementptr inbounds i32, i32* %140, i64 8
+  %142 = load i32, i32* %141, align 4
+  %143 = load %struct.mt76_rate_power*, %struct.mt76_rate_power** %7, align 8
+  %144 = getelementptr inbounds %struct.mt76_rate_power, %struct.mt76_rate_power* %143, i32 0, i32 1
+  %145 = load i32*, i32** %144, align 8
+  %146 = getelementptr inbounds i32, i32* %145, i64 7
+  %147 = load i32, i32* %146, align 4
+  %148 = load %struct.mt76_rate_power*, %struct.mt76_rate_power** %7, align 8
+  %149 = getelementptr inbounds %struct.mt76_rate_power, %struct.mt76_rate_power* %148, i32 0, i32 2
+  %150 = load i32*, i32** %149, align 8
+  %151 = getelementptr inbounds i32, i32* %150, i64 9
+  %152 = load i32, i32* %151, align 4
+  %153 = call i32 @mt76x02_tx_power_mask(i32 %137, i32 %142, i32 %147, i32 %152)
+  %154 = call i32 @mt76_wr(%struct.mt76x02_dev* %131, i32 %132, i32 %153)
+  %155 = load %struct.mt76x02_dev*, %struct.mt76x02_dev** %4, align 8
+  %156 = load i32, i32* @MT_TX_PWR_CFG_8, align 4
+  %157 = load %struct.mt76_rate_power*, %struct.mt76_rate_power** %7, align 8
+  %158 = getelementptr inbounds %struct.mt76_rate_power, %struct.mt76_rate_power* %157, i32 0, i32 1
+  %159 = load i32*, i32** %158, align 8
+  %160 = getelementptr inbounds i32, i32* %159, i64 14
+  %161 = load i32, i32* %160, align 4
+  %162 = load %struct.mt76_rate_power*, %struct.mt76_rate_power** %7, align 8
+  %163 = getelementptr inbounds %struct.mt76_rate_power, %struct.mt76_rate_power* %162, i32 0, i32 2
+  %164 = load i32*, i32** %163, align 8
+  %165 = getelementptr inbounds i32, i32* %164, i64 8
+  %166 = load i32, i32* %165, align 4
+  %167 = load %struct.mt76_rate_power*, %struct.mt76_rate_power** %7, align 8
+  %168 = getelementptr inbounds %struct.mt76_rate_power, %struct.mt76_rate_power* %167, i32 0, i32 2
+  %169 = load i32*, i32** %168, align 8
+  %170 = getelementptr inbounds i32, i32* %169, i64 9
+  %171 = load i32, i32* %170, align 4
+  %172 = call i32 @mt76x02_tx_power_mask(i32 %161, i32 0, i32 %166, i32 %171)
+  %173 = call i32 @mt76_wr(%struct.mt76x02_dev* %155, i32 %156, i32 %172)
+  %174 = load %struct.mt76x02_dev*, %struct.mt76x02_dev** %4, align 8
+  %175 = load i32, i32* @MT_TX_PWR_CFG_9, align 4
+  %176 = load %struct.mt76_rate_power*, %struct.mt76_rate_power** %7, align 8
+  %177 = getelementptr inbounds %struct.mt76_rate_power, %struct.mt76_rate_power* %176, i32 0, i32 1
+  %178 = load i32*, i32** %177, align 8
+  %179 = getelementptr inbounds i32, i32* %178, i64 7
+  %180 = load i32, i32* %179, align 4
+  %181 = load %struct.mt76_rate_power*, %struct.mt76_rate_power** %7, align 8
+  %182 = getelementptr inbounds %struct.mt76_rate_power, %struct.mt76_rate_power* %181, i32 0, i32 0
+  %183 = load i32*, i32** %182, align 8
+  %184 = getelementptr inbounds i32, i32* %183, i64 8
+  %185 = load i32, i32* %184, align 4
+  %186 = load %struct.mt76_rate_power*, %struct.mt76_rate_power** %7, align 8
+  %187 = getelementptr inbounds %struct.mt76_rate_power, %struct.mt76_rate_power* %186, i32 0, i32 0
+  %188 = load i32*, i32** %187, align 8
+  %189 = getelementptr inbounds i32, i32* %188, i64 9
+  %190 = load i32, i32* %189, align 4
+  %191 = call i32 @mt76x02_tx_power_mask(i32 %180, i32 0, i32 %185, i32 %190)
+  %192 = call i32 @mt76_wr(%struct.mt76x02_dev* %174, i32 %175, i32 %191)
+  ret void
+}
+
+declare dso_local i32 @mt76_rmw_field(%struct.mt76x02_dev*, i32, i32, i32) #1
+
+declare dso_local i32 @mt76_wr(%struct.mt76x02_dev*, i32, i32) #1
+
+declare dso_local i32 @mt76x02_tx_power_mask(i32, i32, i32, i32) #1
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

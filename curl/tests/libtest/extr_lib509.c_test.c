@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  a ;
-typedef  scalar_t__ CURLcode ;
-typedef  int /*<<< orphan*/  CURL ;
 
-/* Variables and functions */
- scalar_t__ CURLE_OK ; 
- int /*<<< orphan*/  CURLOPT_USERAGENT ; 
- int /*<<< orphan*/  CURL_GLOBAL_ALL ; 
- int TEST_ERR_MAJOR_BAD ; 
- int /*<<< orphan*/  curl_easy_cleanup (int /*<<< orphan*/ *) ; 
- char* curl_easy_escape (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/ * curl_easy_init () ; 
- int /*<<< orphan*/  curl_free (char*) ; 
- int /*<<< orphan*/  curl_global_cleanup () ; 
- scalar_t__ curl_global_init_mem (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  custom_calloc ; 
- int /*<<< orphan*/  custom_free ; 
- int /*<<< orphan*/  custom_malloc ; 
- int /*<<< orphan*/  custom_realloc ; 
- int /*<<< orphan*/  custom_strdup ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  test_setopt (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
+
+
+
+typedef int a ;
+typedef scalar_t__ CURLcode ;
+typedef int CURL ;
+
+
+ scalar_t__ CURLE_OK ;
+ int CURLOPT_USERAGENT ;
+ int CURL_GLOBAL_ALL ;
+ int TEST_ERR_MAJOR_BAD ;
+ int curl_easy_cleanup (int *) ;
+ char* curl_easy_escape (int *,char*,int) ;
+ int * curl_easy_init () ;
+ int curl_free (char*) ;
+ int curl_global_cleanup () ;
+ scalar_t__ curl_global_init_mem (int ,int ,int ,int ,int ,int ) ;
+ int custom_calloc ;
+ int custom_free ;
+ int custom_malloc ;
+ int custom_realloc ;
+ int custom_strdup ;
+ int fprintf (int ,char*) ;
+ int stderr ;
+ int test_setopt (int *,int ,char*) ;
 
 int test(char *URL)
 {
@@ -41,7 +41,7 @@ int test(char *URL)
   CURLcode res;
   CURL *curl;
   int asize;
-  char *str = NULL;
+  char *str = ((void*)0);
 
   (void)URL;
 
@@ -63,10 +63,10 @@ int test(char *URL)
     return TEST_ERR_MAJOR_BAD;
   }
 
-  test_setopt(curl, CURLOPT_USERAGENT, "test509"); /* uses strdup() */
+  test_setopt(curl, CURLOPT_USERAGENT, "test509");
 
   asize = (int)sizeof(a);
-  str = curl_easy_escape(curl, (char *)a, asize); /* uses realloc() */
+  str = curl_easy_escape(curl, (char *)a, asize);
 
 test_cleanup:
 

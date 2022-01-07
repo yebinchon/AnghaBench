@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct priv {int /*<<< orphan*/ * buf; int /*<<< orphan*/  buffer_lock; int /*<<< orphan*/ * play; int /*<<< orphan*/ * engine; int /*<<< orphan*/ * buffer_queue; } ;
+
+
+
+
+struct priv {int * buf; int buffer_lock; int * play; int * engine; int * buffer_queue; } ;
 struct ao {struct priv* priv; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DESTROY (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  output_mix ; 
- int /*<<< orphan*/  player ; 
- int /*<<< orphan*/  pthread_mutex_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sl ; 
+
+ int DESTROY (int ) ;
+ int free (int *) ;
+ int output_mix ;
+ int player ;
+ int pthread_mutex_destroy (int *) ;
+ int sl ;
 
 __attribute__((used)) static void uninit(struct ao *ao)
 {
@@ -29,12 +29,12 @@ __attribute__((used)) static void uninit(struct ao *ao)
     DESTROY(output_mix);
     DESTROY(sl);
 
-    p->buffer_queue = NULL;
-    p->engine = NULL;
-    p->play = NULL;
+    p->buffer_queue = ((void*)0);
+    p->engine = ((void*)0);
+    p->play = ((void*)0);
 
     pthread_mutex_destroy(&p->buffer_lock);
 
     free(p->buf);
-    p->buf = NULL;
+    p->buf = ((void*)0);
 }

@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct timeval {int tv_usec; int /*<<< orphan*/  tv_sec; int /*<<< orphan*/  member_1; int /*<<< orphan*/  member_0; } ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct timeval {int tv_usec; int tv_sec; int member_1; int member_0; } ;
 struct pollfd {int fd; int events; int revents; } ;
-typedef  int /*<<< orphan*/  fd_set ;
-struct TYPE_3__ {int rem; int /*<<< orphan*/  quot; } ;
-typedef  TYPE_1__ div_t ;
+typedef int fd_set ;
+struct TYPE_3__ {int rem; int quot; } ;
+typedef TYPE_1__ div_t ;
 
-/* Variables and functions */
- scalar_t__ EBADF ; 
- scalar_t__ EINVAL ; 
- scalar_t__ FD_ISSET (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FD_SET (int,int /*<<< orphan*/ *) ; 
- unsigned int FD_SETSIZE ; 
- int /*<<< orphan*/  FD_ZERO (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  F_GETFD ; 
- int POLLNVAL ; 
- int POLLPRI ; 
- int POLLRDNORM ; 
- int POLLWRNORM ; 
- TYPE_1__ div (int,int) ; 
- scalar_t__ errno ; 
- int fcntl (int,int /*<<< orphan*/ ) ; 
- int select (int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,struct timeval*) ; 
+
+ scalar_t__ EBADF ;
+ scalar_t__ EINVAL ;
+ scalar_t__ FD_ISSET (int,int *) ;
+ int FD_SET (int,int *) ;
+ unsigned int FD_SETSIZE ;
+ int FD_ZERO (int *) ;
+ int F_GETFD ;
+ int POLLNVAL ;
+ int POLLPRI ;
+ int POLLRDNORM ;
+ int POLLWRNORM ;
+ TYPE_1__ div (int,int) ;
+ scalar_t__ errno ;
+ int fcntl (int,int ) ;
+ int select (int,int *,int *,int *,struct timeval*) ;
 
 int (poll) (struct pollfd *fds, unsigned nfds, int timeout)
 {
@@ -48,16 +48,6 @@ int (poll) (struct pollfd *fds, unsigned nfds, int timeout)
         int fd = fds[i].fd;
         if (val < fd)
             val = fd;
-
-        /* With POSIX, FD_SET & FD_ISSET are not defined if fd is negative or
-         * bigger or equal than FD_SETSIZE. That is one of the reasons why VLC
-         * uses poll() rather than select(). Most POSIX systems implement
-         * fd_set has a bit field with no sanity checks. This is especially bad
-         * on systems (such as BSD) that have no process open files limit by
-         * default, such that it is quite feasible to get fd >= FD_SETSIZE.
-         * The next instructions will result in a buffer overflow if run on
-         * a POSIX system, and the later FD_ISSET would perform an undefined
-         * memory read. */
         if ((unsigned)fd >= FD_SETSIZE)
         {
             errno = EINVAL;
@@ -79,7 +69,7 @@ int (poll) (struct pollfd *fds, unsigned nfds, int timeout)
     }
 
     val = select (val + 1, rdset, wrset, exset,
-                  (timeout >= 0) ? &tv : NULL);
+                  (timeout >= 0) ? &tv : ((void*)0));
     if (val == -1)
     {
         if (errno != EBADF)

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct thread_info {TYPE_1__* private; } ;
-typedef  int /*<<< orphan*/  ptid_t ;
-struct TYPE_2__ {int /*<<< orphan*/  thrid; } ;
+typedef int ptid_t ;
+struct TYPE_2__ {int thrid; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DBG2 (char*) ; 
- scalar_t__ ISTID (int /*<<< orphan*/ ) ; 
- int LIDGET (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MKTID (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PIDGET (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dbgpid (int /*<<< orphan*/ ) ; 
- struct thread_info* find_thread_lwp (int) ; 
+
+ int DBG2 (char*) ;
+ scalar_t__ ISTID (int ) ;
+ int LIDGET (int ) ;
+ int MKTID (int ,int ) ;
+ int PIDGET (int ) ;
+ int dbgpid (int ) ;
+ struct thread_info* find_thread_lwp (int) ;
 
 __attribute__((used)) static ptid_t
 lwp_to_thr (ptid_t ptid)
@@ -40,6 +40,6 @@ lwp_to_thr (ptid_t ptid)
   tid = MKTID (PIDGET (ptid), info->private->thrid);
 
  done:
-  DBG2((ISTID (tid) ? NULL : "lwp_to_thr: no thr for %s", dbgpid (ptid)));
+  DBG2((ISTID (tid) ? ((void*)0) : "lwp_to_thr: no thr for %s", dbgpid (ptid)));
   return tid;
 }

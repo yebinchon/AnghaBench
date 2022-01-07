@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * engine; int /*<<< orphan*/ * cipher; int /*<<< orphan*/ * alloc_cipher; } ;
-typedef  TYPE_1__ PROV_CIPHER ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EVP_CIPHER_free (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * engine; int * cipher; int * alloc_cipher; } ;
+typedef TYPE_1__ PROV_CIPHER ;
+
+
+ int EVP_CIPHER_free (int *) ;
 
 void ossl_prov_cipher_reset(PROV_CIPHER *pc)
 {
     EVP_CIPHER_free(pc->alloc_cipher);
-    pc->alloc_cipher = NULL;
-    pc->cipher = NULL;
-    pc->engine = NULL;
+    pc->alloc_cipher = ((void*)0);
+    pc->cipher = ((void*)0);
+    pc->engine = ((void*)0);
 }

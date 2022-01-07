@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_8__ {int left; int top; int right; int bottom; } ;
 struct TYPE_6__ {int left; int top; int right; int bottom; } ;
-struct TYPE_5__ {int lfCharSet; int lfClipPrecision; int lfEscapement; int lfItalic; int lfOrientation; int lfOutPrecision; int lfPitchAndFamily; int lfQuality; int lfStrikeOut; int lfUnderline; int lfWeight; int /*<<< orphan*/  lfHeight; int /*<<< orphan*/  lfFaceName; } ;
-struct TYPE_7__ {TYPE_4__ main_rect; TYPE_2__ lMargins; int /*<<< orphan*/  szFooter; int /*<<< orphan*/  szHeader; scalar_t__ bShowStatusBar; scalar_t__ bWrapLongLines; TYPE_1__ lfFont; int /*<<< orphan*/  hMainWnd; } ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  int /*<<< orphan*/  DWORD ;
+struct TYPE_5__ {int lfCharSet; int lfClipPrecision; int lfEscapement; int lfItalic; int lfOrientation; int lfOutPrecision; int lfPitchAndFamily; int lfQuality; int lfStrikeOut; int lfUnderline; int lfWeight; int lfHeight; int lfFaceName; } ;
+struct TYPE_7__ {TYPE_4__ main_rect; TYPE_2__ lMargins; int szFooter; int szHeader; scalar_t__ bShowStatusBar; scalar_t__ bWrapLongLines; TYPE_1__ lfFont; int hMainWnd; } ;
+typedef int HKEY ;
+typedef int DWORD ;
 
-/* Variables and functions */
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  GetWindowRect (int /*<<< orphan*/ ,TYPE_4__*) ; 
- TYPE_3__ Globals ; 
- int /*<<< orphan*/  HKEY_CURRENT_USER ; 
- int /*<<< orphan*/  KEY_SET_VALUE ; 
- int PointSizeFromHeight (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- scalar_t__ RegCreateKeyEx (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SaveDword (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  SaveString (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  _T (char*) ; 
- int /*<<< orphan*/  s_szRegistryKey ; 
+
+ scalar_t__ ERROR_SUCCESS ;
+ int GetWindowRect (int ,TYPE_4__*) ;
+ TYPE_3__ Globals ;
+ int HKEY_CURRENT_USER ;
+ int KEY_SET_VALUE ;
+ int PointSizeFromHeight (int ) ;
+ int RegCloseKey (int ) ;
+ scalar_t__ RegCreateKeyEx (int ,int ,int ,int *,int ,int ,int *,int *,int *) ;
+ int SaveDword (int ,int ,int) ;
+ int SaveString (int ,int ,int ) ;
+ int _T (char*) ;
+ int s_szRegistryKey ;
 
 void NOTEPAD_SaveSettingsToRegistry(void)
 {
@@ -43,7 +43,7 @@ void NOTEPAD_SaveSettingsToRegistry(void)
     GetWindowRect(Globals.hMainWnd, &Globals.main_rect);
 
     if (RegCreateKeyEx(HKEY_CURRENT_USER, s_szRegistryKey,
-                       0, NULL, 0, KEY_SET_VALUE, NULL,
+                       0, ((void*)0), 0, KEY_SET_VALUE, ((void*)0),
                        &hKey, &dwDisposition) == ERROR_SUCCESS)
     {
         SaveDword(hKey, _T("lfCharSet"), Globals.lfFont.lfCharSet);

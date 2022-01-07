@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
 
-/* Variables and functions */
- int GET_MODE_SIZE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NULL_TREE ; 
- int /*<<< orphan*/  TREE_TYPE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TYPE_MODE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  build_complex (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  native_interpret_expr (int /*<<< orphan*/ ,unsigned char*,int) ; 
+
+
+
+typedef int tree ;
+
+
+ int GET_MODE_SIZE (int ) ;
+ int NULL_TREE ;
+ int TREE_TYPE (int ) ;
+ int TYPE_MODE (int ) ;
+ int build_complex (int ,int ,int ) ;
+ int native_interpret_expr (int ,unsigned char*,int) ;
 
 __attribute__((used)) static tree
 native_interpret_complex (tree type, unsigned char *ptr, int len)

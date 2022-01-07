@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint32_t ;
-typedef  int int32_t ;
 
-/* Variables and functions */
- scalar_t__ LJ_UNLIKELY (int) ; 
- int* ndigits_dec_threshold ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef int int32_t ;
+
+
+ scalar_t__ LJ_UNLIKELY (int) ;
+ int* ndigits_dec_threshold ;
 
 __attribute__((used)) static uint32_t nd_add_m10e(uint32_t* nd, uint32_t ndhi, uint8_t m, int32_t e)
 {
@@ -35,9 +35,9 @@ __attribute__((used)) static uint32_t nd_add_m10e(uint32_t* nd, uint32_t ndhi, u
       val -= 1000000000;
       nd[i] = val;
       if (LJ_UNLIKELY(i == ndhi)) {
-	ndhi = (ndhi + 1) & 0x3f;
-	nd[ndhi] = 1;
-	break;
+ ndhi = (ndhi + 1) & 0x3f;
+ nd[ndhi] = 1;
+ break;
       }
       carry = 1;
       i = (i + 1) & 0x3f;

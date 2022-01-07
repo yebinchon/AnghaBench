@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  si ;
-typedef  char WCHAR ;
-struct TYPE_7__ {int /*<<< orphan*/  hThread; int /*<<< orphan*/  hProcess; } ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int si ;
+typedef char WCHAR ;
+struct TYPE_7__ {int hThread; int hProcess; } ;
 struct TYPE_6__ {int cb; } ;
-typedef  TYPE_1__ STARTUPINFOW ;
-typedef  TYPE_2__ PROCESS_INFORMATION ;
-typedef  char* LPWSTR ;
-typedef  int LONG ;
-typedef  scalar_t__ BOOL ;
+typedef TYPE_1__ STARTUPINFOW ;
+typedef TYPE_2__ PROCESS_INFORMATION ;
+typedef char* LPWSTR ;
+typedef int LONG ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- int ARRAY_SIZE (char const*) ; 
- int /*<<< orphan*/  CloseHandle (int /*<<< orphan*/ ) ; 
- scalar_t__ CreateProcessW (char*,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_1__*,TYPE_2__*) ; 
- int /*<<< orphan*/  DETACHED_PROCESS ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  GetSystemDirectoryW (char*,int) ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Wow64DisableWow64FsRedirection (void**) ; 
- int /*<<< orphan*/  Wow64RevertWow64FsRedirection (void*) ; 
- int /*<<< orphan*/  debugstr_w (char*) ; 
- char* heap_alloc (int) ; 
- int /*<<< orphan*/  heap_free (char*) ; 
- int /*<<< orphan*/  lstrcatW (char*,char const*) ; 
- int /*<<< orphan*/  lstrcpyW (char*,char*) ; 
- int lstrlenW (char const*) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
+
+ int ARRAY_SIZE (char const*) ;
+ int CloseHandle (int ) ;
+ scalar_t__ CreateProcessW (char*,char*,int *,int *,scalar_t__,int ,int *,int *,TYPE_1__*,TYPE_2__*) ;
+ int DETACHED_PROCESS ;
+ scalar_t__ FALSE ;
+ int GetSystemDirectoryW (char*,int) ;
+ int MAX_PATH ;
+ int TRACE (char*,int ) ;
+ int Wow64DisableWow64FsRedirection (void**) ;
+ int Wow64RevertWow64FsRedirection (void*) ;
+ int debugstr_w (char*) ;
+ char* heap_alloc (int) ;
+ int heap_free (char*) ;
+ int lstrcatW (char*,char const*) ;
+ int lstrcpyW (char*,char*) ;
+ int lstrlenW (char const*) ;
+ int memset (TYPE_1__*,int ,int) ;
 
 __attribute__((used)) static BOOL run_winemenubuilder( const WCHAR *args )
 {
@@ -69,7 +69,7 @@ __attribute__((used)) static BOOL run_winemenubuilder( const WCHAR *args )
     si.cb = sizeof(si);
 
     Wow64DisableWow64FsRedirection( &redir );
-    ret = CreateProcessW( app, buffer, NULL, NULL, FALSE, DETACHED_PROCESS, NULL, NULL, &si, &pi );
+    ret = CreateProcessW( app, buffer, ((void*)0), ((void*)0), FALSE, DETACHED_PROCESS, ((void*)0), ((void*)0), &si, &pi );
     Wow64RevertWow64FsRedirection( redir );
 
     heap_free( buffer );

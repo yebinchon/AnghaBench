@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  layer_name ;
 
-/* Variables and functions */
-#define  L_BASE 130 
-#define  _LOWER 129 
-#define  _RAISE 128 
- int biton32 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  layer_state ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strcat (char*,char*) ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
+
+
+
+typedef int layer_name ;
+
+
+
+
+
+ int biton32 (int ) ;
+ int layer_state ;
+ int snprintf (char*,int,char*,int ) ;
+ int strcat (char*,char*) ;
+ int strcpy (char*,char*) ;
 
 const char *read_layer_state(void) {
   static char layer_state_str[24];
   char layer_name[17];
 
   switch (biton32(layer_state)) {
-    case L_BASE:
+    case 130:
       strcpy(layer_name, "Default");
       break;
-    case _RAISE:
+    case 128:
       strcpy(layer_name, "Raise");
       break;
-    case _LOWER:
+    case 129:
       strcpy(layer_name, "Lower");
       break;
     default:

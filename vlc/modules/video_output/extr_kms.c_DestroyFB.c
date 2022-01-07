@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  drm_fd; int /*<<< orphan*/ * fb; int /*<<< orphan*/  size; int /*<<< orphan*/ * map; int /*<<< orphan*/ * handle; } ;
-typedef  TYPE_1__ vout_display_sys_t ;
-typedef  size_t uint32_t ;
-struct drm_mode_destroy_dumb {int /*<<< orphan*/  handle; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DRM_IOCTL_MODE_DESTROY_DUMB ; 
- int /*<<< orphan*/  drmIoctl (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct drm_mode_destroy_dumb*) ; 
- int /*<<< orphan*/  drmModeRmFB (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  munmap (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int drm_fd; int * fb; int size; int * map; int * handle; } ;
+typedef TYPE_1__ vout_display_sys_t ;
+typedef size_t uint32_t ;
+struct drm_mode_destroy_dumb {int handle; } ;
+
+
+ int DRM_IOCTL_MODE_DESTROY_DUMB ;
+ int drmIoctl (int ,int ,struct drm_mode_destroy_dumb*) ;
+ int drmModeRmFB (int ,int ) ;
+ int munmap (int ,int ) ;
 
 __attribute__((used)) static void DestroyFB(vout_display_sys_t const *sys, uint32_t const buf)
 {

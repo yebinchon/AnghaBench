@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct qstr {int len; int /*<<< orphan*/  hash; int /*<<< orphan*/ * name; } ;
+
+
+
+
+struct qstr {int len; int hash; int * name; } ;
 struct dentry {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  end_name_hash (unsigned long) ; 
- unsigned long init_name_hash () ; 
- unsigned long partial_name_hash (int /*<<< orphan*/ ,unsigned long) ; 
- int /*<<< orphan*/  tolower (int /*<<< orphan*/ ) ; 
+
+ int end_name_hash (unsigned long) ;
+ unsigned long init_name_hash () ;
+ unsigned long partial_name_hash (int ,unsigned long) ;
+ int tolower (int ) ;
 
 __attribute__((used)) static int jfs_ci_hash(struct dentry *dir, struct qstr *this)
 {
-	unsigned long hash;
-	int i;
+ unsigned long hash;
+ int i;
 
-	hash = init_name_hash();
-	for (i=0; i < this->len; i++)
-		hash = partial_name_hash(tolower(this->name[i]), hash);
-	this->hash = end_name_hash(hash);
+ hash = init_name_hash();
+ for (i=0; i < this->len; i++)
+  hash = partial_name_hash(tolower(this->name[i]), hash);
+ this->hash = end_name_hash(hash);
 
-	return 0;
+ return 0;
 }

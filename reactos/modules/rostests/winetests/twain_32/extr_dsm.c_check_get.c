@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {scalar_t__ ConType; int Cap; int /*<<< orphan*/  hContainer; } ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_7__ {scalar_t__ ConType; int Cap; int hContainer; } ;
 struct TYPE_6__ {int* ItemList; int NumItems; scalar_t__ ItemType; size_t CurrentIndex; size_t DefaultIndex; } ;
-struct TYPE_5__ {int Item; int /*<<< orphan*/  ItemType; } ;
-typedef  int TW_UINT8 ;
-typedef  int TW_UINT32 ;
-typedef  int TW_UINT16 ;
-typedef  TYPE_1__ TW_ONEVALUE ;
-typedef  int TW_INT32 ;
-typedef  TYPE_2__ TW_ENUMERATION ;
-typedef  TYPE_3__ TW_CAPABILITY ;
+struct TYPE_5__ {int Item; int ItemType; } ;
+typedef int TW_UINT8 ;
+typedef int TW_UINT32 ;
+typedef int TW_UINT16 ;
+typedef TYPE_1__ TW_ONEVALUE ;
+typedef int TW_INT32 ;
+typedef TYPE_2__ TW_ENUMERATION ;
+typedef TYPE_3__ TW_CAPABILITY ;
 
-/* Variables and functions */
- void* GlobalLock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GlobalUnlock (int /*<<< orphan*/ ) ; 
- scalar_t__ TWON_ENUMERATION ; 
- scalar_t__ TWON_ONEVALUE ; 
- int TWQC_GETCURRENT ; 
- scalar_t__ TWTY_INT16 ; 
- scalar_t__ TWTY_INT32 ; 
- scalar_t__ TWTY_INT8 ; 
- scalar_t__ TWTY_UINT16 ; 
- scalar_t__ TWTY_UINT32 ; 
- scalar_t__ TWTY_UINT8 ; 
- int /*<<< orphan*/  ok (int,char*,int,int,int) ; 
- int /*<<< orphan*/  trace (char*,int,int,...) ; 
+
+ void* GlobalLock (int ) ;
+ int GlobalUnlock (int ) ;
+ scalar_t__ TWON_ENUMERATION ;
+ scalar_t__ TWON_ONEVALUE ;
+ int TWQC_GETCURRENT ;
+ scalar_t__ TWTY_INT16 ;
+ scalar_t__ TWTY_INT32 ;
+ scalar_t__ TWTY_INT8 ;
+ scalar_t__ TWTY_UINT16 ;
+ scalar_t__ TWTY_UINT32 ;
+ scalar_t__ TWTY_UINT8 ;
+ int ok (int,char*,int,int,int) ;
+ int trace (char*,int,int,...) ;
 
 __attribute__((used)) static void check_get(TW_CAPABILITY *pCapability, TW_INT32 actual_support,
                 TW_UINT32 orig_value, TW_UINT32 default_value, TW_UINT32 *suggested_set_value)

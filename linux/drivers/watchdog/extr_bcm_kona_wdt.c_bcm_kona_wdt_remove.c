@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct platform_device {int /*<<< orphan*/  dev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  bcm_kona_wdt_debug_exit (struct platform_device*) ; 
- int /*<<< orphan*/  dev_dbg (int /*<<< orphan*/ *,char*) ; 
+
+
+
+struct platform_device {int dev; } ;
+
+
+ int bcm_kona_wdt_debug_exit (struct platform_device*) ;
+ int dev_dbg (int *,char*) ;
 
 __attribute__((used)) static int bcm_kona_wdt_remove(struct platform_device *pdev)
 {
-	bcm_kona_wdt_debug_exit(pdev);
-	dev_dbg(&pdev->dev, "Watchdog driver disabled");
+ bcm_kona_wdt_debug_exit(pdev);
+ dev_dbg(&pdev->dev, "Watchdog driver disabled");
 
-	return 0;
+ return 0;
 }

@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct timeval {int tv_sec; scalar_t__ tv_usec; } ;
-typedef  int /*<<< orphan*/  fd_set ;
-typedef  int /*<<< orphan*/  CURLMsg ;
-typedef  int /*<<< orphan*/  CURLM ;
-typedef  int /*<<< orphan*/  CURL ;
+typedef int fd_set ;
+typedef int CURLMsg ;
+typedef int CURLM ;
+typedef int CURL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CURLOPT_PROXY ; 
- int /*<<< orphan*/  CURLOPT_URL ; 
- int /*<<< orphan*/  CURLOPT_VERBOSE ; 
- int /*<<< orphan*/  CURL_GLOBAL_ALL ; 
- int /*<<< orphan*/  FD_ZERO (int /*<<< orphan*/ *) ; 
- int TEST_ERR_FAILURE ; 
- int TEST_ERR_SUCCESS ; 
- int /*<<< orphan*/  abort_on_test_timeout () ; 
- int /*<<< orphan*/  curl_easy_cleanup (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  curl_global_cleanup () ; 
- int /*<<< orphan*/  curl_multi_cleanup (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * curl_multi_info_read (int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  curl_multi_remove_handle (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  easy_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  easy_setopt (int /*<<< orphan*/ *,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  global_init (int /*<<< orphan*/ ) ; 
- long libtest_arg2 ; 
- int /*<<< orphan*/  multi_add_handle (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  multi_fdset (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  multi_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  multi_perform (int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  select_test (int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,struct timeval*) ; 
- int /*<<< orphan*/  start_test_timing () ; 
- int /*<<< orphan*/  stderr ; 
+
+ int CURLOPT_PROXY ;
+ int CURLOPT_URL ;
+ int CURLOPT_VERBOSE ;
+ int CURL_GLOBAL_ALL ;
+ int FD_ZERO (int *) ;
+ int TEST_ERR_FAILURE ;
+ int TEST_ERR_SUCCESS ;
+ int abort_on_test_timeout () ;
+ int curl_easy_cleanup (int *) ;
+ int curl_global_cleanup () ;
+ int curl_multi_cleanup (int *) ;
+ int * curl_multi_info_read (int *,int*) ;
+ int curl_multi_remove_handle (int *,int *) ;
+ int easy_init (int *) ;
+ int easy_setopt (int *,int ,...) ;
+ int fprintf (int ,char*,...) ;
+ int global_init (int ) ;
+ long libtest_arg2 ;
+ int multi_add_handle (int *,int *) ;
+ int multi_fdset (int *,int *,int *,int *,int*) ;
+ int multi_init (int *) ;
+ int multi_perform (int *,int*) ;
+ int select_test (int,int *,int *,int *,struct timeval*) ;
+ int start_test_timing () ;
+ int stderr ;
 
 int test(char *URL)
 {
-  CURL *c = NULL;
+  CURL *c = ((void*)0);
   int res = 0;
-  CURLM *m = NULL;
+  CURLM *m = ((void*)0);
   fd_set rd, wr, exc;
   int running;
 
@@ -57,8 +57,8 @@ int test(char *URL)
 
   easy_init(c);
 
-  /* The point here is that there must not be anything running on the given
-     proxy port */
+
+
   if(libtest_arg2)
     easy_setopt(c, CURLOPT_PROXY, libtest_arg2);
   easy_setopt(c, CURLOPT_URL, URL);
@@ -82,15 +82,15 @@ int test(char *URL)
     abort_on_test_timeout();
 
     if(!running) {
-      /* This is where this code is expected to reach */
+
       int numleft;
       CURLMsg *msg = curl_multi_info_read(m, &numleft);
       fprintf(stderr, "Expected: not running\n");
       if(msg && !numleft)
-        res = TEST_ERR_SUCCESS; /* this is where we should be */
+        res = TEST_ERR_SUCCESS;
       else
-        res = TEST_ERR_FAILURE; /* not correct */
-      break; /* done */
+        res = TEST_ERR_FAILURE;
+      break;
     }
     fprintf(stderr, "running == %d\n", running);
 
@@ -102,7 +102,7 @@ int test(char *URL)
 
     multi_fdset(m, &rd, &wr, &exc, &maxfd);
 
-    /* At this point, maxfd is guaranteed to be greater or equal than -1. */
+
 
     select_test(maxfd + 1, &rd, &wr, &exc, &interval);
 
@@ -111,7 +111,7 @@ int test(char *URL)
 
 test_cleanup:
 
-  /* proper cleanup sequence - type PA */
+
 
   curl_multi_remove_handle(m, c);
   curl_multi_cleanup(m);

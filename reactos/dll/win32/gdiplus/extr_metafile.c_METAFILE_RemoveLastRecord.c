@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_6__ {int Size; } ;
-struct TYPE_5__ {int comment_data_length; int /*<<< orphan*/ * comment_data; } ;
-typedef  TYPE_1__ GpMetafile ;
-typedef  TYPE_2__ EmfPlusRecordHeader ;
-typedef  int /*<<< orphan*/  BYTE ;
+struct TYPE_5__ {int comment_data_length; int * comment_data; } ;
+typedef TYPE_1__ GpMetafile ;
+typedef TYPE_2__ EmfPlusRecordHeader ;
+typedef int BYTE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
+
+ int assert (int) ;
 
 __attribute__((used)) static void METAFILE_RemoveLastRecord(GpMetafile *metafile, EmfPlusRecordHeader *record)
 {
     assert(metafile->comment_data + metafile->comment_data_length == (BYTE*)record + record->Size);
-    metafile->comment_data_length -=  record->Size;
+    metafile->comment_data_length -= record->Size;
 }

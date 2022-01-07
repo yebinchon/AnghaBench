@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  gint64 ;
-struct TYPE_9__ {int /*<<< orphan*/  release; int /*<<< orphan*/ * curl; } ;
-struct TYPE_8__ {int /*<<< orphan*/  token; int /*<<< orphan*/  head; int /*<<< orphan*/  repo_id; int /*<<< orphan*/  host; int /*<<< orphan*/  use_fileserver_port; } ;
-typedef  TYPE_1__ HttpTxTask ;
-typedef  TYPE_2__ Connection ;
-typedef  int /*<<< orphan*/  CURL ;
 
-/* Variables and functions */
- int HTTP_FORBIDDEN ; 
- int HTTP_OK ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  curl_easy_reset (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  g_free (char*) ; 
- char* g_new0 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- char* g_strdup_printf (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gchar ; 
- int /*<<< orphan*/  handle_curl_errors (TYPE_1__*,int) ; 
- int /*<<< orphan*/  handle_http_errors (TYPE_1__*,int) ; 
- scalar_t__ http_put (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*,char**,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  memcpy (char*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  notify_permission_error (TYPE_1__*,char*) ; 
- int /*<<< orphan*/  seaf_warning (char*,char*,...) ; 
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int gint64 ;
+struct TYPE_9__ {int release; int * curl; } ;
+struct TYPE_8__ {int token; int head; int repo_id; int host; int use_fileserver_port; } ;
+typedef TYPE_1__ HttpTxTask ;
+typedef TYPE_2__ Connection ;
+typedef int CURL ;
+
+
+ int HTTP_FORBIDDEN ;
+ int HTTP_OK ;
+ int TRUE ;
+ int curl_easy_reset (int *) ;
+ int g_free (char*) ;
+ char* g_new0 (int ,int ) ;
+ char* g_strdup_printf (char*,int ,int ,int ) ;
+ int gchar ;
+ int handle_curl_errors (TYPE_1__*,int) ;
+ int handle_http_errors (TYPE_1__*,int) ;
+ scalar_t__ http_put (int *,char*,int ,int *,int ,int *,int *,int*,char**,int *,int ,int*) ;
+ int memcpy (char*,char*,int ) ;
+ int notify_permission_error (TYPE_1__*,char*) ;
+ int seaf_warning (char*,char*,...) ;
 
 __attribute__((used)) static int
 update_branch (HttpTxTask *task, Connection *conn)
@@ -42,7 +42,7 @@ update_branch (HttpTxTask *task, Connection *conn)
     char *url;
     int status;
     char *rsp_content;
-    char *rsp_content_str = NULL;
+    char *rsp_content_str = ((void*)0);
     gint64 rsp_size;
     int ret = 0;
 
@@ -57,8 +57,8 @@ update_branch (HttpTxTask *task, Connection *conn)
 
     int curl_error;
     if (http_put (curl, url, task->token,
-                  NULL, 0,
-                  NULL, NULL,
+                  ((void*)0), 0,
+                  ((void*)0), ((void*)0),
                   &status, &rsp_content, &rsp_size, TRUE, &curl_error) < 0) {
         conn->release = TRUE;
         handle_curl_errors (task, curl_error);

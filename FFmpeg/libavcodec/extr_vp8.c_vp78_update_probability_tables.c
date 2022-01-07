@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {TYPE_1__* prob; int /*<<< orphan*/  c; } ;
-typedef  TYPE_2__ VP8Context ;
-typedef  int /*<<< orphan*/  VP56RangeCoder ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_5__ {TYPE_1__* prob; int c; } ;
+typedef TYPE_2__ VP8Context ;
+typedef int VP56RangeCoder ;
 struct TYPE_4__ {int**** token; } ;
 
-/* Variables and functions */
- int NUM_DCT_TOKENS ; 
- scalar_t__ vp56_rac_get_prob_branchy (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- size_t** vp8_coeff_band_indexes ; 
- int vp8_rac_get_uint (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ **** vp8_token_update_probs ; 
+
+ int NUM_DCT_TOKENS ;
+ scalar_t__ vp56_rac_get_prob_branchy (int *,int ) ;
+ size_t** vp8_coeff_band_indexes ;
+ int vp8_rac_get_uint (int *,int) ;
+ int **** vp8_token_update_probs ;
 
 __attribute__((used)) static void vp78_update_probability_tables(VP8Context *s)
 {

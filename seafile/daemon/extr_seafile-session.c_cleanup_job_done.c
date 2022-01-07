@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  started; int /*<<< orphan*/  filelock_mgr; int /*<<< orphan*/  clone_mgr; int /*<<< orphan*/  repo_mgr; int /*<<< orphan*/  wt_monitor; int /*<<< orphan*/  sync_mgr; int /*<<< orphan*/  http_tx_mgr; int /*<<< orphan*/  ev_mgr; } ;
-typedef  TYPE_1__ SeafileSession ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TRUE ; 
- scalar_t__ cevent_manager_start (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  g_error (char*) ; 
- scalar_t__ http_tx_manager_start (int /*<<< orphan*/ ) ; 
- scalar_t__ seaf_clone_manager_start (int /*<<< orphan*/ ) ; 
- scalar_t__ seaf_filelock_manager_start (int /*<<< orphan*/ ) ; 
- scalar_t__ seaf_repo_manager_start (int /*<<< orphan*/ ) ; 
- scalar_t__ seaf_sync_manager_start (int /*<<< orphan*/ ) ; 
- scalar_t__ seaf_wt_monitor_start (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int started; int filelock_mgr; int clone_mgr; int repo_mgr; int wt_monitor; int sync_mgr; int http_tx_mgr; int ev_mgr; } ;
+typedef TYPE_1__ SeafileSession ;
+
+
+ int TRUE ;
+ scalar_t__ cevent_manager_start (int ) ;
+ int g_error (char*) ;
+ scalar_t__ http_tx_manager_start (int ) ;
+ scalar_t__ seaf_clone_manager_start (int ) ;
+ scalar_t__ seaf_filelock_manager_start (int ) ;
+ scalar_t__ seaf_repo_manager_start (int ) ;
+ scalar_t__ seaf_sync_manager_start (int ) ;
+ scalar_t__ seaf_wt_monitor_start (int ) ;
 
 __attribute__((used)) static void
 cleanup_job_done (void *vdata)
@@ -50,7 +50,7 @@ cleanup_job_done (void *vdata)
         return;
     }
 
-    /* Must be after wt monitor, since we may add watch to repo worktree. */
+
     if (seaf_repo_manager_start (session->repo_mgr) < 0) {
         g_error ("Failed to start repo manager.\n");
         return;
@@ -66,6 +66,6 @@ cleanup_job_done (void *vdata)
         return;
     }
 
-    /* The system is up and running. */
+
     session->started = TRUE;
 }

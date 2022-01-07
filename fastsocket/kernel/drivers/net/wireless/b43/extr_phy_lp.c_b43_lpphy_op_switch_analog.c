@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct b43_wldev {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  B43_LPPHY_AFE_CTL_OVR ; 
- int /*<<< orphan*/  B43_LPPHY_AFE_CTL_OVRVAL ; 
- int /*<<< orphan*/  b43_phy_mask (struct b43_wldev*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  b43_phy_set (struct b43_wldev*,int /*<<< orphan*/ ,int) ; 
+
+ int B43_LPPHY_AFE_CTL_OVR ;
+ int B43_LPPHY_AFE_CTL_OVRVAL ;
+ int b43_phy_mask (struct b43_wldev*,int ,int) ;
+ int b43_phy_set (struct b43_wldev*,int ,int) ;
 
 __attribute__((used)) static void b43_lpphy_op_switch_analog(struct b43_wldev *dev, bool on)
 {

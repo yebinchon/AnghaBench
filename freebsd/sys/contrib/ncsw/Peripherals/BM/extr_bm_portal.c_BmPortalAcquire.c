@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  scalar_t__ t_Handle ;
-struct TYPE_11__ {int /*<<< orphan*/  p_BmPortalLow; } ;
-typedef  TYPE_4__ t_BmPortal ;
+
+
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef scalar_t__ t_Handle ;
+struct TYPE_11__ {int p_BmPortalLow; } ;
+typedef TYPE_4__ t_BmPortal ;
 struct TYPE_10__ {TYPE_2__* bufs; } ;
 struct bm_mc_result {int verb; TYPE_3__ acquire; } ;
 struct TYPE_8__ {int bpid; } ;
 struct bm_mc_command {TYPE_1__ acquire; } ;
-struct bm_buffer {int bpid; int /*<<< orphan*/  lo; int /*<<< orphan*/  hi; } ;
-struct TYPE_9__ {int /*<<< orphan*/  lo; int /*<<< orphan*/  hi; } ;
+struct bm_buffer {int bpid; int lo; int hi; } ;
+struct TYPE_9__ {int lo; int hi; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT_COND (int) ; 
- int BM_MCC_VERB_ACQUIRE_BUFCOUNT ; 
- int BM_MCC_VERB_CMD_ACQUIRE ; 
- int BM_MCR_VERB_ACQUIRE_BUFCOUNT ; 
- int /*<<< orphan*/  E_INVALID_HANDLE ; 
- int /*<<< orphan*/  NCSW_PLOCK (TYPE_4__*) ; 
- int /*<<< orphan*/  PUNLOCK (TYPE_4__*) ; 
- int /*<<< orphan*/  SANITY_CHECK_RETURN_VALUE (TYPE_4__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bm_mc_commit (int /*<<< orphan*/ ,int) ; 
- struct bm_mc_result* bm_mc_result (int /*<<< orphan*/ ) ; 
- struct bm_mc_command* bm_mc_start (int /*<<< orphan*/ ) ; 
+
+ int ASSERT_COND (int) ;
+ int BM_MCC_VERB_ACQUIRE_BUFCOUNT ;
+ int BM_MCC_VERB_CMD_ACQUIRE ;
+ int BM_MCR_VERB_ACQUIRE_BUFCOUNT ;
+ int E_INVALID_HANDLE ;
+ int NCSW_PLOCK (TYPE_4__*) ;
+ int PUNLOCK (TYPE_4__*) ;
+ int SANITY_CHECK_RETURN_VALUE (TYPE_4__*,int ,int ) ;
+ int bm_mc_commit (int ,int) ;
+ struct bm_mc_result* bm_mc_result (int ) ;
+ struct bm_mc_command* bm_mc_start (int ) ;
 
 uint8_t BmPortalAcquire(t_Handle h_BmPortal,
-                        uint8_t  bpid,
+                        uint8_t bpid,
                         struct bm_buffer *bufs,
                         uint8_t num)
 {
-    t_BmPortal          *p_BmPortal = (t_BmPortal *)h_BmPortal;
+    t_BmPortal *p_BmPortal = (t_BmPortal *)h_BmPortal;
     struct bm_mc_command *mcc;
     struct bm_mc_result *mcr;
     uint8_t ret = 0;

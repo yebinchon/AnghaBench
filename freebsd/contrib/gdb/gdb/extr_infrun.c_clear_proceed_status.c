@@ -1,31 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  NO_STOP_QUIETLY ; 
- int /*<<< orphan*/  STEP_OVER_UNDEBUGGABLE ; 
- int /*<<< orphan*/  bpstat_clear (int /*<<< orphan*/ *) ; 
- int breakpoint_proceeded ; 
- int /*<<< orphan*/  null_frame_id ; 
- scalar_t__ proceed_to_finish ; 
- int /*<<< orphan*/  step_frame_id ; 
- int /*<<< orphan*/  step_over_calls ; 
- scalar_t__ step_range_end ; 
- scalar_t__ step_range_start ; 
- scalar_t__ stop_after_trap ; 
- int /*<<< orphan*/  stop_bpstat ; 
- int /*<<< orphan*/  stop_soon ; 
- scalar_t__ trap_expected ; 
+ int NO_STOP_QUIETLY ;
+ int STEP_OVER_UNDEBUGGABLE ;
+ int bpstat_clear (int *) ;
+ int breakpoint_proceeded ;
+ int null_frame_id ;
+ scalar_t__ proceed_to_finish ;
+ int step_frame_id ;
+ int step_over_calls ;
+ scalar_t__ step_range_end ;
+ scalar_t__ step_range_start ;
+ scalar_t__ stop_after_trap ;
+ int stop_bpstat ;
+ int stop_soon ;
+ scalar_t__ trap_expected ;
 
 void
 clear_proceed_status (void)
@@ -38,8 +30,8 @@ clear_proceed_status (void)
   stop_after_trap = 0;
   stop_soon = NO_STOP_QUIETLY;
   proceed_to_finish = 0;
-  breakpoint_proceeded = 1;	/* We're about to proceed... */
+  breakpoint_proceeded = 1;
 
-  /* Discard any remaining commands or status from previous stop.  */
+
   bpstat_clear (&stop_bpstat);
 }

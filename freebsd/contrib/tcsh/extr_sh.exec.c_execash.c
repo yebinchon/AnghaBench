@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct execash_state {int SHIN; int SHOUT; int SHDIAG; int OLDSTD; int saveIN; int saveOUT; int saveDIAG; int saveSTD; scalar_t__ didcch; scalar_t__ didfds; int /*<<< orphan*/  sigterm; int /*<<< orphan*/  sigquit; int /*<<< orphan*/  sigint; } ;
-struct command {int /*<<< orphan*/  t_dcom; } ;
-typedef  int /*<<< orphan*/  Char ;
 
-/* Variables and functions */
- int OLDSTD ; 
- int SHDIAG ; 
- int SHIN ; 
- int SHOUT ; 
- int /*<<< orphan*/  SIGINT ; 
- int /*<<< orphan*/  SIGQUIT ; 
- int /*<<< orphan*/  SIGTERM ; 
- int /*<<< orphan*/  STRsavehist ; 
- int /*<<< orphan*/  USE (int /*<<< orphan*/ **) ; 
- int __nt_really_exec ; 
- int /*<<< orphan*/ * adrof (int /*<<< orphan*/ ) ; 
- scalar_t__ chkstop ; 
- int /*<<< orphan*/  cleanup_push (struct execash_state*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cleanup_until (struct execash_state*) ; 
- int /*<<< orphan*/  close_on_exec (int,int) ; 
- int dcopy (int,int) ; 
- scalar_t__ didcch ; 
- scalar_t__ didfds ; 
- int /*<<< orphan*/  doexec (struct command*,int) ; 
- int /*<<< orphan*/  execash_cleanup ; 
- scalar_t__ getpid () ; 
- int /*<<< orphan*/  lshift (int /*<<< orphan*/ ,int) ; 
- scalar_t__ mainpid ; 
- int /*<<< orphan*/  panystop (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  parintr ; 
- int /*<<< orphan*/  parterm ; 
- int /*<<< orphan*/  rechist (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ setintr ; 
- int /*<<< orphan*/  shlvl (int) ; 
- int /*<<< orphan*/  sigaction (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+struct execash_state {int SHIN; int SHOUT; int SHDIAG; int OLDSTD; int saveIN; int saveOUT; int saveDIAG; int saveSTD; scalar_t__ didcch; scalar_t__ didfds; int sigterm; int sigquit; int sigint; } ;
+struct command {int t_dcom; } ;
+typedef int Char ;
+
+
+ int OLDSTD ;
+ int SHDIAG ;
+ int SHIN ;
+ int SHOUT ;
+ int SIGINT ;
+ int SIGQUIT ;
+ int SIGTERM ;
+ int STRsavehist ;
+ int USE (int **) ;
+ int __nt_really_exec ;
+ int * adrof (int ) ;
+ scalar_t__ chkstop ;
+ int cleanup_push (struct execash_state*,int ) ;
+ int cleanup_until (struct execash_state*) ;
+ int close_on_exec (int,int) ;
+ int dcopy (int,int) ;
+ scalar_t__ didcch ;
+ scalar_t__ didfds ;
+ int doexec (struct command*,int) ;
+ int execash_cleanup ;
+ scalar_t__ getpid () ;
+ int lshift (int ,int) ;
+ scalar_t__ mainpid ;
+ int panystop (int ) ;
+ int parintr ;
+ int parterm ;
+ int rechist (int *,int ) ;
+ scalar_t__ setintr ;
+ int shlvl (int) ;
+ int sigaction (int ,int *,int *) ;
 
 void
 execash(Char **t, struct command *kp)
@@ -53,12 +53,12 @@ execash(Char **t, struct command *kp)
 
     USE(t);
     if (chkstop == 0 && setintr)
-	panystop(0);
-    /*
-     * Hmm, we don't really want to do that now because we might
-     * fail, but what is the choice
-     */
-    rechist(NULL, adrof(STRsavehist) != NULL);
+ panystop(0);
+
+
+
+
+    rechist(((void*)0), adrof(STRsavehist) != ((void*)0));
 
 
     sigaction(SIGINT, &parintr, &state.sigint);
@@ -66,9 +66,9 @@ execash(Char **t, struct command *kp)
     sigaction(SIGTERM, &parterm, &state.sigterm);
 
     state.didfds = didfds;
-#ifndef CLOSE_ON_EXEC
+
     state.didcch = didcch;
-#endif /* CLOSE_ON_EXEC */
+
     state.SHIN = SHIN;
     state.SHOUT = SHOUT;
     state.SHDIAG = SHDIAG;
@@ -84,20 +84,20 @@ execash(Char **t, struct command *kp)
     (void)close_on_exec (SHIN = dcopy(0, -1), 1);
     (void)close_on_exec (SHOUT = dcopy(1, -1), 1);
     (void)close_on_exec (SHDIAG = dcopy(2, -1), 1);
-#ifndef CLOSE_ON_EXEC
+
     didcch = 0;
-#endif /* CLOSE_ON_EXEC */
+
     didfds = 0;
     cleanup_push(&state, execash_cleanup);
 
-    /*
-     * Decrement the shell level, if not in a subshell
-     */
+
+
+
     if (mainpid == getpid())
-	shlvl(-1);
-#ifdef WINNT_NATIVE
-    __nt_really_exec=1;
-#endif /* WINNT_NATIVE */
+ shlvl(-1);
+
+
+
     doexec(kp, 1);
 
     cleanup_until(&state);

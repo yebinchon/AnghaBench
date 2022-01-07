@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int progress_percent; int error; int /*<<< orphan*/  (* on_finished ) (TYPE_1__*) ;int /*<<< orphan*/  state; int /*<<< orphan*/  url; } ;
-typedef  TYPE_1__ PullJob ;
 
-/* Variables and functions */
- scalar_t__ IN_SET (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PULL_JOB_DONE ; 
- int /*<<< orphan*/  PULL_JOB_FAILED ; 
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int /*<<< orphan*/  log_info (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 (TYPE_1__*) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int progress_percent; int error; int (* on_finished ) (TYPE_1__*) ;int state; int url; } ;
+typedef TYPE_1__ PullJob ;
+
+
+ scalar_t__ IN_SET (int ,int ,int ) ;
+ int PULL_JOB_DONE ;
+ int PULL_JOB_FAILED ;
+ int assert (TYPE_1__*) ;
+ int log_info (char*,int ) ;
+ int stub1 (TYPE_1__*) ;
 
 __attribute__((used)) static void pull_job_finish(PullJob *j, int ret) {
         assert(j);

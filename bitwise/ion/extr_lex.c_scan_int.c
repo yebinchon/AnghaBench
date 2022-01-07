@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {unsigned long long int_val; int /*<<< orphan*/  suffix; int /*<<< orphan*/  kind; int /*<<< orphan*/  mod; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MOD_BIN ; 
- int /*<<< orphan*/  MOD_HEX ; 
- int /*<<< orphan*/  MOD_OCT ; 
- int /*<<< orphan*/  SUFFIX_L ; 
- int /*<<< orphan*/  SUFFIX_LL ; 
- int /*<<< orphan*/  SUFFIX_U ; 
- int /*<<< orphan*/  SUFFIX_UL ; 
- int /*<<< orphan*/  SUFFIX_ULL ; 
- int /*<<< orphan*/  TOKEN_INT ; 
- int ULLONG_MAX ; 
- int* char_to_digit ; 
- int /*<<< orphan*/  error_here (char*,...) ; 
- scalar_t__ isdigit (char) ; 
- char* stream ; 
- TYPE_1__ token ; 
- char tolower (char) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {unsigned long long int_val; int suffix; int kind; int mod; } ;
+
+
+ int MOD_BIN ;
+ int MOD_HEX ;
+ int MOD_OCT ;
+ int SUFFIX_L ;
+ int SUFFIX_LL ;
+ int SUFFIX_U ;
+ int SUFFIX_UL ;
+ int SUFFIX_ULL ;
+ int TOKEN_INT ;
+ int ULLONG_MAX ;
+ int* char_to_digit ;
+ int error_here (char*,...) ;
+ scalar_t__ isdigit (char) ;
+ char* stream ;
+ TYPE_1__ token ;
+ char tolower (char) ;
 
 void scan_int(void) {
     int base = 10;

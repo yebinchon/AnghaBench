@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int do_enable; int enabled; int do_disable; int do_reset; int do_wlan_cycle_power; } ;
 
-/* Variables and functions */
- int SERVERS_CYCLE_TIME_MS ; 
- int /*<<< orphan*/  SERVERS_DEF_PASS ; 
- int /*<<< orphan*/  SERVERS_DEF_USER ; 
- int /*<<< orphan*/  ftp_disable () ; 
- int /*<<< orphan*/  ftp_enable () ; 
- int /*<<< orphan*/  ftp_init () ; 
- int /*<<< orphan*/  ftp_reset () ; 
- int /*<<< orphan*/  ftp_run () ; 
- int /*<<< orphan*/  modusocket_close_all_user_sockets () ; 
- int /*<<< orphan*/  modusocket_enter_sleep () ; 
- int /*<<< orphan*/  mp_hal_delay_ms (int) ; 
- int /*<<< orphan*/  pybwdt_srv_alive () ; 
- int /*<<< orphan*/  pybwdt_srv_sleeping (int) ; 
- TYPE_1__ servers_data ; 
- int /*<<< orphan*/  servers_pass ; 
- int /*<<< orphan*/  servers_user ; 
- int sleep_sockets ; 
- int /*<<< orphan*/  strcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  telnet_disable () ; 
- int /*<<< orphan*/  telnet_enable () ; 
- int /*<<< orphan*/  telnet_init () ; 
- int /*<<< orphan*/  telnet_reset () ; 
- int /*<<< orphan*/  telnet_run () ; 
- int /*<<< orphan*/  wlan_off_on () ; 
+
+ int SERVERS_CYCLE_TIME_MS ;
+ int SERVERS_DEF_PASS ;
+ int SERVERS_DEF_USER ;
+ int ftp_disable () ;
+ int ftp_enable () ;
+ int ftp_init () ;
+ int ftp_reset () ;
+ int ftp_run () ;
+ int modusocket_close_all_user_sockets () ;
+ int modusocket_enter_sleep () ;
+ int mp_hal_delay_ms (int) ;
+ int pybwdt_srv_alive () ;
+ int pybwdt_srv_sleeping (int) ;
+ TYPE_1__ servers_data ;
+ int servers_pass ;
+ int servers_user ;
+ int sleep_sockets ;
+ int strcpy (int ,int ) ;
+ int telnet_disable () ;
+ int telnet_enable () ;
+ int telnet_init () ;
+ int telnet_reset () ;
+ int telnet_run () ;
+ int wlan_off_on () ;
 
 void TASK_Servers (void *pvParameters) {
 
-    bool cycle = false;
+    bool cycle = 0;
 
     strcpy (servers_user, SERVERS_DEF_USER);
     strcpy (servers_pass, SERVERS_DEF_PASS);
@@ -52,30 +52,30 @@ void TASK_Servers (void *pvParameters) {
     for ( ;; ) {
 
         if (servers_data.do_enable) {
-            // enable network services
+
             telnet_enable();
             ftp_enable();
-            // now set/clear the flags
-            servers_data.enabled = true;
-            servers_data.do_enable = false;
+
+            servers_data.enabled = 1;
+            servers_data.do_enable = 0;
         }
         else if (servers_data.do_disable) {
-            // disable network services
+
             telnet_disable();
             ftp_disable();
-            // now clear the flags
-            servers_data.do_disable = false;
-            servers_data.enabled = false;
+
+            servers_data.do_disable = 0;
+            servers_data.enabled = 0;
         }
         else if (servers_data.do_reset) {
-            // resetting the servers is needed to prevent half-open sockets
-            servers_data.do_reset = false;
+
+            servers_data.do_reset = 0;
             if (servers_data.enabled) {
                 telnet_reset();
                 ftp_reset();
             }
-            // and we should also close all user sockets. We do it here
-            // for convinience and to save on code size.
+
+
             modusocket_close_all_user_sockets();
         }
 
@@ -87,23 +87,23 @@ void TASK_Servers (void *pvParameters) {
         }
 
         if (sleep_sockets) {
-            pybwdt_srv_sleeping(true);
+            pybwdt_srv_sleeping(1);
             modusocket_enter_sleep();
-            pybwdt_srv_sleeping(false);
+            pybwdt_srv_sleeping(0);
             mp_hal_delay_ms(SERVERS_CYCLE_TIME_MS * 2);
             if (servers_data.do_wlan_cycle_power) {
-                servers_data.do_wlan_cycle_power = false;
+                servers_data.do_wlan_cycle_power = 0;
                 wlan_off_on();
             }
-            sleep_sockets = false;
+            sleep_sockets = 0;
 
         }
 
-        // set the alive flag for the wdt
+
         pybwdt_srv_alive();
 
-        // move to the next cycle
-        cycle = cycle ? false : true;
+
+        cycle = cycle ? 0 : 1;
         mp_hal_delay_ms(SERVERS_CYCLE_TIME_MS);
     }
 }

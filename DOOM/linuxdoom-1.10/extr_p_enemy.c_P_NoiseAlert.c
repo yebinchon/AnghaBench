@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_7__ {TYPE_1__* subsector; } ;
-typedef  TYPE_2__ mobj_t ;
-struct TYPE_6__ {int /*<<< orphan*/  sector; } ;
+typedef TYPE_2__ mobj_t ;
+struct TYPE_6__ {int sector; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  P_RecursiveSound (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_2__* soundtarget ; 
- int /*<<< orphan*/  validcount ; 
+
+ int P_RecursiveSound (int ,int ) ;
+ TYPE_2__* soundtarget ;
+ int validcount ;
 
 void
 P_NoiseAlert
-( mobj_t*	target,
-  mobj_t*	emmiter )
+( mobj_t* target,
+  mobj_t* emmiter )
 {
     soundtarget = target;
     validcount++;

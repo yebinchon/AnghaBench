@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8 ;
-typedef  scalar_t__ uint32 ;
-typedef  int /*<<< orphan*/  uint16 ;
-typedef  scalar_t__ tmsize_t ;
+
+
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int uint8 ;
+typedef scalar_t__ uint32 ;
+typedef int uint16 ;
+typedef scalar_t__ tmsize_t ;
 struct TYPE_10__ {scalar_t__ td_nstrips; scalar_t__ td_stripsperimage; } ;
-struct TYPE_11__ {scalar_t__ tif_tilesize; int /*<<< orphan*/  (* tif_postdecode ) (TYPE_2__*,int /*<<< orphan*/ *,scalar_t__) ;scalar_t__ (* tif_decodetile ) (TYPE_2__*,int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ ) ;int /*<<< orphan*/  tif_clientdata; TYPE_1__ tif_dir; } ;
-typedef  TYPE_1__ TIFFDirectory ;
-typedef  TYPE_2__ TIFF ;
+struct TYPE_11__ {scalar_t__ tif_tilesize; int (* tif_postdecode ) (TYPE_2__*,int *,scalar_t__) ;scalar_t__ (* tif_decodetile ) (TYPE_2__*,int *,scalar_t__,int ) ;int tif_clientdata; TYPE_1__ tif_dir; } ;
+typedef TYPE_1__ TIFFDirectory ;
+typedef TYPE_2__ TIFF ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TIFFCheckRead (TYPE_2__*,int) ; 
- int /*<<< orphan*/  TIFFErrorExt (int /*<<< orphan*/ ,char const*,char*,...) ; 
- int /*<<< orphan*/  TIFFFileName (TYPE_2__*) ; 
- int /*<<< orphan*/  TIFFFillTile (TYPE_2__*,scalar_t__) ; 
- scalar_t__ TIFFReadEncodedTile (TYPE_2__*,scalar_t__,void*,scalar_t__) ; 
- void* _TIFFmalloc (scalar_t__) ; 
- int /*<<< orphan*/  _TIFFmemset (void*,int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__ stub1 (TYPE_2__*,int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub2 (TYPE_2__*,int /*<<< orphan*/ *,scalar_t__) ; 
+
+ int TIFFCheckRead (TYPE_2__*,int) ;
+ int TIFFErrorExt (int ,char const*,char*,...) ;
+ int TIFFFileName (TYPE_2__*) ;
+ int TIFFFillTile (TYPE_2__*,scalar_t__) ;
+ scalar_t__ TIFFReadEncodedTile (TYPE_2__*,scalar_t__,void*,scalar_t__) ;
+ void* _TIFFmalloc (scalar_t__) ;
+ int _TIFFmemset (void*,int ,scalar_t__) ;
+ scalar_t__ stub1 (TYPE_2__*,int *,scalar_t__,int ) ;
+ int stub2 (TYPE_2__*,int *,scalar_t__) ;
 
 tmsize_t
 _TIFFReadEncodedTileAndAllocBuffer(TIFF* tif, uint32 tile,
@@ -41,7 +41,7 @@ _TIFFReadEncodedTileAndAllocBuffer(TIFF* tif, uint32 tile,
     TIFFDirectory *td = &tif->tif_dir;
     tmsize_t tilesize = tif->tif_tilesize;
 
-    if( *buf != NULL )
+    if( *buf != ((void*)0) )
     {
         return TIFFReadEncodedTile(tif, tile, *buf, size_to_read);
     }
@@ -59,7 +59,7 @@ _TIFFReadEncodedTileAndAllocBuffer(TIFF* tif, uint32 tile,
             return((tmsize_t)(-1));
 
     *buf = _TIFFmalloc(bufsizetoalloc);
-    if (*buf == NULL) {
+    if (*buf == ((void*)0)) {
             TIFFErrorExt(tif->tif_clientdata, TIFFFileName(tif),
                          "No space for tile buffer");
             return((tmsize_t)(-1));

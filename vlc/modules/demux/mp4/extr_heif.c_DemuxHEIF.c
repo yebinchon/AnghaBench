@@ -1,71 +1,71 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_18__   TYPE_4__ ;
-typedef  struct TYPE_17__   TYPE_3__ ;
-typedef  struct TYPE_16__   TYPE_2__ ;
-typedef  struct TYPE_15__   TYPE_1__ ;
-typedef  struct TYPE_14__   TYPE_13__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-struct TYPE_15__ {int /*<<< orphan*/ * p_infe; int /*<<< orphan*/  fmt; int /*<<< orphan*/ * p_shared_header; TYPE_4__* (* BOXDATA ) (int /*<<< orphan*/ ) ;} ;
-struct heif_private_t {scalar_t__ i_end_display_time; scalar_t__ i_pcr; scalar_t__ i_image_duration; int b_seekpoint_changed; scalar_t__ id; TYPE_1__ current; int /*<<< orphan*/ * p_root; } ;
-typedef  int /*<<< orphan*/  es_format_t ;
-struct TYPE_16__ {int /*<<< orphan*/  out; scalar_t__ p_sys; } ;
-typedef  TYPE_2__ demux_t ;
-struct TYPE_17__ {scalar_t__ i_dts; scalar_t__ i_pts; scalar_t__ i_length; int /*<<< orphan*/  i_flags; } ;
-typedef  TYPE_3__ block_t ;
-struct TYPE_18__ {scalar_t__ item_type; int /*<<< orphan*/  i_item_id; } ;
-struct TYPE_14__ {int /*<<< orphan*/  i_item_id; } ;
-typedef  int /*<<< orphan*/  MP4_Box_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ATOM_infe ; 
- int /*<<< orphan*/  BLOCK_FLAG_END_OF_SEQUENCE ; 
- TYPE_13__* BOXDATA (int /*<<< orphan*/ *) ; 
- scalar_t__ DerivedImageAssembleGrid (TYPE_2__*,int /*<<< orphan*/  const,int /*<<< orphan*/ *,TYPE_3__**) ; 
- int /*<<< orphan*/  ES_OUT_GET_EMPTY ; 
- void* GetAtom (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- void* MP4_BoxGet (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  MatchInfeID ; 
- int /*<<< orphan*/  MatchPureImage ; 
- TYPE_3__* ReadItemExtents (TYPE_2__*,int /*<<< orphan*/  const,int /*<<< orphan*/ *) ; 
- scalar_t__ SetupPicture (TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  UNKNOWN_ES ; 
- int VLC_DEMUXER_EOF ; 
- int VLC_DEMUXER_SUCCESS ; 
- scalar_t__ VLC_FOURCC (char,char,char,char) ; 
- scalar_t__ VLC_SUCCESS ; 
- scalar_t__ VLC_TICK_0 ; 
- int /*<<< orphan*/  VLC_TICK_FROM_MS (int) ; 
- scalar_t__ VLC_TICK_INVALID ; 
- int /*<<< orphan*/  es_format_Clean (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  es_format_Copy (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  es_format_Init (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ es_out_Add (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  es_out_Control (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  es_out_Del (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  es_out_Send (int /*<<< orphan*/ ,scalar_t__,TYPE_3__*) ; 
- int /*<<< orphan*/  es_out_SetPCR (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  p_infe ; 
- TYPE_4__* stub1 (int /*<<< orphan*/ ) ; 
- TYPE_4__* stub2 (int /*<<< orphan*/ ) ; 
- scalar_t__ vlc_tick_now () ; 
- int /*<<< orphan*/  vlc_tick_sleep (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_18__ TYPE_4__ ;
+typedef struct TYPE_17__ TYPE_3__ ;
+typedef struct TYPE_16__ TYPE_2__ ;
+typedef struct TYPE_15__ TYPE_1__ ;
+typedef struct TYPE_14__ TYPE_13__ ;
+
+
+typedef int uint32_t ;
+struct TYPE_15__ {int * p_infe; int fmt; int * p_shared_header; TYPE_4__* (* BOXDATA ) (int ) ;} ;
+struct heif_private_t {scalar_t__ i_end_display_time; scalar_t__ i_pcr; scalar_t__ i_image_duration; int b_seekpoint_changed; scalar_t__ id; TYPE_1__ current; int * p_root; } ;
+typedef int es_format_t ;
+struct TYPE_16__ {int out; scalar_t__ p_sys; } ;
+typedef TYPE_2__ demux_t ;
+struct TYPE_17__ {scalar_t__ i_dts; scalar_t__ i_pts; scalar_t__ i_length; int i_flags; } ;
+typedef TYPE_3__ block_t ;
+struct TYPE_18__ {scalar_t__ item_type; int i_item_id; } ;
+struct TYPE_14__ {int i_item_id; } ;
+typedef int MP4_Box_t ;
+
+
+ int ATOM_infe ;
+ int BLOCK_FLAG_END_OF_SEQUENCE ;
+ TYPE_13__* BOXDATA (int *) ;
+ scalar_t__ DerivedImageAssembleGrid (TYPE_2__*,int const,int *,TYPE_3__**) ;
+ int ES_OUT_GET_EMPTY ;
+ void* GetAtom (int *,int *,int ,char*,int ,int *) ;
+ void* MP4_BoxGet (int *,char*) ;
+ int MatchInfeID ;
+ int MatchPureImage ;
+ TYPE_3__* ReadItemExtents (TYPE_2__*,int const,int *) ;
+ scalar_t__ SetupPicture (TYPE_2__*,int *,int *,int **) ;
+ int UNKNOWN_ES ;
+ int VLC_DEMUXER_EOF ;
+ int VLC_DEMUXER_SUCCESS ;
+ scalar_t__ VLC_FOURCC (char,char,char,char) ;
+ scalar_t__ VLC_SUCCESS ;
+ scalar_t__ VLC_TICK_0 ;
+ int VLC_TICK_FROM_MS (int) ;
+ scalar_t__ VLC_TICK_INVALID ;
+ int es_format_Clean (int *) ;
+ int es_format_Copy (int *,int *) ;
+ int es_format_Init (int *,int ,int ) ;
+ scalar_t__ es_out_Add (int ,int *) ;
+ int es_out_Control (int ,int ,int*) ;
+ int es_out_Del (int ,scalar_t__) ;
+ int es_out_Send (int ,scalar_t__,TYPE_3__*) ;
+ int es_out_SetPCR (int ,scalar_t__) ;
+ int p_infe ;
+ TYPE_4__* stub1 (int ) ;
+ TYPE_4__* stub2 (int ) ;
+ scalar_t__ vlc_tick_now () ;
+ int vlc_tick_sleep (int ) ;
 
 __attribute__((used)) static int DemuxHEIF( demux_t *p_demux )
 {
     struct heif_private_t *p_sys = (void *) p_demux->p_sys;
 
-    /* Displaying a picture */
+
     if( p_sys->i_end_display_time > 0 )
     {
         bool b_empty;
@@ -78,17 +78,17 @@ __attribute__((used)) static int DemuxHEIF( demux_t *p_demux )
         p_sys->i_end_display_time = 0;
     }
 
-    /* Reset prev pic params */
-    p_sys->current.p_shared_header = NULL;
 
-    /* First or next picture */
+    p_sys->current.p_shared_header = ((void*)0);
+
+
     if( !p_sys->current.p_infe )
     {
         MP4_Box_t *p_pitm = MP4_BoxGet( p_sys->p_root, "meta/pitm" );
         if( !p_pitm )
             return VLC_DEMUXER_EOF;
 
-        p_sys->current.p_infe = GetAtom( p_sys->p_root, NULL,
+        p_sys->current.p_infe = GetAtom( p_sys->p_root, ((void*)0),
                                          ATOM_infe, "meta/iinf/infe",
                                          MatchInfeID, &BOXDATA(p_pitm)->i_item_id );
     }
@@ -110,7 +110,7 @@ __attribute__((used)) static int DemuxHEIF( demux_t *p_demux )
     es_format_t fmt;
     es_format_Init(&fmt, UNKNOWN_ES, 0);
 
-    block_t *p_block = NULL;
+    block_t *p_block = ((void*)0);
     if( p_sys->current.BOXDATA(p_infe)->item_type == VLC_FOURCC('g','r','i','d') )
     {
         if( DerivedImageAssembleGrid( p_demux, i_current_item_id,
@@ -134,7 +134,7 @@ __attribute__((used)) static int DemuxHEIF( demux_t *p_demux )
         if( !p_block )
         {
             es_format_Clean( &fmt );
-            return VLC_DEMUXER_SUCCESS; /* Goto next picture */
+            return VLC_DEMUXER_SUCCESS;
         }
     }
 
@@ -147,7 +147,7 @@ __attribute__((used)) static int DemuxHEIF( demux_t *p_demux )
 
     if( !p_sys->id )
     {
-        p_sys->current.p_infe = NULL; /* Goto next picture */
+        p_sys->current.p_infe = ((void*)0);
         return VLC_DEMUXER_SUCCESS;
     }
 
@@ -163,7 +163,7 @@ __attribute__((used)) static int DemuxHEIF( demux_t *p_demux )
     p_block->i_flags |= BLOCK_FLAG_END_OF_SEQUENCE;
 
     p_sys->i_end_display_time = vlc_tick_now() + p_block->i_length;
-    p_sys->b_seekpoint_changed = true;
+    p_sys->b_seekpoint_changed = 1;
 
     p_sys->i_pcr = p_block->i_dts + p_block->i_length;
     es_out_Send( p_demux->out, p_sys->id, p_block );

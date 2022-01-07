@@ -1,62 +1,62 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_6__ {int vidWidth; int vidHeight; } ;
 struct TYPE_5__ {scalar_t__ value; } ;
-struct TYPE_4__ {int /*<<< orphan*/  (* Cvar_Set ) (char*,char*) ;int /*<<< orphan*/  (* Printf ) (int /*<<< orphan*/ ,char*) ;} ;
+struct TYPE_4__ {int (* Cvar_Set ) (char*,char*) ;int (* Printf ) (int ,char*) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CreateNullCursor (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CurrentTime ; 
- int /*<<< orphan*/  DefaultScreen (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  False ; 
- int /*<<< orphan*/  GrabModeAsync ; 
- int /*<<< orphan*/  MOUSE_MASK ; 
- int /*<<< orphan*/  None ; 
- int /*<<< orphan*/  PRINT_ALL ; 
- int /*<<< orphan*/  Sys_Milliseconds () ; 
- int /*<<< orphan*/  True ; 
- int /*<<< orphan*/  XChangePointerControl (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XDefineCursor (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XF86DGADirectMouse ; 
- int /*<<< orphan*/  XF86DGADirectVideo (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XF86DGAQueryVersion (int /*<<< orphan*/ ,int*,int*) ; 
- int /*<<< orphan*/  XGetPointerControl (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  XGrabKeyboard (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XGrabPointer (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XSync (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XWarpPointer (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  dpy ; 
- TYPE_3__ glConfig ; 
- TYPE_2__* in_dgamouse ; 
- int /*<<< orphan*/  mouseResetTime ; 
- int /*<<< orphan*/  mouse_accel_denominator ; 
- int /*<<< orphan*/  mouse_accel_numerator ; 
- int /*<<< orphan*/  mouse_threshold ; 
- int mwx ; 
- int mwy ; 
- scalar_t__ mx ; 
- scalar_t__ my ; 
- TYPE_1__ ri ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  stub2 (char*,char*) ; 
- int /*<<< orphan*/  win ; 
+
+ int CreateNullCursor (int ,int ) ;
+ int CurrentTime ;
+ int DefaultScreen (int ) ;
+ int False ;
+ int GrabModeAsync ;
+ int MOUSE_MASK ;
+ int None ;
+ int PRINT_ALL ;
+ int Sys_Milliseconds () ;
+ int True ;
+ int XChangePointerControl (int ,int ,int ,int,int,int ) ;
+ int XDefineCursor (int ,int ,int ) ;
+ int XF86DGADirectMouse ;
+ int XF86DGADirectVideo (int ,int ,int ) ;
+ int XF86DGAQueryVersion (int ,int*,int*) ;
+ int XGetPointerControl (int ,int *,int *,int *) ;
+ int XGrabKeyboard (int ,int ,int ,int ,int ,int ) ;
+ int XGrabPointer (int ,int ,int ,int ,int ,int ,int ,int ,int ) ;
+ int XSync (int ,int ) ;
+ int XWarpPointer (int ,int ,int ,int ,int ,int ,int ,int,int) ;
+ int dpy ;
+ TYPE_3__ glConfig ;
+ TYPE_2__* in_dgamouse ;
+ int mouseResetTime ;
+ int mouse_accel_denominator ;
+ int mouse_accel_numerator ;
+ int mouse_threshold ;
+ int mwx ;
+ int mwy ;
+ scalar_t__ mx ;
+ scalar_t__ my ;
+ TYPE_1__ ri ;
+ int stub1 (int ,char*) ;
+ int stub2 (char*,char*) ;
+ int win ;
 
 __attribute__((used)) static void install_grabs(void)
 {
-  // inviso cursor
+
   XWarpPointer(dpy, None, win,
                0, 0, 0, 0,
                glConfig.vidWidth / 2, glConfig.vidHeight / 2);
@@ -64,7 +64,7 @@ __attribute__((used)) static void install_grabs(void)
 
   XDefineCursor(dpy, win, CreateNullCursor(dpy, win));
 
-  XGrabPointer(dpy, win, // bk010108 - do this earlier?
+  XGrabPointer(dpy, win,
                False,
                MOUSE_MASK,
                GrabModeAsync, GrabModeAsync,
@@ -87,7 +87,7 @@ __attribute__((used)) static void install_grabs(void)
 
     if (!XF86DGAQueryVersion(dpy, &MajorVersion, &MinorVersion))
     {
-      // unable to query, probalby not supported, force the setting to 0
+
       ri.Printf( PRINT_ALL, "Failed to detect XF86DGA Mouse\n" );
       ri.Cvar_Set( "in_dgamouse", "0" );
     } else

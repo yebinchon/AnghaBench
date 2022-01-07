@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  IVideoWindow ;
-typedef  int /*<<< orphan*/  IPin ;
-typedef  int /*<<< orphan*/  IFilterGraph2 ;
-typedef  int /*<<< orphan*/  IBaseFilter ;
-typedef  scalar_t__ HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLSCTX_INPROC_SERVER ; 
- int /*<<< orphan*/  CLSID_VideoRenderer ; 
- scalar_t__ CoCreateInstance (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**) ; 
- scalar_t__ IBaseFilter_FindPin (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IBaseFilter_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IFilterGraph2_AddFilter (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ IFilterGraph2_AddSourceFilter (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- scalar_t__ IFilterGraph2_Connect (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IFilterGraph2_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IID_IBaseFilter ; 
- int /*<<< orphan*/  IID_IVideoWindow ; 
- int /*<<< orphan*/  IPin_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IVideoWindow_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IVideoWindow_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ SUCCEEDED (scalar_t__) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/ * create_graph () ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
- int /*<<< orphan*/  rungraph (int /*<<< orphan*/ *) ; 
+
+
+
+typedef char WCHAR ;
+typedef int IVideoWindow ;
+typedef int IPin ;
+typedef int IFilterGraph2 ;
+typedef int IBaseFilter ;
+typedef scalar_t__ HRESULT ;
+
+
+ int CLSCTX_INPROC_SERVER ;
+ int CLSID_VideoRenderer ;
+ scalar_t__ CoCreateInstance (int *,int *,int ,int *,void**) ;
+ scalar_t__ IBaseFilter_FindPin (int *,char const*,int **) ;
+ int IBaseFilter_Release (int *) ;
+ scalar_t__ IFilterGraph2_AddFilter (int *,int *,int *) ;
+ scalar_t__ IFilterGraph2_AddSourceFilter (int *,char*,int *,int **) ;
+ scalar_t__ IFilterGraph2_Connect (int *,int *,int *) ;
+ int IFilterGraph2_Release (int *) ;
+ int IID_IBaseFilter ;
+ int IID_IVideoWindow ;
+ int IPin_Release (int *) ;
+ scalar_t__ IVideoWindow_QueryInterface (int *,int *,void**) ;
+ int IVideoWindow_Release (int *) ;
+ scalar_t__ SUCCEEDED (scalar_t__) ;
+ scalar_t__ S_OK ;
+ int * create_graph () ;
+ int ok (int,char*,scalar_t__) ;
+ int rungraph (int *) ;
 
 __attribute__((used)) static HRESULT test_graph_builder_connect(WCHAR *filename)
 {
@@ -50,15 +50,15 @@ __attribute__((used)) static HRESULT test_graph_builder_connect(WCHAR *filename)
 
     graph = create_graph();
 
-    hr = CoCreateInstance(&CLSID_VideoRenderer, NULL, CLSCTX_INPROC_SERVER, &IID_IVideoWindow, (void **)&window);
+    hr = CoCreateInstance(&CLSID_VideoRenderer, ((void*)0), CLSCTX_INPROC_SERVER, &IID_IVideoWindow, (void **)&window);
     ok(hr == S_OK, "Failed to create VideoRenderer: %#x\n", hr);
 
-    hr = IFilterGraph2_AddSourceFilter(graph, filename, NULL, &source_filter);
+    hr = IFilterGraph2_AddSourceFilter(graph, filename, ((void*)0), &source_filter);
     ok(hr == S_OK, "AddSourceFilter failed: %#x\n", hr);
 
     hr = IVideoWindow_QueryInterface(window, &IID_IBaseFilter, (void **)&video_filter);
     ok(hr == S_OK, "QueryInterface(IBaseFilter) failed: %#x\n", hr);
-    hr = IFilterGraph2_AddFilter(graph, video_filter, NULL);
+    hr = IFilterGraph2_AddFilter(graph, video_filter, ((void*)0));
     ok(hr == S_OK, "AddFilter failed: %#x\n", hr);
 
     hr = IBaseFilter_FindPin(source_filter, outputW, &pin_out);

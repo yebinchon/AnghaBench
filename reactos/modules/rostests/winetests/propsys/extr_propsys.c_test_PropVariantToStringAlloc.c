@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-struct TYPE_5__ {int /*<<< orphan*/  pszVal; } ;
-struct TYPE_6__ {TYPE_1__ u; int /*<<< orphan*/  vt; } ;
-typedef  TYPE_2__ PROPVARIANT ;
-typedef  scalar_t__ HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CoTaskMemAlloc (scalar_t__) ; 
- int /*<<< orphan*/  CoTaskMemFree (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PropVariantClear (TYPE_2__*) ; 
- scalar_t__ PropVariantToStringAlloc (TYPE_2__*,int /*<<< orphan*/ **) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  VT_LPSTR ; 
- int /*<<< orphan*/  VT_NULL ; 
- int /*<<< orphan*/  emptyW ; 
- int /*<<< orphan*/  lstrcmpW (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
- int /*<<< orphan*/  strcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ strlen (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  topic ; 
- int /*<<< orphan*/  topicW ; 
- scalar_t__ wine_dbgstr_w (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
+struct TYPE_5__ {int pszVal; } ;
+struct TYPE_6__ {TYPE_1__ u; int vt; } ;
+typedef TYPE_2__ PROPVARIANT ;
+typedef scalar_t__ HRESULT ;
+
+
+ int CoTaskMemAlloc (scalar_t__) ;
+ int CoTaskMemFree (int *) ;
+ int PropVariantClear (TYPE_2__*) ;
+ scalar_t__ PropVariantToStringAlloc (TYPE_2__*,int **) ;
+ scalar_t__ S_OK ;
+ int VT_LPSTR ;
+ int VT_NULL ;
+ int emptyW ;
+ int lstrcmpW (int *,int ) ;
+ int ok (int,char*,scalar_t__) ;
+ int strcpy (int ,int ) ;
+ scalar_t__ strlen (int ) ;
+ int topic ;
+ int topicW ;
+ scalar_t__ wine_dbgstr_w (int *) ;
 
 __attribute__((used)) static void test_PropVariantToStringAlloc(void)
 {

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  bfd ;
-struct TYPE_6__ {int /*<<< orphan*/  sh_entsize; int /*<<< orphan*/  sh_addralign; int /*<<< orphan*/  sh_info; int /*<<< orphan*/  sh_link; int /*<<< orphan*/  sh_size; int /*<<< orphan*/  sh_offset; int /*<<< orphan*/  sh_addr; int /*<<< orphan*/  sh_flags; int /*<<< orphan*/  sh_type; int /*<<< orphan*/  sh_name; } ;
-struct TYPE_5__ {int /*<<< orphan*/  sh_entsize; int /*<<< orphan*/  sh_addralign; int /*<<< orphan*/  sh_info; int /*<<< orphan*/  sh_link; int /*<<< orphan*/  sh_size; int /*<<< orphan*/  sh_offset; int /*<<< orphan*/  sh_addr; int /*<<< orphan*/  sh_flags; int /*<<< orphan*/  sh_type; int /*<<< orphan*/  sh_name; } ;
-typedef  TYPE_1__ Elf_Internal_Shdr ;
-typedef  TYPE_2__ Elf_External_Shdr ;
 
-/* Variables and functions */
- int /*<<< orphan*/  H_PUT_32 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  H_PUT_WORD (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int bfd ;
+struct TYPE_6__ {int sh_entsize; int sh_addralign; int sh_info; int sh_link; int sh_size; int sh_offset; int sh_addr; int sh_flags; int sh_type; int sh_name; } ;
+struct TYPE_5__ {int sh_entsize; int sh_addralign; int sh_info; int sh_link; int sh_size; int sh_offset; int sh_addr; int sh_flags; int sh_type; int sh_name; } ;
+typedef TYPE_1__ Elf_Internal_Shdr ;
+typedef TYPE_2__ Elf_External_Shdr ;
+
+
+ int H_PUT_32 (int *,int ,int ) ;
+ int H_PUT_WORD (int *,int ,int ) ;
 
 __attribute__((used)) static void
 elf_swap_shdr_out (bfd *abfd,
-		   const Elf_Internal_Shdr *src,
-		   Elf_External_Shdr *dst)
+     const Elf_Internal_Shdr *src,
+     Elf_External_Shdr *dst)
 {
-  /* note that all elements of dst are *arrays of unsigned char* already...  */
+
   H_PUT_32 (abfd, src->sh_name, dst->sh_name);
   H_PUT_32 (abfd, src->sh_type, dst->sh_type);
   H_PUT_WORD (abfd, src->sh_flags, dst->sh_flags);

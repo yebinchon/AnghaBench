@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int cbSize; } ;
-typedef  TYPE_1__ MENUITEMINFOA ;
-typedef  int /*<<< orphan*/  HMENU ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef TYPE_1__ MENUITEMINFOA ;
+typedef int HMENU ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CreateMenu () ; 
- int /*<<< orphan*/  DestroyMenu (int /*<<< orphan*/ ) ; 
- scalar_t__ ERROR_MENU_ITEM_NOT_FOUND ; 
- int /*<<< orphan*/  FALSE ; 
- scalar_t__ GetLastError () ; 
- int /*<<< orphan*/  GetMenuItemInfoA (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  SetLastError (int) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
+
+ int CreateMenu () ;
+ int DestroyMenu (int ) ;
+ scalar_t__ ERROR_MENU_ITEM_NOT_FOUND ;
+ int FALSE ;
+ scalar_t__ GetLastError () ;
+ int GetMenuItemInfoA (int ,int ,int ,TYPE_1__*) ;
+ int SetLastError (int) ;
+ int TRUE ;
+ int memset (TYPE_1__*,int ,int) ;
+ int win_skip (char*) ;
 
 __attribute__((used)) static BOOL correct_behavior(void)
 {
@@ -40,10 +40,10 @@ __attribute__((used)) static BOOL correct_behavior(void)
     info.cbSize= sizeof(MENUITEMINFOA);
     SetLastError(0xdeadbeef);
     rc = GetMenuItemInfoA(hmenu, 0, TRUE, &info);
-    /* Win9x  : 0xdeadbeef
-     * NT4    : ERROR_INVALID_PARAMETER
-     * >= W2K : ERROR_MENU_ITEM_NOT_FOUND
-     */
+
+
+
+
     if (!rc && GetLastError() != ERROR_MENU_ITEM_NOT_FOUND)
     {
         win_skip("NT4 and below can't handle a bigger MENUITEMINFO struct\n");

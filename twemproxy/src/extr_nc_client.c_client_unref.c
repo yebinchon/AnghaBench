@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  data; int /*<<< orphan*/  len; } ;
-struct server_pool {scalar_t__ nc_conn_q; TYPE_1__ name; int /*<<< orphan*/  c_conn_q; } ;
-struct conn {struct server_pool* owner; int /*<<< orphan*/  proxy; scalar_t__ client; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- int /*<<< orphan*/  LOG_VVERB ; 
- int /*<<< orphan*/  TAILQ_REMOVE (int /*<<< orphan*/ *,struct conn*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  conn_tqe ; 
- int /*<<< orphan*/  log_debug (int /*<<< orphan*/ ,char*,struct conn*,struct server_pool*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int data; int len; } ;
+struct server_pool {scalar_t__ nc_conn_q; TYPE_1__ name; int c_conn_q; } ;
+struct conn {struct server_pool* owner; int proxy; scalar_t__ client; } ;
+
+
+ int ASSERT (int) ;
+ int LOG_VVERB ;
+ int TAILQ_REMOVE (int *,struct conn*,int ) ;
+ int conn_tqe ;
+ int log_debug (int ,char*,struct conn*,struct server_pool*,int ,int ) ;
 
 void
 client_unref(struct conn *conn)
@@ -28,10 +28,10 @@ client_unref(struct conn *conn)
     struct server_pool *pool;
 
     ASSERT(conn->client && !conn->proxy);
-    ASSERT(conn->owner != NULL);
+    ASSERT(conn->owner != ((void*)0));
 
     pool = conn->owner;
-    conn->owner = NULL;
+    conn->owner = ((void*)0);
 
     ASSERT(pool->nc_conn_q != 0);
     pool->nc_conn_q--;

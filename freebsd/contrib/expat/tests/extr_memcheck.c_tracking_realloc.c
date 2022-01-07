@@ -1,64 +1,64 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_7__ {void* allocation; size_t num_bytes; struct TYPE_7__* next; struct TYPE_7__* prev; } ;
-typedef  TYPE_1__ AllocationEntry ;
+typedef TYPE_1__ AllocationEntry ;
 
-/* Variables and functions */
- TYPE_1__* alloc_head ; 
- TYPE_1__* alloc_tail ; 
- TYPE_1__* find_allocation (void*) ; 
- int /*<<< orphan*/  free (TYPE_1__*) ; 
- TYPE_1__* malloc (int) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- void* realloc (void*,size_t) ; 
- int /*<<< orphan*/  tracking_free (void*) ; 
- void* tracking_malloc (size_t) ; 
+
+ TYPE_1__* alloc_head ;
+ TYPE_1__* alloc_tail ;
+ TYPE_1__* find_allocation (void*) ;
+ int free (TYPE_1__*) ;
+ TYPE_1__* malloc (int) ;
+ int printf (char*,...) ;
+ void* realloc (void*,size_t) ;
+ int tracking_free (void*) ;
+ void* tracking_malloc (size_t) ;
 
 void *
 tracking_realloc(void *ptr, size_t size)
 {
     AllocationEntry *entry;
 
-    if (ptr == NULL) {
-        /* By definition, this is equivalent to malloc(size) */
+    if (ptr == ((void*)0)) {
+
         return tracking_malloc(size);
     }
     if (size == 0) {
-        /* By definition, this is equivalent to free(ptr) */
+
         tracking_free(ptr);
-        return NULL;
+        return ((void*)0);
     }
 
-    /* Find the allocation entry for this memory */
+
     entry = find_allocation(ptr);
-    if (entry == NULL) {
+    if (entry == ((void*)0)) {
         printf("Attempting to realloc unallocated memory at %p\n", ptr);
         entry = malloc(sizeof(AllocationEntry));
-        if (entry == NULL) {
+        if (entry == ((void*)0)) {
             printf("Reallocator failure\n");
-            return NULL;
+            return ((void*)0);
         }
         entry->allocation = realloc(ptr, size);
-        if (entry->allocation == NULL) {
+        if (entry->allocation == ((void*)0)) {
             free(entry);
-            return NULL;
+            return ((void*)0);
         }
 
-        /* Add to the list of allocations */
-        entry->next = NULL;
-        if (alloc_head == NULL) {
-            entry->prev = NULL;
+
+        entry->next = ((void*)0);
+        if (alloc_head == ((void*)0)) {
+            entry->prev = ((void*)0);
             alloc_head = alloc_tail = entry;
         } else {
             entry->prev = alloc_tail;
@@ -67,10 +67,10 @@ tracking_realloc(void *ptr, size_t size)
         }
     } else {
         entry->allocation = realloc(ptr, size);
-        if (entry->allocation == NULL) {
-            /* Realloc semantics say the original is still allocated */
+        if (entry->allocation == ((void*)0)) {
+
             entry->allocation = ptr;
-            return NULL;
+            return ((void*)0);
         }
     }
 

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_7__ {TYPE_1__* elements; } ;
-typedef  TYPE_2__ svn_priority_queue__t ;
+typedef TYPE_2__ svn_priority_queue__t ;
 struct TYPE_6__ {int nelts; } ;
 
-/* Variables and functions */
- scalar_t__ heap_is_less (TYPE_2__*,int,int) ; 
- int /*<<< orphan*/  heap_swap (TYPE_2__*,int,int) ; 
+
+ scalar_t__ heap_is_less (TYPE_2__*,int,int) ;
+ int heap_swap (TYPE_2__*,int,int) ;
 
 __attribute__((used)) static void
 heap_bubble_up(svn_priority_queue__t *queue,
@@ -37,7 +37,7 @@ heap_bubble_up(svn_priority_queue__t *queue,
       idx = child;
     }
 
-  if (   2 * idx + 1 < queue->elements->nelts
+  if ( 2 * idx + 1 < queue->elements->nelts
       && heap_is_less(queue, 2 * idx + 1, idx))
     heap_swap(queue, 2 * idx + 1, idx);
 }

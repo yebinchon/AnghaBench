@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  B64_Decode (char*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  StrLen (char*) ; 
+
+
+
+typedef int UINT ;
+
+
+ int B64_Decode (char*,char*,int ) ;
+ int StrLen (char*) ;
 
 UINT Decode64(char *dst, char *src)
 {
-	// Validate arguments
-	if (dst == NULL || src == NULL)
-	{
-		return 0;
-	}
 
-	return B64_Decode(dst, src, StrLen(src));
+ if (dst == ((void*)0) || src == ((void*)0))
+ {
+  return 0;
+ }
+
+ return B64_Decode(dst, src, StrLen(src));
 }

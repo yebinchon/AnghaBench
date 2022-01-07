@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct params {int m_tcpart; int /*<<< orphan*/  m_tcname; int /*<<< orphan*/  m_resfile; } ;
-typedef  int /*<<< orphan*/  atf_tp_t ;
-typedef  int /*<<< orphan*/  atf_error_t ;
 
-/* Variables and functions */
-#define  BODY 129 
-#define  CLEANUP 128 
- int EXIT_FAILURE ; 
- int EXIT_SUCCESS ; 
- int /*<<< orphan*/  INV (int) ; 
- int /*<<< orphan*/  UNREACHABLE ; 
- int /*<<< orphan*/  atf_env_get (char*) ; 
- int /*<<< orphan*/  atf_env_has (char*) ; 
- int /*<<< orphan*/  atf_error_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  atf_fs_path_cstring (int /*<<< orphan*/ *) ; 
- scalar_t__ atf_is_error (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  atf_no_error () ; 
- int /*<<< orphan*/  atf_tp_cleanup (int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  atf_tp_has_tc (int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  atf_tp_run (int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  print_warning (char*) ; 
- scalar_t__ strcmp (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  usage_error (char*,int /*<<< orphan*/ ) ; 
+
+
+
+struct params {int m_tcpart; int m_tcname; int m_resfile; } ;
+typedef int atf_tp_t ;
+typedef int atf_error_t ;
+
+
+
+
+ int EXIT_FAILURE ;
+ int EXIT_SUCCESS ;
+ int INV (int) ;
+ int UNREACHABLE ;
+ int atf_env_get (char*) ;
+ int atf_env_has (char*) ;
+ int atf_error_free (int ) ;
+ int atf_fs_path_cstring (int *) ;
+ scalar_t__ atf_is_error (int ) ;
+ int atf_no_error () ;
+ int atf_tp_cleanup (int const*,int ) ;
+ int atf_tp_has_tc (int const*,int ) ;
+ int atf_tp_run (int const*,int ,int ) ;
+ int print_warning (char*) ;
+ scalar_t__ strcmp (int ,char*) ;
+ int usage_error (char*,int ) ;
 
 __attribute__((used)) static
 atf_error_t
@@ -56,10 +56,10 @@ run_tc(const atf_tp_t *tp, struct params *p, int *exitcode)
     }
 
     switch (p->m_tcpart) {
-    case BODY:
+    case 129:
         err = atf_tp_run(tp, p->m_tcname, atf_fs_path_cstring(&p->m_resfile));
         if (atf_is_error(err)) {
-            /* TODO: Handle error */
+
             *exitcode = EXIT_FAILURE;
             atf_error_free(err);
         } else {
@@ -68,10 +68,10 @@ run_tc(const atf_tp_t *tp, struct params *p, int *exitcode)
 
         break;
 
-    case CLEANUP:
+    case 128:
         err = atf_tp_cleanup(tp, p->m_tcname);
         if (atf_is_error(err)) {
-            /* TODO: Handle error */
+
             *exitcode = EXIT_FAILURE;
             atf_error_free(err);
         } else {

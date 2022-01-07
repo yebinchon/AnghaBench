@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int stack_size; int stack_top; int /*<<< orphan*/ ** stack; } ;
-typedef  TYPE_1__ stringify_ctx_t ;
-typedef  int /*<<< orphan*/  jsdisp_t ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/ ** heap_alloc (int) ; 
- int /*<<< orphan*/ ** heap_realloc (int /*<<< orphan*/ **,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int stack_size; int stack_top; int ** stack; } ;
+typedef TYPE_1__ stringify_ctx_t ;
+typedef int jsdisp_t ;
+typedef int BOOL ;
+
+
+ int FALSE ;
+ int TRUE ;
+ int ** heap_alloc (int) ;
+ int ** heap_realloc (int **,int) ;
 
 __attribute__((used)) static BOOL stringify_push_obj(stringify_ctx_t *ctx, jsdisp_t *obj)
 {

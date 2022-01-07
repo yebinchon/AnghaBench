@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ int zlog_limit ;
 
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int zlog_limit ; 
-
-int zlog_set_limit(int new_value) /* {{{ */
+int zlog_set_limit(int new_value)
 {
-	int old_value = zlog_limit;
+ int old_value = zlog_limit;
 
-	zlog_limit = new_value;
-	return old_value;
+ zlog_limit = new_value;
+ return old_value;
 }

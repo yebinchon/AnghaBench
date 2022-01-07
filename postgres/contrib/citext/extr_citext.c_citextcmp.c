@@ -1,52 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  text ;
-typedef  int /*<<< orphan*/  int32 ;
-typedef  int /*<<< orphan*/  Oid ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEFAULT_COLLATION_OID ; 
- int /*<<< orphan*/  VARDATA_ANY (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  VARSIZE_ANY_EXHDR (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pfree (char*) ; 
- char* str_tolower (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strlen (char*) ; 
- int /*<<< orphan*/  varstr_cmp (char*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int text ;
+typedef int int32 ;
+typedef int Oid ;
+
+
+ int DEFAULT_COLLATION_OID ;
+ int VARDATA_ANY (int *) ;
+ int VARSIZE_ANY_EXHDR (int *) ;
+ int pfree (char*) ;
+ char* str_tolower (int ,int ,int ) ;
+ int strlen (char*) ;
+ int varstr_cmp (char*,int ,char*,int ,int ) ;
 
 __attribute__((used)) static int32
 citextcmp(text *left, text *right, Oid collid)
 {
-	char	   *lcstr,
-			   *rcstr;
-	int32		result;
+ char *lcstr,
+      *rcstr;
+ int32 result;
+ lcstr = str_tolower(VARDATA_ANY(left), VARSIZE_ANY_EXHDR(left), DEFAULT_COLLATION_OID);
+ rcstr = str_tolower(VARDATA_ANY(right), VARSIZE_ANY_EXHDR(right), DEFAULT_COLLATION_OID);
 
-	/*
-	 * We must do our str_tolower calls with DEFAULT_COLLATION_OID, not the
-	 * input collation as you might expect.  This is so that the behavior of
-	 * citext's equality and hashing functions is not collation-dependent.  We
-	 * should change this once the core infrastructure is able to cope with
-	 * collation-dependent equality and hashing functions.
-	 */
+ result = varstr_cmp(lcstr, strlen(lcstr),
+      rcstr, strlen(rcstr),
+      collid);
 
-	lcstr = str_tolower(VARDATA_ANY(left), VARSIZE_ANY_EXHDR(left), DEFAULT_COLLATION_OID);
-	rcstr = str_tolower(VARDATA_ANY(right), VARSIZE_ANY_EXHDR(right), DEFAULT_COLLATION_OID);
+ pfree(lcstr);
+ pfree(rcstr);
 
-	result = varstr_cmp(lcstr, strlen(lcstr),
-						rcstr, strlen(rcstr),
-						collid);
-
-	pfree(lcstr);
-	pfree(rcstr);
-
-	return result;
+ return result;
 }

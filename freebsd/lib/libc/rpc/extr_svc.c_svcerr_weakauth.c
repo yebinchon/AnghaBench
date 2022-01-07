@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  SVCXPRT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AUTH_TOOWEAK ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svcerr_auth (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int SVCXPRT ;
+
+
+ int AUTH_TOOWEAK ;
+ int assert (int ) ;
+ int svcerr_auth (int *,int ) ;
 
 void
 svcerr_weakauth(SVCXPRT *xprt)
 {
 
-	assert(xprt != NULL);
+ assert(xprt != ((void*)0));
 
-	svcerr_auth(xprt, AUTH_TOOWEAK);
+ svcerr_auth(xprt, AUTH_TOOWEAK);
 }

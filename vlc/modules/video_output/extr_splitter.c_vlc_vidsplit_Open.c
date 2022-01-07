@@ -1,65 +1,65 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_22__   TYPE_5__ ;
-typedef  struct TYPE_21__   TYPE_4__ ;
-typedef  struct TYPE_20__   TYPE_3__ ;
-typedef  struct TYPE_19__   TYPE_2__ ;
-typedef  struct TYPE_18__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_18__ {int /*<<< orphan*/  (* close ) (TYPE_1__*) ;int /*<<< orphan*/  control; int /*<<< orphan*/  display; int /*<<< orphan*/  prepare; int /*<<< orphan*/  source; TYPE_2__* sys; } ;
-typedef  TYPE_1__ vout_display_t ;
-struct TYPE_21__ {int i_output; TYPE_5__* p_output; int /*<<< orphan*/  fmt; int /*<<< orphan*/ * p_module; } ;
-struct TYPE_19__ {struct vlc_vidsplit_part* parts; int /*<<< orphan*/ * pictures; int /*<<< orphan*/  lock; TYPE_4__ splitter; } ;
-typedef  TYPE_2__ vout_display_sys_t ;
-struct TYPE_20__ {int is_display_filled; int /*<<< orphan*/ * window; int /*<<< orphan*/  zoom; int /*<<< orphan*/  align; int /*<<< orphan*/  display; } ;
-typedef  TYPE_3__ vout_display_cfg_t ;
-typedef  int /*<<< orphan*/  vlc_video_context ;
-typedef  int /*<<< orphan*/  vlc_object_t ;
-typedef  TYPE_4__ video_splitter_t ;
-struct TYPE_22__ {char* psz_module; int /*<<< orphan*/  fmt; } ;
-typedef  TYPE_5__ video_splitter_output_t ;
-typedef  int /*<<< orphan*/  video_format_t ;
-struct vlc_vidsplit_part {int width; int height; int /*<<< orphan*/  lock; TYPE_1__* display; int /*<<< orphan*/ * window; } ;
 
-/* Variables and functions */
- int VLC_EGENERIC ; 
- int VLC_ENOMEM ; 
- int /*<<< orphan*/ * VLC_OBJECT (TYPE_1__*) ; 
- int VLC_SUCCESS ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/ * module_need (TYPE_4__*,char*,char*,int) ; 
- scalar_t__ unlikely (int) ; 
- char* var_InheritString (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  video_format_Clean (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  video_format_Copy (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * video_splitter_CreateWindow (int /*<<< orphan*/ *,TYPE_3__*,int /*<<< orphan*/ *,struct vlc_vidsplit_part*) ; 
- int /*<<< orphan*/  vlc_mutex_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_mutex_init (int /*<<< orphan*/ *) ; 
- void* vlc_obj_malloc (int /*<<< orphan*/ *,int) ; 
- TYPE_2__* vlc_object_create (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  vlc_object_delete (TYPE_4__*) ; 
- int /*<<< orphan*/  vlc_sem_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_sem_init (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  vlc_sem_post (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_sem_wait (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_vidsplit_Close (TYPE_1__*) ; 
- int /*<<< orphan*/  vlc_vidsplit_Control ; 
- int /*<<< orphan*/  vlc_vidsplit_Display ; 
- int /*<<< orphan*/  vlc_vidsplit_Prepare ; 
- TYPE_1__* vout_display_New (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_3__*,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vout_display_SetSize (TYPE_1__*,int,int) ; 
- scalar_t__ vout_display_cfg_IsWindowed (TYPE_3__ const*) ; 
- int /*<<< orphan*/  vout_window_Delete (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vout_window_Disable (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_22__ TYPE_5__ ;
+typedef struct TYPE_21__ TYPE_4__ ;
+typedef struct TYPE_20__ TYPE_3__ ;
+typedef struct TYPE_19__ TYPE_2__ ;
+typedef struct TYPE_18__ TYPE_1__ ;
+
+
+struct TYPE_18__ {int (* close ) (TYPE_1__*) ;int control; int display; int prepare; int source; TYPE_2__* sys; } ;
+typedef TYPE_1__ vout_display_t ;
+struct TYPE_21__ {int i_output; TYPE_5__* p_output; int fmt; int * p_module; } ;
+struct TYPE_19__ {struct vlc_vidsplit_part* parts; int * pictures; int lock; TYPE_4__ splitter; } ;
+typedef TYPE_2__ vout_display_sys_t ;
+struct TYPE_20__ {int is_display_filled; int * window; int zoom; int align; int display; } ;
+typedef TYPE_3__ vout_display_cfg_t ;
+typedef int vlc_video_context ;
+typedef int vlc_object_t ;
+typedef TYPE_4__ video_splitter_t ;
+struct TYPE_22__ {char* psz_module; int fmt; } ;
+typedef TYPE_5__ video_splitter_output_t ;
+typedef int video_format_t ;
+struct vlc_vidsplit_part {int width; int height; int lock; TYPE_1__* display; int * window; } ;
+
+
+ int VLC_EGENERIC ;
+ int VLC_ENOMEM ;
+ int * VLC_OBJECT (TYPE_1__*) ;
+ int VLC_SUCCESS ;
+ int free (char*) ;
+ int * module_need (TYPE_4__*,char*,char*,int) ;
+ scalar_t__ unlikely (int) ;
+ char* var_InheritString (int *,char*) ;
+ int video_format_Clean (int *) ;
+ int video_format_Copy (int *,int *) ;
+ int * video_splitter_CreateWindow (int *,TYPE_3__*,int *,struct vlc_vidsplit_part*) ;
+ int vlc_mutex_destroy (int *) ;
+ int vlc_mutex_init (int *) ;
+ void* vlc_obj_malloc (int *,int) ;
+ TYPE_2__* vlc_object_create (int *,int) ;
+ int vlc_object_delete (TYPE_4__*) ;
+ int vlc_sem_destroy (int *) ;
+ int vlc_sem_init (int *,int) ;
+ int vlc_sem_post (int *) ;
+ int vlc_sem_wait (int *) ;
+ int vlc_vidsplit_Close (TYPE_1__*) ;
+ int vlc_vidsplit_Control ;
+ int vlc_vidsplit_Display ;
+ int vlc_vidsplit_Prepare ;
+ TYPE_1__* vout_display_New (int *,int *,int *,TYPE_3__*,char const*,int *) ;
+ int vout_display_SetSize (TYPE_1__*,int,int) ;
+ scalar_t__ vout_display_cfg_IsWindowed (TYPE_3__ const*) ;
+ int vout_window_Delete (int *) ;
+ int vout_window_Disable (int *) ;
 
 __attribute__((used)) static int vlc_vidsplit_Open(vout_display_t *vd,
                              const vout_display_cfg_t *cfg,
@@ -71,11 +71,11 @@ __attribute__((used)) static int vlc_vidsplit_Open(vout_display_t *vd,
         return VLC_EGENERIC;
 
     char *name = var_InheritString(obj, "video-splitter");
-    if (name == NULL)
+    if (name == ((void*)0))
         return VLC_EGENERIC;
 
     vout_display_sys_t *sys = vlc_object_create(obj, sizeof (*sys));
-    if (unlikely(sys == NULL)) {
+    if (unlikely(sys == ((void*)0))) {
         free(name);
         return VLC_ENOMEM;
     }
@@ -86,9 +86,9 @@ __attribute__((used)) static int vlc_vidsplit_Open(vout_display_t *vd,
     vlc_mutex_init(&sys->lock);
     video_format_Copy(&splitter->fmt, &vd->source);
 
-    splitter->p_module = module_need(splitter, "video splitter", name, true);
+    splitter->p_module = module_need(splitter, "video splitter", name, 1);
     free(name);
-    if (splitter->p_module == NULL) {
+    if (splitter->p_module == ((void*)0)) {
         video_format_Clean(&splitter->fmt);
         vlc_mutex_destroy(&sys->lock);
         vlc_object_delete(splitter);
@@ -99,7 +99,7 @@ __attribute__((used)) static int vlc_vidsplit_Open(vout_display_t *vd,
                                         * sizeof (*sys->pictures));
     sys->parts = vlc_obj_malloc(obj,
                                 splitter->i_output * sizeof (*sys->parts));
-    if (unlikely(sys->pictures == NULL || sys->parts == NULL)) {
+    if (unlikely(sys->pictures == ((void*)0) || sys->parts == ((void*)0))) {
         splitter->i_output = 0;
         vlc_vidsplit_Close(vd);
         return VLC_ENOMEM;
@@ -109,21 +109,21 @@ __attribute__((used)) static int vlc_vidsplit_Open(vout_display_t *vd,
         const video_splitter_output_t *output = &splitter->p_output[i];
         vout_display_cfg_t vdcfg = {
             .display = { 0, 0, { 1, 1 } },
-            .align = { 0, 0 } /* TODO */,
-            .is_display_filled = true,
+            .align = { 0, 0 } ,
+            .is_display_filled = 1,
             .zoom = { 1, 1 },
         };
         const char *modname = output->psz_module;
         struct vlc_vidsplit_part *part = &sys->parts[i];
 
         vlc_sem_init(&part->lock, 1);
-        part->display = NULL;
+        part->display = ((void*)0);
         part->width = 1;
         part->height = 1;
 
         part->window = video_splitter_CreateWindow(obj, &vdcfg, &output->fmt,
                                                    part);
-        if (part->window == NULL) {
+        if (part->window == ((void*)0)) {
             splitter->i_output = i;
             vlc_vidsplit_Close(vd);
             return VLC_EGENERIC;
@@ -131,8 +131,8 @@ __attribute__((used)) static int vlc_vidsplit_Open(vout_display_t *vd,
 
         vdcfg.window = part->window;
         vout_display_t *display = vout_display_New(obj, &output->fmt, ctx, &vdcfg,
-                                                   modname, NULL);
-        if (display == NULL) {
+                                                   modname, ((void*)0));
+        if (display == ((void*)0)) {
             vout_window_Disable(part->window);
             vout_window_Delete(part->window);
             vlc_sem_destroy(&part->lock);

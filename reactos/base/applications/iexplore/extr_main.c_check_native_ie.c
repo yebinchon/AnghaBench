@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  UINT ;
-typedef  int /*<<< orphan*/  LPWSTR ;
-typedef  int /*<<< orphan*/ * LPWORD ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetFileVersionInfoSizeW (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GetFileVersionInfoW (char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- void* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*) ; 
- int TRUE ; 
- scalar_t__ VerQueryValueW (void*,char const*,void**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strstrW (int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  wsprintfW (char*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef char WCHAR ;
+typedef int UINT ;
+typedef int LPWSTR ;
+typedef int * LPWORD ;
+typedef int DWORD ;
+typedef int BOOL ;
+
+
+ int GetFileVersionInfoSizeW (char const*,int *) ;
+ int GetFileVersionInfoW (char const*,int ,int ,void*) ;
+ int GetProcessHeap () ;
+ void* HeapAlloc (int ,int ,int ) ;
+ int HeapFree (int ,int ,void*) ;
+ int TRUE ;
+ scalar_t__ VerQueryValueW (void*,char const*,void**,int *) ;
+ int strstrW (int ,char const*) ;
+ int wsprintfW (char*,char const*,int ,int ) ;
 
 __attribute__((used)) static BOOL check_native_ie(void)
 {

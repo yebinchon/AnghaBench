@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u_int32_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int u_int32_t ;
 struct ath_hal {int dummy; } ;
 struct TYPE_3__ {int pe_firpwr; int pe_enabled; int pe_enrelpwr; int pe_en_relstep_check; void* pe_maxlen; void* pe_relstep; void* pe_relpwr; void* pe_inband; void* pe_prssi; void* pe_height; void* pe_rrssi; } ;
-typedef  TYPE_1__ HAL_PHYERR_PARAM ;
+typedef TYPE_1__ HAL_PHYERR_PARAM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AR_PHY_RADAR_0 ; 
- int AR_PHY_RADAR_0_ENA ; 
- int AR_PHY_RADAR_0_FIRPWR ; 
- int AR_PHY_RADAR_0_FIRPWR_S ; 
- int AR_PHY_RADAR_0_HEIGHT ; 
- int AR_PHY_RADAR_0_INBAND ; 
- int AR_PHY_RADAR_0_PRSSI ; 
- int AR_PHY_RADAR_0_RRSSI ; 
- int /*<<< orphan*/  AR_PHY_RADAR_1 ; 
- int AR_PHY_RADAR_1_MAXLEN ; 
- int AR_PHY_RADAR_1_RELPWR_ENA ; 
- int AR_PHY_RADAR_1_RELPWR_THRESH ; 
- int AR_PHY_RADAR_1_RELSTEP_CHECK ; 
- int AR_PHY_RADAR_1_RELSTEP_THRESH ; 
- void* MS (int,int) ; 
- int OS_REG_READ (struct ath_hal*,int /*<<< orphan*/ ) ; 
+
+ int AR_PHY_RADAR_0 ;
+ int AR_PHY_RADAR_0_ENA ;
+ int AR_PHY_RADAR_0_FIRPWR ;
+ int AR_PHY_RADAR_0_FIRPWR_S ;
+ int AR_PHY_RADAR_0_HEIGHT ;
+ int AR_PHY_RADAR_0_INBAND ;
+ int AR_PHY_RADAR_0_PRSSI ;
+ int AR_PHY_RADAR_0_RRSSI ;
+ int AR_PHY_RADAR_1 ;
+ int AR_PHY_RADAR_1_MAXLEN ;
+ int AR_PHY_RADAR_1_RELPWR_ENA ;
+ int AR_PHY_RADAR_1_RELPWR_THRESH ;
+ int AR_PHY_RADAR_1_RELSTEP_CHECK ;
+ int AR_PHY_RADAR_1_RELSTEP_THRESH ;
+ void* MS (int,int) ;
+ int OS_REG_READ (struct ath_hal*,int ) ;
 
 void
 ar9300_get_dfs_thresh(struct ath_hal *ah, HAL_PHYERR_PARAM *pe)

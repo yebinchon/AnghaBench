@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u32 ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u32 ;
 struct TYPE_2__ {int w; int mode6; } ;
 
-/* Variables and functions */
- scalar_t__ MODE_ABSW ; 
- scalar_t__ MODE_IMM ; 
- TYPE_1__ d ; 
- int /*<<< orphan*/  desa_ascii (char) ; 
- int /*<<< orphan*/  desa_char (char) ; 
- int /*<<< orphan*/  get_ea_2 (scalar_t__,scalar_t__,char) ; 
+
+ scalar_t__ MODE_ABSW ;
+ scalar_t__ MODE_IMM ;
+ TYPE_1__ d ;
+ int desa_ascii (char) ;
+ int desa_char (char) ;
+ int get_ea_2 (scalar_t__,scalar_t__,char) ;
 
 __attribute__((used)) static int check_desa_IMM_SR(void)
 {
@@ -32,15 +32,15 @@ __attribute__((used)) static int check_desa_IMM_SR(void)
 
   switch(mode)
     {
-    case 0xA: /* EORI */
+    case 0xA:
       inst = 'EORI';
       break;
-#if 0
-    case 0x0: /* ORI */
-      inst = 'ORI';
-      break;
-#endif
-    case 0x2: /* ANDI */
+
+
+
+
+
+    case 0x2:
       inst = 'ANDI';
       break;
     }

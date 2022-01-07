@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  js_State ;
 
-/* Variables and functions */
- int BOT ; 
- int /*<<< orphan*/ * STACK ; 
- int TOP ; 
- int /*<<< orphan*/  js_error (int /*<<< orphan*/ *,char*) ; 
+
+
+
+typedef int js_State ;
+
+
+ int BOT ;
+ int * STACK ;
+ int TOP ;
+ int js_error (int *,char*) ;
 
 void js_replace(js_State* J, int idx)
 {
-	idx = idx < 0 ? TOP + idx : BOT + idx;
-	if (idx < BOT || idx >= TOP)
-		js_error(J, "stack error!");
-	STACK[idx] = STACK[--TOP];
+ idx = idx < 0 ? TOP + idx : BOT + idx;
+ if (idx < BOT || idx >= TOP)
+  js_error(J, "stack error!");
+ STACK[idx] = STACK[--TOP];
 }

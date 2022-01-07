@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char u_char ;
-typedef  int /*<<< orphan*/  lua_State ;
-struct TYPE_2__ {int /*<<< orphan*/  log; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NGX_LOG_DEBUG_HTTP ; 
- int /*<<< orphan*/  NGX_UNESCAPE_URI_COMPONENT ; 
- int /*<<< orphan*/  dd (char*,...) ; 
- int luaL_error (int /*<<< orphan*/ *,char*) ; 
- int lua_gettop (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_pop (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pushboolean (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pushliteral (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  lua_pushlstring (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  lua_tolstring (int /*<<< orphan*/ *,int,size_t*) ; 
- int /*<<< orphan*/  lua_type (int /*<<< orphan*/ *,int) ; 
- int lua_typename (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- TYPE_1__* ngx_cycle ; 
- int /*<<< orphan*/  ngx_http_lua_set_multi_value_table (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  ngx_http_lua_unescape_uri (char**,char**,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_log_debug1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef char u_char ;
+typedef int lua_State ;
+struct TYPE_2__ {int log; } ;
+
+
+ int NGX_LOG_DEBUG_HTTP ;
+ int NGX_UNESCAPE_URI_COMPONENT ;
+ int dd (char*,...) ;
+ int luaL_error (int *,char*) ;
+ int lua_gettop (int *) ;
+ int lua_pop (int *,int) ;
+ int lua_pushboolean (int *,int) ;
+ int lua_pushliteral (int *,char*) ;
+ int lua_pushlstring (int *,char*,int) ;
+ int lua_tolstring (int *,int,size_t*) ;
+ int lua_type (int *,int) ;
+ int lua_typename (int *,int ) ;
+ TYPE_1__* ngx_cycle ;
+ int ngx_http_lua_set_multi_value_table (int *,int) ;
+ int ngx_http_lua_unescape_uri (char**,char**,int,int ) ;
+ int ngx_log_debug1 (int ,int ,int ,char*,int) ;
 
 int
 ngx_http_lua_parse_args(lua_State *L, u_char *buf, u_char *last, int max)
 {
-    u_char                      *p, *q;
-    u_char                      *src, *dst;
-    unsigned                     parsing_value;
-    size_t                       len;
-    int                          count = 0;
-    int                          top;
+    u_char *p, *q;
+    u_char *src, *dst;
+    unsigned parsing_value;
+    size_t len;
+    int count = 0;
+    int top;
 
     top = lua_gettop(L);
 
@@ -52,7 +52,7 @@ ngx_http_lua_parse_args(lua_State *L, u_char *buf, u_char *last, int max)
 
     while (p != last) {
         if (*p == '=' && ! parsing_value) {
-            /* key data is between p and q */
+
 
             src = q; dst = q;
 
@@ -61,17 +61,17 @@ ngx_http_lua_parse_args(lua_State *L, u_char *buf, u_char *last, int max)
 
             dd("pushing key %.*s", (int) (dst - q), q);
 
-            /* push the key */
+
             lua_pushlstring(L, (char *) q, dst - q);
 
-            /* skip the current '=' char */
+
             p++;
 
             q = p;
             parsing_value = 1;
 
         } else if (*p == '&') {
-            /* reached the end of a key or a value, just save it */
+
             src = q; dst = q;
 
             ngx_http_lua_unescape_uri(&dst, &src, p - q,
@@ -79,21 +79,21 @@ ngx_http_lua_parse_args(lua_State *L, u_char *buf, u_char *last, int max)
 
             dd("pushing key or value %.*s", (int) (dst - q), q);
 
-            /* push the value or key */
+
             lua_pushlstring(L, (char *) q, dst - q);
 
-            /* skip the current '&' char */
+
             p++;
 
             q = p;
 
             if (parsing_value) {
-                /* end of the current pair's value */
+
                 parsing_value = 0;
 
             } else {
-                /* the current parsing pair takes no value,
-                 * just push the value "true" */
+
+
                 dd("pushing boolean true");
 
                 lua_pushboolean(L, 1);
@@ -102,7 +102,7 @@ ngx_http_lua_parse_args(lua_State *L, u_char *buf, u_char *last, int max)
             (void) lua_tolstring(L, -2, &len);
 
             if (len == 0) {
-                /* ignore empty string key pairs */
+
                 dd("popping key and value...");
                 lua_pop(L, 2);
 
@@ -142,7 +142,7 @@ ngx_http_lua_parse_args(lua_State *L, u_char *buf, u_char *last, int max)
         (void) lua_tolstring(L, -2, &len);
 
         if (len == 0) {
-            /* ignore empty string key pairs */
+
             dd("popping key and value...");
             lua_pop(L, 2);
 

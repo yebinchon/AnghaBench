@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  scalar_t__ uint16_t ;
-struct TYPE_3__ {int lock; int head; int tail; int size; int /*<<< orphan*/ * buf; } ;
-typedef  TYPE_1__ FIFO_TypeDef ;
 
-/* Variables and functions */
 
-uint16_t  fifo_write(FIFO_TypeDef * f, const void * buf, uint16_t  nbytes)
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef scalar_t__ uint16_t ;
+struct TYPE_3__ {int lock; int head; int tail; int size; int * buf; } ;
+typedef TYPE_1__ FIFO_TypeDef ;
+
+
+
+uint16_t fifo_write(FIFO_TypeDef * f, const void * buf, uint16_t nbytes)
 {
-  uint16_t  i;
+  uint16_t i;
   const uint8_t * p;
   p = buf;
   if(f->lock == 0)
@@ -33,8 +33,8 @@ uint16_t  fifo_write(FIFO_TypeDef * f, const void * buf, uint16_t  nbytes)
       {
         f->lock = 0;
         return i;
-      } 
-      else 
+      }
+      else
       {
         f->buf[f->head] = *p++;
         f->head++;

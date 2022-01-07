@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int OPJ_UINT32 ;
 
-/* Variables and functions */
- int T1_CTXNO_ZC ; 
- int T1_SIGMA_0 ; 
- int T1_SIGMA_1 ; 
- int T1_SIGMA_2 ; 
- int T1_SIGMA_3 ; 
- int T1_SIGMA_5 ; 
- int T1_SIGMA_6 ; 
- int T1_SIGMA_7 ; 
- int T1_SIGMA_8 ; 
+
+
+
+typedef int OPJ_UINT32 ;
+
+
+ int T1_CTXNO_ZC ;
+ int T1_SIGMA_0 ;
+ int T1_SIGMA_1 ;
+ int T1_SIGMA_2 ;
+ int T1_SIGMA_3 ;
+ int T1_SIGMA_5 ;
+ int T1_SIGMA_6 ;
+ int T1_SIGMA_7 ;
+ int T1_SIGMA_8 ;
 
 __attribute__((used)) static int t1_init_ctxno_zc(OPJ_UINT32 f, OPJ_UINT32 orient)
 {

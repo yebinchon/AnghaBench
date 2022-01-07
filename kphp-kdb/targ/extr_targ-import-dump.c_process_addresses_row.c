@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct lev_address_extended {int* text; void* atype; void* country; void* street; void* station; void* district; void* city; void* user_id; scalar_t__ type; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GA ; 
- int /*<<< orphan*/  GB ; 
- int /*<<< orphan*/  Gc ; 
- int /*<<< orphan*/  Gd ; 
- void** I ; 
- scalar_t__ LEV_TARG_ADDR_EXT_ADD ; 
- int /*<<< orphan*/  adj_rec ; 
- size_t adr_city_id ; 
- size_t adr_country_id ; 
- size_t adr_district_id ; 
- size_t adr_house_id ; 
- size_t adr_member_id ; 
- size_t adr_place_id ; 
- size_t adr_station_id ; 
- size_t adr_street_id ; 
- size_t adr_type ; 
- int /*<<< orphan*/  fits (void*) ; 
- char* lookup_name (int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*,int*,int) ; 
- int /*<<< orphan*/  memcpy (int*,char*,int) ; 
- void* user_id ; 
- struct lev_address_extended* write_alloc (int) ; 
+
+ int GA ;
+ int GB ;
+ int Gc ;
+ int Gd ;
+ void** I ;
+ scalar_t__ LEV_TARG_ADDR_EXT_ADD ;
+ int adj_rec ;
+ size_t adr_city_id ;
+ size_t adr_country_id ;
+ size_t adr_district_id ;
+ size_t adr_house_id ;
+ size_t adr_member_id ;
+ size_t adr_place_id ;
+ size_t adr_station_id ;
+ size_t adr_street_id ;
+ size_t adr_type ;
+ int fits (void*) ;
+ char* lookup_name (int ,int ,void*,int*,int) ;
+ int memcpy (int*,char*,int) ;
+ void* user_id ;
+ struct lev_address_extended* write_alloc (int) ;
 
 void process_addresses_row (void) {
   struct lev_address_extended *A;

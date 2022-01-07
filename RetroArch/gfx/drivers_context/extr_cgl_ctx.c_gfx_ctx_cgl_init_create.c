@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int GLint ;
-typedef  int /*<<< orphan*/  CGLPixelFormatObj ;
-typedef  int /*<<< orphan*/  CGLPixelFormatAttribute ;
-typedef  int /*<<< orphan*/ * CGLContextObj ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CGLChoosePixelFormat (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  CGLCreateContext (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  CGLDestroyPixelFormat (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CGLSetParameter (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  kCGLCPSwapInterval ; 
- int /*<<< orphan*/  kCGLPFAAccelerated ; 
- int /*<<< orphan*/  kCGLPFADoubleBuffer ; 
+
+
+
+typedef int GLint ;
+typedef int CGLPixelFormatObj ;
+typedef int CGLPixelFormatAttribute ;
+typedef int * CGLContextObj ;
+
+
+ int CGLChoosePixelFormat (int *,int *,int*) ;
+ int CGLCreateContext (int ,int *,int **) ;
+ int CGLDestroyPixelFormat (int ) ;
+ int CGLSetParameter (int *,int ,int*) ;
+ int kCGLCPSwapInterval ;
+ int kCGLPFAAccelerated ;
+ int kCGLPFADoubleBuffer ;
 
 __attribute__((used)) static CGLContextObj gfx_ctx_cgl_init_create(void)
 {
    GLint num, params = 1;
    CGLPixelFormatObj pix;
-   CGLContextObj glCtx = NULL;
+   CGLContextObj glCtx = ((void*)0);
    CGLPixelFormatAttribute attributes[] = {
       kCGLPFAAccelerated,
       kCGLPFADoubleBuffer,
@@ -36,7 +36,7 @@ __attribute__((used)) static CGLContextObj gfx_ctx_cgl_init_create(void)
    };
 
    CGLChoosePixelFormat(attributes, &pix, &num);
-   CGLCreateContext(pix, NULL, &glCtx);
+   CGLCreateContext(pix, ((void*)0), &glCtx);
    CGLDestroyPixelFormat(pix);
 
    CGLSetParameter(glCtx, kCGLCPSwapInterval, &params);

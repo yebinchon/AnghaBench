@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  paramValues_t ;
-typedef  int /*<<< orphan*/  cParams ;
-typedef  int /*<<< orphan*/  ZSTD_compressionParameters ;
-typedef  int /*<<< orphan*/  BYTE ;
 
-/* Variables and functions */
- unsigned long long const PARAMTABLEMASK ; 
- unsigned long long XXH64 (int /*<<< orphan*/  const*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * g_alreadyTested ; 
- int /*<<< orphan*/  pvalsToCParams (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sanitizeParams (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int paramValues_t ;
+typedef int cParams ;
+typedef int ZSTD_compressionParameters ;
+typedef int BYTE ;
+
+
+ unsigned long long const PARAMTABLEMASK ;
+ unsigned long long XXH64 (int const*,int,int ) ;
+ int * g_alreadyTested ;
+ int pvalsToCParams (int ) ;
+ int sanitizeParams (int ) ;
 
 __attribute__((used)) static BYTE* NB_TESTS_PLAYED(paramValues_t p)
 {

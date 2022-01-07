@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct scsi_event {int evt_type; } ;
-struct TYPE_2__ {int /*<<< orphan*/  kobj; } ;
+struct TYPE_2__ {int kobj; } ;
 struct scsi_device {TYPE_1__ sdev_gendev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  KOBJ_CHANGE ; 
-#define  SDEV_EVT_MEDIA_CHANGE 128 
- int /*<<< orphan*/  kobject_uevent_env (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char**) ; 
+
+ int KOBJ_CHANGE ;
+
+ int kobject_uevent_env (int *,int ,char**) ;
 
 __attribute__((used)) static void scsi_evt_emit(struct scsi_device *sdev, struct scsi_event *evt)
 {
-	int idx = 0;
-	char *envp[3];
+ int idx = 0;
+ char *envp[3];
 
-	switch (evt->evt_type) {
-	case SDEV_EVT_MEDIA_CHANGE:
-		envp[idx++] = "SDEV_MEDIA_CHANGE=1";
-		break;
+ switch (evt->evt_type) {
+ case 128:
+  envp[idx++] = "SDEV_MEDIA_CHANGE=1";
+  break;
 
-	default:
-		/* do nothing */
-		break;
-	}
+ default:
 
-	envp[idx++] = NULL;
+  break;
+ }
 
-	kobject_uevent_env(&sdev->sdev_gendev.kobj, KOBJ_CHANGE, envp);
+ envp[idx++] = ((void*)0);
+
+ kobject_uevent_env(&sdev->sdev_gendev.kobj, KOBJ_CHANGE, envp);
 }

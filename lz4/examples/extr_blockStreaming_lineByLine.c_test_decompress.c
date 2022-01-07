@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uint16_t ;
-typedef  int /*<<< orphan*/  LZ4_streamDecode_t ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- size_t LZ4_COMPRESSBOUND (size_t) ; 
- int /*<<< orphan*/ * LZ4_createStreamDecode () ; 
- int LZ4_decompress_safe_continue (int /*<<< orphan*/ * const,char* const,char* const,scalar_t__,int) ; 
- int /*<<< orphan*/  LZ4_freeStreamDecode (int /*<<< orphan*/ * const) ; 
- int /*<<< orphan*/  free (char* const) ; 
- scalar_t__ malloc (size_t) ; 
- scalar_t__ read_bin (int /*<<< orphan*/ *,char* const,scalar_t__) ; 
- int read_uint16 (int /*<<< orphan*/ *,scalar_t__*) ; 
- int /*<<< orphan*/  write_bin (int /*<<< orphan*/ *,char* const,int const) ; 
+
+
+
+typedef scalar_t__ uint16_t ;
+typedef int LZ4_streamDecode_t ;
+typedef int FILE ;
+
+
+ size_t LZ4_COMPRESSBOUND (size_t) ;
+ int * LZ4_createStreamDecode () ;
+ int LZ4_decompress_safe_continue (int * const,char* const,char* const,scalar_t__,int) ;
+ int LZ4_freeStreamDecode (int * const) ;
+ int free (char* const) ;
+ scalar_t__ malloc (size_t) ;
+ scalar_t__ read_bin (int *,char* const,scalar_t__) ;
+ int read_uint16 (int *,scalar_t__*) ;
+ int write_bin (int *,char* const,int const) ;
 
 __attribute__((used)) static void test_decompress(
     FILE* outFp,
@@ -51,7 +51,7 @@ __attribute__((used)) static void test_decompress(
             if (decBytes <= 0) break;
             write_bin(outFp, decPtr, decBytes);
 
-            // Add and wraparound the ringbuffer offset
+
             decOffset += decBytes;
             if ((size_t)decOffset >= ringBufferBytes - messageMaxBytes) decOffset = 0;
         }

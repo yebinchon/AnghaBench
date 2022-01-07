@@ -1,29 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  dError (char*) ; 
- int /*<<< orphan*/  dPrint (char*) ; 
- double tsNumOfCores ; 
- double tsNumOfThreadsPerCore ; 
- double tsRatioOfQueryThreads ; 
- scalar_t__ vnodeInitMgmt () ; 
- scalar_t__ vnodeInitPeer (int) ; 
- int /*<<< orphan*/  vnodeInitQueryHandle () ; 
- scalar_t__ vnodeInitShell () ; 
- scalar_t__ vnodeInitStore () ; 
- int /*<<< orphan*/  vnodeInitTmrCtl () ; 
- scalar_t__ vnodeInitVnodes () ; 
+ int dError (char*) ;
+ int dPrint (char*) ;
+ double tsNumOfCores ;
+ double tsNumOfThreadsPerCore ;
+ double tsRatioOfQueryThreads ;
+ scalar_t__ vnodeInitMgmt () ;
+ scalar_t__ vnodeInitPeer (int) ;
+ int vnodeInitQueryHandle () ;
+ scalar_t__ vnodeInitShell () ;
+ scalar_t__ vnodeInitStore () ;
+ int vnodeInitTmrCtl () ;
+ scalar_t__ vnodeInitVnodes () ;
 
 int vnodeInitSystem() {
 

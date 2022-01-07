@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ivopts_data {int /*<<< orphan*/  iv_uses; } ;
+
+
+
+
+struct ivopts_data {int iv_uses; } ;
 struct iv_use {int dummy; } ;
 
-/* Variables and functions */
- struct iv_use* VEC_index (int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned int) ; 
- int /*<<< orphan*/  iv_use_p ; 
+
+ struct iv_use* VEC_index (int ,int ,unsigned int) ;
+ int iv_use_p ;
 
 __attribute__((used)) static inline struct iv_use *
 iv_use (struct ivopts_data *data, unsigned i)

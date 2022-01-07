@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct platform_device {int dummy; } ;
-struct omap_des_dev {int /*<<< orphan*/  dev; int /*<<< orphan*/  done_task; TYPE_2__* pdata; int /*<<< orphan*/  list; } ;
+struct omap_des_dev {int dev; int done_task; TYPE_2__* pdata; int list; } ;
 struct TYPE_4__ {int algs_info_size; TYPE_1__* algs_info; } ;
-struct TYPE_3__ {int registered; int /*<<< orphan*/ * algs_list; } ;
+struct TYPE_3__ {int registered; int * algs_list; } ;
 
-/* Variables and functions */
- int ENODEV ; 
- int /*<<< orphan*/  crypto_unregister_alg (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  list_del (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  list_lock ; 
- int /*<<< orphan*/  omap_des_dma_cleanup (struct omap_des_dev*) ; 
- struct omap_des_dev* platform_get_drvdata (struct platform_device*) ; 
- int /*<<< orphan*/  pm_runtime_disable (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  spin_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tasklet_kill (int /*<<< orphan*/ *) ; 
+
+ int ENODEV ;
+ int crypto_unregister_alg (int *) ;
+ int list_del (int *) ;
+ int list_lock ;
+ int omap_des_dma_cleanup (struct omap_des_dev*) ;
+ struct omap_des_dev* platform_get_drvdata (struct platform_device*) ;
+ int pm_runtime_disable (int ) ;
+ int spin_lock (int *) ;
+ int spin_unlock (int *) ;
+ int tasklet_kill (int *) ;
 
 __attribute__((used)) static int omap_des_remove(struct platform_device *pdev)
 {
-	struct omap_des_dev *dd = platform_get_drvdata(pdev);
-	int i, j;
+ struct omap_des_dev *dd = platform_get_drvdata(pdev);
+ int i, j;
 
-	if (!dd)
-		return -ENODEV;
+ if (!dd)
+  return -ENODEV;
 
-	spin_lock(&list_lock);
-	list_del(&dd->list);
-	spin_unlock(&list_lock);
+ spin_lock(&list_lock);
+ list_del(&dd->list);
+ spin_unlock(&list_lock);
 
-	for (i = dd->pdata->algs_info_size - 1; i >= 0; i--)
-		for (j = dd->pdata->algs_info[i].registered - 1; j >= 0; j--)
-			crypto_unregister_alg(
-					&dd->pdata->algs_info[i].algs_list[j]);
+ for (i = dd->pdata->algs_info_size - 1; i >= 0; i--)
+  for (j = dd->pdata->algs_info[i].registered - 1; j >= 0; j--)
+   crypto_unregister_alg(
+     &dd->pdata->algs_info[i].algs_list[j]);
 
-	tasklet_kill(&dd->done_task);
-	omap_des_dma_cleanup(dd);
-	pm_runtime_disable(dd->dev);
-	dd = NULL;
+ tasklet_kill(&dd->done_task);
+ omap_des_dma_cleanup(dd);
+ pm_runtime_disable(dd->dev);
+ dd = ((void*)0);
 
-	return 0;
+ return 0;
 }

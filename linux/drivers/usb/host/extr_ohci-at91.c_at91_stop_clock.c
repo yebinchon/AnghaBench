@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ohci_at91_priv {int clocked; int /*<<< orphan*/  hclk; int /*<<< orphan*/  iclk; int /*<<< orphan*/  fclk; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  clk_disable_unprepare (int /*<<< orphan*/ ) ; 
+
+
+
+struct ohci_at91_priv {int clocked; int hclk; int iclk; int fclk; } ;
+
+
+ int clk_disable_unprepare (int ) ;
 
 __attribute__((used)) static void at91_stop_clock(struct ohci_at91_priv *ohci_at91)
 {
-	if (!ohci_at91->clocked)
-		return;
+ if (!ohci_at91->clocked)
+  return;
 
-	clk_disable_unprepare(ohci_at91->fclk);
-	clk_disable_unprepare(ohci_at91->iclk);
-	clk_disable_unprepare(ohci_at91->hclk);
-	ohci_at91->clocked = false;
+ clk_disable_unprepare(ohci_at91->fclk);
+ clk_disable_unprepare(ohci_at91->iclk);
+ clk_disable_unprepare(ohci_at91->hclk);
+ ohci_at91->clocked = 0;
 }

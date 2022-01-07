@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  RDP_EXEC ; 
- int /*<<< orphan*/  RDP_EXEC_TYPE_SYNC ; 
- int /*<<< orphan*/  send_rdp (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int RDP_EXEC ;
+ int RDP_EXEC_TYPE_SYNC ;
+ int send_rdp (char*,int ,int ) ;
 
 __attribute__((used)) static void
 rdp_execute_start (void)
 {
-  /* Start it off, but don't wait for it */
+
   send_rdp ("bb-", RDP_EXEC, RDP_EXEC_TYPE_SYNC);
 }

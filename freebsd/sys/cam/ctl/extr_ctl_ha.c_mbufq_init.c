@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct mbufq {int /*<<< orphan*/ * tail; int /*<<< orphan*/  head; } ;
 
-/* Variables and functions */
+
+
+
+struct mbufq {int * tail; int head; } ;
+
+
 
 __attribute__((used)) static void
 mbufq_init(struct mbufq *q, int limit)
 {
 
-	q->head = q->tail = NULL;
+ q->head = q->tail = ((void*)0);
 }

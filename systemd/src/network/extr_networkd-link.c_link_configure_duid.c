@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_15__ {int /*<<< orphan*/  duids_requesting_uuid; int /*<<< orphan*/  links_requesting_uuid; int /*<<< orphan*/  product_uuid; scalar_t__ has_product_uuid; struct TYPE_15__* manager; struct TYPE_15__* network; } ;
-typedef  TYPE_1__ Manager ;
-typedef  TYPE_1__ Link ;
-typedef  TYPE_1__ DUID ;
 
-/* Variables and functions */
- int ENOMEM ; 
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int /*<<< orphan*/  duid_set_uuid (TYPE_1__*,int /*<<< orphan*/ ) ; 
- TYPE_1__* link_get_duid (TYPE_1__*) ; 
- int /*<<< orphan*/  link_ref (TYPE_1__*) ; 
- int /*<<< orphan*/  link_requires_uuid (TYPE_1__*) ; 
- int /*<<< orphan*/  log_link_warning_errno (TYPE_1__*,int,char*) ; 
- int log_oom () ; 
- int manager_request_product_uuid (TYPE_1__*,TYPE_1__*) ; 
- int set_put (int /*<<< orphan*/ ,TYPE_1__*) ; 
+
+typedef struct TYPE_15__ TYPE_1__ ;
+
+
+struct TYPE_15__ {int duids_requesting_uuid; int links_requesting_uuid; int product_uuid; scalar_t__ has_product_uuid; struct TYPE_15__* manager; struct TYPE_15__* network; } ;
+typedef TYPE_1__ Manager ;
+typedef TYPE_1__ Link ;
+typedef TYPE_1__ DUID ;
+
+
+ int ENOMEM ;
+ int assert (TYPE_1__*) ;
+ int duid_set_uuid (TYPE_1__*,int ) ;
+ TYPE_1__* link_get_duid (TYPE_1__*) ;
+ int link_ref (TYPE_1__*) ;
+ int link_requires_uuid (TYPE_1__*) ;
+ int log_link_warning_errno (TYPE_1__*,int,char*) ;
+ int log_oom () ;
+ int manager_request_product_uuid (TYPE_1__*,TYPE_1__*) ;
+ int set_put (int ,TYPE_1__*) ;
 
 __attribute__((used)) static int link_configure_duid(Link *link) {
         Manager *m;

@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_5__ ;
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT32 ;
+
+
+typedef struct TYPE_14__ TYPE_5__ ;
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int UINT32 ;
 struct TYPE_10__ {scalar_t__ Integer; } ;
-struct TYPE_13__ {int ParseOpcode; int /*<<< orphan*/  CompileFlags; int /*<<< orphan*/  EndLogicalLine; int /*<<< orphan*/  LogicalLineNumber; int /*<<< orphan*/  EndLine; int /*<<< orphan*/  LineNumber; int /*<<< orphan*/  Column; int /*<<< orphan*/  FinalAmlLength; int /*<<< orphan*/  AcpiBtype; int /*<<< orphan*/  Next; int /*<<< orphan*/  Child; TYPE_3__* Parent; int /*<<< orphan*/  AmlSubtreeLength; int /*<<< orphan*/  AmlLength; int /*<<< orphan*/  AmlPkgLenBytes; int /*<<< orphan*/  AmlOpcodeLength; int /*<<< orphan*/  AmlOpcode; TYPE_1__ Value; } ;
+struct TYPE_13__ {int ParseOpcode; int CompileFlags; int EndLogicalLine; int LogicalLineNumber; int EndLine; int LineNumber; int Column; int FinalAmlLength; int AcpiBtype; int Next; int Child; TYPE_3__* Parent; int AmlSubtreeLength; int AmlLength; int AmlPkgLenBytes; int AmlOpcodeLength; int AmlOpcode; TYPE_1__ Value; } ;
 struct TYPE_14__ {TYPE_4__ Asl; } ;
-struct TYPE_11__ {int /*<<< orphan*/  AmlSubtreeLength; } ;
+struct TYPE_11__ {int AmlSubtreeLength; } ;
 struct TYPE_12__ {TYPE_2__ Asl; } ;
-typedef  int /*<<< orphan*/  ACPI_STATUS ;
-typedef  TYPE_5__ ACPI_PARSE_OBJECT ;
+typedef int ACPI_STATUS ;
+typedef TYPE_5__ ACPI_PARSE_OBJECT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AE_OK ; 
- int /*<<< orphan*/  ASL_PARSE_TREE_DEBUG2 ; 
- char* ASL_PARSE_TREE_HEADER2 ; 
- int /*<<< orphan*/  ASL_TREE_OUTPUT ; 
- int /*<<< orphan*/  AslGbl_DebugFlag ; 
- int /*<<< orphan*/  CgWriteNode (TYPE_5__*) ; 
- int /*<<< orphan*/  DbgPrint (int /*<<< orphan*/ ,char*,...) ; 
-#define  PARSEOP_METHODCALL 131 
-#define  PARSEOP_NAMESEG 130 
-#define  PARSEOP_NAMESTRING 129 
-#define  PARSEOP_STRING_LITERAL 128 
- int /*<<< orphan*/  TrPrintOpFlags (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  UtDumpBasicOp (TYPE_5__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  UtDumpStringOp (TYPE_5__*,int /*<<< orphan*/ ) ; 
+
+ int AE_OK ;
+ int ASL_PARSE_TREE_DEBUG2 ;
+ char* ASL_PARSE_TREE_HEADER2 ;
+ int ASL_TREE_OUTPUT ;
+ int AslGbl_DebugFlag ;
+ int CgWriteNode (TYPE_5__*) ;
+ int DbgPrint (int ,char*,...) ;
+
+
+
+
+ int TrPrintOpFlags (int ,int ) ;
+ int UtDumpBasicOp (TYPE_5__*,int ) ;
+ int UtDumpStringOp (TYPE_5__*,int ) ;
 
 __attribute__((used)) static ACPI_STATUS
 CgAmlWriteWalk (
-    ACPI_PARSE_OBJECT       *Op,
-    UINT32                  Level,
-    void                    *Context)
+    ACPI_PARSE_OBJECT *Op,
+    UINT32 Level,
+    void *Context)
 {
 
-    /* Generate the AML for this node */
+
 
     CgWriteNode (Op);
 
@@ -56,7 +56,7 @@ CgAmlWriteWalk (
         return (AE_OK);
     }
 
-    /* Print header at level 0. Alignment assumes 32-bit pointers */
+
 
     if (!Level)
     {
@@ -65,14 +65,14 @@ CgAmlWriteWalk (
         DbgPrint (ASL_TREE_OUTPUT, ASL_PARSE_TREE_HEADER2);
     }
 
-    /* Dump ParseOp name and possible value */
+
 
     switch (Op->Asl.ParseOpcode)
     {
-    case PARSEOP_NAMESEG:
-    case PARSEOP_NAMESTRING:
-    case PARSEOP_METHODCALL:
-    case PARSEOP_STRING_LITERAL:
+    case 130:
+    case 129:
+    case 131:
+    case 128:
 
         UtDumpStringOp (Op, Level);
         break;
@@ -84,26 +84,26 @@ CgAmlWriteWalk (
     }
 
     DbgPrint (ASL_TREE_OUTPUT, ASL_PARSE_TREE_DEBUG2,
-        /* 1  */ (UINT32) Op->Asl.Value.Integer,
-        /* 2  */ Op->Asl.ParseOpcode,
-        /* 3  */ Op->Asl.AmlOpcode,
-        /* 4  */ Op->Asl.AmlOpcodeLength,
-        /* 5  */ Op->Asl.AmlPkgLenBytes,
-        /* 6  */ Op->Asl.AmlLength,
-        /* 7  */ Op->Asl.AmlSubtreeLength,
-        /* 8  */ Op->Asl.Parent ? Op->Asl.Parent->Asl.AmlSubtreeLength : 0,
-        /* 9  */ Op,
-        /* 10 */ Op->Asl.Parent,
-        /* 11 */ Op->Asl.Child,
-        /* 12 */ Op->Asl.Next,
-        /* 13 */ Op->Asl.CompileFlags,
-        /* 14 */ Op->Asl.AcpiBtype,
-        /* 15 */ Op->Asl.FinalAmlLength,
-        /* 16 */ Op->Asl.Column,
-        /* 17 */ Op->Asl.LineNumber,
-        /* 18 */ Op->Asl.EndLine,
-        /* 19 */ Op->Asl.LogicalLineNumber,
-        /* 20 */ Op->Asl.EndLogicalLine);
+                 (UINT32) Op->Asl.Value.Integer,
+                 Op->Asl.ParseOpcode,
+                 Op->Asl.AmlOpcode,
+                 Op->Asl.AmlOpcodeLength,
+                 Op->Asl.AmlPkgLenBytes,
+                 Op->Asl.AmlLength,
+                 Op->Asl.AmlSubtreeLength,
+                 Op->Asl.Parent ? Op->Asl.Parent->Asl.AmlSubtreeLength : 0,
+                 Op,
+                 Op->Asl.Parent,
+                 Op->Asl.Child,
+                 Op->Asl.Next,
+                 Op->Asl.CompileFlags,
+                 Op->Asl.AcpiBtype,
+                 Op->Asl.FinalAmlLength,
+                 Op->Asl.Column,
+                 Op->Asl.LineNumber,
+                 Op->Asl.EndLine,
+                 Op->Asl.LogicalLineNumber,
+                 Op->Asl.EndLogicalLine);
 
     TrPrintOpFlags (Op->Asl.CompileFlags, ASL_TREE_OUTPUT);
     DbgPrint (ASL_TREE_OUTPUT, "\n");

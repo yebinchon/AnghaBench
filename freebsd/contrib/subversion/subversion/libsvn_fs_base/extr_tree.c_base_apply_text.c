@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_stream_t ;
-struct TYPE_3__ {int /*<<< orphan*/  fs; } ;
-typedef  TYPE_1__ svn_fs_root_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_checksum_t ;
-struct text_baton_t {char const* path; int /*<<< orphan*/ * stream; int /*<<< orphan*/  result_checksum; int /*<<< orphan*/ * pool; TYPE_1__* root; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- struct text_baton_t* apr_pcalloc (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  svn_checksum_dup (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_fs_base__retry_txn (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct text_baton_t*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  txn_body_apply_text ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int svn_stream_t ;
+struct TYPE_3__ {int fs; } ;
+typedef TYPE_1__ svn_fs_root_t ;
+typedef int svn_error_t ;
+typedef int svn_checksum_t ;
+struct text_baton_t {char const* path; int * stream; int result_checksum; int * pool; TYPE_1__* root; } ;
+typedef int apr_pool_t ;
+
+
+ int FALSE ;
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ struct text_baton_t* apr_pcalloc (int *,int) ;
+ int svn_checksum_dup (int *,int *) ;
+ int svn_fs_base__retry_txn (int ,int ,struct text_baton_t*,int ,int *) ;
+ int txn_body_apply_text ;
 
 __attribute__((used)) static svn_error_t *
 base_apply_text(svn_stream_t **contents_p,

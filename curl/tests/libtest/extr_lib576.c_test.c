@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char chunk_data_t ;
-typedef  int CURLcode ;
-typedef  int /*<<< orphan*/  CURL ;
 
-/* Variables and functions */
- int CURLE_OK ; 
- int CURLE_OUT_OF_MEMORY ; 
- int /*<<< orphan*/  CURLOPT_CHUNK_BGN_FUNCTION ; 
- int /*<<< orphan*/  CURLOPT_CHUNK_DATA ; 
- int /*<<< orphan*/  CURLOPT_CHUNK_END_FUNCTION ; 
- int /*<<< orphan*/  CURLOPT_URL ; 
- int /*<<< orphan*/  CURLOPT_WILDCARDMATCH ; 
- int /*<<< orphan*/  CURL_GLOBAL_ALL ; 
- char* chunk_bgn ; 
- char* chunk_end ; 
- int /*<<< orphan*/  curl_easy_cleanup (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * curl_easy_init () ; 
- int curl_easy_perform (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  curl_global_cleanup () ; 
- int /*<<< orphan*/  curl_global_init (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_setopt (int /*<<< orphan*/ *,int /*<<< orphan*/ ,...) ; 
+
+
+
+typedef char chunk_data_t ;
+typedef int CURLcode ;
+typedef int CURL ;
+
+
+ int CURLE_OK ;
+ int CURLE_OUT_OF_MEMORY ;
+ int CURLOPT_CHUNK_BGN_FUNCTION ;
+ int CURLOPT_CHUNK_DATA ;
+ int CURLOPT_CHUNK_END_FUNCTION ;
+ int CURLOPT_URL ;
+ int CURLOPT_WILDCARDMATCH ;
+ int CURL_GLOBAL_ALL ;
+ char* chunk_bgn ;
+ char* chunk_end ;
+ int curl_easy_cleanup (int *) ;
+ int * curl_easy_init () ;
+ int curl_easy_perform (int *) ;
+ int curl_global_cleanup () ;
+ int curl_global_init (int ) ;
+ int test_setopt (int *,int ,...) ;
 
 int test(char *URL)
 {
-  CURL *handle = NULL;
+  CURL *handle = ((void*)0);
   CURLcode res = CURLE_OK;
   chunk_data_t chunk_data = {0, 0};
   curl_global_init(CURL_GLOBAL_ALL);

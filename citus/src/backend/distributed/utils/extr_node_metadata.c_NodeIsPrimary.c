@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ nodeRole; } ;
-typedef  TYPE_1__ WorkerNode ;
-typedef  scalar_t__ Oid ;
+typedef TYPE_1__ WorkerNode ;
+typedef scalar_t__ Oid ;
 
-/* Variables and functions */
- scalar_t__ InvalidOid ; 
- scalar_t__ PrimaryNodeRoleId () ; 
+
+ scalar_t__ InvalidOid ;
+ scalar_t__ PrimaryNodeRoleId () ;
 
 bool
 NodeIsPrimary(WorkerNode *worker)
 {
-	Oid primaryRole = PrimaryNodeRoleId();
+ Oid primaryRole = PrimaryNodeRoleId();
 
-	/* if nodeRole does not yet exist, all nodes are primary nodes */
-	if (primaryRole == InvalidOid)
-	{
-		return true;
-	}
 
-	return worker->nodeRole == primaryRole;
+ if (primaryRole == InvalidOid)
+ {
+  return 1;
+ }
+
+ return worker->nodeRole == primaryRole;
 }

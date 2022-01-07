@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int ptrdiff_t ;
-typedef  int INTFLOAT ;
-typedef  int INT64FLOAT ;
 
-/* Variables and functions */
+
+
+
+typedef int ptrdiff_t ;
+typedef int INTFLOAT ;
+typedef int INT64FLOAT ;
+
+
 
 __attribute__((used)) static void ps_hybrid_analysis_c(INTFLOAT (*out)[2], INTFLOAT (*in)[2],
                                  const INTFLOAT (*filter)[8][2],
@@ -36,12 +36,12 @@ __attribute__((used)) static void ps_hybrid_analysis_c(INTFLOAT (*out)[2], INTFL
             sum_im += (INT64FLOAT)filter[i][j][0] * (in0_im + in1_im) +
                       (INT64FLOAT)filter[i][j][1] * (in0_re - in1_re);
         }
-#if USE_FIXED
-        out[i * stride][0] = (int)((sum_re + 0x40000000) >> 31);
-        out[i * stride][1] = (int)((sum_im + 0x40000000) >> 31);
-#else
+
+
+
+
         out[i * stride][0] = sum_re;
         out[i * stride][1] = sum_im;
-#endif /* USE_FIXED */
+
     }
 }

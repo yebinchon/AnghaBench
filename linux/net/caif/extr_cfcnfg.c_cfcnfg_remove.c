@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct cfcnfg {int /*<<< orphan*/  ctrl; struct cfcnfg* mux; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cfctrl_remove (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kfree (struct cfcnfg*) ; 
- int /*<<< orphan*/  might_sleep () ; 
- int /*<<< orphan*/  synchronize_rcu () ; 
+
+
+
+struct cfcnfg {int ctrl; struct cfcnfg* mux; } ;
+
+
+ int cfctrl_remove (int ) ;
+ int kfree (struct cfcnfg*) ;
+ int might_sleep () ;
+ int synchronize_rcu () ;
 
 void cfcnfg_remove(struct cfcnfg *cfg)
 {
-	might_sleep();
-	if (cfg) {
-		synchronize_rcu();
+ might_sleep();
+ if (cfg) {
+  synchronize_rcu();
 
-		kfree(cfg->mux);
-		cfctrl_remove(cfg->ctrl);
-		kfree(cfg);
-	}
+  kfree(cfg->mux);
+  cfctrl_remove(cfg->ctrl);
+  kfree(cfg);
+ }
 }

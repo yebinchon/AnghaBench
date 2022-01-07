@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * nonce; } ;
-typedef  TYPE_1__ TS_TST_INFO ;
-typedef  int /*<<< orphan*/  ASN1_INTEGER ;
 
-/* Variables and functions */
- scalar_t__ ASN1_INTEGER_cmp (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  TS_F_TS_CHECK_NONCES ; 
- int /*<<< orphan*/  TS_R_NONCE_MISMATCH ; 
- int /*<<< orphan*/  TS_R_NONCE_NOT_RETURNED ; 
- int /*<<< orphan*/  TSerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * nonce; } ;
+typedef TYPE_1__ TS_TST_INFO ;
+typedef int ASN1_INTEGER ;
+
+
+ scalar_t__ ASN1_INTEGER_cmp (int const*,int const*) ;
+ int TS_F_TS_CHECK_NONCES ;
+ int TS_R_NONCE_MISMATCH ;
+ int TS_R_NONCE_NOT_RETURNED ;
+ int TSerr (int ,int ) ;
 
 __attribute__((used)) static int ts_check_nonces(const ASN1_INTEGER *a, TS_TST_INFO *tst_info)
 {
@@ -31,7 +31,7 @@ __attribute__((used)) static int ts_check_nonces(const ASN1_INTEGER *a, TS_TST_I
         return 0;
     }
 
-    /* No error if a nonce is returned without being requested. */
+
     if (ASN1_INTEGER_cmp(a, b) != 0) {
         TSerr(TS_F_TS_CHECK_NONCES, TS_R_NONCE_MISMATCH);
         return 0;

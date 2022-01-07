@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct omap_dss_device {int dummy; } ;
 
-/* Variables and functions */
- struct omap_dss_device* omap_dss_get_next_device (struct omap_dss_device*) ; 
+
+ struct omap_dss_device* omap_dss_get_next_device (struct omap_dss_device*) ;
 
 struct omap_dss_device *omap_dss_find_device(void *data,
-		int (*match)(struct omap_dss_device *dssdev, void *data))
+  int (*match)(struct omap_dss_device *dssdev, void *data))
 {
-	struct omap_dss_device *dssdev = NULL;
+ struct omap_dss_device *dssdev = ((void*)0);
 
-	while ((dssdev = omap_dss_get_next_device(dssdev)) != NULL) {
-		if (match(dssdev, data))
-			return dssdev;
-	}
+ while ((dssdev = omap_dss_get_next_device(dssdev)) != ((void*)0)) {
+  if (match(dssdev, data))
+   return dssdev;
+ }
 
-	return NULL;
+ return ((void*)0);
 }

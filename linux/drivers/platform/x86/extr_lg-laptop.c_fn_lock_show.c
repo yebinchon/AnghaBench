@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/ * pointer; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int * pointer; } ;
 union acpi_object {scalar_t__ type; TYPE_1__ buffer; } ;
 struct device_attribute {int dummy; } ;
 struct device {int dummy; } ;
-typedef  int /*<<< orphan*/  ssize_t ;
+typedef int ssize_t ;
 
-/* Variables and functions */
- scalar_t__ ACPI_TYPE_BUFFER ; 
- int /*<<< orphan*/  EIO ; 
- int /*<<< orphan*/  PAGE_SIZE ; 
- int /*<<< orphan*/  WM_FN_LOCK ; 
- int /*<<< orphan*/  WM_GET ; 
- int /*<<< orphan*/  kfree (union acpi_object*) ; 
- union acpi_object* lg_wmab (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  snprintf (char*,int /*<<< orphan*/ ,char*,unsigned int) ; 
+
+ scalar_t__ ACPI_TYPE_BUFFER ;
+ int EIO ;
+ int PAGE_SIZE ;
+ int WM_FN_LOCK ;
+ int WM_GET ;
+ int kfree (union acpi_object*) ;
+ union acpi_object* lg_wmab (int ,int ,int ) ;
+ int snprintf (char*,int ,char*,unsigned int) ;
 
 __attribute__((used)) static ssize_t fn_lock_show(struct device *dev,
-			    struct device_attribute *attr, char *buffer)
+       struct device_attribute *attr, char *buffer)
 {
-	unsigned int status;
-	union acpi_object *r;
+ unsigned int status;
+ union acpi_object *r;
 
-	r = lg_wmab(WM_FN_LOCK, WM_GET, 0);
-	if (!r)
-		return -EIO;
+ r = lg_wmab(WM_FN_LOCK, WM_GET, 0);
+ if (!r)
+  return -EIO;
 
-	if (r->type != ACPI_TYPE_BUFFER) {
-		kfree(r);
-		return -EIO;
-	}
+ if (r->type != ACPI_TYPE_BUFFER) {
+  kfree(r);
+  return -EIO;
+ }
 
-	status = !!r->buffer.pointer[0];
-	kfree(r);
+ status = !!r->buffer.pointer[0];
+ kfree(r);
 
-	return snprintf(buffer, PAGE_SIZE, "%d\n", status);
+ return snprintf(buffer, PAGE_SIZE, "%d\n", status);
 }

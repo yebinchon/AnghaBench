@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int npy_intp ;
-typedef  int /*<<< orphan*/  PyObject ;
 
-/* Variables and functions */
- int PyArray_MIN (int,int) ; 
- scalar_t__ PyComplex_Check (int /*<<< orphan*/ *) ; 
- double PyComplex_ImagAsDouble (int /*<<< orphan*/ *) ; 
- double PyComplex_RealAsDouble (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyErr_Clear () ; 
- int /*<<< orphan*/  PyErr_SetString (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  PyExc_TypeError ; 
- double PyFloat_AsDouble (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * PyInt_FromLong (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * PyNumber_Add (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * PyNumber_Subtract (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * PyNumber_TrueDivide (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int PyObject_RichCompareBool (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ PyTuple_Check (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Py_DECREF (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Py_EQ ; 
- int /*<<< orphan*/  Py_NE ; 
- int _arange_safe_ceil_to_intp (double) ; 
- scalar_t__ error_converting (int) ; 
- scalar_t__ npy_signbit (double) ; 
+
+
+
+typedef int npy_intp ;
+typedef int PyObject ;
+
+
+ int PyArray_MIN (int,int) ;
+ scalar_t__ PyComplex_Check (int *) ;
+ double PyComplex_ImagAsDouble (int *) ;
+ double PyComplex_RealAsDouble (int *) ;
+ int PyErr_Clear () ;
+ int PyErr_SetString (int ,char*) ;
+ int PyExc_TypeError ;
+ double PyFloat_AsDouble (int *) ;
+ int * PyInt_FromLong (int ) ;
+ int * PyNumber_Add (int *,int *) ;
+ int * PyNumber_Subtract (int *,int *) ;
+ int * PyNumber_TrueDivide (int *,int *) ;
+ int PyObject_RichCompareBool (int *,int *,int ) ;
+ scalar_t__ PyTuple_Check (int *) ;
+ int Py_DECREF (int *) ;
+ int Py_EQ ;
+ int Py_NE ;
+ int _arange_safe_ceil_to_intp (double) ;
+ scalar_t__ error_converting (int) ;
+ scalar_t__ npy_signbit (double) ;
 
 __attribute__((used)) static npy_intp
 _calc_length(PyObject *start, PyObject *stop, PyObject *step, PyObject **next, int cmplx)
@@ -48,8 +48,8 @@ _calc_length(PyObject *start, PyObject *stop, PyObject *step, PyObject **next, i
         if (PyTuple_Check(stop)) {
             PyErr_Clear();
             PyErr_SetString(PyExc_TypeError,
-                            "arange: scalar arguments expected "\
-                            "instead of a tuple.");
+                            "arange: scalar arguments expected " "instead of a tuple.");
+
         }
         return -1;
     }
@@ -57,7 +57,7 @@ _calc_length(PyObject *start, PyObject *stop, PyObject *step, PyObject **next, i
     zero = PyInt_FromLong(0);
     if (!zero) {
         Py_DECREF(*next);
-        *next = NULL;
+        *next = ((void*)0);
         return -1;
     }
 
@@ -65,12 +65,12 @@ _calc_length(PyObject *start, PyObject *stop, PyObject *step, PyObject **next, i
     if (next_is_nonzero == -1) {
         Py_DECREF(zero);
         Py_DECREF(*next);
-        *next = NULL;
+        *next = ((void*)0);
         return -1;
     }
     val = PyNumber_TrueDivide(*next, step);
     Py_DECREF(*next);
-    *next = NULL;
+    *next = ((void*)0);
 
     if (!val) {
         Py_DECREF(zero);
@@ -113,7 +113,7 @@ _calc_length(PyObject *start, PyObject *stop, PyObject *step, PyObject **next, i
             return -1;
         }
 
-        /* Underflow and divide-by-inf check */
+
         if (val_is_zero && next_is_nonzero) {
             if (npy_signbit(value)) {
                 len = 0;

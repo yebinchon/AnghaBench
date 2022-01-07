@@ -1,68 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_19__   TYPE_3__ ;
-typedef  struct TYPE_18__   TYPE_2__ ;
-typedef  struct TYPE_17__   TYPE_1__ ;
-typedef  struct TYPE_16__   TYPE_14__ ;
 
-/* Type definitions */
-typedef  size_t UINT16 ;
-struct TYPE_17__ {int /*<<< orphan*/  Integer; } ;
-struct TYPE_18__ {int ParseOpcode; int AmlOpcodeLength; TYPE_1__ Value; int /*<<< orphan*/  CompileFlags; int /*<<< orphan*/  AcpiBtype; int /*<<< orphan*/  AmlOpcode; } ;
+
+
+typedef struct TYPE_19__ TYPE_3__ ;
+typedef struct TYPE_18__ TYPE_2__ ;
+typedef struct TYPE_17__ TYPE_1__ ;
+typedef struct TYPE_16__ TYPE_14__ ;
+
+
+typedef size_t UINT16 ;
+struct TYPE_17__ {int Integer; } ;
+struct TYPE_18__ {int ParseOpcode; int AmlOpcodeLength; TYPE_1__ Value; int CompileFlags; int AcpiBtype; int AmlOpcode; } ;
 struct TYPE_19__ {TYPE_2__ Asl; } ;
-struct TYPE_16__ {int /*<<< orphan*/  Value; int /*<<< orphan*/  Flags; int /*<<< orphan*/  AcpiBtype; int /*<<< orphan*/  AmlOpcode; } ;
-typedef  TYPE_3__ ACPI_PARSE_OBJECT ;
+struct TYPE_16__ {int Value; int Flags; int AcpiBtype; int AmlOpcode; } ;
+typedef TYPE_3__ ACPI_PARSE_OBJECT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASL_MSG_TRUNCATION ; 
- scalar_t__ ASL_PARSE_OPCODE_BASE ; 
- int /*<<< orphan*/  ASL_REMARK ; 
- int AcpiGbl_IntegerBitWidth ; 
- int /*<<< orphan*/  AslError (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_3__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  AslGbl_HasIncludeFiles ; 
- TYPE_14__* AslKeywordMapping ; 
- int /*<<< orphan*/  OpcDoAccessAs (TYPE_3__*) ; 
- int /*<<< orphan*/  OpcDoConnection (TYPE_3__*) ; 
- int /*<<< orphan*/  OpcDoEisaId (TYPE_3__*) ; 
- int /*<<< orphan*/  OpcDoFprintf (TYPE_3__*) ; 
- int /*<<< orphan*/  OpcDoPld (TYPE_3__*) ; 
- int /*<<< orphan*/  OpcDoPrintf (TYPE_3__*) ; 
- int /*<<< orphan*/  OpcDoUnicode (TYPE_3__*) ; 
- int /*<<< orphan*/  OpcDoUuId (TYPE_3__*) ; 
- int /*<<< orphan*/  OpcSetOptimalIntegerSize (TYPE_3__*) ; 
-#define  PARSEOP_ACCESSAS 139 
-#define  PARSEOP_CONNECTION 138 
-#define  PARSEOP_EISAID 137 
-#define  PARSEOP_FPRINTF 136 
-#define  PARSEOP_INCLUDE 135 
-#define  PARSEOP_INTEGER 134 
-#define  PARSEOP_OFFSET 133 
-#define  PARSEOP_PRINTF 132 
-#define  PARSEOP_TIMER 131 
-#define  PARSEOP_TOPLD 130 
-#define  PARSEOP_TOUUID 129 
-#define  PARSEOP_UNICODE 128 
- int /*<<< orphan*/  TRUE ; 
+
+ int ASL_MSG_TRUNCATION ;
+ scalar_t__ ASL_PARSE_OPCODE_BASE ;
+ int ASL_REMARK ;
+ int AcpiGbl_IntegerBitWidth ;
+ int AslError (int ,int ,TYPE_3__*,int *) ;
+ int AslGbl_HasIncludeFiles ;
+ TYPE_14__* AslKeywordMapping ;
+ int OpcDoAccessAs (TYPE_3__*) ;
+ int OpcDoConnection (TYPE_3__*) ;
+ int OpcDoEisaId (TYPE_3__*) ;
+ int OpcDoFprintf (TYPE_3__*) ;
+ int OpcDoPld (TYPE_3__*) ;
+ int OpcDoPrintf (TYPE_3__*) ;
+ int OpcDoUnicode (TYPE_3__*) ;
+ int OpcDoUuId (TYPE_3__*) ;
+ int OpcSetOptimalIntegerSize (TYPE_3__*) ;
+ int TRUE ;
 
 void
 OpcGenerateAmlOpcode (
-    ACPI_PARSE_OBJECT       *Op)
+    ACPI_PARSE_OBJECT *Op)
 {
-    UINT16                  Index;
+    UINT16 Index;
 
 
     Index = (UINT16) (Op->Asl.ParseOpcode - ASL_PARSE_OPCODE_BASE);
 
-    Op->Asl.AmlOpcode     = AslKeywordMapping[Index].AmlOpcode;
-    Op->Asl.AcpiBtype     = AslKeywordMapping[Index].AcpiBtype;
+    Op->Asl.AmlOpcode = AslKeywordMapping[Index].AmlOpcode;
+    Op->Asl.AcpiBtype = AslKeywordMapping[Index].AcpiBtype;
     Op->Asl.CompileFlags |= AslKeywordMapping[Index].Flags;
 
     if (!Op->Asl.Value.Integer)
@@ -70,78 +58,78 @@ OpcGenerateAmlOpcode (
         Op->Asl.Value.Integer = AslKeywordMapping[Index].Value;
     }
 
-    /* Special handling for some opcodes */
+
 
     switch (Op->Asl.ParseOpcode)
     {
-    case PARSEOP_INTEGER:
-        /*
-         * Set the opcode based on the size of the integer
-         */
+    case 134:
+
+
+
         (void) OpcSetOptimalIntegerSize (Op);
         break;
 
-    case PARSEOP_OFFSET:
+    case 133:
 
         Op->Asl.AmlOpcodeLength = 1;
         break;
 
-    case PARSEOP_ACCESSAS:
+    case 139:
 
         OpcDoAccessAs (Op);
         break;
 
-    case PARSEOP_CONNECTION:
+    case 138:
 
         OpcDoConnection (Op);
         break;
 
-    case PARSEOP_EISAID:
+    case 137:
 
         OpcDoEisaId (Op);
         break;
 
-    case PARSEOP_PRINTF:
+    case 132:
 
         OpcDoPrintf (Op);
         break;
 
-    case PARSEOP_FPRINTF:
+    case 136:
 
         OpcDoFprintf (Op);
         break;
 
-    case PARSEOP_TOPLD:
+    case 130:
 
         OpcDoPld (Op);
         break;
 
-    case PARSEOP_TOUUID:
+    case 129:
 
         OpcDoUuId (Op);
         break;
 
-    case PARSEOP_UNICODE:
+    case 128:
 
         OpcDoUnicode (Op);
         break;
 
-    case PARSEOP_INCLUDE:
+    case 135:
 
         AslGbl_HasIncludeFiles = TRUE;
         break;
 
-    case PARSEOP_TIMER:
+    case 131:
 
         if (AcpiGbl_IntegerBitWidth == 32)
         {
-            AslError (ASL_REMARK, ASL_MSG_TRUNCATION, Op, NULL);
+            AslError (ASL_REMARK, ASL_MSG_TRUNCATION, Op, ((void*)0));
         }
         break;
 
     default:
 
-        /* Nothing to do for other opcodes */
+
 
         break;
     }

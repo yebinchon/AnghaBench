@@ -1,85 +1,85 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
-struct TYPE_5__ {scalar_t__ guestId; int /*<<< orphan*/  h_App; int /*<<< orphan*/  (* f_Exception ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;TYPE_1__* p_QmRegs; } ;
-typedef  TYPE_2__ t_Qm ;
-typedef  scalar_t__ t_Handle ;
-struct TYPE_4__ {int /*<<< orphan*/  err_isr; int /*<<< orphan*/  err_ier; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_INVALID_HANDLE ; 
- int /*<<< orphan*/  E_INVALID_OPERATION ; 
- int GET_UINT32 (int /*<<< orphan*/ ) ; 
- scalar_t__ NCSW_MASTER_ID ; 
- int QM_EX_CORENET_INITIATOR_DATA ; 
- int QM_EX_CORENET_INVALID_TARGET_TRANSACTION ; 
- int QM_EX_CORENET_TARGET_DATA ; 
- int QM_EX_DEQUEUE_DCP ; 
- int QM_EX_DEQUEUE_FQ ; 
- int QM_EX_DEQUEUE_QUEUE ; 
- int QM_EX_DEQUEUE_SOURCE ; 
- int QM_EX_ENQUEUE_CHANNEL ; 
- int QM_EX_ENQUEUE_OVERFLOW ; 
- int QM_EX_ENQUEUE_QUEUE ; 
- int QM_EX_ENQUEUE_STATE ; 
- int QM_EX_INVALID_COMMAND ; 
- int QM_EX_MULTI_ECC ; 
- int QM_EX_PFDR_ENQUEUE_BLOCKED ; 
- int QM_EX_PFDR_THRESHOLD ; 
- int QM_EX_SINGLE_ECC ; 
- int /*<<< orphan*/  REPORT_ERROR (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  SANITY_CHECK_RETURN (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WARNING ; 
- int /*<<< orphan*/  WRITE_UINT32 (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  e_QM_EX_CORENET_INITIATOR_DATA ; 
- int /*<<< orphan*/  e_QM_EX_CORENET_INVALID_TARGET_TRANSACTION ; 
- int /*<<< orphan*/  e_QM_EX_CORENET_TARGET_DATA ; 
- int /*<<< orphan*/  e_QM_EX_DEQUEUE_DCP ; 
- int /*<<< orphan*/  e_QM_EX_DEQUEUE_FQ ; 
- int /*<<< orphan*/  e_QM_EX_DEQUEUE_QUEUE ; 
- int /*<<< orphan*/  e_QM_EX_DEQUEUE_SOURCE ; 
- int /*<<< orphan*/  e_QM_EX_ENQUEUE_CHANNEL ; 
- int /*<<< orphan*/  e_QM_EX_ENQUEUE_OVERFLOW ; 
- int /*<<< orphan*/  e_QM_EX_ENQUEUE_QUEUE ; 
- int /*<<< orphan*/  e_QM_EX_ENQUEUE_STATE ; 
- int /*<<< orphan*/  e_QM_EX_INVALID_COMMAND ; 
- int /*<<< orphan*/  e_QM_EX_MULTI_ECC ; 
- int /*<<< orphan*/  e_QM_EX_PFDR_ENQUEUE_BLOCKED ; 
- int /*<<< orphan*/  e_QM_EX_PFDR_THRESHOLD ; 
- int /*<<< orphan*/  e_QM_EX_SINGLE_ECC ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub10 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub11 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub12 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub13 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub14 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub15 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub16 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub3 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub4 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub5 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub6 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub7 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub8 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub9 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+struct TYPE_5__ {scalar_t__ guestId; int h_App; int (* f_Exception ) (int ,int ) ;TYPE_1__* p_QmRegs; } ;
+typedef TYPE_2__ t_Qm ;
+typedef scalar_t__ t_Handle ;
+struct TYPE_4__ {int err_isr; int err_ier; } ;
+
+
+ int E_INVALID_HANDLE ;
+ int E_INVALID_OPERATION ;
+ int GET_UINT32 (int ) ;
+ scalar_t__ NCSW_MASTER_ID ;
+ int QM_EX_CORENET_INITIATOR_DATA ;
+ int QM_EX_CORENET_INVALID_TARGET_TRANSACTION ;
+ int QM_EX_CORENET_TARGET_DATA ;
+ int QM_EX_DEQUEUE_DCP ;
+ int QM_EX_DEQUEUE_FQ ;
+ int QM_EX_DEQUEUE_QUEUE ;
+ int QM_EX_DEQUEUE_SOURCE ;
+ int QM_EX_ENQUEUE_CHANNEL ;
+ int QM_EX_ENQUEUE_OVERFLOW ;
+ int QM_EX_ENQUEUE_QUEUE ;
+ int QM_EX_ENQUEUE_STATE ;
+ int QM_EX_INVALID_COMMAND ;
+ int QM_EX_MULTI_ECC ;
+ int QM_EX_PFDR_ENQUEUE_BLOCKED ;
+ int QM_EX_PFDR_THRESHOLD ;
+ int QM_EX_SINGLE_ECC ;
+ int REPORT_ERROR (int ,int ,char*) ;
+ int SANITY_CHECK_RETURN (TYPE_2__*,int ) ;
+ int WARNING ;
+ int WRITE_UINT32 (int ,int) ;
+ int e_QM_EX_CORENET_INITIATOR_DATA ;
+ int e_QM_EX_CORENET_INVALID_TARGET_TRANSACTION ;
+ int e_QM_EX_CORENET_TARGET_DATA ;
+ int e_QM_EX_DEQUEUE_DCP ;
+ int e_QM_EX_DEQUEUE_FQ ;
+ int e_QM_EX_DEQUEUE_QUEUE ;
+ int e_QM_EX_DEQUEUE_SOURCE ;
+ int e_QM_EX_ENQUEUE_CHANNEL ;
+ int e_QM_EX_ENQUEUE_OVERFLOW ;
+ int e_QM_EX_ENQUEUE_QUEUE ;
+ int e_QM_EX_ENQUEUE_STATE ;
+ int e_QM_EX_INVALID_COMMAND ;
+ int e_QM_EX_MULTI_ECC ;
+ int e_QM_EX_PFDR_ENQUEUE_BLOCKED ;
+ int e_QM_EX_PFDR_THRESHOLD ;
+ int e_QM_EX_SINGLE_ECC ;
+ int stub1 (int ,int ) ;
+ int stub10 (int ,int ) ;
+ int stub11 (int ,int ) ;
+ int stub12 (int ,int ) ;
+ int stub13 (int ,int ) ;
+ int stub14 (int ,int ) ;
+ int stub15 (int ,int ) ;
+ int stub16 (int ,int ) ;
+ int stub2 (int ,int ) ;
+ int stub3 (int ,int ) ;
+ int stub4 (int ,int ) ;
+ int stub5 (int ,int ) ;
+ int stub6 (int ,int ) ;
+ int stub7 (int ,int ) ;
+ int stub8 (int ,int ) ;
+ int stub9 (int ,int ) ;
 
 void QM_ErrorIsr(t_Handle h_Qm)
 {
-    t_Qm        *p_Qm = (t_Qm *)h_Qm;
-    uint32_t    tmpReg;
+    t_Qm *p_Qm = (t_Qm *)h_Qm;
+    uint32_t tmpReg;
 
     SANITY_CHECK_RETURN(p_Qm, E_INVALID_HANDLE);
 
